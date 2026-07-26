@@ -1,46 +1,54 @@
 # Dynawalla — Pack system
 
-**There is no Dynawalla pack system in V1.** Curriculum is a compiled SQLite artifact
-bundled in the app. See [ADR-0003](DECISIONS/ADR-0003-no-downloadable-packs-v1.md) and
-[ADR-0012](DECISIONS/ADR-0012-ota-curriculum-deferral.md).
+**The pack system is the product's delivery mechanism** — reversed from this
+document's previous position by the founder on 2026-07-26. See
+[ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md), which supersedes
+ADR-0003, and [ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md), which says
+what is left in the host (nothing that is content).
 
-This document exists so that (a) the absence is verifiable rather than accidental, and
-(b) whoever eventually builds one inherits what Corpán's pack system already learned
-instead of rediscovering it.
+> **What this file used to say, and why it is worth keeping in view.** It
+> specified acceptance **by absence**: no catalog, no installer, no CDN, no URI
+> scheme handler, no pack-related Tauri commands, verified by a release
+> checklist. That is a set of gates which pass because a capability is missing,
+> and they were all green while the app was an arithmetic drill nobody wanted to
+> use. Everything below the fold — what Corpán's pack system already taught — was
+> written for "whoever revives this". It is operative now.
 
-## What "no pack system" means concretely
+## Where to start, and what not to build twice
 
-Acceptance is **by absence** (`K-01`, `K-02`, `K-03`):
+This monorepo already ships a pack runtime. Read it before designing one:
 
-- No catalog file, no catalog fetch, no catalog store.
-- No installer, no install manager, no download UI, no progress surface.
-- No CDN or S3 origin serving Dynawalla content.
-- No custom URI scheme handler.
-- No Rust pack runtime and no pack-related Tauri commands.
-- The app makes **zero** network requests for curriculum content — asserted by a test and
-  confirmed by a device network capture during the M7 device pass.
+- **`corpan/plugins/tauri-plugin-game-packs`** — the runtime, and the owner of
+  the `corpan-pack://` URI scheme that serves every installed pack's assets.
+- **`corpan/packs/sdk`** and **`corpan/packs/shared`** — the SDK a pack is built
+  against and the libraries they share.
+- **24 shipping packs**, four of them Babylon.js 3D worlds (`ad-world`,
+  `corpan-city`, `hover-runner`, `juice-squeeze2`). Read how they boot, mount and
+  dispose.
+- **`corpan/packs/world-plaza/docs/GAME_DEV_PLAYBOOK.md`** — the hard-won lessons
+  from the furthest game work in this repository.
 
-What replaces it: `dynawalla/curriculum/build/compile.ts` emits a deterministic
-hash-stamped SQLite file into the app's `public/curriculum/`, bundled at build time. A
-release-checklist gate asserts the shipped artifact's hash matches the compiled source
-(`M-17`), and the artifact is capped at 12 MB.
+Whether Dynawalla extends that plugin or gets a sibling is an open decision with
+its own ADR to come. What is settled is that a second from-scratch runtime in one
+repository is the outcome to avoid.
 
-## What this deletes from the critical path
+## The host side, which exists today
 
-A pack system is not a feature; it is a subsystem with its own failure modes. Declining
-it removes, from V1:
+The host is a shell (ADR-0022) and already carries the two halves of the contract
+an installer and a pack are built against:
 
-- A from-scratch Rust pack runtime (Corpán's is ~2,900 lines inside `corpan_lib`, reached
-  through eight Tauri commands) with connect and stall watchdogs and fail-closed sha256
-  verification.
-- A catalog surface, a CDN publishing path and an install manager.
-- Three shared-TypeScript extraction waves that only exist to make the above reusable.
-- Version skew between an installed pack and the host app, and the back-compat routing
-  that manages it.
-- On-device quota exhaustion.
-- A second security boundary in a children's product.
+- `dynawalla-app/src/packs/registry.ts` — the book of record: what is installed,
+  at what version, at what digest, at what cost in bytes. An installer writes
+  into it; the Packs destination reads out of it.
+- `dynawalla-app/src/packs/host.ts` — the capability boundary. Everything a
+  mounted pack is handed (the learner it is for, the device settings it must
+  honour) and everything it can do (report one outcome). Forty lines, so that
+  reviewing what a pack can reach is reading a file rather than auditing an app.
 
-## What Corpán's pack system already taught, for whoever revives this
+Not built yet, and named so nobody assumes otherwise: downloading, digest
+verification, unpacking, the URI scheme handler, and the delivery origin.
+
+## What Corpán's pack system already taught, for whoever builds this
 
 Each of these cost something to learn. Read them before designing anything.
 
@@ -78,12 +86,9 @@ invokes a `content_packs_delete` command that is not among the registered Tauri 
 so uninstalled pack data stays on disk permanently. Whatever the runtime is, enumerate
 the commands the frontend invokes and assert each one is registered.
 
-## Trigger for building one
+## Where the artifacts live
 
-Both conditions together, per [ADR-0012](DECISIONS/ADR-0012-ota-curriculum-deferral.md):
-an installed base large enough that an app-review cycle is a real cost to real users,
-**and** a curriculum defect that cannot wait for a review cycle. Either alone is not a
-trigger.
-
-When it fires, the design starts from **signed, versioned, immutable artifacts on
-S3/CloudFront**, not from a Pages object, and it gets its own ADR.
+The design starts from **signed, versioned, immutable artifacts on
+S3/CloudFront**, not from a Pages object — the Pages artifact is whole-site, so
+immutable versioned URLs are structurally unachievable there. That choice, the
+catalog schema and the signing story each get an ADR when they are made.

@@ -3,6 +3,14 @@
 Reversible decisions live here. Irreversible ones are ADRs — see
 [DECISIONS.md](DECISIONS.md).
 
+> **Rewritten 2026-07-26 for the host/pack split.** The founder ruled that the
+> core app ships no content: every exercise, game, world and asset is a pack, and
+> the app is a shell around them
+> ([ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md),
+> [ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md)). The layer
+> model below is the one that survived that; the layers that were content are
+> named where they went rather than deleted.
+
 ## Placement
 
 `dynawalla/` is a **top-level sibling of `corpan/`**. Every product in this repo is
@@ -33,15 +41,25 @@ encorpora/
     ├── engine/                # pure TS learner model, no IO
     │   ├── {types,constants,elo,facts,bugs,scheduler,flow,latency}.ts
     │   ├── boundary.test.ts · sim/  (personas, G-gates)
-    └── dynawalla-app/
-        ├── public/{locales,curriculum}/
-        ├── src/{app,design,number,work,reactions,world,profiles,store}/
+    └── dynawalla-app/         # the HOST: no content, as small as it can be
+        ├── public/locales/
+        ├── src/app/           # routes, shell, navigation, theme, storage keys
+        ├── src/shell/         # the surface model every destination is made of
+        ├── src/design/        # tokens, strapwork, the index mark
+        ├── src/packs/         # the registry, and the capability boundary
+        ├── src/profiles/ src/settings/ src/learner/
+        ├── src/world/         # the progress figure: geometry over one integer
         └── src-tauri/         # OWN workspace root, OWN Cargo.lock, OWN [patch]
 ```
 
 `curriculum/` and `engine/` are **siblings of the app, not inside it**: both must be
 importable and testable without building Tauri, and both need their own CI filter so a
 curriculum edit does not rebuild the app.
+
+Since the split they are also **not imported by the app at all**, and a test fails
+the build if that changes. `curriculum/` is a library for packs to import;
+`engine/` is the host's learner model and is unwired until a pack declares a
+skill catalog for it to model. `boundary.test.ts` in `src/app/` is the gate.
 
 `native/` and `shared/` stay separate because a Rust change and a TypeScript change have
 different toolchains and different blast radii. One coarse `platform/` filter would run
@@ -60,109 +78,82 @@ cargo on a TypeScript edit.
 | Event namespace | `corpora:` prefix, typed dispatcher |
 | Reference devices | Samsung Galaxy Tab A9 SM-X110 (4 GB) · Pixel 6a · iPad 10th gen |
 
-## The eight layers
+## The layers
 
-### L1 — Shell
-One Tauri window, hash router, theme applied synchronously at module load via a store
-subscription toggling one `classList` entry. The design system is built fresh. Exactly
-one mechanical layer is inherited from Corpán's stylesheet: the
-`--safe-{top,right,bottom,left}` `env()` tokens, `--dialog-max-h`, and the `--z-*`
-ladder. Those are platform facts, not taste.
+Four layers now, not eight. The four that are gone are named below with where
+they went, because "we deleted the work surface" is the sort of thing a future
+agent re-invents inside the host if nobody says why.
 
-The `<ParentalGate>` component and route guard ship here, in M1
-([ADR-0005](DECISIONS/ADR-0005-shell-and-routing.md)).
+### L1 — Shell (`src/app/`, `src/shell/`)
+One Tauri window, hash router, theme and accessibility settings applied
+synchronously at module load via store subscriptions that write one class and two
+attributes on `<html>`. The design system is built fresh. Exactly one mechanical
+layer is inherited from Corpán's stylesheet: the `--safe-{top,right,bottom,left}`
+`env()` tokens, `--dialog-max-h`, and the `--z-*` ladder. Those are platform
+facts, not taste.
 
-**Architectural law: the work surface never waits for the world.** Problem, keypad and
-verdict own input in DOM/CSS; reactions live on one `pointer-events: none` canvas; the
-world is procedural SVG. A static AST test fails the build if anything under
-`src/world/` or `src/reactions/` imports from `src/work/` or `engine/`.
+Five destinations — packs, progress, profiles, settings, parents — in a
+persistent bottom navigation. **Every destination is described as data**
+(`src/shell/surfaces.ts`: rows over a snapshot of host state) and drawn by one
+renderer. That is what makes "no destination is ever empty" a test rather than a
+habit: `surfaces.test.ts` builds a device nobody has used yet and asserts every
+destination still returns rows that carry a value or a working control. Two of
+five used to render an empty recess, permanently, with a green suite.
 
-### L2 — Number layer (`src/number/`)
-This layer does not exist anywhere in this repo today: `rg 'Intl\.NumberFormat|toLocaleString'`
-over the Corpán app returns **zero** hits, and zero CLDR plural-category keys exist
-across 55 locale directories.
+The `<ParentalGate>` component and route guard are still owed
+([ADR-0005](DECISIONS/ADR-0005-shell-and-routing.md)); nothing in the host links
+out yet, and the one destructive control is two-press rather than gated.
 
-`NumberFormat` owns the decimal separator, grouping separator, numbering system and
-numeral direction. It drives the keypad glyphs, the slate renderer **and `judge`**, which
-normalizes the locale separator before comparison and accepts `3,5` in fr/de. Gate CG-14
-requires every generator's `canonical` and `alsoAccept` to round-trip through
-format→parse in all launch locales. `columnAlgorithm` is forced `dir="ltr"` with an
-explicit test.
+### L2 — Pack boundary (`src/packs/`)
+The registry — what is installed, at what version, digest and size — and the
+capability object a mounted pack is handed. A pack is given the learner it is for
+and the device settings it must honour; it can do exactly one thing back, which
+is report an outcome. Forty lines, so that reviewing what a pack can reach is
+reading a file rather than auditing an app. The installer and the URI scheme
+handler are native and are the next milestone
+([ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md)).
 
-It is L2 and it ships in M2 because math notation is content, not chrome. See
-[ADR-0007](DECISIONS/ADR-0007-launch-locales.md).
+### L3 — Storage (`src/app/profile.ts`, `src/app/persist.ts`)
+`localStorage`, read synchronously at module load so no screen has a loading
+state. Two namespaces: `dynawalla.<profileId>.<name>` belongs to one learner and
+is erased with them; `dynawalla.<name>` belongs to the device
+([ADR-0018](DECISIONS/ADR-0018-multi-child-profiles.md)). One adapter, shared by
+every store, because six copies of "degrade to process lifetime when storage is
+disabled" is six chances for one of them to be the copy that throws.
 
-### L3 — Work surface (`src/work/`)
-Four answer schemas in V1, not eight:
+Every persisted store has a `merge` that treats what is on disk as untrusted
+input. That is not defensive habit: a bad `currentId` points one child at another
+child's record, and a bad total takes away history a child earned.
 
-```ts
-type AnswerSchema =
-  | { kind: "integer"; digits: number }
-  | { kind: "columnAlgorithm"; cols: number; marks: "carry" | "borrow" | "none" }
-  | { kind: "fraction"; parts: ("num" | "den" | "whole")[] }
-  | { kind: "choice"; k: 2 | 3 | 4 }
+The IndexedDB tier for an event ring is unbuilt and unneeded — there is no event
+ring while the host has no content to generate one.
 
-judge(schema, submitted, canonical, alsoAccept, locale): Verdict
-```
+### L4 — Native boundary (`src/app/platform.ts`, `src/app/permissions.ts`)
+The host's own native surface is **one command**: `core:app:allow-version`, read
+on the parent surface. `capabilities.test.ts` fails the build if the declared
+list and `src-tauri/capabilities/default.json` disagree in either direction — a
+new call with no grant fails, and a grant nothing uses fails too, because a live
+app cannot narrow its permissions without breaking installed clients.
 
-`decimal` is a parameterization of `integer` + `NumberFormat`. `orderCards`,
-`plotPoint`, `buildExpression` and the V2 manipulation schemas (`dragPlace`,
-`drawSegment`, `dialRead`, `buildChart`) are V2, each with its own judge branch,
-touch-target model and accessibility story.
+Non-null CSP and per-command grants, from day one. What a *pack* may reach is a
+separate question answered per pack
+([ADR-0021](DECISIONS/ADR-0021-pack-capabilities-are-per-pack.md)).
 
-`judge` is pure, synchronous and sub-millisecond; persistence happens *after* the verdict
-paints. Input binds `pointerdown` with `touch-action: manipulation`, with ≥2 cm targets
-for grades 1–3.
+### The layers that left, and where they went
 
-**No auto-submit keyed off digit count.** A unit test asserts no schema exposes
-`canonical.length` to the input layer, because that silently tells a child how many
-digits the answer has.
+| Was | Now |
+|---|---|
+| L2 number layer — `NumberFormat`, keypad glyphs, separator-aware judging | A pack's, and a strong candidate for `shared/`. Locale-correct notation is content, and it belongs beside the content that uses it. |
+| L3 work surface — answer schemas, `judge`, input, read-aloud | A pack's. The host has no opinion about arithmetic; it knows an outcome was reported. |
+| L4 reactions — the effect layer, the picker, the stage | A pack's. Juice belongs to the thing being juicy. The host draws no effects at all. |
+| L5 curriculum | `dynawalla/curriculum/`, as a library packs import — exact rational arithmetic, seeded generators, executable mal-rules, the `CG-*` gates. Not deleted, not bundled. |
+| L6 learner model | Still the host's (`dynawalla/engine/`), because the host is what follows a learner across packs. Unwired until a pack declares a skill catalog. The host's own record is two totals. |
 
-**Read-aloud lives in this layer, in M2.** Grade-1 content ships at M4 and a six-year-old
-cannot read the prompts, so read-aloud is an input method, not an accessibility nicety.
-WebView `speechSynthesis` first (free, no plugin), native TTS plugin behind the same seam
-from M3.
-
-### L4 — Reactions (`src/reactions/`)
-See [EXPERIENCE_DESIGN.md](EXPERIENCE_DESIGN.md) for the vocabulary and budgets. The
-architectural contract:
-
-```ts
-interface Reaction { play(): void; settleNow(): void; dispose(): void }
-```
-
-The input handler calls `settleNow()` **synchronously** before processing any event. No
-reaction is ever awaited. Reactions anchor in world space so the world can animate around
-the next problem while the work surface has already moved on.
-
-### L5 — Curriculum
-See [CURRICULUM.md](CURRICULUM.md).
-
-### L6 — Learner model
-See [ADAPTIVE_LEARNING.md](ADAPTIVE_LEARNING.md). Engine purity is enforced by
-`boundary.test.ts` in the **first** engine PR, before any model code.
-
-### L7 — Storage
-Two tiers: `localStorage` for settings that must be read synchronously at module load,
-IndexedDB for the event ring. Both namespaced by `profileId` from the first write
-([ADR-0018](DECISIONS/ADR-0018-multi-child-profiles.md)).
-
-Dynawalla writes its own ~300-line adapter and does **not** adopt Corpán's storage layer.
-With a bundled curriculum, no audio assets, no models and bounded per-child state, the
-`QuotaExceededError` class of failure that justifies Corpán's much larger layer does not
-exist here.
-
-### L8 — Native boundary
-V1 plugin set: **haptics, tts**; iap/subscriptions only if
-[ADR-0013](DECISIONS/ADR-0013-monetization-model.md) requires them. Nothing else — see
-[ADR-0004](DECISIONS/ADR-0004-no-mic-no-llm-no-3d.md).
-
-The Tauri capability surface is narrow from day one: **non-null CSP and per-command
-grants**, not Corpán's single `capabilities/default.json` with almost every plugin at
-`:default` and `csp: null` — 11 of its 14 grants are `:default`; only
-`clipboard-manager:allow-write-text`, `tts:allow-speak` and
-`subscriptions:allow-show-manage-subscriptions` name a command. A live app cannot narrow
-permissions later, so this is creation-time.
+**The architectural law that survives, in a new form.** "The work surface never
+waits for the world" is void — there is no work surface here. What replaces it:
+`src/world/` is geometry over one integer with its text alternative handed in,
+and a static test fails the build if it reaches for a store, a setting or the
+app's copy. A drawing that cannot reach anything cannot be blocked by anything.
 
 ## Shared platform
 
@@ -193,13 +184,19 @@ Consumption is a build-time source alias `@platform/*` → `shared/*`, matching 
 existing `@shared/*` precedent in the Corpán app's tsconfig and vite config. The old
 alias is untouched.
 
-**Moved to share-later**, on the "does it delete lines today" test: `shared/feel`
-(Dynawalla's reaction layer is built in M2 and the picker's streak coupling means it must
-diverge anyway), `shared/storage` (no quota problem here), `shared/net-cache` and
-`shared/pack-install` (moot — [ADR-0003](DECISIONS/ADR-0003-no-downloadable-packs-v1.md)),
-and the Corpán pack runtime (~2,900 lines inside `corpan_lib` reached through eight Tauri
-commands, with `corpan-pack://` URLs baked into installed packs' JS on user devices —
-real surgery, not a move).
+**Reconsidered by the split.** `shared/net-cache` and `shared/pack-install` were
+"moot" under ADR-0003 and are not moot now: Dynawalla installs packs
+([ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md)), and the Corpán
+pack runtime is the thing to start from rather than the thing to avoid. It is
+still real surgery — ~2,900 lines inside `corpan_lib` reached through eight Tauri
+commands, with `corpan-pack://` baked into installed packs' JS on user devices,
+so the scheme name cannot be renamed without breaking every installed pack — but
+"reuse or extend" is now the question, and a second from-scratch runtime in one
+repository is the outcome to avoid. It gets its own ADR.
+
+**Still share-later:** `shared/feel` (the host has no reaction layer to share)
+and `shared/storage` (the host's per-child state is bounded and small; packs may
+well need the real thing).
 
 **Kept separate permanently:** Corpán's corpus/SQLite layer and Django CMS, the TTS
 voice-picker machinery, the Journey exercise renderers and its strand/CEFR/phonology

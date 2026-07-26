@@ -94,16 +94,11 @@ test("the dev server does not widen its allow list past Vite's default", () => {
   // with a `workspaces` field, a `pnpm-workspace.yaml` or a `lerna.json`, finds
   // none, and falls back to the nearest package root — which is here.
   //
-  // The app reaches `dynawalla/curriculum` across that boundary anyway, because
-  // Vite 8 serves anything reachable through the import graph
-  // (`config.safeModulePaths`, consulted before `fs.allow`). Verified in a
-  // browser; see the note in vite.config.ts.
-  //
-  // If you are here because `npm run dev` started 403-ing on curriculum
-  // modules, a Vite upgrade has regressed that. Re-adding
-  // `allow: [".", "../curriculum"]` works and is not a disaster — but list `"."`
-  // too, because Vite replaces this array, and prefer giving the curriculum a
-  // resolvable name so nothing has to reach across the boundary at all.
+  // Nothing under `src/` imports across that boundary any more: the host ships
+  // no content, and `boundary.test.ts` fails the build if it starts to
+  // (ADR-0022). So the allow list has nothing left to widen *for*, and this
+  // test is now the cheap way to notice if something has reached out again —
+  // a 403 in `npm run dev` is the symptom, and re-widening is the wrong fix.
   assert.ok(
     !/\ballow\s*:/.test(executable),
     "vite.config.ts sets server.fs.allow — the dev server's reach has been widened",

@@ -1,71 +1,49 @@
 // The route table as data.
 //
-// ADR-0005 fixes the six routes and the hash router. Keeping the paths in a
-// plain module rather than only inside JSX means the navigation, the router
-// and the tests all read the same list — there is no second place to forget a
-// route — and it stays importable from a Node test with no DOM.
+// Five destinations, no sixth, and no route that is not a destination. The
+// paths live in a plain module rather than only inside JSX so the navigation,
+// the router and the tests all read the same list — there is no second place to
+// forget a route — and it stays importable from a Node test with no DOM.
+//
+// `/practice` and `/world` are gone with the content that used to live behind
+// them (ADR-0022). The host ships no exercises, so it has no practice route.
+// What the child built is the *progress* surface: host-owned state, written by
+// packs through the boundary in `src/packs/`.
+//
+// **Packs is the front door.** It is `/` rather than a path under it, because
+// the app is its packs: a lobby in front of them would be one more navigation
+// step and one more screen with nothing on it.
 
 export const ROUTE_PATHS = {
-  home: "/",
-  /**
-   * `:skillId?` is ADR-0005's pattern, not this screen's: **`PracticeScreen` does
-   * not read the parameter yet**, so `/practice/<id>` resumes the fixed ladder
-   * exactly as `/practice` does. Drilling one skill needs a scheduler to pin,
-   * which is M5. Nothing links a skill href today.
-   */
-  practice: "/practice/:skillId?",
-  world: "/world",
+  packs: "/",
   progress: "/progress",
-  settings: "/settings",
   profiles: "/profiles",
+  settings: "/settings",
+  parents: "/parents",
 } as const
 
 export type RouteKey = keyof typeof ROUTE_PATHS
 
-/** The destinations the shell offers, in the order they are presented. */
-export const DESTINATIONS = ["practice", "world", "progress", "profiles", "settings"] as const
-
-export type Destination = (typeof DESTINATIONS)[number]
+export type Destination = RouteKey
 
 /**
- * The literal prefix of a route pattern: everything up to its first dynamic
- * segment.
+ * The destinations the navigation offers, in the order they are presented.
  *
- * Derived, never written down a second time. A hardcoded `"/practice"` here
- * would survive a rename of the pattern above and leave the primary link
- * pointing at a route that no longer exists — green tests, dead front door.
- *
- * Only an *optional* segment may be dropped: a pattern with a required
- * parameter has no bare href at all, and silently returning its prefix would
- * hand back a path the router does not match.
+ * Derived from the route table rather than written beside it: a destination
+ * with no route, or a route no navigation reaches, is how a screen ends up
+ * unreachable with every test still green.
  */
-function literalPrefix(pattern: string): string {
-  const kept: string[] = []
-  for (const segment of pattern.split("/")) {
-    if (!segment.startsWith(":")) {
-      kept.push(segment)
-      continue
-    }
-    if (!segment.endsWith("?")) {
-      throw new RangeError(`${pattern} has a required parameter and no bare href`)
-    }
-    break
-  }
-  return kept.join("/") || "/"
-}
+export const DESTINATIONS = Object.keys(ROUTE_PATHS) as readonly Destination[]
 
-/** A concrete href for a destination — never the pattern, which has a `:` in it. */
+/**
+ * A concrete href for a destination — never a pattern.
+ *
+ * No route carries a parameter today, and this throws rather than guessing if
+ * one ever does: linking to a path with a `:` in it navigates somewhere the
+ * router does not match and renders nothing, which looks correct in review.
+ */
 export function destinationPath(destination: Destination): string {
-  return literalPrefix(ROUTE_PATHS[destination])
-}
-
-/**
- * The href for one skill's practice session. Not linked from anywhere, and
- * deliberately: it exists so `routes.test.ts` can ask the *installed* router
- * whether ADR-0005's optional segment still matches — asserting the pattern
- * string would pass on a version that had dropped the feature.
- */
-export function practicePath(skillId: string): string {
-  const base = literalPrefix(ROUTE_PATHS.practice)
-  return `${base === "/" ? "" : base}/${encodeURIComponent(skillId)}`
+  const pattern = ROUTE_PATHS[destination]
+  if (pattern.includes(":")) throw new RangeError(`${pattern} has a parameter and no bare href`)
+  return pattern
 }

@@ -5,14 +5,15 @@
 // list of cells that a bad merge could shorten.
 //
 // The storage key is a **parameter**, not something this module works out. The
-// namespace belongs to the profile, the profile belongs to `src/work/`, and
-// `Q-05` forbids the world from importing anything there. The caller — which
-// knows about both — hands the namespace in. That is also why this is a factory
-// rather than a singleton: `Q-12` needs three of them side by side.
+// namespace belongs to the learner and the learner belongs to the app; the
+// world knows only how a screen is cut. The caller — which knows about both —
+// hands the namespace in. That is also why this is a factory rather than a
+// singleton: a family has several of them side by side.
 
 import { create, type StoreApi, type UseBoundStore } from "zustand"
-import { persist, createJSONStorage, type StateStorage } from "zustand/middleware"
+import { persist } from "zustand/middleware"
 
+import { durable } from "../app/persist.ts"
 import { place, NOTHING_BUILT, type Construction } from "./construction.ts"
 
 export interface WorldState extends Construction {
@@ -21,18 +22,6 @@ export interface WorldState extends Construction {
    * ask what closed without reading the store back and racing itself.
    */
   placeOne: () => number
-}
-
-/**
- * Absent under `node --test`, and switchable off in a WebView. Neither is a
- * reason to throw at a child, so the world degrades to process lifetime.
- */
-const ephemeral = new Map<string, string>()
-
-const memoryStorage: StateStorage = {
-  getItem: (name) => ephemeral.get(name) ?? null,
-  setItem: (name, value) => void ephemeral.set(name, value),
-  removeItem: (name) => void ephemeral.delete(name),
 }
 
 export type WorldStore = UseBoundStore<StoreApi<WorldState>>
@@ -51,9 +40,7 @@ export function createWorldStore(namespace: string): WorldStore {
       {
         name: namespace,
         version: 1,
-        storage: createJSONStorage(() =>
-          typeof localStorage === "undefined" ? memoryStorage : localStorage,
-        ),
+        storage: durable,
         partialize: (state) => ({ placed: state.placed }),
         // A stored value that is not a whole number — a corrupted key, a
         // hand-edited devtools session — must not be able to take the world

@@ -112,6 +112,23 @@ export function rosetteOnBench(placed: number): number {
 }
 
 /**
+ * Where the rosette currently being cut sits, or `null` when the screen is
+ * full and the next answer starts a new panel.
+ *
+ * It is the anchor for the plan — the outlines of the apertures that are not
+ * cut yet. Without them a child who has done nothing is shown an empty plate,
+ * and a child who has done nine is shown nine holes in a field of nothing;
+ * with them, the shape is visible from the first answer and every aperture
+ * lands somewhere they could already see. A mason works to a setting-out, and
+ * showing it is the difference between a shape assembling and a bar filling.
+ */
+export function benchIndex(placed: number): number | null {
+  const { courses, rosettes } = breakdown(placed)
+  const index = courses * ROSETTES_PER_COURSE + rosettes
+  return index < ROSETTES_PER_COURSE * COURSES_PER_SCREEN ? index : null
+}
+
+/**
  * One drawable piece: exactly one `<path>` in the DOM.
  *
  * The offsets are baked into `d` rather than carried on a wrapping `<g>`, so
@@ -120,8 +137,10 @@ export function rosetteOnBench(placed: number): number {
  */
 export interface Piece {
   readonly key: string
-  /** What scale this piece is drawn at. Drives its material, not its shape. */
-  readonly kind: "cell" | "rosette" | "course" | "panel"
+  /** What scale this piece is drawn at. Drives its material, not its shape.
+      `plan` is the one that is not cut stone: it is the mason's setting-out
+      lines for the rosette on the bench, incised and waiting. */
+  readonly kind: "plan" | "cell" | "rosette" | "course" | "panel"
   readonly d: string
 }
 
@@ -271,7 +290,14 @@ function rosetteCentre(index: number, box: { readonly height: number }): Vec {
  */
 export function liveNodes(placed: number): number {
   const { panels, courses, rosettes, cells } = breakdown(placed)
-  return Math.min(panels, VISIBLE_PANELS) + courses + rosettes + cells + CHROME_NODES
+  return (
+    Math.min(panels, VISIBLE_PANELS) +
+    courses +
+    rosettes +
+    cells +
+    (benchIndex(placed) === null ? 0 : 1) +
+    CHROME_NODES
+  )
 }
 
 /** One completed screen, seen edge-on in the stack behind the current one. */
@@ -320,7 +346,13 @@ export function screenPieces(placed: number): Piece[] {
     })
   }
 
-  const live = rosetteCells(rosetteCentre(base + rosettes, box))
+  // The setting-out, under the cut cells so a cut aperture covers its own
+  // outline. One node whatever the count, because the twenty outlines are
+  // fused exactly as a finished rosette's twenty apertures are.
+  const bench = benchIndex(placed)
+  const live = rosetteCells(rosetteCentre(bench ?? base + rosettes, box))
+  if (bench !== null) pieces.push({ key: "plan", kind: "plan", d: fuse(live) })
+
   for (let n = 0; n < cells; n++) {
     const cell = live[cellCutAt(n)]
     if (cell === undefined) continue

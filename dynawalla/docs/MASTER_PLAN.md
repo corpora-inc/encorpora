@@ -8,6 +8,37 @@ Current position: [STATUS.md](STATUS.md).
 
 ---
 
+## The reset of 2026-07-26, and what it does to every milestone below
+
+The founder ruled that the core app ships **zero content**: every exercise, game,
+world and asset is a pack, and the app is a shell around them
+([ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md)). That reversed
+ADR-0003 and ADR-0004, which the program had adopted without him
+([ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md),
+[ADR-0021](DECISIONS/ADR-0021-pack-capabilities-are-per-pack.md)).
+
+**This plan is not re-numbered here, and it is not quietly re-pointed either.**
+What each milestone is now aimed at:
+
+| Milestone | Effect of the ruling |
+|---|---|
+| M0a, M0b, M1, M3 | Unaffected. Trunk hygiene, store records and the native move are the same work. |
+| **M2 — the vertical slice** | **Done and then deleted.** The bundled practice loop was built, shown to the child, and rejected. The shell that remains is the host: five real destinations, profiles, storage, the pack registry and the pack boundary. Its exit criterion — a child reaching something real from a cold launch — is now a criterion about a *pack*. |
+| **New: the pack runtime** | Install, verify, update, remove and mount. Native, and the largest single unit of work now on the critical path. It did not exist in this plan because ADR-0003 removed it. Start from `corpan/plugins/tauri-plugin-game-packs` and `corpan/packs/{sdk,shared}`, not from scratch. |
+| M4 — curriculum kernel | Unaffected as *work*, re-aimed as *output*: `dynawalla/curriculum/` becomes a library packs import rather than an artifact bundled into the app. The `CG-*` gates are unchanged. |
+| M5 — the adaptive engine | The engine stays the host's, because the host is what follows a learner across packs. It is unwired until a pack declares a skill catalog; the harness and its gates are unaffected. |
+| **M6 — the world and the character** | Split. The construction survives in the host as the progress figure, written by packs through the boundary. The character and the reaction layer are gone from the host — juice belongs to the thing being juicy, and the first packs get to define what that is. |
+| M7, M8 — breadth and diagnosis | Pack work. Mal-rules and contrast representations are content, and content is a pack's. |
+| **M9 — profiles, parents, accessibility** | Substantially **pulled forward and delivered**: profiles are real (add, name, switch, remove, erase), the parent area exists, settings act on the document and on packs. What is left of M9 is i18n fill and the parental gate. |
+| M10 — store readiness | Unaffected in shape. What ships is the host plus its first packs. |
+
+**The sizing law below still holds and now bites somewhere new.** A pack is a
+diff too, and "one pack per PR" will be over the cap for anything ambitious. Pack
+work is planned at the same honest granularity as curriculum work: a slice per
+PR, not a world per PR.
+
+---
+
 ## The sizing law, and why it changes the plan
 
 Trunk-based development plus a hard diff cap is not a style preference here — it is
@@ -33,8 +64,9 @@ against, not a floor. See [RISKS.md](RISKS.md) R-01, R-05.
 
 The second correction of the same kind: **the V1 scope cut is deliberate and
 load-bearing** — six domains, ~160 active skills, 18 generator families, four answer
-schemas, four representations, five launch locales, and **no downloadable content
-packs**. Geometry, measurement, data, ratio and integers are V2 because their
+schemas, four representations and five launch locales. (Its sixth clause — "no
+downloadable content packs" — was reversed on 2026-07-26; packs are the delivery
+mechanism now, see the table above.) Geometry, measurement, data, ratio and integers are V2 because their
 interactions (`dragPlace`, `drawSegment`, `dialRead`, `buildChart`) do not exist and
 cannot be laundered into multiple choice. Gate CG-13 exists to stop exactly that
 laundering. The cut itself narrows the founder-stated grade range, so

@@ -1,9 +1,9 @@
 # Dynawalla — Status
 
-**Last updated:** 2026-07-25
-**Current milestone:** M0a — Harden the trunk (additive only)
-**Nothing has been built.** No Dynawalla application, curriculum, engine or store record
-exists.
+**Last updated:** 2026-07-26
+**Current milestone:** the reset — the host is a shell; packs are next
+**What exists:** a host application that ships **no content**, the curriculum kernel
+and the adaptive engine as siblings, and no store record.
 
 Update this file **in the PR that changes it**, not afterwards. A status doc that is
 brought up to date in a batch is a status doc nobody trusts.
@@ -12,14 +12,35 @@ brought up to date in a batch is a status doc nobody trusts.
 
 ## Where the program actually is
 
-Discovery is complete. A 14-agent program produced the plan in these docs; three
-adversarial critics produced 42 findings, of which the blocking ones changed the plan.
-The revised positions are what is written here — see
-[MASTER_PLAN.md](MASTER_PLAN.md) and [RISKS.md](RISKS.md), not any earlier draft.
+**The founder rejected the product and the program reversed two of its own
+decisions.** A bundled practice loop was built — a fixed ladder of column
+arithmetic, a keypad, a judge, a contrast card, a character and a reaction layer
+— shown to him, and rejected: a calculator, and the most boring app he had ever
+seen. His ruling is that the core app ships zero content, packs are the product,
+and the app should be as small as possible.
 
-The bootstrap docs and CI groundwork are merged. Four of the eight open founder decisions
-have been answered and recorded. What remains before code starts is the native CI gate
-and the adversarial-review fixes.
+So: `src/work/**`, the character and the reaction layer are deleted, `/practice`
+and `/world` are gone as routes, and the host is a shell — profiles, storage, the
+pack registry, the pack capability boundary, settings, a parent area, developer
+diagnostics, and a five-destination navigation in which **no destination renders
+empty**, with a test that fails if one ever does. 9,781 lines out, 2,490 in; the
+host's own share of the JS bundle fell 94.6 kB → 21.2 kB (78%).
+
+Two ADRs were reversed — **neither had ever been ratified by the founder**, both
+were written `Proposed`, marked `Accepted` inside the program, and built against:
+[ADR-0003 → 0020](DECISIONS/ADR-0020-content-packs-are-the-product.md) and
+[ADR-0004 → 0021](DECISIONS/ADR-0021-pack-capabilities-are-per-pack.md), plus the
+new [ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md) recording the split.
+
+**The lesson worth keeping.** Every gate was green the whole time. `K-01`/`K-02`
+graded the program on the installer *not existing*, and two of five destinations
+rendered an empty recess for weeks because no test ever asked what a screen
+rendered. A gate that passes because a capability is missing cannot notice that
+the product needed it, and a suite that never renders a screen cannot notice a
+blank one.
+
+What remains before pack work starts is the native CI gate and the
+adversarial-review fixes — unchanged by any of the above.
 
 The four corrections most likely to be cheerfully undone by a future agent are recorded
 where they will be read before the mistake is made:
@@ -33,8 +54,6 @@ where they will be read before the mistake is made:
 
 ## Merged
 
-`main` is at `7fc5b7d98`.
-
 | PR | What |
 |---|---|
 | #522 | Removed the `pr-agent` workflow |
@@ -42,12 +61,17 @@ where they will be read before the mistake is made:
 | #524 | Project-scoped Claude control plane + additive `ci.yml` area filters |
 | #525 | Program plan: mission, acceptance criteria, master plan, ADRs |
 | #526 | Program reference set: architecture, curriculum, engine, gates, release, store |
+| #539 | The native/Rust gate: fmt ratchet, compile, clippy, patch integrity |
+| #540 | The adaptive engine, and the practice loop wired to it — **the loop is deleted by the reset** |
+| #541 | Each CI area filter watches what its job actually compiles |
 
-## In flight (M0a bootstrap)
+## In flight
 
 | Work | State |
 |---|---|
-| Founder decisions recorded in ADRs 0001 / 0013 / 0015 / 0017 | this PR |
+| The reset: strip the host, reverse ADR-0003 / ADR-0004, record ADR-0022 | this PR |
+| The pack runtime — install, verify, update, remove, mount | not started; top of the queue |
+| Founder decisions recorded in ADRs 0001 / 0013 / 0015 / 0017 | done 2026-07-25 |
 | Repository-license research ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)) | commissioned 2026-07-25, recommendation pending |
 | Standards-alignment research ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)) | commissioned 2026-07-25, recommendation pending |
 | Store reconnaissance — Corpán's live posture, the account reuse matrix, the name check | **returned 2026-07-25**; every `TODO(store-recon)` filled in ADR-0001, ADR-0015, ADR-0016 and [STORE.md](STORE.md) |
@@ -55,8 +79,7 @@ where they will be read before the mistake is made:
 | `adversarial-review` fail-open audit | under investigation — see below |
 
 Not started: PR-0a.2 (adversarial-review fixes), PR-0a.3 (fail-closed flip), PR-0a.4
-(`.cargo/config.toml` template), PR-0a.5 (native CI gate + delete `ios-native.yml`),
-PR-0a.6 (SHA-pinning), PR-0a.7 (branch-protection → ruleset migration, a scripted
+(`.cargo/config.toml` template), PR-0a.6 (SHA-pinning), PR-0a.7 (branch-protection → ruleset migration, a scripted
 settings change rather than a PR).
 
 ## Findings under investigation
@@ -102,13 +125,21 @@ Verified live by GET-only API calls, 2026-07-25. Four things the plan had wrong 
 
 ## Acceptance
 
-**0 of 117** items met — [ACCEPTANCE_CRITERIA.md](ACCEPTANCE_CRITERIA.md).
+[ACCEPTANCE_CRITERIA.md](ACCEPTANCE_CRITERIA.md) has not been re-graded against
+the reset and **must not be cited until it is**. Several of its items are now
+void rather than unmet — every criterion written against the bundled practice
+surface, the fixed ladder and the bundled curriculum artifact (`M-17`), and both
+"acceptance by absence" items (`K-01`, `K-02`) which graded the program on the
+pack system not existing. Re-grading it is the next documentation unit of work,
+and it is deliberately not done in the same pass that deleted the code, so that
+nobody can mistake a re-pointed criterion for a met one.
 
 ## Blockers
 
-1. **No native CI gate exists at all** — zero `cargo`/`clippy`/`rustup` invocation in
-   any required check. Until PR-0a.5 lands, every native change is unverified by CI, and
-   M3 must not start.
+1. **There is nothing to do in the app.** The host ships no content, by decision,
+   and no pack exists yet. Until the pack runtime lands there is no path from a
+   cold launch to anything a child can play — which is the honest state of the
+   product and the top of the queue.
 2. **`adversarial-review` fails open** (finding 2 above). Until PR-0a.2 lands, an
    oversized PR is reviewed by a truncated diff and reported green.
 3. **Two founder console sessions** (~10 minutes) are on M1's critical path and cannot

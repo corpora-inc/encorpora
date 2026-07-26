@@ -1,6 +1,11 @@
 # ADR-0004 — No microphone, no on-device LLM, no 3D in V1
 
-**Status:** Accepted
+**Status:** **Superseded by [ADR-0021](ADR-0021-pack-capabilities-are-per-pack.md)** (2026-07-26)
+
+> Reversed by the founder, except for the microphone, which stays closed pending
+> a compliance decision. Capability is decided per pack at the boundary. The
+> hazards named below are real and are carried forward as engineering
+> constraints by ADR-0021; the blanket ban is not.
 
 ## Context
 
