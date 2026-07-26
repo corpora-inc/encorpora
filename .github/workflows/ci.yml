@@ -294,6 +294,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Fetch the app icon (Git LFS)
+        # `*.png` is Git LFS repo-wide, so a plain checkout leaves a pointer
+        # file where the icon should be. `lfs: true` would pull every sqlite3,
+        # epub and pdf in the monorepo for the sake of 10 kB, so this fetches
+        # the one path that is read: `capabilities.test.ts` asserts the icon's
+        # PNG colour type, because tauri-codegen panics on anything but RGBA
+        # and does it two minutes into a cargo build no job here runs.
+        run: git lfs pull --include="dynawalla/dynawalla-app/src-tauri/icons/*"
       - uses: actions/setup-node@v4
         with:
           # Matches dynawalla/dynawalla-app/.nvmrc and the `engines` floor.

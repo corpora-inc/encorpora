@@ -196,6 +196,13 @@ test("the app icon is the format the build macro accepts", () => {
   // in a place that answers in milliseconds. The iOS flattening belongs with
   // the iOS target, not with this source file.
   const png = fs.readFileSync(path.join(tauriRoot, "icons/icon.png"))
+  // `*.png` is Git LFS repo-wide, so a checkout without the object leaves a
+  // pointer here — which is also what `generate_context!` would try to decode.
+  // Say so, rather than reporting a byte mismatch nobody can read.
+  assert.ok(
+    !png.subarray(0, 40).toString("latin1").startsWith("version https://git-lfs"),
+    "icon.png is a Git LFS pointer, not an image — the LFS object was not fetched",
+  )
   assert.equal(png.subarray(0, 8).toString("latin1"), "\x89PNG\r\n\x1a\n")
   assert.equal(png.subarray(12, 16).toString("latin1"), "IHDR")
   assert.equal(png.readUInt32BE(16), 512, "icon width")
