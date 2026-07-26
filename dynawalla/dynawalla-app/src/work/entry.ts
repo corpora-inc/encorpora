@@ -45,6 +45,14 @@ export interface EntryState {
   readonly fields: readonly EntryField[]
   /** Index into `fields`. Multi-field schemas move it; a one-field schema never does. */
   readonly focus: number
+  /**
+   * Keys the field could not take, counted. A count and not a flag: the renderer
+   * restarts the acknowledgement by flipping two class names on its parity, and
+   * a boolean already `true` cannot say "again". A full field used to swallow the
+   * key in silence — on `95 − 19` the cap is two, so 9 · 7 · 6 left "97" with
+   * nothing to say the 6 had gone.
+   */
+  readonly rebuffed: number
 }
 
 export type EntryKey =
@@ -69,7 +77,11 @@ export type KeyCap =
 export interface EntryModel {
   readonly schemaKind: AnswerSchemaKind
   init(schema: AnswerSchema): EntryState
-  /** Pure. Rejecting a key returns the same state, so the caller needs no guard. */
+  /**
+   * Pure. Rejecting a key returns the same state — so the caller needs no guard
+   * — *except* where the rejection is invisible on the face of the field, which
+   * bumps `rebuffed` so the surface can acknowledge it.
+   */
   press(state: EntryState, key: EntryKey): EntryState
   /** May this state be committed? An empty answer is not an answer. */
   complete(state: EntryState): boolean
@@ -106,7 +118,11 @@ export const integerEntry: EntryModel = {
     // bug. Failing loudly beats returning a state that renders as an empty,
     // uncommittable slate a child can only stare at.
     if (schema.kind !== "integer") throw new TypeError(`integerEntry: not an integer schema: ${schema.kind}`)
-    return { fields: [{ id: "value", text: "", maxLength: schema.digits + schema.decimalPlaces }], focus: 0 }
+    return {
+      fields: [{ id: "value", text: "", maxLength: schema.digits + schema.decimalPlaces }],
+      focus: 0,
+      rebuffed: 0,
+    }
   },
 
   press(state: EntryState, key: EntryKey): EntryState {
@@ -114,7 +130,11 @@ export const integerEntry: EntryModel = {
     if (field === undefined) return state
     switch (key.kind) {
       case "glyph": {
-        if (field.text.length >= field.maxLength) return state
+        // The one rejection a child can neither see nor infer: the field looks
+        // the same and holds a plausible number. So it returns a *different*
+        // state carrying the count the slate acknowledges it with. The others
+        // below are visible on their face and return the same state.
+        if (field.text.length >= field.maxLength) return { ...state, rebuffed: state.rebuffed + 1 }
         return replaceField(state, state.focus, field.text + key.glyph)
       }
       case "delete":

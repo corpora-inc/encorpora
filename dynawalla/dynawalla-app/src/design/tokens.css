@@ -93,6 +93,15 @@
   /* Glazed tile — cool ceramic, for calm affirmative surfaces. */
   --color-tile-400: #45a3a8;
   --color-tile-600: #1f7379;
+  /* …and the same glaze as a wash, thin enough to be a ground rather than a
+     fill. Two entries because a wash is a material: on parchment the dark tile
+     at 14% is a tint you can see, and on basalt it is nothing at all, so the
+     dark theme washes with the lighter glaze and a little more of it. Written
+     as alpha rather than `color-mix` because this bundle's floor is iOS 16.0
+     and `color-mix` lands in 16.2 — an unsupported declaration would drop the
+     recess silently on the oldest devices we ship to. */
+  --color-tile-600-wash: rgb(31 115 121 / 0.14);
+  --color-tile-400-wash: rgb(69 163 168 / 0.18);
 
   /* Copper and its oxide — the tone of a struck, incorrect mark. */
   --color-copper-500: #a85b33;
@@ -141,6 +150,13 @@
      Neither is ever the only carrier of meaning (CG-18). */
   --dw-seat: var(--color-tile-600);
   --dw-strike: var(--color-copper-500);
+
+  /* The seat colour as a ground: the recess a correct answer settles into.
+     A role of its own, because `ground-sunk` cannot do this job — under
+     `.dw-dark` it and `ground-deep` are both basalt-950, so a recess drawn
+     with it is invisible on exactly the surface the answer sits on. Same class
+     of bug as the subtraction bar that disappeared in dark. */
+  --dw-seat-ground: var(--color-tile-600-wash);
 
   /* Case and frame. */
   --dw-case: var(--color-walnut-600);
@@ -214,6 +230,7 @@
 
   --dw-seat: var(--color-tile-400);
   --dw-strike: var(--color-copper-700);
+  --dw-seat-ground: var(--color-tile-400-wash);
 
   --dw-case: var(--color-walnut-800);
 

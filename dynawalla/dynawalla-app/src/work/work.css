@@ -1,7 +1,7 @@
 /* ──────────────────────────────────────────────────────────────────────────
    The work surface.
 
-   Three things that cannot be expressed as utilities on an element, because
+   Four things that cannot be expressed as utilities on an element, because
    they are structural promises the loop makes and a test reads this file to
    check them:
 
@@ -11,7 +11,9 @@
      2. The verdict well is always in the layout. Feedback changes what is
         inside it and never whether it exists — a strike mark that pushes the
         keypad down is the "jolting reflow" the design rules forbid outright.
-     3. The present animation has a reduced-motion branch, not a degradation:
+     3. A correct answer is a visible event on the answer row itself, not a
+        decorative mark beside it.
+     4. The present animation has a reduced-motion branch, not a degradation:
         a different keyframe set with no `transform` in it at all.
 
    The CSP forbids inline style entirely (`style-src 'self'`), so anything
@@ -21,16 +23,79 @@
 @layer components {
   .dw-slate {
     /* One numeral column per digit the ladder can put on the slate, plus one
-       for the operator gutter. `work.test.ts` asserts this equals
+       for the operator gutter. `surface.test.ts` asserts this equals
        `SLATE_COLUMNS + 1` computed from the ladder — the two cannot drift. */
     --dw-slate-columns: 5;
-    min-width: calc(var(--dw-slate-columns) * 1ch);
+
+    /* `width`, not `min-width`. As a minimum it never bound: the operator row
+       sized the box past it on every card, so the slate measured 115.22 px on a
+       two-digit rung against 140.72 px on a four-digit one and the units column
+       moved 12.75 px between cards. The operator is out of the flow (see
+       `ProblemSlate`) so the bottom row cannot size the box either, and
+       `.numeral` is `tabular-nums`, so a digit is exactly one `ch`. */
+    width: calc(var(--dw-slate-columns) * 1ch);
   }
 
   /* One numeral line, reserved from the first frame. Feedback changes what is
-     in it, never whether it is there. */
+     in it, never whether it is there.
+
+     Derived from the tokens, not eyeballed. It was `2.75rem` = 44 px, while the
+     line it must hold is `--text-3xl` (38 px) at the slate's `leading-tight`
+     (1.25) = 47.5 px plus 4 px of padding = 51.5 px. So the well grew 7.5 px the
+     moment a correct answer was written into it and took the keypad down the
+     screen with it, on every wrong answer — the reflow promised against above.
+     `bench-loop.mjs` reported `maxKeypadShiftPx` 7.5 as soon as the driver
+     started answering some cards wrong; the all-correct driver never could,
+     because a seated verdict is an 8 px mark that fits. */
   .dw-verdict-well {
-    min-height: 2.75rem;
+    min-height: calc(var(--text-3xl) * 1.25 + 0.25rem);
+  }
+
+  /* A correct answer seats: the row drops into a recess and the rule under it
+     goes solid. Colour, background and an inset edge only — no size, margin or
+     border-width — so the event costs nothing in layout. It exists because the
+     seated state was an 8 px lozenge held 420 ms while the struck state stopped
+     the app, printed the answer and waited: `energy(SLIP) < energy(SEAT)` was
+     structurally inverted long before any reaction shipped. */
+  .dw-seated {
+    background-color: var(--dw-seat-ground);
+    box-shadow: inset 0 2px 0 -1px var(--dw-line-cut);
+    animation-name: dw-seat-settle;
+    animation-duration: var(--dw-motion-detent);
+    animation-timing-function: var(--dw-ease-detent);
+    animation-fill-mode: both;
+  }
+
+  @keyframes dw-seat-settle {
+    from {
+      background-color: transparent;
+    }
+    to {
+      background-color: var(--dw-seat-ground);
+    }
+  }
+
+  /* A key the field could not take: one beat of the rule going hard, then back.
+     Two names for one animation so consecutive rejections alternate and restart
+     it; `ProblemSlate` picks by parity. No travel and no layout, which is why
+     there is no reduced-motion branch — there is no motion to reduce. */
+  .dw-rebuff-a,
+  .dw-rebuff-b {
+    animation-name: dw-rebuff;
+    animation-duration: var(--dw-motion-detent);
+    animation-timing-function: var(--dw-ease-detent);
+  }
+
+  @keyframes dw-rebuff {
+    0% {
+      border-bottom-color: var(--dw-index);
+    }
+    40% {
+      border-bottom-color: var(--dw-line-strong);
+    }
+    100% {
+      border-bottom-color: var(--dw-index);
+    }
   }
 
   .dw-present {

@@ -191,6 +191,61 @@ test("a stopping point is never offered in the middle of a repair sequence", () 
   assert.equal(state.stopping, false, "a repair sequence was interrupted by a stopping point")
 })
 
+test("the way out is offered on cards done, not on cards done right", () => {
+  // Computed only on the seated branch, answering card 12 wrong pushed the offer
+  // to card 24 and a run of wrong answers suppressed it altogether: withheld
+  // from the child having the worst time, which is ADR-0009 inverted.
+  const deps = counting()
+  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  for (let i = 0; i < RUN_LENGTH - 1; i++) state = answerCorrectly(state, deps)
+
+  assert.ok(state.card.kind === "problem")
+  const wrong = commit(type(state, "1"))
+  assert.equal(wrong.answered, RUN_LENGTH)
+  assert.equal(wrong.feedback?.kind, "struck")
+  assert.equal(wrong.stopping, true, "a wrong answer at the run boundary withheld the offer")
+
+  // …and "Keep going" still leads into the retry the wrong answer earned.
+  const kept = advance(prepare(wrong, deps), deps)
+  assert.equal(kept.stopping, false)
+  assert.ok(kept.card.kind === "problem")
+  assert.equal(kept.card.role, "retry")
+})
+
+test("the same board is never served twice in one session", () => {
+  // The repair loop had no floor: the same bug brought the identical board back
+  // with `stopping` suppressed throughout, so the way out was withheld for as
+  // long as the child was stuck. ADAPTIVE_LEARNING sends repeated failure to
+  // Stage 3, which M2 has not built; Stage 1 is its stand-in.
+  const deps: SessionDeps = { generate: () => fiveThousandOne().exercise }
+  let state = startSession({ profileId: "p1", rung: LADDER.length - 1, rungCorrect: 0, seedCursor: 0 }, deps)
+
+  state = commit(type(state, "3203"))
+  assert.ok(state.feedback?.kind === "struck")
+  assert.equal(state.feedback.stage, "locate")
+
+  state = advance(prepare(state, deps), deps)
+  assert.equal(state.card.kind, "locate")
+  state = advance(state, deps)
+  assert.ok(state.card.kind === "problem")
+  assert.equal(state.card.role, "repair")
+
+  // The same bug on the repair item. The diagnosis is still made — progress
+  // still counts it — but the card that follows is a quiet Stage 1, not the
+  // board a third time.
+  state = commit(type(state, "3203"))
+  assert.ok(state.feedback?.kind === "struck")
+  assert.equal(state.feedback.stage, "verify")
+  assert.equal(
+    state.log.filter((entry) => entry.kind === "diagnosed").length,
+    2,
+    "the second diagnosis was dropped rather than routed",
+  )
+  state = advance(prepare(state, deps), deps)
+  assert.ok(state.card.kind === "problem")
+  assert.equal(state.card.role, "retry")
+})
+
 test("nothing lowers the ladder or the totals", () => {
   const deps = counting()
   let state = startSession({ profileId: "p1", rung: 4, rungCorrect: 2, seedCursor: 0 }, deps)

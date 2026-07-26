@@ -25,19 +25,24 @@
 //                    seated beside it, one retry a rung easier. No lecture.
 //   Stage 2 LOCATE   wrong, and the answer *equals* a known buggy procedure's
 //                    output, and this build can draw that procedure's
-//                    contradiction. The contrast pair, then one repair item at
-//                    the same rung — the follow-up that isolates the
+//                    contradiction, and this session has not already drawn it
+//                    for that misconception. The contrast pair, then one repair
+//                    item at the same rung — the follow-up that isolates the
 //                    misunderstanding rather than repeating the card.
-//   Stage 3          not built. Repeated failure routes to Stage 1 again in M2.
+//   Stage 3          not built. Repeated failure routes to Stage 1 again in M2,
+//                    and that is also the floor under the repair loop: the same
+//                    board is never served twice in one session, because a child
+//                    who did not read it the first time is not helped by a third.
 //
 // The contrast pair is served as the **very next card**, which is a distance of
 // one — well inside the three the exit criterion allows.
 //
 // Stage 2 is not reachable by a rule that merely *claims* LOCATE capability:
 // `judge.contrastFor` requires this bundle to have the representation, and
-// `countingBoard` returns `null` when the contradiction would not actually be
-// visible. Both fall back to Stage 1. A LOCATE card that shows no contradiction
-// is worse than a quiet strike mark.
+// `countingBoard` returns `null` for every shape whose two plates cannot be drawn
+// as one honest comparison. Both fall back to Stage 1. A LOCATE card that shows
+// no contradiction — or shows a second, invented one — is worse than a quiet
+// strike mark.
 
 import { columnOpFamily } from "./curriculum.ts"
 import type { AnswerValue, Exercise, MalRuleId, RepId } from "./curriculum.ts"
@@ -238,7 +243,7 @@ export function commit(state: SessionState): SessionState {
       correct: state.correct + 1,
       feedback: { kind: "seated" },
       plan: { kind: "none" },
-      stopping: stopOffered(answered, state.queued.length),
+      stopping: stopOffered(answered, state.queued.length > 0),
     }
   }
 
@@ -250,8 +255,21 @@ export function commit(state: SessionState): SessionState {
     log.push({ kind: "diagnosed", at: state.served, misconception: diagnosis.misconception })
   }
 
+  // The floor under the repair loop. The first cut served the identical board
+  // again on every repeat, with the stopping point suppressed throughout, so the
+  // way out was withheld from exactly the run that needed it. ADAPTIVE_LEARNING
+  // routes repeated failure to Stage 3 RECONSTRUCT, which M2 has not built; its
+  // stand-in is Stage 1. One contrast pair per misconception per session.
+  const alreadyExplained =
+    diagnosis !== null &&
+    state.log.some(
+      (entry) => entry.kind === "contrast" && entry.misconception === diagnosis.misconception,
+    )
+
   const board =
-    diagnosis !== null && diagnosis.contrast !== null ? countingBoard(exercise, value) : null
+    diagnosis !== null && diagnosis.contrast !== null && !alreadyExplained
+      ? countingBoard(exercise, value)
+      : null
 
   if (diagnosis !== null && diagnosis.contrast !== null && board !== null) {
     return {
@@ -266,7 +284,9 @@ export function commit(state: SessionState): SessionState {
         rung: state.card.rung,
       },
       log,
-      // A repair sequence is not a place to offer a stopping point.
+      // The one suppression: never between a diagnosis and the explanation it
+      // earned. The contrast pair is the next card; putting "Done" in front of
+      // it is the app abandoning its own answer.
       stopping: false,
     }
   }
@@ -277,12 +297,19 @@ export function commit(state: SessionState): SessionState {
     feedback: { kind: "struck", answer, stage: "verify" },
     plan: { kind: "retry", rung: easier(state.card.rung) },
     log,
-    stopping: false,
+    stopping: stopOffered(answered, state.queued.length > 0),
   }
 }
 
-function stopOffered(answered: number, queuedLength: number): boolean {
-  return answered > 0 && answered % RUN_LENGTH === 0 && queuedLength === 0
+/**
+ * Is a designed stopping point on offer? A function of cards **done**, not cards
+ * done right. Computed only on the seated branch, answering card 12 wrong pushed
+ * the offer to card 24 and a bad run suppressed it entirely — withheld from the
+ * child who most needs it, which inverts ADR-0009. `blocked` is the mid-sequence
+ * suppression: a follow-up in hand, or a contrast pair about to be served.
+ */
+function stopOffered(answered: number, blocked: boolean): boolean {
+  return answered > 0 && answered % RUN_LENGTH === 0 && !blocked
 }
 
 /**

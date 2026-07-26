@@ -21,7 +21,7 @@
 // app's half of that contract; it is the reason a curriculum PR cannot silently
 // promise a child a representation this bundle cannot draw.
 
-import { classify, familyById, malRuleById, REP_COUNTING_BOARD } from "./curriculum.ts"
+import { familyById, malRuleById, REP_COUNTING_BOARD } from "./curriculum.ts"
 import type { AnswerValue, Exercise, MalRuleId, RepId } from "./curriculum.ts"
 
 /** Contrast representations this bundle can actually draw. */
@@ -50,12 +50,17 @@ export function judge(exercise: Exercise, submitted: AnswerValue): Judgement {
   const verdict = family.check(exercise, submitted)
   if (verdict.correct) return { kind: "seated" }
 
-  // `check` already classifies, but only for its own family's rules and only
-  // when it is the one that generated the item. Re-classifying here would be a
-  // second implementation of the same decision; taking the verdict's answer is
-  // the single source of truth.
-  const misconception = verdict.misconception ?? classify(exercise, submitted)
-  if (misconception === undefined || misconception === null) return { kind: "struck", diagnosis: null }
+  // The family's verdict is the single source of diagnosis, and not a partial
+  // one: `check` calls the same global `classify` this module would, and
+  // `classify` already filters the registry to `exercise.family`. A second pass
+  // could find nothing. It used to run one anyway — `verdict.misconception ??
+  // classify(…)` — re-executing every mal-rule's full column procedure on the
+  // unexplained-wrong branch to reach the same `undefined`.
+  //
+  // The contract: a family that wants its wrong answers diagnosed classifies
+  // them in `check`. `diagnosis.test.ts` asserts the one this build serves does.
+  const misconception = verdict.misconception
+  if (misconception === undefined) return { kind: "struck", diagnosis: null }
 
   return { kind: "struck", diagnosis: { misconception, contrast: contrastFor(misconception) } }
 }

@@ -20,6 +20,34 @@ test("digits accumulate and the field is capped at the schema's width", () => {
   assert.equal(fieldText(typed("22035")), "2203", "a fifth digit is dropped, not wrapped")
 })
 
+test("a key the field cannot take is counted, so the surface can say so", () => {
+  // The one rejection a child can neither see nor infer. On `95 − 19` the cap is
+  // two, so 9 · 7 · 6 left "97" and the 6 vanished in silence. Transient status
+  // text is forbidden, so the count drives a colour tick on the answer rule — a
+  // count, not a flag, because a flag already `true` cannot say "again".
+  const twoDigits: AnswerSchema = { kind: "integer", digits: 2, decimalPlaces: 0 }
+  const press = (state: ReturnType<typeof integerEntry.init>, ch: string) =>
+    integerEntry.press(state, { kind: "glyph", glyph: glyphFromKey(ch)! })
+
+  let state = integerEntry.init(twoDigits)
+  assert.equal(state.rebuffed, 0)
+  state = press(press(state, "9"), "7")
+  assert.equal(fieldText(state), "97")
+  assert.equal(state.rebuffed, 0, "nothing was refused yet")
+
+  const full = state
+  state = press(state, "6")
+  assert.equal(fieldText(state), "97", "the digit is still dropped, not wrapped")
+  assert.notEqual(state, full, "the refusal returned the identical state and the slate cannot see it")
+  assert.equal(state.rebuffed, 1)
+  assert.equal(press(state, "5").rebuffed, 2, "consecutive refusals are distinguishable")
+
+  // Refusals that *are* visible on the face of the field stay silent.
+  const empty = integerEntry.init(twoDigits)
+  assert.equal(integerEntry.press(empty, { kind: "delete" }), empty)
+  assert.equal(integerEntry.press(empty, { kind: "clear" }), empty)
+})
+
 test("the field width is the schema's, never the answer's", () => {
   // Sizing the field to the answer would tell a child how many digits it has.
   // `answerDigitCapacity` is `digits` for subtraction regardless of whether this

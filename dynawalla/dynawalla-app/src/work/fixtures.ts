@@ -21,8 +21,21 @@ import { rungAt, LADDER } from "./ladder.ts"
 /** The across-zero rung: `dw.add.regroup.subtract-across-zero` level 2. */
 export const ACROSS_ZERO_RUNG = LADDER.length - 1
 
-/** Known-good at `familyRev` 1. Re-derived automatically if it stops matching. */
+/**
+ * `903 − 778`, on `subtract-multidigit` level 2.
+ *
+ * The second fixture, and it is here for a reason `5001 − 2798` cannot serve.
+ * On `5001` the borrowed thousand lands in a place the minuend already has, so
+ * comparing digits and comparing quantities agree. On `903` it does not: the
+ * child's check `225 + 778 = 1003` carries into a place `903` has no digit for,
+ * and the two models disagree. Every test in this slice used the agreeing shape,
+ * which is exactly why the disagreeing one went unnoticed.
+ */
+export const CARRY_SURPLUS_RUNG = 2
+
+/** Known-good at `familyRev` 1. Re-derived automatically if they stop matching. */
 export const CACHED_SEED = 159579
+export const CACHED_SEED_903 = 5656
 
 const SEARCH_LIMIT = 400_000
 
@@ -33,41 +46,54 @@ export function operand(exercise: Exercise, slot: string): bigint | null {
   return exact.toScaled(value.value, value.decimalPlaces)
 }
 
-function isFiveThousandOne(exercise: Exercise): boolean {
-  return operand(exercise, SLOT_TOP) === 5001n && operand(exercise, SLOT_BOTTOM) === 2798n
+export interface Fixture {
+  readonly seed: number
+  readonly exercise: Exercise
 }
 
-export function generateAt(seed: number): Exercise {
-  const rung = rungAt(ACROSS_ZERO_RUNG)
+export function generateAtRung(rung: number, seed: number): Exercise {
+  const at = rungAt(rung)
   return columnOpFamily.generate({
-    skillId: rung.skillId,
-    level: rung.level,
+    skillId: at.skillId,
+    level: at.level,
     seed,
-    params: rung.params,
+    params: at.params,
     forms: [FORM_FREE_ENTRY],
   })
 }
 
-let cache: { seed: number; exercise: Exercise } | null = null
+export function generateAt(seed: number): Exercise {
+  return generateAtRung(ACROSS_ZERO_RUNG, seed)
+}
 
-/** The real `5001 − 2798` item, and the seed that produces it. */
-export function fiveThousandOne(): { seed: number; exercise: Exercise } {
-  if (cache !== null) return cache
-  const cached = generateAt(CACHED_SEED)
-  if (isFiveThousandOne(cached)) {
-    cache = { seed: CACHED_SEED, exercise: cached }
-    return cache
-  }
+function find(rung: number, top: bigint, bottom: bigint, cachedSeed: number): Fixture {
+  const matches = (exercise: Exercise): boolean =>
+    operand(exercise, SLOT_TOP) === top && operand(exercise, SLOT_BOTTOM) === bottom
+
+  const cached = generateAtRung(rung, cachedSeed)
+  if (matches(cached)) return { seed: cachedSeed, exercise: cached }
   for (let seed = 0; seed < SEARCH_LIMIT; seed++) {
-    const exercise = generateAt(seed)
-    if (isFiveThousandOne(exercise)) {
-      cache = { seed, exercise }
-      return cache
-    }
+    const exercise = generateAtRung(rung, seed)
+    if (matches(exercise)) return { seed, exercise }
   }
   throw new Error(
-    `no seed under ${String(SEARCH_LIMIT)} produces 5001 − 2798 on rung ${String(ACROSS_ZERO_RUNG)}`,
+    `no seed under ${String(SEARCH_LIMIT)} produces ${top.toString()} − ${bottom.toString()} on rung ${String(rung)}`,
   )
+}
+
+let cache: Fixture | null = null
+let cache903: Fixture | null = null
+
+/** The real `5001 − 2798` item, and the seed that produces it. */
+export function fiveThousandOne(): Fixture {
+  cache ??= find(ACROSS_ZERO_RUNG, 5001n, 2798n, CACHED_SEED)
+  return cache
+}
+
+/** The real `903 − 778` item — the shape where digits and quantities disagree. */
+export function nineHundredThree(): Fixture {
+  cache903 ??= find(CARRY_SURPLUS_RUNG, 903n, 778n, CACHED_SEED_903)
+  return cache903
 }
 
 /** An exact integer answer value. */
