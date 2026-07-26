@@ -10,6 +10,12 @@ pre-fix script violated it and still reported green:
   * severity matching is alias-aware, and an unreadable severity blocks
   * a bad SHA / git failure is an error, never a silent substitution
 
+The confirmation-pass tests below guard the same property from the other side:
+the second pass is the only thing in this gate that makes a blocking finding
+stop blocking, so every way it can go wrong — an API error, an unreadable
+verdict, a file it cannot read — must still block, and a clearance must stay
+visible rather than deleting the finding.
+
 Run: python -m pytest .github/scripts -q
 """
 
@@ -574,12 +580,21 @@ def repo(tmp_path, monkeypatch):
     git("config", "user.email", "t@example.com")
     git("config", "user.name", "t")
     (tmp_path / "base.txt").write_text("base\n")
+    # A file that PREDATES the branch, so its diff hunk shows only a few lines
+    # while the whole file holds much more. SENTINEL sits far from the edited
+    # line, which makes it a witness for "the confirmation pass read the file,
+    # not the chunk" — a diff can never contain it.
+    lines = [f"line {i}\n" for i in range(1, 61)]
+    lines[4] = "SENTINEL_ONLY_IN_THE_WHOLE_FILE\n"
+    (tmp_path / "context.txt").write_text("".join(lines))
     git("add", "-A")
     git("commit", "-qm", "base")
     root = rev("HEAD")
 
     git("checkout", "-q", "-b", "feature")
     (tmp_path / "feature.txt").write_text("feature change\n")
+    lines[54] = "line 55 edited on the feature branch\n"
+    (tmp_path / "context.txt").write_text("".join(lines))
     # Two more files, each comfortably over MIN_CHUNK_CHARS/2, so the branch
     # diff spans several chunks at the minimum budget — that is the only way to
     # exercise the multi-chunk exit paths.
@@ -675,7 +690,7 @@ def gate(repo, monkeypatch, tmp_path):
 
     def install(reply):
         """`reply` is a str, an Exception to raise, or a callable(user)->str."""
-        def fake(provider, key, model, system, user):
+        def fake(provider, key, model, system, user, schema=None):
             value = reply(user) if callable(reply) else reply
             if isinstance(value, Exception):
                 raise value
@@ -684,6 +699,38 @@ def gate(repo, monkeypatch, tmp_path):
         monkeypatch.setattr(ar, "call_model", fake)
 
     return install
+
+
+def _confirming(review_reply, verdict, reason="because"):
+    """Reply router: `review_reply` for lens calls, `verdict` for confirmations.
+
+    `verdict` is True/False for a clean verdict, an Exception to raise, or a
+    raw string to return unparsed.
+    """
+    def reply(user):
+        if ar.CONFIRM_MARKER not in user:
+            return review_reply
+        if isinstance(verdict, (Exception, str)):
+            return verdict
+        return json.dumps({"confirmed": verdict, "reason": reason})
+
+    return reply
+
+
+def _high(file="context.txt", severity="high", title="t"):
+    return json.dumps(
+        {
+            "findings": [
+                {
+                    "severity": severity,
+                    "file": file,
+                    "line": "55",
+                    "title": title,
+                    "detail": "d",
+                }
+            ]
+        }
+    )
 
 
 def test_clean_diff_passes(gate):
@@ -808,3 +855,391 @@ def test_audit_line_names_the_range_and_covers_the_diff(gate, capsys):
     out = capsys.readouterr().out
     assert "merge base" in out
     assert "100% of that diff" in out
+
+
+# ------------------------------------------------------- lens calibration
+#
+# The gate's first real block was mechanically correct and over-graded: a
+# dev-server-only Vite `server.fs.allow` widening on a PUBLIC repo, called
+# HIGH. Two causes, asserted here so neither can be quietly reverted — the
+# security lens had no threat model, and "severity" was never defined.
+
+
+def test_security_lens_carries_a_threat_model():
+    """One sentence of "find injection, SSRF, missing authz" with no system
+    description grades against a generic multi-tenant web service, because
+    that is what those words describe. The lens has to know what ships."""
+    lens = ar.LENSES["security"].lower()
+    assert "public" in lens and "open source" in lens
+    assert "tauri" in lens and "static" in lens
+    assert "authorization" in lens  # no server-side authz layer to bypass
+    assert "multi-tenant" in lens
+    assert "never ship" in lens  # dev server / tests / CI
+    assert "server.*" in ar.LENSES["security"]
+
+
+def test_security_lens_is_not_shorter_than_the_correctness_calibration():
+    """The asymmetry WAS the bug: three paragraphs of "do NOT report" guidance
+    on correctness, one sentence on security."""
+    assert len(ar.LENSES["security"]) > len(ar.LENSES["correctness"])
+
+
+def test_severity_ladder_defines_every_level():
+    ladder = ar.SEVERITY_LADDER
+    for level in ("HIGH", "MEDIUM", "LOW"):
+        assert f"* {level} —" in ladder, level
+
+
+def test_severity_ladder_grades_impact_not_confidence():
+    """The old guidance ("reserve it for real, confident defects") calibrated
+    CONFIDENCE. A reviewer certain about a harmless fact reads that as licence
+    to block — which is precisely what happened."""
+    ladder = ar.SEVERITY_LADDER
+    assert "IMPACT and REACHABILITY" in ladder
+    assert "how confident you are" in ladder
+    assert "confident defects" not in ar.SCHEMA_HINT
+
+
+def test_severity_ladder_carries_both_worked_examples():
+    """Same reachability, different grade — that contrast is the whole lesson,
+    and an abstract definition does not teach it."""
+    ladder = ar.SEVERITY_LADDER
+    assert ".jks" in ladder and "KEYSTORE" in ladder  # the real TRUE high
+    assert "server.fs.allow" in ladder  # the real over-grade, called LOW
+    assert "TRUE HIGH" in ladder and "NOT HIGH" in ladder
+
+
+def test_reviewers_are_told_high_needs_a_reachable_actor():
+    ladder = ar.SEVERITY_LADDER.lower()
+    assert "not the developer at their own machine" in ladder
+    assert "name a specific actor and a specific consequence" in ladder
+
+
+def test_the_ladder_reaches_every_lens(gate, monkeypatch):
+    """A ladder only the security lens sees would leave correctness and
+    pack-compat grading on the old confidence rule."""
+    seen = []
+    gate(lambda user: seen.append(user) or '{"findings": []}')
+    assert ar.main() == 0
+    lenses = {name for name in ar.LENSES}
+    assert len(seen) >= len(lenses)
+    assert all(ar.SEVERITY_LADDER in u for u in seen)
+
+
+# ------------------------------------------------------------ model allow-list
+
+
+def test_default_models_are_in_the_allow_list():
+    for provider, default in ar.DEFAULT_MODEL.items():
+        assert default in ar.ALLOWED_MODELS[provider], provider
+
+
+def test_model_override_outside_the_allow_list_is_an_error(monkeypatch):
+    """ADVERSARIAL_MODEL was a repo variable that could silently downgrade all
+    three lenses forever, with no PR and no audit trail."""
+    monkeypatch.setenv("ADVERSARIAL_MODEL", "gpt-3.5-turbo")
+    with pytest.raises(ar.ReviewError):
+        ar.resolve_model("openai")
+
+
+def test_model_override_outside_the_allow_list_blocks_at_the_exit_code(
+    gate, monkeypatch
+):
+    gate('{"findings": []}')
+    monkeypatch.setenv("ADVERSARIAL_MODEL", "something-cheap")
+    assert ar.main() == 1
+
+
+def test_an_unrecognized_model_is_not_silently_replaced_by_the_default(monkeypatch):
+    """Falling back to the default would make a downgraded ADVERSARIAL_MODEL
+    indistinguishable from an unset one in the logs."""
+    monkeypatch.setenv("ADVERSARIAL_MODEL", "claude-tiny")
+    with pytest.raises(ar.ReviewError) as e:
+        ar.resolve_model("anthropic")
+    assert "allow-list" in str(e.value)
+
+
+def test_allowed_override_is_used(monkeypatch):
+    monkeypatch.setenv("ADVERSARIAL_MODEL", "claude-opus-4-8")
+    assert ar.resolve_model("anthropic") == "claude-opus-4-8"
+
+
+def test_unset_or_blank_override_uses_the_default(monkeypatch):
+    monkeypatch.delenv("ADVERSARIAL_MODEL", raising=False)
+    assert ar.resolve_model("anthropic") == ar.DEFAULT_MODEL["anthropic"]
+    monkeypatch.setenv("ADVERSARIAL_MODEL", "   ")
+    assert ar.resolve_model("anthropic") == ar.DEFAULT_MODEL["anthropic"]
+
+
+# --------------------------------------------------------- confirmation pass
+
+
+def test_parse_confirmation_reads_a_verdict():
+    assert ar.parse_confirmation('{"confirmed": true, "reason": "r"}') == (True, "r")
+    assert ar.parse_confirmation('{"confirmed": false, "reason": "r"}') == (False, "r")
+    assert ar.parse_confirmation('prose {"confirmed": false, "reason": "r"} tail') == (
+        False,
+        "r",
+    )
+
+
+@pytest.mark.parametrize(
+    "reply",
+    [
+        "",
+        "   ",
+        "I think it is fine.",
+        '{"ok": true}',
+        '{"confirmed": "false"}',  # string, not bool
+        '{"confirmed": 0}',  # falsy int, not bool
+        '{"confirmed": null}',
+        '{"confirmed": fal',  # truncated
+    ],
+)
+def test_unreadable_verdicts_are_none(reply):
+    """None must never read as "cleared" — the caller turns it into a blocking
+    confirmation error. A string "false" clearing a real HIGH is the exact
+    fail-open this guards."""
+    assert ar.parse_confirmation(reply) is None
+
+
+def _count_confirmations(gate, review_reply, verdict):
+    """Drive main() and return (exit_code, number of confirmation calls made).
+
+    The call count is what keeps the fail-closed tests below honest: "blocked"
+    is also what a gate with no confirmation pass at all returns, so asserting
+    only the exit code would pass for the wrong reason.
+    """
+    inner = _confirming(review_reply, verdict)
+    calls = {"n": 0}
+
+    def reply(user):
+        if ar.CONFIRM_MARKER in user:
+            calls["n"] += 1
+        return inner(user)
+
+    gate(reply)
+    return ar.main(), calls["n"]
+
+
+def test_confirmed_high_blocks(gate):
+    # One confirmation per reporting lens: all three report the same finding.
+    code, confirmations = _count_confirmations(gate, _high(), True)
+    assert (code, confirmations) == (1, len(ar.LENSES))
+
+
+def test_unconfirmed_high_does_not_block(gate):
+    """The whole point: a HIGH the second pass rejects stops wedging the queue."""
+    gate(_confirming(_high(), False))
+    assert ar.main() == 0
+
+
+def test_unconfirmed_high_is_still_reported(gate, monkeypatch):
+    """Cleared is not deleted. If the second pass could make findings vanish
+    silently, it would be a place for real defects to disappear."""
+    posted = []
+    monkeypatch.setattr(ar, "post_sticky_comment", posted.append)
+    gate(_confirming(_high(title="dev server serves the keystore"), False, "dev only"))
+    assert ar.main() == 0
+    assert "dev server serves the keystore" in posted[0]
+    assert "cleared" in posted[0].lower()
+    assert "dev only" in posted[0]
+
+
+def test_cleared_finding_is_logged_as_a_warning(gate, capsys):
+    gate(_confirming(_high(), False))
+    assert ar.main() == 0
+    assert "cleared" in capsys.readouterr().out
+
+
+def test_confirmation_error_blocks(gate):
+    """FAIL CLOSED. If an API error could delete a blocking finding, a flaky
+    provider becomes a way to merge anything. The call-count assertion proves
+    the confirmation actually ran and errored, rather than never happening."""
+    code, confirmations = _count_confirmations(gate, _high(), RuntimeError("HTTP 500"))
+    assert (code, confirmations) == (1, len(ar.LENSES))
+
+
+def test_confirmation_unparseable_reply_blocks(gate):
+    code, confirmations = _count_confirmations(gate, _high(), "looks fine to me")
+    assert (code, confirmations) == (1, len(ar.LENSES))
+
+
+def test_confirmation_reads_the_whole_file_not_the_diff_chunk(gate):
+    """The measured failure mode was ONE context-poor call. Confirming against
+    the same chunk that produced the finding would be ceremonial."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return _high()
+        return '{"confirmed": false, "reason": "r"}'
+
+    gate(reply)
+    assert ar.main() == 0
+    # One confirmation per reporting lens — they are distinct findings.
+    confirms = [p for p in prompts if ar.CONFIRM_MARKER in p]
+    assert len(confirms) == len(ar.LENSES)
+    # Present in the file at head, and impossible for any diff hunk to contain.
+    assert all("SENTINEL_ONLY_IN_THE_WHOLE_FILE" in p for p in confirms)
+    reviews = [p for p in prompts if ar.CONFIRM_MARKER not in p]
+    assert not any("SENTINEL_ONLY_IN_THE_WHOLE_FILE" in p for p in reviews)
+
+
+def test_a_high_on_an_unreadable_file_blocks_without_a_second_pass(gate):
+    """No full-file context means no confirmation, and no confirmation means
+    the finding stands."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        return _high(file="does/not/exist.ts")
+
+    gate(reply)
+    assert ar.main() == 1
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+
+
+def test_unreadable_severity_blocks_without_a_second_pass(gate):
+    """An omitted severity is unreadable INPUT, not a graded judgment — there
+    is nothing for the second pass to re-check, and it must not be a way in."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER in user:
+            return '{"confirmed": false, "reason": "r"}'
+        return '{"findings": [{"file": "context.txt", "title": "t", "detail": "d"}]}'
+
+    gate(reply)
+    assert ar.main() == 1
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+
+
+@pytest.mark.parametrize("severity", ["medium", "low", "spicy"])
+def test_non_blocking_findings_are_never_confirmed(gate, severity):
+    """Cost guard: the second pass runs on HIGH only, so a clean or merely
+    noisy diff pays nothing for it."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        return _high(severity=severity)
+
+    gate(reply)
+    assert ar.main() == 0
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+
+
+def test_clean_diff_makes_no_confirmation_calls(gate):
+    prompts = []
+    gate(lambda user: prompts.append(user) or '{"findings": []}')
+    assert ar.main() == 0
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+
+
+def test_confirmation_prompt_carries_the_ladder_and_the_finding(gate):
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return _high(title="unique-title-here")
+        return '{"confirmed": true, "reason": "r"}'
+
+    gate(reply)
+    assert ar.main() == 1
+    confirm = next(p for p in prompts if ar.CONFIRM_MARKER in p)
+    assert ar.SEVERITY_LADDER in confirm
+    assert "unique-title-here" in confirm
+    assert "context.txt:55" in confirm
+
+
+def test_is_blocking_defaults_every_unknown_state_to_blocking():
+    """Written as "not cleared" rather than "confirmed" on purpose: a
+    confirmation state someone adds later must block, not slip through."""
+    high = {"severity": "high"}
+    assert ar.is_blocking(dict(high)) is True  # no confirmation recorded at all
+    for state in (ar.CONFIRM_UPHELD, ar.CONFIRM_ERROR, ar.CONFIRM_SKIPPED, "novel"):
+        assert ar.is_blocking({**high, "confirmation": state}) is True, state
+    assert ar.is_blocking({**high, "confirmation": ar.CONFIRM_CLEARED}) is False
+    assert ar.is_blocking({"severity": "low", "confirmation": ar.CONFIRM_UPHELD}) is False
+
+
+def test_confirmation_is_bounded(gate):
+    """A run cannot spend unbounded calls, and the overflow stays blocking."""
+    many = json.dumps(
+        {
+            "findings": [
+                {
+                    "severity": "high",
+                    "file": "context.txt",
+                    "line": str(i),
+                    "title": f"t{i}",
+                    "detail": "d",
+                }
+                for i in range(ar.MAX_CONFIRMATIONS + 15)
+            ]
+        }
+    )
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return many
+        return '{"confirmed": false, "reason": "r"}'
+
+    gate(reply)
+    assert ar.main() == 1  # the overflow was never cleared
+    assert sum(ar.CONFIRM_MARKER in p for p in prompts) == ar.MAX_CONFIRMATIONS
+
+
+def test_file_at_resolves_a_diff_prefixed_path(repo):
+    assert "SENTINEL" in ar.file_at(repo["head"], "context.txt")
+    assert "SENTINEL" in ar.file_at(repo["head"], "b/context.txt")
+    assert "SENTINEL" in ar.file_at(repo["head"], "./context.txt")
+
+
+@pytest.mark.parametrize("path", ["", "   ", "?", "<unknown>", "no/such/file.ts", None])
+def test_file_at_returns_none_rather_than_guessing(repo, path):
+    assert ar.file_at(repo["head"], path) is None
+
+
+def test_oversized_file_is_not_confirmed_against_a_truncated_view(gate, monkeypatch):
+    """Truncation is what the first pass already suffered from. "Confirmed
+    against half a file" is a worse answer than "not checked"."""
+    monkeypatch.setattr(ar, "CONFIRM_MAX_FILE_CHARS", 10)
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return _high()
+        return '{"confirmed": false, "reason": "r"}'
+
+    gate(reply)
+    assert ar.main() == 1
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+
+
+# -------------------------------------------------------------- no waivers
+
+
+def test_there_is_no_waiver_mechanism():
+    """DELIBERATE, and asserted so nobody adds one later: agents author both
+    the diff and the PR body here, so a waiver is the reviewed party silencing
+    the reviewer."""
+    src = Path(ar.__file__).read_text()
+    assert "no waiver" in src.lower()  # the decision is recorded in the script
+    for escape_hatch in (
+        "PR_BODY",
+        "pull_request.body",
+        "skip-adversarial",
+        "adversarial-skip",
+        "ALLOW_HIGH",
+        "OVERRIDE",
+        "noqa: adversarial",
+    ):
+        assert escape_hatch not in src, escape_hatch
