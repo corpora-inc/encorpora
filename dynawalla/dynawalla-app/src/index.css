@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./design/tokens.css";
+@import "./work/work.css";
 
 /* The theme class the shell toggles on <html>. `:where()` keeps specificity at
    zero so a dark utility never outranks a more specific rule by accident. */

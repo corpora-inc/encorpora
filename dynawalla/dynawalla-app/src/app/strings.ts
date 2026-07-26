@@ -26,4 +26,25 @@ export const strings = {
     light: "Light",
     dark: "Dark",
   },
+
+  // The practice loop. Seven strings, and each one is either an action the child
+  // has to take or a label a screen reader has to read. There is no status copy,
+  // no encouragement and no narration of what the app is doing: a right answer
+  // is shown by the answer seating, a wrong one by the correct answer appearing
+  // beneath it, and neither needs a sentence. `done` and `keepGoing` are the
+  // equal-weight pair at a designed stopping point (P-10) — same plate, same
+  // size, no emphasis between them.
+  practice: {
+    /** The commit action. Explicit: an answer is never submitted by a keystroke count. */
+    check: "Check",
+    next: "Next",
+    done: "Done",
+    keepGoing: "Keep going",
+    /** Screen-reader label for the answer line. */
+    answer: "Answer",
+    /** Screen-reader label for the delete key. */
+    delete: "Delete",
+    /** The one line on the contrast card. It says what the two boards are doing. */
+    rebuild: "Put it back together.",
+  },
 } as const

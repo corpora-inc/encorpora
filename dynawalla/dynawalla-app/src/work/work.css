@@ -1,0 +1,70 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   The work surface.
+
+   Three things that cannot be expressed as utilities on an element, because
+   they are structural promises the loop makes and a test reads this file to
+   check them:
+
+     1. The slate reserves a fixed run of numeral columns. A two-digit problem
+        and a four-digit one occupy the same box, so nothing reflows between
+        cards (`Q-01`).
+     2. The verdict well is always in the layout. Feedback changes what is
+        inside it and never whether it exists — a strike mark that pushes the
+        keypad down is the "jolting reflow" the design rules forbid outright.
+     3. The present animation has a reduced-motion branch, not a degradation:
+        a different keyframe set with no `transform` in it at all.
+
+   The CSP forbids inline style entirely (`style-src 'self'`), so anything
+   dynamic is a class here, never a `style` prop.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@layer components {
+  .dw-slate {
+    /* One numeral column per digit the ladder can put on the slate, plus one
+       for the operator gutter. `work.test.ts` asserts this equals
+       `SLATE_COLUMNS + 1` computed from the ladder — the two cannot drift. */
+    --dw-slate-columns: 5;
+    min-width: calc(var(--dw-slate-columns) * 1ch);
+  }
+
+  /* One numeral line, reserved from the first frame. Feedback changes what is
+     in it, never whether it is there. */
+  .dw-verdict-well {
+    min-height: 2.75rem;
+  }
+
+  .dw-present {
+    animation-name: dw-seat-in;
+    animation-duration: var(--dw-motion-detent);
+    animation-timing-function: var(--dw-ease-detent);
+    animation-fill-mode: both;
+  }
+
+  @keyframes dw-seat-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* The branch. Zero travel, no particles — the keyframes contain opacity and
+     nothing else, so there is no transform left to shorten. */
+  @media (prefers-reduced-motion: reduce) {
+    .dw-present {
+      animation-name: dw-seat-in-still;
+    }
+  }
+
+  @keyframes dw-seat-in-still {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
