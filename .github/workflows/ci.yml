@@ -30,6 +30,7 @@ jobs:
       # dynawalla_*, native and shared_ts are declared ahead of the jobs that
       # will consume them. Nothing reads them yet, so they cannot affect any
       # gate; declaring them here keeps the follow-up PR a one-line `if:`.
+      dynawalla_android_gen: ${{ steps.filter.outputs.dynawalla_android_gen }}
       dynawalla_app: ${{ steps.filter.outputs.dynawalla_app }}
       dynawalla_curriculum: ${{ steps.filter.outputs.dynawalla_curriculum }}
       dynawalla_engine: ${{ steps.filter.outputs.dynawalla_engine }}
@@ -99,6 +100,14 @@ jobs:
           # so the jobs that follow are a one-line addition instead of a
           # re-plumbing of this step.
           set_output dynawalla_app '^(dynawalla/dynawalla-app/|\.github/workflows/ci\.yml$)'
+          # The committed slice of gen/android and the recorded template it was
+          # curated from. `tauri android init` never overwrites an existing
+          # file, which is what makes the allowlist survive a CI re-init — and
+          # is also why a @tauri-apps/cli bump that adds a required manifest
+          # entry would be dropped SILENTLY, at runtime, with nothing in CI
+          # compiling Android for either app. So: any move of the CLI pin, of
+          # the tracked files, or of the baseline re-runs the drift job.
+          set_output dynawalla_android_gen '^(dynawalla/dynawalla-app/(package(-lock)?\.json$|android-template-baseline/|src-tauri/gen/android/)|\.github/workflows/ci\.yml$)'
           set_output dynawalla_curriculum '^(dynawalla/curriculum/|\.github/workflows/ci\.yml$)'
           set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
           # Cross-product areas. Deliberately no `ci.yml` self-trigger: these
@@ -324,6 +333,104 @@ jobs:
         working-directory: dynawalla/dynawalla-app
         run: npm run build
 
+  # Drift gate for the committed slice of `src-tauri/gen/android`.
+  #
+  # Three generated files are tracked (Tauri gives Android no
+  # `bundle.android.template` hook, so a build decision has nowhere else to
+  # live), and `tauri android init` does NOT overwrite an existing file. That
+  # is exactly what makes the allowlist survive a CI re-init — and exactly why
+  # a `@tauri-apps/cli` bump that adds a required manifest entry or a required
+  # Gradle block would be dropped SILENTLY and only surface at runtime on a
+  # device. Nothing else in this workflow compiles Android for either app.
+  #
+  # So: regenerate the template into a scratch tree with no committed files
+  # present, and diff it against the baseline recorded at the CLI version the
+  # tracked files were curated from. The job is deliberately cheap — see the
+  # NDK note in the regenerate step; local wall clock for `tauri android init`
+  # this way is ~1.5 s.
+  dynawalla-android-gen:
+    name: dynawalla · gen/android template drift
+    needs: changes
+    if: needs.changes.outputs.dynawalla_android_gen == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/dynawalla-app/package-lock.json
+      - name: Install
+        working-directory: dynawalla/dynawalla-app
+        run: npm ci
+      - name: Regenerate the Android project from the Tauri template
+        working-directory: dynawalla/dynawalla-app
+        run: |
+          set -euo pipefail
+          # `tauri android init` refuses to run without an SDK root and an NDK,
+          # but for `init` it only READS the NDK's source.properties to learn a
+          # version string — it compiles nothing. Verified locally: a directory
+          # containing source.properties alone is accepted, and the three files
+          # it generates are byte-identical to those produced against the real
+          # NDK 28.2.13676358. That keeps this gate at a few seconds and off
+          # the 700 MB sdkmanager download. If a future CLI genuinely needs a
+          # real NDK it will fail loudly here, which is the correct outcome.
+          export ANDROID_HOME="$RUNNER_TEMP/android-sdk"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
+          export NDK_HOME="$RUNNER_TEMP/android-ndk"
+          mkdir -p "$ANDROID_HOME/platforms" "$NDK_HOME"
+          printf 'Pkg.Desc = Android NDK\nPkg.Revision = 28.2.13676358\n' \
+            > "$NDK_HOME/source.properties"
+          rm -rf src-tauri/gen/android
+          npx tauri android init --ci
+      - name: Diff the template against the recorded baseline
+        working-directory: dynawalla/dynawalla-app
+        run: |
+          set -euo pipefail
+          BASE=android-template-baseline
+          GEN=src-tauri/gen/android/app
+
+          RECORDED=$(cat "$BASE/tauri-cli-version.txt")
+          ACTUAL=$(node -p "require('@tauri-apps/cli/package.json').version")
+          echo "@tauri-apps/cli recorded=$RECORDED installed=$ACTUAL"
+
+          drift=0
+          check() {
+            if diff -u "$BASE/$1" "$GEN/$2"; then
+              echo "  $1: unchanged"
+            else
+              echo "::error::the Tauri Android template moved for $1"
+              drift=1
+            fi
+          }
+          check build.gradle.kts build.gradle.kts
+          check AndroidManifest.xml src/main/AndroidManifest.xml
+          check MainActivity.kt src/main/java/inc/corpora/dynawalla/MainActivity.kt
+
+          if [ "$drift" -ne 0 ]; then
+            {
+              echo "The generated Android project no longer matches"
+              echo "$BASE, which was recorded at @tauri-apps/cli $RECORDED"
+              echo "(installed here: $ACTUAL)."
+              echo
+              echo "This is NOT automatically a bug — it is the one moment the"
+              echo "silently-stale committed files can be caught. Re-curate:"
+              echo "  1. read the diff above; decide what the new template adds"
+              echo "  2. fold the additions into the tracked files under"
+              echo "     dynawalla/dynawalla-app/src-tauri/gen/android/"
+              echo "  3. copy the newly generated files over $BASE/"
+              echo "  4. write the new CLI version into $BASE/tauri-cli-version.txt"
+            } >&2
+            exit 1
+          fi
+          [ "$RECORDED" = "$ACTUAL" ] || {
+            echo "::error::@tauri-apps/cli moved $RECORDED -> $ACTUAL but the template did not."
+            echo "Re-record it: printf '%s\\n' \"$ACTUAL\" > $BASE/tauri-cli-version.txt" >&2
+            exit 1
+          }
+          echo "gen/android is in sync with the @tauri-apps/cli $ACTUAL template."
+
   lambda:
     name: lambda · tests
     needs: changes
@@ -482,6 +589,7 @@ jobs:
         corpan-app,
         dja,
         dynawalla-app,
+        dynawalla-android-gen,
         lambda,
         web-io,
         changed-packs,

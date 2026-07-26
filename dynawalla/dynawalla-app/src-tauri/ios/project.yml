@@ -1,0 +1,134 @@
+# XcodeGen spec for the iOS app, wired in by `bundle.iOS.template` in
+# tauri.conf.json. `tauri ios init` renders THIS file into
+# src-tauri/gen/apple/project.yml; without the config pointer the CLI falls
+# back to its built-in template and every edit here is silently discarded.
+#
+# gen/ is generated and gitignored, so this file is the only durable place to
+# express signing, Info.plist keys and linker settings for iOS.
+#
+# Derived from the Tauri 2.11.4 built-in template. Deliberate deltas, each
+# annotated below: DEVELOPMENT_TEAM, CODE_SIGN_STYLE,
+# ITSAppUsesNonExemptEncryption, and the arm64-sim slice.
+name: dynawalla
+options:
+  bundleIdPrefix: inc.corpora.dynawalla
+  deploymentTarget:
+    iOS: 16.0
+fileGroups: [../../src]
+configs:
+  debug: debug
+  release: release
+settingGroups:
+  app:
+    base:
+      PRODUCT_NAME: Dynawalla
+      PRODUCT_BUNDLE_IDENTIFIER: inc.corpora.dynawalla
+      # Team ID, not a credential — it is public in every shipped IPA and
+      # already committed for Corpán. The signing *certificate* and the
+      # provisioning profile are the secrets, and neither lives in the repo.
+      DEVELOPMENT_TEAM: F9AV5HKF6N
+targetTemplates:
+  app:
+    type: application
+    sources:
+      - path: Sources
+    scheme:
+      environmentVariables:
+        RUST_BACKTRACE: full
+        RUST_LOG: info
+    settings:
+      groups: [app]
+targets:
+  dynawalla_iOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Assets.xcassets
+      - path: Externals
+      - path: dynawalla_iOS
+      - path: assets
+        buildPhase: resources
+        type: folder
+      - path: LaunchScreen.storyboard
+    info:
+      path: dynawalla_iOS/Info.plist
+      properties:
+        LSRequiresIPhoneOS: true
+        # Declares that the app uses only exempt encryption (HTTPS and the
+        # platform's own primitives). Without it every TestFlight upload lands
+        # in "Missing Compliance" and is invisible to testers until someone
+        # answers the question by hand in App Store Connect.
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchStoryboardName: LaunchScreen
+        UIRequiredDeviceCapabilities: [arm64, metal]
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        # CFBundleShortVersionString and CFBundleVersion are injected by the
+        # Tauri CLI from tauri.conf.json `version` and `--build-number`.
+        # Hardcoding either here makes the release build number unsettable.
+        #
+        # Deliberately absent, and each absence is a compliance decision
+        # (docs/STORE.md): no NSUserTrackingUsageDescription (a kids-eligible
+        # app must never show the ATT prompt), no location usage strings, no
+        # NSAppTransportSecurity exception, no SKAdNetworkItems.
+    entitlements:
+      path: dynawalla_iOS/dynawalla_iOS.entitlements
+    scheme:
+      environmentVariables:
+        RUST_BACKTRACE: full
+        RUST_LOG: info
+    settings:
+      base:
+        ENABLE_BITCODE: false
+        # arm64 device + arm64 simulator. x86_64 is dropped outright: the
+        # simulator slice is only ever run on this team's Apple Silicon
+        # machines and on the arm64 macos-26 runner, and carrying it doubles
+        # the Rust compile for a slice nothing loads.
+        ARCHS: [arm64]
+        VALID_ARCHS: arm64
+        LIBRARY_SEARCH_PATHS[arch=arm64]: $(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(DEVELOPER_DIR)/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/$(PLATFORM_NAME) $(DEVELOPER_DIR)/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/$(PLATFORM_NAME)
+        LIBRARY_SEARCH_PATHS[arch=arm64-sim]: $(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(DEVELOPER_DIR)/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/$(PLATFORM_NAME) $(DEVELOPER_DIR)/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/$(PLATFORM_NAME)
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: true
+        EXCLUDED_ARCHS[sdk=iphoneos*]: x86_64 arm64-sim
+        EXCLUDED_ARCHS[sdk=iphonesimulator*]: x86_64
+        # Automatic is what a developer wants locally (Xcode mints a
+        # development profile on demand). CI overrides this to Manual in its
+        # working copy only — an App Store archive cannot use automatic
+        # signing headlessly ("No Accounts / No profiles found").
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: F9AV5HKF6N
+      groups: [app]
+    dependencies:
+      - framework: libapp.a
+        embed: false
+      - sdk: CoreGraphics.framework
+      - sdk: Metal.framework
+      - sdk: MetalKit.framework
+      - sdk: QuartzCore.framework
+      - sdk: Security.framework
+      - sdk: UIKit.framework
+      - sdk: WebKit.framework
+    preBuildScripts:
+      - script: npm run -- tauri ios xcode-script -v --platform ${PLATFORM_DISPLAY_NAME:?} --sdk-root ${SDKROOT:?} --framework-search-paths "${FRAMEWORK_SEARCH_PATHS:?}" --header-search-paths "${HEADER_SEARCH_PATHS:?}" --gcc-preprocessor-definitions "${GCC_PREPROCESSOR_DEFINITIONS:-}" --configuration ${CONFIGURATION:?} ${FORCE_COLOR} ${ARCHS:?}
+        name: Build Rust Code
+        basedOnDependencyAnalysis: false
+        outputFiles:
+          - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libapp.a
+          - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libapp.a
+    postBuildScripts:
+      - script: |
+          # libapp.a is a static archive linked into the executable. XcodeGen
+          # also copies it into the .app because it is declared as a framework
+          # dependency; App Store validation rejects a bundle carrying a
+          # static library payload, so drop it after linking.
+          rm -f "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/libapp.a"
+        name: Clean app bundle
+        basedOnDependencyAnalysis: false
