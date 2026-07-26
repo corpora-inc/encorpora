@@ -44,9 +44,9 @@
         </activity>
 
         <!--
-             configChanges: the only remaining Corpan-side defense against
-             Activity recreation. Keep this list long, and read the history
-             before shortening it.
+             configChanges: the only thing that stops Android from destroying
+             and recreating the Activity at all. Keep this list long, and read
+             the history before shortening it.
 
              History. In 0.13.1 the app aborted on Activity recreation with
              "assertion failed: previous.is_none()" — 7+ users on Play
@@ -59,10 +59,13 @@
              together: a vendored ndk-context fork that made re-init a no-op
              replace, and this configChanges list, which absorbs config
              changes so the Activity is not destroyed and recreated at all.
-             The 0.13.1 list missed fontScale (common for language-learning
-             users adjusting system font size); fontWeightAdjustment (API
-             31), grammaticalGender (API 34), colorMode and touchscreen were
-             added at the same time.
+             The 0.13.1 list stopped at uiMode. All ten of fontScale,
+             density, layoutDirection, navigation, mcc, mnc, touchscreen,
+             colorMode, fontWeightAdjustment (API 31) and grammaticalGender
+             (API 34) were added in that one commit. fontScale is the entry
+             tied to the reports (language-learning users adjust system font
+             size), but none of the ten is filler — each is a config change
+             Android can deliver at runtime.
 
              Why the fork is gone. tao 0.35.3 (shipped since app 0.16.0)
              dropped the ndk-context dependency entirely: the single global
@@ -71,14 +74,18 @@
              before tearing the context down. The upstream abort no longer
              exists, so the vendored fork was inert and has been retired.
 
-             Consequence: nothing else now prevents a recreation-triggered
-             crash regression. Removing an entry from this list re-exposes
-             the Activity to destroy/recreate cycles that upstream is only
-             assumed to handle. Do not trim it for tidiness.
+             Consequence: nothing else now prevents the Activity from being
+             destroyed and recreated. Removing an entry from this list re-
+             exposes the Activity to destroy/recreate cycles that upstream is
+             only assumed to handle. Do not trim it for tidiness.
 
-             Unrelated, do not conflate: LaunchGateActivity defends a
-             missing/updating System WebView at init, and prevent_exit()
-             defends process-exit teardown. Different crash clusters.
+             Different crash clusters, same trigger: prevent_exit()
+             (src/lib.rs) covers the process::exit teardown abort that
+             follows an Activity destroy — including a config recreate — not
+             the onCreate re-init abort this list is about. So a recreate is
+             not wholly unguarded; it is unguarded at onCreate.
+             LaunchGateActivity covers a missing/updating System WebView at
+             init.
         -->
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|fontScale|density|layoutDirection|navigation|mcc|mnc|touchscreen|colorMode|fontWeightAdjustment|grammaticalGender"

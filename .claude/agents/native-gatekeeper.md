@@ -43,18 +43,21 @@ The live patch is `corpan/corpan-app/src-tauri/Cargo.toml:73`:
 
 ```toml
 [patch.crates-io]
-ndk-context = { path = "vendor/ndk-context" }
-...
 llama-cpp-sys-2 = { path = "vendor/llama-cpp-sys-2" }
 ```
 
-`vendor/ndk-context` removes upstream's `assert!(previous.is_none())` in
-`initialize_android_context`, which aborts the process whenever Android
-recreates the Activity (config change beyond what `configChanges` absorbs,
-"Don't keep activities", system reclaim with the process kept). **7+ users hit
-that abort on Play Console in 0.13.1.** It is an `assert!` in a dependency: no
-Rust test, no CI job, and no code review of the diff itself can catch its
-reversion. The only signal is the resolved dependency graph.
+There used to be a second entry, `ndk-context = { path = "vendor/ndk-context" }`,
+which removed upstream's `assert!(previous.is_none())` in
+`initialize_android_context` — an abort that hit **7+ users on Play Console in
+0.13.1** when Android recreated the Activity. It was retired in #528: `tao
+0.35.3` (shipped since app 0.16.0) dropped the `ndk-context` dependency
+outright, so the fork had not been compiled into any artifact since. The long
+`configChanges` list in `gen/android/app/src/main/AndroidManifest.xml` is now
+the Corpán-side defense against Activity recreation — do not shorten it.
+
+A vendored fork's reversion is invisible to tests: it is a dependency swap, so
+no Rust test, no CI job, and no code review of the diff itself can catch it.
+The signal is the resolved dependency graph.
 
 `vendor/llama-cpp-sys-2` sets `GGML_CPU_ARM_ARCH=armv8.2-a+dotprod+fp16` for
 `arm64-v8a` only. Losing it drops the vectorized Q4_K kernels — the app still
@@ -100,17 +103,32 @@ warning: patch `ndk-context v0.1.1 (.../vendor/ndk-context)` was not used in the
 ```
 
 Treat that line as a first-class result. Its meaning is exact: *this patch is
-currently doing nothing.* Today, on `main`, **that warning fires for
-`ndk-context`** — `ndk 0.9.0` no longer depends on `ndk-context`, so the vendored
-fork is not in the graph. That is the current ground truth, not a regression
-your diff caused. What matters for a gate:
+currently doing nothing.* The expected set is now **empty**: `ndk-context` used
+to sit in it permanently, but that patch was retired in #528 once `tao 0.35.3`
+dropped the dependency, so any entry you see is new and is yours. What matters
+for a gate:
 
 - Record the set of unused-patch warnings **before** your change and after. A
   patch that moves from used → unused is your regression and is HIGH severity.
 - `llama-cpp-sys-2` must never appear in that warning list.
-- Do not "fix" the `ndk-context` warning by deleting the patch or the vendor
-  directory. Whether the guard is still needed is a product decision about the
-  Android crash, not a cleanup.
+- Deleting a patch to quiet this warning is only correct when you have first
+  proved the fork is inert in the shipped graph *and* that upstream no longer
+  has the defect it patched. That was done for `ndk-context` in #528; assume it
+  has not been done for anything else.
+
+This warning is **not** the only reversion signal, and it is the wrong one for
+the most likely failure mode. A stray `[workspace]` that re-parents the manifest
+makes the patch non-root, and cargo then emits a *different* warning and
+silently resolves to the registry:
+
+```
+warning: patch for the non root package will be ignored, specify patch at the workspace root:
+```
+
+In that case the unused-patch warning does not fire at all. Watch all three
+signals: the non-root-patch warning above, a `source = "registry+..."` line
+appearing on a vendored crate in the `Cargo.lock` diff, and the `jq` assertions
+below.
 
 ---
 

@@ -7,40 +7,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-### Removed
-- **Retired the vendored `ndk-context` fork — the crash it defended against no
-  longer exists upstream, and the patch had been inert for weeks.** The fork
-  (`src-tauri/vendor/ndk-context/`, wired via `[patch.crates-io]`) removed
-  upstream's `assert!(previous.is_none())` from `initialize_android_context`,
-  which aborted the process whenever Android recreated the Activity while the
-  process survived. That abort hit 7+ users in 0.13.1 on Play Console, and the
-  fork was a real fix at the time. It stopped doing anything on 2026-05-31
-  (`368f7f055`, the 0.16.0 Tutomaton merge), when `tauri 2.10.2 → 2.11.2`
-  pulled `tao 0.34.5 → 0.35.3`: `tao <= 0.34.x` was the sole consumer of
-  `ndk-context`, and 0.35.3 dropped the dependency outright, replacing the
-  single global Activity slot with a per-Activity `BTreeMap` whose `insert` is
-  idempotent and gating teardown on `isChangingConfigurations`. So the fork's
-  effective window was 2026-05-21 → 2026-05-31 only. Verified before removal:
-  `cargo tree --target aarch64-linux-android -i ndk-context` failed with
-  `package ID specification ... did not match any packages` and cargo emitted
-  `warning: patch ... was not used in the crate graph`, `Cargo.lock` carried a
-  literal `[[patch.unused]]` stanza for it, and regenerating the lock changed
-  nothing except deleting that stanza — no dependency version moved, proving
-  the patch was load-bearing for nothing. The `llama-cpp-sys-2` fork is
-  untouched and still resolves to `vendor/llama-cpp-sys-2` (it supplies the
-  Android `armv8.2-a+dotprod+fp16` build flags that matter for inference
-  speed); a stale `ndk-context` patch sitting next to it was actively harmful,
-  because the permanent "patch was not used" warning trained readers to ignore
-  the one signal that would catch a real reversion of the llama fork.
-  Consequence recorded in `gen/android/.../AndroidManifest.xml`: the long
-  `configChanges` list is now the ONLY Corpán-side defense against Activity
-  recreation, and that comment previously described it as the "secondary"
-  defense behind the fork — backwards, and now corrected. The crash history is
-  preserved there so a future reader knows why the list must stay long.
-  Recorded here rather than only in git so the reasoning survives the planned
-  extraction of the native layer into a shared `native/` directory.
-  (`src-tauri/Cargo.toml`, `src-tauri/Cargo.lock`,
-  `src-tauri/vendor/ndk-context/`, `gen/android/app/src/main/AndroidManifest.xml`)
+### Changed
+- Retired the vendored `ndk-context` fork (`[patch.crates-io]` +
+  `src-tauri/vendor/ndk-context/`). It had been inert since 0.16.0, when
+  `tao 0.35.3` dropped the dependency carrying the `assert!` it patched out —
+  no shipped build has compiled it since, so there is no behavior change. The
+  crash history, and why the Android `configChanges` list must stay long, are
+  recorded in the comment in `gen/android/app/src/main/AndroidManifest.xml`.
+  (#528)
 
 ### Fixed
 - **The pack updater no longer lies about success and loops forever when a
