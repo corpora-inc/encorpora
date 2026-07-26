@@ -1,0 +1,14 @@
+{
+  "name": "@dynawalla/audio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dynawalla procedural audio foundation. Every sound synthesized in WebAudio at runtime; no shipped audio assets, no dependencies.",
+  "engines": { "node": ">=22.17" },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "serve": "node tools/serve.mjs",
+    "emit:worklet": "node tools/emit-worklet.mjs",
+    "tsc": "tsc --noEmit"
+  }
+}
