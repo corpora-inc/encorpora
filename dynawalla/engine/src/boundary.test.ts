@@ -88,7 +88,11 @@ const IMPERATIVE = [
   { name: "DOM", pattern: /\b(document|window|navigator|localStorage|indexedDB)\s*\./ },
   { name: "network", pattern: /\bfetch\s*\(|\bXMLHttpRequest\b|\bWebSocket\b/ },
   { name: "process or filesystem", pattern: /\bprocess\s*\.\s*(env|argv|cwd)\b|\breadFileSync\b|\bwriteFileSync\b/ },
-  { name: "locale-dependent formatting", pattern: /\bIntl\s*\.|\btoLocale[A-Z]/ },
+  // Collation as well as formatting. `localeCompare` is the one that hides: it is
+  // deterministic in-process and identical on two CI runners with the same ICU
+  // data, and disagrees with code-unit order on a device — which is where EG-2's
+  // byte-identical transcripts are actually claimed.
+  { name: "locale-dependent formatting", pattern: /\bIntl\s*\.|\btoLocale[A-Z]|\blocaleCompare\b|\bCollator\b/ },
 ] as const;
 
 const FLOAT_MATH = [
@@ -197,6 +201,7 @@ test("EG-1: the purity scan itself can fail", () => {
   const clock = `const t = Date${"."}now();`;
   const random = `const r = Math${"."}random();`;
   const float = `const x = 0${"."}5;`;
+  const collated = `ids.sort((a, b) => a.locale${"Compare"}(b));`;
   const write = (text: string): string[] => {
     const line = code(text);
     const hits: string[] = [];
@@ -208,6 +213,7 @@ test("EG-1: the purity scan itself can fail", () => {
   assert.deepEqual(write(clock), ["wall clock"]);
   assert.deepEqual(write(random), ["randomness", "floating-point Math member"]);
   assert.deepEqual(write(float), ["fractional numeric literal"]);
+  assert.deepEqual(write(collated), ["locale-dependent formatting"]);
   assert.deepEqual(write(`const s = "Date${"."}now()";`), [], "a string is not a call");
   assert.deepEqual(write(`// Date${"."}now() is banned`), [], "and a comment is not either");
 });

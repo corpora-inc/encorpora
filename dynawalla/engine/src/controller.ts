@@ -63,12 +63,30 @@ export function frustrationFloor(pTarget: Fix): Fix {
  * The intents of a batch, in order. First and last card of a session are at
  * `pTarget + 0.10`, and every batch carries at least one stretch item once a skill
  * is Practiced (the anti-stagnation rule).
+ *
+ * The confidence cards are placed first and the stretch takes a slot neither of them
+ * claims, because both rules are stated as invariants and writing the stretch first
+ * would let a confidence card overwrite it — silently, and only for small batches,
+ * which is the shape of bug that survives until something else depends on it.
+ * `BATCH_SIZE` is 8, so a batch that cannot hold all three is a caller error.
  */
 export function batchIntents(size: number, options: { first: boolean; last: boolean; anyPracticed: boolean }): CardIntent[] {
   if (size <= 0) throw new RangeError("batchIntents: empty batch");
   const intents: CardIntent[] = new Array<CardIntent>(size).fill("steady");
-  if (options.anyPracticed) intents[Math.min(size - 1, Math.floor(size / 2))] = "stretch";
   if (options.first) intents[0] = "confidence";
   if (options.last) intents[size - 1] = "confidence";
+
+  if (options.anyPracticed) {
+    const preferred = Math.min(size - 1, Math.floor(size / 2));
+    let slot = -1;
+    for (let offset = 0; offset < size && slot < 0; offset++) {
+      if (intents[(preferred + offset) % size] === "steady") slot = (preferred + offset) % size;
+    }
+    if (slot < 0) {
+      throw new RangeError(`batchIntents: a batch of ${String(size)} has no room for a stretch card`);
+    }
+    intents[slot] = "stretch";
+  }
+
   return intents;
 }

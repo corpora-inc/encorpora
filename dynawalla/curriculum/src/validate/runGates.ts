@@ -40,7 +40,7 @@ export function runGates(options: RunOptions): { report: Report; snapshot: Snaps
   const { context, roots, snapshot, updateSnapshots, mode } = options;
   const samples = buildSamples(context);
 
-  const snapshotRun = cg16(context, snapshot, updateSnapshots);
+  const snapshotRun = cg16(context, snapshot, updateSnapshots, roots);
 
   const results: GateResult[] = [
     cg1(context),

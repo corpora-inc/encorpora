@@ -12,35 +12,48 @@ import { fingerprintItem, serializeExercise } from "../../serialize.ts";
 import { fnv1a64Hex } from "../../rng/hash.ts";
 import { activeNodes } from "../../graph/graph.ts";
 import { familyById } from "../../generators/registry.ts";
+import { findLocaleViolations } from "../lints/localeOrder.ts";
+import { listSourceFiles, readSource } from "../lints/scan.ts";
 import type { LevelSample, ValidationContext } from "../context.ts";
 import { sampleLabel } from "../context.ts";
 import type { Finding, GateResult } from "../types.ts";
 import { fail, resultOf, warn } from "../types.ts";
 
 /**
- * How much bigger than `minVariants` a level's *estimated* variant space has to be.
+ * CG-10's floor on a level's variant space, and where the number comes from.
  *
  * GATES.md words CG-10 as "<2% duplicates over 1,000 draws". That wording embeds an
  * assumption that is false for the content this program starts with: two-digit
  * subtraction with one regrouping has on the order of 1,600 distinct problems in
  * total, so 1,000 draws from it collide about 20% of the time no matter how good
  * the generator is, and the literal gate would be unsatisfiable for every grade-1
- * level in the graph.
+ * level in the graph. The 1,000 is the *gate's* sample size, and a child never sees
+ * 1,000 items at one level.
  *
- * What CG-10 is *for* is "the variant space is big enough that a child does not see
- * repeats". So it is implemented as a lower bound on the space itself, estimated
- * from the collisions actually observed: with N draws and C collisions the space is
- * about N²/2C.
+ * So the duplicate rate is stated about the run a child actually experiences, and
+ * the floor is derived from it. Drawing `n` items from a space of `S` produces about
+ * `n(n−1)/2S` repeats; requiring at most one repeat per `D` items gives
+ * `S ≥ (n−1)·D/2`. With a practice run of 40 items and 2% (one in fifty) that is
+ * **975 problems per level**, and the floor is that number — not a multiple of
+ * `minVariants`, which the curriculum author also writes, and which would make the
+ * gate assert only what the author already asserted.
  *
- * The estimator's bias, measured rather than assumed: at N=200 against a true space
- * of ~1,600 it reads ~1,300 (low, safe); at N=1,000 against the same space it reads
- * ~2,000 (high by about a quarter, because the first-order approximation stops
- * holding once N approaches S). It is therefore **optimistic at high collision
- * rates**, which is the unsafe direction for a floor — so the floor is set with an
- * order of magnitude of margin rather than a fine one, and CG-9's hard
- * `minVariants` count backs it up independently.
+ * The space itself is estimated from the collisions observed in the gate's own
+ * sample: with N draws and C collisions it is about N²/2C. That estimator's bias,
+ * measured rather than assumed: at N=200 against a true space of ~1,600 it reads
+ * ~1,300 (low, safe); at N=1,000 against the same space it reads ~2,000 (high by
+ * about a quarter, because the first-order approximation stops holding once N
+ * approaches S). It is therefore **optimistic at high collision rates**, which is
+ * the unsafe direction for a floor — so a level near the floor deserves a look, and
+ * CG-9's hard `minVariants` count backs the gate up independently.
  */
-export const VARIANT_SPACE_FACTOR = 12;
+export const PRACTICE_RUN_ITEMS = 40;
+
+/** One repeat per fifty items — GATES.md's 2%, applied to the practice run. */
+export const REPEAT_RATE_DENOMINATOR = 50;
+
+/** `(n − 1)·D / 2`, exact in integers: 39 × 50 / 2. */
+export const VARIANT_SPACE_FLOOR = ((PRACTICE_RUN_ITEMS - 1) * REPEAT_RATE_DENOMINATOR) / 2;
 
 /** Seeds hashed for the CG-16 snapshot. Fixed, so incremental and full agree. */
 export const SNAPSHOT_SEEDS = 20;
@@ -115,7 +128,7 @@ export function cg9(context: ValidationContext, samples: readonly LevelSample[])
   return resultOf("CG-9", "level coverage and difficulty table", findings, notes);
 }
 
-/** CG-10 — variant-space adequacy. See `VARIANT_SPACE_FACTOR`. */
+/** CG-10 — variant-space adequacy. See `VARIANT_SPACE_FLOOR`. */
 export function cg10(_context: ValidationContext, samples: readonly LevelSample[]): GateResult {
   const findings: Finding[] = [];
   const notes: string[] = [];
@@ -126,15 +139,28 @@ export function cg10(_context: ValidationContext, samples: readonly LevelSample[
     if (draws === 0) continue;
     const distinct = new Set(sample.exercises.map(fingerprintItem)).size;
     const collisions = draws - distinct;
-    const floor = sample.node.generator.minVariants * VARIANT_SPACE_FACTOR;
     // N^2 / 2C, integer, with C=0 meaning "no evidence of any bound below N^2/2".
     const estimate = collisions === 0 ? Math.floor((draws * draws) / 2) : Math.floor((draws * draws) / (2 * collisions));
 
-    if (estimate < floor) {
+    // N draws with no collision at all can only evidence a space of N²/2, so below
+    // that many draws the gate is not measuring anything and says so rather than
+    // failing a healthy generator or passing a bad one.
+    if (Math.floor((draws * draws) / 2) < VARIANT_SPACE_FLOOR) {
+      findings.push(
+        warn(
+          "CG-10",
+          `${String(draws)} draws cannot evidence a space of ${String(VARIANT_SPACE_FLOOR)}; sample more seeds`,
+          sampleLabel(sample),
+        ),
+      );
+      continue;
+    }
+
+    if (estimate < VARIANT_SPACE_FLOOR) {
       findings.push(
         fail(
           "CG-10",
-          `estimated variant space ${String(estimate)} (${String(collisions)} collisions in ${String(draws)} draws) is below the floor ${String(floor)}`,
+          `estimated variant space ${String(estimate)} (${String(collisions)} collisions in ${String(draws)} draws) is below the floor ${String(VARIANT_SPACE_FLOOR)}: a ${String(PRACTICE_RUN_ITEMS)}-item practice run would repeat more than one item in ${String(REPEAT_RATE_DENOMINATOR)}`,
           sampleLabel(sample),
         ),
       );
@@ -179,7 +205,20 @@ export function cg11(_context: ValidationContext, samples: readonly LevelSample[
   return resultOf("CG-11", "checker self-consistency", findings, [`${String(checked)} items checked`]);
 }
 
-/** CG-12 — mal-rule fidelity: ≥95% divergence from the correct answer. */
+/**
+ * CG-12 — mal-rule fidelity (≥95% divergence from the correct answer), and the
+ * declaration half of the same contract.
+ *
+ * `SkillNode.misconceptions` is what repair routing and Stage-2 selection read. An
+ * id there that no registry entry resolves has nothing to run; an id from another
+ * family cannot fire on this node's items at all; and a diagnosis the node's own
+ * items *emit* that the node never declares reaches the scheduler with nowhere to
+ * route. That is the same drift CG-7 prevents between rows and generators, and
+ * without this half the field is unvalidated metadata.
+ *
+ * Distractors come from the family registry, so the emitted set is a fact about the
+ * generator, measured on the same sample every other execution gate uses.
+ */
 export function cg12(context: ValidationContext, samples: readonly LevelSample[]): GateResult {
   const findings: Finding[] = [];
   const notes: string[] = [];
@@ -224,6 +263,46 @@ export function cg12(context: ValidationContext, samples: readonly LevelSample[]
     notes.push(`${rule.id}: ${String(divergent)}/${String(applicable)} divergent`);
   }
 
+  const byId = new Map(context.malRules.map((rule) => [String(rule.id), rule]));
+
+  for (const node of activeNodes(context.nodes)) {
+    const declared = new Set<string>(node.misconceptions.map(String));
+
+    for (const id of declared) {
+      const rule = byId.get(id);
+      if (rule === undefined) {
+        findings.push(fail("CG-12", `declares ${id}, which no registered mal-rule resolves`, node.id));
+        continue;
+      }
+      if (rule.family !== node.generator.family) {
+        findings.push(
+          fail(
+            "CG-12",
+            `declares ${id}, a mal-rule of ${rule.family}, but binds ${node.generator.family}`,
+            node.id,
+          ),
+        );
+      }
+    }
+
+    const emitted = new Set<string>();
+    for (const sample of samples) {
+      if (sample.node.id !== node.id) continue;
+      for (const exercise of sample.exercises) {
+        for (const distractor of exercise.distractors) {
+          if (distractor.misconception !== undefined) emitted.add(String(distractor.misconception));
+        }
+      }
+    }
+    for (const id of emitted) {
+      if (!declared.has(id)) {
+        findings.push(fail("CG-12", `items emit ${id} as a distractor, which the node does not declare`, node.id));
+      }
+    }
+
+    notes.push(`${node.id}: declares ${String(declared.size)}, emits ${String(emitted.size)}`);
+  }
+
   return resultOf("CG-12", "mal-rule fidelity", findings, notes);
 }
 
@@ -234,20 +313,39 @@ function snapshotKey(sample: { node: { id: string }; level: number }, family: st
 /**
  * CG-16 — determinism and committed output hashes.
  *
- * Two separate claims. First, that generating twice in this process gives
- * byte-identical output — a `Math.random` or a `Date.now` in a generator dies here.
- * Second, that the output matches the committed hash, which is what makes the
- * macOS/Linux pair meaningful: the snapshot is written on one and verified on the
- * other.
+ * Three claims. First, that generating twice in this process gives byte-identical
+ * output — a `Math.random` or a `Date.now` in a generator dies here. Second, that
+ * the output matches the committed hash, which is what makes the macOS/Linux pair
+ * meaningful: the snapshot is written on one and verified on the other. Note the
+ * scope of that second one honestly — it hashes `SNAPSHOT_SEEDS` seeds per level,
+ * not the whole sweep.
+ *
+ * Third, a source scan, because the first two cannot see the failure that matters
+ * most on a child's device: `localeCompare` and `Intl` agree with themselves
+ * in-process and agree across two CI runners with the same ICU data, and disagree
+ * on a phone. See `lints/localeOrder.ts`.
  */
 export function cg16(
   context: ValidationContext,
   snapshot: Snapshot,
   update: boolean,
+  roots: readonly string[],
 ): { result: GateResult; next: Snapshot } {
   const findings: Finding[] = [];
   const entries: Record<string, string> = { ...snapshot.entries };
   const seenKeys = new Set<string>();
+  let scanned = 0;
+
+  for (const root of roots) {
+    for (const path of listSourceFiles(root)) {
+      scanned += 1;
+      for (const violation of findLocaleViolations(readSource(path))) {
+        findings.push(
+          fail("CG-16", `${violation.rule}: ${violation.excerpt}`, `${violation.path}:${String(violation.line)}`),
+        );
+      }
+    }
+  }
 
   for (const node of activeNodes(context.nodes)) {
     const family = familyById(node.generator.family, context.families);
@@ -318,6 +416,7 @@ export function cg16(
   return {
     result: resultOf("CG-16", "determinism and output snapshots", findings, [
       `${String(seenKeys.size)} snapshot key(s), ${String(SNAPSHOT_SEEDS)} seeds each`,
+      `${String(scanned)} source file(s) scanned for locale-dependent ordering`,
     ]),
     next: { note: snapshot.note, entries },
   };

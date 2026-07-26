@@ -17,7 +17,16 @@ import { LOC_KEY_PATTERN, skillId } from "../../types/ids.ts";
 import { serializeExercise } from "../../serialize.ts";
 import { correctBorrows, correctCarries } from "../../malrules/columnOp.ts";
 import { columnOpFamily } from "./family.ts";
-import { FORM_COLUMN, FORM_FREE_ENTRY } from "./constants.ts";
+import {
+  FORM_COLUMN,
+  FORM_FREE_ENTRY,
+  SLOT_COLUMN,
+  SLOT_TOP,
+  SLOT_VALUE,
+  SOLUTION_KEY_CARRY,
+  SOLUTION_KEY_COLUMN,
+  SOLUTION_KEY_REGROUP,
+} from "./constants.ts";
 import type { GenerateRequest } from "../../types/generator.ts";
 import { columnOpParamSchema } from "./params.ts";
 import type { ColumnOpParams } from "./params.ts";
@@ -139,6 +148,42 @@ function checkItem(exercise: Exercise, params: ColumnOpParams, label: string): v
   const capacity = params.op === "add" ? params.digits + 1 : params.digits;
   if (exercise.schema.kind === "integer") assert.equal(exercise.schema.digits, capacity, `${label}: field width`);
   if (exercise.schema.kind === "columnAlgorithm") assert.equal(exercise.schema.cols, capacity, `${label}: cols`);
+
+  // 10. The walkthrough never asserts a digit the child has not been shown.
+  //
+  // Every column step states the value being worked with. That value may differ
+  // from the digit written on the page only if an earlier step said so — a regroup
+  // step naming this column, or a carry step delivering one into it. This is the
+  // general form of the bug the `4007 − 2888` example pins: a step list that
+  // silently turns the zeros of a borrow chain into nines is a demonstration of
+  // `mis.add.borrow-across-zero`, in the worked example that repairs it.
+  const restated = new Map<number, number>();
+  const carried = new Set<number>();
+  for (const step of exercise.solution) {
+    const column = step.slots[SLOT_COLUMN];
+    const value = step.slots[SLOT_VALUE];
+    if (column === undefined || column.kind !== "count") continue;
+
+    if (step.key === SOLUTION_KEY_REGROUP && value !== undefined && value.kind === "count") {
+      restated.set(column.value, value.value);
+      continue;
+    }
+    if (step.key === SOLUTION_KEY_CARRY) {
+      carried.add(column.value);
+      continue;
+    }
+    if (step.key !== SOLUTION_KEY_COLUMN) continue;
+
+    const worked = step.slots[SLOT_TOP];
+    assert.ok(worked !== undefined && worked.kind === "count", `${label}: column step has no top digit`);
+    const written: number = operands.top[column.value] ?? 0;
+    const shown: number = restated.get(column.value) ?? written + (carried.has(column.value) ? 1 : 0);
+    assert.equal(
+      worked.value,
+      shown,
+      `${label}: column ${String(column.value)} is worked as ${String(worked.value)} but the child was shown ${String(shown)}`,
+    );
+  }
 }
 
 test("column-op: every configuration holds every invariant on every seed", (t) => {

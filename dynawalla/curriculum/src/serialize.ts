@@ -9,7 +9,7 @@
 
 import { toString as rationalToString } from "./math/rational.ts";
 import { answerToString } from "./types/answer.ts";
-import type { AnswerValue } from "./types/answer.ts";
+import type { AnswerSchema, AnswerValue } from "./types/answer.ts";
 import type { Exercise, PromptSlot, PromptSpec, SolutionStep } from "./types/exercise.ts";
 
 function slot(value: PromptSlot): string {
@@ -42,6 +42,24 @@ function step(value: SolutionStep): string {
   return `${value.key}${focus}{${slots(value.slots)}}`;
 }
 
+/**
+ * Fields in a fixed order, like everything else here. `JSON.stringify` would make
+ * the hash depend on the order of the object literal the generator happens to
+ * build, which is the failure this module exists to prevent.
+ */
+function schema(value: AnswerSchema): string {
+  switch (value.kind) {
+    case "integer":
+      return `integer(${String(value.digits)},${String(value.decimalPlaces)})`;
+    case "columnAlgorithm":
+      return `columnAlgorithm(${String(value.cols)},${value.marks},${String(value.decimalPlaces)})`;
+    case "fraction":
+      return `fraction(${value.parts.join("+")})`;
+    case "choice":
+      return `choice(${String(value.k)})`;
+  }
+}
+
 function answers(values: readonly AnswerValue[]): string {
   return values.map(answerToString).join("|");
 }
@@ -67,7 +85,7 @@ export function serializeExercise(exercise: Exercise): string {
     exercise.form,
     prompt(exercise.prompt),
     representation(exercise),
-    JSON.stringify(exercise.schema),
+    schema(exercise.schema),
     answerToString(exercise.answer.canonical),
     answers(exercise.answer.alsoAccept),
     exercise.distractors.map((d) => `${answerToString(d.value)}~${d.misconception ?? ""}`).join("|"),

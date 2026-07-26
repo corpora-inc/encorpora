@@ -11,6 +11,7 @@ import { FORM_COLUMN, FORM_FREE_ENTRY, PROMPT_KEY_ADD, PROMPT_KEY_SUB } from "./
 import { columnOpParamSchema } from "./params.ts";
 import type { ColumnOpParams } from "./params.ts";
 import { readOperands } from "./digits.ts";
+import { addColumns, subtractColumns } from "./procedure.ts";
 
 const SKILL = skillId("dw.add.regroup.subtract-across-zero");
 const BOTH_FORMS = [FORM_FREE_ENTRY, FORM_COLUMN];
@@ -180,18 +181,105 @@ test("column-op: the column form accepts the digits with or without regrouping m
     const canonical = exercise.answer.canonical;
     assert.ok(canonical.kind === "columnAlgorithm");
     assert.ok(canonical.marks.length > 0, "the canonical answer records the regrouping");
-    assert.equal(exercise.answer.alsoAccept.length, 1);
-    const unmarked = exercise.answer.alsoAccept[0];
-    assert.ok(unmarked !== undefined && unmarked.kind === "columnAlgorithm");
-    assert.equal(unmarked.marks.length, 0);
-    assert.ok(columnOpFamily.check(exercise, unmarked).correct, "regrouping mentally is still correct");
     assert.ok(columnOpFamily.check(exercise, canonical).correct);
+
+    // Marks are process evidence, never a correctness condition, so the number
+    // alone is right and so is the number with someone else's marks. `alsoAccept`
+    // stays empty rather than listing a value that is already equal to canonical.
+    assert.deepEqual(exercise.answer.alsoAccept, []);
+    const unmarked = { kind: "columnAlgorithm", value: answerOf(exercise), marks: [] } as const;
+    const misMarked = {
+      kind: "columnAlgorithm",
+      value: answerOf(exercise),
+      marks: [{ column: 0, kind: "borrow", value: 3 } as const],
+    } as const;
+    assert.ok(columnOpFamily.check(exercise, unmarked).correct, "regrouping mentally is still correct");
+    assert.ok(columnOpFamily.check(exercise, misMarked).correct, "and the marks are never graded");
   }
 });
 
 test("column-op: the free-entry form has nothing extra to accept", () => {
   const exercise = generate(1, {}, [FORM_FREE_ENTRY]);
   assert.deepEqual(exercise.answer.alsoAccept, []);
+});
+
+/** One line per solution step: `key@focusColumn slot=value …`, slots in name order. */
+function stepLines(exercise: Exercise): string[] {
+  return exercise.solution.map((step) => {
+    const slots = Object.keys(step.slots)
+      .sort()
+      .map((name) => {
+        const slot = step.slots[name];
+        if (slot === undefined) return `${name}=?`;
+        if (slot.kind === "number") return `${name}=${toDecimalString(slot.value, slot.decimalPlaces) ?? "?"}`;
+        if (slot.kind === "count") return `${name}=${String(slot.value)}`;
+        return `${name}=${slot.key}`;
+      })
+      .join(" ");
+    return `${step.key.replace("dw.solution.column-op.", "")}@${step.focusColumn ?? "-"} ${slots}`;
+  });
+}
+
+test("column-op: the walkthrough shows every regrouping, including the ones across zeros", () => {
+  // The faded worked example for `dw.add.regroup.subtract-across-zero` is the
+  // remediation for `mis.add.borrow-across-zero`, and that misconception *is*
+  // leaving the zero run and the digit above it unchanged. A walkthrough that
+  // announces only the column which could not subtract, and then asserts that the
+  // zeros were nines all along, performs the bug it is repairing. So the whole step
+  // list is pinned, not its length.
+  const acrossZero = columnOpFamily.generate({
+    skillId: SKILL,
+    level: 2,
+    seed: 1,
+    params: params(),
+    forms: [FORM_FREE_ENTRY],
+  });
+  assert.deepEqual(stepLines(acrossZero), [
+    "setup@- bottom=2888 top=4007",
+    "regroup@0 column=0 value=17", // 7 cannot take 8, so the chain runs left
+    "column@0 bottom=8 column=0 digit=9 top=17",
+    "regroup@1 column=1 value=9", // the first zero it crossed
+    "column@1 bottom=8 column=1 digit=1 top=9",
+    "regroup@2 column=2 value=9", // the second
+    "column@2 bottom=8 column=2 digit=1 top=9",
+    "regroup@3 column=3 value=3", // and the 4 it finally took from
+    "column@3 bottom=2 column=3 digit=1 top=3",
+    "result@- answer=1119",
+  ]);
+
+  // 5001 − 2798, the worked example the whole diagnosis story hangs on, generated
+  // rather than hand-built: one draw in ~126,000 at this level, found by search.
+  const documented = columnOpFamily.generate({
+    skillId: SKILL,
+    level: 2,
+    seed: 159579,
+    params: params(),
+    forms: [FORM_FREE_ENTRY],
+  });
+  assert.deepEqual(stepLines(documented), [
+    "setup@- bottom=2798 top=5001",
+    "regroup@0 column=0 value=11",
+    "column@0 bottom=8 column=0 digit=3 top=11",
+    "regroup@1 column=1 value=9",
+    "column@1 bottom=9 column=1 digit=0 top=9",
+    "regroup@2 column=2 value=9",
+    "column@2 bottom=7 column=2 digit=2 top=9",
+    "regroup@3 column=3 value=4",
+    "column@3 bottom=2 column=3 digit=2 top=4",
+    "result@- answer=2203",
+  ]);
+
+  // The digit that was borrowed from is announced in the small case too, where it
+  // is the only regrouping there is: 32 − 16 must not assert that the 3 is a 2.
+  const oneBorrow = generate(1, { digits: 2, operandDigits: 2, regroupings: 1, acrossZero: 0 }, [FORM_FREE_ENTRY]);
+  assert.deepEqual(stepLines(oneBorrow), [
+    "setup@- bottom=16 top=32",
+    "regroup@0 column=0 value=12",
+    "column@0 bottom=6 column=0 digit=6 top=12",
+    "regroup@1 column=1 value=2",
+    "column@1 bottom=1 column=1 digit=1 top=2",
+    "result@- answer=16",
+  ]);
 });
 
 test("column-op: check rejects every distractor and names the bug that produced it", () => {
@@ -225,6 +313,40 @@ test("column-op: the solution walks every column and ends on the answer", () => 
   const answerSlot = last.slots["answer"];
   assert.ok(answerSlot !== undefined && answerSlot.kind === "number");
   assert.ok(eq(answerSlot.value, answerOf(exercise)));
+});
+
+test("column-op: the shared procedure matches the worked example, column by column", () => {
+  // 5001 − 2798, hand-derived: the units column takes ten and becomes 11; the two
+  // zeros the chain crosses are rewritten as 9s and each takes ten of its own; the
+  // 5 gives one up and becomes 4. Both the generator and the mal-rules read this,
+  // so a hand-checked table here is what stops the two drifting apart again.
+  const trace = subtractColumns([1, 0, 0, 5], [8, 9, 7, 2], 4);
+  assert.equal(trace.defined, true);
+  assert.deepEqual(
+    trace.columns.map((column) => [column.borrowed, column.restated, column.effective, column.digit]),
+    [
+      [true, 1, 11, 3],
+      [true, 9, 9, 0],
+      [true, 9, 9, 2],
+      [false, 4, 4, 2],
+    ],
+  );
+
+  // 102 − 456: the borrow runs off the top and the difference is negative, which
+  // this family never emits.
+  assert.equal(subtractColumns([2, 0, 1], [6, 5, 4], 3).defined, false);
+
+  // 47 + 25 = 72: the units carry, the tens do not, and the carry out is zero.
+  const sum = addColumns([7, 4], [5, 2], 2);
+  assert.deepEqual(
+    sum.columns.map((column) => [column.carried, column.effective, column.digit]),
+    [
+      [true, 7, 2],
+      [false, 5, 7],
+    ],
+  );
+  assert.equal(sum.carryOut, 0);
+  assert.equal(addColumns([9, 9], [9, 9], 2).carryOut, 1);
 });
 
 test("column-op: difficulty is a pure function of the parameters", () => {

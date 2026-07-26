@@ -72,8 +72,13 @@ export function firingsToActivate(): number {
 export function pruneBugs(bugs: Readonly<Record<string, BugState>>): Record<string, BugState> {
   const entries = Object.entries(bugs);
   if (entries.length <= MAX_TRACKED_BUGS) return { ...bugs };
+  // Ties break on the id in **code-unit** order, never `localeCompare`: ICU
+  // collation varies by locale and by ICU version, and it does not agree with code
+  // units on the `-` these ids contain. This decides which record survives, so a
+  // locale-dependent comparison here would make EG-2's byte-identical transcripts
+  // a property of the device's ICU data.
   const kept = entries
-    .sort((a, b) => (b[1].beta === a[1].beta ? a[0].localeCompare(b[0]) : b[1].beta - a[1].beta))
+    .sort((a, b) => (b[1].beta === a[1].beta ? (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0) : b[1].beta - a[1].beta))
     .slice(0, MAX_TRACKED_BUGS);
   return Object.fromEntries(kept);
 }

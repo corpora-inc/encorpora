@@ -104,3 +104,31 @@ test("controller: the first and last card of a session are confidence cards", ()
   assert.ok(!middle.includes("stretch"), "a child with nothing practised is not stretched");
   assert.throws(() => batchIntents(0, { first: true, last: true, anyPracticed: true }), RangeError);
 });
+
+test("controller: no card overwrites another, at any batch size", () => {
+  // Both placements are stated as invariants — the first and last card of a session
+  // are confidence cards, and every batch carries a stretch once something is
+  // Practiced. Writing the stretch first let a confidence card land on top of it,
+  // silently, and only at sizes BATCH_SIZE does not use today. A batch too small to
+  // hold all three says so instead of quietly dropping one.
+  for (let size = 3; size <= 12; size++) {
+    const intents = batchIntents(size, { first: true, last: true, anyPracticed: true });
+    assert.equal(intents[0], "confidence", `size ${String(size)}: first card`);
+    assert.equal(intents.at(-1), "confidence", `size ${String(size)}: last card`);
+    assert.equal(
+      intents.filter((intent) => intent === "stretch").length,
+      1,
+      `size ${String(size)}: exactly one stretch survives`,
+    );
+  }
+
+  for (const size of [1, 2]) {
+    assert.throws(
+      () => batchIntents(size, { first: true, last: true, anyPracticed: true }),
+      RangeError,
+      `a batch of ${String(size)} cannot hold two confidence cards and a stretch`,
+    );
+    // Without the confidence cards there is room, and the stretch is still placed.
+    assert.ok(batchIntents(size, { first: false, last: false, anyPracticed: true }).includes("stretch"));
+  }
+});

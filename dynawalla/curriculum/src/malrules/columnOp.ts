@@ -28,6 +28,7 @@
 import { digitsToRational, readOperands } from "../generators/columnOp/digits.ts";
 import { answerValueFor } from "../generators/columnOp/answerValue.ts";
 import { COLUMN_OP_FAMILY } from "../generators/columnOp/constants.ts";
+import { addColumns, subtractColumns } from "../generators/columnOp/procedure.ts";
 import type { AnswerValue } from "../types/answer.ts";
 import type { Exercise } from "../types/exercise.ts";
 import { malRuleId } from "../types/ids.ts";
@@ -86,22 +87,21 @@ export function traceBorrowAcrossZero(
   return { digits: out, crossedZero, defined: true };
 }
 
-/** Correct column subtraction, for `applies` predicates and for canonical marks. */
+/**
+ * Which columns regroup under the correct procedure — the yardstick the buggy ones
+ * are measured against, and what the property tests use as the *definition* of a
+ * level's regrouping count.
+ *
+ * Both read `procedure.ts`, which is also what the generator runs. A second copy of
+ * the borrow procedure here is the divergence `params.ts` warns about, and it has
+ * already happened once in this family.
+ */
 export function correctBorrows(
   top: readonly number[],
   bottom: readonly number[],
   cols: number,
 ): boolean[] {
-  const borrows: boolean[] = [];
-  let incoming = 0;
-  for (let i = 0; i < cols; i++) {
-    const t = (top[i] ?? 0) - incoming;
-    const s = bottom[i] ?? 0;
-    const borrowed = t < s;
-    borrows.push(borrowed);
-    incoming = borrowed ? 1 : 0;
-  }
-  return borrows;
+  return subtractColumns(top, bottom, cols).columns.map((column) => column.borrowed);
 }
 
 /** Correct column addition carries. */
@@ -110,15 +110,7 @@ export function correctCarries(
   bottom: readonly number[],
   cols: number,
 ): boolean[] {
-  const carries: boolean[] = [];
-  let incoming = 0;
-  for (let i = 0; i < cols; i++) {
-    const sum = (top[i] ?? 0) + (bottom[i] ?? 0) + incoming;
-    const carried = sum >= 10;
-    carries.push(carried);
-    incoming = carried ? 1 : 0;
-  }
-  return carries;
+  return addColumns(top, bottom, cols).columns.map((column) => column.carried);
 }
 
 function output(exercise: Exercise, digits: readonly number[], decimalPlaces: number): AnswerValue {

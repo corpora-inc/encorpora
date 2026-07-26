@@ -61,6 +61,7 @@ import {
 import { digitsToRational, fromDigits } from "./digits.ts";
 import { chainRegroupings, columnOpParamSchema, extraRegroupColumns } from "./params.ts";
 import type { ColumnOpParams } from "./params.ts";
+import { addColumns, subtractColumns } from "./procedure.ts";
 
 /** Thrown when a parameter set reaches generation that no digit assignment satisfies. */
 export class InfeasibleParamsError extends Error {}
@@ -69,7 +70,7 @@ type Draw = {
   readonly top: number[];
   readonly bottom: number[];
   readonly result: number[];
-  /** Did column `i` regroup (borrow out for `sub`, carry out for `add`)? */
+  /** Did column `i` regroup — take ten from its left for `sub`, carry out for `add`? */
   readonly regrouped: boolean[];
   /** The value actually worked with in column `i` (10..18 after a borrow). */
   readonly effectiveTop: number[];
@@ -163,35 +164,25 @@ function drawSub(params: ColumnOpParams, rng: Rng): Draw {
     bottom.push(s);
   }
 
-  // Run the *correct* procedure for the result digits and the regrouping marks.
-  const work = [...top];
+  // Run the *correct* procedure — the one the mal-rules measure against — for the
+  // result digits, the regrouping marks and the value each column is worked with.
+  const trace = subtractColumns(top, bottom, cols);
+  if (!trace.defined) throw new InfeasibleParamsError("the borrow runs off the top column");
+
   const result: number[] = [];
   const regrouped: boolean[] = [];
   const effectiveTop: number[] = [];
   const marks: ColumnMark[] = [];
 
-  for (let i = 0; i < cols; i++) {
-    let t = at(work, i);
-    const s = at(bottom, i);
-    if (t < s) {
-      let j = i + 1;
-      while (j < cols && at(work, j) === 0) {
-        work[j] = 9;
-        j += 1;
-      }
-      if (j >= cols) throw new InfeasibleParamsError(`column ${String(i)} has nothing to borrow from`);
-      work[j] = at(work, j) - 1;
-      t += 10;
-      regrouped.push(true);
-    } else {
-      regrouped.push(false);
-    }
-    effectiveTop.push(t);
-    result.push(t - s);
-  }
-  for (let j = 0; j < cols; j++) {
-    if (at(work, j) !== at(top, j)) marks.push({ column: j, kind: "borrow", value: at(work, j) });
-  }
+  trace.columns.forEach((column, i) => {
+    result.push(column.digit);
+    regrouped.push(column.borrowed);
+    effectiveTop.push(column.effective);
+    // A mark is a digit the child rewrites: the zeros a chain crossed, and the digit
+    // it finally took from. The column that triggered the chain writes its ten in
+    // front of the digit rather than over it, which is not a mark.
+    if (column.restated !== at(top, i)) marks.push({ column: i, kind: "borrow", value: column.restated });
+  });
 
   return { top, bottom, result, regrouped, effectiveTop, marks };
 }
@@ -234,22 +225,20 @@ function drawAdd(params: ColumnOpParams, rng: Rng): Draw {
     bottom.push(s);
   }
 
+  const trace = addColumns(top, bottom, cols);
   const result: number[] = [];
   const regrouped: boolean[] = [];
   const effectiveTop: number[] = [];
   const marks: ColumnMark[] = [];
-  let carry = 0;
 
-  for (let i = 0; i < cols; i++) {
-    const sum = at(top, i) + at(bottom, i) + carry;
-    effectiveTop.push(at(top, i) + carry);
-    result.push(sum % 10);
-    carry = sum >= 10 ? 1 : 0;
-    regrouped.push(carry === 1);
-    if (carry === 1) marks.push({ column: i + 1, kind: "carry", value: 1 });
-  }
+  trace.columns.forEach((column, i) => {
+    result.push(column.digit);
+    regrouped.push(column.carried);
+    effectiveTop.push(column.effective);
+    if (column.carried) marks.push({ column: i + 1, kind: "carry", value: 1 });
+  });
   // The final carry occupies one more column; it is 0 when there was none.
-  result.push(carry);
+  result.push(trace.carryOut);
 
   return { top, bottom, result, regrouped, effectiveTop, marks };
 }
@@ -297,7 +286,14 @@ function solutionFor(
 
   for (let i = 0; i < params.digits; i++) {
     const regrouped = draw.regrouped[i] === true;
-    if (params.op === "sub" && regrouped) {
+    // Announce *every* column the regrouping changed, not only the one that could
+    // not subtract: the zeros a borrow chain rewrote as 9s and the digit it finally
+    // took from are changes the child cannot read off the page either. Omitting them
+    // is `mis.add.borrow-across-zero` — and this walkthrough is that misconception's
+    // remediation, so it must not perform it. The test for `4007 − 2888` is the
+    // guard. `effectiveTop` differs from the written digit exactly when something
+    // happened to the column, which covers all three cases with one condition.
+    if (params.op === "sub" && at(draw.effectiveTop, i) !== at(draw.top, i)) {
       steps.push({
         key: SOLUTION_KEY_REGROUP,
         slots: { [SLOT_COLUMN]: countSlot(i), [SLOT_VALUE]: countSlot(at(draw.effectiveTop, i)) },
@@ -402,11 +398,6 @@ export const columnOpFamily: GeneratorFamily<ColumnOpParams> = {
 
       const schema = schemaFor(params, form);
       const canonical = answerValueFor(schema, answer, draw.marks);
-      const alsoAccept: AnswerValue[] =
-        schema.kind === "columnAlgorithm"
-          ? // A child who regroups mentally and writes only the digits is right.
-            [answerValueFor(schema, answer, [])]
-          : [];
 
       const base: Exercise = {
         exerciseId,
@@ -424,7 +415,12 @@ export const columnOpFamily: GeneratorFamily<ColumnOpParams> = {
           },
         },
         schema,
-        answer: { canonical, alsoAccept },
+        // `alsoAccept` stays empty on purpose. `answerEquals` compares the number
+        // and ignores the marks, so the unmarked column answer a child who regroups
+        // mentally writes is already equal to `canonical`; listing it would make
+        // CG-11's `alsoAccept` loop re-assert the canonical check on a value equal to
+        // canonical, and would put a redundant field in every CG-16 hash.
+        answer: { canonical, alsoAccept: [] },
         distractors: [],
         check: { kind: "exact" },
         solution: solutionFor(params, draw, topValue, bottomValue, answer),

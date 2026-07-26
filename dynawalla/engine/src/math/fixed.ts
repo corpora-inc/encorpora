@@ -169,8 +169,13 @@ export function sqrt(value: Fix): Fix {
 }
 
 /**
- * Decimal text, for diagnostics and golden transcripts. Exact: a fixed-point
- * value is an integer, so printing it cannot lose anything.
+ * Decimal text, for diagnostics and golden transcripts.
+ *
+ * Lossless **only at the default `places = 6`**, where every millionth is printed.
+ * Fewer places rounds, half away from zero. A golden-transcript writer that shortens
+ * the output is therefore comparing rounded text, and two runs that differ below the
+ * printed place compare equal — which is the kind of difference nobody would think
+ * to look for.
  */
 export function format(value: Fix, places = 6): string {
   if (places < 0 || places > 6) throw new RangeError("format: 0..6 places");

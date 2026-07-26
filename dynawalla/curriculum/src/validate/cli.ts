@@ -31,6 +31,8 @@ const SHIPPED_IDS_PATH = join(CURRICULUM_SRC, "graph", "shipped-ids.json");
 export const INCREMENTAL_SEEDS = 200;
 export const FULL_SEEDS = 1000;
 
+export { SHIPPED_IDS_PATH, SNAPSHOT_PATH };
+
 type Options = {
   readonly full: boolean;
   readonly json: boolean;
@@ -59,11 +61,36 @@ function parseArgs(argv: readonly string[]): Options {
   };
 }
 
-function readJson<T>(path: string, fallback: T): T {
+function isNotFound(cause: unknown): boolean {
+  return typeof cause === "object" && cause !== null && (cause as { code?: unknown }).code === "ENOENT";
+}
+
+/**
+ * Read a committed JSON input.
+ *
+ * A gate whose input file cannot be read must never go green. CG-1's immutability
+ * check is the one failure in this program that cannot be repaired after ship — a
+ * mastery key that moved is a child's history pointing at nothing — and swallowing
+ * the read error would quietly turn it into a no-op that still prints `OK`.
+ *
+ * So a malformed file always throws, and a missing file throws too unless the
+ * caller says absence is a legitimate state by passing `whenMissing`. It is for the
+ * snapshot file (an empty snapshot makes CG-16 fail loudly with "no committed
+ * hash") and it is not for `shipped-ids.json`, which is committed and whose absence
+ * is a broken checkout.
+ */
+export function readJson<T>(path: string, whenMissing?: T): T {
+  let text: string;
   try {
-    return JSON.parse(readFileSync(path, "utf8")) as T;
-  } catch {
-    return fallback;
+    text = readFileSync(path, "utf8");
+  } catch (cause) {
+    if (isNotFound(cause) && whenMissing !== undefined) return whenMissing;
+    throw new Error(`cannot read ${path}: ${cause instanceof Error ? cause.message : String(cause)}`);
+  }
+  try {
+    return JSON.parse(text) as T;
+  } catch (cause) {
+    throw new Error(`${path} is not valid JSON: ${cause instanceof Error ? cause.message : String(cause)}`);
   }
 }
 
@@ -97,7 +124,7 @@ function printText(report: Report): void {
 
 export function main(argv: readonly string[]): number {
   const options = parseArgs(argv);
-  const shipped = readJson<ShippedIds>(SHIPPED_IDS_PATH, { note: "", releases: {} });
+  const shipped = readJson<ShippedIds>(SHIPPED_IDS_PATH);
   const snapshot = readJson<Snapshot>(SNAPSHOT_PATH, EMPTY_SNAPSHOT);
 
   const { report, snapshot: next } = runGates({

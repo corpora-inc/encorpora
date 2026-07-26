@@ -19,6 +19,7 @@ import { rational } from "../math/rational.ts";
 import { allNodes } from "../graph/graph.ts";
 import { columnOpFamily } from "../generators/columnOp/family.ts";
 import { generatorFamilies } from "../generators/registry.ts";
+import { MIS_SMALLER_FROM_LARGER } from "../malrules/columnOp.ts";
 import { malRules } from "../malrules/registry.ts";
 import { rendererRegistry } from "../render/registry.ts";
 import { erase } from "../types/generator.ts";
@@ -65,6 +66,10 @@ function assertFails(result: GateResult, expected: string): void {
   );
 }
 
+/** `curriculum/src` and `engine/src` — what the source-scanning gates read. */
+const CURRICULUM_SRC = new URL("..", import.meta.url).pathname;
+const SOURCE_ROOTS = [CURRICULUM_SRC, join(CURRICULUM_SRC, "..", "..", "engine", "src")];
+
 /** The healthy graph. Every gate below must pass on it. */
 test("gates: the committed curriculum passes every implemented gate", () => {
   const healthy = context();
@@ -84,7 +89,7 @@ test("gates: the committed curriculum passes every implemented gate", () => {
     cg11(healthy, samples),
     cg12(healthy, samples),
     cg13(healthy),
-    cg16(healthy, snapshot, true).result,
+    cg16(healthy, snapshot, true, SOURCE_ROOTS).result,
     cg17(healthy, samples),
     cg22(healthy),
   ]) {
@@ -256,15 +261,18 @@ test("CG-10: a level whose variant space is too small fails", () => {
   const narrow = replace(SUBTRACT_MULTIDIGIT, {
     generator: {
       ...node(SUBTRACT_MULTIDIGIT).generator,
-      // 2-digit, single-digit subtrahend, one borrow: a few hundred problems in
-      // total, which is not enough room for 200 distinct practice items.
+      // 2-digit minuend, single-digit subtrahend, one borrow: 45 × 9 = 405 problems
+      // in total, so a 40-item practice run would repeat about two of them.
       params: [{ op: "sub", digits: 2, operandDigits: 1, regroupings: 1, acrossZero: 0, decimalPlaces: 0, allowZeroResult: false }],
-      minVariants: 200,
     },
     difficulty: { b: rational(-50n, 100n), levels: [rational(5n, 100n)] },
   });
   const broken = context({ nodes: narrow, seedsPerLevel: 400 });
   assertFails(cg10(broken, buildSamples(broken)), "below the floor");
+  // And the floor is not a restatement of what the author wrote: minVariants is
+  // untouched here, and the healthy graph passes with the same 24 on every node.
+  const healthy = context({ seedsPerLevel: 400 });
+  assert.equal(cg10(healthy, buildSamples(healthy)).status, "pass");
 });
 
 test("CG-11: a checker that accepts a distractor fails", () => {
@@ -309,10 +317,44 @@ test("CG-12: a mal-rule nothing can trigger is reported, not silently green", ()
     applies: () => false,
     apply: () => null,
   };
-  const ctx = context({ malRules: [inert] });
+  // Against the healthy registry, so the only thing this fixture changes is the
+  // rule that cannot fire.
+  const ctx = context({ malRules: [...malRules, inert] });
   const result = cg12(ctx, buildSamples(ctx));
-  assert.equal(result.status, "warn");
+  assert.equal(result.status, "warn", messages(result));
   assert.ok(messages(result).includes("no sampled item triggers"));
+});
+
+test("CG-12: a node that declares a mal-rule nothing resolves, or one from another family, fails", () => {
+  const ghost = replace(SUBTRACT_MULTIDIGIT, { misconceptions: [malRuleId("mis.add.not-in-the-registry")] });
+  const ghostContext = context({ nodes: ghost });
+  assertFails(cg12(ghostContext, buildSamples(ghostContext)), "which no registered mal-rule resolves");
+
+  const foreign: MalRule = {
+    id: malRuleId("mis.mul.times-table-slip"),
+    family: familyId("gen.arith.times-table"),
+    locateCapable: false,
+    applies: () => false,
+    apply: () => null,
+  };
+  const borrowed = context({
+    nodes: replace(SUBTRACT_MULTIDIGIT, { misconceptions: [foreign.id] }),
+    malRules: [...malRules, foreign],
+  });
+  assertFails(cg12(borrowed, buildSamples(borrowed)), "but binds gen.arith.column-op");
+});
+
+test("CG-12: a diagnosis the items emit but the node does not declare fails", () => {
+  // `subtract-multidigit` does not ask for a zero in the minuend, but one is drawn
+  // often enough that 155 items in 4,000 offer the across-zero distractor. A
+  // diagnosis that reaches the scheduler and is not on the node has nowhere to
+  // route — this is what stops `misconceptions` becoming decorative metadata.
+  const undeclared = replace(SUBTRACT_MULTIDIGIT, { misconceptions: [MIS_SMALLER_FROM_LARGER] });
+  const broken = context({ nodes: undeclared, seedsPerLevel: 400 });
+  assertFails(
+    cg12(broken, buildSamples(broken)),
+    "items emit mis.add.borrow-across-zero as a distractor, which the node does not declare",
+  );
 });
 
 test("CG-13: a conceptual skill answered by picking from a list fails", () => {
@@ -335,21 +377,41 @@ test("CG-13: a conceptual skill answered by picking from a list fails", () => {
 test("CG-16: a changed output hash fails, and a missing one fails", () => {
   const healthy = context();
   const key = `gen.arith.column-op@1|${SUBTRACT_MULTIDIGIT}|L0`;
-  const truthful = cg16(healthy, { note: "", entries: {} }, true).next;
+  const truthful = cg16(healthy, { note: "", entries: {} }, true, []).next;
   assert.notEqual(truthful.entries[key], undefined);
-  assert.equal(cg16(healthy, truthful, false).result.status, "pass");
+  assert.equal(cg16(healthy, truthful, false, []).result.status, "pass");
 
-  assertFails(cg16(healthy, { note: "", entries: {} }, false).result, "no committed hash");
+  assertFails(cg16(healthy, { note: "", entries: {} }, false, []).result, "no committed hash");
   const tampered: Snapshot = { note: "", entries: { ...truthful.entries, [key]: "0000000000000000" } };
-  assertFails(cg16(healthy, tampered, false).result, "does not match the committed");
+  assertFails(cg16(healthy, tampered, false, []).result, "does not match the committed");
+});
+
+test("CG-16: ordering a list by locale collation fails, and the committed sources do not", () => {
+  // The hole the in-process comparison and the two-runner hash both leave open:
+  // ICU collation is stable within a process and across two runners with the same
+  // ICU data, and disagrees with code-unit order on a device.
+  const healthy = context();
+  const dir = mkdtempSync(join(tmpdir(), "dw-cg16-"));
+  try {
+    // Assembled, so this test file does not trip the lint it is testing.
+    writeFileSync(join(dir, "bad.ts"), `export const s = ids.sort((a, b) => a.locale${"Compare"}(b));\n`, "utf8");
+    assertFails(cg16(healthy, { note: "", entries: {} }, true, [dir]).result, "locale-dependent collation");
+
+    writeFileSync(join(dir, "bad.ts"), "export const s = [...ids].sort();\n", "utf8");
+    assert.equal(cg16(healthy, { note: "", entries: {} }, true, [dir]).result.status, "pass");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+
+  assert.equal(cg16(healthy, { note: "", entries: {} }, true, SOURCE_ROOTS).result.status, "pass");
 });
 
 test("CG-16: a familyRev bump asks for a new snapshot rather than silently reusing the old one", () => {
   const healthy = context();
-  const truthful = cg16(healthy, { note: "", entries: {} }, true).next;
+  const truthful = cg16(healthy, { note: "", entries: {} }, true, []).next;
   const bumped: AnyGeneratorFamily = { ...erase(columnOpFamily), familyRev: 2 };
   const revved = context({ families: [bumped] });
-  assertFails(cg16(revved, truthful, false).result, "no committed hash");
+  assertFails(cg16(revved, truthful, false, []).result, "no committed hash");
 });
 
 test("CG-17: generation slower than the budget fails", () => {

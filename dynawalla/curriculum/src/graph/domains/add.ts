@@ -87,7 +87,13 @@ const subtractMultidigit: SkillNode = {
     b: b(-50n),
     levels: [b(5n), b(35n), b(90n), b(120n)],
   },
-  misconceptions: [MIS_SMALLER_FROM_LARGER],
+  // Borrow-across-zero is declared here as well as on the node named for it: this
+  // level table does not *ask* for a zero in the minuend, but a drawn digit is a
+  // zero often enough that the items emit that diagnosis on their own (measured:
+  // 155 of 4,000 items in the full sweep). A diagnosis the scheduler can receive
+  // and the node does not declare has nowhere to route. CG-12 checks both
+  // directions.
+  misconceptions: [MIS_SMALLER_FROM_LARGER, MIS_BORROW_ACROSS_ZERO],
   representations: { required: [], optional: [REP_COUNTING_BOARD] },
   generator: {
     family: COLUMN_OP_FAMILY,
