@@ -13,6 +13,7 @@
 // already fills, so there is no intermediate object per body anywhere.
 
 import * as THREE from "three"
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js"
 import type { World } from "../world.ts"
 
 export interface InstancedLayerOpts {
@@ -164,6 +165,25 @@ export function bazaarLighting(scene: THREE.Scene, span = 22) {
  * and no postprocessing pass — which matters because postprocessing is where
  * a tablet's fill rate actually dies.
  */
+export function bazaarEnvironment(renderer: THREE.WebGLRenderer, scene: THREE.Scene) {
+  // THE metal trap. A MeshStandardMaterial with `metalness` near 1 has NO
+  // diffuse term — a metal's colour comes entirely from what it reflects. With
+  // no environment to reflect it renders almost black, so brass gear teeth and
+  // a copper pan read as charcoal no matter how many lights you add. Adding
+  // lights does not fix it; only an environment does.
+  //
+  // `RoomEnvironment` is generated procedurally (no texture to ship, nothing to
+  // fetch, CSP-safe) and pre-filtered once at startup into a small cubemap.
+  // Generate it ONCE and dispose the generator: PMREM is genuinely expensive
+  // and doing it per scene-change is a visible hitch.
+  const pmrem = new THREE.PMREMGenerator(renderer)
+  const env = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
+  scene.environment = env
+  scene.environmentIntensity = 0.55
+  pmrem.dispose()
+  return env
+}
+
 export function bazaarSky(scene: THREE.Scene) {
   const mat = new THREE.ShaderMaterial({
     side: THREE.BackSide,
@@ -242,4 +262,88 @@ export function glow(color: number, strength = 1.6) {
     roughness: 0.35,
     metalness: 0.1,
   })
+}
+
+/**
+ * A filled, extruded mesh driven by a soft body's outline.
+ *
+ * Drawing only the ring particles makes a pressurised-ring soft body read as a
+ * DONUT — the hole is the thing the ring is holding open. This builds a
+ * triangle fan from the centroid out to the ring and rewrites its positions in
+ * place each frame, so the blob reads as a single squashy mass.
+ *
+ * Geometry is allocated once. Rebuilding a BufferGeometry per frame is the
+ * classic way to turn a 60 fps scene into a GC sawtooth.
+ */
+export class SoftMesh {
+  readonly mesh: THREE.Mesh
+  private n: number
+  private pos: Float32Array
+  private buf: Float32Array
+
+  constructor(segments: number, material: THREE.Material, depth = 0.5) {
+    this.n = segments
+    // centre + ring, front and back caps, plus a side wall quad per segment.
+    const verts = (segments + 1) * 2 + segments * 4
+    this.pos = new Float32Array(verts * 3)
+    this.buf = new Float32Array(segments * 2)
+    const geo = new THREE.BufferGeometry()
+    geo.setAttribute("position", new THREE.BufferAttribute(this.pos, 3))
+    const idx: number[] = []
+    const front = 0
+    const back = segments + 1
+    for (let i = 0; i < segments; i++) {
+      const j = (i + 1) % segments
+      idx.push(front, front + 1 + i, front + 1 + j)
+      idx.push(back, back + 1 + j, back + 1 + i)
+      const w = (segments + 1) * 2 + i * 4
+      idx.push(w, w + 1, w + 2, w + 2, w + 1, w + 3)
+    }
+    geo.setIndex(idx)
+    this.mesh = new THREE.Mesh(geo, material)
+    this.mesh.castShadow = true
+    this.mesh.frustumCulled = false
+    this.depth = depth
+  }
+
+  private depth: number
+
+  update(outline: Float32Array) {
+    const n = this.n
+    const p = this.pos
+    let cx = 0
+    let cy = 0
+    for (let i = 0; i < n; i++) {
+      cx += outline[i * 2]!
+      cy += outline[i * 2 + 1]!
+    }
+    cx /= n
+    cy /= n
+    const z = this.depth / 2
+    const set = (v: number, x: number, y: number, zz: number) => {
+      p[v * 3] = x
+      p[v * 3 + 1] = y
+      p[v * 3 + 2] = zz
+    }
+    set(0, cx, cy, z)
+    set(n + 1, cx, cy, -z)
+    for (let i = 0; i < n; i++) {
+      const x = outline[i * 2]!
+      const y = outline[i * 2 + 1]!
+      set(1 + i, x, y, z)
+      set(n + 2 + i, x, y, -z)
+    }
+    for (let i = 0; i < n; i++) {
+      const j = (i + 1) % n
+      const w = (n + 1) * 2 + i * 4
+      set(w, outline[i * 2]!, outline[i * 2 + 1]!, z)
+      set(w + 1, outline[i * 2]!, outline[i * 2 + 1]!, -z)
+      set(w + 2, outline[j * 2]!, outline[j * 2 + 1]!, z)
+      set(w + 3, outline[j * 2]!, outline[j * 2 + 1]!, -z)
+    }
+    const attr = this.mesh.geometry.getAttribute("position") as THREE.BufferAttribute
+    attr.needsUpdate = true
+    this.mesh.geometry.computeVertexNormals()
+    void this.buf
+  }
 }

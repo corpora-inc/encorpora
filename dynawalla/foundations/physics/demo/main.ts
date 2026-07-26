@@ -7,7 +7,7 @@
 
 import * as THREE from "three"
 import { createWorld, FIXED_DT, type Bazaar } from "../src/index.ts"
-import { InstancedLayer, bazaarLighting, bazaarSky, frameCamera, standard, glow, PALETTE } from "../src/view/three.ts"
+import { InstancedLayer, SoftMesh, bazaarLighting, bazaarSky, bazaarEnvironment, frameCamera, standard, glow, PALETTE } from "../src/view/three.ts"
 
 const canvas = document.createElement("canvas")
 document.body.appendChild(canvas)
@@ -28,6 +28,7 @@ const scene = new THREE.Scene()
 scene.fog = new THREE.Fog(0x1e0d24, 26, 86)
 bazaarLighting(scene)
 bazaarSky(scene)
+bazaarEnvironment(renderer, scene)
 
 const camera = new THREE.PerspectiveCamera(38, 1, 0.5, 200)
 
@@ -107,6 +108,14 @@ function discLayer(group: THREE.Group, n: number, color: number, extras = {}) {
   return l
 }
 const V = (x: number, y: number, z: number) => new THREE.Vector3(x, y, z)
+
+// Scale helpers, because the two unit geometries do NOT share a convention and
+// getting it wrong is silent: BoxGeometry(1,1,1) spans -0.5..0.5, so a box
+// scales by its FULL extents; CylinderGeometry(1,1,1) has RADIUS 1, so a disc
+// scales by its radius, not its diameter. Scaling a disc by `r * 2` draws it at
+// double size — which is exactly what put the camera inside the gear train.
+const boxScale = (halfW: number, halfH: number, depth: number) => V(halfW * 2, halfH * 2, depth)
+const discScale = (radius: number, depth: number) => V(radius, radius, depth)
 
 /**
  * Place two lip instances per pan in the PAN'S rotated frame.
@@ -210,7 +219,7 @@ const DEMOS: Record<string, Demo> = {
     label: "Chain reaction",
     caption:
       "120 dominoes. Friction 0.3 — Rapier, Box2D v3 and Planck agree within 2 of 300 and degrade smoothly with friction. Matter.js wedges dead above 0.3.",
-    frame: { cx: 0, cy: 1.6, halfW: 12.4, halfH: 3.2 },
+    frame: { cx: 0, cy: 1.1, halfW: 12.4, halfH: 2.2 },
     build(w, group) {
       w.ground(30)
       const run = w.dominoes({ from: [-11, 0], to: [11, 0], count: 120, height: 0.9 })
@@ -236,7 +245,7 @@ const DEMOS: Record<string, Demo> = {
       const links = boxLayer(group, 32, PALETTE.brass, { metalness: 0.95, roughness: 0.25 })
       for (const l of c.links) links.track(l.index, V(0.2, 0.1, 0.16))
       const bob = discLayer(group, 2, PALETTE.copper, { metalness: 0.9 })
-      if (c.bob) bob.track(c.bob.index, V(0.7, 0.7, 0.7))
+      if (c.bob) bob.track(c.bob.index, discScale(0.35, 0.55))
       const blocks = boxLayer(group, 40, PALETTE.jade)
       for (const b of w.stack({ at: [4.5, 0], rows: 6, size: 0.3 })) blocks.track(b.index, V(0.6, 0.6, 0.6))
       return () => {
@@ -251,19 +260,23 @@ const DEMOS: Record<string, Demo> = {
     label: "Gear train",
     caption:
       "Ratios exact to the last bit — kinematic, not solved. Real involute teeth as rigid bodies is dozens of tiny fast contacts per pair, the worst case for a tablet.",
-    frame: { cx: 1.8, cy: 4.2, halfW: 5.4, halfH: 3.4 },
+    frame: { cx: 2.4, cy: 4.2, halfW: 6.4, halfH: 3.0 },
     build(w, group) {
       const train = w.gearTrain({ at: [-2.4, 4.2], teeth: [16, 32, 12, 24], module: 0.14, driveSpeed: 1.4 })
       const layer = discLayer(group, 8, PALETTE.brass, { metalness: 0.95, roughness: 0.22 })
       const tints = [PALETTE.brass, PALETTE.copper, PALETTE.jade, PALETTE.rose]
       train.gears.forEach((g, i) => {
-        const slot = layer.track(g.body.index, V(g.radius * 2, g.radius * 2, 0.5))
+        const slot = layer.track(g.body.index, discScale(g.radius, 0.5))
         layer.setColor(slot, new THREE.Color(tints[i % tints.length]!))
         // Teeth are geometry, not physics.
         for (let t = 0; t < g.teeth; t++) {
           const a = (t / g.teeth) * Math.PI * 2
+          // 0.44 not 0.5: a tooth exactly as deep as the gear blank puts its
+          // front and back faces COPLANAR with the disc's, and coplanar faces
+          // z-fight — the stipple crawls around the rim and reads as a texture
+          // bug. Inset the overlay rather than matching it.
           const tooth = new THREE.Mesh(
-            new THREE.BoxGeometry(g.radius * 0.16, g.radius * 0.2, 0.5),
+            new THREE.BoxGeometry(g.radius * 0.16, g.radius * 0.2, 0.44),
             standard(tints[i % tints.length]!, { metalness: 0.95, roughness: 0.22 }),
           )
           tooth.position.set(Math.cos(a) * g.radius, Math.sin(a) * g.radius, 0)
@@ -316,17 +329,26 @@ const DEMOS: Record<string, Demo> = {
       }
       const drops = w.liquid({ at: [0, 12], count: 400, drop: 0.1, width: 1.6 })
       const dl = discLayer(group, drops.length, PALETTE.jade, { metalness: 0.2, roughness: 0.25 })
-      for (const d of drops) dl.track(d.index, V(0.2, 0.2, 0.2))
+      for (const d of drops) dl.track(d.index, discScale(0.1, 0.2))
 
       const blobs = [
         w.softBlob({ at: [-2.2, 15], radius: 0.75, firmness: 0.35 }),
         w.softBlob({ at: [2.2, 17], radius: 0.75, firmness: 0.7 }),
       ]
-      const bl = discLayer(group, 80, PALETTE.rose, { metalness: 0.15, roughness: 0.4 })
-      for (const b of blobs) for (const p of b.ring) bl.track(p.index, V(0.36, 0.36, 0.36))
+      // Fill each blob from its outline rather than drawing the ring beads:
+      // a pressurised ring drawn as beads reads as a donut, because the hole is
+      // exactly what the ring is holding open.
+      const skins = blobs.map((b, i) => {
+        const m = new SoftMesh(b.ring.length, standard(i === 0 ? PALETTE.rose : PALETTE.brass, {
+          roughness: 0.45,
+          metalness: 0.1,
+        }))
+        group.add(m.mesh)
+        return { blob: b, mesh: m, buf: new Float32Array(b.ring.length * 2) }
+      })
       return () => {
         dl.sync(w)
-        bl.sync(w)
+        for (const s of skins) s.mesh.update(s.blob.outline(s.buf))
       }
     },
   },
@@ -372,7 +394,7 @@ const DEMOS: Record<string, Demo> = {
         if (t > next) {
           next = t + 2.4
           const shot = gun.fire({ angle, speed: 17 })
-          shots.track(shot.index, V(0.68, 0.68, 0.68))
+          shots.track(shot.index, discScale(0.34, 0.6))
         }
         blocks.sync(w)
         shots.sync(w)

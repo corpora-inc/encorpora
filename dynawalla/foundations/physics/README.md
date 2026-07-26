@@ -445,6 +445,24 @@ where the production value comes from and costs the physics budget nothing.
 `InstancedLayer` is one draw call per shape class, fed straight from the same
 `Float32Array` the world already fills. `frameCamera()` fits a scene's world-space
 rectangle to any aspect ratio, so a phone in portrait pulls back rather than cropping.
+`SoftMesh` fills a soft body from its `outline()` — drawn as ring beads a pressurised
+ring reads as a *donut*, because the hole is what the ring is holding open.
+
+Three rendering traps were hit building the demo and are fixed in the binding, because
+every prototype would otherwise hit all three:
+
+- **`metalness` near 1 with no environment map renders black.** A metal has no diffuse
+  term; its colour is entirely what it reflects. Brass gear teeth and a copper pan came
+  out charcoal under four lights. Adding lights cannot fix it — only an environment can.
+  `bazaarEnvironment()` pre-filters a procedurally generated `RoomEnvironment` once at
+  startup (no texture to ship, CSP-safe) and it transformed the scene.
+- **The two unit geometries do not share a convention.** `BoxGeometry(1,1,1)` spans
+  -0.5..0.5 so a box scales by its *full* extents; `CylinderGeometry(1,1,1)` has *radius*
+  1, so a disc scales by its radius. Scaling a disc by `r * 2` draws it at double size,
+  silently — it put the camera inside the gear train.
+- **Coplanar overlays z-fight.** Teeth exactly as deep as the gear blank stipple around
+  the rim and read as a texture bug. Inset the overlay, matching the repo's existing
+  "bake, do not overlay" lesson from `GAME_DEV_PLAYBOOK.md`.
 
 ---
 
