@@ -46,11 +46,21 @@ test("the CSP is non-null and closed by default", () => {
   assert.doesNotMatch(policy, /'unsafe-eval'/)
   assert.doesNotMatch(policy, /\*/, "a wildcard source defeats the policy")
 
-  // The app is offline by design (ADR-0003, ADR-0004): no remote origin should
-  // ever appear here. `ipc:`/`http://ipc.localhost` are Tauri's own bridge.
+  // The app's own document is offline: no remote origin appears here. The two
+  // permitted sources are both local schemes Tauri serves itself —
+  // `http://ipc.localhost` is its bridge, and `http://dynawalla-pack.localhost`
+  // is the pack scheme in the form Android and Windows serve it under (it is
+  // `dynawalla-pack:` everywhere else, which is not an http source at all).
+  // Content packs are downloaded and verified in Rust, never fetched here.
+  const LOCAL_SCHEME_HOSTS = new Set(["http://ipc.localhost", "http://dynawalla-pack.localhost"])
   for (const source of policy.matchAll(/https?:\/\/[^\s;]+/g)) {
-    assert.equal(source[0], "http://ipc.localhost", `remote origin in CSP: ${source[0]}`)
+    assert.ok(LOCAL_SCHEME_HOSTS.has(source[0]), `remote origin in CSP: ${source[0]}`)
   }
+
+  // A pack is framed, and the only thing that may be framed is a pack.
+  const frameSrc = /frame-src ([^;]+)/.exec(policy)?.[1] ?? ""
+  assert.match(frameSrc, /dynawalla-pack:/, "the pack scheme cannot be framed")
+  assert.doesNotMatch(frameSrc, /'self'|https:|data:|blob:/, `frame-src admits ${frameSrc}`)
 
   // script-src must not admit inline script: the whole point of the policy.
   assert.match(policy, /script-src 'self'\s*;/)
@@ -98,8 +108,21 @@ test("no grant is a whole plugin", () => {
 })
 
 test("grants and native calls are the same set, in both directions", () => {
+  // `null` is an application command, which the ACL does not gate and a
+  // capability file cannot name. Those rows are held to a different check —
+  // `packs/native.test.ts` asserts each one is actually registered in Rust —
+  // and a row with neither a permission nor a command is declared by nobody.
+  for (const call of NATIVE_CALLS) {
+    if (call.permission === null) {
+      assert.ok(call.command, `${call.module}.${call.fn} has no permission and no command`)
+    } else {
+      assert.equal(call.command, undefined, `${call.permission} is a plugin grant, not a command`)
+    }
+  }
   const granted = [...permissions].sort()
-  const required = [...new Set(NATIVE_CALLS.map((call) => call.permission))].sort()
+  const required = [
+    ...new Set(NATIVE_CALLS.map((call) => call.permission).filter((p) => p !== null)),
+  ].sort()
   assert.deepEqual(granted, required)
 })
 

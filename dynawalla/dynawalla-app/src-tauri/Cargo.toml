@@ -16,6 +16,23 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = ["wry"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# The pack runtime's three jobs: fetch the archive, prove it is the archive the
+# catalogue promised, unpack it. All three are native rather than in the
+# WebView, which is what lets `tauri.conf.json` keep `connect-src` closed: the
+# app's own document never talks to the network at all.
+#
+# `rustls-tls` rather than the platform TLS stack so the trust anchors are the
+# same on every target and an Android build does not depend on an OS cert store.
+# `https_only` is set on the client as well; the origin is pinned in `packs`.
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
+sha2 = "0.10"
+# Read AND write: the write half is used only by `packs::tests`, which builds a
+# zip-slip archive and a compression bomb rather than committing binary fixtures
+# to a public repository.
+zip = { version = "2", default-features = false, features = ["deflate"] }
 
 [profile.release]
 opt-level = "z"   # Size, not speed: this is a mobile binary.
