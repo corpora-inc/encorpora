@@ -137,6 +137,7 @@ Per session. Everything here is observable — no inference, no scoring of the c
 | moments the child asked the observer a question | with the question |
 | moments the child looked away, sighed, or slumped | timestamp + what was on screen |
 | **what the child did after each wrong answer** | one of: retried, asked for the answer, studied the contrast, ignored it, quit |
+| **which moment he attended to more — right or wrong** | asked directly at the end ("which bit did you like watching?") *and* observed: whether he lingered on a struck card, whether he ever answered carelessly to reach one, whether he looked away during a correct answer |
 | **what the child skipped or avoided** | including anything he found a way around |
 | **next-day voluntary return** | yes / no |
 | anything the child did that the design did not anticipate | free text |
@@ -148,6 +149,16 @@ Per session. Everything here is observable — no inference, no scoring of the c
   for `T-03`: per-item correctness with the predicted `b()` for each item served,
   exported from Developer Mode. One child's residuals cannot calibrate `b()`; they can
   show a gross mismatch, and that is the whole claim made for them.
+- **M2 — the reaction asymmetry, asked as its own question.** EXPERIENCE_DESIGN makes
+  `energy(SLIP) < energy(SEAT)` a hard invariant *and* says outright that a determined
+  designer can satisfy the unit test while still making failure the interesting moment,
+  which is why it is playtested rather than only asserted. So `T-01` records it
+  explicitly: **is being wrong the more interesting event?** The structural facts to note
+  alongside the observation are how long each verdict is on screen, whether a wrong
+  answer buys more cards than a right one, and whether any illustration in the build is
+  reachable *only* by being wrong. A build where the contrast pair is the only picture is
+  a build where the honest answer to this question may be "yes" however the unit test
+  scores.
 - **M6** — whether the child can say, unprompted, **what** he is building and **why he
   chose it**; and whether the chosen-chamber mechanic visibly changed what he did.
 - **M8** — the accuracy of his **next attempt at the same mal-rule class** after a LOCATE

@@ -1,0 +1,87 @@
+import { test } from "node:test"
+import assert from "node:assert/strict"
+
+import { createProgressStore, ephemeral, INITIAL_PROGRESS } from "./progress.ts"
+import { DEFAULT_PROFILE_ID, isProfileId, storageKey } from "./profile.ts"
+
+test("keys are namespaced by profile, and cannot collide across profiles", () => {
+  assert.equal(storageKey("p1", "progress"), "dynawalla.p1.progress")
+  assert.notEqual(storageKey("p1", "progress"), storageKey("p2", "progress"))
+  // The separator is banned inside an id, which is what stops `a.b` + `c` and
+  // `a` + `b.c` from resolving to one key and silently merging two children.
+  assert.equal(isProfileId("a.b"), false)
+  assert.throws(() => storageKey("a.b", "progress"), RangeError)
+  assert.throws(() => storageKey("", "progress"), RangeError)
+})
+
+test("three children on one device have independent progress", () => {
+  // `Q-12`, from the storage side. The device half is a device item; this is the
+  // test that catches a shared key, which a device check would only find after a
+  // family had already used the app.
+  ephemeral.clear()
+  const stores = ["a", "b", "c"].map((id) => ({ id, store: createProgressStore(id) }))
+
+  stores.forEach(({ store }, i) => {
+    store.getState().savePosition({ rung: i, rungCorrect: i, seedCursor: i * 10 })
+    for (let n = 0; n <= i; n++) store.getState().recordAnswer(true)
+    store.getState().countBug("mis.add.borrow-across-zero")
+  })
+
+  stores.forEach(({ store }, i) => {
+    assert.equal(store.getState().rung, i)
+    assert.equal(store.getState().seedCursor, i * 10)
+    assert.equal(store.getState().correct, i + 1)
+  })
+
+  const keys = [...ephemeral.keys()].sort()
+  assert.deepEqual(keys, ["dynawalla.a.progress", "dynawalla.b.progress", "dynawalla.c.progress"])
+  for (const { id, store } of stores) {
+    const written = ephemeral.get(storageKey(id, "progress"))
+    assert.ok(written !== undefined)
+    assert.equal((JSON.parse(written) as { state: { rung: number } }).state.rung, store.getState().rung)
+  }
+})
+
+test("progress survives a relaunch: a new store on the same key reads it back", () => {
+  ephemeral.clear()
+  const first = createProgressStore("relaunch")
+  first.getState().savePosition({ rung: 5, rungCorrect: 2, seedCursor: 41 })
+  first.getState().recordAnswer(true)
+  first.getState().recordAnswer(false)
+
+  const second = createProgressStore("relaunch")
+  assert.equal(second.getState().rung, 5)
+  assert.equal(second.getState().rungCorrect, 2)
+  assert.equal(second.getState().seedCursor, 41)
+  assert.equal(second.getState().answered, 2)
+  assert.equal(second.getState().correct, 1)
+})
+
+test("totals only rise: no action lowers a count or a rung", () => {
+  ephemeral.clear()
+  const store = createProgressStore("monotone")
+  store.getState().savePosition({ rung: 3, rungCorrect: 1, seedCursor: 9 })
+  for (let i = 0; i < 5; i++) store.getState().recordAnswer(false)
+  assert.equal(store.getState().answered, 5)
+  assert.equal(store.getState().correct, 0)
+  assert.equal(store.getState().rung, 3, "a run of wrong answers moved the ladder")
+})
+
+test("diagnoses are counted, and only as ids", () => {
+  ephemeral.clear()
+  const store = createProgressStore("bugs")
+  store.getState().countBug("mis.add.borrow-across-zero")
+  store.getState().countBug("mis.add.borrow-across-zero")
+  store.getState().countBug("mis.add.smaller-from-larger")
+  assert.deepEqual(store.getState().bugs, {
+    "mis.add.borrow-across-zero": 2,
+    "mis.add.smaller-from-larger": 1,
+  })
+})
+
+test("a fresh profile starts at the bottom of the ladder", () => {
+  ephemeral.clear()
+  const store = createProgressStore(DEFAULT_PROFILE_ID)
+  assert.equal(store.getState().rung, INITIAL_PROGRESS.rung)
+  assert.equal(store.getState().seedCursor, 0)
+})

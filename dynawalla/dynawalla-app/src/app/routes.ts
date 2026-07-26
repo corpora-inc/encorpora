@@ -7,7 +7,12 @@
 
 export const ROUTE_PATHS = {
   home: "/",
-  /** `:skillId?` is optional: /practice resumes, /practice/<id> drills one skill. */
+  /**
+   * `:skillId?` is ADR-0005's pattern, not this screen's: **`PracticeScreen` does
+   * not read the parameter yet**, so `/practice/<id>` resumes the fixed ladder
+   * exactly as `/practice` does. Drilling one skill needs a scheduler to pin,
+   * which is M5. Nothing links a skill href today.
+   */
   practice: "/practice/:skillId?",
   world: "/world",
   progress: "/progress",
@@ -54,7 +59,12 @@ export function destinationPath(destination: Destination): string {
   return literalPrefix(ROUTE_PATHS[destination])
 }
 
-/** The href for one skill's practice session. */
+/**
+ * The href for one skill's practice session. Not linked from anywhere, and
+ * deliberately: it exists so `routes.test.ts` can ask the *installed* router
+ * whether ADR-0005's optional segment still matches — asserting the pattern
+ * string would pass on a version that had dropped the feature.
+ */
 export function practicePath(skillId: string): string {
   const base = literalPrefix(ROUTE_PATHS.practice)
   return `${base === "/" ? "" : base}/${encodeURIComponent(skillId)}`

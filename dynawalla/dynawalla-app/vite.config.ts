@@ -44,6 +44,23 @@ export default defineConfig({
   },
 
   server: {
+    // The app imports the curriculum package's TypeScript source directly (see
+    // `src/work/curriculum.ts`). It is a private package with no build step, so
+    // there is nothing else to import — and it lives outside this app's
+    // directory, which is where Vite's workspace-root detection stops because
+    // `package-lock.json` is here. Without this, `npm run dev` serves a 403 for
+    // every curriculum module while `npm run build` (Rollup, no fs guard)
+    // succeeds — a dev-only failure that a green CI would never show.
+    //
+    // Scoped to the one sibling actually imported. `".."` also served
+    // `dynawalla/engine/`, `dynawalla/docs/` and anything else beside the app —
+    // and with `TAURI_DEV_HOST` set this server is bound to the LAN, so that is
+    // the whole tree readable by any host on the network. The app root is listed
+    // explicitly because Vite 8 *replaces* the default list rather than extending
+    // it: `["../curriculum"]` alone puts `index.html` outside the allow list and
+    // `npm run dev` serves nothing. Verified by running it.
+    fs: { allow: [".", "../curriculum"] },
+
     // 1421 is Corpán's. Both dev servers must be able to run at once.
     port: 1423,
     strictPort: true,

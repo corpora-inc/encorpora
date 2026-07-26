@@ -4,6 +4,7 @@ import { Shell } from "./Shell.tsx"
 import { ROUTE_PATHS } from "./routes.ts"
 import { Home } from "../screens/Home.tsx"
 import { Destination } from "../screens/Destination.tsx"
+import { PracticeScreen } from "../screens/Practice.tsx"
 import { SettingsScreen } from "../screens/Settings.tsx"
 
 // Hash routing, per ADR-0005: `tauri://` and `http://tauri.localhost` are
@@ -18,7 +19,7 @@ export const router = createHashRouter([
     element: <Shell />,
     children: [
       { index: true, element: <Home /> },
-      { path: ROUTE_PATHS.practice, element: <Destination />, handle: "practice" },
+      { path: ROUTE_PATHS.practice, element: <PracticeScreen />, handle: "practice" },
       { path: ROUTE_PATHS.world, element: <Destination />, handle: "world" },
       { path: ROUTE_PATHS.progress, element: <Destination />, handle: "progress" },
       { path: ROUTE_PATHS.profiles, element: <Destination />, handle: "profiles" },

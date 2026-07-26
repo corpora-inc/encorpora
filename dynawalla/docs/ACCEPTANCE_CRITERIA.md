@@ -569,8 +569,12 @@ them may be restated publicly as a claim about children.
       sessions on a reference device from a store build, on separate days. Recorded in
       `PLAYTEST-M2.md`: time to voluntary quit for each session, unprompted verbatims
       including the discouraging ones, next-day voluntary return (yes/no), where he got
-      stuck, and what he skipped or worked around.
-      Verify: `PLAYTEST-M2.md` committed, containing all six fields for both sessions
+      stuck, what he skipped or worked around, and **whether being wrong was the more
+      interesting event** — the `energy(SLIP) < energy(SEAT)` invariant, which
+      EXPERIENCE_DESIGN says a determined designer can satisfy in the unit test while
+      still making failure the moment worth reaching for, and which is therefore asked
+      here rather than only asserted.
+      Verify: `PLAYTEST-M2.md` committed, containing all seven fields for both sessions
       plus the device and build number, per [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md)
       §4.
       Evidence: UNMET
