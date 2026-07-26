@@ -26,8 +26,16 @@ jobs:
     outputs:
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
       dja: ${{ steps.filter.outputs.dja }}
+      # dynawalla_*, native and shared_ts are declared ahead of the jobs that
+      # will consume them. Nothing reads them yet, so they cannot affect any
+      # gate; declaring them here keeps the follow-up PR a one-line `if:`.
+      dynawalla_app: ${{ steps.filter.outputs.dynawalla_app }}
+      dynawalla_curriculum: ${{ steps.filter.outputs.dynawalla_curriculum }}
+      dynawalla_engine: ${{ steps.filter.outputs.dynawalla_engine }}
       lambda: ${{ steps.filter.outputs.lambda }}
+      native: ${{ steps.filter.outputs.native }}
       packs: ${{ steps.filter.outputs.packs }}
+      shared_ts: ${{ steps.filter.outputs.shared_ts }}
       terraform: ${{ steps.filter.outputs.terraform }}
       web: ${{ steps.filter.outputs.web }}
     steps:
@@ -80,6 +88,97 @@ jobs:
           set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
           set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+
+          # Dynawalla areas. No job consumes these yet — the filters land first
+          # so the jobs that follow are a one-line addition instead of a
+          # re-plumbing of this step.
+          set_output dynawalla_app '^(dynawalla/dynawalla-app/|\.github/workflows/ci\.yml$)'
+          set_output dynawalla_curriculum '^(dynawalla/curriculum/|\.github/workflows/ci\.yml$)'
+          set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
+          # Cross-product areas. Deliberately no `ci.yml` self-trigger: these
+          # exist to answer "did shared code / the native layer move", and a
+          # workflow edit is not a change to either.
+          set_output shared_ts '^(shared/|corpan/packs/shared/)'
+          set_output native '^(native/|.*/src-tauri/|corpan/plugins/)'
+
+      # Coverage warning. WARN-ONLY, and permanently scoped to `pull_request`.
+      #
+      # Do NOT extend this to merge_group. The `changes` job resolves its range
+      # as merge_group.base_sha..head_sha, which spans the WHOLE batch the queue
+      # assembled — so a fail-closed hygiene check here would attribute one PR's
+      # uncovered path to every PR batched with it and eject them all at once.
+      # On a pull_request the range is exactly that PR's own change, which is
+      # the only range where "this path has no CI area" is a true statement
+      # about the author's diff.
+      #
+      # Belt and braces so this can never flip a gate: an explicit `set +e`, an
+      # explicit `exit 0`, and `continue-on-error: true`. The `set +e` is load
+      # bearing — Actions runs a `run:` block as `bash -e {0}` on Linux, so
+      # errexit is ON by default and `set -uo pipefail` does not turn it off.
+      - id: uncovered
+        name: Warn on paths with no CI area
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -uo pipefail
+          set +e   # Actions invokes this as `bash -e {0}`; drop errexit.
+
+          base="${BASE_SHA}"
+          head="${HEAD_SHA}"
+          if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          fi
+          if [ -z "${base}" ]; then
+            echo "No base commit resolved; skipping coverage warning."
+            exit 0
+          fi
+
+          # Areas a job actually consumes today, minus the `ci.yml` self-triggers
+          # (a workflow edit is exempt below anyway). NOT the union of every
+          # filter above: `dynawalla_*`, `native` and `shared_ts` are declared
+          # ahead of their jobs, so paths they match are genuinely ungated and
+          # must keep warning until those jobs land.
+          #
+          # The terraform member is copied verbatim from the `terraform` filter —
+          # extension-scoped, not the bare directory. A bare `corpan/infra/
+          # terraform/` would mark helper scripts under it as covered when no job
+          # runs them.
+          #
+          # `corpan/plugins/` is covered only by `.github/workflows/ios-native.yml`,
+          # which is ADVISORY (not a required check). It compiles, so it counts
+          # here, but a red run has to be read by hand.
+          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/)'
+
+          # Carve-outs checked BEFORE `covered`, because a broader area prefix
+          # would otherwise swallow them. `corpan-app`'s job is npm only —
+          # `npm test`/`tsc`/`build`. It never compiles the Rust under
+          # `src-tauri/`, so `corpan/corpan-app/src-tauri/**` is ungated even
+          # though `corpan/corpan-app/` is covered. grep -E has no negative
+          # lookahead, hence a separate pattern.
+          ungated='(^|/)src-tauri/'
+
+          # Gate-free by design: CI config, agent control plane, docs, dotfiles.
+          exempt='(^\.github/|^\.claude/|^\.gitignore$|^\.gitattributes$|^LICENSE$|\.md$)'
+
+          n=0
+          while IFS= read -r p; do
+            [ -n "${p}" ] || continue
+            if printf '%s\n' "${p}" | grep -Eq "${ungated}"; then
+              echo "::warning::path ${p} has no CI area"
+              n=$((n + 1))
+              continue
+            fi
+            printf '%s\n' "${p}" | grep -Eq "${covered}" && continue
+            printf '%s\n' "${p}" | grep -Eq "${exempt}" && continue
+            echo "::warning::path ${p} has no CI area"
+            n=$((n + 1))
+          done <<< "$(git diff --name-only "${base}" "${head}" || true)"
+
+          echo "${n} changed path(s) with no CI area."
+          exit 0
 
   corpan-app:
     name: corpan-app · tsc + build
