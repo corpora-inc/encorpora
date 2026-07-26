@@ -1,0 +1,8 @@
+dist/
+
+# The lockfile is deliberately not tracked yet. No CI job builds this package
+# (no `dynawalla/games/**` path filter exists), and `adversarial-review`
+# truncates a diff at 200,000 bytes — a 30 kB lockfile sorts before `src/` and
+# would push that much real source out of review for zero reviewer value.
+# Whoever adds the CI job should commit it in the same PR.
+package-lock.json
