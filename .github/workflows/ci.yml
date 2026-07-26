@@ -704,7 +704,10 @@ jobs:
     name: native · fmt + compile + clippy
     needs: changes
     if: needs.changes.outputs.native == 'true'
-    timeout-minutes: 45
+    # Measured: 7m18s stone cold, ~2m warm. 30 is headroom for a cold cache on
+    # a slow runner while still catching a hang, rather than burning 45 minutes
+    # of queue time before anyone notices.
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -755,9 +758,16 @@ jobs:
           workspaces: |
             corpan/corpan-app/src-tauri
             dynawalla/dynawalla-app/src-tauri
-          # llama.cpp's cmake output lives under target/*/build/llama-cpp-sys-2-*.
-          # Caching it is the difference between a warm run and a cold one.
           cache-all-crates: "true"
+          # MEASURED, not cargo-culted. rust-cache deletes workspace MEMBERS
+          # from the target dir before saving, and the vendored llama-cpp-sys-2
+          # fork lives at `corpan/corpan-app/src-tauri/vendor/`, i.e. inside
+          # Corpán's implicit workspace — so it counts as a member and its
+          # cmake build of llama.cpp was being thrown away and redone on every
+          # run (warm Corpán: 171 s, against 265 s stone cold). Keeping members
+          # caches that C++ build. The vendored fork moves about once a year;
+          # cargo's fingerprints still force a rebuild when it does.
+          cache-workspace-crates: "true"
 
       # ── rustfmt, as a ratchet ────────────────────────────────────────────
       #
