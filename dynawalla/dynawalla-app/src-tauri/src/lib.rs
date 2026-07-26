@@ -24,6 +24,13 @@ mod packs;
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        // Packs that ship with this build are installed before the first window
+        // exists, so the front door is never empty on a first launch and a
+        // `npm run tauri dev` session always has the freshly built ones.
+        .setup(|app| {
+            packs::sync_bundled(app.handle());
+            Ok(())
+        })
         .register_uri_scheme_protocol(packs::PACK_SCHEME, |ctx, request| {
             packs::serve(ctx.app_handle(), &request)
         })

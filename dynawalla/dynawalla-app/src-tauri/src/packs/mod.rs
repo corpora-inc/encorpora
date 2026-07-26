@@ -682,5 +682,107 @@ fn extract_within(
     Ok(())
 }
 
+// ─── Packs that ship with the app ────────────────────────────────────────────
+
+/// Where the packs bundled with this build live.
+///
+/// Two answers, and both are needed. In a release the packs are a Tauri
+/// resource and sit under `resource_dir()`. In `npm run tauri dev` there is no
+/// bundle: `packs/build.mjs` stages them into `src-tauri/packs/`, which is a
+/// compile-time constant of this crate, so the dev loop needs no environment
+/// variable, no symlink and no manual install step.
+fn bundled_root<R: Runtime>(app: &AppHandle<R>) -> Option<PathBuf> {
+    if let Ok(dir) = app.path().resource_dir() {
+        let candidate = dir.join("packs");
+        if candidate.is_dir() {
+            return Some(candidate);
+        }
+    }
+    #[cfg(debug_assertions)]
+    {
+        let candidate = Path::new(env!("CARGO_MANIFEST_DIR")).join("packs");
+        if candidate.is_dir() {
+            return Some(candidate);
+        }
+    }
+    None
+}
+
+fn copy_tree(from: &Path, to: &Path) -> std::io::Result<()> {
+    fs::create_dir_all(to)?;
+    for entry in fs::read_dir(from)? {
+        let entry = entry?;
+        let kind = entry.file_type()?;
+        let target = to.join(entry.file_name());
+        if kind.is_dir() {
+            copy_tree(&entry.path(), &target)?;
+        } else if kind.is_file() {
+            fs::copy(entry.path(), &target)?;
+        }
+        // Symlinks are skipped rather than followed: a bundled pack is built by
+        // this repository's own pipeline, and a link in one is a mistake at
+        // best.
+    }
+    Ok(())
+}
+
+/// Install the packs that ship with this build, if they are not already the
+/// version installed.
+///
+/// Called at setup, before any window is shown. The whole point is that the
+/// front door is never empty on a first launch and never stale in development:
+/// a debug build re-copies unconditionally, so editing a pack and restarting is
+/// the entire dev loop, while a release build only acts when the version
+/// changed and therefore does not rewrite a device's pack directory on every
+/// cold start.
+///
+/// Failures are logged and swallowed. A bundled pack that will not copy is a
+/// pack the child does not get; it is not a reason for the app not to open.
+pub fn sync_bundled<R: Runtime>(app: &AppHandle<R>) {
+    let Some(source) = bundled_root(app) else {
+        return;
+    };
+    let Ok(root) = pack_root(app) else {
+        eprintln!("[packs] no pack root; bundled packs were not installed");
+        return;
+    };
+
+    let Ok(entries) = fs::read_dir(&source) else {
+        return;
+    };
+    for entry in entries.flatten() {
+        if !entry.file_type().map(|t| t.is_dir()).unwrap_or(false) {
+            continue;
+        }
+        let name = entry.file_name().to_string_lossy().to_string();
+        if !valid_pack_id(&name) {
+            continue;
+        }
+        let Some(bundled) = read_installed(&entry.path()) else {
+            eprintln!("[packs] bundled {name} has no readable manifest.json");
+            continue;
+        };
+        if bundled.id != name {
+            eprintln!("[packs] bundled {name} calls itself {}", bundled.id);
+            continue;
+        }
+
+        let destination = root.join(&name);
+        let current = read_installed(&destination);
+        let same_version = current
+            .as_ref()
+            .is_some_and(|installed| installed.version == bundled.version);
+        if same_version && !cfg!(debug_assertions) {
+            continue;
+        }
+
+        let _ = fs::remove_dir_all(&destination);
+        if let Err(problem) = copy_tree(&entry.path(), &destination) {
+            eprintln!("[packs] could not install bundled {name}: {problem}");
+            let _ = fs::remove_dir_all(&destination);
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests;

@@ -14,6 +14,7 @@ import { recordFor, worldFor } from "../app/stores.ts"
 import { eraseEverything } from "../app/erase.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { usePacks } from "../packs/registry.ts"
+import { useLaunch } from "../packs/Stage.tsx"
 import { useProfiles } from "../profiles/store.ts"
 import { useSettings } from "../settings/store.ts"
 import type { HostActions, HostView } from "./surfaces.ts"
@@ -85,6 +86,7 @@ export function useHostActions(arm: (armed: boolean) => void): HostActions {
   const select = useProfiles((state) => state.select)
   const rename = useProfiles((state) => state.rename)
   const remove = useProfiles((state) => state.remove)
+  const play = useLaunch((state) => state.play)
 
   return {
     setTheme,
@@ -101,5 +103,6 @@ export function useHostActions(arm: (armed: boolean) => void): HostActions {
       eraseEverything()
       arm(false)
     },
+    launchPack: play,
   }
 }

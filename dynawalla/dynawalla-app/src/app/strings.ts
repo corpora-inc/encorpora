@@ -34,6 +34,14 @@ export const strings = {
   packs: {
     installed: "Installed",
     space: "Space used",
+    /** The control on a pack row. What the row does, in one word. */
+    play: "Play",
+    /** Leaves a running pack. The only host chrome drawn over a game. */
+    leave: "Leave",
+    /** The pack was launched and is no longer on this device. */
+    missing: "This pack is not installed.",
+    /** The frame refused, or the runtime could not name the entry document. */
+    failed: "This pack could not be opened.",
   },
 
   progress: {

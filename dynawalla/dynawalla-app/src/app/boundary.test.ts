@@ -59,6 +59,46 @@ const modules = files(src)
 const SDK_ENTRY = path.resolve(src, "../../packs/sdk/src/index.ts")
 
 /**
+ * The second, and last, module outside `src/` the host may import: the
+ * curriculum's public entry point.
+ *
+ * This is a **reversal of part of ADR-0022, recorded in ADR-0023**, and it is
+ * worth stating why rather than quietly widening a guard.
+ *
+ * The pack contract this repository shipped makes the host the judge, and says
+ * so in the protocol itself: `items.next` does not carry the answer, and
+ * `items.answer` records the attempt *before* it returns the canonical value.
+ * That is what makes "a mathematics game cannot be beaten by fiddling with the
+ * game" a property rather than a hope. A host with no arithmetic cannot honour
+ * it — it can only hand the whole item contract back to the pack, which is the
+ * thing the contract exists to prevent.
+ *
+ * So the split is not "content in packs, nothing in the host". It is:
+ *
+ *   * **packs** own every game, world, asset, screen and sound. All of it.
+ *   * **the host** owns the mathematics: which item, and whether it was right.
+ *
+ * `packs/shared/curriculum` is the second of those. It has no DOM, no assets,
+ * no screens and no game in it — it is exact rational arithmetic, seeded
+ * generators and executable mal-rules. `dynawalla/curriculum/` and
+ * `dynawalla/engine/` remain out of bounds, and the scan below still says so.
+ *
+ * Like the SDK exemption this is one file, and the walk below holds it to
+ * re-exporting nothing outside its own package, so it cannot become a tunnel.
+ */
+const CURRICULUM_ENTRY = path.resolve(src, "../../packs/shared/curriculum/src/index.ts")
+
+/**
+ * The only modules in the host that may know what an exercise is: the page that
+ * names the curriculum, and the service built on it.
+ *
+ * The exemption is a *file*, not a rule about words, because that is what keeps
+ * it reviewable: everything the host believes about arithmetic is on one page,
+ * and a second page acquiring an opinion fails this suite.
+ */
+const ARITHMETIC_MODULES = ["packs/curriculum.ts", "packs/items.ts"]
+
+/**
  * A module's source with its comments removed.
  *
  * Every scan in this file is a regular expression over source text, and a
@@ -105,6 +145,14 @@ test("the host imports no curriculum and no content of any kind", () => {
       // The contract, and only the contract. Every other path out of `src/` is
       // still an offence, including another file in the same SDK directory.
       if (resolved === SDK_ENTRY) continue
+      if (resolved === CURRICULUM_ENTRY) {
+        // `packs/curriculum.ts` is the single module that names it. Every other
+        // module in the host reaches the curriculum through that one page, so
+        // "what does the host use out of it" is a file you can read.
+        if (path.relative(src, file) === "packs/curriculum.ts") continue
+        offenders.push(`${path.relative(src, file)} -> ${specifier}`)
+        continue
+      }
       const outside = resolved === null ? specifier : path.relative(src, resolved)
       if (/(^|\/)(curriculum|engine)(\/|$)/.test(outside) || outside.startsWith("..")) {
         offenders.push(`${path.relative(src, file)} -> ${specifier}`)
@@ -114,7 +162,7 @@ test("the host imports no curriculum and no content of any kind", () => {
   assert.deepEqual(offenders, [], "the host reached outside itself for content")
 })
 
-test("the one import that leaves src/ is the contract, and it carries no content", () => {
+test("the imports that leave src/ are the contract and the curriculum, and nothing else", () => {
   // The exemption above is safe only while it names a real file that re-exports
   // nothing but the SDK's own modules. One `export * from "../shared/curriculum"`
   // in the entry point would put every generator back inside the host through a
@@ -145,17 +193,64 @@ test("the one import that leaves src/ is the contract, and it carries no content
   assert.deepEqual(escapes, [], "the pack contract reaches outside itself")
 })
 
-test("no exercise, problem generator or answer judge lives in the host", () => {
-  // Named for what they were when they shipped in the app: a keypad, a judge,
-  // a mal-rule diagnosis, a deck of problems. The host has no opinion about
-  // arithmetic any more — it does not know what an exercise is, only that a
-  // pack reported an outcome (`packs/host.ts`).
-  const banned = /\b(exercise|malRule|misconception|keypad|numerator|denominator|regroup|minuend|subtrahend)\b/i
-  const offenders: string[] = []
-  for (const file of modules) {
-    if (banned.test(code(file))) offenders.push(path.relative(src, file))
+test("the curriculum the host imports is arithmetic, and only arithmetic", () => {
+  // The same measurement applied to the second exemption. A curriculum entry
+  // that re-exported a renderer, an asset loader or anything with a DOM in it
+  // would put content back in the host through a door the offender scan waves
+  // past, with the whole suite still green.
+  assert.ok(fs.existsSync(CURRICULUM_ENTRY), "the exempted curriculum does not exist")
+
+  const pkg = path.resolve(path.dirname(CURRICULUM_ENTRY), "..")
+  const escapes: string[] = []
+  const dom: string[] = []
+  const seen = new Set<string>()
+
+  const walk = (file: string): void => {
+    if (seen.has(file)) return
+    seen.add(file)
+    // No DOM and no Node builtin: the curriculum runs identically in the host,
+    // in a Node test and (one day) in a worker, and anything that reaches for a
+    // document is a renderer wearing a generator's name.
+    if (/\b(document|window|localStorage|HTMLElement)\b/.test(code(file))) {
+      dom.push(path.relative(pkg, file))
+    }
+    for (const specifier of specifiers(file)) {
+      const target = specifier.startsWith(".")
+        ? path.resolve(path.dirname(file), specifier)
+        : null
+      if (target === null || path.relative(pkg, target).startsWith("..")) {
+        escapes.push(`${path.relative(pkg, file)} -> ${specifier}`)
+        continue
+      }
+      walk(target)
+    }
   }
-  assert.deepEqual(offenders, [], "content in the host")
+  walk(CURRICULUM_ENTRY)
+
+  assert.deepEqual(escapes, [], "the curriculum reaches outside itself")
+  assert.deepEqual(dom, [], "the curriculum touches the DOM")
+})
+
+test("exactly one module in the host knows what an exercise is", () => {
+  // Named for what they were when they shipped in the app: a keypad, a judge,
+  // a mal-rule diagnosis, a deck of problems. The host serves and judges items
+  // again (ADR-0023) — but through `packs/items.ts` and nowhere else, so this
+  // is now an exact list rather than an empty one. A screen, a store or a
+  // component acquiring an opinion about arithmetic fails here.
+  //
+  // `keypad` stays banned outright: a work surface is a pack's, always. The
+  // host deleted `src/work/` and is not getting it back through a component
+  // that happens to draw ten buttons.
+  const banned = /\b(exercise|malRule|misconception|numerator|denominator|regroup|minuend|subtrahend)\b/i
+  const offenders: string[] = []
+  const keypads: string[] = []
+  for (const file of modules) {
+    const source = code(file)
+    if (/\bkeypad\b/i.test(source)) keypads.push(path.relative(src, file))
+    if (banned.test(source)) offenders.push(path.relative(src, file))
+  }
+  assert.deepEqual(keypads, [], "a work surface belongs to a pack")
+  assert.deepEqual(offenders.sort(), ARITHMETIC_MODULES, "arithmetic outside the item service")
 })
 
 test("the arrow only points one way — there is no import cycle in src/", () => {

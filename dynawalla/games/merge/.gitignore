@@ -6,3 +6,6 @@ dist/
 # would push that much real source out of review for zero reviewer value.
 # Whoever adds the CI job should commit it in the same PR.
 package-lock.json
+
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/

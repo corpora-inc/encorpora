@@ -62,6 +62,7 @@ function recorder() {
     removeProfile: () => calls.push("removeProfile"),
     armErase: () => calls.push("armErase"),
     erase: () => calls.push("erase"),
+    launchPack: () => calls.push("launchPack"),
   }
   return { calls, actions }
 }
@@ -99,6 +100,12 @@ function assertCarries(row: Row, where: string): void {
       // The stored name may be empty — that is the state of a new learner —
       // but what is *drawn* never is.
       assert.ok(row.name.trim().length > 0, `${where}: a learner with nothing to call them`)
+      break
+    case "pack":
+      assert.ok(row.name.trim().length > 0, `${where}: a pack with no name`)
+      assert.ok(row.version.trim().length > 0, `${where}: ${row.name} has no version`)
+      assert.ok(row.size.trim().length > 0, `${where}: ${row.name} has no size`)
+      assert.equal(typeof row.play, "function", `${where}: ${row.name} cannot be played`)
       break
     case "figure":
       assert.ok(
@@ -233,8 +240,20 @@ test("the packs surface shows every installed pack, and says so when there are n
       },
     ],
   })
-  assert.ok(one.some((row) => row.kind === "fact" && row.name === "Example"))
-  assert.ok(one.some((row) => row.kind === "fact" && row.value === "2.1.0"))
+  // An installed pack is not a line of small print about a pack: it is the way
+  // into the pack, and pressing it is what the whole app is for.
+  const pack = one.find((row) => row.kind === "pack")
+  assert.ok(pack, "an installed pack must be launchable from the front door")
+  assert.equal(pack.kind === "pack" ? pack.name : "", "Example")
+  assert.equal(pack.kind === "pack" ? pack.version : "", "2.1.0")
+
+  const { calls, actions } = recorder()
+  const rows = surfaceOf("packs", { ...coldHost, packs: [
+    { id: "inc.corpora.pack.example", name: "Example", version: "2.1.0", bytes: 1024, sha256: "", installedAt: 0 },
+  ] }, actions).flatMap((section) => [...section.rows])
+  const launch = rows.find((row) => row.kind === "pack")
+  if (launch?.kind === "pack") launch.play()
+  assert.deepEqual(calls, ["launchPack"], "the pack row does not launch the pack")
 })
 
 test("the last learner cannot be removed", () => {

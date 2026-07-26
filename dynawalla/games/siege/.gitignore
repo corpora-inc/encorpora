@@ -2,3 +2,6 @@ node_modules
 dist
 qa/shots
 qa/tmp
+
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/

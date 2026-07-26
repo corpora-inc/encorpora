@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "inc.corpora.dynawalla",
   "build": {
-    "beforeDevCommand": "npm run dev",
+    "beforeDevCommand": "npm run packs && npm run dev",
     "devUrl": "http://127.0.0.1:1423",
-    "beforeBuildCommand": "npm run tsc && npm run build",
+    "beforeBuildCommand": "npm run packs && npm run tsc && npm run build",
     "frontendDist": "../dist"
   },
   "app": {
@@ -27,7 +27,9 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": ["icons/icon.png"],
+    "icon": [
+      "icons/icon.png"
+    ],
     "iOS": {
       "minimumSystemVersion": "16.0",
       "developmentTeam": "F9AV5HKF6N",
@@ -35,6 +37,9 @@
     },
     "android": {
       "minSdkVersion": 26
-    }
+    },
+    "resources": [
+      "packs"
+    ]
   }
 }

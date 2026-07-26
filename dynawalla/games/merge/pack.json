@@ -1,0 +1,21 @@
+{
+  "id": "dynawalla.fuse",
+  "version": "0.1.0",
+  "name": "FUSE",
+  "description": "Drop chips into the reactor well. Chips that touch and add to the key number fuse into one.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.subtract-across-zero",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-tenths"
+    ],
+    "grades": [1, 4]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}
