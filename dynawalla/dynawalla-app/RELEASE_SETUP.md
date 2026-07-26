@@ -91,6 +91,12 @@ These are repository secrets today and the workflow reads them directly.
 | `DYNAWALLA_ANDROID_KEYSTORE_PASSWORD` | the store password you chose above | you choose it |
 | `DYNAWALLA_ANDROID_KEY_ALIAS` | the key alias you chose above | `upload` if you follow the command above |
 
+`DYNAWALLA_ANDROID_KEY_PASSWORD` is deliberately **not** in the secrets table
+above: `jarsigner` signing an AAB with a single-key keystore only needs
+`-storepass`. Add it only if the keystore is ever created with a key password
+that differs from the store password, and wire it as `-keypass` at the same
+time.
+
 ### Where signing material lives — outside the repository
 
 **`~/.corpora-signing/`**, never inside `dynawalla-app/`. The Vite dev server's
@@ -114,19 +120,10 @@ each value is a GitHub Actions secret nothing in this tree needs the file again
 (the profile and the keystore under `$RUNNER_TEMP`, the certificate in a
 throwaway keychain via `apple-actions/import-codesign-certs`).
 
-A local Android release build reads `src-tauri/gen/android/keystore.properties`
-(generated, git-ignored). Point `storeFile` at the **absolute** path:
-
-```properties
-storeFile=/Users/<you>/.corpora-signing/dynawalla-upload.jks
-storePassword=…
-keyAlias=upload
-```
-
-`DYNAWALLA_ANDROID_KEY_PASSWORD` is deliberately **not** in the list: `jarsigner`
-signing an AAB with a single-key keystore only needs `-storepass`. Add it only if
-the keystore is ever created with a key password that differs from the store
-password, and wire it as `-keypass` at the same time.
+Nothing in this repository wires a **local** signed Android build: the committed
+`src-tauri/gen/android/app/build.gradle.kts` has no `signingConfigs`, and
+`release-dynawalla.yml` builds an unsigned AAB and signs it with `jarsigner`. So
+the keystore is only ever read by `base64 -i`, from wherever you put it.
 
 Team ID `F9AV5HKF6N`, bundle id `inc.corpora.dynawalla` and the profile name are
 **not** secrets — they are public in every shipped artifact and are committed.

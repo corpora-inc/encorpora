@@ -79,26 +79,28 @@ keytool -genkeypair -v \
   -alias upload -keyalg RSA -keysize 2048 -validity 10000
 ```
 
-Local Android release builds find it through `keystore.properties`, which Tauri
-reads from `src-tauri/gen/android/` (generated, ignored by `src-tauri/.gitignore`)
-and which must use an **absolute** path:
+**Nothing in this repository wires a local signed Android build.** The committed
+`src-tauri/gen/android/app/build.gradle.kts` has no `signingConfigs` and reads
+only `tauri.properties`; nothing anywhere reads a `keystore.properties`. That is
+deliberate on the CI side — `release-mobile.yml` builds an **unsigned** AAB and
+signs it with `jarsigner` from `ANDROID_KEYSTORE_B64`, which is the correct
+scheme for a Play upload key — so the release path never touches a local
+keystore at all. `base64 -i` on the path above is the only thing you need it
+for.
 
-```properties
-storeFile=/Users/<you>/.corpora-signing/corpan-upload-keystore.jks
-storePassword=…
-keyAlias=upload
-keyPassword=…
-```
-
-CI never reads that file: `release-mobile.yml` decodes `ANDROID_KEYSTORE_B64`
-into `$RUNNER_TEMP` and signs the AAB with `jarsigner`. So this is a local-build
-concern only.
+If you do wire a local release build, the Gradle signing block goes in that
+committed `app/build.gradle.kts` (`tauri android init` will not overwrite an
+existing file, so the Tauri template's version will never appear on its own),
+and `storeFile` must be the **absolute** path
+`/Users/<you>/.corpora-signing/corpan-upload-keystore.jks`. Keep the passwords
+out of the tree: a `keystore.properties` next to it is git-ignored and the
+hygiene guard rejects it by name, but an env var is better.
 
 **If a keystore already exists at `corpan-app/src-tauri/upload-keystore.jks`**,
 move it — `mv corpan-app/src-tauri/upload-keystore.jks
-~/.corpora-signing/corpan-upload-keystore.jks` — and update `storeFile`. Losing
-this file means a new upload key and a Play support request, so verify the copy
-before deleting anything. Nothing in CI changes.
+~/.corpora-signing/corpan-upload-keystore.jks`. Losing this file means a new
+upload key and a Play support request, so verify the copy before deleting
+anything. Nothing in CI changes.
 
 ---
 
@@ -109,8 +111,11 @@ before deleting anything. Nothing in CI changes.
   tweaks**, almost always in one of two spots, both flagged in the workflow:
   1. **iOS build-number stamping** (`agvtool` on the generated Xcode project) —
      the exact project path / scheme name may differ.
-  2. **Android AAB output path** and the `keystore.properties` wiring that
-     `tauri android build` expects.
+  2. **Android AAB output path** — the workflow globs for it because
+     `tauri android build`'s output location has moved between CLI versions.
+     (Signing is not one of these spots: the AAB comes out unsigned and
+     `jarsigner` signs it, so there is no `keystore.properties` wiring to get
+     wrong.)
   Everything else (deps, signing import, uploads) uses standard, widely-used
   actions.
 - We ship to **internal tracks only** — never auto-publish to the public store.

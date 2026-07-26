@@ -85,15 +85,27 @@ jobs:
           HEAD: ${{ steps.range.outputs.head }}
           # Exact repo-relative paths, one per line, that are allowed to carry a
           # matching name. Empty today. Adding a line is a reviewed decision made
-          # in the PR that needs it — the guard only looks at files a PR ADDS, so
-          # an entry is needed exactly once and can be removed afterwards.
+          # in the PR that needs it — the guard only looks at files a PR ADDS
+          # relative to its merge base, so an entry is needed exactly once and
+          # can be removed afterwards.
           ALLOWLIST: ""
         run: |
           set -euo pipefail
-          # Files ADDED in this range only, so already-tracked paths can never
-          # fail a PR that does not touch them. --no-renames matters: rename
-          # detection is on by default, so `git mv notes.txt key.jks` reports as
-          # R and would otherwise slip through as "nothing added".
+          # THREE-dot. `pull_request.base.sha` is the base BRANCH TIP at event
+          # time, not the merge base, so it need not be an ancestor of HEAD.
+          # With a two-dot `git diff BASE HEAD`, a file that main DELETED after
+          # the PR branched — and that the PR branch still carries, untouched —
+          # is reported as an ADDITION and fails a PR that never went near it,
+          # unfixably by rebasing. `BASE...HEAD` diffs merge-base(BASE,HEAD) to
+          # HEAD, which is what GitHub's own "Files changed" shows. It stays
+          # fail-closed: with no merge base, or a base ref that does not
+          # resolve, git exits 128 and `set -e` aborts the step (measured).
+          # In the merge queue `merge_group.base_sha` IS an ancestor of the
+          # head, so three-dot and two-dot agree there.
+          #
+          # --no-renames matters: rename detection is on by default, so
+          # `git mv notes.txt key.jks` reports as R and would otherwise slip
+          # through as "nothing added".
           # -z plus `read -d ''` avoids git's quoting of unusual paths.
           #
           # There is deliberately no pipeline in this step. Under `set -o
@@ -107,10 +119,17 @@ jobs:
           # `git diff` inside `< <(…)` would be an empty list and a silent pass.
           added="$(mktemp)"
           if [ -n "${BASE}" ]; then
-            git diff -z --name-only --diff-filter=A --no-renames "${BASE}" "${HEAD}" > "${added}"
+            git diff -z --name-only --diff-filter=A --no-renames "${BASE}...${HEAD}" > "${added}"
           else
             echo "No base commit resolved; inspecting the head commit's additions only."
-            git diff-tree -z --name-only --diff-filter=A --no-renames --no-commit-id -r "${HEAD}" > "${added}"
+            # --root and -m are both load-bearing. The resolve step leaves BASE
+            # empty only when `git rev-parse HEAD^` fails — i.e. HEAD is a ROOT
+            # commit — and plain `diff-tree` prints NOTHING for a root commit
+            # without --root, so this fallback was blind in the one case it can
+            # actually be reached (measured: a root commit adding
+            # upload-keystore.jks produced no output). -m covers the other
+            # empty-output shape, a merge commit.
+            git diff-tree -z --name-only --diff-filter=A --no-renames --no-commit-id --root -m -r "${HEAD}" > "${added}"
           fi
 
           shopt -s nocasematch
@@ -122,13 +141,33 @@ jobs:
               if [ "${f}" = "${a}" ]; then allowed=1; fi
             done <<< "${ALLOWLIST}"
             [ "${allowed}" -eq 0 ] || continue
+            hit=0
+            # Extension patterns, matched against the whole path. This list is
+            # the union of SIGNING_MATERIAL_DENY and DENIED_EXTENSIONS in
+            # corpan/corpan-app/vite.config.ts (which keeps the same material
+            # off the LAN dev server) plus the keystore formats neither covers.
+            # The two lists must move together — src/dev/devServer.test.ts
+            # pins that side.
             case "${f}" in
-              *.jks | *.keystore | *.p12 | *.pfx | *.p8 | *.mobileprovision | *.provisionprofile | \
-              *.cer | *.crt | *.certSigningRequest | *.pem | *.key | *service-account*.json)
-                echo "::error file=${f}::${f} looks like signing or credential material and must not be committed to this public repository. Keep it outside the repo (e.g. ~/.corpora-signing/) and reference it by absolute path; give CI the value as a base64 GitHub Actions secret. See corpan/corpan-app/RELEASE_SETUP.md. If this file genuinely carries no secret, add its exact path to ALLOWLIST in .github/workflows/hygiene.yml in this PR."
-                fail=1
-                ;;
+              *.jks | *.keystore | *.bks | *.jceks | *.p12 | *.pkcs12 | *.pfx | \
+              *.p8 | *.mobileprovision | *.provisionprofile | \
+              *.cer | *.der | *.crt | *.p7b | *.certSigningRequest | *.pem | *.key | \
+              *.jks.* | *.keystore.* | *service-account*.json)
+                hit=1 ;;
             esac
+            # Basename patterns, for material that carries no extension at all.
+            # `keystore.properties` is named exactly because it holds
+            # storePassword/keyPassword in cleartext; a bare `*keystore*` glob
+            # is deliberately NOT used, since it would also match innocuous
+            # paths.
+            case "${f##*/}" in
+              id_rsa* | id_dsa* | id_ecdsa* | id_ed25519* | keystore.properties)
+                hit=1 ;;
+            esac
+            if [ "${hit}" -ne 0 ]; then
+              echo "::error file=${f}::${f} looks like signing or credential material and must not be committed to this public repository. Keep it outside the repo (e.g. ~/.corpora-signing/) and reference it by absolute path; give CI the value as a base64 GitHub Actions secret. See corpan/corpan-app/RELEASE_SETUP.md. If this file genuinely carries no secret, add its exact path to ALLOWLIST in .github/workflows/hygiene.yml in this PR."
+              fail=1
+            fi
           done < "${added}"
 
           if [ "${fail}" -ne 0 ]; then
@@ -149,8 +188,17 @@ jobs:
             echo "No base commit; skipping big-file guard."
             exit 0
           fi
-          # Files added (A) or modified (M) in this range.
-          mapfile -t files < <(git diff --name-only --diff-filter=AM "${BASE}" "${HEAD}")
+          # Files added (A) or modified (M) in this range. Three-dot for the
+          # same reason as the signing-material guard above: `base.sha` is the
+          # base branch tip, not the merge base, so a two-dot diff attributes
+          # base-side deletions to this PR.
+          # Via a file, not `< <(…)`: process substitution hides the producer's
+          # exit status, so a git failure would be an empty list and a silent
+          # pass — and three-dot git DOES exit non-zero when there is no merge
+          # base. With a file, `set -e` sees it.
+          changed="$(mktemp)"
+          git diff --name-only --diff-filter=AM "${BASE}...${HEAD}" > "${changed}"
+          mapfile -t files < "${changed}"
           fail=0
           for f in "${files[@]}"; do
             [ -f "${f}" ] || continue
