@@ -289,7 +289,10 @@ test("a written position means, to the answer layer, the number it is", () => {
       }
     }
   }
-  assert.ok(checked > 500, `only ${String(checked)} positions were checked`)
+  // The sweep is 3,393 positions today. The floor is here so a change to
+  // `repSpecDefect` that quietly refuses most of them cannot turn this into a
+  // test that passes by checking nothing.
+  assert.ok(checked > 3000, `only ${String(checked)} positions were checked`)
 
   // The three the driver reads off the screen, pinned by hand.
   assert.equal(writeLinePosition(0, 3, 4), "3/4")
