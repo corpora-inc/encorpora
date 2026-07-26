@@ -29,7 +29,7 @@ Read in this order on your first task. Skim headings after that.
   release triggers, build numbers, the traps.
 - [TEST_STRATEGY.md](TEST_STRATEGY.md) — what is tested where, and what tests cannot
   tell us.
-- [GATES.md](GATES.md) — the C-series curriculum gates and G-series engine gates, each
+- [GATES.md](GATES.md) — the CG-series curriculum gates and EG-series engine gates, each
   with an owning PR.
 - [STORE.md](STORE.md) — store bootstrap, compliance posture, what is automatable and
   what needs a browser.
