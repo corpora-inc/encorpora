@@ -46,9 +46,13 @@
      screen with it, on every wrong answer — the reflow promised against above.
      `bench-loop.mjs` reported `maxKeypadShiftPx` 7.5 as soon as the driver
      started answering some cards wrong; the all-correct driver never could,
-     because a seated verdict is an 8 px mark that fits. */
+     because a seated verdict is an 8 px mark that fits.
+
+     `--dw-numeral-size`, not `--text-3xl`: the slate's numerals come down a
+     step under 720 px of viewport height, and a well reserved from the taller
+     size would put the reflow back the moment they did. */
   .dw-verdict-well {
-    min-height: calc(var(--text-3xl) * 1.25 + 0.25rem);
+    min-height: calc(var(--dw-numeral-size) * 1.25 + 0.25rem);
   }
 
   /* A correct answer seats: the row drops into a recess and the rule under it

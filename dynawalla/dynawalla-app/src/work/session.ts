@@ -44,7 +44,7 @@
 // no contradiction — or shows a second, invented one — is worse than a quiet
 // strike mark.
 
-import { columnOpFamily } from "./curriculum.ts"
+import { columnOpFamily, createRng } from "./curriculum.ts"
 import type { AnswerValue, Exercise, MalRuleId, RepId } from "./curriculum.ts"
 import { countingBoard, type CountingBoard } from "./contrast.ts"
 import { entryModelFor, type EntryKey, type EntryState } from "./entry.ts"
@@ -54,6 +54,7 @@ import {
   easier,
   repairRung,
   rungAt,
+  FIRST_ACROSS_ZERO,
   LADDER_FORMS,
   RUN_LENGTH,
   type Rung,
@@ -439,10 +440,54 @@ export function enterAction(state: SessionState): "commit" | "next" {
   return state.feedback === null && state.card.kind === "problem" ? "commit" : "next"
 }
 
-/** Milliseconds to hold a seated answer before presenting the next card. */
+/**
+ * Milliseconds to hold a seated answer before presenting the next card.
+ *
+ * One number for every tier, on purpose. The hold is how long the *work
+ * surface* pauses, and EXPERIENCE_DESIGN is explicit that it does not wait for
+ * the world: "the next problem presents concurrently with the reaction tail".
+ * Scaling this to the reaction's budget would put a 1.8-second dead stop in the
+ * loop at every twentieth answer, which is the same mistake as truncating the
+ * reaction, made from the other end. What changes instead is that the
+ * auto-advance no longer *settles* the reaction — see `store.ts`'s
+ * `autoAdvance`.
+ */
 export function autoAdvanceMs(state: SessionState): number | null {
   if (state.feedback?.kind !== "seated" || state.stopping) return null
   return SEAT_HOLD_MS
+}
+
+/**
+ * Is this card the child's first arrival at the across-zero rungs?
+ *
+ * Only a `ladder` card can be one. `FIRST_ACROSS_ZERO` and the rung a
+ * `borrow-across-zero` repair item comes from are the same index by
+ * construction — both are "the first rung whose parameters guarantee the step"
+ * — so a rule that watched the rung number alone announced the arrival the
+ * first time a child got one *wrong* three rungs lower and was handed the
+ * repair item. The ladder had not moved at all.
+ */
+export function arrivesAcrossZero(card: Card): boolean {
+  if (FIRST_ACROSS_ZERO < 0) return false
+  return card.kind === "problem" && card.role === "ladder" && card.rung >= FIRST_ACROSS_ZERO
+}
+
+/**
+ * The session's own stream of [0, 1) draws, for everything that is a choice
+ * rather than a computation: which effect the stage plays, which phrasing the
+ * Dynawalla reaches for.
+ *
+ * Seeded from the position the session resumes at, so a session replays its
+ * reactions and its lines exactly — which is what the committed screenshot set
+ * (`Q-06`, M6) needs and what `Math.random` at two call sites made impossible.
+ * Offset off the exercise stream so the two do not move in step.
+ */
+export const SEQUENCE_OFFSET = 0x9e3779b9
+
+export function sequenceFrom(cursor: number): () => number {
+  const seed = (Math.max(0, Math.floor(cursor)) + SEQUENCE_OFFSET) >>> 0
+  const rng = createRng(seed)
+  return () => rng.nextUint32() / 0x1_0000_0000
 }
 
 /**

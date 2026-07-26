@@ -16,6 +16,7 @@
     "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
     "bench:generate": "node --experimental-strip-types --no-warnings=ExperimentalWarning tools/bench-generate.mjs",
     "bench:loop": "node tools/bench-loop.mjs",
+    "bench:reactions": "node tools/bench-reactions.mjs",
     "drive:locate": "node tools/drive-locate.mjs"
   },
   "dependencies": {

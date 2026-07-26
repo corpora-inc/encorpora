@@ -17,6 +17,7 @@ export {
   classify,
   columnOpFamily,
   columnOpParamSchema,
+  createRng,
   familyById,
   malRuleById,
   malRules,

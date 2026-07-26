@@ -1,7 +1,9 @@
 import { useCallback, useEffect } from "react"
 import { useNavigate } from "react-router"
 
+import { Band } from "./Band.tsx"
 import { Destination } from "./Destination.tsx"
+import { settleReactions } from "../reactions/live.ts"
 import { strings } from "../app/strings.ts"
 import { entryModelFor, glyphFromKey } from "../work/entry.ts"
 import { now, record } from "../work/metrics.ts"
@@ -39,6 +41,8 @@ export function PracticeScreen() {
   const press = usePractice((state) => state.press)
   const commitAnswer = usePractice((state) => state.commitAnswer)
   const next = usePractice((state) => state.next)
+  const autoAdvance = usePractice((state) => state.autoAdvance)
+  const react = usePractice((state) => state.react)
   const end = usePractice((state) => state.end)
   const navigate = useNavigate()
 
@@ -58,24 +62,36 @@ export function PracticeScreen() {
   // pending frame callback and dropping roughly a quarter of the samples. Two
   // frames, because the first callback runs *before* the paint it was scheduled
   // for and the second runs after it.
+  //
+  // The reaction is fired from the second frame, for the same reason the
+  // measurement is: that is the first callback that provably runs *after* the
+  // verdict has painted. A reaction scheduled any earlier can land in front of
+  // the thing it is reacting to, and one scheduled from the commit itself would
+  // be work on the answer path. Nothing waits for it either way — `fire`
+  // returns immediately and the loop carries on.
   const commitNow = useCallback(() => {
     const started = now()
     commitAnswer()
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         record("commitToFeedback", now() - started)
+        react()
       })
     })
-  }, [commitAnswer])
+  }, [commitAnswer, react])
 
-  // A seated answer presents the next card on its own.
+  // A seated answer presents the next card on its own — through `autoAdvance`,
+  // not `next`. A timer is not an input: `next` settles whatever the reaction
+  // stage is playing, which is right when the child acted and wrong when the
+  // clock did. Routed through `next`, this line was what cut every reaction
+  // above SEAT to the 420 ms hold.
   useEffect(() => {
     if (session === null) return
     const hold = autoAdvanceMs(session)
     if (hold === null) return
-    const handle = setTimeout(next, hold)
+    const handle = setTimeout(autoAdvance, hold)
     return () => clearTimeout(handle)
-  }, [session, next])
+  }, [session, autoAdvance])
 
   // The hardware keyboard, at the window, so the loop is fully operable without
   // ever hitting Tab. Enter is left alone while a button has focus — that is the
@@ -84,6 +100,11 @@ export function PracticeScreen() {
   useEffect(() => {
     if (session === null) return
     const onKeyDown = (event: KeyboardEvent) => {
+      // First line, unconditionally, before the key is even classified: a child
+      // who answers fast must never wait on an animation, and a `settleNow`
+      // behind a condition is one that stops being called (`Q-04`). It is a
+      // no-op when nothing is running.
+      settleReactions()
       const glyph = glyphFromKey(event.key)
       if (glyph !== null) {
         event.preventDefault()
@@ -110,70 +131,94 @@ export function PracticeScreen() {
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [session, press, commitNow, next])
 
-  if (session === null) return <Destination />
+  if (session === null)
+    return (
+      <>
+        <Band />
+        <Destination />
+      </>
+    )
 
   const { card, entry, feedback } = session
   const model = card.kind === "problem" ? entryModelFor(card.exercise.schema) : undefined
 
   return (
-    <Destination>
-      <div className="flex flex-col gap-6">
-        {card.kind === "problem" ? (
-          <ProblemSlate
-            key={card.exercise.exerciseId}
-            card={card}
-            entry={entry}
-            feedback={feedback}
-          />
-        ) : (
-          <CountingBoardCard board={card.board} />
-        )}
-
-        {/* Capped and centred: on a tablet an uncapped three-column grid makes
-            each key a 220 px slab across the whole plate, which is further from
-            a thumb than it is from the last key. The cap keeps the pad the size
-            of a hand at every width. */}
-        <div className="mx-auto flex w-full max-w-xs flex-col gap-4">
-          {/* The keypad stays mounted while a verdict is up, disabled rather
-              than removed. Unmounting it would pull the action row a hundred
-              pixels up the screen at the exact moment the child is looking at
-              their answer — the jolting reflow the design rules forbid. */}
-          {card.kind === "problem" && model !== undefined ? (
-            <Keypad
-              model={model}
-              schema={card.exercise.schema}
-              onKey={press}
-              disabled={feedback !== null}
+    <>
+      {/* Above the plate, not inside it: the world is a window in the wall and
+          the work is the instrument mounted below. Its height is fixed, so
+          nothing it does — an aperture cutting, the character speaking — moves
+          the slate under the child's eye. */}
+      <Band />
+      <Destination>
+        <div className="flex flex-col gap-[var(--dw-stack-gap)]">
+          {card.kind === "problem" ? (
+            <ProblemSlate
+              key={card.exercise.exerciseId}
+              card={card}
+              entry={entry}
+              feedback={feedback}
             />
-          ) : null}
+          ) : (
+            <CountingBoardCard board={card.board} />
+          )}
 
-          <div className="flex gap-3">
-            {session.stopping ? (
-              <>
-                <Plate
-                  onPress={() => {
-                    // Ends the run, not the progress: the ladder position, the
-                    // seed cursor and the totals are already persisted. Coming
-                    // back gives a fresh card where they left off rather than
-                    // the one they walked away from.
-                    end()
-                    void navigate("/")
-                  }}
-                >
-                  {strings.practice.done}
+          {/* Capped and centred: on a tablet an uncapped three-column grid makes
+              each key a 220 px slab across the whole plate, which is further from
+              a thumb than it is from the last key. The cap keeps the pad the size
+              of a hand at every width. */}
+          <div className="mx-auto flex w-full max-w-xs flex-col gap-[var(--dw-stack-gap-tight)]">
+            {/* The keypad stays mounted while a verdict is up, disabled rather
+                than removed. Unmounting it would pull the action row a hundred
+                pixels up the screen at the exact moment the child is looking at
+                their answer — the jolting reflow the design rules forbid. */}
+            {card.kind === "problem" && model !== undefined ? (
+              <Keypad
+                model={model}
+                schema={card.exercise.schema}
+                onKey={press}
+                disabled={feedback !== null}
+              />
+            ) : null}
+
+            {/* Pinned to the bottom of the viewport, not just to the bottom of
+                the stack. The surface is 654 px tall at its most compact and a
+                568 px phone cannot hold it however it is cut — a numeric pad
+                with ≥2 cm targets is 232 px of that on its own — so on the
+                shortest screens the commit control was below the fold and the
+                child scrolled to submit every answer. `sticky` costs nothing
+                where it already fits (the plate never leaves its place) and
+                keeps the one control that ends a card reachable where it does
+                not. It sits above the safe-area inset rather than under the
+                home indicator, and carries the recess's own ground so the
+                keypad does not show through it. */}
+            <div className="bg-ground-sunk sticky bottom-[var(--safe-bottom)] -mx-[var(--dw-frame-pad)] -mt-[var(--dw-stack-gap-tight)] -mb-[var(--dw-frame-pad)] flex gap-3 px-[var(--dw-frame-pad)] pt-[var(--dw-stack-gap-tight)] pb-[var(--dw-frame-pad)]">
+              {session.stopping ? (
+                <>
+                  <Plate
+                    onPress={() => {
+                      // Ends the run, not the progress: the ladder position, the
+                      // seed cursor and the totals are already persisted. Coming
+                      // back gives a fresh card where they left off rather than
+                      // the one they walked away from.
+                      end()
+                      void navigate("/")
+                    }}
+                  >
+                    {strings.practice.done}
+                  </Plate>
+                  <Plate onPress={next}>{strings.practice.keepGoing}</Plate>
+                </>
+              ) : feedback === null && card.kind === "problem" ? (
+                <Plate onPress={commitNow} disabled={!committable(session)}>
+                  {strings.practice.check}
                 </Plate>
-                <Plate onPress={next}>{strings.practice.keepGoing}</Plate>
-              </>
-            ) : feedback === null && card.kind === "problem" ? (
-              <Plate onPress={commitNow} disabled={!committable(session)}>
-                {strings.practice.check}
-              </Plate>
-            ) : (
-              <Plate onPress={next}>{strings.practice.next}</Plate>
-            )}
+              ) : (
+                <Plate onPress={next}>{strings.practice.next}</Plate>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Destination>
+      </Destination>
+    </>
   )
 }

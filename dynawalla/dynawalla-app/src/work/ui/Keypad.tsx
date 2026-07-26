@@ -10,10 +10,16 @@ import type { AnswerSchema } from "../curriculum.ts"
  * decimal model adds the locale's separator — which is the point of the entry
  * layer being a declared structure rather than a text field.
  *
- * Targets are ≥2 cm on the diagonal a child actually hits: `min-h-19` is 4.75 rem
- * = 76 px = 2.0 cm at the 96 dpi CSS reference, and three columns of them still
- * fit inside 320 px. Bound on `pointerdown`, so the acknowledgement is in the
- * frame the finger lands in rather than ~100 ms later when the tap resolves.
+ * Targets are ≥2 cm on the diagonal a child actually hits. The height comes
+ * from `--dw-key-height` in the vertical scale: 4.75 rem = 76 px on a normal
+ * viewport, and 3.25 rem = 52 px under 720 px of viewport height, where the
+ * whole surface has to fit or the child scrolls to press Check on every card.
+ * Three columns still fit inside 320 px, which makes a key 77 px wide — so the
+ * short-viewport key is 77 × 52, a 93 px diagonal, 2.46 cm. Over the floor at
+ * both sizes, and `surface.test.ts` computes that rather than trusting it.
+ *
+ * Bound on `pointerdown`, so the acknowledgement is in the frame the finger
+ * lands in rather than ~100 ms later when the tap resolves.
  */
 export function Keypad({
   model,
@@ -78,7 +84,7 @@ function KeyPlate({
         // with `detail === 0`. A real tap already ran on pointer-down.
         if (event.detail === 0) press()
       }}
-      className="border-line-strong rounded-cut-md bg-ground-raised text-ink numeral active:bg-ground-sunk flex min-h-19 items-center justify-center border text-2xl transition-colors duration-[var(--dw-motion-quick)] disabled:opacity-40"
+      className="border-line-strong rounded-cut-md bg-ground-raised text-ink numeral active:bg-ground-sunk flex min-h-[var(--dw-key-height)] items-center justify-center border text-2xl transition-colors duration-[var(--dw-motion-quick)] disabled:opacity-40"
     >
       {cap.kind === "glyph" ? cap.glyph : "⌫"}
     </button>

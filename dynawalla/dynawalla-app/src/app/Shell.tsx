@@ -2,6 +2,7 @@ import { Link, Outlet, useMatches } from "react-router"
 
 import { IndexMark } from "../design/IndexMark.tsx"
 import { Strapwork } from "../design/Strapwork.tsx"
+import { ReactionStage } from "../reactions/Stage.tsx"
 import { strings } from "./strings.ts"
 import { DESTINATIONS, type Destination } from "./routes.ts"
 
@@ -18,7 +19,7 @@ function Lintel() {
 
   return (
     <header className="bg-ground-raised">
-      <div className="flex items-baseline gap-3 px-[max(var(--safe-left),1rem)] pt-[max(var(--safe-top),0.75rem)] pr-[max(var(--safe-right),1rem)] pb-3">
+      <div className="flex items-baseline gap-3 px-[max(var(--safe-left),1rem)] pt-[max(var(--safe-top),var(--dw-lintel-pad))] pr-[max(var(--safe-right),1rem)] pb-[var(--dw-lintel-pad)]">
         <Link
           to="/"
           className="inscription rounded-cut-sm text-lg tracking-[0.22em] text-ink uppercase"
@@ -43,9 +44,16 @@ export function Shell() {
   return (
     <div className="bg-ground text-ink flex min-h-full flex-col">
       <Lintel />
-      <main className="mx-auto w-full max-w-2xl flex-1 px-[max(var(--safe-left),1rem)] pt-6 pr-[max(var(--safe-right),1rem)] pb-[max(var(--safe-bottom),1.5rem)]">
+      {/* `--dw-surface-pad` rather than a literal: on a short viewport every
+          band of vertical space is spoken for, and the frame's own padding is
+          part of that budget (see the vertical scale in `tokens.css`). */}
+      <main className="mx-auto w-full max-w-2xl flex-1 px-[max(var(--safe-left),1rem)] pt-[var(--dw-surface-pad)] pr-[max(var(--safe-right),1rem)] pb-[max(var(--safe-bottom),var(--dw-surface-pad))]">
         <Outlet />
       </main>
+      {/* One canvas for the whole app, over everything, catching nothing. It
+          carries no information and no affordance, which is what makes it safe
+          to clear at any instant. */}
+      <ReactionStage />
     </div>
   )
 }

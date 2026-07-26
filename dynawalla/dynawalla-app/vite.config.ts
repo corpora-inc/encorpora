@@ -8,6 +8,11 @@ const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8")) as { version:
 
 // Tauri injects TAURI_DEV_HOST for device builds (the LAN address the phone or
 // tablet must reach). Fall back to loopback for desktop.
+//
+// This is the ONE thing that takes the dev server off 127.0.0.1, and it is
+// opt-in per command rather than a checked-in `host: true`. While it is set,
+// every file `server.fs` allows is readable by any host on the network — which
+// is what makes the fs guard below load-bearing rather than theoretical.
 const devHost = process.env.TAURI_DEV_HOST
 
 export default defineConfig({
@@ -44,22 +49,52 @@ export default defineConfig({
   },
 
   server: {
-    // The app imports the curriculum package's TypeScript source directly (see
-    // `src/work/curriculum.ts`). It is a private package with no build step, so
-    // there is nothing else to import — and it lives outside this app's
-    // directory, which is where Vite's workspace-root detection stops because
-    // `package-lock.json` is here. Without this, `npm run dev` serves a 403 for
-    // every curriculum module while `npm run build` (Rollup, no fs guard)
-    // succeeds — a dev-only failure that a green CI would never show.
+    // NO `fs.allow` widening, deliberately — the dev server's reach is Vite's
+    // default, this app's own directory, and nothing beside it.
     //
-    // Scoped to the one sibling actually imported. `".."` also served
-    // `dynawalla/engine/`, `dynawalla/docs/` and anything else beside the app —
-    // and with `TAURI_DEV_HOST` set this server is bound to the LAN, so that is
-    // the whole tree readable by any host on the network. The app root is listed
-    // explicitly because Vite 8 *replaces* the default list rather than extending
-    // it: `["../curriculum"]` alone puts `index.html` outside the allow list and
-    // `npm run dev` serves nothing. Verified by running it.
-    fs: { allow: [".", "../curriculum"] },
+    // The app imports the curriculum package's TypeScript source across a
+    // directory boundary (one seam, `src/work/curriculum.ts`). Under Vite 7 and
+    // earlier that meant a 403 for every curriculum module in `npm run dev`
+    // while `npm run build` (Rollup, no fs guard) succeeded, so the sibling had
+    // to be allow-listed. Vite 8 removed the need: `isFileLoadingAllowed`
+    // consults `config.safeModulePaths` BEFORE `fs.allow`, and import analysis
+    // adds every specifier it resolves out of an already-served module. An
+    // importer is always fetched before its dependencies — that is how ES
+    // modules load, not a race — so the curriculum graph is reachable one hop
+    // at a time without being listed.
+    //
+    // Verified in a real browser rather than reasoned about: the practice
+    // surface boots and all 20 curriculum modules return 200 with no allow
+    // entry at all, and editing `curriculum/src/math/rational.ts` hot-reloads
+    // the subgraph at 200 (the `?t=` query does not defeat it — the check runs
+    // on `cleanUrl`). `devServer.test.ts` is the gate that keeps it that way.
+    //
+    // If a Vite upgrade ever regresses this, dev fails loudly and immediately —
+    // 403 plus a blank page — rather than silently. Prefer fixing the import
+    // seam over re-widening; and note that Vite REPLACES this list rather than
+    // extending it, so `"."` would have to be listed alongside anything added.
+    fs: {
+      // `deny` is replaced wholesale too (`mergeWithDefaultsRecursively` assigns
+      // arrays), so Vite's six defaults are restated verbatim and the test above
+      // fails the build if one goes missing.
+      //
+      // The last entry is the addition. `src-tauri/.gitignore` already ignores
+      // `*.jks` / `*.p8` / `*.mobileprovision` and `RELEASE_SETUP.md` tells you
+      // to generate an upload keystore in this tree — and Vite's default covers
+      // `.p12` but none of those three. That material sits INSIDE the allowed
+      // root, where narrowing `allow` cannot help, and `TAURI_DEV_HOST` (which
+      // on-device Android testing requires) binds this server to the LAN. Deny
+      // is checked before allow, so this holds regardless of what allow says.
+      deny: [
+        ".env",
+        ".env.*",
+        "*.{crt,pem,key,p12,pfx,cer,der}",
+        ".npmrc",
+        ".yarnrc.yml",
+        "**/.git/**",
+        "*.{jks,p8,mobileprovision}",
+      ],
+    },
 
     // 1421 is Corpán's. Both dev servers must be able to run at once.
     port: 1423,

@@ -6,16 +6,18 @@ import assert from "node:assert/strict"
 
 import { glyphFromKey } from "./entry.ts"
 import { fiveThousandOne } from "./fixtures.ts"
-import { CORRECT_PER_RUNG, LADDER, RUN_LENGTH, rungAt } from "./ladder.ts"
+import { CORRECT_PER_RUNG, FIRST_ACROSS_ZERO, LADDER, RUN_LENGTH, rungAt } from "./ladder.ts"
 import { writtenAnswer } from "./problem.ts"
 import {
   advance,
+  arrivesAcrossZero,
   commit,
   committable,
   enterAction,
   generateProblem,
   prepare,
   pressKey,
+  sequenceFrom,
   startSession,
   submitted,
   DECK_DEPTH,
@@ -52,6 +54,43 @@ function answerCorrectly(state: SessionState, deps: SessionDeps): SessionState {
   assert.equal(committed.feedback?.kind, "seated")
   return advance(prepare(committed, deps), deps)
 }
+
+test("the session's choice sequence is seeded, so a session replays exactly", () => {
+  // Which effect the stage plays and which phrasing the Dynawalla reaches for
+  // were both `Math.random()` at the call site, while `surface.ts` went to the
+  // trouble of a deterministic integer-hash mote pool "because the committed
+  // screenshot set has to be comparable frame for frame". The two things that
+  // most change a screenshot were the two that were not seeded.
+  const take = (cursor: number): number[] => {
+    const draw = sequenceFrom(cursor)
+    return Array.from({ length: 8 }, () => draw())
+  }
+  assert.deepEqual(take(41), take(41), "the same cursor did not replay")
+  assert.notDeepEqual(take(41), take(42), "two cursors gave the same sequence")
+  for (const value of take(7)) {
+    assert.ok(value >= 0 && value < 1, `${String(value)} is not a draw in [0, 1)`)
+  }
+  // A whole session's worth without repeating itself into a pattern.
+  const long = Array.from({ length: 500 }, sequenceFrom(0))
+  assert.ok(new Set(long).size > 400, "the sequence is degenerate")
+})
+
+test("only a ladder card at the across-zero rungs is an arrival", () => {
+  // The unit form of the bug `diagnosis.test.ts` drives end to end: a repair
+  // item is served *at* `FIRST_ACROSS_ZERO` by construction, so a rule keyed on
+  // the rung alone announces an arrival that has not happened.
+  const deps = counting()
+  const at = (rung: number, role: "ladder" | "retry" | "repair"): boolean => {
+    const state = startSession({ profileId: "p1", rung, rungCorrect: 0, seedCursor: 0 }, deps)
+    assert.ok(state.card.kind === "problem")
+    return arrivesAcrossZero({ ...state.card, role })
+  }
+  assert.equal(at(FIRST_ACROSS_ZERO, "ladder"), true)
+  assert.equal(at(FIRST_ACROSS_ZERO, "repair"), false)
+  assert.equal(at(FIRST_ACROSS_ZERO, "retry"), false)
+  assert.equal(at(FIRST_ACROSS_ZERO - 1, "ladder"), false)
+  assert.equal(at(LADDER.length - 1, "ladder"), true)
+})
 
 test("commit does no generation — it cannot, and that is the signature", () => {
   const deps = counting()

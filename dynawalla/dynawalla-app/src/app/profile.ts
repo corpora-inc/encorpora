@@ -8,6 +8,13 @@
 //
 // One profile exists today. It is `DEFAULT_PROFILE_ID` and it is written into
 // every key, so the second profile costs a UI and nothing else.
+//
+// It lives in `src/app/` rather than beside the work surface because two
+// surfaces now persist under it — the ladder position and the construction —
+// and `Q-05` forbids `src/world/` from importing anything in `src/work/`. The
+// alternative was a second copy of the key convention, on the keys that hold a
+// real child's progress, which is precisely the collision this file exists to
+// make impossible.
 
 /** The one profile M2 creates. Not special: it is a value in the namespace. */
 export const DEFAULT_PROFILE_ID = "p1"

@@ -69,6 +69,36 @@ test("the verdict row is in the layout before there is a verdict", () => {
   )
 })
 
+test("input settles a reaction; the clock does not", () => {
+  // The whole of the headline bug, as a shape. `settleNow()` on the first line
+  // of every input handler is protection for the child — nobody waits on an
+  // animation. Routing the hold timer through the same door was not: the hold
+  // is 420 ms and the MECHANISM is 1800, so the app's own auto-advance killed
+  // every reaction above SEAT at about a quarter of its budget, mid-motion.
+  // Measured at 38 → 594 ms of an 1800 ms tier, in the real app.
+  //
+  // Two entry points, and the timer takes the one that does not settle.
+  assert.match(practice, /setTimeout\(autoAdvance, hold\)/, "the hold timer calls something else")
+  assert.ok(
+    !/setTimeout\(next\b/.test(practice),
+    "the hold timer is routed through `next`, which settles the reaction",
+  )
+
+  // …and `next` is still what a finger and a key get.
+  assert.match(practice, /onPress=\{next\}/, "the Next plate no longer settles")
+  assert.match(practice, /else next\(\)/, "Enter no longer settles")
+
+  const storeSource = read("store.ts")
+  const body = (name: string): string =>
+    new RegExp(`\\n  ${name}: \\([^)]*\\) => \\{([\\s\\S]*?)\\n  \\},`).exec(storeSource)?.[1] ?? ""
+  assert.match(body("press"), /^\s*settleReactions\(\)/, "press does not settle first")
+  assert.match(body("commitAnswer"), /^\s*settleReactions\(\)/, "commitAnswer does not settle first")
+  assert.ok(
+    !/settleReactions\(\)/.test(body("autoAdvance")),
+    "the auto-advance settles the reaction it was supposed to let play",
+  )
+})
+
 test("the keypad is disabled while a verdict shows, not unmounted", () => {
   // Unmounting it pulls the action row up the screen at the exact moment the
   // child is looking at their answer.
@@ -113,12 +143,81 @@ test("the stopping point offers two plates and emphasises neither", () => {
   )
 })
 
-test("touch targets are big enough for a child's finger", () => {
-  // ≥2 cm. `min-h-19` is 4.75 rem = 76 px = 2.0 cm at the 96 dpi CSS reference.
-  const target = /min-h-(\d+)/.exec(keypad)
-  assert.ok(target !== null)
-  const rem = Number(target[1]) * 0.25
-  assert.ok(rem * 16 >= 75, `keypad targets are ${String(rem * 16)} px, under the 2 cm floor`)
+test("touch targets are big enough for a child's finger, at every viewport height", () => {
+  // ≥2 cm on the diagonal, computed from the vertical scale rather than read
+  // off one class name. The key height now comes down under 720 px of viewport
+  // height so the surface fits a short phone at all, and the thing that must
+  // hold across that change is the target, not the number.
+  //
+  // Width is the constraint that makes the short one legal: at 320 px — the
+  // narrowest width this app ships to — the frame leaves 248 px for three
+  // columns and two 8 px gaps, so a key is 77 px across. The diagonal is what
+  // a finger lands on.
+  assert.match(keypad, /min-h-\[var\(--dw-key-height\)\]/, "the keypad names its own height again")
+
+  const heights = [...tokens.matchAll(/--dw-key-height:\s*([\d.]+)rem/g)].map((m) => Number(m[1]) * 16)
+  assert.ok(heights.length >= 2, "the vertical scale has no short-viewport key height")
+
+  // The narrowest a key can be: 320 px, less the frame's 16 px each side, less
+  // the roomiest recess padding in the scale, less two 8 px gaps, over three
+  // columns. Conservative on purpose — the short rungs pad *less*, so their
+  // keys are wider than this — and derived from the stylesheet rather than
+  // pinned, so a change to the padding scale is a change to this number.
+  const pads = [...tokens.matchAll(/--dw-frame-pad:\s*([\d.]+)rem/g)].map((m) => Number(m[1]) * 16)
+  const width = (320 - 2 * 16 - 2 * Math.max(...pads) - 2 * 8) / 3
+
+  // 2 cm at the 96 dpi CSS reference is 75.6 px.
+  for (const height of heights) {
+    const diagonal = Math.hypot(width, height)
+    assert.ok(
+      diagonal >= 75.6,
+      `a ${String(Math.round(width))} × ${String(height)} key is ${String(Math.round(diagonal))} px on the diagonal, under 2 cm`,
+    )
+  }
+})
+
+test("the commit control is reachable without scrolling, at any viewport height", () => {
+  // Measured in a browser by `bench-reactions.mjs`; asserted here as the
+  // mechanism that makes it true, because the failure is silent. At 320 × 568
+  // and 360 × 640 the document was 878 px and the Check plate's bottom edge sat
+  // at 833 — below the fold at both — so a child on a small phone scrolled to
+  // submit every single answer. Two halves: the surface comes down a scale on
+  // shorter viewports until it fits, and the plate that ends a card is pinned
+  // to the viewport rather than to the end of the stack.
+  assert.match(practice, /sticky bottom-\[var\(--safe-bottom\)\]/, "the action row is not pinned")
+  // Above the home indicator, not under it.
+  assert.ok(!/sticky bottom-0\b/.test(practice), "the action row is pinned under the safe-area inset")
+  // …and it carries a ground, or the keypad scrolls through it.
+  const pinned = /className="([^"]*sticky[^"]*)"/.exec(practice)?.[1] ?? ""
+  assert.match(pinned, /bg-ground-sunk/, "the pinned row is transparent")
+
+  // Every metric on the vertical budget comes down at every rung. One that does
+  // not is how the budget stops adding up: the first cut of this scale left the
+  // lintel out and 320 × 568 missed by five pixels, which is the same failure
+  // as missing by two hundred.
+  const rungs = ["max-height: 900px", "max-height: 720px", "max-height: 620px"]
+  const shrinking = [
+    "--dw-frame-pad",
+    "--dw-stack-gap",
+    "--dw-stack-gap-tight",
+    "--dw-surface-pad",
+    "--dw-lintel-pad",
+  ]
+  for (const rung of rungs) {
+    const block = new RegExp(`@media \\(${rung}\\) \\{([^}]*)\\}`).exec(tokens)?.[1]
+    assert.ok(block !== undefined, `the vertical scale has no ${rung} rung`)
+    for (const token of shrinking) {
+      assert.match(block, new RegExp(`${token}:`), `${token} does not come down at ${rung}`)
+    }
+  }
+  // The two shortest rungs also give up type and target size, which the roomier
+  // one does not have to.
+  for (const rung of ["max-height: 720px", "max-height: 620px"]) {
+    const block = new RegExp(`@media \\(${rung}\\) \\{([^}]*)\\}`).exec(tokens)?.[1] ?? ""
+    for (const token of ["--dw-band-height", "--dw-key-height", "--dw-numeral-size"]) {
+      assert.match(block, new RegExp(`${token}:`), `${token} does not come down at ${rung}`)
+    }
+  }
 })
 
 test("input is bound on pointerdown, not click", () => {
