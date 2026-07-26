@@ -1,7 +1,12 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
+import fs from "node:fs"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
 
 import { resolveTheme, useThemeStore, DARK_CLASS } from "./theme.ts"
+
+const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 
 test("system mode follows the platform, explicit modes override it", () => {
   assert.equal(resolveTheme("system", true), "dark")
@@ -31,7 +36,15 @@ test("setMode notifies subscribers, which is what repaints the shell", () => {
   assert.deepEqual(seen, ["dark", "light", "system"])
 })
 
-test("the dark class is a single stable token", () => {
-  // index.css and the Tailwind dark variant both hardcode this string.
-  assert.equal(DARK_CLASS, "dw-dark")
+test("the stylesheets are cut for the class the shell actually sets", () => {
+  // The constant is what `<html>` gets; the stylesheets name the same string
+  // in three places that TypeScript cannot see. Renaming the constant and its
+  // literal together would leave all three stale, and the only symptom is a
+  // dark-mode switch that changes a class and nothing else.
+  const indexCss = fs.readFileSync(path.join(srcRoot, "index.css"), "utf8")
+  const tokensCss = fs.readFileSync(path.join(srcRoot, "design/tokens.css"), "utf8")
+
+  assert.match(indexCss, new RegExp(`@custom-variant dark \\(&:where\\(\\.${DARK_CLASS},`))
+  assert.match(indexCss, new RegExp(`html\\.${DARK_CLASS}\\s*\\{`))
+  assert.match(tokensCss, new RegExp(`^\\.${DARK_CLASS}\\s*\\{`, "m"))
 })

@@ -8,10 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "tsc": "tsc --noEmit",
+    "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",
     "test": "node --experimental-strip-types --test 'src/**/*.test.ts'"
   },

@@ -1,5 +1,6 @@
 import { Link, Outlet, useMatches } from "react-router"
 
+import { IndexMark } from "../design/IndexMark.tsx"
 import { Strapwork } from "../design/Strapwork.tsx"
 import { strings } from "./strings.ts"
 import { DESTINATIONS, type Destination } from "./routes.ts"
@@ -27,9 +28,7 @@ function Lintel() {
 
         {here ? (
           <span className="flex items-baseline gap-2 text-sm text-ink-muted">
-            <span aria-hidden="true" className="text-index">
-              ◆
-            </span>
+            <IndexMark className="text-index" />
             {strings.destinations[here]}
           </span>
         ) : null}

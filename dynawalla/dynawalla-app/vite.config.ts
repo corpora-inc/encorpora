@@ -28,9 +28,17 @@ export default defineConfig({
   clearScreen: false,
 
   build: {
-    // The oldest WebView we ship to is the one on a stock Android 8 device
-    // (minSdk 26) that has never taken a WebView update. es2020 is what that
-    // engine parses; Vite's default baseline target is newer.
+    // Pinned, not inherited. Vite 8's default is `baseline-widely-available`
+    // — chrome111 / safari16.4 / ios16.4 — which sits *above* the iOS 16.0
+    // floor this app's bundle config promises, and a Vite upgrade moves it
+    // again without a word.
+    //
+    // The real floor is iOS 16.0 and, on Android, a WebView kept current
+    // through Play. minSdk 26 does not mean the 2017 engine in an Android 8
+    // system image: React 19 does not run there at all, and neither does the
+    // emitted bundle, which contains `??` (Chrome 80). A device that installs
+    // from Play has an updated WebView; one that cannot is not a device this
+    // app ships to.
     target: "es2020",
     sourcemap: false,
   },
@@ -40,7 +48,9 @@ export default defineConfig({
     port: 1423,
     strictPort: true,
     host: devHost || "127.0.0.1",
-    hmr: devHost ? { protocol: "ws", host: devHost, port: 1423 } : undefined,
+    // Spread rather than `hmr: undefined`: the option is optional, not
+    // nullable, and this project is checked with `exactOptionalPropertyTypes`.
+    ...(devHost ? { hmr: { protocol: "ws" as const, host: devHost, port: 1423 } } : {}),
     watch: {
       ignored: ["**/src-tauri/**"],
     },

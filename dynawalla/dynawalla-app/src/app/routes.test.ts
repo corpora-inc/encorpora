@@ -1,5 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
+import { matchPath } from "react-router"
 
 import {
   ROUTE_PATHS,
@@ -41,6 +42,39 @@ test("hrefs are concrete, never the pattern", () => {
     assert.ok(!href.includes(":"), `${destination} href leaks the route pattern`)
     assert.ok(!href.includes("?"), `${destination} href leaks an optional segment`)
   }
+})
+
+test("every href is derived from its pattern, not written down twice", () => {
+  // A literal href that has drifted from its pattern still has no `:` in it,
+  // so the test above cannot see it. This one can: rename the pattern and a
+  // stale literal stops being its prefix.
+  for (const destination of DESTINATIONS) {
+    const pattern = ROUTE_PATHS[destination]
+    assert.ok(
+      pattern.startsWith(destinationPath(destination)),
+      `${destination}: href ${destinationPath(destination)} is not a prefix of ${pattern}`,
+    )
+  }
+  assert.ok(practicePath("x").startsWith(destinationPath("practice")))
+})
+
+test("the router this app ships actually matches the hrefs it generates", () => {
+  // ADR-0005 specifies react-router v7; this app is on v8. The behaviour the
+  // route table depends on is the optional segment `:skillId?` — one route
+  // serving both "resume" and "drill this skill". Asserting the string exists
+  // would pass on a version that had dropped the feature, so this asks the
+  // installed matcher, which is the same code the shell routes with.
+  for (const destination of DESTINATIONS) {
+    const href = destinationPath(destination)
+    assert.ok(
+      matchPath(ROUTE_PATHS[destination], href),
+      `${ROUTE_PATHS[destination]} does not match its own href ${href}`,
+    )
+  }
+  assert.ok(matchPath(ROUTE_PATHS.home, destinationPath("practice")) === null)
+
+  const drill = matchPath(ROUTE_PATHS.practice, practicePath("add.regroup-2d"))
+  assert.equal(drill?.params.skillId, "add.regroup-2d")
 })
 
 test("skill ids are escaped into the path", () => {

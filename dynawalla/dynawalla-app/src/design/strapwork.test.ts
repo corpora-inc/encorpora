@@ -61,4 +61,24 @@ test("a band that cannot be drawn throws instead of emitting NaN", () => {
   assert.throws(() => strapworkTile({ ...spec, unit: 0 }), RangeError)
   assert.throws(() => strapworkTile({ ...spec, height: -1 }), RangeError)
   assert.throws(() => strapworkTile({ ...spec, inset: 40 }), RangeError)
+  assert.throws(() => strapworkTile({ ...spec, unit: Number.NaN }), RangeError)
+})
+
+test("a band that would draw outside itself throws too", () => {
+  // Clipping is quieter than NaN and just as wrong: the tile keeps its size,
+  // so the motif is cropped at the seam on every repeat and nothing errors.
+  // `knot` is the tuning knob, which makes it the parameter most likely to be
+  // pushed past what the band can hold.
+  assert.throws(() => strapworkTile({ ...spec, knot: 20 }), RangeError)
+  assert.throws(() => strapworkTile({ ...spec, knot: -1 }), RangeError)
+  // Taller than the band it sits in.
+  assert.throws(() => strapworkTile({ ...spec, height: 12, knot: 6.5 }), RangeError)
+  // Wide enough to reach the next crossing, in a band tall enough to hide it.
+  assert.throws(() => strapworkTile({ ...spec, height: 40, knot: 6.5 }), RangeError)
+
+  // Two straps on one flat line is not an interlace.
+  assert.throws(() => strapworkTile({ ...spec, inset: spec.height / 2 }), RangeError)
+
+  // And the bounds themselves are still drawable.
+  assert.ok(strapworkTile({ ...spec, knot: spec.unit / 4 }).knots.length === 2)
 })

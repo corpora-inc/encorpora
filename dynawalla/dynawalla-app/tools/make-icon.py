@@ -87,6 +87,15 @@ def main(out):
                 + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF))
 
     png = b"\x89PNG\r\n\x1a\n"
+    # Colour type 6 (RGBA) is required, not chosen: tauri-codegen's
+    # `generate_context!` reads this file and panics "icon ... is not RGBA" on
+    # anything else, two minutes into a cargo build no CI job runs. Every pixel
+    # here is opaque, so the channel carries nothing — but it must be present.
+    #
+    # Downstream, the iOS AppIcon asset must NOT carry it: App Store validation
+    # rejects an icon with an alpha channel (ITMS-90717), and `tauri icon`
+    # emits RGBA for the iOS set as well. That flattening belongs with the iOS
+    # target (PR-1.3); it cannot be done here.
     png += chunk(b"IHDR", struct.pack(">IIBBBBB", S, S, 8, 6, 0, 0, 0))
     png += chunk(b"IDAT", zlib.compress(bytes(raw), 9))
     png += chunk(b"IEND", b"")

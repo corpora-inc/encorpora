@@ -1,8 +1,6 @@
-import { strapworkTile } from "./strapwork.ts"
+import { useId } from "react"
 
-// One pattern definition serves every band on the page: the tile is a constant,
-// so a shared id is correct and keeps the markup deterministic.
-const PATTERN_ID = "dw-strapwork"
+import { strapworkTile } from "./strapwork.ts"
 
 const UNIT = 24
 const HEIGHT = 10
@@ -16,17 +14,23 @@ const TILE = strapworkTile({ unit: UNIT, height: HEIGHT, inset: 1.5, knot: 2 })
  * at any width and simply repeats more times on a wider screen.
  */
 export function Strapwork({ className }: { className?: string }) {
+  // One id per band. Two bands sharing one is invalid markup, and the moment
+  // the tile takes parameters the second band silently paints the first one's
+  // pattern. React 19 ids contain punctuation that a URL fragment should not
+  // carry, so only the alphanumerics survive.
+  const patternId = `dw-strapwork-${useId().replace(/[^a-zA-Z0-9]/g, "")}`
+
   return (
     <svg
       aria-hidden="true"
-      className={className}
+      // `block`, not an inline style: the CSP forbids inline style entirely.
+      className={className ? `block ${className}` : "block"}
       width="100%"
       height={HEIGHT}
-      style={{ display: "block" }}
     >
       <defs>
         <pattern
-          id={PATTERN_ID}
+          id={patternId}
           width={UNIT}
           height={HEIGHT}
           patternUnits="userSpaceOnUse"
@@ -38,7 +42,7 @@ export function Strapwork({ className }: { className?: string }) {
           ))}
         </pattern>
       </defs>
-      <rect width="100%" height={HEIGHT} fill={`url(#${PATTERN_ID})`} />
+      <rect width="100%" height={HEIGHT} fill={`url(#${patternId})`} />
     </svg>
   )
 }

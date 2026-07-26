@@ -110,6 +110,52 @@ test("reduced motion collapses every motion duration", () => {
   }
 })
 
+test("components name roles, not materials", () => {
+  // `@theme` publishes the palette as Tailwind utilities too, so
+  // `bg-parchment-50` compiles, passes the lint, contains no hex for the test
+  // below to find — and does not re-cut under `.dw-dark`. That is precisely
+  // the silent light-on-dark failure the semantic layer exists to prevent, and
+  // it is the most convenient way to bypass it. Tailwind's own built-in
+  // palette is the same hazard by a different name.
+  const families = new Set<string>()
+  for (const name of palette.keys()) {
+    const m = /^--color-([a-z]+)-\d+$/.exec(name)
+    if (m) families.add(m[1]!)
+  }
+  for (const builtin of [
+    "slate", "gray", "zinc", "neutral", "red", "orange", "amber", "yellow",
+    "lime", "green", "emerald", "teal", "cyan", "sky", "blue", "indigo",
+    "violet", "purple", "fuchsia", "pink", "rose", "white", "black",
+  ]) {
+    families.add(builtin)
+  }
+
+  const utility = new RegExp(
+    String.raw`\b(?:bg|text|border|fill|stroke|outline|ring|divide|accent|caret|decoration|shadow|placeholder|from|via|to)` +
+      String.raw`-(?:${[...families].join("|")})\b`,
+    "g",
+  )
+
+  const offenders: string[] = []
+  const walk = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) {
+        walk(full)
+        continue
+      }
+      if (!/\.(ts|tsx)$/.test(entry.name)) continue
+      if (entry.name.endsWith(".test.ts")) continue
+      for (const m of fs.readFileSync(full, "utf8").matchAll(utility)) {
+        offenders.push(`${path.relative(srcRoot, full)}: ${m[0]}`)
+      }
+    }
+  }
+  walk(srcRoot)
+
+  assert.deepEqual(offenders, [], "material colour utilities in components")
+})
+
 test("no colour literal exists outside the palette", () => {
   // The palette block is the only place a hex may appear. Anywhere else it is
   // a colour that cannot follow the theme and cannot be re-cut for dark.

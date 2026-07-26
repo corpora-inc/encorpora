@@ -47,8 +47,16 @@ export function strapworkTile(spec: StrapworkSpec): StrapworkTile {
   if (!(unit > 0) || !(height > 0)) {
     throw new RangeError("strapworkTile: unit and height must be positive")
   }
-  if (inset < 0 || inset * 2 > height) {
+  // `>=`, not `>`: at inset = height/2 the two straps collapse onto the same
+  // flat line, which draws without complaint and is not an interlace.
+  if (!(inset >= 0) || inset * 2 >= height) {
     throw new RangeError("strapworkTile: inset must fit inside the band")
+  }
+  // The lozenge is centred on a crossing at unit/4, so it reaches mid ± knot
+  // vertically and unit/4 ± knot horizontally. Outside either bound it clips
+  // silently against the pattern tile rather than failing.
+  if (!(knot >= 0) || knot * 2 > height || knot * 4 > unit) {
+    throw new RangeError("strapworkTile: knot must fit inside the band")
   }
 
   const top = inset

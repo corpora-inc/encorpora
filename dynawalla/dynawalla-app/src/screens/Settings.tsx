@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Destination } from "./Destination.tsx"
 import { IndexMark } from "../design/IndexMark.tsx"
 import { useThemeStore, type ThemeMode } from "../app/theme.ts"
-import { appVersion } from "../app/platform.ts"
+import { appVersion, BUILD_VERSION } from "../app/platform.ts"
 import { strings } from "../app/strings.ts"
 
 const MODES: ThemeMode[] = ["system", "light", "dark"]
@@ -47,15 +47,24 @@ function ThemeControl() {
  * The version is read across the native boundary on device, which is the one
  * place this shell touches Rust — and therefore the one place a wrong
  * capability grant or a too-tight CSP shows up as something a person can see.
+ *
+ * A rejected bridge is exactly what a wrong grant produces, so it is caught:
+ * logged where a developer will find it, and degraded to the version compiled
+ * into the bundle. A parent asked for the build number gets one either way.
  */
 function Version() {
   const [version, setVersion] = useState<string | null>(null)
 
   useEffect(() => {
     let live = true
-    void appVersion().then((value) => {
-      if (live) setVersion(value)
-    })
+    void appVersion()
+      .catch((error: unknown) => {
+        console.error("dynawalla: the native bridge did not answer", error)
+        return BUILD_VERSION
+      })
+      .then((value) => {
+        if (live) setVersion(value)
+      })
     return () => {
       live = false
     }

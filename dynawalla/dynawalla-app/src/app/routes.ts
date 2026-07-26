@@ -22,13 +22,40 @@ export const DESTINATIONS = ["practice", "world", "progress", "profiles", "setti
 
 export type Destination = (typeof DESTINATIONS)[number]
 
+/**
+ * The literal prefix of a route pattern: everything up to its first dynamic
+ * segment.
+ *
+ * Derived, never written down a second time. A hardcoded `"/practice"` here
+ * would survive a rename of the pattern above and leave the primary link
+ * pointing at a route that no longer exists — green tests, dead front door.
+ *
+ * Only an *optional* segment may be dropped: a pattern with a required
+ * parameter has no bare href at all, and silently returning its prefix would
+ * hand back a path the router does not match.
+ */
+function literalPrefix(pattern: string): string {
+  const kept: string[] = []
+  for (const segment of pattern.split("/")) {
+    if (!segment.startsWith(":")) {
+      kept.push(segment)
+      continue
+    }
+    if (!segment.endsWith("?")) {
+      throw new RangeError(`${pattern} has a required parameter and no bare href`)
+    }
+    break
+  }
+  return kept.join("/") || "/"
+}
+
 /** A concrete href for a destination — never the pattern, which has a `:` in it. */
 export function destinationPath(destination: Destination): string {
-  if (destination === "practice") return "/practice"
-  return ROUTE_PATHS[destination]
+  return literalPrefix(ROUTE_PATHS[destination])
 }
 
 /** The href for one skill's practice session. */
 export function practicePath(skillId: string): string {
-  return `/practice/${encodeURIComponent(skillId)}`
+  const base = literalPrefix(ROUTE_PATHS.practice)
+  return `${base === "/" ? "" : base}/${encodeURIComponent(skillId)}`
 }

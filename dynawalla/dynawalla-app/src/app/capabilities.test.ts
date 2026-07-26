@@ -56,6 +56,34 @@ test("the CSP is non-null and closed by default", () => {
   assert.match(policy, /script-src 'self'\s*;/)
 })
 
+test("nothing sets a style attribute the CSP would refuse to apply", () => {
+  // `style-src` admits no inline style, so a `style={{ ... }}` anywhere would
+  // be dropped by the WebView on the shipped protocol and applied everywhere
+  // else — a layout that is correct in `vite preview` and wrong on device.
+  // The two must move together, so this test refuses to let them drift.
+  const styleSrc = /style-src ([^;]+)/.exec(app.security.csp as string)?.[1] ?? ""
+  if (styleSrc.includes("'unsafe-inline'")) return
+
+  const appRoot = path.resolve(srcRoot, "..")
+  const offenders: string[] = []
+  const check = (full: string) => {
+    if (/(?:^|[\s{])style=/m.test(fs.readFileSync(full, "utf8"))) {
+      offenders.push(path.relative(appRoot, full))
+    }
+  }
+  const walk = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) walk(full)
+      else if (/\.tsx$/.test(entry.name)) check(full)
+    }
+  }
+  walk(srcRoot)
+  check(path.join(appRoot, "index.html"))
+
+  assert.deepEqual(offenders, [], "inline style with a CSP that forbids it")
+})
+
 test("no grant is a whole plugin", () => {
   // ADR-0005 point 4. Corpán's capability file is the precedent NOT followed:
   // 11 of its 14 grants are `<plugin>:default`.
@@ -75,6 +103,48 @@ test("grants and native calls are the same set, in both directions", () => {
   assert.deepEqual(granted, required)
 })
 
+/**
+ * Every specifier in `text` that reaches the native bridge.
+ *
+ * The org scope, not just `@tauri-apps/api`: the declared V1 surface beyond
+ * this shell is haptics and text-to-speech, which ship as `@tauri-apps/plugin-*`
+ * packages. And every import form, not just a static double-quoted one — a
+ * plugin pulled in by `await import(...)` or by a side-effect import reaches
+ * exactly the same IPC.
+ */
+export function nativeImports(text: string): string[] {
+  const pattern = /(?:\bfrom|\bimport|\brequire)\s*\(?\s*["'](@tauri-apps\/[^"']+)["']/g
+  return [...text.matchAll(pattern)].map((m) => m[1]!)
+}
+
+test("the import scan sees every form an import can take", () => {
+  // A guard that silently does not fire is worse than no guard: the README
+  // and the capability table are written as though this one does. These are
+  // the forms a real file can use, each one checked rather than assumed.
+  const seen = (source: string) => nativeImports(source)
+
+  assert.deepEqual(seen(`import { getVersion } from "@tauri-apps/api/app"`), [
+    "@tauri-apps/api/app",
+  ])
+  assert.deepEqual(seen(`import { vibrate } from "@tauri-apps/plugin-haptics"`), [
+    "@tauri-apps/plugin-haptics",
+  ])
+  assert.deepEqual(seen(`import { speak } from '@tauri-apps/plugin-tts'`), [
+    "@tauri-apps/plugin-tts",
+  ])
+  assert.deepEqual(seen(`const w = await import("@tauri-apps/api/window")`), [
+    "@tauri-apps/api/window",
+  ])
+  assert.deepEqual(seen(`import "@tauri-apps/plugin-haptics"`), ["@tauri-apps/plugin-haptics"])
+  assert.deepEqual(seen(`export { invoke } from "@tauri-apps/api/core"`), [
+    "@tauri-apps/api/core",
+  ])
+
+  // And it does not fire on things that are not imports.
+  assert.deepEqual(seen(`// see the @tauri-apps/api docs`), [])
+  assert.deepEqual(seen(`import { useId } from "react"`), [])
+})
+
 test("no source file reaches native without declaring the call", () => {
   const declared = new Set(NATIVE_CALLS.map((call) => call.module))
   const found = new Set<string>()
@@ -88,9 +158,8 @@ test("no source file reaches native without declaring the call", () => {
       }
       if (!/\.(ts|tsx)$/.test(entry.name)) continue
       if (entry.name.endsWith(".test.ts")) continue
-      const text = fs.readFileSync(full, "utf8")
-      for (const m of text.matchAll(/from\s+"(@tauri-apps\/api[^"]*)"/g)) {
-        found.add(m[1]!)
+      for (const module of nativeImports(fs.readFileSync(full, "utf8"))) {
+        found.add(module)
       }
     }
   }
@@ -116,6 +185,22 @@ test("the mobile floors are the ones the stores require", () => {
   // generated Gradle config and land with the Android target in PR-1.3.
   assert.equal(bundle.iOS?.minimumSystemVersion, "16.0")
   assert.equal(bundle.android?.minSdkVersion, 26)
+})
+
+test("the app icon is the format the build macro accepts", () => {
+  // `tauri::generate_context!` decodes this file and panics "icon ... is not
+  // RGBA" on any other colour type — two minutes into a cargo build that no CI
+  // job here runs. Stripping the all-opaque alpha channel is the obvious
+  // improvement (Apple rejects an icon that carries one into the AppIcon
+  // asset, ITMS-90717) and it does not compile, so the constraint is asserted
+  // in a place that answers in milliseconds. The iOS flattening belongs with
+  // the iOS target, not with this source file.
+  const png = fs.readFileSync(path.join(tauriRoot, "icons/icon.png"))
+  assert.equal(png.subarray(0, 8).toString("latin1"), "\x89PNG\r\n\x1a\n")
+  assert.equal(png.subarray(12, 16).toString("latin1"), "IHDR")
+  assert.equal(png.readUInt32BE(16), 512, "icon width")
+  assert.equal(png.readUInt32BE(20), 512, "icon height")
+  assert.equal(png[25], 6, "PNG colour type must be 6 (RGBA) or the Rust build panics")
 })
 
 test("no Cargo workspace section captures a sibling app", () => {

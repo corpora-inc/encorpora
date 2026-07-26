@@ -30,11 +30,16 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
-    "types": ["vite/client", "node"],
+    /* Browser source only. Node's globals are deliberately absent: with them
+       in scope a component can write `process.env.X`, typecheck, and then
+       throw ReferenceError in the WebView, because Vite shims no `process` in
+       a production build. The tests, which do need them, are typechecked by
+       `tsconfig.test.json`. */
+    "types": ["vite/client"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["src/**/*.test.ts"]
 }
