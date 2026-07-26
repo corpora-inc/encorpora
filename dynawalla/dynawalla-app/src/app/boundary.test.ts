@@ -11,6 +11,11 @@
 // the way that erodes is not a pull request titled "put the curriculum back" —
 // it is one import, from one screen, of one generator, because it was easier
 // than defining the boundary.
+//
+// It has exactly one exemption — the pack SDK's entry point, which is the
+// contract both sides are built against rather than anything either side runs —
+// and the exemption has a test of its own, because an exemption nobody measures
+// is how the boundary erodes on the second try.
 
 import { test } from "node:test"
 import assert from "node:assert/strict"
@@ -94,8 +99,9 @@ test("the host imports no curriculum and no content of any kind", () => {
   const offenders: string[] = []
   for (const file of modules) {
     for (const specifier of specifiers(file)) {
-      const relative = specifier.startsWith(".")
-      const resolved = relative ? path.resolve(path.dirname(file), specifier) : null
+      const resolved = specifier.startsWith(".")
+        ? path.resolve(path.dirname(file), specifier)
+        : null
       // The contract, and only the contract. Every other path out of `src/` is
       // still an offence, including another file in the same SDK directory.
       if (resolved === SDK_ENTRY) continue
