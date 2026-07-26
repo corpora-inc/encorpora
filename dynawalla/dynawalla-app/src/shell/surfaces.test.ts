@@ -71,6 +71,10 @@ const rowsOf = (destination: Destination, view: HostView): Row[] =>
 
 /** Everything a row must carry to be worth the space it takes. */
 function assertCarries(row: Row, where: string): void {
+  // Typed `string`, so a missing key arrives as `null` at runtime rather than
+  // as a type error — and reading `.length` off it threw here instead of
+  // reporting which row was malformed. Checked as a value first.
+  assert.equal(typeof row.key, "string", `${where}: a row keyed by ${String(row.key)}`)
   assert.ok(row.key.length > 0, `${where}: a row with no key`)
   switch (row.kind) {
     case "fact":
@@ -120,39 +124,66 @@ test("no destination is empty on a device nobody has used yet", () => {
   }
 })
 
-test("every destination is still whole with a family's worth of state on it", () => {
-  // The cold device is the case that hides an empty screen; a used one is the
-  // case that hides a row built from something that is only sometimes there.
-  const used: HostView = {
-    ...coldHost,
-    profiles: [
-      { id: "p1", name: "Aster" },
-      { id: "p2", name: "" },
-    ],
-    currentId: "p2",
-    packs: [
-      {
-        id: "inc.corpora.pack.example",
-        name: "Example",
-        version: "1.0.0",
-        bytes: 4_194_304,
-        sha256: "0".repeat(64),
-        installedAt: 0,
-      },
-    ],
-    placed: 37,
-    record: { answered: 120, correct: 91 },
-    storageBytes: 8_192,
-    storage: [{ key: storageKey("p1", "record"), bytes: 64 }],
-    settings: { ...DEFAULT_SETTINGS, developer: true },
-    armed: true,
-    native: true,
-  }
+/**
+ * A device a family has used: two learners, a pack installed, work behind them,
+ * and developer mode on.
+ *
+ * The cold device is the case that hides an empty screen; a used one is the case
+ * that hides a row built from something that is only sometimes there — which is
+ * exactly what `developer: true` exposes, since the diagnostics section is the
+ * only one built by mapping over a table the host does not own.
+ */
+const usedHost: HostView = {
+  ...coldHost,
+  profiles: [
+    { id: "p1", name: "Aster" },
+    { id: "p2", name: "" },
+  ],
+  currentId: "p2",
+  packs: [
+    {
+      id: "inc.corpora.pack.example",
+      name: "Example",
+      version: "1.0.0",
+      bytes: 4_194_304,
+      sha256: "0".repeat(64),
+      installedAt: 0,
+    },
+  ],
+  placed: 37,
+  record: { answered: 120, correct: 91 },
+  storageBytes: 8_192,
+  storage: [{ key: storageKey("p1", "record"), bytes: 64 }],
+  settings: { ...DEFAULT_SETTINGS, developer: true },
+  armed: true,
+  native: true,
+}
 
+test("every destination is still whole with a family's worth of state on it", () => {
   for (const destination of DESTINATIONS) {
-    const rows = rowsOf(destination, used)
+    const rows = rowsOf(destination, usedHost)
     assert.ok(rows.length > 0, `${destination} renders nothing`)
     for (const row of rows) assertCarries(row, destination)
+  }
+})
+
+test("no section draws two rows under the same key", () => {
+  // `Surface.tsx` keys each `<li>` by `row.key` inside its section's `<ul>`, so
+  // a section holding the key twice is a row React may drop — a screen missing a
+  // line, with rows.length still right and every other assertion here green.
+  // The diagnostics section is where it bites: `invoke` and `Channel` both reach
+  // `packs_install`, so keying those rows by the command alone collides.
+  for (const view of [coldHost, usedHost]) {
+    for (const destination of DESTINATIONS) {
+      for (const section of surfaceOf(destination, view, recorder().actions)) {
+        const keys = section.rows.map((row) => row.key)
+        assert.equal(
+          new Set(keys).size,
+          keys.length,
+          `${destination}/${section.key} repeats a row key: ${keys.join(", ")}`,
+        )
+      }
+    }
   }
 })
 

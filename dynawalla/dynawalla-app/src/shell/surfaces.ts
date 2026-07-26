@@ -17,7 +17,7 @@
 // The view is a snapshot and the actions are separate: the model is then pure,
 // so the test drives it with no DOM, no React and no router.
 
-import { NATIVE_CALLS } from "../app/permissions.ts"
+import { NATIVE_CALLS, callId, grantOf } from "../app/permissions.ts"
 import type { Destination } from "../app/routes.ts"
 import { strings, dev, fill } from "../app/strings.ts"
 import { formatBytes, packBytes, type InstalledPack } from "../packs/registry.ts"
@@ -352,8 +352,11 @@ function parentsSurface(view: HostView, act: HostActions): readonly Section[] {
         // holds against `src-tauri/capabilities/default.json`. What the app may
         // ask the operating system for is a thing a parent is entitled to see,
         // and a thing a developer needs on a device where it is failing.
+        // Named by `grantOf`, not by `permission`: a command this app registers
+        // itself has no ACL permission to show — it has a command — and reading
+        // the field directly drew a row called `null` with a `null` key.
         ...NATIVE_CALLS.map(
-          (call): Row => fact(call.permission, call.permission, `${call.module}.${call.fn}`),
+          (call): Row => fact(callId(call), grantOf(call), `${call.module}.${call.fn}`),
         ),
         ...view.storage.map((entry): Row => fact(entry.key, entry.key, formatBytes(entry.bytes))),
       ],
