@@ -13,14 +13,34 @@
 // work: the pawl that holds the count, the weight that drives it, and the stone
 // that light passes through — which is the thing being built.
 //
+// ## Particles start at ENGAGE, and that is the doc's rule
+//
+// EXPERIENCE_DESIGN's SEAT row reads "One detent click, one gear tooth, a
+// `light` haptic, **no particles**". The first cut of this file gave both SEAT
+// effects three motes each, which contradicted the doc on the reaction the
+// child sees most — and the contradiction was load-bearing, because under a
+// *multiplicative* energy formula a particle-free effect scores zero and
+// `energy(SLIP) < energy(SEAT)` cannot hold at all.
+//
+// Two changes, together. The particle term is additive — `(1 + particles)` —
+// so a particle-free effect has a real energy that its budget, gain and moving
+// parts still order. And nothing below ENGAGE throws a mote: SEAT because the
+// doc says so, SLIP because SLIP must be quieter than SEAT and a chip of stone
+// flying off is unarguably more animated than a pawl dropping into a tooth.
+// That is the "catapult falling short" failure EXPERIENCE_DESIGN names, and
+// the only way to rule it out is to not have the catapult.
+//
 // ## The energy ladder
 //
-// Each effect declares the three factors EXPERIENCE_DESIGN's energy formula
-// needs beyond its tier's budget: how many motes it throws, its peak output
-// amplitude, and how many things move. `energy = budgetMs × particles ×
-// peakGain × elements`, and `effects.test.ts` asserts the whole ladder is
-// strictly ordered — the loudest slip is quieter than the quietest seat, the
-// loudest seat quieter than the quietest engage, and so on to the top.
+// `energy = budgetMs × (1 + particles) × peakGain × elements`, and
+// `reactions.test.ts` asserts the whole ladder is strictly ordered — the
+// loudest slip is quieter than the quietest seat, the loudest seat quieter
+// than the quietest engage, and so on to the top.
+//
+// `particles` and `elements` are **disjoint** counts: `elements` is the drawn
+// parts the frame animates and the mote cloud is not one of them. They were
+// tangled in the first cut, which is why dropping the motes from SEAT would
+// otherwise have left `elements` counting something that is no longer drawn.
 //
 // `peakGain` is a real number that a real thing reads: every effect multiplies
 // its brightest element's alpha by it. When the Web Audio layer lands at PR 2.7
@@ -44,19 +64,28 @@ export type Requirement = "seat" | "cartouche" | "aperture"
 export interface Effect {
   readonly id: string
   readonly tier: TierName
-  /** Motes thrown at peak. Feeds the energy formula and the pool. */
+  /** Motes thrown at peak. Zero below ENGAGE. Feeds the energy formula and the pool. */
   readonly particles: number
   /** Peak output amplitude, 0…1. Multiplies the brightest element's alpha. */
   readonly peakGain: number
-  /** Independently animated elements. */
+  /** Independently animated drawn parts. Does **not** count the mote cloud. */
   readonly elements: number
   readonly needs: readonly Requirement[]
+  /**
+   * The anchor this effect may not draw outside of, or `null` for no clip.
+   *
+   * The canvas is `fixed inset-0` over the whole app, so an arc struck around a
+   * 44 px rosette in a 72 px band overran the band's top edge and drew across
+   * the header. A clip is the honest fix: the effect keeps its geometry and the
+   * stage keeps it inside the thing it is playing on.
+   */
+  readonly clip: Requirement | null
   readonly draw: (ctx: Ctx, frame: Frame) => void
 }
 
 /** EXPERIENCE_DESIGN's energy measure, over one effect. */
 export function energy(effect: Effect): number {
-  return TIERS[effect.tier].budgetMs * effect.particles * effect.peakGain * effect.elements
+  return TIERS[effect.tier].budgetMs * (1 + effect.particles) * effect.peakGain * effect.elements
 }
 
 /** The notch pitch of the pawl rail, in pixels. */
@@ -73,15 +102,18 @@ function tooth(ctx: Ctx, x: number, y: number, height: number, colour: string): 
 
 // ── Tier −1 · SLIP ─────────────────────────────────────────────────────────
 // Visually interesting and clearly non-successful. Both of these are the
-// mechanism failing to take: nothing advances, and one chip comes off.
+// mechanism failing to take: nothing advances. No motes — see the header: the
+// chip of stone flying off was the loudest thing in the bottom two tiers, on
+// the outcome that must never be the interesting one.
 
 const chisel: Effect = {
   id: "chisel",
   tier: "slip",
-  particles: 1,
+  particles: 0,
   peakGain: 0.3,
-  elements: 2,
+  elements: 1,
   needs: ["seat"],
+  clip: null,
   draw: (ctx, frame) => {
     const seat = frame.anchor.seat
     if (seat === null) return
@@ -90,17 +122,17 @@ const chisel: Effect = {
     ctx.lineCap = "round"
     ctx.globalAlpha = frame.alpha * frame.gain
     line(ctx, { x: seat.x, y }, { x: x1, y: y + seat.height * 0.1 }, frame.ink.strike, 2)
-    motes(ctx, frame, { x: x1, y }, 5, frame.ink.strike)
   },
 }
 
 const stall: Effect = {
   id: "stall",
   tier: "slip",
-  particles: 1,
+  particles: 0,
   peakGain: 0.28,
   elements: 2,
   needs: ["seat"],
+  clip: null,
   draw: (ctx, frame) => {
     const seat = frame.anchor.seat
     if (seat === null) return
@@ -111,22 +143,23 @@ const stall: Effect = {
     ctx.globalAlpha = frame.alpha * frame.gain
     for (let i = 0; i < 3; i++) tooth(ctx, x + i * TOOTH, y, 5, frame.ink.line)
     tooth(ctx, x + TOOTH + lean, y - 1, 7, frame.ink.strike)
-    motes(ctx, frame, { x: x + TOOTH + lean, y: y + 5 }, 3, frame.ink.line)
   },
 }
 
 // ── Tier 0 · SEAT ──────────────────────────────────────────────────────────
 // Ordinary correctness. 200 ms, one detent, then earned stillness. This is the
 // reaction the child sees hundreds of times, so it is the one that must never
-// be in the way.
+// be in the way — and, per EXPERIENCE_DESIGN's SEAT row, the one with no
+// particles in it at all.
 
 const detent: Effect = {
   id: "detent",
   tier: "seat",
-  particles: 3,
+  particles: 0,
   peakGain: 0.55,
   elements: 2,
   needs: ["seat"],
+  clip: null,
   draw: (ctx, frame) => {
     const seat = frame.anchor.seat
     if (seat === null) return
@@ -137,17 +170,17 @@ const detent: Effect = {
     for (let i = 0; i < 3; i++) tooth(ctx, x + i * TOOTH, y, 5, frame.ink.line)
     ctx.globalAlpha = frame.alpha * frame.gain
     tooth(ctx, pawl, y - 1, 7, frame.ink.index)
-    motes(ctx, frame, { x: pawl, y: y + 2 }, 4, frame.ink.celestial)
   },
 }
 
 const glint: Effect = {
   id: "glint",
   tier: "seat",
-  particles: 3,
+  particles: 0,
   peakGain: 0.52,
   elements: 2,
   needs: ["seat"],
+  clip: null,
   draw: (ctx, frame) => {
     const seat = frame.anchor.seat
     if (seat === null) return
@@ -165,7 +198,6 @@ const glint: Effect = {
       frame.ink.seat,
       2,
     )
-    motes(ctx, frame, centre(seat), 6, frame.ink.celestial)
   },
 }
 
@@ -178,8 +210,9 @@ const tessera: Effect = {
   tier: "engage",
   particles: 6,
   peakGain: 0.7,
-  elements: 3,
+  elements: 2,
   needs: ["aperture"],
+  clip: "cartouche",
   draw: (ctx, frame) => {
     const cell = frame.anchor.aperture
     if (cell === null) return
@@ -201,8 +234,9 @@ const counterweight: Effect = {
   tier: "engage",
   particles: 5,
   peakGain: 0.66,
-  elements: 3,
+  elements: 2,
   needs: ["cartouche"],
+  clip: "cartouche",
   draw: (ctx, frame) => {
     const band = frame.anchor.cartouche
     if (band === null) return
@@ -223,15 +257,74 @@ const counterweight: Effect = {
 
 // ── Tier 2 · ILLUMINATE ────────────────────────────────────────────────────
 // The star inside a rosette closing, or a misunderstanding repaired. The whole
-// band catches light.
+// band catches light — and, in `keystone`, so does the answer row.
+//
+// `keystone` exists because the three loudest tiers all played in the 72 px
+// construction band at the top of the screen, four hundred pixels from where
+// the child's eyes are. Only SEAT drew at the seat, which is the tier that is
+// deliberately the quietest. So the escalation was invisible at the place the
+// escalation is *about*. It is also the quietest effect in its tier, and the
+// picker weights inversely to energy — so it is the ILLUMINATE the child
+// usually gets.
+
+const keystone: Effect = {
+  id: "keystone",
+  tier: "illuminate",
+  particles: 8,
+  peakGain: 0.75,
+  elements: 3,
+  needs: ["seat"],
+  clip: null,
+  draw: (ctx, frame) => {
+    const seat = frame.anchor.seat
+    if (seat === null) return
+    const at = centre(seat)
+    const depth = seat.height * 0.44
+    const half = seat.width * 0.1
+
+    // The recess takes light.
+    ctx.fillStyle = frame.ink.celestial
+    ctx.globalAlpha = frame.alpha * frame.gain * 0.22
+    ctx.beginPath()
+    ctx.rect(seat.x, seat.y, seat.width, seat.height)
+    ctx.fill()
+
+    // The keystone comes down the last of its travel and seats on the rule.
+    // Carried by `t`, which the stage pins to 1 under reduced motion, so with
+    // motion off it is simply drawn where it lands.
+    const lands = seat.y + seat.height - depth
+    const top = lands - seat.height * 0.8 * (1 - frame.t)
+    ctx.globalAlpha = frame.alpha * frame.gain
+    ctx.fillStyle = frame.ink.index
+    ctx.beginPath()
+    ctx.moveTo(at.x - half, top)
+    ctx.lineTo(at.x + half, top)
+    ctx.lineTo(at.x + half * 1.6, top + depth)
+    ctx.lineTo(at.x - half * 1.6, top + depth)
+    ctx.closePath()
+    ctx.fill()
+
+    // …and the rule it seats on goes solid under it.
+    ctx.globalAlpha = frame.alpha * frame.gain * (0.4 + 0.6 * frame.t)
+    line(
+      ctx,
+      { x: seat.x, y: seat.y + seat.height },
+      { x: seat.x + seat.width, y: seat.y + seat.height },
+      frame.ink.seat,
+      2,
+    )
+    motes(ctx, frame, { x: at.x, y: top + depth }, 8, frame.ink.celestial)
+  },
+}
 
 const rosetteLight: Effect = {
   id: "rosetteLight",
   tier: "illuminate",
   particles: 14,
   peakGain: 0.85,
-  elements: 4,
+  elements: 3,
   needs: ["cartouche"],
+  clip: "cartouche",
   draw: (ctx, frame) => {
     const band = frame.anchor.cartouche
     if (band === null) return
@@ -266,8 +359,9 @@ const armature: Effect = {
   tier: "illuminate",
   particles: 10,
   peakGain: 0.8,
-  elements: 4,
+  elements: 3,
   needs: ["cartouche", "aperture"],
+  clip: "cartouche",
   draw: (ctx, frame) => {
     const band = frame.anchor.cartouche
     const cell = frame.anchor.aperture
@@ -298,8 +392,9 @@ const closure: Effect = {
   tier: "mechanism",
   particles: 24,
   peakGain: 1,
-  elements: 5,
+  elements: 3,
   needs: ["cartouche", "aperture"],
+  clip: "cartouche",
   draw: (ctx, frame) => {
     const band = frame.anchor.cartouche
     const cell = frame.anchor.aperture
@@ -346,12 +441,13 @@ const closure: Effect = {
 
 /** Every effect, in energy order within each tier. */
 export const EFFECTS: readonly Effect[] = [
-  stall,
   chisel,
+  stall,
   glint,
   detent,
   counterweight,
   tessera,
+  keystone,
   armature,
   rosetteLight,
   closure,

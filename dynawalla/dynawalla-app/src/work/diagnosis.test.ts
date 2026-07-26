@@ -21,12 +21,19 @@ import {
 } from "./curriculum.ts"
 import { countingBoard } from "./contrast.ts"
 import { glyphFromKey } from "./entry.ts"
-import { ACROSS_ZERO_RUNG, answerOf, fiveThousandOne, nineHundredThree } from "./fixtures.ts"
+import {
+  ACROSS_ZERO_RUNG,
+  CARRY_SURPLUS_RUNG,
+  answerOf,
+  fiveThousandOne,
+  nineHundredThree,
+} from "./fixtures.ts"
 import { judge } from "./judge.ts"
 import { readProblem } from "./problem.ts"
-import { repairRung, rungAt, LADDER, LADDER_FORMS } from "./ladder.ts"
+import { repairRung, rungAt, FIRST_ACROSS_ZERO, LADDER, LADDER_FORMS } from "./ladder.ts"
 import {
   advance,
+  arrivesAcrossZero,
   commit,
   contrastDistance,
   prepare,
@@ -260,6 +267,48 @@ test("the contrast pair is followed by a repair item that cannot avoid the step"
   assert.equal(state.card.role, "repair")
   assert.ok(rungAt(state.card.rung).params.acrossZero >= 1)
   assert.equal(rungAt(state.card.rung).skillId, "dw.add.regroup.subtract-across-zero")
+})
+
+test("a repair item is not an arrival: the Dynawalla stays quiet through it", () => {
+  // The bug this is written against. `FIRST_ACROSS_ZERO` and the rung a
+  // `borrow-across-zero` repair comes from are *the same index* — both are
+  // "the lowest rung whose parameters guarantee the step" — so a rule that
+  // watched the rung number climb announced "the ladder has reached the
+  // problems with a zero in the middle" the first time a child at rung 2 fired
+  // the mal-rule and was handed the repair card. The ladder had not moved. It
+  // then latched for the session, so when the child genuinely reached rung 4 by
+  // promotion he said nothing, and one of his four utterances had been spent on
+  // a card the child got *wrong* — stacked onto the strike and the contrast
+  // pair, at the moment they are most loaded.
+  assert.equal(repairRung(MIS_BORROW_ACROSS_ZERO, CARRY_SURPLUS_RUNG), FIRST_ACROSS_ZERO)
+
+  // `903 − 778` on `subtract-multidigit` level 2, answered 225: the across-zero
+  // procedure run at a rung three below where it is taught.
+  const deps: SessionDeps = { generate: () => nineHundredThree().exercise }
+  let state = startSession(
+    { profileId: "p1", rung: CARRY_SURPLUS_RUNG, rungCorrect: 0, seedCursor: 0 },
+    deps,
+  )
+  assert.ok(CARRY_SURPLUS_RUNG < FIRST_ACROSS_ZERO)
+  assert.equal(arrivesAcrossZero(state.card), false, "the first card is an arrival")
+
+  state = commit(type(state, "225"))
+  assert.equal(state.plan.kind, "locate")
+
+  state = advance(prepare(state, deps), deps)
+  assert.equal(state.card.kind, "locate")
+  assert.equal(arrivesAcrossZero(state.card), false, "the contrast pair is an arrival")
+
+  state = advance(state, deps)
+  assert.ok(state.card.kind === "problem")
+  assert.equal(state.card.role, "repair")
+  assert.equal(state.card.rung, FIRST_ACROSS_ZERO, "the repair is served at the arrival rung")
+  assert.equal(arrivesAcrossZero(state.card), false, "the repair card announced an arrival")
+
+  // …and the real thing still does. A `ladder` card at that rung is the ladder
+  // having got there.
+  assert.equal(arrivesAcrossZero({ ...state.card, role: "ladder" }), true)
+  assert.equal(arrivesAcrossZero({ ...state.card, role: "ladder", rung: FIRST_ACROSS_ZERO - 1 }), false)
 })
 
 test("a diagnosis on an easy rung still repairs with a guaranteed across-zero item", () => {

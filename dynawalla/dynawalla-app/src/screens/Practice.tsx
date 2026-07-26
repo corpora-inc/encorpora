@@ -41,6 +41,7 @@ export function PracticeScreen() {
   const press = usePractice((state) => state.press)
   const commitAnswer = usePractice((state) => state.commitAnswer)
   const next = usePractice((state) => state.next)
+  const autoAdvance = usePractice((state) => state.autoAdvance)
   const react = usePractice((state) => state.react)
   const end = usePractice((state) => state.end)
   const navigate = useNavigate()
@@ -79,14 +80,18 @@ export function PracticeScreen() {
     })
   }, [commitAnswer, react])
 
-  // A seated answer presents the next card on its own.
+  // A seated answer presents the next card on its own — through `autoAdvance`,
+  // not `next`. A timer is not an input: `next` settles whatever the reaction
+  // stage is playing, which is right when the child acted and wrong when the
+  // clock did. Routed through `next`, this line was what cut every reaction
+  // above SEAT to the 420 ms hold.
   useEffect(() => {
     if (session === null) return
     const hold = autoAdvanceMs(session)
     if (hold === null) return
-    const handle = setTimeout(next, hold)
+    const handle = setTimeout(autoAdvance, hold)
     return () => clearTimeout(handle)
-  }, [session, next])
+  }, [session, autoAdvance])
 
   // The hardware keyboard, at the window, so the loop is fully operable without
   // ever hitting Tab. Enter is left alone while a button has focus — that is the
@@ -145,7 +150,7 @@ export function PracticeScreen() {
           the slate under the child's eye. */}
       <Band />
       <Destination>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-[var(--dw-stack-gap)]">
           {card.kind === "problem" ? (
             <ProblemSlate
               key={card.exercise.exerciseId}
@@ -161,7 +166,7 @@ export function PracticeScreen() {
               each key a 220 px slab across the whole plate, which is further from
               a thumb than it is from the last key. The cap keeps the pad the size
               of a hand at every width. */}
-          <div className="mx-auto flex w-full max-w-xs flex-col gap-4">
+          <div className="mx-auto flex w-full max-w-xs flex-col gap-[var(--dw-stack-gap-tight)]">
             {/* The keypad stays mounted while a verdict is up, disabled rather
                 than removed. Unmounting it would pull the action row a hundred
                 pixels up the screen at the exact moment the child is looking at
@@ -175,7 +180,18 @@ export function PracticeScreen() {
               />
             ) : null}
 
-            <div className="flex gap-3">
+            {/* Pinned to the bottom of the viewport, not just to the bottom of
+                the stack. The surface is 654 px tall at its most compact and a
+                568 px phone cannot hold it however it is cut — a numeric pad
+                with ≥2 cm targets is 232 px of that on its own — so on the
+                shortest screens the commit control was below the fold and the
+                child scrolled to submit every answer. `sticky` costs nothing
+                where it already fits (the plate never leaves its place) and
+                keeps the one control that ends a card reachable where it does
+                not. It sits above the safe-area inset rather than under the
+                home indicator, and carries the recess's own ground so the
+                keypad does not show through it. */}
+            <div className="bg-ground-sunk sticky bottom-[var(--safe-bottom)] -mx-[var(--dw-frame-pad)] -mt-[var(--dw-stack-gap-tight)] -mb-[var(--dw-frame-pad)] flex gap-3 px-[var(--dw-frame-pad)] pt-[var(--dw-stack-gap-tight)] pb-[var(--dw-frame-pad)]">
               {session.stopping ? (
                 <>
                   <Plate

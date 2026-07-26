@@ -81,6 +81,7 @@ export type Ctx = Pick<
   | "rect"
   | "fill"
   | "stroke"
+  | "clip"
   | "clearRect"
   | "fillStyle"
   | "strokeStyle"

@@ -32,6 +32,7 @@ import {
   NOTHING_BUILT,
   place,
   rosetteOnBench,
+  rosettesShown,
   ROSETTES_PER_COURSE,
   screenBox,
   screenPieces,
@@ -164,11 +165,41 @@ test("fusion is lossless: a closed course holds every aperture it closed", () =>
   assert.equal((course.d.match(/M/g) ?? []).length, CELLS_PER_COURSE)
 })
 
-test("the plate grows a course at a time rather than starting full", () => {
+test("the plate is cropped on both axes to what is actually built", () => {
+  // It cropped the height and never the width, so the "four fifths of an empty
+  // plate" the crop exists to prevent was simply rotated onto the horizontal —
+  // which is the axis a first session lives on. At nineteen apertures the child
+  // had one small rosette in the left third of a three-rosette-wide box.
   const one = screenBox(1)
   const full = screenBox(CELLS_PER_SCREEN)
-  assert.equal(one.width, full.width, "a course is a course at every height")
+  assert.ok(one.width < full.width / 2, "the first rosette is drawn on a course-wide plate")
   assert.ok(one.height < full.height / 2, "the first rosette is not drawn on a year-sized plate")
+
+  // Square-ish while there is one rosette: it fills its plate rather than
+  // sitting in a letterbox.
+  assert.ok(Math.abs(one.width - one.height) < 1e-9, "a single rosette is not on a square plate")
+
+  // It grows a rosette at a time to the right, then a course at a time upward.
+  assert.equal(rosettesShown(0), 1)
+  assert.equal(rosettesShown(19), 1, "the rosette on the bench is the only one there is")
+  assert.equal(rosettesShown(CELLS_PER_ROSETTE), 1, "a just-closed rosette stays alone on its plate")
+  assert.equal(rosettesShown(CELLS_PER_ROSETTE + 1), 2)
+  assert.equal(rosettesShown(CELLS_PER_COURSE), ROSETTES_PER_COURSE)
+  assert.equal(rosettesShown(CELLS_PER_SCREEN), ROSETTES_PER_COURSE, "a wall does not narrow again")
+
+  // Monotone within a screen. It resets when one is finished and set into the
+  // wall — the next screen starts from bare stone, and the finished one is a
+  // panel edge behind it — so the walk is bounded to a single screen, which is
+  // the span the crop is a claim about.
+  let widest = 0
+  let tallest = 0
+  for (let placed = 0; placed <= CELLS_PER_SCREEN; placed++) {
+    const box = screenBox(placed)
+    assert.ok(box.width >= widest, `the plate narrowed at ${String(placed)}`)
+    assert.ok(box.height >= tallest, `the plate shortened at ${String(placed)}`)
+    widest = box.width
+    tallest = box.height
+  }
 })
 
 test("the cut order is a permutation, star before ring", () => {

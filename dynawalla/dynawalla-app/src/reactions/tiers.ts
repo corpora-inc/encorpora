@@ -1,6 +1,10 @@
 // The reaction vocabulary: five tiers, and the rule that decides which one.
 //
-// The budgets are EXPERIENCE_DESIGN's, unchanged:
+// The budgets are EXPERIENCE_DESIGN's, unchanged — and so, now, is the SEAT
+// row's "no particles", which the first cut of `effects.ts` quietly did not
+// honour. That belongs in this comment because this is the file that claims
+// fidelity to the doc; see the header of `effects.ts` for what changed and why
+// the energy formula had to change with it.
 //
 //   −1 SLIP        260 ms
 //    0 SEAT        200 ms

@@ -47,7 +47,10 @@ export function ProblemSlate({
 
   return (
     <div className="dw-present flex justify-center">
-      <div className="dw-slate numeral text-right text-3xl leading-tight">
+      {/* The numeral size is the vertical scale's, not a literal: four rows of
+          `text-3xl` are 222 px of a 568 px viewport, and on a short phone that
+          is the difference between pressing Check and scrolling to find it. */}
+      <div className="dw-slate numeral text-right text-[length:var(--dw-numeral-size)] leading-tight">
         <div className="text-ink py-1">{problem.top}</div>
 
         {/* The operator is `absolute` in the gutter the reservation cut for it.

@@ -27,9 +27,19 @@ interface CharacterState {
   hush: () => void
   /** New session: the budget refills, the room is quiet again. */
   reset: () => void
+  /**
+   * Which phrasing he reaches for, as an injectable sequence.
+   *
+   * `consider` is pure and takes the draw as an argument precisely so this is
+   * seedable; the first cut then handed it `Math.random` here and threw that
+   * away. Which line he says is one of the two things that most change a
+   * screenshot, so the session seeds it from its own cursor.
+   */
+  seed: (sequence: () => number) => void
 }
 
 let dwell: ReturnType<typeof setTimeout> | null = null
+let draw: () => number = Math.random
 
 function schedule(hush: () => void): void {
   if (dwell !== null) clearTimeout(dwell)
@@ -41,7 +51,7 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
   utterance: null,
 
   observe: (observation, at) => {
-    const { state, utterance } = consider(get().voice, observation, at, Math.random())
+    const { state, utterance } = consider(get().voice, observation, at, draw())
     if (utterance === null) {
       // Still record nothing: `consider` returns the state unchanged when he
       // stays quiet, so there is no bookkeeping to do and no way for a silent
@@ -62,5 +72,9 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
     if (dwell !== null) clearTimeout(dwell)
     dwell = null
     set({ voice: SILENT, utterance: null })
+  },
+
+  seed: (sequence) => {
+    draw = sequence
   },
 }))

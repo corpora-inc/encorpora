@@ -89,6 +89,17 @@ export const strings = {
   // is nowhere to put one — every line names something that actually happened
   // in the mathematics or in the stone.
   //
+  // **Every fragment must be checkable against the model**, and that is a
+  // stronger bar than the word-level screens in `voice.test.ts`. Two of the
+  // first twelve passed every one of those screens and were still not true.
+  // "That will hold weight. Not all of them do." — every rosette is the same
+  // twenty cells of the same geometry from `rosetteCells`; there is no rosette
+  // in this model that would not hold. And "You gave it up this time. Most do
+  // not, at first." is a claim about other children that nothing in this
+  // program measures, which is praise by social comparison and banned outright
+  // by MISSION. A ten-year-old who notices the rosettes are all identical has
+  // caught the character lying, and after that none of the other ten count.
+  //
   // `repaired` is the one that carries the product's promise, so it is the one
   // to read hardest. It is said after the child gets right the item that
   // isolates the step that had just broken — the borrowed ten that was kept in
@@ -97,7 +108,7 @@ export const strings = {
   dynawalla: {
     repaired: [
       "What you borrowed, you spent. It did not stay behind.",
-      "You gave it up this time. Most do not, at first.",
+      "The ten left the column it came from.",
       "A ten cannot sit in two places. You saw that.",
       "Nothing left over. That is the whole of it.",
     ],
@@ -105,7 +116,7 @@ export const strings = {
       "{{apertures}} apertures. The light has somewhere to go now.",
       "It closes. Cut stone does, when the order is right.",
       "A shape, where there was a hole.",
-      "That will hold weight. Not all of them do.",
+      "Stone does not grow back. That one stays cut.",
     ],
     arrived: [
       "These have a hole in the middle. Watch where the ten goes.",

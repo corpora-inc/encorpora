@@ -18,7 +18,7 @@ import { CHROME_NODES, screenBox, screenPieces, type Piece } from "./constructio
 function paint(piece: Piece): { fill: string; stroke: string; width: number } {
   return piece.kind === "panel"
     ? { fill: "var(--dw-line-strong)", stroke: "none", width: 0 }
-    : { fill: "var(--dw-ground-deep)", stroke: "var(--dw-field-ink)", width: 0.35 }
+    : { fill: "var(--dw-aperture)", stroke: "var(--dw-aperture-rim)", width: 0.35 }
 }
 
 /**

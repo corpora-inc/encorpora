@@ -23,7 +23,7 @@ import { EFFECTS, effectsIn, energy, type Effect } from "./effects.ts"
 import { FRESH, pick } from "./picker.ts"
 import { createStage, REDUCED_MS, SETTLE_MS, type Stage } from "./stage.ts"
 import { chooseTier, HARD, TIERS, TIER_ORDER, type Outcome, type TierName } from "./tiers.ts"
-import type { Anchor, Ctx, Ink } from "./surface.ts"
+import { easeOut, type Anchor, type Ctx, type Frame, type Ink } from "./surface.ts"
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 
@@ -78,9 +78,45 @@ function recorder(): Ctx & { ops: string[]; arcs: number } {
       ops.push(`rect ${round(x)} ${round(y)} ${round(w)} ${round(h)}`),
     fill: () => ops.push(`fill ${String(self.fillStyle)} a${round(self.globalAlpha)}`),
     stroke: () => ops.push(`stroke ${String(self.strokeStyle)} a${round(self.globalAlpha)}`),
+    clip: () => ops.push("clip"),
     clearRect: () => ops.push("clear"),
   }
   return self as unknown as Ctx & { ops: string[]; arcs: number }
+}
+
+/**
+ * The `draw` value that makes the picker choose exactly this effect.
+ *
+ * The harness's default `draw: 0.5` is one number, and `pick` is deterministic,
+ * so every "for every effect in the catalogue" loop that fired the stage was
+ * really exercising **one effect per tier** — five of ten, silently. `chisel`,
+ * `detent`, `tessera` and `rosetteLight` were drawn by no test in the repo, and
+ * `detent` is the effect EXPERIENCE_DESIGN names as the one the child sees
+ * hundreds of times. Scanning for the draw that selects a given effect, and
+ * asserting that it does, is what turns those loops into coverage.
+ */
+function drawFor(effect: Effect): number {
+  for (let step = 0; step < 1000; step++) {
+    const value = step / 1000
+    if (pick(effect.tier, FULL, FRESH, value)?.effect.id === effect.id) return value
+  }
+  throw new Error(`no draw value reaches ${effect.id} — it is unreachable in its tier`)
+}
+
+/** A frame as the stage would build it, so an effect can be drawn directly. */
+function frameFor(
+  effect: Effect,
+  options: { reduced: boolean; raw: number; anchor?: Anchor },
+): Frame {
+  return {
+    t: options.reduced ? 1 : easeOut(options.raw),
+    alpha: 1,
+    travel: options.reduced ? 0 : 1,
+    motes: options.reduced ? 0 : effect.particles,
+    gain: effect.peakGain,
+    anchor: options.anchor ?? FULL,
+    ink: INK,
+  }
 }
 
 interface Harness {
@@ -133,16 +169,40 @@ const OUTCOME: Outcome = { correct: true, difficulty: 0, repaired: false, milest
 
 // ── Escalation ─────────────────────────────────────────────────────────────
 
-test("MISSION: the escalation rule has no run-length or streak input", () => {
-  // The claim is about the *signature*, so it is checked as one: no executable
-  // line anywhere in this directory names a run, a streak, a combo or a
-  // consecutive anything. Comments are stripped first — the prose has to be
-  // able to say what is banned, and the ban is on the code.
+test("MISSION: no source in this directory names a run-length concept", () => {
+  // A spelling check, and only a spelling check. It is here because the
+  // registry this layer replaces escalated on `comboCount` by name, so a
+  // reintroduction under the same name should be loud — but a field called
+  // `chamberProgress` that counted consecutive correct answers would sail
+  // through it, which is why the *rule* is asserted in the next test rather
+  // than here. Comments are stripped first: the prose has to be able to say
+  // what is banned, and the ban is on the code.
   for (const { name, text } of sources) {
     const hits = [...code(text).matchAll(/\b(streak|combo|runLength|run_length|consecutive)\b/gi)]
       .map((match) => match[0])
     assert.deepEqual(hits, [], `${name} names a run-length concept`)
   }
+})
+
+test("MISSION: escalation may key on cumulative construction, never on consecutive-correct", () => {
+  // The rule as ADR-0009 sanctions it, stated so it can fail. `milestone` is
+  // derived from the *lifetime* count of apertures cut, which does escalate —
+  // every twentieth correct answer is a MECHANISM. What makes that not a streak
+  // is that a wrong answer in between does not reset it and does not change
+  // what the twentieth is worth. A run length is a count that a miss destroys;
+  // this one a miss cannot touch.
+  const before = chooseTier({ ...OUTCOME, milestone: "rosette" })
+  chooseTier({ correct: false, difficulty: 1, repaired: false, milestone: null })
+  const after = chooseTier({ ...OUTCOME, milestone: "rosette" })
+  assert.equal(after, before, "an interleaved wrong answer changed what a milestone is worth")
+  assert.equal(before, "mechanism")
+
+  // …and it could not, because the function is stateless: the tier for an
+  // outcome is a function of that outcome and nothing else.
+  const history = [true, false, false, true, true].map(() =>
+    chooseTier({ ...OUTCOME, milestone: "star" }),
+  )
+  assert.deepEqual(new Set(history).size, 1)
 })
 
 test("MISSION: handing the rule a run length changes nothing", () => {
@@ -242,13 +302,30 @@ test("weighting is inverse to energy — the quiet effect is the common one", ()
 })
 
 test("a missing anchor walks the tier DOWN, never up", () => {
+  // With only the answer row on screen the MECHANISM has nowhere to play, so it
+  // comes down to the loudest tier that has a seat-anchored effect in it. The
+  // number that matters is the direction: the walk may never raise the tier,
+  // because a missing anchor must not be able to make a response louder than
+  // the outcome earned.
   const chosen = pick("mechanism", BARE, FRESH, 0.5)
   assert.ok(chosen !== null)
-  assert.equal(chosen.tier, "seat", "with no band on screen there is nowhere to celebrate")
   assert.ok(
     TIERS[chosen.tier].level < TIERS.mechanism.level,
     "the walk must never raise the tier",
   )
+  assert.ok(
+    chosen.effect.needs.every((requirement) => BARE[requirement] !== null),
+    "the walk landed on an effect whose anchors are not on screen",
+  )
+  // Every tier below is walked in order, so it lands on the highest one that
+  // has somewhere to draw rather than falling all the way to SEAT.
+  const louder = TIER_ORDER.slice(0, TIER_ORDER.indexOf(chosen.tier))
+  for (const tier of louder) {
+    assert.ok(
+      effectsIn(tier).every((effect) => effect.needs.some((need) => BARE[need] === null)),
+      `${tier} had an eligible effect and the walk passed it`,
+    )
+  }
 })
 
 test("the MECHANISM budget is once a session and spending it downgrades", () => {
@@ -310,6 +387,32 @@ test("firing again while one is running replaces it and never stacks", () => {
   assert.ok((between.match(/save/g) ?? []).length <= 1, "two effects drew in one frame")
 })
 
+test("an effect anchored on the band is clipped to it", () => {
+  // The canvas is `fixed inset-0` over the whole app, so nothing stopped a
+  // 1.7-radius arc struck around the 44 px rosette in a 72 px band from
+  // overrunning the band's top edge and drawing across the header strapwork.
+  // Every cartouche- or aperture-anchored effect declares the band as its clip;
+  // the seat-anchored ones declare none, because the answer row is where they
+  // are supposed to be.
+  for (const effect of EFFECTS) {
+    const wantsBand = effect.needs.some((need) => need === "cartouche" || need === "aperture")
+    assert.equal(effect.clip, wantsBand ? "cartouche" : null, `${effect.id} clips to ${String(effect.clip)}`)
+  }
+
+  // And the stage applies it: the clip is set before the effect draws, to the
+  // anchor's own rectangle, once per frame.
+  const h = harness({ draw: drawFor(EFFECTS.find((e) => e.id === "closure") ?? EFFECTS[0]!) })
+  h.stage.fire({ ...OUTCOME, milestone: "rosette" })
+  const ops = h.ctx.ops.join("|")
+  const band = FULL.cartouche
+  assert.ok(band !== null)
+  assert.ok(
+    ops.includes(`rect ${String(band.x)} ${String(band.y)} ${String(band.width)} ${String(band.height)}|clip`),
+    "the stage did not clip to the band before drawing",
+  )
+  assert.ok(ops.indexOf("clip") < ops.indexOf("stroke"), "the clip was set after the drawing")
+})
+
 test("an effect ends on its own inside its tier's budget", () => {
   const h = harness()
   const tier = h.stage.fire(OUTCOME)
@@ -320,16 +423,30 @@ test("an effect ends on its own inside its tier's budget", () => {
 
 // ── The stage: reduced motion ──────────────────────────────────────────────
 
+test("every effect in the catalogue is reachable, and these loops reach it", () => {
+  // The precondition the three gates below stand on. If an effect cannot be
+  // selected by any draw value it is dead code in the product; if `drawFor`
+  // cannot find the value, the loops are back to testing one effect per tier.
+  const reached = EFFECTS.map((effect) => pick(effect.tier, FULL, FRESH, drawFor(effect))?.effect.id)
+  assert.deepEqual(reached, EFFECTS.map((effect) => effect.id))
+})
+
 test("Q-06: reduced motion draws the same frame throughout — zero travel", () => {
   // The strongest form of "zero travel" available: two frames 96 ms apart, on
   // every effect in the catalogue, must lay down byte-identical geometry.
   // Alpha differs — it is cross-fading — so only coordinates are compared.
+  //
+  // Driven through the real stage, one effect at a time, with the draw value
+  // that selects it — and the selection is asserted, so this cannot quietly
+  // become "the same five effects, ten times".
   const geometry = (ops: string[]): string[] =>
     ops.filter((op) => /^(moveTo|lineTo|arc|rect)/.test(op))
 
   for (const effect of EFFECTS) {
-    const h = harness({ reduced: true })
-    h.stage.fire(outcomeFor(effect))
+    const draw = drawFor(effect)
+    assert.equal(pick(effect.tier, FULL, FRESH, draw)?.effect.id, effect.id)
+    const h = harness({ reduced: true, draw })
+    assert.equal(h.stage.fire(outcomeFor(effect)), effect.tier, `${effect.id} did not fire its tier`)
     const frame = (): string[] => {
       h.ctx.ops.length = 0
       h.advance(16)
@@ -338,20 +455,24 @@ test("Q-06: reduced motion draws the same frame throughout — zero travel", () 
     const early = frame()
     h.advance(80)
     const late = frame()
-    if (early.length === 0 || late.length === 0) continue
+    // No `continue` on an empty frame. An effect that drew nothing used to skip
+    // both halves of this gate and be counted as a pass.
+    assert.ok(early.length > 0, `${effect.id} drew nothing at all under reduced motion`)
     assert.deepEqual(late, early, `${effect.id} moved under reduced motion`)
   }
 })
 
 test("…and every effect does move when motion is allowed", () => {
-  // The other half. Without it, an effect that drew nothing at all would pass
-  // the zero-travel assertion above and look like a success.
+  // The other half, asserted per effect rather than collected into a list. The
+  // first cut pushed `effect.id` — the loop variable — into the list and
+  // compared the list to the catalogue, so the assertion held as long as
+  // *something* moved on each iteration, whichever effect it was.
   const geometry = (ops: string[]): string[] =>
     ops.filter((op) => /^(moveTo|lineTo|arc|rect)/.test(op))
-  const moved: string[] = []
   for (const effect of EFFECTS) {
-    const h = harness()
-    h.stage.fire(outcomeFor(effect))
+    const draw = drawFor(effect)
+    const h = harness({ draw })
+    assert.equal(h.stage.fire(outcomeFor(effect)), effect.tier)
     const frame = (): string[] => {
       h.ctx.ops.length = 0
       h.advance(16)
@@ -360,14 +481,34 @@ test("…and every effect does move when motion is allowed", () => {
     const early = frame()
     h.advance(80)
     const late = frame()
-    if (early.length > 0 && late.length > 0 && JSON.stringify(early) !== JSON.stringify(late)) {
-      moved.push(effect.id)
-    }
+    assert.ok(early.length > 0 && late.length > 0, `${effect.id} drew nothing with motion on`)
+    assert.notDeepEqual(late, early, `${effect.id} does not move with motion on`)
   }
-  assert.deepEqual([...moved].sort(), EFFECTS.map((effect) => effect.id).sort())
 })
 
-test("Q-06: reduced motion emits no particles, and normal motion does", () => {
+test("Q-06: reduced motion emits no particles, and normal motion emits exactly its own", () => {
+  // Drawn directly rather than through the stage, because this is a claim about
+  // each effect's own geometry and the arithmetic has to be exact: one mote is
+  // one `arc`, so the difference between the two frames is the mote count and
+  // nothing else. Any non-mote arc an effect strikes appears in both and
+  // cancels.
+  //
+  // `t` is 0.5, not 1: `motes` skips a mote whose radius has shrunk to zero, so
+  // at the end of the reaction there are none to count in either branch and the
+  // gate would pass on every effect for the wrong reason.
+  for (const effect of EFFECTS) {
+    const on = recorder()
+    effect.draw(on, frameFor(effect, { reduced: false, raw: 0.5 }))
+    const off = recorder()
+    effect.draw(off, frameFor(effect, { reduced: true, raw: 0.5 }))
+    assert.equal(
+      on.arcs - off.arcs,
+      effect.particles,
+      `${effect.id} drew ${String(on.arcs - off.arcs)} particles, not ${String(effect.particles)}`,
+    )
+  }
+
+  // And end to end through the stage, on the loudest tier there is.
   const withMotes = harness()
   withMotes.stage.fire({ ...OUTCOME, milestone: "rosette" })
   withMotes.advance(400)
@@ -397,7 +538,7 @@ test("Q-06: the reduced branch is a cross-fade — alpha rises then falls", () =
   assert.ok((peaks[0] ?? 1) < top && (peaks[peaks.length - 1] ?? 1) < top, "not a cross-fade")
 })
 
-test("particles come from exactly one place, and every effect loses them", () => {
+test("particles come from exactly one place", () => {
   // "No particles under reduced motion" leaks the moment a second place emits
   // them. `surface.ts` owns `motes`, and it is the only file that may read the
   // mote count — so no effect is able to emit a particle of its own.
@@ -407,20 +548,42 @@ test("particles come from exactly one place, and every effect loses them", () =>
     .map(({ name }) => name)
   assert.deepEqual(readers, [], "something outside surface.ts reads the mote count")
 
-  // And behaviourally, per effect: every one of them draws strictly fewer
-  // circles with motion off than with it on.
+  // …and every effect that declares particles actually throws them through it,
+  // so the declaration and the drawing cannot drift.
   for (const effect of EFFECTS) {
-    const on = harness()
-    on.stage.fire(outcomeFor(effect))
-    on.advance(2000)
-    const off = harness({ reduced: true })
-    off.stage.fire(outcomeFor(effect))
-    off.advance(2000)
-    assert.ok(
-      off.ctx.arcs < on.ctx.arcs,
-      `${effect.id}: ${String(off.ctx.arcs)} circles reduced vs ${String(on.ctx.arcs)} normal`,
-    )
+    const drawn = recorder()
+    effect.draw(drawn, frameFor(effect, { reduced: false, raw: 0.5 }))
+    if (effect.particles > 0) assert.ok(drawn.arcs > 0, `${effect.id} declares motes and throws none`)
   }
+})
+
+test("EXPERIENCE_DESIGN: nothing below ENGAGE throws a particle", () => {
+  // The SEAT row of EXPERIENCE_DESIGN's core-loop table: "One detent click, one
+  // gear tooth, a `light` haptic, **no particles**". Both SEAT effects shipped
+  // with three each. SLIP has none either, because SLIP has to be quieter than
+  // SEAT and a chip of stone coming off is more animated than a pawl dropping
+  // into a tooth — the "catapult falling short" case the doc names.
+  for (const tier of ["slip", "seat"] as const) {
+    for (const effect of effectsIn(tier)) {
+      assert.equal(effect.particles, 0, `${effect.id} (${tier}) throws ${String(effect.particles)}`)
+    }
+  }
+  for (const tier of ["engage", "illuminate", "mechanism"] as const) {
+    for (const effect of effectsIn(tier)) {
+      assert.ok(effect.particles > 0, `${effect.id} (${tier}) throws nothing`)
+    }
+  }
+})
+
+test("a particle-free effect still has energy — the formula is not degenerate", () => {
+  // The first cut multiplied by `particles`, so `particles: 0` scored zero
+  // however loud the thing was, and the SLIP<SEAT ladder could be satisfied by
+  // *adding* a particle rather than by being quieter. The term is additive.
+  for (const effect of EFFECTS) {
+    assert.ok(energy(effect) > 0, `${effect.id} has zero energy`)
+  }
+  const quietest = EFFECTS.reduce((a, b) => (energy(a) <= energy(b) ? a : b))
+  assert.equal(quietest.particles, 0, "the quietest effect in the catalogue is not the particle-free one")
 })
 
 // ── Boundary ───────────────────────────────────────────────────────────────

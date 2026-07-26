@@ -4,7 +4,7 @@ import { Automaton } from "../character/Automaton.tsx"
 import { useCharacter } from "../character/store.ts"
 import { ANCHOR_CARTOUCHE } from "../design/anchors.ts"
 import { destinationPath } from "../app/routes.ts"
-import { strings } from "../app/strings.ts"
+import { strings, fill } from "../app/strings.ts"
 import { Cartouche } from "../world/Cartouche.tsx"
 import { worldStore } from "../world/live.ts"
 
@@ -33,6 +33,12 @@ import { worldStore } from "../world/live.ts"
  * translation overruns it: a clipped line is a bug to fix in the translation,
  * and a taller band is a bug in the work surface.
  *
+ * Fixed at each viewport, not fixed forever: `--dw-band-height` comes down a
+ * rung under 720 px of viewport height, where the surface below it did not fit
+ * on screen at all. It cannot change while the child is working — only a
+ * rotation or a resize moves it — so the promise it makes to the work surface
+ * is unaffected. Two lines of clamp there instead of three.
+ *
  * It is also the reaction stage's `cartouche` anchor — the region the ENGAGE
  * and ILLUMINATE effects play in. The marker class does nothing else.
  */
@@ -42,7 +48,7 @@ export function Band() {
 
   return (
     <div
-      className={`${ANCHOR_CARTOUCHE} border-t-line-cut border-b-line bg-ground-raised mb-4 flex h-[4.5rem] items-center gap-3 overflow-hidden border-t border-b px-3 py-2`}
+      className={`${ANCHOR_CARTOUCHE} border-t-line-cut border-b-line bg-ground-raised mb-[var(--dw-stack-gap-tight)] flex h-[var(--dw-band-height)] items-center gap-3 overflow-hidden border-t border-b px-3 py-2`}
     >
       <Automaton speaking={utterance !== null} />
 
@@ -58,11 +64,24 @@ export function Band() {
 
       {/* The way through to the whole screen. Progress is persisted card by
           card, so leaving mid-session and coming back resumes rather than
-          restarts — which is what makes it safe to put a door here at all. */}
+          restarts — which is what makes it safe to put a door here at all.
+
+          The label carries the count. An explicit `aria-label` on an ancestor
+          wins the accessible-name computation outright, so the Cartouche's own
+          "{{apertures}} apertures cut." was computed and then discarded — the
+          only always-visible representation of the construction, and a screen
+          reader on this surface never heard it change. No new string: it is the
+          destination's name and the world's one text alternative, joined.
+
+          The target is the padding, not the drawing. `size-11` is 44 px on a
+          surface whose keypad sets the bar at 76; stretching the link to the
+          band's full height and padding it out makes the hit box 68 × 72 — a
+          99 px diagonal, 2.6 cm — while the rosette stays the size it reads
+          at. It cannot be taller than the band, and the band is fixed. */}
       <Link
         to={destinationPath("world")}
-        aria-label={strings.destinations.world}
-        className="rounded-cut-sm shrink-0"
+        aria-label={`${strings.destinations.world}: ${fill(strings.world.cut, { apertures: placed })}`}
+        className="rounded-cut-sm -mr-1 -my-2 flex shrink-0 items-center self-stretch px-3"
       >
         <Cartouche placed={placed} className="size-11" />
       </Link>

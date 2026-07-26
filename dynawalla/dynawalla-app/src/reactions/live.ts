@@ -14,9 +14,26 @@
 import { ANCHOR_APERTURE, ANCHOR_CARTOUCHE, ANCHOR_SEAT } from "../design/anchors.ts"
 import { createStage, type Stage } from "./stage.ts"
 import type { Anchor, Ink, Rect } from "./surface.ts"
-import type { Outcome } from "./tiers.ts"
+import { TIERS, type Outcome, type TierName } from "./tiers.ts"
 
 let stage: Stage | null = null
+
+/**
+ * Which effect gets drawn, as an injectable sequence.
+ *
+ * `Math.random` until somebody hands over something better. Which effect plays
+ * and which line the Dynawalla says are the two things that most change a
+ * screenshot, and the mote pool went to the trouble of being a deterministic
+ * integer hash so that the committed seed set (`Q-06`, M6) is comparable frame
+ * for frame — which it is not if the choice in front of it is unseeded. The
+ * session hands its own cursor in at `begin`.
+ */
+let draw: () => number = Math.random
+
+/** Seed the effect choice for a session. Called when one begins. */
+export function seedReactions(sequence: () => number): void {
+  draw = sequence
+}
 
 function boxOf(selector: string, origin: DOMRect): Rect | null {
   const element = document.querySelector(selector)
@@ -98,6 +115,7 @@ export function mountStage(canvas: HTMLCanvasElement): () => void {
     reducedMotion: () => motion.matches,
     ink: () => inkFromTokens(document.documentElement),
     anchor: () => anchorFromDom(canvas),
+    draw: () => draw(),
   })
 
   stage = mounted
@@ -110,9 +128,29 @@ export function mountStage(canvas: HTMLCanvasElement): () => void {
   }
 }
 
-/** Start a reaction for what just happened. Never awaited, never blocking. */
-export function fireReaction(outcome: Outcome): void {
-  stage?.fire(outcome)
+/**
+ * Start a reaction for what just happened. Never awaited, never blocking.
+ *
+ * Returns the tier actually drawn — after the downgrade walk and after the
+ * once-a-session budget — or `null` when nothing was. The caller needs it: how
+ * long the reaction has to live is a fact about what is on the canvas, and the
+ * only thing that knows that is the stage.
+ */
+export function fireReaction(outcome: Outcome): TierName | null {
+  const tier = stage?.fire(outcome) ?? null
+  // A dev-only read-back for `tools/bench-reactions.mjs`, which otherwise has
+  // to *infer* which tier it is measuring from the card count — and inferred it
+  // wrong, publishing a SEAT as evidence about the MECHANISM. Vite substitutes
+  // `false` here in a production build, so the branch and everything it reaches
+  // are eliminated: `rg __dwReaction dist/` finds nothing.
+  if (import.meta.env.DEV && tier !== null) {
+    ;(globalThis as { __dwReaction?: unknown }).__dwReaction = {
+      tier,
+      budgetMs: TIERS[tier].budgetMs,
+      firedAt: performance.now(),
+    }
+  }
+  return tier
 }
 
 /**

@@ -13,7 +13,7 @@
 import { create } from "zustand"
 
 import { useCharacter } from "../character/store.ts"
-import { fireReaction, resetReactions, settleReactions } from "../reactions/live.ts"
+import { fireReaction, resetReactions, seedReactions, settleReactions } from "../reactions/live.ts"
 import { worldStore } from "../world/live.ts"
 import { idleScheduler } from "./idle.ts"
 import { FIRST_ACROSS_ZERO } from "./ladder.ts"
@@ -21,7 +21,16 @@ import { expose, measure, now, record } from "./metrics.ts"
 import { DEFAULT_PROFILE_ID } from "../app/profile.ts"
 import { createProgressStore } from "./progress.ts"
 import { respond, type Response } from "./respond.ts"
-import { advance, commit, pressKey, prepare, startSession, type SessionState } from "./session.ts"
+import {
+  advance,
+  arrivesAcrossZero,
+  commit,
+  pressKey,
+  prepare,
+  sequenceFrom,
+  startSession,
+  type SessionState,
+} from "./session.ts"
 import type { EntryKey } from "./entry.ts"
 
 export const progressStore = createProgressStore(DEFAULT_PROFILE_ID)
@@ -48,10 +57,56 @@ interface PracticeState {
   begin: () => void
   press: (key: EntryKey) => void
   commitAnswer: () => void
+  /** The child moved on. Settles whatever is playing, because they acted. */
   next: () => void
+  /**
+   * The hold expired and the app moved on by itself.
+   *
+   * Deliberately **not** `next`. `next` settles the reaction, which is right
+   * when a finger or a key caused it and wrong when a timer did: the hold is
+   * 420 ms and the MECHANISM is 1800, so routing the auto-advance through
+   * `next` cut every reaction above SEAT to about a quarter of its budget,
+   * mid-motion. Measured in the real app at `placed = 20`: first ink 38 ms,
+   * last ink 594 ms of an 1800 ms tier.
+   *
+   * EXPERIENCE_DESIGN already says what should happen — "the next problem
+   * presents concurrently with the reaction tail" — and this is that. The card
+   * changes on time, the reaction plays out over it, and the first thing the
+   * child touches still settles it inside `Q-04`'s 90 ms.
+   */
+  autoAdvance: () => void
   react: () => void
   runIdle: () => void
   end: () => void
+}
+
+/**
+ * Move to the next card. `settle` is what separates a finger from a timer.
+ *
+ * Factored out so the two entry points cannot drift: the arrival rule, the
+ * persistence and the pending-reaction reset are written once.
+ */
+function present(
+  get: () => PracticeState,
+  set: (partial: Partial<PracticeState>) => void,
+  settle: boolean,
+): void {
+  if (settle) settleReactions()
+  const session = get().session
+  if (session === null) return
+  const advanced = advance(session)
+  // "First time on these" is a fact about the *ladder* reaching the across-zero
+  // rungs, so it is read off the card the ladder just served. It used to be
+  // read off any rung increase between two cards, and the repair rung and the
+  // first across-zero rung are the same index — so the line fired the first
+  // time a child got one wrong three rungs lower and was handed the repair
+  // item, then latched, so the real arrival was silent.
+  const crossed = !get().arrived && arrivesAcrossZero(advanced.card)
+  set({ session: advanced, feedbackAt: null, pending: null, arrived: get().arrived || crossed })
+  if (crossed) {
+    useCharacter.getState().observe({ kind: "arrived", apertures: null }, advanced.served)
+  }
+  savePosition(advanced)
 }
 
 function savePosition(session: SessionState): void {
@@ -82,7 +137,19 @@ export const usePractice = create<PracticeState>()((set, get) => ({
     // design; neither is persisted.
     resetReactions()
     useCharacter.getState().reset()
-    set({ session, feedbackAt: null, pending: null, arrived: false })
+    // Which effect plays and which line he says are now a function of where the
+    // session is, not of `Math.random`, so a replayed session replays them.
+    const sequence = sequenceFrom(saved.seedCursor)
+    seedReactions(sequence)
+    useCharacter.getState().seed(sequence)
+    // A child who resumes already above the line has not just arrived and is
+    // not told they have.
+    set({
+      session,
+      feedbackAt: null,
+      pending: null,
+      arrived: session.rung >= FIRST_ACROSS_ZERO,
+    })
     savePosition(session)
   },
 
@@ -135,23 +202,11 @@ export const usePractice = create<PracticeState>()((set, get) => ({
   },
 
   next: () => {
-    settleReactions()
-    const session = get().session
-    if (session === null) return
-    const advanced = advance(session)
-    // "First time on these" is a fact about the ladder moving, so it is read
-    // here rather than persisted. A child who resumes already above the line
-    // has not just arrived and is not told they have.
-    const crossed =
-      !get().arrived &&
-      FIRST_ACROSS_ZERO >= 0 &&
-      session.card.rung < FIRST_ACROSS_ZERO &&
-      advanced.card.rung >= FIRST_ACROSS_ZERO
-    set({ session: advanced, feedbackAt: null, pending: null, arrived: get().arrived || crossed })
-    if (crossed) {
-      useCharacter.getState().observe({ kind: "arrived", apertures: null }, advanced.served)
-    }
-    savePosition(advanced)
+    present(get, set, true)
+  },
+
+  autoAdvance: () => {
+    present(get, set, false)
   },
 
   runIdle: () => {

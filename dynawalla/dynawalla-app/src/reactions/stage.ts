@@ -10,9 +10,19 @@
 //
 // `settleNow()` is called synchronously by the input handler **before any event
 // is processed** — not after, and not from an effect. It returns in
-// microseconds and the picture is gone within `SETTLE_MS`, which is 80 against
-// the 90 ms `Q-04` allows. A child who answers fast never waits on an
-// animation, and the input is neither dropped nor delayed to make that true.
+// microseconds and the picture is gone within `SETTLE_MS`.
+//
+// That budget is 64 ms, not the 80 it shipped at, and the difference is what a
+// browser measurement costs. `Q-04` allows 90 ms from the interrupting
+// keypress to an empty canvas, and the only honest way to observe "empty" is
+// to sample the pixels on a frame callback — which adds up to one whole frame
+// of quantisation on top of the settle. At 80 ms `bench-reactions.mjs` read
+// 87.7 ms and 89.6 ms against a 90 ms limit: passing, and one slow frame from
+// not. 64 ms is four frames of cross-fade and leaves the measured figure a
+// frame of headroom.
+//
+// A child who answers fast never waits on an animation, and the input is
+// neither dropped nor delayed to make that true.
 //
 // ## Reduced motion
 //
@@ -34,7 +44,7 @@ import { easeOut, type Anchor, type Ctx, type Frame, type Ink } from "./surface.
 import type { Effect } from "./effects.ts"
 
 /** How long a settling reaction takes to disappear. `Q-04` allows 90. */
-export const SETTLE_MS = 80
+export const SETTLE_MS = 64
 
 /** The reduced-motion cross-fade, in and out. */
 export const REDUCED_MS = 200
@@ -133,6 +143,16 @@ export function createStage(deps: StageDeps): Stage {
       ink: deps.ink(),
     }
     deps.ctx.save()
+    // The canvas covers the whole app, so an effect anchored on a 44 px rosette
+    // inside a 72 px band drew arcs across the header above it. Clipping to the
+    // anchor the effect declares keeps a reaction inside the thing it is
+    // reacting on, without changing a line of its geometry.
+    const region = live.effect.clip === null ? null : live.anchor[live.effect.clip]
+    if (region !== null) {
+      deps.ctx.beginPath()
+      deps.ctx.rect(region.x, region.y, region.width, region.height)
+      deps.ctx.clip()
+    }
     live.effect.draw(deps.ctx, frame)
     deps.ctx.restore()
     arm()

@@ -9,7 +9,7 @@ import type { ReactNode } from "react"
  */
 export function Recess({ children }: { children?: ReactNode }) {
   return (
-    <div className="rounded-cut-md border-t border-b border-t-line-cut border-b-line bg-ground-sunk min-h-40 p-5">
+    <div className="rounded-cut-md border-t border-b border-t-line-cut border-b-line bg-ground-sunk min-h-40 p-[var(--dw-frame-pad)]">
       {children}
     </div>
   )

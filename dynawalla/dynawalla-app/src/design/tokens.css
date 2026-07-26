@@ -146,6 +146,16 @@
   --dw-field: var(--color-lapis-800);
   --dw-field-ink: var(--color-celestial-100);
 
+  /* What is seen through a cut aperture, and the lit edge of the stone around
+     it. A role of its own rather than a reuse of `ground-deep`: under
+     `.dw-dark`, `ground-deep` is basalt-950 and the band it is cut into is
+     basalt-700 — the same stone two steps apart, which at 44 px read as no
+     difference at all between a cut cell and an uncut one. A hole shows the
+     deep *field*, which is cool where the wall is warm, so the aperture reads
+     by hue as well as by value and the rim is not carrying it alone. */
+  --dw-aperture: var(--color-lapis-950);
+  --dw-aperture-rim: var(--color-celestial-100);
+
   /* Verdicts. Cold light seats a correct answer; copper oxide marks a strike.
      Neither is ever the only carrier of meaning (CG-18). */
   --dw-seat: var(--color-tile-600);
@@ -182,6 +192,79 @@
   --dw-cut-sm: 2px;
   --dw-cut-md: 4px;
   --dw-cut-lg: 8px;
+
+  /* ── The vertical scale ────────────────────────────────────────────────
+     The practice surface is the tallest thing this app draws, and on a short
+     phone it did not fit: at 320 × 568 and 360 × 640 the document was 878 px
+     and the "Check" plate's bottom edge sat at 833 — below the fold at both,
+     so the child scrolled to submit every single answer. Measured, not
+     guessed; the reference tablet and a 390 × 844 phone were both fine, which
+     is exactly why it survived.
+
+     One scale, in one place, because the fix is a budget rather than a tweak:
+     six numbers that add up to the height of a session. Under 720 px of
+     viewport they all come down together — the band, the recess, the numerals,
+     the gaps and the keys — and every component reads them rather than
+     carrying its own literal, so the budget can be read off this block.
+
+     The key floor is the one that is not taste. `Keypad.tsx` sets the bar at a
+     ≥2 cm target on the diagonal a child actually hits. At 320 px wide a key
+     is 77 px across, so a 52 px key has a 93 px diagonal = 2.46 cm — still
+     over the floor, and `surface.test.ts` asserts it from these numbers rather
+     than from the comment. */
+  --dw-band-height: 4.5rem;
+  --dw-key-height: 4.75rem;
+  --dw-numeral-size: var(--text-3xl);
+  --dw-frame-pad: 1.25rem;
+  --dw-stack-gap: 1.5rem;
+  --dw-stack-gap-tight: 1rem;
+  --dw-surface-pad: 1.5rem;
+
+  --dw-lintel-pad: 0.75rem;
+
+  /* Three rungs, one per device class this app ships to: a tablet, a phone, and
+     a small phone. Untouched above 900 px — the Galaxy Tab A9 and the iPad get
+     the design at full size, and nothing below is a compromise they pay for. */
+  @media (max-height: 900px) {
+    --dw-frame-pad: 1rem;
+    --dw-stack-gap: 1.25rem;
+    --dw-stack-gap-tight: 0.875rem;
+    --dw-surface-pad: 1rem;
+    --dw-lintel-pad: 0.625rem;
+  }
+
+  @media (max-height: 720px) {
+    --dw-band-height: 3.5rem;
+    --dw-key-height: 3.25rem;
+    --dw-numeral-size: var(--text-2xl);
+    --dw-frame-pad: 0.625rem;
+    --dw-stack-gap: 0.75rem;
+    --dw-stack-gap-tight: 0.5rem;
+    --dw-surface-pad: 0.5rem;
+    --dw-lintel-pad: 0.5rem;
+  }
+
+  /* The second rung, and the reason there are two. At 640 px the numbers above
+     bring the surface to 646 — under the fold, done. At 568 they do not, and
+     "nearly fits" is worth nothing: the pinned plate then covers the bottom
+     keypad row, so a child cannot type a zero without scrolling, which is the
+     original bug wearing a different hat. So the shortest viewport this app
+     ships to gets its own rung, tuned until the document is shorter than the
+     screen rather than until it looks about right.
+
+     A 44 px key is 77 × 44 at 320 px wide — an 89 px diagonal, 2.35 cm — still
+     over the ≥2 cm floor, and `surface.test.ts` computes that for every rung of
+     this scale rather than for the one somebody remembered. */
+  @media (max-height: 620px) {
+    --dw-band-height: 3rem;
+    --dw-key-height: 2.75rem;
+    --dw-numeral-size: var(--text-xl);
+    --dw-frame-pad: 0.5rem;
+    --dw-stack-gap: 0.5rem;
+    --dw-stack-gap-tight: 0.375rem;
+    --dw-surface-pad: 0.25rem;
+    --dw-lintel-pad: 0.25rem;
+  }
 
   /* ── Platform facts, inherited mechanically from Corpán's stylesheet ────
      Per ADR-0005 this is the one layer Dynawalla does not build fresh: the
@@ -227,6 +310,9 @@
 
   --dw-field: var(--color-lapis-950);
   --dw-field-ink: var(--color-celestial-300);
+
+  --dw-aperture: var(--color-lapis-950);
+  --dw-aperture-rim: var(--color-celestial-300);
 
   --dw-seat: var(--color-tile-400);
   --dw-strike: var(--color-copper-700);

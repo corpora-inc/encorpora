@@ -6,6 +6,19 @@
 // pool ("Perfect / Nice / Brilliant") that the in-repo precedent resolves to.
 // Both are asserted over the whole corpus rather than over the lines a test
 // happened to trigger, so adding a thirteenth fragment cannot slip past them.
+//
+// ## And the check no regular expression can run
+//
+// **Every fragment must be checkable against the model, by a person, before it
+// is added.** Two of the first twelve passed every screen in this file and were
+// still not true: "That will hold weight. Not all of them do." — every rosette
+// is the same twenty cells of identical geometry, so there is no rosette that
+// would not hold — and "You gave it up this time. Most do not, at first.",
+// which is a claim about other children that nothing in this program measures.
+// A word-level gate is not a truthfulness gate, and a ten-year-old who works
+// out that all the rosettes are the same shape has caught the character lying.
+// The screens below cover the shapes a regex can catch; the rest is a review
+// obligation, and it is written here because that is where it will be read.
 
 import { test } from "node:test"
 import assert from "node:assert/strict"
@@ -88,6 +101,17 @@ test("no line is flat praise — every one says something that happened", () => 
   for (const line of corpus()) assert.equal(line.includes("!"), false, line)
 })
 
+test("no line praises by comparison with anyone else", () => {
+  // MISSION bans social pressure outright, and "Most do not, at first." was
+  // both that and an unverifiable claim: nothing in this program knows what
+  // most children do. It is a distinct failure from flat praise — it trips no
+  // cheerleader word and contains no exclamation mark — so it gets its own
+  // screen. Nothing he says may reference a person who is not in the room.
+  const comparison =
+    /\b(most|others|other (children|kids|people)|everyone|nobody|no one|anyone else|than (most|others|anybody|anyone))\b/i
+  for (const line of corpus()) assert.equal(comparison.test(line), false, line)
+})
+
 test("he does not address the child as a subject", () => {
   // "You saw that" is about what happened. "You are clever" is a verdict on a
   // person, and this product does not issue those.
@@ -114,6 +138,14 @@ test("the lines fit the three lines the band reserves at 320 px", () => {
   // rather than growing the band, which is the correct failure but is still a
   // failure. This is also the rule for the five locales at PR-1.6: translate to
   // fit, do not lengthen the band.
+  //
+  // A character count is a poor proxy across scripts — CJK is far denser per
+  // character, Devanagari far wider — and a comment is not a gate. So this
+  // bound holds the English corpus only, and PR-1.6 owes the real one: a
+  // per-locale assertion in the i18n gate, measured from the longest
+  // **rendered** string at 320 px rather than from a character count, so an
+  // overlong German or Finnish translation fails the build instead of clipping
+  // mid-word in the rarest moment the product has.
   for (const line of corpus()) {
     const rendered = line.replace("{{apertures}}", "180")
     assert.ok(rendered.length <= 58, `${String(rendered.length)} chars: ${rendered}`)

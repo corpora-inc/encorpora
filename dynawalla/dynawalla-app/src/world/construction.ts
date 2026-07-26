@@ -210,16 +210,37 @@ export function coursesShown(placed: number): number {
 }
 
 /**
+ * Rosettes of the bottom course that have anything in them: 1…3.
+ *
+ * The horizontal half of the crop, and the half a first session actually lives
+ * on. The box grew a *course* at a time and was always three rosettes wide, so
+ * a child with nineteen apertures — most of a first sitting — got one small
+ * flower in the left third of a wide empty plate, which is exactly the "four
+ * fifths of an empty plate" `screenBox` says it exists to avoid. Once any
+ * course is complete the wall is three wide and stays three wide.
+ */
+export function rosettesShown(placed: number): number {
+  const { courses, rosettes, cells } = breakdown(placed)
+  if (courses > 0) return ROSETTES_PER_COURSE
+  return Math.max(1, Math.min(rosettes + (cells > 0 ? 1 : 0), ROSETTES_PER_COURSE))
+}
+
+/**
  * The drawing's own coordinate box, cropped to what has been built.
  *
  * A fixed box would mean a first session spent looking at four fifths of an
  * empty plate — the wall drawn at the size it will be in a year rather than the
- * size it is. It grows a course at a time, upward, the way it is built.
+ * size it is. It grows a rosette at a time to the right and a course at a time
+ * upward, the way it is built.
+ *
+ * Both axes, and the first cut only did one. The height cropped and the width
+ * never did, so the letterbox the crop exists to prevent was simply rotated
+ * ninety degrees onto the axis a first session spends all its time on.
  */
 export function screenBox(placed: number): { readonly width: number; readonly height: number } {
   const { pitch, margin } = SCREEN_GEOMETRY
   return {
-    width: pitch * ROSETTES_PER_COURSE + margin * 2,
+    width: pitch * rosettesShown(placed) + margin * 2,
     height: pitch * coursesShown(placed) + margin * 2,
   }
 }
@@ -239,9 +260,14 @@ function rosetteCentre(index: number, box: { readonly height: number }): Vec {
 /**
  * Live SVG nodes the world draws at `placed`, without building any of them.
  *
- * Bounded by construction rather than by a budget somebody remembers to check:
- * at most `VISIBLE_PANELS` panels, four whole courses, four whole rosettes and
- * nineteen loose cells, whatever the child has done. The ceiling is ~45.
+ * Bounded by construction rather than by a budget somebody remembers to check.
+ * The reachable maximum is `VISIBLE_PANELS` panels plus the decomposition of
+ * one screen — and the decomposition's terms are not independent: `courses`
+ * reaches 3 only when `rosettes` and `cells` are both 0. The worst case is
+ * 2 courses + 2 rosettes + 19 cells, so the true ceiling is
+ * 12 + 2 + 2 + 19 + 2 = **37**. (`Q-02` is scoped to `/world`; the practice
+ * surface's `Cartouche` draws its own fixed 40 — twenty plan outlines and at
+ * most twenty cuts — and is bounded in that component.)
  */
 export function liveNodes(placed: number): number {
   const { panels, courses, rosettes, cells } = breakdown(placed)
