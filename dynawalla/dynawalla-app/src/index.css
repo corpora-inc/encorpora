@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@import "./design/tokens.css";
+
+/* The theme class the shell toggles on <html>. `:where()` keeps specificity at
+   zero so a dark utility never outranks a more specific rule by accident. */
+@custom-variant dark (&:where(.dw-dark, .dw-dark *));
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Keeps the WebView's own chrome — overscroll glow, form controls,
+       scrollbars — in the theme the app is actually painting. */
+    color-scheme: light;
+  }
+
+  html.dw-dark {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background-color: var(--dw-ground);
+    color: var(--dw-ink);
+    font-family: var(--font-text);
+    /* A child taps; nothing should select, callout, or double-tap-zoom. */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+  }
+
+  /* One focus treatment for the whole app, keyboard-only. Children on tablets
+     never see it; it is the difference between usable and unusable on a
+     desktop with no mouse. */
+  :focus-visible {
+    outline: 2px solid var(--dw-focus);
+    outline-offset: 2px;
+  }
+
+  /* Digits are read, compared and lined up. Never let them be proportional. */
+  .numeral {
+    font-family: var(--font-numeral);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .inscription {
+    font-family: var(--font-inscription);
+  }
+}

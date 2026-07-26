@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover is what makes env(safe-area-inset-*) report real
+         values on notched iPhones; the --safe-* tokens are dead without it. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Tells the WebView to paint its own chrome (scrollbars, form controls)
+         in whichever scheme is active, so a dark app has no white flash. -->
+    <meta name="color-scheme" content="light dark" />
+    <title>Dynawalla</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

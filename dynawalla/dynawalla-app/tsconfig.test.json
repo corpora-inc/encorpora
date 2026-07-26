@@ -1,0 +1,10 @@
+{
+  /* The tests, and only the tests, get Node's globals. They read files, walk
+     the tree and run under `node --experimental-strip-types --test`. */
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src"],
+  "exclude": []
+}

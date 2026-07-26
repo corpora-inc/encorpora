@@ -1,0 +1,42 @@
+[package]
+name = "dynawalla"
+version = "0.1.0"
+description = "Mathematics practice for children"
+authors = ["Corpora Inc"]
+edition = "2024"
+
+[lib]
+# The `_lib` suffix keeps the lib name distinct from the bin name, which
+# otherwise collides on Windows (rust-lang/cargo#8519).
+name = "dynawalla_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["wry"] }
+
+[profile.release]
+opt-level = "z"   # Size, not speed: this is a mobile binary.
+lto = true
+codegen-units = 1
+debug = 1         # Line tables only — Gradle uploads these to Play as symbols.
+strip = false     # Gradle strips the .so for the APK and bundles symbols in the AAB.
+panic = "abort"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# READ ADR-0011 BEFORE ADDING A `[workspace]` OR MOVING A `[patch]` HERE.
+#
+# There is no `[workspace]` section in this file, and there must not be one:
+# this manifest is its own implicit workspace root, exactly like Corpán's at
+# corpan/corpan-app/src-tauri/Cargo.toml. Cargo honours `[patch]` only from the
+# workspace root OF THE PACKAGE BEING BUILT, so hoisting either app's patches
+# into a shared root silently drops them — Corpán reverts to an `ndk-context`
+# that aborts the process on Android Activity recreation, and it compiles,
+# tests and clippies clean on the way to production.
+#
+# When Dynawalla gains Android and needs the same vendored forks, its own
+# `[patch.crates-io]` goes HERE, pointing at ../../../native/vendor/*. Not in a
+# workspace manifest. Not shared with Corpán's.
+# ─────────────────────────────────────────────────────────────────────────────
