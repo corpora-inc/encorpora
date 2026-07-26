@@ -2,7 +2,7 @@
 
 Every risk has a mitigation and an owner. **Owners here are roles.** The person
 holding each role is named in [STATUS.md](STATUS.md); a role with no name is itself an
-open risk (R-33).
+open risk (R-44).
 
 Roles: **Program** (program lead) · **Native** (Rust/Tauri/plugins) ·
 **Release** (CI, merge queue, store pipelines) · **Curriculum** ·
@@ -18,8 +18,9 @@ Severity: **H** = can kill or void the program · **M** = costs a milestone ·
 
 ### R-01 · H · Program
 **The trunk law is documented but not practiced.** The root runbook has said "the
-integration branch is dead" since 2026-06-22, and every merge since is a batched
-release: 186, 160, 146, 269, 619 files. Declaring it again changes nothing.
+integration branch is dead" since 2026-06-22, and the cadence never changed: the last ten
+merges to `main` are 619, 4, 5, 2, 269, 216, 146, 7, 160 and 186 files — six of ten are
+batched releases of 146 files or more. Declaring it again changes nothing.
 **Mitigation:** the only binding mechanisms are (a) `adversarial-review` failing on
 oversized diffs and on any lens error, and (b) `enforce_admins`. Both are in M0a.
 Expect the first weeks to regress anyway; treat a >200-file PR as an incident and
@@ -46,19 +47,21 @@ asserts it," the plan reverts to measuring that code exists.
 
 ### R-04 · M · Program
 **The V1 cut will be re-litigated under schedule pressure.** Geometry, measurement,
-data, ratio and integers are out because their manipulation schemas do not exist.
-Anyone who "adds geometry" without them is adding worksheets.
-**Mitigation:** gate C-13 blocks a `conceptual`/`reasoning` skill from binding a
-choice-only generator, and the marketing claim stays "grades 1–5 number and
-arithmetic." [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) records why.
+data, ratio and integers are proposed out because their manipulation schemas do not
+exist. Anyone who "adds geometry" without them is adding worksheets.
+**Mitigation:** gate CG-13 blocks a `conceptual`/`reasoning` skill from binding a
+choice-only generator, and no public scope claim goes out until
+[ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) is decided — it is
+`Proposed — awaiting founder`, because the cut narrows a founder-stated scope and the
+plan does not get to ratify that for itself.
 
 ### R-05 · M · Curriculum + Program
 **Breadth planned as manifest rows produces unmergeable PRs.** A `SkillNode` literal is
 30–40 lines; "42 families in six PRs" is 5–20× the diff cap. Either the cap gets raised
 until it means nothing, or the milestone silently becomes ~120 PRs against a list that
-names 22. **Mitigation:** [MASTER_PLAN.md](MASTER_PLAN.md) states M7 at its honest
-granularity — one family per PR, one domain per promotion PR, 25 PRs — and the PR
-budget table is the number to plan against.
+names 22. **Mitigation:** [MASTER_PLAN.md](MASTER_PLAN.md) states M4 and M7 at their
+honest granularity — one family per PR, one domain per promotion PR, 17 and 20 PRs — and
+the PR budget table (~122) is the number to plan against.
 
 ---
 
@@ -170,7 +173,7 @@ batch. One entry touching an uncovered path fails `ci-gate` for the whole group 
 a property of the individual PR and is fully knowable before enqueue (`C-05`).
 
 ### R-16 · M · Release
-**`adversarial-review` is a cost, latency and single-point-of-failure line.** ~121 PRs
+**`adversarial-review` is a cost, latency and single-point-of-failure line.** ~122 PRs
 × 3 lenses × ~2.5 evaluations is ~900 model calls against a 60-minute timeout, and the
 gate now fails on **any** lens error. The key in use is an OpenAI key last rotated
 2025-03-22 against a hardcoded default model; when that model retires, every PR blocks.
@@ -197,8 +200,9 @@ and a fork-only required approval. Whether fork PRs are wanted at all depends on
 
 ### R-19 · L · Release
 **Production pack builds are unpinned.** Fifteen hand-written
-`npm install --legacy-peer-deps` blocks mean a transitive publish can break the
-production deploy or silently change a shipped bundle with zero repo change.
+`npm install --legacy-peer-deps` blocks — 14 in `deploy-pages.yml` and one at
+`ci.yml:245` — mean a transitive publish can break the production deploy or silently
+change a shipped bundle with zero repo change.
 **Mitigation:** PR-0b.1 commits a lockfile per pack and switches to `npm ci`.
 
 ---
@@ -206,10 +210,10 @@ production deploy or silently change a shipped bundle with zero repo change.
 ## Curriculum
 
 ### R-20 · H · Curriculum
-**Curriculum will still outrun capability, now on two axes.** C-7 (generator ownership)
+**Curriculum will still outrun capability, now on two axes.** CG-7 (generator ownership)
 was the original defence. A generator can emit a perfectly valid `Exercise` the app
-cannot render (C-8), and the easiest way to satisfy C-7 for conceptual content is to
-make everything multiple choice (C-13).
+cannot render (CG-8), and the easiest way to satisfy CG-7 for conceptual content is to
+make everything multiple choice (CG-13).
 **Mitigation:** all three gates are required from the **first** curriculum PR, not
 retrofitted.
 
@@ -228,15 +232,15 @@ CLDR plural-category keys exist across 55 locale dirs. Rendering `1.000` as one 
 to a French child, or rejecting `3,5`, teaches notation that is wrong in the child's own
 classroom — on the exact domain where notation **is** the content. The repo's track
 record on deferred localization is documented: three shipped readers at 0/54 localized
-UI. **Mitigation:** `NumberFormat` is M2, not M9, and drives `judge`; gate C-14 is the
+UI. **Mitigation:** `NumberFormat` is M2, not M9, and drives `judge`; gate CG-14 is the
 round-trip proof (`Q-07`, `M-10`).
 
 ### R-23 · M · Curriculum
 **Platform determinism drift.** Generators run in a Tauri WebView on iOS, Android and
 desktop. Any `Math.random`, any `Intl` inside generation, or any key-order assumption
 produces different exercises per device and breaks bug-report reproduction.
-**Mitigation:** own seeded PRNG with pinned known-answer vectors; C-16 output-hash
-snapshots on macOS **and** Linux CI. **Residual:** C-16 does not run on a real Android
+**Mitigation:** own seeded PRNG with pinned known-answer vectors; CG-16 output-hash
+snapshots on macOS **and** Linux CI. **Residual:** CG-16 does not run on a real Android
 WebView. A device spot-check belongs in the M7 device pass.
 
 ### R-24 · M · Curriculum + Experience
@@ -244,13 +248,13 @@ WebView. A device spot-check belongs in the M7 device pass.
 subtraction, decent for the mult/div algorithms, thin for fractions and word problems —
 and only ~8–12 mal-rules get a genuine contrast representation.
 **Mitigation:** where evidence is thin, default to "unclassified error" and a faded
-worked example. Never invent a bug. Gate C-22 keeps the LOCATE count checkable, and any
+worked example. Never invent a bug. Gate CG-22 keeps the LOCATE count checkable, and any
 public claim must match the Developer Mode number (`M-15`).
 
 ### R-25 · L · Curriculum + Founder
 **Standards text is copyrighted and the repo is public.** CCSS text is licensed by NGA
 Center/CCSSO for purposes supporting the Initiative and requires a specific notice.
-**Mitigation:** store codes only, author all prose originally, keep C-20 report-only.
+**Mitigation:** store codes only, author all prose originally, keep CG-20 report-only.
 A public *alignment claim* is a separate exposure —
 [ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md).
 

@@ -18,7 +18,7 @@ cheerfully reintroduce a mistake that was already paid for once.
 | ADR | Title | Status |
 |---|---|---|
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) | Apple Kids Category and Play under-13 target audience | **Proposed — awaiting founder** |
-| [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 covers number and arithmetic only | Accepted |
+| [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 covers number and arithmetic only | **Proposed — awaiting founder** |
 | [0003](DECISIONS/ADR-0003-no-downloadable-packs-v1.md) | No downloadable content packs in V1 | Accepted |
 | [0004](DECISIONS/ADR-0004-no-mic-no-llm-no-3d.md) | No microphone, no on-device LLM, no 3D | Accepted |
 | [0005](DECISIONS/ADR-0005-shell-and-routing.md) | Hash router, one window, parental gate in the shell | Accepted |
@@ -46,11 +46,16 @@ cheerfully reintroduce a mistake that was already paid for once.
 2. **ADR-0017 Human evaluation resourcing** — the founder must supply a playtest cohort
    and a named art director. Recruitment has weeks of lead time, which is why
    [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) starts in the bootstrap PR.
-3. **ADR-0015 Developer-account topology** and **ADR-0016 product name** — both needed
+3. **ADR-0002 V1 scope cut** — narrows the founder-stated grade range (1–6 plus intro
+   pre-algebra) to grades 1–5 number and arithmetic, and rewrites the public claim.
+   Needed before any public scope statement, and before M4 buys curriculum breadth
+   against one range or the other. The engineering argument is settled; the scope
+   decision is not the plan's.
+4. **ADR-0015 Developer-account topology** and **ADR-0016 product name** — both needed
    before the ASC and Play app records are created in M1. The SKU and package name are
    literally immutable.
-4. **ADR-0014 License** — decides whether outside contributions are wanted at all, and
+5. **ADR-0014 License** — decides whether outside contributions are wanted at all, and
    therefore whether the fork-PR gate path is worth maintaining.
-5. **ADR-0010 Standards-alignment claim** — needed before any public marketing copy;
-   decides whether gate C-20 stays report-only.
-6. **ADR-0013 Monetization** — deferring past M7 is fine; past M9 blocks launch.
+6. **ADR-0010 Standards-alignment claim** — needed before any public marketing copy;
+   decides whether gate CG-20 stays report-only.
+7. **ADR-0013 Monetization** — deferring past M7 is fine; past M9 blocks launch.

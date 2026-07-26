@@ -3,18 +3,26 @@
 Status: discovery complete, nothing built. See [STATUS.md](STATUS.md).
 Index: [README.md](README.md).
 
+> Links to `GATES.md`, `CURRICULUM.md`, `ADAPTIVE_LEARNING.md`, `ARCHITECTURE.md`,
+> `EXPERIENCE_DESIGN.md`, `PACK_SYSTEM.md`, `RELEASE_ENGINEERING.md`, `STORE.md` and
+> `TEST_STRATEGY.md` resolve once the reference-set PR lands. The two were split so
+> neither diff is truncated by the adversarial reviewer; delete this note in the
+> follow-up.
+
 ## What it is
 
-A mathematics practice product for children in grades 1–5, shipping as
-`inc.corpora.dynawalla` on iOS, Android and desktop from `dynawalla/` in this
-monorepo. Tauri 2 + React 19 + Vite, sharing the native/Rust layer with Corpán and
-nothing else.
+A mathematics practice product for children, shipping as `inc.corpora.dynawalla` on iOS,
+Android and desktop from `dynawalla/` in this monorepo. Tauri 2 + React 19 + Vite,
+sharing the native/Rust layer with Corpán and nothing else.
 
-The subject is number and arithmetic: place value, addition and subtraction,
-multiplication, division, fractions, and the equals sign as a relation. Geometry,
-measurement, data, ratio and integers are **not** in V1 — see
-[ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) for why, and why "adding geometry"
-without new answer schemas would be adding worksheets.
+**V1 is proposed at grades 1–5, number and arithmetic**: place value, addition and
+subtraction, multiplication, division, fractions, and the equals sign as a relation.
+Geometry, measurement, data, ratio, integers, grade 6 and formal pre-algebra are proposed
+**out** of V1 because their answer schemas do not exist and "adding geometry" without
+them is adding worksheets. That narrows a founder-stated scope, so it is a founder
+decision, not the plan's: [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) is
+`Proposed — awaiting founder` and everything below is written against the cut as
+proposed. No public scope or marketing statement goes out before it is decided.
 
 ## The core promise
 
@@ -29,14 +37,19 @@ exactly that gap.
 The mechanism is executable mal-rules. A mal-rule is a pure function
 `(exercise) => AnswerValue | null` that reproduces a documented buggy procedure. When
 a child's wrong answer *equals* a mal-rule's output, we know which procedure they ran.
-`5,001 − 2,798 = 3,797` is not a random error; it is borrow-across-zero, and the
-response is a contrast pair on the counting board where the buggy procedure produces a
-visibly absurd result. The child sees the contradiction instead of being told about it.
+`5,001 − 2,798 = 3,203` is not a random error; it is `mis.add.borrow-across-zero` — the
+child regrouped all the way down and never gave up the thousand — and the response is a
+contrast pair on the counting board, where the borrowed thousand is still visibly sitting
+in the answer. The child sees the contradiction instead of being told about it. (The
+answer `3,797` on the same problem is a *different* rule,
+`mis.add.smaller-from-larger`, and gets a different representation. The mapping from rule
+to representation is the product, so it has to be exact — see
+[CURRICULUM.md](CURRICULUM.md).)
 
 This is scoped honestly. There is no generic "make the contradiction self-evident"
 function — fraction addition needs a bar contradiction, magnitude comparison needs a
 number line. Roughly 8–12 mal-rules get a genuine contrast representation in V1; every
-other one degrades to a faded worked example. Gate C-22 exists so the count is always
+other one degrades to a faded worked example. Gate CG-22 exists so the count is always
 checkable against anything we claim publicly. See [GATES.md](GATES.md).
 
 ## Engagement ethics
@@ -99,11 +112,12 @@ which is why [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) starts in the bootstra
 
 ## Open founder decisions
 
-Seven decisions are the founder's and are not made. Each has an ADR with status
-`Proposed — awaiting founder` stating the options and their consequences. Two are on
+Eight decisions are the founder's and are not made. Each has an ADR with status
+`Proposed — awaiting founder` stating the options and their consequences. Three are on
 the critical path: the Kids Category posture is a one-way door that must be decided
-before M1's first store submission, and the playtest cohort plus a named art director
-are people the plan cannot supply for itself. See [DECISIONS.md](DECISIONS.md).
+before M1's first store submission; the playtest cohort plus a named art director are
+people the plan cannot supply for itself; and the V1 scope cut narrows the founder-stated
+grade range, so it is not the plan's to ratify. See [DECISIONS.md](DECISIONS.md).
 
 ## How this product is graded
 
@@ -123,6 +137,7 @@ that shape it:
 ## Brand voice
 
 Understated, elegant. Direct, concise, honest. No marketing hype, no AI slop, no
-emoji-studded headers, in this repo or in the product. The marketing claim is
-**"grades 1–5 number and arithmetic"** — not "grades 1–6 mathematics." The code has to
-be able to back the sentence.
+emoji-studded headers, in this repo or in the product. The *proposed* marketing claim is
+**"grades 1–5 number and arithmetic"** — not "grades 1–6 mathematics" — and it is
+proposed rather than settled because [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) is
+the founder's. Whatever sentence is chosen, the code has to be able to back it.

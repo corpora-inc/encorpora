@@ -30,9 +30,9 @@ first — it tells you what exists.
   slots.
 - **Skill ids are immutable forever.** They are mastery keys on learner devices. A rename
   is a new id plus `status: "deprecated"` + `supersededBy`.
-- **A skill cannot go `active`** without a working generator (C-7) *and* a registered,
-  tested renderer for its answer schema and every required representation (C-8). Do not
-  satisfy C-7 with multiple choice — C-13 blocks it and
+- **A skill cannot go `active`** without a working generator (CG-7) *and* a registered,
+  tested renderer for its answer schema and every required representation (CG-8). Do not
+  satisfy CG-7 with multiple choice — CG-13 blocks it and
   [ADR-0002](docs/DECISIONS/ADR-0002-v1-scope-cut.md) explains why.
 - **No new user-visible string without all five locales**, including CLDR plural
   categories. `npm run check:i18n` fails the build. **Translate directly** — do not
@@ -56,9 +56,11 @@ and passing every test on the way. Plugin identifiers and `links =` values never
 
 ## PR size
 
-`adversarial-review` **fails** above `MAX_DIFF_BYTES` rather than reviewing half your
-diff. Check `git diff origin/main | wc -c` before pushing and split rather than retry.
-One generator family per PR; one domain per node-promotion PR.
+`adversarial-review` currently **truncates** above `MAX_DIFF_BYTES` (200,000) and still
+reports green — so an oversized PR is reviewed on a fraction of its diff and looks
+reviewed. PR-0a.2 makes it fail. Split now either way: check
+`git diff origin/main | wc -c` before pushing. One generator family per PR; one domain
+per node-promotion PR.
 
 ## Never
 

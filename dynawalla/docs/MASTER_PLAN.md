@@ -27,17 +27,20 @@ largest correction carried into this document:
 
 So the plan is stated at its honest granularity: **one generator family per PR** (~600–1,200
 lines each), **one domain per node-promotion PR**, **mal-rules in batches of ~10–14**.
-M7 is 25 PRs, not 15. The named PR count below is ~125 and it is the number to plan
-staffing and CI budget against, not a floor. See [RISKS.md](RISKS.md) R-01, R-08.
+M4 is 17 PRs and M7 is 20, not the 11 and 15 the first draft named. The named PR count
+in the budget table below is **~122** and it is the number to plan staffing and CI budget
+against, not a floor. See [RISKS.md](RISKS.md) R-01, R-05.
 
-The second correction of the same kind: **V1 scope was cut deliberately, and the cut is
-load-bearing.** Six domains, ~160 active skills, 18 generator families, four answer
+The second correction of the same kind: **the V1 scope cut is deliberate and
+load-bearing** — six domains, ~160 active skills, 18 generator families, four answer
 schemas, four representations, five launch locales, and **no downloadable content
 packs**. Geometry, measurement, data, ratio and integers are V2 because their
 interactions (`dragPlace`, `drawSegment`, `dialRead`, `buildChart`) do not exist and
-cannot be laundered into multiple choice. Gate C-13 exists to stop exactly that
-laundering. Anyone re-litigating the cut under schedule pressure should read
-[ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) first.
+cannot be laundered into multiple choice. Gate CG-13 exists to stop exactly that
+laundering. The cut itself narrows the founder-stated grade range, so
+[ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) is `Proposed — awaiting founder`: this
+plan is written against option A and says so, but M4 should not buy breadth against one
+grade range while the other is still live.
 
 ---
 
@@ -54,7 +57,7 @@ M0a ──┬── M0b (parallel, blocks nothing in Dynawalla)
 can actually fail, and on `M2` for a second real consumer, so the move is verified by
 two apps rather than asserted.
 
-`M5` deliberately lands gate **G-5** before the scheduler. Everything downstream
+`M5` deliberately lands gate **EG-5** before the scheduler. Everything downstream
 measures the wrong thing if `b()` is not real.
 
 ---
@@ -69,7 +72,7 @@ touches the CDN or Corpán's release ritual.
 
 | PR | What |
 |---|---|
-| 0a.1 | Bootstrap: docs (this set), `.claude/` agents/skills/hooks/commands + `.gitignore` negations, PR and issue templates, `LICENSE` placeholder, the deprecated-methodology expunge, five inert `ci.yml` area filters, `uncovered` in **warn** mode, and **delete `.github/workflows/pr-agent.yml`**. |
+| 0a.1 | Bootstrap: docs (this set), `.claude/` agents/skills/hooks/commands + `.gitignore` negations, PR and issue templates, `LICENSE` placeholder, the deprecated-methodology expunge, five inert `ci.yml` area filters, `uncovered` in **warn** mode, **delete `.github/workflows/pr-agent.yml`**, and `dynawalla/tools/check-docs-refs.mjs` — every `R-NN`, `CG-NN` and `EG-NN` reference resolves to a real heading or gate row, and every acceptance id is claimed by a milestone exit list. This class of drift already happened once in the draft. |
 | 0a.2 | `adversarial_review.py`, four fixes in one PR: truncation exits non-zero with `::error::diff too large to review — split this PR`; **any** lens error fails (today only all-lenses-fail closes, so two of three timeouts pass green); the resolved provider+model printed to `$GITHUB_STEP_SUMMARY`; a 1-token model ping before spending three full-diff calls. `MAX_DIFF_BYTES` becomes a repo variable at 400,000. Adds the fork-PR path and an `admin-override` break-glass label. |
 | 0a.3 | Flip `uncovered` to failing, gated `if: github.event_name == 'pull_request'`; explicit no-CI allowlist; PR-size advisory step. |
 | 0a.4 | `.cargo/config.toml` generated from `config.toml.in` resolving `$ANDROID_NDK_HOME`, replacing the hardcoded local NDK path. Keeps the `linker = "/usr/bin/cc"` Apple pins. **Must land before 0a.5.** |
@@ -84,9 +87,14 @@ signing certs, an ASC API key and a Play service account. Any commenter on any i
 can invoke it. Its own `/review`-only gate is commented out. It duplicates
 `adversarial-review`. It is a one-line file removal with no dependencies.
 
-**Exit criteria:** `C-02`, `C-03`, `C-04`, `C-05`, `C-06`, `C-07`, `C-08`, `C-09`,
-`C-10`. Plus: `rg -n -i -e 'moonshot-15-plus-v2' -e 'app-store-prep' -e 'Branch: \`journey\`'
--e 'towards-17-final' --glob '*.md' --glob '!books/**'` returns zero hits.
+**Exit criteria:** `C-01`, `C-02`, `C-03`, `C-04`, `C-05`, `C-06`, `C-07`, `C-08`,
+`C-09`, `C-10`, and `G-03` `[founder]`. Plus: `rg -n -i -e 'moonshot-15-plus-v2'
+-e 'app-store-prep' -e 'Branch: \`journey\`' -e 'towards-17-final' --glob '*.md'
+--glob '!books/**'` returns zero hits. Plus the docs cross-reference check from PR-0a.1
+is green: every `R-NN` reference in `dynawalla/docs/**` resolves to a `### R-NN` heading,
+every `CG-`/`EG-` reference resolves to a row in [GATES.md](GATES.md), and every
+acceptance id in [ACCEPTANCE_CRITERIA.md](ACCEPTANCE_CRITERIA.md) is claimed by at least
+one milestone's exit criteria.
 
 ---
 
@@ -98,7 +106,7 @@ can invoke it. Its own `/review`-only gate is commented out. It duplicates
 
 | PR | What |
 |---|---|
-| 0b.1 | Pin pack installs: a `package-lock.json` per pack; `deploy-pages.yml` (15 sites) and `ci.yml` switch to `npm ci`; `--legacy-peer-deps` moves into each pack's versioned `.npmrc`. Prerequisite for the rest. |
+| 0b.1 | Pin pack installs: a `package-lock.json` per pack; `deploy-pages.yml` (14 sites) and `ci.yml` (1, at `ci.yml:245`) switch to `npm ci`; `--legacy-peer-deps` moves into each pack's versioned `.npmrc`. Prerequisite for the rest. |
 | 0b.2 | Build cost: keep the **full-site** artifact; use `actions/cache` keyed on a per-pack content hash to skip npm-install/build for unchanged packs, restoring the cached `dist/` + `.zip` into `web/io/out`. `cancel-in-progress: false`. |
 | 0b.3 | Immutable pack versions on the S3/CloudFront path this repo already operates; `catalog-v3` points there; Pages keeps only a current-version convenience URL. Emit sha256 at build time. |
 | 0b.4 | Move `requireCompleteLocalization` out of the deploy build into a PR gate. |
@@ -120,7 +128,7 @@ can invoke it. Its own `/review`-only gate is commented out. It duplicates
    workflow *file path* and restarts at 1 on rename, so switching to it **decreases**
    the number and gets the release rejected by both stores. The in-file warning says
    never to revert to a derived scheme. Keep minutes-since-epoch for both apps and add
-   the preflight. See [RISKS.md](RISKS.md) R-31 for the new collision risk that the
+   the preflight. See [RISKS.md](RISKS.md) R-12 for the new collision risk that the
    constant-merge cadence introduces.
 
 **Exit criteria:** `C-12`, `C-13`, `C-14`, `C-15`, `C-16`, `C-17`, `C-18`.
@@ -252,32 +260,42 @@ fails at runtime with permission-denied on every native call.
 
 ## M4 — Curriculum kernel and the gates that block merges
 
-**Goal.** Schema, the first eight generator families, the grade 1–2 spine, and the full
-C-gate validator as a required check — so curriculum can never outrun generators **or**
-renderers.
+**Goal.** Schema, the seven grade 1–2 generator families, the grade 1–2 spine, and the
+full CG-gate validator as a required check — so curriculum can never outrun generators
+**or** renderers.
 
 **Depends on:** M2.
 
 | PR | What |
 |---|---|
-| 4.1 | Schema + [GATES.md](GATES.md): `SkillNode`, `Edge`, `Exercise`, `PromptSpec`, `GeneratorBinding`, `MalRule`, `CapabilityTag`, `RepId`; id regex and immutability rules. Publishes the complete C-1..C-22 table with one owner PR per gate and no gaps. |
-| 4.2 | Structure gates C-1 (id hygiene + immutability), C-2 (Kahn topo-sort printing the actual cycle), C-3 (edge integrity), C-4 (two-way reachability), C-5 (grade sanity). CLI `dw-curriculum check --report json`. |
-| 4.3 | C-7 bidirectional generator ownership — the merge blocker. A curriculum row without a working generator cannot reach `status: active`. |
-| 4.4 | C-8 renderer ownership + C-13 choice-laundering ban + C-18 accessibility. C-8 is the gate the first draft was missing entirely. |
-| 4.5 | C-6 capability flow: `provides`/`consumes` and the missing-prerequisite detector that suggests the edge — the only mechanically sound way to find a *missing* edge. |
-| 4.6 | Execution gates C-9, C-10, C-11, C-16, C-17. Incremental (diff-scoped) on PR plus a nightly full sweep with a named owner. |
-| 4.7 | C-14 locale round-trip + C-19 i18n completeness. |
+| 4.1 | Schema + [GATES.md](GATES.md): `SkillNode`, `Edge`, `Exercise`, `PromptSpec`, `GeneratorBinding`, `MalRule`, `CapabilityTag`, `RepId`; id regex and immutability rules. Publishes the complete CG-1..CG-22 table with one owner PR per gate and no gaps. |
+| 4.2 | Structure gates CG-1 (id hygiene + immutability), CG-2 (Kahn topo-sort printing the actual cycle), CG-3 (edge integrity), CG-4 (two-way reachability), CG-5 (grade sanity). CLI `dw-curriculum check --report json`. |
+| 4.3 | CG-7 bidirectional generator ownership — the merge blocker. A curriculum row without a working generator cannot reach `status: active`. |
+| 4.4 | CG-8 renderer ownership + CG-13 choice-laundering ban + CG-18 accessibility. CG-8 is the gate the first draft was missing entirely. |
+| 4.5 | CG-6 capability flow: `provides`/`consumes` and the missing-prerequisite detector that suggests the edge — the only mechanically sound way to find a *missing* edge. |
+| 4.6 | Execution gates CG-9, CG-10, CG-11, CG-16, CG-17. Incremental (diff-scoped) on PR plus a nightly full sweep with a named owner. |
+| 4.7 | CG-14 locale round-trip + CG-19 i18n completeness. |
 | 4.8 | The parametric `b()` function plus a golden table of `b` per exemplar item, all coefficients in one `constants.ts`. |
-| 4.9 | Grade 1–2 spine in three PR-sized clusters: `ns` place value, `add` within 100, `alg` equality (~62 active skills) bound to 8 families. |
-| 4.10 | `fraction` and `choice` answer schemas and their judge branches, with renderers, so C-8 can pass for the M7 fraction families. |
-| 4.11 | CI: `dynawalla-curriculum` job in `ci-gate.needs`, incremental on PR, full sweep nightly. |
+| 4.9–4.14 | **One generator family per PR** for the six grade 1–2 families that do not exist yet: `fact-recall`, `mental-strategy`, `missing-operand`, `place-value-decompose`, `compare-order`, `numberline-locate`. (`gen.arith.column-op` is the seventh and shipped at 2.8.) Each ships `paramSchema`, property tests, mal-rule wiring, prompt templates, renderers where new, and passes CG-9/10/11/13/14/16/17. |
+| 4.15 | Grade 1–2 spine in three PR-sized clusters: `ns` place value, `add` within 100, `alg` equality (~62 active skills) bound to those seven families. |
+| 4.16 | `fraction` and `choice` answer schemas and their judge branches, with renderers, so CG-8 can pass for the M7 fraction families. |
+| 4.17 | CI: `dynawalla-curriculum` job in `ci-gate.needs`, incremental on PR, full sweep nightly. |
 
-**Runtime is a design constraint.** C-9/10/11/12 over 160 skills × 4 levels × 1,000
+**Runtime is a design constraint.** CG-9/10/11/12 over 160 skills × 4 levels × 1,000
 seeds is ~640k `generate()` calls. Incremental on PR, full sweep nightly, from day one.
 
-**Exit criteria:** `M-02`, `M-03`, `M-04`, `M-06`, `M-07`, `M-08`, `M-09`, `M-10`,
-`M-13`, `Q-10`, `C-20`. Plus: 62+ active grade-1–2 skills, every one producing
-≥`minVariants` distinct exercises under execution.
+**Why the families are here and not at M7.** The exit criterion is 62+ *active* grade-1–2
+skills and CG-7 blocks a skill from going `active` without a working generator. `ns` place
+value, `add` within 100 and `alg` equality need `place-value-decompose`, `compare-order`,
+`numberline-locate`, `fact-recall`, `mental-strategy` and `missing-operand` — so those
+families are M4 work, not M7 work, and the first draft's M4 could not have hit its own
+exit criterion. See the staging table in [CURRICULUM.md](CURRICULUM.md): 7 families at
+M4, 11 at M7, 18 total.
+
+**Exit criteria:** `M-02`, `M-03`, `M-04`, `M-05`, `M-06`, `M-07`, `M-08`, `M-09`,
+`M-10`, `Q-10`, `C-20`. Plus: 62+ active grade-1–2 skills, every one producing
+≥`minVariants` distinct exercises under execution. (`M-13` — no orphaned gate — is graded
+at M8, the milestone that lands the last gate, CG-22.)
 
 ---
 
@@ -294,21 +312,21 @@ anti-stagnation invariant as a named test, and a persona harness whose response 
 | 5.1 | Engine skeleton: `types.ts`, `constants.ts` (every tunable in one file), `boundary.test.ts`, persistence codecs. No model logic. |
 | 5.2 | Layer S: per-skill Elo, asymmetric credit, prerequisite propagation, memoized derived state. Golden transcripts. |
 | 5.3 | Sim harness skeleton with a **different functional form than the engine**: personas answer from a 3PL with per-child discrimination and item features the engine cannot observe, plus one explicit misspecification persona. Loads the M2 playtest residuals as a fixture. |
-| 5.4 | **Gate G-5, deliberately before the scheduler.** Reliability diagram against the misspecified personas and the real-child fixture. |
+| 5.4 | **Gate EG-5, deliberately before the scheduler.** Reliability diagram against the misspecified personas and the real-child fixture. |
 | 5.5 | Scheduler: pools, 8-card batch quotas expressed as **offsets from `pTarget`**, `pTarget` as a per-item asymmetric leaky integrator with the batch **re-planned on any invariant trip**, interleaving rules with the blocked-debut exception. |
 | 5.6 | Every anti-frustration and anti-stagnation invariant as its own named test, including the controller-stability assertion. |
 | 5.7 | Layer F: FSRS-6 on the bounded fact set, keyed on **classes** not instances, with the 21-weight equality test. Rating is a function of `(correct, latency)`; card creation gated on `φ_s`. |
 | 5.8 | Signals: latency EWMA over log-latency of correct responses per input mode; revision/hint/guess control; fatigue detection; flow classifier. |
 | 5.9 | `SelectionTrace` + Developer Mode, traces produced by the same code path that made the decision, compiled out in production. |
-| 5.10 | The ten personas + gate suite. The synthetic child **acquires skill** from day one. Nightly job; PRs run a 3-persona × 20-learner smoke. |
+| 5.10 | The ten behavioural personas + the EG-gate suite (the misspecification persona ships at 5.3). The synthetic child **acquires skill** from day one. Nightly job; PRs run a 3-persona × 20-learner smoke. |
 
-**Why G-5 lands before the scheduler.** The first draft's reliability check was
+**Why EG-5 lands before the scheduler.** The first draft's reliability check was
 circular: the engine computes `σ(θ − b)` and the persona answered from `σ(α − b)`
 against the *same* `b`, so the gate passed by construction and measured nothing. The
 corrected harness makes it falsifiable — but only if the M2 real-child residual fit is
 not skipped "until there is more content."
 
-**Exit criteria:** `A-01` through `A-09`, `A-14` through `A-19`.
+**Exit criteria:** `A-01` through `A-09`, `A-13`, `A-14` through `A-19`.
 
 ---
 
@@ -356,18 +374,23 @@ base worth OTA-ing.
 
 **Depends on:** M4, M6.
 
-**25 PRs, and that is the honest count** (the first draft said 15 and would have
-produced twelve unmergeable PRs).
+**20 PRs, and that is the honest count** (the first draft said 15 and would have
+produced twelve unmergeable PRs; six of the families it listed here belong at M4, where
+the grade 1–2 spine needs them).
 
 | PR | What |
 |---|---|
-| 7.1–7.13 | **One generator family per PR** for the remaining 13 families: `mental-strategy`, `multidigit-mul`, `long-div`, `missing-operand`, `place-value-decompose`, `compare-order`, `numberline-locate`, `round-estimate`, `factor-multiple`, `frac.partition-model`, `frac.equivalence-simplify`, `frac.arith`, `frac.convert`. Each ships `paramSchema`, property tests, mal-rule wiring, prompt templates, renderers where new, and passes C-9/10/11/13/14/16/17. Sized at ~600–1,200 lines so every one clears the diff cap. |
-| 7.14–7.15 | The two word-problem families, each with its locale-scoped `contextTheme` asset sets. |
-| 7.16 | `gen.logic.error-analysis` wired to the mal-rule table — "here is the apprentice's work, find the mistake." Every mal-rule becomes content for free. |
-| 7.17–7.22 | **Six domain node-promotion PRs** (`ns`, `add`, `mul`, `div`, `frac`, `alg`), each promoting ~15–30 cluster nodes from draft to active only when C-7 **and** C-8 pass. One domain per PR, not one grade band per PR. |
-| 7.23 | C-21 word-problem context sets: per-locale name pools, object pools, currency and unit sets — **authored, not translated** — with a native-speaker review of the compare phrasings per locale. |
-| 7.24 | C-15 grade-band coverage matrix + C-20 standards traceback (report-only, never blocking). |
-| 7.25 | Curriculum compiler: typed TS graph → deterministic hash-stamped SQLite emitted into the app bundle. A release-checklist gate asserts the artifact hash matches the compiled source. |
+| 7.1–7.8 | **One generator family per PR** for the remaining 8 non-word families: `multidigit-mul`, `long-div`, `round-estimate`, `factor-multiple`, `frac.partition-model`, `frac.equivalence-simplify`, `frac.arith`, `frac.convert`. Each ships `paramSchema`, property tests, mal-rule wiring, prompt templates, renderers where new, and passes CG-9/10/11/13/14/16/17. Sized at ~600–1,200 lines so every one clears the diff cap. |
+| 7.9–7.10 | The two word-problem families, each with its locale-scoped `contextTheme` asset sets. |
+| 7.11 | `gen.logic.error-analysis` wired to the mal-rule table — "here is the apprentice's work, find the mistake." Every mal-rule becomes content for free. |
+| 7.12–7.17 | **Six domain node-promotion PRs** (`ns`, `add`, `mul`, `div`, `frac`, `alg`), each promoting ~15–30 cluster nodes from draft to active only when CG-7 **and** CG-8 pass. One domain per PR, not one grade band per PR. |
+| 7.18 | CG-21 word-problem context sets: per-locale name pools, object pools, currency and unit sets — **authored, not translated** — with a native-speaker review of the compare phrasings per locale. |
+| 7.19 | CG-15 grade-band coverage matrix + CG-20 standards traceback (report-only, never blocking). |
+| 7.20 | Curriculum compiler: typed TS graph → deterministic hash-stamped SQLite emitted into the app bundle. A release-checklist gate asserts the artifact hash matches the compiled source. |
+
+11 families land here (8 + 2 word + `error-analysis`) and 7 landed at M4 — 18, which is
+the [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) number and the
+[CURRICULUM.md](CURRICULUM.md) staging table.
 
 **Exit criteria:** `M-01`, `M-11`, `M-12`, `M-17`, `M-18`, `K-01`, `K-02`, `Q-03`.
 Plus: a named person reaches a fraction exercise and a word problem from a cold launch
@@ -384,9 +407,9 @@ honestly to where a representation can actually carry the contradiction.
 
 | PR | What |
 |---|---|
-| 8.1 | Mal-rule catalog part 1 (~14): add/sub and place value beyond the M2 three, plus multiplication — the domains with a real evidence base. Each executable, each passing C-12. |
+| 8.1 | Mal-rule catalog part 1 (~14): add/sub and place value beyond the M2 three, plus multiplication — the domains with a real evidence base. Each executable, each passing CG-12. |
 | 8.2 | Mal-rule catalog part 2 (~11): division, fractions, equality — flagged in Developer Mode as thinner-evidence and degrading to unclassified rather than inventing bugs. |
-| 8.3 | C-22 LOCATE capability gate: a mal-rule may be tagged LOCATE-capable only if it has a bound contrast representation. |
+| 8.3 | CG-22 LOCATE capability gate: a mal-rule may be tagged LOCATE-capable only if it has a bound contrast representation. |
 | 8.4 | Layer B integration: the decayed per-(skill, bug) tracker and the four-way slip/misconception discriminator (mal-rule match, recurrence, **self-correction**, latency shape). |
 | 8.5–8.8 | LOCATE contrast interactions, **one PR per representation family**: place-value regrouping, fraction addition (bar contradiction), magnitude comparison (number line), division remainder (partition model). |
 | 8.9 | Stage-3 RECONSTRUCT: faded worked examples with self-explanation prompts, plus the prerequisite-probe descent. |
@@ -398,7 +421,7 @@ function. Roughly 8–12 mal-rules get a genuine contrast; every other one route
 Stage 3. Pretending otherwise makes LOCATE into "try again" with extra steps, and makes
 any marketing claim about it false.
 
-**Exit criteria:** `P-03` (generalized), `M-14`, `M-15`, `M-16`, `A-10`, `A-11`,
+**Exit criteria:** `P-03` (generalized), `M-13`, `M-14`, `M-15`, `M-16`, `A-10`, `A-11`,
 `A-12`, and the playtest gate `T-05`.
 
 ---
@@ -414,7 +437,7 @@ without surveilling, and a child who cannot see well or cannot yet read.
 |---|---|
 | 9.1 | Multi-child profiles surfaced: profile switcher, per-profile storage namespace and engine state (designed in from M2). |
 | 9.2 | Parent view over the ~25-topic report layer, plus a plain-language explanation of how the model works. Child-initiated, local only, no server profile. |
-| 9.3 | Accessibility implementation against C-18 (enforced since M4): VoiceOver/TalkBack pass, dynamic type, focus order, nothing solvable by colour alone. |
+| 9.3 | Accessibility implementation against CG-18 (enforced since M4): VoiceOver/TalkBack pass, dynamic type, focus order, nothing solvable by colour alone. |
 | 9.4 | Native TTS quality pass for read-aloud (the seam and the WebView path have shipped since M2). |
 | 9.5 | i18n fill: all five locales complete including every character fragment and every prompt template. **Agents translate directly**; do not resurrect the retired translation scripts. |
 | 9.6 | Parent controls: disable speed rewards, set/override grade, session-length preference. |
@@ -440,8 +463,8 @@ without surveilling, and a child who cannot see well or cannot yet read.
 | 10.6 | Post-launch guard: smoke coverage of the store listings; the release-checklist gate asserting the curriculum artifact hash matches compiled source. |
 | 10.7 | V1.1 groundwork: OTA curriculum delivery is deliberately deferred; this PR records only the decision and the trigger condition in [ADR-0012](DECISIONS/ADR-0012-ota-curriculum-deferral.md). |
 
-**Exit criteria:** `P-01`, `G-02`, `G-05`, `G-06`, `G-07`, `G-08`, `G-10`, `G-11`,
-`C-21`, `T-06`.
+**Exit criteria:** `P-01`, `P-09`, `K-03`, `G-02`, `G-04` `[founder]`, `G-05`, `G-06`,
+`G-07`, `G-08`, `G-10`, `G-11`, `C-21`, `T-06`.
 
 ---
 
@@ -454,15 +477,15 @@ without surveilling, and a child who cannot see well or cannot yet read.
 | M1 | 6 |
 | M2 | 12 |
 | M3 | 7 |
-| M4 | 11 |
+| M4 | **17** |
 | M5 | 10 |
 | M6 | 12 |
-| M7 | **25** |
+| M7 | **20** |
 | M8 | 11 |
 | M9 | 7 |
 | M10 | 7 |
-| **Total** | **~121 PRs** |
+| **Total** | **~122 PRs** |
 
 At three review lenses per PR and roughly 2.5 evaluations each (PR plus merge-queue
 entries), that is about 900 model calls through `adversarial-review`. It is a real cost
-line and a real single point of failure; see [RISKS.md](RISKS.md) R-08.
+line and a real single point of failure; see [RISKS.md](RISKS.md) R-16.

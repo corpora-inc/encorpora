@@ -4,6 +4,12 @@ The definition of done for V1. This is the document the program is graded agains
 
 **Every item below is currently UNMET.** Nothing has been built.
 
+> Links to `GATES.md`, `CURRICULUM.md`, `ADAPTIVE_LEARNING.md`, `ARCHITECTURE.md`,
+> `EXPERIENCE_DESIGN.md`, `PACK_SYSTEM.md`, `RELEASE_ENGINEERING.md`, `STORE.md` and
+> `TEST_STRATEGY.md` resolve once the reference-set PR lands. The two were split so
+> neither diff is truncated by the adversarial reviewer; delete this note in the
+> follow-up.
+
 ## How to use this file
 
 Each item has an id, a claim, and a **Verify** line naming the command or procedure
@@ -38,10 +44,12 @@ Rules that make this honest rather than aspirational:
       with **no dev flags** on a TestFlight build and on a Play-internal build.
       Verify: recorded session; build numbers noted.
       Evidence: UNMET
-- [ ] **P-03** `[device]` On `5,001 − 2,798` answered as `3,797`, the app identifies
-      borrow-across-zero and serves the contrast pair **within 3 cards**, reached from
-      a cold launch on a store build.
-      Verify: recorded session.
+- [ ] **P-03** `[device]` On `5,001 − 2,798` answered as `3,203`, the app identifies
+      `mis.add.borrow-across-zero` and serves the counting-board contrast pair **within
+      3 cards**, reached from a cold launch on a store build. The same problem answered
+      `3,797` must instead identify `mis.add.smaller-from-larger` — a wrong rule-to-answer
+      mapping passes CG-12 and fails here.
+      Verify: recorded session, both answers.
       Evidence: UNMET
 - [ ] **P-04** Construction never regresses: no code path removes a placed element.
       Verify: named unit test over the construction reducer; `rg` shows no delete path.
@@ -80,15 +88,15 @@ Rules that make this honest rather than aspirational:
       Evidence: UNMET
 - [ ] **M-02** Every active skill produces ≥`minVariants` distinct exercises under
       actual execution (not by declaration).
-      Verify: gate C-9 green in the nightly full sweep.
+      Verify: gate CG-9 green in the nightly full sweep.
       Evidence: UNMET
 - [ ] **M-03** Every active skill has a registered, tested renderer for its generator's
       `AnswerSchema` kind **and** for every `representations.required` RepId.
-      Verify: gate C-8 green; a deliberate violation fails `ci-gate`.
+      Verify: gate CG-8 green; a deliberate violation fails `ci-gate`.
       Evidence: UNMET
 - [ ] **M-04** Zero skills classified `conceptual` or `reasoning` bind a choice-only
       generator.
-      Verify: gate C-13 green; deliberate violation fails `ci-gate`.
+      Verify: gate CG-13 green; deliberate violation fails `ci-gate`.
       Evidence: UNMET
 - [ ] **M-05** No floating-point arithmetic exists in `dynawalla/curriculum/` or
       `dynawalla/engine/`.
@@ -100,37 +108,37 @@ Rules that make this honest rather than aspirational:
       Evidence: UNMET
 - [ ] **M-07** Generation is deterministic and platform-stable: identical seed →
       byte-identical exercise transcripts on macOS and Linux CI.
-      Verify: gate C-16 with committed output-hash snapshots on both runners.
+      Verify: gate CG-16 with committed output-hash snapshots on both runners.
       Evidence: UNMET
 - [ ] **M-08** Changing a generator's output without bumping `familyRev` fails CI.
-      Verify: deliberate change; C-16 red.
+      Verify: deliberate change; CG-16 red.
       Evidence: UNMET
 - [ ] **M-09** Removing or re-pointing an active skill id that shipped in a previous
       release fails CI.
-      Verify: deliberate removal; C-1 red.
+      Verify: deliberate removal; CG-1 red.
       Evidence: UNMET
 - [ ] **M-10** Every `canonical` and `alsoAccept` value round-trips through
       format→parse in all five launch locales.
-      Verify: gate C-14 green; a de-locale-breaking canonical fails.
+      Verify: gate CG-14 green; a de-locale-breaking canonical fails.
       Evidence: UNMET
 - [ ] **M-11** Every active word-problem family has a populated, natively-reviewed
       `contextTheme` set in all five launch locales.
-      Verify: gate C-21 green; reviewer names recorded per locale.
+      Verify: gate CG-21 green; reviewer names recorded per locale.
       Evidence: UNMET
-- [ ] **M-12** The C-15 grade-band coverage matrix has no empty (grade 1–5 × claimed
+- [ ] **M-12** The CG-15 grade-band coverage matrix has no empty (grade 1–5 × claimed
       domain) cell.
-      Verify: C-15 report.
+      Verify: CG-15 report.
       Evidence: UNMET
-- [ ] **M-13** Every gate C-1..C-22 in [GATES.md](GATES.md) has an implementing PR
+- [ ] **M-13** Every gate CG-1..CG-22 in [GATES.md](GATES.md) has an implementing PR
       **and** a failing-case test. None is orphaned.
       Verify: the gate table's owner column resolved to merged PR numbers.
       Evidence: UNMET
 - [ ] **M-14** Every mal-rule diverges from the correct answer on ≥95% of seeds.
-      Verify: gate C-12 over 1,000 seeds per rule.
+      Verify: gate CG-12 over 1,000 seeds per rule.
       Evidence: UNMET
 - [ ] **M-15** Every mal-rule tagged LOCATE-capable has a bound contrast
       representation, and the count is reported in Developer Mode.
-      Verify: gate C-22; the Developer Mode count matches any external claim.
+      Verify: gate CG-22; the Developer Mode count matches any external claim.
       Evidence: UNMET
 - [ ] **M-16** No learner-facing string names a misconception or a defect.
       Verify: lint over locale files and prompt templates.
@@ -141,17 +149,17 @@ Rules that make this honest rather than aspirational:
       Evidence: UNMET
 - [ ] **M-18** Standards are stored as codes only; all titles and descriptions are
       originally authored.
-      Verify: `rg` for CCSS prose in `dynawalla/curriculum/` returns zero hits; C-20
+      Verify: `rg` for CCSS prose in `dynawalla/curriculum/` returns zero hits; CG-20
       report-only output reviewed.
       Evidence: UNMET
 
 ## C. Adaptation (learner model)
 
-- [ ] **A-01** Gate G-5 calibration holds within ±0.06 per 0.05 bin over ≥200 items for
+- [ ] **A-01** Gate EG-5 calibration holds within ±0.06 per 0.05 bin over ≥200 items for
       **every** persona including the misspecification persona.
       Verify: nightly harness report.
       Evidence: UNMET
-- [ ] **A-02** G-5 also holds against the M2 real-child residual fixture. This is the
+- [ ] **A-02** EG-5 also holds against the M2 real-child residual fixture. This is the
       only non-circular evidence that `b()` is real.
       Verify: fixture committed from `PLAYTEST-M2.md`; harness run green.
       Evidence: UNMET
@@ -392,9 +400,10 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       nightly full sweep completes and has a named owner who is paged on failure.
       Verify: two run durations plus the owner record.
       Evidence: UNMET
-- [ ] **C-21** 125+ merges to `main` have landed during the program with **no Corpán
+- [ ] **C-21** **Every** merge to `main` during the program landed with **no Corpán
       production regression attributable to a Dynawalla merge**.
-      Verify: merge count plus an incident review of Corpán releases in the period.
+      Verify: an incident review of Corpán releases in the period against the
+      `STATUS.md` incident log.
       Evidence: UNMET
 - [ ] **C-22** Corpán's `ci-gate` is green on every commit of every milestone that
       touches shared code (M0a, M1, M3).
@@ -443,11 +452,13 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       Evidence: UNMET
 - [ ] **Q-10** Every representation has a text alternative and nothing is solvable by
       colour alone, from the first representation authored.
-      Verify: gate C-18 green; a representation without a text alternative fails.
+      Verify: gate CG-18 green; a representation without a text alternative fails.
       Evidence: UNMET
 - [ ] **Q-11** `[device]` A grade-1 child who cannot read completes a session using
       read-aloud only, observed.
-      Verify: playtest report entry.
+      Verify: the named non-reader in the `T-01` cohort, recorded in `PLAYTEST-M2.md`
+      under the standard observation protocol. If the cohort has no non-reader, `Q-11`
+      is UNMET — it is not waivable by a test.
       Evidence: UNMET
 - [ ] **Q-12** Three children on one device have fully independent progress, verified
       by a test that cross-reads namespaces **and** by a named person on a real device.
@@ -476,7 +487,7 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       exists ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)).
       Evidence: UNMET
 - [ ] **G-04** `[founder]` The public standards-alignment claim is decided
-      ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)); C-20 stays
+      ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)); CG-20 stays
       report-only unless it says otherwise.
       Evidence: UNMET
 - [ ] **G-05** No third-party analytics or advertising SDK exists in either bundle.
@@ -512,8 +523,9 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
 
 ## I. Playtest gates (cannot be waived)
 
-- [ ] **T-01** `[playtest]` **M2**: 6+ children aged 7–11, at least 2 of whom dislike
-      math, each complete two unsupervised 20-minute sessions on a real device.
+- [ ] **T-01** `[playtest]` **M2**: 6+ children aged 6–11 — including **at least one
+      grade-1 child who cannot yet read** (the `Q-11` instrument) — at least 2 of whom
+      dislike math, each complete two unsupervised 20-minute sessions on a real device.
       Time-to-voluntary-quit, unprompted verbatims and next-day voluntary return rate
       are recorded in `PLAYTEST-M2.md`.
       Evidence: UNMET

@@ -20,10 +20,15 @@ supplement to it. See [ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.
 
 ## 1. Cohort
 
-**Minimum 6 children, aged 7–11**, with **at least 2 who dislike math** — self-reported
+**Minimum 6 children, aged 6–11**, with **at least 2 who dislike math** — self-reported
 by the child or reported by the parent. The second condition is not decoration: a cohort
 of children who enjoy arithmetic will find almost any competent drill app acceptable and
 will tell you nothing about the product's actual claim.
+
+**At least one must be a grade-1 child who cannot yet read.** This is a recruitment
+requirement, not a preference. Read-aloud is argued into M2 rather than M9 on exactly
+that child's behalf, and `Q-11` is the only item that tests it — a cohort starting at 7
+leaves `Q-11` with no instrument, which is how an unwaivable gate gets quietly waived.
 
 Aim for:
 
@@ -72,6 +77,14 @@ Data rules, which are stricter than the regulation and deliberately so:
 **Two sessions per child per gate, 20 minutes each, on separate days**, at least one day
 apart. Sessions are **unsupervised**: the observer is in the room, not at the child's
 shoulder.
+
+**Six-year-olds.** Same protocol, three adjustments. The framing sentence is spoken, not
+handed over on paper. The session ends at 20 minutes rather than 30 if the child is still
+going, because a six-year-old will keep going past the point the measurement means
+anything. And the consent conversation happens with the parent present in the room — the
+child's own assent is asked for separately, in one sentence, and a "no" ends it. For the
+`Q-11` observation, record whether the child ever tapped the read-aloud control
+unprompted, and what they did when a prompt they could not read appeared.
 
 **Setup (observer, before the child arrives)**
 

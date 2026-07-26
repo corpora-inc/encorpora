@@ -70,12 +70,13 @@ settings change rather than a PR).
 
 ## Open founder decisions
 
-Four are ordered by when they bite; see [DECISIONS.md](DECISIONS.md) for the full list.
+Eight, ordered by when they bite; see [DECISIONS.md](DECISIONS.md) for the full list.
 
 | ADR | Decision | Bites at |
 |---|---|---|
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) | Kids Category posture (one-way door) | M1, first store submission |
 | [0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) | Playtest cohort + named art director | now (weeks of lead time) |
+| [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 scope cut: grades 1–5, number and arithmetic | any public scope statement; M4 curriculum breadth |
 | [0015](DECISIONS/ADR-0015-developer-account-topology.md) / [0016](DECISIONS/ADR-0016-app-store-product-name.md) | Account topology, product name | M1, app-record creation |
 | [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license | M0a (fork-PR posture) |
 | [0010](DECISIONS/ADR-0010-standards-alignment-claim.md) | Standards-alignment claim | first public marketing copy |
@@ -102,4 +103,4 @@ pass condition.
 
 Empty. Record here: any PR over 200 files (R-01), any use of the `admin-override`
 break-glass label (R-16), any waived gate, and any Corpán production regression
-attributable to a Dynawalla merge (`C-21`).
+attributable to a Dynawalla merge (`C-21`), and any waived acceptance item.

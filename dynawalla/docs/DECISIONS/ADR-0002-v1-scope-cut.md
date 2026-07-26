@@ -1,6 +1,14 @@
 # ADR-0002 — V1 covers number and arithmetic only
 
-**Status:** Accepted
+**Status:** Proposed — awaiting founder
+**Deadline:** before any public scope or marketing statement, and before M4 buys
+curriculum breadth against one grade range or the other.
+
+The engineering argument below is the program's and it is strong. The *scope* it
+implies is not the program's to accept: it narrows the founder-stated product
+(grades 1–6 plus intro pre-algebra) and it rewrites the public claim. That is a larger
+product decision than the store display name, which is correctly awaiting the founder in
+[ADR-0016](ADR-0016-app-store-product-name.md).
 
 ## Context
 
@@ -24,7 +32,25 @@ quarter of the advertised coverage, or get laundered into `{kind: "choice", k: 4
 frame. It teaches nothing about symmetry and it is exactly the failure mode this product
 exists to avoid.
 
-## Decision
+## Options
+
+**A — V1 as scoped below (recommended by the program).** Ship grades 1–5 number and
+arithmetic. Geometry, measurement, data, ratio, integers, grade 6 and formal pre-algebra
+go to V2, behind the manipulation schemas they need. Cost: the public claim is narrower
+than the founder-stated scope from day one.
+
+**B — V1 at the founder-stated scope.** Build `dragPlace`, `drawSegment`, `dialRead` and
+`buildChart` — each with its own judge branch, touch-target model, mal-rules and
+accessibility story — *before* the domains that need them go `active`. Cost: four answer
+schemas and four interaction models ahead of M4, and every downstream milestone moves.
+This is a real option; it is not a way of doing A faster.
+
+**C — Ship the domains without the schemas.** Rejected on the evidence below: under
+CG-7 they either stay in draft forever (silently dropping a quarter of advertised
+coverage) or get laundered into `{kind: "choice", k: 4}`. Recorded here only so it is
+not re-proposed as a compromise.
+
+## Proposed decision (option A)
 
 V1 is **6 domains · ~160 active skills · 18 generator families · ~28 executable
 mal-rules · 4 answer schemas · 4 representations · 5 launch locales**.
@@ -39,11 +65,12 @@ measurement, data and probability, ratios and rates, integers, decimals-as-a-dom
 grade 6, and formal pre-algebra.
 
 The marketing claim follows the code: **"grades 1–5 number and arithmetic"**, not
-"grades 1–6 mathematics."
+"grades 1–6 mathematics." That sentence does not go public until this ADR is decided
+(`G-04` covers the separate standards-alignment claim).
 
-## Consequences
+## Consequences of option A
 
-- Gate **C-13** makes the cut mechanical: no skill classified `conceptual` or
+- Gate **CG-13** makes the cut mechanical: no skill classified `conceptual` or
   `reasoning` may bind a generator whose only form is `choice`. Without it, schedule
   pressure re-creates the laundering path.
 - Adding any V2 domain means first adding its manipulation schema, its judge branch, its

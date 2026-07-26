@@ -38,12 +38,12 @@ in the Corpán app, and zero CLDR plural-category keys across 55 locale director
 - The five launch locales already exercise the decimal-comma path that the architecture
   must get right anyway, so cutting `ar`/`hi`/`zh-Hans` de-risks content without
   weakening the test.
-- Gate **C-14** requires every generator's `canonical` and `alsoAccept` to round-trip
+- Gate **CG-14** requires every generator's `canonical` and `alsoAccept` to round-trip
   through format→parse in all launch locales. `Q-07` is the device-level assertion.
 - The `columnAlgorithm` widget is forced `dir="ltr"` with an explicit test, so it cannot
   mirror under an RTL document direction.
 - Word-problem `contextTheme` sets are **locale-scoped assets, authored not translated**
-  (gate C-21): per-locale name pools, object pools, currency and unit sets. The CCSS
+  (gate CG-21): per-locale name pools, object pools, currency and unit sets. The CCSS
   compare phrasings ("how many more", "how many fewer") do not map one-to-one across
   languages and need a native-speaker review per locale before those families go active.
 

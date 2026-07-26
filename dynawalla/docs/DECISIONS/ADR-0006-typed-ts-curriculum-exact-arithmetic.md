@@ -38,10 +38,10 @@ answers are right.
   ([RISKS.md](../RISKS.md) R-21).
 - Platform stability matters because generators run in a WebView on iOS, Android and
   desktop. Any nondeterminism produces different exercises per device and makes a bug
-  report irreproducible. Gate C-16 pins output hashes on macOS **and** Linux CI.
+  report irreproducible. Gate CG-16 pins output hashes on macOS **and** Linux CI.
 - Structured prompts make localization cost scale with **template count**, not content
   volume. That is what makes five locales affordable across ~160 skills and thousands of
-  generated instances. Gate C-19 lints that no `Exercise.prompt` is a bare string.
+  generated instances. Gate CG-19 lints that no `Exercise.prompt` is a bare string.
 - Ids are `dw.<domain>.<cluster>.<slug>` and **immutable forever**. A rename means
   minting a new id and marking the old one `deprecated` with `supersededBy`. Grade is
   **not** in the id — Singapore teaches fraction-of-a-whole at P2, CCSS starts fractions

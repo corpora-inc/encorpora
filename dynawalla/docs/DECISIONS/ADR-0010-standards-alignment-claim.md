@@ -11,7 +11,7 @@ public.
 
 What the program already does, and which is safe: **store standards as codes only**
 (`ccss`, `sg`, `uk` short factual identifiers on `SkillNode`), and author every title,
-learner goal and description **originally**. Gate C-20 produces a standards traceback
+learner goal and description **originally**. Gate CG-20 produces a standards traceback
 report and is **report-only, never blocking**.
 
 A public *claim* — "aligned to Common Core", "follows the Singapore approach", "covers
@@ -22,20 +22,20 @@ marketing and counsel question, not an engineering one.
 
 **A. No public alignment claim.** Describe coverage in plain language ("grades 1–5
 number and arithmetic: place value, addition and subtraction, multiplication, division,
-fractions, and what the equals sign means"). C-20 stays report-only and internal. Zero
+fractions, and what the equals sign means"). CG-20 stays report-only and internal. Zero
 exposure, weaker positioning with schools and some parents.
 
 **B. Public alignment claim for one or more frameworks.** Requires counsel review of the
 license terms and the attribution notice, and commits the program to per-jurisdiction
 mapping **maintenance forever** — a standards revision becomes a product obligation.
-C-20 would likely need to become blocking, and the mapping becomes a shipped artifact
+CG-20 would likely need to become blocking, and the mapping becomes a shipped artifact
 with its own correctness bar.
 
 ## Consequences
 
-- **B** changes C-20 from a report into a gate, which changes the cost of every
+- **B** changes CG-20 from a report into a gate, which changes the cost of every
   curriculum PR.
-- **B** also makes the coverage matrix (C-15) externally meaningful, so an empty cell
+- **B** also makes the coverage matrix (CG-15) externally meaningful, so an empty cell
   becomes a claim defect rather than an internal warning.
 - **A** is the default the program is built for. Nothing has to change to take it.
 

@@ -30,8 +30,8 @@ had been built around no gate.
   every such surface, which is how a gate becomes a checkbox.
 - A live app cannot narrow its permissions after the fact without breaking installed
   clients, so point 4 must be right at creation time. Corpán's single
-  `capabilities/default.json` granting every plugin at `:default` with `csp: null` is
-  the precedent **not** being followed.
+  `capabilities/default.json` — 11 of its 14 grants at `:default`, `csp: null` — is the
+  precedent **not** being followed.
 - Exactly one mechanical layer is inherited from Corpán's stylesheet: the
   `--safe-{top,right,bottom,left}` `env()` tokens, `--dialog-max-h`, and the `--z-*`
   ladder. Those are platform facts, not taste. The design system is otherwise built
