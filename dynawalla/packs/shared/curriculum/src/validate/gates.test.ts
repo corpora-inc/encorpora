@@ -13,7 +13,7 @@
 import assert from "node:assert/strict";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import test from "node:test";
 import { rational } from "../math/rational.ts";
 import { allNodes } from "../graph/graph.ts";
@@ -28,7 +28,9 @@ import { capabilityTag, familyId, malRuleId, skillId } from "../types/ids.ts";
 import type { LocKey, SkillId } from "../types/ids.ts";
 import type { MalRule } from "../types/malrule.ts";
 import type { SkillNode } from "../types/skill.ts";
+import { LINT_ROOTS } from "./cli.ts";
 import { defaultContext, buildSamples } from "./context.ts";
+import { EMPTY_ROOT_MESSAGE, listSourceFiles } from "./lints/scan.ts";
 import type { LevelSample, ValidationContext } from "./context.ts";
 import { cg1, cg2, cg3, cg4, cg5, cg6 } from "./gates/graphGates.ts";
 import { cg13, cg22, cg7, cg8 } from "./gates/bindingGates.ts";
@@ -66,9 +68,14 @@ function assertFails(result: GateResult, expected: string): void {
   );
 }
 
-/** `curriculum/src` and `engine/src` — what the source-scanning gates read. */
+/**
+ * `packs/shared/curriculum/src` and `engine/src` — what the source-scanning gates
+ * read. `dynawalla/` is four directories above `src/`; see `cli.ts`, which must
+ * agree with this and is checked against it below.
+ */
 const CURRICULUM_SRC = new URL("..", import.meta.url).pathname;
-const SOURCE_ROOTS = [CURRICULUM_SRC, join(CURRICULUM_SRC, "..", "..", "engine", "src")];
+const DYNAWALLA_ROOT = join(CURRICULUM_SRC, "..", "..", "..", "..");
+const SOURCE_ROOTS = [CURRICULUM_SRC, join(DYNAWALLA_ROOT, "engine", "src")];
 
 /** The healthy graph. Every gate below must pass on it. */
 test("gates: the committed curriculum passes every implemented gate", () => {
@@ -482,8 +489,7 @@ test("M-05: a float in curriculum or engine source fails the lint", () => {
 });
 
 test("M-05: the committed curriculum and engine sources are float-free", () => {
-  const here = new URL("..", import.meta.url).pathname;
-  const result = m05([here, join(here, "..", "..", "engine", "src")]);
+  const result = m05(SOURCE_ROOTS);
   assert.equal(result.status, "pass", messages(result));
 });
 
@@ -500,4 +506,40 @@ test("CG-22: a LOCATE claim with no contrast representation fails", () => {
   const undrawable: MalRule = { ...unbacked, contrastRep: "astrolabe" };
   assertFails(cg22(context({ malRules: [undrawable] })), "no registered renderer");
   assert.equal(cg22(context()).status, "pass");
+});
+
+/**
+ * The relocation guard.
+ *
+ * `listSourceFiles` swallows a missing directory, so before this the three
+ * source-scanning gates reported **pass** when handed a root that did not exist —
+ * the exact state a package move produces, and one that reads as clean code. The
+ * gates now fail on an empty root, and the roots the CLI ships with are asserted
+ * to be real directories with source in them.
+ */
+test("a source root that resolves to nothing fails the gates that scan it", () => {
+  const nowhere = join(tmpdir(), "dw-not-a-root-a4f1");
+  const samples = buildSamples(context());
+
+  assertFails(m05([nowhere]), EMPTY_ROOT_MESSAGE);
+  assertFails(cg19(samples, [nowhere]), EMPTY_ROOT_MESSAGE);
+  assertFails(cg16(context(), { note: "", entries: {} }, true, [nowhere]).result, EMPTY_ROOT_MESSAGE);
+
+  // An empty directory, not just a missing one: both scan nothing.
+  const dir = mkdtempSync(join(tmpdir(), "dw-empty-root-"));
+  try {
+    assertFails(m05([dir]), EMPTY_ROOT_MESSAGE);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("the CLI's lint roots are the two directories this file scans, and both hold source", () => {
+  assert.deepEqual(
+    LINT_ROOTS.map((root) => resolve(root)),
+    SOURCE_ROOTS.map((root) => resolve(root)),
+  );
+  for (const root of LINT_ROOTS) {
+    assert.ok(listSourceFiles(root).length > 0, `${root} has no source files`);
+  }
 });

@@ -1,14 +1,14 @@
 {
-  "name": "@dynawalla/curriculum",
+  "name": "@dynawalla/curriculum-workspace",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Dynawalla curriculum graph, generators, mal-rules and validation gates. No DOM, no Tauri, no app imports.",
+  "description": "Dev workspace for @dynawalla/curriculum (../packs/shared/curriculum): its devDependencies, its test/typecheck/gate commands and the dw-curriculum CLI. Nothing here ships — the library is the source tree this points at.",
   "engines": {
     "node": ">=24.0.0"
   },
   "scripts": {
-    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"../packs/shared/curriculum/src/**/*.test.ts\"",
     "tsc": "tsc --noEmit",
     "check": "node bin/dw-curriculum.mjs check",
     "check:full": "node bin/dw-curriculum.mjs check --full",

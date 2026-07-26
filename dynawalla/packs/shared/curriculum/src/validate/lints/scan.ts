@@ -25,6 +25,19 @@ export type LintHit = {
   readonly excerpt: string;
 };
 
+/**
+ * What every source-scanning gate says when a root turns up empty.
+ *
+ * `listSourceFiles` swallows a missing directory on purpose — the walk must not
+ * throw part-way through a gate — so a root that was moved, renamed or misspelled
+ * yields zero files, finds zero violations, and the gate reports **pass**. That is
+ * the one failure mode a lint cannot afford: it is indistinguishable from clean
+ * code, and it arrives precisely on the commit that relocates the package. Each
+ * gate therefore fails on an empty root rather than counting it as nothing to do.
+ */
+export const EMPTY_ROOT_MESSAGE =
+  "lint root contains no source files — a moved or misspelled root scans nothing and would pass";
+
 export function listSourceFiles(root: string, extensions: readonly string[] = [".ts", ".mts"]): string[] {
   const out: string[] = [];
   const walk = (dir: string): void => {

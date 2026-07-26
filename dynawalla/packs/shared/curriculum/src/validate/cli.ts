@@ -24,12 +24,28 @@ import type { GateResult, Report } from "./types.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CURRICULUM_SRC = join(HERE, "..");
-const ENGINE_SRC = join(HERE, "..", "..", "..", "engine", "src");
+/**
+ * `dynawalla/`, four directories above `src/`:
+ * `packs/shared/curriculum/src` → `packs/shared/curriculum` → `packs/shared` →
+ * `packs` → `dynawalla`. Named rather than counted inline, because a run of
+ * `".."` segments is the thing that silently points at nothing after a move —
+ * and a source-scanning gate handed a directory that does not exist scans zero
+ * files and passes.
+ */
+const DYNAWALLA_ROOT = join(CURRICULUM_SRC, "..", "..", "..", "..");
+const ENGINE_SRC = join(DYNAWALLA_ROOT, "engine", "src");
 const SNAPSHOT_PATH = join(CURRICULUM_SRC, "snapshots", "generators.json");
 const SHIPPED_IDS_PATH = join(CURRICULUM_SRC, "graph", "shipped-ids.json");
 
 export const INCREMENTAL_SEEDS = 200;
 export const FULL_SEEDS = 1000;
+
+/**
+ * The two directories the source-scanning gates read. Exported so the gate tests
+ * can assert they exist and hold source — a root that resolves to nothing is a
+ * green lint over an empty set.
+ */
+export const LINT_ROOTS: readonly string[] = [CURRICULUM_SRC, ENGINE_SRC];
 
 export { SHIPPED_IDS_PATH, SNAPSHOT_PATH };
 
@@ -133,7 +149,7 @@ export function main(argv: readonly string[]): number {
       seedsPerLevel: options.full ? FULL_SEEDS : INCREMENTAL_SEEDS,
       strictRenderers: options.strictRenderers,
     }),
-    roots: [CURRICULUM_SRC, ENGINE_SRC],
+    roots: LINT_ROOTS,
     snapshot,
     updateSnapshots: options.update,
     mode: options.full ? "full" : "incremental",

@@ -13,7 +13,7 @@ import { fnv1a64Hex } from "../../rng/hash.ts";
 import { activeNodes } from "../../graph/graph.ts";
 import { familyById } from "../../generators/registry.ts";
 import { findLocaleViolations } from "../lints/localeOrder.ts";
-import { listSourceFiles, readSource } from "../lints/scan.ts";
+import { EMPTY_ROOT_MESSAGE, listSourceFiles, readSource } from "../lints/scan.ts";
 import type { LevelSample, ValidationContext } from "../context.ts";
 import { sampleLabel } from "../context.ts";
 import type { Finding, GateResult } from "../types.ts";
@@ -337,7 +337,9 @@ export function cg16(
   let scanned = 0;
 
   for (const root of roots) {
-    for (const path of listSourceFiles(root)) {
+    const paths = listSourceFiles(root);
+    if (paths.length === 0) findings.push(fail("CG-16", EMPTY_ROOT_MESSAGE, root));
+    for (const path of paths) {
       scanned += 1;
       for (const violation of findLocaleViolations(readSource(path))) {
         findings.push(
