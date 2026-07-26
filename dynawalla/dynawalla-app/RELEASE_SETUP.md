@@ -87,14 +87,43 @@ These are repository secrets today and the workflow reads them directly.
 | Secret | What it is | How to produce it |
 |---|---|---|
 | `DYNAWALLA_APPLE_PROVISIONING_PROFILE` | the App Store `.mobileprovision` for `inc.corpora.dynawalla`, base64 | Mint the profile named `dynawalla appstore ci` (ASC API or the developer portal), download it, then `base64 -i dynawalla.mobileprovision \| pbcopy`. **New, not optional:** profiles bind to one explicit bundle id, no wildcard spans both `com.corpora.*` and `inc.corpora.*`, and wildcards cannot carry IAP. Never copy another product's profile or its UUID. |
-| `DYNAWALLA_ANDROID_KEYSTORE_B64` | a **new** upload keystore, base64 | `keytool -genkeypair -v -keystore dynawalla-upload.jks -alias upload -keyalg RSA -keysize 2048 -validity 10000` then `base64 -i dynawalla-upload.jks \| pbcopy`. Deliberately separate from Corpán's so one compromised key cannot risk two shipping apps. Keep the `.jks` out of the repo — `src-tauri/.gitignore` ignores `*.jks`, and the hygiene job would fail the PR anyway. |
+| `DYNAWALLA_ANDROID_KEYSTORE_B64` | a **new** upload keystore, base64 | Generate it **outside the repository** (see below), then `base64 -i ~/.corpora-signing/dynawalla-upload.jks \| pbcopy`. Deliberately separate from Corpán's so one compromised key cannot risk two shipping apps. |
 | `DYNAWALLA_ANDROID_KEYSTORE_PASSWORD` | the store password you chose above | you choose it |
 | `DYNAWALLA_ANDROID_KEY_ALIAS` | the key alias you chose above | `upload` if you follow the command above |
 
-`DYNAWALLA_ANDROID_KEY_PASSWORD` is deliberately **not** in the list: `jarsigner`
-signing an AAB with a single-key keystore only needs `-storepass`. Add it only if
-the keystore is ever created with a key password that differs from the store
-password, and wire it as `-keypass` at the same time.
+`DYNAWALLA_ANDROID_KEY_PASSWORD` is deliberately **not** in the secrets table
+above: `jarsigner` signing an AAB with a single-key keystore only needs
+`-storepass`. Add it only if the keystore is ever created with a key password
+that differs from the store password, and wire it as `-keypass` at the same
+time.
+
+### Where signing material lives — outside the repository
+
+**`~/.corpora-signing/`**, never inside `dynawalla-app/`. The Vite dev server's
+root contains `src-tauri/`, and `TAURI_DEV_HOST` binds that server to the LAN
+for on-device testing, so a keystore generated into the project tree is both a
+commit away from a public repo and readable by anything on the network. The
+`.gitignore` entries and the hygiene job's signing-material guard are backstops,
+not the plan.
+
+```sh
+mkdir -p ~/.corpora-signing && chmod 700 ~/.corpora-signing
+keytool -genkeypair -v \
+  -keystore ~/.corpora-signing/dynawalla-upload.jks \
+  -alias upload -keyalg RSA -keysize 2048 -validity 10000
+```
+
+Same for the Apple artifacts: export the `.p12`, the `.p8` and the
+`.mobileprovision` into `~/.corpora-signing/` and base64 them from there. Once
+each value is a GitHub Actions secret nothing in this tree needs the file again
+— `release-dynawalla.yml` materialises each one in ephemeral runner storage
+(the profile and the keystore under `$RUNNER_TEMP`, the certificate in a
+throwaway keychain via `apple-actions/import-codesign-certs`).
+
+Nothing in this repository wires a **local** signed Android build: the committed
+`src-tauri/gen/android/app/build.gradle.kts` has no `signingConfigs`, and
+`release-dynawalla.yml` builds an unsigned AAB and signs it with `jarsigner`. So
+the keystore is only ever read by `base64 -i`, from wherever you put it.
 
 Team ID `F9AV5HKF6N`, bundle id `inc.corpora.dynawalla` and the profile name are
 **not** secrets — they are public in every shipped artifact and are committed.

@@ -86,21 +86,40 @@ Simulators, trust the device).
 
 `TAURI_DEV_HOST=<lan-ip> npm run tauri android dev` binds Vite to the **LAN**,
 not to loopback. That is how the phone reaches the dev server, and it is also
-how everything else on the network reaches it. Vite's root is `corpan-app/`,
-which contains `src-tauri/` — the directory `RELEASE_SETUP.md` points at for
-the Android upload keystore.
+how everything else on the network reaches it — a coffee-shop network, a guest
+VLAN, anything. Vite's root is `corpan-app/`, which contains `src-tauri/`.
 
-So `vite.config.ts` denies signing and credential material outright: `*.jks`,
-`*.keystore`, `*.p8`, `*.p12`, `*.mobileprovision`, `*.cer`,
-`*.certSigningRequest`, `*service-account*.json`, on top of Vite's own `.env`
-defaults. The `/packs` middleware streams from disk itself and never passes
-through `server.fs`, so it repeats the same check. `src/dev/devServer.test.ts`
-fails the suite if either stops covering them, or if Vite's own defaults get
-dropped (that array is replaced, not merged).
+**So signing material must never live inside the project tree.** Keep it in
+`~/.corpora-signing/`; `RELEASE_SETUP.md` has the exact commands for both apps.
+A keystore outside Vite's root cannot be served no matter what the dev server
+is bound to, and cannot be committed by accident. Nothing in the build needs it
+there — CI signs the AAB with `jarsigner` from a base64 secret, so `base64 -i`
+is the only thing that ever reads the file.
 
-`.gitignore` keeps this material off GitHub; the deny list keeps it off the
-network. When you introduce a new kind of secret, add it to both — and prefer
-keeping it outside the repo entirely.
+Three backstops exist for when it is there anyway.
+
+1. `vite.config.ts` denies signing and credential material outright —
+   `SIGNING_MATERIAL_DENY` (`*.jks`, `*.keystore`, `*.pkcs12`, `*.p8`,
+   `*.mobileprovision`, `*.provisionprofile`, `*.certSigningRequest`,
+   `*service-account*.json`) on top of Vite's own defaults, which are restated
+   in full because Vite **replaces** that array rather than merging it. The
+   `/packs` middleware streams from disk itself and never passes through
+   `server.fs`, so `DENIED_EXTENSIONS` repeats the same check.
+   `src/dev/devServer.test.ts` fails the suite if either stops covering them,
+   or if Vite's own defaults get dropped.
+2. The `hygiene` job's signing-material guard fails any PR that **adds** a file
+   with one of those names, relative to its merge base. It exists because
+   gitleaks only matches PEM armour: a binary `.jks`, `.keystore` or `.p12`
+   scans clean, and at a few kilobytes the big-file guard never looks at it
+   either.
+3. `src-tauri/.gitignore` — the only one of the three that gives feedback
+   locally, at `git add` time, rather than in CI.
+
+The deny list keeps this material off the network; `.gitignore` and the hygiene
+guard keep it off GitHub. When you introduce a new kind of secret, add it to all
+three — `corpan-app/vite.config.ts`, the `case` list in
+`.github/workflows/hygiene.yml`, and `corpan-app/src-tauri/.gitignore` — and
+keep it outside the repo entirely.
 
 ## The three terminals
 

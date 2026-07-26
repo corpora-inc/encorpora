@@ -52,7 +52,7 @@ repo, no secret needed.
 | Secret | What it is | Where to get it |
 |---|---|---|
 | `PLAY_SERVICE_ACCOUNT_JSON` | Play publishing service account | Google Cloud (the project linked to Play) → create a service account → in **Play Console → Users & permissions**, invite it and grant **Release to testing tracks**. Paste the JSON |
-| `ANDROID_KEYSTORE_B64` | your `upload-keystore.jks`, base64 | `base64 -i corpan-app/src-tauri/upload-keystore.jks` (it's local, not in the repo) |
+| `ANDROID_KEYSTORE_B64` | your `upload-keystore.jks`, base64 | `base64 -i ~/.corpora-signing/corpan-upload-keystore.jks` (see below — it lives outside the repo) |
 | `ANDROID_KEYSTORE_PASSWORD` | keystore password | your existing keystore creds |
 | `ANDROID_KEY_ALIAS` | key alias | " |
 | `ANDROID_KEY_PASSWORD` | key password | " |
@@ -60,14 +60,47 @@ repo, no secret needed.
 The app must exist in Play Console with an **internal testing** track and at
 least one internal tester (you) before the first upload.
 
-> **Where the keystore lives.** `corpan-app/src-tauri/upload-keystore.jks` is
-> inside the Vite dev server's root, and `TAURI_DEV_HOST` (on-device Android
-> testing) binds that server to the LAN. `.gitignore` keeps it out of the repo
-> and `vite.config.ts`'s `server.fs.deny` keeps it off the network, but the
-> durable answer is to keep signing material **outside the repo** — e.g.
-> `~/.corpan-signing/upload-keystore.jks`, referenced by absolute path from
-> `keystore.properties`. Never generate new signing material into a directory a
-> dev server can read.
+### Where the keystore lives — outside the repository
+
+**`~/.corpora-signing/corpan-upload-keystore.jks`**, never inside the project
+tree. `src-tauri/` is inside the Vite dev server's root, and `TAURI_DEV_HOST`
+(on-device Android testing) binds that server to the **LAN** — see
+`corpan/DEV_LOOP.md`. `.gitignore` keeps a `.jks` off GitHub, the hygiene job's
+signing-material guard fails any PR that adds one, and `vite.config.ts`'s
+`server.fs.deny` keeps it off the network. All three are backstops for a file
+that should not be there in the first place.
+
+Create the directory private, and generate there:
+
+```sh
+mkdir -p ~/.corpora-signing && chmod 700 ~/.corpora-signing
+keytool -genkeypair -v \
+  -keystore ~/.corpora-signing/corpan-upload-keystore.jks \
+  -alias upload -keyalg RSA -keysize 2048 -validity 10000
+```
+
+**Nothing in this repository wires a local signed Android build.** The committed
+`src-tauri/gen/android/app/build.gradle.kts` has no `signingConfigs` and reads
+only `tauri.properties`; nothing anywhere reads a `keystore.properties`. That is
+deliberate on the CI side — `release-mobile.yml` builds an **unsigned** AAB and
+signs it with `jarsigner` from `ANDROID_KEYSTORE_B64`, which is the correct
+scheme for a Play upload key — so the release path never touches a local
+keystore at all. `base64 -i` on the path above is the only thing you need it
+for.
+
+If you do wire a local release build, the Gradle signing block goes in that
+committed `app/build.gradle.kts` (`tauri android init` will not overwrite an
+existing file, so the Tauri template's version will never appear on its own),
+and `storeFile` must be the **absolute** path
+`/Users/<you>/.corpora-signing/corpan-upload-keystore.jks`. Keep the passwords
+out of the tree: a `keystore.properties` next to it is git-ignored and the
+hygiene guard rejects it by name, but an env var is better.
+
+**If a keystore already exists at `corpan-app/src-tauri/upload-keystore.jks`**,
+move it — `mv corpan-app/src-tauri/upload-keystore.jks
+~/.corpora-signing/corpan-upload-keystore.jks`. Losing this file means a new
+upload key and a Play support request, so verify the copy before deleting
+anything. Nothing in CI changes.
 
 ---
 
@@ -78,8 +111,11 @@ least one internal tester (you) before the first upload.
   tweaks**, almost always in one of two spots, both flagged in the workflow:
   1. **iOS build-number stamping** (`agvtool` on the generated Xcode project) —
      the exact project path / scheme name may differ.
-  2. **Android AAB output path** and the `keystore.properties` wiring that
-     `tauri android build` expects.
+  2. **Android AAB output path** — the workflow globs for it because
+     `tauri android build`'s output location has moved between CLI versions.
+     (Signing is not one of these spots: the AAB comes out unsigned and
+     `jarsigner` signs it, so there is no `keystore.properties` wiring to get
+     wrong.)
   Everything else (deps, signing import, uploads) uses standard, widely-used
   actions.
 - We ship to **internal tracks only** — never auto-publish to the public store.
