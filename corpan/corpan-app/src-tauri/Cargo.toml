@@ -64,15 +64,7 @@ debug = 1         # Line tables — Gradle's debugSymbolLevel="FULL" uploads the
 strip = false     # Let Gradle strip the .so for the APK and bundle symbols into the AAB
 panic = "abort"   # Smaller binary, no unwinding
 
-# Vendored fork of ndk-context 0.1.1 with the abort-on-reinit assert removed.
-# Upstream `initialize_android_context` calls `assert!(previous.is_none())`, which
-# crashes the process whenever Android recreates the Activity (config changes
-# beyond what AndroidManifest's configChanges absorbs, "Don't keep activities",
-# system reclaiming the Activity but keeping the process). 7+ users hit this in
-# 0.13.1 on Play Console. See vendor/ndk-context/src/lib.rs.
 [patch.crates-io]
-ndk-context = { path = "vendor/ndk-context" }
-
 # Vendored fork of llama-cpp-sys-2 0.1.146. Upstream's build.rs hardcodes the
 # conservative `-march=armv8-a` baseline for the Android arm64-v8a ABI, which
 # strips the vectorized Q4_K matmul kernels (dotprod/fp16) and runs scalar

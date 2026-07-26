@@ -7027,7 +7027,3 @@ dependencies = [
  "syn 2.0.117",
  "winnow 0.7.14",
 ]
-
-[[patch.unused]]
-name = "ndk-context"
-version = "0.1.1"
