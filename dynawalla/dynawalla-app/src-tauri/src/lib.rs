@@ -1,13 +1,39 @@
 //! Dynawalla's native shell.
 //!
-//! Deliberately empty of plugins. The V1 native surface is haptics and TTS
-//! (ARCHITECTURE L8, ADR-0004) and neither is needed to render a screen, so
-//! nothing is registered here yet — every plugin added later also has to be
-//! granted a per-command permission in `capabilities/default.json`.
+//! It holds the pack runtime and nothing else. Packs are the product; the shell
+//! is what installs one, serves one, and keeps it inside its own directory.
+//!
+//! The `dynawalla-pack` URI scheme is registered here. It is a public API from
+//! the first release — the scheme name is baked into every published pack's
+//! built JavaScript on every device the pack is installed on — so it is never
+//! renamed. See `packs::PACK_SCHEME`.
+//!
+//! Every command registered below is invoked from exactly one module,
+//! `src/packs/native.ts`, and `src/packs/native.test.ts` asserts that the two
+//! lists are the same set in both directions. That test exists because of a
+//! real failure in this repository's other app: its install manager invokes a
+//! delete command the backend never registered, so uninstalled packs stay on
+//! disk permanently and nothing anywhere reports a problem.
+//!
+//! These are application commands, not plugin commands, so Tauri's ACL does not
+//! gate them and `capabilities/default.json` has nothing to say about them.
+//! That is precisely why the registration test is not optional.
+
+mod packs;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .register_uri_scheme_protocol(packs::PACK_SCHEME, |ctx, request| {
+            packs::serve(ctx.app_handle(), &request)
+        })
+        .invoke_handler(tauri::generate_handler![
+            packs::packs_list,
+            packs::packs_catalog,
+            packs::packs_install,
+            packs::packs_remove,
+            packs::packs_entry_url,
+        ])
         .run(tauri::generate_context!())
         .expect("error while running dynawalla");
 }

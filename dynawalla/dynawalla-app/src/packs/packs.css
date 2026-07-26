@@ -1,0 +1,34 @@
+/* The frame a pack lives in.
+ *
+ * The host owns the rectangle and nothing inside it. There are no styles here
+ * that reach into the pack — they could not: the frame is a separate document
+ * on an opaque origin, and that is the point. What is left is the two rules
+ * that decide how much room a pack gets and that it never becomes a scrolling
+ * region inside a scrolling page.
+ */
+
+.pack-frame-host {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  /* A pack fills what it is given and nothing more; a 320px phone is the floor
+     the whole app is designed to, so the container never sets a minimum width
+     a pack could overflow. */
+  min-inline-size: 0;
+  overflow: hidden;
+}
+
+.pack-frame {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  border: 0;
+  /* Carved stone, not a browser-chrome grey: a pack that has not painted yet
+     should read as part of the app rather than as a hole in it. The token, not
+     a literal — this is the one surface whose colour cannot be re-cut for dark
+     by the pack, because the pack is a different document. */
+  background: var(--dw-ground-deep);
+  /* An iframe is focusable and its content is keyboard-reachable; nothing here
+     may put it behind a transparent overlay. */
+  color-scheme: light dark;
+}
