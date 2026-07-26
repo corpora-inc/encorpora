@@ -759,19 +759,29 @@ jobs:
             corpan/corpan-app/src-tauri
             dynawalla/dynawalla-app/src-tauri
           cache-all-crates: "true"
-          # MEASURED, not cargo-culted. By default rust-cache strips every
-          # PATH-sourced crate from the target dir before saving. Here that is
-          # the vendored llama-cpp-sys-2 fork plus all eleven plugins — so a
-          # "full match" warm run still re-ran llama.cpp's cmake + bindgen and
-          # rebuilt every plugin: 165 s warm against 265 s stone cold. Those
-          # crates move rarely and cost the most, which is exactly the case
-          # this flag exists for. Cargo's fingerprints still force a rebuild
-          # when one of them actually changes.
-          cache-workspace-crates: "true"
-          # Extra key material. rust-cache does NOT re-save on a full key
-          # match, so a caching change alone would never take effect against an
-          # existing cache. Bump this when the cache needs to be rebuilt.
-          key: "native-v1"
+          #
+          # MEASURED CEILING — read this before trying to speed the job up.
+          #
+          # Warm (full cache match) is ~4m15s of which ~156s is Corpán's
+          # compile; stone cold is ~7m. The residual is NOT registry deps: on a
+          # full match cargo still rebuilds every PATH-sourced crate — the
+          # vendored llama-cpp-sys-2 fork (cmake + bindgen over llama.cpp,
+          # the single biggest item), all eleven plugins, and the app crate.
+          # rust-cache strips those from the target dir before saving.
+          #
+          # `cache-workspace-crates: true` was tried and measured: 156s against
+          # 165s, inside the noise, because the plugins live OUTSIDE the
+          # workspace root and are not "workspace crates" by that flag's
+          # definition. It is deliberately not set. The real lever is a
+          # compiler cache (sccache, which also fronts the C++ via
+          # CMAKE_C_COMPILER_LAUNCHER); that is a separate PR with its own
+          # correctness argument.
+          #
+          # Trap for whoever tries: rust-cache does NOT re-save on a full key
+          # match, so a caching change alone appears to do nothing against an
+          # existing cache. Bump `prefix-key` to force a rebuild while
+          # measuring, and note that a PR-event cache is scoped to that PR —
+          # only the `push: main` run populates a cache every PR can read.
 
       # ── rustfmt, as a ratchet ────────────────────────────────────────────
       #
