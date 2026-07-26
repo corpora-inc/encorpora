@@ -23,6 +23,39 @@ is an answer we merely do not recognise, and blocking on it would let a typo
 wedge the queue. A missing, null, or letterless severity is unreadable input
 and blocks, like every other unreadable reply.
 
+GRADING is calibrated on IMPACT and REACHABILITY, not on confidence. The lenses
+carry SEVERITY_LADDER (what HIGH/MEDIUM/LOW mean here, with worked examples from
+this repository) and the security lens carries a THREAT MODEL for this system —
+a public repo shipping a local Tauri app and a static site. The first blocking
+finding this gate ever produced was mechanically correct and over-graded, and
+the cause was an uncalibrated one-sentence security prompt next to three
+paragraphs of correctness calibration.
+
+CONFIRMATION. A finding that grades HIGH is re-asked once, alone, against BOTH
+the whole file at head AND the diff this branch applied to that file — the two
+halves the first pass lacked. The diff is not decoration: a finding about
+something the change REMOVED (a deleted guard, a dropped back-compat alias) is
+invisible in head state, where the honest read is "I see no such code", so a
+head-only confirmer would clear exactly the change-relative findings the
+correctness and pack-compat lenses exist to catch. A HIGH naming a file the
+reviewed range never touched is NOT confirmed at all — the second pass would be
+reading unrelated pre-existing code — and stays blocking.
+
+Only a positive "not a blocking problem" verdict clears a HIGH; a confirmed
+HIGH, an errored confirmation, an unparseable verdict, an off-diff file, an
+unreadable file and over-budget context all still block. Cleared HIGHs are NOT
+hidden — they are listed in the sticky comment and logged, so an over-eager
+clear is visible. Confirmation costs one call per DISTINCT finding (all three
+lenses reporting one defect share a single call) and nothing on a clean diff.
+
+MODELS are pinned to ALLOWED_MODELS. ADVERSARIAL_MODEL can only select from
+that set, so weakening every lens at once takes a PR through this gate rather
+than a silent repo-variable edit with no audit trail. It is NOT a spend knob:
+an unrecognised value is a hard error, not a fallback.
+
+There is deliberately NO waiver, suppression, annotation, or PR-body override.
+See the note above confirm_findings before adding one.
+
 RANGE. The reviewed range is always `merge-base(base, head)..head`. The event's
 base SHA is the base *branch tip*, not the merge base, so a two-dot
 `base..head` on a branch cut from an older main reviews the wrong set of
@@ -42,7 +75,10 @@ secret to add). Self-contained: stdlib only (urllib), so CI needs no pip install
 Env:
   ANTHROPIC_API_KEY   if set → review via Claude (preferred)
   OPENAI_KEY / OPENAI_API_KEY   fallback → review via OpenAI
-  ADVERSARIAL_MODEL   model id override (default per provider)
+  ADVERSARIAL_MODEL   model id override; MUST be in ALLOWED_MODELS[provider].
+                      Anything else is a hard error, NOT a fallback — so this
+                      is not a cost lever, and setting it to an unlisted id
+                      reds this required check until it is unset again.
   ADVERSARIAL_WORKERS concurrent model calls (default 3)
   GITHUB_TOKEN        for posting the sticky PR comment (optional in merge_group)
   GITHUB_REPOSITORY   owner/repo (set by Actions)
@@ -68,6 +104,39 @@ ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 DEFAULT_MODEL = {"anthropic": "claude-opus-5", "openai": "gpt-4.1"}
 MARKER = "<!-- adversarial-review -->"
+
+# The models this gate is allowed to review with. ADVERSARIAL_MODEL selects
+# FROM this set and cannot introduce a new value.
+#
+# Why an allow-list and not a free-form repo variable: the model is the single
+# input that silently sets the quality of all three lenses at once. As a bare
+# repo variable it could be pointed at something cheap and weak forever, with
+# no PR, no diff, and no audit trail — the whole gate quietly downgraded while
+# every check stayed green. Widening this set is a code change that must itself
+# pass this gate.
+#
+# Every entry must be an id this gate has ACTUALLY RUN against these prompts
+# and this exact request shape, so today each provider lists exactly one: the
+# default. ADVERSARIAL_MODEL has never been set, so nothing else has ever been
+# exercised, and an entry that fails is a 400 → a lens error → a repo-wide
+# block. A guessed entry is worse than no entry.
+#
+# The first draft of this list also carried claude-fable-5 and claude-opus-4-8.
+# Neither had run. Both are one repo-variable edit from a repo-wide red: this
+# script always sends `fallbacks: "default"` under the
+# server-side-fallback-2026-07-01 beta, and the fallback target set is a
+# property of the REQUESTED model (claude-opus-4-8 is itself Opus 5's documented
+# fallback target), while claude-fable-5 additionally requires 30-day
+# organization data retention or every request 400s. Unproven against the
+# payload we send = not in the set.
+#
+# Widening it means running the candidate against this script and updating
+# test_the_allow_list_holds_only_ids_this_gate_has_run — deliberately, in a PR
+# that passes this gate.
+ALLOWED_MODELS = {
+    "anthropic": {"claude-opus-5"},
+    "openai": {"gpt-4.1"},
+}
 
 # `max_tokens` on current Claude models caps thinking + visible response
 # together, and thinking is ON BY DEFAULT on claude-opus-5. The old value of
@@ -162,6 +231,28 @@ def provider_and_key():
     return None, None
 
 
+def resolve_model(provider):
+    """Pick the review model, refusing any id outside ALLOWED_MODELS.
+
+    An unrecognised override is an ERROR, not a fallback to the default. A
+    silent fallback would make a typo'd or downgraded ADVERSARIAL_MODEL
+    indistinguishable from an unset one in the logs, which is the audit-trail
+    hole this allow-list exists to close.
+    """
+    allowed = ALLOWED_MODELS[provider]
+    override = (os.environ.get("ADVERSARIAL_MODEL") or "").strip()
+    if not override:
+        return DEFAULT_MODEL[provider]
+    if override not in allowed:
+        raise ReviewError(
+            f"ADVERSARIAL_MODEL={override!r} is not in the {provider} allow-list "
+            f"({', '.join(sorted(allowed))}). The review model sets the quality "
+            "of every lens, so changing it is a code change that must pass this "
+            "gate — not a repo-variable edit."
+        )
+    return override
+
+
 LENSES = {
     "correctness": (
         "You are a correctness reviewer. Find logic bugs, broken edge cases, "
@@ -178,10 +269,43 @@ LENSES = {
         "early-return flag cleared synchronously at entry, or a clamp), treat the "
         "concern as resolved and do NOT re-raise it."
     ),
+    # This lens used to be exactly one sentence — the first four lines below —
+    # while the correctness lens above carried three paragraphs of hard-won
+    # calibration. That asymmetry is what produced this gate's first false
+    # block: a mechanically correct finding, graded HIGH, against a
+    # dev-server-only config change on a public repo. A reviewer told to find
+    # injection/SSRF/authz with no description of the system it is reviewing
+    # will grade against a generic multi-tenant web service, because that is
+    # what those words describe. So describe the system.
     "security": (
         "You are a security reviewer. Find injection, secret/credential exposure, "
         "unsafe deserialization, path traversal, SSRF, missing authz, and unsafe "
-        "handling of untrusted input introduced by this diff."
+        "handling of untrusted input introduced by this diff.\n\n"
+        "THREAT MODEL — grade against THIS system, not a generic web service:\n"
+        "* This repository is PUBLIC and open source. Source disclosure is not "
+        "itself an exposure: reading the code, an endpoint URL, the pack "
+        "catalog, or these security checks themselves gains an attacker nothing "
+        "they could not get by cloning the repo. What matters is real SECRET "
+        "material — keystores, .jks/.p8/.pem/.keystore files, service-account "
+        "JSON, API tokens, signing keys — anything that would still be a leak "
+        "after the source is already published.\n"
+        "* The products are a LOCAL Tauri desktop/mobile app and a STATIC site "
+        "on GitHub Pages. There is no server-side authorization layer, no "
+        "session or tenant boundary, and no multi-tenant data. 'Missing authz', "
+        "'IDOR', and 'privilege escalation' presuppose a server enforcing "
+        "authorization on behalf of many users; if this diff does not add one, "
+        "those findings do not apply. Data the app holds is the user's own data "
+        "on the user's own device — reading it locally is not exfiltration.\n"
+        "* Dev-only surfaces NEVER SHIP and are not in any built artifact: "
+        "`server.*` dev-server config, tests, benches, fixtures, QA harnesses, "
+        "CI workflows and scripts, and local tooling. A weakness that exists "
+        "only while a developer runs a dev server on their own machine is "
+        "bounded by who can reach that machine.\n"
+        "* Untrusted input that genuinely DOES matter here: downloaded content "
+        "packs and the code inside them, catalog/manifest JSON fetched over the "
+        "network, model output, remote narration/book assets, and anything else "
+        "a remote host serves to an installed app.\n"
+        "Grade on IMPACT and REACHABILITY, per the severity ladder below."
     ),
     "pack-compat": (
         "You are a content-pack back-compat reviewer for the Corpán app. Find "
@@ -193,15 +317,61 @@ LENSES = {
     ),
 }
 
+# What the levels MEAN. The old guidance was one clause — "reserve it for real,
+# confident defects" — which grades CONFIDENCE, and HIGH vs MEDIUM was never
+# defined anywhere. A reviewer that is certain about a harmless fact reads that
+# as licence to block, which is exactly what happened. Severity is a claim about
+# impact and reachability; confidence is a separate axis, handled by the
+# confirmation pass, not by the ladder.
+#
+# The two worked examples are real events in this repository and are chosen to
+# share a reachability class and differ only in impact — that is the distinction
+# a reviewer has to be able to make, and abstract definitions do not teach it.
+SEVERITY_LADDER = (
+    "SEVERITY LADDER — only HIGH blocks the merge. Grade on IMPACT and "
+    "REACHABILITY: what an attacker gains, and how they reach it. Do NOT grade "
+    "on how confident you are that you have read the code correctly — a "
+    "certain observation about a harmless fact is still LOW.\n"
+    "* HIGH — someone who is NOT the developer at their own machine gains "
+    "something real: leaked signing material or a live credential, code "
+    "execution or arbitrary file write on a user's device from content the app "
+    "fetches, silent data loss on a user's device, or a shipped artifact that "
+    "is broken for every user. A HIGH must be able to name WHO reaches it and "
+    "WHAT they get.\n"
+    "* MEDIUM — a real defect whose reach or impact is bounded: it needs an "
+    "unlikely precondition, it affects only the developer's own machine, it "
+    "weakens a defense in depth without breaking it, or it degrades one "
+    "feature rather than the shipped artifact.\n"
+    "* LOW — hardening, hygiene, and defense in depth with no concrete path to "
+    "harm; anything confined to tests, benches, fixtures, CI, or dev tooling "
+    "that never ships; and source disclosure in a repository that is already "
+    "public.\n"
+    "Two worked examples from THIS repository. They have the SAME reachability "
+    "— a dev server on a developer's machine — and different grades, because "
+    "the difference is impact, not confidence:\n"
+    "* TRUE HIGH: the Vite dev server served the production Android upload "
+    "KEYSTORE, because Vite's default deny list does not cover `.jks`. Any peer "
+    "on the developer's network could fetch the signing key for the shipped "
+    "app. Real secret, reachable by a non-developer, unfixable by rotation "
+    "alone — that is what HIGH is for.\n"
+    "* NOT HIGH: widening `server.fs.allow` in that same dev-server config so "
+    "Vite may read more of the repository. Dev-server only, never shipped, and "
+    "what it exposes is source code in a public open-source repository — no "
+    "secret, no gain. That is LOW.\n"
+    "If you cannot name a specific actor and a specific consequence, it is not "
+    "HIGH."
+)
+
 SCHEMA_HINT = (
     'Respond with ONLY a JSON object, no prose, of the form:\n'
     '{"findings": [{"severity": "high|medium|low", "file": "path", '
     '"line": "n or range or null", "title": "short", '
     '"detail": "why it is a problem and how to fix"}]}\n'
     "Return an empty findings array if you find nothing. Be precise; do not "
-    "invent issues. Only HIGH severity blocks the merge, so reserve it for real, "
-    "confident defects. Every finding MUST carry a severity — a finding with a "
-    "missing or empty severity is treated as blocking."
+    "invent issues. Grade every finding against the severity ladder above, and "
+    "for a HIGH say in `detail` who reaches it and what they gain. Every "
+    "finding MUST carry a severity — a finding with a missing or empty "
+    "severity is treated as blocking."
 )
 
 # Chunked reviews see one slice of the diff at a time. Without this, a lens
@@ -242,6 +412,66 @@ FINDINGS_SCHEMA = {
     "required": ["findings"],
     "additionalProperties": False,
 }
+
+# The confirmation pass asks one question about one finding, so it gets its own
+# schema. Both fields are required: a verdict with no reason is not reviewable
+# by the human reading the sticky comment.
+CONFIRM_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "confirmed": {"type": "boolean"},
+        "reason": {"type": "string"},
+    },
+    "required": ["confirmed", "reason"],
+    "additionalProperties": False,
+}
+
+# Marker string so the second pass is identifiable in a log or a test stub.
+CONFIRM_MARKER = "SECOND-PASS CONFIRMATION"
+
+CONFIRM_HINT = (
+    CONFIRM_MARKER + ". A first-pass reviewer saw ONE CHUNK of a unified diff "
+    "and graded the finding below at blocking severity. You are now looking at "
+    "BOTH halves of the context that pass did not have: the COMPLETE CHANGE "
+    "this branch made to the file, and the COMPLETE FILE as it stands at the "
+    "head of the branch.\n"
+    "Read BOTH. The diff is the only place a REMOVAL is visible — if the "
+    "finding is about something the change deleted, renamed, or replaced (a "
+    "dropped guard, a removed alias, a deleted check), the head file will not "
+    "contain it and its absence there is NOT evidence the finding is wrong. "
+    "The file is where you see the surrounding code the chunk cut off.\n\n"
+    "Decide one thing: is this a real, blocking-severity problem?\n"
+    "Answer false when the full context shows the concern is already handled, "
+    "when it rested on context the chunk was missing, when the code is not "
+    "what the first pass took it for, or when it is a real defect that the "
+    "severity ladder does not put at HIGH.\n"
+    "Answer true when you can name a specific actor who reaches it and a "
+    "specific thing they gain, per that ladder.\n\n"
+    "This is a precision check on ONE finding, not a re-review: do not look "
+    "for new problems, and do not confirm this finding because you noticed a "
+    "different one. If the context does not let you decide, answer true — an "
+    "undecidable blocking finding stays blocking.\n\n"
+    'Respond with ONLY a JSON object, no prose: {"confirmed": true|false, '
+    '"reason": "one sentence"}'
+)
+
+CONFIRM_SYSTEM = (
+    "You are a rigorous code reviewer performing a second-pass precision check "
+    "on a single finding. You are as adversarial about false alarms as about "
+    "real defects: a wrong block and a missed defect are both failures."
+)
+
+# Confirmation reads a whole file PLUS the change that produced the finding, so
+# it needs its own ceiling — measured over both, because that is what is sent.
+# Context over this budget is not confirmed at all rather than confirmed against
+# a truncated view: truncation is what the first pass already suffered from, and
+# "confirmed against half the context" is a worse answer than "not checked".
+CONFIRM_MAX_CONTEXT_CHARS = 400000
+
+# Upper bound on confirmation calls per run, counted over DISTINCT findings.
+# Past this the PR is thoroughly blocked anyway, and the remaining HIGHs stay
+# blocking unchecked — the fail-closed direction.
+MAX_CONFIRMATIONS = 20
 
 
 class ReviewError(Exception):
@@ -410,6 +640,34 @@ def get_diff(spec):
                 "refusing to pass a review that read nothing."
             )
     return diff
+
+
+def changed_files(spec):
+    """The set of paths `spec` changed, spelled exactly as git spells them.
+
+    Used to reject a finding whose file the branch never touched. `-z` because
+    core.quotePath renders a non-ASCII path as a C-quoted string that would
+    never match the path `git show` resolved, turning a legitimate confirmation
+    into a skip for anyone with an accented filename.
+    """
+    rc, out, err = run(["git", "diff", "--name-only", "-z", spec])
+    if rc != 0:
+        raise ReviewError(
+            f"git diff --name-only {spec} failed (exit {rc}): {err.strip()}"
+        )
+    return {name for name in out.split("\0") if name}
+
+
+def file_diff(spec, path):
+    """The unified diff this branch applied to one path, or "" if git failed.
+
+    Empty is safe rather than fail-closed here: the caller has already
+    established the path IS in the reviewed range, and losing the diff only
+    degrades the second pass to the head-only view it had before — which
+    answers "true" (blocking) when it cannot decide.
+    """
+    rc, out, _ = run(["git", "diff", "--unified=3", spec, "--", path])
+    return out if rc == 0 else ""
 
 
 # ------------------------------------------------------------------- chunking
@@ -754,7 +1012,7 @@ def read_anthropic_stream(resp):
     return "".join(text), stop
 
 
-def call_model(provider, key, model, system, user):
+def call_model(provider, key, model, system, user, schema=FINDINGS_SCHEMA):
     if provider == "anthropic":
         text, stop = _post(
             ANTHROPIC_URL,
@@ -777,7 +1035,7 @@ def call_model(provider, key, model, system, user):
                 # branch gets from response_format, but schema-checked.
                 "output_config": {
                     "effort": ANTHROPIC_EFFORT,
-                    "format": {"type": "json_schema", "schema": FINDINGS_SCHEMA},
+                    "format": {"type": "json_schema", "schema": schema},
                 },
                 # A safety classifier declining one chunk would otherwise be an
                 # unrecoverable red on a required check. "default" re-runs the
@@ -826,14 +1084,12 @@ def call_model(provider, key, model, system, user):
 MAX_JSON_SCAN_STARTS = 200
 
 
-def parse_findings(text):
-    """Return a list of finding dicts, or None if there is no well-formed
-    findings object.
+def _extract_json_object(text, key):
+    """First well-formed JSON object in `text` carrying `key`, else None.
 
-    None is the important half: "the model produced nothing we can read" used to
-    be indistinguishable from "the model found nothing" (both returned []), so
-    an empty reply, prose, a JSON object without a findings key, and JSON cut
-    off mid-object all passed the gate. None is now counted as a lens error.
+    Shared by both reply parsers so the bounded brace walk — and therefore the
+    MAX_JSON_SCAN_STARTS protection against O(n^2) on degenerate output — is
+    written once and cannot drift between them.
     """
     if not text or not text.strip():
         return None
@@ -844,8 +1100,8 @@ def parse_findings(text):
         whole = json.loads(text.strip())
     except json.JSONDecodeError:
         whole = None
-    if isinstance(whole, dict) and "findings" in whole:
-        return _coerce_findings(whole["findings"])
+    if isinstance(whole, dict) and key in whole:
+        return whole
 
     scanned = 0
     for start, char in enumerate(text):
@@ -865,10 +1121,43 @@ def parse_findings(text):
                         obj = json.loads(text[start : j + 1])
                     except json.JSONDecodeError:
                         break
-                    if isinstance(obj, dict) and "findings" in obj:
-                        return _coerce_findings(obj["findings"])
+                    if isinstance(obj, dict) and key in obj:
+                        return obj
                     break
     return None
+
+
+def parse_findings(text):
+    """Return a list of finding dicts, or None if there is no well-formed
+    findings object.
+
+    None is the important half: "the model produced nothing we can read" used to
+    be indistinguishable from "the model found nothing" (both returned []), so
+    an empty reply, prose, a JSON object without a findings key, and JSON cut
+    off mid-object all passed the gate. None is now counted as a lens error.
+    """
+    obj = _extract_json_object(text, "findings")
+    if obj is None:
+        return None
+    return _coerce_findings(obj["findings"])
+
+
+def parse_confirmation(text):
+    """Return (confirmed: bool, reason: str) from a verdict reply, else None.
+
+    None means "unreadable", and an unreadable verdict must never read as
+    "cleared" — the caller turns it into a blocking confirmation error. The
+    `confirmed` value must be a real bool: a string "false" or a 0 is not an
+    answer we are willing to clear a blocking finding on.
+    """
+    obj = _extract_json_object(text, "confirmed")
+    if obj is None:
+        return None
+    verdict = obj["confirmed"]
+    if not isinstance(verdict, bool):
+        return None
+    reason = obj.get("reason")
+    return verdict, str(reason).strip() if reason else ""
 
 
 def _coerce_findings(raw):
@@ -892,6 +1181,7 @@ def review_chunk(provider, key, model, name, instruction, chunk, index, total):
     label = f"{name} lens, chunk {index}/{total}"
     user = (
         f"{instruction}\n\n{CHUNK_HINT.format(i=index, n=total)}\n\n"
+        f"{SEVERITY_LADDER}\n\n"
         f"Review this unified diff. {SCHEMA_HINT}\n\n"
         f"```diff\n{chunk.prompt()}\n```"
     )
@@ -1002,44 +1292,339 @@ def dedupe(findings):
     return out
 
 
+# --------------------------------------------------------------- confirmation
+
+# CONFIRMATION STATES. Exactly one of these clears a blocking finding.
+CONFIRM_CLEARED = "unconfirmed"  # the ONLY non-blocking outcome
+CONFIRM_UPHELD = "confirmed"
+CONFIRM_ERROR = "error"  # call failed or verdict unreadable → blocks
+CONFIRM_SKIPPED = "unchecked"  # no second pass was possible → blocks
+
+
+def is_blocking(finding):
+    """True unless the confirmation pass positively cleared this finding.
+
+    Written as "not cleared" rather than "confirmed" on purpose: every new
+    confirmation state that anyone adds later defaults to BLOCKING, which is
+    the direction this gate must fail in. An error, a skip, an unreadable
+    verdict, and a state nobody has invented yet all block; only an explicit
+    CONFIRM_CLEARED lets a blocking-severity finding through.
+    """
+    if finding_severity(finding) != "high":
+        return False
+    return finding.get("confirmation") != CONFIRM_CLEARED
+
+
+class FileAtHead(NamedTuple):
+    """A file the confirmation pass resolved, and the path git resolved it AT.
+
+    `path` matters as much as `text`: `file_at` tries several spellings of a
+    model-supplied path, so the caller must test membership of the reviewed
+    diff against the spelling git actually accepted, not the one the model
+    wrote.
+    """
+
+    path: str
+    text: str
+
+
+def file_at(head, path):
+    """`FileAtHead` for `path` at `head`, or None when it cannot be read.
+
+    None is a legitimate answer — a deleted file, a path the model invented,
+    or a binary blob — and the caller treats it as "cannot confirm", which
+    blocks. This never falls back to the diff chunk: confirming against the
+    same partial view that produced the finding would make the second pass
+    ceremonial.
+    """
+    path = (path or "").strip()
+    if not path or "\n" in path or len(path) > 400 or path in ("?", "<unknown>"):
+        return None
+    candidates = []
+    # `./` FIRST, unlike the diff prefixes below. A git tree can never hold a
+    # literal `./` entry; `git show <head>:./x` resolves only because the rev
+    # parser expands it against the working directory, and the caller would
+    # then be holding a spelling `git diff --name-only` never prints — so a
+    # `./`-prefixed finding would look like it named an untouched file.
+    if path.startswith("./"):
+        candidates.append(path[2:])
+    candidates.append(path)
+    # Diff headers are `a/<path>` / `b/<path>` and models sometimes copy the
+    # prefix into the finding. Try the literal path FIRST here, so a real
+    # top-level `a/` directory is never shadowed by the stripped form; when the
+    # prefix IS an artifact the literal simply does not resolve.
+    if path.startswith(("a/", "b/")):
+        candidates.append(path[2:])
+    for candidate in candidates:
+        rc, out, _ = run(["git", "show", f"{head}:{candidate}"])
+        if rc == 0:
+            return FileAtHead(candidate, out)
+    return None
+
+
+def build_confirm_prompt(finding, lenses, source, diff):
+    """The single-finding question put to the second pass.
+
+    Carries BOTH halves of the context the first pass lacked: the change this
+    branch made to the file, and the whole file at head. The diff is NOT
+    optional. A finding about something the change deleted — a removed guard, a
+    dropped back-compat alias, a deleted platform floor — cannot be judged from
+    head state, where the thing simply is not present and the honest reading is
+    "I see no such code, not a blocking problem". That is a clearance, and it
+    is wrong, and it is the shape most of what the correctness and pack-compat
+    lenses look for takes.
+
+    `lenses` is every lens that reported this finding: one defect all three
+    noticed is confirmed once, so the confirmer gets all three framings.
+    """
+    path = str(finding.get("file", "?"))
+    location = path
+    if finding.get("line"):
+        location += f":{finding['line']}"
+    instructions = "\n\n".join(LENSES[name] for name in lenses if name in LENSES)
+    change = diff.strip() or "(git produced no diff for this path)"
+    return (
+        f"{instructions}\n\n{SEVERITY_LADDER}\n\n{CONFIRM_HINT}\n\n"
+        f"FINDING (reported at blocking severity by: "
+        f"{', '.join(lenses) or 'unknown'})\n"
+        f"location: {location}\n"
+        f"title: {str(finding.get('title', '')).strip()}\n"
+        f"detail: {str(finding.get('detail', '')).strip()}\n\n"
+        f"THE CHANGE UNDER REVIEW — what this branch did to `{path}`:\n"
+        f"```diff\n{change}\n```\n\n"
+        f"COMPLETE CONTENTS OF `{path}` AT THE HEAD OF THIS BRANCH:\n"
+        f"```\n{source}\n```"
+    )
+
+
+def _confirm_one(provider, key, model, finding, lenses, source, diff):
+    """Second-pass verdict on one finding. Returns (state, reason)."""
+    label = f"confirmation of {'/'.join(lenses)} finding in {finding.get('file')}"
+    try:
+        raw = call_model(
+            provider,
+            key,
+            model,
+            CONFIRM_SYSTEM,
+            build_confirm_prompt(finding, lenses, source, diff),
+            schema=CONFIRM_SCHEMA,
+        )
+    except Exception as e:  # noqa: BLE001
+        # Fail CLOSED. A confirmation we could not run is not a clearance:
+        # letting an API error delete a blocking finding would turn a flaky
+        # provider into a way to merge anything.
+        print(f"::warning::{label} failed: {e}")
+        return CONFIRM_ERROR, f"confirmation call failed: {e}"
+    verdict = parse_confirmation(raw)
+    if verdict is None:
+        print(f"::warning::{label} returned no parseable verdict: {(raw or '')[:200]!r}")
+        return CONFIRM_ERROR, "confirmation reply could not be parsed"
+    confirmed, reason = verdict
+    return (CONFIRM_UPHELD if confirmed else CONFIRM_CLEARED), reason
+
+
+def _mark(group, state, reason):
+    """Record one confirmation outcome across every finding that shares it."""
+    for f in group:
+        f["confirmation"] = state
+        f["confirmation_reason"] = reason
+
+
+def confirm_findings(provider, key, model, findings, rng, changed, workers):
+    """Re-check every blocking-severity finding against its file AND its diff.
+
+    This targets the gate's measured failure mode: ONE low-precision call that
+    saw a diff chunk and nothing else. It runs only on HIGH findings, so a
+    clean diff costs nothing and a normal diff costs at most a handful of
+    calls.
+
+    THREE things must hold before a HIGH is re-asked at all; each failure is a
+    SKIP, which keeps the finding blocking:
+
+      * the severity was a graded judgment (an unreadable one is not a judgment
+        to re-check — it fails closed on its own terms),
+      * the file resolves at head, and
+      * the resolved file is IN the reviewed range. A model naming the wrong
+        file is a routine error — a chunk spans several files and the finding
+        lands under the wrong `diff --git` header — and confirming it would
+        send the second pass into unrelated code that predates this branch,
+        where the correct answer to "is this a real, blocking problem" is
+        "no". That is a clearance produced by a mis-typed path, which is the
+        least reliable field in the whole finding.
+
+    DELIBERATE: this is the ONLY mechanism that can stop a HIGH from blocking,
+    and it is the model re-reading the file. There is NO waiver, no suppression
+    comment, no annotation, and no PR-body override — and none may be added.
+    In this repository agents author both the diff and the PR body, so any such
+    mechanism would be a waiver the reviewed party grants itself, which is not
+    a gate at all. If that feels inconvenient, the fix is a better finding or a
+    better prompt, not an escape hatch.
+    """
+    pending = []
+    for f in findings:
+        if finding_severity(f) != "high":
+            continue
+        if has_unreadable_severity(f):
+            # There is no graded judgment here to re-check — the severity was
+            # unreadable input, which fails closed on its own terms.
+            f["confirmation"] = CONFIRM_SKIPPED
+            f["confirmation_reason"] = "no readable severity — nothing to re-check"
+            continue
+        pending.append(f)
+
+    # One call per DISTINCT defect, not per lens that noticed it. dedupe() keys
+    # on the lens as well, so a single defect all three lenses report survives
+    # as three findings — and confirming each of them separately spent three
+    # whole-file calls, from a fixed budget, asking one question. Group them and
+    # fan the verdict back out.
+    groups = {}
+    for f in pending:
+        ident = (str(f.get("file")), str(f.get("line")), str(f.get("title")))
+        groups.setdefault(ident, []).append(f)
+    ordered = list(groups.values())
+
+    for group in ordered[MAX_CONFIRMATIONS:]:
+        _mark(
+            group,
+            CONFIRM_SKIPPED,
+            f"more than {MAX_CONFIRMATIONS} distinct blocking findings — "
+            "not re-checked",
+        )
+
+    jobs = []
+    for group in ordered[:MAX_CONFIRMATIONS]:
+        at_head = file_at(rng.head, str(group[0].get("file") or ""))
+        if at_head is None:
+            _mark(group, CONFIRM_SKIPPED, "could not read the full file at head")
+            continue
+        if at_head.path not in changed:
+            _mark(
+                group,
+                CONFIRM_SKIPPED,
+                f"`{at_head.path}` is not in the reviewed diff — not re-checked",
+            )
+            continue
+        diff = file_diff(rng.spec, at_head.path)
+        if len(at_head.text) + len(diff) > CONFIRM_MAX_CONTEXT_CHARS:
+            _mark(
+                group,
+                CONFIRM_SKIPPED,
+                f"file and diff exceed the {CONFIRM_MAX_CONTEXT_CHARS}-char "
+                "confirmation budget",
+            )
+            continue
+        lenses = list(dict.fromkeys(str(f.get("lens") or "") for f in group))
+        jobs.append((group, lenses, at_head.text, diff))
+
+    # The lens pass has already spent from the same wall clock. Say so rather
+    # than letting every remaining call fail one at a time and reporting it as
+    # "confirmation call failed", which reads as a provider outage.
+    if jobs and _time_left() <= 0:
+        for group, *_ in jobs:
+            _mark(
+                group,
+                CONFIRM_SKIPPED,
+                "review time budget exhausted before the confirmation pass",
+            )
+        jobs = []
+
+    if jobs:
+        with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+            results = list(
+                pool.map(
+                    lambda job: _confirm_one(
+                        provider, key, model, job[0][0], job[1], job[2], job[3]
+                    ),
+                    jobs,
+                )
+            )
+        for (group, *_), (state, reason) in zip(jobs, results):
+            _mark(group, state, reason)
+    return findings
+
+
 # --------------------------------------------------------------------- output
 
 
 def render_markdown(audit, all_findings):
-    """Build the sticky comment body.
+    """Build the sticky comment body. Returns (body, blocking_findings).
 
     The audit line is emitted UNCONDITIONALLY, including on clean runs — a green
     run used to record nothing at all about what had actually been reviewed.
+
+    Findings the confirmation pass CLEARED are rendered too, in their own
+    section. Silently dropping them would make the second pass a place where
+    real defects could disappear with no trace; listing them means an
+    over-eager clear is reviewable by whoever reads the comment.
     """
     for f in all_findings:
         f["severity_norm"] = finding_severity(f)
     all_findings.sort(key=lambda f: SEV_ORDER.get(f["severity_norm"], 3))
-    highs = [f for f in all_findings if f["severity_norm"] == "high"]
+    blocking = [f for f in all_findings if is_blocking(f)]
+    cleared = [
+        f
+        for f in all_findings
+        if f["severity_norm"] == "high" and not is_blocking(f)
+    ]
+    # Partition by IDENTITY, not equality. Defensive rather than load-bearing:
+    # every cleared finding carries confirmation == CONFIRM_CLEARED and every
+    # blocking one carries something else, so no cleared/blocking pair can be
+    # dict-equal today and `f not in cleared` would behave the same. Identity is
+    # free, is right whatever a later change does to those fields, and is not
+    # O(n^2) — but it is not fixing an observed bug.
+    cleared_ids = {id(f) for f in cleared}
+    listed = [f for f in all_findings if id(f) not in cleared_ids]
 
     lines = [MARKER, "## 🛡️ Adversarial review"]
     if not all_findings:
         lines.append(
             "\n✅ No findings across correctness / security / pack-compat lenses."
         )
-    elif highs:
+    elif blocking:
         lines.append("\n❌ **Blocked** — blocking-severity findings must be resolved.")
     else:
         lines.append("\n✅ **Pass** — only non-blocking findings.")
     lines.append(f"\n{audit}\n")
 
     icon = {"high": "🔴", "medium": "🟠", "low": "🟡", "unknown": "⚪"}
-    for f in all_findings:
+
+    def render(f, note):
         sev = f["severity_norm"]
         loc = str(f.get("file", "?"))
         if f.get("line"):
             loc += f":{f['line']}"
-        note = " _(no readable severity — treated as blocking)_" if has_unreadable_severity(f) else ""
-        lines.append(
+        return (
             f"- {icon.get(sev, '⚪')} **{sev.upper()}** [{f.get('lens')}] "
             f"`{loc}` — **{str(f.get('title', '')).strip()}**{note}  \n  "
             f"{str(f.get('detail', '')).strip()}"
         )
-    return "\n".join(lines), highs
+
+    for f in listed:
+        note = ""
+        if has_unreadable_severity(f):
+            note = " _(no readable severity — treated as blocking)_"
+        elif f.get("confirmation") in (CONFIRM_ERROR, CONFIRM_SKIPPED):
+            note = (
+                f" _(not re-checked: {f.get('confirmation_reason', '')} — "
+                "still blocking)_"
+            )
+        lines.append(render(f, note))
+
+    if cleared:
+        lines.append(
+            "\n<details><summary>🔎 "
+            f"{len(cleared)} blocking-severity finding(s) cleared by the "
+            "second pass — reported, not blocking</summary>\n\n"
+            "Each was re-read against the whole file rather than one diff "
+            "chunk and judged not to be a blocking problem. They are listed "
+            "so the clearance is reviewable; nothing here was hidden.\n"
+        )
+        for f in cleared:
+            lines.append(
+                render(f, f" _(cleared: {f.get('confirmation_reason', '')})_")
+            )
+        lines.append("\n</details>")
+    return "\n".join(lines), blocking
 
 
 def post_sticky_comment(body):
@@ -1176,13 +1761,16 @@ def main():
     if not provider:
         print("::error::no review key set (need ANTHROPIC_API_KEY or OPENAI_KEY).")
         return 1
-    model = os.environ.get("ADVERSARIAL_MODEL") or DEFAULT_MODEL[provider]
 
     try:
+        model = resolve_model(provider)
         budget = int(os.environ.get("MAX_CHUNK_CHARS") or DEFAULT_CHUNK_CHARS)
         workers = int(os.environ.get("ADVERSARIAL_WORKERS") or DEFAULT_WORKERS)
         rng = resolve_range()
         diff = get_diff(rng.spec)
+        # Resolved once, up front, and used by the confirmation pass to reject
+        # a finding whose file this branch never touched.
+        changed = changed_files(rng.spec)
         chunks, oversized, hard_split = chunk_diff(diff, budget)
         # Coverage is the whole point of chunking. Assert it before spending a
         # single API call, and fail closed if the split ever loses a character.
@@ -1254,7 +1842,14 @@ def main():
         return 1
 
     findings = dedupe(findings)
-    body, highs = render_markdown(audit, findings)
+    # Precision pass on blocking findings only: re-read each against its whole
+    # file AND the change this branch made to it. Only an explicit clearance
+    # stops one blocking; every other outcome, including an API error, an
+    # off-diff file, and an exhausted budget, leaves it blocking.
+    findings = confirm_findings(
+        provider, key, model, findings, rng, changed, workers
+    )
+    body, blocking = render_markdown(audit, findings)
     publish(body)
 
     unknown = [f for f in findings if f["severity_norm"] == "unknown"]
@@ -1263,14 +1858,25 @@ def main():
             f"::warning::{len(unknown)} finding(s) had an unrecognized severity "
             f"and did not block: {sorted({str(f.get('severity')) for f in unknown})}"
         )
-    unreadable = [f for f in highs if has_unreadable_severity(f)]
+    cleared = [
+        f for f in findings if f["severity_norm"] == "high" and not is_blocking(f)
+    ]
+    if cleared:
+        # Logged as well as rendered: a clearance is the one place this gate
+        # gets quieter, so it leaves a trace in the job log too.
+        print(
+            f"::warning::{len(cleared)} blocking-severity finding(s) were cleared "
+            "by the whole-file confirmation pass and did not block; they are "
+            "listed in the review comment."
+        )
+    unreadable = [f for f in blocking if has_unreadable_severity(f)]
     if unreadable:
         print(
             f"::error::{len(unreadable)} finding(s) had no readable severity and "
             "were treated as blocking."
         )
-    if highs:
-        print(f"::error::{len(highs)} blocking-severity finding(s) block the merge.")
+    if blocking:
+        print(f"::error::{len(blocking)} blocking-severity finding(s) block the merge.")
         return 1
     return 0
 

@@ -22,13 +22,24 @@ name: adversarial-review
 #   budget= 50000   18 chunks     54 calls
 #   budget=  4000  319 chunks    957 calls   <- can outlive the 20-minute budget
 #
-# To cut spend, RAISE it (or set a cheaper ADVERSARIAL_MODEL). Lower it only to
-# fit a model's context window, and never below the script's MIN_CHUNK_CHARS
-# floor of 4000, which it rejects.
+# To cut spend, RAISE it. Lower it only to fit a model's context window, and
+# never below the script's MIN_CHUNK_CHARS floor of 4000, which it rejects.
 #
-# ADVERSARIAL_WORKERS is the throttle for a rate-limit incident: it lowers
-# concurrency without changing the number of calls. That is the knob to reach
-# for mid-incident, not MAX_CHUNK_CHARS.
+# ADVERSARIAL_MODEL IS NOT A SPEND KNOB — do not reach for it. The script pins
+# the review model to ALLOWED_MODELS in `.github/scripts/adversarial_review.py`,
+# which holds only ids this gate has actually been run with (today: exactly the
+# default, per provider). Any other value — including a cheaper model — is a
+# HARD ERROR, not a fallback: the script exits non-zero and this REQUIRED check
+# goes red on every open PR and every merge-queue entry until the variable is
+# deleted again. Widening the set is a code change that must itself pass this
+# gate. If a run does go red this way, the job log carries an `::error::` line
+# naming the rejected value, and every successful run prints the resolved
+# provider and model id in its audit line.
+#
+# The mid-incident levers are MAX_CHUNK_CHARS and ADVERSARIAL_WORKERS, which the
+# script accepts as given. ADVERSARIAL_WORKERS is the throttle for a rate-limit
+# incident: it lowers concurrency without changing the number of calls. That is
+# the knob to reach for mid-incident, not MAX_CHUNK_CHARS.
 #
 # A false positive that blocks the queue is a detrimental process — fix the
 # prompt fast rather than routing around the gate.
@@ -78,6 +89,10 @@ jobs:
           # Claude automatically if ANTHROPIC_API_KEY is ever added to secrets.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          # Selects FROM the script's ALLOWED_MODELS; it cannot introduce a new
+          # value. An unrecognized id is a hard error that reds this required
+          # check repo-wide, so leave it unset unless you mean to pick another
+          # allow-listed model. Not a cost lever — see the header comment.
           ADVERSARIAL_MODEL: ${{ vars.ADVERSARIAL_MODEL }}
           MAX_CHUNK_CHARS: ${{ vars.MAX_CHUNK_CHARS }}
           # The throttle you reach for mid-incident. Every worker holds a full
