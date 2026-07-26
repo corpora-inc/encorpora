@@ -759,15 +759,19 @@ jobs:
             corpan/corpan-app/src-tauri
             dynawalla/dynawalla-app/src-tauri
           cache-all-crates: "true"
-          # MEASURED, not cargo-culted. rust-cache deletes workspace MEMBERS
-          # from the target dir before saving, and the vendored llama-cpp-sys-2
-          # fork lives at `corpan/corpan-app/src-tauri/vendor/`, i.e. inside
-          # Corpán's implicit workspace — so it counts as a member and its
-          # cmake build of llama.cpp was being thrown away and redone on every
-          # run (warm Corpán: 171 s, against 265 s stone cold). Keeping members
-          # caches that C++ build. The vendored fork moves about once a year;
-          # cargo's fingerprints still force a rebuild when it does.
+          # MEASURED, not cargo-culted. By default rust-cache strips every
+          # PATH-sourced crate from the target dir before saving. Here that is
+          # the vendored llama-cpp-sys-2 fork plus all eleven plugins — so a
+          # "full match" warm run still re-ran llama.cpp's cmake + bindgen and
+          # rebuilt every plugin: 165 s warm against 265 s stone cold. Those
+          # crates move rarely and cost the most, which is exactly the case
+          # this flag exists for. Cargo's fingerprints still force a rebuild
+          # when one of them actually changes.
           cache-workspace-crates: "true"
+          # Extra key material. rust-cache does NOT re-save on a full key
+          # match, so a caching change alone would never take effect against an
+          # existing cache. Bump this when the cache needs to be rebuilt.
+          key: "native-v1"
 
       # ── rustfmt, as a ratchet ────────────────────────────────────────────
       #
