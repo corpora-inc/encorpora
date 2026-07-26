@@ -177,11 +177,12 @@ jobs:
           # terraform/` would mark helper scripts under it as covered when no job
           # runs them.
           #
-          # `corpan/plugins/` is now compiled by the REQUIRED `native` job below
-          # (every plugin is a path dependency of Corpán's src-tauri, so a host
-          # `cargo clippy` of the app compiles all of them). `.github/workflows/
-          # ios-native.yml` additionally compiles their Swift, but it is
-          # advisory and does not count here.
+          # `corpan/plugins/` is now compiled by the `native` job below, which
+          # reports into the required `ci-gate` (every plugin is a path
+          # dependency of Corpán's src-tauri, so a host `cargo clippy` of the
+          # app compiles all of them). `.github/workflows/ios-native.yml`
+          # additionally compiles their Swift, but it is advisory and does not
+          # count here.
           covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
@@ -189,14 +190,14 @@ jobs:
           # hence a separate pattern rather than an exclusion inside `covered`.
           #
           # The `native` job compiles exactly two src-tauri trees: Corpán's and
-          # Dynawalla's. The three listed below are NOT compiled by any job —
+          # Dynawalla's. The four listed below are NOT compiled by any job.
           # `corpus-reader` and `panko` are dormant (last touched by a repo-wide
-          # sweep in June), `panko` resolves a plugin from a git BRANCH and
-          # `homeschool-offline` has no tracked Cargo.lock, so neither can be
-          # put behind a `--locked` gate as it stands. The iap example app is a
-          # demo, not shipped. All four are still rustfmt-gated (the ratchet in
-          # the `native` job walks every tracked manifest), which is why this is
-          # a warning about COMPILE coverage specifically.
+          # sweep in June); `panko` resolves a plugin from a git BRANCH and
+          # `homeschool-offline` tracks no Cargo.lock, so neither can sit behind
+          # a `--locked` gate as it stands; the iap example is a demo, not
+          # shipped. All four ARE rustfmt-gated — the ratchet in the `native`
+          # job walks every tracked manifest — which is why this warning is
+          # about COMPILE coverage specifically.
           ungated='^(corpus-reader/src-tauri/|panko/pako/src-tauri/|homeschool-offline/app/src-tauri/|corpan/plugins/tauri-plugin-iap/examples/)'
 
           # Gate-free by design: CI config, agent control plane, docs, dotfiles.
