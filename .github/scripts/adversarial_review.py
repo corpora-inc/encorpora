@@ -42,6 +42,7 @@ import time
 import urllib.request
 import urllib.error
 from concurrent.futures import ThreadPoolExecutor
+from typing import NamedTuple
 
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
@@ -281,20 +282,97 @@ def _segment_path(segment):
     return m.group(1) if m else "<unknown>"
 
 
+class Chunk(NamedTuple):
+    """One unit of review.
+
+    `text` is raw diff content and is what the coverage assertion sums over.
+    `context` is a synthetic prefix shown to the model only — it re-establishes
+    the file a continuation piece belongs to and is deliberately NOT part of the
+    coverage arithmetic.
+    """
+
+    text: str
+    context: str = ""
+
+    def prompt(self):
+        return self.context + self.text
+
+
+_HUNK_RE = re.compile(r"^@@ ", re.M)
+
+
+def _split_on_lines(text, budget):
+    """Partition text into <=budget pieces, breaking at line boundaries.
+
+    A single line longer than the budget (a minified bundle, say) is still hard
+    split — there is no smaller boundary to use.
+
+    Guarantee: "".join(result) == text.
+    """
+    pieces, current = [], ""
+    for line in text.splitlines(keepends=True):
+        if len(line) > budget:
+            if current:
+                pieces.append(current)
+                current = ""
+            for i in range(0, len(line), budget):
+                pieces.append(line[i : i + budget])
+            continue
+        if current and len(current) + len(line) > budget:
+            pieces.append(current)
+            current = ""
+        current += line
+    if current:
+        pieces.append(current)
+    return pieces
+
+
+def _split_file_segment(segment, budget):
+    """Split one oversized file diff at hunk boundaries, then line boundaries.
+
+    Guarantee: "".join(result) == segment.
+    """
+    starts = [m.start() for m in _HUNK_RE.finditer(segment)]
+    if starts:
+        blocks = [segment[: starts[0]]] if starts[0] > 0 else []
+        for i, start in enumerate(starts):
+            end = starts[i + 1] if i + 1 < len(starts) else len(segment)
+            blocks.append(segment[start:end])
+    else:
+        blocks = [segment]
+
+    atoms = []
+    for block in blocks:
+        atoms.extend([block] if len(block) <= budget else _split_on_lines(block, budget))
+
+    pieces, current = [], ""
+    for atom in atoms:
+        if current and len(current) + len(atom) > budget:
+            pieces.append(current)
+            current = ""
+        current += atom
+    if current:
+        pieces.append(current)
+    return pieces
+
+
 def chunk_diff(diff, budget):
     """Pack per-file segments into chunks of at most `budget` characters.
 
     Returns (chunks, oversized_files).
 
-    A single file larger than the budget is HARD-SPLIT into budget-sized pieces
-    rather than truncated or rejected. Rationale: truncating would silently drop
-    review coverage (the exact bug this change exists to fix), and rejecting
-    would block legitimate large-file PRs — generated files, lockfiles, vendored
-    sources — on day one. Splitting keeps coverage at 100%; the cost is that the
-    later pieces of such a file reach the model without their `diff --git`
-    header, so those files are named in the audit trail.
+    A single file larger than the budget is SPLIT rather than truncated or
+    rejected. Truncating would silently drop review coverage (the exact bug this
+    change exists to fix), and rejecting would block legitimate large-file PRs —
+    generated files, lockfiles, vendored sources — on day one.
 
-    Guarantee: "".join(chunks) == diff, for any budget >= MIN_CHUNK_CHARS.
+    Splits land on hunk boundaries where possible and line boundaries otherwise,
+    so a chunk never starts mid-line, and every continuation piece carries a
+    synthetic `context` naming the file it belongs to. Those two properties keep
+    a split file reviewable: without them the model cannot attribute hunks to a
+    path and invents findings from the missing context.
+
+    Guarantee: "".join(c.text for c in chunks) == diff, for budget >= MIN_CHUNK_CHARS.
     """
     if budget < MIN_CHUNK_CHARS:
         raise ReviewError(
@@ -305,18 +383,30 @@ def chunk_diff(diff, budget):
     for segment in split_into_files(diff):
         if len(segment) > budget:
             if current:
-                chunks.append(current)
+                chunks.append(Chunk(current))
                 current = ""
-            oversized.append(_segment_path(segment))
-            for i in range(0, len(segment), budget):
-                chunks.append(segment[i : i + budget])
+            path = _segment_path(segment)
+            oversized.append(path)
+            pieces = _split_file_segment(segment, budget)
+            for n, piece in enumerate(pieces, start=1):
+                context = (
+                    ""
+                    if n == 1
+                    else (
+                        f"# Continuation of the unified diff for `{path}` "
+                        f"(part {n} of {len(pieces)}). The `diff --git` header and "
+                        f"earlier hunks for this file are in previous chunks; every "
+                        f"line below belongs to this file.\n"
+                    )
+                )
+                chunks.append(Chunk(piece, context))
             continue
         if current and len(current) + len(segment) > budget:
-            chunks.append(current)
+            chunks.append(Chunk(current))
             current = ""
         current += segment
     if current:
-        chunks.append(current)
+        chunks.append(Chunk(current))
     return chunks, oversized
 
 
@@ -453,7 +543,7 @@ def review_chunk(provider, key, model, name, instruction, chunk, index, total):
     user = (
         f"{instruction}\n\n{CHUNK_HINT.format(i=index, n=total)}\n\n"
         f"Review this unified diff. {SCHEMA_HINT}\n\n"
-        f"```diff\n{chunk}\n```"
+        f"```diff\n{chunk.prompt()}\n```"
     )
     try:
         raw = call_model(
@@ -634,10 +724,13 @@ def main():
         chunks, oversized = chunk_diff(diff, budget)
         # Coverage is the whole point of chunking. Assert it before spending a
         # single API call, and fail closed if the split ever loses a character.
-        if "".join(chunks) != diff:
+        # Note this sums .text only: synthetic continuation context is shown to
+        # the model but must never count toward coverage.
+        if "".join(c.text for c in chunks) != diff:
             raise ReviewError(
                 "internal error: chunking did not cover the diff exactly "
-                f"({sum(len(c) for c in chunks)} of {len(diff)} chars); failing closed."
+                f"({sum(len(c.text) for c in chunks)} of {len(diff)} chars); "
+                "failing closed."
             )
     except ReviewError as e:
         print(f"::error::{e}")
@@ -654,10 +747,10 @@ def main():
     )
     if oversized:
         audit += (
-            f"\n\n> ⚠️ Hard-split across chunk boundaries (larger than the "
-            f"{budget}-char budget): `{'`, `'.join(sorted(set(oversized)))}`. "
-            "Fully reviewed, but later pieces reach the model without their "
-            "file header."
+            f"\n\n> ⚠️ Larger than the {budget}-char chunk budget, so split "
+            f"across chunks at hunk/line boundaries with the file re-identified "
+            f"on each continuation: `{'`, `'.join(sorted(set(oversized)))}`. "
+            "Fully reviewed; no lens sees a partial line."
         )
     print(audit)
 
