@@ -55,13 +55,14 @@ say why the behaviour changed.
 
 ### 4. Determinism snapshots on two operating systems
 
-Generator output hashes are committed and checked on **macOS and Linux** CI (C-16).
+Generator output hashes are committed and checked on **macOS and Linux** CI (CG-16).
 Changed output without a `familyRev` bump is an error, because a silently changed
 generator invalidates every committed golden transcript and every bug report.
 
 ### 5. The simulation harness
 
-Nightly, 10 personas × 100 children × 3 seeds, 30–80 minutes, with a named owner and a
+Nightly, 10 behavioural personas × 100 children × 3 seeds (plus the misspecification
+persona in the EG-5 set), 30–80 minutes, with a named owner and a
 paging path. PRs run a 3-persona × 20-learner smoke. See
 [ADAPTIVE_LEARNING.md](ADAPTIVE_LEARNING.md) for why the personas are deliberately
 misspecified relative to the engine's belief model.

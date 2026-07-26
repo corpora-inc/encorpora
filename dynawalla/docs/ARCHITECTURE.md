@@ -84,7 +84,7 @@ across 55 locale directories.
 
 `NumberFormat` owns the decimal separator, grouping separator, numbering system and
 numeral direction. It drives the keypad glyphs, the slate renderer **and `judge`**, which
-normalizes the locale separator before comparison and accepts `3,5` in fr/de. Gate C-14
+normalizes the locale separator before comparison and accepts `3,5` in fr/de. Gate CG-14
 requires every generator's `canonical` and `alsoAccept` to round-trip through
 format→parse in all launch locales. `columnAlgorithm` is forced `dir="ltr"` with an
 explicit test.
@@ -158,8 +158,11 @@ V1 plugin set: **haptics, tts**; iap/subscriptions only if
 [ADR-0004](DECISIONS/ADR-0004-no-mic-no-llm-no-3d.md).
 
 The Tauri capability surface is narrow from day one: **non-null CSP and per-command
-grants**, not Corpán's single `capabilities/default.json` with every plugin at `:default`
-and `csp: null`. A live app cannot narrow permissions later, so this is creation-time.
+grants**, not Corpán's single `capabilities/default.json` with almost every plugin at
+`:default` and `csp: null` — 11 of its 14 grants are `:default`; only
+`clipboard-manager:allow-write-text`, `tts:allow-speak` and
+`subscriptions:allow-show-manage-subscriptions` name a command. A live app cannot narrow
+permissions later, so this is creation-time.
 
 ## Shared platform
 

@@ -100,16 +100,29 @@ repair scheduling.
 
 **Stage 2 LOCATE** (mal-rule matched, `β ≥ 2.2`). The mechanism the product is named
 for. If the wrong answer *equals* a computed buggy-procedure output, we know which step
-broke. On `5,001 − 2,798 = 3,797` the response is a **contrast pair** in which the buggy
-procedure produces a visibly absurd answer, with the counting board showing there are no
-thousands left to take from. The child sees the contradiction rather than being told.
+broke. On `5,001 − 2,798 = 3,203` — `mis.add.borrow-across-zero`, the variant that
+regroups all the way down but never decrements the thousands — the response is a
+**contrast pair** in which the buggy procedure produces a visibly absurd answer: on the
+counting board the thousand that was spent to feed the hundreds is still sitting in the
+answer, and adding back gives `6,001`, not `5,001`. The child sees the contradiction
+rather than being told.
+
+Two different mal-rules produce two different wrong answers on this one problem, and
+they are not interchangeable. The correct answer is `2,203`. `3,203` is
+borrow-across-zero — it is the correct answer plus exactly the 1,000 that was borrowed
+and never given up, which is what makes the counting board a real contradiction rather
+than an illustration. `3,797` is `mis.add.smaller-from-larger` (`|5−2| |0−7| |0−9|
+|1−8|`); it is not off by a place-value unit at all and its contrast is the number line,
+not the counting board. Binding one rule's LOCATE representation to the other rule's
+output is exactly the mapping error `CG-12` cannot catch, because both rules are
+individually valid and both diverge from the correct answer on ≥95% of seeds.
 
 **Scoped honestly.** There is no generic "make the contradiction self-evident" function:
 fraction addition needs a bar contradiction, magnitude comparison needs a number line. So
 LOCATE is built for the **8–12 mal-rules where a representation is genuinely
 load-bearing and the evidence base is real** — place-value regrouping, fraction addition,
 decimal comparison, division remainder — split by representation family across several
-PRs. Every other mal-rule routes to Stage 3. Gate C-22 enforces that only LOCATE-capable
+PRs. Every other mal-rule routes to Stage 3. Gate CG-22 enforces that only LOCATE-capable
 mal-rules are tagged as such, so Developer Mode and any external claim can be checked
 against the actual count.
 
@@ -176,9 +189,27 @@ difference between a tutor and a treadmill.
 
 ## Persisted state
 
-~60 KB per child in V1, bounded by construction: `SkillState` ~24 B × 160, `BugState`
-~12 B sparse, `FactCard` ~20 B × 180, `LearnerState` <1 KB, `SessionRollup` 64 B × 730
-downsampled, and a 2,000-event FIFO ring at 32 B. **It does not grow with sessions.**
+Bounded by construction, and the sum is stated so the next reader can check it:
+
+```
+SkillState      24 B × 160   =   3,840
+FactCard        20 B × 180   =   3,600
+BugState        12 B ×  64   =     768   sparse, hard cap
+LearnerState                 =   1,024
+SessionRollup   64 B × 180   =  11,520   last 180 days daily, older collapsed monthly
+Event ring      32 B × 512   =  16,384   FIFO, Developer Mode only
+                                -------
+                                 37,136 B  ≈ 36 KiB
+```
+
+**It does not grow with sessions.** Every component is a fixed-size array or a capped
+ring, so the 500-session measurement in `A-15` / `EG-3` reads the same number as the
+5-session one. The ~60 KB of headroom under the 100 KB bound absorbs codec overhead and
+leaves room to widen the ring later without renegotiating the gate.
+
+The first draft budgeted a 2,000-event ring and 730 daily rollups, which totals ~116 KiB
+— it busted its own acceptance bound. The ring and the rollup depth are the two knobs;
+both are capped here, not "downsampled" aspirationally.
 
 All model state is sufficient-statistic-shaped. The event log exists only for Developer
 Mode, the parent report, and future recalibration.
@@ -204,7 +235,7 @@ so the check passed by construction and measured nothing.
 **Corrected:** personas answer from a **3PL with per-child discrimination `a_i` and item
 features the engine cannot observe** (visual load, digit count, working-memory span),
 plus one explicit **misspecification persona** whose true `b` differs from the engine's
-by a structured offset. G-5 then measures robustness, which is what it was supposed to
+by a structured offset. EG-5 then measures robustness, which is what it was supposed to
 do.
 
 **And a real-child anchor before content breadth is bought:** residuals from the M2
@@ -212,9 +243,13 @@ playtest cohort are fitted against predicted `b` and committed as a fixture
 (`T-03`, `A-02`). If that fit is skipped "until there is more content," the engine is
 unvalidated all the way to launch.
 
-**The ten personas:** steady-strong, struggling, fast-careless, slow-accurate,
-**accurate-counter-on**, single-misconception, returning-lapser, pure-guesser,
-rapid-improver, fatiguer — plus the misspecification persona.
+**Eleven personas: ten behavioural plus one misspecification.** The ten behavioural ones
+are steady-strong, struggling, fast-careless, slow-accurate, **accurate-counter-on**,
+single-misconception, returning-lapser, pure-guesser, rapid-improver and fatiguer. The
+eleventh — the misspecification persona — is EG-5's instrument rather than an outcome
+persona: it runs in the calibration set only, so the nightly outcome budget below is ten
+personas, not eleven. `EG-8` in [GATES.md](GATES.md) maps each persona to its acceptance
+item, and says which five have none.
 
 **The synthetic child acquires skill from day one** (`α += 0.08` per spaced success, cap
 +1.5, no same-day credit). Corpán's harness modelled **fixed** ability, which made 3 of
@@ -222,8 +257,9 @@ its 11 ship gates mathematically unsatisfiable under any scheduler and cost two 
 calibration rounds plus a spec amendment to discover.
 
 **Runtime is budgeted.** Corpán's measured harness (25 learners × 180 days × 7 personas)
-takes 315.8 s. Ten personas × 100 children × 3 seeds is 5–12× that — 30–80 minutes. It is
-a **nightly job with a named owner**, never a per-PR check; PRs run a 3-persona ×
+takes 315.8 s. Ten behavioural personas × 100 children × 3 seeds is 5–12× that — 30–80
+minutes, plus the misspecification persona in the EG-5 calibration set. It is a
+**nightly job with a named owner**, never a per-PR check; PRs run a 3-persona ×
 20-learner smoke.
 
 **Every gate is labelled REGRESSION BOUND** (derived from a pilot run) **or PEDAGOGICAL

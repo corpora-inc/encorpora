@@ -51,7 +51,7 @@ incident log — the override is the thing that will be abused.
 and a fork-only required approval.
 
 **Failing on truncation is chosen over chunking deliberately.** It mechanically enforces
-the small-PR discipline that trunk-based development requires. Budget: ~121 PRs × 3
+the small-PR discipline that trunk-based development requires. Budget: ~122 PRs × 3
 lenses × ~2.5 evaluations ≈ 900 model calls.
 
 ## Fix 2 — `ci.yml` fails closed on unknown paths
@@ -197,7 +197,8 @@ Then **SHA-pin every third-party action** with a trailing `# vX.Y.Z` comment, an
 
 ## `deploy-pages.yml` — Corpán-only hygiene
 
-427 lines, 15 hand-written `npm install --legacy-peer-deps` blocks,
+427 lines, 14 hand-written `npm install --legacy-peer-deps` blocks (plus one more at
+`ci.yml:245`, which is the one that also needs the per-pack `.npmrc`),
 `concurrency: { group: "pages", cancel-in-progress: true }`, and a smoke workflow that
 only runs on `conclusion == 'success'` — so a cancelled deploy is never smoke-tested.
 

@@ -99,7 +99,7 @@ b = b_skill
 ```
 
 with every coefficient in one `constants.ts`. That is why no item-calibration corpus is
-needed — and it is falsifiable, which is what gate **G-5** exists to do. See
+needed — and it is falsifiable, which is what gate **EG-5** exists to do. See
 [ADAPTIVE_LEARNING.md](ADAPTIVE_LEARNING.md).
 
 ## The 18 V1 generator families
@@ -135,7 +135,7 @@ differ irreducibly across these groups.
 ## Word problems are locale content, not translation
 
 `contextTheme` is a **locale-scoped asset**: per-locale name pools, object pools,
-currency and unit sets, **authored** by whoever owns that locale. Gate C-21 requires
+currency and unit sets, **authored** by whoever owns that locale. Gate CG-21 requires
 every active word-problem family to have a populated context set in all launch locales.
 The CCSS compare phrasings ("how many more", "how many fewer") do not map one-to-one
 across languages and are reviewed by a native speaker per locale before those families
@@ -155,8 +155,11 @@ The evidence base: Brown & Burton's BUGGY work found 39% of 1,300 students showe
 consistent buggy behaviour on place-value subtraction; recent catalogues encode ~101
 mal-rules across ~498 templates.
 
-V1 concentrates where the evidence is genuinely deep: `mis.add.smaller-from-larger`,
-`mis.add.borrow-across-zero` (602 − 437 = 265), `mis.add.misaligned-columns`,
+V1 concentrates where the evidence is genuinely deep:
+`mis.add.smaller-from-larger` (5,001 − 2,798 = 3,797 — the smaller digit taken from the
+larger in every column),
+`mis.add.borrow-across-zero` (602 − 437 = 265, and 5,001 − 2,798 = 3,203 — regrouped all
+the way down, never decremented the leading digit), `mis.add.misaligned-columns`,
 `mis.add.carry-dropped`, `mis.mul.makes-bigger`, `mis.mul.partial-product-misaligned`,
 `mis.div.divisor-must-be-smaller`, `mis.div.remainder-dropped`,
 `mis.frac.add-numerators-and-denominators`,
@@ -189,15 +192,22 @@ probability with an invented mechanism.
 
 ## Staging
 
-| Stage | Milestone | Content |
-|---|---|---|
-| V1.0 | M4 | Grade 1–2 spine: `ns` + `add` + `alg` equality, ~62 skills / 8 families |
-| V1.1 | M7 | Grade 3–4: `mul` + `div`, +58 skills / +6 families |
-| V1.2 | M7 | Fractions and grade-5 depth, +40 skills / +4 families |
+| Stage | Milestone | Content | Families |
+|---|---|---|---|
+| V1.0 | M4 | Grade 1–2 spine: `ns` + `add` + `alg` equality, ~62 skills | 7 — `column-op`, `fact-recall`, `mental-strategy`, `missing-operand`, `place-value-decompose`, `compare-order`, `numberline-locate` |
+| V1.1 | M7 | Grade 3–4: `mul` + `div`, +58 skills | +7 — `multidigit-mul`, `long-div`, `round-estimate`, `factor-multiple`, both word families, `gen.logic.error-analysis` |
+| V1.2 | M7 | Fractions and grade-5 depth, +40 skills | +4 — `frac.partition-model`, `frac.equivalence-simplify`, `frac.arith`, `frac.convert` |
+
+7 + 7 + 4 = **18**, which is the number in [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md)
+and the number of family PRs in [MASTER_PLAN.md](MASTER_PLAN.md) (`column-op` ships early,
+at M2, and is bound at M4 with the rest of the spine). A family is *bound* at the
+milestone that implements its generator; individual nodes go `active` in the domain
+promotion PRs, which is why M4 binds seven families but activates ~62 skills rather than
+all of their levels.
 
 ## Validator runtime
 
-C-9/10/11/12 over 160 skills × 4 levels × 1,000 seeds is roughly 640k `generate()`
+CG-9/10/11/12 over 160 skills × 4 levels × 1,000 seeds is roughly 640k `generate()`
 calls — far too slow per PR. **Incremental mode** (diff-scoped, reusing the `changes`
 job pattern) runs on PR; a **nightly full sweep** with a named owner runs the whole
 graph. Both from day one, not retrofitted when it gets slow.
