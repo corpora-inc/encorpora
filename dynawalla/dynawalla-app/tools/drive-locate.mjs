@@ -12,6 +12,13 @@
 // A harness that proves the diagnosis by asking the diagnosis code proves
 // nothing about the screen.
 //
+// **The numbers it prints are not fixed.** The session seed runs off the day
+// index, which `store.ts`'s `today()` takes from the wall clock, so the item it
+// reaches is a different subtraction on a different day. What is asserted is the
+// *shape* — a run of zeros in the minuend, a contrast board that does not add
+// back up, a repair item that borrows through a zero — and a transcript quoted
+// out of this tool is an example rather than an expected output.
+//
 //   npm run dev                  # in another shell
 //   node tools/drive-locate.mjs [outDir]
 //

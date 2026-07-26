@@ -285,7 +285,11 @@ export function commit(
   minutesElapsed = 0,
   deps: SessionDeps = defaultDeps,
 ): SessionState {
-  if (!committable(state) || state.card.kind !== "problem") return state
+  // The same guards `committable` applies, not a call to it: `committable` is
+  // now `submitted(state) !== null`, so calling it here and then calling
+  // `submitted` again would build the answer's `Rational` twice on the one path
+  // a child waits for.
+  if (state.feedback !== null || state.card.kind !== "problem") return state
   const value = submitted(state)
   if (value === null) return state
 
