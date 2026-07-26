@@ -28,13 +28,18 @@ write it up.
 
 ### R-02 · H · Founder + Program
 **The playtest gates are the most likely thing to be waived, and waiving them voids the
-program.** Recruiting six children with documented parental consent takes weeks and has
-zero slots today. Compliance forbids remote A/B testing, so there is no substitute
-instrument: if M2 ships without children, every judgement about pacing, reaction
-budgets, the 0.80 difficulty target and "wrong must not be more fun than right" reverts
-to being a claim about children that a simulator the team wrote cannot falsify.
-**Mitigation:** recruitment starts in the bootstrap PR, not at M2.
-See [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md).
+program.** Compliance forbids remote A/B testing, so there is no substitute instrument:
+if M2 ships without a child playing it, every judgement about pacing, reaction budgets,
+the 0.80 difficulty target and "wrong must not be more fun than right" reverts to being a
+claim about children that a simulator the team wrote cannot falsify.
+**Mitigation:** [ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) removed the
+excuse — the evaluator is the founder's 10-year-old son, there is no recruitment and no
+consent lead time, so a missing report is a choice rather than a resourcing failure.
+**Residual, and it is large:** `n = 1`, observed by the parent who built the product.
+This instrument reliably detects a loop that fails and cannot establish that one
+succeeds, so every gate is written to fire on a negative and never to certify a positive.
+See [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) §3a for what is actually done about the
+bias, and R-46 for the age gap.
 
 ### R-03 · H · Program
 **Merged is not done, and this repo has the counterexample.** Journey merged
@@ -267,10 +272,16 @@ A public *alignment claim* is a separate exposure —
 reliability gate was circular: the engine computes `σ(θ − b)` and the persona answered
 from `σ(α − b)` against the same `b`, so it passed by construction.
 **Mitigation:** personas answer from a 3PL with per-child discrimination and item
-features the engine cannot observe, plus one explicit misspecification persona, plus
-real-child residuals from the M2 playtest fitted before content breadth is bought
-(`A-01`, `A-02`). **Residual:** if the M2 residual fit is skipped "until there is more
-content," the engine is unvalidated all the way to launch.
+features the engine cannot observe, plus one explicit misspecification persona
+(`A-01`), plus a real-child residual fixture from the M2 playtest fitted before content
+breadth is bought (`A-02`). **Residual, revised 2026-07-25:** the real-child fixture is
+**one child's** response data
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)). It detects a gross
+mismatch and cannot calibrate `b()`, so the weight the original plan put on it moves onto
+the misspecified personas. The engine's difficulty model is consequently validated almost
+entirely against synthetic learners, which is a weaker position than this register
+previously claimed. If the M2 fixture is skipped as well, even the gross-mismatch check
+is gone.
 
 ### R-27 · M · Engine
 **The harness is a nightly job with a named owner or it is nothing.** Corpán's measured
@@ -322,8 +333,13 @@ brass-and-lapis palette is precisely the recipe that renders as a gradient dashb
 with gear icons, and code review cannot see it.
 **Mitigation:** committed screenshots reviewed as **images** in the PR, a hostile
 reference board naming what it must not look like, three strangers who must not say
-"dashboard" or "template," and a **named** art director whose sign-off is an exit
-criterion (`Q-14`). Without a named art director this risk has no mitigation at all.
+"dashboard" or "template," and the art director's sign-off as an exit criterion
+(`Q-14`). The art director is the founder
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)), so the role is filled
+and the gate can run. **Residual:** the art director is also the person who commissioned
+the art and owns the product, so the sign-off is not independent review. The three
+strangers are the only outside eyes in the whole mitigation, which is why `Q-14` keeps
+them.
 
 ### R-33 · M · Experience
 **The character is the differentiation claim and is easy to under-build.** ~100
@@ -405,12 +421,51 @@ directory.
 **The repo is public with no license.** GitHub reports `license: null` and no `LICENSE`
 file exists, while several shipped decisions rest on "it's open source anyway."
 **Mitigation:** a `LICENSE` placeholder lands in the bootstrap PR pointing at
-[ADR-0014](DECISIONS/ADR-0014-repository-license.md); the real decision is the
-founder's and counsel's.
+[ADR-0014](DECISIONS/ADR-0014-repository-license.md); dedicated research was commissioned
+2026-07-25 and a recommendation is pending; the decision is the founder's and counsel's.
 
 ### R-44 · M · Program
-**A role with no name is a gate that does not run.** Three roles in this register are
-currently unassigned, and two acceptance items (`A-19` nightly harness owner, `Q-14` art
-director) name a person as their pass condition.
+**A role with no name is a gate that does not run.** Several roles in this register are
+still unassigned, and two acceptance items name a person as their pass condition:
+`A-19` (nightly harness owner) and `Q-14` (art director). `Q-14`'s is now filled — the
+art director is the founder
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)) — and `A-19`'s is not.
 **Mitigation:** [STATUS.md](STATUS.md) carries the role→person table and is updated in
 the PR that changes it.
+
+### R-45 · M · Founder + Program
+**The monetization direction is copied from a model the founder says did not work.** His
+own words on Corpán's subscription: "that hasn't worked in the slightest." Dynawalla's
+direction — generous free tier plus a subscription for unlimited exercises and full
+access ([ADR-0013](DECISIONS/ADR-0013-monetization-model.md)) — is the same shape, so
+adopting it by default inherits the pricing and packaging assumptions that produced that
+result along with the architecture that makes it cheap to run. It is a **direction, not a
+validated design**, and no evidence pass has been done on what a parent would actually
+pay for here.
+**Mitigation:** `G-02` requires packaging and pricing to be decided and recorded before
+M9 completes, separately from the direction; ADR-0013 records the tension between an
+"unlimited exercises" upsell and [MISSION.md](MISSION.md)'s ban on play-by-appointment
+and grinding gates, so a free-tier session cap is ruled out before launch pressure makes
+it look reasonable. **Residual:** nobody is currently assigned to do that evidence pass,
+and low run-rate makes it easy to defer indefinitely — a free product with no revenue is
+not obviously failing, which is exactly how it stays undecided.
+
+### R-46 · M · Founder + Experience
+**Grades 1–2 and every pre-reader flow will ship with zero child observation.** The
+program's one evaluator is 10 years old, roughly grade 4–5
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)). Early counting, number
+formation, first addition and subtraction facts, and specifically the flows that assume a
+child who cannot read the interface — read-aloud as the primary input path, icon-only
+affordances, touch targets for smaller hands — are unobserved. Read-aloud is argued
+forward from M9 to M2 on behalf of a child nobody will watch use it. The V1 slice itself
+is covered, which is the good half of the same fact: the highest-uncertainty content sits
+squarely in the evaluator's range.
+**Mitigation:** `Q-11` becomes an adult-proxy device check that verifies the capability
+and explicitly does not evidence the child claim; the adaptive engine's placement keeps a
+young learner out of content they cannot attempt.
+**Open, and it is the founder's call — he has not made it:** accept the gap and ship on
+design heuristics; narrow the advertised grade band to what was observed (interacts with
+[ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md)); or add one younger evaluator, aged
+roughly 6–7, for a single session before M9. ADR-0017 recommends the third with the
+second as a triggered fallback at M9. Until one is chosen, no public claim about grade
+1–2 suitability should be made.

@@ -1,7 +1,7 @@
 # ADR-0015 — Developer-account topology
 
-**Status:** Proposed — awaiting founder
-**Needed before:** the ASC and Play app records are created in M1
+**Status:** Accepted — 2026-07-25
+**Needed before:** the ASC and Play app records are created in M1 (met)
 
 ## Context
 
@@ -15,28 +15,48 @@ cannot carry IAP) and the Android upload keystore (deliberately separate so one
 compromised key does not risk two shipping apps). The Apple Distribution certificate and
 the Play service account are reused.
 
-## Options
+## Decision
 
-**A. Same accounts as Corpán.** Reuses the distribution certificate and the Play service
-account. Requires an explicit per-app permission grant for the service account on the new
-Play app record — it does **not** inherit (`G-09`). Consequences: the two apps compete
-for the same App Store Featured and Play Teacher Approved nominations, share a
-policy-violation blast radius (an enforcement action against one account affects both),
-and share the account's DSA trader status.
+The founder's answer:
 
-**B. Separate accounts.** Isolates the policy blast radius and the nomination pools.
-Costs a second Apple Developer Program enrolment and a second Play developer account,
-new certificates, new service-account plumbing, a second set of store secrets and
-environments, and duplicated tax/banking/trader setup.
+> "Yeah, this is a Corpora project so it can just be the same as Corpan I think."
 
-## Consequences
+**Dynawalla ships under the same Corpora Inc Apple developer team and the same Google
+Play developer account as Corpán.** Option A. Everything in [STORE.md](../STORE.md) as
+written holds.
 
+`TODO(store-recon)` — a store reconnaissance is in flight to confirm the exact reuse
+matrix: which Apple certificate, key and identifier records are genuinely reusable versus
+which must be minted new, and the Play service account's current role. The two
+new-credential items above are asserted by the plan; the recon confirms them rather than
+this ADR asserting more specifics than have been verified.
+
+## Consequences, accepted as trade-offs
+
+These were the reasons to consider separate accounts. They are now accepted costs, not
+open questions.
+
+- **Shared policy-violation blast radius.** An enforcement action against the account —
+  a Play policy strike, an Apple account-level suspension — affects **both apps**. Corpán
+  is a shipping product with paying subscribers; a Dynawalla compliance mistake can reach
+  it. This is the largest cost of the decision and the one most likely to be regretted at
+  the exact moment it lands.
+- **The two apps compete for the same nominations.** App Store Featured placement and
+  Play Teacher Approved are allocated per developer account, so Dynawalla and Corpán are
+  in the same pool rather than in two.
+- **Shared DSA trader status** and the account's tax, banking and trader declarations.
+  One set of facts covers both apps, which is a simplification until one app needs a
+  different answer.
 - **Reversing after the app record exists means a new record and orphaning any installed
-  base.** This is effectively a one-way door once M1 submits.
-- Under **A**, everything in [STORE.md](../STORE.md) as written holds. Under **B**, the
-  reusable release workflow needs a second credential set per platform and the
-  environment list doubles.
-- Under either option, a **new AWS secret `dynawalla/store/credentials`** is created
-  rather than widening the existing Corpán secret, which a live purchase-verify lambda
-  reads.
-- Under either option, no credential value ever enters this repository (`G-11`).
+  base.** This is effectively a one-way door once M1 submits, so the acceptance above is
+  the real decision, not a provisional one.
+
+## Operational consequences that still apply
+
+- The Play service account requires an **explicit per-app permission grant** on the new
+  Dynawalla app record — it does **not** inherit (`G-09`). This is a founder console
+  action, not an API call.
+- A **new AWS secret `dynawalla/store/credentials`** is created rather than widening the
+  existing Corpán secret, which a live purchase-verify lambda reads. Sharing an account
+  is not a reason to share a secret.
+- No credential value ever enters this repository (`G-11`).

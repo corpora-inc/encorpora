@@ -27,6 +27,18 @@ the word-of-mouth.
 
 Confirm the product name, or supply a different one, before M1 creates the app records.
 
+**Founder's expectation, 2026-07-25:**
+
+> "I doubt anyone has Dynawalla but you should be able to check."
+
+So the working name stands unless a check says otherwise, and the founder has explicitly
+asked for the check rather than asserting the name is clear.
+
+`TODO(store-recon)` — an availability check on both stores and a trademark search are in
+flight. This ADR stays **Proposed** until they come back: the founder's expectation is
+recorded, but "I doubt anyone has it" is not the confirmation that makes an immutable SKU
+safe to create.
+
 ## Consequences
 
 - The bundle id does not have to match the display name and will not be changed by this

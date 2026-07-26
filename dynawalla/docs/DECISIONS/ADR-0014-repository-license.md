@@ -1,6 +1,10 @@
 # ADR-0014 — Repository license
 
 **Status:** Proposed — awaiting founder (and counsel)
+**Research commissioned 2026-07-25; a recommendation is pending.** The founder asked for
+a dedicated research pass on this specific question rather than a decision from the
+program. Nothing here is decided, and no agent should decide it. Add the recommendation
+to this ADR when it lands; the founder still makes the call.
 
 ## Context
 

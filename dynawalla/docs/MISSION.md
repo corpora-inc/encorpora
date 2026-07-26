@@ -3,12 +3,6 @@
 Status: discovery complete, nothing built. See [STATUS.md](STATUS.md).
 Index: [README.md](README.md).
 
-> Links to `GATES.md`, `CURRICULUM.md`, `ADAPTIVE_LEARNING.md`, `ARCHITECTURE.md`,
-> `EXPERIENCE_DESIGN.md`, `PACK_SYSTEM.md`, `RELEASE_ENGINEERING.md`, `STORE.md` and
-> `TEST_STRATEGY.md` resolve once the reference-set PR lands. The two were split so
-> neither diff is truncated by the adversarial reviewer; delete this note in the
-> follow-up.
-
 ## What it is
 
 A mathematics practice product for children, shipping as `inc.corpora.dynawalla` on iOS,
@@ -95,8 +89,10 @@ The compliance regime makes this partly structural rather than voluntary: Apple'
 Category (1.3 / 5.1.4) bars third-party analytics and behavioural advertising, and the
 UK Children's Code restricts nudge techniques and using children's data to keep them
 on a platform. **The practical consequence is that the feel cannot be A/B tested
-remotely.** In-person playtesting is therefore the binding instrument, not a nicety —
-which is why [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) starts in the bootstrap.
+remotely.** Direct observation is therefore the binding instrument, not a nicety — see
+[PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md). That instrument is one child, the founder's
+10-year-old son, and the honest account of what it can and cannot support is
+[ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md).
 
 ## Locked founder decisions
 
@@ -110,14 +106,26 @@ which is why [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) starts in the bootstra
 | 6 | Bundle id `inc.corpora.dynawalla` (note: `inc.` — Corpán is `com.corpora.corpan`, and both conventions now coexist permanently). |
 | 7 | Ancient-futurist setting: Byzantine / Persian / Fertile Crescent; astrolabes, gears, automata, mechanical computers. Sourced from al-Jazari's 1206 *Book of Knowledge of Ingenious Mechanical Devices* and the Banū Mūsā's 9th-century *Book of Ingenious Devices*. No steampunk goggles, no gears-as-decoration. |
 
-## Open founder decisions
+## Founder decisions, recorded 2026-07-25
 
-Eight decisions are the founder's and are not made. Each has an ADR with status
-`Proposed — awaiting founder` stating the options and their consequences. Three are on
-the critical path: the Kids Category posture is a one-way door that must be decided
-before M1's first store submission; the playtest cohort plus a named art director are
-people the plan cannot supply for itself; and the V1 scope cut narrows the founder-stated
-grade range, so it is not the plan's to ratify. See [DECISIONS.md](DECISIONS.md).
+Four of the eight open decisions were answered by the founder and are recorded in their
+ADRs from his own words: human evaluation resourcing
+([0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) — one child evaluator, his
+10-year-old son; the founder is the art director), developer-account topology
+([0015](DECISIONS/ADR-0015-developer-account-topology.md) — same accounts as Corpán),
+monetization direction ([0013](DECISIONS/ADR-0013-monetization-model.md) — generous free
+tier plus a subscription, packaging still open), and the Kids Category engineering
+posture ([0001](DECISIONS/ADR-0001-kids-category-posture.md) — no third-party ads,
+analytics or SDKs, ever; a parental gate on every link-out; the category election itself
+deferred to submission).
+
+Four remain the founder's and are not made: the **V1 scope cut**
+([0002](DECISIONS/ADR-0002-v1-scope-cut.md)), which narrows a founder-stated grade range
+and so is not the plan's to ratify; the **product name**
+([0016](DECISIONS/ADR-0016-app-store-product-name.md)), needed before an immutable SKU
+exists; the **repository license** ([0014](DECISIONS/ADR-0014-repository-license.md)) and
+the **standards-alignment claim** ([0010](DECISIONS/ADR-0010-standards-alignment-claim.md)),
+both with dedicated research in flight. See [DECISIONS.md](DECISIONS.md).
 
 ## How this product is graded
 

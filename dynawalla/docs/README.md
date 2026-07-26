@@ -39,13 +39,8 @@ Read in this order on your first task. Skim headings after that.
 - [RISKS.md](RISKS.md) — every risk with a mitigation and an owner.
 - [DECISIONS.md](DECISIONS.md) — the ADR index, including the open founder decisions.
 - [DECISIONS/](DECISIONS/) — one ADR per irreversible choice.
-- [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) — cohort, session protocol, what gets
-  recorded, parental-consent template.
+- [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) — who the evaluator is, the session
+  protocol, what gets recorded, and what this instrument cannot tell us.
 
 Agent rules for this directory tree: [`../AGENTS.md`](../AGENTS.md), which is a delta
 over the root [`../../AGENTS.md`](../../AGENTS.md).
-
-> The **Reference** set lands in a follow-up PR on branch
-> `agent/dynawalla/program-docs-reference`; it was split out so neither diff exceeds the
-> adversarial reviewer's size limit and gets truncated. Those links resolve once it
-> merges.

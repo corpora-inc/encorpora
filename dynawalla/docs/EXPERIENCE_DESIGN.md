@@ -152,8 +152,9 @@ driver) that the first draft of this plan never noticed.
 M6 adds a deterministic seed set capturing the world at 0 / 50 / 200 / 500 placed
 elements plus all five reaction tiers, at 320 px / 768 px / iPad, light and dark,
 reduced-motion on and off. **The PNGs are committed and the images are reviewed in the
-PR, not the code.** A named human art director signs off on those images as an exit
-criterion.
+PR, not the code.** The art director — the founder
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)) — signs off on those
+images as an exit criterion.
 
 The M6 stranger test: three strangers shown **only** the screenshots, unprompted, do not
 use the word "dashboard" or the word "template."

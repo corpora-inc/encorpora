@@ -85,12 +85,18 @@ Items 1–3 are roughly ten minutes of founder time and they sit on M1's critica
 
 ## Compliance posture
 
-The decision itself is [ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md) and is
-**a one-way door**: Apple Guideline 1.3 states the requirements continue to bind "in
-subsequent updates, even if you decide to deselect the category." It must be recorded
-before M1's first submission (`G-01`).
+The decision itself is [ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md). The
+**category election** is **a one-way door** — Apple Guideline 1.3 states the requirements
+continue to bind "in subsequent updates, even if you decide to deselect the category" —
+and it is deliberately **deferred to submission**, after monetization is wired, because
+Play's Families Policy and the Kids Category both constrain how a purchase may be
+surfaced to a child. It must be written into the ADR before M1's first submission
+(`G-01`); submitting without it is electing by accident. The default if nothing changes
+is to match Corpán's current category and rating (`TODO(store-recon)` — the specific
+values are not asserted here).
 
-The engineering plan already assumes the strict posture regardless:
+The strict engineering posture is **Accepted unconditionally** as of 2026-07-25,
+independent of the election, so nothing below waits on it:
 
 - **No third-party analytics SDK, no advertising SDK, in either bundle.** Enforced by a
   CI dependency audit that is cross-checked against the submitted Play Data safety
@@ -100,10 +106,14 @@ The engineering plan already assumes the strict posture regardless:
   collected** (`G-06`). Play's Families Policy forbids all of them for child users.
 - **All instrumentation is on-device.** There is no server profile, no account, and no
   telemetry endpoint. The practical consequence is that the product's feel **cannot be
-  A/B tested remotely**, which is why in-person playtesting is the binding instrument
+  A/B tested remotely**, which is why direct observation is the binding instrument
   rather than a supplement ([PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md)).
 - **A parental gate stands in front of every link-out and every purchase flow** (`G-08`).
   The primitive ships in M1's shell, not at M10, so no surface is ever built without one.
+  For a mathematics app an arithmetic challenge **is** the canonical Apple-acceptable
+  gate, so this costs almost nothing here; the one catch is that its arithmetic must sit
+  **above** the V1 curriculum band, or the children being taught grades 1–5 will solve
+  the thing that exists to exclude them.
 - **No nudge techniques.** The UK Children's Code Standard 13 restricts them and
   Standard 5 cautions against using children's data to keep them on a platform. The
   forbidden mechanics list in [MISSION.md](MISSION.md) is stricter than either.
