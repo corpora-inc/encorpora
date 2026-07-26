@@ -16,6 +16,11 @@ Cargo.lock
 web/io/out/
 web/io/.next/
 corpan/plugins/*/ios/.build/
+# Gradle's per-plugin build cache. Anchored and scoped to exactly the plugin
+# android/ dirs, mirroring the ios/.build/ line above. Directory-only (trailing
+# slash) so it can never match the TRACKED build.gradle.kts / settings.gradle
+# FILES that live in these same directories.
+corpan/plugins/*/android/.gradle/
 corpan/games/
 .DS_Store
 

@@ -4,12 +4,6 @@ The definition of done for V1. This is the document the program is graded agains
 
 **Every item below is currently UNMET.** Nothing has been built.
 
-> Links to `GATES.md`, `CURRICULUM.md`, `ADAPTIVE_LEARNING.md`, `ARCHITECTURE.md`,
-> `EXPERIENCE_DESIGN.md`, `PACK_SYSTEM.md`, `RELEASE_ENGINEERING.md`, `STORE.md` and
-> `TEST_STRATEGY.md` resolve once the reference-set PR lands. The two were split so
-> neither diff is truncated by the adversarial reviewer; delete this note in the
-> follow-up.
-
 ## How to use this file
 
 Each item has an id, a claim, and a **Verify** line naming the command or procedure
@@ -26,7 +20,10 @@ Rules that make this honest rather than aspirational:
   build. The repo's own counterexample: Journey merged 2026-07-04 and was unreachable
   by production users until 2026-07-14, across five releases.
 - **`[playtest]` items cannot be waived.** Waiving one voids every judgement
-  downstream of it — see [RISKS.md](RISKS.md) R-02.
+  downstream of it — see [RISKS.md](RISKS.md) R-02. They are **single-child
+  observations** ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)): every
+  number recorded against one carries `n = 1` next to it, and none of them may be
+  restated as a rate, a proportion or a claim about children in general.
 - **`[founder]` items are not the program's to close.** They are listed so the
   critical path is visible, not so an agent can decide them.
 
@@ -159,8 +156,11 @@ Rules that make this honest rather than aspirational:
       **every** persona including the misspecification persona.
       Verify: nightly harness report.
       Evidence: UNMET
-- [ ] **A-02** EG-5 also holds against the M2 real-child residual fixture. This is the
-      only non-circular evidence that `b()` is real.
+- [ ] **A-02** EG-5 also holds against the M2 real-child residual fixture. One child's
+      residuals cannot calibrate `b()`; they can expose a gross mismatch, and that is the
+      only claim made for them. The non-circularity argument now rests on the
+      misspecified personas (`A-01`), not on this fixture — see
+      [RISKS.md](RISKS.md) R-26.
       Verify: fixture committed from `PLAYTEST-M2.md`; harness run green.
       Evidence: UNMET
 - [ ] **A-03** `accurate-counter-on` never accumulates a long-interval fact card and is
@@ -258,9 +258,11 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       A9 SM-X110 and launches.
       Verify: recorded install.
       Evidence: UNMET
-- [ ] **X-03** The generated Gradle `applicationId` is verified as
-      `inc.corpora.dynawalla` **before** the first AAB upload. The Play package name is
-      locked by the first upload and cannot be changed without Google support.
+- [ ] **X-03** The generated Gradle `applicationId` is read and verified as exactly
+      `inc.corpora.dynawalla` **before** the first AAB upload. **The Play package name is
+      locked forever by the first upload** — not by the first release — and cannot be
+      changed without Google support, which in practice means not at all. This is the
+      single most expensive mistake available in the store runbook (R-36).
       Verify: build log line quoted in the PR; upload timestamp after it.
       Evidence: UNMET
 - [ ] **X-04** `p_align == 0x4000` for every `.so` in the Dynawalla AAB.
@@ -454,11 +456,17 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       colour alone, from the first representation authored.
       Verify: gate CG-18 green; a representation without a text alternative fails.
       Evidence: UNMET
-- [ ] **Q-11** `[device]` A grade-1 child who cannot read completes a session using
-      read-aloud only, observed.
-      Verify: the named non-reader in the `T-01` cohort, recorded in `PLAYTEST-M2.md`
-      under the standard observation protocol. If the cohort has no non-reader, `Q-11`
-      is UNMET — it is not waivable by a test.
+- [ ] **Q-11** `[device]` A full session is completed on read-aloud alone, with the
+      screen's text unreadable to the person doing it. This is an **adult proxy** run by
+      the founder on a reference device: it verifies that the capability is complete and
+      that no step requires reading, and it is **not** evidence about a pre-reading
+      child. No child observation exists for this path
+      ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md),
+      [RISKS.md](RISKS.md) R-46) and the report must say so rather than imply coverage.
+      Verify: a named person completes it from a **cold launch on a TestFlight or
+      Play-internal build** on a reference device, with prompt text suppressed and every
+      step reachable by audio and touch alone. (This is what keeps the `[device]` tag
+      honest — the instrument changed, the store-build bar did not.)
       Evidence: UNMET
 - [ ] **Q-12** Three children on one device have fully independent progress, verified
       by a test that cross-reads namespaces **and** by a named person on a real device.
@@ -469,19 +477,32 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       Verify: timed observation with three parents.
       Evidence: UNMET
 - [ ] **Q-14** `[art]` Three strangers shown **only** the committed M6 screenshots,
-      unprompted, do not use the word "dashboard" or the word "template"; a **named**
-      art director signs off on those images.
+      unprompted, do not use the word "dashboard" or the word "template"; the art
+      director signs off on those images. The art director is the founder
+      ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)) — the role is
+      filled, so this item is no longer blocked on anyone. The strangers are adults shown
+      images; they are not participants and need no consent regime, and their verbatims
+      are the part of this item that is **not** the founder's own judgement, which is why
+      they are not optional.
       Verify: verbatims plus a signed record in the M6 PR.
       Evidence: UNMET
 
 ## H. Compliance and governance
 
-- [ ] **G-01** `[founder]` The Kids Category / Play under-13 decision is recorded in
-      [ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md) with status Accepted
-      **before** the first store submission. Apple 1.3 makes it a one-way door.
+- [ ] **G-01** `[founder]` The **category election** — Kids Category / Play under-13, or
+      Education with a 4+ rating — is written into
+      [ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md) **before** the first store
+      submission. Apple 1.3 makes it a one-way door, and submitting without a recorded
+      election *is* electing. The engineering constraints (no third-party ads, analytics
+      or SDKs; a parental gate on every link-out and purchase) are already Accepted as of
+      2026-07-25 and are not what this item waits on.
       Evidence: UNMET
-- [ ] **G-02** `[founder]` The monetization model is decided and recorded in
-      [ADR-0013](DECISIONS/ADR-0013-monetization-model.md) before M9 completes.
+- [ ] **G-02** `[founder]` The **packaging and pricing** of the monetization direction —
+      what the free tier includes, what the subscription unlocks, what it costs — is
+      decided and recorded in
+      [ADR-0013](DECISIONS/ADR-0013-monetization-model.md) before M9 completes. The
+      direction (generous free tier + subscription, offline-first, never block an offline
+      subscriber) is Accepted as of 2026-07-25; the packaging is not, and carries R-45.
       Evidence: UNMET
 - [ ] **G-03** `[founder]` The repository license is decided and a `LICENSE` file
       exists ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)).
@@ -490,22 +511,37 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)); CG-20 stays
       report-only unless it says otherwise.
       Evidence: UNMET
-- [ ] **G-05** No third-party analytics or advertising SDK exists in either bundle.
+- [ ] **G-05** No SDK from any forbidden category exists in either bundle: ad networks,
+      third-party analytics, attribution/MMP, **third-party crash reporters**, push with
+      audience segmentation, targeted remote-config/A-B, social login, or anything
+      declaring `com.google.android.gms.permission.AD_ID` ([RISKS.md](RISKS.md) R-47).
       Verify: the CI dependency audit, cross-checked against the submitted Play Data
-      safety declaration.
+      safety declaration; plus the network-egress test asserting **zero** outbound
+      requests on cold launch and through a full lesson.
       Evidence: UNMET
-- [ ] **G-06** No AAID / IMEI / MAC / phone number is transmitted and no precise
-      location is collected.
-      Verify: dependency audit plus a device network capture during the release pass.
+- [ ] **G-06** None of AAID, SIM Serial, Build Serial, BSSID, MAC, SSID, IMEI or IMSI is
+      transmitted; the phone number is never requested via `TelephonyManager`; **no
+      location permission of any kind** is declared.
+      Verify: assertions on the **merged** `AndroidManifest.xml` (no `AD_ID`, no
+      `ACCESS_*_LOCATION`, no `READ_PHONE_STATE`), the iOS check for no
+      `ASIdentifierManager`/`ATTrackingManager` and no `NSUserTrackingUsageDescription`,
+      plus a device network capture during the release pass.
       Evidence: UNMET
 - [ ] **G-07** Apple age rating and Play target-audience/content-rating declarations
-      are complete and consistent with actual behaviour and with the CI audit.
+      are complete and consistent with actual behaviour and with the CI audit, and the
+      elected Apple band (5-and-under / 6-8 / 9-11 — exactly one) is consistent with the
+      shipped curriculum range ([ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md)).
       Verify: both console declarations against the audit output.
       Evidence: UNMET
-- [ ] **G-08** A parental gate stands in front of every link-out and every purchase
-      flow.
-      Verify: route-guard test enumerating external links and purchase entry points;
-      device pass.
+- [ ] **G-08** A parental gate stands in front of every link-out, every purchase,
+      paywall and price display, Restore Purchases, the parent dashboard, anything that
+      emails or shares a child's work, and the microphone and push permission prompts.
+      The challenge is **non-arithmetic**, randomized and non-persistent across sessions
+      ([ADR-0005](DECISIONS/ADR-0005-shell-and-routing.md)); the privacy policy is an
+      in-app screen rather than an external URL, so it needs no gate.
+      Verify: route-guard test enumerating every entry point above; a test asserting the
+      challenge draws from a non-curricular pool and varies between invocations; device
+      pass.
       Evidence: UNMET
 - [ ] **G-09** Play Console shows the service account granted explicit per-app
       permission on the new Dynawalla app record.
@@ -523,31 +559,55 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
 
 ## I. Playtest gates (cannot be waived)
 
-- [ ] **T-01** `[playtest]` **M2**: 6+ children aged 6–11 — including **at least one
-      grade-1 child who cannot yet read** (the `Q-11` instrument) — at least 2 of whom
-      dislike math, each complete two unsupervised 20-minute sessions on a real device.
-      Time-to-voluntary-quit, unprompted verbatims and next-day voluntary return rate
-      are recorded in `PLAYTEST-M2.md`.
+The evaluator is the founder's 10-year-old son, observed by the founder
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md),
+[PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md)). `n = 1` is stated beside every number
+recorded here. These are observations, not measurements of a population, and none of
+them may be restated publicly as a claim about children.
+
+- [ ] **T-01** `[playtest]` **M2**: the child completes two **unassisted** 20-minute
+      sessions on a reference device from a store build, on separate days. Recorded in
+      `PLAYTEST-M2.md`: time to voluntary quit for each session, unprompted verbatims
+      including the discouraging ones, next-day voluntary return (yes/no), where he got
+      stuck, and what he skipped or worked around.
+      Verify: `PLAYTEST-M2.md` committed, containing all six fields for both sessions
+      plus the device and build number, per [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md)
+      §4.
       Evidence: UNMET
-- [ ] **T-02** `[playtest]` **M2**: at least 3 of the 6 children, unprompted, do
-      something after a wrong answer other than ask for the answer — i.e. the LOCATE
-      contrast pair reads as an explanation, not a punishment.
+- [ ] **T-02** `[playtest]` **M2**: for **every** wrong answer across both sessions, what
+      the child did next is recorded as one of retried / asked for the answer / studied
+      the contrast / ignored it / quit. The gate **fails** if he never once, unprompted,
+      does anything other than ask for the answer or disengage — that is the LOCATE
+      contrast pair reading as punishment rather than as an explanation. The raw counts
+      are reported as counts, never as a percentage.
+      Verify: the per-wrong-answer table in `PLAYTEST-M2.md`, one row per wrong answer
+      across both sessions, classified into the five responses in
+      [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) §4.
       Evidence: UNMET
-- [ ] **T-03** `[playtest]` **M2**: residuals from the cohort are fitted against
-      predicted `b()` and reported in `PLAYTEST-M2.md`, **before** M7 spends on content
-      breadth.
+- [ ] **T-03** `[playtest]` **M2**: the child's per-item correctness with the predicted
+      `b()` for each item served is exported from Developer Mode, committed as a fixture,
+      and reported in `PLAYTEST-M2.md` **before** M7 spends on content breadth. One
+      child's residuals detect a gross mismatch between predicted and observed
+      difficulty; they do not calibrate `b()` and the report says so (`A-02`, R-26).
+      Verify: the fixture file committed from the Developer Mode export, referenced by
+      path in `PLAYTEST-M2.md`, with the M7 breadth PRs landing after it.
       Evidence: UNMET
-- [ ] **T-04** `[playtest]` **M6**: the same 6+ children return for two more 20-minute
-      sessions. Recorded in `PLAYTEST-M6.md`: can each child say, unprompted, what they
-      are building and why they chose it; does the chosen-chamber mechanic change what
-      they do.
+- [ ] **T-04** `[playtest]` **M6**: the same child returns for two more 20-minute
+      sessions. Recorded in `PLAYTEST-M6.md`: can he say, unprompted, what he is building
+      and why he chose it; did the chosen-chamber mechanic visibly change what he did.
+      Verify: `PLAYTEST-M6.md` committed, with the verbatim answer to the M6 question and
+      an explicit yes/no on the chamber mechanic.
       Evidence: UNMET
-- [ ] **T-05** `[playtest]` **M8**: with 6+ children, after a LOCATE contrast pair the
-      child's next attempt at the same mal-rule class is correct more often than after
-      a Stage-1 verify. If it is not, LOCATE is revised or cut. Recorded in
-      `PLAYTEST-M8.md`.
+- [ ] **T-05** `[playtest]` **M8**: his next attempt at the same mal-rule class after a
+      LOCATE contrast pair, versus after a Stage-1 verify, recorded per occurrence in
+      `PLAYTEST-M8.md`. If LOCATE shows no advantage, it is revised or cut. With one
+      child this is an observation and not a measurement, and the report states that in
+      those words rather than reporting a difference as though it were one.
+      Verify: `PLAYTEST-M8.md` committed, with one row per LOCATE-or-verify occurrence
+      and the next-attempt outcome for each.
       Evidence: UNMET
-- [ ] **T-06** Every playtest gate has a committed report and **none was waived**.
+- [ ] **T-06** Every playtest gate has a committed report and **none was waived**. There
+      is no recruitment to wait for, so a missing report is a choice.
       Verify: three reports exist and `STATUS.md` records no waiver.
       Evidence: UNMET
 

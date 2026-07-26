@@ -28,13 +28,18 @@ write it up.
 
 ### R-02 · H · Founder + Program
 **The playtest gates are the most likely thing to be waived, and waiving them voids the
-program.** Recruiting six children with documented parental consent takes weeks and has
-zero slots today. Compliance forbids remote A/B testing, so there is no substitute
-instrument: if M2 ships without children, every judgement about pacing, reaction
-budgets, the 0.80 difficulty target and "wrong must not be more fun than right" reverts
-to being a claim about children that a simulator the team wrote cannot falsify.
-**Mitigation:** recruitment starts in the bootstrap PR, not at M2.
-See [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md).
+program.** Compliance forbids remote A/B testing, so there is no substitute instrument:
+if M2 ships without a child playing it, every judgement about pacing, reaction budgets,
+the 0.80 difficulty target and "wrong must not be more fun than right" reverts to being a
+claim about children that a simulator the team wrote cannot falsify.
+**Mitigation:** [ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) removed the
+excuse — the evaluator is the founder's 10-year-old son, there is no recruitment and no
+consent lead time, so a missing report is a choice rather than a resourcing failure.
+**Residual, and it is large:** `n = 1`, observed by the parent who built the product.
+This instrument reliably detects a loop that fails and cannot establish that one
+succeeds, so every gate is written to fire on a negative and never to certify a positive.
+See [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) §3a for what is actually done about the
+bias, and R-46 for the age gap.
 
 ### R-03 · H · Program
 **Merged is not done, and this repo has the counterexample.** Journey merged
@@ -267,10 +272,16 @@ A public *alignment claim* is a separate exposure —
 reliability gate was circular: the engine computes `σ(θ − b)` and the persona answered
 from `σ(α − b)` against the same `b`, so it passed by construction.
 **Mitigation:** personas answer from a 3PL with per-child discrimination and item
-features the engine cannot observe, plus one explicit misspecification persona, plus
-real-child residuals from the M2 playtest fitted before content breadth is bought
-(`A-01`, `A-02`). **Residual:** if the M2 residual fit is skipped "until there is more
-content," the engine is unvalidated all the way to launch.
+features the engine cannot observe, plus one explicit misspecification persona
+(`A-01`), plus a real-child residual fixture from the M2 playtest fitted before content
+breadth is bought (`A-02`). **Residual, revised 2026-07-25:** the real-child fixture is
+**one child's** response data
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)). It detects a gross
+mismatch and cannot calibrate `b()`, so the weight the original plan put on it moves onto
+the misspecified personas. The engine's difficulty model is consequently validated almost
+entirely against synthetic learners, which is a weaker position than this register
+previously claimed. If the M2 fixture is skipped as well, even the gross-mismatch check
+is gone.
 
 ### R-27 · M · Engine
 **The harness is a nightly job with a named owner or it is nothing.** Corpán's measured
@@ -322,8 +333,13 @@ brass-and-lapis palette is precisely the recipe that renders as a gradient dashb
 with gear icons, and code review cannot see it.
 **Mitigation:** committed screenshots reviewed as **images** in the PR, a hostile
 reference board naming what it must not look like, three strangers who must not say
-"dashboard" or "template," and a **named** art director whose sign-off is an exit
-criterion (`Q-14`). Without a named art director this risk has no mitigation at all.
+"dashboard" or "template," and the art director's sign-off as an exit criterion
+(`Q-14`). The art director is the founder
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)), so the role is filled
+and the gate can run. **Residual:** the art director is also the person who commissioned
+the art and owns the product, so the sign-off is not independent review. The three
+strangers are the only outside eyes in the whole mitigation, which is why `Q-14` keeps
+them.
 
 ### R-33 · M · Experience
 **The character is the differentiation claim and is easy to under-build.** ~100
@@ -348,7 +364,9 @@ already assumes the strict posture, so choosing **in** costs nothing extra; choo
 ### R-35 · M · Program
 **Child-directed compliance constrains engineering, not paperwork.** Play's Families
 Policy forbids transmitting AAID/IMEI/MAC/phone number and collecting precise location
-from child users; Apple 1.3/5.1.4 bars third-party analytics and advertising outright.
+from child users; Apple 1.3/5.1.4 says apps **should not** carry third-party analytics or
+advertising and allows both only in limited, conditioned cases — the program's absolute
+ban is stricter than the guideline, deliberately.
 Every dependency addition becomes a compliance decision.
 **Mitigation:** the CI dependency audit is the only mechanical enforcement (`G-05`,
 `G-06`).
@@ -361,18 +379,37 @@ dead for that app record without Google support.
 `X-03` exists for this reason alone.
 
 ### R-37 · M · Release
-**Two founder browser clicks are unavoidable and on the critical path.** Apple
-`POST /v1/apps` returns 404 and an ASC API key gets 403 on create; the Play
-`androidpublisher` v3 discovery document has no application-create method. The ASC API
-key almost certainly needs re-minting at Admin role, and the existing Play service
-account needs an explicit per-app permission grant on the new record.
+**Two founder browser clicks are unavoidable and on the critical path.** Apple has no
+app-create operation at all — verified against OpenAPI spec 4.4.1 (966 paths, no
+`apps_createInstance`), and Apple's own docs say "create new apps on the App Store Connect
+website." Play's `androidpublisher` v3 has no method to create **your own** app record.
+**Corrected 2026-07-25:** the ASC API key does **not** need re-minting — it already
+returns 200 on the Provisioning endpoints *and* on Admin-scoped `/v1/users`. The Play
+service account does still need an explicit per-app grant.
 **Mitigation:** schedule the ~10 minutes of founder console time as an M1 task, not a
-surprise (`G-09`).
+surprise (`G-09`). `grants.create` may automate the Play half but needs the numeric
+developer account id, which is not recorded anywhere in this repo.
+**Trap, on the Google side:** `androidpublisher` v3 *does* contain
+`appstoreappsreview.createappstorehostedapp`
+(`POST .../androidpublisher/v3/appstore/{appStorePackageName}/apps:create`), which reads
+exactly like the app-create endpoint and is for **third-party Android app stores**
+registering apps they host. Do not call it.
 
 ### R-38 · L · Release
 **Play's first-release draft gate will bite.** On a never-published app the API can only
 create draft releases. This is Google's anti-abuse gate, not a code bug, and should not
 be debugged as one. **Mitigation:** budget one Console-side publish (`G-10`).
+
+### R-38b · M · Release + Founder
+**Play's 12-testers-for-14-continuous-days closed-testing gate may add two weeks to
+M1.** It applies to *personal* developer accounts created after 2023-11-13; organization
+accounts are exempt. **The Corpora account's type is unverified.** No engineering
+recovers a two-week calendar hit discovered at submission time.
+**Mitigation:** a founder console check, done early rather than at M1. Two other unknowns
+are worth the same trip: the **numeric Play developer account id** (needed if
+`grants.create` is to automate `G-09`), and the fact that the **Play Developer Reporting
+API is disabled** on GCP project `corpora1`, so the account's apps can only be probed by
+known package name, never enumerated.
 
 ### R-39 · L · Release
 **Play target API 36 is mandatory for new apps from 2026-08-31.** A Tauri template
@@ -405,12 +442,95 @@ directory.
 **The repo is public with no license.** GitHub reports `license: null` and no `LICENSE`
 file exists, while several shipped decisions rest on "it's open source anyway."
 **Mitigation:** a `LICENSE` placeholder lands in the bootstrap PR pointing at
-[ADR-0014](DECISIONS/ADR-0014-repository-license.md); the real decision is the
-founder's and counsel's.
+[ADR-0014](DECISIONS/ADR-0014-repository-license.md); dedicated research was commissioned
+2026-07-25 and a recommendation is pending; the decision is the founder's and counsel's.
 
 ### R-44 · M · Program
-**A role with no name is a gate that does not run.** Three roles in this register are
-currently unassigned, and two acceptance items (`A-19` nightly harness owner, `Q-14` art
-director) name a person as their pass condition.
+**A role with no name is a gate that does not run.** Several roles in this register are
+still unassigned, and two acceptance items name a person as their pass condition:
+`A-19` (nightly harness owner) and `Q-14` (art director). `Q-14`'s is now filled — the
+art director is the founder
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)) — and `A-19`'s is not.
 **Mitigation:** [STATUS.md](STATUS.md) carries the role→person table and is updated in
 the PR that changes it.
+
+### R-45 · M · Founder + Program
+**The monetization direction is copied from a model the founder says did not work.** His
+own words on Corpán's subscription: "that hasn't worked in the slightest." Dynawalla's
+direction — generous free tier plus a subscription for unlimited exercises and full
+access ([ADR-0013](DECISIONS/ADR-0013-monetization-model.md)) — is the same shape, so
+adopting it by default inherits the pricing and packaging assumptions that produced that
+result along with the architecture that makes it cheap to run. It is a **direction, not a
+validated design**, and no evidence pass has been done on what a parent would actually
+pay for here.
+**Mitigation:** `G-02` requires packaging and pricing to be decided and recorded before
+M9 completes, separately from the direction; ADR-0013 records the tension between an
+"unlimited exercises" upsell and [MISSION.md](MISSION.md)'s ban on play-by-appointment
+and grinding gates, so a free-tier session cap is ruled out before launch pressure makes
+it look reasonable. **Residual:** nobody is currently assigned to do that evidence pass,
+and low run-rate makes it easy to defer indefinitely — a free product with no revenue is
+not obviously failing, which is exactly how it stays undecided.
+
+### R-46 · M · Founder + Experience
+**Grades 1–2 and every pre-reader flow will ship with zero child observation.** The
+program's one evaluator is 10 years old, roughly grade 4–5
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)). Early counting, number
+formation, first addition and subtraction facts, and specifically the flows that assume a
+child who cannot read the interface — read-aloud as the primary input path, icon-only
+affordances, touch targets for smaller hands — are unobserved. Read-aloud is argued
+forward from M9 to M2 on behalf of a child nobody will watch use it. The V1 slice itself
+is covered, which is the good half of the same fact: the highest-uncertainty content sits
+squarely in the evaluator's range.
+**Mitigation:** `Q-11` becomes an adult-proxy device check that verifies the capability
+and explicitly does not evidence the child claim; the adaptive engine's placement keeps a
+young learner out of content they cannot attempt.
+**Open, and it is the founder's call — he has not made it:** accept the gap and ship on
+design heuristics; narrow the advertised grade band to what was observed (interacts with
+[ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md)); or add one younger evaluator, aged
+roughly 6–7, for a single session before M9. ADR-0017 recommends the third with the
+second as a triggered fallback at M9. Until one is chosen, no public claim about grade
+1–2 suitability should be made.
+
+### R-47 · H · Native + Release
+**The forbidden-SDK list is wider than "no ads, no analytics," and one category on it is
+routinely treated as infrastructure.** Guideline 1.3 names *device information*
+explicitly, which puts **third-party crash reporters — Crashlytics, Sentry, Bugsnag — on
+the forbidden list**. Teams add those without thinking of them as a compliance decision at
+all. The full set: ad networks; third-party analytics (Firebase Analytics, Amplitude,
+Mixpanel, GA4); attribution / MMP (AppsFlyer, Adjust, Branch); crash reporters; push SDKs
+with audience segmentation; targeted remote-config and A/B tooling; social login; and
+**any SDK that declares `com.google.android.gms.permission.AD_ID`**.
+**Mitigation:** the CI dependency audit (`G-05`) plus the four mechanical gates planned in
+[STORE.md](STORE.md) — above all the **network-egress test**, which catches a chatty
+transitive dependency that no manifest inspection would.
+**Consequence if breached:** it is not only a policy problem. A crash SDK forces a
+Diagnostics disclosure and a receipt-validation backend forces a Purchases disclosure,
+either of which downgrades the "Data Not Collected" / "nothing collected, nothing shared"
+declarations that local-first earns for free.
+**And there is no fallback:** **Play's Families Self-Certified Ads SDK program is closed
+to new applicants**, so "ship clean, add ads later if the subscription underperforms" is
+not an option that exists. That interacts directly with R-45.
+
+### R-48 · M · Founder + Program
+**Two children's-privacy obligations are already in force and neither is satisfied by
+collecting nothing.**
+
+- **COPPA's 2025 amendments required full compliance by 2026-04-22 — that date has
+  passed.** Even at "we transmit nothing," the rule wants a written **§312.10
+  retention-and-deletion policy** and a written **§312.8 security program**. A UK
+  Children's Code **DPIA** is the analogous artifact on that side.
+- **Texas SB2420 and Utah's App Store Accountability Acts are in force as of July 2026
+  and apply to *all* apps, not only child-directed ones.** They require consuming
+  store-provided age signals, using them **only** for compliance, and **deleting them
+  after use** — so consume, never persist. (Secondary sourcing; flag for counsel.)
+- Also queued: **California AADCA** partially revived by the Ninth Circuit 2026-03-12;
+  **Nebraska AADC** effective 2026-01-01; **Vermont** 2027-01-01. *(Same secondary
+  sourcing as the bullet above — specific dates and holdings are unverified against
+  primary sources and are for counsel to confirm, not to be relied on as stated.)*
+
+**Mitigation:** write the three documents while the answer is "nothing" — they are cheap
+now and they are the first artifacts a school district, a regulator or an acquirer asks
+for. The store-signal rule is an architectural constraint, not paperwork: any age signal
+that arrives must be consumed and dropped, never written to storage.
+**Residual:** nobody is assigned to any of it, and "we collect nothing" reads like an
+exemption right up until someone asks for the policy document.

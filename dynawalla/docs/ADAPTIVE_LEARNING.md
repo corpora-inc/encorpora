@@ -238,10 +238,14 @@ plus one explicit **misspecification persona** whose true `b` differs from the e
 by a structured offset. EG-5 then measures robustness, which is what it was supposed to
 do.
 
-**And a real-child anchor before content breadth is bought:** residuals from the M2
-playtest cohort are fitted against predicted `b` and committed as a fixture
-(`T-03`, `A-02`). If that fit is skipped "until there is more content," the engine is
-unvalidated all the way to launch.
+**And a real-child sanity check before content breadth is bought:** residuals from the M2
+playtest are fitted against predicted `b` and committed as a fixture
+(`T-03`, `A-02`). It is **one child's** response data
+([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)), so it detects a gross
+mismatch between predicted and observed difficulty and it does not calibrate `b()`. The
+non-circularity argument therefore rests on the misspecified personas above; this fixture
+is the check that the personas are not all wrong in the same direction. If it is skipped
+"until there is more content," even that check is gone.
 
 **Eleven personas: ten behavioural plus one misspecification.** The ten behavioural ones
 are steady-strong, struggling, fast-careless, slow-accurate, **accurate-counter-on**,

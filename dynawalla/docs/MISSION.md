@@ -3,12 +3,6 @@
 Status: discovery complete, nothing built. See [STATUS.md](STATUS.md).
 Index: [README.md](README.md).
 
-> Links to `GATES.md`, `CURRICULUM.md`, `ADAPTIVE_LEARNING.md`, `ARCHITECTURE.md`,
-> `EXPERIENCE_DESIGN.md`, `PACK_SYSTEM.md`, `RELEASE_ENGINEERING.md`, `STORE.md` and
-> `TEST_STRATEGY.md` resolve once the reference-set PR lands. The two were split so
-> neither diff is truncated by the adversarial reviewer; delete this note in the
-> follow-up.
-
 ## What it is
 
 A mathematics practice product for children, shipping as `inc.corpora.dynawalla` on iOS,
@@ -73,8 +67,12 @@ These are product constraints, not aspirations. Each has an enforcement mechanis
 - Name a child's defect in learner-facing copy. Mal-rule labels are internal; feedback
   names the correct idea. A lint enforces it.
 - Send behavioural data anywhere. All instrumentation is on-device. No third-party
-  analytics SDK, no advertising SDK — enforced by a CI dependency audit that is
-  cross-checked against the submitted Play Data safety declaration.
+  analytics SDK, no advertising SDK, no attribution SDK — and **no third-party crash
+  reporter**, which Guideline 1.3 forbids by naming device information explicitly and
+  which is the one people add without noticing ([RISKS.md](RISKS.md) R-47). Enforced by a
+  CI dependency audit cross-checked against the submitted Play Data safety declaration.
+  Because both stores define "collect" as transmitting off-device, this earns Apple's
+  **"Data Not Collected"** and Play's **"nothing collected, nothing shared"** outright.
 
 **We will:**
 
@@ -92,11 +90,15 @@ These are product constraints, not aspirations. Each has an enforcement mechanis
   performance relative to medium/high. Feedback must be contingent, not loud.
 
 The compliance regime makes this partly structural rather than voluntary: Apple's Kids
-Category (1.3 / 5.1.4) bars third-party analytics and behavioural advertising, and the
+Category (1.3 / 5.1.4) says apps **should not** include third-party analytics or
+behavioural advertising and permits neither except in limited, conditioned cases — our
+posture of *none, ever* is stricter than the rule — and the
 UK Children's Code restricts nudge techniques and using children's data to keep them
 on a platform. **The practical consequence is that the feel cannot be A/B tested
-remotely.** In-person playtesting is therefore the binding instrument, not a nicety —
-which is why [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) starts in the bootstrap.
+remotely.** Direct observation is therefore the binding instrument, not a nicety — see
+[PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md). That instrument is one child, the founder's
+10-year-old son, and the honest account of what it can and cannot support is
+[ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md).
 
 ## Locked founder decisions
 
@@ -110,14 +112,26 @@ which is why [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) starts in the bootstra
 | 6 | Bundle id `inc.corpora.dynawalla` (note: `inc.` — Corpán is `com.corpora.corpan`, and both conventions now coexist permanently). |
 | 7 | Ancient-futurist setting: Byzantine / Persian / Fertile Crescent; astrolabes, gears, automata, mechanical computers. Sourced from al-Jazari's 1206 *Book of Knowledge of Ingenious Mechanical Devices* and the Banū Mūsā's 9th-century *Book of Ingenious Devices*. No steampunk goggles, no gears-as-decoration. |
 
-## Open founder decisions
+## Founder decisions, recorded 2026-07-25
 
-Eight decisions are the founder's and are not made. Each has an ADR with status
-`Proposed — awaiting founder` stating the options and their consequences. Three are on
-the critical path: the Kids Category posture is a one-way door that must be decided
-before M1's first store submission; the playtest cohort plus a named art director are
-people the plan cannot supply for itself; and the V1 scope cut narrows the founder-stated
-grade range, so it is not the plan's to ratify. See [DECISIONS.md](DECISIONS.md).
+Four of the eight ADR-level open decisions were answered by the founder and are recorded
+in their ADRs from his own words: human evaluation resourcing
+([0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) — one child evaluator, his
+10-year-old son; the founder is the art director), developer-account topology
+([0015](DECISIONS/ADR-0015-developer-account-topology.md) — same accounts as Corpán),
+monetization direction ([0013](DECISIONS/ADR-0013-monetization-model.md) — generous free
+tier plus a subscription, packaging still open), and the Kids Category engineering
+posture ([0001](DECISIONS/ADR-0001-kids-category-posture.md) — no third-party ads,
+analytics or SDKs, ever; a parental gate on every link-out; the category election itself
+deferred to submission).
+
+**Several remain open, and this file deliberately does not list them.** Three documents
+previously carried three different counts, which is how a founder ends up not knowing a
+decision is waiting on him. **[STATUS.md](STATUS.md) is the single source of truth for
+which founder decisions are open and when each one bites** — including the ones that live
+*inside* an otherwise-decided ADR, such as the Kids Category election and age band
+(`G-01`) and monetization packaging (`G-02`). [DECISIONS.md](DECISIONS.md) indexes the
+ADRs; STATUS.md says what is outstanding.
 
 ## How this product is graded
 

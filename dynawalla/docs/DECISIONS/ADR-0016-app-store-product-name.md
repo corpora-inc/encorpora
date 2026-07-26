@@ -27,6 +27,61 @@ the word-of-mouth.
 
 Confirm the product name, or supply a different one, before M1 creates the app records.
 
+**Founder's expectation, 2026-07-25:**
+
+> "I doubt anyone has Dynawalla but you should be able to check."
+
+So the working name stands unless a check says otherwise, and the founder has explicitly
+asked for the check rather than asserting the name is clear.
+
+## What the checks found — 2026-07-25
+
+The founder's expectation holds up. The ADR stays **Proposed** anyway, because two of the
+findings are counsel questions and one is a hygiene problem that should be fixed before
+the name carries a children's product.
+
+**Identifier availability**
+
+- `inc.corpora.dynawalla`: **0 matches** across Apple bundle ids; **404** on Play.
+- **Honest limit:** both queries are **account-scoped**. Neither store exposes a *global*
+  availability check, so a third party could be holding the identifier and we would only
+  discover it at registration.
+- **App Store product-name availability cannot be tested read-only** on either store. It
+  is checked at reservation time, which is the moment it stops being cheap.
+
+**Third-party use of "Dynawalla": none found anywhere**
+
+0 apps via iTunes Search; no companies; npm 404; PyPI 404; every major TLD free; no
+`DYNAWALLA` trademark. The live `DYNAWALL` registration 7020156 is Class 6 construction
+materials — no goods overlap.
+
+**We already own the name, and it has baggage**
+
+The founder owns the matching domain (registered 2015, dormant, expires 2027-07-15). Two
+things to fix before the name carries a product for children:
+
+1. **Dangling DNS records on a domain we own need clearing.** Details are deliberately
+   **not committed to this public repository** — publishing an unremediated hosting
+   misconfiguration is publishing the exploit. The founder has the specifics out of band;
+   this line exists so the work is tracked, not so it is reproducible. Remove this note
+   once the records are cleared.
+2. **A public repo tying the name to dietary-supplement health claims** should be archived
+   or scrubbed. It is one search away from a product aimed at seven-year-olds.
+
+**Two collision vectors for a founder-and-counsel call**
+
+- **Dynamo Maths** (`dynamomaths.co.uk`) — a live UK children's mathematics intervention,
+  ages 6–11, dyscalculia focus. Shared `Dyna-` prefix, same customers, same subject.
+  **This is the one an attorney circles.**
+- **Physics Wallah** won an ex-parte Delhi High Court injunction asserting rights over a
+  *"family of trademarks using the suffix 'wallah'"*. Relevant **only if India is a launch
+  market** — and worth knowing before, not after, that decision.
+
+**Caveat, stated plainly:** USPTO, Justia, TMview and WIPO all bot-blocked the search.
+This is **strong negative evidence gathered from a mirror, not a first-party clearance
+search.** A paid clearance search before filing remains advisable, and this ADR should
+not be read as clearing the name.
+
 ## Consequences
 
 - The bundle id does not have to match the display name and will not be changed by this

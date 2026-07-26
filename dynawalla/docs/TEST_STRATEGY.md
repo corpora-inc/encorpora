@@ -101,11 +101,15 @@ Stated explicitly, because the failure mode of a heavily-gated program is believ
 gates cover everything.
 
 1. **Whether it is any good.** No automated check distinguishes a compelling loop from a
-   competently-built drill. Only the playtest cohort can, and compliance forbids the
-   remote alternative.
+   competently-built drill. Only a real child can, compliance forbids the remote
+   alternative, and the program has exactly one child evaluator
+   ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)). So this is not merely
+   untested by the harness — it is observed at `n = 1`, which detects a loop that fails
+   and cannot establish that one succeeds.
 2. **Whether it looks right.** Code review cannot see that the observatory renders as a
-   gradient dashboard with gear icons. The screenshot gate plus a named art director is
-   the entire instrument.
+   gradient dashboard with gear icons. The screenshot gate plus the art director's
+   sign-off is the entire instrument, and the art director is the founder — so the
+   three-strangers verbatims are the only outside eyes on it.
 3. **Whether a wrong answer was diagnosed usefully.** Bug recall on a synthetic persona
    measures whether the matcher fires; it says nothing about whether the child understood
    the contrast pair. `T-05` is the measurement.

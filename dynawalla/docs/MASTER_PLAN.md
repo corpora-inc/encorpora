@@ -166,12 +166,15 @@ minutes of founder time in two consoles. See [STORE.md](STORE.md).
 
 ---
 
-## M2 — The vertical slice, in front of children
+## M2 — The vertical slice, in front of a child
 
 **Goal.** Prove or kill the actual thesis: that a child gets something here they cannot
 get from a drill app. One skill cluster — **subtraction with regrouping across zero** —
 end to end: locale-correct entry, three mal-rules, the Stage-2 LOCATE contrast pair,
-visible construction, the character. And six real children.
+visible construction, the character. And a real child playing it, unhelped, on a store
+build ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)). The slice was
+chosen before the evaluator was, and it happens to sit squarely in his range — the
+highest-uncertainty content in V1 is the content that can actually be observed.
 
 **Depends on:** M1.
 
@@ -200,7 +203,9 @@ borrow-across-zero and serves a contrast pair within 3 cards" moved **up** to he
 **Why read-aloud is here and not at M9.** Grade-1 content ships at M4. A six-year-old
 cannot read the prompts. Read-aloud is the input method, not an accessibility nicety;
 without it, every pacing target and persona gate for grades 1–2 is measured against a
-child who does not exist.
+child who does not exist. It also ships with **no child observation behind it** — the
+program's one evaluator is 10 — so `Q-11` is an adult-proxy device check and the grade
+1–2 gap is carried openly as R-46 rather than assumed away.
 
 **Why `NumberFormat` is here and not at M9.** Math notation is content. `1.000` means
 one thousand to a German child and one to an English one, and a French child writing
@@ -213,7 +218,9 @@ the playtest gates `T-01`, `T-02`, `T-03`.
 
 **This milestone has kill/revise authority over everything after it.** If the M2
 playtest says the LOCATE pair reads as punishment, the plan changes here, before
-content breadth is bought.
+content breadth is bought. One child saying that is enough to trigger the revision; one
+child not saying it is not enough to prove the opposite, and the report is written that
+way round.
 
 ---
 
@@ -359,7 +366,11 @@ behind the art PRs, the world ships and then has to be rebuilt.
 **Why the art gate is images, not code.** Code review cannot see that the observatory
 looks like a Bootstrap admin panel. Procedural girih plus a brass-and-lapis palette is
 precisely the recipe that renders as a gradient dashboard with gear icons. The committed
-screenshots and a **named** art director are the only instruments.
+screenshots and the art director are the only instruments. The art director is the
+founder ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)), so the sign-off
+blocks on nobody — which also means the three-strangers verbatims in `Q-14` are the only
+part of the gate that is not the founder judging his own product, and they are therefore
+not optional.
 
 **Exit criteria:** `P-04`, `P-05`, `P-06`, `P-07`, `P-08`, `P-10`, `Q-02`, `Q-06`,
 `Q-14`, and the playtest gate `T-04`.
@@ -442,6 +453,13 @@ without surveilling, and a child who cannot see well or cannot yet read.
 | 9.5 | i18n fill: all five locales complete including every character fragment and every prompt template. **Agents translate directly**; do not resurrect the retired translation scripts. |
 | 9.6 | Parent controls: disable speed rewards, set/override grade, session-length preference. |
 | 9.7 | `ar` / `hi` / `zh-Hans` groundwork behind the `NumberFormat` layer: Arabic-Indic numbering-system support and LTR-forced numerals inside RTL, with the numbering-system choice recorded in [ADR-0007](DECISIONS/ADR-0007-launch-locales.md). Shipping those locales is V1.1. |
+
+**The pre-reader half of that goal ships unobserved.** `Q-11` is an adult-proxy device
+check, not a child observation, because the program's one evaluator is 10 (R-46). M9 is
+the last point at which the alternative — one younger evaluator for one session — is
+still cheap; after it, the only honest options are shipping on heuristics or narrowing the
+advertised grade band. [ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md)
+recommends; the founder decides.
 
 **Exit criteria:** `A-17`, `Q-08`, `Q-09`, `Q-11`, `Q-12`, `Q-13`.
 
