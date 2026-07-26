@@ -42,13 +42,13 @@ export interface Planner {
    * The next **batch**, and the draw cursor it consumed.
    *
    * A whole batch, never a card: the batch is the unit the engine allocates in.
-   * Its slot order carries the pool quota — a repair capped at a quarter, one
-   * stretch item, a three-card blocked debut — and a caller that asks for one or
-   * two cards and re-plans gets the head of that order every time, which is
-   * FRONTIER. Measured on a day-91 learner, the planned batch is
-   * `FRONTIER,FRONTIER,FRONTIER,FRONTIER,DUE_FACT,DUE_FACT,REPAIR,FLUENCY` and the
-   * old loop served slots 0–1 of it, so a child never received a fluency burst, a
-   * review card or a planned repair, and the debut was truncated to one card.
+   * Its slot order carries the pool quota — the debut, a repair capped at a
+   * quarter, a fluency burst, a review card — and `slotPools` puts every one of
+   * them behind the leading FRONTIER slots, so a caller that asks for one or two
+   * cards and re-plans gets FRONTIER every time. Measured on this catalog: the
+   * first batch of a child's life is `FRONTIER,NEW,FRONTIER,…` and a warm one is
+   * `FRONTIER,…,FLUENCY`; the old loop served slots 0–1 of each, so a child never
+   * received a fluency burst, a review card or a planned repair at all.
    *
    * `cursor` is not optional bookkeeping. A card's seed is
    * `drawInt(seed, rngCursor + slot)`, so a caller that drops it serves the same
