@@ -12,10 +12,15 @@ failure, a malformed SHA, an unresolvable merge base, a lens API error, a model
 reply we cannot parse, a finding whose severity is missing or unreadable, or a
 diff we could not fully cover.
 
-The ONE deliberate carve-out: a finding whose severity is a NON-EMPTY string
-that matches no known alias ("spicy") warns instead of blocking — that is a
-readable answer we merely do not recognise, and blocking on it would let a
-typo wedge the queue. A missing, null, or empty severity is unreadable input
+SEVERITY is matched per TOKEN, at every position, blocking level first: "high",
+"very high", "severity: high", "medium-high", "critical", "P0", "urgent" and a
+missing / null / letterless severity all block. See BLOCKING_ALIASES for the
+full surface and for what is deliberately left out.
+
+The ONE deliberate carve-out: a finding whose severity is a readable string in
+which NO token names a level ("spicy", "bug") warns instead of blocking — that
+is an answer we merely do not recognise, and blocking on it would let a typo
+wedge the queue. A missing, null, or letterless severity is unreadable input
 and blocks, like every other unreadable reply.
 
 RANGE. The reviewed range is always `merge-base(base, head)..head`. The event's
@@ -46,6 +51,7 @@ Env:
   MAX_CHUNK_CHARS     per-chunk character budget (default 200000)
 """
 
+import http.client
 import json
 import os
 import random
@@ -93,22 +99,53 @@ REQUEST_ATTEMPTS = 4
 # Token-rate limits reset over roughly a minute, so 2s/4s could never clear
 # one: every attempt landed inside the same window and the 429 became a lens
 # error, i.e. a repo-wide block. 8/16/32 (+jitter) spans a rate-limit window.
-# A server-supplied retry-after / x-ratelimit-reset-* always wins over this.
+#
+# This is a FLOOR, not a default. A server hint can only ever make the wait
+# LONGER (see _post). Treating the hint as a replacement was a live wedge: the
+# providers attach x-ratelimit-reset-* to essentially every response, healthy
+# buckets read "0s", and `hint if hint is not None else floor` therefore
+# collapsed the whole backoff to zero on any 5xx — four attempts in
+# milliseconds, then a lens error, then a red required check on every PR.
 RETRY_BACKOFF_S = 8
-RETRY_MAX_SLEEP_S = 60
-RETRY_STATUS = {408, 409, 429, 500, 502, 503, 504}
+# Seconds of budget held back so the run can still report a legible error
+# instead of being killed by the job's timeout-minutes.
+RETRY_BUDGET_MARGIN_S = 5
+# 529 is Anthropic's documented overloaded_error and is retryable; treating it
+# as permanent would make provider overload an instant repo-wide block. 522/524
+# are Cloudflare connection/origin timeouts and are equally transient.
+RETRY_STATUS = {408, 409, 429, 500, 502, 503, 504, 522, 524, 529}
 
 # Wall-clock budget for the whole review. Kept under the job's timeout-minutes
 # so an overloaded provider produces a legible "budget exhausted" error instead
 # of the runner killing the job, and so retries can never outlive the job.
 REVIEW_BUDGET_S = 20 * 60
 
-# Severity strings that block the merge, after normalization. "major" is a
+# Severity tokens that block the merge, after normalization. "major" is a
 # mainstream severity word — leaving it out was the last fail-open hole: a
 # model reporting a real defect as `"severity": "major"` exited 0.
-BLOCKING_ALIASES = {"critical", "blocker", "block", "major", "severe", "fatal"}
+#
+# The rest are the top-of-ladder vocabulary a model reaches for when it ignores
+# the high|medium|low enum: incident grades (p0/p1/sev0/sev1/s0/s1), the
+# Microsoft/Red Hat ladder (critical > important > moderate > low, so
+# "important" outranks the already-medium "moderate"), the log-level ladder
+# (error > warning, and "warning" is already medium here), and plain English
+# maxima. Each one is a REPORTED defect the model graded at the top of whatever
+# scale it used; letting it exit 0 is the same fail-open as "major" was.
+#
+# Deliberately NOT blocking: "bug", "defect", "issue", "regression" — those name
+# a KIND of finding, not its grade, and a low-severity bug is still a bug. They
+# fall through to "unknown" and warn.
+BLOCKING_ALIASES = {
+    "critical", "blocker", "block", "blocking", "major", "severe", "fatal",
+    "urgent", "showstopper", "breaking", "serious", "important", "error",
+    "mustfix", "p0", "p1", "sev0", "sev1", "s0", "s1",
+}
 MEDIUM_ALIASES = {"medium", "med", "moderate", "warning", "warn"}
 LOW_ALIASES = {"low", "minor", "info", "informational", "nit", "nitpick", "trivial"}
+# A blocking token immediately after one of these is negated, so "low
+# (non-blocking)" stays low instead of wedging the queue on the word it used to
+# say it is safe.
+NEGATIONS = {"no", "not", "non", "never"}
 
 # Sentinel for "the key was absent", which is different from "the value was a
 # string we do not recognise". Absent is unreadable input → blocks.
@@ -209,6 +246,32 @@ FINDINGS_SCHEMA = {
 
 class ReviewError(Exception):
     """Anything that makes a green verdict unsafe. Always exits non-zero."""
+
+
+class TransientError(RuntimeError):
+    """A provider-side failure worth retrying that arrives inside a 200 body.
+
+    A streamed response can report `overloaded_error` as an SSE event rather
+    than an HTTP status, so status-code matching alone would treat provider
+    overload as permanent.
+    """
+
+
+# Retried in _post. Deliberately narrow: urllib.error.URLError, socket timeouts
+# and connection resets are all OSError; RemoteDisconnected/IncompleteRead are
+# http.client.HTTPException. A JSONDecodeError (ValueError) from the reader is
+# NOT here — a malformed body is deterministic, and retrying it four times only
+# burns budget the next rate limit will need.
+RETRYABLE_ERRORS = (OSError, http.client.HTTPException, TransientError)
+
+# Anthropic stream `error` event types that are worth another attempt. Anything
+# else (invalid_request_error, authentication_error, …) is permanent.
+TRANSIENT_STREAM_ERRORS = {
+    "overloaded_error",
+    "api_error",
+    "rate_limit_error",
+    "timeout_error",
+}
 
 
 # ------------------------------------------------------------------- deadline
@@ -549,12 +612,31 @@ def parse_duration(value):
     return sum(float(n) * _DURATION_UNITS[u] for n, u in parts)
 
 
+def parse_millis(value):
+    """Parse retry-after-ms ('1500' → 1.5s). None if unparseable."""
+    text = (value or "").strip()
+    if not text:
+        return None
+    try:
+        return float(text) / 1000.0
+    except ValueError:
+        return None
+
+
 def retry_delay_from(headers):
-    """Server-directed retry delay in seconds, or None.
+    """Longest server-directed retry delay in seconds, or None.
 
     A token-rate 429 is answered by the provider with the time until the window
     resets. Ignoring it and guessing a backoff is how a transient rate limit
     became a repo-wide block.
+
+    Takes the MAX of every parseable hint, not the first. The classic RPM-429
+    carries `{reset-tokens: "0s", reset-requests: "45s"}` — the token bucket is
+    fine, the request bucket is what is throttling us — and first-wins returned
+    0.0 and threw away the only number that mattered.
+
+    The value is a hint about the earliest useful retry, never a licence to
+    wait less than the exponential floor; _post takes the max of the two.
     """
     if not headers:
         return None
@@ -565,11 +647,11 @@ def retry_delay_from(headers):
         except AttributeError:
             return None
 
+    delays = [parse_millis(get("retry-after-ms"))]  # OpenAI's ms spelling
     for name in ("retry-after", "x-ratelimit-reset-tokens", "x-ratelimit-reset-requests"):
-        seconds = parse_duration(get(name))
-        if seconds is not None:
-            return max(0.0, seconds)
-    return None
+        delays.append(parse_duration(get(name)))
+    known = [max(0.0, d) for d in delays if d is not None]
+    return max(known) if known else None
 
 
 def _json_reader(resp):
@@ -580,10 +662,24 @@ def _post(url, headers, payload, reader=_json_reader):
     """POST JSON with bounded retries on transient failures.
 
     Retries matter for fail-closed correctness: a lens error now blocks the
-    merge, so a 429 that is not survived is a repo-wide outage. The backoff
-    spans a rate-limit window and always defers to a server-supplied
-    retry-after. Every wait is checked against the review budget so retries can
-    never outlive the job and turn a slow provider into a timeout kill.
+    merge, so a 429 that is not survived is a repo-wide outage.
+
+    The wait is `max(server hint, exponential floor)`, bounded only by what is
+    left of the review budget:
+
+      * MAX, not "hint wins" — the hint is 0s whenever the bucket is healthy,
+        which is most of the time, and letting it win collapsed the backoff to
+        nothing on any transient 5xx.
+      * MAX, not "floor wins" — a real `retry-after: 300` is the provider
+        telling us the window is five minutes; retrying sooner is a guaranteed
+        second failure.
+      * bounded by the BUDGET, not by a 60s constant — clamping a 6-minute
+        window down to 60s spent three attempts inside the same window and
+        gave up with most of the budget unused.
+
+    Only transient transport failures are retried. A malformed body
+    (JSONDecodeError from the reader) is deterministic: retrying it four times
+    just burns the budget that a genuine rate limit needs.
     """
     body = json.dumps(payload).encode()
     last = None
@@ -606,16 +702,19 @@ def _post(url, headers, payload, reader=_json_reader):
             if e.code not in RETRY_STATUS:
                 raise last from e
             server_delay = retry_delay_from(getattr(e, "headers", None))
-        except Exception as e:  # noqa: BLE001
+        except RETRYABLE_ERRORS as e:
+            # Connection reset, DNS, read timeout, half-closed socket, and the
+            # provider-side stream error events classified as transient.
             last = e
             server_delay = None
         if attempt + 1 >= REQUEST_ATTEMPTS:
             break
-        delay = server_delay if server_delay is not None else RETRY_BACKOFF_S * (2**attempt)
-        delay = min(delay, RETRY_MAX_SLEEP_S) + random.uniform(0, 1)
-        if delay >= _time_left():
-            break
-        time.sleep(delay)
+        delay = max(server_delay or 0.0, RETRY_BACKOFF_S * (2**attempt))
+        delay += random.uniform(0, 1)
+        room = _time_left() - RETRY_BUDGET_MARGIN_S
+        if room <= 0:
+            break  # no room to wait AND still report; fail legibly instead
+        time.sleep(min(delay, room))
     raise last
 
 
@@ -648,7 +747,10 @@ def read_anthropic_stream(resp):
         elif etype == "message_delta":
             stop = (event.get("delta") or {}).get("stop_reason") or stop
         elif etype == "error":
-            raise RuntimeError(f"anthropic stream error: {event.get('error')}")
+            err = event.get("error") or {}
+            kind = str(err.get("type") or "") if isinstance(err, dict) else ""
+            exc = TransientError if kind in TRANSIENT_STREAM_ERRORS else RuntimeError
+            raise exc(f"anthropic stream error: {err}")
     return "".join(text), stop
 
 
@@ -814,30 +916,64 @@ def review_chunk(provider, key, model, name, instruction, chunk, index, total):
 # ------------------------------------------------------------------- severity
 
 
+def _severity_tokens(value):
+    """Lowercase alphanumeric tokens of a severity value.
+
+    Digits are KEPT so incident grades survive tokenizing: stripping them
+    turned "p0" into "p" and "sev1" into "sev", which matched nothing.
+    """
+    return re.sub(r"[^a-z0-9]+", " ", str(value).lower()).split()
+
+
+def _is_readable_severity(value):
+    """A severity we can even attempt to read: present, and has letters in it.
+
+    "", "   ", "!!!" and "123" carry no level at all — that is unreadable
+    input, which fails closed, not an unrecognized word, which warns.
+    """
+    if value is MISSING or value is None:
+        return False
+    return bool(re.search(r"[a-z]", str(value).lower()))
+
+
 def normalize_severity(value):
     """Map a severity to high / medium / low / unknown.
 
     The old code compared the raw string to "high" exactly, so "critical",
-    "blocker", "High severity" and "HIGH " all sailed through the gate.
+    "blocker", "High severity" and "HIGH " all sailed through the gate. The
+    first fix only looked at the FIRST token, which still let a reported
+    finding graded "very high", "severity: high" or "P0" exit 0.
+
+    EVERY token is scanned now, blocking level first, so any position of a
+    top-of-ladder word blocks: "very high", "medium-high" and "high, but easy
+    to fix" all resolve to high. When a value carries two levels the higher one
+    wins — the fail-closed direction. The one exception is negation: a blocking
+    token directly after "no"/"not"/"non"/"never" is not a grade, so
+    "low (non-blocking)" stays low.
 
     Unreadable input — the key absent (MISSING), null, or a string with no
     letters in it — normalizes to "high" and BLOCKS. A model that reports a
     defect without a severity we can read has not told us the finding is safe
     to merge, and the whole contract of this script is that unreadable means
-    blocked. Only a non-empty, readable string that matches no alias falls
-    through to "unknown", which warns.
+    blocked. Only a non-empty, readable string in which NO token names a level
+    falls through to "unknown", which warns instead of blocking, so that one
+    unrecognized word cannot wedge every merge in the repo.
     """
-    if value is MISSING or value is None:
+    if not _is_readable_severity(value):
         return "high"
-    cleaned = re.sub(r"[^a-z]+", " ", str(value).lower()).strip()
-    if not cleaned:
+    tokens = _severity_tokens(value)
+    for i, token in enumerate(tokens):
+        if i and tokens[i - 1] in NEGATIONS:
+            continue
+        if token.startswith("high") or token in BLOCKING_ALIASES:
+            return "high"
+    # Hyphenated/spaced spellings of a single alias ("must-fix", "show stopper")
+    # tokenize into halves that match nothing on their own.
+    if "".join(tokens) in BLOCKING_ALIASES:
         return "high"
-    first = cleaned.split(" ")[0]
-    if first.startswith("high") or first in BLOCKING_ALIASES:
-        return "high"
-    if first in MEDIUM_ALIASES:
+    if any(t in MEDIUM_ALIASES for t in tokens):
         return "medium"
-    if first in LOW_ALIASES:
+    if any(t in LOW_ALIASES for t in tokens):
         return "low"
     return "unknown"
 
@@ -848,10 +984,7 @@ def finding_severity(finding):
 
 def has_unreadable_severity(finding):
     """True when the finding blocked because we could not read its severity."""
-    value = finding.get("severity", MISSING)
-    if value is MISSING or value is None:
-        return True
-    return not re.sub(r"[^a-z]+", " ", str(value).lower()).strip()
+    return not _is_readable_severity(finding.get("severity", MISSING))
 
 
 SEV_ORDER = {"high": 0, "medium": 1, "low": 2, "unknown": 3}
@@ -994,13 +1127,28 @@ def review(provider, key, model, chunks, workers):
     return findings, errors, len(jobs)
 
 
-def build_audit(rng, diff, chunks, budget, oversized, hard_split, provider, model):
+def build_audit(
+    rng, diff, chunks, budget, oversized, hard_split, provider, model, reviewed=True
+):
+    """Render the forensic line.
+
+    `reviewed=False` is the lens-failure path. The coverage clause used to be
+    unconditional, so the most confusing red the gate produces said "the diff
+    was not fully reviewed" and then, two lines later, "every lens read 100% of
+    that diff" — a false record on exactly the run an operator has to trust.
+    Chunk coverage and review coverage are different claims; only the first one
+    holds when a lens fails.
+    """
     files = len(_FILE_START_RE.findall(diff))
+    coverage = (
+        "every lens read 100% of that diff, 0 chars dropped"
+        if reviewed
+        else "0 chars dropped by chunking, but the lens reviews above did not complete"
+    )
     audit = (
         f"_Reviewed `{rng.spec}` ({rng.describe()}) — {files} file(s), "
-        f"{len(diff)} chars, {len(chunks)} chunk(s) of <= {budget}; every lens read "
-        f"100% of that diff, 0 chars dropped · {provider} ({model}) · "
-        f"{len(LENSES)} lenses._"
+        f"{len(diff)} chars, {len(chunks)} chunk(s) of <= {budget}; {coverage}"
+        f" · {provider} ({model}) · {len(LENSES)} lenses._"
     )
     if oversized:
         audit += (
@@ -1053,9 +1201,12 @@ def main():
         print(f"::error::invalid numeric configuration: {e}")
         return 1
 
-    audit = build_audit(
-        rng, diff, chunks, budget, oversized, hard_split, provider, model
-    )
+    def audit_for(reviewed=True):
+        return build_audit(
+            rng, diff, chunks, budget, oversized, hard_split, provider, model, reviewed
+        )
+
+    audit = audit_for()
     print(audit)
 
     if not diff.strip():
@@ -1096,7 +1247,7 @@ def main():
                     "could not run. See the job log for the per-lens "
                     "`::warning::` lines.",
                     "",
-                    audit,
+                    audit_for(reviewed=False),
                 ]
             )
         )

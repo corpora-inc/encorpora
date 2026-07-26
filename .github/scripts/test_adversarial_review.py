@@ -154,6 +154,48 @@ def test_blocking_severities(value):
     assert ar.normalize_severity(value) == "high"
 
 
+@pytest.mark.parametrize(
+    "value",
+    ["very high", "severity: high", "Severity: HIGH", "medium-high", "high/critical",
+     "quite serious", "1 - critical"],
+)
+def test_severity_is_matched_at_every_token_not_just_the_first(value):
+    """Scanning only the first token meant "High severity" blocked but "very
+    high" did not: it normalized to unknown and exited 0 on a REPORTED finding.
+    Two levels in one string resolve to the higher — the fail-closed direction."""
+    assert ar.normalize_severity(value) == "high"
+
+
+@pytest.mark.parametrize(
+    "value",
+    ["urgent", "P0", "p1", "sev0", "S1", "must-fix", "showstopper", "breaking",
+     "important", "serious", "error", "blocking"],
+)
+def test_top_of_ladder_vocabulary_blocks(value):
+    """Documented decision (see BLOCKING_ALIASES): a model that ignores the
+    high|medium|low enum and grades a REPORTED defect at the top of some other
+    scale has not said the diff is safe to merge."""
+    assert ar.normalize_severity(value) == "high"
+
+
+@pytest.mark.parametrize("value", ["bug", "defect", "issue", "regression", "spicy"])
+def test_kind_words_are_not_grades_and_only_warn(value):
+    """The other half of that decision, stated so the hole is explicit: these
+    name what a finding IS, not how bad it is, so they warn rather than block."""
+    assert ar.normalize_severity(value) == "unknown"
+
+
+@pytest.mark.parametrize(
+    "value,expected",
+    [("low (non-blocking)", "low"), ("medium, not critical", "medium"),
+     ("not high", "unknown")],
+)
+def test_a_negated_blocking_word_is_not_a_blocking_grade(value, expected):
+    """"low (non-blocking)" is the model saying it is SAFE. Blocking on the
+    substring would wedge the queue on the very words that mean the opposite."""
+    assert ar.normalize_severity(value) == expected
+
+
 @pytest.mark.parametrize("value", [ar.MISSING, None, "", "   ", "!!!", "123"])
 def test_unreadable_severity_blocks(value):
     """An omitted or unreadable severity is unreadable INPUT, and unreadable
@@ -194,18 +236,25 @@ def test_parse_duration(raw, expected):
     assert ar.parse_duration(raw) == pytest.approx(expected)
 
 
-def test_retry_delay_prefers_server_headers():
+def test_retry_after_ms_is_milliseconds_not_seconds():
+    """OpenAI's preferred spelling on some 429s. Reading '1500' as 1500 SECONDS
+    would blow the whole review budget on one retry."""
+    assert ar.retry_delay_from({"retry-after-ms": "1500"}) == 1.5
+
+
+def test_retry_delay_takes_the_max_of_the_headers():
+    """The classic RPM-429 shape. First-wins returned 0.0 from the healthy token
+    bucket and threw away the 45s that was actually throttling us."""
     assert ar.retry_delay_from({"retry-after": "45"}) == 45.0
     assert ar.retry_delay_from({"x-ratelimit-reset-tokens": "6m0s"}) == 360.0
+    assert (
+        ar.retry_delay_from(
+            {"x-ratelimit-reset-tokens": "0s", "x-ratelimit-reset-requests": "45s"}
+        )
+        == 45.0
+    )
     assert ar.retry_delay_from({}) is None
     assert ar.retry_delay_from(None) is None
-
-
-def test_backoff_spans_a_rate_limit_window():
-    """2s/4s could never outlast a token-per-minute window, so a 429 became a
-    lens error, i.e. a repo-wide block."""
-    total = sum(ar.RETRY_BACKOFF_S * (2**i) for i in range(ar.REQUEST_ATTEMPTS - 1))
-    assert total >= 55
 
 
 class _Resp(io.BytesIO):
@@ -218,10 +267,11 @@ class _Resp(io.BytesIO):
 
 def _stub_urlopen(monkeypatch, sequence):
     """Serve `sequence` items in order: an Exception is raised, else returned."""
-    seen = {"n": 0}
+    seen = {"n": 0, "requests": []}
 
     def fake(req, timeout=None):
         seen["n"] += 1
+        seen["requests"].append(req)
         item = sequence[min(seen["n"] - 1, len(sequence) - 1)]
         if isinstance(item, Exception):
             raise item
@@ -231,10 +281,28 @@ def _stub_urlopen(monkeypatch, sequence):
     return seen
 
 
-def _http_429(retry_after):
+def _http(status, headers=None):
     return urllib.error.HTTPError(
-        "https://example/v1", 429, "Too Many Requests", {"retry-after": retry_after}, None
+        "https://example/v1", status, "err", headers or {}, None
     )
+
+
+def _http_429(retry_after):
+    return _http(429, {"retry-after": retry_after})
+
+
+def _drive_post(monkeypatch, sequence, deadline=None):
+    """Run the REAL _post against a stub transport. Returns (attempts, sleeps)."""
+    slept = []
+    monkeypatch.setattr(ar.time, "sleep", slept.append)
+    monkeypatch.setattr(ar.random, "uniform", lambda a, b: 0.0)
+    monkeypatch.setattr(ar, "_DEADLINE", time.monotonic() + (deadline or 20 * 60))
+    seen = _stub_urlopen(monkeypatch, sequence)
+    try:
+        ar._post("https://example/v1", {}, {})
+    except Exception:  # noqa: BLE001  — the caller asserts on the waits
+        pass
+    return seen["n"], slept
 
 
 def test_post_waits_the_server_supplied_retry_after(monkeypatch):
@@ -255,6 +323,56 @@ def test_post_falls_back_to_exponential_backoff_without_headers(monkeypatch):
     assert slept == [float(ar.RETRY_BACKOFF_S)]
 
 
+def test_backoff_spans_a_rate_limit_window(monkeypatch):
+    """Drives the REAL _post. The previous version of this test recomputed the
+    constants and asserted on the arithmetic, so it passed while _post itself
+    slept 0.0 three times."""
+    attempts, slept = _drive_post(monkeypatch, [_http(503)])
+    assert attempts == ar.REQUEST_ATTEMPTS
+    assert slept == [8.0, 16.0, 32.0]
+    assert sum(slept) >= 55  # a token-per-minute window
+
+
+@pytest.mark.parametrize(
+    "headers",
+    [
+        {"x-ratelimit-reset-tokens": "0s"},
+        {"x-ratelimit-reset-requests": "0s"},
+        {"x-ratelimit-reset-tokens": "6ms"},
+        {"x-ratelimit-reset-tokens": "0s", "x-ratelimit-reset-requests": "0s"},
+    ],
+)
+def test_a_healthy_rate_limit_header_does_not_collapse_the_backoff(
+    monkeypatch, headers
+):
+    """THE wedge. Providers stamp x-ratelimit-* on essentially every response and
+    a healthy bucket reads 0s. Letting the hint replace the floor burned all four
+    attempts in milliseconds on one transient 5xx, turning it into a lens error
+    and a red required check for every PR in flight."""
+    attempts, slept = _drive_post(monkeypatch, [_http(503, headers)])
+    assert attempts == ar.REQUEST_ATTEMPTS
+    assert slept == [8.0, 16.0, 32.0]
+
+
+def test_post_honours_a_retry_after_longer_than_a_minute(monkeypatch):
+    """A 60s constant ceiling spent every attempt inside a 6-minute window and
+    gave up with most of the 20-minute budget unused. The budget is the only
+    ceiling now."""
+    attempts, slept = _drive_post(
+        monkeypatch, [_http(429, {"retry-after": "300"}), b'{"ok": true}']
+    )
+    assert attempts == 2
+    assert slept == [300.0]
+
+
+def test_post_honours_a_reset_tokens_window_longer_than_a_minute(monkeypatch):
+    attempts, slept = _drive_post(
+        monkeypatch, [_http(429, {"x-ratelimit-reset-tokens": "6m0s"}), b'{"ok": true}']
+    )
+    assert attempts == 2
+    assert slept == [360.0]
+
+
 def test_post_does_not_retry_a_non_transient_status(monkeypatch):
     slept = []
     monkeypatch.setattr(ar.time, "sleep", slept.append)
@@ -262,6 +380,49 @@ def test_post_does_not_retry_a_non_transient_status(monkeypatch):
     seen = _stub_urlopen(monkeypatch, [err])
     with pytest.raises(RuntimeError):
         ar._post("https://example/v1", {}, {})
+    assert seen["n"] == 1 and slept == []
+
+
+@pytest.mark.parametrize("status", [429, 500, 502, 503, 504, 522, 524, 529])
+def test_transient_statuses_are_retried(monkeypatch, status):
+    """529 is Anthropic's documented overloaded_error. Treating it as permanent
+    made provider overload an instant repo-wide block."""
+    attempts, _ = _drive_post(monkeypatch, [_http(status)])
+    assert attempts == ar.REQUEST_ATTEMPTS
+
+
+def test_post_does_not_retry_a_malformed_body(monkeypatch):
+    """A body that will not parse is deterministic. Retrying it four times only
+    burns the budget the next real rate limit needs."""
+    attempts, slept = _drive_post(monkeypatch, [b"this is not json"])
+    assert attempts == 1 and slept == []
+
+
+def test_post_retries_a_transient_stream_error(monkeypatch):
+    """overloaded_error arrives as an SSE event inside a 200, so status matching
+    alone cannot see it."""
+    overloaded = 'data: {"type": "error", "error": {"type": "overloaded_error"}}\n\n'
+    ok = (
+        'data: {"type": "content_block_delta", "delta": '
+        '{"type": "text_delta", "text": "{\\"findings\\": []}"}}\n\n'
+    )
+    slept = []
+    monkeypatch.setattr(ar.time, "sleep", slept.append)
+    monkeypatch.setattr(ar.random, "uniform", lambda a, b: 0.0)
+    seen = _stub_urlopen(monkeypatch, [overloaded.encode(), ok.encode()])
+    text, _ = ar._post(
+        "https://example/v1", {}, {}, reader=ar.read_anthropic_stream
+    )
+    assert seen["n"] == 2 and text == '{"findings": []}'
+
+
+def test_post_does_not_retry_a_permanent_stream_error(monkeypatch):
+    body = 'data: {"type": "error", "error": {"type": "invalid_request_error"}}\n\n'
+    slept = []
+    monkeypatch.setattr(ar.time, "sleep", slept.append)
+    seen = _stub_urlopen(monkeypatch, [body.encode()])
+    with pytest.raises(RuntimeError):
+        ar._post("https://example/v1", {}, {}, reader=ar.read_anthropic_stream)
     assert seen["n"] == 1 and slept == []
 
 
@@ -276,6 +437,98 @@ def test_post_never_sleeps_past_the_review_budget(monkeypatch):
     with pytest.raises(RuntimeError):
         ar._post("https://example/v1", {}, {})
     assert slept == []
+
+
+def test_post_clamps_a_long_wait_to_the_remaining_budget(monkeypatch):
+    """With room to wait but not the full window, wait what is left rather than
+    a constant — and keep the margin that lets the job report."""
+    attempts, slept = _drive_post(
+        monkeypatch, [_http_429("300"), b'{"ok": true}'], deadline=100
+    )
+    assert attempts == 2
+    assert slept == [pytest.approx(100 - ar.RETRY_BUDGET_MARGIN_S, abs=1)]
+
+
+# ------------------------------------------------------------- request payloads
+
+
+def _sent(seen, i=0):
+    return json.loads(seen["requests"][i].data)
+
+
+def test_call_model_openai_payload_shape(monkeypatch):
+    body = json.dumps({"choices": [{"message": {"content": '{"findings": []}'}}]})
+    seen = _stub_urlopen(monkeypatch, [body.encode()])
+    out = ar.call_model("openai", "k", "gpt-4.1", "sys", "user text")
+    assert out == '{"findings": []}'
+    sent = _sent(seen)
+    assert sent["model"] == "gpt-4.1"
+    assert sent["response_format"] == {"type": "json_object"}
+    assert sent["messages"] == [
+        {"role": "system", "content": "sys"},
+        {"role": "user", "content": "user text"},
+    ]
+    assert seen["requests"][0].headers["Authorization"] == "Bearer k"
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        {"choices": [{"finish_reason": "length", "message": {"content": "{"}}]},
+        {"choices": [{"message": {"content": None}}]},
+        {"choices": []},
+    ],
+)
+def test_call_model_openai_unusable_response_raises(monkeypatch, body):
+    _stub_urlopen(monkeypatch, [json.dumps(body).encode()])
+    with pytest.raises(RuntimeError):
+        ar.call_model("openai", "k", "gpt-4.1", "sys", "user")
+
+
+def test_call_model_anthropic_payload_shape(monkeypatch):
+    """The Anthropic branch has never run against the real API, so this payload
+    assertion is the only thing standing between a typo'd field name and a
+    repo-wide red the day the key is added."""
+    sse = (
+        'data: {"type": "content_block_delta", "delta": '
+        '{"type": "text_delta", "text": "{\\"findings\\": []}"}}\n\n'
+        'data: {"type": "message_delta", "delta": {"stop_reason": "end_turn"}}\n\n'
+    )
+    seen = _stub_urlopen(monkeypatch, [sse.encode()])
+    out = ar.call_model("anthropic", "sekret", "claude-opus-5", "sys", "user text")
+    assert out == '{"findings": []}'
+
+    req = seen["requests"][0]
+    assert req.full_url == ar.ANTHROPIC_URL
+    assert req.headers["X-api-key"] == "sekret"
+    assert req.headers["Anthropic-version"] == "2023-06-01"
+    assert req.headers["Anthropic-beta"] == ar.ANTHROPIC_BETAS
+
+    sent = _sent(seen)
+    assert sent["model"] == "claude-opus-5"
+    assert sent["max_tokens"] == ar.ANTHROPIC_MAX_TOKENS
+    assert ar.ANTHROPIC_MAX_TOKENS >= 32000  # thinking shares this budget
+    assert sent["stream"] is True
+    assert sent["thinking"] == {"type": "adaptive"}
+    assert sent["fallbacks"] == "default"
+    assert sent["system"] == "sys"
+    assert sent["messages"] == [{"role": "user", "content": "user text"}]
+    fmt = sent["output_config"]["format"]
+    assert fmt["type"] == "json_schema"
+    assert fmt["schema"] == ar.FINDINGS_SCHEMA
+    assert sent["output_config"]["effort"] == ar.ANTHROPIC_EFFORT
+
+
+@pytest.mark.parametrize("stop", ["max_tokens", "refusal"])
+def test_call_model_anthropic_unusable_stop_reason_raises(monkeypatch, stop):
+    sse = (
+        'data: {"type": "content_block_delta", "delta": '
+        '{"type": "text_delta", "text": "{\\"findings\\": []"}}\n\n'
+        'data: {"type": "message_delta", "delta": {"stop_reason": "%s"}}\n\n' % stop
+    )
+    _stub_urlopen(monkeypatch, [sse.encode()])
+    with pytest.raises(RuntimeError):
+        ar.call_model("anthropic", "k", "claude-opus-5", "sys", "user")
 
 
 # ----------------------------------------------------------------- SSE decoding
@@ -448,14 +701,25 @@ def test_low_finding_passes(gate):
     assert ar.main() == 0
 
 
-@pytest.mark.parametrize("severity", ["critical", "blocker", "HIGH ", "major", "urgent"])
-def test_severity_aliases_and_unknowns_at_the_exit_code(gate, severity):
-    """"major" and "urgent" used to exit 0. "major" is now an alias; "urgent"
-    is unreadable-to-us but still a REPORTED finding, so it must not silently
-    pass — it warns only if it normalizes to a known non-blocking level."""
+@pytest.mark.parametrize(
+    "severity",
+    ["critical", "blocker", "HIGH ", "major", "urgent", "very high", "P0",
+     "severity: high"],
+)
+def test_blocking_severity_aliases_at_the_exit_code(gate, severity):
+    """Every one of these exited 0 at some point in this PR's history while a
+    finding was on the table. The exit code is the gate, so assert there."""
     gate(json.dumps({"findings": [{"severity": severity, "file": "a", "title": "t"}]}))
-    rc = ar.main()
-    assert rc == (1 if severity != "urgent" else 0), severity
+    assert ar.main() == 1, severity
+
+
+@pytest.mark.parametrize("severity", ["spicy", "bug", "low (non-blocking)"])
+def test_readable_but_non_blocking_severities_pass_at_the_exit_code(gate, severity):
+    """The carve-out, asserted where it counts. A word we do not recognise is
+    not a reason to block every merge in the repo — it is logged as a
+    ::warning:: and the run stays green."""
+    gate(json.dumps({"findings": [{"severity": severity, "file": "a", "title": "t"}]}))
+    assert ar.main() == 0, severity
 
 
 def test_finding_with_no_severity_blocks(gate):
@@ -511,6 +775,19 @@ def test_error_path_posts_the_sticky_comment(gate, monkeypatch):
     assert ar.main() == 1
     assert len(posted) == 1
     assert "Blocked" in posted[0] and ar.MARKER in posted[0]
+
+
+def test_error_path_does_not_claim_the_lenses_read_the_diff(gate, monkeypatch):
+    """The comment said the diff was NOT fully reviewed and then, two lines
+    later, that "every lens read 100% of that diff". A false forensic record on
+    the one red an operator most needs to trust. Chunk coverage and review
+    coverage are different claims."""
+    posted = []
+    monkeypatch.setattr(ar, "post_sticky_comment", posted.append)
+    gate(RuntimeError("boom"))
+    assert ar.main() == 1
+    assert "every lens read 100%" not in posted[0]
+    assert "0 chars dropped by chunking" in posted[0]
 
 
 def test_no_key_blocks(gate, monkeypatch):
