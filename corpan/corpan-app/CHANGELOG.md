@@ -7,6 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- Retired the vendored `ndk-context` fork (`[patch.crates-io]` +
+  `src-tauri/vendor/ndk-context/`). It had been inert since 0.16.0, when
+  `tao 0.35.3` dropped the dependency carrying the `assert!` it patched out —
+  no shipped build has compiled it since, so there is no behavior change. The
+  crash history, and why the Android `configChanges` list must stay long, are
+  recorded in the comment in `gen/android/app/src/main/AndroidManifest.xml`.
+  (#528)
+
 ### Fixed
 - **The pack updater no longer lies about success and loops forever when a
   catalog entry drifts from what its origin actually serves.** Reproduced
