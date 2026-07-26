@@ -16,6 +16,12 @@
 //   plan                 `nextExercises(8)`, which runs in idle and must not be
 //                        on the critical path — gate EG-4 budgets it at p99 < 5 ms
 //
+// **The plan number here is the app's floor, not the budget's ceiling.** This
+// catalog is the M2 slice's three skills, and `planBatch` walks every reachable
+// skill once per slot — so the number that decides EG-4 is measured against the
+// harness's seventy-two by `engine/bin/dw-bench.mjs`, which fails past the
+// budget. What this measures is what a child on today's content actually pays.
+//
 // Answers alternate correct and wrong on a fixed pattern so both branches of the
 // answer path are sampled: a seated answer does no diagnosis at all, and a struck
 // one runs every mal-rule's column procedure.
@@ -24,7 +30,7 @@ import { glyphFromKey } from "../src/work/entry.ts"
 import { advance, commit, prepare, pressKey, startSession } from "../src/work/session.ts"
 import { adaptivePlanner } from "../src/work/plan.ts"
 import { engineCatalog, DEFAULT_GRADE } from "../src/work/catalog.ts"
-import { coldStart, newSession, planBatch } from "../../engine/src/index.ts"
+import { coldStart, newSession, planBatch, withCursor } from "../../engine/src/index.ts"
 import { writtenAnswer } from "../src/work/problem.ts"
 
 const CARDS = Number(process.argv[2] ?? 2000)
@@ -84,13 +90,16 @@ for (let card = 0; card < CARDS; card++) {
 
 // ── the planner, which runs in idle ─────────────────────────────────────────
 const catalog = engineCatalog()
-let learner = coldStart(catalog, DEFAULT_GRADE, 0)
-const context = newSession(1, 0, learner)
+const learner = coldStart(catalog, DEFAULT_GRADE, 0)
+let context = newSession(1, 0, learner)
 const plans = []
 for (let batch = 0; batch < 500; batch++) {
   const started = performance.now()
-  planBatch(catalog, learner, context, 8)
+  const planned = planBatch(catalog, learner, context, 8)
   plans.push(performance.now() - started)
+  // The cursor moves, as it does in the loop. Five hundred calls at one cursor
+  // are five hundred measurements of one cached-warm code path.
+  context = withCursor(context, planned.cursor)
 }
 
 console.log(`answer path, ${String(CARDS)} cards, planner ${adaptivePlanner.name}`)

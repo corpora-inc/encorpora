@@ -27,22 +27,37 @@ import {
   type Answer,
   type ApplyResult,
   type LearnerState,
+  type PlannedBatch,
   type PlannedCard,
   type SessionContext,
 } from "../../../engine/src/index.ts"
 import { engineCatalog } from "./catalog.ts"
 import type { MalRuleId } from "./curriculum.ts"
 
-export type { LearnerState, PlannedCard, SessionContext }
+export type { LearnerState, PlannedBatch, PlannedCard, SessionContext }
 
 export interface Planner {
   readonly name: string
   /**
-   * Up to `count` cards to serve next. Runs during idle, never on the answer
-   * path, and may return fewer — including none, when every reachable skill has
-   * been benched for the session.
+   * The next **batch**, and the draw cursor it consumed.
+   *
+   * A whole batch, never a card: the batch is the unit the engine allocates in.
+   * Its slot order carries the pool quota — a repair capped at a quarter, one
+   * stretch item, a three-card blocked debut — and a caller that asks for one or
+   * two cards and re-plans gets the head of that order every time, which is
+   * FRONTIER. Measured on a day-91 learner, the planned batch is
+   * `FRONTIER,FRONTIER,FRONTIER,FRONTIER,DUE_FACT,DUE_FACT,REPAIR,FLUENCY` and the
+   * old loop served slots 0–1 of it, so a child never received a fluency burst, a
+   * review card or a planned repair, and the debut was truncated to one card.
+   *
+   * `cursor` is not optional bookkeeping. A card's seed is
+   * `drawInt(seed, rngCursor + slot)`, so a caller that drops it serves the same
+   * problem for every card of a class, for the whole session.
+   *
+   * Runs during idle, never on the answer path, and may come back short —
+   * including empty, when every reachable skill has been benched for the session.
    */
-  next(learner: LearnerState, context: SessionContext, count: number): readonly PlannedCard[]
+  next(learner: LearnerState, context: SessionContext): PlannedBatch
   /** The Stage-1 VERIFY retry, or `null` when the skill is benched. */
   retry(learner: LearnerState, context: SessionContext, card: PlannedCard): PlannedCard | null
   /** The Stage-2 repair item, or `null` when nothing forces the broken step. */
@@ -94,13 +109,11 @@ export const DEV_TRACES: boolean =
 
 export const adaptivePlanner: Planner = {
   name: "adaptive",
-  // A whole batch is always planned, however few cards are wanted. A batch of one
-  // or two cannot hold a confidence card at each end *and* a stretch item, and
-  // `batchIntents` says so by throwing rather than quietly dropping one of the
-  // three rules; the unserved tail is discarded, which is what a re-plan does
-  // anyway.
-  next: (learner, context, count) =>
-    planBatch(engineCatalog(), learner, context, BATCH_SIZE, { traces: DEV_TRACES }).cards.slice(0, count),
+  // A whole batch, always. A batch of one or two cannot hold a confidence card at
+  // each end *and* a stretch item, and `batchIntents` says so by throwing rather
+  // than quietly dropping one of the three rules. The loop holds the batch and
+  // serves it in slot order; it does not ask for a card at a time.
+  next: (learner, context) => planBatch(engineCatalog(), learner, context, BATCH_SIZE, { traces: DEV_TRACES }),
   retry: (learner, context, card) => retryCard(engineCatalog(), learner, context, card),
   repair: (learner, context, card, misconception, servedPools) =>
     repairAllowed(servedPools) ? repairCard(engineCatalog(), learner, context, card, misconception) : null,
@@ -142,7 +155,12 @@ export function pinnedPlanner(cards: readonly (readonly [string, number])[]): Pl
   return {
     ...adaptivePlanner,
     name: "pinned",
-    next: (_learner, _context, count) => Array.from({ length: count }, () => cardAt(cursor++)),
+    next: (_learner, context) => ({
+      cards: Array.from({ length: BATCH_SIZE }, () => cardAt(cursor++)),
+      // The engine's cursor still moves, so a pinned test exercises the same
+      // threading the real loop does even though these seeds do not come from it.
+      cursor: context.rngCursor + BATCH_SIZE,
+    }),
     admissible: () => true,
   }
 }

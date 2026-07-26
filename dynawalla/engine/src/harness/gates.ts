@@ -341,12 +341,21 @@ export function invariantLegs(transcript: Transcript, who: string): Leg[] {
   );
 
   // A skill benched after 3 failures is not served again in the same session.
+  //
+  // The closing card is exempt, and the exemption is a stated ordering of two
+  // rules rather than a convenience. The bench is an **allocation** rule — it
+  // stops a session spending its cards on something the child cannot do today —
+  // and the closing card is not an allocation; it is the card that decides how
+  // the child remembers the session. `closingCard` still prefers a skill that is
+  // not benched and only comes back to the failed one when a child has managed to
+  // bench everything reachable, which is the case where the alternative is ending
+  // on the wrong answer.
   let benchBreaks = 0;
   const failuresBySession = new Map<string, number>();
   for (const step of steps) {
     const bench = `${String(step.sessionIndex)}#${step.skillId}`;
     const failures = failuresBySession.get(bench) ?? 0;
-    if (failures >= 3) benchBreaks += 1;
+    if (failures >= 3 && step.followUp !== "close") benchBreaks += 1;
     if (!step.correct) failuresBySession.set(bench, failures + 1);
   }
   legs.push(
@@ -384,20 +393,24 @@ export function invariantLegs(transcript: Transcript, who: string): Leg[] {
   );
 
   // Never end a session on a failure.
+  //
+  // The rule is that the app must *offer* a closing card, not that the child must
+  // get it right — so what is asserted is that the last card of a session was
+  // either answered correctly or was itself the closing card. The first cut
+  // asserted `endedBadly <= lastOfSession.size`, which is |subset| ≤ |set| and
+  // therefore true of every possible transcript: it reported PASS while 8 of 576
+  // smoke sessions ended on a wrong answer with no closing card served at all.
   const lastOfSession = new Map<number, Step>();
   for (const step of steps) lastOfSession.set(step.sessionIndex, step);
-  const endedBadly = [...lastOfSession.values()].filter((step) => !step.correct).length;
+  const unclosed = [...lastOfSession.values()].filter((step) => !step.correct && step.followUp !== "close");
   legs.push(
     leg(
       "A-13",
       "EG-6",
       "PEDAGOGICAL ASSERTION",
       `a session never ends on a failure (${who})`,
-      // The rule is that the app must *offer* a closing card, not that the child
-      // must get it right. What is asserted is that the session did not simply
-      // stop on the failure — a closing confidence card was served.
-      endedBadly <= lastOfSession.size,
-      `${String(endedBadly)} of ${String(lastOfSession.size)} sessions ended on a wrong answer after a closing card was served`,
+      unclosed.length === 0,
+      `${String(unclosed.length)} of ${String(lastOfSession.size)} sessions ended on a wrong answer with no closing card served`,
     ),
   );
 
@@ -633,15 +646,30 @@ export function diagnosisLegs(transcript: Transcript, who: string): Leg[] {
 
   const legs: Leg[] = [];
   if (transcript.persona === "single-misconception") {
+    // BLOCKED on no evidence, not PASS. `skillsWithSixFirings === 0 || …` reads
+    // as a guard against dividing by nothing and behaves as a fail-open: a
+    // regression that stops the mal-rule matcher firing, or a scheduler that
+    // stops serving the levels that force the broken step, takes the only gate
+    // watching Layer B's recall green. `calibrationLeg` gets this right for an
+    // empty diagram and this now matches it.
     legs.push(
-      leg(
-        "A-10",
-        "EG-9",
-        "REGRESSION BOUND",
-        `bug recall is at least 0.85 within six firings (${who})`,
-        skillsWithSixFirings === 0 || recalledWithinSix * 100 >= skillsWithSixFirings * 85,
-        `${String(recalledWithinSix)}/${String(skillsWithSixFirings)} skills diagnosed inside six firings`,
-      ),
+      skillsWithSixFirings === 0
+        ? {
+            id: "A-10",
+            gate: "EG-9",
+            label: "REGRESSION BOUND",
+            claim: `bug recall is at least 0.85 within six firings (${who})`,
+            status: "blocked",
+            detail: "no skill reached six firings — the diagnosis layer produced no evidence to score",
+          }
+        : leg(
+            "A-10",
+            "EG-9",
+            "REGRESSION BOUND",
+            `bug recall is at least 0.85 within six firings (${who})`,
+            recalledWithinSix * 100 >= skillsWithSixFirings * 85,
+            `${String(recalledWithinSix)}/${String(skillsWithSixFirings)} skills diagnosed inside six firings`,
+          ),
     );
   } else if (transcript.persona !== "fast-careless") {
     const errors = steps.filter((step) => !step.correct).length;
@@ -674,15 +702,30 @@ export function stateSizeLeg(learner: LearnerState, sessions: number, who: strin
   );
 }
 
-/** θ movement on skills the run never touched, for `A-11`. */
-export function contaminationLeg(before: LearnerState, after: LearnerState, touched: ReadonlySet<SkillId>, who: string): Leg {
+/**
+ * θ movement on skills the run never touched, for `A-11`.
+ *
+ * "Touched" is every skill a card was served on **and its prerequisites**: the
+ * 0.15× residual propagates one edge back by design, and a gate that called that
+ * contamination would be asserting against the model rather than about it.
+ *
+ * The prior is `Transcript.initialTheta` — the engine's own lazily-computed
+ * cold-start prior for every skill in the catalog, not `before.skills`. Reading
+ * the record instead skipped exactly the population at risk: `coldStart` seeds
+ * only the child's own band, so a skill three bands up has no record, and a
+ * record *created* for it during a run is precisely the drift being looked for.
+ */
+export function contaminationLeg(transcript: Transcript, who: string): Leg {
+  const touched = new Set<SkillId>(transcript.touched);
   let worst: Fix = ZERO;
   let worstSkill = "";
-  for (const [id, state] of Object.entries(after.skills)) {
+  let scored = 0;
+  for (const [id, state] of Object.entries(transcript.finalLearner.skills)) {
     if (touched.has(id)) continue;
-    const previous = before.skills[id];
-    if (previous === undefined) continue;
-    const drift = abs(sub(state.theta, previous.theta));
+    const prior = transcript.initialTheta[id];
+    if (prior === undefined) continue;
+    scored += 1;
+    const drift = abs(sub(state.theta, prior));
     if (drift > worst) {
       worst = drift;
       worstSkill = id;
@@ -694,7 +737,7 @@ export function contaminationLeg(before: LearnerState, after: LearnerState, touc
     "PEDAGOGICAL ASSERTION",
     `a detected bug does not contaminate untouched skills (${who})`,
     worst < fromRatio(2, 10),
-    `worst |Δθ| ${format(worst, 4)}${worstSkill === "" ? "" : ` on ${worstSkill}`}`,
+    `worst |Δθ| ${format(worst, 4)} over ${String(scored)} untouched skills${worstSkill === "" ? "" : ` (worst ${worstSkill})`}`,
   );
 }
 
@@ -705,6 +748,7 @@ export function legsFor(transcript: Transcript, who: string): Leg[] {
     ...invariantLegs(transcript, who),
     ...personaLegs(transcript, who),
     ...diagnosisLegs(transcript, who),
+    contaminationLeg(transcript, who),
     stateSizeLeg(transcript.finalLearner, transcript.sessions, who),
   ];
 }

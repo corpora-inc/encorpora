@@ -12,15 +12,26 @@
  * pair EG-5 needs and the only place in the program where both exist.
  */
 
-import { detectFatigue } from "../scheduler.ts";
 import type { PlannedCard } from "../scheduler.ts";
-import { accuracyPoints, applyResult, withFatigue } from "../apply.ts";
+import { applyResult, sessionFatigue, withFatigue } from "../apply.ts";
 import type { ApplyOptions } from "../apply.ts";
 import { preferredForm } from "../catalog.ts";
 import type { Catalog } from "../catalog.ts";
 import { BATCH_SIZE } from "../constants.ts";
 import { coldStart } from "../learner.ts";
-import { admissible, newSession, planBatch, reachableSkills, repairAllowed, repairCard, retryCard } from "../select.ts";
+import {
+  FOLLOW_UP_DRAWS,
+  admissible,
+  closingCard,
+  newSession,
+  planBatch,
+  reachableSkills,
+  repairAllowed,
+  repairCard,
+  retryCard,
+  thetaOf,
+  withCursor,
+} from "../select.ts";
 import type { SessionContext } from "../select.ts";
 import type { Fix } from "../math/fixed.ts";
 import type { Day, LearnerState, MasteryLevel, SkillId } from "../types.ts";
@@ -70,6 +81,17 @@ export type Transcript = {
   readonly activeDays: number;
   /** Skill level at the end, by skill. */
   readonly levels: Readonly<Record<SkillId, MasteryLevel>>;
+  /**
+   * `θ` for every skill in the catalog before the run, including the skills the
+   * cold start left unseeded — the lazily-computed prior, which is what the
+   * engine itself reads for a skill with no record. `A-11` is measured against
+   * this rather than against `learner.skills`, because a record *created* during
+   * a run for a skill the child never saw is the contamination, and comparing
+   * only records that already existed skips exactly those.
+   */
+  readonly initialTheta: Readonly<Record<SkillId, Fix>>;
+  /** Skills a card was served on, plus their prerequisites, for `A-11`. */
+  readonly touched: readonly SkillId[];
   /** Batches planned, and how many tripped a re-plan mid-way. */
   readonly batches: number;
   readonly replans: number;
@@ -105,6 +127,9 @@ export function simulate(
   const child = newChild(spec, seed, catalog);
   let learner = coldStart(catalog, options.grade, 0);
   const steps: Step[] = [];
+  const initialTheta: Record<SkillId, Fix> = {};
+  for (const skill of catalog.skills) initialTheta[skill.id] = thetaOf(learner, skill);
+  const touched = new Set<SkillId>();
 
   let sessions = 0;
   let activeDays = 0;
@@ -124,7 +149,7 @@ export function simulate(
     }
     activeDays += 1;
     learner = { ...learner, today: day };
-    const session = runSession(catalog, child, learner, day, sessions, options, steps);
+    const session = runSession(catalog, child, learner, day, sessions, options, steps, touched);
     learner = session.learner;
     sessions += 1;
     batches += session.batches;
@@ -145,6 +170,8 @@ export function simulate(
     sessions,
     activeDays,
     levels,
+    initialTheta,
+    touched: [...touched],
     batches,
     replans,
     starvedSlots,
@@ -166,6 +193,7 @@ function runSession(
   sessionIndex: number,
   options: SimOptions,
   steps: Step[],
+  touched: Set<SkillId>,
 ): SessionResult {
   let learner = start;
   let context: SessionContext = newSession(mixSeed(child.seed, day), day, start);
@@ -194,7 +222,7 @@ function runSession(
       last: served + BATCH_SIZE >= options.cardsPerSession,
     });
     batches += 1;
-    context = { ...context, rngCursor: batch.cursor };
+    context = withCursor(context, batch.cursor);
     if (batch.cards.length === 0) break;
     starvedSlots += BATCH_SIZE - batch.cards.length;
 
@@ -215,6 +243,10 @@ function runSession(
       const level = skill?.levels[card.level];
       if (skill === undefined || level === undefined) break;
       const form = level.forms.find((entry) => entry.id === card.formId) ?? preferredForm(level);
+      // A card on this skill moves this skill's θ and, by the 0.15× residual, its
+      // prerequisites'. Everything else must not move at all — that is `A-11`.
+      touched.add(skill.id);
+      for (const prereq of skill.prereqs) touched.add(prereq);
 
       const minutes = Math.floor(elapsedMs / 60_000);
       const answer = answerCard(child, catalog, card, form.guessFloor, minutes);
@@ -274,19 +306,18 @@ function runSession(
             ? repairCard(catalog, learner, context, card, answer.misconception)
             : null;
         const follow = repair ?? retryCard(catalog, learner, context, card);
-        if (follow !== null && forced.length === 0) forced.push(follow);
+        if (follow !== null && forced.length === 0) {
+          forced.push(follow);
+          // The draw that follow-up cost. Without it every retry in a session is
+          // built from the same cursor and is therefore the identical problem.
+          context = withCursor(context, context.rngCursor + FOLLOW_UP_DRAWS);
+        }
       }
 
-      // Fatigue is decided from the same two signals a real detector would have.
-      const third = Math.max(1, Math.floor(context.outcomes.length / 3));
-      const fatigued = detectFatigue({
-        latencyRising: answer.latencyMs > Math.floor((child.spec.baseLatencyMs * 3) / 2),
-        accuracyNowPoints: accuracyPoints(context.outcomes, context.outcomes.length - third, context.outcomes.length),
-        accuracyFirstThirdPoints: accuracyPoints(context.outcomes, 0, third),
-        minutesElapsed: minutes,
-        personalSessionMinutes: personalMinutes(learner),
-      });
-      context = withFatigue(context, fatigued);
+      // Fatigue, from the signals the *app* has — the child's own latency
+      // statistics and their own rollups. Reading the persona's base latency here
+      // would be a detector the shipped loop cannot run.
+      context = withFatigue(context, sessionFatigue(learner, context, { latencyMs: answer.latencyMs, minutesElapsed: minutes }, options.apply ?? {}));
 
       if (result.replan.length > 0) {
         replans += 1;
@@ -298,10 +329,16 @@ function runSession(
   // Never end a session on a failure. The last card is a confidence card at the
   // easiest thing the child can currently do, and it is served rather than the
   // session simply stopping.
+  //
+  // `closingCard` rather than `retryCard`, and the difference is the whole rule:
+  // a retry is refused when the skill is benched, and a session that ended badly
+  // is precisely the session whose last skill has three failures on it. Measured
+  // before the change: 8 of 576 smoke sessions ended on a wrong answer with no
+  // closing card at all.
   const lastOutcome = context.outcomes[context.outcomes.length - 1];
   const lastStep = steps[steps.length - 1];
   if (lastOutcome === false && lastStep !== undefined) {
-    const closing = retryCard(catalog, learner, context, {
+    const closing = closingCard(catalog, learner, context, {
       cardId: "closing",
       skillId: lastStep.skillId,
       level: lastStep.level,
@@ -317,6 +354,8 @@ function runSession(
       const skill = catalog.byId.get(closing.skillId);
       const level = skill?.levels[closing.level];
       if (skill !== undefined && level !== undefined) {
+        touched.add(skill.id);
+        for (const prereq of skill.prereqs) touched.add(prereq);
         const form = preferredForm(level);
         const answer = answerCard(child, catalog, closing, form.guessFloor, Math.floor(elapsedMs / 60_000));
         const result = applyResult(catalog, learner, context, closing, {
@@ -354,23 +393,6 @@ function runSession(
   }
 
   return { learner, batches, replans, starvedSlots };
-}
-
-/**
- * The child's own typical session length, from their rollups.
- *
- * A constant was wrong in a way that silenced the whole fatigue mechanism: the
- * harness's latency model gives a 24-card session of about three minutes, so a
- * hard-coded twelve-minute baseline meant the "minutes past the child's personal
- * EWMA" indicator never fired, only one indicator was ever available, and
- * `detectFatigue` needs two. The pilot reported zero fatigued cards for the
- * fatiguer persona — the gate caught a dead mechanism, which is what it is for.
- */
-function personalMinutes(learner: LearnerState): number {
-  const recent = learner.rollups.slice(-14);
-  if (recent.length === 0) return 3;
-  const seconds = recent.reduce((total, day) => total + day.seconds, 0);
-  return Math.max(1, Math.round(seconds / (60 * recent.length)));
 }
 
 /** A per-day stream seed, so two days of one child do not share draws. */

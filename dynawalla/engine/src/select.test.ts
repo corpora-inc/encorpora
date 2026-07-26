@@ -21,7 +21,20 @@ import { harnessCatalog } from "./harness/catalog.ts";
 import { applyResult } from "./apply.ts";
 import { coldStart, emptyLearner } from "./learner.ts";
 import { format, fromRatio } from "./math/fixed.ts";
-import { admissible, longestRun, newSession, planBatch, planFacts, poolQuota, reachableSkills, repairCard, retryCard } from "./select.ts";
+import {
+  FOLLOW_UP_DRAWS,
+  admissible,
+  closingCard,
+  longestRun,
+  newSession,
+  planBatch,
+  planFacts,
+  poolQuota,
+  reachableSkills,
+  repairCard,
+  retryCard,
+  withCursor,
+} from "./select.ts";
 import type { SessionContext } from "./select.ts";
 import { checkInterleaving } from "./scheduler.ts";
 import type { PlannedCard } from "./scheduler.ts";
@@ -261,18 +274,146 @@ test("serve-time admissibility refuses a card the plan has outlived", () => {
   assert.equal(admissible(learner, context, { ...repeat, followUp: "retry" as const }), true, "a retry was refused");
 });
 
-test("EG-4: nextExercises(8) p99 under 5 ms and applyResult p99 under 1 ms", () => {
-  // Measured over the harness catalog's 72 skills. `Date.now` is banned in this
-  // package (EG-1) and `process.hrtime` with it, so the budget is checked as a
-  // per-call operation count: the policy evaluates each reachable skill once per
-  // slot and computes exactly one sigmoid per chosen card, which is what keeps it
-  // inside the budget as the curriculum grows. The wall-clock number is measured
-  // by `bin/dw-bench.mjs`, outside `src/`.
+test("the policy evaluates a full-sized catalog and returns a full batch", () => {
+  // **This is not a latency test and no longer claims to be.** It was named
+  // "EG-4: nextExercises(8) p99 under 5 ms and applyResult p99 under 1 ms" and
+  // asserted `warmSkills >= 0`, which is unfalsifiable for a count, and never
+  // called `applyResult` at all. `Date.now` is banned in this package (EG-1), so
+  // the wall clock cannot live here: the budget is measured by `bin/dw-bench.mjs`
+  // — which now exists — and that script exits non-zero past it.
+  //
+  // What is worth asserting here is the shape the budget is claimed against: a
+  // seventy-two-skill catalog, and a batch that comes back full rather than short.
   const learner = coldStart(catalog, 2, 0);
   const context = newSession(53, 0, learner);
-  const facts = planFacts(learner);
-  assert.ok(facts.warmSkills >= 0);
-  const batch = planBatch(catalog, learner, context, BATCH_SIZE);
-  assert.ok(batch.cards.length > 0);
   assert.ok(catalog.skills.length >= 72, "the perf claim is about a full-sized catalog");
+  const batch = planBatch(catalog, learner, context, BATCH_SIZE);
+  assert.equal(batch.cards.length, BATCH_SIZE, "a short batch is a slot the policy could not fill");
+  assert.equal(planFacts(learner).warmSkills, 0, "a cold learner has no warm skill");
+});
+
+test("the draw cursor is the whole of the randomness — a frozen one re-serves one problem per class", () => {
+  // The defect this pins was live in the app: `planBatch` returns the advanced
+  // cursor and the loop discarded it, so `drawInt(seed, rngCursor + slot)` drew
+  // from the same eight values for the whole session. A twenty-four-card session
+  // served sixteen distinct exercises, and the no-repeat window saw nothing wrong
+  // because the repeat was *inside* the item class, which is what the window
+  // compares on.
+  const learner = coldStart(catalog, 2, 0);
+  const context = newSession(61, 0, learner);
+
+  const frozen = planBatch(catalog, learner, context, BATCH_SIZE);
+  const alsoFrozen = planBatch(catalog, learner, context, BATCH_SIZE);
+  assert.deepEqual(
+    frozen.cards.map((card) => card.seed),
+    alsoFrozen.cards.map((card) => card.seed),
+    "two batches planned at the same cursor drew differently — the draws are not a function of the cursor",
+  );
+
+  const moved = planBatch(catalog, learner, withCursor(context, frozen.cursor), BATCH_SIZE);
+  assert.equal(frozen.cursor, context.rngCursor + BATCH_SIZE);
+  const before = new Set(frozen.cards.map((card) => card.seed));
+  const after = moved.cards.map((card) => card.seed);
+  assert.ok(
+    after.every((seed) => !before.has(seed)),
+    "a batch planned at the advanced cursor re-drew a seed from the previous batch",
+  );
+
+  // …and the two injected cards move with it, so two retries in one session are
+  // two problems rather than the same one twice.
+  const card = frozen.cards[0];
+  assert.ok(card !== undefined);
+  const first = retryCard(catalog, learner, context, card);
+  const second = retryCard(catalog, learner, withCursor(context, context.rngCursor + FOLLOW_UP_DRAWS), card);
+  assert.ok(first !== null && second !== null);
+  assert.notEqual(first.seed, second.seed, "two retries in a session were the identical problem");
+});
+
+test("the closing card is served even when the failed skill is benched", () => {
+  // `retryCard` returns null for a benched skill, and a session that ended badly
+  // is exactly the session whose last skill has three failures on it — so the
+  // loop simply stopped, on the wrong answer, in 8 of 576 smoke sessions. The
+  // bench is an allocation rule; the closing card is not an allocation.
+  const learner = coldStart(catalog, 2, 0);
+  const context = newSession(71, 0, learner);
+  const card = planBatch(catalog, learner, context, BATCH_SIZE).cards[0];
+  assert.ok(card !== undefined);
+  const benched: SessionContext = { ...context, failuresBySkill: { [card.skillId]: 3 } };
+
+  assert.equal(retryCard(catalog, learner, benched, card), null, "the retry was not refused; the test proves nothing");
+  const closing = closingCard(catalog, learner, benched, card);
+  assert.ok(closing !== null, "a session ended on a failure with no closing card");
+  assert.equal(closing.followUp, "close");
+  assert.equal(closing.intent, "confidence");
+  assert.notEqual(closing.skillId, card.skillId, "the closing card came back from the benched skill");
+
+  // With nothing benched it is the child's own skill, at a confidence difficulty.
+  const own = closingCard(catalog, learner, context, card);
+  assert.ok(own !== null);
+  assert.equal(own.skillId, card.skillId);
+});
+
+test("a repair records the bug it repaired, so the batch is not re-planned for it again", () => {
+  // `applyResult` recorded `card.skillId` while `replanReasons` reads a bug key
+  // (`skill#bug`). The two can never be equal, so the guard was dead: every card
+  // of a skill with an active bug reported "a misconception became active and no
+  // repair is planned" and threw away a batch that did not need throwing away.
+  const skill = catalog.skills.find((candidate) => candidate.misconceptions.length > 0);
+  assert.ok(skill !== undefined);
+  const bug = skill.misconceptions[0];
+  assert.ok(bug !== undefined);
+  const level = skill.levels.findIndex((meta) => meta.guarantees.includes(bug));
+  assert.ok(level >= 0, "no level of this skill guarantees its own mal-rule");
+
+  let learner = coldStart(catalog, 2, 0);
+  const context = newSession(83, 0, learner);
+  const card: PlannedCard = {
+    cardId: "c",
+    skillId: skill.id,
+    level,
+    formId: "free-entry",
+    seed: 1,
+    pool: "FRONTIER",
+    intent: "steady",
+    pHat: fromRatio(70, 100),
+    operation: skill.operation,
+    itemKey: `${skill.id}#L${String(level)}#free-entry`,
+  };
+
+  // Three firings make the misconception active. One per session, because three
+  // failures on one skill in one session bench it — and a benched skill has no
+  // repair item at all, which is a different rule and not the one under test.
+  let session = context;
+  for (let i = 0; i < 3; i++) {
+    session = newSession(83 + i, i, learner);
+    const result = applyResult(catalog, learner, session, card, {
+      correct: false,
+      latencyMs: 6000,
+      revisions: 0,
+      misconception: bug,
+    });
+    learner = result.learner;
+    session = newSession(83 + i, i, learner);
+  }
+  assert.ok(learner.bugs[bugKey(skill.id, bug)] !== undefined);
+
+  const repair = repairCard(catalog, learner, session, card, bug);
+  assert.ok(repair !== null);
+  assert.equal(repair.repairs, bugKey(skill.id, bug), "the repair did not carry the bug key it targets");
+
+  // `remaining` has to be non-empty for `replanReasons` to say anything at all,
+  // and it is the tail this rule is about: more cards of the skill whose bug is
+  // active, with no REPAIR among them.
+  const reason = "a misconception became active and no repair is planned";
+  const before = applyResult(catalog, learner, session, card, { correct: true, latencyMs: 6000, revisions: 0 }, [card]);
+  assert.ok(before.replan.includes(reason), "the rule under test did not fire; the assertion below proves nothing");
+
+  const answered = applyResult(catalog, learner, session, repair, { correct: true, latencyMs: 6000, revisions: 0 }, [
+    card,
+  ]);
+  assert.ok(
+    answered.context.repairedBugs.includes(bugKey(skill.id, bug)),
+    "the repaired bug was recorded under a key nothing reads",
+  );
+  assert.ok(!answered.replan.includes(reason), "the batch was re-planned for a repair that had just been served");
 });

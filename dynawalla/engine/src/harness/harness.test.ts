@@ -139,12 +139,21 @@ test("A-01's residual gap is the documented asymmetric credit, and is pinned", (
 test("the reliability diagram is monotone: higher predictions come true more often", () => {
   // The weakest useful thing that must be true of a calibrated model, and the one
   // a systematic sign error would break while leaving the bin errors small.
+  //
+  // **Eight learners and 500 items a bin, not four and 200.** At the smaller
+  // sample the comparison is between adjacent bins of ~230 and ~410 items and is
+  // not stable enough to assert. Measured: a change to the draw primitive that
+  // alters 0.023% of draws — and therefore reshuffles which cards each child sees
+  // — moved the 0.65/0.70 pair from −0.019 to −0.031 against a 0.03 tolerance.
+  // That is a flapping test in the sense `A-14` means, and the answer is evidence
+  // rather than a looser bound: at 500 items a bin the diagram is monotone with
+  // no tolerance needed at all, and the tolerance stays where it was.
   const catalog = harnessCatalog();
-  const steps = [0, 1, 2, 3]
+  const steps = [0, 1, 2, 3, 4, 5, 6, 7]
     .flatMap((learner) => simulate(catalog, "misspecification", learner, 700 + learner, { ...DEFAULT_SIM, days: 40 }).steps)
     .filter((step) => step.lifetime >= 20);
-  const bins = reliability(steps).filter((bin) => bin.count >= 200);
-  assert.ok(bins.length >= 4, `only ${String(bins.length)} bins reached 200 items`);
+  const bins = reliability(steps).filter((bin) => bin.count >= 500);
+  assert.ok(bins.length >= 4, `only ${String(bins.length)} bins reached 500 items`);
   for (let i = 1; i < bins.length; i++) {
     const previous = bins[i - 1];
     const current = bins[i];

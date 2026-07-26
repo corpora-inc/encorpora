@@ -83,12 +83,25 @@ export type PlannedCard = {
    */
   readonly itemKey: string;
   /**
-   * Set on the two cards that are *designed* to return to what just broke: the
-   * Stage-1 VERIFY retry and the Stage-2 repair item. They are exempt from the
-   * no-repeat window by construction, and carrying the reason on the card is what
-   * lets a gate tell an exemption from a violation.
+   * Set on the cards that are *designed* to return to what just broke: the
+   * Stage-1 VERIFY retry, the Stage-2 repair item, and the confidence card that
+   * closes a session ended on a wrong answer. They are exempt from the no-repeat
+   * window by construction, and carrying the reason on the card is what lets a
+   * gate tell an exemption from a violation.
    */
-  readonly followUp?: "retry" | "repair";
+  readonly followUp?: "retry" | "repair" | "close";
+  /**
+   * The **bug key** a repair item was chosen to repair — `${skillId}#${bugId}`,
+   * as `bugKey` builds it, and keyed on the skill whose bug is active rather than
+   * on the skill the repair item comes from (a repair is often served from
+   * elsewhere, because the child's own level need not force the broken step).
+   *
+   * It exists so `applyResult` can record *which* misconception has had its
+   * repair scheduled. Recording the skill id instead was a silent no-op: the
+   * guard that reads it compares against a bug key, and the two can never be
+   * equal, so every card of a skill with an active bug re-planned the batch.
+   */
+  readonly repairs?: string;
   /**
    * How far the selection policy had to relax its constraints to find this card.
    * 0 is the normal case. Anything above it means a rule was dropped because

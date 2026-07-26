@@ -56,6 +56,15 @@ interface PracticeState {
    */
   presentedAt: number | null
   /**
+   * When this session began.
+   *
+   * The fatigue detector's second signal: "minutes past the child's own typical
+   * session length" is two clock reads, and the engine may make neither. Measured
+   * from the first card rather than from launch, so a tab left open overnight
+   * does not report a tired child.
+   */
+  startedAt: number | null
+  /**
    * The reaction and the remark this verdict earned, waiting for the frame
    * after the one that paints it. Nothing on the answer path touches the world
    * except the placement itself, which is one integer and has to be synchronous
@@ -134,17 +143,30 @@ function savePosition(session: SessionState): void {
 }
 
 /**
- * Whole days since the epoch — the engine's whole notion of time.
+ * Whole days since the epoch, **in the child's own timezone** — the engine's whole
+ * notion of time.
  *
  * The one clock read in the practice loop, and it is here rather than in
  * `session.ts` because the engine may not read one (gate EG-1) and neither may a
  * pure state machine. A day number rather than a timestamp: the model schedules
  * fact review in whole days and has no use for anything finer.
+ *
+ * `Date.now() / 86_400_000` is a **UTC** day index and was wrong for everyone
+ * west of Greenwich: the day rolls over at 16:00 local in UTC−8. Everything the
+ * model schedules in whole days moves with it — FSRS `dueDay`, `REVIEW_AFTER_DAYS`,
+ * `RETIREMENT_DAYS`, `A-03`'s long-interval bound and the fatigue rollups — so an
+ * evening session and the next morning's were two different days, and an
+ * afternoon session and the same evening's were one.
+ *
+ * The stored day is the floor. A child who flies west would otherwise hand the
+ * model a day number lower than the one it has already seen, and a clock that
+ * runs backwards is the one thing FSRS cannot be asked to interpret.
  */
 const MS_PER_DAY = 86_400_000
 
-export function today(): number {
-  return Math.floor(Date.now() / MS_PER_DAY)
+export function today(stored = 0): number {
+  const local = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60_000) / MS_PER_DAY)
+  return Math.max(local, stored)
 }
 
 /**
@@ -155,25 +177,27 @@ export function today(): number {
  * model, not a crash on launch. A child loses their estimates; they do not lose
  * the app.
  */
-function restoreLearner(encoded: string): LearnerState {
-  return (encoded === "" ? null : decodeLearner(encoded)) ?? coldStart(engineCatalog(), DEFAULT_GRADE, today())
+function restoreLearner(encoded: string, day: number): LearnerState {
+  return (encoded === "" ? null : decodeLearner(encoded)) ?? coldStart(engineCatalog(), DEFAULT_GRADE, day)
 }
 
 export const usePractice = create<PracticeState>()((set, get) => ({
   session: null,
   feedbackAt: null,
   presentedAt: null,
+  startedAt: null,
   pending: null,
   arrived: false,
 
   begin: () => {
     if (get().session !== null) return
     const saved = progressStore.getState()
+    const day = today(saved.day)
     const session = startSession({
       profileId: DEFAULT_PROFILE_ID,
-      learner: restoreLearner(saved.learner),
+      learner: restoreLearner(saved.learner, day),
       seedCursor: saved.seedCursor,
-      day: today(),
+      day,
     })
     // A new session refills the once-a-session reaction budget and empties the
     // character's memory of what he has already said. Both are per session by
@@ -191,6 +215,7 @@ export const usePractice = create<PracticeState>()((set, get) => ({
       session,
       feedbackAt: null,
       presentedAt: now(),
+      startedAt: now(),
       pending: null,
       arrived: arrivesAcrossZero(session.card),
     })
@@ -213,7 +238,13 @@ export const usePractice = create<PracticeState>()((set, get) => ({
     // store owns the clock. It is what separates a recalled fact from a computed
     // one — ADR-0008's whole reason for rating on `(correct, latency)`.
     const latency = get().presentedAt === null ? 0 : Math.max(0, now() - (get().presentedAt ?? 0))
-    const next = measure("commitToJudgement", () => commit(session, Math.round(latency)))
+    // How long the child has been at it, for the fatigue detector — the one
+    // signal the engine cannot derive and the store can. Whole minutes, because
+    // that is the resolution `detectFatigue` compares against the child's own
+    // typical session length.
+    const started = get().startedAt
+    const minutes = started === null ? 0 : Math.max(0, Math.floor((now() - started) / 60_000))
+    const next = measure("commitToJudgement", () => commit(session, Math.round(latency), minutes))
     if (next === session) return
 
     // The world moves with the verdict, not after it: one integer, so the
@@ -274,7 +305,7 @@ export const usePractice = create<PracticeState>()((set, get) => ({
   end: () => {
     settleReactions()
     useCharacter.getState().hush()
-    set({ session: null, feedbackAt: null, presentedAt: null, pending: null, arrived: false })
+    set({ session: null, feedbackAt: null, presentedAt: null, startedAt: null, pending: null, arrived: false })
   },
 }))
 

@@ -123,6 +123,31 @@ export function newSession(seed: number, day: Day, learner?: LearnerState): Sess
   };
 }
 
+/**
+ * The session with its draw cursor moved on.
+ *
+ * **Every caller that plans a batch or injects a follow-up must use it.** The
+ * cursor is the whole of the engine's randomness: a card's seed is
+ * `drawInt(context.seed, context.rngCursor + slot)`, so a cursor that never moves
+ * is a session in which every card of a class is the *same problem*. The app
+ * discarded `PlannedBatch.cursor` and served sixteen distinct exercises over a
+ * twenty-four-card session — the no-repeat window was satisfied throughout,
+ * because the window compares item classes and the repeat was inside the class.
+ *
+ * A one-line helper rather than a spread at each call site, so the discipline is
+ * named and greppable.
+ */
+export function withCursor(context: SessionContext, cursor: number): SessionContext {
+  return context.rngCursor === cursor ? context : { ...context, rngCursor: cursor };
+}
+
+/**
+ * Draws an injected follow-up costs. The retry and the repair each draw once,
+ * at a fixed offset from the cursor, so the cursor has to move by one after each
+ * or every retry in a session is the identical problem.
+ */
+export const FOLLOW_UP_DRAWS = 1;
+
 export type PlanOptions = {
   /** Produce `SelectionTrace`s. The app passes `false` in production (`A-18`). */
   readonly traces?: boolean;
@@ -175,7 +200,7 @@ function stateOf(learner: LearnerState, id: SkillId): SkillState {
  * record is created, so the state file still costs nothing for a skill nobody has
  * touched.
  */
-function thetaOf(learner: LearnerState, skill: SkillMeta): Fix {
+export function thetaOf(learner: LearnerState, skill: SkillMeta): Fix {
   const state = learner.skills[skill.id];
   if (state !== undefined && state.attempts > 0) return state.theta;
 
@@ -361,6 +386,19 @@ export function poolQuota(
 
   // A debut is all-or-nothing: three cards or none. Two guided cards is not a
   // blocked debut, it is an interleaving violation with a friendly name.
+  //
+  // **KNOWN GAP (M6), measured.** The quota asks for three and `chooseCard` fills
+  // exactly one. A debut card is pinned to level 0, so the second and third NEW
+  // slots find their only item class already in the batch, are rejected as
+  // duplicates, and fall back to FRONTIER — on the app's catalog, quota `NEW → 3`
+  // produces `FRONTIER,NEW,FRONTIER,FRONTIER,…`. Exempting the debut from the
+  // duplicate check (in `chooseCard`, `admissible`, `checkSequence` and the
+  // gate's no-repeat leg, all four of which have to move together) does produce
+  // the block — and trips two PEDAGOGICAL ASSERTIONS at pilot scale: `A-13`'s 40%
+  // window cap reads 21/50 on `struggling #9 seed 1`, and `A-05` leaves a skill
+  // at New with four accurate attempts on 5 of 36 legs. So the block is a change
+  // with a tuning problem behind it, not a missing exemption, and it is not being
+  // smuggled in here. Both numbers are reproducible from this commit.
   const debutAvailable =
     context.debutSkill === null && !context.fatigued && has("NEW") > 0 && size >= DEBUT_BLOCK_MIN + 2;
   if (debutAvailable) bump("NEW", DEBUT_BLOCK_MIN);
@@ -904,6 +942,74 @@ export function retryCard(
 }
 
 /**
+ * The confidence card that ends a session the child got wrong.
+ *
+ * `retryCard` is the wrong instrument for it, and the difference is not
+ * cosmetic: a retry is refused when the skill is **benched**, and a session that
+ * ended badly is exactly the session in which the last skill has three failures
+ * on it. Measured over the smoke personas, 8 of 576 sessions ended on a wrong
+ * answer with no closing card served at all — every one of them because
+ * `retryCard` returned `null` and the loop simply stopped.
+ *
+ * The bench is a rule about **allocation** — it stops the scheduler spending a
+ * session's cards on something the child cannot do today — and the closing card
+ * is not an allocation. So this ignores it, and falls back to the easiest
+ * reachable skill when the failed one has no level easy enough.
+ */
+export function closingCard(
+  catalog: Catalog,
+  learner: LearnerState,
+  context: SessionContext,
+  card: PlannedCard,
+): PlannedCard | null {
+  // The failed skill if it is still servable, then the easiest reachable skill
+  // that is not benched, then — only if a child has managed to bench everything
+  // reachable — the failed skill anyway. The last step is the one place the bench
+  // yields, and it yields to the rule that decides how the child remembers the
+  // session.
+  const own = catalog.byId.get(card.skillId);
+  const skill =
+    own !== undefined && !isBenched(context, own.id)
+      ? own
+      : (easiestReachable(catalog, learner, context) ?? own);
+  if (skill === undefined) return null;
+  const theta = thetaOf(learner, skill);
+  const confidence = logit(targetFor(learner.pTarget, "confidence"));
+  const easier = confidence > RETRY_EASIER_BY ? confidence : RETRY_EASIER_BY;
+  const level = levelNearest(skill, sub(theta, easier));
+  const meta = skill.levels[level];
+  if (meta === undefined) return null;
+  const form = preferredForm(meta);
+  const seed = drawInt(context.seed, context.rngCursor + 977, 0x7fff_ffff);
+  return {
+    cardId: `${skill.id}#L${String(level)}#${String(seed)}`,
+    skillId: skill.id,
+    level,
+    formId: form.id,
+    seed,
+    pool: "FRONTIER",
+    intent: "confidence",
+    pHat: predictP(theta, meta.b, form.guessFloor),
+    operation: skill.operation,
+    itemKey: itemKey(skill.id, level, form.id),
+    followUp: "close",
+  };
+}
+
+/**
+ * The lowest-difficulty reachable skill, optionally excluding benched ones. The
+ * floor under the closing card. `undefined` when the filter leaves nothing.
+ */
+function easiestReachable(catalog: Catalog, learner: LearnerState, context?: SessionContext): SkillMeta | undefined {
+  let easiest: SkillMeta | undefined;
+  for (const skill of reachableSkills(catalog, learner)) {
+    if (context !== undefined && isBenched(context, skill.id)) continue;
+    if (easiest === undefined || skill.b < easiest.b) easiest = skill;
+  }
+  return easiest;
+}
+
+/**
  * The Stage-2 repair item: the level whose parameters *guarantee* the step the
  * mal-rule breaks, not the level the child happened to be standing on.
  *
@@ -957,6 +1063,10 @@ export function repairCard(
     operation: skill.operation,
     itemKey: itemKey(skill.id, level, form.id),
     followUp: "repair",
+    // The bug this repairs, keyed on the skill it is *active* on — which is the
+    // card the child got wrong, not necessarily the skill this item comes from.
+    // `applyResult` records it so the same repair is not scheduled twice.
+    repairs: bugKey(card.skillId, bug),
   };
 }
 
@@ -1019,11 +1129,20 @@ export function replanReasons(
 
 /**
  * Anti-stagnation: three sessions with `θ` improving by less than 0.3 means the
- * scheduler **goes around** — the stuck skill comes back in a different form
+ * scheduler should **go around** — the stuck skill comes back in a different form
  * rather than in more of the same.
  *
+ * **NOT WIRED (M6).** `planBatch` does not call this and `alternateForm` below,
+ * and no other caller exists in either package. It is stated here, tested here,
+ * and does nothing to a child today — which is worth saying plainly, because the
+ * form the app ships has exactly one form per level (`free-entry`) and a
+ * go-around that cannot change the representation would be a lie either way. The
+ * anti-stagnation rules that *are* live are the 40% window cap, the Retired
+ * state, and gate EG-6's "no run of 24 trivially easy items".
+ *
  * Tripling practice on one problem type (3 → 9 problems) had no effect on 1-week
- * or 4-week test scores. This is the rule that stops the engine doing it anyway.
+ * or 4-week test scores, which is why it is the next thing wired rather than a
+ * nice-to-have.
  */
 export function isStalled(history: readonly Fix[]): boolean {
   if (history.length < STALL_SESSIONS + 1) return false;
@@ -1034,7 +1153,11 @@ export function isStalled(history: readonly Fix[]): boolean {
   return sub(last, first) < STALL_MIN_GAIN;
 }
 
-/** A different form of the same level, for the go-around. `null` if there is one form. */
+/**
+ * A different form of the same level, for the go-around. `null` if there is one
+ * form — which is every level the app ships today. **NOT WIRED (M6)**, with
+ * `isStalled` above.
+ */
 export function alternateForm(skill: SkillMeta, level: number, current: string): string | null {
   const meta = skill.levels[level];
   if (meta === undefined) return null;

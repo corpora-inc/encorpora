@@ -35,10 +35,11 @@ import {
 import { classifyError, isBugActive, pruneBugs, updateBug } from "./bugs.ts";
 import type { ErrorKind } from "./bugs.ts";
 import { preferredForm, skillMeta } from "./catalog.ts";
-import type { Catalog } from "./catalog.ts";
+import type { Catalog, SkillMeta } from "./catalog.ts";
 import { updatePTarget } from "./controller.ts";
 import { isFactEligible, latencyZ, observeLatency, ratingFor } from "./facts.ts";
 import type { FactScheduler } from "./facts.ts";
+import { detectFatigue } from "./scheduler.ts";
 import { fsrsScheduler } from "./fsrs.ts";
 import { ZERO, mul, sub } from "./math/fixed.ts";
 import type { Fix } from "./math/fixed.ts";
@@ -88,7 +89,10 @@ export type ApplyOptions = {
   /**
    * `A-17`: with speed rewards off, **every** latency-derived path is removed —
    * not just the visible one. φ stops moving, the FSRS rating stops reading the
-   * clock, and the fatigue detector stops looking at latency.
+   * clock, and `sessionFatigue` stops looking at latency.
+   *
+   * Nothing in the app writes it yet: the parent-facing toggle is M9. The engine
+   * honours it wherever it is passed, and `apply.test.ts` holds it to that.
    */
   readonly speedRewards?: boolean;
 };
@@ -159,6 +163,37 @@ function rollupWith(
     fatiguedCards: fatigued ? 1 : 0,
   };
   return clampRing([...rollups, fresh], MAX_ROLLUPS);
+}
+
+/**
+ * The bugs whose repair has now been scheduled.
+ *
+ * **Bug keys, not skill ids.** `replanReasons` reads this list against
+ * `bugKey(skill, bug)`, so writing the bare skill id made the guard dead: the two
+ * strings can never be equal, `includes` was constantly false, and every card of
+ * a skill with an active bug re-planned the batch on the grounds that no repair
+ * was scheduled — one card after the repair had been served.
+ *
+ * An injected repair card carries the key it targets. A *planned* REPAIR card
+ * does not: it was chosen because the skill has an active bug, and which one is
+ * a question only the learner state can answer — so every active bug on that
+ * skill is recorded.
+ */
+function repairedBugsAfter(
+  context: SessionContext,
+  learner: LearnerState,
+  meta: SkillMeta,
+  card: PlannedCard,
+): readonly string[] {
+  if (card.pool !== "REPAIR") return context.repairedBugs;
+  const keys =
+    card.repairs !== undefined
+      ? [card.repairs]
+      : meta.misconceptions
+          .map((bug) => bugKey(meta.id, bug))
+          .filter((key) => isBugActive(learner.bugs[key]));
+  const added = keys.filter((key) => !context.repairedBugs.includes(key));
+  return added.length === 0 ? context.repairedBugs : [...context.repairedBugs, ...added];
 }
 
 /**
@@ -280,10 +315,7 @@ export function applyResult(
     lastPHat: card.pHat,
     debutServed: card.pool === "NEW" ? context.debutServed + 1 : context.debutServed,
     debutSkill: card.pool === "NEW" ? (context.debutSkill ?? card.skillId) : context.debutSkill,
-    repairedBugs:
-      card.pool === "REPAIR" && !context.repairedBugs.includes(card.skillId)
-        ? [...context.repairedBugs, card.skillId]
-        : context.repairedBugs,
+    repairedBugs: repairedBugsAfter(context, learner, meta, card),
   };
 
   const events: readonly EngineEvent[] =
@@ -360,6 +392,65 @@ export function accuracyPoints(outcomes: readonly boolean[], from: number, to: n
   if (slice.length === 0) return 100;
   return Math.round((slice.filter(Boolean).length * 100) / slice.length);
 }
+
+/**
+ * The child's own typical session length, in minutes, from their rollups.
+ *
+ * A constant was wrong in a way that silenced the whole fatigue mechanism: a
+ * 24-card session is about three minutes for a quick child, so a hard-coded
+ * twelve-minute baseline meant the "minutes past the child's personal EWMA"
+ * indicator never fired, only one indicator was ever available, and
+ * `detectFatigue` needs two.
+ */
+export function personalSessionMinutes(learner: LearnerState): number {
+  const recent = learner.rollups.slice(-FATIGUE_ROLLUP_DAYS);
+  if (recent.length === 0) return DEFAULT_SESSION_MINUTES;
+  const seconds = recent.reduce((total, day) => total + day.seconds, 0);
+  return Math.max(1, Math.round(seconds / (60 * recent.length)));
+}
+
+const FATIGUE_ROLLUP_DAYS = 14;
+const DEFAULT_SESSION_MINUTES = 3;
+
+/** What the app observed about the card just answered, for the fatigue detector. */
+export type FatigueObservation = {
+  readonly latencyMs: number;
+  /** Whole minutes since the session began. The caller owns the clock. */
+  readonly minutesElapsed: number;
+};
+
+/**
+ * The fatigue verdict, built from the signals any caller actually has.
+ *
+ * Written once, here, because it is the point at which the harness and the app
+ * are most tempted to differ: the harness knows the persona's base latency and
+ * the app does not, and a detector built from what the *simulation* knows is a
+ * detector the shipped loop cannot run. Both now ask this, from the learner's own
+ * latency statistics and its own rollups.
+ *
+ * `speedRewards: false` is `A-17` taken literally — with speed rewards off,
+ * **every** latency-derived path is removed, including this one. A child whose
+ * parent has turned the clock off is not declared tired *because they were slow*.
+ */
+export function sessionFatigue(
+  learner: LearnerState,
+  context: SessionContext,
+  observed: FatigueObservation,
+  options: ApplyOptions = {},
+): boolean {
+  const third = Math.max(1, Math.floor(context.outcomes.length / 3));
+  return detectFatigue({
+    latencyRising:
+      options.speedRewards !== false && latencyZ(learner.latency, observed.latencyMs) > LATENCY_RISING_Z,
+    accuracyNowPoints: accuracyPoints(context.outcomes, context.outcomes.length - third, context.outcomes.length),
+    accuracyFirstThirdPoints: accuracyPoints(context.outcomes, 0, third),
+    minutesElapsed: observed.minutesElapsed,
+    personalSessionMinutes: personalSessionMinutes(learner),
+  });
+}
+
+/** A card a standard deviation slower than this child's own median is "rising". */
+const LATENCY_RISING_Z: Fix = 1_000_000 as Fix;
 
 /** θ across every touched skill, for the anti-stagnation stall check. */
 export function totalTheta(learner: LearnerState): Fix {

@@ -35,7 +35,28 @@ export function hash2(seed: number, counter: number): number {
   return mix32((mix32(seed >>> 0) ^ Math.imul(counter >>> 0, 0x9e3779b9)) >>> 0);
 }
 
-/** A draw in `[0, 1)`, as millionths. */
+/**
+ * A draw in `[0, 1)`, as millionths.
+ *
+ * **The modulo fold is not uniform, and the bound is stated rather than fixed.**
+ * `2³² mod 10⁶ = 967,296`, so a millionth below 967,296 comes up with probability
+ * 4295/2³² and one above it with 4294/2³² — a relative bias of 1/4294, or 0.023%,
+ * systematically toward "the draw is small". It is worth naming because `draw` is
+ * the primitive under every persona's slip rate, and the harness's independence
+ * from the engine is the argument the gates rest on.
+ *
+ * It is stated and not removed, and that is a measured decision. Rejection
+ * sampling is four lines and costs one extra mix on 0.023% of draws — but every
+ * draw after the first rejected one lands on a different card, so a run is a
+ * different sample of the same distribution, and two marginal legs moved: the
+ * reliability diagram's 0.65/0.70 pair went from −0.019 to −0.031 against a 0.03
+ * tolerance, and `A-05` began failing on 5 of 36 pilot legs. Neither is a defect
+ * the change introduced — they are the gates being sample-sensitive — but
+ * reshuffling 1.5 million cards to remove a 1-in-4294 bias, in a pull request
+ * whose subject is something else, is not a trade worth making. The tolerance for
+ * this bias is `1/4294` and anything that depends on less than that is not a
+ * finding.
+ */
 export function draw(seed: number, counter: number): Fix {
   return ((hash2(seed, counter) % FIX_SCALE) as Fix);
 }

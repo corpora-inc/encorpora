@@ -71,6 +71,15 @@ const memoryStorage: StateStorage = {
 export type ProgressStore = UseBoundStore<StoreApi<ProgressState>>
 
 /**
+ * A stored count, or zero. A record written by an older build is untrusted
+ * input: a string, a negative, a `NaN` from a half-written JSON blob.
+ */
+function whole(value: unknown): number {
+  const parsed = Number(value)
+  return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : 0
+}
+
+/**
  * One store per profile, keyed by the profile's namespace.
  *
  * A factory rather than a singleton because the profile dimension is the point:
@@ -83,11 +92,11 @@ export function createProgressStore(profileId: string): ProgressStore {
       (set) => ({
         ...INITIAL_PROGRESS,
         savePosition: (position) => set(position),
-        // Totals only ever rise. There is no code path that lowers `correct` or
-        // clears the model — no loss is a product rule, and the absence of a
-        // decrement here is where it is enforced (P-04's shape, one milestone
-        // early). The learner model itself is not a total and does move both
-        // ways; what never moves down is what the child is *shown*.
+        // Totals only ever rise, **including across a schema migration**. There
+        // is no code path that lowers `correct` — no loss is a product rule, and
+        // the absence of a decrement here is where it is enforced (P-04's shape,
+        // one milestone early). The learner model itself is not a total and does
+        // move both ways; what never moves down is what the child is *shown*.
         recordAnswer: (correct) =>
           set((state) => ({
             answered: state.answered + 1,
@@ -99,11 +108,25 @@ export function createProgressStore(profileId: string): ProgressStore {
       {
         name: storageKey(profileId, "progress"),
         // 2: the fixed ladder's `rung`/`rungCorrect` became the engine's encoded
-        // learner state at M5. A v1 record has no model in it, so it migrates to
-        // a cold start — which is the correct outcome and not a loss, because
-        // nothing shipped on v1.
+        // learner state at M5. A v1 record has no model in it, so **the model**
+        // migrates to a cold start.
+        //
+        // The totals do not. `{ ...INITIAL_PROGRESS }` reset `answered`,
+        // `correct` and `bugs` to zero eight lines below the comment above
+        // saying no code path lowers them — immaterial today, because nothing
+        // shipped on v1, and exactly the wrong template for the next schema bump
+        // to copy. Only `learner` and `seedCursor` are the model's; the counts
+        // are the child's.
         version: 2,
-        migrate: () => ({ ...INITIAL_PROGRESS }),
+        migrate: (persisted) => {
+          const before = persisted as Partial<Progress> | undefined
+          return {
+            ...INITIAL_PROGRESS,
+            answered: whole(before?.answered),
+            correct: whole(before?.correct),
+            bugs: before?.bugs ?? {},
+          }
+        },
         storage: createJSONStorage(() =>
           typeof localStorage === "undefined" ? memoryStorage : localStorage,
         ),
