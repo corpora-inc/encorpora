@@ -101,11 +101,16 @@ jobs:
           # makes the producer take SIGPIPE and the pipeline return 141, which
           # has silently inverted a check in this repo before. `shopt -s
           # nocasematch` gives case-insensitive matching with no subprocess.
+          #
+          # The list is written to a file rather than read from a process
+          # substitution so that `set -e` sees git's exit status: a failed
+          # `git diff` inside `< <(…)` would be an empty list and a silent pass.
+          added="$(mktemp)"
           if [ -n "${BASE}" ]; then
-            added() { git diff -z --name-only --diff-filter=A --no-renames "${BASE}" "${HEAD}"; }
+            git diff -z --name-only --diff-filter=A --no-renames "${BASE}" "${HEAD}" > "${added}"
           else
             echo "No base commit resolved; inspecting the head commit's additions only."
-            added() { git diff-tree -z --name-only --diff-filter=A --no-renames --no-commit-id -r "${HEAD}"; }
+            git diff-tree -z --name-only --diff-filter=A --no-renames --no-commit-id -r "${HEAD}" > "${added}"
           fi
 
           shopt -s nocasematch
@@ -124,7 +129,7 @@ jobs:
                 fail=1
                 ;;
             esac
-          done < <(added)
+          done < "${added}"
 
           if [ "${fail}" -ne 0 ]; then
             echo "Signing-material guard failed. gitleaks cannot catch these: a binary keystore has no PEM armour to match and is too small for the big-file guard."
