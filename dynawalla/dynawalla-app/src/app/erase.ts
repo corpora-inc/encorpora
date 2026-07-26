@@ -12,17 +12,25 @@
 // resets also re-write their own keys with the default values, which is
 // correct — that is genuinely the state of the app afterwards.
 
-import { forgetEverything } from "./profile.ts"
+import { DEFAULT_PROFILE_ID, forgetEverything } from "./profile.ts"
 import { forgetCachedStores } from "./stores.ts"
-import { DEFAULT_PROFILE_ID } from "./profile.ts"
+import { useThemeStore } from "./theme.ts"
 import { useProfiles } from "../profiles/store.ts"
 import { useSettings, DEFAULT_SETTINGS } from "../settings/store.ts"
 import { usePacks } from "../packs/registry.ts"
 
 export function eraseEverything(): void {
   forgetEverything()
-  useProfiles.setState({ profiles: [{ id: DEFAULT_PROFILE_ID, name: "" }], currentId: DEFAULT_PROFILE_ID })
+  useProfiles.setState({
+    profiles: [{ id: DEFAULT_PROFILE_ID, name: "" }],
+    currentId: DEFAULT_PROFILE_ID,
+  })
   useSettings.setState({ ...DEFAULT_SETTINGS })
+  // The theme is a device preference rather than a child's data, so it is the
+  // one that looks skippable — and skipping it leaves the app painted in a
+  // theme whose key has just been deleted, which reverts by itself at the next
+  // launch. Erased means erased, and the screen has to agree with the disk.
+  useThemeStore.setState({ mode: "system" })
   usePacks.setState({ installed: [] })
   forgetCachedStores()
 }
