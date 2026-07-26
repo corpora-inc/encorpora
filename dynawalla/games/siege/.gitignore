@@ -1,0 +1,4 @@
+node_modules
+dist
+qa/shots
+qa/tmp
