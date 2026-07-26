@@ -582,15 +582,23 @@ jobs:
   # what dynawalla's `engines` pins and what its `--experimental-strip-types` tests
   # are written against.
   #
-  # Running the gates on ubuntu is half of CG-16: the committed generator output
-  # hashes are written on macOS and verified here, so a generator that is not
-  # platform-stable fails rather than shipping different exercises per device.
+  # Two runners, because CG-16 is a claim about two operating systems: generators
+  # run in a WebView on iOS, Android and desktop, and output that is not
+  # platform-stable makes every committed golden transcript and every bug report
+  # irreproducible. Verifying the committed hashes on one runner would only prove
+  # they match whichever machine happened to write them. `fail-fast: false` so a
+  # divergence shows which side diverged. ci-gate takes the combined result of the
+  # matrix, so this is still one entry in its `needs` and no new required context.
   dynawalla-curriculum:
-    name: dynawalla-curriculum · tests + gates
+    name: dynawalla-curriculum · tests + gates (${{ matrix.os }})
     needs: changes
     if: needs.changes.outputs.dynawalla_curriculum == 'true'
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
