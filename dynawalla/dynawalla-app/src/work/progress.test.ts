@@ -22,13 +22,13 @@ test("three children on one device have independent progress", () => {
   const stores = ["a", "b", "c"].map((id) => ({ id, store: createProgressStore(id) }))
 
   stores.forEach(({ store }, i) => {
-    store.getState().savePosition({ rung: i, rungCorrect: i, seedCursor: i * 10 })
+    store.getState().savePosition({ learner: `state-${String(i)}`, seedCursor: i * 10, day: i })
     for (let n = 0; n <= i; n++) store.getState().recordAnswer(true)
     store.getState().countBug("mis.add.borrow-across-zero")
   })
 
   stores.forEach(({ store }, i) => {
-    assert.equal(store.getState().rung, i)
+    assert.equal(store.getState().learner, `state-${String(i)}`)
     assert.equal(store.getState().seedCursor, i * 10)
     assert.equal(store.getState().correct, i + 1)
   })
@@ -38,33 +38,33 @@ test("three children on one device have independent progress", () => {
   for (const { id, store } of stores) {
     const written = ephemeral.get(storageKey(id, "progress"))
     assert.ok(written !== undefined)
-    assert.equal((JSON.parse(written) as { state: { rung: number } }).state.rung, store.getState().rung)
+    assert.equal((JSON.parse(written) as { state: { learner: string } }).state.learner, store.getState().learner)
   }
 })
 
 test("progress survives a relaunch: a new store on the same key reads it back", () => {
   ephemeral.clear()
   const first = createProgressStore("relaunch")
-  first.getState().savePosition({ rung: 5, rungCorrect: 2, seedCursor: 41 })
+  first.getState().savePosition({ learner: "a-model", seedCursor: 41, day: 7 })
   first.getState().recordAnswer(true)
   first.getState().recordAnswer(false)
 
   const second = createProgressStore("relaunch")
-  assert.equal(second.getState().rung, 5)
-  assert.equal(second.getState().rungCorrect, 2)
+  assert.equal(second.getState().learner, "a-model")
+  assert.equal(second.getState().day, 7)
   assert.equal(second.getState().seedCursor, 41)
   assert.equal(second.getState().answered, 2)
   assert.equal(second.getState().correct, 1)
 })
 
-test("totals only rise: no action lowers a count or a rung", () => {
+test("totals only rise: no action lowers a count", () => {
   ephemeral.clear()
   const store = createProgressStore("monotone")
-  store.getState().savePosition({ rung: 3, rungCorrect: 1, seedCursor: 9 })
+  store.getState().savePosition({ learner: "a-model", seedCursor: 9, day: 1 })
   for (let i = 0; i < 5; i++) store.getState().recordAnswer(false)
   assert.equal(store.getState().answered, 5)
   assert.equal(store.getState().correct, 0)
-  assert.equal(store.getState().rung, 3, "a run of wrong answers moved the ladder")
+  assert.equal(store.getState().learner, "a-model", "a run of wrong answers cleared the model")
 })
 
 test("diagnoses are counted, and only as ids", () => {
@@ -82,6 +82,6 @@ test("diagnoses are counted, and only as ids", () => {
 test("a fresh profile starts at the bottom of the ladder", () => {
   ephemeral.clear()
   const store = createProgressStore(DEFAULT_PROFILE_ID)
-  assert.equal(store.getState().rung, INITIAL_PROGRESS.rung)
+  assert.equal(store.getState().learner, INITIAL_PROGRESS.learner)
   assert.equal(store.getState().seedCursor, 0)
 })

@@ -9,7 +9,11 @@
   },
   "scripts": {
     "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "bench": "node --experimental-strip-types --no-warnings=ExperimentalWarning bin/dw-bench.mjs",
+    "harness": "node --experimental-strip-types --no-warnings=ExperimentalWarning bin/dw-harness.mjs smoke",
+    "harness:pilot": "node --experimental-strip-types --no-warnings=ExperimentalWarning bin/dw-harness.mjs pilot",
+    "harness:nightly": "node --experimental-strip-types --no-warnings=ExperimentalWarning bin/dw-harness.mjs nightly"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",

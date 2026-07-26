@@ -4,17 +4,14 @@ import assert from "node:assert/strict"
 import { columnOpFamily, exact, nodeById, FORM_FREE_ENTRY } from "./curriculum.ts"
 import type { Rational } from "./curriculum.ts"
 import { entryModelFor } from "./entry.ts"
-import {
-  advanceRung,
-  easier,
-  rungAt,
-  CORRECT_PER_RUNG,
-  LADDER,
-  LADDER_FORMS,
-  SLATE_COLUMNS,
-} from "./ladder.ts"
+import { rungAt, LADDER, LADDER_FORMS, SLATE_COLUMNS } from "./ladder.ts"
 
-test("every rung binds an active skill and a level that skill actually has", () => {
+// Selection moved to the learner model at M5. What is asserted here is what the
+// slice table still is: an ordered list of (skill, level) pairs that the app can
+// generate, draw and judge. The scheduler's own behaviour is tested against a
+// 72-skill synthetic catalog in `engine/src/select.test.ts`.
+
+test("every pair binds an active skill and a level that skill actually has", () => {
   // `rungOf` throws on construction, so importing the module is most of this
   // test. What is left is the claim that nothing was silently clamped.
   for (const rung of LADDER) {
@@ -25,7 +22,7 @@ test("every rung binds an active skill and a level that skill actually has", () 
   }
 })
 
-test("the ladder climbs: item difficulty never goes down a rung", () => {
+test("the slice climbs: item difficulty never goes down a step", () => {
   // `b_item` is the node's own contribution plus the generator's parameter
   // offset, and the two are not interchangeable: `sub(3,3,2,1)` has a *lower*
   // parameter offset than `sub(4,4,2,0)` and is nonetheless the harder item,
@@ -50,14 +47,14 @@ test("the ladder climbs: item difficulty never goes down a rung", () => {
   }
 })
 
-test("the ladder reaches the across-zero case the slice exists to test", () => {
+test("the slice reaches the across-zero case it exists to test", () => {
   const top = rungAt(LADDER.length - 1)
   assert.equal(top.skillId, "dw.add.regroup.subtract-across-zero")
   assert.ok(top.params.acrossZero >= 2, "the top rung borrows through two zeros")
   assert.equal(top.params.op, "sub")
 })
 
-test("every rung the ladder can serve has an entry model — the app-side CG-8", () => {
+test("every pair the slice can serve has an entry model — the app-side CG-8", () => {
   // A curriculum row the app cannot draw is exactly what CG-8 exists to stop on
   // the curriculum side. This is the same claim from the app's side: a rung
   // whose schema has no registered entry model is a card a child cannot answer.
@@ -70,41 +67,11 @@ test("every rung the ladder can serve has an entry model — the app-side CG-8",
   }
 })
 
-test("the ladder asks for one form, and it is the one with a model", () => {
+test("the slice asks for one form, and it is the one with a model", () => {
   assert.deepEqual(LADDER_FORMS, [FORM_FREE_ENTRY])
 })
 
-test("the position only ever rises", () => {
-  let rung = 0
-  let rungCorrect = 0
-  for (let i = 0; i < 200; i++) {
-    const next = advanceRung(rung, rungCorrect)
-    assert.ok(next.rung >= rung, "a correct answer lowered the ladder position")
-    rung = next.rung
-    rungCorrect = next.rungCorrect
-  }
-  assert.equal(rung, LADDER.length - 1, "the top rung repeats rather than running off the end")
-})
-
-test("four correct answers advance one rung, and not three", () => {
-  let state = { rung: 0, rungCorrect: 0 }
-  for (let i = 1; i < CORRECT_PER_RUNG; i++) {
-    state = advanceRung(state.rung, state.rungCorrect)
-    assert.equal(state.rung, 0, `advanced after ${String(i)} correct`)
-  }
-  state = advanceRung(state.rung, state.rungCorrect)
-  assert.equal(state.rung, 1)
-  assert.equal(state.rungCorrect, 0)
-})
-
-test("the retry rung is one easier and never below the bottom", () => {
-  assert.equal(easier(0), 0)
-  assert.equal(easier(1), 0)
-  assert.equal(easier(LADDER.length - 1), LADDER.length - 2)
-  assert.equal(easier(999), LADDER.length - 2)
-})
-
-test("the slate reservation covers the widest number any rung can write", () => {
+test("the slate reservation covers the widest number any pair can write", () => {
   const widest = LADDER.reduce((n, rung) => Math.max(n, rung.params.digits), 0)
   assert.equal(SLATE_COLUMNS, widest)
   assert.equal(SLATE_COLUMNS, 4, "the M2 ladder tops out at four digits")

@@ -23,14 +23,16 @@ import {
   CELLS_PER_STAR,
   milestoneAt,
 } from "../world/construction.ts"
-import { LADDER, rungAt } from "./ladder.ts"
+import { LADDER } from "./ladder.ts"
 import { difficultyOf, respond } from "./respond.ts"
 import { generateProblem, type Card, type CardRole } from "./session.ts"
+import { planAt } from "./plan-fixtures.ts"
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 
-function problemAt(rung: number, role: CardRole): Card {
-  return { kind: "problem", exercise: generateProblem(rungAt(rung), rung * 31 + 7), rung, role }
+function problemAt(step: number, role: CardRole): Card {
+  const plan = planAt(step, step * 31 + 7)
+  return { kind: "problem", exercise: generateProblem(plan), plan, role }
 }
 
 const TOP = LADDER.length - 1
@@ -80,15 +82,22 @@ test("repairing what just broke is the thing that earns tier 2", () => {
   assert.deepEqual(repair.observation, { kind: "repaired", apertures: null })
 })
 
-test("difficulty is the ladder position and nothing else", () => {
-  assert.equal(difficultyOf(0), 0)
-  assert.equal(difficultyOf(TOP), 1)
-  for (let rung = 1; rung <= TOP; rung++) {
-    assert.ok(difficultyOf(rung) > difficultyOf(rung - 1))
+test("difficulty is the item's own difficulty and nothing else", () => {
+  // It rises with the slice, which is ordered by `b_item`, and it stays inside
+  // 0…1 at both ends. What it must not do is carry a run length, a speed or a
+  // count of anything the child did — `difficultyOf` takes one card.
+  // The slice's easiest step is not the catalog's easiest item — `add-multidigit`
+  // level 0 sits below it — so the bottom of the scale is not 0 here, and that is
+  // the scale being a curriculum fact rather than an index.
+  assert.ok(difficultyOf(planAt(0, 1)) >= 0 && difficultyOf(planAt(0, 1)) < 1)
+  assert.equal(difficultyOf(planAt(TOP, 1)), 1, "the slice's hardest step is the catalog's hardest item")
+  for (let step = 1; step <= TOP; step++) {
+    assert.ok(
+      difficultyOf(planAt(step, 1)) >= difficultyOf(planAt(step - 1, 1)),
+      `step ${String(step)} is easier than the one before it`,
+    )
   }
-  // Out of range clamps rather than escaping the scale.
-  assert.equal(difficultyOf(-5), 0)
-  assert.equal(difficultyOf(TOP + 40), 1)
+  assert.equal(difficultyOf({ ...planAt(0, 1), skillId: "no.such.skill" }), 0, "an unknown card escaped the scale")
 })
 
 test("a milestone is passed through to both the reaction and the character", () => {
@@ -109,7 +118,7 @@ test("a contrast card responds with nothing at all", () => {
     board: { rows: [], left: { label: "", total: "" }, right: { label: "", total: "" } } as never,
     misconception: "mis.add.borrow-across-zero" as never,
     representation: "rep.counting-board" as never,
-    rung: 4,
+    plan: planAt(4, 1),
   }
   assert.equal(respond(locate, true, 20), null)
 })

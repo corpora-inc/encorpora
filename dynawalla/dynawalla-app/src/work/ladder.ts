@@ -1,33 +1,25 @@
-// The fixed difficulty ladder.
+// The M2 slice, as an ordered table.
 //
-// **There is no adaptivity here, on purpose.** The learner model is M5. This is
-// seven rungs in a written order and one counter: four correct answers at a rung
-// advance to the next, the top rung repeats forever, and nothing ever descends.
-// That last clause is not a simplification — no loss, no demotion, no streak is a
-// product rule (MISSION, engagement ethics), so the counter is monotone by
-// construction rather than by a check somewhere.
+// **Selection is the learner model's, not this file's.** Until M5 these seven
+// rungs *were* the scheduler: four correct answers advanced one rung and nothing
+// ever descended. The engine now chooses, and what is left here is the thing the
+// ladder always actually was — the ordered list of (skill, level) pairs the M2
+// slice can serve, from two-digit borrowing to the across-zero case the slice
+// exists to test.
 //
-// A retry or a repair item is served at a rung *without* moving the position;
-// only `rungCorrect` moves the ladder. Otherwise getting an item wrong and then
-// right on the easier retry would promote a child for the easier item.
+// It still earns its place. `SLATE_COLUMNS` reserves the widest number any of
+// them can write, so the units column does not move between a two-digit problem
+// and a four-digit one (`Q-01`); `fixtures.ts` finds `5001 − 2798` by searching
+// a named pair; and `ladder.test.ts` asserts that every pair binds an active
+// skill, climbs in difficulty, and has an entry model — which is the app's half
+// of gate CG-8 over the whole slice.
 //
-// The rungs walk the two M2 skills from two-digit borrowing to the across-zero
-// case the slice exists to test: `dw.add.regroup.subtract-multidigit` levels 0–3,
-// then `dw.add.regroup.subtract-across-zero` levels 0–2. The parameters are the
-// curriculum's, read from the graph — this file names a (skill, level) pair and
-// nothing else, so a level's difficulty stays a curriculum fact.
+// The parameters are the curriculum's, read from the graph. This file names a
+// (skill, level) pair and nothing else, so a level's difficulty stays a
+// curriculum fact.
 
-import {
-  columnOpParamSchema,
-  nodeById,
-  skillId,
-  FORM_FREE_ENTRY,
-  MIS_BORROW_ACROSS_ZERO,
-} from "./curriculum.ts"
-import type { ColumnOpParams, MalRuleId, SkillId, SkillNode } from "./curriculum.ts"
-
-/** Correct answers at a rung before the ladder moves up. */
-export const CORRECT_PER_RUNG = 4
+import { columnOpParamSchema, nodeById, skillId, FORM_FREE_ENTRY } from "./curriculum.ts"
+import type { ColumnOpParams, SkillId, SkillNode } from "./curriculum.ts"
 
 /** Cards in one run before a designed stopping point is offered. */
 export const RUN_LENGTH = 12
@@ -80,61 +72,29 @@ export function rungAt(index: number): Rung {
   return rung
 }
 
-/** One rung easier, for the Stage-1 retry. Never below the bottom. */
-export function easier(index: number): number {
-  return Math.max(0, Math.min(index, LADDER.length - 1) - 1)
-}
-
 /**
  * Parameters that *guarantee* an item exercises the step a misconception breaks.
  *
- * This is what makes the follow-up after a contrast pair a repair rather than
- * another card. The child's own rung will not do: `dw.add.regroup.subtract-
- * multidigit` level 2 asks for two regroupings and no zeros, and a zero turns up
- * in a drawn digit often enough to fire this diagnosis anyway — 155 items in
- * 4,000, by the curriculum's own measurement. Serving the next item from that
- * same rung would usually hand back a problem with no zero in it at all, which
- * tests nothing about the step that just broke.
- *
- * So the repair comes from the lowest rung whose *parameters* demand the
- * structure. It is the easiest problem on the ladder that cannot avoid the
- * misunderstanding.
+ * The predicate the engine's catalog is built from — see `catalog.ts`, which
+ * turns it into each level's `guarantees` so the scheduler can pick a repair
+ * item without knowing what a generator parameter is. It is here as well because
+ * `FIRST_ACROSS_ZERO` is the same question asked of the slice table.
  */
-const guaranteesAcrossZero = (params: ColumnOpParams): boolean =>
+export const guaranteesAcrossZero = (params: ColumnOpParams): boolean =>
   params.op === "sub" && params.acrossZero >= 1
 
-const REPAIR_STRUCTURE: readonly (readonly [MalRuleId, (params: ColumnOpParams) => boolean])[] = [
-  [MIS_BORROW_ACROSS_ZERO, guaranteesAcrossZero],
-]
-
 /**
- * The first rung whose parameters *guarantee* a regrouping across a zero.
+ * The first pair whose parameters *guarantee* a regrouping across a zero.
  *
- * Derived from the same predicate the repair rung uses, so the two cannot
- * disagree about where the across-zero content starts. The character notices
- * the child arriving here; nothing else reads it.
+ * Derived from the same predicate the engine's repair level uses, so the two
+ * cannot disagree about where the across-zero content starts.
  */
 export const FIRST_ACROSS_ZERO: number = LADDER.findIndex((rung) =>
   guaranteesAcrossZero(rung.params),
 )
 
-/** The rung a repair item comes from, or `fallback` when nothing is bound. */
-export function repairRung(misconception: MalRuleId, fallback: number): number {
-  const bound = REPAIR_STRUCTURE.find(([id]) => id === misconception)
-  if (bound === undefined) return fallback
-  const index = LADDER.findIndex((rung) => bound[1](rung.params))
-  return index === -1 ? fallback : index
-}
-
-/** Where the position goes after a correct answer at `index`. Monotone. */
-export function advanceRung(index: number, rungCorrect: number): { rung: number; rungCorrect: number } {
-  const next = rungCorrect + 1
-  if (next < CORRECT_PER_RUNG) return { rung: index, rungCorrect: next }
-  return { rung: Math.min(index + 1, LADDER.length - 1), rungCorrect: 0 }
-}
-
 /**
- * The widest number any rung can put on the slate.
+ * The widest number any pair can put on the slate.
  *
  * The slate reserves this many numeral columns for every item, so a two-digit
  * problem and a four-digit one occupy the same box and the layout does not move

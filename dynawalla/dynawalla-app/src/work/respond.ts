@@ -21,20 +21,28 @@
 import { aperturesIn, milestoneAt } from "../world/construction.ts"
 import type { Observation } from "../character/voice.ts"
 import type { Outcome } from "../reactions/tiers.ts"
-import { LADDER } from "./ladder.ts"
+import { difficultyRange, engineCatalog } from "./catalog.ts"
+import type { PlannedCard } from "./plan.ts"
 import type { Card } from "./session.ts"
 
 /**
- * The ladder position as a 0…1 difficulty.
+ * The item's difficulty as a 0…1 number, for the reaction tier.
  *
- * The stand-in for `(b_item − θ_s)` until the learner model lands at M5. It is
- * an item property against a fixed ladder, which is the honest version of "this
- * one was harder" when there is no estimate of the child in the system at all.
+ * It is `b_item` normalised over the range the catalog can actually serve — an
+ * item property, not a claim about the child. `(b_item − θ_s)` is the quantity
+ * the learner model reasons about, and it is deliberately *not* what the world
+ * reacts to: a child and the model can disagree about whether something was
+ * hard, and the reaction should follow the problem.
+ *
+ * This replaced the ladder position, which was the same idea against a fixed
+ * seven-rung table. Now that difficulty is a curriculum fact rather than an
+ * index, so is this.
  */
-export function difficultyOf(rung: number): number {
-  const top = LADDER.length - 1
-  if (top <= 0) return 0
-  return Math.min(Math.max(rung, 0), top) / top
+export function difficultyOf(plan: PlannedCard): number {
+  const { low, high } = difficultyRange()
+  const b = engineCatalog().byId.get(plan.skillId)?.levels[plan.level]?.b
+  if (b === undefined || high <= low) return 0
+  return Math.min(1, Math.max(0, (b - low) / (high - low)))
 }
 
 export interface Response {
@@ -63,7 +71,7 @@ export function respond(card: Card, correct: boolean, placed: number): Response 
 
   const outcome: Outcome = {
     correct,
-    difficulty: difficultyOf(card.rung),
+    difficulty: difficultyOf(card.plan),
     repaired,
     milestone,
   }
