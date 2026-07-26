@@ -24,6 +24,7 @@ jobs:
     name: changes
     runs-on: ubuntu-latest
     outputs:
+      ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
       dja: ${{ steps.filter.outputs.dja }}
       # dynawalla_*, native and shared_ts are declared ahead of the jobs that
@@ -82,6 +83,11 @@ jobs:
             fi
           }
 
+          # The gate's own code. `.github/scripts/**` holds the adversarial
+          # reviewer, whose failure mode when it regresses is to PASS wrongly —
+          # so its tests must run on any change to it (or to this workflow, or
+          # to the workflow that invokes it).
+          set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
           set_output corpan_app '^(corpan/corpan-app/|\.github/workflows/ci\.yml$)'
           set_output dja '^(corpan/dja/|\.github/workflows/ci\.yml$)'
           set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
@@ -246,6 +252,28 @@ jobs:
         # gate fast and unable to jam the queue.
         run: python -m pytest cor/utils -q
 
+  # Unit tests for the adversarial-review gate (.github/scripts). That script is
+  # a required status check whose regression mode is to pass wrongly, which no
+  # other job can detect — these assertions are the only signal. stdlib + pytest
+  # only (the script itself has no third-party deps), so it is fast and cannot
+  # jam the merge queue. Needs fetch-depth: 0 — the range tests build a real
+  # throwaway repo, but `git` must be usable from the checkout.
+  ci-scripts:
+    name: ci-scripts · tests
+    needs: changes
+    if: needs.changes.outputs.ci_scripts == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test deps (pinned)
+        run: python -m pip install --disable-pip-version-check "pytest==8.3.4"
+      - name: Run CI script tests
+        run: python -m pytest .github/scripts -q
+
   lambda:
     name: lambda · tests
     needs: changes
@@ -397,7 +425,7 @@ jobs:
   # Skipped needs are fine; any failure or cancellation fails the gate.
   ci-gate:
     name: ci-gate
-    needs: [changes, corpan-app, dja, lambda, web-io, changed-packs, terraform, pack-catalog]
+    needs: [changes, ci-scripts, corpan-app, dja, lambda, web-io, changed-packs, terraform, pack-catalog]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
