@@ -2,11 +2,17 @@ name: adversarial-review
 
 # The machine gatekeeper that replaces the human. Three adversarial lenses
 # (correctness / security / pack-compat) read the PR diff and emit ONE pass/fail
-# status. Pass = no unresolved high-severity finding. Single job named
-# `adversarial-review` so it always reports — safe as a required check on `main`.
+# status. Pass = no blocking-severity finding AND every lens actually reviewed
+# 100% of the diff. Single job named `adversarial-review` so it always reports —
+# safe as a required check on `main`.
 #
-# Cost: one model call per lens per PR/queue-entry. Tune ADVERSARIAL_MODEL and
-# MAX_DIFF_BYTES to manage spend; a false positive that blocks the queue is a
+# The script FAILS CLOSED: a lens error, an unparseable model reply, a git
+# failure, or an uncovered diff all exit non-zero. Do not "fix" a red gate by
+# relaxing that; fix the cause.
+#
+# Cost: one model call per lens PER CHUNK. Large diffs are chunked rather than
+# truncated, so a 4x-budget PR costs 4x the calls. Tune ADVERSARIAL_MODEL and
+# MAX_CHUNK_CHARS to manage spend; a false positive that blocks the queue is a
 # detrimental process — fix the prompt fast rather than routing around the gate.
 
 on:
@@ -29,6 +35,12 @@ jobs:
   adversarial-review:
     name: adversarial-review
     runs-on: ubuntu-latest
+    # The merge queue's check_response_timeout_minutes is 60. Without an explicit
+    # limit this job inherits the 360-minute default, so a hung run would burn
+    # the queue's entire budget before reporting. Bounded well under 60: the
+    # script runs lens/chunk calls concurrently with a 120s per-request timeout
+    # and at most 3 attempts each.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,6 +57,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           ADVERSARIAL_MODEL: ${{ vars.ADVERSARIAL_MODEL }}
+          MAX_CHUNK_CHARS: ${{ vars.MAX_CHUNK_CHARS }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
