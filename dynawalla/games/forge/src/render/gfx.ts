@@ -29,9 +29,6 @@ export const PAL = {
   text: "#e8e2d6",
 } as const
 
-export const FONT_LABEL = `900 {S}px ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
-export const FONT_NUM = `800 {S}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`
-
 export type Surface = {
   canvas: HTMLCanvasElement
   ctx: CanvasRenderingContext2D
@@ -78,28 +75,6 @@ export function makeSurface(host: HTMLElement): Surface {
   return s
 }
 
-export function roundRect(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number,
-): void {
-  const rr = Math.min(r, w / 2, h / 2)
-  ctx.beginPath()
-  ctx.moveTo(x + rr, y)
-  ctx.lineTo(x + w - rr, y)
-  ctx.arcTo(x + w, y, x + w, y + rr, rr)
-  ctx.lineTo(x + w, y + h - rr)
-  ctx.arcTo(x + w, y + h, x + w - rr, y + h, rr)
-  ctx.lineTo(x + rr, y + h)
-  ctx.arcTo(x, y + h, x, y + h - rr, rr)
-  ctx.lineTo(x, y + rr)
-  ctx.arcTo(x, y, x + rr, y, rr)
-  ctx.closePath()
-}
-
 /** A stamped-plate corner: 45-degree chamfers, not radii. Industrial, not soft. */
 export function chamferRect(
   ctx: CanvasRenderingContext2D,
@@ -125,7 +100,7 @@ export function chamferRect(
 let plateTex: CanvasPattern | null = null
 
 /** Hammered iron: dents and grain, generated once and reused as a pattern. */
-export function platePattern(ctx: CanvasRenderingContext2D): CanvasPattern | null {
+function platePattern(ctx: CanvasRenderingContext2D): CanvasPattern | null {
   if (plateTex) return plateTex
   const size = 160
   const c = document.createElement("canvas")
@@ -240,7 +215,7 @@ export function plate(
 
 const glowCache = new Map<string, HTMLCanvasElement>()
 
-export function glowSprite(color: string, size = 128): HTMLCanvasElement {
+function glowSprite(color: string, size = 128): HTMLCanvasElement {
   const key = `${color}@${size}`
   const hit = glowCache.get(key)
   if (hit) return hit
@@ -290,7 +265,6 @@ export const GLOW_HOT = "rgba(255,140,40,ALPHA)"
 export const GLOW_WHITE = "rgba(255,240,210,ALPHA)"
 export const GLOW_GOLD = "rgba(255,205,84,ALPHA)"
 export const GLOW_COLD = "rgba(99,224,255,ALPHA)"
-export const GLOW_RED = "rgba(255,60,20,ALPHA)"
 
 export type TextOpts = {
   size: number

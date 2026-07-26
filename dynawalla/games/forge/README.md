@@ -16,18 +16,17 @@ open /bench.html # frame-budget measurement (see "Performance")
 
 ## The game in one screen
 
-The furnace runs down the left. Six bays: **BELLOWS · CRUCIBLE · HAMMER · ANVIL ·
-FOUNDRY · REACTOR**. Bellows make sparks. Crucibles make bellows. Hammers make
-crucibles. All the way up. Buying a REACTOR does not make you a single spark — it
-makes the thing that makes the thing that makes the thing that makes sparks, and
-about ninety seconds later the curve you are watching is visibly steeper than the
-one you were watching before.
+The furnace runs down the left: **BELLOWS · CRUCIBLE · HAMMER · ANVIL · FOUNDRY ·
+REACTOR**. Bellows make sparks, crucibles make bellows, hammers make crucibles,
+all the way up. Buying a REACTOR does not make you a single spark — it makes the
+thing that makes the thing that makes the thing that makes sparks, and ninety
+seconds later the curve you are watching is visibly steeper.
 
-The workbench is on the right. A bar of hot iron on the anvil with `15 − 8` burned
-into it, four cast ingots below it, and a hammer. Hit the right one.
+The workbench is on the right: a bar of hot iron on the anvil with `15 − 8`
+burned into it, four cast ingots below it, and a hammer. Hit the right one.
 
-There are no instructions because none are needed. Everything else appears when
-it becomes relevant, and nothing ever appears with a tutorial attached.
+No instructions, because none are needed. Everything appears when it becomes
+relevant and nothing arrives with a tutorial attached.
 
 ---
 
@@ -81,10 +80,9 @@ radical being evaluated, in figures, with no words:
 ```
 
 Then the forge is plunged, the screen fills with steam, everything resets, and
-the permanent multiplier makes the next four minutes take ninety seconds.
-
-**Plus** the offline haul, claimed with one strike, at full value for a right
-answer and half for a wrong one — generous, and never a lecture.
+the permanent multiplier makes the next four minutes take ninety seconds. Plus
+the offline haul, claimed with one strike, at full value for a right answer and
+half for a wrong one — generous, never a lecture.
 
 ### Milestones fire on the number you are watching
 
@@ -106,12 +104,10 @@ the exponent set in ordinary large figures, raised, because from that point on
 
 Floats live in exactly one place: the renderer, where a pixel is a pixel.
 
-`src/core/economy.test.ts` covers determinism, the carry that stops a slow station
-rounding itself to a standstill, the exactness of the cost curve, the doubling,
-and the prestige root. `src/scene/header.test.ts` exists because the printed heat
-multiplier and the applied heat multiplier drifted apart once already, when heat
-went from linear to square-root and only the economy was updated — **a maths game
-that displays a multiplier it is not applying is the one bug this cannot ship.**
+`src/scene/header.test.ts` exists because the printed heat multiplier and the
+applied one drifted apart once already, when heat went from linear to
+square-root and only the economy was updated — **a maths game that displays a
+multiplier it is not applying is the one bug this cannot ship.**
 
 ---
 
@@ -120,20 +116,17 @@ that displays a multiplier it is not applying is the one bug this cannot ship.**
 A working smithy at two in the morning. Everything is either cold iron or it is
 glowing, and the only light in the room comes from metal too hot to touch.
 
-Stamped plate with 45° chamfers, never radii. Rivets. Hammered-iron pattern
+Stamped plate with 45° chamfers, never radii. Rivets. A hammered-iron pattern
 generated once at startup. Labels in heavy tracked-out uppercase; every figure in
 tabular monospace so digits never dance as they tick. Amber through white-hot for
-everything that works, **cyan reserved exclusively for the quench**, gold
-exclusively for forge marks. One canvas, no DOM, no layout thrash.
+everything that works, **cyan reserved exclusively for the quench**, gold for
+forge marks. One canvas, no DOM, no layout thrash.
 
-The furnace is drawn at full height from the very first frame, with five empty
+The furnace draws at full height from the very first frame, with five empty
 mounting bays and bolt holes, so the column reads as a machine you have not
-finished building rather than as a screen that failed to load. Every station that
-arrives later visibly fills one of them.
-
-Colour never carries meaning alone: affordable rows also gain a filled chevron and
-a raised bevel, sealed rows also carry chain links, and every multiplier is
-printed as well as drawn.
+finished building rather than a screen that failed to load. Colour never carries
+meaning alone: affordable rows also gain a filled chevron and a raised bevel,
+sealed rows also carry chain links, every multiplier is printed as well as drawn.
 
 ### Juice, by name
 

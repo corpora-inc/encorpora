@@ -165,11 +165,6 @@ export function doublings(t: Tier): bigint {
   return t.purchased / DOUBLE_EVERY + t.bonusDoublings
 }
 
-/** How many more purchases until this station's output doubles. */
-export function toNextDouble(t: Tier): bigint {
-  return DOUBLE_EVERY - (t.purchased % DOUBLE_EVERY)
-}
-
 /**
  * The global multiplier, as an exact rational.
  *   heat   — (100 + 10*sqrt(heat))/100, earned at the anvil, bleeds when you stop

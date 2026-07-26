@@ -12,23 +12,6 @@
 export type Micro = bigint
 
 export const MICRO = 1_000_000n
-export const ZERO = 0n
-
-/** Whole units -> micro. */
-export function unitsToMicro(n: number | bigint): Micro {
-  return BigInt(n) * MICRO
-}
-
-/** Micro -> whole units, truncated toward zero. */
-export function microToUnits(m: Micro): bigint {
-  return m / MICRO
-}
-
-/** a * num / den, truncated. Exact rational scaling. */
-export function scaleRat(a: Micro, num: bigint, den: bigint): Micro {
-  return (a * num) / den
-}
-
 /**
  * Integer square root of a non-negative BigInt (Newton). Exact: returns the
  * largest r with r*r <= n. This is the prestige formula, and the game shows the
@@ -61,7 +44,7 @@ export function ipow(base: bigint, exp: number): bigint {
 }
 
 /** Number of decimal digits in |n| (n = 0 counts as 1). */
-export function digits(n: bigint): number {
+function digits(n: bigint): number {
   if (n === 0n) return 1
   const s = (n < 0n ? -n : n).toString()
   return s.length
@@ -125,7 +108,7 @@ export function rateText(m: Micro): string {
   return compact(m)
 }
 
-export function groupDigits(s: string): string {
+function groupDigits(s: string): string {
   let out = ""
   for (let i = 0; i < s.length; i++) {
     if (i > 0 && (s.length - i) % 3 === 0) out += ","
@@ -143,9 +126,3 @@ export function superscript(n: number): string {
   return out
 }
 
-export function bigMin(a: bigint, b: bigint): bigint {
-  return a < b ? a : b
-}
-export function bigMax(a: bigint, b: bigint): bigint {
-  return a > b ? a : b
-}

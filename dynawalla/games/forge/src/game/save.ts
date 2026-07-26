@@ -126,10 +126,3 @@ export function save(e: Economy, markOom: number, audio: boolean): void {
   }
 }
 
-export function wipe(): void {
-  try {
-    localStorage.removeItem(KEY)
-  } catch {
-    /* nothing to do */
-  }
-}
