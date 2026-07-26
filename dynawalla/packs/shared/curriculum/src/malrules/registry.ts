@@ -14,11 +14,43 @@ import type { Exercise } from "../types/exercise.ts";
 import type { FamilyId, MalRuleId } from "../types/ids.ts";
 import type { MalRule } from "../types/malrule.ts";
 import { columnOpMalRules } from "./columnOp.ts";
+import { compareOrderMalRules } from "./compareOrder.ts";
+import { fracArithMalRules, fracEquivalenceMalRules } from "./fractions.ts";
+import { longDivMalRules } from "./longDiv.ts";
+import { missingOperandMalRules } from "./missingOperand.ts";
+import { multidigitMulMalRules } from "./multidigitMul.ts";
+import { placeValueMalRules } from "./placeValue.ts";
 
-export const malRules: readonly MalRule[] = [...columnOpMalRules];
+export const malRules: readonly MalRule[] = [
+  ...columnOpMalRules,
+  ...placeValueMalRules,
+  ...compareOrderMalRules,
+  ...multidigitMulMalRules,
+  ...longDivMalRules,
+  ...fracEquivalenceMalRules,
+  ...fracArithMalRules,
+  ...missingOperandMalRules,
+];
+
+/**
+ * The shipped registry, grouped once.
+ *
+ * `generate()` asks for its family's rules on **every item** — 56,500 of them in
+ * one property sweep — and a fresh `filter` over the whole table each time is an
+ * array allocation and sixteen predicate calls per card, on the path CG-17 puts a
+ * p95 budget on. The cache is keyed on the default table only; a caller that
+ * passes its own rules (every failing-case test does) still gets a fresh filter,
+ * so a fixture can never be answered from a cache built for the real one.
+ */
+const byFamily = new Map<FamilyId, MalRule[]>();
 
 export function malRulesForFamily(family: FamilyId, rules: readonly MalRule[] = malRules): MalRule[] {
-  return rules.filter((rule) => rule.family === family);
+  if (rules !== malRules) return rules.filter((rule) => rule.family === family);
+  const cached = byFamily.get(family);
+  if (cached !== undefined) return cached;
+  const grouped = malRules.filter((rule) => rule.family === family);
+  byFamily.set(family, grouped);
+  return grouped;
 }
 
 export function malRuleById(id: MalRuleId, rules: readonly MalRule[] = malRules): MalRule | undefined {

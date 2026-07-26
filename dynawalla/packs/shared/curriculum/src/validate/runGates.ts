@@ -15,6 +15,7 @@ import { cg13, cg22, cg7, cg8 } from "./gates/bindingGates.ts";
 import { cg10, cg11, cg12, cg16, cg17, cg9 } from "./gates/generatorGates.ts";
 import type { Snapshot } from "./gates/generatorGates.ts";
 import { cg19, m05 } from "./gates/lintGates.ts";
+import { cg15 } from "./gates/coverageGates.ts";
 import type { GateResult, Report } from "./types.ts";
 import { pending } from "./types.ts";
 
@@ -30,7 +31,6 @@ export type RunOptions = {
 /** Gates defined in GATES.md that no PR has implemented yet, with their owner. */
 const PENDING_GATES: readonly (readonly [string, string, string])[] = [
   ["CG-14", "locale round-trip", "PR-4.7 (needs the M2 number layer)"],
-  ["CG-15", "grade-band coverage matrix", "PR-7.19"],
   ["CG-18", "representation accessibility", "PR-4.4"],
   ["CG-20", "standards traceback (report-only)", "PR-7.19"],
   ["CG-21", "word-problem context sets", "PR-7.18"],
@@ -50,12 +50,13 @@ export function runGates(options: RunOptions): { report: Report; snapshot: Snaps
     cg5(context),
     cg6(context),
     cg7(context),
-    cg8(context),
+    cg8(context, samples),
     cg9(context, samples),
     cg10(context, samples),
     cg11(context, samples),
     cg12(context, samples),
     cg13(context),
+    cg15(context),
     snapshotRun.result,
     cg17(context, samples),
     cg19(samples, roots),

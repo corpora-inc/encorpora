@@ -19,11 +19,22 @@ import type { ExerciseId, FamilyId, FormId, LocKey, MalRuleId, RepId, SkillId } 
  * written to, because `1.50` and `1.5` are the same number and different notation,
  * and the number layer needs the notation. `count` is separate from `number`
  * because it selects a CLDR plural category (CG-14).
+ *
+ * `fraction` is here for the same reason `ChoiceOption` has a fraction kind and for
+ * the same reason `AnswerValue.fraction` keeps the *written* parts: three quarters
+ * as a `number` slot is the `Rational` 3/4, and the only thing a renderer can do
+ * with that is write `0.75`, which is a different notation and on a fraction card a
+ * different subject. Without it a question about fractions cannot be *stated* — the
+ * answer surfaces landed in PR-2.12 and the prompt could still only say `0.75`.
+ *
+ * A mixed number carries `whole`; the sign convention is `answer.ts`'s
+ * (`fractionRational`), so `-2 3/4` is `-2 − 3/4`.
  */
 export type PromptSlot =
   | { readonly kind: "number"; readonly value: Rational; readonly decimalPlaces: number }
   | { readonly kind: "count"; readonly value: number }
-  | { readonly kind: "term"; readonly key: LocKey };
+  | { readonly kind: "term"; readonly key: LocKey }
+  | { readonly kind: "fraction"; readonly num: bigint; readonly den: bigint; readonly whole?: bigint };
 
 export type PromptSpec = {
   readonly key: LocKey;

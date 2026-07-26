@@ -37,11 +37,18 @@ const SRC = new URL(".", import.meta.url).pathname;
  * has to be tight enough not to read prose. A specifier never spans a newline,
  * which is what keeps `"…the run to regroup from"` in a test message from being
  * mistaken for an import of whatever follows it.
+ *
+ * The keyword must also not itself be inside a string. `["from", "to"]` — a list
+ * of parameter names, which `render/representations.ts` has — otherwise reads as
+ * `from` followed by a quoted `, `, and the file gets accused of importing a bare
+ * specifier that is two characters of punctuation. The lookbehind rejects a
+ * keyword whose preceding character is a quote, which is exactly the shape a
+ * keyword-as-string-content has and an import never does.
  */
 function specifiersIn(path: string): string[] {
   const code = stripNonCode(readFileSync(path, "utf8"), true);
   const out: string[] = [];
-  const pattern = /(?:\bfrom|\bimport)\s*\(?\s*(["'])([^"'\n]+)\1/g;
+  const pattern = /(?<!["'])(?:\bfrom|\bimport)\s*\(?\s*(["'])([^"'\n]+)\1/g;
   let match = pattern.exec(code);
   while (match !== null) {
     const specifier = match[2];

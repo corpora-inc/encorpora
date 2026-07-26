@@ -4,13 +4,37 @@
  * `activeNodes` is the shipped graph. Draft nodes are authorable but are excluded
  * from it and from every coverage count, so the graph can never become a wish list
  * (CG-7).
+ *
+ * Six domains are represented here and one of them has active rows. That is not an
+ * accident of effort: `add` binds `gen.arith.column-op`, which is the only family
+ * whose **prompt template** the app can draw, and CG-8 now says so mechanically
+ * (`render/prompts.ts`). Every other row is a complete, property-tested generator
+ * waiting on the statement renderer PR-2.13 lands.
+ *
+ * For twelve of the thirty draft rows, `status` is then the only field that has to
+ * change. For the other eighteen it is not: their level tables sit under CG-10's
+ * variant-space floor and the gate fails the moment they go active. They are named
+ * in `promotionBlockers.ts`, and the property sweep asserts that list against what
+ * it measures so it cannot go stale.
  */
 
 import type { SkillId } from "../types/ids.ts";
 import type { SkillNode } from "../types/skill.ts";
 import { addDomainNodes } from "./domains/add.ts";
+import { algDomainNodes } from "./domains/alg.ts";
+import { divDomainNodes } from "./domains/div.ts";
+import { fracDomainNodes } from "./domains/frac.ts";
+import { mulDomainNodes } from "./domains/mul.ts";
+import { nsDomainNodes } from "./domains/ns.ts";
 
-export const allNodes: readonly SkillNode[] = [...addDomainNodes];
+export const allNodes: readonly SkillNode[] = [
+  ...nsDomainNodes,
+  ...addDomainNodes,
+  ...mulDomainNodes,
+  ...divDomainNodes,
+  ...fracDomainNodes,
+  ...algDomainNodes,
+];
 
 export function activeNodes(nodes: readonly SkillNode[] = allNodes): SkillNode[] {
   return nodes.filter((node) => node.status === "active");

@@ -10,6 +10,18 @@
     "gen.arith.column-op@1|dw.add.regroup.subtract-across-zero|L2": "f9e45b9a8648926e",
     "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L0": "4609c8bb844b7b81",
     "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L1": "f9426934d400c3ae",
-    "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L2": "4bcfbb15db1c766e"
+    "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L2": "4bcfbb15db1c766e",
+    "gen.arith.column-op@1|dw.add.column.add-no-regroup|L0": "c88fd32d3a6d5e6b",
+    "gen.arith.column-op@1|dw.add.column.add-no-regroup|L1": "2323e14d00e6fd21",
+    "gen.arith.column-op@1|dw.add.column.add-no-regroup|L2": "ff2cdcf58cbdf3bd",
+    "gen.arith.column-op@1|dw.add.column.subtract-no-regroup|L0": "00e473a7680bc393",
+    "gen.arith.column-op@1|dw.add.column.subtract-no-regroup|L1": "4e29d6eabb1d995d",
+    "gen.arith.column-op@1|dw.add.column.subtract-no-regroup|L2": "0d90a12baf4b80f1",
+    "gen.arith.column-op@1|dw.add.regroup.add-short-addend|L0": "b6d4d2bd8777bb0b",
+    "gen.arith.column-op@1|dw.add.regroup.add-short-addend|L1": "b3daa1bfb588e482",
+    "gen.arith.column-op@1|dw.add.regroup.add-short-addend|L2": "a7cb31b4352648b9",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L0": "a365f4bf15426994",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L1": "22835dd4f74725c5",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L2": "2ab4671d595a2162"
   }
 }

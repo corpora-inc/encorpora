@@ -247,7 +247,10 @@ test("mal-rule: registry metadata is honest about LOCATE", () => {
     malRulesForFamily(COLUMN_OP_FAMILY).map((rule) => rule.id),
     [MIS_SMALLER_FROM_LARGER, MIS_BORROW_ACROSS_ZERO, MIS_CARRY_DROPPED],
   );
-  assert.deepEqual(malRulesForFamily(familyId("gen.frac.arith")), []);
+  // A family with no rules of its own. `gen.frac.arith` used to stand in for one
+  // and now has three, which is why the stand-in is a family that owns zero skills
+  // by design rather than one that merely had none yet.
+  assert.deepEqual(malRulesForFamily(familyId("gen.logic.error-analysis")), []);
 });
 
 test("mal-rule: the shared procedure helpers agree with the worked examples", () => {
