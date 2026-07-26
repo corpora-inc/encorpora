@@ -90,23 +90,42 @@ jobs:
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
-          set_output corpan_app '^(corpan/corpan-app/|\.github/workflows/ci\.yml$)'
+          # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
+          # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
+          # `../packs/shared/*` and `include`s `../packs/shared/analytics`, vite
+          # aliases the same tree, twenty source files import it, the job runs
+          # `npm ci` in `packs/shared/capabilities`, and its contract-sync step
+          # diffs the generated copies under `packs/sdk/` and
+          # `packs/shared/capabilities/`.
+          #
+          # The `packs` filter does NOT stand in for this. `changed-packs` derives
+          # a pack name from the path and skips any directory with no
+          # `package.json`: `corpan/packs/shared` has none, so it is skipped
+          # outright, and `corpan/packs/sdk`'s declares no test/tsc/build script.
+          # Before this line a shared-only change ran nothing that compiled it.
+          set_output corpan_app '^(corpan/(corpan-app|packs/(shared|sdk))/|\.github/workflows/ci\.yml$)'
           set_output dja '^(corpan/dja/|\.github/workflows/ci\.yml$)'
           set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
-          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          # `pack_catalog_check.js` is the entire body of the `pack-catalog` job.
+          # It lives under `.github/scripts/`, but `ci-scripts` runs pytest there
+          # and collects no JavaScript — so without this alternation the checker
+          # could be edited and never executed, and a break in it would surface on
+          # some later, unrelated packs/web PR. Same treatment the `native` filter
+          # below gives its two Python helpers.
+          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$|\.github/scripts/pack_catalog_check\.js$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
           set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
 
-          # Dynawalla areas. No job consumes these yet — the filters land first
-          # so the jobs that follow are a one-line addition instead of a
-          # re-plumbing of this step.
-          # `dynawalla/curriculum/` is in here because the app compiles it: the
-          # practice loop imports the package's TypeScript source directly (it
-          # is private, has no build step and no resolvable name — see
-          # `src/work/curriculum.ts`). A curriculum change can therefore turn the
-          # app's tsc, tests or build red, and without this the app job would not
-          # run on the PR that did it.
-          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum)/|\.github/workflows/ci\.yml$)'
+          # Dynawalla areas. Every one of them is consumed by a job below.
+          #
+          # `dynawalla/curriculum/` AND `dynawalla/engine/` are in the app filter
+          # because the app compiles both: the practice loop imports each
+          # package's TypeScript source directly (they are private, have no build
+          # step and no resolvable name — see `src/work/curriculum.ts` and the
+          # `../../../engine/src/index.ts` imports across `src/work/`). A change to
+          # either can turn the app's tsc, tests or build red, and without this the
+          # app job would not run on the PR that did it.
+          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum|engine)/|\.github/workflows/ci\.yml$)'
           # The committed slice of gen/android and the recorded template it was
           # curated from. `tauri android init` never overwrites an existing
           # file, which is what makes the allowlist survive a CI re-init — and
@@ -115,7 +134,20 @@ jobs:
           # compiling Android for either app. So: any move of the CLI pin, of
           # the tracked files, or of the baseline re-runs the drift job.
           set_output dynawalla_android_gen '^(dynawalla/dynawalla-app/(package(-lock)?\.json$|android-template-baseline/|src-tauri/gen/android/)|\.github/workflows/ci\.yml$)'
-          set_output dynawalla_curriculum '^(dynawalla/curriculum/|\.github/workflows/ci\.yml$)'
+          # `dynawalla/engine/` is in the curriculum filter because the curriculum
+          # gates SCAN engine source: `validate/cli.ts` passes
+          # `[curriculum/src, engine/src]` as the lint roots, so `npm run check`
+          # (M-05, CG-19, CG-16) and `validate/gates.test.ts` under `npm test` both
+          # read it. The engine's own `boundary.test.ts` deliberately duplicates
+          # EG-1 and M-05, but there is no CG-19 equivalent in it — so a
+          # bare-string prompt added under `engine/src` failed the curriculum job
+          # while the engine job stayed green, on a PR that ran neither.
+          set_output dynawalla_curriculum '^(dynawalla/(curriculum|engine)/|\.github/workflows/ci\.yml$)'
+          # Not the mirror image: the engine imports nothing at all (EG-1 asserts
+          # exactly that), so a curriculum change cannot break the engine job.
+          # `boundary.test.ts` duplicates the float scan for this reason — "the two
+          # packages have independent CI filters, and an engine-only pull request
+          # must be able to fail this on its own."
           set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
           # Cross-product area. Deliberately no `ci.yml` self-trigger: it exists
           # to answer "did shared code move", and a workflow edit is not a
