@@ -42,8 +42,8 @@ saying what changed, so the history is readable without `git log`.
 |---|---|---|
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) | Apple Kids Category and Play under-13 target audience | Accepted (constraints) · election **Deferred to submission** |
 | [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 covers number and arithmetic only | **Proposed — awaiting founder** |
-| [0003](DECISIONS/ADR-0003-no-downloadable-packs-v1.md) | No downloadable content packs in V1 | Accepted |
-| [0004](DECISIONS/ADR-0004-no-mic-no-llm-no-3d.md) | No microphone, no on-device LLM, no 3D | Accepted |
+| [0003](DECISIONS/ADR-0003-no-downloadable-packs-v1.md) | No downloadable content packs in V1 | **Superseded by 0020** |
+| [0004](DECISIONS/ADR-0004-no-mic-no-llm-no-3d.md) | No microphone, no on-device LLM, no 3D | **Superseded by 0021** |
 | [0005](DECISIONS/ADR-0005-shell-and-routing.md) | Hash router, one window, parental gate in the shell | Accepted |
 | [0006](DECISIONS/ADR-0006-typed-ts-curriculum-exact-arithmetic.md) | Typed-TS curriculum authoring with exact rational arithmetic | Accepted |
 | [0007](DECISIONS/ADR-0007-launch-locales.md) | Five launch locales; Arabic numbering system deferred | Accepted (sub-decision open) |
@@ -59,6 +59,30 @@ saying what changed, so the history is readable without `git log`.
 | [0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) | Human evaluation resourcing | Accepted |
 | [0018](DECISIONS/ADR-0018-multi-child-profiles.md) | Multi-child profiles designed in from M2 | Accepted |
 | [0019](DECISIONS/ADR-0019-no-stage-environment.md) | No stage environment | Accepted |
+| [0020](DECISIONS/ADR-0020-content-packs-are-the-product.md) | Downloadable content packs are the product | Accepted |
+| [0021](DECISIONS/ADR-0021-pack-capabilities-are-per-pack.md) | Capability is per pack; the microphone stays closed | Accepted |
+| [0022](DECISIONS/ADR-0022-host-ships-no-content.md) | The host ships no content; packs are the product | Accepted |
+
+## Reversed on 2026-07-26
+
+Two ADRs were reversed by the founder, and the reversal is the largest change
+this program has taken. **Neither had ever been ratified by him** — both were
+written `Proposed`, marked `Accepted` inside the program, and built against.
+
+- **ADR-0003 → [ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md).**
+  Content packs are the product and the pack system is the delivery mechanism.
+  "Acceptance by absence" (`K-01`, `K-02`) graded the program on the installer
+  not existing, which is a gate that cannot notice the product needed one.
+- **ADR-0004 → [ADR-0021](DECISIONS/ADR-0021-pack-capabilities-are-per-pack.md).**
+  3D, executable packs and an on-device model are decided per pack at the
+  boundary. The microphone stays closed pending a compliance decision.
+- **New: [ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md).** The host
+  ships no content at all; it is a shell around packs, and three mechanical
+  gates in `npm test` keep it one.
+
+The superseded ADRs are kept unedited, and ADR-0020 states which parts of the
+old reasoning were wrong rather than deleting them — the reasoning is the
+artifact, and an error nobody can see is an error somebody re-derives.
 
 ## Decided on 2026-07-25
 

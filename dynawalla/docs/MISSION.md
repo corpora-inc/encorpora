@@ -1,6 +1,6 @@
 # Dynawalla: Apprentice of Numbers — Mission
 
-Status: discovery complete, nothing built. See [STATUS.md](STATUS.md).
+Status: a host shell exists and ships no content. See [STATUS.md](STATUS.md).
 Index: [README.md](README.md).
 
 ## What it is
@@ -8,6 +8,24 @@ Index: [README.md](README.md).
 A mathematics practice product for children, shipping as `inc.corpora.dynawalla` on iOS,
 Android and desktop from `dynawalla/` in this monorepo. Tauri 2 + React 19 + Vite,
 sharing the native/Rust layer with Corpán and nothing else.
+
+**The app is its packs.** The core app contains no exercise, no game, no world
+and no piece of curriculum. It installs packs, keeps a learner's record across
+them, mounts them, and gets out of the way. Everything a child does happens
+inside a pack, and building those is the whole of the work
+([ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md),
+[ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md)).
+
+That is a founder ruling, given on 2026-07-26 after the first bundled practice
+loop was built and rejected:
+
+> "THE CORE APP SHOULD HAVE ZERO FUCKING CONTENT. […] BUILDING THE FUN GAMES AND
+> CURRICULUM IS EVERYTHING. […] I WANT FUCKING FUN. 3D COOL SHIT. JUICY SHIT.
+> HAPTICS, ANIMATIONS, DIFFERENT KINDS OF EXERCISES. UNIQUE WAYS TO LEARN."
+
+It reversed two ADRs the program had adopted without him — no downloadable packs
+(ADR-0003) and no microphone, LLM or 3D (ADR-0004) — and the reasoning that
+produced them is recorded in their replacements so it is not re-derived.
 
 **V1 is proposed at grades 1–5, number and arithmetic**: place value, addition and
 subtraction, multiplication, division, fractions, and the equals sign as a relation.
@@ -77,7 +95,9 @@ These are product constraints, not aspirations. Each has an enforcement mechanis
 **We will:**
 
 - Make progress a building, not a number. Every correct answer places something real,
-  and construction **never regresses**. The pull to return is "my observatory is
+  and construction **never regresses**. This is the host's, not a pack's: a pack
+  reports the answer, the host cuts the aperture, so a child's construction is
+  everything they have done rather than one pack's score. The pull to return is "my observatory is
   unfinished," not "my streak is at risk."
 - Give the child a real choice with real consequences: which chamber to build next,
   which biases the scheduler's skill pool toward that instrument's mathematics. The
@@ -110,6 +130,7 @@ remotely.** Direct observation is therefore the binding instrument, not a nicety
 | 4 | Share the native/Rust/Tauri-plugin layer with Corpán; the frontend may diverge. |
 | 5 | The repo is public and open source. No credential, keystore, `.p8`, service-account JSON, issuer id, key id or token is ever committed. |
 | 6 | Bundle id `inc.corpora.dynawalla` (note: `inc.` — Corpán is `com.corpora.corpan`, and both conventions now coexist permanently). |
+| 8 | The core app ships zero content. Packs are the product. Make the app as small as possible (2026-07-26). |
 | 7 | Ancient-futurist setting: Byzantine / Persian / Fertile Crescent; astrolabes, gears, automata, mechanical computers. Sourced from al-Jazari's 1206 *Book of Knowledge of Ingenious Mechanical Devices* and the Banū Mūsā's 9th-century *Book of Ingenious Devices*. No steampunk goggles, no gears-as-decoration. |
 
 ## Founder decisions, recorded 2026-07-25

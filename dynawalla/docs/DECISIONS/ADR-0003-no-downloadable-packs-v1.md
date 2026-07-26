@@ -1,7 +1,12 @@
 # ADR-0003 — No downloadable content packs in V1
 
-**Status:** Accepted
+**Status:** **Superseded by [ADR-0020](ADR-0020-content-packs-are-the-product.md)** (2026-07-26)
 **Related:** [ADR-0012](ADR-0012-ota-curriculum-deferral.md), [PACK_SYSTEM.md](../PACK_SYSTEM.md)
+
+> Reversed by the founder. Content packs are the product and the pack system is
+> the delivery mechanism, not deferred work. The text below is kept unedited —
+> ADR-0020 says which parts of this reasoning were wrong and why, so that the
+> argument is not made again from the same premises.
 
 ## Context
 
