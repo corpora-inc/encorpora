@@ -12,8 +12,13 @@ name: adversarial-review
 #
 # Cost: one model call per lens PER CHUNK. Large diffs are chunked rather than
 # truncated, so a 4x-budget PR costs 4x the calls. Tune ADVERSARIAL_MODEL and
-# MAX_CHUNK_CHARS to manage spend; a false positive that blocks the queue is a
-# detrimental process — fix the prompt fast rather than routing around the gate.
+# MAX_CHUNK_CHARS to manage spend, and ADVERSARIAL_WORKERS to throttle
+# concurrency during a rate-limit incident; a false positive that blocks the
+# queue is a detrimental process — fix the prompt fast rather than routing
+# around the gate.
+#
+# The script's own unit tests run in `ci.yml` (job `ci-scripts`), which is
+# aggregated by the required `ci-gate` context.
 
 on:
   pull_request:
@@ -37,9 +42,10 @@ jobs:
     runs-on: ubuntu-latest
     # The merge queue's check_response_timeout_minutes is 60. Without an explicit
     # limit this job inherits the 360-minute default, so a hung run would burn
-    # the queue's entire budget before reporting. Bounded well under 60: the
-    # script runs lens/chunk calls concurrently with a 120s per-request timeout
-    # and at most 3 attempts each.
+    # the queue's entire budget before reporting. Bounded well under 60, and the
+    # script carries its OWN 20-minute wall-clock budget (REVIEW_BUDGET_S) so an
+    # overloaded provider produces a legible failure inside the job rather than
+    # a runner kill. Keep this comfortably above that budget.
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
@@ -58,6 +64,14 @@ jobs:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           ADVERSARIAL_MODEL: ${{ vars.ADVERSARIAL_MODEL }}
           MAX_CHUNK_CHARS: ${{ vars.MAX_CHUNK_CHARS }}
+          # The throttle you reach for mid-incident. Every worker holds a full
+          # chunk (~50k tokens) in flight, and that concurrent token volume is
+          # what provokes a token-rate 429 — which, under fail-closed, blocks
+          # every merge in the repo. Set the `ADVERSARIAL_WORKERS` repo variable
+          # to dial concurrency down WITHOUT a code change (a code change would
+          # have to merge through the very gate that is wedged). Unset → the
+          # script's default of 3.
+          ADVERSARIAL_WORKERS: ${{ vars.ADVERSARIAL_WORKERS }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
