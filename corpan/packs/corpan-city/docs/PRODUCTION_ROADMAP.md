@@ -82,6 +82,6 @@ smoke/QA pass on real devices (iPad pipeline), and a go/no-go checklist.
 - Frozen contracts; disjoint file ownership; orchestrator serializes the integration files.
 - Verify in the REAL embedded app where it matters (the standalone-vs-embedded trap).
 - Don't touch `promptProgram`/`npcRuntime` until the prompt study's fixes are applied.
-- Commit/push stays the OWNER's by default — do NOT commit or push; leave work staged for
-  review unless explicitly handed control. (Memory: `feedback_git_workflow`.)
+- Ship it yourself: short-lived branch off `main`, PR, green gates, squash-merge.
+  Do not leave work staged for someone else. (Root `AGENTS.md`.)
 - No real-money economy; on-device privacy; localize new strings; no placeholders.

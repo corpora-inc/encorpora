@@ -164,6 +164,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   (`LLAMA_CPP_ERROR: load failed (gpu: null …; cpu: null …)`). Drop-then-load
   makes the second load self-healing regardless of pack lifecycle.
 
+### Removed
+- **Live system-prompt override** (the `### Added` entry above) — removed in
+  `1d38ffc2c` (2026-05-31), before 0.1.0 shipped, so it was never present in a
+  released build. KV-cache prefix reuse replaced what it measured. Nothing in the
+  plugin reads `CORPAN_LLM_SYSPROMPT` or `debug.corpan.sysprompt` today.
+
 ### Verified
 - Real on-device inference confirmed on iPad (M-class, Metal): "How do you say
   'good morning'?" → "Buenos días. ¿Y tú cómo estás?", streamed token-by-token,

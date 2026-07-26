@@ -12,13 +12,16 @@ This directory is a vendored copy of [Choochmeque/tauri-plugin-iap](https://gith
 
 The upstream plugin has no retry logic around StoreKit's
 `Product.products(for:)`, which is known to transiently return empty
-sets in sandbox. Vendoring gives us the option to patch Swift/Kotlin
-directly (e.g. add retry at the native layer, expose richer errors,
-add logging hooks) without waiting on upstream.
+sets in sandbox. Vendoring lets us patch Swift/Kotlin directly (retry
+at the native layer, richer errors, logging hooks) without waiting on
+upstream.
 
-Today we are carrying **no local patches** — the vendored source
-is an unmodified snapshot of `v0.8.2`. Any divergence should be
-documented in this file under "Local patches" below as it accrues.
+**This copy has diverged substantially from upstream.** It carries local
+patches to both the iOS Swift plugin and the Android Kotlin plugin, plus
+a command (`request_review`) that does not exist upstream. See "Local
+patches" below and `CHANGELOG.md`; the crate's own version (`Cargo.toml`
+`0.9.0`) tracks our divergence, not the upstream tag. Every new
+divergence must be added to this file.
 
 ## Wire-up
 
@@ -46,6 +49,27 @@ cd tauri-plugin-iap && rm -rf .git .github .gitignore
 ```
 
 ## Local patches
+
+Entries are labelled with the Corpán app version that carried them.
+
+- **plugin 0.9.0 (2026-06-16)** — `ios/Sources/IapPlugin.swift`,
+  `android/.../IapPlugin.kt`, `src/*.rs`, `guest-js/`:
+  - `presentOfferCodeRedeemSheet` is now `@MainActor` and `try await`s
+    the iOS 16+ `AppStore.presentOfferCodeRedeemSheet(in:)` directly;
+    the previous synchronous `MainActor.run { }` wrapper did not
+    compile ("'async' call in a function that does not support
+    concurrency"). SK1 fallback unchanged.
+  - Android free-trial offer selection: with no explicit `offerToken`,
+    the purchase prefers the subscription offer whose pricing has a
+    zero-price phase rather than `subscriptionOfferDetails.firstOrNull()`,
+    which could land on the bare base plan and silently deny a
+    trial-eligible user their 7 days.
+  - **New `request_review` command** (no upstream equivalent):
+    StoreKit `SKStoreReviewController.requestReview(in:)` on iOS, Play
+    In-App Review (`ReviewManager`) on Android, clean no-op elsewhere.
+    Registered in `src/lib.rs` and exposed in `guest-js` as
+    `requestReview()`. Adds the `com.google.android.play:review`
+    dependency on Android.
 
 - **0.11.7 (2026-04-26)** — `android/src/main/java/app/tauri/iap/IapPlugin.kt`:
   Cross-platform parity + missing-state handling.

@@ -2,7 +2,7 @@
 
 Scope: `earthgate-reader`, `stargate-reader`, `beatlounge`, `melopan`, `teletron`, `world-radio` under `/home/skyl/encorpora/corpan/packs/`. Rubric per pack: (a) core loop, (b) content consumed + selection, (c) config knobs, (d) natural session/round unit, (e) parameterized-launch feasibility, (f) performance/completion signals, (g) learning skill trained, (h) polish level. Plus: how narration packs/books are discovered and installed.
 
-Date: 2026-07-03. Branch: `journey`.
+Date: 2026-07-03. Status: audit snapshot — verify against `main` before relying on it.
 
 ---
 
