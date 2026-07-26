@@ -25,7 +25,7 @@ import type { Rational } from "../../math/rational.ts";
 import { createRng, seedFrom } from "../../rng/rng.ts";
 import type { Rng } from "../../rng/rng.ts";
 import type { AnswerSchema, AnswerValue, ColumnMark } from "../../types/answer.ts";
-import { answerEquals } from "../../types/answer.ts";
+import { answerAccepted, answerEquals } from "../../types/answer.ts";
 import type { Distractor, Exercise, PromptSlot, SolutionStep } from "../../types/exercise.ts";
 import { exerciseIdOf } from "../../types/ids.ts";
 import type { FormId } from "../../types/ids.ts";
@@ -435,9 +435,17 @@ export const columnOpFamily: GeneratorFamily<ColumnOpParams> = {
   },
 
   check(exercise: Exercise, submitted: AnswerValue): Verdict {
-    if (answerEquals(submitted, exercise.answer.canonical)) return { correct: true };
+    // `answerAccepted`, not `answerEquals`: acceptance is the schema's decision
+    // wherever the schema has one to make. On every item this family emits the
+    // two are the same function — an `integer` or `columnAlgorithm` schema
+    // carries no `equivalence` — but this is the only checker in the program and
+    // the next one will be written by reading it. Routed through `answerEquals`,
+    // `fraction.equivalence: "any-equivalent"` was a declared knob nothing
+    // consulted, and the first child to write `2/4` where any equivalent was
+    // meant to be accepted would have been marked wrong.
+    if (answerAccepted(exercise.schema, exercise.answer.canonical, submitted)) return { correct: true };
     for (const accepted of exercise.answer.alsoAccept) {
-      if (answerEquals(submitted, accepted)) return { correct: true };
+      if (answerAccepted(exercise.schema, accepted, submitted)) return { correct: true };
     }
     const misconception = classify(exercise, submitted);
     return misconception === null ? { correct: false } : { correct: false, misconception };

@@ -110,6 +110,9 @@ export function readJson<T>(path: string, whenMissing?: T): T {
   }
 }
 
+/** Gates whose `notes` are the point of running them, not a measurement trace. */
+const REPORTING_GATES: readonly string[] = ["CG-15"];
+
 const STATUS_LABEL: Readonly<Record<GateResult["status"], string>> = {
   pass: "pass   ",
   warn: "warn   ",
@@ -128,6 +131,14 @@ function printText(report: Report): void {
   lines.push("");
   for (const result of report.results) {
     lines.push(`  ${STATUS_LABEL[result.status]} ${result.gate.padEnd(6)} ${result.title}`);
+    // Most gates' notes are per-level measurements — a hundred and twenty lines of
+    // them — and printing those would bury the findings. CG-15 is the exception:
+    // its notes *are* its output. The coverage matrix is the number this program
+    // is judged on, and a report that made you pass `--report json` to see it is a
+    // report nobody reads.
+    if (REPORTING_GATES.includes(result.gate)) {
+      for (const note of result.notes) lines.push(`           ${note}`);
+    }
     for (const finding of result.findings) {
       const subject = finding.subject === undefined ? "" : `${finding.subject}: `;
       lines.push(`         ${finding.severity === "error" ? "×" : "!"} ${subject}${finding.message}`);

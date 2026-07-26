@@ -32,7 +32,7 @@ Published before M4's first curriculum PR.
 | **CG-8** | **Renderer ownership** — merge blocker | PR-4.4 |
 | **CG-9** | Level coverage by **running** generators over N seeds, ≥`minVariants` distinct | PR-4.6 |
 | **CG-10** | Variant-space adequacy — <2% duplicates over 1,000 draws | PR-4.6 |
-| **CG-11** | Self-consistency — the family's own checker accepts `canonical` and every `alsoAccept`, and rejects every distractor, over 1,000 seeds | PR-4.6 |
+| **CG-11** | Self-consistency — the family's own checker accepts `canonical` and every `alsoAccept`, and rejects every distractor, over 1,000 seeds; and every generated item's `AnswerSchema` passes `schemaDefect` | PR-4.6 |
 | **CG-12** | Mal-rule fidelity — ≥95% divergence from the correct answer | PR-8.1 |
 | **CG-13** | **Choice-laundering ban** — no `conceptual`/`reasoning` skill binds a choice-only generator | PR-4.4 |
 | **CG-14** | **Locale round-trip** — every `canonical`/`alsoAccept` survives format→parse in all launch locales; every count slot declares its CLDR plural set | PR-4.7 |

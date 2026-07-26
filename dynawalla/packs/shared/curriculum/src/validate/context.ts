@@ -13,6 +13,8 @@ import type { Exercise } from "../types/exercise.ts";
 import type { SkillNode } from "../types/skill.ts";
 import type { RendererDeclaration } from "../render/registry.ts";
 import { rendererRegistry } from "../render/registry.ts";
+import type { PromptTemplateDeclaration } from "../render/prompts.ts";
+import { promptRegistry } from "../render/prompts.ts";
 import { familyById, generatorFamilies } from "../generators/registry.ts";
 import { malRules } from "../malrules/registry.ts";
 import { activeNodes, allNodes } from "../graph/graph.ts";
@@ -27,6 +29,8 @@ export type ValidationContext = {
   readonly families: readonly AnyGeneratorFamily[];
   readonly malRules: readonly MalRule[];
   readonly renderers: readonly RendererDeclaration[];
+  /** Prompt-template renderer declarations — CG-8's third half. */
+  readonly prompts: readonly PromptTemplateDeclaration[];
   readonly shipped: ShippedIds;
   readonly seedsPerLevel: number;
   readonly strictRenderers: boolean;
@@ -51,6 +55,7 @@ export function defaultContext(overrides: Partial<ValidationContext> = {}): Vali
     families: generatorFamilies,
     malRules,
     renderers: rendererRegistry,
+    prompts: promptRegistry,
     shipped: EMPTY_SHIPPED,
     seedsPerLevel: 200,
     strictRenderers: false,

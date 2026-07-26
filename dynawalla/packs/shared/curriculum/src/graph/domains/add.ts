@@ -31,6 +31,7 @@ import {
 import { capabilityTag, locKey, skillId } from "../../types/ids.ts";
 import type { SkillNode } from "../../types/skill.ts";
 
+const CAP_COLUMN_ALIGN = capabilityTag("cap.arith.column-align");
 const CAP_SUB_REGROUP = capabilityTag("cap.arith.sub-regroup");
 const CAP_SUB_ACROSS_ZERO = capabilityTag("cap.arith.sub-across-zero");
 const CAP_ADD_CARRY = capabilityTag("cap.arith.add-carry");
@@ -63,6 +64,10 @@ function b(hundredths: bigint) {
   return rational(hundredths, 100n);
 }
 
+export const SKILL_ADD_NO_REGROUP = skillId("dw.add.column.add-no-regroup");
+export const SKILL_SUBTRACT_NO_REGROUP = skillId("dw.add.column.subtract-no-regroup");
+export const SKILL_ADD_SHORT_ADDEND = skillId("dw.add.regroup.add-short-addend");
+export const SKILL_SUBTRACT_SHORT_SUBTRAHEND = skillId("dw.add.regroup.subtract-short-subtrahend");
 export const SKILL_SUBTRACT_MULTIDIGIT = skillId("dw.add.regroup.subtract-multidigit");
 export const SKILL_SUBTRACT_ACROSS_ZERO = skillId("dw.add.regroup.subtract-across-zero");
 export const SKILL_ADD_MULTIDIGIT = skillId("dw.add.regroup.add-multidigit");
@@ -70,7 +75,10 @@ export const SKILL_SUBTRACT_TENTHS = skillId("dw.add.regroup.subtract-tenths");
 
 const subtractMultidigit: SkillNode = {
   id: SKILL_SUBTRACT_MULTIDIGIT,
-  rev: 1,
+  // rev 2: gained the prerequisite it always had and never declared. Aligning the
+  // columns and subtracting without regrouping is not the same skill as regrouping,
+  // and a graph whose spine started at the harder one had no entry point.
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.regroup.subtract-multidigit.title"),
   learnerGoal: locKey("dw.skill.add.regroup.subtract-multidigit.goal"),
@@ -82,7 +90,7 @@ const subtractMultidigit: SkillNode = {
   proficiency: { conceptual: 2, procedural: 3, strategic: 1, adaptive: 1 },
   classification: "procedural",
   fluencyTarget: { p50Ms: 12000 },
-  prereqs: [],
+  prereqs: [{ kind: "requires", to: SKILL_SUBTRACT_NO_REGROUP }],
   difficulty: {
     b: b(-50n),
     levels: [b(5n), b(35n), b(90n), b(120n)],
@@ -101,7 +109,7 @@ const subtractMultidigit: SkillNode = {
     params: [sub(2, 2, 1, 0), sub(3, 3, 1, 0), sub(3, 3, 2, 0), sub(4, 4, 2, 0)],
     forms: [FORM_FREE_ENTRY, FORM_COLUMN],
     minVariants: 24,
-    consumes: [],
+    consumes: [CAP_COLUMN_ALIGN],
   },
   probes: [
     { level: 0, seed: 1, purpose: "entry" },
@@ -152,7 +160,8 @@ const subtractAcrossZero: SkillNode = {
 
 const addMultidigit: SkillNode = {
   id: SKILL_ADD_MULTIDIGIT,
-  rev: 1,
+  /** rev 2: same as its sibling — the non-regrouping column sum is its prerequisite. */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.regroup.add-multidigit.title"),
   learnerGoal: locKey("dw.skill.add.regroup.add-multidigit.goal"),
@@ -164,7 +173,7 @@ const addMultidigit: SkillNode = {
   proficiency: { conceptual: 2, procedural: 3, strategic: 1, adaptive: 1 },
   classification: "procedural",
   fluencyTarget: { p50Ms: 12000 },
-  prereqs: [],
+  prereqs: [{ kind: "requires", to: SKILL_ADD_NO_REGROUP }],
   difficulty: {
     b: b(-60n),
     levels: [b(-5n), b(25n), b(80n)],
@@ -177,7 +186,7 @@ const addMultidigit: SkillNode = {
     params: [plus(2, 2, 1), plus(3, 3, 1), plus(3, 3, 2)],
     forms: [FORM_FREE_ENTRY, FORM_COLUMN],
     minVariants: 24,
-    consumes: [],
+    consumes: [CAP_COLUMN_ALIGN],
   },
   probes: [{ level: 0, seed: 1, purpose: "entry" }],
   provides: [CAP_ADD_CARRY],
@@ -221,9 +230,159 @@ const subtractTenths: SkillNode = {
   provides: [],
 };
 
+/**
+ * The two rows the spine was missing: line the columns up and subtract, with
+ * nothing to regroup.
+ *
+ * Both are `active`, and they are the only rows this change promotes. Column-op is
+ * the one family whose *question* the app can draw — `problem.ts` reads its two
+ * template keys and `ProblemSlate` writes the operands — so it is the one family
+ * whose rows can honestly go active today. Everything else this change adds is
+ * `draft` behind `render/prompts.ts`.
+ *
+ * Neither row carries a mal-rule, and the reason is in `malrules/columnOp.ts`:
+ * with nothing to regroup, taking the smaller digit from the larger *is* the
+ * correct procedure, so `applies()` is false on every item here. A level table
+ * that declared it would be claiming a diagnosis its items can never emit.
+ */
+const subtractNoRegroup: SkillNode = {
+  id: SKILL_SUBTRACT_NO_REGROUP,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.column.subtract-no-regroup.title"),
+  learnerGoal: locKey("dw.skill.add.column.subtract-no-regroup.goal"),
+  domain: "add",
+  cluster: "column",
+  bigIdeas: [locKey("dw.idea.place-value.line-up-the-columns")],
+  gradeBand: { earliest: 1, nominal: 1, latest: 2 },
+  strandRole: "spine",
+  proficiency: { conceptual: 1, procedural: 3, strategic: 0, adaptive: 1 },
+  classification: "procedural",
+  fluencyTarget: { p50Ms: 10000 },
+  prereqs: [],
+  difficulty: { b: b(-90n), levels: [b(-90n), b(-60n), b(-30n)] },
+  misconceptions: [],
+  representations: { required: [], optional: [REP_COUNTING_BOARD] },
+  generator: {
+    family: COLUMN_OP_FAMILY,
+    familyRev: COLUMN_OP_FAMILY_REV,
+    params: [sub(2, 2, 0, 0), sub(3, 3, 0, 0), sub(4, 4, 0, 0)],
+    forms: [FORM_FREE_ENTRY, FORM_COLUMN],
+    minVariants: 24,
+    consumes: [],
+  },
+  probes: [{ level: 0, seed: 1, purpose: "entry" }],
+  provides: [CAP_COLUMN_ALIGN],
+  standards: { ccss: ["1.NBT.C.6", "2.NBT.B.5"] },
+};
+
+const addNoRegroup: SkillNode = {
+  id: SKILL_ADD_NO_REGROUP,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.column.add-no-regroup.title"),
+  learnerGoal: locKey("dw.skill.add.column.add-no-regroup.goal"),
+  domain: "add",
+  cluster: "column",
+  bigIdeas: [locKey("dw.idea.place-value.line-up-the-columns")],
+  gradeBand: { earliest: 1, nominal: 1, latest: 2 },
+  strandRole: "spine",
+  proficiency: { conceptual: 1, procedural: 3, strategic: 0, adaptive: 1 },
+  classification: "procedural",
+  fluencyTarget: { p50Ms: 10000 },
+  prereqs: [],
+  difficulty: { b: b(-90n), levels: [b(-90n), b(-60n), b(-30n)] },
+  misconceptions: [],
+  representations: { required: [], optional: [REP_COUNTING_BOARD] },
+  generator: {
+    family: COLUMN_OP_FAMILY,
+    familyRev: COLUMN_OP_FAMILY_REV,
+    params: [plus(2, 2, 0), plus(3, 3, 0), plus(4, 4, 0)],
+    forms: [FORM_FREE_ENTRY, FORM_COLUMN],
+    minVariants: 24,
+    consumes: [],
+  },
+  probes: [{ level: 0, seed: 1, purpose: "entry" }],
+  provides: [CAP_COLUMN_ALIGN],
+  standards: { ccss: ["1.NBT.C.4", "2.NBT.B.5"] },
+};
+
+/**
+ * A short second operand under a long first one — `4,003 − 87`.
+ *
+ * A separate row rather than a level of the multidigit ones because the thing that
+ * goes wrong is different: the columns that have no digit underneath them are the
+ * ones children misalign, and `mis.add.misaligned-columns` is the mal-rule this row
+ * is waiting for. It is not shipped here — the buggy procedure needs to know where
+ * the child *wrote* the operand, which the exercise contract does not carry.
+ */
+const subtractShortSubtrahend: SkillNode = {
+  id: SKILL_SUBTRACT_SHORT_SUBTRAHEND,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.regroup.subtract-short-subtrahend.title"),
+  learnerGoal: locKey("dw.skill.add.regroup.subtract-short-subtrahend.goal"),
+  domain: "add",
+  cluster: "regroup",
+  bigIdeas: [locKey("dw.idea.place-value.line-up-the-columns"), locKey("dw.idea.place-value.regroup")],
+  gradeBand: { earliest: 2, nominal: 3, latest: 4 },
+  strandRole: "fluency",
+  proficiency: { conceptual: 2, procedural: 3, strategic: 1, adaptive: 2 },
+  classification: "procedural",
+  prereqs: [{ kind: "requires", to: SKILL_SUBTRACT_MULTIDIGIT }],
+  difficulty: { b: b(-50n), levels: [b(65n), b(150n), b(235n)] },
+  misconceptions: [MIS_SMALLER_FROM_LARGER, MIS_BORROW_ACROSS_ZERO],
+  representations: { required: [], optional: [REP_COUNTING_BOARD] },
+  generator: {
+    family: COLUMN_OP_FAMILY,
+    familyRev: COLUMN_OP_FAMILY_REV,
+    params: [sub(4, 2, 1, 0), sub(5, 3, 2, 0), sub(6, 3, 3, 0)],
+    forms: [FORM_FREE_ENTRY, FORM_COLUMN],
+    minVariants: 24,
+    consumes: [CAP_SUB_REGROUP],
+  },
+  probes: [],
+  provides: [],
+  standards: { ccss: ["3.NBT.A.2", "4.NBT.B.4"] },
+};
+
+const addShortAddend: SkillNode = {
+  id: SKILL_ADD_SHORT_ADDEND,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.regroup.add-short-addend.title"),
+  learnerGoal: locKey("dw.skill.add.regroup.add-short-addend.goal"),
+  domain: "add",
+  cluster: "regroup",
+  bigIdeas: [locKey("dw.idea.place-value.line-up-the-columns"), locKey("dw.idea.place-value.regroup")],
+  gradeBand: { earliest: 2, nominal: 3, latest: 4 },
+  strandRole: "fluency",
+  proficiency: { conceptual: 2, procedural: 3, strategic: 1, adaptive: 2 },
+  classification: "procedural",
+  prereqs: [{ kind: "requires", to: SKILL_ADD_MULTIDIGIT }],
+  difficulty: { b: b(-60n), levels: [b(55n), b(140n), b(195n)] },
+  misconceptions: [MIS_CARRY_DROPPED],
+  representations: { required: [], optional: [REP_COUNTING_BOARD] },
+  generator: {
+    family: COLUMN_OP_FAMILY,
+    familyRev: COLUMN_OP_FAMILY_REV,
+    params: [plus(4, 2, 1), plus(5, 2, 2), plus(5, 3, 3)],
+    forms: [FORM_FREE_ENTRY, FORM_COLUMN],
+    minVariants: 24,
+    consumes: [CAP_ADD_CARRY],
+  },
+  probes: [],
+  provides: [],
+  standards: { ccss: ["3.NBT.A.2", "4.NBT.B.4"] },
+};
+
 export const addDomainNodes: readonly SkillNode[] = [
+  addNoRegroup,
+  subtractNoRegroup,
   subtractMultidigit,
   subtractAcrossZero,
   addMultidigit,
+  addShortAddend,
+  subtractShortSubtrahend,
   subtractTenths,
 ];

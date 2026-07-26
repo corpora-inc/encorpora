@@ -160,7 +160,10 @@ V1 concentrates where the evidence is genuinely deep:
 larger in every column),
 `mis.add.borrow-across-zero` (602 − 437 = 265, and 5,001 − 2,798 = 3,203 — regrouped all
 the way down, never decremented the leading digit), `mis.add.misaligned-columns`,
-`mis.add.carry-dropped`, `mis.mul.makes-bigger`, `mis.mul.partial-product-misaligned`,
+`mis.add.carry-dropped`, `mis.mul.makes-bigger`, `mis.mul.partial-product-misaligned`
+and `mis.mul.forgot-the-shift` (both children of one `mul.shift-not-applied` parent —
+the same place-value slip, but `47 × 100` answered as `47` is not a row misplaced and
+does not get the two-row repair),
 `mis.div.divisor-must-be-smaller`, `mis.div.remainder-dropped`,
 `mis.frac.add-numerators-and-denominators`,
 `mis.frac.larger-denominator-larger-fraction` (both children of one

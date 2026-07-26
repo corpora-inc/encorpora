@@ -20,6 +20,11 @@ function slot(value: PromptSlot): string {
       return `c(${String(value.value)})`;
     case "term":
       return `t(${value.key})`;
+    case "fraction":
+      // The written parts, like `answerToString` — `2/4` and `1/2` are the same
+      // number and different problems, and a hash that could not tell them apart
+      // would let a generator swap one for the other with no snapshot change.
+      return `f(${(value.whole ?? 0n).toString()};${value.num.toString()}/${value.den.toString()})`;
   }
 }
 

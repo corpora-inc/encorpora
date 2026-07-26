@@ -6,7 +6,7 @@
  */
 
 import { add as ratAdd, cmp, toString as rationalToString } from "../../math/rational.ts";
-import { answerEquals } from "../../types/answer.ts";
+import { answerAccepted, answerEquals, schemaDefect } from "../../types/answer.ts";
 import type { Exercise } from "../../types/exercise.ts";
 import { fingerprintItem, serializeExercise } from "../../serialize.ts";
 import { fnv1a64Hex } from "../../rng/hash.ts";
@@ -183,6 +183,22 @@ export function cg11(_context: ValidationContext, samples: readonly LevelSample[
     if (family === undefined) continue;
     for (const exercise of sample.exercises) {
       checked += 1;
+      // The renderer's precondition, run over real generated output. Without
+      // this, a `choice` schema carrying two options of the same value — two
+      // right answers, or two wrong ones, on the same card — reaches a child's
+      // screen: `schemaDefect` is only called by the app's entry models, which
+      // throw at `init`, and a card that throws while drawing is a blank cell.
+      // No family emits `choice` yet, which is exactly why the check belongs
+      // here before one does.
+      //
+      // First, and then `continue`: an item that cannot be drawn is not an item
+      // whose checker is worth interrogating, and the mal-rules the checker runs
+      // are written against the schema kinds the family declares.
+      const defect = schemaDefect(exercise.schema);
+      if (defect !== null) {
+        findings.push(fail("CG-11", `the answer schema cannot be drawn — ${defect}`, exercise.exerciseId));
+        continue;
+      }
       if (!family.check(exercise, exercise.answer.canonical).correct) {
         findings.push(fail("CG-11", "checker rejects its own canonical answer", exercise.exerciseId));
       }
@@ -202,7 +218,9 @@ export function cg11(_context: ValidationContext, samples: readonly LevelSample[
     }
   }
 
-  return resultOf("CG-11", "checker self-consistency", findings, [`${String(checked)} items checked`]);
+  return resultOf("CG-11", "checker self-consistency and drawable schemas", findings, [
+    `${String(checked)} items checked`,
+  ]);
 }
 
 /**
@@ -238,11 +256,31 @@ export function cg12(context: ValidationContext, samples: readonly LevelSample[]
         undefinedOutput += 1;
         continue;
       }
-      if (!answerEquals(produced, exercise.answer.canonical)) divergent += 1;
+      // `answerAccepted` and not `answerEquals`, because this gate exists to keep a
+      // correct answer from being diagnosed as a bug, and "correct" means what the
+      // checker accepts. On a schema that takes any equivalent fraction, a mal-rule
+      // output of `2/4` against a canonical `1/2` is a correct answer written
+      // differently — `answerEquals` calls that divergence and `judge()` marks the
+      // same submission right. `distractorsFor` has always used this comparison.
+      if (!answerAccepted(exercise.schema, exercise.answer.canonical, produced)) divergent += 1;
     }
 
     if (applicable === 0) {
-      findings.push(warn("CG-12", "no sampled item triggers this rule", rule.id));
+      // Two very different states, and the message says which. A rule whose family
+      // no active skill binds *cannot* be sampled — the sample is built from active
+      // nodes only — so "no item triggers it" would read as a defect in the rule
+      // rather than as the graph waiting on a renderer. A rule whose family *is*
+      // bound and still never fires is the real warning.
+      const bound = activeNodes(context.nodes).some((node) => node.generator.family === rule.family);
+      findings.push(
+        warn(
+          "CG-12",
+          bound
+            ? "no sampled item triggers this rule"
+            : `no active skill binds ${rule.family}, so no sampled item can reach this rule`,
+          rule.id,
+        ),
+      );
       continue;
     }
     if (undefinedOutput > 0) {

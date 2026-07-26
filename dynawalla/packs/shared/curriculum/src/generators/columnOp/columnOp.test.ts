@@ -213,6 +213,7 @@ function stepLines(exercise: Exercise): string[] {
         if (slot === undefined) return `${name}=?`;
         if (slot.kind === "number") return `${name}=${toDecimalString(slot.value, slot.decimalPlaces) ?? "?"}`;
         if (slot.kind === "count") return `${name}=${String(slot.value)}`;
+        if (slot.kind === "fraction") return `${name}=${slot.num.toString()}/${slot.den.toString()}`;
         return `${name}=${slot.key}`;
       })
       .join(" ");
@@ -290,6 +291,51 @@ test("column-op: check rejects every distractor and names the bug that produced 
       assert.equal(verdict.correct, false);
       assert.equal(verdict.correct === false ? verdict.misconception : undefined, distractor.misconception);
     }
+  }
+});
+
+test("column-op: acceptance goes through the schema, so `equivalence` is not a dead knob", () => {
+  // `AnswerSchema.fraction.equivalence` is a curriculum decision — on
+  // `simplify-to-lowest-terms`, accepting `2/4` marks the thing being taught as
+  // correct — and it was declared with nothing on the judging path consulting
+  // it: `check` compared with `answerEquals`, the app never called
+  // `answerAccepted`, and the field would have been silently ignored by the
+  // first fraction family, marking every equivalent answer wrong.
+  //
+  // This family emits no fraction item, so the seam is what is tested: the one
+  // checker in the program, handed a fraction schema, honours the schema.
+  const exercise = generate(1, {}, [FORM_FREE_ENTRY]);
+  const half = { kind: "fraction", num: 1n, den: 2n } as const;
+  const quarters = { kind: "fraction", num: 2n, den: 4n } as const;
+
+  const strict: Exercise = {
+    ...exercise,
+    schema: { kind: "fraction", parts: ["num", "den"] },
+    answer: { canonical: half, alsoAccept: [] },
+  };
+  assert.equal(columnOpFamily.check(strict, half).correct, true);
+
+  const loose: Exercise = {
+    ...strict,
+    schema: { kind: "fraction", parts: ["num", "den"], equivalence: "any-equivalent" },
+  };
+  // The discriminating assertion: `2/4` is not `1/2` to `answerEquals`, and the
+  // only thing that can make this true is the checker reading the schema.
+  assert.equal(
+    columnOpFamily.check(loose, quarters).correct,
+    true,
+    "the schema says any equivalent counts and the checker ignored it",
+  );
+  // The refusing direction is `answerAccepted`'s own test: a *wrong* fraction
+  // here would fall through to `classify`, and this family's mal-rules run the
+  // column procedure, which has no fraction answer shape to run into.
+
+  // And the schemas this family really emits are unaffected: an `integer` or
+  // `columnAlgorithm` schema carries no `equivalence`, so `answerAccepted` is
+  // `answerEquals` on every item it generates.
+  for (let seed = 1; seed <= 50; seed++) {
+    const real = generate(seed);
+    assert.equal(columnOpFamily.check(real, real.answer.canonical).correct, true);
   }
 });
 

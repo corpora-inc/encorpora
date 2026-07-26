@@ -7,8 +7,9 @@
 import { activeNodes } from "../../graph/graph.ts";
 import { familyById } from "../../generators/registry.ts";
 import { answerRendererId, findRenderer, repRendererId } from "../../render/registry.ts";
+import { findPromptTemplate } from "../../render/prompts.ts";
 import type { FamilyId } from "../../types/ids.ts";
-import type { ValidationContext } from "../context.ts";
+import type { LevelSample, ValidationContext } from "../context.ts";
 import type { Finding, GateResult } from "../types.ts";
 import { fail, resultOf, warn } from "../types.ts";
 
@@ -95,19 +96,62 @@ export function cg7(context: ValidationContext): GateResult {
     });
   }
 
-  // The other direction: a registered family that no active node binds is either
-  // dead code or a family whose skills nobody promoted.
+  // The other direction, and it separates two states the first cut ran together.
+  //
+  // A registered family that **no node at all** binds is dead code: nothing can
+  // ever reach it and nobody is going to notice. That stays a failure.
+  //
+  // A family bound only by `draft` rows is the case this gate's own comment named
+  // — "a family whose skills nobody promoted" — and it is a legitimate, and now
+  // common, state: a generator can be complete and correct while the work surface
+  // that draws its questions does not exist (see `render/prompts.ts`). Failing on
+  // it would leave two options, both bad: promote rows the app cannot draw, or
+  // keep finished generators out of the registry where no gate ever runs them.
+  // It warns, and the warning names the rows that are waiting.
+  const draftBound = new Map<FamilyId, string[]>();
+  for (const node of context.nodes) {
+    if (node.status !== "draft") continue;
+    const rows = draftBound.get(node.generator.family) ?? [];
+    rows.push(node.id);
+    draftBound.set(node.generator.family, rows);
+  }
+
   for (const family of context.families) {
     if (boundFamilies.has(family.family)) continue;
     if (FAMILIES_WITHOUT_SKILLS.includes(family.family)) continue;
-    findings.push(fail("CG-7", "registered family is bound by no active skill", family.family));
+    const drafts = draftBound.get(family.family);
+    if (drafts === undefined) {
+      findings.push(fail("CG-7", "registered family is bound by no skill at all", family.family));
+      continue;
+    }
+    findings.push(
+      warn("CG-7", `bound only by draft rows, none promoted: ${drafts.join(", ")}`, family.family),
+    );
   }
 
   return resultOf("CG-7", "bidirectional generator ownership", findings);
 }
 
-/** CG-8 — renderer ownership. Merge blocker. */
-export function cg8(context: ValidationContext): GateResult {
+/**
+ * CG-8 — renderer ownership. Merge blocker.
+ *
+ * Three things a card is made of, and all three are checked: the **answer schema**
+ * the child writes into, every **required representation** drawn beside it, and —
+ * added here — the **prompt template** that states the question.
+ *
+ * The prompt half was missing, and it was not missing in theory. The app reads an
+ * item back out of `prompt.slots` by matching `prompt.key` against two column-op
+ * keys and renders nothing for anything else, so an item from any other family drew
+ * an answer entry, a keypad and a verdict well with no question above them. That is
+ * the exact shape of the failure this gate exists for, one level up from where it
+ * was looking.
+ *
+ * The prompt keys are read off **generated items** rather than off a declaration a
+ * family makes about itself. A family that could emit a template it never does is
+ * not the risk; a family that emits one nobody registered is, and only running it
+ * can tell you which it did.
+ */
+export function cg8(context: ValidationContext, samples: readonly LevelSample[]): GateResult {
   const findings: Finding[] = [];
 
   // Registry hygiene first: an entry with no owner, or one claiming to be
@@ -158,11 +202,60 @@ export function cg8(context: ValidationContext): GateResult {
     }
   }
 
+  // The prompt half, measured on the items the active levels actually produced.
+  const seenTemplates = new Set<string>();
+  for (const sample of samples) {
+    for (const exercise of sample.exercises) {
+      if (seenTemplates.has(exercise.prompt.key)) continue;
+      seenTemplates.add(exercise.prompt.key);
+      const entry = findPromptTemplate(exercise.prompt.key, context.prompts);
+      if (entry === undefined) {
+        findings.push(
+          fail(
+            "CG-8",
+            `prompt template "${exercise.prompt.key}" has no registered renderer — the card would draw its answer entry with no question above it`,
+            sample.node.id,
+          ),
+        );
+        continue;
+      }
+      if (entry.implemented) continue;
+      if (context.strictRenderers) {
+        findings.push(
+          fail(
+            "CG-8",
+            `prompt template "${exercise.prompt.key}" is declared but not implemented (${entry.owner})`,
+            sample.node.id,
+          ),
+        );
+      } else {
+        awaitingImplementation.set(`prompt:${exercise.prompt.key}`, entry.owner);
+      }
+    }
+  }
+
+  // Registry hygiene for the prompt half, in both directions the curriculum can
+  // see: an entry with no owner, one claiming to be implemented with no test, and
+  // one naming a family this package does not register.
+  for (const entry of context.prompts) {
+    if (entry.owner.trim() === "") {
+      findings.push(fail("CG-8", "prompt template declaration has no owner", entry.id));
+    }
+    if (entry.implemented && (entry.testRef === undefined || entry.testRef.trim() === "")) {
+      findings.push(fail("CG-8", "prompt template claims implemented with no testRef", entry.id));
+    }
+    if (familyById(entry.family, context.families) === undefined) {
+      findings.push(fail("CG-8", `prompt template names unregistered family ${entry.family}`, entry.id));
+    }
+  }
+
   for (const [id, owner] of awaitingImplementation) {
     findings.push(warn("CG-8", `renderer is declared but not implemented yet — ${owner} owns it`, id));
   }
 
-  return resultOf("CG-8", "renderer ownership", findings);
+  return resultOf("CG-8", "renderer ownership", findings, [
+    `${String(seenTemplates.size)} prompt template(s) emitted by active levels`,
+  ]);
 }
 
 /**
