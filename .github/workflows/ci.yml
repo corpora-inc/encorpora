@@ -144,9 +144,11 @@ jobs:
 
           # Areas a job actually consumes today, minus the `ci.yml` self-triggers
           # (a workflow edit is exempt below anyway). NOT the union of every
-          # filter above: `dynawalla_*`, `native` and `shared_ts` are declared
-          # ahead of their jobs, so paths they match are genuinely ungated and
-          # must keep warning until those jobs land.
+          # filter above: `dynawalla_curriculum`, `dynawalla_engine`, `native`
+          # and `shared_ts` are declared ahead of their jobs, so paths they
+          # match are genuinely ungated and must keep warning until those jobs
+          # land. `dynawalla/dynawalla-app/` graduated when the `dynawalla-app`
+          # job below started consuming its filter.
           #
           # The terraform member is copied verbatim from the `terraform` filter —
           # extension-scoped, not the bare directory. A bare `corpan/infra/
@@ -156,7 +158,7 @@ jobs:
           # `corpan/plugins/` is covered only by `.github/workflows/ios-native.yml`,
           # which is ADVISORY (not a required check). It compiles, so it counts
           # here, but a red run has to be read by hand.
-          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/)'
+          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. `corpan-app`'s job is npm only —
@@ -273,6 +275,46 @@ jobs:
         run: python -m pip install --disable-pip-version-check "pytest==8.3.4"
       - name: Run CI script tests
         run: python -m pytest .github/scripts -q
+
+  # Dynawalla's app shell. Node-only, exactly like `corpan-app`: lint, the
+  # native test runner, tsc and a production vite build. It does NOT compile
+  # the Rust under dynawalla/dynawalla-app/src-tauri — there is no cargo gate
+  # in this workflow for either app, and adding one is its own PR with its own
+  # runner-cost and caching decisions. The `uncovered` warning above keeps
+  # flagging `src-tauri/` paths until that lands, which is accurate.
+  #
+  # Path-gated, and therefore NOT a required status context: it reports into
+  # `ci-gate` below. A required context that never reports on unrelated PRs
+  # blocks the merge queue forever.
+  dynawalla-app:
+    name: dynawalla-app · lint + tsc + test + build
+    needs: changes
+    if: needs.changes.outputs.dynawalla_app == 'true'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # Matches dynawalla/dynawalla-app/.nvmrc and the `engines` floor.
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/dynawalla-app/package-lock.json
+      - name: Install
+        working-directory: dynawalla/dynawalla-app
+        run: npm ci
+      - name: Lint
+        working-directory: dynawalla/dynawalla-app
+        run: npm run lint
+      - name: Test
+        working-directory: dynawalla/dynawalla-app
+        run: npm test
+      - name: Typecheck
+        working-directory: dynawalla/dynawalla-app
+        run: npm run tsc
+      - name: Build
+        working-directory: dynawalla/dynawalla-app
+        run: npm run build
 
   lambda:
     name: lambda · tests
@@ -425,7 +467,19 @@ jobs:
   # Skipped needs are fine; any failure or cancellation fails the gate.
   ci-gate:
     name: ci-gate
-    needs: [changes, ci-scripts, corpan-app, dja, lambda, web-io, changed-packs, terraform, pack-catalog]
+    needs:
+      [
+        changes,
+        ci-scripts,
+        corpan-app,
+        dja,
+        dynawalla-app,
+        lambda,
+        web-io,
+        changed-packs,
+        terraform,
+        pack-catalog,
+      ]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:

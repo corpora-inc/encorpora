@@ -1,0 +1,274 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Dynawalla — design tokens
+
+   Tokens only. This file fixes the material vocabulary and the type scale so
+   the art pass has something to build on; it is not itself the visual design.
+
+   Three layers, in this order, and the layering is load bearing:
+
+     1. `@theme`        the palette and the type scale — raw materials, the
+                        only place a literal colour may appear.
+     2. `:root` /       the semantic layer. Every semantic token names a ROLE
+        `.dw-dark`      ("the ground", "the incised line") and resolves to a
+                        material. Light is the default; `.dw-dark` re-cuts the
+                        same roles in dark materials.
+     3. `@theme inline` republishes the semantic layer as Tailwind utilities,
+                        so `bg-ground` emits `var(--dw-ground)` and follows the
+                        theme class rather than baking one theme's value in.
+
+   The palette is material, not lighting: brass, lapis, carved limestone,
+   parchment, copper oxide, glazed tile, walnut, and the cold celestial light
+   that falls on all of it. No gradients, no glow.
+   `src/design/tokens.test.ts` enforces the layering mechanically.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Type ──────────────────────────────────────────────────────────────
+     No webfont. A font load on the answer path is banned outright
+     (EXPERIENCE_DESIGN), and a child's first frame should never wait on a
+     network or a decode. These are the stacks already resident on every
+     platform we ship to.
+
+     `--font-inscription` is the display face: old-style serif, for anything
+     that reads as cut into a surface. `--font-numeral` is where digits live —
+     it is separate from body text because tabular figures are the difference
+     between a column of numerals that lines up and one that does not. */
+  --font-inscription: "Iowan Old Style", "Palatino Linotype", Palatino, "Hoefler Text",
+    "Times New Roman", serif;
+  --font-text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-numeral: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+
+  /* A 1.25 scale from a 1rem base, rounded to eighths of a rem so every step
+     lands on a half-pixel-free value at the 16 px default. */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.25;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.35;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.4;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.3;
+  --text-2xl: 1.875rem;
+  --text-2xl--line-height: 1.2;
+  --text-3xl: 2.375rem;
+  --text-3xl--line-height: 1.15;
+  --text-4xl: 3rem;
+  --text-4xl--line-height: 1.05;
+
+  /* ── Materials ─────────────────────────────────────────────────────────
+     Named for the substance, numbered light to dark. */
+
+  /* Parchment — the lit ground. */
+  --color-parchment-50: #faf4e8;
+  --color-parchment-100: #f2e9d7;
+  --color-parchment-200: #e6d9c0;
+  --color-parchment-300: #d6c5a5;
+
+  /* Carved limestone — structure, rules, incised edges. */
+  --color-stone-200: #c9bfae;
+  --color-stone-400: #a2967f;
+  --color-stone-600: #6f6553;
+  --color-stone-800: #40392e;
+
+  /* Basalt — the unlit ground, and ink on parchment. */
+  --color-basalt-700: #2b2721;
+  --color-basalt-800: #211d18;
+  --color-basalt-900: #17140f;
+  --color-basalt-950: #100e0a;
+
+  /* Brass — the index, the pointer, the working mechanism. */
+  --color-brass-300: #e3c179;
+  --color-brass-500: #c39a3c;
+  --color-brass-700: #8a6a24;
+
+  /* Lapis — the deep field; the sky an astrolabe is read against. */
+  --color-lapis-400: #4a7ec4;
+  --color-lapis-600: #2c5697;
+  --color-lapis-800: #1a3160;
+  --color-lapis-950: #101d3a;
+
+  /* Glazed tile — cool ceramic, for calm affirmative surfaces. */
+  --color-tile-400: #45a3a8;
+  --color-tile-600: #1f7379;
+
+  /* Copper and its oxide — the tone of a struck, incorrect mark. */
+  --color-copper-500: #a85b33;
+  --color-copper-700: #7a3f22;
+
+  /* Walnut — cabinetry, frames, the case an instrument sits in. */
+  --color-walnut-600: #5a4130;
+  --color-walnut-800: #33241a;
+
+  /* Celestial — cold light. Highlights only; never a fill. */
+  --color-celestial-100: #e4eef8;
+  --color-celestial-300: #a9c9e6;
+}
+
+/* ── Semantic layer, light ────────────────────────────────────────────────
+   Roles, not colours. Nothing outside this block may name a material. */
+:root {
+  /* Grounds. `sunk` is a recess cut into `ground`; `raised` is a surface
+     standing proud of it. Both are the same stone in different light — the
+     difference is never a drop shadow. */
+  --dw-ground: var(--color-parchment-100);
+  --dw-ground-sunk: var(--color-parchment-200);
+  --dw-ground-raised: var(--color-parchment-50);
+  --dw-ground-deep: var(--color-lapis-950);
+
+  /* Incised lines. `--dw-line` is a hairline rule; `--dw-line-strong` is a
+     structural edge; `--dw-line-cut` is the shadow inside a carved groove. */
+  --dw-line: var(--color-parchment-300);
+  --dw-line-strong: var(--color-stone-400);
+  --dw-line-cut: var(--color-stone-600);
+
+  /* Marks on the ground. */
+  --dw-ink: var(--color-basalt-900);
+  --dw-ink-muted: var(--color-stone-600);
+  --dw-ink-inverse: var(--color-parchment-50);
+
+  /* The mechanism: the index that points at where you are. */
+  --dw-index: var(--color-brass-700);
+  --dw-index-lit: var(--color-brass-500);
+
+  /* The deep field, and what is legible against it. */
+  --dw-field: var(--color-lapis-800);
+  --dw-field-ink: var(--color-celestial-100);
+
+  /* Verdicts. Cold light seats a correct answer; copper oxide marks a strike.
+     Neither is ever the only carrier of meaning (CG-18). */
+  --dw-seat: var(--color-tile-600);
+  --dw-strike: var(--color-copper-500);
+
+  /* Case and frame. */
+  --dw-case: var(--color-walnut-600);
+
+  /* Focus ring. Contrast against the ground is what matters here, so it is a
+     semantic role of its own rather than a reuse of the index. */
+  --dw-focus: var(--color-lapis-600);
+
+  /* ── Non-material tokens ───────────────────────────────────────────────
+     These carry no colour and therefore do not re-cut in dark. The token
+     test keys on exactly that: a semantic token that resolves to a material
+     must exist in both themes; one that does not, must not. */
+
+  /* Motion. `detent` is the 200 ms seat from EXPERIENCE_DESIGN; `quick` is a
+     single frame of acknowledgement; `settle` is the world moving, which the
+     work surface never waits for. */
+  --dw-motion-quick: 120ms;
+  --dw-motion-detent: 200ms;
+  --dw-motion-settle: 420ms;
+  --dw-ease-detent: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Cut radii. Stone is worked square; these are chamfers, not pills. */
+  --dw-cut-sm: 2px;
+  --dw-cut-md: 4px;
+  --dw-cut-lg: 8px;
+
+  /* ── Platform facts, inherited mechanically from Corpán's stylesheet ────
+     Per ADR-0005 this is the one layer Dynawalla does not build fresh: the
+     safe-area env() tokens, the dialog height cap and the z ladder are
+     device facts, not taste. Android WebViews can report a 0 bottom inset,
+     so callers that need a hard floor use max(var(--safe-bottom), <n>). */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  --dialog-max-h: calc(100dvh - var(--safe-top) - var(--safe-bottom) - 2rem);
+
+  --z-sticky: 1001;
+  --z-overlay: 1100;
+  --z-modal: 1100;
+  --z-modal-close: 1101;
+  --z-drawer: 1200;
+  --z-popover: 1300;
+  --z-toast: 1400;
+}
+
+/* ── Semantic layer, dark ─────────────────────────────────────────────────
+   The same instrument at night, not an inverted image of it. Parchment
+   becomes basalt; brass stays brass but catches less light; the incised
+   lines lighten because a groove in dark stone shows its lit edge. */
+.dw-dark {
+  --dw-ground: var(--color-basalt-800);
+  --dw-ground-sunk: var(--color-basalt-950);
+  --dw-ground-raised: var(--color-basalt-700);
+  --dw-ground-deep: var(--color-basalt-950);
+
+  --dw-line: var(--color-stone-800);
+  --dw-line-strong: var(--color-stone-600);
+  --dw-line-cut: var(--color-basalt-950);
+
+  --dw-ink: var(--color-parchment-100);
+  --dw-ink-muted: var(--color-stone-400);
+  --dw-ink-inverse: var(--color-basalt-900);
+
+  --dw-index: var(--color-brass-300);
+  --dw-index-lit: var(--color-brass-500);
+
+  --dw-field: var(--color-lapis-950);
+  --dw-field-ink: var(--color-celestial-300);
+
+  --dw-seat: var(--color-tile-400);
+  --dw-strike: var(--color-copper-700);
+
+  --dw-case: var(--color-walnut-800);
+
+  --dw-focus: var(--color-lapis-400);
+}
+
+/* ── Utilities ────────────────────────────────────────────────────────────
+   `inline` is required: it makes Tailwind emit `var(--dw-ground)` rather than
+   resolving the token at build time, which is what lets one stylesheet serve
+   both themes. */
+@theme inline {
+  --color-ground: var(--dw-ground);
+  --color-ground-sunk: var(--dw-ground-sunk);
+  --color-ground-raised: var(--dw-ground-raised);
+  --color-ground-deep: var(--dw-ground-deep);
+  --color-line: var(--dw-line);
+  --color-line-strong: var(--dw-line-strong);
+  --color-line-cut: var(--dw-line-cut);
+  --color-ink: var(--dw-ink);
+  --color-ink-muted: var(--dw-ink-muted);
+  --color-ink-inverse: var(--dw-ink-inverse);
+  --color-index: var(--dw-index);
+  --color-index-lit: var(--dw-index-lit);
+  --color-field: var(--dw-field);
+  --color-field-ink: var(--dw-field-ink);
+  --color-seat: var(--dw-seat);
+  --color-strike: var(--dw-strike);
+  --color-case: var(--dw-case);
+  --color-focus: var(--dw-focus);
+
+  --radius-cut-sm: var(--dw-cut-sm);
+  --radius-cut-md: var(--dw-cut-md);
+  --radius-cut-lg: var(--dw-cut-lg);
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────
+   A branch, not a degradation (EXPERIENCE_DESIGN). Collapsing the duration
+   tokens is what makes every token-driven transition become an instant state
+   change; the belt-and-braces rule below catches anything that hardcoded its
+   own duration anyway. Both are needed: the first keeps the design honest,
+   the second keeps a stray `transition: all 300ms` from moving the screen for
+   a child who asked it not to. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dw-motion-quick: 0ms;
+    --dw-motion-detent: 0ms;
+    --dw-motion-settle: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
