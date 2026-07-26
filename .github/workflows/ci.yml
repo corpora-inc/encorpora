@@ -27,9 +27,10 @@ jobs:
       ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
       dja: ${{ steps.filter.outputs.dja }}
-      # dynawalla_*, native and shared_ts are declared ahead of the jobs that
-      # will consume them. Nothing reads them yet, so they cannot affect any
-      # gate; declaring them here keeps the follow-up PR a one-line `if:`.
+      # `shared_ts` is declared ahead of the job that will consume it.
+      # Nothing reads it yet, so it cannot affect any gate; declaring it here
+      # keeps the follow-up PR a one-line `if:`. Every other output below is
+      # consumed by a job in this file.
       dynawalla_android_gen: ${{ steps.filter.outputs.dynawalla_android_gen }}
       dynawalla_app: ${{ steps.filter.outputs.dynawalla_app }}
       dynawalla_curriculum: ${{ steps.filter.outputs.dynawalla_curriculum }}
@@ -116,11 +117,17 @@ jobs:
           set_output dynawalla_android_gen '^(dynawalla/dynawalla-app/(package(-lock)?\.json$|android-template-baseline/|src-tauri/gen/android/)|\.github/workflows/ci\.yml$)'
           set_output dynawalla_curriculum '^(dynawalla/curriculum/|\.github/workflows/ci\.yml$)'
           set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
-          # Cross-product areas. Deliberately no `ci.yml` self-trigger: these
-          # exist to answer "did shared code / the native layer move", and a
-          # workflow edit is not a change to either.
+          # Cross-product area. Deliberately no `ci.yml` self-trigger: it exists
+          # to answer "did shared code move", and a workflow edit is not a
+          # change to it. No job consumes it yet.
           set_output shared_ts '^(shared/|corpan/packs/shared/)'
-          set_output native '^(native/|.*/src-tauri/|corpan/plugins/)'
+          # The Rust/native layer: both apps' `src-tauri` trees and every Tauri
+          # plugin crate. Consumed by the `native` job below, so — unlike
+          # `shared_ts` above and unlike this filter before that job existed —
+          # it DOES self-trigger on `ci.yml`, exactly like every other filter
+          # that drives a job. A workflow edit that breaks the native gate has
+          # to be caught by the native gate.
+          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)'
 
       # Coverage warning. WARN-ONLY, and permanently scoped to `pull_request`.
       #
@@ -159,29 +166,43 @@ jobs:
 
           # Areas a job actually consumes today, minus the `ci.yml` self-triggers
           # (a workflow edit is exempt below anyway). NOT the union of every
-          # filter above: `native` and `shared_ts` are declared ahead of their
-          # jobs, so paths they match are genuinely ungated and must keep
-          # warning until those jobs land. `dynawalla/dynawalla-app/`,
-          # `dynawalla/curriculum/` and `dynawalla/engine/` have each graduated,
-          # as the jobs below now consume their filters.
+          # filter above: `shared_ts` is declared ahead of its job, so paths it
+          # matches are genuinely ungated and must keep warning until that job
+          # lands. `dynawalla/dynawalla-app/`, `dynawalla/curriculum/`,
+          # `dynawalla/engine/` and now `native` have each graduated, as the
+          # jobs below consume their filters.
           #
           # The terraform member is copied verbatim from the `terraform` filter —
           # extension-scoped, not the bare directory. A bare `corpan/infra/
           # terraform/` would mark helper scripts under it as covered when no job
           # runs them.
           #
-          # `corpan/plugins/` is covered only by `.github/workflows/ios-native.yml`,
-          # which is ADVISORY (not a required check). It compiles, so it counts
-          # here, but a red run has to be read by hand.
+          # `corpan/plugins/` is now compiled by the `native` job below, which
+          # reports into the required `ci-gate` (every plugin is a path
+          # dependency of Corpán's src-tauri, so a host `cargo clippy` of the
+          # app compiles all of them). `.github/workflows/ios-native.yml`
+          # additionally compiles their Swift, but it is advisory and does not
+          # count here.
           covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
-          # would otherwise swallow them. `corpan-app`'s job is npm only —
-          # `npm test`/`tsc`/`build`. It never compiles the Rust under
-          # `src-tauri/`, so `corpan/corpan-app/src-tauri/**` is ungated even
-          # though `corpan/corpan-app/` is covered. grep -E has no negative
-          # lookahead, hence a separate pattern.
-          ungated='(^|/)src-tauri/'
+          # would otherwise swallow them. grep -E has no negative lookahead,
+          # hence a separate pattern rather than an exclusion inside `covered`.
+          #
+          # The `native` job compiles exactly two src-tauri trees: Corpán's and
+          # Dynawalla's. The four listed below are NOT compiled by any job.
+          # `corpus-reader` and `panko` are dormant (last touched by a repo-wide
+          # sweep in June); `panko` also resolves a plugin from a git BRANCH and
+          # `homeschool-offline` tracks no Cargo.lock at all; the iap example is
+          # a demo, not shipped.
+          #
+          # The rustfmt ratchet in `native` WALKS all four, but walking is not
+          # gating: `corpus-reader/src-tauri` and both `homeschool-offline`
+          # crates are on its DEBT list, so their diffs are reported as
+          # warnings and cannot fail the job. `panko/pako/src-tauri` and the
+          # iap example are off the list and therefore enforced. This warning
+          # is about COMPILE coverage specifically.
+          ungated='^(corpus-reader/src-tauri/|panko/pako/src-tauri/|homeschool-offline/app/src-tauri/|corpan/plugins/tauri-plugin-iap/examples/)'
 
           # Gate-free by design: CI config, agent control plane, docs, dotfiles.
           exempt='(^\.github/|^\.claude/|^\.gitignore$|^\.gitattributes$|^LICENSE$|\.md$)'
@@ -293,10 +314,9 @@ jobs:
 
   # Dynawalla's app shell. Node-only, exactly like `corpan-app`: lint, the
   # native test runner, tsc and a production vite build. It does NOT compile
-  # the Rust under dynawalla/dynawalla-app/src-tauri — there is no cargo gate
-  # in this workflow for either app, and adding one is its own PR with its own
-  # runner-cost and caching decisions. The `uncovered` warning above keeps
-  # flagging `src-tauri/` paths until that lands, which is accurate.
+  # the Rust under dynawalla/dynawalla-app/src-tauri — the `native` job below
+  # does, with `cargo clippy --locked --all-targets`, so `src-tauri/` paths no
+  # longer fall through to the `uncovered` warning above. Keep this job npm-only.
   #
   # Path-gated, and therefore NOT a required status context: it reports into
   # `ci-gate` below. A required context that never reports on unrelated PRs
@@ -313,9 +333,10 @@ jobs:
         # `*.png` is Git LFS repo-wide, so a plain checkout leaves a pointer
         # file where the icon should be. `lfs: true` would pull every sqlite3,
         # epub and pdf in the monorepo for the sake of 10 kB, so this fetches
-        # the one path that is read: `capabilities.test.ts` asserts the icon's
-        # PNG colour type, because tauri-codegen panics on anything but RGBA
-        # and does it two minutes into a cargo build no job here runs.
+        # the one path that is read twice: `capabilities.test.ts` asserts the
+        # icon's PNG colour type, and the `native` job's tauri-codegen build
+        # decodes the same file. tauri-codegen panics on anything but RGBA,
+        # minutes into the cargo build — this test catches it in seconds.
         run: git lfs pull --include="dynawalla/dynawalla-app/src-tauri/icons/*"
       - uses: actions/setup-node@v4
         with:
@@ -653,6 +674,327 @@ jobs:
         working-directory: dynawalla/engine
         run: npm run tsc
 
+  # ───────────────────────────────────────────────────────────────────────────
+  # The Rust / native gate.
+  #
+  # Before this job, NOTHING required ran cargo, rustfmt, clippy or rustup —
+  # every Rust change in both shipping apps merged uncompiled, and the first
+  # signal was a release build at store-submission time. `ios-native.yml`
+  # compiles plugin Swift but is advisory, has no `merge_group` trigger and
+  # carries a top-level `paths:` filter (which is why it can never BE required:
+  # it would not report on unrelated PRs and would deadlock the queue forever).
+  #
+  # This job is path-gated, so it is NOT a required status context either. It
+  # reports into `ci-gate`, which is already required and always reports. That
+  # is what makes this safe by construction: adding a `needs` entry to an
+  # always-reporting aggregate adds coverage without adding a context branch
+  # protection is waiting on, so the merge queue cannot deadlock on it.
+  #
+  # SCOPE — deliberately the host target only:
+  #   * `cargo clippy` (not `cargo check`) because clippy IS a check plus lints:
+  #     one compile, both signals. A compile error fails it; lint warnings are
+  #     counted and reported but do NOT fail, so the first PR to touch Rust is
+  #     not blocked by pre-existing debt. See the enforcement note below.
+  #   * Corpán's src-tauri depends on all eleven plugin crates by path, so
+  #     compiling it compiles every plugin. Clippy LINTS only the app crate
+  #     (path deps outside the workspace dir do not get the clippy wrapper);
+  #     the plugins are compile-checked, not linted.
+  #   * `#[cfg(mobile)]` code (each plugin's `mobile.rs`, the Android JNI and
+  #     crash-breadcrumb blocks in Corpán's lib.rs) is NOT compiled here — a
+  #     linux host build takes the `desktop` cfg. iOS Rust+Swift is covered
+  #     advisory-only by ios-native.yml; the Android Rust glue is covered by
+  #     nothing. Closing that needs an NDK on the runner and is its own PR.
+  native:
+    name: native · fmt + compile + clippy
+    needs: changes
+    if: needs.changes.outputs.native == 'true'
+    # Measured on ubuntu-latest: 7m18s stone cold, 4m09s on a full cache match.
+    # 30 is headroom over the cold number on a slow runner while still catching
+    # a hang, rather than burning 45 minutes of queue time before anyone
+    # notices. See the cache step for where the warm time actually goes.
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the app icons (Git LFS)
+        # `*.png` is Git LFS repo-wide (.gitattributes:2), and Tauri's
+        # `generate_context!` decodes the icon during compilation — a pointer
+        # file panics tauri-codegen minutes into the build. Same targeted pull
+        # as the dynawalla-app job; `lfs: true` on checkout would drag every
+        # sqlite3/epub/pdf in the monorepo along for ~20 kB of PNG.
+        run: |
+          git lfs pull \
+            --include="corpan/corpan-app/src-tauri/icons/*,dynawalla/dynawalla-app/src-tauri/icons/*"
+      - name: Toolchain
+        # The runner image ships rustup + stable with rustfmt and clippy. No
+        # third-party toolchain action, no extra download on the happy path;
+        # `component add` is a no-op when they are already present.
+        run: |
+          set -euo pipefail
+          rustup component add rustfmt clippy
+          rustc --version
+          cargo --version
+          cargo fmt --version
+          cargo clippy --version
+      - name: System libraries (Tauri + llama.cpp)
+        # Tauri v2 on Linux links webkit2gtk/soup; llama-cpp-sys-2's build
+        # script drives cmake and bindgen (libclang). `cargo clippy` runs build
+        # scripts, so these are needed for a check-only build too.
+        #
+        # Retried because this job reports into the REQUIRED `ci-gate`, and in
+        # the merge queue a red `ci-gate` ejects the entry under ALLGREEN. A
+        # flaky apt mirror should cost 20 s, not a re-queue. Still fails closed:
+        # `until` is exempt from errexit, and the function returns 1 after the
+        # third attempt.
+        run: |
+          set -euo pipefail
+
+          retry() {
+            local n=0
+            until "$@"; do
+              n=$((n + 1))
+              if [ "${n}" -ge 3 ]; then
+                echo "::error::failed after ${n} attempts: $*"
+                return 1
+              fi
+              echo "attempt ${n} failed, retrying in $((n * 5))s: $*"
+              sleep "$((n * 5))"
+            done
+          }
+
+          retry sudo apt-get update
+          retry sudo apt-get install -y --no-install-recommends \
+            libwebkit2gtk-4.1-dev \
+            libjavascriptcoregtk-4.1-dev \
+            libsoup-3.0-dev \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            libxdo-dev \
+            libssl-dev \
+            cmake \
+            libclang-dev
+      - name: Cache cargo registry + target dirs
+        # SHA-pinned to the commit tag v2.9.1 dereferences to. Keyed
+        # per-workspace; the two src-tauri trees are separate implicit
+        # workspaces with separate lockfiles.
+        uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4
+        with:
+          workspaces: |
+            corpan/corpan-app/src-tauri
+            dynawalla/dynawalla-app/src-tauri
+          cache-all-crates: "true"
+          #
+          # MEASURED CEILING — read this before trying to speed the job up.
+          #
+          # Warm (full cache match) is ~4m15s of which ~156s is Corpán's
+          # compile; stone cold is ~7m. The residual is NOT registry deps: on a
+          # full match cargo still rebuilds every PATH-sourced crate — the
+          # vendored llama-cpp-sys-2 fork (cmake + bindgen over llama.cpp,
+          # the single biggest item), all eleven plugins, and the app crate.
+          # rust-cache strips those from the target dir before saving.
+          #
+          # `cache-workspace-crates: true` was tried and measured: 156s against
+          # 165s, inside the noise, because the plugins live OUTSIDE the
+          # workspace root and are not "workspace crates" by that flag's
+          # definition. It is deliberately not set. The real lever is a
+          # compiler cache (sccache, which also fronts the C++ via
+          # CMAKE_C_COMPILER_LAUNCHER); that is a separate PR with its own
+          # correctness argument.
+          #
+          # Trap for whoever tries: rust-cache does NOT re-save on a full key
+          # match, so a caching change alone appears to do nothing against an
+          # existing cache. Bump `prefix-key` to force a rebuild while
+          # measuring, and note that a PR-event cache is scoped to that PR —
+          # only the `push: main` run populates a cache every PR can read.
+
+      # ── rustfmt, as a ratchet ────────────────────────────────────────────
+      #
+      # Fourteen of the eighteen tracked crates carry pre-existing formatting
+      # debt (see DEBT below), so a blanket `cargo fmt --check` would fail on
+      # day one and get deleted. Instead: every crate NOT on the list is
+      # enforced — including every crate added from here on, since the default
+      # is "enforced" — and the listed ones are reported.
+      #
+      # The list is bidirectional on purpose. Formatting a debt crate without
+      # removing it here FAILS, with the exact line to delete. That is what
+      # keeps the ratchet from rusting open.
+      - name: rustfmt (enforced outside the debt list)
+        run: |
+          set -euo pipefail
+
+          # Pre-existing rustfmt debt. Measured identically under rustfmt 1.8.0
+          # (Rust 1.93, a local checkout) and rustfmt 1.9.0-stable (rustc
+          # 1.97.1, what the runner image shipped for this PR) — the toolchain
+          # is deliberately unpinned, so the bar is "whatever stable rustfmt
+          # ships". rustfmt guarantees output stability within a style edition
+          # and `style_edition` defaults to the crate's `edition`, so the only
+          # thing that can move this list without a code change is bumping a
+          # crate's edition (these span 2021 and 2024). Remove a line the moment
+          # its crate is formatted — CI tells you to.
+          DEBT='corpan/corpan-app/src-tauri
+          corpan/plugins/corpan-asr-contract
+          corpan/plugins/tauri-plugin-asr-native
+          corpan/plugins/tauri-plugin-audio-keepalive
+          corpan/plugins/tauri-plugin-corpan-llm
+          corpan/plugins/tauri-plugin-game-packs
+          corpan/plugins/tauri-plugin-iap
+          corpan/plugins/tauri-plugin-radio-stream
+          corpan/plugins/tauri-plugin-stt
+          corpan/plugins/tauri-plugin-subscriptions
+          corpan/plugins/tauri-plugin-tts
+          corpus-reader/src-tauri
+          homeschool-offline/app/src-tauri
+          homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share'
+
+          # Membership is tested with a here-string, never `printf | grep -q`:
+          # `grep -q` exits on the first match, the producer takes SIGPIPE and
+          # `pipefail` turns a successful lookup into status 141. That has
+          # silently inverted a compliance check in this repo before.
+          seen="$(mktemp)"
+          trap 'rm -f "${seen}"' EXIT
+          fail=0
+          while IFS= read -r manifest; do
+            # `vendor/` is a third-party fork carried verbatim; reformatting it
+            # would fight every rebase against upstream.
+            case "${manifest}" in */vendor/*) continue ;; esac
+            crate="$(dirname "${manifest}")"
+
+            if grep -Fxq -- "${crate}" <<< "${DEBT}"; then
+              listed=true
+              printf '%s\n' "${crate}" >> "${seen}"
+            else
+              listed=false
+            fi
+
+            if cargo fmt --manifest-path "${manifest}" --check > /dev/null 2>&1; then
+              if [ "${listed}" = true ]; then
+                echo "::error::${crate} is now rustfmt-clean — delete it from the DEBT list in .github/workflows/ci.yml so it stays that way."
+                fail=1
+              else
+                echo "  ok    ${crate}"
+              fi
+              continue
+            fi
+
+            # `cargo fmt --check` exits 1 when it finds diffs, so the `|| true`
+            # is load bearing: without it `errexit` kills this step on the
+            # first debt crate, before a single line is printed.
+            hunks="$(
+              { cargo fmt --manifest-path "${manifest}" --check 2>/dev/null || true; } \
+                | sed -n 's/^Diff in .*/x/p' | wc -l | tr -d ' '
+            )"
+            if [ "${listed}" = true ]; then
+              echo "::warning::${crate} has ${hunks} rustfmt diff(s) (known debt)"
+              echo "  debt  ${crate} (${hunks} diffs)"
+            else
+              echo "::error::${crate} is not rustfmt-clean. Run: cargo fmt --manifest-path ${manifest}"
+              fail=1
+            fi
+          done < <(git ls-files '*Cargo.toml')
+
+          # A DEBT entry for a crate that no longer exists rots silently.
+          while IFS= read -r entry; do
+            [ -n "${entry}" ] || continue
+            if ! grep -Fxq -- "${entry}" "${seen}"; then
+              echo "::error::DEBT lists ${entry}, which is not a tracked crate. Delete the line."
+              fail=1
+            fi
+          done <<< "${DEBT}"
+
+          exit "${fail}"
+
+      # ── [patch.crates-io] integrity ──────────────────────────────────────
+      #
+      # A Cargo patch that stops matching can be SILENT: when the lock already
+      # carries the `[[patch.unused]]` stanza, `cargo metadata --locked` exits
+      # 0 and the stderr warning is the only signal, and the build compiles,
+      # tests and clippies clean against the upstream crate. This repo has
+      # already lost a vendored fix that way. (Against a CLEAN lock the same
+      # patch exits 101 instead — the script treats both as failures.)
+      # Cheap (~1 s measured, resolution only, no compilation), so it runs
+      # before the long build and fails fast.
+      - name: Cargo [patch] integrity
+        run: python3 .github/scripts/patch_integrity.py
+
+      # ── compile + lint ───────────────────────────────────────────────────
+      #
+      # `--locked` is load-bearing: it fails if the committed lock would have to
+      # move, so CI compiles the versions that ship. It is possible for all four
+      # tracked locks (`git ls-files '*Cargo.lock'` — corpan, corpus-reader,
+      # dynawalla, panko). The two trees compiled here are the two that ship;
+      # `corpus-reader` and `panko` are dormant and `homeschool-offline` tracks
+      # no Cargo.lock at all. See the `ungated` list in the `changes` job.
+      #
+      # `--all-targets` also compiles test and bin targets. On a check-only
+      # build nothing links, so the marginal cost is small and it is what
+      # catches a broken `#[cfg(test)]` module before someone runs the tests.
+      #
+      # Clippy is a BUDGET, not warn-only: CLIPPY_BUDGET below is bidirectional
+      # in the same shape as the rustfmt DEBT list. Over it fails, under it
+      # fails and tells you to lower the number. A count that is printed and
+      # discarded is a log line, not a gate — 16 would drift to 60 unnoticed.
+      - name: Compile + clippy (host target)
+        run: |
+          set -euo pipefail
+
+          # Neither app has a `dist/` in a fresh checkout — the frontends are
+          # built by their own npm jobs, not here. tauri-codegen embeds
+          # whatever is at `frontendDist`; an empty dir keeps this a pure Rust
+          # gate instead of dragging two full npm builds into a compile check.
+          mkdir -p corpan/corpan-app/dist dynawalla/dynawalla-app/dist
+
+          echo "disk before: $(df -h / | sed -n '2p')"
+
+          counts="${RUNNER_TEMP}/clippy-counts.txt"
+          : > "${counts}"
+
+          for app in corpan/corpan-app/src-tauri dynawalla/dynawalla-app/src-tauri; do
+            echo "::group::${app} · cargo clippy --locked --all-targets"
+            started="${SECONDS}"
+            # stdout is the JSON diagnostic stream (rendered + de-duplicated by
+            # the reporter); stderr stays on the job log for cargo's progress
+            # and its final "could not compile" summary. `pipefail` carries
+            # cargo's exit code, so a COMPILE ERROR fails this step while lint
+            # warnings do not — the reporter always exits 0.
+            cargo clippy --locked --all-targets \
+              --manifest-path "${app}/Cargo.toml" \
+              --message-format=json \
+              | python3 .github/scripts/clippy_report.py \
+                  --label "${app}" --count-file "${counts}"
+            echo "${app}: compiled + linted in $(( SECONDS - started ))s"
+            echo "::endgroup::"
+          done
+
+          echo "disk after: $(df -h / | sed -n '2p')"
+
+          # Pre-existing clippy debt across both shipping apps, measured on this
+          # branch: 16 in corpan/corpan-app/src-tauri, 0 in dynawalla's. Every
+          # warning is rendered in the groups above, so a rise names itself.
+          #
+          # Bidirectional, like the rustfmt DEBT list: fixing warnings without
+          # lowering this FAILS, with the number to write. That is what turns
+          # the eventual `-- -D warnings` into a countdown rather than one
+          # heroic PR, and what stops the ratchet rusting open.
+          CLIPPY_BUDGET=16
+
+          total="$(awk '{ s += $1 } END { print s + 0 }' "${counts}")"
+          {
+            echo "### native gate"
+            echo
+            echo "Unique clippy warnings: **${total}** (budget ${CLIPPY_BUDGET})"
+          } >> "${GITHUB_STEP_SUMMARY}"
+          echo "TOTAL unique clippy warnings: ${total} (budget ${CLIPPY_BUDGET})"
+
+          if [ "${total}" -gt "${CLIPPY_BUDGET}" ]; then
+            echo "::error::clippy warnings rose to ${total}, over the budget of ${CLIPPY_BUDGET}. Fix the new warning(s) listed above, or justify raising CLIPPY_BUDGET in .github/workflows/ci.yml."
+            exit 1
+          fi
+          if [ "${total}" -lt "${CLIPPY_BUDGET}" ]; then
+            echo "::error::clippy warnings dropped to ${total}. Lower CLIPPY_BUDGET to ${total} in .github/workflows/ci.yml so the gain is held."
+            exit 1
+          fi
+
   # Single summary status that aggregates every job above. THIS is the context to
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
@@ -668,6 +1010,7 @@ jobs:
         dynawalla-app,
         dynawalla-android-gen,
         lambda,
+        native,
         web-io,
         changed-packs,
         terraform,
