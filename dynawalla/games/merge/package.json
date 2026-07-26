@@ -1,0 +1,23 @@
+{
+  "name": "@dynawalla/game-merge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "FUSE — a fusion-reactor merge game. Touching tiles that add to the KEY fuse.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}
