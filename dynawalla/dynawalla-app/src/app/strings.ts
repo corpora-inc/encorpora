@@ -69,6 +69,51 @@ export const strings = {
         close is described by what is left over, not by a verdict on the child. */
     boardCloses: "Every counter has a place.",
   },
+
+  // The world. One string: the drawn screen needs a text alternative (`Q-10`)
+  // and a count is the honest one — it is the only thing about the construction
+  // that is a number. Everything else the drawing says, it says by being drawn.
+  world: {
+    cut: "{{apertures}} apertures cut.",
+  },
+
+  // The Dynawalla.
+  //
+  // Twelve fragments over three observation types — PR-2.11's slice of the
+  // grammar M6 grows to ~100 (`P-06`). He speaks at most four times in a
+  // session and never repeats himself, so the whole of what a child hears in
+  // one sitting is four of these.
+  //
+  // The register: ancient, precise, dryly amused, never saccharine. He notices
+  // the specific true thing and stops. There is no "Great job!" here and there
+  // is nowhere to put one — every line names something that actually happened
+  // in the mathematics or in the stone.
+  //
+  // `repaired` is the one that carries the product's promise, so it is the one
+  // to read hardest. It is said after the child gets right the item that
+  // isolates the step that had just broken — the borrowed ten that was kept in
+  // two places at once. It describes what the *number* did. It never names a
+  // misconception, a mistake, or the child (`M-16`).
+  dynawalla: {
+    repaired: [
+      "What you borrowed, you spent. It did not stay behind.",
+      "You gave it up this time. Most do not, at first.",
+      "A ten cannot sit in two places. You saw that.",
+      "Nothing left over. That is the whole of it.",
+    ],
+    closed: [
+      "{{apertures}} apertures. The light has somewhere to go now.",
+      "It closes. Cut stone does, when the order is right.",
+      "A shape, where there was a hole.",
+      "That will hold weight. Not all of them do.",
+    ],
+    arrived: [
+      "These have a hole in the middle. Watch where the ten goes.",
+      "Zero is not nothing. It is a place with nothing in it.",
+      "Now the empty column.",
+      "Reach past the zero. It has nothing of its own to lend.",
+    ],
+  },
 } as const
 
 /**

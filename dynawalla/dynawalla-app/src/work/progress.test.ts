@@ -2,7 +2,7 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { createProgressStore, ephemeral, INITIAL_PROGRESS } from "./progress.ts"
-import { DEFAULT_PROFILE_ID, isProfileId, storageKey } from "./profile.ts"
+import { DEFAULT_PROFILE_ID, isProfileId, storageKey } from "../app/profile.ts"
 
 test("keys are namespaced by profile, and cannot collide across profiles", () => {
   assert.equal(storageKey("p1", "progress"), "dynawalla.p1.progress")

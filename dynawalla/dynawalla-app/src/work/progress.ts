@@ -19,7 +19,7 @@
 import { create, type StoreApi, type UseBoundStore } from "zustand"
 import { persist, createJSONStorage, type StateStorage } from "zustand/middleware"
 
-import { storageKey } from "./profile.ts"
+import { storageKey } from "../app/profile.ts"
 
 export interface Progress {
   readonly rung: number

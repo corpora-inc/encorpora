@@ -2,6 +2,7 @@ import { Link, Outlet, useMatches } from "react-router"
 
 import { IndexMark } from "../design/IndexMark.tsx"
 import { Strapwork } from "../design/Strapwork.tsx"
+import { ReactionStage } from "../reactions/Stage.tsx"
 import { strings } from "./strings.ts"
 import { DESTINATIONS, type Destination } from "./routes.ts"
 
@@ -46,6 +47,10 @@ export function Shell() {
       <main className="mx-auto w-full max-w-2xl flex-1 px-[max(var(--safe-left),1rem)] pt-6 pr-[max(var(--safe-right),1rem)] pb-[max(var(--safe-bottom),1.5rem)]">
         <Outlet />
       </main>
+      {/* One canvas for the whole app, over everything, catching nothing. It
+          carries no information and no affordance, which is what makes it safe
+          to clear at any instant. */}
+      <ReactionStage />
     </div>
   )
 }

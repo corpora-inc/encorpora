@@ -1,3 +1,4 @@
+import { ANCHOR_SEAT } from "../../design/anchors.ts"
 import { IndexMark } from "../../design/IndexMark.tsx"
 import { strings } from "../../app/strings.ts"
 import type { Card, Feedback } from "../session.ts"
@@ -80,6 +81,10 @@ export function ProblemSlate({
             the wrong thing about where the interesting part of the app is. */}
         <div
           className={[
+            // The reaction stage's `seat` anchor. It styles nothing; it is how
+            // the canvas finds this row without either side importing the
+            // other (`src/design/anchors.ts`).
+            ANCHOR_SEAT,
             "border-b-2 py-1",
             feedback === null ? "border-index" : struck ? "border-line" : "border-seat",
             struck ? "text-strike line-through decoration-2" : seated ? "text-seat" : "text-ink",
@@ -87,9 +92,12 @@ export function ProblemSlate({
             rebuffClass(entry),
           ].join(" ")}
         >
-          {/* Labelled, not live: the verdict well below is the one live region on
-              this screen. Announcing the answer line too would read every digit
-              twice — once as the key pressed, once as the line it landed on.
+          {/* Labelled, not live: the verdict well below is the live region for
+              the work surface. Announcing the answer line too would read every
+              digit twice — once as the key pressed, once as the line it landed
+              on. (The construction band has its own, for the character. They
+              are both polite, so they queue rather than interrupt each other on
+              the rare card where both have something to say.)
 
               A no-break space, not an ordinary one: an empty line box collapses
               and the row loses its height in the instant before the first digit

@@ -100,9 +100,23 @@ export function easier(index: number): number {
  * structure. It is the easiest problem on the ladder that cannot avoid the
  * misunderstanding.
  */
+const guaranteesAcrossZero = (params: ColumnOpParams): boolean =>
+  params.op === "sub" && params.acrossZero >= 1
+
 const REPAIR_STRUCTURE: readonly (readonly [MalRuleId, (params: ColumnOpParams) => boolean])[] = [
-  [MIS_BORROW_ACROSS_ZERO, (params) => params.op === "sub" && params.acrossZero >= 1],
+  [MIS_BORROW_ACROSS_ZERO, guaranteesAcrossZero],
 ]
+
+/**
+ * The first rung whose parameters *guarantee* a regrouping across a zero.
+ *
+ * Derived from the same predicate the repair rung uses, so the two cannot
+ * disagree about where the across-zero content starts. The character notices
+ * the child arriving here; nothing else reads it.
+ */
+export const FIRST_ACROSS_ZERO: number = LADDER.findIndex((rung) =>
+  guaranteesAcrossZero(rung.params),
+)
 
 /** The rung a repair item comes from, or `fallback` when nothing is bound. */
 export function repairRung(misconception: MalRuleId, fallback: number): number {
