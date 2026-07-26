@@ -62,7 +62,19 @@ import from a single screen because it was easier than defining the boundary.
 Three mechanical gates, all in `npm test`:
 
 1. `app/boundary.test.ts` fails the build if anything under `src/` imports
-   `dynawalla/curriculum`, `dynawalla/engine`, or anything at all outside `src/`.
+   `dynawalla/curriculum`, `dynawalla/engine`, or anything outside `src/` — with
+   one exemption, `dynawalla/packs/sdk/src/index.ts`.
+
+   That exemption is the *contract*, not content: the capability table, the
+   manifest schema, the wire protocol and the version arithmetic that the host
+   and every pack must agree on. Sharing one copy is what makes a change that
+   would break an installed pack fail to typecheck in the host as well, which a
+   second copy would hide. It is one file rather than a directory — a pack
+   imports the SDK's entry point and nothing else, and so does the host, so
+   reaching into an SDK module directly still fails — and a test of its own
+   holds that entry point to re-exporting nothing but its own siblings, because
+   one `export * from "../shared/curriculum"` there would put every generator
+   back in the host through a door the offender scan waves past.
 2. The same file fails on a set of words that only content uses — exercise,
    mal-rule, misconception, keypad, numerator, minuend, and the rest.
 3. `shell/surfaces.test.ts` fails if any destination renders nothing, and
