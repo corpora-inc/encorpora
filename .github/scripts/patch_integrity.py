@@ -15,11 +15,24 @@ Three assertions, in increasing strength:
 1. No tracked `Cargo.lock` contains a `[[patch.unused]]` stanza. Cargo writes
    that section when a declared patch does not apply, so a lock is a durable,
    grep-able record of the failure.
-2. `cargo metadata` for each patching manifest emits no "was not used in the
-   crate graph" warning. This is the load-bearing one — `cargo metadata` exits
-   0 either way, so the *only* signal is the stderr text.
-3. Every patched package resolves in the graph to the vendored path the patch
-   declares, not to a registry copy.
+2. `cargo metadata --locked` for every manifest that declares a `[patch]` of
+   ANY shape — path, git or version — emits no "was not used in the crate
+   graph" warning. Assertion 2 runs on the mere presence of a `[patch]` table,
+   never on the shape of its entries: a git patch goes unused exactly as
+   silently as a path one, and scoping the run to path patches was a fail-open.
+3. Every patched package that declares a `path` resolves in the graph to that
+   vendored path, not to a registry copy. Only this assertion is path-specific,
+   because only a path patch names a directory to compare against.
+
+Cargo's exit code, measured on cargo 1.93.1 and 1.97.1, depends on the lock:
+
+* lock already carries the `[[patch.unused]]` stanza -> exit **0**, and the
+  stderr text is the only signal metadata gives (assertion 1 also fires).
+* lock is clean, so `--locked` would have to rewrite it -> exit **101**
+  ("cannot update the lock file ... because --locked was passed").
+
+Both are treated as failures. The stderr grep is what makes the first case
+visible, which is why it is not optional.
 
 Run with the manifests to inspect, or with no arguments to inspect every
 tracked manifest that declares a patch.
@@ -54,16 +67,37 @@ def unused_patch_warnings(stderr: str) -> list[str]:
     return [line.strip() for line in stderr.splitlines() if UNUSED_PATCH_MARKER in line]
 
 
+def patch_tables(manifest: Path) -> dict[str, dict]:
+    """The `[patch.<registry>]` tables in a manifest, empty ones dropped."""
+    data = tomllib.loads(manifest.read_text(encoding="utf-8"))
+    return {
+        registry: crates
+        for registry, crates in (data.get("patch") or {}).items()
+        if crates
+    }
+
+
+def has_any_patch(manifest: Path) -> bool:
+    """True when the manifest declares a patch of ANY shape.
+
+    This — not :func:`patch_entries` — is what selects a manifest for the
+    `cargo metadata` run. A git or version patch that stops matching is just as
+    silent as a path one, so keying the run on "has a path patch" would skip
+    the assertion for exactly the case nothing else covers.
+    """
+    return bool(patch_tables(manifest))
+
+
 def patch_entries(manifest: Path) -> list[tuple[str, str, Path]]:
     """(registry, crate, resolved path) for every path-based patch in a manifest.
 
-    Patches that are not path-based (git, version-only) are returned with a
-    path of ``None`` by the caller's contract — none exist in this repo today,
-    so they are skipped rather than guessed at.
+    Path-only, and deliberately so: this feeds the "resolves to the vendored
+    directory" assertion, and a git or version patch names no directory to
+    compare against. Non-path patches are skipped HERE and picked up by
+    :func:`has_any_patch`, which is what gates the metadata run.
     """
-    data = tomllib.loads(manifest.read_text(encoding="utf-8"))
     out: list[tuple[str, str, Path]] = []
-    for registry, crates in (data.get("patch") or {}).items():
+    for registry, crates in patch_tables(manifest).items():
         for crate, spec in crates.items():
             path = spec.get("path") if isinstance(spec, dict) else None
             if path is None:
@@ -86,11 +120,16 @@ def tracked_files(pattern: str, repo_root: Path) -> list[Path]:
     ]
 
 
-def cargo_metadata(manifest: Path) -> tuple[dict, str]:
-    """Full (dependency-resolving) metadata plus cargo's stderr.
+def cargo_metadata(manifest: Path) -> tuple[dict | None, str, int]:
+    """Full (dependency-resolving) metadata, cargo's stderr, and its exit code.
 
     `--no-deps` would skip resolution entirely, which is exactly the step that
     decides whether a patch applies — so it must not be used here.
+
+    A non-zero exit returns ``None`` for the graph rather than raising, so the
+    caller can still report the stderr warnings it collected: an unused patch
+    against a clean lock produces BOTH the warning and exit 101, and the
+    warning is the line that names the crate.
     """
     proc = subprocess.run(
         [
@@ -106,11 +145,8 @@ def cargo_metadata(manifest: Path) -> tuple[dict, str]:
         text=True,
     )
     if proc.returncode != 0:
-        raise SystemExit(
-            f"cargo metadata failed for {manifest} (exit {proc.returncode}):\n"
-            f"{proc.stderr}"
-        )
-    return json.loads(proc.stdout), proc.stderr
+        return None, proc.stderr, proc.returncode
+    return json.loads(proc.stdout), proc.stderr, 0
 
 
 def check_locks(repo_root: Path) -> list[str]:
@@ -133,14 +169,31 @@ def check_locks(repo_root: Path) -> list[str]:
 def check_manifest(manifest: Path, repo_root: Path) -> list[str]:
     rel = manifest.relative_to(repo_root)
     failures = []
-    entries = patch_entries(manifest)
-    if not entries:
+    # Presence of ANY [patch] table, not of a path-based one — see has_any_patch.
+    if not has_any_patch(manifest):
         return failures
 
-    metadata, stderr = cargo_metadata(manifest)
+    metadata, stderr, code = cargo_metadata(manifest)
 
     for line in unused_patch_warnings(stderr):
         failures.append(f"{rel}: cargo reported an unapplied patch: {line}")
+
+    if metadata is None:
+        failures.append(
+            f"{rel}: `cargo metadata --locked` exited {code} — the graph could "
+            f"not be resolved against the committed lock. cargo said:\n"
+            f"{stderr.strip()}"
+        )
+        return failures
+
+    # Logged unconditionally so a manifest whose only patches are git-based —
+    # which reaches assertion 2 but has nothing for assertion 3 to print —
+    # still shows up as inspected rather than as silence.
+    declared = sum(len(c) for c in patch_tables(manifest).values())
+    print(f"  ok  {rel}: graph resolved, no unused-patch warning ({declared} declared)")
+
+    # Assertion 3 is path-only: a git or version patch names no directory.
+    entries = patch_entries(manifest)
 
     by_name: dict[str, list[dict]] = {}
     for pkg in metadata.get("packages", []):
@@ -193,9 +246,9 @@ def main(argv: list[str]) -> int:
         manifests = tracked_files("*Cargo.toml", repo_root)
 
     print("Declared [patch] resolution:")
-    patching = [m for m in manifests if patch_entries(m)]
+    patching = [m for m in manifests if has_any_patch(m)]
     if not patching:
-        print("  (no manifest declares a path-based [patch])")
+        print("  (no manifest declares a [patch])")
     for manifest in patching:
         failures.extend(check_manifest(manifest, repo_root))
 
