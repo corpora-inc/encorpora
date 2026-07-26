@@ -235,10 +235,16 @@ const subtractTenths: SkillNode = {
  * nothing to regroup.
  *
  * Both are `active`, and they are the only rows this change promotes. Column-op is
- * the one family whose *question* the app can draw — `problem.ts` reads its two
- * template keys and `ProblemSlate` writes the operands — so it is the one family
- * whose rows can honestly go active today. Everything else this change adds is
- * `draft` behind `render/prompts.ts`.
+ * the one family whose *question* a renderer ever read — it was the only prompt
+ * template the host's practice loop matched — so it is the one family whose rows
+ * sit alongside the column-op rows already active on trunk. Everything else this
+ * change adds is `draft` behind `render/prompts.ts`.
+ *
+ * `active` is a statement about the curriculum side being complete, and since
+ * ADR-0022 it is nothing more than that: the loop that drew column-op went with
+ * the host, and no pack has replaced it. CG-8 warns on every row in the graph for
+ * that reason and fails under `--strict-renderers`, which is what stops a release
+ * in which nothing draws a question.
  *
  * Neither row carries a mal-rule, and the reason is in `malrules/columnOp.ts`:
  * with nothing to regroup, taking the smaller digit from the larger *is* the

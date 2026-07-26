@@ -35,9 +35,9 @@ export const malRules: readonly MalRule[] = [
 /**
  * The shipped registry, grouped once.
  *
- * `generate()` asks for its family's rules on **every item** — 59,500 of them in
+ * `generate()` asks for its family's rules on **every item** — 56,500 of them in
  * one property sweep — and a fresh `filter` over the whole table each time is an
- * array allocation and fifteen predicate calls per card, on the path CG-17 puts a
+ * array allocation and sixteen predicate calls per card, on the path CG-17 puts a
  * p95 budget on. The cache is keyed on the default table only; a caller that
  * passes its own rules (every failing-case test does) still gets a fresh filter,
  * so a fixture can never be answered from a cache built for the real one.

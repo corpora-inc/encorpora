@@ -13,11 +13,14 @@
  * hat. Thirds are `{ from: 0, to: 1, denominator: 3, mark: 2 }` — exact — and the
  * renderer builds the `Rational` itself.
  *
- * `repSpecDefect` is the precondition, checked by the app before it draws and by
- * `representation.test.ts`, so a malformed spec is a red test rather than a
- * mis-drawn number.
+ * `repSpecDefect` is the precondition. `families.property.test.ts` runs it over
+ * every representation every family emits, across the whole seed sweep, so a
+ * malformed spec is a red test here rather than a mis-drawn number on a screen —
+ * and whoever draws one calls it before drawing.
  */
 
+import type { Rational } from "../math/rational.ts";
+import { add, rational } from "../math/rational.ts";
 import type { RepId } from "../types/ids.ts";
 
 /** Place value and regrouping. The LOCATE representation for borrow-across-zero. */
@@ -44,6 +47,27 @@ export const V1_REPRESENTATIONS: readonly RepId[] = [
  * `balance-scale`: what sits in each pan, in whole units — equal pans balance,
  * which is the idea. `counting-board` takes none: it is built from the item's
  * own digits by `contrast.ts`, which needs the exercise rather than a spec.
+ *
+ * ## Two things a renderer of these gets wrong, written down because both were
+ *
+ * A previous attempt at these two shipped both, and neither was caught by reading
+ * the code. They are properties of the *spec*, so they belong here rather than in
+ * whichever renderer is next.
+ *
+ * **The marked point is `from + mark/denominator`, and it is one number.** It is
+ * not the whole part `from` written beside the fraction `mark/denominator`. That
+ * reading is indistinguishable from the right one on every non-negative line,
+ * which is why it survives review, and wrong on every negative one: `{ from: -3,
+ * mark: 1, denominator: 4 }` is −3 + 1/4 = −11/4, which is written **−2 3/4**.
+ * Writing "−3 1/4" reads back as −13/4 — a different point, on a line drawn to
+ * teach where points are.
+ *
+ * **The heavier pan hangs lower.** In screen space `y` grows downward, so CSS
+ * `rotate(a)` with a positive `a` lifts the *left* end of a beam, not lowers it.
+ * A beam whose angle is signed the intuitive way tips toward the lighter pan, and
+ * a balance that rises under weight teaches the opposite of the equals sign it
+ * exists to teach. Two mirror-image angles are not evidence of anything here —
+ * the inverted pair are mirror images too. Measure which drawn pan is lower.
  */
 export const REQUIRED_REP_PARAMS: Readonly<Record<string, readonly string[]>> = {
   [REP_NUMBER_LINE]: ["from", "to", "denominator", "mark"],
@@ -82,4 +106,38 @@ export function repSpecDefect(rep: RepId, params: Readonly<Record<string, number
   }
 
   return null;
+}
+
+/**
+ * The exact value of the marked point on a number line.
+ *
+ * `from + mark/denominator`, as a `Rational`, so a renderer never composes it out
+ * of a whole part and a fraction — the composition that produced "−3 1/4" for the
+ * point −11/4, a label that reads back as −13/4. Whatever a renderer writes on
+ * the tick must parse back to *this*, and `representations.test.ts` fixes the
+ * negative cases the composition gets wrong.
+ *
+ * Callers pass a spec `repSpecDefect` has already accepted; a denominator of zero
+ * throws, which is `rational`'s contract and not something to swallow here.
+ */
+export function numberLinePoint(from: number, mark: number, denominator: number): Rational {
+  return add(rational(BigInt(from)), rational(BigInt(mark), BigInt(denominator)));
+}
+
+/**
+ * Which pan of a balance hangs lower: `-1` left, `1` right, `0` level.
+ *
+ * The direction is a fact about weight, and it is stated here in those terms
+ * rather than as an angle, because an angle is where it goes wrong. In screen
+ * space `y` grows downward, so a positive CSS rotation *lifts* the left end of a
+ * beam; a renderer that signs its transform the intuitive way draws the heavier
+ * pan higher, and a balance that rises under weight teaches the reverse of the
+ * equals sign it exists to teach. Two mirror-image angles do not distinguish the
+ * two — the inverted pair are mirror images as well. A renderer maps this to its
+ * own transform and asserts the drawn geometry against it.
+ */
+export function balanceLowerPan(left: number, right: number): -1 | 0 | 1 {
+  if (left > right) return -1;
+  if (right > left) return 1;
+  return 0;
 }

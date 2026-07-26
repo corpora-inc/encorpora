@@ -1,9 +1,11 @@
 /**
  * What stands between a `draft` row and an `active` one, per row.
  *
- * Every draft row in this graph waits on **PR-2.13**, the statement renderer: the
- * app matches `prompt.key` against the two column-op templates and draws nothing
- * for any other, so promoting a row without it puts an answer keypad on a child's
+ * Every draft row in this graph waits on **PR-2.13**, the statement renderer, and
+ * since [ADR-0022](../../../../docs/DECISIONS/ADR-0022-host-ships-no-content.md)
+ * that renderer is a **pack's** to land rather than the host's: the host ships no
+ * content, and stating a question is content. Nothing in this repository draws a
+ * curriculum item today, so promoting a row buys an answer entry on a child's
  * screen with no question above it (CG-8, `render/prompts.ts`).
  *
  * Eighteen of them wait on a **second** thing, and it is not a field flip. CG-10

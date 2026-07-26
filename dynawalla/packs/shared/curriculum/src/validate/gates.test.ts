@@ -90,6 +90,19 @@ function cg8OnFresh(ctx: ValidationContext): ReturnType<typeof cg8> {
   return cg8(ctx, buildSamples(ctx));
 }
 
+/**
+ * One renderer or prompt declaration, as it would read once something drew it.
+ *
+ * Nothing in this repository draws a curriculum item today — ADR-0022 deleted the
+ * host's practice loop and no pack has landed a renderer — so every CG-8 case that
+ * needs a *satisfied* declaration has to build one. Reading a healthy case off the
+ * shipped registries would assert nothing at all while they are empty, which is
+ * the mirror image of the failing-case trap GATES.md warns about.
+ */
+function drawn<T extends { readonly implemented: boolean }>(entry: T): T & { readonly testRef: string } {
+  return { ...entry, implemented: true, testRef: "packs/example/src/draw.test.ts" };
+}
+
 /** The healthy graph. Every gate below must pass on it. */
 test("gates: the committed curriculum passes every implemented gate", () => {
   const healthy = context();
@@ -230,31 +243,40 @@ test("CG-8: a required representation with no renderer fails", () => {
 });
 
 test("CG-8: strict mode rejects a renderer that is declared but not implemented", () => {
-  // The violation is **constructed**, not borrowed from the shipped registry.
-  // It used to be borrowed: `integer`, `columnAlgorithm` and the counting board
-  // were all declared and unimplemented, so this test read its failing case off
-  // the real data — and the day the app grew those renderers, the test would
-  // have gone green while asserting nothing at all. A failing-case test that
-  // depends on the shipped data being broken stops being a test the moment it
-  // is fixed, which is the failure mode GATES.md names in as many words.
-  const unbuilt = rendererRegistry.map((entry) =>
-    entry.id === "answer:integer"
-      ? { id: entry.id, kind: entry.kind, owner: entry.owner, implemented: false }
-      : entry,
-  );
+  // **Both** the healthy case and the violation are constructed, and neither is
+  // borrowed from the shipped registries. Borrowing either makes the test a
+  // hostage to whatever the registries happen to say: today nothing in this
+  // repository draws a curriculum item — ADR-0022 deleted the host's practice
+  // loop and no pack has landed a renderer — so a failing case read off the real
+  // data would stop asserting anything the day one does, which is the failure
+  // mode GATES.md names in as many words. It cuts the other way too: a healthy
+  // case read off the real data asserts nothing while the real data is empty.
+  const built = { renderers: rendererRegistry.map(drawn), prompts: promptRegistry.map(drawn) };
+
+  assert.equal(cg8OnFresh(context(built)).status, "pass", "everything the graph reaches is drawn");
+  assert.notEqual(cg8OnFresh(context({ ...built, strictRenderers: true })).status, "fail");
+
+  const oneMissing = {
+    ...built,
+    renderers: built.renderers.map((entry) =>
+      entry.id === "answer:integer"
+        ? { id: entry.id, kind: entry.kind, owner: entry.owner, implemented: false }
+        : entry,
+    ),
+  };
   assert.equal(
-    cg8OnFresh(context({ renderers: unbuilt })).status,
+    cg8OnFresh(context(oneMissing)).status,
     "warn",
     "the default mode allows authoring ahead of the work surface",
   );
-  assertFails(cg8OnFresh(context({ renderers: unbuilt, strictRenderers: true })), "declared but not implemented");
+  assertFails(cg8OnFresh(context({ ...oneMissing, strictRenderers: true })), "declared but not implemented");
 
-  // …and the registry this repository actually ships passes both modes: every
-  // schema and representation the active graph reaches is drawn by the app, and
-  // `dynawalla-app/src/work/renderers.test.ts` is what keeps that claim true
-  // from the other side.
-  assert.equal(cg8OnFresh(context()).status, "pass");
-  assert.notEqual(cg8OnFresh(context({ strictRenderers: true })).status, "fail");
+  // …and the state this repository actually ships, asserted rather than assumed:
+  // every declaration is unimplemented, so the default mode warns and the release
+  // mode fails. That is not a defect in the gate. A release in which nothing draws
+  // a question is not a release, and the first pack renderer is what clears it.
+  assert.equal(cg8OnFresh(context()).status, "warn", "no renderer exists yet, and the gate says so out loud");
+  assertFails(cg8OnFresh(context({ strictRenderers: true })), "declared but not implemented");
 });
 
 test("CG-8: a renderer declaration with no owner, or implemented with no test, fails", () => {
@@ -269,26 +291,34 @@ test("CG-8: a renderer declaration with no owner, or implemented with no test, f
 });
 
 test("CG-8: a prompt template with no registered renderer fails", () => {
-  // The half the gate was missing, and not hypothetically: the app matches
-  // `prompt.key` against two column-op keys and draws nothing for anything else,
-  // so a template nobody registered is a card with an answer entry and no
+  // The half the gate was missing, and not hypothetically: the practice loop
+  // matched `prompt.key` against two column-op keys and drew nothing for anything
+  // else, so a template nobody registered is a card with an answer entry and no
   // question above it.
   const nothingRegistered = promptRegistry.filter((entry) => !entry.id.startsWith("dw.prompt.column-op."));
   assertFails(cg8OnFresh(context({ prompts: nothingRegistered })), "has no registered renderer");
 });
 
 test("CG-8: strict mode rejects a prompt template that is declared but not implemented", () => {
-  const unbuilt = promptRegistry.map((entry) =>
+  // Constructed for the same reason the renderer case above is: every shipped
+  // prompt declaration is unimplemented today, so flipping one of them off would
+  // be flipping a switch that is already off. The renderers are built too, so the
+  // failure the strict assertion catches can only be the prompt.
+  const renderers = rendererRegistry.map(drawn);
+  const unbuilt = promptRegistry.map(drawn).map((entry) =>
     entry.id === "dw.prompt.column-op.sub"
       ? { id: entry.id, family: entry.family, owner: entry.owner, implemented: false }
       : entry,
   );
   assert.equal(
-    cg8OnFresh(context({ prompts: unbuilt })).status,
+    cg8OnFresh(context({ renderers, prompts: unbuilt })).status,
     "warn",
     "the default mode allows the curriculum to be authored ahead of the work surface",
   );
-  assertFails(cg8OnFresh(context({ prompts: unbuilt, strictRenderers: true })), "declared but not implemented");
+  assertFails(
+    cg8OnFresh(context({ renderers, prompts: unbuilt, strictRenderers: true })),
+    "declared but not implemented",
+  );
 });
 
 test("CG-8: a prompt declaration with no owner, implemented with no test, or naming no family, fails", () => {

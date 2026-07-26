@@ -142,7 +142,15 @@ jobs:
           # EG-1 and M-05, but there is no CG-19 equivalent in it — so a
           # bare-string prompt added under `engine/src` failed the curriculum job
           # while the engine job stayed green, on a PR that ran neither.
-          set_output dynawalla_curriculum '^(dynawalla/(curriculum|engine)/|\.github/workflows/ci\.yml$)'
+          #
+          # `dynawalla/packs/shared/curriculum/` is where the library ITSELF lives.
+          # It moved there so packs could import it without reaching into the host
+          # app's tree, and this filter did not move with it: `dynawalla/curriculum/`
+          # kept only the devDependencies, the commands and the CLI, so every line
+          # of generator, mal-rule and gate source sat outside the pattern that
+          # decides whether the gates run at all. A pull request that rewrote the
+          # whole library would have skipped its own job and reported green.
+          set_output dynawalla_curriculum '^(dynawalla/(curriculum|engine|packs/shared/curriculum)/|\.github/workflows/ci\.yml$)'
           # Not the mirror image: the engine imports nothing at all (EG-1 asserts
           # exactly that), so a curriculum change cannot break the engine job.
           # `boundary.test.ts` duplicates the float scan for this reason — "the two

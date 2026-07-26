@@ -245,8 +245,8 @@ test("sweep: every item is drawable — schema, representation, prompt and local
 test("sweep: the prompt registry is closed in both directions", () => {
   // One direction is asserted on every item above: a template the graph emits is
   // registered, or a card draws its answer entry with no question above it. This
-  // is the other one, and it is the same shape as the app's `renderers.test.ts`:
-  // a declaration nobody satisfies is a lie, and a `PR-2.13` line item for a
+  // is the other one, and it is the shape the consuming side's half of CG-8 takes
+  // too: a declaration nobody satisfies is a lie, and a `PR-2.13` line item for a
   // template no level produces is work nobody needs.
   const emitted = new Set(ALL_ITEMS.map((exercise) => String(exercise.prompt.key)));
   const declared = promptRegistry.map((entry) => String(entry.id));

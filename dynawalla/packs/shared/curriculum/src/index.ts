@@ -96,6 +96,8 @@ export { findPromptTemplate, promptRegistry } from "./render/prompts.ts";
 export type { PromptTemplateDeclaration } from "./render/prompts.ts";
 export type { RendererDeclaration } from "./render/registry.ts";
 export {
+  balanceLowerPan,
+  numberLinePoint,
   repSpecDefect,
   REP_BALANCE_SCALE,
   REP_GEAR_TRAIN,
