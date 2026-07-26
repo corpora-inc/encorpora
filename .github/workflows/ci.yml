@@ -153,11 +153,11 @@ jobs:
 
           # Areas a job actually consumes today, minus the `ci.yml` self-triggers
           # (a workflow edit is exempt below anyway). NOT the union of every
-          # filter above: `dynawalla_curriculum`, `dynawalla_engine`, `native`
-          # and `shared_ts` are declared ahead of their jobs, so paths they
-          # match are genuinely ungated and must keep warning until those jobs
-          # land. `dynawalla/dynawalla-app/` graduated when the `dynawalla-app`
-          # job below started consuming its filter.
+          # filter above: `native` and `shared_ts` are declared ahead of their
+          # jobs, so paths they match are genuinely ungated and must keep
+          # warning until those jobs land. `dynawalla/dynawalla-app/`,
+          # `dynawalla/curriculum/` and `dynawalla/engine/` have each graduated,
+          # as the jobs below now consume their filters.
           #
           # The terraform member is copied verbatim from the `terraform` filter —
           # extension-scoped, not the bare directory. A bare `corpan/infra/
@@ -167,7 +167,7 @@ jobs:
           # `corpan/plugins/` is covered only by `.github/workflows/ios-native.yml`,
           # which is ADVISORY (not a required check). It compiles, so it counts
           # here, but a red run has to be read by hand.
-          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/)'
+          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. `corpan-app`'s job is npm only —
@@ -576,6 +576,77 @@ jobs:
       - name: Validate pack ids + artwork against the catalog
         run: node .github/scripts/pack_catalog_check.js
 
+  # Dynawalla curriculum: the skill graph, the generator families, the mal-rules
+  # and `dw-curriculum check`. Pure TypeScript with no DOM and no Tauri, so this is
+  # npm ci plus Node's own test runner — no vitest, matching corpan-app. Node 24 is
+  # what dynawalla's `engines` pins and what its `--experimental-strip-types` tests
+  # are written against.
+  #
+  # Two runners, because CG-16 is a claim about two operating systems: generators
+  # run in a WebView on iOS, Android and desktop, and output that is not
+  # platform-stable makes every committed golden transcript and every bug report
+  # irreproducible. Verifying the committed hashes on one runner would only prove
+  # they match whichever machine happened to write them. `fail-fast: false` so a
+  # divergence shows which side diverged. ci-gate takes the combined result of the
+  # matrix, so this is still one entry in its `needs` and no new required context.
+  dynawalla-curriculum:
+    name: dynawalla-curriculum · tests + gates (${{ matrix.os }})
+    needs: changes
+    if: needs.changes.outputs.dynawalla_curriculum == 'true'
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/curriculum/package-lock.json
+      - name: Install
+        working-directory: dynawalla/curriculum
+        run: npm ci
+      - name: Test
+        working-directory: dynawalla/curriculum
+        run: npm test
+      - name: Typecheck
+        working-directory: dynawalla/curriculum
+        run: npm run tsc
+      - name: Curriculum gates
+        working-directory: dynawalla/curriculum
+        run: npm run check
+
+  # Dynawalla learner model. Independent of the curriculum job on purpose: the two
+  # packages do not import each other, so a curriculum edit must not rebuild the
+  # engine or vice versa. The engine carries its own copy of the float and purity
+  # scan (`src/boundary.test.ts`, gate EG-1) so an engine-only PR is fully covered
+  # by this job alone.
+  dynawalla-engine:
+    name: dynawalla-engine · tests
+    needs: changes
+    if: needs.changes.outputs.dynawalla_engine == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/engine/package-lock.json
+      - name: Install
+        working-directory: dynawalla/engine
+        run: npm ci
+      - name: Test
+        working-directory: dynawalla/engine
+        run: npm test
+      - name: Typecheck
+        working-directory: dynawalla/engine
+        run: npm run tsc
+
   # Single summary status that aggregates every job above. THIS is the context to
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
@@ -595,6 +666,8 @@ jobs:
         changed-packs,
         terraform,
         pack-catalog,
+        dynawalla-curriculum,
+        dynawalla-engine,
       ]
     if: ${{ always() }}
     runs-on: ubuntu-latest

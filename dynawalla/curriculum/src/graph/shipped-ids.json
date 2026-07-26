@@ -1,0 +1,4 @@
+{
+  "note": "Skill ids that have shipped in a release, per release tag. Ids are mastery keys on learner devices: once an id appears here it must exist forever, and CG-1 fails if one disappears, is demoted to draft, or is deprecated with no successor. Nothing has shipped yet, so this is empty. The release checklist appends a tag here at each release.",
+  "releases": {}
+}

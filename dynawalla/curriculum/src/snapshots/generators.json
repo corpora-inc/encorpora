@@ -1,0 +1,15 @@
+{
+  "note": "CG-16 output hashes. One entry per family@rev|skill|level, over the first 20 seeds. Written on one operating system and verified on the other, so a generator that is not platform-stable fails CI. Regenerate with `npm run snapshots:update` — and only after bumping familyRev, if the family's output changed on purpose.",
+  "entries": {
+    "gen.arith.column-op@1|dw.add.regroup.subtract-multidigit|L0": "86368f55f57c4052",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-multidigit|L1": "09a387c45a7f5147",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-multidigit|L2": "92c903db966e6769",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-multidigit|L3": "12528a279b0181ad",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-across-zero|L0": "147f99a737b53863",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-across-zero|L1": "1aff9d712bdea518",
+    "gen.arith.column-op@1|dw.add.regroup.subtract-across-zero|L2": "f9e45b9a8648926e",
+    "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L0": "4609c8bb844b7b81",
+    "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L1": "f9426934d400c3ae",
+    "gen.arith.column-op@1|dw.add.regroup.add-multidigit|L2": "4bcfbb15db1c766e"
+  }
+}

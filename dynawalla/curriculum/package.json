@@ -1,0 +1,21 @@
+{
+  "name": "@dynawalla/curriculum",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dynawalla curriculum graph, generators, mal-rules and validation gates. No DOM, no Tauri, no app imports.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "tsc": "tsc --noEmit",
+    "check": "node bin/dw-curriculum.mjs check",
+    "check:full": "node bin/dw-curriculum.mjs check --full",
+    "snapshots:update": "node bin/dw-curriculum.mjs check --update-snapshots"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0"
+  }
+}
