@@ -30,7 +30,11 @@ import {
 } from "./fixtures.ts"
 import { judge } from "./judge.ts"
 import { readProblem } from "./problem.ts"
-import { repairRung, rungAt, FIRST_ACROSS_ZERO, LADDER, LADDER_FORMS } from "./ladder.ts"
+import { guaranteesAcrossZero, rungAt, FIRST_ACROSS_ZERO, LADDER, LADDER_FORMS } from "./ladder.ts"
+import { paramsFor } from "./catalog.ts"
+import { skillId } from "./curriculum.ts"
+import { pinnedPlanner } from "./plan.ts"
+import { startLearner } from "./plan-fixtures.ts"
 import {
   advance,
   arrivesAcrossZero,
@@ -213,11 +217,22 @@ test("the board is never built for the misconception it does not explain", () =>
 
 // ── The loop-level criterion ────────────────────────────────────────────────
 
-/** Every problem this session serves is the `5001 − 2798` fixture. */
-const fixtureDeps: SessionDeps = { generate: () => fiveThousandOne().exercise }
+/**
+ * Every problem this session serves is the `5001 − 2798` fixture, and the card it
+ * is served as is pinned.
+ *
+ * Selection is the learner model's now, so a test about the *contrast pair* pins
+ * the card rather than depending on the scheduler's mood. The model still runs —
+ * `pinnedPlanner` uses the real `apply` — so θ, the misconception tracker and the
+ * controller all move exactly as they would in the app.
+ */
+const fixtureDeps: SessionDeps = {
+  generate: () => fiveThousandOne().exercise,
+  planner: pinnedPlanner([[rungAt(ACROSS_ZERO_RUNG).skillId, rungAt(ACROSS_ZERO_RUNG).level]]),
+}
 
 function fixtureSession(): SessionState {
-  return startSession({ profileId: "p1", rung: ACROSS_ZERO_RUNG, rungCorrect: 0, seedCursor: 0 }, fixtureDeps)
+  return startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, fixtureDeps)
 }
 
 /** Type digits the way a child does — through the same key path the keypad uses. */
@@ -265,30 +280,28 @@ test("the contrast pair is followed by a repair item that cannot avoid the step"
 
   assert.ok(state.card.kind === "problem")
   assert.equal(state.card.role, "repair")
-  assert.ok(rungAt(state.card.rung).params.acrossZero >= 1)
-  assert.equal(rungAt(state.card.rung).skillId, "dw.add.regroup.subtract-across-zero")
+  const repaired = paramsFor(skillId(state.card.plan.skillId), state.card.plan.level)
+  assert.ok(guaranteesAcrossZero(repaired), "the repair item does not force a regrouping through a zero")
 })
 
 test("a repair item is not an arrival: the Dynawalla stays quiet through it", () => {
-  // The bug this is written against. `FIRST_ACROSS_ZERO` and the rung a
-  // `borrow-across-zero` repair comes from are *the same index* — both are
-  // "the lowest rung whose parameters guarantee the step" — so a rule that
-  // watched the rung number climb announced "the ladder has reached the
-  // problems with a zero in the middle" the first time a child at rung 2 fired
-  // the mal-rule and was handed the repair card. The ladder had not moved. It
-  // then latched for the session, so when the child genuinely reached rung 4 by
-  // promotion he said nothing, and one of his four utterances had been spent on
-  // a card the child got *wrong* — stacked onto the strike and the contrast
+  // The bug this is written against. The repair item for `borrow-across-zero`
+  // comes from the across-zero skill by construction — it is the level whose
+  // parameters guarantee the step — so a rule that watched the skill alone
+  // announced "we have reached the problems with a zero in the middle" the first
+  // time a child three steps lower fired the mal-rule and was handed the repair
+  // card. They had not arrived. It then latched for the session, so the real
+  // arrival was silent, and one of the character's four utterances had been spent
+  // on a card the child got *wrong* — stacked onto the strike and the contrast
   // pair, at the moment they are most loaded.
-  assert.equal(repairRung(MIS_BORROW_ACROSS_ZERO, CARRY_SURPLUS_RUNG), FIRST_ACROSS_ZERO)
 
   // `903 − 778` on `subtract-multidigit` level 2, answered 225: the across-zero
-  // procedure run at a rung three below where it is taught.
-  const deps: SessionDeps = { generate: () => nineHundredThree().exercise }
-  let state = startSession(
-    { profileId: "p1", rung: CARRY_SURPLUS_RUNG, rungCorrect: 0, seedCursor: 0 },
-    deps,
-  )
+  // procedure run three steps below where it is taught.
+  const deps: SessionDeps = {
+    generate: () => nineHundredThree().exercise,
+    planner: pinnedPlanner([[rungAt(CARRY_SURPLUS_RUNG).skillId, rungAt(CARRY_SURPLUS_RUNG).level]]),
+  }
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   assert.ok(CARRY_SURPLUS_RUNG < FIRST_ACROSS_ZERO)
   assert.equal(arrivesAcrossZero(state.card), false, "the first card is an arrival")
 
@@ -302,24 +315,35 @@ test("a repair item is not an arrival: the Dynawalla stays quiet through it", ()
   state = advance(state, deps)
   assert.ok(state.card.kind === "problem")
   assert.equal(state.card.role, "repair")
-  assert.equal(state.card.rung, FIRST_ACROSS_ZERO, "the repair is served at the arrival rung")
+  assert.equal(
+    state.card.plan.skillId,
+    rungAt(FIRST_ACROSS_ZERO).skillId,
+    "the repair is served from the across-zero skill",
+  )
   assert.equal(arrivesAcrossZero(state.card), false, "the repair card announced an arrival")
 
-  // …and the real thing still does. A `ladder` card at that rung is the ladder
+  // …and the real thing still does. A scheduled card at that skill is the child
   // having got there.
   assert.equal(arrivesAcrossZero({ ...state.card, role: "ladder" }), true)
-  assert.equal(arrivesAcrossZero({ ...state.card, role: "ladder", rung: FIRST_ACROSS_ZERO - 1 }), false)
+  assert.equal(
+    arrivesAcrossZero({
+      ...state.card,
+      role: "ladder",
+      plan: { ...state.card.plan, skillId: rungAt(CARRY_SURPLUS_RUNG).skillId },
+    }),
+    false,
+  )
 })
 
-test("a diagnosis on an easy rung still repairs with a guaranteed across-zero item", () => {
+test("a diagnosis on an easy step still repairs with a guaranteed across-zero item", () => {
   // The case that made this necessary: `subtract-multidigit` level 2 asks for
-  // two regroupings and no zeros, and a drawn zero fires this diagnosis anyway.
-  // Repairing at that rung hands back a problem with no zero in it.
-  const easyRung = 2
-  assert.equal(rungAt(easyRung).params.acrossZero, 0)
-  assert.ok(rungAt(repairRung(MIS_BORROW_ACROSS_ZERO, easyRung)).params.acrossZero >= 1)
-  // A rule with no bound structure keeps the child where they were.
-  assert.equal(repairRung(MIS_SMALLER_FROM_LARGER, easyRung), easyRung)
+  // two regroupings and no zeros, and a drawn zero fires this diagnosis anyway —
+  // 155 items in 4,000, by the curriculum's own measurement. Repairing at that
+  // step would hand back a problem with no zero in it.
+  const easy = rungAt(2)
+  assert.equal(easy.params.acrossZero, 0)
+  assert.equal(guaranteesAcrossZero(easy.params), false)
+  assert.ok(guaranteesAcrossZero(rungAt(FIRST_ACROSS_ZERO).params))
 })
 
 test("3797 gets Stage 1, not the board: a strike, the answer, one easier retry", () => {
@@ -334,7 +358,8 @@ test("3797 gets Stage 1, not the board: a strike, the answer, one easier retry",
   assert.equal(state.card.kind, "problem")
   assert.ok(state.card.kind === "problem")
   assert.equal(state.card.role, "retry")
-  assert.equal(state.card.rung, ACROSS_ZERO_RUNG - 1, "one rung easier, never lower than the bottom")
+  assert.equal(state.card.plan.intent, "confidence", "the Stage-1 retry is relief, not another card")
+  assert.equal(state.card.plan.followUp, "retry")
 
   assert.equal(
     contrastDistance(state.log, MIS_SMALLER_FROM_LARGER),

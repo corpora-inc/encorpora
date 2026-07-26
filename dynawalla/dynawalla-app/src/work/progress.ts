@@ -1,12 +1,16 @@
 // Durable progress, per profile.
 //
-// What survives a launch is deliberately small: where the child is on the ladder,
-// how many correct answers they have at that rung, the seed cursor so the same
-// problems are not served twice, and running totals. Everything else — the card
-// on screen, the deck, the entry — is rebuilt from those four numbers, so there
-// is no serialization of an `Exercise` (whose values are `BigInt`s and therefore
-// not JSON) and no possibility of a stored card drifting out of step with a
-// generator revision.
+// What survives a launch is the **learner model**, encoded by the engine, plus
+// the seed cursor and running totals. Everything else — the card on screen, the
+// deck, the entry — is rebuilt, so there is no serialization of an `Exercise`
+// (whose values are `BigInt`s and therefore not JSON) and no possibility of a
+// stored card drifting out of step with a generator revision.
+//
+// The learner state is a string rather than a nested object on purpose. It is
+// the engine's format, the engine owns its schema, and `decodeLearner` returns
+// `null` rather than throwing on anything it does not recognise — so a state
+// file written by an older build costs a child their model and not their launch.
+// Gate EG-3 caps it at 100 KB; the measured size at every ring's cap is 27 KB.
 //
 // Storage is `localStorage` because it is synchronous at module load; ADR-0018's
 // second tier (IndexedDB for the event ring) arrives with the engine at M5 and
@@ -22,25 +26,27 @@ import { persist, createJSONStorage, type StateStorage } from "zustand/middlewar
 import { storageKey } from "../app/profile.ts"
 
 export interface Progress {
-  readonly rung: number
-  readonly rungCorrect: number
+  /** The engine's encoded `LearnerState`, or `""` before the first session. */
+  readonly learner: string
   readonly seedCursor: number
+  /** Whole days since the epoch, as last seen. The engine never reads a clock. */
+  readonly day: number
   readonly answered: number
   readonly correct: number
   readonly bugs: Readonly<Record<string, number>>
 }
 
 export const INITIAL_PROGRESS: Progress = {
-  rung: 0,
-  rungCorrect: 0,
+  learner: "",
   seedCursor: 0,
+  day: 0,
   answered: 0,
   correct: 0,
   bugs: {},
 }
 
-/** Where the child is. Written whenever the ladder or the seed cursor moves. */
-export type Position = Pick<Progress, "rung" | "rungCorrect" | "seedCursor">
+/** Where the child is. Written whenever the model or the seed cursor moves. */
+export type Position = Pick<Progress, "learner" | "seedCursor" | "day">
 
 export interface ProgressState extends Progress {
   savePosition: (position: Position) => void
@@ -77,10 +83,11 @@ export function createProgressStore(profileId: string): ProgressStore {
       (set) => ({
         ...INITIAL_PROGRESS,
         savePosition: (position) => set(position),
-        // Totals only ever rise. There is no code path that lowers `correct`,
-        // clears the ladder or forgets a rung — no loss is a product rule, and
-        // the absence of a decrement here is where it is enforced (P-04's shape,
-        // one milestone early).
+        // Totals only ever rise. There is no code path that lowers `correct` or
+        // clears the model — no loss is a product rule, and the absence of a
+        // decrement here is where it is enforced (P-04's shape, one milestone
+        // early). The learner model itself is not a total and does move both
+        // ways; what never moves down is what the child is *shown*.
         recordAnswer: (correct) =>
           set((state) => ({
             answered: state.answered + 1,
@@ -91,14 +98,19 @@ export function createProgressStore(profileId: string): ProgressStore {
       }),
       {
         name: storageKey(profileId, "progress"),
-        version: 1,
+        // 2: the fixed ladder's `rung`/`rungCorrect` became the engine's encoded
+        // learner state at M5. A v1 record has no model in it, so it migrates to
+        // a cold start — which is the correct outcome and not a loss, because
+        // nothing shipped on v1.
+        version: 2,
+        migrate: () => ({ ...INITIAL_PROGRESS }),
         storage: createJSONStorage(() =>
           typeof localStorage === "undefined" ? memoryStorage : localStorage,
         ),
         partialize: (state) => ({
-          rung: state.rung,
-          rungCorrect: state.rungCorrect,
+          learner: state.learner,
           seedCursor: state.seedCursor,
+          day: state.day,
           answered: state.answered,
           correct: state.correct,
           bugs: state.bugs,

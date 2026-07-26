@@ -4,7 +4,8 @@ import assert from "node:assert/strict"
 import { idleScheduler } from "./idle.ts"
 import { measure, percentile, record, report, reset, samples } from "./metrics.ts"
 import { generateProblem } from "./session.ts"
-import { LADDER, rungAt } from "./ladder.ts"
+import { LADDER } from "./ladder.ts"
+import { planAt } from "./plan-fixtures.ts"
 
 test("percentiles are nearest-rank and empty rings report nothing rather than zero", () => {
   reset()
@@ -32,7 +33,7 @@ test("generate() stays inside the per-item budget on every rung", () => {
   reset()
   for (let rung = 0; rung < LADDER.length; rung++) {
     for (let seed = 0; seed < 200; seed++) {
-      measure("generate", () => generateProblem(rungAt(rung), seed))
+      measure("generate", () => generateProblem(planAt(rung, seed)))
     }
   }
   const generated = report("generate")

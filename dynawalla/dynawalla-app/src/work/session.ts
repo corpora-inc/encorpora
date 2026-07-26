@@ -44,35 +44,41 @@
 // no contradiction — or shows a second, invented one — is worse than a quiet
 // strike mark.
 
-import { columnOpFamily, createRng } from "./curriculum.ts"
+import { columnOpFamily, createRng, skillId } from "./curriculum.ts"
 import type { AnswerValue, Exercise, MalRuleId, RepId } from "./curriculum.ts"
+import { paramsFor } from "./catalog.ts"
 import { countingBoard, type CountingBoard } from "./contrast.ts"
 import { entryModelFor, type EntryKey, type EntryState } from "./entry.ts"
 import { judge, type Judgement } from "./judge.ts"
-import {
-  advanceRung,
-  easier,
-  repairRung,
-  rungAt,
-  FIRST_ACROSS_ZERO,
-  LADDER_FORMS,
-  RUN_LENGTH,
-  type Rung,
-} from "./ladder.ts"
+import { LADDER_FORMS, RUN_LENGTH, SKILL_SUBTRACT_ACROSS_ZERO } from "./ladder.ts"
 import { measure } from "./metrics.ts"
+import { adaptivePlanner, type LearnerState, type Planner, type PlannedCard, type SessionContext } from "./plan.ts"
+import { BATCH_SIZE } from "../../../engine/src/index.ts"
 import { writtenAnswer } from "./problem.ts"
 
-/** How the card got here. Only `ladder` cards can move the ladder position. */
+/**
+ * How the card got here.
+ *
+ * `ladder` is now "the scheduler chose it" — the name is kept because it is what
+ * the reaction layer and the character read, and because a card the child was
+ * *given* and a card they were *sent back to* are still the distinction that
+ * matters to them.
+ */
 export type CardRole = "ladder" | "retry" | "repair"
 
 export type Card =
-  | { readonly kind: "problem"; readonly exercise: Exercise; readonly rung: number; readonly role: CardRole }
+  | {
+      readonly kind: "problem"
+      readonly exercise: Exercise
+      readonly plan: PlannedCard
+      readonly role: CardRole
+    }
   | {
       readonly kind: "locate"
       readonly board: CountingBoard
       readonly misconception: MalRuleId
       readonly representation: RepId
-      readonly rung: number
+      readonly plan: PlannedCard
     }
 
 export type Feedback =
@@ -82,13 +88,13 @@ export type Feedback =
 
 type Plan =
   | { readonly kind: "none" }
-  | { readonly kind: "retry"; readonly rung: number }
+  | { readonly kind: "retry"; readonly card: PlannedCard }
   | {
       readonly kind: "locate"
       readonly board: CountingBoard
       readonly misconception: MalRuleId
       readonly representation: RepId
-      readonly rung: number
+      readonly card: PlannedCard
     }
 
 /** What happened, in card ordinals, so "within N cards" is a measurable claim. */
@@ -98,9 +104,12 @@ export type LogEntry =
 
 export interface SessionState {
   readonly profileId: string
-  /** Ladder position. Monotone: nothing in this module ever lowers it. */
-  readonly rung: number
-  readonly rungCorrect: number
+  /** The persisted learner model. Every answer moves it; nothing else does. */
+  readonly learner: LearnerState
+  /** This session's working memory: recent items, benched skills, fatigue. */
+  readonly context: SessionContext
+  /** Pools of the cards actually served, for the repair-density cap (`A-12`). */
+  readonly servedPools: readonly string[]
   readonly seedCursor: number
   /** Cards presented this session, 1-based on the card currently on screen. */
   readonly served: number
@@ -122,7 +131,8 @@ export interface SessionState {
 }
 
 export interface SessionDeps {
-  readonly generate: (rung: Rung, seed: number) => Exercise
+  readonly generate: (card: PlannedCard) => Exercise
+  readonly planner: Planner
 }
 
 /** Cards kept on deck. Two, per EXPERIENCE_DESIGN's `N+1` and `N+2`. */
@@ -131,30 +141,32 @@ export const DECK_DEPTH = 2
 /** How long a seated answer holds before the next card presents, in ms. */
 export const SEAT_HOLD_MS = 420
 
-export function generateProblem(rung: Rung, seed: number): Exercise {
+export function generateProblem(card: PlannedCard): Exercise {
   return measure("generate", () =>
     columnOpFamily.generate({
-      skillId: rung.skillId,
-      level: rung.level,
-      seed,
-      params: rung.params,
+      // The engine's ids are opaque strings — it does not import the curriculum
+      // — so the brand is reapplied at the one boundary that needs it.
+      skillId: skillId(card.skillId),
+      level: card.level,
+      seed: card.seed,
+      params: paramsFor(skillId(card.skillId), card.level),
       forms: LADDER_FORMS,
     }),
   )
 }
 
-export const defaultDeps: SessionDeps = { generate: generateProblem }
+export const defaultDeps: SessionDeps = { generate: generateProblem, planner: adaptivePlanner }
 
-function problemCard(rung: number, seed: number, role: CardRole, deps: SessionDeps): Card {
-  const exercise = deps.generate(rungAt(rung), seed)
+function problemCard(plan: PlannedCard, role: CardRole, deps: SessionDeps): Card {
+  const exercise = deps.generate(plan)
   // Belt and braces for the app side of CG-8: a schema with no entry model is a
-  // card a child cannot answer. It cannot happen with the ladder as written —
-  // `ladder.test.ts` asserts it for every rung — so if it happens, something
-  // upstream changed and a loud failure is the correct outcome.
+  // card a child cannot answer. `ladder.test.ts` asserts it for every (skill,
+  // level) the slice can serve, so if it happens here, something upstream
+  // changed and a loud failure is the correct outcome.
   if (entryModelFor(exercise.schema) === undefined) {
     throw new RangeError(`session: no entry model for schema ${exercise.schema.kind}`)
   }
-  return { kind: "problem", exercise, rung, role }
+  return { kind: "problem", exercise, plan, role }
 }
 
 function freshEntry(card: Card): EntryState | null {
@@ -165,17 +177,23 @@ function freshEntry(card: Card): EntryState | null {
 
 export interface SessionSeed {
   readonly profileId: string
-  readonly rung: number
-  readonly rungCorrect: number
+  readonly learner: LearnerState
   readonly seedCursor: number
+  /** Whole days since an arbitrary epoch. The engine never reads a clock. */
+  readonly day: number
 }
 
 export function startSession(seed: SessionSeed, deps: SessionDeps = defaultDeps): SessionState {
-  const card = problemCard(seed.rung, seed.seedCursor, "ladder", deps)
+  const learner = { ...seed.learner, today: seed.day }
+  const context = deps.planner.session(seed.seedCursor, seed.day, learner)
+  const first = deps.planner.next(learner, context, 1)[0]
+  if (first === undefined) throw new RangeError("session: the scheduler produced no first card")
+  const card = problemCard(first, "ladder", deps)
   return {
     profileId: seed.profileId,
-    rung: seed.rung,
-    rungCorrect: seed.rungCorrect,
+    learner,
+    context,
+    servedPools: [first.pool],
     seedCursor: seed.seedCursor + 1,
     served: 1,
     answered: 0,
@@ -216,13 +234,18 @@ export function submitted(state: SessionState): AnswerValue | null {
 }
 
 /**
- * Judge the entered answer and decide what follows.
+ * Judge the entered answer, move the learner model, and decide what follows.
  *
- * No generator parameter, by design: this is the whole of the answer path and it
- * is arithmetic on values that already exist. Everything that costs anything
- * happens in `prepare`, after the verdict has painted.
+ * **No generator parameter, by design**, and the learner-model update does not
+ * change that: `applyResult` is arithmetic on values that already exist, budgeted
+ * by gate EG-4 at p99 under 1 ms, and it produces no exercise. Everything that
+ * costs anything — planning the next batch, generating its items — still happens
+ * in `prepare`, after the verdict has painted.
+ *
+ * `latencyMs` arrives from the caller rather than from a clock in here: this
+ * function is pure, and the store owns the wall clock.
  */
-export function commit(state: SessionState): SessionState {
+export function commit(state: SessionState, latencyMs = 0): SessionState {
   if (!committable(state) || state.card.kind !== "problem") return state
   const value = submitted(state)
   if (value === null) return state
@@ -230,16 +253,39 @@ export function commit(state: SessionState): SessionState {
   const exercise = state.card.exercise
   const judgement: Judgement = judge(exercise, value)
   const answered = state.answered + 1
+  const correct = judgement.kind === "seated"
+  const diagnosis = judgement.kind === "struck" ? judgement.diagnosis : null
 
-  if (judgement.kind === "seated") {
-    const moved =
-      state.card.role === "ladder"
-        ? advanceRung(state.rung, state.rungCorrect)
-        : { rung: state.rung, rungCorrect: state.rungCorrect }
+  const applied = modelPlanner().apply(
+    state.learner,
+    state.context,
+    state.card.plan,
+    {
+      correct,
+      latencyMs,
+      // Revisions are not observable yet: the keypad has no undo, so an answer is
+      // committed once. When it gains one, this is where the cleanest slip signal
+      // there is arrives — `revisions > 0` then correct is a slip and never a bug.
+      revisions: 0,
+      ...(diagnosis === null ? {} : { misconception: diagnosis.misconception }),
+    },
+    state.deck.map((card) => card.plan),
+  )
+
+  const moved = {
+    learner: applied.learner,
+    context: applied.context,
+    servedPools: state.servedPools,
+    // The engine re-plans on an invariant trip rather than serving the batch to
+    // completion: a correction that lands one batch late reads to the child as
+    // the app randomly getting easy and then hard.
+    deck: applied.replan.length > 0 ? [] : state.deck,
+  }
+
+  if (correct) {
     return {
       ...state,
-      rung: moved.rung,
-      rungCorrect: moved.rungCorrect,
+      ...moved,
       answered,
       correct: state.correct + 1,
       feedback: { kind: "seated" },
@@ -249,7 +295,6 @@ export function commit(state: SessionState): SessionState {
   }
 
   const answer = writtenAnswer(exercise) ?? ""
-  const diagnosis = judgement.diagnosis
   const log = [...state.log]
 
   if (diagnosis !== null) {
@@ -275,6 +320,7 @@ export function commit(state: SessionState): SessionState {
   if (diagnosis !== null && diagnosis.contrast !== null && board !== null) {
     return {
       ...state,
+      ...moved,
       answered,
       feedback: { kind: "struck", answer, stage: "locate" },
       plan: {
@@ -282,7 +328,7 @@ export function commit(state: SessionState): SessionState {
         board,
         misconception: diagnosis.misconception,
         representation: diagnosis.contrast,
-        rung: state.card.rung,
+        card: state.card.plan,
       },
       log,
       // The one suppression: never between a diagnosis and the explanation it
@@ -294,12 +340,27 @@ export function commit(state: SessionState): SessionState {
 
   return {
     ...state,
+    ...moved,
     answered,
     feedback: { kind: "struck", answer, stage: "verify" },
-    plan: { kind: "retry", rung: easier(state.card.rung) },
+    plan: { kind: "retry", card: state.card.plan },
     log,
     stopping: stopOffered(answered, state.queued.length > 0),
   }
+}
+
+/**
+ * The planner `commit` updates the model through.
+ *
+ * `SessionDeps` is passed to the functions that need to *generate*, and `commit`
+ * deliberately takes none — that signature is the proof it does no work on the
+ * answer path. The one thing it does need is the model update, which every
+ * planner shares: `pinnedPlanner` pins the *choice* and inherits the real
+ * `apply`, so a test that pins selection still moves θ, β and the controller
+ * exactly as the app does.
+ */
+function modelPlanner(): Planner {
+  return defaultDeps.planner
 }
 
 /**
@@ -320,37 +381,48 @@ function stopOffered(answered: number, blocked: boolean): boolean {
  * generates nothing the second time — so the store can schedule it liberally.
  */
 export function prepare(state: SessionState, deps: SessionDeps = defaultDeps): SessionState {
-  const deckReady = state.deck.length >= DECK_DEPTH && state.deck.every((card) => card.rung === state.rung)
-  if (state.plan.kind === "none" && deckReady) return state
+  if (state.plan.kind === "none" && state.deck.length >= DECK_DEPTH) return state
 
   let next = state
   let cursor = next.seedCursor
   let queued = next.queued
 
   if (next.plan.kind === "retry") {
-    queued = [...queued, problemCard(next.plan.rung, cursor, "retry", deps)]
-    cursor += 1
+    // `b = θ_s − 0.8` or the confidence intent's difficulty, whichever is easier.
+    // The engine decides, because "one rung easier" is a statement about the
+    // curriculum and this is a statement about this child.
+    const retry = deps.planner.retry(next.learner, next.context, next.plan.card)
+    if (retry !== null) {
+      queued = [...queued, problemCard(retry, "retry", deps)]
+      cursor += 1
+    }
     next = { ...next, plan: { kind: "none" } }
   } else if (next.plan.kind === "locate") {
-    const { board, misconception, representation, rung } = next.plan
+    const { board, misconception, representation, card } = next.plan
+    // The repair comes from the level whose parameters *guarantee* the step, not
+    // from wherever the child happened to be standing — and only while repair is
+    // under its quarter-of-a-batch cap (`A-12`).
+    const repair = deps.planner.repair(next.learner, next.context, card, misconception, next.servedPools)
     queued = [
       ...queued,
-      { kind: "locate", board, misconception, representation, rung },
-      // The repair comes from the rung whose parameters *guarantee* the step,
-      // not from wherever the child happened to be standing.
-      problemCard(repairRung(misconception, rung), cursor, "repair", deps),
+      { kind: "locate", board, misconception, representation, plan: card },
+      ...(repair === null ? [] : [problemCard(repair, "repair", deps)]),
     ]
-    cursor += 1
+    if (repair !== null) cursor += 1
     next = { ...next, plan: { kind: "none" } }
   }
 
-  // A correct answer can move the ladder, which strands whatever was on deck for
-  // the rung below. Drop it here, during idle, so `advance` still finds a card in
-  // hand rather than generating one at present-time.
-  const deck = next.deck.filter((card) => card.rung === next.rung)
-  while (deck.length < DECK_DEPTH) {
-    deck.push(problemCard(next.rung, cursor, "ladder", deps))
-    cursor += 1
+  // Top the deck up from the scheduler. The batch is planned here, in idle,
+  // never on the answer path — `commit` takes no planner and cannot.
+  const deck = [...next.deck]
+  if (deck.length < DECK_DEPTH) {
+    const wanted = deps.planner.next(next.learner, next.context, BATCH_SIZE)
+    for (const plan of wanted) {
+      if (deck.length >= DECK_DEPTH) break
+      if (deck.some((card) => card.plan.itemKey === plan.itemKey)) continue
+      deck.push(problemCard(plan, "ladder", deps))
+      cursor += 1
+    }
   }
 
   return { ...next, queued, deck, seedCursor: cursor }
@@ -382,17 +454,34 @@ export function advance(state: SessionState, deps: SessionDeps = defaultDeps): S
     card = forced
     queued = queued.slice(1)
   } else {
+    // Drop any card the plan has outlived. A batch is eight cards old by the time
+    // its tail is served and the sequence rules do not stop at a batch boundary,
+    // so the engine is asked whether each card may still be served.
+    while (deck.length > 0) {
+      const head = deck[0]
+      if (head === undefined) break
+      if (deps.planner.admissible(base.learner, base.context, head.plan, base.servedPools)) break
+      deck = deck.slice(1)
+    }
     const ready = deck[0]
-    if (ready !== undefined && ready.rung === base.rung) {
+    if (ready !== undefined) {
       card = ready
       deck = deck.slice(1)
     } else {
-      // Either nothing on deck, or what is on deck was generated for a rung the
-      // ladder has since left. Both are inline generation; only the first is a
-      // latency fault, and a rung change discards at most `DECK_DEPTH` cards.
-      if (ready === undefined) starved += 1
-      else deck = []
-      card = problemCard(base.rung, cursor, "ladder", deps)
+      // Nothing servable on deck. Plan inline — correct behaviour, and counted,
+      // because a starving deck means the idle pass is not running and that is a
+      // latency bug worth failing a test over.
+      starved += 1
+      const plan = deps.planner.next(base.learner, base.context, 1)[0]
+      if (plan === undefined) {
+        // The scheduler has nothing left to serve — every reachable skill is
+        // benched, which after three failures each is a session that has gone
+        // badly enough to stop. The designed stopping point is offered and the
+        // card on screen stays where it is. Throwing here would end a bad session
+        // with a crash, which is the worst possible reading of "no loss".
+        return { ...base, stopping: true }
+      }
+      card = problemCard(plan, "ladder", deps)
       cursor += 1
     }
   }
@@ -422,6 +511,10 @@ export function advance(state: SessionState, deps: SessionDeps = defaultDeps): S
     served,
     starved,
     log,
+    // The pool of every card actually served, for the repair-density cap. A
+    // contrast pair is not a card the model scheduled, so it does not count.
+    servedPools:
+      card.kind === "problem" ? [...base.servedPools, card.plan.pool].slice(-BATCH_SIZE) : base.servedPools,
     stopping: false,
   }
 }
@@ -458,18 +551,16 @@ export function autoAdvanceMs(state: SessionState): number | null {
 }
 
 /**
- * Is this card the child's first arrival at the across-zero rungs?
+ * Is this card the child's first arrival at the across-zero skill?
  *
- * Only a `ladder` card can be one. `FIRST_ACROSS_ZERO` and the rung a
- * `borrow-across-zero` repair item comes from are the same index by
- * construction — both are "the first rung whose parameters guarantee the step"
- * — so a rule that watched the rung number alone announced the arrival the
- * first time a child got one *wrong* three rungs lower and was handed the
- * repair item. The ladder had not moved at all.
+ * Only a scheduled card can be one. The repair item for `borrow-across-zero`
+ * comes from that same skill by construction — it is the level whose parameters
+ * guarantee the step — so a rule that watched the skill alone announced the
+ * arrival the first time a child got one *wrong* somewhere easier and was handed
+ * the repair item. They had not arrived at all.
  */
 export function arrivesAcrossZero(card: Card): boolean {
-  if (FIRST_ACROSS_ZERO < 0) return false
-  return card.kind === "problem" && card.role === "ladder" && card.rung >= FIRST_ACROSS_ZERO
+  return card.kind === "problem" && card.role === "ladder" && card.plan.skillId === SKILL_SUBTRACT_ACROSS_ZERO
 }
 
 /**

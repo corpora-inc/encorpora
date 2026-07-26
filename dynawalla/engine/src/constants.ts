@@ -99,6 +99,99 @@ export const BENCH_AFTER_FAILURES = 3;
 /** ≤40% of a rolling 50-item window from any one skill. */
 export const ROLLING_WINDOW = 50;
 export const MAX_WINDOW_SHARE_PERCENT = 40;
+/** 25% of a batch of 8, expressed as the count the planner actually uses. */
+export const MAX_REPAIR_PER_BATCH = 2;
+
+/**
+ * Cold start. **No placement test**: the first 20 exercises are a
+ * scripted-but-adaptive ladder inside the fiction, and no card in them may be
+ * predicted below `P̂ = 0.55`. Both numbers are the document's.
+ */
+export const COLD_START_ITEMS = 20;
+export const COLD_START_MIN_P: Fix = fromRatio(55, 100);
+/** One grade answer seeds `θ = b̄ − 0.4` at or below the band… */
+export const SEED_AT_BAND: Fix = fromRatio(-4, 10);
+/** …and `b̄ − 2.0` one band above it. */
+export const SEED_ABOVE_BAND: Fix = fromInt(-2);
+
+/**
+ * A low-`φ`/high-`θ` child gets short fluency bursts **at `P̂ ≈ 0.90`, never
+ * harder problems**. This is the whole of the slow-but-correct discrimination on
+ * the scheduling side; the other half is `A-05`, which `masteryFor` honours by
+ * containing no reference to `φ` at all.
+ */
+export const FLUENCY_BURST_P: Fix = fromRatio(90, 100);
+
+/** The Stage-1 VERIFY retry is served at `b = θ_s − 0.8`. */
+export const RETRY_EASIER_BY: Fix = fromRatio(8, 10);
+
+/** A Mastered skill comes back for review after this many quiet days. */
+export const REVIEW_AFTER_DAYS = 7;
+
+/**
+ * Anti-stagnation: three sessions with `θ` improving by less than 0.3 and the
+ * scheduler goes around — a different representation, not more of the same.
+ * PROVISIONAL in the count of sessions; the 0.3 is the document's.
+ */
+export const STALL_SESSIONS = 3;
+export const STALL_MIN_GAIN: Fix = fromRatio(3, 10);
+
+/** Bounded rings. The state budget is a property of these two numbers (EG-3). */
+export const MAX_ROLLUPS = 180;
+export const MAX_EVENTS = 512;
+
+// -------------------------------------------------------------- Gate bounds ----
+
+/**
+ * EG-5. The reliability diagram is binned at 0.05 and each bin with at least 200
+ * items must agree with its realised rate to ±0.06. Both numbers are the
+ * document's.
+ */
+export const CALIBRATION_BIN_WIDTH = 50_000;
+export const CALIBRATION_MIN_ITEMS = 200;
+export const CALIBRATION_TOLERANCE: Fix = fromRatio(6, 100);
+
+/**
+ * EG-7 / `A-09`. **REGRESSION BOUND — set from the pilot run recorded in the M5
+ * handoff, not from theory.**
+ *
+ * `N` in the document is the number of times the controller's direction may
+ * alternate. Measured over 10-item blocks inside a 50-item window, because the
+ * per-item reading is vacuous: `ΔpTarget` is `+0.06` on a failure and `−0.015`
+ * on a pass by construction, so per-item sign alternation counts the child's
+ * failures rather than the controller's stability. `gates.ts` explains the
+ * substitution at the point it is made.
+ */
+export const CONTROLLER_BLOCK = 10;
+/**
+ * The span the alternations are counted over. **100, not 50**: five ten-card
+ * blocks admit at most four alternations, so any bound of four over a 50-card
+ * window is satisfied by every possible series and the gate cannot fail. Ten
+ * blocks admit nine, so a bound inside that range is a real constraint.
+ */
+export const CONTROLLER_SPAN = 100;
+/**
+ * `N`, recorded here because `A-09` requires it to be — and recorded together with
+ * the finding that **it cannot be made into a non-vacuous bound for this
+ * controller.**
+ *
+ * `pTarget ← clamp(pTarget + 0.06·fail − 0.015·pass)` has its fixed point exactly
+ * where `0.06·(1−q) = 0.015·q`, i.e. at a realised accuracy of 0.80 — which is
+ * the accuracy the scheduler is aiming for. A controller sitting at its fixed
+ * point has an expected net movement of zero over any window, so the *sign* of
+ * that movement is a coin flip whatever the window length: measured over ten
+ * 10-card blocks the worst case was 8 and 9 alternations out of a possible 9,
+ * consistently, on a controller that is behaving exactly as specified.
+ *
+ * The meaningful stability measure for this controller is the **swing** —
+ * `CONTROLLER_MAX_SWING` — which is a bound on how much the difficulty can move
+ * inside a window a child could feel, and which does fail when the controller
+ * misbehaves. The alternation leg is kept because `A-09` names it, is set to the
+ * maximum the measure admits, and is labelled VACUOUS in the report so nobody
+ * reads it as evidence.
+ */
+export const CONTROLLER_MAX_ALTERNATIONS = 9;
+export const CONTROLLER_MAX_SWING: Fix = fromRatio(23, 100);
 
 // ---------------------------------------------------------------- Latency ----
 

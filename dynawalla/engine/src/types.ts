@@ -89,6 +89,35 @@ export type LatencyStats = {
   readonly count: number;
 };
 
+/**
+ * One day's totals. 64 B × 180 days daily, older collapsed monthly — the parent
+ * report reads these, the model does not.
+ */
+export type SessionRollup = {
+  readonly day: Day;
+  readonly served: number;
+  readonly correct: number;
+  readonly minutes: number;
+  /** Sum of latencies in whole seconds, so a mean can be recovered without a float. */
+  readonly seconds: number;
+  readonly fatiguedCards: number;
+};
+
+/**
+ * One entry of the Developer-Mode ring. 32 B, FIFO, capped, and **not** an input
+ * to any model update — it exists for the explanation, the parent report and a
+ * future recalibration, and nothing reads it back into `θ`.
+ */
+export type EngineEvent = {
+  readonly day: Day;
+  readonly skillId: SkillId;
+  readonly level: number;
+  readonly pool: string;
+  readonly pHat: Fix;
+  readonly correct: boolean;
+  readonly latencyMs: number;
+};
+
 export type LearnerState = {
   readonly pTarget: Fix;
   readonly skills: Readonly<Record<SkillId, SkillState>>;
@@ -96,6 +125,27 @@ export type LearnerState = {
   readonly facts: Readonly<Record<FactKey, FactCard>>;
   readonly latency: LatencyStats;
   readonly today: Day;
+  /**
+   * Cards answered in this learner's whole history. The cold-start rule — no card
+   * in the first 20 below `P̂ = 0.55` — is a claim about the child, not about the
+   * session, so a child who quits after six cards and comes back tomorrow is
+   * still inside their first twenty.
+   */
+  readonly answered: number;
+  /**
+   * The last 50 skills served, oldest first.
+   *
+   * Persisted, because the rule it exists for is stated over a **rolling 50-item
+   * window** and a child's session is 16 to 24 cards — so a window held only in
+   * session state spans a fraction of the rule and the "≤40% from any one skill"
+   * cap could never be enforced as written. Fifty dictionary-referenced ids cost
+   * about 150 bytes.
+   */
+  readonly recent: readonly SkillId[];
+  /** Oldest first, capped at `MAX_ROLLUPS`. */
+  readonly rollups: readonly SessionRollup[];
+  /** Oldest first, capped at `MAX_EVENTS`. Developer Mode only. */
+  readonly events: readonly EngineEvent[];
 };
 
 export const NEW_SKILL_STATE: SkillState = {
@@ -112,6 +162,14 @@ export const NEW_SKILL_STATE: SkillState = {
 };
 
 export const NEW_BUG_STATE: BugState = { beta: 0 as Fix, firings: 0 };
+
+export const NEW_FACT_CARD: FactCard = {
+  stability: 0 as Fix,
+  difficulty: 0 as Fix,
+  dueDay: 0,
+  reps: 0,
+  lapses: 0,
+};
 
 /** The key a `BugState` is stored under: one entry per (skill, bug) pair. */
 export function bugKey(skill: SkillId, bug: BugId): string {

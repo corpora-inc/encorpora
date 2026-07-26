@@ -6,7 +6,9 @@ import assert from "node:assert/strict"
 
 import { glyphFromKey } from "./entry.ts"
 import { fiveThousandOne } from "./fixtures.ts"
-import { CORRECT_PER_RUNG, FIRST_ACROSS_ZERO, LADDER, RUN_LENGTH, rungAt } from "./ladder.ts"
+import { FIRST_ACROSS_ZERO, LADDER, RUN_LENGTH, rungAt } from "./ladder.ts"
+import { pinnedPlanner } from "./plan.ts"
+import { startLearner } from "./plan-fixtures.ts"
 import { writtenAnswer } from "./problem.ts"
 import {
   advance,
@@ -25,16 +27,31 @@ import {
   type SessionState,
 } from "./session.ts"
 
-/** Counts generator calls so "what runs where" is measured, not asserted. */
-function counting(): SessionDeps & { calls: () => number } {
+/**
+ * Counts generator calls so "what runs where" is measured, not asserted.
+ *
+ * Selection is pinned to the M2 slice's steps in written order, which is what
+ * the fixed ladder used to do — so these tests still say "start here, then
+ * there" and still mean it. The learner model runs underneath: `pinnedPlanner`
+ * uses the real `apply`, so every one of these sessions moves θ, β and the
+ * controller exactly as the app does.
+ */
+function counting(steps: readonly number[] = [0]): SessionDeps & { calls: () => number } {
   let calls = 0
   return {
-    generate: (rung, seed) => {
+    generate: (card) => {
       calls += 1
-      return generateProblem(rung, seed)
+      return generateProblem(card)
     },
+    planner: pinnedPlanner(steps.map((step) => [rungAt(step).skillId, rungAt(step).level] as const)),
     calls: () => calls,
   }
+}
+
+/** Every card is the `5001 − 2798` fixture, pinned to the step that produces it. */
+const fixtureDeps: SessionDeps = {
+  generate: () => fiveThousandOne().exercise,
+  planner: pinnedPlanner([[rungAt(LADDER.length - 1).skillId, rungAt(LADDER.length - 1).level]]),
 }
 
 function type(state: SessionState, digits: string): SessionState {
@@ -77,11 +94,11 @@ test("the session's choice sequence is seeded, so a session replays exactly", ()
 
 test("only a ladder card at the across-zero rungs is an arrival", () => {
   // The unit form of the bug `diagnosis.test.ts` drives end to end: a repair
-  // item is served *at* `FIRST_ACROSS_ZERO` by construction, so a rule keyed on
-  // the rung alone announces an arrival that has not happened.
-  const deps = counting()
-  const at = (rung: number, role: "ladder" | "retry" | "repair"): boolean => {
-    const state = startSession({ profileId: "p1", rung, rungCorrect: 0, seedCursor: 0 }, deps)
+  // item comes from the across-zero skill by construction, so a rule keyed on the
+  // skill alone announces an arrival that has not happened.
+  const at = (step: number, role: "ladder" | "retry" | "repair"): boolean => {
+    const deps = counting([step])
+    const state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
     assert.ok(state.card.kind === "problem")
     return arrivesAcrossZero({ ...state.card, role })
   }
@@ -94,7 +111,7 @@ test("only a ladder card at the across-zero rungs is an arrival", () => {
 
 test("commit does no generation — it cannot, and that is the signature", () => {
   const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   state = prepare(state, deps)
 
   const before = deps.calls()
@@ -108,7 +125,7 @@ test("commit does no generation — it cannot, and that is the signature", () =>
 
 test("the deck is filled ahead and never starves in ordinary play", () => {
   const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   state = prepare(state, deps)
   assert.equal(state.deck.length, DECK_DEPTH)
 
@@ -118,7 +135,7 @@ test("the deck is filled ahead and never starves in ordinary play", () => {
 
 test("prepare is idempotent and returns the same state when there is nothing to do", () => {
   const deps = counting()
-  const state = prepare(startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps), deps)
+  const state = prepare(startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps), deps)
   const calls = deps.calls()
   assert.equal(prepare(state, deps), state)
   assert.equal(deps.calls(), calls)
@@ -126,7 +143,7 @@ test("prepare is idempotent and returns the same state when there is nothing to 
 
 test("seeds never repeat, so a relaunch does not re-serve the same problem", () => {
   const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   const ids = new Set<string>()
   for (let i = 0; i < 20; i++) {
     assert.ok(state.card.kind === "problem")
@@ -137,40 +154,52 @@ test("seeds never repeat, so a relaunch does not re-serve the same problem", () 
   assert.ok(state.seedCursor >= 20)
 })
 
-test("the ladder is climbed by correct answers on ladder cards only", () => {
-  const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
-  for (let i = 0; i < CORRECT_PER_RUNG; i++) state = answerCorrectly(state, deps)
-  assert.equal(state.rung, 1)
+test("correct answers raise the model's estimate of the skill they were on", () => {
+  // What replaced "four correct answers advance one rung". The ladder counted
+  // cards; the model reads evidence, so what is asserted is that θ moves the way
+  // the evidence points and that it is the *answered* skill's θ that moves.
+  const step = 2
+  const deps = counting([step])
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
+  const id = rungAt(step).skillId
+  const before = state.learner.skills[id]?.theta ?? 0
+  for (let i = 0; i < 4; i++) state = answerCorrectly(state, deps)
+  const after = state.learner.skills[id]?.theta ?? 0
+  assert.ok(after > before, "four correct answers did not raise θ")
+  assert.equal(state.learner.skills[id]?.attempts, 4)
+  assert.equal(state.learner.skills[id]?.correct, 4)
 })
 
-test("a correct answer on a retry card does not promote", () => {
-  const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 3, rungCorrect: 3, seedCursor: 0 }, deps)
+test("a wrong answer moves θ down by less than a right one moves it up", () => {
+  // Asymmetric credit: ×1.0 correct, ×0.7 incorrect, so one mis-tap never craters
+  // a child. It is the reason the app has no demotion and no streak — the model
+  // is deliberately slow to believe the worst.
+  const step = 2
+  const deps = counting([step])
+  const id = rungAt(step).skillId
+  const start = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
+  const before = start.learner.skills[id]?.theta ?? 0
 
-  // Wrong, unexplained → Stage 1 → a retry card one rung easier.
-  state = commit(type(state, "1"))
-  assert.equal(state.rung, 3)
-  state = advance(prepare(state, deps), deps)
-  assert.ok(state.card.kind === "problem")
-  assert.equal(state.card.role, "retry")
+  const right = answerCorrectly(start, deps)
+  const up = (right.learner.skills[id]?.theta ?? 0) - before
 
-  const before = state.rung
-  state = answerCorrectly(state, deps)
-  assert.equal(state.rung, before, "the easier retry promoted the child")
+  const wrong = commit(type(start, "1"))
+  const down = before - (wrong.learner.skills[id]?.theta ?? 0)
+  assert.ok(up > 0 && down > 0, "the model did not move")
+  assert.ok(down < up, `a failure moved θ by ${String(down)} against ${String(up)} for a success`)
 })
 
 test("an entry that is empty cannot be committed", () => {
   const deps = counting()
-  const state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  const state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   assert.equal(committable(state), false)
   assert.equal(submitted(state), null)
   assert.equal(commit(state), state)
 })
 
 test("Enter commits an answerable card and moves on from everything else", () => {
-  const deps: SessionDeps = { generate: () => fiveThousandOne().exercise }
-  let state = startSession({ profileId: "p1", rung: LADDER.length - 1, rungCorrect: 0, seedCursor: 0 }, deps)
+  const deps: SessionDeps = { ...fixtureDeps }
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   assert.equal(enterAction(state), "commit")
 
   state = commit(type(state, "3203"))
@@ -187,14 +216,14 @@ test("Enter commits an answerable card and moves on from everything else", () =>
 
 test("input is ignored once a verdict is up", () => {
   const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   state = commit(type(state, "1"))
   assert.equal(pressKey(state, { kind: "glyph", glyph: "9" }), state)
 })
 
 test("a run reaches a designed stopping point, and it is not a wall", () => {
   const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   for (let i = 0; i < RUN_LENGTH - 1; i++) {
     assert.ok(state.card.kind === "problem")
     const text = writtenAnswer(state.card.exercise)
@@ -217,11 +246,8 @@ test("a run reaches a designed stopping point, and it is not a wall", () => {
 })
 
 test("a stopping point is never offered in the middle of a repair sequence", () => {
-  const deps: SessionDeps = { generate: () => fiveThousandOne().exercise }
-  let state = startSession(
-    { profileId: "p1", rung: LADDER.length - 1, rungCorrect: 0, seedCursor: 0 },
-    deps,
-  )
+  const deps: SessionDeps = { ...fixtureDeps }
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   for (let i = 0; i < RUN_LENGTH - 1; i++) {
     state = advance(commit(type(state, "2203")), deps)
   }
@@ -235,7 +261,7 @@ test("the way out is offered on cards done, not on cards done right", () => {
   // to card 24 and a run of wrong answers suppressed it altogether: withheld
   // from the child having the worst time, which is ADR-0009 inverted.
   const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 0, rungCorrect: 0, seedCursor: 0 }, deps)
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
   for (let i = 0; i < RUN_LENGTH - 1; i++) state = answerCorrectly(state, deps)
 
   assert.ok(state.card.kind === "problem")
@@ -256,8 +282,8 @@ test("the same board is never served twice in one session", () => {
   // with `stopping` suppressed throughout, so the way out was withheld for as
   // long as the child was stuck. ADAPTIVE_LEARNING sends repeated failure to
   // Stage 3, which M2 has not built; Stage 1 is its stand-in.
-  const deps: SessionDeps = { generate: () => fiveThousandOne().exercise }
-  let state = startSession({ profileId: "p1", rung: LADDER.length - 1, rungCorrect: 0, seedCursor: 0 }, deps)
+  const deps: SessionDeps = { ...fixtureDeps }
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
 
   state = commit(type(state, "3203"))
   assert.ok(state.feedback?.kind === "struck")
@@ -285,15 +311,28 @@ test("the same board is never served twice in one session", () => {
   assert.equal(state.card.role, "retry")
 })
 
-test("nothing lowers the ladder or the totals", () => {
-  const deps = counting()
-  let state = startSession({ profileId: "p1", rung: 4, rungCorrect: 2, seedCursor: 0 }, deps)
-  const rung = state.rung
+test("nothing the child sees ever goes down", () => {
+  // "No loss, no demotion, no streak" is a product rule about what a child is
+  // *shown*. It is worth being exact about where the line is, because the learner
+  // model does not obey it and must not: `θ` is an estimate and an estimate that
+  // could only rise would be useless, and the internal mastery level follows it.
+  //
+  // Neither is ever rendered. What the surface reads — the answered and correct
+  // counts, and through them the world's placements — is monotone, and this is
+  // where that is enforced.
+  const deps = counting([2])
+  let state = startSession({ profileId: "p1", learner: startLearner(), seedCursor: 0, day: 0 }, deps)
+  const id = rungAt(2).skillId
+  for (let i = 0; i < 8; i++) state = answerCorrectly(state, deps)
   const correct = state.correct
+  const answered = state.answered
+  const before = state.learner.skills[id]?.theta ?? 0
+
   for (let i = 0; i < 6; i++) {
     state = advance(prepare(commit(type(state, "1")), deps), deps)
   }
-  assert.ok(state.rung >= rung, "a wrong answer moved the ladder down")
-  assert.ok(state.correct >= correct)
-  assert.equal(rungAt(state.rung).skillId, rungAt(rung).skillId)
+  assert.equal(state.correct, correct, "a wrong answer changed the correct count")
+  assert.ok(state.answered > answered, "the answered count did not rise")
+  // …and the estimate did move, which is the model working rather than failing.
+  assert.ok((state.learner.skills[id]?.theta ?? 0) < before, "six wrong answers left θ untouched")
 })

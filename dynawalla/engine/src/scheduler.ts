@@ -75,8 +75,28 @@ export type PlannedCard = {
   readonly pHat: Fix;
   /** A tag the interleaving rule groups on — `add`, `sub`, `mul`, `div`. */
   readonly operation: string;
-  /** Identifies the exact item, for the no-repeat window. */
+  /**
+   * The item's **class** — skill, level and form — which is what the no-repeat
+   * window compares on. Not the seed: a generated exercise has no stable id, and
+   * a child does not experience two draws of the same class as the same problem
+   * unless they are close together, which is exactly what the window measures.
+   */
   readonly itemKey: string;
+  /**
+   * Set on the two cards that are *designed* to return to what just broke: the
+   * Stage-1 VERIFY retry and the Stage-2 repair item. They are exempt from the
+   * no-repeat window by construction, and carrying the reason on the card is what
+   * lets a gate tell an exemption from a violation.
+   */
+  readonly followUp?: "retry" | "repair";
+  /**
+   * How far the selection policy had to relax its constraints to find this card.
+   * 0 is the normal case. Anything above it means a rule was dropped because
+   * obeying every rule left nothing to serve, and which rule is recorded in
+   * `select.ts`'s `RELAXATION_NAMES`. Carried on the card so a gate can tell a
+   * declared relaxation from a violation, and so Developer Mode can say which.
+   */
+  readonly relaxed?: number;
   readonly trace?: SelectionTrace;
 };
 
