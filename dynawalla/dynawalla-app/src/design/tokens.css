@@ -215,6 +215,13 @@
   --dw-band-height: 4.5rem;
   --dw-key-height: 4.75rem;
   --dw-numeral-size: var(--text-3xl);
+  /* One cell of a multi-field answer — a numerator, a column of the borrow
+     grid. On the vertical scale for the same reason the keys are: a child's
+     finger has to land on it, and a six-column grid plus a mark row is a
+     second keypad's worth of height on a short phone. Width comes down with
+     it so six columns still fit inside 320 px. */
+  --dw-cell-height: 3.25rem;
+  --dw-cell-width: 2.25rem;
   --dw-frame-pad: 1.25rem;
   --dw-stack-gap: 1.5rem;
   --dw-stack-gap-tight: 1rem;
@@ -237,6 +244,8 @@
     --dw-band-height: 3.5rem;
     --dw-key-height: 3.25rem;
     --dw-numeral-size: var(--text-2xl);
+    --dw-cell-height: 2.75rem;
+    --dw-cell-width: 2rem;
     --dw-frame-pad: 0.625rem;
     --dw-stack-gap: 0.75rem;
     --dw-stack-gap-tight: 0.5rem;
@@ -259,6 +268,8 @@
     --dw-band-height: 3rem;
     --dw-key-height: 2.75rem;
     --dw-numeral-size: var(--text-xl);
+    --dw-cell-height: 2.5rem;
+    --dw-cell-width: 1.875rem;
     --dw-frame-pad: 0.5rem;
     --dw-stack-gap: 0.5rem;
     --dw-stack-gap-tight: 0.375rem;

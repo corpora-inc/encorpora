@@ -45,3 +45,11 @@ export {
 
 export { answerRendererId, findRenderer, rendererRegistry, repRendererId } from "./render/registry.ts";
 export type { RendererDeclaration } from "./render/registry.ts";
+export {
+  repSpecDefect,
+  REP_BALANCE_SCALE,
+  REP_GEAR_TRAIN,
+  REP_NUMBER_LINE,
+  REQUIRED_REP_PARAMS,
+  V1_REPRESENTATIONS,
+} from "./render/representations.ts";

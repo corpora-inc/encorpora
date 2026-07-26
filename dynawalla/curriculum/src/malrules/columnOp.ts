@@ -38,8 +38,14 @@ export const MIS_SMALLER_FROM_LARGER = malRuleId("mis.add.smaller-from-larger");
 export const MIS_BORROW_ACROSS_ZERO = malRuleId("mis.add.borrow-across-zero");
 export const MIS_CARRY_DROPPED = malRuleId("mis.add.carry-dropped");
 
-/** The counting board is the LOCATE representation for borrow-across-zero. */
-export const REP_COUNTING_BOARD = "counting-board";
+/**
+ * The counting board is the LOCATE representation for borrow-across-zero.
+ * Re-exported, not redeclared: the id belongs to `render/representations.ts`
+ * with the other three, and two spellings of one `RepId` is a `RepSpec` that
+ * matches no renderer.
+ */
+export { REP_COUNTING_BOARD } from "../render/representations.ts";
+import { REP_COUNTING_BOARD } from "../render/representations.ts";
 
 type Trace = {
   readonly digits: readonly number[];

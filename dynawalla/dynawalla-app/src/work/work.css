@@ -120,11 +120,79 @@
     }
   }
 
+  /* ── Shapes a utility class cannot make ────────────────────────────────
+     Three of them, and every one is here rather than on the element because
+     the CSP is `style-src 'self'` with no `unsafe-inline`: a `style={{…}}`
+     prop is dropped silently in the WebView and works perfectly in a dev
+     browser, which is the worst failure mode available. */
+
+  /* The number line's index: a filled triangle pointing down at the tick it
+     stands on. Borders, because that is what a triangle is in CSS. It reads
+     as a shape as well as a colour (CG-18) — a child who cannot tell brass
+     from stone still sees the arrowhead. */
+  .dw-line-index {
+    width: 0;
+    height: 0;
+    border-inline: 6px solid transparent;
+    border-top: 9px solid var(--dw-index);
+  }
+
+  /* The balance's fulcrum, the same trick the other way up. */
+  .dw-fulcrum {
+    width: 0;
+    height: 0;
+    border-inline: 10px solid transparent;
+    border-bottom: 18px solid var(--dw-line-strong);
+  }
+
+  /* The beam tilts to exactly three positions — level, left down, right down
+     — and never to a proportion of the difference. A beam whose angle tracked
+     the gap would invite reading its size off a picture that is not to scale,
+     and the idea is binary: the two sides hold the same, or they do not.
+
+     The pans counter-rotate by the same angle about the point they hang from,
+     so they stay upright on a tilted beam — which is what a real balance does,
+     and what keeps the numerals in them readable without tilting your head.
+     Doing it this way means no offset is computed anywhere: the pans are laid
+     out by the beam and cannot come off it, however wide the beam is. */
+  .dw-beam {
+    transform-origin: 50% 0;
+    transition: transform var(--dw-motion-detent) var(--dw-ease-detent);
+  }
+
+  .dw-pan {
+    transform-origin: 50% 0;
+    transition: transform var(--dw-motion-detent) var(--dw-ease-detent);
+  }
+
+  .dw-beam-left {
+    transform: rotate(6deg);
+  }
+
+  .dw-beam-left .dw-pan {
+    transform: rotate(-6deg);
+  }
+
+  .dw-beam-right {
+    transform: rotate(-6deg);
+  }
+
+  .dw-beam-right .dw-pan {
+    transform: rotate(6deg);
+  }
+
   /* The branch. Zero travel, no particles — the keyframes contain opacity and
-     nothing else, so there is no transform left to shorten. */
+     nothing else, so there is no transform left to shorten. The beam arrives
+     already tilted rather than swinging to it: reduced motion is a branch, not
+     a shorter animation. */
   @media (prefers-reduced-motion: reduce) {
     .dw-present {
       animation-name: dw-seat-in-still;
+    }
+
+    .dw-beam,
+    .dw-pan {
+      transition: none;
     }
   }
 

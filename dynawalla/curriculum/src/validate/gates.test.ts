@@ -207,12 +207,31 @@ test("CG-8: a required representation with no renderer fails", () => {
 });
 
 test("CG-8: strict mode rejects a renderer that is declared but not implemented", () => {
-  assert.equal(cg8(context()).status, "warn", "the default mode allows authoring ahead of the work surface");
-  assertFails(cg8(context({ strictRenderers: true })), "declared but not implemented");
-  const implemented = rendererRegistry.map((entry) =>
-    entry.kind === "answerSchema" ? { ...entry, implemented: true, testRef: "src/work/judge.test.ts" } : entry,
+  // The violation is **constructed**, not borrowed from the shipped registry.
+  // It used to be borrowed: `integer`, `columnAlgorithm` and the counting board
+  // were all declared and unimplemented, so this test read its failing case off
+  // the real data — and the day the app grew those renderers, the test would
+  // have gone green while asserting nothing at all. A failing-case test that
+  // depends on the shipped data being broken stops being a test the moment it
+  // is fixed, which is the failure mode GATES.md names in as many words.
+  const unbuilt = rendererRegistry.map((entry) =>
+    entry.id === "answer:integer"
+      ? { id: entry.id, kind: entry.kind, owner: entry.owner, implemented: false }
+      : entry,
   );
-  assert.notEqual(cg8(context({ renderers: implemented, strictRenderers: true })).status, "fail");
+  assert.equal(
+    cg8(context({ renderers: unbuilt })).status,
+    "warn",
+    "the default mode allows authoring ahead of the work surface",
+  );
+  assertFails(cg8(context({ renderers: unbuilt, strictRenderers: true })), "declared but not implemented");
+
+  // …and the registry this repository actually ships passes both modes: every
+  // schema and representation the active graph reaches is drawn by the app, and
+  // `dynawalla-app/src/work/renderers.test.ts` is what keeps that claim true
+  // from the other side.
+  assert.equal(cg8(context()).status, "pass");
+  assert.notEqual(cg8(context({ strictRenderers: true })).status, "fail");
 });
 
 test("CG-8: a renderer declaration with no owner, or implemented with no test, fails", () => {

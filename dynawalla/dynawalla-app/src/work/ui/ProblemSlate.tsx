@@ -1,8 +1,12 @@
+import type { ReactNode } from "react"
+
 import { ANCHOR_SEAT } from "../../design/anchors.ts"
-import { IndexMark } from "../../design/IndexMark.tsx"
 import { strings } from "../../app/strings.ts"
-import type { Card, Feedback } from "../session.ts"
+import { VerdictWell } from "./VerdictWell.tsx"
+import type { Feedback } from "../session.ts"
+import type { Exercise } from "../curriculum.ts"
 import { readProblem } from "../problem.ts"
+import type { ColumnProblem } from "../problem.ts"
 import { fieldText, type EntryState } from "../entry.ts"
 
 const OPERATOR = { sub: "−", add: "+" } as const
@@ -29,16 +33,38 @@ const OPERATOR_WORD = { sub: strings.practice.minus, add: strings.practice.plus 
  * was not there a frame ago — and the well says so in words a screen reader
  * reads. A wrong answer is struck through with the correct one labelled beneath.
  */
+/**
+ * The problem alone — no answer row and no verdict well.
+ *
+ * What a column-grid card wants: the item is written above, the answer is
+ * written *in the grid*. Drawing the full slate there put a second, empty answer
+ * rule between the subtraction bar and the grid and a second live region under
+ * it — two verdict wells on one card. Only visible by looking.
+ */
+export function ProblemStatement({ exercise }: { exercise: Exercise }) {
+  const problem = readProblem(exercise)
+  if (problem === null) return null
+  return (
+    <SlateBox>
+      <StatementRows problem={problem} />
+    </SlateBox>
+  )
+}
+
 export function ProblemSlate({
-  card,
+  exercise,
   entry,
   feedback,
 }: {
-  card: Extract<Card, { kind: "problem" }>
+  // The exercise, not the card. The slate reads two operands and an operator
+  // out of `prompt.slots`; it has never had anything to say about which pool
+  // the scheduler drew from, and taking the whole card meant the renderer
+  // bench had to fabricate a plan to draw a problem.
+  exercise: Exercise
   entry: EntryState | null
   feedback: Feedback | null
 }) {
-  const problem = readProblem(card.exercise)
+  const problem = readProblem(exercise)
   if (problem === null) return null
 
   const typed = entry === null ? "" : fieldText(entry)
@@ -46,29 +72,8 @@ export function ProblemSlate({
   const seated = feedback?.kind === "seated"
 
   return (
-    <div className="dw-present flex justify-center">
-      {/* The numeral size is the vertical scale's, not a literal: four rows of
-          `text-3xl` are 222 px of a 568 px viewport, and on a short phone that
-          is the difference between pressing Check and scrolling to find it. */}
-      <div className="dw-slate numeral text-right text-[length:var(--dw-numeral-size)] leading-tight">
-        <div className="text-ink py-1">{problem.top}</div>
-
-        {/* The operator is `absolute` in the gutter the reservation cut for it.
-            Laid out in the row it always sized the box past the reservation, so
-            the units column moved between rungs — the reflow `Q-01` forbids. */}
-        <div className="text-ink relative py-1">
-          <span className="absolute top-1 left-0" aria-hidden="true">
-            {OPERATOR[problem.op]}
-          </span>
-          <span className="sr-only">{OPERATOR_WORD[problem.op]}</span> {problem.bottom}
-        </div>
-
-        {/* The subtraction bar is a structural edge (`line-strong`), not the
-            shadow inside a carved groove (`line-cut`). In dark, `line-cut` and
-            `ground-sunk` are the same basalt — the bar disappeared entirely and
-            the answer read as a third operand. Only visible in the dark
-            screenshots; nothing else would have caught it. */}
-        <div className="border-line-strong border-t-2" />
+    <SlateBox>
+      <StatementRows problem={problem} />
 
         {/* Where the answer is written.
             The affordance is the guide line under it, brass while the surface is
@@ -110,29 +115,57 @@ export function ProblemSlate({
           </span>
         </div>
 
-        {/* The one live region. It has text in **both** verdict states: an
-            `aria-hidden` mark and a bare number announce nothing and "wrong" is
-            then carried by `line-through`, which assistive technology does not
-            expose at all (`Q-09`, `Q-10`). */}
-        <div className="dw-verdict-well flex items-center justify-end gap-2 pt-1" role="status">
-          {seated ? (
-            <>
-              <span className="sr-only">{strings.practice.correct}</span>
-              <IndexMark className="text-seat size-4" />
-            </>
-          ) : null}
-          {feedback?.kind === "struck" ? (
-            <>
-              {/* The trailing space is inside the hidden span on purpose: as a
-                  text node between two flex items it would be an anonymous
-                  flex item of its own, and this row's height is a promise. */}
-              <span className="sr-only">{strings.practice.answer}{" "}</span>
-              <span className="text-seat">{feedback.answer}</span>
-            </>
-          ) : null}
-        </div>
+        {/* The one live region, shared with every other answer surface — see
+            `VerdictWell.tsx`. Unconditional: feedback changes what is in the
+            well, never whether the well exists. */}
+        <VerdictWell feedback={feedback} />
+    </SlateBox>
+  )
+}
+
+/**
+ * The fixed run of numeral columns every written item sits on.
+ *
+ * `.dw-slate` reserves the widest number the ladder can write, so a two-digit
+ * problem and a four-digit one occupy the same box and the units column does not
+ * move between cards (`Q-01`).
+ */
+function SlateBox({ children }: { children: ReactNode }) {
+  return (
+    <div className="dw-present flex justify-center">
+      {/* The numeral size is the vertical scale's, not a literal: four rows of
+          `text-3xl` are 222 px of a 568 px viewport, and on a short phone that
+          is the difference between pressing Check and scrolling to find it. */}
+      <div className="dw-slate numeral text-right text-[length:var(--dw-numeral-size)] leading-tight">
+        {children}
       </div>
     </div>
+  )
+}
+
+/** The item as written: the two operands, the operator, and the rule under them. */
+function StatementRows({ problem }: { problem: ColumnProblem }) {
+  return (
+    <>
+      <div className="text-ink py-1">{problem.top}</div>
+
+      {/* The operator is `absolute` in the gutter the reservation cut for it.
+          Laid out in the row it always sized the box past the reservation, so
+          the units column moved between rungs — the reflow `Q-01` forbids. */}
+      <div className="text-ink relative py-1">
+        <span className="absolute top-1 left-0" aria-hidden="true">
+          {OPERATOR[problem.op]}
+        </span>
+        <span className="sr-only">{OPERATOR_WORD[problem.op]}</span> {problem.bottom}
+      </div>
+
+      {/* The subtraction bar is a structural edge (`line-strong`), not the
+          shadow inside a carved groove (`line-cut`). In dark, `line-cut` and
+          `ground-sunk` are the same basalt — the bar disappeared entirely and
+          the answer read as a third operand. Only visible in the dark
+          screenshots; nothing else would have caught it. */}
+      <div className="border-line-strong border-t-2" />
+    </>
   )
 }
 

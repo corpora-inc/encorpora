@@ -54,8 +54,30 @@ function capId(cap: PressableCap): string {
 }
 
 function capKey(cap: PressableCap): EntryKey {
-  return cap.kind === "glyph" ? { kind: "glyph", glyph: cap.glyph } : { kind: "delete" }
+  switch (cap.kind) {
+    case "glyph":
+      return { kind: "glyph", glyph: cap.glyph }
+    case "advance":
+      return { kind: "advance" }
+    case "delete":
+      return { kind: "delete" }
+  }
 }
+
+/**
+ * The face of a key, and the only thing on it that is read aloud.
+ *
+ * A glyph is its own label — a screen reader says "7" — so it carries none, and
+ * a second one would have it read twice. The two shaped keys are marks with no
+ * reading, so they carry a string each.
+ */
+const CAP_LABEL: Readonly<Record<string, string>> = {
+  delete: strings.practice.delete,
+  advance: strings.practice.nextField,
+}
+
+/** `⌫` erases, `▸` moves on. Both are marks, and both are labelled above. */
+const CAP_FACE: Readonly<Record<string, string>> = { delete: "⌫", advance: "▸" }
 
 function KeyPlate({
   cap,
@@ -74,7 +96,7 @@ function KeyPlate({
     <button
       type="button"
       disabled={disabled}
-      aria-label={cap.kind === "delete" ? strings.practice.delete : undefined}
+      aria-label={CAP_LABEL[cap.kind]}
       onPointerDown={(event) => {
         event.preventDefault()
         press()
@@ -86,7 +108,7 @@ function KeyPlate({
       }}
       className="border-line-strong rounded-cut-md bg-ground-raised text-ink numeral active:bg-ground-sunk flex min-h-[var(--dw-key-height)] items-center justify-center border text-2xl transition-colors duration-[var(--dw-motion-quick)] disabled:opacity-40"
     >
-      {cap.kind === "glyph" ? cap.glyph : "⌫"}
+      {cap.kind === "glyph" ? cap.glyph : CAP_FACE[cap.kind]}
     </button>
   )
 }

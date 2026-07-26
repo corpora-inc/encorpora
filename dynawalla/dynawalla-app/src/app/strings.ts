@@ -52,6 +52,32 @@ export const strings = {
     /** The one line on the contrast card. It says what the two boards are doing. */
     rebuild: "Put it back together.",
 
+    /* ── The answer schemas beyond one field ──────────────────────────────
+       Ten strings, and nine of them are text alternatives. A fraction drawn
+       as a numerator over a rule reads as "3 4" without them; a column grid
+       reads as a row of loose digits; a number line and a balance scale read
+       as nothing at all. `Q-10` and CG-18 both say a representation carries
+       its meaning in words as well as in pixels, and the counting board is
+       the precedent for what it costs to add them afterwards.
+
+       `nextField` is the only one a child sees: it labels the key that moves
+       from a numerator to a denominator, or along the columns of a grid. */
+    numerator: "Numerator",
+    denominator: "Denominator",
+    wholePart: "Whole number",
+    /** The key that moves to the next part of the answer. */
+    nextField: "Next part",
+    /** The row above a column answer, where a regrouping is written. */
+    regroup: "Regrouping",
+
+    /** The number line, in words. `at` is written as a fraction or a whole. */
+    lineAlt: "Number line from {{from}} to {{to}}, each unit split into {{parts}}. Marked at {{at}}.",
+    /** The balance scale, in words. `state` is one of the three below. */
+    balanceAlt: "Balance scale. Left pan {{left}}. Right pan {{right}}. {{state}}",
+    balanceLevel: "The pans are level.",
+    balanceLeft: "The left pan is lower.",
+    balanceRight: "The right pan is lower.",
+
     /** The operators, read aloud. The glyphs themselves are decorative. */
     minus: "minus",
     plus: "plus",

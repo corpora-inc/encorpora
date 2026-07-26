@@ -27,6 +27,12 @@ const slate = read("ui/ProblemSlate.tsx")
 const keypad = read("ui/Keypad.tsx")
 const board = read("ui/CountingBoardCard.tsx")
 const tokens = read("../design/tokens.css")
+const well = read("ui/VerdictWell.tsx")
+const cell = read("ui/EntryCell.tsx")
+const fraction = read("ui/FractionAnswer.tsx")
+const choice = read("ui/ChoiceAnswer.tsx")
+const grid = read("ui/ColumnGrid.tsx")
+const answerSurface = read("ui/AnswerSurface.tsx")
 
 test("the slate reservation in CSS matches the ladder it was computed from", () => {
   // Written in two languages, so they can drift. One numeral column per digit
@@ -59,13 +65,35 @@ test("the slate reservation actually binds — a width, not a minimum", () => {
 test("the verdict row is in the layout before there is a verdict", () => {
   // Feedback changes what is in the well, never whether the well exists. A
   // conditionally rendered verdict is the reflow the design rules forbid.
+  //
+  // There is one well and four answer surfaces. It moved out of `ProblemSlate`
+  // when the fraction, choice and column surfaces arrived, because four copies
+  // of a live region is four chances to ship one that announces nothing — which
+  // is a thing that has already happened here once.
   assert.match(workCss, /\.dw-verdict-well\s*\{[^}]*min-height/)
-  assert.match(slate, /dw-verdict-well/)
-  const well = /dw-verdict-well[\s\S]*?<\/div>/.exec(slate)
-  assert.ok(well !== null)
+  assert.match(well, /dw-verdict-well/)
   assert.ok(
-    !/\{feedback\s*(!==|===)\s*null\s*\?[\s\S]{0,40}<div/.test(slate),
+    !/\{feedback\s*(!==|===)\s*null\s*\?[\s\S]{0,40}<div/.test(well),
     "the well itself is behind a conditional",
+  )
+  // …and every surface that can hold an answer mounts it, unconditionally.
+  for (const [name, source] of [
+    ["ProblemSlate.tsx", slate],
+    ["AnswerSurface.tsx", answerSurface],
+  ] as const) {
+    assert.match(source, /<VerdictWell feedback=\{feedback\} \/>/, `${name} does not mount the well`)
+  }
+  // Exactly one of the two is on any given card. The slate owns `integer` — the
+  // answer is written on the same numeral columns the problem is — and every
+  // other schema gets the statement alone plus an `AnswerSurface`. Drawing the
+  // full slate on a column card left an empty brass answer rule between the
+  // subtraction bar and the grid, and a *second* live region under it.
+  assert.match(practice, /card\.exercise\.schema\.kind === "integer" \|\| entry === null \? \(/)
+  assert.match(practice, /<ProblemStatement key=\{card\.exercise\.exerciseId\}/)
+  assert.match(answerSurface, /schema\.kind === "fraction" \?/)
+  assert.ok(
+    !/<VerdictWell/.test(read("ui/ColumnGrid.tsx")),
+    "the grid carries a second verdict well",
   )
 })
 
@@ -220,6 +248,78 @@ test("the commit control is reachable without scrolling, at any viewport height"
   }
 })
 
+test("Enter belongs to the card, even from inside the answer", () => {
+  // The trap, as a shape. Every cell of a multi-field answer is a `<button>`,
+  // and the screen's Enter handler skips buttons because Enter on a plate is
+  // that plate's activation — so a keyboard user who tabbed into a numerator was
+  // *inside the answer with no way out*. One attribute separates the two, and
+  // every entry control carries it.
+  assert.match(practice, /element instanceof HTMLButtonElement && !element\.hasAttribute\("data-dw-entry"\)/)
+  assert.match(practice, /!isControl\(document\.activeElement\)/)
+  for (const [name, source] of [
+    ["EntryCell.tsx", cell],
+    ["ChoiceAnswer.tsx", choice],
+  ] as const) {
+    assert.match(source, /data-dw-entry=/, `${name} is a control Enter cannot escape`)
+  }
+  // The plates do not carry it, or Enter on "Keep going" would advance twice.
+  assert.ok(!/data-dw-entry/.test(plate), "the plate claims to be part of the answer")
+})
+
+test("keyboard and keypad take the same table, so a key cannot work in one and not the other", () => {
+  // The screen used to spell out three keys and know nothing about the other
+  // two. It is one function in `entry.ts` now: digits, the decimal separator
+  // (`.` and the `,` a European layout has instead), the fraction bar, delete
+  // and clear.
+  assert.match(practice, /entryKeyFromKeyboard\(event\.key\)/)
+  assert.ok(!/event\.key === "Backspace"/.test(practice), "the screen still owns its own key table")
+  assert.ok(!/glyphFromKey/.test(practice))
+})
+
+test("focus is visible on every cell a child can reach, and the current one is named", () => {
+  // Two things, both needed: `focus-visible` is where the keyboard is, and
+  // `aria-current` is where the *keypad* is writing.
+  for (const [name, source] of [
+    ["EntryCell.tsx", cell],
+    ["ChoiceAnswer.tsx", choice],
+  ] as const) {
+    assert.match(source, /focus-visible:outline-2/, `${name} has no visible focus ring`)
+    assert.match(source, /outline-\[var\(--dw-focus\)\]/, `${name} rings in something other than the token`)
+    assert.match(source, /currentTarget\.focus\(\)/, `${name} leaves focus behind on a tap`)
+    assert.match(source, /onFocus=/, `${name} does not follow Tab`)
+  }
+})
+
+test("an answer cell is a target a child can hit, at every viewport height", () => {
+  // Computed from the same vertical scale the keypad's floor is. A fraction cell
+  // and a column cell are the smallest things a finger has to land on here.
+  assert.match(cell, /min-h-\[var\(--dw-cell-height\)\]/)
+  assert.match(cell, /min-w-\[var\(--dw-cell-width\)\]/)
+  const heights = [...tokens.matchAll(/--dw-cell-height:\s*([\d.]+)rem/g)].map((m) => Number(m[1]) * 16)
+  const widths = [...tokens.matchAll(/--dw-cell-width:\s*([\d.]+)rem/g)].map((m) => Number(m[1]) * 16)
+  assert.equal(heights.length, widths.length)
+  assert.ok(heights.length >= 3, "the cell scale does not come down with the rest of the surface")
+
+  // The width is set by how many columns must fit inside 320 px, so the two
+  // constraints are checked together: a hittable diagonal, and six columns that
+  // fit at the narrowest width this app ships to.
+  for (const [i, height] of heights.entries()) {
+    const width = widths[i] ?? 0
+    assert.ok(
+      Math.hypot(width, height) >= 40,
+      `a ${String(width)} × ${String(height)} cell is under the floor`,
+    )
+    assert.ok(6 * width + 5 * 4 <= 320 - 2 * 16, `six columns of ${String(width)} px do not fit in 320 px`)
+  }
+})
+
+test("a grid wider than the frame scrolls inside its own box", () => {
+  // `MAX_DIGITS` is 6 today. The page body must never scroll sideways, so the
+  // one thing that can outgrow the frame carries its own overflow.
+  assert.match(grid, /overflow-x-auto/)
+  assert.match(grid, /w-fit/, "the grid stretches instead of scrolling")
+})
+
 test("input is bound on pointerdown, not click", () => {
   // A click resolves ~100 ms after the finger lands. Every keypress budget in
   // EXPERIENCE_DESIGN is written against the frame the finger is in.
@@ -239,6 +339,12 @@ test("no inline style anywhere on the surface — the CSP forbids it outright", 
     ["ProblemSlate.tsx", slate],
     ["Keypad.tsx", keypad],
     ["CountingBoardCard.tsx", board],
+    ["VerdictWell.tsx", well],
+    ["EntryCell.tsx", cell],
+    ["FractionAnswer.tsx", fraction],
+    ["ChoiceAnswer.tsx", choice],
+    ["ColumnGrid.tsx", grid],
+    ["AnswerSurface.tsx", answerSurface],
   ] as const) {
     assert.ok(!/style=\{/.test(source), `${name} sets an inline style`)
   }
@@ -255,16 +361,25 @@ test("nothing on the surface names a misconception to a child", () => {
   assert.ok(!/misconception/.test(board.split("*/").slice(1).join("*/")), "the board renders a rule id")
 })
 
-test("the practice surface costs fourteen strings and no status copy", () => {
+test("the practice surface costs twenty-four strings and no status copy", () => {
   // Every string is five translations. This is the check that stops the count
   // creeping, and the list is here so adding one is a visible decision.
   //
-  // Seven are text alternatives (`Q-10`), each replacing something announced as
-  // nothing at all: the verdict well was the empty string after a correct
-  // answer, the operators were `aria-hidden` so an item read as "95 19", and the
-  // counting board was twenty `aria-hidden` circles.
+  // Sixteen of the twenty-four are text alternatives (`Q-10`), each replacing
+  // something announced as nothing at all: the well was the empty string after a
+  // correct answer, the operators were `aria-hidden` so an item read as "95 19",
+  // the counting board was twenty `aria-hidden` circles, a fraction read as
+  // "3 4", a grid as loose digits, a number line and a scale as nothing.
+  //
+  // One of the ten added here is read by a child rather than by a screen reader:
+  // `nextField`, on the key that moves from a numerator to a denominator. Still
+  // no status copy, no encouragement, no narration.
   assert.deepEqual(Object.keys(strings.practice).sort(), [
     "answer",
+    "balanceAlt",
+    "balanceLeft",
+    "balanceLevel",
+    "balanceRight",
     "boardCloses",
     "boardPlace",
     "boardSpare",
@@ -272,12 +387,18 @@ test("the practice surface costs fourteen strings and no status copy", () => {
     "check",
     "correct",
     "delete",
+    "denominator",
     "done",
     "keepGoing",
+    "lineAlt",
     "minus",
     "next",
+    "nextField",
+    "numerator",
     "plus",
     "rebuild",
+    "regroup",
+    "wholePart",
   ])
 })
 
@@ -295,10 +416,26 @@ test("every representation on this surface has a text alternative", () => {
   // Both verdict states put something non-visual in the live region. An
   // `aria-hidden` mark and a bare number announce "" and "2203" respectively,
   // and `line-through` is not exposed to assistive technology at all.
-  const well = /dw-verdict-well[\s\S]*?\n {8}<\/div>/.exec(slate)
-  assert.ok(well !== null, "the verdict well is not where this test thinks it is")
-  assert.match(well[0], /sr-only">\{strings\.practice\.correct\}/)
-  assert.match(well[0], /sr-only">\{strings\.practice\.answer\}/)
+  assert.match(well, /role="status"/)
+  assert.match(well, /sr-only">\{strings\.practice\.correct\}/)
+  assert.match(well, /sr-only">\{strings\.practice\.answer\}/)
+
+  // The three answer surfaces the slate cannot hold. A fraction is two numbers
+  // in a stack and reads as "3 4" without a name on each cell; a column grid is
+  // a row of loose digits; a closed list of numbers is four unnamed buttons with
+  // no count and no way to hear which is chosen.
+  assert.match(cell, /aria-label=\{label\}/, "an answer cell has no name")
+  assert.match(cell, /"aria-current"/, "nothing says which cell the keypad writes into")
+  for (const key of ["numerator", "denominator", "wholePart"] as const) {
+    assert.ok(fraction.includes(`strings.practice.${key}`), `the fraction never names its ${key}`)
+  }
+  assert.match(grid, /aria-label=\{strings\.practice\.regroup\}/)
+  assert.match(grid, /placeLabel\(column, schema\.decimalPlaces\)/, "grid cells are not named by place")
+  assert.match(choice, /role="radiogroup"/)
+  assert.match(choice, /role="radio"/)
+  assert.match(choice, /aria-checked=\{chosen\}/, "nothing says which option is chosen")
+  // …and chosen is not carried by colour: the option is inset and edged.
+  assert.match(choice, /chosen\s*\n?\s*\? "border-line-strong border-l-4/)
 
   // The operator is spoken, not just drawn. Hidden with nothing in its place,
   // `95 − 19` reads as "95 19".

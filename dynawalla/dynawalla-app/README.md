@@ -19,6 +19,8 @@ Node 24 (`.nvmrc`).
 | `npm run tsc` | typecheck: the app, the tests, and the build's own config |
 | `npm run lint` | eslint |
 | `npm run build` | production bundle |
+| `node tools/drive-schemas.mjs` | drives every answer schema and representation in a real browser (needs `npm run dev`) |
+| `node tools/drive-locate.mjs` | drives the practice loop to the Stage-2 contrast pair |
 
 Three tsconfigs, because they need different globals. `tsconfig.json` is browser
 source with **no Node types** — with them in scope a component can write
@@ -39,11 +41,27 @@ src/
   app/        shell, router, theme, the native boundary
   design/     tokens and the primitives built directly on them
   screens/    one module per route
+  work/       the practice loop: entry models, judging, the answer surfaces
+  preview/    the renderer bench — development only, not in the bundle
 src-tauri/    its own Cargo workspace root, its own Cargo.lock
 ```
 
 `src/app/routes.ts` is the single route table. `src/app/strings.ts` is every
 user-visible string in one place, ahead of the i18n gate in PR-1.6.
+
+## The renderer bench
+
+`preview.html` mounts `src/preview/`: every `AnswerSchema` and every
+representation, drawn from a real schema and driven by the real entry model, on
+one page. **Not** a route and **not** in the shipped bundle — `vite build` inputs
+`index.html` and nothing else — but under `src/` so `npm run tsc` and
+`npm run lint` cover it.
+
+CG-8 is bidirectional, and a renderer nobody has drawn is a renderer nobody has
+checked. Three bugs were found by looking at this page: a phantom answer rule
+above the column grid, a mark row half a cell off its digits, and a balance beam
+that swung off its own fulcrum. `tools/drive-schemas.mjs` drives it headlessly
+and photographs it in both themes at 320 px and 390 px.
 
 ## Design tokens
 

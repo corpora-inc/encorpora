@@ -5,14 +5,30 @@ import { Band } from "./Band.tsx"
 import { Destination } from "./Destination.tsx"
 import { settleReactions } from "../reactions/live.ts"
 import { strings } from "../app/strings.ts"
-import { entryModelFor, glyphFromKey } from "../work/entry.ts"
+import { entryKeyFromKeyboard, entryModelFor } from "../work/entry.ts"
+import { AnswerSurface } from "../work/ui/AnswerSurface.tsx"
+import { Representation } from "../work/ui/Representation.tsx"
 import { now, record } from "../work/metrics.ts"
 import { autoAdvanceMs, committable, enterAction } from "../work/session.ts"
 import { scheduleDeckFill, usePractice } from "../work/store.ts"
 import { CountingBoardCard } from "../work/ui/CountingBoardCard.tsx"
 import { Keypad } from "../work/ui/Keypad.tsx"
 import { Plate } from "../work/ui/Plate.tsx"
-import { ProblemSlate } from "../work/ui/ProblemSlate.tsx"
+import { ProblemSlate, ProblemStatement } from "../work/ui/ProblemSlate.tsx"
+
+/**
+ * Is the focused element a control of its own, whose Enter belongs to it?
+ *
+ * A plate is. A cell of the answer — a numerator, a column of the borrow grid,
+ * an option of a closed list — is a `<button>` because that is the only element
+ * every platform's keyboard and screen reader already knows how to reach, but
+ * its Enter is the card's, not its own. Without the exemption a keyboard user
+ * who tabbed into the answer was inside it with no way out. Same class of bug as
+ * the Enter that trapped a keyboard user on a card with no entry at all.
+ */
+function isControl(element: Element | null): boolean {
+  return element instanceof HTMLButtonElement && !element.hasAttribute("data-dw-entry")
+}
 
 /**
  * The practice loop.
@@ -105,23 +121,17 @@ export function PracticeScreen() {
       // behind a condition is one that stops being called (`Q-04`). It is a
       // no-op when nothing is running.
       settleReactions()
-      const glyph = glyphFromKey(event.key)
-      if (glyph !== null) {
+      // One table, in `entry.ts`, for digits, the decimal separator (`.` and the
+      // `,` a European layout has instead), the fraction bar, delete and clear.
+      // The screen used to spell three of those out and know nothing about the
+      // other two, which is how a keypad key and a keyboard key come to disagree.
+      const entryKey = entryKeyFromKeyboard(event.key)
+      if (entryKey !== null) {
         event.preventDefault()
-        press({ kind: "glyph", glyph })
+        press(entryKey)
         return
       }
-      if (event.key === "Backspace") {
-        event.preventDefault()
-        press({ kind: "delete" })
-        return
-      }
-      if (event.key === "Escape") {
-        event.preventDefault()
-        press({ kind: "clear" })
-        return
-      }
-      if (event.key === "Enter" && !(document.activeElement instanceof HTMLButtonElement)) {
+      if (event.key === "Enter" && !isControl(document.activeElement)) {
         event.preventDefault()
         if (enterAction(session) === "commit") commitNow()
         else next()
@@ -152,12 +162,37 @@ export function PracticeScreen() {
       <Destination>
         <div className="flex flex-col gap-[var(--dw-stack-gap)]">
           {card.kind === "problem" ? (
-            <ProblemSlate
-              key={card.exercise.exerciseId}
-              card={card}
-              entry={entry}
-              feedback={feedback}
-            />
+            <>
+              {/* Drawn above the answer, never instead of it: a representation
+                  is a way in to the problem, and a card that replaced the
+                  entry with a picture would be a card with nothing to do. */}
+              <Representation spec={card.exercise.representation} />
+              {/* Exactly one of these two draws an answer row and a verdict
+                  well. The slate owns `integer` — written on the same numeral
+                  columns as the problem, under the same rule. Every other schema
+                  gets the statement alone plus an `AnswerSurface`; the full
+                  slate there left an empty brass answer rule between the
+                  subtraction bar and the grid, and a second live region. */}
+              {card.exercise.schema.kind === "integer" || entry === null ? (
+                <ProblemSlate
+                  key={card.exercise.exerciseId}
+                  exercise={card.exercise}
+                  entry={entry}
+                  feedback={feedback}
+                />
+              ) : (
+                <>
+                  <ProblemStatement key={card.exercise.exerciseId} exercise={card.exercise} />
+                  <AnswerSurface
+                    schema={card.exercise.schema}
+                    entry={entry}
+                    feedback={feedback}
+                    onKey={press}
+                    disabled={feedback !== null}
+                  />
+                </>
+              )}
+            </>
           ) : (
             <CountingBoardCard board={card.board} />
           )}
