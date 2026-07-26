@@ -453,14 +453,14 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
             drag: 0.7,
           });
         }
-        rings.fire(bx, y + T.SLAB_H * 0.52, bz, s.accent, 0.35, 2.4 + ev.combo * 0.42, 0.55, 0.9);
+        rings.fire(bx, y + T.SLAB_H * 0.52, bz, s.accent, 0.35, 1.7 + Math.min(1.9, ev.combo * 0.22), 0.5, 0.85);
         if (ev.combo >= 4) {
-          rings.fire(bx, y + T.SLAB_H * 0.52, bz, 0xffffff, 0.3, 3.6 + ev.combo * 0.7, 0.8, 0.7);
+          rings.fire(bx, y + T.SLAB_H * 0.52, bz, 0xffffff, 0.3, 2.6 + Math.min(2.4, ev.combo * 0.3), 0.66, 0.5);
         }
         if (ev.combo >= 8) {
           // A second, vertical ring at very high combos: the monument rings
           // like a struck bell and the whole screen knows about it.
-          rings.fire(bx, y + T.SLAB_H * 0.52, bz, s.accent, 0.3, 5 + ev.combo * 0.6, 1.05, 0.55, Math.PI / 2);
+          rings.fire(bx, y + T.SLAB_H * 0.52, bz, s.accent, 0.3, 3.4 + Math.min(2.6, ev.combo * 0.25), 0.85, 0.42, Math.PI / 2);
         }
         hud.callTrue(ev.combo);
         hud.setCombo(ev.combo);
@@ -468,13 +468,13 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       }
       case "good":
         audio.thunk(sim.peril, sim.floor);
-        rings.fire(bx, y + T.SLAB_H * 0.52, bz, s.slab, 0.4, 1.7, 0.34, 0.35);
+        rings.fire(bx, y + T.SLAB_H * 0.52, bz, s.slab, 0.4, 1.35, 0.3, 0.3);
         hud.setCombo(0);
         break;
       case "wrong": {
         audio.crack();
         audio.thunk(sim.peril, sim.floor);
-        rings.fire(bx, y + T.SLAB_H * 0.52, bz, 0xffffff, 0.3, 3.1, 0.42, 0.75);
+        rings.fire(bx, y + T.SLAB_H * 0.52, bz, 0xffffff, 0.3, 2.1, 0.36, 0.6);
         hud.setCombo(0);
         for (let i = 0; i < tier.debris; i++) {
           fallers.launch(
@@ -507,7 +507,7 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       }
       case "miss": {
         audio.shatter();
-        rings.fire(bx, y, bz, 0xffffff, 0.25, 4.4, 0.6, 0.9);
+        rings.fire(bx, y, bz, 0xffffff, 0.25, 3.0, 0.5, 0.7);
         hud.setCombo(0);
         for (let i = 0; i < tier.debris * 2; i++) {
           fallers.launch(
@@ -582,8 +582,8 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       drag: 0.8,
       radius: 0.7,
     });
-    rings.fire(0, sim.topY, 0, cur.accent, 0.3, 14, 1.6, 1.0);
-    rings.fire(0, sim.topY, 0, 0xffffff, 0.3, 9, 1.2, 0.8);
+    rings.fire(0, sim.topY, 0, cur.accent, 0.3, 8, 1.4, 0.75);
+    rings.fire(0, sim.topY, 0, 0xffffff, 0.3, 5.5, 1.05, 0.55);
     pool.hideFrom(0);
     block.visible = false;
     plaqueBlock.hide();
@@ -613,8 +613,8 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
           hitstop.hit(T.HITSTOP_STRATUM_MS);
         }
         hud.announceBand(s.name);
-        rings.fire(0, sim.topY, 0, s.accent, 0.3, 9, 1.3, 0.85);
-        rings.fire(0, sim.topY, 0, 0xffffff, 0.3, 5.5, 1.0, 0.6);
+        rings.fire(0, sim.topY, 0, s.accent, 0.3, 5.5, 1.1, 0.6);
+        rings.fire(0, sim.topY, 0, 0xffffff, 0.3, 3.6, 0.85, 0.45);
         sparks.emit(0, sim.topY, 0, {
           count: Math.round(tier.particles * 0.16 * (reduced ? 0.4 : 1)),
           color: s.accent,
@@ -654,6 +654,10 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     const ev = sim.place(clock);
     if (!ev) return;
     audio.release();
+    // The run is broken the instant the stone is committed, not 88ms later
+    // when it lands — otherwise the prompt reveals the truth while the combo
+    // chip is still boasting about a streak that no longer exists.
+    if (ev.outcome !== "perfect") hud.setCombo(0);
     if (firstPlacement) {
       firstPlacement = false;
       hud.hideHint();
