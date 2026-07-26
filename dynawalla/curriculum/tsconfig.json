@@ -22,5 +22,5 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "bin/**/*.mjs"]
+  "include": ["src/**/*.ts", "bin/**/*.mjs", "../packs/shared/curriculum/src/**/*.ts"]
 }

@@ -10,7 +10,7 @@
 import { LOC_KEY_PATTERN } from "../../types/ids.ts";
 import type { LevelSample } from "../context.ts";
 import { findFloatViolations } from "../lints/noFloat.ts";
-import { findInCodeWithStrings, listSourceFiles, readSource } from "../lints/scan.ts";
+import { EMPTY_ROOT_MESSAGE, findInCodeWithStrings, listSourceFiles, readSource } from "../lints/scan.ts";
 import type { Finding, GateResult } from "../types.ts";
 import { fail, resultOf } from "../types.ts";
 
@@ -23,7 +23,9 @@ export function cg19(samples: readonly LevelSample[], roots: readonly string[]):
   let scanned = 0;
 
   for (const root of roots) {
-    for (const path of listSourceFiles(root)) {
+    const paths = listSourceFiles(root);
+    if (paths.length === 0) findings.push(fail("CG-19", EMPTY_ROOT_MESSAGE, root));
+    for (const path of paths) {
       const file = readSource(path);
       scanned += 1;
       for (const hit of findInCodeWithStrings(file, BARE_STRING_PROMPT)) {
@@ -57,7 +59,9 @@ export function m05(roots: readonly string[]): GateResult {
   let scanned = 0;
 
   for (const root of roots) {
-    for (const path of listSourceFiles(root)) {
+    const paths = listSourceFiles(root);
+    if (paths.length === 0) findings.push(fail("M-05", EMPTY_ROOT_MESSAGE, root));
+    for (const path of paths) {
       const file = readSource(path);
       scanned += 1;
       for (const violation of findFloatViolations(file)) {

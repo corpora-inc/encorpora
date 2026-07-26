@@ -1,0 +1,12 @@
+{
+  "name": "@dynawalla/curriculum",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Exact-rational, seeded, deterministic mathematics for Dynawalla packs: the skill graph, the generator families, the executable mal-rules, the solution walkthrough, the counting-board contrast pair, and the CG-* gates that validate all of them. Consumed via the @shared source alias, not npm. No DOM, no Node builtins, no host imports.",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./validate": "./src/validate/cli.ts"
+  }
+}
