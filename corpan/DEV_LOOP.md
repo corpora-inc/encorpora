@@ -82,6 +82,26 @@ brew install libimobiledevice
 Pair the iPad with this Mac at least once (Xcode → Window → Devices &
 Simulators, trust the device).
 
+## Signing material must not be readable by the dev server
+
+`TAURI_DEV_HOST=<lan-ip> npm run tauri android dev` binds Vite to the **LAN**,
+not to loopback. That is how the phone reaches the dev server, and it is also
+how everything else on the network reaches it. Vite's root is `corpan-app/`,
+which contains `src-tauri/` — the directory `RELEASE_SETUP.md` points at for
+the Android upload keystore.
+
+So `vite.config.ts` denies signing and credential material outright: `*.jks`,
+`*.keystore`, `*.p8`, `*.p12`, `*.mobileprovision`, `*.cer`,
+`*.certSigningRequest`, `*service-account*.json`, on top of Vite's own `.env`
+defaults. The `/packs` middleware streams from disk itself and never passes
+through `server.fs`, so it repeats the same check. `src/dev/devServer.test.ts`
+fails the suite if either stops covering them, or if Vite's own defaults get
+dropped (that array is replaced, not merged).
+
+`.gitignore` keeps this material off GitHub; the deny list keeps it off the
+network. When you introduce a new kind of secret, add it to both — and prefer
+keeping it outside the repo entirely.
+
 ## The three terminals
 
 ### Terminal 1 — pack console receiver

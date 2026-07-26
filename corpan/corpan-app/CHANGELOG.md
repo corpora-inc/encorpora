@@ -7,6 +7,30 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Security
+- **The dev server no longer hands out signing material.** `vite.config.ts` had
+  no `server.fs` block, so Vite's defaults applied: the allowed root is
+  `corpan-app/` — which contains `src-tauri/` — and the default deny list
+  covers `.env` and `*.{crt,pem}` but not `.jks`, `.keystore`, `.p8`,
+  `.mobileprovision`, `.cer` or `.certSigningRequest`. `TAURI_DEV_HOST`, which
+  on-device Android/iOS testing requires, takes the server off loopback and
+  onto the LAN, so while `npm run tauri android dev` was running,
+  `http://<lan-ip>:1421/src-tauri/upload-keystore.jks` returned the Android
+  upload keystore to anyone on the same network. Confirmed with planted
+  throwaway probe files (200 with body before, 403 after) — the real keystore
+  was never read or moved, and it has never been committed. `server.fs.deny`
+  now restates Vite's own defaults (the array is **replaced**, not merged) and
+  adds signing and credential material; `fs.allow` is untouched, because it is
+  a list of roots rather than a subtractive filter and could never have
+  excluded `src-tauri/`. The `/packs` middleware streams from disk and never
+  passes through `server.fs`, so it repeats the check, and its containment test
+  now includes the path separator (a bare `startsWith` also accepted a sibling
+  directory whose name merely prefixed `packs/`). Dev-only: `npm run build`,
+  `vite preview` and the shipped app have no fs guard to weaken and are
+  unaffected. `src/dev/devServer.test.ts` locks all of it in, checking the
+  "defaults preserved" half against the *installed* Vite so a version bump that
+  adds a default cannot slip past. (#536)
+
 ### Changed
 - Retired the vendored `ndk-context` fork (`[patch.crates-io]` +
   `src-tauri/vendor/ndk-context/`). It had been inert since 0.16.0, when

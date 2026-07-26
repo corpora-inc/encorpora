@@ -60,6 +60,15 @@ repo, no secret needed.
 The app must exist in Play Console with an **internal testing** track and at
 least one internal tester (you) before the first upload.
 
+> **Where the keystore lives.** `corpan-app/src-tauri/upload-keystore.jks` is
+> inside the Vite dev server's root, and `TAURI_DEV_HOST` (on-device Android
+> testing) binds that server to the LAN. `.gitignore` keeps it out of the repo
+> and `vite.config.ts`'s `server.fs.deny` keeps it off the network, but the
+> durable answer is to keep signing material **outside the repo** — e.g.
+> `~/.corpan-signing/upload-keystore.jks`, referenced by absolute path from
+> `keystore.properties`. Never generate new signing material into a directory a
+> dev server can read.
+
 ---
 
 ## Honest caveats (read before the first run)
