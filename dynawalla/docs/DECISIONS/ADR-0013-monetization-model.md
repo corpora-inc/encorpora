@@ -3,6 +3,14 @@
 **Status:** Accepted (direction) — 2026-07-25. **Implementation deferred**; the packaging
 and pricing decision is not made and blocks launch if it is still open past M9 (`G-02`).
 
+**How strong is this mandate: weak, and the status line should not be read as more.** The
+founder's answer opens *"I'm not sure about monetization really"* and describes the model
+as *"something like Corpan (although that hasn't worked in the slightest)."* That is a
+working hypothesis offered under stated uncertainty, not a settled direction. `Accepted
+(direction)` is used here so engineering is not blocked on an open question — **it is not
+a claim that the founder committed to this model.** Anyone proposing to revisit it should
+expect an open door, and should read R-45 first.
+
 ## Context
 
 This decision is product identity and it is externally constrained. Apple requires a
@@ -65,7 +73,8 @@ This ADR being `Accepted (direction)` explicitly does **not** close that questio
 
 **And the obvious fallback does not exist.** "Ship clean, add an ad-supported tier if the
 subscription underperforms" is not available: **Play's Families Self-Certified Ads SDK
-program is closed to new applicants** ([RISKS.md](../RISKS.md) R-47). Whatever this
+program is currently not accepting new applicants** — Google says the window will
+reopen, on no stated date ([RISKS.md](../RISKS.md) R-47). Whatever this
 product's revenue model turns out to be, it is a paid one or it is nothing.
 
 **Keep entitlements local.** Both stores define "collect" as transmitting off-device, so

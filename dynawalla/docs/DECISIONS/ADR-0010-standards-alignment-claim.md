@@ -3,7 +3,8 @@
 **Status:** Proposed — awaiting founder
 **Needed before:** any public marketing copy or store listing text
 **Research commissioned 2026-07-25; a recommendation is pending.** The founder asked for
-a dedicated research pass on the licensing and claim exposure rather than a decision from
+a dedicated research pass on the standards-alignment claim and its exposure rather than a
+decision from
 the program. Nothing here is decided. Add the recommendation to this ADR when it lands;
 the founder still makes the call, and CG-20 stays report-only until then.
 

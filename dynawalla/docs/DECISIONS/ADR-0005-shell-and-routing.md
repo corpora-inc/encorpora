@@ -22,8 +22,9 @@ had been built around no gate.
    link-out or purchase surface exists. Design constraints, amended 2026-07-25 by
    [ADR-0001](ADR-0001-kids-category-posture.md):
    - **The challenge is never arithmetic.** Apple's canonical illustrated gate is a maths
-     problem, which is precisely why *this* app cannot use one — it spends every session
-     training the skill the gate filters on. Reading load, not arithmetic, is the real
+     problem and Apple permits one; it is *this* app that cannot use one usefully, because
+     it spends every session training the skill the gate filters on. A program decision,
+     not a store requirement. Reading load, not arithmetic, is the real
      barrier for a six-year-old. Viable: type the current four-digit year; type a
      spelled-out multi-syllable word; press-and-hold-and-drag for N seconds.
    - **Randomized** — a fixed challenge is memorised within a week.

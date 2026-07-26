@@ -90,7 +90,9 @@ These are product constraints, not aspirations. Each has an enforcement mechanis
   performance relative to medium/high. Feedback must be contingent, not loud.
 
 The compliance regime makes this partly structural rather than voluntary: Apple's Kids
-Category (1.3 / 5.1.4) bars third-party analytics and behavioural advertising, and the
+Category (1.3 / 5.1.4) says apps **should not** include third-party analytics or
+behavioural advertising and permits neither except in limited, conditioned cases — our
+posture of *none, ever* is stricter than the rule — and the
 UK Children's Code restricts nudge techniques and using children's data to keep them
 on a platform. **The practical consequence is that the feel cannot be A/B tested
 remotely.** Direct observation is therefore the binding instrument, not a nicety — see
@@ -112,8 +114,8 @@ remotely.** Direct observation is therefore the binding instrument, not a nicety
 
 ## Founder decisions, recorded 2026-07-25
 
-Four of the eight open decisions were answered by the founder and are recorded in their
-ADRs from his own words: human evaluation resourcing
+Four of the eight ADR-level open decisions were answered by the founder and are recorded
+in their ADRs from his own words: human evaluation resourcing
 ([0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) — one child evaluator, his
 10-year-old son; the founder is the art director), developer-account topology
 ([0015](DECISIONS/ADR-0015-developer-account-topology.md) — same accounts as Corpán),
@@ -123,13 +125,13 @@ posture ([0001](DECISIONS/ADR-0001-kids-category-posture.md) — no third-party 
 analytics or SDKs, ever; a parental gate on every link-out; the category election itself
 deferred to submission).
 
-Four remain the founder's and are not made: the **V1 scope cut**
-([0002](DECISIONS/ADR-0002-v1-scope-cut.md)), which narrows a founder-stated grade range
-and so is not the plan's to ratify; the **product name**
-([0016](DECISIONS/ADR-0016-app-store-product-name.md)), needed before an immutable SKU
-exists; the **repository license** ([0014](DECISIONS/ADR-0014-repository-license.md)) and
-the **standards-alignment claim** ([0010](DECISIONS/ADR-0010-standards-alignment-claim.md)),
-both with dedicated research in flight. See [DECISIONS.md](DECISIONS.md).
+**Several remain open, and this file deliberately does not list them.** Three documents
+previously carried three different counts, which is how a founder ends up not knowing a
+decision is waiting on him. **[STATUS.md](STATUS.md) is the single source of truth for
+which founder decisions are open and when each one bites** — including the ones that live
+*inside* an otherwise-decided ADR, such as the Kids Category election and age band
+(`G-01`) and monetization packaging (`G-02`). [DECISIONS.md](DECISIONS.md) indexes the
+ADRs; STATUS.md says what is outstanding.
 
 ## How this product is graded
 

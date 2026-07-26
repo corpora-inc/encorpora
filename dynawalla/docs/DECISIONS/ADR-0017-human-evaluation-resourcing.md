@@ -1,7 +1,10 @@
 # ADR-0017 — Human evaluation resourcing
 
 **Status:** Accepted — 2026-07-25
-**Supersedes the recruitment plan this ADR originally proposed.**
+**Amended 2026-07-25:** this ADR was `Proposed — awaiting founder`; the founder's answer
+is recorded below and it replaces the recruitment plan the ADR originally proposed. The
+superseded plan is quoted in Context rather than deleted, per the in-place-edit rule in
+[DECISIONS.md](../DECISIONS.md).
 
 ## Context
 
@@ -69,7 +72,7 @@ parent who is building the product. Both halves are true.
 - Anything about efficacy. No claim of learning gain may cite these sessions.
 - Anything the child is biased toward. He knows who built it and he wants the adult to
   be pleased. Verbal praise is therefore the least trustworthy datum this instrument
-  produces, and [PLAYTEST-PROTOCOL.md](../PLAYTEST-PROTOCOL.md) §5 forbids using it as
+  produces, and [PLAYTEST-PROTOCOL.md](../PLAYTEST-PROTOCOL.md) §3a forbids using it as
   gate evidence; behavioural signals (quit time, return, what he does after a wrong
   answer) are weighted because they are harder to give away to please someone.
 - Anything about accessibility needs nobody in the household has — low vision, motor

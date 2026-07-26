@@ -6,8 +6,12 @@ mechanism. **The category election itself is Deferred to submission** (`G-01`), 
 the product's scope" below, which couples this ADR to
 [ADR-0002](ADR-0002-v1-scope-cut.md).
 
-**Amended 2026-07-25:** the parental-gate reasoning in the first revision was inverted and
-is corrected below; the store-reconnaissance placeholders are filled with verified data.
+**Corrected 2026-07-25, twice.** The first revision's parental-gate reasoning was
+inverted, and its age-band section described 9-11 as a "ceiling" that a grades 1–5 scope
+would fit. Both were wrong, both are corrected below, and **both are quoted as superseded
+rather than deleted** so they are not re-derived — per the in-place-edit rule in
+[DECISIONS.md](../DECISIONS.md). The store-reconnaissance placeholders are also filled
+with verified data.
 
 ## Context
 
@@ -62,8 +66,10 @@ challenge *is* the canonical parental gate, so it costs us almost nothing." **Th
 backwards and it is recorded here so it is not re-derived.**
 
 Apple's canonical illustrated parental gate *is* a maths problem — which is exactly why a
-mathematics app cannot use one. A grade-4 child solves `6 × 7` faster than their parent
-does. Being a maths app makes an arithmetic gate **useless**, not free: the app spends
+mathematics app cannot usefully use one. **Apple does not forbid it; it is simply
+ineffective here, and that is our engineering judgement rather than a store rule.** A
+grade-4 child solves `6 × 7` faster than their parent does. Being a maths app makes an
+arithmetic gate **useless**, not free: the app spends
 every session training the precise skill the gate uses as its filter, and it succeeds at
 it. There is no "set the arithmetic above the curriculum band" fix either, because the
 band moves upward as the child improves and the gate would have to outrun its own users.
@@ -98,35 +104,62 @@ electable at submission time with zero rework** — and so does plain Education 
 rating. The decision is reversible by construction because the expensive half is built
 either way.
 
-### The age bands do not span the product's scope
+### No Apple Kids band expresses this product, at any V1 scope
 
 This is new information and it **couples this ADR to
 [ADR-0002](ADR-0002-v1-scope-cut.md)**. It was not previously recorded in either.
 
 | Store | Bands | Selection |
 |---|---|---|
-| Apple Kids Category | 5-and-under · 6-8 · **9-11** | **Exactly one** |
-| Play target audience | 5-and-under · 6-8 · **9-12** · 13-15 · 16-17 · 18+ | Multi-select |
+| Apple Kids Category | 5-and-under · 6-8 · 9-11 | **Exactly one** |
+| Play target audience | 5-and-under · 6-8 · 9-12 · 13-15 · 16-17 · 18+ | Multi-select |
 
-The founder-stated scope — grades 1–6 plus intro pre-algebra — spans roughly **ages
-6–12**. **Apple has no band above 9-11.** Play's 9-12 covers the range; Apple's does not.
+Apple's requirement is to *choose one* of three bands — **not** to declare a maximum age.
+Play's declaration is multi-select and can simply express a range.
 
-ADR-0002's proposed cut to grades 1–5 lands **exactly inside Apple's 9-11 ceiling**.
-Grade 6 plus pre-algebra pushes past it. So the scope decision and the category decision
-are the same decision viewed from two sides, and neither ADR could see that until now.
+**An earlier revision of this ADR got this wrong and the error is corrected here.** It
+described 9-11 as a "ceiling," and claimed that ADR-0002's cut to grades 1–5 "lands
+exactly inside" it so the scope and band decisions "become consistent for free." That
+reasoning does not survive the docs' own grade-to-age mapping:
+
+- Grades 1–6 plus pre-algebra ≈ **ages 6–12**.
+- Grades 1–5 ≈ **ages 6–11** — which spans **both the 6-8 band and the 9-11 band**.
+
+So **cutting grade 6 removes the overflow past age 11 and resolves nothing about which
+single band gets declared.** No Apple Kids band expresses grades 1–5 either. The band
+problem is not a consequence of the scope being too wide at the top; it is a consequence
+of a grade-school maths product spanning more childhood than one Apple band covers, and
+**it survives every V1 scope currently on the table.**
+
+The only V1 cuts that genuinely fit one band are roughly:
+
+| Cut | Band | What it costs |
+|---|---|---|
+| ~grades 4–5 | 9-11 | Discards grades 1–3 — the foundational number and place-value work, and read-aloud's entire reason for landing at M2. |
+| ~grades 1–3 | 6-8 | Discards multiplication, division and fractions — including the fraction work that the evidence in ADR-0002 says uniquely predicts later algebra achievement. |
+
+Both are far more expensive than the scope cut ADR-0002 is currently proposing, and
+neither is being recommended here. They are recorded so the founder can see the **real**
+price of electing the Kids Category, rather than being told the coupling is cheap.
 
 Options, **not decided**:
 
-- **(a) Declare 9-11 and accept the top-end skew.** The listing then reads as a 9–11
-  product while the curriculum starts at grade 1, which is a discovery and expectation
-  cost at the young end.
-- **(b) Two SKUs**, split by band. Doubles the store surface, the review exposure, the
-  release pipeline and the support burden, for one product.
-- **(c) Skip the Kids Category.** **This is a trap, not an escape.** Guideline 2.3.8
-  reserves "For Kids" / "For Children" metadata *to* the Kids Category, and 5.1.4(b)
-  forbids child-implying metadata *outside* it. For a grade-school mathematics app that
-  is close to unworkable — the honest description of the product is the metadata the
-  guideline forbids.
+- **(a) Declare one band and accept the mismatch.** Under 9-11 the listing reads as a
+  9–11 product while the curriculum starts at grade 1; under 6-8 it reads as a 6–8 product
+  while the curriculum runs to grade 5. **This skew is unavoidable at grades 1–5 exactly
+  as it is at grades 1–6** — the scope cut does not reduce it. Cheapest option, and it
+  means the store's age signal is knowingly not the product's actual range.
+- **(b) Two SKUs**, split by band. The only option that represents the product honestly
+  on Apple's terms. Doubles the store surface, the review exposure, the release pipeline
+  and the support burden, for one product.
+- **(c) Narrow V1 to one band** — the table above. Honest and expensive; it is a
+  curriculum decision wearing a store-metadata costume, and it belongs to
+  [ADR-0002](ADR-0002-v1-scope-cut.md).
+- **(d) Skip the Kids Category.** **A trap, not an escape.** Guideline 2.3.8 reserves
+  "For Kids" / "For Children" metadata *to* the Kids Category, and 5.1.4(b) forbids
+  child-implying metadata *outside* it. For a grade-school mathematics app that is close
+  to unworkable — the honest description of the product is the metadata the guideline
+  forbids.
 
 This is a founder decision and it is **not yet made**.
 
@@ -175,7 +208,9 @@ election is verifiable after the fact rather than a matter of recollection. Corp
   paid on every link forever. It is also a real component with real cost — a randomized,
   non-persistent, non-curricular challenge is not something the app already has lying
   around. The earlier "it is nearly free because we are a maths app" framing was wrong in
-  both directions: the gate is neither free nor allowed to be arithmetic.
+  both directions: the gate is neither free nor usefully arithmetic. (Apple does not
+  *forbid* an arithmetic gate — its own illustrated example is one. It is ineffective
+  **for this product**, which is our decision, not a store rule.)
 - **Routing the privacy policy through an in-app screen rather than an external URL
   removes one gate entirely**, and is the cheapest single decision in this whole area.
 - **Electing in locks the constraint set forever**, through any future pivot, including
@@ -191,9 +226,10 @@ election is verifiable after the fact rather than a matter of recollection. Corp
 - **Deferring has a cost of its own:** store listing copy, the age-band selection and any
   Teacher Approved positioning are written against an undecided posture, so some listing
   work may be done twice.
-- **The band question outlives the election.** Even electing in leaves the 9-11 ceiling
-  versus a grades 1–6 scope unresolved, which is why it is written up above as a founder
-  decision in its own right rather than as a listing detail.
+- **The band question outlives the scope question.** No V1 scope currently proposed fits
+  a single Apple band, so electing in forces a choice between misdeclaring the age range,
+  shipping two SKUs, or cutting the curriculum to fit a band. That is written up above as
+  a founder decision in its own right rather than as a listing detail.
 - Either way, the declarations must be consistent with actual behaviour and with the CI
   dependency audit (`G-07`).
 

@@ -463,8 +463,10 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       child. No child observation exists for this path
       ([ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md),
       [RISKS.md](RISKS.md) R-46) and the report must say so rather than imply coverage.
-      Verify: recorded device pass with prompt text suppressed; every step reachable by
-      audio and touch alone.
+      Verify: a named person completes it from a **cold launch on a TestFlight or
+      Play-internal build** on a reference device, with prompt text suppressed and every
+      step reachable by audio and touch alone. (This is what keeps the `[device]` tag
+      honest — the instrument changed, the store-build bar did not.)
       Evidence: UNMET
 - [ ] **Q-12** Three children on one device have fully independent progress, verified
       by a test that cross-reads namespaces **and** by a named person on a real device.
@@ -563,11 +565,14 @@ The evaluator is the founder's 10-year-old son, observed by the founder
 recorded here. These are observations, not measurements of a population, and none of
 them may be restated publicly as a claim about children.
 
-- [ ] **T-01** `[playtest]` **M2**: the child completes two unsupervised 20-minute
+- [ ] **T-01** `[playtest]` **M2**: the child completes two **unassisted** 20-minute
       sessions on a reference device from a store build, on separate days. Recorded in
       `PLAYTEST-M2.md`: time to voluntary quit for each session, unprompted verbatims
       including the discouraging ones, next-day voluntary return (yes/no), where he got
       stuck, and what he skipped or worked around.
+      Verify: `PLAYTEST-M2.md` committed, containing all six fields for both sessions
+      plus the device and build number, per [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md)
+      §4.
       Evidence: UNMET
 - [ ] **T-02** `[playtest]` **M2**: for **every** wrong answer across both sessions, what
       the child did next is recorded as one of retried / asked for the answer / studied
@@ -575,22 +580,31 @@ them may be restated publicly as a claim about children.
       does anything other than ask for the answer or disengage — that is the LOCATE
       contrast pair reading as punishment rather than as an explanation. The raw counts
       are reported as counts, never as a percentage.
+      Verify: the per-wrong-answer table in `PLAYTEST-M2.md`, one row per wrong answer
+      across both sessions, classified into the five responses in
+      [PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md) §4.
       Evidence: UNMET
 - [ ] **T-03** `[playtest]` **M2**: the child's per-item correctness with the predicted
       `b()` for each item served is exported from Developer Mode, committed as a fixture,
       and reported in `PLAYTEST-M2.md` **before** M7 spends on content breadth. One
       child's residuals detect a gross mismatch between predicted and observed
       difficulty; they do not calibrate `b()` and the report says so (`A-02`, R-26).
+      Verify: the fixture file committed from the Developer Mode export, referenced by
+      path in `PLAYTEST-M2.md`, with the M7 breadth PRs landing after it.
       Evidence: UNMET
 - [ ] **T-04** `[playtest]` **M6**: the same child returns for two more 20-minute
       sessions. Recorded in `PLAYTEST-M6.md`: can he say, unprompted, what he is building
       and why he chose it; did the chosen-chamber mechanic visibly change what he did.
+      Verify: `PLAYTEST-M6.md` committed, with the verbatim answer to the M6 question and
+      an explicit yes/no on the chamber mechanic.
       Evidence: UNMET
 - [ ] **T-05** `[playtest]` **M8**: his next attempt at the same mal-rule class after a
       LOCATE contrast pair, versus after a Stage-1 verify, recorded per occurrence in
       `PLAYTEST-M8.md`. If LOCATE shows no advantage, it is revised or cut. With one
       child this is an observation and not a measurement, and the report states that in
       those words rather than reporting a difference as though it were one.
+      Verify: `PLAYTEST-M8.md` committed, with one row per LOCATE-or-verify occurrence
+      and the next-attempt outcome for each.
       Evidence: UNMET
 - [ ] **T-06** Every playtest gate has a committed report and **none was waived**. There
       is no recruitment to wait for, so a missing report is a choice.

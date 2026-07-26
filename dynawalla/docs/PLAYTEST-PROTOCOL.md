@@ -6,11 +6,17 @@ Three gates use this protocol: **M2** (`T-01`, `T-02`, `T-03`), **M6** (`T-04`),
 
 ## Why this is the binding instrument
 
-Apple's Kids Category (1.3 / 5.1.4) bars third-party analytics and behavioural
-advertising, and the UK Children's Code restricts nudge techniques and using children's
-data to keep them on a platform. All Dynawalla instrumentation is on-device and there is
-no telemetry endpoint. **The feel therefore cannot be A/B tested remotely.** Direct
-observation is the measurement, not a supplement to it.
+Guideline 1.3 says Kids Category apps **should not** include third-party analytics or
+advertising, and that **"in limited cases"** third-party analytics and contextual
+advertising **may be permitted** under conditions. **Our posture is stricter than the
+rule: none, ever** ([ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md)) — that is a
+program decision, not a store mandate, and it should not be restated as a prohibition.
+The UK Children's Code separately restricts nudge techniques and using children's data to
+keep them on a platform.
+
+The consequence for measurement is the same either way: all Dynawalla instrumentation is
+on-device and there is no telemetry endpoint, so **the feel cannot be A/B tested
+remotely.** Direct observation is the measurement, not a supplement to it.
 
 ---
 
@@ -63,7 +69,8 @@ to a named founder is identified.
 ## 3. Session protocol
 
 **Two sessions per gate, 20 minutes each, on separate days**, at least one day apart.
-Sessions are **unsupervised**: the observer is in the room, not at the child's shoulder.
+Sessions are **unassisted**: the observer is in the room, but does not help, prompt or
+sit at the child's shoulder.
 
 **Setup (observer, before the session)**
 

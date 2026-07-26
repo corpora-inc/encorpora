@@ -3,6 +3,13 @@
 **Status:** Accepted — 2026-07-25
 **Needed before:** the ASC and Play app records are created in M1 (met)
 
+**Mandate strength:** the founder's answer was *"it can just be the same as Corpan **I
+think**"* — a reasonable default offered in passing, not a considered acceptance of the
+trade-offs below. **The blast-radius cost in particular was never put to him**: it was
+identified by the program, and it reaches Corpán's paying subscribers. If the founder has
+not read the Consequences section, this decision has not actually been made with the
+information in it. Flagged rather than assumed.
+
 ## Context
 
 Dynawalla can ship under the same Apple developer team and Google Play developer account
@@ -58,10 +65,13 @@ nothing here is inferred from the plan.
 already invisible to it today. Per-app grants demonstrably do not inherit, so `G-09` is a
 real step and not a formality.
 
-## Consequences, accepted as trade-offs
+## Consequences — costs the program identified, not costs the founder priced
 
-These were the reasons to consider separate accounts. They are now accepted costs, not
-open questions.
+These were the reasons to consider separate accounts. The program treats them as accepted
+so work can proceed, but **none of them was in front of the founder when he answered**
+(see the mandate note in the header). The first one deserves an explicit confirmation
+before M1 creates the app records, because it is the one that can reach a shipping product
+with paying users.
 
 - **Shared policy-violation blast radius.** An enforcement action against the account —
   a Play policy strike, an Apple account-level suspension — affects **both apps**. Corpán

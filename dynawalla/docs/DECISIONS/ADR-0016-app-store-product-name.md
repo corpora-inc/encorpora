@@ -57,16 +57,16 @@ materials — no goods overlap.
 
 **We already own the name, and it has baggage**
 
-The founder owns **`dynawalla.com`** (GitHub org `dynawalla`, repo
-`dynawalla/dynawalla.com`, all five commits authored from his address in 2015, a dormant
-lion's-mane nootropic page; domain expires 2027-07-15). Two things to fix before the name
-carries a product for children:
+The founder owns the matching domain (registered 2015, dormant, expires 2027-07-15). Two
+things to fix before the name carries a product for children:
 
-1. **Live subdomain-takeover vector.** The A/MX/TXT records point at
-   `dynawalla.com.herokudns.com`, which **no longer resolves**. Anyone who claims that
-   Heroku hostname serves content on our domain.
-2. **A public repo tying the name to supplement health claims** should be archived or
-   scrubbed. It is one search away from a product aimed at seven-year-olds.
+1. **Dangling DNS records on a domain we own need clearing.** Details are deliberately
+   **not committed to this public repository** — publishing an unremediated hosting
+   misconfiguration is publishing the exploit. The founder has the specifics out of band;
+   this line exists so the work is tracked, not so it is reproducible. Remove this note
+   once the records are cleared.
+2. **A public repo tying the name to dietary-supplement health claims** should be archived
+   or scrubbed. It is one search away from a product aimed at seven-year-olds.
 
 **Two collision vectors for a founder-and-counsel call**
 

@@ -89,17 +89,19 @@ package-name variable):
 
 **Not automatable — budget founder console time:**
 
-1. **Creating the App Store Connect app record.** `POST /v1/apps` returns **404 because
-   the operation does not exist**, not because the path is wrong — a bad *path* 404s, but
-   a disallowed *method on a real resource* 403s, so the 404 is the tell. Verified against
-   Apple's OpenAPI spec 4.4.1: 966 paths, **no `apps_createInstance` operation**. Apple's
-   own documentation says it outright: *"Don't use this API to create new apps; instead,
-   create new apps on the App Store Connect website."* Stop looking for the endpoint.
-   **Do not mistake `appstoreappsreview.createappstorehostedapp` for it.** It reads
-   exactly like the endpoint you want and it is the **DMA alternative-app-store**
-   pipeline for third-party marketplaces. It is not this.
-2. **Creating the Play app record.** The `androidpublisher` v3 discovery document has no
-   application-create method.
+1. **Creating the App Store Connect app record.** There is no app-create operation in the
+   API. Verified against Apple's OpenAPI spec 4.4.1: 966 paths, **no `apps_createInstance`
+   operation**; `POST /v1/apps` 404s. Apple's own documentation says it outright:
+   *"Don't use this API to create new apps; instead, create new apps on the App Store
+   Connect website."* Stop looking for the endpoint.
+2. **Creating the Play app record.** `androidpublisher` v3 has **no method to create your
+   own app record.**
+   **Trap — and note this is a *Google* method, not an Apple one:** the same API does
+   contain `appstoreappsreview.createappstorehostedapp`
+   (`POST .../androidpublisher/v3/appstore/{appStorePackageName}/apps:create`). It reads
+   exactly like the endpoint you want. It is the pipeline for **third-party Android app
+   stores** to register apps they host, not for publishing your own app to Google Play.
+   Do not call it.
 3. **The first Play release publish.** On a never-published app the API can only create
    **draft** releases. This is Google's anti-abuse gate, not a code bug, and should not be
    debugged as one — budget one Console-side publish (`G-10`).
@@ -144,11 +146,14 @@ The default if nothing changes is to match Corpán, which was verified live 2026
 **none has ever been in the Kids Category**, so a Kids submission would be the first and
 inherits no in-house precedent.
 
-**The age bands do not span the product's scope.** Apple's Kids bands are 5-and-under /
-6-8 / **9-11**, choose exactly one; Play's are multi-select and include **9-12**. Grades
-1–6 plus pre-algebra is roughly ages 6–12, so Play can express it and **Apple cannot**.
-That couples the category decision to [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) and
-is an open founder decision.
+**No Apple Kids band expresses this product at any V1 scope.** Apple requires choosing
+**exactly one** of 5-and-under / 6-8 / 9-11 — a choice among three, not a maximum age.
+Play's declaration is multi-select and expresses a range directly. Grades 1–6 ≈ ages 6–12
+and **grades 1–5 ≈ ages 6–11, which still spans two Apple bands**, so the ADR-0002 scope
+cut does not resolve this. Electing Kids forces one of: declare a band that misstates the
+range, ship two SKUs, cut V1 down to a single band, or skip the category (a trap under
+2.3.8 / 5.1.4(b)). Open founder decision — see
+[ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md).
 
 The strict engineering posture is **Accepted unconditionally** as of 2026-07-25,
 independent of the election, so nothing below waits on it:
@@ -171,7 +176,8 @@ independent of the election, so nothing below waits on it:
 - **A parental gate stands in front of every link-out and every purchase flow** (`G-08`).
   The primitive ships in M1's shell, not at M10, so no surface is ever built without one.
   **The challenge is never arithmetic** — Apple's canonical gate is a maths problem, which
-  is exactly why this app cannot use one; a grade-4 child beats their parent to `6 × 7`.
+  is exactly why it is useless *here*: a grade-4 child beats their parent to `6 × 7`.
+  (Apple permits arithmetic gates; this is our judgement, not a store rule.)
   Reading load is the real barrier. Randomized, non-persistent across sessions, one
   component used on both platforms (Play mandates no general gate). Full design
   constraints in [ADR-0005](DECISIONS/ADR-0005-shell-and-routing.md); guarded surfaces in
@@ -214,7 +220,7 @@ are recorded as planned work rather than smuggled in. Priority order:
    margin — it catches a chatty transitive dependency that no manifest inspection would.
 2. **Merged-manifest assertions on Android**: the *merged* `AndroidManifest.xml` contains
    no `AD_ID` permission, no `ACCESS_*_LOCATION`, no `READ_PHONE_STATE`, and
-   `targetSdk >= 33`. Merged, not the source manifest — a dependency contributes
+   `targetSdk >= 36`. Merged, not the source manifest — a dependency contributes
    permissions the app never wrote.
 3. **iOS binary and plist assertions**: no reference to `ASIdentifierManager` or
    `ATTrackingManager`, and **no `NSUserTrackingUsageDescription` in `Info.plist`**. A
@@ -225,9 +231,11 @@ are recorded as planned work rather than smuggled in. Priority order:
 
 ### Do not plan on adding ads later
 
-**Play's Families Self-Certified Ads SDK program is closed to new applicants.** "Ship
+**Play's Families Self-Certified Ads SDK program is currently not accepting new
+applicants**; Google says the application window will reopen, on no stated date. "Ship
 clean now, monetize with ads if the subscription underperforms" is **not an available
-fallback** — the door is shut before we reach it. Price that into R-45.
+fallback** — it depends on a window that is shut today and may or may not be open when
+we want it. Price that uncertainty into R-45.
 
 ## Release trigger
 

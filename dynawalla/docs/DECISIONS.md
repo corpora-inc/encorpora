@@ -17,9 +17,26 @@ ADRs; they live in [ARCHITECTURE.md](ARCHITECTURE.md).
   the later decision would invalidate.
 - **Superseded by ADR-NNNN** — kept for the record; never edited in place.
 
-An ADR is amended by writing a new one, not by rewriting the old one. The reasoning is
-the artifact — several of these exist specifically so a future agent does not
-cheerfully reintroduce a mistake that was already paid for once.
+**When an ADR may be edited in place, amended 2026-07-25.** The original rule read "an
+ADR is amended by writing a new one, not by rewriting the old one," full stop. That rule
+is right for a *decided* ADR and wrong for the two cases this program actually hit first,
+so it is made precise rather than quietly broken:
+
+1. **Reaching a decision is not an amendment.** An ADR sitting at `Proposed — awaiting
+   founder` is an open question. Writing the founder's answer into it is the ADR arriving
+   at its purpose, not a rewrite of a decision. Record the answer, the date, and the
+   founder's own words; do not open a second ADR to say what the first one was for.
+2. **Correcting a factual error is not an amendment either** — provided the ADR has not
+   yet been implemented against, and provided **the error is left visible.** A wrong fact
+   that a future agent might re-derive must be quoted as superseded inside the ADR, with
+   what was wrong and why, exactly as ADR-0001 does for its parental-gate and age-band
+   errors. Deleting the mistake destroys the artifact; the reasoning *is* the artifact.
+3. **Everything else still requires a new ADR.** Once an ADR is `Accepted` and code or
+   store state depends on it, changing the decision means writing ADR-NNNN that supersedes
+   it. A `Superseded` ADR is never edited in place, for any reason.
+
+Any in-place edit carries a dated **Amended** or **Corrected** line in the ADR header
+saying what changed, so the history is readable without `git log`.
 
 | ADR | Title | Status |
 |---|---|---|
@@ -38,7 +55,7 @@ cheerfully reintroduce a mistake that was already paid for once.
 | [0013](DECISIONS/ADR-0013-monetization-model.md) | Monetization model | Accepted (direction); packaging open |
 | [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license | **Proposed — awaiting founder** (research in flight) |
 | [0015](DECISIONS/ADR-0015-developer-account-topology.md) | Developer-account topology | Accepted |
-| [0016](DECISIONS/ADR-0016-app-store-product-name.md) | App Store product name | **Proposed — awaiting founder** (check in flight) |
+| [0016](DECISIONS/ADR-0016-app-store-product-name.md) | App Store product name | **Proposed — awaiting founder** (checks returned 2026-07-25; two counsel-grade collisions open) |
 | [0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) | Human evaluation resourcing | Accepted |
 | [0018](DECISIONS/ADR-0018-multi-child-profiles.md) | Multi-child profiles designed in from M2 | Accepted |
 | [0019](DECISIONS/ADR-0019-no-stage-environment.md) | No stage environment | Accepted |
@@ -51,33 +68,28 @@ Four ADRs closed in one pass, recorded from the founder's own words in each ADR:
   son; the founder holds every adult role including art director. No external cohort, no
   recruitment, no consent paperwork. The protocol keeps measuring the same five things
   and the ADR states plainly what a sample of one cannot support.
-- **ADR-0015 Developer-account topology** — same Corpora accounts as Corpán, with the
-  shared blast radius and nomination pool accepted as costs.
+- **ADR-0015 Developer-account topology** — same Corpora accounts as Corpán. The founder
+  said "same as Corpan I think"; the blast-radius cost was identified by the program and
+  **was not put to him**, which the ADR now says in its header.
 - **ADR-0013 Monetization** — direction only: generous free tier plus a subscription for
   unlimited exercises and full access; packaging and pricing still open, and the
-  founder's own "hasn't worked in the slightest" is carried as R-45.
+  founder's own "I'm not sure" and "hasn't worked in the slightest" are carried as R-45
+  rather than smoothed into a mandate.
 - **ADR-0001 Kids Category** — the engineering constraints (no third-party ads,
   analytics or SDKs) are locked unconditionally; a parental-gate primitive is built and
-  every link-out routes through it; the category election itself is deferred to
-  submission, after monetization is wired.
+  every link-out routes through it; the category election, **and the age band inside
+  it**, are deferred to submission.
 
-## Still open, in the order they bite
+## Still open
 
-1. **ADR-0016 product name** — needed before the ASC and Play app records are created in
-   M1. The SKU and package name are literally immutable. The founder expects the name is
-   clear and asked for the check; the check is in flight.
-2. **ADR-0002 V1 scope cut** — narrows the founder-stated grade range (1–6 plus intro
-   pre-algebra) to grades 1–5 number and arithmetic, and rewrites the public claim.
-   Needed before any public scope statement, and before M4 buys curriculum breadth
-   against one range or the other. The engineering argument is settled; the scope
-   decision is not the plan's. It now also interacts with
-   [ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md): grades 1–2 will ship
-   with no child observation behind them unless a younger evaluator is added.
-3. **ADR-0014 License** — decides whether outside contributions are wanted at all, and
-   therefore whether the fork-PR gate path is worth maintaining. Research in flight.
-4. **ADR-0010 Standards-alignment claim** — needed before any public marketing copy;
-   decides whether gate CG-20 stays report-only. Research in flight.
-5. **ADR-0001's category election** — deferred by design, but it is still a one-way door
-   and it must be written into the ADR before M1's first submission (`G-01`).
-6. **ADR-0013's packaging and pricing** — deferring past M7 is fine; past M9 blocks
-   launch (`G-02`).
+**[STATUS.md](STATUS.md) is the single source of truth for what is open and when it
+bites** — it is the file kept current in the PR that changes it. This index previously
+disagreed with both STATUS.md and MISSION.md about how many decisions were outstanding,
+which is exactly how one goes unnoticed. Do not re-enumerate them here.
+
+The short version, for orientation only: **ADR-0016** (name), **ADR-0002** (scope cut),
+**ADR-0014** (license) and **ADR-0010** (standards claim) are open at the ADR level; and
+two decisions live *inside* ADRs that are otherwise decided — **ADR-0001's category
+election and age band** (`G-01`) and **ADR-0013's packaging and pricing** (`G-02`). The
+**age-band choice is the newest and the least expected**: no V1 scope currently proposed
+fits a single Apple Kids band.

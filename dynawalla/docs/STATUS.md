@@ -83,18 +83,22 @@ Verified live by GET-only API calls, 2026-07-25. Four things the plan had wrong 
    `isOrEverWasMadeForKids: false`** (Team `F9AV5HKF6N`). All four Corpora apps are 4+ and
    **none has ever been in the Kids Category** — so "match Corpán" means *not* Kids, and a
    Kids submission would inherit no in-house precedent.
-2. **Apple's Kids age bands stop at 9-11**; Play's go to 9-12. Grades 1–6 spans ages
-   6–12, so Apple cannot express the founder-stated scope. This couples
+2. **Apple Kids requires choosing exactly one band** — 5-and-under / 6-8 / 9-11 — and
+   **no V1 scope on the table fits one.** Grades 1–6 ≈ ages 6–12; grades 1–5 ≈ ages 6–11,
+   which still spans two bands, so the ADR-0002 cut does not resolve it. The cuts that
+   *would* fit one band (roughly grades 4–5, or grades 1–3) are far more expensive than
+   anything currently proposed. Couples
    [ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md) to
-   [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) and is an **open founder decision**.
+   [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md); **open founder decision**.
 3. **The ASC API key does not need re-minting** — [STORE.md](STORE.md) said it "almost
    certainly" did. It is already a Team key with Admin scope. Budget zero.
-4. **The name is clear but not cleared.** No third-party use of "Dynawalla" anywhere; the
-   founder already owns `dynawalla.com`. Two hygiene items (a live **subdomain-takeover
-   vector** on dangling `herokudns.com` records, and a public repo tying the name to
-   supplement health claims) and two collision vectors for counsel (**Dynamo Maths**;
-   **Physics Wallah**'s "family of 'wallah' marks" injunction, if India is a market).
-   Trademark databases bot-blocked the search, so this is mirror evidence, not clearance.
+4. **The name is clear but not cleared.** No third-party use of "Dynawalla" found
+   anywhere; the founder already owns the matching domain. Two hygiene items — **dangling
+   DNS records on a domain we own** (specifics held out of band, not committed to a public
+   repo until remediated) and a public repo tying the name to dietary-supplement health
+   claims — and two collision vectors for counsel (**Dynamo Maths**; **Physics Wallah**'s
+   "family of 'wallah' marks" injunction, if India is a market). Trademark databases
+   bot-blocked the search, so this is mirror evidence, not clearance.
 
 ## Acceptance
 
@@ -143,7 +147,7 @@ Still open, ordered by when they bite:
 | ADR | Decision | Bites at |
 |---|---|---|
 | [0016](DECISIONS/ADR-0016-app-store-product-name.md) | Product name — checks returned clean; two counsel-grade collision vectors remain | M1, app-record creation |
-| [0001](DECISIONS/ADR-0001-kids-category-posture.md) / [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | **New:** Apple's 9-11 band ceiling vs a grades 1–6 scope — declare 9-11, split SKUs, or skip the category (a trap under 2.3.8 / 5.1.4(b)) | M1, app-record creation |
+| [0001](DECISIONS/ADR-0001-kids-category-posture.md) / [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | **New:** Apple Kids requires **exactly one** of 5-and-under / 6-8 / 9-11, and **no V1 scope on the table fits one band** — declare one and misdeclare the range, ship two SKUs, cut V1 to a single band, or skip the category (a trap under 2.3.8 / 5.1.4(b)) | M1, app-record creation |
 | [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 scope cut: grades 1–5, number and arithmetic | any public scope statement; M4 curriculum breadth |
 | [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license (research in flight) | M0a (fork-PR posture) |
 | [0010](DECISIONS/ADR-0010-standards-alignment-claim.md) | Standards-alignment claim (research in flight) | first public marketing copy |

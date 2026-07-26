@@ -364,7 +364,9 @@ already assumes the strict posture, so choosing **in** costs nothing extra; choo
 ### R-35 · M · Program
 **Child-directed compliance constrains engineering, not paperwork.** Play's Families
 Policy forbids transmitting AAID/IMEI/MAC/phone number and collecting precise location
-from child users; Apple 1.3/5.1.4 bars third-party analytics and advertising outright.
+from child users; Apple 1.3/5.1.4 says apps **should not** carry third-party analytics or
+advertising and allows both only in limited, conditioned cases — the program's absolute
+ban is stricter than the guideline, deliberately.
 Every dependency addition becomes a compliance decision.
 **Mitigation:** the CI dependency audit is the only mechanical enforcement (`G-05`,
 `G-06`).
@@ -380,15 +382,18 @@ dead for that app record without Google support.
 **Two founder browser clicks are unavoidable and on the critical path.** Apple has no
 app-create operation at all — verified against OpenAPI spec 4.4.1 (966 paths, no
 `apps_createInstance`), and Apple's own docs say "create new apps on the App Store Connect
-website." The Play `androidpublisher` v3 discovery document has no application-create
-method either. **Corrected 2026-07-25:** the ASC API key does **not** need re-minting —
-it already returns 200 on the Provisioning endpoints *and* on Admin-scoped `/v1/users`.
-The Play service account does still need an explicit per-app grant.
+website." Play's `androidpublisher` v3 has no method to create **your own** app record.
+**Corrected 2026-07-25:** the ASC API key does **not** need re-minting — it already
+returns 200 on the Provisioning endpoints *and* on Admin-scoped `/v1/users`. The Play
+service account does still need an explicit per-app grant.
 **Mitigation:** schedule the ~10 minutes of founder console time as an M1 task, not a
 surprise (`G-09`). `grants.create` may automate the Play half but needs the numeric
 developer account id, which is not recorded anywhere in this repo.
-**Trap:** `appstoreappsreview.createappstorehostedapp` reads exactly like the app-create
-endpoint and is the **DMA alternative-app-store** pipeline. Do not call it.
+**Trap, on the Google side:** `androidpublisher` v3 *does* contain
+`appstoreappsreview.createappstorehostedapp`
+(`POST .../androidpublisher/v3/appstore/{appStorePackageName}/apps:create`), which reads
+exactly like the app-create endpoint and is for **third-party Android app stores**
+registering apps they host. Do not call it.
 
 ### R-38 · L · Release
 **Play's first-release draft gate will bite.** On a never-published app the API can only
@@ -519,7 +524,9 @@ collecting nothing.**
   store-provided age signals, using them **only** for compliance, and **deleting them
   after use** — so consume, never persist. (Secondary sourcing; flag for counsel.)
 - Also queued: **California AADCA** partially revived by the Ninth Circuit 2026-03-12;
-  **Nebraska AADC** effective 2026-01-01; **Vermont** 2027-01-01.
+  **Nebraska AADC** effective 2026-01-01; **Vermont** 2027-01-01. *(Same secondary
+  sourcing as the bullet above — specific dates and holdings are unverified against
+  primary sources and are for counsel to confirm, not to be relied on as stated.)*
 
 **Mitigation:** write the three documents while the answer is "nothing" — they are cheap
 now and they are the first artifacts a school district, a regulator or an acquirer asks

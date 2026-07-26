@@ -37,25 +37,27 @@ exists to avoid.
 New information, and it means this ADR and
 [ADR-0001](ADR-0001-kids-category-posture.md) are two views of one decision.
 
-**Apple's Kids Category bands are 5-and-under, 6-8 and 9-11, and exactly one is
-chosen. There is no band above 9-11.** Play's target-audience declaration is
-multi-select and does have a 9-12 band, so Play can express the founder-stated scope and
-Apple cannot.
+**If the Kids Category is elected, Apple requires choosing exactly one of three bands:
+5-and-under, 6-8, or 9-11.** It is a choice among three, **not** a maximum age. Play's
+target-audience declaration is multi-select and can express a range directly.
 
-Grades 1–6 plus intro pre-algebra spans roughly **ages 6–12**:
+Grades 1–6 plus intro pre-algebra ≈ **ages 6–12**. Grades 1–5 ≈ **ages 6–11**.
 
-- **Option A below (grades 1–5) lands exactly inside Apple's 9-11 ceiling.** The scope
-  cut and the Apple band become consistent for free.
-- **Option B (the founder-stated scope) pushes past it**, and then requires one of:
-  declaring 9-11 anyway and skewing the listing to the top of the range; splitting into
-  two SKUs; or skipping the Kids Category — which Guideline 2.3.8 and 5.1.4(b) make a
-  trap rather than an escape, because child-implying metadata is reserved *to* the
-  category and forbidden *outside* it.
+**Neither option A nor option B fits an Apple band.** Ages 6–11 spans *both* 6-8 and
+9-11, so **the cut proposed below does not resolve the band question at all** — it
+removes the overflow past age 11 and leaves the actual problem untouched. An earlier
+revision of this section claimed option A made the scope and the band "consistent for
+free"; that was wrong and is corrected here.
 
-This is not an argument for option A. It is a cost that was previously invisible on
-option B and should be priced in when the founder decides. The band choice itself is a
-separate founder decision and is **not made**; see
-[ADR-0001](ADR-0001-kids-category-posture.md).
+The only V1 cuts that fit a single band are roughly **grades 4–5** (9-11), which discards
+the foundational place-value work and read-aloud's reason for existing at M2, or
+**grades 1–3** (6-8), which discards multiplication, division and the fraction work that
+the evidence below says uniquely predicts later algebra achievement. **Both are far more
+expensive than option A**, and neither is recommended.
+
+So this is a real cost on **every** option on this page, not a discriminator between
+them, and it should be priced in as such. The band choice belongs to
+[ADR-0001](ADR-0001-kids-category-posture.md) and is **not made**.
 
 ## Options
 
