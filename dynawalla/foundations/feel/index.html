@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+    <title>Dynawalla — feel foundation</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; overflow: hidden; background: #07060d; }
+      body {
+        font: 500 13px/1.4 ui-monospace, "SF Mono", Menlo, monospace;
+        color: #e8dcc8;
+        -webkit-font-smoothing: antialiased;
+      }
+      canvas { display: block; touch-action: manipulation; }
+
+      #hud {
+        position: fixed; left: 0; top: 0; padding: 10px 12px;
+        pointer-events: none; z-index: 20;
+        text-shadow: 0 1px 3px #000a;
+      }
+      #hud b { color: #ffc879; font-weight: 600; }
+      #hud .warn { color: #ff9a5c; }
+
+      #tiers {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+        display: flex; gap: 6px; padding: 10px;
+        justify-content: center; flex-wrap: wrap;
+      }
+      #tiers button {
+        font: inherit; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+        color: #f0e4cc; background: #1a1420; border: 1px solid #3b2f45;
+        padding: 9px 12px; border-radius: 3px; cursor: pointer;
+        touch-action: manipulation; user-select: none;
+      }
+      #tiers button:active { background: #2c2133; transform: translateY(1px); }
+      #tiers button.on { border-color: #d9a05b; color: #ffcf90; }
+
+      #q {
+        position: fixed; left: 0; right: 0; top: 12%;
+        text-align: center; z-index: 15; pointer-events: none;
+        font: 300 clamp(34px, 9vw, 76px)/1 ui-serif, Georgia, serif;
+        letter-spacing: .04em; color: #f6ead2;
+        text-shadow: 0 2px 24px #000c, 0 0 60px #ffb35a30;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="q"></div>
+    <div id="hud"></div>
+    <div id="tiers"></div>
+    <script type="module" src="/demo/main.ts"></script>
+  </body>
+</html>

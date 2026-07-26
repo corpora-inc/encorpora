@@ -1,0 +1,29 @@
+{
+  "name": "@dynawalla/feel",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Game-feel foundation for the Dynawalla Bazaar. One call, excellent feel.",
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test src/*.test.ts",
+    "bench": "node --experimental-strip-types --no-warnings=ExperimentalWarning bench/cpu.mjs",
+    "bench:frames": "node bench/frames.mjs"
+  },
+  "dependencies": {
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/three": "^0.185.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}
