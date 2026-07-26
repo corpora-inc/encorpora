@@ -13,11 +13,7 @@
     "tauri": "tauri",
     "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",
-    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
-    "bench:generate": "node --experimental-strip-types --no-warnings=ExperimentalWarning tools/bench-generate.mjs",
-    "bench:loop": "node tools/bench-loop.mjs",
-    "bench:reactions": "node tools/bench-reactions.mjs",
-    "drive:locate": "node tools/drive-locate.mjs"
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",

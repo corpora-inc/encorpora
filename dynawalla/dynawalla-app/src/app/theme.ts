@@ -11,14 +11,21 @@
 // of the tablet in the room, not of the child holding it.
 
 import { create } from "zustand"
-import { persist, createJSONStorage, type StateStorage } from "zustand/middleware"
+import { persist } from "zustand/middleware"
+
+import { durable } from "./persist.ts"
+import { deviceKey } from "./profile.ts"
 
 export type ThemeMode = "system" | "light" | "dark"
 export type Theme = "light" | "dark"
 
+/** The modes, in the order they are offered. Also the whitelist for a stored
+    value: anything else came from a newer build and resolves to no theme. */
+export const THEME_MODES: readonly ThemeMode[] = ["system", "light", "dark"]
+
 export const DARK_CLASS = "dw-dark"
 
-const STORAGE_KEY = "dynawalla.theme"
+const STORAGE_KEY = deviceKey("theme")
 
 /** Pure: what the mode plus the platform preference actually resolve to. */
 export function resolveTheme(mode: ThemeMode, systemPrefersDark: boolean): Theme {
@@ -31,16 +38,6 @@ interface ThemeState {
   setMode: (mode: ThemeMode) => void
 }
 
-// Web storage is absent under `node --test` and can be disabled in a WebView.
-// Neither is a reason to throw at a child: the preference degrades to
-// process lifetime rather than taking the store down with it.
-const ephemeral = new Map<string, string>()
-const memoryStorage: StateStorage = {
-  getItem: (name) => ephemeral.get(name) ?? null,
-  setItem: (name, value) => void ephemeral.set(name, value),
-  removeItem: (name) => void ephemeral.delete(name),
-}
-
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
@@ -49,9 +46,14 @@ export const useThemeStore = create<ThemeState>()(
     }),
     {
       name: STORAGE_KEY,
-      storage: createJSONStorage(() =>
-        typeof localStorage === "undefined" ? memoryStorage : localStorage,
-      ),
+      storage: durable,
+      // A stored mode from a newer build is not a mode this build can resolve,
+      // and `resolveTheme` would return it verbatim as a class name that
+      // matches no rule — a screen painted in neither theme.
+      merge: (persisted, current) => {
+        const stored = (persisted as Partial<ThemeState> | undefined)?.mode
+        return { ...current, mode: THEME_MODES.find((mode) => mode === stored) ?? "system" }
+      },
     },
   ),
 )

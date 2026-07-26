@@ -1,25 +1,22 @@
-// `Q-05`, as one test over the whole tree, plus the two structural rules that
-// keep it from being satisfiable by accident.
+// The structural rules for the whole tree, in one place.
 //
-// The acceptance item is a sentence about the source: *a boundary test fails
-// the build if anything under `src/reactions/` or `src/world/` imports from
-// `src/work/` or the engine.* Both of those directories have their own local
-// copy of the check, because a directory should carry its own rule; this one is
-// the app-wide statement, and it also catches the two failure modes a
-// per-directory check cannot see:
+// Three of them are inherited and still worth their keep — the import graph is
+// acyclic, no inline style survives the CSP, and no streak or loss surface has
+// crept in. The fourth is new and is the point of this milestone: **the host
+// ships no content.**
 //
-//   * an import **cycle** anywhere in `src/`, which is how "the world does not
-//     depend on the work surface" quietly becomes untrue through a third file;
-//   * an anchor class that has acquired a style, which would make removing it
-//     from an element change the picture as well as the reaction.
+// That last one is a rule about a directory tree, so it is tested as one. The
+// founder's ruling is that every game, exercise, world, asset and piece of
+// curriculum lives in a pack and none of it ships in the app (ADR-0022), and
+// the way that erodes is not a pull request titled "put the curriculum back" —
+// it is one import, from one screen, of one generator, because it was easier
+// than defining the boundary.
 
 import { test } from "node:test"
 import assert from "node:assert/strict"
 import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
-
-import { ANCHORS } from "../design/anchors.ts"
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 const src = path.resolve(here, "..")
@@ -35,34 +32,54 @@ function files(dir: string, out: string[] = []): string[] {
 
 const modules = files(src)
 
-/** Relative-import edges, resolved to repo-relative module paths. */
-function edges(file: string): string[] {
+/** Every import specifier in a module, relative and bare alike. */
+function specifiers(file: string): string[] {
   const text = fs.readFileSync(file, "utf8")
-  const out: string[] = []
-  for (const [, specifier] of text.matchAll(/from\s+"(\.[^"]+)"/g)) {
-    if (specifier === undefined) continue
-    out.push(path.relative(src, path.resolve(path.dirname(file), specifier)))
-  }
-  return out
+  return [...text.matchAll(/from\s+"([^"]+)"/g)].map(([, specifier]) => specifier ?? "")
 }
 
-test("Q-05: nothing under reactions/ or world/ imports the work surface or the engine", () => {
+/** Relative-import edges, resolved to `src`-relative module paths. */
+function edges(file: string): string[] {
+  return specifiers(file)
+    .filter((specifier) => specifier.startsWith("."))
+    .map((specifier) => path.relative(src, path.resolve(path.dirname(file), specifier)))
+}
+
+test("the host imports no curriculum and no content of any kind", () => {
+  // The two neighbours are the tell. `dynawalla/curriculum/` is the exercise
+  // generators and `dynawalla/engine/` is the learner model: the first is
+  // content and belongs to packs; the second is the host's, and is waiting for
+  // a pack to declare a skill catalog it can model (ADR-0022). Either one
+  // reached from `src/` today means content came back into the app.
   const offenders: string[] = []
   for (const file of modules) {
-    const from = path.relative(src, file)
-    if (!from.startsWith("reactions/") && !from.startsWith("world/")) continue
-    const text = fs.readFileSync(file, "utf8")
-    for (const [, specifier] of text.matchAll(/from\s+"([^"]+)"/g)) {
-      const target = specifier ?? ""
-      const resolved = target.startsWith(".")
-        ? path.relative(src, path.resolve(path.dirname(file), target))
-        : target
-      if (/^work\//.test(resolved) || /engine|curriculum/.test(resolved)) {
-        offenders.push(`${from} -> ${target}`)
+    for (const specifier of specifiers(file)) {
+      const outside = specifier.startsWith(".")
+        ? path.relative(src, path.resolve(path.dirname(file), specifier))
+        : specifier
+      if (/(^|\/)(curriculum|engine)(\/|$)/.test(outside) || outside.startsWith("..")) {
+        offenders.push(`${path.relative(src, file)} -> ${specifier}`)
       }
     }
   }
-  assert.deepEqual(offenders, [], "the work surface leaked into the world")
+  assert.deepEqual(offenders, [], "the host reached outside itself for content")
+})
+
+test("no exercise, problem generator or answer judge lives in the host", () => {
+  // Named for what they were when they shipped in the app: a keypad, a judge,
+  // a mal-rule diagnosis, a deck of problems. The host has no opinion about
+  // arithmetic any more — it does not know what an exercise is, only that a
+  // pack reported an outcome (`packs/host.ts`).
+  const banned = /\b(exercise|malRule|misconception|keypad|numerator|denominator|regroup|minuend|subtrahend)\b/i
+  const offenders: string[] = []
+  for (const file of modules) {
+    const text = fs
+      .readFileSync(file, "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/(^|[^:])\/\/.*$/gm, "$1")
+    if (banned.test(text)) offenders.push(path.relative(src, file))
+  }
+  assert.deepEqual(offenders, [], "content in the host")
 })
 
 test("the arrow only points one way — there is no import cycle in src/", () => {
@@ -87,25 +104,25 @@ test("the arrow only points one way — there is no import cycle in src/", () =>
   assert.deepEqual(cycles, [])
 })
 
-test("the anchor classes style nothing", () => {
-  // They are a one-way DOM contract between what draws and what lights. The
-  // moment one carries a rule, deleting it from an element silently changes the
-  // picture too, and the coupling stops being one-way.
-  const styled: string[] = []
-  const walk = (dir: string): void => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name)
-      if (entry.isDirectory()) walk(full)
-      else if (entry.name.endsWith(".css")) {
-        const text = fs.readFileSync(full, "utf8")
-        for (const anchor of ANCHORS) {
-          if (text.includes(`.${anchor}`)) styled.push(`${path.relative(src, full)}: ${anchor}`)
-        }
-      }
+test("the world draws a number and knows nothing else", () => {
+  // `src/world/` is the progress figure: pure geometry over one integer, with
+  // its text alternative handed in. It must not reach into a store, a setting
+  // or the app's copy — that is what keeps it a drawing rather than a screen,
+  // and it is why it survived a milestone that deleted everything around it.
+  const offenders: string[] = []
+  for (const file of modules) {
+    const from = path.relative(src, file)
+    if (!from.startsWith("world/")) continue
+    for (const specifier of specifiers(file)) {
+      const resolved = specifier.startsWith(".")
+        ? path.relative(src, path.resolve(path.dirname(file), specifier))
+        : specifier
+      const allowed =
+        resolved.startsWith("world/") || resolved === "app/persist.ts" || resolved === "zustand"
+      if (!allowed && !resolved.startsWith("zustand/")) offenders.push(`${from} -> ${specifier}`)
     }
   }
-  walk(src)
-  assert.deepEqual(styled, [])
+  assert.deepEqual(offenders, [])
 })
 
 test("no inline style anywhere — the CSP forbids it outright", () => {
@@ -113,8 +130,7 @@ test("no inline style anywhere — the CSP forbids it outright", () => {
   // silently in the shipped app while working perfectly in `vite dev`.
   const offenders: string[] = []
   for (const file of modules) {
-    const text = fs.readFileSync(file, "utf8")
-    if (/\sstyle=\{/.test(text)) offenders.push(path.relative(src, file))
+    if (/\sstyle=\{/.test(fs.readFileSync(file, "utf8"))) offenders.push(path.relative(src, file))
   }
   assert.deepEqual(offenders, [])
 })

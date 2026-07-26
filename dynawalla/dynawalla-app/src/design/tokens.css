@@ -194,27 +194,15 @@
   --dw-cut-lg: 8px;
 
   /* ── The vertical scale ────────────────────────────────────────────────
-     The practice surface is the tallest thing this app draws, and on a short
-     phone it did not fit: at 320 × 568 and 360 × 640 the document was 878 px
-     and the "Check" plate's bottom edge sat at 833 — below the fold at both,
-     so the child scrolled to submit every single answer. Measured, not
-     guessed; the reference tablet and a 390 × 844 phone were both fine, which
-     is exactly why it survived.
+     One scale, in one place. Every screen in this host is a list of rows in a
+     column, and on a short phone the thing that runs out is vertical space —
+     so the padding, the gaps and the frame come down together rather than each
+     component carrying its own literal and being tuned separately.
 
-     One scale, in one place, because the fix is a budget rather than a tweak:
-     six numbers that add up to the height of a session. Under 720 px of
-     viewport they all come down together — the band, the recess, the numerals,
-     the gaps and the keys — and every component reads them rather than
-     carrying its own literal, so the budget can be read off this block.
-
-     The key floor is the one that is not taste. `Keypad.tsx` sets the bar at a
-     ≥2 cm target on the diagonal a child actually hits. At 320 px wide a key
-     is 77 px across, so a 52 px key has a 93 px diagonal = 2.46 cm — still
-     over the floor, and `surface.test.ts` asserts it from these numbers rather
-     than from the comment. */
-  --dw-band-height: 4.5rem;
-  --dw-key-height: 4.75rem;
-  --dw-numeral-size: var(--text-3xl);
+     The row height itself does NOT come down with them, and that is the point
+     of separating the two: `--dw-stack-gap` is taste, a 64 px row is a
+     child-sized target, and a design that shrinks a target to fit another row
+     on screen has made the app worse in order to look tidier. */
   --dw-frame-pad: 1.25rem;
   --dw-stack-gap: 1.5rem;
   --dw-stack-gap-tight: 1rem;
@@ -234,9 +222,6 @@
   }
 
   @media (max-height: 720px) {
-    --dw-band-height: 3.5rem;
-    --dw-key-height: 3.25rem;
-    --dw-numeral-size: var(--text-2xl);
     --dw-frame-pad: 0.625rem;
     --dw-stack-gap: 0.75rem;
     --dw-stack-gap-tight: 0.5rem;
@@ -244,21 +229,10 @@
     --dw-lintel-pad: 0.5rem;
   }
 
-  /* The second rung, and the reason there are two. At 640 px the numbers above
-     bring the surface to 646 — under the fold, done. At 568 they do not, and
-     "nearly fits" is worth nothing: the pinned plate then covers the bottom
-     keypad row, so a child cannot type a zero without scrolling, which is the
-     original bug wearing a different hat. So the shortest viewport this app
-     ships to gets its own rung, tuned until the document is shorter than the
-     screen rather than until it looks about right.
-
-     A 44 px key is 77 × 44 at 320 px wide — an 89 px diagonal, 2.35 cm — still
-     over the ≥2 cm floor, and `surface.test.ts` computes that for every rung of
-     this scale rather than for the one somebody remembered. */
+  /* The shortest viewport this app ships to gets its own rung. "Nearly fits"
+     is worth nothing on a 320 × 568 screen: one row of a list below the fold
+     is one row a child does not know is there. */
   @media (max-height: 620px) {
-    --dw-band-height: 3rem;
-    --dw-key-height: 2.75rem;
-    --dw-numeral-size: var(--text-xl);
     --dw-frame-pad: 0.5rem;
     --dw-stack-gap: 0.5rem;
     --dw-stack-gap-tight: 0.375rem;
@@ -350,6 +324,43 @@
   --radius-cut-sm: var(--dw-cut-sm);
   --radius-cut-md: var(--dw-cut-md);
   --radius-cut-lg: var(--dw-cut-lg);
+}
+
+/* ── The settings, applied ────────────────────────────────────────────────
+   Two of the settings act on this document rather than on a pack, and both
+   act through a single attribute written on <html> by `settings/store.ts`.
+
+   Text size scales the ROOT, not a class on a container: every length in this
+   app is in rem, so one root font-size carries the whole design — type,
+   targets, rules and gaps — instead of growing the words inside boxes that
+   stay the size they were.
+
+   The steps are 12.5% each, which is the largest step that keeps five
+   navigation labels on one line at 320 px. */
+:root[data-text="large"] {
+  font-size: 112.5%;
+}
+
+:root[data-text="largest"] {
+  font-size: 125%;
+}
+
+/* Asked for explicitly, rather than by the operating system. The block below
+   is the same collapse, and both are needed: a child on a shared tablet whose
+   OS setting is somebody else's is exactly who this switch is for. */
+:root[data-motion="reduced"] {
+  --dw-motion-quick: 0ms;
+  --dw-motion-detent: 0ms;
+  --dw-motion-settle: 0ms;
+}
+
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+  scroll-behavior: auto !important;
 }
 
 /* ── Reduced motion ───────────────────────────────────────────────────────

@@ -1,4 +1,3 @@
-import { strings, fill } from "../app/strings.ts"
 import { CHROME_NODES, screenBox, screenPieces, type Piece } from "./construction.ts"
 
 /**
@@ -14,8 +13,14 @@ import { CHROME_NODES, screenBox, screenPieces, type Piece } from "./constructio
  * The four scales are the same hole drawn at four levels of fusion, so they are
  * deliberately the same material. A finished course does not look different
  * from a fresh cell; it is just one node instead of a hundred.
+ *
+ * The plan is the exception, and it is not stone at all: an incised setting-out
+ * line, no fill, drawn under everything. It is what a mason marks before
+ * cutting, and it is why an empty plate is not what a child sees on the day
+ * they start.
  */
 function paint(piece: Piece): { fill: string; stroke: string; width: number } {
+  if (piece.kind === "plan") return { fill: "none", stroke: "var(--dw-line-strong)", width: 0.3 }
   return piece.kind === "panel"
     ? { fill: "var(--dw-line-strong)", stroke: "none", width: 0 }
     : { fill: "var(--dw-aperture)", stroke: "var(--dw-aperture-rim)", width: 0.35 }
@@ -30,7 +35,16 @@ function paint(piece: Piece): { fill: string; stroke: string; width: number } {
  * chrome elements are the plate and its rim; they are counted below so the
  * count in the model cannot drift from the count in the DOM.
  */
-export function WorldScreen({ placed, className }: { placed: number; className?: string }) {
+export function WorldScreen({
+  placed,
+  label,
+  className,
+}: {
+  placed: number
+  /** The text alternative, written by the surface that asked for the drawing. */
+  label: string
+  className?: string
+}) {
   const pieces = screenPieces(placed)
   const box = screenBox(placed)
 
@@ -38,7 +52,7 @@ export function WorldScreen({ placed, className }: { placed: number; className?:
     <svg
       id="dw-world"
       role="img"
-      aria-label={fill(strings.world.cut, { apertures: placed })}
+      aria-label={label}
       className={className}
       viewBox={`0 0 ${String(box.width)} ${String(box.height)}`}
       focusable="false"

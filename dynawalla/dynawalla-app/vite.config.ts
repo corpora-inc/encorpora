@@ -52,27 +52,21 @@ export default defineConfig({
     // NO `fs.allow` widening, deliberately — the dev server's reach is Vite's
     // default, this app's own directory, and nothing beside it.
     //
-    // The app imports the curriculum package's TypeScript source across a
-    // directory boundary (one seam, `src/work/curriculum.ts`). Under Vite 7 and
-    // earlier that meant a 403 for every curriculum module in `npm run dev`
-    // while `npm run build` (Rollup, no fs guard) succeeded, so the sibling had
-    // to be allow-listed. Vite 8 removed the need: `isFileLoadingAllowed`
-    // consults `config.safeModulePaths` BEFORE `fs.allow`, and import analysis
-    // adds every specifier it resolves out of an already-served module. An
-    // importer is always fetched before its dependencies — that is how ES
-    // modules load, not a race — so the curriculum graph is reachable one hop
-    // at a time without being listed.
+    // The app used to import the curriculum package's TypeScript source across
+    // a directory boundary, which is why this note exists at all. It does not
+    // any more: the host ships no content and imports none (ADR-0022), so
+    // nothing under `src/` resolves outside this directory and there is nothing
+    // for an allow entry to serve.
     //
-    // Verified in a real browser rather than reasoned about: the practice
-    // surface boots and all 20 curriculum modules return 200 with no allow
-    // entry at all, and editing `curriculum/src/math/rational.ts` hot-reloads
-    // the subgraph at 200 (the `?t=` query does not defeat it — the check runs
-    // on `cleanUrl`). `devServer.test.ts` is the gate that keeps it that way.
-    //
-    // If a Vite upgrade ever regresses this, dev fails loudly and immediately —
-    // 403 plus a blank page — rather than silently. Prefer fixing the import
-    // seam over re-widening; and note that Vite REPLACES this list rather than
-    // extending it, so `"."` would have to be listed alongside anything added.
+    // Kept because the finding is not obvious and would be re-derived the next
+    // time something reaches across: under Vite 7 a sibling package had to be
+    // allow-listed or every one of its modules 403'd in `npm run dev` while
+    // `npm run build` (Rollup, no fs guard) succeeded. Vite 8 removed the need —
+    // `isFileLoadingAllowed` consults `config.safeModulePaths` BEFORE
+    // `fs.allow`, and import analysis adds every specifier it resolves out of an
+    // already-served module. Prefer a resolvable package name over re-widening;
+    // and note that Vite REPLACES this list rather than extending it, so `"."`
+    // would have to be listed alongside anything added.
     fs: {
       // `deny` is replaced wholesale too (`mergeWithDefaultsRecursively` assigns
       // arrays), so Vite's six defaults are restated verbatim and the test above

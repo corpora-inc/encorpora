@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url"
 
 import {
   aperturesIn,
+  benchIndex,
   breakdown,
   CELLS_PER_COURSE,
   CELLS_PER_ROSETTE,
@@ -145,6 +146,30 @@ test("the model's node count is exactly what the drawing emits", () => {
       `pieces + chrome != liveNodes at ${String(placed)}`,
     )
   }
+})
+
+test("a child who has cut nothing is shown the setting-out, not an empty plate", () => {
+  // The failure this exists to prevent is a *product* failure, and it shipped:
+  // the progress destination on a new device drew a plain rectangle with
+  // nothing in it, which is the empty recess by another name. The plan is one
+  // fused node, it is present from the first render, and every aperture the
+  // child ever cuts lands on a line they could already see.
+  const plans = screenPieces(0).filter((piece) => piece.kind === "plan")
+  assert.equal(plans.length, 1)
+  assert.equal((plans[0]?.d.match(/M/g) ?? []).length, CELLS_PER_ROSETTE)
+
+  for (const placed of [0, 1, 19, 20, 21, 59, 61, 179]) {
+    assert.equal(
+      screenPieces(placed).filter((piece) => piece.kind === "plan").length,
+      1,
+      `nothing on the bench at ${String(placed)}`,
+    )
+  }
+
+  // …except at a finished screen, where the next answer starts a new panel and
+  // there is no room on this plate to set anything out.
+  assert.equal(benchIndex(180), null)
+  assert.equal(screenPieces(180).filter((piece) => piece.kind === "plan").length, 0)
 })
 
 test("every piece is one path with a real `d`, and keys are unique", () => {

@@ -1,38 +1,27 @@
-import { Link, Outlet, useMatches } from "react-router"
+import { Link, Outlet } from "react-router"
 
-import { IndexMark } from "../design/IndexMark.tsx"
 import { Strapwork } from "../design/Strapwork.tsx"
-import { ReactionStage } from "../reactions/Stage.tsx"
+import { Nav } from "./Nav.tsx"
 import { strings } from "./strings.ts"
-import { DESTINATIONS, type Destination } from "./routes.ts"
-
-const isDestination = (value: unknown): value is Destination =>
-  typeof value === "string" && (DESTINATIONS as readonly string[]).includes(value)
 
 /**
- * The lintel: the carved band every screen hangs beneath. The wordmark is the
- * way home, and the index — the brass mark — names where you currently are.
+ * The lintel: the carved band every screen hangs beneath.
+ *
+ * It names the app and nothing else. It used to also name where you were,
+ * which was worth doing when the wordmark was the only way to move; the
+ * navigation now says that, permanently, at the bottom of the screen, and two
+ * places saying it is two places to disagree.
  */
 function Lintel() {
-  const matches = useMatches()
-  const here = matches.map((match) => match.handle).find(isDestination)
-
   return (
     <header className="bg-ground-raised">
-      <div className="flex items-baseline gap-3 px-[max(var(--safe-left),1rem)] pt-[max(var(--safe-top),var(--dw-lintel-pad))] pr-[max(var(--safe-right),1rem)] pb-[var(--dw-lintel-pad)]">
+      <div className="flex items-baseline px-[max(var(--safe-left),1rem)] pt-[max(var(--safe-top),var(--dw-lintel-pad))] pr-[max(var(--safe-right),1rem)] pb-[var(--dw-lintel-pad)]">
         <Link
           to="/"
           className="inscription rounded-cut-sm text-lg tracking-[0.22em] text-ink uppercase"
         >
           {strings.appName}
         </Link>
-
-        {here ? (
-          <span className="flex items-baseline gap-2 text-sm text-ink-muted">
-            <IndexMark className="text-index" />
-            {strings.destinations[here]}
-          </span>
-        ) : null}
       </div>
 
       <Strapwork />
@@ -40,6 +29,13 @@ function Lintel() {
   )
 }
 
+/**
+ * The whole of the host's chrome: a lintel, a surface, and the navigation.
+ *
+ * `min-h-full` with the surface as the only growing element keeps the
+ * navigation on the bottom edge of a short screen and at the bottom of a long
+ * one, without a fixed position that would sit over the last row of a list.
+ */
 export function Shell() {
   return (
     <div className="bg-ground text-ink flex min-h-full flex-col">
@@ -47,13 +43,10 @@ export function Shell() {
       {/* `--dw-surface-pad` rather than a literal: on a short viewport every
           band of vertical space is spoken for, and the frame's own padding is
           part of that budget (see the vertical scale in `tokens.css`). */}
-      <main className="mx-auto w-full max-w-2xl flex-1 px-[max(var(--safe-left),1rem)] pt-[var(--dw-surface-pad)] pr-[max(var(--safe-right),1rem)] pb-[max(var(--safe-bottom),var(--dw-surface-pad))]">
+      <main className="mx-auto w-full max-w-2xl flex-1 px-[max(var(--safe-left),1rem)] pt-[var(--dw-surface-pad)] pr-[max(var(--safe-right),1rem)] pb-[var(--dw-surface-pad)]">
         <Outlet />
       </main>
-      {/* One canvas for the whole app, over everything, catching nothing. It
-          carries no information and no affordance, which is what makes it safe
-          to clear at any instant. */}
-      <ReactionStage />
+      <Nav />
     </div>
   )
 }
