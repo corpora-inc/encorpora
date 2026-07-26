@@ -110,7 +110,9 @@ keytool -genkeypair -v \
 Same for the Apple artifacts: export the `.p12`, the `.p8` and the
 `.mobileprovision` into `~/.corpora-signing/` and base64 them from there. Once
 each value is a GitHub Actions secret nothing in this tree needs the file again
-— `release-dynawalla.yml` decodes every one of them into `$RUNNER_TEMP`.
+— `release-dynawalla.yml` materialises each one in ephemeral runner storage
+(the profile and the keystore under `$RUNNER_TEMP`, the certificate in a
+throwaway keychain via `apple-actions/import-codesign-certs`).
 
 A local Android release build reads `src-tauri/gen/android/keystore.properties`
 (generated, git-ignored). Point `storeFile` at the **absolute** path:
