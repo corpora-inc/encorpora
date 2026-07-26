@@ -27,14 +27,27 @@ import sys
 from typing import IO
 
 
-def diagnostic_key(message: dict) -> tuple:
-    """Identity of a diagnostic, stable across the targets that re-emit it."""
+def diagnostic_key(record: dict) -> tuple:
+    """Identity of a diagnostic, stable across the targets that re-emit it.
+
+    Takes the whole cargo envelope, not just `message`, because `file_name` in
+    the span is relative to the PACKAGE root: two crates each warning at
+    `src/lib.rs:42:5` with the same lint and text are indistinguishable without
+    `package_id`, and the second would be both uncounted and unprinted. The job
+    compiles eleven plugin crates as path deps (cargo does not `--cap-lints
+    allow` a path source), so that collision is reachable.
+
+    `--all-targets` re-emits a lib diagnostic for the lib-test target under the
+    SAME `package_id`, so cross-target de-duplication is unaffected.
+    """
+    message = record.get("message") or {}
     code = (message.get("code") or {}).get("code") or ""
     spans = message.get("spans") or []
     primary = next((s for s in spans if s.get("is_primary")), None)
     if primary is None:
         primary = spans[0] if spans else {}
     return (
+        record.get("package_id") or "",
         code,
         primary.get("file_name", ""),
         primary.get("line_start", 0),
@@ -64,7 +77,7 @@ def process(stream: IO[str], out: IO[str]) -> tuple[int, int]:
         if level not in ("warning", "error"):
             continue
 
-        key = diagnostic_key(message)
+        key = diagnostic_key(record)
         (errors if level == "error" else warnings).add(key)
 
         if key not in printed:

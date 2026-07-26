@@ -6,10 +6,11 @@ import json
 import clippy_report as cr
 
 
-def _msg(level, code, file_name, line, text, rendered=None):
+def _msg(level, code, file_name, line, text, rendered=None, package_id="pkg#0.1.0"):
     return json.dumps(
         {
             "reason": "compiler-message",
+            "package_id": package_id,
             "message": {
                 "level": level,
                 "code": {"code": code} if code else None,
@@ -88,3 +89,28 @@ def test_interleaved_non_json_lines_do_not_abort_the_stream():
 def test_note_level_is_not_counted():
     stream = io.StringIO(_msg("note", None, "src/lib.rs", 1, "an aside"))
     assert cr.process(stream, io.StringIO()) == (0, 0)
+
+
+def test_identical_spans_in_two_packages_count_twice():
+    """`file_name` is package-relative — two crates collide at src/lib.rs:42."""
+    args = ("warning", "dead_code", "src/lib.rs", 42, "field `x` is never read")
+    stream = io.StringIO(
+        _msg(*args, package_id="path+file:///repo/plugins/a#0.1.0")
+        + "\n"
+        + _msg(*args, package_id="path+file:///repo/plugins/b#0.1.0")
+    )
+    out = io.StringIO()
+    assert cr.process(stream, out) == (2, 0)
+    # Both must reach the log; suppressing the second hides a real diagnostic.
+    assert out.getvalue().count("field `x` is never read") == 2
+
+
+def test_same_package_same_span_still_counts_once():
+    """The lib/lib-test re-emission shares a package_id, so dedup survives."""
+    args = ("warning", "dead_code", "src/lib.rs", 42, "field `x` is never read")
+    stream = io.StringIO(
+        _msg(*args, package_id="path+file:///repo/a#0.1.0")
+        + "\n"
+        + _msg(*args, package_id="path+file:///repo/a#0.1.0")
+    )
+    assert cr.process(stream, io.StringIO()) == (1, 0)
