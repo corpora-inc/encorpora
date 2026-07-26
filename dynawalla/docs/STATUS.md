@@ -50,7 +50,7 @@ where they will be read before the mistake is made:
 | Founder decisions recorded in ADRs 0001 / 0013 / 0015 / 0017 | this PR |
 | Repository-license research ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)) | commissioned 2026-07-25, recommendation pending |
 | Standards-alignment research ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)) | commissioned 2026-07-25, recommendation pending |
-| Store reconnaissance — Corpán's live category/rating, the account reuse matrix, the Dynawalla name check | in flight; `TODO(store-recon)` markers left in ADR-0001, ADR-0015, ADR-0016 |
+| Store reconnaissance — Corpán's live posture, the account reuse matrix, the name check | **returned 2026-07-25**; every `TODO(store-recon)` filled in ADR-0001, ADR-0015, ADR-0016 and [STORE.md](STORE.md) |
 | Is the vendored `ndk-context` `[patch]` actually applying, or already inert? | under investigation — see below |
 | `adversarial-review` fail-open audit | under investigation — see below |
 
@@ -75,6 +75,27 @@ Two live findings. Neither has a verdict yet; nothing here should be cited as se
    merged PRs were reviewed by a truncated diff or a partially-failed lens run. Until
    PR-0a.2 lands, the diff-size discipline this program depends on is unenforced.
 
+## What the store reconnaissance changed
+
+Verified live by GET-only API calls, 2026-07-25. Four things the plan had wrong or blank:
+
+1. **Corpán is EDUCATION / REFERENCE, 4+, `kidsAgeBand: null`,
+   `isOrEverWasMadeForKids: false`** (Team `F9AV5HKF6N`). All four Corpora apps are 4+ and
+   **none has ever been in the Kids Category** — so "match Corpán" means *not* Kids, and a
+   Kids submission would inherit no in-house precedent.
+2. **Apple's Kids age bands stop at 9-11**; Play's go to 9-12. Grades 1–6 spans ages
+   6–12, so Apple cannot express the founder-stated scope. This couples
+   [ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md) to
+   [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) and is an **open founder decision**.
+3. **The ASC API key does not need re-minting** — [STORE.md](STORE.md) said it "almost
+   certainly" did. It is already a Team key with Admin scope. Budget zero.
+4. **The name is clear but not cleared.** No third-party use of "Dynawalla" anywhere; the
+   founder already owns `dynawalla.com`. Two hygiene items (a live **subdomain-takeover
+   vector** on dangling `herokudns.com` records, and a public repo tying the name to
+   supplement health claims) and two collision vectors for counsel (**Dynamo Maths**;
+   **Physics Wallah**'s "family of 'wallah' marks" injunction, if India is a market).
+   Trademark databases bot-blocked the search, so this is mirror evidence, not clearance.
+
 ## Acceptance
 
 **0 of 117** items met — [ACCEPTANCE_CRITERIA.md](ACCEPTANCE_CRITERIA.md).
@@ -87,8 +108,17 @@ Two live findings. Neither has a verdict yet; nothing here should be cited as se
 2. **`adversarial-review` fails open** (finding 2 above). Until PR-0a.2 lands, an
    oversized PR is reviewed by a truncated diff and reported green.
 3. **Two founder console sessions** (~10 minutes) are on M1's critical path and cannot
-   be automated — Apple `POST /v1/apps` returns 404 for API keys, and Play has no
-   application-create method (R-37).
+   be automated — Apple has no app-create operation at all (verified against OpenAPI
+   4.4.1) and Play has no application-create method (R-37).
+4. **Unverified and potentially a two-week calendar hit:** whether the Play developer
+   account is an *organization* account. Personal accounts created after 2023-11-13 carry
+   the **12-testers-for-14-days closed-testing gate**; organization accounts are exempt.
+   A founder console check, worth doing well before M1 (R-38b). Same trip: the numeric
+   Play developer account id, which is recorded nowhere in this repo.
+5. **Three unwritten compliance documents** whose deadlines have already passed or are in
+   force: a COPPA §312.10 retention-and-deletion policy, a §312.8 written security
+   program, and a UK Children's Code DPIA. Cheap while the answer is "we transmit
+   nothing"; nobody is assigned (R-48).
 
 **No longer a blocker:** the playtest cohort and the named art director. Both were
 resolved by [ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) — the evaluator
@@ -112,7 +142,8 @@ Still open, ordered by when they bite:
 
 | ADR | Decision | Bites at |
 |---|---|---|
-| [0016](DECISIONS/ADR-0016-app-store-product-name.md) | Product name (name check in flight) | M1, app-record creation |
+| [0016](DECISIONS/ADR-0016-app-store-product-name.md) | Product name — checks returned clean; two counsel-grade collision vectors remain | M1, app-record creation |
+| [0001](DECISIONS/ADR-0001-kids-category-posture.md) / [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | **New:** Apple's 9-11 band ceiling vs a grades 1–6 scope — declare 9-11, split SKUs, or skip the category (a trap under 2.3.8 / 5.1.4(b)) | M1, app-record creation |
 | [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 scope cut: grades 1–5, number and arithmetic | any public scope statement; M4 curriculum breadth |
 | [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license (research in flight) | M0a (fork-PR posture) |
 | [0010](DECISIONS/ADR-0010-standards-alignment-claim.md) | Standards-alignment claim (research in flight) | first public marketing copy |

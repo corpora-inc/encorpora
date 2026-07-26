@@ -377,18 +377,34 @@ dead for that app record without Google support.
 `X-03` exists for this reason alone.
 
 ### R-37 · M · Release
-**Two founder browser clicks are unavoidable and on the critical path.** Apple
-`POST /v1/apps` returns 404 and an ASC API key gets 403 on create; the Play
-`androidpublisher` v3 discovery document has no application-create method. The ASC API
-key almost certainly needs re-minting at Admin role, and the existing Play service
-account needs an explicit per-app permission grant on the new record.
+**Two founder browser clicks are unavoidable and on the critical path.** Apple has no
+app-create operation at all — verified against OpenAPI spec 4.4.1 (966 paths, no
+`apps_createInstance`), and Apple's own docs say "create new apps on the App Store Connect
+website." The Play `androidpublisher` v3 discovery document has no application-create
+method either. **Corrected 2026-07-25:** the ASC API key does **not** need re-minting —
+it already returns 200 on the Provisioning endpoints *and* on Admin-scoped `/v1/users`.
+The Play service account does still need an explicit per-app grant.
 **Mitigation:** schedule the ~10 minutes of founder console time as an M1 task, not a
-surprise (`G-09`).
+surprise (`G-09`). `grants.create` may automate the Play half but needs the numeric
+developer account id, which is not recorded anywhere in this repo.
+**Trap:** `appstoreappsreview.createappstorehostedapp` reads exactly like the app-create
+endpoint and is the **DMA alternative-app-store** pipeline. Do not call it.
 
 ### R-38 · L · Release
 **Play's first-release draft gate will bite.** On a never-published app the API can only
 create draft releases. This is Google's anti-abuse gate, not a code bug, and should not
 be debugged as one. **Mitigation:** budget one Console-side publish (`G-10`).
+
+### R-38b · M · Release + Founder
+**Play's 12-testers-for-14-continuous-days closed-testing gate may add two weeks to
+M1.** It applies to *personal* developer accounts created after 2023-11-13; organization
+accounts are exempt. **The Corpora account's type is unverified.** No engineering
+recovers a two-week calendar hit discovered at submission time.
+**Mitigation:** a founder console check, done early rather than at M1. Two other unknowns
+are worth the same trip: the **numeric Play developer account id** (needed if
+`grants.create` is to automate `G-09`), and the fact that the **Play Developer Reporting
+API is disabled** on GCP project `corpora1`, so the account's apps can only be probed by
+known package name, never enumerated.
 
 ### R-39 · L · Release
 **Play target API 36 is mandatory for new apps from 2026-08-31.** A Tauri template
@@ -469,3 +485,45 @@ design heuristics; narrow the advertised grade band to what was observed (intera
 roughly 6–7, for a single session before M9. ADR-0017 recommends the third with the
 second as a triggered fallback at M9. Until one is chosen, no public claim about grade
 1–2 suitability should be made.
+
+### R-47 · H · Native + Release
+**The forbidden-SDK list is wider than "no ads, no analytics," and one category on it is
+routinely treated as infrastructure.** Guideline 1.3 names *device information*
+explicitly, which puts **third-party crash reporters — Crashlytics, Sentry, Bugsnag — on
+the forbidden list**. Teams add those without thinking of them as a compliance decision at
+all. The full set: ad networks; third-party analytics (Firebase Analytics, Amplitude,
+Mixpanel, GA4); attribution / MMP (AppsFlyer, Adjust, Branch); crash reporters; push SDKs
+with audience segmentation; targeted remote-config and A/B tooling; social login; and
+**any SDK that declares `com.google.android.gms.permission.AD_ID`**.
+**Mitigation:** the CI dependency audit (`G-05`) plus the four mechanical gates planned in
+[STORE.md](STORE.md) — above all the **network-egress test**, which catches a chatty
+transitive dependency that no manifest inspection would.
+**Consequence if breached:** it is not only a policy problem. A crash SDK forces a
+Diagnostics disclosure and a receipt-validation backend forces a Purchases disclosure,
+either of which downgrades the "Data Not Collected" / "nothing collected, nothing shared"
+declarations that local-first earns for free.
+**And there is no fallback:** **Play's Families Self-Certified Ads SDK program is closed
+to new applicants**, so "ship clean, add ads later if the subscription underperforms" is
+not an option that exists. That interacts directly with R-45.
+
+### R-48 · M · Founder + Program
+**Two children's-privacy obligations are already in force and neither is satisfied by
+collecting nothing.**
+
+- **COPPA's 2025 amendments required full compliance by 2026-04-22 — that date has
+  passed.** Even at "we transmit nothing," the rule wants a written **§312.10
+  retention-and-deletion policy** and a written **§312.8 security program**. A UK
+  Children's Code **DPIA** is the analogous artifact on that side.
+- **Texas SB2420 and Utah's App Store Accountability Acts are in force as of July 2026
+  and apply to *all* apps, not only child-directed ones.** They require consuming
+  store-provided age signals, using them **only** for compliance, and **deleting them
+  after use** — so consume, never persist. (Secondary sourcing; flag for counsel.)
+- Also queued: **California AADCA** partially revived by the Ninth Circuit 2026-03-12;
+  **Nebraska AADC** effective 2026-01-01; **Vermont** 2027-01-01.
+
+**Mitigation:** write the three documents while the answer is "nothing" — they are cheap
+now and they are the first artifacts a school district, a regulator or an acquirer asks
+for. The store-signal rule is an architectural constraint, not paperwork: any age signal
+that arrives must be consumed and dropped, never written to storage.
+**Residual:** nobody is assigned to any of it, and "we collect nothing" reads like an
+exemption right up until someone asks for the policy document.

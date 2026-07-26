@@ -67,8 +67,12 @@ These are product constraints, not aspirations. Each has an enforcement mechanis
 - Name a child's defect in learner-facing copy. Mal-rule labels are internal; feedback
   names the correct idea. A lint enforces it.
 - Send behavioural data anywhere. All instrumentation is on-device. No third-party
-  analytics SDK, no advertising SDK — enforced by a CI dependency audit that is
-  cross-checked against the submitted Play Data safety declaration.
+  analytics SDK, no advertising SDK, no attribution SDK — and **no third-party crash
+  reporter**, which Guideline 1.3 forbids by naming device information explicitly and
+  which is the one people add without noticing ([RISKS.md](RISKS.md) R-47). Enforced by a
+  CI dependency audit cross-checked against the submitted Play Data safety declaration.
+  Because both stores define "collect" as transmitting off-device, this earns Apple's
+  **"Data Not Collected"** and Play's **"nothing collected, nothing shared"** outright.
 
 **We will:**
 

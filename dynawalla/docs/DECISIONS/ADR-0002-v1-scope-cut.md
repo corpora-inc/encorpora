@@ -32,6 +32,31 @@ quarter of the advertised coverage, or get laundered into `{kind: "choice", k: 4
 frame. It teaches nothing about symmetry and it is exactly the failure mode this product
 exists to avoid.
 
+## The store age bands constrain this decision — recorded 2026-07-25
+
+New information, and it means this ADR and
+[ADR-0001](ADR-0001-kids-category-posture.md) are two views of one decision.
+
+**Apple's Kids Category bands are 5-and-under, 6-8 and 9-11, and exactly one is
+chosen. There is no band above 9-11.** Play's target-audience declaration is
+multi-select and does have a 9-12 band, so Play can express the founder-stated scope and
+Apple cannot.
+
+Grades 1–6 plus intro pre-algebra spans roughly **ages 6–12**:
+
+- **Option A below (grades 1–5) lands exactly inside Apple's 9-11 ceiling.** The scope
+  cut and the Apple band become consistent for free.
+- **Option B (the founder-stated scope) pushes past it**, and then requires one of:
+  declaring 9-11 anyway and skewing the listing to the top of the range; splitting into
+  two SKUs; or skipping the Kids Category — which Guideline 2.3.8 and 5.1.4(b) make a
+  trap rather than an escape, because child-implying metadata is reserved *to* the
+  category and forbidden *outside* it.
+
+This is not an argument for option A. It is a cost that was previously invisible on
+option B and should be priced in when the founder decides. The band choice itself is a
+separate founder decision and is **not made**; see
+[ADR-0001](ADR-0001-kids-category-posture.md).
+
 ## Options
 
 **A — V1 as scoped below (recommended by the program).** Ship grades 1–5 number and

@@ -258,9 +258,11 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       A9 SM-X110 and launches.
       Verify: recorded install.
       Evidence: UNMET
-- [ ] **X-03** The generated Gradle `applicationId` is verified as
-      `inc.corpora.dynawalla` **before** the first AAB upload. The Play package name is
-      locked by the first upload and cannot be changed without Google support.
+- [ ] **X-03** The generated Gradle `applicationId` is read and verified as exactly
+      `inc.corpora.dynawalla` **before** the first AAB upload. **The Play package name is
+      locked forever by the first upload** — not by the first release — and cannot be
+      changed without Google support, which in practice means not at all. This is the
+      single most expensive mistake available in the store runbook (R-36).
       Verify: build log line quoted in the PR; upload timestamp after it.
       Evidence: UNMET
 - [ ] **X-04** `p_align == 0x4000` for every `.so` in the Dynawalla AAB.
@@ -507,22 +509,37 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)); CG-20 stays
       report-only unless it says otherwise.
       Evidence: UNMET
-- [ ] **G-05** No third-party analytics or advertising SDK exists in either bundle.
+- [ ] **G-05** No SDK from any forbidden category exists in either bundle: ad networks,
+      third-party analytics, attribution/MMP, **third-party crash reporters**, push with
+      audience segmentation, targeted remote-config/A-B, social login, or anything
+      declaring `com.google.android.gms.permission.AD_ID` ([RISKS.md](RISKS.md) R-47).
       Verify: the CI dependency audit, cross-checked against the submitted Play Data
-      safety declaration.
+      safety declaration; plus the network-egress test asserting **zero** outbound
+      requests on cold launch and through a full lesson.
       Evidence: UNMET
-- [ ] **G-06** No AAID / IMEI / MAC / phone number is transmitted and no precise
-      location is collected.
-      Verify: dependency audit plus a device network capture during the release pass.
+- [ ] **G-06** None of AAID, SIM Serial, Build Serial, BSSID, MAC, SSID, IMEI or IMSI is
+      transmitted; the phone number is never requested via `TelephonyManager`; **no
+      location permission of any kind** is declared.
+      Verify: assertions on the **merged** `AndroidManifest.xml` (no `AD_ID`, no
+      `ACCESS_*_LOCATION`, no `READ_PHONE_STATE`), the iOS check for no
+      `ASIdentifierManager`/`ATTrackingManager` and no `NSUserTrackingUsageDescription`,
+      plus a device network capture during the release pass.
       Evidence: UNMET
 - [ ] **G-07** Apple age rating and Play target-audience/content-rating declarations
-      are complete and consistent with actual behaviour and with the CI audit.
+      are complete and consistent with actual behaviour and with the CI audit, and the
+      elected Apple band (5-and-under / 6-8 / 9-11 — exactly one) is consistent with the
+      shipped curriculum range ([ADR-0001](DECISIONS/ADR-0001-kids-category-posture.md)).
       Verify: both console declarations against the audit output.
       Evidence: UNMET
-- [ ] **G-08** A parental gate stands in front of every link-out and every purchase
-      flow.
-      Verify: route-guard test enumerating external links and purchase entry points;
-      device pass.
+- [ ] **G-08** A parental gate stands in front of every link-out, every purchase,
+      paywall and price display, Restore Purchases, the parent dashboard, anything that
+      emails or shares a child's work, and the microphone and push permission prompts.
+      The challenge is **non-arithmetic**, randomized and non-persistent across sessions
+      ([ADR-0005](DECISIONS/ADR-0005-shell-and-routing.md)); the privacy policy is an
+      in-app screen rather than an external URL, so it needs no gate.
+      Verify: route-guard test enumerating every entry point above; a test asserting the
+      challenge draws from a non-curricular pool and varies between invocations; device
+      pass.
       Evidence: UNMET
 - [ ] **G-09** Play Console shows the service account granted explicit per-app
       permission on the new Dynawalla app record.

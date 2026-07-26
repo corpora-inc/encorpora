@@ -63,13 +63,27 @@ parent can understand before they hit it. [RISKS.md](../RISKS.md) R-45 carries t
 
 This ADR being `Accepted (direction)` explicitly does **not** close that question.
 
+**And the obvious fallback does not exist.** "Ship clean, add an ad-supported tier if the
+subscription underperforms" is not available: **Play's Families Self-Certified Ads SDK
+program is closed to new applicants** ([RISKS.md](../RISKS.md) R-47). Whatever this
+product's revenue model turns out to be, it is a paid one or it is nothing.
+
+**Keep entitlements local.** Both stores define "collect" as transmitting off-device, so
+the local-first architecture earns **Apple "Data Not Collected"** and **Play "nothing
+collected, nothing shared"** for free. A **receipt-validation backend is one of exactly
+two things that would break it** (the other being a third-party crash SDK) by forcing a
+Purchases disclosure. That is a genuine constraint on how the subscription is verified,
+not a preference — and it happens to point the same way as the
+never-block-an-offline-subscriber policy above.
+
 ## Consequences that apply to any paid option
 
-- Every purchase surface sits behind the `<ParentalGate>` shipped in M1 (`G-08`), and the
-  category interaction is [ADR-0001](ADR-0001-kids-category-posture.md): Play's Families
-  Policy and Apple's Kids Category both constrain how a purchase may be surfaced to a
-  child, which is why the category election is deferred until the purchase surface
-  exists.
+- Every purchase surface sits behind the `<ParentalGate>` shipped in M1 (`G-08`) — every
+  paywall, every **price display**, and **Restore Purchases** — and the gate's challenge
+  is **never arithmetic** ([ADR-0005](ADR-0005-shell-and-routing.md)). The category
+  interaction is [ADR-0001](ADR-0001-kids-category-posture.md): Play's Families Policy and
+  Apple's Kids Category both constrain how a purchase may be surfaced to a child, which is
+  why the category election is deferred until the purchase surface exists.
 - Purchase surfaces must never be adjacent to a failure or a challenge outcome. The
   negative example is documented: reviewers logged 16 membership ads in a 19-minute
   Prodigy session, which drew an FTC complaint alleging manipulative upselling to

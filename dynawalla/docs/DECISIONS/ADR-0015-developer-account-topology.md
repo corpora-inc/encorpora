@@ -25,11 +25,38 @@ The founder's answer:
 Play developer account as Corpán.** Option A. Everything in [STORE.md](../STORE.md) as
 written holds.
 
-`TODO(store-recon)` — a store reconnaissance is in flight to confirm the exact reuse
-matrix: which Apple certificate, key and identifier records are genuinely reusable versus
-which must be minted new, and the Play service account's current role. The two
-new-credential items above are asserted by the plan; the recon confirms them rather than
-this ADR asserting more specifics than have been verified.
+## The reuse matrix, verified 2026-07-25
+
+Store reconnaissance returned. Everything below was checked with live GET-only API calls;
+nothing here is inferred from the plan.
+
+**Reused — no new artifact needed:**
+
+- The **Apple Distribution certificate** (`Apple Distribution: Corpora Inc`, expires
+  2027-04-16, team-wide).
+- The **ASC API key** — see the correction in [STORE.md](../STORE.md): it does *not* need
+  re-minting.
+- The **Apple Team ID** `F9AV5HKF6N`.
+- The **Play service-account identity** — the identity only, not its access.
+- The existing **parameterized tooling**, `corpan/infra/asc/asc_monetization.py` and
+  `corpan/infra/play/play_monetization.py`, both already keyed off a bundle-id /
+  package-name variable.
+
+**New and mandatory:**
+
+- The **iOS provisioning profile.** Profiles bind to one explicit bundle id; no wildcard
+  spans both `com.corpora.*` and `inc.corpora.*`, **and wildcards cannot carry IAP**.
+- The **Android upload keystore**, deliberately separate so one compromised key does not
+  risk two shipping apps.
+- **Play App Signing enrolment.**
+- A **new AWS secret path.** Do **not** widen `corpan/content-packs/verify` — a live
+  purchase-verify lambda reads it.
+- An **explicit per-app Play permission grant** for the service account (`G-09`).
+
+**Proven, not assumed:** the Play service account returns **403** on
+`com.corpora.homeschool` and `com.pako.app`. Two sibling apps on the same account are
+already invisible to it today. Per-app grants demonstrably do not inherit, so `G-09` is a
+real step and not a formality.
 
 ## Consequences, accepted as trade-offs
 
