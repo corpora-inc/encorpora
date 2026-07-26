@@ -31,17 +31,27 @@ finding this gate ever produced was mechanically correct and over-graded, and
 the cause was an uncalibrated one-sentence security prompt next to three
 paragraphs of correctness calibration.
 
-CONFIRMATION. A finding that grades HIGH is re-asked once, alone, against the
-WHOLE FILE at head instead of one diff chunk. Only a positive "not a blocking
-problem" verdict clears it; a confirmed HIGH, an errored confirmation, an
-unparseable verdict, and a HIGH we could not build full-file context for all
-still block. Cleared HIGHs are NOT hidden — they are listed in the sticky
-comment and logged, so an over-eager clear is visible. Confirmation costs one
-call per HIGH finding and nothing at all on a clean diff.
+CONFIRMATION. A finding that grades HIGH is re-asked once, alone, against BOTH
+the whole file at head AND the diff this branch applied to that file — the two
+halves the first pass lacked. The diff is not decoration: a finding about
+something the change REMOVED (a deleted guard, a dropped back-compat alias) is
+invisible in head state, where the honest read is "I see no such code", so a
+head-only confirmer would clear exactly the change-relative findings the
+correctness and pack-compat lenses exist to catch. A HIGH naming a file the
+reviewed range never touched is NOT confirmed at all — the second pass would be
+reading unrelated pre-existing code — and stays blocking.
+
+Only a positive "not a blocking problem" verdict clears a HIGH; a confirmed
+HIGH, an errored confirmation, an unparseable verdict, an off-diff file, an
+unreadable file and over-budget context all still block. Cleared HIGHs are NOT
+hidden — they are listed in the sticky comment and logged, so an over-eager
+clear is visible. Confirmation costs one call per DISTINCT finding (all three
+lenses reporting one defect share a single call) and nothing on a clean diff.
 
 MODELS are pinned to ALLOWED_MODELS. ADVERSARIAL_MODEL can only select from
 that set, so weakening every lens at once takes a PR through this gate rather
-than a silent repo-variable edit with no audit trail.
+than a silent repo-variable edit with no audit trail. It is NOT a spend knob:
+an unrecognised value is a hard error, not a fallback.
 
 There is deliberately NO waiver, suppression, annotation, or PR-body override.
 See the note above confirm_findings before adding one.
@@ -65,7 +75,10 @@ secret to add). Self-contained: stdlib only (urllib), so CI needs no pip install
 Env:
   ANTHROPIC_API_KEY   if set → review via Claude (preferred)
   OPENAI_KEY / OPENAI_API_KEY   fallback → review via OpenAI
-  ADVERSARIAL_MODEL   model id override; MUST be in ALLOWED_MODELS[provider]
+  ADVERSARIAL_MODEL   model id override; MUST be in ALLOWED_MODELS[provider].
+                      Anything else is a hard error, NOT a fallback — so this
+                      is not a cost lever, and setting it to an unlisted id
+                      reds this required check until it is unset again.
   ADVERSARIAL_WORKERS concurrent model calls (default 3)
   GITHUB_TOKEN        for posting the sticky PR comment (optional in merge_group)
   GITHUB_REPOSITORY   owner/repo (set by Actions)
@@ -102,12 +115,26 @@ MARKER = "<!-- adversarial-review -->"
 # every check stayed green. Widening this set is a code change that must itself
 # pass this gate.
 #
-# Keep entries to models actually validated against these prompts. The OpenAI
-# branch lists only the id this repo has ever run, deliberately: an id that
-# does not exist is a 400, which is a lens error, which is a repo-wide block —
-# so a guessed entry is worse than no entry.
+# Every entry must be an id this gate has ACTUALLY RUN against these prompts
+# and this exact request shape, so today each provider lists exactly one: the
+# default. ADVERSARIAL_MODEL has never been set, so nothing else has ever been
+# exercised, and an entry that fails is a 400 → a lens error → a repo-wide
+# block. A guessed entry is worse than no entry.
+#
+# The first draft of this list also carried claude-fable-5 and claude-opus-4-8.
+# Neither had run. Both are one repo-variable edit from a repo-wide red: this
+# script always sends `fallbacks: "default"` under the
+# server-side-fallback-2026-07-01 beta, and the fallback target set is a
+# property of the REQUESTED model (claude-opus-4-8 is itself Opus 5's documented
+# fallback target), while claude-fable-5 additionally requires 30-day
+# organization data retention or every request 400s. Unproven against the
+# payload we send = not in the set.
+#
+# Widening it means running the candidate against this script and updating
+# test_the_allow_list_holds_only_ids_this_gate_has_run — deliberately, in a PR
+# that passes this gate.
 ALLOWED_MODELS = {
-    "anthropic": {"claude-opus-5", "claude-fable-5", "claude-opus-4-8"},
+    "anthropic": {"claude-opus-5"},
     "openai": {"gpt-4.1"},
 }
 
@@ -405,10 +432,16 @@ CONFIRM_MARKER = "SECOND-PASS CONFIRMATION"
 CONFIRM_HINT = (
     CONFIRM_MARKER + ". A first-pass reviewer saw ONE CHUNK of a unified diff "
     "and graded the finding below at blocking severity. You are now looking at "
-    "the COMPLETE file as it stands at the head of this branch — the full "
-    "context that pass did not have.\n\n"
+    "BOTH halves of the context that pass did not have: the COMPLETE CHANGE "
+    "this branch made to the file, and the COMPLETE FILE as it stands at the "
+    "head of the branch.\n"
+    "Read BOTH. The diff is the only place a REMOVAL is visible — if the "
+    "finding is about something the change deleted, renamed, or replaced (a "
+    "dropped guard, a removed alias, a deleted check), the head file will not "
+    "contain it and its absence there is NOT evidence the finding is wrong. "
+    "The file is where you see the surrounding code the chunk cut off.\n\n"
     "Decide one thing: is this a real, blocking-severity problem?\n"
-    "Answer false when the full file shows the concern is already handled, "
+    "Answer false when the full context shows the concern is already handled, "
     "when it rested on context the chunk was missing, when the code is not "
     "what the first pass took it for, or when it is a real defect that the "
     "severity ladder does not put at HIGH.\n"
@@ -416,7 +449,7 @@ CONFIRM_HINT = (
     "specific thing they gain, per that ladder.\n\n"
     "This is a precision check on ONE finding, not a re-review: do not look "
     "for new problems, and do not confirm this finding because you noticed a "
-    "different one. If the file does not let you decide, answer true — an "
+    "different one. If the context does not let you decide, answer true — an "
     "undecidable blocking finding stays blocking.\n\n"
     'Respond with ONLY a JSON object, no prose: {"confirmed": true|false, '
     '"reason": "one sentence"}'
@@ -428,15 +461,16 @@ CONFIRM_SYSTEM = (
     "real defects: a wrong block and a missed defect are both failures."
 )
 
-# Confirmation reads whole files, so it needs its own ceiling. A file over this
-# budget is not confirmed at all rather than confirmed against a truncated
-# view — truncation is what the first pass already suffered from, and
-# "confirmed against half a file" is a worse answer than "not checked".
-CONFIRM_MAX_FILE_CHARS = 400000
+# Confirmation reads a whole file PLUS the change that produced the finding, so
+# it needs its own ceiling — measured over both, because that is what is sent.
+# Context over this budget is not confirmed at all rather than confirmed against
+# a truncated view: truncation is what the first pass already suffered from, and
+# "confirmed against half the context" is a worse answer than "not checked".
+CONFIRM_MAX_CONTEXT_CHARS = 400000
 
-# Upper bound on confirmation calls per run. Past this the PR is thoroughly
-# blocked anyway, and the remaining HIGHs stay blocking unchecked — the
-# fail-closed direction.
+# Upper bound on confirmation calls per run, counted over DISTINCT findings.
+# Past this the PR is thoroughly blocked anyway, and the remaining HIGHs stay
+# blocking unchecked — the fail-closed direction.
 MAX_CONFIRMATIONS = 20
 
 
@@ -606,6 +640,34 @@ def get_diff(spec):
                 "refusing to pass a review that read nothing."
             )
     return diff
+
+
+def changed_files(spec):
+    """The set of paths `spec` changed, spelled exactly as git spells them.
+
+    Used to reject a finding whose file the branch never touched. `-z` because
+    core.quotePath renders a non-ASCII path as a C-quoted string that would
+    never match the path `git show` resolved, turning a legitimate confirmation
+    into a skip for anyone with an accented filename.
+    """
+    rc, out, err = run(["git", "diff", "--name-only", "-z", spec])
+    if rc != 0:
+        raise ReviewError(
+            f"git diff --name-only {spec} failed (exit {rc}): {err.strip()}"
+        )
+    return {name for name in out.split("\0") if name}
+
+
+def file_diff(spec, path):
+    """The unified diff this branch applied to one path, or "" if git failed.
+
+    Empty is safe rather than fail-closed here: the caller has already
+    established the path IS in the reviewed range, and losing the diff only
+    degrades the second pass to the head-only view it had before — which
+    answers "true" (blocking) when it cannot decide.
+    """
+    rc, out, _ = run(["git", "diff", "--unified=3", spec, "--", path])
+    return out if rc == 0 else ""
 
 
 # ------------------------------------------------------------------- chunking
@@ -1253,8 +1315,21 @@ def is_blocking(finding):
     return finding.get("confirmation") != CONFIRM_CLEARED
 
 
+class FileAtHead(NamedTuple):
+    """A file the confirmation pass resolved, and the path git resolved it AT.
+
+    `path` matters as much as `text`: `file_at` tries several spellings of a
+    model-supplied path, so the caller must test membership of the reviewed
+    diff against the spelling git actually accepted, not the one the model
+    wrote.
+    """
+
+    path: str
+    text: str
+
+
 def file_at(head, path):
-    """Full text of `path` at `head`, or None when it cannot be read.
+    """`FileAtHead` for `path` at `head`, or None when it cannot be read.
 
     None is a legitimate answer — a deleted file, a path the model invented,
     or a binary blob — and the caller treats it as "cannot confirm", which
@@ -1265,48 +1340,73 @@ def file_at(head, path):
     path = (path or "").strip()
     if not path or "\n" in path or len(path) > 400 or path in ("?", "<unknown>"):
         return None
-    candidates = [path]
-    # Diff headers are `a/<path>` / `b/<path>` and models sometimes copy the
-    # prefix into the finding. Try the literal path FIRST so a real top-level
-    # `a/` directory is never shadowed by the stripped form.
-    if path.startswith(("a/", "b/")):
-        candidates.append(path[2:])
+    candidates = []
+    # `./` FIRST, unlike the diff prefixes below. A git tree can never hold a
+    # literal `./` entry; `git show <head>:./x` resolves only because the rev
+    # parser expands it against the working directory, and the caller would
+    # then be holding a spelling `git diff --name-only` never prints — so a
+    # `./`-prefixed finding would look like it named an untouched file.
     if path.startswith("./"):
+        candidates.append(path[2:])
+    candidates.append(path)
+    # Diff headers are `a/<path>` / `b/<path>` and models sometimes copy the
+    # prefix into the finding. Try the literal path FIRST here, so a real
+    # top-level `a/` directory is never shadowed by the stripped form; when the
+    # prefix IS an artifact the literal simply does not resolve.
+    if path.startswith(("a/", "b/")):
         candidates.append(path[2:])
     for candidate in candidates:
         rc, out, _ = run(["git", "show", f"{head}:{candidate}"])
         if rc == 0:
-            return out
+            return FileAtHead(candidate, out)
     return None
 
 
-def build_confirm_prompt(finding, source):
-    """The single-finding, whole-file question put to the second pass."""
-    lens = str(finding.get("lens") or "")
-    location = str(finding.get("file", "?"))
+def build_confirm_prompt(finding, lenses, source, diff):
+    """The single-finding question put to the second pass.
+
+    Carries BOTH halves of the context the first pass lacked: the change this
+    branch made to the file, and the whole file at head. The diff is NOT
+    optional. A finding about something the change deleted — a removed guard, a
+    dropped back-compat alias, a deleted platform floor — cannot be judged from
+    head state, where the thing simply is not present and the honest reading is
+    "I see no such code, not a blocking problem". That is a clearance, and it
+    is wrong, and it is the shape most of what the correctness and pack-compat
+    lenses look for takes.
+
+    `lenses` is every lens that reported this finding: one defect all three
+    noticed is confirmed once, so the confirmer gets all three framings.
+    """
+    path = str(finding.get("file", "?"))
+    location = path
     if finding.get("line"):
         location += f":{finding['line']}"
+    instructions = "\n\n".join(LENSES[name] for name in lenses if name in LENSES)
+    change = diff.strip() or "(git produced no diff for this path)"
     return (
-        f"{LENSES.get(lens, '')}\n\n{SEVERITY_LADDER}\n\n{CONFIRM_HINT}\n\n"
-        f"FINDING (reported by the {lens} lens at blocking severity)\n"
+        f"{instructions}\n\n{SEVERITY_LADDER}\n\n{CONFIRM_HINT}\n\n"
+        f"FINDING (reported at blocking severity by: "
+        f"{', '.join(lenses) or 'unknown'})\n"
         f"location: {location}\n"
         f"title: {str(finding.get('title', '')).strip()}\n"
         f"detail: {str(finding.get('detail', '')).strip()}\n\n"
-        f"COMPLETE CURRENT CONTENTS OF `{finding.get('file', '?')}`:\n"
+        f"THE CHANGE UNDER REVIEW — what this branch did to `{path}`:\n"
+        f"```diff\n{change}\n```\n\n"
+        f"COMPLETE CONTENTS OF `{path}` AT THE HEAD OF THIS BRANCH:\n"
         f"```\n{source}\n```"
     )
 
 
-def _confirm_one(provider, key, model, finding, source):
+def _confirm_one(provider, key, model, finding, lenses, source, diff):
     """Second-pass verdict on one finding. Returns (state, reason)."""
-    label = f"confirmation of {finding.get('lens')} finding in {finding.get('file')}"
+    label = f"confirmation of {'/'.join(lenses)} finding in {finding.get('file')}"
     try:
         raw = call_model(
             provider,
             key,
             model,
             CONFIRM_SYSTEM,
-            build_confirm_prompt(finding, source),
+            build_confirm_prompt(finding, lenses, source, diff),
             schema=CONFIRM_SCHEMA,
         )
     except Exception as e:  # noqa: BLE001
@@ -1323,13 +1423,34 @@ def _confirm_one(provider, key, model, finding, source):
     return (CONFIRM_UPHELD if confirmed else CONFIRM_CLEARED), reason
 
 
-def confirm_findings(provider, key, model, findings, head, workers):
-    """Re-check every blocking-severity finding against its whole file.
+def _mark(group, state, reason):
+    """Record one confirmation outcome across every finding that shares it."""
+    for f in group:
+        f["confirmation"] = state
+        f["confirmation_reason"] = reason
+
+
+def confirm_findings(provider, key, model, findings, rng, changed, workers):
+    """Re-check every blocking-severity finding against its file AND its diff.
 
     This targets the gate's measured failure mode: ONE low-precision call that
     saw a diff chunk and nothing else. It runs only on HIGH findings, so a
     clean diff costs nothing and a normal diff costs at most a handful of
     calls.
+
+    THREE things must hold before a HIGH is re-asked at all; each failure is a
+    SKIP, which keeps the finding blocking:
+
+      * the severity was a graded judgment (an unreadable one is not a judgment
+        to re-check — it fails closed on its own terms),
+      * the file resolves at head, and
+      * the resolved file is IN the reviewed range. A model naming the wrong
+        file is a routine error — a chunk spans several files and the finding
+        lands under the wrong `diff --git` header — and confirming it would
+        send the second pass into unrelated code that predates this branch,
+        where the correct answer to "is this a real, blocking problem" is
+        "no". That is a clearance produced by a mis-typed path, which is the
+        least reliable field in the whole finding.
 
     DELIBERATE: this is the ONLY mechanism that can stop a HIGH from blocking,
     and it is the model re-reading the file. There is NO waiver, no suppression
@@ -1351,37 +1472,74 @@ def confirm_findings(provider, key, model, findings, head, workers):
             continue
         pending.append(f)
 
-    for f in pending[MAX_CONFIRMATIONS:]:
-        f["confirmation"] = CONFIRM_SKIPPED
-        f["confirmation_reason"] = (
-            f"more than {MAX_CONFIRMATIONS} blocking findings — not re-checked"
+    # One call per DISTINCT defect, not per lens that noticed it. dedupe() keys
+    # on the lens as well, so a single defect all three lenses report survives
+    # as three findings — and confirming each of them separately spent three
+    # whole-file calls, from a fixed budget, asking one question. Group them and
+    # fan the verdict back out.
+    groups = {}
+    for f in pending:
+        ident = (str(f.get("file")), str(f.get("line")), str(f.get("title")))
+        groups.setdefault(ident, []).append(f)
+    ordered = list(groups.values())
+
+    for group in ordered[MAX_CONFIRMATIONS:]:
+        _mark(
+            group,
+            CONFIRM_SKIPPED,
+            f"more than {MAX_CONFIRMATIONS} distinct blocking findings — "
+            "not re-checked",
         )
 
     jobs = []
-    for f in pending[:MAX_CONFIRMATIONS]:
-        source = file_at(head, str(f.get("file") or ""))
-        if source is None:
-            f["confirmation"] = CONFIRM_SKIPPED
-            f["confirmation_reason"] = "could not read the full file at head"
-        elif len(source) > CONFIRM_MAX_FILE_CHARS:
-            f["confirmation"] = CONFIRM_SKIPPED
-            f["confirmation_reason"] = (
-                f"file exceeds the {CONFIRM_MAX_FILE_CHARS}-char confirmation budget"
+    for group in ordered[:MAX_CONFIRMATIONS]:
+        at_head = file_at(rng.head, str(group[0].get("file") or ""))
+        if at_head is None:
+            _mark(group, CONFIRM_SKIPPED, "could not read the full file at head")
+            continue
+        if at_head.path not in changed:
+            _mark(
+                group,
+                CONFIRM_SKIPPED,
+                f"`{at_head.path}` is not in the reviewed diff — not re-checked",
             )
-        else:
-            jobs.append((f, source))
+            continue
+        diff = file_diff(rng.spec, at_head.path)
+        if len(at_head.text) + len(diff) > CONFIRM_MAX_CONTEXT_CHARS:
+            _mark(
+                group,
+                CONFIRM_SKIPPED,
+                f"file and diff exceed the {CONFIRM_MAX_CONTEXT_CHARS}-char "
+                "confirmation budget",
+            )
+            continue
+        lenses = list(dict.fromkeys(str(f.get("lens") or "") for f in group))
+        jobs.append((group, lenses, at_head.text, diff))
+
+    # The lens pass has already spent from the same wall clock. Say so rather
+    # than letting every remaining call fail one at a time and reporting it as
+    # "confirmation call failed", which reads as a provider outage.
+    if jobs and _time_left() <= 0:
+        for group, *_ in jobs:
+            _mark(
+                group,
+                CONFIRM_SKIPPED,
+                "review time budget exhausted before the confirmation pass",
+            )
+        jobs = []
 
     if jobs:
         with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
             results = list(
                 pool.map(
-                    lambda job: _confirm_one(provider, key, model, job[0], job[1]),
+                    lambda job: _confirm_one(
+                        provider, key, model, job[0][0], job[1], job[2], job[3]
+                    ),
                     jobs,
                 )
             )
-        for (f, _), (state, reason) in zip(jobs, results):
-            f["confirmation"] = state
-            f["confirmation_reason"] = reason
+        for (group, *_), (state, reason) in zip(jobs, results):
+            _mark(group, state, reason)
     return findings
 
 
@@ -1408,9 +1566,12 @@ def render_markdown(audit, all_findings):
         for f in all_findings
         if f["severity_norm"] == "high" and not is_blocking(f)
     ]
-    # Partition by IDENTITY, not equality: `f not in cleared` compares dicts by
-    # value, so two findings that happen to render identically would both
-    # vanish from the main list.
+    # Partition by IDENTITY, not equality. Defensive rather than load-bearing:
+    # every cleared finding carries confirmation == CONFIRM_CLEARED and every
+    # blocking one carries something else, so no cleared/blocking pair can be
+    # dict-equal today and `f not in cleared` would behave the same. Identity is
+    # free, is right whatever a later change does to those fields, and is not
+    # O(n^2) — but it is not fixing an observed bug.
     cleared_ids = {id(f) for f in cleared}
     listed = [f for f in all_findings if id(f) not in cleared_ids]
 
@@ -1607,6 +1768,9 @@ def main():
         workers = int(os.environ.get("ADVERSARIAL_WORKERS") or DEFAULT_WORKERS)
         rng = resolve_range()
         diff = get_diff(rng.spec)
+        # Resolved once, up front, and used by the confirmation pass to reject
+        # a finding whose file this branch never touched.
+        changed = changed_files(rng.spec)
         chunks, oversized, hard_split = chunk_diff(diff, budget)
         # Coverage is the whole point of chunking. Assert it before spending a
         # single API call, and fail closed if the split ever loses a character.
@@ -1679,9 +1843,12 @@ def main():
 
     findings = dedupe(findings)
     # Precision pass on blocking findings only: re-read each against its whole
-    # file. Only an explicit clearance stops one blocking; every other outcome,
-    # including an API error, leaves it blocking.
-    findings = confirm_findings(provider, key, model, findings, rng.head, workers)
+    # file AND the change this branch made to it. Only an explicit clearance
+    # stops one blocking; every other outcome, including an API error, an
+    # off-diff file, and an exhausted budget, leaves it blocking.
+    findings = confirm_findings(
+        provider, key, model, findings, rng, changed, workers
+    )
     body, blocking = render_markdown(audit, findings)
     publish(body)
 

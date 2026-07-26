@@ -960,8 +960,23 @@ def test_an_unrecognized_model_is_not_silently_replaced_by_the_default(monkeypat
 
 
 def test_allowed_override_is_used(monkeypatch):
-    monkeypatch.setenv("ADVERSARIAL_MODEL", "claude-opus-4-8")
-    assert ar.resolve_model("anthropic") == "claude-opus-4-8"
+    for provider, allowed in ar.ALLOWED_MODELS.items():
+        for model in sorted(allowed):
+            monkeypatch.setenv("ADVERSARIAL_MODEL", model)
+            assert ar.resolve_model(provider) == model, (provider, model)
+
+
+def test_the_allow_list_holds_only_ids_this_gate_has_run():
+    """The allow-list's whole value is that a listed id is SAFE to select. An
+    id nobody has run against this exact request shape is one repo-variable
+    edit from a 400, which is a lens error, which is a repo-wide block — the
+    outcome the list exists to prevent.
+
+    ADVERSARIAL_MODEL has never been set, so the only id each provider has
+    actually run is its default. Widening the set means running the candidate
+    first and then changing this test on purpose."""
+    for provider, allowed in ar.ALLOWED_MODELS.items():
+        assert allowed == {ar.DEFAULT_MODEL[provider]}, provider
 
 
 def test_unset_or_blank_override_uses_the_default(monkeypatch):
@@ -1023,9 +1038,23 @@ def _count_confirmations(gate, review_reply, verdict):
 
 
 def test_confirmed_high_blocks(gate):
-    # One confirmation per reporting lens: all three report the same finding.
+    # ONE confirmation, not one per lens: all three report the same defect at
+    # the same location, so it is one question and one whole-file call.
     code, confirmations = _count_confirmations(gate, _high(), True)
-    assert (code, confirmations) == (1, len(ar.LENSES))
+    assert (code, confirmations) == (1, 1)
+
+
+def test_one_defect_costs_one_confirmation_and_the_verdict_fans_out(gate, monkeypatch):
+    """dedupe() keys on the lens, so a defect all three lenses notice survives
+    as three findings. Confirming each separately spent three whole-file calls
+    — from a budget of 20 — asking one question three times."""
+    posted = []
+    monkeypatch.setattr(ar, "post_sticky_comment", posted.append)
+    code, confirmations = _count_confirmations(gate, _high(title="one defect"), False)
+    assert (code, confirmations) == (0, 1)
+    # The single verdict reached every lens's copy of the finding.
+    assert posted[0].count("one defect") == len(ar.LENSES)
+    assert posted[0].count("cleared: because") == len(ar.LENSES)
 
 
 def test_unconfirmed_high_does_not_block(gate):
@@ -1057,12 +1086,12 @@ def test_confirmation_error_blocks(gate):
     provider becomes a way to merge anything. The call-count assertion proves
     the confirmation actually ran and errored, rather than never happening."""
     code, confirmations = _count_confirmations(gate, _high(), RuntimeError("HTTP 500"))
-    assert (code, confirmations) == (1, len(ar.LENSES))
+    assert (code, confirmations) == (1, 1)
 
 
 def test_confirmation_unparseable_reply_blocks(gate):
     code, confirmations = _count_confirmations(gate, _high(), "looks fine to me")
-    assert (code, confirmations) == (1, len(ar.LENSES))
+    assert (code, confirmations) == (1, 1)
 
 
 def test_confirmation_reads_the_whole_file_not_the_diff_chunk(gate):
@@ -1078,13 +1107,104 @@ def test_confirmation_reads_the_whole_file_not_the_diff_chunk(gate):
 
     gate(reply)
     assert ar.main() == 0
-    # One confirmation per reporting lens — they are distinct findings.
     confirms = [p for p in prompts if ar.CONFIRM_MARKER in p]
-    assert len(confirms) == len(ar.LENSES)
+    assert len(confirms) == 1
     # Present in the file at head, and impossible for any diff hunk to contain.
     assert all("SENTINEL_ONLY_IN_THE_WHOLE_FILE" in p for p in confirms)
     reviews = [p for p in prompts if ar.CONFIRM_MARKER not in p]
     assert not any("SENTINEL_ONLY_IN_THE_WHOLE_FILE" in p for p in reviews)
+
+
+def test_confirmation_also_carries_the_change_not_only_head_state(gate):
+    """Head state alone cannot answer a finding about a REMOVAL: the removed
+    line is not in the file, and the honest reading of its absence is "no such
+    code, not a blocking problem" — a clearance, and a wrong one. The stub
+    below stands in for that honest confirmer: it upholds the finding only if
+    the prompt actually shows the deletion."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return _high(title="the change deleted `line 55`")
+        removed = "\n-line 55\n" in user
+        return json.dumps({"confirmed": removed, "reason": "read the diff"})
+
+    gate(reply)
+    assert ar.main() == 1  # the deletion was visible, so the HIGH stood
+    confirm = next(p for p in prompts if ar.CONFIRM_MARKER in p)
+    assert "```diff" in confirm
+    assert "\n-line 55\n" in confirm  # what the branch removed
+    assert "\n+line 55 edited on the feature branch\n" in confirm  # ...and added
+    assert "SENTINEL_ONLY_IN_THE_WHOLE_FILE" in confirm  # ...plus the whole file
+
+
+def test_a_high_on_a_file_outside_the_reviewed_diff_is_never_confirmed(gate):
+    """`base.txt` predates the branch and the reviewed range does not touch it.
+    Confirming a finding against it would put the second pass in unrelated,
+    pre-existing code — where "no, not a blocking problem introduced here" is
+    the correct answer and a clearance is the wrong outcome. A mis-attributed
+    path is a routine model error, so the least reliable field in the finding
+    must not be able to select what the only un-blocking mechanism reads."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return _high(file="base.txt")
+        return '{"confirmed": false, "reason": "nothing wrong in this file"}'
+
+    gate(reply)
+    assert ar.main() == 1
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+
+
+@pytest.mark.parametrize("spelling", ["context.txt", "b/context.txt", "./context.txt"])
+def test_a_prefixed_path_is_still_recognised_as_part_of_the_diff(gate, spelling):
+    """The off-diff check must not turn every model spelling of a real path
+    into a skip. `git diff --name-only` prints `context.txt`; the finding may
+    say `b/context.txt` or `./context.txt`, and `git show` accepts both."""
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        if ar.CONFIRM_MARKER not in user:
+            return _high(file=spelling)
+        return '{"confirmed": false, "reason": "r"}'
+
+    gate(reply)
+    assert ar.main() == 0, spelling
+    assert sum(ar.CONFIRM_MARKER in p for p in prompts) == 1, spelling
+
+
+def test_an_off_diff_finding_says_why_it_was_not_re_checked(gate, monkeypatch):
+    """"not re-checked" must not read as a provider outage."""
+    posted = []
+    monkeypatch.setattr(ar, "post_sticky_comment", posted.append)
+    gate(_confirming(_high(file="base.txt"), False))
+    assert ar.main() == 1
+    assert "not in the reviewed diff" in posted[0]
+
+
+def test_an_exhausted_budget_is_reported_as_such_not_as_an_api_failure(
+    gate, monkeypatch
+):
+    """The lens pass spends from the same wall clock. When it has spent all of
+    it, every remaining confirmation would fail one at a time and render as
+    "confirmation call failed", which reads as the provider being down."""
+    posted = []
+    monkeypatch.setattr(ar, "post_sticky_comment", posted.append)
+    monkeypatch.setattr(ar, "_time_left", lambda: 0.0)
+    prompts = []
+
+    def reply(user):
+        prompts.append(user)
+        return _high()
+
+    gate(reply)
+    assert ar.main() == 1
+    assert not any(ar.CONFIRM_MARKER in p for p in prompts)
+    assert "budget exhausted" in posted[0]
 
 
 def test_a_high_on_an_unreadable_file_blocks_without_a_second_pass(gate):
@@ -1197,9 +1317,13 @@ def test_confirmation_is_bounded(gate):
 
 
 def test_file_at_resolves_a_diff_prefixed_path(repo):
-    assert "SENTINEL" in ar.file_at(repo["head"], "context.txt")
-    assert "SENTINEL" in ar.file_at(repo["head"], "b/context.txt")
-    assert "SENTINEL" in ar.file_at(repo["head"], "./context.txt")
+    for spelling in ("context.txt", "b/context.txt", "./context.txt"):
+        at_head = ar.file_at(repo["head"], spelling)
+        assert "SENTINEL" in at_head.text, spelling
+        # The path git ACCEPTED, not the one the model wrote — the caller tests
+        # membership of the reviewed diff against this, and `b/context.txt` is
+        # not a path git ever reports as changed.
+        assert at_head.path == "context.txt", spelling
 
 
 @pytest.mark.parametrize("path", ["", "   ", "?", "<unknown>", "no/such/file.ts", None])
@@ -1207,10 +1331,10 @@ def test_file_at_returns_none_rather_than_guessing(repo, path):
     assert ar.file_at(repo["head"], path) is None
 
 
-def test_oversized_file_is_not_confirmed_against_a_truncated_view(gate, monkeypatch):
+def test_oversized_context_is_not_confirmed_against_a_truncated_view(gate, monkeypatch):
     """Truncation is what the first pass already suffered from. "Confirmed
-    against half a file" is a worse answer than "not checked"."""
-    monkeypatch.setattr(ar, "CONFIRM_MAX_FILE_CHARS", 10)
+    against half the context" is a worse answer than "not checked"."""
+    monkeypatch.setattr(ar, "CONFIRM_MAX_CONTEXT_CHARS", 10)
     prompts = []
 
     def reply(user):
