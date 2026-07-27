@@ -1,0 +1,37 @@
+{
+  "id": "dynawalla.balance",
+  "version": "0.1.0",
+  "name": "COUNTERPOISE",
+  "description": "A brass balance where the scale physically is the equals sign. Hang mass until the arm sits level, and the equality stops being a symbol you read and becomes a thing you did with your hands.",
+  "sdk": "1.0.0",
+  "host": {
+    "min": "0.1.0",
+    "max": "1.0.0"
+  },
+  "entry": "pack.html",
+  "capabilities": [
+    "items",
+    "items.reveal",
+    "haptics"
+  ],
+  "covers": {
+    "skills": [
+      "dw.alg.equality.balance-meaning",
+      "dw.alg.equality.missing-addend",
+      "dw.alg.equality.missing-subtrahend",
+      "dw.alg.equality.unknown-minuend",
+      "dw.alg.equality.missing-factor"
+    ],
+    "grades": [
+      1,
+      5
+    ]
+  },
+  "locales": [
+    "en"
+  ],
+  "build": {
+    "config": "vite.pack.config.ts",
+    "out": "dist-pack"
+  }
+}
