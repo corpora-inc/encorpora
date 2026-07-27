@@ -18,6 +18,30 @@ import { parseLabel, satisfies, type Predicate } from "../stub/exact.ts";
 import type { Audio } from "./audio.ts";
 import type { Host, Question, Report } from "../contract.ts";
 
+/**
+ * The world's ambience — which label an orb wears, whether a hunter spawns,
+ * how many sparks a burst throws — runs on `Math.random` by design: `num.ts`
+ * calls it "a visual-only RNG, kept separate from the question stream", and the
+ * question stream itself is exact and separately seeded. That is the right
+ * choice for play and the wrong one for a test. Driven by the real
+ * `Math.random`, this file failed about two runs in five, in three different
+ * tests, because the bot and the spawner both drew from it.
+ *
+ * Pin it to a seeded stream for the whole file so a failure here always means a
+ * rule changed, never that the dice landed badly. The game itself is untouched.
+ */
+const seededRandom = (seed: number): (() => number) => {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+};
+Math.random = seededRandom(0x5e12e17);
+
 const FIXED = 1 / 120;
 
 const silentAudio = (): Audio => ({
