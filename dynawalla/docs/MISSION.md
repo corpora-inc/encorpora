@@ -1,4 +1,4 @@
-# Dynawalla: Apprentice of Numbers — Mission
+# Dynawalla — Mission
 
 Status: a host shell exists and ships no content. See [STATUS.md](STATUS.md).
 Index: [README.md](README.md).

@@ -1,12 +1,27 @@
 # ADR-0016 — App Store product name
 
-**Status:** Proposed — awaiting founder
-**Needed before:** the ASC app record is created in M1
+**Status:** Accepted — founder, 2026-07-27
+**Decided:** the product name is **Dynawalla**. Bundle id `inc.corpora.dynawalla`.
+
+> "name is Dynawalla. inc.corpora.dynawalla" — founder, 2026-07-27
+
+The working name "Dynawalla: Apprentice of Numbers" is **dropped**. The name is the
+bare word, matching the bundle id and the domain the founder already owns.
+
+**This was ratified after the App Store Connect record already existed**, so it records
+reality rather than authorising it. The App Store SKU is immutable and is now set; the
+subtitle, not the name, is where any descriptive phrase belongs from here.
+
+The two counsel-grade collision vectors below (**Dynamo Maths**; **Physics Wallah**'s
+"family of 'wallah' marks") are **not** resolved by this decision and are not resolved by
+the record existing. They remain open items for counsel, and the paid clearance search is
+still advisable. So are the two hygiene items — the dangling DNS records on the owned
+domain, and the public repo tying the name to dietary-supplement health claims.
 
 ## Context
 
-The working name is **"Dynawalla: Apprentice of Numbers"**. Before an app record exists,
-two checks are cheap and afterwards they are very expensive:
+Before an app record existed, two checks were cheap and afterwards they are very
+expensive:
 
 1. A trademark search on the name.
 2. An availability check on both stores — App Store names are unique per territory, and
@@ -23,9 +38,10 @@ Some of the identifiers involved are literally immutable:
 The store *display name* can be changed later, but not cheaply: it carries the SEO and
 the word-of-mouth.
 
-## Decision required
+## The decision that was required, and how it resolved
 
 Confirm the product name, or supply a different one, before M1 creates the app records.
+**Resolved 2026-07-27: Dynawalla.**
 
 **Founder's expectation, 2026-07-25:**
 

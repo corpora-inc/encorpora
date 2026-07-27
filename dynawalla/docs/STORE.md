@@ -12,7 +12,7 @@ service-account JSON. The repository is public (`G-11`).
 | | Value |
 |---|---|
 | Bundle id / applicationId | `inc.corpora.dynawalla` (founder decision #6 — note `inc.`, not `com.`) |
-| Working product name | Dynawalla: Apprentice of Numbers — [ADR-0016](DECISIONS/ADR-0016-app-store-product-name.md) |
+| Product name | **Dynawalla** — ratified 2026-07-27, [ADR-0016](DECISIONS/ADR-0016-app-store-product-name.md). The App Store SKU is immutable and is now set. |
 | iOS deployment target | 16.0, `ITSAppUsesNonExemptEncryption: false` |
 | Android | `minSdk 26`, `compileSdk 36`, `targetSdk 36` |
 

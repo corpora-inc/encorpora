@@ -1,6 +1,6 @@
 # dynawalla-app
 
-The Tauri 2 shell for **Dynawalla: Apprentice of Numbers** — bundle
+The Tauri 2 shell for **Dynawalla** — bundle
 `inc.corpora.dynawalla`.
 
 Program docs live in [`../docs/`](../docs/README.md); the architecture this tree
