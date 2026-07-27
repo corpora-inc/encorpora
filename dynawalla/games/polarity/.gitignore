@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-pack/
+
+# Playtest capture output: multi-MB PNGs, regenerated on demand.
+qa/shots
+qa/tmp
+
+# Not tracked, matching dynawalla/games/slice and .../merge. These prototypes
+# pin nothing beyond vite + typescript in devDependencies.
+package-lock.json
