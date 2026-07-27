@@ -67,6 +67,15 @@ export class Game {
   mode: Mode = "title"
   private runT = 0
   private wallT = 0
+  /**
+   * The longest run, in seconds. Held here and not only in `localStorage`,
+   * because inside a pack frame there is no `localStorage` to hold it in: the
+   * frame is sandboxed onto an opaque origin and every access throws. Read
+   * straight back off storage, the game-over panel printed `BEST 0:00` after a
+   * four-minute run, forever. In memory it is at least true for the sitting;
+   * storage upgrades it to true across sittings wherever storage exists.
+   */
+  private best = 0
   private kills = 0
   private level = 1
   private xp = 0
@@ -1609,11 +1618,16 @@ export class Game {
   private over(): void {
     this.mode = "over"
     this.ui.hideRift()
-    let best = 0
     try {
-      best = Number(localStorage.getItem("hz.best") || 0)
-      if (this.runT > best) { best = this.runT; localStorage.setItem("hz.best", String(Math.round(best))) }
+      this.best = Math.max(this.best, Number(localStorage.getItem("hz.best") || 0))
     } catch { /* storage can be denied; the run still counts */ }
+    if (this.runT > this.best) {
+      this.best = this.runT
+      try {
+        localStorage.setItem("hz.best", String(Math.round(this.best)))
+      } catch { /* denied storage loses the record between sittings, not within one */ }
+    }
+    const best = this.best
     const mm = Math.floor(this.runT / 60)
     const ss = Math.floor(this.runT % 60)
     this.ui.showOver(

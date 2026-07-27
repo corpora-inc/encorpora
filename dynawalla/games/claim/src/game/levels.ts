@@ -104,6 +104,24 @@ export type Goal = {
   d: number
   /** The host's prompt, shown verbatim when there is one. */
   prompt: string
+  /**
+   * The question this goal was drawn from, or `null` when the ladder's own
+   * fraction stood in.
+   *
+   * **The cut is never reported as this question's answer, and must not be.**
+   * A level clears the moment `claimed` crosses `lo`, and `lo` is a whole band
+   * below `target` — 432 cells of 7200 on level one. The host judges an answer
+   * by exact value, so reporting the cell count a child stopped on would post a
+   * wrong answer for a level they just won, and every clear would ratchet their
+   * position down the ladder. The band is motor tolerance, not a tolerance on
+   * the mathematics, and there is no way to say "within tolerance" over
+   * `items.answer`.
+   *
+   * So the cut is not an answer here. The revive gate is: three plates, one of
+   * them the canonical value, and the label the child drives into is reported
+   * verbatim — exact in, exact out. This id is still what keeps a question that
+   * *became* a goal from also being held back as the gate's spare.
+   */
   questionId: string | null
 }
 
