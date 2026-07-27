@@ -463,11 +463,12 @@ adopting it by default inherits the pricing and packaging assumptions that produ
 result along with the architecture that makes it cheap to run. It is a **direction, not a
 validated design**, and no evidence pass has been done on what a parent would actually
 pay for here.
-**Mitigation:** `G-02` requires packaging and pricing to be decided and recorded before
-M9 completes, separately from the direction; ADR-0013 records the tension between an
-"unlimited exercises" upsell and [MISSION.md](MISSION.md)'s ban on play-by-appointment
-and grinding gates, so a free-tier session cap is ruled out before launch pressure makes
-it look reasonable. **Residual:** nobody is currently assigned to do that evidence pass,
+**Mitigation:** `G-02` is **closed** — [ADR-0024](DECISIONS/ADR-0024-day-pass-not-subscription.md)
+decides packaging and pricing, replaces the subscription with a **day pass**, and dissolves
+the tension ADR-0013 recorded between an "unlimited exercises" upsell and
+[MISSION.md](MISSION.md)'s ban on play-by-appointment: the free tier's boundary is a
+*natural transition inside a game*, not a quantity, so it cannot cut a willing child off
+mid-flow. The residual below is unchanged, and is the part that matters. **Residual:** nobody is currently assigned to do that evidence pass,
 and low run-rate makes it easy to defer indefinitely — a free product with no revenue is
 not obviously failing, which is exactly how it stays undecided.
 

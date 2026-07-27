@@ -136,7 +136,13 @@ export class Director {
     this.elapsed += dt
     let n = 0
 
-    if (this.rushLeft > 0) this.rushLeft -= dt
+    if (this.rushLeft > 0) {
+      this.rushLeft -= dt
+      // The crest passed and the board is coming down. THE SPLIT has no
+      // levels and no ending, so the settle after a rush is the only place in
+      // it a child is finished with something rather than interrupted.
+      if (this.rushLeft <= 0) this.rushJustEnded = true
+    }
 
     // Release anything whose stagger has elapsed.
     for (let i = 0; i < this.queue.length; i++) {
@@ -199,4 +205,6 @@ export class Director {
 
   /** Set on the frame a rush starts; the caller reads and clears it. */
   rushJustStarted = false
+  /** Set on the frame a rush finishes. Read and cleared the same way. */
+  rushJustEnded = false
 }

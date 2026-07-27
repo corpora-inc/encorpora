@@ -30,6 +30,7 @@ import type {
   LearnerSummary,
   Settings,
   SoundCue,
+  TransitionKind,
 } from "./protocol.ts"
 import { isConnect, isResponse, PROTOCOL_VERSION } from "./protocol.ts"
 
@@ -86,6 +87,17 @@ export type HostClient = {
   /** Fraction in 0–1. The host draws the progress, the pack does not. */
   progress(fraction: number): Promise<void>
   end(reason: "finished" | "quit"): Promise<void>
+  /**
+   * Something ended by itself: a level cleared, a run completed, a boss down.
+   *
+   * Call it and keep going — the promise resolves immediately and the pack is
+   * not told what the host did with it. What the host may do is put something
+   * over the frame, in which case the pack receives `pause` through `on` in the
+   * usual way, so a game that already handles `pause` handles this too.
+   *
+   * **Never send one after a failure.** See `TransitionKind`.
+   */
+  transition(kind: TransitionKind, label?: string): Promise<void>
 
   on(event: HostEventName, listener: (data: unknown) => void): () => void
   dispose(): void
@@ -246,6 +258,9 @@ function makeClient(connectMessage: Connect, port: MessagePort): HostClient {
     },
     end: async (reason) => {
       await call("session.end", { reason })
+    },
+    transition: async (kind, label) => {
+      await call("session.transition", label === undefined ? { kind } : { kind, label })
     },
 
     on: (event, listener) => {

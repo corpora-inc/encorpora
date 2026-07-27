@@ -35,9 +35,11 @@ export {
   MAX_REQUESTS_PER_SECOND,
   PROTOCOL_VERSION,
   SDK_VERSION,
+  TRANSITION_KINDS,
   isConnect,
   isHostEvent,
   isResponse,
+  isTransitionKind,
   numberParam,
   parseRequest,
   stringParam,
@@ -57,6 +59,7 @@ export type {
   Response,
   Settings,
   SoundCue,
+  TransitionKind,
 } from "./protocol.ts"
 
 export { compareSemver, compareVersions, isSemver, parseSemver, satisfies, sdkCompatible } from "./semver.ts"

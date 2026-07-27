@@ -88,6 +88,15 @@ export type Row =
       readonly size: string
       /** Launches it onto the stage. Never null: an unplayable pack is not a row. */
       readonly play: () => void
+      /**
+       * This game already reached its stopping point today.
+       *
+       * **Not a lock and never drawn as one.** No padlock, no "premium", no
+       * dimming that makes it look broken, and the row still opens — what it
+       * opens is the sheet that says so. A child scanning the grid is told
+       * where they got to today, which is a fact about them, not a price.
+       */
+      readonly resting: boolean
     }
   /** Something drawn. `label` is its text alternative and is never empty. */
   | {
@@ -119,6 +128,10 @@ export interface HostView {
   readonly native: boolean
   /** Has the parent already pressed "erase everything" once? */
   readonly armed: boolean
+  /** The pass this device holds, described in one word. Never a price. */
+  readonly pass: string
+  /** Pack ids that reached their stopping point today. Usually empty. */
+  readonly resting: readonly string[]
 }
 
 export interface HostActions {
@@ -132,6 +145,17 @@ export interface HostActions {
   readonly erase: () => void
   /** Put a pack on the stage. The one action the front door exists for. */
   readonly launchPack: (packId: string) => void
+  /**
+   * Developer mode only, and off on every child's tablet.
+   *
+   * Verifying "a purchase unlocks everything" and "midnight gives the day
+   * back" needs a way to hold a pass and a way to give one back, and a
+   * developer with no way to do that will invent a worse one — usually by
+   * editing `localStorage` by hand and getting the shape subtly wrong.
+   */
+  readonly grantTestPass: (kind: "day" | "lifetime") => void
+  readonly clearTestPass: () => void
+  readonly clearRestLedger: () => void
 }
 
 // The option sets, written once. `satisfies` is what keeps a label and a value
@@ -209,6 +233,7 @@ function packsSurface(view: HostView, act: HostActions): readonly Section[] {
           version: pack.version,
           size: formatBytes(pack.bytes),
           play: () => act.launchPack(pack.id),
+          resting: view.resting.includes(pack.id),
         }),
       ),
     },
@@ -390,6 +415,46 @@ function parentsSurface(view: HostView, act: HostActions): readonly Section[] {
           (call): Row => fact(callId(call), grantOf(call), `${call.module}.${call.fn}`),
         ),
         ...view.storage.map((entry): Row => fact(entry.key, entry.key, formatBytes(entry.bytes))),
+      ],
+    })
+
+    // The day pass, and the four levers that make a full day simulable in one
+    // sitting. No price is shown and no store is called: `grantingBilling`
+    // writes the same record a confirmed purchase would, so what is being
+    // exercised is the entitlement, not a payment.
+    sections.push({
+      key: "pass",
+      rows: [
+        fact("pass", dev.pass, view.pass),
+        fact("resting", dev.resting, view.resting.length === 0 ? "—" : view.resting.join(", ")),
+        {
+          kind: "action",
+          key: "grant-day",
+          name: dev.grantDayPass,
+          tone: "plain",
+          run: () => act.grantTestPass("day"),
+        },
+        {
+          kind: "action",
+          key: "grant-lifetime",
+          name: dev.grantLifetime,
+          tone: "plain",
+          run: () => act.grantTestPass("lifetime"),
+        },
+        {
+          kind: "action",
+          key: "clear-pass",
+          name: dev.clearPass,
+          tone: "plain",
+          run: act.clearTestPass,
+        },
+        {
+          kind: "action",
+          key: "clear-ledger",
+          name: dev.clearLedger,
+          tone: "plain",
+          run: act.clearRestLedger,
+        },
       ],
     })
   }

@@ -36,6 +36,8 @@ export const strings = {
     space: "Space used",
     /** The control on a pack row. What the row does, in one word. */
     play: "Play",
+    /** The same control on a game that already reached its ending today. */
+    tomorrow: "Tomorrow",
     /** Leaves a running pack. The only host chrome drawn over a game. */
     leave: "Leave",
     /** The pack was launched and is no longer on this device. */
@@ -80,6 +82,55 @@ export const strings = {
     plain: "Plain",
   },
 
+  /**
+   * The day pass. **Read this copy as a whole before changing a line of it.**
+   *
+   * Two audiences and two stages, and the split is the design: a child at a
+   * natural stopping point sees the first four strings and no money, no price,
+   * no offer and no reason to fetch a parent. Everything below `gate` is behind
+   * the parental gate and is written for an adult.
+   *
+   * What is deliberately absent, and must stay absent: any countdown, any
+   * quantity remaining, any "your friends", any "only today", any sentence
+   * that makes stopping sound like a loss. The child-facing copy points at the
+   * other games, because there are always other games and that is the honest
+   * thing to say.
+   */
+  pass: {
+    /** The whole child-facing message. Nothing is taken away; a thing ended. */
+    restTitle: "That's {{pack}} for today.",
+    restBody: "Every other game is still open.",
+    /** The way out, and the biggest control on the sheet. */
+    restLeave: "Choose another game",
+    /** Small, quiet, and the only route to a price. Never the primary control. */
+    forGrownUps: "Grown-ups",
+
+    /** The parental gate. Reading load, never arithmetic. */
+    gateTitle: "For a grown-up",
+    gateYear: "Type the current year, all four digits.",
+    gateWord: "Type this word:",
+    gateEntry: "Answer",
+    gateGo: "Continue",
+    gateWrong: "That's not it. Try again.",
+
+    offerTitle: "The Dynawalla Pass",
+    offerBody: "Every game, as often as you like. No subscription, no ads.",
+    lifetime: "Lifetime",
+    lifetimeNote: "Pay once. Yours for good.",
+    month: "One month",
+    monthNote: "Thirty days.",
+    day: "Day pass",
+    dayNote: "Today.",
+    restore: "Restore a pass",
+    /** Closes the sheet and changes nothing. Always one tap, always visible. */
+    notNow: "Not now",
+    /** No store is wired into this build, or the device could not reach one. */
+    storeUnavailable: "The store could not be reached.",
+    /** A pass is held. Shown where a price would otherwise be. */
+    held: "This device has a pass.",
+    /** Developer mode only, and not translated for that reason — see `dev`. */
+  },
+
   parents: {
     version: "Version",
     storage: "On this device",
@@ -104,6 +155,14 @@ export const dev = {
   browser: "Browser",
   grant: "Grant",
   key: "Key",
+  /** The pass, from the parent area, with developer mode on. */
+  pass: "Pass",
+  passNone: "None",
+  grantDayPass: "Grant a day pass (test)",
+  grantLifetime: "Grant a lifetime pass (test)",
+  clearPass: "Clear the pass (test)",
+  clearLedger: "Clear today's rest ledger (test)",
+  resting: "Resting today",
 } as const
 
 /**

@@ -168,7 +168,7 @@ function Figure({ value, label }: Keyless<"figure">) {
  * are the small print, and the whole rectangle is the target — a child aiming
  * at a word is a child missing.
  */
-function Pack({ name, version, size, play }: Keyless<"pack">) {
+function Pack({ name, version, size, play, resting }: Keyless<"pack">) {
   return (
     <button
       type="button"
@@ -185,8 +185,12 @@ function Pack({ name, version, size, play }: Keyless<"pack">) {
           {version} · {size}
         </span>
       </span>
+      {/* A game that already ended today says so, in the same small type as the
+          version, and keeps its full-strength name and its working control. It
+          is not dimmed, not badged, not padlocked and not sorted to the bottom:
+          nothing about this row is a price, and nothing about it is a lock. */}
       <span className="border-line-cut rounded-cut-sm text-ink-muted shrink-0 border px-3 py-2 text-sm">
-        {strings.packs.play}
+        {resting ? strings.packs.tomorrow : strings.packs.play}
       </span>
     </button>
   )

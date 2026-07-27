@@ -22,6 +22,8 @@ import type { Settings } from "../../../packs/sdk/src/index.ts"
 import { BUILD_VERSION } from "../app/platform.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
+import { PassSheet } from "../pass/PassSheet.tsx"
+import { usePass } from "../pass/store.ts"
 import { useProfiles } from "../profiles/store.ts"
 import { useSettings } from "../settings/store.ts"
 import { entryOf, useLibrary } from "./libraryStore.ts"
@@ -75,6 +77,29 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
   const [failure, setFailure] = useState<string | null>(null)
   const [progress, setProgress] = useState(0)
 
+  // The day pass, and the whole of its presence in this component.
+  //
+  // Two pieces of state, and keeping them apart is what makes the difference
+  // between the two situations feel right:
+  //
+  //   `restedBefore`  read **once**, at mount, and never again. The game was
+  //                   already finished today before the child pressed it, so
+  //                   it is not mounted at all — no entry document is fetched,
+  //                   no session begins, and there is no half-second of play
+  //                   followed by a sheet.
+  //   `offering`      the transition happened just now, in front of the child.
+  //                   The frame stays mounted and pauses, so what is behind the
+  //                   sheet is the thing they just finished rather than a
+  //                   screen that vanished under them.
+  //
+  // `restedBefore` is `useState` with a lazy initialiser and no setter — a
+  // value computed once, at mount, from the real clock, and then constant for
+  // the life of the session. A ref would say the same thing and would be read
+  // during render, which is the rule React actually enforces.
+  const reachTransition = usePass((state) => state.reachTransition)
+  const [restedBefore] = useState(() => !usePass.getState().mayOpen(packId))
+  const [offering, setOffering] = useState(false)
+
   // Built by the one function that knows how a host setting becomes a pack
   // setting, so the mapping cannot drift between the launch and the push.
   const forPack: Settings = useMemo(
@@ -90,6 +115,12 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
         onProgress: setProgress,
         onEnd: () => onLeave(),
         onMilestone: (name) => console.info(`[packs] ${packId} reached ${name}`),
+        onTransition: (kind, label) => {
+          console.info(`[packs] ${packId} reached a ${kind}${label ? ` (${label})` : ""}`)
+          // The store decides and records in one call, so two transitions
+          // arriving in the same frame cannot both be "the first one today".
+          if (reachTransition(packId) === "rest") setOffering(true)
+        },
       }),
     // One session per mount. `profileId` changing mid-game would be a different
     // child, which the profile switcher cannot do while the stage is up.
@@ -107,6 +138,9 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
   const manifestEntry = entry?.manifest.entry
   useEffect(() => {
     if (manifestEntry === undefined) return
+    // Nothing is fetched for a game that already ended today. The sheet is the
+    // whole screen and there is no document behind it to load.
+    if (restedBefore) return
     let live = true
     tauriNative
       .entryUrl(packId, manifestEntry)
@@ -120,10 +154,20 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
     return () => {
       live = false
     }
-  }, [packId, manifestEntry])
+  }, [packId, manifestEntry, restedBefore])
 
   if (!entry) return <Curtain message={strings.packs.missing} onLeave={onLeave} />
   if (failure !== null) return <Curtain message={failure} onLeave={onLeave} />
+
+  // Opened again on a day it already ended. The sheet opens on the same first
+  // stage it did the first time — a statement about a game, and no price.
+  if (restedBefore) {
+    return (
+      <div className="bg-ground-deep fixed inset-0 z-50">
+        <PassSheet packName={entry.name} onLeave={onLeave} />
+      </div>
+    )
+  }
 
   return (
     <div className="bg-ground-deep fixed inset-0 z-50">
@@ -136,6 +180,9 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
           hostVersion={BUILD_VERSION}
           title={entry.name}
           settings={forPack}
+          // The game stops its own loop while the sheet is up. Not unmounted:
+          // what is behind the sheet is the thing the child just finished.
+          paused={offering}
           onError={(reason) => setFailure(reason)}
         />
       )}
@@ -162,13 +209,21 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
         />
       </svg>
 
-      <button
-        type="button"
-        onClick={onLeave}
-        className="border-line-cut bg-ground/85 text-ink rounded-cut-sm absolute top-[max(var(--safe-top),0.5rem)] right-[max(var(--safe-right),0.5rem)] min-h-11 min-w-11 border px-4 text-sm backdrop-blur"
-      >
-        {strings.packs.leave}
-      </button>
+      {/* Hidden while the sheet is up: two ways out of one screen, one of them
+          unlabelled, is a child pressing the wrong one. */}
+      {offering ? null : (
+        <button
+          type="button"
+          onClick={onLeave}
+          className="border-line-cut bg-ground/85 text-ink rounded-cut-sm absolute top-[max(var(--safe-top),0.5rem)] right-[max(var(--safe-right),0.5rem)] min-h-11 min-w-11 border px-4 text-sm backdrop-blur"
+        >
+          {strings.packs.leave}
+        </button>
+      )}
+
+      {/* The stopping point, reached just now. Leaving is leaving the game:
+          this one is finished for today, and the other games are not. */}
+      {offering ? <PassSheet packName={entry.name} onLeave={onLeave} /> : null}
     </div>
   )
 }

@@ -164,6 +164,35 @@ export type LearnerSummary = {
 export type HapticCue = "tick" | "seat" | "settle" | "refuse"
 export type SoundCue = "tick" | "seat" | "settle" | "refuse" | "arrive"
 
+/**
+ * A natural stopping point, named by the pack that reached it.
+ *
+ * **This is the whole of the day pass's mechanism, and it is a place rather
+ * than a duration.** The host never counts minutes and never shows a clock; it
+ * waits to be told that something ended by itself. Which of these a game sends
+ * is the game's judgement about its own shape — the host treats all three the
+ * same and only ever acts on the first one it hears in a day.
+ *
+ * The rule a pack author has to keep: **a transition is a thing the child
+ * finished, never a thing that beat them.** A defeat, a failed run, a wrong
+ * answer, a timer running out — none of those is a transition, because a
+ * purchase surface must never sit next to a failure (ADR-0013). Send one after
+ * a level is cleared, a run is completed, a boss is down.
+ */
+export type TransitionKind =
+  /** A level, stage or chapter was cleared. */
+  | "level"
+  /** A complete run reached its own end. */
+  | "run"
+  /** A named set piece — a boss, a final wave — was beaten. */
+  | "boss"
+
+export const TRANSITION_KINDS: readonly TransitionKind[] = ["level", "run", "boss"]
+
+export function isTransitionKind(value: unknown): value is TransitionKind {
+  return value === "level" || value === "run" || value === "boss"
+}
+
 // ─── Guards ──────────────────────────────────────────────────────────────────
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>

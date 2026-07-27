@@ -584,6 +584,16 @@ export class Game {
   }
 
   private enterLevelUp(): void {
+    // The quota is met and the KEY is about to change: the child finished a
+    // level. FUSE's natural stopping point, and the one the day pass reads.
+    // Reported on every level-up rather than only the first — the host acts on
+    // the first one it hears in a day and ignores the rest, so this does not
+    // have to know which of them is special.
+    try {
+      this.host.transition?.("level", `level ${this.levelN}`);
+    } catch {
+      /* a host that throws on a stopping point must not kill the run */
+    }
     this.phase = "levelup";
     this.pt = 0;
     this.levelSeeded = false;

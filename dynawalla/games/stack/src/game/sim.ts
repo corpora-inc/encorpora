@@ -424,8 +424,19 @@ export class Sim {
 
     const band = Math.floor(this.floor / T.STRATUM_FLOORS);
     if (band !== this.stratum) {
+      const climbing = band > this.stratum;
       this.stratum = band;
       this.events.push({ type: "stratum", index: band });
+      // Eight floors of tower, and the rock under it changes. MONUMENT's
+      // chapter break. Only on the way UP: a stratum lost is not an ending
+      // a child reached, and nothing may be shown after one.
+      if (climbing) {
+        try {
+          this.host.transition?.("level", `stratum ${band}`);
+        } catch {
+          /* a host that throws on a stopping point must not kill the run */
+        }
+      }
     }
 
     this.nextQuestion();

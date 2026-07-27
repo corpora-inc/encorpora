@@ -59,6 +59,7 @@ function services(calls: Calls, overrides: Partial<HostServices> = {}): HostServ
     },
     progress: (input) => void record("progress", undefined)(input),
     end: (input) => void record("end", undefined)(input),
+    transition: (input) => void record("transition", undefined)(input),
     settings: () => ({
       locale: "en",
       reducedMotion: false,
@@ -115,7 +116,13 @@ test("session methods work with no grants at all", async () => {
   const bridge = bridgeWith([], calls)
   for (const method of SESSION_METHODS) {
     const params =
-      method === "session.progress" ? { fraction: 0.5 } : method === "session.end" ? { reason: "quit" } : {}
+      method === "session.progress"
+        ? { fraction: 0.5 }
+        : method === "session.end"
+          ? { reason: "quit" }
+          : method === "session.transition"
+            ? { kind: "level" }
+            : {}
     const response = await bridge.handle({ id: 1, method, params })
     assert.ok(response?.ok, `${method} was refused`)
   }
@@ -156,6 +163,7 @@ test("the whole method table is reachable when everything is granted", async () 
     cue: "seat",
     fraction: 0.5,
     reason: "quit",
+    kind: "level",
   }
   for (const method of METHODS) {
     const response = await bridge.handle({ id: 1, method, params })
@@ -214,6 +222,7 @@ test("parameters are checked, and a wrong one is invalid_params rather than a cr
     ["milestone.reach", {}],
     ["session.progress", { fraction: "half" }],
     ["session.end", { reason: "crashed" }],
+    ["session.transition", { kind: "defeat" }],
     ["storage.get", {}],
     ["storage.set", { key: "k" }],
     ["storage.set", { key: "k", value: 7 }],

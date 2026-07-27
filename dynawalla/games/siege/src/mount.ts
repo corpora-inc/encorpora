@@ -311,6 +311,20 @@ export class Siege {
           emberMote(this.parts, this.state.path.core.x + this.rng.r(-70, 70), this.state.path.core.y, rand);
         }
         this.host.haptic("success");
+        // Boss waves only — every fifth. A single wave is thirty seconds and
+        // is not an ending; a boss held is several minutes of work and it is
+        // the moment the child is already celebrating. That is where a
+        // stopping point belongs, and it is the only place SIEGE has one.
+        //
+        // Never on `defeat`. A run that ended badly is a failure, and nothing
+        // may be shown next to one.
+        if (n % 5 === 0) {
+          try {
+            this.host.transition?.("boss", `wave ${n}`);
+          } catch {
+            /* a host that throws on a stopping point must not kill the run */
+          }
+        }
       },
       overchargeBlast: (x, y, _dmg) => {
         this.audio.overcharge();
