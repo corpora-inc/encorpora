@@ -15,7 +15,8 @@
     "build": "vite build",
     "preview": "vite preview --port 4317",
     "tsc": "tsc --noEmit",
-    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\""
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "build:pack": "vite build --config vite.pack.config.ts"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",

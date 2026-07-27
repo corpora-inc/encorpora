@@ -331,9 +331,62 @@ jobs:
             || { echo "::error::profile is named '$NAME'; ExportOptions pins '$IOS_PROFILE_NAME'"; exit 1; }
           rm -f "$RUNNER_TEMP/profile.plist"
 
+      - name: Preflight · the App Store Connect app record exists
+        # Nothing downstream of here can succeed if the app record for this
+        # bundle id has not been created, and there is no app-create operation
+        # in the App Store Connect API — it is a founder action on the website
+        # (docs/STORE.md). Until this step existed, that fact was discovered by
+        # the UPLOAD step, at roughly minute 55 of a 60-minute macOS job: an
+        # hour of build time and a red X whose cause is a two-second question.
+        #
+        # It is the SAME lookup the post-upload verifier already performs
+        # (`GET /v1/apps?filter[bundleId]=...`), exposed as `--preflight` rather
+        # than duplicated here, so the two can never disagree about what
+        # "the app exists" means.
+        #
+        # Placed after the profile install on purpose: that step proves the
+        # profile is for this bundle id, this one proves App Store Connect has
+        # heard of it, and together they are the whole of "can this run
+        # possibly ship?" — asked before `npm ci` and the ~50-minute archive.
+        #
+        # No `continue-on-error`, no `if:`. A preflight that cannot fail the
+        # job is a log line, and the failure mode being prevented is precisely
+        # a run that burns an hour before telling anyone.
+        #
+        # Secrets through `env:`, never interpolated into the `run:` text — see
+        # the note on the profile step above.
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          ASC_BUNDLE_ID: ${{ env.BUNDLE_ID }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_testflight_upload.py --preflight
+
       - name: Install deps
         working-directory: dynawalla/dynawalla-app
         run: npm ci
+
+      # PROVEN NECESSARY by run 30291684583, which died here with
+      # `failed to get resource: resource path 'packs' doesn't exist`.
+      #
+      # `tauri.conf.json` declares `bundle.resources: ["packs"]`, which resolves
+      # to `src-tauri/packs/`. That directory is BUILT, not committed
+      # (src-tauri/.gitignore:58 is `/packs/`), so a fresh CI checkout does not
+      # have it and Tauri refuses before it does anything else.
+      #
+      # Putting it in `beforeBuildCommand` is NOT enough and that is the whole
+      # trap: the log shows `tauri ios init` printing "Project generated
+      # successfully" and then failing 0.8s later, long before
+      # `beforeBuildCommand` — which does run `npm run packs` — is ever
+      # invoked. The resource has to exist before the Tauri CLI is called at
+      # all. It went unnoticed locally because a developer's gitignored
+      # `src-tauri/packs/` is already populated from an earlier run.
+      - name: Build the game packs
+        working-directory: dynawalla/dynawalla-app
+        run: npm run packs
 
       - name: Force manual signing in the CI working copy
         working-directory: dynawalla/dynawalla-app
@@ -662,6 +715,37 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Preflight · the Play app record exists and is reachable
+        # The Android twin of the iOS preflight above, and for the same reason:
+        # the Play app record is a founder Console action (androidpublisher has
+        # no app-create method) and a per-app permission grant does NOT inherit
+        # from the developer account (docs/STORE.md G-09). Both were only
+        # discovered by "Snapshot the Play internal track", which runs after the
+        # Gradle build and the signing — the whole expensive half of this job.
+        #
+        # This is the SAME `--snapshot` invocation, unchanged, run early. It
+        # opens a throwaway edit against the package, which is exactly what
+        # 404s on a missing app record and 403s on a missing grant, and it
+        # tolerates a track with no releases (`allow_missing`), which is the
+        # normal state before a first release.
+        #
+        # Deliberately given NO `id:`. Its `version_codes` output must be
+        # unreachable: the baseline the post-upload check compares against has
+        # to be read immediately BEFORE the upload, and an id here would make
+        # it possible to wire this hour-old reading in by mistake — which would
+        # silently defeat the duplicate detection it exists for.
+        #
+        # It runs after setup-python on purpose: the runner's system python is
+        # PEP 668 externally-managed and refuses `pip install`.
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: ${{ env.BUNDLE_ID }}
+          PLAY_TRACK: internal
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_play_upload.py --snapshot
+
       - name: Rust + Android targets
         run: |
           rustup toolchain install stable --profile minimal
@@ -692,7 +776,31 @@ jobs:
         run: |
           set -euo pipefail
           NDK_VER=28.2.13676358
-          yes | sdkmanager "ndk;$NDK_VER" "platforms;android-36" "build-tools;36.0.0" >/dev/null
+          # NO `yes |` HERE. That form was lifted verbatim from
+          # release-mobile.yml, where it is safe only because that step does
+          # not `set -o pipefail`. Here it does, and the consequence is the
+          # exact trap this file already documents three times over (the `nm`
+          # note in the iOS job, the `sed -n` note in the AAB inspection, the
+          # `head` note in the signing step): sdkmanager on a pre-licensed
+          # image never reads a byte of stdin, so `yes` fills the 64 kB pipe
+          # buffer, blocks, and takes SIGPIPE the moment sdkmanager exits.
+          # `yes` therefore dies 141 on the SUCCESS path, pipefail makes the
+          # pipeline 141, and `set -e` aborts the Android job three minutes in
+          # with no diagnostic at all. Reproduced locally against a stand-in
+          # that behaves like sdkmanager: the pipeline returned 141 while
+          # sdkmanager returned 0.
+          #
+          # `</dev/null` rather than nothing: there is then no pipeline to
+          # SIGPIPE and no dependence on whatever the runner happens to attach
+          # to a step's stdin. If a license ever were unaccepted,
+          # android-actions/setup-android accepts them all and the ubuntu image
+          # ships $ANDROID_HOME/licenses pre-populated, but were that to change
+          # sdkmanager reads EOF, declines, and exits non-zero with its own
+          # message on stderr — a real failure with a real cause, which is what
+          # 141 was hiding. stderr is deliberately NOT discarded for that
+          # reason; only the progress bar's thousands of carriage returns are.
+          sdkmanager --install "ndk;$NDK_VER" "platforms;android-36" "build-tools;36.0.0" \
+            </dev/null >/dev/null
           NDK="$ANDROID_SDK_ROOT/ndk/$NDK_VER"
           test -x "$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android26-clang" \
             || { echo "::error::NDK clang not found at $NDK"; exit 1; }
@@ -701,6 +809,13 @@ jobs:
       - name: Install deps
         working-directory: dynawalla/dynawalla-app
         run: npm ci
+
+      # Same reason as the iOS job: `bundle.resources` names a built,
+      # gitignored directory, and the Tauri CLI resolves it before
+      # `beforeBuildCommand` runs. See the long note in the iOS job.
+      - name: Build the game packs
+        working-directory: dynawalla/dynawalla-app
+        run: npm run packs
 
       - name: Tauri Android build (unsigned AAB)
         working-directory: dynawalla/dynawalla-app

@@ -12,6 +12,18 @@ been bitten by on the Play side.
 So we read it back: find the app by bundle id, then poll its builds for the
 CFBundleVersion this run produced.
 
+That app-by-bundle-id lookup is also the answer to a question the iOS job used
+to ask far too late. There is no app-create operation in the App Store Connect
+API, so "the app record has not been created yet" is a founder action, and
+until this script ran it was discovered at the UPLOAD step — roughly minute 55
+of a 60-minute macOS job. The lookup itself costs about two seconds and needs
+nothing the build produces, so it is also exposed on its own:
+
+    --preflight   ONLY the app lookup. Run it before the expensive work.
+                  Prints the resolved app id; exits non-zero, naming the
+                  founder action, when no app record exists for the bundle id.
+    (verify)      the full post-upload read-back described above.
+
 Presence alone is NOT enough. CFBundleVersion is minutes-since-epoch, so two
 runs in the same minute produce the same string (RISKS R-12) — and in exactly
 that case a build with the wanted version is already on App Store Connect
@@ -20,11 +32,13 @@ passes while Apple rejected our upload as a duplicate. Every candidate build is
 therefore checked against ASC_MIN_UPLOADED_DATE, the moment this workflow run
 started: a build older than that is a pre-existing collision, not our upload.
 
-Environment:
+Environment (both modes):
   ASC_KEY_ID             App Store Connect API key id
   ASC_ISSUER_ID          App Store Connect issuer id
   ASC_API_KEY_P8         the .p8 private key (the PEM text itself)
   ASC_BUNDLE_ID          e.g. inc.corpora.dynawalla
+
+Environment (verify mode only):
   ASC_BUILD_VERSION      the CFBundleVersion to look for
   ASC_MIN_UPLOADED_DATE  epoch seconds; the run's start. A build uploaded
                          before this is not ours.
@@ -35,6 +49,7 @@ None of these values is ever printed. Only their presence/absence is.
 
 from __future__ import annotations
 
+import argparse
 import datetime as _dt
 import json
 import os
@@ -189,18 +204,22 @@ def get(path: str, params: dict[str, str], bearer: Bearer) -> dict:
         fail(f"GET {path} failed: {exc}")
 
 
-def main() -> None:
-    bundle_id = require("ASC_BUNDLE_ID")
-    wanted = require("ASC_BUILD_VERSION")
-    raw_min = require("ASC_MIN_UPLOADED_DATE")
-    try:
-        min_uploaded = float(raw_min)
-    except ValueError:
-        fail(f"ASC_MIN_UPLOADED_DATE is not epoch seconds: {raw_min!r}")
-    deadline = time.time() + int(os.environ.get("ASC_TIMEOUT_SECONDS", "900"))
+def bearer_from_env() -> Bearer:
+    return Bearer(require("ASC_KEY_ID"), require("ASC_ISSUER_ID"), require("ASC_API_KEY_P8"))
 
-    bearer = Bearer(require("ASC_KEY_ID"), require("ASC_ISSUER_ID"), require("ASC_API_KEY_P8"))
 
+def resolve_app_id(bundle_id: str, bearer: Bearer) -> str:
+    """The App Store Connect app id for a bundle id, or a fatal error.
+
+    The response is re-filtered on the exact bundle id, which is not
+    redundant: `filter[bundleId]` is Apple's filter and Apple has never
+    promised it is an exact-match lookup rather than a match, so a sibling id
+    (`inc.corpora.dynawalla.dev`) could come back for a query of
+    `inc.corpora.dynawalla`. Taking `data[0]` on trust would resolve the wrong
+    app id, and the post-upload read-back would then poll a DIFFERENT app's
+    builds until it timed out — reporting the timeout against the right bundle
+    id, which is the hardest possible version of this to debug.
+    """
     apps = get("apps", {"filter[bundleId]": bundle_id, "limit": "200"}, bearer)
     matches = [
         a for a in apps.get("data", []) if (a.get("attributes") or {}).get("bundleId") == bundle_id
@@ -209,9 +228,44 @@ def main() -> None:
         fail(
             f"No App Store Connect app record for bundle id {bundle_id}. "
             "There is no app-create operation in the API — Apple's own docs say to create "
-            "the app on the App Store Connect website (STORE.md). This is a founder action."
+            "the app on the App Store Connect website (STORE.md). This is a founder action: "
+            "create the app with this exact bundle id in App Store Connect, then re-run. "
+            "Nothing this job builds can succeed until it exists."
         )
-    app_id = matches[0]["id"]
+    return str(matches[0]["id"])
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description="Verify a TestFlight upload.")
+    parser.add_argument(
+        "--preflight",
+        action="store_true",
+        help="only check that the app record exists (run BEFORE the build)",
+    )
+    args = parser.parse_args(argv)
+
+    bundle_id = require("ASC_BUNDLE_ID")
+
+    # --preflight asks exactly one question and asks it early. It deliberately
+    # requires NONE of the verify-mode variables: at the point it runs there is
+    # no IPA, so there is no CFBundleVersion to name, and demanding one would
+    # make the check impossible to run at the only time it is worth running.
+    if args.preflight:
+        app_id = resolve_app_id(bundle_id, bearer_from_env())
+        print(f"App Store Connect app {app_id} exists for {bundle_id}. Preflight passed.")
+        return
+
+    wanted = require("ASC_BUILD_VERSION")
+    raw_min = require("ASC_MIN_UPLOADED_DATE")
+    try:
+        min_uploaded = float(raw_min)
+    except ValueError:
+        fail(f"ASC_MIN_UPLOADED_DATE is not epoch seconds: {raw_min!r}")
+    deadline = time.time() + int(os.environ.get("ASC_TIMEOUT_SECONDS", "900"))
+
+    bearer = bearer_from_env()
+
+    app_id = resolve_app_id(bundle_id, bearer)
     print(f"App Store Connect app {app_id} for {bundle_id}.")
     print(f"Only builds uploaded at or after {iso(min_uploaded)} count as this run's.")
 

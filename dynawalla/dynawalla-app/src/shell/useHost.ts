@@ -15,7 +15,7 @@ import { eraseEverything } from "../app/erase.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { usePacks } from "../packs/registry.ts"
 import { useLaunch } from "../packs/Stage.tsx"
-import { grantingBilling, productFor } from "../pass/billing.ts"
+import { billing, grantingBilling, productFor } from "../pass/billing.ts"
 import { dayKey, passIsOpen, EMPTY_LEDGER } from "../pass/model.ts"
 import { usePass } from "../pass/store.ts"
 import { useProfiles } from "../profiles/store.ts"
@@ -103,9 +103,18 @@ export function useHostView(armed: boolean): HostView {
   // ledger: a screen that says a game is resting and a stage that lets it open
   // would be two answers to one question, and the second is the one a child
   // finds.
+  //
+  // `billing().wired` is the third way the list comes back empty, and it is the
+  // one that has to be read here rather than inferred from an empty ledger: the
+  // ledger is durable and outlives the build that wrote it, so a device updated
+  // from a gating version arrives with yesterday's entries still in storage. The
+  // stage opens those games — `canOpen` short-circuits on the same flag — and a
+  // row that called them resting would be the disagreement this block exists to
+  // prevent, pointing the wrong way.
   const now = useNow()
   const open = passIsOpen(pass, now)
-  const resting = open || ledger.day !== dayKey(now) ? [] : ledger.resting
+  const resting =
+    open || !billing().wired || ledger.day !== dayKey(now) ? [] : ledger.resting
 
   return {
     profiles,

@@ -23,6 +23,12 @@
 // lifetime pass is never re-examined at all. Corpán learned this the expensive
 // way and the policy is copied verbatim from
 // `corpan/corpan-app/src/store/entitlements.ts`.
+//
+// The same asymmetry decides what happens when there is no store at all, and it
+// decides it the same way: **a game is never refused for want of a purchase
+// that cannot be made.** Both decisions below take `billingWired` and both open
+// on `false`. See `billing.ts` for what that flag is and why it is not "did the
+// last `buy` fail".
 
 /** What a family can buy. Three, and never more: a price list is not a menu. */
 export type PassKind = "day" | "month" | "lifetime"
@@ -151,9 +157,24 @@ export type TransitionInput = {
   readonly pass: Pass | null
   readonly ledger: RestLedger
   readonly now: number
+  /**
+   * Whether the installed billing can actually take money — `billing().wired`,
+   * threaded in rather than read here.
+   *
+   * This module reaches for no globals on purpose: every rule in it is decided
+   * from its arguments, which is why a whole simulated day fits in a Node test
+   * with no store, no DOM and no module state to reset between cases. Importing
+   * the billing singleton to answer one boolean would trade all of that for a
+   * saved parameter.
+   */
+  readonly billingWired: boolean
 }
 
 export function verdictFor(input: TransitionInput): TransitionVerdict {
+  // Nothing to sell, so nothing to gate. A stopping point earns its name from
+  // the pass on the other side of it; without one it is a locked door with no
+  // key cut for it, and the family's only remaining move is to delete the app.
+  if (!input.billingWired) return "play-on"
   if (passIsOpen(input.pass, input.now)) return "play-on"
   const day = dayKey(input.now)
   // Already stopped here today. A second sheet in one game in one day is a
@@ -169,13 +190,20 @@ export function verdictFor(input: TransitionInput): TransitionVerdict {
  * thing: a game is *never* refused because it has not been paid for, only
  * because this device already reached its ending today. On a fresh day, with no
  * pass and nothing bought, every installed game answers `true`.
+ *
+ * And with no store wired it answers `true` always, ledger or no ledger. The
+ * ledger outlives a build — a device that ran a gating version still carries
+ * its entries in durable storage — so this is checked rather than assumed from
+ * "`verdictFor` would never have written one".
  */
 export function canOpen(input: {
   readonly packId: string
   readonly pass: Pass | null
   readonly ledger: RestLedger
   readonly now: number
+  readonly billingWired: boolean
 }): boolean {
+  if (!input.billingWired) return true
   if (passIsOpen(input.pass, input.now)) return true
   return !isResting(input.ledger, input.packId, dayKey(input.now))
 }

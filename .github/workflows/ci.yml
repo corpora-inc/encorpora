@@ -35,6 +35,7 @@ jobs:
       dynawalla_app: ${{ steps.filter.outputs.dynawalla_app }}
       dynawalla_curriculum: ${{ steps.filter.outputs.dynawalla_curriculum }}
       dynawalla_engine: ${{ steps.filter.outputs.dynawalla_engine }}
+      dynawalla_packs: ${{ steps.filter.outputs.dynawalla_packs }}
       lambda: ${{ steps.filter.outputs.lambda }}
       native: ${{ steps.filter.outputs.native }}
       packs: ${{ steps.filter.outputs.packs }}
@@ -157,6 +158,26 @@ jobs:
           # packages have independent CI filters, and an engine-only pull request
           # must be able to fail this on its own."
           set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
+          # The games and the pack pipeline, deliberately ONE area rather than
+          # two, because there is no change to either half that the other half
+          # cannot break: `packs/build.mjs` runs each game's `build:pack`, every
+          # game's `src/pack.ts` imports `packs/shared/game-host/index.ts` by
+          # relative path, and `packs/sdk/bin/dw-pack.mjs` is the checker the
+          # build runs as its gate on every pack, every time. Splitting them
+          # would let an SDK-only PR skip the five builds that consume it.
+          #
+          # Before this filter existed, `dynawalla/games/**` and
+          # `dynawalla/packs/**` matched NO area and were exercised by NO job:
+          # 201 game tests and 52 SDK tests ran nowhere, and `npm run packs`
+          # first executed inside a release. See the job below for why that is
+          # the expensive place to discover a broken pack.
+          #
+          # `dynawalla-app/package.json` is in here because it is where the
+          # `packs` script is defined (`node ../packs/build.mjs`) and this job
+          # invokes it by name. The app's own filter covers that file too, but
+          # no job under it runs the pack build, so a rename would otherwise
+          # land green and break only the release.
+          set_output dynawalla_packs '^(dynawalla/(games|packs)/|dynawalla/dynawalla-app/package\.json$|\.github/workflows/ci\.yml$)'
           # Cross-product area. Deliberately no `ci.yml` self-trigger: it exists
           # to answer "did shared code move", and a workflow edit is not a
           # change to it. No job consumes it yet.
@@ -209,8 +230,16 @@ jobs:
           # filter above: `shared_ts` is declared ahead of its job, so paths it
           # matches are genuinely ungated and must keep warning until that job
           # lands. `dynawalla/dynawalla-app/`, `dynawalla/curriculum/`,
-          # `dynawalla/engine/` and now `native` have each graduated, as the
-          # jobs below consume their filters.
+          # `dynawalla/engine/`, `native` and now `dynawalla/games/` +
+          # `dynawalla/packs/` have each graduated, as the jobs below consume
+          # their filters.
+          #
+          # The games and the packs are added here in the SAME change that adds
+          # the job consuming them, which is the only order that keeps this
+          # list honest. Listing a path as covered before a job runs it is
+          # strictly worse than not listing it: the warning is the only thing
+          # standing between an unexercised tree and a release-time discovery,
+          # and a premature entry silences it while changing nothing else.
           #
           # The terraform member is copied verbatim from the `terraform` filter —
           # extension-scoped, not the bare directory. A bare `corpan/infra/
@@ -223,7 +252,7 @@ jobs:
           # app compiles all of them). `.github/workflows/ios-native.yml`
           # additionally compiles their Swift, but it is advisory and does not
           # count here.
-          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine)/)'
+          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. grep -E has no negative lookahead,
@@ -714,6 +743,133 @@ jobs:
         working-directory: dynawalla/engine
         run: npm run tsc
 
+  # Dynawalla's games and the pack pipeline that ships them.
+  #
+  # Before this job, `dynawalla/games/**` and `dynawalla/packs/**` matched no
+  # area filter and were exercised by no job at all. Two consequences, both
+  # measured on this branch:
+  #
+  #   * 201 tests across the five games and 52 in the pack SDK ran nowhere. A
+  #     game could be merged with a red test suite and nothing would say so.
+  #   * `npm run packs` — the build that produces every shipped pack — first
+  #     ran during a RELEASE. `src-tauri/tauri.conf.json` sets
+  #     "beforeBuildCommand": "npm run packs && npm run tsc && npm run build",
+  #     so the pipeline's first execution on any change was inside the iOS
+  #     archive step: about 45 minutes in, on a macOS runner, after signing.
+  #     `packs/build.mjs` runs `dw-pack check` on every pack and treats a
+  #     failure as a failed build ("a pack that does not pass is a failed
+  #     build, not a warning"), so a malformed pack.json written on a Tuesday
+  #     surfaced as a dead release on a Friday.
+  #
+  # Path-gated like every sibling, and therefore NOT a required status context:
+  # it reports into `ci-gate` below, which always runs and treats a skip as a
+  # pass. Adding a `needs` entry there adds coverage without adding a context
+  # branch protection waits on, so the merge queue cannot deadlock on it.
+  #
+  # No `git lfs pull` step, unlike `dynawalla-app` and `native`: `git ls-files
+  # dynawalla/games dynawalla/packs | git check-attr --stdin filter` reports
+  # nothing under LFS, so there is no pointer file for a build to embed. Add
+  # one the moment a game commits its first PNG.
+  dynawalla-packs:
+    name: dynawalla-packs · games + pack build
+    needs: changes
+    if: needs.changes.outputs.dynawalla_packs == 'true'
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # Node 24 is not a preference here: `packs/sdk` and `games/slice`
+          # both pin `engines.node >= 24`, and every test script in this tree
+          # runs TypeScript directly under `--experimental-strip-types`.
+          node-version: "24"
+          cache: "npm"
+          # A cache KEY, not an install manifest. Not every game commits a
+          # lockfile (`packs/build.mjs` falls back to `npm install` when one is
+          # absent, and the install loop below makes the same choice), so this
+          # glob deliberately matches a subset. It only has to change when a
+          # dependency changes; a game with no lock simply contributes nothing
+          # to the key.
+          cache-dependency-path: dynawalla/games/*/package-lock.json
+      # The SDK first, because it is the contract the rest of this job checks
+      # against: the manifest schema, the capability table, the wire protocol,
+      # and `bin/dw-pack.mjs` — the checker the pack build runs as its gate.
+      # Its own tests are the only thing that can catch a checker that stopped
+      # checking, which is the failure mode that passes wrongly.
+      - name: Install, test and typecheck the pack SDK
+        working-directory: dynawalla/packs/sdk
+        # `npm install`, not `npm ci`: the SDK commits no lockfile. Its only
+        # dependencies are typescript and @types/node, both devDependencies.
+        run: |
+          set -euo pipefail
+          npm install
+          npm test
+          npm run tsc
+      - name: Install, test and typecheck every game
+        run: |
+          set -euo pipefail
+
+          # Discovery is a glob, matching `packs/build.mjs`: "adding the
+          # thousandth pack is adding a directory; there is no register to
+          # forget to edit". A hand-written list of games here would be exactly
+          # that register, and the failure mode of forgetting it is silence.
+          shopt -s nullglob
+          manifests=(dynawalla/games/*/package.json)
+          if [ "${#manifests[@]}" -eq 0 ]; then
+            echo "::error::no games found under dynawalla/games/ — this job's glob has gone stale and it has been passing on nothing."
+            exit 1
+          fi
+          echo "${#manifests[@]} game(s) found."
+
+          for manifest in "${manifests[@]}"; do
+            dir="$(dirname "${manifest}")"
+            echo "::group::${dir}"
+
+            # Read the manifest with fs.readFileSync, never `require()`. A bare
+            # `require("dynawalla/games/forge/package.json")` has no leading
+            # `./`, so Node resolves it as a PACKAGE name, throws, and — with
+            # stderr discarded, which is how this idiom is usually written —
+            # reports "no such script" for every pack forever. That is a live
+            # bug in the `changed-packs` job above; do not copy it down here.
+            node -e '
+              const fs = require("node:fs");
+              const pkg = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+              const missing = ["test", "tsc"].filter((s) => !pkg.scripts?.[s]);
+              if (missing.length > 0) {
+                console.error(`::error::${process.argv[1]} defines no ${missing.join(" and no ")} script. Every game gates on both — add them rather than removing the game from CI.`);
+                process.exit(1);
+              }
+            ' "${manifest}"
+
+            # `npm ci` where a lock is committed, `npm install` where one is
+            # not — the same branch `packs/build.mjs` takes, so CI installs
+            # what the pack build would install rather than a second opinion
+            # that could resolve differently.
+            if [ -f "${dir}/package-lock.json" ]; then
+              npm ci --prefix "${dir}"
+            else
+              npm install --prefix "${dir}"
+            fi
+
+            npm run --prefix "${dir}" test
+            npm run --prefix "${dir}" tsc
+            echo "::endgroup::"
+          done
+      - name: Build, check and stage every pack
+        working-directory: dynawalla/dynawalla-app
+        # Invoked by name, from the app directory, because that is verbatim
+        # what the release runs through tauri's `beforeBuildCommand`. Calling
+        # `node ../packs/build.mjs` directly here would test the script but not
+        # the wiring, and the wiring is half of what broke.
+        #
+        # No `npm ci` in this directory first, deliberately: the script is
+        # `node ../packs/build.mjs` and needs nothing from the app's
+        # node_modules. Each game's dependencies were installed by the step
+        # above, which is also why build.mjs's own install branch is a no-op by
+        # the time it runs — it installs only when node_modules is missing.
+        run: npm run packs
+
   # ───────────────────────────────────────────────────────────────────────────
   # The Rust / native gate.
   #
@@ -1057,6 +1213,7 @@ jobs:
         pack-catalog,
         dynawalla-curriculum,
         dynawalla-engine,
+        dynawalla-packs,
       ]
     if: ${{ always() }}
     runs-on: ubuntu-latest

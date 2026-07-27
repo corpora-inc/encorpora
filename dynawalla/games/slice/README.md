@@ -11,6 +11,7 @@ npm install
 npm run dev     # http://127.0.0.1:4317 — playable standalone, stub Host included
 npm test        # 30 tests
 npm run tsc
+npm run build:pack # what installs on a tablet: pack.html only, no stub Host
 ```
 
 ---

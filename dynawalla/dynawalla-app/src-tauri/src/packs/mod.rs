@@ -26,8 +26,9 @@
 //! pack ever published. It is a public API from the first release and it can
 //! never be renamed.
 
+use std::collections::BTreeMap;
 use std::fs;
-use std::io::Read;
+use std::io::{Read, Seek};
 use std::path::{Component, Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
@@ -92,11 +93,32 @@ pub enum Progress {
     Installing,
 }
 
-/// What the manifest inside the archive must agree with the catalogue about.
+/// What the manifest inside the archive must agree with the catalogue about,
+/// plus the digest of the content it was built from. Everything else in a
+/// manifest is the SDK schema's business, on the JS side.
 #[derive(Debug, Deserialize)]
 struct ManifestIdentity {
     id: String,
     version: String,
+    /// Optional here and required by the schema, which is not a contradiction:
+    /// the schema is enforced by `dw-pack check` at build time and this is the
+    /// side that has to survive a file that got past it anyway.
+    #[serde(default)]
+    download: Option<ManifestDownload>,
+}
+
+/// `packs/build.mjs` computes `download.sha256` over every file of the built
+/// pack except `manifest.json` itself — the manifest carries the digest, so
+/// hashing it would be a fixed point nothing could compute. Path and length go
+/// into the hash beside the bytes, so a renamed or truncated file moves it as
+/// surely as a flipped bit does.
+///
+/// That is what makes it the right thing to compare a bundled pack against: it
+/// is a fact about the content, and a version is a product decision.
+#[derive(Debug, Deserialize)]
+struct ManifestDownload {
+    #[serde(default)]
+    sha256: Option<String>,
 }
 
 // ─── Layout ──────────────────────────────────────────────────────────────────
@@ -684,28 +706,226 @@ fn extract_within(
 
 // ─── Packs that ship with the app ────────────────────────────────────────────
 
-/// Where the packs bundled with this build live.
+/// Entries under this prefix in an APK are the packs bundled with the build.
 ///
-/// Two answers, and both are needed. In a release the packs are a Tauri
-/// resource and sit under `resource_dir()`. In `npm run tauri dev` there is no
-/// bundle: `packs/build.mjs` stages them into `src-tauri/packs/`, which is a
-/// compile-time constant of this crate, so the dev loop needs no environment
-/// variable, no symlink and no manual install step.
-fn bundled_root<R: Runtime>(app: &AppHandle<R>) -> Option<PathBuf> {
-    if let Ok(dir) = app.path().resource_dir() {
-        let candidate = dir.join("packs");
-        if candidate.is_dir() {
-            return Some(candidate);
+/// `assets/` because `tauri android build` copies everything named in
+/// `bundle.resources` into `gen/android/app/src/main/assets/` verbatim, and
+/// `packs` because that is the single resource `tauri.conf.json` declares.
+const APK_PACK_PREFIX: &str = "assets/packs/";
+
+/// Every file this process has mapped. A named constant so the parsing below
+/// can be exercised against a fixture rather than against this process.
+const PROC_SELF_MAPS: &str = "/proc/self/maps";
+
+/// Where the packs bundled with this build are, in the form the platform
+/// actually keeps them in.
+enum Bundled {
+    /// A directory whose children are pack directories.
+    Directory(PathBuf),
+    /// An APK. The packs are ZIP entries under [`APK_PACK_PREFIX`].
+    Apk(PathBuf),
+}
+
+/// Find them, or say — loudly — that there are none.
+///
+/// Three answers, and each is the only right answer on a platform this app
+/// ships to.
+///
+/// * **A desktop or iOS release** — the packs are a Tauri resource and sit
+///   under `resource_dir()` as an ordinary directory.
+/// * **`npm run tauri dev`** — there is no bundle. `packs/build.mjs` stages
+///   them into `src-tauri/packs/`, a compile-time constant of this crate, so
+///   the dev loop needs no environment variable, no symlink and no manual
+///   install step.
+/// * **Android** — there is no directory anywhere on the device.
+///   `resource_dir()` hands back the literal string `asset://localhost/`: an
+///   Android asset URI, not a path, because `tauri android build` puts the
+///   resources INSIDE the APK, where the platform reaches them only through its
+///   AssetManager. `is_dir()` on that URI is false, and that single false is
+///   why the Android build installed ZERO packs and printed nothing about it.
+///
+///   An APK is a ZIP and this crate already links a ZIP reader, so the packs
+///   are read straight out of it. Locating the APK needs neither JNI nor a new
+///   dependency: the dynamic linker mapped this very library out of the APK, or
+///   out of a split of it, and `/proc/self/maps` names every file the process
+///   has mapped.
+///
+/// Every branch that fails names the path or URI it tried. A bundled pack that
+/// does not arrive is a child opening an empty app, and the version of this
+/// function that shipped returned `None` in complete silence.
+fn bundled_source<R: Runtime>(app: &AppHandle<R>) -> Option<Bundled> {
+    match app.path().resource_dir() {
+        Ok(dir) => {
+            let candidate = dir.join("packs");
+            if candidate.is_dir() {
+                return Some(Bundled::Directory(candidate));
+            }
+            eprintln!(
+                "[packs] the resource directory has no packs directory in it: {}",
+                candidate.display()
+            );
         }
+        Err(problem) => eprintln!("[packs] there is no resource directory: {problem}"),
     }
+
     #[cfg(debug_assertions)]
     {
         let candidate = Path::new(env!("CARGO_MANIFEST_DIR")).join("packs");
         if candidate.is_dir() {
-            return Some(candidate);
+            return Some(Bundled::Directory(candidate));
+        }
+        eprintln!(
+            "[packs] nothing staged for the dev loop at {} — run `npm run packs`",
+            candidate.display()
+        );
+    }
+
+    let maps = match fs::read_to_string(PROC_SELF_MAPS) {
+        Ok(maps) => maps,
+        Err(problem) => {
+            eprintln!("[packs] cannot read {PROC_SELF_MAPS}: {problem}");
+            String::new()
+        }
+    };
+    let mut examined = vec![];
+    for apk in apk_candidates(&maps, own_code_address()) {
+        match holds_bundled_packs(&apk) {
+            Ok(true) => return Some(Bundled::Apk(apk)),
+            Ok(false) => examined.push(format!("{} (no {APK_PACK_PREFIX})", apk.display())),
+            Err(problem) => examined.push(format!("{}: {problem}", apk.display())),
         }
     }
+
+    eprintln!(
+        "[packs] NO BUNDLED PACKS FOUND — this build has none installed and will show an empty \
+         app. Archives examined: {}",
+        if examined.is_empty() {
+            "none".to_string()
+        } else {
+            examined.join("; ")
+        }
+    );
     None
+}
+
+/// The address of a byte of this library's own code.
+///
+/// Used to pick our own mapping out of `/proc/self/maps`, where it is one line
+/// among hundreds. Casting a function to `usize` is the whole trick and it needs
+/// nothing linked: whatever address it produces is inside the file this code was
+/// loaded from, which is the file we are looking for.
+fn own_code_address() -> usize {
+    own_code_address as *const () as usize
+}
+
+/// Every APK this process might have been loaded from, best guess first.
+///
+/// A line of `/proc/self/maps` ends in the path of the mapped file, and on
+/// Android at least one mapping always points inside the installed application:
+/// either the APK itself — `extractNativeLibs=false` is the modern default, and
+/// then the linker maps the library straight out of the archive — or the
+/// extracted copy at `<install>/lib/<abi>/lib*.so`.
+///
+/// Two orderings, both load-bearing.
+///
+/// The mapping that *contains `own_code`* is tried first. An Android app
+/// process has other applications' APKs mapped into it — the system WebView's
+/// above all, which is hundreds of megabytes with a central directory to match —
+/// and opening one of those first would cost real milliseconds before the first
+/// window, every launch, for nothing. The address of our own code is in exactly
+/// one of these ranges and that range names our own file.
+///
+/// Within a mapping, `base.apk` beside it comes before the mapped file itself.
+/// A Play install of an app bundle is SPLIT: the native library is in
+/// `split_config.arm64_v8a.apk` and every asset is in `base.apk` next to it. The
+/// mapping names the split; the packs are in the sibling.
+fn apk_candidates(maps: &str, own_code: usize) -> Vec<PathBuf> {
+    let mut ours: Vec<PathBuf> = vec![];
+    let mut ours_direct: Vec<PathBuf> = vec![];
+    let mut preferred: Vec<PathBuf> = vec![];
+    let mut fallback: Vec<PathBuf> = vec![];
+
+    for line in maps.lines() {
+        // Only the pathname column can hold a slash: the address range,
+        // permissions, offset, device and inode never do.
+        let Some(start) = line.find('/') else {
+            continue;
+        };
+        let mapped = mapped_range(&line[..start])
+            .is_some_and(|(low, high)| own_code >= low && own_code < high);
+
+        let path = line[start..].trim_end();
+        let path = path.strip_suffix(" (deleted)").unwrap_or(path);
+        // `…/base.apk!/lib/arm64-v8a/libdynawalla_lib.so` is how a library
+        // mapped out of an uncompressed APK is named on some releases.
+        // Everything from the `!` on is a path INSIDE the archive.
+        let path = match path.find(".apk") {
+            Some(end) => &path[..end + ".apk".len()],
+            None => path,
+        };
+
+        let (sibling, itself) = if path.ends_with(".apk") {
+            let apk = Path::new(path);
+            (
+                apk.parent().map(|directory| directory.join("base.apk")),
+                Some(apk.to_path_buf()),
+            )
+        } else if path.ends_with(".so") {
+            // `<install>/lib/<abi>/lib*.so` → `<install>`. The `lib` component
+            // is checked rather than assumed so that an ordinary Linux desktop,
+            // whose maps are full of shared objects, proposes nothing.
+            let lib = Path::new(path).parent().and_then(Path::parent);
+            let install = lib
+                .and_then(Path::file_name)
+                .is_some_and(|name| name == "lib")
+                .then(|| lib.and_then(Path::parent))
+                .flatten();
+            (install.map(|install| install.join("base.apk")), None)
+        } else {
+            (None, None)
+        };
+
+        if mapped {
+            ours.extend(sibling);
+            ours_direct.extend(itself);
+        } else {
+            preferred.extend(sibling);
+            fallback.extend(itself);
+        }
+    }
+
+    let mut candidates: Vec<PathBuf> = vec![];
+    for candidate in ours
+        .into_iter()
+        .chain(ours_direct)
+        .chain(preferred)
+        .chain(fallback)
+    {
+        if !candidates.contains(&candidate) {
+            candidates.push(candidate);
+        }
+    }
+    candidates
+}
+
+/// The `low-high` address range a `/proc/self/maps` line opens with.
+fn mapped_range(head: &str) -> Option<(usize, usize)> {
+    let mut bounds = head.split_whitespace().next()?.split('-');
+    let low = usize::from_str_radix(bounds.next()?, 16).ok()?;
+    let high = usize::from_str_radix(bounds.next()?, 16).ok()?;
+    Some((low, high))
+}
+
+/// Whether this archive is the one carrying the app's packs.
+///
+/// Cheap on purpose: it reads the ZIP central directory and not one entry body,
+/// so proposing a wrong APK costs a few kilobytes of I/O rather than a decode.
+fn holds_bundled_packs(apk: &Path) -> Result<bool, String> {
+    let file = fs::File::open(apk).map_err(|e| e.to_string())?;
+    let archive = zip::ZipArchive::new(std::io::BufReader::new(file)).map_err(|e| e.to_string())?;
+    Ok(archive
+        .file_names()
+        .any(|name| name.starts_with(APK_PACK_PREFIX)))
 }
 
 fn copy_tree(from: &Path, to: &Path) -> std::io::Result<()> {
@@ -726,30 +946,116 @@ fn copy_tree(from: &Path, to: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
-/// Install the packs that ship with this build, if they are not already the
-/// version installed.
+/// Whether the bundled copy of a pack has to be written over what is installed.
 ///
-/// Called at setup, before any window is shown. The whole point is that the
-/// front door is never empty on a first launch and never stale in development:
-/// a debug build re-copies unconditionally, so editing a pack and restarting is
-/// the entire dev loop, while a release build only acts when the version
-/// changed and therefore does not rewrite a device's pack directory on every
-/// cold start.
+/// **By digest, not by version.** A pack's version is a product decision; a
+/// content fix is not, and most content fixes keep the version exactly where it
+/// was. Comparing versions therefore means a corrected pack sits inside the
+/// binary while the device goes on running the broken one *forever*: there is
+/// no later event that notices, because every subsequent launch compares the
+/// same two equal versions and skips again. `download.sha256` is a fact about
+/// the bytes, so it moves whenever any of them do.
 ///
-/// Failures are logged and swallowed. A bundled pack that will not copy is a
-/// pack the child does not get; it is not a reason for the app not to open.
-pub fn sync_bundled<R: Runtime>(app: &AppHandle<R>) {
-    let Some(source) = bundled_root(app) else {
-        return;
+/// The version comparison survives only as the fallback for a manifest with no
+/// digest in it. The schema requires one and `dw-pack check` gates it, so a
+/// pack arriving here without one is a defect in the pipeline and says so.
+fn bundled_pack_differs(pack_id: &str, installed: Option<&str>, bundled: &str) -> bool {
+    let Some(bundled) = manifest_identity(bundled) else {
+        // Unreadable. Let the caller attempt the install and fail out loud
+        // there rather than quietly deciding there is nothing to do.
+        return true;
     };
-    let Ok(root) = pack_root(app) else {
-        eprintln!("[packs] no pack root; bundled packs were not installed");
-        return;
+    let Some(installed) = installed.and_then(manifest_identity) else {
+        return true;
     };
 
-    let Ok(entries) = fs::read_dir(&source) else {
-        return;
+    let installed_digest = installed.download.and_then(|download| download.sha256);
+    let bundled_digest = bundled.download.and_then(|download| download.sha256);
+    match (installed_digest, bundled_digest) {
+        (Some(installed_digest), Some(bundled_digest)) => {
+            !installed_digest.eq_ignore_ascii_case(&bundled_digest)
+        }
+        _ => {
+            eprintln!(
+                "[packs] {pack_id} has no download.sha256 in one of its manifests, so a content \
+                 fix that keeps version {} cannot be seen; falling back to the version",
+                bundled.version
+            );
+            installed.version != bundled.version
+        }
+    }
+}
+
+fn manifest_identity(manifest: &str) -> Option<ManifestIdentity> {
+    serde_json::from_str(manifest).ok()
+}
+
+/// The verbatim manifest of the pack directory at `dir`, if it has one.
+fn manifest_at(dir: &Path) -> Option<String> {
+    fs::read_to_string(dir.join("manifest.json")).ok()
+}
+
+/// Whether this pack should be written over the installed one, given both
+/// manifests — the digest rule, plus the dev-loop override.
+///
+/// A debug build re-copies unconditionally, so editing a pack and restarting is
+/// the entire dev loop.
+fn should_install(pack_id: &str, destination: &Path, bundled: &str) -> bool {
+    if cfg!(debug_assertions) {
+        return true;
+    }
+    bundled_pack_differs(pack_id, manifest_at(destination).as_deref(), bundled)
+}
+
+/// Install the packs that ship with this build, if the installed copy is not
+/// already byte-for-byte the same pack.
+///
+/// Called at setup, before any window is shown, so the front door is never
+/// empty on a first launch and never stale in development.
+///
+/// Failures are logged and swallowed. A bundled pack that will not copy is a
+/// pack the child does not get; it is not a reason for the app not to open. It
+/// is emphatically a reason to print something: this function used to return in
+/// silence on Android, which is how an entire platform shipped with no packs.
+pub fn sync_bundled<R: Runtime>(app: &AppHandle<R>) {
+    let root = match pack_root(app) {
+        Ok(root) => root,
+        Err(problem) => {
+            eprintln!("[packs] no pack root ({problem}); bundled packs were NOT installed");
+            return;
+        }
     };
+
+    match bundled_source(app) {
+        Some(Bundled::Directory(source)) => sync_from_directory(&source, &root),
+        Some(Bundled::Apk(apk)) => match fs::File::open(&apk) {
+            Ok(file) => match zip::ZipArchive::new(std::io::BufReader::new(file)) {
+                Ok(mut archive) => sync_from_zip(&mut archive, &root),
+                Err(problem) => eprintln!(
+                    "[packs] {} is not readable as an archive: {problem}",
+                    apk.display()
+                ),
+            },
+            Err(problem) => eprintln!("[packs] cannot open {}: {problem}", apk.display()),
+        },
+        // `bundled_source` has already named everything it tried.
+        None => {}
+    }
+}
+
+fn sync_from_directory(source: &Path, root: &Path) {
+    let entries = match fs::read_dir(source) {
+        Ok(entries) => entries,
+        Err(problem) => {
+            eprintln!(
+                "[packs] cannot read the bundled packs at {}: {problem}",
+                source.display()
+            );
+            return;
+        }
+    };
+
+    let mut found = 0usize;
     for entry in entries.flatten() {
         if !entry.file_type().map(|t| t.is_dir()).unwrap_or(false) {
             continue;
@@ -758,21 +1064,22 @@ pub fn sync_bundled<R: Runtime>(app: &AppHandle<R>) {
         if !valid_pack_id(&name) {
             continue;
         }
-        let Some(bundled) = read_installed(&entry.path()) else {
+        found += 1;
+        let Some(manifest) = manifest_at(&entry.path()) else {
             eprintln!("[packs] bundled {name} has no readable manifest.json");
             continue;
         };
-        if bundled.id != name {
-            eprintln!("[packs] bundled {name} calls itself {}", bundled.id);
+        let Some(identity) = manifest_identity(&manifest) else {
+            eprintln!("[packs] bundled {name} has an unparseable manifest.json");
+            continue;
+        };
+        if identity.id != name {
+            eprintln!("[packs] bundled {name} calls itself {}", identity.id);
             continue;
         }
 
         let destination = root.join(&name);
-        let current = read_installed(&destination);
-        let same_version = current
-            .as_ref()
-            .is_some_and(|installed| installed.version == bundled.version);
-        if same_version && !cfg!(debug_assertions) {
+        if !should_install(&name, &destination, &manifest) {
             continue;
         }
 
@@ -782,6 +1089,118 @@ pub fn sync_bundled<R: Runtime>(app: &AppHandle<R>) {
             let _ = fs::remove_dir_all(&destination);
         }
     }
+
+    if found == 0 {
+        eprintln!(
+            "[packs] {} exists but holds no pack directories; nothing was installed",
+            source.display()
+        );
+    }
+}
+
+/// Install every pack an APK carries under `assets/packs/`.
+///
+/// Compiled on every target rather than hidden behind
+/// `#[cfg(target_os = "android")]`, so the tests below exercise it on the
+/// machine you are reading this on. Only the *discovery* of the APK is
+/// Android-shaped, and everywhere else it proposes nothing to open.
+fn sync_from_zip<S: Read + Seek>(archive: &mut zip::ZipArchive<S>, root: &Path) {
+    // The names are taken first and owned: `by_name` needs `&mut archive`, so
+    // the borrow `file_names` hands out cannot survive the reads below.
+    let mut by_pack: BTreeMap<String, Vec<(String, String)>> = BTreeMap::new();
+    for name in archive.file_names() {
+        if name.ends_with('/') {
+            continue;
+        }
+        let Some(rest) = name.strip_prefix(APK_PACK_PREFIX) else {
+            continue;
+        };
+        let mut parts = rest.splitn(2, '/');
+        let (Some(id), Some(relative)) = (parts.next(), parts.next()) else {
+            continue;
+        };
+        if relative.is_empty() || !valid_pack_id(id) {
+            continue;
+        }
+        by_pack
+            .entry(id.to_string())
+            .or_default()
+            .push((name.to_string(), relative.to_string()));
+    }
+
+    if by_pack.is_empty() {
+        eprintln!("[packs] this archive holds no {APK_PACK_PREFIX} entries; nothing was installed");
+        return;
+    }
+
+    for (id, entries) in by_pack {
+        let manifest_entry = format!("{APK_PACK_PREFIX}{id}/manifest.json");
+        let Some(manifest) = zip_entry_string(archive, &manifest_entry) else {
+            eprintln!("[packs] bundled {id} has no readable {manifest_entry}");
+            continue;
+        };
+        let Some(identity) = manifest_identity(&manifest) else {
+            eprintln!("[packs] bundled {id} has an unparseable manifest.json");
+            continue;
+        };
+        if identity.id != id {
+            eprintln!("[packs] bundled {id} calls itself {}", identity.id);
+            continue;
+        }
+
+        let destination = root.join(&id);
+        if !should_install(&id, &destination, &manifest) {
+            continue;
+        }
+
+        let _ = fs::remove_dir_all(&destination);
+        if let Err(problem) = unpack_into(archive, &entries, &destination) {
+            eprintln!("[packs] could not install bundled {id}: {problem}");
+            let _ = fs::remove_dir_all(&destination);
+        }
+    }
+}
+
+fn zip_entry_string<S: Read + Seek>(
+    archive: &mut zip::ZipArchive<S>,
+    name: &str,
+) -> Option<String> {
+    let mut entry = archive.by_name(name).ok()?;
+    let mut body = String::new();
+    entry.read_to_string(&mut body).ok()?;
+    Some(body)
+}
+
+/// Write one pack's entries out of the archive and into `destination`.
+///
+/// `safe_entry_path` is applied even though this archive was built by our own
+/// pipeline. The rule already exists, it costs a string walk per file, and an
+/// APK is still a ZIP whose entry names are strings — the property "a pack
+/// cannot escape its directory" should not quietly acquire an exception for the
+/// one code path nobody can test on a device.
+fn unpack_into<S: Read + Seek>(
+    archive: &mut zip::ZipArchive<S>,
+    entries: &[(String, String)],
+    destination: &Path,
+) -> Result<(), String> {
+    for (name, relative) in entries {
+        let Some(relative) = safe_entry_path(relative) else {
+            return Err(format!("entry escapes the pack directory: {name}"));
+        };
+        let target = destination.join(relative);
+        if let Some(parent) = target.parent() {
+            fs::create_dir_all(parent).map_err(|e| format!("cannot create {parent:?}: {e}"))?;
+        }
+        let mut entry = archive
+            .by_name(name)
+            .map_err(|e| format!("unreadable entry {name}: {e}"))?;
+        let mut body = Vec::new();
+        entry
+            .read_to_end(&mut body)
+            .map_err(|e| format!("cannot read {name}: {e}"))?;
+        fs::write(&target, &body).map_err(|e| format!("cannot write {target:?}: {e}"))?;
+    }
+    Ok(())
 }
 
 #[cfg(test)]

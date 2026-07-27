@@ -73,6 +73,7 @@ npm install
 npm run dev            # http://127.0.0.1:4310
 npm test               # 32 tests, no browser needed
 npm run tsc
+npm run build:pack     # what installs on a tablet: pack.html only, no stub host
 ```
 
 `?perf=1` shows fps, frame cost, tier and input latency. `?dev=1` exposes

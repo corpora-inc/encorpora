@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.stack",
+  "version": "0.1.0",
+  "name": "MONUMENT",
+  "description": "A one-tap precision stacker. A slab sweeps across the tower carrying a candidate answer, and the drop has to be true twice — dead on the edge below it, and dead on the arithmetic.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ],
+    "grades": [1, 4]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

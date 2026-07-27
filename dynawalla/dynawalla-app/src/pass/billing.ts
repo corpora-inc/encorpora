@@ -65,10 +65,28 @@ export type PurchaseOutcome =
   | { readonly status: "unavailable"; readonly detail: string }
 
 /**
- * The three calls a platform has to answer. Anything a store does that is not
- * one of these is not something this product needs.
+ * The three calls a platform has to answer, and the one fact about itself it
+ * has to admit. Anything a store does that is not one of these is not something
+ * this product needs.
  */
 export interface PassBilling {
+  /**
+   * Whether this implementation can actually take money.
+   *
+   * **The model reads this before it ever rests a game.** A stopping point is
+   * only a stopping point because there is a pass on the other side of it; with
+   * no store wired, the same code turns a game into a dead end that no parent
+   * can reopen at any price. That is not a paywall, it is a broken app, and it
+   * is exactly what a TestFlight build of this app was: two installed games,
+   * one transition each, about five minutes, and then nothing.
+   *
+   * A flag rather than "did `buy` return `unavailable`" because the difference
+   * has to be known *before* the child reaches the transition, and because the
+   * two are not the same thing — a wired store that is offline is unavailable
+   * this minute and sellable the next, and a family who paid must not lose the
+   * day to a dropped connection.
+   */
+  readonly wired: boolean
   /** The catalogue, with localised prices. */
   products(): Promise<readonly PassProduct[]>
   /** Buy one. Resolves; never throws for a cancellation. */
@@ -98,8 +116,15 @@ export function expiryFor(kind: PassKind, now: number): number | null {
   }
 }
 
-/** What ships until a platform lands. Honest about doing nothing. */
+/**
+ * What ships until a platform lands. Honest about doing nothing.
+ *
+ * `wired: false` is the load-bearing field. It is what keeps the day pass from
+ * gating anything at all in a build with no store: every game stays open, all
+ * day, for as long as this is the installed implementation.
+ */
 export const unwiredBilling: PassBilling = {
+  wired: false,
   products: () => Promise.resolve(FALLBACK_PRODUCTS),
   buy: () =>
     Promise.resolve({
@@ -132,6 +157,10 @@ export function billing(): PassBilling {
  * with no way to do that will find a worse one. It is reachable only from the
  * developer rows in the parent area, which are off by default and off on every
  * child's tablet.
+ *
+ * `wired: true`, because the point of it is to exercise the real gating path.
+ * A developer grant that reported itself unwired would switch the day pass off
+ * and prove nothing.
  */
 export function grantingBilling(clock: () => number = Date.now): PassBilling {
   const grant = (productId: string): PurchaseOutcome => {
@@ -144,6 +173,7 @@ export function grantingBilling(clock: () => number = Date.now): PassBilling {
     }
   }
   return {
+    wired: true,
     products: () => Promise.resolve(FALLBACK_PRODUCTS),
     buy: (productId) => Promise.resolve(grant(productId)),
     restore: () => Promise.resolve(grant(FALLBACK_PRODUCTS[2]?.productId ?? "")),

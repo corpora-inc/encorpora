@@ -12,6 +12,9 @@
 //   3. **There is no timer, and the copy contains no pressure.** Mechanically,
 //      by reading the source and the strings, so "we would notice" is not the
 //      control.
+//   4. **A build with no store gates nothing.** The fourth because the first
+//      three all quietly assumed a store existed, and the build that shipped to
+//      TestFlight did not have one.
 
 import test from "node:test"
 import assert from "node:assert/strict"
@@ -20,7 +23,13 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 import { strings } from "../app/strings.ts"
-import { expiryFor, FALLBACK_PRODUCTS, grantingBilling, productFor } from "./billing.ts"
+import {
+  expiryFor,
+  FALLBACK_PRODUCTS,
+  grantingBilling,
+  productFor,
+  unwiredBilling,
+} from "./billing.ts"
 import {
   canOpen,
   dayKey,
@@ -45,6 +54,19 @@ const lifetime: Pass = { kind: "lifetime", expiresAt: null, confirmedAt: NOON }
 const dayPass: Pass = { kind: "day", expiresAt: NOON + 24 * HOUR, confirmedAt: NOON }
 const monthPass: Pass = { kind: "month", expiresAt: NOON + 30 * 24 * HOUR, confirmedAt: NOON }
 
+/**
+ * The two builds every rule below has to be right in, spread into the input so
+ * that which one a case is describing is readable at the call site.
+ *
+ * `withStore` is a build a parent can actually buy from, and it is the **only**
+ * one in which the day pass gates anything at all: every case from here down to
+ * the last section runs in it, because a rest that nobody can undo is not a
+ * rule worth having. `noStore` is what ships until StoreKit and Play Billing
+ * land, and the last section is entirely about it.
+ */
+const withStore = { billingWired: true } as const
+const noStore = { billingWired: false } as const
+
 // ── Every game is free, and the gate is a place, not a clock ─────────────────
 
 test("on a cold device with nothing bought, every game opens", () => {
@@ -52,7 +74,7 @@ test("on a cold device with nothing bought, every game opens", () => {
   // a child can try all of them, which is how they find the one they love.
   for (const packId of ["dynawalla.fuse", "dynawalla.siege", "dynawalla.forge"]) {
     assert.equal(
-      canOpen({ packId, pass: null, ledger: EMPTY_LEDGER, now: NOON }),
+      canOpen({ packId, pass: null, ledger: EMPTY_LEDGER, now: NOON, ...withStore }),
       true,
       `${packId} was refused on a cold device`,
     )
@@ -62,22 +84,23 @@ test("on a cold device with nothing bought, every game opens", () => {
 test("the first stopping point rests that game and only that game", () => {
   let ledger: RestLedger = EMPTY_LEDGER
 
-  const first = verdictFor({ packId: "dynawalla.fuse", pass: null, ledger, now: NOON })
+  const first = verdictFor({ packId: "dynawalla.fuse", pass: null, ledger, now: NOON, ...withStore })
   assert.equal(first, "rest")
   ledger = markResting(ledger, "dynawalla.fuse", dayKey(NOON))
 
   // FUSE is finished for today…
-  assert.equal(canOpen({ packId: "dynawalla.fuse", pass: null, ledger, now: NOON }), false)
+  assert.equal(canOpen({ packId: "dynawalla.fuse", pass: null, ledger, now: NOON, ...withStore }), false)
   // …and SIEGE has not been touched. This is the whole point of one gate per
   // game per day: a child who runs out of one goes and finds another.
-  assert.equal(canOpen({ packId: "dynawalla.siege", pass: null, ledger, now: NOON }), true)
+  assert.equal(canOpen({ packId: "dynawalla.siege", pass: null, ledger, now: NOON, ...withStore }), true)
 })
 
 test("a second stopping point in a rested game shows nothing", () => {
   // Reachable only if a pack is mounted anyway. The answer to being asked
   // twice is silence, never a second sheet.
   const ledger = markResting(EMPTY_LEDGER, "dynawalla.fuse", dayKey(NOON))
-  assert.equal(verdictFor({ packId: "dynawalla.fuse", pass: null, ledger, now: NOON }), "play-on")
+  const input = { packId: "dynawalla.fuse", pass: null, ledger, now: NOON, ...withStore }
+  assert.equal(verdictFor(input), "play-on")
 })
 
 test("midnight gives the day back", () => {
@@ -85,7 +108,7 @@ test("midnight gives the day back", () => {
   const tomorrow = new Date(2026, 6, 27, 8, 0, 0).getTime()
 
   assert.notEqual(dayKey(NOON), dayKey(tomorrow))
-  assert.equal(canOpen({ packId: "dynawalla.fuse", pass: null, ledger, now: tomorrow }), true)
+  assert.equal(canOpen({ packId: "dynawalla.fuse", pass: null, ledger, now: tomorrow, ...withStore }), true)
   // And the record is thrown away rather than accumulated — nothing here grows
   // without bound and no history of a child's play is kept.
   assert.deepEqual(ledgerOn(ledger, dayKey(tomorrow)), { day: dayKey(tomorrow), resting: [] })
@@ -115,12 +138,15 @@ test("a pass opens every game, including ones that already rested", () => {
   const ledger = markResting(EMPTY_LEDGER, "dynawalla.fuse", dayKey(NOON))
   for (const pass of [dayPass, monthPass, lifetime]) {
     assert.equal(
-      canOpen({ packId: "dynawalla.fuse", pass, ledger, now: NOON }),
+      canOpen({ packId: "dynawalla.fuse", pass, ledger, now: NOON, ...withStore }),
       true,
       `${pass.kind} did not reopen a rested game`,
     )
     // And nothing is ever shown to them again.
-    assert.equal(verdictFor({ packId: "dynawalla.siege", pass, ledger, now: NOON }), "play-on")
+    assert.equal(
+      verdictFor({ packId: "dynawalla.siege", pass, ledger, now: NOON, ...withStore }),
+      "play-on",
+    )
   }
 })
 
@@ -157,7 +183,7 @@ test("a full day: play, rest, switch games, buy, and wake up tomorrow", async ()
   let ledger: RestLedger = EMPTY_LEDGER
   let pass: Pass | null = null
   const play = (packId: string, now: number) => {
-    const verdict = verdictFor({ packId, pass, ledger, now })
+    const verdict = verdictFor({ packId, pass, ledger, now, ...withStore })
     if (verdict === "rest") ledger = markResting(ledger, packId, dayKey(now))
     return verdict
   }
@@ -165,14 +191,14 @@ test("a full day: play, rest, switch games, buy, and wake up tomorrow", async ()
   // 09:00 — FUSE. Two levels cleared; the first one is the stopping point and
   // the second one is silence.
   const nine = new Date(2026, 6, 26, 9, 0, 0).getTime()
-  assert.equal(canOpen({ packId: "dynawalla.fuse", pass, ledger, now: nine }), true)
+  assert.equal(canOpen({ packId: "dynawalla.fuse", pass, ledger, now: nine, ...withStore }), true)
   assert.equal(play("dynawalla.fuse", nine), "rest")
   assert.equal(play("dynawalla.fuse", nine + 60_000), "play-on")
 
   // 09:05 — dismissed the sheet, went to SIEGE. Still open, still free.
   const nineFive = nine + 5 * 60_000
-  assert.equal(canOpen({ packId: "dynawalla.fuse", pass, ledger, now: nineFive }), false)
-  assert.equal(canOpen({ packId: "dynawalla.siege", pass, ledger, now: nineFive }), true)
+  assert.equal(canOpen({ packId: "dynawalla.fuse", pass, ledger, now: nineFive, ...withStore }), false)
+  assert.equal(canOpen({ packId: "dynawalla.siege", pass, ledger, now: nineFive, ...withStore }), true)
   assert.equal(play("dynawalla.siege", nineFive), "rest")
 
   // 09:30 — a parent passes the gate and buys the lifetime pass. Everything
@@ -183,15 +209,16 @@ test("a full day: play, rest, switch games, buy, and wake up tomorrow", async ()
   assert.equal(outcome.status, "granted")
   if (outcome.status !== "granted") return
   pass = outcome.pass
+  const half = nine + 31 * 60_000
   for (const packId of ["dynawalla.fuse", "dynawalla.siege", "dynawalla.forge"]) {
-    assert.equal(canOpen({ packId, pass, ledger, now: nine + 31 * 60_000 }), true)
-    assert.equal(verdictFor({ packId, pass, ledger, now: nine + 31 * 60_000 }), "play-on")
+    assert.equal(canOpen({ packId, pass, ledger, now: half, ...withStore }), true)
+    assert.equal(verdictFor({ packId, pass, ledger, now: half, ...withStore }), "play-on")
   }
 
   // …and had they not bought anything, tomorrow morning gives both back.
   const tomorrow = new Date(2026, 6, 27, 9, 0, 0).getTime()
-  assert.equal(canOpen({ packId: "dynawalla.fuse", pass: null, ledger, now: tomorrow }), true)
-  assert.equal(canOpen({ packId: "dynawalla.siege", pass: null, ledger, now: tomorrow }), true)
+  assert.equal(canOpen({ packId: "dynawalla.fuse", pass: null, ledger, now: tomorrow, ...withStore }), true)
+  assert.equal(canOpen({ packId: "dynawalla.siege", pass: null, ledger, now: tomorrow, ...withStore }), true)
 })
 
 // ── The catalogue ────────────────────────────────────────────────────────────
@@ -318,6 +345,122 @@ test("no ledger entry is written when a pass is open", () => {
   // Otherwise a family who let a month pass lapse would come back to a device
   // where every game was already resting.
   const ledger = markResting(EMPTY_LEDGER, "dynawalla.fuse", dayKey(NOON))
-  assert.equal(verdictFor({ packId: "dynawalla.siege", pass: lifetime, ledger, now: NOON }), "play-on")
+  assert.equal(
+    verdictFor({ packId: "dynawalla.siege", pass: lifetime, ledger, now: NOON, ...withStore }),
+    "play-on",
+  )
   assert.equal(isResting(ledger, "dynawalla.siege", dayKey(NOON)), false)
+})
+
+// ── The build with no store ──────────────────────────────────────────────────
+//
+// What went to TestFlight, and what it did there. `unwiredBilling` answers
+// `unavailable` to `buy` and to `restore`, so the first stopping point in each
+// installed game rested it, `canOpen` said no for the rest of the day, and the
+// sheet's one offer led to a store that did not exist. With two games installed
+// that is roughly five minutes, and then the app is a dead end no parent can
+// buy their way out of.
+//
+// Every case above this line assumes a store. These are the ones that hold the
+// rule when there is not one: **a game is never refused for want of a purchase
+// that cannot be made.**
+
+test("the shipping billing admits it cannot sell, and the developer grant admits it can", () => {
+  // The entire fix hangs off this one flag, so it is asserted rather than read.
+  assert.equal(unwiredBilling.wired, false)
+  assert.equal(grantingBilling().wired, true)
+})
+
+test("with no store wired, no game ever rests, however long a child plays", () => {
+  let ledger: RestLedger = EMPTY_LEDGER
+  const packs = ["dynawalla.fuse", "dynawalla.siege", "dynawalla.forge"]
+
+  // Forty stopping points across an afternoon and three games — many times what
+  // the shipped build could reach before it stopped being an app.
+  for (let index = 0; index < 40; index += 1) {
+    const packId = packs[index % packs.length] ?? ""
+    const now = NOON + index * 7 * 60_000
+
+    const verdict = verdictFor({ packId, pass: null, ledger, now, ...noStore })
+    // Exactly what the store does with a verdict, and done before the assertion
+    // rather than instead of it: a regression fills the ledger, and the check
+    // after the loop is what catches the day one slips through.
+    if (verdict === "rest") ledger = markResting(ledger, packId, dayKey(now))
+
+    assert.equal(verdict, "play-on", `${packId} rested at transition ${index} with nothing to sell`)
+    assert.equal(
+      canOpen({ packId, pass: null, ledger, now, ...noStore }),
+      true,
+      `${packId} was refused at transition ${index} with nothing to sell`,
+    )
+  }
+
+  assert.deepEqual(ledger, EMPTY_LEDGER, "a build with no store wrote a rest into the ledger")
+})
+
+test("a ledger left behind by a gating build does not lock anybody out", () => {
+  // Why `canOpen` reads the flag rather than trusting that `verdictFor` never
+  // wrote anything: the ledger is durable and it outlives the build that wrote
+  // it. A family who hit the dead end yesterday installs the fix today and
+  // would otherwise open it to find every game already finished.
+  let ledger: RestLedger = EMPTY_LEDGER
+  for (const packId of ["dynawalla.fuse", "dynawalla.siege"]) {
+    ledger = markResting(ledger, packId, dayKey(NOON))
+    assert.equal(canOpen({ packId, pass: null, ledger, now: NOON, ...withStore }), false)
+    assert.equal(canOpen({ packId, pass: null, ledger, now: NOON, ...noStore }), true)
+  }
+})
+
+test("wiring a store back on gives back the day pass exactly as it was", () => {
+  // The flag switches the model off. It must not change a thing about what the
+  // model does when it is on, so the free-tier day is run again here, in full,
+  // against the wired build.
+  let ledger: RestLedger = EMPTY_LEDGER
+
+  const fuse = (now: number) => ({ packId: "dynawalla.fuse", pass: null, ledger, now, ...withStore })
+  assert.equal(verdictFor(fuse(NOON)), "rest")
+  ledger = markResting(ledger, "dynawalla.fuse", dayKey(NOON))
+
+  // Rested once, and once only: a second transition in the same game is silence.
+  assert.equal(verdictFor(fuse(NOON + HOUR)), "play-on")
+  assert.equal(canOpen(fuse(NOON + HOUR)), false)
+  // …and only that game. SIEGE is untouched.
+  assert.equal(canOpen({ packId: "dynawalla.siege", pass: null, ledger, now: NOON, ...withStore }), true)
+  // Tomorrow gives it back.
+  assert.equal(canOpen(fuse(new Date(2026, 6, 27, 8, 0, 0).getTime())), true)
+  // And a pass reopens it today, which is the thing being sold.
+  assert.equal(
+    canOpen({ packId: "dynawalla.fuse", pass: lifetime, ledger, now: NOON + HOUR, ...withStore }),
+    true,
+  )
+})
+
+test("the sheet is only ever opened by the model's two answers", () => {
+  // The child-facing consequence, and why changing two decisions is enough: the
+  // stage is the only thing in the app that mounts `PassSheet`, and both of its
+  // mounts are gated on `model.ts`. With nothing to sell both answers open, so
+  // the sheet is never drawn at all — nobody is offered a store that is not
+  // there, because nobody arrives at the offer.
+  const stage = fs.readFileSync(path.join(here, "..", "packs", "Stage.tsx"), "utf8")
+  const mounts = stage.match(/<PassSheet\b/g) ?? []
+  assert.equal(mounts.length, 2, "the sheet gained a mount that the model does not gate")
+  assert.ok(
+    stage.includes('if (reachTransition(packId) === "rest") setOffering(true)'),
+    "the transition mount no longer asks the model",
+  )
+  assert.ok(
+    stage.includes("useState(() => !usePass.getState().mayOpen(packId))"),
+    "the reopen mount no longer asks the model",
+  )
+})
+
+test("the library rows go quiet too when there is nothing to sell", () => {
+  // The row's word and the stage's decision are one question with one answer,
+  // and the flag has to reach both or a row says "resting" about a game that
+  // opens when a child presses it.
+  const host = fs.readFileSync(path.join(here, "..", "shell", "useHost.ts"), "utf8")
+  assert.ok(
+    host.includes("!billing().wired"),
+    "a row can still call a game resting that the stage will open",
+  )
 })

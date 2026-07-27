@@ -21,6 +21,7 @@ import { durable } from "../app/persist.ts"
 import { deviceKey } from "../app/profile.ts"
 import { billing, type PurchaseOutcome } from "./billing.ts"
 import {
+  canOpen,
   dayKey,
   EMPTY_LEDGER,
   isPassKind,
@@ -62,20 +63,25 @@ export const usePass = create<PassState>()(
       grant: (pass) => set({ pass }),
       forget: () => set({ pass: null }),
 
+      // This store is the seam where the pure model meets the singletons: it
+      // reads the clock and it reads the installed billing, and it hands both
+      // to `model.ts` as plain values. Nothing below `model.ts` knows either
+      // one exists, which is why a whole day of play is testable there.
       reachTransition: (packId, now = Date.now()) => {
         const { pass, ledger } = get()
-        const verdict = verdictFor({ packId, pass, ledger, now })
+        const verdict = verdictFor({ packId, pass, ledger, now, billingWired: billing().wired })
         if (verdict === "rest") {
           set({ ledger: markResting(ledger, packId, dayKey(now)) })
         }
         return verdict
       },
 
+      // Delegated rather than re-derived. The stage asks this and the library
+      // rows draw from the same ledger, and a second copy of the rule here is
+      // how the row and the door come to disagree.
       mayOpen: (packId, now = Date.now()) => {
         const { pass, ledger } = get()
-        if (passIsOpen(pass, now)) return true
-        const day = dayKey(now)
-        return !(ledger.day === day && ledger.resting.includes(packId))
+        return canOpen({ packId, pass, ledger, now, billingWired: billing().wired })
       },
     }),
     {
