@@ -1,8 +1,12 @@
 <!--
-Trunk-based: one change, one PR, squash-merged. Keep it small — the
-adversarial-review gate truncates the diff at 200000 bytes
-(.github/scripts/adversarial_review.py:115) and never sees the rest. Check with:
-  git diff --unified=3 origin/main...HEAD | wc -c
+Trunk-based: one change, one PR, squash-merged.
+
+Keep it small because a small PR is easier to review, NOT because of a size
+limit — there isn't one. `adversarial-review` chunks the diff on `diff --git`
+boundaries, runs every lens over every chunk, and asserts the concatenated
+chunks equal the diff before it makes a single model call. A large PR is
+reviewed in full or the check fails; it can no longer pass having read part of
+it. Do not split a PR to satisfy a byte count.
 -->
 
 ## What

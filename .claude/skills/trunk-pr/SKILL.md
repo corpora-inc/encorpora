@@ -31,11 +31,23 @@ tracked separately — until it lands, follow this file.
 
 ## 0. Ground rules
 
+- **Local `main` changes by pull/fast-forward and by nothing else.** That is the
+  rule the rest of this file exists to serve. Every change reaches it the same
+  way: worktree → remote branch → PR → squash-merge → pull the new `origin/main`
+  down as a fast-forward. The primary checkout should sit on a clean `main` at
+  all times — no edits, no commits, no `checkout -b`, nothing uncommitted.
+  If `git merge --ff-only origin/main` ever refuses, that is the alarm: the
+  checkout has diverged and must be investigated, never forced.
 - The primary checkout is **read-only**. Read from it, run read-only git in it,
   never edit or check out in it.
 - Every worktree goes **outside** the repo directory, at `$WT_ROOT/<branch>`.
   Worktrees nested inside the repo bloat every search and get left behind (27
   are nested there today).
+- Re-base a branch with `git rebase origin/main`. **Never `git reset --soft
+  origin/main`** — when `main` has moved it re-parents your commit onto the new
+  tip while keeping the old tree, silently reverting everything that landed in
+  between, with no conflict and no warning. Catch it before pushing:
+  `git -C "$WT" diff --name-only origin/main...HEAD` must list only your files.
 - Path-gate anything you add to CI. That is what makes constant merging safe in
   a monorepo.
 
@@ -117,20 +129,26 @@ their output — the PR body needs them.
   `corpan/corpan-app/public/locales/`. `npm run check:i18n` runs inside `npm run
   build` and fails the build on any missing key.
 
-## 6. Diff size — split before you push
+## 6. Diff size — there is no cap; do not split for one
 
-The adversarial-review gate truncates the diff at `MAX_DIFF_BYTES`, default
-**200 000** (`.github/scripts/adversarial_review.py:115`). Past that byte
-offset, **no lens sees the code**, and the check can go green having reviewed
-half your PR. Re-running does not help; it re-reviews the same prefix.
+**A PR is never too large for the gate.** `adversarial-review` splits the diff
+on `diff --git` boundaries into budget-sized chunks, runs every lens over every
+chunk, unions the findings, and asserts `"".join(chunks) == diff` **before it
+makes a single model call**. A file bigger than one chunk is split, not
+truncated and not rejected. `MAX_CHUNK_CHARS` (default 200 000) is a per-chunk
+budget, not a limit on your PR.
 
-```bash
-git -C "$WT" diff --unified=3 origin/main...HEAD | wc -c
-```
+Observed: a 281 638-char diff reviewed as "2 chunk(s) of <= 200000; every lens
+read 100% of that diff, 0 chars dropped".
 
-Over ~200 000 → split into stacked PRs. Land generated or vendored bulk
-(lockfiles, fixtures, bundled dist) in its own mechanical PR first so the
-reviewable change fits.
+This section used to say the opposite, and the old advice is what the sticky
+review comment now disproves on every large PR. The behaviour it warned about
+was real — the gate once truncated at 200 000 bytes and still reported
+`success`; PR #521 was 850 261 bytes across 186 files and the model saw 67 of
+them — but that hole was closed by chunking, not by asking authors to split.
+`MAX_DIFF_BYTES` no longer exists in the script.
+
+Split a PR when it does more than one thing, never to hit a byte count.
 
 `hygiene` also fails any added non-LFS file over 5 MiB.
 

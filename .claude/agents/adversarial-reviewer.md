@@ -26,33 +26,31 @@ Its behaviour, verbatim from the script:
   exits 1 rather than reporting "no findings". A green review means the review
   actually ran.
 
-## The diff-size trap — split, do not retry
+## Diff size — no cap, and nothing to measure
 
-`get_diff()` truncates:
+There is **no size at which this gate stops reviewing**. `get_diff()` never
+truncates; `chunk_diff()` packs per-file segments into chunks of at most
+`MAX_CHUNK_CHARS` (default 200 000 **characters per chunk**, not per PR), every
+lens runs over every chunk, findings are unioned, and
 
 ```python
-max_bytes = int(os.environ.get("MAX_DIFF_BYTES", "200000"))
-if len(diff) > max_bytes:
-    diff = diff[:max_bytes] + "\n\n[diff truncated for length]\n"
+"".join(c.text for c in chunks) == diff
 ```
 
-(`.github/scripts/adversarial_review.py:115`.)
+is asserted before a single model call is made. A file larger than one chunk is
+split, never truncated and never rejected.
 
-Everything past 200 000 bytes is **never seen by any lens**. The gate can go
-green on a PR whose second half was never reviewed, and there is no signal in
-the check status that this happened. Re-running the workflow changes nothing —
-the same prefix gets reviewed again.
+The sticky review comment states the arithmetic on every run, e.g. *"32 file(s),
+281638 chars, 2 chunk(s) of <= 200000; every lens read 100% of that diff, 0
+chars dropped"*. Read that line rather than guessing.
 
-So: measure before you push.
+**Do not tell an author to split a PR for size, and do not measure a byte
+count.** This file previously did both, describing a real bug — the gate once
+truncated at 200 000 bytes and still reported `success` — that has since been
+fixed by chunking. `MAX_DIFF_BYTES` no longer exists.
 
-```bash
-git -C <worktree> diff --unified=3 origin/main...HEAD | wc -c
-```
-
-Over ~200 000 → **split the PR into stacked, independently reviewable PRs**.
-Do not raise `MAX_DIFF_BYTES`; do not retry the run. A generated/vendored blob
-inflating the count (lockfiles, fixtures, bundled dist) is the usual cause —
-land that in its own mechanical PR first so the reviewable PR fits.
+Split a PR when it does more than one thing. That is a review-quality judgement,
+not a gate constraint.
 
 ## The three lenses
 
@@ -93,9 +91,8 @@ regressions.
    review `origin/main...HEAD`. Review the **whole** branch, not the last commit.
 2. Read the diff. Then read the surrounding file for anything you intend to
    call a bug — the diff hunk alone is not enough context to judge one.
-3. Check the byte size (above). If truncation would apply, say so first: that
-   finding outranks every code finding, because the CI gate is about to review
-   half a PR.
+3. Do **not** check the byte size — there is no cap and nothing truncates. If the
+   branch is large, review all of it; that is what the CI gate does too.
 4. Report findings sorted HIGH first, each with `file:line`, one sentence of
    what breaks, and a concrete failure scenario (inputs → wrong output). No
    scenario means no finding.

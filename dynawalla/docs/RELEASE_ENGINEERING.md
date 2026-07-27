@@ -19,28 +19,32 @@ Keep it. **Required contexts stay exactly three: `ci-gate`, `adversarial-review`
 
 ## Fix 1 — the adversarial reviewer
 
-This is the highest-value change in the program, because the diff-size discipline that
-makes constant merging safe is currently unenforced.
+**Status: DONE.** All three defects below are fixed in
+`.github/scripts/adversarial_review.py`. The section is kept because the defects are
+worth remembering — each one produced a *green* required check over unreviewed code.
 
-Three defects, all verified:
+1. ~~**It truncates and still reports green.**~~ It truncated at `MAX_DIFF_BYTES`
+   (default 200,000). Measured: PR #521 was 850,261 diff bytes across 186 files; the
+   model saw 67 of them, stopping mid-alphabet, and the conclusion was `success`.
+   **Fixed differently, and better, than planned:** rather than failing above a cap and
+   making authors split, the diff is now **chunked** on `diff --git` boundaries, every
+   lens runs over every chunk, and `"".join(chunks) == diff` is asserted before the first
+   model call. A file larger than one chunk is split, never dropped. `MAX_DIFF_BYTES` is
+   gone; `MAX_CHUNK_CHARS` (default 200,000) is a per-chunk budget. **There is no PR size
+   limit, and no reason to split a PR for size.**
+2. ~~**It fails closed only when *all* lenses error.**~~ The guard was
+   `if errored == len(LENSES)`, so two of three lenses timing out yielded a green
+   required check on one lens' output. **Fixed:** any single lens error now fails closed.
+3. ~~**The provider is not what anyone assumes.**~~ `provider_and_key()` fell through to
+   the OpenAI key and a hardcoded default model. **Fixed:** the resolved provider and
+   model are written to `$GITHUB_STEP_SUMMARY`, and `ADVERSARIAL_MODEL` is constrained to
+   an `ALLOWED_MODELS` allow-list — an unlisted id is a hard error, not a silent
+   downgrade.
 
-1. **It truncates and still reports green.** `adversarial_review.py:115` truncates at
-   `MAX_DIFF_BYTES` (default 200,000). Measured: PR #521 was 850,261 diff bytes across
-   186 files; the model saw 67 of them, stopping mid-alphabet, and the conclusion was
-   `success`.
-2. **It fails closed only when *all* lenses error.** The guard is
-   `if errored == len(LENSES)`, so two of three lenses timing out yields a green required
-   check on one lens' output.
-3. **The provider is not what anyone assumes.** There is no `ANTHROPIC_API_KEY` among the
-   repository secrets and no repository variables at all, so `provider_and_key()` falls
-   through to the OpenAI key and a hardcoded default model.
-
-**One PR fixes all of it** (PR-0a.2): truncation exits non-zero with
-`::error::diff too large to review — split this PR`; **any** lens error fails; the
-resolved provider and model are printed into `$GITHUB_STEP_SUMMARY`; and a 1-token ping
-asserts the model responds before spending three full-diff calls. `MAX_DIFF_BYTES`
-becomes a repo *variable* starting at 400,000. The hardcoded app version in the prompt is
-replaced by a read of `tauri.conf.json`.
+The one planned item deliberately **not** carried out is the fail-and-split behaviour in
+the original PR-0a.2 (`::error::diff too large to review — split this PR`). Chunking made
+it unnecessary. Any doc still telling authors to split for size is stale; say so and
+delete it.
 
 **Break-glass:** an `admin-override` label that a named bypass actor can apply, so a
 provider outage does not freeze the trunk. Every use of it goes in the `STATUS.md`

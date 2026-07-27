@@ -321,10 +321,15 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       Verify: `gh api` on the protection object; a docs-only PR shows exactly three
       required checks.
       Evidence: UNMET
-- [ ] **C-02** A PR exceeding `MAX_DIFF_BYTES` **fails** `adversarial-review` with
-      `::error::diff too large to review — split this PR`.
-      Verify: deliberate oversized test PR.
-      Evidence: UNMET
+- [x] **C-02** `adversarial-review` reviews a diff of **any** size in full: it chunks on
+      `diff --git` boundaries, runs every lens over every chunk, and asserts
+      `"".join(chunks) == diff` before the first model call. A file larger than one
+      chunk is split, never truncated or rejected.
+      Verify: a large PR's sticky comment states the chunk count and the chars dropped.
+      Evidence: MET — PR #557 reported "32 file(s), 281638 chars, 2 chunk(s) of
+      <= 200000; every lens read 100% of that diff, 0 chars dropped".
+      Supersedes the original C-02, which required the gate to **fail** above
+      `MAX_DIFF_BYTES` and make the author split. Chunking removed the need.
 - [ ] **C-03** A run where exactly one of three lenses errors fails the required check.
       Verify: deliberate single-lens failure injection.
       Evidence: UNMET
