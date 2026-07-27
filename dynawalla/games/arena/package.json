@@ -1,0 +1,28 @@
+{
+  "name": "@dynawalla/game-arena",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "ARENA — a bioluminescent growth arena. You are a number. Eat what is smaller. Flee what is not.",
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:pack": "vite build --config vite.pack.config.ts",
+    "preview": "vite preview --port 4188 --strictPort",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\""
+  },
+  "dependencies": {
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/three": "^0.185.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}

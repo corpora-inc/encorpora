@@ -1,0 +1,16 @@
+{
+  "id": "dynawalla.arena",
+  "version": "0.1.0",
+  "name": "ARENA",
+  "description": "A bioluminescent growth arena. You are a number in a black ocean where everything obeys one radius law, so \"smaller than me\" is something you see before you read it — and telling 3,418 from 3,481 at speed is the whole game.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": ["dw.ns.compare.whole-numbers"],
+    "grades": [1, 4]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}
