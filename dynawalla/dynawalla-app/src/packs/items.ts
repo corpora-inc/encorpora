@@ -114,13 +114,34 @@ function formsFor(rung: Rung): readonly string[] {
   return declared.includes(FORM_FREE_ENTRY) ? [FORM_FREE_ENTRY] : declared
 }
 
+/** A prompt slot as a child reads it.
+ *
+ * A `switch` over `kind` rather than a chain ending in a fall-through, so that
+ * the next slot kind the curriculum grows fails to compile HERE — at the
+ * renderer that has to learn how to draw it — instead of silently landing in
+ * whichever branch happened to be last. That is not hypothetical: the
+ * `fraction` kind arrived exactly that way. */
 function slotText(slot: PromptSlot | undefined): string {
   if (slot === undefined) return ""
-  if (slot.kind === "number") {
-    return rational.toDecimalString(slot.value, slot.decimalPlaces) ?? rational.toString(slot.value)
+  switch (slot.kind) {
+    case "number":
+      return (
+        rational.toDecimalString(slot.value, slot.decimalPlaces) ?? rational.toString(slot.value)
+      )
+    case "count":
+      return String(slot.value)
+    case "term":
+      return slot.key
+    case "fraction": {
+      // As written, never reduced: `2/4` and `1/2` are the same number and
+      // different problems, and the generator chose which one it asked. The
+      // whole part is drawn only when there is one, so a plain fraction reads
+      // `1/2` rather than `0 1/2`.
+      const written = `${slot.num.toString()}/${slot.den.toString()}`
+      if (slot.whole === undefined || slot.whole === 0n) return written
+      return `${slot.whole.toString()} ${written}`
+    }
   }
-  if (slot.kind === "count") return String(slot.value)
-  return slot.key
 }
 
 /** An answer value as a child would write it. Never a float, never rounded. */
