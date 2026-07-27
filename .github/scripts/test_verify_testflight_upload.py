@@ -14,6 +14,13 @@ Every test here fails against the version of the script that was first written:
     ASC_TIMEOUT_SECONDS, so raising that past ~19 minutes expired the token
     mid-poll and reported "the API key is not valid for this team"
   * it had no 403 or 404 branch
+  * it had no `--preflight`, so "the App Store Connect app record does not
+    exist" — a founder action, answerable in two seconds — was discovered at
+    the upload step, roughly minute 55 of a 60-minute macOS job
+
+`main` takes an explicit argv (the same shape `verify_play_upload.py` uses)
+because it now parses arguments: `main()` under pytest would parse pytest's own
+command line. Every call site here passes `[]` or `["--preflight"]`.
 
 Run: python -m pytest .github/scripts -q
 """
@@ -99,7 +106,7 @@ def test_main_fails_on_a_duplicate(monkeypatch, capsys):
 
     monkeypatch.setattr(vt, "get", fake_get)
     with pytest.raises(SystemExit) as exc:
-        vt.main()
+        vt.main([])
     assert exc.value.code == 1
     out = capsys.readouterr().out
     assert "already on App Store Connect before this run started" in out
@@ -120,7 +127,7 @@ def test_main_passes_on_our_own_build(monkeypatch, capsys):
         return {"data": [_build("new", "29750720", AFTER, state="PROCESSING")]}
 
     monkeypatch.setattr(vt, "get", fake_get)
-    vt.main()
+    vt.main([])
     assert "was uploaded by this run" in capsys.readouterr().out
 
 
@@ -140,7 +147,7 @@ def test_main_fails_on_an_invalid_build(monkeypatch, capsys):
 
     monkeypatch.setattr(vt, "get", fake_get)
     with pytest.raises(SystemExit):
-        vt.main()
+        vt.main([])
     assert "rejected by App Store Connect" in capsys.readouterr().out
 
 
@@ -149,7 +156,7 @@ def test_missing_min_uploaded_date_is_a_failure(monkeypatch, capsys):
     monkeypatch.setenv("ASC_BUILD_VERSION", "29750720")
     monkeypatch.delenv("ASC_MIN_UPLOADED_DATE", raising=False)
     with pytest.raises(SystemExit):
-        vt.main()
+        vt.main([])
     assert "ASC_MIN_UPLOADED_DATE is not set" in capsys.readouterr().out
 
 
@@ -238,8 +245,96 @@ def test_no_app_record_is_a_founder_action(monkeypatch, capsys):
     monkeypatch.setattr(vt.Bearer, "value", lambda self: "tok")
     monkeypatch.setattr(vt, "get", lambda *a, **k: {"data": []})
     with pytest.raises(SystemExit):
-        vt.main()
+        vt.main([])
     assert "founder action" in capsys.readouterr().out
+
+
+# ------------------------------------------------------- --preflight, the app
+# record check that used to happen at minute 55
+
+
+def _preflight_env(monkeypatch):
+    """Only the credentials and the bundle id. Deliberately NOT the build
+    version or the run start: preflight runs before an IPA exists."""
+    monkeypatch.setenv("ASC_BUNDLE_ID", "inc.corpora.dynawalla")
+    monkeypatch.delenv("ASC_BUILD_VERSION", raising=False)
+    monkeypatch.delenv("ASC_MIN_UPLOADED_DATE", raising=False)
+    monkeypatch.setenv("ASC_KEY_ID", "K")
+    monkeypatch.setenv("ASC_ISSUER_ID", "I")
+    monkeypatch.setenv("ASC_API_KEY_P8", "P")
+    monkeypatch.setattr(vt.Bearer, "value", lambda self: "tok")
+
+
+def test_preflight_prints_the_app_id_and_does_not_poll_builds(monkeypatch, capsys):
+    """It must answer from the `apps` call alone. Touching `builds` would make
+    it depend on a build that does not exist yet."""
+    _preflight_env(monkeypatch)
+    asked = []
+
+    def fake_get(path, params, bearer):
+        asked.append(path)
+        return {"data": [{"id": "app1", "attributes": {"bundleId": "inc.corpora.dynawalla"}}]}
+
+    monkeypatch.setattr(vt, "get", fake_get)
+    vt.main(["--preflight"])
+    assert asked == ["apps"]
+    assert "app1" in capsys.readouterr().out
+
+
+def test_preflight_needs_no_build_version(monkeypatch):
+    """The whole point is that it runs BEFORE the build. Requiring
+    ASC_BUILD_VERSION would move it back to where it was useless."""
+    _preflight_env(monkeypatch)
+    monkeypatch.setattr(
+        vt,
+        "get",
+        lambda *a, **k: {
+            "data": [{"id": "app1", "attributes": {"bundleId": "inc.corpora.dynawalla"}}]
+        },
+    )
+    vt.main(["--preflight"])  # must not raise SystemExit
+
+
+def test_preflight_fails_when_the_app_record_is_missing(monkeypatch, capsys):
+    _preflight_env(monkeypatch)
+    monkeypatch.setattr(vt, "get", lambda *a, **k: {"data": []})
+    with pytest.raises(SystemExit) as exc:
+        vt.main(["--preflight"])
+    assert exc.value.code == 1
+    out = capsys.readouterr().out
+    assert "inc.corpora.dynawalla" in out
+    assert "founder action" in out
+
+
+def test_preflight_rejects_a_near_miss_bundle_id(monkeypatch, capsys):
+    """`filter[bundleId]` is Apple's filter and it is not an exact match. If the
+    response were trusted as-is, a sibling id would resolve to the WRONG app id
+    and the post-upload read-back would poll another app's builds until it timed
+    out."""
+    _preflight_env(monkeypatch)
+    monkeypatch.setattr(
+        vt,
+        "get",
+        lambda *a, **k: {
+            "data": [{"id": "other", "attributes": {"bundleId": "inc.corpora.dynawalla.dev"}}]
+        },
+    )
+    with pytest.raises(SystemExit):
+        vt.main(["--preflight"])
+    assert "founder action" in capsys.readouterr().out
+
+
+def test_preflight_still_reports_a_bad_key_as_a_bad_key(monkeypatch, capsys):
+    """Moving the check early must not turn a credential problem into a
+    mysterious one — 401 is the single most likely first-run outcome."""
+    _preflight_env(monkeypatch)
+    monkeypatch.setattr(
+        urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(_http_error(401))
+    )
+    monkeypatch.setattr(vt, "mint_token", lambda *a: "tok")
+    with pytest.raises(SystemExit):
+        vt.main(["--preflight"])
+    assert "401" in capsys.readouterr().out
 
 
 # ------------------------------------------------------------------- parsing

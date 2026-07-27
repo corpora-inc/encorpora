@@ -6,9 +6,10 @@ below it, and a number in the corner that will not stop climbing.**
 ```
 npm install
 npm run dev      # http://127.0.0.1:1431  — fully playable, local stub host
-npm test         # 49 tests, node's runner, no framework
+npm test         # 51 tests, node's runner, no framework
 npm run tsc
 npm run build
+npm run build:pack # what installs on a tablet: pack.html only, no stub host
 open /bench.html # frame-budget measurement (see "Performance")
 ```
 

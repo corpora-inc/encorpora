@@ -104,9 +104,46 @@ export function deserialize(p: Persisted): { e: Economy; markOom: number; audio:
   }
 }
 
+/**
+ * Where the save actually lives.
+ *
+ * Synchronous on purpose: `load()` is called from inside `mount`, before the
+ * first frame, and `save()` is called from the game loop. Neither may await.
+ *
+ * `localStorage` is the default because the standalone workbench has one. A
+ * pack frame does NOT — it is sandboxed without `allow-same-origin`, so its
+ * origin is opaque and every storage API on it either throws or is absent.
+ * That is exactly why the SDK has a `storage` capability, and why this is a
+ * seam rather than a direct call: FORGE is an incremental game whose whole
+ * subject is a number that goes up forever, and one that silently resets on
+ * every launch is not the same game. `src/pack.ts` installs a host-backed slot
+ * here, hydrated before mount so this stays synchronous.
+ */
+export type SaveSlot = {
+  read(): string | null
+  write(value: string): void
+}
+
+const browserSlot: SaveSlot = {
+  read: () => localStorage.getItem(SAVE_SLOT),
+  write: (value) => {
+    localStorage.setItem(SAVE_SLOT, value)
+  },
+}
+
+let slot: SaveSlot = browserSlot
+
+/** Swap the backing store. Called once, before `mount`, or never. */
+export function useSaveSlot(next: SaveSlot): void {
+  slot = next
+}
+
+/** The key a host-backed slot should file this game's save under. */
+export const SAVE_KEY = SAVE_SLOT
+
 export function load(): { e: Economy; markOom: number; audio: boolean; elapsedMs: number } | null {
   try {
-    const raw = localStorage.getItem(SAVE_SLOT)
+    const raw = slot.read()
     if (!raw) return null
     const p = JSON.parse(raw) as Persisted
     if (p.v !== 1) return null
@@ -120,7 +157,7 @@ export function load(): { e: Economy; markOom: number; audio: boolean; elapsedMs
 
 export function save(e: Economy, markOom: number, audio: boolean): void {
   try {
-    localStorage.setItem(SAVE_SLOT, JSON.stringify(serialize(e, markOom, audio)))
+    slot.write(JSON.stringify(serialize(e, markOom, audio)))
   } catch {
     /* private mode / quota: the game plays fine, it just will not resume */
   }

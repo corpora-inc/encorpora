@@ -3,7 +3,7 @@ import { test } from "node:test"
 
 import { MICRO } from "../core/bigmath.ts"
 import { TIERS, addSparks, buy, newEconomy, sparksPerSecond, step } from "../core/economy.ts"
-import { deserialize, serialize, type Persisted } from "./save.ts"
+import { deserialize, load, save, serialize, useSaveSlot, type Persisted } from "./save.ts"
 
 function played() {
   const e = newEconomy()
@@ -90,6 +90,52 @@ test("corrupt or hostile save data degrades to a fresh forge, never throws", () 
   assert.equal(e.tiers[2].unlocked, false) // sealed tiers stay sealed
   assert.equal(markOom, 3)
   assert.equal(audio, true)
+})
+
+// The seam `src/pack.ts` uses. There is no `localStorage` in this process and
+// there is none in a pack frame either — it is sandboxed without
+// `allow-same-origin` — so a save that reached for one directly would be a
+// FORGE that silently resets to zero on every launch of the shipped game. The
+// point of this test is that `load()` and `save()` go through the installed
+// slot and never touch a global.
+test("the save slot is pluggable, so a pack frame with no localStorage still persists", () => {
+  let stored: string | null = null
+  useSaveSlot({
+    read: () => stored,
+    write: (value) => {
+      stored = value
+    },
+  })
+
+  assert.equal(load(), null) // nothing written yet
+
+  const e = played()
+  save(e, 7, false)
+  assert.equal(typeof stored, "string")
+
+  const back = load()
+  assert.ok(back)
+  assert.equal(back.e.sparks, e.sparks)
+  assert.equal(back.e.lifetime, e.lifetime)
+  assert.equal(back.markOom, 7)
+  assert.equal(back.audio, false)
+})
+
+test("a slot that throws on write loses the save, not the run", () => {
+  useSaveSlot({
+    read: () => {
+      throw new Error("storage is gone")
+    },
+    write: () => {
+      throw new Error("storage is gone")
+    },
+  })
+  // Both sides swallow: a device that cannot persist still plays, and the
+  // alternative is an exception thrown from inside the game loop.
+  assert.doesNotThrow(() => {
+    save(played(), 3, true)
+  })
+  assert.equal(load(), null)
 })
 
 test("a sealed station cannot be unsealed by editing the save's flag alone", () => {

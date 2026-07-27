@@ -1,8 +1,5 @@
 node_modules/
 dist/
 
-# Omitted deliberately: at 29KB it pushed this PR past the 200,000-byte point
-# where `adversarial-review` truncates the diff and still reports green. No CI
-# job consumes `dynawalla/games/` yet, so nothing reads it. Restore it in the
-# same PR that lands the games-area path filter.
-package-lock.json
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/

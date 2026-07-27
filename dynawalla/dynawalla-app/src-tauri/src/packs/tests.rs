@@ -314,3 +314,285 @@ fn the_download_origin_is_pinned_to_one_https_prefix() {
         "a prefix without a trailing slash matches a sibling host"
     );
 }
+
+// ─── Bundled packs ───────────────────────────────────────────────────────────
+
+fn manifest_json(id: &str, version: &str, digest: Option<&str>) -> String {
+    match digest {
+        Some(digest) => format!(
+            r#"{{"schema":1,"id":"{id}","version":"{version}","download":{{"bytes":10,"sha256":"{digest}"}}}}"#
+        ),
+        None => format!(r#"{{"schema":1,"id":"{id}","version":"{version}"}}"#),
+    }
+}
+
+#[test]
+fn a_content_fix_that_keeps_the_version_still_reaches_the_device() {
+    // The defect this replaced: `0.1.0` on both sides, different bytes, and the
+    // corrected pack never left the binary because the two versions matched.
+    let installed = manifest_json("abacus", "0.1.0", Some(&"a".repeat(64)));
+    let fixed = manifest_json("abacus", "0.1.0", Some(&"b".repeat(64)));
+    assert!(
+        bundled_pack_differs("abacus", Some(&installed), &fixed),
+        "a same-version content fix was skipped"
+    );
+}
+
+#[test]
+fn a_pack_that_has_not_changed_is_left_where_it_is() {
+    let digest = "c".repeat(64);
+    let installed = manifest_json("abacus", "0.1.0", Some(&digest));
+    let bundled = manifest_json("abacus", "0.9.9", Some(&digest));
+    assert!(
+        !bundled_pack_differs("abacus", Some(&installed), &bundled),
+        "identical content was rewritten on a cold start"
+    );
+    // And the digest is compared case-insensitively, because hex is.
+    let shouting = manifest_json("abacus", "0.1.0", Some(&digest.to_ascii_uppercase()));
+    assert!(!bundled_pack_differs(
+        "abacus",
+        Some(&shouting),
+        &manifest_json("abacus", "0.1.0", Some(&digest))
+    ));
+}
+
+#[test]
+fn nothing_installed_means_install() {
+    let bundled = manifest_json("abacus", "0.1.0", Some(&"d".repeat(64)));
+    assert!(bundled_pack_differs("abacus", None, &bundled));
+    assert!(bundled_pack_differs("abacus", Some("not json"), &bundled));
+    assert!(bundled_pack_differs("abacus", Some(&bundled), "not json"));
+}
+
+#[test]
+fn a_manifest_with_no_digest_falls_back_to_the_version() {
+    let old = manifest_json("abacus", "0.1.0", None);
+    let new = manifest_json("abacus", "0.2.0", None);
+    assert!(bundled_pack_differs("abacus", Some(&old), &new));
+    assert!(!bundled_pack_differs("abacus", Some(&old), &old));
+    // One side missing it is enough to lose the digest comparison.
+    let digested = manifest_json("abacus", "0.1.0", Some(&"e".repeat(64)));
+    assert!(!bundled_pack_differs("abacus", Some(&old), &digested));
+}
+
+/// A plausible `/proc/self/maps` for this app on Android, installed from an app
+/// bundle. The library is in the ABI split; the assets are in `base.apk` beside
+/// it; and the system WebView — another application's APK entirely — is mapped
+/// into the process too, as it always is.
+const ANDROID_MAPS: &str = concat!(
+    "6f2a000000-6f2a1f4000 r--p 00000000 fd:03 1234 /apex/com.android.runtime/lib64/bionic/libc.so\n",
+    "7000000000-7000010000 rw-p 00000000 00:00 0 [anon:.bss]\n",
+    "7100000000-71ff000000 r--p 00000000 fd:03 4242 /data/app/~~Web==/com.google.android.trichromelibrary_1-a==/base.apk\n",
+    "7a00000000-7a00123000 r--p 00000000 fd:03 5678 /data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/split_config.arm64_v8a.apk\n",
+    "7b00000000-7b00123000 r-xp 00100000 fd:03 5678 /data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/split_config.arm64_v8a.apk\n",
+);
+
+/// An address inside the executable segment of the split above.
+const OWN_CODE: usize = 0x007b_0000_0100;
+
+#[test]
+fn the_apk_beside_a_split_is_preferred_over_the_split_itself() {
+    // A Play install of an app bundle: the native library is mapped out of the
+    // ABI split, and every asset — the packs among them — is in `base.apk`
+    // beside it. Reading the split would find nothing.
+    let candidates = apk_candidates(ANDROID_MAPS, OWN_CODE);
+    assert_eq!(
+        candidates.first().map(|p| p.to_string_lossy().to_string()),
+        Some("/data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/base.apk".to_string()),
+        "{candidates:?}"
+    );
+    assert!(
+        candidates.contains(&PathBuf::from(
+            "/data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/split_config.arm64_v8a.apk"
+        )),
+        "the split itself is still worth trying: {candidates:?}"
+    );
+    // Each candidate appears once however many segments were mapped.
+    let mut unique = candidates.clone();
+    unique.dedup();
+    assert_eq!(unique.len(), candidates.len(), "{candidates:?}");
+}
+
+#[test]
+fn another_applications_apk_is_never_opened_first() {
+    // The system WebView's APK is mapped into every Android app process and is
+    // hundreds of megabytes. Opening it before our own would read a central
+    // directory to match, before the first window, on every single launch.
+    let candidates = apk_candidates(ANDROID_MAPS, OWN_CODE);
+    let webview = candidates
+        .iter()
+        .position(|c| c.to_string_lossy().contains("trichromelibrary"))
+        .expect("the WebView is still a candidate of last resort");
+    assert!(webview > 0, "{candidates:?}");
+    assert!(
+        candidates[..webview]
+            .iter()
+            .all(|c| c.to_string_lossy().contains("inc.corpora.dynawalla")),
+        "{candidates:?}"
+    );
+}
+
+#[test]
+fn an_extracted_library_and_a_library_inside_the_apk_both_name_the_install() {
+    let extracted = apk_candidates(
+        "7a00000000-7a00123000 r-xp 00000000 fd:03 1 \
+         /data/app/~~q==/inc.corpora.dynawalla-w==/lib/arm64/libdynawalla_lib.so\n",
+        0x007a_0000_0100,
+    );
+    assert_eq!(
+        extracted,
+        vec![PathBuf::from(
+            "/data/app/~~q==/inc.corpora.dynawalla-w==/base.apk"
+        )]
+    );
+
+    // `extractNativeLibs=false`: the library is mapped from inside the archive,
+    // and everything after the `!` is a path within it.
+    let inside = apk_candidates(
+        "7a00000000-7a00123000 r-xp 00000000 fd:03 1 \
+         /data/app/~~q==/inc.corpora.dynawalla-w==/base.apk!/lib/arm64-v8a/libdynawalla_lib.so\n",
+        0x007a_0000_0100,
+    );
+    assert_eq!(
+        inside,
+        vec![PathBuf::from(
+            "/data/app/~~q==/inc.corpora.dynawalla-w==/base.apk"
+        )]
+    );
+}
+
+#[test]
+fn an_ordinary_desktop_maps_file_proposes_no_apk() {
+    // The Android path is compiled on every target, so it has to be inert on
+    // the ones that are full of shared objects and have no APK anywhere.
+    let maps = concat!(
+        "5600000000-5600100000 r-xp 00000000 08:01 1 /usr/bin/dynawalla\n",
+        "7f0000000000-7f0000100000 r-xp 00000000 08:01 2 /usr/lib/x86_64-linux-gnu/libssl.so.3\n",
+        "7f1000000000-7f1000100000 r-xp 00000000 08:01 3 /home/kid/build/target/debug/deps/libfoo.so\n",
+        "7ffd00000000-7ffd00021000 rw-p 00000000 00:00 0 [stack]\n",
+    );
+    assert!(
+        apk_candidates(maps, 0x7f00_0000_0100).is_empty(),
+        "{:?}",
+        apk_candidates(maps, 0x7f00_0000_0100)
+    );
+}
+
+#[test]
+fn the_real_address_of_this_code_selects_the_mapping_that_holds_it() {
+    // `own_code_address` is a genuine code address here, not a fixture, so this
+    // exercises the one link that a hand-written maps file cannot: that the
+    // number the cast produces is the kind of number the parser compares
+    // against. Only the mapping is fabricated, and it is fabricated AROUND the
+    // real address.
+    let own = own_code_address();
+    assert!(own > 0);
+    let maps = format!(
+        "{:x}-{:x} r--p 00000000 fd:03 1 /data/app/~~w==/other.app-x==/base.apk\n\
+         {:x}-{:x} r-xp 00000000 fd:03 2 /data/app/~~y==/inc.corpora.dynawalla-z==/split_config.arm64_v8a.apk\n",
+        own.saturating_sub(0x4000),
+        own.saturating_sub(0x2000),
+        own.saturating_sub(0x1000),
+        own + 0x1000,
+    );
+    assert_eq!(
+        apk_candidates(&maps, own).first(),
+        Some(&PathBuf::from(
+            "/data/app/~~y==/inc.corpora.dynawalla-z==/base.apk"
+        )),
+        "the mapping holding this very function did not win"
+    );
+}
+
+#[test]
+fn our_own_code_is_inside_a_mapping_this_parser_can_find() {
+    // And on the one platform where `/proc/self/maps` exists at all, the real
+    // file really does contain the real address. Skipped elsewhere rather than
+    // faked: a macOS run has nothing to say about this.
+    let Ok(maps) = fs::read_to_string(PROC_SELF_MAPS) else {
+        return;
+    };
+    let own = own_code_address();
+    assert!(
+        maps.lines()
+            .filter_map(|line| mapped_range(line.split_whitespace().next().unwrap_or("")))
+            .any(|(low, high)| own >= low && own < high),
+        "no mapping contains {own:#x}"
+    );
+}
+
+#[test]
+fn packs_are_installed_out_of_an_apk_because_android_has_no_resource_directory() {
+    // The blocker, end to end without a device: `resource_dir()` on Android is
+    // the string `asset://localhost/`, so the packs are read out of the APK,
+    // which is a ZIP with the packs under `assets/packs/`.
+    let root = scratch("apk");
+    let manifest = manifest_json("dynawalla.fuse", "0.1.0", Some(&"f".repeat(64)));
+    let archive = zip_of(&[
+        ("AndroidManifest.xml", b"binary xml"),
+        ("classes.dex", b"dex"),
+        ("assets/tauri.conf.json", b"{}"),
+        (
+            "assets/packs/dynawalla.fuse/manifest.json",
+            manifest.as_bytes(),
+        ),
+        ("assets/packs/dynawalla.fuse/pack.html", b"<!doctype html>"),
+        ("assets/packs/dynawalla.fuse/dist/app.js", b"console.log(1)"),
+        // Not a pack id, so not a directory this host will ever serve.
+        ("assets/packs/NotAPack/x.js", b"no"),
+        ("lib/arm64-v8a/libdynawalla_lib.so", b"elf"),
+    ]);
+
+    let mut zip = zip::ZipArchive::new(std::io::Cursor::new(archive)).expect("apk");
+    sync_from_zip(&mut zip, &root);
+
+    let installed = root.join("dynawalla.fuse");
+    assert_eq!(
+        fs::read_to_string(installed.join("dist/app.js")).unwrap(),
+        "console.log(1)"
+    );
+    assert_eq!(
+        fs::read_to_string(installed.join("pack.html")).unwrap(),
+        "<!doctype html>"
+    );
+    let identity = read_installed(&installed).expect("manifest");
+    assert_eq!(identity.id, "dynawalla.fuse");
+    assert_eq!(identity.version, "0.1.0");
+    assert!(
+        !root.join("NotAPack").exists(),
+        "an invalid id was installed"
+    );
+    assert!(!root.join("tauri.conf.json").exists());
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn an_apk_entry_that_escapes_its_pack_installs_nothing_at_all() {
+    let root = scratch("apkslip");
+    fs::create_dir_all(&root).unwrap();
+    let manifest = manifest_json("abacus", "0.1.0", Some(&"0".repeat(64)));
+    let archive = zip_of(&[
+        ("assets/packs/abacus/manifest.json", manifest.as_bytes()),
+        ("assets/packs/abacus/../../owned.js", b"pwn"),
+    ]);
+
+    let mut zip = zip::ZipArchive::new(std::io::Cursor::new(archive)).expect("apk");
+    sync_from_zip(&mut zip, &root);
+
+    assert!(!root.join("owned.js").exists(), "a file escaped the pack");
+    assert!(
+        !root.join("abacus").exists(),
+        "a half-installed pack was left behind"
+    );
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn an_apk_without_bundled_packs_installs_nothing() {
+    let root = scratch("apkempty");
+    let archive = zip_of(&[("classes.dex", b"dex"), ("assets/tauri.conf.json", b"{}")]);
+    let mut zip = zip::ZipArchive::new(std::io::Cursor::new(archive)).expect("apk");
+    sync_from_zip(&mut zip, &root);
+    assert_eq!(fs::read_dir(&root).unwrap().count(), 0);
+    let _ = fs::remove_dir_all(&root);
+}
