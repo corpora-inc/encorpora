@@ -1,0 +1,23 @@
+{
+  "id": "dynawalla.rhythm",
+  "version": "0.1.0",
+  "name": "SPLITBEAT",
+  "description": "A three-lane rhythm game where the bar of music is the fraction bar. The answer is a subdivision you can hear, so a child who can feel the groove can find the fraction.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.frac.arith.add-like-denominators",
+      "dw.frac.arith.add-unlike-denominators",
+      "dw.frac.arith.multiply-by-a-whole",
+      "dw.frac.arith.multiply-fractions",
+      "dw.frac.equivalence.build-equivalent",
+      "dw.mul.multidigit.times-one-digit"
+    ],
+    "grades": [3, 5]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}
