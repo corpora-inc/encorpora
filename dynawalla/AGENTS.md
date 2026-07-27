@@ -56,11 +56,18 @@ and passing every test on the way. Plugin identifiers and `links =` values never
 
 ## PR size
 
-`adversarial-review` currently **truncates** above `MAX_DIFF_BYTES` (200,000) and still
-reports green — so an oversized PR is reviewed on a fraction of its diff and looks
-reviewed. PR-0a.2 makes it fail. Split now either way: check
-`git diff origin/main | wc -c` before pushing. One generator family per PR; one domain
-per node-promotion PR.
+There is **no size limit**. `adversarial-review` chunks the diff, reviews every chunk
+with every lens, and asserts the chunks reconstitute the diff exactly before calling a
+model — so a large PR is reviewed in full or the check fails. It can no longer pass
+having read a prefix.
+
+Size is still a review-quality question, not a gate question: one generator family per
+PR, one domain per node-promotion PR, because a reviewer holds one idea at a time. Split
+a PR when it does two things, never to hit a byte count.
+
+(This section previously said the gate truncated above `MAX_DIFF_BYTES` and told you to
+split pre-emptively. That was true and is not any more — the hole was closed by chunking
+rather than by the planned fail-and-split, and `MAX_DIFF_BYTES` no longer exists.)
 
 ## Never
 

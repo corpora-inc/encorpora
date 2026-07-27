@@ -32,29 +32,41 @@ What each milestone is now aimed at:
 | **M9 — profiles, parents, accessibility** | Substantially **pulled forward and delivered**: profiles are real (add, name, switch, remove, erase), the parent area exists, settings act on the document and on packs. What is left of M9 is i18n fill and the parental gate. |
 | M10 — store readiness | Unaffected in shape. What ships is the host plus its first packs. |
 
-**The sizing law below still holds and now bites somewhere new.** A pack is a
-diff too, and "one pack per PR" will be over the cap for anything ambitious. Pack
-work is planned at the same honest granularity as curriculum work: a slice per
-PR, not a world per PR.
+**The sizing law below still holds and now bites somewhere new**, though not for
+the reason first written. There is no cap to be "over": a pack is a diff too,
+and an ambitious one is simply a large diff, which the gate reviews in full. The
+reason to keep it small is that a reviewer holds one idea at a time. Pack work
+is planned at the same honest granularity as curriculum work: a slice per PR,
+not a world per PR.
 
 ---
 
 ## The sizing law, and why it changes the plan
 
-Trunk-based development plus a hard diff cap is not a style preference here — it is
-the enforcement mechanism. `adversarial-review` truncates a diff at
-`MAX_DIFF_BYTES` and, once M0a lands, **fails** above it rather than reviewing half a
-PR and reporting green.
+Trunk-based development is not a style preference here — it is the enforcement
+mechanism. Its rule is about *where changes come from*, not how big they are:
+**local `main` only ever moves by fast-forward from `origin/main`**, and every
+change reaches it as worktree → remote branch → PR → squash-merge → pull.
+
+There is **no diff cap**. `adversarial-review` chunks a diff and asserts it
+reviewed 100% of it before making a model call, so a large PR is reviewed in
+full or the check fails. (This paragraph used to promise a hard cap that
+**fails** above `MAX_DIFF_BYTES`; that was the M0a plan, chunking replaced it,
+and `MAX_DIFF_BYTES` no longer exists. Do not split a PR for size.)
 
 That has a consequence the first draft of this plan missed, and it is the single
 largest correction carried into this document:
 
 > **Curriculum breadth planned as manifest rows is a defect.** A `SkillNode` literal
 > with its ~20 fields is 30–40 lines. "Ship 42 generator families in six PRs" and
-> "promote 390 nodes in four PRs" are each 5–20× the diff cap. Either the cap gets
-> raised until it means nothing — destroying the one mechanism that makes constant
-> merging safe — or the milestone silently becomes 120 PRs against a list that names
+> "promote 390 nodes in four PRs" are each 5–20× the size any one reviewer can hold
+> in their head. The milestone silently becomes 120 PRs against a list that names
 > 22, discovered mid-flight.
+>
+> (As first written this argued from a hard diff cap that the gate would enforce.
+> The cap is gone — diffs are chunked and reviewed in full — but the conclusion is
+> unchanged and now rests where it always should have: on what a human can review,
+> not on what a script will truncate.)
 
 So the plan is stated at its honest granularity: **one generator family per PR** (~600–1,200
 lines each), **one domain per node-promotion PR**, **mal-rules in batches of ~10–14**.
@@ -105,7 +117,7 @@ touches the CDN or Corpán's release ritual.
 | PR | What |
 |---|---|
 | 0a.1 | Bootstrap: docs (this set), `.claude/` agents/skills/hooks/commands + `.gitignore` negations, PR and issue templates, `LICENSE` placeholder, the deprecated-methodology expunge, five inert `ci.yml` area filters, `uncovered` in **warn** mode, **delete `.github/workflows/pr-agent.yml`**, and `dynawalla/tools/check-docs-refs.mjs` — every `R-NN`, `CG-NN` and `EG-NN` reference resolves to a real heading or gate row, and every acceptance id is claimed by a milestone exit list. This class of drift already happened once in the draft. |
-| 0a.2 | `adversarial_review.py`, four fixes in one PR: truncation exits non-zero with `::error::diff too large to review — split this PR`; **any** lens error fails (today only all-lenses-fail closes, so two of three timeouts pass green); the resolved provider+model printed to `$GITHUB_STEP_SUMMARY`; a 1-token model ping before spending three full-diff calls. `MAX_DIFF_BYTES` becomes a repo variable at 400,000. Adds the fork-PR path and an `admin-override` break-glass label. |
+| 0a.2 | `adversarial_review.py`, four fixes in one PR: truncation exits non-zero with `::error::diff too large to review — split this PR`; **any** lens error fails (today only all-lenses-fail closes, so two of three timeouts pass green); the resolved provider+model printed to `$GITHUB_STEP_SUMMARY`; a 1-token model ping before spending three full-diff calls. `MAX_DIFF_BYTES` becomes a repo variable at 400,000. Adds the fork-PR path and an `admin-override` break-glass label. **SHIPPED, but the truncation item was superseded:** the diff is CHUNKED with asserted 100% coverage instead of failing above a cap, so there is no size limit and no split-the-PR error. `MAX_DIFF_BYTES` no longer exists. |
 | 0a.3 | Flip `uncovered` to failing, gated `if: github.event_name == 'pull_request'`; explicit no-CI allowlist; PR-size advisory step. |
 | 0a.4 | `.cargo/config.toml` generated from `config.toml.in` resolving `$ANDROID_NDK_HOME`, replacing the hardcoded local NDK path. Keeps the `linker = "/usr/bin/cc"` Apple pins. **Must land before 0a.5.** |
 | 0a.5 | Native CI gate **inside `ci.yml`** so it can be a `ci-gate` need: `rust-linux` (ubuntu, `if: native`) = fmt + `clippy -D warnings` + test over `native/` **and** explicitly over `corpan/corpan-app/src-tauri/Cargo.toml`, plus `cargo check --target aarch64-linux-android`, plus the two `cargo metadata | jq -e` vendored-fork assertions; `rust-apple` (macos-14, `if: native`) = the per-plugin `aarch64-apple-ios` loop lifted from `ios-native.yml`. **Delete `ios-native.yml`.** |
