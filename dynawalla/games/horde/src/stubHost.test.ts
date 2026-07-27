@@ -34,7 +34,16 @@ test("every generated question is well formed", () => {
     assert.equal(new Set(vals).size, 3, `duplicate distractors in ${q.prompt}`)
 
     assert.ok(q.prompt.length > 0, "empty prompt")
-    assert.doesNotMatch(q.prompt, /(?<![0-9(])-/, "use U+2212, never a hyphen")
+    // Strict: no ASCII hyphen anywhere in a prompt. Every generator emits
+    // U+2212 for both subtraction and negation, so nothing legitimate puts a
+    // hyphen here.
+    //
+    // The `(?<![0-9(])-` lookbehind this replaces had a hole exactly where it
+    // mattered: it accepted `(-4) + 2`, because the hyphen follows `(`. That is
+    // the precise shape genSigned produces — `(−a) + (−b)` — so a generator
+    // regressing from U+2212 to ASCII in its negation branch was the one
+    // regression the assertion could not see.
+    assert.doesNotMatch(q.prompt, /-/, "use U+2212, never a hyphen")
     assert.ok(q.id.length > 0, "empty id")
   }
 })
