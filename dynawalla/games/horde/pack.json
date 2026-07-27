@@ -20,6 +20,8 @@
       "dw.add.column.subtract-no-regroup",
       "dw.add.regroup.add-multidigit",
       "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
       "dw.mul.multidigit.times-one-digit",
       "dw.mul.multidigit.times-two-digit",
       "dw.div.whole.divide-exact"

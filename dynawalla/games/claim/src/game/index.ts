@@ -142,8 +142,6 @@ class Claim {
   private plates: Plate[] = []
   private gateLeft = 0
   private gateStart = 0
-  private levelStart = 0
-  private reported = false
 
   private frames = 0
   private totalFrames = 0
@@ -266,8 +264,6 @@ class Claim {
     if (i === 1 && q) this.rng = makeRng(hashSeed(q.id))
     this.goal = goalFromQuestion(this.level, this.g.total, q)
     if (q && this.goal.questionId !== q.id) this.spare = q
-    this.reported = false
-    this.levelStart = performance.now()
 
     this.audio.key = ((i - 1) * 5) % 12 - 6
     this.hud.setLevel(i, ink, this.goal)
@@ -805,7 +801,6 @@ class Claim {
     this.juice.addTrauma(0.95)
     this.juice.punch(0.07, 0)
     this.juice.doFlash(0.2, "#ffe800")
-    this.report(true)
 
     const bonus = 900 * this.levelIndex * (1 + this.combo * 0.25)
     this.score += Math.floor(bonus)
@@ -992,7 +987,6 @@ class Claim {
   }
 
   private gameOver(): void {
-    this.report(false)
     this.phase = "over"
     this.phaseT = 0
     this.audio.tension(0)
@@ -1012,17 +1006,6 @@ class Claim {
     this.card = ""
     this.juice.reset()
     this.startLevel(1)
-  }
-
-  private report(correct: boolean): void {
-    if (this.reported || !this.goal.questionId) return
-    this.reported = true
-    this.host.report({
-      questionId: this.goal.questionId,
-      correct,
-      ms: Math.round(performance.now() - this.levelStart),
-      answered: String(this.g.claimed),
-    })
   }
 
   // ---- draw -------------------------------------------------------------

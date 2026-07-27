@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs"
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
@@ -326,6 +327,34 @@ test("report reaches the sink with what the player actually did", () => {
   assert.equal(seen.length, 1)
   assert.equal(seen[0]?.questionId, q.id)
   assert.equal(seen[0]?.correct, true)
+})
+
+// ---------------------------------------------------------------------------
+// What may be reported, and what may not.
+//
+// The game class needs a DOM, so this reaches for the source. That is on
+// purpose: the invariant is "there is exactly one place that reports", and the
+// count of those places is the thing worth pinning. The failure it guards is
+// silent, arrives only inside a real host, and costs a child ladder position
+// every time they win a level — see `Goal.questionId` in `game/levels.ts`.
+// ---------------------------------------------------------------------------
+
+test("the gate is the only thing that answers: a banded cut is never reported", () => {
+  const source = readFileSync(new URL("../src/game/index.ts", import.meta.url), "utf8")
+  const calls = source.match(/this\.host\.report\(/g) ?? []
+  assert.equal(
+    calls.length,
+    1,
+    "only finishGate may report — it reports the plate label, which is exact. " +
+      "A level clears anywhere inside a band up to 432 cells wide, so the cell " +
+      "count a child stopped on is not an answer an exact judge can grade.",
+  )
+  // And it is the gate's, not some other one that happens to be alone.
+  const gate = source.slice(source.indexOf("private finishGate("))
+  assert.ok(
+    gate.includes("this.host.report("),
+    "the one report must be the revive gate's",
+  )
 })
 
 test("reduced motion is honoured when the platform asks for it", () => {
