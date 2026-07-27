@@ -13,6 +13,14 @@ The old "long-lived integration branch, big-bang squash" methodology is
 **dead**. Do not restore it, do not cite it, do not open a branch that
 accumulates weeks of work.
 
+### Read this too
+
+[`FAILURE-MODES.md`](FAILURE-MODES.md) — the ways this loop goes wrong **while
+looking like it went right**. Every entry happened here. If you are about to
+`reset --soft`, prune a worktree, trust a single green test run, take over from
+a dead agent, or hand a recipe to several agents at once, the answer is in
+there. It ends with a copy-pasteable preflight and postflight.
+
 ### Relationship to `AGENTS.md`
 
 `AGENTS.md` owns the process: the board, the gates, the pack checklist, the
