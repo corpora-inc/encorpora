@@ -1,0 +1,20 @@
+{
+  "name": "@dynawalla/game-mosaic",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Mosaic — a stained-glass ball-and-paddle game where the wall is a times table.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4180",
+    "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'src/**/*.test.ts'",
+    "bench": "node --experimental-strip-types --no-warnings=ExperimentalWarning tools/bench-sim.mts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}
