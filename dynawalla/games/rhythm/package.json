@@ -1,0 +1,20 @@
+{
+  "name": "@dynawalla/game-rhythm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Splitbeat — a three-lane rhythm-action game where the bar of music is the fraction bar.",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.5"
+  }
+}
