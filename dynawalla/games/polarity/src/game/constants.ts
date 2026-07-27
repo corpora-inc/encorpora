@@ -1,0 +1,142 @@
+/**
+ * One place for every tuned number. Field units: the playfield is always 100
+ * wide; its height follows the container aspect, clamped so neither a phone nor
+ * an ultrawide desktop gets an unplayable shape.
+ */
+
+export const HALF_W = 50;
+export const MIN_HALF_H = 55;
+export const MAX_HALF_H = 95;
+
+// --- player -----------------------------------------------------------------
+export const PLAYER = {
+  /** the lethal dot — deliberately tiny and always drawn, danmaku-style */
+  hit: 1.15,
+  /** magnet reach for chaff and charge bullets (never for seal orbs) */
+  absorb: 5.0,
+  /** how hard the ship chases the pointer; half-life in seconds */
+  chaseHalfLife: 0.055,
+  /** keyboard accel / max speed in units per second */
+  accel: 620,
+  maxSpeed: 96,
+  friction: 0.0006,
+  fireEvery: 0.085,
+  shotSpeed: 132,
+  shotDamage: 1,
+  /** shooting an enemy of the opposite polarity does this much extra */
+  oppositeBonus: 2,
+  shields: 3,
+  invuln: 1.7,
+  flipCooldown: 0.06,
+  /** a flip inside this window that saves you from a bullet is a CLUTCH */
+  clutchWindow: 0.16,
+  clutchRadius: 4.2,
+} as const;
+
+// --- the core band ----------------------------------------------------------
+export const CORE = {
+  capBase: 20,
+  capStep: 4,
+  capMax: 60,
+  /** the gauge starts warning here */
+  warnAt: 0.74,
+  ventStun: 0.5,
+  dartSpeed: 118,
+  dartDamage: 2,
+  dartTurn: 7.5,
+  dartLife: 2.6,
+} as const;
+
+// --- bullets ----------------------------------------------------------------
+export const enum BK {
+  Chaff = 0,
+  Charge = 1,
+  Orb = 2,
+  Shot = 3,
+  Dart = 4,
+  Lance = 5,
+}
+
+export const BULLET = {
+  chaffR: 1.9,
+  chargeR: 3.1,
+  orbR: 5.4,
+  shotR: 1.0,
+  dartR: 1.35,
+  lanceR: 2.5,
+} as const;
+
+// --- enemies ----------------------------------------------------------------
+export const enum EK {
+  Mote = 0,
+  Weaver = 1,
+  Spinner = 2,
+  Battery = 3,
+  Lancer = 4,
+  Bearer = 5,
+  Warden = 6,
+}
+
+export type EnemySpec = {
+  hp: number;
+  r: number;
+  score: number;
+  /** contact damage to the player */
+  ram: boolean;
+};
+
+export const ENEMY: Record<number, EnemySpec> = {
+  [EK.Mote]: { hp: 2, r: 3.0, score: 40, ram: false },
+  [EK.Weaver]: { hp: 5, r: 3.6, score: 90, ram: false },
+  [EK.Spinner]: { hp: 8, r: 4.4, score: 150, ram: false },
+  [EK.Battery]: { hp: 16, r: 5.6, score: 280, ram: false },
+  [EK.Lancer]: { hp: 4, r: 3.2, score: 120, ram: true },
+  [EK.Bearer]: { hp: 64, r: 9.5, score: 900, ram: false },
+  [EK.Warden]: { hp: 210, r: 14, score: 3200, ram: false },
+};
+
+// --- pacing -----------------------------------------------------------------
+export const PACE = {
+  /** seconds per stratum; the HUD counts these */
+  stratum: 30,
+  firstBearer: 14,
+  bearerEvery: 34,
+  bearerEveryMin: 26,
+  /** every Nth bearer is a Warden instead */
+  wardenEvery: 3,
+  spawnBase: 0.62,
+  spawnPerLvl: 0.135,
+  spawnMax: 3.3,
+  speedPerLvl: 0.042,
+  speedMax: 0.62,
+} as const;
+
+// --- palette (linear-ish sRGB triples, additive) ----------------------------
+export const COL = {
+  posCore: [1.0, 0.83, 0.34] as const,
+  posEdge: [1.0, 0.45, 0.08] as const,
+  posHot: [1.0, 0.97, 0.86] as const,
+  negCore: [0.28, 0.88, 1.0] as const,
+  negEdge: [0.42, 0.3, 1.0] as const,
+  negHot: [0.83, 0.95, 1.0] as const,
+  neutral: [0.75, 0.78, 0.86] as const,
+  bad: [1.0, 0.24, 0.35] as const,
+  gold: [1.0, 0.88, 0.5] as const,
+} as const;
+
+export const polColor = (p: number): readonly [number, number, number] =>
+  p > 0 ? COL.posCore : p < 0 ? COL.negCore : COL.neutral;
+export const polEdge = (p: number): readonly [number, number, number] =>
+  p > 0 ? COL.posEdge : p < 0 ? COL.negEdge : COL.neutral;
+export const polHot = (p: number): readonly [number, number, number] =>
+  p > 0 ? COL.posHot : p < 0 ? COL.negHot : COL.neutral;
+
+// --- scoring ----------------------------------------------------------------
+export const SCORE = {
+  absorb: 12,
+  clutch: 400,
+  sealCorrect: 1500,
+  bearerKill: 2400,
+  wardenLockExact: 6000,
+  wardenLockNear: 1400,
+} as const;
