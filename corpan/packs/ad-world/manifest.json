@@ -1,0 +1,16 @@
+{
+  "id": "ad_world",
+  "name": "Ad World",
+  "version": "0.1.0",
+  "description": "Walk through a dark, neon-lit world where real ads illuminate the landscape.",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "permissions": [
+    "network"
+  ],
+  "devRevision": "2026-03-16T22:50:58.167Z"
+}

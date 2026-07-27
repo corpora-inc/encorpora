@@ -1,0 +1,17 @@
+[package]
+name = "tauri-plugin-admob"
+version = "0.1.0"
+authors = ["Corpora Inc"]
+description = "Google AdMob integration for Tauri mobile apps"
+edition = "2021"
+links = "tauri-plugin-admob"
+
+[dependencies]
+tauri = { version = "2" }
+serde = "1.0"
+serde_json = "1"
+thiserror = "2"
+
+[build-dependencies]
+tauri-plugin = { version = "2", features = ["build"] }
+tauri-build = "2"
