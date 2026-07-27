@@ -1,0 +1,25 @@
+{
+  "id": "dynawalla.merge-idle",
+  "version": "0.1.0",
+  "name": "ABYSSAL BLOOM",
+  "description": "A bioluminescent reef that keeps growing while you are away. Two polyps with the same number shove together into their sum, so the merge gesture is the doubling fact done with the hands; a vent holds up a request and you answer by building the answer and posting it in.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics", "storage"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.mul.multidigit.times-one-digit",
+      "dw.div.whole.divide-exact"
+    ],
+    "grades": [1, 5]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}
