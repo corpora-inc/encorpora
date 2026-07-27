@@ -160,7 +160,19 @@ function serve(dir, port) {
   const server = http.createServer((request, response) => {
     const url = new URL(request.url ?? "/", "http://localhost")
     const send = (status, type, body, extra = {}) => {
-      response.writeHead(status, { "Content-Type": type, "X-Content-Type-Options": "nosniff", ...extra })
+      // The frame is sandboxed without `allow-same-origin`, so its origin is
+      // opaque and every subresource it loads — including its own module
+      // script, which Vite emits with `crossorigin` — is a cross-origin
+      // request. Without this the pack's code is fetched and then discarded by
+      // CORS, and the document renders its background and nothing else.
+      // `packs/mod.rs` sets the same two headers for the same reason.
+      response.writeHead(status, {
+        "Content-Type": type,
+        "X-Content-Type-Options": "nosniff",
+        "Access-Control-Allow-Origin": "*",
+        "Cross-Origin-Resource-Policy": "cross-origin",
+        ...extra,
+      })
       response.end(body)
     }
 

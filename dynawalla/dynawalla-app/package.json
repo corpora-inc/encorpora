@@ -13,7 +13,8 @@
     "tauri": "tauri",
     "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",
-    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'"
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
+    "packs": "node ../packs/build.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",

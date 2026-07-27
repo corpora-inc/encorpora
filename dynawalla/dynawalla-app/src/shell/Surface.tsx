@@ -8,6 +8,15 @@ import { surfaceOf, type Row } from "./surfaces.ts"
 import { useHostActions, useHostView } from "./useHost.ts"
 
 /**
+ * A row's fields without its key.
+ *
+ * The key belongs to the `<li>` that lists the row, not to the component that
+ * draws it: spreading a row wholesale puts `key` on the child, where React logs
+ * an error on every render and the key does nothing at all.
+ */
+type Keyless<K extends Row["kind"]> = Omit<Extract<Row, { kind: K }>, "key">
+
+/**
  * One renderer for every destination.
  *
  * The screens of this host are all the same object — a course of inscribed
@@ -42,7 +51,7 @@ function Choice({
   value,
   options,
   choose,
-}: Extract<Row, { kind: "choice" }>) {
+}: Keyless<"choice">) {
   return (
     <fieldset className="min-h-16 py-3">
       <legend className="inscription mb-2 text-lg tracking-wide">{name}</legend>
@@ -71,7 +80,7 @@ function Choice({
   )
 }
 
-function Action({ name, tone, run }: Extract<Row, { kind: "action" }>) {
+function Action({ name, tone, run }: Keyless<"action">) {
   return (
     <button
       type="button"
@@ -97,7 +106,7 @@ function Action({ name, tone, run }: Extract<Row, { kind: "action" }>) {
  * single most consequential piece of state in this app, and none of the three
  * is a colour.
  */
-function Learner({ name, given, current, use, rename, remove }: Extract<Row, { kind: "learner" }>) {
+function Learner({ name, given, current, use, rename, remove }: Keyless<"learner">) {
   return (
     <div
       className="flex min-h-16 items-center gap-3 py-3"
@@ -142,7 +151,7 @@ function Learner({ name, given, current, use, rename, remove }: Extract<Row, { k
  * which is what keeps `src/world/` a drawing of a number and not a part of the
  * app's copy.
  */
-function Figure({ value, label }: Extract<Row, { kind: "figure" }>) {
+function Figure({ value, label }: Keyless<"figure">) {
   return (
     <div className="py-3">
       <WorldScreen placed={value} label={label} className="mx-auto block h-auto w-full max-w-sm" />
@@ -150,18 +159,76 @@ function Figure({ value, label }: Extract<Row, { kind: "figure" }>) {
   )
 }
 
+/**
+ * A pack, as the whole row is the button.
+ *
+ * The only plate in this shell that is taller than a course: it is the front
+ * door and the thing the app is for, and a game should not be a line of small
+ * type between two settings. The name is the label, the version and the size
+ * are the small print, and the whole rectangle is the target — a child aiming
+ * at a word is a child missing.
+ */
+function Pack({ name, version, size, play }: Keyless<"pack">) {
+  return (
+    <button
+      type="button"
+      onClick={play}
+      className={[
+        "group flex min-h-24 w-full items-center gap-4 py-4 text-left",
+        "transition-colors duration-[var(--dw-motion-quick)] hover:bg-ground-sunk",
+      ].join(" ")}
+    >
+      <IndexMark className="text-index shrink-0 opacity-40 transition-opacity duration-[var(--dw-motion-quick)] group-hover:opacity-100 group-focus-visible:opacity-100" />
+      <span className="min-w-0 flex-1">
+        <span className="inscription text-ink block truncate text-2xl tracking-wide">{name}</span>
+        <span className="numeral text-ink-muted block text-xs">
+          {version} · {size}
+        </span>
+      </span>
+      <span className="border-line-cut rounded-cut-sm text-ink-muted shrink-0 border px-3 py-2 text-sm">
+        {strings.packs.play}
+      </span>
+    </button>
+  )
+}
+
+/**
+ * One row, drawn.
+ *
+ * Written out rather than spread: a `Row` carries its own `key`, and
+ * `<Fact {...row} />` puts that key on the child element, where React logs an
+ * error on every render and the key does nothing. The `<li>` above owns the
+ * key; the component gets the fields it draws.
+ */
 function RowView({ row }: { row: Row }) {
   switch (row.kind) {
     case "fact":
-      return <Fact {...row} />
-    case "choice":
-      return <Choice {...row} />
-    case "action":
-      return <Action {...row} />
-    case "learner":
-      return <Learner {...row} />
-    case "figure":
-      return <Figure {...row} />
+      return <Fact name={row.name} value={row.value} />
+    case "choice": {
+      const { key, ...rest } = row
+      void key
+      return <Choice {...rest} />
+    }
+    case "action": {
+      const { key, ...rest } = row
+      void key
+      return <Action {...rest} />
+    }
+    case "learner": {
+      const { key, ...rest } = row
+      void key
+      return <Learner {...rest} />
+    }
+    case "pack": {
+      const { key, ...rest } = row
+      void key
+      return <Pack {...rest} />
+    }
+    case "figure": {
+      const { key, ...rest } = row
+      void key
+      return <Figure {...rest} />
+    }
   }
 }
 

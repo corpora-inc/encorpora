@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router"
 
 import { Strapwork } from "../design/Strapwork.tsx"
+import { PackStage } from "../packs/Stage.tsx"
 import { Nav } from "./Nav.tsx"
 import { strings } from "./strings.ts"
 
@@ -47,6 +48,9 @@ export function Shell() {
         <Outlet />
       </main>
       <Nav />
+      {/* The stage is a sibling of the chrome, not a child of the surface: a
+          launched pack takes the window, including the navigation. */}
+      <PackStage />
     </div>
   )
 }

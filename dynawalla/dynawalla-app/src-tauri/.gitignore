@@ -51,3 +51,8 @@ target/
 # is part of the shipped build (ADR-0011 point 2): a store binary has to be
 # reproducible from the tag. Corpán's lock is tracked for the same reason.
 !Cargo.lock
+
+# Built pack bundles, staged here by `packs/build.mjs` and bundled as a Tauri
+# resource. Build output, never committed: `npm run packs` regenerates them and
+# `npm run tauri dev`/`build` runs it first.
+/packs/

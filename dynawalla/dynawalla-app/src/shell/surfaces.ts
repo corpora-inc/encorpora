@@ -77,6 +77,18 @@ export type Row =
       /** `null` for the last learner: there is no state of this app with none. */
       readonly remove: (() => void) | null
     }
+  /** An installed pack, and the way into it. The front door's whole content. */
+  | {
+      readonly kind: "pack"
+      readonly key: string
+      readonly id: string
+      readonly name: string
+      readonly version: string
+      /** What it occupies, already formatted. Never a bare byte count. */
+      readonly size: string
+      /** Launches it onto the stage. Never null: an unplayable pack is not a row. */
+      readonly play: () => void
+    }
   /** Something drawn. `label` is its text alternative and is never empty. */
   | {
       readonly kind: "figure"
@@ -118,6 +130,8 @@ export interface HostActions {
   readonly removeProfile: (id: string) => void
   readonly armErase: () => void
   readonly erase: () => void
+  /** Put a pack on the stage. The one action the front door exists for. */
+  readonly launchPack: (packId: string) => void
 }
 
 // The option sets, written once. `satisfies` is what keeps a label and a value
@@ -175,18 +189,35 @@ export function learnerName(profile: Profile, index: number): string {
   return trimmed.length > 0 ? trimmed : fill(strings.profiles.learner, { n: index + 1 })
 }
 
-function packsSurface(view: HostView): readonly Section[] {
+/**
+ * The front door.
+ *
+ * Packs first, and packs as *plates you press* — the app is its packs, and the
+ * first thing on the first screen has to be the way into one. The device counts
+ * are underneath, where a parent looks for them and a child does not.
+ */
+function packsSurface(view: HostView, act: HostActions): readonly Section[] {
   return [
+    {
+      key: "installed",
+      rows: view.packs.map(
+        (pack): Row => ({
+          kind: "pack",
+          key: pack.id,
+          id: pack.id,
+          name: pack.name,
+          version: pack.version,
+          size: formatBytes(pack.bytes),
+          play: () => act.launchPack(pack.id),
+        }),
+      ),
+    },
     {
       key: "device",
       rows: [
         fact("count", strings.packs.installed, String(view.packs.length)),
         fact("bytes", strings.packs.space, formatBytes(packBytes(view.packs))),
       ],
-    },
-    {
-      key: "installed",
-      rows: view.packs.map((pack) => fact(pack.id, pack.name, pack.version)),
     },
   ]
 }
@@ -393,7 +424,7 @@ function sectionsOf(
 ): readonly Section[] {
   switch (destination) {
     case "packs":
-      return packsSurface(view)
+      return packsSurface(view, act)
     case "progress":
       return progressSurface(view)
     case "profiles":

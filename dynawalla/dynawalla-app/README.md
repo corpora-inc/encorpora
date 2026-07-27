@@ -14,7 +14,8 @@ Node 24 (`.nvmrc`).
 | | |
 |---|---|
 | `npm run dev` | Vite dev server on `127.0.0.1:1423` (Corpán holds 1421) |
-| `npm run tauri dev` | the desktop app against that dev server |
+| **`npm run tauri dev`** | **the app, with every pack built and installed** |
+| `npm run packs` | build, validate and stage every pack (`../packs/build.mjs`) |
 | `npm test` | `node --experimental-strip-types --test` — no vitest |
 | `npm run tsc` | typecheck: the app, the tests, and the build's own config |
 | `npm run lint` | eslint |
@@ -31,6 +32,31 @@ not build project references and a `references` entry would check nothing.
 CI runs lint, test, tsc and build in the `dynawalla-app` job, which reports into
 `ci-gate`. There is **no cargo job for either app in `ci.yml`** — the Rust below
 is not compiled by any required check yet.
+
+## Running it, with the games in it
+
+```
+npm run tauri dev
+```
+
+That is the whole loop. `tauri.conf.json` runs `npm run packs` first, which
+builds every pack under `../games/`, validates each against the manifest schema
+with `dw-pack check`, and stages it into `src-tauri/packs/`. The Rust side
+installs those into the pack root before the first window exists, so the front
+door opens with FUSE and SIEGE on it — no network, no catalogue, no install
+step. A debug build re-installs them on every launch, so editing a game and
+restarting is the entire iteration.
+
+`src-tauri/packs/` and `../dist-packs/` are build output and are git-ignored.
+
+To open straight into a game while working on one:
+
+```
+VITE_DW_AUTOPLAY=dynawalla.fuse npm run tauri dev
+```
+
+which also prints a frame-rate line every two seconds. It is compiled out of any
+build where the variable is unset — see `src/packs/devPlay.ts`.
 
 ## Layout
 
