@@ -66,6 +66,12 @@ export class Body {
    * hand you a follow-up cut, not resolve the whole factor tree on one flick.
    */
   cuttableAt = 0
+  /**
+   * Id of the last favour shockwave that touched this body. A single wave must
+   * cut a given gourd exactly once, and the wavefront has thickness, so "have I
+   * already been hit by wave 7" is the only reliable test.
+   */
+  waveMark = 0
 
   reset(): void {
     this.alive = false
@@ -74,6 +80,7 @@ export class Body {
     this.depth = 0
     this.correct = false
     this.cuttableAt = 0
+    this.waveMark = 0
   }
 }
 

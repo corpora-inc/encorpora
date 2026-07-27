@@ -115,7 +115,11 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   const splats = new Splats()
   const feel = new Feel({ reducedMotion: reduced })
   const audio = new Audio()
-  const numbers = buildNumberPool(2, 144)
+  // 324 and not 144: three digits is the legibility ceiling on a 320px screen,
+  // and the director walks its magnitude cap up to it over a long run rather
+  // than starting there. 288 = 2·2·2·2·2·3·3 is a seven-deep cascade, and that
+  // is what minute fifteen is for.
+  const numbers = buildNumberPool(2, 324)
   let rng = new Rng(0x51ce ^ (Date.now() & 0xffff))
   let director = new Director(rng, numbers)
 
@@ -142,6 +146,64 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   let vignette = 0
   let goldGlow = 0
   let lastAnswerMs = 0
+
+  // ── market favour: the reason reading beats guessing ──────────────────────
+  //
+  // A measured playtest of the previous build had a pure-guesser bot score
+  // 31,208 against a skilled bot's 31,190 over the same seventy seconds —
+  // statistically identical — because score came overwhelmingly from slicing
+  // gourds and a sigil was a ten-second interruption to a slicer.
+  //
+  // Favour fixes the economy at its root instead of nerfing the slicing. Every
+  // correct answer raises a global multiplier that applies to **everything** —
+  // every gourd, every prime, every cascade — so answering is not merely worth
+  // points, it is worth all of your other points again. A wrong answer drops it
+  // straight back to one. Guessing does not cost the child a lecture; it costs
+  // them the entire economy.
+  let favour = 1
+  let favourLeft = 0
+  const FAVOUR_SECONDS = 9
+  const FAVOUR_MAX = 4
+  /**
+   * Progress toward relighting a lamp, in sigils read. Deliberately
+   * **cumulative, not consecutive**: three correct answers at any point in the
+   * run buy a lamp back, and a wrong one never takes that progress away. The
+   * house rule against streak-keyed escalation is right — "don't break it" is
+   * the anxiety this product does not sell — and a recovery meter that only
+   * ever fills is both kinder and a better reason to keep reading.
+   */
+  let readCredit = 0
+  // Two, not three. At one sigil every ~4.5s this makes a child reading at 50%
+  // accuracy net-positive on lamps while a child guessing at 25% still bleeds
+  // out — which is the curve we want: a learner climbs, a button-masher does
+  // not, and neither ever gets a lecture.
+  const READ_PER_LAMP = 2
+  let bestFavour = 1
+  /**
+   * Where the score actually came from. Exposed on the debug object so the
+   * claim "answering is the biggest score event in the game" is a number
+   * somebody can check, not a designer's opinion. The previous build's judge
+   * had to infer it from a guesser bot scoring the same as a reader.
+   */
+  let earnedAnswering = 0
+  let earnedSlicing = 0
+
+  // The FAVOUR CUT — a shockwave that answers the question "why should I care
+  // about the tablet". A correct answer throws a ring out of the lantern that
+  // splits every gourd it passes through, cascading their factors, at the
+  // multiplier the answer just raised. It is the biggest score event in the
+  // game and it is the only one the child cannot reach by slicing.
+  let waveOn = false
+  let waveX = 0
+  let waveY = 0
+  let waveR = 0
+  let waveSpeed = 0
+  let waveMax = 0
+  let waveId = 0
+  let waveCuts = 0
+  let waveBornCut = 0
+  /** Everything the wave earns, paid out as ONE label instead of a dozen. */
+  let waveGain = 0
 
   const pops: Pop[] = []
   for (let i = 0; i < 40; i++)
@@ -276,12 +338,59 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     return H * 1.92
   }
 
-  function pop(text: string, x: number, y: number, size: number, color: string, weight = 1): void {
+  /**
+   * A floating label.
+   *
+   * Two labels that overlap read as one number — a screenshot of the previous
+   * pass has `+1211` sitting on `+13080` and the eye reports "+121180", which is
+   * the same run-on defect this batch was told off for. So a new pop is nudged
+   * clear of every live one before it is placed, and if it cannot find clear
+   * air within a few nudges it is dropped rather than drawn on top of another.
+   * A missing label costs nothing; an unreadable one costs trust in every
+   * number on screen.
+   */
+  function pop(text: string, x: number, y: number, size0: number, color: string, weight = 1): void {
+    // Labels shrink with the viewport. A 44px `+20886` is 260px wide, which ran
+    // clean off the right edge of a 390px phone — half a number is worse than
+    // no number.
+    const size = Math.max(13, Math.min(size0, W * 0.085, (W * 0.86) / Math.max(1, text.length * 0.62)))
+    // Rough half-extents. Numerals in UI_FONT run about 0.62em wide.
+    const hw = text.length * size * 0.31 + 6
+    let px = x + (rng.next() - 0.5) * size * 0.8
+    let py = y + (rng.next() - 0.5) * size * 0.4
+    let clear = false
+    for (let attempt = 0; attempt < 5 && !clear; attempt++) {
+      clear = true
+      for (const q of pops) {
+        if (!q.alive) continue
+        const qhw = q.text.length * q.size * 0.31 + 6
+        if (Math.abs(q.x - px) > hw + qhw) continue
+        if (Math.abs(q.y - py) > (size + q.size) * 0.62) continue
+        clear = false
+        py -= (size + q.size) * 0.66
+        px += (rng.next() - 0.5) * size * 0.6
+        break
+      }
+      // Always inside the frame, on every viewport.
+      px = Math.max(hw + 4, Math.min(W - hw - 4, px))
+      py = Math.max(size * 0.7, Math.min(H - size * 0.9, py))
+      // And never inside a live banner. The banner is the equation the child is
+      // being shown; a score label laid across it is the run-on defect again,
+      // just with two different kinds of number.
+      if (banner) {
+        const bt = H * 0.34
+        if (py > bt - size * 1.5 && py < bt + size * 2.2) {
+          py = py < bt ? bt - size * 1.6 : bt + size * 2.3
+          clear = false
+        }
+      }
+    }
+    if (!clear) return
     for (const p of pops) {
       if (p.alive) continue
       p.alive = true
-      p.x = x + (rng.next() - 0.5) * size * 1.5
-      p.y = y + (rng.next() - 0.5) * size * 0.6
+      p.x = px
+      p.y = py
       p.vy = -60 - weight * 26
       p.maxLife = 0.75 + weight * 0.35
       p.life = p.maxLife
@@ -297,15 +406,15 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     banner = { text, sub, life: secs, maxLife: secs, color }
   }
 
-  function launch(t: Throw): void {
+  function launch(t: Throw): boolean {
     // Never stack questions. A second tablet while one is live would put eight
     // candidates in the air belonging to two different prompts, which is the
     // single most confusing thing this game could do.
-    if (t.kind === "sigil" && (liveQ !== null || world.liveCount(B_SIGIL) > 0)) return
+    if (t.kind === "sigil" && (liveQ !== null || world.liveCount(B_SIGIL) > 0)) return false
     const b = world.spawnBody()
-    if (!b) return
+    if (!b) return false
     const gr = gravity()
-    const x = W * (0.08 + t.bandT * 0.84)
+    const x = W * (0.06 + t.bandT * 0.88)
     const y = H + 70
     const apexH = H * t.apex + 70
     const vy = -Math.sqrt(2 * gr * apexH)
@@ -351,17 +460,21 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     }
     world.shape(b, rng)
     audio.toss()
+    return true
   }
 
   function radiusFor(v: number): number {
     // Bigger numbers are bigger objects — the value is legible from the
     // silhouette before you can read the glyph, which buys reaction time.
+    //
+    // Sized against the SHORT axis, not the tall one. A height-derived radius
+    // put 94px-wide gourds on a 390px phone, and once the density floor put
+    // seven of them in the air at once they stacked into an unreadable heap —
+    // the numbers stop meaning anything the moment they overlap. Roughly five
+    // three-digit gourds now fit across any viewport.
     const digits = String(v).length
-    const base = H * 0.048
-    // Also capped against the *width*: on a 320px phone the height-derived
-    // radius made three-digit gourds a third of the screen wide and they
-    // constantly overlapped each other in flight.
-    return Math.max(19, Math.min(H * 0.085, W * 0.12, base * (0.82 + digits * 0.19)))
+    const base = Math.min(H * 0.045, W * 0.055)
+    return Math.max(17, Math.min(H * 0.075, W * 0.09, base * (0.98 + digits * 0.14)))
   }
 
   function spawnFactor(
@@ -467,9 +580,11 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     for (const b of world.bodies) {
       if (!b.alive || b.kind !== B_MOTE) continue
       if (exceptCorrectFlash && b.correct) {
-        // Show the child the answer they were looking for, then dissolve it.
+        // Show the child *where* the answer was, then dissolve it. The value
+        // itself is stated by the banner, not left floating over the field as
+        // an uncuttable numeral.
         burst(b.x, b.y, PRIME_GOLD, 26, 220)
-        pop(b.text, b.x, b.y, 34, PRIME_GOLD, 1.1)
+        addSlash(b.x, b.y, 1, 0, b.r * 2.2, PRIME_GOLD)
       } else {
         burst(b.x, b.y, MOTE_RING, 8, 120)
       }
@@ -596,11 +711,25 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       )
     }
 
-    const mult = multiplier()
+    const mult = scoreMul()
     if (prime) {
-      const gain = Math.round((14 + b.value * 1.4 + b.depth * 8) * mult)
+      const gain = Math.round((10 + b.value * 0.9 + b.depth * 7) * mult)
       score += gain
-      pop(`${b.value}`, b.x, b.y - b.r * 0.2, 40, PRIME_GOLD, 1.35)
+      if (waveOn) {
+        earnedAnswering += gain
+        waveGain += gain
+      } else {
+        earnedSlicing += gain
+        // `+68`, never `68`. The old build popped the prime's own value here,
+        // in gold, at forty pixels — which is exactly what a live gourd looks
+        // like, so the screen filled with numbers that meant nothing and could
+        // not be cut. Every floating label in this game now either starts with
+        // a plus or contains a multiplication sign; none can be mistaken for a
+        // target. During a favour wave they are suppressed entirely and paid as
+        // one number, because eleven of them at once is not a reward, it is a
+        // wall of overlapping digits.
+        pop(`+${gain}`, b.x, b.y - b.r * 0.2, 34, PRIME_GOLD, 1.35)
+      }
       audio.prime(chain)
       feel.addTrauma(0.26)
       feel.kick(dx, dy, 7)
@@ -629,8 +758,12 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       }
     } else {
       const split = chooseSplit(b.value, () => rng.next())
-      const gain = Math.round((4 + b.value * 0.22) * mult)
+      const gain = Math.round((3 + b.value * 0.16) * mult)
       score += gain
+      if (waveOn) {
+        earnedAnswering += gain
+        waveGain += gain
+      } else earnedSlicing += gain
       audio.cut(chain, 1)
       feel.addTrauma(0.13)
       feel.kick(dx, dy, 3.4)
@@ -642,12 +775,17 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
         const sp = 120 + impulse * 0.34
         spawnFactor(b, p, nx, ny, sp, b.depth + 1)
         spawnFactor(b, r, -nx, -ny, sp, b.depth + 1)
-        pop(`${p}×${r}`, b.x, b.y - b.r * 0.75, 19, flesh.core, 0.45)
+        // The whole equation, not just the right-hand side: "48 = 6×8" is the
+        // factor tree you just performed with your hand, written down.
+        if (!waveOn) pop(`${b.value} = ${p}×${r}`, b.x, b.y - b.r * 0.85, 18, flesh.core, 0.4)
       }
     }
     b.reset()
 
-    // Multi-cut in one stroke — the Fruit Ninja "blade" moment.
+    // Multi-cut in one stroke — the Fruit Ninja "blade" moment. Suppressed
+    // while the favour wave is sweeping: those cuts are the *answer's*, not the
+    // stroke's, and FAVOUR CUT is the banner that moment has earned.
+    if (waveOn) return
     if (cutsThisStroke === 3) {
       feel.slowmo(0.42, 460)
       feel.punch(0.05)
@@ -666,7 +804,118 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function multiplier(): number {
-    return 1 + Math.min(7, Math.floor(chain / 3))
+    return 1 + Math.min(5, Math.floor(chain / 4))
+  }
+
+  /**
+   * Chain × favour, doubled while the favour wave is sweeping.
+   *
+   * The double is what makes answering unambiguously the biggest score event in
+   * the game rather than merely a large one: the answer pays, and then it pays
+   * again for every gourd it opens on its way off the screen.
+   */
+  function scoreMul(): number {
+    return multiplier() * favour * (waveOn ? 2 : 1)
+  }
+
+  /**
+   * Fire the favour shockwave out of (x, y).
+   *
+   * It only cuts bodies that were already in the air when it started, so a
+   * cascade cannot feed itself and run away; the factors it frees are the
+   * child's to take with the next stroke.
+   */
+  function startWave(x: number, y: number): void {
+    waveOn = true
+    waveX = x
+    waveY = y
+    waveR = 0
+    waveCuts = 0
+    waveGain = 0
+    waveId++
+    waveBornCut = performance.now()
+    waveMaxSet()
+  }
+
+  function waveMaxSet(): void {
+    // Far enough to leave the frame from wherever it started.
+    waveMax = Math.hypot(Math.max(waveX, W - waveX), Math.max(waveY, H - waveY)) + 80
+    waveSpeed = waveMax / 0.62 // clears the screen in about six-tenths of a second
+  }
+
+  function stepWave(dt: number, nowMs: number): void {
+    if (!waveOn) return
+    const prev = waveR
+    waveR += waveSpeed * dt
+    const band = Math.max(26, H * 0.05)
+    for (const b of world.bodies) {
+      if (!b.alive || b.waveMark === waveId) continue
+      if (b.kind === B_MOTE || b.kind === B_SIGIL) continue
+      // Anything born *after* the wave started is a factor the wave itself
+      // freed. Leaving it alone is what keeps a cascade from feeding itself
+      // into an unbounded chain reaction on a screen full of 288s.
+      if (b.bornAt >= waveBornCut) continue
+      const d = Math.hypot(b.x - waveX, b.y - waveY)
+      if (d > waveR + b.r * 0.5 || d < prev - band - b.r) continue
+      b.waveMark = waveId
+      if (b.kind === B_BOMB) {
+        // The wave does not detonate bombs in the child's face — it *defuses*
+        // them. Being rewarded and then punished by the same event is the kind
+        // of thing that teaches a child not to answer.
+        burst(b.x, b.y, MOTE_HOT, 14, 200)
+        audio.toss()
+        b.reset()
+        continue
+      }
+      // Cut along the tangent of the wavefront: the ring visibly opens each
+      // gourd as it passes through it.
+      const ux = (b.x - waveX) / (d || 1)
+      const uy = (b.y - waveY) / (d || 1)
+      const tx = -uy
+      const ty = ux
+      const len = Math.max(b.r * 2.4, 60)
+      waveCuts++
+      b.cuttableAt = 0
+      cutBody(b, b.x - tx * len, b.y - ty * len, b.x + tx * len, b.y + ty * len, 900)
+    }
+    if (waveR >= waveMax) {
+      waveOn = false
+      if (waveGain > 0) {
+        // Under the banner, never through it: the equation the child just
+        // answered is the more important string of the two.
+        const py = Math.max(H * 0.46, Math.min(H * 0.8, waveY + H * 0.12))
+        pop(`+${waveGain}`, waveX, py, 44, PRIME_HOT, 1.5)
+      }
+      if (waveCuts >= 6) {
+        showBanner("FAVOUR CUT", `${waveCuts} opened at once`, PRIME_GOLD, 1.1)
+        feel.punch(0.03)
+        host.haptic("success")
+      }
+    }
+    void nowMs
+  }
+
+  function drawWave(ctx: CanvasRenderingContext2D): void {
+    if (!waveOn) return
+    const t = Math.min(1, waveR / waveMax)
+    const a = (1 - t) * (reduced ? 0.5 : 1)
+    const band = Math.max(26, H * 0.05)
+    ctx.save()
+    ctx.globalCompositeOperation = "lighter"
+    for (const [w, alpha, off] of [
+      [band * 0.9, 0.1, -band * 0.5],
+      [7, 0.55, 0],
+      [2.4, 1, 0],
+    ] as const) {
+      ctx.globalAlpha = a * alpha
+      ctx.strokeStyle = alpha === 1 ? PRIME_HOT : PRIME_GOLD
+      ctx.lineWidth = w
+      ctx.beginPath()
+      ctx.arc(waveX, waveY, Math.max(1, waveR + off), 0, Math.PI * 2)
+      ctx.stroke()
+    }
+    ctx.restore()
+    ctx.globalAlpha = 1
   }
 
   function spray(
@@ -757,22 +1006,36 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
 
     if (correct) {
       right++
-      const mult = multiplier()
+      // Recovery is only earned while there is something to recover. Banking
+      // credit at full lamps would make the first mistake of a long run free.
+      if (lamps < 3) readCredit = Math.min(READ_PER_LAMP, readCredit + 1)
       const q = liveQ
-      const gain = Math.round((120 + (q?.difficulty ?? 3) * 26) * mult)
+      // Favour is raised *before* the gain is scored, so the answer that earns
+      // the multiplier is also the first thing paid at it.
+      favour = Math.min(FAVOUR_MAX, favour + 1)
+      favourLeft = FAVOUR_SECONDS
+      bestFavour = Math.max(bestFavour, favour)
+      const mult = scoreMul()
+      const gain = Math.round((320 + (q?.difficulty ?? 3) * 110) * mult)
       score += gain
+      earnedAnswering += gain
       audio.ascend()
       // The biggest response in the game, and it still blocks nothing.
-      feel.hitstop(reduced ? 0 : 90)
-      feel.slowmo(0.34, 520)
+      feel.hitstop(reduced ? 0 : 100)
+      feel.slowmo(0.3, 620)
       feel.addTrauma(0.5)
       feel.kick(dx, dy, 11)
-      feel.punch(0.075)
+      feel.punch(0.085)
       feel.requestFlash(0.24, PRIME_HOT)
       host.haptic("success")
       goldGlow = 1
       pop(`+${gain}`, x, y - 30, 46, PRIME_GOLD, 1.5)
-      showBanner(q ? `${q.prompt} = ${answered}` : answered, `×${mult}`, PRIME_GOLD, 1.5)
+      showBanner(
+        q ? `${q.prompt} = ${answered}` : answered,
+        favour > 1 ? `FAVOUR ×${favour}` : `×${mult}`,
+        PRIME_GOLD,
+        1.5,
+      )
       spray(x, y, PRIME_GOLD, PRIME_HOT, 620, nx, ny, 1.7)
       if (gov.quality.splats) {
         splats.splat(x, y, PRIME_GOLD, 9, 120, () => rng.next())
@@ -784,6 +1047,18 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
         }
       }
       liveQ = null
+      // …and the market pays out. Everything in the air opens at once.
+      startWave(x, y)
+      // Three sigils read buys a lamp back. This is the "math instead of an ad"
+      // beat: where a free-to-play game would show a video to continue, this
+      // asks for arithmetic — and it never takes the progress away again.
+      if (readCredit >= READ_PER_LAMP && lamps < 3) {
+        lamps++
+        readCredit -= READ_PER_LAMP
+        audio.riser()
+        showBanner("A LAMP RELIT", "three sigils read", LAMP, 1.4)
+        host.haptic("success")
+      }
     } else {
       audio.ash()
       // No hitstop on a miss — the retry must stay fast. A kick instead.
@@ -794,7 +1069,13 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       vignette = 1
       chain = 0
       chainTimer = 0
-      pop(answered, x, y, 32, WRONG, 1.1)
+      // The whole economy, gone. This is the cost that makes guessing lose.
+      favour = 1
+      favourLeft = 0
+      // No bare red numeral floating over the field — the equation completes
+      // itself instead, in the sigil's own colour. Never a lecture, never a
+      // cross; just the thing that was true, stated once.
+      if (liveQ) showBanner(`${liveQ.prompt} = ${liveQ.answer}`, "", SIGIL_HOT, 1.4)
       burst(x, y, WRONG, 26, 320)
       clearMotes(true)
       loseLamp()
@@ -834,6 +1115,13 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     right = 0
     vignette = 0
     goldGlow = 0
+    favour = 1
+    favourLeft = 0
+    bestFavour = 1
+    readCredit = 0
+    earnedAnswering = 0
+    earnedSlicing = 0
+    waveOn = false
     liveQ = null
     pendingQ.clear()
     moteLeft = 0
@@ -950,8 +1238,26 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
 
     if (!over) {
       director.quiet = liveQ !== null
-      const n = director.step(dtS, throwBuf)
-      for (let i = 0; i < n; i++) launch(throwBuf[i] as Throw)
+      // The density floor is enforced against what is actually in the air, so
+      // it holds on a 320×568 phone exactly as it does on a 1280 desktop.
+      const live = world.liveCount(B_NUMERAL) + world.liveCount(B_BOMB)
+      const n = director.step(dtS, throwBuf, live)
+      for (let i = 0; i < n; i++) {
+        const t = throwBuf[i] as Throw
+        if (!launch(t) && t.kind === "sigil") director.sigilRefused()
+      }
+    }
+
+    stepWave(dtS, nowMs)
+
+    // Favour cools rather than snapping: a child who answers one more sigil
+    // before the meter drains keeps their run alive.
+    if (favourLeft > 0) {
+      favourLeft -= dtS
+      if (favourLeft <= 0) {
+        favour = Math.max(1, favour - 1)
+        favourLeft = favour > 1 ? FAVOUR_SECONDS * 0.72 : 0
+      }
     }
 
     // Bodies.
@@ -1053,8 +1359,11 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   function expireQuestion(): void {
     const q = liveQ
     if (!q) return
-    // Hesitation is never punished with damage — only with the missed bonus.
+    // Hesitation is never punished with damage — only with the missed bonus,
+    // and with favour cooling back toward one.
     host.report({ questionId: q.id, correct: false, ms: Math.round(performance.now() - liveQAt), answered: "" })
+    favour = Math.max(1, favour - 1)
+    showBanner(`${q.prompt} = ${q.answer}`, "", SIGIL_EDGE, 1.2)
     clearMotes(true)
   }
 
@@ -1344,17 +1653,62 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       }
     }
 
-    // Chain, centre-left, only while live.
-    if (chain >= 3) {
-      const m = multiplier()
+    // Progress toward relighting, in sigils read. Only drawn when there is a
+    // lamp to win back, so it is never decoration. Three filled ticks and the
+    // dark lamp comes on — this is the game's "watch an ad to continue", and
+    // the price is arithmetic.
+    if (lamps < 3) {
+      const ty = pad + lr * 2.9
+      const tw = lr * 1.5
+      for (let i = 0; i < READ_PER_LAMP; i++) {
+        const x = W - pad - tw - i * (tw + 4)
+        ctx.fillStyle =
+          i < readCredit ? withAlpha(SIGIL_HOT, 0.95) : "rgba(255,255,255,0.16)"
+        ctx.fillRect(x, ty, tw, 3.5)
+      }
+    }
+
+    // One multiplier line, and where it came from. Chain is what your hand
+    // earned; favour is what your reading earned. Showing the product first is
+    // deliberate — the child should see the number that scales their whole run,
+    // and only then notice that most of it says FAVOUR.
+    if (chain >= 3 || favour > 1) {
+      const m = scoreMul()
       const t = Math.min(1, chainTimer / CHAIN_WINDOW)
+      const hot = favour > 1
       ctx.textAlign = "left"
-      ctx.font = font(UI_FONT, big * 0.62)
-      ctx.fillStyle = withAlpha(PRIME_GOLD, 0.55 + t * 0.45)
-      ctx.fillText(`×${m}`, pad, pad + big * 1.7)
-      ctx.font = font(UI_FONT, big * 0.34)
-      ctx.fillStyle = withAlpha(PAPER, 0.55)
-      ctx.fillText(`CHAIN ${chain}`, pad + big * 0.95, pad + big * 1.92)
+      ctx.textBaseline = "top"
+      const ms = big * (hot ? 0.78 : 0.62)
+      const y0 = pad + big * 1.55
+      ctx.font = font(UI_FONT, ms)
+      const label = `×${m}`
+      ctx.fillStyle = withAlpha(hot ? PRIME_HOT : PRIME_GOLD, 0.62 + t * 0.38)
+      ctx.fillText(label, pad, y0)
+      // MEASURED, not guessed. A fixed offset put "×36" straight through
+      // "FAVOUR 3" the moment the multiplier reached two digits — the same
+      // run-on-number defect this batch was told off for, in the HUD instead of
+      // the playfield. Every offset below is derived from a real metric.
+      const lx = pad + ctx.measureText(label).width + big * 0.42
+      const sm = big * 0.34
+      ctx.font = font(UI_FONT, sm)
+      if (favour > 1) {
+        // A drain bar for favour, so its expiry is never a surprise. Width, not
+        // colour, carries the information. It sits ABOVE the label with a full
+        // line of clearance, not through it.
+        const bw2 = big * 1.9
+        const f = Math.max(0, Math.min(1, favourLeft / FAVOUR_SECONDS))
+        ctx.fillStyle = "rgba(255,255,255,0.16)"
+        ctx.fillRect(lx, y0 + 1, bw2, 3)
+        ctx.fillStyle = withAlpha(PRIME_HOT, 0.95)
+        ctx.fillRect(lx, y0 + 1, bw2 * f, 3)
+        ctx.fillStyle = withAlpha(PAPER, 0.72)
+        ctx.fillText(`FAVOUR ${favour}`, lx, y0 + sm * 0.9)
+        ctx.fillStyle = withAlpha(PAPER, 0.42)
+        ctx.fillText(`CHAIN ${chain}`, lx, y0 + sm * 2.1)
+      } else {
+        ctx.fillStyle = withAlpha(PAPER, 0.62)
+        ctx.fillText(`CHAIN ${chain}`, lx, y0 + sm * 0.9)
+      }
     }
 
     // The live question banner. Pinned, legible, with a draining bar — a child
@@ -1365,7 +1719,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       const bx = (W - bw) / 2
       // On a narrow screen the centred banner used to land straight on top of
       // the score and the lamps. Below 620px it drops under the whole HUD row.
-      const by = W < 620 ? pad + big * 1.55 : pad * 0.7
+      const by = W < 620 ? pad + big * 2.55 : pad * 0.7
       ctx.fillStyle = "rgba(8,6,20,0.82)"
       roundRect(ctx, bx, by, bw, bh, 10)
       ctx.fill()
@@ -1499,6 +1853,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     if (eg) {
       pushCamera(eg)
       drawSlashes(eg)
+      drawWave(eg)
       parts.drawAdditive(eg, atl)
       for (const b of blades.values()) {
         if (b.visible(nowMs)) b.draw(eg, nowMs, Math.max(3, H * 0.014), 1 + Math.min(1.2, chain * 0.06), q.glow)
@@ -1515,6 +1870,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       g.globalCompositeOperation = "lighter"
       drawSlashes(g)
       g.globalCompositeOperation = prevOp
+      drawWave(g)
       parts.drawAdditive(g, atl)
       for (const b of blades.values()) {
         if (b.visible(nowMs)) b.draw(g, nowMs, Math.max(3, H * 0.014), 1 + Math.min(1.2, chain * 0.06), q.glow)
@@ -1610,6 +1966,17 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
         best,
         lamps,
         chain,
+        favour,
+        bestFavour,
+        readCredit,
+        earnedAnswering,
+        earnedSlicing,
+        wave: waveOn ? 1 : 0,
+        waveCuts,
+        answerShare: Number(
+          (earnedAnswering / Math.max(1, earnedAnswering + earnedSlicing)).toFixed(3),
+        ),
+        floor: director.floorCount(),
         over: over ? 1 : 0,
         asked,
         right,
