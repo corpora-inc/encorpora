@@ -1,0 +1,21 @@
+{
+  "id": "dynawalla.pulse",
+  "version": "0.1.0",
+  "name": "PULSE",
+  "description": "A rhythm-action game where fractions are literally rhythm. The visible playfield is exactly one bar, a note's position is its fraction of the whole, and you answer by hitting a thing at the right time.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.frac.arith.add-like-denominators",
+      "dw.frac.arith.add-unlike-denominators",
+      "dw.frac.arith.subtract-fractions",
+      "dw.frac.arith.multiply-by-a-whole"
+    ],
+    "grades": [3, 5]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

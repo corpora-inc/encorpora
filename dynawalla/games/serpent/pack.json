@@ -1,0 +1,25 @@
+{
+  "id": "dynawalla.serpent",
+  "version": "0.1.0",
+  "name": "SERPENT",
+  "description": "A bioluminescent deep-sea snake that may eat only the values satisfying the condition written across the arena floor. Every orb is a claim, and swallowing the wrong one costs a length of tail.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.alg.equality.balance-meaning",
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.mul.multidigit.times-one-digit",
+      "dw.div.whole.divide-exact",
+      "dw.frac.compare.same-numerator",
+      "dw.frac.compare.unlike-fractions",
+      "dw.frac.equivalence.lowest-terms"
+    ],
+    "grades": [1, 5]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}
