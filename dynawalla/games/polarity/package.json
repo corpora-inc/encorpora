@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:pack": "vite build --config vite.pack.config.ts",
     "preview": "vite preview --port 4211 --strictPort",
     "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
     "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'src/**/*.test.ts'"

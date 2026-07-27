@@ -11,11 +11,12 @@
 import { mount } from './index.ts'
 import { makeStubHost } from './stubHost.ts'
 import { hashSeed } from './core/rng.ts'
+import { SAVE_KEY } from './core/save.ts'
 
 const params = new URLSearchParams(location.search)
 if (params.get('wipe') === '1') {
   try {
-    localStorage.removeItem('dynawalla.abyssal-bloom.v1')
+    localStorage.removeItem(SAVE_KEY)
   } catch (e) {
     console.warn('[abyssal-bloom] could not wipe the save', e)
   }

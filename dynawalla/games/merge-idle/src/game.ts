@@ -55,6 +55,7 @@ import {
 } from './core/economy.ts'
 import { decompose, fmt, fmtCompact, magnitude, onLadder, rank, SEEDS, type Strain } from './core/ladder.ts'
 import { hashSeed, makeRng, type Rng } from './core/rng.ts'
+import { readSave, writeSave } from './core/save.ts'
 import {
   BUDGET,
   detectTier,
@@ -72,14 +73,6 @@ import { CHALK, DANGER, hex, lift, rampAt, TIDE } from './render/palette.ts'
 import { cellAtPoint, cellCentre, Renderer } from './render/renderer.ts'
 import { Hud, type Action } from './ui/hud.ts'
 
-// The `localStorage` slot, versioned so a schema change orphans old saves
-// rather than mis-reading them. `gitleaks:allow` because the pinned scanner's
-// `generic-api-key` rule reads `KEY = "<long dotted string>"` as a credential:
-// the value clears its entropy floor purely because of its length, not because
-// of what it holds. Same call, and same comment, as
-// dynawalla/games/forge/src/game/save.ts. It is a storage path, it is on the
-// client, and it is in a public repo on purpose.
-const SAVE_SLOT = 'dynawalla.abyssal-bloom.v1' // gitleaks:allow
 const MAX_ROWS = 9
 const START_COLS = 5
 const START_ROWS = 6
@@ -256,13 +249,7 @@ class Game {
   /* --------------------------------------------------------------- persist */
 
   private restore(): void {
-    let raw: string | null = null
-    try {
-      raw = localStorage.getItem(SAVE_SLOT)
-    } catch (e) {
-      console.warn('[abyssal-bloom] could not read the save; starting fresh', e)
-      return
-    }
+    const raw = readSave()
     if (!raw) return
     try {
       const d = JSON.parse(raw) as {
@@ -321,11 +308,7 @@ class Game {
       vents: this.s.vents.map((v) => ({ tier: v.tier })),
       lastSeen: Date.now(),
     }
-    try {
-      localStorage.setItem(SAVE_SLOT, JSON.stringify(d))
-    } catch (e) {
-      console.warn('[abyssal-bloom] could not write the save', e)
-    }
+    writeSave(JSON.stringify(d))
   }
 
   /* ----------------------------------------------------------------- vents */
