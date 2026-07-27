@@ -1,0 +1,35 @@
+{
+  "id": "dynawalla.claim",
+  "version": "0.1.0",
+  "name": "CLAIM",
+  "description": "Cut the plane and take exactly the fraction you were asked for. Three quarters of the ground stops being something you read and becomes something you carved, with the hunt loose inside the region you have not closed yet.",
+  "sdk": "1.0.0",
+  "host": {
+    "min": "0.1.0",
+    "max": "1.0.0"
+  },
+  "entry": "pack.html",
+  "capabilities": [
+    "items",
+    "items.reveal",
+    "haptics"
+  ],
+  "covers": {
+    "skills": [
+      "dw.frac.arith.multiply-by-a-whole",
+      "dw.frac.equivalence.lowest-terms",
+      "dw.frac.compare.unlike-fractions"
+    ],
+    "grades": [
+      3,
+      5
+    ]
+  },
+  "locales": [
+    "en"
+  ],
+  "build": {
+    "config": "vite.pack.config.ts",
+    "out": "dist-pack"
+  }
+}
