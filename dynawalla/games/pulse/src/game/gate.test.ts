@@ -88,6 +88,80 @@ test("the correct answer survives even when every distractor is unusable", () =>
     difficulty: 0.9,
   };
   const g = buildGate(q, rng());
-  assert.equal(g.candidates.length, 1);
-  assert.ok(g.candidates[0]!.correct);
+  assert.ok(
+    g.candidates.some((c) => c.correct && c.label === "3/4"),
+    "the answer must survive — that is what this test is named for",
+  );
+  // It used to assert `candidates.length === 1`, which described what the code
+  // did rather than what a child should be handed: a lone target drawn as a
+  // full pie, unmissable. None of these three can sit on the bar, so the gate
+  // now gives up the number line rather than the question.
+  assert.ok(g.candidates.length >= 2, `only ${g.candidates.length} candidate(s)`);
+  assert.equal(g.positional, false);
+  // `3/4` was a distractor AND the answer. It must not appear twice, once
+  // scoring right and once wrong.
+  assert.equal(g.candidates.filter((c) => c.label === "3/4").length, 1, "answer duplicated");
+  assert.equal(g.candidates.filter((c) => c.correct).length, 1, "exactly one correct");
+});
+
+test("a gate is never a single unmissable target", () => {
+  // The bug this guards: the positional path admits a distractor only if it
+  // lands in (0,1]. When the host serves column arithmetic — which it does
+  // today, the ladder being `add`-only — the answer can be in the bar while
+  // every distractor is outside it, and the child was handed one candidate
+  // drawn as a full pie. Not a question; a formality.
+  const q: Question = {
+    id: "q-degenerate",
+    prompt: "43 − 42",
+    answer: "1",
+    distractors: ["2", "11", "0"],
+    domain: "add-sub",
+    difficulty: 0.2,
+  };
+  const g = buildGate(q, rng());
+  assert.ok(g.candidates.length >= 2, `only ${g.candidates.length} candidate(s)`);
+  assert.equal(g.positional, false, "should fall back to the flat presentation");
+  assert.equal(g.candidates.filter((c) => c.correct).length, 1, "exactly one correct");
+});
+
+test("column arithmetic never yields fewer than two candidates", () => {
+  // The real host, not this game's stub. PULSE's own stub serves fractions, so
+  // sweeping it would pass this vacuously — it can barely produce the
+  // degenerate shape. The live curriculum ladder is `add`-only, so what PULSE
+  // is actually handed is whole-number column arithmetic, where the answer
+  // often lands in (0,1] only when it is exactly 1 and the distractors never
+  // do. That is the case worth sweeping.
+  const r = rng();
+  let degenerateShapes = 0;
+  for (let a = 0; a <= 60; a++) {
+    for (let b = 0; b <= 60; b++) {
+      const ansV = a - b;
+      const q: Question = {
+        id: `col-${a}-${b}`,
+        prompt: `${a} − ${b}`,
+        answer: String(ansV),
+        distractors: [String(ansV + 1), String(ansV - 1), String(a + b)],
+        domain: "add-sub",
+        difficulty: 0.2,
+      };
+      const g = buildGate(q, r);
+      assert.ok(g.candidates.length >= 2, `${q.prompt} gave ${g.candidates.length} candidate(s)`);
+      assert.equal(g.candidates.filter((c) => c.correct).length, 1, `${q.prompt} correct-count`);
+      const labels = g.candidates.map((c) => c.label);
+      assert.equal(new Set(labels).size, labels.length, `${q.prompt} duplicated a label`);
+      if (ansV === 1) degenerateShapes++;
+    }
+  }
+  // Proves the sweep actually visited the shape it exists to catch.
+  assert.ok(degenerateShapes > 0, "swept nothing that could degenerate");
+});
+
+test("the fraction stub host also always gives a real choice", () => {
+  const h = createStubHost({ seed: "gate-degenerate-sweep" });
+  const r = rng();
+  for (let i = 0; i < 3000; i++) {
+    const g = buildGate(h.next(), r);
+    assert.ok(g.candidates.length >= 2, `${g.prompt} gave ${g.candidates.length} candidate(s)`);
+    assert.equal(g.candidates.filter((c) => c.correct).length, 1, `${g.prompt} correct-count`);
+  }
 });
