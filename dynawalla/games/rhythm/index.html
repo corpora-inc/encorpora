@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, maximum-scale=1"
+    />
+    <meta name="color-scheme" content="dark" />
+    <title>Splitbeat</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #05060f;
+        overflow: hidden;
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #stage {
+        position: fixed;
+        inset: 0;
+        touch-action: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
