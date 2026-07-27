@@ -1,0 +1,22 @@
+{
+  "name": "dynawalla-game-balance",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Counterpoise - a brass balance where the scale physically is the equals sign.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test src/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}
