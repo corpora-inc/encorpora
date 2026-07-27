@@ -64,9 +64,26 @@ export function buildGate(q: Question, rng: Rng, fit: GateFit = DEFAULT_FIT): Bu
   // that hands over one unusable distractor loses that distractor, not the mechanic.
   const positional = ans !== null && inBar(ans);
 
-  if (!positional || ans === null) {
-    // Non-fractional host: keep the game playable, lose the number line.
-    const all = [{ s: q.answer, correct: true }, ...q.distractors.map((s) => ({ s, correct: false }))];
+  /**
+   * Keep the game playable, lose the number line.
+   *
+   * Distractors equal to the answer are dropped first. A host that sends one
+   * (and they do — `3/4` against an answer of `3/4`, or `6/8` against it) would
+   * otherwise put the same label on the bar twice, once scoring as right and
+   * once as wrong. Equality is by VALUE where both parse, so `6/8` is caught
+   * against `3/4`, and by label otherwise.
+   */
+  const flat = (): BuiltGate => {
+    const seen: Rat[] = ans === null ? [] : [ans];
+    const usable = q.distractors.filter((s) => {
+      if (s === q.answer) return false;
+      const r = parseRat(s);
+      if (r === null) return true;
+      if (seen.some((k) => eq(k, r))) return false;
+      seen.push(r);
+      return true;
+    });
+    const all = [{ s: q.answer, correct: true }, ...usable.map((s) => ({ s, correct: false }))];
     rng.shuffle(all);
     const used = all.slice(0, maxCandidates);
     if (!used.some((u) => u.correct)) {
@@ -84,7 +101,9 @@ export function buildGate(q: Question, rng: Rng, fit: GateFit = DEFAULT_FIT): Bu
         frac: null,
       })),
     };
-  }
+  };
+
+  if (!positional || ans === null) return flat();
 
   const kept: Rat[] = [ans];
   const out: GateCandidate[] = [
@@ -104,6 +123,18 @@ export function buildGate(q: Question, rng: Rng, fit: GateFit = DEFAULT_FIT): Bu
       frac: { n: Number(r.n), d: Number(r.d) },
     });
   }
+  // Losing ONE unusable distractor costs a distractor; losing them ALL costs the
+  // game. If nothing but the answer survived the bar, the child is handed a
+  // single target they cannot miss — not a question, a formality. Fall back to
+  // the flat presentation, which uses every choice the host sent regardless of
+  // whether it lands in (0,1].
+  //
+  // This is reachable in ordinary play, not a theoretical edge: the curriculum
+  // ladder is `add`-only today, so PULSE is served column arithmetic, and on
+  // `43 − 42` the answer is 1 (in the bar) while every distractor — 2, 11, 0 —
+  // is outside it.
+  if (out.length < 2) return flat();
+
   out.sort((a, b) => a.pos - b.pos);
   return { questionId: q.id, prompt: q.prompt, candidates: out, positional: true };
 }
