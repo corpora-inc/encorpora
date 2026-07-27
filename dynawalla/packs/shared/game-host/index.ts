@@ -25,7 +25,7 @@
 // this module did not serve, is dropped. A pack that double-reports a chip
 // would otherwise inflate a child's record, and the record only ever rises.
 
-import type { Capability, HostClient, Item } from "../../sdk/src/index.ts"
+import type { Capability, HostClient, Item, TransitionKind } from "../../sdk/src/index.ts"
 import { connect } from "../../sdk/src/index.ts"
 
 /** The shape both games declare locally. Kept structurally identical. */
@@ -50,6 +50,21 @@ export type GameHost = {
   prefersReducedMotion(): boolean
   /** Optional host extension FUSE feature-detects: bias the stream by value. */
   focus(spec: { key: number; wanted: number[] }): void
+  /**
+   * A natural stopping point just happened: a level cleared, a run completed,
+   * a boss down. Fire and forget — the game is told nothing back and must not
+   * wait, branch or pause on it. If the host does anything, the game finds out
+   * the ordinary way, through the `pause` it already handles.
+   *
+   * **Only ever after something the child finished.** Never after a defeat, a
+   * failed run, a wrong answer or a timer — a purchase surface must never sit
+   * next to a failure (ADR-0013), and this is the call that can put one there.
+   *
+   * Call it as often as the game naturally reaches one. The host acts on the
+   * first per game per day and ignores the rest, so a game with short levels
+   * does not have to ration them.
+   */
+  transition(kind: TransitionKind, label?: string): void
 }
 
 /** Named cues. The game says what happened; the host owns the waveform. */
@@ -227,6 +242,15 @@ export async function createGameHost(options: GameHostOptions = {}): Promise<Mou
     focus: ({ wanted: values }) => {
       wanted = values.slice(0, 32)
       if (pool.length < POOL_TARGET) fill()
+    },
+
+    transition: (kind, label) => {
+      // Synchronous on the outside, because it is called from inside a game
+      // loop where there is no `await`, and swallowed on the inside: a host
+      // that could not take a stopping point must not take the game down.
+      void client.transition(kind, label).catch((error: unknown) => {
+        console.error("[pack] a stopping point could not be reported", error)
+      })
     },
   }
 

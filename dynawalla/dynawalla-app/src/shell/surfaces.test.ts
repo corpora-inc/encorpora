@@ -48,6 +48,10 @@ const coldHost: HostView = {
   version: "0.1.0",
   native: false,
   armed: false,
+  // Nothing has been bought and nothing has been played, which is the state
+  // that matters most: on a cold device **every game is open**.
+  pass: "none",
+  resting: [],
 }
 
 /** Counts what a caller asked for; asserts nothing on its own. */
@@ -63,6 +67,9 @@ function recorder() {
     armErase: () => calls.push("armErase"),
     erase: () => calls.push("erase"),
     launchPack: () => calls.push("launchPack"),
+    grantTestPass: () => calls.push("grantTestPass"),
+    clearTestPass: () => calls.push("clearTestPass"),
+    clearRestLedger: () => calls.push("clearRestLedger"),
   }
   return { calls, actions }
 }

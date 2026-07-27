@@ -10,7 +10,13 @@
 // ladders and two sets of counters rather than one that remembers the last
 // child who played.
 
-import type { HapticCue, Item, Settings, SoundCue } from "../../../packs/sdk/src/index.ts"
+import type {
+  HapticCue,
+  Item,
+  Settings,
+  SoundCue,
+  TransitionKind,
+} from "../../../packs/sdk/src/index.ts"
 import type { HostServices } from "./bridge.ts"
 import { createItemService, type ItemService } from "./items.ts"
 import { report } from "./host.ts"
@@ -125,6 +131,12 @@ export type ServicesDeps = {
   readonly onProgress?: (fraction: number) => void
   readonly onEnd?: (reason: "finished" | "quit") => void
   readonly onMilestone?: (name: string) => void
+  /**
+   * The pack reached a natural stopping point. What happens next is the day
+   * pass's business and is decided by the stage, not here: this module knows
+   * nothing about entitlement, and the pack learns nothing about the answer.
+   */
+  readonly onTransition?: (kind: TransitionKind, label?: string) => void
 }
 
 export type LaunchServices = {
@@ -203,6 +215,7 @@ export function createServices(deps: ServicesDeps): LaunchServices {
 
     progress: (input) => deps.onProgress?.(input.fraction),
     end: (input) => deps.onEnd?.(input.reason),
+    transition: (input) => deps.onTransition?.(input.kind, input.label),
     settings: () => current,
   }
 

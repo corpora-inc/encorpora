@@ -144,8 +144,32 @@ locally in the client, without a round trip.
 | `milestones`   | `host.milestone("tower.built")`                         |
 | `storage`      | 200 keys, 16 KB per value, scoped to your pack          |
 
-`host.progress(fraction)` and `host.end(reason)` need no capability: they are
-how a session is a session.
+`host.progress(fraction)`, `host.end(reason)` and `host.transition(kind)` need
+no capability: they are how a session is a session.
+
+### `host.transition` — say when your game reached a natural ending
+
+```ts
+host.transition("level", "level 3")   // or "run", or "boss"
+```
+
+**Call it whenever the child *finishes* something** — a level cleared, a run
+completed, a boss down. Fire and forget: it resolves immediately, tells you
+nothing, and you must not await it, branch on it, or pause for it. If the host
+puts something over your frame you will hear about it through the `pause` event
+you already handle.
+
+**Never call it after a failure.** Not a defeat, not a breach, not a wrong
+answer, not a timer running out. The host may show a purchase surface at a
+transition, and a purchase surface next to a failure is forbidden outright
+([ADR-0013](../../docs/DECISIONS/ADR-0013-monetization-model.md)).
+
+Call it as often as your game naturally reaches one — the host acts on the first
+per game per day and ignores the rest, so you do not have to ration them or work
+out which is special. This is what the day pass
+([ADR-0024](../../docs/DECISIONS/ADR-0024-day-pass-not-subscription.md)) is
+built on, and it is the reason **there is no timer anywhere in this product**:
+a child stops at a place they reached, not at a number.
 
 Read `host.granted` and hide the surfaces you cannot drive. `host.settings`
 carries the locale, `prefers-reduced-motion`, a quality tier, the text scale and

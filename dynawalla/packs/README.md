@@ -106,6 +106,10 @@ Three things it does that a game should not do itself:
   `answer` on a `Question` is the host's `items.reveal`, which is a declared,
   parent-visible capability for placing a target — not a way to score.
 - **Reports session progress**, so the host can draw the hairline.
+- **Forwards `transition`**, the game's own "the child just finished something"
+  signal. Games call `host.transition("level")` synchronously from inside their
+  loop; the adapter makes the round trip and swallows any failure. See the SDK
+  README, and note the one rule: **never after a failure**.
 
 ### The gap worth knowing about
 

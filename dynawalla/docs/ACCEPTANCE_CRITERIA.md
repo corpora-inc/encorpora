@@ -497,13 +497,14 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       or SDKs; a parental gate on every link-out and purchase) are already Accepted as of
       2026-07-25 and are not what this item waits on.
       Evidence: UNMET
-- [ ] **G-02** `[founder]` The **packaging and pricing** of the monetization direction —
-      what the free tier includes, what the subscription unlocks, what it costs — is
-      decided and recorded in
-      [ADR-0013](DECISIONS/ADR-0013-monetization-model.md) before M9 completes. The
-      direction (generous free tier + subscription, offline-first, never block an offline
-      subscriber) is Accepted as of 2026-07-25; the packaging is not, and carries R-45.
-      Evidence: UNMET
+- [x] **G-02** `[founder]` The **packaging and pricing** are decided and recorded in
+      [ADR-0024](DECISIONS/ADR-0024-day-pass-not-subscription.md), which **supersedes**
+      ADR-0013's subscription. **Every game is free to play**; the boundary is a natural
+      transition inside a game, one per game per day, never a clock; the pass is
+      **$0.99 / day, $7.99 / month, $79.99 lifetime — the lifetime is the headline**.
+      Never-block-an-offline-subscriber is carried over verbatim.
+      Evidence: MET — founder's own words, 2026-07-26, quoted in ADR-0024. R-45 (the
+      model has no evidence behind it yet) is **not** closed by this and still stands.
 - [ ] **G-03** `[founder]` The repository license is decided and a `LICENSE` file
       exists ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)).
       Evidence: UNMET

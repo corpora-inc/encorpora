@@ -31,9 +31,11 @@ import type {
   Response,
   Settings,
   SoundCue,
+  TransitionKind,
 } from "../../../packs/sdk/src/index.ts"
 import {
   MAX_REQUESTS_PER_SECOND,
+  isTransitionKind,
   numberParam,
   parseRequest,
   permits,
@@ -84,6 +86,11 @@ export type HostServices = {
   }
   progress(input: { packId: string; fraction: number }): void
   end(input: { packId: string; reason: "finished" | "quit" }): void
+  /**
+   * A natural stopping point the pack reached. The host decides what, if
+   * anything, happens next; the pack is told nothing.
+   */
+  transition(input: { packId: string; kind: TransitionKind; label?: string }): void
   settings(): Settings
 }
 
@@ -152,6 +159,22 @@ export function createBridge(options: BridgeOptions): Bridge {
           return err(id, "invalid_params", "reason must be finished or quit")
         }
         services.end({ packId, reason })
+        return ok(id, null)
+      }
+
+      case "session.transition": {
+        const kind = params["kind"]
+        if (!isTransitionKind(kind)) {
+          return err(id, "invalid_params", "kind must be level, run or boss")
+        }
+        // Optional, short, and for a log rather than for a screen: nothing the
+        // host draws comes from a pack, because a pack's string is not
+        // translated and is not the host's copy.
+        const label = stringParam(params, "label", 64)
+        services.transition(label === null ? { packId, kind } : { packId, kind, label })
+        // Deliberately answered `null`. A pack that could read the verdict
+        // could branch on whether the child has paid, and a game that plays
+        // differently for a paying child is the thing this model is not.
         return ok(id, null)
       }
 

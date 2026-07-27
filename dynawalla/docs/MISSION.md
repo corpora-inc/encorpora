@@ -140,8 +140,10 @@ in their ADRs from his own words: human evaluation resourcing
 ([0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) — one child evaluator, his
 10-year-old son; the founder is the art director), developer-account topology
 ([0015](DECISIONS/ADR-0015-developer-account-topology.md) — same accounts as Corpán),
-monetization direction ([0013](DECISIONS/ADR-0013-monetization-model.md) — generous free
-tier plus a subscription, packaging still open), and the Kids Category engineering
+monetization ([0024](DECISIONS/ADR-0024-day-pass-not-subscription.md) — a **day pass**,
+not a subscription; every game free to play, gated at a natural transition, priced
+$0.99 / $7.99 / $79.99-lifetime; supersedes [0013](DECISIONS/ADR-0013-monetization-model.md)),
+and the Kids Category engineering
 posture ([0001](DECISIONS/ADR-0001-kids-category-posture.md) — no third-party ads,
 analytics or SDKs, ever; a parental gate on every link-out; the category election itself
 deferred to submission).
@@ -151,7 +153,7 @@ previously carried three different counts, which is how a founder ends up not kn
 decision is waiting on him. **[STATUS.md](STATUS.md) is the single source of truth for
 which founder decisions are open and when each one bites** — including the ones that live
 *inside* an otherwise-decided ADR, such as the Kids Category election and age band
-(`G-01`) and monetization packaging (`G-02`). [DECISIONS.md](DECISIONS.md) indexes the
+(`G-01`). [DECISIONS.md](DECISIONS.md) indexes the
 ADRs; STATUS.md says what is outstanding.
 
 ## How this product is graded

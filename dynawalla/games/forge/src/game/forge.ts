@@ -549,6 +549,14 @@ export function mount(el: HTMLElement, host: Host): Mounted {
 
   function plunge(): void {
     const L = g.layout
+    // The quench IS the run: everything is cashed in and the forge starts
+    // cold again. FORGE's one natural ending, and the child chose it — which
+    // is exactly the property a stopping point has to have.
+    try {
+      host.transition?.("run", "quench")
+    } catch {
+      /* a host that throws on a stopping point must not kill the run */
+    }
     quench(economy)
     g.quenchPhase = "steam"
     g.quenchT = 0

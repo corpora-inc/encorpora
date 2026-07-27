@@ -83,8 +83,10 @@ package-name variable):
 - Beta groups and TestFlight distribution.
 - Store listings, screenshots, descriptions.
 - Play Data safety declaration.
-- IAP products and subscription groups, if
-  [ADR-0013](DECISIONS/ADR-0013-monetization-model.md) calls for them.
+- IAP products and subscription groups, per
+  [ADR-0024](DECISIONS/ADR-0024-day-pass-not-subscription.md): three products, ids fixed in
+  that ADR and **immutable once submitted**. Day and lifetime are non-consumables; the
+  month is a subscription in store terms even though the product is not marketed as one.
 - Build uploads, track promotion, release notes.
 
 **Not automatable — budget founder console time:**
@@ -206,8 +208,10 @@ against:
 
 1. **A third-party crash SDK** → a Diagnostics disclosure.
 2. **A receipt-validation backend** → a Purchases disclosure. This is the live one:
-   [ADR-0013](DECISIONS/ADR-0013-monetization-model.md) wires a subscription, so
-   **keep entitlements local** or the declaration changes.
+   [ADR-0024](DECISIONS/ADR-0024-day-pass-not-subscription.md) wires a day pass, so
+   **keep entitlements local** or the declaration changes. It does keep them local — the
+   pass lives in device storage and no server is involved — but the constraint binds any
+   future change to how a purchase is verified.
 
 ### Planned mechanical gates
 

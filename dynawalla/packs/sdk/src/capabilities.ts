@@ -18,9 +18,21 @@
 // `session` is not in the list because it is not a grant: settings, progress
 // and end are how the frame is a frame at all, and a pack that could not
 // report a session ending would leak one.
+//
+// `session.transition` is in that same set for the same reason, and the reason
+// is worth writing down: it is the only place the host can learn that a child
+// has *finished something*. Gating it behind a capability would let a pack
+// decline to declare it and thereby decline ever to reach a stopping point —
+// the day pass would then be enforceable only by a clock, which is the thing
+// this product does not do.
 
 /** Methods every pack may call, with no declaration and no grant. */
-export const SESSION_METHODS = ["session.settings", "session.progress", "session.end"] as const
+export const SESSION_METHODS = [
+  "session.settings",
+  "session.progress",
+  "session.end",
+  "session.transition",
+] as const
 
 export const CAPABILITIES = [
   {

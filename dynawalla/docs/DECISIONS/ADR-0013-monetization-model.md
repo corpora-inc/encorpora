@@ -1,7 +1,23 @@
 # ADR-0013 — Monetization model
 
-**Status:** Accepted (direction) — 2026-07-25. **Implementation deferred**; the packaging
-and pricing decision is not made and blocks launch if it is still open past M9 (`G-02`).
+**Status:** **Superseded by
+[ADR-0024](ADR-0024-day-pass-not-subscription.md)** — 2026-07-26. The founder replaced the
+subscription with a **day pass**: every game free to play, gated at a *natural transition*
+rather than by a quantity or a clock, one gate per game per day, and a pass priced at
+$0.99 / day, $7.99 / month, **$79.99 lifetime — the headline**.
+
+**Read ADR-0024 for the live decision.** This document is kept because two of its parts
+survive intact and are cited from there: the **never-block-an-offline-subscriber policy**
+(§3 below) and the **consequences that apply to any paid option** — the parental gate in
+front of every price display, no purchase surface adjacent to a failure, no purchased
+absolution, and local-only entitlements. What is superseded is the *shape* of the paid
+tier, not those constraints.
+
+Note also that the tension this ADR flagged and deferred — *"a daily exercise cap is a
+stopping mechanism imposed by billing rather than by the child"* — is what ADR-0024
+resolves, by making the boundary a place in a game rather than a quantity.
+
+Previously: Accepted (direction) — 2026-07-25, implementation deferred, `G-02` open.
 
 **How strong is this mandate: weak, and the status line should not be read as more.** The
 founder's answer opens *"I'm not sure about monetization really"* and describes the model

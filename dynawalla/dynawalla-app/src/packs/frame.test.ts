@@ -41,6 +41,7 @@ const services = (): HostServices => ({
   },
   progress: () => {},
   end: () => {},
+  transition: () => {},
   settings: () => SETTINGS,
 })
 

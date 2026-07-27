@@ -15,6 +15,9 @@ import { eraseEverything } from "../app/erase.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { usePacks } from "../packs/registry.ts"
 import { useLaunch } from "../packs/Stage.tsx"
+import { grantingBilling, productFor } from "../pass/billing.ts"
+import { dayKey, passIsOpen, EMPTY_LEDGER } from "../pass/model.ts"
+import { usePass } from "../pass/store.ts"
 import { useProfiles } from "../profiles/store.ts"
 import { useSettings } from "../settings/store.ts"
 import type { HostActions, HostView } from "./surfaces.ts"
@@ -49,6 +52,40 @@ function useVersion(): string {
   return version
 }
 
+/**
+ * The instant these screens are describing.
+ *
+ * Held in state and refreshed on the events that actually move a family across
+ * midnight — the app coming back to the foreground, the window regaining focus,
+ * and a game closing — rather than read fresh on every render, which is not a
+ * pure render and which React's rules forbid for exactly the reason that bites
+ * here: two renders in one frame would disagree about the day.
+ *
+ * **There is no interval.** Nothing in this app counts. The authoritative
+ * question — "may this game open right now" — is asked by the stage against the
+ * real clock at the moment a child presses a game, so the worst this can be is
+ * a stale word on a row for as long as an app sits untouched in the foreground.
+ */
+function useNow(): number {
+  const [now, setNow] = useState(() => Date.now())
+  // The game on the stage, or nothing. Leaving one is the most likely moment
+  // for the day to have turned over while the app was busy.
+  const staged = useLaunch((state) => state.packId)
+
+  useEffect(() => {
+    const check = () => setNow(Date.now())
+    check()
+    if (typeof document !== "undefined") document.addEventListener("visibilitychange", check)
+    if (typeof window !== "undefined") window.addEventListener("focus", check)
+    return () => {
+      if (typeof document !== "undefined") document.removeEventListener("visibilitychange", check)
+      if (typeof window !== "undefined") window.removeEventListener("focus", check)
+    }
+  }, [staged])
+
+  return now
+}
+
 export function useHostView(armed: boolean): HostView {
   const profiles = useProfiles((state) => state.profiles)
   const currentId = useProfiles((state) => state.currentId)
@@ -59,6 +96,16 @@ export function useHostView(armed: boolean): HostView {
   const answered = recordFor(currentId)((state) => state.answered)
   const correct = recordFor(currentId)((state) => state.correct)
   const version = useVersion()
+  const pass = usePass((state) => state.pass)
+  const ledger = usePass((state) => state.ledger)
+
+  // The row's word and the stage's decision are the same function of the same
+  // ledger: a screen that says a game is resting and a stage that lets it open
+  // would be two answers to one question, and the second is the one a child
+  // finds.
+  const now = useNow()
+  const open = passIsOpen(pass, now)
+  const resting = open || ledger.day !== dayKey(now) ? [] : ledger.resting
 
   return {
     profiles,
@@ -76,6 +123,8 @@ export function useHostView(armed: boolean): HostView {
     version,
     native: isNative,
     armed,
+    pass: pass === null ? "none" : pass.kind,
+    resting,
   }
 }
 
@@ -104,5 +153,18 @@ export function useHostActions(arm: (armed: boolean) => void): HostActions {
       arm(false)
     },
     launchPack: play,
+
+    // Developer mode only. `grantingBilling` produces exactly the record a
+    // confirmed store purchase would, so what these exercise is the
+    // entitlement path rather than a shortcut around it.
+    grantTestPass: (kind) => {
+      void grantingBilling()
+        .buy(productFor(kind).productId)
+        .then((outcome) => {
+          if (outcome.status === "granted") usePass.getState().grant(outcome.pass)
+        })
+    },
+    clearTestPass: () => usePass.getState().forget(),
+    clearRestLedger: () => usePass.setState({ ledger: EMPTY_LEDGER }),
   }
 }

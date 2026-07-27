@@ -170,7 +170,7 @@ Recorded 2026-07-25, from the founder's own words, in each ADR:
 |---|---|
 | [0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) | One child evaluator — the founder's 10-year-old son. The founder holds every adult role, including art director. |
 | [0015](DECISIONS/ADR-0015-developer-account-topology.md) | Same Corpora Apple team and Play account as Corpán; shared blast radius and nomination pool accepted. |
-| [0013](DECISIONS/ADR-0013-monetization-model.md) | Direction: generous free tier + subscription for unlimited exercises and full access; offline-first keeps marginal cost near zero. Packaging and pricing still open (R-45). |
+| [0024](DECISIONS/ADR-0024-day-pass-not-subscription.md) | **A day pass, not a subscription.** Every game free to play; the gate is a natural transition inside a game, one per game per day, never a clock. $0.99 day / $7.99 month / **$79.99 lifetime — the headline**. Supersedes [0013](DECISIONS/ADR-0013-monetization-model.md); never-block-an-offline-subscriber carried over. R-45 still stands. |
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) | No third-party ads, analytics or SDKs, unconditionally. Parental gate on every link-out. Category election deferred to submission. |
 
 Still open, ordered by when they bite:
@@ -183,7 +183,6 @@ Still open, ordered by when they bite:
 | [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license (research in flight) | M0a (fork-PR posture) |
 | [0010](DECISIONS/ADR-0010-standards-alignment-claim.md) | Standards-alignment claim (research in flight) | first public marketing copy |
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) | The category election itself | M1, first store submission (`G-01`) |
-| [0013](DECISIONS/ADR-0013-monetization-model.md) | Packaging and pricing | M9 (`G-02`) |
 | — | Whether to add one younger evaluator for the grade 1–2 gap (R-46) | M9 at the latest |
 
 ## Roles

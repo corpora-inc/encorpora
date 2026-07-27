@@ -937,6 +937,17 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       showBanner("MARKET RUSH", "no bombs — cut everything", MOTE_HOT, 1.8)
     }
 
+    if (director.rushJustEnded) {
+      director.rushJustEnded = false
+      // A rush survived. THE SPLIT's natural stopping point — never `over`,
+      // which is a failure, and nothing may be shown after one.
+      try {
+        host.transition?.("run", "market rush")
+      } catch {
+        /* a host that throws on a stopping point must not kill the run */
+      }
+    }
+
     if (!over) {
       director.quiet = liveQ !== null
       const n = director.step(dtS, throwBuf)
