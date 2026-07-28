@@ -135,11 +135,30 @@ jobs:
                 REASON="manual dispatch"
               elif [ -n "${BEFORE}" ] && [ "${BEFORE}" != "0000000000000000000000000000000000000000" ] \
                    && git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+                # A VERSION CHANGE ON main NO LONGER RELEASES BY ITSELF, and the
+                # reason is that it used to release TWICE.
+                #
+                # Merging a version bump pushes main (this path) and is then
+                # followed by the `dynawalla-v*` tag (the path above). Both set
+                # RELEASE=true, so 0.1.1 and 0.2.0 each started two full runs.
+                # The concurrency group serialises them rather than deduping
+                # them, so the cost is a second ~60-minute macOS job, and the
+                # hazard is worse than the cost: the build number is
+                # minutes-since-epoch, so two runs a minute apart upload two
+                # different builds of the SAME version to TestFlight.
+                #
+                # Tag-triggered is also what RELEASE_ENGINEERING.md already
+                # prescribes ("Move both apps to tag-triggered release ... plus
+                # workflow_dispatch"). This makes the file agree with the doc.
+                #
+                # The bump is still DETECTED — it just announces the tag to push
+                # instead of racing it. Silence here would turn "I bumped the
+                # version and nothing shipped" into a mystery.
                 PREV=$(git show "${BEFORE}:${APP_DIR}/src-tauri/tauri.conf.json" 2>/dev/null \
                         | node -p "JSON.parse(require('fs').readFileSync(0)).version" 2>/dev/null || echo "")
                 if [ "$PREV" != "$VERSION" ]; then
-                  RELEASE=true
-                  REASON="version ${PREV:-<absent>} -> $VERSION"
+                  echo "::notice::version ${PREV:-<absent>} -> $VERSION on main, and this push does NOT release. Push the tag: git tag -a dynawalla-v$VERSION -m 'Dynawalla $VERSION' && git push origin dynawalla-v$VERSION"
+                  REASON="version bump seen; waiting for tag dynawalla-v$VERSION"
                 fi
               else
                 echo "::notice::no usable before-SHA; not releasing. Use the dynawalla-v* tag or a manual dispatch."
