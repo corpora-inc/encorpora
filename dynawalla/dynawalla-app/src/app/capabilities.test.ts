@@ -228,8 +228,16 @@ test("the app icon is the format the build macro accepts", () => {
   )
   assert.equal(png.subarray(0, 8).toString("latin1"), "\x89PNG\r\n\x1a\n")
   assert.equal(png.subarray(12, 16).toString("latin1"), "IHDR")
-  assert.equal(png.readUInt32BE(16), 512, "icon width")
-  assert.equal(png.readUInt32BE(20), 512, "icon height")
+  // Square and at least 512, rather than exactly 512. The source is the size
+  // every other size is rendered DOWN from — the Tauri CLI generates the whole
+  // iOS AppIcon set from this one file — so the constraint is a floor, not an
+  // equality. Pinning the exact number made a brand change fail a capabilities
+  // test that has no opinion about branding, which is noise in the one place
+  // that should only ever fire for a real build break.
+  const width = png.readUInt32BE(16)
+  const height = png.readUInt32BE(20)
+  assert.equal(width, height, "icon must be square")
+  assert.ok(width >= 512, `icon is ${width}px; the App Store needs 1024 rendered from this`)
   assert.equal(png[25], 6, "PNG colour type must be 6 (RGBA) or the Rust build panics")
 })
 
