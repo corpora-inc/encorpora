@@ -31,10 +31,16 @@ export class Audio {
   private noise: AudioBuffer | null = null
   private voices = 0
   private readonly maxVoices = 28
+  /** Live voice-accounting timers, so `dispose` can cancel them. */
+  private readonly pending = new Set<ReturnType<typeof setTimeout>>()
+  private disposed = false
   enabled = true
 
   /** Must be called from a user gesture. Safe to call repeatedly. */
   async start(): Promise<void> {
+    // A pointerdown can land in the same turn as the host's `dispose`, and a
+    // context built after teardown would never be closed by anything.
+    if (this.disposed) return
     if (this.ctx) {
       if (this.ctx.state === "suspended") await this.ctx.resume().catch(() => {})
       return
@@ -79,10 +85,18 @@ export class Audio {
   }
 
   dispose(): void {
+    this.disposed = true
     const ctx = this.ctx
     this.ctx = null
     this.bus = null
     this.noise = null
+    // The voice-accounting timers outlive the context by up to three quarters
+    // of a second. They touch nothing that is nulled above, so they cannot
+    // throw — but an uncancelled timer keeps this instance, and the closure
+    // around it, alive after the pack's frame is gone.
+    for (const handle of this.pending) clearTimeout(handle)
+    this.pending.clear()
+    this.voices = 0
     void ctx?.close().catch(() => {})
   }
 
@@ -94,12 +108,14 @@ export class Audio {
 
   private spend(seconds: number): void {
     this.voices++
-    globalThis.setTimeout(
+    const handle = globalThis.setTimeout(
       () => {
+        this.pending.delete(handle)
         this.voices = Math.max(0, this.voices - 1)
       },
       Math.ceil(seconds * 1000) + 40,
     )
+    this.pending.add(handle)
   }
 
   /** A short filtered noise burst: the transient of anything metal. */

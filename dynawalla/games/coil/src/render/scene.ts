@@ -98,7 +98,7 @@ function roundRect(
 }
 
 /** Places present in a run of links, biggest first, with their counts. */
-export function tally(links: readonly number[]): { place: number; n: number }[] {
+function tally(links: readonly number[]): { place: number; n: number }[] {
   const counts = new Map<number, number>()
   for (const p of links) counts.set(p, (counts.get(p) ?? 0) + 1)
   return [...counts.entries()]
@@ -113,7 +113,7 @@ export function tally(links: readonly number[]): { place: number; n: number }[] 
  * pierced ring, and everything above is a notched tower with one notch per
  * place. A child can count the tens in a coil without reading a single colour.
  */
-export function drawLink(
+function drawLink(
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -201,6 +201,8 @@ export class Scene {
   private lattice: HTMLCanvasElement | null = null
   layout: Layout
   private dpr = 1
+  /** What `resize` last actually rebuilt for, so a no-op resize stays a no-op. */
+  private sized = { w: 0, h: 0 }
 
   constructor(host: HTMLElement) {
     const canvas = document.createElement("canvas")
@@ -217,9 +219,16 @@ export class Scene {
   resize(w: number, h: number): Layout {
     const width = Math.max(320, Math.round(w))
     const height = Math.max(360, Math.round(h))
-    this.dpr = Math.min(3, globalThis.devicePixelRatio || 1)
-    this.canvas.width = Math.round(width * this.dpr)
-    this.canvas.height = Math.round(height * this.dpr)
+    const dpr = Math.min(3, globalThis.devicePixelRatio || 1)
+    // A `ResizeObserver` fires on every frame of a window drag and on every
+    // rotation animation step. Rasterising the lattice — a full-page offscreen
+    // canvas of a hundred stars — on each of those is how a mid-range tablet
+    // loses its frame budget to a gesture that changed nothing.
+    if (width === this.sized.w && height === this.sized.h && dpr === this.dpr) return this.layout
+    this.dpr = dpr
+    this.sized = { w: width, h: height }
+    this.canvas.width = Math.round(width * dpr)
+    this.canvas.height = Math.round(height * dpr)
     this.layout = computeLayout(width, height)
     this.lattice = this.buildLattice(width, height)
     return this.layout
@@ -444,18 +453,25 @@ export class Scene {
     const rows = 2
     const bw = w / perRow
     const bh = Math.min(h / rows, bw * 0.42)
+    // Two courses: the one being laid, and the one under it. A course fills
+    // left to right and is complete at eight, which is why `COURSE` is the same
+    // constant the stopping point fires on.
+    const inCourse = s.exactCuts === 0 ? 0 : ((s.exactCuts - 1) % perRow) + 1
+    const laidPerRow = [Math.min(perRow, s.exactCuts - inCourse), inCourse]
     ctx.save()
     for (let row = 0; row < rows; row++) {
+      const laidHere = laidPerRow[row] as number
       for (let i = 0; i < perRow; i++) {
-        const index = s.exactCuts - (rows - row) * perRow + i
         const bx = x + i * bw + (row % 2 === 1 ? bw * 0.16 : 0)
         const by = y + row * (bh + 3)
-        const laid = index >= 0 && index < s.exactCuts
+        const laid = i < laidHere
         ctx.fillStyle = laid ? withAlpha(BRASS, 0.82) : withAlpha(STONE_DEEP, 0.55)
         roundRect(ctx, bx, by, bw - 3, bh, 2)
         ctx.fill()
         if (laid) {
-          ctx.strokeStyle = withAlpha(BRASS_HOT, index === s.exactCuts - 1 ? s.seatPulse : 0.22)
+          // Only the brick that was just seated carries the light.
+          const newest = row === rows - 1 && i === laidHere - 1
+          ctx.strokeStyle = withAlpha(BRASS_HOT, newest ? s.seatPulse : 0.22)
           ctx.lineWidth = 1.2
           ctx.stroke()
         }
