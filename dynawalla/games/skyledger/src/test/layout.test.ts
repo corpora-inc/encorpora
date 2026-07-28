@@ -13,6 +13,7 @@
 //
 // Tablet and desktop are first-class here. Neither is a stretched phone.
 
+import { hitsHostChrome, safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
@@ -34,7 +35,7 @@ const VIEWPORTS: Array<[string, number, number]> = [
 
 for (const [name, w, h] of VIEWPORTS) {
   test(`the room holds together at ${name} (${w}×${h})`, () => {
-    const l = layoutFor(w, h)
+    const l = layoutFor(w, h, safeRect(w, h))
     const reach = dialReach(l)
 
     // Everything is on the glass.
@@ -95,8 +96,8 @@ for (const [name, w, h] of VIEWPORTS) {
 }
 
 test("the layout flips between two rooms rather than stretching one", () => {
-  const wide = layoutFor(1024, 768)
-  const tall = layoutFor(768, 1024)
+  const wide = layoutFor(1024, 768, safeRect(1024, 768))
+  const tall = layoutFor(768, 1024, safeRect(768, 1024))
   assert.equal(wide.landscape, true)
   assert.equal(tall.landscape, false)
   // Beside, in landscape; under, in portrait.
@@ -106,9 +107,32 @@ test("the layout flips between two rooms rather than stretching one", () => {
 
 test("the sky gets the larger share of the room, at every shape", () => {
   for (const [name, w, h] of VIEWPORTS) {
-    const l = layoutFor(w, h)
+    const l = layoutFor(w, h, safeRect(w, h))
     const sky = l.sky.w * l.sky.h
     const dial = Math.PI * dialReach(l) ** 2
     assert.ok(sky > dial, `${name}: the instrument takes more room than the sky it reads`)
+  }
+})
+
+test("the dial never sits under the host's chrome", () => {
+  // Host chrome overlays the game rather than reserving a band — reserving one
+  // cost 12% of a small phone's height and broke this game's own lattice. The
+  // promise a game makes instead is that nothing a child must TOUCH lands in
+  // the two 44px corners. The dial is the only thing here that is touched.
+  for (const [w, h] of [
+    [320, 568],
+    [390, 844],
+    [768, 1024],
+    [1024, 768],
+    [844, 390],
+  ] as const) {
+    const l = layoutFor(w, h, safeRect(w, h))
+    const box = {
+      x: l.dial.cx - l.dial.r,
+      y: l.dial.cy - l.dial.r,
+      w: l.dial.r * 2,
+      h: l.dial.r * 2,
+    }
+    assert.equal(hitsHostChrome(box, w), false, `${w}x${h}: the dial is under host chrome`)
   }
 })

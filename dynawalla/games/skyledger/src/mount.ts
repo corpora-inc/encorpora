@@ -23,6 +23,7 @@
 // particles spawned by the impact are already on screen, so the freeze contains
 // the flash rather than preceding it.
 
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import { Audio } from "./audio/audio.ts"
 import type { Host } from "./contract.ts"
 import { unit } from "./core/feel.ts"
@@ -62,6 +63,44 @@ export function mountSkyLedger(
   const seed = (Date.now() ^ 0x5c7ed6) >>> 0
   const scene = new Scene(canvas, reduced, seed)
   const audio = new Audio()
+
+  // How to play. SKY LEDGER shipped with no instructions at all: a child was
+  // shown a sky, a dial and the words "THE REGISTER IS EMPTY", and nothing told
+  // them the dial is how you name where to strike. The manual stays reachable
+  // during play, because the moment a child needs the rules is never the title.
+  const guide = createInstructions(el, {
+    title: "SKY LEDGER",
+    summary: [
+      "Trails fall out of the dark. Each one is heading for a place in the sky.",
+      "Turn the astrolabe to name that place — across, then up — and strike it.",
+    ],
+    sections: [
+      {
+        heading: "Naming a place",
+        lines: [
+          "The sky is a grid. Every place in it has two numbers: how far across, then how far up.",
+          "The astrolabe has one ring for each. Turn them until the pair matches the trail.",
+          "You are not pointing at the answer. You are saying it.",
+        ],
+      },
+      {
+        heading: "Chains",
+        lines: [
+          "Strike a second trail before the light fades and the two link.",
+          "Each link renews the light, so a chain is a rhythm rather than a race.",
+          "Nine links is the longest chain the sky will hold.",
+        ],
+      },
+      {
+        heading: "The watch",
+        lines: [
+          "There is no winning. The watch ends and the observatory writes down what you logged.",
+          "A longer chain is worth more than a faster one.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
 
   function now(): number {
     return typeof performance === "object" ? performance.now() : Date.now()
@@ -373,6 +412,7 @@ export function mountSkyLedger(
   return {
     unmount(): void {
       running = false
+      guide.destroy()
       cancelAnimationFrame(frame)
       canvas.removeEventListener("pointerdown", onDown)
       canvas.removeEventListener("pointermove", onMove)
