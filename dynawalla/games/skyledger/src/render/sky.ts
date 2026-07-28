@@ -52,10 +52,24 @@ const DIAL_EXTENT = 1.34
  * both the sky gets everything the instrument does not need. Tablet and desktop
  * are first-class here; neither is a stretched phone.
  */
-export function layoutFor(w: number, h: number): Layout {
+/**
+ * `area` is the region the game may put readable things in — the safe rect from
+ * `packs/shared/game-chrome` — free of the notch and the home indicator.
+ *
+ * It is REQUIRED, deliberately. Made optional, a caller that forgets it gets a
+ * layout that quietly draws under the host's exit control, and the only way to
+ * notice is on a notched device. Required, forgetting it does not compile.
+ *
+ * The SKY still spans the full canvas as a backdrop; it is the lattice, the
+ * figures and the dial — everything a child reads or turns — that stay inside
+ * `area`. Before this, the plane began at `y = gutter`, about 10-24px, which is
+ * underneath the host's exit control on every notched device.
+ */
+export function layoutFor(w: number, h: number, area: Rect): Layout {
   const rpx = Math.min(w, h) / 1080
   const landscape = w >= h * 1.12
   const gutter = Math.max(10, Math.min(w, h) * 0.022)
+  const box: Rect = area
   // The sky is the game and the instrument is the hand: the astrolabe takes as
   // little of the room as it can and still be turned with a thumb.
   const dialR = landscape
@@ -64,11 +78,21 @@ export function layoutFor(w: number, h: number): Layout {
   const reach = dialR * DIAL_EXTENT
 
   const dial = landscape
-    ? { cx: w - reach - gutter, cy: h / 2, r: dialR }
-    : { cx: w / 2, cy: h - reach - gutter, r: dialR }
+    ? { cx: box.x + box.w - reach - gutter, cy: box.y + box.h / 2, r: dialR }
+    : { cx: box.x + box.w / 2, cy: box.y + box.h - reach - gutter, r: dialR }
   const sky: Rect = landscape
-    ? { x: gutter, y: gutter, w: Math.max(60, dial.cx - reach - gutter * 2), h: h - gutter * 2 }
-    : { x: gutter, y: gutter, w: w - gutter * 2, h: Math.max(60, dial.cy - reach - gutter * 2) }
+    ? {
+        x: box.x + gutter,
+        y: box.y + gutter,
+        w: Math.max(60, dial.cx - reach - box.x - gutter * 2),
+        h: box.h - gutter * 2,
+      }
+    : {
+        x: box.x + gutter,
+        y: box.y + gutter,
+        w: box.w - gutter * 2,
+        h: Math.max(60, dial.cy - reach - box.y - gutter * 2),
+      }
 
   const ceiling = sky.y
   const horizon = sky.y + sky.h

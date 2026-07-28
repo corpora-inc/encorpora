@@ -1,0 +1,93 @@
+import assert from "node:assert/strict"
+import { test } from "node:test"
+
+import { NO_INSETS, safeInsets, safeRect } from "./insets.ts"
+import { HOST_CONTROL, chromeRects, exitRect, helpRect, hitsHostChrome } from "./hostChrome.ts"
+
+test("with no document to measure, the insets are zero rather than undefined", () => {
+  // A game must never have to branch on platform. Node, a test harness and a
+  // device with no notch all answer the same way.
+  assert.deepEqual(safeInsets(), NO_INSETS)
+})
+
+test("with no insets the safe rect is the whole surface", () => {
+  assert.deepEqual(safeRect(800, 600, NO_INSETS), { x: 0, y: 0, w: 800, h: 600 })
+})
+
+test("the safe rect is inset on every edge that has one", () => {
+  const r = safeRect(400, 800, { top: 47, right: 0, bottom: 34, left: 0 })
+  assert.deepEqual(r, { x: 0, y: 47, w: 400, h: 800 - 47 - 34 })
+})
+
+test("a landscape notch insets the sides, not the top", () => {
+  const r = safeRect(844, 390, { top: 0, right: 47, bottom: 21, left: 47 })
+  assert.deepEqual(r, { x: 47, y: 0, w: 844 - 94, h: 390 - 21 })
+})
+
+test("insets larger than the surface clamp to an empty rect, never a negative one", () => {
+  // A negative width silently flips every layout calculation downstream. This
+  // is only reachable on an absurd viewport, which is exactly when nobody is
+  // watching for it.
+  const r = safeRect(20, 20, { top: 100, right: 100, bottom: 100, left: 100 })
+  assert.equal(r.w, 0)
+  assert.equal(r.h, 0)
+  assert.ok(r.x <= 20 && r.y <= 20)
+})
+
+test("the rect always stays inside the surface it was given", () => {
+  for (const [w, h] of [[320, 568], [1024, 1366], [844, 390], [1, 1]] as const) {
+    for (const i of [
+      { top: 0, right: 0, bottom: 0, left: 0 },
+      { top: 47, right: 0, bottom: 34, left: 0 },
+      { top: 59, right: 47, bottom: 34, left: 47 },
+    ]) {
+      const r = safeRect(w, h, i)
+      assert.ok(r.x >= 0 && r.y >= 0, `origin negative at ${w}x${h}`)
+      assert.ok(r.w >= 0 && r.h >= 0, `size negative at ${w}x${h}`)
+      assert.ok(r.x + r.w <= w, `overflows width at ${w}x${h}`)
+      assert.ok(r.y + r.h <= h, `overflows height at ${w}x${h}`)
+    }
+  }
+})
+
+
+// ---------------------------------------------------------------------------
+// Host chrome. It OVERLAYS the game — reserving the whole top band cost 12% of
+// a small phone's height and broke a real layout — so a game promises only that
+// nothing critical sits in two 44px corners.
+// ---------------------------------------------------------------------------
+
+test("the two controls never overlap each other, at any width", () => {
+  for (const w of [320, 390, 700, 844, 1024, 1366]) {
+    const e = exitRect(NO_INSETS)
+    const h = helpRect(w, NO_INSETS)
+    assert.ok(e.x + e.w <= h.x, `exit and help collide at width ${w}`)
+  }
+})
+
+test("both controls sit inside the safe area, never under the notch", () => {
+  for (const i of [
+    { top: 47, right: 0, bottom: 34, left: 0 },
+    { top: 0, right: 47, bottom: 21, left: 47 },
+  ]) {
+    for (const r of chromeRects(844, i)) {
+      assert.ok(r.x >= i.left, "control intrudes into the left inset")
+      assert.ok(r.y >= i.top, "control intrudes into the top inset")
+      assert.ok(r.x + r.w <= 844 - i.right + 0.001, "control intrudes into the right inset")
+    }
+  }
+})
+
+test("the touch target is never below the platform minimum", () => {
+  // If someone tunes these for looks, this fails rather than shipping a button
+  // a child misses.
+  assert.ok(HOST_CONTROL >= 44, "host control is under the 44px minimum")
+})
+
+test("hitsHostChrome finds a score placed in either corner, and clears the middle", () => {
+  const w = 390
+  assert.equal(hitsHostChrome({ x: 14, y: 14, w: 80, h: 30 }, w, NO_INSETS), true, "top-left missed")
+  assert.equal(hitsHostChrome({ x: w - 90, y: 14, w: 80, h: 30 }, w, NO_INSETS), true, "top-right missed")
+  assert.equal(hitsHostChrome({ x: 120, y: 14, w: 100, h: 30 }, w, NO_INSETS), false, "top-centre is free")
+  assert.equal(hitsHostChrome({ x: 0, y: 300, w: 390, h: 40 }, w, NO_INSETS), false, "mid-screen is free")
+})

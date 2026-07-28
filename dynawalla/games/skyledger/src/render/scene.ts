@@ -11,6 +11,7 @@
 // held frame instead of a slow bloom — and the chain's link count moves onto
 // the astrolabe's rim, where it is legible without a single moving pixel.
 
+import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import { approach, unit } from "../core/feel.ts"
 import { CHROMA_CAP_RPX } from "../game/escalation.ts"
 import { Rng } from "../core/rng.ts"
@@ -89,7 +90,7 @@ export class Scene {
     const g = canvas.getContext("2d", { alpha: false })
     if (!g) throw new Error("skyledger: no 2d context")
     this.g = g
-    this.layout = layoutFor(1, 1)
+    this.layout = layoutFor(1, 1, safeRect(1, 1))
     this.resize()
   }
 
@@ -104,7 +105,7 @@ export class Scene {
     this.dpr = Math.min(2.5, globalThis.devicePixelRatio || 1)
     this.canvas.width = Math.round(w * this.dpr)
     this.canvas.height = Math.round(h * this.dpr)
-    this.layout = layoutFor(w, h)
+    this.layout = layoutFor(w, h, safeRect(w, h))
   }
 
   /**
