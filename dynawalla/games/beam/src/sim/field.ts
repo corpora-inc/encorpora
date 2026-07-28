@@ -41,7 +41,6 @@ export type Automaton = {
   serial: number
   /** Set on a CORE the frame it fractures, so it fractures exactly once. */
   fractured: boolean
-  spawnedAt: number
 }
 
 const CAP = 40
@@ -63,7 +62,6 @@ function blank(): Automaton {
     correct: false,
     serial: 0,
     fractured: false,
-    spawnedAt: 0,
   }
 }
 

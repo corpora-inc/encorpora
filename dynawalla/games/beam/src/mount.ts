@@ -74,7 +74,10 @@ type Pulse = { alive: boolean; col: number; t: number; prevT: number; hits: numb
 type Pop = { alive: boolean; x: number; y: number; life: number; max: number; text: string; size: number; color: string }
 type Banner = { text: string; sub: string; life: number; max: number; color: string }
 
-export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
+export function mountBeam(el: HTMLElement, host: Host): {
+  unmount(): void
+  setPaused(paused: boolean): void
+} {
   // ── surface ──────────────────────────────────────────────────────────────
   const root = document.createElement("div")
   root.style.cssText =
@@ -117,6 +120,8 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
   let geom = makeGeom(320, 480, N_BEAMS)
   let dpr = 1
   let running = true
+  let paused = false
+  let pausedAt = 0
   let over = false
   let overAt = 0
   let beams: number[] = tuneLattice([], N_BEAMS, () => rng.next())
@@ -282,7 +287,6 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
     b.speed = 1 / p.descentSeconds
     b.stepIn = rng.range(0.3, 1) * p.stepSeconds
     b.stepDir = rng.chance(0.5) ? 1 : -1
-    b.spawnedAt = performance.now()
     director.noteSpawn()
   }
 
@@ -341,7 +345,6 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
     // approach.
     b.speed = 1 / (p.descentSeconds * 0.85)
     b.stepIn = 1e9
-    b.spawnedAt = performance.now()
     coreBody = b
     waveAskedAt = performance.now()
     asked++
@@ -379,7 +382,6 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
       b.speed = 1 / (p.descentSeconds * 1.6)
       b.stepIn = 0.55 + i * 0.12
       b.stepDir = i % 2 === 0 ? 1 : -1
-      b.spawnedAt = performance.now()
     })
     core.alive = false
     coreBody = null
@@ -415,7 +417,7 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
 
   // ── firing ───────────────────────────────────────────────────────────────
   function fire(): void {
-    if (over || fireCooldown > 0) return
+    if (paused || over || fireCooldown > 0) return
     for (const p of pulses) {
       if (p.alive) continue
       p.alive = true
@@ -648,6 +650,7 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function onDown(e: PointerEvent): void {
+    if (paused) return
     void audio.start()
     if (over) {
       if (performance.now() - overAt > 550) restart()
@@ -664,7 +667,7 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function onMove(e: PointerEvent): void {
-    if (!pointerDown) return
+    if (paused || !pointerDown) return
     if (!dragged && Math.hypot(e.clientX - downX, e.clientY - downY) > 14) dragged = true
     if (!dragged) return
     // A drag is the *listening* verb: it rides the lattice without firing, so a
@@ -674,11 +677,13 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function onUp(e: PointerEvent): void {
+    if (paused) return
     pointerDown = false
     if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId)
   }
 
   function onKey(e: KeyboardEvent): void {
+    if (paused) return
     if (e.key === "ArrowLeft") rideTo(runnerCol - 1, false)
     else if (e.key === "ArrowRight") rideTo(runnerCol + 1, false)
     else if (e.key === " " || e.key === "Enter") {
@@ -900,6 +905,13 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
   function frame(nowMs: number): void {
     if (!running) return
     raf = requestAnimationFrame(frame)
+    if (paused) {
+      // Nothing steps and nothing is drawn: the canvas holds its last frame,
+      // which is the right thing to have underneath whatever the host put on
+      // top. `last` still tracks so a resume cannot land one enormous frame.
+      last = nowMs
+      return
+    }
     const rawDt = Math.min(64, nowMs - last)
     last = nowMs
     // A tier change moves the render scale and the particle ceiling, and both
@@ -912,7 +924,32 @@ export function mountBeam(el: HTMLElement, host: Host): { unmount(): void } {
   }
   raf = requestAnimationFrame(frame)
 
+  function setPaused(on: boolean): void {
+    if (on === paused) return
+    paused = on
+    if (on) {
+      pausedAt = performance.now()
+      pointerDown = false
+      fireOnArrive = false
+      audio.setLock(220, 0.5, false)
+      audio.suspend()
+      return
+    }
+    // Every wall-clock mark moves forward by exactly the time the sheet was up.
+    // Without this the next `report` would carry the sheet's seconds as the
+    // child's thinking time, and the learner model would read a child who was
+    // shown nothing as a child who could not answer.
+    const held = performance.now() - pausedAt
+    waveAskedAt += held
+    overAt += held
+    lastTransitionAt += held
+    last = performance.now()
+    void audio.start()
+  }
+
   return {
+    setPaused,
+
     unmount(): void {
       running = false
       cancelAnimationFrame(raf)
