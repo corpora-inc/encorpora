@@ -699,6 +699,18 @@ jobs:
           ASC_BUNDLE_ID: ${{ env.BUNDLE_ID }}
           ASC_BUILD_VERSION: ${{ steps.ipa.outputs.cfbundleversion }}
           ASC_MIN_UPLOADED_DATE: ${{ needs.gate.outputs.run_started }}
+          # 15 minutes was not enough for a 27-game bundle. On 0.2.1 the
+          # verifier polled the full default deadline, failed the job, and the
+          # build appeared on App Store Connect minutes later — a red X on a
+          # release that had in fact shipped. Apple's processing time scales
+          # with package size and this app is still growing.
+          ASC_TIMEOUT_SECONDS: "2700"
+          # Python buffers stdout when it is not a TTY, so all thirty poll lines
+          # were held and flushed at once on exit. They appeared in the log with
+          # timestamps inside the same 13 milliseconds, which reads exactly like
+          # a retry loop that never sleeps — it cost a wrong diagnosis. Unbuffer
+          # it so the log tells the truth about when each attempt happened.
+          PYTHONUNBUFFERED: "1"
         run: |
           set -euo pipefail
           python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
