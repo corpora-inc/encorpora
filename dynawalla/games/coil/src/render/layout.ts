@@ -14,7 +14,7 @@
 export const LANE_CELLS = 96
 
 /** Sixteen to a row, so six rows are the whole ninety-six. */
-export const LANE_COLS = 16
+const LANE_COLS = 16
 
 export type Rect = { x: number; y: number; w: number; h: number }
 
