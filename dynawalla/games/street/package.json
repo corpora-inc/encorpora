@@ -1,0 +1,26 @@
+{
+  "name": "@dynawalla/game-street",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "FOUNDRY STREET — a night-shift beat-'em-up where the crowd is the array model. Break a mob along a factor seam; what will not break is prime, and prime is the only thing you can knock down.",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4321",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "build:pack": "vite build --config vite.pack.config.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.1.5"
+  }
+}
