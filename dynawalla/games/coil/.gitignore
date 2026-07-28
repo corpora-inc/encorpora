@@ -1,0 +1,13 @@
+node_modules/
+dist/
+
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/
+
+# Capture scratch. Nothing here is an input to a build.
+qa/shots
+qa/tmp
+
+# The lockfile is not committed for a game: every game pins the same three dev
+# dependencies by range and the repository has no workspace resolution to share.
+package-lock.json
