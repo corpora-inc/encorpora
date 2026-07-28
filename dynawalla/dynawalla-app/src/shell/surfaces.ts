@@ -86,6 +86,21 @@ export type Row =
       readonly version: string
       /** What it occupies, already formatted. Never a bare byte count. */
       readonly size: string
+      /** One line about the game. Empty for a record written before this. */
+      readonly description: string
+      /**
+       * `covers.skills`, straight from the manifest.
+       *
+       * Handed over raw rather than pre-filed into a subject, because filing
+       * is a *view* concern: the catalogue derives the subject chips from
+       * these at render time (`catalog/domains.ts`), so a pack covering a
+       * subject this build has never heard of is still described here in full
+       * and is still listed. A surface that filtered would be a surface that
+       * could hide an installed game.
+       */
+      readonly skills: readonly string[]
+      /** Inclusive grade band, or `null` when the record predates it. */
+      readonly grades: readonly [number, number] | null
       /** Launches it onto the stage. Never null: an unplayable pack is not a row. */
       readonly play: () => void
       /**
@@ -219,6 +234,13 @@ export function learnerName(profile: Profile, index: number): string {
  * Packs first, and packs as *plates you press* — the app is its packs, and the
  * first thing on the first screen has to be the way into one. The device counts
  * are underneath, where a parent looks for them and a child does not.
+ *
+ * **Every installed pack, always.** The catalogue above this has a search field
+ * and a row of subject chips, and neither of them belongs here: this function
+ * is a pure map from host state to rows and the test that says "no destination
+ * is ever empty" is only worth something while it stays one. Narrowing happens
+ * in the component, over the rows it was handed. A filter that reached back
+ * into the model would make an empty front door a legitimate state.
  */
 function packsSurface(view: HostView, act: HostActions): readonly Section[] {
   return [
@@ -232,6 +254,9 @@ function packsSurface(view: HostView, act: HostActions): readonly Section[] {
           name: pack.name,
           version: pack.version,
           size: formatBytes(pack.bytes),
+          description: pack.description ?? "",
+          skills: pack.skills ?? [],
+          grades: pack.grades ?? null,
           play: () => act.launchPack(pack.id),
           resting: view.resting.includes(pack.id),
         }),

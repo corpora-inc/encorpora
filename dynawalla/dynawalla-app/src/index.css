@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "./design/tokens.css";
+/* The generated key art's inks and its twelve hue classes. A stylesheet rather
+   than a style prop because `style-src 'self'` discards the latter in the
+   shipped build while it works perfectly in dev — see the header of the file. */
+@import "./catalog/catalog.css";
 
 /* The theme class the shell toggles on <html>. `:where()` keeps specificity at
    zero so a dark utility never outranks a more specific rule by accident. */
