@@ -448,6 +448,27 @@ jobs:
         run: |
           set -euo pipefail
           npx tauri ios init --ci
+
+          # `tauri ios init` writes an AppIcon set from its own TEMPLATE and
+          # never reads `src-tauri/icons/ios/`. This is not a guess: 0.1.0,
+          # 0.1.1 and 0.2.0 all shipped the stock yellow-and-cyan Tauri logo to
+          # TestFlight, and unzipping the 0.2.0 IPA showed it in
+          # `Payload/Dynawalla.app/AppIcon60x60@2x.png`. The comment that used
+          # to sit here claimed the CLI renders the set from `bundle.icon`; it
+          # does not, and nothing checked, so a wrong icon shipped three times.
+          #
+          # The filenames in `icons/ios/` and in the generated appiconset are
+          # identical, so a copy is the whole fix. `cmp` afterwards makes the
+          # copy an assertion rather than a hope — if a future CLI changes the
+          # layout this fails here instead of on the App Store listing.
+          ICONS=src-tauri/icons/ios
+          SET=src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset
+          test -d "$ICONS" || { echo "::error::$ICONS is missing — run 'npx tauri icon dynawalla/brand/icon-1024.png' and commit the result"; exit 1; }
+          cp "$ICONS"/*.png "$SET"/
+          cmp "$ICONS/AppIcon-512@2x.png" "$SET/AppIcon-512@2x.png" \
+            || { echo "::error::the 1024 marketing icon did not survive the copy"; exit 1; }
+          echo "app icon: $(ls "$SET"/*.png | wc -l | tr -d ' ') renditions installed from $ICONS"
+
           npx tauri ios build --ci --archive-only \
             --export-method app-store-connect \
             --build-number "$BUILD_NUMBER"
@@ -856,6 +877,23 @@ jobs:
         run: |
           set -euo pipefail
           npx tauri android init --ci
+
+          # Same defect as the iOS job, same evidence: unzipping the 0.2.0 AAB
+          # showed the stock Tauri logo in
+          # `base/res/mipmap-xxhdpi-v4/ic_launcher.png`. `tauri android init`
+          # writes its template mipmaps and never reads `src-tauri/icons/android/`.
+          #
+          # The `-v4` suffix on the shipped paths is added by AAPT at build
+          # time, so `mipmap-hdpi` here becomes `mipmap-hdpi-v4` in the bundle —
+          # the source names line up exactly and a recursive copy is the fix.
+          ICONS=src-tauri/icons/android
+          RES=src-tauri/gen/android/app/src/main/res
+          test -d "$ICONS" || { echo "::error::$ICONS is missing — run 'npx tauri icon dynawalla/brand/icon-1024.png' and commit the result"; exit 1; }
+          cp -R "$ICONS"/. "$RES"/
+          cmp "$ICONS/mipmap-xxhdpi/ic_launcher.png" "$RES/mipmap-xxhdpi/ic_launcher.png" \
+            || { echo "::error::launcher icons did not survive the copy"; exit 1; }
+          echo "launcher icons: $(find "$RES" -name 'ic_launcher*.png' | wc -l | tr -d ' ') installed from $ICONS"
+
           npx tauri android build --ci --aab \
             -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
 
