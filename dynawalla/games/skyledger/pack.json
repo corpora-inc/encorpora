@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.skyledger",
+  "version": "0.1.0",
+  "name": "SKY LEDGER",
+  "description": "The sky is the coordinate plane. Falling stars carry ledger lines; work one out, dial its station on the astrolabe, and it snaps home and blooms. Chain the blooms before the light fades and the observatory writes the whole watch down.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ],
+    "grades": [1, 4]
+  },
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}
