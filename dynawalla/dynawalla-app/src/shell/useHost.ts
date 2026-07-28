@@ -6,14 +6,15 @@
 // is a pure function of what this hook returned, which is exactly what makes
 // the surface model testable without a DOM.
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 import { appVersion, BUILD_VERSION, isNative } from "../app/platform.ts"
 import { storageBreakdown, storageBytes } from "../app/profile.ts"
 import { recordFor, worldFor } from "../app/stores.ts"
 import { eraseEverything } from "../app/erase.ts"
 import { useThemeStore } from "../app/theme.ts"
-import { usePacks } from "../packs/registry.ts"
+import { useLibrary } from "../packs/libraryStore.ts"
+import { usePacks, type InstalledPack } from "../packs/registry.ts"
 import { useLaunch } from "../packs/Stage.tsx"
 import { billing, grantingBilling, productFor } from "../pass/billing.ts"
 import { dayKey, passIsOpen, EMPTY_LEDGER } from "../pass/model.ts"
@@ -86,12 +87,45 @@ function useNow(): number {
   return now
 }
 
+/**
+ * The installed record, with the live manifest laid over it.
+ *
+ * Two sources, on purpose, and the order matters. `usePacks` is the persisted
+ * record — present on the very first frame, including before the native pack
+ * root has been read — so the catalogue draws named, described cards
+ * immediately on a cold launch. `useLibrary.entries` is the live truth read
+ * from disk this session, so a pack updated underneath the app describes
+ * itself with the manifest that is actually there.
+ *
+ * No new fetching: both are already loaded and already subscribed to by this
+ * shell. This only decides which of the two wins per field.
+ */
+function useDescribedPacks(): readonly InstalledPack[] {
+  const packs = usePacks((state) => state.installed)
+  const entries = useLibrary((state) => state.entries)
+
+  return useMemo(() => {
+    if (entries.length === 0) return packs
+    const live = new Map(entries.map((entry) => [entry.manifest.id, entry]))
+    return packs.map((pack) => {
+      const entry = live.get(pack.id)
+      if (!entry) return pack
+      return {
+        ...pack,
+        description: entry.description,
+        skills: entry.manifest.covers.skills,
+        grades: entry.manifest.covers.grades,
+      }
+    })
+  }, [packs, entries])
+}
+
 export function useHostView(armed: boolean): HostView {
   const profiles = useProfiles((state) => state.profiles)
   const currentId = useProfiles((state) => state.currentId)
   const settings = useSettings((state) => state)
   const theme = useThemeStore((state) => state.mode)
-  const packs = usePacks((state) => state.installed)
+  const packs = useDescribedPacks()
   const placed = worldFor(currentId)((state) => state.placed)
   const answered = recordFor(currentId)((state) => state.answered)
   const correct = recordFor(currentId)((state) => state.correct)

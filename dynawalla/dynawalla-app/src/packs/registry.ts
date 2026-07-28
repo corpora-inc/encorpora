@@ -30,6 +30,23 @@ export interface InstalledPack {
   /** The digest the installer verified against. Empty before it verified one. */
   readonly sha256: string
   readonly installedAt: number
+
+  /* ── What the front door needs to draw a card ─────────────────────────────
+     Copied from the manifest at install time rather than fetched again. A
+     catalogue that could only describe a pack once the native library had
+     finished reading the pack root would draw a grid of unlabelled tiles on
+     every cold launch, for as long as that read takes on a cheap tablet.
+
+     Optional because a record written by an older build has none of them, and
+     that record is on disk today. Everything downstream degrades to the pack's
+     name and nothing else. */
+
+  /** One line, already in the child's language. */
+  readonly description?: string
+  /** `covers.skills` — the ids the subject filter is derived from. */
+  readonly skills?: readonly string[]
+  /** `covers.grades` — inclusive band, `[1, 4]` is grades one to four. */
+  readonly grades?: readonly [number, number]
 }
 
 export interface RegistryState {

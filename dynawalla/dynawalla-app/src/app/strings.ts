@@ -46,6 +46,41 @@ export const strings = {
     failed: "This pack could not be opened.",
   },
 
+  /**
+   * The catalogue: the listing of installed games, and the two ways to narrow
+   * it.
+   *
+   * Deliberately eight words and six subject names. A listing explains itself
+   * by being a listing — there is no "browse our collection", no count of how
+   * many games there are, and no empty-state paragraph apologising. `nothing`
+   * is the one line of prose, and it exists because a search that matched
+   * nothing and drew nothing would look like the app had broken.
+   */
+  catalog: {
+    /** Accessible name for the search field, and its placeholder. */
+    find: "Find a game",
+    /** The chip that clears the subject filter. Always first, always present. */
+    all: "All",
+    /** Shown in place of the grid when a search matches no installed game. */
+    nothing: "No game here matches that.",
+    /** The band a game is written for, on its card. */
+    grades: "Grades {{from}}–{{to}}",
+
+    /**
+     * The subjects, derived from skill ids at runtime (`catalog/domains.ts`).
+     * A seventh subject appearing in a pack needs a seventh entry here; until
+     * it has one the game is still listed, just not filed.
+     */
+    domains: {
+      ns: "Number sense",
+      add: "Addition & subtraction",
+      mul: "Multiplication",
+      div: "Division",
+      frac: "Fractions",
+      alg: "Equality & algebra",
+    },
+  },
+
   progress: {
     answered: "Answered",
     correct: "Correct",

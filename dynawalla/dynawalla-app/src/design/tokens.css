@@ -59,40 +59,60 @@
   --text-4xl--line-height: 1.05;
 
   /* ── Materials ─────────────────────────────────────────────────────────
-     Named for the substance, numbered light to dark. */
+     Named for the substance, numbered light to dark.
 
-  /* Parchment — the lit ground. */
-  --color-parchment-50: #faf4e8;
-  --color-parchment-100: #f2e9d7;
-  --color-parchment-200: #e6d9c0;
-  --color-parchment-300: #d6c5a5;
+     **Repainted from `dynawalla/brand/README.md`.** The names below are the
+     ones the semantic layer already refers to and they are kept; every VALUE
+     is now sampled from the mark itself, whose dominant saturated pixel is
+     `#864de8`. The direction is the founder's: futuristic space angels,
+     gear-brain minaret, sharp and pointing up, clockmaker G-d, al-Andalus.
+     Explicitly dead, also his words: the dusty khaki sandstorm feel — which is
+     exactly what this palette used to be, so nothing here is warm earth any
+     more. **The void is violet**, `#0b0618`, never grey and never `#111111`. */
 
-  /* Carved limestone — structure, rules, incised edges. */
-  --color-stone-200: #c9bfae;
-  --color-stone-400: #a2967f;
-  --color-stone-600: #6f6553;
-  --color-stone-800: #40392e;
+  /* Parchment — the lit ground. Violet-white, not cream. */
+  --color-parchment-50: #ffffff;
+  --color-parchment-100: #f4f0ff;
+  --color-parchment-200: #e9e2fb;
+  --color-parchment-300: #dcd2f5;
 
-  /* Basalt — the unlit ground, and ink on parchment. */
-  --color-basalt-700: #2b2721;
-  --color-basalt-800: #211d18;
-  --color-basalt-900: #17140f;
-  --color-basalt-950: #100e0a;
+  /* Carved limestone — structure, rules, incised edges. Violet-grey. */
+  --color-stone-200: #c9bcec;
+  --color-stone-400: #b9a6ec;
+  --color-stone-600: #5b5175;
+  --color-stone-800: #2a1b4d;
 
-  /* Brass — the index, the pointer, the working mechanism. */
-  --color-brass-300: #e3c179;
-  --color-brass-500: #c39a3c;
-  --color-brass-700: #8a6a24;
+  /* Basalt — the unlit ground, and ink on parchment. Violet-black. */
+  --color-basalt-700: #150c2e;
+  --color-basalt-800: #0b0618;
+  --color-basalt-900: #1a1033;
+  --color-basalt-950: #060310;
 
-  /* Lapis — the deep field; the sky an astrolabe is read against. */
-  --color-lapis-400: #4a7ec4;
-  --color-lapis-600: #2c5697;
-  --color-lapis-800: #1a3160;
-  --color-lapis-950: #101d3a;
+  /* Brass — the index, the pointer, the working mechanism, and the brand's
+     one warm point (`--dw-apex` in the brand README is this material). */
+  --color-brass-300: #ffe7b0;
+  --color-brass-500: #e0b15a;
+  --color-brass-700: #b45309;
+
+  /* Aurora — the lit line. The mark's own violet, and the accent the whole
+     app is drawn in. `400` is the bloom: light, never paint. */
+  --color-aurora-300: #c9b4ff;
+  --color-aurora-350: #a78bfa;
+  --color-aurora-400: #b88cff;
+  --color-aurora-500: #9258ff;
+  --color-aurora-600: #6d28d9;
+  --color-aurora-700: #5b21b6;
+
+  /* Lapis — the deep field; the sky an astrolabe is read against. Now a deep
+     violet rather than a blue, so the field and the ground are one stone. */
+  --color-lapis-400: #b88cff;
+  --color-lapis-600: #6d28d9;
+  --color-lapis-800: #241246;
+  --color-lapis-950: #0b0618;
 
   /* Glazed tile — cool ceramic, for calm affirmative surfaces. */
-  --color-tile-400: #45a3a8;
-  --color-tile-600: #1f7379;
+  --color-tile-400: #38bfc9;
+  --color-tile-600: #0e7490;
   /* …and the same glaze as a wash, thin enough to be a ground rather than a
      fill. Two entries because a wash is a material: on parchment the dark tile
      at 14% is a tint you can see, and on basalt it is nothing at all, so the
@@ -100,20 +120,46 @@
      as alpha rather than `color-mix` because this bundle's floor is iOS 16.0
      and `color-mix` lands in 16.2 — an unsupported declaration would drop the
      recess silently on the oldest devices we ship to. */
-  --color-tile-600-wash: rgb(31 115 121 / 0.14);
-  --color-tile-400-wash: rgb(69 163 168 / 0.18);
+  --color-tile-600-wash: rgb(14 116 144 / 0.14);
+  --color-tile-400-wash: rgb(56 191 201 / 0.18);
 
   /* Copper and its oxide — the tone of a struck, incorrect mark. */
-  --color-copper-500: #a85b33;
-  --color-copper-700: #7a3f22;
+  --color-copper-400: #f08a7e;
+  --color-copper-500: #c2453c;
+  --color-copper-700: #8c2f27;
 
   /* Walnut — cabinetry, frames, the case an instrument sits in. */
-  --color-walnut-600: #5a4130;
-  --color-walnut-800: #33241a;
+  --color-walnut-600: #3b2a63;
+  --color-walnut-800: #1c1233;
 
   /* Celestial — cold light. Highlights only; never a fill. */
-  --color-celestial-100: #e4eef8;
-  --color-celestial-300: #a9c9e6;
+  --color-celestial-100: #e8deff;
+  --color-celestial-300: #c9b4ff;
+
+  /* ── The arc ───────────────────────────────────────────────────────────
+     Twelve lit hues for generated key art, and nothing else in the app may
+     use them. Every game's card carries a drawing that has to be legible as
+     *that game* at a glance in a grid of twenty-seven, so hue is one of the
+     two axes the art varies on (motif is the other).
+
+     It is an arc, not a wheel: eleven steps sweep cyan → indigo → violet →
+     magenta → rose, which is the mark's own band, and the twelfth is the warm
+     gold so a handful of games read warm against the rest. All twelve are
+     HSL(h 82% 68%) — one saturation and one lightness — which is what keeps
+     twenty-seven different drawings looking like one family. Measured against
+     the void `#0b0618` they run 4.88:1 to 12.16:1. */
+  --color-arc-1: #6acdf0;
+  --color-arc-2: #6aadf0;
+  --color-arc-3: #6a8ef0;
+  --color-arc-4: #6a6ff0;
+  --color-arc-5: #856af0;
+  --color-arc-6: #a46af0;
+  --color-arc-7: #c46af0;
+  --color-arc-8: #e36af0;
+  --color-arc-9: #f06ad6;
+  --color-arc-10: #f06aad;
+  --color-arc-11: #f06a85;
+  --color-arc-12: #f0c46a;
 }
 
 /* ── Semantic layer, light ────────────────────────────────────────────────
@@ -138,9 +184,19 @@
   --dw-ink-muted: var(--color-stone-600);
   --dw-ink-inverse: var(--color-parchment-50);
 
-  /* The mechanism: the index that points at where you are. */
+  /* The mechanism: the index that points at where you are. This is also the
+     brand's one warm point — the apex, used once per screen and no more. */
   --dw-index: var(--color-brass-700);
   --dw-index-lit: var(--color-brass-500);
+
+  /* The lit line: the mark's own violet, and the app's accent. `--dw-accent`
+     is for line art, borders and state; `--dw-accent-ink` is the one a child
+     actually READS, because accent-on-ground clears AA for normal text only by
+     a hair. `--dw-bloom` is light and never paint — a filled bloom-coloured
+     shape is the named failure mode for this brand. */
+  --dw-accent: var(--color-aurora-600);
+  --dw-accent-ink: var(--color-aurora-700);
+  --dw-bloom: var(--color-aurora-350);
 
   /* The deep field, and what is legible against it. */
   --dw-field: var(--color-lapis-800);
@@ -174,6 +230,36 @@
   /* Focus ring. Contrast against the ground is what matters here, so it is a
      semantic role of its own rather than a reuse of the index. */
   --dw-focus: var(--color-lapis-600);
+
+  /* ── Generated key art ─────────────────────────────────────────────────
+     The one part of this design that does NOT re-cut for dark, and the
+     duplication under `.dw-dark` below is deliberate rather than an oversight.
+
+     A game's key art is a picture of that game. It is the same picture on a
+     lit tablet and an unlit one for the same reason a photograph on a shelf is
+     the same photograph at night: inverting it would not be theming, it would
+     be a second drawing. So the void it hangs in and the twelve hues drawn on
+     it are fixed, and the card AROUND the art is what follows the theme.
+
+     The token test requires a material-derived semantic token to exist in both
+     blocks, which is the right rule — so these are declared twice, with the
+     same value, rather than smuggled in through a stylesheet that the layering
+     test does not read. */
+  --dw-art-void: var(--color-basalt-800);
+  --dw-art-warm: var(--color-brass-300);
+  --dw-art-pale: var(--color-celestial-100);
+  --dw-art-1: var(--color-arc-1);
+  --dw-art-2: var(--color-arc-2);
+  --dw-art-3: var(--color-arc-3);
+  --dw-art-4: var(--color-arc-4);
+  --dw-art-5: var(--color-arc-5);
+  --dw-art-6: var(--color-arc-6);
+  --dw-art-7: var(--color-arc-7);
+  --dw-art-8: var(--color-arc-8);
+  --dw-art-9: var(--color-arc-9);
+  --dw-art-10: var(--color-arc-10);
+  --dw-art-11: var(--color-arc-11);
+  --dw-art-12: var(--color-arc-12);
 
   /* ── Non-material tokens ───────────────────────────────────────────────
      These carry no colour and therefore do not re-cut in dark. The token
@@ -282,19 +368,45 @@
   --dw-index: var(--color-brass-300);
   --dw-index-lit: var(--color-brass-500);
 
-  --dw-field: var(--color-lapis-950);
+  --dw-accent: var(--color-aurora-500);
+  --dw-accent-ink: var(--color-aurora-300);
+  --dw-bloom: var(--color-aurora-400);
+
+  --dw-field: var(--color-lapis-800);
   --dw-field-ink: var(--color-celestial-300);
 
   --dw-aperture: var(--color-lapis-950);
   --dw-aperture-rim: var(--color-celestial-300);
 
   --dw-seat: var(--color-tile-400);
-  --dw-strike: var(--color-copper-700);
+  /* The lighter oxide, not the darker one. `copper-700` on the violet void is
+     a mark a child has to hunt for; a strike is the one thing on the screen
+     that must never be missed. */
+  --dw-strike: var(--color-copper-400);
   --dw-seat-ground: var(--color-tile-400-wash);
 
   --dw-case: var(--color-walnut-800);
 
   --dw-focus: var(--color-lapis-400);
+
+  /* Key art does not re-cut — see the block above. Same values, stated twice,
+     because the layering test is right to insist and a stylesheet it cannot
+     read is the wrong place to answer it. */
+  --dw-art-void: var(--color-basalt-800);
+  --dw-art-warm: var(--color-brass-300);
+  --dw-art-pale: var(--color-celestial-100);
+  --dw-art-1: var(--color-arc-1);
+  --dw-art-2: var(--color-arc-2);
+  --dw-art-3: var(--color-arc-3);
+  --dw-art-4: var(--color-arc-4);
+  --dw-art-5: var(--color-arc-5);
+  --dw-art-6: var(--color-arc-6);
+  --dw-art-7: var(--color-arc-7);
+  --dw-art-8: var(--color-arc-8);
+  --dw-art-9: var(--color-arc-9);
+  --dw-art-10: var(--color-arc-10);
+  --dw-art-11: var(--color-arc-11);
+  --dw-art-12: var(--color-arc-12);
 }
 
 /* ── Utilities ────────────────────────────────────────────────────────────
@@ -314,6 +426,9 @@
   --color-ink-inverse: var(--dw-ink-inverse);
   --color-index: var(--dw-index);
   --color-index-lit: var(--dw-index-lit);
+  --color-accent: var(--dw-accent);
+  --color-accent-ink: var(--dw-accent-ink);
+  --color-bloom: var(--dw-bloom);
   --color-field: var(--dw-field);
   --color-field-ink: var(--dw-field-ink);
   --color-seat: var(--dw-seat);

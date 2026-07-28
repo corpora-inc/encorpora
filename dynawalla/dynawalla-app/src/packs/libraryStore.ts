@@ -53,6 +53,12 @@ export const useLibrary = create<LibraryState>()((set) => ({
           bytes: entry.bytes,
           sha256: entry.manifest.download.sha256,
           installedAt: Date.now(),
+          // What the catalogue draws a card from. Written here, from the same
+          // manifest the version came from, so the record and the card cannot
+          // disagree about what a pack is.
+          description: entry.description,
+          skills: entry.manifest.covers.skills,
+          grades: entry.manifest.covers.grades,
         })
       }
       const live = new Set(entries.map((entry) => entry.manifest.id))

@@ -1,10 +1,11 @@
 import { useState } from "react"
 
+import { Catalog } from "../catalog/Catalog.tsx"
 import { IndexMark } from "../design/IndexMark.tsx"
 import { strings } from "../app/strings.ts"
 import type { Destination } from "../app/routes.ts"
 import { WorldScreen } from "../world/Screen.tsx"
-import { surfaceOf, type Row } from "./surfaces.ts"
+import { surfaceOf, type Row, type Section } from "./surfaces.ts"
 import { useHostActions, useHostView } from "./useHost.ts"
 
 /**
@@ -160,43 +161,6 @@ function Figure({ value, label }: Keyless<"figure">) {
 }
 
 /**
- * A pack, as the whole row is the button.
- *
- * The only plate in this shell that is taller than a course: it is the front
- * door and the thing the app is for, and a game should not be a line of small
- * type between two settings. The name is the label, the version and the size
- * are the small print, and the whole rectangle is the target — a child aiming
- * at a word is a child missing.
- */
-function Pack({ name, version, size, play, resting }: Keyless<"pack">) {
-  return (
-    <button
-      type="button"
-      onClick={play}
-      className={[
-        "group flex min-h-24 w-full items-center gap-4 py-4 text-left",
-        "transition-colors duration-[var(--dw-motion-quick)] hover:bg-ground-sunk",
-      ].join(" ")}
-    >
-      <IndexMark className="text-index shrink-0 opacity-40 transition-opacity duration-[var(--dw-motion-quick)] group-hover:opacity-100 group-focus-visible:opacity-100" />
-      <span className="min-w-0 flex-1">
-        <span className="inscription text-ink block truncate text-2xl tracking-wide">{name}</span>
-        <span className="numeral text-ink-muted block text-xs">
-          {version} · {size}
-        </span>
-      </span>
-      {/* A game that already ended today says so, in the same small type as the
-          version, and keeps its full-strength name and its working control. It
-          is not dimmed, not badged, not padlocked and not sorted to the bottom:
-          nothing about this row is a price, and nothing about it is a lock. */}
-      <span className="border-line-cut rounded-cut-sm text-ink-muted shrink-0 border px-3 py-2 text-sm">
-        {resting ? strings.packs.tomorrow : strings.packs.play}
-      </span>
-    </button>
-  )
-}
-
-/**
  * One row, drawn.
  *
  * Written out rather than spread: a `Row` carries its own `key`, and
@@ -223,17 +187,22 @@ function RowView({ row }: { row: Row }) {
       void key
       return <Learner {...rest} />
     }
-    case "pack": {
-      const { key, ...rest } = row
-      void key
-      return <Pack {...rest} />
-    }
+    // A pack is never drawn as a course row. It is a card in the catalogue,
+    // which is a grid rather than a list, so the whole section is handed to
+    // one component below instead of each row being drawn on its own.
+    case "pack":
+      return null
     case "figure": {
       const { key, ...rest } = row
       void key
       return <Figure {...rest} />
     }
   }
+}
+
+/** Every row in this section is a game. Then it is a catalogue, not a course. */
+function isCatalogue(section: Section): boolean {
+  return section.rows.length > 0 && section.rows.every((row) => row.kind === "pack")
 }
 
 export function Surface({ destination }: { destination: Destination }) {
@@ -244,18 +213,30 @@ export function Surface({ destination }: { destination: Destination }) {
 
   return (
     <div className="flex flex-col gap-[var(--dw-stack-gap)]">
-      {sections.map((section) => (
-        // A rule above the course and one between every pair of rows, but none
-        // under the last: a closing rule plus the next section's opening one
-        // reads as a double line at every seam, which is a groove nobody cut.
-        <ul key={section.key} className="border-line border-t">
-          {section.rows.map((row) => (
-            <li key={row.key} className="border-line border-b last:border-b-0">
-              <RowView row={row} />
-            </li>
-          ))}
-        </ul>
-      ))}
+      {sections.map((section) =>
+        isCatalogue(section) ? (
+          // The games, as a grid of cards with a search field and the subject
+          // chips above them. Full measure: a listing wants columns, and the
+          // 42 rem reading measure the courses below are set to would give a
+          // desktop three of them.
+          <Catalog
+            key={section.key}
+            rows={section.rows.filter((row) => row.kind === "pack")}
+          />
+        ) : (
+          // A rule above the course and one between every pair of rows, but
+          // none under the last: a closing rule plus the next section's opening
+          // one reads as a double line at every seam, which is a groove nobody
+          // cut.
+          <ul key={section.key} className="border-line mx-auto w-full max-w-2xl border-t">
+            {section.rows.map((row) => (
+              <li key={row.key} className="border-line border-b last:border-b-0">
+                <RowView row={row} />
+              </li>
+            ))}
+          </ul>
+        ),
+      )}
     </div>
   )
 }
