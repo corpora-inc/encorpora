@@ -42,6 +42,9 @@ export type Host = {
   transition?(kind: "level" | "run" | "boss", label?: string): void
 }
 
-export function mount(el: HTMLElement, host: Host): { unmount(): void } {
+export function mount(
+  el: HTMLElement,
+  host: Host,
+): { unmount(): void; pause(): void; resume(): void } {
   return mountTrueDraw(el, host)
 }
