@@ -93,6 +93,7 @@ export class Round {
   private committed: Outcome | null = null
   private reaction = 0
   private state: Run = newRun()
+  private stopped = false
 
   constructor(deal: () => Statement, timing: Timing = TIMING) {
     this.deal = deal
@@ -114,6 +115,30 @@ export class Round {
   /** The outcome the verdict is currently showing, if any. */
   get outcome(): Outcome | null {
     return this.phaseName === "verdict" || this.phaseName === "clear" ? this.lastOutcome : null
+  }
+
+  get paused(): boolean {
+    return this.stopped
+  }
+
+  /**
+   * The host put something over the frame. **The clock stops dead.**
+   *
+   * This matters more here than in any other pack, and it is not hypothetical:
+   * this game calls `transition` on every tenth call, the SDK documents that a
+   * transition may put a sheet over the frame, and the host then sends `pause`
+   * while leaving the pack mounted and running. Without this, a 1750–3600 ms
+   * draw window would open and close behind that sheet, settle as a hold, and —
+   * if the statement happened to be true — take one of the child's three shots
+   * for a slate they were never shown. A reward that costs a life is the worst
+   * bug this game could have.
+   */
+  pause(): void {
+    this.stopped = true
+  }
+
+  resume(): void {
+    this.stopped = false
   }
 
   /** 0..1 through the current phase. The renderer's only clock. */
@@ -140,6 +165,7 @@ export class Round {
   }
 
   advance(dt: number): RoundEvent[] {
+    if (this.stopped) return []
     if (this.phaseName === "idle" || this.phaseName === "over") {
       this.elapsed += Math.max(0, dt)
       return []
@@ -162,6 +188,9 @@ export class Round {
 
   /** One press. Returns whatever it caused, which is often nothing. */
   press(): RoundEvent[] {
+    // A tap that lands on a sheet is a tap on the sheet. It is not a draw, and
+    // it is not even a flinch.
+    if (this.stopped) return []
     switch (this.phaseName) {
       case "raise":
       case "still": {

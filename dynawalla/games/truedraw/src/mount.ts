@@ -41,7 +41,10 @@ const TRANSITION_EVERY = 10
  */
 const MAX_STEP_MS = 120
 
-export function mountTrueDraw(el: HTMLElement, host: Host): { unmount(): void } {
+export function mountTrueDraw(
+  el: HTMLElement,
+  host: Host,
+): { unmount(): void; pause(): void; resume(): void } {
   const canvas = document.createElement("canvas")
   canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none"
   el.appendChild(canvas)
@@ -162,6 +165,15 @@ export function mountTrueDraw(el: HTMLElement, host: Host): { unmount(): void } 
   frame = requestAnimationFrame(tick)
 
   return {
+    // The host puts a sheet over the frame — a transition, a parent gate — and
+    // sends `pause` with the pack still mounted. The clock has to stop dead:
+    // see Round.pause().
+    pause(): void {
+      round.pause()
+    },
+    resume(): void {
+      round.resume()
+    },
     unmount(): void {
       running = false
       cancelAnimationFrame(frame)

@@ -36,6 +36,20 @@ async function start(el: HTMLElement): Promise<void> {
   mounted.client.on("dispose", () => {
     handle.unmount()
   })
+
+  // A transition can put a sheet over the frame, and the SDK documents that the
+  // pack then receives `pause` while it stays mounted and running. This game
+  // calls transition every tenth call, so that is not a hypothetical: an
+  // unpaused 1750-3600 ms draw window would open and close behind the sheet,
+  // settle as a hold, and — if the slate happened to be true — spend one of the
+  // child's three shots on a statement they were never shown. A reward that
+  // costs a life is the worst bug this game could have.
+  mounted.client.on("pause", () => {
+    handle.pause()
+  })
+  mounted.client.on("resume", () => {
+    handle.resume()
+  })
 }
 
 void start(root).catch((error: unknown) => {

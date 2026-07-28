@@ -144,3 +144,55 @@ test("reduced motion changes what is drawn, never what is timed", () => {
     b.statements.map((s) => s.text),
   )
 })
+
+// ---------------------------------------------------------------------------
+// The sheet. The host can put something over the frame — a transition, a parent
+// gate — and sends `pause` with the pack still mounted and its rAF still
+// running. This game calls transition every tenth call, so it is not a corner.
+// ---------------------------------------------------------------------------
+
+test("a paused round does not run its clock behind the sheet", () => {
+  const round = new Round(fixed(true))
+  round.press()
+  round.advance(TIMING.raise)
+  assert.equal(round.phase, "still")
+
+  round.pause()
+  assert.equal(round.paused, true)
+  // Far more than enough to cross `still` and the whole draw window.
+  round.advance(60_000)
+  assert.equal(round.phase, "still", "the clock ran behind the sheet")
+
+  round.resume()
+  assert.equal(round.paused, false)
+  round.advance(800)
+  assert.equal(round.phase, "call", "the clock did not restart on resume")
+})
+
+test("a true slate cannot cost a shot while the sheet is up", () => {
+  // The bug this guards, exactly: an unpaused draw window opens and closes
+  // behind the sheet, settles as a hold, and a *true* statement takes one of
+  // the child's three shots for a slate they were never shown. A reward that
+  // costs a life is the worst outcome this game has.
+  const round = new Round(fixed(true))
+  round.press()
+  round.advance(TIMING.raise)
+  round.pause()
+  const before = round.run.shots
+
+  round.advance(60_000)
+
+  assert.equal(round.run.shots, before, "a shot was spent behind the sheet")
+  assert.equal(round.phase, "still", "the round advanced while paused")
+})
+
+test("a tap on the sheet is a tap on the sheet — not a draw, not a flinch", () => {
+  const round = new Round(fixed(false))
+  round.press()
+  round.advance(TIMING.raise)
+  round.pause()
+  const flinches = round.run.flinches
+  const events = round.press()
+  assert.equal(events.length, 0, "a press was handled while paused")
+  assert.equal(round.run.flinches, flinches, "a paused press was counted as a flinch")
+})
