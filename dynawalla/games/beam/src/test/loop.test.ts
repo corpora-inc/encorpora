@@ -268,6 +268,83 @@ test("a very small viewport is still a playable lattice", () => {
   }
 })
 
+test("PAUSE STOPS THE CLOCK: a wave cannot expire behind the host's sheet", () => {
+  // The failure this exists to make impossible: the host puts a sheet over a
+  // still-mounted pack — and the call most likely to raise one is this game's
+  // own `transition()` — while the candidates keep falling underneath it. The
+  // window closes, the item is reported wrong, and the child was never shown
+  // the question.
+  const surface = stubSurface(768, 1024, 0xba5e0, 12)
+  const restore = surface.install()
+  const reports: Report[] = []
+  const host = createStubHost({ seed: 0x9e11, reducedMotion: false, onReport: (r) => reports.push(r) })
+  const handle = mount(surface.el, host)
+  const step = surface.pump()
+  const press = (key: string): void => {
+    surface.keys.get("keydown")?.({ key, preventDefault: () => undefined })
+  }
+  try {
+    // Play until a wave is certainly in the air and at least one item has run.
+    for (let i = 0; i < 900; i++) {
+      step(16)
+      if (i % 5 === 0) press(" ")
+    }
+    assert.ok(reports.length > 0, "nothing was reported before the pause")
+    const before = reports.length
+
+    handle.setPaused(true)
+    // Three minutes behind the sheet, with the child mashing at it throughout.
+    for (let i = 0; i < 11_250; i++) {
+      step(16)
+      if (i % 5 === 0) press(" ")
+      if (i % 11 === 0) press("ArrowLeft")
+    }
+    assert.equal(reports.length, before, "an item was resolved while the game was paused")
+
+    handle.setPaused(false)
+    for (let i = 0; i < 3000; i++) {
+      step(16)
+      if (i % 5 === 0) press(" ")
+      if (i % 13 === 0) press("ArrowRight")
+    }
+    assert.ok(reports.length > before, "the game did not come back after the sheet lifted")
+  } finally {
+    handle.unmount()
+    restore()
+  }
+
+  // And the sheet's three minutes are not billed to the child. Every latency is
+  // bounded by the answering window, which is nowhere near a minute.
+  for (const r of reports) {
+    assert.ok(r.ms < 60_000, `a report carried ${r.ms}ms — the pause leaked into the latency`)
+  }
+})
+
+test("pausing twice is not two pauses, and resuming an unpaused game is nothing", () => {
+  const surface = stubSurface(768, 1024, 0x1d3, 12)
+  const restore = surface.install()
+  const reports: Report[] = []
+  const host = createStubHost({ seed: 0x1d3, reducedMotion: false, onReport: (r) => reports.push(r) })
+  const handle = mount(surface.el, host)
+  const step = surface.pump()
+  try {
+    handle.setPaused(false)
+    for (let i = 0; i < 600; i++) step(16)
+    handle.setPaused(true)
+    handle.setPaused(true)
+    const before = reports.length
+    for (let i = 0; i < 3000; i++) step(16)
+    assert.equal(reports.length, before)
+    handle.setPaused(false)
+    handle.setPaused(false)
+    for (let i = 0; i < 1200; i++) step(16)
+  } finally {
+    handle.unmount()
+    restore()
+  }
+  for (const r of reports) assert.ok(r.ms < 60_000)
+})
+
 test("a stalled tab that resumes does not teleport the lattice into the floor", () => {
   // A backgrounded tab hands the loop one enormous frame when it comes back.
   // The clamp has to swallow it, or every automaton on screen lands at once.
