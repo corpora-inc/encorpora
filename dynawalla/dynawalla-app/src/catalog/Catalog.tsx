@@ -35,10 +35,23 @@ function gradeLabel(grades: readonly [number, number] | null): string | null {
  * opens is the sheet that says so, which is a fact about the child's day
  * rather than a price.
  */
-function Card({ row }: { row: PackRow }) {
+function Card({ row, active }: { row: PackRow; active: DomainId | null }) {
   const grades = gradeLabel(row.grades)
   const domains = domainsOf(row.skills)
-  const subject = domains[0]
+  // Lead with the subject the child actually filtered by. Taking `domains[0]`
+  // instead meant a card answering a Multiplication filter labelled itself
+  // "Addition & subtraction", because DOMAIN_IDS is in teaching order and `add`
+  // sorts before `mul` — the card contradicted the filter that produced it.
+  //
+  // Two chips, not one: 126 of the 164 skills shipped are `dw.add`, so a single
+  // first-domain chip printed "Addition & subtraction" on twenty-two of the
+  // twenty-seven cards and told a reader nothing. The second chip is where the
+  // games differ.
+  const ordered =
+    active !== null && domains.includes(active)
+      ? [active, ...domains.filter((domain) => domain !== active)]
+      : domains
+  const subjects = ordered.slice(0, 2)
 
   return (
     <button
@@ -65,21 +78,34 @@ function Card({ row }: { row: PackRow }) {
             `display: -webkit-box`, and a `block` utility beside it silently
             wins and un-clamps the text. That is exactly how this shipped once,
             with descriptions running eleven lines deep. */}
-        {/* `break-words` because a clamp cannot help a single word wider than
-            the column: COUNTERPOISE on a 136 px card overflowed and was
-            clipped mid-word with no ellipsis to say so. */}
-        <span className="inscription text-ink line-clamp-2 text-base tracking-wide break-words">
+        {/* The real fix for a long name is a column wide enough to hold it, not
+            a cleverer way to break it — see the grid below, whose 10.5rem is
+            measured against the longest word shipped at this exact size.
+
+            15px, not 16px: at 16px COUNTERWEIGHT needs 152px and even a 10.5rem
+            column offers 142px, so the one-word-too-wide case would still fire.
+
+            `hyphens-auto` is kept as a courtesy for real devices, but it is NOT
+            load-bearing and must not be relied on — headless Chrome ships no
+            hyphenation dictionary, so it silently does nothing there, which is
+            how a fix that "worked" was measured as still broken. `break-words`
+            is the last resort that keeps a freak name inside its card rather
+            than over the top of the next one. */}
+        <span className="inscription text-ink line-clamp-2 hyphens-auto text-[0.9375rem] tracking-wide break-words">
           {row.name}
         </span>
         {row.description.length > 0 ? (
           <span className="text-ink-muted mt-1 line-clamp-2 text-xs">{row.description}</span>
         ) : null}
         <span className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-2">
-          {subject ? (
-            <span className="border-line text-accent-ink rounded-cut-sm border px-1.5 py-0.5 text-[0.6875rem]">
-              {domainName(subject)}
+          {subjects.map((domain) => (
+            <span
+              key={domain}
+              className="border-line text-accent-ink rounded-cut-sm border px-1.5 py-0.5 text-[0.6875rem]"
+            >
+              {domainName(domain)}
             </span>
-          ) : null}
+          ))}
           {grades ? <span className="numeral text-ink-muted text-[0.6875rem]">{grades}</span> : null}
           <span className="numeral text-ink-muted text-[0.6875rem]">
             {row.resting ? strings.packs.tomorrow : strings.packs.play}
@@ -173,10 +199,17 @@ export function Catalog({ rows }: { rows: readonly PackRow[] }) {
       {listed.length === 0 ? (
         <p className="text-ink-muted py-8 text-center text-sm">{strings.catalog.nothing}</p>
       ) : (
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(8.5rem,1fr))] gap-3 sm:gap-4">
+        /* 10.5rem, not 8.5rem, and the number is measured rather than chosen.
+           The longest single word shipped is COUNTERWEIGHT: at the title's 15px
+           it needs 142px of text box, and an 8.5rem column offers 110px. A word
+           wider than its column cannot be wrapped, only broken or clipped,
+           which is how "COUNTERPOI / SE" reached a desktop screen. 10.5rem
+           gives 142px of text box — exactly enough — and still fits two columns
+           on a 390px phone (2x168 + 12 gap = 348 of 358 available). */
+        <ul className="grid grid-cols-[repeat(auto-fill,minmax(10.5rem,1fr))] gap-3 sm:gap-4">
           {listed.map((row) => (
             <li key={row.key} className="min-w-0">
-              <Card row={row} />
+              <Card row={row} active={active} />
             </li>
           ))}
         </ul>
