@@ -64,12 +64,14 @@ import {
   type Outcome,
   type Solved,
 } from './sim/ballistics.ts'
+import { aimShot, rollWind, verdictFor } from './sim/verdict.ts'
 import {
   buildTower,
   FIELD_MAX,
   LAUNCH_X,
   layoutTowerValues,
   pullQuestions,
+  ramAdvances,
   shatter,
   stepBlocks,
   waveConfig,
@@ -352,7 +354,7 @@ export class TrebuchetGame {
     this.towers = values.map((v, i) => buildTower(i, v, this.rng, cfg.volley && i % 2 === 0))
     this.markWanted()
 
-    this.wind = cfg.wind ? this.rollWind() : 0
+    this.wind = rollWind(cfg.wind, this.rng)
     this.wall = null
     if (cfg.wall) {
       const nearest = Math.min(...values)
@@ -363,7 +365,10 @@ export class TrebuchetGame {
       this.wall = { x: worldX(wx), h: Math.max(6, clearH * 0.78) }
     }
     this.ram = cfg.ram
-      ? { range: FIELD_MAX - 4, speed: 1.5 + cfg.difficulty * 1.6, alive: true, wheel: 0, hp: 1, bob: 0 }
+      ? // Faster than it was, because it now only rolls while the world is moving:
+        // about 4 s of every shot instead of however long the sum took. Four to six
+        // boulders and it is at the walls — the same threat, off the thinking clock.
+        { range: FIELD_MAX - 4, speed: 4.2 + cfg.difficulty * 3, alive: true, wheel: 0, hp: 1, bob: 0 }
       : null
 
     this.craters = []
@@ -392,15 +397,6 @@ export class TrebuchetGame {
     if (!this.reduced && n % 3 === 0 && this.flash.add(0.16, 0.22, 0.5, 0.2, 1.2)) {
       this.backdrop.strike(this.cosmetic)
     }
-  }
-
-  private rollWind(): number {
-    const cap = this.cfg.wind
-    if (!cap) return 0
-    let v = 0
-    // never 0 — a wind chip showing 0 is a lie about the mechanic being on
-    while (v === 0) v = this.rng.int(-cap, cap)
-    return v
   }
 
   private markWanted(): void {
@@ -625,7 +621,9 @@ export class TrebuchetGame {
   private release(): void {
     const b = this.activeBoulder
     if (!b) return
-    const shot = solve(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
+    // Aimed at the dial, not displaced by the wind: `aimShot` lays the machine
+    // off into the crosswind so the boulder comes down on the metre she named.
+    const shot = aimShot(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
     this.shot = shot
     this.pending = resolve(shot.landing, this.towers)
     this.shotT = 0
@@ -671,9 +669,17 @@ export class TrebuchetGame {
     if (!b || !this.shot) return
     const landing = this.shot.landing
     const out = this.pending ?? resolve(landing, this.towers)
-    const struck = kind === 'tower' ? hit : out.target
-    const correct = !!struck && struck.value === b.answer && (out.quality === 'direct' || out.quality === 'solid')
-    const graze = !!struck && out.quality === 'graze' && struck.value === b.answer
+    // The verdict is the child's number against the number she was asked for, and
+    // nothing else — not the keep the blast happened to reach, not the metre the
+    // ground recorded. A boulder spent on the ram is not an answer at all.
+    const v = verdictFor({ dial: this.dial, landing, answer: b.answer, kind })
+    const correct = v.correct
+    // The ram swallows the boulder where it stands: no keep is touched by a shot
+    // that never got past the siege engine.
+    const struck = kind === 'ram' ? null : kind === 'tower' ? hit : out.target
+    // The garrison only answers when the shot came down ON another keep — naming
+    // the wrong number. Landing a metre short of the right one is not that.
+    const struckWrongKeep = !!struck && struck.value !== b.answer && out.errorM <= 1
 
     this.audio.flightStop()
     this.phase = 'impact'
@@ -748,7 +754,7 @@ export class TrebuchetGame {
     let destroyed = false
     if (struck) {
       struck.flash = 1
-      if (correct || kind === 'ram') {
+      if (correct) {
         const freed = shatter(struck, x, y, 2.6, this.cosmetic, true)
         void freed
         struck.alive = false
@@ -760,14 +766,14 @@ export class TrebuchetGame {
         this.flash.add(0.24, 0.4, x / Math.max(1, worldX(FIELD_MAX)), 0.55, 0.8)
         // the number itself comes apart
         this.burstNumber(struck)
-      } else if (out.quality === 'graze' || !correct) {
-        struck.damage = clamp01(struck.damage + (out.quality === 'graze' ? 0.34 : 0.6))
+      } else {
+        struck.damage = clamp01(struck.damage + (struckWrongKeep ? 0.6 : 0.34))
         struck.lean = (x < worldX(struck.range) ? 1 : -1) * 0.07
         struck.leanV = 0
         // a rival keep is cracked, never levelled: being wrong must stay quieter
         // than being right, and a keep with no masonry left reads as destroyed
-        shatter(struck, x, y, out.quality === 'graze' ? 0.2 : 0.34, this.cosmetic, false, out.quality === 'graze' ? 2 : 5)
-        if (!correct && out.quality !== 'graze') {
+        shatter(struck, x, y, struckWrongKeep ? 0.34 : 0.2, this.cosmetic, false, struckWrongKeep ? 5 : 2)
+        if (struckWrongKeep) {
           this.audio.wrongHorn()
           this.host.haptic('failure')
           this.counterFire(struck)
@@ -799,12 +805,9 @@ export class TrebuchetGame {
 
     // --- score & host report -------------------------------------------
     const ms = Math.max(1, Math.round(performance.now() - this.questionShownAt))
-    this.host.report({
-      questionId: b.q.id,
-      correct,
-      ms,
-      answered: struck ? String(struck.value) : String(landing),
-    })
+    if (v.report) {
+      this.host.report({ questionId: b.q.id, correct, ms, answered: v.answered })
+    }
     if (correct) {
       this.combo += 1
       const gained = shotScore(out.quality, this.combo, this.cfg.difficulty)
@@ -812,16 +815,14 @@ export class TrebuchetGame {
       this.scorePop = 0
       this.hitsThisWave += 1
       b.hit = true
-    } else {
+    } else if (v.report) {
+      // Only a wrong ANSWER breaks the chain. Spending a boulder on the ram is a
+      // choice about the siege, and the game does not punish it as arithmetic.
       this.combo = 0
       this.revealT = 1.6
     }
-    if (!graze) {
-      b.spent = true
-    } else {
-      // a graze on the right keep still costs the boulder — but it says so with a lean
-      b.spent = true
-    }
+    // The boulder is gone either way: it was thrown.
+    b.spent = true
     void destroyed
     this.markWanted()
   }
@@ -1067,7 +1068,7 @@ export class TrebuchetGame {
             this.phase = 'aim'
             this.phaseT = 0
             this.questionShownAt = performance.now()
-            if (this.cfg.gusty) this.wind = this.rollWind()
+            if (this.cfg.gusty) this.wind = rollWind(this.cfg.wind, this.rng)
           }
         }
         break
@@ -1085,8 +1086,8 @@ export class TrebuchetGame {
       if (this.counterIn <= 0) this.counterLand()
     }
 
-    // the ram never stops
-    if (this.ram?.alive && this.phase !== 'impact') {
+    // the ram never stops — except while the child is working the sum out
+    if (this.ram?.alive && ramAdvances(this.phase)) {
       this.ram.range -= this.ram.speed * dt
       this.ram.wheel += dt * 4
       if (this.ram.range <= 6) {
@@ -1291,7 +1292,7 @@ export class TrebuchetGame {
     // The loft stub — the first slice of the arc — only once the lever exists to
     // change it. Before that it would be decoration teaching nothing.
     if (this.cfg.loft) {
-      const st = solve(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
+      const st = aimShot(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
       ctx.beginPath()
       const pts = samplePath(st, 14, st.T * 0.34)
       for (let i = 0; i < pts.length; i++) {

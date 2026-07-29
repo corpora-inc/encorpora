@@ -3,7 +3,15 @@ import { test } from 'node:test'
 
 import { makeRng } from '../core/rng.ts'
 import { createStubHost } from '../stubHost.ts'
-import { buildTower, layoutTowerValues, pullQuestions, shatter, stepBlocks, waveConfig } from './world.ts'
+import {
+  buildTower,
+  layoutTowerValues,
+  pullQuestions,
+  ramAdvances,
+  shatter,
+  stepBlocks,
+  waveConfig,
+} from './world.ts'
 
 const MIN_GAP = 8
 
@@ -66,6 +74,19 @@ test('escalation is monotonic where it should be and bounded everywhere', () => 
   assert.equal(waveConfig(4).loft, true, 'the loft lever arrives at wave 4')
   assert.equal(waveConfig(5).volley, true, 'every fifth wave is a volley')
   assert.ok(waveConfig(7).ram, 'the ram arrives at wave 7')
+})
+
+test('the ram does not roll while the child is working the sum out', () => {
+  // The how-to-play panel promises "there is no clock, nothing happens until you
+  // fire", and EXPERIENCE_DESIGN.md does not budget comprehension at all. Those
+  // are the two phases in which the child is reading and dialling.
+  assert.equal(ramAdvances('intro'), false, 'the wave has only just been laid out')
+  assert.equal(ramAdvances('aim'), false, 'she is working it out')
+  assert.equal(ramAdvances('impact'), false, 'the hit-stop holds everything still')
+  // ...and it must still be a threat once a boulder is in the air.
+  for (const phase of ['windup', 'flight', 'settle', 'clear']) {
+    assert.equal(ramAdvances(phase), true, `${phase} is the world in motion`)
+  }
 })
 
 test('a struck keep comes apart and then settles — no perpetual motion', () => {
