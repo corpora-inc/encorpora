@@ -404,6 +404,32 @@ export type Resonance = {
    */
   openedT: number
   /**
+   * Seconds the player cannot avoid spending TRAVELLING to an answer.
+   *
+   * In ARENA committing to an answer is swimming into a sphere, and the spheres
+   * sit `ringR` away, so the fastest possible answer still takes real time —
+   * measured between 0.62 s and 1.35 s depending on size, because `stepPlayer`
+   * floors the traversal speed at `ringR / 1.35`.
+   *
+   * That component is part of what a child DID, so it stays in the latency
+   * reported to the Host: `ms` is the honest observable, from the moment the
+   * question was readable to the moment it was committed. It is NOT part of what
+   * a child THOUGHT, so the difficulty controller — which is trying to tell
+   * "already knew it" from "worked it out" — subtracts it. Without that, the
+   * same three seconds of thinking scores as brisk at mass 10 and as laboured at
+   * mass 20,000, purely because the arena got bigger.
+   */
+  reachSeconds: number
+  /**
+   * Deliberation, in seconds, frozen at the moment of the answer — the number
+   * the difficulty controller was actually handed.
+   *
+   * Kept beside `answerMs` rather than derived from it because the two are
+   * deliberately different quantities, and a test that recomputes the
+   * subtraction itself is a test that passes when the subtraction is deleted.
+   */
+  thinkSeconds: number
+  /**
    * Milliseconds from opening to the answer being registered, frozen at the
    * moment of the answer. The harness used to recompute this from `openedAt`
    * on every frame of the 0.9 s resolve, so the metric it reported was the
@@ -537,6 +563,8 @@ export class World {
     correctSlot: 0,
     openedAt: 0,
     openedT: 0,
+    reachSeconds: 0,
+    thinkSeconds: 0,
     answerMs: 0,
     ringR: 0,
     chosen: -1,
@@ -734,6 +762,40 @@ export class World {
    */
   get revealSeconds(): number {
     return revealMs(FLOW, this.intensity) / 1000
+  }
+
+  /**
+   * The player's ordinary top speed, before any Resonance traversal floor and
+   * before the surge multiplier.
+   *
+   * Extracted so `openResonance` can compute the traversal floor from the same
+   * arithmetic `stepPlayer` uses. Two copies of this drifted apart once already.
+   */
+    // Agar's law: mass costs agility. Without this, growth has no downside and
+    // the whole genre collapses into a farming sim.
+    // Size buys momentum, not top speed denial: a leviathan crosses the water
+    // quickly and turns like a barge. Making size cost *agility* rather than
+    // *speed* is what keeps the twelfth minute from becoming a slow crawl
+    // across an empty screen, while still letting a minnow dance out of reach.
+    //
+    // The two numbers were tuned in world units, where 520 looks brisk. In
+    // SCREEN units they were the founder's "the character zips too fast it's
+    // hard to control": at the starting mass, 520 with an exponent of 0.30 was
+    // 1.13 screen-heights per second and 2.44 screen-WIDTHS per second on a
+    // phone held tall — the width of the glass crossed in 0.41 s, before the
+    // surge multiplier. Worse, it was the FASTEST the game ever was in screen
+    // terms. By mass 20,000 the same formula gives 0.12 screen-heights per
+    // second, a nine-fold swing, and it ran the wrong way round: hardest to
+    // control in the first ten seconds, sluggish by the twentieth minute.
+    //
+    // 520 -> 400 slows the opening. 0.30 -> 0.42 gives size more of its speed
+    // back, which flattens the swing to 3.7x and leaves Agar's law intact —
+    // mass still costs agility, below, which is where "majestic" actually comes
+    // from. Measured, with the wider opening view: 0.48 screen-heights per
+    // second at the start (was 1.13) and 0.13 at mass 20,000 (was 0.12).
+  get playerSpeed(): number {
+    const r = this.playerRTrue
+    return 400 * Math.pow(Math.max(18, r) / 28, 0.42)
   }
 
   /** The largest rival `k` may be before the world recycles it. */
@@ -1229,30 +1291,8 @@ export class World {
 
   private stepPlayer(dt: number): void {
     const r = this.playerRTrue
-    // Agar's law: mass costs agility. Without this, growth has no downside and
-    // the whole genre collapses into a farming sim.
-    // Size buys momentum, not top speed denial: a leviathan crosses the water
-    // quickly and turns like a barge. Making size cost *agility* rather than
-    // *speed* is what keeps the twelfth minute from becoming a slow crawl
-    // across an empty screen, while still letting a minnow dance out of reach.
-    //
-    // The two numbers were tuned in world units, where 520 looks brisk. In
-    // SCREEN units they were the founder's "the character zips too fast it's
-    // hard to control": at the starting mass, 520 with an exponent of 0.30 was
-    // 1.13 screen-heights per second and 2.44 screen-WIDTHS per second on a
-    // phone held tall — the width of the glass crossed in 0.41 s, before the
-    // surge multiplier. Worse, it was the FASTEST the game ever was in screen
-    // terms. By mass 20,000 the same formula gives 0.12 screen-heights per
-    // second, a nine-fold swing, and it ran the wrong way round: hardest to
-    // control in the first ten seconds, sluggish by the twentieth minute.
-    //
-    // 520 -> 400 slows the opening. 0.30 -> 0.42 gives size more of its speed
-    // back, which flattens the swing to 3.7x and leaves Agar's law intact —
-    // mass still costs agility, below, which is where "majestic" actually comes
-    // from. Measured, with the wider opening view: 0.48 screen-heights per
-    // second at the start (was 1.13) and 0.13 at mass 20,000 (was 0.12).
-    const base = 400
-    let speed = base * Math.pow(Math.max(18, r) / 28, 0.42)
+    // Agar's law, and the two constants behind it, live on `playerSpeed`.
+    let speed = this.playerSpeed
     // Inside a Resonance the arena is a fixed-size room however large you are.
     // Distance to a sphere grows with your radius while ordinary speed only
     // grows as r^0.30, so past a certain size the answer becomes physically
@@ -1886,7 +1926,25 @@ export class World {
       return
     }
     res.t += dt
-    if (res.phase === 1 && res.t > 0.55) res.phase = 2
+    if (res.phase === 1 && res.t > 0.55) {
+      res.phase = 2
+      // THE CLOCK STARTS HERE, and it used to start 0.55 s earlier.
+      //
+      // `openResonance` set both stamps at the moment the beat OPENED, which is
+      // the start of a 0.55 s ramp during which `resolveResonance` refuses to
+      // register anything (`res.phase !== 2`) and the prompt is still fading up
+      // in the HUD. Every latency this game has ever reported therefore carried
+      // 0.55 s of animation that no child could have answered inside.
+      //
+      // That was harmless while nothing read the number. It stopped being
+      // harmless the moment latency began deciding whether a player climbs: the
+      // inflation is SYSTEMATIC, not noisy, so it never averages out, and it
+      // reads as a plausible number while quietly refusing to promote children
+      // who answered instantly. Latency starts when the child can first read the
+      // question and act on it. Nothing else belongs in it.
+      res.openedAt = performance.now()
+      res.openedT = this.time
+    }
     if (res.phase === 2 && res.t > res.duration) {
       this.emit("resonance-fade", this.px, this.py, 0, 0)
       // A question that went unanswered comes back LATER, not on the usual
@@ -1995,12 +2053,19 @@ export class World {
     res.duration = this.resonanceSeconds
     res.question = q
     res.chosen = -1
+    // Provisional: both are re-stamped at the phase 1 -> 2 transition, when the
+    // question actually becomes answerable. These values exist only so a
+    // Resonance that is torn down mid-ramp does not carry a stale stamp.
     res.openedAt = performance.now()
     res.openedT = this.time
     this.resonanceCount++
 
     const ringR = Math.max(viewSpanFor(this.mass) * 0.30, this.playerRTrue * 3.4)
     res.ringR = ringR
+    // The traversal floor, computed the same way `stepPlayer` computes it, so
+    // the two cannot drift.
+    const travelSpeed = Math.max(this.playerSpeed, ringR / 1.35)
+    res.reachSeconds = ringR / Math.max(1, travelSpeed)
     const base = this.rng.range(0, Math.PI * 2)
     res.correctSlot = -1
     for (let s = 0; s < 4; s++) {
@@ -2045,8 +2110,16 @@ export class World {
     res.wasCorrect = correct
     const ms = Math.round(performance.now() - res.openedAt)
     res.answerMs = ms
-    /** Thinking time on the simulation clock — deterministic, and what steers. */
-    const took = Math.max(0, this.time - res.openedT)
+    /**
+     * THINKING time on the simulation clock: deterministic, and what steers.
+     *
+     * The wall clock is reported to the Host and never read here — a seeded run
+     * has to reproduce on a slow machine. The traversal floor comes off because
+     * swimming to a sphere is not deliberation, and leaving it in makes the
+     * signal a function of the player's size rather than of their fluency.
+     */
+    const took = Math.max(0, this.time - res.openedT - res.reachSeconds)
+    res.thinkSeconds = took
 
     try {
       this.host.report({

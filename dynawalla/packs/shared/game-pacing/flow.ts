@@ -54,6 +54,37 @@
  * (`intensity` and `success`); this module only ever computes the next value.
  * That keeps a sixty-times-a-second call path allocation-free and makes every
  * transition trivially testable.
+ *
+ * ---------------------------------------------------------------------------
+ * THE LATENCY CONTRACT — read this before passing `seconds` to `observe`.
+ * ---------------------------------------------------------------------------
+ *
+ * `seconds` is THINKING time:
+ *
+ *     it STARTS when the child can first read the question and act on it
+ *     it ENDS at the moment they commit to an answer
+ *     nothing else belongs in it
+ *
+ * Not when the question object was created. Not when an opening animation
+ * began. Not when a projectile landed, a card finished flipping, a token
+ * finished travelling, or a result finished settling.
+ *
+ * This is a contract rather than a suggestion because the controller separates
+ * "already knew it" from "worked it out" on this number alone, and those two
+ * want opposite things from the world. Contamination here is SYSTEMATIC, not
+ * noisy: it does not average out, it looks like a perfectly plausible number,
+ * and its effect is to quietly refuse to promote exactly the children who
+ * answered fastest. Two games in this catalogue were found charging children
+ * for animation they could not have answered inside — one for 0.55 s of an
+ * opening ramp, one for 2-3 seconds of a boulder's flight.
+ *
+ * If a game's act of answering unavoidably contains travel or animation, take
+ * it out of `seconds` before calling this, and leave it in whatever the game
+ * reports to its Host. What the Host wants is the honest observable; what this
+ * wants is deliberation.
+ *
+ * And use a clock the SIMULATION owns, not the wall clock, or a seeded run
+ * stops reproducing on a slower machine.
  */
 
 import { clamp01, uncurved, valueAt, type Curve } from "./curve.ts"

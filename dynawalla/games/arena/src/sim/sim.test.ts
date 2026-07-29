@@ -868,3 +868,93 @@ test("a missed answer is completed patiently at the floor and skipped at the cei
   const calmHold = holdAfterMiss(0)
   assert.ok(calmHold > 2.5, `the reveal at the floor lasted only ${calmHold.toFixed(1)}s`)
 })
+
+/**
+ * THE LATENCY CONTRACT.
+ *
+ * Latency starts when the child can first READ AND ACT ON the question, and
+ * ends at the moment they COMMIT. Nothing else belongs in it.
+ *
+ * This is not pedantry. The difficulty controller separates "already knew it"
+ * from "worked it out" on response time alone, so anything that inflates the
+ * number — an opening animation, a projectile's flight, a settle — is a
+ * SYSTEMATIC error, not a noisy one. It never averages out, it looks like a
+ * plausible number, and its effect is to quietly refuse to promote the children
+ * who answered fastest. A sibling game was found reporting 2-3 seconds of
+ * boulder flight time as though it were thinking time.
+ *
+ * ARENA had two contaminants, both smaller and both real:
+ *
+ *   * a 0.55 s phase-1 ramp during which `resolveResonance` refuses to register
+ *     anything and the prompt is still fading up, and
+ *   * the traversal to a sphere, which is genuinely part of the act and so stays
+ *     in the reported number, but is not deliberation and so comes out of the
+ *     steering signal.
+ */
+test("thinking time excludes the opening ramp and the swim to the answer", () => {
+  const world = new World(createStubHost({ seed: 19 }), specFor("mid"), 4004)
+  const res = world.resonance
+
+  // Open one, and hold still through the whole ramp.
+  let opened = -1
+  for (let f = 0; f < 60 * 120 && !res.active; f++) {
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+    if (res.active) opened = world.time
+  }
+  assert.ok(opened > 0, "no Resonance ever opened")
+  assert.equal(res.phase, 1)
+
+  // The clock must NOT be running during the ramp.
+  const stampAtOpen = res.openedT
+  while (res.phase === 1) {
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+  }
+  assert.ok(
+    res.openedT > stampAtOpen,
+    "the clock started at the moment the beat opened — 0.55s of animation a child cannot answer inside is being charged to them",
+  )
+  assert.ok(
+    Math.abs(res.openedT - world.time) < 0.02,
+    `the clock started ${(world.time - res.openedT).toFixed(2)}s from the moment the question became answerable`,
+  )
+
+  // The traversal floor is real, matches how `stepPlayer` actually moves, and
+  // is what the controller subtracts.
+  assert.ok(res.reachSeconds > 0.3, `the swim to an answer was costed at ${res.reachSeconds}s`)
+  assert.ok(res.reachSeconds <= 1.4, `the swim was costed at ${res.reachSeconds}s — that is more than the traversal floor allows`)
+  assert.ok(
+    res.reachSeconds <= res.ringR / world.playerSpeed + 1e-6,
+    "the costed swim is longer than swimming it at the player's own speed would take",
+  )
+
+  // A child who answers the instant they can must be seen as instant. Swim
+  // straight at the correct sphere and check the controller was not handed
+  // something that looks laboured.
+  const i = res.spheres[res.correctSlot] as number
+  const t0 = world.time
+  for (let f = 0; f < 60 * 30 && res.phase === 2; f++) {
+    world.aimX = world.mx[i] as number
+    world.aimY = world.my[i] as number
+    world.step(1 / 60)
+  }
+  const wall = world.time - t0
+  assert.ok(wall > 0, "the sphere was never reached")
+  // Asserted on what the controller was HANDED, not on a subtraction this test
+  // performs itself — a test that redoes the arithmetic passes when the
+  // arithmetic is deleted from the simulation.
+  assert.ok(
+    res.thinkSeconds < 1,
+    `answering as fast as the game physically allows was scored as ${res.thinkSeconds.toFixed(2)}s of thinking`,
+  )
+  assert.ok(
+    res.thinkSeconds < wall - 0.2,
+    `the swim to the answer (${res.reachSeconds.toFixed(2)}s of a ${wall.toFixed(2)}s answer) is being charged as deliberation`,
+  )
+  // …and the host still gets the honest observable, ramp excluded but swim
+  // included, because swimming there is what the child did.
+  assert.ok(res.answerMs >= 0 && Number.isFinite(res.answerMs))
+})
