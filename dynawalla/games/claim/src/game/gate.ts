@@ -18,8 +18,10 @@
 // had **0.81 s** left to read a prompt, read three four-digit candidates and
 // pick one, against this codebase's own instrumented 2.8 s p50 for the
 // *easiest* class of item there is. It is no better on the wide desktop arena
-// (5.52 s), and it is still 4.00 s at the top of the ladder where the rail runs
-// fastest — the ladder speeds the child up by less than it speeds the maths up.
+// (5.52 s), it is still 4.27 s at the end of the hand-written ladder, and it
+// never falls below 3.30 s on any arena even once `railSpeed` has reached its
+// 40 c/s ceiling — the ladder speeds the child up by far less than it speeds
+// the maths up.
 //
 // So the revive gate has **no limit at all**. It is the gate a child reaches by
 // dying; a life is already spent; letting a clock take the second chance away
