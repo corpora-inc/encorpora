@@ -390,7 +390,7 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
       return {
         phase: game.phase, score: game.score, combo: game.combo, charge: game.charge,
         difficulty: game.difficulty, bpm: game.bpm, cells: game.cells,
-        gates: game.gatesTotal, correct: game.gatesCorrect,
+        gates: game.gatesTotal, correct: game.gatesCorrect, expired: game.gatesExpired,
         accuracy: game.accuracy, notesHit: game.notesHit, notesMissed: game.notesMissed,
       };
     },

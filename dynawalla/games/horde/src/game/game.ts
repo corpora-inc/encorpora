@@ -25,6 +25,7 @@ import {
   cooldown, makeBuild, realDamage, reach, rollCards, xpForLevel,
   type Build, type Card,
 } from "./loadout.ts"
+import { Curriculum } from "./curriculum.ts"
 import { Bullets, Enemies, Gems, Grid, Numbers, Particles, Shocks } from "./world.ts"
 import { Overlay } from "../ui/overlay.ts"
 
@@ -93,8 +94,12 @@ export class Game {
   private revives = 0
   private hurtCd = 0
   private levelUps = 0
-  private correct = 0
-  private asked = 0
+  /**
+   * Every question this run: which one to ask next, and what the host is told
+   * about it. Escalation lives in here and it reads right answers, not the
+   * clock — see curriculum.ts.
+   */
+  private curriculum = new Curriculum()
   private bestMs = 0
 
   private camX = 0
@@ -117,6 +122,7 @@ export class Game {
   private q: Question | null = null
   private orbs: Orb[] = []
   private qT = 0
+  private qTMax = 0
   private qStart = 0
   private qAnswered = false
 
@@ -327,8 +333,7 @@ export class Game {
     this.overcharge = 0
     this.revives = 0
     this.levelUps = 0
-    this.correct = 0
-    this.asked = 0
+    this.curriculum.reset()
     this.bestMs = 0
     this.spawnAcc = 0
     this.wardenAt = 42
@@ -1411,12 +1416,13 @@ export class Game {
   /* ------------------------------------------------------------ the core Q */
 
   private openQuestion(): void {
-    const difficulty = Math.max(1, Math.min(10, 1 + Math.floor(this.runT / 88)))
-    const q = this.host.next({ difficulty })
+    const q = this.curriculum.ask(this.host)
     this.q = q
-    this.asked++
     this.qAnswered = false
-    this.qT = 8.5
+    // The window widens with the arithmetic; it never narrows. Time here is
+    // measured, not budgeted.
+    this.qTMax = this.curriculum.thinkingSeconds()
+    this.qT = this.qTMax
     this.qStart = performance.now()
     this.mode = "core"
     this.timeScaleTarget = 0.15
@@ -1475,9 +1481,8 @@ export class Game {
     const ms = performance.now() - this.qStart
     if (!this.bestMs || ms < this.bestMs) this.bestMs = ms
     o.state = o.correct ? 1 : 2
-    this.host.report({ questionId: this.q.id, correct: o.correct, ms, answered: o.text })
-    if (o.correct) this.correct++
-    else for (const other of this.orbs) if (other.correct) other.state = 1
+    this.curriculum.answered(this.host, this.q, o.text, o.correct, ms)
+    if (!o.correct) for (const other of this.orbs) if (other.correct) other.state = 1
 
     if (o.correct) {
       this.audio.answerRight()
@@ -1523,7 +1528,10 @@ export class Game {
     if (!o) {
       this.ui.say("IT CLOSED", "", "#8fb6d8")
       this.audio.tick()
-      if (this.q) this.host.report({ questionId: this.q.id, correct: false, ms: 8500, answered: "" })
+      // Nothing is reported. The child did not answer, so there is no answer to
+      // file, and filing an empty one would record them as not knowing a skill
+      // they may simply have been slow to reach. See curriculum.ts.
+      if (this.q) this.curriculum.expired()
     }
     this.q = null
     this.orbs.length = 0
@@ -1549,9 +1557,7 @@ export class Game {
     this.cards = rollCards(this.build, this.rng, 3, this.runT / 60)
     this.sealedQ = null
     if (this.levelUps % 3 === 0) {
-      const difficulty = Math.max(1, Math.min(10, 1 + Math.floor(this.runT / 88)))
-      this.sealedQ = this.host.next({ difficulty })
-      this.asked++
+      this.sealedQ = this.curriculum.ask(this.host)
     }
     this.ui.showCards(this.cards, this.sealedQ, this.level)
   }
@@ -1573,9 +1579,8 @@ export class Game {
 
   private sealedAnswer(res: { correct: boolean; ms: number; answered: string }): void {
     if (!this.sealedQ) return
-    this.host.report({ questionId: this.sealedQ.id, correct: res.correct, ms: res.ms, answered: res.answered })
+    this.curriculum.answered(this.host, this.sealedQ, res.answered, res.correct, res.ms)
     if (res.correct) {
-      this.correct++
       this.audio.evolve()
       this.host.haptic("success")
       const reward = rollCards(this.build, this.rng, 1, this.runT / 60, true)[0]
@@ -1622,17 +1627,16 @@ export class Game {
   }
 
   private nextRiftQuestion(): void {
-    const difficulty = Math.max(1, Math.min(10, 1 + Math.floor(this.runT / 88)))
-    this.riftQ = this.host.next({ difficulty })
-    this.asked++
+    // A rift question is asked of a child who has just died, so it sits one
+    // step below what the run has earned. It is still earned, not clocked.
+    this.riftQ = this.curriculum.ask(this.host, -1)
     this.ui.showRift(this.riftQ, this.riftCharges, this.riftNeeded)
   }
 
   private riftAnswer(res: { correct: boolean; ms: number; answered: string }): void {
     if (!this.riftQ) return
-    this.host.report({ questionId: this.riftQ.id, correct: res.correct, ms: res.ms, answered: res.answered })
+    this.curriculum.answered(this.host, this.riftQ, res.answered, res.correct, res.ms)
     if (res.correct) {
-      this.correct++
       this.riftCharges++
       this.audio.answerRight()
       this.host.haptic("success")
@@ -1703,7 +1707,7 @@ export class Game {
         { label: "SURVIVED", value: `${mm}:${ss < 10 ? "0" : ""}${ss}` },
         { label: "SLAIN", value: String(this.kills) },
         { label: "LEVEL", value: String(this.level) },
-        { label: "ANSWERED", value: `${this.correct}/${this.asked}` },
+        { label: "ANSWERED", value: `${this.curriculum.solved}/${this.curriculum.asked}` },
         { label: "BEST", value: `${Math.floor(best / 60)}:${String(Math.floor(best % 60)).padStart(2, "0")}` },
       ],
       "THE DARK TOOK YOU",
@@ -1855,7 +1859,7 @@ export class Game {
       const ring = 172
       r.sprite(this.px, this.py, ring, ring, t * 0.4, 1, 0.86, 0.44, 0.30 * fade, SHAPE.RING, 0.012, 0.2)
       // Time as a closing iris, not a number.
-      const frac = Math.max(0, this.qT / 8.5)
+      const frac = Math.max(0, this.qT / Math.max(0.001, this.qTMax))
       r.sprite(this.px, this.py, ring * (0.35 + frac * 0.62), ring * (0.35 + frac * 0.62), -t * 0.9, 1, 0.7, 0.3, 0.34 * fade, SHAPE.RING, 0.02, 0)
       for (const o of this.orbs) {
         const hot = o.state === 1 ? 1 : 0

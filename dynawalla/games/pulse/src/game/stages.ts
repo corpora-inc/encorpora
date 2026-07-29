@@ -139,6 +139,26 @@ export const STAGES: readonly StageSpec[] = [
 ];
 
 /**
+ * Right answers that pass a stage.
+ *
+ * A stage used to end when its bars ran out, which meant the escalation was a
+ * wall clock wearing a bar counter: a child who missed every fraction gate for
+ * four minutes was still handed sixteenths and five-over-four, and — because
+ * `gateFloor` rises with the stage and the host reads it — harder arithmetic
+ * too. Surviving twenty bars is not evidence of anything; striking the right
+ * fraction is.
+ *
+ * Half the gates a stage offers, rounded up, and never fewer than one. That is
+ * demanding enough to mean something and forgiving enough that one fumbled
+ * fraction does not cost a stage — the bars simply come round again, with more
+ * gates on them, until the child has shown they can do it.
+ */
+export function gatesToClear(spec: StageSpec): number {
+  const gatesInStage = Math.max(1, Math.floor(spec.bars / spec.gateEvery));
+  return Math.max(1, Math.ceil(gatesInStage / 2));
+}
+
+/**
  * After the last written stage the game keeps going forever: the hardest shapes
  * come back a little faster each loop, capped so it stays humanly playable.
  */

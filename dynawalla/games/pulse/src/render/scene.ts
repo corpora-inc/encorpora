@@ -637,7 +637,10 @@ export class Scene {
     const tickDiv = run.stage.tickDiv;
     const first = Math.floor(nowBeat + l.uMin * BEATS_PER_BAR);
     const last = Math.ceil(nowBeat + l.uMax * BEATS_PER_BAR);
-    const gate = run.gate && !run.gate.resolved ? 1 : 0;
+    // Imminent, not merely open: the question now appears several seconds
+    // ahead of the bar it lands on, and the floor must not sit dimmed for all of
+    // it — the child is still playing notes while they read.
+    const gate = run.gateImminent() ? 1 : 0;
     const dim = 1 - gate * 0.45;
 
     // Lane rails: each lane is a track, not a row of floating things.
@@ -777,7 +780,7 @@ export class Scene {
     const l = this.layout;
     const laneCount = l.laneCount;
     const r = this.noteRadius();
-    const gateDim = run.gate && !run.gate.resolved ? 0.35 : 1;
+    const gateDim = run.gateImminent() ? 0.35 : 1;
 
     for (const n of run.notes.all()) {
       const u = (n.beat - nowBeat) / BEATS_PER_BAR;

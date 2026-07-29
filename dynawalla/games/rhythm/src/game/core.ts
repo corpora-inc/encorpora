@@ -40,7 +40,26 @@ const BAR_RING = 64;
 const NOTE_HORIZON = 3.4;
 const AUDIO_HORIZON = 0.3;
 const LEAD_IN = 0.45;
-const MAX_CHARGE = 5;
+export const MAX_CHARGE = 5;
+
+/**
+ * The floor on how long a question is on screen before its answer has to be
+ * struck, in seconds.
+ *
+ * The lead used to be a flat two bars — `revealT0 + spb * 8` — and `spb` comes
+ * straight off `bpm`, which `applyDifficulty` raises with the difficulty. So
+ * the reading window was `f(difficulty)` and it pointed the wrong way: getting
+ * good sped the music up, and faster music gave a child LESS time to work out a
+ * HARDER sum. At difficulty 1 that was 4.9 s; by difficulty 10 it was 3.2 s.
+ *
+ * `dynawalla/docs/EXPERIENCE_DESIGN.md`: "COMPREHENSION — not budgeted. The
+ * child's time. Measured, never limited." A gate cannot be literally unlimited
+ * — it is a bar of music — but the lead is now measured in seconds and the
+ * inhale is stretched by however many bars it takes to cover them. Six seconds
+ * is the p50 cadence target for two-digit-with-regrouping and the p90 for a
+ * single-digit fact; at slow tempos a child gets more, never less.
+ */
+export const READ_SEC = 6;
 
 export type Note = {
   active: boolean;
@@ -145,8 +164,11 @@ export class Game {
   bestCombo = 0;
   charge = MAX_CHARGE;
   difficulty = 1;
+  /** Gates the child actually answered. An unanswered one is not an attempt. */
   gatesTotal = 0;
   gatesCorrect = 0;
+  /** Gates that closed with nobody striking a tile. Never reported, never punished. */
+  gatesExpired = 0;
   notesHit = 0;
   notesMissed = 0;
   perfectRun = 0;
@@ -189,6 +211,14 @@ export class Game {
   private audioCursor = 0;
   private cycleStartBar = 0;
   private grooveBars = 6;
+  /**
+   * Bars of inhale between the reveal and the gate, fixed for the whole of the
+   * current cycle so a sector change mid-cycle cannot move the gate bar out
+   * from under a question that is already on screen. Sized in `applyDifficulty`
+   * so the reveal-to-strike lead is never under READ_SEC.
+   */
+  private inhaleBars = 1;
+  private cycleInhale = 1;
   private gateSeq = 0;
   private schedTimer = 0;
   private laneLock = [0, 0, 0];
@@ -273,6 +303,7 @@ export class Game {
     this.barTime[0] = t;
     this.barSpb[0] = 60 / this.bpm;
     this.applyDifficulty();
+    this.cycleInhale = this.inhaleBars;
     this.barSpb[0] = 60 / this.bpm;
   }
 
@@ -320,6 +351,12 @@ export class Game {
     const d = this.difficulty;
     this.bpm = 92 + d * 6 + this.sector.bpmBias;
     this.grooveBars = d < 3 ? 6 : d < 6 ? 5 : 4;
+    // Bars get shorter as the tempo climbs, so the inhale gets longer to hold
+    // the reading window at or above READ_SEC. The lead is [reveal][inhale × n],
+    // so n bars of inhale buy (1 + n) bars of reading. Sparseness and time, not
+    // less feedback: an inhale bar is the sparsest bar the game plays.
+    const barDur = (60 / this.bpm) * 4;
+    this.inhaleBars = Math.max(1, Math.ceil(READ_SEC / barDur) - 1);
     this.eng.setDelayTime((60 / this.bpm) * 0.75);
   }
 
@@ -373,11 +410,12 @@ export class Game {
   private roleOf(bar: number): "groove" | "reveal" | "inhale" | "gate" | "aftermath" | "payoff" {
     const i = bar - this.cycleStartBar;
     const G = this.grooveBars;
+    const H = this.cycleInhale;
     if (i < G - 1) return "groove";
     if (i === G - 1) return "reveal";
-    if (i === G) return "inhale";
-    if (i === G + 1) return "gate";
-    if (i === G + 2) return "aftermath";
+    if (i < G + H) return "inhale";
+    if (i === G + H) return "gate";
+    if (i === G + H + 1) return "aftermath";
     return "payoff";
   }
 
@@ -385,9 +423,12 @@ export class Game {
   private planBar(bar: number): boolean {
     const idx = bar % BAR_RING;
     // Roll the cycle over first, so roleOf() is asked about the right cycle.
-    if (bar - this.cycleStartBar >= this.grooveBars + 5) {
+    if (bar - this.cycleStartBar >= this.grooveBars + 4 + this.cycleInhale) {
       this.cycleStartBar = bar;
       this.applyDifficulty();
+      // Pinned for the whole cycle: roleOf must not change shape underneath a
+      // gate that is already planned.
+      this.cycleInhale = this.inhaleBars;
     }
     const role = this.roleOf(bar);
     const t0 = this.barTime[idx]!;
@@ -510,8 +551,9 @@ export class Game {
     g.active = true;
     g.q = q;
     g.revealAt = revealT0;
-    // Two bars after the reveal bar starts: [reveal][inhale][gate]
-    g.time = revealT0 + spb * 8;
+    // [reveal][inhale × cycleInhale][gate] — as many inhale bars as it takes for
+    // the lead to cover READ_SEC seconds. See READ_SEC.
+    g.time = revealT0 + spb * 4 * (1 + this.cycleInhale);
     g.resolved = false;
     g.correct = false;
     g.answered = "";
@@ -533,8 +575,9 @@ export class Game {
     g.correctLane = lane;
     this.activeGate = g;
 
-    // Tension: a riser through the inhale bar into the gate.
-    if (this.soundOn) this.eng.riser(revealT0 + spb * 4, spb * 4, 0.85);
+    // Tension: a riser through the LAST inhale bar into the gate, so a longer
+    // inhale reads as more room to think rather than a longer wind-up.
+    if (this.soundOn) this.eng.riser(revealT0 + spb * 4 * this.cycleInhale, spb * 4, 0.85);
   }
 
   private placeChoiceNotes(t0: number, spb: number): void {
@@ -614,6 +657,46 @@ export class Game {
       this.kick(1.0, 0.965, 0.85);
       if (this.charge <= 0) this.enterBreakdown();
     }
+  }
+
+  /**
+   * The gate closed and nobody struck a tile.
+   *
+   * This used to run the whole wrong path — charge −2, difficulty −0.22, and a
+   * `report` of `{ correct: false, answered: "" }`. The `Host` this game mounts
+   * against (dynawalla/packs/shared/game-host/index.ts) forwards `report`
+   * straight to `items.answer` and *discards* the game's own `correct`, so an
+   * empty response was filed as an attempt the child got wrong. Motor lateness
+   * became indistinguishable from an arithmetic error, in the one record that
+   * decides what a child is asked next.
+   *
+   * There is no way to say "unanswered" on that contract — `report` is the only
+   * method the game-facing `Host` exposes, and the SDK's `items.skip` is not on
+   * it. So the truthful move is silence, and the ladder does not move either: a
+   * child who was still computing has told us nothing about what they know.
+   *
+   * The feedback stays. The mix muffles and the bell plays the correct
+   * subdivision as a ghost rhythm — the game demonstrates the answer rather
+   * than lecturing about it — but nothing is recorded and nothing is taken.
+   */
+  private expireGate(g: Gate): void {
+    if (g.resolved) return;
+    g.resolved = true;
+    g.correct = false;
+    g.answered = "";
+    this.gatesExpired++;
+    const t = this.eng.now;
+    const spb = 60 / this.bpm;
+    this.emit("gate-wrong", g.correctLane, null, true, 0.55);
+    if (this.soundOn) {
+      this.eng.muffle(spb * 4, 520);
+      const dcells = g.cells ?? 4;
+      const n = Math.min(dcells, 8);
+      for (let i = 0; i < n; i++) {
+        this.eng.bell(t + 0.35 + (i * spb * 4) / n, this.sector.root + 48, 0.4, 0.3, 0.6);
+      }
+    }
+    this.kick(0.45, 0.99, 0.3);
   }
 
   private advanceSector(): void {
@@ -892,7 +975,7 @@ export class Game {
           n.state = 2;
           if (g && !g.resolved) {
             for (const o of this.notes) if (o.active && o.isChoice && o.gateId === n.gateId) o.state = 2;
-            this.resolveGate(g, "", false, (now - g.revealAt) * 1000);
+            this.expireGate(g);
           }
         } else {
           this.registerMiss(n, false);

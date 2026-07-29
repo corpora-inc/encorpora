@@ -30,7 +30,7 @@ import {
 import { barNotes, BEATS_PER_BAR, laneVoices, type ChartNote } from "./chart.ts";
 import { buildGate, DEFAULT_FIT, type BuiltGate } from "./gate.ts";
 import { classify, multiplierFor, NoteQueue, WINDOWS, type Judgment, type LiveNote } from "./judge.ts";
-import { stageAt, type StageSpec } from "./stages.ts";
+import { gatesToClear, stageAt, type StageSpec } from "./stages.ts";
 import { makeRng, hashSeed, type Rng } from "../rng.ts";
 
 export type GateOutcome = "correct" | "wrong" | "expired";
@@ -59,6 +59,24 @@ export type RunOptions = {
   /** Start partway up the escalation. For QA and for showing someone the top end. */
   startStage?: number;
 };
+
+/**
+ * The floor on how long a fraction question is on screen before its answer
+ * crosses the strike line, in seconds.
+ *
+ * The gate window used to be one bar plus whatever the lookahead happened to
+ * be, and the lookahead is a multiple of the bar — so the reading window was
+ * `f(BPM)`, and BPM is this game's difficulty knob. Getting good made the
+ * music faster, and faster music gave a child *less* time to work out a harder
+ * sum. That is the coupling `dynawalla/docs/EXPERIENCE_DESIGN.md` forbids:
+ * "COMPREHENSION — not budgeted. The child's time. Measured, never limited."
+ *
+ * Six seconds is the p50 cadence target for two-digit-with-regrouping and the
+ * p90 for a single-digit fact. It is a floor, not a cap: at slow tempos the
+ * bar is longer and the child gets more. Nothing about it moves with the
+ * tempo, which is the entire point.
+ */
+export const GATE_READ_SEC = 6;
 
 const HEALTH = {
   miss: -0.05,
@@ -101,6 +119,8 @@ export class Run {
   misses = 0;
   gatesCorrect = 0;
   gatesSeen = 0;
+  /** Gates cleared IN THE CURRENT STAGE. This, not the bar count, passes it. */
+  stageGatesCorrect = 0;
 
   layers = new Set<LayerId>(["bass"]);
   gate: ActiveGate | null = null;
@@ -135,7 +155,12 @@ export class Run {
       () => this.engine.now(),
       this.timeline,
       (bar, t) => this.fillBar(bar, t),
-      { lookaheadSec: () => this.barSeconds() * 1.2 + 0.25 },
+      {
+        // One bar of future for the playfield, plus a floor that does not move
+        // with the tempo so a gate is always readable for GATE_READ_SEC before
+        // its answer arrives. See GATE_READ_SEC.
+        lookaheadSec: () => Math.max(this.barSeconds() * 1.2 + 0.25, GATE_READ_SEC),
+      },
     );
   }
 
@@ -200,8 +225,15 @@ export class Run {
     this.bar = bar;
     const beat0 = this.timeline.beatOfBar(bar);
 
-    // --- Stage advance lands on the bar line, tempo and all.
-    if (bar > 0 && bar - this.stageStartBar >= this.stage.bars) {
+    // --- Stage advance lands on the bar line, tempo and all — but only once
+    // the child has actually cleared the stage. Bars are how a stage is paced;
+    // right answers are how it is passed. A stage whose gates are still being
+    // missed simply comes round again, with more gates on it.
+    if (
+      bar > 0 &&
+      bar - this.stageStartBar >= this.stage.bars &&
+      this.stageGatesCorrect >= gatesToClear(this.stage)
+    ) {
       this.setStage(this.stageIndex + 1, beat0);
     }
 
@@ -307,6 +339,7 @@ export class Run {
     this.stageIndex = Math.max(0, index);
     this.stage = stageAt(this.stageIndex);
     this.stageStartBar = this.timeline.barOfBeat(atBeat);
+    this.stageGatesCorrect = 0;
     this.timeline.setTempoAtBeat(atBeat, this.stage.bpm);
     const anyHost = this.host as Host & { setFloor?: (d: number) => void };
     anyHost.setFloor?.(this.stage.gateFloor);
@@ -325,7 +358,15 @@ export class Run {
     // the moment it stops.
     if (this.engine.ctx.state !== "running") void this.engine.resume();
     const tHit = this.perfToHeard(perfMs);
-    const gateActive = this.gate !== null && !this.gate.resolved;
+    // A gate candidate may be struck from ANY lane — its position in the bar is
+    // its value, and which lane your thumb was over is not part of the answer.
+    // That licence lasts exactly as long as a candidate is strikeable, not for
+    // the whole time the question is on screen: with a tempo-independent
+    // reading window the question is up for seconds, and lane discipline has to
+    // survive it.
+    const gateActive = this.notes
+      .gateNotes()
+      .some((n) => Math.abs(n.time - tHit) <= WINDOWS.good);
     const res = this.notes.hit(lane, tHit, gateActive);
     if (!res) {
       this.onStray(lane, tHit);
@@ -397,6 +438,7 @@ export class Run {
 
     if (info.correct) {
       this.gatesCorrect++;
+      this.stageGatesCorrect++;
       this.gateStreak++;
       this.combo++;
       this.bestCombo = Math.max(this.bestCombo, this.combo);
@@ -478,6 +520,19 @@ export class Run {
     this.fx.stumble();
   }
 
+  /**
+   * Whether the gate bar is close enough that the playfield should get out of
+   * the way. Separate from `gate` being set, because the question now appears
+   * seconds ahead of the bar it lands on and the field must not sit dimmed for
+   * all of it.
+   */
+  gateImminent(): boolean {
+    const g = this.gate;
+    if (!g || g.resolved) return false;
+    const start = this.timeline.timeAt(this.timeline.beatOfBar(g.bar));
+    return this.heard() > start - this.barSeconds();
+  }
+
   multiplier(): number {
     const m = multiplierFor(this.combo);
     return this.bar <= this.overdriveUntilBar ? m * 2 : m;
@@ -526,12 +581,14 @@ export class Run {
         g.resolved = true;
         this.gateStreak = 0;
         this.health = Math.max(0, this.health + HEALTH.gateExpired);
-        this.host.report({
-          questionId: g.built.questionId,
-          correct: false,
-          ms: Math.max(1, Math.round(performance.now() - g.openedAtPerf)),
-          answered: "",
-        });
+        // Nothing is reported. Nobody struck a candidate, so there is no
+        // response to file; the old code filed an empty one marked incorrect,
+        // which recorded a child who was still working as a child who cannot do
+        // the sum. The `Host` this game mounts against
+        // (dynawalla/packs/shared/game-host/index.ts) forwards `report` straight
+        // to `items.answer` and drops the game's own `correct` — so an empty
+        // `answered` IS a wrong attempt in the learner's record. Silence is the
+        // only truthful option the contract offers.
         this.duck(0.5);
         this.fx.gateResolved("expired", null, g.built);
         this.checkStumble();
