@@ -103,6 +103,26 @@ targets.
 
 ---
 
+## The frame this game does not own
+
+The host paints an exit control in the top-LEFT corner and the shared
+how-to-play button in the top-RIGHT, over every pack, and the pack declares
+`viewport-fit=cover`, which opts the canvas into the notch and the home
+indicator. A canvas cannot read `env()`.
+
+So the world — the sheet, the husks, the motes, the ship, the resonator — still
+uses every pixel, and the **chrome** is laid out by `render/hud.ts` inside the
+safe rectangle from `packs/shared/game-chrome`, starting below the two 44px
+corners. Chrome overlays rather than reserving a band: reserving one costs 67px,
+which is 12% of a 568px phone.
+
+How to play comes from the same shared module, so it looks and dismisses the
+same way in every game. It is reachable **during** play, because the moment a
+child needs the rules is never the title screen — and opening it holds the
+world, on the same guards the host's sheet uses.
+
+---
+
 ## Reduced motion is a branch, not a switch
 
 Turning the sheet off would delete the only cue that says *where a number came
@@ -136,14 +156,15 @@ src/
   game/best.ts       the longest chain, guarded for a pack frame
   sim/grid.ts     the mass-spring sheet that tears and re-knits
   render/         palette, scene, sparks
+  render/hud.ts   where the chrome may be drawn: the safe area, minus two corners
   audio/audio.ts  asset-free Web Audio, C5–C6 pentatonic
-  test/           71 tests: rules, not rendering
+  test/           94 tests: rules, wiring, and where the chrome lands
 ```
 
 ## Tests
 
 ```
-npm test        71 tests
+npm test        94 tests
 npm run tsc     0 errors
 npm run build   the library build
 npm run build:pack   the pack build → dist-pack/
@@ -171,3 +192,16 @@ The ones that matter:
   game where nothing throws and nothing can be beaten.
 * `grid.test.ts` — no NaN, always returns to rest, always knits back, and the
   reduced-motion branch is a branch.
+* `chrome.test.ts` — drives the real `Scene.draw` against a recording context at
+  five viewports, with and without a notch, and asserts that every word the
+  child reads is inside the safe area and clear of the host's two 44px corners,
+  and that the tile bar — which is a touch target, because tapping it drops the
+  hold — is reachable. **Verified to fail with the layout reverted**, not by
+  reading it.
+* `mount.test.ts` — the shell, including the one that got away: flying into the
+  resonator asserts the hold. `Arena.enter` was covered exhaustively by the
+  rules tests and **never called by the shell**, so the entire reasoning layer
+  was unreachable in the shipped game while every test was green. It also
+  asserts that reading the manual holds the world and that closing it lets go,
+  because a manual that leaves a twin-stick arena running is a manual a child
+  cannot afford to open.

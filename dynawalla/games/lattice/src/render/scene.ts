@@ -9,10 +9,16 @@
 // shots, the ship, the sparks, and then the chrome — the factor tile bar, which
 // is the whole passive layer made legible and is never allowed to be covered by
 // anything.
+//
+// The world uses the whole canvas. The chrome uses `hudLayout`, which keeps it
+// inside the safe area and clear of the host's two corner controls — see
+// `hud.ts` for why those are different rectangles.
 
+import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import type { Arena, Body, Resonator } from "../game/arena.ts"
 import { HUSK_R, MOTE_R, RESONATOR_R, SHIP_R, SHOT_R } from "../game/arena.ts"
 import type { Grid } from "../sim/grid.ts"
+import { hudLayout, type HudLayout } from "./hud.ts"
 import { Sparks } from "./particles.ts"
 import {
   BRASS,
@@ -56,6 +62,12 @@ export class Scene {
    * knows where it ended up.
    */
   private barRect = { x: 0, y: 0, w: 0, h: 0 }
+  /**
+   * Where the chrome may be drawn: inside the safe area and below the host's
+   * two corner controls. Recomputed on every resize, because a rotation swaps
+   * the insets over and Split View changes them without one.
+   */
+  private hud: HudLayout
 
   private readonly canvas: HTMLCanvasElement
   private reduced: boolean
@@ -67,6 +79,7 @@ export class Scene {
     if (!ctx) throw new Error("lattice: no 2d context")
     this.ctx = ctx
     this.sparks = new Sparks(reduced)
+    this.hud = hudLayout(320, { x: 0, y: 0, w: 320, h: 320 })
     this.resize()
   }
 
@@ -84,6 +97,8 @@ export class Scene {
     this.canvas.width = Math.round(this.cssWidth * this.dpr)
     this.canvas.height = Math.round(this.cssHeight * this.dpr)
     this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0)
+    // The world gets the whole canvas; the chrome gets the safe rectangle.
+    this.hud = hudLayout(this.cssWidth, safeRect(this.cssWidth, this.cssHeight))
     return { width: this.cssWidth, height: this.cssHeight }
   }
 
@@ -353,18 +368,13 @@ export class Scene {
   private drawTileBar(arena: Arena): void {
     const ctx = this.ctx
     const tiles = arena.bank.tiles
-    const h = this.cssHeight
-    const w = this.cssWidth
-    const size = Math.max(26, Math.min(40, w / 16))
-    const gap = size * 0.22
-    const dotW = size * 0.5
-    const y = h - size * 1.5
+    const { size, gap, dotW, y, cx } = this.hud.bar
 
     const total = tiles.length * size + Math.max(0, tiles.length - 1) * dotW
     const valueText = tiles.length === 0 ? "" : `= ${arena.bank.value}`
     ctx.font = chromeFont(size * 0.8, 600)
     const valueW = valueText === "" ? 0 : ctx.measureText(valueText).width + gap * 2
-    const left = (w - (total + valueW)) / 2
+    const left = cx - (total + valueW) / 2
     let x = left
     // A 44px minimum hit zone around the bar, per the touch-target rule — the
     // bar is small type and the tap that drops a hold must not be fiddly.
@@ -414,7 +424,7 @@ export class Scene {
         ctx.fillStyle = INK_DIM
         ctx.font = chromeFont(size * 0.52, 500)
         ctx.textAlign = "center"
-        ctx.fillText("SWEEP THE LIT ONES", w / 2, y)
+        ctx.fillText("SWEEP THE LIT ONES", cx, y)
       }
     }
   }
@@ -424,22 +434,24 @@ export class Scene {
     state: { best: number; paused: boolean; stalled: boolean },
   ): void {
     const ctx = this.ctx
-    const size = Math.max(12, Math.min(17, this.cssWidth / 46))
+    const { size, top, lineH, left, right, cx } = this.hud.status
     ctx.font = chromeFont(size, 600)
     ctx.textAlign = "left"
     ctx.textBaseline = "top"
     ctx.fillStyle = INK_DIM
-    ctx.fillText(`OPENED ${arena.opened}`, 14, 12)
+    ctx.fillText(`OPENED ${arena.opened}`, left, top)
     ctx.fillStyle = arena.chain > 0 ? BRASS_LIGHT : INK_DIM
-    ctx.fillText(`CHAIN ${arena.chain}`, 14, 12 + size * 1.5)
+    ctx.fillText(`CHAIN ${arena.chain}`, left, top + lineH)
     ctx.textAlign = "right"
     ctx.fillStyle = INK_DIM
-    ctx.fillText(`BEST ${state.best}`, this.cssWidth - 14, 12)
+    ctx.fillText(`BEST ${state.best}`, right, top)
 
     if (state.stalled) {
+      // On its own row. Centred at the counters' height it would be shouldered
+      // by BEST on a phone, and one row lower it would sit on CHAIN.
       ctx.textAlign = "center"
       ctx.fillStyle = OXIDE
-      ctx.fillText("NO RESONATOR — SWEEP ON", this.cssWidth / 2, 12)
+      ctx.fillText("NO RESONATOR — SWEEP ON", cx, top + lineH * 2)
     }
 
     if (this.banner) {
@@ -449,7 +461,7 @@ export class Scene {
       ctx.textBaseline = "middle"
       ctx.fillStyle = this.banner.tint
       ctx.font = chromeFont(Math.max(20, Math.min(38, this.cssWidth / 20)), 700)
-      ctx.fillText(this.banner.text, this.cssWidth / 2, this.cssHeight * 0.46)
+      ctx.fillText(this.banner.text, this.hud.banner.cx, this.hud.banner.cy)
       ctx.globalAlpha = 1
     }
   }
@@ -463,7 +475,7 @@ export class Scene {
     ctx.font = chromeFont(Math.max(14, Math.min(20, this.cssWidth / 40)), 600)
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
-    ctx.fillText("PAUSED", this.cssWidth / 2, this.cssHeight / 2)
+    ctx.fillText("PAUSED", this.hud.sheet.cx, this.hud.sheet.cy)
   }
 
   /** Did a press land on the tile bar? That gesture drops the hold. */
