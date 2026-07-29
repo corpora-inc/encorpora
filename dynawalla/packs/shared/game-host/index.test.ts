@@ -43,10 +43,14 @@ type Fake = {
   readonly asks: Ask[]
   /** Every `answer` call, in order. */
   readonly answers: { itemId: string; response: string }[]
+  /** Every `items.skip` call, in order. */
+  readonly skips: string[]
   /** The host's verdict on the next answer, whatever the pack claims. */
   verdict: boolean
   /** Make `answer` reject, to prove the pack's own belief still survives. */
   answerFails: boolean
+  /** Make `skip` reject, as an older host with no such method would. */
+  skipFails: boolean
 }
 
 /**
@@ -61,14 +65,17 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
   const rungs = options.rungs ?? RUNGS
   const asks: Ask[] = []
   const answers: { itemId: string; response: string }[] = []
+  const skips: string[] = []
   const canonicals = new Map<string, string>()
   let sequence = 0
 
   const fake: Fake = {
     verdict: true,
     answerFails: false,
+    skipFails: false,
     asks,
     answers,
+    skips,
     client: {
       packId: "dynawalla.test",
       hostVersion: "0.1.0",
@@ -117,7 +124,13 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
           advance: fake.verdict,
         } satisfies Judgement)
       },
-      skip: () => Promise.resolve(),
+      skip: (itemId) => {
+        skips.push(itemId)
+        // What an older host — one shipped before `items.skip` existed — would
+        // do with the call, so the adapter is held to surviving it.
+        if (fake.skipFails) return Promise.reject(new Error("unknown method: items.skip"))
+        return Promise.resolve()
+      },
       reveal: (itemId) => Promise.resolve(canonicals.get(itemId) ?? ""),
       learnerSummary: () => Promise.resolve({ skills: [] }),
       haptic: () => Promise.resolve(),
@@ -381,6 +394,195 @@ test("an outcome is recorded once, and only for a question this module served", 
   mounted.host.report({ questionId: "", correct: true, ms: 100, answered: "4" })
   await settle()
   assert.equal(mounted.host.recentOutcomes().length, 1)
+  mounted.dispose()
+})
+
+// ─── A question that was never answered ──────────────────────────────────────
+//
+// A timeout is not a wrong answer. Six games used to report one as
+// `{ correct: false, answered: "" }`, which this adapter forwarded to
+// `items.answer` as an empty response — and an empty response does not parse,
+// so the host filed a miss and stepped the child's ladder down for not having
+// finished in time. Those games now say nothing at all, which is honest and
+// leaves the item open. `skip` is the ending that is honest *and* closed.
+
+test("a question the child never answered is closed on the host, and closed as a skip", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  const q = mounted.host.next()
+  mounted.host.skip(q.id)
+  await settle()
+
+  assert.deepEqual(fake.skips, [q.id], `items.skip was not reached: ${JSON.stringify(fake.skips)}`)
+  // And emphatically not through the method that records a wrong attempt. This
+  // is the line the whole fix exists for: an empty response *is* a miss.
+  assert.deepEqual(
+    fake.answers,
+    [],
+    `a skip reached items.answer as ${JSON.stringify(fake.answers)}, which is a recorded miss`,
+  )
+  mounted.dispose()
+})
+
+test("a skip is an absence of evidence: no outcome, no verdict, no progress", async () => {
+  const fake = fakeHost()
+  const outcomes: unknown[] = []
+  const progress: number[] = []
+  const mounted = attachGameHost(fake.client, {
+    onOutcome: (o) => outcomes.push(o),
+    onProgress: (f) => progress.push(f),
+  })
+  await mounted.warm()
+
+  const skipped = mounted.host.next()
+  mounted.host.skip(skipped.id)
+  await settle()
+
+  assert.deepEqual(outcomes, [], "a skip produced an outcome a pacing controller would read")
+  assert.deepEqual(
+    mounted.host.recentOutcomes(),
+    [],
+    "a skip is in recentOutcomes, where a controller will count it against the child",
+  )
+  assert.deepEqual(progress, [], "a skip advanced the session progress, which counts answers")
+
+  // An answered question, immediately after, still does all three — the skip
+  // suppressed the record of itself and nothing else.
+  const answered = mounted.host.next()
+  mounted.host.report({ questionId: answered.id, correct: true, ms: 400, answered: "7" })
+  await settle()
+  assert.equal(mounted.host.recentOutcomes().length, 1, "a real answer stopped being recorded")
+  assert.equal(progress.length, 1, "a real answer stopped advancing progress")
+  mounted.dispose()
+})
+
+test("skipping is final: an answer reported afterwards is not recorded either", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  const q = mounted.host.next()
+  mounted.host.skip(q.id)
+  // A late strike, a queued input, a second code path in the game. Whatever it
+  // is, the item is closed, and reopening it is how a timeout becomes a miss by
+  // another route.
+  mounted.host.report({ questionId: q.id, correct: false, ms: 9000, answered: "" })
+  await settle()
+
+  assert.deepEqual(
+    fake.answers,
+    [],
+    `an answer after a skip reached the host: ${JSON.stringify(fake.answers)}`,
+  )
+  assert.deepEqual(mounted.host.recentOutcomes(), [], "an answer after a skip was recorded")
+  mounted.dispose()
+})
+
+test("and the other way round: a skip after an answer does not close it twice", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  const q = mounted.host.next()
+  mounted.host.report({ questionId: q.id, correct: true, ms: 400, answered: "7" })
+  mounted.host.skip(q.id)
+  // Ids this module never served, and the id the dry pool hands out.
+  mounted.host.skip("never-served")
+  mounted.host.skip("")
+  await settle()
+
+  assert.equal(mounted.host.recentOutcomes().length, 1, "the answer was lost")
+  assert.deepEqual(fake.skips, [], `unserved ids reached the wire: ${JSON.stringify(fake.skips)}`)
+  mounted.dispose()
+})
+
+test("a skipped question does not come straight back, with or without a flush", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  const skipped = mounted.host.next()
+  mounted.host.skip(skipped.id)
+  await settle()
+
+  const later: string[] = []
+  for (let i = 0; i < 30; i++) {
+    later.push(mounted.host.next().id)
+    if (i === 4) mounted.host.flush()
+    if (i % 6 === 0) await settle(2)
+  }
+  assert.ok(
+    !later.includes(skipped.id),
+    `the question that just timed out was served again at position ${String(later.indexOf(skipped.id) + 1)}`,
+  )
+  mounted.dispose()
+})
+
+test("a skip asks for nothing: it does not move the difficulty or flush the pool", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  await settle()
+  fake.asks.length = 0
+
+  for (let i = 0; i < 6; i++) {
+    const q = mounted.host.next()
+    mounted.host.skip(q.id)
+    await settle(2)
+  }
+
+  // A child who ran out of time has told us nothing about what they know, so
+  // this module says nothing about it either. Anything else would be this
+  // module deciding a difficulty, which is a controller's job and not its own.
+  assert.equal(
+    fake.asks.every((ask) => ask.difficulty === undefined && ask.maxDifficulty === undefined),
+    true,
+    `skipping put a difficulty on the wire: ${JSON.stringify(fake.asks.slice(0, 4))}`,
+  )
+  mounted.dispose()
+})
+
+test("a host that cannot take a skip says so once, and the item is still not recorded", async () => {
+  const fake = fakeHost()
+  fake.skipFails = true
+  const mounted = attachGameHost(fake.client)
+  const said = await withConsole(async () => {
+    await mounted.warm()
+    const first = mounted.host.next()
+    mounted.host.skip(first.id)
+    // The same failure again, and again: a game with a per-gate timer produces
+    // one of these a second, and a message printed a thousand times is not read.
+    for (let i = 0; i < 5; i++) {
+      const q = mounted.host.next()
+      mounted.host.skip(q.id)
+    }
+    await settle()
+    mounted.host.report({ questionId: first.id, correct: false, ms: 9000, answered: "" })
+    await settle()
+  })
+
+  const complaints = said.filter((line) => line.includes("could not be closed"))
+  assert.equal(complaints.length, 1, `said ${String(complaints.length)} times: ${said.join(" | ")}`)
+  // The half of the fix that does not need the host: the item is gone from this
+  // module's ledger, so nothing can turn it into a wrong attempt afterwards.
+  assert.deepEqual(fake.answers, [], "a failed skip left the item answerable, so it became a miss")
+  assert.deepEqual(mounted.host.recentOutcomes(), [], "a failed skip still produced an outcome")
+  mounted.dispose()
+})
+
+test("a pack that never skips never touches the skip wire", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  for (let i = 0; i < 10; i++) {
+    const q = mounted.host.next({ difficulty: 4 })
+    mounted.host.report({ questionId: q.id, correct: true, ms: 300, answered: q.answer })
+    await settle(2)
+  }
+  assert.deepEqual(fake.skips, [], "the twenty-seven packs that never skip started skipping")
+  assert.equal(fake.answers.length, 10)
   mounted.dispose()
 })
 

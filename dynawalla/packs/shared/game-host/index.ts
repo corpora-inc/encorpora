@@ -25,6 +25,10 @@
 // this module did not serve, is dropped. A pack that double-reports a chip
 // would otherwise inflate a child's record, and the record only ever rises.
 //
+// **A question can also be closed unanswered.** `skip` is the other ending, and
+// it is not a quiet synonym for a wrong answer — see the method for what it
+// costs and what it deliberately does not touch.
+//
 // ── The difficulty wire ──────────────────────────────────────────────────────
 //
 // This module used to be a one-way pipe. `next()` took no arguments, so the ten
@@ -184,6 +188,44 @@ export type GameHost = {
    */
   next(request?: DifficultyRequest): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
+  /**
+   * The child did not answer this one. Close it and record nothing.
+   *
+   * **Why it has to be here.** `report` is the only other ending, and it
+   * forwards `answered` to `items.answer` — so a timeout reported as
+   * `{ correct: false, answered: "" }` is not filed as "unanswered", it is
+   * filed as a MISS: the empty string does not parse, the learner model takes
+   * a wrong attempt, and the ladder steps down. beam, rhythm, horde, pulse,
+   * truedraw and trebuchet all did exactly that until this week. They now say
+   * nothing instead, which is honest but leaves the item open at both ends.
+   * This is the third option, and the only one that is both honest and closed.
+   *
+   * **What it does.** Drops the pack-side record of the question — which is
+   * what stops a later `report` on the same id from reaching the host at all —
+   * and calls the SDK's `items.skip`, which marks the item closed in the
+   * host's ledger so that nothing arriving afterwards can be recorded against
+   * it either.
+   *
+   * **What it deliberately does not do.** It does not produce an `Outcome`, so
+   * a pacing controller reading `recentOutcomes` never sees a skip as a wrong
+   * answer — it sees an absence, which is what it is. It does not advance the
+   * session progress fraction, because that counts answered questions. It does
+   * not move the difficulty, request one, or flush: a child who ran out of time
+   * has told us nothing about what they know, and a module that guessed from
+   * that would be deciding something, which this module does not do.
+   *
+   * **It does not put the question back.** A skipped question was already taken
+   * out of the prefetch pool when it was handed over and is not returned to it,
+   * so the next `next()` is a new question. Being handed the same sum again the
+   * instant the timer runs out reads as nagging, and a child who was still
+   * carrying the hundreds column does not need to be asked twice.
+   *
+   * Once per item, like `report`: an id that was never served, or that has
+   * already been answered or skipped, is dropped. Skipping is final — an answer
+   * reported after a skip is not recorded, and neither is a skip after an
+   * answer.
+   */
+  skip(questionId: string): void
   haptic(kind: HapticKind): void
   prefersReducedMotion(): boolean
   /** Optional host extension FUSE feature-detects: bias the stream by value. */
@@ -402,6 +444,8 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let lastServed: Question | null = null
   let lastAsk = Date.now()
   let reported = 0
+  /** Whether a failed `items.skip` has already been said out loud. */
+  let skipFailed = false
 
   /** The difficulty the game is asking for, 0..1, or null for "whatever". */
   let target: number | null = null
@@ -670,6 +714,29 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
             land(correct, false)
           },
         )
+    },
+
+    skip: (questionId) => {
+      const origin = served.get(questionId)
+      if (questionId === "" || origin === undefined) return
+      // Deleted first, and this is the half of the fix that works even when the
+      // host cannot be reached: with the entry gone, a `report` on this id can
+      // no longer produce an `items.answer` call, so nothing about this
+      // question can turn into a wrong attempt afterwards.
+      served.delete(questionId)
+      void client.skip(questionId).catch((error: unknown) => {
+        if (skipFailed) return
+        skipFailed = true
+        // Loud, once. The consequence is small and worth stating precisely: the
+        // item stays open in the host's ledger until it is evicted, and an open
+        // item costs a child nothing — it is never re-served, never recorded,
+        // and never moves the ladder on its own.
+        console.error(
+          "[pack] an unanswered question could not be closed on the host; it is left open " +
+            "rather than recorded, which costs the child nothing",
+          error,
+        )
+      })
     },
 
     haptic: (kind) => {
