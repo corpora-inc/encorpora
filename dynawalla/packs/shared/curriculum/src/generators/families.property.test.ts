@@ -291,12 +291,72 @@ test("sweep: the checker agrees with its own output, and rejects every distracto
   }
 });
 
-test("sweep: no answer is negative, and no fraction answer has a zero denominator", () => {
+/**
+ * Negativity, and the one place in this sweep where an absolute claim became a
+ * conditional one.
+ *
+ * This test asserted that **no** answer in the graph is below zero, and that was
+ * true of every item the program had until integers arrived. The claim worth
+ * making now is the one a renderer depends on: an answer is below zero only where
+ * the item's own schema says it may be, because `AnswerSchema.integer.signed` is
+ * what tells an entry surface to offer a minus key. An item that answers `−3`
+ * behind an unsigned schema is a card a child cannot answer correctly, and it
+ * would reach them looking perfectly ordinary.
+ *
+ * The converse is **not** asserted, and the reason is worth writing down because
+ * the obvious symmetric test is wrong. `(−7) × (−4)` and `7 − (−4)` are signed
+ * items whose answers are all positive, and two levels of the graph are entirely
+ * made of them. If those levels dropped the flag, the keypad would lose its minus
+ * key on exactly the levels where the answer is never negative — which tells a
+ * child the sign of the answer before they have worked it out, the same leak
+ * `answerDigits` exists to avoid. So the flag is a property of the **node**, and
+ * that is what is checked instead: all of a node's levels or none of them.
+ */
+test("sweep: an answer is negative only where its schema says it may be", () => {
+  const signedByNode = new Map<string, Set<boolean>>();
+  let negativeItems = 0;
+
+  for (const level of LEVELS) {
+    for (const exercise of level.exercises) {
+      const signed = exercise.schema.kind === "integer" && exercise.schema.signed === true;
+      const seen = signedByNode.get(level.nodeId) ?? new Set<boolean>();
+      seen.add(signed);
+      signedByNode.set(level.nodeId, seen);
+
+      const answer = exercise.answer.canonical;
+      if (answer.kind !== "integer" && answer.kind !== "columnAlgorithm") continue;
+      if (answer.value.n >= 0n) continue;
+      negativeItems += 1;
+      assert.ok(
+        signed,
+        `${exercise.exerciseId}: answers ${String(answer.value.n)} behind a schema that does not declare it signed — ` +
+          `a keypad with no minus key would draw this card and mark a correct child wrong`,
+      );
+    }
+  }
+
+  for (const [nodeId, seen] of signedByNode) {
+    assert.equal(
+      seen.size,
+      1,
+      `${nodeId} declares a signed answer schema on some of its levels and not others: the keypad would gain and ` +
+        `lose its minus key as a child climbs, which says what sign the answer has before they have found it`,
+    );
+  }
+
+  const signedNodes = [...signedByNode].filter(([, seen]) => seen.has(true)).map(([id]) => id);
+  // A vacuity guard. Every assertion above passes on a graph with no signed item
+  // in it, which is what this file measured before integers existed.
+  assert.ok(negativeItems > 0, "no item in the whole graph answers below zero");
+  process.stdout.write(
+    `# signed answers: ${String(signedNodes.length)} node(s) declare a signed schema, ` +
+      `${String(negativeItems)} item(s) answer below zero\n`,
+  );
+});
+
+test("sweep: no fraction answer has a zero denominator", () => {
   for (const exercise of ALL_ITEMS) {
     const answer = exercise.answer.canonical;
-    if (answer.kind === "integer" || answer.kind === "columnAlgorithm") {
-      assert.ok(answer.value.n >= 0n, `${exercise.exerciseId}: negative answer`);
-    }
     if (answer.kind === "fraction") {
       assert.ok(answer.den > 0n, `${exercise.exerciseId}: non-positive denominator`);
       assert.ok(answer.num >= 0n, `${exercise.exerciseId}: negative numerator`);

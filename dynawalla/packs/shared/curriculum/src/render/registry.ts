@@ -39,7 +39,7 @@
  * the three rules above exist to prevent.
  */
 
-import type { AnswerSchemaKind } from "../types/answer.ts";
+import type { AnswerSchema, AnswerSchemaKind } from "../types/answer.ts";
 import type { RepId } from "../types/ids.ts";
 
 export type RendererDeclaration = {
@@ -62,6 +62,18 @@ const PACK = "PR-4.16 — a pack renderer, ADR-0022";
 
 export const rendererRegistry: readonly RendererDeclaration[] = [
   { id: "answer:integer", kind: "answerSchema", owner: PACK, implemented: false },
+  /**
+   * The signed integer entry, and it is a **separate renderer** rather than a flag
+   * on the one above.
+   *
+   * A pack that implements `answer:integer` implements a digit keypad, and a digit
+   * keypad handed `(−7) + 4` draws a card a child cannot answer: every key they can
+   * press produces a positive number. That is not the blank screen CG-8 usually
+   * catches, it is worse — the card looks answerable and marks a correct child
+   * wrong. Two ids means the gate can tell the two apart, and a pack that has only
+   * built the unsigned keypad cannot accidentally satisfy the signed rows.
+   */
+  { id: "answer:integer-signed", kind: "answerSchema", owner: PACK, implemented: false },
   { id: "answer:columnAlgorithm", kind: "answerSchema", owner: PACK, implemented: false },
   { id: "answer:fraction", kind: "answerSchema", owner: PACK, implemented: false },
   { id: "answer:choice", kind: "answerSchema", owner: PACK, implemented: false },
@@ -82,6 +94,19 @@ export const rendererRegistry: readonly RendererDeclaration[] = [
 
 export function answerRendererId(kind: AnswerSchemaKind): string {
   return `answer:${kind}`;
+}
+
+/**
+ * The renderer a *schema* needs, which is not always the one its kind names.
+ *
+ * `answerRendererId` takes a kind and is kept as it was, because a caller holding
+ * only a kind is asking a narrower question and gets a narrower answer. CG-8 holds
+ * the whole schema and must ask the wider one: a signed integer entry is a
+ * different widget from an unsigned one, not the same widget in a different mood.
+ */
+export function answerRendererIdFor(schema: AnswerSchema): string {
+  if (schema.kind === "integer" && schema.signed === true) return "answer:integer-signed";
+  return answerRendererId(schema.kind);
 }
 
 export function repRendererId(rep: RepId): string {

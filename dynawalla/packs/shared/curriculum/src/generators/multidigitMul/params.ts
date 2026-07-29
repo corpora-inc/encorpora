@@ -34,12 +34,23 @@ export type MultidigitMulParams =
     };
 
 export const MAX_MULTIPLICAND_DIGITS = 5;
-export const MAX_MULTIPLIER_DIGITS = 3;
+/**
+ * Five, raised from three.
+ *
+ * The program's stated ceiling is `48,826 × 82,726`, and at a three-digit
+ * multiplier that item was not merely unauthored — it was **unstatable**, because
+ * no parameter object could describe it. Nothing else changes: `generate` reads
+ * `multiplierDigits` in a loop and drew a four-digit multiplier correctly the whole
+ * time, so no existing level's output moves and `familyRev` does not turn over.
+ * The bound stays a bound rather than becoming `Infinity` because a level table is
+ * a place a typo lands, and a twelve-digit multiplier is a typo and not a lesson.
+ */
+export const MAX_MULTIPLIER_DIGITS = 5;
 export const MAX_POWER = 4;
 
 export const multidigitMulParamSchema: ParamSchema<MultidigitMulParams> = {
   describe:
-    "{ shape: 'general', digits: 2..5, multiplierDigits: 1..3, carries: boolean } | " +
+    "{ shape: 'general', digits: 2..5, multiplierDigits: 1..5, carries: boolean } | " +
     "{ shape: 'power-of-ten', digits: 2..5, maxPower: 1..4 }",
 
   validate(raw: unknown): ParamResult<MultidigitMulParams> {

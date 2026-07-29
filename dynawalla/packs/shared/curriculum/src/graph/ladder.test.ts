@@ -20,6 +20,15 @@ import test from "node:test";
 
 import { activeNodes, allNodes } from "./graph.ts";
 import {
+  SKILL_LONG_MULTIPLICATION,
+  SKILL_TABLES_TO_TWELVE,
+  SKILL_TABLES_WITHIN_FIVE,
+  SKILL_TIMES_ONE_DIGIT,
+  SKILL_TIMES_TWO_DIGIT,
+} from "./domains/mul.ts";
+import { SKILL_DIVIDE_EXACT, SKILL_DIVISION_FACTS } from "./domains/div.ts";
+import { SKILL_ADD_SIGNED, SKILL_MULTIPLY_SIGNED, SKILL_PAST_ZERO } from "./domains/int.ts";
+import {
   SKILL_ADD_ACROSS_TEN,
   SKILL_ADD_MULTIDIGIT,
   SKILL_ADD_NO_REGROUP,
@@ -123,10 +132,17 @@ test("the bottom rung is a number fact, and it is well below the column work", (
   );
   assert.equal(ratToString(easiest.b), "-3", "the root rung is not where the level table puts it");
 
-  // Every fact item is below every column item, with no overlap. The two families
-  // are a ladder and not two ladders side by side.
-  const factLevels = ACTIVE.filter((node) => node.cluster === "facts").flatMap((node) => node.difficulty.levels);
-  const columnLevels = ACTIVE.filter((node) => node.cluster !== "facts").flatMap((node) => node.difficulty.levels);
+  // Every addition fact is below every column item, with no overlap. The two
+  // families are a ladder and not two ladders side by side.
+  //
+  // Scoped to `add` since the multiplicative strand arrived. `dw.mul.facts.*` is
+  // also a `facts` cluster and it sits *above* two-digit column addition, which is
+  // correct — a times-table fact is grade-3 content and `43 + 25` is grade 1 — and
+  // would break an unscoped reading of this claim. The claim was always about the
+  // additive ladder; the multiplicative one has its own assertion below.
+  const additive = ACTIVE.filter((node) => node.domain === "add");
+  const factLevels = additive.filter((node) => node.cluster === "facts").flatMap((node) => node.difficulty.levels);
+  const columnLevels = additive.filter((node) => node.cluster !== "facts").flatMap((node) => node.difficulty.levels);
   assert.ok(factLevels.length >= 14 && columnLevels.length >= 13);
   const hardestFact = factLevels.reduce((high, current) => (cmp(current, high) > 0 ? current : high));
   const easiestColumn = columnLevels.reduce((low, current) => (cmp(current, low) < 0 ? current : low));
@@ -147,4 +163,89 @@ test("the fact rows are active, because a draft floor is not a floor", () => {
     assert.ok(node !== undefined, `${id} is missing from the graph`);
     assert.equal(node.status, "active", `${id} is ${node.status}: a controller walking activeNodes() cannot reach it`);
   }
+});
+
+/**
+ * The strands above the addition spine, asserted over the **whole** graph rather
+ * than over the active part of it.
+ *
+ * Every row named here is `draft` — see `promotionBlockers.ts` — so an assertion
+ * scoped to `activeNodes()` would pass on an empty set and go on passing after
+ * they are promoted with the edges cut. The claim is about the mathematics, which
+ * does not wait for a renderer.
+ */
+const ALL_BY_ID = new Map<string, (typeof allNodes)[number]>(allNodes.map((node) => [String(node.id), node]));
+
+/** Everything `id` transitively requires, across the whole graph. */
+function requiresAll(id: SkillId): Set<string> {
+  const seen = new Set<string>();
+  const stack = [String(id)];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    if (current === undefined) continue;
+    for (const edge of ALL_BY_ID.get(current)?.prereqs ?? []) {
+      if (!ORDERING_KINDS.includes(edge.kind)) continue;
+      if (seen.has(String(edge.to))) continue;
+      seen.add(String(edge.to));
+      stack.push(String(edge.to));
+    }
+  }
+  return seen;
+}
+
+test("the multiplicative strand climbs from the tables, and the tables climb from the facts", () => {
+  const requires = (from: SkillId, to: SkillId): void => {
+    assert.ok(requiresAll(from).has(String(to)), `${from} should sit above ${to} and does not`);
+  };
+
+  // The mathematics, in edges. A single-digit pass of a written multiplication is
+  // a table fact and a carry; a long division picks its quotient digits out of a
+  // table; a table fact is reached by skip counting, which crosses ten.
+  requires(SKILL_TABLES_WITHIN_FIVE, SKILL_ADD_ACROSS_TEN);
+  requires(SKILL_TABLES_TO_TWELVE, SKILL_TABLES_WITHIN_FIVE);
+  requires(SKILL_TIMES_ONE_DIGIT, SKILL_TABLES_TO_TWELVE);
+  requires(SKILL_TIMES_TWO_DIGIT, SKILL_TIMES_ONE_DIGIT);
+  requires(SKILL_LONG_MULTIPLICATION, SKILL_TIMES_TWO_DIGIT);
+  requires(SKILL_DIVISION_FACTS, SKILL_TABLES_TO_TWELVE);
+  requires(SKILL_DIVIDE_EXACT, SKILL_DIVISION_FACTS);
+  // And the whole strand still stands on the floor the addition rows are.
+  requires(SKILL_LONG_MULTIPLICATION, SKILL_ADD_WITHIN_TEN);
+  requires(SKILL_DIVIDE_EXACT, SKILL_ADD_WITHIN_TEN);
+
+  // The integer strand, which is where pre-algebra starts.
+  requires(SKILL_PAST_ZERO, SKILL_SUBTRACT_ACROSS_TEN);
+  requires(SKILL_ADD_SIGNED, SKILL_PAST_ZERO);
+  requires(SKILL_MULTIPLY_SIGNED, SKILL_TABLES_TO_TWELVE);
+});
+
+test("every table fact is below every written multiplication, and the strands do not overlap", () => {
+  const levelsOf = (id: SkillId): readonly { readonly n: bigint; readonly d: bigint }[] =>
+    ALL_BY_ID.get(String(id))?.difficulty.levels ?? [];
+  const hardest = (ids: readonly SkillId[]) =>
+    ids.flatMap(levelsOf).reduce((high, current) => (cmp(current, high) > 0 ? current : high));
+  const easiest = (ids: readonly SkillId[]) =>
+    ids.flatMap(levelsOf).reduce((low, current) => (cmp(current, low) < 0 ? current : low));
+
+  const tables = hardest([SKILL_TABLES_WITHIN_FIVE, SKILL_TABLES_TO_TWELVE]);
+  const written = easiest([SKILL_TIMES_ONE_DIGIT, SKILL_TIMES_TWO_DIGIT, SKILL_LONG_MULTIPLICATION]);
+  assert.ok(
+    cmp(tables, written) < 0,
+    `the hardest table fact ${ratToString(tables)} is not below the easiest written multiplication ${ratToString(written)}`,
+  );
+
+  // And the top of the arithmetic spine is the top of this strand: the hardest
+  // item in `add`, `mul` and `div` together is `48,826 × 82,726`. Not the hardest
+  // in the graph — `dw.frac.*` reaches further and should, since a fraction row is
+  // grade-5 content standing on all of this — so the claim is scoped to the three
+  // whole-number domains rather than overstated.
+  const spine = allNodes
+    .filter((node) => ["add", "mul", "div"].includes(node.domain))
+    .flatMap((node) => node.difficulty.levels.map((b) => ({ node, b })));
+  const highest = spine.reduce((high, current) => (cmp(current.b, high.b) > 0 ? current : high));
+  assert.equal(
+    String(highest.node.id),
+    String(SKILL_LONG_MULTIPLICATION),
+    `the hardest whole-number item belongs to ${highest.node.id} at ${ratToString(highest.b)}`,
+  );
+  assert.equal(highest.b, ALL_BY_ID.get(String(SKILL_LONG_MULTIPLICATION))?.difficulty.levels[2]);
 });

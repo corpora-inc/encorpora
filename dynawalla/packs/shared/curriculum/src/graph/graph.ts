@@ -5,10 +5,15 @@
  * from it and from every coverage count, so the graph can never become a wish list
  * (CG-7).
  *
- * Six domains are represented here and one of them has active rows. `add` binds
+ * Seven domains are represented here and one of them has active rows. `add` binds
  * `gen.arith.column-op` and `gen.arith.number-facts`, which between them are the
- * whole arithmetic ladder from `0 + 1` upward; every other row is a complete,
+ * whole additive ladder from `0 + 1` upward; every other row is a complete,
  * property-tested generator waiting on the statement renderer PR-2.13 lands.
+ *
+ * The seventh domain is `int`, which CURRICULUM.md's V1 table does not have and
+ * which CG-15's band table deliberately does not expect. It is the pre-algebra
+ * on-ramp and it is out of V1 scope; `domains/int.ts` says why it is a domain of
+ * its own rather than a cluster of two existing ones.
  *
  * Note that "waiting on a renderer" is true of the active rows too — CG-8 warns on
  * all of them and fails under `--strict-renderers`. What distinguishes an active
@@ -31,6 +36,7 @@ import { addDomainNodes } from "./domains/add.ts";
 import { algDomainNodes } from "./domains/alg.ts";
 import { divDomainNodes } from "./domains/div.ts";
 import { fracDomainNodes } from "./domains/frac.ts";
+import { intDomainNodes } from "./domains/int.ts";
 import { mulDomainNodes } from "./domains/mul.ts";
 import { nsDomainNodes } from "./domains/ns.ts";
 
@@ -41,6 +47,7 @@ export const allNodes: readonly SkillNode[] = [
   ...divDomainNodes,
   ...fracDomainNodes,
   ...algDomainNodes,
+  ...intDomainNodes,
 ];
 
 export function activeNodes(nodes: readonly SkillNode[] = allNodes): SkillNode[] {

@@ -307,7 +307,7 @@ test("CG-8: strict mode rejects a prompt template that is declared but not imple
   const renderers = rendererRegistry.map(drawn);
   const unbuilt = promptRegistry.map(drawn).map((entry) =>
     entry.id === "dw.prompt.column-op.sub"
-      ? { id: entry.id, family: entry.family, owner: entry.owner, implemented: false }
+      ? { id: entry.id, family: entry.family, operator: entry.operator, owner: entry.owner, implemented: false }
       : entry,
   );
   assert.equal(

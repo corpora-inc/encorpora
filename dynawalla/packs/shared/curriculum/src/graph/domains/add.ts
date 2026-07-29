@@ -60,8 +60,18 @@ const CAP_ADD_CARRY = capabilityTag("cap.arith.add-carry");
  */
 const CAP_SUMS_WITHIN_TEN = capabilityTag("cap.arith.sums-within-ten");
 const CAP_DIFFERENCES_WITHIN_TEN = capabilityTag("cap.arith.differences-within-ten");
-const CAP_SUMS_ACROSS_TEN = capabilityTag("cap.arith.sums-across-ten");
-const CAP_DIFFERENCES_ACROSS_TEN = capabilityTag("cap.arith.differences-across-ten");
+/**
+ * Exported, unlike its three siblings, because the multiplicative strand consumes
+ * it: a carry out of a single-digit multiplication pass is a sum across ten, and
+ * `dw.mul.multidigit.times-one-digit` says so rather than implying it.
+ */
+export const CAP_SUMS_ACROSS_TEN = capabilityTag("cap.arith.sums-across-ten");
+/**
+ * Exported for the same reason as its sibling above: the integer strand consumes
+ * it. `3 − 9` is answered by taking three from nine and writing a minus in front,
+ * and a child without the difference cannot reach the sign.
+ */
+export const CAP_DIFFERENCES_ACROSS_TEN = capabilityTag("cap.arith.differences-across-ten");
 
 /** Written out so the fact level tables below read as tables. */
 function fact(

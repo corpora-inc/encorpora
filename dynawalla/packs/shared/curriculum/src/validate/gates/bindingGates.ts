@@ -6,7 +6,7 @@
 
 import { activeNodes } from "../../graph/graph.ts";
 import { familyById } from "../../generators/registry.ts";
-import { answerRendererId, findRenderer, repRendererId } from "../../render/registry.ts";
+import { answerRendererIdFor, findRenderer, repRendererId } from "../../render/registry.ts";
 import { findPromptTemplate } from "../../render/prompts.ts";
 import type { FamilyId } from "../../types/ids.ts";
 import type { LevelSample, ValidationContext } from "../context.ts";
@@ -223,7 +223,15 @@ export function cg8(context: ValidationContext, samples: readonly LevelSample[])
       if (!validated.ok) return; // CG-7 owns this failure.
       for (const form of node.generator.forms) {
         const schema = family.answerSchema(validated.value, form);
-        requireRenderer(answerRendererId(schema.kind), node.id, `L${String(level)} ${form} answer schema "${schema.kind}"`);
+        // `answerRendererIdFor` and not `answerRendererId(schema.kind)`: a signed
+        // integer entry is a different widget from an unsigned one, and a gate
+        // that read only the kind would let a row whose answers go below zero be
+        // drawn by a keypad with no minus key.
+        requireRenderer(
+          answerRendererIdFor(schema),
+          node.id,
+          `L${String(level)} ${form} answer schema "${answerRendererIdFor(schema).slice("answer:".length)}"`,
+        );
       }
     });
 
