@@ -16,6 +16,7 @@ import {
   DOUBLE_TAP_MS,
   DOUBLE_TAP_SLOP_PX,
   DRAG_SLOP_PX,
+  LEAK_WINDOW_MS,
   TapZoomGuard,
   installTapZoomGuard,
 } from "./tapzoom.ts"
@@ -54,20 +55,37 @@ class NativeClickEvent extends FakeMouseEvent {
 class FakeNode extends EventTarget {
   readonly clicks: FakeMouseEvent[] = []
   readonly doc: FakeDocument | undefined
+  /** What `Element.isConnected` would say. Games replace their DOM constantly. */
+  connected = true
   constructor(doc?: FakeDocument) {
     super()
     this.doc = doc
     this.addEventListener("click", (event) => this.clicks.push(event as FakeMouseEvent))
   }
   /**
-   * Every click here bubbles, and the guard is listening at the document — its
-   * OWN re-dispatch included, which is the case that matters: a watcher that
-   * counted its own work would starve the next tap in a chain.
+   * The document sees it first and may stop it.
+   *
+   * The guard installs in the CAPTURE phase, which runs document-first, and it
+   * swallows a duplicate click by calling `stopImmediatePropagation()`. A fake
+   * that dispatched at the target first could never observe that, and the test
+   * for it would pass whether the guard swallowed or not.
    */
   override dispatchEvent(event: Event): boolean {
-    const result = super.dispatchEvent(event)
+    let stopped = false
+    const stop = event.stopImmediatePropagation.bind(event)
+    Object.defineProperty(event, "stopImmediatePropagation", {
+      configurable: true,
+      value: () => {
+        stopped = true
+        stop()
+      },
+    })
     this.doc?.emit(event.type, event)
-    return result
+    if (stopped) return !event.defaultPrevented
+    return super.dispatchEvent(event)
+  }
+  get isConnected(): boolean {
+    return this.connected
   }
   /** Clicks the guard re-dispatched, as opposed to the ones the platform fired. */
   get restored(): FakeMouseEvent[] {
@@ -263,6 +281,119 @@ test("an engine that raises the click anyway does not double it", async () => {
 
   assert.equal(node.clicks.length, 2, "two taps, two clicks — not three")
   assert.equal(node.restored.length, 0, "and none of them invented")
+})
+
+test("a platform click that leaks LATE, after the restore, is swallowed", async () => {
+  // The timing the first draft of this module did not defend. An engine that
+  // still runs a double-tap-to-zoom recogniser is the engine that may hold the
+  // compatibility click back to wait out the second tap — so the leak that
+  // matters arrives long after any `setTimeout(0)`, and a guard that only
+  // watched the early window would hand STACK's answer chip two `onChoose`
+  // calls from one tap.
+  const g = guarded()
+  const chip = new FakeNode(g.doc)
+  g.tap(90, 90, chip)
+  g.advance(90)
+  assert.equal(g.tap(90, 90, chip), true)
+  await flush()
+  assert.equal(chip.clicks.length, 2, "the restore has already been delivered")
+
+  // ...and now, 300ms later, the platform's own turns up anyway.
+  g.advance(300)
+  chip.dispatchEvent(new NativeClickEvent("click", { clientX: 90, clientY: 90, bubbles: true }))
+
+  assert.equal(chip.clicks.length, 2, "two taps, two clicks — the duplicate never reached the chip")
+})
+
+test("a leak after the window has closed is not swallowed", async () => {
+  // The swallow must expire, or a control that happens to sit where a tap was
+  // cancelled would go on losing clicks for the rest of the session.
+  const g = guarded()
+  const chip = new FakeNode(g.doc)
+  g.tap(90, 90, chip)
+  g.advance(90)
+  assert.equal(g.tap(90, 90, chip), true)
+  await flush()
+
+  g.advance(2_000)
+  chip.dispatchEvent(new NativeClickEvent("click", { clientX: 90, clientY: 90, bubbles: true }))
+  assert.equal(chip.clicks.length, 3, "a click this late belongs to somebody else")
+  assert.ok(LEAK_WINDOW_MS < 2_000, "the window the number above assumes")
+})
+
+test("a tap the guard did not cancel keeps its own click, debt or no debt", async () => {
+  // The debt has to be dropped the moment a tap comes through uncancelled, or
+  // the guard goes on swallowing at that coordinate and the child's next
+  // deliberate press does nothing at all.
+  const g = guarded()
+  const chip = new FakeNode(g.doc)
+  g.tap(90, 90, chip)
+  g.advance(90)
+  assert.equal(g.tap(90, 90, chip), true)
+  await flush()
+  assert.equal(chip.clicks.length, 2)
+
+  // Well past the double-tap window, so this one is a fresh gesture — and it is
+  // still inside the leak window of the tap before it.
+  g.advance(400)
+  assert.equal(g.tap(90, 90, chip), false, "a new gesture, not a zoom")
+  await flush()
+  assert.equal(chip.clicks.length, 3, "and its own click reached the chip")
+})
+
+test("a trusted click on another control does not eat the restore", async () => {
+  // The tally this replaced was global: any click anywhere satisfied the debt,
+  // so a click on an unrelated control landing in the window made the guard
+  // withhold the tap's own and the child's press vanished with no trace.
+  const g = guarded()
+  const chip = new FakeNode(g.doc)
+  const elsewhere = new FakeNode(g.doc)
+  g.tap(90, 90, chip)
+  g.advance(90)
+  assert.equal(g.tap(90, 90, chip), true)
+  elsewhere.dispatchEvent(new NativeClickEvent("click", { clientX: 400, clientY: 400, bubbles: true }))
+  await flush()
+
+  assert.equal(elsewhere.clicks.length, 1, "the unrelated click was neither eaten nor counted")
+  assert.equal(chip.restored.length, 1, "and the cancelled tap still got its own")
+})
+
+test("a first tap that drifted past the drag slop still arms the pair", () => {
+  // The guard failing OPEN on the one thing it exists to stop. This module
+  // calls 11px a drag; WebKit's double-tap slop is looser, so a first tap that
+  // drifted 11px is still half of a double tap to the gesture recogniser. If
+  // the guard forgets it, the second tap is not cancelled and the page scales.
+  const g = guarded()
+  g.press(100, 100)
+  g.drag(111, 100)
+  assert.equal(g.lift(111, 100), false, "a drag is still never cancelled itself")
+  g.advance(90)
+  assert.equal(g.tap(105, 100), true, "but the tap after it is")
+})
+
+test("a restore whose element has gone is delivered where the platform would have put it", async () => {
+  // STACK empties `choicesEl` and rebuilds every button, with the handler
+  // delegated on the container: a click on a button that has been replaced
+  // reaches nobody, and the child's tap disappears. The platform hit-tests
+  // afresh; where the touch's own target is gone, so does the guard.
+  const g = guarded()
+  const gone = new FakeNode(g.doc)
+  const replacement = new FakeNode(g.doc)
+  gone.connected = false
+  const saved = (globalThis as { document?: unknown }).document
+  ;(globalThis as { document?: unknown }).document = { elementFromPoint: () => replacement }
+  try {
+    g.tap(140, 140, gone)
+    g.advance(90)
+    assert.equal(g.tap(140, 140, gone), true)
+    await flush()
+  } finally {
+    if (saved === undefined) delete (globalThis as { document?: unknown }).document
+    else (globalThis as { document?: unknown }).document = saved
+  }
+
+  assert.equal(replacement.restored.length, 1, "the click went to what is actually there")
+  assert.equal(gone.restored.length, 0, "and not to the detached node")
 })
 
 test("the restored click waits a task, so a leaked platform click gets there first", async () => {
@@ -468,7 +599,9 @@ test("touchend is non-passive and in the capture phase", () => {
   assert.deepEqual(wiring.get("touchstart"), { capture: true, passive: true })
   assert.deepEqual(wiring.get("touchmove"), { capture: true, passive: true })
   assert.deepEqual(wiring.get("touchcancel"), { capture: true, passive: true })
-  assert.deepEqual(wiring.get("click"), { capture: true, passive: true }, "the click watcher never interferes")
+  // Non-passive because this listener DOES cancel — a duplicate click after a
+  // restore is swallowed there, and a passive listener could not.
+  assert.deepEqual(wiring.get("click"), { capture: true, passive: false })
   for (const type of ["gesturestart", "gesturechange", "gestureend"]) {
     assert.deepEqual(wiring.get(type), { capture: true, passive: false }, `${type} must be cancellable`)
   }
