@@ -18,6 +18,13 @@ import { Rng } from "./rng.ts";
 import { biomeAt, biomeLength } from "./biomes.ts";
 import { detectTier, TierController, type TierName } from "./tiers.ts";
 import { buildHud, groupDigits, ringCircumference } from "./hud.ts";
+import { ndcFrame } from "./chrome.ts";
+import type { Frame } from "./readband.ts";
+import {
+  createInstructions,
+  onInsetsChange,
+  safeInsets,
+} from "../../../../packs/shared/game-chrome/index.ts";
 import { Shake, HitStop, FlashBus, Springy, clamp, clamp01, lerp, approach, easeOutCubic } from "./juice.ts";
 
 import {
@@ -252,10 +259,20 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
   /* -------------------------------- sizing ------------------------------ */
 
   let vw = 1, vh = 1;
+  /**
+   * The NDC box the numeral row, the payoff and the score popups live inside.
+   *
+   * Recomputed on every resize, and on every inset change, because the insets
+   * are not a launch-time constant: a rotation swaps the top inset for two side
+   * ones, and iPadOS changes them when the pack is resized in Split View. A
+   * game that reads them once at mount is correct until the first rotation.
+   */
+  let frameNdc: Frame = ndcFrame(1, 1, safeInsets());
   function resize(): void {
     const r = el.getBoundingClientRect();
     vw = Math.max(1, Math.round(r.width));
     vh = Math.max(1, Math.round(r.height));
+    frameNdc = ndcFrame(vw, vh, safeInsets());
     const dpr = Math.min(window.devicePixelRatio || 1, tiers.settings.dprCap) * tiers.renderScale;
     renderer.setPixelRatio(1);
     const bw = Math.max(2, Math.round(vw * dpr));
@@ -290,6 +307,71 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
   resize();
   applyTier();
   applyBiomeUniforms();
+
+  // A rotation does not always change the element's box — a square-ish split
+  // view can rotate and keep its size — but it always changes the insets.
+  const stopInsets = onInsetsChange(() => resize());
+
+  /* ----------------------------- how to play ---------------------------- */
+
+  // VOLTA's start card says "pick the lane that is right" and lists the swipes,
+  // and then it is gone. A child who works out on the fourth gate that the
+  // numbers ARE the answers had nowhere to go back to, and no way at all to
+  // find out what the voltage bar is or why a wrong lane costs so much. The
+  // manual stays reachable during the run, because the moment a child needs the
+  // rules is never the title screen.
+  const guide = createInstructions(el, {
+    title: "VOLTA",
+    summary: [
+      "You are running down a road with three lanes.",
+      "A sum is at the top. Each lane has a number. Move to the lane with the right answer.",
+    ],
+    sections: [
+      {
+        heading: "Moving",
+        lines: [
+          "Swipe left or right to change lane. You can also tap the left or right side of the screen.",
+          "Swipe up to jump over a hole.",
+          "Swipe down to slide under a bar.",
+          "On a keyboard, use the arrow keys.",
+        ],
+      },
+      {
+        heading: "Answering",
+        lines: [
+          "Read the sum at the top of the screen.",
+          "Three numbers float above the road. Only one is the answer.",
+          "Get into that lane before you reach the gate. The lane you are in is your answer.",
+          "You do not press anything. Driving through is answering.",
+        ],
+      },
+      {
+        heading: "The blue bar",
+        lines: [
+          "The bar along the bottom is your power.",
+          "A right answer adds power. A wrong answer takes a lot away, and you stumble.",
+          "Hitting a wall or a bar also takes power away.",
+        ],
+      },
+      {
+        heading: "When the power runs out",
+        lines: [
+          "The run stops and you get one more sum, with three big buttons.",
+          "Get it right and you carry on with full power.",
+          "Get it wrong and the run is over. Then you can start again.",
+        ],
+      },
+      {
+        heading: "Going faster",
+        lines: [
+          "Three right answers in a row make your score count for more.",
+          "One wrong answer sets that back to normal.",
+          "The road never ends. See how far you can get.",
+        ],
+      },
+    ],
+    reducedMotion: reduced(),
+  });
 
   /* --------------------------------- HUD -------------------------------- */
 
@@ -1034,7 +1116,7 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     proj.update(camera, shared.uBend.value.x, shared.uBend.value.y);
 
     scenery.draw(shardField, boxField, biome, shared.uShift.value);
-    ents.drawGates(boxField, glow, digits, proj, ac, hot, bad, good, numeralInk, shared.uTime.value, false);
+    ents.drawGates(boxField, glow, digits, proj, ac, hot, bad, good, numeralInk, shared.uTime.value, false, frameNdc);
     ents.drawHazards(boxField, glow, warn, ac, shared.uTime.value);
     ents.drawPits(glow, warn);
     ents.drawSparks(glow, ac2, shared.uTime.value);
@@ -1057,7 +1139,7 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
 
     parts.draw(glow, rm ? 0.75 : 1);
     player.draw(skiffField, boxField, glow, ac[0], ac[1], ac[2], ac2[0], ac2[1], ac2[2], rm);
-    ents.drawPopups(digits, proj);
+    ents.drawPopups(digits, proj, frameNdc);
 
     shardField.end();
     boxField.end();
@@ -1161,6 +1243,8 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
       disposed = true;
       cancelAnimationFrame(raf);
       if (reviveVerdict) window.clearTimeout(reviveVerdict);
+      guide.destroy();
+      stopInsets();
       ro.disconnect();
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("visibilitychange", onVisibility);

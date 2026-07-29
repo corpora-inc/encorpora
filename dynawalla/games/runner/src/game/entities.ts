@@ -4,7 +4,7 @@ import type { DigitField } from "./digits.ts";
 import type { Rng } from "./rng.ts";
 import type { Projector } from "./project.ts";
 import { LANE_W, DECK_HALF } from "./world.ts";
-import { readBand, payoffHeight, keepInside } from "./readband.ts";
+import { readBand, payoffHeight, keepInside, payoffEdge, popupEdge, type Frame } from "./readband.ts";
 import { laneOptions } from "./options.ts";
 import { clamp01, easeOutBack, easeOutCubic, easeOutQuint } from "./juice.ts";
 
@@ -241,6 +241,7 @@ export class Entities {
     ink: readonly [number, number, number],
     time: number,
     revealed: boolean,
+    frame: Frame,
   ): void {
     for (const g of this.gates) {
       if (!g.active) continue;
@@ -289,8 +290,8 @@ export class Entities {
       // The numerals. See `readband.ts` — they are laid out in screen units and
       // converted back to world space, because perspective is the wrong tool for
       // typesetting three values a child has half a second to compare.
-      if (resolving) this.drawPayoff(g, digits, glow, proj, good, bad, hot, bt);
-      else this.drawCandidates(g, digits, glow, proj, ink, ac, H);
+      if (resolving) this.drawPayoff(g, digits, glow, proj, good, bad, hot, bt, frame);
+      else this.drawCandidates(g, digits, glow, proj, ink, ac, H, frame);
 
       // The overhead beam that says "this is the answer line".
       const beamA = resolving ? Math.max(0, 1 - bt * 2) : intro * 0.85;
@@ -315,6 +316,7 @@ export class Entities {
     ink: readonly [number, number, number],
     ac: readonly [number, number, number],
     H: number,
+    frame: Frame,
   ): void {
     const dist = Math.max(0, -g.z);
     const approach = clamp01(1 - dist / Math.max(1, g.spawn));
@@ -324,9 +326,9 @@ export class Entities {
     const archTop = proj.ndcY(H);
     for (let i = 0; i < 3; i++) u[i] = Math.max(1e-4, digits.measure(g.values[i], 1));
 
-    let band = readBand(u, proj.kx, proj.ky, approach, archTop);
+    let band = readBand(u, proj.kx, proj.ky, approach, archTop, frame);
     proj.at(g.z, proj.worldY(band.y));
-    band = readBand(u, proj.kx, proj.ky, approach, archTop);
+    band = readBand(u, proj.kx, proj.ky, approach, archTop, frame);
 
     // The row is dealt outward from the vanishing point as the gate resolves out
     // of the fog. Overshoot is deliberate — `readBand` keeps a 30% gutter, so a
@@ -387,6 +389,7 @@ export class Entities {
     bad: readonly [number, number, number],
     hot: readonly [number, number, number],
     bt: number,
+    frame: Frame,
   ): void {
     const CZ = -14;
     proj.at(CZ, 3);
@@ -419,7 +422,7 @@ export class Entities {
       // How big the winning numeral is allowed to get. See `payoffHeight` —
       // like the candidate row, it is decided in screen units and converted back.
       const wPerH = digits.measure(g.values[right], 1) * (Math.abs(proj.kx) / Math.abs(proj.ky));
-      const hn = payoffHeight(wPerH, g.ndcH, swell);
+      const hn = payoffHeight(wPerH, g.ndcH, swell, payoffEdge(frame.edge));
       const x = proj.worldX(g.ndcX[right] * (1 - rush));
       const y = proj.worldY(g.ndcY + (0.02 - g.ndcY) * rush);
       digits.addNumber(
@@ -491,7 +494,7 @@ export class Entities {
    * back inside the frame in screen units — it keeps its lane as long as the
    * lane fits, and gives that up rather than be unreadable.
    */
-  drawPopups(digits: DigitField, proj: Projector): void {
+  drawPopups(digits: DigitField, proj: Projector, frame: Frame): void {
     for (const p of this.popups) {
       if (!p.active) continue;
       const t = p.t / p.life;
@@ -504,7 +507,7 @@ export class Entities {
       proj.at(p.z, y);
       const halfW = (digits.measure(p.text, size) * Math.abs(proj.kx)) / 2;
       const nx = proj.x0 + proj.kx * p.x;
-      const inside = keepInside(nx, halfW);
+      const inside = keepInside(nx, halfW, popupEdge(frame.edge));
       const x = inside === nx ? p.x : proj.worldX(inside);
 
       digits.addNumber(p.text, x, y, p.z, size, p.r, p.g, p.b, a, 1.6);
