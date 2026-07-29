@@ -18,6 +18,7 @@
  * margin and every `hitsHostChrome` assertion trips.
  */
 
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
@@ -27,7 +28,15 @@ import {
   safeRect,
   type Insets,
 } from "../../../../packs/shared/game-chrome/index.ts";
-import { hudEdge, ndcFrame, readoutRect, READOUT_CLEAR } from "./chrome.ts";
+import {
+  hudEdge,
+  makeStage,
+  ndcFrame,
+  readoutRect,
+  READOUT_CLEAR,
+  STAGE_BG,
+  type StageEl,
+} from "./chrome.ts";
 import { BAND, FULL_FRAME, payoffEdge, popupEdge, readBand } from "./readband.ts";
 import { INK, TRACK } from "./glyphs.ts";
 
@@ -233,5 +242,113 @@ test("the payoff and the score popups honour the same frame", () => {
       assert.ok(ndcToPx(popupEdge(f.edge), w) <= w - insets.right, "a popup can reach the cutout");
       assert.ok(h > 0);
     }
+  }
+});
+
+/* ------------------------------- the stage -------------------------------- */
+
+/**
+ * What `pack.html` declares about the element the pack mounts into.
+ *
+ * Read out of the real file rather than restated here, because the defect this
+ * section pins is exactly a disagreement between that file and this game's code:
+ * the only box `#app` has comes from the stylesheet, and any inline `position`
+ * the game writes wins over it.
+ */
+function packStageRule(): Map<string, string> {
+  const html = readFileSync(new URL("../../pack.html", import.meta.url), "utf8");
+  const rule = /#app\s*\{([^}]*)\}/.exec(html);
+  assert.ok(rule, "pack.html has no #app rule; this test is measuring the wrong element");
+  const decls = new Map<string, string>();
+  for (const part of (rule[1] ?? "").split(";")) {
+    const colon = part.indexOf(":");
+    if (colon < 0) continue;
+    decls.set(part.slice(0, colon).trim(), part.slice(colon + 1).trim());
+  }
+  return decls;
+}
+
+/**
+ * The used height of the stage in CSS pixels, on a `viewportH`-tall surface.
+ *
+ * A deliberately tiny slice of CSS, and only the slice VOLTA's layout depends
+ * on: every child of the stage is `position:absolute; inset:0`, so the stage has
+ * no in-flow content and `height: auto` resolves to zero. It gets a height from
+ * exactly two places — an explicit `height`, or being out of flow with both
+ * `top` and `bottom` pinned. Inline declarations beat the stylesheet, which is
+ * the whole mechanism of the bug.
+ */
+function stageHeight(
+  sheet: Map<string, string>,
+  inline: Map<string, string>,
+  viewportH: number,
+): number {
+  const used = (prop: string): string | undefined => inline.get(prop) ?? sheet.get(prop);
+  const height = used("height");
+  if (height === "100%") return viewportH;
+  if (height !== undefined && height.endsWith("px")) return Number.parseFloat(height);
+
+  const position = used("position") ?? "static";
+  const inset = used("inset");
+  const top = used("top") ?? inset;
+  const bottom = used("bottom") ?? inset;
+  const outOfFlow = position === "fixed" || position === "absolute";
+  if (outOfFlow && top === "0" && bottom === "0") return viewportH;
+  // In flow, height auto, and nothing in flow inside it.
+  return 0;
+}
+
+test("the pack's stage is sized only by being out of flow", () => {
+  // The precondition that makes the rest of this section mean anything. If
+  // pack.html ever gives #app a height of its own, an inline `position` stops
+  // being able to collapse it and these tests are measuring a bug that is gone.
+  const sheet = packStageRule();
+  assert.equal(sheet.get("height"), undefined, "#app now has a height; re-derive this section");
+  assert.equal(stageHeight(sheet, new Map(), 1180), 1180, "#app has no box even untouched");
+});
+
+test("an inline position on the stage collapses the whole game to nothing", () => {
+  // The failure, stated. `el.style.position = el.style.position || "relative"`
+  // read the INLINE position, which is empty for an element positioned from a
+  // stylesheet, so it always fired — and took `inset: 0` with it. Measured in a
+  // framed pack before the fix: #app 820x0, canvas style height 1px, black glass
+  // and nothing else, on iOS and Android alike.
+  const sheet = packStageRule();
+  assert.equal(stageHeight(sheet, new Map([["position", "relative"]]), 1180), 0);
+  assert.equal(stageHeight(sheet, new Map([["position", "static"]]), 1180), 0);
+});
+
+test("makeStage leaves a stage the document has already positioned alone", () => {
+  const sheet = packStageRule();
+  // What a browser computes for #app at the moment `mountRunner` runs.
+  const computed = sheet.get("position") ?? "static";
+  const el: StageEl = { style: { position: "", overflow: "", touchAction: "", background: "" } };
+  makeStage(el, computed);
+
+  const inline = new Map<string, string>();
+  if (el.style.position !== "") inline.set("position", el.style.position);
+  assert.equal(
+    stageHeight(sheet, inline, 1180),
+    1180,
+    `makeStage wrote position:${el.style.position} over the document's ${computed}`,
+  );
+});
+
+test("makeStage still positions a stage nobody else has", () => {
+  // A host that hands over a plain in-flow div — the dev harness before its own
+  // stylesheet existed, and any future host — still needs the canvas and the HUD
+  // to have something to be absolute against.
+  const el: StageEl = { style: { position: "", overflow: "", touchAction: "", background: "" } };
+  makeStage(el, "static");
+  assert.equal(el.style.position, "relative");
+});
+
+test("makeStage takes the rest of the stage either way", () => {
+  for (const computed of ["static", "relative", "absolute", "fixed", "sticky"]) {
+    const el: StageEl = { style: { position: "", overflow: "", touchAction: "", background: "" } };
+    makeStage(el, computed);
+    assert.equal(el.style.overflow, "hidden", computed);
+    assert.equal(el.style.touchAction, "none", computed);
+    assert.equal(el.style.background, STAGE_BG, computed);
   }
 });

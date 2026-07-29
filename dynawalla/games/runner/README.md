@@ -103,6 +103,30 @@ read.
   `subtract-across-zero`, and `docs/EXPERIENCE_DESIGN.md` instruments two-digit
   regrouping at p50 6s; a gate cycle — read it, then run the corridor — is about
   5.3 seconds, which is the number that has to answer to that table.
+- **The sum arrives a corridor before the gate does.** The far plane caps the time
+  between a gate becoming visible and reaching the answer plane at 3.20s at p50
+  however the pacing is tuned, which is half of that 6s. So the next question is
+  drawn as soon as the last one resolves and its prompt goes on the HUD three
+  tenths of a second later — the crossing keeps that much of the corridor, so a
+  new sum is never part of the verdict on the old one. A child then has 4.80s at
+  p50 with a question instead of 3.20s. Two things this deliberately is not: it is
+  **not** a hazard-free window (pylons live in the corridor, and the window in
+  which nothing can hit you is still the gate's own), and it is **not** 6s. The
+  last second has to come from the low tier's draw distance or from terminal
+  velocity, and both of those are decisions about frame rate and feel rather than
+  about reading. `pacing.test.ts` pins the number as a band so neither shrinking
+  the pre-read nor quietly reaching the target goes unnoticed.
+- **The host's element is the only thing on screen with a size.** The canvas and
+  every HUD layer are `position:absolute; inset:0` inside it, so a stage with no
+  box is the whole game gone. `pack.html` gives `#app` its box with
+  `position: fixed; inset: 0` and nothing else — no width, no height — and VOLTA
+  shipped one line that wrote an inline `position: relative` over it. That won the
+  cascade, took the insets with it, collapsed the stage to 820x0 and the canvas to
+  one CSS pixel tall, and put a child in front of black glass on iOS and Android
+  alike. It never showed in `npm run dev`, where `index.html` also gives `#game`
+  `width/height: 100%` and a percentage height survives the overwrite. `makeStage`
+  branches on the *computed* position now, and `resize()` says so out loud if the
+  stage ever measures nothing again.
 - **Nothing to dodge ever arrives while a gate is being read.** A hazard spawns
   at the horizon and is airborne for five to seven seconds, so keeping that
   promise means projecting the gate cycle forward to where the hazard will land,
