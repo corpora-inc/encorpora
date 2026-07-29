@@ -9,8 +9,10 @@
  * jitter — 16ms, which is a third of the Perfect window.
  */
 
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts";
 import type { Host, Mount } from "./contract.ts";
 import { Game, type Lane } from "./game/core.ts";
+import { GEAR_EDGE, GEAR_SIZE, GEAR_TOP, PANEL_TOP } from "./render/layout.ts";
 import { Renderer } from "./render/renderer.ts";
 import { autoTier, type Tier } from "./theme.ts";
 
@@ -20,7 +22,9 @@ const CSS = `
   color:#eaf2ff;-webkit-user-select:none;user-select:none;touch-action:none}
 .sb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .sb-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:2.2vh;text-align:center;padding:4vmin;
+  flex-direction:column;gap:2.2vh;text-align:center;overflow:auto;
+  padding:max(4vmin,env(safe-area-inset-top)) max(4vmin,env(safe-area-inset-right))
+          max(4vmin,env(safe-area-inset-bottom)) max(4vmin,env(safe-area-inset-left));
   background:radial-gradient(120% 90% at 50% 40%,rgba(10,16,48,.72),rgba(3,4,12,.94));
   backdrop-filter:blur(3px)}
 .sb-title{font-size:clamp(38px,11vmin,120px);font-weight:900;letter-spacing:-.03em;margin:0;
@@ -39,10 +43,16 @@ const CSS = `
   letter-spacing:.1em;padding:.55em 1em;border-radius:10px;background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1)}
 .sb-dot{width:1.05em;height:1.05em;flex:none}
-.sb-gear{position:absolute;top:max(8px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right));
-  width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.16);
+.sb-gear{position:absolute;
+  top:calc(max(${GEAR_EDGE}px,env(safe-area-inset-top)) + ${GEAR_TOP}px);
+  right:max(${GEAR_EDGE}px,env(safe-area-inset-right));
+  width:${GEAR_SIZE}px;height:${GEAR_SIZE}px;border-radius:12px;border:1px solid rgba(255,255,255,.16);
   background:rgba(6,10,26,.72);color:#cfe4ff;font:800 17px/1 inherit;cursor:pointer;z-index:6}
-.sb-panel{position:absolute;top:56px;right:max(8px,env(safe-area-inset-right));width:min(290px,86vw);
+.sb-panel{position:absolute;
+  top:calc(max(${GEAR_EDGE}px,env(safe-area-inset-top)) + ${PANEL_TOP}px);
+  right:max(${GEAR_EDGE}px,env(safe-area-inset-right));width:min(290px,86vw);
+  max-height:calc(100% - max(${GEAR_EDGE}px,env(safe-area-inset-top)) - ${PANEL_TOP}px
+    - max(${GEAR_EDGE}px,env(safe-area-inset-bottom)));overflow-y:auto;overscroll-behavior:contain;
   background:rgba(6,10,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:16px;
   padding:16px;display:grid;gap:14px;z-index:6;box-shadow:0 18px 60px rgba(0,0,0,.6)}
 .sb-row{display:grid;gap:7px}
@@ -53,7 +63,7 @@ const CSS = `
 .sb-seg button[aria-pressed=true]{background:rgba(120,220,255,.22);border-color:rgba(120,220,255,.75);color:#fff}
 .sb-panel input[type=range]{width:100%;accent-color:#7ee8ff}
 .sb-val{font:700 12px/1 inherit;color:rgba(190,215,255,.8)}
-.sb-perf{position:absolute;left:6px;bottom:6px;font:700 11px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
+.sb-perf{position:absolute;left:max(6px,env(safe-area-inset-left));bottom:max(6px,env(safe-area-inset-bottom));font:700 11px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
   color:rgba(150,200,255,.75);z-index:5;pointer-events:none;white-space:pre}
 .sb-hide{display:none!important}
 @media (prefers-reduced-motion:reduce){.sb-btn{transition:none}}
@@ -143,6 +153,58 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
   const perfBox = document.createElement("div");
   perfBox.className = "sb-perf sb-hide";
   root.appendChild(perfBox);
+
+  /* ---------------- how to play ---------------- */
+  // Splitbeat shipped with a legend of three coloured chips and the line "Tap
+  // the lane on the beat", which says which key is which lane and nothing about
+  // WHEN. In a timing game that is the whole rule: a child who does not know
+  // there is a window either taps early forever or decides the game is broken.
+  const guide = createInstructions(root, {
+    title: "SPLITBEAT",
+    summary: [
+      "Notes fly toward the bright line. Tap the lane when a note reaches it.",
+      "There are three lanes. Tap the one the note is in.",
+    ],
+    sections: [
+      {
+        heading: "Tapping",
+        lines: [
+          "Touch the top, middle or bottom of the screen. The part you touch is the lane you play.",
+          "Tap when the note is sitting on the bright line, not before it gets there.",
+          "A little early or a little late still counts. Right on the line gives you PERFECT.",
+          "If nothing happens when you tap, the note was still too far away. Wait for it to reach the line.",
+          "On a keyboard: A, S and D, or J, K and L, or the arrow keys.",
+        ],
+      },
+      {
+        heading: "Splitting the beat",
+        lines: [
+          "The music is counted in bars. One bar is one whole.",
+          "The notes cut the bar into equal pieces: two halves, then four quarters, then eight eighths.",
+          "You feel the piece in your hands first. Then you see it written down.",
+        ],
+      },
+      {
+        heading: "Questions",
+        lines: [
+          "Now and then a question appears at the top of the screen.",
+          "Three notes come at you, one in each lane, and each one has an answer on it.",
+          "Tap the lane with the right answer when it reaches the line.",
+          "A right answer adds one block of charge. A wrong one takes two away.",
+        ],
+      },
+      {
+        heading: "Charge",
+        lines: [
+          "The five blocks near the top are your charge.",
+          "If they all run out the music breaks down. Answer one more question right and it starts again.",
+          "The run never ends. You always get another go.",
+        ],
+      },
+    ],
+    reducedMotion: host.prefersReducedMotion(),
+    onClose: () => game.resumeFromPause(),
+  });
   const showPerf = new URLSearchParams(location.search).has("perf");
   if (showPerf) perfBox.classList.remove("sb-hide");
 
@@ -199,6 +261,13 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
 
   const onPointer = (e: PointerEvent) => {
     if (panel.contains(e.target as Node) || gear.contains(e.target as Node)) return;
+    // The shared how-to-play surface floats over the whole field. A tap on it is
+    // a tap on it, never a note in the lane that happens to be underneath.
+    const inGuide = (e.target as HTMLElement | null)?.closest?.(".dwc-help, .dwc-scrim");
+    if (inGuide) {
+      if (inGuide.classList.contains("dwc-help")) game.pause();
+      return;
+    }
     e.preventDefault();
     if (game.phase === "title") {
       void begin();
@@ -212,6 +281,7 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
 
   const onKey = (e: KeyboardEvent) => {
     if (e.repeat) return;
+    if (guide.isOpen) return;
     if (e.key === "Escape") {
       panel.classList.toggle("sb-hide");
       if (panel.classList.contains("sb-hide")) game.resumeFromPause();
@@ -239,6 +309,10 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
   const ro = new ResizeObserver(() => renderer.resize());
   ro.observe(root);
   window.addEventListener("orientationchange", () => renderer.resize());
+  // Insets are not fixed: rotation swaps top/bottom with left/right, and iPadOS
+  // changes them when the pack is resized in Split View. A layout read once at
+  // mount is right until the first rotation and wrong after it.
+  const stopInsets = onInsetsChange(() => renderer.resize());
 
   /* ---------------- loop ---------------- */
   let raf = 0;
@@ -328,6 +402,8 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
     unmount() {
       alive = false;
       cancelAnimationFrame(raf);
+      guide.destroy();
+      stopInsets();
       ro.disconnect();
       root.removeEventListener("pointerdown", onPointer);
       window.removeEventListener("keydown", onKey);
