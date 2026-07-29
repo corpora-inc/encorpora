@@ -110,6 +110,20 @@ export type Settings = {
   readonly colorScheme: "light" | "dark"
   readonly sound: boolean
   readonly haptics: boolean
+  /**
+   * The device's safe-area insets in CSS pixels, measured by the HOST.
+   *
+   * A pack cannot measure these itself. It runs in an iframe sandboxed
+   * `allow-scripts` with deliberately no `allow-same-origin`, and
+   * `env(safe-area-inset-*)` is a property of the TOP-LEVEL browsing context —
+   * a cross-origin child resolves all four to 0. Every pack that tried to read
+   * them got zeros and drew its HUD under the notch believing it was safe.
+   *
+   * Optional so an older host is not a breaking change; a pack that sees
+   * `undefined` should fall back to zeros, which is exactly what it was already
+   * getting.
+   */
+  readonly safeArea?: { top: number; right: number; bottom: number; left: number }
 }
 
 export type ItemChoice = {
