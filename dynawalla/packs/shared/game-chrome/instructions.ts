@@ -34,10 +34,29 @@
  * A sheet rises from the bottom and is capped so its top edge can never reach
  * the host's corners. The clearance is arithmetic, not judgement, and
  * `sheetTop()` exposes it so a test can assert it at any viewport.
+ *
+ * **The game stops while the sheet is up, and it is not the game's job to
+ * remember.** "I can hear counterweight playing in the background while I'm
+ * reading the instructions ... it's so stressful I don't even want to QA it."
+ * Pausing had been fixed per game five times by then and eleven of the
+ * twenty-seven still had none, so it is fixed here instead, on all three of the
+ * ways a game keeps running behind a scrim:
+ *
+ *   - **sound** — `audioHold` suspends every `AudioContext` the pack owns and
+ *     holds it suspended. No import, no callback, no line in the game.
+ *   - **keys** — the capture-phase swallow, below. Already here.
+ *   - **taps** — the same swallow, for pointers. A scrim covers the game to the
+ *     eye but a pointer event on it still bubbles to whatever the game bound on
+ *     its root or on `globalThis`, so the sheet only LOOKED modal.
+ *
+ * What cannot be done from here is a game's own simulation clock: this module
+ * has no idea what a game's loop is. That is what `onOpen`/`onClose` are for,
+ * and they are the only part of pausing a game still has to opt into.
  */
 
 import { safeInsets, onInsetsChange, type Insets } from "./insets.ts"
 import { HOST_CONTROL, HOST_MARGIN, HOST_PROGRESS_H } from "./hostChrome.ts"
+import { installAudioHold, holdAudio, releaseAudio } from "./audioHold.ts"
 
 export type Section = { heading: string; lines: readonly string[] }
 
@@ -48,7 +67,19 @@ export type InstructionsSpec = {
   readonly summary: readonly string[]
   /** The manual. Omit for a game whose summary really is the whole rule set. */
   readonly sections?: readonly Section[]
-  /** Called when the panel closes, so a game can resume. */
+  /**
+   * Called when the panel opens, so a game can stop its clock.
+   *
+   * Sound, keys and taps are already held for you and need nothing here — this
+   * is only for a simulation that would otherwise keep advancing behind the
+   * scrim: a wall that keeps rising, a runner that keeps running, a timer that
+   * keeps counting down while a child reads why they lost.
+   *
+   * Opt-in, and opt-in is how the noise defect happened, so it is deliberately
+   * NOT the mechanism for anything that could be done without it.
+   */
+  readonly onOpen?: () => void
+  /** Called when the panel closes, so a game can resume. The pair to `onOpen`. */
   readonly onClose?: () => void
   /** Skip the entrance transition. Pass `host.prefersReducedMotion()`. */
   readonly reducedMotion?: boolean
@@ -186,22 +217,38 @@ function styleSheet(reduced: boolean): string {
  * child reliably hits, and the platform floor.
  */
 export function createInstructions(root: HTMLElement, spec: InstructionsSpec): Instructions {
+  // Mounting the manual is what arms the audio hold. It is idempotent and it
+  // runs at import too; doing it here as well is what covers a bundle that
+  // evaluated a game's audio module before this one.
+  installAudioHold()
+
+  // Identity, not DOM traversal. The pointer swallow has to answer "is this
+  // event ours?" and the twenty-seven games mount against hand-rolled fake
+  // elements with no `contains`, no `closest` and no `parentNode` — the same
+  // trap that `style.setProperty` and `classList` fell into. A Set of the nodes
+  // this module made needs nothing from the DOM at all.
+  const ours = new Set<unknown>()
+  const mine = <T>(el: T): T => {
+    ours.add(el)
+    return el
+  }
+
   const reduced = spec.reducedMotion === true
   const style = document.createElement("style")
   style.textContent = styleSheet(reduced)
   root.appendChild(style)
 
-  const help = document.createElement("button")
+  const help = mine(document.createElement("button"))
   help.type = "button"
   help.className = "dwc-help"
   help.textContent = "?"
   help.setAttribute("aria-label", `How to play ${spec.title}`)
 
-  const scrim = document.createElement("div")
+  const scrim = mine(document.createElement("div"))
   scrim.className = "dwc-scrim"
   scrim.hidden = true
 
-  const sheet = document.createElement("div")
+  const sheet = mine(document.createElement("div"))
   sheet.className = "dwc-sheet"
   // State goes on `className`, never `classList`. The 27 games mount against
   // hand-rolled fake elements that expose `className` and nothing else, so a
@@ -217,46 +264,46 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   sheet.setAttribute("aria-label", `How to play ${spec.title}`)
   sheet.tabIndex = -1
 
-  const grab = document.createElement("div")
+  const grab = mine(document.createElement("div"))
   grab.className = "dwc-grab"
   // It is a control: it dismisses the sheet by drag. Announce it as one rather
   // than leaving a silent div a screen reader walks straight past.
   grab.setAttribute("role", "button")
   grab.setAttribute("aria-label", "Close how to play")
   grab.tabIndex = 0
-  const pill = document.createElement("div")
+  const pill = mine(document.createElement("div"))
   pill.className = "dwc-pill"
   grab.appendChild(pill)
 
-  const head = document.createElement("div")
+  const head = mine(document.createElement("div"))
   head.className = "dwc-head"
-  const h = document.createElement("h2")
+  const h = mine(document.createElement("h2"))
   h.className = "dwc-title"
   h.textContent = spec.title
   head.appendChild(h)
 
-  const body = document.createElement("div")
+  const body = mine(document.createElement("div"))
   body.className = "dwc-body"
 
-  const sum = document.createElement("div")
+  const sum = mine(document.createElement("div"))
   sum.className = "dwc-sum"
   for (const line of spec.summary) {
-    const p = document.createElement("p")
+    const p = mine(document.createElement("p"))
     p.textContent = line
     sum.appendChild(p)
   }
   body.appendChild(sum)
 
   for (const sec of spec.sections ?? []) {
-    const wrap = document.createElement("section")
+    const wrap = mine(document.createElement("section"))
     wrap.className = "dwc-sec"
-    const sh = document.createElement("h3")
+    const sh = mine(document.createElement("h3"))
     sh.className = "dwc-h"
     sh.textContent = sec.heading
-    const ul = document.createElement("ul")
+    const ul = mine(document.createElement("ul"))
     ul.className = "dwc-l"
     for (const line of sec.lines) {
-      const li = document.createElement("li")
+      const li = mine(document.createElement("li"))
       li.textContent = line
       ul.appendChild(li)
     }
@@ -264,9 +311,9 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     body.appendChild(wrap)
   }
 
-  const foot = document.createElement("div")
+  const foot = mine(document.createElement("div"))
   foot.className = "dwc-foot"
-  const close = document.createElement("button")
+  const close = mine(document.createElement("button"))
   close.type = "button"
   close.className = "dwc-close"
   close.textContent = "PLAY"
@@ -305,6 +352,9 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   const doOpen = (): void => {
     if (open) return
     open = true
+    // Before anything is drawn. The sheet takes 380ms to arrive and a child
+    // should not hear the game for those 380ms.
+    holdAudio()
     restore = (document.activeElement as HTMLElement) ?? null
     place()
     sheetClass()
@@ -314,6 +364,7 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     help.setAttribute("aria-expanded", "true")
     body.scrollTop = 0
     sheet.focus()
+    spec.onOpen?.()
   }
 
   const doClose = (): void => {
@@ -327,14 +378,8 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     help.setAttribute("aria-expanded", "false")
     restore?.focus?.()
     restore = null
+    releaseAudio()
     spec.onClose?.()
-  }
-
-  // A tap on the scrim closes; a tap inside the sheet must not. Children tap
-  // the background constantly and being thrown out of the rules mid-read is
-  // worse than having to find the button.
-  const onScrim = (e: Event): void => {
-    if (e.target === scrim) doClose()
   }
 
   // ---- drag to dismiss -----------------------------------------------------
@@ -418,10 +463,81 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   globalThis.addEventListener("keydown", swallow, true)
   globalThis.addEventListener("keyup", swallow, true)
 
+  // The same swallow, for the other input.
+  //
+  // The scrim covers the game to the eye, but a pointer event that lands on it
+  // still travels to whatever the game bound on its canvas, its root or
+  // `globalThis` — so the sheet only LOOKED modal. Tapping the background to
+  // dismiss the manual also fired a shot, a shear or a swipe underneath it, and
+  // in the eleven games with no gating of their own that is the whole of what
+  // "the game keeps playing while I read" means for touch.
+  //
+  // Ours pass and everything else stops. `stopPropagation` in capture prevents
+  // an event reaching its own target's listeners too, so stopping one of our
+  // nodes would take the drag dismissal, PLAY and tap-to-close with it.
+  //
+  // `pointerup` is swallowed along with the rest, which means a game holding a
+  // drag when the sheet opens does not get the release that ends it. That is the
+  // same trade the key swallow already makes with `keyup`, and it is the right
+  // way round: letting "up" through would fire every game that acts on release,
+  // which is most of them, and the drag can only have been started by a finger
+  // that is about to be lifted anyway.
+  const POINTERS = [
+    "pointerdown",
+    "pointermove",
+    "pointerup",
+    "pointercancel",
+    "mousedown",
+    "mousemove",
+    "mouseup",
+    "touchstart",
+    "touchmove",
+    "touchend",
+    "touchcancel",
+    "wheel",
+    "contextmenu",
+    "click",
+    "dblclick",
+  ] as const
+
+  const swallowPointer = (e: Event): void => {
+    // The tap that OPENS the manual is a tap on one of ours, so the rule below
+    // would let it through to the game as well — and opening the rules cost a
+    // move. The help control is handled in both directions: its gestures never
+    // reach the game, and its `click`, which is what actually opens the sheet,
+    // is left alone whether the sheet is up or not.
+    if (e.target === help) {
+      if (e.type !== "click" && e.type !== "dblclick") e.stopPropagation()
+      return
+    }
+    // The scrim IS the background. It is `inset:0`, so a tap "on the game" is a
+    // tap on the scrim, and letting our own elements through unconditionally
+    // would have let every one of those reach the game — which is the whole
+    // defect, not an edge of it.
+    //
+    // So closing on a background tap is done HERE, in capture, for the same
+    // reason Escape is: a bubble listener on the scrim could only run if the
+    // event were allowed to travel, and allowing it to travel is what feeds the
+    // game. Children tap the background constantly, and a tap inside the sheet
+    // must still not dismiss it — being thrown out of the rules mid-read is
+    // worse than having to find the button.
+    if (e.target === scrim) {
+      if (!open) return
+      e.stopPropagation()
+      if (e.type === "pointerdown") doClose()
+      return
+    }
+    if (ours.has(e.target)) return
+    if (open) e.stopPropagation()
+    // Closed, and not one of ours: the game is being played and must hear every
+    // one of them. A gate stuck shut is the same bug as a gate stuck open.
+  }
+
+  for (const t of POINTERS) globalThis.addEventListener(t, swallowPointer, true)
+
   const draggers = [grab, head]
   help.addEventListener("click", doOpen)
   close.addEventListener("click", doClose)
-  scrim.addEventListener("pointerdown", onScrim)
   for (const el of draggers) {
     el.addEventListener("pointerdown", onDown)
     el.addEventListener("pointermove", onMove)
@@ -436,12 +552,18 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
       return open
     },
     destroy(): void {
+      // A pack torn down mid-read must not leave the sound held: the hold is
+      // process-wide and nothing would ever come back to lift it.
+      if (open) {
+        open = false
+        releaseAudio()
+      }
       stopInsets()
       globalThis.removeEventListener("keydown", swallow, true)
       globalThis.removeEventListener("keyup", swallow, true)
+      for (const t of POINTERS) globalThis.removeEventListener(t, swallowPointer, true)
       help.removeEventListener("click", doOpen)
       close.removeEventListener("click", doClose)
-      scrim.removeEventListener("pointerdown", onScrim)
       for (const el of draggers) {
         el.removeEventListener("pointerdown", onDown)
         el.removeEventListener("pointermove", onMove)

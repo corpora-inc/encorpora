@@ -24,6 +24,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { createInstructions, sheetTop, type InstructionsSpec } from "./instructions.ts"
+import { forgetAudioContexts } from "./audioHold.ts"
 import { setHostInsets, type Insets } from "./insets.ts"
 import { exitRect, helpRect, HOST_CONTROL } from "./hostChrome.ts"
 
@@ -127,13 +128,49 @@ const doc = {
   body: new El("body"),
 }
 
+/**
+ * A game's `AudioContext`, with only the three methods this module touches.
+ *
+ * State flips when the promise settles, not when the call is made, because that
+ * is what a real context does — and a test whose fake flips synchronously would
+ * pass with a `suspend()` that is never awaited by anything.
+ */
+class FakeAudioContext {
+  state: "running" | "suspended" | "closed" = "running"
+  resumed = 0
+  suspended = 0
+  async resume(): Promise<void> {
+    this.resumed += 1
+    await Promise.resolve()
+    if (this.state !== "closed") this.state = "running"
+  }
+  async suspend(): Promise<void> {
+    this.suspended += 1
+    await Promise.resolve()
+    if (this.state !== "closed") this.state = "suspended"
+  }
+  async close(): Promise<void> {
+    this.state = "closed"
+  }
+}
+
+/** Let every queued suspend/resume settle. The hold serialises them per context. */
+const settle = async (): Promise<void> => {
+  for (let i = 0; i < 8; i++) await Promise.resolve()
+}
+
 /** Key listeners registered on `globalThis`, and the games that share them. */
 type Rig = {
   root: El
   ui: ReturnType<typeof createInstructions>
   /** Dispatch a key the way a browser would: capture listeners, then the game. */
   key(type: "keydown" | "keyup", key: string): { reachedGame: boolean; defaultPrevented: boolean }
+  /** The same, for a pointer. `target` is what the browser would hit. */
+  pointer(type: string, target: El): { reachedGame: boolean }
+  /** A context the GAME made, through whatever `globalThis.AudioContext` is now. */
+  gameAudio(): FakeAudioContext
   gameSawKeys: string[]
+  gameSawPointers: string[]
   restore(): void
 }
 
@@ -145,9 +182,12 @@ function rig(spec?: Partial<InstructionsSpec>): Rig {
   // Mutation testing caught it; nothing else would have.
   const capture = new Map<string, Listener[]>()
   const gameSawKeys: string[] = []
+  const gameSawPointers: string[] = []
 
   const prevDoc = (globalThis as { document?: unknown }).document
   const prevCS = (globalThis as { getComputedStyle?: unknown }).getComputedStyle
+  const prevAC = (globalThis as { AudioContext?: unknown }).AudioContext
+  ;(globalThis as { AudioContext?: unknown }).AudioContext = FakeAudioContext
   ;(globalThis as { document?: unknown }).document = doc
   ;(globalThis as { getComputedStyle?: unknown }).getComputedStyle = () => ({
     paddingTop: "0px",
@@ -164,16 +204,14 @@ function rig(spec?: Partial<InstructionsSpec>): Rig {
     fn: Listener,
     useCapture?: boolean,
   ) => {
-    if (t.startsWith("key") && useCapture === true) {
-      capture.set(t, [...(capture.get(t) ?? []), fn])
-    }
+    if (useCapture === true) capture.set(t, [...(capture.get(t) ?? []), fn])
   }
   ;(globalThis as { removeEventListener: unknown }).removeEventListener = (
     t: string,
     fn: Listener,
     useCapture?: boolean,
   ) => {
-    if (t.startsWith("key") && useCapture === true) {
+    if (useCapture === true) {
       capture.set(t, (capture.get(t) ?? []).filter((f) => f !== fn))
     }
   }
@@ -190,6 +228,31 @@ function rig(spec?: Partial<InstructionsSpec>): Rig {
     root,
     ui,
     gameSawKeys,
+    gameSawPointers,
+    gameAudio() {
+      const Ctor = (globalThis as unknown as { AudioContext?: new () => FakeAudioContext })
+        .AudioContext
+      if (!Ctor) throw new Error("no AudioContext on globalThis")
+      return new Ctor()
+    },
+    pointer(type, target) {
+      let stopped = false
+      const e = {
+        type,
+        target,
+        currentTarget: null,
+        preventDefault() {},
+        stopPropagation() {
+          stopped = true
+        },
+      }
+      for (const fn of [...(capture.get(type) ?? [])]) fn(e)
+      // Every game binds its own pointer handlers — on its canvas, its root or
+      // `globalThis`. A capture listener on `globalThis` runs before all three,
+      // so stopping there is what does or does not reach the game.
+      if (!stopped) gameSawPointers.push(type)
+      return { reachedGame: !stopped }
+    },
     key(type, key) {
       let stopped = false
       let defaultPrevented = false
@@ -214,6 +277,8 @@ function rig(spec?: Partial<InstructionsSpec>): Rig {
       ;(globalThis as { removeEventListener: unknown }).removeEventListener = realRemove
       ;(globalThis as { document?: unknown }).document = prevDoc
       ;(globalThis as { getComputedStyle?: unknown }).getComputedStyle = prevCS
+      ;(globalThis as { AudioContext?: unknown }).AudioContext = prevAC
+      forgetAudioContexts()
     },
   }
 }
@@ -441,6 +506,219 @@ test("close fires onClose so the game can resume, and open/close are idempotent"
   r.ui.close()
   r.ui.close()
   assert.equal(closes, 1, "onClose fired for a close that did not happen")
+  r.ui.destroy()
+  r.restore()
+})
+
+// --- the game must not be playing behind the manual -------------------------
+//
+// The report, verbatim: "All games should pause while reading the instructions
+// .. I can hear counterweight playing in the background while I'm reading the
+// instructions ... stressing me out even more .. it's so stressful I don't even
+// want to QA it."
+//
+// A child opens the rules BECAUSE they are overwhelmed. Getting shouted at by
+// the game while they read is the worst moment in the product to be loud.
+//
+// This had been fixed per game — #642 for VOLTA and MOSAIC, then trebuchet,
+// coil, foundry and guilty one at a time. Eleven of the twenty-seven had no
+// gating at all, and the twenty-eighth pack would have shipped without it too.
+// So it is fixed HERE, where a game cannot forget it.
+
+test("the game's sound stops while the manual is open", async () => {
+  const r = rig()
+  const ctx = r.gameAudio()
+  assert.equal(ctx.state, "running")
+  r.ui.open()
+  await settle()
+  assert.equal(ctx.state, "suspended", "the game is still making noise behind the manual")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("and starts again when the manual closes", async () => {
+  const r = rig()
+  const ctx = r.gameAudio()
+  r.ui.open()
+  await settle()
+  r.ui.close()
+  await settle()
+  assert.equal(ctx.state, "running", "the game came back silent")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("a game that was ALREADY silent is not switched on by closing the manual", async () => {
+  // A game paused on its own — its own pause screen, a phone call, the host
+  // putting a sheet over the frame — must come back exactly as it was. Closing
+  // the manual is not permission to make noise.
+  const r = rig()
+  const ctx = r.gameAudio()
+  await ctx.suspend()
+  assert.equal(ctx.state, "suspended")
+  r.ui.open()
+  await settle()
+  r.ui.close()
+  await settle()
+  assert.equal(ctx.state, "suspended", "closing the manual restarted a game that was paused")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("the game cannot resume its own sound from behind the manual", async () => {
+  // Every game calls `audio.resume()` on any gesture, because Web Audio needs
+  // one. A tap on the scrim still reaches those handlers in some games, and a
+  // one-shot suspend would be undone by the first such tap. The hold has to
+  // OUTLAST the open sheet, not fire once at the start of it.
+  const r = rig()
+  const ctx = r.gameAudio()
+  r.ui.open()
+  await settle()
+  void ctx.resume()
+  await settle()
+  assert.equal(ctx.state, "suspended", "the game resumed itself while the manual was up")
+  // ...and the intent is not thrown away: it wanted sound, so it gets sound.
+  r.ui.close()
+  await settle()
+  assert.equal(ctx.state, "running", "the game's own resume was swallowed for good")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("a context the game creates DURING the read is born silent", async () => {
+  // Nothing says the context exists before the sheet does. A child who opens
+  // the rules before ever touching the game leaves the first gesture — and so
+  // the first `new AudioContext()` — until after the sheet is up.
+  const r = rig()
+  r.ui.open()
+  await settle()
+  const ctx = r.gameAudio()
+  await settle()
+  assert.equal(ctx.state, "suspended", "a context made behind the manual started playing")
+  r.ui.close()
+  await settle()
+  assert.equal(ctx.state, "running")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("unmounting while the manual is open does not leave the hold on", async () => {
+  const r = rig()
+  const ctx = r.gameAudio()
+  r.ui.open()
+  await settle()
+  r.ui.destroy()
+  await settle()
+  assert.equal(ctx.state, "running", "the pack was torn down with its audio still held")
+  r.restore()
+})
+
+test("the game sees no taps while the manual is open", async () => {
+  // The scrim covers the game visually, but a pointer event on the scrim still
+  // bubbles to whatever the game bound on its root or on `globalThis`. So the
+  // sheet only LOOKED modal: tapping the background to dismiss it also fired a
+  // shot, a shear or a swipe underneath. This is the same hole the key swallow
+  // was written for, on the other input.
+  const r = rig()
+  r.ui.open()
+  // The scrim is `inset:0`, so a tap "on the game" IS a tap on the scrim. The
+  // canvas stands in for the rarer case of a game node that outranks it.
+  const scrim = r.root.find("dwc-scrim")
+  const canvas = new El("canvas")
+  for (const t of ["pointermove", "pointerup", "touchstart", "mousedown", "wheel"]) {
+    r.pointer(t, scrim)
+    r.pointer(t, canvas)
+  }
+  assert.deepEqual(
+    r.gameSawPointers,
+    [],
+    `the game saw ${r.gameSawPointers.join(",")} behind the manual`,
+  )
+  assert.equal(r.ui.isOpen, true, "the manual dismissed itself on a move")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("a tap on the background closes the manual — and the game does not feel it", () => {
+  // Both halves matter. Tap-to-dismiss is how most children close a sheet, and
+  // it used to fire a shot on the way out.
+  const r = rig()
+  r.ui.open()
+  const scrim = r.root.find("dwc-scrim")
+  assert.equal(r.pointer("pointerdown", scrim).reachedGame, false, "the dismissing tap hit the game")
+  assert.equal(r.ui.isOpen, false, "a tap on the background did not close the manual")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("a tap INSIDE the sheet does not dismiss it", () => {
+  // A child reading the manual touches it. Being thrown out of the rules
+  // mid-read is worse than having to find the button.
+  const r = rig()
+  r.ui.open()
+  r.pointer("pointerdown", r.root.find("dwc-body"))
+  assert.equal(r.ui.isOpen, true, "touching the manual closed it")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("but the sheet's own pointers still get through — it must stay draggable", async () => {
+  // A swallow that ate the sheet's own gestures would take the drag dismissal,
+  // the PLAY button and tap-to-close with it.
+  const r = rig()
+  r.ui.open()
+  const grab = r.root.find("dwc-grab")
+  const close = r.root.find("dwc-close")
+  assert.equal(r.pointer("pointerdown", grab).reachedGame, true, "the grab handle was deafened")
+  assert.equal(r.pointer("pointerup", close).reachedGame, true, "PLAY was deafened")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("and nothing is swallowed once the manual is closed", async () => {
+  // A gate stuck shut is the same bug as a gate stuck open. A game whose taps
+  // stopped working after one read is worse than one that was noisy for ten
+  // seconds.
+  const r = rig()
+  const scrim = r.root.find("dwc-scrim")
+  r.ui.open()
+  r.ui.close()
+  for (const t of ["pointerdown", "pointerup", "touchstart"]) r.pointer(t, scrim)
+  assert.deepEqual(
+    r.gameSawPointers,
+    ["pointerdown", "pointerup", "touchstart"],
+    "the game was starved of input after the manual closed",
+  )
+  r.ui.destroy()
+  r.restore()
+})
+
+test("the tap that OPENS the manual does not also fire the game underneath", async () => {
+  // The help control is a pack element sitting over the playfield. Its tap
+  // bubbled straight into the game, so opening the rules cost a move.
+  const r = rig()
+  const help = r.root.find("dwc-help")
+  assert.equal(r.pointer("pointerdown", help).reachedGame, false, "opening the rules fired the game")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("onOpen fires so a game can freeze its loop, exactly once per open", () => {
+  // Sound is stopped for every game by construction. A game's SIMULATION cannot
+  // be — the module has no idea what a game's loop is — so `onOpen` is the pair
+  // to `onClose` for games that need to stop the clock as well as the noise.
+  let opens = 0
+  let closes = 0
+  const r = rig({ onOpen: () => (opens += 1), onClose: () => (closes += 1) })
+  r.ui.open()
+  r.ui.open()
+  assert.equal(opens, 1, "onOpen fired for an open that did not happen")
+  assert.equal(closes, 0, "onClose fired before anything closed")
+  r.ui.close()
+  r.ui.close()
+  assert.equal(closes, 1)
+  r.ui.open()
+  assert.equal(opens, 2, "the second read never told the game")
   r.ui.destroy()
   r.restore()
 })
