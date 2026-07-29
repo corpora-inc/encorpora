@@ -76,9 +76,21 @@ export class Director {
     }
   }
 
-  /** True when it is time to put another ordinary automaton on the lattice. */
-  wantsSpawn(live: number): boolean {
-    const p = this.pressure()
+  /**
+   * True when it is time to put another ordinary automaton on the lattice.
+   *
+   * @param p the pressure to spawn AGAINST, which is not always this
+   *   director's own. It reads `this.pressure()` by default and that default
+   *   is the trap: while a question is being read the caller passes
+   *   `readingRelief(...)`, and a version of this method that helpfully looked
+   *   the pressure up for itself discarded the relieved `spawnGap` and
+   *   `floorCount` silently. The relief then reached only `descentSeconds`,
+   *   every hull lingered 30% longer at an unchanged spawn cadence, and the
+   *   lattice got about 25% DENSER during the one moment it was supposed to
+   *   thin — the exact opposite of what the relief exists to do, with a passing
+   *   test suite over it because the test only ever called the pure function.
+   */
+  wantsSpawn(live: number, p: Pressure = this.pressure()): boolean {
     if (live < p.floorCount) return true
     return this.sinceSpawn >= p.spawnGap
   }
@@ -157,8 +169,12 @@ export class Director {
  *     lattice with no mathematics on it, and an empty screen is not calm, it
  *     is dead air.
  *
- * The relief is applied at spawn time, so nothing already descending changes
- * speed underneath the child's hands.
+ * `descentSeconds` is read at spawn time, so nothing already descending changes
+ * pace underneath the child's hands. `stepSeconds` is not — the frame loop
+ * passes it live — so every automaton on the lattice does widen its sideways
+ * cadence for the length of the wave. That is deliberate and it is the calm:
+ * a board that is stepping more slowly is a board that is easier to read
+ * while thinking about something else.
  */
 export function readingRelief(p: Pressure): Pressure {
   return {

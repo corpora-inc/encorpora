@@ -223,7 +223,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
    * running, and every automaton that was descending is exactly where it was
    * when the hold lifts.
    */
-  let reveal: { text: string; answer: string; left: number; max: number } | null = null
+  let reveal: { text: string; answer: string; left: number } | null = null
   let hold = 0
 
   const pulses: Pulse[] = []
@@ -501,7 +501,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
    */
   function completeSum(w: CoreWave): void {
     const seconds = revealSeconds({ prompt: w.prompt, answer: w.answer })
-    reveal = { text: w.prompt, answer: String(w.answer), left: seconds, max: seconds }
+    reveal = { text: w.prompt, answer: String(w.answer), left: seconds }
     hold = seconds
     audio.riser()
   }
@@ -716,6 +716,14 @@ export function mountBeam(el: HTMLElement, host: Host): {
   function endRun(): void {
     over = true
     overAt = performance.now()
+    // A wave still in the air is over too, and unreported: nothing was handed
+    // in and nothing ran out — the lattice went dark underneath it. Without
+    // this the question stays carved on the wall under the game-over scrim,
+    // because the landed loop stops clearing candidates once `over` is set.
+    wave = null
+    coreBody = null
+    reveal = null
+    hold = 0
     if (score > best) {
       best = score
       writeBest(best)
@@ -778,7 +786,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function onDown(e: PointerEvent): void {
-    if (paused) return
+    if (paused || hold > 0) return
     void audio.start()
     if (over) {
       if (performance.now() - overAt > 550) restart()
@@ -795,7 +803,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function onMove(e: PointerEvent): void {
-    if (paused || !pointerDown) return
+    if (paused || hold > 0 || !pointerDown) return
     if (!dragged && Math.hypot(e.clientX - downX, e.clientY - downY) > 14) dragged = true
     if (!dragged) return
     // A drag is the *listening* verb: it rides the lattice without firing, so a
@@ -811,7 +819,10 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function onKey(e: KeyboardEvent): void {
-    if (paused) return
+    // Refused, not queued. The runner cannot move while the hall is held, so a
+    // tap that set `fireOnArrive` would sit there looking like a dead control
+    // and then go off on its own two seconds later.
+    if (paused || hold > 0) return
     if (e.key === "ArrowLeft") rideTo(runnerCol - 1, false)
     else if (e.key === "ArrowRight") rideTo(runnerCol + 1, false)
     else if (e.key === " " || e.key === "Enter") {
@@ -840,9 +851,11 @@ export function mountBeam(el: HTMLElement, host: Host): {
     if (hold > 0) {
       // THE HOLD. The lattice is still while the sum finishes: nothing
       // descends, nothing spawns, no pulse travels and the clock the director
-      // escalates on does not advance. Only the decoration keeps moving, so a
+      // escalates on does not advance, and input is refused. Only the
+      // decoration keeps moving — the sparks and the resonance traces — so a
       // held hall reads as held rather than as crashed.
       hold -= dt
+      if (!reduced) traceScroll += dt * 0.42
       parts.update(dt)
       for (const q of pops) {
         if (!q.alive) continue
@@ -886,7 +899,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
 
     if (!over) {
       if (director.wantsCore(wave !== null)) spawnCore()
-      if (field.liveCount(A_ORDINARY) < 9 && director.wantsSpawn(field.liveCount(A_ORDINARY))) {
+      if (field.liveCount(A_ORDINARY) < 9 && director.wantsSpawn(field.liveCount(A_ORDINARY), p)) {
         spawnOrdinary()
       }
     }
