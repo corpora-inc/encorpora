@@ -1291,8 +1291,12 @@ export class Renderer {
 
   private hud(L: Layout, v: ViewState): void {
     const ctx = this.ctx;
-    const pad = L.hudPad;
-    const s = Math.max(11, Math.min(15, L.u * 13));
+    // The stack starts where the layout put it, under the host's exit control.
+    // It used to start at the padded corner, which is exactly where the host
+    // paints "back" — the movement name was behind a button on every device.
+    const s = L.hudSize;
+    const hx = L.hud.x;
+    const hy = L.hud.y;
 
     ctx.save();
     ctx.font = `600 ${s}px ${SERIF}`;
@@ -1300,25 +1304,25 @@ export class Renderer {
     ctx.textBaseline = "top";
     ctx.fillStyle = "rgba(226,206,168,0.62)";
     const title = v.spec.movementName.toUpperCase();
-    let x = pad;
+    let x = hx;
     for (const ch of title) {
-      ctx.fillText(ch, x, pad);
+      ctx.fillText(ch, x, hy);
       x += ctx.measureText(ch).width + s * 0.16;
     }
 
     // progress through the movement
-    const dotY = pad + s * 1.9;
+    const dotY = hy + s * 1.9;
     for (let i = 0; i < 5; i++) {
       const done = i < v.solvedTotal % 5 || (v.solvedTotal > 0 && v.solvedTotal % 5 === 0 && false);
       ctx.beginPath();
-      ctx.arc(pad + 4 + i * s * 0.85, dotY + 3, 3, 0, Math.PI * 2);
+      ctx.arc(hx + 4 + i * s * 0.85, dotY + 3, 3, 0, Math.PI * 2);
       ctx.fillStyle = done ? "rgba(255,208,122,0.9)" : "rgba(200,190,170,0.2)";
       ctx.fill();
     }
 
     // gems for clean solves
     for (let i = 0; i < Math.min(v.gems, 12); i++) {
-      const gx = pad + 4 + i * s * 0.8;
+      const gx = hx + 4 + i * s * 0.8;
       const gy = dotY + s * 1.5;
       ctx.save();
       ctx.translate(gx, gy);
@@ -1328,9 +1332,9 @@ export class Renderer {
       ctx.restore();
     }
 
-    // sound toggle
-    const bx = L.w - pad - 14;
-    const by = pad + 10;
+    // sound toggle, under the host's how-to-play control for the same reason
+    const bx = L.sound.x;
+    const by = L.sound.y;
     ctx.strokeStyle = v.audioOn ? "rgba(240,214,160,0.75)" : "rgba(180,170,150,0.32)";
     ctx.lineWidth = 1.6;
     ctx.beginPath();
