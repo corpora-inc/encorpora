@@ -190,6 +190,17 @@ export class TrebuchetGame {
 
   // hud
   private btns: Btn[] = []
+  /**
+   * True while something is over the game — today, the how-to-play panel.
+   *
+   * A sheet the host or the chrome raises is not a pause: the rAF loop is still
+   * running and `window` still has this game's key handlers on it, so a child
+   * reading the rules with a keyboard fires the loaded boulder with the space
+   * bar. Worse, the answer clock keeps running behind the sheet and the time
+   * spent READING gets reported as time spent THINKING, which is what feeds the
+   * difficulty. Both stop here.
+   */
+  private blocked: () => boolean = () => false
   /** The HUD's geometry, re-derived from the SAFE rect on every resize. */
   private hud: HudLayout = hudLayout(320, 240, { x: 0, y: 0, w: 320, h: 240 }, false)
   private clearT = -1
@@ -259,6 +270,19 @@ export class TrebuchetGame {
   }
 
   /* ------------------------------------------------------------ lifecycle */
+
+  /**
+   * Tell the game when something is covering it, and start the answer clock
+   * again when it goes away.
+   */
+  setInputGuard(blocked: () => boolean): void {
+    this.blocked = blocked
+  }
+
+  /** The sheet is gone: the child is looking at the question again, now. */
+  restartAnswerClock(): void {
+    this.questionShownAt = performance.now()
+  }
 
   unmount(): void {
     this.running = false
@@ -396,6 +420,7 @@ export class TrebuchetGame {
   }
 
   private onPointerDown = (e: PointerEvent): void => {
+    if (this.blocked()) return
     this.audio.resume()
     const p = this.pointerPos(e)
     const b = hitBtn(this.btns, p.x, p.y)
@@ -441,11 +466,12 @@ export class TrebuchetGame {
 
   private onWheel = (e: WheelEvent): void => {
     e.preventDefault()
+    if (this.blocked()) return
     this.setDial(this.dial + (e.deltaY > 0 ? -1 : 1))
   }
 
   private key(e: KeyboardEvent, down: boolean): void {
-    if (!down) return
+    if (!down || this.blocked()) return
     const big = e.shiftKey ? 10 : 1
     switch (e.key) {
       case 'ArrowLeft':
@@ -1094,10 +1120,13 @@ export class TrebuchetGame {
     const pts: Array<{ x: number; y: number }> = []
     // Keep the field clear of the two things pinned to the glass: the equation
     // at the top and the firing controls at the bottom right. Both are measured
-    // from the safe rect now, so both pads carry the inset that pushed them in —
-    // and nothing else changes, because on a screen with no notch this is the
-    // same framing the game shipped with.
-    const padTop = this.unit * 2.5 + this.hud.area.y
+    // from the safe rect now, so both pads carry the inset that pushed them in,
+    // and the top pad also carries however far the stack had to drop to clear
+    // the host's corners — otherwise the tallest keep in the wave is framed
+    // straight into the rack row. Where the stack did not move (tablets, and
+    // phones held sideways) `stackShift` is zero and this is byte-for-byte the
+    // framing the game shipped with.
+    const padTop = this.unit * 2.5 + this.hud.area.y + this.hud.stackShift
     const strip = this.h - (this.hud.area.y + this.hud.area.h) + this.unit * 2.5
     const gf = clamp(1 - strip / this.h - 0.02, 0.58, 0.84)
     if (this.phase === 'flight' && this.shot) {

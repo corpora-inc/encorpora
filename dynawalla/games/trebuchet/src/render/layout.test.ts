@@ -123,9 +123,12 @@ for (const [vname, w, h] of VIEWPORTS) {
           inside(layout.plaqueMax, layout.area),
           `the equation plaque ${show(layout.plaqueMax)} runs outside the safe rect`,
         )
-        // The rack is read AND tapped — a stone loads that boulder.
+        // The rack is read AND tapped — a stone loads that boulder. Five
+        // multi-digit sums is an ordinary wave, and they must all be on the
+        // glass, not just clear of the chrome.
         for (const s of rackLayout(stateFor(layout))) {
           assert.equal(hitsHostChrome(s, w, insets), false, `a rack stone ${show(s)} is under chrome`)
+          assert.ok(inside(s, layout.area), `a rack stone ${show(s)} runs off the safe rect`)
         }
         // The wave counter and the score are read, so they move too.
         for (const [what, r] of [
