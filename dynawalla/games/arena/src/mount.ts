@@ -1,3 +1,4 @@
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import type { Host, MountOptions } from "./contract.ts"
 import { Gfx } from "./render/gfx.ts"
 import { Hud } from "./ui/hud.ts"
@@ -68,6 +69,60 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
     return on
   })
   const input = new Input(container)
+
+  // How to play. The arena states its rule with a picture and most children do
+  // read it in three seconds — but "most" is not "all", and a child who reads
+  // it wrong learns it by being stung, which is the one way we do not want to
+  // teach it. The manual is a button, never a wall: it opens nothing on its own
+  // and it stays reachable during play, because the moment a child needs the
+  // rules is never the title.
+  const guide = createInstructions(el, {
+    title: "ARENA",
+    summary: [
+      "You are a number swimming in dark water. Eat every number smaller than you and you grow.",
+      "Numbers bigger than you sting. Stay away from those.",
+    ],
+    sections: [
+      {
+        heading: "How to swim",
+        lines: [
+          "Put a finger on the screen and drag. You swim the way you drag.",
+          "Hold a second finger down to surge. You go fast, but you shrink while you do it.",
+          "The bits you drop while surging turn into food. Other numbers will eat them.",
+          "On a computer: point with the mouse to swim, and hold the space bar to surge.",
+        ],
+      },
+      {
+        heading: "What to eat",
+        lines: [
+          "A smooth filled circle is smaller than you. Swim into it and you eat it.",
+          "A spiky hollow ring is bigger than you. It stings and takes some of your size.",
+          "A red circle marked with a minus sign always hurts, however small it looks.",
+          "Some numbers are close, like 3,418 and 3,481. Read the digits before you swim in.",
+        ],
+      },
+      {
+        heading: "The dark moment",
+        lines: [
+          "Every so often the water goes dark and a math question appears above you.",
+          "Four glass balls float around you. Each ball holds a different answer.",
+          "Swim into the ball with the right answer and you grow a lot.",
+          "Pick the wrong ball and you lose some size. The right ball lights up so you can see it.",
+        ],
+      },
+      {
+        heading: "Going deeper",
+        lines: [
+          "The deeper you go, the more the water changes colour and the more there is to dodge.",
+          "The small marks under the depth name fill in as you go down. They never empty.",
+          "If something much bigger hits you, you burst and scatter, then come straight back.",
+          "There is no ending and no way to lose the run. You play until you want to stop.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
+
   const audio = new Audio()
   const cam = new Camera()
   cam.reduced = reduced
@@ -377,6 +432,15 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
     gov.sample(dtReal * 1000)
     dtReal = Math.min(dtReal, 0.1)
 
+    // Reading the rules is not playing. With the manual open the water holds
+    // its shape and nothing eats the child while they are looking something up
+    // — the picture keeps being drawn, the simulation does not advance, and the
+    // finger they are holding on the panel is not a steer.
+    if (guide.isOpen) {
+      gfx.draw(world, cam, time, reduced, floaters)
+      return
+    }
+
     const st = input.sample()
     if (st.hasAbsolute) {
       screenToWorld(st.absX, st.absY, aim)
@@ -447,6 +511,7 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
       container.removeEventListener("pointerdown", unlock)
       window.removeEventListener("keydown", unlock)
       input.dispose()
+      guide.destroy()
       hud.dispose()
       audio.dispose()
       gfx.dispose()

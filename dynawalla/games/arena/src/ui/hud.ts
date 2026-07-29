@@ -1,3 +1,10 @@
+import {
+  HOST_CONTROL,
+  HOST_MARGIN,
+  HOST_PROGRESS_H,
+  type Insets,
+  type Rect,
+} from "../../../../packs/shared/game-chrome/index.ts"
 import { RIVAL_NAMES, type World } from "../sim/world.ts"
 import { DEPTHS } from "../sim/depths.ts"
 
@@ -13,21 +20,79 @@ const DEPTH_COUNT = DEPTHS.length
  *
  * Nothing here reflows per frame. Text nodes are written only when the value
  * they show actually changes.
+ *
+ * **The host draws over this.** A back chevron floats in the top-LEFT corner
+ * and the how-to-play button in the top-RIGHT, both 44px, both painted by
+ * something that is not this game. The depth readout used to start at 14,14 and
+ * the ladder at 14 from the right, so the chevron sat on the depth name and the
+ * question mark sat on the top of the ladder. Nothing reserves a band — that
+ * costs a twelfth of a small phone to hold two buttons — so the readouts drop
+ * below the two corners instead and the water still fills the glass.
  */
+
+/**
+ * How far below the safe top edge the readouts start.
+ *
+ * Derived from the host's own numbers rather than typed, so if the host moves
+ * its chrome this game follows on the next build instead of drifting.
+ */
+export const HUD_TOP = HOST_PROGRESS_H + HOST_MARGIN + HOST_CONTROL + 6
+
+/** Gap from the safe left/right edge, for the two readouts. */
+export const HUD_EDGE = 14
+
+/** Widest the ladder gets, and the tallest six rows plus their gaps come to. */
+export const BOARD_W = 112
+export const BOARD_H = 138
+
+/** The depth block: name, RANK line, nine pips. Measured at the largest step. */
+export const DEPTH_W = 220
+export const DEPTH_H = 62
+
+/** Gap from the safe left/right edge for the Resonance question. */
+export const Q_EDGE = 12
+
+/**
+ * Where the readouts land, in numbers, so a test can assert they clear the
+ * host's two corners at every viewport instead of a device finding out.
+ *
+ * These mirror the CSS below them exactly, because the CSS is built from the
+ * same constants. Change one and the other moves with it.
+ *
+ * The ladder is anchored by its RIGHT edge and shrink-to-fit, so a long rival
+ * name grows it leftwards, away from the corner it has to clear. `BOARD_W` is
+ * therefore a floor and the rect is still the truthful one to test.
+ */
+export function hudRects(
+  w: number,
+  insets: Insets = { top: 0, right: 0, bottom: 0, left: 0 },
+): { depth: Rect; board: Rect; question: Rect } {
+  const top = insets.top + HUD_TOP
+  const left = Math.max(HUD_EDGE, insets.left)
+  const right = Math.max(HUD_EDGE, insets.right)
+  const qLeft = Math.max(Q_EDGE, insets.left)
+  const qRight = Math.max(Q_EDGE, insets.right)
+  return {
+    depth: { x: left, y: top, w: Math.min(DEPTH_W, w - left - right), h: DEPTH_H },
+    board: { x: Math.max(0, w - right - BOARD_W), y: top, w: BOARD_W, h: BOARD_H },
+    question: { x: qLeft, y: top, w: Math.max(0, w - qLeft - qRight), h: 96 },
+  }
+}
 
 const CSS = `
 .arena-hud{position:absolute;inset:0;pointer-events:none;font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#cfefff;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden}
 .arena-hud *{box-sizing:border-box}
-.arena-depth{position:absolute;top:max(14px,env(safe-area-inset-top));left:max(14px,env(safe-area-inset-left));
+.arena-depth{position:absolute;top:calc(env(safe-area-inset-top) + ${HUD_TOP}px);left:max(${HUD_EDGE}px,env(safe-area-inset-left));
+  max-width:${DEPTH_W}px;
   font-size:clamp(11px,2.4vw,15px);letter-spacing:.30em;font-weight:800;opacity:.82;
   text-shadow:0 0 18px rgba(80,220,255,.55),0 2px 6px rgba(0,0,0,.9)}
 .arena-depth b{display:block;font-size:clamp(9px,1.7vw,11px);letter-spacing:.22em;opacity:.55;font-weight:700;margin-top:3px}
 .arena-pips{display:flex;gap:3px;margin-top:6px}
 .arena-pip{width:9px;height:3px;border-radius:2px;background:rgba(160,225,255,.20);transition:background .5s,box-shadow .5s}
 .arena-pip.on{background:#ffd479;box-shadow:0 0 9px rgba(255,200,110,.85)}
-.arena-board{position:absolute;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));
-  min-width:112px;display:flex;flex-direction:column;gap:2px;align-items:stretch}
+.arena-board{position:absolute;top:calc(env(safe-area-inset-top) + ${HUD_TOP}px);right:max(${HUD_EDGE}px,env(safe-area-inset-right));
+  min-width:${BOARD_W}px;display:flex;flex-direction:column;gap:2px;align-items:stretch}
 .arena-row{display:flex;justify-content:space-between;gap:10px;font-size:clamp(10px,2.1vw,13px);
   letter-spacing:.12em;font-weight:700;opacity:.5;font-variant-numeric:tabular-nums;
   padding:2px 7px;border-radius:3px;transition:opacity .25s}
@@ -39,10 +104,16 @@ const CSS = `
   font-size:clamp(14px,4vw,26px);font-weight:900;letter-spacing:.10em;opacity:0;transition:opacity .18s;
   text-shadow:0 0 26px rgba(120,255,220,.7),0 2px 8px rgba(0,0,0,.9);font-variant-numeric:tabular-nums}
 .arena-combo.on{opacity:.95}
-.arena-q{position:absolute;left:50%;top:max(52px,calc(env(safe-area-inset-top) + 42px));transform:translate(-50%,-14px);
+/* The one frame in the game that asks a direct question, so it is the one that
+   may least afford to sit under a notch or under a button. It is pinned to the
+   SAFE left and right edges and centred inside them — 94vw was centred on the
+   glass, which in landscape put a sixty-pixel numeral half under the sensor
+   housing on the notched side. */
+.arena-q{position:absolute;left:max(${Q_EDGE}px,env(safe-area-inset-left));right:max(${Q_EDGE}px,env(safe-area-inset-right));
+  top:calc(env(safe-area-inset-top) + ${HUD_TOP}px);max-width:760px;margin-inline:auto;transform:translateY(-14px);
   opacity:0;transition:opacity .22s cubic-bezier(.2,.9,.2,1),transform .34s cubic-bezier(.2,.9,.2,1);
-  text-align:center;width:min(94vw,760px);text-wrap:balance}
-.arena-q.on{opacity:1;transform:translate(-50%,0)}
+  text-align:center;text-wrap:balance}
+.arena-q.on{opacity:1;transform:none}
 .arena-q .p{font-size:clamp(26px,7.4vw,60px);font-weight:900;letter-spacing:.01em;color:#fff;line-height:1.05;
   text-shadow:0 0 40px rgba(150,235,255,.85),0 0 90px rgba(90,180,255,.45),0 3px 12px rgba(0,0,0,.95)}
 /* During a Resonance the question owns the screen. The ladder used to sit
