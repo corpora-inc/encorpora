@@ -155,9 +155,11 @@ export function drawPedals(
     const y = l.padTop + drop
     const h = l.padH - drop
 
-    // The socket the pedal sits in.
+    // The socket the pedal sits in. It fills to the bottom of the GLASS, not to
+    // the bottom of the safe area, so there is no black seam under the home
+    // indicator — the pedal plate above it is what stays inside the safe band.
     g.fillStyle = IRON_DARK
-    g.fillRect(x, l.padTop, w, l.padH)
+    g.fillRect(x, l.padTop, w, l.h - l.padTop)
 
     const grad = g.createLinearGradient(0, y, 0, y + h)
     grad.addColorStop(0, live ? IRON_EDGE : "#26262e")
@@ -206,10 +208,14 @@ export function drawBelt(
 ): void {
   const h = l.beltH
   const y = l.beltY
-  const shown = Math.min(plates, Math.max(6, Math.floor(l.w / (h * 0.72))))
   const pw = h * 0.5
+  // The belt lives in the channel between the host's two corner controls, and
+  // the two counters printed either side of the strap have to fit in there with
+  // it — 40px a side is enough for four figures and a star at this type size.
+  const budget = Math.max(pw + 3, l.topBar.w - 80)
+  const shown = Math.min(plates, Math.max(3, Math.floor(budget / (pw + 3))))
   const total = shown * (pw + 3)
-  const x0 = l.cx - total / 2
+  const x0 = l.topBar.x + l.topBar.w / 2 - total / 2
 
   g.save()
   // The strap.
