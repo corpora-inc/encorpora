@@ -17,6 +17,13 @@
  *   is a real cost with no red X and no lecture anywhere in the file.
  */
 
+import {
+  createInstructions,
+  onInsetsChange,
+  safeRect,
+  type Instructions,
+  type InstructionsSpec,
+} from '../../../packs/shared/game-chrome/index.ts'
 import type { Host, Question } from './contract.ts'
 import {
   at,
@@ -71,6 +78,7 @@ import { Particles, Shockwaves } from './fx/particles.ts'
 import { approach, ease, Punch } from './fx/shake.ts'
 import { CHALK, DANGER, hex, lift, rampAt, TIDE } from './render/palette.ts'
 import { cellAtPoint, cellCentre, Renderer } from './render/renderer.ts'
+import { chromeLayout, stageAreaFor } from './ui/chrome.ts'
 import { Hud, type Action } from './ui/hud.ts'
 
 const MAX_ROWS = 9
@@ -78,6 +86,81 @@ const START_COLS = 5
 const START_ROWS = 6
 
 type Cascade = { cell: number; value: number; at: number; chain: number }
+
+/**
+ * How to play, in a child's words.
+ *
+ * An idle game is the one genre that CANNOT be figured out by watching, because
+ * the half of it that matters happens while nobody is looking. A child who is
+ * not told that the reef keeps earning after they close it will read the away
+ * time as the game doing nothing, and the tide gate on their return as a quiz
+ * that came out of nowhere. So the manual says the quiet parts out loud: the
+ * reef earns while you are gone, it saves itself, and coming back is a move.
+ */
+const INSTRUCTIONS = (reducedMotion: boolean): InstructionsSpec => ({
+  title: 'ABYSSAL BLOOM',
+  summary: [
+    'Two polyps with the same number join into one polyp worth double. Drag one onto the other.',
+    'The tall vents hold up a sum. Build the answer out of polyps and drop it in the vent’s mouth.',
+  ],
+  sections: [
+    {
+      heading: 'Joining polyps',
+      lines: [
+        'The glowing creatures on the reef are polyps. Each one has a number.',
+        'Drag a polyp on top of another polyp with the same number.',
+        'They join into one polyp. Its number is the two numbers added together, so it is double.',
+        '3 and 3 make 6. 6 and 6 make 12. 96 and 96 make 192.',
+        'Tap a polyp once and every polyp with that same number lights up. That is how you find its partner.',
+        'Drag a polyp onto an empty space to move it there.',
+      ],
+    },
+    {
+      heading: 'Feeding a vent',
+      lines: [
+        'The tall towers are vents. Each vent holds up a sum, like 96 + 96.',
+        'Work out the answer. Then join polyps until you have a polyp with that number.',
+        'Drag that polyp into the round mouth at the bottom of the vent.',
+        'If it is right the vent erupts. It pays you essence, gets stronger, and asks a harder sum.',
+        'If it is wrong the vent goes cold for about three seconds. Wait for it to warm up, then try again.',
+        'Get several right in a row and your FLOW goes up, and every vent pays more.',
+        'Some answers are not numbers a polyp can have. Then four tiles appear above the vent. Drag the right tile into the mouth instead.',
+      ],
+    },
+    {
+      heading: 'Essence and the buttons',
+      lines: [
+        'Essence is the big number at the top. Vents make essence every second, all on their own.',
+        'Spend it on the buttons along the bottom.',
+        'UPWELL buys a handful of new polyps right now.',
+        'AWAKEN wakes up one more vent, so there are more sums and more essence.',
+        'DEEPEN makes the reef bigger, so you have more room.',
+        'OVERCHARGE makes every vent stronger at the same time.',
+      ],
+    },
+    {
+      heading: 'When the reef is full',
+      lines: [
+        'If every space is full and no two numbers match, a red bar says SHELF CROWDED.',
+        'Press DISSOLVE. It is free.',
+        'It clears away all the smallest polyps and pays you their numbers.',
+        'You can never get stuck. DISSOLVE always works.',
+      ],
+    },
+    {
+      heading: 'Going away and coming back',
+      lines: [
+        'This game keeps going when you are not here. That is not a bug, it is the point.',
+        'Leave, do something else, come back. The reef made essence the whole time you were gone, for up to eight hours.',
+        'When you come back a tide is waiting, with one question. Answer it and the tide is yours.',
+        'Get it right on the first try and you keep three times as much.',
+        'While you play, a glowing ball marked TIDE floats up now and then. Tap it for another one.',
+        'Your reef saves itself. It will be exactly where you left it.',
+      ],
+    },
+  ],
+  reducedMotion,
+})
 
 export function mountGame(el: HTMLElement, host: Host): { unmount(): void } {
   return new Game(el, host).handle()
@@ -89,6 +172,7 @@ class Game {
   private rnd: () => number
   private renderer: Renderer
   private hud: Hud
+  private guide: Instructions | null = null
   private audio = new Audio()
   private punch = new Punch()
   private particles: Particles
@@ -175,6 +259,8 @@ class Game {
     if (this.s.vents.length === 0) this.addVent()
     if (polyps(this.s.board).length === 0) this.seedShelf()
 
+    this.guide = createInstructions(el, INSTRUCTIONS(this.s.reduceMotion))
+
     this.bindInput()
     this.observeSize()
     this.layout()
@@ -190,6 +276,8 @@ class Game {
 
   private unmount(): void {
     this.running = false
+    this.guide?.destroy()
+    this.guide = null
     cancelAnimationFrame(this.raf)
     for (const off of this.detach) off()
     this.detach = []
@@ -201,6 +289,11 @@ class Game {
   }
 
   private observeSize(): void {
+    // Insets change more often than "never": a rotation swaps top and bottom
+    // with left and right, and iPadOS changes them when a pack is resized in
+    // Split View. A game that measures them once at mount is correct until the
+    // first rotation and wrong after it.
+    this.detach.push(onInsetsChange(() => this.layout()))
     if (typeof ResizeObserver === 'undefined') {
       const onResize = (): void => this.layout()
       window.addEventListener('resize', onResize)
@@ -211,11 +304,24 @@ class Game {
     this.ro.observe(this.hud.stage)
   }
 
+  /**
+   * One pass: the DOM chrome first, because the band's height decides where the
+   * stage starts, then the canvas inside whatever the stage turned out to be.
+   *
+   * The stage is measured rather than predicted — the rail grows a row when
+   * DISSOLVE appears — but its safe area comes from the same `chromeLayout`
+   * the band used, so the two can never disagree about where the notch is.
+   */
   private layout(): void {
-    const w = this.hud.stage.clientWidth || this.el.clientWidth || 360
-    const h = this.hud.stage.clientHeight || 480
+    const rw = this.el.clientWidth || 360
+    const rh = this.el.clientHeight || 640
+    const chrome = chromeLayout(rw, rh, safeRect(rw, rh))
+    this.hud.applyChrome(chrome)
+
+    const w = this.hud.stage.clientWidth || rw
+    const h = this.hud.stage.clientHeight || chrome.stage.h
     const dpr = Math.min(3, window.devicePixelRatio || 1)
-    this.renderer.resize(w, h, dpr, this.s.board, this.s.tier)
+    this.renderer.resize(w, h, dpr, this.s.board, this.s.tier, stageAreaFor(chrome, w, h))
     this.layoutVents()
     this.snowSeeded = false
   }

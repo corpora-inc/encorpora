@@ -10,6 +10,7 @@
  */
 
 import { fmtCompact } from '../core/ladder.ts'
+import type { Chrome } from './chrome.ts'
 
 export type Action = {
   id: string
@@ -30,19 +31,23 @@ const CSS = `
 .ab-stage{position:relative;flex:1 1 auto;min-height:0}
 .ab-stage canvas{position:absolute;inset:0;display:block}
 
+/* The band bleeds edge to edge; its PADDING is written by chrome.ts so the
+   readout clears the notch and both of the host's 44px corners. */
 .ab-top{position:relative;z-index:3;display:flex;align-items:flex-end;gap:10px;
   padding:8px 12px 6px;flex:0 0 auto;
   background:linear-gradient(180deg,rgba(4,7,18,.94),rgba(4,7,18,.45) 70%,rgba(4,7,18,0));}
 .ab-essence{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1 1 auto}
-.ab-cap{font-size:9px;letter-spacing:.24em;font-weight:800;opacity:.5;text-transform:uppercase}
-.ab-odo{display:flex;align-items:baseline;font-weight:900;line-height:1;
+/* Fixed line boxes: the band's height is the canvas stage's origin, and an
+   origin that drifts with a platform font metric is an origin that is wrong. */
+.ab-cap{font-size:9px;line-height:11px;height:11px;flex:0 0 auto;letter-spacing:.24em;font-weight:800;opacity:.5;text-transform:uppercase}
+.ab-odo{display:flex;align-items:baseline;flex:0 0 auto;font-weight:900;line-height:1;
   font-variant-numeric:tabular-nums;letter-spacing:-.02em;
   filter:drop-shadow(0 0 12px var(--ab-odo-glow,rgba(120,232,255,.5)));}
 .ab-dig{position:relative;overflow:hidden;display:inline-block}
 .ab-dig>span{display:block;text-align:center}
 .ab-sep{display:inline-block;opacity:.55}
-.ab-rate{font-size:11px;font-weight:800;opacity:.72;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
-.ab-flow{font-weight:900;font-size:11px;padding:2px 7px;border-radius:999px;
+.ab-rate{font-size:11px;line-height:14px;height:14px;flex:0 0 auto;font-weight:800;opacity:.72;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
+.ab-flow{font-weight:900;font-size:10px;line-height:12px;padding:1px 7px;border-radius:999px;
   background:rgba(255,209,46,.16);color:#ffd12e;border:1px solid rgba(255,209,46,.34)}
 .ab-pips{display:flex;gap:3px;align-items:center;flex:0 0 auto;max-width:44%;flex-wrap:wrap;justify-content:flex-end}
 .ab-pip{width:7px;height:7px;border-radius:2px;background:rgba(238,246,255,.14);transition:background .3s,box-shadow .3s}
@@ -120,7 +125,8 @@ class Odometer {
   readonly el = document.createElement('div')
   private cols: HTMLElement[] = []
   private chars = ''
-  private sizePx = 40
+  /** Zero until the frame is laid out, so the first `setSize` always applies. */
+  private sizePx = 0
 
   constructor() {
     this.el.className = 'ab-odo'
@@ -130,6 +136,10 @@ class Odometer {
     if (px === this.sizePx) return
     this.sizePx = px
     this.el.style.fontSize = `${px}px`
+    // Explicit, because the row is baseline-aligned: a comma's descender would
+    // otherwise stretch the flex line past the digits and push the band taller
+    // than `chrome.ts` computed — and the band's height is the stage's origin.
+    this.el.style.height = `${px}px`
     for (const c of this.cols) {
       if (c.classList.contains('ab-dig')) {
         c.style.height = `${px}px`
@@ -199,6 +209,7 @@ export type HudCallbacks = {
 export class Hud {
   readonly root = document.createElement('div')
   readonly stage = document.createElement('div')
+  private top = document.createElement('div')
   private odo = new Odometer()
   private rateEl = document.createElement('span')
   private flowEl = document.createElement('span')
@@ -225,7 +236,7 @@ export class Hud {
     installStyle()
     this.root.className = 'ab-root'
 
-    const top = document.createElement('div')
+    const top = this.top
     top.className = 'ab-top'
     const ess = document.createElement('div')
     ess.className = 'ab-essence'
@@ -299,13 +310,39 @@ export class Hud {
     this.root.remove()
   }
 
+  /**
+   * Put the DOM where `chrome.ts` says it goes.
+   *
+   * This is the only place the band's padding, the band's height and the mute
+   * button's corner are decided, and every number comes from `chromeLayout`.
+   * The stylesheet deliberately holds no safe-area rule of its own: two sources
+   * of truth for "where the notch is" is how a HUD ends up half-corrected.
+   */
+  applyChrome(c: Chrome): void {
+    const t = this.top.style
+    t.paddingTop = `${c.bandPad.top}px`
+    t.paddingRight = `${c.bandPad.right}px`
+    t.paddingBottom = `${c.bandPad.bottom}px`
+    t.paddingLeft = `${c.bandPad.left}px`
+    t.height = `${c.band.h}px`
+    this.odo.setSize(c.odoPx)
+
+    const r = this.railEl.style
+    r.paddingTop = `${c.railPad.top}px`
+    r.paddingRight = `${c.railPad.right}px`
+    r.paddingBottom = `${c.railPad.bottom}px`
+    r.paddingLeft = `${c.railPad.left}px`
+
+    // The mute button lives in the stage, so its top is measured from the band's
+    // underside — which is already below the host's corners.
+    this.muteBtn.style.top = `${c.mute.y - c.stage.y}px`
+    this.muteBtn.style.right = `${c.w - c.mute.x - c.mute.w}px`
+  }
+
   /* ------------------------------------------------------------------ state */
 
   setEssence(shown: number, glowColour: string): void {
-    const text = fmtCompact(shown)
-    const w = this.root.clientWidth || 360
-    this.odo.setSize(Math.round(Math.max(26, Math.min(52, w * 0.108))))
-    this.odo.set(text)
+    this.odo.set(fmtCompact(shown))
     this.odo.el.style.setProperty('--ab-odo-glow', glowColour)
   }
 
