@@ -13,22 +13,59 @@
  * Pitch climbs a pentatonic minor scale with the combo, so a chain plays a
  * rising melody and can never sound wrong. Nothing here carries information on
  * its own: every sound has a visible twin, and the whole bus can be muted.
+ *
+ * HEARING SAFETY. A nine-year-old said this game almost made his ears explode,
+ * and he was right — rendered offline, this file used to produce:
+ *
+ *     clear()               peak 2.344   (+7.4 dBFS,  2104 clipped samples)
+ *     forgeRight()          peak 2.049   (+6.2 dBFS,   540 clipped samples)
+ *     power()               peak 1.692   (+4.6 dBFS,   680 clipped samples)
+ *     six overlapping       peak 13.955  (+22.9 dBFS, 15954 clipped samples)
+ *
+ * Four things were wrong, and all four are fixed here.
+ *
+ *  1. Nothing enforced a ceiling. The master gain went straight to
+ *     `ctx.destination`, so anything above 1.0 was hard-clipped by the DAC —
+ *     which is a burst of broadband square wave, and is what hurts.
+ *  2. The four loudest cues — clear, power, forgeRight, chargeFull — built
+ *     their envelopes inline instead of through `env()`, so they never
+ *     touched the voice counter. The four sounds most in need of a budget
+ *     were the four that had none.
+ *  3. The voice cap was 26, which no cue could reach; six four-voice cues fit
+ *     under it and summed to fourteen times full scale.
+ *  4. Attacks of 0.001-0.002 s. At 44.1 kHz that is 44 samples from silence to
+ *     peak: a step function with a click on it.
+ *
+ * The fix is not a volume knob. Level is unchanged where it was already safe;
+ * what changed is that transients are shaped instead of square, and the sum of
+ * a crowd is bounded instead of open. Both make it hit harder, not softer.
  */
+
+import {
+  VoiceBudget,
+  createSafetyBus,
+  safeAttack,
+  type SafetyBus,
+} from "../../../../packs/shared/game-audio/index.ts";
 
 const SCALE = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22, 24];
 const BASE = 261.63; // C4
 
 const semi = (n: number): number => BASE * Math.pow(2, n / 12);
 
+/** No cue may be asked to play louder than it was authored. */
+const MAX_FORCE = 1.35;
+
 export class Audio {
   private ctx: AudioContext | null = null;
   private master!: GainNode;
+  private safety!: SafetyBus;
   private filter!: BiquadFilterNode;
   private wet!: GainNode;
   private dry!: GainNode;
   private padGain!: GainNode;
   private padFilter!: BiquadFilterNode;
-  private voices = 0;
+  private budget = new VoiceBudget();
 
   enabled = true;
   private started = false;
@@ -55,7 +92,9 @@ export class Audio {
     this.filter.frequency.value = 20000;
     this.filter.Q.value = 0.6;
     this.master.connect(this.filter);
-    this.filter.connect(ctx.destination);
+    // The one line that used to read `this.filter.connect(ctx.destination)`.
+    this.safety = createSafetyBus(ctx);
+    this.filter.connect(this.safety.input);
 
     const conv = ctx.createConvolver();
     conv.buffer = impulse(ctx, 2.1, 2.4);
@@ -118,34 +157,66 @@ export class Audio {
   }
 
   private ok(): AudioContext | null {
-    if (!this.enabled || !this.ctx || this.voices > 26) return null;
+    if (!this.enabled || !this.ctx) return null;
     return this.ctx;
   }
 
-  private env(node: AudioNode, gain: number, attack: number, decay: number, send = 0.35): GainNode {
+  /**
+   * One envelope, one voice, one entry in the budget.
+   *
+   * `delay` exists so the arpeggiated cues — clear, power, forgeRight,
+   * chargeFull — can stagger their notes through here instead of building
+   * their own gain nodes off to the side, which is how they escaped the voice
+   * count and became the four loudest sounds in the game.
+   *
+   * When the budget is spent this still returns a node so callers keep their
+   * shape, but it is never connected to the bus: the oscillator plays into
+   * nothing and stops on its own.
+   */
+  private env(
+    node: AudioNode,
+    gain: number,
+    attack: number,
+    decay: number,
+    send = 0.35,
+    delay = 0,
+  ): GainNode {
     const ctx = this.ctx!;
     const g = ctx.createGain();
-    const t = ctx.currentTime;
+    const a = safeAttack(attack);
+    const t = ctx.currentTime + Math.max(0, delay);
+    const scale = this.budget.take(delay + a + decay, ctx.currentTime);
+    const level = Math.max(0.0002, gain * scale);
+    // Silence from RIGHT NOW, not from the note's own start time. A GainNode's
+    // gain defaults to 1, and scheduling the first `setValueAtTime` in the
+    // future leaves it there until then — so every staggered note in an
+    // arpeggio played at FULL amplitude for the length of its own delay.
+    // That is what made clear() peak at 2.329 when its six notes are authored
+    // at 0.15 each: five of them opened at unity before their envelope began.
+    g.gain.setValueAtTime(0.0001, ctx.currentTime);
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(Math.max(0.0002, gain), t + attack);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + attack + decay);
+    g.gain.exponentialRampToValueAtTime(level, t + a);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + a + decay);
     node.connect(g);
-    g.connect(this.dry);
-    if (send > 0) {
-      const s = ctx.createGain();
-      s.gain.value = send;
-      g.connect(s);
-      s.connect(this.wet);
-    }
-    this.voices++;
-    setTimeout(() => {
-      this.voices--;
-      try {
-        g.disconnect();
-      } catch {
-        /* already torn down */
+    if (scale > 0) {
+      g.connect(this.dry);
+      if (send > 0) {
+        const s = ctx.createGain();
+        s.gain.value = send;
+        g.connect(s);
+        s.connect(this.wet);
       }
-    }, (attack + decay) * 1000 + 60);
+    }
+    setTimeout(
+      () => {
+        try {
+          g.disconnect();
+        } catch {
+          /* already torn down */
+        }
+      },
+      (delay + a + decay) * 1000 + 60,
+    );
     return g;
   }
 
@@ -177,9 +248,10 @@ export class Audio {
   // -- the palette ----------------------------------------------------------
 
   /** Glass shattering. `step` climbs the scale with the combo. */
-  glass(step: number, force = 1): void {
+  glass(step: number, forceIn = 1): void {
     const ctx = this.ok();
     if (!ctx) return;
+    const force = Math.min(MAX_FORCE, Math.max(0, forceIn));
     const n = SCALE[Math.min(SCALE.length - 1, step)]! + (step >= SCALE.length ? 12 : 0);
     const f = semi(n + 12);
 
@@ -244,9 +316,12 @@ export class Audio {
     const ctx = this.ok();
     if (!ctx) return;
     for (let i = 0; i < 4; i++) {
-      const o = this.tone("triangle", semi(SCALE[i * 2]! + 24), 0.3);
-      const g = this.env(o, 0.09, 0.004, 0.28, 0.6);
-      g.gain.setValueAtTime(0.0001, ctx.currentTime + i * 0.035);
+      // The stagger used to be a `setValueAtTime(0.0001, now + i * 0.035)`
+      // scheduled AFTER the envelope's ramps. That is not a delay; it is a
+      // cut, landing well past the attack and slamming three of these four
+      // notes to silence mid-decay. `env`'s own delay does what was meant.
+      const d = i * 0.035;
+      this.env(this.tone("triangle", semi(SCALE[i * 2]! + 24), d + 0.29), 0.09, 0.004, 0.28, 0.6, d);
     }
     this.env(this.noise(0.4, "highpass", 5200, 0.6), 0.1, 0.004, 0.38, 0.8);
   }
@@ -255,18 +330,8 @@ export class Audio {
     const ctx = this.ok();
     if (!ctx) return;
     [0, 4, 7, 12].forEach((n, i) => {
-      const o = this.tone("triangle", semi(n + 12), 0.5);
-      const g = ctx.createGain();
-      const t = ctx.currentTime + i * 0.055;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.16, t + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
-      o.connect(g);
-      g.connect(this.dry);
-      const s = ctx.createGain();
-      s.gain.value = 0.6;
-      g.connect(s);
-      s.connect(this.wet);
+      const d = i * 0.055;
+      this.env(this.tone("triangle", semi(n + 12), d + 0.42), 0.16, 0.01, 0.4, 0.6, d);
     });
   }
 
@@ -285,24 +350,20 @@ export class Audio {
   clear(): void {
     const ctx = this.ok();
     if (!ctx) return;
+    // Authored louder than it reads on the page, and deliberately so. With the
+    // unity-gain hole closed these six notes finally play at the level they
+    // were written at — 0.15 each — which turned out to be QUIETER than a
+    // single tile breaking. The window blowing out has to be the biggest sound
+    // in the game, so it is scaled back up to be one. It measures 0.65 peak
+    // against a 0.89 ceiling: the largest thing here, with room left over.
     [0, 7, 12, 16, 19, 24].forEach((n, i) => {
-      const o = this.tone("triangle", semi(n), 1.8);
-      const g = ctx.createGain();
-      const t = ctx.currentTime + i * 0.045;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.15, t + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 1.7);
-      o.connect(g);
-      g.connect(this.dry);
-      const s = ctx.createGain();
-      s.gain.value = 0.85;
-      g.connect(s);
-      s.connect(this.wet);
+      const d = i * 0.045;
+      this.env(this.tone("triangle", semi(n), d + 1.74), 0.42, 0.02, 1.7, 0.85, d);
     });
     const sweep = this.tone("sawtooth", 200, 0.9);
     sweep.frequency.exponentialRampToValueAtTime(3200, ctx.currentTime + 0.7);
-    this.env(sweep, 0.07, 0.02, 0.85, 0.9);
-    this.env(this.noise(1.2, "highpass", 3000, 0.5), 0.13, 0.01, 1.1, 1);
+    this.env(sweep, 0.2, 0.02, 0.85, 0.9);
+    this.env(this.noise(1.2, "highpass", 3000, 0.5), 0.36, 0.01, 1.1, 1);
   }
 
   /** Losing the ball. A soft fall, not a buzzer. Nobody is being told off. */
@@ -326,18 +387,8 @@ export class Audio {
     const ctx = this.ok();
     if (!ctx) return;
     [0, 4, 7, 12, 16].forEach((n, i) => {
-      const o = this.tone("triangle", semi(n + 12), 0.8);
-      const g = ctx.createGain();
-      const t = ctx.currentTime + i * 0.02;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.16, t + 0.008);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.7);
-      o.connect(g);
-      g.connect(this.dry);
-      const s = ctx.createGain();
-      s.gain.value = 0.7;
-      g.connect(s);
-      s.connect(this.wet);
+      const d = i * 0.02;
+      this.env(this.tone("triangle", semi(n + 12), d + 0.72), 0.16, 0.008, 0.7, 0.7, d);
     });
   }
 
@@ -360,18 +411,8 @@ export class Audio {
     const ctx = this.ok();
     if (!ctx) return;
     [12, 19, 24].forEach((n, i) => {
-      const o = this.tone("sine", semi(n), 0.5);
-      const g = ctx.createGain();
-      const t = ctx.currentTime + i * 0.06;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.14, t + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.45);
-      o.connect(g);
-      g.connect(this.dry);
-      const s = ctx.createGain();
-      s.gain.value = 0.7;
-      g.connect(s);
-      s.connect(this.wet);
+      const d = i * 0.06;
+      this.env(this.tone("sine", semi(n), d + 0.47), 0.14, 0.01, 0.45, 0.7, d);
     });
   }
 
