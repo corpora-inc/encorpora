@@ -15,6 +15,7 @@
 //
 // Nothing here ever ends. It escalates.
 
+import { createInstructions, safeRect } from "../../../packs/shared/game-chrome/index.ts"
 import type { Host, Question } from "./contract.ts"
 import { Audio } from "./audio.ts"
 import { Feel } from "./core/feel.ts"
@@ -23,6 +24,14 @@ import { Rng } from "./core/rng.ts"
 import { detectTier, TierGovernor, TIERS } from "./core/tiers.ts"
 import { createAtlases } from "./render/atlas.ts"
 import { Blade } from "./render/blade.ts"
+import {
+  candidateHome,
+  candidateRow,
+  hudLayout,
+  lampX,
+  tickRect,
+  type HudLayout,
+} from "./render/hud.ts"
 import { Bloom, Splats } from "./render/layers.ts"
 import {
   FLESHES,
@@ -106,6 +115,50 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
 
   // ── systems ──────────────────────────────────────────────────────────────
   const reduced = host.prefersReducedMotion()
+
+  // How to play. THE SPLIT shipped with none: a child was handed a screen of
+  // flying gourds and had to infer from nothing that a swipe cuts, that a cut
+  // number splits into its factors, and that the four lanterns are a question.
+  // The manual stays reachable during play, because the moment a child needs
+  // the rules is never the title.
+  const guide = createInstructions(el, {
+    title: "THE SPLIT",
+    summary: [
+      "Fruit flies up out of the market. Swipe your finger across it to cut it.",
+      "Cut a number and it splits into two smaller numbers. Cut those too.",
+    ],
+    sections: [
+      {
+        heading: "Cutting numbers",
+        lines: [
+          "Swipe your finger right across a gourd to slice it open.",
+          "A gourd with 48 on it splits into a 6 and an 8. Both of them fly out.",
+          "Cut the 8 and it splits again, into 2 and 4.",
+          "Some numbers do not split at all. A 7 just bursts into gold. Those are the best ones to find.",
+        ],
+      },
+      {
+        heading: "Answering a question",
+        lines: [
+          "Some things that fly up are flat tablets with a sum on them, like 7 x 8.",
+          "Cut the tablet and four numbers float up and stop in a row.",
+          "Work out the sum, then swipe the number that is the answer.",
+          "You cannot cut them straight away. You get a moment to read them first.",
+        ],
+      },
+      {
+        heading: "Your three lamps",
+        lines: [
+          "You have three lamps. You lose one if you swipe a wrong answer.",
+          "You also lose one if you cut a bomb. Bombs are small and spiky and have a lit fuse.",
+          "Thinking is always free. If you run out of time on a question you keep every lamp.",
+          "When all three lamps go out the market shuts. One tap opens it again.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
+
   const gov = new TierGovernor(detectTier())
   const atl = createAtlases()
   const parts = new Particles()
@@ -307,11 +360,22 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   // ── layout ───────────────────────────────────────────────────────────────
+  /**
+   * Where every readout goes.
+   *
+   * Re-derived on every resize, never cached across one: rotation swaps the
+   * insets top-for-side, and iPadOS changes them when the pack is resized in
+   * Split View. A layout solved once at mount is correct until the first
+   * rotation and wrong after it.
+   */
+  let hud: HudLayout = hudLayout(320, 300, safeRect(320, 300))
+
   function resize(): void {
     const q = gov.quality
     const rect = root.getBoundingClientRect()
     W = Math.max(320, Math.round(rect.width))
     H = Math.max(300, Math.round(rect.height))
+    hud = hudLayout(W, H, safeRect(W, H))
     dpr = Math.min(q.maxDpr, globalThis.devicePixelRatio || 1)
     canvas.width = Math.round(W * dpr)
     canvas.height = Math.round(H * dpr)
@@ -529,26 +593,16 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     // in — the child was punished for aiming correctly. Slots guarantee clear
     // air between any two candidates.
     //
-    // The width budget comes first and the radius bends to it. At 320px the
-    // preferred 3.4-radii gap made the row 326px wide and pushed the fourth
-    // candidate clean off the screen, where it could never be cut.
-    // Solve the radius from the width budget rather than clamping afterwards.
-    // A lantern is drawn out to 1.26r plus its progress arc, so the row needs
-    // 2.75r per gap and 1.4r of margin at each end. Clamping after the fact left
-    // the last candidate hanging off the right edge of a 320px screen, where it
-    // was literally impossible to cut.
-    const rPref = Math.max(20, Math.min(H * 0.062, H * 0.05))
-    const rFit = W / (2.75 * (n - 1) + 2.8)
-    const r = Math.max(14, Math.min(rPref, rFit))
-    const gap = Math.min(r * 3.4, (W - r * 2.8) / Math.max(1, n - 1))
-    const span = gap * (n - 1)
-    const margin = r * 1.4
-    const cx = Math.max(margin + span / 2, Math.min(W - margin - span / 2, b.x))
-    const cy = Math.max(H * 0.32, Math.min(H * 0.54, b.y))
+    // The row is solved in `render/hud.ts`, against the SAFE rect rather than
+    // the canvas and never rising into the host's two corner controls. These
+    // lanterns are the answer input: they are the one thing here a child must
+    // both read and touch, so they get the strictest clearance in the game.
+    const row = candidateRow(hud, n, b.x, b.y)
+    const r = row.r
     for (let i = 0; i < n; i++) {
       const m = world.spawnBody()
       if (!m) continue
-      const f = i / Math.max(1, n - 1) - 0.5
+      const home = candidateHome(row, i, n)
       m.kind = B_MOTE
       m.text = values[i] as string
       m.value = Number(values[i])
@@ -556,10 +610,10 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       m.qid = q.id
       m.x = b.x
       m.y = b.y
-      m.homeX = cx + f * span
       // A shallow arc, high in the middle: it reads as a row of raised lanterns
       // rather than a line of buttons.
-      m.homeY = cy - Math.cos(f * Math.PI) * r * 0.55
+      m.homeX = home.x
+      m.homeY = home.y
       m.vx = (m.homeX - b.x) * 2.4
       m.vy = (m.homeY - b.y) * 2.4 - H * 0.1
       m.grav = 0
@@ -1592,27 +1646,31 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function drawHud(ctx: CanvasRenderingContext2D, nowMs: number): void {
-    const pad = Math.max(12, W * 0.022)
-    const big = Math.max(24, Math.min(46, W * 0.042))
+    // Every number below comes off the layout, which knows two things this
+    // function must not have to: where the safe rect is, and where the host
+    // floats its exit and how-to-play controls. Nothing here is measured from
+    // the canvas edge any more.
+    const { big } = hud
 
-    // Score, top-left.
+    // Score, top-left — under the safe edge and clear of the exit control.
     ctx.textAlign = "left"
     ctx.textBaseline = "top"
     ctx.font = font(UI_FONT, big)
     ctx.fillStyle = "rgba(6,4,14,0.6)"
-    ctx.fillText(String(score), pad + 2, pad + 2)
+    ctx.fillText(String(score), hud.scoreX + 2, hud.scoreY + 2)
     ctx.fillStyle = PAPER
-    ctx.fillText(String(score), pad, pad)
+    ctx.fillText(String(score), hud.scoreX, hud.scoreY)
     ctx.font = font(UI_FONT, big * 0.36)
     ctx.fillStyle = withAlpha(PAPER, 0.5)
-    ctx.fillText(`BEST ${best}`, pad, pad + big * 1.05)
+    ctx.fillText(`BEST ${best}`, hud.scoreX, hud.bestY)
 
     // Lamps, top-right. Three hanging lanterns; a dead one is dark AND unlit AND
-    // struck through, so "how much life" never depends on colour.
-    const lr = Math.max(9, Math.min(15, W * 0.014))
+    // struck through, so "how much life" never depends on colour. They hang from
+    // BELOW the how-to-play control — they used to hang behind it.
+    const lr = hud.lampR
     for (let i = 0; i < 3; i++) {
-      const x = W - pad - lr - i * (lr * 2.9)
-      const y = pad + lr * 1.2
+      const x = lampX(hud, i)
+      const y = hud.lampY
       const on = i < lamps
       ctx.beginPath()
       ctx.moveTo(x, y - lr * 1.9)
@@ -1658,13 +1716,11 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     // dark lamp comes on — this is the game's "watch an ad to continue", and
     // the price is arithmetic.
     if (lamps < 3) {
-      const ty = pad + lr * 2.9
-      const tw = lr * 1.5
       for (let i = 0; i < READ_PER_LAMP; i++) {
-        const x = W - pad - tw - i * (tw + 4)
+        const t = tickRect(i, hud)
         ctx.fillStyle =
           i < readCredit ? withAlpha(SIGIL_HOT, 0.95) : "rgba(255,255,255,0.16)"
-        ctx.fillRect(x, ty, tw, 3.5)
+        ctx.fillRect(t.x, t.y, t.w, t.h)
       }
     }
 
@@ -1679,16 +1735,16 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       ctx.textAlign = "left"
       ctx.textBaseline = "top"
       const ms = big * (hot ? 0.78 : 0.62)
-      const y0 = pad + big * 1.55
+      const y0 = hud.mulY
       ctx.font = font(UI_FONT, ms)
       const label = `×${m}`
       ctx.fillStyle = withAlpha(hot ? PRIME_HOT : PRIME_GOLD, 0.62 + t * 0.38)
-      ctx.fillText(label, pad, y0)
+      ctx.fillText(label, hud.scoreX, y0)
       // MEASURED, not guessed. A fixed offset put "×36" straight through
       // "FAVOUR 3" the moment the multiplier reached two digits — the same
       // run-on-number defect this batch was told off for, in the HUD instead of
       // the playfield. Every offset below is derived from a real metric.
-      const lx = pad + ctx.measureText(label).width + big * 0.42
+      const lx = hud.scoreX + ctx.measureText(label).width + big * 0.42
       const sm = big * 0.34
       ctx.font = font(UI_FONT, sm)
       if (favour > 1) {
@@ -1714,12 +1770,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     // The live question banner. Pinned, legible, with a draining bar — a child
     // who lost track of which sigil they opened can always re-read it.
     if (liveQ) {
-      const bw = Math.min(W * 0.9, 460)
-      const bh = Math.max(42, Math.min(74, H * 0.085))
-      const bx = (W - bw) / 2
-      // On a narrow screen the centred banner used to land straight on top of
-      // the score and the lamps. Below 620px it drops under the whole HUD row.
-      const by = W < 620 ? pad + big * 2.55 : pad * 0.7
+      const { x: bx, y: by, w: bw, h: bh } = hud.banner
       ctx.fillStyle = "rgba(8,6,20,0.82)"
       roundRect(ctx, bx, by, bw, bh, 10)
       ctx.fill()
@@ -1731,7 +1782,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       ctx.textBaseline = "middle"
       ctx.font = font(UI_FONT, bh * 0.5)
       ctx.fillStyle = PAPER
-      ctx.fillText(`${liveQ.prompt} = ?`, W / 2, by + bh * 0.46)
+      ctx.fillText(`${liveQ.prompt} = ?`, bx + bw / 2, by + bh * 0.46)
       const frac = Math.max(0, moteLeft / moteWindow)
       ctx.fillStyle = withAlpha(frac < 0.3 ? WRONG : SIGIL_EDGE, 0.9)
       ctx.fillRect(bx + 6, by + bh - 7, (bw - 12) * frac, 4)
@@ -2004,6 +2055,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   return {
     unmount(): void {
       running = false
+      guide.destroy()
       cancelAnimationFrame(raf)
       ro.disconnect()
       canvas.removeEventListener("pointerdown", onDown)
