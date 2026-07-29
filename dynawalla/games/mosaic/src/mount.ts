@@ -12,6 +12,11 @@
  * Hitstop survives reduced motion (it is information: something was hit).
  * Shake, punch and roll do not. Flashes are budgeted by `Camera`.
  */
+import {
+  createInstructions,
+  onInsetsChange,
+  safeRect,
+} from "../../../packs/shared/game-chrome/index.ts";
 import type { GameHandle, Host } from "./contract.ts";
 import { Audio } from "./audio/audio.ts";
 import { Camera, clamp01, lerp } from "./fx/camera.ts";
@@ -53,8 +58,67 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
   particles.density = reduced ? 0.34 : 1;
 
   const seed = (Date.now() ^ 0x5eed1e) >>> 0;
-  let vh = renderer.resize(el.clientWidth || 360, el.clientHeight || 640);
+  const w0 = el.clientWidth || 360;
+  const h0 = el.clientHeight || 640;
+  let vh = renderer.resize(w0, h0, safeRect(w0, h0));
   const sim = createSim(seed, vh);
+
+  // How to play. MOSAIC's whole instruction set used to be the two or three
+  // characters on the plate at the top: nothing told a child that stone tiles
+  // are meant to bounce, that a chain sets the ball alight, or that the glowing
+  // paddle is a question waiting to be asked. The manual stays reachable during
+  // play, because the moment a child needs the rules is never the title screen.
+  const guide = createInstructions(el, {
+    title: "MOSAIC",
+    summary: [
+      "Slide your finger to move the paddle. Bounce the ball up into the glass.",
+      "The sign at the top says which tiles to break.",
+    ],
+    sections: [
+      {
+        heading: "Moving",
+        lines: [
+          "Slide your finger anywhere on the lower part of the screen. The paddle follows it.",
+          "The ball waits on the paddle. Tap once to send it up.",
+          "On a keyboard: left and right arrow keys move, space sends the ball.",
+        ],
+      },
+      {
+        heading: "The sign at the top",
+        lines: [
+          "× 6 means break every tile that is a multiple of 6, like 6, 12, 18 and 24.",
+          "24 ÷ ▪ means break every tile that goes into 24 with nothing left over, like 3, 4 and 8.",
+          "= 12 means break every tile worth 12. It can also say = 1/2 or = 50%. Those two are the same amount.",
+          "> 40 means break every tile bigger than 40. < 40 means smaller than 40.",
+          "Tiles that do not match the rule are stone. The ball bounces off them and nothing bad happens.",
+        ],
+      },
+      {
+        heading: "Chains",
+        lines: [
+          "Break one tile after another without missing and your chain grows.",
+          "A long chain makes the ball hot. A hot ball burns straight through tiles instead of bouncing off them.",
+        ],
+      },
+      {
+        heading: "The forge",
+        lines: [
+          "Every 8 tiles you break, the paddle starts to glow.",
+          "Tap once while it glows. Time slows down and four glass shapes float up with a question above them.",
+          "Each shape holds an answer and a prize. Tap the one with the right answer to win its prize: a wider paddle, a laser, extra balls, or a slower ball.",
+          "A wrong answer only costs the glow. You do not lose a ball.",
+        ],
+      },
+      {
+        heading: "Staying in",
+        lines: [
+          "The dots at the bottom are the balls you have left. You lose one when the ball goes past the paddle.",
+          "The wall slides down while you play, so keep breaking.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  });
 
   const hud = { chargePulse: 0, dangerPulse: 0, clearFlash: 0, waveIntro: 0 };
   const events: SimEvent[] = [];
@@ -98,11 +162,15 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
   const doResize = () => {
     const w = el.clientWidth || canvas.clientWidth || 360;
     const h = el.clientHeight || canvas.clientHeight || 640;
-    vh = renderer.resize(w, h);
+    vh = renderer.resize(w, h, safeRect(w, h));
     resizeSim(sim, vh);
   };
   const ro = new ResizeObserver(doResize);
   ro.observe(el);
+  // The insets are not a constant: rotation swaps top and bottom for left and
+  // right, and iPadOS changes them when the pack is resized in Split View. A
+  // ResizeObserver alone misses the case where only the insets moved.
+  const stopInsets = onInsetsChange(doResize);
   doResize();
 
   // -- input ----------------------------------------------------------------
@@ -540,8 +608,10 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
   return {
     unmount() {
       running = false;
+      guide.destroy();
       cancelAnimationFrame(raf);
       ro.disconnect();
+      stopInsets();
       canvas.removeEventListener("pointerdown", onPointerDown);
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerup", onPointerUp);
