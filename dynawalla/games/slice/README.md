@@ -23,11 +23,19 @@ npm run build:pack # what installs on a tablet: pack.html only, no stub Host
 | a **composite** gourd | splits along your blade; **its two factors burst out of the wound** as real objects you can cut again |
 | a **prime** gourd | detonates gold. Primes are the payoff, not a trap |
 | a **sigil** tablet | the equation on it explodes into four floating candidates |
-| a **candidate** | right one → the biggest response in the game. Wrong one → a lamp |
+| a **candidate** | right one → the biggest response in the game. Wrong one → the market's favour, gone |
 | a **bomb** | a lamp, and you will feel it |
 
-Three lamps. Lose them all and the market closes; one tap opens it again.
-Nothing ever completes — the only direction is up.
+Three lamps, and **a bomb is the only thing that takes one.** Lose them all and
+the market closes; one tap opens it again. Nothing ever completes — the only
+direction is up.
+
+**While a sum is up, the market stops.** No gourds, no bombs, no rush, no second
+tablet — the whole thing holds its breath for as long as the child needs, and
+comes back louder the moment they answer. That is also the stakes model: letting
+a sigil expire costs every second of market it was hushing, which is how a
+timeout comes to cost *more* than an honest wrong answer without ever costing a
+lamp.
 
 ## Where the math lives
 
@@ -45,10 +53,25 @@ Nothing ever completes — the only direction is up.
    The whole game — flow, decision, and the arithmetic — is one gesture from top
    to bottom. There is no mode switch, no modal, no keypad.
 
-A wrong candidate costs a lamp, so guessing is real. **Hesitation never costs a
-lamp** — the timer running out forfeits the bonus and flashes the right answer,
-and that is all. Punishing a child for thinking is the failure mode this whole
-program exists to avoid.
+A wrong candidate drops **favour** — the global multiplier that applies to every
+gourd, every prime and every cascade — straight back to one, so guessing is real.
+It does not cost a lamp, and this is deliberate: it used to, while a timeout cost
+almost nothing, which made *never answering* the strictly dominant strategy. A
+child unsure of the sum was better off looking away. `src/sim/economy.ts` holds
+the whole ordering now and `src/test/economy.test.ts` plays bots against it —
+reading beats guessing beats refusing, at every difficulty and at every value the
+slicing could plausibly be worth.
+
+**Hesitation never costs a lamp, and it is never reported to the ladder.** A
+window that closed on an untouched screen is not evidence that a child does not
+know the skill; it is evidence they were still working. Punishing a child for
+thinking is the failure mode this whole program exists to avoid.
+
+The window itself is `EXPERIENCE_DESIGN.md`'s **p90 for the item's own class**,
+monotone non-decreasing in difficulty and clamped by nothing: 6 s for a
+single-digit fact, 13 s for two-digit regrouping, 40 s for the
+`5,001 − 2,798` class. It was a flat 4.2 s — 3.78 s usable after the read-lock —
+against a documented 6 s p50 for the exact skills `pack.json` declares.
 
 ## The register
 
@@ -209,8 +232,8 @@ must not drift. `src/stubHost.ts` is a local, seeded, deterministic Host with
 exact integer arithmetic and distractors that are **real mal-rule outputs** —
 the neighbouring times-table row, addition with every carry dropped, the
 smaller-from-larger subtraction bug, the reversal. Not `answer ± 1` noise: a
-wrong slice costs a lamp here, so the wrong values have to be the ones worth
-learning to reject. A test asserts that >95% of multiplication items carry at
+wrong slice costs the whole multiplier economy here, so the wrong values have to
+be the ones worth learning to reject. A test asserts that >95% of multiplication items carry at
 least one true mal-rule.
 
 ## Known weaknesses

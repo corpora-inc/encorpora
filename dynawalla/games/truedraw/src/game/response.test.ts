@@ -1,7 +1,8 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-import { isCorrect, outcomeOf, responseFor } from "./response.ts"
+import { isCorrect, outcomeOf, reportsToCurriculum, responseFor } from "./response.ts"
+import { applyOutcome, newRun, SHOTS } from "./run.ts"
 import type { Statement } from "./statement.ts"
 
 function statement(over: Partial<Statement> = {}): Statement {
@@ -56,7 +57,29 @@ test("a correct hold is credited rather than recorded as a miss", () => {
 
 test("letting a true statement stand reports nothing the host can parse", () => {
   const s = statement({ claimed: "72", truth: true })
-  // Unparseable, so it is recorded as a miss with no diagnosis. Refusing a
-  // true sentence is not a misconception with a name.
+  // Unparseable, so nothing is recorded. Refusing a true sentence is not a
+  // misconception with a name.
   assert.equal(responseFor("slow", s), "")
+})
+
+test("a window that closed on an untouched screen is not sent to the ladder", () => {
+  // The three outcomes somebody performed are evidence. `slow` is the window
+  // closing with nothing touched, and from inside this game "I say that is
+  // wrong" and "I am still working it out" are the same event. Sending it as a
+  // wrong answer bets on the first and demotes a merely deliberate child.
+  assert.equal(reportsToCurriculum("hit"), true)
+  assert.equal(reportsToCurriculum("bow"), true)
+  assert.equal(reportsToCurriculum("wild"), true)
+  assert.equal(reportsToCurriculum("slow"), false)
+})
+
+test("the shot still goes dark — a timeout costs exactly what a wrong draw costs", () => {
+  // Suppressing the report must not quietly make not-answering free. Inside the
+  // run a hold is a call like any other: `wild` and `slow` are both misses and
+  // both spend one of three shots, so refusing to call never dominates calling.
+  assert.equal(isCorrect("wild"), false)
+  assert.equal(isCorrect("slow"), false)
+  const budget = applyOutcome(applyOutcome(newRun(), "slow"), "wild")
+  assert.equal(budget.shots, SHOTS - 2, "one shot each, no discount for silence")
+  assert.equal(budget.calls, 0)
 })

@@ -24,7 +24,7 @@ import type { Host } from "./contract.ts"
 import { bestCalls, recordCalls } from "./game/best.ts"
 import { Dealer } from "./game/dealer.ts"
 import { HAPTIC } from "./game/energy.ts"
-import { isCorrect, responseFor } from "./game/response.ts"
+import { isCorrect, reportsToCurriculum, responseFor } from "./game/response.ts"
 import { Round, TIMING, TIMING_REDUCED, type RoundEvent } from "./game/round.ts"
 import { Rng } from "./core/rng.ts"
 import { Scene } from "./render/scene.ts"
@@ -79,6 +79,14 @@ export function mountTrueDraw(
         ],
       },
       {
+        heading: "The slate waits for you",
+        lines: [
+          "Work the sum out properly. There is no rush and there is no bar counting down.",
+          "A big sum keeps the slate lit for much longer than a small one does.",
+          "The light only goes out when you draw, or when the caller does.",
+        ],
+      },
+      {
         heading: "Your three shots",
         lines: [
           "Draw at a sum that is wrong and nothing happens at all. No sound, no flash, nobody moves. But a shot is gone.",
@@ -123,12 +131,19 @@ export function mountTrueDraw(
           // The host is the judge. What goes across is the value the child
           // effectively asserted — and on a wrong draw that value is a mal-rule
           // output, so the misconception routes itself.
-          host.report({
-            questionId: event.statement.questionId,
-            correct: isCorrect(event.outcome),
-            ms: event.reactionMs,
-            answered: responseFor(event.outcome, event.statement),
-          })
+          //
+          // A `slow` crosses nothing at all: nobody performed it, and it cannot
+          // be told apart from a child who was still working. See
+          // `reportsToCurriculum`. The shot still goes dark; the ladder just
+          // does not hear about it.
+          if (reportsToCurriculum(event.outcome)) {
+            host.report({
+              questionId: event.statement.questionId,
+              correct: isCorrect(event.outcome),
+              ms: event.reactionMs,
+              answered: responseFor(event.outcome, event.statement),
+            })
+          }
           audio.outcome(event.outcome)
           const cue = HAPTIC[event.outcome]
           if (cue) host.haptic(cue)

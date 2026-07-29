@@ -50,7 +50,8 @@ Never drawing is the same coin the other way up, and just as short. And mashing
 does not even buy tempo: a wrong draw commits, but it **does not close the
 window** — the slate stays lit to the last millisecond with the world declining
 to react. Drawing correctly is the only thing in the game that makes time go
-faster.
+faster, and with a comprehension-sized window that is now a very large
+difference indeed.
 
 `src/game/inhibition.test.ts` plays these strategies out for thousands of runs
 and asserts every claim on this page.
@@ -66,6 +67,45 @@ read as ten. Rejecting one means doing the arithmetic.
 That also makes the reporting fall out for free: a wild draw reports the
 mal-rule value, so the host records the miss **and names the misconception the
 child just demonstrated.** No extra wiring.
+
+It is also why the window is what it is. This game used to defend a 1.75–3.6 s
+clamp with "verification is cheaper than computation — the ones column alone
+rejects most mal-rules". `src/game/malRule.test.ts` proves that false: a dropped
+carry reproduces the true ones digit *by construction* — 62 and 72 both end in
+2 — and so does a borrow left at ten. A last-digit check accepts the falsehoods
+this game most prefers to tell, so verifying costs what computing costs.
+
+## The window is the child's time
+
+`EXPERIENCE_DESIGN.md`: *"COMPREHENSION — not budgeted. The child's time.
+Measured, never limited."* The draw window is now that document's own **p90 for
+the item's class**, monotone non-decreasing in operand width and clamped by
+nothing:
+
+| item | p50 | p90 | window before | window now |
+|---|---|---|---|---|
+| `7 + 8 = 15` | 2.8 s | 6 s | 2.16 s | **6.0 s** |
+| `47 + 25 = 72` | 6 s | 14 s | 2.59 s | **14.0 s** |
+| `753 + 577 = 1330` | 11 s | 27 s | 3.45 s | **27.0 s** |
+| `5001 − 2798 = 2203` | 16 s | 40 s | 3.60 s | **40.0 s** |
+
+The old ceiling bit long before the difficulty did, so the *share* of the child's
+measured need fell as the item got harder — 77% of a p50 for a single-digit fact,
+23% for the widest class. The ramp was inverted by construction, and running out
+of time on a true slate settles as a hold and spends a shot, so a child who could
+not finish lost a shot half the time by pure arithmetic.
+
+A long window costs the child nothing: a correct draw stops the clock the instant
+they press. It is only spent in full by a correct hold — the standoff — and by a
+wrong draw, which is the one thing in the game the world declines to react to.
+
+**And a window that closed on an untouched screen is never sent to the ladder.**
+The shot still goes dark, so a timeout costs exactly what an honest wrong draw
+costs and refusing to call never dominates calling; but from inside this game "I
+say that sum is wrong" and "I am still working it out" are the same event, and
+betting on the first would demote a merely deliberate child. The obvious hole —
+hold at everything, be credited on every false slate — is closed by the shot
+budget: holding at everything is wrong half the time, and half is three calls.
 
 ## Domains
 

@@ -2,6 +2,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import type { Question } from "../contract.ts"
+import { CADENCE } from "./cadence.ts"
 import { sameValue } from "../core/exact.ts"
 import { Rng } from "../core/rng.ts"
 import { createStubHost } from "../stub/host.ts"
@@ -101,18 +102,25 @@ test("the draw window is a function of the statement and of nothing else", () =>
   const long = windowFor("753 + 577 = 1330")
   assert.ok(long > short, "more numeral, more time")
   assert.equal(windowFor("12 + 5 = 17"), short, "the same statement always gets the same window")
-  assert.ok(short >= 1750 && long <= 3600, "clamped at both ends")
-  assert.equal(windowFor("no digits at all"), 1750)
+  // No upper clamp. The old one — 3600 ms — was the whole defect: it bit long
+  // before the difficulty did, so the ramp inverted. See `cadence.test.ts`.
+  assert.ok(long > 3600, `a three-digit sum still fits inside the old ceiling: ${String(long)}ms`)
+  assert.equal(windowFor("no digits at all"), CADENCE.fact.p90)
 })
 
 test("a four-digit sum gets time a child could actually use", () => {
-  // EXPERIENCE_DESIGN.md puts multi-digit regrouping at a 6 s p50. Verifying a
-  // claim is cheaper than computing one — the ones column alone rejects most
-  // mal-rules — but not so much cheaper that three seconds is honest.
+  // EXPERIENCE_DESIGN.md puts the `5,001 − 2,798` class at a 16 s p50 and a 40 s
+  // p90. Verification is *not* cheaper than computation here — every procedural
+  // mal-rule this game prefers reproduces the true ones digit, which
+  // `malRule.test.ts` proves — so the window is budgeted at the p90 for the
+  // class and nothing clamps it.
   const rng = new Rng(4)
-  const text = "753 + 577 = 1330"
+  const text = "5001 − 2798 = 2203"
   const budget = windowFor(text) + stillFor(text, rng)
-  assert.ok(budget >= 4400, `only ${String(budget)}ms to verify a four-digit sum`)
+  assert.ok(
+    budget >= CADENCE.wide.p90,
+    `only ${String(budget)}ms to work a four-column subtraction with a borrow across a zero`,
+  )
 })
 
 test("a short statement comes at you faster than a long one", () => {

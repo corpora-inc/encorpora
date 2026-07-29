@@ -23,6 +23,18 @@
 // a hard minimum number of live cuttable objects that the director tops up the
 // instant the field drops below it, on any viewport, at any tier. The timer
 // makes the market feel like it breathes; the floor makes sure it never stops.
+//
+// ── and the one thing that outranks it ──────────────────────────────────────
+//
+// The floor is a promise about the market. It is not a promise about the child's
+// attention, and it was being kept at the child's expense: `quiet` throttled the
+// wave timer and the wave size and never touched `floorCount()`, so the
+// guaranteed six-to-eight cuttable objects and the bomb spawner were both fully
+// enforced *while a live equation was on screen*. The moment the game had
+// designated for thinking was the busiest moment in it.
+//
+// `quiet` now stops the market outright, and the market comes back with a surge
+// rather than a trickle. Sparser around the answer, louder after it.
 
 import { Rng } from "../core/rng.ts"
 import type { NumberPool } from "./factor.ts"
@@ -68,6 +80,8 @@ export class Director {
     this.rushLeft = 0
     this.nextRushIn = FIRST_RUSH_AT
     this.rushCount = 0
+    this.quiet = false
+    this.surgeLeft = 0
     this.queue.length = 0
     this.queueT.length = 0
   }
@@ -102,9 +116,15 @@ export class Director {
   /**
    * The promise. At least this many cuttable objects are live at all times, on
    * every viewport. Nothing else in this file is allowed to break it.
+   *
+   * …except the hush, which is not a pacing knob but the child's own time. See
+   * `quiet`. The floor is a promise about the *market*, and while a question is
+   * up there is no market.
    */
   floorCount(): number {
+    if (this.quiet) return 0
     if (this.rushLeft > 0) return 11
+    if (this.surgeLeft > 0) return Math.round(8 + this.heat * 6)
     return Math.round(4 + this.heat * 6)
   }
 
@@ -118,23 +138,64 @@ export class Director {
     if (this.rushLeft > 0) return 0.32
     const h = this.heat
     const base = 1.18 - h * 0.68 // 1.18s → 0.50s
-    // A live question thins the market; it must never freeze it. 1.5× used to
-    // stack with a 4.2s answer window and put the game in slow motion for a
-    // third of every minute.
-    return this.quiet ? base * 1.14 : base
+    // The market comes back louder than it left. A question is a held breath and
+    // the breath has to be let out, or "sparser" reads as "the game got worse".
+    return this.surgeLeft > 0 ? base * 0.55 : base
   }
 
-  /** Set while a question is on screen; the market throttles, never stops. */
+  /**
+   * Set while a question is on screen. **The market stops.**
+   *
+   * It used to throttle: the wave timer stretched by 14% and the wave shrank to
+   * two or three — and `floorCount()` was never consulted, so the guaranteed six
+   * to eight cuttable objects and the bomb spawner ran at full strength while
+   * the child was doing arithmetic. The moment designated for thinking was the
+   * busiest moment in the game.
+   *
+   * A designated thinking moment either pauses everything that competes for the
+   * child's attention or it is not a thinking moment. So while this is set the
+   * director launches nothing at all: no waves, no floor top-up, no bombs, no
+   * further sigils, and no rush may open across it. Objects already in the air
+   * finish their arcs and retire; the field empties in about two seconds and
+   * stays empty until the question is settled.
+   *
+   * That is also, quietly, the whole stakes model. The hush lasts exactly as
+   * long as the question does, so letting a sigil expire costs the child every
+   * second of market they could have been cutting — which is how a timeout comes
+   * to cost *more* than an honest wrong answer without ever costing a lamp. See
+   * `economy.ts`, `marketHushSeconds`.
+   */
   quiet = false
+
+  /** Seconds of the post-question surge remaining. */
+  surgeLeft = 0
+
+  /**
+   * The question settled. Let the breath out, and do not fire the next sigil
+   * straight into the child's face.
+   *
+   * The settle gap matters more than it looks: `nextSigilIn` used to keep
+   * counting down through the whole live question, so it was always due the
+   * instant the question resolved. With a comprehension-sized window that would
+   * put the next tablet in the air before the favour wave had finished
+   * sweeping, forever.
+   */
+  settleQuestion(): void {
+    this.surgeLeft = 2.6
+    this.nextSigilIn = Math.max(this.nextSigilIn, this.sigilInterval() * 0.85)
+  }
+
+  private sigilInterval(): number {
+    return 6.2 - this.heat * 2.6
+  }
 
   private waveSize(): number {
     if (this.rushLeft > 0) return this.rng.int(4, 7)
     const h = this.heat
-    if (this.quiet) return this.rng.int(2, 3)
     // Never one lonely object: an empty screen in the first ten seconds is the
     // difference between "a game" and "a worksheet with a countdown".
-    const lo = 3 + Math.floor(h * 3)
-    const hi = 4 + Math.floor(h * 4)
+    const lo = 3 + Math.floor(h * 3) + (this.surgeLeft > 0 ? 2 : 0)
+    const hi = 4 + Math.floor(h * 4) + (this.surgeLeft > 0 ? 3 : 0)
     return this.rng.int(lo, hi)
   }
 
@@ -220,6 +281,17 @@ export class Director {
     this.elapsed += dt
     let n = 0
 
+    // ── the hush ────────────────────────────────────────────────────────────
+    //
+    // Nothing is launched, nothing is queued, and no timer moves. Heat still
+    // climbs with `elapsed`, because heat is how long the child has been playing
+    // and thinking is playing — but every clock that would *put something on
+    // screen* is frozen, including the rush. A rush opening over a live equation
+    // would be the loudest possible contradiction of the word "quiet".
+    if (this.quiet) return 0
+
+    if (this.surgeLeft > 0) this.surgeLeft -= dt
+
     if (this.rushLeft > 0) {
       this.rushLeft -= dt
       // The crest passed and the board is coming down. THE SPLIT has no
@@ -287,7 +359,7 @@ export class Director {
       // may refuse the launch (a tablet is already in the air, or a question is
       // live); `sigilRefused` reschedules it in a moment rather than dropping
       // it, which is what used to stretch the real gap out to 10.6 seconds.
-      this.nextSigilIn = (6.2 - this.heat * 2.6) * this.rng.range(0.92, 1.1)
+      this.nextSigilIn = this.sigilInterval() * this.rng.range(0.92, 1.1)
       this.queue.push({
         kind: "sigil",
         value: 0,

@@ -56,6 +56,18 @@ import { KIND_DOT, KIND_SHARD, KIND_SPARK, Particles } from "./render/particles.
 import { Scene } from "./render/scene.ts"
 import { B_BOMB, B_MOTE, B_NUMERAL, B_SIGIL, World, type Body } from "./sim/body.ts"
 import { Director, type Throw } from "./sim/director.ts"
+import {
+  answerGain,
+  CANDIDATE_READ_LOCK_MS,
+  favourAfter,
+  FAVOUR_SECONDS,
+  LAMPS,
+  lampCost,
+  moteSecondsFor,
+  READ_PER_LAMP,
+  reportsToCurriculum,
+  type Verdict,
+} from "./sim/economy.ts"
 import { buildNumberPool, chooseSplit, isPrime } from "./sim/factor.ts"
 
 type Pop = {
@@ -92,11 +104,6 @@ type Slash = {
 }
 
 const CHAIN_WINDOW = 0.75 // seconds; a cut inside this extends the chain
-const MOTE_SECONDS = 4.2
-/** Harder questions get a little more clock. Never less than the base. */
-function moteSecondsFor(difficulty: number): number {
-  return MOTE_SECONDS + Math.max(0, Math.min(9, difficulty - 1)) * 0.2
-}
 
 export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   // ── surface ──────────────────────────────────────────────────────────────
@@ -147,11 +154,19 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
         ],
       },
       {
+        heading: "The market waits for you",
+        lines: [
+          "While a sum is up, the whole market stops. Nothing is thrown and no bombs come out.",
+          "Take as long as you need. A big sum keeps the lanterns up for much longer than a small one.",
+          "The market only starts again once you have answered, so answering is how you get it back.",
+        ],
+      },
+      {
         heading: "Your three lamps",
         lines: [
-          "You have three lamps. You lose one if you swipe a wrong answer.",
-          "You also lose one if you cut a bomb. Bombs are small and spiky and have a lit fuse.",
-          "Thinking is always free. If you run out of time on a question you keep every lamp.",
+          "You lose a lamp if you cut a bomb. Bombs are small and spiky and have a lit fuse.",
+          "A wrong answer never costs a lamp. It costs the market's favour, which is your multiplier.",
+          "Thinking is always free, and so is running out of time.",
           "When all three lamps go out the market shuts. One tap opens it again.",
         ],
       },
@@ -188,7 +203,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   let overAt = 0
   let score = 0
   let best = readBest()
-  let lamps = 3
+  let lamps = LAMPS
   let chain = 0
   let chainTimer = 0
   let bestChain = 0
@@ -213,24 +228,24 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   // points, it is worth all of your other points again. A wrong answer drops it
   // straight back to one. Guessing does not cost the child a lecture; it costs
   // them the entire economy.
+  //
+  // And the reason it is now the ONLY cost a wrong lantern carries. Stacking a
+  // lamp on top of it is what made never answering the rational play: a timeout
+  // cost a point of favour and nothing else, a wrong answer cost a lamp and all
+  // of it, so a child unsure of the sum was strictly better off letting the
+  // sigil expire. Lamps are spent on bombs now — the one hazard a child chooses
+  // to touch. See `economy.ts`.
   let favour = 1
   let favourLeft = 0
-  const FAVOUR_SECONDS = 9
-  const FAVOUR_MAX = 4
   /**
    * Progress toward relighting a lamp, in sigils read. Deliberately
-   * **cumulative, not consecutive**: three correct answers at any point in the
+   * **cumulative, not consecutive**: two correct answers at any point in the
    * run buy a lamp back, and a wrong one never takes that progress away. The
    * house rule against streak-keyed escalation is right — "don't break it" is
    * the anxiety this product does not sell — and a recovery meter that only
    * ever fills is both kinder and a better reason to keep reading.
    */
   let readCredit = 0
-  // Two, not three. At one sigil every ~4.5s this makes a child reading at 50%
-  // accuracy net-positive on lamps while a child guessing at 25% still bleeds
-  // out — which is the curve we want: a learner climbs, a button-masher does
-  // not, and neither ever gets a lecture.
-  const READ_PER_LAMP = 2
   let bestFavour = 1
   /**
    * Where the score actually came from. Exposed on the debug object so the
@@ -333,7 +348,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   let liveQ: Question | null = null
   let liveQAt = 0
   let moteLeft = 0
-  let moteWindow = MOTE_SECONDS
+  let moteWindow = moteSecondsFor(1)
   // Questions riding on sigils that are in the air but not yet cut, by id. A
   // Map and not a single slot: two sigils can legitimately overlap, and holding
   // one variable made the older tablet cut into nothing at all.
@@ -624,7 +639,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       m.bornAt = performance.now()
       // A candidate has to be *read* before it can be cut. Without this the
       // stroke that opened the tablet answered the question itself, in 0ms.
-      m.cuttableAt = m.bornAt + 420
+      m.cuttableAt = m.bornAt + CANDIDATE_READ_LOCK_MS
       m.glyphH = m.r * 1.24
       world.shape(m, rng)
     }
@@ -1056,21 +1071,27 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   ): void {
     const ms = Math.round(performance.now() - liveQAt)
     lastAnswerMs = ms
-    host.report({ questionId: qid, correct, ms, answered })
+    const verdict: Verdict = correct ? "correct" : "wrong"
+    if (reportsToCurriculum(verdict)) host.report({ questionId: qid, correct, ms, answered })
+    // The hush ends the instant the question is settled, whichever way it went.
+    // A child who answers hands the market back now; a child who lets it expire
+    // hands it back at the end of the window. That difference is the entire
+    // reason answering beats not answering.
+    director.settleQuestion()
 
     if (correct) {
       right++
       // Recovery is only earned while there is something to recover. Banking
       // credit at full lamps would make the first mistake of a long run free.
-      if (lamps < 3) readCredit = Math.min(READ_PER_LAMP, readCredit + 1)
+      if (lamps < LAMPS) readCredit = Math.min(READ_PER_LAMP, readCredit + 1)
       const q = liveQ
       // Favour is raised *before* the gain is scored, so the answer that earns
       // the multiplier is also the first thing paid at it.
-      favour = Math.min(FAVOUR_MAX, favour + 1)
+      favour = favourAfter(verdict, favour)
       favourLeft = FAVOUR_SECONDS
       bestFavour = Math.max(bestFavour, favour)
       const mult = scoreMul()
-      const gain = Math.round((320 + (q?.difficulty ?? 3) * 110) * mult)
+      const gain = answerGain(q?.difficulty ?? 3, mult)
       score += gain
       earnedAnswering += gain
       audio.ascend()
@@ -1106,11 +1127,11 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       // Three sigils read buys a lamp back. This is the "math instead of an ad"
       // beat: where a free-to-play game would show a video to continue, this
       // asks for arithmetic — and it never takes the progress away again.
-      if (readCredit >= READ_PER_LAMP && lamps < 3) {
+      if (readCredit >= READ_PER_LAMP && lamps < LAMPS) {
         lamps++
         readCredit -= READ_PER_LAMP
         audio.riser()
-        showBanner("A LAMP RELIT", "three sigils read", LAMP, 1.4)
+        showBanner("A LAMP RELIT", "two sigils read", LAMP, 1.4)
         host.haptic("success")
       }
     } else {
@@ -1123,8 +1144,13 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       vignette = 1
       chain = 0
       chainTimer = 0
-      // The whole economy, gone. This is the cost that makes guessing lose.
-      favour = 1
+      // The whole economy, gone — and that is now the *entire* cost. Favour
+      // multiplies every gourd, every prime and every cascade, so a wrong
+      // lantern is still the most expensive mistake in the game; it just no
+      // longer costs a lamp on top, because a lamp was the thing that made
+      // never answering the safe play. `lampCost` is where that is written
+      // down and `economy.test.ts` is where it is enforced.
+      favour = favourAfter(verdict, favour)
       favourLeft = 0
       // No bare red numeral floating over the field — the equation completes
       // itself instead, in the sigil's own colour. Never a lecture, never a
@@ -1132,7 +1158,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       if (liveQ) showBanner(`${liveQ.prompt} = ${liveQ.answer}`, "", SIGIL_HOT, 1.4)
       burst(x, y, WRONG, 26, 320)
       clearMotes(true)
-      loseLamp()
+      for (let i = 0; i < lampCost(verdict); i++) loseLamp()
     }
   }
 
@@ -1160,7 +1186,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   function restart(): void {
     over = false
     score = 0
-    lamps = 3
+    lamps = LAMPS
     chain = 0
     chainTimer = 0
     bestChain = 0
@@ -1413,10 +1439,27 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   function expireQuestion(): void {
     const q = liveQ
     if (!q) return
-    // Hesitation is never punished with damage — only with the missed bonus,
-    // and with favour cooling back toward one.
-    host.report({ questionId: q.id, correct: false, ms: Math.round(performance.now() - liveQAt), answered: "" })
-    favour = Math.max(1, favour - 1)
+    const verdict: Verdict = "timeout"
+    // **Nothing crosses the wire.** A window that closed on an untouched screen
+    // is not evidence that the child does not know the skill — it is evidence
+    // that they were still working, and the ladder is the one place that
+    // mistake compounds. It used to report `correct: false` here.
+    if (reportsToCurriculum(verdict)) {
+      host.report({
+        questionId: q.id,
+        correct: false,
+        ms: Math.round(performance.now() - liveQAt),
+        answered: "",
+      })
+    }
+    // Never punished with damage, and never with less than an honest wrong
+    // answer either: favour falls all the way to one, exactly as a wrong lantern
+    // does. What a timeout costs *more* of is market — the hush ran the whole
+    // window rather than ending at the cut.
+    favour = favourAfter(verdict, favour)
+    favourLeft = 0
+    for (let i = 0; i < lampCost(verdict); i++) loseLamp()
+    director.settleQuestion()
     showBanner(`${q.prompt} = ${q.answer}`, "", SIGIL_EDGE, 1.2)
     clearMotes(true)
   }
@@ -1715,7 +1758,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     // lamp to win back, so it is never decoration. Three filled ticks and the
     // dark lamp comes on — this is the game's "watch an ad to continue", and
     // the price is arithmetic.
-    if (lamps < 3) {
+    if (lamps < LAMPS) {
       for (let i = 0; i < READ_PER_LAMP; i++) {
         const t = tickRect(i, hud)
         ctx.fillStyle =

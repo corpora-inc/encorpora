@@ -214,3 +214,119 @@ test("rushes get longer and closer together, forever", () => {
     `last rush ${lengths.at(-1)}s vs first ${lengths[0]}s`,
   )
 })
+
+// ── the hush ────────────────────────────────────────────────────────────────
+//
+// `quiet` used to throttle the wave timer by 14% and shrink the wave to two or
+// three objects — and never touch `floorCount()`, which is the only thing in
+// this file that actually promises anything. So while a child was working out
+// `47 + 25`, the director was still topping the field up to its guaranteed six
+// to eight cuttable objects and still rolling for bombs on every one of them.
+// The moment designated for thinking was the busiest moment in the game.
+//
+// A designated thinking moment either pauses everything that competes for the
+// child's attention or it is not a thinking moment. These are the tests that say
+// so, and the *last* one is the one that stops the fix from becoming a nerf.
+
+test("nothing at all is launched while a question is live", () => {
+  const d = new Director(new Rng(21), POOL)
+  const out = Array.from({ length: 24 }, blank)
+  // Run the market up to full heat first, so this is the hardest case: a hush
+  // at minute ten, when the floor would otherwise be at its highest.
+  for (let i = 0; i < 60 * 600; i++) d.step(1 / 60, out, 6)
+
+  d.quiet = true
+  let launched = 0
+  for (let i = 0; i < 60 * 45; i++) {
+    // `live = 0` is a starved field — the exact condition that used to make the
+    // floor fire a top-up wave immediately.
+    launched += d.step(1 / 60, out, 0)
+  }
+  assert.equal(launched, 0, `${launched} objects were thrown at a child who was reading`)
+  assert.equal(d.floorCount(), 0, "the density floor still applies during a hush")
+})
+
+test("no bomb is ever spawned into a live question", () => {
+  const d = new Director(new Rng(22), POOL)
+  const out = Array.from({ length: 24 }, blank)
+  let bombs = 0
+  for (let i = 0; i < 60 * 600; i++) {
+    // Alternate ten seconds of market with ten of hush, all run long enough for
+    // the bomb rate to be at its ceiling.
+    d.quiet = Math.floor(i / (60 * 10)) % 2 === 1
+    const n = d.step(1 / 60, out, 4)
+    if (!d.quiet) continue
+    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "bomb") bombs++
+  }
+  assert.equal(bombs, 0, `${bombs} bombs landed during a hush`)
+})
+
+test("no second sigil, and no market rush, opens across a live question", () => {
+  const d = new Director(new Rng(23), POOL)
+  const out = Array.from({ length: 24 }, blank)
+  for (let i = 0; i < 60 * 30; i++) d.step(1 / 60, out, 6)
+  const rushesBefore = d.rushCount
+  d.quiet = true
+  let sigils = 0
+  // Forty seconds — the whole window the hardest item in the pack is given.
+  for (let i = 0; i < 60 * 40; i++) {
+    const n = d.step(1 / 60, out, 6)
+    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "sigil") sigils++
+  }
+  assert.equal(sigils, 0, "a second tablet was offered while one was being read")
+  assert.equal(d.rushCount, rushesBefore, "a MARKET RUSH opened over a live equation")
+  assert.ok(d.rushLeft <= 0, `a rush was running with ${String(d.rushLeft)}s left`)
+})
+
+test("the market comes back louder than it left", () => {
+  // The fix must not read as "the game got worse". A question is a held breath
+  // and the breath is let out: `settleQuestion` raises the floor and shortens
+  // the wave interval for a couple of seconds.
+  const d = new Director(new Rng(24), POOL)
+  const out = Array.from({ length: 24 }, blank)
+  for (let i = 0; i < 60 * 120; i++) d.step(1 / 60, out, 6)
+  const calm = d.floorCount()
+
+  d.quiet = true
+  for (let i = 0; i < 60 * 8; i++) d.step(1 / 60, out, 0)
+  d.quiet = false
+  d.settleQuestion()
+  assert.ok(d.floorCount() > calm, `surge floor ${d.floorCount()} did not beat calm ${calm}`)
+
+  let launched = 0
+  for (let i = 0; i < 60 * 2; i++) launched += d.step(1 / 60, out, 0)
+  assert.ok(launched >= calm, `only ${launched} objects in the two seconds after an answer`)
+})
+
+test("the hush ends and the floor is restored within a second", () => {
+  const d = new Director(new Rng(25), POOL)
+  const out = Array.from({ length: 24 }, blank)
+  for (let i = 0; i < 60 * 200; i++) d.step(1 / 60, out, 6)
+  d.quiet = true
+  for (let i = 0; i < 60 * 20; i++) d.step(1 / 60, out, 0)
+  d.quiet = false
+  d.settleQuestion()
+  let launched = 0
+  for (let i = 0; i < 60; i++) launched += d.step(1 / 60, out, 0)
+  assert.ok(launched >= 4, `only ${launched} objects in the first second back`)
+})
+
+test("the next sigil is not fired into the child's face the moment they answer", () => {
+  // `nextSigilIn` used to keep counting down through the whole live question, so
+  // it was always overdue the instant the question resolved. With a
+  // comprehension-sized window that would put the next tablet in the air before
+  // the favour wave had finished sweeping, every single time.
+  const d = new Director(new Rng(26), POOL)
+  const out = Array.from({ length: 24 }, blank)
+  for (let i = 0; i < 60 * 120; i++) d.step(1 / 60, out, 6)
+  d.quiet = true
+  for (let i = 0; i < 60 * 30; i++) d.step(1 / 60, out, 0)
+  d.quiet = false
+  d.settleQuestion()
+  let sigils = 0
+  for (let i = 0; i < 60 * 2; i++) {
+    const n = d.step(1 / 60, out, 6)
+    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "sigil") sigils++
+  }
+  assert.equal(sigils, 0, "the next tablet arrived within two seconds of the last answer")
+})
