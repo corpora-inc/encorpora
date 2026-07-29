@@ -6,7 +6,7 @@
  * `hostChrome`  — where the HOST draws over the game, so nothing is covered.
  * `instructions`— one "how to play" surface, populated per game.
  */
-export { safeInsets, onInsetsChange, safeRect, NO_INSETS, type Insets } from "./insets.ts"
+export { safeInsets, setHostInsets, onInsetsChange, safeRect, NO_INSETS, type Insets } from "./insets.ts"
 export {
   exitRect,
   helpRect,

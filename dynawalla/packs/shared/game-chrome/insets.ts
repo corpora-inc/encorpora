@@ -25,6 +25,30 @@
 
 export type Insets = { top: number; right: number; bottom: number; left: number }
 
+/**
+ * Insets supplied by the HOST, which are the only trustworthy ones inside a
+ * pack.
+ *
+ * A pack runs in an iframe sandboxed `allow-scripts` with deliberately no
+ * `allow-same-origin`. `env(safe-area-inset-*)` is a property of the TOP-LEVEL
+ * browsing context, so a cross-origin child resolves all four to 0 — the probe
+ * below is correct in a browser tab and useless in the shipped app. Every game
+ * that trusted it drew its HUD under the notch believing it was safe.
+ *
+ * The host measures the real values and sends them on the `settings` channel;
+ * `pack.ts` calls this once the host handshake completes. Until then, and in
+ * the dev harness where there is no host, the probe is the best available
+ * answer and costs nothing.
+ */
+let hostInsets: Insets | null = null
+
+export function setHostInsets(i: Insets | null | undefined): void {
+  hostInsets =
+    i && [i.top, i.right, i.bottom, i.left].every((n) => Number.isFinite(n) && n >= 0)
+      ? { top: i.top, right: i.right, bottom: i.bottom, left: i.left }
+      : null
+}
+
 export const NO_INSETS: Insets = { top: 0, right: 0, bottom: 0, left: 0 }
 
 const PROBE_ID = "dw-safe-probe"
@@ -56,6 +80,9 @@ const px = (v: string): number => {
  * device without insets — so a caller never has to branch on platform.
  */
 export function safeInsets(): Insets {
+  // The host's measurement wins whenever there is one: inside the shipped app
+  // the probe below can only ever return zeros.
+  if (hostInsets) return { ...hostInsets }
   const el = probe()
   if (!el || typeof getComputedStyle !== "function") return { ...NO_INSETS }
   const s = getComputedStyle(el)

@@ -48,10 +48,37 @@ export type SettingsInput = {
   readonly theme: ThemeMode
   readonly systemPrefersDark: boolean
   /** BCP-47. One locale until the i18n runtime lands; a pack must not guess. */
-  readonly locale?: string
+  readonly locale?: string  /** Override for tests; production measures the live tokens. */
+  readonly safeArea?: { top: number; right: number; bottom: number; left: number }
 }
 
 /** The device facts a pack is handed. No name, no birthday, no identifier. */
+/**
+ * The device's safe-area insets, measured HERE because a pack cannot measure
+ * them itself: it lives in an iframe sandboxed `allow-scripts` with no
+ * `allow-same-origin`, and `env(safe-area-inset-*)` belongs to the top-level
+ * browsing context, so a cross-origin child reads all four as 0.
+ *
+ * `env()` is not readable from JavaScript either, so this measures the tokens
+ * the app already defines (`--safe-top` and friends in `design/tokens.css`) off
+ * the document element.
+ */
+export function readSafeArea(): { top: number; right: number; bottom: number; left: number } {
+  const zero = { top: 0, right: 0, bottom: 0, left: 0 }
+  if (typeof document === "undefined" || typeof getComputedStyle !== "function") return zero
+  const cs = getComputedStyle(document.documentElement)
+  const px = (name: string): number => {
+    const n = Number.parseFloat(cs.getPropertyValue(name))
+    return Number.isFinite(n) && n > 0 ? n : 0
+  }
+  return {
+    top: px("--safe-top"),
+    right: px("--safe-right"),
+    bottom: px("--safe-bottom"),
+    left: px("--safe-left"),
+  }
+}
+
 export function packSettings(input: SettingsInput): Settings {
   const { settings } = input
   return {
@@ -62,6 +89,7 @@ export function packSettings(input: SettingsInput): Settings {
     colorScheme: resolveTheme(input.theme, input.systemPrefersDark),
     sound: settings.sound,
     haptics: settings.haptics,
+    safeArea: input.safeArea ?? readSafeArea(),
   }
 }
 

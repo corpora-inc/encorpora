@@ -1,7 +1,7 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-import { NO_INSETS, safeInsets, safeRect } from "./insets.ts"
+import { NO_INSETS, safeInsets, setHostInsets, safeRect } from "./insets.ts"
 import { HOST_CONTROL, chromeRects, exitRect, helpRect, hitsHostChrome } from "./hostChrome.ts"
 
 test("with no document to measure, the insets are zero rather than undefined", () => {
@@ -90,4 +90,35 @@ test("hitsHostChrome finds a score placed in either corner, and clears the middl
   assert.equal(hitsHostChrome({ x: w - 90, y: 14, w: 80, h: 30 }, w, NO_INSETS), true, "top-right missed")
   assert.equal(hitsHostChrome({ x: 120, y: 14, w: 100, h: 30 }, w, NO_INSETS), false, "top-centre is free")
   assert.equal(hitsHostChrome({ x: 0, y: 300, w: 390, h: 40 }, w, NO_INSETS), false, "mid-screen is free")
+})
+
+// ---------------------------------------------------------------------------
+// Host-supplied insets. Inside the shipped app the probe can only return zeros
+// — a pack is a cross-origin child and env() belongs to the top-level document
+// — so the host measures and sends them.
+// ---------------------------------------------------------------------------
+
+test("host insets win over the probe, which is blind inside a pack", () => {
+  setHostInsets({ top: 47, right: 0, bottom: 34, left: 0 })
+  assert.deepEqual(safeInsets(), { top: 47, right: 0, bottom: 34, left: 0 })
+  setHostInsets(null)
+  assert.deepEqual(safeInsets(), NO_INSETS, "clearing must fall back, not stick")
+})
+
+test("a malformed payload from the host is refused, not trusted", () => {
+  // An older host sends nothing; a broken one could send anything. Neither may
+  // produce a NaN inset, which would poison every layout downstream.
+  for (const bad of [
+    undefined,
+    null,
+    { top: Number.NaN, right: 0, bottom: 0, left: 0 },
+    { top: -5, right: 0, bottom: 0, left: 0 },
+  ]) {
+    setHostInsets(bad as never)
+    const got = safeInsets()
+    for (const v of [got.top, got.right, got.bottom, got.left]) {
+      assert.ok(Number.isFinite(v) && v >= 0, `bad payload produced ${v}`)
+    }
+  }
+  setHostInsets(null)
 })

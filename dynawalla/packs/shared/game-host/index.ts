@@ -26,6 +26,7 @@
 // would otherwise inflate a child's record, and the record only ever rises.
 
 import type { Capability, HostClient, Item, TransitionKind } from "../../sdk/src/index.ts"
+import { setHostInsets } from "../game-chrome/insets.ts"
 import { connect } from "../../sdk/src/index.ts"
 
 /** The shape both games declare locally. Kept structurally identical. */
@@ -133,6 +134,12 @@ function questionFrom(item: Item, canonical: string, domain: string): Question {
  */
 export async function createGameHost(options: GameHostOptions = {}): Promise<MountedHost> {
   const client = await connect()
+  // A pack cannot measure its own safe area: it is a cross-origin child, and
+  // `env(safe-area-inset-*)` belongs to the top-level browsing context, so it
+  // reads zeros. The host measures and sends them; publish them to game-chrome
+  // here, once, so every pack gets it without each game remembering to.
+  setHostInsets(client.settings.safeArea)
+  client.on("settings", () => setHostInsets(client.settings.safeArea))
   const domain = options.domain ?? "arith"
   const granted = new Set<Capability>(client.granted)
 
