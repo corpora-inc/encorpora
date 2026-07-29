@@ -279,7 +279,22 @@ export type Ghost = { pts: Array<{ x: number; y: number }>; landing: number; age
  * rather than against `string` — under which renaming a phase would silently
  * put the ram back on the child's thinking time with every test still green.
  */
-export type Phase = 'intro' | 'aim' | 'windup' | 'flight' | 'impact' | 'settle' | 'clear'
+export type Phase =
+  /**
+   * No boulder can be loaded yet, because nothing the question stream has
+   * offered will fit on the field. The game is looking for a rung it can place —
+   * see `stock()` — and it is emphatically NOT 'aim': a child cannot aim at a
+   * question that is not there, and calling it 'aim' is what lit the fire button
+   * over an empty rack.
+   */
+  | 'stocking'
+  | 'intro'
+  | 'aim'
+  | 'windup'
+  | 'flight'
+  | 'impact'
+  | 'settle'
+  | 'clear'
 
 /**
  * Does the ram roll during this phase?
@@ -294,7 +309,9 @@ export type Phase = 'intro' | 'aim' | 'windup' | 'flight' | 'impact' | 'settle' 
  * hit-stop, where everything else is.
  */
 export function ramAdvances(phase: Phase): boolean {
-  return phase !== 'intro' && phase !== 'aim' && phase !== 'impact'
+  return (
+    phase !== 'stocking' && phase !== 'intro' && phase !== 'aim' && phase !== 'impact'
+  )
 }
 
 /** A battering ram: pure pressure. No number on it — read the ground to lead it. */
@@ -341,24 +358,55 @@ export function layoutTowerValues(
 
 export type Boulder = { q: Question; answer: number; spent: boolean; hit: boolean }
 
-/** Pull `n` questions whose answers can all stand apart on the same field. */
+/**
+ * Pull up to `n` questions whose answers can all stand apart on the same field.
+ *
+ * **`seen` is not diagnostics — the game steers on it.** A keep stands at its own
+ * answer in metres, so this game can only ask a question whose answer fits on a
+ * 122-metre field: everything outside `lo..hi` is unplaceable and is dropped
+ * here. When the question stream is aimed at the wrong rung, EVERY answer is
+ * dropped and the rack comes back empty — which used to leave a child with a
+ * blank plaque and a fire button that did nothing. So the answers that were
+ * rejected are handed back with the ones that were kept, and `stock()` in
+ * `game.ts` reads them to work out which way to move the difficulty it asks for.
+ * A rejection nobody can see is a rejection nobody can correct.
+ *
+ * Each rejected answer is reported WITH the difficulty of the question it came
+ * from. That pairing is what makes the search safe: the pool on the other side of
+ * `next` is refilled asynchronously, so the first answers after a difficulty
+ * change are still the old rung's, and a search that steered on them would read
+ * "still too easy" about a request it had already made and stride straight past
+ * the band. The caller compares the difficulty it asked for against the
+ * difficulty it was served and only steers on evidence about the right rung.
+ *
+ * `maxPulls` bounds the draw. A stocking attempt that drained the pool dry would
+ * spend hundreds of curriculum items to learn one bit about a rung; a small draw,
+ * repeated on later frames, learns the same thing and lets the pool keep up.
+ */
 export function pullQuestions(
   next: () => Question,
   n: number,
   minGap: number,
   lo: number,
   hi: number,
-): { boulders: Boulder[]; pools: number[][] } {
+  maxPulls = 200,
+): {
+  boulders: Boulder[]
+  pools: number[][]
+  seen: Array<{ answer: number; difficulty: number }>
+} {
   const boulders: Boulder[] = []
   const pools: number[][] = []
+  const seen: Array<{ answer: number; difficulty: number }> = []
   let guard = 0
-  while (boulders.length < n && guard++ < 200) {
+  while (boulders.length < n && guard++ < maxPulls) {
     const q = next()
     const a = Number(q.answer)
+    if (Number.isFinite(a)) seen.push({ answer: a, difficulty: q.difficulty })
     if (!Number.isInteger(a) || a < lo || a > hi) continue
     if (boulders.some((b) => Math.abs(b.answer - a) < minGap)) continue
     boulders.push({ q, answer: a, spent: false, hit: false })
     pools.push(q.distractors.map(Number).filter(Number.isInteger))
   }
-  return { boulders, pools }
+  return { boulders, pools, seen }
 }

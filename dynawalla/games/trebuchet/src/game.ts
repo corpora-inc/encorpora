@@ -91,6 +91,36 @@ const MIN_GAP = 8
 const DIAL_MIN = 8
 const DIAL_MAX = FIELD_MAX
 
+/**
+ * The window of answers this game can physically ask about.
+ *
+ * A keep stands at its own answer in METRES, on a field 122 metres long, and the
+ * blast is wide enough that two keeps must be `MIN_GAP` apart to be distinct
+ * targets. So the answer to every question TREBUCHET poses has to be an integer
+ * in this window — that is not a tuning choice, it is what "the range dial is the
+ * answer" costs.
+ *
+ * Nothing about the question stream guarantees it. The host hands out rungs off a
+ * single cross-domain ladder addressed by a 0..1 difficulty, and a pack cannot
+ * see what arithmetic sits on a rung before it asks. Measured against the shipped
+ * 66-rung ladder, the difficulties this game used to ask for returned:
+ *
+ *     wave 1  d=0.040  dw.add.facts.subtract-within-ten   answers 0-4     0/12 placeable
+ *     wave 2  d=0.112  dw.add.facts.subtract-within-ten   answers 1-9     0/12
+ *     wave 3  d=0.184  dw.add.facts.subtract-across-ten   answers 2-9     0/12
+ *     wave 5  d=0.328  dw.mul.facts.tables-to-twelve      answers 8-81    9/12
+ *     wave 6  d=0.400  dw.add.column.subtract-no-regroup  answers to 5400 0/12
+ *     wave 7  d=0.472  dw.mul.scale.times-power-of-ten    answers in the millions
+ *
+ * Waves 1-3 and 6 upward could not put a single keep on the field, so the rack
+ * came back empty, the equation plaque had nothing to draw and the fire button
+ * had no boulder to throw. That is the whole of the bug this window exists to
+ * make impossible: the game now FINDS a rung it can place instead of assuming it
+ * was handed one.
+ */
+const PLACEABLE_LO = DIAL_MIN + 6
+const PLACEABLE_HI = DIAL_MAX - 4
+
 const PAL: Palette = {
   dust: C.dust,
   debris: [C.stone, C.stoneLit, '#0d1222'],
@@ -161,8 +191,27 @@ export class TrebuchetGame {
   private dialPop = 1
   private aimEmphasis = 0
 
+  /** The distractor pools that came with the rack, kept for the tower layout. */
+  private pools: number[][] = []
+  /**
+   * The difficulty last known to return answers this field can hold, and the
+   * bisection state used to find it. `stockD` survives the wave so the search
+   * runs once a run; the bounds are re-opened per wave.
+   */
+  private stockD: number | null = null
+  private probeD = 0
+  private probeLo = 0
+  private probeHi = 1
+  /** The last difficulty actually stated to the host, so it is not re-stated. */
+  private askedD: number | null = null
+  /** Seconds waited in 'stocking' since the last probe. */
+  private stockT = 0
+  /** Seconds this wave has spent unable to stock, and whether that was said. */
+  private stockStall = 0
+  private toldAboutStocking = false
+
   // shot
-  private phase: Phase = 'intro'
+  private phase: Phase = 'stocking'
   private phaseT = 0
   private shot: Solved | null = null
   private shotT = 0
@@ -340,26 +389,107 @@ export class TrebuchetGame {
       setDifficulty?: (d: number) => void
       setDistractorCount?: (k: number) => void
     }
-    anyHost.setDifficulty?.(cfg.difficulty)
     anyHost.setDistractorCount?.(Math.max(2, cfg.extraTowers + 1))
 
-    const { boulders, pools } = pullQuestions(
+    // The wave is not laid out until there is something to shoot at. `stock()`
+    // asks for a rung and reports whether what came back will fit on the field;
+    // when it will not, the wave waits in 'stocking' and tries again on a later
+    // frame, because the pool behind `host.next()` refills asynchronously and a
+    // synchronous retry can only ever re-read the same drained pool.
+    this.rack = []
+    this.activeIdx = 0
+    this.towers = []
+    this.phase = 'stocking'
+    this.phaseT = 0
+    this.stockT = 0
+    this.stockStall = 0
+    this.probeD = this.stockD ?? cfg.difficulty
+    // A fresh bisection per wave, but seeded from the band already found, so the
+    // search happens once a run and not once a wave.
+    this.probeLo = 0
+    this.probeHi = 1
+    if (!this.stock()) return
+    this.layOutWave()
+  }
+
+  /**
+   * Ask for a rung, and say whether the answers can stand on the field.
+   *
+   * Everything about the request is a request: `setDifficulty` is a 0..1 position
+   * on a ladder whose arithmetic the pack cannot see, so the only way to find out
+   * whether a rung's answers fit in `PLACEABLE_LO..PLACEABLE_HI` is to ask and
+   * look. When they do not, the answers that came back say which way to move —
+   * all too small means ask harder, all too large means ask easier — and answer
+   * magnitude rises with the ladder, so a bisection converges on the band in a
+   * handful of probes instead of sweeping 66 rungs blind.
+   *
+   * The difficulty that worked is remembered in `stockD` for every later wave.
+   * The arithmetic therefore stops climbing at the width of the field, which is
+   * honest: a 122-metre field cannot pose a question whose answer is 5400. The
+   * wave's own escalation — wind, the wall, the ram, more keeps, less ammunition,
+   * the loft lever — is untouched and is where TREBUCHET gets harder.
+   */
+  private stock(): boolean {
+    const cfg = this.cfg
+    const anyHost = this.host as Host & { setDifficulty?: (d: number) => void }
+    // Only when it has actually moved. Re-stating a difficulty makes the host
+    // flush and refill its pool, so asking again for what was already asked keeps
+    // the pool permanently empty — the search would outrun the questions.
+    if (this.askedD !== this.probeD) {
+      this.askedD = this.probeD
+      anyHost.setDifficulty?.(this.probeD)
+    }
+
+    // A small draw, not a drained pool: this may be one probe of several, and
+    // every question pulled is a curriculum item spent.
+    const { boulders, pools, seen } = pullQuestions(
       () => this.host.next(),
       cfg.ammo,
       MIN_GAP,
-      DIAL_MIN + 6,
-      DIAL_MAX - 4,
+      PLACEABLE_LO,
+      PLACEABLE_HI,
+      32,
     )
-    this.rack = boulders
-    this.activeIdx = 0
+    if (boulders.length > 0) {
+      this.rack = boulders
+      this.pools = pools
+      this.stockD = this.probeD
+      return true
+    }
+
+    // Nothing placeable. Steer — but only on questions that came from the rung
+    // that was asked for. Anything else is the pool's previous contents, and
+    // reading it would move the search on evidence about a rung already left.
+    const fresh = seen.filter((s) => Math.abs(s.difficulty - this.probeD) <= 0.08)
+    if (fresh.length === 0) return false
+
+    const tooSmall = fresh.filter((s) => s.answer < PLACEABLE_LO).length
+    const tooBig = fresh.filter((s) => s.answer > PLACEABLE_HI).length
+    if (tooSmall === 0 && tooBig === 0) return false
+    if (tooSmall >= tooBig) {
+      this.probeLo = Math.max(this.probeLo, this.probeD)
+      this.probeD = Math.min(1, (this.probeD + this.probeHi) / 2)
+    } else {
+      this.probeHi = Math.min(this.probeHi, this.probeD)
+      this.probeD = Math.max(0, (this.probeLo + this.probeD) / 2)
+    }
+    return false
+  }
+
+  /** Build the field around the rack `stock()` filled. */
+  private layOutWave(): void {
+    const cfg = this.cfg
+    const boulders = this.rack
+    const pools = this.pools
+    const n = this.wave
 
     const values = layoutTowerValues(
       boulders.map((b) => b.answer),
       pools,
       cfg.extraTowers,
       MIN_GAP,
-      DIAL_MIN + 6,
-      DIAL_MAX - 4,
+      PLACEABLE_LO,
+      PLACEABLE_HI,
       this.rng,
     )
     this.towers = values.map((v, i) => buildTower(i, v, this.rng, cfg.volley && i % 2 === 0))
@@ -580,7 +710,15 @@ export class TrebuchetGame {
       clearHits: this.hitsThisWave,
       clearOf: this.rack.length,
       dialPop: this.dialPop,
-      canFire: this.phase === 'aim' || this.phase === 'intro',
+      // A lit, pulsing fire button over an empty rack was half of the bug: the
+      // control advertised itself as ready and `fire()` returned on the very next
+      // line for want of a boulder. The phase fix is what actually closes that —
+      // 'aim' is now unreachable without ammunition — so these two clauses are
+      // belt-and-braces and NO test reaches them: removing them leaves the suite
+      // green, which is stated here rather than dressed up as coverage. They stay
+      // because the exact failure was a control that lied about being ready, and
+      // `fire()`'s own guard should not be the only thing that knows.
+      canFire: (this.phase === 'aim' || this.phase === 'intro') && b !== null && !b.spent,
     }
   }
 
@@ -990,6 +1128,33 @@ export class TrebuchetGame {
     }
 
     switch (this.phase) {
+      case 'stocking': {
+        // Probe about six times a second. Each attempt asks for a different rung
+        // and gives the pool behind `host.next()` a frame or two to refill, which
+        // is the whole reason this is a phase and not a loop.
+        this.stockT += rawDt
+        if (this.stockT >= 0.16) {
+          this.stockT = 0
+          if (this.stock()) this.layOutWave()
+        }
+        // Said out loud, once. A wave that cannot be stocked shows a field with no
+        // keeps and no equation, which is precisely the screen that was reported
+        // as "I can't see the problem and I can't fire" — so if it ever comes back
+        // it says so in the console instead of looking like a game that is merely
+        // slow. Five seconds is many times the handful of probes a search needs.
+        this.stockStall += rawDt
+        if (this.stockStall > 5 && !this.toldAboutStocking) {
+          this.toldAboutStocking = true
+          console.error(
+            `[trebuchet] wave ${String(this.wave)} cannot be stocked: no rung between ` +
+              `${String(this.probeLo)} and ${String(this.probeHi)} returns an answer in ` +
+              `${String(PLACEABLE_LO)}..${String(PLACEABLE_HI)}, which is the only window a ` +
+              `${String(FIELD_MAX)}-metre field can stand a keep on. The child is looking at an ` +
+              `empty field.`,
+          )
+        }
+        break
+      }
       case 'intro':
         if (this.phaseT > 0.9) {
           this.phase = 'aim'
@@ -1436,5 +1601,19 @@ export class TrebuchetGame {
 
   currentWind(): number {
     return this.wind
+  }
+
+  /**
+   * Exactly the `canFire` the renderer is handed — read off the real `hudState()`
+   * rather than recomputed, so a test asserting the button is dark is asserting
+   * about the button a child is looking at.
+   */
+  fireArmed(): boolean {
+    return this.hudState().canFire
+  }
+
+  /** The difficulty the game last found it could place answers from. */
+  stockedDifficulty(): number | null {
+    return this.stockD
   }
 }
