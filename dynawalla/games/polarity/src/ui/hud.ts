@@ -1,5 +1,5 @@
 import { clamp01, fmtScore } from "../core/util.ts";
-import { fmtInt, fmtSigned, parseInt_ } from "../math/signed.ts";
+import { fmtInt, fmtSigned, tryParseInt } from "../math/signed.ts";
 import { PLAYER } from "../game/constants.ts";
 import type { World } from "../game/world.ts";
 import { applyChromeVars } from "./layout.ts";
@@ -40,7 +40,8 @@ export type HudHooks = {
   onStart: () => void;
   onAgain: () => void;
   onRevive: (answered: string) => void;
-  onSkipRevive: () => void;
+  /** The option the child actually touched. Never blank — it is a real answer. */
+  onSkipRevive: (answered: string) => void;
   onToggleSound: () => void;
   onTogglePause: () => void;
 };
@@ -350,17 +351,19 @@ export class Hud {
     const p = el("div", "pol-prompt", prompt);
     const row = el("div", "pol-orbs");
     for (const o of options) {
-      const v = parseInt_(o);
+      // A host is free to hand back something this pack did not expect; the
+      // last screen of a run is not the place to throw over it.
+      const v = tryParseInt(o);
       const btn = el("button", "pol-orb") as HTMLButtonElement;
-      btn.dataset.neg = v < 0 ? "1" : "0";
-      btn.appendChild(el("span", undefined, fmtInt(v)));
+      btn.dataset.neg = v !== null && v < 0 ? "1" : "0";
+      btn.appendChild(el("span", undefined, v === null ? o : fmtInt(v)));
       btn.addEventListener("pointerdown", (e) => {
         e.preventDefault();
         if (btn.dataset.dead === "1") return;
         if (o === correct) this.hooks.onRevive(o);
         else {
           btn.dataset.dead = "1";
-          this.hooks.onSkipRevive();
+          this.hooks.onSkipRevive(o);
         }
       });
       row.appendChild(btn);
@@ -381,7 +384,8 @@ export class Hud {
     const secs = Math.floor(st.depth % 60);
     const rows: [string, string][] = [
       ["TIME", `${mins}:${String(secs).padStart(2, "0")}`],
-      ["STRATUM", String(w.stratum)],
+      // No STRATUM row: the stratum IS the number of seals broken now, and
+      // SEALS below already says it with its denominator attached.
       ["ABSORBED", String(st.absorbs)],
       ["BEST CHAIN", String(st.bestChain)],
       ["CLUTCH FLIPS", String(st.clutches)],

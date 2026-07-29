@@ -19,13 +19,13 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
-import { LABEL_COLS, LABEL_ROWS, labelTile } from "../core/labels.ts";
+import { LABEL_COLS, LABEL_ROWS } from "../core/labels.ts";
 import type { Tier } from "../core/tier.ts";
 import { clamp, clamp01, wobble } from "../core/util.ts";
 import { BK, COL, EK, HALF_W, PLAYER, polColor, polHot } from "../game/constants.ts";
 import type { Bullet, Enemy, FloatText, Particle } from "../game/types.ts";
 import type { World } from "../game/world.ts";
-import { buildLabelAtlas, buildPromptTexture } from "./atlas.ts";
+import { LabelAtlas, buildPromptTexture } from "./atlas.ts";
 import {
   BACKDROP_FRAG,
   BACKDROP_VERT,
@@ -124,7 +124,9 @@ export class Renderer {
   private readonly uEnemy: Record<string, { value: unknown }>;
   private readonly uPrompt: Record<string, { value: unknown }>;
 
-  private atlas: Texture;
+  private atlas: LabelAtlas;
+  /** values already reported as undrawable, so the log stays one line each */
+  private readonly faulted = new Set<number>();
   private tier: Tier;
   private w = 1;
   private h = 1;
@@ -150,7 +152,10 @@ export class Renderer {
     this.gl.setClearColor(0x03040b, 1);
     this.gl.autoClear = true;
 
-    this.atlas = buildLabelAtlas(tier.name === "low" ? 96 : 128);
+    // Cell HEIGHT, and the same as the tile size the baked atlas used: the cell
+    // got wider, not shorter, so a numeral has exactly the texels it always had
+    // and a four-digit answer is drawn wide rather than crushed.
+    this.atlas = new LabelAtlas(tier.name === "low" ? 96 : 128);
 
     this.uBack = {
       uTime: { value: 0 },
@@ -220,8 +225,9 @@ export class Renderer {
       512,
       { iPos: 2, iSize: 1, iTile: 1, iAlpha: 1, iCol: 3 },
       shader(LABEL_VERT, LABEL_FRAG, {
-        uMap: { value: this.atlas },
+        uMap: { value: this.atlas.texture },
         uGrid: { value: new Vector2(LABEL_COLS, LABEL_ROWS) },
+        uAspect: { value: this.atlas.aspect },
       }),
       40,
     );
@@ -493,8 +499,19 @@ export class Renderer {
     for (const k of Object.keys(L.attrs)) (L.attrs[k] as InstancedBufferAttribute).needsUpdate = true;
   }
 
+  /**
+   * Every numeral on the field, resolved to a tile HERE rather than at spawn.
+   *
+   * That ordering is the whole guard. A tile is claimed the frame its value is
+   * first drawn and reclaimed only from a value nothing drew this frame, so an
+   * orb can never be handed a tile that has since been repainted, and — because
+   * `tileFor` never refuses — never be handed no tile at all. The one branch
+   * that could still drop a numeral is `orbFault`, and it shouts.
+   */
   private fillLabels(w: World): void {
     const L = this.labels;
+    const A = this.atlas;
+    A.beginFrame();
     const pos = (L.attrs.iPos as InstancedBufferAttribute).array as Float32Array;
     const size = (L.attrs.iSize as InstancedBufferAttribute).array as Float32Array;
     const tile = (L.attrs.iTile as InstancedBufferAttribute).array as Float32Array;
@@ -524,25 +541,44 @@ export class Renderer {
     const boost = this.w < 520 ? 1.18 : 1;
     for (let i = 0; i < w.bulletN; i++) {
       const b = w.bullets[i] as Bullet;
-      if (b.label < 0) continue;
+      if (!b.labelled) continue;
+      const t = A.tileFor(b.v);
+      if (t < 0) {
+        this.orbFault(b.v, b.kind === BK.Orb);
+        continue;
+      }
       const s = (b.kind === BK.Orb ? b.r * 1.35 : b.r * 1.55) * boost;
-      put(b.x, b.y, s, b.label, 1, polHot(b.v));
+      put(b.x, b.y, s, t, 1, polHot(b.v));
     }
     for (let i = 0; i < w.textN; i++) {
       const t = w.texts[i] as FloatText;
       const k = clamp01(t.age / t.life);
-      put(t.x, t.y, t.size * (1 + k * 0.5), t.label, (1 - k) * (1 - k), [t.r, t.g, t.b]);
+      put(t.x, t.y, t.size * (1 + k * 0.5), A.tileFor(t.value), (1 - k) * (1 - k), [t.r, t.g, t.b]);
     }
     // the Warden prints the exact total it demands, right on its hull
     for (let i = 0; i < w.enemyN; i++) {
       const e = w.enemies[i] as Enemy;
       if (e.kind !== EK.Warden || e.lockState !== 1) continue;
-      const tl = labelTile(e.lockWant);
       const pulse = 0.7 + 0.3 * Math.sin(w.wall * 5);
-      put(e.x, e.y, e.r * 1.15, tl, pulse, COL.gold);
+      put(e.x, e.y, e.r * 1.15, A.tileFor(e.lockWant), pulse, COL.gold);
     }
+    A.flush();
     L.geo.instanceCount = n;
     for (const k of Object.keys(L.attrs)) (L.attrs[k] as InstancedBufferAttribute).needsUpdate = true;
+  }
+
+  /**
+   * A numeral that could not be drawn. Unreachable, and deliberately noisy
+   * anyway: this is the exact shape of the bug that shipped four blank glowing
+   * discs to a child and said nothing. Logged once per value so a broken frame
+   * does not become a broken console.
+   */
+  private orbFault(v: number, isOrb: boolean): void {
+    if (this.faulted.has(v)) return;
+    this.faulted.add(v);
+    console.error(
+      `[polarity] no tile for ${String(v)}${isOrb ? " — AN ORB WOULD HAVE BEEN BLANK" : ""}`,
+    );
   }
 
   private fillPlayer(w: World, load: number, alive: number): void {

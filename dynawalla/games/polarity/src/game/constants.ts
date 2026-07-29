@@ -48,14 +48,21 @@ export const CORE = {
 } as const;
 
 // --- bullets ----------------------------------------------------------------
-export const enum BK {
-  Chaff = 0,
-  Charge = 1,
-  Orb = 2,
-  Shot = 3,
-  Dart = 4,
-  Lance = 5,
-}
+/**
+ * Bullet kinds. A frozen object rather than a `const enum` so the game layer is
+ * importable by `node --experimental-strip-types`, which refuses an enum — and
+ * an untestable game layer is precisely where this pack's blank orbs and
+ * corrupted reports lived.
+ */
+export const BK = {
+  Chaff: 0,
+  Charge: 1,
+  Orb: 2,
+  Shot: 3,
+  Dart: 4,
+  Lance: 5,
+} as const;
+export type BK = (typeof BK)[keyof typeof BK];
 
 export const BULLET = {
   chaffR: 1.9,
@@ -67,15 +74,17 @@ export const BULLET = {
 } as const;
 
 // --- enemies ----------------------------------------------------------------
-export const enum EK {
-  Mote = 0,
-  Weaver = 1,
-  Spinner = 2,
-  Battery = 3,
-  Lancer = 4,
-  Bearer = 5,
-  Warden = 6,
-}
+/** Enemy kinds. Same shape and the same reason as `BK`. */
+export const EK = {
+  Mote: 0,
+  Weaver: 1,
+  Spinner: 2,
+  Battery: 3,
+  Lancer: 4,
+  Bearer: 5,
+  Warden: 6,
+} as const;
+export type EK = (typeof EK)[keyof typeof EK];
 
 export type EnemySpec = {
   hp: number;
@@ -97,8 +106,8 @@ export const ENEMY: Record<number, EnemySpec> = {
 
 // --- pacing -----------------------------------------------------------------
 export const PACE = {
-  /** seconds per stratum; the HUD counts these */
-  stratum: 30,
+  // There is no seconds-per-stratum. A stratum is a seal the child broke — see
+  // `stratumOf` in sim.ts — because the clock is not something a child earns.
   firstBearer: 14,
   bearerEvery: 34,
   bearerEveryMin: 26,

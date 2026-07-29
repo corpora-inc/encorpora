@@ -161,7 +161,7 @@ const mkBullet = (): Bullet => ({
   spin: 0,
   age: 0,
   life: 8,
-  label: -1,
+  labelled: 0,
   homing: 0,
   pull: 0,
   seal: 0,
@@ -224,7 +224,7 @@ const mkText = (): FloatText => ({
   vy: 0,
   age: 0,
   life: 1,
-  label: 0,
+  value: 0,
   size: 1,
   r: 1,
   g: 1,
@@ -334,7 +334,7 @@ export function addBullet(w: World): Bullet | null {
   b.live = true;
   b.age = 0;
   b.life = 9;
-  b.label = -1;
+  b.labelled = 0;
   b.homing = 0;
   b.pull = 0;
   b.seal = 0;
@@ -382,7 +382,7 @@ export function addPart(w: World): Particle | null {
   return p;
 }
 
-export function addText(w: World, label: number, x: number, y: number, c: readonly number[]): void {
+export function addText(w: World, value: number, x: number, y: number, c: readonly number[]): void {
   if (w.textN >= w.texts.length) return;
   const t = w.texts[w.textN] as FloatText;
   w.textN++;
@@ -392,7 +392,7 @@ export function addText(w: World, label: number, x: number, y: number, c: readon
   t.vy = 26;
   t.age = 0;
   t.life = 0.95;
-  t.label = label;
+  t.value = value;
   t.size = 6.4;
   t.r = c[0] as number;
   t.g = c[1] as number;

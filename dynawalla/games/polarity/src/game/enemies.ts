@@ -1,5 +1,4 @@
 import { TAU, approach, clamp } from "../core/util.ts";
-import { labelTile } from "../core/labels.ts";
 import { BK, BULLET, COL, EK, ENEMY, HALF_W, polColor } from "./constants.ts";
 import type { Bullet, Enemy } from "./types.ts";
 import { addBullet, addEnemy, burst, inField, ring, type World } from "./world.ts";
@@ -31,7 +30,8 @@ export function fireChaff(
   b.dmg = 1;
   b.rot = ang;
   b.spin = pol > 0 ? 2.2 : -1.4;
-  b.label = mag > 1 ? labelTile(b.v) : -1;
+  // a ±1 speck is not arithmetic worth reading; anything bigger prints
+  b.labelled = mag > 1 ? 1 : 0;
   return b;
 }
 
@@ -57,7 +57,7 @@ export function fireCharge(
   b.dmg = 1;
   b.rot = 0;
   b.spin = value > 0 ? 1.1 : -0.8;
-  b.label = labelTile(value);
+  b.labelled = 1;
   b.grow = 1;
   return b;
 }

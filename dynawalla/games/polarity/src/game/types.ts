@@ -24,8 +24,14 @@ export type Bullet = {
   spin: number;
   age: number;
   life: number;
-  /** atlas tile for the printed numeral, -1 for none */
-  label: number;
+  /**
+   * 1 = print `v` on this bullet, 0 = no numeral.
+   *
+   * The VALUE, not a tile: which tile prints it is settled at draw time by
+   * `LabelBook`, so there is no way to spawn a bullet whose numeral the atlas
+   * has no room for and no way for one to come out blank.
+   */
+  labelled: number;
   /** >0 = homing strength (darts) */
   homing: number;
   /** currently being sucked into the ship: 0..1 */
@@ -96,8 +102,8 @@ export type FloatText = {
   vy: number;
   age: number;
   life: number;
-  /** atlas tile index */
-  label: number;
+  /** the number to print */
+  value: number;
   size: number;
   r: number;
   g: number;

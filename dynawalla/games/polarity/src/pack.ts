@@ -15,10 +15,16 @@
 // that way: absorbing +7 and then −4 is arithmetic the child performs by
 // flying, not a question anybody asked, so nothing about it is reported.
 //
-// One honest limit, written down rather than discovered on a tablet: an orb's
-// numeral comes from a 9×9 atlas covering −40…+40 (`core/labels.ts`), so it is
-// the low levels of the rows in `pack.json` this game can actually print. There
-// are no signed-integer rows in the graph yet; when there are, they belong
+// There used to be an "honest limit" written here: an orb's numeral came from a
+// baked 9×9 atlas covering −40…+40, so only the low end of the rows in
+// `pack.json` could be printed at all. It was not a limit, it was a defect —
+// nothing declined an item outside the range, the renderer simply skipped the
+// numeral, and 89.9% of the orb values this pack requests across the shipping
+// ladder came out as blank glowing discs. Tiles are claimed on demand now
+// (`core/labels.ts`) and any integer prints; `askQuestion` refuses anything it
+// cannot print, out loud, rather than dropping it on the field unlabelled.
+//
+// There are no signed-integer rows in the graph yet; when there are, they belong
 // here.
 
 import { createGameHost, renderNoHost } from "../../../packs/shared/game-host/index.ts"

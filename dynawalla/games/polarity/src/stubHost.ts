@@ -185,7 +185,15 @@ const BY_DOMAIN: Record<string, Gen> = {
 // assembly
 // ---------------------------------------------------------------------------
 
-/** Orb values have to fit a two-character label and stay readable at speed. */
+/**
+ * The range THIS stub draws from, and nothing more.
+ *
+ * It is not what the game can print — `core/labels.ts` claims a tile for any
+ * integer — and reading it as a limit is how a defect survived a whole build:
+ * the dev harness stayed inside ±40, so `npm run dev` never showed a blank orb
+ * while the shipped pack showed almost nothing else. `core/labels.test.ts`
+ * measures the real curriculum instead of this.
+ */
 export const VALUE_MIN = -40;
 export const VALUE_MAX = 40;
 
