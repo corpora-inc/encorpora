@@ -12,9 +12,12 @@ import assert from "node:assert/strict"
 import {
   cadenceFor,
   choicesFor,
+  climbRungs,
   climbWithinMs,
   createItemService,
+  isQuick,
   isSubtraction,
+  itemPace,
   ladder,
 } from "./items.ts"
 import type { PromptSlot } from "./curriculum.ts"
@@ -641,10 +644,16 @@ test("a latency that is not a measurement promotes and says so", () => {
   )
 })
 
-test("a correct answer from the slow tail of its own item holds the rung, and never costs one", () => {
-  // The intent the constant was reaching for, kept: a child who took far longer
-  // than the ninth of ten children on this question does not climb — and does
-  // not fall either. Being slow is not being wrong.
+test("a correct answer from the slow tail never costs a rung, never jumps one, and enough of them promote", () => {
+  // This test used to be called "…holds the rung", and holding is the thing the
+  // founder ruled out: "if the person is 100% right but slow, we could still
+  // slowly move up." So the claim is now three-part, and the middle part is
+  // what stops "slowly" from quietly becoming "immediately".
+  //
+  // Note what the old version could not tell apart: a slow answer worth zero
+  // and a slow answer worth a twentieth of a rung both leave `position()`
+  // where it was after one answer. Only the third part below separates them,
+  // and only the third part fails against the rule this replaced.
   const rungs = ladder().filter((rung) => rung.node.id === "dw.add.facts.add-within-ten")
   assert.ok(rungs.length > 1)
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
@@ -668,7 +677,26 @@ test("a correct answer from the slow tail of its own item holds the rung, and ne
     // Five minutes on a single-digit fact. Nobody's p90.
     latencyMs: 300_000,
   })
-  assert.equal(service.position(), climbed, "a slow correct answer moved the ladder")
+  assert.equal(service.position(), climbed, "one slow answer jumped a whole rung")
+
+  // And now the same answer, again and again. A child working at this pace all
+  // afternoon is still working; a ladder that never moves for them is the
+  // product telling them they are not.
+  for (let i = 0; i < 60; i++) {
+    const next = service.next({ packId: "dynawalla.siege" })
+    assert.ok(next)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: next.id,
+      response: service.reveal(next.id),
+      latencyMs: 300_000,
+    })
+  }
+  assert.ok(
+    service.position() > climbed,
+    `sixty correct answers in a row left the child on rung ${String(service.position())}, ` +
+      `where one answer had already put them — slow and right is still right`,
+  )
 })
 
 test("no run of wrong answers can push a child below the easiest rung the curriculum has", () => {
@@ -688,9 +716,14 @@ test("no run of wrong answers can push a child below the easiest rung the curric
   assert.ok(service.next({ packId: "dynawalla.siege" }), "the floor is not serving questions")
 })
 
-test("climbing and stepping down are one rung each and meet in the middle", () => {
+test("an answer at the published median is worth exactly one rung, and a miss costs exactly one", () => {
   // The descent rule is unchanged and is founder direction; what is checked here
-  // is that it composes with the new climb rule rather than fighting it.
+  // is that it composes with the climb rule rather than fighting it.
+  //
+  // Six answers, each taking exactly as long as the table says that class takes.
+  // Not quick, not slow: expected. Expected is one rung — the middle regime —
+  // and the fact that `high` is exactly 6 rather than something larger is the
+  // assertion that the speedcuber bonus does not leak into ordinary pace.
   const rungs = ladder()
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
   for (let i = 0; i < 6; i++) {
@@ -716,4 +749,399 @@ test("climbing and stepping down are one rung each and meet in the middle", () =
     })
   }
   assert.equal(service.position(), high - 3, "three misses did not cost exactly three rungs")
+})
+
+// ---------------------------------------------------------------------------
+// The three regimes.
+//
+// Founder ruling, verbatim: "if it takes a long time to get the right answer
+// then we should tend to stay at the same level .. if the person is 100% right
+// but slow, we could still slowly move up. But, a speedcuber should move up very
+// fast." Holding was therefore wrong, and this block is that sentence as three
+// tests plus the two things the mechanism must not break — a guesser, and the
+// floor.
+//
+// The published p90 column, read off `docs/EXPERIENCE_DESIGN.md` by hand like
+// the p50 column above. Nothing below calls `itemPace` or `climbRungs` to decide
+// what it expects.
+//
+// | class                     | p50    | p90  |
+// |---------------------------|--------|------|
+// | single-digit fact         |  2.8 s |  6 s |
+// | two-digit with regrouping |    6 s | 14 s |
+// | three-digit               |   11 s | 27 s |
+// | the `5,001 − 2,798` class |   16 s | 40 s |
+const P90_WIDEST_PUBLISHED_MS = 40_000
+
+/**
+ * A latency that is in the slow tail of *every* rung that ships, by hand.
+ *
+ * The widest published p90 is 40 s. The most generous median any node in the
+ * graph declares is `dw.div.*` at 18 s, and a declared median widens to 45 s.
+ * A minute is past both, so one minute per question is the slow tail of every
+ * question in the product — including `0 + 3` — without this test re-deriving
+ * the window from the code under test.
+ */
+const A_FULL_MINUTE_MS = 60_000
+
+/**
+ * A latency that is quick for every rung that ships, by hand.
+ *
+ * The narrowest published median is 2.8 s and a declared median can only widen
+ * it, so the quickest any item's quick mark can be is a fraction of 2.8 s. Two
+ * hundred milliseconds is under any fraction of it that a human clock could
+ * report — a child who has the fact and does not compute it.
+ */
+const A_SPEEDCUBER_MS = 200
+
+/** Answers correctly at a fixed pace until the top, or until it gives up. */
+function runChild(latencyMs: number, limit: number) {
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  const top = rungs.length - 1
+  let answers = 0
+  while (answers < limit && service.position() < top) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs,
+    })
+    answers += 1
+  }
+  return { rung: service.position(), top, answers, elapsedMs: answers * latencyMs }
+}
+
+test("regime 2: a child who is right every single time and slow every single time still climbs", () => {
+  // THE test. Before this rule, a correct answer past the item's p90 held the
+  // rung, so this child — one minute a question, never once wrong — sat on rung
+  // 0 for as long as they played and the product had nothing to say about it.
+  // "if the person is 100% right but slow, we could still slowly move up."
+  const slow = runChild(A_FULL_MINUTE_MS, 400)
+  assert.ok(
+    slow.rung > 0,
+    `four hundred correct answers in a row left the child on rung ${String(slow.rung)} of ` +
+      `${String(slow.top)}. Being unhurried is not being wrong, and this is the child the ` +
+      `product exists for`,
+  )
+  // And they get all the way there, given the afternoon.
+  assert.equal(
+    slow.rung,
+    slow.top,
+    `the slow child stalled at rung ${String(slow.rung)} of ${String(slow.top)} after ` +
+      `${String(slow.answers)} correct answers`,
+  )
+})
+
+test("regime 1 beats regime 2: the same ladder, quick, takes far fewer answers than slow", () => {
+  // "slowly" is the load-bearing word in the ruling — slow-and-correct must
+  // climb, and must not climb at the pace of a child who has the fact. A rule
+  // that promoted everyone equally would pass the test above and fail the
+  // product.
+  const quick = runChild(A_SPEEDCUBER_MS, 400)
+  const slow = runChild(A_FULL_MINUTE_MS, 400)
+  assert.equal(quick.rung, quick.top)
+  assert.equal(slow.rung, slow.top)
+  assert.ok(
+    quick.answers * 4 < slow.answers,
+    `the speedcuber took ${String(quick.answers)} answers to the top and the slow child took ` +
+      `${String(slow.answers)} — those are not different speeds`,
+  )
+})
+
+test("regime 1: a speedcuber does not walk every rung", () => {
+  // "a speedcuber should move up very fast." Two-sided: more than one rung per
+  // answer, and not an unbounded number of them — the cap is the table's own
+  // p90/p50 spread, 40/16 = 2.5 at its widest row.
+  const quick = runChild(A_SPEEDCUBER_MS, 400)
+  assert.equal(quick.rung, quick.top)
+  assert.ok(
+    quick.answers < quick.top,
+    `${String(quick.top)} rungs took ${String(quick.answers)} answers at ${String(
+      A_SPEEDCUBER_MS,
+    )} ms each — that is one rung per answer or worse, and a child who answers in a fifth of a ` +
+      `second is not being told anything by this ladder`,
+  )
+  assert.ok(
+    quick.answers >= Math.ceil(quick.top / 2.5),
+    `${String(quick.top)} rungs in ${String(quick.answers)} answers is more than 2.5 rungs an ` +
+      `answer, and 2.5 is the widest p90/p50 the cadence table publishes`,
+  )
+})
+
+/** The rate for a single answer, with no run of quick answers behind it. */
+function rateAt(digits: number, fluencyP50Ms: number | undefined, latencyMs: number): number {
+  return climbRungs({ digits, fluencyP50Ms, latencyMs })
+}
+
+/** The rate for a child who has already been quick often enough to earn it. */
+function sustainedRateAt(
+  digits: number,
+  fluencyP50Ms: number | undefined,
+  latencyMs: number,
+): number {
+  return climbRungs({ digits, fluencyP50Ms, latencyMs, quickRun: 99 })
+}
+
+test("regime 3: the climb rate decays with lateness, and is never zero", () => {
+  // Read against the published single-digit row — p50 2.8 s, p90 6 s — on a node
+  // that declares no fluency target of its own, so the numbers below are the
+  // table's and nothing else's.
+  assert.equal(rateAt(1, undefined, 6_000), 1, "the p90 itself is a whole rung")
+  assert.equal(rateAt(1, undefined, 12_000), 0.5, "twice the p90 is half a rung")
+  assert.equal(rateAt(1, undefined, 60_000), 0.1, "ten times the p90 is a tenth of a rung")
+
+  // A child at ten times the expected time is not demonstrating what a child at
+  // one and a half times is, and a step function would say they were.
+  let previous = Infinity
+  for (const late of [6_001, 9_000, 12_000, 24_000, 60_000, 600_000]) {
+    const rate = rateAt(1, undefined, late)
+    assert.ok(rate < previous, `${String(late)} ms was not worth less than the answer before it`)
+    assert.ok(rate > 0, `${String(late)} ms was worth nothing at all — that is a hold`)
+    previous = rate
+  }
+})
+
+test("the expected band is one rung, and its edges are the item's own", () => {
+  // The middle regime, at both of its boundaries, in published numbers. The
+  // quick mark of a single-digit fact is 2.8 s compressed by the table's widest
+  // spread — 2,800 × 2/5 = 1,120 ms — and its tail is the published p90.
+  assert.equal(sustainedRateAt(1, undefined, 1_120), 1)
+  assert.equal(sustainedRateAt(1, undefined, 2_800), 1)
+  assert.equal(sustainedRateAt(1, undefined, 6_000), 1)
+  assert.ok(sustainedRateAt(1, undefined, 1_119) > 1, "a millisecond inside the mark is not quick")
+  assert.ok(sustainedRateAt(1, undefined, 6_001) < 1, "a millisecond into the tail is a whole rung")
+
+  // And the run is counted at the same mark that pays, which is the seam a
+  // rewrite would most easily get wrong: an answer that counts toward the run
+  // but is not worth the bonus, or the reverse, would let a child be quick
+  // forever and never earn it.
+  assert.equal(isQuick(1, undefined, 1_119), true)
+  assert.equal(isQuick(1, undefined, 1_120), false)
+  assert.equal(isQuick(1, undefined, 2_800), false, "the published median is not quick")
+  assert.equal(isQuick(1, undefined, Number.NaN), false, "a broken clock is not evidence of speed")
+
+  // Every rung on the shipped ladder has the same shape: quick < median < tail,
+  // and answering at the pace the table publishes for that width is never a
+  // demotion-by-slowness — it is worth a whole rung or better, on every rung,
+  // which is the invariant the constant this replaced violated on half of them.
+  for (const rung of ladder()) {
+    const service = createItemService({ profileId: "p1", record: noRecord, rungs: [rung] })
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    const width = widthOf(item.operands)
+    const declared = rung.node.fluencyTarget?.p50Ms
+    const pace = itemPace(width, declared)
+    assert.ok(pace, `${rung.node.id} has no pace at all`)
+    assert.ok(
+      pace.quickMs < pace.medianMs && pace.medianMs < pace.tailMs,
+      `${rung.node.id} paces at ${JSON.stringify(pace)}`,
+    )
+    assert.ok(
+      rateAt(width, declared, publishedP50Ms(width)) >= 1,
+      `${rung.node.id} draws ${item.prompt} and treats ${String(publishedP50Ms(width))} ms — ` +
+        `the published median for a ${String(width)}-digit item — as less than a whole rung`,
+    )
+  }
+})
+
+test("a declared fluency target only ever widens the pace, at both ends", () => {
+  // The pre-existing guard, extended to the quick mark. `dw.mul.*` declares a
+  // 15 s median and `dw.div.*` an 18 s one: read through the column model alone,
+  // a two-digit multiplication would be "slow" at 14 s and "quick" at 2.4 s. A
+  // node's own data must be able to move both marks outward and neither inward.
+  for (const node of allNodes) {
+    const declared = node.fluencyTarget?.p50Ms
+    if (declared === undefined) continue
+    for (let width = 1; width <= 6; width++) {
+      const table = itemPace(width, undefined)
+      const paced = itemPace(width, declared)
+      assert.ok(paced && table, `${node.id} at ${String(width)} digits has no pace`)
+      assert.ok(
+        paced.quickMs >= table.quickMs,
+        `${node.id} declares ${String(declared)} ms and that NARROWED the quick mark at ` +
+          `${String(width)} digits, from ${String(table.quickMs)} to ${String(paced.quickMs)}`,
+      )
+      assert.ok(paced.tailMs >= table.tailMs, `${node.id} narrowed the tail at ${String(width)}`)
+      // And a child answering in exactly the time the node itself declares is
+      // never in the tail: a node's own median cannot make its own items slow.
+      assert.ok(
+        rateAt(width, declared, declared) >= 1,
+        `${node.id} declares ${String(declared)} ms and then treats an answer taking exactly ` +
+          `that long as slow, at ${String(width)} digits`,
+      )
+      // Both marks, stated as what a child experiences rather than as one
+      // number being no smaller than another — which two marks derived from the
+      // same expression will always satisfy, whether or not the declared median
+      // is read at all. The spread is the table's widest published p90/p50,
+      // 40/16, so two fifths of a declared median is as quick as its own tail is
+      // slow.
+      // Annotated because `assert.ok` is an assertion signature, and a `const`
+      // inferred after one in the same block trips TS7022.
+      const asQuickAsDeclaredAllows: number = Math.floor((declared * 2) / 5) - 1
+      assert.ok(
+        sustainedRateAt(width, declared, asQuickAsDeclaredAllows) > 1,
+        `${node.id} declares a ${String(declared)} ms median, and an answer in ` +
+          `${String(asQuickAsDeclaredAllows)} ms — under two fifths of it — is not quick to it ` +
+          `at ${String(width)} digits. A node's own data cannot make its own items harder to be ` +
+          `quick at than the table's`,
+      )
+      assert.ok(
+        rateAt(width, declared, Math.floor((declared * 5) / 2)) >= 1,
+        `${node.id} declares a ${String(declared)} ms median and puts two and a half times it ` +
+          `in the slow tail at ${String(width)} digits`,
+      )
+    }
+  }
+})
+
+/**
+ * A child touching one of the four slabs at random, instantly, for a whole
+ * session. Seeded, so the same guesser guesses the same way on every run.
+ */
+function guessSession(seed0: number, answers: number) {
+  const rungs = ladder()
+  const service = createItemService({ profileId: `guesser-${String(seed0)}`, record: noRecord, rungs })
+  let seed = seed0
+  // The high bits: the low bits of a linear congruential stream have a period
+  // of four, which for a four-slab grid is not a guesser, it is a metronome.
+  const pick = (n: number) => {
+    seed = (seed * 1_103_515_245 + 12_345) & 0x7fff_ffff
+    return Math.floor(seed / 65_536) % n
+  }
+  let highest = 0
+  let lucky = 0
+  let sum = 0
+  for (let i = 0; i < answers; i++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    const choices = item.choices ?? []
+    assert.equal(choices.length, 4, "the grid is not four slabs and the arithmetic is wrong")
+    const guess = choices[pick(choices.length)]
+    assert.ok(guess)
+    if (guess.text === service.reveal(item.id)) lucky += 1
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      // Instantly. A guesser is quick by definition — they are not computing.
+      response: guess.id,
+      latencyMs: 1,
+    })
+    highest = Math.max(highest, service.position())
+    sum += service.position()
+  }
+  return { top: rungs.length - 1, finished: service.position(), highest, lucky, mean: sum / answers }
+}
+
+test("a guesser does not climb, however fast the guessing is", () => {
+  // A closed list is four slabs, so a child touching one at random is right one
+  // time in four and wrong three. A miss costs a whole rung, so the only way
+  // guessing pays is if a lucky tap can be worth more than a rung — which is
+  // exactly what the speedcuber's rate is, and exactly why it is not handed out
+  // for one quick answer. See `QUICK_RUN_FOR_BONUS`: with no run required, this
+  // guesser reached rung 26 of 35.
+  //
+  // Six sessions, six hundred questions each. One session is a coin-toss story;
+  // the drift is the claim.
+  let worstFinish = 0
+  let worstReach = 0
+  let top = 0
+  for (const seed of [13, 7_932, 15_851, 23_770, 31_689, 39_608]) {
+    const run = guessSession(seed, 600)
+    top = run.top
+    assert.ok(run.lucky > 0, "the guesser never once guessed right, so this proves nothing")
+    assert.ok(
+      run.mean < 2,
+      `a guesser spent 600 questions an average of ${run.mean.toFixed(2)} rungs up the ladder`,
+    )
+    worstFinish = Math.max(worstFinish, run.finished)
+    worstReach = Math.max(worstReach, run.highest)
+  }
+  assert.ok(
+    worstFinish <= top / 8,
+    `guessing at random finished as high as rung ${String(worstFinish)} of ${String(top)}`,
+  )
+  assert.ok(
+    worstReach <= top / 4,
+    `a guesser reached rung ${String(worstReach)} of ${String(top)} along the way — luck is ` +
+      `buying real progress, and the speedcuber's rate is what a guesser is spending`,
+  )
+})
+
+test("the tail cannot underflow the floor or overflow the top", () => {
+  // The clamps, against the fractional carry specifically: a child sitting on a
+  // fraction of a rung above the floor is still not allowed below it, and a
+  // child at the top does not bank credit they could spend on a miss.
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  const item = service.next({ packId: "dynawalla.siege" })
+  assert.ok(item)
+  // One slow-and-right answer: some fraction of a rung, and still rung 0.
+  service.judge({
+    packId: "dynawalla.siege",
+    itemId: item.id,
+    response: service.reveal(item.id),
+    latencyMs: A_FULL_MINUTE_MS,
+  })
+  assert.equal(service.position(), 0)
+  const missed = service.next({ packId: "dynawalla.siege" })
+  assert.ok(missed)
+  service.judge({
+    packId: "dynawalla.siege",
+    itemId: missed.id,
+    response: "definitely wrong",
+    latencyMs: 1_000,
+  })
+  assert.equal(service.position(), 0, "a fraction of a rung above the floor fell through it")
+
+  // At the top: quick answers pile up, then one miss must cost exactly one rung
+  // rather than being absorbed by banked credit.
+  const top = rungs.length - 1
+  for (let i = 0; i < 200 && service.position() < top; i++) {
+    const next = service.next({ packId: "dynawalla.siege" })
+    assert.ok(next)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: next.id,
+      response: service.reveal(next.id),
+      latencyMs: A_SPEEDCUBER_MS,
+    })
+  }
+  assert.equal(service.position(), top)
+  for (let i = 0; i < 5; i++) {
+    const next = service.next({ packId: "dynawalla.siege" })
+    assert.ok(next)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: next.id,
+      response: service.reveal(next.id),
+      latencyMs: A_SPEEDCUBER_MS,
+    })
+  }
+  const missedAtTop = service.next({ packId: "dynawalla.siege" })
+  assert.ok(missedAtTop)
+  service.judge({
+    packId: "dynawalla.siege",
+    itemId: missedAtTop.id,
+    response: "definitely wrong",
+    latencyMs: 1_000,
+  })
+  assert.equal(
+    service.position(),
+    top - 1,
+    "five quick answers at the top banked credit that a miss then paid for",
+  )
+})
+
+test("a latency past what the table has a class for is still classified, never unbounded", () => {
+  // Six digits is off the end of the published table, and the fitted line is
+  // what says how long it should take. What must not happen is a wide item
+  // becoming unclassifiable and every answer on it — including a guessed one —
+  // being worth a whole rung by default.
+  const wide = itemPace(6, undefined)
+  assert.ok(wide, "a six-digit item has no pace, so the fitted line stopped fitting")
+  assert.ok(wide.tailMs > P90_WIDEST_PUBLISHED_MS, "a six-digit item is not slower than a 4-digit")
+  assert.ok(rateAt(6, undefined, 600_000) < 0.2, "ten minutes on one question is not a rung")
 })

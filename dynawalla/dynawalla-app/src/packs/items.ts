@@ -23,10 +23,10 @@
 // **What a rung is.** The curriculum ships one generator family so far
 // (`gen.arith.column-op`) bound to four active skills at four levels each. The
 // rungs are those bindings, sorted by the difficulty the node itself declares,
-// and the ladder walks them: a correct answer that was not from the slow tail of
-// *that item* climbs, a wrong one steps down. "Not slow for that item" is read
-// off the cadence table in `docs/EXPERIENCE_DESIGN.md` — see the `CADENCE_*`
-// note below, and what it says about the constant it replaced.
+// and the ladder walks them: a correct answer climbs, a wrong one steps down.
+// How *far* a correct answer climbs is how quick it was for *that item* — read
+// off the cadence table in `docs/EXPERIENCE_DESIGN.md`, never off a constant.
+// See `climbRungs` below for the three regimes and why none of them is a hold.
 // That is not the FSRS scheduler (ADR-0008) — it is the smallest honest
 // thing that makes a pack's stream get harder — and it is confined to this file
 // so replacing it does not touch the boundary.
@@ -110,8 +110,22 @@ const CADENCE_COLUMN_P90_PER_DIGIT_MS = 13_000
  * The table's widest p90/p50 spread, as a ratio so it multiplies exactly.
  *
  * 6/2.8, 14/6, 27/11 and 40/16 are 2.14, 2.33, 2.45 and 2.50. The largest is
- * taken, because every use of it below is "widen a declared median into a slow
- * tail" and a narrow guess there is the punitive direction.
+ * taken, because the first use of it below is "widen a declared median into a
+ * slow tail" and a narrow guess there is the punitive direction.
+ *
+ * It has three uses, and they are the same number on purpose:
+ *
+ *   * A declared `fluencyTarget.p50Ms` becomes a tail at `p50 × 5/2`.
+ *   * The **quick mark** of an item is its median compressed by the same
+ *     ratio, `p50 × 2/5` — the mirror image of the tail. An item's expected
+ *     band is therefore the stretch between them, and "quick" and "slow" are
+ *     the same distance from the middle rather than two independent opinions.
+ *   * The **most rungs one answer can be worth**, so an unbelievably small
+ *     latency cannot buy an unbounded climb. 5/2 is under three, and three is
+ *     the number of wrong slabs on a four-option grid, so a guesser's expected
+ *     move stays negative. Necessary and *not* sufficient — see
+ *     `QUICK_RUN_FOR_BONUS`, which is what actually keeps a guesser off the
+ *     ladder, and `items.test.ts`, which runs one.
  */
 const CADENCE_SPREAD_NUM = 5
 const CADENCE_SPREAD_DEN = 2
@@ -337,13 +351,13 @@ export function cadenceFor(digits: number): { p50Ms: number; p90Ms: number } | n
 }
 
 /**
- * How long an answer to *this* item may take and still climb the ladder — or
- * `null` when nothing about the item says.
+ * How long an answer to *this* item may take and still be worth a whole rung —
+ * or `null` when nothing about the item says.
  *
  * The item's own p90. A child at the p90 is not slow; a child at the p90 is the
- * ninth of ten children who answered it, and the tenth still keeps the rung they
- * are on. What the rule refuses to promote is a correct answer from the slow
- * tail *of that question*, which is the only thing "quick" ever meant.
+ * ninth of ten children who answered it, and the tenth climbs too, by the
+ * fraction `climbRungs` gives them. Nothing here is a ceiling on a child's
+ * progress; it is the width of the band worth exactly one rung.
  *
  * Two inputs, and the wider of them wins:
  *
@@ -364,13 +378,166 @@ export function cadenceFor(digits: number): { p50Ms: number; p90Ms: number } | n
  * to hold a child down.
  */
 export function climbWithinMs(digits: number, fluencyP50Ms: number | undefined): number | null {
+  return itemPace(digits, fluencyP50Ms)?.tailMs ?? null
+}
+
+/**
+ * The three landmarks on *this* item's clock, or `null` when it has none.
+ *
+ * `quickMs < medianMs < tailMs`, always, and every one of them is read off the
+ * item — the cadence table at the width the child saw, widened (never narrowed)
+ * by a `fluencyTarget.p50Ms` the node declares. There is no absolute number
+ * here and there must never be one: the whole defect this replaced was a single
+ * constant applied to every question in the product.
+ *
+ * The tail is the p90 of the class. The quick mark is the median compressed by
+ * the same ratio the tail stretches it by, so an item's "expected" band is
+ * symmetric about its own median in log terms rather than being two unrelated
+ * judgements.
+ */
+export function itemPace(
+  digits: number,
+  fluencyP50Ms: number | undefined,
+): { quickMs: number; medianMs: number; tailMs: number } | null {
   const table = cadenceFor(digits)
   const declared =
     fluencyP50Ms === undefined || !Number.isFinite(fluencyP50Ms) || fluencyP50Ms <= 0
       ? null
-      : Math.round((fluencyP50Ms * CADENCE_SPREAD_NUM) / CADENCE_SPREAD_DEN)
+      : fluencyP50Ms
   if (table === null && declared === null) return null
-  return Math.max(table?.p90Ms ?? 0, declared ?? 0)
+  const medianMs = Math.max(table?.p50Ms ?? 0, declared ?? 0)
+  const tailMs = Math.max(
+    table?.p90Ms ?? 0,
+    declared === null ? 0 : Math.round((declared * CADENCE_SPREAD_NUM) / CADENCE_SPREAD_DEN),
+  )
+  return {
+    quickMs: (medianMs * CADENCE_SPREAD_DEN) / CADENCE_SPREAD_NUM,
+    medianMs,
+    tailMs,
+  }
+}
+
+/**
+ * How many consecutive quick, correct answers earn the speedcuber's rate.
+ *
+ * Not a duration — the rule that everything be relative to the item's own
+ * expected time is about *times*, and this is a count of answers. It exists
+ * because being quick is the one signal a child can produce without knowing any
+ * mathematics: a random tap on a four-slab grid is instant, and one tap in four
+ * is right.
+ *
+ * The arithmetic. A guesser on a closed list of `CHOICE_COUNT` is right one
+ * time in four and wrong three, so their expected move per answer is
+ * `bonus/4 − 3/4`. At a bonus of one rung — the rule this replaced, which had
+ * no bonus at all — that is −0.5 a question and a guesser sits on the floor. At
+ * the full 2.5 for any single quick answer it is −0.09, which is not a drift,
+ * it is noise. That is not a hypothetical: the simulated guesser in
+ * `items.test.ts` reached **rung 26 of 35** the first time this rule was
+ * written without a run, having answered nothing correctly except by luck.
+ *
+ * Requiring a run of `n` costs a guesser about 4ⁿ questions per bonus. The
+ * number below was measured rather than reasoned: sixty seeded sessions of four
+ * hundred random taps each, against the shipped ladder, at every run length.
+ *
+ * | run | furthest a guesser got | where they finished |
+ * |-----|------------------------|---------------------|
+ * | 1   | 35 of 35 (the top)     | 25                  |
+ * | 3   | 22                     | 6                   |
+ * | 4   | 10                     | 3                   |
+ * | 5   | 11                     | 3                   |
+ * | 6   | 8                      | 3                   |
+ * | — the same guesser under the *old* rule, with no bonus at all: 8, and 3.    |
+ *
+ * Six is where a guesser stops being able to tell the difference: their whole
+ * trajectory is the one they had before the speedcuber existed. A child who
+ * actually is quick pays six questions for it once and then keeps it for as
+ * long as they keep being quick, which on a 36-rung ladder costs them about two
+ * answers out of seventeen.
+ *
+ * "Sustained fast-correct evidence" is the founder's phrase for this, and a run
+ * is the smallest honest reading of it. Anything but a quick correct answer — a
+ * miss, or a correct one at ordinary pace — resets the run to zero.
+ */
+const QUICK_RUN_FOR_BONUS = 6
+
+/**
+ * ## How far one correct answer climbs
+ *
+ * In rungs, and never zero. The founder's ruling, in his words:
+ *
+ * > "if it takes a long time to get the right answer then we should tend to
+ * > stay at the same level .. if the person is 100% right but slow, we could
+ * > still slowly move up. But, a speedcuber should move up very fast."
+ *
+ * Three regimes, each relative to the item's own clock (`itemPace`):
+ *
+ *   * **Quick** — under the quick mark. `quickMs / latencyMs` rungs, so a child
+ *     answering twice as fast as the mark takes two rungs at a time, capped at
+ *     the table's own spread — but only once `quickRun` says they have done it
+ *     `QUICK_RUN_FOR_BONUS` times running. A speedcuber does not walk every
+ *     rung; a lucky tap is not a speedcuber.
+ *   * **Expected** — between the quick mark and the tail. Exactly one rung.
+ *     This is the great majority of answers, and it is the pace the table was
+ *     measured at.
+ *   * **Tail** — past the item's p90. `tailMs / latencyMs` rungs: a fraction,
+ *     decaying as the answer gets later, and **positive at every latency**. Ten
+ *     slow-but-right answers still promote; the tenth of ten children is not
+ *     demonstrating what the first is, and they are not stuck either.
+ *
+ * The decay is what the ruling asks for and a step function is not. Holding a
+ * rung — which is what this rule did until the ruling — meant a child who is
+ * correct all afternoon and unhurried never moved, and that child is the one
+ * the product exists for. A flat fraction instead would have said a child at
+ * ten times the expected time is doing the same thing as one at one and a half,
+ * and they are not.
+ *
+ * Two ways to reach a plain one-rung climb by default, and the caller says so
+ * on the console for both: an item whose class is not knowable, and a latency
+ * that is not a measurement. Neither is ever a reason to hold a child down.
+ *
+ * **What a contaminated clock costs.** `judge` documents that some packs time
+ * from when a question was drawn rather than from when it became answerable,
+ * inflating every latency by a second or two. Read against the three regimes,
+ * that inflation can deny a genuinely quick child the speedcuber's rate — the
+ * quick mark of a single-digit fact is around a second, and a second of
+ * contamination is all of it. It cannot demote anybody: the middle regime is
+ * still a whole rung, and the tail is still positive. The cost of a bad clock
+ * is a slower climb, never a fall, and that is the direction it has to fail in.
+ *
+ * A wrong answer never reaches here. The descent is one rung, at any speed.
+ */
+export function climbRungs(input: {
+  /** Width of the widest operand as drawn. 0 when the prompt held no numerals. */
+  readonly digits: number
+  /** `fluencyTarget.p50Ms` from the node, when it declares one. */
+  readonly fluencyP50Ms?: number | undefined
+  readonly latencyMs: number
+  /**
+   * How many quick, correct answers came immediately before this one. Zero
+   * unless the caller is tracking a run, which the ladder is.
+   */
+  readonly quickRun?: number
+}): number {
+  const pace = itemPace(input.digits, input.fluencyP50Ms)
+  if (pace === null) return 1
+  const { latencyMs } = input
+  if (!Number.isFinite(latencyMs) || latencyMs < 0) return 1
+  if (latencyMs > pace.tailMs) return pace.tailMs / latencyMs
+  if (latencyMs >= pace.quickMs) return 1
+  if ((input.quickRun ?? 0) + 1 < QUICK_RUN_FOR_BONUS) return 1
+  return Math.min(CADENCE_SPREAD_NUM / CADENCE_SPREAD_DEN, pace.quickMs / latencyMs)
+}
+
+/** Whether an answer this quick counts toward the run, whatever it is worth. */
+export function isQuick(
+  digits: number,
+  fluencyP50Ms: number | undefined,
+  latencyMs: number,
+): boolean {
+  const pace = itemPace(digits, fluencyP50Ms)
+  if (pace === null) return false
+  if (!Number.isFinite(latencyMs) || latencyMs < 0) return false
+  return latencyMs < pace.quickMs
 }
 
 type Served = {
@@ -467,7 +634,24 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   const ledger = new Map<string, Served>()
   const order: string[] = []
   const practised = new Set<string>()
-  let position = 0
+  /**
+   * Where the child is, in rungs, carried as a real number.
+   *
+   * The rung they are standing on is the whole part of it; the fraction is
+   * credit earned toward the next one. That fraction is the entire mechanism
+   * behind "correct but slow still climbs, slowly" — a tail answer is worth
+   * less than a rung, and enough of them are worth one. Carrying it as one
+   * number rather than as an integer plus a counter means the two directions
+   * cannot disagree: a step down is `− 1` whatever the fraction was, and
+   * `Math.floor(x − 1) === Math.floor(x) − 1` for every x, so a miss always
+   * costs exactly one rung and never one and a bit.
+   */
+  let progress = 0
+  /**
+   * Consecutive quick, correct answers. Reset by anything else — see
+   * `QUICK_RUN_FOR_BONUS` for why a single one earns nothing.
+   */
+  let quickRun = 0
   let sequence = 0
   /** A ladder with one rung answers every difficulty the same. Said once. */
   let toldAboutFlatLadder = false
@@ -489,40 +673,49 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   }
 
   /**
-   * Whether a correct answer was quick enough for *this* item to climb.
+   * How far this correct answer climbs, with the two "we cannot tell" cases
+   * said out loud.
    *
-   * Everything that is not a clear "no" is a yes, and every yes-by-default says
-   * so on the console once per skill. Two ways to reach one:
+   * `climbRungs` already returns a whole rung for both of them — this is where
+   * they become a line on the console rather than a silent default:
    *
    *   * The item's class is not knowable — no numerals in the prompt and no
    *     `fluencyTarget` on the node. A future family will hit this the day it
    *     lands, and it must arrive as a line in the log rather than as a child
-   *     who answers correctly all afternoon and never moves.
-   *   * The latency is not a measurement. `NaN <= anything` is `false`, so a
+   *     whose rate is being guessed at.
+   *   * The latency is not a measurement. Arithmetic on `NaN` is `NaN`, so a
    *     pack reporting a bad clock would otherwise pin a child to the bottom of
    *     the ladder in total silence — the exact shape of this bug, one layer
    *     down.
    */
-  const climbs = (served: Served, latencyMs: number): boolean => {
-    const within = climbWithinMs(served.digits, served.rung.node.fluencyTarget?.p50Ms)
-    if (within === null) {
+  const climbFor = (served: Served, latencyMs: number): number => {
+    const declared = served.rung.node.fluencyTarget?.p50Ms
+    const gained = climbRungs({
+      digits: served.digits,
+      fluencyP50Ms: declared,
+      latencyMs,
+      quickRun,
+    })
+    // Counted after it is spent, so the sixth quick answer in a row is the
+    // first one that pays. A correct answer at ordinary pace ends the run —
+    // being quick six times running is the claim, not being right six times.
+    quickRun = isQuick(served.digits, declared, latencyMs) ? quickRun + 1 : 0
+    if (itemPace(served.digits, declared) === null) {
       sayOnce(
         served.rung.node.id,
         `[packs] ${served.rung.node.id} draws a prompt with no numerals in it and declares no ` +
           `fluencyTarget, so how long it should take is unknown — every correct answer on it ` +
-          `climbs. Give the node a fluencyTarget.p50Ms to pace it.`,
+          `climbs one rung. Give the node a fluencyTarget.p50Ms to pace it.`,
       )
-      return true
-    }
-    if (!Number.isFinite(latencyMs) || latencyMs < 0) {
+    } else if (!Number.isFinite(latencyMs) || latencyMs < 0) {
       sayOnce(
         `latency:${served.rung.node.id}`,
         `[packs] ${served.rung.node.id} was answered with a latency of ${String(latencyMs)}, ` +
-          `which is not a measurement — the answer climbs, and the pack's clock needs fixing.`,
+          `which is not a measurement — the answer climbs one rung, and the pack's clock needs ` +
+          `fixing.`,
       )
-      return true
     }
-    return latencyMs <= within
+    return gained
   }
 
   const rungAt = (index: number): Rung | null => {
@@ -532,7 +725,9 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   }
 
   return {
-    position: () => position,
+    /** The rung being stood on: the whole part of `progress`, never a fraction.
+        A pack asked for a rung index and a half-climbed one is not one. */
+    position: () => Math.floor(progress),
 
     next: ({ packId, skillId, difficulty, maxDifficulty }) => {
       // A pack may name a skill it covers. It is a request, not an instruction:
@@ -546,14 +741,18 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       // not two: a pack that drives the difficulty and then stops driving it
       // resumes from where it left the child, and `judge` keeps climbing and
       // stepping down from there.
-      let index = position
+      let index = Math.floor(progress)
       if (difficulty !== undefined || maxDifficulty !== undefined) {
         const span = Math.max(0, rungs.length - 1)
-        const asked = difficulty === undefined ? position / Math.max(1, span) : difficulty
+        const asked = difficulty === undefined ? index / Math.max(1, span) : difficulty
         const cap = maxDifficulty === undefined ? 1 : maxDifficulty
-        index = Math.round(Math.min(asked, cap) * span)
-        position = Math.max(0, Math.min(span, index))
-        index = position
+        index = Math.max(0, Math.min(span, Math.round(Math.min(asked, cap) * span)))
+        // The rung the pack named, carrying the credit already earned toward
+        // the next one. Overwriting the whole number would let a game that
+        // drives difficulty on every question quietly delete the fraction a
+        // slow-and-correct child had banked, over and over, and that child
+        // would never move — which is the bug this rule was rewritten to end.
+        progress = index + (progress - Math.floor(progress))
       }
 
       const rung = wanted ?? rungAt(index)
@@ -670,17 +869,24 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       if (!served.answered) {
         served.answered = true
         deps.record({ packId, correct: verdict.correct })
-        // The ladder moves on what actually happened. Up when it was right and
-        // not from the slow tail *of this question*, down on any miss — a child
-        // who is guessing does not climb, and a child who is struggling is not
-        // held there. A correct answer past the item's own p90 holds the rung:
-        // it is neither a promotion nor a demotion, and it is never a penalty.
-        if (verdict.correct && climbs(served, latencyMs)) position = position + 1
-        else if (!verdict.correct) position = position - 1
+        // The ladder moves on what actually happened. Up on every correct
+        // answer — by more than a rung when it was quick for this question, by
+        // a fraction of one when it came from the item's slow tail — and down
+        // one rung on any miss. Slow is not wrong: it is the same direction,
+        // taken at the child's own speed. Wrong is the only thing that
+        // descends, which is what stops a guesser.
+        if (verdict.correct) progress = progress + climbFor(served, latencyMs)
+        else {
+          progress = progress - 1
+          // A miss ends the run, however fast it was. Speed on a wrong answer
+          // is not evidence of anything at all — it is what guessing looks
+          // like — and the speedcuber's rate has to be earned again.
+          quickRun = 0
+        }
         // One clamp for both directions, and the floor is written as a floor:
         // no sequence of answers can put a child below the easiest rung the
         // curriculum has, and none can put them past the hardest.
-        position = Math.max(0, Math.min(Math.max(0, rungs.length - 1), position))
+        progress = Math.max(0, Math.min(Math.max(0, rungs.length - 1), progress))
       }
 
       return {
