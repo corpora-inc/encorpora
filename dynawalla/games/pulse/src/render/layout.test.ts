@@ -24,10 +24,12 @@ import {
   type Insets,
   type Rect,
 } from "../../../../packs/shared/game-chrome/index.ts";
-import { buttonRect } from "./chrome.ts";
+import { GESTURE_STRIP, MIN_TOUCH, buttonRect, hitButton } from "./chrome.ts";
 import {
+  GATE_LABEL_MIN,
   comboBox,
   computeLayout,
+  gateFitFor,
   healthBox,
   laneAtPoint,
   multBox,
@@ -160,7 +162,7 @@ function readables(l: Layout): Array<[string, Rect]> {
 /** Pulse's own two buttons, as squares. */
 function ownButtons(l: Layout): Array<[string, Rect]> {
   return [0, 1].map((i) => {
-    const r = buttonRect(i, l.area, l.compact);
+    const r = buttonRect(i, l.area, l.compact, l.h);
     const box: Rect = { x: r.x, y: r.y, w: r.s, h: r.s };
     return [i === 0 ? "pause button" : "mute button", box] as [string, Rect];
   });
@@ -275,7 +277,8 @@ test("the layout follows the insets rather than reading them once", () => {
     "the score must sit lower once there is a notch above it",
   );
   assert.ok(
-    buttonRect(0, upright.area, upright.compact).y < buttonRect(0, flat.area, flat.compact).y,
+    buttonRect(0, upright.area, upright.compact, 844).y <
+      buttonRect(0, flat.area, flat.compact, 844).y,
     "the buttons must sit higher once there is a home indicator below them",
   );
 });
@@ -285,8 +288,163 @@ test("the touch target of pulse's own buttons is the square it draws", () => {
   // cannot leave the tappable squares behind at the old place.
   const l = computeLayout(390, 844, 3, safeRect(390, 844, NOTCHED_PORTRAIT));
   for (const i of [0, 1]) {
-    const r = buttonRect(i, l.area, l.compact);
+    const r = buttonRect(i, l.area, l.compact, 844);
     assert.ok(r.y + r.s <= l.area.y + l.area.h, `button ${i} is in the home indicator`);
     assert.ok(r.x + r.s <= l.area.x + l.area.w, `button ${i} is past the safe edge`);
   }
 });
+
+// ------------------------------------------------------- the answer, readable
+//
+// "Cant see the answers (when you are tasked with performing arithmetic), too
+// blurry ... the answers should be very clear".
+//
+// Two separate defects wore that one sentence. The number on a gate candidate
+// was derived from the orb — `gateR * 0.62 * 0.84` — which is 15.1 px on a
+// 390 px phone and 15.1 px on a 320 px one; and `minGapDenom` was hardcoded to
+// 12 at its only call site, so two candidates a twelfth of the bar apart were
+// 34.0 px apart on that same phone while being 57.8 px across. They physically
+// overlapped, by 24 px, and the measured minimum gap over 5000 real gates was
+// exactly 1/12 — so the worst case was the ordinary case.
+
+/**
+ * Where a child is actually asked to read a moving number, including a device
+ * whose bottom inset is ZERO while its gesture strip is not. Kept separate from
+ * `VIEWPORTS` above deliberately: that list is about the host's chrome, this
+ * one is about hands and eyes.
+ */
+const READING_VIEWPORTS: Array<[number, number, Insets, string]> = [
+  [320, 568, NO_INSETS, "320×568 small phone"],
+  [390, 844, NOTCHED_PORTRAIT, "390×844 notched phone"],
+  [412, 915, NO_INSETS, "412×915 android, no reported bottom inset"],
+  [412, 915, { top: 24, right: 0, bottom: 24, left: 0 }, "412×915 android, gesture insets"],
+  [768, 1024, NO_INSETS, "768×1024 tablet"],
+  [1024, 768, NO_INSETS, "1024×768 tablet landscape"],
+  [844, 390, NOTCHED_LANDSCAPE, "844×390 phone landscape"],
+];
+
+for (const [w, h, insets, name] of READING_VIEWPORTS) {
+  test(`a gate candidate's number is big enough to read at ${name}`, () => {
+    for (const lanes of [1, 2, 3]) {
+      const l = computeLayout(w, h, lanes, safeRect(w, h, insets));
+      assert.ok(
+        l.gateLabelSize >= GATE_LABEL_MIN,
+        `${name}/${lanes} lanes: the answer is drawn at ${l.gateLabelSize.toFixed(1)} px, ` +
+          `below the ${GATE_LABEL_MIN} px floor`,
+      );
+      // And the ring it lives in has to hold it, or the fit is a lie that the
+      // renderer silently shrinks its way out of.
+      assert.ok(
+        l.gateR * 2 >= l.gateLabelSize * 2.36,
+        `${name}/${lanes} lanes: a stacked fraction of ${l.gateLabelSize.toFixed(1)} px needs ` +
+          `${(l.gateLabelSize * 2.36).toFixed(1)} px and the orb is ${(l.gateR * 2).toFixed(1)}`,
+      );
+    }
+  });
+
+  test(`two gate candidates cannot overlap at ${name}`, () => {
+    for (const lanes of [1, 2, 3]) {
+      const l = computeLayout(w, h, lanes, safeRect(w, h, insets));
+      const fit = gateFitFor(l);
+      const diameter = l.gateR * 2;
+
+      // The positional path: the closest two candidates the gate will ever
+      // admit are exactly `minGapDenom` apart.
+      const closest = l.runLen / fit.minGapDenom;
+      assert.ok(
+        closest >= diameter,
+        `${name}/${lanes} lanes: candidates 1/${fit.minGapDenom} of a bar apart are ` +
+          `${closest.toFixed(1)} px apart and ${diameter.toFixed(1)} px across — they overlap ` +
+          `by ${(diameter - closest).toFixed(1)} px`,
+      );
+
+      // The flat fallback, which spaces `n` candidates at 1/(n+1) of the bar
+      // and is reached in ordinary play whenever the host serves column
+      // arithmetic. It obeys the same geometry or it is a second way to ship
+      // the same defect.
+      const flat = l.runLen / (fit.maxCandidates + 1);
+      assert.ok(
+        flat >= diameter,
+        `${name}/${lanes} lanes: ${fit.maxCandidates} evenly spaced candidates sit ` +
+          `${flat.toFixed(1)} px apart and are ${diameter.toFixed(1)} px across`,
+      );
+
+      assert.ok(fit.maxCandidates >= 2, "a gate is never a single unmissable target");
+      assert.ok(fit.minGapDenom >= 2);
+    }
+  });
+}
+
+// ------------------------------------------------- the two controls, tappable
+//
+// "On Android, the pause button and the mute button are at the bottom and
+// actually conflict with the safe area and can't be touched."
+//
+// They were 30 px squares sitting 12 px above the bottom of the safe rect. Two
+// things were wrong and only one of them is about the safe rect: 30 px is under
+// the 44 px minimum touch target, and the safe rect does not describe Android's
+// gesture strip at all — plenty of devices report `safe-area-inset-bottom: 0`
+// and still swallow a tap in the bottom 24 px. So the zero-inset Android case
+// is in this list on purpose; it is the case that broke.
+
+for (const [w, h, insets, name] of READING_VIEWPORTS) {
+  test(`pause and mute can be touched at ${name}`, () => {
+    const area = safeRect(w, h, insets);
+    const l = computeLayout(w, h, 3, area);
+    for (const i of [0, 1]) {
+      const which = i === 0 ? "pause" : "mute";
+      const r = buttonRect(i, l.area, l.compact, h);
+
+      assert.ok(
+        r.s >= MIN_TOUCH,
+        `${name}: ${which} is ${r.s} px; ${MIN_TOUCH} px is the minimum touch target`,
+      );
+
+      // Inside the safe rect — the notch, the home indicator, the rounded
+      // corners.
+      assert.ok(
+        r.x >= area.x - 0.5 &&
+          r.y >= area.y - 0.5 &&
+          r.x + r.s <= area.x + area.w + 0.5 &&
+          r.y + r.s <= area.y + area.h + 0.5,
+        `${name}: ${which} at x ${r.x.toFixed(0)}..${(r.x + r.s).toFixed(0)}, ` +
+          `y ${r.y.toFixed(0)}..${(r.y + r.s).toFixed(0)} is outside the safe rect ` +
+          `${span(area)}`,
+      );
+
+      // …AND clear of the system's gesture strip, measured from the raw canvas,
+      // which is the part the safe rect cannot tell us about.
+      assert.ok(
+        r.y + r.s <= h - GESTURE_STRIP,
+        `${name}: ${which} reaches y ${(r.y + r.s).toFixed(0)} of ${h}, inside the ` +
+          `${GESTURE_STRIP} px the system swipes in`,
+      );
+
+      // The hit test agrees with the square that was drawn, at its centre and
+      // at every corner.
+      const cx = r.x + r.s / 2;
+      const cy = r.y + r.s / 2;
+      assert.equal(hitButton(cx, cy, l.area, l.compact, h), which, `${name}: ${which} centre`);
+      for (const [dx, dy] of [
+        [1, 1],
+        [r.s - 1, 1],
+        [1, r.s - 1],
+        [r.s - 1, r.s - 1],
+      ]) {
+        assert.equal(
+          hitButton(r.x + dx!, r.y + dy!, l.area, l.compact, h),
+          which,
+          `${name}: ${which} corner ${dx},${dy}`,
+        );
+      }
+    }
+
+    // And they are two controls, not one square drawn twice.
+    const a = buttonRect(0, l.area, l.compact, h);
+    const b = buttonRect(1, l.area, l.compact, h);
+    assert.ok(
+      a.x >= b.x + b.s || b.x >= a.x + a.s,
+      `${name}: pause and mute overlap each other`,
+    );
+  });
+}

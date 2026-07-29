@@ -165,3 +165,68 @@ test("the fraction stub host also always gives a real choice", () => {
     assert.equal(g.candidates.filter((c) => c.correct).length, 1, `${g.prompt} correct-count`);
   }
 });
+
+// --------------------------------------------------- the gap, in real pixels
+//
+// The unit tests above are about values. This one is about the screen, because
+// `minGapDenom` is a display constraint and a display constraint asserted in
+// bar-fractions is not asserted at all: the old call site passed the constant
+// 12 at every viewport and every viewport overlapped.
+
+test("no two candidates of a real gate overlap on a real screen", async () => {
+  const { computeLayout, gateFitFor } = await import("../render/layout.ts");
+  const { NO_INSETS, safeRect } = await import(
+    "../../../../packs/shared/game-chrome/index.ts"
+  );
+
+  const viewports: Array<[number, number, string]> = [
+    [320, 568, "320×568"],
+    [390, 844, "390×844"],
+    [412, 915, "412×915"],
+    [768, 1024, "768×1024"],
+    [1024, 768, "1024×768"],
+    [844, 390, "844×390"],
+  ];
+
+  for (const [w, h, name] of viewports) {
+    for (const lanes of [1, 2, 3]) {
+      const l = computeLayout(w, h, lanes, safeRect(w, h, NO_INSETS));
+      const fit = gateFitFor(l);
+      const diameter = l.gateR * 2;
+      const host = createStubHost({ seed: `overlap-${name}-${lanes}` });
+      const r = rng();
+      let worstPx = Infinity;
+      let worstAt = "";
+      let sawFour = 0;
+
+      for (let i = 0; i < 1200; i++) {
+        // Sweep the whole difficulty ramp: the crowded gates live at the top of
+        // it, where the denominators get big.
+        host.setFloor((i % 100) / 100);
+        const g = buildGate(host.next(), r, fit);
+        if (g.candidates.length >= 3) sawFour++;
+        for (let k = 1; k < g.candidates.length; k++) {
+          const px = (g.candidates[k]!.pos - g.candidates[k - 1]!.pos) * l.runLen;
+          if (px < worstPx) {
+            worstPx = px;
+            worstAt = `${g.prompt} → ${g.candidates.map((c) => c.label).join(" ")}`;
+          }
+        }
+        assert.ok(
+          g.candidates.length <= fit.maxCandidates,
+          `${name}: ${g.candidates.length} candidates where ${fit.maxCandidates} fit`,
+        );
+      }
+
+      assert.ok(
+        worstPx >= diameter,
+        `${name}/${lanes} lanes: the closest two candidates were ${worstPx.toFixed(1)} px ` +
+          `apart and are ${diameter.toFixed(1)} px across — overlapping by ` +
+          `${(diameter - worstPx).toFixed(1)} px. [${worstAt}]`,
+      );
+      // Guards the shape of the sweep: a fit so tight that every gate collapsed
+      // to two candidates would pass the line above and mean nothing.
+      assert.ok(sawFour > 0 || fit.maxCandidates === 2, `${name}: swept only pairs`);
+    }
+  }
+});

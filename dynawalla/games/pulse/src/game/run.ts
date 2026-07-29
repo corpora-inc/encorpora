@@ -5,12 +5,18 @@
  * every visible consequence is announced through `Fx` so the renderer and the juice
  * layer stay replaceable and this file stays testable.
  *
- * Two clocks, and the distinction matters:
- *   - `engine.now()` is when a sound will be *scheduled*.
- *   - `heard()` is `now() - outputLatency`: what the player is hearing this instant.
- * Notes are drawn against `heard()` and input is timestamped against `heard()`, so
- * the picture, the sound and the judgment agree even on a laptop with 40 ms of
- * Bluetooth latency.
+ * ONE clock, read three ways, and the distinction matters:
+ *   - `engine.now()` is the transport — when a sound will be *scheduled*.
+ *   - `heard()` is `now() - outputLatency`: what the player is hearing this instant,
+ *     and the only thing a judgment is ever measured against.
+ *   - `shown()` is `heard() + visualLead`: what the frame being drawn will be
+ *     showing by the time it reaches the glass.
+ *
+ * All three come from `audio/clock.ts`, which is slaved to `AudioContext.currentTime`
+ * and interpolated by `performance.now()`. Audio is the master; the picture is derived
+ * from it and compensated for the display; nothing anywhere runs on a second clock.
+ * That is what makes the picture, the sound and the judgment agree on a laptop with
+ * 40 ms of Bluetooth latency AND on a Chromebook with a 20 ms output callback.
  */
 
 import type { Host } from "../contract.ts";
@@ -28,7 +34,7 @@ import {
   type LayerId,
 } from "../audio/music.ts";
 import { barNotes, BEATS_PER_BAR, laneVoices, type ChartNote } from "./chart.ts";
-import { buildGate, DEFAULT_FIT, type BuiltGate } from "./gate.ts";
+import { buildGate, type BuiltGate, type GateFit } from "./gate.ts";
 import { classify, multiplierFor, NoteQueue, WINDOWS, type Judgment, type LiveNote } from "./judge.ts";
 import { gatesToClear, stageAt, type StageSpec } from "./stages.ts";
 import { makeRng, hashSeed, type Rng } from "../rng.ts";
@@ -77,6 +83,40 @@ export type RunOptions = {
  * tempo, which is the entire point.
  */
 export const GATE_READ_SEC = 6;
+
+/**
+ * How many numbers ride toward the line at once, by stage.
+ *
+ * The first gate a child ever saw carried FOUR candidates — one right, three
+ * wrong — at twenty seconds in, because the only call site passed
+ * `maxCandidates: 4` and nothing about it moved. That is the ARENA defect in
+ * another costume: the opening frame was already carrying the twentieth
+ * minute's density. "starts too hard too ... it should start easy (and more
+ * sparse maybe with wrong answers)".
+ *
+ * So the count is part of the escalation, like the subdivision and the tempo
+ * are. One wrong turning to begin with, and because a candidate's POSITION is
+ * its value, one wrong turning is already a real question: the child still has
+ * to strike at the right moment in the bar, not pick the surviving option.
+ * Three by the time they are on triplets, four once they are past sixteenths.
+ *
+ * This is a ceiling, not a quota. The viewport ANDs its own ceiling on top —
+ * see `gateFitFor` — and a small phone may hold the count down further.
+ */
+export function candidatesForStage(stageIndex: number): number {
+  if (stageIndex <= 1) return 2;
+  if (stageIndex <= 3) return 3;
+  return 4;
+}
+
+/**
+ * What to assume before anyone has said how big the screen is.
+ *
+ * Deliberately the smallest phone's answer rather than `DEFAULT_FIT`: a run
+ * whose first gate is built before `setGateFit` arrives should serve something
+ * legible everywhere, not something legible only on a tablet.
+ */
+const SAFE_FIT: GateFit = { maxCandidates: 2, minGapDenom: 3 };
 
 const HEALTH = {
   miss: -0.05,
@@ -129,6 +169,12 @@ export class Run {
   layers = new Set<LayerId>(["bass"]);
   gate: ActiveGate | null = null;
   gateStreak = 0;
+  /**
+   * What the SCREEN can hold. Pushed in by whoever owns the layout — see
+   * `setGateFit` — because the gap between two candidates is a number of pixels
+   * and this file has never seen a pixel.
+   */
+  private viewportFit: GateFit = SAFE_FIT;
   overdriveUntilBar = -1;
   bar = 0;
   running = false;
@@ -172,13 +218,40 @@ export class Run {
     return this.timeline.spbAtBeat(this.timeline.beatOfBar(this.bar)) * BEATS_PER_BAR;
   }
 
+  /**
+   * How far ahead of `heard()` the picture is drawn, in seconds.
+   *
+   * A frame is not seen when it is drawn. `requestAnimationFrame` runs at the
+   * start of a frame and what it paints reaches the glass a frame later, so a
+   * playfield positioned at "the music as it sounds right now" is on screen
+   * showing where the music WAS — by 16 ms on a display keeping 60 Hz and by
+   * twice that on one that is not. Audio latency was compensated and this was
+   * not, which is why the two agreed on a fast machine and visibly did not on a
+   * slower one.
+   *
+   * Owned by whoever drives the frame loop, because only it knows the frame
+   * period and how long ago the vsync was. Zero in a headless run, which is
+   * correct: nothing is being presented.
+   */
+  visualLeadSec = 0;
+
   /** Audio time of the sound reaching the player's ears right now. */
   heard(): number {
     return this.engine.now() - this.engine.latency();
   }
 
+  /**
+   * Audio time the frame being drawn RIGHT NOW will represent when it is seen.
+   *
+   * The picture is derived from the audio clock and pushed forward by the
+   * display's own latency — never the reverse, and never a second clock.
+   */
+  shown(): number {
+    return this.heard() + this.visualLeadSec;
+  }
+
   nowBeat(): number {
-    return this.timeline.beatAt(this.heard());
+    return this.timeline.beatAt(this.shown());
   }
 
   /**
@@ -340,7 +413,7 @@ export class Run {
     }
 
     const q = this.host.next();
-    const built = buildGate(q, this.rng, { ...DEFAULT_FIT, maxCandidates: 4 });
+    const built = buildGate(q, this.rng, this.gateFit());
     this.gatesSeen++;
     const beat0 = this.timeline.beatOfBar(bar);
     for (const c of built.candidates) {
@@ -362,6 +435,25 @@ export class Run {
       resolved: false,
     };
     this.fx.gateOpen(built);
+  }
+
+  /**
+   * Tell the run what the screen can hold. Call it on mount and on every
+   * resize; a rotation changes both numbers.
+   */
+  setGateFit(fit: GateFit): void {
+    this.viewportFit = fit;
+  }
+
+  /** The screen's ceiling and the stage's ceiling, whichever binds harder. */
+  gateFit(): GateFit {
+    return {
+      minGapDenom: this.viewportFit.minGapDenom,
+      maxCandidates: Math.max(
+        2,
+        Math.min(this.viewportFit.maxCandidates, candidatesForStage(this.stageIndex)),
+      ),
+    };
   }
 
   private setStage(index: number, atBeat: number): void {
@@ -406,9 +498,19 @@ export class Run {
     else this.onHit(note, judgment, delta);
   }
 
+  /**
+   * A tap's moment, in transport time.
+   *
+   * This used to derive its own audio/`performance.now()` offset on the spot,
+   * from a raw `currentTime` read — a second, independent, quantised estimate
+   * of the same thing the picture was using, carrying up to a full output
+   * callback of random error that the picture did not carry. One model now
+   * answers both. See `audio/clock.ts`.
+   */
   private perfToHeard(perfMs: number): number {
-    const offset = this.engine.now() - performance.now() / 1000;
-    return perfMs / 1000 + offset - this.engine.latency() - this.calibrationMs / 1000;
+    return (
+      this.engine.timeAtPerf(perfMs / 1000) - this.engine.latency() - this.calibrationMs / 1000
+    );
   }
 
   private onHit(note: LiveNote, judgment: Judgment, delta: number): void {

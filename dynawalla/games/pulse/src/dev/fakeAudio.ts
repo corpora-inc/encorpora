@@ -100,8 +100,45 @@ class FakeBuffer {
 }
 
 export class FakeAudioContext {
-  /** The one clock. Tests move it; the game only ever reads it. */
-  currentTime = 0
+  /**
+   * The TRUE audio position — what the hardware is actually playing. Tests move
+   * this; the game can never see it, exactly like on a device.
+   */
+  private trueTime = 0
+
+  /**
+   * Size of the output callback, in seconds. `currentTime` advances in steps of
+   * it and holds still in between, which is what a real `AudioContext` does:
+   * the value published to the main thread is the timestamp of the last render
+   * block the audio thread finished.
+   *
+   * 0 means "a perfect, continuous clock", which is what the older tests want
+   * and what no real device has. 0.02 is a Chromebook-shaped 960-frame callback
+   * at 48 kHz; 0.00267 is the 128-frame quantum a healthy desktop manages.
+   */
+  quantumSec = 0
+
+  /** What the GAME sees. Rounded down to the last completed block, always. */
+  get currentTime(): number {
+    if (this.quantumSec <= 0) return this.trueTime
+    return Math.floor(this.trueTime / this.quantumSec + 1e-9) * this.quantumSec
+  }
+
+  /** Assignment sets the true position — `ctx.currentTime += dt` still works. */
+  set currentTime(v: number) {
+    this.trueTime = v
+  }
+
+  /** The true position, for a test to assert against. Never visible to the game. */
+  get truthTime(): number {
+    return this.trueTime
+  }
+
+  /** Move the true position forward without a read-modify-write of a rounded value. */
+  advance(seconds: number): void {
+    this.trueTime += seconds
+  }
+
   readonly sampleRate = 48000
   state: "running" | "suspended" | "closed" = "running"
   readonly baseLatency = 0.008
@@ -147,6 +184,32 @@ export class FakeAudioContext {
   close(): Promise<void> {
     this.state = "closed"
     return Promise.resolve()
+  }
+}
+
+/**
+ * A hand-driven `performance.now()`.
+ *
+ * The transport is a model of `audioTime = perfTime + offset` (see
+ * `audio/clock.ts`), so a test that moves the audio clock and leaves
+ * `performance.now()` running at real wall-clock speed is testing two
+ * unrelated timelines. Both have to be driven together, which means owning
+ * this one too.
+ *
+ * Returns a handle; the global is replaced for the rest of the process, so this
+ * belongs in a test file that does nothing else.
+ */
+export function installFakeNow(): { set(ms: number): void; advance(ms: number): void } {
+  let ms = 0
+  const g = globalThis as unknown as { performance: { now(): number } }
+  g.performance = { now: () => ms }
+  return {
+    set(v) {
+      ms = v
+    },
+    advance(v) {
+      ms += v
+    },
   }
 }
 

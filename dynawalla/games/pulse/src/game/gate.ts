@@ -45,6 +45,13 @@ export type BuiltGate = {
  */
 export type GateFit = { maxCandidates: number; minGapDenom: number };
 
+/**
+ * The fallback for a caller that has no viewport to measure — a unit test, a
+ * tool. NOT what the game plays with: `Run` is handed a fit computed from the
+ * live layout by `render/layout.ts`'s `gateFitFor`, because a twelfth of a bar
+ * is 33 px on a 390 px phone and a candidate is 74 px across, and this constant
+ * arriving unchanged at the only call site is exactly the bug that shipped.
+ */
 export const DEFAULT_FIT: GateFit = { maxCandidates: 4, minGapDenom: 12 };
 
 function farEnough(v: Rat, kept: Rat[], minGap: Rat): boolean {
