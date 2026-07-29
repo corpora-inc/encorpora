@@ -12,20 +12,24 @@ import assert from "node:assert/strict"
 import {
   cadenceFor,
   choicesFor,
+  binaryOperator,
   climbRungs,
   climbWithinMs,
   createItemService,
   isQuick,
-  isSubtraction,
   itemPace,
   ladder,
+  normalizeMinus,
 } from "./items.ts"
+import type { Rung } from "./items.ts"
 import type { PromptSlot } from "./curriculum.ts"
 import {
   activeNodes,
   allNodes,
   familyById,
   FORM_FREE_ENTRY,
+  promptOperator,
+  promptRegistry,
   SLOT_BOTTOM,
   SLOT_TOP,
 } from "./curriculum.ts"
@@ -268,10 +272,21 @@ test("a difficulty request selects the rung, and the item says which rung it cam
 test("a ceiling is honoured, and an unsatisfiable request clamps to the nearest rung that exists", () => {
   const service = createItemService({ profileId: "p1", record: noRecord })
 
-  for (const asked of [0.9, 1]) {
-    const capped = service.next({ packId: "dynawalla.siege", difficulty: asked, maxDifficulty: 0.2 })
-    const where = capped?.difficulty ?? -1
-    assert.ok(where >= 0 && where <= 0.2, `the ceiling 0.2 served ${String(where)}`)
+  // Every ceiling from 0 to 1 in hundredths, not two of them at one value. The
+  // ceiling used to round rather than floor, so whether it was honoured depended
+  // on where `cap × span` fell — 0.2 on a 43-rung ladder rounded down and passed,
+  // and the same code on a 59-rung ladder served 0.203. A cap is honoured at every
+  // cap or the word means nothing.
+  for (let hundredths = 0; hundredths <= 100; hundredths++) {
+    const cap = hundredths / 100
+    for (const asked of [0, 0.5, 0.9, 1]) {
+      const capped = service.next({ packId: "dynawalla.siege", difficulty: asked, maxDifficulty: cap })
+      const where = capped?.difficulty ?? -1
+      assert.ok(
+        where >= 0 && where <= cap,
+        `the ceiling ${String(cap)} served ${String(where)} for a request of ${String(asked)}`,
+      )
+    }
   }
 
   // The curriculum has no rung below its easiest, so a request under the floor
@@ -341,10 +356,11 @@ test("every rung on the ladder draws a question with numbers in it", () => {
       assert.match(operand, /^-?\d/, `${item.skillId} drew the operand "${operand}"`)
     }
     // The prompt a child reads, and a screen reader speaks. `" + "` is what
-    // this used to be.
+    // this used to be. All four glyphs, because `[+−]` was itself a statement
+    // that this product only adds and subtracts.
     assert.match(
       item.prompt,
-      /^-?\d[\d ,.]*\s[+−]\s-?\d/u,
+      /^-?\d[\d ,.]*\s[+−×÷]\s-?\d/u,
       `${item.skillId} drew the prompt "${item.prompt}"`,
     )
     assert.ok(item.prompt.includes(item.operands[0] ?? "!"))
@@ -352,41 +368,305 @@ test("every rung on the ladder draws a question with numbers in it", () => {
     assert.equal(service.reveal(item.id).length > 0, true, `${item.skillId} has no answer`)
   }
 
-  // And the operator agrees with the skill, across every family on the ladder.
-  // Two active families both define a `PROMPT_KEY_SUB`; comparing against one
-  // family's constant is a comparison that silently fails for the other, which
-  // is how a subtraction came to be drawn with a plus sign.
+  // And the operator agrees with **what the template declares**, across every
+  // family on the ladder.
+  //
+  // This assertion used to read `item.skillId.includes("subtract") ? "-" : "+"`,
+  // and that is the same guess the renderer was making, written down a second
+  // time. It passed on `dw.mul.facts.tables-to-twelve` — a row whose id contains
+  // no "subtract" — by asserting the multiplication was drawn with a plus sign.
+  // A test that agrees with the defect is worse than no test, because it is
+  // counted as coverage.
   assert.ok(families.size >= 1)
   for (let i = 0; i < rungs.length; i++) {
     const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
     const item = service.next({ packId: "dynawalla.fuse", difficulty: at })
     assert.ok(item)
-    const subtracting = item.skillId.includes("subtract")
-    if (subtracting) {
-      assert.equal(item.operator, "-", `${item.skillId} was drawn as an addition`)
-      assert.ok(item.prompt.includes("−"), `${item.skillId} has no minus sign`)
-    } else {
-      assert.equal(item.operator, "+", `${item.skillId} was drawn as a subtraction`)
-      assert.ok(item.prompt.includes("+"), `${item.skillId} has no plus sign`)
+    const rung = rungs[i]
+    assert.ok(rung)
+    const declared = declaredOperatorsOf(rung)
+    assert.equal(
+      declared.size,
+      1,
+      `${item.skillId} L${String(rung.level)} emits templates with ${String(declared.size)} different ` +
+        `operators (${[...declared].join(", ")}) — a rung whose question changes shape cannot be checked here`,
+    )
+    const glyph = [...declared][0] as string
+    assert.ok(
+      item.prompt.includes(` ${glyph} `),
+      `${item.skillId} declares ${glyph} and drew "${item.prompt}"`,
+    )
+    assert.equal(
+      item.operator,
+      glyph === "−" ? "-" : glyph,
+      `${item.skillId} declares ${glyph} and reported operator "${String(item.operator)}"`,
+    )
+  }
+})
+
+/**
+ * The operator glyphs a rung's own templates declare, read off the curriculum.
+ *
+ * The generator is run rather than the key guessed: `gen.number.compare-order`
+ * emits two templates from one level, and which one a seed draws is not something
+ * a caller can know without drawing it.
+ */
+function declaredOperatorsOf(rung: Rung): ReadonlySet<string> {
+  const glyphs = new Set<string>()
+  for (let seed = 1; seed <= 20; seed++) {
+    const exercise = rung.family.generate({
+      skillId: rung.node.id,
+      level: rung.level,
+      seed,
+      params: rung.params,
+      forms: rung.node.generator.forms,
+    })
+    const operator = promptOperator(String(exercise.prompt.key))
+    assert.ok(operator !== null, `${rung.node.id} emits ${exercise.prompt.key}, which nothing declares`)
+    glyphs.add(operator)
+  }
+  return glyphs
+}
+
+test("binaryOperator is a table read with no fallback, and the table is the curriculum's", () => {
+  // The four glyphs, and the two spellings each one has: `glyph` is typography a
+  // child reads and `protocol` is what `Item.operator` is typed as. The minus is
+  // the pair that differ, and it is the reason this is a map and not a cast.
+  assert.deepEqual(binaryOperator("dw.prompt.column-op.add"), { glyph: "+", protocol: "+" })
+  assert.deepEqual(binaryOperator("dw.prompt.number-facts.sub"), { glyph: "−", protocol: "-" })
+  assert.deepEqual(binaryOperator("dw.prompt.times-table.mul"), { glyph: "×", protocol: "×" })
+  assert.deepEqual(binaryOperator("dw.prompt.long-div.quotient"), { glyph: "÷", protocol: "÷" })
+
+  // A hyphen is not a minus sign. Written out as a code point so that a copy-paste
+  // of the wrong character into `OPERATOR_GLYPH` fails here.
+  assert.equal(binaryOperator("dw.prompt.column-op.sub")?.glyph, "−")
+  assert.equal(binaryOperator("dw.prompt.times-table.mul")?.glyph, "×")
+  assert.equal(binaryOperator("dw.prompt.times-table.div")?.glyph, "÷")
+
+  // No fallback, in either direction. An unregistered key and a template that is
+  // not a binary operation both return null — never a plus sign, which is the
+  // whole defect: the old rule answered "+" to every question it did not
+  // recognise, including questions that had no operator in them at all.
+  assert.equal(binaryOperator("dw.prompt.nothing.at-all"), null)
+  assert.equal(binaryOperator("dw.prompt.place-value.digit-value"), null)
+  assert.equal(binaryOperator("dw.prompt.compare-order.greater"), null)
+  assert.equal(binaryOperator(""), null)
+
+  // And it is the curriculum's table rather than a second copy of it, over the
+  // whole registry rather than the four lines above — so a template added
+  // tomorrow is covered by this existing, not by somebody remembering to edit it.
+  let binary = 0
+  for (const entry of promptRegistry) {
+    const declared = promptOperator(String(entry.id))
+    const drawn = binaryOperator(String(entry.id))
+    if (declared === "none") {
+      assert.equal(drawn, null, `${entry.id} is not a binary operation and this file drew one`)
+      continue
+    }
+    binary += 1
+    assert.equal(drawn?.glyph, declared, `${entry.id} declares ${String(declared)} and this file draws ${drawn?.glyph}`)
+    // And the protocol spelling, which is the half of the pair that is *not* the
+    // identity: `Item.operator` types the minus as an ASCII hyphen and the other
+    // three as their typographic glyphs. Asserted here so that a fifth operator
+    // added to `PromptOperator` cannot reach the wire mistyped.
+    assert.equal(
+      drawn?.protocol,
+      declared === "−" ? "-" : declared,
+      `${entry.id} declares ${String(declared)} and reports operator "${String(drawn?.protocol)}"`,
+    )
+  }
+  assert.ok(binary >= 20, `only ${String(binary)} binary templates checked — the registry shrank`)
+})
+
+test("a multiplication is drawn as a multiplication, and a division as a division", () => {
+  // The regression, stated as the thing a child would have seen.
+  //
+  // Before the operator was read off the template that declares it,
+  // `dw.mul.facts.tables-to-twelve` reached a child as **`5 + 7`, with 35 as the
+  // answer they had to give**, and `dw.div.facts.division-facts` as `12 + 3`
+  // wanting 4. Both cards read perfectly, both are answerable, and both mark a
+  // correct child wrong — which is why no blank-screen check and no reviewer
+  // caught them.
+  //
+  // Driven off `ladder([node])` and an explicit rung list so that it holds whether
+  // or not these rows are active: the day somebody demotes one, this must still
+  // fail rather than quietly stop testing anything.
+  const cases: readonly { id: string; glyph: string; operator: string }[] = [
+    { id: "dw.mul.facts.tables-to-twelve", glyph: "×", operator: "×" },
+    { id: "dw.mul.multidigit.long-multiplication", glyph: "×", operator: "×" },
+    { id: "dw.div.facts.division-facts", glyph: "÷", operator: "÷" },
+    { id: "dw.div.whole.divide-exact", glyph: "÷", operator: "÷" },
+    { id: "dw.add.facts.subtract-within-ten", glyph: "−", operator: "-" },
+    { id: "dw.add.column.add-no-regroup", glyph: "+", operator: "+" },
+  ]
+
+  for (const expected of cases) {
+    const node = allNodes.find((candidate) => String(candidate.id) === expected.id)
+    assert.ok(node, `${expected.id} is gone from the graph`)
+    const rungs = ladder([node])
+    assert.ok(rungs.length > 0, `${expected.id} generates nothing`)
+    const service = createItemService({ profileId: "p-operator", record: noRecord, rungs })
+    for (let i = 0; i < 6; i++) {
+      const item = service.next({ packId: "dynawalla.fuse" })
+      assert.ok(item, `${expected.id} served nothing`)
+      assert.equal(item.operator, expected.operator, `${expected.id} drew "${item.prompt}"`)
+      assert.ok(
+        item.prompt.includes(` ${expected.glyph} `),
+        `${expected.id} drew "${item.prompt}" and not a ${expected.glyph}`,
+      )
+      // The plus sign is the specific wrong answer, so it is named.
+      if (expected.glyph !== "+") {
+        assert.ok(!item.prompt.includes("+"), `${expected.id} drew "${item.prompt}" with a plus sign in it`)
+      }
+      // And the question the string states is the question the answer answers.
+      const [left = "", right = ""] = item.operands
+      const answer = service.reveal(item.id)
+      const a = BigInt(left.replace(/[^-0-9]/gu, ""))
+      const bb = BigInt(right.replace(/[^-0-9]/gu, ""))
+      const want =
+        expected.glyph === "+" ? a + bb : expected.glyph === "−" ? a - bb : expected.glyph === "×" ? a * bb : a / bb
+      assert.equal(
+        answer,
+        want.toString(),
+        `${expected.id} drew "${item.prompt}" and wants ${answer}, which is not what that string asks`,
+      )
     }
   }
 })
 
-test("isSubtraction reads every active family's key, not one family's constant", () => {
-  // The concrete regression: `gen.arith.number-facts` names its subtraction
-  // prompt `dw.prompt.number-facts.sub`, and this file used to compare against
-  // `dw.prompt.column-op.sub` alone.
-  assert.equal(isSubtraction("dw.prompt.column-op.sub"), true)
-  assert.equal(isSubtraction("dw.prompt.number-facts.sub"), true)
-  assert.equal(isSubtraction("dw.prompt.column-op.add"), false)
-  assert.equal(isSubtraction("dw.prompt.number-facts.add"), false)
-
-  // Held to the convention rather than to a list, so the family after next is
-  // covered by existing rather than by somebody remembering to edit this.
-  for (const rung of ladder()) {
-    const key = String(rung.node.generator.family)
-    assert.ok(key.length > 0)
+test("a template that is not a binary operation is refused, loudly, rather than drawn as a sum", () => {
+  // `dw.ns.place.digit-value` names a place with a `term` slot, and the renderer
+  // put a plus sign between a number and that term's loc key: a child would have
+  // read **`295 + dw.term.place.hundreds`** and been asked for 200. There is no
+  // operator to draw there at all, and `promptOperator` says so by declaring the
+  // template `none` — so nothing is served and the console says which row and why.
+  const errors: string[] = []
+  const original = console.error
+  console.error = (...args: unknown[]) => {
+    errors.push(args.map((arg) => String(arg)).join(" "))
   }
+  try {
+    for (const id of ["dw.ns.place.digit-value", "dw.ns.compare.whole-numbers"]) {
+      const node = allNodes.find((candidate) => String(candidate.id) === id)
+      assert.ok(node, `${id} is gone from the graph`)
+      const rungs = ladder([node])
+      assert.ok(rungs.length > 0)
+      const service = createItemService({ profileId: "p-none", record: noRecord, rungs })
+      assert.equal(service.next({ packId: "dynawalla.fuse" }), null, `${id} was served as a binary operation`)
+    }
+  } finally {
+    console.error = original
+  }
+  assert.equal(errors.length, 2, `expected one refusal per row, got ${String(errors.length)}`)
+  for (const message of errors) {
+    assert.match(message, /does not declare as a binary operation/u, message)
+  }
+})
+
+test("an answer this file cannot write as text is refused rather than served unanswerable", () => {
+  // `dw.div.whole.quotient-and-remainder` answers `54 1/9`, and `answerText`
+  // returns null for a fraction — so `reveal` was an empty string, `choicesFor`
+  // returned nothing, and `judge` scored every response wrong. A complete-looking
+  // card nobody can pass.
+  const node = allNodes.find((candidate) => String(candidate.id) === "dw.div.whole.quotient-and-remainder")
+  assert.ok(node)
+  const rungs = ladder([node])
+  assert.ok(rungs.length > 0)
+  const errors: string[] = []
+  const original = console.error
+  console.error = (...args: unknown[]) => {
+    errors.push(args.map((arg) => String(arg)).join(" "))
+  }
+  try {
+    const service = createItemService({ profileId: "p-frac", record: noRecord, rungs })
+    assert.equal(service.next({ packId: "dynawalla.fuse" }), null)
+  } finally {
+    console.error = original
+  }
+  assert.equal(errors.length, 1)
+  assert.match(errors[0] ?? "", /cannot write as text/u)
+})
+
+test("a minus a child writes with the glyph the card is written with is accepted", () => {
+  // The host draws U+2212 in every prompt. `rational.parseRational` reads
+  // `/^[+-]?\d+$/` and throws on U+2212, and `judge` scores a throw as wrong — so
+  // a pack echoing the card's own glyph back, or a keypad whose minus key is the
+  // one on the card, marks every correct negative answer wrong in silence.
+  assert.equal(normalizeMinus("−7"), "-7")
+  assert.equal(normalizeMinus("7"), "7")
+  assert.equal(normalizeMinus("-7"), "-7")
+
+  // End to end, on a row that can actually be got wrong this way. The graph has
+  // no active signed row — see `SIGNED_BLOCKED_SKILLS` — so this is driven on the
+  // draft one, which is the point: the parse has to be right before the row is
+  // promoted, not after.
+  const node = allNodes.find((candidate) => String(candidate.id) === "dw.int.arith.subtract-past-zero")
+  assert.ok(node)
+  const rungs = ladder([node])
+  const service = createItemService({ profileId: "p-signed", record: noRecord, rungs })
+  let checked = 0
+  for (let i = 0; i < 20 && checked < 3; i++) {
+    const item = service.next({ packId: "dynawalla.fuse" })
+    assert.ok(item)
+    const canonical = service.reveal(item.id)
+    if (!canonical.startsWith("-")) continue
+    checked += 1
+    const verdict = service.judge({
+      packId: "dynawalla.fuse",
+      itemId: item.id,
+      response: canonical.replace("-", "−"),
+      latencyMs: 3000,
+    })
+    assert.equal(verdict.correct, true, `answering "${canonical.replace("-", "−")}" to "${item.prompt}" was wrong`)
+  }
+  assert.equal(checked, 3, "the signed row never produced a negative answer to check")
+})
+
+test("a signed row is offered four choices, not padded down to a coin toss", () => {
+  // The near-miss padding skipped every negative candidate, which is right on a row
+  // whose answers cannot go below zero and deletes most of the closed list on a row
+  // whose answers routinely do. A game laying four slabs on a wall draws an empty
+  // one for a missing choice, and an empty slab is a wrong answer a child cannot
+  // read.
+  //
+  // Measured over every signed row and every level rather than one row and a
+  // handful of items, because the shortfall is uneven: without
+  // `AnswerSchema.integer.signed` read here, `dw.int.arith.multiply-signed` came up
+  // short on **90 of 180** sampled items, some of them offering a single option.
+  const signedRows = [
+    "dw.int.arith.subtract-past-zero",
+    "dw.int.arith.add-signed",
+    "dw.int.arith.subtract-signed",
+    "dw.int.arith.multiply-signed",
+  ]
+  let sawNegativeChoice = false
+  let sampled = 0
+  for (const id of signedRows) {
+    const node = allNodes.find((candidate) => String(candidate.id) === id)
+    assert.ok(node, `${id} is gone from the graph`)
+    for (const rung of ladder([node])) {
+      for (let seed = 1; seed <= 60; seed++) {
+        const exercise = rung.family.generate({
+          skillId: rung.node.id,
+          level: rung.level,
+          seed,
+          params: rung.params,
+          forms: rung.node.generator.forms,
+        })
+        const choices = choicesFor(exercise, 0)
+        sampled += 1
+        assert.equal(
+          choices.length,
+          4,
+          `${id} L${String(rung.level)} seed ${String(seed)} offered ${String(choices.length)} choices: ` +
+            choices.map((choice) => choice.text).join(", "),
+        )
+        if (choices.some((choice) => choice.text.startsWith("-"))) sawNegativeChoice = true
+      }
+    }
+  }
+  assert.ok(sampled >= 400, `only ${String(sampled)} signed items sampled`)
+  assert.ok(sawNegativeChoice, "no wrong answer below zero was ever offered on a row that answers below zero")
 })
 
 // ---------------------------------------------------------------------------

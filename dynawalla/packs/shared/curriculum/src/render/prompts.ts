@@ -46,10 +46,10 @@ import { familyId, locKey } from "../types/ids.ts";
  * ## Why this is on the declaration and not left to the renderer
  *
  * Because the renderer got it wrong, in the shipped product, in the way this
- * program keeps meeting: silently and in the child's favour of nobody.
+ * program keeps meeting: silently and in the favour of nobody.
  *
  * `dynawalla-app/src/packs/items.ts` builds the string a game shows a child, and
- * it decides the operator like this:
+ * it used to decide the operator like this:
  *
  * ```ts
  * export function isSubtraction(promptKey: string): boolean {
@@ -59,16 +59,19 @@ import { familyId, locKey } from "../types/ids.ts";
  * prompt: `${top} ${subtract ? MINUS : "+"} ${bottom}`,
  * ```
  *
- * Every template that is not a subtraction is drawn as an **addition**. That is
- * correct for the four templates the graph has active today and wrong for eleven
- * of the rest: `dw.prompt.times-table.mul` would reach a child as `7 + 8` with 56
- * as the answer. `packs/sdk/src/protocol.ts` has carried `"×"` and `"÷"` in
- * `Item.operator` the whole time; what was missing was anywhere to look them up.
+ * Every template that was not a subtraction was drawn as an **addition**: correct
+ * for the four templates the graph had active and wrong for eleven of the rest.
+ * `dw.prompt.times-table.mul` reached a child as `5 + 7` with 35 as the answer.
+ * `packs/sdk/src/protocol.ts` had carried `"×"` and `"÷"` in `Item.operator` the
+ * whole time; what was missing was anywhere to look them up.
  *
- * This is that place. It is data the curriculum owns — which glyph a question is
- * written with is a fact about the question — and `promptOperator()` below is the
- * lookup a renderer needs. `promotionBlockers.ts` lists the templates that are
- * mis-drawn until one uses it.
+ * This is that place, and the renderer reads it now — `binaryOperator()` in
+ * `items.ts` is a lookup here with **no fallback**, so an unregistered key or a
+ * `none` refuses to serve the item rather than guessing a plus sign at it. It is
+ * data the curriculum owns, because which glyph a question is written with is a
+ * fact about the question. `promotionBlockers.ts` carries what is left:
+ * `MISSTATED_QUESTION_TEMPLATES`, the templates whose question a two-operand
+ * string does not state however right the operator between them is.
  */
 export type PromptOperator = "+" | "−" | "×" | "÷" | "none";
 

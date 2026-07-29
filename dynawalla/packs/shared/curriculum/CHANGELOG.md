@@ -9,6 +9,64 @@ installed pack until that pack is rebuilt and republished.
 
 ## 0.1.0 — Unreleased
 
+### The operator is drawn, and seven rows go active
+
+The blocker the section below named is fixed on the other side of the boundary:
+`dynawalla-app/src/packs/items.ts` reads `promptOperator(key)` and has no
+fallback, so a multiplication is drawn as a multiplication. The rows that were
+waiting on nothing else are `active`.
+
+- **Seven rows promoted, by a `status` flip and nothing else.** Four of `mul` —
+  both fact rows, `multidigit.times-one-digit` and `multidigit.times-two-digit` —
+  and `dw.div.facts.division-facts`, `dw.div.whole.divide-exact` and
+  `dw.div.whole.zero-in-the-quotient`. No generator, no level table and no
+  parameter changed; the snapshot file gains their hashes and loses none.
+- **`NUMERAL_WIDTH_BLOCKED_LEVELS`, and it is why `48,826 × 82,726` is still not
+  reachable.** Promoting `dw.mul.scale.times-power-of-ten` and
+  `dw.mul.multidigit.long-multiplication` turned `games/polarity`'s own sweep of
+  the shipping ladder red: its numeral cell holds eight characters, it refuses an
+  answer it cannot print, and those rows reach nine and ten
+  (`544,080,000`; `2,367,541,946`). Declining is per-item and the host serves by
+  rung, so a level where every item is too wide is not a graceful degradation — it
+  is a Seal Bearer that asks nothing. The rows are right and the ceiling is the
+  program's stated one; what is missing is a pack that widens its numeral or caps
+  its stream with the `next({ maxDifficulty })` seam `packs/sdk` already has. Both
+  rows stay `draft` until one does.
+- **`OPERATOR_BLOCKED_TEMPLATES` is gone**, replaced by
+  `MISSTATED_QUESTION_TEMPLATES` — the defect one level down, which the operator
+  fix does not touch. A correct operator is not a stated question:
+  `dw.prompt.long-div.remainder` draws `129 ÷ 2` and wants 1, and the three
+  `missing-operand` templates draw `1 + 10` and want 9. The new list is *measured*
+  — `render/prompts.test.ts` applies the declared operator to the two operands the
+  host would read and compares the result with the canonical answer in exact
+  rationals — so it names a template a human reading of the ids would not.
+- **`dw.div.facts.division-facts`' difficulty table was wrong** and no gate could
+  see it: CG-9's difficulty check runs over `activeNodes`, so a draft row's table
+  is unchecked. It was authored `[−0.55, −0.15, 0.15]` against a family that
+  spaces those parameters 0.70 and 0.45. Restated as what the parameters compute.
+- **`gates.test.ts` runs the healthy-graph case at `INCREMENTAL_SEEDS`.** Its
+  fixture sampled forty seeds, and CG-9 counts distinct items *in the sample* — so
+  a level declaring `minVariants: 80` could not pass it however good its generator
+  is. The fixture had become a lower standard than the gate it stands for.
+
+Still blocked, and each on something this change does not touch:
+`SIGNED_BLOCKED_SKILLS` (the four `int` rows wait on `answer:integer-signed`, a
+pack's keypad), `FRACTION_ANSWER_BLOCKED_SKILLS` (`answerText` cannot write a
+fraction, so `dw.div.whole.quotient-and-remainder` and every `frac` row would be
+served as nothing), the CG-10 levels, and the `ns` compare-and-order rows, whose
+templates declare no operator at all.
+
+**Known, and not fixed here: an installed pack's clock is narrower than the new
+top rungs.** The host paces an item by the wider of the cadence table and the
+node's `fluencyTarget.p50Ms`. Games do not — they compute a window from the
+prompt's digit width alone, and `games/beam` caps it at 44 s — so a child on
+`dw.mul.multidigit.times-two-digit`, whose declared median is 25 s, gets a window
+narrower than the work inside a beam wave. Nothing is scored against them (beam
+calls `host.skip()` on expiry and documents that a timeout is not a wrong answer),
+but the top of the ladder is hard to finish in packs whose timing tables were
+measured on column addition. Those tables are a pack's to widen, and they are the
+same packs `NUMERAL_WIDTH_BLOCKED_LEVELS` is waiting on.
+
 ### The ceiling: the tables, the quotients, and arithmetic below zero
 
 The graph reached `4,003 − 87` and stopped. `mul` had no fact rows at all, `div`
