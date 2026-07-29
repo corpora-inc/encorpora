@@ -24,6 +24,13 @@
        Set on body alone the document still bounces, which is how the catalog
        slides into view above a running game. */
     overscroll-behavior: none;
+    /* WebKit inflates text in a narrow column when a page is rotated or
+       zoomed. It is a document behaviour and this is not a document; left on,
+       a phone rotated to landscape re-flows every label by a few percent,
+       which is the "text that jumps as state changes" tell arriving from the
+       platform rather than from us. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   html.dw-dark {
@@ -41,6 +48,11 @@
     background-color: var(--dw-ground);
     color: var(--dw-ink);
     font-family: var(--font-text);
+    /* The platform's own text rendering. Every native surface on iOS and
+       macOS is drawn this way; leaving it off is a small, constant weight
+       difference that reads as "browser". */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     /* A child taps; nothing should select, callout, or double-tap-zoom. */
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -54,11 +66,33 @@
     user-select: none;
   }
 
+  /* Native form controls — a checkbox, a radio, a range, a text caret — are
+     drawn by the platform in the platform's accent colour unless told
+     otherwise. Told otherwise, they are drawn in ours. */
+  :root {
+    accent-color: var(--dw-accent);
+    caret-color: var(--dw-accent);
+  }
+
   input,
   textarea,
   [contenteditable] {
     -webkit-user-select: text;
     user-select: text;
+  }
+
+  /* iOS zooms the viewport when a field under 16 px takes focus, and it does
+     not zoom back out. `max()` rather than a flat 16 px so the accessibility
+     text-size settings still scale the field up with everything else. */
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, 16px);
+  }
+
+  ::selection {
+    background-color: var(--dw-accent);
+    color: var(--dw-on-accent);
   }
 
   /* The chrome must never scroll sideways. A single row whose value refuses to
@@ -71,11 +105,53 @@
     overflow-x: hidden;
   }
 
+  /* A mouse user genuinely needs a scrollbar — but they need the one their
+     desktop draws, which is an overlay thumb on nothing, not a painted grey
+     channel down the edge of the page. Thumb only, in the theme's own violet,
+     inset from the edge by a transparent border so it reads as floating. */
+  @media (pointer: fine) {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--dw-line-strong) transparent;
+    }
+
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--dw-line-strong);
+      background-clip: padding-box;
+      border: 3px solid transparent;
+      border-radius: 10px;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background-color: var(--dw-ink-muted);
+    }
+
+    *::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+  }
+
   /* A persistent scrollbar track is a web-view tell. Touch platforms draw a
      transient indicator of their own during the gesture, so the drawn track is
-     pure noise there — but a mouse user genuinely needs it, so this is scoped to
-     coarse pointers rather than applied everywhere. */
-  @media (pointer: coarse) {
+     pure noise there.
+
+     `any-pointer`, and it comes AFTER the block above rather than before it,
+     and both halves of that are load-bearing. An iPad with a Magic Keyboard or
+     a trackpad reports `pointer: fine` — so the first-class tablet target was
+     matching the desktop block and getting a drawn 10 px channel, the first
+     named tell on the standing bar. `any-pointer: coarse` is true of any
+     device that has a touchscreen at all, whatever is also plugged into it,
+     and a later rule of the same specificity wins. */
+  @media (any-pointer: coarse) {
     * {
       scrollbar-width: none;
     }
@@ -84,6 +160,26 @@
       width: 0;
       height: 0;
     }
+  }
+
+  /* Sticky chrome is a contentInset, not just a z-index. The lintel is stuck
+     to the top and the tab bar to the bottom, and body is the scrolling box —
+     so anything scrolled to (a focused card under a tab walk, a field the
+     keyboard reveals) came to rest UNDER them. Measured on the catalogue at
+     390: eight of twenty-seven cards landed with their "Play" control and the
+     bottom of their focus ring behind the bar. This is the one-line
+     equivalent of what a native scroll view does for its own bars. */
+  html {
+    scroll-padding-block: calc(var(--safe-top) + 5.5rem) calc(var(--safe-bottom) + 5.5rem);
+  }
+
+  /* While a sheet is up, the page behind it must not scroll. The scrim is
+     `position: fixed`, so a drag on it was still scrolling the catalogue
+     underneath and the sheet closed onto a different offset — the surface
+     you came back to was not the one you left. */
+  html.dw-locked,
+  html.dw-locked body {
+    overflow: hidden;
   }
 
   /* One focus treatment for the whole app, keyboard-only. Children on tablets
@@ -102,5 +198,344 @@
 
   .inscription {
     font-family: var(--font-inscription);
+  }
+
+}
+
+/* ── The system, as classes ───────────────────────────────────────────────
+   Tokens describe the materials; these are the four or five compositions the
+   harness actually repeats, written once so five screens cannot drift apart.
+   In `components` rather than `utilities` so any Tailwind utility a screen
+   applies still wins over them. */
+@layer components {
+  /* ── Elevation ───────────────────────────────────────────────────────
+     Ground, sunk, surface, raised, overlay — five rungs, and there is no
+     sixth. Each is a background, an edge and a cast light together, because
+     a surface that borrows one of the three from somewhere else is how a
+     design ends up with a card that has a shadow and a border that disagree
+     about how high it is.
+
+     In LIGHT height is cast violet light; in DARK it is lighter stone plus a
+     one-pixel lit top edge. Both are handled by the tokens; a component just
+     picks a rung. */
+  .dw-sunk {
+    background-color: var(--dw-elev-sunk-bg);
+    border: var(--dw-hairline) solid var(--dw-elev-sunk-line);
+  }
+
+  .dw-surface {
+    background-color: var(--dw-elev-surface-bg);
+    border: var(--dw-hairline) solid var(--dw-elev-surface-line);
+    box-shadow: var(--dw-elev-surface-shadow);
+  }
+
+  .dw-raised {
+    background-color: var(--dw-elev-raised-bg);
+    border: var(--dw-hairline) solid var(--dw-elev-raised-line);
+    box-shadow: var(--dw-elev-raised-shadow);
+  }
+
+  .dw-overlay {
+    background-color: var(--dw-elev-overlay-bg);
+    border: var(--dw-hairline) solid var(--dw-elev-overlay-line);
+    box-shadow: var(--dw-elev-overlay-shadow);
+  }
+
+  /* A bar the content scrolls under casts UP, not down. */
+  .dw-bar {
+    background-color: var(--dw-elev-raised-bg);
+    box-shadow: var(--dw-elev-bar-shadow);
+  }
+
+  .dw-scrim {
+    background-color: var(--dw-scrim);
+  }
+
+  /* ── Rules ───────────────────────────────────────────────────────────
+     A separator at one physical device pixel, which is what the platform
+     draws and about a third of what `border-b` draws on a 3× screen. */
+  .dw-hairline {
+    border: var(--dw-hairline) solid var(--dw-line);
+  }
+
+  .dw-hairline-b {
+    border-block-end: var(--dw-hairline) solid var(--dw-line);
+  }
+
+  .dw-hairline-t {
+    border-block-start: var(--dw-hairline) solid var(--dw-line);
+  }
+
+  /* ── The two measures ────────────────────────────────────────────────
+     `dw-frame` is the chrome's outer bound and carries the screen gutter,
+     widened by the safe-area inset on the side that has one — a phone in
+     landscape has an inset on exactly one side, so a symmetric padding is
+     either too little on one edge or too much on the other.
+
+     `dw-measure` is the column of rows inside it. Everything on a screen
+     aligns to one of these two and nothing invents a third. */
+  .dw-frame {
+    width: 100%;
+    max-width: var(--dw-measure-frame);
+    margin-inline: auto;
+    padding-inline-start: max(var(--dw-frame-pad), var(--safe-left));
+    padding-inline-end: max(var(--dw-frame-pad), var(--safe-right));
+  }
+
+  .dw-measure {
+    width: 100%;
+    max-width: var(--dw-measure-text);
+    margin-inline: auto;
+  }
+
+  /* ── Press ───────────────────────────────────────────────────────────
+     One press behaviour for everything a finger lands on. Fast and
+     decelerating: the finger is already there, so the only job is to
+     acknowledge before the eye can doubt that the tap registered.
+
+     `transform` is on its own curve; colour is on the state curve. They are
+     different events — one is physical, one is a change of meaning — and
+     running both on one timing is what makes a web button feel like a web
+     button. */
+  .dw-press {
+    transition:
+      transform var(--dw-transition-press),
+      background-color var(--dw-transition-state),
+      border-color var(--dw-transition-state),
+      box-shadow var(--dw-transition-state),
+      color var(--dw-transition-state);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dw-press:active {
+    transform: scale(var(--dw-press-scale));
+  }
+
+  /* Hover is a pointer idea. Applying it on touch leaves a control looking
+     pressed after the finger has gone, which is the stuck-hover tell. */
+  @media (hover: hover) and (pointer: fine) {
+    .dw-press:hover {
+      background-color: var(--dw-ground-lifted);
+    }
+  }
+
+  /* ── Arriving and leaving ────────────────────────────────────────────
+     Explanatory, not decorative: a surface rises a little into place so it
+     is obvious it came from below, and leaves faster than it arrived
+     because the decision has already been made. Both collapse to nothing
+     under reduced motion — the durations go to zero AND `--dw-enter-lift`
+     goes to zero, because a 0 ms transition into a displaced position is
+     still a jump. */
+  .dw-anim-enter {
+    animation: dw-enter var(--dw-transition-enter) both;
+  }
+
+  .dw-anim-exit {
+    animation: dw-exit var(--dw-transition-exit) both;
+  }
+
+  .dw-anim-fade {
+    animation: dw-fade var(--dw-transition-enter) both;
+  }
+
+  /* ── A row that scrolls sideways inside the page ─────────────────────
+     The subject-chip row overflows by 440 px on a phone with nothing to say
+     so. The mask fades the content out at both edges, which is the signal
+     every native carousel uses: content that dissolves rather than stopping
+     is content that continues. Black in the gradient is a mask alpha, not a
+     colour — only its opacity is read. */
+  .dw-scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .dw-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black var(--dw-space-4),
+      black calc(100% - var(--dw-space-5)),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black var(--dw-space-4),
+      black calc(100% - var(--dw-space-5)),
+      transparent 100%
+    );
+  }
+
+  /* ── The tab label ───────────────────────────────────────────────────
+     A tab bar gives a word one fifth of the screen and no more, and a word
+     that does not fit is the one thing it may not do about it. On a 320 px
+     phone a cell is 60 px wide; "Progress" at the app's own Largest text
+     setting wants 59 px of glyphs before any padding, so four of the five
+     labels clipped to a prefix.
+
+     So the cell is a container and the label is capped against the cell's
+     own inline size, which is exactly what a native tab bar does: the label
+     shrinks to fit and is never cut. `21cqi` is measured, not chosen — the
+     longest destination name in the inscription face runs about 3.9 px of
+     glyph per pixel of font size, and 21% of a cell leaves the padding
+     clear at every width and text size the app ships. The `min()` means the
+     cap is INERT at every ordinary width: the label is the type scale's own
+     step and only gives ground where the alternative is losing a letter.
+
+     `container-type: inline-size` is Safari 16.0, on this bundle's floor.
+     Where it is missing the `cqi` term is invalid, `min()` is dropped whole,
+     and the label falls back to the plain step below — which is the old
+     behaviour, not a broken one. */
+  .dw-tab {
+    container-type: inline-size;
+  }
+
+  .dw-tab-label {
+    font-size: var(--text-xs);
+    line-height: var(--text-xs--line-height);
+    letter-spacing: var(--text-xs--letter-spacing);
+  }
+
+  @media (min-width: 40rem) {
+    .dw-tab-label {
+      font-size: var(--text-sm);
+      line-height: var(--text-sm--line-height);
+      letter-spacing: var(--text-sm--letter-spacing);
+    }
+  }
+
+  /* The cap, in an `@supports` rather than as a second `font-size` beside the
+     first. Two declarations of one property in one rule are exactly what the
+     minifier is entitled to collapse — it did that to this file's `2.6em`
+     fallback for `2lh`, and the built stylesheet shipped with no fallback at
+     all on the devices the fallback existed for. `@supports` is uncollapsible,
+     and it names the real dependency: without container queries `cqi` is not a
+     length and the whole `min()` would be dropped anyway. */
+  @supports (container-type: inline-size) {
+    .dw-tab-label {
+      font-size: min(var(--text-xs), 21cqi);
+    }
+
+    @media (min-width: 40rem) {
+      .dw-tab-label {
+        font-size: min(var(--text-sm), 21cqi);
+      }
+    }
+  }
+
+  /* ── The courses on a wide screen ────────────────────────────────────
+     Four of the five destinations are a column of rows, and a column of rows
+     is set to a reading measure — so at 1440 × 900 the parent area used
+     about a fifth of the glass and the rest was ground. A reading measure is
+     right for a column of prose and wrong as an account of a whole screen.
+
+     Above 64 rem the courses lay out as two columns inside the frame, which
+     is what every desktop settings pane does, and it has a second effect
+     that matters more: each course now begins at the frame's own leading
+     edge, so the wordmark, the tab bar, the catalogue grid AND the rows all
+     start at the same x. Below that the courses are one column, capped at
+     the reading measure and centred, which is what `.dw-measure` already
+     did.
+
+     `align-content: start` so two courses of different lengths do not
+     stretch to match; `--dw-stack-gap` in both axes so the rhythm across is
+     the rhythm down. */
+  .dw-courses {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* A course is a list of rows, not a column of prose, so it takes the frame
+     rather than the reading measure. That is what puts every left edge in the
+     app on one x: measured at 834 the wordmark sat at 20, the tab labels at
+     20 and the rows at 81, because the rows were centred inside a 672 px
+     measure in a 794 px frame. The empty-catalogue paragraph is prose and
+     keeps `.dw-measure`. */
+  .dw-courses > .dw-course {
+    max-width: none;
+  }
+
+  @media (min-width: 64rem) {
+    .dw-courses-wide {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-content: start;
+      align-items: start;
+    }
+
+    /* The footer of the course above it, not a column beside it. */
+    .dw-courses-wide > .dw-course-span {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* The band under the lintel is the top edge of the first group. Drawing a
+     rule as well put two parallel horizontals 24 px apart at the top of every
+     destination at every width — the second one saying nothing the first had
+     not. `:nth-of-type` counts only the courses, so the screen-reader heading
+     beside them is not in the reckoning, and "the top row" is one course at
+     phone width and two once the courses are in two columns. */
+  .dw-course:first-of-type {
+    border-block-start-width: 0;
+  }
+
+  @media (min-width: 64rem) {
+    .dw-courses-wide > .dw-course:nth-of-type(-n + 2) {
+      border-block-start-width: 0;
+    }
+  }
+
+  /* ── Capitals ────────────────────────────────────────────────────────
+     Uppercase with tracking belongs to the wordmark, and to a pack title
+     that arrives from a manifest already in capitals. It does not belong on
+     a settings legend, a tab label or a section heading: a tracked, small,
+     capitalised label over a form control is a web dashboard idiom, and
+     every native platform sets that same label in sentence case at reading
+     size instead. */
+  .dw-wordmark {
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wordmark);
+  }
+
+  .dw-caps {
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+  }
+}
+
+@keyframes dw-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--dw-enter-lift), 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes dw-exit {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, calc(var(--dw-enter-lift) * -0.5), 0);
+  }
+}
+
+@keyframes dw-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

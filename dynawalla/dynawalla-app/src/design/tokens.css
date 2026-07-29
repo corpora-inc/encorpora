@@ -1,8 +1,10 @@
 /* ──────────────────────────────────────────────────────────────────────────
    Dynawalla — design tokens
 
-   Tokens only. This file fixes the material vocabulary and the type scale so
-   the art pass has something to build on; it is not itself the visual design.
+   Tokens only. This file is the foundation the whole host harness is built
+   on: the palette, the spacing rhythm, the elevation ladder, the motion
+   vocabulary and the type scale. It is not itself the visual design — but
+   nothing in the design may invent a value this file does not name.
 
    Three layers, in this order, and the layering is load bearing:
 
@@ -16,10 +18,56 @@
                         so `bg-ground` emits `var(--dw-ground)` and follows the
                         theme class rather than baking one theme's value in.
 
-   The palette is material, not lighting: brass, lapis, carved limestone,
-   parchment, copper oxide, glazed tile, walnut, and the cold celestial light
-   that falls on all of it. No gradients, no glow.
-   `src/design/tokens.test.ts` enforces the layering mechanically.
+   `src/design/tokens.test.ts` enforces the layering mechanically, including
+   the rule that keeps this file honest: a semantic token that resolves to a
+   MATERIAL must be re-cut under `.dw-dark`, and one that carries no colour
+   must NOT be. That is why elevation backgrounds below defer to other
+   semantic tokens (`var(--dw-ground-raised)`) while elevation SHADOWS name
+   materials directly — the first is theme-independent by construction, the
+   second genuinely differs by theme.
+
+   ── Measured contrast (WCAG 2.1, sRGB) ─────────────────────────────────────
+   Every text pair this file defines, measured rather than assumed. AA needs
+   4.5 for normal text, 3.0 for large text and graphics.
+
+   LIGHT — ground parchment-100 · sunk parchment-200 · raised/lifted/float
+           parchment-50
+     ink / ground .................... 16.09   ink / raised ............ 18.01
+     ink / sunk ...................... 14.36
+     ink-muted / ground ............... 6.52   ink-muted / raised ....... 7.30
+     ink-muted / sunk ................. 5.81
+     accent-ink / ground .............. 8.02   accent-ink / raised ...... 8.98
+     accent / ground (line art) ....... 6.35   accent / raised .......... 7.10
+     index / ground ................... 5.61   index / raised ........... 6.29
+     index / sunk ..................... 5.01   index-lit / ground (art) . 3.43
+     strike / ground .................. 6.39   strike / raised .......... 7.16
+     strike / sunk .................... 5.71
+     seat / ground .................... 6.10   seat / raised ............ 6.83
+     seat / sunk ...................... 5.44
+     on-accent / accent-fill .......... 7.10   on-strike / strike-fill .. 7.16
+     band knot / ground (art) ......... 6.35   line-strong / ground ..... 2.66
+     line / raised (hairline) ......... 1.77   raised / ground .......... 1.12
+     sunk / ground .................... 1.12   raised / sunk (thumb) .... 1.25
+
+   DARK — ground basalt-800 · sunk basalt-950 · raised basalt-700
+          · lifted basalt-600 · float basalt-500
+     ink / ground .................... 17.80   ink / raised ............ 16.69
+     ink / lifted .................... 15.26   ink / float ............. 13.87
+     ink-muted / ground ............... 9.23   ink-muted / raised ....... 8.66
+     ink-muted / lifted ............... 7.91   ink-muted / float ........ 7.20
+     accent-ink / ground ............. 10.87   accent-ink / raised ..... 10.19
+     accent-ink / float ............... 8.47   accent / ground (art) .... 4.81
+     index / ground .................. 16.43   index / lifted .......... 14.08
+     strike / ground .................. 8.24   strike / raised .......... 7.72
+     strike / float ................... 6.42   seat / ground ............ 8.98
+     on-accent / accent-fill .......... 5.70   on-strike / strike-fill .. 7.44
+     band knot / ground (art) ......... 4.81   line-strong / ground ..... 2.73
+     raised / ground .................. 1.07   lifted / raised .......... 1.09
+     float / ground ................... 1.28   lifted / sunk (thumb) .... 1.20
+
+   The only pairs below 4.5 are graphics, where the floor is 3.0: `--dw-accent`
+   as line art (4.81 dark / 6.35 light), `--dw-index-lit` as a glint (3.43
+   light), and the elevation steps, which are surfaces rather than text.
    ────────────────────────────────────────────────────────────────────────── */
 
 @theme {
@@ -39,31 +87,68 @@
   --font-numeral: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto,
     sans-serif;
 
-  /* A 1.25 scale from a 1rem base, rounded to eighths of a rem so every step
-     lands on a half-pixel-free value at the 16 px default. */
+  /* A 1.125→1.25 scale from a 1rem base, rounded to eighths of a rem so every
+     step lands on a half-pixel-free value at the 16 px default.
+
+     Each step carries its own line-height AND its own letter-spacing, because
+     optical tracking is not decoration: type set at one tracking across nine
+     sizes is the single most reliable way to look like a website. Small text
+     opens up, large text closes in. The values are the platform convention —
+     SF and Roboto are both drawn expecting it.
+
+     `--text-md` (18 px) is the row-label size, and it is the one a child
+     actually reads down a list. It exists because the jump from 16 to 20 is
+     too coarse for a screen whose whole job is a column of rows. */
   --text-xs: 0.75rem;
-  --text-xs--line-height: 1.25;
+  --text-xs--line-height: 1.35;
+  --text-xs--letter-spacing: 0.02em;
   --text-sm: 0.875rem;
-  --text-sm--line-height: 1.35;
+  --text-sm--line-height: 1.45;
+  --text-sm--letter-spacing: 0.01em;
   --text-base: 1rem;
   --text-base--line-height: 1.5;
+  --text-base--letter-spacing: 0em;
+  --text-md: 1.125rem;
+  --text-md--line-height: 1.45;
+  --text-md--letter-spacing: -0.005em;
   --text-lg: 1.25rem;
   --text-lg--line-height: 1.4;
+  --text-lg--letter-spacing: -0.01em;
   --text-xl: 1.5rem;
   --text-xl--line-height: 1.3;
+  --text-xl--letter-spacing: -0.015em;
   --text-2xl: 1.875rem;
-  --text-2xl--line-height: 1.2;
+  --text-2xl--line-height: 1.22;
+  --text-2xl--letter-spacing: -0.02em;
   --text-3xl: 2.375rem;
   --text-3xl--line-height: 1.15;
+  --text-3xl--letter-spacing: -0.022em;
   --text-4xl: 3rem;
   --text-4xl--line-height: 1.05;
+  --text-4xl--letter-spacing: -0.025em;
+
+  /* Two tracking values that are NOT part of the size scale, because they
+     belong to a treatment rather than to a size. Tailwind's own
+     `tracking-tight … tracking-widest` are left alone; these are additions.
+
+       `--tracking-wordmark`  DYNAWALLA in the lintel, and nothing else.
+       `--tracking-caps`      any other run set in capitals — and the list of
+                              those is deliberately short (see FOUNDATION.md):
+                              the wordmark, the pack titles that arrive from a
+                              manifest already in capitals, and nothing on
+                              Settings, Parents or Profiles. A capitalised,
+                              tracked legend over a form control is a 2014 web
+                              dashboard idiom; native platforms set that legend
+                              in sentence case at reading size. */
+  --tracking-caps: 0.09em;
+  --tracking-wordmark: 0.22em;
 
   /* ── Materials ─────────────────────────────────────────────────────────
      Named for the substance, numbered light to dark.
 
      **Repainted from `dynawalla/brand/README.md`.** The names below are the
      ones the semantic layer already refers to and they are kept; every VALUE
-     is now sampled from the mark itself, whose dominant saturated pixel is
+     is sampled from the mark itself, whose dominant saturated pixel is
      `#864de8`. The direction is the founder's: futuristic space angels,
      gear-brain minaret, sharp and pointing up, clockmaker G-d, al-Andalus.
      Explicitly dead, also his words: the dusty khaki sandstorm feel — which is
@@ -76,43 +161,81 @@
   --color-parchment-200: #e9e2fb;
   --color-parchment-300: #dcd2f5;
 
-  /* Carved limestone — structure, rules, incised edges. Violet-grey. */
+  /* Carved limestone — structure, rules, incised edges. Violet-grey.
+     `500` is new: the old light `--dw-line-strong` was `stone-400`, only
+     1.6:1 on white, so a "structural edge" was fainter than a hairline is
+     supposed to be. `400` itself is untouched because dark `--dw-ink-muted`
+     is drawn from it and darkening it would cost 9.23:1 of body contrast. */
   --color-stone-200: #c9bcec;
   --color-stone-400: #b9a6ec;
+  --color-stone-500: #9d8bd0;
   --color-stone-600: #5b5175;
   --color-stone-800: #2a1b4d;
 
-  /* Basalt — the unlit ground, and ink on parchment. Violet-black. */
+  /* Basalt — the unlit ground, and ink on parchment. Violet-black.
+     `500` and `600` are new and they are what makes the dark elevation
+     ladder possible: in dark, height is read as LIGHT, not as shadow, so a
+     sheet that is the same stone as the page behind it does not read as a
+     sheet at all. The pass sheet measured 1.13:1 against its own backdrop
+     before these existed. */
+  --color-basalt-500: #261a52;
+  --color-basalt-600: #1e1440;
   --color-basalt-700: #150c2e;
   --color-basalt-800: #0b0618;
   --color-basalt-900: #1a1033;
   --color-basalt-950: #060310;
 
   /* Brass — the index, the pointer, the working mechanism, and the brand's
-     one warm point (`--dw-apex` in the brand README is this material). */
+     one warm point (`--dw-apex` in the brand README is this material).
+
+     `700` is retained for reference and is no longer used: at 1 px over
+     parchment `#b45309` read as a red-brown dotted ribbon, which is the
+     closest thing the app had to the explicitly-dead sandstorm. `800` is the
+     light-theme warm point instead — hue 42°, a struck old gold rather than
+     a terracotta, and 5.61:1 on the light ground where `#b45309` sat at 4.79
+     and looked orange doing it. */
   --color-brass-300: #ffe7b0;
   --color-brass-500: #e0b15a;
+  --color-brass-600: #a87a17;
   --color-brass-700: #b45309;
+  --color-brass-800: #7d5a10;
 
   /* Aurora — the lit line. The mark's own violet, and the accent the whole
-     app is drawn in. `400` is the bloom: light, never paint. */
+     app is drawn in. `400` is the bloom: light, never paint. `550` exists
+     only as the ground of a FILLED accent control in dark, where `500` under
+     white text measures 4.15:1 and fails. */
   --color-aurora-300: #c9b4ff;
   --color-aurora-350: #a78bfa;
   --color-aurora-400: #b88cff;
   --color-aurora-500: #9258ff;
+  --color-aurora-550: #7c3aed;
   --color-aurora-600: #6d28d9;
   --color-aurora-700: #5b21b6;
+  /* …and the accent as a wash, which is what seats the current tab. Written
+     as alpha and not as `color-mix`, and this is not a preference: Tailwind
+     emits an accent-at-twelve-percent utility as a `color-mix` guarded by
+     `@supports`, plus a bare
+     FULLY OPAQUE fallback outside the guard. `color-mix` lands in Safari 16.2
+     and this bundle's floor is 16.0, so on an iOS 16.0 device the carefully
+     measured 1.22:1 seat painted as a solid violet plate under dark ink. Two
+     entries because a wash is a material: 12% of the deep violet reads on
+     parchment, and on basalt it is nothing, so dark washes with the lighter
+     aurora and a little more of it. */
+  --color-aurora-wash-light: rgb(109 40 217 / 0.12);
+  --color-aurora-wash-dark: rgb(146 88 255 / 0.18);
 
-  /* Lapis — the deep field; the sky an astrolabe is read against. Now a deep
+  /* Lapis — the deep field; the sky an astrolabe is read against. A deep
      violet rather than a blue, so the field and the ground are one stone. */
   --color-lapis-400: #b88cff;
   --color-lapis-600: #6d28d9;
   --color-lapis-800: #241246;
   --color-lapis-950: #0b0618;
 
-  /* Glazed tile — cool ceramic, for calm affirmative surfaces. */
+  /* Glazed tile — cool ceramic, for calm affirmative surfaces. `700` is the
+     light-theme seat: `600` fell to 4.27:1 on a sunk row. */
   --color-tile-400: #38bfc9;
   --color-tile-600: #0e7490;
+  --color-tile-700: #0c6379;
   /* …and the same glaze as a wash, thin enough to be a ground rather than a
      fill. Two entries because a wash is a material: on parchment the dark tile
      at 14% is a tint you can see, and on basalt it is nothing at all, so the
@@ -123,10 +246,22 @@
   --color-tile-600-wash: rgb(14 116 144 / 0.14);
   --color-tile-400-wash: rgb(56 191 201 / 0.18);
 
-  /* Copper and its oxide — the tone of a struck, incorrect mark. */
-  --color-copper-400: #f08a7e;
-  --color-copper-500: #c2453c;
-  --color-copper-700: #8c2f27;
+  /* Rose — the struck mark, and the only red this palette owns.
+
+     It replaces the copper ramp, which was left over from the pre-purple
+     palette: `#c2453c` was a coral that belonged to no other colour on the
+     screen AND measured 4.45:1 on the light ground, failing AA on the two
+     most consequential controls in the app ("Erase everything", "Remove").
+
+     The hue is taken from the arc's own rose end (`--color-arc-11`,
+     hsl 348°), so danger is drawn in a colour the app already contains
+     rather than imported from a generic red. It is unmistakably a warning
+     and it is unmistakably from here. */
+  --color-rose-300: #ff7d9e;
+  --color-rose-600: #d7264f;
+  --color-rose-700: #ac1442;
+  --color-rose-wash-light: rgb(172 20 66 / 0.09);
+  --color-rose-wash-dark: rgb(255 125 158 / 0.14);
 
   /* Walnut — cabinetry, frames, the case an instrument sits in. */
   --color-walnut-600: #3b2a63;
@@ -135,6 +270,31 @@
   /* Celestial — cold light. Highlights only; never a fill. */
   --color-celestial-100: #e8deff;
   --color-celestial-300: #c9b4ff;
+
+  /* ── Cast light ────────────────────────────────────────────────────────
+     Shadow is a material too, and it is the one place a design gives itself
+     away fastest: a neutral grey shadow on a violet ground reads as a
+     framework default, because it is one. Every umbra below is violet —
+     `rgb(45 20 92)` is basalt-900 pushed a little further into the blue, so
+     a card's cast light belongs to the same stone as the card.
+
+     `sheen` is the opposite direction and it is what dark elevation is
+     actually made of: a one-pixel lit top edge, the way a raised surface
+     catches the light above it. Written as alpha rather than `color-mix`
+     for the same iOS 16.0 reason as the glazes above. */
+  --color-umbra-soft: rgb(45 20 92 / 0.06);
+  --color-umbra-mid: rgb(45 20 92 / 0.1);
+  --color-umbra-deep: rgb(45 20 92 / 0.18);
+  --color-umbra-cast: rgb(45 20 92 / 0.28);
+  --color-umbra-scrim: rgb(26 16 51 / 0.34);
+
+  --color-void-mid: rgb(2 0 10 / 0.4);
+  --color-void-deep: rgb(2 0 10 / 0.55);
+  --color-void-cast: rgb(2 0 10 / 0.72);
+  --color-void-scrim: rgb(2 0 10 / 0.74);
+
+  --color-sheen-soft: rgb(201 180 255 / 0.06);
+  --color-sheen-mid: rgb(201 180 255 / 0.1);
 
   /* ── The arc ───────────────────────────────────────────────────────────
      Twelve lit hues for generated key art, and nothing else in the app may
@@ -163,20 +323,45 @@
 }
 
 /* ── Semantic layer, light ────────────────────────────────────────────────
-   Roles, not colours. Nothing outside this block may name a material. */
+   Roles, not colours. Nothing outside this block may name a material.
+
+   Light is not a bleached dark. The two themes carry height by opposite
+   means and both are native conventions: in LIGHT a surface stands off the
+   page by casting violet light onto it, and every raised thing is the same
+   white; in DARK nothing casts, and a surface stands off the page by being
+   made of lighter stone. Trying to do it the other way round is what makes a
+   light theme look like a print-out. */
 :root {
-  /* Grounds. `sunk` is a recess cut into `ground`; `raised` is a surface
-     standing proud of it. Both are the same stone in different light — the
-     difference is never a drop shadow. */
+  /* Grounds — the elevation ladder, four rungs.
+
+       ground    the page itself
+       sunk      a recess cut into it: a segmented-control TRACK, a well
+       raised    a card, a course, a sheet of the page's own material
+       lifted    something pressable that sits ON a surface: the selected
+                 segment of a control, the tab bar, a chip
+       float     a sheet over everything: the pass sheet, the parental gate
+
+     `--dw-ground-lifted` and `--dw-ground-float` are new, and they are what
+     lets a segmented control be drawn the way every platform draws one — a
+     recessed track with a raised thumb in it. Drawn the other way round (the
+     selected option darker than the unselected ones) the control reads
+     inverted, which is what the whole app was doing. */
   --dw-ground: var(--color-parchment-100);
   --dw-ground-sunk: var(--color-parchment-200);
   --dw-ground-raised: var(--color-parchment-50);
+  --dw-ground-lifted: var(--color-parchment-50);
+  --dw-ground-float: var(--color-parchment-50);
   --dw-ground-deep: var(--color-lapis-950);
 
   /* Incised lines. `--dw-line` is a hairline rule; `--dw-line-strong` is a
-     structural edge; `--dw-line-cut` is the shadow inside a carved groove. */
-  --dw-line: var(--color-parchment-300);
-  --dw-line-strong: var(--color-stone-400);
+     structural edge; `--dw-line-cut` is the shadow inside a carved groove.
+
+     `--dw-line` was `parchment-300` and measured 1.16:1 on white, which is a
+     rule you cannot see. `stone-200` is 1.77:1 — about what iOS draws a
+     table separator at, and the reason a light list now has a spine. */
+  --dw-line: var(--color-stone-200);
+  --dw-line-soft: var(--color-parchment-300);
+  --dw-line-strong: var(--color-stone-500);
   --dw-line-cut: var(--color-stone-600);
 
   /* Marks on the ground. */
@@ -185,18 +370,45 @@
   --dw-ink-inverse: var(--color-parchment-50);
 
   /* The mechanism: the index that points at where you are. This is also the
-     brand's one warm point — the apex, used once per screen and no more. */
-  --dw-index: var(--color-brass-700);
-  --dw-index-lit: var(--color-brass-500);
+     brand's one warm point — the apex, used once per screen and no more.
+     On a given screen that is the navigation's own diamond, and the strapwork
+     bands are explicitly NOT it (see `--dw-band-*` below). */
+  --dw-index: var(--color-brass-800);
+  --dw-index-lit: var(--color-brass-600);
 
   /* The lit line: the mark's own violet, and the app's accent. `--dw-accent`
      is for line art, borders and state; `--dw-accent-ink` is the one a child
      actually READS, because accent-on-ground clears AA for normal text only by
-     a hair. `--dw-bloom` is light and never paint — a filled bloom-coloured
-     shape is the named failure mode for this brand. */
+     a hair in dark. `--dw-bloom` is light and never paint — a filled
+     bloom-coloured shape is the named failure mode for this brand.
+
+     `--dw-accent-fill` / `--dw-on-accent` are the pair for a SOLID accent
+     control, and they exist as a pair because the obvious construction
+     (`bg-accent` + `text-ink-inverse`) measures 4.34:1 in dark and fails. */
   --dw-accent: var(--color-aurora-600);
   --dw-accent-ink: var(--color-aurora-700);
+  --dw-accent-fill: var(--color-aurora-600);
+  --dw-on-accent: var(--color-parchment-50);
   --dw-bloom: var(--color-aurora-350);
+  /* The seat the current tab sits in. A role rather than an opacity utility,
+     because the utility compiles to `color-mix` with an opaque fallback. */
+  --dw-accent-seat: var(--color-aurora-wash-light);
+
+  /* The interlace band under the lintel and over the navigation.
+
+     It is structural — the edge of the surface above it — and it is NOT the
+     screen's warm point. It used to be: the band paints one knot every 24 px
+     in `--dw-index`, so a 1440 px screen carried ~60 gold knots, twice over,
+     against a brand rule of one warm point per screen. In light the same
+     knots resolved to `brass-700` and the band read as a red-brown dotted
+     ribbon — the dead sandstorm, on every screen, at the top and the bottom.
+
+     Resolved by making the bands cool. The knots are the app's own violet;
+     the warm point moves to the one place it earns, the navigation index that
+     says where you are. `src/index.css` scopes these onto the band's pattern
+     so the band picks them up without any component naming a colour. */
+  --dw-band-strap: var(--color-stone-400);
+  --dw-band-knot: var(--color-aurora-600);
 
   /* The deep field, and what is legible against it. */
   --dw-field: var(--color-lapis-800);
@@ -209,13 +421,27 @@
      difference at all between a cut cell and an uncut one. A hole shows the
      deep *field*, which is cool where the wall is warm, so the aperture reads
      by hue as well as by value and the rim is not carrying it alone. */
-  --dw-aperture: var(--color-lapis-950);
+  /* `lapis-800`, not `lapis-950`, in LIGHT. A hole is dark and that is right —
+     but the deepest lapis cut into a light stone plate measures 19:1, the
+     highest-contrast pair anywhere in the app, spent on a decorative drawing,
+     and it read as two solid black stars in a violet brand. The deep field one
+     step up is still unmistakably a hole and is violet rather than black. */
+  --dw-aperture: var(--color-lapis-800);
   --dw-aperture-rim: var(--color-celestial-100);
 
-  /* Verdicts. Cold light seats a correct answer; copper oxide marks a strike.
+  /* Verdicts. Cold light seats a correct answer; rose marks a strike.
      Neither is ever the only carrier of meaning (CG-18). */
-  --dw-seat: var(--color-tile-600);
-  --dw-strike: var(--color-copper-500);
+  --dw-seat: var(--color-tile-700);
+  --dw-strike: var(--color-rose-700);
+
+  /* A destructive control needs three parts, not one: the word, the frame it
+     is bounded by, and the wash it sits in once it is armed. "Erase
+     everything" was a bare coral phrase floating in white space with nothing
+     to say it was the most consequential control in the app. */
+  --dw-strike-line: var(--color-rose-600);
+  --dw-strike-ground: var(--color-rose-wash-light);
+  --dw-strike-fill: var(--color-rose-700);
+  --dw-on-strike: var(--color-parchment-50);
 
   /* The seat colour as a ground: the recess a correct answer settles into.
      A role of its own, because `ground-sunk` cannot do this job — under
@@ -230,6 +456,47 @@
   /* Focus ring. Contrast against the ground is what matters here, so it is a
      semantic role of its own rather than a reuse of the index. */
   --dw-focus: var(--color-lapis-600);
+
+  /* ── Elevation, the cast-light half ────────────────────────────────────
+     Four surfaces, each a triple of background, edge and cast light. The
+     background and the edge defer to the roles above, so they follow the
+     theme without being declared twice; the shadows name materials, because
+     a light theme's shadow and a dark theme's shadow are not the same idea.
+
+     LIGHT: violet cast light, increasing with height. Two layers each — a
+     tight contact shadow that seats the object, and a wide soft one that
+     gives it height. One layer alone always looks like a CSS default.
+
+     Read the dark values under `.dw-dark`. */
+  --dw-elev-ground-bg: var(--dw-ground);
+  --dw-elev-ground-line: var(--dw-line);
+
+  --dw-elev-sunk-bg: var(--dw-ground-sunk);
+  --dw-elev-sunk-line: var(--dw-line);
+
+  --dw-elev-surface-bg: var(--dw-ground-raised);
+  --dw-elev-surface-line: var(--dw-line);
+  --dw-elev-surface-shadow:
+    0 1px 1px var(--color-umbra-soft), 0 3px 8px -3px var(--color-umbra-mid);
+
+  --dw-elev-raised-bg: var(--dw-ground-lifted);
+  --dw-elev-raised-line: var(--dw-line);
+  --dw-elev-raised-shadow:
+    0 1px 1px var(--color-umbra-soft), 0 8px 20px -8px var(--color-umbra-deep);
+
+  --dw-elev-overlay-bg: var(--dw-ground-float);
+  --dw-elev-overlay-line: var(--dw-line-strong);
+  --dw-elev-overlay-shadow:
+    0 2px 6px -1px var(--color-umbra-mid), 0 28px 64px -16px var(--color-umbra-cast);
+
+  /* The bar the content scrolls under. Not a shadow on the bar — a shadow
+     the bar casts UP onto the page, which is the direction a bottom tab bar
+     casts and the reason card art currently passes behind it with no
+     relationship at all. */
+  --dw-elev-bar-shadow: 0 -1px 2px var(--color-umbra-soft), 0 -8px 20px -12px var(--color-umbra-mid);
+
+  /* The dimming behind a sheet. */
+  --dw-scrim: var(--color-umbra-scrim);
 
   /* ── Generated key art ─────────────────────────────────────────────────
      The one part of this design that does NOT re-cut for dark, and the
@@ -266,64 +533,207 @@
      test keys on exactly that: a semantic token that resolves to a material
      must exist in both themes; one that does not, must not. */
 
-  /* Motion. `detent` is the 200 ms seat from EXPERIENCE_DESIGN; `quick` is a
-     single frame of acknowledgement; `settle` is the world moving, which the
-     work surface never waits for. */
-  --dw-motion-quick: 120ms;
-  --dw-motion-detent: 200ms;
-  --dw-motion-settle: 420ms;
-  --dw-ease-detent: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* ── Motion ────────────────────────────────────────────────────────────
+     Three motions, and the app needs no fourth. Each is a duration paired
+     with an easing, and the pairing is asymmetric on purpose — the single
+     loudest motion tell of a web page is one curve used in both directions,
+     because nothing physical decelerates into a stop and out of one at the
+     same rate.
 
-  /* Cut radii. Stone is worked square; these are chamfers, not pills. */
+       press    90 ms, decelerating. The finger is already there; the only
+                job is to acknowledge before the eye can doubt. Anything
+                over ~100 ms reads as lag rather than as feedback.
+       enter    260 ms, entering (slow out of the gate, long tail). A surface
+                arriving explains where it came from. This is the curve iOS
+                and Material both use for an element appearing.
+       exit     160 ms, exiting (fast off the mark, hard stop). Leaving is
+                always quicker than arriving: the user has already decided,
+                and waiting for a symmetric fade is what makes an interface
+                feel slow even when it is not.
+
+     `quick`, `detent` and `settle` are kept because they are already named in
+     EXPERIENCE_DESIGN and in shipping components: a state change, the 200 ms
+     seat, and the world moving (which the work surface never waits for). */
+  --dw-motion-press: 90ms;
+  --dw-motion-quick: 120ms;
+  --dw-motion-exit: 160ms;
+  --dw-motion-detent: 200ms;
+  --dw-motion-enter: 260ms;
+  --dw-motion-settle: 420ms;
+
+  --dw-ease-press: cubic-bezier(0.34, 0.8, 0.34, 1);
+  --dw-ease-enter: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --dw-ease-exit: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --dw-ease-detent: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dw-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* The composites, so a component writes one token rather than two and
+     cannot pair the wrong curve with the wrong duration. */
+  --dw-transition-press: var(--dw-motion-press) var(--dw-ease-press);
+  --dw-transition-state: var(--dw-motion-quick) var(--dw-ease-standard);
+  --dw-transition-enter: var(--dw-motion-enter) var(--dw-ease-enter);
+  --dw-transition-exit: var(--dw-motion-exit) var(--dw-ease-exit);
+
+  /* How far a press sinks and how far a surface travels in. Tokens rather
+     than literals so reduced motion can flatten them to nothing, which a
+     duration alone cannot do — a 0 ms transition to `scale(0.97)` still
+     leaves the thing 3% smaller. */
+  --dw-press-scale: 0.97;
+  --dw-enter-lift: 0.5rem;
+
+  /* Cut radii. Stone is worked square; these are chamfers, not pills.
+     `xl` is the sheet, and it is the largest cut in the app. */
   --dw-cut-sm: 2px;
   --dw-cut-md: 4px;
   --dw-cut-lg: 8px;
+  --dw-cut-xl: 12px;
 
-  /* ── The vertical scale ────────────────────────────────────────────────
-     One scale, in one place. Every screen in this host is a list of rows in a
-     column, and on a short phone the thing that runs out is vertical space —
-     so the padding, the gaps and the frame come down together rather than each
-     component carrying its own literal and being tuned separately.
+  /* ── The spacing rhythm ────────────────────────────────────────────────
+     One scale, in one place, and every gap in the harness is a step on it.
+     Eight steps, doubling then stepping by eighths of a rem, so nothing lands
+     on a half pixel at the 16 px default and nothing lands between two steps
+     because it "looked better" once on one screen.
 
-     The row height itself does NOT come down with them, and that is the point
-     of separating the two: `--dw-stack-gap` is taste, a 64 px row is a
+     A premium app has ONE rhythm. Screens that mix ad-hoc padding read as
+     several screens built by several people, which is exactly what the
+     baseline audit found: a fact row optically centred at 12 px and a choice
+     row with 8 px above its control and 12 px below it, alternating down
+     Settings. */
+  --dw-space-1: 0.25rem; /*  4 */
+  --dw-space-2: 0.5rem; /*  8 */
+  --dw-space-3: 0.75rem; /* 12 */
+  --dw-space-4: 1rem; /* 16 */
+  --dw-space-5: 1.5rem; /* 24 */
+  --dw-space-6: 2rem; /* 32 */
+  --dw-space-7: 3rem; /* 48 */
+  --dw-space-8: 4rem; /* 64 */
+
+  /* The roles. Every screen in this host is a list of rows in a column, and
+     on a short phone the thing that runs out is vertical space — so the
+     padding, the gaps and the frame come down together at the rungs below
+     rather than each component carrying its own literal and being tuned
+     separately.
+
+     The row height and the touch floor do NOT come down with them, and that
+     is the point of separating the two: gaps are taste, a 64 px row is a
      child-sized target, and a design that shrinks a target to fit another row
      on screen has made the app worse in order to look tidier. */
-  --dw-frame-pad: 1.25rem;
-  --dw-stack-gap: 1.5rem;
-  --dw-stack-gap-tight: 1rem;
-  --dw-surface-pad: 1.5rem;
+  /* The screen gutter is the one role in this list that is HORIZONTAL, and it
+     is the only one keyed to width rather than to height (see the rungs
+     below). Keyed to height with the rest, a 1024 × 768 iPad in landscape got
+     a 14 px gutter while a 390 × 844 phone got 16 and a 430 × 932 phone got
+     20 — a wider screen with a tighter margin, and a 6 px re-gutter of the
+     whole app every time one device was rotated. */
+  --dw-frame-pad: 1rem; /* screen edge → content */
+  --dw-stack-gap: 1.5rem; /* course → course */
+  --dw-stack-gap-tight: 1rem; /* within a course */
+  --dw-surface-pad: 1.5rem; /* inside a card or a course */
+  --dw-lintel-pad: 0.75rem; /* inside the lintel */
+  --dw-row-pad: 0.75rem; /* a row's own vertical padding */
+  --dw-row-gap: 1rem; /* a row's label → its value */
+  --dw-label-gap: 0.5rem; /* a legend → the control it labels */
+  --dw-grid-gap: 1rem; /* the catalogue grid */
+  --dw-inset: 0.75rem; /* inside a chip or a segment */
 
-  --dw-lintel-pad: 0.75rem;
+  /* Sizes that are facts about a hand, not taste, and therefore never scale
+     down: 44 px is the platform touch floor and 64 px is a child-sized row.
+     `--dw-target-comfort` is what anything a CHILD taps should be. */
+  --dw-target-min: 2.75rem; /* 44 px */
+  --dw-target-comfort: 3.5rem; /* 56 px */
+  --dw-row-min: 4rem; /* 64 px */
+
+  /* A true hairline. `1px` on a 3× screen is three device pixels, which is
+     the width of a border on a web page and about three times the width of a
+     separator in a native list. */
+  --dw-hairline: 1px;
+
+  /* ── The measures ──────────────────────────────────────────────────────
+     Two, and only two, and everything on a screen aligns to one of them.
+
+     The baseline audit found three competing measures on one desktop screen —
+     a full-bleed lintel, a 1152 px surface, a 672 px column of rows and a
+     full-bleed five-cell tab bar — so the wordmark, the content and the tab
+     labels each started at a different x and Parents at 1440×900 used about
+     a fifth of the screen.
+
+       `--dw-measure-text`   a column of rows, at a comfortable reading width.
+       `--dw-measure-frame`  the widest the chrome ever gets: the lintel, the
+                             navigation, and a grid of cards. The lintel and
+                             the nav align to THIS, and the column of rows is
+                             centred inside it, so there are two left edges on
+                             a wide screen instead of four. */
+  --dw-measure-text: 42rem; /* 672 px */
+  --dw-measure-frame: 72rem; /* 1152 px */
 
   /* Three rungs, one per device class this app ships to: a tablet, a phone, and
      a small phone. Untouched above 900 px — the Galaxy Tab A9 and the iPad get
      the design at full size, and nothing below is a compromise they pay for. */
+  /* The gutter, by WIDTH, and monotonic: every step out gives the content
+     more air, and rotating a device never takes any away. */
+  @media (min-width: 30rem) {
+    --dw-frame-pad: 1.25rem;
+  }
+
+  @media (min-width: 64rem) {
+    --dw-frame-pad: 1.5rem;
+  }
+
+  @media (max-width: 22.5rem) {
+    --dw-frame-pad: 0.75rem;
+  }
+
   @media (max-height: 900px) {
-    --dw-frame-pad: 1rem;
     --dw-stack-gap: 1.25rem;
     --dw-stack-gap-tight: 0.875rem;
     --dw-surface-pad: 1rem;
     --dw-lintel-pad: 0.625rem;
+    --dw-row-pad: 0.625rem;
+    --dw-label-gap: 0.5rem;
+    --dw-grid-gap: 0.875rem;
+  }
+
+  /* iPad landscape is 1024 × 768 and it fell into the rung above, where the
+     six rows of Settings overran the fold by 65 px on the widest tablet
+     orientation the app ships to. Its own rung, because "nearly fits" on the
+     screen a parent sets the app up on is worth nothing. */
+  @media (max-height: 820px) {
+    --dw-stack-gap: 1rem;
+    --dw-stack-gap-tight: 0.75rem;
+    --dw-surface-pad: 0.875rem;
+    --dw-lintel-pad: 0.5rem;
+    --dw-row-pad: 0.5rem;
+    --dw-label-gap: 0.375rem;
+    --dw-grid-gap: 0.75rem;
   }
 
   @media (max-height: 720px) {
-    --dw-frame-pad: 0.625rem;
     --dw-stack-gap: 0.75rem;
     --dw-stack-gap-tight: 0.5rem;
     --dw-surface-pad: 0.5rem;
     --dw-lintel-pad: 0.5rem;
+    --dw-row-pad: 0.375rem;
+    --dw-label-gap: 0.375rem;
+    --dw-grid-gap: 0.625rem;
   }
 
   /* The shortest viewport this app ships to gets its own rung. "Nearly fits"
      is worth nothing on a 320 × 568 screen: one row of a list below the fold
      is one row a child does not know is there. */
   @media (max-height: 620px) {
-    --dw-frame-pad: 0.5rem;
     --dw-stack-gap: 0.5rem;
     --dw-stack-gap-tight: 0.375rem;
     --dw-surface-pad: 0.25rem;
     --dw-lintel-pad: 0.25rem;
+    --dw-row-pad: 0.25rem;
+    --dw-label-gap: 0.25rem;
+    --dw-grid-gap: 0.5rem;
+  }
+
+  /* A device pixel is a device pixel. On 2× and 3× screens the platform draws
+     its separators at a physical pixel, and matching that is one of the
+     quieter differences between an app and a page. */
+  @media (min-resolution: 2dppx) {
+    --dw-hairline: 0.5px;
   }
 
   /* ── Platform facts, inherited mechanically from Corpán's stylesheet ────
@@ -355,9 +765,12 @@
   --dw-ground: var(--color-basalt-800);
   --dw-ground-sunk: var(--color-basalt-950);
   --dw-ground-raised: var(--color-basalt-700);
+  --dw-ground-lifted: var(--color-basalt-600);
+  --dw-ground-float: var(--color-basalt-500);
   --dw-ground-deep: var(--color-basalt-950);
 
   --dw-line: var(--color-stone-800);
+  --dw-line-soft: var(--color-basalt-700);
   --dw-line-strong: var(--color-stone-600);
   --dw-line-cut: var(--color-basalt-950);
 
@@ -370,7 +783,15 @@
 
   --dw-accent: var(--color-aurora-500);
   --dw-accent-ink: var(--color-aurora-300);
+  /* Not `aurora-500`: white on it measures 4.15:1 and fails AA, and a solid
+     control is exactly where a child reads a word off a colour. */
+  --dw-accent-fill: var(--color-aurora-550);
+  --dw-on-accent: var(--color-parchment-50);
   --dw-bloom: var(--color-aurora-400);
+  --dw-accent-seat: var(--color-aurora-wash-dark);
+
+  --dw-band-strap: var(--color-stone-600);
+  --dw-band-knot: var(--color-aurora-500);
 
   --dw-field: var(--color-lapis-800);
   --dw-field-ink: var(--color-celestial-300);
@@ -379,15 +800,42 @@
   --dw-aperture-rim: var(--color-celestial-300);
 
   --dw-seat: var(--color-tile-400);
-  /* The lighter oxide, not the darker one. `copper-700` on the violet void is
-     a mark a child has to hunt for; a strike is the one thing on the screen
+  /* The lighter rose, not the darker one. `rose-700` on the violet void is a
+     mark a child has to hunt for; a strike is the one thing on the screen
      that must never be missed. */
-  --dw-strike: var(--color-copper-400);
+  --dw-strike: var(--color-rose-300);
+  --dw-strike-line: var(--color-rose-600);
+  --dw-strike-ground: var(--color-rose-wash-dark);
+  --dw-strike-fill: var(--color-rose-300);
+  --dw-on-strike: var(--color-basalt-900);
   --dw-seat-ground: var(--color-tile-400-wash);
 
   --dw-case: var(--color-walnut-800);
 
   --dw-focus: var(--color-lapis-400);
+
+  /* Elevation, dark. Height is carried by the STONE, not by the shadow —
+     a drop shadow on a near-black ground is invisible, which is why so many
+     dark themes have no depth at all. Each surface is a step lighter than
+     the one below it, and each carries a one-pixel lit top edge, the way a
+     raised face catches the light above it. The cast shadow is still there,
+     tightened and deepened, to seat the object rather than to lift it. */
+  --dw-elev-surface-shadow:
+    inset 0 1px 0 var(--color-sheen-soft), 0 2px 8px -4px var(--color-void-deep);
+  --dw-elev-raised-shadow:
+    inset 0 1px 0 var(--color-sheen-mid), 0 8px 20px -8px var(--color-void-deep);
+  --dw-elev-overlay-shadow:
+    inset 0 1px 0 var(--color-sheen-mid), 0 28px 64px -16px var(--color-void-cast);
+  /* A cast shadow cannot separate anything from a near-black ground: measured,
+     the wide layer moves the pixels above the bar from rgb(11 6 24) to
+     rgb(10 5 22), which is nothing. In dark the bar is separated the way every
+     dark tab bar is — by its own lighter stone plus a LIT top edge — so the
+     edge is `sheen-mid` rather than `sheen-soft` and is doing the work
+     deliberately rather than by accident. The cast layer stays for the few
+     pixels where card art passes under it. */
+  --dw-elev-bar-shadow: 0 -1px 0 var(--color-sheen-mid), 0 -10px 24px -14px var(--color-void-mid);
+
+  --dw-scrim: var(--color-void-scrim);
 
   /* Key art does not re-cut — see the block above. Same values, stated twice,
      because the layering test is right to insist and a stylesheet it cannot
@@ -412,13 +860,19 @@
 /* ── Utilities ────────────────────────────────────────────────────────────
    `inline` is required: it makes Tailwind emit `var(--dw-ground)` rather than
    resolving the token at build time, which is what lets one stylesheet serve
-   both themes. */
+   both themes.
+
+   Everything published here is a role. A component writes `bg-ground-lifted`,
+   `p-surface`, `gap-stack` or `shadow-raised` and never a number. */
 @theme inline {
   --color-ground: var(--dw-ground);
   --color-ground-sunk: var(--dw-ground-sunk);
   --color-ground-raised: var(--dw-ground-raised);
+  --color-ground-lifted: var(--dw-ground-lifted);
+  --color-ground-float: var(--dw-ground-float);
   --color-ground-deep: var(--dw-ground-deep);
   --color-line: var(--dw-line);
+  --color-line-soft: var(--dw-line-soft);
   --color-line-strong: var(--dw-line-strong);
   --color-line-cut: var(--dw-line-cut);
   --color-ink: var(--dw-ink);
@@ -428,17 +882,56 @@
   --color-index-lit: var(--dw-index-lit);
   --color-accent: var(--dw-accent);
   --color-accent-ink: var(--dw-accent-ink);
+  --color-accent-fill: var(--dw-accent-fill);
+  --color-accent-seat: var(--dw-accent-seat);
+  --color-on-accent: var(--dw-on-accent);
   --color-bloom: var(--dw-bloom);
+  --color-band-strap: var(--dw-band-strap);
+  --color-band-knot: var(--dw-band-knot);
   --color-field: var(--dw-field);
   --color-field-ink: var(--dw-field-ink);
+  --color-aperture: var(--dw-aperture);
+  --color-aperture-rim: var(--dw-aperture-rim);
   --color-seat: var(--dw-seat);
+  --color-seat-ground: var(--dw-seat-ground);
   --color-strike: var(--dw-strike);
+  --color-strike-line: var(--dw-strike-line);
+  --color-strike-ground: var(--dw-strike-ground);
+  --color-strike-fill: var(--dw-strike-fill);
+  --color-on-strike: var(--dw-on-strike);
   --color-case: var(--dw-case);
   --color-focus: var(--dw-focus);
+  --color-scrim: var(--dw-scrim);
 
   --radius-cut-sm: var(--dw-cut-sm);
   --radius-cut-md: var(--dw-cut-md);
   --radius-cut-lg: var(--dw-cut-lg);
+  --radius-cut-xl: var(--dw-cut-xl);
+
+  /* The elevation ladder as `shadow-*`. Paired with `bg-ground-raised` /
+     `bg-ground-lifted` / `bg-ground-float` and `border-line`, these are the
+     four surfaces of the app and there is no fifth. */
+  --shadow-surface: var(--dw-elev-surface-shadow);
+  --shadow-raised: var(--dw-elev-raised-shadow);
+  --shadow-overlay: var(--dw-elev-overlay-shadow);
+  --shadow-bar: var(--dw-elev-bar-shadow);
+
+  /* The rhythm as `p-*` / `gap-*` / `m-*`. */
+  --spacing-frame: var(--dw-frame-pad);
+  --spacing-surface: var(--dw-surface-pad);
+  --spacing-lintel: var(--dw-lintel-pad);
+  --spacing-stack: var(--dw-stack-gap);
+  --spacing-stack-tight: var(--dw-stack-gap-tight);
+  --spacing-row: var(--dw-row-pad);
+  --spacing-row-gap: var(--dw-row-gap);
+  --spacing-label: var(--dw-label-gap);
+  --spacing-grid: var(--dw-grid-gap);
+  --spacing-inset: var(--dw-inset);
+  --spacing-target: var(--dw-target-min);
+  --spacing-target-comfort: var(--dw-target-comfort);
+  --spacing-row-min: var(--dw-row-min);
+  --spacing-measure-text: var(--dw-measure-text);
+  --spacing-measure-frame: var(--dw-measure-frame);
 }
 
 /* ── The settings, applied ────────────────────────────────────────────────
@@ -464,9 +957,14 @@
    is the same collapse, and both are needed: a child on a shared tablet whose
    OS setting is somebody else's is exactly who this switch is for. */
 :root[data-motion="reduced"] {
+  --dw-motion-press: 0ms;
   --dw-motion-quick: 0ms;
+  --dw-motion-exit: 0ms;
   --dw-motion-detent: 0ms;
+  --dw-motion-enter: 0ms;
   --dw-motion-settle: 0ms;
+  --dw-press-scale: 1;
+  --dw-enter-lift: 0px;
 }
 
 :root[data-motion="reduced"] *,
@@ -484,12 +982,20 @@
    change; the belt-and-braces rule below catches anything that hardcoded its
    own duration anyway. Both are needed: the first keeps the design honest,
    the second keeps a stray `transition: all 300ms` from moving the screen for
-   a child who asked it not to. */
+   a child who asked it not to.
+
+   The displacement tokens collapse too. A 0 ms transition into `scale(0.97)`
+   is still a 3% shrink; it just happens instantly, which is worse. */
 @media (prefers-reduced-motion: reduce) {
   :root {
+    --dw-motion-press: 0ms;
     --dw-motion-quick: 0ms;
+    --dw-motion-exit: 0ms;
     --dw-motion-detent: 0ms;
+    --dw-motion-enter: 0ms;
     --dw-motion-settle: 0ms;
+    --dw-press-scale: 1;
+    --dw-enter-lift: 0px;
   }
 
   *,
