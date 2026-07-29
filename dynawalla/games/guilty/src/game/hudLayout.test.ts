@@ -135,6 +135,30 @@ test("the accusation does not move at all when there is no notch", () => {
   }
 });
 
+test("the accusation stays over the point the shells fan out of", () => {
+  // `fitCamera` maps world x = 0 to `w / 2`, and the husks are born at world
+  // x = 0. iOS reports the notch on ONE long edge, so a phone rotated left and
+  // a phone rotated right give asymmetric insets — and a sum centred on the
+  // safe area would slide sideways off the fan-out. The box gives up width
+  // instead of moving.
+  const LOPSIDED: Insets = { top: 0, right: 0, bottom: 21, left: 47 };
+  for (const [name, w, h] of VIEWPORTS) {
+    for (const insets of [FLAT, NOTCH, NOTCH_SIDE, LOPSIDED]) {
+      const l = hudLayout(w, h, safeRect(w, h, insets));
+      assert.equal(
+        l.equation.x + l.equation.w / 2,
+        w / 2,
+        `${name}: the sum drifted off the husks' lane`,
+      );
+      assert.equal(
+        hitsHostChrome(l.equation, w, insets),
+        false,
+        `${name}: the sum is under a host control`,
+      );
+    }
+  }
+});
+
 test("the trench is not letterboxed by the insets", () => {
   // The counterpart assertion, and the reason `safeRect` is not simply applied
   // to everything. The camera is fitted to the whole glass in `game.ts`, and

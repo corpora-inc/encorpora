@@ -22,6 +22,20 @@ export type Input = {
 };
 
 export type InputHandlers = {
+  /**
+   * True while something the player can see is covering the game — today, the
+   * how-to-play panel.
+   *
+   * Every listener below is on `window`, not on the canvas, so a DOM scrim
+   * stops the pointer but not the keyboard. Without this, `keyDown` falls out
+   * of its switch into `onStart()` for EVERY key, so a child who opened the
+   * rules on the game-over screen and pressed Escape to close them closed the
+   * panel into a brand new run — wave, lives, score and best combo all reset,
+   * the game-over screen gone. `p` was worse: it paused a game that returns
+   * before it renders, so the panel closed onto a frozen trench with nothing
+   * on screen saying why.
+   */
+  blocked(): boolean;
   onStart(): void;
   onFocus(): void;
   onToggleMute(): void;
@@ -42,6 +56,7 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
   const rectX = (): number => canvas.getBoundingClientRect().left;
 
   const pointerDown = (e: PointerEvent): void => {
+    if (on.blocked()) return;
     canvas.setPointerCapture?.(e.pointerId);
     pointerId = e.pointerId;
     dragging = true;
@@ -71,14 +86,14 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
   };
 
   const pointerUp = (e: PointerEvent): void => {
-    if (e.pointerId !== pointerId) return;
+    if (e.pointerId !== pointerId || on.blocked()) return;
     dragging = false;
     pointerId = -1;
     if (performance.now() - downAt < 230 && moved < 14) on.onFocus();
   };
 
   const keyDown = (e: KeyboardEvent): void => {
-    if (e.repeat) return;
+    if (e.repeat || on.blocked()) return;
     switch (e.key) {
       case "ArrowLeft":
       case "a":
@@ -111,6 +126,8 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
   };
 
   const keyUp = (e: KeyboardEvent): void => {
+    // Not gated: a key held down when the panel opened must still be released,
+    // or the ship steers into the wall the moment the child closes it.
     if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") left = false;
     if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") right = false;
   };

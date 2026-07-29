@@ -944,6 +944,9 @@ export function mount(
   }
 
   const input = attachInput(canvas, world, {
+    // `guide` is declared below; this is only ever called from a DOM event, so
+    // it is read long after the whole mount has finished.
+    blocked: () => guide.isOpen,
     onStart: begin,
     onFocus: spendFocus,
     onToggleMute: () => world.audio.setMuted(!world.audio.muted()),

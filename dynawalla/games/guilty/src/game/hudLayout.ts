@@ -111,17 +111,31 @@ export function hudLayout(w: number, h: number, area: Rect): HudLayout {
   // the viewport. Recomputed rather than hard-coded so a change to the camera's
   // framing moves the type with the husks.
   const eqH = Math.min(h * 0.085, area.h * 0.12) * 1.35;
-  const eqW = right - left;
   const worldCy = (h / 2) * (1 - EQUATION_Y / VIEW_HALF_H);
   // Pushed down only as far as the NOTCH requires — never as far as the host's
-  // controls, because the width above already keeps it out of their columns.
+  // controls, because the width below already keeps it out of their columns.
   // On a flat screen this does nothing at all and the type stays exactly where
   // the husks are born.
   const eqCy = Math.max(worldCy, area.y + eqH / 2);
+  // Centred on the GLASS, not on the safe area, because the husks are born at
+  // world x = 0 and `fitCamera` maps that to `w / 2`. iOS reports the notch on
+  // one long edge only, so a phone rotated left and a phone rotated right give
+  // asymmetric insets — and centring on the safe area would slide the sum ~23px
+  // off the point the four shells fan out of. That fan-out is the whole
+  // tutorial. So the box keeps the glass centre and gives up WIDTH instead,
+  // taking the widest symmetric span that still clears both corners.
+  // The floor is 40, not something comfortable: it is a guard against a degenerate
+  // box, never a licence to overhang a control. `game.ts` clamps the canvas to at
+  // least 320 CSS px and the two insets cannot exceed 47 each, so the channel is
+  // always at least 102px and this never binds on anything real.
+  const eqHalf = Math.max(
+    40,
+    Math.min(right - left, (w / 2 - left) * 2, (right - w / 2) * 2) / 2,
+  );
   const equation: Rect = {
-    x: area.x + area.w / 2 - eqW / 2,
+    x: w / 2 - eqHalf,
     y: eqCy - eqH / 2,
-    w: eqW,
+    w: eqHalf * 2,
     h: eqH,
   };
 
