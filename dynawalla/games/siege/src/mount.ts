@@ -5,6 +5,12 @@
  * Every juice number in here is named in JUICE (constants.ts) so the feel can be
  * tuned without reading the code.
  */
+import {
+  createInstructions,
+  onInsetsChange,
+  safeInsets,
+  type Instructions,
+} from "../../../packs/shared/game-chrome/index.ts";
 import type { Host, Question } from "./contract.ts";
 import { Clock, FIXED_DT } from "./core/time.ts";
 import { Camera } from "./core/camera.ts";
@@ -14,6 +20,7 @@ import { Audio } from "./audio/audio.ts";
 import { Particles, burstSparks, burstShatter, ring, emberMote } from "./render/particles.ts";
 import { bakeBoard } from "./render/bake.ts";
 import { Renderer, computeView, screenToBoard, boardToScreen, type View } from "./render/draw.ts";
+import { boardSafe } from "./ui/chrome.ts";
 import { Hud } from "./ui/hud.ts";
 import {
   CORE_MAX_HP,
@@ -71,6 +78,8 @@ export class Siege {
   private state: State;
   private view: View;
   private ro: ResizeObserver | null = null;
+  private guide: Instructions | null = null;
+  private stopInsets: (() => void) | null = null;
   private raf = 0;
   private lastT = 0;
   private destroyed = false;
@@ -128,7 +137,7 @@ export class Siege {
     this.hud.setReducedMotion(this.cam.reducedMotion);
 
     this.renderer.setBaked(bakeBoard(this.state.plots, this.state.path));
-    this.view = computeView(1, 1, 1);
+    this.view = computeView(1, 1, 1, { x: 0, y: 0, w: 1, h: 1 });
     this.resize();
 
     this.fx = this.makeEffects();
@@ -138,11 +147,69 @@ export class Siege {
       this.ro.observe(this.hud.board);
     }
     window.addEventListener("resize", this.onResize);
+    this.stopInsets = onInsetsChange(this.onResize);
     this.hud.canvas.addEventListener("pointerdown", this.onPointerDown);
     this.hud.canvas.addEventListener("pointermove", this.onPointerMove);
     this.hud.canvas.addEventListener("pointerleave", this.onPointerLeave);
     window.addEventListener("keydown", this.onKey);
     this.hud.root.addEventListener("pointerdown", this.firstGesture, { once: true });
+
+    // How to play. SIEGE opens on a board of empty sockets, a river of lava and
+    // the words "HOLD THE FORGE", and nothing anywhere says that the sums at the
+    // bottom are how you pay for the guns. A child who does not work that out in
+    // the first thirty seconds watches the wave walk into the core and decides
+    // the game is broken. The manual stays reachable mid-wave, because the
+    // moment a child needs the rules is never the title.
+    this.guide = createInstructions(host, {
+      title: "SIEGE",
+      summary: [
+        "Things are walking up the lava river to your forge. Stop them.",
+        "You buy guns with embers, and you get embers by answering the sums at the bottom.",
+      ],
+      sections: [
+        {
+          heading: "Getting embers",
+          lines: [
+            "A sum is always waiting at the bottom of the screen.",
+            "Four answers sit under it. Tap the right one and embers fly up to the counter.",
+            "Tap a wrong one and the anvil goes cold for about a second. You lose no life. You just cannot earn while it is cold.",
+          ],
+        },
+        {
+          heading: "Building a gun",
+          lines: [
+            "Tap an empty socket beside the river. A little menu opens.",
+            "BOLT is cheap and fast. MORTAR hits a group. CHAIN jumps between enemies.",
+            "The cost is on the button. If you do not have enough embers yet, answer more sums.",
+          ],
+        },
+        {
+          heading: "Making a gun stronger",
+          lines: [
+            "Tap a gun you already built.",
+            "Everything slows down and one harder sum fills the screen.",
+            "Get it right and that gun goes up a level. You can do this five times per gun.",
+          ],
+        },
+        {
+          heading: "The overcharge",
+          lines: [
+            "Every right answer fills the OVERCHARGE bar a little.",
+            "When it is full the bar goes bright. Tap it.",
+            "Time almost stops and you get one big sum. Get it right and a blast pushes the whole wave back down the river.",
+          ],
+        },
+        {
+          heading: "Staying alive",
+          lines: [
+            "The row of small orange bars at the top is your forge. Every enemy that reaches it takes one away.",
+            "When they are all gone the run is over, and you can start again.",
+            "Waves get harder. Build early, and keep answering sums while you fight.",
+          ],
+        },
+      ],
+      reducedMotion: this.cam.reducedMotion,
+    });
 
     this.nextQuestion();
     this.hud.showBanner("SIEGE", "HOLD THE FORGE");
@@ -166,6 +233,10 @@ export class Siege {
     this.ro?.disconnect();
     window.removeEventListener("resize", this.onResize);
     window.removeEventListener("keydown", this.onKey);
+    this.stopInsets?.();
+    this.stopInsets = null;
+    this.guide?.destroy();
+    this.guide = null;
     this.hud.destroy();
     if ((globalThis as unknown as { __siege?: unknown }).__siege === this) {
       delete (globalThis as unknown as { __siege?: unknown }).__siege;
@@ -181,7 +252,11 @@ export class Siege {
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     this.hud.canvas.width = Math.round(w * dpr);
     this.hud.canvas.height = Math.round(h * dpr);
-    this.view = computeView(w, h, dpr);
+    // Measured every resize, never cached from construction: a rotation trades
+    // one top inset for two side ones, and iPadOS changes them when the pack is
+    // resized in Split View. Read once and you are correct until the first
+    // rotation and wrong after it.
+    this.view = computeView(w, h, dpr, boardSafe(w, h, safeInsets()));
   }
 
   restart(): void {

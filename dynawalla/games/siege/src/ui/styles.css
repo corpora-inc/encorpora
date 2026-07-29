@@ -46,6 +46,20 @@
 
 /* ------------------------------------------------------------------ top bar */
 
+/* The host paints an exit control over the top-LEFT 44px corner and a
+   how-to-play control over the top-RIGHT one, ON TOP of this bar. So the bar's
+   CONTENTS start after the first and stop before the second — `--sg-corner`
+   comes from the shared host constants, via `chrome.ts`, so the pack follows if
+   the host ever moves them.
+
+   The bar keeps its height and its background still runs the full width. This
+   is a promise about two squares, not a reserved band: reserving the whole top
+   strip cost a sibling game 12% of a small phone's height and broke its layout
+   outright.
+
+   All four edges honour the safe area, not just the top. `viewport-fit=cover`
+   opts this document into the rounded corners on every side, and in landscape
+   the cutout is a SIDE inset — which is where the ember count lives. */
 .sg-top {
   display: flex;
   align-items: center;
@@ -53,7 +67,9 @@
   min-width: 0;
   overflow: hidden;
   padding: 8px 10px calc(8px) 10px;
-  padding-top: max(8px, env(safe-area-inset-top));
+  padding-top: max(8px, env(safe-area-inset-top, 0px));
+  padding-left: calc(env(safe-area-inset-left, 0px) + var(--sg-corner, 54px));
+  padding-right: calc(env(safe-area-inset-right, 0px) + var(--sg-corner, 54px));
   background: linear-gradient(#170f12, #100a0d);
   border-bottom: 1px solid var(--seam);
 }
@@ -65,6 +81,13 @@
   min-width: 0;
   flex: 0 0 auto;
 }
+
+/* The bar gave up 108px to the host's two corners, so what is left has to be
+   able to compress. Before this the children were all `flex: 0 0 auto` under
+   `overflow: hidden`, which does not degrade — it simply cuts the last child
+   off the right-hand edge, and the last children were the sound and speed
+   switches. On a 320px phone they were already invisible. */
+.sg-spacer { min-width: 0; }
 
 .sg-stat-k {
   font-size: 9px;
@@ -112,11 +135,16 @@
   gap: 2px;
   align-items: center;
   flex: 0 1 auto;
-  min-width: 0;
+  min-width: 44px;
+  max-width: 180px;
+  overflow: hidden;
 }
 
 .sg-pip {
-  flex: 0 0 auto;
+  /* Shrinks before anything else does: twenty narrower pips still count, a
+     clipped ember figure does not read at all. */
+  flex: 1 1 auto;
+  min-width: 2px;
   width: clamp(3px, 0.7vw, 7px);
   height: 18px;
   background: linear-gradient(#ffb04a, #ff5a12);
@@ -165,7 +193,7 @@
 
 /* narrow: the fight keeps every pixel it can get */
 @media (max-width: 700px) {
-  .sg-top { gap: 9px; padding-left: 8px; padding-right: 8px; }
+  .sg-top { gap: 9px; }
   .sg-stat-v { font-size: 19px; }
   .sg-stat-k { font-size: 8px; letter-spacing: 0.1em; }
   .sg-core { gap: 1px; }
@@ -173,8 +201,21 @@
   .sg-chip { padding: 6px 8px; font-size: 11px; min-height: 30px; }
 }
 
+/* A small phone, after the host's two corners are paid for. Every figure still
+   fits; the pips give up the difference. */
+@media (max-width: 520px) {
+  .sg-top { gap: 6px; }
+  .sg-stat-v { font-size: 17px; }
+  .sg-stat-k { font-size: 7px; letter-spacing: 0.08em; }
+  .sg-core { gap: 1px; min-width: 40px; }
+}
+
 /* -------------------------------------------------------------------- board */
 
+/* The board's background bleeds to the glass on purpose — that is what
+   `viewport-fit=cover` is for. The square playfield inside it is fitted to the
+   SAFE box by `computeView`, because a socket under a rounded corner is a tower
+   a child cannot build. */
 .sg-board {
   position: relative;
   min-height: 0;
@@ -272,7 +313,9 @@
   gap: 10px;
   align-items: center;
   padding: 10px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(10px, env(safe-area-inset-left, 0px));
+  padding-right: max(10px, env(safe-area-inset-right, 0px));
   background: linear-gradient(#150e11, #0d0709);
   border-top: 1px solid var(--seam);
 }
@@ -348,14 +391,29 @@
   min-width: 0;
 }
 
+/* The three switches — call wave, speed, sound — used to sit at the right-hand
+   end of the status bar, which is the corner the host paints its how-to-play
+   control over, and which on a 320px phone was already clipping them off the
+   screen entirely. They live here now, where the console has room. */
 .sg-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 8px;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.26em;
   color: var(--dim);
+}
+
+.sg-switches {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex: 0 0 auto;
 }
 
 .sg-head .pay {
@@ -524,9 +582,11 @@
 
 .sg-banner {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 16%;
+  left: env(safe-area-inset-left, 0px);
+  right: env(safe-area-inset-right, 0px);
+  /* Below the host's controls even on a short landscape phone, where 16% of the
+     height is less than a 44px button. */
+  top: max(16%, calc(env(safe-area-inset-top, 0px) + 68px));
   z-index: 8;
   display: grid;
   justify-items: center;
@@ -571,7 +631,8 @@
   place-content: center;
   justify-items: center;
   gap: 16px;
-  padding: 20px;
+  padding: calc(20px + env(safe-area-inset-top, 0px)) calc(20px + env(safe-area-inset-right, 0px))
+    calc(20px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
   background: radial-gradient(circle at 50% 46%, rgba(60, 12, 4, 0.72), rgba(6, 3, 4, 0.94));
   backdrop-filter: blur(3px);
   animation: sg-oc-in 0.24s ease-out;
@@ -639,6 +700,8 @@
   place-content: center;
   justify-items: center;
   gap: 10px;
+  padding: calc(env(safe-area-inset-top, 0px) + 68px) calc(env(safe-area-inset-right, 0px) + 12px)
+    calc(env(safe-area-inset-bottom, 0px) + 12px) calc(env(safe-area-inset-left, 0px) + 12px);
   background: rgba(5, 3, 4, 0.9);
   animation: sg-oc-in 0.6s ease-out;
 }
@@ -702,6 +765,13 @@
   }
   .sg-over .lab { font-size: 9px; letter-spacing: 0.1em; }
   .sg-over .pct { font-size: 22px; }
+  /* A short viewport also makes the console's left column narrow — 180px on a
+     320x568 phone. The switch row fits there normally and wraps to a second
+     line for the few seconds the "call the wave in early" chip is showing,
+     which is the right way round: it wraps rather than spilling. */
+  .sg-head { gap: 6px; }
+  .sg-switches { gap: 4px; }
+  .sg-chip { padding: 5px 7px; font-size: 10px; min-height: 28px; }
 }
 
 /* --------------------------------------------------------------- wide layout */
@@ -722,6 +792,8 @@
     border-left: 1px solid var(--seam);
     gap: 14px;
     padding: 14px;
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+    padding-bottom: max(14px, env(safe-area-inset-bottom, 0px));
   }
   .sg-pal { display: grid; }
   .sg-anvil::before {

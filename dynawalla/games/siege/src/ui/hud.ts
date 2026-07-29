@@ -6,6 +6,7 @@
  * crisp on every device.
  */
 import { TOWERS, type TowerKind } from "../game/constants.ts";
+import { chromeVars } from "./chrome.ts";
 import type { Question } from "../contract.ts";
 
 export type HudCallbacks = {
@@ -88,6 +89,7 @@ function speakerGlyph(): SVGSVGElement {
 
 export class Hud {
   readonly root: HTMLDivElement;
+  private style: HTMLStyleElement;
   readonly board: HTMLDivElement;
   readonly canvas: HTMLCanvasElement;
 
@@ -127,6 +129,14 @@ export class Hud {
     const root = el("div", "sg");
     this.root = root;
 
+    // `styles.css` uses `env()` directly everywhere it can — exact, no
+    // JavaScript, and it survives a rotation with no listener. The one thing it
+    // cannot know is how wide the HOST's controls are, so that single number is
+    // written in from the shared constants here.
+    this.style = document.createElement("style");
+    this.style.textContent = chromeVars();
+    root.appendChild(this.style);
+
     // -- top bar -----------------------------------------------------------
     const top = el("div", "sg-top");
 
@@ -164,6 +174,10 @@ export class Hud {
     this.soundChip.appendChild(speakerGlyph());
     this.soundChip.onclick = () => cb.onSound();
 
+    // The three switches are NOT in this bar. Its right-hand end is the corner
+    // the host paints its how-to-play control over, and on a 320px phone the
+    // bar was already over-full and clipping them off the screen. They are
+    // appended to the anvil's head row below, where the console has room.
     top.append(
       embers.wrap,
       dps.wrap,
@@ -171,9 +185,6 @@ export class Hud {
       threat.wrap,
       el("div", "sg-spacer"),
       this.coreEl,
-      this.callChip,
-      this.speedChip,
-      this.soundChip,
     );
 
     // -- board -------------------------------------------------------------
@@ -211,6 +222,9 @@ export class Hud {
     head.appendChild(el("span", "", "ANVIL"));
     this.payEl = el("span", "pay", "+0");
     head.appendChild(this.payEl);
+    const switches = el("div", "sg-switches");
+    switches.append(this.callChip, this.speedChip, this.soundChip);
+    head.appendChild(switches);
     this.promptEl = el("div", "sg-prompt");
     const slugRow = el("div", "sg-slugs");
     for (let i = 0; i < 4; i++) {
@@ -593,6 +607,7 @@ export class Hud {
   }
 
   destroy(): void {
+    this.style.remove();
     this.root.remove();
   }
 }
