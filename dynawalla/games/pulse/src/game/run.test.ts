@@ -30,6 +30,15 @@ import type { LiveNote } from "./judge.ts";
 
 type Report = { questionId: string; correct: boolean; ms: number; answered: string };
 
+/**
+ * `dynawalla-app/src/packs/items.ts` moves the arithmetic ladder UP only on
+ * `verdict.correct && latencyMs <= QUICK_MS`, and `QUICK_MS` is 6000. A game
+ * that reports a latency structurally above it can never raise the maths a
+ * child is served, however well they play — which is the same defect as
+ * escalating on the clock, wearing a different hat.
+ */
+const HOST_QUICK_MS = 6000;
+
 /** 3/4 is in the bar, so the gate stays a number line. */
 function question(n: number) {
   return {
@@ -49,6 +58,8 @@ type Rig = {
   stages: number[];
   /** Audio-clock seconds between a gate appearing and its answer arriving. */
   readingWindows: number[];
+  /** Every `gateResolved` outcome, in order. */
+  outcomes: string[];
   play(seconds: number): void;
   dispose(): void;
 };
@@ -61,6 +72,7 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
   const reports: Report[] = [];
   const stages: number[] = [];
   const readingWindows: number[] = [];
+  const outcomes: string[] = [];
   let n = 0;
 
   const host: Host = {
@@ -89,7 +101,9 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
         .find((x) => x.gate?.questionId === built.questionId && x.gate.correct);
       if (target) readingWindows.push(target.time - ctx.currentTime);
     },
-    gateResolved() {},
+    gateResolved(outcome) {
+      outcomes.push(outcome);
+    },
     bar() {},
     stageChanged(_spec, index) {
       stages.push(index);
@@ -148,6 +162,7 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
     reports,
     stages,
     readingWindows,
+    outcomes,
     play(seconds) {
       const steps = Math.round(seconds / 0.02);
       for (let i = 0; i < steps; i++) step();
@@ -272,4 +287,45 @@ test("the reading window never shrinks because the tempo went up", () => {
         `the floor is ${GATE_READ_SEC}s and it must not depend on the tempo`,
     );
   }
+});
+
+test("a correct answer is reported as a latency the host can still climb on", () => {
+  // Not decoration: the reported `ms` used to run from the moment the question
+  // APPEARED, and the reading-window floor put that above HOST_QUICK_MS by
+  // construction. A child answering every gate right would then have been held
+  // on the easiest rung of the host's ladder for the whole session.
+  for (const startStage of [0, 6, 12]) {
+    const r = rig("right", startStage);
+    r.play(120);
+    const reports = [...r.reports];
+    r.dispose();
+
+    assert.ok(reports.length > 0, `no gate was answered at stage ${startStage}`);
+    const slowest = Math.max(...reports.map((x) => x.ms));
+    assert.ok(
+      slowest < HOST_QUICK_MS,
+      `at stage ${startStage} the slowest correct answer reported ${slowest}ms; the host ` +
+        `stops raising the maths above ${HOST_QUICK_MS}ms, so the ladder would never move`,
+    );
+  }
+});
+
+test("every gate served is resolved exactly once, even at the top of the loop", () => {
+  // At 168 BPM a gate comes every 5 bars — 7.1 s — against a 6 s scheduling
+  // horizon plus the expiry window, so the next gate bar is filled while the
+  // last gate is still live. The single `gate` slot has to be cleared on
+  // purpose; overwritten, its candidates stay strikeable and a stale tap
+  // resolves the question being served right now.
+  const r = rig("never", 40);
+  r.play(180);
+  const seen = r.run.gatesSeen;
+  const expired = r.outcomes.filter((o) => o === "expired").length;
+  r.dispose();
+
+  assert.ok(seen > 8, `only ${seen} gates were served at the top of the loop`);
+  assert.ok(
+    expired >= seen - 1,
+    `${seen} gates were served but only ${expired} ever resolved — the rest were ` +
+      `overwritten in the slot while still live`,
+  );
 });

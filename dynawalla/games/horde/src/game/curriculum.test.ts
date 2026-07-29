@@ -182,3 +182,21 @@ test("the rift asks below what the run has earned, never above", () => {
   const fresh = new Curriculum()
   assert.equal(fresh.difficulty(-1), 1)
 })
+
+test("the run panel counts questions the child ANSWERED, not questions it served", () => {
+  const { host } = recordingHost()
+  const c = new Curriculum()
+
+  for (let i = 0; i < 5; i++) {
+    const q = c.ask(host)
+    c.answered(host, q, q.answer, true, 1200)
+  }
+  for (let i = 0; i < 3; i++) {
+    c.ask(host)
+    c.expired()
+  }
+
+  assert.equal(c.asked, 8)
+  assert.equal(c.answeredCount, 5, "three cores closed unanswered; they are not answers")
+  assert.equal(c.solved, 5)
+})

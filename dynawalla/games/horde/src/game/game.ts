@@ -1707,7 +1707,7 @@ export class Game {
         { label: "SURVIVED", value: `${mm}:${ss < 10 ? "0" : ""}${ss}` },
         { label: "SLAIN", value: String(this.kills) },
         { label: "LEVEL", value: String(this.level) },
-        { label: "ANSWERED", value: `${this.curriculum.solved}/${this.curriculum.asked}` },
+        { label: "ANSWERED", value: `${this.curriculum.solved}/${this.curriculum.answeredCount}` },
         { label: "BEST", value: `${Math.floor(best / 60)}:${String(Math.floor(best % 60)).padStart(2, "0")}` },
       ],
       "THE DARK TOOK YOU",

@@ -91,7 +91,11 @@ const HEALTH = {
 export type ActiveGate = {
   built: BuiltGate;
   bar: number;
-  openedAtPerf: number;
+  /**
+   * Audio time of the first instant a candidate could be struck — the start of
+   * the gate bar. NOT when the question appeared: see `resolveGate`.
+   */
+  strikeableAt: number;
   resolved: boolean;
 };
 
@@ -315,6 +319,26 @@ export class Run {
       this.voices.hat(bt + spb * 0.5, 0.3, false);
     }
 
+    // One gate at a time, deliberately rather than by luck. The reading-window
+    // floor made the lookahead longer than `gateEvery` bars at the top of the
+    // endless loop (a gate every 5 bars at 168 BPM is 7.1 s, against a 6 s
+    // horizon plus the 0.17 s expiry window), so this bar can be filled while
+    // the previous gate is still unresolved. Overwriting the slot would leave
+    // its candidates strikeable: a stale tap would then resolve the question
+    // being served RIGHT NOW and mark every one of its candidates spent, so
+    // that question could never be answered and never be reported.
+    const stale = this.gate;
+    if (stale && !stale.resolved) {
+      stale.resolved = true;
+      this.gateStreak = 0;
+      this.health = Math.max(0, this.health + HEALTH.gateExpired);
+      for (const n of this.notes.gateNotes()) n.judged = "miss";
+      this.fx.gateResolved("expired", null, stale.built);
+      // No `checkStumble()` here on purpose: it can step the stage down and
+      // cancel notes, and this runs INSIDE the fill of the bar it would be
+      // cancelling. The next miss or gate in `update` reaches it a beat later.
+    }
+
     const q = this.host.next();
     const built = buildGate(q, this.rng, { ...DEFAULT_FIT, maxCandidates: 4 });
     this.gatesSeen++;
@@ -331,7 +355,12 @@ export class Run {
         gate: { questionId: q.id, label: c.label, correct: c.correct, pos: c.pos },
       });
     }
-    this.gate = { built, bar, openedAtPerf: performance.now(), resolved: false };
+    this.gate = {
+      built,
+      bar,
+      strikeableAt: this.timeline.timeAt(beat0),
+      resolved: false,
+    };
     this.fx.gateOpen(built);
   }
 
@@ -423,12 +452,29 @@ export class Run {
     this.fx.stray(lane);
   }
 
-  private resolveGate(note: LiveNote, judgment: Judgment, _delta: number): void {
+  private resolveGate(note: LiveNote, judgment: Judgment, delta: number): void {
     const g = this.gate;
     if (!g || g.resolved) return;
     const info = note.gate!;
     g.resolved = true;
-    const ms = Math.max(1, Math.round(performance.now() - g.openedAtPerf));
+    /**
+     * How long the CHILD took, measured from the first instant they could have
+     * answered — not from when the question appeared.
+     *
+     * A candidate cannot be struck before it reaches the strike line, so the
+     * `GATE_READ_SEC`-plus seconds before the gate bar are the game's wait, not
+     * the child's thinking. Reporting them was reporting a property of the
+     * tempo. It also put every single correct answer over the host's fluency
+     * threshold — `dynawalla-app/src/packs/items.ts` climbs the arithmetic
+     * ladder only on `correct && latencyMs <= 6000` — so a child answering
+     * every gate right would have been pinned to the easiest rung forever,
+     * which is the exact failure this game was just fixed for having.
+     *
+     * What is left is honest and small: how far past the first opportunity the
+     * strike landed. In a game whose commit moment is set by the music, that is
+     * the only part of the interval a child owns.
+     */
+    const ms = Math.max(1, Math.round((note.time + delta - g.strikeableAt) * 1000));
     this.host.report({
       questionId: info.questionId,
       correct: info.correct,
