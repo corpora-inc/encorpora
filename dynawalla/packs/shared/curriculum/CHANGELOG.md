@@ -9,6 +9,52 @@ installed pack until that pack is rebuilt and republished.
 
 ## 0.1.0 — Unreleased
 
+### The floor: `gen.arith.number-facts`, and a ladder that starts at `0 + 1`
+
+The easiest thing this library could give a child was `plus(2, 2, 0)` — a
+two-digit column sum. There was no first grade in it and no kindergarten at all,
+so a five-year-old opening the product met second-grade column arithmetic on the
+first card, and a struggling second grader sliding down the ladder hit that same
+card and stopped.
+
+- **A new family, `gen.arith.number-facts`.** A fact is bounded by a **value**
+  (`within twenty, crossing ten`) and a column is bounded by a **width**
+  (`two-digit minuend, one borrow`, which is `94 − 6` as readily as `15 − 8`), so
+  there is no parameter of `gen.arith.column-op` that means "within twenty". The
+  column family's digit-wise machinery does in fact run at one column — only
+  `MIN_DIGITS = 2` stops it — but its walkthrough is a walk down the columns and
+  all three of its mal-rules are bugs in that walk, neither of which is what a
+  child does to get `3 + 5`. The two families are siblings.
+- **Four active rows, `dw.add.facts.*`**, at difficulties −3.00 up to −1.25,
+  entirely below the previous floor of −0.90: sums within ten, differences within
+  ten, and each of those across ten. Level 0 of the first two is the trivial set —
+  `0 + 1`, `1 + 0`, `n − 0`, `n − n` — because a bottom rung that is still a small
+  challenge is not a bottom rung. Only `0 + 0` is excluded, and only because an
+  empty frame is not a question.
+- **The column rows now consume the fact rows.** A carry happens exactly when a
+  column sum crosses ten and a borrow exactly when a difference does, so
+  `cap.arith.sums-across-ten` and its three siblings make the ladder continuous
+  through CG-6 rather than through an editorial ordering. `dw.add.column.*` and
+  `dw.add.regroup.*` gain a `rev` and a prerequisite; no id moved.
+- **A fifth representation, `ten-frame`**, declared and unbuilt like the other
+  four. The counting board is a *place-value* board and handing it `2 + 3` would
+  draw a structure the item is not about, on the screen of the child least able to
+  tell the difference. The lowest three levels of each within-ten row emit the
+  spec; the rows list it as `optional`, because a `required` representation with
+  no renderer is the curriculum row CG-8 exists to stop.
+- **`GeneratorBinding.closedFactSet`, and CG-10's substituted check.** There are
+  thirty-six additions within ten and there is no thirty-seventh, so CG-10's
+  variant-space floor of 975 — derived from a model of generators that do not
+  close — would forbid teaching number facts at all. A level that declares its
+  closed size is measured against that declaration instead, and the substituted
+  check is the sharper one: it fails when the generator reaches a problem the row
+  says does not exist, which the floor could never have seen. CG-7 checks the
+  declaration lines up with the level table and does not undercut `minVariants`.
+- **`graph/ladder.test.ts`.** The active graph has exactly one root, every active
+  row climbs from it, and `activeNodes()` is already in prerequisite order — the
+  order a game walks. Before this change the active graph had two roots and both
+  were two-digit column arithmetic, which every gate in the set passed.
+
 ### Eight generator families across five new domains
 
 The library taught addition and subtraction and nothing else. It now generates

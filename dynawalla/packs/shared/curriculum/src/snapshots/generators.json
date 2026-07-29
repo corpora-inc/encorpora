@@ -22,6 +22,20 @@
     "gen.arith.column-op@1|dw.add.regroup.add-short-addend|L2": "a7cb31b4352648b9",
     "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L0": "a365f4bf15426994",
     "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L1": "22835dd4f74725c5",
-    "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L2": "2ab4671d595a2162"
+    "gen.arith.column-op@1|dw.add.regroup.subtract-short-subtrahend|L2": "2ab4671d595a2162",
+    "gen.arith.number-facts@1|dw.add.facts.add-within-ten|L0": "66c3e6fdbfc565cf",
+    "gen.arith.number-facts@1|dw.add.facts.add-within-ten|L1": "857802faa99256e9",
+    "gen.arith.number-facts@1|dw.add.facts.add-within-ten|L2": "758ee340d60c895d",
+    "gen.arith.number-facts@1|dw.add.facts.add-within-ten|L3": "45f72e71d0aafb43",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-within-ten|L0": "a8da1d56bd080721",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-within-ten|L1": "60fd75fe220bd5b1",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-within-ten|L2": "7588473f494279a3",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-within-ten|L3": "3b8124684d636bd4",
+    "gen.arith.number-facts@1|dw.add.facts.add-across-ten|L0": "31ccf9ba5644983f",
+    "gen.arith.number-facts@1|dw.add.facts.add-across-ten|L1": "f410d4d8d0c1ab55",
+    "gen.arith.number-facts@1|dw.add.facts.add-across-ten|L2": "22c83a1f9c11e00f",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-across-ten|L0": "c133c17ac508e920",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-across-ten|L1": "a7ddbe5c832cdc22",
+    "gen.arith.number-facts@1|dw.add.facts.subtract-across-ten|L2": "60ab69ff4979cea7"
   }
 }

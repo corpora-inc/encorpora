@@ -51,6 +51,7 @@ export type PromptTemplateDeclaration = {
   readonly testRef?: string;
 };
 
+const NUMBER_FACTS = familyId("gen.arith.number-facts");
 const COLUMN_OP = familyId("gen.arith.column-op");
 const PLACE_VALUE = familyId("gen.number.place-value-decompose");
 const COMPARE_ORDER = familyId("gen.number.compare-order");
@@ -77,6 +78,11 @@ const MISSING_OPERAND = familyId("gen.arith.missing-operand");
  * promote.
  */
 export const promptRegistry: readonly PromptTemplateDeclaration[] = [
+  // The bottom of the ladder. Two numbers and an operator, which is the smallest
+  // question this program can ask and the first one a five-year-old sees.
+  { id: locKey("dw.prompt.number-facts.add"), family: NUMBER_FACTS, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.number-facts.sub"), family: NUMBER_FACTS, owner: "PR-2.13", implemented: false },
+
   { id: locKey("dw.prompt.column-op.sub"), family: COLUMN_OP, owner: "PR-2.13", implemented: false },
   { id: locKey("dw.prompt.column-op.add"), family: COLUMN_OP, owner: "PR-2.13", implemented: false },
 

@@ -12,10 +12,12 @@ import { fracEquivalenceFamily } from "./fracEquivalence/family.ts";
 import { longDivFamily } from "./longDiv/family.ts";
 import { missingOperandFamily } from "./missingOperand/family.ts";
 import { multidigitMulFamily } from "./multidigitMul/family.ts";
+import { numberFactsFamily } from "./numberFacts/family.ts";
 import { placeValueFamily } from "./placeValue/family.ts";
 import { roundEstimateFamily } from "./roundEstimate/family.ts";
 
 export const generatorFamilies: readonly AnyGeneratorFamily[] = [
+  erase(numberFactsFamily),
   erase(columnOpFamily),
   erase(placeValueFamily),
   erase(compareOrderFamily),

@@ -66,6 +66,11 @@ export const rendererRegistry: readonly RendererDeclaration[] = [
   { id: "answer:fraction", kind: "answerSchema", owner: PACK, implemented: false },
   { id: "answer:choice", kind: "answerSchema", owner: PACK, implemented: false },
   { id: "rep:counting-board", kind: "representation", owner: PACK, implemented: false },
+  // The quantity picture for the bottom of the ladder. Declared and not built, on
+  // the same terms as everything else here: the rows that emit it list it as
+  // `optional`, because a row that declared it `required` today would be a
+  // curriculum row the app cannot draw, which is the failure CG-8 exists to stop.
+  { id: "rep:ten-frame", kind: "representation", owner: PACK, implemented: false },
   { id: "rep:number-line", kind: "representation", owner: PACK, implemented: false },
   { id: "rep:balance-scale", kind: "representation", owner: PACK, implemented: false },
   // Declared, not built, and for a second reason on top of the one above: the
