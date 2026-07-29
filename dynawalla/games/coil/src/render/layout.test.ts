@@ -2,7 +2,7 @@ import assert from "node:assert/strict"
 import test from "node:test"
 
 import { Rng } from "../core/rng.ts"
-import { LANE_CELLS, cellAt, cellNear, inside, layout } from "./layout.ts"
+import { LANE_CELLS, cellAt, cellNear, inside, viewLayout } from "./layout.ts"
 
 const SEED = 0x0c011960
 
@@ -19,7 +19,7 @@ const VIEWPORTS: [number, number][] = [
 
 test("the lane never claims more than ninety-six cells", () => {
   for (const [w, h] of VIEWPORTS) {
-    const l = layout(w, h)
+    const l = viewLayout(w, h)
     assert.ok(l.lane.capacity <= LANE_CELLS, `${String(w)}×${String(h)}`)
     assert.ok(l.lane.capacity >= 12, `${String(w)}×${String(h)} is playable`)
   }
@@ -27,7 +27,7 @@ test("the lane never claims more than ninety-six cells", () => {
 
 test("nothing overlaps and nothing leaves the viewport", () => {
   for (const [w, h] of VIEWPORTS) {
-    const l = layout(w, h)
+    const l = viewLayout(w, h)
     assert.ok(l.wall.y >= 0)
     assert.ok(l.wall.x >= 0)
     assert.ok(l.wall.x + l.wall.w <= w + 0.5)
@@ -41,7 +41,7 @@ test("nothing overlaps and nothing leaves the viewport", () => {
 
 test("every lever is at least a finger across", () => {
   for (const [w, h] of VIEWPORTS) {
-    const l = layout(w, h)
+    const l = viewLayout(w, h)
     assert.ok(l.shear.w >= 44 && l.shear.h >= 44, `shear at ${String(w)}×${String(h)}`)
     assert.ok(l.furnace.w >= 44 && l.furnace.h >= 44, `furnace at ${String(w)}×${String(h)}`)
   }
@@ -49,7 +49,7 @@ test("every lever is at least a finger across", () => {
 
 test("consecutive lane cells are adjacent — the chain never jumps", () => {
   for (const [w, h] of VIEWPORTS) {
-    const l = layout(w, h)
+    const l = viewLayout(w, h)
     for (let i = 1; i < l.lane.capacity; i++) {
       const a = cellAt(l.lane, i - 1)
       const b = cellAt(l.lane, i)
@@ -60,7 +60,7 @@ test("consecutive lane cells are adjacent — the chain never jumps", () => {
 })
 
 test("the serpentine turns at the end of every row and never crosses itself", () => {
-  const l = layout(1024, 768)
+  const l = viewLayout(1024, 768)
   const seen = new Set<string>()
   for (let i = 0; i < l.lane.capacity; i++) {
     const c = cellAt(l.lane, i)
@@ -73,7 +73,7 @@ test("the serpentine turns at the end of every row and never crosses itself", ()
 })
 
 test("cellNear finds the cell under a point and refuses one that is not", () => {
-  const l = layout(768, 1024)
+  const l = viewLayout(768, 1024)
   const rng = new Rng(SEED ^ 0xdd)
   for (let k = 0; k < 200; k++) {
     const i = rng.int(0, l.lane.capacity - 1)
@@ -86,7 +86,7 @@ test("cellNear finds the cell under a point and refuses one that is not", () => 
 })
 
 test("a point inside a rect is inside it", () => {
-  const l = layout(1024, 768)
+  const l = viewLayout(1024, 768)
   assert.equal(inside(l.shear, l.shear.x + 1, l.shear.y + 1), true)
   assert.equal(inside(l.shear, l.shear.x - 1, l.shear.y + 1), false)
   assert.equal(inside(l.furnace, l.shear.x + 1, l.shear.y + 1), false)
@@ -94,6 +94,6 @@ test("a point inside a rect is inside it", () => {
 
 test("the layout is a pure function of the viewport", () => {
   for (const [w, h] of VIEWPORTS) {
-    assert.deepEqual(layout(w, h), layout(w, h))
+    assert.deepEqual(viewLayout(w, h), viewLayout(w, h))
   }
 })
