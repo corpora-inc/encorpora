@@ -8,6 +8,11 @@ import { RouterProvider } from "react-router"
 // jump from default type to the size a child actually reads at.
 import "./app/theme.ts"
 import "./settings/store.ts"
+// Registered before the first paint for the same reason: the guard has to be on
+// the window before a finger can reach it. See the note at the head of the file
+// for what it does and does not cover — in particular that it cannot see a tap
+// inside a pack's iframe.
+import "./app/zoom.ts"
 import "./index.css"
 
 import { router } from "./app/router.tsx"

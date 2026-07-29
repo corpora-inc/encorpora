@@ -105,6 +105,26 @@
     overflow-x: hidden;
   }
 
+  /* While a pack is on the stage the host document has nowhere to go.
+   *
+   * The stage is `position: fixed; inset: 0`, and on iOS a fixed element is
+   * laid out against the LAYOUT viewport and is not repositioned continuously
+   * while a pan is in flight. So the only way the catalogue behind a running
+   * game can come into view is for the document to be TALLER than that
+   * viewport and to scroll — which is exactly what the pan after a double-tap
+   * zoom does, and a grid of game cards is always taller. Take the scroll away
+   * and there is nothing behind the stage to reach, whether or not the scale
+   * changed.
+   *
+   * A class, never a bare `html` rule: the catalogue has to scroll, and
+   * locking the document unconditionally froze it once already. `zoom.ts`
+   * adds this for exactly as long as a pack is mounted and restores the
+   * scroll offset on the way out. */
+  html.dw-staged,
+  html.dw-staged body {
+    overflow: hidden;
+  }
+
   /* A mouse user genuinely needs a scrollbar — but they need the one their
      desktop draws, which is an overlay thumb on nothing, not a painted grey
      channel down the edge of the page. Thumb only, in the theme's own violet,

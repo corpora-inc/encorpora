@@ -22,6 +22,7 @@ import type { Settings } from "../../../packs/sdk/src/index.ts"
 import { BUILD_VERSION, hapticPorts } from "../app/platform.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
+import { stageDocument } from "../app/zoom.ts"
 import { PassSheet } from "../pass/PassSheet.tsx"
 import { usePass } from "../pass/store.ts"
 import { useProfiles } from "../profiles/store.ts"
@@ -266,6 +267,15 @@ function Curtain({ message, onLeave }: { message: string; onLeave: () => void })
 export function PackStage() {
   const packId = useLaunch((state) => state.packId)
   const leave = useLaunch((state) => state.leave)
+
+  // The host document does not scroll while a game is up. A double tap inside
+  // a pack scales the HOST page — the iframe has no viewport of its own — and
+  // the pan that follows is what slides the catalogue into view above the
+  // stage. It can only slide if there is something to scroll. See zoom.ts.
+  useEffect(() => {
+    if (packId === null) return
+    return stageDocument(document, window)
+  }, [packId])
 
   // Escape leaves, on every platform that has a keyboard. A game that takes the
   // whole window with no keyboard path out is a trap.
