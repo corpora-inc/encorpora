@@ -122,6 +122,25 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
       },
     ],
     reducedMotion: reduced,
+    // This is the game the complaint was about: "I can hear counterweight
+    // playing in the background while I'm reading the instructions." The sound
+    // is held for us; the press window is not, and a window that opens and
+    // whistles behind the scrim costs a round the child never saw.
+    //
+    // The manual only lifts a pause it put on itself. The host can already have
+    // a sheet over the frame, and the tab can already be in the background —
+    // a child who opens and closes the rules underneath either of those must
+    // not be handed back a running yard.
+    onOpen: () => {
+      if (sheeted) return
+      heldForManual = true
+      pauseAll()
+    },
+    onClose: () => {
+      if (!heldForManual) return
+      heldForManual = false
+      resumeAll()
+    },
   })
 
   let tally = loadTally()
@@ -130,6 +149,8 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   let last = 0
   /** Set by the host's `pause`. Blocks the clock *and* the input, separately. */
   let sheeted = false
+  /** True only while the pause in force is the one the manual raised. */
+  let heldForManual = false
   let column: Column | null = null
   let promptRaw = ""
   /**

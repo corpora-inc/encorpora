@@ -86,6 +86,13 @@ export type World = {
 
   phase: Phase;
   paused: boolean;
+  /**
+   * Wall clock at which the current pause began, or 0 when running.
+   *
+   * Only `setPaused` writes it. It exists because the answer clock below is
+   * wall clock, not simulation time.
+   */
+  pausedAt: number;
   reduced: boolean;
   time: number;
   runTime: number;
@@ -154,6 +161,7 @@ export function createWorld(host: Host, audio: Audio, reduced: boolean): World {
 
     phase: "attract",
     paused: false,
+    pausedAt: 0,
     reduced,
     time: 0,
     runTime: 0,
@@ -299,11 +307,43 @@ function beginMutation(w: World, q: Question): void {
   if (w.phase === "play") w.host.haptic("medium");
 }
 
+// -------------------------------------------------------------------- pause
+
+/**
+ * Stop the water, or start it again — and keep the answer clock honest across
+ * the gap.
+ *
+ * **Why this is a function and not `w.paused = true`.** Latency here is *wall*
+ * clock: a trial carries the `performance.now()` it was served at, and a bite
+ * bills the child `now − servedAt`. The simulation stopping does nothing to
+ * that. So a child who pauses — their own P key, the host's sheet, or the
+ * how-to-play manual they opened *because they were stuck* — and reads for two
+ * minutes comes back, eats one orb, and puts a 120,000ms answer on their record
+ * for a question they were never looking at. Reading the rules must not be
+ * evidence about a child.
+ *
+ * Every live trial's start therefore moves forward by exactly the length of the
+ * pause, so the gap is spent by nobody. Idempotent in both directions: a second
+ * pause does not move the mark and a resume of a running world is nothing.
+ */
+export function setPaused(w: World, paused: boolean): void {
+  if (w.paused === paused) return;
+  w.paused = paused;
+  if (paused) {
+    w.pausedAt = nowMs();
+    return;
+  }
+  const held = Math.max(0, nowMs() - w.pausedAt);
+  for (const p of w.pending) p.servedAtMs += held;
+  w.pausedAt = 0;
+}
+
 // --------------------------------------------------------------------- run
 
 export function resetRun(w: World, phase: Phase): void {
   w.phase = phase;
   w.paused = false;
+  w.pausedAt = 0;
   w.runTime = 0;
   w.depth = 1;
   w.score = 0;

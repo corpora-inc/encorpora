@@ -92,18 +92,57 @@ export function mountColossus(
       },
     ],
     reducedMotion: reduced,
+    // Behind the scrim the slabs keep falling and the keystone keeps being
+    // timed, and a child reading the rules is being billed for it.
+    //
+    // The manual only lifts a pause it put on itself. The host can already have
+    // a sheet over the frame — and this game raises one itself, every time a
+    // tower comes down — so a child who opens and closes the rules underneath
+    // it must not be handed back a running building.
+    onOpen: () => {
+      if (paused) return
+      heldForManual = true
+      raiseSheet()
+    },
+    onClose: () => {
+      if (!heldForManual) return
+      heldForManual = false
+      lowerSheet()
+    },
   })
 
   let best = bestStreak()
   let streak = 0
   let running = true
   let paused = false
+  /** True only while the pause in force is the one the manual raised. */
+  let heldForManual = false
   let last = 0
   let frame = 0
   let banner: Banner | null = null
 
   function now(): number {
     return typeof performance === "object" ? performance.now() : Date.now()
+  }
+
+  // The two halves of the pause, named so the host's `pause`/`resume` and the
+  // manual's `onOpen`/`onClose` go through the same door rather than each
+  // keeping their own flag. Both are idempotent: whichever asked second is a
+  // no-op, and nothing double-marks the keystone clock.
+  function raiseSheet(): void {
+    if (paused) return
+    paused = true
+    game.pause(now())
+  }
+
+  function lowerSheet(): void {
+    if (!paused) return
+    paused = false
+    game.resume(now())
+    // The next frame computes its delta from `last`, which was set before the
+    // sheet went up. Forget it, or the first frame back is a whole sheet's
+    // worth of gravity in one step.
+    last = 0
   }
 
   const apply = (events: readonly GameEvent[]): void => {
@@ -239,18 +278,10 @@ export function mountColossus(
 
   return {
     pause(): void {
-      if (paused) return
-      paused = true
-      game.pause(now())
+      raiseSheet()
     },
     resume(): void {
-      if (!paused) return
-      paused = false
-      game.resume(now())
-      // The next frame computes its delta from `last`, which was set before the
-      // sheet went up. Forget it, or the first frame back is a whole sheet's
-      // worth of gravity in one step.
-      last = 0
+      lowerSheet()
     },
     unmount(): void {
       running = false
