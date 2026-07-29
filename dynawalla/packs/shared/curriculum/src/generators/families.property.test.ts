@@ -79,6 +79,8 @@ type Level = {
   readonly level: number;
   readonly status: string;
   readonly minVariants: number;
+  /** The level's whole problem space, where it is closed. See `GeneratorBinding`. */
+  readonly closedFactSet: number | undefined;
   readonly declared: ReadonlySet<string>;
   readonly exercises: readonly Exercise[];
   readonly timingsNs: readonly bigint[];
@@ -124,6 +126,7 @@ function sweep(): Level[] {
         level,
         status: node.status,
         minVariants: node.generator.minVariants,
+        closedFactSet: node.generator.closedFactSet?.[level],
         declared: new Set(node.misconceptions.map(String)),
         exercises,
         timingsNs,
@@ -322,6 +325,18 @@ test("sweep: every level clears its own minVariants, and the sub-floor levels ar
       distinct >= level.minVariants,
       `${level.label}: ${String(distinct)} distinct items over ${String(level.exercises.length)} seeds, below minVariants ${String(level.minVariants)}`,
     );
+    // A level whose problem space is closed is measured against its own
+    // declaration rather than against the floor, for the reason set out on
+    // `GeneratorBinding.closedFactSet`: on thirty-six additions within ten a
+    // repeat is retrieval practice, not a shallow draw. The substituted check is
+    // the sharper one — it fails on a generator that reaches a thirty-seventh.
+    if (level.closedFactSet !== undefined) {
+      assert.ok(
+        distinct <= level.closedFactSet,
+        `${level.label}: ${String(distinct)} distinct items, above the declared closed fact set of ${String(level.closedFactSet)}`,
+      );
+      continue;
+    }
     if (estimate < VARIANT_SPACE_FLOOR) {
       // The measured count leads and the estimate follows, because only one of the
       // two is a measurement. `N²/2C` is optimistic at high collision rates and the
@@ -364,6 +379,7 @@ test("sweep: every level clears its own minVariants, and the sub-floor levels ar
   // The one thing that must never silently become true: an *active* level under
   // the floor. CG-10 would fail on it, and this says so first and by name.
   const activeBelow = LEVELS.filter((level) => level.status === "active").filter((level) => {
+    if (level.closedFactSet !== undefined) return false;
     const distinct = new Set(level.exercises.map(fingerprintItem)).size;
     const collisions = level.exercises.length - distinct;
     if (collisions === 0) return false;

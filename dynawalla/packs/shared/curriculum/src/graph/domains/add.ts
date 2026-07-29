@@ -1,12 +1,18 @@
 /**
- * Domain `add` — addition and subtraction.
+ * Domain `add` — addition and subtraction, from `0 + 1` to `4,003 − 87`.
  *
- * The seed of the V1 graph: the three column-algorithm nodes M2 needs, plus one
- * `draft` node that exists to prove draft rows are excluded from the shipped graph
- * and from all coverage math (CG-7).
+ * Two clusters and two generator families, in one ladder. `facts` binds
+ * `gen.arith.number-facts` and holds the recalled facts a child needs before any
+ * column procedure means anything; `column` and `regroup` bind
+ * `gen.arith.column-op` and hold the procedure. The fact rows are underneath, and
+ * the capability tags below are what make that a mechanical fact rather than an
+ * editorial ordering — see the note on them.
  *
- * The full 32-node domain lands in the M4 promotion PR. Every id here is final —
- * ids are mastery keys on learner devices and are immutable forever.
+ * One `draft` node remains, and it earns its place: it proves draft rows are
+ * excluded from the shipped graph and from all coverage math (CG-7).
+ *
+ * Every id here is final — ids are mastery keys on learner devices and are
+ * immutable forever.
  *
  * `difficulty.levels` restates what `family.difficultyOffset(params)` computes.
  * That is deliberate redundancy: it makes "b is a pure function of generator
@@ -23,11 +29,18 @@ import {
   FORM_FREE_ENTRY,
 } from "../../generators/columnOp/constants.ts";
 import {
+  FORM_FREE_ENTRY as FACTS_FORM_FREE_ENTRY,
+  NUMBER_FACTS_FAMILY,
+  NUMBER_FACTS_FAMILY_REV,
+} from "../../generators/numberFacts/constants.ts";
+import type { NumberFactsParams } from "../../generators/numberFacts/params.ts";
+import {
   MIS_BORROW_ACROSS_ZERO,
   MIS_CARRY_DROPPED,
   MIS_SMALLER_FROM_LARGER,
   REP_COUNTING_BOARD,
 } from "../../malrules/columnOp.ts";
+import { REP_TEN_FRAME } from "../../render/representations.ts";
 import { capabilityTag, locKey, skillId } from "../../types/ids.ts";
 import type { SkillNode } from "../../types/skill.ts";
 
@@ -35,6 +48,35 @@ const CAP_COLUMN_ALIGN = capabilityTag("cap.arith.column-align");
 const CAP_SUB_REGROUP = capabilityTag("cap.arith.sub-regroup");
 const CAP_SUB_ACROSS_ZERO = capabilityTag("cap.arith.sub-across-zero");
 const CAP_ADD_CARRY = capabilityTag("cap.arith.add-carry");
+
+/**
+ * The four fact capabilities, and why they are not decoration.
+ *
+ * A carry happens exactly when a column sum crosses ten, and a borrow happens
+ * exactly when a column difference does. So the column rows do not merely follow
+ * the fact rows in some editorial ordering — they *consume* them, and CG-6 will
+ * name the missing edge if anyone ever cuts one. This is the mechanism that makes
+ * the ladder from `0 + 1` to `4003 − 87` continuous rather than asserted.
+ */
+const CAP_SUMS_WITHIN_TEN = capabilityTag("cap.arith.sums-within-ten");
+const CAP_DIFFERENCES_WITHIN_TEN = capabilityTag("cap.arith.differences-within-ten");
+const CAP_SUMS_ACROSS_TEN = capabilityTag("cap.arith.sums-across-ten");
+const CAP_DIFFERENCES_ACROSS_TEN = capabilityTag("cap.arith.differences-across-ten");
+
+/** Written out so the fact level tables below read as tables. */
+function fact(
+  op: "add" | "sub",
+  maxTotal: number,
+  options: { crossesTen?: boolean; includeZero?: boolean; picture?: boolean } = {},
+): NumberFactsParams {
+  return {
+    op,
+    maxTotal,
+    crossesTen: options.crossesTen ?? false,
+    includeZero: options.includeZero ?? false,
+    picture: options.picture ?? false,
+  };
+}
 
 /** Written out so the level tables below read as tables. */
 function sub(
@@ -64,6 +106,11 @@ function b(hundredths: bigint) {
   return rational(hundredths, 100n);
 }
 
+export const SKILL_ADD_WITHIN_TEN = skillId("dw.add.facts.add-within-ten");
+export const SKILL_SUBTRACT_WITHIN_TEN = skillId("dw.add.facts.subtract-within-ten");
+export const SKILL_ADD_ACROSS_TEN = skillId("dw.add.facts.add-across-ten");
+export const SKILL_SUBTRACT_ACROSS_TEN = skillId("dw.add.facts.subtract-across-ten");
+
 export const SKILL_ADD_NO_REGROUP = skillId("dw.add.column.add-no-regroup");
 export const SKILL_SUBTRACT_NO_REGROUP = skillId("dw.add.column.subtract-no-regroup");
 export const SKILL_ADD_SHORT_ADDEND = skillId("dw.add.regroup.add-short-addend");
@@ -73,12 +120,274 @@ export const SKILL_SUBTRACT_ACROSS_ZERO = skillId("dw.add.regroup.subtract-acros
 export const SKILL_ADD_MULTIDIGIT = skillId("dw.add.regroup.add-multidigit");
 export const SKILL_SUBTRACT_TENTHS = skillId("dw.add.regroup.subtract-tenths");
 
+/**
+ * ## The four fact rows: the bottom of the graph
+ *
+ * Before these, the easiest thing this program could give a child was
+ * `plus(2, 2, 0)` — a two-digit sum. There was no first grade in the curriculum
+ * at all, and a five-year-old opening the product met second-grade column
+ * arithmetic on the first card.
+ *
+ * Four rows, and each one is here because something specific is missing without
+ * it. Two candidates were considered and cut, and they are named below the rows
+ * so that the next person does not re-propose them.
+ *
+ * **Why they are `active` and not `draft`.** Every other draft row in this graph
+ * waits on a statement renderer that no pack has landed, and so do these: CG-8
+ * warns on all of them and fails under `--strict-renderers`, which is unchanged.
+ * What is different is that these rows are the *floor of every game's difficulty
+ * range*. An adaptive controller that walks down when a child struggles walks
+ * down through `activeNodes`, and a draft row is not in it — so a struggling
+ * second grader slides to `43 + 25` and stops there, which is the exact failure
+ * this change exists to fix. A row nobody can draw is a warning; a floor that is
+ * not the floor is a child stuck.
+ *
+ * **The trivial facts are in, unhedged.** `0 + 1`, `1 + 0`, `n − 0` and `n − n`
+ * are all in level 0's set. They are not there for completeness — they are the
+ * rung a child who has slid all the way down lands on, and a bottom rung that is
+ * still a small challenge is not a bottom rung. Nothing about them is made harder
+ * to look more respectable.
+ *
+ * **The one gap that is honest and not filled.** Sorted, the fourteen fact levels
+ * run −3.00, −2.90, −2.85, −2.75, −2.65, −2.50, −2.20, −2.05, then −1.60, −1.55,
+ * −1.50, −1.45, −1.30, −1.25, and the easiest column item is −0.90. Every step is
+ * 0.05 to 0.30 except one: **0.45, between −2.05 and −1.60**, where the ladder
+ * leaves ten behind. That is not an authoring oversight. Crossing ten *is* the
+ * discontinuity of first-grade arithmetic, and the coefficient that produces the
+ * step is column-op's regrouping coefficient reused unchanged, on the argument
+ * that crossing ten and regrouping are one phenomenon measured twice. A row
+ * invented to sit in the gap would be a row with no mathematics of its own.
+ */
+const addWithinTen: SkillNode = {
+  id: SKILL_ADD_WITHIN_TEN,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.facts.add-within-ten.title"),
+  learnerGoal: locKey("dw.skill.add.facts.add-within-ten.goal"),
+  domain: "add",
+  cluster: "facts",
+  bigIdeas: [locKey("dw.idea.number.counting-tells-how-many")],
+  // Grade 0 is kindergarten. `earliest` is what the coverage matrix reads and the
+  // scheduler reads nothing at all: readiness is the prerequisite graph, and this
+  // row has no prerequisites, so it is the entry point at any age.
+  gradeBand: { earliest: 0, nominal: 0, latest: 2 },
+  strandRole: "spine",
+  proficiency: { conceptual: 2, procedural: 1, strategic: 1, adaptive: 0 },
+  classification: "fluency",
+  fluencyTarget: { p50Ms: 6000 },
+  prereqs: [],
+  difficulty: { b: b(-255n), levels: [b(-300n), b(-290n), b(-265n), b(-220n)] },
+  misconceptions: [],
+  // Optional and not required, on the same terms as every other row in this file:
+  // no pack draws a representation yet, and a row that declared one `required`
+  // today would be a curriculum row the app cannot draw. The generator emits the
+  // spec on the first three levels regardless, so the picture arrives with the
+  // renderer rather than after a second authoring pass.
+  representations: { required: [], optional: [REP_TEN_FRAME] },
+  generator: {
+    family: NUMBER_FACTS_FAMILY,
+    familyRev: NUMBER_FACTS_FAMILY_REV,
+    // The root, then within five, then within ten, then within ten with the frame
+    // taken away and the identity facts with it. Four rungs across a range a
+    // five-year-old can walk in a sitting.
+    params: [
+      fact("add", 3, { includeZero: true, picture: true }),
+      fact("add", 5, { includeZero: true, picture: true }),
+      fact("add", 10, { includeZero: true, picture: true }),
+      fact("add", 10),
+    ],
+    forms: [FACTS_FORM_FREE_ENTRY],
+    // Nine: level 0's whole set, which the smallest gate sample already collects.
+    // `minVariants` counts distinct items *in a sample*, so on a closed set it can
+    // never assert more than the sample size makes reachable, and the assertion
+    // that matters is in `numberFacts.test.ts` — it enumerates each level's set
+    // from the level's stated rules and checks the generator reaches every member.
+    minVariants: 9,
+    closedFactSet: [9, 20, 65, 45],
+    consumes: [],
+  },
+  probes: [
+    { level: 0, seed: 1, purpose: "entry" },
+    { level: 3, seed: 2, purpose: "promotion" },
+  ],
+  provides: [CAP_SUMS_WITHIN_TEN],
+  standards: { ccss: ["K.OA.A.5", "1.OA.C.6"] },
+};
+
+const subtractWithinTen: SkillNode = {
+  id: SKILL_SUBTRACT_WITHIN_TEN,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.facts.subtract-within-ten.title"),
+  learnerGoal: locKey("dw.skill.add.facts.subtract-within-ten.goal"),
+  domain: "add",
+  cluster: "facts",
+  bigIdeas: [
+    locKey("dw.idea.number.counting-tells-how-many"),
+    locKey("dw.idea.equality.undoing-runs-both-ways"),
+  ],
+  gradeBand: { earliest: 0, nominal: 1, latest: 2 },
+  strandRole: "spine",
+  proficiency: { conceptual: 2, procedural: 1, strategic: 1, adaptive: 0 },
+  classification: "fluency",
+  fluencyTarget: { p50Ms: 6000 },
+  // A separate row and not a level of its sibling: a child fluent in sums within
+  // ten is routinely not fluent in the differences, and one mastery record for
+  // both would report a fluency the child does not have in the direction that is
+  // actually failing.
+  prereqs: [{ kind: "requires", to: SKILL_ADD_WITHIN_TEN }],
+  difficulty: { b: b(-255n), levels: [b(-285n), b(-275n), b(-250n), b(-205n)] },
+  misconceptions: [],
+  representations: { required: [], optional: [REP_TEN_FRAME] },
+  generator: {
+    family: NUMBER_FACTS_FAMILY,
+    familyRev: NUMBER_FACTS_FAMILY_REV,
+    params: [
+      fact("sub", 3, { includeZero: true, picture: true }),
+      fact("sub", 5, { includeZero: true, picture: true }),
+      fact("sub", 10, { includeZero: true, picture: true }),
+      fact("sub", 10),
+    ],
+    forms: [FACTS_FORM_FREE_ENTRY],
+    minVariants: 9,
+    closedFactSet: [9, 20, 65, 45],
+    consumes: [CAP_SUMS_WITHIN_TEN],
+  },
+  probes: [
+    { level: 0, seed: 1, purpose: "entry" },
+    { level: 3, seed: 2, purpose: "promotion" },
+  ],
+  provides: [CAP_DIFFERENCES_WITHIN_TEN],
+  standards: { ccss: ["K.OA.A.5", "1.OA.C.6"] },
+};
+
+const addAcrossTen: SkillNode = {
+  id: SKILL_ADD_ACROSS_TEN,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.facts.add-across-ten.title"),
+  learnerGoal: locKey("dw.skill.add.facts.add-across-ten.goal"),
+  domain: "add",
+  cluster: "facts",
+  bigIdeas: [locKey("dw.idea.number.ten-is-a-landmark")],
+  gradeBand: { earliest: 1, nominal: 1, latest: 3 },
+  strandRole: "spine",
+  // Strategic rather than procedural: the level table is a range of sums, and the
+  // thing being learned is the bridge through ten, not a sequence of steps.
+  proficiency: { conceptual: 2, procedural: 1, strategic: 2, adaptive: 1 },
+  classification: "fluency",
+  fluencyTarget: { p50Ms: 8000 },
+  prereqs: [{ kind: "requires", to: SKILL_ADD_WITHIN_TEN }],
+  difficulty: { b: b(-260n), levels: [b(-160n), b(-150n), b(-130n)] },
+  misconceptions: [],
+  // No frame: a sum past ten does not fit in one, and by this row the numerals
+  // are the thing being read. The picture is a scaffold for cardinality, not a
+  // decoration to carry up the ladder.
+  representations: { required: [], optional: [] },
+  generator: {
+    family: NUMBER_FACTS_FAMILY,
+    familyRev: NUMBER_FACTS_FAMILY_REV,
+    params: [
+      fact("add", 12, { crossesTen: true }),
+      fact("add", 14, { crossesTen: true }),
+      fact("add", 18, { crossesTen: true }),
+    ],
+    forms: [FACTS_FORM_FREE_ENTRY],
+    // Twelve, under the thirteen a forty-seed sample reaches of level 0's fifteen.
+    // See the note on the within-ten rows: on a closed set this number is bounded
+    // by the sample, not by the mathematics.
+    minVariants: 12,
+    closedFactSet: [15, 26, 36],
+    consumes: [CAP_SUMS_WITHIN_TEN],
+  },
+  probes: [
+    { level: 0, seed: 1, purpose: "entry" },
+    { level: 2, seed: 2, purpose: "promotion" },
+  ],
+  provides: [CAP_SUMS_ACROSS_TEN],
+  standards: { ccss: ["1.OA.C.6", "2.OA.B.2"] },
+};
+
+const subtractAcrossTen: SkillNode = {
+  id: SKILL_SUBTRACT_ACROSS_TEN,
+  rev: 1,
+  status: "active",
+  title: locKey("dw.skill.add.facts.subtract-across-ten.title"),
+  learnerGoal: locKey("dw.skill.add.facts.subtract-across-ten.goal"),
+  domain: "add",
+  cluster: "facts",
+  bigIdeas: [
+    locKey("dw.idea.number.ten-is-a-landmark"),
+    locKey("dw.idea.equality.undoing-runs-both-ways"),
+  ],
+  gradeBand: { earliest: 1, nominal: 1, latest: 3 },
+  strandRole: "spine",
+  proficiency: { conceptual: 2, procedural: 1, strategic: 2, adaptive: 1 },
+  classification: "fluency",
+  fluencyTarget: { p50Ms: 8000 },
+  // Two prerequisites because `15 − 8` is reached two ways and both are taught:
+  // down through ten from the difference side, and as the addition fact `8 + 7`
+  // read backwards. Cutting either edge would leave a child who has only one of
+  // them eligible for a row they cannot get into.
+  prereqs: [
+    { kind: "requires", to: SKILL_SUBTRACT_WITHIN_TEN },
+    { kind: "requires", to: SKILL_ADD_ACROSS_TEN },
+  ],
+  difficulty: { b: b(-270n), levels: [b(-155n), b(-145n), b(-125n)] },
+  misconceptions: [],
+  representations: { required: [], optional: [] },
+  generator: {
+    family: NUMBER_FACTS_FAMILY,
+    familyRev: NUMBER_FACTS_FAMILY_REV,
+    params: [
+      fact("sub", 12, { crossesTen: true }),
+      fact("sub", 14, { crossesTen: true }),
+      fact("sub", 18, { crossesTen: true }),
+    ],
+    forms: [FACTS_FORM_FREE_ENTRY],
+    // Twelve, under the thirteen a forty-seed sample reaches of level 0's fifteen.
+    // See the note on the within-ten rows: on a closed set this number is bounded
+    // by the sample, not by the mathematics.
+    minVariants: 12,
+    closedFactSet: [15, 26, 36],
+    consumes: [CAP_DIFFERENCES_WITHIN_TEN, CAP_SUMS_ACROSS_TEN],
+  },
+  probes: [
+    { level: 0, seed: 1, purpose: "entry" },
+    { level: 2, seed: 2, purpose: "promotion" },
+  ],
+  provides: [CAP_DIFFERENCES_ACROSS_TEN],
+  standards: { ccss: ["1.OA.C.6", "2.OA.B.2"] },
+};
+
+/**
+ * ## Two rows that were considered and are deliberately absent
+ *
+ * **Doubles (`7 + 7`, `8 + 8`).** A real anchor strategy, and not a row: there
+ * are nine doubles in the world and five of them cross ten, so a doubles level
+ * would be a five-item set carved out of `add-across-ten`. What doubles are for
+ * is anchoring the neighbours — `7 + 8` from `7 + 7` — and that is a *hint*, which
+ * belongs in the walkthrough of the row that already contains both facts.
+ *
+ * **Make-ten (`7 + 3`, `6 + 4`).** As a result-unknown question, `7 + 3` is
+ * already an item of `add-within-ten` and a make-ten row would draw the same
+ * cards under a second mastery key. The question that makes it a *strategy* is
+ * `7 + ☐ = 10`, where the unknown is the addend — which is a different family
+ * (`gen.arith.missing-operand`) and already has an id,
+ * `dw.alg.equality.missing-addend`. It stays draft here because promoting it is
+ * that row's own decision and not this change's; the note is so nobody mints a
+ * duplicate.
+ */
 const subtractMultidigit: SkillNode = {
   id: SKILL_SUBTRACT_MULTIDIGIT,
   // rev 2: gained the prerequisite it always had and never declared. Aligning the
   // columns and subtracting without regrouping is not the same skill as regrouping,
   // and a graph whose spine started at the harder one had no entry point.
-  rev: 2,
+  //
+  // rev 3: gained the second one. A borrow happens exactly when a column
+  // difference crosses ten, so `52 − 27` is `12 − 7` inside a procedure, and a
+  // child who cannot do `12 − 7` cannot do this row however well they align.
+  rev: 3,
   status: "active",
   title: locKey("dw.skill.add.regroup.subtract-multidigit.title"),
   learnerGoal: locKey("dw.skill.add.regroup.subtract-multidigit.goal"),
@@ -90,7 +399,10 @@ const subtractMultidigit: SkillNode = {
   proficiency: { conceptual: 2, procedural: 3, strategic: 1, adaptive: 1 },
   classification: "procedural",
   fluencyTarget: { p50Ms: 12000 },
-  prereqs: [{ kind: "requires", to: SKILL_SUBTRACT_NO_REGROUP }],
+  prereqs: [
+    { kind: "requires", to: SKILL_SUBTRACT_NO_REGROUP },
+    { kind: "requires", to: SKILL_SUBTRACT_ACROSS_TEN },
+  ],
   difficulty: {
     b: b(-50n),
     levels: [b(5n), b(35n), b(90n), b(120n)],
@@ -109,7 +421,7 @@ const subtractMultidigit: SkillNode = {
     params: [sub(2, 2, 1, 0), sub(3, 3, 1, 0), sub(3, 3, 2, 0), sub(4, 4, 2, 0)],
     forms: [FORM_FREE_ENTRY, FORM_COLUMN],
     minVariants: 24,
-    consumes: [CAP_COLUMN_ALIGN],
+    consumes: [CAP_COLUMN_ALIGN, CAP_DIFFERENCES_ACROSS_TEN],
   },
   probes: [
     { level: 0, seed: 1, purpose: "entry" },
@@ -160,8 +472,12 @@ const subtractAcrossZero: SkillNode = {
 
 const addMultidigit: SkillNode = {
   id: SKILL_ADD_MULTIDIGIT,
-  /** rev 2: same as its sibling — the non-regrouping column sum is its prerequisite. */
-  rev: 2,
+  /**
+   * rev 2: same as its sibling — the non-regrouping column sum is its prerequisite.
+   * rev 3: and so is the crossing-ten fact. A carry happens exactly when a column
+   * sum crosses ten, so `47 + 25` is `7 + 5` inside a procedure.
+   */
+  rev: 3,
   status: "active",
   title: locKey("dw.skill.add.regroup.add-multidigit.title"),
   learnerGoal: locKey("dw.skill.add.regroup.add-multidigit.goal"),
@@ -173,7 +489,10 @@ const addMultidigit: SkillNode = {
   proficiency: { conceptual: 2, procedural: 3, strategic: 1, adaptive: 1 },
   classification: "procedural",
   fluencyTarget: { p50Ms: 12000 },
-  prereqs: [{ kind: "requires", to: SKILL_ADD_NO_REGROUP }],
+  prereqs: [
+    { kind: "requires", to: SKILL_ADD_NO_REGROUP },
+    { kind: "requires", to: SKILL_ADD_ACROSS_TEN },
+  ],
   difficulty: {
     b: b(-60n),
     levels: [b(-5n), b(25n), b(80n)],
@@ -186,7 +505,7 @@ const addMultidigit: SkillNode = {
     params: [plus(2, 2, 1), plus(3, 3, 1), plus(3, 3, 2)],
     forms: [FORM_FREE_ENTRY, FORM_COLUMN],
     minVariants: 24,
-    consumes: [CAP_COLUMN_ALIGN],
+    consumes: [CAP_COLUMN_ALIGN, CAP_SUMS_ACROSS_TEN],
   },
   probes: [{ level: 0, seed: 1, purpose: "entry" }],
   provides: [CAP_ADD_CARRY],
@@ -253,7 +572,13 @@ const subtractTenths: SkillNode = {
  */
 const subtractNoRegroup: SkillNode = {
   id: SKILL_SUBTRACT_NO_REGROUP,
-  rev: 1,
+  /**
+   * rev 2: gained the prerequisite it always had. Every column of a no-regroup
+   * subtraction is a difference within ten, so this row consumes the fact row
+   * outright — and until the fact row existed, the graph's entry point was a
+   * two-digit column subtraction with nothing underneath it.
+   */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.column.subtract-no-regroup.title"),
   learnerGoal: locKey("dw.skill.add.column.subtract-no-regroup.goal"),
@@ -265,7 +590,7 @@ const subtractNoRegroup: SkillNode = {
   proficiency: { conceptual: 1, procedural: 3, strategic: 0, adaptive: 1 },
   classification: "procedural",
   fluencyTarget: { p50Ms: 10000 },
-  prereqs: [],
+  prereqs: [{ kind: "requires", to: SKILL_SUBTRACT_WITHIN_TEN }],
   difficulty: { b: b(-90n), levels: [b(-90n), b(-60n), b(-30n)] },
   misconceptions: [],
   representations: { required: [], optional: [REP_COUNTING_BOARD] },
@@ -275,7 +600,7 @@ const subtractNoRegroup: SkillNode = {
     params: [sub(2, 2, 0, 0), sub(3, 3, 0, 0), sub(4, 4, 0, 0)],
     forms: [FORM_FREE_ENTRY, FORM_COLUMN],
     minVariants: 24,
-    consumes: [],
+    consumes: [CAP_DIFFERENCES_WITHIN_TEN],
   },
   probes: [{ level: 0, seed: 1, purpose: "entry" }],
   provides: [CAP_COLUMN_ALIGN],
@@ -284,7 +609,8 @@ const subtractNoRegroup: SkillNode = {
 
 const addNoRegroup: SkillNode = {
   id: SKILL_ADD_NO_REGROUP,
-  rev: 1,
+  /** rev 2: same as its sibling — every column here is a sum within ten. */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.column.add-no-regroup.title"),
   learnerGoal: locKey("dw.skill.add.column.add-no-regroup.goal"),
@@ -296,7 +622,7 @@ const addNoRegroup: SkillNode = {
   proficiency: { conceptual: 1, procedural: 3, strategic: 0, adaptive: 1 },
   classification: "procedural",
   fluencyTarget: { p50Ms: 10000 },
-  prereqs: [],
+  prereqs: [{ kind: "requires", to: SKILL_ADD_WITHIN_TEN }],
   difficulty: { b: b(-90n), levels: [b(-90n), b(-60n), b(-30n)] },
   misconceptions: [],
   representations: { required: [], optional: [REP_COUNTING_BOARD] },
@@ -306,7 +632,7 @@ const addNoRegroup: SkillNode = {
     params: [plus(2, 2, 0), plus(3, 3, 0), plus(4, 4, 0)],
     forms: [FORM_FREE_ENTRY, FORM_COLUMN],
     minVariants: 24,
-    consumes: [],
+    consumes: [CAP_SUMS_WITHIN_TEN],
   },
   probes: [{ level: 0, seed: 1, purpose: "entry" }],
   provides: [CAP_COLUMN_ALIGN],
@@ -383,6 +709,10 @@ const addShortAddend: SkillNode = {
 };
 
 export const addDomainNodes: readonly SkillNode[] = [
+  addWithinTen,
+  subtractWithinTen,
+  addAcrossTen,
+  subtractAcrossTen,
   addNoRegroup,
   subtractNoRegroup,
   subtractMultidigit,

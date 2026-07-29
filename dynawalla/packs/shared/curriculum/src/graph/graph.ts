@@ -5,11 +5,18 @@
  * from it and from every coverage count, so the graph can never become a wish list
  * (CG-7).
  *
- * Six domains are represented here and one of them has active rows. That is not an
- * accident of effort: `add` binds `gen.arith.column-op`, which is the only family
- * whose **prompt template** the app can draw, and CG-8 now says so mechanically
- * (`render/prompts.ts`). Every other row is a complete, property-tested generator
- * waiting on the statement renderer PR-2.13 lands.
+ * Six domains are represented here and one of them has active rows. `add` binds
+ * `gen.arith.column-op` and `gen.arith.number-facts`, which between them are the
+ * whole arithmetic ladder from `0 + 1` upward; every other row is a complete,
+ * property-tested generator waiting on the statement renderer PR-2.13 lands.
+ *
+ * Note that "waiting on a renderer" is true of the active rows too — CG-8 warns on
+ * all of them and fails under `--strict-renderers`. What distinguishes an active
+ * row is not that something can draw it. It is that a scheduler and a game can
+ * *reach* it: `activeNodes` is the list an adaptive controller walks in both
+ * directions, so a row that is draft is a rung that does not exist, and the floor
+ * of every game's difficulty range is whatever the lowest active row happens to
+ * be. `ladder.test.ts` holds that floor in place.
  *
  * For twelve of the thirty draft rows, `status` is then the only field that has to
  * change. For the other eighteen it is not: their level tables sit under CG-10's

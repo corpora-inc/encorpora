@@ -31,12 +31,29 @@ export const REP_NUMBER_LINE: RepId = "number-line";
 export const REP_BALANCE_SCALE: RepId = "balance-scale";
 /** Multiples, factors, LCM. Not built — see the renderer registry. */
 export const REP_GEAR_TRAIN: RepId = "gear-train";
+/**
+ * Cardinality. A frame of cells with counters in it, for the bottom of the ladder.
+ *
+ * The fifth representation, and the one CURRICULUM.md's four do not cover. The
+ * other four all answer a question about a number a child can already read: where
+ * it sits, what it is worth, what it balances. A five-year-old at `0 + 1` cannot
+ * yet read `1` fluently as a symbol, so the question has to be a quantity before
+ * it is a numeral, and none of the four draws a quantity.
+ *
+ * It is added rather than borrowed because the near miss is worse than a gap: the
+ * counting board is a **place-value** board, columns of units and tens, drawn to
+ * show what regrouping moves. Handing it `2 + 3` would draw two rows of a
+ * place-value structure that the item is not about, on the screen of the child
+ * least able to tell the difference.
+ */
+export const REP_TEN_FRAME: RepId = "ten-frame";
 
 export const V1_REPRESENTATIONS: readonly RepId[] = [
   REP_COUNTING_BOARD,
   REP_NUMBER_LINE,
   REP_BALANCE_SCALE,
   REP_GEAR_TRAIN,
+  REP_TEN_FRAME,
 ];
 
 /**
@@ -73,7 +90,16 @@ export const REQUIRED_REP_PARAMS: Readonly<Record<string, readonly string[]>> = 
   [REP_NUMBER_LINE]: ["from", "to", "denominator", "mark"],
   [REP_BALANCE_SCALE]: ["left", "right"],
   [REP_COUNTING_BOARD]: [],
+  [REP_TEN_FRAME]: ["capacity", "first", "second", "removed"],
 };
+
+/**
+ * Frames a child can read at a glance. Five for the earliest counting, ten for
+ * the standard frame, twenty for a double one. Not an arbitrary bound: a frame
+ * of seven has no structure to subitise against, which is the only thing a frame
+ * is for.
+ */
+export const TEN_FRAME_CAPACITIES: readonly number[] = [5, 10, 20];
 
 /** Why this spec cannot be drawn, or `null`. */
 export function repSpecDefect(rep: RepId, params: Readonly<Record<string, number>>): string | null {
@@ -103,6 +129,26 @@ export function repSpecDefect(rep: RepId, params: Readonly<Record<string, number
     const left = params["left"] ?? 0;
     const right = params["right"] ?? 0;
     if (left < 0 || right < 0) return "balance-scale pans cannot hold a negative amount";
+  }
+
+  if (rep === REP_TEN_FRAME) {
+    const capacity = params["capacity"] ?? 0;
+    const first = params["first"] ?? 0;
+    const second = params["second"] ?? 0;
+    const removed = params["removed"] ?? 0;
+    if (!TEN_FRAME_CAPACITIES.includes(capacity)) {
+      return `ten-frame capacity must be one of ${TEN_FRAME_CAPACITIES.join(", ")}`;
+    }
+    if (first < 0 || second < 0 || removed < 0) return "ten-frame counts cannot be negative";
+    if (first + second > capacity) return "ten-frame holds more counters than it has cells";
+    if (removed > first) return "ten-frame takes away more counters than it holds";
+    // A frame that both groups and crosses out is telling two stories at once, and
+    // the child has to decide which of them the answer is. `a + b` puts `b` in the
+    // second group; `m − s` crosses `s` out of the first. Never both.
+    if (second > 0 && removed > 0) return "ten-frame groups and takes away in the same picture";
+    // The counters that are left *are* the answer to a subtraction, so a picture
+    // that shows nothing at all is a picture of the whole question missing.
+    if (first + second === 0) return "ten-frame is empty";
   }
 
   return null;

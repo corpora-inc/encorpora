@@ -58,6 +58,36 @@ export function cg7(context: ValidationContext): GateResult {
     if (binding.minVariants <= 0) {
       findings.push(fail("CG-7", "minVariants must be positive", node.id));
     }
+    if (binding.closedFactSet !== undefined) {
+      // The declaration is per level, like `params` and `difficulty.levels`, and a
+      // length mismatch would silently leave the last levels on the ordinary floor
+      // while the row reads as though they were exempt.
+      if (binding.closedFactSet.length !== binding.params.length) {
+        findings.push(
+          fail(
+            "CG-7",
+            `closedFactSet has ${String(binding.closedFactSet.length)} entries for ${String(binding.params.length)} level(s)`,
+            node.id,
+          ),
+        );
+      }
+      binding.closedFactSet.forEach((size, level) => {
+        if (!Number.isSafeInteger(size) || size <= 0) {
+          findings.push(fail("CG-7", `L${String(level)} closedFactSet size must be a positive integer`, node.id));
+          return;
+        }
+        // A row cannot require more distinct items than the mathematics contains.
+        if (size < binding.minVariants) {
+          findings.push(
+            fail(
+              "CG-7",
+              `L${String(level)} declares a closed fact set of ${String(size)} but minVariants ${String(binding.minVariants)}`,
+              node.id,
+            ),
+          );
+        }
+      });
+    }
     if (node.difficulty.levels.length !== binding.params.length) {
       findings.push(
         fail(

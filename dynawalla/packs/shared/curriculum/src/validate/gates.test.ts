@@ -418,6 +418,52 @@ test("CG-10: a level whose variant space is too small fails", () => {
   assert.equal(cg10(healthy, buildSamples(healthy)).status, "pass");
 });
 
+/**
+ * The closed-fact-set branch, from both sides.
+ *
+ * `closedFactSet` replaces CG-10's floor for the levels that declare it, and a
+ * substitution that only ever loosened a gate would be a waiver with a comment on
+ * it. The claim it substitutes is sharper than the floor and this is what checks
+ * it: a level that says "there are nine additions within three" and whose
+ * generator reaches a tenth is a row lying about its own mathematics, and the
+ * floor could never have detected that.
+ */
+test("CG-10: a closed fact set the generator overruns fails", () => {
+  const ADD_WITHIN_TEN = skillId("dw.add.facts.add-within-ten");
+  const understated = replace(ADD_WITHIN_TEN, {
+    generator: {
+      ...node(ADD_WITHIN_TEN).generator,
+      // The level really has nine facts. Claiming four is the shape of a row whose
+      // generator was widened and whose declaration was not.
+      closedFactSet: [4, 20, 65, 45],
+      minVariants: 4,
+    },
+  });
+  const broken = context({ nodes: understated, seedsPerLevel: 200 });
+  assertFails(cg10(broken, buildSamples(broken)), "above the declared closed fact set");
+
+  // And the substitution is doing work: without the declaration, a nine-item level
+  // is far under the 975 floor and the gate fails for the other reason.
+  const { closedFactSet: _dropped, ...withoutDeclaration } = node(ADD_WITHIN_TEN).generator;
+  const undeclared = replace(ADD_WITHIN_TEN, { generator: withoutDeclaration });
+  const floored = context({ nodes: undeclared, seedsPerLevel: 200 });
+  assertFails(cg10(floored, buildSamples(floored)), "below the floor");
+});
+
+test("CG-7: a closed-fact-set declaration that does not line up with the levels fails", () => {
+  const ADD_WITHIN_TEN = skillId("dw.add.facts.add-within-ten");
+  const short = replace(ADD_WITHIN_TEN, {
+    generator: { ...node(ADD_WITHIN_TEN).generator, closedFactSet: [9, 20] },
+  });
+  assertFails(cg7(context({ nodes: short })), "closedFactSet has 2 entries for 4 level(s)");
+
+  // A row cannot require more distinct items than the mathematics contains.
+  const impossible = replace(ADD_WITHIN_TEN, {
+    generator: { ...node(ADD_WITHIN_TEN).generator, minVariants: 30 },
+  });
+  assertFails(cg7(context({ nodes: impossible })), "closed fact set of 9 but minVariants 30");
+});
+
 test("CG-11: a checker that accepts a distractor fails", () => {
   const healthy = context();
   const samples = buildSamples(healthy);

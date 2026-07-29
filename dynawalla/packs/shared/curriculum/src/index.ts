@@ -49,6 +49,19 @@ export type { LongDivParams } from "./generators/longDiv/params.ts";
 export { missingOperandFamily } from "./generators/missingOperand/family.ts";
 export { missingOperandParamSchema } from "./generators/missingOperand/params.ts";
 export type { MissingOperandParams } from "./generators/missingOperand/params.ts";
+export { numberFactsFamily } from "./generators/numberFacts/family.ts";
+export { numberFactsParamSchema } from "./generators/numberFacts/params.ts";
+export type { NumberFactsParams } from "./generators/numberFacts/params.ts";
+export { factSet, factSetSize } from "./generators/numberFacts/facts.ts";
+export type { Fact } from "./generators/numberFacts/facts.ts";
+// Named rather than `export *`: `gen.arith.column-op` already exports its whole
+// constants module here, and both families have a `PROMPT_KEY_ADD`.
+export {
+  NUMBER_FACTS_FAMILY,
+  NUMBER_FACTS_FAMILY_REV,
+  NUMBER_FACTS_FORMS,
+  NUMBER_FACTS_LOC_KEYS,
+} from "./generators/numberFacts/constants.ts";
 export { multidigitMulFamily } from "./generators/multidigitMul/family.ts";
 export { multidigitMulParamSchema } from "./generators/multidigitMul/params.ts";
 export type { MultidigitMulParams } from "./generators/multidigitMul/params.ts";
@@ -102,7 +115,9 @@ export {
   REP_BALANCE_SCALE,
   REP_GEAR_TRAIN,
   REP_NUMBER_LINE,
+  REP_TEN_FRAME,
   REQUIRED_REP_PARAMS,
+  TEN_FRAME_CAPACITIES,
   V1_REPRESENTATIONS,
 } from "./render/representations.ts";
 

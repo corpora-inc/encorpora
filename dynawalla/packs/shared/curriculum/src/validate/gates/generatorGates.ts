@@ -128,7 +128,17 @@ export function cg9(context: ValidationContext, samples: readonly LevelSample[])
   return resultOf("CG-9", "level coverage and difficulty table", findings, notes);
 }
 
-/** CG-10 — variant-space adequacy. See `VARIANT_SPACE_FLOOR`. */
+/**
+ * CG-10 — variant-space adequacy. See `VARIANT_SPACE_FLOOR`.
+ *
+ * A level that declares `closedFactSet` is measured against its own declaration
+ * instead of against the floor. The reasoning is on `GeneratorBinding`: the floor
+ * asks whether a practice run would repeat itself and reads a repeat as evidence
+ * of a shallow generator, and on a closed set of thirty-six additions within ten
+ * the repeat is the pedagogy. The substituted check is not weaker — it fails when
+ * the generator reaches a problem the declared set does not contain, which the
+ * floor could never have seen.
+ */
 export function cg10(_context: ValidationContext, samples: readonly LevelSample[]): GateResult {
   const findings: Finding[] = [];
   const notes: string[] = [];
@@ -139,6 +149,23 @@ export function cg10(_context: ValidationContext, samples: readonly LevelSample[
     if (draws === 0) continue;
     const distinct = new Set(sample.exercises.map(fingerprintItem)).size;
     const collisions = draws - distinct;
+
+    const declared = sample.node.generator.closedFactSet?.[sample.level];
+    if (declared !== undefined) {
+      if (distinct > declared) {
+        findings.push(
+          fail(
+            "CG-10",
+            `${String(distinct)} distinct items in ${String(draws)} draws, above the declared closed fact set of ${String(declared)}: the generator reaches problems the row says do not exist`,
+            sampleLabel(sample),
+          ),
+        );
+      }
+      notes.push(
+        `${sampleLabel(sample)}: ${String(distinct)}/${String(declared)} of a closed fact set, in ${String(draws)} draws`,
+      );
+      continue;
+    }
     // N^2 / 2C, integer, with C=0 meaning "no evidence of any bound below N^2/2".
     const estimate = collisions === 0 ? Math.floor((draws * draws) / 2) : Math.floor((draws * draws) / (2 * collisions));
 

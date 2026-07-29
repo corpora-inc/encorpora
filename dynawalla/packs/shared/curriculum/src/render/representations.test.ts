@@ -92,6 +92,26 @@ test("a spec that cannot be drawn is rejected before anything draws it", () => {
   assert.match(String(drifted), /not a safe integer/);
 });
 
+test("a ten-frame that cannot be drawn is rejected, one reason each", () => {
+  const frame = (params: Record<string, number>): string | null => repSpecDefect("ten-frame", params);
+
+  // The two shapes the number-facts family emits, both drawable.
+  assert.equal(frame({ capacity: 10, first: 2, second: 3, removed: 0 }), null);
+  assert.equal(frame({ capacity: 10, first: 8, second: 0, removed: 3 }), null);
+  // The identity facts at the very bottom of the ladder.
+  assert.equal(frame({ capacity: 10, first: 0, second: 1, removed: 0 }), null);
+  assert.equal(frame({ capacity: 10, first: 1, second: 0, removed: 1 }), null);
+
+  assert.match(String(frame({ capacity: 7, first: 1, second: 1, removed: 0 })), /capacity must be one of/);
+  assert.match(String(frame({ capacity: 10, first: 6, second: 6, removed: 0 })), /more counters than it has cells/);
+  assert.match(String(frame({ capacity: 10, first: 3, second: 0, removed: 4 })), /more counters than it holds/);
+  assert.match(String(frame({ capacity: 10, first: -1, second: 2, removed: 0 })), /cannot be negative/);
+  // Two stories on one frame: the child cannot tell which of them the answer is.
+  assert.match(String(frame({ capacity: 10, first: 4, second: 2, removed: 1 })), /groups and takes away/);
+  // `0 + 0` drawn is an empty frame, which is a picture of the question missing.
+  assert.match(String(frame({ capacity: 10, first: 0, second: 0, removed: 0 })), /is empty/);
+});
+
 test("every V1 representation declares what it requires", () => {
   for (const rep of V1_REPRESENTATIONS) {
     // The gear train is declared and unbuilt, and has no params table yet; the

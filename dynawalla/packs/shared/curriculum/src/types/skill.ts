@@ -60,6 +60,30 @@ export type GeneratorBinding = {
   readonly params: readonly unknown[];
   readonly forms: readonly FormId[];
   readonly minVariants: number;
+  /**
+   * How many problems the level has **in the world**, one entry per level.
+   *
+   * Declared only where the answer is a small finite number that no generator
+   * work can change: there are thirty-six additions within ten, and there is no
+   * thirty-seventh. CG-10's variant-space floor of 975 is derived from a model of
+   * generators that do *not* close — it asks whether a 40-item practice run would
+   * repeat itself, and treats a repeat as evidence of a shallow draw. On a closed
+   * fact set the repeat is not evidence of anything: it is retrieval practice,
+   * which is the entire pedagogy of a fluency row, and a floor of 975 would
+   * forbid teaching number facts at all.
+   *
+   * So this replaces the floor for the levels that declare it, and it is not a
+   * waiver. CG-10 checks the *measured* distinct count against the declared size,
+   * so a generator that can reach a thirty-seventh addition within ten fails the
+   * gate — which is the claim the row is really making, and the one worth
+   * checking. CG-7 checks that a level does not declare `minVariants` above its
+   * own set, and `numberFacts.test.ts` pins the sizes from the other side by
+   * enumerating the sets and asserting the generator reaches every member.
+   *
+   * Omitted means the ordinary floor applies. A level that could be widened and
+   * simply has not been must never carry this field.
+   */
+  readonly closedFactSet?: readonly number[];
   /** Capabilities the generated items assume the child already has (gate CG-6). */
   readonly consumes: readonly CapabilityTag[];
 };

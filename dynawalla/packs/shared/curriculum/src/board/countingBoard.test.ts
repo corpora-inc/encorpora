@@ -12,7 +12,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { rational, toScaled } from "../math/rational.ts";
 import { columnOpFamily } from "../generators/columnOp/family.ts";
-import { FORM_FREE_ENTRY, SLOT_BOTTOM, SLOT_TOP } from "../generators/columnOp/constants.ts";
+import { COLUMN_OP_FAMILY, FORM_FREE_ENTRY, SLOT_BOTTOM, SLOT_TOP } from "../generators/columnOp/constants.ts";
 import { activeNodes, allNodes } from "../graph/graph.ts";
 import { borrowAcrossZero, smallerFromLarger, REP_COUNTING_BOARD } from "../malrules/columnOp.ts";
 import { classify } from "../malrules/registry.ts";
@@ -192,6 +192,11 @@ test("no contrast card ever draws a hole the other plate fills", () => {
   let cards = 0;
 
   for (const node of activeNodes(allNodes)) {
+    // The board is a place-value drawing of a column subtraction, so only the rows
+    // that bind `gen.arith.column-op` can produce one. The number-fact rows below
+    // them are active and bind a different family, and `generateAt` would hand
+    // their parameters to the wrong schema.
+    if (node.generator.family !== COLUMN_OP_FAMILY) continue;
     node.generator.params.forEach((_params, level) => {
       for (let seed = 0; seed < SEEDS; seed++) {
         const exercise = generateAt(node.id, level, seed);
