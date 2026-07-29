@@ -65,9 +65,10 @@ function run(h: Harness, seconds: number): void {
 /**
  * Sit through the clear card until the gate is actually up.
  *
- * Not a fixed wait: the gate ring is seven seconds and every frame spent
- * waiting is a frame the child does not have to answer in, which is exactly the
- * kind of accounting this file exists to keep honest.
+ * Not a fixed wait: a frame spent here is a frame that has already gone by when
+ * the plates appear, and this file exists to keep that kind of accounting
+ * honest. (There is no longer a clock on the answer for it to eat — see
+ * `gate.test.ts` — but the vault's abandonment guard is still real.)
  */
 function runToGate(h: Harness): void {
   const G = h.game as unknown as { phase: string }
@@ -127,9 +128,8 @@ test("the vault answers with the plate you held, not the ones you drove over", (
   const want = plates.find((p) => p.correct)
   assert.ok(want)
 
-  // Go straight over a wrong one on the way — the gate ring is seven seconds,
-  // so this is one detour, not a tour. `plates.test.ts` walks every plate on
-  // every arena at every speed the ladder reaches.
+  // Go straight over a wrong one on the way. `plates.test.ts` walks every plate
+  // on every arena at every speed the ladder reaches.
   const [px, py] = playerAt(h)
   const wrong = plates
     .filter((p) => !p.correct)
@@ -156,7 +156,12 @@ test("a vault nobody touched is not reported as a wrong answer", () => {
   run(h, 2)
   clearALevel(h)
   runToGate(h)
-  run(h, 8) // the ring closes with nobody on a plate
+  // The vault's guard is derived per item and per arena, not a constant — read
+  // it rather than guessing at it, and then walk away for longer than it.
+  // `gate.test.ts` is where the guard's shape is pinned.
+  const guard = (h.game as unknown as { gateGuard: number }).gateGuard
+  assert.ok(Number.isFinite(guard) && guard > 7, `a vault must outlast the old ring: ${guard}`)
+  run(h, guard + 2) // nobody ever stands on a plate
   assert.deepEqual(h.reports, [], "not answering is not answering wrong")
   assert.ok(Number(h.game.stats().level) >= 2, "and the vault must not stall the ladder")
   h.unmount()
