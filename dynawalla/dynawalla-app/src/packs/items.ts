@@ -23,8 +23,11 @@
 // **What a rung is.** The curriculum ships one generator family so far
 // (`gen.arith.column-op`) bound to four active skills at four levels each. The
 // rungs are those bindings, sorted by the difficulty the node itself declares,
-// and the ladder walks them: a fast correct answer climbs, a wrong one steps
-// down. That is not the FSRS scheduler (ADR-0008) — it is the smallest honest
+// and the ladder walks them: a correct answer that was not from the slow tail of
+// *that item* climbs, a wrong one steps down. "Not slow for that item" is read
+// off the cadence table in `docs/EXPERIENCE_DESIGN.md` — see the `CADENCE_*`
+// note below, and what it says about the constant it replaced.
+// That is not the FSRS scheduler (ADR-0008) — it is the smallest honest
 // thing that makes a pack's stream get harder — and it is confined to this file
 // so replacing it does not touch the boundary.
 
@@ -60,8 +63,58 @@ const MINUS = "−"
 /** Items kept addressable for `judge` and `reveal`. Oldest evicted first. */
 const LEDGER_LIMIT = 512
 
-/** Faster than this and the ladder climbs. Half the slowest node's p50. */
-const QUICK_MS = 6_000
+/**
+ * ## How long a question is *expected* to take
+ *
+ * `EXPERIENCE_DESIGN.md` publishes a cadence table — instrumented p50/p90, never
+ * shown to a child:
+ *
+ * | class | p50 | p90 |
+ * |---|---|---|
+ * | single-digit fact | 2.8 s | 6 s |
+ * | two-digit with regrouping | 6 s | 14 s |
+ * | three-digit | 11 s | 27 s |
+ * | the `5,001 − 2,798` class | 16 s | 40 s |
+ *
+ * Two straight lines fit all four rows exactly, in the width of the widest
+ * operand — which is also how the table names its own classes:
+ *
+ *     p50 = 2.8 s                             at one digit
+ *         = 6 s  + 5 s  × (digits − 2)        from two digits up
+ *     p90 = 6 s                               at one digit
+ *         = 14 s + 13 s × (digits − 2)        from two digits up
+ *
+ * Check: three digits → 6+5 = 11 s and 14+13 = 27 s; four → 16 s and 40 s. The
+ * constants below are those two lines and nothing else, so the table stays the
+ * source of truth and this file holds no opinion of its own about how long a
+ * child should take.
+ *
+ * **Why this is here at all.** Until this note, the ladder climbed on
+ * `correct && latencyMs <= 6000` — one constant for every question in the
+ * product. Against the table above, six seconds is the *median* of a two-digit
+ * regrouping item, so half of the children answering at the expected pace never
+ * climbed; and it is well under the median of the `5,001 − 2,798` class, so the
+ * three rungs of `dw.add.regroup.subtract-across-zero` — the hardest content
+ * that ships — were not hard, they were **unreachable**. The doc's own line for
+ * this row reads "COMPREHENSION — not budgeted. The child's time. Measured,
+ * never limited," and a constant threshold budgeted it.
+ */
+const CADENCE_FACT_P50_MS = 2_800
+const CADENCE_FACT_P90_MS = 6_000
+const CADENCE_COLUMN_P50_MS = 6_000
+const CADENCE_COLUMN_P50_PER_DIGIT_MS = 5_000
+const CADENCE_COLUMN_P90_MS = 14_000
+const CADENCE_COLUMN_P90_PER_DIGIT_MS = 13_000
+
+/**
+ * The table's widest p90/p50 spread, as a ratio so it multiplies exactly.
+ *
+ * 6/2.8, 14/6, 27/11 and 40/16 are 2.14, 2.33, 2.45 and 2.50. The largest is
+ * taken, because every use of it below is "widen a declared median into a slow
+ * tail" and a narrow guess there is the punitive direction.
+ */
+const CADENCE_SPREAD_NUM = 5
+const CADENCE_SPREAD_DEN = 2
 
 /**
  * Options on a closed list: the canonical answer and three wrong ones.
@@ -254,11 +307,79 @@ export function choicesFor(exercise: Exercise, places: number): readonly ItemCho
   return texts.map((text, index) => ({ id: `c${String(index)}`, text }))
 }
 
+/**
+ * How wide the widest operand is, in digits, as a child reads it.
+ *
+ * Digit characters only, so `12.5` is three and `4,003` would be four however it
+ * is punctuated. Zero means the prompt has no numerals in it — a fraction card
+ * or a worded term — and zero is *not* a width: it is "this file cannot tell",
+ * and the caller must treat it as such rather than as "easy".
+ */
+export function widestOperandDigits(operands: readonly string[]): number {
+  let widest = 0
+  for (const operand of operands) {
+    let digits = 0
+    for (const ch of operand) if (ch >= "0" && ch <= "9") digits += 1
+    if (digits > widest) widest = digits
+  }
+  return widest
+}
+
+/** The cadence table read at a width, or `null` when there is no width to read. */
+export function cadenceFor(digits: number): { p50Ms: number; p90Ms: number } | null {
+  if (!Number.isInteger(digits) || digits < 1) return null
+  if (digits === 1) return { p50Ms: CADENCE_FACT_P50_MS, p90Ms: CADENCE_FACT_P90_MS }
+  const over = digits - 2
+  return {
+    p50Ms: CADENCE_COLUMN_P50_MS + CADENCE_COLUMN_P50_PER_DIGIT_MS * over,
+    p90Ms: CADENCE_COLUMN_P90_MS + CADENCE_COLUMN_P90_PER_DIGIT_MS * over,
+  }
+}
+
+/**
+ * How long an answer to *this* item may take and still climb the ladder — or
+ * `null` when nothing about the item says.
+ *
+ * The item's own p90. A child at the p90 is not slow; a child at the p90 is the
+ * ninth of ten children who answered it, and the tenth still keeps the rung they
+ * are on. What the rule refuses to promote is a correct answer from the slow
+ * tail *of that question*, which is the only thing "quick" ever meant.
+ *
+ * Two inputs, and the wider of them wins:
+ *
+ *   * **The cadence table**, at the width of the widest operand.
+ *   * **`fluencyTarget.p50Ms`**, when the curriculum node declares one, widened
+ *     by the table's own spread. This is not decoration. `gen.arith.column-op`
+ *     is the addition ladder the table was measured on; `dw.mul.*` declares a
+ *     15 s median and `dw.div.*` an 18 s one, and a two-digit multiplication
+ *     read only through the column model would get a 14 s window around a 15 s
+ *     median — the same defect, in a domain that has not gone active yet. Taking
+ *     the **max** makes authored data able only to widen the window and never to
+ *     narrow it, which `items.test.ts` asserts over every node in the graph.
+ *
+ * `null` — a prompt with no numerals on a node that declares no target — means
+ * the item's class is not knowable here. The caller promotes anyway and says so
+ * out loud. A ladder that quietly declines to move is exactly the silent blank
+ * this codebase keeps shipping, and "we could not classify it" is never a reason
+ * to hold a child down.
+ */
+export function climbWithinMs(digits: number, fluencyP50Ms: number | undefined): number | null {
+  const table = cadenceFor(digits)
+  const declared =
+    fluencyP50Ms === undefined || !Number.isFinite(fluencyP50Ms) || fluencyP50Ms <= 0
+      ? null
+      : Math.round((fluencyP50Ms * CADENCE_SPREAD_NUM) / CADENCE_SPREAD_DEN)
+  if (table === null && declared === null) return null
+  return Math.max(table?.p90Ms ?? 0, declared ?? 0)
+}
+
 type Served = {
   readonly exercise: Exercise
   readonly rung: Rung
   readonly places: number
   readonly choices: readonly ItemChoice[]
+  /** Width of the widest operand as drawn. 0 when the prompt held no numerals. */
+  readonly digits: number
   answered: boolean
 }
 
@@ -294,6 +415,37 @@ export type ItemService = {
     packId: string
     itemId: string
     response: string
+    /**
+     * ## What `latencyMs` is, and what it is not
+     *
+     * **There is no contract.** This is a finding, not a description. The SDK
+     * declares `answer({ itemId, response, latencyMs })` with no doc comment on
+     * the field, `bridge.ts` only clamps it to ten minutes and rejects a
+     * negative, and every pack decides for itself what interval it names. What
+     * has actually been observed in the shipped games: latency timed from when
+     * a question was *drawn* rather than from when it became *answerable*, and
+     * latency timed to a projectile's *impact* rather than to the child's
+     * commit — the second inflating every answer in that game by the two to
+     * three seconds of the arc (`games/trebuchet/src/game.test.ts` pins the fix
+     * from the pack's side).
+     *
+     * That is why the rule below is written to be robust to a couple of seconds
+     * of contamination rather than exact. The p90 of an item is roughly twice
+     * its p50; a game whose clock starts early by two seconds spends about a
+     * seventh of that head-room on a two-digit item and less on anything
+     * harder, so it costs a child a rung occasionally and never systematically.
+     * A rule cut at the p50 — which is what a flat 6 s was for two-digit
+     * regrouping — has no head-room at all, and contamination there is the
+     * difference between climbing and not.
+     *
+     * `EXPERIENCE_DESIGN.md` says what the contract *should* be, and nothing
+     * implements it yet: `timeToFirstKeyMs` and `timeToCommitMs` recorded
+     * separately, because a long first key is retrieval difficulty and a long
+     * key-to-commit is execution difficulty. "Corpán conflates them into one
+     * `latencyMs`; we will not" — and the SDK, today, does. Splitting the field
+     * is a protocol change across `packs/sdk` and every game, so it is named
+     * here rather than done here.
+     */
     latencyMs: number
   }): Judgement
   reveal(itemId: string): string
@@ -319,6 +471,13 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   let sequence = 0
   /** A ladder with one rung answers every difficulty the same. Said once. */
   let toldAboutFlatLadder = false
+  /** Warnings that would otherwise fire on every single answer. */
+  const said = new Set<string>()
+  const sayOnce = (key: string, message: string) => {
+    if (said.has(key)) return
+    said.add(key)
+    console.warn(message)
+  }
 
   const remember = (id: string, served: Served) => {
     ledger.set(id, served)
@@ -327,6 +486,43 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       const evicted = order.shift()
       if (evicted !== undefined) ledger.delete(evicted)
     }
+  }
+
+  /**
+   * Whether a correct answer was quick enough for *this* item to climb.
+   *
+   * Everything that is not a clear "no" is a yes, and every yes-by-default says
+   * so on the console once per skill. Two ways to reach one:
+   *
+   *   * The item's class is not knowable — no numerals in the prompt and no
+   *     `fluencyTarget` on the node. A future family will hit this the day it
+   *     lands, and it must arrive as a line in the log rather than as a child
+   *     who answers correctly all afternoon and never moves.
+   *   * The latency is not a measurement. `NaN <= anything` is `false`, so a
+   *     pack reporting a bad clock would otherwise pin a child to the bottom of
+   *     the ladder in total silence — the exact shape of this bug, one layer
+   *     down.
+   */
+  const climbs = (served: Served, latencyMs: number): boolean => {
+    const within = climbWithinMs(served.digits, served.rung.node.fluencyTarget?.p50Ms)
+    if (within === null) {
+      sayOnce(
+        served.rung.node.id,
+        `[packs] ${served.rung.node.id} draws a prompt with no numerals in it and declares no ` +
+          `fluencyTarget, so how long it should take is unknown — every correct answer on it ` +
+          `climbs. Give the node a fluencyTarget.p50Ms to pace it.`,
+      )
+      return true
+    }
+    if (!Number.isFinite(latencyMs) || latencyMs < 0) {
+      sayOnce(
+        `latency:${served.rung.node.id}`,
+        `[packs] ${served.rung.node.id} was answered with a latency of ${String(latencyMs)}, ` +
+          `which is not a measurement — the answer climbs, and the pack's clock needs fixing.`,
+      )
+      return true
+    }
+    return latencyMs <= within
   }
 
   const rungAt = (index: number): Rung | null => {
@@ -412,7 +608,18 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       const places = decimalPlacesOf(exercise)
       const choices = choicesFor(exercise, places)
       const id = `${exercise.exerciseId}#${String(sequence)}`
-      remember(id, { exercise, rung, places, choices, answered: false })
+      // Measured here rather than in `judge`, off the strings a child actually
+      // read: the operands are already in hand, and the width of the question as
+      // drawn is the only reading of "how hard is this item" that cannot drift
+      // from what was on the screen.
+      remember(id, {
+        exercise,
+        rung,
+        places,
+        choices,
+        digits: widestOperandDigits([top, bottom]),
+        answered: false,
+      })
       practised.add(rung.node.id)
 
       const subtract = isSubtraction(exercise.prompt.key)
@@ -463,11 +670,17 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       if (!served.answered) {
         served.answered = true
         deps.record({ packId, correct: verdict.correct })
-        // The ladder moves on what actually happened. Up only when it was both
-        // right and quick, down on any miss — a child who is guessing does not
-        // climb, and a child who is struggling is not held there.
-        if (verdict.correct && latencyMs <= QUICK_MS) position = Math.min(rungs.length - 1, position + 1)
-        else if (!verdict.correct) position = Math.max(0, position - 1)
+        // The ladder moves on what actually happened. Up when it was right and
+        // not from the slow tail *of this question*, down on any miss — a child
+        // who is guessing does not climb, and a child who is struggling is not
+        // held there. A correct answer past the item's own p90 holds the rung:
+        // it is neither a promotion nor a demotion, and it is never a penalty.
+        if (verdict.correct && climbs(served, latencyMs)) position = position + 1
+        else if (!verdict.correct) position = position - 1
+        // One clamp for both directions, and the floor is written as a floor:
+        // no sequence of answers can put a child below the easiest rung the
+        // curriculum has, and none can put them past the hardest.
+        position = Math.max(0, Math.min(Math.max(0, rungs.length - 1), position))
       }
 
       return {
