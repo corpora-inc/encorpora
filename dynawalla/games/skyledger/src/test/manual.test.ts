@@ -24,7 +24,11 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-import { forgetAudioContexts } from "../../../../packs/shared/game-chrome/index.ts"
+// From `audioHold.ts` directly, not the barrel: `index.ts` deliberately does
+// NOT re-export this, because a game that reached for it would defeat the hold
+// for the whole pack. Node 24 enforces that; Node 22 does not, which is how the
+// wrong import passed locally and failed in CI.
+import { forgetAudioContexts } from "../../../../packs/shared/game-chrome/audioHold.ts"
 import { mountSkyLedger } from "../mount.ts"
 import { createStubHost } from "../stubHost.ts"
 
