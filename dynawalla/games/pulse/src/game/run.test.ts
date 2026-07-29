@@ -21,7 +21,7 @@ import { installFakeAudio } from "../dev/fakeAudio.ts";
 const audio = installFakeAudio();
 
 // After the fake is installed, so `createEngine()` finds it.
-const { GATE_READ_SEC, Run } = await import("./run.ts");
+const { GATE_READ_SEC, Run, candidatesForStage } = await import("./run.ts");
 const { gatesToClear, stageAt } = await import("./stages.ts");
 
 import type { Host } from "../contract.ts";
@@ -60,6 +60,8 @@ type Rig = {
   readingWindows: number[];
   /** Every `gateResolved` outcome, in order. */
   outcomes: string[];
+  /** How many candidates each gate carried, in order, with its stage. */
+  gateShapes: Array<{ stage: number; candidates: number; wrong: number }>;
   play(seconds: number): void;
   dispose(): void;
 };
@@ -73,6 +75,7 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
   const stages: number[] = [];
   const readingWindows: number[] = [];
   const outcomes: string[] = [];
+  const gateShapes: Array<{ stage: number; candidates: number; wrong: number }> = [];
   let n = 0;
 
   const host: Host = {
@@ -94,6 +97,11 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
     miss() {},
     stray() {},
     gateOpen(built) {
+      gateShapes.push({
+        stage: run.stageIndex,
+        candidates: built.candidates.length,
+        wrong: built.candidates.filter((c) => !c.correct).length,
+      });
       // The window a child gets to read this question: from the moment it is
       // on screen to the moment the right answer crosses the strike line.
       const target = run.notes
@@ -115,6 +123,11 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
   };
 
   const run = new Run({ host, fx, seed: "bots", startStage });
+  // A screen with room to spare, so what these runs measure is the STAGE's
+  // ceiling on how many numbers a child is shown, not the phone's. `Run`
+  // defaults to the smallest phone's answer until a layout tells it otherwise,
+  // and a rig that left it there would be testing that default forever.
+  run.setGateFit({ maxCandidates: 4, minGapDenom: 4 });
   const ctx = audio.latest();
   run.start();
 
@@ -163,6 +176,7 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
     stages,
     readingWindows,
     outcomes,
+    gateShapes,
     play(seconds) {
       const steps = Math.round(seconds / 0.02);
       for (let i = 0; i < steps; i++) step();
@@ -328,4 +342,100 @@ test("every gate served is resolved exactly once, even at the top of the loop", 
     `${seen} gates were served but only ${expired} ever resolved — the rest were ` +
       `overwritten in the slot while still live`,
   );
+});
+
+// --------------------------------------------------------------- the opening
+//
+// "starts too hard too ... it should start easy (and more sparse maybe with
+// wrong answers)".
+//
+// The first fraction gate a child ever saw carried four candidates — one right
+// and THREE wrong — because the single call site passed `maxCandidates: 4` and
+// nothing about it ever moved. The rhythm escalated; the arithmetic did not.
+// That is ARENA's defect in another costume: the opening frame was already
+// carrying the twentieth minute's density.
+
+test("the first question a child ever sees is sparse", () => {
+  const r = rig("never");
+  // Long enough to reach the first two gate bars of stage 0 and no further:
+  // nothing has been cleared, so nothing escalates.
+  r.play(90);
+  const shapes = [...r.gateShapes];
+  r.dispose();
+
+  assert.ok(shapes.length > 0, "no gate opened at all; this test measured nothing");
+  const first = shapes[0]!;
+  assert.equal(first.stage, 0, "the first gate must belong to the first stage");
+  assert.equal(
+    first.wrong,
+    1,
+    `the first question a child is ever asked put ${first.wrong} wrong answers on the ` +
+      `screen at once`,
+  );
+  for (const s of shapes) {
+    assert.equal(s.stage, 0, "a bot that answers nothing must not escalate");
+    assert.ok(
+      s.candidates <= 2,
+      `stage 0 served ${s.candidates} candidates; the opening is meant to be sparse`,
+    );
+    assert.ok(s.candidates >= 2, "and never a single unmissable target");
+  }
+});
+
+test("density is part of the escalation, not a constant", () => {
+  // Stated once as a rule, so the shape is not only inferable from a bot that
+  // happens to reach stage 4.
+  assert.equal(candidatesForStage(0), 2);
+  assert.ok(
+    candidatesForStage(0) < candidatesForStage(12),
+    "a child deep in the run must be asked to discriminate between more numbers " +
+      "than a child on their first bar",
+  );
+  let prev = 0;
+  for (let i = 0; i < 30; i++) {
+    const n = candidatesForStage(i);
+    assert.ok(n >= prev, `stage ${i} is sparser than stage ${i - 1}`);
+    assert.ok(n >= 2 && n <= 4, `stage ${i} wants ${n} candidates`);
+    prev = n;
+  }
+});
+
+test("a child who is climbing IS given more to discriminate between", () => {
+  // The other half of the rule: sparse must not mean permanently sparse, or
+  // the fix for "starts too hard" has quietly capped the whole game. Compared
+  // against the opening rather than against a constant, because how many of the
+  // host's distractors actually survive the spacing is the host's business.
+  const opening = rig("never");
+  opening.play(90);
+  const openWidest = Math.max(...opening.gateShapes.map((s) => s.candidates));
+  opening.dispose();
+
+  const deep = rig("right", 6);
+  deep.play(120);
+  const shapes = [...deep.gateShapes];
+  deep.dispose();
+
+  assert.ok(shapes.length > 0, "no gate opened deep in the run");
+  const widest = Math.max(...shapes.map((s) => s.candidates));
+  assert.ok(
+    widest > openWidest,
+    `stage 6 offered at most ${widest} candidates and the opening offered ${openWidest}; ` +
+      `the game has been flattened, not made gentle`,
+  );
+});
+
+test("the viewport can hold the count down, but never below a real choice", () => {
+  // A phone too small for four orbs must be given fewer, and a stage that wants
+  // fewer must not be talked into more by a big screen. The run ANDs the two.
+  const r = rig("right", 8);
+  r.run.setGateFit({ maxCandidates: 2, minGapDenom: 3 });
+  assert.equal(r.run.gateFit().maxCandidates, 2, "the screen's ceiling must bind");
+  assert.equal(r.run.gateFit().minGapDenom, 3, "and its spacing must be used verbatim");
+  r.run.setGateFit({ maxCandidates: 4, minGapDenom: 6 });
+  assert.equal(
+    r.run.gateFit().maxCandidates,
+    candidatesForStage(r.run.stageIndex),
+    "with room to spare the stage decides",
+  );
+  r.dispose();
 });

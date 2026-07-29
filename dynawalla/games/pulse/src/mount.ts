@@ -15,6 +15,7 @@ import { Run, type Fx } from "./game/run.ts";
 import { bindInput } from "./input.ts";
 import { createSurfaces } from "./render/canvas.ts";
 import { drawButtons, drawPause, drawPerf, drawTitle, hitButton } from "./render/chrome.ts";
+import { gateFitFor } from "./render/layout.ts";
 import { Scene } from "./render/scene.ts";
 import { loadSettings, prefersReducedMotion, saveSettings } from "./settings.ts";
 
@@ -134,7 +135,9 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
     },
     stageChanged(stage, index) {
       scene.stageCardShow(stage, index);
-      scene.resize(stage.lanes);
+      // The lane count changes with the stage, which changes the field, which
+      // changes what a bar is worth in pixels. Re-fit rather than resize.
+      relayout();
     },
     drop() {
       scene.dropFlash();
@@ -210,7 +213,7 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
         run.input(lane, perfMs);
       },
       tap(x, y) {
-        const b = hitButton(x, y, scene.layout.area, scene.layout.compact);
+        const b = hitButton(x, y, scene.layout.area, scene.layout.compact, surfaces.h);
         if (!b) return false;
         if (b === "mute") {
           settings.muted = !settings.muted;
@@ -238,8 +241,22 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
   };
   document.addEventListener("visibilitychange", onVisibility);
 
+  /**
+   * Re-lay the field AND tell the run what the new frame can hold.
+   *
+   * These two must not come apart. `gateFitFor` is the only thing that knows
+   * both how wide a bar is in pixels and how wide a candidate is, and a gate is
+   * built from whatever the run last heard — so a rotation that relaid the
+   * playfield without re-fitting the gate would go on spacing candidates for
+   * the old screen. Every path that resizes goes through here.
+   */
+  const relayout = (): void => {
+    scene.resize(run.stage.lanes);
+    run.setGateFit(gateFitFor(scene.layout));
+  };
+
   const ro = new ResizeObserver(() => {
-    if (surfaces.resize()) scene.resize(run.stage.lanes);
+    if (surfaces.resize()) relayout();
   });
   ro.observe(el);
 
@@ -249,13 +266,13 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
    * Split View. The canvas size may not change at all across some of those, so
    * `ResizeObserver` alone would leave the field laid out against stale numbers.
    */
-  const stopInsets = onInsetsChange(() => scene.resize(run.stage.lanes));
+  const stopInsets = onInsetsChange(relayout);
   window.addEventListener("resize", onWindowResize);
   function onWindowResize(): void {
-    if (surfaces.resize()) scene.resize(run.stage.lanes);
+    if (surfaces.resize()) relayout();
   }
 
-  scene.resize(run.stage.lanes);
+  relayout();
 
   /**
    * When a harness drives the loop itself, `requestAnimationFrame` stops touching the
@@ -263,6 +280,13 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
    * one enormous frame into the middle of a measured burst.
    */
   let externalDriver = false;
+
+  /**
+   * The `requestAnimationFrame` timestamp of the frame being drawn, or null
+   * when a harness is driving the loop by hand — in which case nothing is being
+   * presented and there is no display latency to compensate.
+   */
+  let vsyncMs: number | null = null;
 
   const step = (raw: number): void => {
     const dt = Math.min(0.05, Math.max(0, raw / 1000));
@@ -285,8 +309,29 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
     // exactly like a tab switch.
     if (guide.isOpen && phase === "playing") setPaused(true);
 
-    if (surfaces.resize()) scene.resize(run.stage.lanes);
-    if (scene.layout.laneCount !== run.stage.lanes) scene.resize(run.stage.lanes);
+    if (surfaces.resize()) relayout();
+    if (scene.layout.laneCount !== run.stage.lanes) relayout();
+
+    /**
+     * Point the picture at the moment it will actually be SEEN.
+     *
+     * `vsyncMs` is the timestamp `requestAnimationFrame` handed us: the start of
+     * the frame being composed. What we paint from here lands on the glass at
+     * the next one, so the music the playfield should be showing is the music of
+     * `vsync + one frame`, not the music of the instant we happen to read the
+     * audio clock — which is later still, since this callback has been running
+     * for a while by now.
+     *
+     * Compensating audio latency and not this is what made the game agree with
+     * itself on a fast machine and not on a slow one: on a 60 Hz display it is
+     * ~16 ms of lag and on a Chromebook dropping to 30 fps it is ~33 ms, and
+     * neither of them was anywhere in the model. The frame period is measured
+     * rather than assumed, so a 120 Hz iPad gets its own answer, and it is
+     * clamped so one stalled frame cannot fling the field forward.
+     */
+    const periodMs = Math.min(34, Math.max(6, raw || 16.7));
+    const leadMs = vsyncMs === null ? 0 : vsyncMs + periodMs - performance.now();
+    run.visualLeadSec = Math.max(0, Math.min(0.05, leadMs / 1000));
 
     run.engine.sample();
     const { ctx, w, h } = surfaces;
@@ -327,12 +372,21 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
           notes: run.notes.all().length,
           latencyMs: run.engine.latency(),
           calibrationMs: run.calibrationMs,
+          visualLeadMs: run.visualLeadSec * 1000,
+          clockErrorMs: run.engine.clockError() * 1000,
         });
       }
     }
 
     ctx.globalCompositeOperation = "lighter";
-    drawButtons(ctx, scene.layout.area, scene.layout.compact, settings.muted, phase === "paused");
+    drawButtons(
+      ctx,
+      scene.layout.area,
+      scene.layout.compact,
+      surfaces.h,
+      settings.muted,
+      phase === "paused",
+    );
   };
 
   const frame = (t: number): void => {
@@ -340,7 +394,9 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
     const raw = t - last;
     last = t;
     if (externalDriver) return;
+    vsyncMs = t;
     step(raw);
+    vsyncMs = null;
   };
   raf = requestAnimationFrame(frame);
 

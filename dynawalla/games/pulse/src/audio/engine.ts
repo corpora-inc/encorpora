@@ -19,6 +19,8 @@
  * which is how a real band tells you that you dropped it.
  */
 
+import { TransportClock } from "./clock.ts";
+
 export type Engine = {
   ctx: AudioContext;
   drumBus: GainNode;
@@ -29,8 +31,21 @@ export type Engine = {
   master: GainNode;
   analyser: AnalyserNode;
   noise: AudioBuffer;
-  /** Current audio-clock time, in seconds. */
+  /**
+   * Current audio-clock time, in seconds — smoothed. See `audio/clock.ts`: the
+   * raw `currentTime` advances in output-callback steps and is 0..q too small
+   * at any moment you happen to read it.
+   */
   now(): number;
+  /**
+   * Audio-clock time of a moment stamped on the `performance.now()` timeline.
+   * The ONLY supported way to turn an input event into transport time.
+   */
+  timeAtPerf(perfSec: number): number;
+  /** Raw `ctx.currentTime`. Diagnostics only — never schedule or judge off it. */
+  rawNow(): number;
+  /** How much error a raw `currentTime` read is currently carrying, in seconds. */
+  clockError(): number;
   /** Output latency in seconds — how far ahead of the speaker the clock runs. */
   latency(): number;
   wave: Float32Array;
@@ -149,6 +164,13 @@ export function createEngine(): Engine {
   let isMuted = false;
   let prevGain = 0.9;
 
+  // The transport. Everything above this line makes sound; this is the only
+  // thing that says WHEN, and there is deliberately exactly one of it.
+  const clock = new TransportClock({
+    audio: () => ctx.currentTime,
+    perf: () => performance.now() / 1000,
+  });
+
   return {
     ctx,
     drumBus,
@@ -161,7 +183,10 @@ export function createEngine(): Engine {
     noise,
     wave,
     spectrum,
-    now: () => ctx.currentTime,
+    now: () => clock.now(),
+    timeAtPerf: (perfSec) => clock.timeAtPerf(perfSec),
+    rawNow: () => ctx.currentTime,
+    clockError: () => clock.quantisationError(),
     latency: () => {
       const c = ctx as AudioContext & { outputLatency?: number };
       const out = typeof c.outputLatency === "number" && c.outputLatency > 0 ? c.outputLatency : 0;

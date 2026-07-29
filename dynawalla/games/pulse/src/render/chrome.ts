@@ -16,8 +16,38 @@ import { neon } from "./text.ts";
 
 export type ChromeButton = "mute" | "pause";
 
-const BTN = { size: 34, gap: 10, margin: 16 };
-const BTN_COMPACT = { size: 30, gap: 8, margin: 12 };
+/**
+ * The platform minimum touch target, and the floor for anything a child taps.
+ *
+ * These two squares were 30 px on a phone and 34 px on a tablet. A 30 px square
+ * is not a control a seven-year-old hits; it is a control an adult hits on the
+ * third try. Nothing about this game needs them small, so they are 44 px
+ * everywhere, which is what `HOST_CONTROL` already promises for the host's own
+ * two corners.
+ */
+export const MIN_TOUCH = 44;
+
+/**
+ * How much of the bottom edge belongs to the system rather than to us.
+ *
+ * `safeRect` subtracts `env(safe-area-inset-bottom)`, and on iOS that is the
+ * home indicator and it is honest. On Android it is not enough: the value the
+ * WebView reports describes the DISPLAY CUTOUT, while the thing that eats a tap
+ * is the gesture-navigation handle — a strip along the bottom edge that the
+ * system claims for the swipe-up-to-home gesture and that reports a bottom
+ * inset of ZERO on plenty of devices. That is the shape of the bug the founder
+ * hit: both controls were drawn inside the safe rect, correctly, and still
+ * could not be touched.
+ *
+ * So the bottom of a control is held clear of the raw canvas edge by this much
+ * *as well as* clear of the reported inset, whichever binds harder. 24 CSS px
+ * is the Android gesture handle's own height; the button margin sits on top of
+ * it, so the real clearance is 36-40 px.
+ */
+export const GESTURE_STRIP = 24;
+
+const BTN = { size: MIN_TOUCH, gap: 10, margin: 16 };
+const BTN_COMPACT = { size: MIN_TOUCH, gap: 8, margin: 12 };
 
 function metrics(compact: boolean): typeof BTN {
   return compact ? BTN_COMPACT : BTN;
@@ -26,28 +56,42 @@ function metrics(compact: boolean): typeof BTN {
 /**
  * Pause and mute, bottom-right.
  *
- * `area` is the safe rect and is REQUIRED, for the same reason it is required on
- * `computeLayout`: measured from the raw canvas these two buttons sit in the home
- * indicator's strip on every modern phone, where a swipe up is the system's gesture
- * and not ours. Optional, a caller that forgets it compiles and the bug only exists
- * on hardware. `hitButton` reads the same rect, so the touch target can never drift
- * away from the drawn square.
+ * `area` is the safe rect and `canvasH` is the raw canvas height. BOTH are
+ * REQUIRED, for the same reason `area` is required on `computeLayout`: measured
+ * from the raw canvas alone these two buttons sit in the home indicator's
+ * strip, and measured from the safe rect alone they sit in Android's gesture
+ * strip — which the safe rect does not describe. Optional, a caller that
+ * forgets one compiles and the bug only exists on hardware.
+ *
+ * `hitButton` reads the same rect, so the touch target can never drift away
+ * from the drawn square.
  */
 export function buttonRect(
   i: number,
   area: Rect,
   compact: boolean,
+  canvasH: number,
 ): { x: number; y: number; s: number } {
   const m = metrics(compact);
   const s = m.size;
   const x = area.x + area.w - m.margin - s - i * (s + m.gap);
-  const y = area.y + area.h - m.margin - s;
+  // The lower of "the safe rect's floor" and "the canvas floor minus the strip
+  // the system swipes in". Clamped so a viewport too short to honour either
+  // still puts the button on screen rather than above it.
+  const floor = Math.min(area.y + area.h, canvasH - GESTURE_STRIP);
+  const y = Math.max(area.y, floor - m.margin - s);
   return { x, y, s };
 }
 
-export function hitButton(x: number, y: number, area: Rect, compact: boolean): ChromeButton | null {
+export function hitButton(
+  x: number,
+  y: number,
+  area: Rect,
+  compact: boolean,
+  canvasH: number,
+): ChromeButton | null {
   for (let i = 0; i < 2; i++) {
-    const r = buttonRect(i, area, compact);
+    const r = buttonRect(i, area, compact, canvasH);
     const pad = 6;
     if (x >= r.x - pad && x <= r.x + r.s + pad && y >= r.y - pad && y <= r.y + r.s + pad) {
       return i === 0 ? "pause" : "mute";
@@ -60,11 +104,12 @@ export function drawButtons(
   ctx: CanvasRenderingContext2D,
   area: Rect,
   compact: boolean,
+  canvasH: number,
   muted: boolean,
   paused: boolean,
 ): void {
   const draw = (i: number, fn: (x: number, y: number, s: number) => void, ink: Ink, on: boolean): void => {
-    const r = buttonRect(i, area, compact);
+    const r = buttonRect(i, area, compact, canvasH);
     const c = INK[ink];
     ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${on ? 0.5 : 0.24})`;
     ctx.lineWidth = 1;
@@ -233,6 +278,10 @@ export type PerfStats = {
   notes: number;
   latencyMs: number;
   calibrationMs: number;
+  /** How far ahead of the audio the picture is drawn to meet the display. */
+  visualLeadMs: number;
+  /** How much error a raw `AudioContext.currentTime` read would be carrying. */
+  clockErrorMs: number;
 };
 
 export function drawPerf(ctx: CanvasRenderingContext2D, area: Rect, s: PerfStats): void {
@@ -242,6 +291,7 @@ export function drawPerf(ctx: CanvasRenderingContext2D, area: Rect, s: PerfStats
     `draw ${s.drawMs.toFixed(2)} ms`,
     `parts ${s.particles}  notes ${s.notes}`,
     `latency ${(s.latencyMs * 1000).toFixed(1)} ms  cal ${s.calibrationMs.toFixed(0)} ms`,
+    `lead ${s.visualLeadMs.toFixed(1)} ms  clock err ${s.clockErrorMs.toFixed(1)} ms`,
   ];
   // Developer overlay (`?perf`), tucked under the host's help button rather
   // than behind it.

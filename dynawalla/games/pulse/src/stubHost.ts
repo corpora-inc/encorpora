@@ -5,8 +5,11 @@
  * here except through `Host`.
  *
  * Every answer is a fraction strictly inside `(0, 1]` because in PULSE a value IS a
- * position inside one bar. Candidates are kept at least 1/12 of a bar apart so four
- * of them are legible side by side at 390px wide.
+ * position inside one bar. Distractors are kept at least 1/12 of a bar apart so the
+ * set handed over is not degenerate — but a twelfth is NOT a legibility guarantee and
+ * this file must not pretend to make one: at 390 px it is 33 px between candidates
+ * that are 74 px across. What the child actually sees is spaced by `gateFitFor`,
+ * which knows the viewport. This is a producer's hint; `buildGate` is the enforcer.
  */
 
 import type { Host, Question } from "./contract.ts";

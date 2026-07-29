@@ -38,7 +38,7 @@ import {
 } from "./layout.ts";
 import { BG_RGB, INK, JUDGE_INK, laneInk, rgb, type Ink } from "./palette.ts";
 import { KIND_MOTE, KIND_SHARD, Particles, Ripples } from "./particles.ts";
-import { fraction, fractionBar, measure, neon, setFont } from "./text.ts";
+import { fraction, measure, neon, setFont } from "./text.ts";
 
 type Popup = {
   x: number;
@@ -810,36 +810,66 @@ export class Scene {
 
       const rr = (isGate ? l.gateR : r) * scale;
       if (toTrail) {
+        // The trail buffer is half-resolution and smeared on purpose, and a
+        // gate note's job is to be READ. Its glow still goes in — the smear is
+        // what makes it a light source — but the number never does, so the one
+        // thing the child has to decode is never drawn through the blur.
         glow(ctx, ink, p.x, p.y, rr * 2.1, alpha * (isGate ? 0.5 : 0.34));
         continue;
       }
 
       glow(ctx, ink, p.x, p.y, rr * 1.6, alpha * 0.42);
+
+      if (isGate) {
+        /**
+         * A dark plate under the number, in `source-over`.
+         *
+         * Everything in this scene is additive light, which means a white
+         * numeral lands ON TOP of whatever the tunnel, the spectrum, the trail
+         * bloom and three other candidates' halos have already put there — and
+         * additive light only ever gets brighter, so contrast at the glyph goes
+         * to zero exactly where it is needed. Punching the plate out first
+         * gives the number something to be light AGAINST. It is the same trick
+         * an oscilloscope's graticule mask uses, and it keeps the neon.
+         */
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = `rgba(4,5,10,${(0.82 * alpha).toFixed(3)})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, rr * 0.9, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalCompositeOperation = "lighter";
+      }
+
       const c = INK[ink];
       ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha.toFixed(3)})`;
       ctx.lineWidth = isGate ? 2.5 : n.accent ? 2.4 : 1.8;
-      shape(ctx, n.div, p.x, p.y, rr, isGate);
 
-      if (isGate) {
-        const g = n.gate!;
-        const m = FRACTION_TOKEN.exec(g.label);
-        const inner = rr * 0.62;
-        if (m) {
-          fraction(ctx, Number(m[1]), Number(m[2]), p.x, p.y - inner * 0.06, inner * 0.84, "white", alpha);
-          fractionBar(
-            ctx,
-            Number(m[1]),
-            Number(m[2]),
-            p.x - rr * 0.72,
-            p.y + rr * (l.compact ? 0.72 : 0.78),
-            rr * 1.44,
-            l.compact ? 5 : 7,
-            "violet",
-            alpha * 0.9,
-          );
-        } else {
-          neon(ctx, g.label, p.x, p.y, inner, "white", { alpha });
-        }
+      if (!isGate) {
+        shape(ctx, n.div, p.x, p.y, rr);
+        continue;
+      }
+
+      const g = n.gate!;
+      const m = FRACTION_TOKEN.exec(g.label);
+      // The ring IS the second representation, and it costs no footprint: the
+      // circle is cut into `d` arcs with `n` of them lit, so the orb says what
+      // its number says without using colour and without a strip hanging off
+      // the bottom of it that the next candidate then has to dodge.
+      gateRing(ctx, p.x, p.y, rr, m ? Number(m[2]) : 0, m ? Number(m[1]) : 0, ink, alpha);
+
+      // The layout owns this size and gives it a floor; the ring was built to
+      // hold it. `scale` follows the pop animation so the number grows with its
+      // orb instead of rattling around inside it.
+      const want = l.gateLabelSize * scale;
+      const room = rr * 1.5;
+      if (m) {
+        const size = fitSize(ctx, [m[1]!, m[2]!], want, room);
+        fraction(ctx, Number(m[1]), Number(m[2]), p.x, p.y, size, "white", alpha);
+      } else {
+        const size = fitSize(ctx, [g.label], want, room);
+        // Bloom held down hard: at these sizes the halo stroke is a third of
+        // the glyph, and that halo is what "too blurry" was made of.
+        neon(ctx, g.label, p.x, p.y, size, "white", { alpha, bloom: 0.35 });
       }
     }
   }
@@ -1000,17 +1030,75 @@ export class Scene {
 
 // ------------------------------------------------------------------ helpers
 
-/** Subdivision shape. Positive div = per-beat; negative = |n| across the bar. */
-function shape(ctx: CanvasRenderingContext2D, div: number, x: number, y: number, r: number, gate: boolean): void {
-  if (gate) {
+/**
+ * The largest type size at which every one of `parts` fits inside `maxWidth`.
+ *
+ * The layout hands down a size a child can read; a three-digit answer or a
+ * denominator of 12 still has to live inside the ring. Measured rather than
+ * guessed, because the display font is whatever the platform actually resolved.
+ */
+export function fitSize(
+  ctx: CanvasRenderingContext2D,
+  parts: readonly string[],
+  want: number,
+  maxWidth: number,
+): number {
+  let widest = 0;
+  for (const p of parts) widest = Math.max(widest, measure(ctx, p, want));
+  if (widest <= maxWidth || widest <= 0) return want;
+  return want * (maxWidth / widest);
+}
+
+/**
+ * A gate candidate's orb: a ring cut into `d` arcs with `n` of them lit.
+ *
+ * Two representations of the same value, in one mark and one footprint — the
+ * number in the middle and the portion around the outside. `d = 0` (a label
+ * that is not a fraction, which is what the live `add` ladder serves) falls
+ * back to the plain double ring.
+ */
+function gateRing(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  r: number,
+  d: number,
+  n: number,
+  ink: Ink,
+  alpha: number,
+): void {
+  const c = INK[ink];
+  ctx.beginPath();
+  ctx.arc(x, y, r * 0.82, 0, Math.PI * 2);
+  ctx.stroke();
+  if (!Number.isFinite(d) || d < 1 || d > 16 || n < 0) {
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
     ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(x, y, r * 0.84, 0, Math.PI * 2);
-    ctx.stroke();
     return;
   }
+  const gap = Math.min(0.16, 1.1 / d);
+  const step = (Math.PI * 2) / d;
+  for (let i = 0; i < d; i++) {
+    const lit = i < n;
+    const a0 = -Math.PI / 2 + i * step + gap / 2;
+    const a1 = a0 + step - gap;
+    ctx.beginPath();
+    ctx.arc(x, y, r, a0, a1);
+    ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${((lit ? 1 : 0.22) * alpha).toFixed(3)})`;
+    ctx.lineWidth = lit ? 4 : 2;
+    ctx.stroke();
+  }
+}
+
+/**
+ * Subdivision shape. Positive div = per-beat; negative = |n| across the bar.
+ *
+ * Gate candidates do NOT come through here — they are drawn by `gateRing`,
+ * which says the same thing about their value that the number in the middle
+ * does.
+ */
+function shape(ctx: CanvasRenderingContext2D, div: number, x: number, y: number, r: number): void {
   if (div < 0) {
     // Polyrhythm: a ring with |div| spokes — you can count the beam.
     const n = -div;

@@ -49,6 +49,36 @@ const COMBO_PUNCH = 1.28;
 
 const UMAX = 1.06;
 
+/**
+ * The smallest a gate candidate's number may ever be drawn, in CSS px.
+ *
+ * It used to be derived from the note: `gateR * 0.62 * 0.84`, which on a 390 px
+ * phone is **15.1 px** for a stacked fraction and 17.9 px for a plain numeral —
+ * drawn additively, mid-scroll, over a bloom halo a third of the glyph's own
+ * size. The founder's report is exact: "Cant see the answers ... too blurry".
+ *
+ * So the dependency is inverted. The number gets a floor a child can read on a
+ * moving bus, and the ring is sized to hold it. 22 px is the smallest numeral
+ * that survives the phosphor bloom this game is made of; below that the halo is
+ * wider than the strokes and a 3 reads as an 8.
+ */
+export const GATE_LABEL_MIN = 22;
+/** …and a ceiling, so a tablet does not hand a child a dinner plate. */
+export const GATE_LABEL_MAX = 40;
+
+/**
+ * A stacked fraction reaches ±1.18·size vertically, so a ring of 1.4·size in
+ * radius holds one with a little air. Plain numerals are shrunk to fit the same
+ * ring by the renderer, which measures them.
+ */
+const GATE_RING_PER_LABEL = 1.4;
+
+/** The type size of a gate candidate's number at this viewport. */
+export function gateLabelSizeFor(w: number, h: number): number {
+  const short = Math.min(w, h);
+  return Math.max(GATE_LABEL_MIN, Math.min(GATE_LABEL_MAX, short * 0.068));
+}
+
 /** A left/right/centre anchored line of text: `x` is the anchored edge. */
 export type Anchor = { x: number; cy: number; size: number };
 
@@ -84,6 +114,12 @@ export type Layout = {
   /** Drawn radius of an ordinary note, and of a gate note (which carries a label). */
   noteR: number;
   gateR: number;
+  /**
+   * Type size of the number a gate candidate carries. THE most important
+   * readable in the game — it is the answer — so it is a first-class layout
+   * value with a floor, and `gateR` is derived from it rather than the reverse.
+   */
+  gateLabelSize: number;
   hud: Hud;
   pt(u: number, v: number, out?: { x: number; y: number }): { x: number; y: number };
   laneV(lane: number): number;
@@ -160,7 +196,12 @@ export function computeLayout(w: number, h: number, laneCount: number, area: Rec
     );
     const lanePitch = fieldThickness / lanes;
     const noteR = Math.min(lanePitch * 0.3, compact ? 17 : 24);
-    const gateR = noteR * (compact ? 1.7 : 2.0);
+    const gateLabelSize = Math.min(
+      gateLabelSizeFor(w, h),
+      // Never taller than the field it rides in, whatever the viewport says.
+      (fieldThickness * 0.46) / GATE_RING_PER_LABEL,
+    );
+    const gateR = gateLabelSize * GATE_RING_PER_LABEL;
     const strikeX = area.x + Math.max(72, Math.min(160, area.w * 0.19));
     // The trailing margin is at least a gate note's radius, so a note one whole
     // bar out is drawn complete rather than clipped by the safe edge.
@@ -178,6 +219,7 @@ export function computeLayout(w: number, h: number, laneCount: number, area: Rec
       area,
       noteR,
       gateR,
+      gateLabelSize,
       hud: {
         pad,
         score,
@@ -217,7 +259,11 @@ export function computeLayout(w: number, h: number, laneCount: number, area: Rec
   const strikeY = area.y + area.h * 0.775;
   const lanePitch = fieldThickness / lanes;
   const noteR = Math.min(lanePitch * 0.3, compact ? 17 : 24);
-  const gateR = noteR * (compact ? 1.7 : 2.0);
+  const gateLabelSize = Math.min(
+    gateLabelSizeFor(w, h),
+    (fieldThickness * 0.46) / GATE_RING_PER_LABEL,
+  );
+  const gateR = gateLabelSize * GATE_RING_PER_LABEL;
   // A note at uMax is the first frame a child could read it. Its own radius has
   // to clear the question above it, which in turn clears the host's corners.
   const runTop = promptBottom + gateR + CHROME_GAP;
@@ -238,6 +284,7 @@ export function computeLayout(w: number, h: number, laneCount: number, area: Rec
     area,
     noteR,
     gateR,
+    gateLabelSize,
     hud: {
       pad,
       score,
@@ -333,6 +380,42 @@ export function promptBox(l: Layout, textW: number): Rect {
 export function comboBox(l: Layout, textW: number): Rect {
   const c = l.hud.combo;
   return textRect(c.cx, c.cy, textW * COMBO_PUNCH, c.size * COMBO_PUNCH, "centre");
+}
+
+// ------------------------------------------------------------------ the gate
+//
+// `GateFit` in `game/gate.ts` documents `minGapDenom` as "a *display*
+// constraint, not a mathematical one, so it is passed in rather than fixed: a
+// 1372 px landscape bar can hold four orbs a twelfth apart, and a 544 px phone
+// bar cannot". It was then passed in as the constant 12 from one call site and
+// never varied. So the constraint said "a twelfth" on every viewport, and a
+// twelfth of a 390 px phone's bar is 34.0 px between two candidates that are
+// 57.8 px across: they OVERLAPPED, by 24 px, in ordinary play — and the
+// measured minimum gap over 5000 real gates was exactly 1/12, so the bad case
+// was the normal case. At 320 px they overlapped by 36 px of a 58 px orb.
+//
+// A gap is a number of pixels. Turning it back into a fraction of the bar is
+// this function's whole job, and it is the only place that knows both numbers.
+
+/** Clear air between two candidate rings, as a fraction of one ring's diameter. */
+const GATE_BREATH = 1.18;
+
+/**
+ * How far apart candidates must sit and how many of them fit, at THIS viewport.
+ *
+ * The caller ANDs this with whatever the stage allows: the fit says what the
+ * screen can hold, the stage says what the child should be asked for.
+ */
+export function gateFitFor(l: Layout): { maxCandidates: number; minGapDenom: number } {
+  const needPx = l.gateR * 2 * GATE_BREATH;
+  // The largest number of equal parts the bar divides into where one part is
+  // still wider than a candidate needs. Never below 2 — the bar has to hold at
+  // least the answer and one wrong turning.
+  const denom = Math.max(2, Math.floor(l.runLen / needPx));
+  // The flat fallback in `buildGate` spaces n candidates at 1/(n+1) of the bar,
+  // so it obeys the same gap only while n + 1 <= denom. Capped at 4, which is
+  // as many numbers as a child reads while a bar goes past.
+  return { maxCandidates: Math.max(2, Math.min(4, denom - 1)), minGapDenom: denom };
 }
 
 /** The box a note occupies on screen. Gate notes are drawn larger and carry a label. */
