@@ -48,10 +48,60 @@ export type Layout = {
   gap: number
   originX: number
   originY: number
+  /**
+   * What the shelf actually COVERS: the grid grown by `POLYP_BLEED` on every
+   * side, because a polyp is drawn larger than the cell that addresses it.
+   * This — not the grid — is the rectangle the vents have to stay out of.
+   */
+  gridRect: Rect
   ventStrip: Rect
   /** true when the vents run down the right-hand side instead of along the bottom */
   ventColumn: boolean
 }
+
+/**
+ * How far a polyp is drawn PAST the cell that addresses it, as a fraction of
+ * the cell.
+ *
+ * A polyp sprite is `SPRITE_SCALE` (1.62) cells across and is centred on its
+ * cell, so it reaches 0.31 of a cell beyond the cell box on every side. The
+ * first version of this layout sized the grid as if a polyp were exactly its
+ * cell and then left a single `pad` — 8 to 22px — between the grid's arithmetic
+ * bottom and the vent strip. At every portrait phone size that gap was smaller
+ * than the bleed, so the bottom row's polyps reached into the strip, and the
+ * vents (drawn AFTER the polyps, with a 0.95-alpha chimney) painted over them.
+ *
+ * The fix is not a z-order or an opacity: the grid is sized so that its DRAWN
+ * extent fits the region left over after the vents take theirs. `gridRect` is
+ * that extent, and `layout.test.ts` asserts it never meets a vent.
+ */
+export const POLYP_BLEED = (SPRITE_SCALE - 1) / 2
+
+/**
+ * How far the rock the shelf sits on is drawn past the grid, in gaps.
+ *
+ * `drawShelf` rounds a plate `gap * 2.2` outside the cells on every side. On a
+ * small cell that lip is WIDER than the polyp bleed, so reserving only the
+ * bleed would leave the rock itself lapping over the vents — the same bug one
+ * layer down. Whichever of the two is larger is what gets reserved.
+ */
+export const SHELF_LIP = 2.2
+
+/**
+ * The smallest cell whose numeral a child can still read. `shelfCap` refuses to
+ * grow a shelf past this; it is not enforced during layout, because clamping a
+ * cell UP does not create room, it only pushes the shelf onto the vents.
+ */
+export const LEGIBLE_CELL = 18
+/**
+ * Purely so the arithmetic cannot reach zero. Deliberately far below anything
+ * playable: a floor high enough to matter is a floor that makes the shelf
+ * overflow its region instead of fitting it, which is the bug this file is
+ * about. A shelf that lands here is one carried in from a much bigger screen
+ * and it will be tiny until the child rotates back or DEEPEN is re-capped —
+ * unpleasant, but readable-and-wrong beats erased-by-a-vent.
+ */
+const MIN_CELL = 1
 
 /**
  * Portrait stacks the vents along the bottom under the thumbs. Landscape turns
@@ -72,28 +122,75 @@ export type Layout = {
  * in the first place.
  */
 export function computeLayout(w: number, h: number, dpr: number, b: Board, area: Rect): Layout {
-  const pad = Math.max(8, Math.min(22, w * 0.03))
+  // Padding scales off the SHORTER side of the stage, not the width. A phone
+  // held sideways is wide and barely 160px tall; charging it 22px of margin
+  // top and bottom because it happens to be 568px across is how a notched
+  // small phone ended up unable to draw a legible starting shelf at all.
+  const pad = Math.max(8, Math.min(22, Math.min(w, h) * 0.03))
   const ventColumn = w / Math.max(1, h) > 1.15
   const right = area.x + area.w
   const bottom = area.y + area.h
+  // The vents are placed FIRST and the shelf is given what is left. Doing it in
+  // this order is the whole point: the two regions are disjoint by
+  // construction, not by an offset that happens to work on one device.
   let board: Rect
   let ventStrip: Rect
   if (ventColumn) {
     const cw = Math.max(190, Math.min(300, area.w * 0.26))
-    board = { x: area.x + pad, y: area.y + pad, w: area.w - cw - pad * 2.5, h: area.h - pad * 2 }
     ventStrip = { x: right - cw - pad * 0.5, y: area.y + pad, w: cw, h: area.h - pad * 2 }
+    board = {
+      x: area.x + pad,
+      y: area.y + pad,
+      w: Math.max(1, ventStrip.x - pad - (area.x + pad)),
+      h: area.h - pad * 2,
+    }
   } else {
     const ventH = Math.max(104, Math.min(180, area.h * 0.21))
-    board = { x: area.x + pad, y: area.y + pad * 0.6, w: area.w - pad * 2, h: area.h - ventH - pad * 1.6 }
+    const top = area.y + pad * 0.6
     ventStrip = { x: area.x + pad, y: bottom - ventH, w: area.w - pad * 2, h: ventH - pad * 0.5 }
+    board = {
+      x: area.x + pad,
+      y: top,
+      w: area.w - pad * 2,
+      h: Math.max(1, ventStrip.y - pad - top),
+    }
   }
   const gap = Math.max(3, Math.min(9, Math.min(board.w, board.h) * 0.018))
+  // Solve for a cell whose DRAWN grid fits `board`, not one whose cell boxes
+  // do: a row of polyps is `rows + 2 * POLYP_BLEED` cells tall on screen.
+  //
+  // There used to be an 18px floor here, which sounds protective and is not:
+  // it does not create room, it only makes the shelf overflow the region it
+  // was given — downward, onto the vents, which then paint over it. A shelf
+  // too big for the glass (a save carried over from a tablet, or a rotation)
+  // has to get SMALLER. `shelfCap` below is what stops the game growing into
+  // that state in the first place; MIN_CELL exists only so the arithmetic
+  // cannot go to zero.
+  const spread = 2 * POLYP_BLEED
+  // The polyps' bleed scales with the cell; the rock's lip scales with the gap.
+  // Solve for both and take the smaller cell, so whichever binds is honoured.
+  const lipReserve = gap * SHELF_LIP * 2
   const cell = Math.max(
-    18,
-    Math.min((board.w - gap * (b.cols - 1)) / b.cols, (board.h - gap * (b.rows - 1)) / b.rows),
+    MIN_CELL,
+    Math.min(
+      (board.w - gap * (b.cols - 1)) / (b.cols + spread),
+      (board.h - gap * (b.rows - 1)) / (b.rows + spread),
+      (board.w - gap * (b.cols - 1) - lipReserve) / b.cols,
+      (board.h - gap * (b.rows - 1) - lipReserve) / b.rows,
+    ),
   )
+  const bleed = Math.max(cell * POLYP_BLEED, gap * SHELF_LIP)
   const gridW = cell * b.cols + gap * (b.cols - 1)
   const gridH = cell * b.rows + gap * (b.rows - 1)
+  // Centred when there is slack, pinned to the top-left corner of `board` when
+  // there is not. A shelf too big for the glass has nowhere good to go — the
+  // vents are below in portrait and to the right in landscape — so it overflows
+  // towards them from a known corner rather than from the middle, which at
+  // least keeps the top-left of the shelf where the eye expects it. Only
+  // reachable when MIN_CELL binds; `shelfCap` is what keeps the game out of
+  // that state.
+  const originX = board.x + bleed + Math.max(0, (board.w - gridW - bleed * 2) / 2)
+  const originY = board.y + bleed + Math.max(0, (board.h - gridH - bleed * 2) / 2)
   return {
     w,
     h,
@@ -101,11 +198,102 @@ export function computeLayout(w: number, h: number, dpr: number, b: Board, area:
     board,
     cell,
     gap,
-    originX: board.x + (board.w - gridW) / 2,
-    originY: board.y + (board.h - gridH) / 2,
+    originX,
+    originY,
+    gridRect: {
+      x: originX - bleed,
+      y: originY - bleed,
+      w: gridW + bleed * 2,
+      h: gridH + bleed * 2,
+    },
     ventStrip,
     ventColumn,
   }
+}
+
+/**
+ * Where each vent sits inside the strip.
+ *
+ * Pure, and out here rather than inside `Game`, so a test can ask for the very
+ * rectangles the child sees and check them against the shelf. The whole rect is
+ * the drop target — a polyp dragged anywhere onto a chimney is fed to it — so
+ * this, not the little number plate, is what has to clear 44px.
+ */
+export function ventRects(l: Layout, n: number): Rect[] {
+  const strip = l.ventStrip
+  const count = Math.max(1, n)
+  const out: Rect[] = []
+  if (l.ventColumn) {
+    const gap = Math.max(8, Math.min(16, strip.h * 0.02))
+    const h = Math.min((strip.h - gap * (count - 1)) / count, 190)
+    const top = strip.y + (strip.h - (h * count + gap * (count - 1))) / 2
+    for (let i = 0; i < count; i++) out.push({ x: strip.x, y: top + i * (h + gap), w: strip.w, h })
+    return out
+  }
+  const gap = Math.max(6, Math.min(12, strip.w * 0.02))
+  const w = (strip.w - gap * (count - 1)) / count
+  for (let i = 0; i < count; i++) out.push({ x: strip.x + i * (w + gap), y: strip.y, w, h: strip.h })
+  return out
+}
+
+/**
+ * The number plate on a chimney — the "pill" a child reads the target off.
+ * A label, not a target: the drop zone is the whole vent.
+ */
+export function promptPlate(r: Rect): Rect {
+  return { x: r.x + r.w * 0.06, y: r.y + r.h * 0.1, w: r.w * 0.88, h: r.h * 0.36 }
+}
+
+/**
+ * The largest shelf this glass can hold with every polyp still legible.
+ *
+ * DEEPEN used to grow the shelf to a flat 7×9 on any screen. On the smallest
+ * notched phone a 9-row shelf cannot be drawn above the vent band at a legible
+ * cell, so it was drawn over it. Growth is capped by what fits instead — the
+ * reflow the founder should never have to notice, rather than a collision he
+ * would.
+ */
+export function shelfCap(l: Layout): { cols: number; rows: number } {
+  const spread = 2 * POLYP_BLEED
+  const lipReserve = l.gap * SHELF_LIP * 2
+  // Both of the inequalities `computeLayout` minimises over, inverted. Solving
+  // only the polyp one let the cap admit a shelf whose real cell came out
+  // fractionally under LEGIBLE_CELL, because the rock's lip is what binds at
+  // small cells.
+  const fit = (extent: number): number =>
+    Math.max(
+      1,
+      Math.min(
+        Math.floor((extent + l.gap - LEGIBLE_CELL * spread) / (LEGIBLE_CELL + l.gap)),
+        Math.floor((extent + l.gap - lipReserve) / (LEGIBLE_CELL + l.gap)),
+      ),
+    )
+  return { cols: fit(l.board.w), rows: fit(l.board.h) }
+}
+
+/** The platform's minimum touch target, and a vent is one — you drop onto it. */
+export const VENT_MIN = 44
+
+/**
+ * How many vents this shape of screen will ever hold.
+ *
+ * Bounded by the 44px drop minimum as well as by taste. A phone held wide has
+ * barely 80px of stage between the band and the rail, and the old floor of two
+ * vents split that into a pair of 37px chimneys — a target a seven-year-old
+ * cannot hit with a polyp in flight. One vent that can be aimed at beats two
+ * that cannot.
+ */
+export function ventCap(l: Layout): number {
+  const strip = l.ventStrip
+  if (l.ventColumn) {
+    const gap = Math.max(8, Math.min(16, strip.h * 0.02))
+    const fits = Math.floor((strip.h + gap) / (VENT_MIN + gap))
+    return Math.max(1, Math.min(5, fits, Math.max(2, Math.floor(strip.h / 150))))
+  }
+  const gap = Math.max(6, Math.min(12, strip.w * 0.02))
+  const fits = Math.floor((strip.w + gap) / (VENT_MIN + gap))
+  const byWidth = l.w < 480 ? 2 : l.w < 760 ? 3 : l.w < 1100 ? 4 : 5
+  return Math.max(1, Math.min(5, fits, byWidth))
 }
 
 export function cellCentre(l: Layout, b: Board, i: number): { x: number; y: number } {
@@ -168,7 +356,7 @@ export class Renderer {
     this.wg = ctx(this.water)
     this.gg = ctx(this.glow)
     this.sg = ctx(this.sharp)
-    this.layout = { w: 1, h: 1, dpr: 1, board: { x: 0, y: 0, w: 1, h: 1 }, cell: 20, gap: 4, originX: 0, originY: 0, ventStrip: { x: 0, y: 0, w: 1, h: 1 }, ventColumn: false }
+    this.layout = { w: 1, h: 1, dpr: 1, board: { x: 0, y: 0, w: 1, h: 1 }, cell: 20, gap: 4, originX: 0, originY: 0, gridRect: { x: 0, y: 0, w: 1, h: 1 }, ventStrip: { x: 0, y: 0, w: 1, h: 1 }, ventColumn: false }
   }
 
   destroy(): void {
@@ -346,16 +534,12 @@ export class Renderer {
     const stride = l.cell + l.gap
     const r = l.cell * 0.26
 
-    // the rock the whole shelf sits on
+    // The rock the whole shelf sits on — drawn to `gridRect`, the same
+    // rectangle the layout reserved and the layout test checks against the
+    // vents, so the two cannot drift apart.
     sg.save()
-    roundRect(
-      sg,
-      l.originX - l.gap * 2.2,
-      l.originY - l.gap * 2.2,
-      b.cols * stride - l.gap + l.gap * 4.4,
-      b.rows * stride - l.gap + l.gap * 4.4,
-      l.cell * 0.34,
-    )
+    const rock = l.gridRect
+    roundRect(sg, rock.x, rock.y, rock.w, rock.h, l.cell * 0.34)
     const plate = sg.createLinearGradient(0, l.originY, 0, l.originY + b.rows * stride)
     plate.addColorStop(0, rgba(lift(base, 0.08), 0.55))
     plate.addColorStop(1, rgba(mix(base, INK, 0.55), 0.62))
@@ -525,8 +709,11 @@ export class Renderer {
       // the request
       const q = v.q
       if (q) {
-        const plateH = r.h * 0.36
-        roundRect(sg, r.w * 0.06, r.h * 0.1, r.w * 0.88, plateH, plateH * 0.28)
+        // Same arithmetic as `promptPlate`, in the vent's own coordinates —
+        // that function is what the layout test measures.
+        const plate = promptPlate(r)
+        const plateH = plate.h
+        roundRect(sg, plate.x - r.x, plate.y - r.y, plate.w, plateH, plateH * 0.28)
         sg.fillStyle = rgba(INK, 0.66)
         sg.fill()
         let fs = Math.min(plateH * 0.62, r.w * 0.2)

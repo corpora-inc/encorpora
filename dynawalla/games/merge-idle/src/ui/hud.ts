@@ -10,7 +10,12 @@
  */
 
 import { fmtCompact } from '../core/ladder.ts'
-import type { Chrome } from './chrome.ts'
+import { DIGIT_EM, PIP, PIP_GAP, PIPS_PER_ROW, SEP_EM, UNIT_EM, type Chrome } from './chrome.ts'
+import { TapGuard, type TapEvent } from './tapGuard.ts'
+
+/** The width of one odometer column, in px, for the character it holds. */
+const colWidth = (ch: string, px: number): number =>
+  px * (ch >= '0' && ch <= '9' ? DIGIT_EM : ch === ',' || ch === '.' ? SEP_EM : UNIT_EM)
 
 export type Action = {
   id: string
@@ -39,34 +44,52 @@ const CSS = `
 .ab-essence{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1 1 auto}
 /* Fixed line boxes: the band's height is the canvas stage's origin, and an
    origin that drifts with a platform font metric is an origin that is wrong. */
-.ab-cap{font-size:9px;line-height:11px;height:11px;flex:0 0 auto;letter-spacing:.24em;font-weight:800;opacity:.5;text-transform:uppercase}
+.ab-cap{font-size:9px;line-height:11px;height:11px;flex:0 0 auto;letter-spacing:.24em;font-weight:800;opacity:.5;text-transform:uppercase;white-space:nowrap}
 .ab-odo{display:flex;align-items:baseline;flex:0 0 auto;font-weight:900;line-height:1;
   font-variant-numeric:tabular-nums;letter-spacing:-.02em;
   filter:drop-shadow(0 0 12px var(--ab-odo-glow,rgba(120,232,255,.5)));}
-.ab-dig{position:relative;overflow:hidden;display:inline-block}
+/* flex:0 0 auto is load-bearing. A digit column is overflow:hidden, so its
+   automatic minimum size is ZERO — left shrinkable it collapsed to nothing the
+   moment the odometer outgrew its column, while the comma and the magnitude
+   letter (not overflow:hidden, so floored at their content) survived. The child
+   saw ".K" where their score should be. chrome.ts now sizes the digits so the
+   widest possible number fits; this makes sure they can never be squeezed. */
+.ab-dig{position:relative;overflow:hidden;display:inline-block;flex:0 0 auto}
 .ab-dig>span{display:block;text-align:center}
-.ab-sep{display:inline-block;opacity:.55}
-.ab-rate{font-size:11px;line-height:14px;height:14px;flex:0 0 auto;font-weight:800;opacity:.72;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
-.ab-flow{font-weight:900;font-size:10px;line-height:12px;padding:1px 7px;border-radius:999px;
+.ab-sep{display:inline-block;flex:0 0 auto;text-align:center;opacity:.55}
+.ab-rate{line-height:14px;height:14px;flex:0 0 auto;font-weight:800;opacity:.72;letter-spacing:.04em;
+  white-space:nowrap;overflow:hidden}
+.ab-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:4px;flex:0 0 auto}
+.ab-flow{font-weight:900;font-size:10px;line-height:12px;padding:1px 7px;border-radius:999px;white-space:nowrap;
   background:rgba(255,209,46,.16);color:#ffd12e;border:1px solid rgba(255,209,46,.34)}
-.ab-pips{display:flex;gap:3px;align-items:center;flex:0 0 auto;max-width:44%;flex-wrap:wrap;justify-content:flex-end}
+.ab-flow[hidden]{display:none}
+/* A fixed grid, not a wrap: twelve pips inside a percentage max-width broke
+   wherever they happened to run out of room and left one orphan dot hanging
+   under the right-hand end of the meter. */
+.ab-pips{display:grid;gap:3px;justify-content:end}
 .ab-pip{width:7px;height:7px;border-radius:2px;background:rgba(238,246,255,.14);transition:background .3s,box-shadow .3s}
 .ab-pip.on{background:var(--ab-pip,#78e8ff);box-shadow:0 0 8px var(--ab-pip,#78e8ff)}
 
+/* The rail's column count AND its label size come from chrome.ts, not from a
+   media query here. Two sources of truth for how many buttons fit on a row is
+   how the reserved rail height and the real rail height end up disagreeing —
+   and a media query resolves against the viewport while chrome.ts resolves
+   against the element the pack was actually given, which in Split View is a
+   different number. */
 .ab-rail{position:relative;z-index:3;flex:0 0 auto;display:grid;gap:6px;padding:6px 10px 10px;
-  grid-template-columns:repeat(2,1fr);
   background:linear-gradient(0deg,rgba(4,7,18,.96),rgba(4,7,18,.55));}
-@media (min-width:620px){.ab-rail{grid-template-columns:repeat(4,1fr)}}
+/* A FIXED height, not a minimum: a label that wrapped would grow the rail,
+   which shrinks the stage, which moves every polyp on the shelf. */
 .ab-btn{appearance:none;border:1px solid rgba(238,246,255,.16);border-radius:12px;
   background:linear-gradient(180deg,rgba(30,44,80,.85),rgba(10,16,36,.9));
-  color:#eef6ff;padding:7px 8px;display:flex;flex-direction:column;align-items:center;gap:1px;
+  color:#eef6ff;padding:7px 6px;display:flex;flex-direction:column;align-items:center;gap:1px;
   font-family:inherit;cursor:pointer;transition:transform .09s cubic-bezier(.2,1.6,.4,1),filter .12s,opacity .12s;
-  min-height:46px;justify-content:center}
+  height:46px;justify-content:center;overflow:hidden}
 .ab-btn:active{transform:scale(.94)}
 .ab-btn[disabled]{opacity:.34;cursor:default}
 .ab-btn[hidden]{display:none}
-.ab-btn .n{font-size:11px;font-weight:900;letter-spacing:.1em}
-.ab-btn .c{font-size:11px;font-weight:800;opacity:.78;font-variant-numeric:tabular-nums}
+.ab-btn .n{font-size:var(--ab-btn-px,10px);font-weight:900;letter-spacing:.05em;white-space:nowrap}
+.ab-btn .c{font-size:var(--ab-btn-px,10px);font-weight:800;opacity:.78;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ab-btn.urgent{border-color:rgba(255,78,92,.7);box-shadow:0 0 0 1px rgba(255,78,92,.28),0 0 18px rgba(255,78,92,.35);
   animation:ab-urge 1.1s ease-in-out infinite}
 @keyframes ab-urge{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
@@ -120,7 +143,11 @@ function installStyle(): void {
   styleInstalled = true
 }
 
-/** A rolling-digit odometer. Rebuilt only when the digit count changes. */
+/** `12.5K` -> `ddsdu`: which columns are digits, separators and unit letters. */
+const shapeOf = (text: string): string =>
+  Array.from(text, (c) => (c >= '0' && c <= '9' ? 'd' : c === ',' || c === '.' ? 's' : 'u')).join('')
+
+/** A rolling-digit odometer. Rebuilt only when the column shape changes. */
 class Odometer {
   readonly el = document.createElement('div')
   private cols: HTMLElement[] = []
@@ -140,18 +167,22 @@ class Odometer {
     // otherwise stretch the flex line past the digits and push the band taller
     // than `chrome.ts` computed — and the band's height is the stage's origin.
     this.el.style.height = `${px}px`
-    for (const c of this.cols) {
-      if (c.classList.contains('ab-dig')) {
-        c.style.height = `${px}px`
-        c.style.width = `${px * 0.63}px`
-        const stack = c.firstElementChild as HTMLElement | null
-        if (stack) stack.style.height = `${px * 10}px`
-      }
-    }
+    // A rebuild, not a patch. The ten digit `<span>`s inside a column carry
+    // their own `height` and `line-height`, and resizing only the column left
+    // them laid out at the OLD size while `set()` went on translating the
+    // stack by the new one — so after a rotation the odometer showed the wrong
+    // digit until the number happened to change shape. In an idle game that is
+    // seconds of a score that is simply false.
+    const text = this.chars
+    this.chars = ''
+    if (text) this.set(text)
   }
 
   set(text: string): void {
-    if (text.length !== this.chars.length) this.rebuild(text)
+    // Rebuilt on a change of SHAPE, not of length. `99,999` and `100.0K` are
+    // both six characters but their columns are not interchangeable: reusing
+    // them put a digit inside a separator column and read the `.` as a zero.
+    if (shapeOf(text) !== shapeOf(this.chars)) this.rebuild(text)
     for (let i = 0; i < text.length; i++) {
       const ch = text[i] ?? ''
       const col = this.cols[i]
@@ -175,7 +206,7 @@ class Odometer {
         const col = document.createElement('span')
         col.className = 'ab-dig'
         col.style.height = `${this.sizePx}px`
-        col.style.width = `${this.sizePx * 0.63}px`
+        col.style.width = `${colWidth(ch, this.sizePx)}px`
         const stack = document.createElement('span')
         stack.style.height = `${this.sizePx * 10}px`
         stack.style.transition = 'transform .34s cubic-bezier(.2,.9,.2,1)'
@@ -192,6 +223,7 @@ class Odometer {
       } else {
         const sep = document.createElement('span')
         sep.className = 'ab-sep'
+        sep.style.width = `${colWidth(ch, this.sizePx)}px`
         sep.textContent = ch
         this.el.appendChild(sep)
         this.cols.push(sep)
@@ -211,8 +243,9 @@ export class Hud {
   readonly stage = document.createElement('div')
   private top = document.createElement('div')
   private odo = new Odometer()
-  private rateEl = document.createElement('span')
+  private rateEl = document.createElement('div')
   private flowEl = document.createElement('span')
+  private sideEl = document.createElement('div')
   private pipsEl = document.createElement('div')
   private railEl = document.createElement('div')
   private toastEl = document.createElement('div')
@@ -228,6 +261,8 @@ export class Hud {
   private buttons = new Map<string, HTMLButtonElement>()
   private pips: HTMLElement[] = []
   private muted = false
+  /** Keeps the tap that OPENS the tide gate from also answering it. */
+  private guard = new TapGuard()
 
   private cb: HudCallbacks
 
@@ -243,15 +278,20 @@ export class Hud {
     const cap = document.createElement('div')
     cap.className = 'ab-cap'
     cap.textContent = 'Essence'
-    const rate = document.createElement('div')
-    rate.className = 'ab-rate'
-    this.rateEl.textContent = '0 / sec'
+    this.rateEl.className = 'ab-rate'
+    this.rateEl.textContent = '▲ 0 / sec'
     this.flowEl.className = 'ab-flow'
     this.flowEl.hidden = true
-    rate.append(this.rateEl, this.flowEl)
-    ess.append(cap, this.odo.el, rate)
+    ess.append(cap, this.odo.el, this.rateEl)
+    // FLOW and the magnitude meter share the right-hand column. FLOW used to
+    // sit on the rate line, where it left `▲ 899 / sec` too little room and the
+    // line wrapped onto two rows inside a one-row box.
+    this.sideEl.className = 'ab-side'
     this.pipsEl.className = 'ab-pips'
-    top.append(ess, this.pipsEl)
+    this.pipsEl.style.gridTemplateColumns = `repeat(${PIPS_PER_ROW},${PIP}px)`
+    this.pipsEl.style.gap = `${PIP_GAP}px`
+    this.sideEl.append(this.flowEl, this.pipsEl)
+    top.append(ess, this.sideEl)
 
     this.stage.className = 'ab-stage'
     this.railEl.className = 'ab-rail'
@@ -272,6 +312,12 @@ export class Hud {
     this.stage.append(this.toastEl, this.badge, this.muteBtn, this.gate)
     this.root.append(top, this.stage, this.railEl)
 
+    // The whole pack's gesture state, in the capture phase so it is known
+    // before any surface gets a look at the event.
+    this.root.addEventListener('pointerdown', () => this.guard.pointerDown(), true)
+    this.root.addEventListener('pointerup', () => this.guard.pointerUp(), true)
+    this.root.addEventListener('pointercancel', () => this.guard.pointerUp(), true)
+
     for (let i = 0; i < 12; i++) {
       const p = document.createElement('div')
       p.className = 'ab-pip'
@@ -283,6 +329,23 @@ export class Hud {
   private buildGate(): void {
     this.gate.className = 'ab-gate'
     this.gate.hidden = true
+    // The gate is opened from a `pointerdown` on the canvas beneath it, so the
+    // rest of that same tap — the `pointerup`, and the `click` the browser
+    // synthesises from it — would otherwise land on whichever answer chip has
+    // just appeared under the finger. Swallowed here, at the gate's own edge,
+    // rather than inside each chip: every future control on this card is
+    // covered without having to remember.
+    for (const kind of ['pointerdown', 'pointerup', 'click'] as TapEvent[]) {
+      this.gate.addEventListener(
+        kind,
+        (e) => {
+          if (this.guard.accept(kind)) return
+          e.stopPropagation()
+          e.preventDefault()
+        },
+        true,
+      )
+    }
     const card = document.createElement('div')
     card.className = 'ab-card'
     this.gateKicker.className = 'ab-gate-kicker'
@@ -326,8 +389,12 @@ export class Hud {
     t.paddingLeft = `${c.bandPad.left}px`
     t.height = `${c.band.h}px`
     this.odo.setSize(c.odoPx)
+    this.rateEl.style.fontSize = `${c.ratePx}px`
+    this.sideEl.style.width = `${c.side.w}px`
 
     const r = this.railEl.style
+    r.gridTemplateColumns = `repeat(${c.railCols},1fr)`
+    r.setProperty('--ab-btn-px', `${c.railLabelPx}px`)
     r.paddingTop = `${c.railPad.top}px`
     r.paddingRight = `${c.railPad.right}px`
     r.paddingBottom = `${c.railPad.bottom}px`
@@ -445,7 +512,12 @@ export class Hud {
       b.addEventListener('click', () => this.cb.onChip(i))
       this.gateChips.appendChild(b)
     })
+    const wasOpen = !this.gate.hidden
     this.gate.hidden = false
+    // Only a fresh appearance needs guarding. The next question after a wrong
+    // answer reuses a card that is already on screen and already armed, and
+    // disarming it there would cost the child a tap.
+    if (!wasOpen) this.guard.open()
   }
 
   markChip(index: number, right: boolean): void {
@@ -460,6 +532,7 @@ export class Hud {
 
   hideGate(): void {
     this.gate.hidden = true
+    this.guard.close()
   }
 
   get gateOpen(): boolean {
