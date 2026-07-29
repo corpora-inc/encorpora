@@ -9,7 +9,7 @@ the arithmetic welded into the gesture rather than bolted onto it.
 ```bash
 npm install
 npm run dev     # http://127.0.0.1:4317 — playable standalone, stub Host included
-npm test        # 30 tests
+npm test        # 86 tests
 npm run tsc
 npm run build:pack # what installs on a tablet: pack.html only, no stub Host
 ```
@@ -172,6 +172,35 @@ Every one of these was found by playing, not by reading:
    clamped every partial with a console warning. Capped at three octaves.
 8. **The blade ribbon was visibly jagged** at low sample density. Catmull-Rom
    resampling doubles the point density before the ribbon is built.
+
+## The frame this game does not own
+
+The document declares `viewport-fit=cover` and the whole HUD is drawn on the
+canvas, where `env(safe-area-inset-*)` cannot be read — so the score was being
+painted at `y = 12`, which on a notched phone is not on the screen. The host
+compounds it: it floats a 44px exit control in the top-LEFT corner and a 44px
+how-to-play control in the top-RIGHT, over the pack rather than reserving a
+band, and the score and the three lamps were underneath them.
+
+`src/render/hud.ts` is the one place both facts are known. `hudLayout(w, h,
+area)` takes the safe rect as a **required** parameter — a default would compile
+at any call site that forgot it and only fail on a device with a notch in
+someone's hand — and `resize()` re-derives it from `safeRect(W, H)` every time,
+so rotation and Split View are handled rather than being right once at mount.
+
+Nothing reserves a band; reserving 67px costs a twelfth of a 568px phone. The
+promise is narrower: **the two 44px corners stay free of anything a child must
+read or touch.** That means the score/BEST/multiplier column, the three lamps
+and their relight ticks, the live-question banner, and the answer lanterns. The
+lanterns get the strictest treatment of the lot, being the one thing here that
+is both read *and* touched.
+
+The sky, the ridges, the canopies, the blade ribbon, the splat layer, the
+particles and the flying gourds still bleed to every edge. That is what
+`viewport-fit=cover` is *for*.
+
+`src/test/layout.test.ts` runs the same two functions the renderer runs, across
+five viewports and three real inset profiles, and asserts both promises.
 
 ## The contract
 
