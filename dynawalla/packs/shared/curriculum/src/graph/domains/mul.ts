@@ -30,16 +30,22 @@
  * `promptOperator(key)` out of `render/prompts.ts` now, which is why those four
  * rows are a `status` flip and nothing else — no generator here changed.
  *
- * **The other two are held by something no gate had ever needed to check: how wide
- * a numeral a game can print.** `dw.mul.scale.times-power-of-ten` and
- * `dw.mul.multidigit.long-multiplication` reach nine and ten characters, and
- * `games/polarity` refuses an answer past eight — its own sweep of the shipping
- * ladder went red on `544,080,000` the moment they went active, which is that gate
- * working. See `NUMERAL_WIDTH_BLOCKED_LEVELS` in `promotionBlockers.ts`: the rows
- * are right and the ceiling is the program's stated one. What is missing is on the
- * pack's side, and `packs/sdk` already has the seam — a pack that can print eight
- * characters caps its stream with `next({ maxDifficulty })` and gets the part of
- * the ladder it can draw.
+ * **The other two were held by something no gate had ever needed to check: how
+ * wide a numeral a game can print**, and they are active now too.
+ * `dw.mul.scale.times-power-of-ten` and `dw.mul.multidigit.long-multiplication`
+ * reach nine and ten characters; `games/polarity` refused an answer past eight,
+ * and its own sweep of the shipping ladder went red on `544,080,000` the moment
+ * they were first promoted — which is that gate working. The rows were never
+ * wrong and the ceiling is the program's stated one, so the fix was the pack's:
+ * POLARITY's numeral budget is derived from the lane an orb is drawn in rather
+ * than typed, which puts it at ten characters, and it caps its own stream with
+ * `next({ maxDifficulty })` when it meets a rung it cannot draw instead of
+ * declining item after item from a rung the host will keep serving. Both are a
+ * `status` flip here and nothing else.
+ *
+ * `SHIPPED_NUMERAL_MAX_CHARS` in `promotionBlockers.ts` still holds the whole
+ * graph to what the narrowest pack prints, in both directions, so the row that
+ * reaches eleven characters is stopped by a test rather than by a child.
  */
 
 import { rational } from "../../math/rational.ts";
@@ -240,7 +246,7 @@ const timesPowerOfTen: SkillNode = {
    * the gate was asking for. `472 × 100` is the same skill `47 × 100` was.
    */
   rev: 2,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.mul.scale.times-power-of-ten.title"),
   learnerGoal: locKey("dw.skill.mul.scale.times-power-of-ten.goal"),
   domain: "mul",
@@ -391,7 +397,7 @@ const timesTwoDigit: SkillNode = {
 const longMultiplication: SkillNode = {
   id: SKILL_LONG_MULTIPLICATION,
   rev: 1,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.mul.multidigit.long-multiplication.title"),
   learnerGoal: locKey("dw.skill.mul.multidigit.long-multiplication.goal"),
   domain: "mul",

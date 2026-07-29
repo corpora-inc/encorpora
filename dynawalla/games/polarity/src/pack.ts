@@ -21,8 +21,16 @@
 // nothing declined an item outside the range, the renderer simply skipped the
 // numeral, and 89.9% of the orb values this pack requests across the shipping
 // ladder came out as blank glowing discs. Tiles are claimed on demand now
-// (`core/labels.ts`) and any integer prints; `askQuestion` refuses anything it
-// cannot print, out loud, rather than dropping it on the field unlabelled.
+// (`core/labels.ts`) and `askQuestion` refuses anything it cannot print, out
+// loud, rather than dropping it on the field unlabelled.
+//
+// There IS a real limit and it is stated where it can be checked: a numeral is
+// drawn in the lane its orb gets, four orbs share `ORB_SPREAD` of a hundred-unit
+// field, and a character narrower than half its own cap height is not a numeral.
+// That comes out at ten characters — `48,826 × 82,726`, the widest answer the
+// curriculum reaches. Past it, POLARITY caps its own stream with
+// `next({ maxDifficulty })` rather than declining item after item from a rung
+// the host has no reason to stop serving.
 //
 // There are no signed-integer rows in the graph yet; when there are, they belong
 // here.

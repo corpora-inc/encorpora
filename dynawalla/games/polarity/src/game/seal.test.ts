@@ -318,7 +318,11 @@ test("an item with an answer this game cannot print is declined, not shown unlab
     console.error = real;
   }
   assert.ok(errors.length > 0, "an item was silently dropped — the whole failure mode, again");
-  assert.match(String(errors[0]?.[0]), /declined an item/);
+  const said = errors.map((line) => String(line[0])).join("\n");
+  assert.match(said, /declined an item/);
+  // And the rung it came from is named, not just the item — because refusing
+  // the same rung six times and then going quiet is the soft-lock.
+  assert.match(said, /capping the stream/);
 });
 
 test("a boss that could not ask does not sweep the playfield clean", () => {

@@ -4,12 +4,22 @@ import assert from "node:assert/strict";
 import {
   LABEL_ASPECT,
   LABEL_CAPACITY,
+  LABEL_CAP_RATIO,
+  LABEL_CELL_H,
+  LABEL_COLS,
+  LABEL_ROWS,
+  LABEL_EM,
   LABEL_FAULT,
+  LABEL_INK_W,
+  LABEL_MAX_CHARS,
+  LABEL_MIN_ADVANCE_CAPS,
+  LABEL_MIN_ADVANCE_EM,
   LabelBook,
   isPrintable,
+  labelAdvanceEm,
   labelText,
 } from "./labels.ts";
-import { BULLET, HALF_W } from "../game/constants.ts";
+import { BULLET, HALF_W, MAX_HALF_H, MIN_HALF_H, ORB_SPREAD } from "../game/constants.ts";
 import { orbValues } from "../game/seal.ts";
 import type { Question } from "../contract.ts";
 // The REAL stream. `ladder()`, `choicesFor()` and `answerText()` are the host's
@@ -195,16 +205,102 @@ test("a frame that wants too many numerals gets a question mark, not a swap", ()
 });
 
 test("a wide numeral still fits its own orb's lane", () => {
-  // Cells got wider so a four-digit answer keeps its glyph HEIGHT instead of
-  // being squeezed flat. That only helps if the wide quad still fits the slot an
-  // orb is given: four orbs share `(HALF_W - 12) * 2` of playfield, and the
-  // renderer boosts label size by 1.18 on a narrow phone.
-  const lane = ((HALF_W - 12) * 2) / 4;
+  // THE constraint on how long an answer POLARITY can print. Not the atlas and
+  // not the texture: four orbs share `ORB_SPREAD` of the hundred-unit playfield,
+  // the label drawn over one is `size * LABEL_ASPECT` wide, and the renderer
+  // boosts label size by 1.18 on a narrow phone. Two labels that overlap are
+  // worse than one that is condensed, so this is what `LABEL_ASPECT` is capped
+  // by — and through it, `LABEL_MAX_CHARS`.
+  const lane = ORB_SPREAD / 4;
   const widest = BULLET.orbR * 1.35 * LABEL_ASPECT * 1.18;
   assert.ok(
     widest < lane,
     `a numeral is ${widest.toFixed(1)} wide in a ${lane.toFixed(1)} lane — orbs would collide`,
   );
+  // And the outermost orb's numeral stays on the field. Its centre sits at
+  // three-eighths of the spread, and the ink is `LABEL_INK_W / (LABEL_CELL_H *
+  // LABEL_ASPECT)` of the quad.
+  const inkHalf = (widest * (LABEL_INK_W / (LABEL_CELL_H * LABEL_ASPECT))) / 2;
+  const edge = (ORB_SPREAD * 3) / 8 + inkHalf;
+  assert.ok(edge < HALF_W, `the outer numeral reaches ${edge.toFixed(1)} of ${String(HALF_W)}`);
+});
+
+test("the atlas is a whole number of texels wide on every tier, and fits a 2048 texture", () => {
+  // The shader addresses a tile as a fraction of `uGrid`, so a cell width the
+  // canvas has to round is a cell that samples its neighbour — a silent defect
+  // that reads as a font bug. And 2048 is the value WebGL guarantees for
+  // `MAX_TEXTURE_SIZE`, which is the ceiling on BOTH dimensions: the old atlas
+  // was 2048 × 768, already at it sideways, which is why the cell got its extra
+  // width from a squarer grid rather than from a bigger texture.
+  for (const cellPx of [96, 128]) {
+    const cellW = cellPx * LABEL_ASPECT;
+    assert.ok(Number.isInteger(cellW), `a ${String(cellPx)}px cell is ${String(cellW)} texels wide`);
+    const texW = LABEL_COLS * cellW;
+    const texH = LABEL_ROWS * cellPx;
+    assert.ok(texW <= 2048 && texH <= 2048, `the atlas is ${String(texW)} × ${String(texH)}`);
+  }
+});
+
+test("the longest numeral is derived from the lane, and is not a number somebody typed", () => {
+  // `LABEL_MAX_CHARS = 8` used to be a constant whose stated reason — that eight
+  // characters "still fits the cell without squeezing" — was false: eight at
+  // `LABEL_EM` measure about 365 design units against what was then a 232-unit
+  // box, so the widest numeral the old constant permitted was already squeezed
+  // to about 0.64 and nothing said so. The budget is the ratio now, and the
+  // character count falls out of it.
+  assert.ok(
+    labelAdvanceEm(LABEL_MAX_CHARS) >= LABEL_MIN_ADVANCE_EM,
+    `${String(LABEL_MAX_CHARS)} characters get ${labelAdvanceEm(LABEL_MAX_CHARS).toFixed(4)} em`,
+  );
+  assert.ok(
+    labelAdvanceEm(LABEL_MAX_CHARS + 1) < LABEL_MIN_ADVANCE_EM,
+    `${String(LABEL_MAX_CHARS + 1)} characters would also have fitted — the cap is not the geometry`,
+  );
+  // `48,826 × 82,726` is the program's stated ceiling and ten characters wide.
+  assert.ok(
+    LABEL_MAX_CHARS >= 10,
+    `the widest answer the curriculum reaches is ten characters and this game prints ${String(LABEL_MAX_CHARS)}`,
+  );
+});
+
+test("the longest numeral clears the canon's cap-height gate on every viewport", () => {
+  // `docs/catalog/arcade-canon.json`, on numerals carried by moving objects —
+  // which is exactly what an orb is: "minimum 22 rpx cap-height at the moment of
+  // decision … This is a hard gate, not a style note." One rpx is a thousand-
+  // and-eightieth of the short edge in physical pixels, so a length in rpx is
+  // `cssPx * 1080 / shortEdgeCss` and the device pixel ratio cancels out of it.
+  //
+  // Computed from POLARITY's own constants across the fleet rather than argued.
+  // Type size does NOT depend on how long the numeral is — that is the whole
+  // point of fitting a numeral to a box rather than shrinking it — so this holds
+  // at `LABEL_MAX_CHARS` exactly as it does at one digit.
+  const viewports = [
+    { w: 360, h: 640, what: "the narrowest phone, portrait" },
+    { w: 390, h: 844, what: "a tall phone, portrait" },
+    { w: 640, h: 360, what: "a phone, landscape" },
+    { w: 834, h: 1112, what: "a tablet, portrait" },
+    { w: 1112, h: 834, what: "a tablet, landscape" },
+  ];
+  for (const { w, h, what } of viewports) {
+    const halfH = Math.min(MAX_HALF_H, Math.max(MIN_HALF_H, (HALF_W * h) / w));
+    const scale = Math.min(w / (2 * HALF_W), h / (2 * halfH));
+    const boost = w < 520 ? 1.18 : 1;
+    const quadH = BULLET.orbR * 1.35 * boost * scale; // css px
+    const typePx = (LABEL_EM / LABEL_CELL_H) * quadH;
+    const rpx = (css: number): number => (css * 1080) / Math.min(w, h);
+    assert.ok(
+      rpx(typePx * LABEL_CAP_RATIO) >= 22,
+      `${what}: cap height is ${rpx(typePx * LABEL_CAP_RATIO).toFixed(1)} rpx, under the canon's 22`,
+    );
+    // And what LENGTH costs is advance, which is the floor `LABEL_MAX_CHARS` is
+    // derived from — restated here in the canon's own units so the two numbers
+    // can be read against each other.
+    const advanceRpx = rpx(labelAdvanceEm(LABEL_MAX_CHARS) * typePx);
+    assert.ok(
+      advanceRpx >= 22 * LABEL_MIN_ADVANCE_CAPS,
+      `${what}: a digit gets ${advanceRpx.toFixed(1)} rpx of width`,
+    );
+  }
 });
 
 test("the shipping grid is never asked for more numerals in a frame than it holds", () => {

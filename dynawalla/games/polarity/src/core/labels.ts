@@ -15,25 +15,36 @@
  * FOUR blank glowing discs in front of the child, with no error and no warning.
  * A child cannot choose between four unlabelled circles.
  *
- * So tiles are claimed on demand instead. Any finite integer prints, whatever
- * its magnitude, and a value that is somehow not one prints `?` — loud in the
- * console and visible on the field, because the one thing a numeral must never
- * be is absent.
+ * So tiles are claimed on demand instead. Any finite integer up to
+ * `LABEL_MAX_CHARS` prints, whatever its magnitude, and a value that is somehow
+ * not an integer prints `?` — loud in the console and visible on the field,
+ * because the one thing a numeral must never be is absent.
+ *
+ * **There is still a width, and it is now derived rather than typed.** A
+ * numeral cannot be narrower than half its own cap height and still be read, and
+ * the width it has is the orb's lane — see `LABEL_ASPECT` and
+ * `LABEL_MIN_ADVANCE_CAPS`. What that budget refuses, `seal.ts` turns into a
+ * ceiling on the whole stream rather than a refusal per item, because a rung
+ * whose every answer is too wide is a Seal Bearer that asks nothing.
  */
 
 import { MINUS } from "../math/signed.ts";
 
 /**
- * The grid. 48 cells: 47 claimable and one reserved.
+ * The grid. 49 cells: 48 claimable and one reserved.
  *
  * The playfield's entire numeric vocabulary in one frame is chaff at ±2…9,
  * charge at ±2…9, the float texts they leave behind (a subset of those), four
  * orbs and one lock — about two dozen distinct values, measured in
  * `labels.test.ts`. Twice that is headroom; more than that is texture nobody
  * looks at, and the cell has to stay big enough to read.
+ *
+ * It was 8 × 6 while the cell was 2:1. The cell is `LABEL_ASPECT`:1 now and the
+ * texture cannot grow sideways — see that constant — so the grid is squarer at
+ * the same claimable count.
  */
-export const LABEL_COLS = 8;
-export const LABEL_ROWS = 6;
+export const LABEL_COLS = 7;
+export const LABEL_ROWS = 7;
 export const LABEL_CAPACITY = LABEL_COLS * LABEL_ROWS;
 
 /**
@@ -49,21 +60,104 @@ export const LABEL_CAPACITY = LABEL_COLS * LABEL_ROWS;
 export const LABEL_FAULT_TILE = LABEL_CAPACITY - 1;
 
 /**
- * Cells are twice as wide as they are tall, so a four-digit answer gets ROOM
- * rather than being squeezed to a smear at the same height as a `7`. The quad
- * the shader draws is `size * LABEL_ASPECT` wide by `size` tall, and a short
- * numeral simply leaves transparent margin either side.
+ * Cells are wider than they are tall, so a long answer gets ROOM rather than
+ * being squeezed to a smear at the same height as a `7`. The quad the shader
+ * draws is `size * LABEL_ASPECT` wide by `size` tall, and a short numeral simply
+ * leaves transparent margin either side.
+ *
+ * **Why 2.25 and not more.** Not the texture: the atlas is `LABEL_COLS *
+ * cellPx * LABEL_ASPECT` wide, which at 2.25 and a 128px cell is 2016 — under
+ * 2048, the value WebGL guarantees for `MAX_TEXTURE_SIZE` and therefore the
+ * hard ceiling on this dimension. The binding constraint is the ORB'S LANE.
+ * Four orbs share `ORB_SPREAD` of the hundred-unit playfield, so each gets
+ * `ORB_SPREAD / 4`; the label drawn over one is `size * LABEL_ASPECT` wide, and
+ * two labels that overlap are worse than one that is condensed. See
+ * `labels.test.ts`, which holds the two numbers against each other.
  */
-export const LABEL_ASPECT = 2;
+export const LABEL_ASPECT = 2.25;
+
+/** The cell's height in design units. `atlas.ts` scales the real cell to this. */
+export const LABEL_CELL_H = 128;
+
+/** The numeral's type size in design units — its HEIGHT, whatever its length. */
+export const LABEL_EM = 76;
 
 /**
- * The longest numeral a tile is expected to hold. Evidence, not a guess: the
- * widest value the shipping ladder emits across 44,000 measured orbs is
- * `998232` — six characters — and the longest a mal-rule or near-miss
- * distractor pushes it to is seven. Eight leaves a character of headroom and
- * still fits the cell without squeezing.
+ * Total horizontal padding inside a cell, design units, so glyphs never clip.
+ *
+ * Ten a side, and the number it has to clear is the baked contrast rim: the
+ * painter strokes the numeral at `lineWidth 13` before filling it, which puts
+ * ink 6.5 design units outside the glyph outline. Ten leaves three and a half
+ * units of slack on top of that. It was 24 — a round number nothing derived —
+ * and the four units are the difference between ten characters and nine.
  */
-export const LABEL_MAX_CHARS = 8;
+export const LABEL_CELL_MARGIN = 20;
+
+/** The box a numeral is fitted into, design units wide. */
+export const LABEL_INK_W = LABEL_CELL_H * LABEL_ASPECT - LABEL_CELL_MARGIN;
+
+/**
+ * What one character gets, in ems of the numeral's own height, when a numeral
+ * of `chars` characters is fitted to the cell.
+ *
+ * This is the number that decides legibility, and it is font-independent:
+ * anything wider than the box is squeezed to exactly fill it (`atlas.ts`), so a
+ * long numeral's advance is the box divided by the character count whatever
+ * face the device resolves. Height never moves — every numeral on the field is
+ * drawn at the same `LABEL_EM`.
+ *
+ * For a numeral short enough not to be squeezed this is an upper bound: it gets
+ * the face's own advance, which is smaller.
+ */
+export function labelAdvanceEm(chars: number): number {
+  return LABEL_INK_W / (LABEL_EM * Math.max(1, chars));
+}
+
+/** Cap height as a fraction of the type size. Conservative for a geometric sans. */
+export const LABEL_CAP_RATIO = 0.7;
+
+/**
+ * How narrow a digit is allowed to get, as a fraction of its own cap height.
+ *
+ * A half. Condensed tabular faces bottom out at about 0.45 to 0.5 of cap
+ * height — below that the counters of `8`, `6` and `0` close and a child
+ * reading at speed is guessing — and an unsqueezed face runs about 0.85. So
+ * this is the narrow end of legible, deliberately, and it is stated against the
+ * cap height rather than in pixels because the one hard gate this program has
+ * for a numeral on a moving object is a cap-height gate:
+ * `docs/catalog/arcade-canon.json` demands 22 rpx "at the moment of decision".
+ * `labels.test.ts` computes the cap height across the fleet from these
+ * constants and holds it to that.
+ */
+export const LABEL_MIN_ADVANCE_CAPS = 0.5;
+
+/**
+ * The same floor in ems, which is the unit the cell is measured in.
+ *
+ * **What it replaces.** `LABEL_MAX_CHARS = 8`, whose stated reason was that
+ * eight "still fits the cell without squeezing". It does not: eight characters
+ * at `LABEL_EM` measure about 365 design units against what was then a 232-unit
+ * box, so the eight-character numeral the old constant permitted was already
+ * squeezed to roughly 0.64 of its natural width — 0.38 em of advance, 0.55 of
+ * cap height. Nothing measured that, nothing enforced it, and no shipped item
+ * ever reached it: the widest the ladder emitted was six characters. The budget
+ * is stated as the ratio it always really was, and the character count is
+ * derived from it rather than chosen.
+ */
+export const LABEL_MIN_ADVANCE_EM = LABEL_MIN_ADVANCE_CAPS * LABEL_CAP_RATIO;
+
+/**
+ * The longest numeral a tile will hold — DERIVED, not chosen.
+ *
+ * The largest `n` for which `labelAdvanceEm(n) >= LABEL_MIN_ADVANCE_EM`, which
+ * at the shipping geometry is ten — by a margin of less than one percent. Ten
+ * characters is `48,826 × 82,726`, the widest answer the curriculum reaches and
+ * the ceiling this whole program is aimed at, and it is reached because the
+ * geometry allows it and not because anything was rounded in its favour: a
+ * later change to the cell, the margin or the aspect moves this number, and
+ * `labels.test.ts` asserts both that ten fits and that eleven does not.
+ */
+export const LABEL_MAX_CHARS = Math.floor(LABEL_INK_W / (LABEL_EM * LABEL_MIN_ADVANCE_EM));
 
 /** What a tile with nothing legible to print shows. Never blank. */
 export const LABEL_FAULT = "?";
@@ -82,10 +176,18 @@ export function labelText(v: number): string {
  * a reason to say no — only a value that is not a finite integer, or one so
  * long the cell could not hold it legibly, is refused, and both are refused out
  * loud where they happen.
+ *
+ * **Why `maxChars` is a parameter.** The thing this refusal exists to protect
+ * against is a curriculum WIDER than the one that ships, and today's ships
+ * inside the budget with nothing to spare on either side — so a test that
+ * cannot narrow the budget cannot exercise the refusal, or the ceiling built on
+ * top of it in `seal.ts`, until the day the curriculum has already broken.
+ * `game/ask.test.ts` narrows it and plays the real ladder through the real
+ * host; nothing in the game passes anything but the default.
  */
-export function isPrintable(v: number): boolean {
+export function isPrintable(v: number, maxChars: number = LABEL_MAX_CHARS): boolean {
   if (!Number.isInteger(v)) return false;
-  return labelText(v).length <= LABEL_MAX_CHARS;
+  return labelText(v).length <= maxChars;
 }
 
 /**

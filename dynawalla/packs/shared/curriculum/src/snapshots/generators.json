@@ -60,6 +60,12 @@
     "gen.arith.long-div@1|dw.div.whole.divide-exact|L3": "b521e068909c39d4",
     "gen.arith.long-div@1|dw.div.whole.zero-in-the-quotient|L0": "6c1692e3a2713b86",
     "gen.arith.long-div@1|dw.div.whole.zero-in-the-quotient|L1": "c48fc1f14698b531",
-    "gen.arith.long-div@1|dw.div.whole.zero-in-the-quotient|L2": "b3708b4205c519fc"
+    "gen.arith.long-div@1|dw.div.whole.zero-in-the-quotient|L2": "b3708b4205c519fc",
+    "gen.arith.multidigit-mul@1|dw.mul.scale.times-power-of-ten|L0": "66b5e4e61b33da75",
+    "gen.arith.multidigit-mul@1|dw.mul.scale.times-power-of-ten|L1": "0307112bb78b72d3",
+    "gen.arith.multidigit-mul@1|dw.mul.scale.times-power-of-ten|L2": "918cca675d399fa1",
+    "gen.arith.multidigit-mul@1|dw.mul.multidigit.long-multiplication|L0": "106e1eebe68d83db",
+    "gen.arith.multidigit-mul@1|dw.mul.multidigit.long-multiplication|L1": "bc9af04dca377856",
+    "gen.arith.multidigit-mul@1|dw.mul.multidigit.long-multiplication|L2": "1239bfc39b12417f"
   }
 }

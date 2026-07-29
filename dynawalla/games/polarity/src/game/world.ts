@@ -126,6 +126,15 @@ export type World = {
   nextBearer: number;
   bearerCount: number;
   stratum: number;
+  /**
+   * The highest ladder position this run will accept, 0..1, or null for none.
+   *
+   * Set the first time the host serves a rung whose answers POLARITY cannot
+   * print, and only ever lowered after that — see `capBelow` in `seal.ts`. It is
+   * what turns "declines every item this rung offers, forever" into "asks the
+   * hardest question it can actually draw".
+   */
+  drawCeiling: number | null;
   bossActive: boolean;
   hush: number;
 
@@ -281,6 +290,7 @@ export function makeWorld(host: Host, tier: Tier, seed: number): World {
     nextBearer: 0,
     bearerCount: 0,
     stratum: 0,
+    drawCeiling: null,
     bossActive: false,
     hush: 0,
     seal: { serial: 0, state: "idle", q: null, askedAt: 0, answered: "" },

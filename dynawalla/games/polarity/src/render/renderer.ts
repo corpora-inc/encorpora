@@ -153,8 +153,8 @@ export class Renderer {
     this.gl.autoClear = true;
 
     // Cell HEIGHT, and the same as the tile size the baked atlas used: the cell
-    // got wider, not shorter, so a numeral has exactly the texels it always had
-    // and a four-digit answer is drawn wide rather than crushed.
+    // has only ever got wider, never shorter, so a numeral has exactly the
+    // texels it always had and a long answer is drawn wide rather than crushed.
     this.atlas = new LabelAtlas(tier.name === "low" ? 96 : 128);
 
     this.uBack = {

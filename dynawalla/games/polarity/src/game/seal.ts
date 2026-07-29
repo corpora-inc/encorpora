@@ -10,6 +10,7 @@ import {
   EK,
   ENEMY,
   HALF_W,
+  ORB_SPREAD,
   PACE,
   SCORE,
   polColor,
@@ -89,11 +90,43 @@ export function launchBoss(w: World): void {
 /**
  * How many items to refuse before giving up on this Bearer.
  *
- * Refusing is meant to be a rarity — the atlas prints any integer, so the only
- * thing left to refuse is an answer that is not one. A bound exists so a host
- * serving a whole domain this game cannot draw costs a bearer, not a hang.
+ * Refusing is meant to be a rarity — the atlas prints any integer up to
+ * `LABEL_MAX_CHARS`, so the only things left to refuse are an answer that is not
+ * an integer and an answer wider than the lane. A bound exists so a host serving
+ * a whole rung this game cannot draw costs a bearer, not a hang — and, since
+ * `capBelow`, costs it exactly once.
  */
 const MAX_ASK_TRIES = 6;
+
+/**
+ * A 0..1 ladder position, spelled so the host cannot read it as the other scale.
+ *
+ * `packs/shared/game-host` reads a value below 1 as a fraction and 1..10 as a
+ * ladder index, and resolves the one value both scales claim — `1` — as the
+ * BOTTOM, because six other games send exactly that on their opening question
+ * and meant the easiest content in the product.
+ *
+ * POLARITY sent a fraction, and its fraction is `clamp(0.14 + stratum * 0.06, 0,
+ * 1)`, which reaches exactly 1 at stratum 15 — about seven and a half minutes of
+ * good play — and meant the HARDEST content. So the one number this game was
+ * guaranteed to send eventually was the one number that meant the opposite of
+ * what it wanted: a child who had climbed fifteen strata was dropped to the
+ * bottom of the ladder and held there for the rest of the run. `game-host` names
+ * this game in the comment on that rule. It speaks the unambiguous scale now.
+ */
+export function ladderScale(unit: number): number {
+  return 1 + clamp(unit, 0, 1) * 9;
+}
+
+/**
+ * How far below a rung the ceiling is set when that rung turns out undrawable.
+ *
+ * The host floors `maxDifficulty * span` to a rung index, so an ordinate of
+ * `used / span` minus anything strictly between 0 and one rung excludes exactly
+ * that rung and keeps every rung below it. A thousandth is below one rung for
+ * any ladder shorter than a thousand rungs; the shipping one has sixty.
+ */
+const CEILING_STEP = 1e-3;
 
 /**
  * The values an item would put on the field: the answer first, then its wrongs.
@@ -105,30 +138,75 @@ const MAX_ASK_TRIES = 6;
  *   * fewer than two values, which is not a question. One orb on the field is
  *     the right answer by elimination; a child touching it is not retrieval, and
  *     reporting it as a correct answer inflates a record that only ever rises.
+ *
+ * `maxChars` exists for the same reason it exists on `isPrintable`: the refusal
+ * guards against a curriculum wider than the one that ships, and a test that
+ * cannot narrow the budget cannot reach it. Nothing in the game passes it.
  */
-export function orbValues(q: Question, orbCount: number): number[] | null {
+export function orbValues(q: Question, orbCount: number, maxChars?: number): number[] | null {
   const answer = tryParseInt(q.answer);
   // A value the game cannot print must never be offered. There is no third
   // option where it is offered and comes out blank.
-  if (answer === null || !isPrintable(answer)) return null;
+  if (answer === null || !isPrintable(answer, maxChars)) return null;
   const out = [answer];
   for (const d of q.distractors) {
     if (out.length >= orbCount) break;
     const v = tryParseInt(d);
     // A wrong answer that will not print is dropped, not drawn: three orbs a
     // child can read beat four where one is a blank disc.
-    if (v === null || !isPrintable(v) || out.includes(v)) continue;
+    if (v === null || !isPrintable(v, maxChars) || out.includes(v)) continue;
     out.push(v);
   }
   return out.length >= Math.min(2, orbCount) ? out : null;
 }
 
+/** What this run asks the host for, difficulty and ceiling both. */
+export function askShape(w: World): { difficulty: number; maxDifficulty?: number } {
+  const want = clamp(0.14 + w.stratum * 0.06, 0, 1);
+  const ask: { difficulty: number; maxDifficulty?: number } = {
+    difficulty: ladderScale(want),
+  };
+  if (w.drawCeiling !== null) ask.maxDifficulty = ladderScale(w.drawCeiling);
+  return ask;
+}
+
+/**
+ * Ban the rung an unprintable item came from, and everything above it.
+ *
+ * **This is the durable half of the numeral fix.** Widening the numeral moves
+ * the ceiling; this is what makes a ceiling safe. A pack that cannot draw a rung
+ * has to tell the host, because declining is per-item and the host serves by
+ * RUNG: ask again at the same difficulty and the same rung answers. Six refusals
+ * later the Bearer cracks open having asked nothing, the next one does the same,
+ * and the child at the top of the ladder is served silence — which is not a
+ * degradation, it is a soft-lock, and it is what `NUMERAL_WIDTH_BLOCKED_LEVELS`
+ * was recording.
+ *
+ * Monotone downwards and never raised again. A rung that could not be drawn once
+ * cannot be drawn later — the budget is a constant — and a ceiling that drifted
+ * back up would re-enter the same starve every time the child climbed.
+ */
+function capBelow(w: World, q: Question): void {
+  const at = clamp(q.difficulty, 0, 1);
+  const capped = Math.max(0, at - CEILING_STEP);
+  if (w.drawCeiling !== null && w.drawCeiling <= capped) return;
+  w.drawCeiling = capped;
+  console.error(
+    `[polarity] a rung POLARITY cannot draw was served at difficulty ${at.toFixed(3)}; ` +
+      `capping the stream at ${capped.toFixed(3)} for the rest of this run`,
+  );
+  // The pool was stocked from the rung that has just been ruled out, so without
+  // this the ceiling arrives sixty-four questions late.
+  w.host.flush?.();
+}
+
 /** Draw an item this game can actually put on the field, or nothing. */
 function drawAskable(w: World, orbCount: number): { q: Question; values: number[] } | null {
   for (let i = 0; i < MAX_ASK_TRIES; i++) {
-    const q = w.host.next({ difficulty: clamp(0.14 + w.stratum * 0.06, 0, 1) });
+    const q = w.host.next(askShape(w));
     const values = orbValues(q, orbCount);
     if (values) return { q, values };
+    capBelow(w, q);
     console.error(
       `[polarity] declined an item POLARITY cannot print: ${q.prompt} = ${JSON.stringify(q.answer)}`,
     );
@@ -160,8 +238,7 @@ function askQuestion(w: World, e: Enemy, orbCount: number): boolean {
     if (!o) continue;
     const b = addBullet(w);
     if (!b) continue;
-    const spread = (HALF_W - 12) * 2;
-    const tx = -spread / 2 + (spread * (i + 0.5)) / n;
+    const tx = -ORB_SPREAD / 2 + (ORB_SPREAD * (i + 0.5)) / n;
     b.x = e.x;
     b.y = e.y - e.r * 0.4;
     b.vx = (tx - e.x) * 0.55;

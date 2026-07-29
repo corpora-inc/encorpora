@@ -752,6 +752,10 @@ export function startRun(w: World): void {
   w.spawnAcc = 0;
   w.stratum = 0;
   w.bearerCount = 0;
+  // `w.drawCeiling` is deliberately NOT reset. What POLARITY can draw is a
+  // property of POLARITY's numeral cell, not of this run, so a rung that starved
+  // one run would starve the next one identically — and re-learning it costs a
+  // Bearer that asks nothing, every restart.
   w.bossActive = false;
   w.bank = 1;
   w.nextBearer = PACE.firstBearer;

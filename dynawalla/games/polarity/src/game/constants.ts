@@ -73,6 +73,23 @@ export const BULLET = {
   lanceR: 2.5,
 } as const;
 
+/**
+ * How wide a Seal Bearer scatters its four orbs, in playfield units.
+ *
+ * The lane a numeral is drawn in is a quarter of this, and it is the ONLY thing
+ * that limits how long an answer POLARITY can print — not the atlas, which is a
+ * resolution, and not the texture size, which the cell already sits under. Four
+ * labels `BULLET.orbR * 1.35 * LABEL_ASPECT` wide have to fit here without
+ * touching, and `core/labels.test.ts` asserts they do.
+ *
+ * It was `(HALF_W - 12) * 2`. The extra four units are what a ten-character
+ * answer costs, and they are free: the outermost orb sits at three-eighths of
+ * this from the centre — 31.5 rather than 28.5 — so its numeral's far edge lands
+ * at 40 of the 50 units the field has, and the weave clamp at `HALF_W - r` is
+ * nowhere near it.
+ */
+export const ORB_SPREAD = (HALF_W - 8) * 2;
+
 // --- enemies ----------------------------------------------------------------
 /** Enemy kinds. Same shape and the same reason as `BK`. */
 export const EK = {
