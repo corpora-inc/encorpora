@@ -806,6 +806,56 @@ jobs:
           npm install
           npm test
           npm run tsc
+      # The shared UI contract, which until now was tested by NOTHING.
+      #
+      # `packs/shared/game-chrome/` is imported by all 27 games for safe-area
+      # insets, the two host-chrome corners and the how-to-play sheet. It had
+      # one test file, `insets.test.ts`, and no job ran it: the `shared_ts`
+      # filter above is `^(shared/|corpan/packs/shared/)`, which does not match
+      # `dynawalla/packs/shared/`, and no game's test glob reaches outside its
+      # own directory. So the module shipped four production defects — the sheet
+      # covering every game at launch, insets reading zero inside the pack
+      # frame, a manual that could not be scrolled, and Escape leaking into the
+      # game — and every one was found by a game adopting it rather than here.
+      #
+      # A directory glob, not a list, for the same reason the game loop below
+      # uses one: the next shared module should be covered by existing in it,
+      # not by somebody remembering to edit this file. `curriculum/` is skipped
+      # because it has its own gated job (`dynawalla-curriculum`) that runs a
+      # superset of this.
+      - name: Install, test and typecheck the shared pack modules
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          manifests=(dynawalla/packs/shared/*/package.json)
+          # Counted BEFORE the loop, exactly like the game loop below. Under
+          # `set -u` an empty array expansion is itself an error on some bash
+          # builds, so a guard placed after the loop reports "unbound variable"
+          # instead of saying what is actually wrong.
+          if [ "${#manifests[@]}" -eq 0 ]; then
+            echo "::error::no package.json under dynawalla/packs/shared/ — this glob has gone stale and the job is passing on nothing."
+            exit 1
+          fi
+          ran=0
+          for manifest in "${manifests[@]}"; do
+            dir="$(dirname "${manifest}")"
+            case "${dir}" in */curriculum) continue ;; esac
+            echo "::group::${dir}"
+            if [ -f "${dir}/package-lock.json" ]; then
+              npm ci --prefix "${dir}"
+            else
+              npm install --prefix "${dir}"
+            fi
+            npm run --prefix "${dir}" test
+            npm run --prefix "${dir}" tsc
+            ran=$((ran + 1))
+            echo "::endgroup::"
+          done
+          if [ "${ran}" -eq 0 ]; then
+            echo "::error::every shared module was skipped — the curriculum exclusion has swallowed the whole glob."
+            exit 1
+          fi
+          echo "${ran} shared module(s) tested."
       - name: Install, test and typecheck every game
         run: |
           set -euo pipefail

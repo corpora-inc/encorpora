@@ -22,9 +22,22 @@
  * The manual stays reachable *during* play, not only before it. A child who
  * needs the rules needs them at the moment they are stuck, which is never the
  * title screen.
+ *
+ * **Why a bottom sheet and not a centred card.** The first version centred a
+ * card at `max-height:82vh`. On a notched phone that puts its top edge around
+ * 73px — and the host's exit chevron occupies 60px to 104px. They collided, and
+ * the chevron ate the first two letters of the title in every game with a long
+ * manual. That is not a z-index bug and no stacking order can fix it: the exit
+ * control lives in the HOST document, above the iframe, so a pack cannot draw
+ * over it and must instead lay out clear of it.
+ *
+ * A sheet rises from the bottom and is capped so its top edge can never reach
+ * the host's corners. The clearance is arithmetic, not judgement, and
+ * `sheetTop()` exposes it so a test can assert it at any viewport.
  */
 
-import { safeInsets, onInsetsChange } from "./insets.ts"
+import { safeInsets, onInsetsChange, type Insets } from "./insets.ts"
+import { HOST_CONTROL, HOST_MARGIN, HOST_PROGRESS_H } from "./hostChrome.ts"
 
 export type Section = { heading: string; lines: readonly string[] }
 
@@ -53,12 +66,36 @@ export type Instructions = {
 
 const FONT = "system-ui,-apple-system,'Segoe UI',sans-serif"
 
+/**
+ * The highest the sheet's top edge may ever go, in CSS pixels from the top.
+ *
+ * Everything above this line belongs to the host: the progress hairline, the
+ * exit chevron top-left and the how-to-play control top-right. The sheet stops
+ * one margin below them, so the two never share a pixel however long the
+ * manual is.
+ *
+ * Exported because "it clears the chrome" is a claim, and a claim in a
+ * children's product should be assertable at every viewport rather than
+ * eyeballed on one phone.
+ */
+export function sheetTop(insets: Insets = safeInsets()): number {
+  return insets.top + HOST_PROGRESS_H + HOST_MARGIN + HOST_CONTROL + HOST_MARGIN
+}
+
+/** Drag further than this, or flick faster, and the sheet goes away. */
+const DISMISS_PX = 96
+const DISMISS_VELOCITY = 0.5
+
 function styleSheet(reduced: boolean): string {
   // Motion is a branch, not a degradation: reduced motion still gets a
-  // cross-fade so the panel does not appear without explanation, it just does
+  // cross-fade so the sheet does not appear without explanation, it just does
   // not travel. `EXPERIENCE_DESIGN.md` is explicit that switching animation off
   // entirely is the wrong reading.
-  const enter = reduced ? "dwc-fade 160ms ease-out" : "dwc-rise 220ms cubic-bezier(.2,.8,.2,1)"
+  const rise = reduced
+    ? "dwc-fade 160ms ease-out both"
+    : // The iOS sheet curve. It leaves fast and lands slowly, which is what
+      // makes a panel feel thrown rather than dragged along by the machine.
+      "dwc-rise 380ms cubic-bezier(.32,.72,0,1) both"
   return `
 /* The hidden attribute must win. A UA stylesheet's [hidden]{display:none} is
    origin-weaker than any author display, so without this rule the scrim below
@@ -67,45 +104,86 @@ function styleSheet(reduced: boolean): string {
    UA. This rule must also come BEFORE the .dwc-scrim block, or the later
    display:flex wins on source order. */
 .dwc-scrim[hidden]{display:none}
-.dwc-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
-  background:rgba(4,6,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  font-family:${FONT};color:#f2eee4;overscroll-behavior:contain}
-.dwc-panel{position:relative;max-width:min(46rem,92vw);max-height:82vh;overflow-y:auto;overscroll-behavior:contain;
+.dwc-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(4,6,12,.66);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  font-family:${FONT};color:#f2eee4;overscroll-behavior:contain;
+  animation:dwc-fade 240ms ease-out both}
+
+.dwc-sheet{position:relative;display:flex;flex-direction:column;
+  width:min(46rem,100%);
+  /* max-height is written from JS on open and on every inset change: it is the
+     height that keeps the sheet's top edge below the host's two corner
+     controls; see sheetTop(). The 82% here is only what a sheet gets before the
+     first measurement. */
+  max-height:82%;
+  border-radius:26px 26px 0 0;
+  border:1px solid rgba(255,255,255,.13);border-bottom:0;
+  background:linear-gradient(#161d2b,#0c1017);
+  box-shadow:0 -18px 60px rgba(0,0,0,.6);
+  animation:${rise};
+  will-change:transform}
+/* Suppressed while a finger is down, so the drag tracks 1:1 instead of easing
+   towards where the finger was a frame ago. */
+.dwc-sheet.dwc-drag{animation:none;transition:none}
+.dwc-sheet.dwc-settle{animation:none;transition:transform 260ms cubic-bezier(.32,.72,0,1)}
+
+/* The grab area is 44px of hit zone around a 40x5 pill. A bare pill is a 5px
+   target, which no child hits and no adult enjoys missing. */
+.dwc-grab{flex:none;height:44px;display:flex;align-items:center;justify-content:center;
+  cursor:grab;touch-action:none;-webkit-tap-highlight-color:transparent}
+.dwc-grab:active{cursor:grabbing}
+.dwc-pill{width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.3)}
+.dwc-grab:focus-visible{outline:3px solid #f3d089;outline-offset:-6px;border-radius:26px 26px 0 0}
+
+.dwc-head{flex:none;padding:0 clamp(20px,5vw,32px) .55rem;touch-action:none}
+.dwc-title{margin:0;font-size:clamp(1.3rem,4.2vw,1.85rem);font-weight:800;letter-spacing:-.02em}
+
+.dwc-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
   /* Every game sets touch-action:none on its root so a stray drag cannot pan
-     the page. That also forbids the finger drag this panel needs: overflow-y
+     the page. That also forbids the finger drag this body needs: overflow-y
      was live but unusable, and on a 320x568 phone about a third of the manual
      sat below the fold with no way to reach it. pan-y re-permits exactly the
      one gesture, and nothing else. */
-  touch-action:pan-y;
-  -webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid rgba(255,255,255,.14);
-  background:linear-gradient(#141a26,#0d111a);box-shadow:0 24px 70px rgba(0,0,0,.6);
-  padding:clamp(20px,4vw,34px);animation:${enter}}
-.dwc-title{margin:0 0 .5rem;font-size:clamp(1.35rem,4.4vw,2rem);font-weight:800;letter-spacing:-.02em}
-.dwc-sum{margin:0 0 1.25rem;font-size:clamp(1rem,2.9vw,1.15rem);line-height:1.55;color:#d9e2f0}
-.dwc-sum p{margin:.3rem 0}
-.dwc-sec{margin:1.15rem 0 0}
-.dwc-h{margin:0 0 .35rem;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8fa3c4}
-.dwc-l{margin:0;padding-left:1.1rem;line-height:1.6;font-size:clamp(.95rem,2.6vw,1.05rem)}
-.dwc-l li{margin:.28rem 0}
-.dwc-close{margin-top:1.6rem;width:100%;min-height:52px;border:0;border-radius:12px;cursor:pointer;
-  font:800 1rem/1 ${FONT};letter-spacing:.03em;color:#0b1020;background:#f3d089}
+  touch-action:pan-y;-webkit-overflow-scrolling:touch;
+  padding:0 clamp(20px,5vw,32px);
+  padding-bottom:.5rem}
+.dwc-sum{margin:0 0 1.1rem;font-size:clamp(1rem,2.9vw,1.12rem);line-height:1.55;color:#dbe4f2}
+.dwc-sum p{margin:.32rem 0}
+.dwc-sec{margin:1.1rem 0 0}
+.dwc-h{margin:0 0 .35rem;font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8fa3c4}
+.dwc-l{margin:0;padding-left:1.1rem;line-height:1.6;font-size:clamp(.95rem,2.6vw,1.04rem)}
+.dwc-l li{margin:.3rem 0}
+
+/* The button is pinned, not appended. In the centred card it lived at the foot
+   of the content, so in a game with five sections a child had to read or scroll
+   the whole manual to find the way out of it. */
+.dwc-foot{flex:none;position:relative;padding:.7rem clamp(20px,5vw,32px)}
+/* Fades the text under the footer rather than guillotining it, so it stays
+   visible that the manual continues. */
+.dwc-foot::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:28px;pointer-events:none;
+  background:linear-gradient(rgba(12,16,23,0),#0c1017)}
+.dwc-close{width:100%;min-height:52px;border:0;border-radius:14px;cursor:pointer;
+  font:800 1rem/1 ${FONT};letter-spacing:.03em;color:#0b1020;background:#f3d089;
+  -webkit-tap-highlight-color:transparent}
 .dwc-close:focus-visible{outline:3px solid #f3d089;outline-offset:3px}
-.dwc-help{position:absolute;z-index:30;min-width:44px;min-height:44px;border-radius:50%;
+
+.dwc-help{position:absolute;z-index:30;min-width:${HOST_CONTROL}px;min-height:${HOST_CONTROL}px;border-radius:50%;
   border:1px solid rgba(255,255,255,.2);background:rgba(10,14,22,.62);color:#f2eee4;
   font:800 1.05rem/1 ${FONT};cursor:pointer;display:flex;align-items:center;justify-content:center}
 .dwc-help:focus-visible{outline:3px solid #f3d089;outline-offset:2px}
-@keyframes dwc-rise{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+
+@keyframes dwc-rise{from{transform:translateY(100%)}to{transform:none}}
 @keyframes dwc-fade{from{opacity:0}to{opacity:1}}
-@media (prefers-reduced-motion:reduce){.dwc-panel{animation:dwc-fade 160ms ease-out}}
+@media (prefers-reduced-motion:reduce){.dwc-sheet{animation:dwc-fade 160ms ease-out both}}
 `
 }
 
 /**
  * Mount the instructions surface into `root`.
  *
- * Adds a persistent help button positioned inside the safe area, and a panel it
- * opens. The button is 44px minimum in both axes — the smallest target a child
- * reliably hits, and the platform floor.
+ * Adds a persistent help button positioned inside the safe area, and a sheet it
+ * opens. The button is `HOST_CONTROL` in both axes — the smallest target a
+ * child reliably hits, and the platform floor.
  */
 export function createInstructions(root: HTMLElement, spec: InstructionsSpec): Instructions {
   const reduced = spec.reducedMotion === true
@@ -123,17 +201,42 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   scrim.className = "dwc-scrim"
   scrim.hidden = true
 
-  const panel = document.createElement("div")
-  panel.className = "dwc-panel"
-  panel.setAttribute("role", "dialog")
-  panel.setAttribute("aria-modal", "true")
-  panel.setAttribute("aria-label", `How to play ${spec.title}`)
-  panel.tabIndex = -1
+  const sheet = document.createElement("div")
+  sheet.className = "dwc-sheet"
+  // State goes on `className`, never `classList`. The 27 games mount against
+  // hand-rolled fake elements that expose `className` and nothing else, so a
+  // `classList.remove` here is a TypeError in FOUNDRY and LATTICE the moment a
+  // child opens the manual. The module must speak only the vocabulary its
+  // adopters implement — every defect this module has shipped came from
+  // assuming a richer environment than the one it actually runs in.
+  const sheetClass = (mod?: "dwc-drag" | "dwc-settle"): void => {
+    sheet.className = mod ? `dwc-sheet ${mod}` : "dwc-sheet"
+  }
+  sheet.setAttribute("role", "dialog")
+  sheet.setAttribute("aria-modal", "true")
+  sheet.setAttribute("aria-label", `How to play ${spec.title}`)
+  sheet.tabIndex = -1
 
+  const grab = document.createElement("div")
+  grab.className = "dwc-grab"
+  // It is a control: it dismisses the sheet by drag. Announce it as one rather
+  // than leaving a silent div a screen reader walks straight past.
+  grab.setAttribute("role", "button")
+  grab.setAttribute("aria-label", "Close how to play")
+  grab.tabIndex = 0
+  const pill = document.createElement("div")
+  pill.className = "dwc-pill"
+  grab.appendChild(pill)
+
+  const head = document.createElement("div")
+  head.className = "dwc-head"
   const h = document.createElement("h2")
   h.className = "dwc-title"
   h.textContent = spec.title
-  panel.appendChild(h)
+  head.appendChild(h)
+
+  const body = document.createElement("div")
+  body.className = "dwc-body"
 
   const sum = document.createElement("div")
   sum.className = "dwc-sum"
@@ -142,7 +245,7 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     p.textContent = line
     sum.appendChild(p)
   }
-  panel.appendChild(sum)
+  body.appendChild(sum)
 
   for (const sec of spec.sections ?? []) {
     const wrap = document.createElement("section")
@@ -158,43 +261,68 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
       ul.appendChild(li)
     }
     wrap.append(sh, ul)
-    panel.appendChild(wrap)
+    body.appendChild(wrap)
   }
 
+  const foot = document.createElement("div")
+  foot.className = "dwc-foot"
   const close = document.createElement("button")
   close.type = "button"
   close.className = "dwc-close"
   close.textContent = "PLAY"
-  panel.appendChild(close)
-  scrim.appendChild(panel)
+  foot.appendChild(close)
+
+  sheet.append(grab, head, body, foot)
+  scrim.appendChild(sheet)
   root.append(help, scrim)
 
-  // The help button sits inside the safe area, not merely inside the canvas.
-  // Top-right is the one corner no game here puts a primary control in.
+  // The help button sits at exactly the rect `hostChrome.helpRect()` reports —
+  // games lay out against that rect, so a button three pixels off it makes
+  // every one of those clearance tests a near-miss.
+  // Plain property assignment, not `style.setProperty` and a CSS custom
+  // property. The indirection bought nothing and cost four games: their
+  // mount-level test harnesses fake `style` as an object with named fields, so
+  // `setProperty` threw and BEAM, COUNTERWEIGHT, FOUNDRY and LATTICE all failed
+  // to render at every viewport. `help.style.top` was already the idiom that
+  // works in all 27 harnesses; there was no reason to invent a second one.
   const place = (): void => {
     const i = safeInsets()
-    help.style.top = `${i.top + 10}px`
-    help.style.right = `${i.right + 10}px`
+    help.style.top = `${i.top + HOST_PROGRESS_H + HOST_MARGIN}px`
+    help.style.right = `${i.right + HOST_MARGIN}px`
+    sheet.style.maxHeight = `calc(100% - ${sheetTop(i)}px)`
+    foot.style.paddingBottom = `calc(.7rem + ${i.bottom}px)`
   }
   place()
   const stopInsets = onInsetsChange(place)
 
   let open = false
   let restore: HTMLElement | null = null
+  let dragging = false
+  let startY = 0
+  let startAt = 0
+  let dy = 0
 
   const doOpen = (): void => {
     if (open) return
     open = true
     restore = (document.activeElement as HTMLElement) ?? null
+    place()
+    sheetClass()
+    sheet.style.transform = ""
+    scrim.style.opacity = ""
     scrim.hidden = false
     help.setAttribute("aria-expanded", "true")
-    panel.scrollTop = 0
-    panel.focus()
+    body.scrollTop = 0
+    sheet.focus()
   }
 
   const doClose = (): void => {
     if (!open) return
     open = false
+    dragging = false
+    sheetClass()
+    sheet.style.transform = ""
+    scrim.style.opacity = ""
     scrim.hidden = true
     help.setAttribute("aria-expanded", "false")
     restore?.focus?.()
@@ -202,13 +330,55 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     spec.onClose?.()
   }
 
-  // A tap on the scrim closes; a tap inside the panel must not. Children tap
+  // A tap on the scrim closes; a tap inside the sheet must not. Children tap
   // the background constantly and being thrown out of the rules mid-read is
   // worse than having to find the button.
   const onScrim = (e: Event): void => {
     if (e.target === scrim) doClose()
   }
-  // While the panel is up, the game must not see a key. The panel's own div is
+
+  // ---- drag to dismiss -----------------------------------------------------
+  // Only from the grab area and the title row. Dragging from the body would
+  // fight the scroll it needs, and a manual that sometimes scrolls and
+  // sometimes flies away is worse than one that only scrolls.
+  const onDown = (e: PointerEvent): void => {
+    if (!open || e.button !== 0) return
+    dragging = true
+    startY = e.clientY
+    startAt = e.timeStamp
+    dy = 0
+    sheetClass("dwc-drag")
+    ;(e.currentTarget as Element).setPointerCapture?.(e.pointerId)
+  }
+
+  const onMove = (e: PointerEvent): void => {
+    if (!dragging) return
+    // Down only. An upward drag would otherwise lift the sheet into the host
+    // chrome — the exact collision this shape exists to prevent.
+    dy = Math.max(0, e.clientY - startY)
+    sheet.style.transform = `translateY(${dy}px)`
+    const h = sheet.offsetHeight || 1
+    scrim.style.opacity = String(Math.max(0.15, 1 - dy / h))
+  }
+
+  const onUp = (e: PointerEvent): void => {
+    if (!dragging) return
+    dragging = false
+    ;(e.currentTarget as Element).releasePointerCapture?.(e.pointerId)
+    const ms = Math.max(1, e.timeStamp - startAt)
+    sheetClass()
+    if (dy > DISMISS_PX || dy / ms > DISMISS_VELOCITY) {
+      doClose()
+      return
+    }
+    // Not far enough: put it back, visibly, so the gesture reads as refused
+    // rather than ignored.
+    sheetClass("dwc-settle")
+    sheet.style.transform = ""
+    scrim.style.opacity = ""
+  }
+
+  // While the sheet is up, the game must not see a key. The sheet's own div is
   // `tabIndex=-1` and consumes nothing, so a Space or Enter meant to dismiss the
   // manual fell straight through to whatever the game bound on `globalThis` —
   // in one game that fired a shear, reported a wrong answer and cost the child
@@ -217,12 +387,20 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   const swallow = (e: KeyboardEvent): void => {
     if (!open) return
     // Escape is handled HERE, in capture, and stopped like every other key.
-    // Letting it through so the bubble handler could close the panel meant the
+    // Letting it through so a bubble handler could close the sheet meant the
     // game saw it too: one game starts a fresh run on any key, so a child who
     // opened the rules after dying and pressed Escape to close them lost their
     // score, combo and best combo to the act of reading. preventDefault was
     // never enough — it stops the browser's default, not another listener.
     if (e.key === "Escape") {
+      e.preventDefault()
+      e.stopPropagation()
+      if (e.type === "keydown") doClose()
+      return
+    }
+    // The grab handle is focusable and announces itself as a button, so it must
+    // answer a keyboard the way it answers a finger.
+    if ((e.key === "Enter" || e.key === " ") && document.activeElement === grab) {
       e.preventDefault()
       e.stopPropagation()
       if (e.type === "keydown") doClose()
@@ -240,9 +418,16 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   globalThis.addEventListener("keydown", swallow, true)
   globalThis.addEventListener("keyup", swallow, true)
 
+  const draggers = [grab, head]
   help.addEventListener("click", doOpen)
   close.addEventListener("click", doClose)
   scrim.addEventListener("pointerdown", onScrim)
+  for (const el of draggers) {
+    el.addEventListener("pointerdown", onDown)
+    el.addEventListener("pointermove", onMove)
+    el.addEventListener("pointerup", onUp)
+    el.addEventListener("pointercancel", onUp)
+  }
 
   return {
     open: doOpen,
@@ -257,6 +442,12 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
       help.removeEventListener("click", doOpen)
       close.removeEventListener("click", doClose)
       scrim.removeEventListener("pointerdown", onScrim)
+      for (const el of draggers) {
+        el.removeEventListener("pointerdown", onDown)
+        el.removeEventListener("pointermove", onMove)
+        el.removeEventListener("pointerup", onUp)
+        el.removeEventListener("pointercancel", onUp)
+      }
       help.remove()
       scrim.remove()
       style.remove()

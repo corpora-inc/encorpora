@@ -19,6 +19,7 @@ export {
 } from "./hostChrome.ts"
 export {
   createInstructions,
+  sheetTop,
   type Instructions,
   type InstructionsSpec,
   type Section,
