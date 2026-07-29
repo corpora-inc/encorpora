@@ -54,8 +54,12 @@ function step(value: SolutionStep): string {
  */
 function schema(value: AnswerSchema): string {
   switch (value.kind) {
+    // The sign is appended rather than written as a third positional field, so
+    // every hash committed before integers existed is byte-identical after them.
+    // A snapshot that turned over on a field no existing level sets would have
+    // been a diff nobody could review for the one thing it is there to catch.
     case "integer":
-      return `integer(${String(value.digits)},${String(value.decimalPlaces)})`;
+      return `integer(${String(value.digits)},${String(value.decimalPlaces)}${value.signed === true ? ",signed" : ""})`;
     case "columnAlgorithm":
       return `columnAlgorithm(${String(value.cols)},${value.marks},${String(value.decimalPlaces)})`;
     case "fraction":

@@ -27,6 +27,7 @@ export { addDomainNodes } from "./graph/domains/add.ts";
 export { algDomainNodes } from "./graph/domains/alg.ts";
 export { divDomainNodes } from "./graph/domains/div.ts";
 export { fracDomainNodes } from "./graph/domains/frac.ts";
+export { intDomainNodes } from "./graph/domains/int.ts";
 export { mulDomainNodes } from "./graph/domains/mul.ts";
 export { nsDomainNodes } from "./graph/domains/ns.ts";
 
@@ -62,6 +63,28 @@ export {
   NUMBER_FACTS_FORMS,
   NUMBER_FACTS_LOC_KEYS,
 } from "./generators/numberFacts/constants.ts";
+export { timesTableFamily } from "./generators/timesTable/family.ts";
+export { timesTableParamSchema } from "./generators/timesTable/params.ts";
+export type { TimesTableParams } from "./generators/timesTable/params.ts";
+export { factSet as timesTableSet, factSetSize as timesTableSetSize } from "./generators/timesTable/facts.ts";
+// Named rather than `export *`: three families now define a `PROMPT_KEY_MUL`.
+export {
+  TIMES_TABLE_FAMILY,
+  TIMES_TABLE_FAMILY_REV,
+  TIMES_TABLE_FORMS,
+  TIMES_TABLE_LOC_KEYS,
+} from "./generators/timesTable/constants.ts";
+export { signedIntFamily } from "./generators/signedInt/family.ts";
+export { signedIntParamSchema } from "./generators/signedInt/params.ts";
+export type { SignedIntParams, SignedOp, SignPlacement } from "./generators/signedInt/params.ts";
+export { pairSet, pairSetSize } from "./generators/signedInt/pairs.ts";
+export type { Pair } from "./generators/signedInt/pairs.ts";
+export {
+  SIGNED_INT_FAMILY,
+  SIGNED_INT_FAMILY_REV,
+  SIGNED_INT_FORMS,
+  SIGNED_INT_LOC_KEYS,
+} from "./generators/signedInt/constants.ts";
 export { multidigitMulFamily } from "./generators/multidigitMul/family.ts";
 export { multidigitMulParamSchema } from "./generators/multidigitMul/params.ts";
 export type { MultidigitMulParams } from "./generators/multidigitMul/params.ts";
@@ -104,9 +127,15 @@ export {
 export { placeValueMalRules, MIS_DIGIT_FOR_VALUE } from "./malrules/placeValue.ts";
 export { MIS_WHOLE_NUMBER_BIAS } from "./malrules/roots.ts";
 
-export { answerRendererId, findRenderer, rendererRegistry, repRendererId } from "./render/registry.ts";
-export { findPromptTemplate, promptRegistry } from "./render/prompts.ts";
-export type { PromptTemplateDeclaration } from "./render/prompts.ts";
+export {
+  answerRendererId,
+  answerRendererIdFor,
+  findRenderer,
+  rendererRegistry,
+  repRendererId,
+} from "./render/registry.ts";
+export { findPromptTemplate, promptOperator, promptRegistry } from "./render/prompts.ts";
+export type { PromptOperator, PromptTemplateDeclaration } from "./render/prompts.ts";
 export type { RendererDeclaration } from "./render/registry.ts";
 export {
   balanceLowerPan,

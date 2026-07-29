@@ -36,6 +36,8 @@ npm run snapshots:update    # rewrite the CG-16 output hashes
 | `src/rng/` | Seeded integer-only PRNG (FNV-1a + mulberry32) and the FNV-1a-64 used for output hashes. |
 | `src/types/` | `SkillNode`, `Exercise`, `AnswerSchema`, `PromptSpec`, the generator contract, the mal-rule contract. |
 | `src/generators/numberFacts/` | `gen.arith.number-facts` — the recalled facts, `0 + 1` through `15 − 8`, drawn uniformly from an enumerated closed set. |
+| `src/generators/timesTable/` | `gen.arith.times-table` — the tables and their inverses, `0 × 1` through `144 ÷ 12`, drawn uniformly from an enumerated closed set. |
+| `src/generators/signedInt/` | `gen.arith.signed-int` — arithmetic below zero. The first answers in this package that carry a minus. |
 | `src/generators/columnOp/` | `gen.arith.column-op` — the column algorithm, add and subtract, with exact regrouping control including across zeros. |
 | `src/malrules/` | Sixteen executable buggy procedures, and the classifier. |
 | `src/board/` | Reading a column item back out of the public prompt contract, and the **counting-board contrast pair**. |
@@ -111,7 +113,11 @@ Implementation notes where the document and the code differ, all deliberate:
   does not exist. That is a *sharper* claim than the floor, not a waiver, and it
   is pinned from the other side by `numberFacts.test.ts`, which enumerates each
   level's set from the level's stated rules and asserts the generator reaches
-  every member of it and nothing else.
+  every member of it and nothing else. The same reconciliation is what makes the
+  times tables and the signed-integer rows possible: there are 121 multiplications
+  in the tables to twelve and no 122nd. `uniformity.ts` adds the check the closure
+  cannot make — that the draw over the closed set is *flat*, by χ² in exact
+  rationals.
 - **CG-12** also checks the *declaration* half of the mal-rule contract: every id in
   a node's `misconceptions` resolves in the registry and belongs to the family the
   node binds, and every diagnosis the node's own items emit as a distractor is

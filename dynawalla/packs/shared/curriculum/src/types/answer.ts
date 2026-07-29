@@ -60,7 +60,33 @@ export type FractionEquivalence =
   | "any-equivalent";
 
 export type AnswerSchema =
-  | { readonly kind: "integer"; readonly digits: number; readonly decimalPlaces: number }
+  | {
+      readonly kind: "integer";
+      readonly digits: number;
+      readonly decimalPlaces: number;
+      /**
+       * The answer may be below zero, and the surface must offer a way to write
+       * that. Absent means it may not, which is every skill the program had before
+       * integers arrived.
+       *
+       * On the schema and not inferred from the item, for the reason `equivalence`
+       * and `options` are on the schema: a renderer receives the schema and nothing
+       * else. `EntryModel.init`, `.keys` and `.value` take a schema, so "does this
+       * keypad have a minus key" has to be answerable from here or it is not
+       * answerable where it is needed — and a keypad with no minus key on
+       * `(−7) + 4` is a card a child cannot answer correctly however well they
+       * understand it.
+       *
+       * `digits` counts digit cells and never the sign: `−144` is three digits and
+       * a minus, not four.
+       *
+       * It is also what makes the sweep's "no answer is negative" invariant
+       * checkable instead of absolute. That assertion held over every item in the
+       * graph until this field existed; now it holds over every item whose schema
+       * does not say otherwise, which is the claim actually worth making.
+       */
+      readonly signed?: boolean;
+    }
   | {
       readonly kind: "columnAlgorithm";
       readonly cols: number;

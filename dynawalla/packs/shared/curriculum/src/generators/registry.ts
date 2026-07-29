@@ -14,7 +14,9 @@ import { missingOperandFamily } from "./missingOperand/family.ts";
 import { multidigitMulFamily } from "./multidigitMul/family.ts";
 import { numberFactsFamily } from "./numberFacts/family.ts";
 import { placeValueFamily } from "./placeValue/family.ts";
+import { signedIntFamily } from "./signedInt/family.ts";
 import { roundEstimateFamily } from "./roundEstimate/family.ts";
+import { timesTableFamily } from "./timesTable/family.ts";
 
 export const generatorFamilies: readonly AnyGeneratorFamily[] = [
   erase(numberFactsFamily),
@@ -27,6 +29,8 @@ export const generatorFamilies: readonly AnyGeneratorFamily[] = [
   erase(fracEquivalenceFamily),
   erase(fracArithFamily),
   erase(missingOperandFamily),
+  erase(timesTableFamily),
+  erase(signedIntFamily),
 ];
 
 export function familyById(

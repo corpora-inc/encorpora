@@ -9,6 +9,69 @@ installed pack until that pack is rebuilt and republished.
 
 ## 0.1.0 — Unreleased
 
+### The ceiling: the tables, the quotients, and arithmetic below zero
+
+The graph reached `4,003 − 87` and stopped. `mul` had no fact rows at all, `div`
+had no floor under long division, and there was no integer arithmetic anywhere —
+so the program's stated span, "`0 + 1` to `48,826 × 82,726`", was missing its top
+two thirds. `48,826 × 82,726` was not merely unauthored: `multidigit-mul` capped
+the multiplier at three digits, so no parameter object could describe it.
+
+- **A new family, `gen.arith.times-table`.** The tables and their inverses, `0 × 1`
+  through `144 ÷ 12`, drawn uniformly from an enumerated closed set. Multiplication
+  and division are one family because `48 ÷ 6` is `6 × 8` read backwards, exactly as
+  `15 − 8` is `8 + 7` read backwards in `gen.arith.number-facts`.
+  `gen.arith.multidigit-mul` is bounded by a digit count and cannot express "the
+  tables to five"; its walkthrough at one digit by one digit announces a partial
+  product and then announces it again as the answer.
+- **Three fact rows.** `dw.mul.facts.tables-within-five`,
+  `dw.mul.facts.tables-to-twelve` and `dw.div.facts.division-facts`, from −1.20 up
+  to 0.15, sitting between the hardest addition fact (−1.25) and the first written
+  multiplication (0.25). Each declares `closedFactSet` — the reconciliation with
+  CG-10 that the addition floor established, applied to the content the old `mul.ts`
+  said the floor forbade outright.
+- **A new family, `gen.arith.signed-int`, and a seventh domain, `int`.** Four rows:
+  `3 − 9` as the on-ramp, then adding, subtracting and multiplying signed numbers.
+  Levels are bounded by magnitude and capped at twenty, because past twenty this is
+  column arithmetic wearing a sign and column arithmetic has a family; what these
+  rows teach is which way the answer points.
+- **`AnswerSchema.integer.signed`, and `answer:integer-signed`.** The first answers
+  in this program that go below zero. A separate renderer id rather than a flag,
+  because a digit keypad handed `(−7) + 4` is not the blank card CG-8 usually
+  catches — it is a card that looks answerable and marks a correct child wrong.
+  CG-8 reads it through the new `answerRendererIdFor(schema)`.
+- **`multidigit-mul` reaches five digits by five**, and a new row,
+  `dw.mul.multidigit.long-multiplication`, whose top level is `48,826 × 82,726`.
+  No existing level's output moves, so `familyRev` does not turn over.
+- **Two CG-10 blockers cleared by widening, not by argument.**
+  `dw.mul.scale.times-power-of-ten` L0 went from 90 problems to 1,800 and
+  `dw.div.whole.divide-exact` L0 from 720 to 7,200. Both were bounded by a digit
+  count that nothing about the content asked to be small, which is precisely the
+  case `closedFactSet` must not be used for.
+- **`PromptTemplateDeclaration.operator`, and `promptOperator(key)`.** The glyph
+  every question is written with, as data the curriculum owns. It exists because
+  the only thing that draws a question today — `dynawalla-app/src/packs/items.ts` —
+  picks the operator with `promptKey.endsWith(".sub") ? "−" : "+"`, so every
+  template that is not a subtraction is drawn as an **addition**. `7 × 8` would
+  reach a child as `7 + 8`.
+- **`OPERATOR_BLOCKED_TEMPLATES` and `SIGNED_BLOCKED_SKILLS`** join
+  `CG10_BLOCKED_LEVELS` in `promotionBlockers.ts`, each asserted against what the
+  graph measures rather than maintained by hand. The first is why the
+  multiplication and division rows are still `draft` after their generators, their
+  fact floors and their variant spaces were all finished; `render/prompts.test.ts`
+  found two entries a human reading of the list had missed
+  (`dw.prompt.missing-operand.sub-unknown` is a subtraction whose key ends
+  `".sub-unknown"`, so the host draws it with a plus too).
+- **`fluencyTarget.p50Ms` on eight more rows**, each with the reason on it. The
+  host takes the wider of the cadence table's p90 and 2.5× this median, and the
+  table was measured on column addition: `47 × 23` is two digits wide and would
+  otherwise climb only under 14 s, which is narrower than the work.
+- **`generators/shared/uniformity.ts`.** χ² over a closed set, in exact rationals,
+  with the tail bound squared so no square root ever happens. The closure tests
+  cannot see a generator that reaches all 121 facts and asks for `2 × 2` twenty
+  times as often as `9 × 8`.
+
+
 ### The floor: `gen.arith.number-facts`, and a ladder that starts at `0 + 1`
 
 The easiest thing this library could give a child was `plus(2, 2, 0)` — a

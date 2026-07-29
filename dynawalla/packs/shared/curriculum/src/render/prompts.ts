@@ -39,11 +39,46 @@
 import type { FamilyId, LocKey } from "../types/ids.ts";
 import { familyId, locKey } from "../types/ids.ts";
 
+/**
+ * The operator glyph a template's question is written with, or `none` for a
+ * question that is not a binary operation at all.
+ *
+ * ## Why this is on the declaration and not left to the renderer
+ *
+ * Because the renderer got it wrong, in the shipped product, in the way this
+ * program keeps meeting: silently and in the child's favour of nobody.
+ *
+ * `dynawalla-app/src/packs/items.ts` builds the string a game shows a child, and
+ * it decides the operator like this:
+ *
+ * ```ts
+ * export function isSubtraction(promptKey: string): boolean {
+ *   return promptKey === PROMPT_KEY_SUB || promptKey.endsWith(".sub")
+ * }
+ * // …
+ * prompt: `${top} ${subtract ? MINUS : "+"} ${bottom}`,
+ * ```
+ *
+ * Every template that is not a subtraction is drawn as an **addition**. That is
+ * correct for the four templates the graph has active today and wrong for eleven
+ * of the rest: `dw.prompt.times-table.mul` would reach a child as `7 + 8` with 56
+ * as the answer. `packs/sdk/src/protocol.ts` has carried `"×"` and `"÷"` in
+ * `Item.operator` the whole time; what was missing was anywhere to look them up.
+ *
+ * This is that place. It is data the curriculum owns — which glyph a question is
+ * written with is a fact about the question — and `promptOperator()` below is the
+ * lookup a renderer needs. `promotionBlockers.ts` lists the templates that are
+ * mis-drawn until one uses it.
+ */
+export type PromptOperator = "+" | "−" | "×" | "÷" | "none";
+
 export type PromptTemplateDeclaration = {
   /** The `LocKey` a family writes into `Exercise.prompt.key`. */
   readonly id: LocKey;
   /** The family that emits it. Lets the gate report a family, not just a key. */
   readonly family: FamilyId;
+  /** The glyph this question is written with. See `PromptOperator`. */
+  readonly operator: PromptOperator;
   /** The PR that owns landing the renderer. Required — an unowned entry is noise. */
   readonly owner: string;
   readonly implemented: boolean;
@@ -61,6 +96,8 @@ const LONG_DIV = familyId("gen.arith.long-div");
 const FRAC_EQUIVALENCE = familyId("gen.frac.equivalence-simplify");
 const FRAC_ARITH = familyId("gen.frac.arith");
 const MISSING_OPERAND = familyId("gen.arith.missing-operand");
+const TIMES_TABLE = familyId("gen.arith.times-table");
+const SIGNED_INT = familyId("gen.arith.signed-int");
 
 /**
  * Every prompt template every registered family can emit.
@@ -80,77 +117,97 @@ const MISSING_OPERAND = familyId("gen.arith.missing-operand");
 export const promptRegistry: readonly PromptTemplateDeclaration[] = [
   // The bottom of the ladder. Two numbers and an operator, which is the smallest
   // question this program can ask and the first one a five-year-old sees.
-  { id: locKey("dw.prompt.number-facts.add"), family: NUMBER_FACTS, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.number-facts.sub"), family: NUMBER_FACTS, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.number-facts.add"), operator: "+", family: NUMBER_FACTS, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.number-facts.sub"), operator: "−", family: NUMBER_FACTS, owner: "PR-2.13", implemented: false },
 
-  { id: locKey("dw.prompt.column-op.sub"), family: COLUMN_OP, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.column-op.add"), family: COLUMN_OP, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.column-op.sub"), operator: "−", family: COLUMN_OP, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.column-op.add"), operator: "+", family: COLUMN_OP, owner: "PR-2.13", implemented: false },
 
-  { id: locKey("dw.prompt.place-value.digit-value"), family: PLACE_VALUE, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.place-value.digit-in-place"), family: PLACE_VALUE, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.place-value.total-in-place"), family: PLACE_VALUE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.place-value.digit-value"), operator: "none", family: PLACE_VALUE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.place-value.digit-in-place"), operator: "none", family: PLACE_VALUE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.place-value.total-in-place"), operator: "none", family: PLACE_VALUE, owner: "PR-2.13", implemented: false },
 
-  { id: locKey("dw.prompt.compare-order.greater"), family: COMPARE_ORDER, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.compare-order.lesser"), family: COMPARE_ORDER, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.compare-order.greater"), operator: "none", family: COMPARE_ORDER, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.compare-order.lesser"), operator: "none", family: COMPARE_ORDER, owner: "PR-2.13", implemented: false },
 
-  { id: locKey("dw.prompt.round-estimate.round"), family: ROUND_ESTIMATE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.round-estimate.round"), operator: "none", family: ROUND_ESTIMATE, owner: "PR-2.13", implemented: false },
 
-  { id: locKey("dw.prompt.multidigit-mul.product"), family: MULTIDIGIT_MUL, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.multidigit-mul.product"), operator: "×", family: MULTIDIGIT_MUL, owner: "PR-2.13", implemented: false },
 
-  { id: locKey("dw.prompt.long-div.quotient"), family: LONG_DIV, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.long-div.remainder"), family: LONG_DIV, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.long-div.quotient"), operator: "÷", family: LONG_DIV, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.long-div.remainder"), operator: "÷", family: LONG_DIV, owner: "PR-2.13", implemented: false },
   {
     id: locKey("dw.prompt.long-div.quotient-remainder"),
+    operator: "÷",
     family: LONG_DIV,
     owner: "PR-2.13",
     implemented: false,
   },
 
-  { id: locKey("dw.prompt.frac-equivalence.simplify"), family: FRAC_EQUIVALENCE, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.frac-equivalence.build"), family: FRAC_EQUIVALENCE, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.frac-equivalence.to-mixed"), family: FRAC_EQUIVALENCE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-equivalence.simplify"), operator: "none", family: FRAC_EQUIVALENCE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-equivalence.build"), operator: "none", family: FRAC_EQUIVALENCE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-equivalence.to-mixed"), operator: "none", family: FRAC_EQUIVALENCE, owner: "PR-2.13", implemented: false },
   {
     id: locKey("dw.prompt.frac-equivalence.to-improper"),
+    operator: "none",
     family: FRAC_EQUIVALENCE,
     owner: "PR-2.13",
     implemented: false,
   },
 
-  { id: locKey("dw.prompt.frac-arith.add"), family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.frac-arith.sub"), family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.frac-arith.mul"), family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
-  { id: locKey("dw.prompt.frac-arith.mul-whole"), family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-arith.add"), operator: "+", family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-arith.sub"), operator: "−", family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-arith.mul"), operator: "×", family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.frac-arith.mul-whole"), operator: "×", family: FRAC_ARITH, owner: "PR-2.13", implemented: false },
 
   {
     id: locKey("dw.prompt.missing-operand.add-unknown"),
+    operator: "+",
     family: MISSING_OPERAND,
     owner: "PR-2.13",
     implemented: false,
   },
   {
     id: locKey("dw.prompt.missing-operand.sub-unknown"),
+    operator: "−",
     family: MISSING_OPERAND,
     owner: "PR-2.13",
     implemented: false,
   },
   {
     id: locKey("dw.prompt.missing-operand.sub-unknown-minuend"),
+    operator: "−",
     family: MISSING_OPERAND,
     owner: "PR-2.13",
     implemented: false,
   },
   {
     id: locKey("dw.prompt.missing-operand.mul-unknown"),
+    operator: "×",
     family: MISSING_OPERAND,
     owner: "PR-2.13",
     implemented: false,
   },
   {
     id: locKey("dw.prompt.missing-operand.both-sides"),
+    operator: "none",
     family: MISSING_OPERAND,
     owner: "PR-2.13",
     implemented: false,
   },
+
+  // The tables and their inverses. Neither glyph has ever been drawn by anything
+  // in this repository, and the second is the one a game would meet first.
+  { id: locKey("dw.prompt.times-table.mul"), operator: "×", family: TIMES_TABLE, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.times-table.div"), operator: "÷", family: TIMES_TABLE, owner: "PR-2.13", implemented: false },
+
+  // Signed arithmetic. The `+` and `−` here are the same glyphs the additive
+  // families use and the *operands* are what differ — `(−7) + 4` is an addition
+  // however it reads — so a renderer that draws these correctly still needs
+  // `answer:integer-signed` before the card is answerable.
+  { id: locKey("dw.prompt.signed-int.add"), operator: "+", family: SIGNED_INT, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.signed-int.sub"), operator: "−", family: SIGNED_INT, owner: "PR-2.13", implemented: false },
+  { id: locKey("dw.prompt.signed-int.mul"), operator: "×", family: SIGNED_INT, owner: "PR-2.13", implemented: false },
 ];
 
 export function findPromptTemplate(
@@ -158,4 +215,20 @@ export function findPromptTemplate(
   registry: readonly PromptTemplateDeclaration[] = promptRegistry,
 ): PromptTemplateDeclaration | undefined {
   return registry.find((entry) => entry.id === key);
+}
+
+/**
+ * The glyph this question is written with, or `null` for a key nothing declares.
+ *
+ * The lookup a renderer needs, so that "which operator is this" is a table read
+ * rather than a guess from the shape of the key. `null` and not `"+"` on an
+ * unknown key, deliberately: a renderer that cannot tell must draw nothing and say
+ * so, because the alternative is the defect this function exists to retire — a
+ * multiplication served to a child with a plus sign in the middle of it.
+ */
+export function promptOperator(
+  key: string,
+  registry: readonly PromptTemplateDeclaration[] = promptRegistry,
+): PromptOperator | null {
+  return registry.find((entry) => String(entry.id) === key)?.operator ?? null;
 }
