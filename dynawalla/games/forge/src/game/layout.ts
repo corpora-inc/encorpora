@@ -27,7 +27,11 @@
 // The backdrop, the furnace body, the glow and the particles all still use the
 // full `w`/`h` and bleed under the notch, which is the point of `cover`.
 
-import { HOST_CONTROL, HOST_MARGIN } from "../../../../packs/shared/game-chrome/index.ts"
+import {
+  HOST_CONTROL,
+  HOST_MARGIN,
+  HOST_PROGRESS_H,
+} from "../../../../packs/shared/game-chrome/index.ts"
 
 export type Rect = { x: number; y: number; w: number; h: number }
 
@@ -37,6 +41,18 @@ export function hit(r: Rect, x: number, y: number, slop = 0): boolean {
 
 /** Breathing room between a HUD edge and a host control. */
 const CHROME_GAP = 8
+
+/**
+ * The narrowest channel the header is still worth squeezing into.
+ *
+ * Above this, the header narrows between the two corners and nothing else in
+ * the frame moves — which is the cheap outcome, because the alternative costs
+ * the station rows height they do not have. Below it, squeezing would leave a
+ * readout too narrow to set the score in, so the header drops BENEATH the
+ * corners instead and takes the full width back. That happens on a very narrow
+ * Split View and on a tall frame with insets on both long edges.
+ */
+const MIN_CHANNEL = 180
 
 export type Layout = {
   portrait: boolean
@@ -96,12 +112,28 @@ export function computeLayout(w: number, h: number, revealed: number, area: Rect
     const anvilH = Math.round(Math.min(area.h * 0.35, 318 * scale))
     // Only the header reaches into the host's band, so only the header narrows.
     // The station column below it keeps the full width it always had.
-    const header: Rect = { x: chanX, y: area.y + pad, w: chanR - chanX, h: headerH }
+    const narrow = chanR - chanX < MIN_CHANNEL
+    const header: Rect = narrow
+      ? {
+          x: ox + pad,
+          y: area.y + HOST_PROGRESS_H + HOST_MARGIN + HOST_CONTROL + CHROME_GAP,
+          w: cw - pad * 2,
+          h: headerH,
+        }
+      : { x: chanX, y: area.y + pad, w: chanR - chanX, h: headerH }
+    // The anvil is bottom-anchored and the column fills what is left, so the
+    // column absorbs a dropped header rather than running into the workbench.
+    // Written as "the anvil, minus the mouth" so the relationship survives the
+    // header moving; in the ordinary case it is the value it always was.
+    const anvilTop = area.y + area.h - anvilH
     const chain: Rect = {
       x: ox + pad,
       y: header.y + header.h + pad * 0.5,
       w: cw - pad * 2,
-      h: area.h - headerH - anvilH - pad * 1.6 - 46 * scale,
+      h: Math.max(
+        60,
+        anvilTop - (header.y + header.h + pad * 0.5) - pad * 0.1 - 46 * scale,
+      ),
     }
     const rowH = Math.min(chain.h / 6, 86 * scale)
     const rows: Rect[] = []
@@ -115,7 +147,7 @@ export function computeLayout(w: number, h: number, revealed: number, area: Rect
     }
     // Bottom-anchored to the SAFE area, so the ingots a child taps sit above
     // the home indicator rather than under it.
-    const anvil: Rect = { x: ox, y: area.y + area.h - anvilH, w: cw, h: anvilH }
+    const anvil: Rect = { x: ox, y: anvilTop, w: cw, h: anvilH }
     const slugH = Math.min(anvilH * 0.42, 120 * scale)
     const slugY = area.y + area.h - slugH - pad
     const sgap = Math.round(9 * scale)
@@ -156,21 +188,31 @@ export function computeLayout(w: number, h: number, revealed: number, area: Rect
       },
       hammerY: billet.y - 4 * scale,
       slugs,
-      quench: { x: header.x + header.w - 132 * scale, y: header.y + 6, w: 132 * scale, h: 46 * scale },
+      quench: quenchRect(header, Math.min(132 * scale, header.w - 8), 46 * scale, 6),
       audio: { x: header.x + header.w - 34 * scale, y: header.y + header.h - 30 * scale, w: 30 * scale, h: 26 * scale },
       scale,
     }
   }
 
   // --- landscape -----------------------------------------------------------
+  //
+  // In landscape the station column reaches the very top of the frame, so its
+  // REACTOR row sits under the exit control. The column therefore starts at the
+  // channel — but it gives up that width on its own LEFT EDGE and keeps its
+  // right edge exactly where it was.
+  //
+  // That distinction is the whole point. Sliding the column right would slide
+  // the workbench right with it, and the workbench's four ingots are the answer
+  // buttons: on a rotated phone (568×320) that took them from 62px wide to
+  // 36px, and to 24px with insets on both long edges. Buying a station is a
+  // wide row that can afford to be narrower; a 24px answer button cannot be
+  // hit. So only the column pays, and it pays on the side the control is on.
   const colW = Math.min(cw * 0.46, 560 * scale)
-  // In landscape the column reaches the top of the frame, so it — not just the
-  // header — has to start clear of the exit control. The whole workbench slides
-  // with it, which keeps the one-saccade spacing the two halves are built on.
+  const colRight = ox + pad + colW
   const chain: Rect = {
     x: chanX,
     y: area.y + pad * 2.2,
-    w: colW,
+    w: Math.max(120, colRight - chanX),
     h: area.h - pad * 3.2 - 104 * scale,
   }
   const rowH = Math.min(chain.h / 6, 100 * scale)
@@ -183,10 +225,14 @@ export function computeLayout(w: number, h: number, revealed: number, area: Rect
       h: rowH - Math.round(6 * scale),
     })
   }
-  const rx = chain.x + chain.w + pad * 1.6
-  const rw = chanR - rx
+  // The workbench keeps the full right column it always had: the anvil, the
+  // work bar and the four ingots all live in the BOTTOM half of the frame,
+  // nowhere near the host's controls. Only the header, which carries the QUENCH
+  // plate in its top-right corner, is pulled in to the channel.
+  const rx = colRight + pad * 1.6
+  const rw = ox + cw - pad - rx
   const headerH = Math.min(area.h * 0.3, 190 * scale)
-  const header: Rect = { x: rx, y: chain.y, w: rw, h: headerH }
+  const header: Rect = { x: rx, y: chain.y, w: Math.max(120, chanR - rx), h: headerH }
   const anvil: Rect = {
     x: rx,
     y: header.y + headerH + pad,
@@ -227,8 +273,20 @@ export function computeLayout(w: number, h: number, revealed: number, area: Rect
     },
     hammerY: billet.y - 5 * scale,
     slugs,
-    quench: { x: header.x + header.w - 150 * scale, y: header.y, w: 150 * scale, h: 50 * scale },
+    quench: quenchRect(header, Math.min(150 * scale, header.w - 8), 50 * scale, 0),
     audio: { x: header.x + header.w - 34 * scale, y: header.y + headerH - 30 * scale, w: 30 * scale, h: 26 * scale },
     scale,
   }
+}
+
+/**
+ * The QUENCH plate, right-anchored inside its header.
+ *
+ * Clamped to the header's own width, because the header is now the narrower of
+ * the two halves in landscape: an unclamped 150px plate on a 68px header starts
+ * 40px to the LEFT of the panel it belongs to and sits over the station column.
+ */
+function quenchRect(header: Rect, w: number, h: number, dy: number): Rect {
+  const width = Math.max(64, w)
+  return { x: header.x + header.w - width, y: header.y + dy, w: width, h }
 }

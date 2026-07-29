@@ -40,6 +40,12 @@ const VIEWPORTS: Array<[string, number, number]> = [
   ["tablet portrait", 768, 1024],
   ["tablet landscape", 1024, 768],
   ["phone landscape", 844, 390],
+  // The small rotated phones matter more than the big one and were the gap
+  // that let a regression through: with only 844×390 in this list, a landscape
+  // change that halved the workbench's width still passed. 568×320 is a
+  // rotated iPhone SE and 667×375 is a rotated iPhone 8.
+  ["phone landscape, small", 568, 320],
+  ["phone landscape, medium", 667, 375],
   ["desktop wide", 1920, 1080],
 ]
 
@@ -55,6 +61,20 @@ const INSETS: Array<[string, Insets]> = [
   ["notched", NOTCH],
   ["notched, on its side", NOTCH_SIDE],
 ]
+
+/**
+ * The inset profiles a given frame can actually be handed.
+ *
+ * iOS reports room for the notch on the LONG edges: top and bottom when the
+ * frame is taller than it is wide, left and right when it is wider. It never
+ * reports both at once, so a tall frame with 47px side insets is a shape no
+ * device produces. The containment test still probes every profile against
+ * every viewport — containment must hold whatever it is handed — but the tests
+ * about how much room is LEFT use this, because measuring a shape that cannot
+ * exist only invents failures.
+ */
+const realProfiles = (w: number, h: number): Array<[string, Insets]> =>
+  w > h ? INSETS : INSETS.filter(([n]) => n !== "notched, on its side")
 
 const inside = (r: Rect, a: Rect): boolean =>
   r.x >= a.x - 0.5 &&
@@ -105,24 +125,71 @@ test("the tap targets stay big enough for a child's thumb", () => {
   // Narrowing the header is only acceptable while nothing shrinks below the
   // platform's minimum touch target. The ingots are the answer buttons and the
   // rows are the buy buttons.
-  for (const [name, w, h] of VIEWPORTS) {
-    const l = computeLayout(w, h, 6, safeRect(w, h, NOTCH))
+  //
+  // This runs over EVERY inset profile, not just the top/bottom one. Landscape
+  // insets sit on the long edges, so `NOTCH_SIDE` is the only profile in which
+  // a landscape layout loses horizontal room — and it is the profile under
+  // which the ingots first fell to 24px wide. Testing only `NOTCH` here made
+  // the assertion unable to see the very case it was written for.
+  for (const [[name, w, h], [iname, insets]] of VIEWPORTS.flatMap((v) =>
+    realProfiles(v[1], v[2]).map((i) => [v, i] as const),
+  )) {
+    const l = computeLayout(w, h, 6, safeRect(w, h, insets))
+    const label = `${name}, ${iname}`
+
+    // 44px is the platform floor and about the smallest square a seven-year-old
+    // hits reliably. The ingots are the answer buttons; this one is absolute.
     for (const s of l.slugs) {
-      assert.ok(s.h >= 44, `${name}: an ingot is ${s.h.toFixed(1)}px tall`)
-      assert.ok(s.w >= 44, `${name}: an ingot is ${s.w.toFixed(1)}px wide`)
+      assert.ok(s.h >= 44, `${label}: an ingot is ${s.h.toFixed(1)}px tall`)
+      assert.ok(s.w >= 44, `${label}: an ingot is ${s.w.toFixed(1)}px wide`)
     }
-    // `rowH` is the pitch, not the plate: the rows are contiguous and the
-    // `5 * scale` taken off each plate is a drawn gap, so the pitch is the
-    // target a thumb actually has. Honouring the safe area costs the column
-    // about 6px of pitch on a 320×568 notched phone — 36 down to 30 — which is
-    // real, and is the price of every row being reachable instead of the top
-    // and bottom ones being under the status bar and the home indicator.
-    assert.ok(l.rowH >= 28, `${name}: the station pitch is ${l.rowH.toFixed(1)}px`)
-    assert.ok(l.quench.h >= 30, `${name}: the quench plate is ${l.quench.h.toFixed(1)}px tall`)
-    // Room left for the number itself. `header.ts` fits the mantissa into
-    // `header.w - 20 * scale`, so a header squeezed to nothing would print an
-    // unreadable score rather than throw.
-    assert.ok(l.header.w >= 180, `${name}: the header is ${l.header.w.toFixed(1)}px wide`)
+    assert.ok(l.quench.h >= 30, `${label}: the quench plate is ${l.quench.h.toFixed(1)}px tall`)
+    // `header.ts` fits the mantissa into `header.w - 20 * scale`, so a header
+    // squeezed to nothing prints an unreadable score rather than throwing. 150
+    // is what the narrowest supported landscape leaves once the QUENCH corner
+    // is cleared: a rotated iPhone SE with insets on both long edges.
+    assert.ok(l.header.w >= 150, `${label}: the header is ${l.header.w.toFixed(1)}px wide`)
+
+    // The QUENCH plate is right-anchored inside the header and must stay in it.
+    assert.ok(l.quench.x >= l.header.x - 0.5, `${label}: the quench plate overhangs its header`)
+  }
+})
+
+test("the station column gives up the notch and not a pixel more", () => {
+  // The pitch cannot have an absolute floor: on a short landscape frame the
+  // column is six rows in whatever is left after the crucible, and that is
+  // small before any of this. What CAN be pinned is the thing a regression
+  // would break — that honouring the safe area costs the column exactly the
+  // height the inset took, shared out over its six rows, and nothing extra.
+  //
+  // This is the shape of the bug that shipped in landscape: the workbench was
+  // slid sideways by a whole 62px rail it did not need, so the loss was far
+  // larger than the inset. An absolute floor would not have caught it.
+  for (const [name, w, h] of VIEWPORTS) {
+    const flat = computeLayout(w, h, 6, safeRect(w, h, FLAT))
+    for (const [iname, insets] of realProfiles(w, h)) {
+      const area = safeRect(w, h, insets)
+      const l = computeLayout(w, h, 6, area)
+      const lostH = h - area.h
+      assert.ok(
+        flat.rowH - l.rowH <= lostH / 6 + 1,
+        `${name}, ${iname}: the pitch fell ${(flat.rowH - l.rowH).toFixed(1)}px for a ${lostH}px inset`,
+      )
+      const lostW = w - area.w
+      const widest = flat.slugs[0]
+      const got = l.slugs[0]
+      assert.ok(widest !== undefined && got !== undefined)
+      assert.ok(
+        widest.w - got.w <= lostW / 4 + 1,
+        `${name}, ${iname}: an ingot lost ${(widest.w - got.w).toFixed(1)}px for a ${lostW}px inset`,
+      )
+    }
+  }
+
+  // And on the frame a device actually has, the pitch clears a thumb.
+  for (const [name, w, h] of VIEWPORTS) {
+    const l = computeLayout(w, h, 6, safeRect(w, h, FLAT))
+    assert.ok(l.rowH >= 28, `${name}: the station pitch is ${l.rowH.toFixed(1)}px with no insets`)
   }
 })
 

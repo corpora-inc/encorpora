@@ -715,6 +715,12 @@ export function mount(el: HTMLElement, host: Host): Mounted {
   }
 
   function onKey(ev: KeyboardEvent): void {
+    // The manual is a full-screen DOM scrim over the canvas, and this listener
+    // is on `globalThis`, so without this line a child reading the Keyboard
+    // section and pressing the key it names would fire it into a game they
+    // cannot see. Space is the worst case: it starts a quench and the second
+    // press plunges, wiping the whole run behind a panel.
+    if (guide.isOpen) return
     audio.resume()
     const k = ev.key.toLowerCase()
     if (k >= "1" && k <= "4") {
@@ -873,6 +879,13 @@ export function mount(el: HTMLElement, host: Host): Mounted {
       relayout = false
       g.layout = computeLayout(surface.w, surface.h, g.revealed, safeRect(surface.w, surface.h))
     }
+
+    // The manual freezes the forge. Heat bleeds at 1/16 per second, so a minute
+    // spent reading the seven sections would leave 2.4% of the multiplier — and
+    // the manual is where it says "heat leaks away all the time". Charging a
+    // child for reading the rules is not a mechanic. The resize above still
+    // runs, so a rotation behind the panel is honoured the moment it closes.
+    if (guide.isOpen) return
 
     // Economy: fixed 60 Hz, frozen during hitstop. Deterministic regardless of
     // display refresh rate — a 120 Hz tablet earns exactly what a 60 Hz one does.
