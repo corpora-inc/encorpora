@@ -26,6 +26,7 @@ import {
   SRGBColorSpace,
 } from "three";
 
+import { createInstructions } from "../../../../packs/shared/game-chrome/index.ts";
 import type { Host } from "../contract.ts";
 import { Sim, type PlaceEvent, type SimEvent } from "./sim.ts";
 import { T } from "./tuning.ts";
@@ -225,6 +226,51 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     },
     reduced,
   );
+
+  // How to play. MONUMENT asks for two judgements in one tap — is this the
+  // right value, and is it over the tower — and shipped saying only "Tap to set
+  // the stone". A child who does not know the value matters reads the tap as
+  // the whole game, drops on the first pass every time, and watches the tower
+  // shear for reasons nothing on screen explains.
+  //
+  // It goes on `el` rather than on `holder`, so a tap on the panel is not also
+  // a tap on the game: `holder` is what listens for the drop.
+  const guide = createInstructions(el, {
+    title: "MONUMENT",
+    summary: [
+      "A stone slides back and forth above your tower. Tap once to drop it.",
+      "Drop it when the number on the stone is the right answer, and when it lines up with the tower.",
+    ],
+    sections: [
+      {
+        heading: "Two things have to be right",
+        lines: [
+          "There is a sum near the top, like 3 + ? = 10.",
+          "The stone has a number on it. That number changes every time the stone turns around.",
+          "Wait until the stone is showing the answer.",
+          "Then tap when the stone is sitting right over the tower.",
+        ],
+      },
+      {
+        heading: "The tower",
+        lines: [
+          "Any part of the stone that hangs over the edge breaks off, so the tower gets thinner.",
+          "Land it dead straight and the tower gets wider instead.",
+          "Drop a wrong number and the stone cracks and takes even more off.",
+          "If the tower gets too thin, it falls over and the run is done.",
+        ],
+      },
+      {
+        heading: "Waiting is free",
+        lines: [
+          "If the stone is showing a wrong number, do not tap. Let it go round again.",
+          "You get a whole pass to read a number and decide.",
+          "Waiting never costs you anything.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  });
 
   /* ── palette blending ───────────────────────────────────────────────── */
 
@@ -1117,6 +1163,7 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       ro.disconnect();
       holder.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("keydown", onKey);
+      guide.destroy();
       hud.dispose();
       audio.dispose();
       sparks.dispose();

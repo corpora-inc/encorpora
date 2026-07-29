@@ -71,7 +71,7 @@ death line, so a chain of revives ends by itself rather than by a rule.
 ```sh
 npm install
 npm run dev            # http://127.0.0.1:4310
-npm test               # 32 tests, no browser needed
+npm test               # 36 tests, no browser needed
 npm run tsc
 npm run build:pack     # what installs on a tablet: pack.html only, no stub host
 ```
@@ -106,6 +106,7 @@ src/view/*             sky, post chain, slabs, plaques, particles, rings, tiers
 src/feel/feel.ts       trauma shake, springs, hit-stop, rate-limited flash
 src/audio/audio.ts     procedural WebAudio, no assets
 src/ui/hud.ts          DOM chrome
+src/ui/place.ts        where the chrome may sit: safe area, and the host's two corners
 ```
 
 `sim.ts` is deliberately free of THREE, the DOM and time-of-day, so the rules
@@ -130,6 +131,14 @@ guarantees are proven.
 - **A decoy can be secretly correct.** `2/4 + ? = 1` offered `2/4`, because the
   "copied the fraction" mal-rule *is* the answer when the numerator is half the
   denominator. Decoys are now filtered by exact value, not by string.
+- **The host paints over the pack, in the two top corners.** An exit control
+  top-left and how-to-play top-right, 44px each. The floor count was at
+  `left:14px` and the best at `right:14px`, flush to the top, so both sat under
+  them. The readouts now step in past the corners onto the same row, and
+  `place.ts` holds those offsets in both dialects at once — the `calc(env(…))`
+  the stylesheet is built from, and the numbers `place.test.ts` proves at five
+  viewports. Reserving a top band instead was tried across the arcade and
+  rejected: it costs 12% of a 568px phone.
 - **Plaques are sized so they are a constant number of screen pixels.** The
   camera solves its own distance every frame; a number a child has half a second
   to read cannot be allowed to shrink when the shot pulls back.
@@ -143,6 +152,8 @@ guarantees are proven.
   exposure event rather than a sheet of white, so they never strobe.
 - Nothing is carried by colour alone; sound is disableable and always has a
   visual twin.
+- The rules are one tap away at any moment, from the shared how-to-play panel —
+  a child needs them when they are stuck, which is never the title screen.
 - Readable at 320 px. Touch is primary, keyboard (`Space` / `R`) is first class.
 - No ads, no loot boxes, no variable-ratio rewards, no daily streak, no
   scarcity, no social pressure, no timer.

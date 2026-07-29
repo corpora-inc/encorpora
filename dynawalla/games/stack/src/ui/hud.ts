@@ -9,7 +9,30 @@
  * got thinner and you can see it.
  *
  * Total translatable surface: four words.
+ *
+ * Every offset that touches an edge comes from `place.ts`, which holds the
+ * safe-area arithmetic and the host's two reserved corners in one place and
+ * hands this stylesheet the `calc(env(...))` strings — so `place.test.ts` is
+ * asserting against the geometry that actually ships, not a copy of it.
  */
+
+import {
+  BEST_NUM,
+  CSS_CLEAR_LEFT,
+  CSS_CLEAR_RIGHT,
+  CSS_EDGE_LEFT,
+  CSS_HINT_BOTTOM,
+  CSS_PROMPT_TOP,
+  CSS_ROW_TOP,
+  CSS_TOOL_BOTTOM,
+  CSS_TOOL_RIGHT,
+  FLOOR_GAP,
+  FLOOR_NUM,
+  LABEL,
+  PROMPT,
+  TOOL_SIZE,
+  cssScale,
+} from "./place.ts";
 
 const CSS = `
 .mn { position:absolute; inset:0; pointer-events:none; overflow:hidden;
@@ -19,29 +42,29 @@ const CSS = `
   contain:layout style; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent; }
 .mn * { box-sizing:border-box; margin:0; }
 
-.mn-floor { position:absolute; top:max(10px,env(safe-area-inset-top)); left:14px; display:flex; align-items:baseline; gap:10px;
+.mn-floor { position:absolute; top:${CSS_ROW_TOP}; left:${CSS_CLEAR_LEFT}; display:flex; align-items:baseline; gap:${FLOOR_GAP}px;
   transform-origin:left center; will-change:transform; }
-.mn-floor b { font-size:clamp(40px,10.5vmin,84px); font-weight:800; letter-spacing:-.045em; line-height:.85;
+.mn-floor b { font-size:${cssScale(FLOOR_NUM)}; font-weight:800; letter-spacing:-.045em; line-height:.85;
   font-variant-numeric:tabular-nums; text-shadow:var(--shadow); }
-.mn-floor i { font-style:normal; font-size:clamp(9px,2.2vmin,12px); font-weight:800; letter-spacing:.22em;
+.mn-floor i { font-style:normal; font-size:${cssScale(LABEL)}; font-weight:800; letter-spacing:.22em;
   color:var(--dim); text-transform:uppercase; }
 
-.mn-best { position:absolute; top:max(10px,env(safe-area-inset-top)); right:14px; text-align:right;
-  font-size:clamp(9px,2.2vmin,12px); font-weight:800; letter-spacing:.2em; color:var(--dim); text-transform:uppercase; }
-.mn-best em { font-style:normal; display:block; font-size:clamp(15px,4vmin,26px); letter-spacing:-.02em; color:var(--fg);
+.mn-best { position:absolute; top:${CSS_ROW_TOP}; right:${CSS_CLEAR_RIGHT}; text-align:right;
+  font-size:${cssScale(LABEL)}; font-weight:800; letter-spacing:.2em; color:var(--dim); text-transform:uppercase; }
+.mn-best em { font-style:normal; display:block; font-size:${cssScale(BEST_NUM)}; letter-spacing:-.02em; color:var(--fg);
   font-variant-numeric:tabular-nums; opacity:.85; }
 
-.mn-prompt { position:absolute; left:50%; top:18%; transform:translate(-50%,-50%);
+.mn-prompt { position:absolute; left:50%; top:${CSS_PROMPT_TOP}; transform:translate(-50%,-50%);
   display:flex; align-items:center; gap:0; padding:.42em .72em .5em;
   background:var(--bg); border-bottom:3px solid var(--ac);
-  font-size:clamp(21px,6.6vmin,46px); font-weight:800; letter-spacing:-.02em; white-space:nowrap;
+  font-size:${cssScale(PROMPT)}; font-weight:800; letter-spacing:-.02em; white-space:nowrap;
   font-variant-numeric:tabular-nums; box-shadow:0 10px 40px rgba(0,0,0,.45);
   will-change:transform,opacity; }
 .mn-prompt.reveal { border-bottom-color:var(--fg); }
 .mn-prompt .fill { color:var(--ac); }
 .mn-prompt .q { color:var(--ac); }
 
-.mn-combo { position:absolute; left:50%; top:calc(18% + 2.9em); transform:translate(-50%,0) scale(1);
+.mn-combo { position:absolute; left:50%; top:calc(${CSS_PROMPT_TOP} + 2.9em); transform:translate(-50%,0) scale(1);
   font-size:clamp(13px,3.4vmin,22px); font-weight:800; letter-spacing:.02em; color:var(--ac);
   font-variant-numeric:tabular-nums; opacity:0; will-change:transform,opacity; }
 
@@ -49,12 +72,13 @@ const CSS = `
   font-size:clamp(34px,12vmin,104px); font-weight:800; letter-spacing:-.05em; color:var(--ac);
   opacity:0; will-change:transform,opacity; text-shadow:0 0 60px color-mix(in srgb,var(--ac) 60%,transparent); }
 
-.mn-band { position:absolute; left:0; right:0; top:57%; text-align:center; opacity:0; will-change:transform,opacity; }
+.mn-band { position:absolute; left:0; right:0; top:57%; text-align:center; opacity:0; will-change:transform,opacity;
+  padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right); box-sizing:border-box; }
 .mn-band u { text-decoration:none; display:block; font-size:clamp(9px,2.4vmin,13px); font-weight:800; letter-spacing:.42em;
   color:var(--dim); text-transform:uppercase; }
 .mn-band b { display:block; font-size:clamp(28px,8.5vmin,62px); font-weight:800; letter-spacing:.06em; }
 
-.mn-hint { position:absolute; left:50%; bottom:12%; transform:translateX(-50%);
+.mn-hint { position:absolute; left:50%; bottom:${CSS_HINT_BOTTOM}; transform:translateX(-50%);
   font-size:clamp(10px,2.6vmin,14px); font-weight:800; letter-spacing:.3em; color:var(--dim); text-transform:uppercase;
   animation:mnpulse 1.9s ease-in-out infinite; }
 @keyframes mnpulse { 0%,100%{opacity:.28} 50%{opacity:.85} }
@@ -62,7 +86,9 @@ const CSS = `
 .mn-over { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:clamp(12px,3vmin,24px); pointer-events:auto; opacity:0; visibility:hidden;
   background:radial-gradient(120% 90% at 50% 45%, transparent 18%, color-mix(in srgb,var(--bg) 99%,transparent) 62%);
-  padding:20px; transition:opacity .28s ease; }
+  padding:calc(env(safe-area-inset-top) + 20px) calc(env(safe-area-inset-right) + 20px)
+    calc(env(safe-area-inset-bottom) + 20px) calc(env(safe-area-inset-left) + 20px);
+  transition:opacity .28s ease; }
 .mn-over.on { opacity:1; visibility:visible; }
 .mn-over h1 { font-size:clamp(11px,2.8vmin,15px); font-weight:800; letter-spacing:.42em; color:var(--dim); text-transform:uppercase; }
 .mn-over .big { font-size:clamp(56px,20vmin,150px); font-weight:800; letter-spacing:-.06em; line-height:.82;
@@ -83,13 +109,13 @@ const CSS = `
   background:transparent; color:var(--fg); border:2px solid color-mix(in srgb,var(--fg) 45%,transparent); }
 .mn-btn.solid { background:var(--ac); color:var(--bg); border-color:var(--ac); }
 
-.mn-tools { position:absolute; right:12px; bottom:max(12px,env(safe-area-inset-bottom)); display:flex; gap:8px; pointer-events:auto; }
-.mn-tools button { pointer-events:auto; width:40px; height:40px; border:2px solid color-mix(in srgb,var(--fg) 28%,transparent);
+.mn-tools { position:absolute; right:${CSS_TOOL_RIGHT}; bottom:${CSS_TOOL_BOTTOM}; display:flex; gap:8px; pointer-events:auto; }
+.mn-tools button { pointer-events:auto; width:${TOOL_SIZE}px; height:${TOOL_SIZE}px; border:2px solid color-mix(in srgb,var(--fg) 28%,transparent);
   background:var(--bg); color:var(--fg); font:inherit; font-size:13px; font-weight:800;
   border-radius:0; cursor:pointer; letter-spacing:0; touch-action:manipulation; }
 .mn-tools button[aria-pressed="false"] { opacity:.42; }
 
-.mn-perf { position:absolute; background:rgba(0,0,0,.55); padding:6px 9px; color:#fff !important; left:14px; bottom:max(12px,env(safe-area-inset-bottom)); font-size:11px; font-weight:700;
+.mn-perf { position:absolute; background:rgba(0,0,0,.55); padding:6px 9px; color:#fff !important; left:${CSS_EDGE_LEFT}; bottom:${CSS_TOOL_BOTTOM}; font-size:11px; font-weight:700;
   letter-spacing:.06em; color:var(--dim); font-variant-numeric:tabular-nums; white-space:pre; line-height:1.45; display:none; }
 .mn-perf.on { display:block; }
 
