@@ -22,12 +22,12 @@ import {
   LANE_COLOR, LANE_NAME, LANE_SHAPE, font, mix, rgba, themeFor,
   TIER_SPEC, type Rgb, type Tier,
 } from "../theme.ts";
+import { safeInsets, safeRect } from "../../../../packs/shared/game-chrome/index.ts";
+import { layoutFor, LEAD, type Layout } from "./layout.ts";
 import { drawRich, measureRich } from "./typeset.ts";
 import {
   Particles, PAL_BLOOM, PAL_DIM, PAL_GOLD, PAL_HORIZON, PAL_WHITE,
 } from "./particles.ts";
-
-const LEAD = 1.85; // seconds a note is visible before its strike
 const HISTORY = 110;
 const FLASH_MIN_GAP = 0.34;
 const FLASH_MAX = 0.42;
@@ -49,6 +49,14 @@ export class Renderer {
   private strikeX = 0;
   private pps = 200;
   private u = 10; // type unit, from the short axis
+  /**
+   * Where the readable things go. Rebuilt on every resize from the measured
+   * safe area, so the HUD is never under the notch and never under the host's
+   * two 44px corner controls.
+   */
+  private lay: Layout = layoutFor(320, { x: 0, y: 0, w: 320, h: 240 }, {
+    top: 0, right: 0, bottom: 0, left: 0,
+  });
 
   private spec = TIER_SPEC.mid;
   tier: Tier = "mid";
@@ -111,15 +119,19 @@ export class Renderer {
     this.canvas.width = Math.round(w * this.dpr);
     this.canvas.height = Math.round(h * this.dpr);
 
-    const short = Math.min(w, h);
-    this.u = short / 46;
-    const topPad = Math.max(58, h * 0.155);
-    const botPad = Math.max(40, h * 0.11);
-    this.playTop = topPad;
-    this.playH = Math.max(120, h - topPad - botPad);
-    this.laneH = this.playH / 3;
-    this.strikeX = Math.min(Math.max(w * 0.235, 62), 240);
-    this.pps = (w - this.strikeX) / LEAD;
+    // The canvas still covers the whole frame — the canyon, the skyline and the
+    // dust are meant to bleed under the notch, which is what `viewport-fit=cover`
+    // is for. It is the lanes, the strike line and every numeral that move
+    // inside the safe rectangle.
+    const insets = safeInsets();
+    const lay = layoutFor(w, safeRect(w, h, insets), insets);
+    this.lay = lay;
+    this.u = lay.u;
+    this.playTop = lay.playTop;
+    this.playH = lay.playH;
+    this.laneH = lay.laneH;
+    this.strikeX = lay.strikeX;
+    this.pps = lay.pps;
 
     const bw = Math.max(64, Math.round(this.canvas.width / 4));
     const bh = Math.max(48, Math.round(this.canvas.height / 4));
@@ -865,23 +877,25 @@ export class Renderer {
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.textBaseline = "middle";
 
+    const lay = this.lay;
+
     // --- score -------------------------------------------------------
     ctx.textAlign = "left";
     ctx.font = font(u * 2.05, 900);
     ctx.fillStyle = "rgba(255,255,255,0.97)";
-    ctx.fillText(String(Math.round(g.score)).padStart(6, "0"), u * 0.9, u * 1.55);
+    ctx.fillText(String(Math.round(g.score)).padStart(6, "0"), lay.hudX, lay.scoreY);
     ctx.font = font(u * 0.78, 700);
     ctx.fillStyle = rgba(th.horizon, 0.75);
-    ctx.fillText(`${g.sector.name}  ·  ${Math.round(g.bpm)} BPM  ·  LV ${g.difficulty.toFixed(1)}`, u * 0.95, u * 2.95);
+    ctx.fillText(`${g.sector.name}  ·  ${Math.round(g.bpm)} BPM  ·  LV ${g.difficulty.toFixed(1)}`, lay.hudX + u * 0.05, lay.sectorY);
 
     // --- charge ------------------------------------------------------
-    const cellW = u * 1.15;
-    const cx0 = this.W - u * 0.9 - cellW * 5 - u * 0.4;
+    const cellW = lay.chargeCellW;
+    const cx0 = lay.chargeX;
     for (let i = 0; i < 5; i++) {
       const on = i < g.charge;
       const x = cx0 + i * (cellW + u * 0.1);
       ctx.fillStyle = on ? rgba(th.horizon, 0.95) : "rgba(255,255,255,0.13)";
-      this.roundRect(ctx, x, u * 0.85, cellW, u * 0.72, u * 0.16);
+      this.roundRect(ctx, x, lay.chargeY, cellW, lay.chargeCellH, u * 0.16);
       ctx.fill();
       if (!on) {
         ctx.strokeStyle = "rgba(255,255,255,0.22)";
@@ -914,11 +928,11 @@ export class Renderer {
     // --- the question ------------------------------------------------
     const gate = g.phase === "breakdown" ? g.reviveGate : g.activeGate;
     if (gate && gate.q && !gate.resolved && now >= gate.revealAt - 0.05) {
-      const size = Math.min(u * 2.5, this.W / (measureRich(ctx, gate.q.prompt, 100) / 100) * 0.86);
+      const size = Math.min(u * 2.5, lay.area.w / (measureRich(ctx, gate.q.prompt, 100) / 100) * 0.86);
       const bw = measureRich(ctx, gate.q.prompt, size) + u * 2.4;
       const bh = size * 2.3;
-      const bx = this.W / 2 - bw / 2;
-      const by = u * 0.55;
+      const bx = lay.cx - bw / 2;
+      const by = lay.promptY;
       ctx.fillStyle = "rgba(4,6,18,0.82)";
       this.roundRect(ctx, bx, by, bw, bh, u * 0.55);
       ctx.fill();
@@ -926,7 +940,7 @@ export class Renderer {
       ctx.lineWidth = Math.max(1.5, u * 0.1);
       this.roundRect(ctx, bx, by, bw, bh, u * 0.55);
       ctx.stroke();
-      drawRich(ctx, gate.q.prompt, this.W / 2, by + bh / 2, size, {
+      drawRich(ctx, gate.q.prompt, lay.cx, by + bh / 2, size, {
         fill: "#ffffff",
         glow: rgba(th.horizon, 0.8),
         glowWidth: size * 0.4,
@@ -941,26 +955,26 @@ export class Renderer {
 
     // --- timing meter ------------------------------------------------
     if (now - g.lastJudgeAt < 1.1 && g.lastVerdict) {
-      const mw = Math.min(this.W * 0.5, u * 13);
-      const mx = this.W / 2 - mw / 2;
+      const mw = Math.min(lay.area.w * 0.5, u * 13);
+      const mx = lay.cx - mw / 2;
       const my = this.playTop + this.playH + u * 1.5;
       const a = 1 - (now - g.lastJudgeAt) / 1.1;
       ctx.globalAlpha = a;
       ctx.fillStyle = "rgba(255,255,255,0.14)";
       ctx.fillRect(mx, my - u * 0.1, mw, u * 0.2);
       ctx.fillStyle = "rgba(255,255,255,0.4)";
-      ctx.fillRect(this.W / 2 - u * 0.05, my - u * 0.4, u * 0.1, u * 0.8);
+      ctx.fillRect(lay.cx - u * 0.05, my - u * 0.4, u * 0.1, u * 0.8);
       if (g.lastVerdict !== "miss") {
         const p = Math.max(-1, Math.min(1, g.lastDelta / 0.2));
         ctx.fillStyle = rgba(th.horizon, 1);
-        ctx.fillRect(this.W / 2 + (p * mw) / 2 - u * 0.12, my - u * 0.5, u * 0.24, u);
+        ctx.fillRect(lay.cx + (p * mw) / 2 - u * 0.12, my - u * 0.5, u * 0.24, u);
       }
       ctx.textAlign = "center";
       ctx.font = font(u * 0.72, 800);
       ctx.fillStyle = "rgba(255,255,255,0.85)";
       const word = g.lastVerdict.toUpperCase();
       const side = g.lastVerdict === "miss" ? "" : g.lastDelta < -0.012 ? "  EARLY" : g.lastDelta > 0.012 ? "  LATE" : "";
-      ctx.fillText(word + side, this.W / 2, my + u * 1.1);
+      ctx.fillText(word + side, lay.cx, my + u * 1.1);
       ctx.globalAlpha = 1;
     }
 
@@ -979,7 +993,7 @@ export class Renderer {
       ctx.textAlign = "center";
       ctx.font = font(u * 4.2, 900);
       ctx.fillStyle = rgba(th.horizon, 0.9);
-      ctx.fillText(g.sector.name, this.W / 2, this.playTop + this.playH / 2);
+      ctx.fillText(g.sector.name, lay.cx, this.playTop + this.playH / 2);
       ctx.globalAlpha = 1;
     }
 
@@ -991,21 +1005,21 @@ export class Renderer {
       ctx.textAlign = "center";
       ctx.font = font(u * 1.15, 900);
       ctx.fillStyle = rgba(th.horizon, 0.7 + pulse * 0.3);
-      ctx.fillText("RESTART THE HEART", this.W / 2, this.playTop - u * 1.2);
+      ctx.fillText("RESTART THE HEART", lay.cx, this.playTop - u * 1.2);
 
       for (let l = 0; l < 3; l++) {
         const y = this.laneY(l);
         const c = LANE_COLOR[l]!;
-        const w = Math.min(this.W * 0.82, u * 20);
+        const w = Math.min(lay.area.w * 0.82, u * 20);
         const h = this.laneH * 0.78;
         ctx.fillStyle = "rgba(7,10,24,0.95)";
-        this.roundRect(ctx, this.W / 2 - w / 2, y - h / 2, w, h, u * 0.6);
+        this.roundRect(ctx, lay.cx - w / 2, y - h / 2, w, h, u * 0.6);
         ctx.fill();
         ctx.strokeStyle = rgba(c, 0.75 + pulse * 0.25);
         ctx.lineWidth = Math.max(3, u * 0.24);
-        this.roundRect(ctx, this.W / 2 - w / 2, y - h / 2, w, h, u * 0.6);
+        this.roundRect(ctx, lay.cx - w / 2, y - h / 2, w, h, u * 0.6);
         ctx.stroke();
-        drawRich(ctx, g.reviveGate.labels[l]!, this.W / 2, y, Math.min(h * 0.44, u * 2.6), {
+        drawRich(ctx, g.reviveGate.labels[l]!, lay.cx, y, Math.min(h * 0.44, u * 2.6), {
           fill: "#ffffff", glow: rgba(c, 0.9), glowWidth: u,
         }, true);
       }
