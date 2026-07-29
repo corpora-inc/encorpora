@@ -166,7 +166,16 @@ export function mountGame(el: HTMLElement, host: Host): { unmount(): void } {
   return new Game(el, host).handle()
 }
 
-class Game {
+/**
+ * Exported for the mount-level test in `pause.test.ts`, and for nothing else.
+ *
+ * `mountGame` is the entry point every caller uses and the handle it returns is
+ * `{ unmount }`, because the host contract has no slot for a pause and inventing
+ * a public one to make a test easier would be inventing a public surface. A test
+ * that has to read the pause flag therefore needs the instance, and the instance
+ * is only reachable if the class has a name outside this module.
+ */
+export class Game {
   private s: State
   private rng: Rng
   private rnd: () => number
@@ -182,6 +191,16 @@ class Game {
   private raf = 0
   private last = 0
   private running = true
+  /** True while the reef is frozen: nothing steps, nothing draws. */
+  private paused = false
+  /**
+   * The manual only lifts a pause it put on itself. Nothing else pauses this
+   * game today, but the day something does — a host sheet, a parent gate — a
+   * child closing the rules underneath it must not be handed back a running reef.
+   */
+  private heldForManual = false
+  /** `performance.now()` when the freeze began, so resume can rebase off it. */
+  private pausedAt = 0
   private ro: ResizeObserver | null = null
   private saveMs = 0
   private fpsSamples: number[] = []
@@ -259,7 +278,24 @@ class Game {
     if (this.s.vents.length === 0) this.addVent()
     if (polyps(this.s.board).length === 0) this.seedShelf()
 
-    this.guide = createInstructions(el, INSTRUCTIONS(this.s.reduceMotion))
+    this.guide = createInstructions(el, {
+      ...INSTRUCTIONS(this.s.reduceMotion),
+      // The reef is the one genre where "it kept running while I read" is not
+      // only noise: vents cough polyps onto the shelf on a timer, a cold vent
+      // warms back up on a timer, a swell rises on a timer, and `askedAt` is the
+      // thinking time this game reports to the learner model. All of it moves
+      // with nobody's hands on the glass, so all of it has to stop.
+      onOpen: () => {
+        if (this.paused) return
+        this.heldForManual = true
+        this.setPaused(true)
+      },
+      onClose: () => {
+        if (!this.heldForManual) return
+        this.heldForManual = false
+        this.setPaused(false)
+      },
+    })
 
     this.bindInput()
     this.observeSize()
@@ -286,6 +322,74 @@ class Game {
     this.audio.close()
     this.renderer.destroy()
     this.hud.destroy()
+  }
+
+  /**
+   * Stop the reef dead, or start it again.
+   *
+   * **Frozen means frozen.** The frame callback keeps being scheduled — it has
+   * to, or there would be nothing left to resume with — but it steps nothing and
+   * draws nothing. Every moving part of this game lives inside `update()` and
+   * `drawFrame()`: essence accrual, polyp ages, the merge cascade queue, each
+   * vent's emit timer and cold timer, the swell, the sonar ping, the long-press
+   * dissolve timer, the drag spring, particles, shockwaves, floaters and the
+   * autosave. One `return` above them takes all of them, and the canvas holds
+   * its last painted frame underneath the sheet.
+   *
+   * **The idle question, decided.** An idle game banks wall-clock time, so
+   * "reading is free production" and "reading costs you two minutes" are both
+   * live possibilities and it would be negligent to pick one by accident. This
+   * game credits away-time through exactly one surface: `offlineHaul`, capped at
+   * eight hours, discounted to 55%, and collected by answering a tide gate. That
+   * is deliberate — essence in ABYSSAL BLOOM is never handed over without either
+   * a merge or a question. Silently topping up `essence` for the seconds a sheet
+   * was up would be the only path in the game that pays for neither, and because
+   * the hold is measured with `performance.now()` it would also pay out real
+   * *backgrounded* time — a child who opens the manual and puts the tablet down
+   * for an hour would come back an hour richer with the tide gate bypassed. So
+   * the read is outside of time: nothing accrues, and nothing decays either. No
+   * vent cools down for free, no swell arrives, no timer runs out. A child is
+   * returned the reef they left, to the polyp.
+   *
+   * The one thing that must NOT be left alone is a wall-clock mark, because
+   * every one of them leaps forward the instant the clock is looked at again.
+   */
+  private setPaused(on: boolean): void {
+    if (on === this.paused) return
+    this.paused = on
+    if (on) {
+      this.pausedAt = performance.now()
+      // A drag in flight never gets its release: the shared sheet swallows
+      // `pointerup` along with every other pointer event. Left standing, the
+      // long-press dissolve timer would carry on counting from behind the
+      // manual and take the polyp out from under a finger that is no longer
+      // there. Sound is already held by the sheet, so this is silent.
+      if (this.s.drag.active) this.cancelDrag()
+      return
+    }
+    // Every wall-clock mark moves forward by exactly the time the sheet was up.
+    // `Math.min(now, ...)` covers a mark that was set DURING the hold — the tide
+    // gate re-asks on a 520ms `setTimeout` — which must not be shifted into the
+    // future and reported as negative thinking time.
+    const now = performance.now()
+    const held = now - this.pausedAt
+    for (const v of this.s.vents) {
+      v.askedAt = Math.min(now, v.askedAt + held)
+      v.hintAt += held
+      if (v.coldUntil > 0) v.coldUntil += held
+    }
+    const t = this.s.tide
+    if (t.askedAt > 0) t.askedAt = Math.min(now, t.askedAt + held)
+    for (const c of this.cascades) c.at += held
+    // `last` is the frame delta's other end. Without this the resumed frame
+    // computes a delta the length of the read; it would be clamped to 50ms, but
+    // 50ms of free reef is still 50ms nobody played.
+    this.last = now
+    // Re-stamp `lastSeen`. `offlineHaul` measures from the last write, so
+    // without this a read would be banked as away-time on the next launch and
+    // the manual would become a way to farm the tide — the exact leak the
+    // paragraph above refuses to open from the other end.
+    this.save()
   }
 
   private observeSize(): void {
@@ -1116,6 +1220,13 @@ class Game {
   private frame = (now: number): void => {
     if (!this.running) return
     this.raf = requestAnimationFrame(this.frame)
+    if (this.paused) {
+      // Nothing steps and nothing is drawn. `last` still tracks so that a
+      // resume — or a rotation that relayouts underneath the sheet — cannot
+      // land one enormous frame.
+      this.last = now
+      return
+    }
     const realDt = Math.min(0.05, Math.max(0.0001, (now - this.last) / 1000))
     this.last = now
 

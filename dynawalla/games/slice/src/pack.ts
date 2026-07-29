@@ -32,6 +32,18 @@ async function start(el: HTMLElement): Promise<void> {
 
   const handle = mount(el, mounted.host as unknown as Host)
 
+  // The host can put a sheet over a still-mounted pack — a purchase surface, a
+  // parent gate — and this game's answering window IS the lanterns' fall. A
+  // question left running behind a sheet expires against a child who was never
+  // shown it, and the bombs keep coming while they cannot reach the blade. The
+  // clock stops dead instead.
+  mounted.client.on("pause", () => {
+    handle.setPaused(true)
+  })
+  mounted.client.on("resume", () => {
+    handle.setPaused(false)
+  })
+
   // The host tells a pack before its port dies, so the rAF loop and the audio
   // context are torn down before the frame is, rather than a frame or two
   // after it.

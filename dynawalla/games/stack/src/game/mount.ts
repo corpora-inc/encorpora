@@ -51,7 +51,10 @@ const ACTION_SCREEN_Y = 0.33;
 const HOVER = T.SLAB_H * 1.15;
 const DROP_MS = 88;
 
-export function mount(el: HTMLElement, host: Host): { unmount(): void } {
+export function mount(
+  el: HTMLElement,
+  host: Host,
+): { unmount(): void; setPaused(paused: boolean): void } {
   const reduced = host.prefersReducedMotion();
   let raf = 0;
   let running = true;
@@ -200,6 +203,9 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
         if (sim.reviveQ) hud.showRevive(sim.reviveQ.prompt, sim.reviveChoices);
       },
       onChoose: (v) => {
+        // The revive panel is real DOM sitting under whatever the host raised.
+        // Answering it behind a sheet reports an item the child never saw.
+        if (paused) return;
         const answer = sim.reviveQ?.answer ?? "";
         hud.markChoice(v, answer);
         const ok = sim.answerRevive(v, clock);
@@ -226,6 +232,21 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     },
     reduced,
   );
+
+  /* ── the clock, and who is allowed to stop it ───────────────────────────
+   *
+   * MONUMENT had no pause of any kind. Behind the manual the sweep kept
+   * sweeping, the slot kept turning over — and worse, `dither` kept compounding,
+   * so the sheet that says "Waiting never costs you anything" was itself making
+   * the stone faster while it was open. Behind a host sheet the same, with no
+   * scrim of ours to catch the tap.
+   *
+   * Declared above `createInstructions` because the sheet closes over them.
+   */
+  let paused = false;
+  // The manual only lifts a pause it put on itself. A game the host had already
+  // paused must not be handed back running because a child closed the rules.
+  let heldForManual = false;
 
   // How to play. MONUMENT asks for two judgements in one tap — is this the
   // right value, and is it over the tower — and shipped saying only "Tap to set
@@ -270,6 +291,18 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       },
     ],
     reducedMotion: reduced,
+    // The one part of pausing the shared sheet cannot do for us. It holds the
+    // sound, the keys and the taps; it has no idea the sweep exists.
+    onOpen: () => {
+      if (paused) return;
+      heldForManual = true;
+      setPaused(true);
+    },
+    onClose: () => {
+      if (!heldForManual) return;
+      heldForManual = false;
+      setPaused(false);
+    },
   });
 
   /* ── palette blending ───────────────────────────────────────────────── */
@@ -693,6 +726,10 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
   let lastLatency = 0;
 
   function tap(evTs?: number): void {
+    // A host sheet is not the manual: the shared module's pointer swallow only
+    // covers its own scrim, so the game has to refuse the tap itself. A touch
+    // landing behind a paywall must not set a stone the child never aimed.
+    if (paused) return;
     audio.resume();
     if (sim.phase !== "sweep") return;
     if (drop.active) return;
@@ -740,6 +777,7 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     tap(e.timeStamp);
   };
   const onKey = (e: KeyboardEvent): void => {
+    if (paused) return;
     if (e.code === "Space" || e.code === "Enter" || e.code === "ArrowDown" || e.code === "KeyR") {
       e.preventDefault();
       if (sim.phase !== "sweep" && collapseAt < 0) restart();
@@ -799,6 +837,17 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
   function frame(now: number): void {
     if (!running) return;
     raf = requestAnimationFrame(frame);
+    if (paused) {
+      // Nothing steps, nothing renders: the WebGL front buffer holds its last
+      // frame, which is exactly what belongs under the scrim. `last` still
+      // tracks the real clock so the resume cannot arrive as one enormous
+      // frame — and `clock` does not advance at all, which is what keeps
+      // `questionAt`, `collapseAt` and the reported latency honest without any
+      // rebasing: they are all measured in this clock, and this clock did not
+      // pass.
+      last = now;
+      return;
+    }
     let real = (now - last) / 1000;
     last = now;
     if (real > 0.05) real = 0.05; // a tab restore must not teleport the sim
@@ -1154,9 +1203,38 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     };
   }
 
+  /* ── the pause ──────────────────────────────────────────────────────── */
+
+  /**
+   * Stop the monument's clock, or start it again.
+   *
+   * Idempotent in both directions: two pauses are one pause, and resuming a
+   * running game is nothing. The host calls this around its own sheets, and the
+   * manual calls it around itself.
+   *
+   * There is nothing to rebase on the way back. Everything MONUMENT measures —
+   * `questionAt`, `collapseAt`, the `ms` on every report — is measured against
+   * `clock`, which is an accumulator this loop advances and therefore did not
+   * advance while stopped. The single wall-clock value in the loop is `last`,
+   * and its whole job is to be reset here so the first frame back is one frame
+   * and not the length of the read.
+   */
+  function setPaused(on: boolean): void {
+    if (on === paused) return;
+    paused = on;
+    if (on) {
+      audio.suspend();
+      return;
+    }
+    last = performance.now();
+    audio.resume();
+  }
+
   /* ── teardown ───────────────────────────────────────────────────────── */
 
   return {
+    setPaused,
+
     unmount(): void {
       running = false;
       cancelAnimationFrame(raf);

@@ -36,6 +36,20 @@ export type Host = {
   transition?(kind: "level" | "run" | "boss", label?: string): void
 }
 
-export function mount(el: HTMLElement, host: Host): { unmount(): void } {
+export function mount(
+  el: HTMLElement,
+  host: Host,
+): {
+  unmount(): void
+  /**
+   * Stop the market's clock, or start it again.
+   *
+   * The host can put a sheet over a still-mounted pack — a purchase surface, a
+   * parent gate — and the SDK documents that the pack keeps running underneath
+   * it. Here that means bombs arriving and a live question's window draining
+   * behind something the child cannot see through. Idempotent both ways.
+   */
+  setPaused(paused: boolean): void
+} {
   return mountSlice(el, host)
 }
