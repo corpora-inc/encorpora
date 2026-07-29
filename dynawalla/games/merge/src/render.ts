@@ -651,8 +651,11 @@ export class Renderer {
   /* ---------------- instruments ---------------- */
 
   private hud(g: CanvasRenderingContext2D, l: Layout, game: Game, t: number): void {
-    const big = Math.max(24, Math.min(58, l.cell * 0.86));
-    const small = Math.max(10, Math.min(16, l.cell * 0.26));
+    // The type sizes come from the layout, not from `cell`, because the layout
+    // sized the boxes it kept clear of the notch and the host's corners with
+    // them. Recomputing them here is how those boxes would start lying.
+    const big = l.scoreSize;
+    const small = l.bestSize;
 
     // score
     const sx = l.scoreX;
@@ -704,7 +707,7 @@ export class Renderer {
 
     // level
     const lv = `${game.levelN}`;
-    const lvSize = Math.max(14, Math.min(26, l.cell * 0.42));
+    const lvSize = l.levelSize;
     const lx = l.landscape ? l.levelX : l.levelX - this.sprites.measure(lv, lvSize) / 2 - 12;
     this.sprites.drawText(g, "LV", lvSize * 0.6, [120, 145, 200], lx - lvSize * 0.85, l.levelY, 800);
     this.sprites.drawText(g, lv, lvSize, KEYC, lx, l.levelY, 900);

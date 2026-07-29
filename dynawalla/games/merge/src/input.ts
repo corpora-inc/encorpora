@@ -22,10 +22,20 @@ function hit(x: number, y: number, cx: number, cy: number, r: number): boolean {
   return dx * dx + dy * dy <= r * r;
 }
 
+/**
+ * `suspended` is the how-to-play panel being open.
+ *
+ * The panel's scrim swallows pointer events, but the keyboard is bound to
+ * `window` and does not care what is on top of the canvas: without this, Space
+ * and Enter drop a chip instead of pressing the panel's PLAY button — they are
+ * `preventDefault`ed here before the button ever sees them — and `R` silently
+ * restarts the run from behind a page of rules.
+ */
 export function bindInput(
   canvas: HTMLCanvasElement,
   game: Game,
   getLayout: () => Layout | null,
+  suspended: () => boolean,
 ): InputBinding {
   let aiming = false;
   let pointerId = -1;
@@ -43,6 +53,7 @@ export function bindInput(
   };
 
   const onDown = (e: PointerEvent) => {
+    if (suspended()) return;
     const l = getLayout();
     if (!l) return;
     const { x, y } = local(e);
@@ -85,6 +96,7 @@ export function bindInput(
   };
 
   const onMove = (e: PointerEvent) => {
+    if (suspended()) return;
     const l = getLayout();
     if (!l || game.phase !== "aim") return;
     const { x, y } = local(e);
@@ -97,6 +109,8 @@ export function bindInput(
   };
 
   const onUp = (e: PointerEvent) => {
+    // The drag state is always released, even suspended — a pointer that came
+    // up while the manual was opening must not leave the game aiming forever.
     if (!aiming || e.pointerId !== pointerId) return;
     aiming = false;
     pointerId = -1;
@@ -105,7 +119,7 @@ export function bindInput(
     } catch {
       /* already released */
     }
-    if (game.phase === "aim") game.drop();
+    if (!suspended() && game.phase === "aim") game.drop();
   };
 
   const onCancel = () => {
@@ -114,6 +128,7 @@ export function bindInput(
   };
 
   const onKey = (e: KeyboardEvent) => {
+    if (suspended()) return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
     game.audio.resume();
