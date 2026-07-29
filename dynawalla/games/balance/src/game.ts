@@ -21,8 +21,12 @@ import {
   rackCanMake,
   remainingFor,
 } from "./puzzle.ts";
+import {
+  createInstructions,
+  type Instructions,
+} from "../../../packs/shared/game-chrome/index.ts";
 import { specFromQuestion } from "./adapter.ts";
-import { computeLayout, armDistance, beamPoint, rackSlot } from "./layout.ts";
+import { layoutForViewport, armDistance, beamPoint, rackSlot } from "./layout.ts";
 import type { Layout } from "./layout.ts";
 import {
   makeBeam,
@@ -112,6 +116,7 @@ export class Game {
   private lastT = 0;
   private running = true;
   private ro: ResizeObserver | null = null;
+  private guide: Instructions;
 
   // measured, exposed for the playtest harness
   readonly stats = {
@@ -140,7 +145,64 @@ export class Game {
     this.renderer = new Renderer(this.canvas);
     this.cam.reduced = host.prefersReducedMotion();
 
-    this.L = computeLayout(1, 1, 9);
+    // How to play. COUNTERPOISE shipped with nothing telling a child what the
+    // brass is for: they were shown a tipped arm, a row of weights and a line
+    // of engraved arithmetic, and left to guess that dragging is the verb. The
+    // manual stays reachable during play, because the moment a child needs the
+    // rules is never the title screen.
+    this.guide = createInstructions(el, {
+      title: "COUNTERPOISE",
+      summary: [
+        "A big brass scale hangs in front of you. One side is heavier, so the arm tips.",
+        "Drag weights out of the row at the bottom until the arm sits flat.",
+      ],
+      sections: [
+        {
+          heading: "Playing",
+          lines: [
+            "The weights wait in a row along the bottom of the screen.",
+            "Drag one to the empty dish and let go. It drops in.",
+            "Each board has one place a weight can go. Aim for that place.",
+            "Drag a weight back out of the dish to take it off again.",
+            "On a keyboard: arrow keys pick a weight, Enter drops it, Backspace takes it back.",
+          ],
+        },
+        {
+          heading: "Flat means equal",
+          lines: [
+            "When the two sides weigh the same, the arm stops tipping and sits flat.",
+            "That flat arm is the equals sign. Both sides really do weigh the same.",
+            "The words cut into the stone say the same thing with numbers.",
+          ],
+        },
+        {
+          heading: "Sealed boxes",
+          lines: [
+            "Some boxes are shut and you cannot see inside.",
+            "Work out how heavy the box must be to make the arm flat.",
+            "Then drag that number onto the box to say it out loud.",
+          ],
+        },
+        {
+          heading: "The long arm",
+          lines: [
+            "Some arms have numbers marked along them.",
+            "A weight far out from the middle pushes down harder than the same weight near the middle.",
+            "A balloon does the opposite. It pulls up instead of down.",
+          ],
+        },
+        {
+          heading: "If it tips",
+          lines: [
+            "Nothing buzzes at you when you are wrong. The arm just swings the way you made it swing.",
+            "Take the weight off and try a different one. You can try as many times as you want.",
+          ],
+        },
+      ],
+      reducedMotion: host.prefersReducedMotion(),
+    });
+
+    this.L = layoutForViewport(1, 1, 9);
     for (let i = 0; i < 44; i++) {
       this.motes[i * 4] = Math.random();
       this.motes[i * 4 + 1] = Math.random();
@@ -179,7 +241,7 @@ export class Game {
     const h = Math.max(240, Math.round(r.height || window.innerHeight));
     // DPR capped at 2: a 3x phone would triple the fill cost for no visible gain.
     const dpr = Math.min(2, window.devicePixelRatio || 1);
-    this.L = computeLayout(w, h, this.spec ? this.spec.rack.length : 9);
+    this.L = layoutForViewport(w, h, this.spec ? this.spec.rack.length : 9);
     this.renderer.resize(w, h, dpr);
     this.seatAll(true);
   }
@@ -209,7 +271,7 @@ export class Game {
       });
       this.bodies.push(b);
     }
-    this.L = computeLayout(this.L.w, this.L.h, this.spec.rack.length);
+    this.L = layoutForViewport(this.L.w, this.L.h, this.spec.rack.length);
     this.seatAll(true);
 
     // Assemble: everything drops in from above with a stagger.
@@ -704,9 +766,11 @@ export class Game {
     this.idle = 0;
     const p = this.localPoint(e);
 
-    // sound toggle
-    const pad = this.L.hudPad;
-    if (p.x > this.L.w - pad - 34 && p.y < pad + 34) {
+    // sound toggle. Its box comes from the layout, which puts it clear of the
+    // host's top-right control — the old `y < pad + 34` test was underneath it,
+    // so the child's tap opened how-to-play and the speaker never toggled.
+    const s = this.L.sound;
+    if (Math.abs(p.x - s.x) < s.half && Math.abs(p.y - s.y) < s.half) {
       this.audio.setEnabled(!this.audio.isEnabled);
       this.audio.lift();
       return;
@@ -1220,6 +1284,7 @@ export class Game {
 
   unmount(): void {
     this.running = false;
+    this.guide.destroy();
     cancelAnimationFrame(this.raf);
     this.ro?.disconnect();
     window.removeEventListener("resize", this.onWinResize);
