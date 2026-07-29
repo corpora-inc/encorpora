@@ -7,6 +7,27 @@
 // LANDSCAPE (a tablet on its side, or a desktop) puts the furnace column down
 // the left and the workbench on the right, so the two things you alternate
 // between are never more than one saccade apart and neither ever moves.
+//
+// **The frame is not the screen.** `computeLayout` takes the safe rectangle,
+// and takes it as a REQUIRED argument. This game declares `viewport-fit=cover`
+// and draws its entire HUD on a canvas; `env(safe-area-inset-*)` is a CSS value
+// a canvas cannot read, so before this the SPARKS readout was laid out from the
+// raw viewport and its top sat under the notch. An optional argument would mean
+// a caller that forgets it still compiles and only fails on a device.
+//
+// **Two corners stay clear.** The host floats a 44px exit control over the
+// top-left and the how-to-play control over the top-right. It does not reserve
+// a band and this layout must not pretend it did — taking a strip off the top
+// would come straight out of the station rows, which are already only 36px on a
+// 320px phone. Instead the top of the frame is confined HORIZONTALLY to the
+// channel between the two corners: `chanX`..`chanR`. The header sits in it in
+// both orientations, and in landscape so does the station column, because there
+// the top row reaches the very top of the screen.
+//
+// The backdrop, the furnace body, the glow and the particles all still use the
+// full `w`/`h` and bleed under the notch, which is the point of `cover`.
+
+import { HOST_CONTROL, HOST_MARGIN } from "../../../../packs/shared/game-chrome/index.ts"
 
 export type Rect = { x: number; y: number; w: number; h: number }
 
@@ -14,10 +35,15 @@ export function hit(r: Rect, x: number, y: number, slop = 0): boolean {
   return x >= r.x - slop && x <= r.x + r.w + slop && y >= r.y - slop && y <= r.y + r.h + slop
 }
 
+/** Breathing room between a HUD edge and a host control. */
+const CHROME_GAP = 8
+
 export type Layout = {
   portrait: boolean
   w: number
   h: number
+  /** The safe rectangle this layout was built from. */
+  safe: Rect
   pad: number
   /** The station column, bottom-anchored: BELLOWS never moves. */
   chain: Rect
@@ -41,28 +67,41 @@ export type Layout = {
 
 const MAX_W = 1280
 
-export function computeLayout(w: number, h: number, revealed: number): Layout {
-  const portrait = h >= w * 0.98
+export function computeLayout(w: number, h: number, revealed: number, area: Rect): Layout {
+  const portrait = area.h >= area.w * 0.98
   // One scale factor for every type size and inset, tied to the short edge, so
   // a 320 px phone and a 1280 px desktop look like the same game rather than
   // the same game with different amounts of empty space.
-  const scale = Math.max(0.72, Math.min(1.55, Math.min(w, h) / (portrait ? 420 : 700)))
+  const scale = Math.max(
+    0.72,
+    Math.min(1.55, Math.min(area.w, area.h) / (portrait ? 420 : 700)),
+  )
   const pad = Math.round(14 * scale)
   const n = Math.max(1, revealed)
 
   // Centre the playfield on very wide screens instead of stretching it.
-  const cw = Math.min(w, MAX_W)
-  const ox = (w - cw) / 2
+  const cw = Math.min(area.w, MAX_W)
+  const ox = area.x + (area.w - cw) / 2
+
+  // The channel between the host's two 44px corners, never narrower than the
+  // centred playfield already was. On a 1920px desktop the playfield is already
+  // inset 320px and the corners cost nothing; on a 320px phone this is what
+  // moves the readout out from under the exit chevron.
+  const rail = HOST_MARGIN + HOST_CONTROL + CHROME_GAP
+  const chanX = Math.max(ox + pad, area.x + rail)
+  const chanR = Math.min(ox + cw - pad, area.x + area.w - rail)
 
   if (portrait) {
-    const headerH = Math.round(Math.min(h * 0.175, 152 * scale))
-    const anvilH = Math.round(Math.min(h * 0.35, 318 * scale))
-    const header: Rect = { x: ox + pad, y: pad, w: cw - pad * 2, h: headerH }
+    const headerH = Math.round(Math.min(area.h * 0.175, 152 * scale))
+    const anvilH = Math.round(Math.min(area.h * 0.35, 318 * scale))
+    // Only the header reaches into the host's band, so only the header narrows.
+    // The station column below it keeps the full width it always had.
+    const header: Rect = { x: chanX, y: area.y + pad, w: chanR - chanX, h: headerH }
     const chain: Rect = {
       x: ox + pad,
       y: header.y + header.h + pad * 0.5,
       w: cw - pad * 2,
-      h: h - headerH - anvilH - pad * 1.6 - 46 * scale,
+      h: area.h - headerH - anvilH - pad * 1.6 - 46 * scale,
     }
     const rowH = Math.min(chain.h / 6, 86 * scale)
     const rows: Rect[] = []
@@ -74,9 +113,11 @@ export function computeLayout(w: number, h: number, revealed: number): Layout {
         h: rowH - Math.round(5 * scale),
       })
     }
-    const anvil: Rect = { x: ox, y: h - anvilH, w: cw, h: anvilH }
+    // Bottom-anchored to the SAFE area, so the ingots a child taps sit above
+    // the home indicator rather than under it.
+    const anvil: Rect = { x: ox, y: area.y + area.h - anvilH, w: cw, h: anvilH }
     const slugH = Math.min(anvilH * 0.42, 120 * scale)
-    const slugY = h - slugH - pad
+    const slugY = area.y + area.h - slugH - pad
     const sgap = Math.round(9 * scale)
     const slugW = (cw - pad * 2 - sgap * 3) / 4
     const slugs: Rect[] = []
@@ -96,6 +137,7 @@ export function computeLayout(w: number, h: number, revealed: number): Layout {
       portrait,
       w,
       h,
+      safe: area,
       pad,
       chain,
       rowH,
@@ -122,7 +164,15 @@ export function computeLayout(w: number, h: number, revealed: number): Layout {
 
   // --- landscape -----------------------------------------------------------
   const colW = Math.min(cw * 0.46, 560 * scale)
-  const chain: Rect = { x: ox + pad, y: pad * 2.2, w: colW, h: h - pad * 3.2 - 104 * scale }
+  // In landscape the column reaches the top of the frame, so it — not just the
+  // header — has to start clear of the exit control. The whole workbench slides
+  // with it, which keeps the one-saccade spacing the two halves are built on.
+  const chain: Rect = {
+    x: chanX,
+    y: area.y + pad * 2.2,
+    w: colW,
+    h: area.h - pad * 3.2 - 104 * scale,
+  }
   const rowH = Math.min(chain.h / 6, 100 * scale)
   const rows: Rect[] = []
   for (let i = 0; i < 6; i++) {
@@ -134,10 +184,15 @@ export function computeLayout(w: number, h: number, revealed: number): Layout {
     })
   }
   const rx = chain.x + chain.w + pad * 1.6
-  const rw = ox + cw - pad - rx
-  const headerH = Math.min(h * 0.3, 190 * scale)
-  const header: Rect = { x: rx, y: pad * 2.2, w: rw, h: headerH }
-  const anvil: Rect = { x: rx, y: header.y + headerH + pad, w: rw, h: h - header.y - headerH - pad * 2.2 }
+  const rw = chanR - rx
+  const headerH = Math.min(area.h * 0.3, 190 * scale)
+  const header: Rect = { x: rx, y: chain.y, w: rw, h: headerH }
+  const anvil: Rect = {
+    x: rx,
+    y: header.y + headerH + pad,
+    w: rw,
+    h: area.y + area.h - header.y - headerH - pad * 2.2,
+  }
   const slugH = Math.min(anvil.h * 0.42, 132 * scale)
   const slugY = anvil.y + anvil.h - slugH
   const sgap = Math.round(10 * scale)
@@ -153,12 +208,13 @@ export function computeLayout(w: number, h: number, revealed: number): Layout {
     portrait,
     w,
     h,
+    safe: area,
     pad,
     chain,
     rowH,
     rows,
-    crucible: { x: chain.x + chain.w / 2, y: h - 26 * scale, r: 170 * scale },
-    furnaceBottom: h - 6 * scale,
+    crucible: { x: chain.x + chain.w / 2, y: area.y + area.h - 26 * scale, r: 170 * scale },
+    furnaceBottom: area.y + area.h - 6 * scale,
     header,
     readoutY: header.y + headerH * 0.5,
     anvil,
