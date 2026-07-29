@@ -15,6 +15,7 @@ import type { Juice } from "../core/juice.ts";
 import type { LineBatch } from "../render/draw.ts";
 import type { Rng } from "../math/rng.ts";
 import { MAX_BULLETS, MAX_HUSKS, MAX_PARTICLES } from "../core/config.ts";
+import type { HudLayout } from "./hudLayout.ts";
 
 export const enum Mode {
   Entering = 0,
@@ -165,6 +166,12 @@ export type World = {
   w: number;
   h: number;
   dpr: number;
+  /**
+   * Where the readable things go, recomputed on every resize and on every
+   * change of the safe-area insets. See `hudLayout.ts` — a canvas cannot read
+   * `env()`, so this is the only thing that knows about the notch.
+   */
+  hud: HudLayout;
 
   husks: Husk[];
   bullets: Bullet[];

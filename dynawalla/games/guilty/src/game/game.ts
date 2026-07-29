@@ -10,6 +10,11 @@
  * `./ship.ts`.
  */
 
+import {
+  createInstructions,
+  onInsetsChange,
+  safeRect,
+} from "../../../../packs/shared/game-chrome/index.ts";
 import type { GameHandle, Host, Question } from "../contract.ts";
 import { createAudio } from "../audio/audio.ts";
 import { beginFrame, fitCamera, makeCamera } from "../core/camera.ts";
@@ -64,6 +69,7 @@ import {
   stepBullets,
   updateShip,
 } from "./ship.ts";
+import { hudLayout } from "./hudLayout.ts";
 import { bannerFor, specFor } from "./waves.ts";
 import { Mode, Phase, freeHusk, makePools, type Husk, type World } from "./world.ts";
 
@@ -101,6 +107,7 @@ export function mount(
     w: 1,
     h: 1,
     dpr: 1,
+    hud: hudLayout(1, 1, { x: 0, y: 0, w: 1, h: 1 }),
     ...makePools(),
     ship: {
       x: 0,
@@ -189,7 +196,11 @@ export function mount(
     canvas.style.width = `${w}px`;
     canvas.style.height = `${h}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // The camera is fitted to the whole GLASS: the trench, the gate, the husks
+    // and the ship are supposed to bleed under the notch, which is why
+    // `viewport-fit=cover` is set at all. Only the type moves.
     fitCamera(world.cam, w, h);
+    world.hud = hudLayout(w, h, safeRect(w, h));
     bakeScene(w, h);
     vignette = bakeVignette(w, h);
   }
@@ -197,6 +208,12 @@ export function mount(
   const observer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => resize()) : null;
   observer?.observe(el);
   window.addEventListener("resize", resize);
+  // Rotation swaps the insets and iPadOS changes them when the pack is resized
+  // in Split View, neither of which is guaranteed to change the canvas size. A
+  // layout read once at mount is right until the first turn of the tablet.
+  const stopInsets = onInsetsChange(() => {
+    resize();
+  });
   resize();
   seedMotes(world, 150);
 
@@ -867,7 +884,9 @@ export function mount(
     raf = requestAnimationFrame(frame);
     const realDt = Math.min(0.05, Math.max(0.0005, (now - last) / 1000));
     last = now;
-    if (world.paused) return;
+    // The manual freezes the trench. A child who went to read the rules must
+    // not come back to a life they lost while reading them.
+    if (world.paused || guide.isOpen) return;
 
     const t0 = performance.now();
     update(realDt);
@@ -937,6 +956,81 @@ export function mount(
     },
   });
 
+  /* ------------------------------------------------------- how to play */
+  //
+  // GUILTY shipped with no rules anywhere. A child was shown a trench, four
+  // sinking shapes with numbers on them, and the word GUILTY — and the rule
+  // that makes the game a maths game rather than a shooting game, that three of
+  // those four numbers are mistakes somebody really makes and you must destroy
+  // only the true one, was never stated. Shooting an innocent turns it hostile,
+  // which reads as the game being unfair rather than as a punishment for
+  // guessing.
+  //
+  // The panel stays reachable during play, and opening it freezes the descent:
+  // a child who goes to read the rules must not lose a life while reading them.
+  const guide = createInstructions(el, {
+    title: "GUILTY",
+    summary: [
+      "A sum hangs over the trench. Four shells sink out of it, each with a different answer on it.",
+      "Only one answer is right. Shoot that one. Shoot a wrong one and it turns on you.",
+    ],
+    sections: [
+      {
+        heading: "How to play",
+        lines: [
+          "Read the sum at the top and work out the answer yourself.",
+          "Four shells sink towards the line above your ship. Each shell carries a number.",
+          "Find the shell with your answer on it and shoot it. The other three scatter and you are safe.",
+          "Do not let a shell reach the line. If one crosses it, you lose a life.",
+        ],
+      },
+      {
+        heading: "The wrong answers are real mistakes",
+        lines: [
+          "The three wrong numbers are not random. Each one is what you get if you make a mistake people really make.",
+          "So a wrong number can look very close to the right one. Work the sum out properly instead of picking the one that looks about right.",
+          "Shoot a wrong shell and it turns red and starts shooting back. That is why guessing is a bad plan.",
+        ],
+      },
+      {
+        heading: "Moving and shooting",
+        lines: [
+          "On a touch screen, drag anywhere to steer. Your finger does not have to be on the ship, so your hand never covers what you are aiming at.",
+          "With a mouse, just move it. The ship follows the pointer.",
+          "The arrow keys and A and D work too.",
+          "Your gun fires by itself. It stops while you are sliding fast and starts again the moment you settle, so aim first, then hold still.",
+        ],
+      },
+      {
+        heading: "Deep focus",
+        lines: [
+          "Every right answer fills the thin bar along the bottom of the screen.",
+          "When it is full, tap once quickly, or press the space bar, to slow the whole trench down.",
+          "Use it when the shells are close to the line and you need a moment to think.",
+        ],
+      },
+      {
+        heading: "Waves and lives",
+        lines: [
+          "You start with three lives. Clear a wave and the next one sinks faster.",
+          "Every sixth wave is a big one.",
+          "Get a lot right in a row and each one is worth more.",
+        ],
+      },
+      {
+        heading: "Keyboard",
+        lines: [
+          "Left and right arrows, or A and D, steer.",
+          "Space uses deep focus. M turns the sound off. P pauses.",
+        ],
+      },
+    ],
+    onClose: (): void => {
+      last = performance.now();
+    },
+    reducedMotion: reduced,
+  });
+
   /* --------------------------------------------------------------- the bot */
 
   let bot: ((dt: number) => void) | null = null;
@@ -956,6 +1050,8 @@ export function mount(
     unmount() {
       running = false;
       cancelAnimationFrame(raf);
+      guide.destroy();
+      stopInsets();
       input.detach();
       observer?.disconnect();
       window.removeEventListener("resize", resize);
