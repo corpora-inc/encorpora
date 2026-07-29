@@ -9,6 +9,22 @@
 // **The lane holds ninety-six cells.** That is the coil the game is named for:
 // a full lane is nine tens and six ones of brass, and every lump of slag takes
 // two of them away for good until an exact cut smashes it.
+//
+// **The room is not the viewport.** Every game here declares `viewport-fit=cover`,
+// so the canvas reaches under the notch and the home indicator, and the host
+// floats two 44px controls over the top corners — exit on the left, how-to-play
+// on the right. The alley's stone may bleed anywhere it likes; the carved
+// problem, the levers and the links a child taps may not. Both facts arrive
+// here as geometry: the safe rect as `area`, the two corners as an inset on the
+// recess.
+
+import {
+  HOST_CONTROL,
+  HOST_MARGIN,
+  type Insets,
+  safeInsets,
+  safeRect,
+} from "../../../../packs/shared/game-chrome/index.ts"
 
 /** The lane's ceiling, whatever the viewport offers. The title, literally. */
 export const LANE_CELLS = 96
@@ -34,7 +50,16 @@ export type Layout = {
   h: number
   /** Small screens get a tighter wall and one fewer lane row. */
   compact: boolean
+  /** The stone plate. Decorative, and free to run under the host's corners. */
   wall: Rect
+  /**
+   * The carved problem, with the lit demand. This is the whole instruction of
+   * the game, so it is the one rect that is inset away from the host's two
+   * corners — see `CORNER`.
+   */
+  recess: Rect
+  /** The brick courses along the foot of the wall. */
+  courses: Rect
   lane: Lane
   levers: Rect
   shear: Rect
@@ -45,19 +70,71 @@ function clamp(v: number, lo: number, hi: number): number {
   return Math.max(lo, Math.min(hi, v))
 }
 
-export function layout(w: number, h: number): Layout {
-  const compact = Math.min(w, h) < 560
-  const pad = clamp(Math.min(w, h) * 0.035, 10, 26)
+/**
+ * How far in from either edge of the safe area the host's corner controls
+ * reach, plus two pixels so nothing is decided on a knife edge.
+ *
+ * Insetting horizontally rather than reserving a band is deliberate: a 67px
+ * strip off the top is a twelfth of a 568px phone, and reserving one broke SKY
+ * LEDGER's own layout outright. Between the two corners a 320px phone still
+ * leaves 212px of centre strip, which costs the recess a little type size and
+ * costs the alley no height at all.
+ */
+const CORNER = HOST_MARGIN + HOST_CONTROL + 2
 
-  const wallH = clamp(h * (compact ? 0.26 : 0.28), 118, 240)
-  const leverH = clamp(h * 0.13, 70, 118)
+/**
+ * Where everything is, inside `area`.
+ *
+ * `area` is the safe rectangle — `safeRect` from `packs/shared/game-chrome` —
+ * and it is REQUIRED, deliberately. Made optional, a caller that forgets it
+ * still compiles and quietly carves the problem under the notch, discoverable
+ * only on a device with one. Required, forgetting it does not build.
+ *
+ * The full-bleed stone behind all of this is drawn straight onto the canvas by
+ * the scene and is not laid out here; it is what a child must read or touch
+ * that lives inside `area`.
+ */
+export function layout(w: number, h: number, area: Rect): Layout {
+  const compact = Math.min(area.w, area.h) < 560
+  const pad = clamp(Math.min(area.w, area.h) * 0.035, 10, 26)
 
-  const wall: Rect = { x: pad, y: pad, w: w - pad * 2, h: wallH }
-  const levers: Rect = { x: pad, y: h - leverH - pad, w: w - pad * 2, h: leverH }
+  const wallH = clamp(area.h * (compact ? 0.26 : 0.28), 118, 240)
+  const leverH = clamp(area.h * 0.13, 70, 118)
+
+  const wall: Rect = { x: area.x + pad, y: area.y + pad, w: area.w - pad * 2, h: wallH }
+  const levers: Rect = {
+    x: area.x + pad,
+    y: area.y + area.h - leverH - pad,
+    w: area.w - pad * 2,
+    h: leverH,
+  }
+
+  // The recess sits high in the wall, which is exactly where the host's exit
+  // and how-to-play controls are, so it is squeezed between them. Nothing else
+  // in the alley reaches that high.
+  const clearL = area.x + CORNER
+  const clearR = area.x + area.w - CORNER
+  const recessL = Math.max(wall.x + wall.w * 0.045, clearL)
+  const recessR = Math.min(wall.x + wall.w * 0.955, clearR)
+  const recess: Rect = {
+    x: recessL,
+    y: wall.y + wall.h * 0.12,
+    w: Math.max(60, recessR - recessL),
+    h: wall.h * 0.52,
+  }
+
+  // The courses are low enough in the wall to clear the corners on their own —
+  // the test says so at every viewport rather than this comment.
+  const courses: Rect = {
+    x: wall.x + wall.w * 0.045,
+    y: wall.y + wall.h * 0.72,
+    w: wall.w * 0.91,
+    h: wall.h * 0.2,
+  }
 
   const laneY = wall.y + wall.h + pad * 0.9
   const laneH = Math.max(80, levers.y - pad * 0.9 - laneY)
-  const laneW = w - pad * 2
+  const laneW = area.w - pad * 2
 
   // Sixteen cells to a row, six rows: ninety-six, which is the coil the game is
   // named for and exactly the lane it gets. Capping the columns rather than
@@ -69,7 +146,7 @@ export function layout(w: number, h: number): Layout {
   const rows = Math.max(2, Math.min(7, Math.floor(laneH / rowPitch)))
 
   const lane: Lane = {
-    x: pad,
+    x: area.x + pad,
     y: laneY,
     w: laneW,
     h: laneH,
@@ -95,7 +172,19 @@ export function layout(w: number, h: number): Layout {
     h: levers.h,
   }
 
-  return { w, h, compact, wall, lane, levers, shear, furnace }
+  return { w, h, compact, wall, recess, courses, lane, levers, shear, furnace }
+}
+
+/**
+ * The layout the RENDERER uses, and the only one it may use.
+ *
+ * The insets are read here, once, rather than by every caller — which is what
+ * makes the clearance test worth having: it exercises this function, the same
+ * path `Scene.resize` takes, so it fails both when the corner inset goes and
+ * when the safe area stops being plumbed through.
+ */
+export function viewLayout(w: number, h: number, insets: Insets = safeInsets()): Layout {
+  return layout(w, h, safeRect(w, h, insets))
 }
 
 /**

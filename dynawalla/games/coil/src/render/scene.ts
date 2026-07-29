@@ -14,7 +14,7 @@ import type { Round } from "../game/round.ts"
 import { coilOf, linkValue } from "../game/place.ts"
 import { COURSE } from "../game/session.ts"
 import { SLAG_CELLS } from "../game/board.ts"
-import { type Layout, type Lane, cellAt, layout as computeLayout } from "./layout.ts"
+import { type Layout, type Lane, cellAt, viewLayout } from "./layout.ts"
 import { KIND_DUST, KIND_FILING, KIND_SPARK, Particles } from "./particles.ts"
 import {
   BONE,
@@ -212,7 +212,7 @@ export class Scene {
     if (!ctx) throw new Error("coil: no 2d context")
     this.canvas = canvas
     this.ctx = ctx
-    this.layout = computeLayout(Math.max(1, host.clientWidth), Math.max(1, host.clientHeight))
+    this.layout = viewLayout(Math.max(1, host.clientWidth), Math.max(1, host.clientHeight))
     this.resize(host.clientWidth, host.clientHeight)
   }
 
@@ -229,7 +229,7 @@ export class Scene {
     this.sized = { w: width, h: height }
     this.canvas.width = Math.round(width * dpr)
     this.canvas.height = Math.round(height * dpr)
-    this.layout = computeLayout(width, height)
+    this.layout = viewLayout(width, height)
     this.lattice = this.buildLattice(width, height)
     return this.layout
   }
@@ -327,22 +327,28 @@ export class Scene {
 
     // The recess: the one cold light. It brightens as the pending cut
     // approaches the demand, which is the only continuous feedback in the game.
+    //
+    // Its rectangle comes from the layout, not from the wall, because it is the
+    // one thing here that has to dodge the host's two corner controls — the
+    // stone plate above may run under them, the carved problem may not. The
+    // cradle still narrows it rightward to make room for the ingot, and the
+    // ingot now sits INSIDE the recess rather than beside it, so it is clear of
+    // the how-to-play control too.
     const cradle = s.round?.mode === "fill" && s.round.ingot > 0
-    const recessH = r.h * 0.52
-    const recessW = r.w * (cradle ? 0.6 : 0.91)
-    const rx = r.x + r.w * 0.045
-    const ry = r.y + r.h * 0.12
+    const rec = this.layout.recess
+    const recessW = rec.w * (cradle ? 0.62 : 1)
     const glow = 0.24 + s.seatPulse * 0.5
     ctx.fillStyle = withAlpha(CELESTIAL_DIM, 0.12 + glow * 0.2)
-    roundRect(ctx, rx, ry, recessW, recessH, 8)
+    roundRect(ctx, rec.x, rec.y, recessW, rec.h, 8)
     ctx.fill()
     ctx.strokeStyle = withAlpha(CELESTIAL, 0.32 + s.seatPulse * 0.5)
     ctx.lineWidth = 1.5
     ctx.stroke()
 
-    this.drawPrompt(s, rx, ry, recessW, recessH)
-    if (cradle) this.drawIngot(s, r.x + r.w * 0.815, ry + recessH * 0.5, r.w * 0.3)
-    this.drawCourses(s, r.x + r.w * 0.045, r.y + r.h * 0.72, r.w * 0.91, r.h * 0.2)
+    this.drawPrompt(s, rec.x, rec.y, recessW, rec.h)
+    if (cradle) this.drawIngot(s, rec.x + rec.w * 0.82, rec.y + rec.h * 0.5, rec.w * 0.33)
+    const cs = this.layout.courses
+    this.drawCourses(s, cs.x, cs.y, cs.w, cs.h)
     ctx.restore()
   }
 

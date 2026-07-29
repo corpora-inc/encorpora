@@ -25,6 +25,7 @@
 // cut smashes two lumps on its way to the wall. The board you have to play on
 // is the board you made.
 
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import type { Host } from "./contract.ts"
 import { Audio } from "./audio/audio.ts"
 import { SLAG_CELLS, buried as buriedCount } from "./game/board.ts"
@@ -45,6 +46,60 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
   const scene = new Scene(container)
   const audio = new Audio()
   let reduced = host.prefersReducedMotion()
+
+  // How to play. The wall says SHEAR OFF THE LIT NUMBER and nothing anywhere
+  // said that a second tap opens a drum into ten beads — which is the borrow,
+  // and the only way to cut 25 off a coil whose tail is two beads. A child who
+  // has not been told that decides the game is broken and leaves. The manual
+  // stays reachable during play, because the moment the rules are needed is
+  // never the title.
+  const guide = createInstructions(el, {
+    title: "THE COIL OF NINETY-SIX",
+    summary: [
+      "A brass chain crawls down the alley. The wall lights up one number.",
+      "Cut that exact number off the end of the chain.",
+    ],
+    sections: [
+      {
+        heading: "How to cut",
+        lines: [
+          "Tap a link. The jaws move there. That is where the cut will happen.",
+          "Pull the SHEAR lever. Everything after the jaws comes off.",
+          "Take as long as you like. There is no timer and nothing is rushing you.",
+        ],
+      },
+      {
+        heading: "What the links are worth",
+        lines: [
+          "A small bead is 1.",
+          "A ribbed drum is 10.",
+          "A ring with a hole in it is 100.",
+          "A tall tower is 1000.",
+          "The chain reads biggest first, the same way you write a number.",
+        ],
+      },
+      {
+        heading: "Making change",
+        lines: [
+          "Say the chain is 72 and the wall wants 25.",
+          "The end of the chain has only 2 beads. You cannot cut 25 off there.",
+          "Tap a link twice to open it. One drum opens into ten beads.",
+          "Now count back through those beads to find the right place to cut.",
+          "Opening links is free. Open as many as you want.",
+        ],
+      },
+      {
+        heading: "If you cut in the wrong place",
+        lines: [
+          "The piece does not fit the wall. It drops in the alley as a lump.",
+          "Lumps take up room. With less room, the front of your chain gets buried.",
+          "A cut that is exactly right smashes two lumps on its way to the wall.",
+          "Tap the FURNACE to melt every lump. It eats the chain you are holding.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
 
   const session = createSession({
     nextQuestion: () => {
@@ -416,6 +471,7 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       observer?.disconnect()
       media?.removeEventListener("change", onMedia)
       audio.dispose()
+      guide.destroy()
       scene.destroy()
       container.remove()
     },
