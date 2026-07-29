@@ -63,6 +63,13 @@ function styleSheet(reduced: boolean): string {
 .dwc-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
   background:rgba(4,6,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   font-family:${FONT};color:#f2eee4;overscroll-behavior:contain}
+/* The panel is hidden with the \`hidden\` attribute, and an author \`display\`
+   BEATS the user agent's \`[hidden]{display:none}\` — so without this rule the
+   scrim is painted over the game from the moment it mounts, at z-index 40,
+   swallowing every touch. \`doClose\` cannot rescue it either: it returns early
+   while \`open\` is false, so the PLAY button does nothing. Verified in headless
+   Chrome: with the attribute set, computed display was \`flex\`. */
+.dwc-scrim[hidden]{display:none}
 .dwc-panel{position:relative;max-width:min(46rem,92vw);max-height:82vh;overflow-y:auto;overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid rgba(255,255,255,.14);
   background:linear-gradient(#141a26,#0d111a);box-shadow:0 24px 70px rgba(0,0,0,.6);

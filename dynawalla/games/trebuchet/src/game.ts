@@ -27,7 +27,17 @@ import {
 import { Rings } from './fx/rings.ts'
 import { Trail } from './fx/trail.ts'
 import { Backdrop } from './render/backdrop.ts'
-import { drawHud, hitBtn, hudButtons, rackLayout, type Btn, type HudState } from './render/hud.ts'
+import { safeRect } from '../../../packs/shared/game-chrome/index.ts'
+import {
+  dialNumeralBox,
+  drawHud,
+  hitBtn,
+  hudLayout,
+  rackLayout,
+  type Btn,
+  type HudLayout,
+  type HudState,
+} from './render/hud.ts'
 import {
   ARMED_DEG,
   RELEASE_DEG,
@@ -42,7 +52,7 @@ import {
   drawTrebuchet,
   drawWall,
 } from './render/pieces.ts'
-import { C, font, worldText, type Frame } from './render/theme.ts'
+import { C, font, type Frame } from './render/theme.ts'
 import {
   G,
   LAUNCH_H,
@@ -180,6 +190,19 @@ export class TrebuchetGame {
 
   // hud
   private btns: Btn[] = []
+  /**
+   * True while something is over the game — today, the how-to-play panel.
+   *
+   * A sheet the host or the chrome raises is not a pause: the rAF loop is still
+   * running and `window` still has this game's key handlers on it, so a child
+   * reading the rules with a keyboard fires the loaded boulder with the space
+   * bar. Worse, the answer clock keeps running behind the sheet and the time
+   * spent READING gets reported as time spent THINKING, which is what feeds the
+   * difficulty. Both stop here.
+   */
+  private blocked: () => boolean = () => false
+  /** The HUD's geometry, re-derived from the SAFE rect on every resize. */
+  private hud: HudLayout = hudLayout(320, 240, { x: 0, y: 0, w: 320, h: 240 }, false)
   private clearT = -1
   private introT = 0
   private muted = false
@@ -248,6 +271,19 @@ export class TrebuchetGame {
 
   /* ------------------------------------------------------------ lifecycle */
 
+  /**
+   * Tell the game when something is covering it, and start the answer clock
+   * again when it goes away.
+   */
+  setInputGuard(blocked: () => boolean): void {
+    this.blocked = blocked
+  }
+
+  /** The sheet is gone: the child is looking at the question again, now. */
+  restartAnswerClock(): void {
+    this.questionShownAt = performance.now()
+  }
+
   unmount(): void {
     this.running = false
     cancelAnimationFrame(this.raf)
@@ -272,9 +308,13 @@ export class TrebuchetGame {
     this.h = h
     this.canvas.width = Math.round(w * this.dpr)
     this.canvas.height = Math.round(h * this.dpr)
-    this.unit = clamp(Math.min(w, h) * 0.115, 42, 82)
+    // The notch, the home indicator and the rounded corners are re-measured
+    // here, not once at mount: a rotation swaps top/bottom for left/right, and
+    // Split View changes them without the game ever unmounting.
+    this.hud = hudLayout(w, h, safeRect(w, h), this.cfg.loft)
+    this.unit = this.hud.unit
     this.backdrop.resize(w, h, this.dpr)
-    this.btns = hudButtons(w, h, this.unit, this.cfg.loft)
+    this.btns = this.hud.buttons
   }
 
   /* ---------------------------------------------------------------- waves */
@@ -345,7 +385,9 @@ export class TrebuchetGame {
       sc.push(this.cosmetic.range(-20, worldX(FIELD_MAX) + 20), this.cosmetic.range(0.3, 1.1))
     }
     this.scrub = new Float32Array(sc)
-    this.btns = hudButtons(this.w, this.h, this.unit, cfg.loft)
+    // The loft lever appears mid-run, and it changes where mute sits.
+    this.hud = hudLayout(this.w, this.h, this.hud.area, cfg.loft)
+    this.btns = this.hud.buttons
     this.audio.horn(true)
     if (!this.reduced && n % 3 === 0 && this.flash.add(0.16, 0.22, 0.5, 0.2, 1.2)) {
       this.backdrop.strike(this.cosmetic)
@@ -378,6 +420,7 @@ export class TrebuchetGame {
   }
 
   private onPointerDown = (e: PointerEvent): void => {
+    if (this.blocked()) return
     this.audio.resume()
     const p = this.pointerPos(e)
     const b = hitBtn(this.btns, p.x, p.y)
@@ -423,11 +466,12 @@ export class TrebuchetGame {
 
   private onWheel = (e: WheelEvent): void => {
     e.preventDefault()
+    if (this.blocked()) return
     this.setDial(this.dial + (e.deltaY > 0 ? -1 : 1))
   }
 
   private key(e: KeyboardEvent, down: boolean): void {
-    if (!down) return
+    if (!down || this.blocked()) return
     const big = e.shiftKey ? 10 : 1
     switch (e.key) {
       case 'ArrowLeft':
@@ -514,9 +558,7 @@ export class TrebuchetGame {
     this.liveIdx = live.map((x) => x.i)
     const b = this.activeBoulder
     return {
-      w: this.w,
-      h: this.h,
-      unit: this.unit,
+      layout: this.hud,
       equation: b ? b.q.prompt : '',
       rack: live.map((x) => x.r.q.prompt),
       rackActive: live.findIndex((x) => x.i === this.activeIdx),
@@ -1077,9 +1119,15 @@ export class TrebuchetGame {
     const wide = this.w / this.h >= 1.25
     const pts: Array<{ x: number; y: number }> = []
     // Keep the field clear of the two things pinned to the glass: the equation
-    // at the top and the firing controls at the bottom right.
-    const padTop = this.unit * 2.5
-    const strip = this.unit * 2.5
+    // at the top and the firing controls at the bottom right. Both are measured
+    // from the safe rect now, so both pads carry the inset that pushed them in,
+    // and the top pad also carries however far the stack had to drop to clear
+    // the host's corners — otherwise the tallest keep in the wave is framed
+    // straight into the rack row. Where the stack did not move (tablets, and
+    // phones held sideways) `stackShift` is zero and this is byte-for-byte the
+    // framing the game shipped with.
+    const padTop = this.unit * 2.5 + this.hud.area.y + this.hud.stackShift
+    const strip = this.h - (this.hud.area.y + this.hud.area.h) + this.unit * 2.5
     const gf = clamp(1 - strip / this.h - 0.02, 0.58, 0.84)
     if (this.phase === 'flight' && this.shot) {
       // follow with lead: look where the shot is going, not where it is
@@ -1210,6 +1258,9 @@ export class TrebuchetGame {
     ctx.fillRect(0, 0, w, h)
     ctx.restore()
 
+    if (this.phase === 'aim' || this.phase === 'intro' || this.phase === 'windup') {
+      this.drawDialNumeral(ctx)
+    }
     drawHud(ctx, this.hudState(), this.btns, this.wallTime)
   }
 
@@ -1257,22 +1308,37 @@ export class TrebuchetGame {
       ctx.globalAlpha = a
     }
 
-    // the dial numeral rides the marker
+    ctx.restore()
+  }
+
+  /**
+   * The dialled number, drawn on the glass rather than in the world.
+   *
+   * It rides the aim marker, so its position comes from the camera — but the
+   * camera does not know about the notch or the host's two corners, and this is
+   * the one number the whole game is about. `dialNumeralBox` puts it where the
+   * marker is and keeps it where it can be read.
+   */
+  private drawDialNumeral(ctx: CanvasRenderingContext2D): void {
+    const a = this.aimEmphasis
+    if (a < 0.02) return
+    const s = this.cam.ppm * this.cam.zoom
+    const anchor = this.cam.toScreen(worldX(this.dial), 3.2, { w: this.w, h: this.h })
+    const text = String(this.dial)
+    const box = dialNumeralBox(anchor.x, anchor.y, s, text.length, this.hud)
     const pop = 1 + (1 - easeOutBack(clamp01(this.dialPop))) * 0.24
-    worldText(ctx, s, x, 3.2, (c) => {
-      const size = Math.max(20, Math.min(46, s * 3.4))
-      c.font = font(size, 900)
-      c.textAlign = 'center'
-      c.textBaseline = 'bottom'
-      c.save()
-      c.scale(pop, pop)
-      c.lineWidth = 4
-      c.strokeStyle = 'rgba(3,5,13,0.85)'
-      c.strokeText(String(this.dial), 0, 0)
-      c.fillStyle = C.steel
-      c.fillText(String(this.dial), 0, 0)
-      c.restore()
-    })
+    ctx.save()
+    ctx.globalAlpha = a
+    ctx.translate(box.cx, box.baseline)
+    ctx.scale(pop, pop)
+    ctx.font = font(box.size, 900)
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'bottom'
+    ctx.lineWidth = 4
+    ctx.strokeStyle = 'rgba(3,5,13,0.85)'
+    ctx.strokeText(text, 0, 0)
+    ctx.fillStyle = C.steel
+    ctx.fillText(text, 0, 0)
     ctx.restore()
   }
 
