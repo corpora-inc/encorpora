@@ -11,7 +11,7 @@
 // So this module splits the frame in two:
 //
 //   * the WORLD — horizon, sky, dust, figures — laid out on the full canvas;
-//   * the READABLE things — the slate, the three shots, the tally — laid out
+//   * the READABLE things — the slate, the three shots, the bag — laid out
 //     inside `area`, the safe rectangle, and clear of the host's two corners.
 //
 // The host paints an exit control top-LEFT and a how-to-play control top-RIGHT,
@@ -45,9 +45,21 @@ export type Layout = {
   /** Radius of one shot pip, and the spacing between their centres. */
   readonly pip: number
   readonly pipGap: number
-  /** The call tally, small, in brass, above the slate. */
-  readonly tally: Rect
-  readonly tallyPx: number
+  /**
+   * The chute, immediately ABOVE the slate: where a thrown-away claim goes.
+   *
+   * It is deliberately adjacent to the slate rather than at the top of the frame.
+   * The top of the frame is where the host paints its exit and how-to-play
+   * controls, and a discard target up there would either sit under one of them or
+   * force a reserved band — which costs a twelfth of a 568px phone and broke a
+   * sibling game's layout. Adjacency also reads better: the gesture is a flick
+   * across the thing being judged, so the two destinations belong beside it.
+   */
+  readonly chute: Rect
+  /** The bag, below the shots: where a kept claim goes, and where the score is. */
+  readonly bag: Rect
+  /** Type size for the coin count on the bag. */
+  readonly bagPx: number
 }
 
 /** The insets `area` was cut from. Exact: `safeRect` is the only thing that cuts it. */
@@ -81,7 +93,6 @@ export function layoutFor(w: number, h: number, area: Rect): Layout {
   const horizon = h * 0.6
 
   const slateW = Math.min(area.w * 0.88, 640)
-  const slateH = slateW * 0.3
   const slateX = area.x + (area.w - slateW) / 2
 
   const pip = Math.max(3.5, h * 0.0075)
@@ -90,40 +101,54 @@ export function layoutFor(w: number, h: number, area: Rect): Layout {
   /** From the bottom of the slate down to the centre of the pips. */
   const shotsDrop = pip * 5
 
-  const tallyPx = Math.round(Math.max(15, h * 0.026))
+  const bagPx = Math.round(Math.max(15, h * 0.03))
 
-  // The host's chrome, rebuilt from `area` rather than measured again, so the
-  // game and the host cannot end up disagreeing about where the buttons are.
+  // The host's chrome, rebuilt from `area` rather than measured again, so the game
+  // and the host cannot end up disagreeing about where the buttons are.
   const insets = insetsOf(w, h, area)
   const exit = exitRect(insets)
   const help = helpRect(w, insets)
   const chromeBottom = Math.max(exit.y + exit.h, help.y + help.h)
   const passesBetween =
     slateX >= exit.x + exit.w + HOST_MARGIN && slateX + slateW <= help.x - HOST_MARGIN
-  const ceiling = passesBetween ? area.y : chromeBottom + HOST_MARGIN
+  const ceiling = (passesBetween ? area.y : chromeBottom + HOST_MARGIN) + HOST_PROGRESS_H
 
-  // Centred four tenths down the safe area — high enough that a thumb is not
-  // over the statement it is about to judge.
-  let slateY = Math.max(ceiling, area.y + area.h * 0.4 - slateH / 2)
-  // ...and lifted back up if the shots would fall off the safe bottom. The
-  // ceiling still wins: a slate under the exit button is worse than pips near
-  // the home indicator, and on no shape the fleet has does it come to that.
-  const overflow = slateY + slateH + shotsDrop + pip - (area.y + area.h)
-  if (overflow > 0) slateY = Math.max(ceiling, slateY - overflow)
+  /**
+   * THE VERTICAL BUDGET, and why the slate's height is now capped by it.
+   *
+   * The slate is `slateW × 0.3`, and in landscape on a phone that is enormous relative
+   * to the height: at 568×320 with a portrait notch the safe area is 239 px tall and an
+   * uncapped slate wanted 150 of them. There was room for that when the only other
+   * things were three 7 px pips; there is not now that there is a chute above and a bag
+   * below, and a bag that had to ride up onto the shots to fit is a bag pointing at the
+   * wrong place.
+   *
+   * So the slate takes at most a third of the budget and everything else is measured
+   * from it. The three shares below sum to well under one, which is what makes the
+   * overflow correction below always resolvable — a clamp that cannot succeed is how a
+   * layout ends up outside the safe area on exactly one device shape.
+   */
+  const budget = Math.max(1, area.y + area.h - ceiling)
+  const slateH = Math.min(slateW * 0.3, budget * 0.34)
+  const gutterH = Math.max(10, slateH * 0.2)
+  const bagH = Math.max(bagPx * 1.6, slateH * 0.62)
+  /** Everything under the slate: the drop to the pips, the pips, and the bag. */
+  const below = shotsDrop + pip * 3 + bagH
+
+  // Centred four tenths down the safe area — high enough that a thumb is not over the
+  // statement it is about to judge. The chute has to fit above it, so the roof is the
+  // host's chrome plus one gutter.
+  const roof = ceiling + gutterH
+  let slateY = Math.max(roof, area.y + area.h * 0.4 - slateH / 2)
+  // ...and lifted back up if the bag would fall off the safe bottom. The roof still
+  // wins: a slate under the exit button is worse than a bag near the home indicator,
+  // and with the budget above it never comes to that.
+  const overflow = slateY + slateH + below - (area.y + area.h)
+  if (overflow > 0) slateY = Math.max(roof, slateY - overflow)
 
   const cx = area.x + area.w / 2
   const shotsY = slateY + slateH + shotsDrop
-
-  // The tally sits above the slate, and gives way to it: when the slate has
-  // been pushed clear of the corners there may be very little room up there,
-  // and the tally is the thing that yields.
-  const tallyY = Math.max(
-    area.y + HOST_PROGRESS_H,
-    Math.min(area.y + area.h * 0.055, slateY - tallyPx * 1.5),
-  )
-  // Three digits' worth, generously: this box exists to be tested against the
-  // host's corners, so it errs wide.
-  const tallyW = tallyPx * 3
+  const bagW = Math.max(bagH, Math.min(slateW * 0.3, bagPx * 4))
 
   return {
     w,
@@ -133,7 +158,8 @@ export function layoutFor(w: number, h: number, area: Rect): Layout {
     shots: { x: cx - shotsW / 2, y: shotsY - pip, w: shotsW, h: pip * 2 },
     pip,
     pipGap,
-    tally: { x: cx - tallyW / 2, y: tallyY, w: tallyW, h: tallyPx },
-    tallyPx,
+    chute: { x: slateX, y: Math.max(area.y, slateY - gutterH), w: slateW, h: gutterH },
+    bag: { x: cx - bagW / 2, y: shotsY + pip * 3, w: bagW, h: bagH },
+    bagPx,
   }
 }

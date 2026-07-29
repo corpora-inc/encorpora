@@ -1,11 +1,17 @@
 // Asset-free Web Audio: a struck felt-mallet timbre over a C5–C6 pentatonic,
 // plus one wooden knock for the slate.
 //
-// The important entry in the table is the one that is not there. **A wild draw
-// makes no sound.** Not a buzz, not a thud, not a muted click — nothing. The
-// street declines to acknowledge the draw, and an audio engine that sneaked in a
-// "you got it wrong" cue would undo the entire design, so `wild` is absent from
-// `VOICES` and `outcome()` returns before touching the context.
+// The important entries in the table are the ones that are not there. **A wrong
+// verdict makes no sound.** Not a buzz, not a thud, not a muted click — nothing,
+// in either direction: banking a counterfeit and throwing away good money are both
+// silent. The street declines to acknowledge a wrong call, the bag simply has fewer
+// coins in it, and an audio engine that sneaked in a "you got it wrong" cue would
+// undo the entire design. So `dud` and `burn` are absent from `VOICES` and
+// `outcome()` returns before touching the context.
+//
+// `lapse` is absent for a different reason and it is the more important one: a tone
+// at the end of a window a child was still thinking through is a buzzer aimed at
+// slowness. There is no sound for running out of time.
 
 import type { Outcome } from "../game/response.ts"
 import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
@@ -29,13 +35,14 @@ type Voice = {
  * against a comment.
  */
 export const VOICES: Partial<Record<Outcome, Voice>> = {
-  // Struck once, cleanly, high. The sound of being right and being quick.
-  hit: { degrees: [4], spacing: 0, gain: 0.2, decay: 0.5 },
-  // A bow: two notes falling. Warmer and longer than the hit, because holding
-  // is the harder thing to do and this is the game's one piece of applause.
-  bow: { degrees: [5, 2], spacing: 0.14, gain: 0.24, decay: 0.9 },
-  // Low, short, over before you look up.
-  slow: { degrees: [0], spacing: 0, gain: 0.11, decay: 0.34 },
+  // Struck once, cleanly, high, and then a coin lands: the sound of banking a
+  // true claim.
+  bank: { degrees: [4, 5], spacing: 0.075, gain: 0.2, decay: 0.44 },
+  // A bow, and two notes falling into a third. Warmer and longer than a bank,
+  // because spotting a counterfeit is the harder thing to do and this is the
+  // game's one piece of applause.
+  spot: { degrees: [5, 2, 4], spacing: 0.12, gain: 0.24, decay: 0.9 },
+  // `dud`, `burn` and `lapse` have no entry, and must not get one. See above.
 }
 
 export class Audio {
@@ -74,7 +81,7 @@ export class Audio {
 
   outcome(kind: Outcome): void {
     const voice = VOICES[kind]
-    // `wild` lands here and leaves. Silence is the punishment.
+    // `dud`, `burn` and `lapse` land here and leave. Silence is the whole of it.
     if (!voice) return
     const ctx = this.context()
     const bus = this.bus

@@ -14,18 +14,34 @@ const reduced = params.has("reduced") ? params.get("reduced") !== "0" : undefine
 
 let answered = 0
 let correct = 0
+let skipped = 0
+let asked = 0
 const readout = document.getElementById("readout")
+
+const show = (tail: string): void => {
+  if (!readout) return
+  readout.textContent =
+    `report ${String(correct)}/${String(answered)} · skip ${String(skipped)} · ` +
+    `asked d=${asked.toFixed(2)} · ${tail}`
+}
 
 const host = createStubHost({
   seed,
   ...(Number.isFinite(level) && params.has("level") ? { level } : {}),
   ...(reduced === undefined ? {} : { reducedMotion: reduced }),
+  onNext(difficulty) {
+    asked = difficulty
+  },
   onReport(r) {
     answered++
     if (r.correct) correct++
-    if (readout) {
-      readout.textContent = `host.report → ${String(correct)}/${String(answered)} · last ${String(r.ms)}ms · "${r.answered || "—"}"`
-    }
+    show(`last ${String(r.ms)}ms · "${r.answered || "—"}"`)
+  },
+  // A lapse must show up HERE and never in the report line. If it ever appears as
+  // a report with an empty answer again, this readout is where it is visible.
+  onSkip() {
+    skipped++
+    show("lapse → skip")
   },
 })
 

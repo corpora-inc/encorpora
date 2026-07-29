@@ -1,4 +1,4 @@
-// The longest run so far.
+// The fullest bag so far.
 //
 // **`localStorage` is unreachable inside a pack frame.** The document is framed
 // on an opaque origin, so every access — including the `typeof` probe people
@@ -13,7 +13,11 @@
 // `generic-api-key` rule reads `KEY = "<long dotted string>"` as a credential —
 // a property of the string's length, not of what it holds. It is a storage path,
 // it is on the client, and it is in a public repo on purpose.
-const BEST_SLOT = "dynawalla.truedraw.best.v1" // gitleaks:allow
+// v2, not v1. v1 held the old score — how many correct calls a run made — and the
+// score is now the BAG, in coins, which is a different and much larger number. A
+// child's old "best 9" read against a bag would look like a target they had
+// already beaten before their first flick.
+const BEST_SLOT = "dynawalla.truedraw.best.v2" // gitleaks:allow
 
 let inMemory = 0
 let loaded = false
@@ -28,7 +32,7 @@ function storage(): Storage | null {
   }
 }
 
-export function bestCalls(): number {
+export function bestBag(): number {
   if (!loaded) {
     loaded = true
     try {
@@ -42,12 +46,12 @@ export function bestCalls(): number {
   return inMemory
 }
 
-/** Records `calls` if it beats the best. Returns true when it did. */
-export function recordCalls(calls: number): boolean {
-  if (calls <= bestCalls()) return false
-  inMemory = calls
+/** Records `bag` if it beats the best. Returns true when it did. */
+export function recordBag(bag: number): boolean {
+  if (bag <= bestBag()) return false
+  inMemory = bag
   try {
-    storage()?.setItem(BEST_SLOT, String(calls))
+    storage()?.setItem(BEST_SLOT, String(bag))
   } catch (error) {
     console.warn("[truedraw] the best run could not be written", error)
   }

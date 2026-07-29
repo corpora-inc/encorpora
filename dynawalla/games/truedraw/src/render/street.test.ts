@@ -75,7 +75,8 @@ for (const [shape, w, h] of VIEWPORTS) {
       for (const [name, box] of [
         ["the slate", l.slate],
         ["the shots", l.shots],
-        ["the tally", l.tally],
+        ["the chute", l.chute],
+        ["the bag", l.bag],
       ] as const) {
         assert.equal(
           hitsHostChrome(box, w, insets),
@@ -96,7 +97,8 @@ for (const [shape, w, h] of VIEWPORTS) {
       for (const [name, box] of [
         ["the slate", l.slate],
         ["the shots", l.shots],
-        ["the tally", l.tally],
+        ["the chute", l.chute],
+        ["the bag", l.bag],
       ] as const) {
         assert.ok(
           inside(box, area),
@@ -137,8 +139,45 @@ test("the shots hang below the slate, always", () => {
         l.shots.y >= l.slate.y + l.slate.h,
         `the shots ride up onto the slate at ${String(w)}×${String(h)}`,
       )
-      assert.ok(l.tally.y + l.tally.h <= l.slate.y, `the tally overlaps the slate at ${String(w)}×${String(h)}`)
+      assert.ok(
+        l.chute.y + l.chute.h <= l.slate.y + 0.5,
+        `the chute overlaps the slate at ${String(w)}×${String(h)}`,
+      )
+      assert.ok(
+        l.bag.y >= l.shots.y + l.shots.h - 0.5,
+        `the bag rides up onto the shots at ${String(w)}×${String(h)}`,
+      )
     }
+  }
+})
+
+test("the two destinations are on the two sides of the slate, always", () => {
+  // The whole affordance depends on it: up is the chute, down is the bag. A layout
+  // that put them the same side of the slate, or crossed them, would make the gesture
+  // a thing a child has to remember instead of a thing they can see.
+  for (const [shape, w, h] of VIEWPORTS) {
+    for (const [where, insets] of INSETS) {
+      const l = streetAt(w, h, insets).layout
+      assert.ok(
+        l.chute.y + l.chute.h <= l.slate.y + 0.5,
+        `${shape} ${where}: the chute is not above the slate`,
+      )
+      assert.ok(
+        l.bag.y >= l.slate.y + l.slate.h,
+        `${shape} ${where}: the bag is not below the slate`,
+      )
+      assert.ok(l.bag.w > 0 && l.bag.h > 0 && l.chute.h > 0, `${shape} ${where}: a zero-size target`)
+    }
+  }
+})
+
+test("the bag is wide enough to read a four-digit coin count in", () => {
+  for (const [shape, w, h] of VIEWPORTS) {
+    const l = streetAt(w, h, NO_INSETS).layout
+    assert.ok(
+      l.bag.w >= l.bagPx * 2.4,
+      `${shape}: a ${l.bag.w.toFixed(0)}px bag for ${String(l.bagPx)}px numerals`,
+    )
   }
 })
 

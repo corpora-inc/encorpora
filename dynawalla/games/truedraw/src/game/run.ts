@@ -1,41 +1,43 @@
-// The run, and why half right is a failure.
+// The run: a bag of coins, and three shots to fill it with.
 //
-// This is the module the whole design rests on. A GO/NO-GO task has a hard 50%
-// ceiling for anyone who ignores the statement and just draws — that is not a
-// flaw to be patched, it is the measurement. The job here is to make sure that
-// ceiling *reads* as failure to a seven-year-old, and there is exactly one
-// honest way to do it: **never show an accuracy at all.**
+// There are two quantities and they do different jobs.
 //
-// A child shown "50%" reads a passing grade. A child shown a tally of three
-// reads what it is.
+// **The bag** is the score, and it is what the founder asked for: correct keeps
+// build it, a wrong keep or a wrong toss diminishes it. Its arithmetic lives in
+// `bag.ts` and the single property that matters is `COIN_WRONG > COIN_MAX` — a
+// coin flip loses coins, so the bag cannot be grown by mashing.
 //
-// So the run has no score and no percentage. It has a **length**: how many calls
-// you made before three shots went dark. And the length of a run is violently
-// non-linear in how carefully you play, because misses are a budget rather than
-// a subtraction:
+// **The shots** are the run's length, and they are unchanged. Three wrong verdicts
+// and the street clears. This is the older half of the design and it is kept
+// because it is the part that is violently non-linear in care:
 //
 //     expected calls = shots × p / (1 − p)
 //
-//        p = 0.50  (draw at everything)  →   3 calls
-//        p = 0.75                        →   9 calls
-//        p = 0.90                        →  27 calls
-//        p = 0.97                        →  97 calls
-//        p = 1.00                        →  no end
+//        p = 0.50  (swipe at random)  →   3 calls
+//        p = 0.75                     →   9 calls
+//        p = 0.90                     →  27 calls
+//        p = 0.97                     →  97 calls
+//        p = 1.00                     →  no end
 //
-// A masher's whole run is three calls long. There is no arrangement of three
-// that looks like doing well, no number on the slate to misread, and nothing to
-// argue with: the street empties before a crowd ever gathers. The same is true
-// of the other degenerate strategy — never drawing is also exactly half, and
-// also three calls.
+// A guesser therefore loses twice over: their bag drifts down at 2 coins a round
+// AND their run is three calls long, so there is no arrangement of it that looks
+// like doing well. Belt and braces, deliberately — the bag is a number a child
+// might argue with and the empty street is not.
 //
-// Nothing here ever *subtracts*. A miss spends a shot; it does not take back a
-// call you made. Construction never regresses (`P-04`) — the pull is "my run was
-// getting long", never "my score is at risk".
+// A LAPSE COSTS NEITHER. A window that closed untouched is not a verdict: no
+// coins, no shot. It is the one thing in the game that is free, and it is free
+// because a child who was still working the hundreds column has not made a
+// mistake. What it costs is the window, which is the most wall-clock any single
+// round can spend — so per minute of play, waiting is the worst thing available to
+// anybody who can read at all.
+//
+// Nothing here ever takes back a CALL. The bag can fall; the tally of correct
+// calls, and therefore the crowd, only ever rises.
 
-import type { Outcome } from "./response.ts"
-import { isCorrect } from "./response.ts"
+import { addCoins } from "./bag.ts"
+import { isCorrect, isMiss, type Outcome } from "./response.ts"
 
-/** Misses a run survives. Three, as in the original. */
+/** Wrong verdicts a run survives. Three, as in the original. */
 export const SHOTS = 3
 
 /** Witnesses that can stand in the haze. Past this the crowd is a crowd. */
@@ -44,43 +46,60 @@ export const CROWD_MAX = 14
 export type Run = {
   /** Shots left. At zero the street clears. */
   readonly shots: number
-  /** Correct calls made. This is the tally, and it is the only one. */
+  /** Correct calls made. Never goes down. */
   readonly calls: number
-  /** Drew at a false slate. */
-  readonly wild: number
-  /** Let a true slate stand. */
-  readonly slow: number
-  /** Pressed before the slate lit. Ignored, and counted anyway. */
+  /** Coins in the bag. This is the score. It can go down; it floors at zero. */
+  readonly bag: number
+  /** Kept a false claim — banked a counterfeit. */
+  readonly dud: number
+  /** Tossed a true claim — threw money away. */
+  readonly burn: number
+  /** Windows that closed untouched. Counted, and charged for nothing. */
+  readonly lapses: number
+  /** Touched the slate before the statement was cut in. Ignored, counted anyway. */
   readonly flinches: number
   readonly over: boolean
 }
 
 export function newRun(): Run {
-  return { shots: SHOTS, calls: 0, wild: 0, slow: 0, flinches: 0, over: false }
+  return { shots: SHOTS, calls: 0, bag: 0, dud: 0, burn: 0, lapses: 0, flinches: 0, over: false }
 }
 
-export function applyOutcome(run: Run, outcome: Outcome): Run {
+/**
+ * Settle one outcome, worth `coins`.
+ *
+ * `coins` is passed in rather than computed here because it depends on the item's
+ * p50 and on how quick the call was, and neither is a property of the run.
+ * `bag.ts` owns the price list; this owns the ledger.
+ */
+export function applyOutcome(run: Run, outcome: Outcome, coins: number): Run {
   if (run.over) return run
-  if (isCorrect(outcome)) {
-    return { ...run, calls: run.calls + 1 }
+  const bag = addCoins(run.bag, coins)
+  if (outcome === "lapse") {
+    // Not a verdict. Not a miss. Not priced.
+    return { ...run, bag, lapses: run.lapses + 1 }
   }
-  const shots = run.shots - 1
+  if (isCorrect(outcome)) {
+    return { ...run, bag, calls: run.calls + 1 }
+  }
+  const shots = run.shots - (isMiss(outcome) ? 1 : 0)
   return {
     ...run,
+    bag,
     shots,
-    wild: run.wild + (outcome === "wild" ? 1 : 0),
-    slow: run.slow + (outcome === "slow" ? 1 : 0),
+    dud: run.dud + (outcome === "dud" ? 1 : 0),
+    burn: run.burn + (outcome === "burn" ? 1 : 0),
     over: shots <= 0,
   }
 }
 
-/** A press before the slate lit. It costs nothing and is never hidden. */
+/** Touched the slate before there was anything on it. Costs nothing, never hidden. */
 export function applyFlinch(run: Run): Run {
   if (run.over) return run
   return { ...run, flinches: run.flinches + 1 }
 }
 
-/** Witnesses currently standing. One per call, and it never goes back down. */
+/** Witnesses standing. One per correct call, and it never goes back down. */
 export function crowdOf(run: Run): number {
   return Math.min(CROWD_MAX, run.calls)
 }
@@ -90,7 +109,7 @@ export function crowdOf(run: Run): number {
  * number of successes before the `shots`-th failure.
  *
  * Exported because it is the design claim, and a claim in a comment is not
- * checked. `run.test.ts` asserts the 0.5 case is 3 and that a simulated masher
+ * checked. `run.test.ts` asserts the 0.5 case is 3 and that a simulated guesser
  * lands on it.
  */
 export function expectedCalls(p: number, shots: number = SHOTS): number {
