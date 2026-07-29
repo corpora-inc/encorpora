@@ -21,7 +21,7 @@ import { mount } from "../contract.ts"
 import type { Host, Question } from "../contract.ts"
 import { openingLoad } from "../game/bout.ts"
 import { PLACES, planStrikes } from "../game/places.ts"
-import { layoutFor } from "../render/layout.ts"
+import { viewLayout } from "../render/layout.ts"
 import { createStubHost } from "../stubHost.ts"
 
 type Listener = (event: unknown) => void
@@ -53,11 +53,15 @@ function fakeContext(counter: { calls: number; text: string[] }): CanvasRenderin
 }
 
 type FakeElement = {
-  style: { cssText: string }
+  id: string
+  style: Record<string, string>
   width: number
   height: number
   listeners: Map<string, Listener[]>
   appendChild(child: unknown): void
+  append(...children: unknown[]): void
+  setAttribute(name: string, value: string): void
+  focus(): void
   remove(): void
   addEventListener(type: string, fn: Listener): void
   removeEventListener(type: string, fn: Listener): void
@@ -70,11 +74,15 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
   const make = (): FakeElement => {
     const listeners = new Map<string, Listener[]>()
     return {
+      id: "",
       style: { cssText: "" },
       width: 0,
       height: 0,
       listeners,
       appendChild() {},
+      append() {},
+      setAttribute() {},
+      focus() {},
       remove() {},
       addEventListener(type, fn) {
         const list = listeners.get(type) ?? []
@@ -89,13 +97,23 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
     }
   }
   const created: FakeElement[] = []
+  // The shared chrome adds two things this stub has to answer for: the
+  // safe-area probe, which looks itself up by id before making a second one,
+  // and the how-to-play panel, which builds a small tree of buttons and lists.
+  // Both are DOM the game now really does create, so the fake DOM grows to meet
+  // them rather than the game being asked to skip them under test.
   const doc = {
     visibilityState: "visible",
     listeners: new Map<string, Listener[]>(),
+    body: { appendChild() {} },
+    activeElement: null,
     createElement() {
       const el = make()
       created.push(el)
       return el
+    },
+    getElementById(id: string): FakeElement | null {
+      return created.find((el) => el.id === id) ?? null
     },
     addEventListener(type: string, fn: Listener) {
       const list = doc.listeners.get(type) ?? []
@@ -194,7 +212,7 @@ function pump(
  * game renders while nobody is playing it.
  */
 function facePoints(w: number, h: number): Array<{ x: number; y: number }> {
-  const box = layoutFor(w, h)
+  const box = viewLayout(w, h)
   return box.pillars.flatMap((pillar) =>
     [pillar.up, pillar.down].map((r) => ({ x: r.x + r.w / 2, y: r.y + r.h / 2 })),
   )
@@ -202,7 +220,7 @@ function facePoints(w: number, h: number): Array<{ x: number; y: number }> {
 
 /** The seat lever, likewise. */
 function seatPoint(w: number, h: number): { x: number; y: number } {
-  const { seat } = layoutFor(w, h)
+  const { seat } = viewLayout(w, h)
   return { x: seat.x + seat.w / 2, y: seat.y + seat.h / 2 }
 }
 
