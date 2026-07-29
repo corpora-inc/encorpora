@@ -71,6 +71,12 @@ function styleSheet(reduced: boolean): string {
   background:rgba(4,6,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   font-family:${FONT};color:#f2eee4;overscroll-behavior:contain}
 .dwc-panel{position:relative;max-width:min(46rem,92vw);max-height:82vh;overflow-y:auto;overscroll-behavior:contain;
+  /* Every game sets touch-action:none on its root so a stray drag cannot pan
+     the page. That also forbids the finger drag this panel needs: overflow-y
+     was live but unusable, and on a 320x568 phone about a third of the manual
+     sat below the fold with no way to reach it. pan-y re-permits exactly the
+     one gesture, and nothing else. */
+  touch-action:pan-y;
   -webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid rgba(255,255,255,.14);
   background:linear-gradient(#141a26,#0d111a);box-shadow:0 24px 70px rgba(0,0,0,.6);
   padding:clamp(20px,4vw,34px);animation:${enter}}
