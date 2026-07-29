@@ -3,14 +3,20 @@ import { test } from 'node:test'
 
 import { makeRng } from '../core/rng.ts'
 import { createStubHost } from '../stubHost.ts'
+import { heightAtX, LAUNCH_H } from './ballistics.ts'
+import { aimShot, windValues } from './verdict.ts'
 import {
   buildTower,
+  DEFAULT_LOFT,
+  LOFTS,
   layoutTowerValues,
   pullQuestions,
   ramAdvances,
   shatter,
   stepBlocks,
+  wallFor,
   waveConfig,
+  type Phase,
 } from './world.ts'
 
 const MIN_GAP = 8
@@ -84,9 +90,38 @@ test('the ram does not roll while the child is working the sum out', () => {
   assert.equal(ramAdvances('aim'), false, 'she is working it out')
   assert.equal(ramAdvances('impact'), false, 'the hit-stop holds everything still')
   // ...and it must still be a threat once a boulder is in the air.
-  for (const phase of ['windup', 'flight', 'settle', 'clear']) {
+  for (const phase of ['windup', 'flight', 'settle', 'clear'] as Phase[]) {
     assert.equal(ramAdvances(phase), true, `${phase} is the world in motion`)
   }
+})
+
+test('the wall can always be cleared, in any wind, at the loft the lever starts on', () => {
+  // The wall is the only reason the loft lever exists. It may never stand between
+  // a child and a keep she has named correctly — and the compensation for the
+  // wind launches lower, so still air is not the case to size it against.
+  let blocks = 0
+  let walls = 0
+  for (let w = 1; w <= 40; w++) {
+    const cfg = waveConfig(w)
+    if (!cfg.wall) continue
+    for (let nearest = 14; nearest <= 118; nearest += 3) {
+      const wall = wallFor(nearest, cfg.wind)
+      walls++
+      assert.ok(wall.x < nearest, `wave ${w}: the wall stands on the keep at ${nearest}`)
+      let flatBlocked = false
+      for (const wind of cfg.wind ? windValues(cfg.wind) : [0]) {
+        const opened = aimShot(nearest, LOFTS[DEFAULT_LOFT], wind, LAUNCH_H)
+        assert.ok(
+          heightAtX(opened, wall.x) > wall.h,
+          `wave ${w}, keep ${nearest}, wind ${wind}: the default loft cannot clear a ${wall.h.toFixed(1)} m wall`,
+        )
+        if (heightAtX(aimShot(nearest, LOFTS[0], wind, LAUNCH_H), wall.x) < wall.h) flatBlocked = true
+      }
+      if (flatBlocked) blocks++
+    }
+  }
+  // ...and it must still be worth having: most walls stop the flattest shot.
+  assert.ok(blocks / walls > 0.6, `only ${blocks}/${walls} walls stop a flat shot`)
 })
 
 test('a struck keep comes apart and then settles — no perpetual motion', () => {

@@ -8,6 +8,8 @@
 
 import type { Question } from '../contract.ts'
 import { type Rng } from '../core/rng.ts'
+import { heightAtX, LAUNCH_H } from './ballistics.ts'
+import { aimShot } from './verdict.ts'
 
 /** World x of the launch point; ranges are measured from here. */
 export const LAUNCH_X = 6
@@ -51,6 +53,35 @@ export function waveConfig(i: number): WaveConfig {
     banners: i < 8 ? true : i % 3 !== 0,
     volley: boss,
   }
+}
+
+/** The lofts the lever offers, flattest first, and the one it starts on. */
+export const LOFTS = [30, 38, 46, 55, 65]
+export const DEFAULT_LOFT = 2
+
+/**
+ * Where the rival's outwork stands, and how tall.
+ *
+ * Two things must both be true of it, and neither was:
+ *
+ *   - **A shot at the nearest keep can always be made.** The wall used to be
+ *     placed at `max(14, nearest × 0.46)`, which for a keep at 14–17 m is the
+ *     keep's own ground — every shot at it hit the wall. And it was sized off a
+ *     still-air probe, while aiming into a tailwind launches at `dial − wind`
+ *     and flies lower, so on windy waves a correctly dialled shot smashed into
+ *     it. Height is taken from the LOWEST the default loft can ever be over that
+ *     point — the strongest tailwind of the wave — so it clears in any wind.
+ *   - **The flattest loft should not clear it**, or the lever it exists to teach
+ *     is decoration. Height is also kept above the HIGHEST the flattest can be
+ *     there. Where those two bounds cross — a keep so near that no wall can do
+ *     both — solvability wins and the wall is scenery for that wave.
+ */
+export function wallFor(nearest: number, windCap: number): { x: number; h: number } {
+  const x = Math.max(10, Math.min(Math.round(nearest * 0.46), Math.max(10, nearest - 6)))
+  const ceiling = heightAtX(aimShot(nearest, LOFTS[DEFAULT_LOFT], windCap, LAUNCH_H), x)
+  const floor = heightAtX(aimShot(nearest, LOFTS[0], -windCap, LAUNCH_H), x)
+  const h = floor + 0.7 < ceiling - 0.7 ? (floor + ceiling) / 2 : ceiling * 0.78
+  return { x, h: Math.max(4, h) }
 }
 
 /* ------------------------------------------------------------------ */
@@ -243,6 +274,14 @@ export type Crater = { x: number; r: number; depth: number; age: number; label: 
 export type Ghost = { pts: Array<{ x: number; y: number }>; landing: number; age: number; hit: boolean }
 
 /**
+ * The game loop's phases. They live here, next to the one piece of the sim that
+ * has to ask about them, so that `ramAdvances` is checked against the real set
+ * rather than against `string` — under which renaming a phase would silently
+ * put the ram back on the child's thinking time with every test still green.
+ */
+export type Phase = 'intro' | 'aim' | 'windup' | 'flight' | 'impact' | 'settle' | 'clear'
+
+/**
  * Does the ram roll during this phase?
  *
  * It does not roll while the child is reading the boulder and turning the dial.
@@ -254,7 +293,7 @@ export type Ghost = { pts: Array<{ x: number; y: number }>; landing: number; age
  * every boulder she throws, it gets closer. It is also held still during the
  * hit-stop, where everything else is.
  */
-export function ramAdvances(phase: string): boolean {
+export function ramAdvances(phase: Phase): boolean {
   return phase !== 'intro' && phase !== 'aim' && phase !== 'impact'
 }
 

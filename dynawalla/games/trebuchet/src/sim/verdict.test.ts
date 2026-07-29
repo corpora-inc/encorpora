@@ -187,15 +187,22 @@ test('aiming into the wind still produces a real arc, even in the worst corner',
   // The compensation launches at `dial − wind`, which at the bottom of the dial
   // against the strongest wind is a very short throw. It must still be a finite,
   // drawable arc that reaches the ground on the dialled metre.
-  for (const wind of [-9, 9]) {
+  for (const wind of windValues(9)) {
     for (const angle of LOFTS) {
-      const s = aimShot(8, angle, wind, LAUNCH_H)
-      assert.ok(Number.isFinite(s.T) && s.T > 0, `flight time wind ${wind} loft ${angle}: ${s.T}`)
-      assert.ok(s.apexY > 0, `apex wind ${wind} loft ${angle}`)
-      for (const p of samplePath(s, 12)) {
-        assert.ok(Number.isFinite(p.x) && Number.isFinite(p.y), `path wind ${wind} loft ${angle}`)
+      for (const dial of [8, 9, 10, 17, 122]) {
+        const where = `dial ${dial}, wind ${wind}, loft ${angle}`
+        const s = aimShot(dial, angle, wind, LAUNCH_H)
+        assert.ok(Number.isFinite(s.T) && s.T > 0, `flight time ${where}: ${s.T}`)
+        // Out of the sling forwards and upwards — never lobbed backwards off the
+        // escarpment to be dragged onto the target by the crosswind.
+        assert.ok(s.vx > 0, `${where}: launched backwards at ${s.vx} m/s`)
+        assert.ok(s.vy > 0, `${where}: launched downwards at ${s.vy} m/s`)
+        assert.ok(s.apexY > LAUNCH_H, `${where}: never rose above the sling`)
+        for (const p of samplePath(s, 12)) {
+          assert.ok(Number.isFinite(p.x) && Number.isFinite(p.y), `path ${where}`)
+        }
+        assert.ok(Math.abs(posAt(s, s.T).x - dial) < 1e-9, `comes down on the dial, ${where}`)
       }
-      assert.ok(Math.abs(posAt(s, s.T).x - 8) < 1e-9, `comes down on the dial, wind ${wind}`)
     }
   }
 })

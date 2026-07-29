@@ -60,25 +60,28 @@ import {
   resolve,
   samplePath,
   shotScore,
-  solve,
   type Outcome,
   type Solved,
 } from './sim/ballistics.ts'
 import { aimShot, rollWind, verdictFor } from './sim/verdict.ts'
 import {
   buildTower,
+  DEFAULT_LOFT,
   FIELD_MAX,
   LAUNCH_X,
+  LOFTS,
   layoutTowerValues,
   pullQuestions,
   ramAdvances,
   shatter,
   stepBlocks,
+  wallFor,
   waveConfig,
   worldX,
   type Boulder,
   type Crater,
   type Ghost,
+  type Phase,
   type Ram,
   type Tower,
   type WaveConfig,
@@ -87,10 +90,6 @@ import {
 const MIN_GAP = 8
 const DIAL_MIN = 8
 const DIAL_MAX = FIELD_MAX
-const LOFTS = [30, 38, 46, 55, 65]
-const DEFAULT_LOFT = 2
-
-type Phase = 'intro' | 'aim' | 'windup' | 'flight' | 'impact' | 'settle' | 'clear'
 
 const PAL: Palette = {
   dust: C.dust,
@@ -174,6 +173,18 @@ export class TrebuchetGame {
    * correct arithmetic, which is the one thing this game may never do.
    */
   private pending: Outcome<Tower> | null = null
+  /**
+   * What the child committed to, frozen at the instant the sling let go.
+   *
+   * Two to three seconds pass between the release and the impact, and the dial,
+   * the loaded boulder and the answer clock are all live during them: the +/−
+   * buttons, the wheel and the arrow keys are not phase-gated, and tapping a rack
+   * stone changes which question is loaded. Reading any of that AT impact would
+   * mark a child on a number she is no longer looking at — a bullseye scored
+   * wrong because she nudged the dial while the boulder was in the air. The shot
+   * carries its own answer, and impact reads nothing else.
+   */
+  private fired: { dial: number; boulder: Boulder; ms: number } | null = null
   private proj = { x: 0, y: 0 }
   private armDeg = ARMED_DEG
   private recoil = 0
@@ -357,12 +368,8 @@ export class TrebuchetGame {
     this.wind = rollWind(cfg.wind, this.rng)
     this.wall = null
     if (cfg.wall) {
-      const nearest = Math.min(...values)
-      const wx = Math.max(14, Math.round(nearest * 0.46))
-      // Size it so a mid loft clears and the flattest does not: always solvable.
-      const probe = solve(nearest, LOFTS[1], 0)
-      const clearH = posAt(probe, timeAtXApprox(probe, wx)).y
-      this.wall = { x: worldX(wx), h: Math.max(6, clearH * 0.78) }
+      const w = wallFor(Math.min(...values), cfg.wind)
+      this.wall = { x: worldX(w.x), h: w.h }
     }
     this.ram = cfg.ram
       ? // Faster than it was, because it now only rolls while the world is moving:
@@ -624,6 +631,13 @@ export class TrebuchetGame {
     // Aimed at the dial, not displaced by the wind: `aimShot` lays the machine
     // off into the crosswind so the boulder comes down on the metre she named.
     const shot = aimShot(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
+    // Her answer, and how long it took her — both as they stood when she fired.
+    // The flight is the game's time, not hers, so it is not in the latency.
+    this.fired = {
+      dial: this.dial,
+      boulder: b,
+      ms: Math.max(1, Math.round(performance.now() - this.questionShownAt)),
+    }
     this.shot = shot
     this.pending = resolve(shot.landing, this.towers)
     this.shotT = 0
@@ -665,14 +679,18 @@ export class TrebuchetGame {
   /* -------------------------------------------------------------- impact */
 
   private impact(x: number, y: number, hit: Tower | null, kind: 'ground' | 'tower' | 'wall' | 'ram'): void {
-    const b = this.activeBoulder
-    if (!b || !this.shot) return
+    const fired = this.fired
+    if (!fired || !this.shot) return
+    // The boulder that was thrown, not whichever one is loaded now.
+    const b = fired.boulder
+    this.fired = null
     const landing = this.shot.landing
     const out = this.pending ?? resolve(landing, this.towers)
     // The verdict is the child's number against the number she was asked for, and
     // nothing else — not the keep the blast happened to reach, not the metre the
-    // ground recorded. A boulder spent on the ram is not an answer at all.
-    const v = verdictFor({ dial: this.dial, landing, answer: b.answer, kind })
+    // ground recorded, not where the dial has drifted to since. A boulder spent on
+    // the ram is not an answer at all.
+    const v = verdictFor({ dial: fired.dial, landing, answer: b.answer, kind })
     const correct = v.correct
     // The ram swallows the boulder where it stands: no keep is touched by a shot
     // that never got past the siege engine.
@@ -804,9 +822,8 @@ export class TrebuchetGame {
     }
 
     // --- score & host report -------------------------------------------
-    const ms = Math.max(1, Math.round(performance.now() - this.questionShownAt))
     if (v.report) {
-      this.host.report({ questionId: b.q.id, correct, ms, answered: v.answered })
+      this.host.report({ questionId: b.q.id, correct, ms: fired.ms, answered: v.answered })
     }
     if (correct) {
       this.combo += 1
@@ -1420,9 +1437,4 @@ export class TrebuchetGame {
   currentWind(): number {
     return this.wind
   }
-}
-
-/** Cheap x->t inversion used only when sizing the wall (no wind at that point). */
-function timeAtXApprox(s: Solved, x: number): number {
-  return x / s.vx
 }

@@ -46,7 +46,12 @@ export function rollWind(cap: number, rng: Rng): number {
  * terms are integers, so the landing is the dial exactly — not 71.98.
  */
 export function aimShot(dialM: number, angleDeg: number, wind: number, h: number): Solved {
-  return solve(dialM - wind, angleDeg, wind, h)
+  // Never laid off past the launch point. A target nearer than the wind's push
+  // would ask for a backwards throw, so the offset stops at 1 m of power and the
+  // modelled bend gives instead — the LANDING is exact either way, which is the
+  // part a child is marked on. Only reachable by dialling below the whole field.
+  const power = Math.max(1, dialM - wind)
+  return solve(power, angleDeg, dialM - power, h)
 }
 
 /**
