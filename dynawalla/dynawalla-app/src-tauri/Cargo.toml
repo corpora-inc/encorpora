@@ -34,6 +34,16 @@ sha2 = "0.10"
 # to a public repository.
 zip = { version = "2", default-features = false, features = ["deflate"] }
 
+# Haptics. A path dependency on Corpán's plugin rather than a copy: the Swift
+# and Kotlin in it are the only thing that makes a haptic real on iOS, where
+# `navigator.vibrate` does not exist at all (it is `undefined` in WKWebView, so
+# a WebView-only implementation is a silent no-op on the entire platform and
+# looks perfectly fine in a desktop browser).
+#
+# Shared, so it is shared carefully: Dynawalla added two style values to it and
+# changed none. See `corpan/plugins/tauri-plugin-haptics/CHANGELOG.md`.
+tauri-plugin-haptics = { path = "../../../corpan/plugins/tauri-plugin-haptics" }
+
 [profile.release]
 opt-level = "z"   # Size, not speed: this is a mobile binary.
 lto = true

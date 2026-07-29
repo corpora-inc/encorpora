@@ -11,13 +11,13 @@
 // child who played.
 
 import type {
-  HapticCue,
   Item,
   Settings,
   SoundCue,
   TransitionKind,
 } from "../../../packs/sdk/src/index.ts"
 import type { HostServices } from "./bridge.ts"
+import { fireHaptic, type HapticPorts } from "./haptics.ts"
 import { createItemService, type ItemService } from "./items.ts"
 import { report } from "./host.ts"
 import { packStorageFor } from "./storage.ts"
@@ -93,21 +93,6 @@ export function packSettings(input: SettingsInput): Settings {
   }
 }
 
-/**
- * The named haptics, as durations.
- *
- * Named rather than parameterised so a pack cannot invent a waveform: four
- * cues, four patterns, and a device with no vibration motor simply does
- * nothing. `navigator.vibrate` is a no-op on iOS Safari and on desktop, which
- * is correct — a missing motor is not an error a child should hear about.
- */
-const HAPTIC_PATTERN: Readonly<Record<HapticCue, number | readonly number[]>> = {
-  tick: 8,
-  seat: 18,
-  settle: [12, 40, 12],
-  refuse: [40, 30, 60],
-}
-
 /** Frequency and length for each named cue. The host owns the palette. */
 const SOUND_CUE: Readonly<Record<SoundCue, { hz: number; ms: number }>> = {
   tick: { hz: 880, ms: 40 },
@@ -156,6 +141,16 @@ export type ServicesDeps = {
   readonly profileId: string
   /** The device facts at launch. `push` replaces them without a remount. */
   readonly settings: Settings
+  /**
+   * Where a haptic cue goes: the device's real back-ends in production
+   * (`app/platform.ts`), a recorder in a test.
+   *
+   * Required rather than optional-with-a-default, deliberately. A defaulted
+   * port would make "nobody wired the haptics" compile, run, and feel exactly
+   * like a device with no motor — which is the bug this whole change exists to
+   * fix, reintroduced one layer up. The compiler asks instead.
+   */
+  readonly haptics: HapticPorts
   readonly onProgress?: (fraction: number) => void
   readonly onEnd?: (reason: "finished" | "quit") => void
   readonly onMilestone?: (name: string) => void
@@ -191,6 +186,7 @@ export function createServices(deps: ServicesDeps): LaunchServices {
   const items = createItemService({ profileId: deps.profileId, record: report })
   const store = packStorageFor(deps.profileId)
   const audio: Audio = { context: null }
+  const haptics = deps.haptics
   let current = deps.settings
 
   const keysOf = (packId: string): string[] =>
@@ -206,14 +202,19 @@ export function createServices(deps: ServicesDeps): LaunchServices {
     reveal: (input) => Promise.resolve(items.reveal(input.itemId)),
     learnerSummary: () => Promise.resolve(items.summary()),
 
+    /**
+     * The settings toggle is enforced HERE, on `current`, and nowhere else.
+     *
+     * `current` rather than `deps.settings` because `push` replaces the
+     * settings of a *running* pack without remounting it: a parent who turns
+     * haptics off mid-game has turned them off, and reading the launch-time
+     * value would keep buzzing until the child quit. There is no second gate
+     * further down — `fireHaptic` has no opinion about settings, so this line
+     * is the only thing standing between a cue and the motor, on either
+     * platform, and it is what `services.test.ts` attacks.
+     */
     haptic: (input) => {
-      if (current.haptics && typeof navigator !== "undefined" && navigator.vibrate) {
-        try {
-          navigator.vibrate(HAPTIC_PATTERN[input.cue] as number | number[])
-        } catch (error) {
-          console.error("[packs] a haptic cue failed", error)
-        }
-      }
+      if (current.haptics) fireHaptic(input.cue, haptics)
       return Promise.resolve()
     },
     sound: (input) => {

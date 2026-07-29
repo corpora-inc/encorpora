@@ -95,9 +95,11 @@ narrow it later without breaking installed clients.
 | Grant | Command | Why |
 |---|---|---|
 | `core:app:allow-version` | `getVersion()` | The settings screen shows the installed build — the first thing a parent reporting a problem is asked for. |
+| `haptics:allow-impact` | `invoke("plugin:haptics\|impact")` | Real haptics. `navigator.vibrate` is `undefined` in iOS WKWebView, so the WebView-only implementation this app shipped first was a silent no-op on every iPhone and iPad. |
 
-That is the whole list. No plugin is registered and no `<plugin>:default` grant
-exists (ADR-0005 point 4, acceptance item `X-07`). The CSP is non-null, has no
+That is the whole list. One plugin is registered — `tauri-plugin-haptics`,
+shared with Corpán — and no `<plugin>:default` grant exists (ADR-0005 point 4,
+acceptance item `X-07`). The CSP is non-null, has no
 wildcard, admits no remote origin, and admits no inline style — which is why no
 component may set a `style` attribute; a test holds those two together.
 

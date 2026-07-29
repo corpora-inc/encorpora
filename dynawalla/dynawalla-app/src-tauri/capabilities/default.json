@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Least privilege for the main window: one command, app.version, read on the settings screen. Every grant names a single command — never <plugin>:default (ADR-0005, X-07). Adding a grant here means an app can do something it could not do before, and a shipped app cannot narrow permissions without breaking installed clients, so this file only ever grows for a reason recorded in README.md.",
+  "description": "Least privilege for the main window: app.version, read on the settings screen, and one haptic command. Every grant names a single command — never <plugin>:default (ADR-0005, X-07). Adding a grant here means an app can do something it could not do before, and a shipped app cannot narrow permissions without breaking installed clients, so this file only ever grows for a reason recorded in README.md.",
   "windows": ["main"],
-  "permissions": ["core:app:allow-version"]
+  "permissions": ["core:app:allow-version", "haptics:allow-impact"]
 }

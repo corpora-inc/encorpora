@@ -24,6 +24,11 @@ mod packs;
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        // The one plugin. Registering it is half the wiring — without the
+        // matching `haptics:allow-impact` grant in `capabilities/default.json`
+        // the ACL denies the invoke at runtime and nothing at build time says
+        // so. `src/packs/haptics.test.ts` asserts the two move together.
+        .plugin(tauri_plugin_haptics::init())
         // Packs that ship with this build are installed before the first window
         // exists, so the front door is never empty on a first launch and a
         // `npm run tauri dev` session always has the freshly built ones.
