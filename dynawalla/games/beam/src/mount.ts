@@ -22,12 +22,13 @@
 // you at the phase `(v mod b) / b`. At zero the two waveforms fuse. Division,
 // audible.
 
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import type { Host, Question } from "./contract.ts"
 import { Audio } from "./audio.ts"
 import { Feel } from "./core/feel.ts"
 import { Rng } from "./core/rng.ts"
 import { detectTier, TierGovernor } from "./core/tiers.ts"
-import { columnAt, columnX, makeGeom, project } from "./render/geom.ts"
+import { columnAt, columnX, geomForViewport, project } from "./render/geom.ts"
 import {
   drawAnchors,
   drawAutomaton,
@@ -94,6 +95,66 @@ export function mountBeam(el: HTMLElement, host: Host): {
 
   // ── systems ──────────────────────────────────────────────────────────────
   const reduced = host.prefersReducedMotion()
+
+  // How to play. The kill rule here is a biconditional — a pulse works if and
+  // only if the beam divides the number — and a child shown a lattice of glowing
+  // lines and no words will read it as a shooter, fire at everything, and decide
+  // the game is broken when most shots bounce. The manual stays reachable during
+  // play, because the moment a child needs the rule is never the title screen.
+  const guide = createInstructions(root, {
+    title: "LATTICE RUNNER",
+    summary: [
+      "Five beams of light run down the hall. Each beam has a number at the bottom.",
+      "Robots walk down carrying numbers. Ride a beam and shoot — but a shot only works if the beam's number divides the robot's number.",
+    ],
+    sections: [
+      {
+        heading: "Moving and shooting",
+        lines: [
+          "Tap a beam to slide onto it. You shoot the moment you get there.",
+          "Tap the beam you are already on to shoot again.",
+          "Drag your finger across the beams to move without shooting. Use this to listen.",
+          "On a keyboard: left and right arrows move, space shoots.",
+        ],
+      },
+      {
+        heading: "When a shot works",
+        lines: [
+          "A shot destroys a robot only if you can share its number into equal groups of the beam's number, with nothing left over.",
+          "Beam 5 takes 405, because 405 is made of fives. Beam 4 does not.",
+          "Big robots can often be taken from more than one beam. The biggest beam that fits is worth the most.",
+          "A shot that does not work costs you nothing. The robot just rings and keeps walking.",
+        ],
+      },
+      {
+        heading: "Listening to the beam",
+        lines: [
+          "While you ride a beam it hums against the robot above you.",
+          "The closer you are to a beam that fits, the slower the wobble in the sound and in the lines.",
+          "When the beam fits exactly, the wobble stops and you hear one clean note.",
+          "It is a hint, not an answer. Working the number out is always faster.",
+        ],
+      },
+      {
+        heading: "The big blue one",
+        lines: [
+          "Every so often a big blue robot comes down the middle with a sum on it, like 247 + 158.",
+          "It breaks into several robots, each carrying a different number.",
+          "Work out the sum, find the robot with the right number, and shoot that one.",
+          "Getting it wrong does not cost a light. It only resets how much each robot is worth.",
+        ],
+      },
+      {
+        heading: "The three lights",
+        lines: [
+          "Three lights sit at the top of the screen. A robot that reaches the floor puts one out.",
+          "When all three are out the run is over. Tap to start again.",
+          "Get two sums right and one light comes back on.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
   const gov = new TierGovernor(detectTier())
   const feel = new Feel({ reducedMotion: reduced })
   const audio = new Audio()
@@ -117,7 +178,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
   let fx = new Rng(0x0fec7 ^ (Date.now() & 0xffffff))
 
   // ── run state ────────────────────────────────────────────────────────────
-  let geom = makeGeom(320, 480, N_BEAMS)
+  let geom = geomForViewport(320, 480, N_BEAMS)
   let dpr = 1
   let running = true
   let paused = false
@@ -194,7 +255,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
     const rect = root.getBoundingClientRect()
     const w = Math.max(320, Math.round(rect.width))
     const h = Math.max(320, Math.round(rect.height))
-    geom = makeGeom(w, h, N_BEAMS)
+    geom = geomForViewport(w, h, N_BEAMS)
     dpr = Math.min(q.maxDpr, globalThis.devicePixelRatio || 1)
     canvas.width = Math.round(w * dpr)
     canvas.height = Math.round(h * dpr)
@@ -865,8 +926,8 @@ export function mountBeam(el: HTMLElement, host: Host): {
     if (banner) {
       const t = banner.life / banner.max
       g.globalAlpha = Math.min(1, t * 3)
-      const y = geom.h * 0.3
-      const size = Math.max(19, Math.min(geom.w * 0.075, 40))
+      const y = geom.area.y + geom.area.h * 0.3
+      const size = Math.max(19, Math.min(geom.area.w * 0.075, 40))
       g.font = font(UI_FONT, size)
       g.textAlign = "center"
       g.textBaseline = "middle"
@@ -885,17 +946,14 @@ export function mountBeam(el: HTMLElement, host: Host): {
     if (over) {
       g.fillStyle = withAlpha("#04060d", 0.62)
       g.fillRect(0, 0, geom.w, geom.h)
-      g.font = font(UI_FONT, Math.max(15, Math.min(geom.w * 0.05, 24)))
+      g.font = font(UI_FONT, Math.max(15, Math.min(geom.area.w * 0.05, 24)))
       g.textAlign = "center"
       g.fillStyle = withAlpha(PAPER, 0.85)
-      g.fillText(`${score}`, geom.w / 2, geom.h * 0.52)
+      const overY = geom.area.y + geom.area.h * 0.52
+      g.fillText(`${score}`, geom.vpX, overY)
       g.font = font(UI_FONT, 13)
       g.fillStyle = withAlpha(PAPER, 0.5)
-      g.fillText(
-        `best ${best} · ${right}/${asked} cores read`,
-        geom.w / 2,
-        geom.h * 0.52 + 26,
-      )
+      g.fillText(`best ${best} · ${right}/${asked} cores read`, geom.vpX, overY + 26)
     }
 
     audio.setLock(140 + (beams[beamCol] ?? 2) * 26, target ? phase : 0.5, target !== null)
@@ -952,6 +1010,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
 
     unmount(): void {
       running = false
+      guide.destroy()
       cancelAnimationFrame(raf)
       ro.disconnect()
       canvas.removeEventListener("pointerdown", onDown)

@@ -132,7 +132,7 @@ export function drawBeams(g: CanvasRenderingContext2D, geom: Geom, styles: BeamS
     g.font = font(NUM_FONT, size)
     g.textAlign = "center"
     g.textBaseline = "middle"
-    const ly = geom.floorY + (geom.h - geom.floorY) * 0.5
+    const ly = geom.labelY
     g.fillStyle = withAlpha(INK, 0.85)
     g.fillText(String(s.label), foot, ly + 1.5)
     g.fillStyle = lit > 0.5 ? BEAM_HOT : withAlpha(PAPER, 0.62)
@@ -341,10 +341,11 @@ export function drawAnchors(
   credit: number,
   perAnchor: number,
 ): void {
-  const r = 6
-  const gap = 18
-  const x0 = geom.w - 14 - (total - 1) * gap
-  const y = 18
+  // Placed by the geometry, under the host's how-to-play control rather than
+  // behind it. The anchors ARE the lives: three lamps hidden by a button is a
+  // child who cannot tell how close the lattice is to going dark.
+  const { r, gap, y } = geom.anchors
+  const x0 = geom.anchors.right - (total - 1) * gap
   for (let i = 0; i < total; i++) {
     const on = i < lit
     g.beginPath()
@@ -370,14 +371,17 @@ export function drawScore(
   score: number,
   resonance: number,
 ): void {
-  g.font = font(UI_FONT, Math.max(17, Math.min(geom.w * 0.055, 27)))
+  // Under the host's exit control, not behind it. `(14, 20)` was the exact
+  // square the host paints "back" into.
+  const { x, y } = geom.hud
+  g.font = font(UI_FONT, Math.max(17, Math.min(geom.area.w * 0.055, 27)))
   g.textAlign = "left"
   g.textBaseline = "middle"
   g.fillStyle = withAlpha(PAPER, 0.9)
-  g.fillText(String(score), 14, 20)
+  g.fillText(String(score), x, y + 20)
   if (resonance > 1) {
     g.font = font(UI_FONT, 14)
     g.fillStyle = RESONANT
-    g.fillText(`RESONANCE ×${resonance}`, 14, 42)
+    g.fillText(`RESONANCE ×${resonance}`, x, y + 42)
   }
 }
