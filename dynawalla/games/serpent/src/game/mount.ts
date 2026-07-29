@@ -7,11 +7,17 @@
  * is the entire point of hitstop.
  */
 
+import {
+  createInstructions,
+  onInsetsChange,
+  safeInsets,
+} from "../../../../packs/shared/game-chrome/index.ts";
 import type { Host, Mounted } from "../contract.ts";
 import { createAudio } from "./audio.ts";
 import { createInput } from "./input.ts";
 import { simDelta, updateCamera } from "./fx/camera.ts";
 import { createRenderer, type View } from "./render/scene.ts";
+import { hudLayout, soundTarget } from "./render/chrome.ts";
 import { drawHud } from "./render/hud.ts";
 import { confirmPressed, createWorld, stepWorld, type World } from "./world.ts";
 import { clamp } from "./num.ts";
@@ -59,9 +65,15 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
     const rect = el.getBoundingClientRect();
     const w = Math.max(200, Math.round(rect.width || window.innerWidth));
     const h = Math.max(200, Math.round(rect.height || window.innerHeight));
-    renderer.resize(w, h, Math.min(window.devicePixelRatio || 1, 2.5));
+    // Measured every layout, never cached from mount: a rotation trades one top
+    // inset for two side ones, and iPadOS changes them when the pack is resized
+    // in Split View. Read once and you are correct until the first rotation.
+    renderer.resize(w, h, Math.min(window.devicePixelRatio || 1, 2.5), safeInsets());
   }
   layout();
+  // A rotation does not always change the element's box — a square-ish split
+  // view can rotate and keep its size — but it always changes the insets.
+  const stopInsets = onInsetsChange(() => layout());
 
   const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => layout()) : null;
   ro?.observe(el);
@@ -90,15 +102,18 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
   let showDebug = false;
   let disposed = false;
 
+  /**
+   * Does this tap land on the sound switch?
+   *
+   * The switch's position comes from the same `hudLayout` the renderer draws it
+   * with. This used to carry its own copy of the four expressions, which is one
+   * copy too many — the drawn control and its target would have parted company
+   * the moment either moved, and honouring the home indicator moves it.
+   */
   function soundHit(x: number, y: number): boolean {
     const v = renderer.view;
-    const u = Math.min(v.w, v.h);
-    const pad = Math.max(14, u * 0.045);
-    const sr = Math.max(13, u * 0.032);
-    const cx = v.w - pad - sr;
-    const cy = v.h - pad - sr;
-    const box = Math.max(24, sr * 1.9);
-    return Math.abs(x - cx) < box && Math.abs(y - cy) < box;
+    const t = soundTarget(hudLayout(v.w, v.h, v.insets));
+    return x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h;
   }
 
   function frame(t: number): void {
@@ -158,6 +173,67 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
   }
   raf = requestAnimationFrame(frame);
 
+  /* ------------------------------ how to play ---------------------------- */
+
+  // SERPENT taught nothing. A child was shown a snake, a field of numbers and
+  // the words "TAP TO DIVE", and the one rule that IS the game — that the thing
+  // written across the arena floor decides which numbers you may eat, and that
+  // it changes — was never said anywhere. Watching a tail get shorter is not an
+  // explanation. The manual stays reachable during a dive, because the moment a
+  // child needs the rules is never the title screen.
+  const guide = createInstructions(el, {
+    title: "SERPENT",
+    summary: [
+      "You are a sea snake. Numbers float in the water.",
+      "A rule is written big across the middle. Eat only the numbers that follow it.",
+    ],
+    sections: [
+      {
+        heading: "Swimming",
+        lines: [
+          "Hold your finger on the screen and drag. The snake swims that way.",
+          "Drag further from where you started and the snake goes faster.",
+          "On a keyboard, use the arrow keys. Hold shift to go faster.",
+        ],
+      },
+      {
+        heading: "The rule in the middle",
+        lines: [
+          "It says which numbers you are allowed to eat.",
+          "\u201C= 12\u201D means eat numbers that equal 12.",
+          "\u201C> 5\u201D means eat numbers bigger than 5.",
+          "\u201C< 5\u201D means eat numbers smaller than 5.",
+          "\u201C6 \u00d7 ?\u201D means eat numbers you get by counting up in sixes: 6, 12, 18, 24.",
+        ],
+      },
+      {
+        heading: "The rule changes",
+        lines: [
+          "After a while the rule in the middle swaps to a new one.",
+          "When it swaps, the numbers you were chasing may now be the wrong ones.",
+          "Read it again every time it changes. That is the whole game.",
+        ],
+      },
+      {
+        heading: "Eating",
+        lines: [
+          "Eat a right number and your tail grows longer.",
+          "Eat a wrong number and you cough up part of your tail.",
+          "Eat several right ones in a row and the ring in the corner fills up. A full ring gives you a shield.",
+        ],
+      },
+      {
+        heading: "Staying alive",
+        lines: [
+          "Do not swim into your own tail.",
+          "Do not push into the glowing edge of the water for long.",
+          "Deeper down, the water gets smaller and some numbers start chasing you.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  });
+
   return {
     world,
     view: renderer.view,
@@ -166,6 +242,8 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
     unmount(): void {
       disposed = true;
       cancelAnimationFrame(raf);
+      guide.destroy();
+      stopInsets();
       ro?.disconnect();
       window.removeEventListener("resize", layout);
       window.removeEventListener("orientationchange", layout);
