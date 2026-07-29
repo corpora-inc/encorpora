@@ -1,14 +1,20 @@
 /**
  * Head-up display.
  *
- * The equation lives in the *world*, at the top of the trench, because the
- * husks are born out of it — that fan-out is the entire tutorial. Everything
- * else is deliberately tiny and in the corners: score, lives, and a focus bar
- * one pixel thick along the bottom edge. Nothing explains anything.
+ * The equation belongs at the top of the trench, because the husks are born out
+ * of it — that fan-out is the entire tutorial. Everything else is deliberately
+ * tiny and in the corners: score, lives, and a focus bar one pixel thick along
+ * the bottom edge. Nothing explains anything.
+ *
+ * Every position here comes from `hudLayout.ts` rather than from `w`/`h`
+ * directly, because `w`/`h` are the whole glass and this game's `cover`
+ * viewport means the glass includes the notch, the home indicator and two 44px
+ * squares the host paints its own controls into. The trench still uses the
+ * whole glass; only the type moves.
  */
 
 import { project } from "../core/camera.ts";
-import { EQUATION_Y, SHIP_Y } from "../core/config.ts";
+import { SHIP_Y } from "../core/config.ts";
 import { C, rgba } from "../core/palette.ts";
 import { drawGlow, drawGlyph, getGlyph } from "../render/bake.ts";
 import { clamp, ease } from "../render/draw.ts";
@@ -20,16 +26,21 @@ const font = (size: number): string => UI_FONT.replace("%SIZE%", String(Math.rou
 export function drawEquation(world: World): void {
   const q = world.question;
   if (!q) return;
-  const { ctx, cam } = world;
+  const { ctx, hud } = world;
   const age = world.time - world.askedAt;
   const pop = ease.outBack(clamp(age / 0.42, 0, 1));
   const bob = Math.sin(world.time * 1.3) * 1.6;
-  const p = project(cam, 0, EQUATION_Y + bob, 0);
+  // The box, not the raw projection: the accusation is the one thing in this
+  // game a child MUST read, and it is centred and wide, so on a phone it ran
+  // under the exit control at one end and the how-to-play control at the other.
+  // `hudLayout` keeps it in the channel between them and lets the trench behind
+  // it carry on to the glass.
+  const p = { x: hud.cx, y: hud.equation.y + hud.equation.h / 2 - bob * 1.2 };
   const glyphMetrics = getGlyph(q.prompt, C.amber, 800);
   // A two-step prompt is three times the width of "8 + 5", so the type size
-  // fits the *sprite* to the viewport rather than trusting a constant.
-  const widthLimited = (world.w * 0.9 * 92) / glyphMetrics.w;
-  const size = Math.min(world.h * 0.085, widthLimited) * (0.55 + pop * 0.45);
+  // fits the *sprite* to the box rather than trusting a constant.
+  const widthLimited = (hud.equation.w * 92) / glyphMetrics.w;
+  const size = Math.min(hud.equation.h / 1.35, widthLimited) * (0.55 + pop * 0.45);
 
   ctx.globalCompositeOperation = "lighter";
   drawGlow(ctx, C.amber, p.x, p.y, size * 2.2, 0.05 + (1 - clamp(age / 0.6, 0, 1)) * 0.14);
@@ -46,13 +57,12 @@ export function drawEquation(world: World): void {
 }
 
 export function drawHud(world: World): void {
-  const { ctx, w, h } = world;
-  const pad = Math.max(14, Math.min(w, h) * 0.045);
+  const { ctx, hud } = world;
 
-  // Lives — small ship silhouettes, top left.
+  // Lives — small ship silhouettes, top left, clear of the host's exit control.
   for (let i = 0; i < world.lives; i++) {
-    const x = pad + i * 20;
-    const y = pad;
+    const x = hud.lives.x + 7 + i * 20;
+    const y = hud.lives.y + hud.lives.h / 2;
     ctx.beginPath();
     ctx.moveTo(x, y - 8);
     ctx.lineTo(x + 6.5, y + 6);
@@ -63,28 +73,32 @@ export function drawHud(world: World): void {
     ctx.fill();
   }
 
-  // Score — top right, warm, with a soft halo instead of a shadow pass.
+  // Score — top right, warm, with a soft halo instead of a shadow pass. Right
+  // edge clear of the host's how-to-play control; a long score grows leftwards,
+  // away from it.
   const scoreText = String(Math.round(world.displayScore));
-  const size = Math.max(20, Math.min(w, h) * 0.052);
+  const size = hud.scoreSize;
+  const scoreRight = hud.score.x + hud.score.w;
+  const scoreY = hud.score.y + hud.score.h / 2;
   ctx.font = font(size);
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
   ctx.globalCompositeOperation = "lighter";
-  drawGlow(ctx, C.amber, w - pad - ctx.measureText(scoreText).width / 2, pad, size * 1.5, 0.1);
+  drawGlow(ctx, C.amber, scoreRight - ctx.measureText(scoreText).width / 2, scoreY, size * 1.5, 0.1);
   ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = C.amber;
-  ctx.fillText(scoreText, w - pad, pad);
+  ctx.fillText(scoreText, scoreRight, scoreY);
 
   // Wave, small and quiet beneath the score.
   ctx.font = font(size * 0.42);
   ctx.fillStyle = rgba(C.cyan, 0.55);
-  ctx.fillText(`WAVE ${world.wave}`, w - pad, pad + size * 0.85);
+  ctx.fillText(`WAVE ${world.wave}`, scoreRight, hud.wave.y + hud.wave.h / 2);
 
   // Combo, beside the ship, only once it means something.
   if (world.combo >= 2) {
     const p = project(world.cam, world.ship.x, SHIP_Y + 30, 0);
     const grow = 1 + Math.min(0.7, world.combo * 0.04);
-    const cs = Math.max(16, Math.min(w, h) * 0.036) * grow;
+    const cs = Math.max(16, Math.min(hud.safe.w, hud.safe.h) * 0.036) * grow;
     ctx.font = font(cs);
     ctx.textAlign = "center";
     ctx.fillStyle = rgba(C.cyan, 0.5 + Math.min(0.45, world.combo * 0.03));
@@ -98,121 +112,130 @@ export function drawHud(world: World): void {
 }
 
 function drawFocusBar(world: World): void {
-  const { ctx, w, h } = world;
+  const { ctx, hud } = world;
   const full = world.focus >= 1;
   const barH = full ? 5 : 3;
-  const y = h - barH - 2;
-  const half = (w * 0.5 - 12) * clamp(world.focus, 0, 1);
+  // Above the home indicator, not under it. It is thin, but it is the only
+  // thing that tells a child the slow-motion is charged.
+  const y = hud.focusY - barH;
+  const reach = hud.focusHalfW;
+  const half = reach * clamp(world.focus, 0, 1);
   ctx.fillStyle = rgba(full ? C.white : C.ship, full ? 0.55 + Math.sin(world.time * 8) * 0.3 : 0.42);
-  ctx.fillRect(w / 2 - half, y, half * 2, barH);
+  ctx.fillRect(hud.cx - half, y, half * 2, barH);
   if (world.focusT > 0) {
     // Burning down: the bar drains from the middle out, in the focus colour.
     const t = clamp(world.focusT / 2.6, 0, 1);
     ctx.fillStyle = rgba(C.plankton, 0.7);
-    ctx.fillRect(w / 2 - (w * 0.5 - 12) * t, y, (w - 24) * t, barH);
+    ctx.fillRect(hud.cx - reach * t, y, reach * 2 * t, barH);
   }
 }
 
 function drawBanner(world: World): void {
   if (world.bannerT <= 0 || !world.banner) return;
-  const { ctx, w, h } = world;
+  const { ctx, hud } = world;
+  const { w, h } = hud.safe;
   const t = clamp(world.bannerT / 1.5, 0, 1);
   const pop = ease.outCubic(clamp((1.5 - world.bannerT) / 0.3, 0, 1));
   const size = Math.min(w * 0.1, h * 0.062) * (0.7 + pop * 0.3);
   // Low in the frame: the top third is where the problem and the husks live,
   // and a banner across them would hide the only thing that matters.
-  const y = h * 0.66;
+  const y = hud.safe.y + h * 0.66;
   ctx.globalAlpha = Math.min(1, t * 2) * 0.9;
   ctx.globalCompositeOperation = "lighter";
-  drawGlow(ctx, C.cyan, w / 2, y, size * 3.4, 0.12);
+  drawGlow(ctx, C.cyan, hud.cx, y, size * 3.4, 0.12);
   ctx.globalCompositeOperation = "source-over";
   ctx.font = font(size);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillStyle = C.white;
-  ctx.fillText(world.banner, w / 2, y);
+  ctx.fillText(world.banner, hud.cx, y);
   if (world.bannerSub) {
     ctx.font = font(size * 0.4);
     ctx.fillStyle = rgba(C.cyan, 0.75);
-    ctx.fillText(world.bannerSub, w / 2, y + size * 0.85);
+    ctx.fillText(world.bannerSub, hud.cx, y + size * 0.85);
   }
   ctx.globalAlpha = 1;
 }
 
 export function drawTitle(world: World): void {
-  const { ctx, w, h } = world;
+  const { ctx, hud } = world;
+  const { w, h } = hud.safe;
   const t = clamp(world.phaseT / 0.9, 0, 1);
   const size = Math.min(w * 0.22, h * 0.16);
-  const y = h * 0.4;
+  const y = hud.safe.y + h * 0.4;
   ctx.globalAlpha = ease.outCubic(t);
   ctx.globalCompositeOperation = "lighter";
-  drawGlow(ctx, C.amber, w / 2, y, size * 1.9, 0.09);
+  drawGlow(ctx, C.amber, hud.cx, y, size * 1.9, 0.09);
   ctx.globalCompositeOperation = "source-over";
-  drawGlyph(ctx, getGlyph("GUILTY", C.amber, 900), w / 2, y, size * ease.outBack(clamp(t, 0, 1)));
+  drawGlyph(ctx, getGlyph("GUILTY", C.amber, 900), hud.cx, y, size * ease.outBack(clamp(t, 0, 1)));
 
   ctx.font = font(Math.max(13, size * 0.13));
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillStyle = rgba(C.cyan, 0.5 + Math.sin(world.time * 3) * 0.28);
-  ctx.fillText(world.touch ? "TAP TO BEGIN" : "PRESS ANY KEY", w / 2, y + size * 0.72);
+  ctx.fillText(world.touch ? "TAP TO BEGIN" : "PRESS ANY KEY", hud.cx, y + size * 0.72);
   if (world.best > 0) {
     ctx.fillStyle = rgba(C.amber, 0.45);
     ctx.font = font(Math.max(11, size * 0.1));
-    ctx.fillText(`BEST ${world.best}`, w / 2, y + size * 0.95);
+    ctx.fillText(`BEST ${world.best}`, hud.cx, y + size * 0.95);
   }
   ctx.globalAlpha = 1;
 }
 
 export function drawGameOver(world: World): void {
-  const { ctx, w, h } = world;
+  const { ctx, hud } = world;
+  const { w, h } = hud.safe;
   const t = clamp(world.phaseT / 0.8, 0, 1);
+  // The dim covers the whole GLASS — a scrim that stopped at the safe area
+  // would draw a bright band across the notch.
   ctx.fillStyle = rgba("#02060c", 0.55 * t);
-  ctx.fillRect(0, 0, w, h);
+  ctx.fillRect(0, 0, world.w, world.h);
   const size = Math.min(w * 0.16, h * 0.1);
-  const y = h * 0.38;
+  const y = hud.safe.y + h * 0.38;
   ctx.globalCompositeOperation = "lighter";
-  drawGlow(ctx, C.hostile, w / 2, y, size * 2.4, 0.12 * t);
+  drawGlow(ctx, C.hostile, hud.cx, y, size * 2.4, 0.12 * t);
   ctx.globalCompositeOperation = "source-over";
   ctx.font = font(size * 0.62);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.globalAlpha = t;
   ctx.fillStyle = rgba(C.hostile, 0.9);
-  ctx.fillText("THE TRENCH TAKES YOU", w / 2, y);
+  ctx.fillText("THE TRENCH TAKES YOU", hud.cx, y);
 
   ctx.font = font(size * 1.1);
   ctx.fillStyle = C.amber;
-  ctx.fillText(String(world.score), w / 2, y + size * 1.05);
+  ctx.fillText(String(world.score), hud.cx, y + size * 1.05);
   ctx.font = font(size * 0.3);
   ctx.fillStyle = rgba(C.cyan, 0.6);
   ctx.fillText(
     `BEST ${world.best}   ·   WAVE ${world.wave}   ·   BEST RUN ×${world.bestCombo}`,
-    w / 2,
+    hud.cx,
     y + size * 1.75,
   );
   ctx.fillStyle = rgba(C.white, 0.35 + Math.sin(world.time * 3) * 0.25);
   ctx.font = font(size * 0.32);
-  ctx.fillText(world.touch ? "TAP TO DIVE AGAIN" : "PRESS ANY KEY", w / 2, y + size * 2.5);
+  ctx.fillText(world.touch ? "TAP TO DIVE AGAIN" : "PRESS ANY KEY", hud.cx, y + size * 2.5);
   ctx.globalAlpha = 1;
 }
 
 /** Second wind: the run is over unless one more answer lands. */
 export function drawSecondWind(world: World): void {
-  const { ctx, w, h } = world;
+  const { ctx, hud } = world;
+  const { w, h } = hud.safe;
   const t = clamp(world.phaseT / 0.6, 0, 1);
   ctx.fillStyle = rgba("#01040a", 0.42 * t);
-  ctx.fillRect(0, 0, w, h);
+  ctx.fillRect(0, 0, world.w, world.h);
   const size = Math.min(w * 0.1, h * 0.06);
   ctx.font = font(size * 0.5);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillStyle = rgba(C.hostile, 0.6 + Math.sin(world.time * 4) * 0.3);
   // Above the ship, under the action: the husks stay readable.
-  ctx.fillText("ONE MORE", w / 2, h * 0.8);
+  ctx.fillText("ONE MORE", hud.cx, hud.safe.y + h * 0.8);
 }
 
 function drawStats(world: World): void {
-  const { ctx, h } = world;
+  const { ctx, hud } = world;
   const s = frameStats(world);
   ctx.font = font(12);
   ctx.textAlign = "left";
@@ -220,8 +243,8 @@ function drawStats(world: World): void {
   ctx.fillStyle = "rgba(140,255,220,0.75)";
   ctx.fillText(
     `${s.fps.toFixed(1)} fps · present ${s.present.toFixed(2)}ms (p95 ${s.p95.toFixed(1)}) · cost ${s.cost.toFixed(2)}ms · p${s.particles} · q${world.quality.toFixed(2)}`,
-    10,
-    h - 10,
+    hud.safe.x + 10,
+    hud.safe.y + hud.safe.h - 10,
   );
 }
 
