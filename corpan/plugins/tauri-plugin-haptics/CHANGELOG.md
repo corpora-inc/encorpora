@@ -11,6 +11,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- Two new `impact(style)` values, `selection` and `error`. Purely additive:
+  no existing style, command, argument type or permission changed, and Corpán
+  sends neither string. `selection` is `UISelectionFeedbackGenerator`
+  (`selectionChanged()`) on iOS and the shortest still-felt one-shot on
+  Android; `error` is `UINotificationFeedbackGenerator.error` on iOS and a
+  heavier, slower waveform than `warning` on Android. Added for Dynawalla,
+  which had no native haptics at all — it drove `navigator.vibrate`, which
+  does not exist in iOS WKWebView.
+
 ## [0.1.0] - 2026-06-16
 
 ### Added

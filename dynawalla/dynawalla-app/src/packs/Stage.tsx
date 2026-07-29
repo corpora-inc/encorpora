@@ -19,7 +19,7 @@ import { useEffect, useMemo, useState } from "react"
 import { create } from "zustand"
 
 import type { Settings } from "../../../packs/sdk/src/index.ts"
-import { BUILD_VERSION } from "../app/platform.ts"
+import { BUILD_VERSION, hapticPorts } from "../app/platform.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { PassSheet } from "../pass/PassSheet.tsx"
@@ -112,6 +112,10 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
       createServices({
         profileId,
         settings: forPack,
+        // Resolved once at load, not per launch: whether this build has a
+        // native bridge and whether this WebView has `navigator.vibrate` are
+        // facts about the device, and neither can change while a child plays.
+        haptics: hapticPorts,
         onProgress: setProgress,
         onEnd: () => onLeave(),
         onMilestone: (name) => console.info(`[packs] ${packId} reached ${name}`),

@@ -84,6 +84,12 @@ export const NATIVE_CALLS: readonly NativeCall[] = [
   {
     module: "@tauri-apps/api/core",
     fn: "invoke",
+    permission: "haptics:allow-impact",
+    why: "Real haptics. `navigator.vibrate` does not exist in iOS WKWebView, so a WebView-only implementation is a silent no-op on every iPhone and iPad; the plugin reaches UIImpactFeedbackGenerator and friends. One command, never haptics:default.",
+  },
+  {
+    module: "@tauri-apps/api/core",
+    fn: "invoke",
     permission: null,
     command: "packs_list",
     why: "The pack runtime reads what is installed. Packs are the product; the shell is what installs and serves them.",
