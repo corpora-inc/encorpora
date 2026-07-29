@@ -160,6 +160,22 @@ export class Feel {
     return this.flashColor
   }
 
+  /**
+   * Move every wall-clock mark forward by `ms`, because the game was stopped
+   * for that long and did not experience it.
+   *
+   * `hitstopMs` is a countdown against real elapsed time and is untouched — it
+   * was never spent while nothing was advancing. `slowUntil` and `lastFlashAt`
+   * are absolute, so without this a slow-motion in progress when the manual
+   * opened would be over the instant the child closed it, and the first flash
+   * back would ignore the rate limit.
+   */
+  shift(ms: number): void {
+    this.slowUntil += ms
+    this.lastFlashAt += ms
+    this.nowMs += ms
+  }
+
   reset(): void {
     this.trauma = 0
     this.kickX = 0

@@ -95,6 +95,17 @@ export class Audio {
     if (this.ctx && this.ctx.state === "suspended") void this.ctx.resume();
   }
 
+  /**
+   * Stop the graph dead while the game is stopped.
+   *
+   * The shared how-to-play sheet already holds every context the pack owns, so
+   * this is not for the manual — it is for a sheet the HOST raises over a still
+   * mounted pack, which nothing else in this package would silence.
+   */
+  suspend(): void {
+    if (this.ctx && this.ctx.state === "running") void this.ctx.suspend();
+  }
+
   dispose(): void {
     try {
       void this.ctx?.close();

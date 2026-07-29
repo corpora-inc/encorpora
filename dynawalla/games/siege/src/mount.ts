@@ -83,6 +83,16 @@ export class Siege {
   private raf = 0;
   private lastT = 0;
   private destroyed = false;
+  /** True while the siege is frozen: the wave does not march and nothing draws. */
+  private paused = false;
+  /**
+   * The manual only lifts a pause it put on itself. Nothing else pauses SIEGE
+   * today, but the day something does — a host sheet, a parent gate — a child
+   * closing the rules underneath it must not be handed back a running wave.
+   */
+  private heldForManual = false;
+  /** `performance.now()` when the freeze began, so resume can rebase off it. */
+  private pausedAt = 0;
 
   private q: Question | null = null;
   private order: number[] = [0, 1, 2, 3];
@@ -209,6 +219,21 @@ export class Siege {
         },
       ],
       reducedMotion: this.cam.reducedMotion,
+      // A child opens the rules BECAUSE the wave is winning, and the wave is
+      // what keeps walking while they read: the spawner keeps releasing, the
+      // march keeps advancing, and every enemy that reaches the forge takes a
+      // life the child was never shown losing. The overcharge window is worse
+      // still — it is a countdown, and it would expire behind the sheet.
+      onOpen: () => {
+        if (this.paused) return;
+        this.heldForManual = true;
+        this.setPaused(true);
+      },
+      onClose: () => {
+        if (!this.heldForManual) return;
+        this.heldForManual = false;
+        this.setPaused(false);
+      },
     });
 
     this.nextQuestion();
@@ -241,6 +266,48 @@ export class Siege {
     if ((globalThis as unknown as { __siege?: unknown }).__siege === this) {
       delete (globalThis as unknown as { __siege?: unknown }).__siege;
     }
+  }
+
+  /**
+   * Stop the siege dead, or start it again.
+   *
+   * **Frozen means frozen.** The frame callback keeps being scheduled — it has
+   * to, or there would be nothing left to resume with — but it steps nothing and
+   * draws nothing. Everything that moves in SIEGE is downstream of this one
+   * function: `clock.advance` (and with it `clock.wall`, which the cold anvil
+   * and every canvas animation are measured against), `step()` (the wave
+   * spawner, the enemy march, tower fire, the intermission countdown, the leak
+   * that costs a life), the particles, the camera, the build hint, and the
+   * overcharge window's own countdown. One `return` above them takes all of
+   * them, and the canvas holds its last painted frame underneath the sheet.
+   *
+   * `coldUntil` deliberately needs no rebasing: it is measured against
+   * `clock.wall`, which is a simulation accumulator this function has already
+   * stopped. Only marks taken from the real clock have to move.
+   */
+  private setPaused(on: boolean): void {
+    if (on === this.paused) return;
+    this.paused = on;
+    if (on) {
+      this.pausedAt = performance.now();
+      return;
+    }
+    // `askedAt` is the child's thinking time, and it is the one mark here taken
+    // from the wall clock. Without the shift the next `report` would carry the
+    // sheet's seconds, and the learner model would read a child who was shown
+    // nothing as a child who could not answer.
+    //
+    // `Math.min(now, ...)` covers a mark that was set DURING the hold: a correct
+    // answer re-asks on a 190ms `setTimeout` and the focus overlay closes on a
+    // 260ms one, and a timer that fires behind the sheet must not be shifted
+    // into the future and reported as negative thinking time.
+    const now = performance.now();
+    const held = now - this.pausedAt;
+    this.askedAt = Math.min(now, this.askedAt + held);
+    // The frame delta's other end. Without this the resumed frame measures the
+    // whole read; `Clock.advance` would clamp it to 50ms, but `worstFrame` is
+    // read raw by the playtest harness and would report the sheet as a stall.
+    this.lastT = now;
   }
 
   private onResize = (): void => this.resize();
@@ -428,6 +495,13 @@ export class Siege {
   private frame = (now: number): void => {
     if (this.destroyed) return;
     this.raf = requestAnimationFrame(this.frame);
+    if (this.paused) {
+      // Nothing steps and nothing is drawn. `lastT` still tracks so that a
+      // resume — or a rotation that resizes underneath the sheet — cannot land
+      // one enormous frame, and so `worstFrame` stays a measure of the game.
+      this.lastT = now;
+      return;
+    }
     const raw = (now - this.lastT) / 1000;
     this.lastT = now;
 

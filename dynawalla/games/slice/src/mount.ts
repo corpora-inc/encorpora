@@ -105,7 +105,10 @@ type Slash = {
 
 const CHAIN_WINDOW = 0.75 // seconds; a cut inside this extends the chain
 
-export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
+export function mountSlice(
+  el: HTMLElement,
+  host: Host,
+): { unmount(): void; setPaused(paused: boolean): void } {
   // ── surface ──────────────────────────────────────────────────────────────
   const root = document.createElement("div")
   root.style.cssText =
@@ -122,6 +125,22 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
 
   // ── systems ──────────────────────────────────────────────────────────────
   const reduced = host.prefersReducedMotion()
+
+  // ── the clock, and who is allowed to stop it ──────────────────────────────
+  //
+  // THE SPLIT had no pause at all. The host can put a sheet over a still-mounted
+  // pack, and the child can open the manual mid-run, and underneath either one
+  // the market kept throwing: bombs kept arriving, a live question's window kept
+  // draining, and a child who opened the rules *because they were stuck* was
+  // charged the reading time and sometimes lost the lamp while reading about it.
+  //
+  // Declared here rather than beside the loop because `createInstructions` below
+  // closes over them, and a `let` is in its temporal dead zone until this line.
+  let paused = false
+  let pausedAt = 0
+  // The manual only lifts a pause it put on itself. A game the host had already
+  // paused must not be handed back running because a child closed the rules.
+  let heldForManual = false
 
   // How to play. THE SPLIT shipped with none: a child was handed a screen of
   // flying gourds and had to infer from nothing that a swipe cuts, that a cut
@@ -172,6 +191,19 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
       },
     ],
     reducedMotion: reduced,
+    // The one part of pausing the shared sheet cannot do for us: sound, keys and
+    // taps are already held over there, but nothing outside this file knows what
+    // this game's clock is.
+    onOpen: () => {
+      if (paused) return
+      heldForManual = true
+      setPaused(true)
+    },
+    onClose: () => {
+      if (!heldForManual) return
+      heldForManual = false
+      setPaused(false)
+    },
   })
 
   const gov = new TierGovernor(detectTier())
@@ -1223,6 +1255,10 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function onDown(e: PointerEvent): void {
+    // A host sheet is not the manual: the shared module's pointer swallow only
+    // covers its own scrim, so the game has to refuse the touch itself. A tap
+    // behind a paywall must not start a blade, and must not restart the run.
+    if (paused) return
     void audio.start()
     if (over && performance.now() - overAt > 550) {
       restart()
@@ -1244,6 +1280,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function onMove(e: PointerEvent): void {
+    if (paused) return
     const b = blades.get(e.pointerId)
     if (!b) return
     const r = canvas.getBoundingClientRect()
@@ -1280,6 +1317,7 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   canvas.addEventListener("contextmenu", (e) => e.preventDefault())
 
   function onKey(e: KeyboardEvent): void {
+    if (paused) return
     if (e.key === "m" || e.key === "M") audio.setEnabled(!audio.enabled)
     if (e.key === "p" || e.key === "P") showPerf = !showPerf
     if ((e.key === "Enter" || e.key === " ") && over) restart()
@@ -1288,7 +1326,9 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
 
   function onVisibility(): void {
     if (document.hidden) audio.suspend()
-    else audio.resume()
+    // Coming back to a paused game must not bring the sound back with it: the
+    // sheet is still up, and the whole complaint was hearing the game behind it.
+    else if (!paused) audio.resume()
   }
   document.addEventListener("visibilitychange", onVisibility)
 
@@ -2006,6 +2046,15 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   function frame(nowMs: number): void {
     if (!running) return
     raf = requestAnimationFrame(frame)
+    if (paused) {
+      // Nothing steps, nothing resolves and nothing is drawn: the canvas holds
+      // its last frame, which is exactly what belongs under the scrim. `last`
+      // still tracks the real clock so the resume cannot land one enormous
+      // frame — a minute behind the manual would otherwise arrive as a minute
+      // of gravity in a single step.
+      last = nowMs
+      return
+    }
     const rawDt = Math.min(64, nowMs - last)
     last = nowMs
     if (gov.sample(rawDt)) resize()
@@ -2030,6 +2079,53 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
     draw(nowMs)
   }
   raf = requestAnimationFrame(frame)
+
+  /**
+   * Stop or start the market's clock.
+   *
+   * Idempotent in both directions: two pauses are one pause, and resuming a
+   * running game is nothing. The host calls this around its own sheets, and the
+   * manual calls it around itself.
+   */
+  function setPaused(on: boolean): void {
+    if (on === paused) return
+    paused = on
+    if (on) {
+      pausedAt = performance.now()
+      // A finger that was mid-stroke when the sheet came up will never get its
+      // `pointerup` — the shared module swallows it — so the ribbons are ended
+      // here rather than left hanging for the length of the read.
+      for (const b of blades.values()) b.end()
+      audio.suspend()
+      return
+    }
+    // Every wall-clock mark moves forward by exactly the time the game was
+    // stopped. This is the whole difference between "the game froze" and "the
+    // game skipped": without it, a three-minute read makes the live question
+    // expire on the first frame back, every bomb's fuse tick at once, and the
+    // next `report` bills the child three minutes of thinking time they spent
+    // reading the rules.
+    //
+    // The shift is UNIFORM, which is what keeps every comparison between two
+    // marks — `b.bornAt >= waveBornCut`, `nowMs > b.cuttableAt` — answering the
+    // same way it did before the pause.
+    const held = performance.now() - pausedAt
+    overAt += held
+    liveQAt += held
+    waveBornCut += held
+    for (const b of world.bodies) {
+      b.bornAt += held
+      b.cuttableAt += held
+      b.nextFuseAt += held
+    }
+    // Hitstop and slow-motion are wall-clock too, over in `feel`.
+    feel.shift(held)
+    // Blade ribbons are deliberately NOT shifted. A stroke from before the read
+    // has expired, and bringing it back would hand the child a live blade they
+    // are not touching.
+    last = performance.now()
+    audio.resume()
+  }
 
   // Diagnostics, opt-in via `?debug` on the harness URL. Not attached in normal
   // play, so nothing leaks into the host page. This is what the automated
@@ -2096,6 +2192,8 @@ export function mountSlice(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   return {
+    setPaused,
+
     unmount(): void {
       running = false
       guide.destroy()
