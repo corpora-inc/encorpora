@@ -599,7 +599,10 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
     raf = requestAnimationFrame(frame);
     const dtReal = (now - last) / 1000;
     last = now;
-    if (paused) return;
+    // `guide.isOpen` joins `paused` for the same reason: the wall keeps rising
+    // and the ball keeps travelling, so a child who opens the rules comes back
+    // to a lost life they never had a chance to save.
+    if (paused || guide.isOpen) return;
     tick(dtReal);
   };
 

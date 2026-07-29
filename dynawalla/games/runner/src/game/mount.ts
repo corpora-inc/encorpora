@@ -853,6 +853,13 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     last = now;
     if (rawDt <= 0) return;
 
+    // The manual is open: hold the world still. VOLTA answers by which lane you
+    // are in, so a road that kept moving while a child read the rules would
+    // carry them through gate after gate and report each one as a wrong answer
+    // they never gave. `last` is already advanced above, so lifting the manual
+    // does not deliver one enormous frame.
+    if (guide.isOpen) return;
+
     fpsAcc += rawDt;
     fpsFrames++;
     if (rawDt > worstFrame) worstFrame = rawDt;
