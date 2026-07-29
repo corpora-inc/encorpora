@@ -45,12 +45,29 @@ export function mountStreet(
   const audio = new StreetAudio()
   const rng = new Rng((Date.now() ^ 0x57ee7) >>> 0)
 
+  const street = new Street({
+    rng,
+    timing: reduced ? TIMING_REDUCED : TIMING,
+    deal: () => {
+      const q = host.next({ domain: "add" })
+      return { id: q.id, prompt: q.prompt, answer: q.answer, distractors: q.distractors }
+    },
+  })
+  street.setStreetWidth(scene.width)
+
+  /** Did the manual stop the street? Only then may closing it start again. */
+  let heldForManual = false
+
   // How to play. Nothing on the street says what a stud is, and nothing is
   // going to: primeness here is a wall you walk into, not a fact you are given.
   // But the two verbs are not discoverable — a child who does not know that a
   // stud is a claim about the number is tapping brass at random. The manual
   // stays reachable during play, because the moment a child needs the rules is
   // never the title.
+  //
+  // Built after the street rather than before it because it stops the street:
+  // `onOpen`/`onClose` below are the only part of pausing this game has to opt
+  // into, and they need something to pause.
   const guide = createInstructions(el, {
     title: "FOUNDRY STREET",
     summary: [
@@ -105,17 +122,20 @@ export function mountStreet(
       },
     ],
     reducedMotion: reduced,
-  })
-
-  const street = new Street({
-    rng,
-    timing: reduced ? TIMING_REDUCED : TIMING,
-    deal: () => {
-      const q = host.next({ domain: "add" })
-      return { id: q.id, prompt: q.prompt, answer: q.answer, distractors: q.distractors }
+    // The manual only lifts a pause it put on itself. A street the host had
+    // already stopped — a transition sheet, a parent gate — must not be handed
+    // back running because the child closed the rules.
+    onOpen: () => {
+      if (street.paused) return
+      heldForManual = true
+      street.pause()
+    },
+    onClose: () => {
+      if (!heldForManual) return
+      heldForManual = false
+      street.resume()
     },
   })
-  street.setStreetWidth(scene.width)
 
   let best = blocksCleared()
   let running = true
@@ -280,11 +300,21 @@ export function mountStreet(
   return {
     // The host puts a sheet over the frame — a transition, a parent gate — and
     // sends `pause` with the pack still mounted and its rAF still firing. The
-    // clock has to stop dead and input has to stop counting: see `Street`.
+    // clock has to stop dead and input has to stop counting: see `Street`. The
+    // game's own how-to-play sheet takes the same pause, above.
     pause(): void {
       street.pause()
     },
     resume(): void {
+      // The rules are still up. Whoever asked for this — the host taking its
+      // own sheet down over the top of the manual — the child is still reading,
+      // and the only thing allowed to start the street again is the rules going
+      // down. Without this the host's resume hands back a running street behind
+      // a scrim, which is the whole defect wearing a different hat.
+      if (guide.isOpen) {
+        heldForManual = true
+        return
+      }
       street.resume()
     },
     unmount(): void {

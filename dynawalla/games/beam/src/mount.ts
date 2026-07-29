@@ -158,6 +158,24 @@ export function mountBeam(el: HTMLElement, host: Host): {
       },
     ],
     reducedMotion: reduced,
+    // The hall keeps descending behind the scrim otherwise. A child opens the
+    // rules BECAUSE they are losing, and the automaton that was two thirds of
+    // the way down when they opened them lands on the floor while they read.
+    //
+    // The manual only lifts a pause it put on itself. The host can already have
+    // a sheet of its own over the frame — a parent gate, a stopping point — and
+    // a child who opens and closes the rules underneath it must not be handed
+    // back a running lattice.
+    onOpen: () => {
+      if (paused) return
+      heldForManual = true
+      setPaused(true)
+    },
+    onClose: () => {
+      if (!heldForManual) return
+      heldForManual = false
+      setPaused(false)
+    },
   })
   const gov = new TierGovernor(detectTier())
   const feel = new Feel({ reducedMotion: reduced })
@@ -186,6 +204,8 @@ export function mountBeam(el: HTMLElement, host: Host): {
   let dpr = 1
   let running = true
   let paused = false
+  /** True only while the pause in force is the one the manual raised. */
+  let heldForManual = false
   let pausedAt = 0
   let over = false
   let overAt = 0

@@ -5,11 +5,12 @@
 // renamed in `render/` and not in `mount.ts`, a value read before it is
 // assigned: all compile, and all crash on the first frame in front of a child.
 //
-// So this mounts the real game against a canvas that records instead of paints,
-// drives several hundred frames through weights hung, plates struck, beams
-// seated and Turks put over, and asserts that nothing threw and that the world
-// actually moved. It is not a rendering test — there are no pixels — it is a
-// test that the whole thing is wired to itself.
+// So this mounts the real game against `./browser.ts` — a canvas that records
+// instead of painting and a clock the test drives by hand — pushes several
+// hundred frames through weights hung, plates struck, beams seated and Turks
+// put over, and asserts that nothing threw and that the world actually moved.
+// It is not a rendering test — there are no pixels — it is a test that the
+// whole thing is wired to itself.
 //
 // It also drives the two pause paths the host can take: the sheet (`pause()`)
 // and a backgrounded tab (`visibilitychange`).
@@ -24,188 +25,7 @@ import { PLACES, planStrikes } from "../game/places.ts"
 import { viewLayout } from "../render/layout.ts"
 import { OPENING_RUNG } from "../game/ladder.ts"
 import { createStubHost } from "../stubHost.ts"
-
-type Listener = (event: unknown) => void
-
-/** A 2D context that answers every call and records how much work it was asked for. */
-function fakeContext(counter: { calls: number; text: string[] }): CanvasRenderingContext2D {
-  const store = new Map<string, unknown>()
-  const noop = (name: string) =>
-    function (...args: unknown[]) {
-      counter.calls++
-      if (name === "fillText" && typeof args[0] === "string") counter.text.push(args[0])
-      // Gradients are the one call whose result is used, so everything returns
-      // something that can take a colour stop.
-      return { addColorStop() {} }
-    }
-  return new Proxy(
-    {},
-    {
-      get(_t, prop: string) {
-        if (store.has(prop)) return store.get(prop)
-        return noop(prop)
-      },
-      set(_t, prop: string, value) {
-        store.set(prop, value)
-        return true
-      },
-    },
-  ) as unknown as CanvasRenderingContext2D
-}
-
-type FakeElement = {
-  id: string
-  style: Record<string, string>
-  width: number
-  height: number
-  listeners: Map<string, Listener[]>
-  appendChild(child: unknown): void
-  append(...children: unknown[]): void
-  setAttribute(name: string, value: string): void
-  focus(): void
-  remove(): void
-  addEventListener(type: string, fn: Listener): void
-  removeEventListener(type: string, fn: Listener): void
-  getBoundingClientRect(): { width: number; height: number; left: number; top: number }
-  getContext(): CanvasRenderingContext2D
-}
-
-function harness(size: { w: number; h: number }, counter: { calls: number; text: string[] }) {
-  const ctx = fakeContext(counter)
-  const make = (): FakeElement => {
-    const listeners = new Map<string, Listener[]>()
-    return {
-      id: "",
-      style: { cssText: "" },
-      width: 0,
-      height: 0,
-      listeners,
-      appendChild() {},
-      append() {},
-      setAttribute() {},
-      focus() {},
-      remove() {},
-      addEventListener(type, fn) {
-        const list = listeners.get(type) ?? []
-        list.push(fn)
-        listeners.set(type, list)
-      },
-      removeEventListener(type, fn) {
-        listeners.set(type, (listeners.get(type) ?? []).filter((f) => f !== fn))
-      },
-      getBoundingClientRect: () => ({ width: size.w, height: size.h, left: 0, top: 0 }),
-      getContext: () => ctx,
-    }
-  }
-  const created: FakeElement[] = []
-  // The shared chrome adds two things this stub has to answer for: the
-  // safe-area probe, which looks itself up by id before making a second one,
-  // and the how-to-play panel, which builds a small tree of buttons and lists.
-  // Both are DOM the game now really does create, so the fake DOM grows to meet
-  // them rather than the game being asked to skip them under test.
-  const doc = {
-    visibilityState: "visible",
-    listeners: new Map<string, Listener[]>(),
-    body: { appendChild() {} },
-    activeElement: null,
-    createElement() {
-      const el = make()
-      created.push(el)
-      return el
-    },
-    getElementById(id: string): FakeElement | null {
-      return created.find((el) => el.id === id) ?? null
-    },
-    addEventListener(type: string, fn: Listener) {
-      const list = doc.listeners.get(type) ?? []
-      list.push(fn)
-      doc.listeners.set(type, list)
-    },
-    removeEventListener(type: string, fn: Listener) {
-      doc.listeners.set(type, (doc.listeners.get(type) ?? []).filter((f) => f !== fn))
-    },
-  }
-  return { host: make(), doc, created, ctx }
-}
-
-type Clock = { now: number }
-type Rig = ReturnType<typeof harness> & {
-  frames: Array<(t: number) => void>
-  /** The wall clock `mount.ts` bills latency against, under the test's control. */
-  clock: Clock
-}
-
-/**
- * Install the browser globals `mount.ts` needs, run `body`, and take them back
- * off again — including when `body` throws, which is the case this file exists
- * to catch.
- */
-function withBrowser(
-  size: { w: number; h: number },
-  counter: { calls: number; text: string[] },
-  body: (rig: Rig) => void,
-): void {
-  const rig = harness(size, counter)
-  const g = globalThis as Record<string, unknown>
-  const saved = new Map<string, PropertyDescriptor | undefined>()
-  const set = (key: string, value: unknown) => {
-    saved.set(key, Object.getOwnPropertyDescriptor(globalThis, key))
-    Object.defineProperty(globalThis, key, { configurable: true, writable: true, value })
-  }
-  const frames: Array<(t: number) => void> = []
-  const clock: Clock = { now: 0 }
-  set("performance", { now: () => clock.now })
-  set("document", rig.doc)
-  set("devicePixelRatio", 2)
-  set("requestAnimationFrame", (fn: (t: number) => void) => {
-    frames.push(fn)
-    return frames.length
-  })
-  set("cancelAnimationFrame", () => {})
-  if (typeof g.addEventListener !== "function") set("addEventListener", () => {})
-  if (typeof g.removeEventListener !== "function") set("removeEventListener", () => {})
-
-  try {
-    body({ ...rig, frames, clock })
-  } finally {
-    for (const [key, descriptor] of saved) {
-      if (descriptor) Object.defineProperty(globalThis, key, descriptor)
-      else Reflect.deleteProperty(globalThis, key)
-    }
-  }
-}
-
-/** The canvas is the second element `mount` creates: the root stand-in, then it. */
-function canvasOf(created: FakeElement[]): FakeElement {
-  const el = created[0]
-  if (!el) throw new Error("mount did not create a canvas")
-  return el
-}
-
-/**
- * Run `n` frames at 60 Hz, draining the rAF queue each time.
- *
- * The wall clock moves with the frames, because it does on a device — which is
- * the whole point of the latency case below: a sheet held up for half a minute
- * moves `performance.now()` by half a minute whether or not the game is running.
- */
-function pump(
-  frames: Array<(t: number) => void>,
-  n: number,
-  from = 0,
-  clock?: Clock,
-): number {
-  let t = from
-  for (let i = 0; i < n; i++) {
-    const next = frames.pop()
-    frames.length = 0
-    if (!next) break
-    t += 16.7
-    if (clock) clock.now = t
-    next(t)
-  }
-  return t
-}
+import { canvasOf, pump, withBrowser, type Listener } from "./browser.ts"
 
 /**
  * Every face on the rack, taken from the real layout rather than guessed. A

@@ -19,7 +19,7 @@ import { simDelta, updateCamera } from "./fx/camera.ts";
 import { createRenderer, type View } from "./render/scene.ts";
 import { hudLayout, soundTarget } from "./render/chrome.ts";
 import { drawHud } from "./render/hud.ts";
-import { confirmPressed, createWorld, stepWorld, type World } from "./world.ts";
+import { confirmPressed, createWorld, setPaused, stepWorld, type World } from "./world.ts";
 import { clamp } from "./num.ts";
 
 const FIXED = 1 / 120;
@@ -82,7 +82,7 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
 
   const onVisibility = (): void => {
     if (document.hidden) {
-      if (world.phase === "play") world.paused = true;
+      if (world.phase === "play") setPaused(world, true);
       audio.ambient(false);
       audio.setBoost(false);
     } else {
@@ -126,13 +126,13 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
 
     if (input.takeMute()) audio.setEnabled(!audio.enabled);
     if (input.takeDebug()) showDebug = !showDebug;
-    if (input.takePause() && world.phase === "play") world.paused = !world.paused;
+    if (input.takePause() && world.phase === "play") setPaused(world, !world.paused);
     if (input.takeConfirm()) {
       if (soundHit(lastTapX, lastTapY)) {
         audio.setEnabled(!audio.enabled);
         if (audio.enabled) audio.ambient(world.phase !== "attract");
       } else if (world.paused) {
-        world.paused = false;
+        setPaused(world, false);
       } else {
         audio.resume();
         confirmPressed(world);
@@ -181,6 +181,12 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
   // it changes — was never said anywhere. Watching a tail get shorter is not an
   // explanation. The manual stays reachable during a dive, because the moment a
   // child needs the rules is never the title screen.
+  //
+  // The water stops while it is up. It is the same pause the P key and the
+  // host's sheet take, and it lifts only what it put on — a child who paused
+  // the dive themselves, then opened the manual, must not find the snake
+  // swimming again because they closed it.
+  let heldForManual = false;
   const guide = createInstructions(el, {
     title: "SERPENT",
     summary: [
@@ -232,6 +238,16 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
       },
     ],
     reducedMotion: reduced,
+    onOpen: () => {
+      if (world.paused) return;
+      heldForManual = true;
+      setPaused(world, true);
+    },
+    onClose: () => {
+      if (!heldForManual) return;
+      heldForManual = false;
+      setPaused(world, false);
+    },
   });
 
   return {

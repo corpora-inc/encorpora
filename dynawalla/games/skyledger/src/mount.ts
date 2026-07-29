@@ -17,6 +17,13 @@
 // pack that registers a `pause()` and never wires it up is the exact bug this
 // comment exists to prevent.
 //
+// The game's own how-to-play sheet is the *other* thing that puts a scrim over
+// a running observatory, and it is the one a child raises deliberately, because
+// they are stuck. Stars falling behind the rules a child opened in order to
+// understand why they were falling is the whole defect. So the manual takes the
+// same pause — but only lifts one it put on itself, or a watch the host had
+// already stopped would come back running the moment the rules were closed.
+//
 // **Hitstop and timescale.** The escalation's channels arrive on the bloom
 // event. Hitstop is a global time-scale of exactly zero applied to the
 // simulation only: audio keeps ringing, input keeps being sampled, and the
@@ -64,44 +71,6 @@ export function mountSkyLedger(
   const scene = new Scene(canvas, reduced, seed)
   const audio = new Audio()
 
-  // How to play. SKY LEDGER shipped with no instructions at all: a child was
-  // shown a sky, a dial and the words "THE REGISTER IS EMPTY", and nothing told
-  // them the dial is how you name where to strike. The manual stays reachable
-  // during play, because the moment a child needs the rules is never the title.
-  const guide = createInstructions(el, {
-    title: "SKY LEDGER",
-    summary: [
-      "Trails fall out of the dark. Each one is heading for a place in the sky.",
-      "Turn the astrolabe to name that place — across, then up — and strike it.",
-    ],
-    sections: [
-      {
-        heading: "Naming a place",
-        lines: [
-          "The sky is a grid. Every place in it has two numbers: how far across, then how far up.",
-          "The astrolabe has one ring for each. Turn them until the pair matches the trail.",
-          "You are not pointing at the answer. You are saying it.",
-        ],
-      },
-      {
-        heading: "Chains",
-        lines: [
-          "Strike a second trail before the light fades and the two link.",
-          "Each link renews the light, so a chain is a rhythm rather than a race.",
-          "Nine links is the longest chain the sky will hold.",
-        ],
-      },
-      {
-        heading: "The watch",
-        lines: [
-          "There is no winning. The watch ends and the observatory writes down what you logged.",
-          "A longer chain is worth more than a faster one.",
-        ],
-      },
-    ],
-    reducedMotion: reduced,
-  })
-
   function now(): number {
     return typeof performance === "object" ? performance.now() : Date.now()
   }
@@ -111,6 +80,8 @@ export function mountSkyLedger(
 
   let running = true
   let paused = false
+  /** Did the manual put this pause on? Only then may closing it lift one. */
+  let heldForManual = false
   let last = 0
   let frame = 0
 
@@ -409,6 +380,94 @@ export function mountSkyLedger(
     typeof ResizeObserver === "function" ? new ResizeObserver(() => scene.resize()) : null
   observer?.observe(canvas)
 
+  // ── the pause ────────────────────────────────────────────────────────────
+  // One pair, reached from two places: the host, through the handle below, and
+  // the manual, through the callbacks under it.
+
+  const doPause = (): void => {
+    if (paused) return
+    paused = true
+    held = null
+    pointer = -1
+    game.pause(now())
+  }
+
+  const doResume = (): void => {
+    // The rules are still up. Whoever asked for this — the host taking its own
+    // sheet down over the top of the manual — the child is still reading, and
+    // the only thing allowed to start the sky again is the rules going down.
+    // Without this the host's resume hands back a running observatory behind a
+    // scrim, which is the whole defect wearing a different hat.
+    if (guide.isOpen) {
+      heldForManual = true
+      return
+    }
+    if (!paused) return
+    paused = false
+    // The next frame is a fresh one. Without this the delta carries the whole
+    // length of the sheet and the sky drops a watch's worth of stars in a
+    // single step the moment the child closes it.
+    last = 0
+    game.resume(now())
+  }
+
+  // ── how to play ──────────────────────────────────────────────────────────
+  //
+  // SKY LEDGER shipped with no instructions at all: a child was shown a sky, a
+  // dial and the words "THE REGISTER IS EMPTY", and nothing told them the dial
+  // is how you name where to strike. The manual stays reachable during play,
+  // because the moment a child needs the rules is never the title.
+  //
+  // Built after the loop rather than before it because it holds the loop:
+  // `onOpen` and `onClose` are the only part of pausing a game has to opt into,
+  // and they need the pair above.
+  const guide = createInstructions(el, {
+    title: "SKY LEDGER",
+    summary: [
+      "Trails fall out of the dark. Each one is heading for a place in the sky.",
+      "Turn the astrolabe to name that place — across, then up — and strike it.",
+    ],
+    sections: [
+      {
+        heading: "Naming a place",
+        lines: [
+          "The sky is a grid. Every place in it has two numbers: how far across, then how far up.",
+          "The astrolabe has one ring for each. Turn them until the pair matches the trail.",
+          "You are not pointing at the answer. You are saying it.",
+        ],
+      },
+      {
+        heading: "Chains",
+        lines: [
+          "Strike a second trail before the light fades and the two link.",
+          "Each link renews the light, so a chain is a rhythm rather than a race.",
+          "Nine links is the longest chain the sky will hold.",
+        ],
+      },
+      {
+        heading: "The watch",
+        lines: [
+          "There is no winning. The watch ends and the observatory writes down what you logged.",
+          "A longer chain is worth more than a faster one.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+    // The manual only lifts a pause it put on itself. A watch the host had
+    // already stopped — a stopping-point card, a parent gate — must not be
+    // handed back running because the child closed the rules.
+    onOpen: () => {
+      if (paused) return
+      heldForManual = true
+      doPause()
+    },
+    onClose: () => {
+      if (!heldForManual) return
+      heldForManual = false
+      doResume()
+    },
+  })
+
   return {
     unmount(): void {
       running = false
@@ -424,18 +483,7 @@ export function mountSkyLedger(
       audio.close()
       canvas.remove()
     },
-    pause(): void {
-      if (paused) return
-      paused = true
-      held = null
-      pointer = -1
-      game.pause(now())
-    },
-    resume(): void {
-      if (!paused) return
-      paused = false
-      last = 0
-      game.resume(now())
-    },
+    pause: doPause,
+    resume: doResume,
   }
 }
