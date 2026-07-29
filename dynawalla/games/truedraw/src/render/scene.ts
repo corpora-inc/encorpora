@@ -10,12 +10,14 @@
 // cold celestial, the brass frame catches it, and that is the go signal. Total
 // stillness, then a slate-flash. Restraint as the whole design.
 
+import { safeInsets, safeRect, type Insets } from "../../../../packs/shared/game-chrome/index.ts"
 import type { Outcome } from "../game/response.ts"
 import type { Phase } from "../game/round.ts"
 import type { Run } from "../game/run.ts"
 import { SHOTS } from "../game/run.ts"
 import type { Statement } from "../game/statement.ts"
 import { correctionFor, digitCellWidth, layout, type Layout } from "./glyphs.ts"
+import { layoutFor, type Layout as Street } from "./street.ts"
 import {
   BRASS,
   BRASS_DIM,
@@ -68,16 +70,33 @@ export class Scene {
   private w = 0
   private h = 0
   private dpr = 1
+  private street: Street
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
     const ctx = canvas.getContext("2d", { alpha: false })
     if (!ctx) throw new Error("truedraw: no 2d context")
     this.ctx = ctx
+    this.street = layoutFor(1, 1, safeRect(1, 1))
     this.resize()
   }
 
-  resize(): void {
+  /**
+   * Where the readable things ended up. Exposed so the layout can be asserted
+   * at every viewport the fleet has, through the same call the game makes at
+   * resize — a clearance test that builds its own rectangle is a test of the
+   * rectangle it built.
+   */
+  get layout(): Street {
+    return this.street
+  }
+
+  /**
+   * `insets` defaults to the live safe-area insets, which is what the game
+   * passes. A test passes a device's insets instead, because a notch is the one
+   * thing a headless canvas will never report.
+   */
+  resize(insets: Insets = safeInsets()): void {
     const rect = this.canvas.getBoundingClientRect()
     // A zero-sized parent happens for one frame during mount; refusing to
     // divide by it is cheaper than guarding every call site.
@@ -86,6 +105,7 @@ export class Scene {
     this.dpr = Math.min(3, globalThis.devicePixelRatio || 1)
     this.canvas.width = Math.round(this.w * this.dpr)
     this.canvas.height = Math.round(this.h * this.dpr)
+    this.street = layoutFor(this.w, this.h, safeRect(this.w, this.h, insets))
   }
 
   draw(state: SceneState): void {
@@ -93,7 +113,7 @@ export class Scene {
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0)
     ctx.clearRect(0, 0, this.w, this.h)
 
-    const horizon = this.h * 0.6
+    const horizon = this.street.horizon
     this.drawSky(horizon)
     this.drawGround(horizon, state)
     this.drawWitnesses(horizon, state)
@@ -258,10 +278,10 @@ export class Scene {
   }
 
   private slateBox(state: SceneState): { x: number; y: number; w: number; h: number; a: number } {
-    const w = Math.min(this.w * 0.88, 640)
-    const h = w * 0.3
-    const cx = this.w * 0.5
-    const cy = this.h * 0.4
+    // Where the slate stands is `street.ts`'s business — inside the safe area
+    // and clear of the host's corners. All that happens here is the raise and
+    // the clear, which are motion about that rest position.
+    const { x, y, w, h } = this.street.slate
 
     let drop = 0
     let a = 1
@@ -276,7 +296,7 @@ export class Scene {
     } else if (state.phase === "idle") {
       a = 0
     }
-    return { x: cx - w / 2, y: cy - h / 2 + drop, w, h, a }
+    return { x, y: y + drop, w, h, a }
   }
 
   private drawSlate(state: SceneState): void {
@@ -495,10 +515,12 @@ export class Scene {
     if (state.phase === "idle") {
       ctx.globalAlpha = state.reduced ? 0.7 : 0.45 + 0.35 * (0.5 + 0.5 * Math.sin(state.elapsedMs / 620))
     }
-    const r = Math.max(3.5, this.h * 0.0075)
-    const gap = r * 3.4
-    const cx = this.w * 0.5
-    const y = this.h * 0.4 + Math.min(this.w * 0.88, 640) * 0.3 * 0.5 + r * 5
+    // The shots are the only resource in the game, so they travel with the
+    // slate: inside the safe area, under the host's corners, never under a
+    // rounded corner of the glass.
+    const { pip: r, pipGap: gap, shots } = this.street
+    const cx = shots.x + shots.w / 2
+    const y = shots.y + shots.h / 2
     for (let i = 0; i < SHOTS; i++) {
       const x = cx + (i - (SHOTS - 1) / 2) * gap
       ctx.beginPath()
@@ -519,11 +541,11 @@ export class Scene {
   private drawTally(state: SceneState): void {
     if (state.phase === "idle" || state.phase === "over") return
     const { ctx } = this
-    const px = Math.round(Math.max(15, this.h * 0.026))
-    ctx.font = `${String(px)}px ${SLATE_FONT}`
+    const { tally, tallyPx } = this.street
+    ctx.font = `${String(tallyPx)}px ${SLATE_FONT}`
     ctx.textAlign = "center"
     ctx.textBaseline = "top"
     ctx.fillStyle = withAlpha(BRASS, state.run.calls > 0 ? 0.8 : 0.3)
-    ctx.fillText(String(state.run.calls), this.w * 0.5, this.h * 0.055)
+    ctx.fillText(String(state.run.calls), tally.x + tally.w / 2, tally.y)
   }
 }

@@ -18,6 +18,7 @@
 // calls before the street clears. There is no percentage anywhere in this game
 // to misread as a pass.
 
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 import { Audio } from "./audio/audio.ts"
 import type { Host } from "./contract.ts"
 import { bestCalls, recordCalls } from "./game/best.ts"
@@ -55,6 +56,55 @@ export function mountTrueDraw(
   const rng = new Rng((Date.now() ^ 0x51ed) >>> 0)
   const dealer = new Dealer(host, rng)
   const round = new Round(() => dealer.deal(), reduced ? TIMING_REDUCED : TIMING)
+
+  // How to play. Everything about this game is a rule you have to know before
+  // the first slate lights: the whole of it is a decision between two moves,
+  // and a child who has not been told that holding is a move will draw at
+  // everything and be off the street in three sums. The manual stays reachable
+  // during play, because the moment a child needs the rules is never the title.
+  const guide = createInstructions(el, {
+    title: "THE TRUE DRAW",
+    summary: [
+      "A sum lights up on the slate. If it is right, tap to draw. If it is wrong, keep still.",
+      "You have three shots. Getting it wrong either way costs one.",
+    ],
+    sections: [
+      {
+        heading: "The two moves",
+        lines: [
+          "Read the slate. It says something like 47 + 25 = 62.",
+          "If that sum is right, tap the screen to draw.",
+          "If that sum is wrong, do nothing at all and let it stand.",
+          "Getting it right either way keeps all three of your shots.",
+        ],
+      },
+      {
+        heading: "Your three shots",
+        lines: [
+          "Draw at a sum that is wrong and nothing happens at all. No sound, no flash, nobody moves. But a shot is gone.",
+          "Keep still when the sum was right, and the caller draws first. That costs a shot too.",
+          "When all three shots are gone, the street clears and the run is over.",
+        ],
+      },
+      {
+        heading: "You cannot just tap every time",
+        lines: [
+          "About half the slates are wrong.",
+          "If you draw at every single one, your three shots are gone in about three sums.",
+          "Reading the sum every time is the only way to keep the run going.",
+        ],
+      },
+      {
+        heading: "Why the wrong sums look right",
+        lines: [
+          "A wrong slate is never just one off. That would be too easy to spot.",
+          "It shows the answer you get if you make a real mistake, like forgetting to carry.",
+          "So the only way to know is to work the sum out yourself.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
 
   let best = bestCalls()
   let running = true
@@ -115,7 +165,11 @@ export function mountTrueDraw(
     frame = requestAnimationFrame(tick)
     const dt = last === 0 ? 16 : Math.min(MAX_STEP_MS, now - last)
     last = now
-    handle(round.advance(dt))
+    // Reading the rules is not playing. The manual opens over a live street,
+    // and a draw window that ran while a child was reading would take all three
+    // shots before they looked up — which would teach them that asking how to
+    // play is punished.
+    if (!guide.isOpen) handle(round.advance(dt))
     scene.draw({
       phase: round.phase,
       progress: round.progress,
@@ -138,6 +192,9 @@ export function mountTrueDraw(
 
   const key = (event: KeyboardEvent): void => {
     if (event.repeat) return
+    // The manual takes the keyboard while it is up: space is how it is
+    // dismissed, not a draw at a slate nobody can see.
+    if (guide.isOpen) return
     if (event.key !== " " && event.key !== "Enter") return
     press(event)
   }
@@ -145,6 +202,11 @@ export function mountTrueDraw(
   const resize = (): void => {
     scene.resize()
   }
+
+  // Rotation swaps the insets top-for-left, and iPadOS changes them when the
+  // pack is resized in Split View. A layout derived from them once at mount is
+  // correct until the first rotation and wrong after it.
+  const stopInsets = onInsetsChange(resize)
 
   canvas.addEventListener("pointerdown", press)
   globalThis.addEventListener("keydown", key)
@@ -176,6 +238,8 @@ export function mountTrueDraw(
     },
     unmount(): void {
       running = false
+      guide.destroy()
+      stopInsets()
       cancelAnimationFrame(frame)
       canvas.removeEventListener("pointerdown", press)
       globalThis.removeEventListener("keydown", key)
