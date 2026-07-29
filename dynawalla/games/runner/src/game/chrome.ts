@@ -33,6 +33,58 @@ import {
 } from "../../../../packs/shared/game-chrome/index.ts";
 import { BAND, type Frame } from "./readband.ts";
 
+/* --------------------------------- the stage ------------------------------ */
+
+/** The colour of an empty causeway, so a resize never flashes white. */
+export const STAGE_BG = "#04060f";
+
+/**
+ * Just enough of an element for `makeStage`: the inline style it writes.
+ *
+ * Structural rather than `HTMLElement` so a test can hand it an object literal
+ * and read back exactly what was written, with no cast and no DOM.
+ */
+export type StageEl = {
+  style: { position: string; overflow: string; touchAction: string; background: string };
+};
+
+/**
+ * Take the host's element over as VOLTA's stage.
+ *
+ * Everything this game draws — the WebGL canvas and every HUD layer — is
+ * `position:absolute; inset:0`, so the stage is the only node in the tree that
+ * has a size of its own, and it is the host *document* that decides what that
+ * size is. This function's whole job is to not take that away.
+ *
+ * **What it replaces shipped a black screen on every device.** The line was
+ *
+ *     el.style.position = el.style.position || "relative";
+ *
+ * and `el.style.position` reads the *inline* declaration, which is empty for an
+ * element positioned from a stylesheet. `pack.html` says
+ * `#app { position: fixed; inset: 0 }`, so the fallback always fired and wrote
+ * an inline `relative` that won the cascade — taking the `inset: 0` with it,
+ * because insets do nothing to a relatively positioned box. The stage fell back
+ * to `height: auto` with nothing but absolutely positioned children inside it,
+ * measured 820x0, and the canvas came out one CSS pixel tall. Measured in a
+ * framed pack: `#app` 820x0, canvas `style="width:820px;height:1px"`.
+ *
+ * It was invisible in `npm run dev` for one reason. `index.html` gives `#game`
+ * `width:100%; height:100%` as well as a position, and a percentage height still
+ * resolves against `body` once the position is overwritten — so the dev harness
+ * is full-size and the pack entry, which has only `inset: 0` to give it a box, is
+ * not. Only the thing a child runs collapses.
+ *
+ * So: branch on the *computed* position, never the inline one, and write one only
+ * when nobody has positioned the element at all.
+ */
+export function makeStage(el: StageEl, computedPosition: string): void {
+  if (computedPosition === "static") el.style.position = "relative";
+  el.style.overflow = "hidden";
+  el.style.touchAction = "none";
+  el.style.background = STAGE_BG;
+}
+
 /** Clear air between the bottom of a host control and the readout under it. */
 const GAP = 6;
 

@@ -18,7 +18,7 @@ import { Rng } from "./rng.ts";
 import { biomeAt, biomeLength } from "./biomes.ts";
 import { detectTier, TierController, type TierName } from "./tiers.ts";
 import { buildHud, groupDigits, ringCircumference } from "./hud.ts";
-import { ndcFrame } from "./chrome.ts";
+import { makeStage, ndcFrame } from "./chrome.ts";
 import type { Frame } from "./readband.ts";
 import {
   createInstructions,
@@ -30,7 +30,7 @@ import { Shake, HitStop, FlashBus, Springy, clamp, clamp01, lerp, approach, ease
 import {
   V_START, V_TERMINAL, V_REDUCED_CAP, VOLT_MAX, COST_WRONG_GATE, COST_HAZARD,
   GAIN_GATE, GAIN_SPARK, GAIN_GRAZE, VOLT_BLEED, CHAIN_PER_SURGE, SURGE_MAX,
-  STUMBLE_TIME, CLEAN_READ_SHARE, REVIVE_GRACE,
+  STUMBLE_TIME, CLEAN_READ_SHARE, REVIVE_GRACE, RESOLVE_HOLD,
   speedAt, readWindow, breather, beatTime, difficultyFor,
   gateDistance, hazardLandsOnRead,
 } from "./pacing.ts";
@@ -72,10 +72,10 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
   /* ------------------------------ chrome -------------------------------- */
 
   const params = new URLSearchParams(location.search);
-  el.style.position = el.style.position || "relative";
-  el.style.overflow = "hidden";
-  el.style.touchAction = "none";
-  el.style.background = "#04060f";
+  // The computed position, not the inline one — see `makeStage`. This is the only
+  // place the game asks the browser where the host has put it, and getting it
+  // from `el.style` instead is what made the pack a black screen.
+  makeStage(el, getComputedStyle(el).position);
 
   const canvas = document.createElement("canvas");
   canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;";
@@ -163,6 +163,8 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
   let nextBeatAt = 60;
   let activeGate: Gate | null = null;
   let pendingQuestion: Question | null = null;
+  /** Whether `pendingQuestion`'s sum is already the one on the HUD. */
+  let promptShown = false;
   let reviveQ: Question | null = null;
   let reviveTimer = 0;
   let reviveLimit = 7;
@@ -270,8 +272,22 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
    * game that reads them once at mount is correct until the first rotation.
    */
   let frameNdc: Frame = ndcFrame(1, 1, safeInsets());
+  /** Said once. A collapsed stage would otherwise say it on every resize. */
+  let saidCollapsed = false;
   function resize(): void {
     const r = el.getBoundingClientRect();
+    // A stage with no box is the whole game gone, and `Math.max(1, ...)` below
+    // turns it into a plausible-looking 1px canvas rather than an error. Say it:
+    // the last time this happened it was a black screen on two platforms that
+    // nothing in the repository noticed.
+    if (!saidCollapsed && (r.width < 2 || r.height < 2)) {
+      saidCollapsed = true;
+      console.error(
+        `[runner] the stage measures ${String(Math.round(r.width))}x${String(Math.round(r.height))}. ` +
+          `The canvas and every HUD layer are position:absolute inside it, so nothing this game ` +
+          `draws has a size. The host's element needs a box of its own — see makeStage in chrome.ts.`,
+      );
+    }
     vw = Math.max(1, Math.round(r.width));
     vh = Math.max(1, Math.round(r.height));
     frameNdc = ndcFrame(vw, vh, safeInsets());
@@ -433,6 +449,7 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     nextBeatAt = 70;
     activeGate = null;
     pendingQuestion = null;
+    promptShown = false;
     reviveLimit = 7;
     lowVoltWarned = false;
     stats.distance = 0; stats.score = 0; stats.gates = 0; stats.gatesRight = 0;
@@ -483,19 +500,55 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
 
   const difficulty = (): number => difficultyFor(surge, stats.gates, stats.gatesRight);
 
+  /**
+   * Put the next sum on the HUD now, during the dodge corridor, before the gate
+   * that carries the three candidates exists.
+   *
+   * The reason is arithmetic, not polish. A gate cannot spawn past the far plane,
+   * so the time between one becoming visible and reaching the answer plane is
+   * 3.20s at p50 however the pacing is tuned (`deliveredWindow`), and
+   * `docs/EXPERIENCE_DESIGN.md` instruments a two-digit regroup at p50 6s. The
+   * game was asking for the whole computation in half the time the product says
+   * it takes. Showing the sum a corridor early is the part of that gap that costs
+   * nothing: `comprehensionWindow` measures 4.80s at p50 instead of 3.20s.
+   *
+   * It is not a hazard-free window and this must not turn into one — pylons live
+   * in the corridor, which is what #665 built it for. This is time a child *may*
+   * spend computing while they run; the window in which nothing can hit them is
+   * still the gate's own.
+   *
+   * Idempotent: once a question is pending, `requestGate` is the only thing that
+   * consumes it.
+   */
+  function preRead(): void {
+    if (activeGate || pendingQuestion) return;
+    const q = host.next({ difficulty: difficulty() });
+    pendingQuestion = q;
+    promptShown = true;
+    setPrompt(q.prompt);
+  }
+
   function requestGate(): void {
     if (activeGate) return;
+    // A pre-read question is already the sum on the HUD; punching the prompt
+    // again would be a second announcement of a question the child has been
+    // reading for a second and a half.
+    const announced = pendingQuestion !== null && promptShown;
     const q = pendingQuestion ?? host.next({ difficulty: difficulty() });
     pendingQuestion = null;
     const w = readWindow(travel, reduced());
     const dist = gateDistance(speed, w, tiers.settings.far);
     const g = ents.spawnGate(q, dist, dist / Math.max(1, speed), rng);
     if (!g) {
+      // Held for the next attempt, prompt and all: `promptShown` is deliberately
+      // left alone so a pre-read sum is not announced twice when the gate that
+      // was going to carry it could not be spawned.
       pendingQuestion = q;
       return;
     }
     activeGate = g;
-    setPrompt(q.prompt);
+    if (!announced) setPrompt(q.prompt);
+    promptShown = false;
     audio.uiTick();
   }
 
@@ -1046,6 +1099,13 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
       }
       if (!activeGate) {
         gateCooldown -= dt;
+        // The corridor opens with the answer the child just gave still on the
+        // HUD, and hands them the next sum for the rest of it. Compared against
+        // `breather(travel)` rather than a saved corridor length so the two
+        // corridors that are shorter than a corridor — the 0.75s at the start of
+        // a run and the 1.1s after a hazard — pre-read immediately, which is what
+        // a child picking themselves up wants anyway.
+        if (gateCooldown <= breather(travel) - RESOLVE_HOLD) preRead();
         if (gateCooldown <= 0) requestGate();
       }
 

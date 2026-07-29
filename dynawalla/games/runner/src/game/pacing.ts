@@ -114,6 +114,22 @@ export function breather(travel: number): number {
   return DODGE_CORRIDOR_FLOOR + 1.0 * Math.exp(-Math.max(0, travel) / 2200);
 }
 
+/**
+ * How long the corridor still belongs to the gate that just resolved.
+ *
+ * The next sum goes on the HUD during the corridor, not when the gate carrying
+ * its candidates appears — that is the pre-read `comprehensionWindow` measures.
+ * But swapping it in on the very frame the child crosses the answer plane makes
+ * the new question part of the verdict on the old one, and the crossing is
+ * already the busiest frame in the game.
+ *
+ * 0.3s: eighteen frames, enough that the swap is plainly a separate event from
+ * the crossing, and a sixth of the corridor rather than a quarter of it. Every
+ * tenth of a second here is a tenth taken off the pre-read, which is the whole
+ * reason the pre-read exists, so it is not rounded up for comfort.
+ */
+export const RESOLVE_HOLD = 0.3;
+
 /* --------------------------- gate geometry ---------------------------- */
 
 /** Nearest a gate may spawn — closer than this and it is on top of you. */
@@ -142,6 +158,40 @@ export function gateDistance(speed: number, window: number, far: number): number
 export const DELIVERED_WINDOW_FLOOR = 3.1;
 export function deliveredWindow(travel: number, speed: number, far: number, reduced: boolean): number {
   return gateDistance(speed, readWindow(travel, reduced), far) / Math.max(1, speed);
+}
+
+/**
+ * The whole time a child has with a question: the dodge corridor the prompt is
+ * *already on the HUD* for, plus the gate's own hazard-free window.
+ *
+ * **Why this number exists.** `deliveredWindow` is the time between a gate
+ * becoming visible and reaching the answer plane, and it is capped by the far
+ * plane: measured across a ten-minute run at every tier, with and without the
+ * surge speed bonus, it is 3.19s at worst and 3.20s at p50.
+ * `docs/EXPERIENCE_DESIGN.md` instruments two-digit regrouping at p50 6s, so
+ * VOLTA was asking for a two-digit regroup in slightly over half the time the
+ * product says one takes.
+ *
+ * The geometry cannot give more. `readWindow` already sits at the largest floor
+ * the far plane can honour (3.2s — raise it and `gateDistance` clamps it back
+ * down, which is the exact lie #665 removed), so a longer hazard-free window
+ * needs the low tier's draw distance or the terminal velocity to move, and both
+ * of those are decisions about frame rate and feel rather than about reading.
+ *
+ * What is free is *when the child is told the sum*. The question is drawn a
+ * corridor early and its prompt goes on the HUD then, so the corridor is reading
+ * time too: measured through the real scheduling loop, 4.79s at worst and 4.80s
+ * at p50, up from 3.19s and 3.20s.
+ *
+ * **This is not the same promise as `deliveredWindow` and must not be read as
+ * one.** Hazards live in the corridor — that is what #665 built it for — so the
+ * pre-read is time a child *may* use to compute, while dodging, and the window
+ * in which nothing can hit them is still `deliveredWindow`. It is still short of
+ * 6s p50 and the reason is written down above.
+ */
+export const COMPREHENSION_FLOOR = 4.7;
+export function comprehensionWindow(travel: number, speed: number, far: number, reduced: boolean): number {
+  return Math.max(0, breather(travel) - RESOLVE_HOLD) + deliveredWindow(travel, speed, far, reduced);
 }
 
 /* ------------------------- the reading corridor ------------------------ */

@@ -3,8 +3,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   speedAt, readWindow, breather, beatTime, difficultyFor,
-  gateDistance, deliveredWindow, hazardLandsOnRead,
+  gateDistance, deliveredWindow, comprehensionWindow, hazardLandsOnRead,
   READ_WINDOW_FLOOR, DELIVERED_WINDOW_FLOOR, DODGE_CORRIDOR_FLOOR,
+  COMPREHENSION_FLOOR, RESOLVE_HOLD,
   V_SURGE_BOOST_MAX, GATES_PER_STEP,
   V_START, V_TERMINAL, V_REDUCED_CAP,
   COST_WRONG_GATE, COST_HAZARD, GAIN_GATE, VOLT_BLEED, VOLT_MAX,
@@ -33,6 +34,11 @@ type Sim = {
   arrivals: number;
   readingDuty: number;
   minDelivered: number;
+  /**
+   * The shortest time any gate's sum spent on the HUD before that gate reached
+   * the answer plane — the pre-read corridor plus the gate's own window.
+   */
+  minComprehension: number;
 };
 
 function replay(opts: { until: number; from?: number; far: number; guard?: boolean }): Sim {
@@ -47,6 +53,9 @@ function replay(opts: { until: number; from?: number; far: number; guard?: boole
   const hazards: number[] = [];
   let gates = 0, hit = 0, arrivals = 0, reading = 0, live = 0;
   let minDelivered = Infinity;
+  let minComprehension = Infinity;
+  /** `elapsed` when the sum for the *next* gate went on the HUD, or null. */
+  let promptAt: number | null = null;
 
   while (elapsed < until) {
     elapsed += dt;
@@ -73,14 +82,22 @@ function replay(opts: { until: number; from?: number; far: number; guard?: boole
     if (gate && gate.z >= 0) {
       gate = null;
       gateCooldown = breather(travel);
-      if (elapsed >= from) gates++;
+      if (elapsed >= from) {
+        gates++;
+        if (promptAt !== null) minComprehension = Math.min(minComprehension, elapsed - promptAt);
+      }
+      promptAt = null;
     }
     if (!gate) {
       gateCooldown -= dt;
+      // `preRead()`: the next sum goes on the HUD partway through the corridor.
+      if (promptAt === null && gateCooldown <= breather(travel) - RESOLVE_HOLD) promptAt = elapsed;
       if (gateCooldown <= 0) {
         const dist = gateDistance(speed, readWindow(travel, false), far);
         gate = { z: -dist };
         minDelivered = Math.min(minDelivered, dist / speed);
+        // A corridor shorter than the hold hands the sum over with the gate.
+        if (promptAt === null) promptAt = elapsed;
       }
     }
 
@@ -107,6 +124,7 @@ function replay(opts: { until: number; from?: number; far: number; guard?: boole
     arrivals,
     readingDuty: reading / live,
     minDelivered,
+    minComprehension,
   };
 }
 
@@ -240,6 +258,86 @@ test("the reading window answers to the cadence table, not to vibes", () => {
   // actually spends on one question, and it should land near that 6s p50.
   const cycle = READ_WINDOW_FLOOR + DODGE_CORRIDOR_FLOOR;
   assert.ok(cycle >= 4.5 && cycle <= 9, `${cycle}s per question is outside the cadence table`);
+});
+
+test("the child has the sum before the gate that carries the answers", () => {
+  // The pre-read. `deliveredWindow` is capped by the far plane at 3.20s at p50
+  // however the pacing is tuned, and EXPERIENCE_DESIGN instruments a two-digit
+  // regroup at p50 6s — so the sum goes on the HUD a corridor early and the
+  // corridor becomes reading time too. This asserts the *combined* number, which
+  // is the one a child experiences.
+  for (const far of FARS) {
+    for (let speed = V_START; speed <= V_TERMINAL * V_SURGE_BOOST_MAX + 0.01; speed += 0.5) {
+      for (const travel of [0, 2600, 20000, 1e6]) {
+        for (const reduced of [false, true]) {
+          const c = comprehensionWindow(travel, speed, far, reduced);
+          assert.ok(
+            c >= COMPREHENSION_FLOOR - 1e-9,
+            `far=${far} speed=${speed.toFixed(1)} travel=${travel} reduced=${String(reduced)}: ` +
+              `only ${c.toFixed(2)}s with the question`,
+          );
+          // And it is genuinely more than the gate alone gives, everywhere. A
+          // pre-read that collapses to the gate's own window is the bug back.
+          assert.ok(
+            c >= deliveredWindow(travel, speed, far, reduced) + DODGE_CORRIDOR_FLOOR - RESOLVE_HOLD - 1e-9,
+            `far=${far} speed=${speed.toFixed(1)}: the pre-read added nothing`,
+          );
+        }
+      }
+    }
+  }
+  // Measured through the real scheduling loop rather than from the formula, with
+  // the pre-read wired in exactly where `mount.ts` puts it.
+  for (const far of FARS) {
+    const late = replay({ until: 300, from: 90, far });
+    assert.ok(late.gates > 8, `far=${far}: only ${late.gates} gates, nothing was measured`);
+    assert.ok(
+      late.minComprehension >= COMPREHENSION_FLOOR - 1e-9,
+      `far=${far}: a real run gave a child ${late.minComprehension.toFixed(2)}s with a question`,
+    );
+    // The hazard-free part is untouched — that is the promise the pre-read must
+    // not be allowed to quietly absorb, because pylons live in the corridor.
+    assert.ok(
+      late.minDelivered >= DELIVERED_WINDOW_FLOOR - 1e-9,
+      `far=${far}: the gate's own window fell to ${late.minDelivered.toFixed(2)}s`,
+    );
+  }
+});
+
+test("and the pre-read is wired into the corridor, not just available", () => {
+  // Same reason as the hazard guard below: the replay above is a model of the
+  // loop, so it would still pass if `mount.ts` never called `preRead`. What is
+  // pinned is that the corridor branch calls it, that it runs before the gate is
+  // requested, and that the prompt is announced once rather than twice.
+  const src = readFileSync(new URL("./mount.ts", import.meta.url), "utf8");
+  const loop = src.slice(src.indexOf("if (!activeGate) {"), src.indexOf("if (travel >= nextBeatAt)"));
+  assert.ok(loop.length > 80, "the corridor branch has moved; this test needs re-aiming");
+  assert.ok(loop.includes("preRead()"), "the corridor must hand the child the next sum");
+  assert.ok(
+    loop.indexOf("preRead()") < loop.indexOf("requestGate()"),
+    "the sum has to be on the HUD before the gate carrying its answers is spawned",
+  );
+  assert.ok(loop.includes("RESOLVE_HOLD"), "the corridor must still open with the answer just given");
+  // One announcement per question: `requestGate` re-punches the prompt only when
+  // the question was not pre-read.
+  const req = src.slice(src.indexOf("function requestGate("), src.indexOf("function resolveGate("));
+  assert.ok(req.includes("if (!announced) setPrompt("), "a pre-read sum must not be announced twice");
+});
+
+test("the pre-read is still short of the cadence table, and that is written down", () => {
+  // EXPERIENCE_DESIGN wants p50 6s. The pre-read reaches 4.79-4.80s and cannot
+  // reach further: `readWindow` already sits at the largest floor the far plane
+  // can honour, so the remaining second has to come from the low tier's draw
+  // distance or from terminal velocity, and both of those are decisions about
+  // frame rate and feel rather than about reading. Pinned as a band so that
+  // shrinking the pre-read fails here, and so does reaching the target without
+  // updating the note in `pacing.ts` and the README.
+  const late = replay({ until: 300, from: 90, far: 300 });
+  assert.ok(
+    late.minComprehension >= COMPREHENSION_FLOOR && late.minComprehension < 6.0,
+    `the worst comprehension window is now ${late.minComprehension.toFixed(2)}s — ` +
+      "if that is 6s or more, the cadence table is met and the caveats should go",
+  );
 });
 
 test("a hazard is only held back when it would actually land on a read", () => {
