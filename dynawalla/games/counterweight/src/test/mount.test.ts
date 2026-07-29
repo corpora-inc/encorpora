@@ -22,6 +22,7 @@ import type { Host, Question } from "../contract.ts"
 import { openingLoad } from "../game/bout.ts"
 import { PLACES, planStrikes } from "../game/places.ts"
 import { viewLayout } from "../render/layout.ts"
+import { OPENING_RUNG } from "../game/ladder.ts"
 import { createStubHost } from "../stubHost.ts"
 
 type Listener = (event: unknown) => void
@@ -315,36 +316,75 @@ test("the reduced-motion branch plays the same match with no sparks", () => {
 test("a Turk going over is the only thing that ever reaches `transition`", () => {
   const counter = { calls: 0, text: [] as string[] }
   const stops: string[] = []
-  let rounds = 0
-  let held = 0
+  const reports: Array<{ correct: boolean }> = []
+  const skips: string[] = []
   withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames }) => {
     const stub = createStubHost({
       seed: 0x51ab,
       reducedMotion: true,
       onTransition: (kind) => stops.push(kind),
-      onReport: (r) => {
-        rounds += 1
-        if (r.correct) held += 1
-      },
+      onReport: (r) => reports.push(r),
+      onSkip: (id) => skips.push(id),
     })
     const handle = mount(host as unknown as HTMLElement, stub)
-    // No input at all: every round runs out of window and is lost. Dozens of
-    // failures, and not one of them may raise a purchase surface.
-    pump(frames, 20000)
+    // No input at all: every round runs out of window. Dozens of them, and not
+    // one may raise a purchase surface.
+    pump(frames, 30000)
     handle.unmount()
   })
-  assert.ok(rounds > 8, `only ${rounds} rounds went by`)
-  assert.equal(held, 0, "a match with no input somehow held a round")
+  // **Not one of them reached the curriculum as an answer.** A whistle reported
+  // as `{ correct: false }` is filed as a miss and walks the ladder down, on a
+  // child who was still working the sum.
+  assert.deepEqual(
+    reports,
+    [],
+    `${reports.length} rounds nobody answered were reported to the host as answers`,
+  )
+  assert.ok(skips.length > 8, `only ${skips.length} rounds went by`)
+  assert.equal(new Set(skips).size, skips.length, "an item was closed twice")
   assert.deepEqual(stops, [], "a stopping point was offered next to a failure")
+})
+
+test("the very first weight of a session is asked for at the bottom of the ladder", () => {
+  // **"It starts way too hard."** This is the call site the complaint was about:
+  // the game used to ask `next({ domain: "add" })` and take whatever the
+  // scheduler had stocked. `ladder.test.ts` proves the request is right; this
+  // proves the mount actually makes it.
+  const counter = { calls: 0, text: [] as string[] }
+  const asks: Array<{ difficulty?: number; maxDifficulty?: number } | undefined> = []
+  withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames }) => {
+    const base = createStubHost({ seed: 0x51ab, reducedMotion: true })
+    const stub: Host = {
+      ...base,
+      next: (o) => {
+        asks.push(o)
+        return base.next(o)
+      },
+    }
+    const handle = mount(host as unknown as HTMLElement, stub)
+    pump(frames, 240)
+    handle.unmount()
+  })
+  assert.ok(asks.length > 0, "the game never asked for a question")
+  assert.equal(asks[0]?.difficulty, OPENING_RUNG, "the opening weight was not the easiest one")
+  assert.equal(asks[0]?.maxDifficulty, OPENING_RUNG, "the opening stream had no ceiling")
+  for (const ask of asks) {
+    assert.equal(ask?.difficulty, OPENING_RUNG, "the rung moved without a Turk going over")
+  }
 })
 
 test("the sheet stops the world, and lifting it gives the window back", () => {
   // The host's `pause`, exactly as the pack seam calls it. Both halves are under
   // test: the clock must stop, and a tap on the sheet must not reach the rack.
   const counter = { calls: 0, text: [] as string[] }
-  const reports: unknown[] = []
+  const closed: unknown[] = []
   withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames, created }) => {
-    const stub = createStubHost({ seed: 0x51ab, reducedMotion: true, onReport: (r) => reports.push(r) })
+    const stub = createStubHost({
+      seed: 0x51ab,
+      reducedMotion: true,
+      onReport: (r) => closed.push(r),
+      onSkip: (id) => closed.push(id),
+    })
     const handle = mount(host as unknown as HTMLElement, stub)
     let t = pump(frames, 120)
     const canvas = canvasOf(created)
@@ -352,10 +392,10 @@ test("the sheet stops the world, and lifting it gives the window back", () => {
     const up = canvas.listeners.get("pointerup")?.[0] as Listener
 
     handle.pause()
-    const seated = reports.length
-    // Thirty seconds behind the sheet — more than two whole windows.
-    t = pump(frames, 1800, t)
-    assert.equal(reports.length, seated, "rounds were seated behind the sheet")
+    const seated = closed.length
+    // A hundred seconds behind the sheet — more than two whole windows.
+    t = pump(frames, 6000, t)
+    assert.equal(closed.length, seated, "rounds were closed behind the sheet")
 
     // And presses on the sheet are presses on the sheet.
     for (const p of facePoints(768, 1024)) {
@@ -366,33 +406,38 @@ test("the sheet stops the world, and lifting it gives the window back", () => {
     down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
     up({})
     t = pump(frames, 60, t)
-    assert.equal(reports.length, seated, "the beam was seated through the sheet")
+    assert.equal(closed.length, seated, "the beam was seated through the sheet")
 
     handle.resume()
-    t = pump(frames, 1800, t)
-    assert.ok(reports.length > seated, "the world never came back")
+    t = pump(frames, 6000, t)
+    assert.ok(closed.length > seated, "the world never came back")
     handle.unmount()
   })
 })
 
 test("a backgrounded tab is the same as a sheet", () => {
   const counter = { calls: 0, text: [] as string[] }
-  const reports: unknown[] = []
+  const closed: unknown[] = []
   withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames, doc }) => {
-    const stub = createStubHost({ seed: 0x51ab, reducedMotion: true, onReport: (r) => reports.push(r) })
+    const stub = createStubHost({
+      seed: 0x51ab,
+      reducedMotion: true,
+      onReport: (r) => closed.push(r),
+      onSkip: (id) => closed.push(id),
+    })
     const handle = mount(host as unknown as HTMLElement, stub)
     let t = pump(frames, 120)
 
     doc.visibilityState = "hidden"
     for (const fn of doc.listeners.get("visibilitychange") ?? []) fn({})
-    const seated = reports.length
-    t = pump(frames, 1800, t)
-    assert.equal(reports.length, seated, "the window closed while the tab was hidden")
+    const seated = closed.length
+    t = pump(frames, 6000, t)
+    assert.equal(closed.length, seated, "the window closed while the tab was hidden")
 
     doc.visibilityState = "visible"
     for (const fn of doc.listeners.get("visibilitychange") ?? []) fn({})
-    t = pump(frames, 1800, t)
-    assert.ok(reports.length > seated, "the world never came back")
+    t = pump(frames, 6000, t)
+    assert.ok(closed.length > seated, "the world never came back")
     handle.unmount()
   })
 })
@@ -473,17 +518,25 @@ test("time behind the sheet is not billed to the child as thinking time", () => 
   const reports: Array<{ ms: number }> = []
   const SHEET_FRAMES = 1800
 
-  withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames, clock }) => {
+  withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames, clock, created }) => {
     const stub = createStubHost({ seed: 0x51ab, reducedMotion: true, onReport: (r) => reports.push(r) })
     const handle = mount(host as unknown as HTMLElement, stub)
+    const canvas = canvasOf(created)
+    const down = canvas.listeners.get("pointerdown")?.[0] as Listener
+    const up = canvas.listeners.get("pointerup")?.[0] as Listener
 
     // Into the window, then the sheet goes up for thirty seconds.
     let t = pump(frames, 90, 0, clock)
     handle.pause()
     t = pump(frames, SHEET_FRAMES, t, clock)
     handle.resume()
-    // And then the window runs its course.
-    t = pump(frames, 1400, t, clock)
+    t = pump(frames, 30, t, clock)
+    // And then the child seats the beam. A whistle is not reported at all any
+    // more, so the round has to be *declared* for there to be an `ms` to bill.
+    const lever = seatPoint(768, 1024)
+    down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
+    up({})
+    t = pump(frames, 30, t, clock)
     handle.unmount()
   })
 

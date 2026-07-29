@@ -53,7 +53,7 @@ test("the clock does not run behind the sheet", () => {
 
   bout.resume()
   assert.equal(bout.paused, false)
-  bout.advance(TIMING.pressMs + 10)
+  bout.advance(bout.pressMs + 10)
   assert.equal(bout.phase, "settle", "the clock did not restart on resume")
 })
 
@@ -76,6 +76,9 @@ test("the pan does not settle behind the sheet either", () => {
   // The sag is a clock too, and a slow one. Left running behind a sheet it turns
   // a correct load into a wrong one without a single frame the child saw.
   const bout = opened()
+  // Armed first: the sag does not run before the child's first blow of the
+  // round, so a bout nobody has touched would pass this vacuously.
+  bout.strike({ place: 1, dir: 1 })
   const load = bout.load
   bout.pause()
   bout.advance(120_000)
@@ -111,7 +114,7 @@ test("a tap on the sheet is a tap on the sheet — not a blow, not a seat", () =
 test("resuming does not hand back a window that has already gone", () => {
   // A sheet raised with two seconds left leaves two seconds, not thirteen.
   const bout = opened()
-  bout.advance(TIMING.pressMs - 2000)
+  bout.advance(bout.pressMs - 2000)
   bout.pause()
   bout.advance(60_000)
   bout.resume()

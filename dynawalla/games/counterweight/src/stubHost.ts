@@ -23,7 +23,7 @@
 //      rule that would coincide with the correct procedure emits nothing at all.
 //      Never `answer ± 1`, and never a fixed offset off the answer.
 //
-// The third one earns its keep here. THE COUNTERWEIGHT never *places* a
+// The third one earns its keep here. THE STEELYARD never *places* a
 // distractor — there is nothing to choose between, only a beam to hold — but the
 // value the child's beam asserts is reported verbatim, so a child who drops a
 // carry seats their pan on the carry-dropped value and the Turk recognises it.
@@ -216,11 +216,34 @@ const GLYPH: Record<Op, string> = { add: "+", sub: "−" }
 /** The ladder's height, matching the host's `item.level / 8` normalisation. */
 const LEVELS = 8
 
+/**
+ * The host's rule for reading a difficulty, mirrored so the stub obeys the same
+ * wire the runtime does — `packs/shared/game-host`, `toUnit`:
+ *
+ *     value < 1   →  a fraction, used as is
+ *     value >= 1  →  a ladder index, `(value - 1) / 9`
+ *
+ * Without this the stub would ignore what the game asked for and the escalation
+ * tests would be measuring nothing.
+ */
+export function toUnit(value: number): number | null {
+  if (typeof value !== "number" || !Number.isFinite(value)) return null
+  if (value < 1) return Math.max(0, value)
+  return Math.min(1, (value - 1) / 9)
+}
+
+/** A 0..1 rung as one of this stub's eight curriculum levels. */
+function levelForUnit(unit: number): number {
+  return Math.max(0, Math.min(LEVELS - 1, Math.round(unit * (LEVELS - 1))))
+}
+
 export type StubHostOptions = {
   seed?: number
   reducedMotion?: boolean
   /** Pin the ladder level instead of walking it. For tests and for capture runs. */
   level?: number
+  /** Observe skips, so a test can prove a whistle never reaches `report`. */
+  onSkip?: (questionId: string) => void
   /** Observe reports — the dev harness draws a running tally from this. */
   onReport?: (r: { questionId: string; correct: boolean; ms: number; answered: string }) => void
   /** Observe haptics so the harness can show they fired on a device that has none. */
@@ -236,13 +259,24 @@ export function createStubHost(options: StubHostOptions = {}): Host {
   return {
     next(o) {
       served++
-      // A slow walk up the ladder, so a dev session sees two-digit sums first
-      // and four-digit borrows twenty rounds later — the shape of a real
-      // scheduler, without pretending to be one.
-      const level =
+      // What the game asked for wins, because that is the whole point of the
+      // request: the yard names a rung on every weight and this is what makes
+      // "the opening round is the easiest thing in the product" a claim a test
+      // can settle. Failing that — a caller that asks for nothing — a slow walk
+      // up the ladder, the shape of a real scheduler without pretending to be
+      // one.
+      const asked = o?.difficulty === undefined ? null : toUnit(o.difficulty)
+      const ceiling = o?.maxDifficulty === undefined ? null : toUnit(o.maxDifficulty)
+      const walked = Math.min(LEVELS - 1, Math.floor((served - 1) / 6))
+      let level =
         options.level !== undefined
           ? Math.max(0, Math.min(LEVELS - 1, Math.round(options.level)))
-          : Math.min(LEVELS - 1, Math.floor((served - 1) / 6))
+          : asked !== null
+            ? levelForUnit(asked)
+            : walked
+      if (options.level === undefined && ceiling !== null) {
+        level = Math.min(level, levelForUnit(ceiling))
+      }
       const op: Op = rng.chance(0.5) ? "add" : "sub"
       const [a, b] = operandsFor(op, level, rng)
       const answer = op === "add" ? a + b : a - b
@@ -269,6 +303,10 @@ export function createStubHost(options: StubHostOptions = {}): Host {
 
     report(r) {
       options.onReport?.(r)
+    },
+
+    skip(questionId) {
+      options.onSkip?.(questionId)
     },
 
     haptic(k) {

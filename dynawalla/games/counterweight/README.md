@@ -1,9 +1,11 @@
-# THE COUNTERWEIGHT
+# THE STEELYARD
 
 > His pan carries the sum and never its total. Yours carries a number you steer
 > with place-value counterweights. Hold exactly one notch ahead.
 
-An arm-wrestle across a steelyard beam. Rank 30, S tier, in
+An arm-wrestle across a steelyard beam. The directory is still `counterweight`;
+the game is **THE STEELYARD**, renamed away from `games/balance`'s COUNTERPOISE,
+which it was being confused with. Rank 30, S tier, in
 [`docs/catalog/ARCADE_CANON.md`](../../docs/catalog/ARCADE_CANON.md), after
 *Arm Wrestling* (1985). The canon entry calls it **the most unmashable design in
 the catalogue**, which is a claim about behaviour, so
@@ -69,7 +71,7 @@ costs 13. Strain bleeds out at 6 a second and the beam shears at 34.
 |---|---|
 | Hits everything as fast as a thumb moves | Shears in about a fifth of a second, every round, forever |
 | Hits one plate fast | Same |
-| Hits one plate slowly, under the resonance window | Never shears — and never gets anywhere either: the window is thirteen seconds, a pan only travels so far in ones, and nothing about walking it lands on the one notch |
+| Hits one plate slowly, under the resonance window | Never shears — and never gets anywhere either: a pan only travels so far in ones, and nothing about walking it lands on the one notch |
 | Hunts by watching which way the beam leans | Every probe needs the beam to stop ringing first, and the window runs out |
 | Does the arithmetic | Ten deliberate blows, a quarter-second apart, peaks at about a third of the shear limit |
 
@@ -78,13 +80,62 @@ That last row is the one that makes the rest mean anything, so
 over and shears the beam never, while every masher, every hammer on every one of
 the eight faces, and the beam-watcher put over **zero**.
 
-Two more pressures keep the round live without being mashable:
+Two more pressures keep the round live without being mashable — and neither of
+them charges a child for thinking:
 
-* **The clock.** The window closes and the beam is seated where it stands. The
-  whistle does not wait, and the load you had on the bar is the claim you made.
+* **The clock.** The window belongs to the weight, not to the Turk. See
+  [The window](#the-window).
 * **The sag.** A pan nobody is tending settles — one unit, then another. You
-  cannot find the notch early and sit on it. Any strike re-seats it, so this only
-  ever bites a player who has stopped playing.
+  cannot find the notch early and sit on it. Any strike re-seats it, and **it
+  does not run at all before your first blow of the round**, so it only ever
+  bites a player who has stopped playing rather than one who has not started.
+
+## The window
+
+The press window used to be `timingForBout()`: 13.0 s at the first Turk, 1.1 s
+less at every one after, down to a 7.6 s floor. The bout counter is also what
+escalates the arithmetic, so the child got less time exactly as the sums got
+harder — the defect `docs/PACING_AUDIT_2026-07.md` names in seventeen games, and
+this pack's own solver bot measured it: at the house cadence table's p90 for a
+two-digit regrouping the bot held **0 of 78 rounds**.
+
+[`game/window.ts`](src/game/window.ts) replaces it. The window is
+`comprehension(item) + motor(item)`, both pure functions of the weight on his
+pan, both monotone non-decreasing in its width, and **no bout number, elapsed
+time or speed may appear in either**.
+
+| item | comprehension | motor | window | was |
+|---|---|---|---|---|
+| `43 + 25` | 11.0 s | 3.5 s | **14.5 s** | 13.0 → 7.6 s |
+| `47 + 25` | 14.0 s | 3.5 s | **17.5 s** | 13.0 → 7.6 s |
+| `473 + 168` | 23.0 s | 5.25 s | **28.3 s** | 13.0 → 7.6 s |
+| `5,001 − 2,798` | 40.0 s | 7.0 s | **47.0 s** | 13.0 → 7.6 s |
+
+The comprehension term is the house cadence table's **p90**, not its p50: the
+window is where the whistle takes the round away, so it is sized for the child
+who is slow today. The motor term is the one the old window did not have at all
+— the plates the answer decomposes into, priced at `BASE_STRAIN / BLEED_PER_SEC`,
+the fastest cadence [`strain.ts`](src/game/strain.ts) lets a correct player
+sustain without shearing. At the top of the old ladder a p90 plan was 7.0 s of
+pure motor work inside a 7.6 s window.
+
+**The whistle takes nothing.** Running out of time is not a wrong answer: no
+ground moves, nothing is reported, and the item is closed with the host's `skip`
+rather than with a `report` that would file a miss and walk the ladder down on a
+child who was still carrying the hundreds column.
+
+## Escalation
+
+The Turk gets stronger by the arithmetic and by nothing else. There is no bout
+counter in any duration in the game.
+
+[`game/ladder.ts`](src/game/ladder.ts) names a rung on every single weight —
+`next({ difficulty, maxDifficulty })`. The opening rung is the bottom of the
+curriculum, which is what "it starts way too hard" was: the game used to ask for
+nothing and take whatever the scheduler had stocked. It climbs one rung per Turk
+put over — five net holds, achievement and never a clock — and comes back down
+one on a pinning. `raiseFloor` is deliberately not called: a permanent floor is
+exactly what would stop a struggling child getting easier work again.
 
 ## The beam
 
@@ -103,6 +154,11 @@ Place value is a thing you can hear here.
 the beam moving *is* the information; it is critically damped instead, so it
 travels to its reading and stops rather than ringing its way there. Same reading,
 same reach, same clock — every duration in `TIMING_REDUCED` is identical.
+
+Your load stays where you left it between rounds, which is what makes each round
+only the *difference*. The one exception is when the ladder moves out from under
+it: a pan sitting on 8,367 when the next weight is `43 + 25` is re-racked near
+the new magnitude rather than costing a whole calm round of unwinding.
 
 ## The arithmetic it is served
 
@@ -130,7 +186,7 @@ defeat.
 ```
 npm install
 npm run dev        # the standalone harness on :4327, stub host, no runtime needed
-npm test           # 78 cases: the rules, the strain, the beam, the mashers
+npm test           # 136 cases: the rules, the window, the ladder, the strain, the mashers
 npm run tsc
 npm run build:pack # the installable pack
 ```

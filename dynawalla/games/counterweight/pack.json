@@ -1,7 +1,7 @@
 {
   "id": "dynawalla.counterweight",
   "version": "0.1.0",
-  "name": "THE COUNTERWEIGHT",
+  "name": "THE STEELYARD",
   "description": "An arm-wrestle across a steelyard beam. His pan carries a column sum and never its total; yours carries a number you steer with place-value counterweights. Hold exactly one notch ahead and seat the beam — but steel struck in a rhythm shears.",
   "sdk": "1.0.0",
   "host": { "min": "0.1.0", "max": "1.0.0" },
