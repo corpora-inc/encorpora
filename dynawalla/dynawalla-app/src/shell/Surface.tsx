@@ -32,9 +32,22 @@ type Keyless<K extends Row["kind"]> = Omit<Extract<Row, { kind: K }>, "key">
  */
 function Fact({ name, value }: { name: string; value: string }) {
   return (
+    // `shrink-0` on the value was the bug behind the parent area scrolling
+    // sideways on a phone. A fact's value is usually two words — "35 kB",
+    // "Native (Tauri)" — so refusing to shrink looked free, until developer
+    // mode started printing capability strings like
+    // `@tauri-apps/api/app.getVersion`. A flex child that will not shrink and
+    // will not wrap pushes its parent wider than the screen, and the whole page
+    // goes with it, header included.
+    //
+    // Both children get `min-w-0` because a flex item's default `min-width:
+    // auto` refuses to shrink below its content regardless of any `shrink`
+    // setting — the classic version of this bug that survives a naive fix.
     <div className="flex min-h-16 items-center justify-between gap-4 py-3">
-      <span className="inscription text-lg tracking-wide">{name}</span>
-      <span className="numeral text-ink-muted shrink-0 text-sm">{value}</span>
+      <span className="inscription min-w-0 text-lg tracking-wide">{name}</span>
+      <span className="numeral text-ink-muted min-w-0 text-right text-sm break-words">
+        {value}
+      </span>
     </div>
   )
 }

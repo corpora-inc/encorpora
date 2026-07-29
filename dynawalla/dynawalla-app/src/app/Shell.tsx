@@ -23,12 +23,26 @@ function Lintel() {
   return (
     <header className="bg-ground-raised">
       <div className="flex items-center px-[max(var(--safe-left),1rem)] pt-[max(var(--safe-top),var(--dw-lintel-pad))] pr-[max(var(--safe-right),1rem)] pb-[var(--dw-lintel-pad)]">
+        {/* The mark sits on the wordmark's baseline and stands taller than the
+            letters, rather than being centred against them at their own height.
+            Centring a 28px emblem on 18px uppercase left it looking like a
+            bullet point beside the word.
+
+            `items-end` aligns the two BOXES at the bottom, which is not the
+            same as aligning the mark to the letters' feet: a text box extends
+            below its baseline by the font's descender space even when the text
+            is all caps and has none. Left alone the emblem hangs below the
+            word. The mark's `mb` takes up exactly that slack.
+
+            0.16em is measured, not guessed — rendered against this stylesheet
+            at 0, 0.10, 0.16 and 0.22em and compared. An SVG has no baseline of
+            its own, so `items-baseline` cannot do this job. */}
         <Link
           to="/"
-          className="inscription rounded-cut-sm text-ink flex items-center gap-2.5 text-lg tracking-[0.22em] uppercase"
+          className="inscription rounded-cut-sm text-ink flex items-end gap-3 text-lg tracking-[0.22em] uppercase"
         >
-          <Mark className="h-7 w-7 shrink-0" />
-          {strings.appName}
+          <Mark className="mb-[0.16em] h-10 w-10 shrink-0" />
+          <span className="leading-none">{strings.appName}</span>
         </Link>
       </div>
 

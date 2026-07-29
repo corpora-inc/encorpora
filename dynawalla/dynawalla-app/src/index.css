@@ -46,6 +46,44 @@
     -webkit-touch-callout: none;
     touch-action: manipulation;
     overscroll-behavior: none;
+    /* Nothing here is a document. A long-press that raises a selection handle
+       over a label is the single loudest tell that an app is a web view, and a
+       child pressing hard on a card gets one every time. Inputs opt back in
+       below — a parent typing a name must be able to select what they typed. */
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input,
+  textarea,
+  [contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  /* The chrome must never scroll sideways. A single row whose value refuses to
+     shrink drags the whole page with it — which is exactly what the parent area
+     did on a phone, with `@tauri-apps/api/app.getVersion` running off the right
+     edge and taking the header with it. Wide content scrolls inside its own
+     box; the page does not. */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* A persistent scrollbar track is a web-view tell. Touch platforms draw a
+     transient indicator of their own during the gesture, so the drawn track is
+     pure noise there — but a mouse user genuinely needs it, so this is scoped to
+     coarse pointers rather than applied everywhere. */
+  @media (pointer: coarse) {
+    * {
+      scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
 
   /* One focus treatment for the whole app, keyboard-only. Children on tablets
