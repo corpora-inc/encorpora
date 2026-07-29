@@ -4,6 +4,7 @@
  */
 import type { Card } from "../game/loadout.ts"
 import type { Question } from "../contract.ts"
+import { applyChromeVars } from "./layout.ts"
 
 const h = <K extends keyof HTMLElementTagNameMap>(
   tag: K, cls?: string, text?: string,
@@ -62,6 +63,12 @@ export class Overlay {
 
   constructor(root: HTMLElement) {
     this.root = root
+
+    // The stylesheet is a static file and cannot be asserted about, so the
+    // numbers that keep this HUD out of the host's two corners live in
+    // `layout.ts` and are handed to the CSS here. One source, and the tests
+    // read the same one.
+    applyChromeVars(root)
 
     const hud = h("div", "hz-hud")
     const xp = h("div", "hz-xpbar")

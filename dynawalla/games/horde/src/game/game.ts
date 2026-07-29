@@ -13,6 +13,7 @@
  * And underneath all of it, every upgrade card states its own arithmetic, so
  * choosing well is comparing products under pressure.
  */
+import { createInstructions, type Instructions } from "../../../../packs/shared/game-chrome/index.ts"
 import type { Host, Question } from "../contract.ts"
 import { Audio } from "../core/audio.ts"
 import { Input } from "../core/input.ts"
@@ -43,6 +44,7 @@ export class Game {
   private audio = new Audio()
   private feel = new Feel()
   private ui: Overlay
+  private guide: Instructions
   private gov: TierGovernor
   private T: Tier
 
@@ -153,6 +155,65 @@ export class Game {
     this.input = new Input(this.canvas)
     this.ui = new Overlay(root)
     this.wireUi()
+
+    // How to play. The title card carries three lines of hint and then it is
+    // gone for the rest of the run — which is exactly the wrong moment, because
+    // the CORE, the sealed CACHE and the RIFT all arrive minutes later and none
+    // of them were ever named. The manual stays behind the how-to-play button
+    // for the whole session, and the swarm holds still while it is open.
+    this.guide = createInstructions(root, {
+      title: "DEEPSWARM",
+      summary: [
+        "You are one small light in the deep. The swarm comes for you and never stops.",
+        "Your weapons fire on their own. Your only job is to move.",
+      ],
+      sections: [
+        {
+          heading: "Moving",
+          lines: [
+            "Put a finger anywhere on the screen and drag. Your light swims that way.",
+            "On a keyboard, use the arrow keys or W, A, S and D.",
+            "You never aim and you never shoot. Steering is the whole game.",
+          ],
+        },
+        {
+          heading: "Getting stronger",
+          lines: [
+            "Beaten enemies drop bright gems. Swim over them to fill the bar at the top.",
+            "When the bar fills, the game stops and shows you cards. Pick one to take it.",
+            "Each card shows what it changes, like 12 damage becoming 17 damage.",
+            "Read both numbers and take the bigger jump. That is the real choice.",
+          ],
+        },
+        {
+          heading: "The CORE",
+          lines: [
+            "Every so often a gold CORE appears. Swim into it.",
+            "Time slows down and three numbered balls circle you. One holds the answer.",
+            "Swim out and touch the right one. For nine seconds nothing can stand near you.",
+            "Touch a wrong one and a ring of enemies drops on top of you. The gold ball then lights up so you can see which it was.",
+          ],
+        },
+        {
+          heading: "The CACHE",
+          lines: [
+            "Sometimes a fourth card is sealed shut with a question on it.",
+            "Answer it and you get a stronger card than any of the other three.",
+            "You never have to open it. Take a plain card instead and nothing is lost.",
+          ],
+        },
+        {
+          heading: "The RIFT",
+          lines: [
+            "When your life runs out you do not lose straight away. A RIFT opens.",
+            "Answer questions to fill the round lamps. Fill them all and you come back with full life.",
+            "A wrong answer never takes a lamp away. It takes time off the clock.",
+            "If the clock empties before the lamps fill, the run is over.",
+          ],
+        },
+      ],
+      reducedMotion: this.reduced,
+    })
 
     let seed = (Date.now() ^ 0x9e3779b9) >>> 0
     this.rng = () => {
@@ -291,6 +352,7 @@ export class Game {
     cancelAnimationFrame(this.raf)
     this.ro?.disconnect()
     window.removeEventListener("resize", this.onWinResize)
+    this.guide.destroy()
     this.input.destroy()
     this.audio.destroy()
     this.r.destroy()
@@ -332,13 +394,19 @@ export class Game {
     this.audio.frame()
     this.input.update(frame)
     this.feel.update(frame)
-    this.keyboard()
+
+    // Reading the rules is not playing. With the manual open the swarm holds
+    // its shape, the rift clock stops, and the finger resting on the panel is
+    // not a steer — a child who looks something up must not be eaten for it.
+    // The renderer keeps drawing, so the world is still there behind the sheet.
+    const reading = this.guide.isOpen
+    if (!reading) this.keyboard()
 
     // Hitstop freezes the simulation, never the renderer.
     if (this.feel.hitstopMs > 0) {
       this.feel.hitstopMs -= frameMs
     } else {
-      const simming = this.mode === "play" || this.mode === "core"
+      const simming = !reading && (this.mode === "play" || this.mode === "core")
       if (simming) {
         this.timeScale += (this.timeScaleTarget - this.timeScale) * Math.min(1, frame * 9)
         this.acc += frame
@@ -354,7 +422,7 @@ export class Game {
       }
     }
 
-    if (this.mode === "rift") this.riftTick(frame)
+    if (this.mode === "rift" && !reading) this.riftTick(frame)
     this.desat += ((this.mode === "rift" ? 0.85 : 0) - this.desat) * Math.min(1, frame * 6)
 
     this.draw(frame)

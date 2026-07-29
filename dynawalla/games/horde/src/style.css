@@ -2,7 +2,19 @@
    Near-black indigo, luminous edges, heavy geometric numerals. No serif on
    anything a child has to read in under half a second. */
 
+/* The host's chrome floats over this game: a back chevron top-LEFT, a
+   how-to-play button top-RIGHT, 44px each. `ui/layout.ts` owns these numbers
+   and writes them onto the root at mount; the values here are the fallbacks,
+   and they are the same numbers. Nothing a child reads or touches may land in
+   those two squares — the swarm and the light still bleed to every edge. */
 .hz-root {
+  --hz-chrome-top: 63px;
+  --hz-xp-top: 3px;
+  --hz-icon: 40px;
+  --hz-icon-gap: 6px;
+  --hz-icon-edge: 10px;
+  --hz-icon-bottom: 40px;
+  --hz-fps-edge: 10px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -44,9 +56,15 @@
   padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
 }
 
+/* The XP bar had no `env()` at all: flush to y=0 and edge to edge, so on a
+   notched phone held sideways the first forty-seven pixels of fill — the part
+   that tells a child a level is coming — were behind the sensor housing. It
+   now starts under the host's own 3px hairline rather than beneath it. */
 .hz-xpbar {
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: calc(env(safe-area-inset-top) + var(--hz-xp-top));
+  left: env(safe-area-inset-left);
+  right: env(safe-area-inset-right);
   height: 7px;
   background: rgba(120, 190, 255, 0.10);
 }
@@ -58,10 +76,15 @@
   transition: width 90ms linear;
 }
 
+/* The clock, the level and the kill count. A centred row spanning the full
+   width, so on a 320px phone its two ends reached into both host corners — and
+   it only ever grows, because "0:00" becomes "12:04" and "0 SLAIN" becomes
+   "1,204 SLAIN". It drops below the corners instead of being squeezed between
+   them. */
 .hz-top {
   position: absolute;
-  top: calc(14px + env(safe-area-inset-top));
-  left: 0; right: 0;
+  top: calc(env(safe-area-inset-top) + var(--hz-chrome-top));
+  left: env(safe-area-inset-left); right: env(safe-area-inset-right);
   display: flex;
   justify-content: center;
   gap: clamp(10px, 3vw, 26px);
@@ -187,7 +210,15 @@
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
+  /* All four edges. The top and bottom were padded and the SIDES were a bare
+     12px, so in landscape on a notched phone the outermost rift answer and the
+     outermost upgrade card — both things a child taps — ran under the sensor
+     housing and the rounded corner. */
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
   background:
     radial-gradient(120% 90% at 50% 40%, rgba(8, 14, 34, 0.62), rgba(2, 4, 12, 0.93));
   backdrop-filter: blur(9px) saturate(0.85);
@@ -519,17 +550,21 @@
 }
 .hz-hint b { color: #a9d8f4; }
 
-/* corner buttons */
+/* Sound and pause. These were top-right, in the 44px square the host paints
+   its how-to-play button into — two buttons and a third button stacked on the
+   same pixels. Bottom-right is the one corner of this HUD that holds nothing:
+   the weapon list is bottom-left, the life bar is bottom-centre and 12px tall,
+   and the host paints nothing down there. */
 .hz-corner {
   position: absolute;
-  top: calc(10px + env(safe-area-inset-top));
-  right: calc(10px + env(safe-area-inset-right));
+  bottom: calc(var(--hz-icon-bottom) + env(safe-area-inset-bottom));
+  right: calc(var(--hz-icon-edge) + env(safe-area-inset-right));
   display: flex;
-  gap: 6px;
+  gap: var(--hz-icon-gap);
   pointer-events: auto;
 }
 .hz-icon {
-  width: 40px; height: 40px;
+  width: var(--hz-icon); height: var(--hz-icon);
   display: grid; place-items: center;
   background: rgba(10, 20, 40, 0.55);
   border: 1px solid rgba(140, 200, 255, 0.22);
@@ -544,10 +579,11 @@
 .hz-icon:hover { background: rgba(30, 60, 110, 0.7); color: #fff; }
 .hz-icon[aria-pressed="false"] { opacity: 0.42; }
 
+/* Behind `?debug`, but it sat under the back chevron too. */
 .hz-fps {
   position: absolute;
-  left: calc(10px + env(safe-area-inset-left));
-  top: calc(12px + env(safe-area-inset-top));
+  left: calc(var(--hz-fps-edge) + env(safe-area-inset-left));
+  top: calc(env(safe-area-inset-top) + var(--hz-chrome-top));
   font-size: 10px;
   letter-spacing: 0.1em;
   color: #4f7ea0;
