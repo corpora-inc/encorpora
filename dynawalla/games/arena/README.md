@@ -11,7 +11,7 @@ you, and anything larger will hurt.**
 ```bash
 npm install
 npm run dev      # http://127.0.0.1:5188/
-npm test         # 24 tests, Node's native runner, zero dependencies
+npm test         # 71 tests, Node's native runner, zero dependencies
 npm run tsc      # typecheck
 npm run build:pack   # the installable pack; `../../packs && node build.mjs arena` checks and stages it
 ```
@@ -274,6 +274,17 @@ the supply**, which is the only honest place for it:
 - **`VOID_MAX_FRACTION`** — the 11%-of-mass mercy on a void used to clamp the
   DAMAGE while the label said something else. It now clamps the **label**: same
   hit to the unit, and `24 − 5 = 19` becomes a sentence the game can print.
+
+- **`EXHAUST_SHARE` / `EXHAUST_GRAIN`** — the surge trail is a **ledger**, not a
+  rate. It used to be 26 motes a second worth 3.5% of you each against a burn of
+  11% a second, which was only survivable because eating it back was throttled
+  by the saturation this pass deleted. Measured on the exact-absorption branch
+  before the fix, holding surge one second in five: 42,287 at one minute,
+  28,074,058 at two, 4,268,470,964 at four. The water now gets exactly the mass
+  actually taken off you and a fixed share of it, so boosting still costs
+  something when you turn round and hoover your own trail back up. `main` had a
+  milder version of the same hole — the same bot reached 124,408 at five minutes
+  against roughly 1,300 for a player who never boosted.
 
 A rival is rationed by the world rather than by a constant — at most 26, a
 respawn timer, and only edible below `mass / 1.06`, so a kill can never more

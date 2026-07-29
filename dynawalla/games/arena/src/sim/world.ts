@@ -230,9 +230,9 @@ const FOOD_B = 0.50
  * may be added to it.
  *
  * The saturation was not decoration — it was the only thing holding the economy
- * down, because it is the near-tie mote (worth ~M) that compounds. That job has
- * moved to `NEAR_PRIZE` below, where it belongs: not "you get less than you
- * ate", but "there is less of it to eat". Metering the SUPPLY is honest;
+ * down, because it is the mote worth ~M that compounds. That job has moved to
+ * `PRIZE_RATE` and `WALL_RATE` below, where it belongs: not "you get less than
+ * you ate", but "there is less of it to eat". Metering the SUPPLY is honest;
  * metering the ARITHMETIC is not.
  *
  * `Math.round` is defensive only. `mval` is an Int32Array, so every value that
@@ -245,28 +245,33 @@ export function absorbGain(value: number): number {
 }
 
 /**
- * PLACEHOLDER
+ * THE PRIZE — a number just under your own — and its ration.
  *
- * About one mote in twelve is drawn from a band straddling your own mass,
- * because telling 3,418 from 3,481 at speed IS the declared skill and the band
- * is where that reading happens. Most of it is a wall. The sliver below your
- * mass is the prize, and a prize worth ~M added exactly is a DOUBLING: repeat
- * it and mass is exponential in the number of motes eaten, with no polynomial
- * anywhere to save it. Measured, with absorption made exact and this band left
- * alone: 27,494,014 at two minutes against 12,738 before, and 189,893,983 by
- * twenty. Eight digits on the player's own core ends the game the pack is for.
+ * Swallowing one is a literal doubling now that absorption is exact, which
+ * makes it the biggest single event in the mote economy and the one that can
+ * end the game. A doubling repeated at a fixed frequency is exponential in the
+ * number of motes eaten, with no polynomial anywhere to save it: measured, with
+ * absorption made exact and the old flat 8% near-tie band left alone,
+ * 27,494,014 at two minutes against 12,738 before, and 189,893,983 by twenty.
+ * Eight digits on the player's own core ends the product the pack is for.
  *
- * So the prize gets rarer exactly as fast as it gets bigger. The edible sliver
- * is `NEAR_PRIZE / sqrt(mass)` of the band, which makes its contribution to
- * growth `p * M ∝ sqrt(M)` — the same shape as the crumb economy, which is what
- * keeps the whole curve polynomial. At mass 10 roughly a quarter of the near-tie
- * band is edible; at mass 10,000, one in four hundred.
+ * So the prize is drawn on its own roll, and the roll gets rarer exactly as
+ * fast as the prize gets bigger. Its contribution to growth is `rate * M`; the
+ * crumb economy's goes as `sqrt(M)`; holding the ratio fixed at every size —
+ * which is what "the same curve" actually means — needs `rate ∝ M^-0.85` once
+ * the eat rate's own `M^-0.35` is folded in. PRIZE_RATE_MAX is a ceiling on top
+ * of that, and it binds up to about mass 300, so the whole early game meets a
+ * prize about one mote in two hundred and the twelfth minute almost never does.
  *
- * What does NOT change is how often the band appears. The READING is the
- * pedagogy and it keeps its full frequency; what tapers is how often the answer
- * to "can I eat this?" is yes. That asymmetry is also the honest picture of the
- * genre: the bigger you are, the less there is anywhere near your size that is
- * beneath you.
+ * The RATE is scaled by `growth`, so a child who is struggling meets fewer of
+ * them. That is the same brake the old code applied by shrinking the gain,
+ * moved onto the supply, where it does not have to lie to work.
+ *
+ * What does NOT taper is the READING. The wall band below keeps its full
+ * frequency at every size, so "is that one bigger than me?" is asked exactly as
+ * often as it always was; what gets rarer is how often the answer is yes. That
+ * asymmetry is also the honest picture of the genre — the bigger you are, the
+ * less there is anywhere near your size that is beneath you.
  */
 const FOOD_MIN = 1
 const PRIZE_RATE = 0.8
@@ -303,6 +308,19 @@ const WALL_NEAR_SHARE = 0.57
 /** Crumbs a burst wall leaves behind, and the food scales each is worth. */
 const WALL_SHARDS = 4
 const WALL_SHARD_SCALE = 0.8
+
+/**
+ * How much of the mass a surge actually burns reaches the water behind you, and
+ * how coarsely it is chopped. See `stepPlayer`.
+ *
+ * SHARE is the only reason holding the boost still costs anything: recover
+ * every crumb of your own trail and you are still down 45% of what you spent.
+ * GRAIN is presentation — it is chosen so a surge at any size lays down roughly
+ * the same twenty-odd numerals a second it always did, because the trail is the
+ * one place a child SEES what speed costs.
+ */
+const EXHAUST_SHARE = 0.55
+const EXHAUST_GRAIN = 0.0024
 
 /**
  * The most a void may be worth, as a fraction of your mass.
@@ -344,9 +362,11 @@ const VOID_MAX_FRACTION = 0.11
  * possible play, which is the legibility contract this file has always held —
  * and 1.3x to 5x the old numbers, which is what an honest doubling costs.
  *
- * Rival-versus-rival is now conserving: the winner becomes exactly the two of
- * them. That is also the honest picture, and the size recycler still caps any
- * core at RIVAL_MAX_RATIO of the player, so it cannot fill the screen.
+ * Rival-versus-rival now moves the whole loser into the winner rather than a
+ * third of it. Not conserving — `killRival(j, true)` still scatters 22% of the
+ * loser as edible crumbs on top, so a collision leaves 1.22x the two of them —
+ * but the size recycler caps any core at RIVAL_MAX_RATIO of the player, so it
+ * cannot run away and it cannot fill the screen.
  */
 export function devourGain(rivalMass: number): number {
   if (rivalMass <= 0) return 0
@@ -992,8 +1012,8 @@ export class World {
    * reads "10 + 4 = 14" because that is what happened.
    *
    * This function still rounds, because mass is a float and the ribbon's terms
-   * are integers — the Resonance reward and the rupture are the only two things
-   * left that move mass by a non-integer. Both ends are rounded, the middle is
+   * are integers — the Resonance reward, the rupture and the surge burn all move
+   * mass by a fraction. Both ends are rounded, the middle is
    * DERIVED, and `sim.test.ts` walks a seeded run pairing every absorb back to
    * the numeral it came from.
    *
@@ -1027,6 +1047,7 @@ export class World {
     this.rivalCount = 0
     this.malive.fill(0)
     this.mwall.fill(0)
+    this.exhaust = 0
     this.ralive.fill(0)
     this.resonance.active = false
     this.resonance.phase = 0
@@ -1201,30 +1222,10 @@ export class World {
   }
 
   /**
-   * How often the water offers a number just under your own.
-   *
-   * This one rate is what makes exact absorption survivable, and it replaces
-   * the saturation that used to do the same job by lying about arithmetic.
-   *
-   * A prize is worth ALL OF YOU: swallow one and you double, exactly, and the
-   * ribbon prints the doubling. Repeat that at a fixed frequency and mass is
-   * exponential in the number of motes eaten, with no polynomial anywhere to
-   * catch it. Measured, with absorption made exact and the old flat 8% band
-   * left alone: a struggling run passed 100,000 inside the first minute and a
-   * well-answered one reached 27 million by the second — against 300 and
-   * 11,422 before. Eight digits on the player's own core is the end of the
-   * product the pack exists for.
-   *
-   * So the prize gets rarer exactly as fast as it gets bigger. Its contribution
-   * to growth is `rate * M`; the crumb economy's goes as `sqrt(M)`; holding the
-   * ratio fixed at every size — which is what "the same curve" actually means —
-   * needs `rate ∝ M^-0.85` once the eat rate's own `M^-0.35` is folded in. The
-   * ceiling is what keeps the opening explosive: for the first half-minute the
-   * cap binds and doubling is a thing that happens to you often.
-   *
-   * It is scaled by `growth`, so a child who is struggling meets fewer of them.
-   * That is the same brake the old code applied by shrinking the gain, moved
-   * onto the supply, where it does not have to lie to work.
+   * How often the water offers a number just under your own. See PRIZE_RATE:
+   * this is the single rate that makes exact absorption survivable, and it
+   * replaces the saturation that used to do the same job by lying about
+   * arithmetic.
    */
   private get prizeRate(): number {
     return Math.min(PRIZE_RATE_MAX, (PRIZE_RATE * this.growth) / Math.pow(Math.max(1, this.mass), PRIZE_RATE_EXP))
@@ -1508,24 +1509,55 @@ export class World {
       // `false`: surge burn is a continuous drain, not an event. Left on the
       // ledger it would rewrite the ribbon sixty times a second with
       // "1503 - 1 = 1502" and bury every real piece of arithmetic.
-      const paid = this.damage(burn, false) > burn * 0.5
+      const spent = this.damage(burn, false)
       const sp = Math.hypot(this.pvx, this.pvy)
-      if (paid && sp > 1 && this.rng.chance(Math.min(1, dt * 26))) {
-        const i = this.freeMote()
-        if (i >= 0) {
-          const v = Math.max(1, Math.round(this.mass * 0.035))
-          this.mx[i] = this.px - (this.pvx / sp) * r
-          this.my[i] = this.py - (this.pvy / sp) * r
-          this.mvx[i] = -(this.pvx / sp) * 150 + this.rng.sym(60)
-          this.mvy[i] = -(this.pvy / sp) * 150 + this.rng.sym(60)
-          this.mval[i] = v
-          this.mr[i] = radiusForValue(v)
-          this.mkind[i] = MK_SHED
-          this.malive[i] = 1
-          this.mphase[i] = this.rng.range(0, 6.28)
-          this.mflip[i] = 1
-          this.mborn[i] = this.time
-          this.moteCount++
+
+      // THE EXHAUST IS A LEDGER, not a rate, and under exact absorption that is
+      // the difference between a mechanic and a mass printer.
+      //
+      // It used to be a rate: 26 motes a second, each worth 3.5% of the player,
+      // against a burn of 11% of the player a second. Nine tenths of your mass
+      // hit the water every second for a ninth of your mass paid, and the only
+      // reason the arena survived it was that eating it back was throttled — by
+      // the saturation this pass deleted (a factor of 3 to 8) and by the
+      // `growth` multiplier this pass moved onto the supply. With both gone the
+      // exhaust is ejected at 150 u/s straight into the player's own pull field,
+      // which reaches 3.4 radii and pulls at up to 260 u/s. Measured on a bot
+      // holding surge one second in five: 42,287 at one minute, 28,074,058 at
+      // two, 4,268,470,964 at four. It is the largest term in the game by five
+      // orders of magnitude and it is invisible to a bot that never surges.
+      //
+      // So the water gets exactly the mass that was actually taken off you, and
+      // a fixed share of it: `EXHAUST_SHARE` is what makes surging still COST
+      // something when you turn around and hoover your own trail back up. The
+      // rest is gone. Nothing anywhere claims the trail adds up to the burn —
+      // what is claimed, and what now holds, is that every numeral in it is
+      // worth exactly what it says.
+      this.exhaust = Math.min(this.exhaust + spent * EXHAUST_SHARE, this.mass * 0.05 + 4)
+      if (sp > 1) {
+        const v = Math.max(1, Math.round(this.mass * EXHAUST_GRAIN))
+        if (this.exhaust >= v) {
+          const i = this.freeMote()
+          if (i >= 0) {
+            this.exhaust -= v
+            this.mx[i] = this.px - (this.pvx / sp) * r
+            this.my[i] = this.py - (this.pvy / sp) * r
+            this.mvx[i] = -(this.pvx / sp) * 150 + this.rng.sym(60)
+            this.mvy[i] = -(this.pvy / sp) * 150 + this.rng.sym(60)
+            this.mval[i] = v
+            this.mr[i] = radiusForValue(v)
+            this.mkind[i] = MK_SHED
+            this.malive[i] = 1
+            // A recycled slot may still be carrying a dead wall's flag, and a
+            // shed crumb that reads as a wall is burst by `stepMotes` the same
+            // frame — or, if the burst queue is full, stings the player with
+            // their own exhaust.
+            this.mwall[i] = 0
+            this.mphase[i] = this.rng.range(0, 6.28)
+            this.mflip[i] = 1
+            this.mborn[i] = this.time
+            this.moteCount++
+          }
         }
       }
     }
@@ -1636,6 +1668,8 @@ export class World {
   /** Walls outgrown this frame, waiting to come apart. Preallocated; see above. */
   private readonly burstQ = new Int32Array(24)
   private burstLen = 0
+  /** Mass burned by the surge and not yet laid down as exhaust. See EXHAUST_SHARE. */
+  private exhaust = 0
 
   private stepRivals(dt: number): void {
     const frame = (this.time * 60) | 0

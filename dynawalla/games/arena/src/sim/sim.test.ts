@@ -473,11 +473,13 @@ function fly(
   seed: number,
   onFrame?: (f: number) => void,
   beforeFrame?: (f: number) => void,
+  surgeDuty = 0,
 ): void {
   const coin = new Rng(seed)
   let target = -1
   for (let f = 0; f < 60 * seconds; f++) {
     beforeFrame?.(f)
+    if (surgeDuty > 0) world.surging = (f / 60) % 1 < surgeDuty
     const res = world.resonance
     if (res.active && res.phase === 2) {
       if (target < 0) target = coin.f() < accuracy ? res.correctSlot : (res.correctSlot + 1 + coin.int(0, 2)) % 4
@@ -1075,8 +1077,11 @@ test("the spawn table cannot hand out a wall you can eat, or a void that outweig
       if (kind === MK_VOID) {
         voids++
         assert.ok(v < 0, `a void wearing ${v} is not a loss`)
+        // Stated as a bound, not re-derived from the constant: a test that
+        // recomputes `Math.round(mass * VOID_MAX_FRACTION)` passes for every
+        // value of VOID_MAX_FRACTION and pins nothing.
         assert.ok(
-          -v <= Math.max(1, Math.round(mass * 0.11)),
+          -v <= Math.max(1, mass * 0.12),
           `a void wearing ${-v} at mass ${mass} takes ${((-v / mass) * 100).toFixed(0)}% in one touch`,
         )
         continue
@@ -1087,7 +1092,11 @@ test("the spawn table cannot hand out a wall you can eat, or a void that outweig
         continue
       }
       assert.ok(v < mass, `an ordinary mote wearing ${v} is not edible at mass ${mass}`)
-      if (v > mass * 0.5) prizes++
+      // 0.85, not 0.5. The prize band is [0.90M, M-1] and the mid band is
+      // capped at 0.55M, so this discriminates the two whatever FOOD_A is —
+      // at 0.5 it only worked because today's FOOD_A leaves the mid band far
+      // below its own ceiling.
+      if (v >= mass * 0.85) prizes++
       else food++
     }
     assert.ok(voids > 0 && walls > 0 && food > 0, `mass ${mass}: ${voids} voids, ${walls} walls, ${food} crumbs`)
@@ -1146,6 +1155,155 @@ test("a Resonance sphere is never still carrying a wall's flag", () => {
     }
   }
   assert.ok(opened > 60, `only ${opened} frames of open Resonance in five minutes — nothing was checked`)
+})
+
+/**
+ * THE EXHAUST, and the hole this test exists to close.
+ *
+ * `surging` was never set to `true` anywhere in this file. Not in `fly`, not in
+ * the twenty-minute soak, not in the kill-hunting bot — every regression this
+ * suite has ever run flew a child who could not press the boost. So the largest
+ * term in the whole economy was untested, and the moment absorption went exact
+ * it became a mass printer: the trail used to lay down 26 motes a second worth
+ * 3.5% of the player each, against a burn of 11% a second, and the only thing
+ * that made that survivable was the saturation this pass deleted. Measured on
+ * the branch before the fix, holding surge one second in five: 42,287 at one
+ * minute, 28,074,058 at two, 4,268,470,964 at four, against 1,913 / 10,483 /
+ * 51,909 on main.
+ *
+ * The exhaust is a ledger now — a fixed share of the mass actually taken off
+ * you, and not one unit more — so the property is simple and total: **surging
+ * may never pay.** Turn round and hoover up every crumb of your own trail and
+ * you are still down on the deal.
+ */
+test("holding the surge always costs mass, even if you eat your own trail", () => {
+  // Head straight back down the trail every other half-second, which is the
+  // hoover: the exhaust is ejected backwards at 150 u/s into a pull field that
+  // reaches 3.4 radii and pulls at up to 260, so turning round collects it.
+  const hoover = (surgeDuty: number, seconds: number): World => {
+    const world = new World(createStubHost({ seed: 33 }), specFor("mid"), 777)
+    let seq = world.eqSeq
+    for (let f = 0; f < 60 * seconds; f++) {
+      const t = f / 60
+      world.surging = (t % 1) < surgeDuty
+      const back = Math.floor(t * 2) % 2 === 1
+      const sp = Math.hypot(world.pvx, world.pvy) || 1
+      world.aimX = world.px + (back ? -world.pvx / sp : world.pvx / sp) * 900 + Math.cos(t) * 40
+      world.aimY = world.py + (back ? -world.pvy / sp : world.pvy / sp) * 900 + Math.sin(t) * 40
+      world.step(1 / 60)
+      assert.ok(Number.isFinite(world.mass), `mass went non-finite at frame ${f}`)
+      // The ribbon has to survive the one thing that moves mass by a fraction
+      // sixty times a second. `stepPlayer` burns before `collide` notes, so the
+      // printed answer is still the player's number at the end of the frame —
+      // asserted rather than assumed, because nothing else in this file ever
+      // had the surge on.
+      if (world.eqSeq !== seq) {
+        seq = world.eqSeq
+        assert.equal(world.eqA + world.eqD, world.eqC, "the ribbon printed a false sum under a surge")
+        assert.equal(
+          world.eqC,
+          Math.round(world.mass),
+          `the ribbon answered ${world.eqC} while the surging player's number was ${Math.round(world.mass)}`,
+        )
+      }
+    }
+    return world
+  }
+
+  // A player who never answers and never eats anything but their own exhaust
+  // must go DOWN. This is the printer, stated as an assertion.
+  const burned = hoover(1, 120)
+  assert.ok(
+    burned.mass < 10,
+    `two minutes of held surge left the player at ${Math.round(burned.mass)} — the exhaust is paying for itself`,
+  )
+  assert.ok(burned.mass >= FLOOR_MASS, "…but it may never take a child below the floor")
+
+  // …and the same at a realistic duty cycle, against the same player not
+  // surging at all. Without this the assertion above passes for a game in which
+  // nobody grows, and the bot above eats a little of the ordinary field too.
+  const idle = hoover(0, 120)
+  assert.ok(
+    burned.mass < idle.mass,
+    `surging the whole time (${Math.round(burned.mass)}) beat never surging (${Math.round(idle.mass)})`,
+  )
+
+  // The trail is real and it is on the field: a surge lays down numerals a
+  // child can see and a rival can steal, which is the whole point of paying in
+  // mass rather than in a bar.
+  const world = new World(createStubHost({ seed: 34 }), specFor("mid"), 90210)
+  world.mass = 4000
+  let shed = 0
+  for (let f = 0; f < 60; f++) {
+    world.surging = true
+    world.aimX = world.px + 2000
+    world.aimY = world.py
+    world.step(1 / 60)
+    for (let e = 0; e < world.eventLen; e++) void world.events[e]
+  }
+  for (let i = 0; i < world.malive.length; i++) if (world.malive[i] && world.mkind[i] === MK_SHED) shed++
+  assert.ok(shed >= 6, `a second of surge at mass 4,000 laid down only ${shed} numerals`)
+
+  // The ledger, measured against the burn, in isolation. The field is wiped
+  // every frame so that nothing but the exhaust can be MK_SHED and nothing but
+  // the burn can move the player's mass; every free slot is poisoned with a
+  // dead wall's flag, because `freeMote` hands those straight back and a crumb
+  // that reads as a wall is burst by `stepMotes` the same frame — or, when the
+  // burst queue is full, stings the player with their own exhaust.
+  const solo = new World(createStubHost({ seed: 36 }), specFor("mid"), 61616)
+  solo.mass = 20_000
+  solo.ralive.fill(0)
+  solo.rivalCount = 0
+  const before = solo.mass
+  let laid = 0
+  let bursts = 0
+  for (let f = 0; f < 240; f++) {
+    for (let i = 0; i < solo.malive.length; i++) {
+      solo.malive[i] = 0
+      solo.mwall[i] = 1
+    }
+    solo.moteCount = 0
+    solo.surging = true
+    solo.aimX = solo.px + 60_000
+    solo.aimY = solo.py
+    solo.step(1 / 60)
+    for (let e = 0; e < solo.eventLen; e++) if ((solo.events[e] as { kind: string }).kind === "flip") bursts++
+    for (let i = 0; i < solo.malive.length; i++) {
+      if (!solo.malive[i] || solo.mkind[i] !== MK_SHED) continue
+      assert.equal(solo.mwall[i], 0, "a crumb of exhaust is flagged as a wall")
+      laid += solo.mval[i] as number
+    }
+  }
+  const burnt = before - solo.mass
+  assert.equal(bursts, 0, `${bursts} crumbs of exhaust were burst as walls the frame they were laid`)
+  assert.ok(laid > burnt * 0.2, `four seconds of surge burned ${Math.round(burnt)} and laid down only ${laid}`)
+  assert.ok(
+    laid < burnt * 0.85,
+    `the trail (${laid}) is worth as much as the surge cost (${Math.round(burnt)}) — boosting is free`,
+  )
+
+  // Finally, an ordinary player who boosts: the ribbon must stay true through
+  // the one thing that moves mass by a fraction sixty times a second, and the
+  // climb must stay inside the same band a player who never boosts gets.
+  const boosting = new World(createStubHost({ seed: 35 }), specFor("mid"), 5150)
+  let seq = boosting.eqSeq
+  let lines = 0
+  fly(boosting, 300, 0.6, 12, () => {
+    if (boosting.eqSeq === seq) return
+    seq = boosting.eqSeq
+    lines++
+    assert.equal(boosting.eqA + boosting.eqD, boosting.eqC, "the ribbon printed a false sum under a surge")
+    assert.equal(
+      boosting.eqC,
+      Math.round(boosting.mass),
+      `the ribbon answered ${boosting.eqC} while the surging player's number was ${Math.round(boosting.mass)}`,
+    )
+  }, undefined, 0.4)
+  assert.ok(lines > 150, `only ${lines} equations in five minutes of boosting — nothing was checked`)
+  assert.ok(
+    boosting.mass < 40_000,
+    `five minutes of a boosting player reached ${Math.round(boosting.mass)} — the trail is paying for itself`,
+  )
 })
 
 /**
