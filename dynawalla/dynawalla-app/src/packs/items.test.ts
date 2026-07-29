@@ -9,8 +9,23 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
-import { createItemService, ladder, choicesFor, isSubtraction } from "./items.ts"
-import { familyById, FORM_FREE_ENTRY, activeNodes } from "./curriculum.ts"
+import {
+  cadenceFor,
+  choicesFor,
+  climbWithinMs,
+  createItemService,
+  isSubtraction,
+  ladder,
+} from "./items.ts"
+import type { PromptSlot } from "./curriculum.ts"
+import {
+  activeNodes,
+  allNodes,
+  familyById,
+  FORM_FREE_ENTRY,
+  SLOT_BOTTOM,
+  SLOT_TOP,
+} from "./curriculum.ts"
 
 const noRecord = () => {}
 
@@ -369,4 +384,336 @@ test("isSubtraction reads every active family's key, not one family's constant",
     const key = String(rung.node.generator.family)
     assert.ok(key.length > 0)
   }
+})
+
+// ---------------------------------------------------------------------------
+// The ladder's climb rule, against the cadence table it is supposed to obey.
+//
+// Every millisecond quoted below is read off `docs/EXPERIENCE_DESIGN.md` by hand
+// and written out as a literal. Nothing here calls `cadenceFor` or
+// `climbWithinMs` to decide what it expects — a test that asks the fix what the
+// answer is and then agrees with it measures nothing, and this repo has shipped
+// several of those.
+//
+// | class                     | p50    | p90  |
+// |---------------------------|--------|------|
+// | single-digit fact         |  2.8 s |  6 s |
+// | two-digit with regrouping |    6 s | 14 s |
+// | three-digit               |   11 s | 27 s |
+// | the `5,001 − 2,798` class |   16 s | 40 s |
+const P50_BY_WIDTH: Readonly<Record<number, number>> = { 1: 2_800, 2: 6_000, 3: 11_000, 4: 16_000 }
+/** The widest published median. Beyond four digits the table says nothing. */
+const P50_WIDEST_PUBLISHED_MS = 16_000
+
+const ACROSS_ZERO = "dw.add.regroup.subtract-across-zero"
+
+function widthOf(operands: readonly string[]): number {
+  let widest = 0
+  for (const operand of operands) {
+    const digits = operand.replace(/[^0-9]/g, "").length
+    if (digits > widest) widest = digits
+  }
+  return widest
+}
+
+/** What the table says the median is for an item that wide. */
+function publishedP50Ms(width: number): number {
+  return P50_BY_WIDTH[width] ?? P50_WIDEST_PUBLISHED_MS
+}
+
+test("the `5,001 − 2,798` rungs are reachable: answering them at the published median climbs", () => {
+  // The three levels of the hardest node that ships, on their own ladder so the
+  // climb is observable rather than clamped at the top of the full one.
+  const rungs = ladder().filter((rung) => rung.node.id === ACROSS_ZERO)
+  assert.equal(rungs.length, 3, "the across-zero node no longer has three rungs")
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  assert.equal(service.position(), 0)
+
+  for (let step = 0; step < rungs.length - 1; step++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    const width = widthOf(item.operands)
+    const median = publishedP50Ms(width)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      // Exactly the median. Not "fast" — expected. Half of the children who
+      // answer this question correctly take at least this long.
+      latencyMs: median,
+    })
+    assert.equal(
+      service.position(),
+      step + 1,
+      `${item.prompt} is ${String(width)} digits wide, its published median is ` +
+        `${String(median)} ms, it was answered correctly in exactly that, and the ladder ` +
+        `did not move off rung ${String(step)}`,
+    )
+  }
+})
+
+test("a two-digit regrouping answered a millisecond past the median still climbs", () => {
+  // The median is the median: half of the children answering at the expected
+  // pace are on the slow side of it. A gate cut at 6,000 ms sent every one of
+  // them back down the ladder for being average.
+  const rungs = ladder().filter((rung) => rung.node.id === "dw.add.regroup.subtract-multidigit")
+  assert.ok(rungs.length > 1)
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+
+  const item = service.next({ packId: "dynawalla.siege" })
+  assert.ok(item)
+  assert.equal(widthOf(item.operands), 2, `${item.prompt} is not the two-digit rung`)
+  service.judge({
+    packId: "dynawalla.siege",
+    itemId: item.id,
+    response: service.reveal(item.id),
+    latencyMs: 6_001,
+  })
+  assert.equal(service.position(), 1, `${item.prompt} in 6,001 ms did not climb`)
+})
+
+test("a child who answers every question correctly at its own published median reaches the top", () => {
+  // End to end over the shipped ladder. This is the founder's sentence as a
+  // test: "if they are just crushing double digits for a nice little while then
+  // the triple digits come in."
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  const top = rungs.length - 1
+
+  const seen: string[] = []
+  for (let answered = 0; answered < 200 && service.position() < top; answered++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    const before = service.position()
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+    if (service.position() === before) seen.push(`${item.prompt} (rung ${String(before)})`)
+  }
+  assert.equal(
+    service.position(),
+    top,
+    `the ladder stalled at rung ${String(service.position())} of ${String(top)}; ` +
+      `these questions were answered correctly at their published median and did not climb: ` +
+      `${seen.slice(0, 5).join(", ")}`,
+  )
+})
+
+test("no rung's climb window is narrower than that rung's own expected time", () => {
+  // The invariant the defect violated, held over every rung in the shipped
+  // ladder rather than over the four the table names.
+  for (const rung of ladder()) {
+    const service = createItemService({ profileId: "p1", record: noRecord, rungs: [rung] })
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item, `${rung.node.id}#L${String(rung.level)} served nothing`)
+    const width = widthOf(item.operands)
+    const window = climbWithinMs(width, rung.node.fluencyTarget?.p50Ms)
+    assert.ok(window !== null, `${item.prompt} has no climb window at all`)
+    assert.ok(
+      window > publishedP50Ms(width),
+      `${rung.node.id}#L${String(rung.level)} draws ${item.prompt}, ${String(width)} digits ` +
+        `wide, whose published median is ${String(publishedP50Ms(width))} ms — and it climbs ` +
+        `only under ${String(window)} ms`,
+    )
+    // And a node that declares its own median may only widen the window, never
+    // narrow it. `dw.mul.*` declares 15 s and `dw.div.*` 18 s; those rows are
+    // draft today and this is the guard that stops the same defect arriving
+    // with them.
+    const declared = rung.node.fluencyTarget?.p50Ms
+    if (declared !== undefined) {
+      assert.ok(
+        window > declared,
+        `${rung.node.id} declares a ${String(declared)} ms median and climbs only under ` +
+          `${String(window)} ms`,
+      )
+    }
+  }
+})
+
+test("every node in the graph, draft included, gets a window wider than its declared median", () => {
+  for (const node of allNodes) {
+    const declared = node.fluencyTarget?.p50Ms
+    if (declared === undefined) continue
+    for (let width = 1; width <= 6; width++) {
+      const window = climbWithinMs(width, declared)
+      assert.ok(window !== null && window > declared, `${node.id} at ${String(width)} digits`)
+    }
+  }
+})
+
+test("the cadence table is the only thing the climb window is derived from", () => {
+  // The four published rows, restated as the assertion that the two lines in
+  // `items.ts` actually pass through them.
+  assert.deepEqual(cadenceFor(1), { p50Ms: 2_800, p90Ms: 6_000 })
+  assert.deepEqual(cadenceFor(2), { p50Ms: 6_000, p90Ms: 14_000 })
+  assert.deepEqual(cadenceFor(3), { p50Ms: 11_000, p90Ms: 27_000 })
+  assert.deepEqual(cadenceFor(4), { p50Ms: 16_000, p90Ms: 40_000 })
+  // A width that is not a width is not a class, and is never silently "easy".
+  assert.equal(cadenceFor(0), null)
+  assert.equal(cadenceFor(-1), null)
+  assert.equal(climbWithinMs(0, undefined), null)
+})
+
+test("an unclassifiable item promotes and says so, rather than pinning a child in silence", () => {
+  // A prompt with no numerals in it, on a node that declares no fluency target.
+  // No family ships one today; the next one might, and the failure mode must be
+  // a line in the log rather than a child who answers correctly all afternoon
+  // and never moves.
+  const base = ladder().find((rung) => rung.node.id === ACROSS_ZERO)
+  assert.ok(base)
+  assert.equal(base.node.fluencyTarget, undefined, "the chosen node now declares a median")
+
+  const wordless = {
+    ...base,
+    family: {
+      ...base.family,
+      generate: (request: Parameters<typeof base.family.generate>[0]) => {
+        const exercise = base.family.generate(request)
+        return {
+          ...exercise,
+          prompt: {
+            key: exercise.prompt.key,
+            slots: {
+              [SLOT_TOP]: { kind: "term", key: "dw.term.the-larger" } as unknown as PromptSlot,
+              [SLOT_BOTTOM]: { kind: "term", key: "dw.term.the-smaller" } as unknown as PromptSlot,
+            },
+          },
+        }
+      },
+    },
+  } as typeof base
+
+  const warnings: string[] = []
+  const realWarn = console.warn
+  console.warn = (...args: unknown[]) => warnings.push(args.map(String).join(" "))
+  try {
+    const service = createItemService({
+      profileId: "p1",
+      record: noRecord,
+      rungs: [wordless, wordless],
+    })
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    assert.equal(widthOf(item.operands), 0, `${item.prompt} still has numerals in it`)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      // Four minutes. Unclassifiable must mean generous, not punitive.
+      latencyMs: 240_000,
+    })
+    assert.equal(service.position(), 1, "an unclassifiable item refused to promote")
+  } finally {
+    console.warn = realWarn
+  }
+  assert.ok(
+    warnings.some((line) => line.includes(ACROSS_ZERO) && line.includes("fluencyTarget")),
+    `nothing was said about it: ${JSON.stringify(warnings)}`,
+  )
+})
+
+test("a latency that is not a measurement promotes and says so", () => {
+  // `NaN <= 40000` is `false`. A pack with a broken clock would otherwise pin a
+  // child to the bottom rung with nothing on the console at all.
+  const warnings: string[] = []
+  const realWarn = console.warn
+  console.warn = (...args: unknown[]) => warnings.push(args.map(String).join(" "))
+  try {
+    const service = createItemService({ profileId: "p1", record: noRecord })
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs: Number.NaN,
+    })
+    assert.equal(service.position(), 1, "a broken clock stopped a correct answer climbing")
+  } finally {
+    console.warn = realWarn
+  }
+  assert.ok(
+    warnings.some((line) => line.includes("not a measurement")),
+    `nothing was said about it: ${JSON.stringify(warnings)}`,
+  )
+})
+
+test("a correct answer from the slow tail of its own item holds the rung, and never costs one", () => {
+  // The intent the constant was reaching for, kept: a child who took far longer
+  // than the ninth of ten children on this question does not climb — and does
+  // not fall either. Being slow is not being wrong.
+  const rungs = ladder().filter((rung) => rung.node.id === "dw.add.facts.add-within-ten")
+  assert.ok(rungs.length > 1)
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  const first = service.next({ packId: "dynawalla.siege" })
+  assert.ok(first)
+  service.judge({
+    packId: "dynawalla.siege",
+    itemId: first.id,
+    response: service.reveal(first.id),
+    latencyMs: 2_800,
+  })
+  const climbed = service.position()
+  assert.equal(climbed, 1)
+
+  const second = service.next({ packId: "dynawalla.siege" })
+  assert.ok(second)
+  service.judge({
+    packId: "dynawalla.siege",
+    itemId: second.id,
+    response: service.reveal(second.id),
+    // Five minutes on a single-digit fact. Nobody's p90.
+    latencyMs: 300_000,
+  })
+  assert.equal(service.position(), climbed, "a slow correct answer moved the ladder")
+})
+
+test("no run of wrong answers can push a child below the easiest rung the curriculum has", () => {
+  const service = createItemService({ profileId: "p1", record: noRecord })
+  for (let i = 0; i < 30; i++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item, `the floor stopped serving questions after ${String(i)} misses`)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: "definitely wrong",
+      latencyMs: 1_000,
+    })
+    assert.ok(service.position() >= 0, `the ladder went to ${String(service.position())}`)
+  }
+  assert.equal(service.position(), 0)
+  assert.ok(service.next({ packId: "dynawalla.siege" }), "the floor is not serving questions")
+})
+
+test("climbing and stepping down are one rung each and meet in the middle", () => {
+  // The descent rule is unchanged and is founder direction; what is checked here
+  // is that it composes with the new climb rule rather than fighting it.
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  for (let i = 0; i < 6; i++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+  const high = service.position()
+  assert.equal(high, 6)
+  for (let i = 0; i < 3; i++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: "definitely wrong",
+      latencyMs: 1_000,
+    })
+  }
+  assert.equal(service.position(), high - 3, "three misses did not cost exactly three rungs")
 })
