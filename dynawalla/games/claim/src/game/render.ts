@@ -5,6 +5,7 @@
 // smoothing off, so a fully claimed arena costs exactly the same as an empty
 // one. Nothing per-cell happens in the draw loop.
 
+import { clamp } from "./exact.ts"
 import { VOID, type Grid } from "./grid.ts"
 import { batchColour, css, INK, mix, type LevelInk, type Rgb } from "./palette.ts"
 import type { Particles } from "./particles.ts"
@@ -564,24 +565,36 @@ export class Renderer {
   }
 
   /** A revive-gate answer plate. Big enough to hit at speed with a thumb. */
-  drawPlate(gx: number, gy: number, label: string, pop: number, time: number): void {
+  /**
+   * `hold` is 0→1 as the player stands on the plate. It is drawn as a tide
+   * rising up the plate, because "arriving is not answering" has to be
+   * something a child *sees* happening rather than something they are told: you
+   * stop on the one you mean and it fills, you drive over it and it does not.
+   */
+  drawPlate(gx: number, gy: number, label: string, pop: number, time: number, hold = 0): void {
     const ctx = this.ctx
     const cs = this.cs
     const p = this.gridToPx(gx, gy)
     const k = 0.35 + 0.65 * pop
-    const bob = Math.sin(time * 2.4 + gx * 0.4) * cs * 0.5
+    const t = clamp(hold, 0, 1)
+    const bob = Math.sin(time * 2.4 + gx * 0.4) * cs * 0.5 * (1 - t)
     const w = cs * 8.4 * k
     const h = cs * 5.4 * k
     ctx.save()
     ctx.translate(p.x, p.y + bob)
+    ctx.scale(1 + t * 0.06, 1 + t * 0.06)
     ctx.globalCompositeOperation = "lighter"
-    ctx.fillStyle = css(INK.yellow, 0.16)
+    ctx.fillStyle = css(INK.yellow, 0.16 + t * 0.3)
     ctx.fillRect(-w * 0.62, -h * 0.72, w * 1.24, h * 1.44)
     ctx.globalCompositeOperation = "source-over"
     ctx.fillStyle = css(INK.paper)
     ctx.fillRect(-w / 2, -h / 2, w, h)
+    if (t > 0) {
+      ctx.fillStyle = css(INK.yellow, 0.34 + t * 0.4)
+      ctx.fillRect(-w / 2, h / 2 - h * t, w, h * t)
+    }
     ctx.strokeStyle = css(INK.yellow)
-    ctx.lineWidth = Math.max(2, cs * 0.34)
+    ctx.lineWidth = Math.max(2, cs * (0.34 + t * 0.5))
     ctx.strokeRect(-w / 2, -h / 2, w, h)
     ctx.fillStyle = css(INK.bone)
     ctx.textAlign = "center"

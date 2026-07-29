@@ -1,11 +1,117 @@
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
   speedAt, readWindow, breather, beatTime, difficultyFor,
-  READ_WINDOW_FLOOR, V_START, V_TERMINAL, V_REDUCED_CAP,
+  gateDistance, deliveredWindow, hazardLandsOnRead,
+  READ_WINDOW_FLOOR, DELIVERED_WINDOW_FLOOR, DODGE_CORRIDOR_FLOOR,
+  V_SURGE_BOOST_MAX, GATES_PER_STEP,
+  V_START, V_TERMINAL, V_REDUCED_CAP,
   COST_WRONG_GATE, COST_HAZARD, GAIN_GATE, VOLT_BLEED, VOLT_MAX,
 } from "./pacing.ts";
 import { Rng } from "./rng.ts";
+
+/* ------------------------- the spawn loop, headless ------------------------ */
+
+/**
+ * A replay of `mount.ts`'s gate/hazard scheduling with no WebGL under it.
+ *
+ * It is deliberately written from the *geometry* — gates and hazards are z
+ * coordinates that scroll toward the player at the live speed, exactly as
+ * `Entities.update` moves them — and not from any of the pacing functions'
+ * own arithmetic. A hazard counts as arriving during a read when its z crosses
+ * the answer plane on a frame where a gate is up. If the guard were to start
+ * lying, this measurement would not follow it.
+ */
+const clampN = (v: number, lo: number, hi: number) => (v < lo ? lo : v > hi ? hi : v);
+const approachN = (v: number, t: number, rate: number, dt: number) =>
+  v + (t - v) * (1 - Math.exp(-rate * dt));
+
+type Sim = {
+  gates: number;
+  arrivalsWhileReading: number;
+  arrivals: number;
+  readingDuty: number;
+  minDelivered: number;
+};
+
+function replay(opts: { until: number; from?: number; far: number; guard?: boolean }): Sim {
+  const { until, from = 0, far, guard = true } = opts;
+  const rng = new Rng(1234);
+  const dt = 1 / 60;
+  const spawnZ = far * 0.88;
+  let elapsed = 0, travel = 0, speed = V_START;
+  let gate: { z: number } | null = null;
+  let gateCooldown = 0.75;
+  let nextBeatAt = 70;
+  const hazards: number[] = [];
+  let gates = 0, hit = 0, arrivals = 0, reading = 0, live = 0;
+  let minDelivered = Infinity;
+
+  while (elapsed < until) {
+    elapsed += dt;
+    speed = approachN(speed, speedAt(elapsed, false), 1.6, dt);
+    const scroll = speed * dt;
+    travel += scroll;
+
+    if (gate) gate.z += scroll;
+    for (let i = 0; i < hazards.length; i++) {
+      const was = hazards[i] as number;
+      hazards[i] = was + scroll;
+      if (was < 0 && (hazards[i] as number) >= 0 && elapsed >= from) {
+        arrivals++;
+        if (gate) hit++;
+      }
+    }
+    for (let i = hazards.length - 1; i >= 0; i--) if ((hazards[i] as number) > 26) hazards.splice(i, 1);
+
+    if (elapsed >= from) {
+      live += dt;
+      if (gate) reading += dt;
+    }
+
+    if (gate && gate.z >= 0) {
+      gate = null;
+      gateCooldown = breather(travel);
+      if (elapsed >= from) gates++;
+    }
+    if (!gate) {
+      gateCooldown -= dt;
+      if (gateCooldown <= 0) {
+        const dist = gateDistance(speed, readWindow(travel, false), far);
+        gate = { z: -dist };
+        minDelivered = Math.min(minDelivered, dist / speed);
+      }
+    }
+
+    if (travel >= nextBeatAt) {
+      nextBeatAt = travel + speed * beatTime(travel);
+      const blocked =
+        guard &&
+        hazardLandsOnRead({
+          dist: spawnZ,
+          elapsed,
+          travel,
+          speed,
+          far,
+          reduced: false,
+          gateEndsIn: gate ? Math.max(0, -gate.z) / Math.max(1, speed) : null,
+          cooldown: gateCooldown,
+        });
+      if (!blocked && rng.next() < clampN(0.42 + travel / 9000, 0.42, 0.78)) hazards.push(-spawnZ);
+    }
+  }
+  return {
+    gates,
+    arrivalsWhileReading: hit,
+    arrivals,
+    readingDuty: reading / live,
+    minDelivered,
+  };
+}
+
+/** Every draw distance in `tiers.ts`, smallest first. */
+const FARS = [300, 380, 440, 520];
 
 /* --------------------------------- pacing --------------------------------- */
 
@@ -32,6 +138,142 @@ test("reduced motion caps speed without stopping the world", () => {
     assert.ok(v <= V_REDUCED_CAP, `reduced motion hit ${v} u/s`);
     assert.ok(v > 20, "reduced motion must still be a runner, not a slideshow");
   }
+});
+
+test("nothing to dodge arrives while a gate is being read", () => {
+  // The promise in `emitBeat`. It was written as a comment over a comparison
+  // between a hazard's spawn z (-334) and a gate's live z (never past -102), so
+  // it never fired once: measured on origin/main this was 1.47 hazards per
+  // reading window in the first ninety seconds and 2.03 from ninety seconds on,
+  // identical to the numbers with the guard deleted entirely.
+  for (const far of FARS) {
+    const early = replay({ until: 90, far });
+    const late = replay({ until: 300, from: 90, far });
+    for (const [phase, r] of [["first 90s", early], ["90s-300s", late]] as const) {
+      assert.ok(r.gates > 8, `${far}/${phase}: only ${r.gates} gates, nothing was measured`);
+      const per = r.arrivalsWhileReading / r.gates;
+      assert.ok(
+        per <= 0.02,
+        `far=${far} ${phase}: ${per.toFixed(2)} hazards arrive per reading window ` +
+          `(${r.arrivalsWhileReading} across ${r.gates} gates)`,
+      );
+    }
+  }
+});
+
+test("and the guard is actually wired into the beat that spawns them", () => {
+  // The test above replays the loop rather than running `mount.ts`, which needs
+  // a WebGL context. So it would still pass if `emitBeat` simply stopped
+  // consulting the guard — which is *exactly* the shape of the bug being fixed
+  // here: a promise written as a comment over a call that does nothing. The
+  // count of places that decide whether a hazard spawns is the thing worth
+  // pinning, so it is pinned.
+  const src = readFileSync(new URL("./mount.ts", import.meta.url), "utf8");
+  const beat = src.slice(src.indexOf("function emitBeat("), src.indexOf("/* ------------------------------ collisions"));
+  assert.ok(beat.length > 200, "emitBeat has moved; this test needs re-aiming");
+  assert.ok(
+    beat.includes("hazardLandsOnRead("),
+    "emitBeat must ask whether the hazard lands on a read before spawning one",
+  );
+  const call = beat.indexOf("hazardLandsOnRead(");
+  const spawn = beat.indexOf("ents.spawnHazard(");
+  assert.ok(spawn > call, "the question has to be asked before the hazard exists");
+  assert.equal(
+    (src.match(/ents\.spawnHazard\(/g) ?? []).length,
+    (beat.match(/ents\.spawnHazard\(/g) ?? []).length,
+    "every hazard in the game must come from the beat the guard covers",
+  );
+});
+
+test("the corridor between gates is where the runner is still a runner", () => {
+  // Relief comes from space and time. If the fix above were "delete the
+  // hazards", this is what would notice: a run must still be dense with things
+  // to dodge, they just all live between the gates now.
+  for (const far of FARS) {
+    const late = replay({ until: 300, from: 90, far });
+    const perGate = late.arrivals / late.gates;
+    assert.ok(perGate > 0.9, `far=${far}: only ${perGate.toFixed(2)} hazards per gate cycle — the world is empty`);
+    assert.ok(
+      late.readingDuty > 0.45 && late.readingDuty < 0.75,
+      `far=${far}: reading is ${(late.readingDuty * 100).toFixed(0)}% of the clock — ` +
+        "at 88% there is no corridor to put a pylon in, and at 40% it is not a maths game",
+    );
+  }
+});
+
+test("the reading window the child gets survives the draw distance", () => {
+  // `readWindow` is a wish; a gate cannot spawn past the far plane. On the
+  // smallest tier at full speed the clamp is what actually decides, so the
+  // floor has to hold there or the promise is decoration.
+  for (const far of FARS) {
+    for (let speed = V_START; speed <= V_TERMINAL * V_SURGE_BOOST_MAX + 0.01; speed += 0.5) {
+      for (const travel of [0, 2600, 20000, 1e6]) {
+        const w = deliveredWindow(travel, speed, far, false);
+        assert.ok(
+          w >= DELIVERED_WINDOW_FLOOR - 1e-9,
+          `far=${far} speed=${speed.toFixed(1)} travel=${travel}: only ${w.toFixed(2)}s to read`,
+        );
+      }
+    }
+    const late = replay({ until: 300, far });
+    assert.ok(
+      late.minDelivered >= DELIVERED_WINDOW_FLOOR - 1e-9,
+      `far=${far}: a real run handed out a ${late.minDelivered.toFixed(2)}s window`,
+    );
+  }
+  // And a gate is never spawned somewhere it cannot be drawn.
+  for (const far of FARS) {
+    assert.ok(gateDistance(1e6, 1e6, far) <= far, "a gate spawned beyond the far plane is invisible");
+    assert.ok(gateDistance(0, 0, far) >= 68, "a gate on top of the player is not a question");
+  }
+});
+
+test("the reading window answers to the cadence table, not to vibes", () => {
+  // docs/EXPERIENCE_DESIGN.md: two-digit regrouping is instrumented at p50 6s /
+  // p90 14s, and this pack's own pack.json claims
+  // `dw.add.regroup.subtract-across-zero`. Three shown candidates is cheaper
+  // than producing an answer cold — it is not four times cheaper, which is what
+  // a 1.55s window assumed.
+  assert.ok(READ_WINDOW_FLOOR >= 3, `a ${READ_WINDOW_FLOOR}s window is a coin toss with three faces`);
+  assert.ok(readWindow(0, false) > 5, "the first gates must be generous");
+  // The whole cycle — read it, then run the corridor — is the unit a child
+  // actually spends on one question, and it should land near that 6s p50.
+  const cycle = READ_WINDOW_FLOOR + DODGE_CORRIDOR_FLOOR;
+  assert.ok(cycle >= 4.5 && cycle <= 9, `${cycle}s per question is outside the cadence table`);
+});
+
+test("a hazard is only held back when it would actually land on a read", () => {
+  // The projection on its own, in a steady state: deep into a run the speed
+  // curve is flat, so a hazard's flight time is just distance over speed and
+  // the answer can be worked out by hand.
+  const base = {
+    elapsed: 2000, travel: 200000, speed: V_TERMINAL,
+    far: 380, reduced: false, cooldown: 0,
+  };
+  const w = deliveredWindow(base.travel, base.speed, base.far, false); // ~3.2s
+  const b = breather(base.travel); // ~1.9s
+  const unit = V_TERMINAL; // one second of flight, in world units
+
+  // A gate resolving in 1s. Reading now..1s, corridor 1..1+b, then w again.
+  const at = (seconds: number, gateEndsIn: number | null, cooldown = 0) =>
+    hazardLandsOnRead({ ...base, cooldown, gateEndsIn, dist: seconds * unit });
+  assert.equal(at(0.5, 1), true, "landing inside the live gate's own window");
+  assert.equal(at(1 + b * 0.5, 1), false, "landing in the middle of the corridor");
+  assert.equal(at(1 + b + w * 0.5, 1), true, "landing inside the next gate's window");
+  assert.equal(at(1 + b + w + b * 0.5, 1), false, "and the corridor after that is open");
+
+  // Nothing up yet, next gate requested in 1.5s.
+  assert.equal(at(0.7, null, 1.5), false);
+  assert.equal(at(1.5 + w * 0.5, null, 1.5), true);
+
+  // Six seconds downrange — a whole cycle out — is still answered honestly.
+  const cycle = w + b;
+  assert.equal(at(1 + b + cycle + w * 0.5, 1), true, "two cycles out, mid-read");
+  assert.equal(at(1 + b + cycle * 2 + w + b * 0.5, 1), false, "three cycles out, corridor");
+
+  // Degenerate input must terminate rather than spin.
+  assert.equal(typeof hazardLandsOnRead({ ...base, gateEndsIn: null, dist: 1e9 }), "boolean");
+  assert.equal(typeof hazardLandsOnRead({ ...base, gateEndsIn: null, dist: 0 }), "boolean");
 });
 
 test("the reading window shrinks but never below its floor", () => {
@@ -69,18 +311,39 @@ test("a twenty-minute run keeps escalating rather than plateauing into nothing",
 
 /* ------------------------------- difficulty ------------------------------- */
 
-test("difficulty climbs with distance and is clamped", () => {
-  assert.ok(difficultyFor(0, 1, 0, 0) < difficultyFor(5000, 1, 0, 0));
-  assert.ok(difficultyFor(1e9, 9, 100, 100) <= 12);
-  assert.ok(difficultyFor(0, 1, 100, 0) >= 0, "difficulty must never go negative");
+test("difficulty climbs on answers read correctly, and is clamped", () => {
+  assert.ok(difficultyFor(1, 8, 0) < difficultyFor(1, 8, 8));
+  assert.ok(difficultyFor(1, 100, 20) < difficultyFor(1, 100, 60));
+  assert.ok(difficultyFor(9, 100, 100) <= 12);
+  assert.ok(difficultyFor(1, 100, 0) >= 0, "difficulty must never go negative");
+  // A step is worth a handful of gates, not a whole session and not one gate.
+  assert.ok(GATES_PER_STEP >= 3 && GATES_PER_STEP <= 8);
+});
+
+test("surviving is not an achievement: distance alone never raises the maths", () => {
+  // The bug this replaces: `1 + travel/900` handed a child a harder question
+  // every fifteen seconds of *staying alive*, so a player who answered nothing
+  // correctly and merely dodged well was escalated at anyway. Nothing in the
+  // signature may be a proxy for run length — a run is a number of gates and a
+  // number of them right, and only the second one is an achievement.
+  assert.equal(difficultyFor.length, 3, "difficultyFor must not take a distance again");
+  const src = readFileSync(new URL("./mount.ts", import.meta.url), "utf8");
+  const call = /const difficulty = \(\)[^\n]*/.exec(src)?.[0] ?? "";
+  assert.ok(call.includes("difficultyFor("), "the difficulty hint has moved; re-aim this test");
+  assert.ok(!call.includes("travel"), `distance is back in the difficulty hint: ${call}`);
+  const noneRight = [0, 4, 20, 60, 200].map((gates) => difficultyFor(1, gates, 0));
+  const first = noneRight[0] as number;
+  for (const d of noneRight) {
+    assert.ok(d <= first, `a child answering nothing right was escalated to ${d}`);
+  }
 });
 
 test("a child who is drowning gets relief, not more escalation", () => {
-  const struggling = difficultyFor(4000, 1, 10, 4); // 40% right
-  const cruising = difficultyFor(4000, 1, 10, 10);
+  const struggling = difficultyFor(1, 10, 4); // 40% right
+  const cruising = difficultyFor(1, 10, 10);
   assert.ok(struggling < cruising - 1.5, "a bad patch must visibly ease the questions");
   // Fewer than four answered is not evidence of anything; do not punish it.
-  assert.equal(difficultyFor(4000, 1, 3, 0), difficultyFor(4000, 1, 0, 0));
+  assert.equal(difficultyFor(1, 3, 0), difficultyFor(1, 0, 0));
 });
 
 /* --------------------------------- economy -------------------------------- */

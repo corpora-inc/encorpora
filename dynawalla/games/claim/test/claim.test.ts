@@ -237,6 +237,40 @@ test("a question the level cannot use falls back to the ladder", () => {
   assert.equal(goalFromQuestion(levelAt(9), 7200, huge).target, 6480)
 })
 
+test("KNOWN GAP: an ordinary arithmetic answer can never be this game's goal", () => {
+  // Not a fix — a pin on a hole, so that the next person to read `goalFromQuestion`
+  // does not mistake it for a working seam.
+  //
+  // A goal must be a whole number of cells of a 7200-cell plane and at least
+  // `total/20` = 360 of them, because a seven-cell goal is not a game. Every
+  // answer a two-digit skill produces is under 200, so **no question from an
+  // arithmetic curriculum ever becomes the goal** — the fraction the child works
+  // is always the hardcoded LADDER's, and the host's question is spent on the
+  // gate instead.
+  //
+  // Widening the threshold does not fix it. The blocker is the representation:
+  // CLAIM's own `covers.skills` are fraction skills whose answers are fractions
+  // ("3/4"), and `Number("3/4")` is not an integer, so those are rejected before
+  // the threshold is even reached. Only an answer that is *literally a count of
+  // cells* can drive the goal, and nothing in the curriculum graph produces one.
+  //
+  // Closing it needs a decision this game cannot make on its own — either a
+  // generator whose answers are areas of 7200, or a documented mapping from a
+  // small answer onto the plane (answer-as-percent, answer-as-blocks) that the
+  // goal card would have to teach. Both are design work, not a threshold tweak.
+  for (const answer of [7, 63, 99, 198, 359]) {
+    const g = goalFromQuestion(levelAt(1), 7200, { id: "q", prompt: "27 + 35", answer: String(answer) })
+    assert.equal(g.questionId, null, `${answer} became a goal — has the mapping landed?`)
+    assert.equal(g.target, 3600, "the ladder's own fraction is what the child actually works")
+  }
+  // And a fraction-shaped answer, which is what this pack's declared skills
+  // produce, is rejected before any threshold applies.
+  assert.equal(
+    goalFromQuestion(levelAt(3), 7200, { id: "q", prompt: "6/8 in lowest terms", answer: "3/4" }).questionId,
+    null,
+  )
+})
+
 test("every level's own ladder goal is inside its own share window", () => {
   for (let i = 1; i <= 60; i++) {
     const l = levelAt(i)

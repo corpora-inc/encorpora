@@ -43,6 +43,7 @@ import { Input } from "./input.ts"
 import { Juice } from "./juice.ts"
 import { arenaRect, muteRect } from "./layout.ts"
 import { goalFromQuestion, levelAt, type Goal, type Level } from "./levels.ts"
+import { PLATE_ARM, holdPlates, layoutPlates, type Plate } from "./plates.ts"
 import { css, INK, levelInk } from "./palette.ts"
 import { Particles } from "./particles.ts"
 import { Renderer } from "./render.ts"
@@ -61,8 +62,6 @@ type Flood = {
   edge: number
   duration: number
 }
-
-type Plate = { gx: number; gy: number; label: string; correct: boolean; taken: boolean; pop: number }
 
 const START_LIVES = 3
 /**
@@ -149,6 +148,8 @@ class Claim {
   private plates: Plate[] = []
   private gateLeft = 0
   private gateStart = 0
+  /** Which gate is open: the one death opens, or the one a level clear opens. */
+  private gateKind: "revive" | "vault" = "revive"
 
   private frames = 0
   private totalFrames = 0
@@ -508,8 +509,7 @@ class Claim {
         if (this.phaseT > 1.0 && this.card !== "shown") this.showClearCard()
         if (this.phaseT > 3.1 || (this.phaseT > 1.6 && this.input.consumePress())) {
           this.hud.hideCard()
-          this.card = ""
-          this.startLevel(this.levelIndex + 1)
+          this.openVault()
         }
         break
       case "over":
@@ -989,17 +989,37 @@ class Claim {
     this.lives--
     this.hud.setLives(this.lives)
     this.hud.toast(cause === "fuse" ? "BURNT" : "CUT", "bad")
-    this.openGate()
+    this.openGate("revive")
+  }
+
+  /**
+   * The vault: the same three plates, opened by winning instead of by dying.
+   *
+   * Until this existed, `finishGate` was the game's only report and `die()` was
+   * the only way to reach it — so **everything CLAIM ever told the host was
+   * preceded by a crash**. A child who cleared nine levels without dying
+   * answered nothing, as far as an adaptive controller could tell, and the
+   * sample it did get was drawn entirely from the worst moment of a run.
+   *
+   * Nothing is at stake here but score. Being wrong costs nothing (ADR-0009),
+   * which is exactly why it is a clean signal: a child has no reason to answer
+   * it any way other than honestly.
+   */
+  private openVault(): void {
+    this.card = ""
+    this.openGate("vault")
   }
 
   /**
    * Where a free-to-play game would show an ad, this asks for arithmetic.
    *
-   * Three plates, one right. Drive into the right one and you get the life
-   * back and three seconds of shield. Get it wrong, or dither past the ring,
-   * and the life stays spent. Nothing is ever taken for being wrong twice.
+   * Three plates, one right. Hold the right one and — at the revive gate — you
+   * get the life back and three seconds of shield. Get it wrong, or dither past
+   * the ring, and the life stays spent. Nothing is ever taken for being wrong
+   * twice.
    */
-  private openGate(): void {
+  private openGate(kind: "revive" | "vault"): void {
+    this.gateKind = kind
     let q: Question | null = this.spare
     this.spare = null
     if (!q) {
@@ -1016,19 +1036,14 @@ class Claim {
       this.finishGate(false)
       return
     }
-    const labels = this.rng.shuffle([
-      { label: q.answer, correct: true },
-      ...q.distractors.slice(0, 2).map((d) => ({ label: d, correct: false })),
-    ])
-    const n = labels.length
-    this.plates = labels.map((l, i) => ({
-      gx: this.g.w * ((i + 1) / (n + 1)),
-      gy: this.g.h * 0.5,
-      label: l.label,
-      correct: l.correct,
-      taken: false,
-      pop: 0,
-    }))
+    this.plates = layoutPlates(
+      this.g.w,
+      this.g.h,
+      this.rng.shuffle([
+        { label: q.answer, correct: true },
+        ...q.distractors.slice(0, 2).map((d) => ({ label: d, correct: false })),
+      ]),
+    )
     this.gateLeft = GATE_SECONDS
     this.gateStart = performance.now()
     this.phase = "gate"
@@ -1038,23 +1053,28 @@ class Claim {
 
   private updateGate(dt: number): void {
     this.gateLeft -= dt
-    for (const p of this.plates) p.pop = Math.min(1, p.pop + dt * 3.2)
     this.movePlayer(dt)
-    const px = this.px()
-    const py = this.py()
-    for (const p of this.plates) {
-      if (p.taken) continue
-      if (Math.abs(p.gx - px) < 4.2 && Math.abs(p.gy - py) < 3.4) {
-        p.taken = true
-        this.finishGate(p.correct, p.label)
-        return
-      }
+    // Driving over a plate is not answering with it — you have to hold it. See
+    // `plates.ts`: three labels used to share the middle row, so reaching the
+    // far one meant crossing the near ones and being marked wrong for it.
+    const i = holdPlates(this.plates, this.px(), this.py(), dt)
+    if (i >= 0) {
+      const p = this.plates[i] as Plate
+      p.taken = true
+      this.finishGate(p.correct, p.label)
+      return
     }
     if (this.gateLeft <= 0) this.finishGate(false)
   }
 
   private finishGate(correct: boolean, answered = ""): void {
-    if (this.gateQ) {
+    // A vault nobody touched is not a wrong answer, it is a child who wanted to
+    // keep playing. The revive gate is different — the ring closing there costs
+    // a life, so letting it close is a real "I could not do this" — but posting
+    // `correct: false` for an untouched bonus would feed an adaptive controller
+    // a stream of failures manufactured by the game's own pacing.
+    const attempted = answered !== ""
+    if (this.gateQ && (attempted || this.gateKind === "revive")) {
       this.host.report({
         questionId: this.gateQ.id,
         correct,
@@ -1065,6 +1085,31 @@ class Claim {
     this.plates = []
     this.gateQ = null
     this.hud.hideCard()
+
+    if (this.gateKind === "vault") {
+      // A bonus, not a toll. Right pays; wrong costs nothing at all, and the
+      // next level starts either way.
+      if (correct) {
+        this.score += 1200 * this.levelIndex
+        this.audio.gateRight()
+        this.host.haptic("success")
+        this.juice.addTrauma(0.45)
+        this.juice.punch(0.05, 0)
+        this.juice.doFlash(0.16, "#ffe800")
+        this.hud.toast("VAULT", "big")
+        const p = this.r.gridToPx(this.px(), this.py())
+        this.fx.burst(p.x, p.y, 46, 320, 0.85, this.r.cs * 1.4, css(INK.yellow), () => this.rng.next())
+      } else {
+        this.audio.gateWrong()
+        this.juice.addTrauma(0.25)
+      }
+      // `openGate` parks the player behind a 99-second shield so the gate is not
+      // played under fire. Hand back a real number before the next level starts.
+      this.invuln = correct ? 3 : 0
+      this.startLevel(this.levelIndex + 1)
+      return
+    }
+
     if (correct) {
       this.lives++
       this.hud.setLives(this.lives)
@@ -1180,7 +1225,7 @@ class Claim {
 
     if (this.phase === "gate") {
       for (const p of this.plates) {
-        this.r.drawPlate(p.gx, p.gy, p.label, p.pop, this.time)
+        this.r.drawPlate(p.gx, p.gy, p.label, p.pop, this.time, p.charge / PLATE_ARM)
       }
       this.r.drawGateRing(this.gateLeft / GATE_SECONDS)
     }

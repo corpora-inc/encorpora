@@ -46,9 +46,12 @@ voltage with 2.6 seconds of invulnerability — and your surge reset to
 ×1, which is the real price. Miss it and the run ends. Recharges are unlimited
 and the question gets harder each time; nothing is bought and nothing is scarce.
 
-`difficulty` is a hint to the host, not a demand: it climbs with distance and
-surge, and **drops hard when a child is actually struggling** (below 60% over the
-last handful of gates buys 2.2 levels of relief). See `src/game/pacing.ts`.
+`difficulty` is a hint to the host, not a demand: it climbs **one step per four
+gates read correctly** — never on distance, never on how long you stayed alive —
+plus a little for a hot surge, and it **drops hard when a child is actually
+struggling** (below 60% over the last handful of gates buys 2.2 levels of
+relief). Escalation is on achievement; surviving is not an achievement. See
+`src/game/pacing.ts`.
 
 ## What makes it readable at 60 units per second
 
@@ -91,11 +94,22 @@ read.
 - A character the atlas does not know renders as `?`, never as nothing. Silently
   skipping the glyph turns `3/4` into `34`, which is not an unreadable answer —
   it is a different and wrong one.
-- The **reading window is the difficulty knob**, not the speed: 3.4s at the start,
-  compressing toward a **hard floor of 1.55 seconds** that nothing can push
-  through. Reduced motion adds another half-second.
-- Hazards are suppressed within thirty metres of a gate. Dodging while reading is
-  not difficulty, it is noise.
+- The **reading window is the difficulty knob**, not the speed: 5.4s at the start,
+  compressing toward a **hard floor of 3.2 seconds** that nothing can push
+  through — and the floor is checked against what the *draw distance* can
+  actually deliver on the smallest tier at full speed, because a gate cannot
+  spawn past the far plane and the clamp used to quietly hand back less than the
+  floor promised. Reduced motion adds another half-second. This pack covers
+  `subtract-across-zero`, and `docs/EXPERIENCE_DESIGN.md` instruments two-digit
+  regrouping at p50 6s; a gate cycle — read it, then run the corridor — is about
+  5.3 seconds, which is the number that has to answer to that table.
+- **Nothing to dodge ever arrives while a gate is being read.** A hazard spawns
+  at the horizon and is airborne for five to seven seconds, so keeping that
+  promise means projecting the gate cycle forward to where the hazard will land,
+  not comparing its spawn point to a gate's current position — which is what the
+  guard used to do, and why roughly two hazards landed in every reading window.
+  Everything to dodge lives in the corridor between gates, which is why the
+  corridor is nearly two seconds wide.
 
 ## Endless
 
