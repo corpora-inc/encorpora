@@ -116,10 +116,15 @@ export function layout(w: number, h: number, area: Rect): Layout {
   const clearR = area.x + area.w - CORNER
   const recessL = Math.max(wall.x + wall.w * 0.045, clearL)
   const recessR = Math.min(wall.x + wall.w * 0.955, clearR)
+  // No minimum width here, deliberately. A floor would widen the recess back
+  // out past `clearR` and under the help control — defeating the one thing the
+  // rect exists for, silently. The `1` only keeps the geometry from going
+  // negative; that the strip is actually wide enough to carve a problem into is
+  // asserted at every viewport in `chrome.test.ts`, where it fails loudly.
   const recess: Rect = {
     x: recessL,
     y: wall.y + wall.h * 0.12,
-    w: Math.max(60, recessR - recessL),
+    w: Math.max(1, recessR - recessL),
     h: wall.h * 0.52,
   }
 

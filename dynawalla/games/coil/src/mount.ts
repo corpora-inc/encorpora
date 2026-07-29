@@ -25,7 +25,7 @@
 // cut smashes two lumps on its way to the wall. The board you have to play on
 // is the board you made.
 
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 import type { Host } from "./contract.ts"
 import { Audio } from "./audio/audio.ts"
 import { SLAG_CELLS, buried as buriedCount } from "./game/board.ts"
@@ -332,8 +332,18 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
     cutOnDown = -1
   }
 
-  /** Keyboard, for a desk. Same three verbs, nothing extra. */
+  /**
+   * Keyboard, for a desk. Same three verbs, nothing extra.
+   *
+   * Nothing behind the manual is something the child did. Space and Enter are
+   * how a panel is dismissed on a keyboard, and without this gate the dismissal
+   * fell through to `commit()` — firing a shear at whatever joint the jaws were
+   * parked on, reporting that answer, and dropping slag that costs lane cells
+   * for the rest of the run. A child cannot see the shear happen; the scrim is
+   * over it.
+   */
   const onKey = (e: KeyboardEvent): void => {
+    if (guide.isOpen) return
     const board = session.board
     lastInputAt = performance.now()
     fx.hint = 0
@@ -388,6 +398,14 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       : null
   observer?.observe(container)
   globalThis.addEventListener("resize", resize)
+
+  // Rotating a notched phone from landscape-left to landscape-right changes the
+  // insets and nothing else — same width, same height, same pixel ratio — so
+  // neither the `ResizeObserver` nor `resize` would rebuild the layout, and the
+  // carved problem would stay where the help control used to be.
+  const stopInsets = onInsetsChange(() => {
+    resize()
+  })
   resize()
 
   // ------------------------------------------------------------------ frame
@@ -468,6 +486,7 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       globalThis.removeEventListener("pointercancel", onCancel)
       globalThis.removeEventListener("keydown", onKey)
       globalThis.removeEventListener("resize", resize)
+      stopInsets()
       observer?.disconnect()
       media?.removeEventListener("change", onMedia)
       audio.dispose()

@@ -14,6 +14,7 @@ import type { Round } from "../game/round.ts"
 import { coilOf, linkValue } from "../game/place.ts"
 import { COURSE } from "../game/session.ts"
 import { SLAG_CELLS } from "../game/board.ts"
+import { safeInsets } from "../../../../packs/shared/game-chrome/index.ts"
 import { type Layout, type Lane, cellAt, viewLayout } from "./layout.ts"
 import { KIND_DUST, KIND_FILING, KIND_SPARK, Particles } from "./particles.ts"
 import {
@@ -201,8 +202,17 @@ export class Scene {
   private lattice: HTMLCanvasElement | null = null
   layout: Layout
   private dpr = 1
-  /** What `resize` last actually rebuilt for, so a no-op resize stays a no-op. */
-  private sized = { w: 0, h: 0 }
+  /**
+   * What `resize` last actually rebuilt for, so a no-op resize stays a no-op.
+   *
+   * The insets are part of this key, not just the size. Turning a notched phone
+   * from landscape-left to landscape-right changes neither `w`, `h` nor `dpr`
+   * but swaps `insets.left` and `insets.right` 59↔0 — and the memo would have
+   * held the old layout, leaving the carved problem under the help control that
+   * had moved to the other side. `insets.ts` warns about exactly this: a game
+   * that reads them once is correct until the first rotation.
+   */
+  private sized = { w: 0, h: 0, insets: "" }
 
   constructor(host: HTMLElement) {
     const canvas = document.createElement("canvas")
@@ -220,16 +230,25 @@ export class Scene {
     const width = Math.max(320, Math.round(w))
     const height = Math.max(360, Math.round(h))
     const dpr = Math.min(3, globalThis.devicePixelRatio || 1)
+    const insets = safeInsets()
+    const key = `${String(insets.top)},${String(insets.right)},${String(insets.bottom)},${String(insets.left)}`
     // A `ResizeObserver` fires on every frame of a window drag and on every
     // rotation animation step. Rasterising the lattice — a full-page offscreen
     // canvas of a hundred stars — on each of those is how a mid-range tablet
     // loses its frame budget to a gesture that changed nothing.
-    if (width === this.sized.w && height === this.sized.h && dpr === this.dpr) return this.layout
+    if (
+      width === this.sized.w &&
+      height === this.sized.h &&
+      key === this.sized.insets &&
+      dpr === this.dpr
+    ) {
+      return this.layout
+    }
     this.dpr = dpr
-    this.sized = { w: width, h: height }
+    this.sized = { w: width, h: height, insets: key }
     this.canvas.width = Math.round(width * dpr)
     this.canvas.height = Math.round(height * dpr)
-    this.layout = viewLayout(width, height)
+    this.layout = viewLayout(width, height, insets)
     this.lattice = this.buildLattice(width, height)
     return this.layout
   }
@@ -374,15 +393,29 @@ export class Scene {
       return
     }
 
-    const size = Math.min(w / Math.max(6, round.prompt.length) * 1.9, h * 0.5)
-    ctx.font = numerals(size)
     const demandText = String(round.demand)
     const head = round.prompt.endsWith(demandText)
       ? round.prompt.slice(0, round.prompt.length - demandText.length)
       : `${round.prompt} → `
+
+    // Size from the string that is actually drawn, not from `round.prompt`.
+    // On the fallback branch above, `head` gains three characters and the
+    // demand again — which the character count never knew about, so a long
+    // problem ran off the right of the recess and under the help control. The
+    // measure is the only honest fit: guess a size, then shrink it until what
+    // will be painted fits between the walls of the recess.
+    const inset = Math.min(12, w * 0.06)
+    const room = Math.max(1, w - inset * 2)
+    let size = Math.min((w / Math.max(6, head.length + demandText.length)) * 1.9, h * 0.5)
+    ctx.font = numerals(size)
+    const wanted = ctx.measureText(head).width + ctx.measureText(demandText).width
+    if (wanted > room) {
+      size = Math.max(9, (size * room) / wanted)
+      ctx.font = numerals(size)
+    }
     const headW = ctx.measureText(head).width
     const demandW = ctx.measureText(demandText).width
-    const startX = x + Math.max(12, (w - headW - demandW) / 2)
+    const startX = x + Math.max(inset, (w - headW - demandW) / 2)
     const midY = y + h * 0.44
 
     ctx.textAlign = "left"
