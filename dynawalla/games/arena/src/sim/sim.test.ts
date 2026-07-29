@@ -1,6 +1,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, FLOOR_MASS } from "./world.ts"
+import { Rng } from "../core/rng.ts"
 import { DEPTHS, depthFor, overdrive } from "./depths.ts"
 import { specFor } from "../core/tier.ts"
 import { createStubHost } from "../host/stubHost.ts"
@@ -353,6 +354,32 @@ test("hunting nothing but rivals for twenty minutes is not an exponential", () =
   let peak = 0
 
   for (let f = 0; f < 60 * 60 * 20; f++) {
+    // Answer every Resonance correctly, then go back to hunting.
+    //
+    // This is new, and it is what makes the test a worst case again rather than
+    // merely a hostile one. The world's density, rival count and pace are now
+    // driven by a controller fed on the child's ANSWERS, so a bot that ignores
+    // every question is a bot playing in the emptiest, calmest ocean the game
+    // has — four rivals and a sparse field — and it simply cannot find enough
+    // prey to run away with anything. Measured: peak 92 over twenty minutes,
+    // which proves nothing about the kill economy at all.
+    //
+    // A determined child does not ignore the questions; answering them is how
+    // the water fills up with things to eat. So the bot answers perfectly AND
+    // hunts nothing but the largest rival it is legally allowed to swallow,
+    // which is the genuinely highest-yield line of play available. If kills are
+    // an exponential route, this is the run that finds it.
+    const res = world.resonance
+    if (res.active && res.phase === 2) {
+      const i = res.spheres[res.correctSlot] as number
+      if (i >= 0 && world.malive[i]) {
+        world.aimX = world.mx[i] as number
+        world.aimY = world.my[i] as number
+        world.step(1 / 60)
+        peak = Math.max(peak, world.mass)
+        continue
+      }
+    }
     let best = -1
     let bestScore = -1
     for (let k = 0; k < world.rmass.length; k++) {
@@ -432,4 +459,412 @@ test("a rupture costs real mass at your peak, and can never pay you", () => {
   rupture(9999)
   assert.ok(world.mass <= 5000, `rupture paid the player: 5000 -> ${world.mass}`)
   assert.ok(world.mass >= FLOOR_MASS)
+})
+
+// ---------------------------------------------------------------------------
+// THE BREATH — pace, crowding, control, and the numbers a child has to read
+// ---------------------------------------------------------------------------
+
+/** Fly a competent-but-not-perfect child for `seconds`, answering at `accuracy`. */
+function fly(
+  world: World,
+  seconds: number,
+  accuracy: number,
+  seed: number,
+  onFrame?: (f: number) => void,
+): void {
+  const coin = new Rng(seed)
+  let target = -1
+  for (let f = 0; f < 60 * seconds; f++) {
+    const res = world.resonance
+    if (res.active && res.phase === 2) {
+      if (target < 0) target = coin.f() < accuracy ? res.correctSlot : (res.correctSlot + 1 + coin.int(0, 2)) % 4
+      const i = res.spheres[target] as number
+      if (i >= 0 && world.malive[i]) {
+        world.aimX = world.mx[i] as number
+        world.aimY = world.my[i] as number
+      }
+    } else {
+      target = -1
+      let best = -1
+      let bs = -1
+      for (let i = 0; i < world.mx.length; i++) {
+        if (!world.malive[i] || world.mkind[i] === 3) continue
+        const v = world.mval[i] as number
+        if (v < 0 || v >= world.mass * 0.92) continue
+        const d = Math.hypot((world.mx[i] as number) - world.px, (world.my[i] as number) - world.py)
+        const s = (v + 6) / (d + 90)
+        if (s > bs) {
+          bs = s
+          best = i
+        }
+      }
+      if (best >= 0) {
+        world.aimX = world.mx[best] as number
+        world.aimY = world.my[best] as number
+      }
+    }
+    world.step(1 / 60)
+    onFrame?.(f)
+  }
+}
+
+/**
+ * The founder's headline complaint, as an assertion.
+ *
+ *   "arena gets so crowded so fast I can hardly move"
+ *
+ * Measured before this pass, mid tier: the FIRST FRAME of a run carried 155
+ * motes and 16 rivals — the same counts the twentieth minute carries, because
+ * `reset()` spawned the tier ceiling and nothing ever ramped. There was no
+ * onset of any kind.
+ */
+test("a run opens sparse and fills up only as the world is earned", () => {
+  const spec = specFor("mid")
+  const world = new World(createStubHost({ seed: 2 }), spec, 808)
+
+  let rivals = 0
+  let motes = 0
+  for (let k = 0; k < world.rmass.length; k++) if (world.ralive[k]) rivals++
+  for (let i = 0; i < world.malive.length; i++) if (world.malive[i]) motes++
+
+  assert.ok(rivals <= spec.rivals * 0.4, `the opening frame carried ${rivals} rivals of a ${spec.rivals} ceiling`)
+  assert.ok(motes <= spec.motes * 0.55, `the opening frame carried ${motes} motes of a ${spec.motes} ceiling`)
+  assert.ok(rivals >= 2, "…but an arena with nobody in it is a screensaver, not an arena")
+  assert.ok(motes >= 20, "…and a child must have something to eat from the first second")
+
+  // Fifteen seconds in it has not quietly filled up behind the ramp.
+  fly(world, 15, 0, 5)
+  let r15 = 0
+  for (let k = 0; k < world.rmass.length; k++) if (world.ralive[k]) r15++
+  assert.ok(r15 <= spec.rivals * 0.45, `fifteen seconds in there were already ${r15} rivals`)
+
+  // A player who answers well gets the full ocean; the ceiling is still real.
+  const busy = new World(createStubHost({ seed: 2 }), spec, 808)
+  fly(busy, 300, 1, 5)
+  let rBusy = 0
+  for (let k = 0; k < busy.rmass.length; k++) if (busy.ralive[k]) rBusy++
+  assert.ok(rBusy > r15, `answering well did not fill the ocean: ${r15} -> ${rBusy} rivals`)
+})
+
+/**
+ * "we go from 10 to >1000 in minutes .. it should start with 1,2,3 and really
+ *  get into the 2nd and 3rd grade for a while"
+ *
+ * Measured before, seeded, mid tier, an ordinary mote-chasing player:
+ * mass 104 at five seconds, 537 at fifteen, 1,771 at thirty, 2,624 at sixty.
+ * Four digits inside the first minute, for everybody, forever after.
+ *
+ * The assertion is on BANDS rather than on numbers, because the exact value is
+ * seed-dependent and the property is not.
+ */
+test("the numbers a child reads stay in a workable range for a long time", () => {
+  const world = new World(createStubHost({ seed: 4 }), specFor("mid"), 0xbeef)
+  const at: Record<number, number> = {}
+  const marks = [15, 30, 60, 120, 300]
+  fly(world, 300, 0.3, 9, (f) => {
+    const t = (f + 1) / 60
+    for (const m of marks) if (Math.abs(t - m) < 1 / 120) at[m] = world.mass
+  })
+
+  assert.ok((at[15] as number) < 100, `mass was already ${Math.round(at[15] as number)} after fifteen seconds`)
+  assert.ok((at[30] as number) < 200, `mass was already ${Math.round(at[30] as number)} after half a minute`)
+  assert.ok((at[60] as number) < 600, `mass was already ${Math.round(at[60] as number)} after one minute`)
+  // …and it must still be a climb, not a stall. A game where nothing grows is
+  // not calmer, it is dead.
+  assert.ok((at[300] as number) > (at[30] as number) * 3, "five minutes of play went nowhere")
+})
+
+/**
+ * The whole point of the controller, end to end through the simulation.
+ * Struggle and the world gets sparser AND calmer AND easier, together.
+ */
+test("the world breathes out for a child who is struggling, and in for one who is not", () => {
+  const mk = (): World => new World(createStubHost({ seed: 6 }), specFor("mid"), 31337)
+
+  const lost = mk()
+  fly(lost, 420, 0, 11)
+  const thriving = mk()
+  fly(thriving, 420, 1, 11)
+
+  const count = (w: World): { rivals: number; motes: number } => {
+    let rivals = 0
+    let motes = 0
+    for (let k = 0; k < w.rmass.length; k++) if (w.ralive[k]) rivals++
+    for (let i = 0; i < w.malive.length; i++) if (w.malive[i]) motes++
+    return { rivals, motes }
+  }
+  const a = count(lost)
+  const b = count(thriving)
+
+  assert.ok(b.rivals > a.rivals, `struggling and thriving got the same crowd: ${a.rivals} vs ${b.rivals} rivals`)
+  assert.ok(b.motes > a.motes, `struggling and thriving got the same field: ${a.motes} vs ${b.motes} motes`)
+  assert.ok(thriving.rung > lost.rung, `the maths did not adapt: rung ${lost.rung} vs ${thriving.rung}`)
+  assert.equal(lost.rung, 0, "a child getting everything wrong must reach the very bottom of the ladder")
+  assert.ok(lost.voidRate < thriving.voidRate, "the water did not calm down for the struggling child")
+})
+
+/**
+ * Time is MEASURED and REWARDED, never imposed.
+ *
+ *   "I like infinite time to think in most cases too ... we can usually
+ *    measure, pace and reward, not cause anxiety"
+ *
+ * Two clocks used to run on every child regardless: a window that shrank with
+ * the number of questions asked — `max(6.5, 10.5 - resonanceCount * 0.16)` —
+ * and spheres that drifted away at a flat 22 units a second while you thought.
+ */
+test("a struggling player is never put on a clock, and a fast one is paid for being fast", () => {
+  const world = new World(createStubHost({ seed: 8 }), specFor("mid"), 55)
+  assert.ok(
+    world.resonanceSeconds >= 24,
+    `a fresh run gives only ${world.resonanceSeconds.toFixed(1)}s to think`,
+  )
+  assert.ok(
+    world.sphereDrift * world.resonanceSeconds < 2,
+    `the spheres drift ${(world.sphereDrift * world.resonanceSeconds).toFixed(1)} units over a whole window — the answer walks away from a child at the bottom of the ladder`,
+  )
+
+  // Struggle: the window gets LONGER, never shorter.
+  const before = world.resonanceSeconds
+  fly(world, 300, 0, 13)
+  assert.ok(
+    world.resonanceSeconds >= before - 1e-9,
+    `five minutes of struggle SHRANK the window ${before.toFixed(1)} -> ${world.resonanceSeconds.toFixed(1)}`,
+  )
+
+  // Climb, and a real countdown appears — earned, not imposed.
+  const ace = new World(createStubHost({ seed: 8 }), specFor("mid"), 55)
+  fly(ace, 420, 1, 13)
+  assert.ok(ace.resonanceSeconds < 14, `a mathlete was still given ${ace.resonanceSeconds.toFixed(1)}s`)
+  assert.ok(ace.sphereDrift > 5, "…and the spheres never started moving")
+  assert.ok(ace.intensity > world.intensity)
+})
+
+/** Mashing must not be a strategy, and must not be punished either. */
+test("swimming into a random sphere parks a child at the bottom, and costs them almost nothing", () => {
+  let answered = 0
+  const world = new World(createStubHost({ seed: 12, onReport: () => answered++ }), specFor("mid"), 99)
+  const coin = new Rng(7)
+  let pick = -1
+  let worstDrop = 0
+  for (let f = 0; f < 60 * 420; f++) {
+    const res = world.resonance
+    if (res.active && res.phase === 2) {
+      // One sphere per question, chosen at random. Re-rolling every frame is
+      // not mashing, it is oscillating between four points and never arriving.
+      if (pick < 0) pick = coin.int(0, 3)
+      const i = res.spheres[pick] as number
+      if (i >= 0 && world.malive[i]) {
+        world.aimX = world.mx[i] as number
+        world.aimY = world.my[i] as number
+      }
+    } else {
+      pick = -1
+    }
+    const before = world.mass
+    world.step(1 / 60)
+    // Scoped to the MISS specifically. A rupture is a separate mechanic with its
+    // own checkpoint and its own mercy, and folding it in here would measure
+    // something this test is not about.
+    for (let e = 0; e < world.eventLen; e++) {
+      if ((world.events[e] as { kind: string }).kind !== "resonance-miss") continue
+      worstDrop = Math.max(worstDrop, (before - world.mass) / before)
+    }
+  }
+  assert.ok(answered > 0, "the masher never actually reached a sphere")
+  assert.ok(world.intensity < 0.35, `mashing climbed to ${world.intensity.toFixed(2)} — guessing must not pay`)
+  assert.ok(
+    worstDrop < 0.06,
+    `a wrong answer cost ${(worstDrop * 100).toFixed(0)}% of the run — a child who is guessing is a child who is stuck`,
+  )
+})
+
+/**
+ * "The other 'players' can get so big that they are bigger than the whole
+ *  screen on a mobile device and they just basically envelope me and I can't do
+ *  anything."
+ *
+ * Measured before, five minutes, seeded: the largest core on the field reached
+ * 27.4x the player's mass — 1.99 times the WIDTH of a 1080x2340 phone. The
+ * exemption `!this.rleviathan[k]` on the size recycler was the whole bug.
+ */
+test("nothing in the water may ever be wider than the screen", () => {
+  const PORTRAIT = 1080 / 2340
+  for (const [tier, accuracy] of [["mid", 1], ["high", 0.5], ["low", 0]] as const) {
+    const world = new World(createStubHost({ seed: 21 }), specFor(tier), 1234)
+    world.viewAspect = PORTRAIT
+    let worstRatio = 0
+    let worstCover = 0
+    fly(world, 600, accuracy, 3, () => {
+      const width = viewSpanFor(world.mass) * PORTRAIT
+      for (let k = 0; k < world.rmass.length; k++) {
+        if (!world.ralive[k]) continue
+        const m = world.rmass[k] as number
+        worstRatio = Math.max(worstRatio, m / world.mass)
+        worstCover = Math.max(worstCover, (2 * 9 * Math.sqrt(m)) / width)
+      }
+    })
+    assert.ok(
+      worstCover < 1,
+      `${tier}: a rival reached ${worstCover.toFixed(2)}x the width of a phone held tall — it can enclose a child`,
+    )
+    assert.ok(
+      worstRatio < 4.6,
+      `${tier}: a rival reached ${worstRatio.toFixed(1)}x the player's mass`,
+    )
+  }
+})
+
+/**
+ * "Why is there an edge of the board?"
+ *
+ * Because there was one, five seconds away. `arenaRadiusFor` was
+ * `max(2600, span * 3.4)` and at the starting mass the `max` chose the
+ * constant, so a 2,600-unit pond surrounded a 463-unit view. Measured:
+ * swimming in one straight line from the centre, the wall arrived after 4.77
+ * seconds — inside a child's first attempt at moving.
+ */
+test("a child cannot find the edge of the world by swimming at it", () => {
+  const world = new World(createStubHost({ seed: 14 }), specFor("mid"), 5)
+  let touched = -1
+  for (let f = 0; f < 60 * 150; f++) {
+    world.aimX = world.px + 500_000
+    world.aimY = world.py
+    world.step(1 / 60)
+    const rad = Math.hypot(world.px, world.py)
+    if (touched < 0 && rad > world.arenaR - 9 * Math.sqrt(world.mass) - 2) touched = f / 60
+  }
+  assert.equal(touched, -1, `the membrane was reached after ${touched}s of swimming in one direction`)
+  // …and it is still there, because Float32 positions need bounding.
+  for (const m of [10, 500, 40_000, 5_000_000]) {
+    assert.ok(Number.isFinite(arenaRadiusFor(m)))
+    assert.ok(arenaRadiusFor(m) > viewSpanFor(m) * 60, `the arena is only ${arenaRadiusFor(m) / viewSpanFor(m)} spans wide at mass ${m}`)
+  }
+})
+
+/**
+ * The ribbon may never print a sum that is false.
+ *
+ * `Math.round(before)`, `Math.round(delta)` and `Math.round(after)` do not have
+ * to agree — 10.4 + 4.4 = 14.8 rounds to "10 + 4 = 15" — so the ends are
+ * rounded and the middle is derived from them. This is a maths product; there
+ * is no acceptable rate of printing wrong arithmetic.
+ */
+test("the running equation is always true, and never fires for a change of nothing", () => {
+  for (const seed of [1, 77, 4242]) {
+    const world = new World(createStubHost({ seed }), specFor("mid"), seed * 7)
+    let seq = world.eqSeq
+    let lines = 0
+    fly(world, 420, 0.6, seed, () => {
+      if (world.eqSeq === seq) return
+      seq = world.eqSeq
+      lines++
+      assert.equal(
+        world.eqA + world.eqD,
+        world.eqC,
+        `the ribbon printed ${world.eqA} ${world.eqD < 0 ? "−" : "+"} ${Math.abs(world.eqD)} = ${world.eqC}`,
+      )
+      assert.ok(Number.isInteger(world.eqA) && Number.isInteger(world.eqD) && Number.isInteger(world.eqC))
+      assert.notEqual(world.eqD, 0, "the ribbon printed a change of zero")
+    })
+    assert.ok(lines > 40, `only ${lines} equations in seven minutes — the ribbon is barely alive`)
+  }
+})
+
+/**
+ * A seeded run must be reproducible, and it very nearly stopped being.
+ *
+ * The controller is fed by how long an answer took, and the first cut fed it
+ * `performance.now()` — the wall clock — which made the difficulty ladder, and
+ * therefore the whole world, depend on how fast the machine was. `?seed=`
+ * reproducing a run is the only way a playtest can be discussed.
+ */
+test("the same seed and the same inputs give the same run, on any machine", () => {
+  const runOnce = (): number[] => {
+    const world = new World(createStubHost({ seed: 3 }), specFor("mid"), 24601)
+    const out: number[] = []
+    fly(world, 240, 0.7, 42, (f) => {
+      if ((f + 1) % (60 * 30) === 0) out.push(Math.round(world.mass * 1000), world.rung, Math.round(world.intensity * 1e6))
+    })
+    return out
+  }
+  assert.deepEqual(runOnce(), runOnce(), "two runs of the same seed diverged — something wall-clock is steering the world")
+})
+
+/**
+ * Two properties of the ribbon that a full-run test cannot reach, so they are
+ * exercised against `note` directly.
+ *
+ * Both were found by deleting the fix and watching NOTHING fail: a run simply
+ * does not happen to produce a sub-rounding mass change often enough for a
+ * seeded soak to catch one.
+ */
+test("the ribbon derives its middle term, and stays silent for a change of nothing", () => {
+  const world = new World(createStubHost({ seed: 9 }), specFor("low"), 17)
+  const note = (world as unknown as { note(before: number): void }).note.bind(world)
+
+  // A change too small to round to anything is not arithmetic; it is noise, and
+  // printing "1503 + 0 = 1503" sixty times a second buries every real line.
+  world.mass = 100.4
+  const quiet = world.eqSeq
+  note(100.2)
+  assert.equal(world.eqSeq, quiet, "the ribbon fired for a change that rounds to zero")
+
+  // The middle term is DERIVED from the two rounded ends, never rounded on its
+  // own. Rounding it independently is how "10 + 4 = 15" gets printed: here the
+  // ends round to 90 and 100 while the true delta is 10.4, which rounds to 10 —
+  // agreeing by luck — and the case below does not.
+  world.mass = 652.6
+  note(687.4)
+  assert.equal(world.eqA, 687)
+  assert.equal(world.eqC, 653)
+  assert.equal(world.eqD, -34, "the delta was rounded on its own: 687 − 35 = 653 is not true")
+  assert.equal(world.eqA + world.eqD, world.eqC)
+  assert.equal(world.eqSeq, quiet + 1)
+})
+
+/**
+ * The reveal: patience where it teaches, and nowhere else.
+ *
+ * At the bottom of the range a child who is not producing answers is still
+ * absorbing numerals and the shape of an equation resolving, so the arena
+ * finishes the sum for them and holds it. At the top, holding a player who
+ * already knew it would be a punishment for being good.
+ */
+test("a missed answer is completed patiently at the floor and skipped at the ceiling", () => {
+  const calm = new World(createStubHost({ seed: 15 }), specFor("mid"), 606)
+  assert.ok(calm.revealSeconds > 3, `a fresh run gives only ${calm.revealSeconds.toFixed(1)}s of reveal`)
+
+  const ace = new World(createStubHost({ seed: 15 }), specFor("mid"), 606)
+  fly(ace, 420, 1, 4)
+  assert.ok(ace.revealSeconds < 0.5, `a player in wizard mode is still held for ${ace.revealSeconds.toFixed(1)}s`)
+
+  // …and the hold is real, not just a number: a miss at the floor keeps the
+  // question on screen for meaningfully longer than a right answer does.
+  const holdAfterMiss = (accuracy: number): number => {
+    const w = new World(createStubHost({ seed: 15 }), specFor("mid"), 606)
+    if (accuracy > 0) fly(w, 420, 1, 4)
+    let held = -1
+    let frames = 0
+    const coin = new Rng(3)
+    let pick = -1
+    for (let f = 0; f < 60 * 400 && held < 0; f++) {
+      const res = w.resonance
+      if (res.active && res.phase === 2) {
+        if (pick < 0) pick = (res.correctSlot + 1 + coin.int(0, 2)) % 4
+        const i = res.spheres[pick] as number
+        if (i >= 0 && w.malive[i]) {
+          w.aimX = w.mx[i] as number
+          w.aimY = w.my[i] as number
+        }
+      }
+      w.step(1 / 60)
+      if (w.resonance.phase === 3 && !w.resonance.wasCorrect) frames++
+      else if (frames > 0) held = frames / 60
+    }
+    return held
+  }
+  const calmHold = holdAfterMiss(0)
+  assert.ok(calmHold > 2.5, `the reveal at the floor lasted only ${calmHold.toFixed(1)}s`)
 })

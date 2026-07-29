@@ -18,7 +18,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { hitsHostChrome, type Insets } from "../../../../packs/shared/game-chrome/index.ts"
-import { BOARD_W, DEPTH_W, HUD_EDGE, HUD_TOP, hudRects } from "./hud.ts"
+import { BOARD_W, DEPTH_W, HUD_EDGE, HUD_TOP, RIBBON_H, hudRects, soundRect } from "./hud.ts"
 
 const NONE: Insets = { top: 0, right: 0, bottom: 0, left: 0 }
 
@@ -40,7 +40,7 @@ for (const [name, w, h] of VIEWPORTS) {
     ["a notch", w > h ? NOTCH_LANDSCAPE : NOTCH_PORTRAIT],
   ] as const) {
     test(`the readouts clear the host's corners at ${name} (${w}×${h}, ${insetName})`, () => {
-      const r = hudRects(w, insets)
+      const r = hudRects(w, insets, h)
 
       assert.equal(
         hitsHostChrome(r.depth, w, insets),
@@ -59,6 +59,14 @@ for (const [name, w, h] of VIEWPORTS) {
         false,
         `${w}×${h}: the Resonance question is under host chrome`,
       )
+      // The ribbon is the running equation — the single most read thing on the
+      // screen in a maths game, and it is anchored to the opposite edge from
+      // everything else here, so it needs its own assertion at every viewport.
+      assert.equal(
+        hitsHostChrome(r.ribbon, w, insets),
+        false,
+        `${w}×${h}: the equation ribbon is under host chrome`,
+      )
     })
   }
 }
@@ -66,7 +74,7 @@ for (const [name, w, h] of VIEWPORTS) {
 test("the readouts stay inside the safe area on every edge they touch", () => {
   for (const [name, w, h] of VIEWPORTS) {
     const insets = w > h ? NOTCH_LANDSCAPE : NOTCH_PORTRAIT
-    const r = hudRects(w, insets)
+    const r = hudRects(w, insets, h)
 
     // Left, right and top. A HUD that pads only the top is correct in portrait
     // on one device and wrong the moment the child turns the tablet.
@@ -91,4 +99,53 @@ test("the constants are the ones the host publishes, not numbers somebody typed"
   // again; this is the inequality the whole file exists to hold.
   assert.ok(HUD_TOP >= 57, `HUD_TOP is ${HUD_TOP} — the host's corners end at 57`)
   assert.ok(HUD_EDGE > 0 && BOARD_W > 0 && DEPTH_W > 0)
+})
+
+// THE RIBBON.
+//
+// It is anchored to the BOTTOM, which is the one edge nothing else in this file
+// tested, and the bottom of an ARENA frame is already occupied: the sound
+// button is a 44px square in the bottom-left and the perf readout sits in the
+// bottom-right. A strip pinned to the bottom lands on both unless it is lifted
+// clear, and "lifted clear" is arithmetic, not judgement.
+
+const overlaps = (a: { x: number; y: number; w: number; h: number }, b: typeof a): boolean =>
+  a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h
+
+for (const [name, w, h] of VIEWPORTS) {
+  for (const [insetName, insets] of [
+    ["no insets", NONE],
+    ["a notch", w > h ? NOTCH_LANDSCAPE : NOTCH_PORTRAIT],
+  ] as const) {
+    test(`the equation ribbon is legible and unobstructed at ${name} (${w}×${h}, ${insetName})`, () => {
+      const r = hudRects(w, insets, h).ribbon
+
+      assert.equal(hitsHostChrome(r, w, insets), false, `${w}×${h}: the ribbon is under host chrome`)
+      assert.ok(r.x >= insets.left, `${w}×${h}: the ribbon runs into the left inset`)
+      assert.ok(r.x + r.w <= w - insets.right, `${w}×${h}: the ribbon runs into the right inset`)
+      assert.ok(
+        r.y + r.h <= h - insets.bottom,
+        `${w}×${h}: the ribbon runs under the home indicator`,
+      )
+      assert.ok(r.y >= insets.top, `${w}×${h}: the ribbon runs under the notch`)
+      assert.equal(
+        overlaps(r, soundRect(h, insets)),
+        false,
+        `${w}×${h}: the ribbon sits on ARENA's own sound button`,
+      )
+      // It has to be wide enough to hold the longest line the game can print.
+      // "1301388804 − 1301388804 = 0" is 26 characters; at the ribbon's smallest
+      // clamp step of 15px that is roughly 250px of tabular digits.
+      assert.ok(r.w >= 250, `${w}×${h}: the ribbon is only ${r.w}px wide — a long equation cannot fit`)
+      assert.equal(r.h, RIBBON_H)
+    })
+  }
+}
+
+test("the ribbon is centred, and stays centred inside an asymmetric notch", () => {
+  const w = 844
+  const r = hudRects(w, NOTCH_LANDSCAPE, 390).ribbon
+  const leftGap = r.x - NOTCH_LANDSCAPE.left
+  const rightGap = w - NOTCH_LANDSCAPE.right - (r.x + r.w)
+  assert.ok(Math.abs(leftGap - rightGap) < 1, `the ribbon is off-centre by ${Math.abs(leftGap - rightGap)}px`)
 })
