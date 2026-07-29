@@ -85,7 +85,12 @@
   position: relative;
   z-index: 2;
   flex: 0 0 auto;
-  padding: calc(8px + env(safe-area-inset-top)) 12px 0;
+  /* Published by `Hud.layout` from `layout.ts`, which is the version under
+     test. The `env()` fallbacks are what a HUD that never gets laid out
+     falls back to — correct for the notch, blind to the host's controls. */
+  padding: var(--cl-pt, calc(8px + env(safe-area-inset-top)))
+    var(--cl-pr, calc(12px + env(safe-area-inset-right))) 0
+    var(--cl-pl, calc(12px + env(safe-area-inset-left)));
   will-change: transform;
 }
 .cl-hud.cl-punch {
@@ -105,6 +110,26 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+  /* The host floats a 44px exit control top-left and the how-to-play control
+     top-right, over every pack. The two clusters step INBOARD of them rather
+     than downward, which costs the arena nothing. The min-height is what puts
+     the fraction bar below the corners — it spans the full width and so cannot
+     dodge them sideways. */
+  padding-left: var(--cl-gl, 52px);
+  padding-right: var(--cl-gr, 52px);
+  min-height: var(--cl-toph, 49px);
+}
+.cl-lvl,
+.cl-right {
+  /* Enforced, not estimated: the test asserts a box this wide, so the content
+     is not allowed to grow out of it. */
+  max-width: var(--cl-cluster, 33%);
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.cl-goal {
+  min-width: 0;
 }
 
 .cl-lvl,
@@ -252,7 +277,7 @@
     margin: 2px 0;
   }
   .cl-hud {
-    padding-top: calc(6px + env(safe-area-inset-top));
+    padding-top: var(--cl-pt, calc(6px + env(safe-area-inset-top)));
   }
 }
 
@@ -425,10 +450,15 @@
 .cl-mute {
   position: absolute;
   z-index: 8;
-  right: 10px;
-  bottom: 10px;
-  width: 34px;
-  height: 34px;
+  /* Was `right: 10px; bottom: 10px`, which on a phone is inside the home
+     indicator: a control a child cannot press without the system taking the
+     gesture. 44px is the platform touch floor, and the box was 34.
+     Published by `Claim.layout` from `muteRect`, which is the version under
+     test; the `env()` fallbacks cover a layout that never runs. */
+  right: var(--cl-mute-r, calc(10px + env(safe-area-inset-right)));
+  bottom: var(--cl-mute-b, calc(10px + env(safe-area-inset-bottom)));
+  width: var(--cl-mute-s, 44px);
+  height: var(--cl-mute-s, 44px);
   border: 2px solid rgba(244, 241, 232, 0.22);
   background: rgba(8, 8, 14, 0.7);
   color: rgba(244, 241, 232, 0.66);

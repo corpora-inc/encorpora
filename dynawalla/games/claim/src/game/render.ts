@@ -170,7 +170,21 @@ export class Renderer {
    */
   private static readonly PIXEL_BUDGET = 2_100_000
 
-  resize(cssW: number, cssH: number): void {
+  /**
+   * @param area where the GRID may live, in canvas-local CSS pixels. Required.
+   *
+   * The canvas still covers the whole stage: the paper and the vignette bleed
+   * to the edges, which is the entire point of `viewport-fit=cover`. What is
+   * constrained is the grid, because the grid is not decoration — it is the
+   * ground the child drives across and the thing the fraction is measured in. A
+   * row of cells under the home indicator is ground that cannot be seen, cannot
+   * be cut, and swallows an upward drag as a system gesture.
+   *
+   * Making it required is the point. Optional would mean a caller that forgets
+   * it still compiles and quietly centres the arena on the glass, discoverable
+   * only on a device.
+   */
+  resize(cssW: number, cssH: number, area: { x: number; y: number; w: number; h: number }): void {
     const want = Math.min(2, globalThis.devicePixelRatio || 1)
     const px = cssW * cssH * want * want
     this.dpr =
@@ -184,10 +198,10 @@ export class Renderer {
     this.canvas.style.width = `${cssW}px`
     this.canvas.style.height = `${cssH}px`
     // Integer cell size: every cell the same width, no shimmer on the blit.
-    const cs = Math.max(2, Math.floor(Math.min(cssW / this.g.w, cssH / this.g.h)))
+    const cs = Math.max(2, Math.floor(Math.min(area.w / this.g.w, area.h / this.g.h)))
     this.cs = cs
-    this.ox = Math.round((cssW - cs * this.g.w) / 2)
-    this.oy = Math.round((cssH - cs * this.g.h) / 2)
+    this.ox = area.x + Math.round((area.w - cs * this.g.w) / 2)
+    this.oy = area.y + Math.round((area.h - cs * this.g.h) / 2)
     this.buildPaper()
   }
 
