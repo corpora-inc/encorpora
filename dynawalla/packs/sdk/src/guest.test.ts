@@ -288,3 +288,40 @@ test("after dispose, every call fails closed and dispose is idempotent", async (
     (error: unknown) => error instanceof PackError && error.code === "closed",
   )
 })
+
+test("a difficulty request is on the wire, and only the fields that were named", async (t) => {
+  t.after(cleanup)
+  const item = {
+    id: "i1",
+    skillId: "add.1",
+    level: 1,
+    difficulty: 0.25,
+    form: "binary-op",
+    operands: ["2", "3"],
+    prompt: "2 plus 3",
+    answerKind: "integer",
+  }
+  const { client, seen } = withFakeFrame({
+    answer: (request) => (request.method === "items.next" ? ok({ item }) : ok({})),
+  })
+  const host = await client
+
+  // The whole point: a pack can say how hard it wants the next question, and
+  // the ordinate it was actually served comes back on the item.
+  const served = await host.nextItem({ difficulty: 0.25, maxDifficulty: 0.6 })
+  assert.equal(served?.difficulty, 0.25)
+  assert.deepEqual(seen[0], {
+    id: 1,
+    method: "items.next",
+    params: { difficulty: 0.25, maxDifficulty: 0.6 },
+  })
+
+  // A field nobody named is absent rather than an explicit `undefined`: a
+  // structured clone carries `undefined` across, and "present but not a
+  // number" is a different thing at the host's guards from "absent".
+  await host.nextItem()
+  assert.deepEqual(seen[1], { id: 2, method: "items.next", params: {} })
+  await host.nextItem({ skillId: "add.1" })
+  assert.deepEqual(seen[2], { id: 3, method: "items.next", params: { skillId: "add.1" } })
+  host.dispose()
+})

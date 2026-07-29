@@ -235,7 +235,25 @@ export type ItemServiceDeps = {
 }
 
 export type ItemService = {
-  next(input: { packId: string; skillId?: string }): Item | null
+  next(input: {
+    packId: string
+    skillId?: string
+    /**
+     * Where on the ladder the pack wants this question, 0..1 — 0 the easiest
+     * rung the host has, 1 the hardest.
+     *
+     * Relative rather than absolute, and that is the whole design: a pack
+     * cannot know how many rungs there are, and the bottom of the ladder moves
+     * as the curriculum grows. A request for 0 today lands on two-digit +
+     * two-digit because that is the easiest rung that exists; when rungs below
+     * it are authored, the same request lands on those instead and no pack is
+     * rebuilt. What it can never do is fail — the index is clamped into the
+     * ladder, so an unsatisfiable request becomes the nearest satisfiable one.
+     */
+    difficulty?: number
+    /** A ceiling on the same scale. The stream never goes above it. */
+    maxDifficulty?: number
+  }): Item | null
   judge(input: {
     packId: string
     itemId: string
@@ -263,6 +281,8 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   const practised = new Set<string>()
   let position = 0
   let sequence = 0
+  /** A ladder with one rung answers every difficulty the same. Said once. */
+  let toldAboutFlatLadder = false
 
   const remember = (id: string, served: Served) => {
     ledger.set(id, served)
@@ -282,14 +302,44 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   return {
     position: () => position,
 
-    next: ({ packId, skillId }) => {
+    next: ({ packId, skillId, difficulty, maxDifficulty }) => {
       // A pack may name a skill it covers. It is a request, not an instruction:
       // an unknown id falls back to the ladder rather than failing, because a
       // pack built against a later curriculum must still be playable.
       const wanted =
         skillId === undefined ? null : (rungs.find((rung) => rung.node.id === skillId) ?? null)
-      const rung = wanted ?? rungAt(position)
+
+      // A difficulty is the same kind of request, one rung lower down. It moves
+      // the ladder rather than reading past it, so there is one position and
+      // not two: a pack that drives the difficulty and then stops driving it
+      // resumes from where it left the child, and `judge` keeps climbing and
+      // stepping down from there.
+      let index = position
+      if (difficulty !== undefined || maxDifficulty !== undefined) {
+        const span = Math.max(0, rungs.length - 1)
+        const asked = difficulty === undefined ? position / Math.max(1, span) : difficulty
+        const cap = maxDifficulty === undefined ? 1 : maxDifficulty
+        index = Math.round(Math.min(asked, cap) * span)
+        position = Math.max(0, Math.min(span, index))
+        index = position
+      }
+
+      const rung = wanted ?? rungAt(index)
       if (!rung) return null
+      // Where the rung that was actually used sits, so the pack is told what it
+      // got and not what it asked for. A pack comparing the two is how a
+      // clamped request becomes visible on the pack's side.
+      const span = Math.max(0, rungs.length - 1)
+      const used = rungs.indexOf(rung)
+      const ordinate = span === 0 ? 0 : Math.max(0, Math.min(1, used / span))
+      if (span === 0 && difficulty !== undefined && !toldAboutFlatLadder) {
+        toldAboutFlatLadder = true
+        console.warn(
+          `[packs] ${packId} asked for difficulty ${difficulty.toFixed(2)} and the ladder has ` +
+            `${String(rungs.length)} rung(s) — every request lands on the same question until the ` +
+            `curriculum has more than one`,
+        )
+      }
 
       sequence += 1
       const seed = seedFrom(deps.profileId, packId, String(sequence))
@@ -324,6 +374,7 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         id,
         skillId: rung.node.id,
         level: rung.level,
+        difficulty: ordinate,
         form: "binary-op",
         operator: subtract ? "-" : "+",
         operands: [top, bottom],

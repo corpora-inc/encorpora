@@ -197,10 +197,7 @@ export function createServices(deps: ServicesDeps): LaunchServices {
     Object.keys(store.getState().packs[packId] ?? {}).sort()
 
   const services: HostServices = {
-    nextItem: (input) =>
-      Promise.resolve(
-        items.next(input.skillId === undefined ? { packId: input.packId } : input) as Item | null,
-      ),
+    nextItem: (input) => Promise.resolve(items.next(input) as Item | null),
     judge: (input) => Promise.resolve(items.judge(input)),
     skip: (input) => {
       items.skip(input.itemId)

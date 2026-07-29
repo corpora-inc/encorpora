@@ -144,7 +144,27 @@ export type Item = {
   /** Opaque, one serve. `items.answer` quotes it back. */
   readonly id: string
   readonly skillId: string
+  /**
+   * The level *within* the skill, as the generator numbers its own parameter
+   * sets. Not a difficulty: two skills' level 2 are not comparable, and the
+   * shipped graph only goes to 3. For "how hard is this compared to everything
+   * else the host has", read `difficulty`.
+   */
   readonly level: number
+  /**
+   * Where this item sits on the host's whole ladder: 0 is the easiest content
+   * the host can generate and 1 the hardest.
+   *
+   * The one difficulty number that is comparable across skills, and the one a
+   * pack should read. It is relative on purpose — a pack has no way to know how
+   * many rungs the host has, and when the curriculum grows rungs below the
+   * current floor, 0 follows them down without a pack changing.
+   *
+   * Optional so an older host is not a breaking change; a pack that sees
+   * `undefined` should fall back to `level`, which is what it was already
+   * doing.
+   */
+  readonly difficulty?: number
   readonly form: "binary-op" | "value" | "compare" | "sequence"
   readonly operator?: "+" | "-" | "×" | "÷" | "<" | ">" | "="
   readonly operands: readonly string[]
@@ -250,6 +270,21 @@ export function stringParam(
   if (typeof value !== "string") return null
   if (value.length === 0 || value.length > maxLength) return null
   return value
+}
+
+/**
+ * A 0..1 parameter, clamped rather than rejected.
+ *
+ * `numberParam(params, key, 1)` is not this: it returns `null` for a negative,
+ * which at a call site that treats `null` as "absent" turns an out-of-range
+ * request into no request at all — silently, which is the failure mode this
+ * codebase keeps being bitten by. A number is a number; only a non-number is
+ * absent.
+ */
+export function unitParam(params: Readonly<Record<string, unknown>>, key: string): number | null {
+  const value = params[key]
+  if (typeof value !== "number" || !Number.isFinite(value)) return null
+  return Math.max(0, Math.min(1, value))
 }
 
 /** A finite non-negative number parameter, clamped rather than rejected. */

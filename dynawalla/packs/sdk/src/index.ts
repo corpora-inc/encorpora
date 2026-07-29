@@ -43,6 +43,7 @@ export {
   numberParam,
   parseRequest,
   stringParam,
+  unitParam,
 } from "./protocol.ts"
 export type {
   Connect,
@@ -66,4 +67,4 @@ export { compareSemver, compareVersions, isSemver, parseSemver, satisfies, sdkCo
 export type { HostRange, Semver } from "./semver.ts"
 
 export { PackError, connect } from "./guest.ts"
-export type { HostClient } from "./guest.ts"
+export type { HostClient, ItemRequest } from "./guest.ts"
