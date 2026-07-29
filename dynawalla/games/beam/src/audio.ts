@@ -17,6 +17,8 @@
 // Nothing here is the sole channel for any information; the phasing is drawn on
 // the beam as well, and the whole system is disableable.
 
+import { createSafetyBus } from "../../../packs/shared/game-audio/index.ts"
+
 const PENTATONIC = [0, 3, 5, 7, 10] as const
 
 function semis(i: number): number {
@@ -80,7 +82,11 @@ export class Audio {
       bus.gain.value = 1
       bus.connect(comp)
       comp.connect(master)
-      master.connect(ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(ctx)
+      master.connect(safety.input)
       this.master = master
       this.bus = bus
 

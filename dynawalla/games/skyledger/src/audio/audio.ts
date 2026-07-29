@@ -11,6 +11,8 @@
 // before they can read it, which is what makes a nine-link run feel like it is
 // going somewhere while it is still happening.
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 /** C5 pentatonic, then the same five an octave up. */
 const SCALE = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5, 1174.66, 1318.51, 1567.98, 1760.0]
 
@@ -35,7 +37,11 @@ export class Audio {
         this.ctx = new Ctor()
         this.bus = this.ctx.createGain()
         this.bus.gain.value = 0.5
-        this.bus.connect(this.ctx.destination)
+        // The last thing between this game and a child's ears. Everything the
+        // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+        // going straight to the output. See packs/shared/game-audio/.
+        const safety = createSafetyBus(this.ctx)
+        this.bus.connect(safety.input)
       } catch (error) {
         this.failed = true
         console.warn("[skyledger] the AudioContext refused to start", error)

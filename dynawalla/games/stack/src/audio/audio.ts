@@ -10,6 +10,8 @@
  * rising line is what makes a stacker compulsive; everything else is dressing.
  */
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts";
+
 const PENTA = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22, 24, 27, 29, 31, 34, 36];
 
 export class Audio {
@@ -46,9 +48,15 @@ export class Audio {
       comp.attack.value = 0.003;
       comp.release.value = 0.22;
       const master = ctx.createGain();
-      master.gain.value = 0.9;
+      // 0.65, not 0.9. `shatter()` rendered at 1.034 with 2 clipped samples on
+      // a single hit; six reached 2.148 with 594.
+      master.gain.value = 0.65;
       master.connect(comp);
-      comp.connect(ctx.destination);
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(ctx);
+      comp.connect(safety.input);
       this.master = master;
 
       // A short procedural room. Cheap, generated once, and the difference

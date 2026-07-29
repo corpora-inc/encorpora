@@ -14,6 +14,8 @@
  * piece of information, and the whole kit can be switched off.
  */
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts";
+
 const PENTA = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24, 26, 28, 31, 33, 36];
 
 export class AudioKit {
@@ -45,7 +47,11 @@ export class AudioKit {
         const g = this.ctx.createGain();
         g.gain.value = 0.62;
         g.connect(comp);
-        comp.connect(this.ctx.destination);
+        // The last thing between this game and a child's ears. Everything the
+        // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+        // going straight to the output. See packs/shared/game-audio/.
+        const safety = createSafetyBus(this.ctx);
+        comp.connect(safety.input);
         this.master = g;
 
         const len = Math.floor(this.ctx.sampleRate * 1.2);
@@ -84,7 +90,11 @@ export class AudioKit {
     return 2 ** ((Math.random() * 2 - 1) * (cents / 1200));
   }
 
-  private env(gain: GainNode, t0: number, peak: number, attack: number, decay: number): void {
+  private env(gain: GainNode, t0: number, peak: number, attackIn: number, decay: number): void {
+    // The shared floor on onset time. Some cues here asked for 0.002 s —
+    // 88 samples from silence to peak, which is a step function with a click
+    // on it, and the click is most of what a child hears as "too loud".
+    const attack = safeAttack(attackIn);
     gain.gain.setValueAtTime(0.0001, t0);
     gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), t0 + attack);
     gain.gain.exponentialRampToValueAtTime(0.0001, t0 + attack + decay);

@@ -16,6 +16,7 @@
 // could tell you why.
 
 import type { Place } from "./game/places.ts"
+import { createSafetyBus } from "../../../packs/shared/game-audio/index.ts"
 
 type Ctor = new () => AudioContext
 
@@ -45,7 +46,11 @@ export class Audio {
       const ctx = new Ctx()
       const master = ctx.createGain()
       master.gain.value = 0.5
-      master.connect(ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(ctx)
+      master.connect(safety.input)
       this.ctx = ctx
       this.master = master
       return ctx

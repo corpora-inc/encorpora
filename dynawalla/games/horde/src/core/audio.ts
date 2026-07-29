@@ -12,6 +12,8 @@
  * Sound never carries information alone — every cue here has a visual twin.
  */
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 type Voice =
   | "hit" | "kill" | "killBig" | "pickup" | "levelup" | "card"
   | "coreOpen" | "answerRight" | "answerWrong" | "overcharge" | "nova"
@@ -55,7 +57,11 @@ export class Audio {
     this.master = ctx.createGain()
     this.master.gain.value = 0.62
     this.bus.connect(this.master)
-    this.master.connect(ctx.destination)
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx)
+    this.master.connect(safety.input)
 
     // One reusable noise table — allocating a buffer per shot is a stutter.
     const n = ctx.createBuffer(1, ctx.sampleRate * 0.5, ctx.sampleRate)

@@ -11,6 +11,8 @@
 // Sound is decorative by contract: nothing in this game is knowable by ear
 // alone. Muting removes no information.
 
+import { createSafetyBus } from "../../../packs/shared/game-audio/index.ts";
+
 type Layered = {
   freq: number;
   gain: number;
@@ -66,7 +68,11 @@ export class Audio {
     const master = ctx.createGain();
     master.gain.value = this.enabled ? 0.9 : 0;
     master.connect(comp);
-    comp.connect(ctx.destination);
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx);
+    comp.connect(safety.input);
     this.master = master;
 
     // short feedback delay = a small stone room, for tails only

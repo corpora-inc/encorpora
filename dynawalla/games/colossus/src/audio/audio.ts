@@ -7,6 +7,8 @@
 // this game is a buzz — a wrong strike sounds like more masonry arriving, which
 // is exactly what it is.
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 type Ctor = typeof AudioContext
 
 function contextCtor(): Ctor | null {
@@ -32,7 +34,11 @@ export class Audio {
       }
       this.bus = this.ctx.createGain()
       this.bus.gain.value = 0.7
-      this.bus.connect(this.ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(this.ctx)
+      this.bus.connect(safety.input)
       this.noise = this.makeNoise(this.ctx)
     }
     if (this.ctx.state === "suspended") {

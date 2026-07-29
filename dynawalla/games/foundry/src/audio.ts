@@ -15,6 +15,8 @@
 // Nothing here is the sole channel for any information; every cue has a visual
 // twin, and the whole system is disableable.
 
+import { createSafetyBus } from "../../../packs/shared/game-audio/index.ts"
+
 /** Nothing is ever scheduled above this; the partials of a bell add up fast. */
 function safeHz(f: number): number {
   return Math.max(20, Math.min(15000, f))
@@ -64,7 +66,11 @@ export class Audio {
       const bus = ctx.createGain()
       bus.gain.value = 0.9
       bus.connect(comp)
-      comp.connect(ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(ctx)
+      comp.connect(safety.input)
       this.bus = bus
 
       // One second of white noise, generated once and reused by every transient.
