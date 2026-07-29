@@ -23,12 +23,20 @@ import type { Shutter } from "../game/shutter.ts"
 import { PALETTE, alpha, face, label } from "./palette.ts"
 import { bar, isPrime } from "../game/factor.ts"
 import { PUSH_MAX } from "../game/push.ts"
+import {
+  exitRect,
+  helpRect,
+  safeRect,
+  type Insets,
+} from "../../../../packs/shared/game-chrome/index.ts"
 
 export type Rect = { x: number; y: number; w: number; h: number }
 
 export type Layout = {
   readonly width: number
   readonly height: number
+  /** The band the readouts live in: the tally, the blocks and the push notches. */
+  readonly hud: Rect
   /** Tapping anywhere in here swings. */
   readonly mob: Rect
   /** One per stud on the bar, in the order `bar(size)` returns them. */
@@ -63,12 +71,136 @@ const MIN_TOUCH = 44
 /** Rank-to-rank spacing, as a multiple of the body cell. A body is 1.5 cells tall. */
 const ROW_PITCH = 1.55
 
+/** How far anything readable or touchable stands off the host's two corners. */
+const CHROME_GAP = 8
+
+/**
+ * The insets that produced `area`, recovered.
+ *
+ * `exitRect` and `helpRect` are written in terms of insets, and reading them
+ * back out of the area keeps the layout a pure function of its arguments: the
+ * chrome the layout dodges is the chrome belonging to the exact safe rect it was
+ * handed, never whatever the device happens to report mid-computation.
+ */
+function insetsOf(w: number, h: number, area: Rect): Insets {
+  return {
+    top: area.y,
+    left: area.x,
+    right: Math.max(0, w - area.x - area.w),
+    bottom: Math.max(0, h - area.y - area.h),
+  }
+}
+
+/**
+ * The rectangles the frame will be drawn into, and the ones input reads.
+ *
+ * `area` is the region the game may put readable or touchable things in — the
+ * safe rect from `packs/shared/game-chrome`, clear of the notch and the home
+ * indicator. It is **REQUIRED**, deliberately. Made optional, a caller that
+ * forgets it gets a bar of studs sitting under the home indicator and a tally
+ * lamp under the notch, and the only way to find out is on a device. Required,
+ * forgetting it does not compile.
+ *
+ * The street itself — the cobbles, the furnace glow, the bodies, the crack —
+ * still bleeds to all four edges. That is what `viewport-fit=cover` is for. It
+ * is the four things a child READS OR TOUCHES that stay inside `area` and out
+ * of the host's two 44px corners:
+ *
+ *   * the **stud bar**, the primary input;
+ *   * the **tally and blocks readouts** and the **push notches**, all in `hud`;
+ *   * the **shutter plate**, drawn clipped to `mob`, with the problem on it;
+ *   * the **rivets**, laid out inside `mob`.
+ *
+ * `mob` is itself a tap target — a tap anywhere in it swings — so its top edge
+ * is held below the host's controls too. A child reaching for the crowd and
+ * leaving the game instead is the worse of the two collisions, and it costs
+ * almost nothing: the HUD band is already taller than the chrome everywhere
+ * except a short landscape window.
+ */
+export function layoutFor(w: number, h: number, area: Rect, frame: Frame): Layout {
+  const pad = Math.round(Math.min(20, w * 0.045))
+  const insets = insetsOf(w, h, area)
+  const exit = exitRect(insets)
+  const help = helpRect(w, insets)
+
+  // The bar sits on the bottom of the SAFE rect. It grows rows until every stud
+  // clears a 44 px target — a smaller stud on a phone is a stud a child misses,
+  // and a missed stud reads as "that number did not work".
+  const studs = bar(frame.crowd.size)
+  const cols = Math.max(1, Math.min(6, Math.floor((area.w - pad * 2 + 8) / (MIN_TOUCH + 8))))
+  const rows = Math.max(1, Math.ceil(studs.length / cols))
+  const cellW = (area.w - pad * 2 - (cols - 1) * 8) / cols
+  const cellH = Math.max(MIN_TOUCH, Math.min(64, (area.h * 0.24 - (rows - 1) * 8) / rows))
+  const barH = rows * cellH + (rows - 1) * 8
+  const barTop = area.y + area.h - pad - barH
+
+  const placed: Array<{ k: number; rect: Rect }> = []
+  for (let i = 0; i < studs.length; i++) {
+    const r = Math.floor(i / cols)
+    const c = i % cols
+    // The last row is centred, so a bar of eight does not read as a bar of
+    // six with two stragglers.
+    const inRow = Math.min(cols, studs.length - r * cols)
+    const rowW = inRow * cellW + (inRow - 1) * 8
+    const x0 = area.x + (area.w - rowW) / 2
+    placed.push({
+      k: studs[i] as number,
+      rect: { x: x0 + c * (cellW + 8), y: barTop + r * (cellH + 8), w: cellW, h: cellH },
+    })
+  }
+
+  // The HUD band never dodges the chrome by moving down — that would spend a
+  // twelfth of a small phone on two buttons. It dodges sideways: the readouts
+  // start where the exit control ends and stop where the help control begins,
+  // and the band as a whole is a strip BETWEEN them.
+  const hudLeft = Math.max(area.x + pad, exit.x + exit.w + CHROME_GAP)
+  const hudRight = Math.min(area.x + area.w - pad, help.x - CHROME_GAP)
+  // Deep enough to clear the controls, so whatever begins under the band — the
+  // mob, and the plate drawn into it — begins below them.
+  const hudH = Math.max(
+    Math.round(Math.min(96, h * 0.14)),
+    exit.y + exit.h + CHROME_GAP - area.y,
+  )
+  const hud: Rect = { x: hudLeft, y: area.y, w: Math.max(1, hudRight - hudLeft), h: hudH }
+
+  const streetTop = area.y + hudH
+  const streetH = Math.max(80, barTop - pad - streetTop)
+  const mob: Rect = { x: area.x + pad, y: streetTop, w: area.w - pad * 2, h: streetH }
+
+  const rivets: Array<{ index: number; rect: Rect }> = []
+  const plate = frame.shutter
+  if (plate) {
+    const n = plate.rivets.length
+    const rcols = n <= 2 ? n : 2
+    const rrows = Math.ceil(n / rcols)
+    const gap = 12
+    const rw = Math.min(180, (mob.w - (rcols - 1) * gap) / rcols)
+    const rh = Math.max(MIN_TOUCH, Math.min(78, (mob.h * 0.46 - (rrows - 1) * gap) / rrows))
+    const gridW = rcols * rw + (rcols - 1) * gap
+    const x0 = mob.x + (mob.w - gridW) / 2
+    const y0 = mob.y + mob.h * 0.44
+    const floor = area.y + area.h - rh - 4
+    for (let i = 0; i < n; i++) {
+      const r = Math.floor(i / rcols)
+      const c = i % rcols
+      rivets.push({
+        index: i,
+        rect: { x: x0 + c * (rw + gap), y: Math.min(y0 + r * (rh + gap), floor), w: rw, h: rh },
+      })
+    }
+  }
+
+  return { width: w, height: h, hud, mob, studs: placed, rivets }
+}
+
 export class Scene {
   private readonly canvas: HTMLCanvasElement
   private readonly ctx: CanvasRenderingContext2D
   private dpr = 1
   private w = 0
   private h = 0
+  /** The safe rect, re-derived on every resize. Rotation and Split View move it. */
+  private area: Rect = { x: 0, y: 0, w: 0, h: 0 }
   private layoutCache: Layout | null = null
 
   constructor(canvas: HTMLCanvasElement) {
@@ -87,6 +219,9 @@ export class Scene {
     this.dpr = dpr
     this.canvas.width = Math.round(this.w * dpr)
     this.canvas.height = Math.round(this.h * dpr)
+    // Re-derived here rather than at mount: a rotation swaps top with left, and
+    // iPadOS moves the insets when a pack is resized in Split View.
+    this.area = safeRect(this.w, this.h)
     this.layoutCache = null
   }
 
@@ -99,67 +234,10 @@ export class Scene {
    *
    * Recomputed whenever the rank size or the plate changes, because the bar
    * narrows to `bar(size)`: a rank of five never shows a nine, so the studs
-   * move.
+   * move. Laid out against the safe rect this scene last measured.
    */
   layout(frame: Frame): Layout {
-    const w = this.w
-    const h = this.h
-    const pad = Math.round(Math.min(20, w * 0.045))
-
-    // The bar sits on the bottom. It grows rows until every stud clears a 44 px
-    // target — a smaller stud on a phone is a stud a child misses, and a missed
-    // stud reads as "that number did not work".
-    const studs = bar(frame.crowd.size)
-    const cols = Math.max(1, Math.min(6, Math.floor((w - pad * 2 + 8) / (MIN_TOUCH + 8))))
-    const rows = Math.max(1, Math.ceil(studs.length / cols))
-    const cellW = (w - pad * 2 - (cols - 1) * 8) / cols
-    const cellH = Math.max(MIN_TOUCH, Math.min(64, (h * 0.24 - (rows - 1) * 8) / rows))
-    const barH = rows * cellH + (rows - 1) * 8
-    const barTop = h - pad - barH
-
-    const placed: Array<{ k: number; rect: Rect }> = []
-    for (let i = 0; i < studs.length; i++) {
-      const r = Math.floor(i / cols)
-      const c = i % cols
-      // The last row is centred, so a bar of eight does not read as a bar of
-      // six with two stragglers.
-      const inRow = Math.min(cols, studs.length - r * cols)
-      const rowW = inRow * cellW + (inRow - 1) * 8
-      const x0 = (w - rowW) / 2
-      placed.push({
-        k: studs[i] as number,
-        rect: { x: x0 + c * (cellW + 8), y: barTop + r * (cellH + 8), w: cellW, h: cellH },
-      })
-    }
-
-    const hudH = Math.round(Math.min(96, h * 0.14))
-    const streetTop = hudH
-    const streetH = Math.max(80, barTop - pad - streetTop)
-    const mob: Rect = { x: pad, y: streetTop, w: w - pad * 2, h: streetH }
-
-    const rivets: Array<{ index: number; rect: Rect }> = []
-    const plate = frame.shutter
-    if (plate) {
-      const n = plate.rivets.length
-      const rcols = n <= 2 ? n : 2
-      const rrows = Math.ceil(n / rcols)
-      const gap = 12
-      const rw = Math.min(180, (mob.w - (rcols - 1) * gap) / rcols)
-      const rh = Math.max(MIN_TOUCH, Math.min(78, (mob.h * 0.46 - (rrows - 1) * gap) / rrows))
-      const gridW = rcols * rw + (rcols - 1) * gap
-      const x0 = mob.x + (mob.w - gridW) / 2
-      const y0 = mob.y + mob.h * 0.44
-      for (let i = 0; i < n; i++) {
-        const r = Math.floor(i / rcols)
-        const c = i % rcols
-        rivets.push({
-          index: i,
-          rect: { x: x0 + c * (rw + gap), y: Math.min(y0 + r * (rh + gap), h - rh - 4), w: rw, h: rh },
-        })
-      }
-    }
-
-    const out: Layout = { width: w, height: h, mob, studs: placed, rivets }
+    const out = layoutFor(this.w, this.h, this.area, frame)
     this.layoutCache = out
     return out
   }
@@ -230,8 +308,13 @@ export class Scene {
 
   private drawHud(frame: Frame, layout: Layout): void {
     const ctx = this.ctx
-    const pad = layout.mob.x
-    const top = Math.round(Math.min(96, this.h * 0.14))
+    // Everything up here is read, so everything up here lives in `hud` — a band
+    // that begins after the host's exit control and ends before its help
+    // control, and never runs under either.
+    const { hud } = layout
+    const left = hud.x
+    const right = hud.x + hud.w
+    const top = hud.h
 
     // The tally lamp: how many are still standing, and how wide a rank is. The
     // two numbers the whole game is about, and the only numerals up here.
@@ -240,7 +323,7 @@ export class Scene {
     ctx.textAlign = "left"
     ctx.fillStyle = PALETTE.chalk
     ctx.font = face(Math.round(top * 0.42))
-    ctx.fillText(String(standing), pad, top * 0.44)
+    ctx.fillText(String(standing), left, hud.y + top * 0.44)
 
     ctx.font = label(Math.round(top * 0.17))
     ctx.fillStyle = PALETTE.chalkDim
@@ -249,8 +332,8 @@ export class Scene {
     void w
     ctx.fillText(
       frame.crowd.ranks > 1 ? `${frame.crowd.ranks} × ${frame.crowd.size}` : "IN THE STREET",
-      pad,
-      top * 0.72,
+      left,
+      hud.y + top * 0.72,
     )
     ctx.globalAlpha = 1
 
@@ -258,17 +341,21 @@ export class Scene {
     ctx.textAlign = "right"
     ctx.fillStyle = PALETTE.brass
     ctx.font = face(Math.round(top * 0.3))
-    ctx.fillText(String(frame.blocks), this.w - pad, top * 0.42)
+    ctx.fillText(String(frame.blocks), right, hud.y + top * 0.42)
     ctx.font = label(Math.round(top * 0.15))
     ctx.fillStyle = PALETTE.chalkDim
     ctx.globalAlpha = 0.7
-    ctx.fillText(frame.best > frame.blocks ? `BLOCKS · BEST ${frame.best}` : "BLOCKS", this.w - pad, top * 0.68)
+    ctx.fillText(
+      frame.best > frame.blocks ? `BLOCKS · BEST ${frame.best}` : "BLOCKS",
+      right,
+      hud.y + top * 0.68,
+    )
     ctx.globalAlpha = 1
 
     // The push, as notches between the far end and you.
-    const nx = pad
-    const ny = top * 0.92
-    const nw = (this.w - pad * 2) / PUSH_MAX
+    const nx = left
+    const ny = hud.y + top * 0.92
+    const nw = hud.w / PUSH_MAX
     for (let i = 0; i < PUSH_MAX; i++) {
       const lit = i < frame.pushMarks
       ctx.fillStyle = lit ? PALETTE.ember : PALETTE.ironDark

@@ -9,13 +9,18 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
+import {
+  hitsHostChrome,
+  safeRect,
+  type Insets,
+} from "../../../../packs/shared/game-chrome/index.ts"
 import { newCrowd, strike } from "../game/crowd.ts"
 import { bar } from "../game/factor.ts"
 import { newShutter } from "../game/shutter.ts"
 import type { Phase } from "../game/street.ts"
 import { Rng } from "../core/rng.ts"
 import { fakeCanvas } from "./fakeCanvas.ts"
-import { Scene, hit, type Frame } from "./scene.ts"
+import { Scene, hit, layoutFor, type Frame, type Layout } from "./scene.ts"
 
 const PHASES: readonly Phase[] = [
   "shutter-down",
@@ -263,6 +268,99 @@ test("a resize does not strand the layout input reads", () => {
   rec.reset()
   const layout = scene.draw(frame())
   assert.equal(scene.lastLayout, layout)
+})
+
+// --------------------------------------------------------- host chrome --
+
+/** The shapes the fleet actually has, small phone first. */
+const CHROME_SIZES: ReadonlyArray<readonly [number, number]> = [
+  [320, 568],
+  [390, 844],
+  [768, 1024],
+  [1024, 768],
+  [844, 390],
+] as const
+
+/**
+ * Everything on this frame a child must READ or TOUCH.
+ *
+ * The street, the furnace glow, the cobbles and the bodies are all deliberately
+ * left out: they bleed to the edges and under the host's controls, which is
+ * what `viewport-fit=cover` is for. What is listed here is the HUD band, the
+ * stud bar, the plate — drawn clipped to `mob` — and its rivets, plus `mob`
+ * itself, because a tap anywhere in `mob` swings.
+ */
+function critical(layout: Layout): Array<{ name: string; rect: ReturnType<typeof box> }> {
+  return [
+    { name: "the readouts", rect: box(layout.hud) },
+    { name: "the mob (a tap here swings)", rect: box(layout.mob) },
+    ...layout.studs.map((s) => ({ name: `stud ${s.k}`, rect: box(s.rect) })),
+    ...layout.rivets.map((r) => ({ name: `rivet ${r.index}`, rect: box(r.rect) })),
+  ]
+}
+
+const box = (r: { x: number; y: number; w: number; h: number }) => ({
+  x: r.x,
+  y: r.y,
+  w: r.w,
+  h: r.h,
+})
+
+test("nothing a child reads or touches lands under the host's chrome", () => {
+  // The host paints an exit control in the top-LEFT corner and a how-to-play
+  // control in the top-RIGHT, 44px each, floating OVER the game. It does not
+  // reserve a band — reserving one costs a twelfth of a small phone's height.
+  // The whole promise a game makes in exchange is these two squares.
+  //
+  // Run through `scene.draw`, which is the path the game itself takes at every
+  // frame, so a layout that only clears the corners when called by hand cannot
+  // pass this.
+  for (const [w, h] of CHROME_SIZES) {
+    const { scene } = sceneAt(w, h)
+    for (const crowd of [newCrowd(4), newCrowd(12), newCrowd(13), newCrowd(24)]) {
+      for (const phase of ["melee", "shutter", "crack", "shove"] as const) {
+        const layout = scene.draw(frame({ crowd, phase, progress: 1 }))
+        for (const { name, rect } of critical(layout)) {
+          assert.equal(
+            hitsHostChrome(rect, w),
+            false,
+            `${w}×${h}, ${phase}, mob of ${crowd.ranks}×${crowd.size}: ${name} is under the host's chrome`,
+          )
+        }
+      }
+    }
+  }
+})
+
+test("the safe rect is what the layout is built on, not the raw frame", () => {
+  // A notched phone held upright, and the same phone on its side. The street
+  // still fills the glass; the studs, the readouts and the plate do not.
+  const NOTCH: Insets = { top: 59, right: 0, bottom: 34, left: 0 }
+  const SIDEWAYS: Insets = { top: 0, right: 59, bottom: 21, left: 59 }
+  for (const [w, h, insets] of [
+    [390, 844, NOTCH],
+    [844, 390, SIDEWAYS],
+  ] as const) {
+    const area = safeRect(w, h, insets)
+    const layout = layoutFor(w, h, area, frame({ phase: "shutter", progress: 1 }))
+    for (const { name, rect } of critical(layout)) {
+      assert.ok(rect.x >= area.x - 0.5, `${name} runs out the left of the safe rect at ${w}×${h}`)
+      assert.ok(
+        rect.x + rect.w <= area.x + area.w + 0.5,
+        `${name} runs out the right of the safe rect at ${w}×${h}`,
+      )
+      assert.ok(rect.y >= area.y - 0.5, `${name} runs under the notch at ${w}×${h}`)
+      assert.ok(
+        rect.y + rect.h <= area.y + area.h + 0.5,
+        `${name} runs under the home indicator at ${w}×${h}`,
+      )
+      assert.equal(
+        hitsHostChrome(rect, w, insets),
+        false,
+        `${name} is under the host's chrome at ${w}×${h}`,
+      )
+    }
+  }
 })
 
 test("the hint is drawn as a lit stud rather than as a sentence", () => {
