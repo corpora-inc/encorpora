@@ -662,15 +662,50 @@ test("a tap INSIDE the sheet does not dismiss it", () => {
   r.restore()
 })
 
-test("but the sheet's own pointers still get through — it must stay draggable", async () => {
-  // A swallow that ate the sheet's own gestures would take the drag dismissal,
-  // the PLAY button and tap-to-close with it.
+test("the sheet's own gestures are never stopped, or it could not be dragged or dismissed", () => {
+  // `stopPropagation` in capture stops an event reaching its own target's
+  // listeners as well, so stopping a sheet node would take the drag dismissal
+  // and the PLAY button with it.
+  //
+  // The rig reports `reachedGame` — "the event was not stopped" — and for a
+  // sheet node those are the same fact, which is the honest and uncomfortable
+  // shape of this: letting the sheet keep its own gestures means the game hears
+  // them too. Closing that would mean moving the drag and PLAY into this
+  // capture handler the way Escape and the background tap already are. It is
+  // survivable where the key swallow's equivalent is not, because a gesture on
+  // the sheet is a gesture on a 46rem panel the game cannot see under.
   const r = rig()
   r.ui.open()
   const grab = r.root.find("dwc-grab")
   const close = r.root.find("dwc-close")
   assert.equal(r.pointer("pointerdown", grab).reachedGame, true, "the grab handle was deafened")
   assert.equal(r.pointer("pointerup", close).reachedGame, true, "PLAY was deafened")
+  r.ui.destroy()
+  r.restore()
+})
+
+test("the rest of the dismissing tap does not land on the game either", () => {
+  // The background tap closes on `pointerdown`, so its `pointerup` and `click`
+  // arrive with the sheet already shut and every `guide.isOpen` guard already
+  // false. Most games act on release, which is exactly the edge this swallow
+  // exists for.
+  const r = rig()
+  r.ui.open()
+  const scrim = r.root.find("dwc-scrim")
+  const canvas = new El("canvas")
+  r.pointer("pointerdown", scrim)
+  assert.equal(r.ui.isOpen, false)
+  for (const t of ["pointermove", "pointerup", "mouseup", "click"]) r.pointer(t, canvas)
+  assert.deepEqual(
+    r.gameSawPointers,
+    [],
+    `the game was hit by ${r.gameSawPointers.join(",")} on the way out of the manual`,
+  )
+  // ...and the NEXT gesture is the child playing again. A gate stuck shut is
+  // the same bug as a gate stuck open.
+  r.pointer("pointerdown", canvas)
+  r.pointer("pointerup", canvas)
+  assert.deepEqual(r.gameSawPointers, ["pointerdown", "pointerup"], "the game was starved after one tap")
   r.ui.destroy()
   r.restore()
 })

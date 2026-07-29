@@ -500,7 +500,38 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     "dblclick",
   ] as const
 
+  // A background tap dismisses on `pointerdown`, which hides the scrim
+  // synchronously — so the `pointerup`, `mouseup` and `click` of that SAME tap
+  // hit-test to the game, arrive with the sheet already closed, and fire it.
+  // That is the defect this swallow exists for, moved from the down edge to the
+  // up edge, and release is the more dangerous edge of the two.
+  //
+  // So the rest of the dismissing gesture is eaten. It clears on the next
+  // `pointerdown`, which is a new gesture and must never be starved.
+  const GESTURE_TAIL = new Set([
+    "pointermove",
+    "pointerup",
+    "pointercancel",
+    "mousemove",
+    "mouseup",
+    "touchmove",
+    "touchend",
+    "touchcancel",
+    "click",
+    "dblclick",
+  ])
+  let eatTail = false
+
   const swallowPointer = (e: Event): void => {
+    if (eatTail) {
+      if (e.type === "pointerdown" || e.type === "mousedown" || e.type === "touchstart") {
+        eatTail = false
+      } else if (GESTURE_TAIL.has(e.type)) {
+        e.stopPropagation()
+        if (e.type === "click" || e.type === "dblclick") eatTail = false
+        return
+      }
+    }
     // The tap that OPENS the manual is a tap on one of ours, so the rule below
     // would let it through to the game as well — and opening the rules cost a
     // move. The help control is handled in both directions: its gestures never
@@ -524,7 +555,10 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     if (e.target === scrim) {
       if (!open) return
       e.stopPropagation()
-      if (e.type === "pointerdown") doClose()
+      if (e.type === "pointerdown") {
+        eatTail = true
+        doClose()
+      }
       return
     }
     if (ours.has(e.target)) return

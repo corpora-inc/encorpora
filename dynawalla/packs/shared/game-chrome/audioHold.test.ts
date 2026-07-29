@@ -231,6 +231,79 @@ test(
   },
 )
 
+/** A context whose two operations settle at different speeds, either way round. */
+function skewed(suspendTicks: number, resumeTicks: number) {
+  return class Skewed {
+    state: "running" | "suspended" | "closed" = "running"
+    async resume(): Promise<void> {
+      for (let i = 0; i < resumeTicks; i++) await Promise.resolve()
+      if (this.state !== "closed") this.state = "running"
+    }
+    async suspend(): Promise<void> {
+      for (let i = 0; i < suspendTicks; i++) await Promise.resolve()
+      if (this.state !== "closed") this.state = "suspended"
+    }
+    async close(): Promise<void> {
+      this.state = "closed"
+    }
+  }
+}
+
+/** Install a skewed constructor, run, put the world back. */
+async function withSkew(
+  Ctor: ReturnType<typeof skewed>,
+  fn: (ctx: { state: string }) => Promise<void>,
+): Promise<void> {
+  const g = globalThis as Globals
+  const prev = g.AudioContext
+  g.AudioContext = Ctor
+  installAudioHold()
+  try {
+    await fn(new (g.AudioContext as new () => { state: string })())
+  } finally {
+    g.AudioContext = prev
+    forgetAudioContexts()
+  }
+}
+
+test("a second read opened before the first read's resume lands is still silent", async () => {
+  // A child taps PLAY and taps "?" again in the same second, which they do
+  // constantly. A resume is slower than a suspend on a real device — it has to
+  // re-acquire the output — so the second read begins while the first read's
+  // resume is still in the air. Deciding what the game wants by looking at the
+  // context at that instant reads the not-yet-undone silence as "this game does
+  // not want sound", holds nothing, and the resume lands: the game plays for
+  // the whole of the second read.
+  await withSkew(skewed(1, 6), async (ctx) => {
+    holdAudio()
+    await settle()
+    assert.equal(ctx.state, "suspended")
+    releaseAudio()
+    holdAudio()
+    for (let i = 0; i < 4; i++) await settle()
+    assert.equal(ctx.state, "suspended", "the game played through the second read")
+    releaseAudio()
+    for (let i = 0; i < 4; i++) await settle()
+    assert.equal(ctx.state, "running", "and never came back")
+  })
+})
+
+test("a game pausing itself in the same frame the manual opens stays paused after it", async () => {
+  // The other direction. A suspend can be slower than a resume, and a game that
+  // pauses itself as the sheet goes up — its own pause screen, a phone call —
+  // is still "running" for a moment afterwards. Believing that reading switches
+  // a self-paused game back on when the manual closes.
+  await withSkew(skewed(6, 1), async (ctx) => {
+    const c = ctx as unknown as { suspend(): Promise<void> }
+    void c.suspend()
+    holdAudio()
+    for (let i = 0; i < 4; i++) await settle()
+    releaseAudio()
+    for (let i = 0; i < 4; i++) await settle()
+    assert.equal(ctx.state, "suspended", "closing the manual restarted a self-paused game")
+  })
+})
+
 test(
   "a context that existed BEFORE the wrap is not held — and that is the known limit",
   withAudio(async () => {
