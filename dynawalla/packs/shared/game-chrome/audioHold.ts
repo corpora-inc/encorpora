@@ -182,8 +182,17 @@ export function holdAudio(): void {
   depth += 1
   if (depth > 1) return
   for (const rec of held) {
-    rec.wanted = rec.ctx.state === "running"
-    if (rec.wanted) run(rec, rec.nativeSuspend)
+    // `wanted` is NOT re-derived from `ctx.state` here. It is already the
+    // game's intent — the shims above maintain it on every call — and
+    // `ctx.state` is a racing observation: it does not settle until whatever is
+    // on the tail lands. Reading it got this wrong in both directions. A second
+    // read taken while the first read's own resume was still in flight saw
+    // "suspended", concluded the game did not want sound, suspended nothing and
+    // let the resume land — the game played through the whole second read. And
+    // a hold taken in the same frame as the game's own `suspend()` saw
+    // "running", concluded the game DID want sound, and switched a
+    // self-paused game back on when the manual closed.
+    if (rec.wanted || rec.ctx.state === "running") run(rec, rec.nativeSuspend)
   }
 }
 

@@ -26,10 +26,8 @@ export {
   type InstructionsSpec,
   type Section,
 } from "./instructions.ts"
-export {
-  installAudioHold,
-  holdAudio,
-  releaseAudio,
-  isAudioHeld,
-  forgetAudioContexts,
-} from "./audioHold.ts"
+// `forgetAudioContexts` is deliberately NOT re-exported. It drops the registry
+// and zeroes the depth, so a game that reached for it would silently defeat the
+// hold for the whole pack. It stays importable from `./audioHold.ts` by the
+// tests that need it and by nothing else.
+export { installAudioHold, holdAudio, releaseAudio, isAudioHeld } from "./audioHold.ts"
