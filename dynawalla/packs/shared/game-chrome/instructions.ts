@@ -60,6 +60,13 @@ function styleSheet(reduced: boolean): string {
   // entirely is the wrong reading.
   const enter = reduced ? "dwc-fade 160ms ease-out" : "dwc-rise 220ms cubic-bezier(.2,.8,.2,1)"
   return `
+/* The hidden attribute must win. A UA stylesheet's [hidden]{display:none} is
+   origin-weaker than any author display, so without this rule the scrim below
+   renders the manual OVER the game from the moment it mounts — in every
+   adopting game, on every launch. Specificity is not the issue; author beats
+   UA. This rule must also come BEFORE the .dwc-scrim block, or the later
+   display:flex wins on source order. */
+.dwc-scrim[hidden]{display:none}
 .dwc-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
   background:rgba(4,6,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   font-family:${FONT};color:#f2eee4;overscroll-behavior:contain}
@@ -209,6 +216,20 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     }
   }
 
+  // While the panel is up, the game must not see a key. The panel's own div is
+  // \`tabIndex=-1\` and consumes nothing, so a Space or Enter meant to dismiss the
+  // manual fell straight through to whatever the game bound on \`globalThis\` —
+  // in one game that fired a shear, reported a wrong answer and cost the child
+  // lane cells, all behind the scrim where they could not see it. Capture phase,
+  // so it runs before any listener the game registered.
+  const swallow = (e: KeyboardEvent): void => {
+    if (!open) return
+    if (e.key === "Escape") return // handled by onKey, which closes
+    e.stopPropagation()
+  }
+  globalThis.addEventListener("keydown", swallow, true)
+  globalThis.addEventListener("keyup", swallow, true)
+
   help.addEventListener("click", doOpen)
   close.addEventListener("click", doClose)
   scrim.addEventListener("pointerdown", onScrim)
@@ -223,6 +244,8 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     destroy(): void {
       stopInsets()
       globalThis.removeEventListener("keydown", onKey)
+      globalThis.removeEventListener("keydown", swallow, true)
+      globalThis.removeEventListener("keyup", swallow, true)
       help.removeEventListener("click", doOpen)
       close.removeEventListener("click", doClose)
       scrim.removeEventListener("pointerdown", onScrim)
