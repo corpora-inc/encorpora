@@ -12,7 +12,7 @@ you the whole time.
 ```bash
 npm install
 npm run dev      # http://127.0.0.1:5183
-npm test         # 69 tests, no framework
+npm test         # 73 tests, no framework
 npm run tsc      # strict, noUncheckedIndexedAccess
 npm run build
 ```
@@ -125,8 +125,24 @@ touches the mouse.
 
 Portrait puts the instruments in a band above the well; landscape puts them in
 rails either side. Two designs, not one stretched. `layout.test.ts` asserts on
-ten viewports from a 320-wide phone to a 1920 desktop that the well fits, the
+twelve viewports from a 320-wide phone to a 1920 desktop that the well fits, the
 held chip has headroom, and nothing overlaps the well.
+
+`computeLayout` takes the safe rectangle as a **required** argument —
+`safeRect(w, h)` from `packs/shared/game-chrome`. The pack declares
+`viewport-fit=cover`, so without it the score is drawn under the notch, and a
+canvas cannot read `env(safe-area-inset-*)` for itself. Required rather than
+optional, because a game that forgets it should not compile.
+
+The host paints its exit chevron over the top-left 44px and the how-to-play
+button over the top-right 44px. Those overlay the pack rather than reserving a
+band — a band costs a twelfth of a small phone's height — so the layout moves
+the score, the LV readout, the next-chip strip, the mute toggle and the
+tappable reactor out from under them, and `hitsHostChrome` asserts it on every
+viewport. The plasma, the well walls and the sparks still bleed to the edges.
+
+How to play is the shared `createInstructions` panel, reachable during a run,
+not just before it.
 
 ## Structure
 
