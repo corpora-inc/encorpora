@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
+import type { Question } from '../contract.ts'
 import { makeRng } from '../core/rng.ts'
 import { createStubHost } from '../stubHost.ts'
 import { heightAtX, LAUNCH_H } from './ballistics.ts'
@@ -56,6 +57,39 @@ test('a wave never hands you two boulders whose keeps would overlap', () => {
   }
 })
 
+test('a rejected answer is reported with the rung it came from', () => {
+  // `seen` is how the game finds a rung whose answers fit on the field, and the
+  // difficulty beside each answer is what stops it steering on the stale contents
+  // of a pool that has not turned over yet. An answer without its rung is a
+  // rejection the game cannot act on — which is how a blank plaque and a dead fire
+  // button survived for a whole release.
+  let n = 0
+  const stream = (answer: number, difficulty: number): Question => {
+    n++
+    return {
+      id: `q${n}`,
+      prompt: `? = ${answer}`,
+      answer: String(answer),
+      distractors: [],
+      domain: 'add-sub',
+      difficulty,
+    }
+  }
+  // Four answers far below the field, served off rung 0.04.
+  const low = pullQuestions(() => stream(3, 0.04), 2, MIN_GAP, 14, 118, 4)
+  assert.equal(low.boulders.length, 0, 'a difference within ten cannot stand on the field')
+  assert.equal(low.seen.length, 4, 'the rejections were thrown away')
+  for (const s of low.seen) {
+    assert.equal(s.answer, 3)
+    assert.equal(s.difficulty, 0.04, 'the rung that produced the answer was lost')
+  }
+
+  // And an answer that fits is kept, with the draw bounded by `maxPulls`.
+  const ok = pullQuestions(() => stream(20 + n * 9, 0.5), 2, MIN_GAP, 14, 118, 8)
+  assert.equal(ok.boulders.length, 2)
+  assert.ok(ok.seen.length <= 8, `the draw ran past maxPulls: ${ok.seen.length}`)
+})
+
 test('escalation is monotonic where it should be and bounded everywhere', () => {
   let prevDiff = -1
   for (let w = 1; w <= 60; w++) {
@@ -86,6 +120,7 @@ test('the ram does not roll while the child is working the sum out', () => {
   // The how-to-play panel promises "there is no clock, nothing happens until you
   // fire", and EXPERIENCE_DESIGN.md does not budget comprehension at all. Those
   // are the two phases in which the child is reading and dialling.
+  assert.equal(ramAdvances('stocking'), false, 'there is not even a question yet')
   assert.equal(ramAdvances('intro'), false, 'the wave has only just been laid out')
   assert.equal(ramAdvances('aim'), false, 'she is working it out')
   assert.equal(ramAdvances('impact'), false, 'the hit-stop holds everything still')
