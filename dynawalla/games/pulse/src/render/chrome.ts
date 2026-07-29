@@ -8,6 +8,7 @@
  * how the title says "press", in every language.
  */
 
+import type { Rect } from "../../../../packs/shared/game-chrome/index.ts";
 import { clamp01, outCubic, outQuint } from "../juice/ease.ts";
 import { glow } from "./glow.ts";
 import { INK, type Ink } from "./palette.ts";
@@ -22,22 +23,31 @@ function metrics(compact: boolean): typeof BTN {
   return compact ? BTN_COMPACT : BTN;
 }
 
+/**
+ * Pause and mute, bottom-right.
+ *
+ * `area` is the safe rect and is REQUIRED, for the same reason it is required on
+ * `computeLayout`: measured from the raw canvas these two buttons sit in the home
+ * indicator's strip on every modern phone, where a swipe up is the system's gesture
+ * and not ours. Optional, a caller that forgets it compiles and the bug only exists
+ * on hardware. `hitButton` reads the same rect, so the touch target can never drift
+ * away from the drawn square.
+ */
 export function buttonRect(
   i: number,
-  w: number,
-  h: number,
+  area: Rect,
   compact: boolean,
 ): { x: number; y: number; s: number } {
   const m = metrics(compact);
   const s = m.size;
-  const x = w - m.margin - s - i * (s + m.gap);
-  const y = h - m.margin - s;
+  const x = area.x + area.w - m.margin - s - i * (s + m.gap);
+  const y = area.y + area.h - m.margin - s;
   return { x, y, s };
 }
 
-export function hitButton(x: number, y: number, w: number, h: number, compact: boolean): ChromeButton | null {
+export function hitButton(x: number, y: number, area: Rect, compact: boolean): ChromeButton | null {
   for (let i = 0; i < 2; i++) {
-    const r = buttonRect(i, w, h, compact);
+    const r = buttonRect(i, area, compact);
     const pad = 6;
     if (x >= r.x - pad && x <= r.x + r.s + pad && y >= r.y - pad && y <= r.y + r.s + pad) {
       return i === 0 ? "pause" : "mute";
@@ -48,14 +58,13 @@ export function hitButton(x: number, y: number, w: number, h: number, compact: b
 
 export function drawButtons(
   ctx: CanvasRenderingContext2D,
-  w: number,
-  h: number,
+  area: Rect,
   compact: boolean,
   muted: boolean,
   paused: boolean,
 ): void {
   const draw = (i: number, fn: (x: number, y: number, s: number) => void, ink: Ink, on: boolean): void => {
-    const r = buttonRect(i, w, h, compact);
+    const r = buttonRect(i, area, compact);
     const c = INK[ink];
     ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${on ? 0.5 : 0.24})`;
     ctx.lineWidth = 1;
@@ -125,12 +134,13 @@ export function drawTitle(
   ctx: CanvasRenderingContext2D,
   w: number,
   h: number,
+  area: Rect,
   t: number,
   best: number,
   compact: boolean,
 ): void {
-  const cx = w / 2;
-  const cy = h * 0.44;
+  const cx = area.x + area.w / 2;
+  const cy = area.y + area.h * 0.44;
   const bpm = 84;
   const beat = (t * bpm) / 60;
   const frac = beat - Math.floor(beat);
@@ -145,10 +155,11 @@ export function drawTitle(
     const x = (i / 240) * w;
     const p = i / 240;
     const y =
-      h * 0.78 +
-      Math.sin(p * 26 + t * 2.1) * h * 0.02 * (0.4 + pulse) +
-      Math.sin(p * 61 - t * 3.4) * h * 0.012 +
-      Math.sin(p * 7 + t * 0.9) * h * 0.02;
+      area.y +
+      area.h * 0.78 +
+      Math.sin(p * 26 + t * 2.1) * area.h * 0.02 * (0.4 + pulse) +
+      Math.sin(p * 61 - t * 3.4) * area.h * 0.012 +
+      Math.sin(p * 7 + t * 0.9) * area.h * 0.02;
     if (i === 0) ctx.moveTo(x, y);
     else ctx.lineTo(x, y);
   }
@@ -185,14 +196,22 @@ export function drawTitle(
   }
 }
 
-export function drawPause(ctx: CanvasRenderingContext2D, w: number, h: number, k: number): void {
+export function drawPause(
+  ctx: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  area: Rect,
+  k: number,
+): void {
   ctx.globalCompositeOperation = "source-over";
+  // The scrim covers the whole frame — a background may bleed under the notch,
+  // and should. The glyph is centred on the safe rect instead.
   ctx.fillStyle = `rgba(4,5,10,${(0.72 * k).toFixed(3)})`;
   ctx.fillRect(0, 0, w, h);
   ctx.globalCompositeOperation = "lighter";
   const s = Math.min(64, w * 0.08);
-  const cx = w / 2;
-  const cy = h / 2;
+  const cx = area.x + area.w / 2;
+  const cy = area.y + area.h / 2;
   const g = outQuint(clamp01(k));
   ctx.strokeStyle = `rgba(235,245,255,${(0.85 * k).toFixed(3)})`;
   ctx.lineWidth = s * 0.2;
@@ -216,7 +235,7 @@ export type PerfStats = {
   calibrationMs: number;
 };
 
-export function drawPerf(ctx: CanvasRenderingContext2D, w: number, s: PerfStats): void {
+export function drawPerf(ctx: CanvasRenderingContext2D, area: Rect, s: PerfStats): void {
   const lines = [
     `${s.fps.toFixed(1)} fps`,
     `frame ${s.frameMs.toFixed(2)} ms  p95 ${s.p95Ms.toFixed(2)}`,
@@ -224,13 +243,17 @@ export function drawPerf(ctx: CanvasRenderingContext2D, w: number, s: PerfStats)
     `parts ${s.particles}  notes ${s.notes}`,
     `latency ${(s.latencyMs * 1000).toFixed(1)} ms  cal ${s.calibrationMs.toFixed(0)} ms`,
   ];
+  // Developer overlay (`?perf`), tucked under the host's help button rather
+  // than behind it.
+  const right = area.x + area.w;
+  const top = area.y + 64;
   ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = "rgba(0,0,0,0.55)";
-  ctx.fillRect(w - 214, 8, 206, 12 + lines.length * 15);
+  ctx.fillRect(right - 214, top, 206, 12 + lines.length * 15);
   ctx.globalCompositeOperation = "lighter";
-  let y = 24;
+  let y = top + 16;
   for (const l of lines) {
-    neon(ctx, l, w - 202, y, 12, s.fps < 55 ? "rose" : "lime", {
+    neon(ctx, l, right - 202, y, 12, s.fps < 55 ? "rose" : "lime", {
       align: "left",
       mono: true,
       alpha: 0.9,

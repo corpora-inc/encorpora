@@ -13,6 +13,7 @@
  * score never becomes unreadable at the exact moment the score changes.
  */
 
+import { safeRect } from "../../../../packs/shared/game-chrome/index.ts";
 import { BEATS_PER_BAR } from "../game/chart.ts";
 import { WINDOWS, type Judgment, type LiveNote } from "../game/judge.ts";
 import type { Run } from "../game/run.ts";
@@ -25,7 +26,16 @@ import { Hitstop } from "../juice/hitstop.ts";
 import { Shake } from "../juice/shake.ts";
 import type { Surfaces } from "./canvas.ts";
 import { glow, halo, warmGlow } from "./glow.ts";
-import { computeLayout, type Layout } from "./layout.ts";
+import {
+  comboBox,
+  computeLayout,
+  healthBox,
+  multBox,
+  promptBox,
+  scoreBox,
+  stageBox,
+  type Layout,
+} from "./layout.ts";
 import { BG_RGB, INK, JUDGE_INK, laneInk, rgb, type Ink } from "./palette.ts";
 import { KIND_MOTE, KIND_SHARD, Particles, Ripples } from "./particles.ts";
 import { fraction, fractionBar, measure, neon, setFont } from "./text.ts";
@@ -92,7 +102,7 @@ export class Scene {
     this.particles = new Particles(opts.lowPower ? 520 : 900);
     this.shake = new Shake(2.05, 7);
     this.flash = new FlashGovernor(opts.reducedMotion);
-    this.layout = computeLayout(s.w, s.h, 3);
+    this.layout = computeLayout(s.w, s.h, 3, safeRect(s.w, s.h));
     this.seedDust();
   }
 
@@ -109,8 +119,13 @@ export class Scene {
     }
   }
 
+  /**
+   * Re-measures the safe area every time, so a rotation or an iPad Split View
+   * resize relays out against the new insets rather than the mount-time ones.
+   */
   resize(laneCount: number): void {
-    this.layout = computeLayout(this.s.w, this.s.h, Math.max(1, laneCount));
+    const { w, h } = this.s;
+    this.layout = computeLayout(w, h, Math.max(1, laneCount), safeRect(w, h));
   }
 
   // ------------------------------------------------------------------ fx in
@@ -302,7 +317,7 @@ export class Scene {
   }
 
   private noteRadius(): number {
-    return Math.min(this.layout.lanePitch * 0.3, this.layout.compact ? 17 : 24);
+    return this.layout.noteR;
   }
 
   // ------------------------------------------------------------------- frame
@@ -790,7 +805,7 @@ export class Scene {
       }
       if (alpha <= 0.01) continue;
 
-      const rr = (isGate ? r * (l.compact ? 1.7 : 2.0) : r) * scale;
+      const rr = (isGate ? l.gateR : r) * scale;
       if (toTrail) {
         glow(ctx, ink, p.x, p.y, rr * 2.1, alpha * (isGate ? 0.5 : 0.34));
         continue;
@@ -826,19 +841,25 @@ export class Scene {
     }
   }
 
+  /**
+   * The question. It used to sit at `h * 0.075` in portrait — 42.6px on a 568px
+   * phone, which is inside the host's two corner squares and under the notch on
+   * anything with one. It is the single most important readable in the game, so
+   * it now lives in a band the layout reserves for it, below both corners, with
+   * the note run starting below IT in turn.
+   */
   private drawGatePrompt(run: Run): void {
     const g = run.gate;
     if (!g) return;
     const k = this.gateGlow;
     if (k <= 0.02) return;
-    const { ctx, w, h } = this.s;
+    const { ctx } = this.s;
     const l = this.layout;
-    const size = l.compact ? 26 : Math.min(46, w * 0.05);
-    const y = l.orient === "h" ? Math.min(l.strikeA.y - size * 1.9, h * 0.2) : h * 0.075;
-    const cx = w / 2;
+    const size = l.hud.prompt.size;
+    const box = promptBox(l, promptWidth(ctx, g.built.prompt, size));
     const grow = outBack(clamp01(k * 1.4)) * k;
     ctx.save();
-    ctx.translate(cx, y);
+    ctx.translate(box.x + box.w / 2, box.y + box.h / 2);
     ctx.scale(0.86 + grow * 0.14, 0.86 + grow * 0.14);
     drawPromptTokens(ctx, g.built.prompt, 0, 0, size, k);
     ctx.restore();
@@ -856,28 +877,46 @@ export class Scene {
 
   // --------------------------------------------------------------------- hud
 
+  /**
+   * Every readable here is drawn FROM a box the layout owns, and the layout puts
+   * those boxes clear of the host's two 44px corners and inside the safe rect.
+   * Before this, at 320×568, the score sat at y 14..40 and the health bar at
+   * x 14..124 / y 48..53 — both inside the exit button's square (10..54, 13..57),
+   * and the multiplier was under the how-to-play button on the other side.
+   */
   private drawHud(run: Run): void {
-    const { ctx, w, h } = this.s;
+    const { ctx } = this.s;
     const l = this.layout;
-    const pad = l.compact ? 14 : 26;
-    const big = l.compact ? 26 : 38;
+    const hud = l.hud;
 
     // Score, monospaced so the digits never dance.
     const score = Math.round(this.displayScore).toLocaleString("en-US");
-    neon(ctx, score, pad, pad + big * 0.5, big, "white", { align: "left", mono: true, alpha: 0.95 });
+    const sb = scoreBox(l, measure(ctx, score, hud.score.size, true));
+    neon(ctx, score, sb.x, sb.y + sb.h / 2, hud.score.size, "white", {
+      align: "left",
+      mono: true,
+      alpha: 0.95,
+    });
 
-    // Multiplier.
+    // Multiplier. Its box is reserved at the PUNCHED size, because it swells at
+    // the exact moment it changes, and it swells beside the host's help button.
     const mult = run.multiplier();
     const mtxt = `×${mult}`;
-    const msize = big * (0.8 + this.multPunch * 0.5);
+    const msize = hud.score.size * (0.8 + this.multPunch * 0.5);
     const mink: Ink = run.overdriveActive() ? "violet" : mult >= 4 ? "lime" : "cyan";
-    neon(ctx, mtxt, w - pad, pad + big * 0.5, msize, mink, { align: "right", mono: true, alpha: 0.95 });
+    const mb = multBox(l, measure(ctx, mtxt, hud.mult.size, true));
+    neon(ctx, mtxt, mb.x + mb.w, mb.y + mb.h / 2, msize, mink, {
+      align: "right",
+      mono: true,
+      alpha: 0.95,
+    });
 
     // Combo, near the strike line where the eye already is.
     if (run.combo >= 3) {
-      const p = l.pt(l.orient === "h" ? 0.02 : 0.02, l.orient === "h" ? -0.22 : 1.24);
-      const cs = (l.compact ? 30 : 46) * (1 + this.comboPunch * 0.28);
-      neon(ctx, String(run.combo), p.x, p.y, cs, run.combo >= 25 ? "lime" : "white", {
+      const ctext = String(run.combo);
+      const cs = hud.combo.size * (1 + this.comboPunch * 0.28);
+      const cb = comboBox(l, measure(ctx, ctext, hud.combo.size, true));
+      neon(ctx, ctext, cb.x + cb.w / 2, cb.y + cb.h / 2, cs, run.combo >= 25 ? "lime" : "white", {
         align: "center",
         mono: true,
         alpha: 0.5 + Math.min(0.5, run.combo / 60),
@@ -886,33 +925,28 @@ export class Scene {
 
     // Health: segmented, plus a label so it is not colour alone.
     const segs = 10;
-    const bw = l.compact ? 110 : 168;
-    const bh = l.compact ? 5 : 7;
-    const bx = pad;
-    const by = pad + big + (l.compact ? 8 : 12);
+    const hb = healthBox(l);
     const filled = Math.ceil(run.health * segs - 0.0001);
     for (let i = 0; i < segs; i++) {
-      const cw = bw / segs;
+      const cw = hb.w / segs;
       const on = i < filled;
       const ink: Ink = run.health < 0.3 ? "rose" : run.health < 0.6 ? "amber" : "cyan";
       const c = INK[ink];
       ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${on ? 0.75 : 0.09})`;
-      ctx.fillRect(bx + i * cw, by, cw - 2, bh);
+      ctx.fillRect(hb.x + i * cw, hb.y, cw - 2, hb.h);
     }
 
-    // Stage strip: the subdivision you are currently living in.
-    const sy = by + bh + (l.compact ? 12 : 16);
-    neon(ctx, run.stage.title, bx, sy, l.compact ? 10 : 12, "cyan", {
-      align: "left",
-      alpha: 0.55,
-    });
-
-    // The stage's note value, drawn as the fraction it is.
-    const glyph = run.stage.glyph;
-    const gx = bx + measure(ctx, run.stage.title, l.compact ? 10 : 12) + (l.compact ? 12 : 16);
-    drawGlyphChain(ctx, glyph, gx, sy, l.compact ? 9 : 11, 0.6);
-
-    void h;
+    // Stage strip: the subdivision you are currently living in, and the stage's
+    // note value drawn as the fraction it is.
+    const title = run.stage.title;
+    const tsize = hud.stage.size;
+    const gsize = hud.stage.glyphSize;
+    const titleW = measure(ctx, title, tsize);
+    const glyphGap = l.compact ? 12 : 16;
+    const stb = stageBox(l, titleW + glyphGap + glyphChainWidth(ctx, run.stage.glyph, gsize));
+    const scy = stb.y + stb.h / 2;
+    neon(ctx, title, stb.x, scy, tsize, "cyan", { align: "left", alpha: 0.55 });
+    drawGlyphChain(ctx, run.stage.glyph, stb.x + titleW + glyphGap, scy, gsize, 0.6);
   }
 
   private drawStageCard(): void {
@@ -1009,6 +1043,53 @@ function shape(ctx: CanvasRenderingContext2D, div: number, x: number, y: number,
   ctx.stroke();
 }
 
+/**
+ * Token widths for a chain of stacked fractions and plain words.
+ *
+ * Shared by the drawing and by the width query beside it, so the box a caller
+ * reserves and the marks that land in it are measured exactly once.
+ */
+function tokenWidths(
+  ctx: CanvasRenderingContext2D,
+  tokens: readonly string[],
+  size: number,
+  fracPad: number,
+  wordScale: number,
+): number[] {
+  const widths: number[] = [];
+  for (const tk of tokens) {
+    const m = FRACTION_TOKEN.exec(tk);
+    if (m) {
+      setFont(ctx, size);
+      widths.push(
+        Math.max(ctx.measureText(m[1]!).width, ctx.measureText(m[2]!).width) + size * fracPad,
+      );
+    } else {
+      widths.push(measure(ctx, tk, size * wordScale));
+    }
+  }
+  return widths;
+}
+
+const sum = (a: number[], gap: number): number =>
+  a.reduce((x, y) => x + y, 0) + gap * Math.max(0, a.length - 1);
+
+/** How wide `drawPromptTokens` will be. The layout reserves exactly this. */
+export function promptWidth(ctx: CanvasRenderingContext2D, prompt: string, size: number): number {
+  const tokens = prompt.split(/\s+/).filter(Boolean);
+  return sum(tokenWidths(ctx, tokens, size, 0.2, 1.05), size * 0.42);
+}
+
+/** How wide `drawGlyphChain` will be. */
+export function glyphChainWidth(
+  ctx: CanvasRenderingContext2D,
+  glyph: string,
+  size: number,
+): number {
+  const parts = glyph.split(/\s+/).filter(Boolean);
+  return sum(tokenWidths(ctx, parts, size, 0.24, 1), size * 0.4);
+}
+
 /** Render "1/2 + 1/4" with real stacked fractions and the operator between them. */
 export function drawPromptTokens(
   ctx: CanvasRenderingContext2D,
@@ -1019,18 +1100,9 @@ export function drawPromptTokens(
   alpha: number,
 ): void {
   const tokens = prompt.split(/\s+/).filter(Boolean);
-  const widths: number[] = [];
   const gap = size * 0.42;
-  for (const tk of tokens) {
-    const m = FRACTION_TOKEN.exec(tk);
-    if (m) {
-      setFont(ctx, size);
-      widths.push(Math.max(ctx.measureText(m[1]!).width, ctx.measureText(m[2]!).width) + size * 0.2);
-    } else {
-      widths.push(measure(ctx, tk, size * 1.05));
-    }
-  }
-  const total = widths.reduce((a, b) => a + b, 0) + gap * (tokens.length - 1);
+  const widths = tokenWidths(ctx, tokens, size, 0.2, 1.05);
+  const total = sum(widths, gap);
   let x = cx - total / 2;
   for (let i = 0; i < tokens.length; i++) {
     const tk = tokens[i]!;
@@ -1053,16 +1125,9 @@ function drawGlyphChain(
   centred = false,
 ): void {
   const parts = glyph.split(/\s+/).filter(Boolean);
-  const widths = parts.map((p) => {
-    const m = FRACTION_TOKEN.exec(p);
-    if (m) {
-      setFont(ctx, size);
-      return Math.max(ctx.measureText(m[1]!).width, ctx.measureText(m[2]!).width) + size * 0.24;
-    }
-    return measure(ctx, p, size);
-  });
+  const widths = tokenWidths(ctx, parts, size, 0.24, 1);
   const gap = size * 0.4;
-  const total = widths.reduce((a, b) => a + b, 0) + gap * (parts.length - 1);
+  const total = sum(widths, gap);
   let cx = centred ? x - total / 2 : x;
   for (let i = 0; i < parts.length; i++) {
     const p = parts[i]!;
