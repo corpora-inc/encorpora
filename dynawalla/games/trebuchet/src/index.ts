@@ -53,7 +53,15 @@ export function mount(el: HTMLElement, host: Host): Mounted {
       },
     ],
     reducedMotion: host.prefersReducedMotion(),
+    // Reading the rules is not thinking about the sum. The answer clock starts
+    // again when the panel closes, so the time spent reading is not reported as
+    // the child's answer latency.
+    onClose: () => game.restartAnswerClock(),
   })
+
+  // Nothing behind the panel is something the child did: the space bar would
+  // otherwise fire the loaded boulder at whatever the dial happens to hold.
+  game.setInputGuard(() => guide.isOpen)
 
   return {
     unmount(): void {

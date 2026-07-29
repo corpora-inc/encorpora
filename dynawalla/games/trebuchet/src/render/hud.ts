@@ -68,6 +68,8 @@ export type HudLayout = {
   score: Rect
   /** the bottom of the pinned top stack — the camera frames the field under it */
   stackBottom: number
+  /** how far the stack had to drop to clear the corners; the camera pays it back */
+  stackShift: number
   buttons: Btn[]
 }
 
@@ -106,7 +108,9 @@ export function hudLayout(w: number, h: number, area: Rect, loftUnlocked: boolea
   // there the stack starts under the corners instead. Either way the plaque is
   // clear of them; only the price differs, and this pays the cheaper one.
   const roomy = band >= eqSize * 9
-  const plaqueY = roomy ? area.y + Math.round(unit * 0.32) : topClear
+  const restY = area.y + Math.round(unit * 0.32)
+  const plaqueY = roomy ? restY : topClear
+  const stackShift = plaqueY - restY
   const plaqueW = Math.max(0, roomy ? band - 8 : area.w - pad * 2)
   const plaqueMax: Rect = { x: area.x + (area.w - plaqueW) / 2, y: plaqueY, w: plaqueW, h: ph }
 
@@ -173,6 +177,7 @@ export function hudLayout(w: number, h: number, area: Rect, loftUnlocked: boolea
     wave,
     score,
     stackBottom,
+    stackShift,
     buttons,
   }
 }
@@ -497,18 +502,34 @@ function drawLoft(ctx: CanvasRenderingContext2D, b: Btn, idx: number, count: num
 /**
  * Where each boulder in the rack sits. One function, used by both the renderer and
  * the hit test, so a tap can never land somewhere the eye disagrees with.
+ *
+ * The row is sized from the slot height, and if five multi-digit sums do not fit
+ * the safe width — five is a normal wave, and `347 + 268` is a normal question —
+ * the whole row scales down until they do. A stone half off the glass is one a
+ * child can neither read nor load.
  */
 export function rackLayout(st: HudState): Array<{ x: number; y: number; w: number; h: number }> {
   const { area } = st.layout
-  const h = st.layout.rackH
-  const gap = Math.round(h * 0.28)
-  const widths = st.rack.map((t) => Math.round(h * 0.9 + t.length * h * 0.27 + h * 0.35))
-  const total = widths.reduce((a, b) => a + b, 0) + Math.max(0, st.rack.length - 1) * gap
-  let x = area.x + (area.w - total) / 2
-  const y = st.layout.rackTop
-  return widths.map((wd) => {
+  const pad = Math.round(st.layout.unit * 0.4)
+  const room = Math.max(1, area.w - pad * 2)
+  const row = (h: number): { widths: number[]; gap: number; total: number } => {
+    const gap = Math.round(h * 0.28)
+    const widths = st.rack.map((t) => Math.round(h * 0.9 + t.length * h * 0.27 + h * 0.35))
+    const total = widths.reduce((a, b) => a + b, 0) + Math.max(0, st.rack.length - 1) * gap
+    return { widths, gap, total }
+  }
+  let h = st.layout.rackH
+  let laid = row(h)
+  if (laid.total > room) {
+    h = Math.max(10, Math.floor(h * (room / laid.total)))
+    laid = row(h)
+  }
+  // The row keeps its centre line whatever height it ended up at.
+  const y = st.layout.rackTop + (st.layout.rackH - h) / 2
+  let x = area.x + (area.w - laid.total) / 2
+  return laid.widths.map((wd) => {
     const slot = { x, y, w: wd, h }
-    x += wd + gap
+    x += wd + laid.gap
     return slot
   })
 }
