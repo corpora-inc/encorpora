@@ -79,6 +79,7 @@ export function mountStreet(
       {
         heading: "Swinging",
         lines: [
+          "Tap the crowd itself to swing your fists at them.",
           "Your fists only work on a row that cannot be broken into smaller rows.",
           "Swing at a row that could still be split and your fists bounce off it.",
           "So the fast way through is to break the crowd down first, then punch the rows one at a time.",
@@ -90,6 +91,16 @@ export function mountStreet(
           "There is no clock. Standing still and looking at the crowd costs you nothing.",
           "A wrong tap makes the crowd lean on you. Enough of them in a row and it shoves you back a block.",
           "Even then you keep everything you already built.",
+        ],
+      },
+      {
+        heading: "Between crowds",
+        lines: [
+          "Before each crowd, a steel shutter rolls down across the street.",
+          "There is a problem chalked on it and four rivets, each with a number.",
+          "Work out the answer and tap the rivet it is on.",
+          "Get it wrong and that rivet goes dark. Try another one — the crowd does not lean on you for this.",
+          "Get it right and the shutter rolls up, and the next crowd comes.",
         ],
       },
     ],
