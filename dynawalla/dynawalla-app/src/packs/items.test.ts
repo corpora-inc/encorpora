@@ -10,18 +10,30 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import {
+  advanceStaircase,
+  ascentOf,
   cadenceFor,
   choicesFor,
   binaryOperator,
   climbRungs,
   climbWithinMs,
   createItemService,
+  DESCENT_RATIO,
+  descentOf,
   isQuick,
   itemPace,
   ladder,
   normalizeMinus,
+  openStaircase,
+  pickRung,
+  rungWeights,
+  SPREAD_ABOVE,
+  SPREAD_BELOW,
+  STEP_OPEN,
+  STEP_START,
+  STEP_TRACK,
 } from "./items.ts"
-import type { Rung } from "./items.ts"
+import type { Rung, Staircase } from "./items.ts"
 import type { PromptSlot } from "./curriculum.ts"
 import {
   activeNodes,
@@ -206,7 +218,18 @@ test("the ladder climbs on a fast correct answer and steps down on a wrong one",
     response: "definitely wrong",
     latencyMs: 200,
   })
-  assert.equal(service.position(), climbed - 1)
+  // Down, by the staircase's current stride rather than by a fixed rung — see
+  // `STEP_START`. The exact arithmetic is pinned on the pure functions below
+  // ("the staircase opens wide…"); what is asserted here is that the service
+  // composes them in the right direction and that a miss is never free.
+  const dropped = service.position()
+  assert.ok(dropped < climbed, `a miss left the child on rung ${String(dropped)}`)
+  assert.ok(
+    climbed - dropped <= STEP_START,
+    `one miss cost ${String(climbed - dropped)} rungs, and the opening stride is ${String(
+      STEP_START,
+    )}`,
+  )
 })
 
 test("a pack may ask for a skill it covers, and an unknown one is not an error", () => {
@@ -318,7 +341,17 @@ test("driving the difficulty moves the one ladder, so judging resumes from where
   const after = service.next({ packId: "dynawalla.stack" })
   assert.ok(after)
   assert.equal(service.position(), top)
-  assert.equal(after.difficulty, item.difficulty)
+  // Not the same ordinate: with the pack no longer naming a difficulty the host
+  // serves from its own spread around where it was left (`rungWeights`). What
+  // must hold is that it is still *there* — within the spread of the rung the
+  // pack drove it to, and not back at the bottom of the ladder.
+  const span = ladder().length - 1
+  const drove = item.difficulty ?? -1
+  const served = after.difficulty ?? -1
+  assert.ok(
+    served >= drove - (SPREAD_BELOW + 1) / span && served <= drove + SPREAD_ABOVE / span,
+    `the pack left the child at ${drove.toFixed(3)} and the host served ${served.toFixed(3)}`,
+  )
 
   service.judge({
     packId: "dynawalla.stack",
@@ -326,7 +359,13 @@ test("driving the difficulty moves the one ladder, so judging resumes from where
     response: "definitely wrong",
     latencyMs: 1000,
   })
-  assert.equal(service.position(), top - 1, "the ladder did not step down from the pack's position")
+  // Exactly the opening stride: nothing has been answered yet, so the staircase
+  // is still where `openStaircase` puts it.
+  assert.equal(
+    service.position(),
+    top - descentOf(openStaircase()),
+    "the ladder did not step down from the pack's position by the opening stride",
+  )
 })
 
 test("every rung on the ladder draws a question with numbers in it", () => {
@@ -713,6 +752,7 @@ test("the `5,001 − 2,798` rungs are reachable: answering them at the published
   assert.equal(service.position(), 0)
 
   for (let step = 0; step < rungs.length - 1; step++) {
+    const before = service.position()
     const item = service.next({ packId: "dynawalla.siege" })
     assert.ok(item)
     const width = widthOf(item.operands)
@@ -725,14 +765,14 @@ test("the `5,001 − 2,798` rungs are reachable: answering them at the published
       // answer this question correctly take at least this long.
       latencyMs: median,
     })
-    assert.equal(
-      service.position(),
-      step + 1,
+    assert.ok(
+      service.position() > before || before === rungs.length - 1,
       `${item.prompt} is ${String(width)} digits wide, its published median is ` +
         `${String(median)} ms, it was answered correctly in exactly that, and the ladder ` +
-        `did not move off rung ${String(step)}`,
+        `did not move off rung ${String(before)}`,
     )
   }
+  assert.equal(service.position(), rungs.length - 1, "the hardest node's top rung is unreachable")
 })
 
 test("a two-digit regrouping answered a millisecond past the median still climbs", () => {
@@ -743,7 +783,10 @@ test("a two-digit regrouping answered a millisecond past the median still climbs
   assert.ok(rungs.length > 1)
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
 
-  const item = service.next({ packId: "dynawalla.siege" })
+  // Named rather than drawn from the spread, so the item under test is the
+  // two-digit rung on every run and not four times in five — a named difficulty
+  // is a point, which is what `items.ts` says it is.
+  const item = service.next({ packId: "dynawalla.siege", difficulty: 0 })
   assert.ok(item)
   assert.equal(widthOf(item.operands), 2, `${item.prompt} is not the two-digit rung`)
   service.judge({
@@ -752,7 +795,14 @@ test("a two-digit regrouping answered a millisecond past the median still climbs
     response: service.reveal(item.id),
     latencyMs: 6_001,
   })
-  assert.equal(service.position(), 1, `${item.prompt} in 6,001 ms did not climb`)
+  assert.ok(service.position() > 0, `${item.prompt} in 6,001 ms did not climb`)
+  // And it is a *whole* stride, not a fraction of one: 6,001 ms is a millisecond
+  // into the second half of the expected band, not into the slow tail.
+  assert.equal(
+    climbRungs({ digits: 2, fluencyP50Ms: undefined, latencyMs: 6_001 }),
+    1,
+    "a millisecond past the two-digit median is being scored as the slow tail",
+  )
 })
 
 test("a child who answers every question correctly at its own published median reaches the top", () => {
@@ -914,7 +964,14 @@ test("a latency that is not a measurement promotes and says so", () => {
       response: service.reveal(item.id),
       latencyMs: Number.NaN,
     })
-    assert.equal(service.position(), 1, "a broken clock stopped a correct answer climbing")
+    assert.ok(service.position() > 0, "a broken clock stopped a correct answer climbing")
+    // And it is worth a whole stride, not a fraction: an unmeasurable clock is
+    // never a reason to pay a child less than the expected band.
+    assert.equal(
+      climbRungs({ digits: 1, fluencyP50Ms: undefined, latencyMs: Number.NaN }),
+      1,
+      "a broken clock is being scored as the slow tail",
+    )
   } finally {
     console.warn = realWarn
   }
@@ -934,7 +991,10 @@ test("a correct answer from the slow tail never costs a rung, never jumps one, a
   // and a slow answer worth a twentieth of a rung both leave `position()`
   // where it was after one answer. Only the third part below separates them,
   // and only the third part fails against the rule this replaced.
-  const rungs = ladder().filter((rung) => rung.node.id === "dw.add.facts.add-within-ten")
+  // The whole ladder, not one node's four rungs: with a stride that opens at
+  // `STEP_START` a filtered ladder is at its own ceiling within two answers, and
+  // a clamp is not a measurement of anything.
+  const rungs = ladder()
   assert.ok(rungs.length > 1)
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
   const first = service.next({ packId: "dynawalla.siege" })
@@ -946,7 +1006,7 @@ test("a correct answer from the slow tail never costs a rung, never jumps one, a
     latencyMs: 2_800,
   })
   const climbed = service.position()
-  assert.equal(climbed, 1)
+  assert.ok(climbed > 0)
 
   const second = service.next({ packId: "dynawalla.siege" })
   assert.ok(second)
@@ -957,7 +1017,25 @@ test("a correct answer from the slow tail never costs a rung, never jumps one, a
     // Five minutes on a single-digit fact. Nobody's p90.
     latencyMs: 300_000,
   })
-  assert.equal(service.position(), climbed, "one slow answer jumped a whole rung")
+  // Never costs a rung.
+  assert.ok(
+    service.position() >= climbed,
+    `a slow correct answer cost a rung: ${String(climbed)} → ${String(service.position())}`,
+  )
+  // Never jumps one, *relative to the stride it was taken at* — which is the
+  // claim that survives now that the search step is separate from what the
+  // answer was worth. A slow answer buys strictly less of the same stride than
+  // an expected-pace one, at every stride, so "slowly" cannot quietly become
+  // "immediately" however wide the search happens to be open.
+  for (const stair of [openStaircase(), { ...openStaircase(), step: STEP_TRACK }]) {
+    const slow = ascentOf(stair, climbRungs({ digits: 1, latencyMs: 300_000 }))
+    const expected = ascentOf(stair, climbRungs({ digits: 1, latencyMs: 2_800 }))
+    assert.ok(
+      slow < expected,
+      `a five-minute answer moved ${String(slow)} rungs and an on-median one ${String(expected)}`,
+    )
+    assert.ok(slow > 0, "a five-minute correct answer moved nothing at all")
+  }
 
   // And now the same answer, again and again. A child working at this pace all
   // afternoon is still working; a ladder that never moves for them is the
@@ -996,16 +1074,16 @@ test("no run of wrong answers can push a child below the easiest rung the curric
   assert.ok(service.next({ packId: "dynawalla.siege" }), "the floor is not serving questions")
 })
 
-test("an answer at the published median is worth exactly one rung, and a miss costs exactly one", () => {
-  // The descent rule is unchanged and is founder direction; what is checked here
-  // is that it composes with the climb rule rather than fighting it.
-  //
+test("an answer at the published median is worth a whole stride, and the bonus does not leak into it", () => {
   // Six answers, each taking exactly as long as the table says that class takes.
-  // Not quick, not slow: expected. Expected is one rung — the middle regime —
-  // and the fact that `high` is exactly 6 rather than something larger is the
-  // assertion that the speedcuber bonus does not leak into ordinary pace.
+  // Not quick, not slow: expected. Expected is worth exactly one stride — the
+  // middle regime — and the assertion is that six of them come to exactly the
+  // sum of the first six strides rather than to anything larger, which is what
+  // the speedcuber bonus leaking into ordinary pace would look like.
   const rungs = ladder()
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  let stair = openStaircase()
+  let expected = 0
   for (let i = 0; i < 6; i++) {
     const item = service.next({ packId: "dynawalla.siege" })
     assert.ok(item)
@@ -1015,9 +1093,10 @@ test("an answer at the published median is worth exactly one rung, and a miss co
       response: service.reveal(item.id),
       latencyMs: publishedP50Ms(widthOf(item.operands)),
     })
+    expected += ascentOf(stair, 1)
+    stair = advanceStaircase(stair, 1, 1)
   }
-  const high = service.position()
-  assert.equal(high, 6)
+  assert.equal(service.position(), Math.floor(expected))
   for (let i = 0; i < 3; i++) {
     const item = service.next({ packId: "dynawalla.siege" })
     assert.ok(item)
@@ -1027,8 +1106,152 @@ test("an answer at the published median is worth exactly one rung, and a miss co
       response: "definitely wrong",
       latencyMs: 1_000,
     })
+    expected -= descentOf(stair)
+    stair = advanceStaircase(stair, -1, null)
   }
-  assert.equal(service.position(), high - 3, "three misses did not cost exactly three rungs")
+  assert.equal(
+    service.position(),
+    Math.floor(expected),
+    "three misses did not cost exactly three strides",
+  )
+})
+
+// ---------------------------------------------------------------------------
+// Calibration: find the level quickly, then track it gently.
+//
+// The founder's report, and the apparent contradiction in it:
+//
+//   "it's way too quick to go from 0+1 to 1269/9. We need to find the users level
+//    more gently!"
+//   "We need to sort of quickly find the players level .. maybe where they are
+//    getting 80%+ correct but slowly"
+//
+// The search is quick; the content does not lurch. See `STEP_START` in `items.ts`.
+
+test("the staircase opens wide, shrinks with every answer, and halves at a reversal", () => {
+  const open = openStaircase()
+  assert.equal(open.step, STEP_START, "the search does not open at the opening stride")
+  assert.equal(open.reversed, false)
+  assert.equal(open.lastDir, 0)
+
+  // Never wrong: the stride shrinks toward `STEP_OPEN` and stops there, because a
+  // child who has not been bracketed has not given the evidence that would let
+  // the search slow below the rate this file has always climbed at.
+  let straight = open
+  const strides: number[] = []
+  for (let i = 0; i < 40; i++) {
+    strides.push(straight.step)
+    straight = advanceStaircase(straight, 1, 1)
+  }
+  for (let i = 1; i < strides.length; i++) {
+    assert.ok(
+      (strides[i] as number) < (strides[i - 1] as number) + 1e-12,
+      `the stride grew at answer ${String(i)}: ${String(strides[i - 1])} → ${String(strides[i])}`,
+    )
+  }
+  // Converges on the floor from above and never goes under it: the decay is
+  // geometric, so it approaches rather than arrives, and the floor is the thing
+  // that must be exact in the direction that matters.
+  assert.ok(
+    straight.step >= STEP_OPEN,
+    `the stride fell under its floor: ${String(straight.step)} < ${String(STEP_OPEN)}`,
+  )
+  assert.ok(
+    straight.step - STEP_OPEN < 1e-4,
+    `forty right answers left the stride at ${String(straight.step)}, not ${String(STEP_OPEN)}`,
+  )
+  assert.equal(straight.reversed, false, "a child who was never wrong was treated as bracketed")
+
+  // A reversal is the moment the level is bracketed: an extra halving, and the
+  // stride's floor drops from `STEP_OPEN` to `STEP_TRACK`.
+  const before = advanceStaircase(advanceStaircase(open, 1, 1), 1, 1)
+  const after = advanceStaircase(before, -1, null)
+  assert.equal(after.reversed, true, "a direction change did not bracket the child")
+  assert.ok(
+    after.step < before.step / 2,
+    `a reversal took the stride from ${String(before.step)} to ${String(after.step)}, which is ` +
+      `not a halving on top of the per-answer decay`,
+  )
+  let settled = after
+  for (let i = 0; i < 40; i++) settled = advanceStaircase(settled, 1, 1)
+  assert.ok(
+    Math.abs(settled.step - STEP_TRACK) < 1e-6,
+    `a bracketed child's stride settled at ${String(settled.step)}, not ${String(STEP_TRACK)}`,
+  )
+})
+
+test("down is four times up once the child is bracketed, which is what 80% correct means", () => {
+  // Kaernbach's weighted up/down rule: a staircase converges on the proportion
+  // `p` correct when up:down is `(1 − p) : p`. The founder asked for "80%+
+  // correct", so the ratio is 1:4 and `DESCENT_RATIO` is that four. Asserted as
+  // the ratio rather than as two magnitudes, because the magnitudes are the
+  // child's own pace and the ratio is the thing that fixes the accuracy.
+  // Derived, not restated: `p / (1 − p)` at the accuracy the founder named. A
+  // test that compared `descentOf / ascentOf` to `DESCENT_RATIO` would pass at
+  // any value of `DESCENT_RATIO` at all, including the 1 this replaced.
+  // As the whole ratio `right : asked` rather than as 0.8, because `0.8 / (1 −
+  // 0.8)` is 4.000000000000001 and a test that is right about the mathematics and
+  // wrong about binary floats is a test somebody deletes.
+  const RIGHT = 4
+  const ASKED = 5
+  assert.equal(
+    DESCENT_RATIO,
+    RIGHT / (ASKED - RIGHT),
+    `a staircase with this ratio converges on ` +
+      `${((DESCENT_RATIO / (1 + DESCENT_RATIO)) * 100).toFixed(0)}% correct, not ` +
+      `${((RIGHT / ASKED) * 100).toFixed(0)}%`,
+  )
+  const settled: Staircase = { step: STEP_TRACK, lastDir: 1, reversed: true, pace: 1 }
+  assert.equal(descentOf(settled) / ascentOf(settled, 1), DESCENT_RATIO)
+  // And in a slower child's currency: a child whose correct answers are worth a
+  // quarter of a rung each falls a quarter as far, so the *ratio* — and with it
+  // the accuracy the search converges on — is the same for them.
+  const deliberate: Staircase = { ...settled, pace: 0.25 }
+  assert.equal(descentOf(deliberate) / ascentOf(deliberate, 0.25), DESCENT_RATIO)
+  assert.equal(descentOf(deliberate), descentOf(settled) / 4)
+
+  // Before the bracket closes it is symmetric. The first miss is the move that
+  // *closes* the bracket and must be the size of the moves that opened it —
+  // four times an opening stride of four rungs is sixteen, which is the lurch in
+  // the other direction.
+  const opening = openStaircase()
+  assert.equal(descentOf(opening), ascentOf(opening, 1))
+})
+
+test("a child who is right four times in five settles, and stays settled", () => {
+  // The founder's target, end to end: "maybe where they are getting 80%+
+  // correct". A staircase at the 1:4 ratio has zero expected drift at exactly
+  // 80%, so a child answering in that pattern must come to rest somewhere and
+  // stay there — not creep to the top, and not slide to the floor.
+  const rungs = ladder()
+  const top = rungs.length - 1
+  const walked: number[] = []
+  const service = createItemService({ profileId: "p80", record: noRecord, rungs })
+  for (let answered = 0; answered < 500; answered++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    // Right on four of every five, in a fixed pattern rather than at random, so
+    // the assertion is about the rule and not about a seed.
+    const right = answered % 5 !== 4
+    service.judge({
+      packId: "dynawalla.siege",
+      itemId: item.id,
+      response: right ? service.reveal(item.id) : "definitely wrong",
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+    walked.push(service.position())
+  }
+  const tail = walked.slice(400)
+  const low = Math.min(...tail)
+  const high = Math.max(...tail)
+  assert.ok(low > 0, `an 80%-correct child slid to rung ${String(low)}`)
+  assert.ok(high < top, `an 80%-correct child crept to the top (rung ${String(high)} of ${String(top)})`)
+  // Settled means the last hundred answers cover a handful of rungs, not the
+  // ladder. Anything wider is a walk, not a level.
+  assert.ok(
+    high - low <= 2 * (SPREAD_BELOW + SPREAD_ABOVE),
+    `an 80%-correct child's last hundred answers ranged over rungs ${String(low)}..${String(high)}`,
+  )
 })
 
 // ---------------------------------------------------------------------------
@@ -1144,10 +1367,25 @@ test("regime 1: a speedcuber does not walk every rung", () => {
     )} ms each — that is one rung per answer or worse, and a child who answers in a fifth of a ` +
       `second is not being told anything by this ladder`,
   )
+  // Bounded, and the bound is the two numbers it is made of: what one answer can
+  // be worth (2.5, the table's widest published p90/p50) times the widest the
+  // search ever opens (`STEP_START`). Not 2.5 alone — during calibration the
+  // stride is deliberately wider than one rung, which is the "quickly find the
+  // players level" half of the founder's report. What must not exist is an
+  // unbounded rate.
   assert.ok(
-    quick.answers >= Math.ceil(quick.top / 2.5),
-    `${String(quick.top)} rungs in ${String(quick.answers)} answers is more than 2.5 rungs an ` +
-      `answer, and 2.5 is the widest p90/p50 the cadence table publishes`,
+    quick.answers >= Math.ceil(quick.top / (2.5 * STEP_START)),
+    `${String(quick.top)} rungs in ${String(quick.answers)} answers is more than ` +
+      `${String(2.5 * STEP_START)} rungs an answer, which is the widest published p90/p50 ` +
+      `times the widest the search ever opens`,
+  )
+  // And once the search has settled — which for a child who is never wrong means
+  // a stride of `STEP_OPEN` — the rate is back inside 2.5 an answer, so the
+  // calibration boost is a boost and not a new baseline.
+  const settled: Staircase = { step: STEP_OPEN, lastDir: 1, reversed: false, pace: 2.5 }
+  assert.ok(
+    ascentOf(settled, climbRungs({ digits: 1, latencyMs: A_SPEEDCUBER_MS, quickRun: 99 })) <= 2.5,
+    "a settled speedcuber is still climbing more than the table's widest spread per answer",
   )
 })
 
@@ -1358,12 +1596,14 @@ test("the tail cannot underflow the floor or overflow the top", () => {
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
   const item = service.next({ packId: "dynawalla.siege" })
   assert.ok(item)
-  // One slow-and-right answer: some fraction of a rung, and still rung 0.
+  // One slow-and-right answer: some fraction of a rung, and still rung 0. Ten
+  // minutes rather than one, because the opening stride multiplies whatever the
+  // answer was worth and a minute times four rungs is no longer a fraction.
   service.judge({
     packId: "dynawalla.siege",
     itemId: item.id,
     response: service.reveal(item.id),
-    latencyMs: A_FULL_MINUTE_MS,
+    latencyMs: 10 * A_FULL_MINUTE_MS,
   })
   assert.equal(service.position(), 0)
   const missed = service.next({ packId: "dynawalla.siege" })
@@ -1376,42 +1616,54 @@ test("the tail cannot underflow the floor or overflow the top", () => {
   })
   assert.equal(service.position(), 0, "a fraction of a rung above the floor fell through it")
 
-  // At the top: quick answers pile up, then one miss must cost exactly one rung
-  // rather than being absorbed by banked credit.
+  // At the top: quick answers pile up, then one miss must cost the same as it
+  // would have cost the moment the top was reached. Credit above the top is not
+  // credit — it is clamped away — and a child who kept playing after arriving
+  // must not have bought themselves a free miss.
   const top = rungs.length - 1
-  for (let i = 0; i < 200 && service.position() < top; i++) {
-    const next = service.next({ packId: "dynawalla.siege" })
-    assert.ok(next)
-    service.judge({
+  /** Climbs to the top, answers `extra` more, misses once, and says where it is. */
+  const missAtTop = (profileId: string, extra: number): number => {
+    const at = createItemService({ profileId, record: noRecord, rungs })
+    for (let i = 0; i < 200 && at.position() < top; i++) {
+      const next = at.next({ packId: "dynawalla.siege" })
+      assert.ok(next)
+      at.judge({
+        packId: "dynawalla.siege",
+        itemId: next.id,
+        response: at.reveal(next.id),
+        latencyMs: A_SPEEDCUBER_MS,
+      })
+    }
+    assert.equal(at.position(), top, `${profileId} never reached the top`)
+    for (let i = 0; i < extra; i++) {
+      const next = at.next({ packId: "dynawalla.siege" })
+      assert.ok(next)
+      at.judge({
+        packId: "dynawalla.siege",
+        itemId: next.id,
+        response: at.reveal(next.id),
+        latencyMs: A_SPEEDCUBER_MS,
+      })
+    }
+    const missed = at.next({ packId: "dynawalla.siege" })
+    assert.ok(missed)
+    at.judge({
       packId: "dynawalla.siege",
-      itemId: next.id,
-      response: service.reveal(next.id),
-      latencyMs: A_SPEEDCUBER_MS,
+      itemId: missed.id,
+      response: "definitely wrong",
+      latencyMs: 1_000,
     })
+    return at.position()
   }
-  assert.equal(service.position(), top)
-  for (let i = 0; i < 5; i++) {
-    const next = service.next({ packId: "dynawalla.siege" })
-    assert.ok(next)
-    service.judge({
-      packId: "dynawalla.siege",
-      itemId: next.id,
-      response: service.reveal(next.id),
-      latencyMs: A_SPEEDCUBER_MS,
-    })
-  }
-  const missedAtTop = service.next({ packId: "dynawalla.siege" })
-  assert.ok(missedAtTop)
-  service.judge({
-    packId: "dynawalla.siege",
-    itemId: missedAtTop.id,
-    response: "definitely wrong",
-    latencyMs: 1_000,
-  })
+  const straightAway = missAtTop("top-0", 0)
+  const afterLingering = missAtTop("top-20", 20)
+  assert.ok(straightAway < top, "a miss at the top of the ladder cost nothing at all")
   assert.equal(
-    service.position(),
-    top - 1,
-    "five quick answers at the top banked credit that a miss then paid for",
+    afterLingering,
+    straightAway,
+    `twenty quick answers at the top banked credit that a miss then paid for: the child who ` +
+      `missed straight away fell to ${String(straightAway)} and the one who lingered to ` +
+      `${String(afterLingering)}`,
   )
 })
 
@@ -1424,4 +1676,218 @@ test("a latency past what the table has a class for is still classified, never u
   assert.ok(wide, "a six-digit item has no pace, so the fitted line stopped fitting")
   assert.ok(wide.tailMs > P90_WIDEST_PUBLISHED_MS, "a six-digit item is not slower than a 4-digit")
   assert.ok(rateAt(6, undefined, 600_000) < 0.2, "ten minutes on one question is not a rung")
+})
+
+// ---------------------------------------------------------------------------
+// A rung is served as a distribution, not as a point.
+//
+// "we don't have to be at one level only 'mixed triple and double' .. we could
+//  still throw in some single digit problems but it should change the
+//  probabilities of harder and easier problems more smoothly."
+//
+// See `rungWeights` in `items.ts` for the shape and the arithmetic behind the
+// two ratios.
+
+/** The kernel as a share of its own mass, which is what a child experiences. */
+function shares(centre: number, span: number): number[] {
+  const weights = rungWeights(centre, span)
+  const total = weights.reduce((a, b) => a + b, 0)
+  return weights.map((w) => w / total)
+}
+
+test("the spread is centred, asymmetric, and reaches both ways", () => {
+  const span = 40
+  const p = shares(20, span)
+  // Every rung inside the spread carries mass and every rung outside it carries
+  // none: the point of a truncated kernel is that a rung the child cannot do is
+  // not merely unlikely, it is absent.
+  for (let i = 0; i < p.length; i++) {
+    const offset = i - 20
+    const inside = offset >= -SPREAD_BELOW && offset <= SPREAD_ABOVE
+    assert.equal(
+      (p[i] as number) > 0,
+      inside,
+      `rung ${String(i)} (offset ${String(offset)}) has share ${String(p[i])}`,
+    )
+  }
+  // The mode is the centre, and it is not the majority — a rung that carried more
+  // than half the mass would be a point with a rumour of a spread around it.
+  const centre = p[20] as number
+  for (let i = 0; i < p.length; i++) {
+    if (i !== 20) assert.ok((p[i] as number) < centre, `rung ${String(i)} outweighs the centre`)
+  }
+  assert.ok(centre < 0.5, `the centre carries ${(centre * 100).toFixed(1)}% of the mass`)
+  // Monotone away from the centre in both directions, so there is no distance at
+  // which the shape changes its mind.
+  for (let d = 1; d < SPREAD_BELOW; d++) {
+    assert.ok((p[20 - d] as number) > (p[20 - d - 1] as number), `below is not monotone at ${String(d)}`)
+  }
+  for (let d = 1; d < SPREAD_ABOVE; d++) {
+    assert.ok((p[20 + d] as number) > (p[20 + d + 1] as number), `above is not monotone at ${String(d)}`)
+  }
+  // Easier is likelier than harder at the same distance. Being served a rung
+  // below your level is a fluency rep; being served one above it is being stuck.
+  for (let d = 1; d <= SPREAD_ABOVE; d++) {
+    assert.ok(
+      (p[20 - d] as number) > (p[20 + d] as number),
+      `offset −${String(d)} is not likelier than +${String(d)}`,
+    )
+  }
+})
+
+test("the spread puts about a fifth of questions above the child's rung, which is what 80% is made of", () => {
+  const p = shares(20, 40)
+  const below = p.slice(0, 20).reduce((a, b) => a + b, 0)
+  const above = p.slice(21).reduce((a, b) => a + b, 0)
+  // A fifth above: paired with near-perfect accuracy below the rung, ~90% at it
+  // and ~60% one above, this mix measures out at ~83% correct, which is the
+  // founder's "80%+ correct" arrived at from the content side while the staircase
+  // arrives at it from the search side.
+  assert.ok(above > 0.15 && above < 0.25, `${(above * 100).toFixed(1)}% of questions are harder`)
+  // A rung the child cannot do is rare: two above is a twentieth.
+  assert.ok((p[22] as number) < 0.07, `two rungs up is ${((p[22] as number) * 100).toFixed(1)}%`)
+  // And there are real easier questions in the stream — "we could still throw in
+  // some single digit problems".
+  assert.ok(below > 0.3, `only ${(below * 100).toFixed(1)}% of questions are easier`)
+
+  // Consecutive questions differ: the chance two independent draws land on the
+  // same rung is Σp², and a spread that fails this is a point in disguise.
+  const same = p.reduce((a, b) => a + b * b, 0)
+  assert.ok(same < 0.3, `two questions running land on the same rung ${(same * 100).toFixed(1)}% of the time`)
+})
+
+test("the spread reflects at the ends of the ladder rather than piling onto them", () => {
+  const span = 40
+  // At the floor there is nowhere below to go. Clipping would pile the whole
+  // downward tail onto rung 0 — which on `add-within-ten` L0 is a set of NINE
+  // items, and is why the founder believed the questions were hardcoded. The
+  // mass goes the only other way it can.
+  const floorShares = shares(0, span)
+  assert.ok(
+    (floorShares[0] as number) < 0.5,
+    `a child at the floor gets ${((floorShares[0] as number) * 100).toFixed(1)}% of their ` +
+      `questions from one rung`,
+  )
+  assert.ok(
+    (floorShares[3] as number) > 0,
+    "the spread at the floor does not reach the fourth rung, so the neighbours are unused",
+  )
+  // Nothing is lost and nothing is invented: the reflected kernel carries exactly
+  // the mass the untruncated one does.
+  const total = (centre: number) => rungWeights(centre, span).reduce((a, b) => a + b, 0)
+  assert.ok(Math.abs(total(0) - total(20)) < 1e-12, "mass is not conserved at the floor")
+  assert.ok(Math.abs(total(span) - total(20)) < 1e-12, "mass is not conserved at the top")
+  // And at the top it reflects downward, so a child at the hardest rung the
+  // product has still gets a mixed stream rather than that rung forever.
+  const topShares = shares(span, span)
+  assert.ok((topShares[span] as number) < 0.5, "a child at the top is served one rung")
+  assert.ok((topShares[span - 3] as number) > 0, "the spread at the top does not reach downward")
+
+  // A ladder narrower than the kernel still normalises rather than leaving a
+  // hole: reflection is iterated, so `-3` on a two-rung ladder comes back inside.
+  for (let narrow = 0; narrow <= 4; narrow++) {
+    const weights = rungWeights(0, narrow)
+    assert.equal(weights.length, narrow + 1)
+    assert.ok(
+      weights.reduce((a, b) => a + b, 0) > 0,
+      `a ${String(narrow + 1)}-rung ladder has no weight anywhere`,
+    )
+    for (const w of weights) assert.ok(Number.isFinite(w) && w >= 0, "a weight is not a weight")
+  }
+})
+
+test("pickRung is a draw from those weights and cannot fall off either end", () => {
+  const span = 30
+  const counts = new Array<number>(span + 1).fill(0)
+  const draws = 20_000
+  for (let i = 0; i < draws; i++) {
+    const rung = pickRung(15, span, i / draws)
+    assert.ok(rung >= 0 && rung <= span, `pickRung returned ${String(rung)}`)
+    counts[rung] = (counts[rung] as number) + 1
+  }
+  // Sweeping the unit interval reproduces the weights it was built from.
+  const p = shares(15, span)
+  for (let i = 0; i <= span; i++) {
+    assert.ok(
+      Math.abs((counts[i] as number) / draws - (p[i] as number)) < 0.005,
+      `rung ${String(i)} drew ${String(counts[i])} of ${String(draws)}, expected share ${String(p[i])}`,
+    )
+  }
+  // The ends of the stream, which is where an off-by-one lives.
+  assert.ok(pickRung(0, span, 0) >= 0)
+  assert.ok(pickRung(span, span, 1) <= span)
+  assert.ok(pickRung(0, 0, 0.999) === 0, "a one-rung ladder served something other than its rung")
+})
+
+test("a beginner sees far more than nine distinct questions, without any closed set being inflated", () => {
+  // The founder: "I've gotten 10 correct in a row fast and I still get 2+0=1".
+  // `dw.add.facts.add-within-ten` L0 declares `closedFactSet: [9, …]` — nine
+  // items, honestly, and CG-10 exists so that a small honest set is not dressed
+  // up as a generator. So the fix is not to inflate it; it is that a child on the
+  // bottom rung is served its neighbours too.
+  const rungs = ladder()
+  const service = createItemService({ profileId: "beginner", record: noRecord, rungs })
+  const prompts = new Set<string>()
+  const skills = new Set<string>()
+  // Twenty questions with no answers at all, so the ladder never moves and this
+  // is purely what the spread does for a child standing on rung 0.
+  for (let i = 0; i < 20; i++) {
+    const item = service.next({ packId: "dynawalla.truedraw" })
+    assert.ok(item)
+    prompts.add(item.prompt)
+    skills.add(`${item.skillId}#${String(item.level)}`)
+  }
+  // The threshold is not taste: it is the size of the bottom rung's own declared
+  // closed set, read off the curriculum. Serving one rung, *however* well, cannot
+  // produce more distinct questions than the rung has in it — so exceeding it is
+  // proof that the neighbours were reached, and it is a number that cannot be
+  // satisfied by any amount of shuffling.
+  const bottom = rungs.find((rung) => rung.node.id === "dw.add.facts.add-within-ten")?.node.generator
+    .closedFactSet?.[0]
+  assert.ok(typeof bottom === "number" && bottom > 0, "the bottom rung declares no closed set")
+  assert.ok(
+    prompts.size > bottom,
+    `twenty questions at the floor drew ${String(prompts.size)} distinct prompts and the bottom ` +
+      `rung's closed set holds ${String(bottom)} — so nothing outside it was served: ` +
+      `${[...prompts].join(", ")}`,
+  )
+  assert.ok(
+    skills.size >= 3,
+    `twenty questions at the floor came from ${String(skills.size)} rung(s): ` +
+      `${[...skills].join(", ")} — the floor is still a point`,
+  )
+  // And they are all still first-grade facts, not a stretch into column
+  // arithmetic: the spread is narrow, it is only not a point.
+  for (const key of skills) assert.match(key, /^dw\.add\.facts\./, `the floor reached ${key}`)
+})
+
+test("the stream a child is served stays inside the spread of where the ladder stands", () => {
+  // The guard that the mixing cannot quietly become "any rung at all". Over a
+  // long session with a child who is right four times in five, every question
+  // must have come from within the kernel of the position at the time.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-spread", record: noRecord, rungs })
+  let worstBelow = 0
+  let worstAbove = 0
+  for (let answered = 0; answered < 400; answered++) {
+    const centre = service.position()
+    const item = service.next({ packId: "dynawalla.truedraw" })
+    assert.ok(item)
+    const served = Math.round((item.difficulty ?? 0) * span)
+    worstBelow = Math.max(worstBelow, centre - served)
+    worstAbove = Math.max(worstAbove, served - centre)
+    const right = answered % 5 !== 4
+    service.judge({
+      packId: "dynawalla.truedraw",
+      itemId: item.id,
+      response: right ? service.reveal(item.id) : "definitely wrong",
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+  assert.ok(worstAbove <= SPREAD_ABOVE, `a question came ${String(worstAbove)} rungs above the child`)
+  assert.ok(worstBelow <= SPREAD_BELOW, `a question came ${String(worstBelow)} rungs below the child`)
+  // And it really did use the width, rather than serving the centre forever.
+  assert.equal(worstAbove, SPREAD_ABOVE, "the spread never once reached its own ceiling")
+  assert.equal(worstBelow, SPREAD_BELOW, "the spread never once reached its own floor")
 })

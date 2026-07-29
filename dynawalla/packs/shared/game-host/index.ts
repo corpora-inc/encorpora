@@ -51,7 +51,34 @@
 //   3. The pool is *flushed* when the request moves, because a pool of
 //      thirty-two to sixty-four questions is otherwise a thirty-two question
 //      delay between a decision and its effect. Measured: 34 questions without,
-//      2 with.
+//      2 with. (The 34 was also half caused by the batched refill described
+//      below; with the pool topped up one question at a time the *search* alone
+//      lands a change in two, and the flush's remaining job is to stop the pool
+//      accumulating sixty-four questions the child will never be served.)
+//
+// ── The pool also goes stale when the HOST moves, not only when the game asks ──
+//
+// Part 3 above was written for a game that drives its own difficulty, and it
+// checked `target === null` and returned. Every game that does *not* drive one —
+// TRUE DRAW calls `host.next()` with no arguments at all — therefore had no
+// flush of any kind, and the delay was the full depth of the pool, permanently.
+//
+// What that cost, measured on the shipped code: `warm()` awaits `POOL_FLOOR`
+// questions before the first frame and the first `take()` tops the pool up to
+// `POOL_TARGET`, so **the first sixty-four questions of a session are all drawn
+// from wherever the host's ladder stood before the child answered anything** —
+// rung zero. The founder's report is both halves of this one bug:
+//
+//   "I've gotten 10 correct in a row fast and I still get 2+0=1 ... 25 in a row
+//    max speed and I get 2+0=1"          — the queue in front of him was 64 deep
+//   "it's way too quick to go from 0+1 to 1269/9"
+//                        — and when it finally turned over, it turned over whole
+//
+// So the aim the pool is stocked and searched against is now `target ?? fresh`,
+// where `fresh` is the ordinate of the most recent item the host actually handed
+// over. A game that drives difficulty is unaffected — its own request still wins
+// — and a game that drives nothing now discards a pool the ladder has walked
+// away from instead of feeding a child their own past.
 //
 // What this module does NOT do is decide anything. It does not read the
 // outcomes it records, it has no opinion about whether a child is struggling,
@@ -314,6 +341,17 @@ const SESSION_ITEMS = 40
 const FLUSH_BAND = 0.1
 
 /**
+ * The same, when the thing that moved is the host's ladder rather than a request.
+ *
+ * Three hundredths, which on the sixty-six-rung ladder that ships is two rungs —
+ * inside the width of the spread `items.ts` serves from, so a pool is refreshed
+ * before the child can notice it has gone stale, and not so tight that it churns.
+ * Only reached once per question (from `take`), never per frame, and still behind
+ * `FLUSH_COOLDOWN_MS`.
+ */
+const HOST_FLUSH_BAND = 0.03
+
+/**
  * The shortest gap between two automatic flushes.
  *
  * runner recomputes its difficulty continuously and asks on every gate; without
@@ -469,6 +507,16 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let ceiling: number | null = null
   /** A floor that only ever rises. siege drives this. */
   let floor = 0
+  /**
+   * The ordinate of the most recent item the host handed over.
+   *
+   * The freshest reading available of where the host's own ladder is standing —
+   * every refill fetches at the host's current position, so the last arrival is
+   * at most one round trip old. It is what the pool is aimed at when the game
+   * does not aim it itself; see the note at the top of this file for what it
+   * cost to have no aim at all.
+   */
+  let fresh: number | null = null
   /** The difficulty the pool was last stocked for. */
   let filledFor: number | null = null
   let lastFlush = 0
@@ -548,7 +596,13 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
             console.error("[pack] items.reveal was not granted; questions cannot be placed")
             break
           }
-          pool.push({ question: questionFrom(item, canonical, domain), skillId: item.skillId })
+          const question = questionFrom(item, canonical, domain)
+          // The freshest reading of where the host stands, taken on arrival
+          // rather than on hand-out: a question that is still in the pool has
+          // already told us something, and waiting until a child sees it is
+          // waiting the length of the pool.
+          fresh = question.difficulty
+          pool.push({ question, skillId: item.skillId })
         }
       } catch (error) {
         console.error("[pack] could not fill the question pool", error)
@@ -558,9 +612,19 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     })()
   }
 
+  /**
+   * What the pool should be stocked and searched against, or `null` for
+   * "whatever is in it".
+   *
+   * The game's own request when it makes one, and otherwise where the host's
+   * ladder actually is. A `null` here means neither is known, which happens only
+   * before the first item has ever arrived.
+   */
+  const aim = (): number | null => target ?? fresh
+
   /** How wrong a pooled question is for what the game is asking for now. */
   const distance = (entry: Pooled): number => {
-    const want = target ?? ceiling ?? entry.question.difficulty
+    const want = aim() ?? ceiling ?? entry.question.difficulty
     const over = ceiling !== null && entry.question.difficulty > ceiling + EPS
     // A question above a stated ceiling is never the answer while anything else
     // exists, and is still an answer when nothing else does.
@@ -569,8 +633,8 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
 
   const flushNow = () => {
     lastFlush = Date.now()
-    filledFor = target
-    if (target !== null && pool.length > FLUSH_KEEP) {
+    filledFor = aim()
+    if (aim() !== null && pool.length > FLUSH_KEEP) {
       // A focused value survives a flush whatever its difficulty. `focus`
       // outranks difficulty when a question is handed out — FUSE's chip has to
       // be able to say its own number — so a flush that threw those away would
@@ -590,9 +654,18 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   }
 
   const maybeFlush = () => {
-    if (!autoFlush || target === null) return
-    const moved = filledFor === null ? 1 : Math.abs(target - filledFor)
-    if (moved < FLUSH_BAND) return
+    const want = aim()
+    if (!autoFlush || want === null) return
+    const moved = filledFor === null ? 1 : Math.abs(want - filledFor)
+    // A game's request is a coarse intent that can jitter frame to frame, so it
+    // has to move a tenth of the ladder to be worth discarding a pool for. The
+    // host's own position is not an intent — it is where the child is — and it
+    // moves in whole rungs, so it gets a tighter band. Without the tighter one a
+    // sixty-six-rung ladder has to be walked almost seven rungs before the queue
+    // in front of a child is refreshed, which is more than the whole width of the
+    // spread the host serves from.
+    const band = target === null ? HOST_FLUSH_BAND : FLUSH_BAND
+    if (moved < band) return
     if (moved < FLUSH_URGENT && Date.now() - lastFlush < FLUSH_COOLDOWN_MS) return
     flushNow()
   }
@@ -615,10 +688,21 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   const take = (request?: DifficultyRequest): Question => {
     lastAsk = Date.now()
     applyRequest(request)
+    // Once per question, whether or not the game said anything. `applyRequest`
+    // returns early when there is no request, and that early return is exactly
+    // what left a game driving no difficulty with no flush at all.
+    maybeFlush()
     const label = request?.domain ?? domain
 
     const hand = (entry: Pooled): Question => {
-      if (pool.length < POOL_FLOOR) fill()
+      // Topped up on every hand-out rather than in batches of thirty-two when the
+      // pool drains past `POOL_FLOOR`. Same number of fetches over a session, and
+      // it is what makes `fresh` actually fresh: refilling in batches meant the
+      // host was not asked anything at all for thirty-two questions at a time, so
+      // there was no reading of where its ladder had got to and nothing for
+      // `maybeFlush` to act on. `fill` is idempotent while one is in flight and
+      // stops at `POOL_TARGET`, so this is one round trip per question.
+      fill()
       const question = label === entry.question.domain
         ? entry.question
         : { ...entry.question, domain: label }
@@ -659,6 +743,13 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
 
     // The question closest to what was asked for. Ties go to the front of the
     // pool, so with no difficulty request this is exactly the FIFO it was.
+    //
+    // Deliberately still `target` and not `aim()`: searching the pool against the
+    // host's own position as well was tried, and it changes the order every one of
+    // the twenty-seven games is served in while making no measurable difference to
+    // the staleness it was meant to fix (2 questions either way — the flush and
+    // the per-question top-up already do it). A behaviour change to shared code
+    // that no test can distinguish is a behaviour change nobody asked for.
     if ((target !== null || ceiling !== null) && pool.length > 0) {
       let best = 0
       let score = distance(pool[0] as Pooled)
@@ -809,7 +900,9 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
         if (item === null) break
         const canonical = canReveal ? await client.reveal(item.id) : ""
         if (canonical === "") break
-        pool.push({ question: questionFrom(item, canonical, domain), skillId: item.skillId })
+        const question = questionFrom(item, canonical, domain)
+        fresh = question.difficulty
+        pool.push({ question, skillId: item.skillId })
       }
       fill()
     },

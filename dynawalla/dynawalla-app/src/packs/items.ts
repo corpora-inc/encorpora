@@ -169,6 +169,263 @@ const CADENCE_SPREAD_DEN = 2
  */
 const CHOICE_COUNT = 4
 
+/**
+ * ## Why a rung is served as a distribution and not as a point
+ *
+ * The founder, having played it:
+ *
+ * > "we don't have to be at one level only 'mixed triple and double' .. we could
+ * > still throw in some single digit problems but it should change the
+ * > probabilities of harder and easier problems more smoothly."
+ *
+ * Until this note the ladder served `rungs[Math.floor(progress)]` and nothing
+ * else. Two consequences, and both of them are what he was reporting:
+ *
+ *   * Every question in a sitting came from one rung, so on a rung whose fact
+ *     set is closed and small — `add-within-ten` L0 has **nine** items in it —
+ *     the same sum came round every few questions and the content looked
+ *     hardcoded. It is not hardcoded; it is a nine-item set served nine times.
+ *   * The rung's ordinate moved in whole steps, so the content *lurched*: a
+ *     child was on `0 + 2` and then, in one step, on nothing but the next rung.
+ *     There was no such thing as "mostly this, sometimes one either side".
+ *
+ * **The kernel.** A two-sided geometric weight over the offset from the rung the
+ * ladder is standing on: the centre weighs 1, each rung below weighs
+ * `BELOW_RATIO` times the one above it, each rung above weighs `ABOVE_RATIO`
+ * times the one below it, truncated at `SPREAD_BELOW` and `SPREAD_ABOVE`.
+ * Geometric because the weights then compose — two rungs away is exactly "one
+ * rung away, twice" — and there is no distance at which the shape changes its
+ * mind. Asymmetric because *easier than you can do* and *harder than you can do*
+ * are not the same event: the first is a fluency rep, the second is a child stuck.
+ *
+ * **What the numbers are, and where they come from.** They are not taste; they
+ * are the founder's accuracy target read as a mix. With the constants below the
+ * kernel is
+ *
+ * | offset | −3   | −2   | −1   | 0    | +1   | +2   |
+ * |--------|------|------|------|------|------|------|
+ * | weight | .125 | .25  | .5   | 1    | .35  | .1225|
+ * | share  | 5.2% | 10.4%| 20.9%| 41.7%| 14.6%| 5.1% |
+ *
+ * so **20% of questions are above the rung the child is standing on** and 5% are
+ * two above. Against the accuracy a child plausibly has at each offset — near
+ * everything below level, ~90% at level, ~60% one above, ~30% two above — that
+ * mix measures out at **83% correct**, which is the "80%+ correct but slowly"
+ * the founder asked the calibration to find. The distribution and the staircase
+ * are therefore aiming at the same number from two directions, which is the only
+ * reason it is safe to run them at once.
+ *
+ * Two more properties it has to have, and does:
+ *
+ *   * **Consecutive questions differ.** The chance two draws land on the same
+ *     rung is `Σ p²` = 25.5%, so three questions in four move.
+ *   * **A rung the child cannot do is rare.** Two above is 5%, three above is
+ *     not served at all.
+ *
+ * **Reflected at the ends, not clipped.** At the bottom of the ladder there is
+ * nowhere below to go, and clipping would pile 78% of a beginner's questions
+ * onto rung 0 — nine items — which is the exact defect this exists to fix. So
+ * the mass that falls off an end is *reflected back inward*: at rung 0 the
+ * kernel becomes 43% / 36% / 16% / 5% over rungs 0..3, which is `add-within-ten`
+ * L0 and L1 and `subtract-within-ten` L0 and L1 — about sixty distinct items
+ * rather than nine, with nothing inflated and no closed set relabelled. That is
+ * the answer to a small honest fact set: **reach the neighbours**, never pretend
+ * the set is bigger than it is (CG-10 exists to stop exactly that pretence).
+ */
+export const SPREAD_BELOW = 3
+export const SPREAD_ABOVE = 2
+export const BELOW_RATIO = 0.5
+export const ABOVE_RATIO = 0.35
+
+/**
+ * The weight of every rung on the ladder for a child standing on `centre`.
+ *
+ * Length `span + 1` — one weight per rung — summing to the untruncated kernel's
+ * total, because mass that falls off an end is reflected inward rather than
+ * dropped. Reflection is iterated, so a ladder narrower than the kernel (a test
+ * with two rungs in it) still gets a normalisable set of weights instead of a
+ * hole.
+ *
+ * Exported because a distribution asserted by sampling it is a distribution
+ * asserted at whatever confidence the sample happened to have. `items.test.ts`
+ * reads the weights.
+ */
+export function rungWeights(centre: number, span: number): readonly number[] {
+  const width = Math.max(0, Math.floor(span)) + 1
+  const weights = new Array<number>(width).fill(0)
+  const from = Math.max(0, Math.min(width - 1, Math.round(centre)))
+  for (let offset = -SPREAD_BELOW; offset <= SPREAD_ABOVE; offset++) {
+    const weight =
+      offset === 0 ? 1 : offset < 0 ? BELOW_RATIO ** -offset : ABOVE_RATIO ** offset
+    // Reflect at both ends rather than clip. `-1` reflects to `1`, and on a
+    // two-rung ladder `-3` reflects to `3` and then back to `1`, so the loop
+    // runs until the index is inside — bounded, because each pass strictly
+    // reduces the overshoot.
+    let index = from + offset
+    for (let guard = 0; guard < 64 && (index < 0 || index > width - 1); guard++) {
+      if (index < 0) index = -index
+      if (index > width - 1) index = 2 * (width - 1) - index
+    }
+    if (index < 0 || index > width - 1) index = from
+    weights[index] = (weights[index] as number) + weight
+  }
+  return weights
+}
+
+/** `Rng` emits uint32 rather than a float, so a unit draw is spelled out once. */
+const UINT32_RANGE = 2 ** 32
+
+/** One rung drawn from `rungWeights`. Deterministic in the stream it is given. */
+export function pickRung(centre: number, span: number, unit: number): number {
+  const weights = rungWeights(centre, span)
+  let total = 0
+  for (const weight of weights) total += weight
+  if (total <= 0) return Math.max(0, Math.min(weights.length - 1, Math.round(centre)))
+  // `unit` is clamped rather than trusted: a stream that returns exactly 1 must
+  // land on the last rung with weight, not past the end of the array.
+  let cut = Math.min(0.999_999_999, Math.max(0, unit)) * total
+  for (let index = 0; index < weights.length; index++) {
+    cut -= weights[index] as number
+    if (cut < 0) return index
+  }
+  return weights.length - 1
+}
+
+/**
+ * ## Finding a child's level quickly, then tracking it gently
+ *
+ * The founder, in the same report:
+ *
+ * > "right now the true draw is almost impossible to progress beyond 0+2 level.
+ * > We need to sort of quickly find the players level .. maybe where they are
+ * > getting 80%+ correct but slowly .. go down on a wrong answer, go up on a
+ * > right answer"
+ *
+ * and, one paragraph earlier, the apparent opposite:
+ *
+ * > "it's way too quick to go from 0+1 to 1269/9. We need to find the users
+ * > level more gently!"
+ *
+ * They are the same request. The *search* must be quick and the *content* must
+ * not lurch. What was shipped was the reverse of both: a fixed ±1 rung, which is
+ * a slow search, married to a single-rung stream and a 64-deep question queue in
+ * `packs/shared/game-host`, which is what turned the search into a teleport once
+ * the queue finally turned over. The queue is fixed there; the search is fixed
+ * here.
+ *
+ * **The shape: a weighted staircase with a decaying step.** Standard psychophysics,
+ * and it is the right standard because the problem is literally threshold
+ * estimation — find the difficulty at which this child is right 80% of the time.
+ *
+ *   * **The stride shrinks.** It opens at `STEP_START` rungs, multiplies by
+ *     `STEP_DECAY` after every answer, and is *halved again at every reversal* —
+ *     every time the child's direction changes, because a reversal is the moment
+ *     their level got bracketed. Large strides early are the "quickly find the
+ *     level"; the shrinking is the "more gently".
+ *   * **The floor of the stride depends on the evidence.** While no reversal has
+ *     happened the stride bottoms out at `STEP_OPEN` = 1 — which is exactly the
+ *     rate this file shipped with, so **a child who is never wrong is never
+ *     slower than they were before**, and the 87-answer property for a slow
+ *     perfect child is preserved by construction rather than by tuning. Once
+ *     bracketed it bottoms out at `STEP_TRACK`, a quarter of a rung, which is
+ *     what makes the tracking gentle.
+ *   * **Down is four times up.** Kaernbach's weighted up/down rule: a staircase
+ *     converges on the proportion `p` correct when the step ratio is
+ *     `up : down = (1 − p) : p`. For the founder's 80% that ratio is **1:4**, and
+ *     `DESCENT_RATIO` is that four. It is not a punishment and it is not tuned;
+ *     it is the arithmetic of the number he asked for. At the tracking floor it
+ *     comes out as +0.25 of a rung for a right answer and −1 for a wrong one —
+ *     so a miss costs precisely the one rung it always cost, and only the reward
+ *     changed.
+ *   * **In the child's own currency.** The descent is scaled by `pace`, a running
+ *     mean of what this child's correct answers have actually been worth
+ *     (`climbRungs`, unchanged — quick, expected and tail regimes all still
+ *     apply, and they now scale the stride instead of being the whole of it). A
+ *     child worth 0.4 of a rung an answer falls 0.4 × 4 × step, not 1 × 4 × step.
+ *     Without this the ratio is 1:4 only for a child answering at the median and
+ *     nearer 1:10 for a deliberate one, which would park every slow child several
+ *     rungs below the fast child who knows exactly as much.
+ *   * **The first miss is symmetric.** Before any reversal the descent weight is
+ *     1, not 4: the first wrong answer is the move that *closes* the bracket, and
+ *     it should be the same size as the moves that opened it. Multiplying an
+ *     opening stride of four rungs by four would throw a child sixteen rungs down
+ *     for one slip, which is the lurch in the other direction.
+ *
+ * **A guesser still cannot climb.** One tap in four on a four-slab grid: their
+ * expected move once bracketed is `¼(+0.25) − ¾(4 × 0.25) = −0.69` rungs an
+ * answer, against `¼(+1) − ¾(1) = −0.5` under the rule this replaces. The
+ * speedcuber bonus is still gated behind `QUICK_RUN_FOR_BONUS` consecutive quick
+ * *correct* answers, which a guesser reaches one time in 4⁶. `items.test.ts`
+ * runs the bot.
+ */
+export const STEP_START = 4
+export const STEP_OPEN = 1
+export const STEP_TRACK = 0.25
+export const STEP_DECAY = 0.72
+export const REVERSAL_DECAY = 0.5
+export const DESCENT_RATIO = 4
+
+/**
+ * How fast `pace` forgets. A quarter, so five answers carry ~76% of the weight:
+ * long enough that one unusually fast tap does not redefine a child's currency,
+ * short enough that a child who has warmed up is measured warm.
+ */
+export const PACE_ALPHA = 0.25
+
+/**
+ * The smallest currency a child can be charged a miss in.
+ *
+ * A pace of zero would make a miss free, which is the one thing a staircase may
+ * never be — it is exactly what a guesser would need in order to climb. A tenth
+ * of a rung is under the pace of a child answering at ten times an item's own
+ * p90, so it binds on nobody the tail regime can measure and it closes the hole.
+ */
+export const PACE_FLOOR = 0.1
+
+/** Where the search is: the stride, the direction, and the child's own currency. */
+export type Staircase = {
+  /** Rungs, before the regime multiplier. Never below the current floor. */
+  readonly step: number
+  /** `+1`, `-1`, or `0` before the first answer. */
+  readonly lastDir: 0 | 1 | -1
+  /** Whether the child's direction has ever changed — i.e. whether they are bracketed. */
+  readonly reversed: boolean
+  /** Running mean of what this child's correct answers have been worth, in rungs. */
+  readonly pace: number
+}
+
+export function openStaircase(): Staircase {
+  return { step: STEP_START, lastDir: 0, reversed: false, pace: 1 }
+}
+
+/** How far this correct answer moves the centre, given what it was worth. */
+export function ascentOf(stair: Staircase, gain: number): number {
+  return gain * stair.step
+}
+
+/**
+ * How far this wrong answer moves the centre.
+ *
+ * Symmetric with the ascent until the bracket closes, then `DESCENT_RATIO` times
+ * it — in the child's own currency, so the 1:4 that produces 80% correct holds
+ * for a deliberate child as well as a quick one.
+ */
+export function descentOf(stair: Staircase): number {
+  const weight = stair.reversed ? DESCENT_RATIO : 1
+  return weight * stair.step * Math.max(PACE_FLOOR, stair.pace)
+}
+
+/** The search after one answer in `dir`, worth `gain` rungs if it was correct. */
+export function advanceStaircase(stair: Staircase, dir: 1 | -1, gain: number | null): Staircase {
+  const isReversal = stair.lastDir !== 0 && dir !== stair.lastDir
+  const reversed = stair.reversed || isReversal
+  const floor = reversed ? STEP_TRACK : STEP_OPEN
+  const base = isReversal ? stair.step * REVERSAL_DECAY : stair.step
+  const step = Math.max(floor, floor + (base - floor) * STEP_DECAY)
+  const pace = gain === null ? stair.pace : stair.pace + PACE_ALPHA * (gain - stair.pace)
+  return { step, lastDir: dir, reversed, pace }
+}
+
 export type Rung = {
   readonly node: SkillNode
   readonly family: AnyGeneratorFamily
@@ -731,6 +988,14 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
    */
   let progress = 0
   /**
+   * The search for where the child is: stride, direction, and their own currency.
+   *
+   * Session-scoped, like `progress`, and for the same reason — it is a search,
+   * and a search that opens mid-stride is a search that has evidence it does not
+   * have. See the note on `STEP_START`.
+   */
+  let stair = openStaircase()
+  /**
    * Consecutive quick, correct answers. Reset by anything else — see
    * `QUICK_RUN_FOR_BONUS` for why a single one earns nothing.
    */
@@ -824,9 +1089,9 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       // not two: a pack that drives the difficulty and then stops driving it
       // resumes from where it left the child, and `judge` keeps climbing and
       // stepping down from there.
+      const span = Math.max(0, rungs.length - 1)
       let index = Math.floor(progress)
       if (difficulty !== undefined || maxDifficulty !== undefined) {
-        const span = Math.max(0, rungs.length - 1)
         const asked = difficulty === undefined ? index / Math.max(1, span) : difficulty
         // The request rounds to the nearest rung — a pack asking for 0.5 wants the
         // middle and not the rung below it. The **ceiling floors**, and the two are
@@ -846,12 +1111,41 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         progress = index + (progress - Math.floor(progress))
       }
 
-      const rung = wanted ?? rungAt(index)
+      sequence += 1
+
+      // The rung is drawn from a spread centred on the one the ladder is
+      // standing on — see `rungWeights` for the shape and why it is not a point.
+      // Seeded off (profile, pack, sequence) like everything else here, so the
+      // same learner on two devices sees the same mix and not merely the same
+      // centre; and re-clamped under `maxDifficulty` afterwards, because a
+      // ceiling the spread could reach over is not a ceiling.
+      //
+      // **Only when the centre is the host's own.** A `difficulty` the pack
+      // named is honoured as the point the SDK documents it to be, and the
+      // reason is not caution, it is four shipped games: `counterweight` pins
+      // `maxDifficulty` *equal* to its request, `polarity` and `balance` and
+      // `horde` pin a ceiling to what they can physically draw, and PR 694 exists
+      // because polarity was handed a rung it could not render. Smearing the
+      // host's kernel over a request like that overrides a pack's own model with
+      // no way for the pack to say no. What the child's *level* is, is the
+      // host's business and gets the spread; what a game's dramaturgy wants for
+      // the next chip is the game's, and it already varies on its own terms. A
+      // pack opting into a spread around its own request is one SDK field and is
+      // named here rather than guessed at.
+      let drawn = index
+      if (difficulty === undefined) {
+        const spread = createRng(seedFrom(deps.profileId, packId, String(sequence), "rung"))
+        drawn = pickRung(index, span, spread.nextUint32() / UINT32_RANGE)
+        if (maxDifficulty !== undefined) {
+          drawn = Math.min(drawn, Math.max(0, Math.floor(maxDifficulty * span)))
+        }
+      }
+
+      const rung = wanted ?? rungAt(drawn)
       if (!rung) return null
       // Where the rung that was actually used sits, so the pack is told what it
       // got and not what it asked for. A pack comparing the two is how a
       // clamped request becomes visible on the pack's side.
-      const span = Math.max(0, rungs.length - 1)
       const used = rungs.indexOf(rung)
       const ordinate = span === 0 ? 0 : Math.max(0, Math.min(1, used / span))
       if (span === 0 && difficulty !== undefined && !toldAboutFlatLadder) {
@@ -863,7 +1157,6 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         )
       }
 
-      sequence += 1
       const seed = seedFrom(deps.profileId, packId, String(sequence))
       let exercise: Exercise
       try {
@@ -992,15 +1285,22 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       if (!served.answered) {
         served.answered = true
         deps.record({ packId, correct: verdict.correct })
-        // The ladder moves on what actually happened. Up on every correct
-        // answer — by more than a rung when it was quick for this question, by
-        // a fraction of one when it came from the item's slow tail — and down
-        // one rung on any miss. Slow is not wrong: it is the same direction,
+        // The ladder moves on what actually happened, and how far is the
+        // staircase's stride times what this answer was worth. Up on every
+        // correct answer — by more than a rung when it was quick for this
+        // question, by a fraction of one when it came from the item's slow tail
+        // — and down on any miss. Slow is not wrong: it is the same direction,
         // taken at the child's own speed. Wrong is the only thing that
-        // descends, which is what stops a guesser.
-        if (verdict.correct) progress = progress + climbFor(served, latencyMs)
-        else {
-          progress = progress - 1
+        // descends, which is what stops a guesser. See `STEP_START` for why the
+        // stride opens wide and shrinks, and `DESCENT_RATIO` for why down is
+        // four times up once the child's level has been bracketed.
+        if (verdict.correct) {
+          const gain = climbFor(served, latencyMs)
+          progress = progress + ascentOf(stair, gain)
+          stair = advanceStaircase(stair, 1, gain)
+        } else {
+          progress = progress - descentOf(stair)
+          stair = advanceStaircase(stair, -1, null)
           // A miss ends the run, however fast it was. Speed on a wrong answer
           // is not evidence of anything at all — it is what guessing looks
           // like — and the speedcuber's rate has to be earned again.
