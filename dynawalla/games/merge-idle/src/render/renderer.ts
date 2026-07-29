@@ -58,20 +58,34 @@ export type Layout = {
  * them into a column down the right, which is the only way a tablet or a
  * desktop stops looking like a phone screenshot with grey bars beside it — and
  * it hands the whole reclaimed width back to the shelf.
+ *
+ * `area` is the region of the stage the game may put readable things in — see
+ * `ui/chrome.ts`, `stageAreaFor`. It is REQUIRED, deliberately, and not
+ * optional: a caller that forgets it gets a shelf and a column of vents laid
+ * out to the raw canvas edges, which on a phone held wide puts the vent that
+ * holds the question under the sensor housing. The only way to notice that is
+ * on a device. Required, forgetting it does not compile.
+ *
+ * The WATER is not laid out against `area` and must not be. The gradient, the
+ * light shafts and every particle run to the glass edges and under the rounded
+ * corners, which is the whole reason the document asks for `viewport-fit=cover`
+ * in the first place.
  */
-export function computeLayout(w: number, h: number, dpr: number, b: Board): Layout {
+export function computeLayout(w: number, h: number, dpr: number, b: Board, area: Rect): Layout {
   const pad = Math.max(8, Math.min(22, w * 0.03))
   const ventColumn = w / Math.max(1, h) > 1.15
+  const right = area.x + area.w
+  const bottom = area.y + area.h
   let board: Rect
   let ventStrip: Rect
   if (ventColumn) {
-    const cw = Math.max(190, Math.min(300, w * 0.26))
-    board = { x: pad, y: pad, w: w - cw - pad * 2.5, h: h - pad * 2 }
-    ventStrip = { x: w - cw - pad * 0.5, y: pad, w: cw, h: h - pad * 2 }
+    const cw = Math.max(190, Math.min(300, area.w * 0.26))
+    board = { x: area.x + pad, y: area.y + pad, w: area.w - cw - pad * 2.5, h: area.h - pad * 2 }
+    ventStrip = { x: right - cw - pad * 0.5, y: area.y + pad, w: cw, h: area.h - pad * 2 }
   } else {
-    const ventH = Math.max(104, Math.min(180, h * 0.21))
-    board = { x: pad, y: pad * 0.6, w: w - pad * 2, h: h - ventH - pad * 1.6 }
-    ventStrip = { x: pad, y: h - ventH, w: w - pad * 2, h: ventH - pad * 0.5 }
+    const ventH = Math.max(104, Math.min(180, area.h * 0.21))
+    board = { x: area.x + pad, y: area.y + pad * 0.6, w: area.w - pad * 2, h: area.h - ventH - pad * 1.6 }
+    ventStrip = { x: area.x + pad, y: bottom - ventH, w: area.w - pad * 2, h: ventH - pad * 0.5 }
   }
   const gap = Math.max(3, Math.min(9, Math.min(board.w, board.h) * 0.018))
   const cell = Math.max(
@@ -139,6 +153,8 @@ export class Renderer {
   private sg: CanvasRenderingContext2D
   private book = new SpriteBook()
   layout: Layout
+  /** The stage's safe rectangle, kept so `relayout` does not have to be told twice. */
+  private area: Rect = { x: 0, y: 0, w: 1, h: 1 }
   private glowScale = 0.5
   private waterGrad: CanvasGradient | null = null
   private gradKey = ''
@@ -162,7 +178,7 @@ export class Renderer {
     this.book.clear()
   }
 
-  resize(w: number, h: number, dpr: number, b: Board, tier: State['tier']): void {
+  resize(w: number, h: number, dpr: number, b: Board, tier: State['tier'], area: Rect): void {
     const budget = BUDGET[tier]
     this.glowScale = budget.glowScale
     this.book.setDpr(dpr)
@@ -185,14 +201,15 @@ export class Renderer {
     this.wg.setTransform(dpr, 0, 0, dpr, 0, 0)
     this.gg.setTransform(dpr * this.glowScale, 0, 0, dpr * this.glowScale, 0, 0)
     this.sg.setTransform(dpr, 0, 0, dpr, 0, 0)
-    this.layout = computeLayout(w, h, dpr, b)
+    this.area = area
+    this.layout = computeLayout(w, h, dpr, b, area)
     this.waterGrad = null
     this.gradKey = ''
   }
 
   relayout(b: Board): void {
     const l = this.layout
-    this.layout = computeLayout(l.w, l.h, l.dpr, b)
+    this.layout = computeLayout(l.w, l.h, l.dpr, b, this.area)
     this.book.clear()
   }
 
