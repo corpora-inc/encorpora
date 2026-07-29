@@ -29,6 +29,7 @@ import { pressure } from "./game/push.ts"
 import { Street, type StreetEvent } from "./game/street.ts"
 import { WAVES_PER_BLOCK } from "./game/wave.ts"
 import { Scene, hit, type Frame } from "./render/scene.ts"
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 
 export function mountStreet(
   el: HTMLElement,
@@ -43,6 +44,57 @@ export function mountStreet(
   const scene = new Scene(canvas)
   const audio = new StreetAudio()
   const rng = new Rng((Date.now() ^ 0x57ee7) >>> 0)
+
+  // How to play. Nothing on the street says what a stud is, and nothing is
+  // going to: primeness here is a wall you walk into, not a fact you are given.
+  // But the two verbs are not discoverable — a child who does not know that a
+  // stud is a claim about the number is tapping brass at random. The manual
+  // stays reachable during play, because the moment a child needs the rules is
+  // never the title.
+  const guide = createInstructions(el, {
+    title: "FOUNDRY STREET",
+    summary: [
+      "A crowd blocks the street. Break it into equal rows, then knock the rows down.",
+      "Some crowds cannot be broken into rows at all. Those are the ones you punch.",
+    ],
+    sections: [
+      {
+        heading: "Breaking a crowd",
+        lines: [
+          "The crowd is a number. Say there are twelve of them.",
+          "There is a bar of small numbers. Tap one of them to try it.",
+          "Tap 3 and the twelve split into 4 rows of 3, made of the same people.",
+          "That only works if the number goes in evenly. If it does not, nothing breaks and the crowd closes back up.",
+        ],
+      },
+      {
+        heading: "Crowds you cannot break",
+        lines: [
+          "Some crowds will not split into equal rows however hard you try. Thirteen is one.",
+          "So are 2, 3, 5, 7 and 11.",
+          "If every number on the bar bounces off, that is your answer: this crowd cannot be broken.",
+          "Then you swing. One punch and the whole row goes down.",
+        ],
+      },
+      {
+        heading: "Swinging",
+        lines: [
+          "Your fists only work on a row that cannot be broken into smaller rows.",
+          "Swing at a row that could still be split and your fists bounce off it.",
+          "So the fast way through is to break the crowd down first, then punch the rows one at a time.",
+        ],
+      },
+      {
+        heading: "Getting it wrong",
+        lines: [
+          "There is no clock. Standing still and looking at the crowd costs you nothing.",
+          "A wrong tap makes the crowd lean on you. Enough of them in a row and it shoves you back a block.",
+          "Even then you keep everything you already built.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
 
   const street = new Street({
     rng,
@@ -226,6 +278,7 @@ export function mountStreet(
     },
     unmount(): void {
       running = false
+      guide.destroy()
       cancelAnimationFrame(frameId)
       canvas.removeEventListener("pointerdown", press)
       globalThis.removeEventListener("resize", resize)
