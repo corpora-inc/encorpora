@@ -1,4 +1,4 @@
-// THE COUNTERWEIGHT, as a Dynawalla pack.
+// THE STEELYARD, as a Dynawalla pack.
 //
 // The seam and nothing else. `mount` is handed the real host in place of the
 // stub, because the adapter presents the same synchronous surface `Host` in
@@ -58,5 +58,5 @@ async function start(el: HTMLElement): Promise<void> {
 
 void start(root).catch((error: unknown) => {
   console.error("[counterweight] could not start", error)
-  renderNoHost(root, "THE COUNTERWEIGHT")
+  renderNoHost(root, "THE STEELYARD")
 })

@@ -1,4 +1,4 @@
-// THE COUNTERWEIGHT — the rules.
+// THE STEELYARD — the rules.
 //
 // A steelyard beam between you and the Iron Turk.
 //
@@ -14,17 +14,31 @@
 //   * Strike **SEAT** and the beam is judged. One notch ahead and he gives
 //     ground. Anything else and he takes it.
 //
-// Three pressures keep it live, and none of them is a mash:
+// Three pressures keep it live, and none of them is a mash — and none of them,
+// now, is allowed to charge a child for thinking:
 //
-//   1. **The clock.** The round has a window; when it runs out the beam is
-//      seated where it stands. The whistle does not wait.
-//   2. **The sag.** Leave the beam alone and your pan settles — one unit, then
-//      another. You cannot find the notch early and sit on it. Any strike
-//      re-seats the pan and the sag starts over, so this only bites a player who
-//      has stopped playing.
+//   1. **The clock.** The round has a window, and the window is a pure function
+//      of the weight on his pan — see `window.ts`. When it runs out the round is
+//      simply over: no verdict, no ground either way, nothing reported. A child
+//      who was still carrying the hundreds column has told us nothing about what
+//      they know, and a game that filed that as a wrong answer would be lying to
+//      the curriculum about them.
+//   2. **The sag.** Leave the beam alone *after you have moved it* and your pan
+//      settles — one unit, then another. You cannot find the notch early and sit
+//      on it. **It does not run before your first blow of the round**, which is
+//      the whole of the child's reading time: a pan that drained while they read
+//      his column made the arithmetic they had just done wrong by the time they
+//      reached the rack, and that is what "sometimes the timing is sort of
+//      impossible" was.
 //   3. **The strain.** Every strike rings the steel and strain does not bleed
 //      out as fast as a mash puts it in. See `strain.ts` — that module is the
 //      answer to "what stops a child hitting plates fast".
+//
+// **The Turk gets stronger by the arithmetic and by nothing else.** There is no
+// bout counter in any duration in this file. The window, the sag and the shear
+// limit are the same at the ninth Turk as at the first; what changes is the rung
+// the yard asks the host for — `ladder.ts` — which moves on Turks put over and
+// comes back down on a pinning.
 //
 // What crosses to the host is `load − 1`: the value the child's beam asserts his
 // column sum to be. Get the sum right and it is the canonical value. Drop a
@@ -32,8 +46,9 @@
 // extra wiring — the game never compares anything to an answer.
 
 import type { Question } from "../contract.ts"
-import { applyStrike, PILLAR_COOLDOWN_MS, type Place, type Strike } from "./places.ts"
+import { applyStrike, PILLAR_COOLDOWN_MS, strikesFor, type Place, type Strike } from "./places.ts"
 import { Strain } from "./strain.ts"
+import { MIN_PRESS_SECONDS, pressMsFor } from "./window.ts"
 
 /** How far the arm travels before somebody is over. */
 export const GROUND = 5
@@ -46,16 +61,25 @@ export type Phase =
   /** The verdict is showing. */
   | "settle"
 
-export type Verdict = "true" | "short" | "over" | "shear"
+export type Verdict =
+  | "true"
+  | "short"
+  | "over"
+  | "shear"
+  /** The whistle blew on a round nobody declared. Costs nothing, says nothing. */
+  | "expired"
 
+/**
+ * Everything with a duration except the press window, which is not here on
+ * purpose: it belongs to the item, it lives in `window.ts`, and a field for it
+ * in this record is how it would get a game constant folded back into it.
+ */
 export type Timing = {
   /** The weight coming down. */
   readonly hangMs: number
-  /** The window to find the notch and seat it. */
-  readonly pressMs: number
   /** The verdict beat. */
   readonly settleMs: number
-  /** Quiet time before the pan starts to settle. */
+  /** Quiet time, after the first blow of the round, before the pan settles. */
   readonly sagGraceMs: number
   /** How long each further unit of sag takes. */
   readonly sagPeriodMs: number
@@ -65,10 +89,12 @@ export type Timing = {
 
 export const TIMING: Timing = {
   hangMs: 760,
-  pressMs: 13000,
   settleMs: 1150,
-  sagGraceMs: 1500,
-  sagPeriodMs: 1300,
+  // Was 1500/1300, and tightening with every Turk. A child mid-execution is
+  // striking every third of a second, so this never fires on them; it fires on a
+  // pan that has been parked, which is the only thing it was ever for.
+  sagGraceMs: 3000,
+  sagPeriodMs: 1600,
   shearAt: 34,
 }
 
@@ -81,21 +107,18 @@ export const TIMING: Timing = {
 export const TIMING_REDUCED: Timing = TIMING
 
 /**
- * The Turk gets stronger. Never by making the arithmetic unfair — the host owns
- * the ladder — but by shortening the window, tightening the steel and grinding
- * harder.
+ * How far out of position the pan may be before the yard re-racks it.
+ *
+ * Your load staying where you left it is the good rule and it holds nearly
+ * always: consecutive weights of the same size are a handful of strikes apart.
+ * What it cannot survive is the ladder moving under it — a pan sitting on 8,367
+ * when the next weight is `43 + 25` costs a whole round of unwinding before any
+ * arithmetic happens, which is a calm round spent on nothing. So when the load
+ * is this many strikes worse than a fresh seed would be, the yard racks it back.
+ * Measured in strikes rather than in magnitude because strikes are the thing
+ * that costs the child time.
  */
-export function timingForBout(bout: number, base: Timing = TIMING): Timing {
-  const step = Math.max(0, bout - 1)
-  return {
-    hangMs: base.hangMs,
-    pressMs: Math.max(7600, base.pressMs - step * 1100),
-    settleMs: base.settleMs,
-    sagGraceMs: Math.max(900, base.sagGraceMs - step * 120),
-    sagPeriodMs: Math.max(750, base.sagPeriodMs - step * 110),
-    shearAt: Math.max(24, base.shearAt - step * 2),
-  }
-}
+export const RERACK_SLACK = 5
 
 export type Match = {
   /** Which Turk, one-based. */
@@ -104,6 +127,8 @@ export type Match = {
   arm: number
   /** Turks put over, this session. */
   won: number
+  /** Times pinned, this session. The relief half of the ladder. */
+  pinned: number
   /** Rounds seated exactly true, this session. */
   held: number
 }
@@ -123,6 +148,8 @@ export type Seat = {
 
 export type BoutEvent =
   | { kind: "hang"; question: Question; delta: number }
+  /** The yard racked the pan back — the ladder moved out from under it. */
+  | { kind: "rerack"; load: number }
   | { kind: "open" }
   | { kind: "strike"; strike: Strike; load: number; impulse: number }
   | { kind: "refused"; reason: "cooldown" | "phase" }
@@ -151,27 +178,33 @@ export function openingLoad(target: number): number {
  */
 export class Bout {
   private readonly deal: () => Question
-  private readonly base: Timing
   private phaseName: Phase = "hang"
   private elapsed = 0
   private duration: number
-  private state: Match = { bout: 1, arm: 0, won: 0, held: 0 }
+  private state: Match = { bout: 1, arm: 0, won: 0, pinned: 0, held: 0 }
   private current: Question | null = null
   private target = 0
   private loadValue = 0
   private lastSeat: Seat | null = null
   private strainMeter: Strain
-  private timing: Timing
+  private readonly timing: Timing
+  /** This round's window. Set from the item at `hang`, from nothing else ever. */
+  private pressWindowMs: number
   private readonly cooldowns = new Map<Place, number>()
   private sagIdleMs = 0
+  /**
+   * Whether the sag is live yet. False until the child's first blow of the
+   * round: reading his column is not "leaving the pan alone".
+   */
+  private sagArmed = false
   private stopped = false
   private started = false
   private seeded = false
 
   constructor(deal: () => Question, base: Timing = TIMING) {
     this.deal = deal
-    this.base = base
-    this.timing = timingForBout(1, this.base)
+    this.timing = base
+    this.pressWindowMs = MIN_PRESS_SECONDS * 1000
     this.strainMeter = new Strain({ shearAt: this.timing.shearAt })
     this.duration = this.timing.hangMs
   }
@@ -227,6 +260,17 @@ export class Bout {
 
   get timings(): Timing {
     return this.timing
+  }
+
+  /**
+   * This round's window, in milliseconds.
+   *
+   * A property of the weight on his pan and of nothing else — not of the Turk,
+   * not of the arm, not of how long anybody has been playing. `window.ts` is the
+   * only thing that can produce it.
+   */
+  get pressMs(): number {
+    return this.pressWindowMs
   }
 
   /** Whether this pillar is still swinging back. */
@@ -293,6 +337,9 @@ export class Bout {
     this.cooldowns.set(strike.place, PILLAR_COOLDOWN_MS)
     const impulse = this.strainMeter.strike()
     this.loadValue = applyStrike(this.loadValue, strike)
+    // The first blow of the round is what arms the sag. Before it, the child is
+    // reading his column, and reading is not neglect.
+    this.sagArmed = true
     this.sagIdleMs = 0
     const events: BoutEvent[] = [{ kind: "strike", strike, load: this.loadValue, impulse }]
     if (this.strainMeter.isSheared) events.push(...this.judge(false, "shear"))
@@ -315,12 +362,15 @@ export class Bout {
 
     if (this.phaseName === "press") {
       this.strainMeter.advance(dt)
-      // The pan settles under a load nobody is tending.
-      this.sagIdleMs += dt
-      while (this.sagIdleMs >= this.timing.sagGraceMs + this.timing.sagPeriodMs) {
-        this.sagIdleMs -= this.timing.sagPeriodMs
-        this.loadValue -= 1
-        events.push({ kind: "sag", load: this.loadValue })
+      // The pan settles under a load nobody is tending — but only once somebody
+      // has tended it. A round nobody has touched yet is a round being read.
+      if (this.sagArmed) {
+        this.sagIdleMs += dt
+        while (this.sagIdleMs >= this.timing.sagGraceMs + this.timing.sagPeriodMs) {
+          this.sagIdleMs -= this.timing.sagPeriodMs
+          this.loadValue -= 1
+          events.push({ kind: "sag", load: this.loadValue })
+        }
       }
     }
 
@@ -332,15 +382,23 @@ export class Bout {
     const over = this.elapsed - this.duration
     switch (this.phaseName) {
       case "hang": {
-        this.enter("press", this.timing.pressMs)
+        this.enter("press", this.pressWindowMs)
+        this.sagArmed = false
         this.sagIdleMs = 0
         events.push({ kind: "open" })
         break
       }
       case "press": {
-        // The whistle. The beam is judged where it stands — which is honest:
-        // that load is the claim the child had on the bar when time ran out.
-        events.push(...this.judge(false))
+        // The whistle. The round is **over**, not lost.
+        //
+        // It used to judge the beam where it stood, on the argument that the
+        // load was the claim the child had on the bar when time ran out. It is
+        // not. It is where they had got to, and marking it took ground off them
+        // *and* filed a wrong answer against a sum they were still working —
+        // which walks the host's ladder DOWN on a child who was doing the
+        // arithmetic. `mount.ts` closes the item with `skip` instead: an
+        // absence, which is what it is.
+        events.push(...this.expire())
         break
       }
       case "settle": {
@@ -349,13 +407,14 @@ export class Bout {
           this.state.won += 1
           this.state.bout += 1
           this.state.arm = 0
-          this.timing = timingForBout(this.state.bout, this.base)
           events.push({ kind: "won", bout })
         } else if (this.state.arm <= -GROUND) {
-          // Pinned. The Turk does not get stronger for it and nothing is taken
-          // away: the arm goes back to level and the same one squares up again.
-          // Stakes without loss — ADR-0009.
+          // Pinned. Nothing is taken away: the arm goes back to level and the
+          // same Turk squares up again. Stakes without loss — ADR-0009. What it
+          // does do is drop the rung the yard asks for, which is relief rather
+          // than punishment and is the only thing a pinning changes.
           this.state.arm = 0
+          this.state.pinned += 1
           events.push({ kind: "pinned", bout: this.state.bout })
         }
         events.push(...this.hang())
@@ -378,6 +437,12 @@ export class Bout {
       console.error("[counterweight] a question arrived with a non-integer answer", question.answer)
     }
     this.target = Number.isInteger(answer) ? answer : 0
+    // The window comes from the weight and from nothing else. Computed here, at
+    // the moment the item is known, so that by the time the phase machine needs
+    // it there is no other number it could have come from.
+    this.pressWindowMs = pressMsFor({ prompt: question.prompt, answer: this.target })
+
+    const events: BoutEvent[] = []
     // The very first weight of the session lands on an empty pan. Give it a
     // start within striking distance so the first round is arithmetic rather
     // than a hundred blows on the thousands pillar.
@@ -389,11 +454,47 @@ export class Bout {
     if (!this.seeded) {
       this.seeded = true
       this.loadValue = openingLoad(this.target)
+    } else {
+      const seat = openingLoad(this.target)
+      const fromHere = strikesFor(this.target + 1 - this.loadValue)
+      const fromSeat = strikesFor(this.target + 1 - seat)
+      // The ladder moved out from under the pan. Rack it back rather than spend
+      // the round unwinding the last one — the adaptation audit's one named
+      // defect in this pack.
+      if (fromHere > fromSeat + RERACK_SLACK) {
+        this.loadValue = seat
+        events.push({ kind: "rerack", load: this.loadValue })
+      }
     }
     this.strainMeter = new Strain({ shearAt: this.timing.shearAt })
+    this.sagArmed = false
     this.sagIdleMs = 0
     this.enter("hang", this.timing.hangMs)
-    return [{ kind: "hang", question, delta: this.target + 1 - this.loadValue }]
+    events.push({ kind: "hang", question, delta: this.target + 1 - this.loadValue })
+    return events
+  }
+
+  /**
+   * The whistle on a round nobody declared.
+   *
+   * No ground moves, no tally moves, nothing is reported. The only thing that
+   * happens is that the beat is spent showing the child that time went, and then
+   * the next weight comes down.
+   */
+  private expire(): BoutEvent[] {
+    const question = this.current
+    if (!question) return []
+    const seat: Seat = {
+      question,
+      verdict: "expired",
+      load: this.loadValue,
+      asserted: this.loadValue - 1,
+      ms: Math.max(0, Math.round(this.elapsed)),
+      declared: false,
+    }
+    this.lastSeat = seat
+    this.enter("settle", this.timing.settleMs)
+    return [{ kind: "seat", seat, arm: this.state.arm }]
   }
 
   private judge(declared: boolean, forced?: "shear"): BoutEvent[] {

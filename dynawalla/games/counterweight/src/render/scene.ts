@@ -38,12 +38,16 @@ const VERDICT_WORD: Record<Verdict, string> = {
   short: "UNDER",
   over: "OVER",
   shear: "SHEARED",
+  expired: "TIME",
 }
 
 const VERDICT_HUE: Record<Verdict, string> = {
   true: PALETTE.seat,
   short: PALETTE.ember,
   over: PALETTE.ember,
+  // Deliberately the dimmest brass in the palette and not the ember: a whistle
+  // is not a verdict, nothing was lost, and it must not read like a buzzer.
+  expired: PALETTE.brassDim,
   shear: PALETTE.strain,
 }
 
@@ -493,6 +497,13 @@ export class Scene {
     }
     if (showing.verdict === "shear") {
       ctx.fillText(compact ? "SHEARED" : "SHEARED — TOO MANY BLOWS", cx, cy)
+      return
+    }
+    if (showing.verdict === "expired") {
+      // No number. The pan's load was never a claim — the child never said it —
+      // and printing it as one would be the screen scoring a round the rules
+      // just decided not to score.
+      ctx.fillText(compact ? "TIME" : "TIME — NO GROUND LOST", cx, cy)
       return
     }
     // What the child claimed, never what the answer was. The number they put on

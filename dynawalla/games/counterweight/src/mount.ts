@@ -1,4 +1,4 @@
-// THE COUNTERWEIGHT.
+// THE STEELYARD.
 //
 // The wiring, and nothing else: the rules are in `game/bout.ts`, the physics in
 // `sim/beam.ts`, the yard in `render/scene.ts`. This file owns the frame, the
@@ -12,6 +12,7 @@ import { Audio } from "./audio.ts"
 import { Bout, type BoutEvent, TIMING, TIMING_REDUCED } from "./game/bout.ts"
 import { loadTally, recordTally } from "./game/best.ts"
 import { splitPrompt, type Column } from "./game/column.ts"
+import { requestFor } from "./game/ladder.ts"
 import type { Place } from "./game/places.ts"
 import { Beam, MAX_TILT, TUNING, TUNING_REDUCED } from "./sim/beam.ts"
 import { PALETTE } from "./render/palette.ts"
@@ -49,13 +50,30 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   const scene = new Scene(canvas)
   const audio = new Audio()
   const beam = new Beam(reduced ? TUNING_REDUCED : TUNING)
-  const bout = new Bout(() => host.next({ domain: "add" }), reduced ? TIMING_REDUCED : TIMING)
+
+  /**
+   * The deal reads the match *at the moment the weight is hung*, which is why it
+   * goes through a mutable handle rather than closing over a rung.
+   *
+   * `Bout.hang()` runs inside the same event batch that carries the `won` or
+   * `pinned` that caused it, and it runs FIRST — so a rung updated from those
+   * events in `handle()` below would always be one round stale. Reading
+   * `bout.match` lazily is what makes the Turk who just went over the reason the
+   * next weight is heavier.
+   */
+  let table: Bout | null = null
+  const bout = new Bout(
+    () => host.next(requestFor(table?.match)),
+    reduced ? TIMING_REDUCED : TIMING,
+  )
+  table = bout
 
   const guide = createInstructions(el, {
-    title: "THE COUNTERWEIGHT",
+    title: "THE STEELYARD",
     summary: [
       "The Iron Turk's pan holds a sum. Work out its answer yourself — it is never shown.",
       "Load your pan to exactly one more than his answer, then press SEAT.",
+      "Take as long as you need to work it out. Nothing moves until you touch the rack.",
     ],
     sections: [
       {
@@ -64,6 +82,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
           "There are four pillars: thousands, hundreds, tens and ones.",
           "The top face of a pillar adds one of that size. The bottom face takes one off.",
           "Your load stays where you left it. Each round you only change the difference.",
+          "If his weights change size, the yard racks your pan back near them.",
         ],
       },
       {
@@ -89,8 +108,16 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
           "The beam is a bar of steel. Hit it again while it is still ringing and the ring grows.",
           "Ring it too hard and the beam shears, and the round is over.",
           "Leave a beat between blows and that never happens.",
-          "The window closes on its own. Whatever is on your pan then is your answer.",
-          "If you stop touching the rack your pan slowly settles. Any strike puts it back.",
+        ],
+      },
+      {
+        heading: "The whistle",
+        lines: [
+          "Each weight has its own window, and a bigger sum gets a longer one.",
+          "It is long enough to work the sum out and strike every plate it needs.",
+          "If it does run out, the round is simply over. No ground is lost.",
+          "Once you have started striking, a pan left alone slowly settles.",
+          "Any strike puts it back, and it never settles before your first blow.",
         ],
       },
     ],
@@ -157,7 +184,23 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
           audio.sag()
           break
         }
+        case "rerack": {
+          beam.aim(bout.margin)
+          audio.sag()
+          host.haptic("light")
+          scene.flash(PALETTE.brassDim, 200)
+          break
+        }
         case "seat": {
+          if (event.seat.verdict === "expired") {
+            // The whistle. Close the item and say nothing about it — not
+            // `report`, which would file a miss against a sum the child was
+            // still working and step the host's ladder down for it.
+            skip(event.seat.question.id)
+            beam.aim(bout.margin)
+            audio.sag()
+            break
+          }
           report(event.seat.question.id, event.seat.verdict === "true", event.seat.asserted)
           beam.aim(bout.margin)
           if (event.seat.verdict === "true") {
@@ -204,6 +247,19 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
           break
       }
     }
+  }
+
+  /**
+   * Close an item nobody answered.
+   *
+   * Shares the `reported` set with `report`, which is what makes the two endings
+   * mutually exclusive: an item that expired can never also be reported, and an
+   * item that was seated can never also be skipped.
+   */
+  const skip = (questionId: string): void => {
+    if (questionId === "" || reported.has(questionId)) return
+    reported.add(questionId)
+    host.skip?.(questionId)
   }
 
   const report = (questionId: string, correct: boolean, asserted: number): void => {

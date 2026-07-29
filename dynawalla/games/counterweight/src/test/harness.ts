@@ -6,6 +6,7 @@
 // description of mashing, it is a player, and it plays the shipping rules.
 
 import { Bout, type BoutEvent, type Timing, type Verdict } from "../game/bout.ts"
+import { requestFor } from "../game/ladder.ts"
 import { FACES, planStrikes, type Strike } from "../game/places.ts"
 import type { Question } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
@@ -32,6 +33,10 @@ export type Play = {
   readonly verdicts: Record<Verdict, number>
   readonly bestArm: number
   readonly reports: ReadonlyArray<{ correct: boolean; answered: string }>
+  /** The rung asked for on each weight, in order. The ladder, as played. */
+  readonly rungs: readonly number[]
+  /** Press windows served, in milliseconds, in order. */
+  readonly windows: readonly number[]
 }
 
 export type PlayOptions = {
@@ -51,29 +56,51 @@ export function play(strategy: Strategy, options: PlayOptions = {}): Play {
   })
   const rng = new Rng((options.seed ?? 0x51ee) ^ 0x2f19)
   const beam = new Beam(TUNING)
-  const deal = (): Question => host.next({ domain: "add" })
+  const rungs: number[] = []
+  // The same lazy read of the match that `mount.ts` does, and for the same
+  // reason: `hang()` runs before the `won` that caused it is ever seen.
+  let table: Bout | null = null
+  const deal = (): Question => {
+    const request = requestFor(table?.match)
+    rungs.push(request.difficulty)
+    return host.next(request)
+  }
   const bout = options.timing ? new Bout(deal, options.timing) : new Bout(deal)
+  table = bout
 
-  const verdicts: Record<Verdict, number> = { true: 0, short: 0, over: 0, shear: 0 }
+  const verdicts: Record<Verdict, number> = { true: 0, short: 0, over: 0, shear: 0, expired: 0 }
   const reports: Array<{ correct: boolean; answered: string }> = []
+  const windows: number[] = []
   let rounds = 0
   let bestArm = 0
   let windowMs = 0
 
   const absorb = (events: readonly BoutEvent[]): void => {
     for (const event of events) {
-      if (event.kind === "open") windowMs = 0
+      if (event.kind === "open") {
+        windowMs = 0
+        windows.push(bout.pressMs)
+      }
       if (event.kind === "strike") beam.hit(event.impulse, event.strike.dir)
-      if (event.kind === "hang" || event.kind === "strike" || event.kind === "sag") {
+      if (
+        event.kind === "hang" ||
+        event.kind === "rerack" ||
+        event.kind === "strike" ||
+        event.kind === "sag"
+      ) {
         beam.aim(bout.margin)
       }
       if (event.kind === "seat") {
         rounds += 1
         verdicts[event.seat.verdict] += 1
-        reports.push({
-          correct: event.seat.verdict === "true",
-          answered: String(event.seat.asserted),
-        })
+        // A whistle is not an answer, so it is not in `reports` — the same
+        // split `mount.ts` makes between `report` and `skip`.
+        if (event.seat.verdict !== "expired") {
+          reports.push({
+            correct: event.seat.verdict === "true",
+            answered: String(event.seat.asserted),
+          })
+        }
         beam.aim(bout.margin)
         bestArm = Math.max(bestArm, event.arm)
       }
@@ -94,7 +121,16 @@ export function play(strategy: Strategy, options: PlayOptions = {}): Play {
     }
   }
 
-  return { won: bout.match.won, held: bout.match.held, rounds, verdicts, bestArm, reports }
+  return {
+    won: bout.match.won,
+    held: bout.match.held,
+    rounds,
+    verdicts,
+    bestArm,
+    reports,
+    rungs,
+    windows,
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -149,6 +185,51 @@ export function solver(thinkMs = 2400, gapMs = 280): Strategy {
       // The arithmetic, done: his column's value, plus the one notch, less what
       // is already on the pan.
       plan = planStrikes(Number(bout.question?.answer ?? 0) + 1 - bout.load)
+      since = gapMs
+    }
+    since += STEP
+    if (since < gapMs) return []
+    since = 0
+    const next = plan.shift()
+    if (next) return [next]
+    return ["seat"]
+  }
+}
+
+/**
+ * The same child, honestly modelled.
+ *
+ * `solver` re-reads the pan at the instant it starts striking, which no human
+ * does — it plans from the number in front of it *when the window opened*, works
+ * the sum out, and then strikes what it worked out. That one difference is the
+ * whole of the sag defect: a pan that drained while the child was thinking makes
+ * the arithmetic they just did wrong by the time they reach the rack, and they
+ * have no way of knowing it happened.
+ *
+ * Keep both. `solver` measures whether the window is long enough; this one
+ * measures whether the round is *honest*.
+ */
+export function patient(thinkMs = 6000, gapMs = 300): Strategy {
+  let plan: Strike[] = []
+  let planned = false
+  let read: number | null = null
+  let since = 0
+  let phase: string | null = null
+  return ({ bout, windowMs }) => {
+    if (bout.phase !== phase) {
+      phase = bout.phase
+      planned = false
+      plan = []
+      read = null
+      since = 0
+    }
+    if (bout.phase !== "press") return []
+    // The pan as it stood when the weight came down. Read once, like a child.
+    if (read === null) read = bout.load
+    if (windowMs < thinkMs) return []
+    if (!planned) {
+      planned = true
+      plan = planStrikes(Number(bout.question?.answer ?? 0) + 1 - read)
       since = gapMs
     }
     since += STEP

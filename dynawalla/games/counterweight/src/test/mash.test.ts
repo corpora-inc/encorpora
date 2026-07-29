@@ -1,6 +1,7 @@
 // **The bar this game was designed against: no mashing strategy wins.**
 //
-// The canon entry calls THE COUNTERWEIGHT the most unmashable design in the
+// The canon entry calls THE STEELYARD (shipped as THE COUNTERWEIGHT) the most
+// unmashable design in the
 // catalogue, and that is a claim about behaviour, so it is settled by playing
 // rather than by reading the source. Every case below drives the shipping `Bout`
 // with a bot and counts what it got. The bots are in `harness.ts`.
@@ -23,7 +24,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { FACES } from "../game/places.ts"
-import { hammer, masher, play, prober, solver } from "./harness.ts"
+import { hammer, masher, patient, play, prober, solver } from "./harness.ts"
 
 /** Fixed, so this file has no unseeded randomness in it anywhere. */
 const SEEDS = Array.from({ length: 12 }, (_, i) => i * 7919 + 3)
@@ -109,4 +110,110 @@ test("what a wrong seat reports is a number the child put there, not noise", () 
     assert.match(report.answered, /^-?\d+$/, `"${report.answered}" is not a whole number`)
   }
   assert.ok(run.reports.length > 10)
+})
+
+// ---------------------------------------------------------------------------
+// **The other half of the bar: a child who is thinking must not be losing.**
+//
+// Everything above proves the game cannot be beaten without the arithmetic.
+// These prove it can be beaten *with* it, at the speeds real children do it at,
+// which is the half the pacing audit found missing. The founder's report was
+// "this one is stressful and rushed and sometimes the timing is sort of
+// impossible"; each case below is one of the reasons it was.
+// ---------------------------------------------------------------------------
+
+/** The house cadence table's p90 for two-digit-with-regrouping. */
+const P90_TWO_DIGIT_MS = 14000
+
+test("a child who thinks at the house table's own pace wins comfortably", () => {
+  // **The headline defect.** Measured on this bot before the change: at a nine
+  // second pause it held 45 of 96 rounds and put over 7 Turks in the time it
+  // now takes to put over 18; at the documented p90 it held 0 of 78 and never
+  // put over a single one. The window it was thinking against was falling from
+  // 13.0 s to 7.6 s while the sums climbed to four digits.
+  for (const think of [2400, 4200, 6000, 9000]) {
+    for (const seed of SEEDS.slice(0, 6)) {
+      const run = play(solver(think, 350), { seed, seconds: 400 })
+      assert.ok(
+        run.won >= 3,
+        `a ${think} ms thinker only put ${run.won} Turks over on seed ${seed}`,
+      )
+      assert.ok(
+        run.held / run.rounds > 0.9,
+        `a ${think} ms thinker held ${run.held} of ${run.rounds} on seed ${seed}`,
+      )
+      assert.equal(run.verdicts.shear, 0, `a ${think} ms thinker sheared on seed ${seed}`)
+    }
+  }
+})
+
+test("nothing moves under a child who has not touched the rack yet", () => {
+  // **"Sometimes the timing is sort of impossible."** The sag used to run from
+  // the instant the window opened, so a child taking the p90 for their sum
+  // arrived at the rack with a pan several units below the number they had done
+  // the arithmetic against — and no way of knowing. `patient` is the honest
+  // model of that child: it plans from the pan it read when the weight came
+  // down and never looks again. It has to be able to win.
+  for (const seed of SEEDS.slice(0, 6)) {
+    const run = play(patient(6000, 350), { seed, seconds: 400 })
+    assert.ok(run.won >= 3, `an honest thinker only put ${run.won} Turks over on seed ${seed}`)
+    assert.equal(
+      run.verdicts.short,
+      0,
+      `an honest thinker came up short ${run.verdicts.short} times on seed ${seed} — the pan moved under them`,
+    )
+  }
+})
+
+test("the window a weight gets never depends on how long anybody has been playing", () => {
+  // **The ratchet, gone.** The same seed played for one minute and for ten has
+  // to serve the same window for the same weight. A bout counter anywhere in the
+  // window would show up here as a second, shorter figure for a prompt that
+  // already had one.
+  const short = play(solver(2400, 350), { seed: 3, seconds: 90 })
+  const long = play(solver(2400, 350), { seed: 3, seconds: 600 })
+  assert.ok(long.rounds > short.rounds * 3, "the long run was not actually longer")
+  assert.ok(long.won >= 8, `only ${long.won} Turks went over in ten minutes`)
+  for (let i = 0; i < short.windows.length; i++) {
+    assert.equal(
+      long.windows[i],
+      short.windows[i],
+      `weight ${i} was served a different window in the longer session`,
+    )
+  }
+  // And the windows never trend down as the ladder climbs: the last quarter of a
+  // ten-minute session is the hardest content in the pack and must have the most
+  // time, not the least.
+  const quarter = Math.floor(long.windows.length / 4)
+  const opening = long.windows.slice(0, quarter)
+  const closing = long.windows.slice(-quarter)
+  const mean = (xs: readonly number[]): number => xs.reduce((a, b) => a + b, 0) / xs.length
+  assert.ok(
+    mean(closing) > mean(opening),
+    `the window shrank from ${Math.round(mean(opening))} ms to ${Math.round(mean(closing))} ms as the maths got harder`,
+  )
+})
+
+test("running out of time costs nothing, and is never reported as an answer", () => {
+  // **A timeout is not a wrong answer.** A bot that sits on its hands for a
+  // quarter of an hour must reach the end of it with the arm where it started
+  // and with nothing filed against it — the whistle used to take a length of
+  // ground and report the pan's load as the child's answer.
+  const run = play(() => [], { seed: 3, seconds: 900 })
+  assert.ok(run.rounds > 15, `only ${run.rounds} rounds went by`)
+  assert.equal(run.verdicts.expired, run.rounds, "a round nobody touched was judged")
+  assert.deepEqual(run.reports, [], "a round nobody answered was reported as an answer")
+  assert.equal(run.bestArm, 0)
+  assert.equal(run.won, 0)
+})
+
+test("a slow thinker is never worse off than a fast one on the same seed", () => {
+  // The property that makes the window a ceiling rather than a pace: taking
+  // longer may cost throughput, and must never cost accuracy.
+  for (const seed of SEEDS.slice(0, 4)) {
+    const quick = play(solver(1200, 350), { seed, seconds: 400 })
+    const slow = play(solver(P90_TWO_DIGIT_MS / 2, 350), { seed, seconds: 400 })
+    assert.equal(quick.held, quick.rounds, `a fast solver missed one on seed ${seed}`)
+    assert.equal(slow.held, slow.rounds, `a slow solver missed one on seed ${seed}`)
+  }
 })

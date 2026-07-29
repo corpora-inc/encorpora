@@ -16,8 +16,33 @@ export type Question = {
 }
 
 export type Host = {
-  next(opts?: { domain?: string; difficulty?: number }): Question
+  /**
+   * `difficulty` is the rung the yard is asking for and `maxDifficulty` is the
+   * ceiling it wants the stream held under. Both on the host's ladder scale,
+   * where `1` is the bottom. See `game/ladder.ts` — the game names a rung on
+   * every single weight, because a game that names none gets whatever the
+   * scheduler had stocked, and on a fresh session that is how a child meets a
+   * borrow across a zero on their first round.
+   */
+  next(opts?: { domain?: string; difficulty?: number; maxDifficulty?: number }): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
+
+  /**
+   * The child did not answer this one. Close it; record nothing.
+   *
+   * OPTIONAL and feature-detected, like `transition` — a host that predates it
+   * simply does not hear about the round, which is strictly better than what
+   * this game used to do.
+   *
+   * **Why it is not a `report`.** `report` forwards `answered` to the host's
+   * item ledger, so a whistle filed as `{ correct: false }` is not recorded as
+   * "unanswered" — it is a MISS, it takes a wrong attempt against the learner
+   * model, and it walks the ladder down. The child who ran out of time while
+   * carrying the hundreds column has told us nothing about what they know, and
+   * this is the ending that says nothing back.
+   */
+  skip?(questionId: string): void
+
   haptic(k: "light" | "medium" | "heavy" | "success" | "failure"): void
   prefersReducedMotion(): boolean
 

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "THE COUNTERWEIGHT — a steelyard arm-wrestle against the Iron Turk. His pan carries a column sum you must evaluate; yours carries a number you steer with place-value counterweights. Hold one notch ahead.",
+  "description": "THE STEELYARD — a steelyard arm-wrestle against the Iron Turk. His pan carries a column sum you must evaluate; yours carries a number you steer with place-value counterweights. Hold one notch ahead.",
   "engines": {
     "node": ">=22.12"
   },
