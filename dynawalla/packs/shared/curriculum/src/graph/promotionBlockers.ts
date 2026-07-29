@@ -140,58 +140,63 @@ export const MISSTATED_QUESTION_TEMPLATES: readonly string[] = [
 /**
  * The longest numeral a shipped game will put in front of a child, in characters.
  *
- * Read off `games/polarity/src/core/labels.ts`, which is the narrowest budget any
- * pack in this repository declares and the only one that is a hard refusal rather
- * than a layout squeeze: `isPrintable(v)` is false past eight characters, and
- * `orbValues` returns `null` for an item whose *answer* will not print. The number
- * is not arbitrary there — the game's numeral cell is twice as wide as it is tall
- * and the constant was measured over 44,000 orbs of the ladder as it then was.
+ * Read off `games/polarity/src/core/labels.ts`, which is still the only pack in
+ * this repository that refuses an answer outright rather than squeezing a layout
+ * — `isPrintable(v)` is false past this, and `orbValues` returns `null` for an
+ * item whose *answer* will not print, so the item is never offered.
  *
- * It is written down here because a curriculum row is only reachable if something
- * can draw its answer, and until this pass no row in the graph came close to the
- * limit. `48,826 × 82,726` is ten characters.
+ * **It was eight, and eight was not measured.** The constant's stated reason was
+ * that eight characters "still fits the cell without squeezing"; they did not,
+ * by about 60%, and nothing checked. POLARITY derives the number now, from the
+ * thing that actually limits it: four answer orbs share a fixed slice of a
+ * hundred-unit playfield, the numeral drawn over one is as wide as its lane
+ * allows and no wider, and a character may not be narrower than half its own cap
+ * height. That comes out at ten — which is `48,826 × 82,726`, the program's
+ * stated ceiling, reached with less than one percent of margin rather than by
+ * rounding in its favour.
+ *
+ * It is written down here because a curriculum row is only reachable if
+ * something can draw its answer. Eleven characters is a row that ships to a
+ * child who is served nothing.
  */
-export const SHIPPED_NUMERAL_MAX_CHARS = 8;
+export const SHIPPED_NUMERAL_MAX_CHARS = 10;
 
 /**
- * Levels whose answers are wider than any shipped game will print.
+ * Levels whose answers are wider than any shipped game will print. **Empty.**
  *
- * ## What this costs, precisely
+ * ## What it recorded, and what cleared it
  *
- * A pack that cannot print an answer must not offer it, and `games/polarity` gets
- * that right: it declines the item and says so on the console. But declining is
- * per-item and the host serves by *rung* — ask again at the same difficulty and the
- * same rung answers — so a level where every item is too wide is not a graceful
- * degradation. It is a Seal Bearer that asks nothing, forever, and the child at the
- * top of the ladder is the one it happens to. Measured over 60 seeds a level:
+ * `dw.mul.scale.times-power-of-ten L2` and `dw.mul.multidigit.long-multiplication`
+ * L1 and L2 reach nine and ten characters, and the pack refused past eight.
+ * Refusing is per-item and the host serves by *rung* — ask again at the same
+ * difficulty and the same rung answers — so a level where every item is too wide
+ * was not a graceful degradation. It was a Seal Bearer that asks nothing,
+ * forever, and the child at the top of the ladder was the one it happened to.
+ * Measured over 60 seeds a level, at the time it was recorded:
  *
  * | level | items too wide | widest |
  * |---|---|---|
- * | `dw.mul.scale.times-power-of-ten L2` | 21/60 | `544,080,000` — 9 |
- * | `dw.mul.multidigit.long-multiplication L1` | 50/60 | `799,204,497` — 9 |
- * | `dw.mul.multidigit.long-multiplication L2` | **60/60** | `2,367,541,946` — 10 |
+ * | `dw.mul.scale.times-power-of-ten L2` | 18/60 | `546,270,000` — 9 |
+ * | `dw.mul.multidigit.long-multiplication L1` | 51/60 | `263,502,180` — 9 |
+ * | `dw.mul.multidigit.long-multiplication L2` | **60/60** | `1,042,977,861` — 10 |
  *
- * ## Why this is the pack's to clear and not the curriculum's
+ * Nothing was ever wrong with the rows, and the fix was the pack's, in two parts:
+ * the numeral budget is derived from the orb's lane rather than typed, which puts
+ * it at ten characters; and POLARITY caps its own stream with
+ * `next({ maxDifficulty })` the first time a rung refuses to print, which is what
+ * makes any ceiling — this one or the next one — safe rather than silent.
  *
- * Nothing is wrong with the rows. `48,826 × 82,726` is the program's stated ceiling
- * and `docs/` has said so since before the generator existed; a graph that trimmed
- * its own content to a texture atlas would be the tail wagging the dog. What is
- * missing is on the other side, and `packs/sdk` already has the seam for it:
- * `next({ maxDifficulty })` is "a ceiling on the same scale, the stream never goes
- * above it", and polarity does not pass one. A pack that can print eight characters
- * says so, and gets the part of the ladder it can draw.
+ * ## Why the empty list stays
  *
- * So this blocker clears when a pack either widens its numeral or caps its stream —
- * and the row is a `status` flip after it, exactly like the operator was.
- * `render/prompts.test.ts` asserts this list equals the levels whose answers exceed
- * `SHIPPED_NUMERAL_MAX_CHARS`, in both directions, so widening one and forgetting
- * the other fails.
+ * Because it is asserted in BOTH directions. `render/prompts.test.ts` measures
+ * every bound level of every non-deprecated row against
+ * `SHIPPED_NUMERAL_MAX_CHARS` and requires the result to equal this list, so the
+ * day a row reaches eleven characters it is named here by a failing build rather
+ * than by a child being served silence. A deleted list would have to be
+ * rediscovered the same way the first one was: by promoting the rows and
+ * watching a pack's sweep go red.
  */
-export const NUMERAL_WIDTH_BLOCKED_LEVELS: readonly string[] = [
-  "dw.mul.multidigit.long-multiplication L1",
-  "dw.mul.multidigit.long-multiplication L2",
-  "dw.mul.scale.times-power-of-ten L2",
-];
+export const NUMERAL_WIDTH_BLOCKED_LEVELS: readonly string[] = [];
 
 /** The skills above, deduplicated — the rows that stay draft because of it. */
 export const NUMERAL_WIDTH_BLOCKED_SKILLS: readonly string[] = [

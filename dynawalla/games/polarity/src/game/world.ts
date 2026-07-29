@@ -126,6 +126,27 @@ export type World = {
   nextBearer: number;
   bearerCount: number;
   stratum: number;
+  /**
+   * The highest ladder position this run will accept, 0..1, or null for none.
+   *
+   * Set the first time the host serves a rung whose answers POLARITY cannot
+   * print, and only ever lowered after that — see `capBelow` in `seal.ts`. It is
+   * what turns "declines every item this rung offers, forever" into "asks the
+   * hardest question it can actually draw".
+   */
+  drawCeiling: number | null;
+  /**
+   * A ceiling was lowered and the host has not been told yet.
+   *
+   * The flush has to happen AFTER the new ceiling reaches the host, never
+   * before: `flushNow` ranks the pool with `distance()`, which reads the host's
+   * OWN `ceiling`, and that is only updated inside `next()`. Flushing first
+   * ranked every pooled question against the stale ceiling and therefore kept
+   * precisely the banned rung's questions it meant to discard — measured as ten
+   * consecutive Bearers asking nothing, about four and a half minutes of
+   * silence, before the pool drained on its own.
+   */
+  pendingFlush: boolean;
   bossActive: boolean;
   hush: number;
 
@@ -281,6 +302,8 @@ export function makeWorld(host: Host, tier: Tier, seed: number): World {
     nextBearer: 0,
     bearerCount: 0,
     stratum: 0,
+    drawCeiling: null,
+    pendingFlush: false,
     bossActive: false,
     hush: 0,
     seal: { serial: 0, state: "idle", q: null, askedAt: 0, answered: "" },

@@ -13,7 +13,7 @@
  * Difficulty is adaptive (up on fast + correct, down on wrong), which is what
  * the real host does, so swapping it in changes nothing about how this feels.
  */
-import type { Host, Question } from "./contract.ts";
+import type { Ask, Host, Question } from "./contract.ts";
 import { makeRng, type Rng } from "./core/rng.ts";
 import { MINUS, fmtInt } from "./math/signed.ts";
 
@@ -226,6 +226,22 @@ export function chooseDistractors(answer: number, wrong: number[], rng: Rng): st
   return rng.shuffle(out).map(fmtInt);
 }
 
+/**
+ * A game's difficulty number as a 0..1 ladder position.
+ *
+ * Transcribed from `toUnit` in `packs/shared/game-host/index.ts` — a value below
+ * 1 is a fraction, 1..10 is a ladder index, and `1` is read as the BOTTOM. The
+ * stub cannot import the real host (this file exists so POLARITY runs with no
+ * host at all), and a stub that read the request on a different scale from the
+ * shipping host would be a dev harness that agrees with nothing — which is
+ * precisely how the blank-orb defect survived a whole build.
+ */
+export function toUnit(value: number): number {
+  if (!Number.isFinite(value)) return 0;
+  if (value < 1) return Math.max(0, value);
+  return Math.min(1, (value - 1) / 9);
+}
+
 export type StubOpts = {
   seed?: number;
   /** starting difficulty 0..1 */
@@ -237,10 +253,16 @@ export type StubOpts = {
 export function makeStubHost(opts: StubOpts = {}): Host & { difficulty(): number } {
   const rng = makeRng(opts.seed ?? 0x50147);
   let hard = Math.min(1, Math.max(0, opts.difficulty ?? 0.18));
+  /** A standing ceiling, 0..1. Stands until the game names a different one. */
+  let ceiling = 1;
   let n = 0;
 
-  const build = (want?: { domain?: string; difficulty?: number }): Question => {
-    const d = Math.min(1, Math.max(0, want?.difficulty ?? hard));
+  const build = (want?: Ask): Question => {
+    // The ceiling is a hard cap and the request is a wish, same as the real
+    // service: `maxDifficulty` floors, `difficulty` does not.
+    if (want?.maxDifficulty !== undefined) ceiling = toUnit(want.maxDifficulty);
+    const asked = want?.difficulty === undefined ? hard : toUnit(want.difficulty);
+    const d = Math.min(1, Math.max(0, Math.min(asked, ceiling)));
     const table = d < 0.3 ? EASY : d < 0.68 ? MID : HARD;
     const pinned = want?.domain ? BY_DOMAIN[want.domain] : undefined;
     let b: Built | null = null;

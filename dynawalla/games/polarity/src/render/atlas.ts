@@ -1,8 +1,16 @@
 import { CanvasTexture, LinearFilter, SRGBColorSpace, Texture } from "three";
-import { LABEL_ASPECT, LABEL_COLS, LABEL_ROWS, LabelBook } from "../core/labels.ts";
+import {
+  LABEL_ASPECT,
+  LABEL_CELL_H,
+  LABEL_COLS,
+  LABEL_EM,
+  LABEL_INK_W,
+  LABEL_ROWS,
+  LabelBook,
+} from "../core/labels.ts";
 
 const FACE =
-  '900 76px ui-rounded, "SF Pro Rounded", "Segoe UI Variable Display", ' +
+  `900 ${String(LABEL_EM)}px ui-rounded, "SF Pro Rounded", "Segoe UI Variable Display", ` +
   '"Nimbus Sans", Inter, system-ui, sans-serif';
 
 /**
@@ -16,6 +24,11 @@ const FACE =
  * Cells are `LABEL_ASPECT` times wider than they are tall. A long answer gets
  * width, not a horizontal squeeze: every numeral on the field is drawn at the
  * same glyph HEIGHT, which is the thing a child reads at speed.
+ *
+ * `cellPx` is the HEIGHT. The width is `cellPx * LABEL_ASPECT`, and both tiers
+ * are chosen so that product is a whole number of texels — the shader addresses
+ * a tile as a fraction of `uGrid`, so a cell width the canvas has to round is a
+ * cell whose neighbour bleeds into it.
  */
 export class LabelAtlas {
   readonly book: LabelBook;
@@ -33,6 +46,16 @@ export class LabelAtlas {
     this.book = new LabelBook(LABEL_COLS * LABEL_ROWS);
     this.cellH = cellPx;
     this.cellW = cellPx * LABEL_ASPECT;
+    // Loud, because the failure is silent and looks like a font bug: the shader
+    // addresses a tile as `col / uGrid.x` of the texture, so if `cellPx *
+    // LABEL_ASPECT` is not a whole number the canvas rounds its width and every
+    // column after the first samples a sliver of its neighbour's numeral.
+    if (!Number.isInteger(this.cellW)) {
+      console.error(
+        `[polarity] a ${String(cellPx)}px cell at aspect ${String(LABEL_ASPECT)} is ` +
+          `${String(this.cellW)} texels wide, which is not a whole number — tiles will bleed`,
+      );
+    }
     this.canvas = document.createElement("canvas");
     this.canvas.width = this.cols * this.cellW;
     this.canvas.height = this.rows * this.cellH;
@@ -86,13 +109,13 @@ export class LabelAtlas {
     g.clearRect(x, y, this.cellW, this.cellH);
     g.save();
     g.translate(x + this.cellW / 2, y + this.cellH / 2);
-    g.scale(this.cellH / 128, this.cellH / 128);
+    g.scale(this.cellH / LABEL_CELL_H, this.cellH / LABEL_CELL_H);
     g.font = FACE;
-    // The cell is 256 units wide in this space. Squeeze only what genuinely
-    // overflows it — which the shipping curriculum never does.
+    // Fitted, not clipped. Everything past `LABEL_INK_W` is squeezed to exactly
+    // fill the box, which is what makes `labelAdvanceEm` true whatever face the
+    // device resolved — the box is ours and the advance is not.
     const w = g.measureText(s).width;
-    const maxW = 128 * LABEL_ASPECT - 24;
-    if (w > maxW) g.scale(maxW / w, 1);
+    if (w > LABEL_INK_W) g.scale(LABEL_INK_W / w, 1);
 
     // dark contrast rim first, then the solid face
     g.lineJoin = "round";
