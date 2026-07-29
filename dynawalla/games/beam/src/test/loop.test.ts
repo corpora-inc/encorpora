@@ -246,10 +246,15 @@ test("nothing is ever reported that the host did not serve", () => {
   for (const r of play(0x2222, 5000, false)) {
     assert.ok(r.questionId.length > 0, "a report carried no item id")
     assert.ok(Number.isInteger(r.ms) && r.ms >= 0, `bad latency ${r.ms}`)
-    // Either a value was struck, or the candidates landed and nothing was
-    // handed in. Never a float, never a sign, never a fragment.
-    assert.ok(r.answered === "" || /^\d+$/.test(r.answered), `bad answer "${r.answered}"`)
-    if (r.answered === "") assert.equal(r.correct, false)
+    // A value was struck. That is the only thing this game reports, so the
+    // answer is always a numeral — never a float, never a sign, never a
+    // fragment, and never the empty string.
+    //
+    // The clause here used to be `r.answered === "" || /^\d+$/` with a
+    // follow-up asserting that an empty answer came with `correct: false`.
+    // Both were dead: they described the timeout report, which is now a
+    // `skip`, and no test in this package had ever reached one anyway.
+    assert.ok(/^\d+$/.test(r.answered), `bad answer "${r.answered}"`)
   }
 })
 
@@ -302,7 +307,20 @@ test("PAUSE STOPS THE CLOCK: a wave cannot expire behind the host's sheet", () =
   const surface = stubSurface(768, 1024, 0xba5e0, 12)
   const restore = surface.install()
   const reports: Report[] = []
-  const host = createStubHost({ seed: 0x9e11, reducedMotion: false, onReport: (r) => reports.push(r) })
+  // BOTH endings are watched, and that is not tidiness. An item that runs out
+  // is no longer an answer — it is a `skip` — so a test that watched only
+  // `report` would have gone quiet about the exact failure this test is named
+  // after: a wave expiring behind a sheet the child was never shown.
+  const resolved: string[] = []
+  const host = createStubHost({
+    seed: 0x9e11,
+    reducedMotion: false,
+    onReport: (r) => {
+      reports.push(r)
+      resolved.push(r.questionId)
+    },
+    onSkip: (id) => resolved.push(id),
+  })
   const handle = mount(surface.el, host)
   const step = surface.pump()
   const press = (key: string): void => {
@@ -314,8 +332,8 @@ test("PAUSE STOPS THE CLOCK: a wave cannot expire behind the host's sheet", () =
       step(16)
       if (i % 5 === 0) press(" ")
     }
-    assert.ok(reports.length > 0, "nothing was reported before the pause")
-    const before = reports.length
+    assert.ok(resolved.length > 0, "nothing was resolved before the pause")
+    const before = resolved.length
 
     handle.setPaused(true)
     // Three minutes behind the sheet, with the child mashing at it throughout.
@@ -324,7 +342,7 @@ test("PAUSE STOPS THE CLOCK: a wave cannot expire behind the host's sheet", () =
       if (i % 5 === 0) press(" ")
       if (i % 11 === 0) press("ArrowLeft")
     }
-    assert.equal(reports.length, before, "an item was resolved while the game was paused")
+    assert.equal(resolved.length, before, "an item was resolved while the game was paused")
 
     handle.setPaused(false)
     for (let i = 0; i < 3000; i++) {
@@ -332,7 +350,7 @@ test("PAUSE STOPS THE CLOCK: a wave cannot expire behind the host's sheet", () =
       if (i % 5 === 0) press(" ")
       if (i % 13 === 0) press("ArrowRight")
     }
-    assert.ok(reports.length > before, "the game did not come back after the sheet lifted")
+    assert.ok(resolved.length > before, "the game did not come back after the sheet lifted")
   } finally {
     handle.unmount()
     restore()

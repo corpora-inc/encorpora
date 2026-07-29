@@ -16,6 +16,7 @@
 // what was struck.
 
 import { beamDivisors, resonates, tuneLattice, usableCoreValue } from "./lattice.ts"
+import { comprehensionWindow } from "./window.ts"
 
 export type Candidate = { value: number; correct: boolean }
 
@@ -27,6 +28,15 @@ export type CoreWave = {
   /** Beam labels, ascending. Tuned so every candidate below is killable. */
   beams: number[]
   candidates: Candidate[]
+  /**
+   * How long the candidates are answerable for, in seconds.
+   *
+   * Carried on the wave rather than read off the pressure curve at fracture
+   * time, because it belongs to the ITEM: this is the number that must never
+   * fall when the question gets harder, and it is computed by
+   * `sim/window.ts` from the prompt and the answer alone.
+   */
+  windowSeconds: number
 }
 
 /**
@@ -142,5 +152,6 @@ export function buildCore(
     answer,
     beams,
     candidates: order.map((value) => ({ value, correct: value === answer })),
+    windowSeconds: comprehensionWindow({ prompt: source.prompt, answer }),
   }
 }

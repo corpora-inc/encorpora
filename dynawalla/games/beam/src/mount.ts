@@ -34,6 +34,7 @@ import {
   drawAutomaton,
   drawBeams,
   drawHall,
+  drawPrompt,
   drawPulse,
   drawRunner,
   drawScore,
@@ -54,10 +55,11 @@ import {
 } from "./render/palette.ts"
 import { KIND_MOTE, KIND_SHARD, Particles } from "./render/particles.ts"
 import { buildCore, type CoreWave } from "./sim/core.ts"
-import { Director, fieldValue, killScore } from "./sim/director.ts"
+import { revealSeconds } from "./sim/window.ts"
+import { Director, fieldValue, killScore, readingRelief } from "./sim/director.ts"
 import { A_CANDIDATE, A_CORE, A_ORDINARY, type Automaton, Field } from "./sim/field.ts"
 import { phaseOffset, resonates, tuneLattice, validBeamCount } from "./sim/lattice.ts"
-import { resolveStrike } from "./sim/pulse.ts"
+import { resolveStrike, shovedUrgency } from "./sim/pulse.ts"
 
 const N_BEAMS = 5
 const ANCHORS = 3
@@ -141,6 +143,8 @@ export function mountBeam(el: HTMLElement, host: Host): {
           "Every so often a big blue robot comes down the middle with a sum on it, like 247 + 158.",
           "It breaks into several robots, each carrying a different number.",
           "Work out the sum, find the robot with the right number, and shoot that one.",
+          "Take as long as you like. Nothing lands while you are working it out.",
+          "If you miss it, the hall stops and the sum finishes itself so you can see it.",
           "Getting it wrong does not cost a light. It only resets how much each robot is worth.",
         ],
       },
@@ -208,6 +212,19 @@ export function mountBeam(el: HTMLElement, host: Host): {
   let wave: CoreWave | null = null
   let waveAskedAt = 0
   let coreBody: Automaton | null = null
+
+  /**
+   * THE FINISHED STATEMENT, after a miss or a wave that ran out.
+   *
+   * `left` runs the text down; `hold` freezes the lattice for exactly as long,
+   * which is the part of STACK's reveal that makes it work — its sweep is HELD
+   * so the child never reads one thing while aiming at another. A frozen hall
+   * costs the child nothing: no wave is live, so no answering window is
+   * running, and every automaton that was descending is exactly where it was
+   * when the hold lifts.
+   */
+  let reveal: { text: string; answer: string; left: number; max: number } | null = null
+  let hold = 0
 
   const pulses: Pulse[] = []
   for (let i = 0; i < 4; i++) pulses.push({ alive: false, col: 0, t: 0, prevT: 0, hits: 0 })
@@ -336,7 +353,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function spawnOrdinary(): void {
-    const p = director.pressure()
+    const p = wave ? readingRelief(director.pressure()) : director.pressure()
     const b = field.spawn()
     if (!b) return
     b.kind = A_ORDINARY
@@ -392,8 +409,17 @@ export function mountBeam(el: HTMLElement, host: Host): {
       return
     }
     wave = built
-    retune(built.candidates.map((c) => c.value))
-    const p = director.pressure()
+    const p = readingRelief(director.pressure())
+    // THE BODY IS DRESSED BEFORE THE LATTICE IS RETUNED, and the order is not a
+    // tidiness. `field.spawn()` hands back a body still wearing the blank
+    // defaults — `kind: A_ORDINARY, value: 0` — and `retune` disperses every
+    // ORDINARY body no beam divides. No beam divides zero. So the CORE was
+    // killed on the frame it was created, every single wave, since the day this
+    // function was written: it never descended, never fractured and never once
+    // painted its problem on the screen. What the child saw instead was an
+    // ordinary automaton hijacked mid-descent when `coreBody`'s pooled slot was
+    // handed out again, bursting into candidates for a question nobody had
+    // read.
     b.kind = A_CORE
     b.value = built.answer
     b.text = built.prompt
@@ -406,6 +432,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
     // approach.
     b.speed = 1 / (p.descentSeconds * 0.85)
     b.stepIn = 1e9
+    retune(built.candidates.map((c) => c.value))
     coreBody = b
     waveAskedAt = performance.now()
     asked++
@@ -417,7 +444,6 @@ export function mountBeam(el: HTMLElement, host: Host): {
     const w = wave
     if (!w) return
     core.fractured = true
-    const p = director.pressure()
     const cp = project(geom, core.slide, core.t)
     burst(cp.x, cp.y, colLapis, 40, 320, true)
     feel.addTrauma(0.25)
@@ -435,12 +461,18 @@ export function mountBeam(el: HTMLElement, host: Host): {
       b.beam = cols[i % cols.length] as number
       b.slide = core.slide
       b.t = core.t
-      // Slower than the stream, and it steps: a candidate has to be reachable
-      // from more than the beam it happened to land on. The fall from the
-      // fracture line to the floor is the answering window — about ten seconds
-      // early in a run, closing to six at full pressure, which brackets the
-      // house p50 of six and p90 of fourteen for two-digit regrouping.
-      b.speed = 1 / (p.descentSeconds * 1.6)
+      // THE ANSWERING WINDOW. The fall from wherever the core actually
+      // fractured to the floor takes exactly `windowSeconds`, which
+      // `sim/window.ts` computed from the ITEM — its columns and its
+      // regrouping — and which nothing about the run's pressure can move.
+      //
+      // It used to be `1 / (descentSeconds * 1.6)`, and `descentSeconds` is the
+      // motion constant the pressure curve tightens: the window ran 11.84s down
+      // to 6.87s on exactly the curve that took the requested difficulty from 2
+      // to 9. Harder question, 42% less time. The divisor here is the remaining
+      // distance rather than a constant so the window is the same length
+      // whichever frame the fracture landed on.
+      b.speed = Math.max(1e-4, (1 - core.t) / w.windowSeconds)
       b.stepIn = 0.55 + i * 0.12
       b.stepDir = i % 2 === 0 ? 1 : -1
     })
@@ -458,19 +490,43 @@ export function mountBeam(el: HTMLElement, host: Host): {
     }
   }
 
+  /**
+   * Finish the sum on the wall, and hold the hall still while it is read.
+   *
+   * The only thing that happens after a miss. It is deliberately built out of
+   * the same parts a success is — the resonance colour, a `light` cue, the
+   * plate lighting up — and none of the parts a scolding is. There is no word
+   * for what happened, no red, no shake and no lamp going out: a wrong
+   * submission has never cost an anchor in this game and it does not start now.
+   */
+  function completeSum(w: CoreWave): void {
+    const seconds = revealSeconds({ prompt: w.prompt, answer: w.answer })
+    reveal = { text: w.prompt, answer: String(w.answer), left: seconds, max: seconds }
+    hold = seconds
+    audio.riser()
+  }
+
   function expireWave(): void {
     const w = wave
     if (!w) return
-    // Reported, and honestly: the child did not answer. `answered` is empty
-    // because nothing was handed in, and this is the one report in the game
-    // that is not the result of an action.
-    host.report({
-      questionId: w.questionId,
-      correct: false,
-      ms: Math.round(performance.now() - waveAskedAt),
-      answered: "",
-    })
-    showBanner(`${w.prompt} = ${w.answer}`, "", LAPIS_HOT, 1.6)
+    // A TIMEOUT IS NOT A WRONG ANSWER.
+    //
+    // This used to call `host.report({ correct: false, answered: "" })` under a
+    // comment claiming that was the honest thing. It was the opposite. The
+    // shared adapter throws `correct` away — the host judges, not the game —
+    // and forwards `answered` as the response to `items.answer`; an empty
+    // string does not parse as a number, so the host recorded a MISS and
+    // stepped the ladder down. A child who was still carrying the hundreds
+    // column was written into the learner model as a child who cannot add, and
+    // guessing was strictly cheaper than thinking.
+    //
+    // `skip` is the SDK's word for this and it records nothing and moves
+    // nothing. It is feature-detected: a host without it hears silence, which
+    // is what an unmeasured item should sound like.
+    host.skip?.(w.questionId)
+    // Not a buzzer and not a life ticking down: the sum finishes on the wall,
+    // in the same place it has been legible all along.
+    completeSum(w)
     clearCandidates(true)
     wave = null
     coreBody = null
@@ -558,8 +614,10 @@ export function mountBeam(el: HTMLElement, host: Host): {
   function dissonance(body: Automaton): void {
     body.ring = 0.5
     // The cost of a wrong read is time, not damage: the automaton is shoved
-    // down the lattice. Nothing is deducted, nothing is scolded.
-    body.urgency = Math.min(2.4, body.urgency + 0.35)
+    // down the lattice. Nothing is deducted, nothing is scolded — and a
+    // CANDIDATE is not shoved at all, because its fall is the child's thinking
+    // time and probing the beams is this game's listening verb.
+    body.urgency = shovedUrgency(body.kind, body.urgency)
     const p = project(geom, body.slide, body.t)
     burst(p.x, p.y, colWrong, 8, 130)
     audio.dissonance()
@@ -615,17 +673,24 @@ export function mountBeam(el: HTMLElement, host: Host): {
         host.transition?.("level", `${coresRead} cores`)
       }
     } else {
+      // What a miss is made of, and what it is deliberately NOT made of.
+      //
+      // It used to be a copper-oxide screen flash, a screenshake, a `failure`
+      // haptic and a red burst — four channels of feedback about having been
+      // wrong — followed by the statement being taken away after a second and a
+      // half. Maximum discouragement, minimum information, in that order.
+      //
+      // What is left is a hull coming apart in brass, a figure that falls
+      // without scolding, and the sum completing on the wall. A wrong
+      // submission still costs the multiplier, which is the whole economy and
+      // is the reason a guess is not free; it has never cost an anchor.
       audio.settleWrong()
-      feel.kick(0, 1, 9)
-      feel.addTrauma(0.28)
-      feel.requestFlash(0.12, DISSONANT)
-      host.haptic("failure")
-      // The whole economy, gone. That is the cost of a guess — never an anchor,
-      // never a lecture, and the true statement is shown once, plainly.
+      feel.kick(0, 1, 3)
+      host.haptic("light")
       resonance = 1
       resonanceLeft = 0
-      burst(p.x, p.y, colWrong, 26, 300)
-      showBanner(`${w.prompt} = ${w.answer}`, "", LAPIS_HOT, 1.7)
+      burst(p.x, p.y, colBrass, 18, 220)
+      completeSum(w)
       clearCandidates(true)
       wave = null
     }
@@ -678,6 +743,8 @@ export function mountBeam(el: HTMLElement, host: Host): {
     wave = null
     coreBody = null
     banner = null
+    reveal = null
+    hold = 0
     field.clear()
     parts.clear()
     feel.reset()
@@ -766,7 +833,34 @@ export function mountBeam(el: HTMLElement, host: Host): {
   let raf = 0
 
   function step(dt: number): void {
-    const p = director.pressure()
+    if (reveal) {
+      reveal.left -= dt
+      if (reveal.left <= 0) reveal = null
+    }
+    if (hold > 0) {
+      // THE HOLD. The lattice is still while the sum finishes: nothing
+      // descends, nothing spawns, no pulse travels and the clock the director
+      // escalates on does not advance. Only the decoration keeps moving, so a
+      // held hall reads as held rather than as crashed.
+      hold -= dt
+      parts.update(dt)
+      for (const q of pops) {
+        if (!q.alive) continue
+        q.life -= dt
+        q.y -= dt * 46
+        if (q.life <= 0) q.alive = false
+      }
+      if (banner) {
+        banner.life -= dt
+        if (banner.life <= 0) banner = null
+      }
+      return
+    }
+    // While a question is on the lattice the stream backs off — fewer automata,
+    // further apart, crossing more slowly. Sparser and slower around the
+    // answering moment, never duller: the tight-divisor bias and every effect
+    // in the game are untouched, and the floor never reaches zero.
+    const p = wave ? readingRelief(director.pressure()) : director.pressure()
     director.advance(dt)
     fireCooldown = Math.max(0, fireCooldown - dt)
     if (chainTimer > 0) {
@@ -907,7 +1001,13 @@ export function mountBeam(el: HTMLElement, host: Host): {
     drawRunner(g, geom, runnerSlide, fireCooldown > 0 ? 1 : locked ? 0.7 : 0.2, q.glow)
     g.restore()
 
-    // Chrome sits outside the shake so the numbers never blur.
+    // Chrome sits outside the shake so the numbers never blur. THE PROMPT MOST
+    // OF ALL: it is drawn here, after `g.restore()`, for every frame the wave
+    // is live — which is every frame an answer is still accepted, approach and
+    // fall alike. It is never a memory test. It is never 9px. It does not move,
+    // it does not shake, and it is not deleted at the fracture line.
+    if (wave) drawPrompt(g, geom, wave.prompt, null)
+    else if (reveal) drawPrompt(g, geom, reveal.text, reveal.answer)
     drawScore(g, geom, score, resonance)
     drawAnchors(g, geom, anchors, ANCHORS, credit, READ_PER_ANCHOR)
 

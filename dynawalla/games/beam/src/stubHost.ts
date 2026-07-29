@@ -106,6 +106,12 @@ export type StubHostOptions = {
   reducedMotion?: boolean
   /** Observe reports — the dev harness draws a running accuracy readout. */
   onReport?: (r: { questionId: string; correct: boolean; ms: number; answered: string }) => void
+  /**
+   * Observe items that ran out of time. Separate from `onReport` on purpose:
+   * these are NOT attempts, they do not enter the accuracy readout, and the
+   * whole point of the seam is that the two can never be conflated again.
+   */
+  onSkip?: (questionId: string) => void
   /** Observe haptics so the harness can show they fired on a device with none. */
   onHaptic?: (k: string) => void
 }
@@ -159,6 +165,10 @@ export function createStubHost(opts: StubHostOptions = {}): Host {
 
     report(r) {
       opts.onReport?.(r)
+    },
+
+    skip(questionId) {
+      opts.onSkip?.(questionId)
     },
 
     haptic(k) {

@@ -41,3 +41,25 @@ export function resolveStrike(
 export function canKill(beam: number, value: number): boolean {
   return resonates(beam, value)
 }
+
+/** Ceiling on the shove, so a column of stray shots cannot teleport a hull. */
+const MAX_URGENCY = 2.4
+const SHOVE = 0.35
+
+/**
+ * What a dissonant strike does to how fast a body is walking.
+ *
+ * On an ORDINARY automaton the cost of a wrong read is time: it is shoved
+ * further down the lattice. Nothing is deducted and nothing is scolded, and
+ * that is the right cost for a number the game itself made up.
+ *
+ * On a **CANDIDATE it is nothing at all.** A candidate's fall IS the
+ * comprehension window, probing the beams is this game's listening verb, and
+ * charging the child's thinking time for using it rations precisely what
+ * `docs/EXPERIENCE_DESIGN.md` forbids rationing — by up to 2.4× at that. A
+ * candidate rings, and stays exactly where the arithmetic left it.
+ */
+export function shovedUrgency(kind: number, urgency: number): number {
+  if (kind === A_CANDIDATE) return urgency
+  return Math.min(MAX_URGENCY, urgency + SHOVE)
+}

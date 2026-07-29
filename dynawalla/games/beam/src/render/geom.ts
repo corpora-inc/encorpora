@@ -37,6 +37,19 @@ export type Geom = {
   margin: number
   /** Where the beam labels are carved. Inside the safe area, by construction. */
   labelY: number
+  /**
+   * Where the CORE's problem is carved into the far wall.
+   *
+   * This is the most important text in the game and it used to have nowhere to
+   * live: the prompt was painted on the descending slab, which pins at the 9px
+   * floor near the vanishing point, and the slab was killed at the fracture
+   * line. The child then did three-digit column arithmetic from memory.
+   *
+   * The band sits BETWEEN the host's two 44px corners horizontally and above
+   * the score block vertically, so it collides with neither at any viewport —
+   * `hitsHostChrome` asserts exactly that in `render/geom.test.ts`.
+   */
+  prompt: Rect
   /** The score and resonance block, clear of the host's exit control. */
   hud: Rect
   /** The anchor lamps: the RIGHTMOST lamp's centre, and the row's metrics. */
@@ -60,6 +73,11 @@ function insetsOf(w: number, h: number, area: Rect): Insets {
   }
 }
 
+/** One expression, so the horizon cannot drift from what the prompt band uses. */
+function horizonYOf(area: Rect, ah: number): number {
+  return area.y + ah * 0.155
+}
+
 /**
  * @param area the safe rectangle, from `safeRect(w, h)`. REQUIRED — optional
  * would mean a caller that forgets it still compiles and quietly draws the
@@ -81,14 +99,28 @@ export function makeGeom(w: number, h: number, columns: number, area: Rect): Geo
   const r = 6
   const gap = 18
 
+  // The far wall, between the host's corners: the prompt's home. Bounded below
+  // by the score block as well as by the horizon, because on a 320x480 lattice
+  // the horizon sits *under* the score and the two would overprint.
+  const promptGap = 8
+  const promptLeft = exit.x + exit.w + promptGap
+  const hudY = exit.y + exit.h + 8
+  const promptRect: Rect = {
+    x: promptLeft,
+    y: area.y,
+    w: Math.max(80, help.x - promptGap - promptLeft),
+    h: Math.max(30, Math.min(horizonYOf(area, ah), hudY - 4) - area.y),
+  }
+
   return {
     w,
     h,
     area,
     columns: Math.max(1, columns),
     vpX: area.x + aw * 0.5,
-    horizonY: area.y + ah * 0.155,
+    horizonY: horizonYOf(area, ah),
     floorY,
+    prompt: promptRect,
     // Wide enough that the outermost beam's label is never clipped.
     margin: Math.max(26, Math.min(aw * 0.11, 74)),
     labelY: floorY + (area.y + ah - floorY) * 0.5,

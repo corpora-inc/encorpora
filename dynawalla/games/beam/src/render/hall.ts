@@ -96,6 +96,132 @@ export function drawHall(g: CanvasRenderingContext2D, geom: Geom): void {
   g.fillRect(0, geom.floorY + 2, geom.w, 2)
 }
 
+/**
+ * The floor under the prompt's type size, in CSS pixels.
+ *
+ * The prompt used to be painted on the descending slab at
+ * `max(9, r * 0.78)` — and `r` pins at 7 near the vanishing point, so the value
+ * was **9px, at every difficulty, for its entire life**. Nine pixels is the
+ * size the renderer falls back to so that a thing far up the lattice still has
+ * *some* mark on it; it is not a size a seven-year-old reads a column sum at.
+ *
+ * Below this number the prompt is not a question, it is a decoration of one.
+ */
+export const PROMPT_MIN_PX = 18
+
+export type PromptPlate = {
+  /** The carved recess. Never overlapping the host's two corners. */
+  box: { x: number; y: number; w: number; h: number }
+  /** Type size, already fitted to the box. Never below `PROMPT_MIN_PX`. */
+  px: number
+  cx: number
+  cy: number
+}
+
+/**
+ * Where and how large the CORE's problem is carved, for this hall and this text.
+ *
+ * Pure, and exported, so the legibility floor is a thing tests assert rather
+ * than a thing a screenshot might have caught. The width fit is done against a
+ * measured advance where one is available, which is what keeps a long prompt
+ * from running out over the beams instead of shrinking.
+ */
+export function promptPlate(
+  geom: Geom,
+  text: string,
+  measure?: (t: string, px: number) => number,
+): PromptPlate {
+  const box = geom.prompt
+  // Big: this is the question. Capped so it does not become a headline on a
+  // desktop, floored so it stays a question on a phone.
+  let px = Math.max(PROMPT_MIN_PX, Math.min(box.h * 0.62, box.w * 0.13, 42))
+  const width = measure ? measure(text, px) : text.length * px * 0.56
+  if (width > box.w && width > 0) px = Math.max(PROMPT_MIN_PX, (px * box.w) / width)
+  return { box, px, cx: box.x + box.w / 2, cy: box.y + box.h / 2 }
+}
+
+/**
+ * THE QUESTION, carved into the far wall for as long as it can be answered —
+ * and then, if it was missed, **completed there.**
+ *
+ * Not a HUD card and not a banner: a recess cut into the stone the beams come
+ * out of, in the same material language as the beam labels at their feet. The
+ * child's eye travels wall → lattice → floor, and the two numbers that decide
+ * the submission — the sum up there, the divisors down here — sit at the two
+ * ends of that travel at comparable size.
+ *
+ * There is deliberately **no clock on it.** How long is left is already told by
+ * where the candidates are, which is information the child reads without being
+ * counted down at.
+ *
+ * `reveal` is the finished statement, after STACK, whose HUD substitutes the
+ * answer into the prompt it was already showing rather than raising a second
+ * surface: the eye lands on exactly the thing that changed. `473 + 168` becomes
+ * `473 + 168 = 641`, in place, and the completed part is drawn in the
+ * **resonance colour — the one a correct answer celebrates in.** A miss is
+ * completed the same way a success is, only quieter. There is no red here and
+ * there is no word for what happened.
+ *
+ * A five-year-old typing nonsense is still watching a column sum resolve, and
+ * that exposure is the whole reason this branch exists.
+ */
+export function drawPrompt(
+  g: CanvasRenderingContext2D,
+  geom: Geom,
+  text: string,
+  reveal: string | null = null,
+): void {
+  if (text === "") return
+  // A surface that cannot measure falls back to the estimate rather than
+  // throwing inside the frame loop. Nothing about the question a child is
+  // reading may depend on `measureText` having worked.
+  const advance = (t: string, px: number): number => {
+    g.font = font(NUM_FONT, px)
+    const w = g.measureText(t).width
+    return Number.isFinite(w) && w > 0 ? w : t.length * px * 0.56
+  }
+  const tail = reveal === null ? "" : ` = ${reveal}`
+  const whole = text + tail
+  // Sized against the WHOLE statement, so the completed sum is what fits and
+  // the type does not jump when the answer arrives.
+  const plate = promptPlate(geom, whole, advance)
+  const padX = plate.px * 0.5
+  const padY = plate.px * 0.36
+  const wholeW = advance(whole, plate.px)
+  const w = Math.min(plate.box.w, wholeW + padX * 2)
+  const h = plate.px + padY * 2
+
+  // The recess: a darker cut with a lit lower lip, so it reads as carved into
+  // the wall rather than laid on top of it. On a completed sum the lip takes
+  // the resonance colour — the recess lights up, it does not turn red.
+  g.fillStyle = withAlpha(INK, 0.5)
+  g.fillRect(plate.cx - w / 2, plate.cy - h / 2, w, h)
+  g.fillStyle = reveal === null ? withAlpha(STONE_EDGE, 0.55) : withAlpha(RESONANT, 0.8)
+  g.fillRect(plate.cx - w / 2, plate.cy + h / 2 - 1.5, w, 1.5)
+
+  g.font = font(NUM_FONT, plate.px)
+  g.textBaseline = "middle"
+  if (reveal === null) {
+    g.textAlign = "center"
+    g.fillStyle = withAlpha(INK, 0.85)
+    g.fillText(text, plate.cx, plate.cy + 1.5)
+    g.fillStyle = LAPIS_HOT
+    g.fillText(text, plate.cx, plate.cy)
+    return
+  }
+  // Two runs on one baseline: the question as it was, then the part that is
+  // new, in the resonance colour.
+  g.textAlign = "left"
+  const x0 = plate.cx - wholeW / 2
+  g.fillStyle = withAlpha(INK, 0.85)
+  g.fillText(whole, x0, plate.cy + 1.5)
+  g.fillStyle = LAPIS_HOT
+  g.fillText(text, x0, plate.cy)
+  g.fillStyle = RESONANT
+  g.fillText(tail, x0 + advance(text, plate.px), plate.cy)
+  g.textAlign = "center"
+}
+
 export type BeamStyle = {
   /** 0..1 — how lit this beam is. The ridden beam sits near 1. */
   lit: number

@@ -97,11 +97,17 @@ export class Director {
    * curriculum item in front of a child every twenty-four seconds of play. That
    * is a shooter with some arithmetic in it rather than the other way round.
    *
-   * The answering window is deliberately NOT part of the tightening: a child's
-   * comprehension time is measured, never rationed. What was cut is the time
-   * with nothing to think about. A wave ends the moment it is answered, so
-   * reading quickly is what buys the next problem — the pacing rewards fluency
-   * instead of running on a fixed clock.
+   * **The answering window is not in this file at all**, and the sentence that
+   * used to sit here — "comprehension time is measured, never rationed" — was
+   * false when it was written. The window WAS in this file, as
+   * `descentSeconds`, and every line of the pressure curve above tightened it:
+   * 11.84s at a cold start down to 6.87s at the top, a 42% cut applied on
+   * exactly the curve that raises the requested item difficulty from 2 to 9.
+   *
+   * It now lives in `sim/window.ts`, is a pure function of the item, and cannot
+   * see this class. What this file still tightens is the DEAD time — the gap
+   * with nothing on the lattice to think about — and the motion, which is the
+   * excitement. Those two may escalate. The child's thinking time may not.
    */
   wantsCore(coreLive: boolean): boolean {
     if (coreLive) return false
@@ -129,6 +135,38 @@ export class Director {
     this.sinceSpawn = 0
     this.sinceCore = 0
     this.coresRun = 0
+  }
+}
+
+/**
+ * The lattice while a question is being read: sparser and slower, never duller.
+ *
+ * The complaint this answers is a specific one. A child doing a three-digit
+ * column sum was also being asked to sustain roughly one divisibility kill per
+ * second or lose an anchor, which is not two things at once, it is one thing
+ * with the arithmetic squeezed out of it. So for as long as a CORE's candidates
+ * are in the air the stream backs off: fewer automata, further apart, crossing
+ * more slowly.
+ *
+ * What is deliberately NOT relieved:
+ *
+ *   * `tightness` — the bias toward values only one beam divides. That is the
+ *     pedagogy written into the economy, and turning it down during the one
+ *     moment the game is most about mathematics would be exactly backwards.
+ *   * `floorCount` never reaches zero. A lattice with nothing on it is a
+ *     lattice with no mathematics on it, and an empty screen is not calm, it
+ *     is dead air.
+ *
+ * The relief is applied at spawn time, so nothing already descending changes
+ * speed underneath the child's hands.
+ */
+export function readingRelief(p: Pressure): Pressure {
+  return {
+    ...p,
+    descentSeconds: p.descentSeconds * 1.3,
+    stepSeconds: p.stepSeconds * 1.2,
+    spawnGap: p.spawnGap * 1.75,
+    floorCount: Math.max(2, Math.round(p.floorCount * 0.55)),
   }
 }
 
