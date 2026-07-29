@@ -24,6 +24,7 @@ import { bestStreak, recordStreak } from "./game/best.ts"
 import { Game, type GameEvent } from "./game/game.ts"
 import { Scene, type Banner } from "./render/scene.ts"
 import { STRIKE_ON } from "./render/palette.ts"
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 
 /**
  * The largest step the clock may take in one frame.
@@ -51,6 +52,47 @@ export function mountColossus(
   const scene = new Scene(canvas, reduced, seed)
   const audio = new Audio()
   const game = new Game(host, new Rng(seed), now())
+
+  // How to play. The growth penalty is the whole design of this game and it is
+  // the one thing a child cannot deduce from the screen before it happens to
+  // them, so it gets a heading of its own and is stated plainly: nothing is
+  // taken away, you just get more building.
+  const guide = createInstructions(el, {
+    title: "COLOSSUS",
+    summary: [
+      "A stone tower stands in front of the giant. Every floor has a number on it.",
+      "Work out the sum on the keystone. Then punch out the floors that multiply to that answer.",
+    ],
+    sections: [
+      {
+        heading: "Taking a swing",
+        lines: [
+          "Tap a floor to grab it. Tap it again to let go. Grabbing costs you nothing.",
+          "The fist shows what you are holding, like 8 x 9. It never shows the total.",
+          "Multiplying it out is your job.",
+          "Tap STRIKE when you think you have it.",
+        ],
+      },
+      {
+        heading: "A wrong strike makes the tower taller",
+        lines: [
+          "If your floors do not multiply to the keystone, two new floors thud down on top.",
+          "Nothing is taken away from you. No buzzer, no lost life, no red cross.",
+          "You just get more building to knock down. So it pays to be sure first.",
+        ],
+      },
+      {
+        heading: "Bringing it down",
+        lines: [
+          "A right strike blows those floors out, and everything above falls into the hole.",
+          "Clear every keystone and the whole tower comes down.",
+          "Some floors carry numbers that look close but are wrong. Do the sum before you swing.",
+          "Sometimes one floor on its own is the whole answer.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
 
   let best = bestStreak()
   let streak = 0
@@ -218,6 +260,7 @@ export function mountColossus(
       globalThis.removeEventListener("resize", resize)
       observer?.disconnect()
       audio.dispose()
+      guide.destroy()
       canvas.remove()
     },
   }

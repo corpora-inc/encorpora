@@ -24,13 +24,19 @@ import { approach, easeOutCubic, unit } from "../core/feel.ts"
 import { Rng } from "../core/rng.ts"
 import type { Floor } from "../game/tower.ts"
 import { Dust } from "./dust.ts"
+import {
+  cameraFor,
+  pipX,
+  viewLayout,
+  FLOOR_H,
+  FLOOR_W,
+  KEY_GAP,
+  KEY_H,
+  type Layout,
+} from "./layout.ts"
 import * as C from "./palette.ts"
 
-/** World units. One floor of the colossus. */
-const FLOOR_H = 56
-const FLOOR_W = 300
-const KEY_H = 92
-const KEY_GAP = 22
+/** World units. The colossus itself; the building's are in `layout.ts`. */
 const GIANT_H = 306
 
 /** Gravity, world units per millisecond squared. Stone, not feathers. */
@@ -91,6 +97,15 @@ export class Scene {
   private h = 0
   private dpr = 1
 
+  /**
+   * Every measurement in the frame, safe area and host chrome accounted for.
+   *
+   * This is the ONLY source of geometry in the renderer. Nothing below reaches
+   * for `this.w`/`this.h` to decide where a number goes — those two are the
+   * canvas, and the canvas runs under the notch on purpose.
+   */
+  private lay: Layout = viewLayout(1, 1)
+
   private slabs = new Map<number, Slab>()
   private debris: Debris[] = []
 
@@ -125,6 +140,9 @@ export class Scene {
     this.h = Math.max(1, Math.round(rect.height))
     this.canvas.width = Math.round(this.w * this.dpr)
     this.canvas.height = Math.round(this.h * this.dpr)
+    // Re-read the insets here rather than at mount: a rotation swaps top and
+    // bottom for left and right, and iPadOS changes them again in Split View.
+    this.lay = viewLayout(this.w, this.h)
   }
 
   get view(): Metrics {
@@ -176,25 +194,21 @@ export class Scene {
     this.time += dt
     const n = state.floors.length
 
-    // The camera. Fit tower plus keystone plus a little sky.
-    const hudTop = 74
-    const hudBottom = this.strikeBarHeight() + 26
-    const usableH = Math.max(120, this.h - hudTop - hudBottom)
-    const worldH = n * FLOOR_H + KEY_GAP + KEY_H + FLOOR_H * 0.6
-    const byHeight = usableH / Math.max(worldH, FLOOR_H * 6)
-    // A narrow frame gives the building less of the width, not more: the
-    // colossus has to have somewhere to stand, and a phone in portrait is the
-    // only case where the two are fighting over the same pixels.
-    const byWidth = (this.w * (this.w < 640 ? 0.68 : 0.82)) / (FLOOR_W * 1.18)
-    const want = Math.min(1.05, byHeight, byWidth)
-    this.scale = this.reduced ? want : approach(this.scale, want, 0.06, dt)
+    // The camera. Fit tower plus keystone plus a little sky — inside the band
+    // `layout.ts` cleared for it, which begins below the notch and below the
+    // host's two corners rather than at a hardcoded 74.
+    const l = this.lay
+    const cam = cameraFor(l, n)
+    this.scale = this.reduced
+      ? cam.scale
+      : Math.min(cam.cap, approach(this.scale, cam.scale, 0.06, dt))
 
-    const groundY = this.h - hudBottom
+    const groundY = cam.groundY
     this.metrics = {
       groundY,
-      cx: this.w * 0.5,
+      cx: cam.cx,
       scale: this.scale,
-      strike: this.strikeRect(),
+      strike: l.strike,
     }
 
     // Slab physics. Anything above its resting height is falling.
@@ -562,42 +576,32 @@ export class Scene {
 
   // ── the chrome ────────────────────────────────────────────────────────────
 
-  private strikeBarHeight(): number {
-    return Math.max(96, Math.min(132, this.h * 0.14))
-  }
-
-  private strikeRect(): { x: number; y: number; w: number; h: number } {
-    const barH = this.strikeBarHeight()
-    const h = Math.max(58, Math.min(78, barH * 0.62))
-    const w = Math.min(this.w - 40, 520)
-    return { x: (this.w - w) / 2, y: this.h - barH + (barH - h) / 2, w, h }
-  }
-
   private hud(state: SceneState): void {
     const ctx = this.ctx
+    const l = this.lay
 
-    // Top left: which tower this is. Top right: how many keystones are left in
-    // it, as stones. No sentences: the pips are the progress.
-    ctx.font = `700 13px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`
+    // Left: which tower this is. Right: how many keystones are left in it, as
+    // stones. No sentences: the pips are the progress.
+    //
+    // Both are pulled INBOARD of the host's two 44px corners rather than pushed
+    // below them — the exit control sits top-left and the how-to-play control
+    // top-right, and `TOWER 3` used to be underneath the first of them.
+    ctx.font = `700 ${l.hudFont}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`
     ctx.textAlign = "left"
     ctx.textBaseline = "middle"
     ctx.fillStyle = C.HUD_DIM
-    ctx.fillText(`TOWER ${state.level}`, 18, 30)
+    ctx.fillText(`TOWER ${state.level}`, l.hudX, l.towerY)
 
     const total = Math.max(1, state.progress.total)
-    const pipW = 10
-    const gap = 6
-    const right = this.w - 18
     for (let i = 0; i < total; i++) {
-      const x = right - (total - i) * (pipW + gap) + gap
       ctx.fillStyle = i < state.progress.done ? C.HUD_DIM : C.HUD_INK
-      ctx.fillRect(x, 25, pipW, 10)
+      ctx.fillRect(pipX(l, i, total), l.pipY, l.pipW, l.pipH)
     }
 
     if (state.best > 0) {
       ctx.textAlign = "left"
       ctx.fillStyle = C.HUD_DIM
-      ctx.fillText(`BEST ${state.best}`, 18, 50)
+      ctx.fillText(`BEST ${state.best}`, l.hudX, l.bestY)
     }
 
     // The fist. It reads back the expression the child is holding — and never
@@ -648,13 +652,14 @@ export class Scene {
     ctx.globalAlpha = t > 0.75 ? (1 - t) * 4 : 1
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
-    const size = fit(b.title, this.w * 0.82, 56)
+    const { area } = this.lay
+    const size = fit(b.title, area.w * 0.82, 56)
     ctx.font = `900 ${size}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`
     ctx.fillStyle = b.tint
     ctx.shadowColor = "rgba(0,0,0,0.6)"
     ctx.shadowBlur = 18
-    const y = this.h * 0.34 + (1 - rise) * (this.reduced ? 0 : 28)
-    ctx.fillText(b.title, this.w / 2, y)
+    const y = area.y + area.h * 0.34 + (1 - rise) * (this.reduced ? 0 : 28)
+    ctx.fillText(b.title, this.lay.cx, y)
     ctx.restore()
   }
 
@@ -666,7 +671,8 @@ export class Scene {
     ctx.textBaseline = "middle"
     ctx.fillStyle = C.HUD_INK
     ctx.font = `600 17px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`
-    ctx.fillText("Nothing to build with.", this.w / 2, this.h / 2)
+    const { area } = this.lay
+    ctx.fillText("Nothing to build with.", this.lay.cx, area.y + area.h / 2)
   }
 
   // ── hit testing ───────────────────────────────────────────────────────────
