@@ -257,4 +257,22 @@ usable distractors it nudges the answer's own trailing number with exact decimal
 arithmetic: `42` gives `43` and `41`, `3/4` gives `3/5` and `3/3`. Never a float,
 never a `NaN`, never the same value in two lanes.
 
-Nothing is imported from `dynawalla/packs/shared`.
+The only thing imported from `dynawalla/packs/shared` is `game-chrome`, and the
+reason is in `src/game/chrome.ts`. `pack.html` declares `viewport-fit=cover`,
+which opts the document *into* the display cutout and the home indicator; a DOM
+rule can claw that back with `env(safe-area-inset-*)`, but the candidates are
+drawn by a shader in NDC and a shader has never heard of `env()`. Held sideways
+a phone's cutout is about 47 CSS pixels of an 844-wide viewport — five and a
+half per cent — against a page margin of three, so the outer candidate reached
+underneath it, and in this game the outer candidate is an answer. The host also
+paints an exit control in the top-left 44px corner and a how-to-play control in
+the top-right one, over the pack: the score used to sit under the first and the
+surge meter under the second.
+
+So `ndcFrame(w, h, insets)` builds the read band's frame from the measured safe
+area — a *required* argument to `readBand`, because a default is a game that
+forgets the insets, compiles clean, and is found out on a device — and the two
+corner readouts drop clear of the controls. Nothing else moves: the causeway,
+the sky and the ocean still bleed to all four edges, which is the entire point
+of `cover`. `chrome.test.ts` asserts both at five viewports in both rotations,
+and how to remove each fix and watch it fail is written at the top of that file.

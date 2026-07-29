@@ -32,7 +32,7 @@ export const BAND = {
   fill: 0.7,
   /** Ceiling on apparent size, in NDC y. A single digit would otherwise fill the screen. */
   maxH: 0.3,
-  /** Hard page margin: no ink past |x| = this. */
+  /** Hard page margin on a device with no insets: no ink past |x| = this. */
   edge: 0.94,
   /** The row never rises past here — above it lives the prompt. */
   top: 0.56,
@@ -41,6 +41,33 @@ export const BAND = {
   /** Clear air between the numeral row and the top of its own gate arch. */
   lift: 0.07,
 } as const;
+
+/**
+ * The rectangle the numeral row is allowed to occupy, in NDC.
+ *
+ * **Why this is an argument and not a constant.** `BAND.edge` used to be the
+ * page margin, full stop: 0.94, three per cent of half the screen. On a phone
+ * held sideways the display cutout and the rounded corners eat far more than
+ * that — 47 CSS pixels of an 844-wide viewport is five and a half per cent, so
+ * the outer candidate reached about twenty pixels *into* the cutout. In this
+ * game the outer candidate is an answer. A digit the child cannot read is a
+ * wrong answer they did not choose.
+ *
+ * It is required rather than defaulted for the same reason. A default is a
+ * game that forgets the insets, compiles clean, and is discovered on a device.
+ * `chrome.ts` builds one of these from the measured safe area.
+ */
+export type Frame = {
+  /** No ink past |x| = this. */
+  edge: number;
+  /** The row's top edge never rises above this NDC y. */
+  top: number;
+  /** The row's bottom edge never sinks below this NDC y. */
+  bottom: number;
+};
+
+/** The frame on a surface with no insets at all: the old constants, exactly. */
+export const FULL_FRAME: Frame = { edge: BAND.edge, top: BAND.top, bottom: BAND.bottom };
 
 export type Band = {
   /** Ink height, in NDC y. Multiply by `1/|ky|` for world units. */
@@ -61,6 +88,7 @@ export type Band = {
  * @param ky       NDC y per world unit at the gate's depth (magnitude)
  * @param approach 0 when the gate spawns, 1 when it reaches the answer plane
  * @param archTop  NDC y of the top of the gate's arch
+ * @param frame    the NDC rectangle the row may occupy — see `Frame`
  */
 export function readBand(
   units: readonly [number, number, number],
@@ -68,6 +96,7 @@ export function readBand(
   ky: number,
   approach: number,
   archTop: number,
+  frame: Frame,
 ): Band {
   const ax = Math.max(1e-6, Math.abs(kx));
   const ay = Math.max(1e-6, Math.abs(ky));
@@ -79,7 +108,7 @@ export function readBand(
 
   // The widest a numeral can ever be: the point where the gutter rule
   // (w <= fill * pitch) and the page margin (pitch + w/2 <= edge) meet.
-  const wCeil = (BAND.fill * BAND.edge) / (1 + BAND.fill / 2);
+  const wCeil = (BAND.fill * frame.edge) / (1 + BAND.fill / 2);
   // The width at which the apparent-size cap bites. On a narrow phone this is
   // enormous, which is exactly why the pitch has to be free to open up: a
   // three-digit answer on a 320px screen needs most of the width or it lands at
@@ -89,7 +118,7 @@ export function readBand(
   let wNdc = Math.min(wCeil, wWanted);
   // The row spreads as the gate closes, but never tighter than the gutter needs.
   let pitch = Math.max(lerp(BAND.pitchFar, BAND.pitchNear, t), wNdc / BAND.fill);
-  const pitchCeil = BAND.edge - wNdc / 2;
+  const pitchCeil = frame.edge - wNdc / 2;
   if (pitch > pitchCeil) pitch = pitchCeil;
   wNdc = Math.min(wNdc, BAND.fill * pitch);
 
@@ -99,8 +128,8 @@ export function readBand(
   // Sit just clear of the arch, but never behind the prompt and never under the
   // deck. When the two limits collide the top wins: off the bottom is invisible,
   // slightly tight against the prompt is merely close.
-  const lo = BAND.bottom + half;
-  const hi = BAND.top - half;
+  const lo = frame.bottom + half;
+  const hi = frame.top - half;
   let y = archTop + half + BAND.lift;
   if (y < lo) y = lo;
   if (y > hi) y = hi;
@@ -122,6 +151,9 @@ export function readBand(
  */
 export const PAYOFF_EDGE = 0.92;
 
+/** The payoff's margin inside a frame: a shade tighter than the row's own. */
+export const payoffEdge = (frameEdge: number): number => Math.min(PAYOFF_EDGE, frameEdge - 0.02);
+
 /** Ceiling on the payoff numeral's NDC height, whatever the aspect ratio. */
 export const PAYOFF_MAX_H = 1.55;
 
@@ -138,9 +170,11 @@ export const PAYOFF_MAX_H = 1.55;
  * @param wPerH NDC width the text occupies per NDC of height (aspect-corrected)
  * @param from  the numeral's NDC height when it left the row
  * @param swell 0 at the moment of crossing, 1 when fully arrived
+ * @param edge  the page margin — `payoffEdge(frame.edge)`, never a constant,
+ *              because in landscape the cutout sits inside the old constant
  */
-export function payoffHeight(wPerH: number, from: number, swell: number): number {
-  const ceil = Math.min(PAYOFF_MAX_H, (2 * PAYOFF_EDGE) / Math.max(1e-4, wPerH));
+export function payoffHeight(wPerH: number, from: number, swell: number, edge: number): number {
+  const ceil = Math.min(PAYOFF_MAX_H, (2 * edge) / Math.max(1e-4, wPerH));
   // Belt and braces: the swell only ever runs upward. `readBand` already keeps
   // every candidate under 0.54 NDC wide, well inside this ceiling, so `from` is
   // never the larger of the two in practice — but a numeral that *shrank* on a
@@ -153,6 +187,9 @@ export function payoffHeight(wPerH: number, from: number, swell: number): number
 /** The margin a score popup is kept inside. Tighter than the payoff: it is chrome. */
 export const POPUP_EDGE = 0.93;
 
+/** The popup's margin inside a frame. */
+export const popupEdge = (frameEdge: number): number => Math.min(POPUP_EDGE, frameEdge - 0.01);
+
 /**
  * Nudge a centre back inside the frame, in NDC.
  *
@@ -163,9 +200,10 @@ export const POPUP_EDGE = 0.93;
  *
  * @param ndcX  where the text wants to be centred
  * @param halfW half the text's NDC width
- * @param edge  the hard page margin
+ * @param edge  the hard page margin — `popupEdge(frame.edge)`, required for the
+ *              same reason `readBand` requires a frame
  */
-export function keepInside(ndcX: number, halfW: number, edge = POPUP_EDGE): number {
+export function keepInside(ndcX: number, halfW: number, edge: number): number {
   const lim = Math.max(0, edge - Math.max(0, halfW));
   return ndcX < -lim ? -lim : ndcX > lim ? lim : ndcX;
 }

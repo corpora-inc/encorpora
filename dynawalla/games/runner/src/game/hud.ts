@@ -13,6 +13,25 @@
  * reads as a worksheet or a settings app.
  */
 
+import { READOUT_CLEAR } from "./chrome.ts";
+
+/**
+ * The safe-area insets, as CSS values.
+ *
+ * `viewport-fit=cover` puts this document under the cutout and the home
+ * indicator on purpose — the causeway and the ocean should reach the physical
+ * edge of the glass. The HUD should not: a voltage bar under the home indicator
+ * is a voltage bar with a white pill through it, and a score under the cutout is
+ * a score nobody can read.
+ */
+const SA_T = "env(safe-area-inset-top, 0px)";
+const SA_R = "env(safe-area-inset-right, 0px)";
+const SA_B = "env(safe-area-inset-bottom, 0px)";
+const SA_L = "env(safe-area-inset-left, 0px)";
+
+/** The HUD's own margin from the safe edge. */
+const M = "clamp(10px,2.2vw,26px)";
+
 const CSS = `
 .vt-root { position:absolute; inset:0; pointer-events:none; overflow:hidden;
   font-family:"Archivo Black","Helvetica Neue","Arial Black","Segoe UI",system-ui,sans-serif;
@@ -22,7 +41,7 @@ const CSS = `
 .vt-num { font-variant-numeric:tabular-nums; letter-spacing:0.01em; }
 
 /* ---- prompt ---- */
-.vt-prompt { position:absolute; left:50%; top:15%; transform:translate(-50%,0);
+.vt-prompt { position:absolute; left:50%; top:max(15%, calc(${SA_T} + 8px)); transform:translate(-50%,0);
   display:flex; align-items:center; gap:clamp(8px,2.2vw,18px); white-space:nowrap; }
 .vt-prompt-bar { width:clamp(10px,3vw,26px); height:clamp(3px,0.7vw,5px); background:currentColor;
   opacity:0.55; }
@@ -33,8 +52,12 @@ const CSS = `
 @keyframes vt-punch { 0%{transform:scale(1.55);opacity:0.25;} 45%{transform:scale(0.94);opacity:1;} 100%{transform:scale(1);} }
 
 /* ---- corners ---- */
-.vt-tl { position:absolute; left:clamp(10px,2.2vw,26px); top:clamp(10px,2.2vw,24px); }
-.vt-tr { position:absolute; right:clamp(10px,2.2vw,26px); top:clamp(10px,2.2vw,24px); text-align:right; }
+/* The host paints an exit control in the top-LEFT 44px corner and a
+   how-to-play control in the top-RIGHT one, over this pack. The score used
+   to sit under the first and the surge meter under the second. They drop
+   clear of both — the readouts move, the world behind them does not. */
+.vt-tl { position:absolute; left:calc(${SA_L} + ${M}); top:calc(${SA_T} + ${READOUT_CLEAR}px); }
+.vt-tr { position:absolute; right:calc(${SA_R} + ${M}); top:calc(${SA_T} + ${READOUT_CLEAR}px); text-align:right; }
 .vt-label { font-size:clamp(8px,1.5vw,11px); letter-spacing:0.28em; opacity:0.5; }
 /* Tracking adds a trailing space after the last letter, which right-aligned
    text pushes off a narrow screen. Pull it back. */
@@ -58,8 +81,8 @@ const CSS = `
 @keyframes vt-clean { 0%{transform:scaleY(3.4); opacity:1;} 100%{transform:scaleY(1);} }
 
 /* ---- voltage ---- */
-.vt-volt { position:absolute; left:clamp(10px,2.2vw,26px); right:clamp(10px,2.2vw,26px);
-  bottom:clamp(12px,2.6vw,28px); height:clamp(9px,1.8vw,15px);
+.vt-volt { position:absolute; left:calc(${SA_L} + ${M}); right:calc(${SA_R} + ${M});
+  bottom:calc(${SA_B} + clamp(12px,2.6vw,28px)); height:clamp(9px,1.8vw,15px);
   border:2px solid rgba(255,255,255,0.30); display:flex; align-items:stretch; padding:2px; }
 .vt-volt-fill { height:100%; width:100%; transform-origin:0 50%; transition:none;
   box-shadow:0 0 18px currentColor; background:currentColor; }
@@ -87,7 +110,9 @@ const CSS = `
 
 /* ---- overlays ---- */
 .vt-veil { position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
-  justify-content:center; pointer-events:auto; padding:clamp(14px,4vw,40px);
+  justify-content:center; pointer-events:auto;
+  padding:calc(${SA_T} + clamp(14px,4vw,40px)) calc(${SA_R} + clamp(14px,4vw,40px))
+          calc(${SA_B} + clamp(14px,4vw,40px)) calc(${SA_L} + clamp(14px,4vw,40px));
   background:radial-gradient(ellipse at 50% 45%, rgba(2,4,12,0.55) 0%, rgba(2,4,12,0.93) 72%); }
 .vt-veil.vt-on { display:flex; }
 .vt-title { font-size:clamp(38px,12vw,110px); line-height:0.86; letter-spacing:0.04em;
@@ -116,7 +141,7 @@ const CSS = `
     linear-gradient(180deg, rgba(3,7,18,0.82) 0%, rgba(3,7,18,0.16) 26%,
                             rgba(3,7,18,0.16) 52%, rgba(3,7,18,0.88) 82%),
     radial-gradient(ellipse at 50% 42%, rgba(0,0,0,0) 40%, rgba(2,5,14,0.55) 100%);
-  justify-content:flex-end; padding-bottom:clamp(20px,5vh,54px); }
+  justify-content:flex-end; padding-bottom:calc(${SA_B} + clamp(20px,5vh,54px)); }
 /* A charge front sweeping up the screen. Slow, wide, low-contrast: energy, not
    a strobe — 4.2s per pass is far under any flash threshold. */
 .vt-veil[data-v="revive"]::before { content:""; position:absolute; left:0; right:0; height:36%;
@@ -166,7 +191,7 @@ const CSS = `
 .vt-stat i { display:block; font-style:normal; font-size:clamp(8px,1.6vw,11px); letter-spacing:0.26em; opacity:0.5; margin-top:5px; }
 
 /* ---- settings ---- */
-.vt-tools { position:absolute; right:clamp(10px,2.2vw,26px); bottom:clamp(34px,6vw,58px);
+.vt-tools { position:absolute; right:calc(${SA_R} + ${M}); bottom:calc(${SA_B} + clamp(34px,6vw,58px));
   display:flex; gap:6px; pointer-events:auto; }
 .vt-tool { width:clamp(30px,6vw,40px); height:clamp(30px,6vw,40px); border:2px solid rgba(255,255,255,0.28);
   background:rgba(2,5,14,0.55); color:inherit; font:inherit; font-size:clamp(11px,2.2vw,14px);
@@ -174,7 +199,7 @@ const CSS = `
 .vt-tool[aria-pressed="true"] { background:currentColor; }
 .vt-tool[aria-pressed="true"] span { color:#04060f; }
 .vt-tool:focus-visible { outline:3px solid #fff; outline-offset:2px; }
-.vt-perf { position:absolute; left:clamp(10px,2.2vw,26px); bottom:clamp(58px,10vw,96px);
+.vt-perf { position:absolute; left:calc(${SA_L} + ${M}); bottom:calc(${SA_B} + clamp(58px,10vw,96px));
   font-size:11px; letter-spacing:0.1em; opacity:0.6; white-space:pre; display:none;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:400; text-transform:none; }
 .vt-perf.vt-on { display:block; }
