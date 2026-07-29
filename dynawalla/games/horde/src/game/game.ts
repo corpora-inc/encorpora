@@ -17,6 +17,7 @@ import { createInstructions, type Instructions } from "../../../../packs/shared/
 import type { Host, Question } from "../contract.ts"
 import { Audio } from "../core/audio.ts"
 import { Input } from "../core/input.ts"
+import { integrate, worldFromScreen, type Diver } from "../core/motion.ts"
 import { detectTier, tier, TierGovernor, type Tier, type TierName } from "../core/tiers.ts"
 import { Renderer, SHAPE } from "../gfx/renderer.ts"
 import { BEHAVIOUR, ENEMIES, E_INDEX, hpScale, speedScale, targetPopulation } from "./enemies.ts"
@@ -26,6 +27,7 @@ import {
   type Build, type Card,
 } from "./loadout.ts"
 import { Curriculum } from "./curriculum.ts"
+import { ORB_RADIUS, type Orb, advance as advanceOrbs, place as placeOrbs, reached } from "./orbs.ts"
 import { Bullets, Enemies, Gems, Grid, Numbers, Particles, Shocks } from "./world.ts"
 import { Overlay } from "../ui/overlay.ts"
 
@@ -33,8 +35,6 @@ const STEP = 1 / 60
 const AREA = 402 // sqrt(halfW*halfH): a constant amount of world on any screen
 
 type Mode = "title" | "play" | "levelup" | "core" | "rift" | "over" | "paused"
-
-type Orb = { x: number; y: number; ang: number; text: string; correct: boolean; state: number; t: number }
 
 export class Game {
   private root: HTMLElement
@@ -121,6 +121,9 @@ export class Game {
 
   private q: Question | null = null
   private orbs: Orb[] = []
+  /** Where the CORE opened. The ring, the prompt and the iris all live here. */
+  private qX = 0
+  private qY = 0
   private qT = 0
   private qTMax = 0
   private qStart = 0
@@ -195,8 +198,9 @@ export class Game {
           heading: "The CORE",
           lines: [
             "Every so often a gold CORE appears. Swim into it.",
-            "Time slows down and three numbered balls circle you. One holds the answer.",
-            "Swim out and touch the right one. For nine seconds nothing can stand near you.",
+            "Time slows down and three numbered balls ring the spot. One holds the answer.",
+            "Swim out and touch the right one. For nine seconds nothing can stand near you,",
+            "and that is when a WARDEN can actually be brought down.",
             "Touch a wrong one and a ring of enemies drops on top of you. The gold ball then lights up so you can see which it was.",
           ],
         },
@@ -505,14 +509,17 @@ export class Game {
   private movePlayer(dt: number): void {
     const s = this.build.stats
     const st = this.input.stick
-    const ax = st.x * s.speed
-    const ay = st.y * s.speed
-    // Heavy acceleration but a hard cap, so the diver feels weighty yet exact.
-    const k = 1 - Math.pow(0.00004, dt)
-    this.pvx += (ax - this.pvx) * k
-    this.pvy += (ay - this.pvy) * k
-    this.px += this.pvx * dt
-    this.py += this.pvy * dt
+    // The stick is in CSS pixels, where +y is DOWN; the world's +y is UP,
+    // because that is what the vertex shaders project. `integrate` owns that
+    // change of basis and every input path goes through it — the sign used to
+    // be missing here, and the game played like a flight simulator. See
+    // `core/motion.ts`.
+    const d: Diver = { x: this.px, y: this.py, vx: this.pvx, vy: this.pvy }
+    integrate(d, st.x, st.y, s.speed, dt)
+    this.px = d.x
+    this.py = d.y
+    this.pvx = d.vx
+    this.pvy = d.vy
     if (st.mag > 0.02) this.pAng = Math.atan2(this.pvy, this.pvx)
 
     // Wake bubbles.
@@ -1075,7 +1082,7 @@ export class Game {
     E.vx[i] += (dx / d) * knock * mi
     E.vy[i] += (dy / d) * knock * mi
 
-    this.number(E.x[i], E.y[i] - E.radius[i], Math.round(dmg), crit)
+    this.number(E.x[i], E.y[i] + E.radius[i], Math.round(dmg), crit)
 
     const hard = this.P.pool.n > this.T.maxParticles * 0.8
     const n = hard ? 1 : Math.round((crit ? 7 : 3) * this.T.particleScale)
@@ -1294,7 +1301,10 @@ export class Game {
     const N = this.N
     N.x[i] = x + (this.rng() - 0.5) * 14
     N.y[i] = y
-    N.vy[i] = crit ? -150 : -96
+    // `+y` is up. A damage number rises off the hit and falls back — it used to
+    // be launched downward and pulled upward, so every hit spat its number into
+    // the floor.
+    N.vy[i] = crit ? 150 : 96
     N.vx[i] = (this.rng() - 0.5) * 46
     N.life[i] = crit ? 0.95 : 0.62
     N.max[i] = N.life[i]
@@ -1312,7 +1322,7 @@ export class Game {
       if (N.life[i] <= 0) { N.pool.kill(i); continue }
       N.y[i] += N.vy[i] * dt
       N.x[i] += N.vx[i] * dt
-      N.vy[i] += 190 * dt
+      N.vy[i] -= 190 * dt
     }
   }
 
@@ -1438,38 +1448,24 @@ export class Game {
       const j = Math.floor(this.rng() * (i + 1))
       const t = opts[i]; opts[i] = opts[j]; opts[j] = t
     }
-    this.orbs.length = 0
-    const base = this.rng() * Math.PI * 2
-    for (let i = 0; i < opts.length; i++) {
-      this.orbs.push({
-        x: 0, y: 0,
-        ang: base + (i / opts.length) * Math.PI * 2,
-        text: opts[i],
-        correct: opts[i] === q.answer,
-        state: 0,
-        t: 0,
-      })
-    }
+    // The ring is laid down HERE, where the CORE was, and it stays there. It
+    // used to be recomputed from the diver's position on every frame, which
+    // made every answer permanently 172px away however hard the child swam.
+    // See `orbs.ts`.
+    this.qX = this.px
+    this.qY = this.py
+    this.orbs = placeOrbs(this.qX, this.qY, opts, q.answer, this.rng() * Math.PI * 2)
   }
 
   private questTick(dt: number): void {
     this.qT -= dt
-    const rad = 172
-    for (const o of this.orbs) {
-      o.ang += dt * 0.42
-      o.x = this.px + Math.cos(o.ang) * rad
-      o.y = this.py + Math.sin(o.ang) * rad
-      if (o.state !== 0) { o.t += dt; continue }
-      if (this.qAnswered) continue
-      const dx = o.x - this.px
-      const dy = o.y - this.py
-      // The orbit is a fixed distance away; you reach one by *swimming out*
-      // to it, which is the same verb as everything else in the game.
-      const px = this.px + this.pvx * 0.06
-      const py = this.py + this.pvy * 0.06
-      if ((o.x - px) * (o.x - px) + (o.y - py) * (o.y - py) < 40 * 40) {
-        void dx; void dy
-        this.answer(o)
+    advanceOrbs(this.orbs, dt)
+    if (!this.qAnswered) {
+      for (const o of this.orbs) {
+        if (reached(o, this.px, this.py, this.pvx, this.pvy)) {
+          this.answer(o)
+          break
+        }
       }
     }
     if (!this.qAnswered && this.qT <= 0) this.closeQuestion(null)
@@ -1794,8 +1790,14 @@ export class Game {
         const hpf = Math.max(0, E.hp[i] / E.maxHp[i])
         r.sprite(x, y, rad * 1.5, rad * 1.5, t * 1.3, 1, 0.86, 0.4, 0.55, SHAPE.RING, 0.05, 0.2)
         r.sprite(x, y, rad * 1.9, rad * 1.9, -t * 0.9, 1, 0.7, 0.3, 0.34, SHAPE.RING, 0.03, 0)
-        // Health as a shrinking arc of light: readable without a bar.
-        r.sprite(x, y - rad * 2.2, rad * 1.5 * hpf, 4, 0, 1, 0.5, 0.4, 0.9, SHAPE.CAPSULE, 0.5, 0.4)
+        // Health as a shrinking arc of light: readable without a bar. It was
+        // drawn at `y - rad * 2.2`, and `+y` is up — so a WARDEN's only damage
+        // feedback rendered UNDERNEATH it, behind its own body glow, and the
+        // game read as though the thing could not be hurt at all. It can: every
+        // weapon damages it like anything else. See `damage()`.
+        const bar = rad * 1.5
+        r.sprite(x, y + rad * 2.2, bar, 4, 0, 0.5, 0.16, 0.2, 0.5, SHAPE.CAPSULE, 0.5, 0)
+        r.sprite(x - bar * (1 - hpf), y + rad * 2.2, bar * hpf, 4, 0, 1, 0.5, 0.4, 1, SHAPE.CAPSULE, 0.5, 0.4)
       }
       if (def.behaviour === BEHAVIOUR.CHARGE && E.st2[i] > 0) {
         r.sprite(x, y, rad * 3.4, rad * 1.1, E.rot[i], 1, 0.5, 0.2, 0.5, SHAPE.CAPSULE, 0.35, 0.4)
@@ -1855,12 +1857,23 @@ export class Game {
     /* the question */
     if (this.q) {
       const fade = Math.min(1, this.qT * 2)
-      r.text(this.q.prompt, this.px, this.py - 116, 56, 1, 1, 1, fade)
-      const ring = 172
-      r.sprite(this.px, this.py, ring, ring, t * 0.4, 1, 0.86, 0.44, 0.30 * fade, SHAPE.RING, 0.012, 0.2)
+      // The prompt, the ring and the iris belong to the CORE, not to the diver:
+      // the child swims out of the middle of them to reach an answer, and a
+      // surface that followed the diver would take the sum along for the ride.
+      // `+y` is up, so the sum sits ABOVE the ring — it used to be written at
+      // `py - 116`, which put it under the diver's own light.
+      //
+      // Held inside the view, though. The camera follows the diver, and in
+      // landscape there are only ~273 world units above it; a sum anchored 224
+      // above a CORE the child has swum below would be off the top of the
+      // screen while they were still deciding what it said.
+      const promptY = Math.min(this.qY + ORB_RADIUS + 74, this.camY + hh - 62)
+      r.text(this.q.prompt, this.qX, promptY, 56, 1, 1, 1, fade)
+      const ring = ORB_RADIUS
+      r.sprite(this.qX, this.qY, ring, ring, t * 0.4, 1, 0.86, 0.44, 0.30 * fade, SHAPE.RING, 0.012, 0.2)
       // Time as a closing iris, not a number.
       const frac = Math.max(0, this.qT / Math.max(0.001, this.qTMax))
-      r.sprite(this.px, this.py, ring * (0.35 + frac * 0.62), ring * (0.35 + frac * 0.62), -t * 0.9, 1, 0.7, 0.3, 0.34 * fade, SHAPE.RING, 0.02, 0)
+      r.sprite(this.qX, this.qY, ring * (0.35 + frac * 0.62), ring * (0.35 + frac * 0.62), -t * 0.9, 1, 0.7, 0.3, 0.34 * fade, SHAPE.RING, 0.02, 0)
       for (const o of this.orbs) {
         const hot = o.state === 1 ? 1 : 0
         const bad = o.state === 2 ? 1 : 0
@@ -1965,14 +1978,18 @@ export class Game {
     const st = this.input.stick
     const r = this.r
     const wpp = (hw * 2) / Math.max(1, this.canvas.clientWidth)
-    const hpp = (hh * 2) / Math.max(1, this.canvas.clientHeight)
-    const ox = this.camX - hw + st.originX * wpp
-    const oy = this.camY - hh + st.originY * hpp
-    const kx = this.camX - hw + st.knobX * wpp
-    const ky = this.camY - hh + st.knobY * hpp
+    // Screen y=0 is the world's TOP edge, `camY + hh`. This used to read
+    // `camY - hh + originY * hpp`, so the ring drew at the reflected height —
+    // the same missing sign that inverted the controls. See `core/motion.ts`.
+    const view = {
+      camX: this.camX, camY: this.camY, halfW: hw, halfH: hh,
+      cssW: this.canvas.clientWidth, cssH: this.canvas.clientHeight,
+    }
+    const o = worldFromScreen(st.originX, st.originY, view)
+    const k = worldFromScreen(st.knobX, st.knobY, view)
     const rad = 62 * wpp
-    r.sprite(ox, oy, rad, rad, 0, 0.5, 0.85, 1, 0.22, SHAPE.RING, 0.03, 0)
-    r.sprite(kx, ky, rad * 0.4, rad * 0.4, 0, 0.7, 0.95, 1, 0.5, SHAPE.DISC, 1.2, 0.2)
+    r.sprite(o.x, o.y, rad, rad, 0, 0.5, 0.85, 1, 0.22, SHAPE.RING, 0.03, 0)
+    r.sprite(k.x, k.y, rad * 0.4, rad * 0.4, 0, 0.7, 0.95, 1, 0.5, SHAPE.DISC, 1.2, 0.2)
   }
 
   private drawOffscreenMarker(x: number, y: number, hw: number, hh: number, r0: number, g0: number, b0: number): void {

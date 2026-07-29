@@ -1,6 +1,13 @@
 export type Question = { id: string; prompt: string; answer: string; distractors: string[]; domain: string; difficulty: number }
 export type Host = {
-  next(opts?: { domain?: string; difficulty?: number }): Question
+  /**
+   * `maxDifficulty` is a standing ceiling on the host's stream, not a per-call
+   * hint: it stands until a different one is named. DEEPSWARM names the rung
+   * the run has EARNED, so the pool can be spread downward for variety without
+   * a pooled question from a previous, higher request leaking back up. See
+   * `packs/shared/game-host/index.ts`.
+   */
+  next(opts?: { domain?: string; difficulty?: number; maxDifficulty?: number }): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
   haptic(k: "light" | "medium" | "heavy" | "success" | "failure"): void
   prefersReducedMotion(): boolean

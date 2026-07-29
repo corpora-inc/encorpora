@@ -11,22 +11,46 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import type { Host, Question } from "../contract.ts"
-import { BASE_THINKING_SECONDS, Curriculum, MAX_DIFFICULTY } from "./curriculum.ts"
+import {
+  BASE_THINKING_SECONDS,
+  Curriculum,
+  MAX_DIFFICULTY,
+  LADDER_SPAN,
+  MAX_DROP_RUNGS,
+  MISS_RUNGS,
+  RECENT_WINDOW,
+  SPREAD_RUNGS,
+} from "./curriculum.ts"
 
 type Report = { questionId: string; correct: boolean; ms: number; answered: string }
+
+/** mulberry32 — the same generator `stubHost.ts` uses. Seeded, so this is exact. */
+function seeded(seed: number): () => number {
+  let a = seed >>> 0
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0
+    let t = a
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
 
 /** A host that remembers everything it was asked and everything it was told. */
 function recordingHost(): {
   host: Host
   asks: number[]
+  ceilings: number[]
   reports: Report[]
 } {
   const asks: number[] = []
+  const ceilings: number[] = []
   const reports: Report[] = []
   let n = 0
   const host: Host = {
     next(opts) {
       asks.push(opts?.difficulty ?? 0)
+      ceilings.push(opts?.maxDifficulty ?? 0)
       n++
       return {
         id: `q${n}`,
@@ -45,7 +69,7 @@ function recordingHost(): {
       return false
     },
   }
-  return { host, asks, reports }
+  return { host, asks, ceilings, reports }
 }
 
 /**
@@ -67,10 +91,13 @@ test("a bot that answers everything WRONG never climbs past the first rung", () 
   // Three-digit addition lives high on the host ladder. This bot must not be
   // anywhere near it: it has demonstrated nothing.
   assert.equal(c.difficulty(), 1, "a run with no right answers must stay on rung 1")
+  // The request is a LADDER POSITION now, not a step of a ten-point scale, so
+  // the bottom is 0 rather than 1. The property is the same one: one value, and
+  // it is the floor of the curriculum.
   assert.deepEqual(
     [...new Set(asks)],
-    [1],
-    "every question in a run with no right answers must be asked at rung 1",
+    [0],
+    "every question in a run with no right answers must come from the bottom rung",
   )
   assert.equal(c.solved, 0)
   assert.equal(c.asked, LONG_RUN)
@@ -86,7 +113,7 @@ test("a bot that never answers at all never climbs either", () => {
   }
 
   assert.equal(c.difficulty(), 1, "surviving is not an achievement")
-  assert.equal(Math.max(...asks), 1)
+  assert.equal(Math.max(...asks), 0)
   assert.equal(c.unanswered, LONG_RUN)
 })
 
@@ -100,10 +127,14 @@ test("a bot that answers everything RIGHT climbs, and reaches the top", () => {
   }
 
   assert.equal(c.difficulty(), MAX_DIFFICULTY, "a run that is all right answers must top out")
-  assert.equal(asks[0], 1, "it still starts at the bottom")
+  assert.equal(asks[0], 0, "it still starts at the bottom")
   assert.ok(
     asks[asks.length - 1]! > asks[0]!,
     "the ladder has to actually move for a child who is getting them right",
+  )
+  assert.ok(
+    (asks[asks.length - 1] as number) > 0.9,
+    `a run that answered fifty questions right topped out at ${asks[asks.length - 1]}`,
   )
 })
 
@@ -199,4 +230,278 @@ test("the run panel counts questions the child ANSWERED, not questions it served
   assert.equal(c.asked, 8)
   assert.equal(c.answeredCount, 5, "three cores closed unanswered; they are not answers")
   assert.equal(c.solved, 5)
+})
+
+
+/* ------------------------------------------------------------ the question mix */
+
+// TEN RUNGS OUT OF SIXTY.
+//
+// A founder playtest: "more variable questions for the rift, they are all like
+// 2-digit plus 2-digit without carrying? I think we could have some single and
+// triple digit (adapting to user level) and some carrying .. and why not
+// subtraction, multiplication and division sometimes (dependent on user
+// performance and adapting up and down)."
+//
+// The cause was not the operation — the host owns that and `domain` is a label.
+// It was the SCALE. The game spoke the host's integer scale, where 1..10 maps
+// onto a 59-rung ladder with a stride of 6.5, so fifty of the sixty shipped
+// rungs could not be named at all. `ladderCoverage` below walks the same
+// arithmetic the host does (`toUnit`, then `Math.round(unit * span)`) and
+// counts what a run can actually reach.
+
+/** The host's own reading of a request, from `packs/shared/game-host/index.ts`. */
+function toUnit(value: number): number {
+  return value < 1 ? Math.max(0, value) : Math.min(1, (value - 1) / 9)
+}
+
+/** The rung `items.ts` lands on for a request. `next`: rounds; the cap floors. */
+function rungFor(difficulty: number, maxDifficulty: number): number {
+  const span = LADDER_SPAN
+  const cap = Math.floor(toUnit(maxDifficulty) * span)
+  return Math.max(0, Math.min(span, cap, Math.round(toUnit(difficulty) * span)))
+}
+
+/** A recording host that also reports which ladder rung each request landed on. */
+function rungRecorder(): { host: Host; rungs: number[] } {
+  const rungs: number[] = []
+  let n = 0
+  const host: Host = {
+    next(opts) {
+      rungs.push(rungFor(opts?.difficulty ?? 0, opts?.maxDifficulty ?? 10))
+      n++
+      return {
+        id: `q${n}`, prompt: `${n} + 1`, answer: String(n + 1),
+        distractors: [String(n), String(n + 2)], domain: "add", difficulty: 0.5,
+      } satisfies Question
+    },
+    report() {},
+    haptic() {},
+    prefersReducedMotion: () => false,
+  }
+  return { host, rungs }
+}
+
+/** Eighteen questions — a nine-minute run — at a given accuracy. */
+function playRun(seed: number, accuracy: number): number[] {
+  const { host, rungs } = rungRecorder()
+  const rng = seeded(seed)
+  const c = new Curriculum(seeded(seed ^ 0x9e37))
+  for (let i = 0; i < 18; i++) {
+    const q = c.ask(host)
+    const right = rng() < accuracy
+    c.answered(host, q, right ? q.answer : (q.distractors[0] as string), right, 1500)
+  }
+  return rungs
+}
+
+test("a run reaches far more of the curriculum than ten rungs of sixty", () => {
+  const perRun: number[] = []
+  const everywhere = new Set<number>()
+  for (let s = 0; s < 600; s++) {
+    const r = playRun(1000 + s, 0.6)
+    perRun.push(new Set(r).size)
+    for (const x of r) everywhere.add(x)
+  }
+  const mean = perRun.reduce((a, b) => a + b, 0) / perRun.length
+  // Measured before this change, same 600 runs: 5.84 distinct rungs per run and
+  // 9 distinct rungs across all of them, because ten integers is all the old
+  // scale could say.
+  assert.ok(mean > 8, `a run still only reaches ${mean.toFixed(2)} distinct rungs`)
+  assert.ok(
+    everywhere.size > 30,
+    `600 runs between them reached ${everywhere.size} of ${LADDER_SPAN + 1} rungs`,
+  )
+})
+
+test("the rungs the old integer scale could not name are now reachable", () => {
+  // The ten rungs `1..10` mapped to, and therefore the only ten a run could
+  // ever be served. Rung 18 is `column.add-no-regroup L0` and rung 29 is
+  // `regroup.add-multidigit L0` — the beginning of two-digit work and the whole
+  // of carrying — and neither was addressable.
+  const OLD = new Set([0, 7, 13, 20, 26, 33, 39, 46, 52, 59])
+  const reached = new Set<number>()
+  for (let s = 0; s < 600; s++) for (const r of playRun(2000 + s, 0.75)) reached.add(r)
+  const novel = [...reached].filter((r) => !OLD.has(r))
+  assert.ok(
+    novel.length > 20,
+    `only ${novel.length} rungs outside the old ten were ever reached: ${novel.join(", ")}`,
+  )
+  assert.ok(reached.has(18) || reached.has(19), "the first column-arithmetic rungs are still unreachable")
+  assert.ok(reached.has(29) || reached.has(30), "the first regrouping rungs are still unreachable")
+})
+
+test("a rung the child has not earned is never served, however wide the band", () => {
+  for (let s = 0; s < 200; s++) {
+    const { host, rungs } = rungRecorder()
+    const c = new Curriculum(seeded(s))
+    const rng = seeded(s ^ 0x5a5a)
+    for (let i = 0; i < 40; i++) {
+      // The edge as it stood when the question was ASKED.
+      const edgeRung = Math.round(c.edgeUnit() * LADDER_SPAN)
+      const q = c.ask(host)
+      assert.ok(
+        (rungs[rungs.length - 1] as number) <= edgeRung,
+        `a question came from rung ${rungs[rungs.length - 1]} with only rung ${edgeRung} earned`,
+      )
+      const right = rng() < 0.5
+      c.answered(host, q, right ? q.answer : (q.distractors[0] as string), right, 1500)
+    }
+  }
+})
+
+test("the edge itself is served — the cap does not shave a rung off the top", () => {
+  // `items.ts` FLOORS the cap and ROUNDS the request, so a ceiling sent naively
+  // sits a rung under the question it is meant to permit. `ask` adds the half
+  // rung that makes them agree, and the top of the ladder has to be reachable.
+  const { host, rungs } = rungRecorder()
+  const c = new Curriculum(seeded(1))
+  for (let i = 0; i < 60; i++) c.solved++
+  for (let i = 0; i < 400; i++) c.ask(host)
+  assert.ok(
+    rungs.includes(LADDER_SPAN),
+    `a run at the top of the ladder never saw rung ${LADDER_SPAN}; highest was ${Math.max(...rungs)}`,
+  )
+})
+
+test("the band does not bottom out on 0 + 1 in the opening minutes", () => {
+  // Measured with an absolute descent instead of a proportional one: 36% of
+  // every early run collapsed onto the single easiest rung in the product,
+  // twice what the old code did, which is a worse game and worse teaching.
+  let atFloor = 0
+  let n = 0
+  for (let s = 0; s < 600; s++) {
+    for (const r of playRun(3000 + s, 0.6)) {
+      n++
+      if (r === 0) atFloor++
+    }
+  }
+  assert.ok(
+    atFloor / n < 0.25,
+    `${((atFloor / n) * 100).toFixed(0)}% of every question was the easiest rung in the product`,
+  )
+})
+
+test("most questions still sit at or just under the edge", () => {
+  const c = new Curriculum(seeded(11))
+  for (let i = 0; i < 20; i++) c.solved++
+  const edge = c.edgeUnit() * LADDER_SPAN
+  let near = 0
+  const N = 5000
+  for (let i = 0; i < N; i++) if (edge - c.askUnit() * LADDER_SPAN <= 2) near++
+  assert.ok(
+    near / N > 0.45,
+    `only ${((near / N) * 100).toFixed(0)}% of questions were within two rungs of the edge — ` +
+      "the band is meant to interleave easier retrieval, not replace the work",
+  )
+})
+
+test("the whole band is used, out to its stated width", () => {
+  const c = new Curriculum(seeded(0xabc))
+  for (let i = 0; i < 20; i++) c.solved++
+  const edge = c.edgeUnit() * LADDER_SPAN
+  const steps = new Set<number>()
+  for (let i = 0; i < 6000; i++) steps.add(Math.round(edge - c.askUnit() * LADDER_SPAN))
+  const sorted = [...steps].sort((a, b) => a - b)
+  assert.deepEqual(sorted, [0, 1, 2, 3, 4, 5, 6], `the band used steps {${sorted.join(", ")}}`)
+  assert.equal(SPREAD_RUNGS, 6)
+})
+
+/* --------------------------------------------------------- and back down again */
+
+test("a child who starts missing is asked easier questions, within one question", () => {
+  const c = new Curriculum(seeded(5))
+  const { host } = recordingHost()
+  for (let i = 0; i < 20; i++) c.solved++ // earned the top of the ladder
+  assert.equal(c.difficulty(), MAX_DIFFICULTY)
+
+  // The TOP of the band, not one sample of it: a single draw carries the
+  // ordinary spread and would make this test a coin toss.
+  const topRung = (): number =>
+    Math.max(...Array.from({ length: 400 }, () => Math.round(c.askUnit() * LADDER_SPAN)))
+  const before = topRung()
+  assert.equal(before, LADDER_SPAN, "a clean run at the top must be able to draw the top rung")
+
+  for (let i = 0; i < 3; i++) {
+    const q = c.ask(host)
+    c.answered(host, q, q.distractors[0] as string, false, 4000)
+  }
+  assert.equal(c.recentMisses, 3)
+  assert.equal(c.difficulty(), MAX_DIFFICULTY, "the EARNED step must not fall — #656")
+  const after = topRung()
+  assert.equal(
+    after,
+    before - 3 * MISS_RUNGS,
+    `three misses moved the hardest question the run will ask from rung ${before} to rung ` +
+      `${after}; a child who is drowning must be handed something easier`,
+  )
+})
+
+test("and it comes straight back up when they start getting them right", () => {
+  const c = new Curriculum(seeded(13))
+  const { host } = recordingHost()
+  for (let i = 0; i < 20; i++) c.solved++
+
+  for (let i = 0; i < RECENT_WINDOW; i++) {
+    const q = c.ask(host)
+    c.answered(host, q, q.distractors[0] as string, false, 4000)
+  }
+  assert.equal(c.recentMisses, RECENT_WINDOW, "the window should be all misses")
+
+  for (let i = 0; i < RECENT_WINDOW; i++) {
+    const q = c.ask(host)
+    c.answered(host, q, q.answer, true, 1100)
+  }
+  assert.equal(c.recentMisses, 0, "the window must forget an old bad patch")
+  const top = Math.max(...Array.from({ length: 400 }, () => Math.round(c.askUnit() * LADDER_SPAN)))
+  assert.equal(
+    top,
+    LADDER_SPAN,
+    "recovery has to be immediate — the earned step was never lost, so it must not be re-earned",
+  )
+})
+
+test("the drop is bounded — a bad patch cannot strand a child at the bottom", () => {
+  const c = new Curriculum(seeded(17))
+  const { host } = recordingHost()
+  for (let i = 0; i < 20; i++) c.solved++
+  for (let i = 0; i < 40; i++) {
+    const q = c.ask(host)
+    c.answered(host, q, q.distractors[0] as string, false, 5000)
+  }
+  const lowest = Math.min(
+    ...Array.from({ length: 500 }, () => Math.round(c.askUnit() * LADDER_SPAN)),
+  )
+  assert.ok(
+    lowest >= LADDER_SPAN - MAX_DROP_RUNGS - SPREAD_RUNGS,
+    `a run that reached the top was walked all the way down to rung ${lowest}`,
+  )
+  assert.ok(lowest > LADDER_SPAN / 3, `rung ${lowest} is a different subject, not an easier question`)
+})
+
+test("a timeout is not a miss, and does not pull the band down", () => {
+  // Same principle as `expired()` reporting nothing: a child who ran out of
+  // time has told us nothing about what they know, and acting on it is a guess.
+  const c = new Curriculum(seeded(19))
+  const { host } = recordingHost()
+  for (let i = 0; i < 20; i++) c.solved++
+  for (let i = 0; i < 10; i++) {
+    c.ask(host)
+    c.expired()
+  }
+  assert.equal(c.recentMisses, 0, "a timeout was counted as a wrong answer")
+})
+
+test("the rift asks below the band, and the band below that", () => {
+  const c = new Curriculum(seeded(23))
+  for (let i = 0; i < 12; i++) c.solved++
+  assert.equal(c.difficulty(), 7)
+  assert.equal(c.difficulty(-1), 6)
+  const riftEdge = c.edgeUnit(-1)
+  assert.ok(riftEdge < c.edgeUnit(), "a rift question must be easier than the run's own edge")
+  for (let i = 0; i < 500; i++) {
+    const u = c.askUnit(-1)
+    assert.ok(u <= riftEdge, "a rift question came in above what the run had earned")
+    assert.ok(u >= 0)
+  }
 })

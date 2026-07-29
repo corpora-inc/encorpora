@@ -4,7 +4,8 @@
  */
 import type { Card } from "../game/loadout.ts"
 import type { Question } from "../contract.ts"
-import { applyChromeVars } from "./layout.ts"
+import { applyChromeVars, watchChromeVars } from "./layout.ts"
+import { shuffleWithAnswer } from "./shuffle.ts"
 
 const h = <K extends keyof HTMLElementTagNameMap>(
   tag: K, cls?: string, text?: string,
@@ -26,6 +27,7 @@ export class Overlay {
   private clock: HTMLElement
   private lvl: HTMLElement
   private kills: HTMLElement
+  private life: HTMLElement
   private lifeFill: HTMLElement
   private lifeText: HTMLElement
   private weps: HTMLElement
@@ -38,6 +40,7 @@ export class Overlay {
   private cardTitle: HTMLElement
 
   private riftModal: HTMLElement
+  private riftBox: HTMLElement
   private riftCharges: HTMLElement
   private riftPrompt: HTMLElement
   private riftAnswers: HTMLElement
@@ -52,6 +55,7 @@ export class Overlay {
 
   private soundBtn: HTMLButtonElement
   private pauseBtn: HTMLButtonElement
+  private unwatch: () => void = () => {}
 
   onPickCard: (i: number) => void = () => {}
   onSealed: (r: SealedResult) => void = () => {}
@@ -68,7 +72,15 @@ export class Overlay {
     // numbers that keep this HUD out of the host's two corners live in
     // `layout.ts` and are handed to the CSS here. One source, and the tests
     // read the same one.
+    //
+    // That includes the safe area itself. `env(safe-area-inset-*)` resolves to
+    // zero inside a pack — it is a property of the top-level document and a
+    // pack is a cross-origin child — so the whole HUD was laid out against
+    // zeros on precisely the devices that have a notch. The host's measurement
+    // arrives through `safeInsets()`; `watchChromeVars` keeps it current
+    // through a rotation.
     applyChromeVars(root)
+    this.unwatch = watchChromeVars(root)
 
     const hud = h("div", "hz-hud")
     const xp = h("div", "hz-xpbar")
@@ -84,9 +96,12 @@ export class Overlay {
     top.append(this.lvl, this.clock, this.kills)
 
     const life = h("div", "hz-life")
+    life.setAttribute("role", "meter")
+    life.setAttribute("aria-label", "Life")
     this.lifeFill = h("i", "hz-lifefill")
     this.lifeText = h("div", "hz-lifetext", "100 / 100")
     life.append(this.lifeFill, this.lifeText)
+    this.life = life
 
     this.weps = h("div", "hz-weps")
     this.banner = h("div", "hz-banner")
@@ -125,7 +140,11 @@ export class Overlay {
     this.riftClock = h("div", "hz-riftclock")
     this.riftClock.appendChild(h("i"))
     this.riftNote = h("div", "hz-riftnote", "CHARGE THE RIFT TO COME BACK")
+    // Focusable, so opening the panel can move the keyboard into it without
+    // landing that focus on one of the four answers. See `showRift`.
+    riftBox.tabIndex = -1
     riftBox.append(riftTitle, this.riftCharges, this.riftPrompt, this.riftAnswers, this.riftClock, this.riftNote)
+    this.riftBox = riftBox
     this.riftModal.appendChild(riftBox)
 
     /* ---- over ---- */
@@ -148,7 +167,7 @@ export class Overlay {
     hint.innerHTML =
       "<b>DRAG</b> anywhere to swim &nbsp;·&nbsp; <b>WASD</b> or <b>ARROWS</b> on a keyboard<br>" +
       "Your weapons fire themselves. All you do is move.<br>" +
-      "Swim into a golden <b>CORE</b> — time slows, and the number you touch decides what happens next."
+      "Swim into a golden <b>CORE</b> — time slows, three numbers ring the spot, and the one you swim to decides what happens next."
     this.titleModal.append(big, tag, go, hint)
 
     root.append(hud, this.cardModal, this.riftModal, this.overModal, this.titleModal)
@@ -178,6 +197,7 @@ export class Overlay {
     const f = Math.max(0, Math.min(1, hp / max))
     this.lifeFill.style.width = `${f * 100}%`
     this.lifeText.textContent = `${Math.max(0, Math.ceil(hp))} / ${max}`
+    this.life.classList.toggle("hz-low", f <= 0.25)
   }
 
   setWeapons(rows: string[]): void {
@@ -313,8 +333,13 @@ export class Overlay {
     this.riftNote.textContent =
       needed === 1 ? "ONE ANSWER AND YOU ARE BACK" : `${needed} ANSWERS AND YOU ARE BACK`
     this.riftModal.classList.add("hz-open")
-    const first = this.riftAnswers.querySelector("button")
-    if (first) (first as HTMLElement).focus({ preventScroll: true })
+    // The panel takes focus, NOT the first answer. Focusing the leftmost button
+    // painted a ring on it — a founder playtest read that as "the answer on the
+    // left appears highlighted". It never tracked which one was correct; it was
+    // always seat zero. A keyboard player still Tabs straight into the row from
+    // here, and `style.css` keeps the ring for `:focus-visible` only, so
+    // arriving by Tab is still visible and arriving by script is not.
+    this.riftBox.focus({ preventScroll: true })
   }
 
   setRiftClock(frac: number): void {
@@ -348,18 +373,8 @@ export class Overlay {
   }
 
   destroy(): void {
+    this.unwatch()
+    this.unwatch = () => {}
     this.root.textContent = ""
   }
-}
-
-/** Deterministic-enough shuffle of answer + distractors. */
-function shuffleWithAnswer(q: Question): string[] {
-  const opts = [q.answer, ...q.distractors.slice(0, 3)]
-  for (let i = opts.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    const t = opts[i]
-    opts[i] = opts[j]
-    opts[j] = t
-  }
-  return opts
 }
