@@ -20,9 +20,11 @@
     /* Keeps the WebView's own chrome — overscroll glow, form controls,
        scrollbars — in the theme the app is actually painting. */
     color-scheme: light;
-    /* On iOS the rubber-band belongs to the scrolling VIEWPORT, not to body.
-       Set on body alone the document still bounces, which is how the catalog
-       slides into view above a running game. */
+    /* On iOS the rubber-band belongs to the scrolling VIEWPORT, not to body;
+       set on body alone the document still bounces at the ends of the
+       catalogue. It is NOT what let the catalogue surface above a running
+       game — that was the document being scrollable at all, which `dw-locked`
+       below now takes away for as long as a pack is up. */
     overscroll-behavior: none;
     /* WebKit inflates text in a narrow column when a page is rotated or
        zoomed. It is a document behaviour and this is not a document; left on,
@@ -105,26 +107,6 @@
     overflow-x: hidden;
   }
 
-  /* While a pack is on the stage the host document has nowhere to go.
-   *
-   * The stage is `position: fixed; inset: 0`, and on iOS a fixed element is
-   * laid out against the LAYOUT viewport and is not repositioned continuously
-   * while a pan is in flight. So the only way the catalogue behind a running
-   * game can come into view is for the document to be TALLER than that
-   * viewport and to scroll — which is exactly what the pan after a double-tap
-   * zoom does, and a grid of game cards is always taller. Take the scroll away
-   * and there is nothing behind the stage to reach, whether or not the scale
-   * changed.
-   *
-   * A class, never a bare `html` rule: the catalogue has to scroll, and
-   * locking the document unconditionally froze it once already. `zoom.ts`
-   * adds this for exactly as long as a pack is mounted and restores the
-   * scroll offset on the way out. */
-  html.dw-staged,
-  html.dw-staged body {
-    overflow: hidden;
-  }
-
   /* A mouse user genuinely needs a scrollbar — but they need the one their
      desktop draws, which is an overlay thumb on nothing, not a painted grey
      channel down the edge of the page. Thumb only, in the theme's own violet,
@@ -193,10 +175,25 @@
     scroll-padding-block: calc(var(--safe-top) + 5.5rem) calc(var(--safe-bottom) + 5.5rem);
   }
 
-  /* While a sheet is up, the page behind it must not scroll. The scrim is
-     `position: fixed`, so a drag on it was still scrolling the catalogue
-     underneath and the sheet closed onto a different offset — the surface
-     you came back to was not the one you left. */
+  /* While anything is covering the page, the page behind it must not scroll.
+   *
+   * One rule, because it is one fact, and it is written for two callers even
+   * though only the stage takes it today. A sheet's scrim is `position:
+   * fixed`, so a drag on it was still scrolling the catalogue underneath and
+   * the sheet closed onto a different offset — the surface you came back to
+   * was not the one you left; that is what this class was cut for, and the
+   * sheets have yet to be wired to `documentLock`. A running pack's stage is
+   * `fixed` too, and on iOS a fixed element is laid out against the LAYOUT
+   * and is not repositioned continuously while a pan is in flight: the only
+   * way the catalogue behind a game can come into view is for the document to
+   * be TALLER than that viewport and to scroll, which is exactly what the pan
+   * after a double-tap zoom does. Take the scroll away and there is nothing
+   * behind the stage to reach, whether or not the scale changed.
+   *
+   * A class, never a bare `html` rule: the catalogue has to scroll, and
+   * locking the document unconditionally froze it once already. `zoom.ts`
+   * counts the holders, adds this while there is at least one, and hands the
+   * scroll offset back when the last one lets go. */
   html.dw-locked,
   html.dw-locked body {
     overflow: hidden;

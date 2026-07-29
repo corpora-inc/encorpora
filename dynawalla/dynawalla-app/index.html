@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <!-- viewport-fit=cover is what makes env(safe-area-inset-*) report real
          values on notched iPhones; the --safe-* tokens are dead without it. -->
-    <!-- user-scalable=no and maximum-scale=1 are what actually stop iOS
-         double-tap-to-zoom. Without them a double tap inside a game scales and
-         pans the HOST document, and the catalog behind the pack slides into
-         view at the top. Every pack entry already sets both; the frame around
-         them did not. `touch-action: manipulation` does NOT cover this — it
-         removes the click delay and still permits pinch and double-tap. -->
+    <!-- user-scalable=no and maximum-scale=1 are the FIRST line against iOS
+         double-tap-to-zoom, not the whole of it: WKWebView respects them by
+         default (Safari has ignored them since iOS 10), and they have still
+         been reported not to hold on a real iPhone. What a double tap inside a
+         game actually scales is this document — an iframe has no viewport of
+         its own — and what makes that visible is the page being scrollable
+         behind the stage. See src/app/zoom.ts; nothing there depends on this
+         line, and `resetViewportScale` restores this exact string, which a
+         test pins. -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no"

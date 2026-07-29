@@ -15,14 +15,14 @@
 // navigation that nothing navigates to. What is launched is app state, and
 // leaving it is one action.
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useState } from "react"
 import { create } from "zustand"
 
 import type { Settings } from "../../../packs/sdk/src/index.ts"
 import { BUILD_VERSION, hapticPorts } from "../app/platform.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
-import { stageDocument } from "../app/zoom.ts"
+import { documentLock } from "../app/zoom.ts"
 import { PassSheet } from "../pass/PassSheet.tsx"
 import { usePass } from "../pass/store.ts"
 import { useProfiles } from "../profiles/store.ts"
@@ -272,9 +272,14 @@ export function PackStage() {
   // a pack scales the HOST page — the iframe has no viewport of its own — and
   // the pan that follows is what slides the catalogue into view above the
   // stage. It can only slide if there is something to scroll. See zoom.ts.
-  useEffect(() => {
+  //
+  // `useLayoutEffect`, not `useEffect`: the release restores the scroll offset,
+  // and in the passive phase that lands after the browser has already painted a
+  // frame of the catalogue clamped at zero — a visible jump on the way out of
+  // every game.
+  useLayoutEffect(() => {
     if (packId === null) return
-    return stageDocument(document, window)
+    return documentLock.acquire(document, window)
   }, [packId])
 
   // Escape leaves, on every platform that has a keyboard. A game that takes the
