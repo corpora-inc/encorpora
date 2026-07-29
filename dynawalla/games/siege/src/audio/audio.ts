@@ -5,6 +5,8 @@
  * Audio never carries information alone — every cue it makes has a visual twin.
  */
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts";
+
 const NOISE_SECONDS = 2;
 
 export class Audio {
@@ -39,7 +41,11 @@ export class Audio {
     this.master = ctx.createGain();
     this.master.gain.value = 0.75;
     this.master.connect(this.comp);
-    this.comp.connect(ctx.destination);
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx);
+    this.comp.connect(safety.input);
 
     // one shared noise buffer — allocating per shot is how you drop frames
     const len = Math.floor(ctx.sampleRate * NOISE_SECONDS);
@@ -110,7 +116,11 @@ export class Audio {
     node.stop(this.ctx!.currentTime + dur);
   }
 
-  private env(gain: number, attack: number, decay: number): GainNode {
+  private env(gain: number, attackIn: number, decay: number): GainNode {
+    // The shared floor on onset time. Some cues here asked for 0.002 s —
+    // 88 samples from silence to peak, which is a step function with a click
+    // on it, and the click is most of what a child hears as "too loud".
+    const attack = safeAttack(attackIn);
     const ctx = this.ctx!;
     const g = ctx.createGain();
     const t = ctx.currentTime;

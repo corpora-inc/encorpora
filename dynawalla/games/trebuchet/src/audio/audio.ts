@@ -7,6 +7,8 @@
  * do not fatigue. Sound is a garnish: mute loses nothing but pleasure.
  */
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts"
+
 type Ctx = AudioContext
 
 const rand = (a: number, b: number): number => a + Math.random() * (b - a)
@@ -39,7 +41,11 @@ export class Audio {
       comp.attack.value = 0.004
       comp.release.value = 0.16
       this.master.connect(comp)
-      comp.connect(c.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(c)
+      comp.connect(safety.input)
 
       // Generated impulse response: a stone valley. Synthesis, not an asset.
       const len = Math.floor(c.sampleRate * 1.7)
@@ -84,7 +90,11 @@ export class Audio {
     return s
   }
 
-  private env(gain: GainNode, peak: number, attack: number, decay: number, at = this.t): void {
+  private env(gain: GainNode, peak: number, attackIn: number, decay: number, at = this.t): void {
+    // The shared floor on onset time. Some cues here asked for 0.002 s —
+    // 88 samples from silence to peak, which is a step function with a click
+    // on it, and the click is most of what a child hears as "too loud".
+    const attack = safeAttack(attackIn)
     gain.gain.setValueAtTime(0.0001, at)
     gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), at + attack)
     gain.gain.exponentialRampToValueAtTime(0.0001, at + attack + decay)

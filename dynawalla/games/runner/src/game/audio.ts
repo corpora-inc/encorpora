@@ -10,6 +10,8 @@
  * the whole graph can be muted without the game becoming unreadable.
  */
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts";
+
 const A4 = 440;
 const mtof = (m: number) => A4 * Math.pow(2, (m - 69) / 12);
 
@@ -77,10 +79,17 @@ export class Audio {
     limiter.ratio.value = 12;
     limiter.attack.value = 0.003;
     limiter.release.value = 0.16;
-    limiter.connect(ctx.destination);
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx);
+    limiter.connect(safety.input);
 
     this.master = ctx.createGain();
-    this.master.gain.value = 0.85;
+    // 0.65, not 0.85. `gateCorrect()` rendered at 0.942 on its own and six of
+    // them reached 2.716 with 268 clipped samples — and a gate is the sound
+    // this game makes most often.
+    this.master.gain.value = 0.65;
     this.master.connect(limiter);
 
     this.sfxBus = ctx.createGain();
@@ -292,7 +301,10 @@ export class Audio {
     if (o.to !== undefined) osc.frequency.exponentialRampToValueAtTime(Math.max(20, o.to), t + o.dur);
     if (o.detune) osc.detune.value = o.detune;
     const g = ctx.createGain();
-    const atk = o.attack ?? 0.004;
+    // The shared floor on onset time. Some cues here asked for 0.002 s —
+    // 88 samples from silence to peak, which is a step function with a click
+    // on it, and the click is most of what a child hears as "too loud".
+    const atk = safeAttack(o.attack ?? 0.004);
     g.gain.setValueAtTime(0.0001, t);
     g.gain.exponentialRampToValueAtTime(Math.max(0.0002, o.gain), t + atk);
     g.gain.exponentialRampToValueAtTime(0.0001, t + o.dur);

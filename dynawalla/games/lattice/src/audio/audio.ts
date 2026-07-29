@@ -10,6 +10,8 @@
 // dropped, never stacked, because a hundred husks coming apart in a second is a
 // real thing a child can do and a queue would turn it into a smear.
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 /** C5–C6 pentatonic, in Hz. The whole melodic vocabulary. */
 const PENTATONIC = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5]
 
@@ -46,7 +48,11 @@ export class Audio {
       this.ctx = new Ctor()
       this.master = this.ctx.createGain()
       this.master.gain.value = 0.5
-      this.master.connect(this.ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(this.ctx)
+      this.master.connect(safety.input)
     } catch (error) {
       this.failed = true
       console.warn("[lattice] the audio context could not be created", error)

@@ -19,6 +19,7 @@
  * which is how a real band tells you that you dropped it.
  */
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts";
 import { TransportClock } from "./clock.ts";
 
 export type Engine = {
@@ -155,7 +156,11 @@ export function createEngine(): Engine {
   glue.connect(drive);
   drive.connect(master);
   master.connect(analyser);
-  analyser.connect(ctx.destination);
+  // The last thing between this game and a child's ears. Everything the
+  // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+  // going straight to the output. See packs/shared/game-audio/.
+  const safety = createSafetyBus(ctx);
+  analyser.connect(safety.input);
 
   const noise = makeNoise(ctx, 2);
   const wave = new Float32Array(analyser.fftSize);

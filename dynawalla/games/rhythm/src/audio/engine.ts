@@ -14,6 +14,8 @@
  *    rhythm game's audio fatiguing after four minutes.
  */
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts";
+
 export type Bus = "drums" | "music" | "sfx";
 
 const A4 = 440;
@@ -85,7 +87,9 @@ export class AudioEngine {
     this.wave = new Uint8Array(this.analyser.fftSize);
 
     this.master = ctx.createGain();
-    this.master.gain.value = 0.9;
+    // 0.65, not 0.9. `snare()` rendered at 1.011 and `impact()` at 1.020 —
+    // above full scale on one hit, before a bar of them overlapped.
+    this.master.gain.value = 0.65;
 
     this.masterFilter = ctx.createBiquadFilter();
     this.masterFilter.type = "lowpass";
@@ -95,7 +99,11 @@ export class AudioEngine {
     this.masterFilter.connect(this.master);
     this.master.connect(this.limiter);
     this.limiter.connect(this.analyser);
-    this.analyser.connect(ctx.destination);
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx);
+    this.analyser.connect(safety.input);
 
     this.drums = ctx.createGain();
     this.drums.gain.value = 1.0;

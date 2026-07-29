@@ -15,6 +15,8 @@
  * visible change on screen — and the whole thing can be switched off.
  */
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts"
+
 const PENTATONIC = [0, 2, 4, 7, 9] // major pentatonic degrees, in semitones
 
 function midiToHz(m: number): number {
@@ -58,7 +60,11 @@ export class Audio {
       }
       this.master = this.ctx.createGain()
       this.master.gain.value = this.volume
-      this.master.connect(this.ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(this.ctx)
+      this.master.connect(safety.input)
       this.noise = this.makeNoise()
     }
     if (this.ctx.state === 'suspended') {
@@ -147,7 +153,10 @@ export class Audio {
       o.frequency.exponentialRampToValueAtTime(Math.max(20, opts.bendTo), t + dur * 0.85)
     }
     const g = ctx.createGain()
-    const atk = opts.attack ?? 0.006
+    // The shared floor on onset time. Some cues here asked for 0.002 s —
+    // 88 samples from silence to peak, which is a step function with a click
+    // on it, and the click is most of what a child hears as "too loud".
+    const atk = safeAttack(opts.attack ?? 0.006)
     g.gain.setValueAtTime(0.0001, t)
     g.gain.exponentialRampToValueAtTime(Math.max(0.0002, gain), t + atk)
     g.gain.exponentialRampToValueAtTime(0.0001, t + dur)

@@ -13,6 +13,8 @@
 // channel a child can take in while looking somewhere else. Nothing in the game
 // depends on hearing it.
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 const PENTATONIC = [0, 3, 5, 7, 10] as const
 
 /** Nothing is ever scheduled above this; the partials of a bell add up fast. */
@@ -62,7 +64,11 @@ export class Audio {
       const bus = ctx.createGain()
       bus.gain.value = 0.8
       bus.connect(comp)
-      comp.connect(ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(ctx)
+      comp.connect(safety.input)
 
       const len = Math.floor(ctx.sampleRate * 0.5)
       const buf = ctx.createBuffer(1, len, ctx.sampleRate)

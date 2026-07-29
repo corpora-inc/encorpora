@@ -9,6 +9,8 @@
  * Sound never carries information alone: everything audible is also visible.
  */
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts";
+
 type Voice = { stop: (t: number) => void };
 
 const PENT = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24, 26, 28, 31];
@@ -52,7 +54,11 @@ export class Audio {
       this.musicGain = this.ctx.createGain();
       this.musicGain.gain.value = 0.0;
       this.bus.connect(this.master);
-      this.master.connect(this.ctx.destination);
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(this.ctx);
+      this.master.connect(safety.input);
       this.musicGain.connect(this.bus);
       this.startClock();
     }
@@ -96,13 +102,17 @@ export class Audio {
   private env(
     dur: number,
     peak: number,
-    attack = 0.004,
+    attackIn = 0.004,
     curve: "exp" | "lin" = "exp",
   ): GainNode | null {
     const ctx = this.ctx;
     if (!ctx || !this.enabled || this.voices > 26) return null;
     const g = ctx.createGain();
     const t = ctx.currentTime;
+    // The shared floor on onset time. Some cues here asked for 0.002 s —
+    // 88 samples from silence to peak, which is a step function with a click
+    // on it, and the click is most of what a child hears as "too loud".
+    const attack = safeAttack(attackIn);
     g.gain.setValueAtTime(0.0001, t);
     g.gain.linearRampToValueAtTime(peak, t + attack);
     if (curve === "exp") g.gain.exponentialRampToValueAtTime(0.0001, t + dur);

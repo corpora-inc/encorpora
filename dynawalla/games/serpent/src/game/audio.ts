@@ -14,6 +14,8 @@
  * switched off without losing a single piece of game state.
  */
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts";
+
 const STORE_KEY = "serpent.sound";
 
 /** Major pentatonic, ascending — the combo ladder. */
@@ -79,7 +81,11 @@ export function createAudio(): Audio {
     limiter.ratio.value = 8;
     limiter.attack.value = 0.004;
     limiter.release.value = 0.14;
-    limiter.connect(ac.destination);
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ac);
+    limiter.connect(safety.input);
 
     const master = ac.createGain();
     master.gain.value = 0.55;

@@ -8,6 +8,7 @@
 // `VOICES` and `outcome()` returns before touching the context.
 
 import type { Outcome } from "../game/response.ts"
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts"
 
 /** C5 · D5 · E5 · G5 · A5 · C6, in Hz. Exact enough; nothing compares them. */
 const PENTATONIC = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5]
@@ -151,7 +152,11 @@ export class Audio {
       const ctx = new Ctor()
       const bus = ctx.createGain()
       bus.gain.value = 0.9
-      bus.connect(ctx.destination)
+      // The last thing between this game and a child's ears. Everything the
+      // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+      // going straight to the output. See packs/shared/game-audio/.
+      const safety = createSafetyBus(ctx)
+      bus.connect(safety.input)
       this.ctx = ctx
       this.bus = bus
       return ctx

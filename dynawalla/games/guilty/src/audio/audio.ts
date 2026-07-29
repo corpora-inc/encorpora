@@ -13,6 +13,8 @@
  * visual twin, and the whole engine can be muted with no loss of play.
  */
 
+import { createSafetyBus } from "../../../../packs/shared/game-audio/index.ts";
+
 const PENTATONIC = [0, 3, 5, 7, 10];
 
 export type AudioEngine = {
@@ -72,7 +74,11 @@ export function createAudio(rand: () => number): AudioEngine {
     comp.ratio.value = 5;
     comp.attack.value = 0.004;
     comp.release.value = 0.18;
-    comp.connect(ctx.destination);
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx);
+    comp.connect(safety.input);
 
     master = ctx.createGain();
     master.gain.value = isMuted ? 0 : 0.9;

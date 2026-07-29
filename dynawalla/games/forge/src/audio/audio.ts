@@ -18,6 +18,8 @@
 // Nothing here ever carries information on its own — audio is always a
 // duplicate of something visible.
 
+import { createSafetyBus, safeAttack } from "../../../../packs/shared/game-audio/index.ts"
+
 type Ctx = AudioContext
 
 const PENTATONIC = [1, 9 / 8, 6 / 5, 3 / 2, 5 / 3, 2, 9 / 4, 12 / 5] as const
@@ -71,9 +73,20 @@ export function makeAudio(): Audio {
     comp.release.value = 0.12
 
     master = ctx.createGain()
-    master.gain.value = 0.85
+    // 0.50, not 0.85. At 0.85 a single ordinary cue rendered above full
+    // scale — `unlock()` peaked at 1.220 with 74 clipped samples, `perfect()`
+    // at 1.101, `shatter()` at 1.034 — so this pack was clipping on its own,
+    // one hit at a time, before anything overlapped. The shared ceiling would
+    // hold it, but only by saturating on every single sound; that is a game
+    // permanently squashed rather than a game with headroom. The loudest cue
+    // now lands near 0.72 against a 0.89 ceiling.
+    master.gain.value = 0.5
     master.connect(comp)
-    comp.connect(ctx.destination)
+    // The last thing between this game and a child's ears. Everything the
+    // pack makes now passes a limiter and a hard -1 dBFS ceiling instead of
+    // going straight to the output. See packs/shared/game-audio/.
+    const safety = createSafetyBus(ctx)
+    comp.connect(safety.input)
 
     // 2 s of noise, generated once and reused by every transient and tail.
     const len = ctx.sampleRate * 2
@@ -105,7 +118,11 @@ export function makeAudio(): Audio {
     return ctx
   }
 
-  function env(g: GainNode, t: number, peak: number, attack: number, decay: number): void {
+  function env(g: GainNode, t: number, peak: number, attackIn: number, decay: number): void {
+  // The shared floor on onset time. Some cues here asked for 0.002 s —
+  // 88 samples from silence to peak, which is a step function with a click
+  // on it, and the click is most of what a child hears as "too loud".
+    const attack = safeAttack(attackIn)
     g.gain.setValueAtTime(0.0001, t)
     g.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), t + attack)
     g.gain.exponentialRampToValueAtTime(0.0001, t + attack + decay)
