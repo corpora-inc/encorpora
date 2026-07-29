@@ -1862,7 +1862,13 @@ export class Game {
       // surface that followed the diver would take the sum along for the ride.
       // `+y` is up, so the sum sits ABOVE the ring — it used to be written at
       // `py - 116`, which put it under the diver's own light.
-      r.text(this.q.prompt, this.qX, this.qY + ORB_RADIUS + 74, 56, 1, 1, 1, fade)
+      //
+      // Held inside the view, though. The camera follows the diver, and in
+      // landscape there are only ~273 world units above it; a sum anchored 224
+      // above a CORE the child has swum below would be off the top of the
+      // screen while they were still deciding what it said.
+      const promptY = Math.min(this.qY + ORB_RADIUS + 74, this.camY + hh - 62)
+      r.text(this.q.prompt, this.qX, promptY, 56, 1, 1, 1, fade)
       const ring = ORB_RADIUS
       r.sprite(this.qX, this.qY, ring, ring, t * 0.4, 1, 0.86, 0.44, 0.30 * fade, SHAPE.RING, 0.012, 0.2)
       // Time as a closing iris, not a number.
