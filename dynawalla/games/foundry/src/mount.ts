@@ -22,6 +22,11 @@
 // every rule lives in `game/bout.ts` and every piece of arithmetic in
 // `game/plates.ts`.
 
+import {
+  createInstructions,
+  onInsetsChange,
+  safeRect,
+} from "../../../packs/shared/game-chrome/index.ts"
 import type { Host } from "./contract.ts"
 import { Audio } from "./audio.ts"
 import { Feel } from "./core/feel.ts"
@@ -81,7 +86,7 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
   // every cast. The value is not drawn: see the note in `draw()`.
   loadBelt()
 
-  let layout: Layout = computeLayout(320, 568)
+  let layout: Layout = computeLayout(320, 568, safeRect(320, 568))
   const crowdSeed = 0x1b0c
 
   const bout = new Bout({ host, seed: 0x9a11ed, onEvent: handle })
@@ -322,10 +327,17 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
     canvas.width = Math.round(w * dpr)
     canvas.height = Math.round(h * dpr)
     g.setTransform(dpr, 0, 0, dpr, 0, 0)
-    layout = computeLayout(w, h)
+    layout = computeLayout(w, h, safeRect(w, h))
     crowd.layout(w, layout.horizon, gov.quality.crowd, crowdSeed)
     parts.setLimit(gov.quality.particles)
   }
+
+  // Rotation swaps the insets, and iPadOS changes them when the pack is resized
+  // in Split View. A layout read once at mount is right until the first turn of
+  // the tablet and wrong for the rest of the session.
+  const stopInsets = onInsetsChange(() => {
+    resize()
+  })
 
   const ro =
     typeof ResizeObserver === "function"
@@ -388,13 +400,85 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
   globalThis.addEventListener("keydown", onKeyDown)
   document.addEventListener("visibilitychange", onVisibility)
 
+  // ── how to play ──────────────────────────────────────────────────────────
+  //
+  // This game shipped with nothing at all telling a child what the pedals were
+  // for, and the one rule that decides every fall — that going over loses on
+  // the spot — was discoverable only by losing to it. So it is stated first,
+  // plainly, in the summary a child sees before their first tap.
+  //
+  // Opening the manual stops the count: a child who went to read the rules must
+  // not come back to a fall they lost while reading them.
+  const guide = createInstructions(root, {
+    title: "THE GRAPPLE FOUNDRY",
+    summary: [
+      "Someone has you pinned. The board above the ring shows a sum.",
+      "Work out the answer, then tap the two pedals until the bar holds exactly that number. Go one over and you lose.",
+    ],
+    sections: [
+      {
+        heading: "How to get free",
+        lines: [
+          "Read the board. It shows a sum, like 45 + 28.",
+          "Work out the answer in your head. The game never shows it to you.",
+          "The two pedals at the bottom each have a number stamped on them. Tapping a pedal adds that number to the bar.",
+          "Tap until the number on the bar is exactly your answer. Then the bar tips and you kick out.",
+        ],
+      },
+      {
+        heading: "Going over loses at once",
+        lines: [
+          "One over the answer and the fall is lost. Not close. Over.",
+          "So tapping fast never works. Work out the taps first, then tap.",
+          "Say the answer is 25 and your pedals are 7 and 4. Three taps of 7 makes 21, then one tap of 4 makes 25. That is the escape.",
+        ],
+      },
+      {
+        heading: "When there is no way out",
+        lines: [
+          "Sometimes the number you have left cannot be made from your two pedals.",
+          "If you need 3 more and the pedals are 4 and 7, nothing makes 3. The game stops the fall and tells you.",
+          "So think about what you will have left, not just about the next tap.",
+        ],
+      },
+      {
+        heading: "The count",
+        lines: [
+          "The referee slaps the mat three times. When the third slap lands, the fall is over.",
+          "A longer sum and a longer escape both give you more time.",
+          "Winning lots of falls never takes time away. The clock is set by the work, not by how well you are doing.",
+        ],
+      },
+      {
+        heading: "The finish that gets waved off",
+        lines: [
+          "Some totals are the answer you get when you do the sum a common wrong way.",
+          "Land on one of those and the crowd roars, and then the referee waves it off.",
+          "It costs you count. It never costs you the fall. Keep going.",
+        ],
+      },
+      {
+        heading: "Controls",
+        lines: [
+          "Tap the left half of the screen for the LIGHT pedal, the right half for the HEAVY one.",
+          "On a keyboard, A and D work, and so do the left and right arrows.",
+          "Press M to turn the sound off.",
+        ],
+      },
+    ],
+    onClose: (): void => {
+      last = 0
+    },
+    reducedMotion: reduced,
+  })
+
   // ── loop ─────────────────────────────────────────────────────────────────
   function frame(now: number): void {
     raf = requestAnimationFrame(frame)
     if (last === 0) last = now
     const rawMs = Math.min(64, now - last)
     last = now
-    if (paused) return
+    if (paused || guide.isOpen) return
 
     // A downgrade has to move the levers that actually cost fill rate. `maxDpr`
     // and the lantern count are only read in `resize()`, and a pack frame at a
@@ -511,7 +595,7 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
     g.textAlign = "left"
     g.textBaseline = "alphabetic"
     g.fillStyle = withAlpha(CHALK, 0.34)
-    g.fillText(`${bout.challenger} · ${bout.toBeat} TO GO`, 10, l.padTop - 8)
+    g.fillText(`${bout.challenger} · ${bout.toBeat} TO GO`, l.safe.x + 10, l.padTop - 8)
     g.restore()
   }
 
@@ -520,6 +604,8 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
   return {
     unmount(): void {
       cancelAnimationFrame(raf)
+      guide.destroy()
+      stopInsets()
       canvas.removeEventListener("pointerdown", onPointerDown)
       globalThis.removeEventListener("keydown", onKeyDown)
       document.removeEventListener("visibilitychange", onVisibility)

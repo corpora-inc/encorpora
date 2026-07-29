@@ -10,6 +10,7 @@ import { test } from "node:test"
 
 import { Feel } from "../core/feel.ts"
 import { Rng } from "../core/rng.ts"
+import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import { computeLayout, matHalfWidth } from "../render/layout.ts"
 
 test("reduced motion zeroes every motion channel", () => {
@@ -83,7 +84,7 @@ test("the layout keeps the pedals enormous at every size the app runs at", () =>
     [1024, 768],
     [1366, 1024],
   ] as const) {
-    const l = computeLayout(w, h)
+    const l = computeLayout(w, h, safeRect(w, h))
     assert.ok(l.padH >= 150, `${w}×${h} gave a ${l.padH}px pedal band`)
     assert.ok(l.padTop > l.matTop, `${w}×${h} put the pedals above the mat`)
     assert.ok(l.matBottom > l.matTop, `${w}×${h} inverted the mat`)
@@ -94,7 +95,7 @@ test("the layout keeps the pedals enormous at every size the app runs at", () =>
 })
 
 test("the mat narrows towards the far ropes and never inverts", () => {
-  const l = computeLayout(768, 1024)
+  const l = computeLayout(768, 1024, safeRect(768, 1024))
   const far = matHalfWidth(l, l.matTop)
   const near = matHalfWidth(l, l.matBottom)
   assert.ok(near > far, "the near edge of a ring is the wider one")

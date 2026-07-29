@@ -46,12 +46,18 @@ function fakeContext(counter: { calls: number; text: string[] }): CanvasRenderin
 }
 
 type FakeElement = {
-  style: { cssText: string }
+  style: { cssText: string; top: string; right: string }
   width: number
   height: number
+  id: string
   listeners: Map<string, Listener[]>
+  children: unknown[]
+  attrs: Map<string, string>
   appendChild(child: unknown): void
+  append(...children: unknown[]): void
+  setAttribute(name: string, value: string): void
   remove(): void
+  focus(): void
   addEventListener(type: string, fn: Listener): void
   removeEventListener(type: string, fn: Listener): void
   getBoundingClientRect(): { width: number; height: number; left: number; top: number }
@@ -62,13 +68,26 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
   const ctx = fakeContext(counter)
   const make = (): FakeElement => {
     const listeners = new Map<string, Listener[]>()
+    const children: unknown[] = []
     return {
-      style: { cssText: "" },
+      style: { cssText: "", top: "", right: "" },
       width: 0,
       height: 0,
+      id: "",
       listeners,
-      appendChild() {},
+      children,
+      attrs: new Map<string, string>(),
+      appendChild(child) {
+        children.push(child)
+      },
+      append(...kids) {
+        children.push(...kids)
+      },
+      setAttribute(name, value) {
+        this.attrs.set(name, value)
+      },
       remove() {},
+      focus() {},
       addEventListener(type, fn) {
         const list = listeners.get(type) ?? []
         list.push(fn)
@@ -82,13 +101,29 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
     }
   }
   const created: FakeElement[] = []
+  // The shared chrome measures `env(safe-area-inset-*)` through a hidden probe
+  // element and mounts a how-to-play button, so this document has to answer
+  // `getElementById`, own a `body`, and hand back elements that can take
+  // attributes. A partial document is worse than none: it type-checks, it looks
+  // like a browser, and it throws on the first real call.
+  const byId = new Map<string, FakeElement>()
+  const body = make()
+  body.appendChild = (child: unknown): void => {
+    const el = child as FakeElement
+    if (el?.id) byId.set(el.id, el)
+  }
   const doc = {
     visibilityState: "visible",
+    body,
+    activeElement: null,
     listeners: new Map<string, Listener[]>(),
     createElement() {
       const el = make()
       created.push(el)
       return el
+    },
+    getElementById(id: string) {
+      return byId.get(id) ?? null
     },
     addEventListener(type: string, fn: Listener) {
       const list = doc.listeners.get(type) ?? []
@@ -129,6 +164,14 @@ function withBrowser(
     return frames.length
   })
   set("cancelAnimationFrame", () => {})
+  // No notch off a real device. Zeros are the honest answer, and are what the
+  // safe-area probe resolves to on a laptop too.
+  set("getComputedStyle", () => ({
+    paddingTop: "0px",
+    paddingRight: "0px",
+    paddingBottom: "0px",
+    paddingLeft: "0px",
+  }))
   if (typeof g.addEventListener !== "function") set("addEventListener", () => {})
   if (typeof g.removeEventListener !== "function") set("removeEventListener", () => {})
 
