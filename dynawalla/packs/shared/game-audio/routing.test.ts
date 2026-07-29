@@ -30,7 +30,9 @@ const GAMES = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "g
  * `arena` and `claim` are here because they were being edited by other agents
  * at the time this landed, not because there is anything different about them.
  */
-const NOT_YET_ROUTED = new Set(["arena", "claim"])
+// Empty, and it must stay that way: the assertion below fails when a game on
+// this list no longer needs to be, so a stale exception cannot rot here.
+const NOT_YET_ROUTED = new Set<string>([])
 
 /** Files that are allowed to mention `.destination`: they are not real graphs. */
 const isDouble = (p: string): boolean => p.includes("fake") || p.endsWith(".test.ts")

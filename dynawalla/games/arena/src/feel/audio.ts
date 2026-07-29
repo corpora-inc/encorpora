@@ -10,6 +10,8 @@
  * Sound never carries information alone: every cue here has a visual twin.
  */
 
+import { createSafetyBus, type SafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 type Voice = { stop(at: number): void }
 
 const NOTES = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22, 24] // minor pentatonic + octaves
@@ -17,6 +19,16 @@ const NOTES = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22, 24] // minor pentatonic + oct
 export class Audio {
   private ctx: AudioContext | null = null
   private master!: GainNode
+  /**
+   * The shared ceiling every pack's output passes through.
+   *
+   * ARENA measured 1.409 peak with 636 clipped samples on six simultaneous cues
+   * — it was one of the two games the fleet audio pass could not route because
+   * this file was being edited at the time. The bus is a `WaveShaperNode`, so
+   * the largest entry in its curve is the largest sample that can be emitted
+   * for any input; the limiter in front of it is comfort, not the guarantee.
+   */
+  private safety!: SafetyBus
   private tone!: BiquadFilterNode
   private comp!: DynamicsCompressorNode
   private wetSend!: GainNode
@@ -103,7 +115,9 @@ export class Audio {
     wetGain.connect(this.tone)
     this.tone.connect(this.comp)
     this.comp.connect(this.master)
-    this.master.connect(ctx.destination)
+    // The one line that used to read `this.master.connect(ctx.destination)`.
+    this.safety = createSafetyBus(ctx)
+    this.master.connect(this.safety.input)
 
     const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate)
     const nd = nb.getChannelData(0)
