@@ -20,12 +20,39 @@
  * These constants are written onto the root as custom properties at mount, the
  * stylesheet reads them through `var()`, and `hudRects` reports the same
  * geometry to the tests. One source; the CSS and the test cannot drift apart.
+ *
+ * ── The insets were zero the whole time ─────────────────────────────────────
+ *
+ * That promise was false in the shipped app, and the tests could not see it.
+ * Every offset above is measured from the SAFE edge, and the stylesheet spelled
+ * that `env(safe-area-inset-top)` — but a pack runs in an iframe sandboxed
+ * `allow-scripts` with no `allow-same-origin`, and `env(safe-area-inset-*)` is a
+ * property of the TOP-LEVEL browsing context. A cross-origin child resolves all
+ * four to **zero**. (`packs/shared/game-chrome/insets.ts` says so in as many
+ * words; nothing in this game had read it.)
+ *
+ * So on a notched phone the host's back chevron sat at y = 47 + 3 + 10 = 60 and
+ * the clock row that `hudRects` placed at y = 47 + 63 = 110 was actually painted
+ * at y = 63 — inside the chevron's square. The clock, the level, the kill count
+ * and the fps readout were all under host chrome on exactly the devices the
+ * insets exist for, while `layout.test.ts` passed, because the test was handed
+ * real insets and the browser was not.
+ *
+ * The host measures the real values and publishes them; `safeInsets()` returns
+ * those when they are there and falls back to the probe. `applyChromeVars`
+ * writes them onto the root as `--hz-safe-*` and every rule in `style.css` reads
+ * `var(--hz-safe-top, env(safe-area-inset-top))` — the `env()` staying on as the
+ * fallback for `npm run dev`, where the game is top-level and `env()` is real.
+ * `watchChromeVars` keeps them current across a rotation.
  */
 
 import {
   HOST_CONTROL,
   HOST_MARGIN,
   HOST_PROGRESS_H,
+  NO_INSETS,
+  onInsetsChange,
+  safeInsets,
   type Insets,
   type Rect,
 } from "../../../../packs/shared/game-chrome/index.ts"
@@ -64,6 +91,25 @@ export const ICON_BOTTOM = 40
 export const FPS_EDGE = 10
 
 /**
+ * The life bar.
+ *
+ * A founder playtest asked "should it show the health somewhere?" — which is
+ * the question you ask about a readout you did not find. There was one, and it
+ * was a 12px hairline with 10px near-black lettering inside it, 16px off the
+ * bottom of the frame. Two things were wrong with that and only one of them was
+ * taste: at 12px tall it read as decoration, and 16px from the bottom on a
+ * phone with a 34px home indicator meant it was UNDER the home indicator,
+ * because the inset it was measured from was resolving to zero (see above).
+ *
+ * It stays where it is — bottom-centre is the only place on this HUD with
+ * nothing else in it, and it is where a survivor's health belongs — but it is
+ * tall enough to see and it clears the indicator.
+ */
+export const LIFE_H = 22
+export const LIFE_BOTTOM = 18
+export const LIFE_MAX_W = 380
+
+/**
  * The boxes the HUD actually occupies, so a test can assert they clear the
  * host's corners at every viewport instead of a device finding out.
  */
@@ -71,11 +117,18 @@ export function hudRects(
   w: number,
   h: number,
   insets: Insets,
-): { xpbar: Rect; top: Rect; corner: Rect; fps: Rect } {
+): { xpbar: Rect; top: Rect; corner: Rect; fps: Rect; life: Rect } {
   const left = insets.left
   const right = insets.right
   const iconsW = ICON * 2 + ICON_GAP
+  const lifeW = Math.min(LIFE_MAX_W, w * 0.62)
   return {
+    life: {
+      x: (w - lifeW) / 2,
+      y: h - insets.bottom - LIFE_BOTTOM - LIFE_H,
+      w: lifeW,
+      h: LIFE_H,
+    },
     xpbar: { x: left, y: insets.top + XP_TOP, w: Math.max(0, w - left - right), h: XP_H },
     top: {
       x: left,
@@ -100,7 +153,7 @@ export function hudRects(
  * without a mounted root still looks right; these overwrite them, and these are
  * what the tests see.
  */
-export function applyChromeVars(root: HTMLElement): void {
+export function applyChromeVars(root: HTMLElement, insets: Insets = safeInsets()): void {
   root.style.setProperty("--hz-chrome-top", `${CHROME_TOP}px`)
   root.style.setProperty("--hz-xp-top", `${XP_TOP}px`)
   root.style.setProperty("--hz-icon", `${ICON}px`)
@@ -108,4 +161,33 @@ export function applyChromeVars(root: HTMLElement): void {
   root.style.setProperty("--hz-icon-edge", `${ICON_EDGE}px`)
   root.style.setProperty("--hz-icon-bottom", `${ICON_BOTTOM}px`)
   root.style.setProperty("--hz-fps-edge", `${FPS_EDGE}px`)
+  root.style.setProperty("--hz-life-h", `${LIFE_H}px`)
+  root.style.setProperty("--hz-life-bottom", `${LIFE_BOTTOM}px`)
+  applySafeVars(root, insets)
+}
+
+/**
+ * The safe area, as four custom properties `style.css` can do arithmetic with.
+ *
+ * Zeros are written explicitly rather than left unset: `var(--hz-safe-top, …)`
+ * falls back to `env()` only when the property is ABSENT, and inside the app
+ * `env()` is the wrong answer even when the real inset is 0.
+ */
+export function applySafeVars(root: HTMLElement, insets: Insets = safeInsets()): void {
+  const i = insets ?? NO_INSETS
+  root.style.setProperty("--hz-safe-top", `${Math.max(0, i.top)}px`)
+  root.style.setProperty("--hz-safe-right", `${Math.max(0, i.right)}px`)
+  root.style.setProperty("--hz-safe-bottom", `${Math.max(0, i.bottom)}px`)
+  root.style.setProperty("--hz-safe-left", `${Math.max(0, i.left)}px`)
+}
+
+/**
+ * Keep them current. Rotation swaps top/bottom with left/right, and a HUD that
+ * read the insets once at mount is correct until the child turns the tablet.
+ *
+ * @returns an unsubscribe. `Overlay.destroy` calls it.
+ */
+export function watchChromeVars(root: HTMLElement): () => void {
+  applySafeVars(root)
+  return onInsetsChange((insets) => applySafeVars(root, insets))
 }

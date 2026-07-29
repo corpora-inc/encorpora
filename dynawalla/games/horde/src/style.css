@@ -53,7 +53,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  padding: max(10px, var(--hz-safe-top, env(safe-area-inset-top))) max(10px, var(--hz-safe-right, env(safe-area-inset-right))) max(10px, var(--hz-safe-bottom, env(safe-area-inset-bottom))) max(10px, var(--hz-safe-left, env(safe-area-inset-left)));
 }
 
 /* The XP bar had no `env()` at all: flush to y=0 and edge to edge, so on a
@@ -62,9 +62,9 @@
    now starts under the host's own 3px hairline rather than beneath it. */
 .hz-xpbar {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + var(--hz-xp-top));
-  left: env(safe-area-inset-left);
-  right: env(safe-area-inset-right);
+  top: calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-xp-top));
+  left: var(--hz-safe-left, env(safe-area-inset-left));
+  right: var(--hz-safe-right, env(safe-area-inset-right));
   height: 7px;
   background: rgba(120, 190, 255, 0.10);
 }
@@ -83,8 +83,8 @@
    them. */
 .hz-top {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + var(--hz-chrome-top));
-  left: env(safe-area-inset-left); right: env(safe-area-inset-right);
+  top: calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-chrome-top));
+  left: var(--hz-safe-left, env(safe-area-inset-left)); right: var(--hz-safe-right, env(safe-area-inset-right));
   display: flex;
   justify-content: center;
   gap: clamp(10px, 3vw, 26px);
@@ -116,17 +116,25 @@
   text-shadow: 0 0 16px rgba(255, 200, 80, 0.6);
 }
 
-/* life */
+/* Life. A founder playtest asked "should it show the health somewhere?", which
+   is what you ask about a readout you did not find. There was one: a 12px
+   hairline with 10px near-black lettering that vanished the moment the fill
+   dropped away from underneath it — so the harder you were being hit, the
+   harder your health was to read. It is the same bar in the same place, tall
+   enough to be a readout, with lettering that survives an empty bar and a
+   colour that changes when the run is nearly over. Its offset is now measured
+   from the host's real bottom inset, not from `env()`, which is 0 in a pack —
+   it used to sit under the home indicator. See `ui/layout.ts`. */
 .hz-life {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(16px + env(safe-area-inset-bottom));
+  bottom: calc(var(--hz-life-bottom, 18px) + var(--hz-safe-bottom, env(safe-area-inset-bottom)));
   width: min(380px, 62vw);
-  height: 12px;
-  background: rgba(255, 90, 120, 0.14);
-  border: 1px solid rgba(255, 130, 150, 0.25);
-  border-radius: 2px;
+  height: var(--hz-life-h, 22px);
+  background: rgba(70, 12, 26, 0.62);
+  border: 1px solid rgba(255, 130, 150, 0.34);
+  border-radius: 3px;
   overflow: hidden;
 }
 .hz-lifefill {
@@ -134,25 +142,35 @@
   width: 100%;
   background: linear-gradient(90deg, #ff5f7a, #ff9c6a 70%, #ffd2a0);
   box-shadow: 0 0 16px rgba(255, 100, 120, 0.8);
-  transition: width 110ms ease-out;
+  transition: width 110ms ease-out, background 200ms linear;
 }
+/* Under a quarter: the bar goes white-hot rather than quietly getting shorter. */
+.hz-life.hz-low .hz-lifefill {
+  background: linear-gradient(90deg, #fff0f3, #ff8fa6);
+  animation: hz-lifepulse 620ms ease-in-out infinite alternate;
+}
+@keyframes hz-lifepulse { from { opacity: 0.72; } to { opacity: 1; } }
 .hz-lifetext {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  font-size: 10px;
+  font-size: clamp(11px, 2.6vw, 13px);
   font-weight: 900;
-  letter-spacing: 0.14em;
-  color: #23070f;
-  mix-blend-mode: normal;
-  text-shadow: none;
+  letter-spacing: 0.16em;
+  /* Readable over the fill AND over the empty track, which the old near-black
+     lettering was not: at low health it sat on a dark background, invisible. */
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(40, 0, 8, 0.95), 0 0 10px rgba(60, 0, 12, 0.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz-life.hz-low .hz-lifefill { animation: none; }
 }
 
 .hz-weps {
   position: absolute;
-  left: calc(12px + env(safe-area-inset-left));
-  bottom: calc(40px + env(safe-area-inset-bottom));
+  left: calc(12px + var(--hz-safe-left, env(safe-area-inset-left)));
+  bottom: calc(40px + var(--hz-safe-bottom, env(safe-area-inset-bottom)));
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -215,10 +233,10 @@
      outermost upgrade card — both things a child taps — ran under the sensor
      housing and the rounded corner. */
   padding:
-    max(12px, env(safe-area-inset-top))
-    max(12px, env(safe-area-inset-right))
-    max(12px, env(safe-area-inset-bottom))
-    max(12px, env(safe-area-inset-left));
+    max(12px, var(--hz-safe-top, env(safe-area-inset-top)))
+    max(12px, var(--hz-safe-right, env(safe-area-inset-right)))
+    max(12px, var(--hz-safe-bottom, env(safe-area-inset-bottom)))
+    max(12px, var(--hz-safe-left, env(safe-area-inset-left)));
   background:
     radial-gradient(120% 90% at 50% 40%, rgba(8, 14, 34, 0.62), rgba(2, 4, 12, 0.93));
   backdrop-filter: blur(9px) saturate(0.85);
@@ -451,6 +469,22 @@
 }
 .hz-answer:hover { background: rgba(120, 190, 255, 0.2); transform: translateY(-3px); }
 .hz-answer:active { transform: scale(0.97); }
+/* Every candidate looks the same until it is struck.
+   `showRift` used to focus the first button as the panel opened, and the UA
+   paints a ring on a focused button — so the LEFTMOST answer arrived already
+   highlighted, every time, whether or not it was the right one. The focus is
+   gone; this makes sure nothing else can put a ring there either. A keyboard
+   player who Tabs in still gets one, because `:focus-visible` is exactly the
+   "arrived by keyboard" case and programmatic focus is not. */
+.hz-answer:focus { outline: none; }
+.hz-answer:focus-visible {
+  outline: 2px solid #eaf7ff;
+  outline-offset: 2px;
+}
+.hz-orb:focus { outline: none; }
+.hz-orb:focus-visible { outline: 2px solid #ffe9b8; outline-offset: 2px; }
+/* The panel itself takes the focus instead. It must never look focused. */
+.hz-riftbox:focus, .hz-riftbox:focus-visible { outline: none; }
 .hz-answer.hz-ok { background: #7dffd0; border-color: #d8fff2; color: #00281c; animation: hz-pop 380ms ease-out; }
 .hz-answer.hz-no { background: rgba(120, 40, 60, 0.5); border-color: #ff7d9c; color: #ffd9e2; }
 .hz-riftclock {
@@ -557,8 +591,8 @@
    and the host paints nothing down there. */
 .hz-corner {
   position: absolute;
-  bottom: calc(var(--hz-icon-bottom) + env(safe-area-inset-bottom));
-  right: calc(var(--hz-icon-edge) + env(safe-area-inset-right));
+  bottom: calc(var(--hz-icon-bottom) + var(--hz-safe-bottom, env(safe-area-inset-bottom)));
+  right: calc(var(--hz-icon-edge) + var(--hz-safe-right, env(safe-area-inset-right)));
   display: flex;
   gap: var(--hz-icon-gap);
   pointer-events: auto;
@@ -582,8 +616,8 @@
 /* Behind `?debug`, but it sat under the back chevron too. */
 .hz-fps {
   position: absolute;
-  left: calc(var(--hz-fps-edge) + env(safe-area-inset-left));
-  top: calc(env(safe-area-inset-top) + var(--hz-chrome-top));
+  left: calc(var(--hz-fps-edge) + var(--hz-safe-left, env(safe-area-inset-left)));
+  top: calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-chrome-top));
   font-size: 10px;
   letter-spacing: 0.1em;
   color: #4f7ea0;

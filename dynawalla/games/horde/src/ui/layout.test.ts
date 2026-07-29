@@ -24,7 +24,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { hitsHostChrome, type Insets } from "../../../../packs/shared/game-chrome/index.ts"
-import { CHROME_TOP, ICON, hudRects } from "./layout.ts"
+import { CHROME_TOP, ICON, LIFE_H, applySafeVars, hudRects } from "./layout.ts"
 
 const NONE: Insets = { top: 0, right: 0, bottom: 0, left: 0 }
 const NOTCH_PORTRAIT: Insets = { top: 47, right: 0, bottom: 34, left: 0 }
@@ -83,6 +83,7 @@ test("every HUD box stays inside the safe area on the edges it touches", () => {
       ["the clock row", r.top],
       ["the sound and pause buttons", r.corner],
       ["the fps readout", r.fps],
+      ["the life bar", r.life],
     ] as const) {
       assert.ok(box.x >= insets.left, `${name}: ${what} runs into the left inset`)
       assert.ok(
@@ -113,4 +114,88 @@ test("the offset is the host's own number, not one somebody typed", () => {
   // 57 is the bottom of the host's corner squares: a 3px hairline, a 10px
   // margin and a 44px control. This is the inequality the file exists to hold.
   assert.ok(CHROME_TOP >= 57, `CHROME_TOP is ${CHROME_TOP} — the host's corners end at 57`)
+})
+
+/* ------------------------------------------------------- the safe area itself */
+
+// THE INSETS WERE ZERO THE WHOLE TIME.
+//
+// Every assertion above is handed real insets. The browser was not. The
+// stylesheet spelled the safe area `env(safe-area-inset-*)`, and a pack is a
+// cross-origin iframe, where all four of those resolve to 0 — so on a notched
+// phone the clock row that `hudRects` puts at y=110 was painted at y=63, inside
+// the host's back chevron, while this file passed. The numbers were right and
+// nothing carried them to the CSS.
+
+/** Just enough of an element to record what was written onto it. */
+function fakeRoot(): { el: HTMLElement; vars: Map<string, string> } {
+  const vars = new Map<string, string>()
+  const el = {
+    style: { setProperty: (k: string, v: string) => void vars.set(k, v) },
+  } as unknown as HTMLElement
+  return { el, vars }
+}
+
+test("the safe area reaches the stylesheet as numbers, not as env()", () => {
+  const { el, vars } = fakeRoot()
+  applySafeVars(el, NOTCH_PORTRAIT)
+  assert.equal(vars.get("--hz-safe-top"), "47px")
+  assert.equal(vars.get("--hz-safe-bottom"), "34px")
+  assert.equal(vars.get("--hz-safe-left"), "0px")
+  assert.equal(vars.get("--hz-safe-right"), "0px")
+})
+
+test("a zero inset is written explicitly, never left to the env() fallback", () => {
+  // `var(--x, fallback)` uses the fallback when the property is ABSENT. Inside
+  // the app `env()` is the wrong answer even when the true inset is 0, so the
+  // zero has to be stated.
+  const { el, vars } = fakeRoot()
+  applySafeVars(el, NONE)
+  for (const k of ["--hz-safe-top", "--hz-safe-right", "--hz-safe-bottom", "--hz-safe-left"]) {
+    assert.equal(vars.get(k), "0px", `${k} was left unset, so the CSS falls back to env()`)
+  }
+})
+
+test("the offsets the CSS composes put the HUD where hudRects says it is", () => {
+  // The composition the stylesheet performs, spelled out: every top offset is
+  // `var(--hz-safe-top) + var(--hz-chrome-top)`. This is the arithmetic that
+  // silently produced 63 instead of 110.
+  const { el, vars } = fakeRoot()
+  applySafeVars(el, NOTCH_PORTRAIT)
+  const safeTop = Number.parseFloat(vars.get("--hz-safe-top") as string)
+  const composed = safeTop + CHROME_TOP
+  assert.equal(composed, hudRects(390, 844, NOTCH_PORTRAIT).top.y)
+  assert.ok(
+    composed > 57,
+    `the clock row composes to y=${composed}; the host's corner squares end at 57`,
+  )
+})
+
+/* ----------------------------------------------------------------- the life bar */
+
+test("the life bar clears the home indicator, and is big enough to be a readout", () => {
+  for (const [name, w, h] of VIEWPORTS) {
+    const insets = w > h ? NOTCH_LANDSCAPE : NOTCH_PORTRAIT
+    const r = hudRects(w, h, insets)
+    assert.ok(
+      r.life.y + r.life.h <= h - insets.bottom,
+      `${name}: the life bar runs under the home indicator`,
+    )
+    assert.equal(hitsHostChrome(r.life, w, insets), false, `${name}: the life bar is under chrome`)
+  }
+  // 12px was the shipped height and it read as decoration; a founder playtest
+  // asked whether there was a health readout at all.
+  assert.ok(LIFE_H >= 20, `the life bar is ${LIFE_H}px tall — that is a hairline, not a readout`)
+})
+
+test("the life bar does not collide with the sound and pause buttons", () => {
+  for (const [name, w, h] of VIEWPORTS) {
+    const r = hudRects(w, h, NONE)
+    const overlap =
+      r.life.x < r.corner.x + r.corner.w &&
+      r.corner.x < r.life.x + r.life.w &&
+      r.life.y < r.corner.y + r.corner.h &&
+      r.corner.y < r.life.y + r.life.h
+    assert.equal(overlap, false, `${name}: the life bar is under the game's own two buttons`)
+  }
 })
