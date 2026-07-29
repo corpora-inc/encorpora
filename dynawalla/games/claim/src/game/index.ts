@@ -16,6 +16,7 @@ import {
 import type { Host, Question } from "../contract.ts"
 import { Audio } from "./audio.ts"
 import { cleanFraction, clamp } from "./exact.ts"
+import { NO_LIMIT, gateBudget } from "./gate.ts"
 import {
   TRAIL,
   VOID,
@@ -70,7 +71,6 @@ const START_LIVES = 3
  * it, dipping one cell off the rail and back is a combo engine.
  */
 const MIN_MEANINGFUL_CLAIM = 15
-const GATE_SECONDS = 7
 const GHOSTS = 14
 
 export function mount(el: HTMLElement, host: Host): { unmount(): void } {
@@ -146,7 +146,14 @@ class Claim {
    */
   private spare: Question | null = null
   private plates: Plate[] = []
-  private gateLeft = 0
+  /**
+   * Seconds this gate may sit with the child doing nothing at all.
+   *
+   * `NO_LIMIT` at the revive gate, always. At the vault it is a derived
+   * abandonment guard that any input puts back — see `gate.ts`.
+   */
+  private gateLeft = NO_LIMIT
+  private gateGuard = NO_LIMIT
   private gateStart = 0
   /** Which gate is open: the one death opens, or the one a level clear opens. */
   private gateKind: "revive" | "vault" = "revive"
@@ -268,9 +275,11 @@ class Claim {
         {
           heading: "One more chance",
           lines: [
-            "When your last life goes, a sum appears and squares with answers drop into the field.",
-            "Drive over the square with the right answer and you get a life back.",
-            "You have a few seconds, and nothing can hurt you while you decide.",
+            "Every time you lose a life, a sum appears and squares with answers drop into the field.",
+            "Stand on the square with the right answer until it fills up, and the life comes back.",
+            "Driving over a square is not choosing it. Only the one you stop on counts.",
+            "There is no clock on it. Take as long as you like, and nothing can hurt you while you decide.",
+            "Finish a level and the same squares come up as a bonus. Right pays. Wrong costs nothing, and so does walking away from it.",
           ],
         },
       ],
@@ -1014,9 +1023,14 @@ class Claim {
    * Where a free-to-play game would show an ad, this asks for arithmetic.
    *
    * Three plates, one right. Hold the right one and — at the revive gate — you
-   * get the life back and three seconds of shield. Get it wrong, or dither past
-   * the ring, and the life stays spent. Nothing is ever taken for being wrong
-   * twice.
+   * get the life back and three seconds of shield. Get it wrong and the life
+   * stays spent. Nothing is ever taken for being wrong twice, and **nothing is
+   * ever taken for being slow**: the revive gate has no clock on it at all.
+   *
+   * It used to have seven seconds, and 5.64 of those could go on driving the
+   * snake from the rail to the far plate before the child had read anything
+   * (`gate.ts` measures it). A budget that mixes thinking time with travel time
+   * is not a difficulty setting, it is a tax on where you happened to die.
    */
   private openGate(kind: "revive" | "vault"): void {
     this.gateKind = kind
@@ -1044,7 +1058,15 @@ class Claim {
         ...q.distractors.slice(0, 2).map((d) => ({ label: d, correct: false })),
       ]),
     )
-    this.gateLeft = GATE_SECONDS
+    this.gateGuard = gateBudget(
+      kind,
+      q,
+      this.plates.map((p) => p.label),
+      this.g.w,
+      this.g.h,
+      this.level.railSpeed,
+    )
+    this.gateLeft = this.gateGuard
     this.gateStart = performance.now()
     this.phase = "gate"
     this.phaseT = 0
@@ -1052,7 +1074,6 @@ class Claim {
   }
 
   private updateGate(dt: number): void {
-    this.gateLeft -= dt
     this.movePlayer(dt)
     // Driving over a plate is not answering with it — you have to hold it. See
     // `plates.ts`: three labels used to share the middle row, so reaching the
@@ -1064,17 +1085,32 @@ class Claim {
       this.finishGate(p.correct, p.label)
       return
     }
+
+    // The only clock left in this game, and it is not on the answer. It runs
+    // only while the child is doing NOTHING — not steering, not standing on a
+    // plate — and any input at all puts the whole budget back. At the revive
+    // gate the budget is `Infinity`, so this subtracts from infinity forever
+    // and the gate simply waits.
+    let active = this.input.dir.x !== 0 || this.input.dir.y !== 0
+    for (const p of this.plates) active ||= p.charge > 0
+    if (active) this.gateLeft = this.gateGuard
+    else this.gateLeft -= dt
     if (this.gateLeft <= 0) this.finishGate(false)
   }
 
   private finishGate(correct: boolean, answered = ""): void {
-    // A vault nobody touched is not a wrong answer, it is a child who wanted to
-    // keep playing. The revive gate is different — the ring closing there costs
-    // a life, so letting it close is a real "I could not do this" — but posting
-    // `correct: false` for an untouched bonus would feed an adaptive controller
-    // a stream of failures manufactured by the game's own pacing.
+    // **Every report is now a plate the child chose to stand on.** A vault
+    // nobody touched is not a wrong answer, it is a child who wanted to keep
+    // playing, and posting `correct: false` for it would feed an adaptive
+    // controller a stream of failures manufactured by the game's own pacing.
+    //
+    // The revive gate used to be excepted here, because its ring closing cost a
+    // life and so letting it close read as a real "I could not do this". It no
+    // longer has a ring: the only way out of a revive gate is a plate, so the
+    // exception has nothing left to describe and the invariant is stronger
+    // without it.
     const attempted = answered !== ""
-    if (this.gateQ && (attempted || this.gateKind === "revive")) {
+    if (this.gateQ && attempted) {
       this.host.report({
         questionId: this.gateQ.id,
         correct,
@@ -1224,10 +1260,17 @@ class Claim {
     }
 
     if (this.phase === "gate") {
+      let hold = 0
       for (const p of this.plates) {
-        this.r.drawPlate(p.gx, p.gy, p.label, p.pop, this.time, p.charge / PLATE_ARM)
+        const t = p.charge / PLATE_ARM
+        if (t > hold) hold = t
+        this.r.drawPlate(p.gx, p.gy, p.label, p.pop, this.time, t)
       }
-      this.r.drawGateRing(this.gateLeft / GATE_SECONDS)
+      // Not a countdown. The ring used to drain, which is an anxiety cue even
+      // when it is generous, and there is nothing left for it to count. It now
+      // answers to the child instead of to a clock: it breathes while you
+      // think, and it closes as you commit to a plate.
+      this.r.drawGateHalo(hold, this.time, this.reduced)
     }
 
     if (this.hinting && this.phase === "play") this.r.drawHint(this.px(), this.py(), this.time)

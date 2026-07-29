@@ -631,17 +631,41 @@ export class Renderer {
     ctx.restore()
   }
 
-  /** The gate's clock: a ring that closes. Never a number counting down. */
-  drawGateRing(t: number): void {
+  /**
+   * The gate's ring — and it is NOT a clock.
+   *
+   * It used to be one: a yellow arc that drained over seven seconds, of which
+   * up to 5.64 could be spent driving to a plate. A visible countdown is an
+   * anxiety cue even when it is generous, so when the limit went, it went too.
+   *
+   * What is left answers to the child. While nobody is on a plate it breathes —
+   * a slow, wide pulse that says the game is holding still and waiting. The
+   * instant a plate starts charging the ring tightens, brightens and closes
+   * around the arena in step with the hold, so committing to an answer reads
+   * at the edge of vision as well as under your feet. `hold` is 0→1, never a
+   * remaining fraction of anything.
+   */
+  drawGateHalo(hold: number, time: number, reduced = false): void {
     const ctx = this.ctx
-    const r = Math.min(this.w, this.h) * 0.42
+    const t = clamp(hold, 0, 1)
+    const breath = reduced ? 0.5 : 0.5 + Math.sin(time * 1.7) * 0.5
+    const base = Math.min(this.w, this.h) * 0.42
+    // Waiting: wide and soft. Committing: tighter, brighter, and closing.
+    const r = base * (1 + (reduced ? 0 : breath * 0.02) - t * 0.06)
     ctx.save()
     ctx.translate(this.w / 2, this.h / 2)
-    ctx.strokeStyle = css(INK.yellow, 0.32)
-    ctx.lineWidth = 5
+    ctx.strokeStyle = css(INK.yellow, 0.1 + breath * 0.07)
+    ctx.lineWidth = 3
     ctx.beginPath()
-    ctx.arc(0, 0, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.max(0, t))
+    ctx.arc(0, 0, r, 0, Math.PI * 2)
     ctx.stroke()
+    if (t > 0) {
+      ctx.strokeStyle = css(INK.yellow, 0.34 + t * 0.5)
+      ctx.lineWidth = 5 + t * 5
+      ctx.beginPath()
+      ctx.arc(0, 0, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * t)
+      ctx.stroke()
+    }
     ctx.restore()
   }
 

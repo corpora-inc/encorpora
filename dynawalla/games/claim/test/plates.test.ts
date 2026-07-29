@@ -145,7 +145,7 @@ test("the hold is longer than the crossing, with room to spare, on every level",
   }
 })
 
-test("standing on the plate you meant does answer with it, well inside the gate clock", () => {
+test("standing on the plate you meant does answer with it, and quickly", () => {
   const g = makeGrid(pickArena(96 / 75))
   const ps = layoutPlates(g.w, g.h, LABELS)
   const want = ps.findIndex((p) => p.correct)
@@ -159,7 +159,9 @@ test("standing on the plate you meant does answer with it, well inside the gate 
   assert.equal(answered, want, "the plate under the player is the one that answers")
   assert.equal((ps[answered] as Plate).correct, true)
   assert.ok(held < 1, `it took ${held.toFixed(2)}s to answer a plate you are standing on`)
-  assert.ok(held < 7, "the gate ring closes at seven seconds")
+  // There is no gate clock to be inside of any more (`gate.ts`) — the hold is
+  // now the only duration in the gate, and it is under a second.
+  assert.ok(held < PLATE_ARM * 1.2, `the hold is ${PLATE_ARM}s but answering took ${held.toFixed(2)}s`)
 })
 
 test("stepping off empties a plate rather than banking it", () => {
