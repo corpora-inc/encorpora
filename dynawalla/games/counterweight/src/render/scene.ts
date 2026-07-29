@@ -14,7 +14,7 @@ import { GROUND, type Bout, type Seat, type Verdict } from "../game/bout.ts"
 import type { Column } from "../game/column.ts"
 import type { Place } from "../game/places.ts"
 import type { Beam } from "../sim/beam.ts"
-import { hit, layoutFor, type Layout, type Rect } from "./layout.ts"
+import { beamEnds, hit, panRect, viewLayout, type Layout, type Rect } from "./layout.ts"
 import { alpha, FACE_NUM, FACE_TEXT, font, mix, PALETTE } from "./palette.ts"
 import { Sparks } from "./particles.ts"
 
@@ -88,7 +88,7 @@ export class Scene {
     const ctx = canvas.getContext("2d")
     if (!ctx) throw new Error("counterweight: no 2d context")
     this.ctx = ctx
-    this.box = layoutFor(1, 1)
+    this.box = viewLayout(1, 1)
     this.resize()
   }
 
@@ -103,7 +103,9 @@ export class Scene {
     this.dpr = Math.min(3, Math.max(1, globalThis.devicePixelRatio || 1))
     this.canvas.width = Math.round(w * this.dpr)
     this.canvas.height = Math.round(h * this.dpr)
-    this.box = layoutFor(w, h)
+    // Read fresh each resize, not once at mount: a rotation swaps top/bottom
+    // with left/right, and Split View changes them without a rotation.
+    this.box = viewLayout(w, h)
   }
 
   /** Which face, if any, is under this point. */
@@ -236,7 +238,7 @@ export class Scene {
 
   private drawBeam(state: SceneState): void {
     const ctx = this.ctx
-    const { fulcrum, arm, unit } = this.box
+    const { fulcrum, unit } = this.box
     const angle = state.beam.angle
     // Positive margin is your side *down*: an arm-wrestle pushes the loser's
     // hand toward the table, and your side is the left one.
@@ -250,10 +252,9 @@ export class Scene {
     ctx.lineTo(fulcrum.x, this.box.stage.y + this.box.stage.h)
     ctx.stroke()
 
-    const lx = fulcrum.x - Math.cos(tilt) * arm
-    const ly = fulcrum.y - Math.sin(tilt) * arm
-    const rx = fulcrum.x + Math.cos(tilt) * arm
-    const ry = fulcrum.y + Math.sin(tilt) * arm
+    // Shared with `layout.panExtent`, so the test that holds the pans inside the
+    // safe area is measuring the geometry this frame actually draws.
+    const { lx, ly, rx, ry } = beamEnds(this.box, tilt)
 
     // The beam. Ring shows as a hot rim along the steel.
     const ring = state.beam.ring
@@ -290,8 +291,8 @@ export class Scene {
 
     this.drawChain(lx, ly, this.box.panDrop)
     this.drawChain(rx, ry, this.box.panDrop)
-    this.drawYourPan(state, lx, ly + this.box.panDrop)
-    this.drawHisPan(state, rx, ry + this.box.panDrop)
+    this.drawYourPan(state, panRect(this.box, lx, ly))
+    this.drawHisPan(state, panRect(this.box, rx, ry))
   }
 
   private drawChain(x: number, y: number, drop: number): void {
@@ -304,10 +305,10 @@ export class Scene {
     ctx.stroke()
   }
 
-  private drawYourPan(state: SceneState, cx: number, cy: number): void {
+  private drawYourPan(state: SceneState, r: Rect): void {
     const ctx = this.ctx
     const { panW, panH, unit } = this.box
-    const r: Rect = { x: cx - panW / 2, y: cy, w: panW, h: panH }
+    const cx = r.x + r.w / 2
     ctx.fillStyle = alpha(PALETTE.stone, 0.94)
     roundRect(ctx, r, unit * 0.5)
     ctx.fill()
@@ -326,10 +327,10 @@ export class Scene {
     ctx.fillText(grouped(state.bout.load), cx, r.y + panH * 0.62)
   }
 
-  private drawHisPan(state: SceneState, cx: number, cy: number): void {
+  private drawHisPan(state: SceneState, r: Rect): void {
     const ctx = this.ctx
     const { panW, panH, unit } = this.box
-    const r: Rect = { x: cx - panW / 2, y: cy, w: panW, h: panH }
+    const cx = r.x + r.w / 2
     ctx.fillStyle = alpha(PALETTE.stone, 0.94)
     roundRect(ctx, r, unit * 0.5)
     ctx.fill()

@@ -6,6 +6,7 @@
 // because a clock that runs behind a sheet costs the child a round they never
 // saw.
 
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import type { Handle, Host } from "./contract.ts"
 import { Audio } from "./audio.ts"
 import { Bout, type BoutEvent, TIMING, TIMING_REDUCED } from "./game/bout.ts"
@@ -49,6 +50,52 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   const audio = new Audio()
   const beam = new Beam(reduced ? TUNING_REDUCED : TUNING)
   const bout = new Bout(() => host.next({ domain: "add" }), reduced ? TIMING_REDUCED : TIMING)
+
+  const guide = createInstructions(el, {
+    title: "THE COUNTERWEIGHT",
+    summary: [
+      "The Iron Turk's pan holds a sum. Work out its answer yourself — it is never shown.",
+      "Load your pan to exactly one more than his answer, then press SEAT.",
+    ],
+    sections: [
+      {
+        heading: "Loading your pan",
+        lines: [
+          "There are four pillars: thousands, hundreds, tens and ones.",
+          "The top face of a pillar adds one of that size. The bottom face takes one off.",
+          "Your load stays where you left it. Each round you only change the difference.",
+        ],
+      },
+      {
+        heading: "One more. Exactly one.",
+        lines: [
+          "Not two more. Not nearly. One.",
+          "That is what winning an arm-wrestle looks like: just in front.",
+          "Press SEAT and the beam is judged.",
+          "One ahead and he gives ground. Five lengths of ground and the Turk goes over.",
+          "Anything else and he takes one length back. Nothing else is lost.",
+        ],
+      },
+      {
+        heading: "A short cut",
+        lines: [
+          "To add 8, hit the tens face once and take the ones off twice.",
+          "Ten less two is eight, and that is three taps instead of eight.",
+        ],
+      },
+      {
+        heading: "Do not hammer the plates",
+        lines: [
+          "The beam is a bar of steel. Hit it again while it is still ringing and the ring grows.",
+          "Ring it too hard and the beam shears, and the round is over.",
+          "Leave a beat between blows and that never happens.",
+          "The window closes on its own. Whatever is on your pan then is your answer.",
+          "If you stop touching the rack your pan slowly settles. Any strike puts it back.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
 
   let tally = loadTally()
   let running = true
@@ -331,6 +378,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
       globalThis.removeEventListener("resize", resize)
       globalThis.document?.removeEventListener("visibilitychange", visibility)
       observer?.disconnect()
+      guide.destroy()
       audio.dispose()
       canvas.remove()
     },
