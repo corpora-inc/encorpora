@@ -187,26 +187,66 @@ export function askShape(w: World): { difficulty: number; maxDifficulty?: number
  * back up would re-enter the same starve every time the child climbed.
  */
 function capBelow(w: World, q: Question): void {
+  // A difficulty that is not a number caps nothing. `clamp` is NaN-transparent,
+  // so without this the ceiling becomes NaN — which `readScale` then discards as
+  // "not a difficulty", leaving the ceiling inert AND `drawCeiling <= capped`
+  // permanently false, so every later refusal re-logs and re-flushes forever.
+  if (!Number.isFinite(q.difficulty)) return;
   const at = clamp(q.difficulty, 0, 1);
   const capped = Math.max(0, at - CEILING_STEP);
   if (w.drawCeiling !== null && w.drawCeiling <= capped) return;
   w.drawCeiling = capped;
+  // The pool is still stocked from the rung just ruled out, but the flush waits
+  // until `askShape` has carried the new ceiling into `next()`. See
+  // `World.pendingFlush`.
+  w.pendingFlush = true;
   console.error(
     `[polarity] a rung POLARITY cannot draw was served at difficulty ${at.toFixed(3)}; ` +
       `capping the stream at ${capped.toFixed(3)} for the rest of this run`,
   );
-  // The pool was stocked from the rung that has just been ruled out, so without
-  // this the ceiling arrives sixty-four questions late.
-  w.host.flush?.();
+}
+
+/**
+ * Is this refusal a fact about the RUNG, or only about this item?
+ *
+ * `orbValues` says no for two reasons and only one of them is the rung's. An
+ * unprintable ANSWER is a property of the rung: the budget is a constant, so
+ * every item from that rung is equally undrawable. Too few distractors is a
+ * property of the ITEM, and capping on it was a session-ending bug — the host's
+ * dry-pool sentinel is `{ id: "", answer: "0", distractors: [] }`, which parses
+ * and prints perfectly and yields exactly one value. One transient empty pool
+ * therefore read as "difficulty 0 is undrawable", pinned the ceiling at 0 where
+ * the monotone guard made it unraisable, and `startRun` deliberately does not
+ * reset it — so every question for the rest of the mount was the easiest rung in
+ * the product. An id of `""` is the host's own marker for "this is not a served
+ * item"; nothing about it describes a rung.
+ *
+ * The `id === ""` line is belt-and-braces and is NOT load-bearing today: the
+ * sentinel's `answer: "0"` prints, so the printability check below already
+ * refuses to cap on it, and deleting the id line breaks no test. It stays
+ * because a sentinel is the host's to change and the next one may not print —
+ * at which point capping on it would silently pin the run again.
+ */
+function rungCannotDraw(q: Question): boolean {
+  if (q.id === "") return false;
+  const answer = tryParseInt(q.answer);
+  return answer === null || !isPrintable(answer);
 }
 
 /** Draw an item this game can actually put on the field, or nothing. */
 function drawAskable(w: World, orbCount: number): { q: Question; values: number[] } | null {
   for (let i = 0; i < MAX_ASK_TRIES; i++) {
     const q = w.host.next(askShape(w));
+    // `askShape` has just put the new ceiling on the wire, so the pool can now
+    // be ranked against it. Flushing inside `capBelow` ranked it against the old
+    // one and kept the banned rung.
+    if (w.pendingFlush) {
+      w.pendingFlush = false;
+      w.host.flush?.();
+    }
     const values = orbValues(q, orbCount);
     if (values) return { q, values };
-    capBelow(w, q);
+    if (rungCannotDraw(q)) capBelow(w, q);
     console.error(
       `[polarity] declined an item POLARITY cannot print: ${q.prompt} = ${JSON.stringify(q.answer)}`,
     );

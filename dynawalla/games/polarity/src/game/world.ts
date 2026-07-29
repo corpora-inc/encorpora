@@ -135,6 +135,18 @@ export type World = {
    * hardest question it can actually draw".
    */
   drawCeiling: number | null;
+  /**
+   * A ceiling was lowered and the host has not been told yet.
+   *
+   * The flush has to happen AFTER the new ceiling reaches the host, never
+   * before: `flushNow` ranks the pool with `distance()`, which reads the host's
+   * OWN `ceiling`, and that is only updated inside `next()`. Flushing first
+   * ranked every pooled question against the stale ceiling and therefore kept
+   * precisely the banned rung's questions it meant to discard — measured as ten
+   * consecutive Bearers asking nothing, about four and a half minutes of
+   * silence, before the pool drained on its own.
+   */
+  pendingFlush: boolean;
   bossActive: boolean;
   hush: number;
 
@@ -291,6 +303,7 @@ export function makeWorld(host: Host, tier: Tier, seed: number): World {
     bearerCount: 0,
     stratum: 0,
     drawCeiling: null,
+    pendingFlush: false,
     bossActive: false,
     hush: 0,
     seal: { serial: 0, state: "idle", q: null, askedAt: 0, answered: "" },

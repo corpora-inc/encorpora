@@ -315,3 +315,100 @@ test("a ceiling is never raised by the stale question that outlived it", () => {
     console.error = real;
   }
 });
+
+/**
+ * The dry pool must not be mistaken for a rung this game cannot draw.
+ *
+ * `orbValues` says no for two reasons and only one of them is the rung's. An
+ * unprintable ANSWER is a rung fact — the numeral budget is a constant, so every
+ * item from that rung is equally undrawable. **Too few distractors is an ITEM
+ * fact**, and capping on it ended the session.
+ *
+ * `packs/shared/game-host` answers an empty pool with
+ * `{ id: "", prompt: "", answer: "0", distractors: [], difficulty: 0 }`. That
+ * answer parses and prints perfectly; it simply yields one value. So one
+ * transient empty pool read as "difficulty 0 cannot be drawn", pinned the
+ * ceiling at 0 where the monotone guard made it unraisable, and `startRun`
+ * deliberately does not reset it — so every question for the rest of the mount
+ * was the easiest rung in the product. That is worse than the soft-lock this
+ * file exists to fix, because it is silent and it looks like adaptation.
+ *
+ * The pool runs dry for reasons that have nothing to do with POLARITY:
+ * `createItemService.next` has four `return null` paths and `warm()` swallows a
+ * throw with a `break`.
+ */
+test("one dry pool does not pin the run to the bottom rung for the rest of the mount", () => {
+  const real = console.error;
+  console.error = () => {};
+  try {
+    const handle = rungHost(["12", "34", "56", "78", "90"]);
+    let dry = 1;
+    const host: Host = {
+      ...handle.host,
+      next: (ask?: Ask): Question => {
+        if (dry > 0) {
+          dry -= 1;
+          // Byte-for-byte the sentinel at game-host/index.ts:681-684.
+          return { id: "", prompt: "", answer: "0", distractors: [], domain: "add", difficulty: 0 };
+        }
+        return handle.host.next(ask);
+      },
+    };
+    const w = world(host);
+    w.stratum = 12;
+    runBearers(w, 1);
+
+    assert.equal(
+      w.drawCeiling,
+      null,
+      `a dry pool capped the stream at ${String(w.drawCeiling)} — every question after this is the easiest rung in the product`,
+    );
+
+    const before = handle.asked.length;
+    runBearers(w, 4);
+    const after = handle.asked.slice(before);
+    assert.ok(after.length > 0, "the run stopped asking after the dry Bearer");
+    assert.ok(
+      after.some((q) => q.difficulty > 0),
+      `every rung served after the dry pool was the bottom one: ${after.map((q) => q.difficulty.toFixed(3)).join(", ")}`,
+    );
+  } finally {
+    console.error = real;
+  }
+});
+
+/**
+ * A difficulty that is not a number caps nothing.
+ *
+ * `clamp` is NaN-transparent, so a NaN difficulty used to set `drawCeiling` to
+ * NaN — which `readScale` discards as "not a difficulty", leaving the ceiling
+ * inert AND `drawCeiling <= capped` permanently false, so every later refusal
+ * re-logged and re-flushed for the life of the run.
+ */
+test("a NaN difficulty is not a ceiling", () => {
+  const real = console.error;
+  console.error = () => {};
+  try {
+    const handle = rungHost(["12", "34"]);
+    const wide = "1".repeat(LABEL_MAX_CHARS + 4);
+    const host: Host = {
+      ...handle.host,
+      next: (): Question => ({
+        id: "nan",
+        prompt: "?",
+        answer: wide,
+        distractors: [`${wide}2`, `${wide}3`],
+        domain: "add",
+        difficulty: Number.NaN,
+      }),
+    };
+    const w = world(host);
+    runBearers(w, 1);
+    assert.ok(
+      w.drawCeiling === null || Number.isFinite(w.drawCeiling),
+      `the ceiling is ${String(w.drawCeiling)}, which readScale discards while the monotone guard treats it as set`,
+    );
+  } finally {
+    console.error = real;
+  }
+});
