@@ -52,6 +52,27 @@ export type PuzzleSpec = {
 
 export const PAN_PEG = 3; // pans always hang at the same distance, so peg cancels out
 
+/**
+ * The names engraved on the plinth as the apparatus changes.
+ *
+ * They live here rather than in `generate.ts` because both the local ladder and
+ * the real host need them, and `generate.ts` is the whole standalone question
+ * generator — importing it from the adapter would pull the entire local ladder
+ * into the shipped pack bundle to read ten strings.
+ */
+export const MOVEMENTS: readonly string[] = [
+  "First Light",
+  "Both Dishes",
+  "The Sealed Crate",
+  "Identical Crates",
+  "The Arm",
+  "Crates Facing Crates",
+  "Lift",
+  "Halves and Quarters",
+  "The Long Arm",
+  "Sealed and Split",
+];
+
 function lcm(a: number, b: number): number {
   let x = a;
   let y = b;
@@ -160,6 +181,66 @@ export function rackCanMake(rack: readonly Frac[], target: Frac): boolean {
     }
   }
   return ok[goal];
+}
+
+/**
+ * How an attempt ended, once a weight has landed.
+ *
+ * `continue` is the only one that is not an ending: more brass is still on its
+ * way to a solution.
+ */
+export type Verdict = "solved" | "overshot" | "deadEnd" | "continue";
+
+/**
+ * Read the board after a weight lands.
+ *
+ * Extracted from the game so it can be measured. The classification itself is
+ * unchanged; what changed is `counts` below.
+ */
+export function verdictFor(
+  spec: PuzzleSpec,
+  placed: readonly PlacedItem[],
+  declared: Frac | null,
+  startNetSign: number,
+): Verdict {
+  if (isBalanced(spec, placed, declared)) return "solved";
+  const net = Math.sign(toNumberSign(netTorque(spec, placed, declared)));
+  const crossed = startNetSign !== 0 && net !== 0 && net !== startNetSign;
+  if (spec.kind === "hang" || crossed) return "overshot";
+  const left = remainingFor(spec, placed);
+  if (left && !rackCanMake(spec.rack, left)) return "deadEnd";
+  return "continue";
+}
+
+/**
+ * Whether an ending is recorded against the child.
+ *
+ * **`deadEnd` used to be free, and that is now a lie.** The dish tipping and
+ * handing everything back was written for a genuine dead end: a third placed
+ * when a half was wanted and no sixth on the rack. Being stuck with no way out
+ * is how a puzzle game loses a ten-year-old, so it cost nothing.
+ *
+ * Then the rack stopped padding from `1, 2, 3, …`. Every weight is now within a
+ * band of the answer, so a pick that is merely *too light* leaves a remainder
+ * smaller than the smallest disc on the rail and lands here. Measured over two
+ * thousand host-shaped boards, 8131 of 16085 wrong picks reached `deadEnd` and
+ * 7954 reached `overshot` — so half of every wrong answer in the game would
+ * have been recorded as nothing at all: no error, no report, and a *gem* and a
+ * ladder-climb at the end of a board that took four guesses. The controller in
+ * `pacing.ts` reads errors, so that half would have pushed a floor under a
+ * child who was guessing.
+ *
+ * Too light and too heavy are the same mistake seen from two sides. Both count.
+ * Neither is announced any more loudly than it was: the beam still just swings
+ * the way you made it swing.
+ */
+export function counts(v: Verdict): boolean {
+  return v === "overshot" || v === "deadEnd";
+}
+
+/** `Math.sign` of a rational, without leaving the exact domain to get it. */
+function toNumberSign(f: Frac): number {
+  return f.n === 0 ? 0 : f.n < 0 ? -1 : 1;
 }
 
 /** What still has to go into the dish for the beam to level. */

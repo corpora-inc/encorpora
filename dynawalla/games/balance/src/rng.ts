@@ -16,6 +16,33 @@ export type Rng = {
   chance(p: number): boolean;
 };
 
+/**
+ * A seed for *this* sitting.
+ *
+ * The standalone shell used to hardcode `0x5eed1e`, so every session — every
+ * time a child came back — replayed the same run in the same order. A seed is
+ * for reproducing a run on purpose (`?seed=`, and every test in this package
+ * passes one); it is not a default.
+ *
+ * `Date.now()` alone repeats across two tabs opened in the same millisecond, so
+ * it is mixed with a random draw.
+ */
+export function freshSeed(): number {
+  const t = Date.now() >>> 0;
+  const r = Math.floor(Math.random() * 0x100000000) >>> 0;
+  return ((t ^ Math.imul(r, 0x9e3779b1)) >>> 0) || 1;
+}
+
+/** A stable 32-bit seed for a string — a question id, usually. */
+export function seedFromString(s: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h || 1;
+}
+
 export function makeRng(seed: number): Rng {
   let a = seed >>> 0;
   const next = (): number => {

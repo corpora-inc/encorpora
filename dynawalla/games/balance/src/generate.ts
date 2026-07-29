@@ -14,22 +14,11 @@
 import type { Frac } from "./frac.ts";
 import { frac, toKey, toNumber, add, sub, mulInt, isZero, isPositive } from "./frac.ts";
 import type { FixedItem, PuzzleSpec, Side } from "./puzzle.ts";
-import { PAN_PEG } from "./puzzle.ts";
+import { MOVEMENTS, PAN_PEG } from "./puzzle.ts";
 import { makeRng } from "./rng.ts";
 import type { Rng } from "./rng.ts";
 
-export const MOVEMENTS: readonly string[] = [
-  "First Light",
-  "Both Dishes",
-  "The Sealed Crate",
-  "Identical Crates",
-  "The Arm",
-  "Crates Facing Crates",
-  "Lift",
-  "Halves and Quarters",
-  "The Long Arm",
-  "Sealed and Split",
-];
+export { MOVEMENTS } from "./puzzle.ts";
 export const PUZZLES_PER_MOVEMENT = 5;
 
 type Draft = {
@@ -111,8 +100,19 @@ function buildPrompt(
   return `${l} = ${r}`;
 }
 
-const INT_RACK = (hi: number): Frac[] =>
-  Array.from({ length: hi }, (_, i) => frac(i + 1));
+/**
+ * Every rack in this file is shuffled before it is handed over.
+ *
+ * A rack in ascending order is a rack whose answer has a *position*, and on a
+ * board where the answer is much larger or much smaller than everything else
+ * offered — which is most `declare` boards, where the mal-rules are `c − b` and
+ * `c + b` and the answer is the little `x` — that position is the same one
+ * every time. The child learns the position instead of the arithmetic. Nothing
+ * downstream depends on the order: the rack is addressed by `findIndex` on
+ * value everywhere it is used.
+ */
+const INT_RACK = (hi: number, rng: Rng): Frac[] =>
+  rng.shuffle(Array.from({ length: hi }, (_, i) => frac(i + 1)));
 
 /** Rack for a single-answer puzzle: the answer, real mal-rule outputs, and filler. */
 function answerRack(answer: Frac, mals: number[], rng: Rng, size = 9): Frac[] {
@@ -124,7 +124,7 @@ function answerRack(answer: Frac, mals: number[], rng: Rng, size = 9): Frac[] {
     const near = Math.max(1, a + rng.int(-5, 7));
     if (Number.isInteger(near)) set.add(near);
   }
-  return [...set].sort((x, y) => x - y).map((n) => frac(n));
+  return rng.shuffle([...set]).map((n) => frac(n));
 }
 
 // ---------------------------------------------------------------- generators
@@ -137,7 +137,7 @@ function genFillSimple(rng: Rng, hi: number): Draft {
     mode: "pans",
     fixed,
     answer: frac(target),
-    rack: INT_RACK(Math.max(9, Math.min(12, hi))),
+    rack: INT_RACK(Math.max(9, Math.min(12, hi)), rng),
     fillSide: 1,
     hangSlot: null,
     prompt: buildPrompt(fixed, "pans", 1, null),
@@ -160,7 +160,7 @@ function genFillBoth(rng: Rng, hi: number): Draft {
     mode: "pans",
     fixed,
     answer: frac(need),
-    rack: INT_RACK(12),
+    rack: INT_RACK(12, rng),
     fillSide,
     hangSlot: null,
     prompt: buildPrompt(fixed, "pans", fillSide, null),
@@ -303,7 +303,7 @@ function genBalloon(rng: Rng, hi: number): Draft {
     fixed,
     answer: frac(-x),
     // The rack holds balloons: every value lifts.
-    rack: Array.from({ length: 9 }, (_, i) => frac(-(i + 1))),
+    rack: rng.shuffle(Array.from({ length: 9 }, (_, i) => frac(-(i + 1)))),
     fillSide: heavy,
     hangSlot: null,
     prompt: buildPrompt(fixed, "pans", heavy, null),
@@ -338,7 +338,7 @@ function genFraction(rng: Rng): Draft {
     mode: "pans",
     fixed,
     answer,
-    rack: FRACTION_RACK,
+    rack: rng.shuffle(FRACTION_RACK),
     fillSide: 1,
     hangSlot: null,
     prompt: buildPrompt(fixed, "pans", 1, null),
@@ -363,7 +363,7 @@ function genDeclareFraction(rng: Rng): Draft {
     mode: "pans",
     fixed,
     answer: x,
-    rack: FRACTION_RACK.slice(),
+    rack: rng.shuffle(FRACTION_RACK),
     fillSide: null,
     hangSlot: null,
     prompt: buildPrompt(fixed, "pans", null, null),

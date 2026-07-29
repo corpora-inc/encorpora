@@ -4,9 +4,14 @@
 
 import { mount } from "./game.ts";
 import { makeStubHost } from "./stubHost.ts";
+import { freshSeed } from "./rng.ts";
 
 const params = new URLSearchParams(location.search);
-const seed = Number(params.get("seed") ?? "") || 0x5eed1e;
+// A fresh run every sitting. `?seed=` pins one, which is what the playtest
+// harness and every bug report should use; the hardcoded `0x5eed1e` that used
+// to be here meant a child who came back got the same boards in the same order,
+// forever.
+const seed = Number(params.get("seed") ?? "") || freshSeed();
 const start = Number(params.get("start") ?? "") || 0;
 const reduced = params.get("reduced") === "1";
 
