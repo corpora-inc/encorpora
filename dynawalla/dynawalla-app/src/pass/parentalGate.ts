@@ -64,6 +64,27 @@ export const GATE_WORDS: readonly string[] = [
 ]
 
 /**
+ * How often the **year** form is drawn rather than the word form.
+ *
+ * Both forms exist because a single fixed form is a single thing to memorise.
+ * They are not, however, equally hard, and the split used to be even:
+ *
+ *   * The **word** form is the real barrier. Fourteen letters of a word a
+ *     primary-school child has no reason to have typed, copied without losing
+ *     the place — that is minutes of work for a seven-year-old and four seconds
+ *     for an adult, which is exactly the asymmetry a gate wants.
+ *   * The **year** form is instant for an adult and it is *also* instant for a
+ *     nine-year-old. This is a maths app; its audience writes the date at the
+ *     top of a page every day. At an even split, half of every child's attempts
+ *     landed on the one form they can beat.
+ *
+ * So the year is the occasional form, not the coin-flip one: still reachable,
+ * so the gate is never one memorisable thing, but the word is what a child
+ * meets four times in five.
+ */
+const YEAR_SHARE = 0.2
+
+/**
  * Build a challenge.
  *
  * `random` and `now` are injected so the test is a test rather than a coin
@@ -73,14 +94,43 @@ export function makeChallenge(
   random: () => number = Math.random,
   now: number = Date.now(),
 ): Challenge {
-  // Two forms, roughly evenly. Two rather than one because a single fixed form
-  // is a single thing to memorise, and the year is the one an adult answers
-  // instantly while being the one a young child is least likely to know.
-  if (random() < 0.5) {
+  if (random() < YEAR_SHARE) {
     return { kind: "year", answer: String(new Date(now).getFullYear()) }
   }
   const index = Math.min(GATE_WORDS.length - 1, Math.floor(random() * GATE_WORDS.length))
   const word = GATE_WORDS[index] ?? GATE_WORDS[0] ?? "TRANSMISSION"
+  return { kind: "word", word, answer: word }
+}
+
+/**
+ * A fresh challenge **of the same form** as the one that was just missed.
+ *
+ * Why the form is held constant: the two forms are not the same height on the
+ * screen. A word challenge renders a line of display type above the field; a
+ * year challenge does not. Swapping one for the other on a wrong answer takes
+ * that line out of the layout — so the field and the "Continue" button jump up
+ * the screen, under the finger that is already reaching for them, at the exact
+ * moment the person is being told they got it wrong. "Text that jumps as state
+ * changes" is one of the named web-view tells, and this is where the sheet had
+ * one.
+ *
+ * It is still a *different* challenge, which is the property that matters: a
+ * word is replaced by one of the other seventeen, never by itself, so the gate
+ * cannot be defeated by pressing Continue twice. A year has nothing to vary —
+ * the current year is the current year — and it does not need to: it is not a
+ * question you get closer to by being asked it again.
+ */
+export function reissue(
+  challenge: Challenge,
+  random: () => number = Math.random,
+  now: number = Date.now(),
+): Challenge {
+  if (challenge.kind === "year") {
+    return { kind: "year", answer: String(new Date(now).getFullYear()) }
+  }
+  const pool = GATE_WORDS.filter((word) => word !== challenge.word)
+  const index = Math.min(pool.length - 1, Math.floor(random() * pool.length))
+  const word = pool[index] ?? challenge.word
   return { kind: "word", word, answer: word }
 }
 

@@ -18,6 +18,29 @@
 // holds the copy against a word list so the ban is mechanical rather than
 // remembered.
 //
+// ── How it is drawn ──────────────────────────────────────────────────────────
+// A modal is where "a web page in a wrapper" is most obvious, so every part of
+// this is the platform's construction rather than the browser's:
+//
+//   * ONE panel for all three stages, mounted once. The stages swap inside it,
+//     so the sheet arrives once and then changes its mind, rather than being
+//     torn down and rebuilt — which would replay the entrance and move focus
+//     three times.
+//   * The scrim and the panel are `.dw-scrim` and `.dw-overlay`, the elevation
+//     rungs from `index.css`. The panel used to be `bg-ground` on
+//     a deep-ground wash at 85%, which in dark measured 1.13:1 against its own
+//     backdrop: a sheet you could not see was a sheet.
+//   * Focus is trapped while it is open and returned to whatever had it when it
+//     closes. The container takes focus, never a button — Chrome matches
+//     `:focus-visible` for programmatic focus and a ring on the child-facing
+//     stage is one of the named tells.
+//   * There is deliberately NO tap-outside-to-dismiss. Every stage has a
+//     labelled way out; a scrim that closes on a stray palm is how a child
+//     dismisses the one screen an adult was reading.
+//   * Nothing on any stage appears or disappears in a way that moves what is
+//     under it. The gate's "try again" line and the offer's status line are
+//     always in the layout, empty until they have something to say.
+//
 // The CSP is `style-src 'self'`, so there is no `style` prop anywhere below —
 // an inline style works in `vite dev` and is silently dropped in the shipped
 // build, which is the worst failure mode available.
@@ -25,9 +48,9 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { fill, strings } from "../app/strings.ts"
-import { IndexMark } from "../design/IndexMark.tsx"
+import { Mark } from "../design/Mark.tsx"
 import { billing, FALLBACK_PRODUCTS, type PassProduct } from "./billing.ts"
-import { makeChallenge, passes, type Challenge } from "./parentalGate.ts"
+import { makeChallenge, passes, reissue, type Challenge } from "./parentalGate.ts"
 import { buyPass, restorePasses } from "./store.ts"
 
 type Stage = "rest" | "gate" | "offer"
@@ -39,7 +62,31 @@ export type PassSheetProps = {
   readonly onLeave: () => void
 }
 
-/** The panel every stage is drawn in. One shape, so the sheet does not jump. */
+/** Which heading names the dialog, per stage. `aria-labelledby` must follow it. */
+const TITLE_ID: Record<Stage, string> = {
+  rest: "pass-rest-title",
+  gate: "pass-gate-title",
+  offer: "pass-offer-title",
+}
+
+/**
+ * Everything inside the panel that can take focus, in document order.
+ *
+ * Queried on each Tab rather than cached, because the stages swap underneath
+ * the panel and a cached list is a list of nodes that have been unmounted.
+ */
+const FOCUSABLE =
+  'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+
+/**
+ * The panel every stage is drawn in. One shape and one mounting, so the sheet
+ * arrives once, the entrance is not replayed on every stage, and focus is taken
+ * and given back exactly once.
+ *
+ * The mark at the top is the screen's single warm point — `--dw-index`, the
+ * brand's apex gold, "once per screen, at the top of something". It is the
+ * reason this is a sheet belonging to this product rather than a dialog.
+ */
 function Panel({
   labelId,
   children,
@@ -47,16 +94,99 @@ function Panel({
   readonly labelId: string
   readonly children: React.ReactNode
 }) {
+  const dialog = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const node = dialog.current
+    if (node === null) return
+
+    // Whatever had focus before the sheet opened gets it back when it closes.
+    // Without this, closing the sheet drops focus on `<body>` and a keyboard or
+    // switch user restarts from the top of the document.
+    const before = document.activeElement instanceof HTMLElement ? document.activeElement : null
+
+    // The page behind a sheet does not move. The scrim is `position: fixed`,
+    // so body was still the scrolling box underneath it and a drag on the
+    // scrim scrolled the catalogue — the sheet then closed onto a different
+    // offset and the surface you came back to was not the one you left. The
+    // class is on `<html>`, because `overflow-x: hidden` there promotes body
+    // to the scroller and both boxes have to be told.
+    document.documentElement.classList.add("dw-locked")
+
+    // The CONTAINER, not a control. `:focus-visible` matches programmatic focus
+    // in Chrome when there has been no prior interaction, so focusing the "Choose
+    // another game" button drew a ring on the child-facing screen every time.
+    node.focus()
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return
+      const stops = [...node.querySelectorAll<HTMLElement>(FOCUSABLE)]
+      const first = stops[0]
+      const last = stops.at(-1)
+      if (first === undefined || last === undefined) {
+        // Nothing to move to. Swallowing the key is what keeps focus inside a
+        // modal that is momentarily empty rather than letting it escape to the
+        // page underneath, which is still there and still interactive.
+        event.preventDefault()
+        return
+      }
+      const held = document.activeElement
+      if (event.shiftKey && (held === first || held === node)) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && held === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    node.addEventListener("keydown", onKey)
+    return () => {
+      node.removeEventListener("keydown", onKey)
+      document.documentElement.classList.remove("dw-locked")
+      before?.focus()
+    }
+  }, [])
+
   return (
-    <div className="bg-ground-deep/85 fixed inset-0 z-[var(--z-modal)] flex items-center justify-center p-[var(--dw-frame-pad)] backdrop-blur-sm">
+    <div className="dw-scrim dw-anim-fade fixed inset-0 z-[var(--z-modal)] flex items-center justify-center pt-[max(var(--dw-frame-pad),var(--safe-top))] pr-[max(var(--dw-frame-pad),var(--safe-right))] pb-[max(var(--dw-frame-pad),var(--safe-bottom))] pl-[max(var(--dw-frame-pad),var(--safe-left))] backdrop-blur-sm">
       <div
+        ref={dialog}
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelId}
-        className="bg-ground border-line-strong rounded-cut-lg max-h-[var(--dialog-max-h)] w-full max-w-md overflow-y-auto border p-[var(--dw-surface-pad)]"
+        tabIndex={-1}
+        className="dw-overlay dw-anim-enter rounded-cut-lg p-surface max-h-[var(--dialog-max-h)] w-full max-w-md overflow-y-auto overscroll-contain outline-none"
       >
+        <Mark className="text-index mx-auto block h-9 w-9" />
         {children}
       </div>
+    </div>
+  )
+}
+
+/**
+ * The head of a stage: the mark's own axis, so the three stages share one
+ * vertical rhythm and the sheet does not appear to re-typeset itself when it
+ * changes stage.
+ */
+function Head({
+  id,
+  title,
+  body,
+}: {
+  readonly id: string
+  readonly title: string
+  readonly body?: string
+}) {
+  return (
+    <div className="mt-stack-tight text-center">
+      <h2 id={id} className="inscription text-ink text-2xl text-balance">
+        {title}
+      </h2>
+      {body === undefined ? null : (
+        <p className="text-ink-muted mt-label text-md text-pretty">{body}</p>
+      )}
     </div>
   )
 }
@@ -68,6 +198,12 @@ function Panel({
  * what has been withheld. The second line is the important one and it is true:
  * every other game is open, and the child is being pointed at them rather than
  * at a shop.
+ *
+ * The way out is the only filled control on the sheet, at 64 px — a child-sized
+ * row, not a link — because it is the thing they should press and the audit
+ * found this the least inviting screen in the app. "Grown-ups" is quiet, ink
+ * grey, and carries no underline: an underlined phrase is a web idiom, and on
+ * this stage it was also the most conspicuous thing on the screen.
  */
 function Rest({
   packName,
@@ -78,27 +214,20 @@ function Rest({
   readonly onLeave: () => void
   readonly onGrownUps: () => void
 }) {
-  const leave = useRef<HTMLButtonElement | null>(null)
-  useEffect(() => leave.current?.focus(), [])
-
   return (
-    <Panel labelId="pass-rest-title">
-      <h2
-        id="pass-rest-title"
-        className="inscription text-ink text-2xl tracking-wide text-balance"
-      >
-        {fill(strings.pass.restTitle, { pack: packName })}
-      </h2>
-      <p className="text-ink-muted mt-2 text-base">{strings.pass.restBody}</p>
+    <>
+      <Head
+        id={TITLE_ID.rest}
+        title={fill(strings.pass.restTitle, { pack: packName })}
+        body={strings.pass.restBody}
+      />
 
       <button
-        ref={leave}
         type="button"
         onClick={onLeave}
-        className="border-line-cut bg-ground-raised text-ink rounded-cut-md hover:bg-ground-sunk mt-[var(--dw-stack-gap)] flex min-h-16 w-full items-center justify-center gap-3 border text-lg transition-colors duration-[var(--dw-motion-quick)]"
+        className="dw-press bg-accent-fill text-on-accent rounded-cut-md mt-stack min-h-row-min flex w-full items-center justify-center px-4 text-lg"
       >
-        <IndexMark className="text-index" />
-        <span className="inscription tracking-wide">{strings.pass.restLeave}</span>
+        <span className="inscription">{strings.pass.restLeave}</span>
       </button>
 
       {/* Small, plain, and at the bottom. A child is not being sent for a
@@ -106,11 +235,11 @@ function Rest({
       <button
         type="button"
         onClick={onGrownUps}
-        className="text-ink-muted mt-[var(--dw-stack-gap-tight)] min-h-11 w-full text-sm underline underline-offset-4"
+        className="dw-press text-ink-muted rounded-cut-sm mt-stack-tight min-h-target w-full text-sm"
       >
         {strings.pass.forGrownUps}
       </button>
-    </Panel>
+    </>
   )
 }
 
@@ -127,8 +256,14 @@ function Gate({
   const [challenge, setChallenge] = useState<Challenge>(() => makeChallenge())
   const [typed, setTyped] = useState("")
   const [wrong, setWrong] = useState(false)
-  const field = useRef<HTMLInputElement | null>(null)
-  useEffect(() => field.current?.focus(), [])
+  // The field is NOT auto-focused. Focusing it on mount drew a 2 px focus ring around the
+  // input with no user interaction at all — pixel-scanned at x = 600 on the
+  // dark gate: a ring at y432–433, an offset gap, then the field's own border
+  // at y436, two concentric rectangles, the exact pattern this design removed
+  // from the search field. It also raises the keyboard over the sheet on a
+  // phone before an adult has decided to answer. `Panel` above focuses the
+  // dialog container, which is where a modal's focus belongs; the field is one
+  // Tab away and is the first stop inside it.
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault()
@@ -137,69 +272,95 @@ function Gate({
       return
     }
     // A new challenge on every miss: repeating the same one turns the gate into
-    // something a child defeats by guessing twice.
+    // something a child defeats by guessing twice. `reissue` keeps the FORM —
+    // a word is replaced by a different word — because a miss that swapped a
+    // word challenge for a year one would take a line of display type out of
+    // the layout and jump the field and the button up the screen.
     setWrong(true)
     setTyped("")
-    setChallenge(makeChallenge())
+    setChallenge((current) => reissue(current))
   }
 
-  return (
-    <Panel labelId="pass-gate-title">
-      <h2 id="pass-gate-title" className="inscription text-ink text-xl tracking-wide">
-        {strings.pass.gateTitle}
-      </h2>
+  const word = challenge.kind === "word" ? challenge.word : null
 
-      <form onSubmit={submit} className="mt-[var(--dw-stack-gap-tight)]">
-        <label htmlFor="pass-gate-entry" className="text-ink block text-base">
-          {challenge.kind === "year" ? strings.pass.gateYear : strings.pass.gateWord}
+  return (
+    <>
+      <Head id={TITLE_ID.gate} title={strings.pass.gateTitle} />
+
+      <form onSubmit={submit} className="mt-stack">
+        <label htmlFor="pass-gate-entry" className="text-ink-muted text-md block text-center">
+          {word === null ? strings.pass.gateYear : strings.pass.gateWord}
         </label>
-        {challenge.kind === "word" ? (
-          <p className="inscription text-ink mt-2 text-3xl tracking-[0.12em] break-all">
-            {challenge.word}
+        {word === null ? null : (
+          <p
+            id="pass-gate-word"
+            className="dw-caps inscription text-ink mt-label text-center text-xl break-words"
+          >
+            {word}
           </p>
-        ) : null}
+        )}
 
         <input
           id="pass-gate-entry"
-          ref={field}
           type="text"
           value={typed}
-          onChange={(event) => setTyped(event.target.value)}
+          onChange={(event) => {
+            setTyped(event.target.value)
+          }}
           autoComplete="off"
           autoCorrect="off"
-          autoCapitalize="characters"
+          // A four-digit year wants the number pad and no capitalisation; a
+          // fourteen-letter word wants the letters, in the case it is shown in.
+          inputMode={word === null ? "numeric" : "text"}
+          autoCapitalize={word === null ? "off" : "characters"}
           spellCheck={false}
-          aria-label={strings.pass.gateEntry}
+          aria-describedby={word === null ? undefined : "pass-gate-word"}
           aria-invalid={wrong}
-          className="numeral border-line-cut bg-ground-raised text-ink rounded-cut-sm mt-[var(--dw-stack-gap-tight)] min-h-16 w-full border px-4 text-2xl tracking-widest"
+          className={[
+            "dw-sunk text-ink rounded-cut-sm mt-stack-tight min-h-row-min w-full px-4 text-center text-xl",
+            wrong ? "border-strike-line" : "",
+          ].join(" ")}
         />
 
-        {wrong ? (
-          <p role="alert" className="text-strike mt-2 text-sm">
-            {strings.pass.gateWrong}
-          </p>
-        ) : null}
+        {/* Always in the layout, empty until it has something to say. A line
+            that appears on a wrong answer pushes the button it sits above down
+            the screen under the finger that is already reaching for it. */}
+        <p role="status" aria-live="polite" className="text-strike mt-label min-h-5 text-center text-sm">
+          {wrong ? strings.pass.gateWrong : ""}
+        </p>
 
         <button
           type="submit"
-          className="border-line-cut bg-ground-raised text-ink rounded-cut-md hover:bg-ground-sunk mt-[var(--dw-stack-gap-tight)] min-h-16 w-full border text-lg transition-colors duration-[var(--dw-motion-quick)]"
+          className="dw-press bg-accent-fill text-on-accent rounded-cut-md mt-label min-h-target-comfort w-full text-lg"
         >
-          <span className="inscription tracking-wide">{strings.pass.gateGo}</span>
+          <span className="inscription">{strings.pass.gateGo}</span>
         </button>
       </form>
 
       <button
         type="button"
         onClick={onCancel}
-        className="text-ink-muted mt-[var(--dw-stack-gap-tight)] min-h-11 w-full text-sm underline underline-offset-4"
+        className="dw-press text-ink-muted rounded-cut-sm mt-stack-tight min-h-target w-full text-sm"
       >
         {strings.pass.notNow}
       </button>
-    </Panel>
+    </>
   )
 }
 
-/** One pass, as a plate. The lifetime plate is the loud one; nothing else is. */
+/**
+ * One pass, as a plate.
+ *
+ * **One row, one face.** The name used to be old-style serif, the note system
+ * sans and the price a rounded grotesque, which read as three products in one
+ * row. Everything here is the text face; the price only asks for tabular lining
+ * figures so three prices line up in a column.
+ *
+ * Name and price share a baseline — the note sits under both rather than
+ * between them, which is what left the price floating in the middle of the row.
+ * The headline is carried by the frame and the type size, never by a badge, a
+ * banner, a "best value" flag or a struck-through price.
+ */
 function Plate({
   name,
   note,
@@ -213,39 +374,24 @@ function Plate({
   readonly headline: boolean
   readonly onBuy: () => void
 }) {
+  const size = headline ? "text-xl" : "text-md"
   return (
     <button
       type="button"
       onClick={onBuy}
       className={[
-        "rounded-cut-md flex min-h-20 w-full items-center gap-4 border p-4 text-left",
-        "transition-colors duration-[var(--dw-motion-quick)] hover:bg-ground-sunk",
-        // The headline is carried by the frame and the type size, not by a
-        // badge, a banner, a "best value" flag or a struck-through price.
-        headline
-          ? "border-index bg-ground-raised border-2"
-          : "border-line-cut bg-ground",
+        "dw-press dw-raised rounded-cut-md min-h-row-min block w-full p-inset text-left",
+        headline ? "border-accent border-2" : "",
       ].join(" ")}
     >
-      <span className="min-w-0 flex-1">
-        <span
-          className={[
-            "inscription text-ink block tracking-wide",
-            headline ? "text-2xl" : "text-lg",
-          ].join(" ")}
-        >
-          {name}
-        </span>
-        <span className="text-ink-muted block text-sm">{note}</span>
+      {/* `flex-wrap` and two shrinkable children: a currency that renders long
+          — "Rp 1.299.000" — wraps onto its own line instead of dragging the
+          panel sideways, which is the bug the parent area shipped once. */}
+      <span className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <span className={`text-ink min-w-0 ${size}`}>{name}</span>
+        <span className={`text-ink min-w-0 tabular-nums ${size}`}>{price}</span>
       </span>
-      <span
-        className={[
-          "numeral text-ink shrink-0",
-          headline ? "text-2xl" : "text-lg",
-        ].join(" ")}
-      >
-        {price}
-      </span>
+      <span className="text-ink-muted mt-1 block text-sm">{note}</span>
     </button>
   )
 }
@@ -292,49 +438,66 @@ function Offer({ onClose }: { readonly onClose: () => void }) {
   }
 
   return (
-    <Panel labelId="pass-offer-title">
-      <h2 id="pass-offer-title" className="inscription text-ink text-2xl tracking-wide">
-        {strings.pass.offerTitle}
-      </h2>
-      <p className="text-ink-muted mt-2 text-base">{strings.pass.offerBody}</p>
+    <>
+      <Head id={TITLE_ID.offer} title={strings.pass.offerTitle} body={strings.pass.offerBody} />
 
       {/* Lifetime first and largest. It is the one-time purchase, it is the
           cheapest way to own this outright, and a parent who hates
-          subscriptions should not have to scroll past two of them to find it. */}
-      <div className="mt-[var(--dw-stack-gap)] flex flex-col gap-[var(--dw-stack-gap-tight)]">
+          subscriptions should not have to scroll past two of them to find it.
+
+          The three sit in a SUNK track, which is the same construction every
+          platform uses for a group of choices: a recess with raised faces in
+          it. It is load-bearing in dark, where `.dw-raised` is a step darker
+          than `.dw-overlay` — a plate drawn straight onto the sheet reads as a
+          slot cut into it rather than as a key standing on it. */}
+      <div className="dw-sunk rounded-cut-md mt-stack flex flex-col gap-stack-tight p-inset">
         <Plate
           headline
           name={strings.pass.lifetime}
           note={strings.pass.lifetimeNote}
           price={by.get("lifetime")?.price ?? ""}
-          onBuy={() => buy(by.get("lifetime")?.productId)}
+          onBuy={() => {
+            buy(by.get("lifetime")?.productId)
+          }}
         />
         <Plate
           headline={false}
           name={strings.pass.month}
           note={strings.pass.monthNote}
           price={by.get("month")?.price ?? ""}
-          onBuy={() => buy(by.get("month")?.productId)}
+          onBuy={() => {
+            buy(by.get("month")?.productId)
+          }}
         />
         <Plate
           headline={false}
           name={strings.pass.day}
           note={strings.pass.dayNote}
           price={by.get("day")?.price ?? ""}
-          onBuy={() => buy(by.get("day")?.productId)}
+          onBuy={() => {
+            buy(by.get("day")?.productId)
+          }}
         />
       </div>
 
-      {failed ? (
-        <p role="alert" className="text-strike mt-[var(--dw-stack-gap-tight)] text-sm">
-          {strings.pass.storeUnavailable}
-        </p>
-      ) : null}
-      {held ? (
-        <p className="text-seat mt-[var(--dw-stack-gap-tight)] text-sm">{strings.pass.held}</p>
-      ) : null}
+      {/* One line, always present, so a store that cannot be reached does not
+          shove the way out from under the finger reaching for it. */}
+      <p
+        role="status"
+        aria-live="polite"
+        className={[
+          "mt-label min-h-5 text-center text-sm",
+          failed ? "text-strike" : "text-seat",
+        ].join(" ")}
+      >
+        {failed ? strings.pass.storeUnavailable : held ? strings.pass.held : ""}
+      </p>
 
-      <div className="mt-[var(--dw-stack-gap)] flex flex-wrap items-center justify-between gap-3">
+      {/* Two plain tinted controls, which is what a native sheet puts at its
+          foot. Neither is boxed: a filled box down here competes with the three
+          plates above it for the eye, and in dark a `.dw-raised` box on an
+          `.dw-overlay` sheet is drawn darker than the sheet it sits on. */}
+      <div className="mt-label flex flex-wrap items-center justify-between gap-3">
         <button
           type="button"
           onClick={() => {
@@ -346,19 +509,19 @@ function Offer({ onClose }: { readonly onClose: () => void }) {
               } else if (outcome.status !== "cancelled") setFailed(true)
             })
           }}
-          className="text-ink-muted min-h-11 text-sm underline underline-offset-4"
+          className="dw-press text-accent-ink rounded-cut-sm min-h-target px-inset text-sm"
         >
           {strings.pass.restore}
         </button>
         <button
           type="button"
           onClick={onClose}
-          className="border-line-cut text-ink rounded-cut-sm min-h-11 border px-4 text-sm"
+          className="dw-press text-ink rounded-cut-sm min-h-target px-inset text-sm"
         >
           {strings.pass.notNow}
         </button>
       </div>
-    </Panel>
+    </>
   )
 }
 
@@ -368,6 +531,10 @@ function Offer({ onClose }: { readonly onClose: () => void }) {
  * Escape closes it from any stage, the same as "Not now" and the same as
  * "Choose another game": there is no stage of this thing a person can be stuck
  * in, and no stage where the way out is hidden behind a delay.
+ *
+ * The panel is mounted once and the stages swap inside it. `key={stage}` gives
+ * each stage its own fade in, which is the one motion this needs: it explains
+ * that the content changed and the surface did not.
  */
 export function PassSheet({ packName, onLeave }: PassSheetProps) {
   const [stage, setStage] = useState<Stage>("rest")
@@ -380,9 +547,28 @@ export function PassSheet({ packName, onLeave }: PassSheetProps) {
     return () => window.removeEventListener("keydown", onKey)
   }, [onLeave])
 
+  let content: React.ReactNode
   if (stage === "gate") {
-    return <Gate onPassed={() => setStage("offer")} onCancel={onLeave} />
+    content = <Gate onPassed={() => setStage("offer")} onCancel={onLeave} />
+  } else if (stage === "offer") {
+    content = <Offer onClose={onLeave} />
+  } else {
+    content = (
+      <Rest
+        packName={packName}
+        onLeave={onLeave}
+        onGrownUps={() => {
+          setStage("gate")
+        }}
+      />
+    )
   }
-  if (stage === "offer") return <Offer onClose={onLeave} />
-  return <Rest packName={packName} onLeave={onLeave} onGrownUps={() => setStage("gate")} />
+
+  return (
+    <Panel labelId={TITLE_ID[stage]}>
+      <div key={stage} className="dw-anim-fade">
+        {content}
+      </div>
+    </Panel>
+  )
 }

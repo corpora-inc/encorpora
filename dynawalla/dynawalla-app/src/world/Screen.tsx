@@ -57,23 +57,34 @@ export function WorldScreen({
       viewBox={`0 0 ${String(box.width)} ${String(box.height)}`}
       focusable="false"
     >
-      {/* Chrome, 1 of CHROME_NODES: the stone plate the screen is cut from. */}
+      {/* Chrome, 1 of CHROME_NODES: the stone plate the screen is cut from.
+          Inset by half its own stroke, because an SVG stroke is centred on the
+          path: at x = 0 half of it fell outside the viewBox and was clipped, so
+          the plate was drawn a device pixel wider than its own frame down the
+          left and right and read as a misregistered print. `ground-sunk` and
+          not `ground-raised`: in light the plate was pure white on a violet
+          page with near-black apertures cut in it, which is the highest
+          contrast pair in the app spent on a decorative drawing. Stone, not
+          paper. */}
       <rect
-        x="0"
-        y="0"
-        width={box.width}
-        height={box.height}
-        fill="var(--dw-ground-raised)"
-        stroke="var(--dw-line-cut)"
+        x="0.25"
+        y="0.25"
+        width={box.width - 0.5}
+        height={box.height - 0.5}
+        fill="var(--dw-ground-sunk)"
+        stroke="var(--dw-line-strong)"
         strokeWidth="0.5"
       />
-      {/* Chrome, 2 of CHROME_NODES: the sill the courses are laid on. */}
+      {/* Chrome, 2 of CHROME_NODES: the sill the courses are laid on. Half a
+          unit and inside the plate. A full unit of `line-strong` running the
+          whole width and a fraction PAST it read as a failed drop shadow
+          rather than as the course the work stands on. */}
       <rect
-        x="0"
-        y={box.height - 1}
-        width={box.width}
-        height="1"
-        fill="var(--dw-line-strong)"
+        x="0.25"
+        y={box.height - 0.75}
+        width={box.width - 0.5}
+        height="0.5"
+        fill="var(--dw-line-cut)"
       />
       {pieces.map((piece) => {
         const material = paint(piece)
