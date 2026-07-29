@@ -34,6 +34,7 @@ export function mount(el: HTMLElement, host: Host): Mounted {
           'Use the plus and minus buttons to wind the dial to 56.',
           'You can also drag across the field to move the dial a long way at once.',
           'Then fire, and the boulder flies exactly that far and knocks it down.',
+          'When there is a wind, your crew aims into it. The shot bends, and still lands on your number.',
         ],
       },
       {

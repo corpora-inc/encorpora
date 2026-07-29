@@ -242,6 +242,22 @@ export type Crater = { x: number; r: number; depth: number; age: number; label: 
 
 export type Ghost = { pts: Array<{ x: number; y: number }>; landing: number; age: number; hit: boolean }
 
+/**
+ * Does the ram roll during this phase?
+ *
+ * It does not roll while the child is reading the boulder and turning the dial.
+ * EXPERIENCE_DESIGN.md: comprehension is "the child's time. Measured, never
+ * limited" — and the how-to-play panel promises "there is no clock, nothing
+ * happens until you fire". A ram that closed on the walls while she was working
+ * out 47 + 25 made both of those false, and hurried exactly the child who was
+ * thinking hardest. It advances on shots taken, not on seconds spent thinking:
+ * every boulder she throws, it gets closer. It is also held still during the
+ * hit-stop, where everything else is.
+ */
+export function ramAdvances(phase: string): boolean {
+  return phase !== 'intro' && phase !== 'aim' && phase !== 'impact'
+}
+
 /** A battering ram: pure pressure. No number on it — read the ground to lead it. */
 export type Ram = {
   /** metres from the launch point, decreasing */
