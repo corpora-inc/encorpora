@@ -41,6 +41,7 @@ import type {
   AnswerValue,
   AnyGeneratorFamily,
   Exercise,
+  PromptOperator,
   PromptSlot,
   Rational,
   SkillNode,
@@ -49,7 +50,7 @@ import {
   activeNodes,
   familyById,
   FORM_FREE_ENTRY,
-  PROMPT_KEY_SUB,
+  promptOperator,
   rational,
   seedFrom,
   createRng,
@@ -57,8 +58,38 @@ import {
   SLOT_TOP,
 } from "./curriculum.ts"
 
-/** U+2212. A hyphen is not a minus sign, and at 40px a child can tell. */
-const MINUS = "−"
+/**
+ * The glyph each operator is written with, as a child reads it.
+ *
+ * U+2212 MINUS, U+00D7 MULTIPLICATION SIGN, U+00F7 DIVISION SIGN. A hyphen is not
+ * a minus sign, an `x` is not a times sign and a `/` is not a division sign, and
+ * at 40px a child can tell — the same standard the minus has been held to here
+ * since this file was written, now applied to the other two.
+ */
+const OPERATOR_GLYPH: Readonly<Record<Exclude<PromptOperator, "none">, string>> = {
+  "+": "+",
+  "−": "−",
+  "×": "×",
+  "÷": "÷",
+}
+
+/**
+ * The same operator as `Item.operator` spells it, which is not the same string.
+ *
+ * `packs/sdk/src/protocol.ts` types the field `"+" | "-" | "×" | "÷" | "<" | ">" |
+ * "="` — an ASCII hyphen for the minus and the typographic glyphs for the other
+ * two. That is the wire format every shipped game already reads, so the mapping is
+ * written out rather than assumed: `operator` is what a game branches on and
+ * `prompt` is what it draws, and only the second is typography.
+ */
+const OPERATOR_PROTOCOL: Readonly<
+  Record<Exclude<PromptOperator, "none">, NonNullable<Item["operator"]>>
+> = {
+  "+": "+",
+  "−": "-",
+  "×": "×",
+  "÷": "÷",
+}
 
 /** Items kept addressable for `judge` and `reveal`. Oldest evicted first. */
 const LEDGER_LIMIT = 512
@@ -234,17 +265,61 @@ export function operandsOf(exercise: Exercise): readonly string[] {
 }
 
 /**
- * Whether the prompt is a subtraction, by the curriculum's own key convention.
+ * The operator this question is written with, read off the curriculum's own
+ * declaration — or `null` when the question is not a binary operation at all.
  *
- * Every family names its prompts `dw.prompt.<family>.<operation>`, and two
- * active families already both define a `PROMPT_KEY_SUB` — which is why the
- * curriculum's index re-exports them by name rather than with `export *`.
- * Comparing against one family's constant is therefore a comparison that
- * silently fails for the other. The last segment is the part they agree on, and
- * `items.test.ts` holds every active family to it.
+ * ## What this replaced, and what it cost
+ *
+ * Until this function, the operator was guessed from the shape of the prompt key:
+ *
+ * ```ts
+ * export function isSubtraction(promptKey: string): boolean {
+ *   return promptKey === PROMPT_KEY_SUB || promptKey.endsWith(".sub")
+ * }
+ * // …
+ * prompt: `${top} ${subtract ? MINUS : "+"} ${bottom}`,
+ * ```
+ *
+ * So **every template that was not a subtraction was drawn as an addition**. That
+ * is right for the four templates the graph had active and wrong for everything
+ * else in it, and the failure it produces is the worst shape this program has: not
+ * a blank card, which a reviewer sees in a minute, but a card that reads perfectly,
+ * is answerable, and marks a correct child wrong. Measured on the shipped code,
+ * against the draft rows it was about to be handed:
+ *
+ * | row | what a child would have read | what it wanted |
+ * |---|---|---|
+ * | `dw.mul.facts.tables-to-twelve` | `5 + 7` | 35 |
+ * | `dw.div.facts.division-facts`   | `12 + 3` | 4 |
+ * | `dw.ns.compare.whole-numbers`   | `432 + 737` | 737 |
+ * | `dw.ns.place.digit-value`       | `295 + dw.term.place.hundreds` | 200 |
+ *
+ * `promptOperator` is a table read against `render/prompts.ts`, where the operator
+ * a question is written with is declared by the template that writes it. There is
+ * no fallback and there must never be one: an unregistered key returns `null` and
+ * the caller refuses to serve the item, because the alternative is a guess, and the
+ * guess is what the table above is.
  */
-export function isSubtraction(promptKey: string): boolean {
-  return promptKey === PROMPT_KEY_SUB || promptKey.endsWith(".sub")
+export function binaryOperator(
+  promptKey: string,
+): { readonly glyph: string; readonly protocol: NonNullable<Item["operator"]> } | null {
+  const declared = promptOperator(promptKey)
+  if (declared === null || declared === "none") return null
+  return { glyph: OPERATOR_GLYPH[declared], protocol: OPERATOR_PROTOCOL[declared] }
+}
+
+/**
+ * A minus sign as a child's keypad might spell it, as the parser spells it.
+ *
+ * The host draws U+2212 in every prompt it writes — so a pack that echoes the
+ * glyph it was given back as part of an answer, or a keypad whose minus key is the
+ * one on the card, produces a string `rational.parseRational` rejects outright:
+ * its integer pattern is `/^[+-]?\d+$/` and U+2212 is neither of those. A rejected
+ * parse is scored wrong, silently, which on a signed row is every negative answer
+ * a child gets right.
+ */
+export function normalizeMinus(text: string): string {
+  return text.replace(/−/gu, "-")
 }
 
 /** An answer value as a child would write it. Never a float, never rounded. */
@@ -297,12 +372,20 @@ export function choicesFor(exercise: Exercise, places: number): readonly ItemCho
   // Four, not three: a game that lays its options out in a grid draws an empty
   // slab for a missing one, and an empty slab is a wrong answer a child cannot
   // read.
+  //
+  // A negative near-miss is skipped on a row whose answers cannot go below zero —
+  // it is not a wrong answer a child would produce there, it is a number that
+  // cannot be written — but it is a perfectly ordinary one on a row whose schema
+  // says otherwise. `AnswerSchema.integer.signed` is the only thing that can tell
+  // the two apart, and reading it here is what stops an integer row from being
+  // padded down to a two-slab coin toss.
   const exact = exercise.answer.canonical
+  const signed = exercise.schema.kind === "integer" && exercise.schema.signed === true
   if (exact.kind === "integer" || exact.kind === "columnAlgorithm") {
     for (const offset of [1n, -1n, 10n, -10n, 100n, -100n, 9n, 11n]) {
       if (texts.length >= CHOICE_COUNT) break
       const shifted = rational.add(exact.value, rational.rational(offset))
-      if (rational.sign(shifted) < 0) continue
+      if (!signed && rational.sign(shifted) < 0) continue
       const text = rational.toDecimalString(shifted, places)
       if (text === null || texts.includes(text)) continue
       texts.push(text)
@@ -745,8 +828,16 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       if (difficulty !== undefined || maxDifficulty !== undefined) {
         const span = Math.max(0, rungs.length - 1)
         const asked = difficulty === undefined ? index / Math.max(1, span) : difficulty
-        const cap = maxDifficulty === undefined ? 1 : maxDifficulty
-        index = Math.max(0, Math.min(span, Math.round(Math.min(asked, cap) * span)))
+        // The request rounds to the nearest rung — a pack asking for 0.5 wants the
+        // middle and not the rung below it. The **ceiling floors**, and the two are
+        // deliberately different: `maxDifficulty` is documented as "the stream never
+        // goes above it", and rounding a cap can only round it up. A pack that says
+        // 0.2 on a 59-rung ladder got 12/58 = 0.203 — over its own ceiling, by a
+        // rung, silently. It passed for as long as it did because 0.2 × 42 happened
+        // to round down; the ladder grew and it stopped happening, which is the
+        // shape of every rounding bug this codebase has met.
+        const cap = maxDifficulty === undefined ? span : Math.floor(maxDifficulty * span)
+        index = Math.max(0, Math.min(span, cap, Math.round(asked * span)))
         // The rung the pack named, carrying the credit already earned toward
         // the next one. Overwriting the whole number would let a game that
         // drives difficulty on every question quietly delete the fraction a
@@ -804,7 +895,37 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         return null
       }
 
+      // The operator before anything else is built, because a question drawn with
+      // the wrong one is worse than no question: `5 + 7` wanting 35 reads perfectly
+      // and marks a correct child wrong. `null` is a template the curriculum does
+      // not register, or one it registers as not being a binary operation at all —
+      // a place-value or comparison card, which needs a surface this file does not
+      // have and which used to come out as `295 + dw.term.place.hundreds`.
+      const operator = binaryOperator(exercise.prompt.key)
+      if (operator === null) {
+        console.error(
+          `[packs] ${rung.node.id} (${rung.family.family}) emits the prompt template ` +
+            `${exercise.prompt.key}, which the curriculum does not declare as a binary operation — ` +
+            `there is no operator to draw between "${top}" and "${bottom}", so nothing is served. ` +
+            `See render/prompts.ts: a question that is not "a OP b" needs a renderer of its own.`,
+        )
+        return null
+      }
+
       const places = decimalPlacesOf(exercise)
+      // The answer this file can write. A fraction answer comes back `null` from
+      // `answerText`, which would make `reveal` an empty string and every response
+      // wrong — a card that looks complete and cannot be passed. Refused here, out
+      // loud, rather than discovered by a child.
+      if (answerText(exercise.answer.canonical, places) === null) {
+        console.error(
+          `[packs] ${rung.node.id} (${rung.family.family}) has a ` +
+            `${exercise.answer.canonical.kind} answer, which this file cannot write as text — ` +
+            `the card would draw with no revealable answer and mark every response wrong. ` +
+            `answerText() needs to learn this answer kind before the row can be served.`,
+        )
+        return null
+      }
       const choices = choicesFor(exercise, places)
       const id = `${exercise.exerciseId}#${String(sequence)}`
       // Measured here rather than in `judge`, off the strings a child actually
@@ -821,7 +942,6 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       })
       practised.add(rung.node.id)
 
-      const subtract = isSubtraction(exercise.prompt.key)
       const digits = digitsOf(exercise)
 
       return {
@@ -830,9 +950,9 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         level: rung.level,
         difficulty: ordinate,
         form: "binary-op",
-        operator: subtract ? "-" : "+",
+        operator: operator.protocol,
         operands: [top, bottom],
-        prompt: `${top} ${subtract ? MINUS : "+"} ${bottom}`,
+        prompt: `${top} ${operator.glyph} ${bottom}`,
         choices,
         answerKind: "integer",
         ...(digits === undefined ? {} : { digits }),
@@ -848,7 +968,10 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       // Both are the same act; a pack should not have to reformat a slab it
       // was handed to report that a child touched it.
       const chosen = served.choices.find((choice) => choice.id === response)
-      const text = chosen?.text ?? response
+      // The host's own minus glyph normalised back to the one the parser reads.
+      // See `normalizeMinus`: without it a child who answers `−7` on a signed row
+      // is marked wrong for writing the sign the card is written with.
+      const text = normalizeMinus(chosen?.text ?? response)
 
       let submitted: AnswerValue | null = null
       try {

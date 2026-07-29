@@ -29,7 +29,7 @@ import { capabilityTag, familyId, malRuleId, skillId } from "../types/ids.ts";
 import type { LocKey, SkillId } from "../types/ids.ts";
 import type { MalRule } from "../types/malrule.ts";
 import type { SkillNode } from "../types/skill.ts";
-import { LINT_ROOTS } from "./cli.ts";
+import { INCREMENTAL_SEEDS, LINT_ROOTS } from "./cli.ts";
 import { defaultContext, buildSamples } from "./context.ts";
 import { EMPTY_ROOT_MESSAGE, listSourceFiles } from "./lints/scan.ts";
 import type { LevelSample, ValidationContext } from "./context.ts";
@@ -103,9 +103,23 @@ function drawn<T extends { readonly implemented: boolean }>(entry: T): T & { rea
   return { ...entry, implemented: true, testRef: "packs/example/src/draw.test.ts" };
 }
 
-/** The healthy graph. Every gate below must pass on it. */
+/**
+ * The healthy graph. Every gate below must pass on it.
+ *
+ * At the **shipped** seed count and not the fixtures' 40, because CG-9 counts
+ * distinct items *in the sample*: a level declaring `minVariants: 80` cannot reach
+ * eighty distinct items in forty draws, however good its generator is. While every
+ * active row asked for forty or fewer that distinction was invisible; the day the
+ * multiplication rows went active — `dw.mul.multidigit.*` ask for eighty — this
+ * test failed on a graph `npm run check` passes, which is a fixture that had
+ * quietly become a *lower* standard than the gate it stands for.
+ *
+ * `INCREMENTAL_SEEDS` and not a literal, so the two cannot drift again. The
+ * failing-case fixtures below stay at forty: each constructs one violation and
+ * none of them is measuring a variant count near the floor.
+ */
 test("gates: the committed curriculum passes every implemented gate", () => {
-  const healthy = context();
+  const healthy = context({ seedsPerLevel: INCREMENTAL_SEEDS });
   const samples = buildSamples(healthy);
   const snapshot: Snapshot = { note: "", entries: {} };
   for (const result of [

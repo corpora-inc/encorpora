@@ -90,7 +90,7 @@ export const SKILL_ZERO_IN_QUOTIENT = skillId("dw.div.whole.zero-in-the-quotient
 const divisionFacts: SkillNode = {
   id: SKILL_DIVISION_FACTS,
   rev: 1,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.div.facts.division-facts.title"),
   learnerGoal: locKey("dw.skill.div.facts.division-facts.goal"),
   domain: "div",
@@ -113,9 +113,27 @@ const divisionFacts: SkillNode = {
    */
   fluencyTarget: { p50Ms: 10000 },
   prereqs: [{ kind: "requires", to: SKILL_TABLES_TO_TWELVE }],
-  // Above the tables it inverts and below the first long division, so the strand
-  // is one climb: `48 ÷ 6` at −0.55 to −0.15, then `516 ÷ 4` at 0.20.
-  difficulty: { b: b(-105n), levels: [b(-55n), b(-15n), b(15n)] },
+  /**
+   * `b` plus what the family computes for each level's parameters, which is what
+   * CG-9 checks and is the only thing this table is allowed to be.
+   *
+   * It was authored as `[−0.55, −0.15, 0.15]` — a hand-drawn ramp, spaced 0.40 and
+   * then 0.30 — and `gen.arith.times-table` spaces these parameters 0.70 and then
+   * 0.45. **No gate could see that while the row was draft**: CG-9's difficulty
+   * check runs over `activeNodes` only, so the table was wrong from the day it was
+   * written and stayed wrong until the row was promoted. There is no `b` that
+   * yields the authored numbers, because the spacing and not the anchor is what
+   * disagreed, so the anchor is kept and the levels are restated.
+   *
+   * What it does **not** change is the claim the old comment made. The strand is
+   * still one climb: these numbers are measured from this row's own `b` of −1.05,
+   * so L2 sits at −0.45 on the ladder, and `516 ÷ 4` — `divide-exact` L0, measured
+   * from its `b` of −0.40 — sits at −0.20 above it. The rung order is unchanged and
+   * `ladder()` in the host confirms it. Only the spacing widened: this row now
+   * spans −0.55 to 0.60 above its base rather than −0.55 to 0.15, which is what the
+   * generator was doing all along and what the table failed to say.
+   */
+  difficulty: { b: b(-105n), levels: [b(-55n), b(15n), b(60n)] },
   misconceptions: [],
   representations: { required: [], optional: [] },
   generator: {
@@ -154,7 +172,7 @@ const divideExact: SkillNode = {
    * quotient digit out of a times table and then multiplies it back.
    */
   rev: 2,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.div.whole.divide-exact.title"),
   learnerGoal: locKey("dw.skill.div.whole.divide-exact.goal"),
   domain: "div",
@@ -289,7 +307,7 @@ const quotientAndRemainder: SkillNode = {
 const zeroInTheQuotient: SkillNode = {
   id: SKILL_ZERO_IN_QUOTIENT,
   rev: 1,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.div.whole.zero-in-the-quotient.title"),
   learnerGoal: locKey("dw.skill.div.whole.zero-in-the-quotient.goal"),
   domain: "div",

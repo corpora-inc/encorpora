@@ -21,13 +21,25 @@
  * twelve, there is no hundred-and-twenty-second, and a floor derived from a model
  * of generators that do not close was never a statement about them.
  *
- * **Every row here is still `draft`, and the blocker is not CG-10 any more.** It is
- * that nothing draws a multiplication *question*. That is not the standing
- * "no renderer exists" note the rest of the graph carries: the shipped host grew a
- * partial one, and it writes every item it cannot recognise with a plus sign. See
- * `promotionBlockers.ts` — `OPERATOR_BLOCKED_TEMPLATES` names the templates it
- * would mis-draw, and `render/prompts.ts` now carries the operator each template
- * is written with so that the fix is a lookup rather than a second guess.
+ * **Four of these six rows are now `active`, and what was blocking them was a plus
+ * sign.** They shipped `draft` with finished generators, fact floors and variant
+ * spaces, held back by the one thing that draws a multiplication *question*: the
+ * shipped host guessed the operator from the shape of the prompt key and wrote
+ * every item it could not recognise with a plus, so `dw.mul.facts.tables-to-twelve`
+ * reached a child as `5 + 7` with 35 as the answer. It reads
+ * `promptOperator(key)` out of `render/prompts.ts` now, which is why those four
+ * rows are a `status` flip and nothing else — no generator here changed.
+ *
+ * **The other two are held by something no gate had ever needed to check: how wide
+ * a numeral a game can print.** `dw.mul.scale.times-power-of-ten` and
+ * `dw.mul.multidigit.long-multiplication` reach nine and ten characters, and
+ * `games/polarity` refuses an answer past eight — its own sweep of the shipping
+ * ladder went red on `544,080,000` the moment they went active, which is that gate
+ * working. See `NUMERAL_WIDTH_BLOCKED_LEVELS` in `promotionBlockers.ts`: the rows
+ * are right and the ceiling is the program's stated one. What is missing is on the
+ * pack's side, and `packs/sdk` already has the seam — a pack that can print eight
+ * characters caps its stream with `next({ maxDifficulty })` and gets the part of
+ * the ladder it can draw.
  */
 
 import { rational } from "../../math/rational.ts";
@@ -120,7 +132,7 @@ export const SKILL_LONG_MULTIPLICATION = skillId("dw.mul.multidigit.long-multipl
 const tablesWithinFive: SkillNode = {
   id: SKILL_TABLES_WITHIN_FIVE,
   rev: 1,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.mul.facts.tables-within-five.title"),
   learnerGoal: locKey("dw.skill.mul.facts.tables-within-five.goal"),
   domain: "mul",
@@ -179,7 +191,7 @@ const tablesWithinFive: SkillNode = {
 const tablesToTwelve: SkillNode = {
   id: SKILL_TABLES_TO_TWELVE,
   rev: 1,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.mul.facts.tables-to-twelve.title"),
   learnerGoal: locKey("dw.skill.mul.facts.tables-to-twelve.goal"),
   domain: "mul",
@@ -272,7 +284,7 @@ const timesOneDigit: SkillNode = {
    * the row sat at the bottom of its own domain with no floor under it.
    */
   rev: 2,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.mul.multidigit.times-one-digit.title"),
   learnerGoal: locKey("dw.skill.mul.multidigit.times-one-digit.goal"),
   domain: "mul",
@@ -319,7 +331,7 @@ const timesOneDigit: SkillNode = {
 const timesTwoDigit: SkillNode = {
   id: SKILL_TIMES_TWO_DIGIT,
   rev: 1,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.mul.multidigit.times-two-digit.title"),
   learnerGoal: locKey("dw.skill.mul.multidigit.times-two-digit.goal"),
   domain: "mul",
