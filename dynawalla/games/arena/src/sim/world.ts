@@ -182,90 +182,175 @@ const GRID_COLS = 62
  *
  * Both numbers matter and they do different jobs.
  *
- *   FOOD_A 0.62 -> 0.30 scales the whole curve down. Because the field's own
- *   size scales with the player, the eat RATE goes as M^-0.35 and the gain per
- *   mote as M^FOOD_B, so dM/dt is proportional to M^(FOOD_B - 0.35) and the
- *   solution is a power of t. Halving A slows the clock on the whole climb.
+ *   FOOD_A scales the whole curve down. Because the field's own size scales
+ *   with the player, the eat RATE goes as M^-0.35 and the gain per mote as
+ *   M^FOOD_B, so dM/dt is proportional to M^(FOOD_B - 0.35) and the solution is
+ *   a power of t. A slows the clock on the whole climb without touching shape.
  *
- *   FOOD_B 0.60 -> 0.46 is the shape, and it is the one that decides whether
- *   the twelfth minute is still a maths game. At 0.60, dM/dt goes as M^0.25 and
- *   mass runs as t^(4/3) — super-linear, so the run accelerates away from the
- *   curriculum forever. At 0.46 the exponent is 0.11 and mass runs as t^1.12:
- *   very nearly linear, which is a climb a child can stay inside.
+ *   FOOD_B is the shape, and it is the one that decides whether the twelfth
+ *   minute is still a maths game. At 0.60, dM/dt goes as M^0.25 and mass runs
+ *   as t^(4/3) — super-linear, so the run accelerates away from the curriculum
+ *   forever. At 0.50 the exponent is 0.15 and mass runs as t^1.18: very nearly
+ *   linear, which is a climb a child can stay inside.
  *
- * Measured after: 2 digits for the first half-minute, 3 digits for the next
- * several minutes, 4 digits past ten. See `sim.test.ts`, which asserts the
- * bands rather than the numbers.
+ * A moved 0.62 -> 0.40 when the curve was first refitted and 0.40 -> 0.16 when
+ * absorption was made exact, and the second cut is not a second opinion about
+ * pace: a mote used to be worth `v / (1 + 6v/M)` and is now worth `v`, so the
+ * same table of numbers feeds a player two to six times faster than it did.
+ * The constant fell to keep the CURVE where it already was. Measured, mid tier,
+ * four seeds, median, at 15s / 60s / 2min / 5min / 10min / 20min:
+ *
+ *   struggling      before  47 / 300 / 752 / 1,294 / 1,261 / 1,241
+ *                   after   65 / 352 / 441 /   683 / 1,700 / 1,853
+ *   answering well  before  47 / 1,044 / 11,422 / 42,909 / 130,137 / 258,477
+ *                   after   65 /   742 /  2,703 / 28,709 / 103,960 / 255,153
+ *
+ * — the same bands, in the same minutes, with the arithmetic on screen true.
+ * See `sim.test.ts`, which asserts the bands rather than the numbers.
  */
-const FOOD_A = 0.40
+const FOOD_A = 0.16
 const FOOD_B = 0.50
 
 /**
- * How much of a mote actually becomes you.
+ * How much of a mote becomes you: ALL of it. Eat a `4`, gain exactly 4.
  *
- * A mote's printed number is a SIZE — the thing you compare against your own
- * size, which is the entire mathematics of this game and is exact. It is not
- * an addend: a fish that swallows a fish nearly its own size does not double.
- * Absorption saturates, and the cap `mass / (1 + ABSORB_K)` means no single
- * mote can ever be worth more than a seventh of you.
+ * This function used to saturate. A mote's number was treated as a SIZE and not
+ * as an addend — a fish that swallows a fish nearly its own size does not double
+ * — so swallowing a `4` at mass 10 was worth `+1`, and the running equation
+ * printed `10 + 1 = 11` under a numeral a child had just watched read `4`. The
+ * founder's ruling, and it is the right one twice over:
  *
- * Without this, the sliver of the near-tie band that sits just below your mass
- * is a free doubling, a child finds it in ninety seconds, and a twenty-minute
- * climb becomes an exponential explosion. Measured: it did, every run.
+ *   "it would seem more intuitive to me to absorb the exact number? ... is that
+ *    not how most games like this work?"
+ *
+ * In the genre you absorb what you ate. And in THIS product a maths game may not
+ * put an equation on screen that is not the one it performed: `10 + 4` has to
+ * be `14`, and the only way to make the ribbon true is to make the simulation
+ * do what the ribbon says. Absorption is now the identity, forever, and nothing
+ * may be added to it.
+ *
+ * The saturation was not decoration — it was the only thing holding the economy
+ * down, because it is the near-tie mote (worth ~M) that compounds. That job has
+ * moved to `NEAR_PRIZE` below, where it belongs: not "you get less than you
+ * ate", but "there is less of it to eat". Metering the SUPPLY is honest;
+ * metering the ARITHMETIC is not.
+ *
+ * `Math.round` is defensive only. `mval` is an Int32Array, so every value that
+ * reaches here is already an integer, and it must stay one: the ribbon's terms
+ * are integers and this is the number that lands between them.
  */
-const ABSORB_K = 6
-
-/**
- * …and the mass at which that saturation itself starts to tighten.
- *
- * A constant K makes every near-tie worth a FIXED FRACTION of you, and a fixed
- * fraction repeated is an exponential. Measured with a bot that simply always
- * chased the largest thing it could still swallow — which is the obvious
- * strategy in this genre and a child will find it — mass went 273 → 3,330,895
- * → 1,301,388,804 across three hundred seconds. That is not a balance problem
- * so much as a *legibility* problem: the entire premise of the game is telling
- * 3,418 from 3,481, and it cannot survive the player's own core reading
- * 1,301,388,804.
- *
- * So K grows as sqrt(mass) past this point, which turns dM/dt ∝ M into
- * dM/dt ∝ sqrt(M): polynomial, not exponential, and a twenty-minute run of the
- * strongest possible play now finishes in five or six digits instead of ten.
- * Below SOFT it is within a hair of the old curve, so the first two minutes —
- * the part that has to feel like an explosion — are untouched.
- */
-const ABSORB_SOFT = 900
-
-export function absorbGain(value: number, mass: number): number {
+export function absorbGain(value: number): number {
   if (value <= 0) return 0
-  const k = ABSORB_K * Math.sqrt(1 + Math.max(0, mass) / ABSORB_SOFT)
-  return Math.max(1, Math.round(value / (1 + (k * value) / Math.max(1, mass))))
+  return Math.round(value)
 }
 
 /**
- * Swallowing a rival is the payoff moment of the whole genre, so it saturates
- * far more generously: taking down something your own size is worth about a
- * third of you, at every size, forever. It still saturates, because uncapped it
- * is a doubling, and a doubling that repeats is the same explosion by another
- * route — measured at 216 kills and eight orders of magnitude in a twenty-
- * minute run.
+ * PLACEHOLDER
  *
- * It deliberately does NOT get the sqrt(mass) tightening ABSORB_SOFT applies,
- * and the asymmetry is the point. The near-tie *mote* is an exploit because the
- * game manufactures a continuous supply of them: about one mote in seven is
- * drawn from a band straddling your own mass, on purpose, because that is where
- * the place-value comparison lives. A *rival* is not a supply. There are at most
- * MAX_RIVALS of them, they respawn on a timer, and one is only edible below
- * `mass / 1.06`, so kills are rate-limited by the world rather than by the
- * curve. Measured with a bot that hunts nothing but the largest legally edible
- * rival for twenty minutes: flat K peaks at 34,456 and a tightened K at 11,442
- * — both five digits, neither an explosion. The tightening bought no safety and
- * cost the genre its payoff moment, so it is not taken.
+ * About one mote in twelve is drawn from a band straddling your own mass,
+ * because telling 3,418 from 3,481 at speed IS the declared skill and the band
+ * is where that reading happens. Most of it is a wall. The sliver below your
+ * mass is the prize, and a prize worth ~M added exactly is a DOUBLING: repeat
+ * it and mass is exponential in the number of motes eaten, with no polynomial
+ * anywhere to save it. Measured, with absorption made exact and this band left
+ * alone: 27,494,014 at two minutes against 12,738 before, and 189,893,983 by
+ * twenty. Eight digits on the player's own core ends the game the pack is for.
+ *
+ * So the prize gets rarer exactly as fast as it gets bigger. The edible sliver
+ * is `NEAR_PRIZE / sqrt(mass)` of the band, which makes its contribution to
+ * growth `p * M ∝ sqrt(M)` — the same shape as the crumb economy, which is what
+ * keeps the whole curve polynomial. At mass 10 roughly a quarter of the near-tie
+ * band is edible; at mass 10,000, one in four hundred.
+ *
+ * What does NOT change is how often the band appears. The READING is the
+ * pedagogy and it keeps its full frequency; what tapers is how often the answer
+ * to "can I eat this?" is yes. That asymmetry is also the honest picture of the
+ * genre: the bigger you are, the less there is anywhere near your size that is
+ * beneath you.
  */
-const DEVOUR_K = 2.6
+const FOOD_MIN = 1
+const PRIZE_RATE = 0.8
+const PRIZE_RATE_EXP = 0.85
+const PRIZE_RATE_MAX = 0.005
 
-export function devourGain(rivalMass: number, mass: number): number {
+/**
+ * THE WALLS, and why they are not a bank account.
+ *
+ * One mote in seven is drawn at or above your own mass. That band is where the
+ * declared skill lives — telling 3,418 from 3,481 at speed, deciding in half a
+ * second whether the thing in front of you is beneath you — and a growth arena
+ * with nothing in it to flee is a screensaver. So it keeps its full frequency,
+ * at every size, forever.
+ *
+ * What it does NOT keep is the right to become a meal. A wall is only a prize
+ * with a delay on it: grow five per cent and the 1.05x you swam around thirty
+ * seconds ago is a hundred-per-cent breakfast, free, at no risk, available
+ * continuously because the field manufactures walls forever. Under the old
+ * saturating curve that was worth a seventh of you and nobody noticed. With
+ * absorption exact it is the single largest term in the economy and it is a
+ * repeated doubling — it is most of the 100,000-in-sixty-seconds measured
+ * above.
+ *
+ * So a wall stays a wall for as long as it lives, and when you finally outgrow
+ * it, it comes apart: it bursts into crumbs on the ordinary food scale, which
+ * you can then eat, each one worth exactly what it says. The genre's best
+ * moment — watching the world turn into food underneath you — is kept, and it
+ * is kept as an event rather than as a jackpot.
+ */
+const WALL_RATE = 0.14
+/** Of the walls, how many are the near-tie rather than the far threat. */
+const WALL_NEAR_SHARE = 0.57
+/** Crumbs a burst wall leaves behind, and the food scales each is worth. */
+const WALL_SHARDS = 4
+const WALL_SHARD_SCALE = 0.8
+
+/**
+ * The most a void may be worth, as a fraction of your mass.
+ *
+ * This used to be a clamp on the DAMAGE — `min(mass * 0.11, |v|)` — which meant
+ * a void wearing `−40` could take 11 off you, and the ribbon then printed
+ * `100 − 11 = 89` under a numeral that plainly said 40. Same lie as the mote,
+ * so it gets the same fix: the cap moves onto the LABEL, the loss is exactly
+ * the label, and the hit a child actually takes is unchanged to the unit.
+ */
+const VOID_MAX_FRACTION = 0.11
+
+/**
+ * Swallowing a rival is worth exactly the rival, and this was the one call in
+ * the pass that could honestly have gone either way.
+ *
+ * It used to saturate at `DEVOUR_K = 2.6` — something your own size was worth
+ * about a third of you — and the argument for keeping that was that a rival is
+ * "a creature you burst", not a labelled quantity you add. That argument does
+ * not survive looking at the screen. `gfx.ts` draws `Math.round(rmass[k])` on
+ * every core big enough to carry a numeral, so a rival IS a number in the
+ * water, read the same way and against the same law of radius; eat the one
+ * wearing `300` at mass 400 and the old code put `400 + 84 = 484` in the ribbon
+ * under a numeral that plainly said 300. That is the founder's complaint word
+ * for word, applied to a core instead of a mote, and there is no principled
+ * place to stop it at the mote.
+ *
+ * What made it *safe* to make exact is the thing the old comment already had
+ * right, and it is the same thing that governs the mote economy after this
+ * pass: a rival is a rationed supply and a mote is not. There are at most
+ * MAX_RIVALS of them, they respawn on a timer, and one is only edible below
+ * `mass / 1.06` — so a kill can never more than 1.94x you and the world, not
+ * an arithmetic fudge, decides how often you get one.
+ *
+ * Measured against the bot that hunts nothing but the largest legally edible
+ * rival for twenty minutes, answering every question correctly, over three
+ * seeds: saturating peaked at 97,715 / 139,611 / 156,320; exact peaks at
+ * 125,210 / 701,405 / 230,764. Six digits at the very top of the strongest
+ * possible play, which is the legibility contract this file has always held —
+ * and 1.3x to 5x the old numbers, which is what an honest doubling costs.
+ *
+ * Rival-versus-rival is now conserving: the winner becomes exactly the two of
+ * them. That is also the honest picture, and the size recycler still caps any
+ * core at RIVAL_MAX_RATIO of the player, so it cannot fill the screen.
+ */
+export function devourGain(rivalMass: number): number {
   if (rivalMass <= 0) return 0
-  return Math.max(1, Math.round(rivalMass / (1 + (DEVOUR_K * rivalMass) / Math.max(1, mass))))
+  return Math.round(rivalMass)
 }
 const MAX_RIVALS = 26
 const MAX_EVENTS = 96
@@ -515,6 +600,12 @@ export class World {
   readonly mphase = new Float32Array(MAX_MOTES)
   /** 0 = threat, 1 = edible. Animated, so the flip is a visible event. */
   readonly mflip = new Float32Array(MAX_MOTES)
+  /**
+   * Born at or above the player's mass, and therefore never food. See WALL_RATE.
+   * A wall keeps its number and its menace for as long as it lives; outgrowing
+   * one bursts it into crumbs rather than handing you a free doubling.
+   */
+  readonly mwall = new Uint8Array(MAX_MOTES)
   readonly mborn = new Float32Array(MAX_MOTES)
   moteCount = 0
 
@@ -891,13 +982,20 @@ export class World {
    * It turns eating numbers into arithmetic that is visible and reviewable
    * instead of implicit.
    *
-   * **It shows the TRUE change, and that is not always the number printed on
-   * the thing you ate.** A mote's label is a SIZE — the quantity you compare
-   * against your own, which is the whole mathematics of this game and is exact
-   * — and absorption saturates, so swallowing a `4` at mass 10 is worth +1, not
-   * +4. A ribbon reading "10 + 4 = 14" would print a sum the game did not
-   * perform, and a maths product may not do that at any price. So it prints
-   * "10 + 1 = 11".
+   * **It shows the TRUE change, and the true change is now the number printed
+   * on the thing you ate.** This comment used to say the opposite, and it was
+   * right about the rule and wrong about the fix: absorption saturated, so a
+   * `4` at mass 10 was worth +1, and the ribbon printed "10 + 1 = 11" — a true
+   * sentence about a game that had done something a child could not see. The
+   * founder's ruling reversed it. `absorbGain` is the identity, `devourGain` is
+   * the identity, a void costs exactly the number it wears, and the ribbon now
+   * reads "10 + 4 = 14" because that is what happened.
+   *
+   * This function still rounds, because mass is a float and the ribbon's terms
+   * are integers — the Resonance reward and the rupture are the only two things
+   * left that move mass by a non-integer. Both ends are rounded, the middle is
+   * DERIVED, and `sim.test.ts` walks a seeded run pairing every absorb back to
+   * the numeral it came from.
    *
    * Both ends are rounded and the middle is derived, never the other way round,
    * so `eqA + eqD === eqC` holds exactly however the floats fell. A change that
@@ -928,6 +1026,7 @@ export class World {
     this.moteCount = 0
     this.rivalCount = 0
     this.malive.fill(0)
+    this.mwall.fill(0)
     this.ralive.fill(0)
     this.resonance.active = false
     this.resonance.phase = 0
@@ -1039,46 +1138,103 @@ export class World {
    * cent of a 340-mote field turned APEX into forty overlapping five-digit
    * numbers, which is not tension, it is noise. Ten per cent reads.
    */
-  private rollValue(): { v: number; kind: number } {
+  private rollValue(): { v: number; kind: number; wall: number } {
     const M = this.mass
     const r = this.rng
+    // The climb is metered by how much food the water carries, NOT by handing a
+    // child less than the number they ate. `growth` used to multiply the GAIN,
+    // which is the one thing in this file that may not be scaled by anything:
+    // it made `10 + 4 = 12` on top of the saturation's `10 + 4 = 11`. It now
+    // scales the crumb SCALE and the near-tie prize rate instead, which is the
+    // same brake on the same curve and does exactly what the old comment said
+    // it was for — a struggling child stays in two and three figures — while
+    // leaving every printed number exact.
+    const g = this.growth
     if (r.chance(this.voidRate)) {
-      const mag = Math.max(2, tidyValue(FOOD_A * Math.pow(M, FOOD_B) * r.range(1.0, 3.0)))
-      return { v: -mag, kind: MK_VOID }
+      // A void costs EXACTLY the number it wears; see the sting in `collide`.
+      // So the label carries the mercy that the loss used to: it is capped at
+      // the same 11% of your mass the damage was clamped to, which leaves the
+      // hit identical and makes `24 − 5 = 19` a sentence the game can print.
+      const mag = Math.min(
+        Math.max(1, Math.round(M * VOID_MAX_FRACTION)),
+        Math.max(2, tidyValue(FOOD_A * Math.pow(M, FOOD_B) * r.range(1.0, 3.0))),
+      )
+      return { v: -mag, kind: MK_VOID, wall: 0 }
     }
-    const scale = Math.max(2, FOOD_A * Math.pow(M, FOOD_B))
-    const roll = r.f()
-    if (roll < 0.62) {
+    // THE PRIZE. A number just under your own, swallowed whole, worth all of
+    // you — the bravest thing in the game and now, with absorption exact, a
+    // literal doubling. It is rationed; see PRIZE_RATE.
+    if (r.chance(this.prizeRate)) {
+      const hi = Math.max(1, Math.round(M) - 1)
+      const lo = Math.max(1, Math.min(hi, Math.round(M * 0.90)))
+      // Tidied DOWN, never up. `tidyValue` rounds to three significant figures,
+      // and rounding 3,996 up to 4,000 at mass 4,000 would turn the prize into
+      // the wall it was drawn NOT to be.
+      return { v: Math.min(hi, tidyValue(r.int(lo, hi))), kind: MK_FOOD, wall: 0 }
+    }
+
+    // THE WALLS. Everything at or above your own mass. Full frequency, because
+    // this is where the reading is — 3,418 against 3,481 — and a field with
+    // nothing in it to flee is not this game. They are never food; see `mwall`.
+    if (r.chance(WALL_RATE)) {
+      if (r.f() < WALL_NEAR_SHARE) {
+        const lo = Math.max(2, Math.round(M) + 1)
+        const hi = Math.max(lo + 2, Math.round(M * 1.32))
+        return { v: Math.max(lo, tidyValue(r.int(lo, hi))), kind: MK_FOOD, wall: 1 }
+      }
+      const lo = Math.max(2, Math.round(M * 1.5))
+      const hi = Math.max(lo + 2, Math.round(M * 3.1))
+      return { v: Math.max(lo, tidyValue(r.int(lo, hi))), kind: MK_FOOD, wall: 1 }
+    }
+
+    const scale = Math.max(FOOD_MIN, FOOD_A * Math.pow(M, FOOD_B) * g)
+    if (r.f() < 0.72) {
       // Crumbs — where almost all of your food comes from. Their value grows
       // with the square-ish root of your mass, so a crumb is a fifth of you at
       // the start and a rounding error when you are enormous. That single
       // choice is what makes the climb last.
-      return { v: tidyValue(r.int(1, Math.max(2, Math.round(scale)))), kind: MK_FOOD }
+      return { v: tidyValue(r.int(1, Math.max(1, Math.round(scale)))), kind: MK_FOOD, wall: 0 }
     }
-    if (roll < 0.86) {
-      const lo = Math.max(1, Math.round(scale * 0.8))
-      const hi = Math.max(lo + 1, Math.round(scale * 2.6))
-      return { v: tidyValue(r.int(lo, Math.min(hi, Math.max(2, Math.round(M * 0.55))))), kind: MK_FOOD }
-    }
-    if (roll < 0.94) {
-      // The near-tie band, deliberately skewed *above* you. Most of it is a
-      // wall; the sliver below your mass is worth nearly doubling, and taking
-      // it is the bravest thing in the game. It has to be rare or it is the
-      // only thing anyone does.
-      const lo = Math.max(1, Math.round(M * 0.95))
-      const hi = Math.max(lo + 2, Math.round(M * 1.32))
-      return { v: tidyValue(r.int(lo, hi)), kind: MK_FOOD }
-    }
-    const lo = Math.max(2, Math.round(M * 1.5))
-    const hi = Math.max(lo + 2, Math.round(M * 3.1))
-    return { v: tidyValue(r.int(lo, hi)), kind: MK_FOOD }
+    const lo = Math.max(1, Math.round(scale * 0.8))
+    const hi = Math.max(lo + 1, Math.round(scale * 2.6))
+    return { v: tidyValue(r.int(lo, Math.min(hi, Math.max(2, Math.round(M * 0.55))))), kind: MK_FOOD, wall: 0 }
+  }
+
+  /**
+   * How often the water offers a number just under your own.
+   *
+   * This one rate is what makes exact absorption survivable, and it replaces
+   * the saturation that used to do the same job by lying about arithmetic.
+   *
+   * A prize is worth ALL OF YOU: swallow one and you double, exactly, and the
+   * ribbon prints the doubling. Repeat that at a fixed frequency and mass is
+   * exponential in the number of motes eaten, with no polynomial anywhere to
+   * catch it. Measured, with absorption made exact and the old flat 8% band
+   * left alone: a struggling run passed 100,000 inside the first minute and a
+   * well-answered one reached 27 million by the second — against 300 and
+   * 11,422 before. Eight digits on the player's own core is the end of the
+   * product the pack exists for.
+   *
+   * So the prize gets rarer exactly as fast as it gets bigger. Its contribution
+   * to growth is `rate * M`; the crumb economy's goes as `sqrt(M)`; holding the
+   * ratio fixed at every size — which is what "the same curve" actually means —
+   * needs `rate ∝ M^-0.85` once the eat rate's own `M^-0.35` is folded in. The
+   * ceiling is what keeps the opening explosive: for the first half-minute the
+   * cap binds and doubling is a thing that happens to you often.
+   *
+   * It is scaled by `growth`, so a child who is struggling meets fewer of them.
+   * That is the same brake the old code applied by shrinking the gain, moved
+   * onto the supply, where it does not have to lie to work.
+   */
+  private get prizeRate(): number {
+    return Math.min(PRIZE_RATE_MAX, (PRIZE_RATE * this.growth) / Math.pow(Math.max(1, this.mass), PRIZE_RATE_EXP))
   }
 
   private spawnMote(anywhere: boolean): number {
     const i = this.freeMote()
     if (i < 0) return -1
     const r = this.rng
-    const { v, kind } = this.rollValue()
+    const { v, kind, wall } = this.rollValue()
     let x: number
     let y: number
     if (anywhere) {
@@ -1128,7 +1284,8 @@ export class World {
     this.mkind[i] = kind
     this.malive[i] = 1
     this.mphase[i] = r.range(0, Math.PI * 2)
-    this.mflip[i] = kind === MK_VOID ? 0 : Math.abs(v) < this.mass ? 1 : 0
+    this.mwall[i] = wall
+    this.mflip[i] = kind === MK_VOID || wall ? 0 : Math.abs(v) < this.mass ? 1 : 0
     this.mborn[i] = this.time
     this.moteCount++
     return i
@@ -1151,6 +1308,7 @@ export class World {
       this.mr[i] = radiusForValue(per)
       this.mkind[i] = kind
       this.malive[i] = 1
+      this.mwall[i] = 0
       this.mphase[i] = this.rng.range(0, Math.PI * 2)
       this.mflip[i] = per < this.mass ? 1 : 0
       this.mborn[i] = this.time
@@ -1175,8 +1333,9 @@ export class World {
     let m: number
     // The plankton tier matters twice over. It is the fantasy — once you are
     // the board, most of the board is beneath your notice — and it is the brake
-    // on the kill economy, because absorption saturates and something a
-    // twentieth your size is worth a twentieth of you however many you eat.
+    // on the kill economy: a kill is worth exactly the rival now, so a quarter
+    // of every board being worth a twentieth of you is what stops "hunt the
+    // easiest thing on screen" being the whole game.
     if (roll < 0.26) m = Math.max(4, this.mass * r.range(0.03, 0.20))
     else if (roll < 0.48) m = Math.max(4, this.mass * r.range(0.30, 0.70))
     else if (roll < 0.78) m = this.mass * r.range(0.80, 1.18)
@@ -1434,7 +1593,19 @@ export class World {
       // The flip. When you grow past a mote it stops being a threat, and that
       // conversion is animated rather than swapped, because watching the world
       // turn into food is the reward the whole genre is built on.
-      if (this.mkind[i] !== MK_VOID && this.mkind[i] !== MK_ANSWER) {
+      //
+      // A WALL does not flip — it BURSTS. See WALL_RATE: a number born above
+      // you is not a deposit you collect later at a hundred per cent interest,
+      // and with absorption exact that is precisely what flipping one would be.
+      // Outgrow it and it comes apart into crumbs on the ordinary food scale,
+      // which is the same moment with the same sound and an economy behind it.
+      // Queued rather than burst in place, because bursting allocates motes and
+      // `freeMote` may hand back an index this loop has not reached yet.
+      if (this.mwall[i]) {
+        if (Math.abs(this.mval[i] as number) < M && this.burstLen < this.burstQ.length) {
+          this.burstQ[this.burstLen++] = i
+        }
+      } else if (this.mkind[i] !== MK_VOID && this.mkind[i] !== MK_ANSWER) {
         const want = Math.abs(this.mval[i] as number) < M ? 1 : 0
         const cur = this.mflip[i] as number
         if (want === 1 && cur < 0.5) {
@@ -1443,7 +1614,28 @@ export class World {
         this.mflip[i] = cur + (want - cur) * Math.min(1, dt * 7)
       }
     }
+
+    for (let q = 0; q < this.burstLen; q++) {
+      const i = this.burstQ[q] as number
+      if (!this.malive[i] || !this.mwall[i]) continue
+      const x = this.mx[i] as number
+      const y = this.my[i] as number
+      this.emit("flip", x, y, this.mr[i] as number, this.mval[i] as number)
+      this.malive[i] = 0
+      this.mwall[i] = 0
+      this.moteCount--
+      // On the FOOD scale, not on the wall's own. The wall's number was a size
+      // to be read, never an addend, and shards that carried a share of it would
+      // put the doubling straight back into the economy through the side door.
+      const scale = Math.max(FOOD_MIN, FOOD_A * Math.pow(M, FOOD_B) * this.growth)
+      this.scatter(x, y, Math.round(scale * WALL_SHARD_SCALE * WALL_SHARDS), WALL_SHARDS, 130, MK_SHED)
+    }
+    this.burstLen = 0
   }
+
+  /** Walls outgrown this frame, waiting to come apart. Preallocated; see above. */
+  private readonly burstQ = new Int32Array(24)
+  private burstLen = 0
 
   private stepRivals(dt: number): void {
     const frame = (this.time * 60) | 0
@@ -1727,7 +1919,10 @@ export class World {
       if (v < 0) {
         if (d > pr + mr * 0.2) return
         if (this.stingGrace > 0) return
-        const loss = this.damage(Math.min(this.mass * 0.11, Math.abs(v)))
+        // Exactly the number it wears. The cap that used to live here now lives
+        // on the label (VOID_MAX_FRACTION), so this is the same hit and a true
+        // sentence instead of a false one.
+        const loss = this.damage(Math.abs(v))
         this.combo = 0
         this.malive[i] = 0
         this.moteCount--
@@ -1739,11 +1934,23 @@ export class World {
         return
       }
 
-      if (v < this.mass) {
+      // `!this.mwall[i]` is load-bearing in both directions. A wall you have
+      // just outgrown is bursting this frame but has not burst yet — mass can
+      // rise mid-`collide`, several absorbs deep — and without the guard it
+      // would be swallowed for its whole number, which is the free doubling the
+      // wall rule exists to remove. The sting branch then has to survive a
+      // NEGATIVE `over` for the same reason: `0.035 + over * 0.09` goes below
+      // zero, `damage` is handed a negative loss, and a negative loss PAYS the
+      // player. That is the exact shape of the rupture bug that once printed six
+      // orders of magnitude of free mass.
+      if (v < this.mass && !this.mwall[i]) {
         // Absorb once the mote is meaningfully inside you — the little bit of
         // required overlap is what makes a near-miss feel like a near-miss.
         if (d > pr - mr * 0.35) return
-        const gain = Math.max(1, Math.round(absorbGain(v, this.mass) * this.growth))
+        // Exactly the mote's own number. Nothing scales this — not the breath,
+        // not the depth, not a combo. The instant anything multiplies this line
+        // the ribbon above it stops being true.
+        const gain = absorbGain(v)
         const before = this.mass
         this.mass += gain
         this.note(before)
@@ -1761,7 +1968,7 @@ export class World {
         // rival — but a dense field at a flat 19% ground a run to the floor
         // without a single rupture, which read as the game cheating.
         if (d > pr * 0.55 + mr * 0.45) return
-        const over = v / Math.max(1, this.mass) - 1
+        const over = Math.max(0, v / Math.max(1, this.mass) - 1)
         const rate = Math.min(0.13, 0.035 + over * 0.09)
         const loss = this.damage(Math.min(this.mass * rate, Math.max(1, v * 0.34)))
         this.combo = 0
@@ -1787,12 +1994,15 @@ export class World {
       this.grid.query(rxk, ryk, rr + 40, (i) => {
         if (!this.malive[i]) return
         if (this.mkind[i] === MK_ANSWER) return
+        // A wall is not food for anybody. Rivals get the same rule the player
+        // does, or a rival simply farms the doubling the player cannot.
+        if (this.mwall[i]) return
         const v = this.mval[i] as number
         if (v < 0 || v >= m) return
         const dx = (this.mx[i] as number) - rxk
         const dy = (this.my[i] as number) - ryk
         if (Math.hypot(dx, dy) > rr - (this.mr[i] as number) * 0.35) return
-        this.rmass[k] = m + absorbGain(v, m)
+        this.rmass[k] = m + absorbGain(v)
         this.malive[i] = 0
         this.moteCount--
       })
@@ -1812,7 +2022,7 @@ export class World {
           if (this.mass > m * 1.06 && d < pr - rr * 0.5) {
             // You ate a rival. This is the payoff moment of the genre.
             const before = this.mass
-            this.mass += devourGain(m, this.mass)
+            this.mass += devourGain(m)
             this.note(before)
             this.combo++
             this.killRival(k, false)
@@ -1834,10 +2044,10 @@ export class World {
           const dd = Math.hypot(ddx, ddy)
           if (dd > Math.max(rr, rr2)) continue
           if (m > m2 * 1.06 && dd < rr - rr2 * 0.72) {
-            this.rmass[k] = m + devourGain(m2, m)
+            this.rmass[k] = m + devourGain(m2)
             this.killRival(j, true)
           } else if (m2 > m * 1.06 && dd < rr2 - rr * 0.72) {
-            this.rmass[j] = m2 + devourGain(m, m2)
+            this.rmass[j] = m2 + devourGain(m)
             this.killRival(k, true)
             break
           }
@@ -2087,6 +2297,8 @@ export class World {
       // deliberately switched off so the answer is the only thing that decides.
       this.mr[i] = Math.max(this.playerRTrue * 0.82, 54)
       this.mkind[i] = MK_ANSWER
+      // A sphere is never a wall, whatever the mote it was recycled from was.
+      this.mwall[i] = 0
       this.mflip[i] = 1
       this.mphase[i] = a
       this.mborn[i] = this.time

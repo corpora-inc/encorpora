@@ -1,72 +1,65 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, FLOOR_MASS } from "./world.ts"
+import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, FLOOR_MASS, MK_FOOD, MK_VOID, MK_SHED } from "./world.ts"
 import { Rng } from "../core/rng.ts"
 import { DEPTHS, depthFor, overdrive } from "./depths.ts"
 import { specFor } from "../core/tier.ts"
 import { createStubHost } from "../host/stubHost.ts"
 import type { Host, Question } from "../contract.ts"
 
-test("absorption saturates, and saturates harder as you grow", () => {
-  for (const mass of [10, 60, 500, 4000, 90000, 3_000_000]) {
-    let peak = 0
-    for (let v = 1; v <= mass; v = Math.max(v + 1, Math.round(v * 1.05))) {
-      const g = absorbGain(v, mass)
-      assert.ok(g >= 1, "a swallow always gives at least one")
-      assert.ok(Number.isInteger(g))
-      assert.ok(g <= v + 1, `gain ${g} exceeded the mote's own value ${v}`)
-      peak = Math.max(peak, g)
-    }
-    // mass/(1+K) with K = 6, plus a rounding unit.
-    assert.ok(peak <= mass / 7 + 1, `peak gain ${peak} broke the cap at mass ${mass}`)
+/**
+ * Absorption is the identity. Eat a `4`, gain 4 — at every mass, forever.
+ *
+ * This test used to assert the opposite ("absorption saturates, and saturates
+ * harder as you grow"), and the reversal is the founder's:
+ *
+ *   "it would seem more intuitive to me to absorb the exact number? ... is that
+ *    not how most games like this work?"
+ *
+ * The old curve made a `4` at mass 10 worth `+1`, so the running equation
+ * printed `10 + 1 = 11` under a numeral a child had just read as 4. In a maths
+ * product that is not a balance choice, it is a false sentence on screen.
+ *
+ * There is no free parameter left in here to get wrong, which is the point:
+ * anything that ever wants to scale a swallow has to be argued about somewhere
+ * else, because this function has nowhere to put it.
+ */
+test("absorption is exact, at every mass, with nothing left to tune", () => {
+  for (const v of [1, 2, 3, 4, 7, 40, 999, 3418, 1_000_000, 2_147_483_646]) {
+    assert.equal(absorbGain(v), v, `a mote wearing ${v} was not worth ${v}`)
   }
-
-  // The early game must stay explosive: below the soft point the curve is
-  // within a few per cent of the flat-K one it replaced.
-  //
-  // This assertion used to read `absorbGain(10, 10) >= 10 / 7 * 0.92` and could
-  // never have passed, against either curve. `absorbGain` returns an INTEGER,
-  // and at the smallest mass in the game the rounding quantum is the whole
-  // quantity under test: the flat-K curve it names as its reference is
-  // round(10 / 7) = 1, not 1.43, so it was comparing a rounded number against
-  // an unrounded target and failing on the rounding rather than on the nerf it
-  // meant to catch. The property is real; it just has to be stated against the
-  // reference put through the same rounding, over the mass range the claim
-  // actually covers — the tens to low hundreds, which is the first two minutes.
-  const flatK = (value: number, mass: number): number =>
-    Math.max(1, Math.round(value / (1 + (6 * value) / Math.max(1, mass))))
-  for (const m of [10, 20, 40, 80, 120]) {
-    assert.ok(
-      absorbGain(m, m) >= flatK(m, m) * 0.92,
-      `the first minute was nerfed at mass ${m}: ${absorbGain(m, m)} vs ${flatK(m, m)}`,
-    )
-  }
-
-  // …and the late game must stop being an exponential. A near-tie is a fixed
-  // fraction of you only until it isn't; past that the fraction itself falls.
-  const frac = (m: number): number => absorbGain(Math.round(m * 0.98), m) / m
-  assert.ok(frac(1e4) < frac(1e2), "the near-tie fraction must fall with mass")
-  assert.ok(frac(1e7) < frac(1e4) * 0.5, "…and keep falling, or a bot finds the exponential")
+  // Nothing at or below nothing is worth anything, and nothing is ever handed
+  // back for a negative — a void is a LOSS and it is applied in `collide`.
+  assert.equal(absorbGain(0), 0)
+  assert.equal(absorbGain(-9), 0)
+  // Still an integer, because it lands between the ribbon's integer terms.
+  for (const v of [1, 5, 12345]) assert.ok(Number.isInteger(absorbGain(v)))
 })
 
 /**
- * The kill curve is deliberately mass-INVARIANT, unlike the mote curve, and the
- * asymmetry is asserted here rather than left to a comment. See DEVOUR_K in
- * world.ts: the near-tie mote is a manufactured, continuous supply and the
- * rival is not, so the sqrt(mass) tightening belongs on one and not the other.
+ * And so is the kill. See `devourGain` in world.ts for why this one could
+ * honestly have gone either way and did not: a rival carries a drawn numeral
+ * (`gfx.ts` labels every core big enough to hold one), so `400 + 84 = 484`
+ * under a core reading 300 is the same false sentence by another route.
+ *
+ * What keeps it safe is that a rival is a RATIONED supply where a mote is not:
+ * MAX_RIVALS of them, a respawn timer, and the `mass > m * 1.06` rule, which
+ * together mean a kill can never more than 1.94x you.
  */
-test("devouring a rival is generous but still bounded", () => {
-  for (const mass of [10, 500, 90000]) {
-    const equal = devourGain(mass, mass)
-    assert.ok(equal > mass * 0.22, "eating your own size should feel enormous")
-    assert.ok(equal <= mass * 0.32 + 1, "…but it may never approach a doubling")
-    // Monotonic in the prey's size.
-    let prev = 0
-    for (let m = 1; m <= mass * 3; m = Math.max(m + 1, Math.round(m * 1.1))) {
-      const g = devourGain(m, mass)
-      assert.ok(g >= prev, "gain must never fall as prey grows")
-      prev = g
-    }
+test("devouring a rival is exact, and a kill can never more than double you", () => {
+  for (const m of [1, 4, 500, 90_000, 3_000_000]) {
+    assert.equal(devourGain(m), m, `a rival of ${m} was not worth ${m}`)
+  }
+  assert.equal(devourGain(0), 0)
+  assert.equal(devourGain(-3), 0)
+  // The bound is the collision rule's, not the curve's: you may only swallow a
+  // rival strictly below `mass / 1.06`, so the most a kill can pay is 1/1.06.
+  for (const mass of [10, 500, 90_000]) {
+    const biggestLegal = Math.ceil(mass / 1.06) - 1
+    assert.ok(
+      mass + devourGain(biggestLegal) < mass * 1.95,
+      `a legal kill at mass ${mass} paid ${devourGain(biggestLegal)} — more than a doubling`,
+    )
   }
 })
 
@@ -214,6 +207,13 @@ test("a twenty-minute run escalates without trivialising the arena", () => {
   assert.ok(massAtOneMinute > 60, `no escalation in the first minute: ${Math.round(massAtOneMinute)}`)
   assert.ok(massAtOneMinute < 30_000, `first minute detonated: ${Math.round(massAtOneMinute)}`)
   assert.ok(peak > 400, `run never escalated; peak mass was only ${Math.round(peak)}`)
+  // The legibility contract, at the other end. This bot answers every question
+  // correctly AND eats everything it can reach, which is the strongest line of
+  // play in the game, and after twenty minutes of it the player's own core must
+  // still be a number a seven-year-old can read. It is also the only assertion
+  // that holds the prize taper honest: with `prizeRate` flattened to its
+  // ceiling the same run reaches 5,745,335.
+  assert.ok(peak < 1e6, `twenty minutes of perfect play reached ${Math.round(peak)} — that is not a readable number`)
 
   // The ladder is still live after twenty minutes: something out there can
   // still eat you, and the board is still populated.
@@ -472,10 +472,12 @@ function fly(
   accuracy: number,
   seed: number,
   onFrame?: (f: number) => void,
+  beforeFrame?: (f: number) => void,
 ): void {
   const coin = new Rng(seed)
   let target = -1
   for (let f = 0; f < 60 * seconds; f++) {
+    beforeFrame?.(f)
     const res = world.resonance
     if (res.active && res.phase === 2) {
       if (target < 0) target = coin.f() < accuracy ? res.correctSlot : (res.correctSlot + 1 + coin.int(0, 2)) % 4
@@ -559,20 +561,43 @@ test("a run opens sparse and fills up only as the world is earned", () => {
  * seed-dependent and the property is not.
  */
 test("the numbers a child reads stay in a workable range for a long time", () => {
-  const world = new World(createStubHost({ seed: 4 }), specFor("mid"), 0xbeef)
-  const at: Record<number, number> = {}
+  // Four seeds and a median, where this used to be one seed and a number.
+  //
+  // The change is forced by exact absorption and it makes the test stronger,
+  // not looser. A single early kill is now worth up to 94% of you rather than
+  // 25%, so ONE seed's fifteen-second mass is a coin flip on whether a rival
+  // wandered into range — measured across five seeds after this pass: 131, 67,
+  // 62, 52, 47. Asserting the band on the median keeps the property the test
+  // names, and the per-seed ceiling below keeps a single run from hiding a
+  // detonation inside a lucky median.
   const marks = [15, 30, 60, 120, 300]
-  fly(world, 300, 0.3, 9, (f) => {
-    const t = (f + 1) / 60
-    for (const m of marks) if (Math.abs(t - m) < 1 / 120) at[m] = world.mass
-  })
+  const runs: Record<number, number>[] = []
+  for (const [host, world, coin] of [[4, 0xbeef, 9], [6, 31337, 11], [15, 606, 4], [21, 1234, 3]] as const) {
+    const w = new World(createStubHost({ seed: host }), specFor("mid"), world)
+    const at: Record<number, number> = {}
+    fly(w, 300, 0.3, coin, (f) => {
+      const t = (f + 1) / 60
+      for (const m of marks) if (Math.abs(t - m) < 1 / 120) at[m] = w.mass
+    })
+    runs.push(at)
+  }
+  const median = (m: number): number => {
+    const xs = runs.map((r) => r[m] as number).sort((a, b) => a - b)
+    return ((xs[1] as number) + (xs[2] as number)) / 2
+  }
+  const worst = (m: number): number => Math.max(...runs.map((r) => r[m] as number))
 
-  assert.ok((at[15] as number) < 100, `mass was already ${Math.round(at[15] as number)} after fifteen seconds`)
-  assert.ok((at[30] as number) < 200, `mass was already ${Math.round(at[30] as number)} after half a minute`)
-  assert.ok((at[60] as number) < 600, `mass was already ${Math.round(at[60] as number)} after one minute`)
+  assert.ok(median(15) < 100, `mass was already ${Math.round(median(15))} after fifteen seconds`)
+  assert.ok(median(30) < 200, `mass was already ${Math.round(median(30))} after half a minute`)
+  assert.ok(median(60) < 600, `mass was already ${Math.round(median(60))} after one minute`)
+  // No single run may be an order of magnitude out of band either. Every
+  // economy bug this file has caught was two or more orders out, not one.
+  assert.ok(worst(15) < 300, `a run reached ${Math.round(worst(15))} in fifteen seconds`)
+  assert.ok(worst(30) < 900, `a run reached ${Math.round(worst(30))} in half a minute`)
+  assert.ok(worst(60) < 2500, `a run reached ${Math.round(worst(60))} in one minute`)
   // …and it must still be a climb, not a stall. A game where nothing grows is
   // not calmer, it is dead.
-  assert.ok((at[300] as number) > (at[30] as number) * 3, "five minutes of play went nowhere")
+  assert.ok(median(300) > median(30) * 3, "five minutes of play went nowhere")
 })
 
 /**
@@ -770,6 +795,357 @@ test("the running equation is always true, and never fires for a change of nothi
     })
     assert.ok(lines > 40, `only ${lines} equations in seven minutes — the ribbon is barely alive`)
   }
+})
+
+/**
+ * The founder's sketch, run as arithmetic:
+ *
+ *     10 + 4 = 14
+ *     14 + 10 = 24
+ *     24 - 5 = 19
+ *
+ * Three swallows, three lines, and every term is the number that was drawn on
+ * the thing the player touched. Before this pass the first line came out as
+ * `10 + 1 = 11`, because absorption saturated and a `4` at mass 10 was worth
+ * one; the third came out as `24 - 2 = 22`, because a void's damage was clamped
+ * to 11% of mass while its label was not.
+ *
+ * Deterministic on purpose. The soak below covers the run; this covers the
+ * sentence, and it is the one a child actually reads.
+ */
+test("the ribbon prints the founder's three lines, exactly", () => {
+  const world = new World(createStubHost({ seed: 44 }), specFor("mid"), 1010)
+  const swallow = (value: number, kind: number): void => {
+    // One thing in the water, right next to the player, and nothing else.
+    world.malive.fill(0)
+    world.ralive.fill(0)
+    world.mwall.fill(0)
+    world.moteCount = 0
+    world.rivalCount = 0
+    world.stingGrace = 0
+    world.mx[0] = world.px
+    world.my[0] = world.py
+    world.mvx[0] = 0
+    world.mvy[0] = 0
+    world.mval[0] = value
+    world.mr[0] = radiusForValue(value)
+    world.mkind[0] = kind
+    world.mflip[0] = 1
+    world.malive[0] = 1
+    world.moteCount = 1
+    const seq = world.eqSeq
+    for (let f = 0; f < 12 && world.eqSeq === seq; f++) {
+      world.aimX = world.px
+      world.aimY = world.py
+      world.step(1 / 60)
+    }
+    assert.notEqual(world.eqSeq, seq, `the ${value} was never touched`)
+  }
+
+  swallow(4, MK_FOOD)
+  assert.deepEqual([world.eqA, world.eqD, world.eqC], [10, 4, 14], `got ${world.eqA} + ${world.eqD} = ${world.eqC}`)
+  swallow(10, MK_FOOD)
+  assert.deepEqual([world.eqA, world.eqD, world.eqC], [14, 10, 24], `got ${world.eqA} + ${world.eqD} = ${world.eqC}`)
+  swallow(-5, MK_VOID)
+  assert.deepEqual([world.eqA, world.eqD, world.eqC], [24, -5, 19], `got ${world.eqA} − ${-world.eqD} = ${world.eqC}`)
+  assert.equal(world.mass, 19, `the ribbon says 19 and the simulation says ${world.mass}`)
+})
+
+/**
+ * …and the same claim over a long seeded run, asserted line by line rather than
+ * in shape: the ribbon's arithmetic must be IDENTICAL to the simulation's, not
+ * merely plausible against it.
+ *
+ * Two things are checked on every single change:
+ *
+ *   * the printed answer is the player's actual number — `eqC` is `mass`,
+ *     rounded, at the end of the frame that produced it, and `eqA + eqD` is
+ *     `eqC` exactly; and
+ *   * the printed CHANGE is the number that was drawn on the thing eaten. Each
+ *     absorb event is paired back to the specific mote index it came from (by
+ *     the position the event carries, which nothing rewrites once the mote is
+ *     dead) and the gain is compared against that mote's own `mval`.
+ *
+ * The pairing is what makes this a test of the arithmetic rather than of the
+ * bookkeeping. A saturating curve passes every internal-consistency check ever
+ * written — `10 + 1 = 11` is a perfectly true sentence — and fails this.
+ */
+test("the ribbon's arithmetic is the simulation's arithmetic, line for line", () => {
+  for (const seed of [1, 4242]) {
+    const world = new World(createStubHost({ seed }), specFor("mid"), seed * 7)
+    const preVal = new Int32Array(world.mval.length)
+    const preAlive = new Uint8Array(world.malive.length)
+    let seq = world.eqSeq
+    let lines = 0
+    let paired = 0
+    let tBefore = 0
+
+    fly(
+      world,
+      420,
+      0.6,
+      seed,
+      () => {
+        // Every numeral that left the water this frame, with the number it was
+        // wearing when the frame began. `maintain` refills a freed slot inside
+        // the same step, so "gone" has to mean reborn as well as dead.
+        const consumed: number[] = []
+        for (let i = 0; i < preAlive.length; i++) {
+          if (!preAlive[i]) continue
+          if (world.malive[i] && (world.mborn[i] as number) <= tBefore && world.mval[i] === preVal[i]) continue
+          consumed.push(preVal[i] as number)
+        }
+        for (let e = 0; e < world.eventLen; e++) {
+          const ev = world.events[e] as { kind: string; x: number; y: number; a: number }
+          if (ev.kind !== "absorb") continue
+          // Full coverage, one-to-one: the gain must be spent against a numeral
+          // that actually left, and no two absorbs may claim the same one.
+          const at = consumed.indexOf(ev.a)
+          assert.ok(
+            at >= 0,
+            `the arena grew by ${ev.a} and nothing wearing ${ev.a} left the water: [${consumed.join(",")}]`,
+          )
+          consumed.splice(at, 1)
+          paired++
+          // …and where the slot was not recycled, pin the absorb to the exact
+          // mote index by the position the event carries, which nothing
+          // rewrites once the mote is dead.
+          for (let i = 0; i < preAlive.length; i++) {
+            if (!preAlive[i] || world.malive[i]) continue
+            if (world.mx[i] !== ev.x || world.my[i] !== ev.y) continue
+            assert.equal(
+              ev.a,
+              preVal[i],
+              `the arena swallowed a numeral reading ${preVal[i]} and grew by ${ev.a}`,
+            )
+            break
+          }
+        }
+        if (world.eqSeq === seq) return
+        seq = world.eqSeq
+        lines++
+        assert.equal(
+          world.eqA + world.eqD,
+          world.eqC,
+          `the ribbon printed ${world.eqA} ${world.eqD < 0 ? "−" : "+"} ${Math.abs(world.eqD)} = ${world.eqC}`,
+        )
+        assert.equal(
+          world.eqC,
+          Math.round(world.mass),
+          `the ribbon answered ${world.eqC} while the player's own number was ${Math.round(world.mass)}`,
+        )
+      },
+      () => {
+        preVal.set(world.mval)
+        preAlive.set(world.malive)
+        tBefore = world.time
+      },
+    )
+
+    assert.ok(lines > 200, `only ${lines} equations in seven minutes — the ribbon is barely alive`)
+    assert.ok(paired > 300, `only ${paired} absorbs were traced back to a numeral — the pairing proved nothing`)
+  }
+})
+
+/**
+ * THE WALL RULE, which is what pays for exact absorption.
+ *
+ * A number born bigger than you is there to be read and avoided. It is not a
+ * deposit that matures into a free doubling the moment you grow past it — and
+ * with absorption exact, that is precisely what letting it flip would be. See
+ * WALL_RATE in world.ts: measured with the walls left flippable, a struggling
+ * run passed 100,000 inside the first minute.
+ */
+test("a wall is never food, and outgrowing one bursts it into crumbs", () => {
+  const world = new World(createStubHost({ seed: 61 }), specFor("mid"), 3003)
+  const place = (value: number, wall: number, dx: number): void => {
+    world.malive.fill(0)
+    world.mwall.fill(0)
+    world.moteCount = 0
+    world.mx[0] = world.px + dx
+    world.my[0] = world.py
+    world.mvx[0] = 0
+    world.mvy[0] = 0
+    world.mval[0] = value
+    world.mr[0] = radiusForValue(value)
+    world.mkind[0] = MK_FOOD
+    world.mflip[0] = wall ? 0 : 1
+    world.mwall[0] = wall
+    world.malive[0] = 1
+    world.moteCount = 1
+  }
+  const collide = (world as unknown as { collide(dt: number): void }).collide.bind(world)
+
+  // Sitting inside the player, worth half of it, and it may not be eaten. This
+  // is the guard in `collide`, exercised on its own: a wall can be outgrown
+  // MID-FRAME, several absorbs deep, and reach the collision test edible.
+  world.mass = 100
+  world.ralive.fill(0)
+  world.rivalCount = 0
+  place(50, 1, 0)
+  collide(1 / 60)
+  // It may sting — it is still a wall, and touching one costs you — but it may
+  // never PAY. Growing past a wall mid-frame is the one way one can reach the
+  // collision test looking edible.
+  assert.ok(world.mass <= 100, `a wall worth 50 was swallowed at mass 100 -> ${world.mass}`)
+
+  // …and the same mote, not marked a wall, IS eaten for exactly its number.
+  // Without this the assertion above passes for any reason at all.
+  world.mass = 100
+  world.stingGrace = 0
+  place(50, 0, 0)
+  collide(1 / 60)
+  assert.equal(world.mass, 150, `an ordinary 50 at mass 100 was worth ${world.mass - 100}`)
+
+  // Outgrow one and it comes apart: it is gone, it left crumbs on the food
+  // scale, and it paid nothing.
+  world.mass = 100
+  place(50, 1, 400)
+  const before = world.mass
+  world.aimX = world.px
+  world.aimY = world.py
+  world.step(1 / 60)
+  // Asserted on the whole field, not on slot 0: `maintain` tops the population
+  // back up inside the same step and hands the freed slot straight out again.
+  for (let i = 0; i < world.malive.length; i++) {
+    assert.ok(
+      !(world.malive[i] && world.mwall[i] && world.mval[i] === 50),
+      "an outgrown wall is still sitting there",
+    )
+  }
+  assert.equal(world.mass, before, `bursting a wall paid ${world.mass - before}`)
+  let shards = 0
+  let biggest = 0
+  for (let i = 0; i < world.malive.length; i++) {
+    if (!world.malive[i] || world.mkind[i] !== MK_SHED) continue
+    shards++
+    biggest = Math.max(biggest, world.mval[i] as number)
+  }
+  assert.ok(shards >= 4, `a burst wall left ${shards} crumbs`)
+  assert.ok(biggest < 50 * 0.25, `a crumb of ${biggest} carries a quarter of the wall — the doubling came back`)
+  assert.ok(
+    world.events.slice(0, world.eventLen).some((e) => (e as { kind: string }).kind === "flip"),
+    "the wall came apart in silence — the genre's best moment is not being played",
+  )
+})
+
+/**
+ * THE SPAWN TABLE, asserted directly rather than through a run.
+ *
+ * Every property here is load-bearing for exact absorption and every one of
+ * them is a coin-flip away from being invisible in a seeded soak, so they are
+ * read off `rollValue` itself, tens of thousands of draws at a time.
+ *
+ *   * a WALL is never below your mass — if it were it would be food, and food
+ *     worth all of you is the exponential this whole pass exists to remove;
+ *   * a PRIZE always is, or it is not a prize at all, just a wall that got
+ *     rounded up by `tidyValue`;
+ *   * a VOID never wears a number bigger than 11% of you, which is the mercy
+ *     that used to live on the damage and now has to live on the label, because
+ *     the label is what gets subtracted; and
+ *   * the prize is RATIONED, and the ration falls with mass. That last one is
+ *     the difference between a twenty-minute run finishing at 222,742 and at
+ *     5,745,335.
+ */
+test("the spawn table cannot hand out a wall you can eat, or a void that outweighs its number", () => {
+  const prizeFrac: Record<number, number> = {}
+  // 43,910 and 43,960 are not decoration. `tidyValue` rounds past a thousand to
+  // three significant figures, so at those masses the raw draw at the very edge
+  // of each band rounds ACROSS the player's own mass — a wall down to 43,900
+  // and a prize up to 44,000 — which is how a wall becomes edible and a prize
+  // becomes a wall. Round masses like 40,000 land exactly on the step and hide
+  // it. The draw count rises with mass because the prize ration falls with it,
+  // and a band nobody drew from is a band nobody tested.
+  for (const mass of [10, 40, 137, 1237, 43_910, 43_960]) {
+    const draws = mass > 1000 ? 900_000 : 40_000
+    const world = new World(createStubHost({ seed: 71 }), specFor("mid"), 9090)
+    // The opening band carries no voids at all, so the run is nudged past it
+    // first — otherwise the void assertions below are being skipped rather than
+    // passed. The depth is a ratchet, so setting the mass afterwards keeps it.
+    fly(world, 200, 0.5, 5)
+    assert.ok(world.voidRate > 0, "the field still has no voids in it — the void assertions are vacuous")
+    world.mass = mass
+    const roll = (world as unknown as { rollValue(): { v: number; kind: number; wall: number } }).rollValue.bind(world)
+    let voids = 0
+    let walls = 0
+    let prizes = 0
+    let food = 0
+    for (let n = 0; n < draws; n++) {
+      const { v, kind, wall } = roll()
+      if (kind === MK_VOID) {
+        voids++
+        assert.ok(v < 0, `a void wearing ${v} is not a loss`)
+        assert.ok(
+          -v <= Math.max(1, Math.round(mass * 0.11)),
+          `a void wearing ${-v} at mass ${mass} takes ${((-v / mass) * 100).toFixed(0)}% in one touch`,
+        )
+        continue
+      }
+      if (wall) {
+        walls++
+        assert.ok(v >= mass, `a wall wearing ${v} is edible at mass ${mass}`)
+        continue
+      }
+      assert.ok(v < mass, `an ordinary mote wearing ${v} is not edible at mass ${mass}`)
+      if (v > mass * 0.5) prizes++
+      else food++
+    }
+    assert.ok(voids > 0 && walls > 0 && food > 0, `mass ${mass}: ${voids} voids, ${walls} walls, ${food} crumbs`)
+    // The walls keep their full share at every size — the reading is the point
+    // and it may not thin out with the economy.
+    assert.ok(walls / draws > 0.09, `mass ${mass}: only ${walls} walls in ${draws} — the field has nothing to flee`)
+    // …and the prize never does, at any size.
+    assert.ok(prizes / draws <= 0.006, `mass ${mass}: ${prizes} free doublings in ${draws} draws`)
+    assert.ok(prizes > 0, `mass ${mass}: not one prize in ${draws} draws — the prize assertions are vacuous`)
+    prizeFrac[mass] = prizes / draws
+  }
+
+  // Rationed, and the ration FALLS — this is the anti-exponential, and it is
+  // the only place it is stated as a property rather than as a measured run.
+  assert.ok(
+    (prizeFrac[43_910] as number) < (prizeFrac[137] as number) * 0.25,
+    `the prize ration barely tapered: ${prizeFrac[137]} at mass 137, ${prizeFrac[43_910]} at 43,910`,
+  )
+  assert.ok(
+    (prizeFrac[1237] as number) < (prizeFrac[10] as number) * 0.6,
+    `the prize ration barely tapered: ${prizeFrac[10]} at mass 10, ${prizeFrac[1237]} at 1,237`,
+  )
+})
+
+/**
+ * A Resonance sphere is recycled from whatever mote happened to be nearest, and
+ * that mote may well have been a wall. If the flag comes with it, `stepMotes`
+ * sees a wall it has outgrown and BURSTS the answer out of the water in front
+ * of the child mid-question.
+ */
+test("a Resonance sphere is never still carrying a wall's flag", () => {
+  const world = new World(createStubHost({ seed: 23 }), specFor("mid"), 8123)
+  // Spheres are recycled through `freeMote`, which hands back a DEAD slot with
+  // whatever it was last carrying. Waiting for a run to happen to seat a sphere
+  // on a dead wall is waiting on a coin: every slot that is free at the moment
+  // the beat opens is poisoned here instead, which is the same state the game
+  // reaches on its own and reaches it every time.
+  let opened = 0
+  for (let f = 0; f < 60 * 300; f++) {
+    world.aimX = world.px
+    world.aimY = world.py
+    const res = world.resonance
+    if (!res.active) for (let i = 0; i < world.malive.length; i++) if (!world.malive[i]) world.mwall[i] = 1
+    world.step(1 / 60)
+    if (!res.active || res.phase < 1 || res.phase > 2) continue
+    opened++
+    for (let sl = 0; sl < 4; sl++) {
+      const i = res.spheres[sl] as number
+      assert.ok(i >= 0, "a Resonance opened without four spheres")
+      // Aliveness is the assertion that matters: a sphere carrying the flag is
+      // burst by `stepMotes` and the answer disappears out of the water in
+      // front of the child. The flag alone would only be read in the frames
+      // where the bug had not fired yet.
+      assert.equal(world.malive[i], 1, "an answer sphere vanished while the question was still open")
+      assert.equal(world.mwall[i], 0, "an answer sphere is flagged as a wall — it can burst mid-question")
+    }
+  }
+  assert.ok(opened > 60, `only ${opened} frames of open Resonance in five minutes — nothing was checked`)
 })
 
 /**
