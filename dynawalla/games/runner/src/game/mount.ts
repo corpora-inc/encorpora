@@ -30,7 +30,9 @@ import { Shake, HitStop, FlashBus, Springy, clamp, clamp01, lerp, approach, ease
 import {
   V_START, V_TERMINAL, V_REDUCED_CAP, VOLT_MAX, COST_WRONG_GATE, COST_HAZARD,
   GAIN_GATE, GAIN_SPARK, GAIN_GRAZE, VOLT_BLEED, CHAIN_PER_SURGE, SURGE_MAX,
-  STUMBLE_TIME, CLEAN_READ_SHARE, REVIVE_GRACE, speedAt, readWindow, breather, beatTime, difficultyFor,
+  STUMBLE_TIME, CLEAN_READ_SHARE, REVIVE_GRACE,
+  speedAt, readWindow, breather, beatTime, difficultyFor,
+  gateDistance, hazardLandsOnRead,
 } from "./pacing.ts";
 
 type Phase = "idle" | "running" | "dying" | "revive" | "over";
@@ -479,14 +481,14 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
 
   /* --------------------------------- gates ------------------------------ */
 
-  const difficulty = (): number => difficultyFor(travel, surge, stats.gates, stats.gatesRight);
+  const difficulty = (): number => difficultyFor(surge, stats.gates, stats.gatesRight);
 
   function requestGate(): void {
     if (activeGate) return;
     const q = pendingQuestion ?? host.next({ difficulty: difficulty() });
     pendingQuestion = null;
     const w = readWindow(travel, reduced());
-    const dist = clamp(speed * w, 68, tiers.settings.far * 0.84);
+    const dist = gateDistance(speed, w, tiers.settings.far);
     const g = ents.spawnGate(q, dist, dist / Math.max(1, speed), rng);
     if (!g) {
       pendingQuestion = q;
@@ -612,11 +614,44 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     return r < 0.38 ? "pylon" : r < 0.62 ? "lowbar" : r < 0.8 ? "pit" : "sweeper";
   }
 
+  /**
+   * Sparks strung across all three lanes.
+   *
+   * What a reading corridor gets instead of a pylon. It is not silence — the
+   * causeway still lights up and there is still something to collect — but it
+   * asks for nothing: whichever lane the child has read their way into, the
+   * sparks are already there, so the corridor cannot pull them out of it.
+   */
+  function readingArch(spawnZ: number): void {
+    if (!rng.chance(0.55)) return;
+    for (let l = 0; l < 3; l++) ents.spawnSpark(laneX(l), 1.3, spawnZ + (l === 1 ? 3 : 0));
+  }
+
   function emitBeat(): void {
     const spawnZ = tiers.settings.far * 0.88;
     // Never put a hazard inside the reading window of a gate: the child would
     // be dodging while reading, which is not difficulty, it is noise.
-    if (activeGate && Math.abs(-spawnZ - activeGate.z) < 30) return;
+    //
+    // A hazard emitted here does not arrive here — it is five to seven seconds
+    // downrange, further out than the gate that is up right now, so the only
+    // way to keep this promise is to ask where the gate cycle *will be* when it
+    // lands. Comparing the spawn point to a live gate's position (what this used
+    // to do) compares two numbers that are never close, and blocks nothing.
+    if (
+      hazardLandsOnRead({
+        dist: spawnZ,
+        elapsed,
+        travel,
+        speed,
+        far: tiers.settings.far,
+        reduced: reduced(),
+        gateEndsIn: activeGate ? Math.max(0, -activeGate.z) / Math.max(1, speed) : null,
+        cooldown: gateCooldown,
+      })
+    ) {
+      readingArch(spawnZ);
+      return;
+    }
 
     const roll = rng.next();
     const hazardChance = clamp(0.42 + travel / 9000, 0.42, 0.78);
