@@ -6,7 +6,9 @@
 // the whole pedagogy, and it needs real type at real weights, which is DOM.
 
 import { cleanFraction, percentTenths } from "./exact.ts"
+import { hudFrame } from "./layout.ts"
 import { css, type LevelInk } from "./palette.ts"
+import type { Insets } from "../../../../packs/shared/game-chrome/index.ts"
 
 export class Hud {
   root: HTMLDivElement
@@ -72,6 +74,25 @@ export class Hud {
     this.card = document.createElement("div")
     this.card.className = "cl-card"
     parent.appendChild(this.card)
+  }
+
+  /**
+   * Publish the frame as custom properties the stylesheet consumes.
+   *
+   * The stylesheet keeps `env()` fallbacks on every one of these, so a HUD that
+   * never gets laid out is still inside the notch — but the values under test
+   * are these, and these win.
+   */
+  layout(w: number, h: number, insets: Insets): void {
+    const f = hudFrame(w, h, insets)
+    const s = this.root.style
+    s.setProperty("--cl-pt", `${f.padTop}px`)
+    s.setProperty("--cl-pl", `${f.padLeft}px`)
+    s.setProperty("--cl-pr", `${f.padRight}px`)
+    s.setProperty("--cl-gl", `${f.gutterLeft}px`)
+    s.setProperty("--cl-gr", `${f.gutterRight}px`)
+    s.setProperty("--cl-toph", `${f.topMinH}px`)
+    s.setProperty("--cl-cluster", `${f.clusterW}px`)
   }
 
   setLevel(level: number, ink: LevelInk, goal: { n: number; d: number; target: number }): void {

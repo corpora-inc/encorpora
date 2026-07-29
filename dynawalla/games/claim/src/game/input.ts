@@ -36,12 +36,30 @@ export class Input {
   /** Pointer position in CSS pixels relative to the element, or null. */
   pointer: { x: number; y: number } | null = null
 
+  /**
+   * False while something is in front of the game — the how-to-play panel.
+   * Input behind a sheet is not something the child did.
+   */
+  enabled = true
+
   private el: HTMLElement
+  /**
+   * The part of `el` that is the GAME.
+   *
+   * `el` is the pack's root, and the root also holds controls: the mute button,
+   * and the shared how-to-play button and its panel. A pointerdown on one of
+   * those bubbles to the root, and `onPointerDown` calls `preventDefault()`,
+   * which suppresses the compatibility mouse events a `click` is synthesised
+   * from — so binding to the root alone makes every button in the pack dead to
+   * a finger. Anything outside this box is somebody else's control.
+   */
+  private surface: HTMLElement
   private onAny: () => void
   private handlers: Array<[EventTarget, string, EventListener]> = []
 
-  constructor(el: HTMLElement, onAny: () => void) {
+  constructor(el: HTMLElement, surface: HTMLElement, onAny: () => void) {
     this.el = el
+    this.surface = surface
     this.onAny = onAny
     this.bind(window, "keydown", this.onKeyDown as EventListener)
     this.bind(window, "keyup", this.onKeyUp as EventListener)
@@ -70,6 +88,7 @@ export class Input {
   }
 
   private onKeyDown = (e: KeyboardEvent): void => {
+    if (!this.enabled) return
     const k = e.key.toLowerCase()
     const mapped =
       k === "arrowleft" || k === "a"
@@ -100,7 +119,15 @@ export class Input {
     return { x: e.clientX - r.left, y: e.clientY - r.top }
   }
 
+  /** Did this pointer land on the game, or on a control floating over it? */
+  private mine(e: PointerEvent): boolean {
+    if (!this.enabled) return false
+    const t = e.target as Node | null
+    return t === this.el || (t !== null && this.surface.contains(t))
+  }
+
   private onPointerDown = (e: PointerEvent): void => {
+    if (!this.mine(e)) return
     e.preventDefault()
     this.anyPress = true
     this.onAny()

@@ -7,6 +7,12 @@
 // a cut that pushes you past the band does not show you a red X — it falls
 // apart and gives the ground back to the hunters.
 
+import {
+  createInstructions,
+  onInsetsChange,
+  safeInsets,
+  type Instructions,
+} from "../../../../packs/shared/game-chrome/index.ts"
 import type { Host, Question } from "../contract.ts"
 import { Audio } from "./audio.ts"
 import { cleanFraction, clamp } from "./exact.ts"
@@ -35,6 +41,7 @@ import {
 import { Hud } from "./hud.ts"
 import { Input } from "./input.ts"
 import { Juice } from "./juice.ts"
+import { arenaRect, muteRect } from "./layout.ts"
 import { goalFromQuestion, levelAt, type Goal, type Level } from "./levels.ts"
 import { css, INK, levelInk } from "./palette.ts"
 import { Particles } from "./particles.ts"
@@ -148,6 +155,8 @@ class Claim {
   private fpsAcc = 0
   private fps = 60
   private worstFrame = 0
+  private guide: Instructions
+  private stopInsets: () => void
 
   constructor(el: HTMLElement, host: Host) {
     this.host = host
@@ -197,10 +206,75 @@ class Claim {
 
     this.g = makeGrid(pickArena(this.stageAspect()))
     this.r = new Renderer(canvas, this.g, levelInk(1))
-    this.input = new Input(root, () => this.audio.unlock())
+    // The stick anchors anywhere on the game itself — `shake` is the HUD and
+    // the arena — but never on the controls floating over it.
+    this.input = new Input(root, shake, () => this.audio.unlock())
 
     this.ro = new ResizeObserver(() => this.layout())
     this.ro.observe(stage)
+    // Rotation swaps top/bottom with left/right and Split View changes them
+    // outright, and neither necessarily resizes the stage. Without this the HUD
+    // is laid out for the shape the tablet was in when the pack opened.
+    this.stopInsets = onInsetsChange(() => this.layout())
+
+    // How to play. CLAIM shipped showing a child a stacked fraction, a bar and
+    // an empty field, with nothing anywhere saying that the loop you draw is
+    // filled in, or that being touched while drawing is what kills you. The
+    // manual stays reachable during play, because the moment a child needs the
+    // rules is never the title screen.
+    this.guide = createInstructions(root, {
+      title: "CLAIM",
+      summary: [
+        "Drive out into the empty ground, draw a loop, and come back to the edge. The inside of your loop fills in and becomes yours.",
+        "The number at the top says how much of the field to take. Stop when the bar reaches the bright stripe.",
+      ],
+      sections: [
+        {
+          heading: "Moving",
+          lines: [
+            "Touch anywhere and slide your thumb to steer. Let go to keep going straight.",
+            "On a keyboard: arrow keys or W A S D.",
+            "You are safe while you are on ground you already own.",
+          ],
+        },
+        {
+          heading: "Taking ground",
+          lines: [
+            "Leave your ground and a bright trail follows you.",
+            "Get back to your own ground and the trail closes. Everything inside turns your colour.",
+            "A big loop takes a lot of ground at once. A small loop is safer.",
+          ],
+        },
+        {
+          heading: "The number at the top",
+          lines: [
+            "The fraction is how much of the field you have to take. 3 over 4 means three quarters of it.",
+            "The bar underneath is cut into that many parts, so you can watch the pieces fill up.",
+            "The bright stripe on the bar is where you should stop. Land on it and the level is done.",
+            "Go past the stripe and the cut falls apart. The ground goes back to the shapes.",
+          ],
+        },
+        {
+          heading: "Staying alive",
+          lines: [
+            "Shapes float around in the ground you have not taken yet.",
+            "You lose a life if a shape touches you, or if it touches your trail before you close it.",
+            "You lose a life if you drive into your own trail.",
+            "Do not stop in the middle of a trail. If you stand still too long the trail burns away behind you.",
+            "You start with three lives. They are the pink squares at the top.",
+          ],
+        },
+        {
+          heading: "One more chance",
+          lines: [
+            "When your last life goes, a sum appears and squares with answers drop into the field.",
+            "Drive over the square with the right answer and you get a life back.",
+            "You have a few seconds, and nothing can hurt you while you decide.",
+          ],
+        },
+      ],
+      reducedMotion: this.reduced,
+    })
   }
 
   // ---- lifecycle --------------------------------------------------------
@@ -216,6 +290,8 @@ class Claim {
   destroy(): void {
     this.alive = false
     cancelAnimationFrame(this.raf)
+    this.stopInsets()
+    this.guide.destroy()
     this.ro?.disconnect()
     this.input.destroy()
     this.audio.dispose()
@@ -226,11 +302,30 @@ class Claim {
   private layout(): void {
     const w = this.stage.clientWidth || 1
     const h = this.stage.clientHeight || 1
-    this.r.resize(w, h)
+    // Measured every time rather than cached: the insets change on rotation and
+    // when a pack is resized in Split View, and a game that reads them once at
+    // mount is correct until the first rotation and wrong after it.
+    const insets = safeInsets()
+    this.r.resize(w, h, arenaRect(w, h, insets))
+    const fw = this.root.clientWidth || w
+    const fh = this.root.clientHeight || h
+    this.hud.layout(fw, fh, insets)
+    // The mute button is positioned from the same function the test asserts,
+    // rather than from a second copy of the numbers in the stylesheet.
+    const m = muteRect(fw, fh, insets)
+    this.root.style.setProperty("--cl-mute-r", `${fw - (m.x + m.w)}px`)
+    this.root.style.setProperty("--cl-mute-b", `${fh - (m.y + m.h)}px`)
+    this.root.style.setProperty("--cl-mute-s", `${m.w}px`)
   }
 
+  /**
+   * The shape the arena is fitted to — the SAFE part of the stage, not the
+   * whole of it. Every arena is exactly 7200 cells in exactly 40 blocks, so
+   * this only ever picks which 7200, never how many.
+   */
   private stageAspect(): number {
-    return (this.stage.clientWidth || 4) / (this.stage.clientHeight || 3)
+    const a = arenaRect(this.stage.clientWidth || 4, this.stage.clientHeight || 3, safeInsets())
+    return a.w / a.h
   }
 
   // ---- level setup ------------------------------------------------------
@@ -359,6 +454,15 @@ class Claim {
       this.fps = Math.round(this.frames / this.fpsAcc)
       this.frames = 0
       this.fpsAcc = 0
+    }
+
+    // A child reading the rules is not playing. The hunt must not close on
+    // them behind the panel, and an arrow key behind it is not a move.
+    this.input.enabled = !this.guide.isOpen
+    if (this.guide.isOpen) {
+      this.input.consumePress()
+      this.draw()
+      return
     }
 
     const dt = this.juice.step(realDt)
