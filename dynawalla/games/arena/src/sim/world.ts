@@ -1,3 +1,15 @@
+import {
+  SECOND_GRADE_FLOW,
+  countAt,
+  curved,
+  observe,
+  quickness,
+  revealMs,
+  rungAt,
+  seedSuccess,
+  settle,
+  valueAt,
+} from "../../../../packs/shared/game-pacing/index.ts"
 import { Rng } from "../core/rng.ts"
 import { Grid } from "../core/grid.ts"
 import { tidyValue } from "../core/digits.ts"
@@ -34,6 +46,113 @@ export const FLOOR_MASS = 6
 const MAX_MOTES = 360
 
 /**
+ * THE BREATH.
+ *
+ * ARENA had no adaptation of any kind. Density, rival count, speed and question
+ * difficulty were all functions of the DEPTH, the depth was a ratchet that can
+ * only ever go up, and the ratchet was driven by the clock and by mass. Nothing
+ * anywhere in this file asked whether the child was getting the maths right.
+ * Measured on the first frame of a seeded mid-tier run: 155 motes and 16
+ * rivals, which are the same counts the twentieth minute carries. There was no
+ * onset, and there was no way back down.
+ *
+ * So one number now drives density, rival count, player speed, void rate,
+ * hunter budget, question difficulty and how long a question stays open — all
+ * of it, together, in both directions. Struggle and the whole world breathes
+ * out. Succeed for a while and it leans in. The controller is shared rather
+ * than local (`packs/shared/game-pacing`) because every game in this catalogue
+ * wants exactly this and none of them should re-derive it.
+ *
+ * The depth ratchet is deliberately left alone. It still runs the palette, the
+ * water and the leviathan, because "how deep this run has been" is a record and
+ * a record should not un-happen. What it no longer runs is anything a child has
+ * to compute against.
+ */
+const FLOW = SECOND_GRADE_FLOW
+
+/**
+ * Motes and rivals at the floor of the breath, as a fraction of the tier's
+ * ceiling.
+ *
+ * A quarter of the rivals, a third of the motes. Both were chosen against a
+ * measured ON-SCREEN count rather than against the pool size, because the pool
+ * is spread over a disc of 1.65 view-spans and only a fixed fraction of it is
+ * ever in frame: the old field put ~15 motes on a phone held tall and 35-70 on
+ * a tablet held wide, in the FIRST FIFTEEN SECONDS. A third takes the tablet's
+ * opening frame from seventy numbers to about twenty-three, which is a field a
+ * seven-year-old can actually read.
+ */
+const MOTE_FLOOR = 0.45
+const RIVAL_FLOOR = 0.28
+
+/**
+ * Rungs on the difficulty ladder ARENA hands the Host.
+ *
+ * The ladder itself is the curriculum's, not this file's: `host.next` takes a
+ * difficulty in 1..10 and the Host decides what that means. ARENA's job is only
+ * to stand on the right rung, which is why the mapping goes through the shared
+ * `rungAt` — with hysteresis, so a difficulty sitting on a band edge cannot
+ * hand a child alternating easy and hard questions.
+ *
+ * What rung 1 actually *contains* is content, not tuning. Today the active
+ * curriculum's easiest generator starts at two-digit + two-digit, so the bottom
+ * of this ladder is currently clamped by what exists rather than by anything
+ * here. When the first-grade fact spine lands, this reaches down to it with no
+ * change to this file.
+ */
+const DIFFICULTY_RUNGS = 10
+
+/**
+ * THE QUIET TIDE, and why the world's pace is not simply the breath.
+ *
+ * A Resonance can be ignored. Miss one and it times out, nothing is reported,
+ * and the controller — which is fed by answers and by nothing else — never
+ * moves. Drive that to its conclusion and a child who only wants to swim spends
+ * twenty minutes in a four-rival ocean that never builds. Measured exactly
+ * that: a bot that hunts rivals and never answers a question peaked at mass 60
+ * in twenty minutes.
+ *
+ * So the two things the intensity drives are separated, and the split is the
+ * honest one:
+ *
+ *   * The MATHS — which rung of the ladder, how long a question stays open —
+ *     follows the breath alone, and falls all the way to the bottom. Nothing a
+ *     clock does may make a struggling child's questions harder.
+ *
+ *   * The WORLD — density, rivals, speed, growth, the temper of the water —
+ *     follows whichever is higher, the breath or this tide. A long run fills up
+ *     whether or not anybody is answering, which is the escalation a growth game
+ *     needs, and answering well still gets there far sooner.
+ *
+ * Capped at half, so the tide alone never delivers the mayhem. The top half of
+ * the world is earned.
+ */
+const QUIET_TIDE_SECONDS = 420
+const QUIET_TIDE_CEILING = 0.62
+
+/**
+ * The largest any rival may be, as a multiple of the player's mass.
+ *
+ * Stated as a multiple of mass but DERIVED from the screen, which is the only
+ * place the constraint actually lives. Radius is `R_K * sqrt(mass)` and the
+ * view is `11 * R_K * sqrt(mass) + 520`, so once the constant term stops
+ * mattering a rival at `k` times your mass has
+ *
+ *     diameter / viewport width = 2*sqrt(k) / (11 * aspect)
+ *
+ * and the worst aspect we ship into is a phone held tall, 1080x2340, where
+ * `aspect` is 0.4615. That makes the fraction `0.394 * sqrt(k)`:
+ *
+ *     k = 2.6  ->  0.63 of the width      k = 4.0  ->  0.79 of the width
+ *
+ * So an ordinary rival may reach two thirds of the narrow dimension and a
+ * leviathan four fifths. Both are enormous. Neither can enclose a child, which
+ * is the whole difference between a threat and a coin flip.
+ */
+const RIVAL_MAX_RATIO = 2.6
+const LEVIATHAN_MAX_RATIO = 4.0
+
+/**
  * Broad-phase resolution. The cell COUNT is fixed here; the cell SIZE is set
  * per frame from `gridSpan`, so the grid costs the same 62×62 whether the
  * player is at mass 10 or mass 350,000.
@@ -45,9 +164,41 @@ const GRID_COLS = 62
  * A fraction compounds, and compounding turns a twenty-minute climb into a
  * ninety-second explosion followed by nothing. These two numbers are the
  * whole difficulty curve and they were fitted by simulating full runs.
+ *
+ * **They were fitted against the wrong objective, and this is the deepest of
+ * the founder's complaints.** At 0.62 / 0.60 a seeded run measured
+ *
+ *     t=5s  mass 104   t=15s  mass 537   t=30s  mass 1,771   t=60s  mass 2,624
+ *
+ * — the player's own number is four digits before the first minute is out, and
+ * the numbers in the water with it are four and five digits from then on. The
+ * pack declares `dw.ns.compare.whole-numbers`, whose generator poses 3-digit
+ * comparisons at its first two levels and does not reach 5 digits until its
+ * fourth. So the arena was spending twenty-nine seconds in the range the
+ * curriculum starts at and the following twenty minutes past the range it ends
+ * at. As the founder put it: "5000 versus 8000 in like 2 minutes". Reading
+ * 3,418 against 3,481 is genuinely the declared skill; arriving there in half a
+ * minute and never coming back is not.
+ *
+ * Both numbers matter and they do different jobs.
+ *
+ *   FOOD_A 0.62 -> 0.30 scales the whole curve down. Because the field's own
+ *   size scales with the player, the eat RATE goes as M^-0.35 and the gain per
+ *   mote as M^FOOD_B, so dM/dt is proportional to M^(FOOD_B - 0.35) and the
+ *   solution is a power of t. Halving A slows the clock on the whole climb.
+ *
+ *   FOOD_B 0.60 -> 0.46 is the shape, and it is the one that decides whether
+ *   the twelfth minute is still a maths game. At 0.60, dM/dt goes as M^0.25 and
+ *   mass runs as t^(4/3) — super-linear, so the run accelerates away from the
+ *   curriculum forever. At 0.46 the exponent is 0.11 and mass runs as t^1.12:
+ *   very nearly linear, which is a climb a child can stay inside.
+ *
+ * Measured after: 2 digits for the first half-minute, 3 digits for the next
+ * several minutes, 4 digits past ten. See `sim.test.ts`, which asserts the
+ * bands rather than the numbers.
  */
-const FOOD_A = 0.62
-const FOOD_B = 0.60
+const FOOD_A = 0.40
+const FOOD_B = 0.50
 
 /**
  * How much of a mote actually becomes you.
@@ -119,20 +270,51 @@ export function devourGain(rivalMass: number, mass: number): number {
 const MAX_RIVALS = 26
 const MAX_EVENTS = 96
 
-/** World units of view across the smaller screen dimension. */
+/**
+ * World units of view across the screen's HEIGHT — `gfx.worldPerPx` divides by
+ * the canvas height, so on a phone held tall this is the LONG dimension and the
+ * width is only `span * aspect`, which on a 1080×2340 is 0.46 of it.
+ *
+ * The constant term is the opening's whole sense of space. At 150 a run began
+ * with a 463-unit view and a 28-unit player: 16 player-radii of visible world,
+ * crossed at 2.44 screen-widths per second. There was nowhere to be. At 520 the
+ * opening view is 833 units — 29 player-radii — and by mass 1,000 the term is a
+ * 10% correction, so this buys room exactly where a child needs it and costs
+ * nothing once they are large.
+ */
 export function viewSpanFor(mass: number): number {
-  return R_K * Math.sqrt(mass) * 11 + 150
+  return R_K * Math.sqrt(mass) * 11 + 520
 }
+
+/**
+ * How many view-spans of world lie between the player and the membrane.
+ *
+ * "Why is there an edge of the board?" — because there was one, five seconds
+ * away. `arenaRadiusFor` used to be `max(2600, span * 3.4)`, and at the
+ * starting mass the `max` chose the constant: a 2,600-unit pond around a
+ * 463-unit view. Measured: swimming in one straight line from the centre, the
+ * wall arrived after 4.77 seconds. A child finds that inside their first
+ * attempt at moving.
+ *
+ * The membrane is kept, and only kept, because positions live in Float32Array
+ * and an unbounded world eventually loses sub-unit precision. Ninety spans puts
+ * the wall over three minutes of dead-straight swimming away at the open, and
+ * further at every larger size, so it bounds the coordinates without ever being
+ * a thing a child can play against. Thirty was the first number tried and the
+ * test below found the wall at 63.9 s — long, but not longer than a determined
+ * nine-year-old.
+ */
+const ARENA_SPANS = 90
 
 export function radiusForValue(v: number): number {
   return Math.max(MOTE_MIN_R, R_K * Math.sqrt(Math.abs(v)))
 }
 
 export function arenaRadiusFor(mass: number): number {
-  // The membrane must always sit well outside the frame. Tied to a constant it
-  // fell *inside* the view once you were large, and the picture became a lit
-  // disc floating in a black void with the player pinned to the edge.
-  return Math.max(2600, viewSpanFor(mass) * 3.4)
+  // Proportional to the view at every size, with no constant floor. The floor
+  // was the bug: it made the arena a fixed pond that the opening view was small
+  // enough to cross.
+  return viewSpanFor(mass) * ARENA_SPANS
 }
 
 // Mote kinds.
@@ -211,6 +393,17 @@ export type Resonance = {
   correctSlot: number
   openedAt: number
   /**
+   * The same instant on the SIMULATION clock.
+   *
+   * `openedAt` is `performance.now()` and must stay that way: the Host's
+   * mastery model wants the real seconds a real child took. But the moment
+   * latency also began steering the difficulty controller, wall time became an
+   * INPUT to the simulation — and a run seeded with `?seed=` stopped being
+   * reproducible, because the same seed on a slower machine took a different
+   * ladder. Anything that feeds the world reads this instead.
+   */
+  openedT: number
+  /**
    * Milliseconds from opening to the answer being registered, frozen at the
    * moment of the answer. The harness used to recompute this from `openedAt`
    * on every frame of the 0.9 s resolve, so the metric it reported was the
@@ -254,6 +447,35 @@ export class World {
   aimY = 120
   /** Set by the renderer so spawns can land just outside the actual frame. */
   viewAspect = 1.6
+
+  // -- the breath ---------------------------------------------------------
+  /**
+   * How hard the world is pushing, 0..1. Drives density, rivals, speed, void
+   * rate, hunters, question difficulty and question duration — all of it, at
+   * once, so escalation reads as one thing rather than as six.
+   */
+  intensity = FLOW.start
+  /** Smoothed estimate of how the child is doing. Never rendered anywhere. */
+  success = seedSuccess(FLOW)
+  /** The rung of the difficulty ladder currently stood on, 0-based. */
+  rung = rungAt(FLOW.start, DIFFICULTY_RUNGS)
+
+  // -- the running equation -----------------------------------------------
+  /**
+   * The last piece of arithmetic that happened to the player, as three integers
+   * that are exactly consistent: `eqA + eqD === eqC`, always.
+   *
+   * Consistency is the whole point and it is why these are integers rather than
+   * the floats the simulation runs on. `Math.round(before)`, `Math.round(delta)`
+   * and `Math.round(after)` do not have to agree — 10.4 + 4.4 = 14.8 rounds to
+   * "10 + 4 = 15" — and a maths product may not print a sum that is false. So
+   * the ends are rounded and the middle is DERIVED from them.
+   */
+  eqA = Math.round(START_MASS)
+  eqD = 0
+  eqC = Math.round(START_MASS)
+  /** Bumped whenever the three above change, so a HUD can tell new from same. */
+  eqSeq = 0
 
   // -- motes (SoA) --------------------------------------------------------
   readonly mx = new Float32Array(MAX_MOTES)
@@ -314,6 +536,7 @@ export class World {
     labels: ["", "", "", ""],
     correctSlot: 0,
     openedAt: 0,
+    openedT: 0,
     answerMs: 0,
     ringR: 0,
     chosen: -1,
@@ -350,6 +573,172 @@ export class World {
    */
   private get gridSpan(): number {
     return viewSpanFor(this.mass) * 3.6
+  }
+
+  /**
+   * Motes the world wants alive right now.
+   *
+   * Three factors, and the order of the words matters: the TIER says what this
+   * machine can draw, the DEPTH says what this band of the water is like, and
+   * the ONSET says how far into the run we are. Only the third is new, and it
+   * is the one the founder was missing.
+   */
+  get moteBudget(): number {
+    const ceiling = Math.round(this.spec.motes * this.depth.density)
+    return countAt(this.worldIntensity, Math.round(this.spec.motes * MOTE_FLOOR), ceiling, "gentle")
+  }
+
+  /**
+   * How hard the WORLD is pushing: the breath, or the quiet tide, whichever is
+   * higher. Everything except the maths reads this rather than `intensity`.
+   */
+  get worldIntensity(): number {
+    const tide = QUIET_TIDE_CEILING * curved(Math.min(1, this.time / QUIET_TIDE_SECONDS), "gentle")
+    return Math.max(this.intensity, tide)
+  }
+
+  /**
+   * Rivals the world wants alive right now.
+   *
+   * Floored at two rather than at the fraction alone: a growth arena with one
+   * other creature in it is not an arena, and the ladder — which is the entire
+   * reason to keep playing — needs somebody on it.
+   */
+  get rivalBudget(): number {
+    const open = Math.max(2, Math.round(this.spec.rivals * RIVAL_FLOOR))
+    return countAt(this.worldIntensity, open, this.spec.rivals, "gentle")
+  }
+
+  /**
+   * How much of the depth's aggression the breath is currently letting through.
+   *
+   * The depth ratchets and cannot fall; this can, and it is what lets a
+   * struggling child's water genuinely calm down rather than merely hand them
+   * easier questions inside the same storm. Floored at a quarter so the world
+   * never becomes inert — an arena with nothing to be afraid of is not an
+   * arena, it is a screensaver.
+   */
+  private get pressure(): number {
+    return valueAt(this.worldIntensity, 0.25, 1, "settle")
+  }
+
+  /** Void motes as a fraction of the field, after the breath. */
+  get voidRate(): number {
+    return this.depth.voidRate * this.pressure
+  }
+
+  /** Rivals allowed to lock on and pursue, after the breath. */
+  get hunterBudget(): number {
+    return Math.round(this.depth.hunters * this.pressure)
+  }
+
+  /**
+   * Seconds a Resonance stays open — and the reason it is a curve rather than a
+   * constant is the most important pacing decision in this file.
+   *
+   * It was `max(6.5, 10.5 - resonanceCount * 0.16)`: a window that shrank
+   * toward six and a half seconds for EVERY player, regardless of whether they
+   * were keeping up. That is a countdown imposed on a child, and a countdown
+   * imposed on a child is the thing that converts arithmetic into guessing.
+   *
+   * The founder's rule is that time should be measured and REWARDED, never
+   * used to cause anxiety: "I like infinite time to think in most cases ... we
+   * can usually measure, pace and reward, not cause anxiety". So the clock is
+   * something a player EARNS by demonstrating they are comfortably fast.
+   *
+   *   at the floor    26 s — three times the curriculum's own p50 for this
+   *                          skill, which is as close to "unlimited" as ARENA
+   *                          can honestly offer
+   *   mid-ladder      20 s — still nowhere near pressure
+   *   at the ceiling   6 s — a real countdown, and the player climbed here
+   *
+   * `gentle` is what makes that true: two thirds of the way up the ladder the
+   * window is still over sixteen seconds. A struggling child never meets a
+   * clock. A mathlete opts into one by being visibly ready for it.
+   *
+   * It is not literally unbounded, and the reason is structural rather than
+   * pedagogical: the arena holds its breath during a Resonance — nothing can
+   * touch you and you cannot eat — so a window that never closes is a game that
+   * never resumes for a player who put the tablet down mid-question. What the
+   * floor gives instead is a window nobody working at this level will ever
+   * reach the end of, and no visible clock at all (see `sphereDrift`).
+   *
+   * It reads `intensity`, not `worldIntensity`: the quiet tide may fill the
+   * ocean up around a player who is not answering, but it may never put them
+   * on a clock they did not earn.
+   */
+  get resonanceSeconds(): number {
+    return valueAt(this.intensity, 26, 6, "gentle")
+  }
+
+  /**
+   * How fast the four spheres drift outward while a question is open.
+   *
+   * The other clock, and the one that was invisible as a clock. At a flat 22
+   * units a second the answer physically walked away from a hesitating child,
+   * so "a hesitant answer costs distance" was a countdown wearing a different
+   * hat. It is now earned on exactly the same terms as the window: zero at the
+   * floor, so a child may think for as long as they like with the answer
+   * staying where they found it.
+   */
+  get sphereDrift(): number {
+    return valueAt(this.intensity, 0, 22, "gentle")
+  }
+
+  /**
+   * How fast the player's own number is allowed to grow, as a fraction of full.
+   *
+   * The founder: "we meant to start in the first grade range of numbers and
+   * ramp into 3rd and 4th really as the sweet spot. we go from 10 to >1000 in
+   * minutes .. it should start with 1,2,3 and really get into the 2nd and 3rd
+   * grade for a while."
+   *
+   * Sparser water and a gentler food curve slow the climb for everybody; this
+   * is what makes the climb *earned*. At the floor of the breath a run creeps,
+   * so the numbers a child is comparing stay small while they are finding their
+   * feet. Answer well and the world lets you grow into three digits, and then
+   * four. The digits are the reward, which is the right way round — they used
+   * to be a side effect of the clock.
+   *
+   * **It applies to the MOTE economy and to nothing else**, and the first cut of
+   * this got that wrong. Scaling the kill and the right answer down with it took
+   * the two deliberate payoff moments of the game and made them small at exactly
+   * the moment a player most needs them to be large; measured, a bot that hunts
+   * nothing but rivals for twenty minutes peaked at mass 58 instead of several
+   * thousand, because a kill was worth 8% of it rather than 28%. Motes are the
+   * continuous supply and therefore the right place to meter the climb. A kill
+   * and a correct answer are events, they are rare, and they pay in full.
+   */
+  private get growth(): number {
+    // `intensity`, not `worldIntensity`. The quiet tide may fill the ocean up
+    // around a player who is not answering — a growth game has to escalate —
+    // but it may not inflate the NUMBERS they are being asked to read. The
+    // digits on the field track the player's own mass, so this is the line
+    // that keeps a struggling child in two and three figures for as long as
+    // they need, however long the run has been going.
+    return valueAt(this.intensity, 0.60, 1, "settle")
+  }
+
+  /**
+   * Seconds the finished sum is held in front of the player after a miss.
+   *
+   * The teaching moment, and at the bottom of the range it may be the only
+   * channel that is working: a child who is not producing answers is still
+   * absorbing numerals, symbols and the shape of an equation resolving. So the
+   * arena completes the sum for them, calmly, for as long as it takes to read —
+   * and shorter and shorter as they climb, until a player in wizard mode is not
+   * held at all. Skipping it is the reward for not needing it.
+   *
+   * It is never inside an answering window. The answer is already given; this
+   * hold costs the child nothing.
+   */
+  get revealSeconds(): number {
+    return revealMs(FLOW, this.intensity) / 1000
+  }
+
+  /** The largest rival `k` may be before the world recycles it. */
+  private rivalCeiling(k: number): number {
+    return this.rleviathan[k] === 1 ? LEVIATHAN_MAX_RATIO : RIVAL_MAX_RATIO
   }
 
   get events(): readonly GameEvent[] {
@@ -414,11 +803,12 @@ export class World {
    * mass you already had, because a high water mark that *pays* for being hit
    * is the bug that once produced six orders of magnitude of free mass.
    */
-  private damage(loss: number): number {
+  private damage(loss: number, ledger = true): number {
     const before = this.mass
     const floor = Math.min(before, this.checkpoint)
     const raw = before - loss
     this.mass = Math.max(floor, raw)
+    if (ledger) this.note(before)
     // The floor HELD. This is the one rule in the game a child cannot see, so
     // the moment it saves them is the moment it gets shown: a gold pulse
     // exactly where the hit landed, no words, no number, no modal. Rate-limited
@@ -430,6 +820,36 @@ export class World {
     return before - this.mass
   }
   private heldCool = 0
+
+  /**
+   * Record one change to the player's mass as an equation a child can read.
+   *
+   * The founder's idea, and it is the best one in the batch: "an animation of
+   * the math as we 'eat' numbers ... 10 + 4 = 14 / 14 + 10 = 24 / 24 - 5 = 19".
+   * It turns eating numbers into arithmetic that is visible and reviewable
+   * instead of implicit.
+   *
+   * **It shows the TRUE change, and that is not always the number printed on
+   * the thing you ate.** A mote's label is a SIZE — the quantity you compare
+   * against your own, which is the whole mathematics of this game and is exact
+   * — and absorption saturates, so swallowing a `4` at mass 10 is worth +1, not
+   * +4. A ribbon reading "10 + 4 = 14" would print a sum the game did not
+   * perform, and a maths product may not do that at any price. So it prints
+   * "10 + 1 = 11".
+   *
+   * Both ends are rounded and the middle is derived, never the other way round,
+   * so `eqA + eqD === eqC` holds exactly however the floats fell. A change that
+   * rounds to nothing is not recorded at all: "1503 + 0 = 1503" is noise.
+   */
+  private note(before: number): void {
+    const a = Math.round(before)
+    const c = Math.round(this.mass)
+    if (a === c) return
+    this.eqA = a
+    this.eqD = c - a
+    this.eqC = c
+    this.eqSeq++
+  }
 
   // -------------------------------------------------------------------------
 
@@ -454,14 +874,27 @@ export class World {
     this.bestMass = START_MASS
     this.deepest = 0
     this.depth = DEPTHS[0] as Depth
+    this.intensity = FLOW.start
+    this.success = seedSuccess(FLOW)
+    this.rung = rungAt(FLOW.start, DIFFICULTY_RUNGS)
     this.refreshDepth()
-    for (let i = 0; i < this.spec.motes; i++) this.spawnMote(true)
-    for (let i = 0; i < this.spec.rivals; i++) this.spawnRival(true)
+    this.eqA = Math.round(START_MASS)
+    this.eqD = 0
+    this.eqC = Math.round(START_MASS)
+    this.eqSeq = 0
+    // The opening field is the ramp's floor, not the tier's ceiling, and it is
+    // laid down PLAYER-RELATIVE rather than scattered over the whole arena.
+    // Scattering was always wasted work — `maintain` culls past 1.65 view-spans
+    // on the very first step and re-spawns near the player anyway — and with
+    // the membrane now thirty spans out it would have been worse than wasted:
+    // the first frame of a run would have been empty water.
+    for (let i = 0; i < this.moteBudget; i++) this.spawnMote(false)
+    for (let i = 0; i < this.rivalBudget; i++) this.spawnRival(false)
   }
 
   applySpec(spec: TierSpec): void {
     this.spec = spec
-    while (this.moteCount > spec.motes) {
+    while (this.moteCount > this.moteBudget) {
       // Retire the mote furthest from the player rather than a random one.
       let worst = -1
       let worstD = -1
@@ -483,7 +916,7 @@ export class World {
     // to sit at the bottom of this loop meant an ultra→low demotion (24 → 12)
     // removed exactly one, and the tier the governor had just decided the
     // machine could not afford stayed on screen.
-    while (this.rivalCount > spec.rivals) {
+    while (this.rivalCount > this.rivalBudget) {
       let victim = -1
       for (let i = MAX_RIVALS - 1; i >= 0; i--) {
         if (this.ralive[i] && !this.rleviathan[i]) {
@@ -547,7 +980,7 @@ export class World {
   private rollValue(): { v: number; kind: number } {
     const M = this.mass
     const r = this.rng
-    if (r.chance(this.depth.voidRate)) {
+    if (r.chance(this.voidRate)) {
       const mag = Math.max(2, tidyValue(FOOD_A * Math.pow(M, FOOD_B) * r.range(1.0, 3.0)))
       return { v: -mag, kind: MK_VOID }
     }
@@ -725,7 +1158,7 @@ export class World {
     // target left over from whoever last occupied this slot.
     this.decide(i, x, y, m, R_K * Math.sqrt(m))
 
-    const hunterBudget = this.depth.hunters
+    const hunterBudget = this.hunterBudget
     let hunters = 0
     for (let k = 0; k < MAX_RIVALS; k++) if (this.ralive[k] && this.rhunter[k]) hunters++
     this.rhunter[i] = hunters < hunterBudget && r.chance(0.5) ? 1 : 0
@@ -742,7 +1175,11 @@ export class World {
     const d = viewSpanFor(this.mass) * 2.4
     this.rx[i] = this.px + Math.cos(a) * d
     this.ry[i] = this.py + Math.sin(a) * d
-    const m = Math.round(this.mass * r.range(3.4, 5.2))
+    // 3.4-5.2 -> 2.4-3.2. The old range was already ABOVE the ceiling the
+    // recycler now enforces, so a leviathan was born condemned or born
+    // screen-filling depending on which ran first. Spawning inside the ceiling
+    // means it arrives frightening and stays alive long enough to matter.
+    const m = Math.round(this.mass * r.range(2.4, 3.2))
     this.rmass[i] = m
     this.rMassVis[i] = m
     this.ralive[i] = 1
@@ -764,6 +1201,10 @@ export class World {
   step(dt: number): void {
     this.eventCount = 0
     this.time += dt
+    // The breath, before anything reads it. One call, one number, and every
+    // budget below is a pure function of it.
+    this.intensity = settle(FLOW, this.intensity, this.success, dt)
+    this.rung = rungAt(this.intensity, DIFFICULTY_RUNGS, this.rung)
     this.invuln = Math.max(0, this.invuln - dt)
     this.stingGrace = Math.max(0, this.stingGrace - dt)
     this.heldCool = Math.max(0, this.heldCool - dt)
@@ -794,8 +1235,24 @@ export class World {
     // quickly and turns like a barge. Making size cost *agility* rather than
     // *speed* is what keeps the twelfth minute from becoming a slow crawl
     // across an empty screen, while still letting a minnow dance out of reach.
-    const base = 520
-    let speed = base * Math.pow(Math.max(18, r) / 28, 0.30)
+    //
+    // The two numbers were tuned in world units, where 520 looks brisk. In
+    // SCREEN units they were the founder's "the character zips too fast it's
+    // hard to control": at the starting mass, 520 with an exponent of 0.30 was
+    // 1.13 screen-heights per second and 2.44 screen-WIDTHS per second on a
+    // phone held tall — the width of the glass crossed in 0.41 s, before the
+    // surge multiplier. Worse, it was the FASTEST the game ever was in screen
+    // terms. By mass 20,000 the same formula gives 0.12 screen-heights per
+    // second, a nine-fold swing, and it ran the wrong way round: hardest to
+    // control in the first ten seconds, sluggish by the twentieth minute.
+    //
+    // 520 -> 400 slows the opening. 0.30 -> 0.42 gives size more of its speed
+    // back, which flattens the swing to 3.7x and leaves Agar's law intact —
+    // mass still costs agility, below, which is where "majestic" actually comes
+    // from. Measured, with the wider opening view: 0.48 screen-heights per
+    // second at the start (was 1.13) and 0.13 at mass 20,000 (was 0.12).
+    const base = 400
+    let speed = base * Math.pow(Math.max(18, r) / 28, 0.42)
     // Inside a Resonance the arena is a fixed-size room however large you are.
     // Distance to a sphere grows with your radius while ordinary speed only
     // grows as r^0.30, so past a certain size the answer becomes physically
@@ -824,7 +1281,15 @@ export class World {
     const desiredY = (dy / d) * speed * mult * grip
 
     // Heavier cores turn slower. This is where "majestic" comes from.
-    const agility = 8.0 * Math.pow(30 / Math.max(24, r), 0.45)
+    //
+    // 8.0 -> 10.0 is turn AUTHORITY, and it is the other half of "I can hardly
+    // move": a first-order lag at 8.0 takes 0.12 s to reach 63% of a new
+    // heading, which at the old top speed meant a third of the screen's width
+    // travelled in the direction the child had already decided against. At 10.0
+    // that settling is 0.10 s. It buys deliberate placement without buying
+    // twitch, because the ceiling on how fast you may travel came down at the
+    // same time.
+    const agility = 10.0 * Math.pow(30 / Math.max(24, r), 0.45)
     const kk = 1 - Math.exp(-dt * agility)
     this.pvx += (desiredX - this.pvx) * kk
     this.pvy += (desiredY - this.pvy) * kk
@@ -841,7 +1306,10 @@ export class World {
       // never trapped without an escape — but the exhaust is real mass, so it
       // stops being shed the moment there is nothing left to pay with. Without
       // that guard a floored player is a free mote printer.
-      const paid = this.damage(burn) > burn * 0.5
+      // `false`: surge burn is a continuous drain, not an event. Left on the
+      // ledger it would rewrite the ribbon sixty times a second with
+      // "1503 - 1 = 1502" and bury every real piece of arithmetic.
+      const paid = this.damage(burn, false) > burn * 0.5
       const sp = Math.hypot(this.pvx, this.pvy)
       if (paid && sp > 1 && this.rng.chance(Math.min(1, dt * 26))) {
         const i = this.freeMote()
@@ -944,7 +1412,7 @@ export class World {
         this.rrespawn[i] = (this.rrespawn[i] as number) - dt
         if ((this.rrespawn[i] as number) <= 0) {
           this.rrespawn[i] = 0
-          if (this.rivalCount < this.spec.rivals) this.spawnRival(false)
+          if (this.rivalCount < this.rivalBudget) this.spawnRival(false)
         }
         continue
       }
@@ -975,10 +1443,26 @@ export class World {
       dx += Math.cos(wob) * 0.22
       dy += Math.sin(wob) * 0.22
 
-      const temper = this.depth.temper + this.over * 0.2
+      // Multiplied by the breath, like every other pressure in the world. The
+      // depth's temper is a ratchet the CLOCK turns, and a ratchet the clock
+      // turns is an escalate-on-failure line by another route: a child who is
+      // struggling has, by definition, been playing for a while.
+      const temper = (this.depth.temper + this.over * 0.2) * this.pressure
       const lev = this.rleviathan[i] === 1
-      const base = lev ? 330 : 470 + temper * 120
-      let speed = base * Math.pow(Math.max(18, rr) / 28, lev ? 0.22 : 0.30)
+      // Rival speed is a RATIO to the player's, and it was only ever written as
+      // an absolute because the player's was. Dropping the player's base from
+      // 520 to 400 silently made every rival in the game faster than the player
+      // at every size below a few hundred mass — measured: a bot that hunts
+      // nothing but rivals for twenty minutes peaked at mass 59, because it
+      // could not catch anything. So both ends move together.
+      //
+      // 470 + temper*120 -> 300 + temper*110, and the exponent matched to the
+      // player's 0.42, which also gives the escalation the flat exponent never
+      // did: at DRIFT's temper of 0.22 a rival makes 324 against the player's
+      // 403, so early prey is genuinely catchable; at THE LAST LIGHT's 1.0 it
+      // makes 410 and nothing is safe.
+      const base = lev ? 240 : 300 + temper * 110
+      let speed = base * Math.pow(Math.max(18, rr) / 28, lev ? 0.35 : 0.42)
 
       // Surging costs a rival mass exactly as it costs the player, so a long
       // chase genuinely wears the hunter down and the leaderboard churns.
@@ -1093,7 +1577,7 @@ export class World {
     // 2. Is there prey worth chasing? Hunters and leviathans prefer the player.
     let bestPrey = -1
     let bestPreyScore = -1
-    const aggro = this.depth.temper + this.over * 0.25
+    const aggro = (this.depth.temper + this.over * 0.25) * this.pressure
     const wantsPlayer = (this.rhunter[i] === 1 || lev) && this.mass < m * 0.94 && this.invuln <= 0
     if (wantsPlayer) {
       const d = Math.hypot(x - this.px, y - this.py)
@@ -1219,8 +1703,10 @@ export class World {
         // Absorb once the mote is meaningfully inside you — the little bit of
         // required overlap is what makes a near-miss feel like a near-miss.
         if (d > pr - mr * 0.35) return
-        const gain = absorbGain(v, this.mass)
+        const gain = Math.max(1, Math.round(absorbGain(v, this.mass) * this.growth))
+        const before = this.mass
         this.mass += gain
+        this.note(before)
         this.absorbed++
         this.combo++
         this.malive[i] = 0
@@ -1285,7 +1771,9 @@ export class World {
         if (d < Math.max(rr, pr) && this.invuln <= 0) {
           if (this.mass > m * 1.06 && d < pr - rr * 0.5) {
             // You ate a rival. This is the payoff moment of the genre.
+            const before = this.mass
             this.mass += devourGain(m, this.mass)
+            this.note(before)
             this.combo++
             this.killRival(k, false)
             this.emit("kill", this.rx[k] as number, this.ry[k] as number, m, this.combo)
@@ -1352,7 +1840,9 @@ export class World {
     let target = Math.min(Math.max(hard, this.mass * 0.54), this.mass * 0.92)
     target = Math.max(target, hard)
     const lost = Math.max(0, this.mass - target)
+    const beforeRupture = this.mass
     this.mass = target
+    this.note(beforeRupture)
     this.ruptures++
     this.combo = 0
     this.invuln = 4.2
@@ -1399,10 +1889,18 @@ export class World {
     if (res.phase === 1 && res.t > 0.55) res.phase = 2
     if (res.phase === 2 && res.t > res.duration) {
       this.emit("resonance-fade", this.px, this.py, 0, 0)
+      // A question that went unanswered comes back LATER, not on the usual
+      // cadence. A player who is not engaging with the maths right now should
+      // not be interrupted every twenty seconds to be asked again — and while a
+      // Resonance is open the arena is inert, so a stream of ignored questions
+      // is also a stream of seconds in which the game is not a game.
+      this.nextResonanceAt = this.time + this.rng.range(40, 55)
       this.closeResonance()
       return
     }
-    if (res.phase === 3 && res.t > res.duration + 0.9) {
+    // A right answer resolves in a beat. A miss is held for the reveal, which
+    // is long and calm at the bottom of the ladder and absent at the top.
+    if (res.phase === 3 && res.t > res.duration + (res.wasCorrect ? 0.9 : Math.max(0.9, this.revealSeconds))) {
       this.closeResonance()
       return
     }
@@ -1415,7 +1913,7 @@ export class World {
       const dx = (this.mx[i] as number) - this.px
       const dy = (this.my[i] as number) - this.py
       const d = Math.hypot(dx, dy) || 1
-      const drift = res.phase === 2 ? 22 : 0
+      const drift = res.phase === 2 ? this.sphereDrift : 0
       const tangent = 0.32
       this.mvx[i] = (dx / d) * drift - (dy / d) * drift * tangent
       this.mvy[i] = (dy / d) * drift + (dx / d) * drift * tangent
@@ -1427,7 +1925,16 @@ export class World {
 
   private openResonance(): void {
     const res = this.resonance
-    const diff = Math.max(1, Math.min(10, Math.round(this.depth.difficulty + this.over * 2)))
+    // The difficulty comes from the BREATH, not from the depth.
+    //
+    // This one line is the founder's whole complaint about adaptation. It used
+    // to be `depth.difficulty + over * 2` — the depth is a ratchet that can
+    // never fall and the overdrive is a function of mass and the clock, so the
+    // questions got harder because time had passed and for no other reason. A
+    // child who had missed the last four in a row was handed a fifth that was
+    // harder than all of them. Now the rung is the rung the run's recent work
+    // has earned, and it goes down as readily as it goes up.
+    const diff = this.rung + 1
     let q: Question
     try {
       q = this.host.next({ difficulty: diff })
@@ -1485,10 +1992,11 @@ export class World {
     res.active = true
     res.phase = 1
     res.t = 0
-    res.duration = Math.max(6.5, 10.5 - this.resonanceCount * 0.16)
+    res.duration = this.resonanceSeconds
     res.question = q
     res.chosen = -1
     res.openedAt = performance.now()
+    res.openedT = this.time
     this.resonanceCount++
 
     const ringR = Math.max(viewSpanFor(this.mass) * 0.30, this.playerRTrue * 3.4)
@@ -1537,6 +2045,8 @@ export class World {
     res.wasCorrect = correct
     const ms = Math.round(performance.now() - res.openedAt)
     res.answerMs = ms
+    /** Thinking time on the simulation clock — deterministic, and what steers. */
+    const took = Math.max(0, this.time - res.openedT)
 
     try {
       this.host.report({
@@ -1549,6 +2059,17 @@ export class World {
       console.error("[arena] host.report failed", err)
     }
 
+    // The only place the breath is fed. A child's answers are the only evidence
+    // this game has about a child, and they are the only thing allowed to move
+    // the world's difficulty.
+    //
+    // The LATENCY goes in with the verdict, and it is what separates "already
+    // knew it" from "worked it out" — two outcomes that want opposite things
+    // from the world. ARENA has always measured this: `res.answerMs` is frozen
+    // at the moment of the answer and reported to the Host. It has simply never
+    // been used to decide anything until now.
+    this.success = observe(FLOW, this.success, correct, took)
+
     if (correct) {
       this.combo++
       const streak = Math.min(6, this.combo)
@@ -1560,7 +2081,13 @@ export class World {
       // Capped against the same sub-linear ceiling as everything else, or the
       // curriculum beat quietly becomes the exponential the rest of the economy
       // just stopped being.
-      const cap = Math.min(before * (0.30 + streak * 0.045), 26 * Math.sqrt(before) + 12)
+      // SPEED PAYS. Not "slowness costs" — the same measurement with the
+      // opposite valence, and the difference is the whole feel of the beat. A
+      // laboured correct answer earns the full base reward; a brisk one earns
+      // up to 70% more on top, and the celebration scales with it. Nothing is
+      // ever taken away for thinking.
+      const quick = quickness(FLOW, took)
+      const cap = Math.min(before * (0.30 + streak * 0.045), 26 * Math.sqrt(before) + 12) * (1 + 0.7 * quick)
       let gained = cap * 0.55
       const wave = this.playerRTrue * 7.5
       for (let i = 0; i < MAX_MOTES; i++) {
@@ -1575,6 +2102,7 @@ export class World {
       }
       const gain = gained
       this.mass += gain
+      this.note(before)
       for (let k = 0; k < MAX_RIVALS; k++) {
         if (!this.ralive[k]) continue
         const dx = (this.rx[k] as number) - this.px
@@ -1585,11 +2113,18 @@ export class World {
         this.rvy[k] = (dy / d) * 900
         this.rstate[k] = RS_FLEE
       }
-      this.emit("resonance-hit", this.px, this.py, gain, this.combo)
+      // `r` carries the quickness so the presentation layer can pay it out in
+      // spectacle as well as in mass, without recomputing anything.
+      this.emit("resonance-hit", this.px, this.py, gain, this.combo, quick)
       this.emit("shockwave", this.px, this.py, wave, 2)
       this.host.haptic("success")
     } else {
-      const loss = this.damage(this.mass * 0.24)
+      // A wrong answer cost a flat 24% of the run. That is a punishment aimed
+      // squarely at the child who is finding it hard, and it is the exact
+      // shape of thing this pass exists to remove: at the bottom of the ladder
+      // it is now 2%, a nudge, and it only becomes real stakes at the top —
+      // where the player climbed on purpose and the stakes are the point.
+      const loss = this.damage(this.mass * valueAt(this.intensity, 0.02, 0.14, "settle"))
       this.combo = 0
       this.emit("resonance-miss", this.mx[moteIndex] as number, this.my[moteIndex] as number, loss, res.correctSlot)
       this.host.haptic("failure")
@@ -1683,7 +2218,7 @@ export class World {
       })
     }
 
-    const want = Math.round(this.spec.motes * this.depth.density)
+    const want = this.moteBudget
     let guard = 40
     while (this.moteCount < want && guard-- > 0) this.spawnMote(false)
 
@@ -1702,8 +2237,24 @@ export class World {
       }
       // A rival that outgrows the ladder leaves; otherwise one lucky bot
       // snowballs off the top of the board and the run becomes unwinnable.
-      if (this.ralive[k] && !this.rleviathan[k] && (this.rmass[k] as number) > this.mass * 2.6) {
+      //
+      // **`!this.rleviathan[k]` was the bug.** Leviathans were exempt from this
+      // rule and from every other size rule, they are spawned at a multiple of
+      // your mass, they eat, and a rupture cuts your own mass by nearly half —
+      // so the ratio compounds and nothing ever collected it. Measured over a
+      // five-minute seeded run: the largest core on the field reached 27.4x the
+      // player's mass, which is 1.99 times the WIDTH of a phone held tall.
+      // Exactly the founder's "they can get so big that they are bigger than
+      // the whole screen ... they just basically envelope me and I can't do
+      // anything". A creature that fills the screen and cannot be escaped is
+      // not difficulty; it is a coin flip.
+      //
+      // So the rule applies to everything, with the leviathan allowed a bigger
+      // ceiling because being frightening is its entire job. See
+      // `RIVAL_MAX_RATIO` for where the two numbers come from.
+      if (this.ralive[k] && (this.rmass[k] as number) > this.mass * this.rivalCeiling(k)) {
         this.ralive[k] = 0
+        this.rleviathan[k] = 0
         this.rhunter[k] = 0
         this.rivalCount--
         this.rrespawn[k] = this.rng.range(0.8, 2.0)
@@ -1717,7 +2268,7 @@ export class World {
       }
     }
 
-    if (this.rivalCount < this.spec.rivals) this.spawnRival(false)
+    if (this.rivalCount < this.rivalBudget) this.spawnRival(false)
 
     if (this.depth.leviathan) {
       let has = false

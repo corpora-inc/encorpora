@@ -1,0 +1,21 @@
+{
+  "name": "@dynawalla/game-pacing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The onset ramp: calm and roomy at the open, climbing to whatever mayhem a game is capable of. Pure functions, no DOM, no state — so a hundred games can share the curve without sharing any of the integration risk.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"*.test.ts\"",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0"
+  }
+}

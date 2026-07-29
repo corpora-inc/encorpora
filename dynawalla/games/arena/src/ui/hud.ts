@@ -53,6 +53,32 @@ export const DEPTH_H = 62
 export const Q_EDGE = 12
 
 /**
+ * THE RIBBON — the running equation.
+ *
+ * The founder's idea and the best one in the batch: "it might be nice to have
+ * an animation of the math as we 'eat' numbers it could show the simple
+ * equation, maybe fixed to the bottom that replaces as it goes: 10 + 4 = 14 /
+ * 14 + 10 = 24 / 24 - 5 = 19". It turns eating numbers into arithmetic that is
+ * VISIBLE and reviewable rather than implicit, which is the difference between
+ * a growth game with numbers on it and a maths game.
+ *
+ * Three constraints decide where it goes, and all three are asserted in
+ * `layout.test.ts` rather than eyeballed on one phone:
+ *
+ *   * clear of the host's two 44px corners — it is a thing a child reads;
+ *   * clear of the safe-area insets on every edge it touches;
+ *   * clear of ARENA's own bottom-left sound button and bottom-right perf
+ *     readout, which are 44px and sit exactly where a bottom strip wants to be.
+ *
+ * `RIBBON_LIFT` is that third clearance: the button row is 44 tall on a 12px
+ * bottom margin, so the ribbon's own bottom edge starts above all of it.
+ */
+export const RIBBON_LIFT = 56
+export const RIBBON_H = 40
+export const RIBBON_EDGE = 12
+export const RIBBON_MAX_W = 460
+
+/**
  * Where the readouts land, in numbers, so a test can assert they clear the
  * host's two corners at every viewport instead of a device finding out.
  *
@@ -66,17 +92,40 @@ export const Q_EDGE = 12
 export function hudRects(
   w: number,
   insets: Insets = { top: 0, right: 0, bottom: 0, left: 0 },
-): { depth: Rect; board: Rect; question: Rect } {
+  h = 0,
+): { depth: Rect; board: Rect; question: Rect; ribbon: Rect } {
   const top = insets.top + HUD_TOP
   const left = Math.max(HUD_EDGE, insets.left)
   const right = Math.max(HUD_EDGE, insets.right)
   const qLeft = Math.max(Q_EDGE, insets.left)
   const qRight = Math.max(Q_EDGE, insets.right)
+
+  // The ribbon is anchored to the BOTTOM, so it is the one readout whose rect
+  // needs the viewport height. It is centred inside the safe edges and capped,
+  // exactly as the CSS below does it.
+  const rLeft = Math.max(RIBBON_EDGE, insets.left)
+  const rRight = Math.max(RIBBON_EDGE, insets.right)
+  const rAvail = Math.max(0, w - rLeft - rRight)
+  const rW = Math.min(RIBBON_MAX_W, rAvail)
+  const rBottom = Math.max(RIBBON_EDGE, insets.bottom) + RIBBON_LIFT
   return {
     depth: { x: left, y: top, w: Math.min(DEPTH_W, w - left - right), h: DEPTH_H },
     board: { x: Math.max(0, w - right - BOARD_W), y: top, w: BOARD_W, h: BOARD_H },
     question: { x: qLeft, y: top, w: Math.max(0, w - qLeft - qRight), h: 96 },
+    ribbon: { x: rLeft + (rAvail - rW) / 2, y: h - rBottom - RIBBON_H, w: rW, h: RIBBON_H },
   }
+}
+
+/**
+ * The 44px square ARENA's own sound button occupies, bottom-LEFT.
+ *
+ * Exported for the same reason `hudRects` is: the ribbon has to clear it, and
+ * "has to clear it" is a claim a test should be able to check rather than a
+ * claim a comment makes.
+ */
+export function soundRect(h: number, insets: Insets = { top: 0, right: 0, bottom: 0, left: 0 }): Rect {
+  const bottom = Math.max(12, insets.bottom)
+  return { x: Math.max(12, insets.left), y: h - bottom - 44, w: 44, h: 44 }
 }
 
 const CSS = `
@@ -100,7 +149,35 @@ const CSS = `
   box-shadow:inset 0 0 0 1px rgba(140,240,255,.28);color:#eafcff}
 .arena-row .n{opacity:.72}
 .arena-row .v{font-weight:800}
-.arena-combo{position:absolute;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translate(-50%,0);
+/* THE RIBBON. Pinned above the button row, centred inside the safe edges, and
+   carrying its OWN scrim — a plate and a blur — because the frame behind it can
+   legitimately be a white bloom-out and a maths product may not have the one
+   line of arithmetic on screen be the thing that disappears. Tabular numerals,
+   so a replacing line does not jitter its own digits sideways. */
+.arena-eq{position:absolute;left:max(${RIBBON_EDGE}px,env(safe-area-inset-left));right:max(${RIBBON_EDGE}px,env(safe-area-inset-right));
+  bottom:calc(max(${RIBBON_EDGE}px,env(safe-area-inset-bottom)) + ${RIBBON_LIFT}px);
+  max-width:${RIBBON_MAX_W}px;margin-inline:auto;height:${RIBBON_H}px;
+  display:grid;place-items:center;pointer-events:none}
+.arena-eq>span{display:inline-block;padding:6px 16px;border-radius:8px;
+  background:rgba(2,10,20,.72);box-shadow:inset 0 0 0 1px rgba(140,235,255,.20),0 2px 14px rgba(0,0,0,.55);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  font-size:clamp(15px,4.2vw,26px);font-weight:800;letter-spacing:.06em;font-variant-numeric:tabular-nums;
+  color:#eafcff;text-shadow:0 1px 3px rgba(0,0,0,.95);white-space:nowrap;
+  opacity:0;transform:translateY(5px) scale(.97);
+  transition:opacity .16s,transform .26s cubic-bezier(.16,1.2,.3,1)}
+.arena-eq.on>span{opacity:1;transform:none}
+/* The maths moment gets the ribbon too, and gets it LOUDER. A right answer is
+   the biggest thing that happens in this game and the sum that earned it should
+   be the biggest thing in the strip. */
+.arena-eq.solved>span{background:rgba(6,26,20,.80);color:#ffffff;
+  box-shadow:inset 0 0 0 1px rgba(150,255,220,.55),0 0 30px rgba(120,255,210,.45),0 2px 14px rgba(0,0,0,.6);
+  font-size:clamp(19px,5.6vw,34px)}
+/* The reveal. A quieter celebration, never a correction: the same plate, a cool
+   calm light instead of the green flare, and no red anywhere. */
+.arena-eq.reveal>span{background:rgba(4,18,32,.80);color:#eafcff;
+  box-shadow:inset 0 0 0 1px rgba(150,220,255,.45),0 0 22px rgba(110,190,255,.28),0 2px 14px rgba(0,0,0,.6);
+  font-size:clamp(17px,5vw,30px)}
+.arena-combo{position:absolute;left:50%;bottom:calc(max(16px,env(safe-area-inset-bottom)) + ${RIBBON_LIFT + RIBBON_H + 8}px);transform:translate(-50%,0);
   font-size:clamp(14px,4vw,26px);font-weight:900;letter-spacing:.10em;opacity:0;transition:opacity .18s;
   text-shadow:0 0 26px rgba(120,255,220,.7),0 2px 8px rgba(0,0,0,.9);font-variant-numeric:tabular-nums}
 .arena-combo.on{opacity:.95}
@@ -146,7 +223,7 @@ const CSS = `
 .arena-perf{position:absolute;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));
   font-size:10px;letter-spacing:.14em;opacity:.28;font-variant-numeric:tabular-nums;font-weight:700}
 @media (max-width:360px){.arena-board{min-width:92px}}
-@media (prefers-reduced-motion:reduce){.arena-q,.arena-verdict,.arena-combo,.arena-btn{transition-duration:.01ms}}
+@media (prefers-reduced-motion:reduce){.arena-q,.arena-verdict,.arena-combo,.arena-btn,.arena-eq>span{transition-duration:.01ms}}
 `
 
 const ROWS = 6
@@ -157,6 +234,8 @@ export class Hud {
   private depthSub: HTMLElement
   private rows: { el: HTMLDivElement; name: HTMLSpanElement; val: HTMLSpanElement }[] = []
   private comboEl: HTMLDivElement
+  private eqEl: HTMLDivElement
+  private eqText: HTMLSpanElement
   private qEl: HTMLDivElement
   private qPrompt: HTMLDivElement
   private verdictEl: HTMLDivElement
@@ -175,6 +254,17 @@ export class Hud {
   private readonly lastRowKey: string[] = new Array(ROWS).fill("")
   private boardTimer = 0
   private verdictTimer = 0
+  private lastEqSeq = -1
+  private eqTimer = 0
+  /**
+   * Seconds the maths moment's own equation owns the ribbon.
+   *
+   * While this is running the ordinary mass ledger cannot overwrite it, and it
+   * has to be able to: a correct answer clears every mote inside seven player
+   * radii, so the frame after "3 + 5 = 8" carries a dozen absorbs that would
+   * otherwise wipe the sum off the screen before a child had read it.
+   */
+  private eqHold = 0
 
   constructor(container: HTMLElement, onToggleSound: (on: boolean) => boolean) {
     const style = document.createElement("style")
@@ -221,6 +311,11 @@ export class Hud {
     this.comboEl = document.createElement("div")
     this.comboEl.className = "arena-combo"
 
+    this.eqEl = document.createElement("div")
+    this.eqEl.className = "arena-eq"
+    this.eqText = document.createElement("span")
+    this.eqEl.appendChild(this.eqText)
+
     this.qEl = document.createElement("div")
     this.qEl.className = "arena-q"
     const k = document.createElement("div")
@@ -254,7 +349,7 @@ export class Hud {
     this.perfEl = document.createElement("div")
     this.perfEl.className = "arena-perf"
 
-    this.root.append(this.depthEl, board, this.comboEl, this.qEl, this.verdictEl, btns, this.perfEl)
+    this.root.append(this.depthEl, board, this.comboEl, this.eqEl, this.qEl, this.verdictEl, btns, this.perfEl)
     container.appendChild(this.root)
   }
 
@@ -262,6 +357,33 @@ export class Hud {
     if (band === this.lastEarned) return
     this.lastEarned = band
     for (let i = 0; i < this.pips.length; i++) this.pips[i]!.classList.toggle("on", i <= band)
+  }
+
+  /**
+   * The equation for one piece of arithmetic. Formatting only — the numbers are
+   * decided in the simulation, where they are guaranteed consistent.
+   *
+   * U+2212 MINUS SIGN, not a hyphen: this is a maths product and the glyph a
+   * child reads on a worksheet is the one they should read here.
+   */
+  static line(a: number, d: number, c: number): string {
+    return d < 0 ? `${a} − ${-d} = ${c}` : `${a} + ${d} = ${c}`
+  }
+
+  /**
+   * Put a whole piece of arithmetic in the ribbon and hold it there.
+   *
+   * `solved` is the celebration; `reveal` is the patient completion after a
+   * miss. The reveal is deliberately styled as a quieter version of the
+   * celebration rather than as its opposite — no red, no cross, nothing a child
+   * could read as being told off. It is the same sum, shown calmly.
+   */
+  showEquation(text: string, seconds: number, kind: "solved" | "reveal"): void {
+    this.eqText.textContent = text
+    this.eqEl.classList.remove("solved", "reveal")
+    this.eqEl.classList.add("on", kind)
+    this.eqTimer = seconds
+    this.eqHold = seconds
   }
 
   showVerdict(text: string, color: string): void {
@@ -319,6 +441,22 @@ export class Hud {
       } else {
         this.comboEl.classList.remove("on")
       }
+    }
+
+    // The ribbon. Every change to the player's own number, replacing as it goes.
+    this.eqHold = Math.max(0, this.eqHold - dt)
+    if (world.eqSeq !== this.lastEqSeq) {
+      this.lastEqSeq = world.eqSeq
+      if (this.eqHold <= 0) {
+        this.eqText.textContent = Hud.line(world.eqA, world.eqD, world.eqC)
+        this.eqEl.classList.add("on")
+        this.eqEl.classList.remove("solved", "reveal")
+        this.eqTimer = 2.6
+      }
+    }
+    if (this.eqTimer > 0) {
+      this.eqTimer -= dt
+      if (this.eqTimer <= 0) this.eqEl.classList.remove("on", "solved", "reveal")
     }
 
     this.setRungs(world.depth.index)

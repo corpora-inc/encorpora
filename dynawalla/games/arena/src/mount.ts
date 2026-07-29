@@ -352,22 +352,67 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
         break
       }
       case "resonance-hit": {
-        cam.addTrauma(0.85)
-        cam.addHitstop(0.11)
-        cam.addPunch(0.16)
-        cam.addFlash(0.32, 1, 0.98, 0.85)
-        cam.addRipple(world.px, world.py, 1, 0.55)
-        burst(world.px, world.py, 140, 1300, 1.6, pr * 0.2 + 8, 1, 0.95, 0.7, 1)
-        burst(world.px, world.py, 60, 500, 2.4, pr * 0.16 + 6, 0.6, 0.95, 1, 0)
+        // THE BIGGEST THING IN THE GAME, and it was not.
+        //
+        // Audited before this change: `rupture` — bursting, a FAILURE — carried
+        // trauma 1.00 and hitstop 0.13, and a right answer carried 0.85 and
+        // 0.11. The loudest single moment in a mathematics product was a
+        // mistake. Celebration on successful retrieval is what reinforces the
+        // retrieval, so the maths moment now outranks everything, on every axis,
+        // and it gets a second beat nothing else has: a slow outer wave that
+        // lands a quarter-second after the first, which is the "BOOOOOOOM".
+        //
+        // The flash is 0.34 because that is `Camera.addFlash`'s own hard cap —
+        // asked for more, it would be given 0.34 anyway, and asking for the cap
+        // rather than past it keeps the WCAG rate limiter's arithmetic honest.
+        // `e.r` is how QUICK the answer was, 0..1. Speed is paid out in
+        // spectacle as well as in mass — a brisk answer gets a visibly bigger
+        // celebration — and a slow correct answer still gets all of the above,
+        // which is the floor this may never drop below.
+        const quick = e.r
+        cam.addTrauma(1)
+        cam.addHitstop(0.14)
+        cam.addPunch(0.24 + quick * 0.06)
+        cam.addFlash(0.34, 1, 0.98, 0.85)
+        cam.addRipple(world.px, world.py, 1, 0.5)
+        burst(world.px, world.py, Math.round(220 + quick * 140), 1500, 1.8, pr * 0.22 + 9, 1, 0.95, 0.7, 1)
+        burst(world.px, world.py, Math.round(110 + quick * 70), 560, 2.8, pr * 0.18 + 7, 0.6, 0.95, 1, 0)
+        burst(world.px, world.py, 70, 260, 3.6, pr * 0.12 + 5, 1, 1, 1, 0)
         gfx.rings.spawn(world.px, world.py, pr, pr * 9, 1.3, 0.075, 2, 1, 0.95, 0.75, time)
         gfx.rings.spawn(world.px, world.py, pr, pr * 6, 0.95, 0.14, 0, 1, 1, 1, time)
         gfx.rings.spawn(world.px, world.py, pr, pr * 13, 1.8, 0.045, 1, 0.6, 0.9, 1, time)
-        floaters.push(Math.round(e.a), world.px, world.py, Math.max(cam.span * 0.033, pr * 0.44), 1, 1, 0.75, 1.5)
+        gfx.rings.spawn(world.px, world.py, pr * 0.4, pr * 20, 2.6, 0.030, 2, 1, 0.9, 0.6, time + 0.26)
+        floaters.push(Math.round(e.a), world.px, world.py, Math.max(cam.span * 0.038, pr * 0.5), 1, 1, 0.75, 1.7)
+        // The sum that earned it, in the ribbon, held long enough to read. A
+        // correct answer wipes every mote inside seven player radii, and each
+        // of those absorbs would otherwise overwrite the line within a frame.
+        const q = world.resonance.question
+        if (q) {
+          const p = q.prompt
+          hud.showEquation(p.length <= 28 && !p.includes("?") ? `${p} = ${q.answer}` : `${q.answer}`, 2.8, "solved")
+        }
         hud.showVerdict(e.b >= 3 ? `RESONANT ×${e.b}` : "RESONANT", "#b9ffe4")
         audio.resonanceHit(e.b)
         break
       }
       case "resonance-miss": {
+        // THE REVEAL. Not a correction — there is no "wrong", no red cross and
+        // no scolding anywhere in this branch. The arena simply finishes the
+        // sum, in the ribbon, the same way it would have celebrated it and
+        // merely quieter, and holds it for as long as the player's own pace
+        // says they want. A child at the bottom of the ladder gets four
+        // patient seconds of `12 + 5 = 17`; a player in wizard mode gets none,
+        // because being held for it would be a punishment for being good.
+        const rq = world.resonance.question
+        const hold = world.revealSeconds
+        if (rq && hold >= 0.25) {
+          const rp = rq.prompt
+          hud.showEquation(
+            rp.length <= 28 && !rp.includes("?") ? `${rp} = ${rq.answer}` : `${rq.answer}`,
+            hold,
+            "reveal",
+          )
+        }
         cam.addTrauma(0.5)
         cam.addHitstop(0.07)
         cam.addAberration(0.009)
