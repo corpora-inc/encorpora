@@ -108,7 +108,7 @@ src/core/           rng · easing · Clock (hitstop, slow-mo, fast-forward) · C
 src/audio/          the whole sound palette
 src/game/           constants (all balance) · path · board · waves · state + step
 src/render/         bake (static board) · particles · draw
-src/ui/             hud (DOM) · styles
+src/ui/             hud (DOM) · styles · chrome (safe area, the host's two corners)
 src/mount.ts        the controller: loop, input, sim events → light and noise
 ```
 
@@ -124,6 +124,32 @@ full-width overcharge bar. **Desktop**: a live tower palette with cost against d
 then click pads to place, with the range previewing under the cursor. `1`–`4` answer, `Q`/`W`/`E`
 arm bolt/mortar/chain, `U` upgrade, `Space` overcharges or calls the wave in early for bonus
 embers, `F` fast-forwards, `Esc` closes.
+
+## The room the host leaves us
+
+SIEGE was one of the seven games that already read `env(safe-area-inset-*)`, and it was the
+half-fix that usually is: `.sg-top` honoured `--top`, `.sg-anvil` honoured `--bottom`, and
+**neither side was touched at all**. `viewport-fit=cover` opts a document into the rounded corners
+on every edge, and held sideways the cutout is a *side* inset — which is where the ember count and
+the sound switch were. All four edges are honoured now, on the status bar, the console, the
+overlays and the banners, and the square board is fitted inside the safe box because a socket
+under a rounded corner is a tower a child taps and cannot build.
+
+The host also paints an exit control over the top-left 44px corner and a how-to-play control over
+the top-right one, on top of this pack. The status bar ran the full width of exactly that row. Its
+*contents* now start after the first control and stop before the second — the bar keeps its
+height, the board keeps its size, and the forge still reaches the glass. Reserving the whole strip
+instead was tried in a sibling game and cost 12% of a small phone's height.
+
+Paying 108px for those two corners meant the three switches — call wave, speed, sound — had to
+leave the bar. They are in the anvil's head row now. That bar was over-full on a 320px phone
+anyway: `overflow: hidden` was quietly cutting those same three switches off the right-hand edge,
+so nobody on a small phone could reach them at all.
+
+`src/ui/chrome.ts` holds every number involved, derived from the shared host constants, and
+`chrome.test.ts` asserts it at five viewports in both rotations. `pack.html` also gained the
+`maximum-scale=1` and `touch-action: none` guards that every other pack of the twenty-seven
+already had; without them a double tap inside SIEGE could scale and pan the host document.
 
 ## Swapping in the real host
 

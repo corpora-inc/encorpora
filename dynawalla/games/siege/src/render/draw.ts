@@ -8,6 +8,7 @@ import { BOARD, C, TOWERS, towerRange, type TowerKind } from "../game/constants.
 import type { State } from "../game/state.ts";
 import { PKind, type Particles } from "./particles.ts";
 import { clamp01, easeOutBack, easeOutCubic } from "../core/easing.ts";
+import { fitBoard } from "../ui/chrome.ts";
 
 export type View = {
   w: number;
@@ -18,17 +19,26 @@ export type View = {
   oy: number;
 };
 
-export function computeView(cssW: number, cssH: number, dpr: number): View {
-  const pad = 6;
-  const scale = Math.min((cssW - pad * 2) / BOARD, (cssH - pad * 2) / BOARD);
-  return {
-    w: cssW,
-    h: cssH,
-    dpr,
-    scale,
-    ox: (cssW - BOARD * scale) / 2,
-    oy: (cssH - BOARD * scale) / 2,
-  };
+/**
+ * Fit the square board into the element, inside the safe area.
+ *
+ * `safe` is the part of the element that is not under a rounded corner or a
+ * display cutout, in the element's own coordinates. It is REQUIRED, not
+ * defaulted: an optional safe area is a game that forgets to pass one, compiles
+ * clean, and puts a socket under the corner of the glass — where the tap lands
+ * on nothing and a child concludes the tower will not build.
+ *
+ * The arithmetic is in `ui/chrome.ts` so that a test can reach it; this file
+ * imports the particle system, whose `const enum` node's TypeScript loader
+ * refuses, so nothing importable from here is testable.
+ */
+export function computeView(
+  cssW: number,
+  cssH: number,
+  dpr: number,
+  safe: { x: number; y: number; w: number; h: number },
+): View {
+  return fitBoard(cssW, cssH, dpr, safe);
 }
 
 export function screenToBoard(v: View, sx: number, sy: number): { x: number; y: number } {
