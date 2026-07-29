@@ -61,6 +61,17 @@ export const strings = {
     find: "Find a game",
     /** The chip that clears the subject filter. Always first, always present. */
     all: "All",
+    /** The ✕ inside the search field. It empties the FIELD and nothing else.
+        It used to borrow `all` for its accessible name, so a screen reader
+        announced the ✕ as "All" — and it ran the same handler as the chip, so
+        pressing it also un-picked Fractions with nothing on screen to say so.
+        A control's label has to describe what the control does. */
+    clear: "Clear the search",
+    /** The way out of an empty result. This one DOES clear both, which is why
+        it is a different control with a different word: the empty state is
+        reachable from the field, from a chip, or from both at once, and a
+        child who cannot tell which needs one press that undoes all of it. */
+    showAll: "Show every game",
     /** Shown in place of the grid when a search matches no installed game. */
     nothing: "No game here matches that.",
     /** The band a game is written for, on its card. */
@@ -96,8 +107,17 @@ export const strings = {
     name: "Name",
     /** Make this the learner the app is for right now. */
     use: "Use",
+    /** Said in words, for the learner the app is set to. The index mark beside
+        it is a drawing and the "Use" button's absence is an absence, so
+        without this the single most consequential piece of state in the app
+        was carried entirely by things a screen reader cannot report. */
+    current: "Current",
     add: "Add a learner",
     remove: "Remove",
+    /** Armed. The same grammar the parent area's "Erase everything" uses: a
+        destructive control that has been armed says what the next press does,
+        rather than only changing colour. */
+    removeConfirm: "Press again",
   },
 
   settings: {

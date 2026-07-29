@@ -1,0 +1,15 @@
+# Capture output.
+#
+# The PNGs are ~9 MB per run and every one of them is regenerated in about
+# seventy seconds by `node tools/capture.mjs`. `*.png` is Git LFS repo-wide, so
+# committing them would push ten megabytes of LFS objects on every design pass
+# to preserve something that is derived, not authored.
+#
+# What IS committed is the tool, the harness it builds, `shots/AUDIT.md` and
+# `shots/measurements.json` — the findings and the numbers behind them, which
+# are the parts a reviewer needs without a machine to run Chrome on.
+shots/**/*.png
+.harness-dist/
+
+# Scratch output of `--probe=`: a question somebody asked once, not a record.
+shots/probe.json

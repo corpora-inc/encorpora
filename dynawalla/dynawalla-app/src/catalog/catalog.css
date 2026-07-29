@@ -132,3 +132,234 @@
   stroke-width: 1.4;
   stroke-opacity: 0.8;
 }
+
+/* ═════════════════════════════════════════════════════════════════════════
+   The catalogue's own chrome
+   ═════════════════════════════════════════════════════════════════════════
+
+   Three things a Tailwind class cannot say, and one that it can say only
+   badly. They live here rather than in `index.css` because none of them is a
+   composition the rest of the harness repeats — a search shell, a chip rail
+   and a card's reserved text boxes exist on exactly one screen.
+
+   Nothing below names a colour. Every value is a token from `tokens.css` or a
+   length derived from the type scale, and the derivation is written down.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ── The search field ──────────────────────────────────────────────────────
+   Focus belongs to the SHELL, not to the input. The platform draws its ring
+   around the box a person can see; drawing it around the text run inside a
+   bordered field puts two nested rectangles on screen and is one of the
+   quieter web tells. So the input's own outline is suppressed and the shell
+   takes an accent edge plus a ring — an equivalent visible indicator, which
+   is what WCAG 2.4.7 actually asks for, and what iOS does.
+
+   The native search-cancel button is suppressed too: WebKit draws it as a
+   grey disc about 14 px across, which is both off-palette and less than a
+   third of the touch floor. The catalogue draws its own at 44 px. */
+.dw-find {
+  transition:
+    border-color var(--dw-transition-state),
+    box-shadow var(--dw-transition-state);
+}
+
+/* One hue, not two. The first cut set the edge to `--dw-accent` and the ring
+   to `--dw-focus`; they are different violets, so the field read as two
+   concentric rings rather than as one focused object. Both are the focus
+   colour now — the same one `:focus-visible` draws everywhere else.
+
+   `:has(:focus-visible)`, NOT `:focus-within`, and the difference is the whole
+   point. `:focus-within` has no keyboard heuristic: it matches on TOUCH, so
+   tapping the field — or the 44 px clear control inside the shell — haloed the
+   whole search box on a tablet. Verified with a real touch event under
+   coarse-pointer emulation: box-shadow went from `none` to a 2 px ring while
+   the input's own `:focus-visible` stayed false. "A focus ring that appears on
+   touch" is a named defect on the standing bar, and this was the only control
+   in the app where one event produced two treatments.
+
+   `:has()` is Safari 15.4, comfortably inside this bundle's iOS 16.0 floor.
+   Where it is missing the rule is dropped whole and the field simply has no
+   shell ring — the input's own outline suppression below is the only thing
+   that would then be doing anything, so the fallback is "no ring", not "two
+   rings". */
+.dw-find:has(:focus-visible) {
+  border-color: var(--dw-focus);
+  box-shadow: 0 0 0 2px var(--dw-focus);
+}
+
+/* The input gives up its own ring only where the shell can draw one instead.
+   Guarded, so an engine without `:has()` keeps the platform's outline rather
+   than being left with no focus indicator at all. */
+@supports selector(:has(*)) {
+  .dw-find input:focus-visible {
+    outline: none;
+  }
+}
+
+.dw-find input::-webkit-search-cancel-button,
+.dw-find input::-webkit-search-decoration,
+.dw-find input::-webkit-search-results-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/* ── The subject rail ──────────────────────────────────────────────────────
+   A row that scrolls sideways inside the page, and the two things that make
+   one read as native rather than as a `div` with `overflow: auto`.
+
+   1. No bar, on any pointer. `index.css` suppresses scrollbars under
+      `(pointer: coarse)` only — correct for the page scroller, wrong for a
+      chip rail, because on a desktop that left a painted horizontal channel
+      sitting between the search field and the grid. A class beats `*`.
+
+   2. The edges dissolve, and they dissolve ONLY on the side that has more.
+      A permanent fade on both edges is a decoration; a fade that appears the
+      moment content passes under it is the signal every native carousel
+      uses, and its absence is the signal that you have reached the end. The
+      attributes are written by the component from `scrollLeft`.
+
+   **The mask must not be on the scrolling element**, and this was measured
+   rather than assumed. Chrome sizes a mask on a scroll container against the
+   SCROLLABLE overflow area, not the visible box — so `calc(100% - 24px)` on
+   the rail itself put the fade 24 px from the end of 812 px of chips, about
+   450 px off the right of a 390 px phone, and the captured screenshot showed
+   a chip clipped stone dead at the edge with no dissolve at all. The mask
+   goes on a static wrapper whose 100% is the width you can see; the scroller
+   is its only child. */
+.dw-rail {
+  scrollbar-width: none;
+  /* The gutter is not a scroll position. `px-1` keeps a chip's raised edge and
+     its focus ring off the clip, and proximity snapping then rests the rail at
+     `scrollLeft: 4` — which read as "there is content to the left" and lit the
+     leading dissolve over the selected chip at rest. `scroll-padding-inline`
+     moves the snap positions in by the same 4 px, so the resting offset is 0
+     and the rail agrees with what is on screen. (`useRailEdges` also compares
+     against the first chip's own offset, so the fade is correct even where
+     snapping is not.) */
+  scroll-padding-inline: var(--dw-space-1);
+}
+
+/* `width`/`height`, not the logical pair. `::-webkit-scrollbar` is a
+   non-standard pseudo-element and does not accept logical sizes, so the
+   logical version silently lost to `*::-webkit-scrollbar { width: 10px }` in
+   `index.css` — which would have painted a 10 px channel under the chip rail
+   on a desktop build, the exact tell this rail was written to avoid. */
+.dw-rail::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Above 40 rem the rail stops being a rail. Measured at 834 — iPad portrait, a
+   first-class size — six subjects overflowed by exactly 18 px: a row that
+   looked scrollable, travelled less than a fingertip, and put the dissolve on
+   the last WORD of the last chip ("Equality & algeb—ra" fading mid-word with
+   its right border cut), which reads as a rendering fault rather than as a
+   scroll cue. There is room for a second line on a tablet and there is not on
+   a phone, so the chips wrap where there is room and scroll where there is
+   not. `overflow: visible` on both axes together: setting one to visible while
+   the other is `hidden` computes the visible one back to `auto`. */
+@media (min-width: 40rem) {
+  .dw-rail {
+    flex-wrap: wrap;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+}
+
+.dw-subjects[data-lead="on"][data-trail="on"] {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black var(--dw-space-5),
+    black calc(100% - var(--dw-space-5)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black var(--dw-space-5),
+    black calc(100% - var(--dw-space-5)),
+    transparent 100%
+  );
+}
+
+.dw-subjects[data-lead="on"][data-trail="off"] {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black var(--dw-space-5), black 100%);
+  mask-image: linear-gradient(to right, transparent 0, black var(--dw-space-5), black 100%);
+}
+
+.dw-subjects[data-lead="off"][data-trail="on"] {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 0,
+    black calc(100% - var(--dw-space-5)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    black 0,
+    black calc(100% - var(--dw-space-5)),
+    transparent 100%
+  );
+}
+
+/* ── A card's reserved boxes ───────────────────────────────────────────────
+   The grid's rhythm was ragged because each card's blocks were sized by
+   their own content: a one-line name put its blurb where the next card put
+   its second line, and a game filed under one subject put its small print
+   where its neighbour put its second chip. Equal card HEIGHT (`h-full` plus
+   `mt-auto`) only guaranteed that the cards ended together; inside them
+   nothing lined up, and the eye reads a grid across, not down.
+
+   So every block reserves its own maximum. `lh` is the honest unit for "two
+   lines of whatever this is set in" and it lands in Safari 16.4, one point
+   above this bundle's iOS 16.0 floor — so each rule states the em equivalent
+   first and lets `lh` win where it exists. The em figure is the type scale's
+   own line-height for that step, doubled, and nothing else. */
+/* The `@supports` guards are not decoration and the em-first pattern they
+   replace does not survive the build. Written as two declarations of the same
+   property, the minifier drops the first — it is provably dead in the cascade
+   as far as the minifier can see — and the built stylesheet read
+   `.dw-card-title{min-block-size:2lh}` with no fallback at all. Verified
+   against `dist/`: `grep -c '2\.6em'` was 0. On iOS 16.0–16.3, where `lh` does
+   not exist, that declaration is invalid and dropped, nothing reserves the
+   box, and the grid rhythm is silently unfixed on exactly the devices the
+   fallback was written for. `@supports` is uncollapsible. */
+.dw-card-title {
+  /* The title's size is an arbitrary 15px (measured against the longest name
+     shipped, see the component), so its leading is set here rather than
+     inherited from the body. 2 × 1.3 = 2.6. */
+  line-height: 1.3;
+  min-block-size: 2.6em;
+}
+
+.dw-card-blurb {
+  /* `text-xs` carries line-height 1.35 from the type scale. 2 × 1.35 = 2.7. */
+  min-block-size: 2.7em;
+}
+
+@supports (min-block-size: 1lh) {
+  .dw-card-title,
+  .dw-card-blurb {
+    min-block-size: 2lh;
+  }
+}
+
+/* A chip is a fixed height so that two rows of them are a knowable number
+   rather than a measured one: 12px text at 1.35 leading is 16.2px, plus
+   0.125rem of padding each side and a hairline each side, which rounds to
+   1.375rem. Fixing it also stops a one-word subject and a three-word one
+   drawing two different heights on the same line. */
+.dw-card-chip {
+  display: inline-flex;
+  align-items: center;
+  block-size: 1.375rem;
+}
+
+/* Two rows, always — every card shipped files under either one subject or
+   two, so this is the maximum rather than a guess, and it is what puts the
+   grade band and the control on one line across a whole row of the grid. */
+.dw-card-subjects {
+  min-block-size: calc(2 * 1.375rem + var(--dw-space-1));
+}
