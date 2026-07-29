@@ -343,3 +343,36 @@ test("the pack id the host is told is the host's, never the pack's", async () =>
   })
   assert.deepEqual(calls[0]?.input, { packId: "abacus.tower", skillId: "add.1" })
 })
+
+test("a difficulty request crosses the boundary, clamped rather than refused", async () => {
+  const calls: Calls = []
+  const bridge = createBridge({ packId: "p", granted: ["items"], services: services(calls) })
+
+  await bridge.handle({
+    id: 1,
+    method: "items.next",
+    params: { difficulty: 0.25, maxDifficulty: 0.75 },
+  })
+  assert.deepEqual(calls[0]?.input, {
+    packId: "p",
+    difficulty: 0.25,
+    maxDifficulty: 0.75,
+  })
+
+  // Out of range is a bug in a pack, and refusing the question would turn it
+  // into a blank screen in a child's game. Clamped, like every other number
+  // this boundary takes, and announced on the pack's side where an author can
+  // act on it.
+  const clamped = await bridge.handle({
+    id: 2,
+    method: "items.next",
+    params: { difficulty: 4, maxDifficulty: -3 },
+  })
+  assert.equal(clamped?.ok, true)
+  assert.deepEqual(calls[1]?.input, { packId: "p", difficulty: 1, maxDifficulty: 0 })
+
+  // Not a number at all is absent, not zero: a pack that sends a string must
+  // not thereby pin every question to the easiest rung on the ladder.
+  await bridge.handle({ id: 3, method: "items.next", params: { difficulty: "hard" } })
+  assert.deepEqual(calls[2]?.input, { packId: "p" })
+})

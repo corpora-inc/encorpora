@@ -43,6 +43,32 @@ export class PackError extends Error {
   }
 }
 
+/**
+ * What a pack may ask for when it asks for a question.
+ *
+ * Every field is a *request*, never an instruction. The host owns the ladder,
+ * and a pack that names something the host cannot serve gets the nearest thing
+ * the host has rather than an error — a pack built against a later curriculum
+ * must still be playable.
+ */
+export type ItemRequest = {
+  /** A skill the pack covers. An unknown id falls back to the ladder. */
+  readonly skillId?: string
+  /**
+   * How hard, 0..1, across the host's whole ladder: 0 is the easiest content
+   * the host can generate and 1 the hardest.
+   *
+   * Relative rather than absolute because a pack cannot know how many rungs the
+   * host has, and because the floor moves: when the curriculum grows easier
+   * rungs, 0 follows them down and no pack has to be rebuilt. The item that
+   * comes back reports the position it was actually drawn from, on the same
+   * scale, so a pack can see when a request was clamped.
+   */
+  readonly difficulty?: number
+  /** A ceiling on the same 0..1 scale. Never serve harder than this. */
+  readonly maxDifficulty?: number
+}
+
 export type HostClient = {
   readonly packId: string
   /** The host app's version, for a pack that renders a compatibility note. */
@@ -54,7 +80,7 @@ export type HostClient = {
   can(method: Method): boolean
 
   /** The next question for this pack, or `null` when the host has none. */
-  nextItem(options?: { skillId?: string }): Promise<Item | null>
+  nextItem(options?: ItemRequest): Promise<Item | null>
   /**
    * Record an attempt and learn whether it was right.
    *
@@ -212,10 +238,14 @@ function makeClient(connectMessage: Connect, port: MessagePort): HostClient {
     can: (method) => permits(connectMessage.granted, method),
 
     nextItem: async (options = {}) => {
-      const result = await call(
-        "items.next",
-        options.skillId === undefined ? {} : { skillId: options.skillId },
-      )
+      // Built by omission rather than by sending `undefined`: a structured
+      // clone carries an explicit `undefined` across, and the host's parameter
+      // guards read "present but not a number" differently from "absent".
+      const params: Record<string, unknown> = {}
+      if (options.skillId !== undefined) params["skillId"] = options.skillId
+      if (options.difficulty !== undefined) params["difficulty"] = options.difficulty
+      if (options.maxDifficulty !== undefined) params["maxDifficulty"] = options.maxDifficulty
+      const result = await call("items.next", params)
       return (result as { item: Item | null }).item
     },
     answer: async (input) =>

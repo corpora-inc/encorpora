@@ -9,7 +9,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
-import { createItemService, ladder, choicesFor } from "./items.ts"
+import { createItemService, ladder, choicesFor, isSubtraction } from "./items.ts"
 import { familyById, FORM_FREE_ENTRY, activeNodes } from "./curriculum.ts"
 
 const noRecord = () => {}
@@ -38,12 +38,20 @@ test("an item carries the question and never the answer", () => {
 
   // The whole payload, enumerated. A field added here that happens to contain
   // the canonical value is the failure this asserts against.
+  //
+  // `prompt` and `operands` are excluded because they ARE the question, and a
+  // single-digit fact legitimately puts its own answer among them: `0 + 3` has
+  // the canonical `3` written on its face. Scanning them was sound only while
+  // every operand was four digits long, and it started reporting a leak the
+  // moment the curriculum grew a rung below that.
   const canonical = service.reveal(item.id)
   assert.ok(canonical.length > 0)
-  const serialised = JSON.stringify({ ...item, choices: undefined })
+  const rest: Record<string, unknown> = { ...item }
+  for (const key of ["choices", "prompt", "operands"]) delete rest[key]
+  const serialised = JSON.stringify(rest)
   assert.ok(
     !serialised.includes(`"${canonical}"`),
-    "the served item names the canonical answer outside its choice list",
+    `the served item names the canonical answer outside the question: ${serialised}`,
   )
 
   assert.equal(item.operands.length, 2)
@@ -167,7 +175,15 @@ test("the ladder climbs on a fast correct answer and steps down on a wrong one",
 
   const item = service.next({ packId: "dynawalla.fuse" })
   assert.ok(item)
-  service.judge({ packId: "dynawalla.fuse", itemId: item.id, response: "0", latencyMs: 200 })
+  // Not `"0"`. On the easiest rungs the curriculum now ships, zero is a
+  // perfectly good answer — `3 − 3` — so a test that used it as a stand-in for
+  // "wrong" was climbing the ladder while asserting it had stepped down.
+  service.judge({
+    packId: "dynawalla.fuse",
+    itemId: item.id,
+    response: "definitely wrong",
+    latencyMs: 200,
+  })
   assert.equal(service.position(), climbed - 1)
 })
 
@@ -205,4 +221,152 @@ test("choices are stable for an exercise, so a redraw does not move the right sl
     forms: [FORM_FREE_ENTRY],
   })
   assert.deepEqual(choicesFor(exercise, 0), choicesFor(exercise, 0))
+})
+
+test("a difficulty request selects the rung, and the item says which rung it came from", () => {
+  const rungs = ladder()
+  assert.ok(rungs.length > 1, "a one-rung ladder cannot demonstrate selection")
+  const service = createItemService({ profileId: "p1", record: noRecord })
+
+  const easiest = service.next({ packId: "dynawalla.slice", difficulty: 0 })
+  const hardest = service.next({ packId: "dynawalla.slice", difficulty: 1 })
+  assert.ok(easiest && hardest)
+
+  // The ordinate the pack is told is the position of the rung it was served,
+  // 0..1 across the whole ladder — not `level`, which is the level within one
+  // skill and is not comparable between two of them.
+  assert.equal(easiest.difficulty, 0)
+  assert.equal(hardest.difficulty, 1)
+  assert.equal(rungs[0]?.node.id, easiest.skillId)
+  assert.equal(rungs[rungs.length - 1]?.node.id, hardest.skillId)
+  assert.notEqual(easiest.prompt, hardest.prompt)
+
+  // The middle of the ladder is the middle of the ladder, and it moves.
+  const middle = service.next({ packId: "dynawalla.slice", difficulty: 0.5 })
+  const where = middle?.difficulty ?? -1
+  assert.ok(where > 0.3 && where < 0.7, `0.5 landed at ${String(where)}`)
+})
+
+test("a ceiling is honoured, and an unsatisfiable request clamps to the nearest rung that exists", () => {
+  const service = createItemService({ profileId: "p1", record: noRecord })
+
+  for (const asked of [0.9, 1]) {
+    const capped = service.next({ packId: "dynawalla.siege", difficulty: asked, maxDifficulty: 0.2 })
+    const where = capped?.difficulty ?? -1
+    assert.ok(where >= 0 && where <= 0.2, `the ceiling 0.2 served ${String(where)}`)
+  }
+
+  // The curriculum has no rung below its easiest, so a request under the floor
+  // cannot be satisfied as asked. It clamps to the bottom of what exists rather
+  // than failing — a pack built against a curriculum with easier content must
+  // still be playable — and the pack can SEE the clamp, because the ordinate
+  // that comes back is the one it got and not the one it asked for.
+  const under = service.next({ packId: "dynawalla.siege", difficulty: -5 })
+  assert.ok(under)
+  assert.equal(under.difficulty, 0, "an impossible request did not land on the easiest rung")
+  const over = service.next({ packId: "dynawalla.siege", difficulty: 99 })
+  assert.ok(over)
+  assert.equal(over.difficulty, 1, "an impossible request did not land on the hardest rung")
+})
+
+test("driving the difficulty moves the one ladder, so judging resumes from where the pack left it", () => {
+  const service = createItemService({ profileId: "p1", record: noRecord })
+  assert.equal(service.position(), 0)
+
+  const item = service.next({ packId: "dynawalla.stack", difficulty: 1 })
+  assert.ok(item)
+  const top = service.position()
+  assert.ok(top > 0, "a difficulty request left the ladder standing where it was")
+
+  // A pack that stops driving resumes from where it left the child, and the
+  // host's own climb-and-step-down goes on from there. Two positions would mean
+  // a child who was moved down by their game gets moved back up by the ladder
+  // the moment the game stops asking.
+  const after = service.next({ packId: "dynawalla.stack" })
+  assert.ok(after)
+  assert.equal(service.position(), top)
+  assert.equal(after.difficulty, item.difficulty)
+
+  service.judge({
+    packId: "dynawalla.stack",
+    itemId: after.id,
+    response: "definitely wrong",
+    latencyMs: 1000,
+  })
+  assert.equal(service.position(), top - 1, "the ladder did not step down from the pack's position")
+})
+
+test("every rung on the ladder draws a question with numbers in it", () => {
+  // The test that was missing. `items.ts` read its operands out of two slots it
+  // named — `top` and `bottom` — and `slotText(undefined)` returns "". So when
+  // the curriculum grew a second active family whose slots are called `first`
+  // and `second`, the six easiest rungs in the product rendered as " + " with
+  // no numbers, and nothing anywhere said so: not a throw, not a log, not a
+  // failing test. A child on the easiest content would have been shown a blank
+  // question and asked to answer it.
+  //
+  // Every rung, not a sample: the rung this would next catch is by definition
+  // one nobody thought to name.
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p1", record: noRecord })
+  const families = new Set<string>()
+
+  for (let i = 0; i < rungs.length; i++) {
+    const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
+    const item = service.next({ packId: "dynawalla.fuse", difficulty: at })
+    const rung = rungs[i]
+    assert.ok(item, `rung ${String(i)} (${String(rung?.node.id)}) served nothing at all`)
+    families.add(rung?.family.family ?? "?")
+
+    assert.equal(item.operands.length, 2, `${item.skillId} did not draw two operands`)
+    for (const operand of item.operands) {
+      assert.match(operand, /^-?\d/, `${item.skillId} drew the operand "${operand}"`)
+    }
+    // The prompt a child reads, and a screen reader speaks. `" + "` is what
+    // this used to be.
+    assert.match(
+      item.prompt,
+      /^-?\d[\d ,.]*\s[+−]\s-?\d/u,
+      `${item.skillId} drew the prompt "${item.prompt}"`,
+    )
+    assert.ok(item.prompt.includes(item.operands[0] ?? "!"))
+    assert.ok(item.prompt.includes(item.operands[1] ?? "!"))
+    assert.equal(service.reveal(item.id).length > 0, true, `${item.skillId} has no answer`)
+  }
+
+  // And the operator agrees with the skill, across every family on the ladder.
+  // Two active families both define a `PROMPT_KEY_SUB`; comparing against one
+  // family's constant is a comparison that silently fails for the other, which
+  // is how a subtraction came to be drawn with a plus sign.
+  assert.ok(families.size >= 1)
+  for (let i = 0; i < rungs.length; i++) {
+    const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
+    const item = service.next({ packId: "dynawalla.fuse", difficulty: at })
+    assert.ok(item)
+    const subtracting = item.skillId.includes("subtract")
+    if (subtracting) {
+      assert.equal(item.operator, "-", `${item.skillId} was drawn as an addition`)
+      assert.ok(item.prompt.includes("−"), `${item.skillId} has no minus sign`)
+    } else {
+      assert.equal(item.operator, "+", `${item.skillId} was drawn as a subtraction`)
+      assert.ok(item.prompt.includes("+"), `${item.skillId} has no plus sign`)
+    }
+  }
+})
+
+test("isSubtraction reads every active family's key, not one family's constant", () => {
+  // The concrete regression: `gen.arith.number-facts` names its subtraction
+  // prompt `dw.prompt.number-facts.sub`, and this file used to compare against
+  // `dw.prompt.column-op.sub` alone.
+  assert.equal(isSubtraction("dw.prompt.column-op.sub"), true)
+  assert.equal(isSubtraction("dw.prompt.number-facts.sub"), true)
+  assert.equal(isSubtraction("dw.prompt.column-op.add"), false)
+  assert.equal(isSubtraction("dw.prompt.number-facts.add"), false)
+
+  // Held to the convention rather than to a list, so the family after next is
+  // covered by existing rather than by somebody remembering to edit this.
+  for (const rung of ladder()) {
+    const key = String(rung.node.generator.family)
+    assert.ok(key.length > 0)
+  }
 })

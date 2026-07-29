@@ -1,0 +1,506 @@
+// The difficulty wire, held to the promises it makes.
+//
+// Every test here runs against `attachGameHost` and a fake `HostClient`, which
+// is the whole reason that seam exists: the adapter's interesting behaviour —
+// which question comes out next, and why — needs no window, no parent frame and
+// no `MessagePort`.
+//
+// The fake host is a ladder of 16 rungs. Rung 0 is the easiest content it has
+// and rung 15 the hardest, and — like the real one — it stands somewhere in the
+// middle until a pack tells it otherwise. That is the situation the whole
+// design is for: a child is being served questions at rung 12, is struggling,
+// and the game knows it. What has to happen next is that the *next* question is
+// easier, not the thirty-third.
+
+import { test } from "node:test"
+import assert from "node:assert/strict"
+
+import type { Capability, HostClient, Item, ItemRequest, Judgement, Settings } from "../../sdk/src/index.ts"
+import { attachGameHost, toUnit, POOL_FLOOR } from "./index.ts"
+
+/** Rungs on the fake host's ladder. Enough that 1/16 is a visible step. */
+const RUNGS = 16
+
+/** Where the fake host stands before anybody asks it for anything. */
+const RESTING_RUNG = 12
+
+const SETTINGS: Settings = {
+  locale: "en",
+  reducedMotion: false,
+  quality: "high",
+  textScale: 1,
+  colorScheme: "light",
+  sound: true,
+  haptics: true,
+}
+
+/** Named by the SDK, so the fake cannot drift from the real wire. */
+type Ask = ItemRequest
+
+type Fake = {
+  readonly client: HostClient
+  /** Every `nextItem` call, in order. */
+  readonly asks: Ask[]
+  /** Every `answer` call, in order. */
+  readonly answers: { itemId: string; response: string }[]
+  /** The host's verdict on the next answer, whatever the pack claims. */
+  verdict: boolean
+  /** Make `answer` reject, to prove the pack's own belief still survives. */
+  answerFails: boolean
+}
+
+/**
+ * A host with a ladder, a resting position, and no opinions of its own.
+ *
+ * `difficulty` on the way in is 0..1 across the whole ladder, and the item that
+ * comes back says which rung it came from on the same scale. That is exactly
+ * the contract the real `items.ts` implements; this is the smallest thing that
+ * implements it too.
+ */
+function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fake {
+  const rungs = options.rungs ?? RUNGS
+  const asks: Ask[] = []
+  const answers: { itemId: string; response: string }[] = []
+  const canonicals = new Map<string, string>()
+  let sequence = 0
+
+  const fake: Fake = {
+    verdict: true,
+    answerFails: false,
+    asks,
+    answers,
+    client: {
+      packId: "dynawalla.test",
+      hostVersion: "0.1.0",
+      granted: options.granted ?? ["items", "items.reveal", "haptics"],
+      settings: SETTINGS,
+      can: () => true,
+
+      nextItem: (ask: Ask = {}) => {
+        asks.push(ask)
+        const span = Math.max(1, rungs - 1)
+        const cap = ask.maxDifficulty === undefined ? 1 : ask.maxDifficulty
+        const wanted = ask.difficulty === undefined ? RESTING_RUNG / span : ask.difficulty
+        const index = Math.max(
+          0,
+          Math.min(rungs - 1, Math.round(Math.min(wanted, cap) * span)),
+        )
+        sequence += 1
+        const item: Item = {
+          id: `i${String(sequence)}`,
+          skillId: `arith.rung.${String(Math.floor(index / 4))}`,
+          // Deliberately NOT the ladder ordinate: `level` is the level within a
+          // skill, which is what the shipped host puts here and what the old
+          // read-back mistook for a difficulty.
+          level: index % 4,
+          difficulty: index / span,
+          form: "binary-op",
+          operator: "+",
+          operands: [String(index), "1"],
+          prompt: `${String(index)} + 1`,
+          choices: [
+            { id: "c0", text: String(index + 1) },
+            { id: "c1", text: "999" },
+          ],
+          answerKind: "integer",
+        }
+        canonicals.set(item.id, String(index + 1))
+        return Promise.resolve(item)
+      },
+
+      answer: (input) => {
+        answers.push({ itemId: input.itemId, response: input.response })
+        if (fake.answerFails) return Promise.reject(new Error("the host is gone"))
+        return Promise.resolve({
+          correct: fake.verdict,
+          canonical: "1",
+          advance: fake.verdict,
+        } satisfies Judgement)
+      },
+      skip: () => Promise.resolve(),
+      reveal: (itemId) => Promise.resolve(canonicals.get(itemId) ?? ""),
+      learnerSummary: () => Promise.resolve({ skills: [] }),
+      haptic: () => Promise.resolve(),
+      sound: () => Promise.resolve(),
+      milestone: () => Promise.resolve(),
+      storage: {
+        get: () => Promise.resolve(null),
+        set: () => Promise.resolve(),
+        remove: () => Promise.resolve(),
+        keys: () => Promise.resolve([]),
+      },
+      progress: () => Promise.resolve(),
+      end: () => Promise.resolve(),
+      transition: () => Promise.resolve(),
+      on: () => () => {},
+      dispose: () => {},
+    },
+  }
+  return fake
+}
+
+/** Let every queued promise and timer callback run out. */
+async function settle(rounds = 12): Promise<void> {
+  for (let i = 0; i < rounds; i++) await new Promise((resolve) => setImmediate(resolve))
+}
+
+/** Run `body` with the console captured, and hand back what it said. */
+async function withConsole(body: () => Promise<void>): Promise<string[]> {
+  const said: string[] = []
+  const warn = console.warn
+  const error = console.error
+  const take = (...args: unknown[]) => {
+    said.push(args.map((a) => (a instanceof Error ? a.message : String(a))).join(" "))
+  }
+  console.warn = take
+  console.error = take
+  try {
+    await body()
+  } finally {
+    console.warn = warn
+    console.error = error
+  }
+  return said
+}
+
+// ─── The request reaches the item ────────────────────────────────────────────
+
+test("toUnit reads both scales the games already speak, and clamps the rest", () => {
+  // The 0..1 scale — polarity, trebuchet, siege.
+  assert.equal(toUnit(0), 0)
+  assert.equal(toUnit(0.2), 0.2)
+  // The one ambiguous value, resolved towards the bottom and stated in `toUnit`.
+  assert.equal(toUnit(1), 0)
+  // The 1..10 ladder — arena, horde, merge-idle, rhythm, slice, stack, beam.
+  assert.equal(toUnit(10), 1)
+  assert.equal(toUnit(5.5), 0.5)
+  // Out of range on either side, and not a number at all.
+  assert.equal(toUnit(12), 1)
+  assert.equal(toUnit(-4), 0)
+  assert.equal(toUnit(Number.NaN), null)
+  assert.equal(toUnit(Number.POSITIVE_INFINITY), null)
+})
+
+test("a difficulty a game asks for selects the question it gets back", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  const resting = mounted.host.next()
+  assert.ok(
+    resting.difficulty > 0.6,
+    `the host was resting at rung ${String(RESTING_RUNG)} and served ${String(resting.difficulty)}`,
+  )
+
+  // The child is struggling. The game says so, on the 1..10 scale six of the
+  // eight already-passing games speak.
+  mounted.host.next({ difficulty: 1 })
+  await settle()
+  const easy = mounted.host.next({ difficulty: 1 })
+  assert.ok(
+    easy.difficulty <= 0.1,
+    `asked for the bottom of the ladder and got ${String(easy.difficulty)}`,
+  )
+
+  // And back up again — this is not a one-way ratchet.
+  mounted.host.next({ difficulty: 10 })
+  await settle()
+  const hard = mounted.host.next({ difficulty: 10 })
+  assert.ok(
+    hard.difficulty >= 0.9,
+    `asked for the top of the ladder and got ${String(hard.difficulty)}`,
+  )
+  mounted.dispose()
+})
+
+test("the requested difficulty travels down the wire, not just into the pool", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  fake.asks.length = 0
+
+  mounted.host.next({ difficulty: 2 })
+  await settle()
+
+  const carried = fake.asks.filter((ask) => ask.difficulty !== undefined)
+  assert.ok(carried.length > 0, "no nextItem call carried a difficulty")
+  for (const ask of carried) {
+    assert.ok(
+      ask.difficulty !== undefined && Math.abs(ask.difficulty - toUnit(2)!) < 1e-9,
+      `the host was asked for ${String(ask.difficulty)}, not ${String(toUnit(2))}`,
+    )
+  }
+  mounted.dispose()
+})
+
+test("Question.difficulty reads the ladder the host actually used, not the level within a skill", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  mounted.host.next({ difficulty: 10 })
+  await settle()
+  const q = mounted.host.next({ difficulty: 10 })
+  // The fake's top rung is index 15, whose `level` is 15 % 4 === 3. The old
+  // read-back was `level / 8`, so the hardest question the host has would have
+  // read 0.375 — and colossus and siege, which branch on 0..1, would call the
+  // hardest content in the product "easy".
+  assert.equal(q.difficulty, 1, `the top of the ladder read as ${String(q.difficulty)}`)
+  mounted.dispose()
+})
+
+test("a ceiling is a ceiling: maxDifficulty is never exceeded", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  for (let i = 0; i < 6; i++) {
+    mounted.host.next({ difficulty: 10, maxDifficulty: 4 })
+    await settle(4)
+  }
+  for (let i = 0; i < 10; i++) {
+    const q = mounted.host.next({ difficulty: 10, maxDifficulty: 4 })
+    assert.ok(
+      q.difficulty <= toUnit(4)! + 1e-9,
+      `the ceiling was ${String(toUnit(4))} and the question came back at ${String(q.difficulty)}`,
+    )
+  }
+  mounted.dispose()
+})
+
+// ─── Flush: how many questions a change costs ────────────────────────────────
+
+/**
+ * How many questions a game has to serve before the stream follows a change.
+ *
+ * This is the measurement the whole prefetch pool argument turns on, so it is
+ * counted rather than asserted about: ask for the bottom of the ladder, then
+ * count questions until one actually arrives from there.
+ */
+async function questionsUntilEasy(mounted: ReturnType<typeof attachGameHost>): Promise<number> {
+  for (let n = 1; n <= 200; n++) {
+    const q = mounted.host.next({ difficulty: 1 })
+    if (q.difficulty <= 0.1) return n
+    await settle(3)
+  }
+  return Number.POSITIVE_INFINITY
+}
+
+test("without a flush the change lands a whole pool later; with one it lands next question", async () => {
+  // Both start from a *full* pool — `warm` awaits the floor and tops up in the
+  // background, and it is the topped-up sixty-four that a real game meets.
+  const stale = attachGameHost(fakeHost().client, { autoFlush: false })
+  await stale.warm()
+  await settle()
+  const before = await questionsUntilEasy(stale)
+  stale.dispose()
+
+  const fresh = attachGameHost(fakeHost().client)
+  await fresh.warm()
+  await settle()
+  const after = await questionsUntilEasy(fresh)
+  fresh.dispose()
+
+  console.log(`[measured] questions until a difficulty change lands: ${String(before)} → ${String(after)}`)
+
+  assert.ok(
+    before >= POOL_FLOOR,
+    `a stale pool should hold the old difficulty for at least ${String(POOL_FLOOR)} questions, not ${String(before)}`,
+  )
+  assert.ok(after <= 2, `a flushed pool should follow within 2 questions, not ${String(after)}`)
+  assert.ok(after < before, `flushing changed nothing: ${String(after)} vs ${String(before)}`)
+})
+
+test("flush never empties the pool, so a flushed question is still reportable", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  for (let i = 0; i < 8; i++) {
+    mounted.host.flush()
+    const q = mounted.host.next({ difficulty: 1 + i })
+    assert.notEqual(q.id, "", "the pool ran dry, so this question cannot be reported")
+    assert.notEqual(q.prompt, "")
+    // A frame's worth of time, which is more than the refill needs and less
+    // than a child needs to read a question.
+    await settle(2)
+  }
+  mounted.dispose()
+})
+
+// ─── The verdict is kept ─────────────────────────────────────────────────────
+
+test("what the game believed and what the host decided are both kept", async () => {
+  const fake = fakeHost()
+  const seen: { claimed: boolean; correct: boolean; judged: boolean; difficulty: number }[] = []
+  const mounted = attachGameHost(fake.client, {
+    onOutcome: (o) => seen.push({ claimed: o.claimed, correct: o.correct, judged: o.judged, difficulty: o.difficulty }),
+  })
+  await mounted.warm()
+
+  const q = mounted.host.next()
+  fake.verdict = false
+  mounted.host.report({ questionId: q.id, correct: true, ms: 900, answered: "7" })
+  await settle()
+
+  assert.equal(seen.length, 1)
+  assert.equal(seen[0]?.claimed, true, "the game's own verdict was thrown away")
+  assert.equal(seen[0]?.correct, false, "the host's verdict was thrown away")
+  assert.equal(seen[0]?.judged, true)
+  assert.equal(seen[0]?.difficulty, q.difficulty)
+
+  const recent = mounted.host.recentOutcomes()
+  assert.equal(recent.length, 1)
+  assert.equal(recent[0]?.correct, false)
+  mounted.dispose()
+})
+
+test("a host that cannot be reached does not cost the child their answer", async () => {
+  const fake = fakeHost()
+  fake.answerFails = true
+  const mounted = attachGameHost(fake.client)
+  await withConsole(async () => {
+    await mounted.warm()
+    const q = mounted.host.next()
+    mounted.host.report({ questionId: q.id, correct: true, ms: 500, answered: "7" })
+    await settle()
+  })
+  const recent = mounted.host.recentOutcomes()
+  assert.equal(recent.length, 1, "the outcome vanished with the failed round trip")
+  assert.equal(recent[0]?.claimed, true)
+  assert.equal(recent[0]?.correct, true, "with no host verdict the game's belief is the record")
+  assert.equal(recent[0]?.judged, false, "an unjudged outcome must say it is unjudged")
+  mounted.dispose()
+})
+
+test("an outcome is recorded once, and only for a question this module served", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  const q = mounted.host.next()
+  mounted.host.report({ questionId: q.id, correct: true, ms: 100, answered: "1" })
+  mounted.host.report({ questionId: q.id, correct: false, ms: 100, answered: "2" })
+  mounted.host.report({ questionId: "never-served", correct: true, ms: 100, answered: "3" })
+  mounted.host.report({ questionId: "", correct: true, ms: 100, answered: "4" })
+  await settle()
+  assert.equal(mounted.host.recentOutcomes().length, 1)
+  mounted.dispose()
+})
+
+// ─── Nothing silent ──────────────────────────────────────────────────────────
+
+test("a difficulty outside every scale is clamped and said out loud", async () => {
+  const said = await withConsole(async () => {
+    const mounted = attachGameHost(fakeHost().client)
+    await mounted.warm()
+    mounted.host.next({ difficulty: 40 })
+    mounted.host.next({ difficulty: Number.NaN })
+    await settle()
+    mounted.dispose()
+  })
+  assert.ok(
+    said.some((line) => line.includes("40")),
+    `nothing was said about a difficulty of 40: ${said.join(" | ")}`,
+  )
+  assert.ok(
+    said.some((line) => line.toLowerCase().includes("nan")),
+    `nothing was said about a difficulty of NaN: ${said.join(" | ")}`,
+  )
+})
+
+test("a request under the curriculum's floor clamps to the easiest rung and names it", async () => {
+  const said = await withConsole(async () => {
+    const mounted = attachGameHost(fakeHost().client)
+    await mounted.warm()
+    for (let i = 0; i < 4; i++) {
+      mounted.host.next({ difficulty: 0 })
+      await settle(4)
+    }
+    mounted.dispose()
+  })
+  const floor = said.filter((line) => line.includes("easiest"))
+  assert.ok(floor.length > 0, `the floor was hit silently: ${said.join(" | ")}`)
+  assert.ok(
+    floor[0]?.includes("arith.rung.0"),
+    `the floor notice does not name the rung it stopped at: ${String(floor[0])}`,
+  )
+  // Loud once, not once a frame: a warning a game prints sixty times a second
+  // is a warning nobody reads.
+  assert.equal(floor.length, 1, `the floor notice repeated ${String(floor.length)} times`)
+})
+
+// ─── Backwards compatibility ─────────────────────────────────────────────────
+
+test("a game that passes nothing gets exactly what it got before", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  const drawn: string[] = []
+  for (let i = 0; i < 20; i++) drawn.push(mounted.host.next().id)
+
+  // FIFO, in the order the host served them, with no difficulty on the wire.
+  assert.deepEqual(drawn, Array.from({ length: 20 }, (_, i) => `i${String(i + 1)}`))
+  assert.equal(
+    fake.asks.every((ask) => ask.difficulty === undefined && ask.maxDifficulty === undefined),
+    true,
+    "a game that asked for nothing put a difficulty on the wire",
+  )
+  mounted.dispose()
+})
+
+test("focus still wins over difficulty, because a chip has to say a number", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  // Rung 15 is "15 + 1", whose answer is 16.
+  mounted.host.next({ difficulty: 10 })
+  await settle()
+  mounted.host.focus({ key: 1, wanted: [16] })
+  const q = mounted.host.next({ difficulty: 1 })
+  assert.equal(q.answer, "16", "a focused value was dropped in favour of a difficulty")
+  mounted.dispose()
+})
+
+test("setDifficulty and raiseFloor are real, so trebuchet and siege stop talking to nobody", async () => {
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  mounted.host.setDifficulty(0.05)
+  await settle()
+  assert.ok(mounted.host.next().difficulty <= 0.1, "setDifficulty did nothing")
+
+  // siege's floor: never lets the maths fall below what the wave justifies.
+  mounted.host.raiseFloor(0.7)
+  await settle()
+  const held = mounted.host.next({ difficulty: 0 })
+  assert.ok(
+    held.difficulty >= 0.65,
+    `a raised floor of 0.7 was undercut at ${String(held.difficulty)}`,
+  )
+  // And it never lowers.
+  mounted.host.raiseFloor(0.1)
+  await settle()
+  assert.ok(mounted.host.next({ difficulty: 0 }).difficulty >= 0.65, "raiseFloor lowered the floor")
+  mounted.dispose()
+})
+
+test("a per-call domain is the label the question carries", async () => {
+  const mounted = attachGameHost(fakeHost().client, { domain: "arith" })
+  await mounted.warm()
+  assert.equal(mounted.host.next().domain, "arith")
+  assert.equal(mounted.host.next({ domain: "add" }).domain, "add")
+  mounted.dispose()
+})
+
+test("the one value the two scales disagree about is not read in silence", async () => {
+  const said = await withConsole(async () => {
+    const mounted = attachGameHost(fakeHost().client)
+    await mounted.warm()
+    mounted.host.next({ difficulty: 1 })
+    mounted.host.next({ difficulty: 1 })
+    await settle()
+    mounted.dispose()
+  })
+  const notes = said.filter((line) => line.includes("exactly 1"))
+  assert.equal(notes.length, 1, `said ${String(notes.length)} times: ${said.join(" | ")}`)
+  assert.ok(notes[0]?.includes("BOTTOM"), `the notice does not say which reading won: ${String(notes[0])}`)
+})

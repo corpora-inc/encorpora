@@ -144,6 +144,42 @@ function slotText(slot: PromptSlot | undefined): string {
   }
 }
 
+/**
+ * The two operands a child reads, whichever family drew them.
+ *
+ * This file used to reach for `slots[SLOT_TOP]` and `slots[SLOT_BOTTOM]` by
+ * name, and `slotText(undefined)` returns `""`. So when the curriculum grew a
+ * second active family — `gen.arith.number-facts`, which names its slots
+ * `first` and `second` — every question on the six easiest rungs in the product
+ * rendered as `" + "` with no numbers in it, and nothing said so. That is the
+ * failure mode this codebase keeps meeting: a missing thing becoming an empty
+ * string and then becoming a blank screen a child is asked to answer.
+ *
+ * Named slots when a family declares them, declaration order otherwise, so a
+ * family that names its slots anything at all is drawn correctly. And an empty
+ * operand is refused by the caller rather than printed.
+ */
+export function operandsOf(exercise: Exercise): readonly string[] {
+  const slots = exercise.prompt.slots
+  const named = [slots[SLOT_TOP], slots[SLOT_BOTTOM]]
+  const chosen = named.every((slot) => slot !== undefined) ? named : Object.values(slots)
+  return chosen.map((slot) => slotText(slot))
+}
+
+/**
+ * Whether the prompt is a subtraction, by the curriculum's own key convention.
+ *
+ * Every family names its prompts `dw.prompt.<family>.<operation>`, and two
+ * active families already both define a `PROMPT_KEY_SUB` — which is why the
+ * curriculum's index re-exports them by name rather than with `export *`.
+ * Comparing against one family's constant is therefore a comparison that
+ * silently fails for the other. The last segment is the part they agree on, and
+ * `items.test.ts` holds every active family to it.
+ */
+export function isSubtraction(promptKey: string): boolean {
+  return promptKey === PROMPT_KEY_SUB || promptKey.endsWith(".sub")
+}
+
 /** An answer value as a child would write it. Never a float, never rounded. */
 export function answerText(value: AnswerValue, decimalPlaces: number): string | null {
   if (value.kind === "integer" || value.kind === "columnAlgorithm") {
@@ -235,7 +271,25 @@ export type ItemServiceDeps = {
 }
 
 export type ItemService = {
-  next(input: { packId: string; skillId?: string }): Item | null
+  next(input: {
+    packId: string
+    skillId?: string
+    /**
+     * Where on the ladder the pack wants this question, 0..1 — 0 the easiest
+     * rung the host has, 1 the hardest.
+     *
+     * Relative rather than absolute, and that is the whole design: a pack
+     * cannot know how many rungs there are, and the bottom of the ladder moves
+     * as the curriculum grows. A request for 0 today lands on two-digit +
+     * two-digit because that is the easiest rung that exists; when rungs below
+     * it are authored, the same request lands on those instead and no pack is
+     * rebuilt. What it can never do is fail — the index is clamped into the
+     * ladder, so an unsatisfiable request becomes the nearest satisfiable one.
+     */
+    difficulty?: number
+    /** A ceiling on the same scale. The stream never goes above it. */
+    maxDifficulty?: number
+  }): Item | null
   judge(input: {
     packId: string
     itemId: string
@@ -263,6 +317,8 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   const practised = new Set<string>()
   let position = 0
   let sequence = 0
+  /** A ladder with one rung answers every difficulty the same. Said once. */
+  let toldAboutFlatLadder = false
 
   const remember = (id: string, served: Served) => {
     ledger.set(id, served)
@@ -282,14 +338,44 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
   return {
     position: () => position,
 
-    next: ({ packId, skillId }) => {
+    next: ({ packId, skillId, difficulty, maxDifficulty }) => {
       // A pack may name a skill it covers. It is a request, not an instruction:
       // an unknown id falls back to the ladder rather than failing, because a
       // pack built against a later curriculum must still be playable.
       const wanted =
         skillId === undefined ? null : (rungs.find((rung) => rung.node.id === skillId) ?? null)
-      const rung = wanted ?? rungAt(position)
+
+      // A difficulty is the same kind of request, one rung lower down. It moves
+      // the ladder rather than reading past it, so there is one position and
+      // not two: a pack that drives the difficulty and then stops driving it
+      // resumes from where it left the child, and `judge` keeps climbing and
+      // stepping down from there.
+      let index = position
+      if (difficulty !== undefined || maxDifficulty !== undefined) {
+        const span = Math.max(0, rungs.length - 1)
+        const asked = difficulty === undefined ? position / Math.max(1, span) : difficulty
+        const cap = maxDifficulty === undefined ? 1 : maxDifficulty
+        index = Math.round(Math.min(asked, cap) * span)
+        position = Math.max(0, Math.min(span, index))
+        index = position
+      }
+
+      const rung = wanted ?? rungAt(index)
       if (!rung) return null
+      // Where the rung that was actually used sits, so the pack is told what it
+      // got and not what it asked for. A pack comparing the two is how a
+      // clamped request becomes visible on the pack's side.
+      const span = Math.max(0, rungs.length - 1)
+      const used = rungs.indexOf(rung)
+      const ordinate = span === 0 ? 0 : Math.max(0, Math.min(1, used / span))
+      if (span === 0 && difficulty !== undefined && !toldAboutFlatLadder) {
+        toldAboutFlatLadder = true
+        console.warn(
+          `[packs] ${packId} asked for difficulty ${difficulty.toFixed(2)} and the ladder has ` +
+            `${String(rungs.length)} rung(s) — every request lands on the same question until the ` +
+            `curriculum has more than one`,
+        )
+      }
 
       sequence += 1
       const seed = seedFrom(deps.profileId, packId, String(sequence))
@@ -309,21 +395,34 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         return null
       }
 
+      const [top = "", bottom = ""] = operandsOf(exercise)
+      if (top === "" || bottom === "") {
+        // A blank question is worse than no question: a child cannot answer
+        // `" + "` and cannot tell that anything is wrong with it. Loud, and
+        // named precisely enough to fix — the slot keys are what differ when a
+        // new family arrives and this file has not learned to read it.
+        console.error(
+          `[packs] ${rung.node.id} (${rung.family.family}) drew a prompt with a missing operand: ` +
+            `slots are [${Object.keys(exercise.prompt.slots).join(", ")}] and this read ` +
+            `["${top}", "${bottom}"]`,
+        )
+        return null
+      }
+
       const places = decimalPlacesOf(exercise)
       const choices = choicesFor(exercise, places)
       const id = `${exercise.exerciseId}#${String(sequence)}`
       remember(id, { exercise, rung, places, choices, answered: false })
       practised.add(rung.node.id)
 
-      const top = slotText(exercise.prompt.slots[SLOT_TOP])
-      const bottom = slotText(exercise.prompt.slots[SLOT_BOTTOM])
-      const subtract = exercise.prompt.key === PROMPT_KEY_SUB
+      const subtract = isSubtraction(exercise.prompt.key)
       const digits = digitsOf(exercise)
 
       return {
         id,
         skillId: rung.node.id,
         level: rung.level,
+        difficulty: ordinate,
         form: "binary-op",
         operator: subtract ? "-" : "+",
         operands: [top, bottom],

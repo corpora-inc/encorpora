@@ -40,6 +40,7 @@ import {
   parseRequest,
   permits,
   stringParam,
+  unitParam,
 } from "../../../packs/sdk/src/index.ts"
 
 /** A pack's own key-value store. Small on purpose: it is not a database. */
@@ -63,7 +64,14 @@ const SOUND_CUES: readonly SoundCue[] = ["tick", "seat", "settle", "refuse", "ar
  * only one file.
  */
 export type HostServices = {
-  nextItem(input: { packId: string; skillId?: string }): Promise<Item | null>
+  nextItem(input: {
+    packId: string
+    skillId?: string
+    /** 0..1 across the host's whole ladder. A request, not an instruction. */
+    difficulty?: number
+    /** 0..1 ceiling. The stream never goes above it. */
+    maxDifficulty?: number
+  }): Promise<Item | null>
   /** Records the attempt and judges it. One call, in that order. */
   judge(input: {
     packId: string
@@ -180,7 +188,19 @@ export function createBridge(options: BridgeOptions): Bridge {
 
       case "items.next": {
         const skillId = stringParam(params, "skillId", 128)
-        const item = await services.nextItem(skillId === null ? { packId } : { packId, skillId })
+        // Clamped rather than refused, like every other number a pack sends: a
+        // difficulty of 1.4 is a bug in a pack, and refusing the question would
+        // turn it into a blank screen in a child's game. The pack's own adapter
+        // is where an out-of-range value is announced, because that is the side
+        // an author can act on.
+        const difficulty = unitParam(params, "difficulty")
+        const maxDifficulty = unitParam(params, "maxDifficulty")
+        const item = await services.nextItem({
+          packId,
+          ...(skillId === null ? {} : { skillId }),
+          ...(difficulty === null ? {} : { difficulty }),
+          ...(maxDifficulty === null ? {} : { maxDifficulty }),
+        })
         return ok(id, { item })
       }
 

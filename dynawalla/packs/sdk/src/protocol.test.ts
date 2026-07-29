@@ -8,6 +8,7 @@ import {
   numberParam,
   parseRequest,
   stringParam,
+  unitParam,
 } from "./protocol.ts"
 
 test("a well-formed request parses and carries an object of params", () => {
@@ -85,6 +86,22 @@ test("number parameters clamp rather than reject, but refuse nonsense", () => {
   assert.equal(numberParam({ n: Number.NaN }, "n", 10), null)
   assert.equal(numberParam({ n: Number.POSITIVE_INFINITY }, "n", 10), null)
   assert.equal(numberParam({ n: "5" }, "n", 10), null)
+})
+
+test("a unit parameter clamps at both ends, and absent means absent", () => {
+  assert.equal(unitParam({ d: 0.25 }, "d"), 0.25)
+  assert.equal(unitParam({ d: 0 }, "d"), 0)
+  assert.equal(unitParam({ d: 1 }, "d"), 1)
+  // Both ends clamp. `numberParam(_, _, 1)` returns null for a negative, which
+  // at a call site that reads null as "absent" turns an out-of-range request
+  // into no request at all — silently. A number is a number.
+  assert.equal(unitParam({ d: 1.4 }, "d"), 1)
+  assert.equal(unitParam({ d: -0.5 }, "d"), 0)
+  assert.equal(numberParam({ d: -0.5 }, "d", 1), null, "the guard this one exists to replace")
+  // Only a non-number is absent.
+  assert.equal(unitParam({ d: "0.5" }, "d"), null)
+  assert.equal(unitParam({ d: Number.NaN }, "d"), null)
+  assert.equal(unitParam({}, "d"), null)
 })
 
 test("the guards a pack uses on host traffic are equally exact", () => {
