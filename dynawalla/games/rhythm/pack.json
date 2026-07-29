@@ -18,6 +18,7 @@
     ],
     "grades": [3, 5]
   },
+  "minAge": 7,
   "locales": ["en"],
   "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
 }

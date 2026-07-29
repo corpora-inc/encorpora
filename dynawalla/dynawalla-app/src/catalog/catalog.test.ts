@@ -17,7 +17,9 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
+import { fill, strings } from "../app/strings.ts"
 import { ART_HUES, DRAWN_PACKS, artOf, hashOf, hueClass, isMotifKey, rngFrom } from "./art.ts"
+import { gradeLabel, minAgeLabel } from "./labels.ts"
 import { MOTIF_KEYS, shapesOf, type Shape } from "./motifs.ts"
 import { DOMAIN_IDS, chipsFor, domainOfSkill, domainsOf } from "./domains.ts"
 
@@ -212,4 +214,67 @@ test("the generator is seeded, spread and engine-independent", () => {
   for (const value of draws) assert.ok(value >= 0 && value < 1)
   const mean = draws.reduce((total, value) => total + value, 0) / draws.length
   assert.ok(Math.abs(mean - 0.5) < 0.06, `the generator is biased: mean ${mean}`)
+})
+
+/* ── The card's small print ───────────────────────────────────────────────── */
+
+test("a minimum age is drawn as a floor and never as a range", () => {
+  // The founder's instruction was an "and up" scheme and explicitly NOT a
+  // range: every game's mathematics adapts upward without bound, so a `6–10`
+  // on a card would promise a ceiling the product does not have.
+  assert.equal(minAgeLabel(5), "5+")
+  assert.equal(minAgeLabel(8), "8+")
+  for (const age of [5, 6, 7, 8, 9]) {
+    const label = minAgeLabel(age)
+    assert.ok(label, `no label for ${age}`)
+    assert.ok(!/[–—-]/.test(label), `${label} reads as a range`)
+    assert.ok(label.includes(String(age)), `${label} does not name the age`)
+  }
+})
+
+test("the age template keeps its slot, so a translation cannot empty the label", () => {
+  // `fill` leaves an unknown slot in place rather than blanking it, so a
+  // translation that drops `{{age}}` prints a literal `{{age}}` — visible, and
+  // a bug report. A translation that drops the NUMBER, though, would render a
+  // bare `+` and look like a rendering fault instead. This is what catches it.
+  assert.match(strings.catalog.minAge, /\{\{age\}\}/, "the age slot is gone")
+  assert.equal(fill(strings.catalog.minAge, { age: 42 }).includes("42"), true)
+})
+
+test("an unstated age is drawn as nothing, never as a guess or a placeholder", () => {
+  // A pack record written before this field existed is on a device today, and
+  // `minAge` is optional in the schema for exactly that reason.
+  assert.equal(minAgeLabel(null), null)
+  for (const nonsense of [0, -3, 7.5, Number.NaN, Number.POSITIVE_INFINITY]) {
+    assert.equal(minAgeLabel(nonsense), null, `${nonsense} reached a card`)
+  }
+})
+
+test("a grade band with a hole in it is drawn as nothing rather than as Grades ?–?", () => {
+  assert.equal(gradeLabel([1, 4]), "Grades 1–4")
+  assert.equal(gradeLabel(null), null)
+  assert.equal(gradeLabel([Number.NaN, 4]), null)
+  assert.equal(gradeLabel([1, Number.POSITIVE_INFINITY]), null)
+})
+
+test("every shipped game states a minimum age, and the catalogue can label it", () => {
+  // The fleet rule itself is enforced in `packs/sdk/src/fleet.test.ts`, which
+  // is the suite the `dynawalla/games/**` CI filter actually runs. This is the
+  // other half: that what the packs declare is something this catalogue can
+  // draw. A number the schema accepts but `minAgeLabel` rejects would ship a
+  // fleet of cards with a silent hole where the age should be.
+  const ages = fs
+    .readdirSync(gamesRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => path.join(gamesRoot, entry.name, "pack.json"))
+    .filter((file) => fs.existsSync(file))
+    .map((file) => JSON.parse(fs.readFileSync(file, "utf8")) as { id: string; minAge?: number })
+
+  assert.ok(ages.length > 20, `expected the catalogue, found ${ages.length} packs`)
+  const undrawable = ages.filter((pack) => minAgeLabel(pack.minAge ?? null) === null)
+  assert.deepEqual(
+    undrawable.map((pack) => pack.id),
+    [],
+    "games whose minAge the catalogue cannot draw",
+  )
 })

@@ -3,6 +3,8 @@ import assert from "node:assert/strict"
 
 import {
   MAX_INSTALLED_BYTES,
+  MIN_AGE_CEILING,
+  MIN_AGE_FLOOR,
   isSafeRelativePath,
   localizedDescription,
   localizedName,
@@ -171,4 +173,61 @@ test("localisation falls back by base tag and then to the plain field", () => {
   assert.equal(localizedName(manifest, "fr"), "Abacus Tower", "fallback")
   assert.equal(localizedDescription(manifest, "fr"), "Carry beads up the tower.")
   assert.equal(localizedName(valid() as unknown as PackManifest, "es"), "Abacus Tower")
+})
+
+/* ── minAge — a floor, drawn as "and up" ──────────────────────────────────── */
+
+test("minAge is optional, so a manifest written before it existed still parses", () => {
+  const draft = valid() as unknown as Record<string, unknown>
+  assert.equal("minAge" in draft, false, "the fixture was supposed to omit it")
+  const result = parseManifest(draft)
+  assert.equal(result.ok, true, result.ok ? "" : result.problems.join("; "))
+  assert.equal(result.ok ? result.manifest.minAge : 0, undefined, "absent must stay absent")
+})
+
+test("a stated minAge survives parsing as the integer it was written as", () => {
+  for (const age of [MIN_AGE_FLOOR, 5, 8, MIN_AGE_CEILING]) {
+    const result = parseManifest({ ...valid(), minAge: age })
+    assert.equal(result.ok, true, result.ok ? "" : result.problems.join("; "))
+    assert.equal(result.ok ? result.manifest.minAge : -1, age)
+  }
+})
+
+test("the three shapes an author reaches for instead of an integer are all refused", () => {
+  // Each of these renders on a parent's screen as garbage rather than failing:
+  // "8+" becomes "8++", [6, 10] becomes "6,10+", 7.5 becomes "7.5+".
+  for (const wrong of ["8+", "8", [6, 10], 7.5, null, Number.NaN, true]) {
+    assert.ok(
+      problemsFor((draft) => {
+        draft["minAge"] = wrong
+      }).some((p) => p.includes("minAge")),
+      `${JSON.stringify(wrong)} was accepted as a minimum age`,
+    )
+  }
+})
+
+test("minAge is bounded on both sides, because a label outside them means nothing", () => {
+  for (const wrong of [MIN_AGE_FLOOR - 1, 0, -5, MIN_AGE_CEILING + 1, 99]) {
+    assert.ok(
+      problemsFor((draft) => {
+        draft["minAge"] = wrong
+      }).some((p) => p.includes("minAge")),
+      `${wrong} was accepted as a minimum age`,
+    )
+  }
+})
+
+test("there is no age ceiling in this schema, and asking for one is an error", () => {
+  // The founder's instruction was an "and up" scheme and explicitly NOT a
+  // range: every game's mathematics adapts upward without bound, so a `6–10`
+  // would promise a ceiling the product does not have. A pack author who
+  // writes one must be told, not quietly ignored.
+  for (const field of ["maxAge", "ageRange"]) {
+    assert.ok(
+      problemsFor((draft) => {
+        draft[field] = field === "maxAge" ? 10 : [6, 10]
+      }).some((p) => p.includes("and up")),
+      `${field} was silently accepted`,
+    )
+  }
 })

@@ -1,22 +1,15 @@
 import { useId, useMemo, useState } from "react"
 
-import { fill, strings } from "../app/strings.ts"
+import { strings } from "../app/strings.ts"
 import type { Row } from "../shell/surfaces.ts"
 import { chipsFor, domainName, domainsOf, type DomainId } from "./domains.ts"
+import { gradeLabel, minAgeLabel } from "./labels.ts"
 import { PackArt } from "./PackArt.tsx"
 
 type PackRow = Extract<Row, { kind: "pack" }>
 
 /** Case- and accent-insensitive enough for a child hunting for "serpent". */
 const folded = (text: string): string => text.toLocaleLowerCase()
-
-/** The band a game is written for, or nothing at all — never "Grades ?–?". */
-function gradeLabel(grades: readonly [number, number] | null): string | null {
-  if (grades === null) return null
-  const [from, to] = grades
-  if (!Number.isFinite(from) || !Number.isFinite(to)) return null
-  return fill(strings.catalog.grades, { from, to })
-}
 
 /**
  * One game, as a card.
@@ -37,6 +30,7 @@ function gradeLabel(grades: readonly [number, number] | null): string | null {
  */
 function Card({ row, active }: { row: PackRow; active: DomainId | null }) {
   const grades = gradeLabel(row.grades)
+  const age = minAgeLabel(row.minAge)
   const domains = domainsOf(row.skills)
   // Lead with the subject the child actually filtered by. Taking `domains[0]`
   // instead meant a card answering a Multiplication filter labelled itself
@@ -107,6 +101,20 @@ function Card({ row, active }: { row: PackRow; active: DomainId | null }) {
             </span>
           ))}
           {grades ? <span className="numeral text-ink-muted text-[0.6875rem]">{grades}</span> : null}
+          {/* Beside the grade band, in the same type as the version and the
+              "Play" word, because it is the same class of thing: small print
+              about who the game is for. It is NOT a badge — no border, no
+              fill, no colour of its own — and it must never become one. A
+              loud `8+` on a five-year-old's screen reads as a refusal, and
+              this is guidance.
+
+              It is here rather than on the title line, which is where it was
+              asked for, and the reason is measured rather than aesthetic: the
+              10.5rem column above is sized to exactly the 142px COUNTERWEIGHT
+              needs at 15px, with no slack at all. Any sibling on that line
+              takes width from the title and brings back "COUNTERPOI / SE",
+              which has already reached a screen once. */}
+          {age ? <span className="numeral text-ink-muted text-[0.6875rem]">{age}</span> : null}
           <span className="numeral text-ink-muted text-[0.6875rem]">
             {row.resting ? strings.packs.tomorrow : strings.packs.play}
           </span>

@@ -9,7 +9,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
-import { HOST_SUPPORTS, hostProfile, readLibrary } from "./library.ts"
+import { HOST_SUPPORTS, cardFacts, hostProfile, readLibrary } from "./library.ts"
 import type { InstalledPackRow, PackNative } from "./native.ts"
 
 const manifest = (over: Record<string, unknown> = {}) => ({
@@ -111,4 +111,37 @@ test("this build supports every capability the SDK defines", () => {
     [...HOST_SUPPORTS].sort(),
     ["audio", "haptics", "items", "items.reveal", "learner.read", "milestones", "storage"],
   )
+})
+
+test("the card's facts carry the minimum age, and carry its absence as absence", async () => {
+  // `libraryStore` persists this projection and `useHost` lays it back over the
+  // stored record. It is one function precisely so those two cannot disagree,
+  // and this is what holds the manifest end of it: a field dropped here reaches
+  // the catalogue as a card with a silent hole in its small print, with every
+  // type still correct on both sides.
+  const stated = await readLibrary({
+    native: nativeWith([rowFor(manifest({ minAge: 8 }))]),
+    host: hostProfile("0.1.0"),
+  })
+  const withAge = stated.entries[0]
+  assert.ok(withAge)
+  assert.deepEqual(cardFacts(withAge), {
+    description: "Chips that add to the key number fuse.",
+    skills: ["dw.add.regroup.add-multidigit"],
+    grades: [1, 4],
+    minAge: 8,
+  })
+
+  const silent = await readLibrary({
+    native: nativeWith([rowFor(manifest())]),
+    host: hostProfile("0.1.0"),
+  })
+  const withoutAge = silent.entries[0]
+  assert.ok(withoutAge)
+  const facts = cardFacts(withoutAge)
+  // Absent, not present-and-undefined. The persisted record and the type
+  // checker both treat those as different things, and a stored `undefined`
+  // would be written into a family's localStorage forever.
+  assert.equal("minAge" in facts, false, "an unstated age was stored as undefined")
+  assert.deepEqual(Object.keys(facts).sort(), ["description", "grades", "skills"])
 })

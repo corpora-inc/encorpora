@@ -130,6 +130,7 @@ function check(dir) {
   console.log(`  sdk          ${manifest.sdk} (this SDK is ${SDK_VERSION})`)
   console.log(`  capabilities ${manifest.capabilities.join(", ") || "none"}`)
   console.log(`  covers       ${manifest.covers.skills.length} skills, grades ${manifest.covers.grades.join("–")}`)
+  console.log(`  min age      ${manifest.minAge === undefined ? "unstated" : `${manifest.minAge}+`}`)
   console.log(`  on disk      ${files.length} files, ${bytes} bytes`)
 }
 

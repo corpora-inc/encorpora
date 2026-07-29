@@ -13,6 +13,7 @@ import { storageBreakdown, storageBytes } from "../app/profile.ts"
 import { recordFor, worldFor } from "../app/stores.ts"
 import { eraseEverything } from "../app/erase.ts"
 import { useThemeStore } from "../app/theme.ts"
+import { cardFacts } from "../packs/library.ts"
 import { useLibrary } from "../packs/libraryStore.ts"
 import { usePacks, type InstalledPack } from "../packs/registry.ts"
 import { useLaunch } from "../packs/Stage.tsx"
@@ -112,9 +113,10 @@ function useDescribedPacks(): readonly InstalledPack[] {
       if (!entry) return pack
       return {
         ...pack,
-        description: entry.description,
-        skills: entry.manifest.covers.skills,
-        grades: entry.manifest.covers.grades,
+        // The same projection `libraryStore` persists, so the card a child
+        // sees before the library has been read and the card they see after
+        // cannot describe the pack differently.
+        ...cardFacts(entry),
       }
     })
   }, [packs, entries])

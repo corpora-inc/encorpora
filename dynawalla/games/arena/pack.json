@@ -11,6 +11,7 @@
     "skills": ["dw.ns.compare.whole-numbers"],
     "grades": [1, 4]
   },
+  "minAge": 8,
   "locales": ["en"],
   "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
 }

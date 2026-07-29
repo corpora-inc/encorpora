@@ -65,6 +65,19 @@ export const strings = {
     nothing: "No game here matches that.",
     /** The band a game is written for, on its card. */
     grades: "Grades {{from}}–{{to}}",
+    /**
+     * The youngest age a game's *hands* are written for, on its card.
+     *
+     * A template rather than a bare `${age}+` in the JSX, and it is the only
+     * reason this two-character string is in here at all: `+` is a suffix in
+     * English and is not universally one. It leads in Arabic ordering, several
+     * locales set it off with a space, and a locale that wants "from 8" or
+     * "8 years and up" can only say so if the whole phrase is theirs to
+     * rewrite. Cost: one line in each of the five locale bundles.
+     *
+     * A floor and never a range — see `minAge` in the pack schema.
+     */
+    minAge: "{{age}}+",
 
     /**
      * The subjects, derived from skill ids at runtime (`catalog/domains.ts`).

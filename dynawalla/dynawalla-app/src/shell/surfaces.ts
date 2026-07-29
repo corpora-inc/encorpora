@@ -101,6 +101,17 @@ export type Row =
       readonly skills: readonly string[]
       /** Inclusive grade band, or `null` when the record predates it. */
       readonly grades: readonly [number, number] | null
+      /**
+       * The youngest age the game's *hands* are written for, or `null` when
+       * the pack did not say.
+       *
+       * **Guidance, never a gate.** It is carried here so the card can print
+       * `8+` beside the grade band, and for no other reason: nothing in this
+       * model or downstream of it filters, sorts, dims or locks on it. A
+       * five-year-old's parent seeing `8+` is being told the game may be
+       * frustrating — the game still opens, at full strength, on a press.
+       */
+      readonly minAge: number | null
       /** Launches it onto the stage. Never null: an unplayable pack is not a row. */
       readonly play: () => void
       /**
@@ -257,6 +268,7 @@ function packsSurface(view: HostView, act: HostActions): readonly Section[] {
           description: pack.description ?? "",
           skills: pack.skills ?? [],
           grades: pack.grades ?? null,
+          minAge: pack.minAge ?? null,
           play: () => act.launchPack(pack.id),
           resting: view.resting.includes(pack.id),
         }),

@@ -11,7 +11,7 @@
 import { create } from "zustand"
 
 import { BUILD_VERSION, isNative } from "../app/platform.ts"
-import { hostProfile, readLibrary, type LibraryEntry, type LibraryProblem } from "./library.ts"
+import { cardFacts, hostProfile, readLibrary, type LibraryEntry, type LibraryProblem } from "./library.ts"
 import { tauriNative } from "./native.ts"
 import { usePacks } from "./registry.ts"
 
@@ -55,10 +55,11 @@ export const useLibrary = create<LibraryState>()((set) => ({
           installedAt: Date.now(),
           // What the catalogue draws a card from. Written here, from the same
           // manifest the version came from, so the record and the card cannot
-          // disagree about what a pack is.
-          description: entry.description,
-          skills: entry.manifest.covers.skills,
-          grades: entry.manifest.covers.grades,
+          // disagree about what a pack is. `cardFacts` is shared with
+          // `useHost`, which writes the same fields back over this record —
+          // two hand-written copies of one list is how a field goes missing on
+          // one side of a launch.
+          ...cardFacts(entry),
         })
       }
       const live = new Set(entries.map((entry) => entry.manifest.id))
