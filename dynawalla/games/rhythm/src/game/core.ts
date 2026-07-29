@@ -329,6 +329,10 @@ export class Game {
     this.barSpb[bar % BAR_RING] = 60 / this.bpm;
     this.audioCursor = bar;
     this.cycleStartBar = bar;
+    // A fresh cycle, so re-pin it like the other two cycle starts do. Without
+    // this a sector change (which calls applyDifficulty mid-cycle) leaves the
+    // pinned value one short and the next question's lead falls under READ_SEC.
+    this.cycleInhale = this.inhaleBars;
   }
 
   private flushNotes(): void {
@@ -615,7 +619,18 @@ export class Game {
     const spb = 60 / this.bpm;
 
     if (g.q) {
-      this.host.report({ questionId: g.q.id, correct, ms: Math.max(0, Math.round(ms)), answered });
+      /**
+       * `ms` is how long the CHILD took, measured from the first instant a tile
+       * could be struck — not from when the question was revealed.
+       *
+       * All three tiles land on the same beat, so the READ_SEC-plus seconds
+       * before the gate bar are the game's wait and not the child's thinking.
+       * Reporting them also put every correct answer over the host's fluency
+       * threshold — `dynawalla-app/src/packs/items.ts` climbs the arithmetic
+       * ladder only on `correct && latencyMs <= 6000` — so a run of nothing but
+       * right answers would have been pinned to the easiest rung forever.
+       */
+      this.host.report({ questionId: g.q.id, correct, ms: Math.max(1, Math.round(ms)), answered });
     }
 
     if (correct) {
@@ -866,7 +881,9 @@ export class Game {
       const g = this.gates.find((x) => x.active && x.id === n.gateId);
       // Every choice tile in the row is spent the moment one is struck.
       for (const o of this.notes) if (o.active && o.isChoice && o.gateId === n.gateId && o !== n) o.state = 2;
-      if (g) this.resolveGate(g, n.label, n.correct, (this.eng.now - g.revealAt) * 1000);
+      // Measured from `g.time` — the instant the tiles became strikeable —
+      // and NOT from `g.revealAt`. See resolveGate.
+      if (g) this.resolveGate(g, n.label, n.correct, (this.eng.now - g.time) * 1000);
       return;
     }
 

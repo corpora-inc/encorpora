@@ -25,6 +25,15 @@ import type { Host } from "../contract.ts";
 
 type Report = { questionId: string; correct: boolean; ms: number; answered: string };
 
+/**
+ * `dynawalla-app/src/packs/items.ts` moves the arithmetic ladder UP only on
+ * `verdict.correct && latencyMs <= QUICK_MS`, and `QUICK_MS` is 6000. A game
+ * that reports a latency structurally above it can never raise the maths a
+ * child is served, however well they play — which is the defect this game was
+ * just fixed for, wearing a different hat.
+ */
+const HOST_QUICK_MS = 6000;
+
 type Played = {
   difficulty: number;
   bpm: number;
@@ -221,4 +230,63 @@ test("the reading window never shrinks because the tempo went up", async () => {
     `a child got ${worst.toFixed(2)}s to read a question at ${r.bpm} BPM; the floor is ` +
       `${READ_SEC}s and it must not fall as the music speeds up`,
   );
+});
+
+test("a correct answer is reported as a latency the host can still climb on", async () => {
+  const r = await play("right", LONG_RUN_SEC);
+
+  assert.ok(r.reports.length > 4);
+  // The run really did speed up, so the lead really was long: this is the case
+  // where reporting reveal-to-strike would have been furthest over the line.
+  assert.ok(r.bpm > 110, `the tempo only reached ${r.bpm} BPM`);
+  const slowest = Math.max(...r.reports.map((x) => x.ms));
+  assert.ok(
+    slowest < HOST_QUICK_MS,
+    `the slowest correct answer reported ${slowest}ms at ${r.bpm} BPM; the host stops ` +
+      `raising the maths above ${HOST_QUICK_MS}ms, so the ladder would never move`,
+  );
+});
+
+test("the reading window survives a pause taken after a sector change", async () => {
+  // `advanceSector` calls applyDifficulty mid-cycle and can move the tempo by
+  // 14 BPM, so the pinned inhale can be one bar short of what the new tempo
+  // needs. `reanchorSoft` starts a fresh cycle; if it does not re-pin, the very
+  // next question is read against the OLD tempo's bar count.
+  const game = new Game({
+    next: (opts) => ({
+      id: `q${opts?.difficulty ?? 0}`,
+      prompt: "2 + 3",
+      answer: "4",
+      distractors: ["3", "6"],
+      domain: "add-sub",
+      difficulty: 0.5,
+    }),
+    report: () => {},
+    haptic: () => {},
+    prefersReducedMotion: () => true,
+  });
+  game.soundOn = false;
+  const inner = game as unknown as {
+    inhaleBars: number;
+    cycleInhale: number;
+    reanchorSoft(): void;
+    applyDifficulty(): void;
+  };
+
+  for (const difficulty of [1, 3, 5, 7, 10]) {
+    game.difficulty = difficulty;
+    inner.applyDifficulty();
+    inner.reanchorSoft();
+    assert.equal(
+      inner.cycleInhale,
+      inner.inhaleBars,
+      `at difficulty ${difficulty} a resumed cycle kept a stale inhale of ${inner.cycleInhale}`,
+    );
+    const barDur = (60 / game.bpm) * 4;
+    assert.ok(
+      barDur * (1 + inner.cycleInhale) >= READ_SEC,
+      `a resumed cycle at ${game.bpm} BPM leads by ${(barDur * (1 + inner.cycleInhale)).toFixed(2)}s`,
+    );
+  }
+  game.destroy();
 });

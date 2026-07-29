@@ -86,6 +86,11 @@ export class Curriculum {
   /** Questions that closed with no answer at all. Never reported, never punished. */
   unanswered = 0
 
+  /** Questions the child actually answered. A timeout is not an answer. */
+  get answeredCount(): number {
+    return Math.max(0, this.asked - this.unanswered)
+  }
+
   reset(): void {
     this.asked = 0
     this.solved = 0
