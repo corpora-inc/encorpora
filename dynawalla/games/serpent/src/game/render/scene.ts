@@ -17,18 +17,44 @@ import { TAU, clamp, easeOutBack, easeOutCubic, easeOutExpo } from "../num.ts";
 import { COLORS, TUNE } from "../tuning.ts";
 import { bolusTintAt } from "../serpent.ts";
 import { orbDrawRadius } from "../orbs.ts";
+import { NO_INSETS, safeRect, type Insets } from "../../../../../packs/shared/game-chrome/index.ts";
 import type { World } from "../world.ts";
 import { GLOW_PX, MOTE_PX, sprites } from "./sprites.ts";
 import { drawLabel, labelWidth, type LabelStyle } from "./glyphs.ts";
 import { PK_BUBBLE, PK_MOTE, PK_SHARD } from "../fx/particles.ts";
 
-export type View = { cx: number; cy: number; scale: number; w: number; h: number; dpr: number };
+/**
+ * The frame, as the renderer sees it.
+ *
+ * `safe` is the rectangle inside the display cutout and the home indicator. The
+ * water, the snow and the vignette ignore it and fill the whole viewport, which
+ * is what `viewport-fit=cover` is for; the arena and every readout are laid out
+ * inside it, because a rim a child cannot see is a wall they die on and a figure
+ * under the cutout is a figure nobody reads.
+ */
+export type View = {
+  cx: number;
+  cy: number;
+  scale: number;
+  w: number;
+  h: number;
+  dpr: number;
+  /** The measured safe-area insets. Everything a child reads is laid out inside them. */
+  insets: Insets;
+  /** The viewport minus those insets. */
+  safe: { x: number; y: number; w: number; h: number };
+};
 
 type Snow = { x: number; y: number; r: number; vy: number; vx: number; a: number; phase: number };
 
 export type Renderer = {
   view: View;
-  resize(w: number, h: number, dpr: number): void;
+  /**
+   * `insets` is required, not optional. A defaulted safe area is a game that
+   * forgets to measure one, compiles clean, and draws under the cutout — which
+   * is a defect that exists only on hardware.
+   */
+  resize(w: number, h: number, dpr: number, insets: Insets): void;
   draw(world: World, stickAlpha: number): void;
   toWorld(clientX: number, clientY: number, rect: DOMRect): { x: number; y: number };
 };
@@ -57,7 +83,16 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
   const g: CanvasRenderingContext2D = ctx;
   const sp = sprites();
 
-  const view: View = { cx: 0, cy: 0, scale: 1, w: 1, h: 1, dpr: 1 };
+  const view: View = {
+    cx: 0,
+    cy: 0,
+    scale: 1,
+    w: 1,
+    h: 1,
+    dpr: 1,
+    insets: NO_INSETS,
+    safe: { x: 0, y: 0, w: 1, h: 1 },
+  };
   let bg: HTMLCanvasElement | null = null;
   const snowFar: Snow[] = [];
   const snowNear: Snow[] = [];
@@ -134,13 +169,20 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     }
   }
 
-  function resize(w: number, h: number, dpr: number): void {
+  function resize(w: number, h: number, dpr: number, insets: Insets): void {
+    const safe = safeRect(w, h, insets);
     view.w = w;
     view.h = h;
     view.dpr = dpr;
-    view.cx = w / 2;
-    view.cy = h / 2;
-    view.scale = Math.min(w, h) * 0.44;
+    view.insets = insets;
+    view.safe = safe;
+    // The arena is centred in the SAFE box and sized off its short side. On a
+    // device with no insets this is exactly what it always was; on a phone held
+    // sideways it stops the rim — a wall you can die against — from sliding
+    // under the rounded corner.
+    view.cx = safe.x + safe.w / 2;
+    view.cy = safe.y + safe.h / 2;
+    view.scale = Math.min(safe.w, safe.h) * 0.44;
     canvas.width = Math.max(1, Math.floor(w * dpr));
     canvas.height = Math.max(1, Math.floor(h * dpr));
     canvas.style.width = `${w}px`;

@@ -11,6 +11,7 @@ import { TAU, clamp, easeOutCubic } from "../num.ts";
 import { COLORS, TUNE } from "../tuning.ts";
 import { stickBoostPush, stickRadiusPx, type Pointer } from "../input.ts";
 import type { World } from "../world.ts";
+import { hudLayout } from "./chrome.ts";
 import { drawLabel, type LabelStyle } from "./glyphs.ts";
 import type { View } from "./scene.ts";
 
@@ -36,19 +37,23 @@ const base: LabelStyle = {
 const styled = (over: Partial<LabelStyle>): LabelStyle => ({ ...base, ...over });
 
 export function drawHud(g: CanvasRenderingContext2D, view: View, w: World, o: HudOptions): void {
-  const u = Math.min(view.w, view.h);
-  const pad = Math.max(14, u * 0.045);
+  // Every position in this file comes out of `chrome.ts`, which knows about the
+  // display cutout, the home indicator and the host's two 44px corners. Nothing
+  // here measures off `view.w` and `view.h` any more: those are the glass, and
+  // the glass is not all ours.
+  const l = hudLayout(view.w, view.h, view.insets);
+  const u = Math.max(1, Math.min(l.safe.w, l.safe.h));
   const dpr = view.dpr;
 
-  // --- depth, top left ----------------------------------------------------
-  const depthSize = Math.max(24, u * 0.062);
+  // --- depth, under the host's exit control --------------------------------
+  const depthSize = l.depthSize;
   const dp = easeOutCubic(w.depthPulse);
   g.save();
   g.globalAlpha = 0.9;
   g.fillStyle = COLORS.rim;
   const tri = depthSize * 0.3;
-  const tx = pad + tri * 0.6;
-  const ty = pad + depthSize * 0.62;
+  const tx = l.depthX;
+  const ty = l.depthY;
   g.beginPath();
   g.moveTo(tx - tri * 0.62, ty - tri * 0.45);
   g.lineTo(tx + tri * 0.62, ty - tri * 0.45);
@@ -67,7 +72,7 @@ export function drawHud(g: CanvasRenderingContext2D, view: View, w: World, o: Hu
     0.95,
   );
 
-  const lengthSize = Math.max(11, u * 0.028);
+  const lengthSize = l.lengthSize;
   drawLabel(
     g,
     `${Math.round(w.serpent.targetSegments)}`,
@@ -79,15 +84,15 @@ export function drawHud(g: CanvasRenderingContext2D, view: View, w: World, o: Hu
     0.9,
   );
 
-  // --- score, top centre --------------------------------------------------
-  const scoreSize = Math.max(26, u * 0.075);
+  // --- score, top centre: the one part of the top edge nothing is painted over
+  const scoreSize = l.scoreSize;
   const sp = easeOutCubic(w.scorePulse);
   drawLabel(
     g,
     String(w.score),
     styled({ size: scoreSize, fill: "#ffffff" }),
-    view.cx,
-    pad + scoreSize * 0.6,
+    l.scoreX,
+    l.scoreY,
     dpr,
     1 + sp * 0.12,
     0.97,
@@ -97,18 +102,18 @@ export function drawHud(g: CanvasRenderingContext2D, view: View, w: World, o: Hu
       g,
       String(w.best),
       styled({ size: Math.max(10, u * 0.026), fill: "rgba(255,215,106,0.7)" }),
-      view.cx,
-      pad + scoreSize * 1.28,
+      l.scoreX,
+      l.scoreY + scoreSize * 0.68,
       dpr,
       1,
       0.9,
     );
   }
 
-  // --- combo gauge, top right ---------------------------------------------
-  const gaugeR = Math.max(15, u * 0.042);
-  const gx = view.w - pad - gaugeR;
-  const gy = pad + gaugeR;
+  // --- combo gauge, under the host's how-to-play control -------------------
+  const gaugeR = l.gaugeR;
+  const gx = l.gaugeX;
+  const gy = l.gaugeY;
   const frac = w.combo / TUNE.comboMax;
   g.save();
   g.lineCap = "round";
@@ -147,10 +152,10 @@ export function drawHud(g: CanvasRenderingContext2D, view: View, w: World, o: Hu
     g.restore();
   }
 
-  // --- sound switch, bottom right -----------------------------------------
-  const sr = Math.max(13, u * 0.032);
-  const sx = view.w - pad - sr;
-  const sy = view.h - pad - sr;
+  // --- sound switch, bottom right, clear of the home indicator -------------
+  const sr = l.soundR;
+  const sx = l.soundX;
+  const sy = l.soundY;
   g.save();
   g.globalAlpha = o.soundOn ? 0.55 : 0.3;
   g.fillStyle = COLORS.ink;
@@ -223,7 +228,7 @@ function scrim(g: CanvasRenderingContext2D, view: View, alpha: number): void {
 }
 
 function drawAttract(g: CanvasRenderingContext2D, view: View, w: World, o: HudOptions): void {
-  const u = Math.min(view.w, view.h);
+  const u = Math.max(1, Math.min(view.safe.w, view.safe.h));
   scrim(g, view, 0.42);
   const titleSize = Math.max(34, u * 0.13);
   drawLabel(
@@ -250,7 +255,7 @@ function drawAttract(g: CanvasRenderingContext2D, view: View, w: World, o: HudOp
 }
 
 function drawGameOver(g: CanvasRenderingContext2D, view: View, w: World, o: HudOptions): void {
-  const u = Math.min(view.w, view.h);
+  const u = Math.max(1, Math.min(view.safe.w, view.safe.h));
   const k = clamp(w.deathT / 0.7, 0, 1);
   scrim(g, view, 0.5 * k);
   const e = easeOutCubic(k);
@@ -291,7 +296,7 @@ function drawGameOver(g: CanvasRenderingContext2D, view: View, w: World, o: HudO
 }
 
 function drawPaused(g: CanvasRenderingContext2D, view: View): void {
-  const u = Math.min(view.w, view.h);
+  const u = Math.max(1, Math.min(view.safe.w, view.safe.h));
   scrim(g, view, 0.5);
   drawLabel(
     g,
@@ -311,14 +316,15 @@ function drawDebug(g: CanvasRenderingContext2D, view: View, w: World, o: HudOpti
     `body ${w.serpent.bodyCount}   orbs ${w.orbs.length}   particles ${w.particles.count}   rings ${w.rings.count}`,
     `answer ${w.lastAnswerMs}ms   depth ${w.depth}   arena ${w.arenaR.toFixed(3)}   ${w.prompt}`,
   ];
-  const size = Math.max(10, Math.min(view.w, view.h) * 0.022);
-  let y = view.h - size * 3.6;
+  const l = hudLayout(view.w, view.h, view.insets);
+  const size = Math.max(10, Math.min(l.safe.w, l.safe.h) * 0.022);
+  let y = l.debugBottom - size * 2.6;
   for (const line of lines) {
     drawLabel(
       g,
       line,
       styled({ size, fill: "rgba(180,255,230,0.85)", weight: 600, outlineWidth: 3 }),
-      view.w / 2,
+      l.safe.x + l.safe.w / 2,
       y,
       view.dpr,
       1,
