@@ -339,6 +339,8 @@ type Ending = {
 function playOneSmallItem(
   size: [number, number],
   frames: number,
+  /** Frames the child pulls the trigger on. Nothing else is ever pressed. */
+  fireAt: readonly number[] = [],
 ): { endings: Ending[]; painted: Painted[][]; reports: number } {
   const rec = recorder(size[0], size[1], 0x5a1e)
   const restore = rec.install()
@@ -381,6 +383,7 @@ function playOneSmallItem(
     for (let i = 0; i < frames; i++) {
       frame = i
       rec.step(16)
+      if (fireAt.includes(i)) rec.press(" ")
     }
   } finally {
     handle.unmount()
@@ -1017,6 +1020,54 @@ test("the sheet's minutes are not billed to the child as thinking time", () => {
 
 // ─── 5. Space around the answering moment ─────────────────────────────────────
 
+test("ON THE REAL LATTICE, THE STREAM REALLY DOES BACK OFF WHILE READING", () => {
+  // The test below this one asserts `readingRelief` and NOTHING ELSE. Both of
+  // its call sites in `mount.ts` could be deleted and the suite would stay
+  // green — and worse than that had already happened: `Director.wantsSpawn`
+  // looked its own pressure up instead of taking the one it was handed, so the
+  // relieved `spawnGap` and `floorCount` reached nothing at all. The only field
+  // that DID arrive was `descentSeconds`, which makes every hull linger 30%
+  // longer, so the lattice got about 25% denser during the one moment it is
+  // supposed to thin. A tautological test sat on top of that the whole time.
+  //
+  // An automaton is born at `t = 0`, which projects to exactly the horizon, so
+  // a spawn is directly observable: a numeral painted on the horizon line. The
+  // score is a numeral too and sits well above it, which is why this is pinned
+  // to the horizon rather than to "near the top".
+  const geom = geomForViewport(768, 1024, 5)
+  const { endings, painted } = playOneSmallItem([768, 1024], 1400)
+  const ran = endings.find((e) => e.end === "unanswered")
+  assert.ok(ran, "the wave never ran out")
+
+  const births: number[] = []
+  for (let f = 0; f < painted.length; f++) {
+    const born = (painted[f] ?? []).some(
+      (p) => /^\d+$/.test(p.text) && Math.abs(p.y - geom.horizonY) < 0.5,
+    )
+    // A hull sits on the horizon for a frame or three; one arrival, not three.
+    if (born && (births.length === 0 || f - (births[births.length - 1] ?? 0) > 10) ) births.push(f)
+  }
+  const during = births.filter((f) => f >= ran.from && f < ran.frame)
+  assert.ok(during.length >= 2, `only ${String(during.length)} automata arrived during the wave`)
+
+  const relieved = readingRelief(new Director().pressure())
+  for (let i = 1; i < during.length; i++) {
+    const a = during[i - 1]
+    const b = during[i]
+    assert.ok(a !== undefined && b !== undefined)
+    const gap = ((b - a) * 16) / 1000
+    // At a cold start the stream runs every 2.0s and the relief widens it to
+    // 3.5s. Measured at 3.42s, which is the gap minus the frame the spawn is
+    // noticed on; the floor here sits between the two so it cannot be met by
+    // an unrelieved lattice.
+    assert.ok(
+      gap > 3,
+      `automata arrived ${gap.toFixed(2)}s apart while a question was being read — ` +
+        `the relief wants ${relieved.spawnGap.toFixed(2)}s and the plain stream gives 2.00s`,
+    )
+  }
+})
+
 test("the lattice thins out while a question is being read — sparser, not duller", () => {
   // The founder's direction: keep the juice, give the space AROUND the
   // answering moment room. So while a CORE's candidates are in the air the
@@ -1037,6 +1088,40 @@ test("the lattice thins out while a question is being read — sparser, not dull
     for (let k = 0; k < 8; k++) director.advance(1)
     director.recordKill()
   }
+})
+
+test("ON THE REAL LATTICE, A STRAY SHOT DOES NOT SHORTEN THE WINDOW", () => {
+  // The test below this one asserts the pure function and NOTHING ELSE, which
+  // means the whole fix could be unwired from `dissonance()` and the suite
+  // would stay green. It was, and it did. So: the same deterministic run,
+  // played once with no input and then once per single trigger pull, and every
+  // pull that did not hand a value in must leave the wave running out on
+  // exactly the same frame.
+  //
+  // With the shove restored, eight of the nine non-submitting timings below
+  // close the window early — by up to 92 frames, a second and a half taken off
+  // a six-second window for one stray shot at a hexagon.
+  const quiet = playOneSmallItem([768, 1024], 1400).endings.find((e) => e.end === "unanswered")
+  assert.ok(quiet, "the silent run never ran out")
+
+  let rung = 0
+  for (let f = 300; f < 660; f += 20) {
+    const { endings } = playOneSmallItem([768, 1024], 1400, [f])
+    const ran = endings.find((e) => e.end === "unanswered")
+    // A shot that submitted resolved the wave honestly and is not a sample.
+    if (!ran || endings.some((e) => e.end === "answered" && e.frame < ran.frame)) continue
+    rung++
+    // Never EARLIER. Later is fine and is sometimes right: three kills on one
+    // pulse is a HARMONIC and spends slow-motion, which hands the child a few
+    // more frames. The invariant is one-directional — a stray shot may not
+    // take thinking time away.
+    assert.ok(
+      ran.frame >= quiet.frame,
+      `a shot on frame ${String(f)} moved the wave's end from ${String(quiet.frame)} ` +
+        `to ${String(ran.frame)} — firing at the candidates costs thinking time`,
+    )
+  }
+  assert.ok(rung >= 6, `only ${String(rung)} shots landed without submitting`)
 })
 
 test("RINGING A CANDIDATE DOES NOT SHORTEN THE TIME TO ANSWER IT", () => {

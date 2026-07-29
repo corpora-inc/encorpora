@@ -83,9 +83,18 @@ The number the director still tunes is the **dead time** — the gap with nothin
 lattice to think about. A wave ends the moment it is answered, so reading quickly is
 what buys the next problem, and a fluent child never sees the end of a window.
 
-While a question is in the air the lattice **thins out**: fewer automata, further apart,
-crossing more slowly. Sparser and slower, never duller — the tight-divisor bias is
+While a question is in the air the lattice **thins out**: the stream runs every 3.5s
+instead of every 2s at a cold start, the floor on live automata drops, and everything
+crosses more slowly. Sparser and slower, never duller — the tight-divisor bias is
 untouched and the field is never empty.
+
+That is asserted **on the real lattice**, by watching automata arrive on the horizon
+line frame by frame, and not only on `readingRelief` itself. The first version of it was
+asserted only on the pure function, and underneath it `Director.wantsSpawn` was looking
+its own pressure up instead of taking the one it was handed — so the relieved spawn gap
+and floor reached nothing, only `descentSeconds` arrived, every hull lingered 30% longer
+at an unchanged cadence, and the lattice got *denser* during the one moment it is meant
+to thin.
 
 So a submission costs four real steps, three of them mathematics:
 
