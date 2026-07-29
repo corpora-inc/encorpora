@@ -50,12 +50,42 @@ A **CORE** descends the middle of the lattice two seconds after the last one cle
 carrying a problem the host served — `247 + 158` — and fractures into one automaton per
 candidate value. Killing one hands it in.
 
-The number that is tuned here is the **dead time**, not the thinking time: the gap plus
-the core's approach is about four seconds, and the answering window — the candidates'
-fall from the fracture line to the floor — is about ten seconds early in a run, closing
-to six at full pressure. Comprehension is measured, never rationed; what was cut is the
-time with nothing on the lattice to think about. A wave ends the moment it is answered,
-so reading quickly is what buys the next problem.
+### The comprehension window
+
+The problem is carved into the far wall the moment the CORE enters and it stays there,
+at the size of the beam labels, until the wave is over. It is not on the slab and only
+on the slab: a slab near the vanishing point pins at the renderer's 9px floor, and a
+slab is deleted when it fractures. For a while this game asked a child to do a
+three-digit column sum from memory while sustaining a kill a second, and said in a
+comment that it did not.
+
+The answering window — the candidates' fall from the fracture line to the floor — comes
+from `sim/window.ts` and is a pure function of **the item**: its widest column, and
+whether it regroups. Nothing about the run's pressure can move it.
+
+| item | window |
+|---|---|
+| `4 + 3` | 6s |
+| `31 + 24` | 11s |
+| `27 + 15` | 14s |
+| `342 + 216` | 18s |
+| `247 + 158` | 23s |
+| `5,001 − 2,798` | 40s |
+
+Those are the house p90s from `docs/EXPERIENCE_DESIGN.md`, and the invariant they exist
+to keep is one line: **the window is monotone non-decreasing in the item's difficulty.**
+A harder question may never get less time than an easier one. It used to get exactly
+that — the window was `1.184 × descentSeconds`, and `descentSeconds` is the motion
+constant the pressure curve tightens, so it ran 11.84s down to 6.87s on the same curve
+that takes the requested difficulty from 2 to 9.
+
+The number the director still tunes is the **dead time** — the gap with nothing on the
+lattice to think about. A wave ends the moment it is answered, so reading quickly is
+what buys the next problem, and a fluent child never sees the end of a window.
+
+While a question is in the air the lattice **thins out**: fewer automata, further apart,
+crossing more slowly. Sparser and slower, never duller — the tight-divisor bias is
+untouched and the field is never empty.
 
 So a submission costs four real steps, three of them mathematics:
 
@@ -83,6 +113,15 @@ ladder hands it, and a quotient on the hull is the same object as a sum on the h
 The stream of ordinary automata is the game's own mathematics — divisibility over numbers
 the game itself made up. Nobody asked those questions, so nothing about them is reported.
 
+A wave that **runs out** is not reported either. It used to be, as
+`report({ correct: false, answered: "" })` — and the shared adapter throws `correct` away
+and forwards `answered` as the response to `items.answer`, where an empty string does not
+parse, so the host recorded a miss and stepped the ladder down. A child who was still
+carrying the hundreds column was written down as a child who cannot add, and guessing was
+strictly cheaper than thinking. The game now calls the optional `skip` hook, which is the
+SDK's `items.skip` — closed, unrecorded, ladder untouched — and where the adapter does
+not surface it yet, says nothing at all.
+
 ### Items that are passed over
 
 An answer with no divisor in the readable beam range — a prime like 83, or 169 — cannot
@@ -96,11 +135,25 @@ label at the foot of the lattice would print the answer. `usableCoreValue()` req
 divisor **strictly smaller** than the value, and `src/test/core.test.ts` asserts that no
 beam label is ever equal to a candidate's number.
 
+### When it is missed
+
+A wrong submission or a wave that runs out **finishes the sum on the wall** — `247 + 158`
+becomes `247 + 158 = 405`, the new part in the resonance colour, the same colour a
+correct answer is celebrated in — and the hall is **held still** while it is read. That
+hold is after STACK, whose sweep stops for its reveal so the child never reads one thing
+while aiming at another; here it also means a frozen lattice cannot take an anchor while
+the child is looking at arithmetic.
+
+A five-year-old putting nonsense in is still watching numerals, a `+`, and a column sum
+resolving, and that exposure is worth something even when the answer is not. It is the
+reason the miss is spent on the mathematics rather than on feedback about the miss:
+there is no red, no shake, no word for what happened, and no lamp goes out.
+
 ## Stakes
 
 Three anchors. An ordinary automaton reaching the floor breaches one; at zero the lattice
 goes dark. A wrong submission costs **no anchor** — it collapses the resonance multiplier
-to one, which is the entire economy, and the true statement is shown once, plainly. Two
+to one, which is the entire economy, and the sum is finished on the wall. Two
 cores read relights an anchor, cumulatively, and that progress is never taken away.
 
 Escalation is on the size of the run — elapsed time and total kills — and never on an
@@ -140,6 +193,7 @@ audio, which is not motion, is unchanged.
 | `src/sim/core.ts` | turning a served item into a wave |
 | `src/sim/field.ts` | the automata and their walk down the lattice |
 | `src/sim/director.ts` | pacing, the value stream, and the scoring gradient |
+| `src/sim/window.ts` | how long the child may have — a function of the item, and of nothing else |
 | `src/render/geom.ts` | the hall's perspective, pure and tested |
 | `src/render/hall.ts` | drawing, including the phasing traces |
 | `src/mount.ts` | the game: input, the frame loop, and the reporting seam |

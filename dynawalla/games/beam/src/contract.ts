@@ -17,9 +17,38 @@ export type Question = {
 
 export type Host = {
   next(opts?: { domain?: string; difficulty?: number }): Question
+  /**
+   * An attempt the child made. **Only ever an attempt.**
+   *
+   * `report` is not a place to say "nothing happened". The shared adapter
+   * discards `correct` — the host judges, not the game — and forwards
+   * `answered` as the response to `items.answer`, so a report with an empty
+   * answer is not recorded as "unanswered", it is recorded as a MISS: the
+   * empty string does not parse, the learner model takes a wrong answer, and
+   * the ladder steps down. Against a child who may simply have still been
+   * carrying the hundreds column.
+   *
+   * So this game reports exactly one thing: a value that was struck.
+   */
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
   haptic(k: "light" | "medium" | "heavy" | "success" | "failure"): void
   prefersReducedMotion(): boolean
+
+  /**
+   * The item ran out of time on the lattice and nothing was handed in.
+   *
+   * OPTIONAL and feature-detected, exactly like `transition`. The SDK has the
+   * method this is for — `items.skip` marks an item closed **without recording
+   * an outcome and without moving the ladder**, which is the only honest thing
+   * to say about a child who was still computing — but the shared
+   * `game-host` adapter does not surface it yet. Until it does, a timeout here
+   * is reported as *nothing at all*, which is the safe direction: an unmeasured
+   * item costs a child nothing, and a fabricated miss costs them a rung.
+   *
+   * Never a judgement, never a latency worth modelling: the child did not
+   * answer, so there is no answer time to record.
+   */
+  skip?(questionId: string): void
 
   /**
    * A natural stopping point the child *reached*: a level cleared, a run

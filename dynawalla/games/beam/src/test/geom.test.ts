@@ -131,6 +131,14 @@ test("nothing a child must read sits under the host's two corners", () => {
       )
     }
 
+    // And the question itself, which is the most important text in the game
+    // and the one it went longest without drawing at all.
+    assert.equal(
+      hitsHostChrome(g.prompt, w),
+      false,
+      `${name} (${w}×${h}): the CORE's problem is under host chrome`,
+    )
+
     // The two blocks must not collide with each other either, which is the
     // failure mode of "just move everything down".
     assert.ok(
@@ -138,6 +146,18 @@ test("nothing a child must read sits under the host's two corners", () => {
         g.hud.y + g.hud.h <= anchorsRect(g, ANCHORS).y ||
         anchorsRect(g, ANCHORS).y + anchorsRect(g, ANCHORS).h <= g.hud.y,
       `${name}: the score and the anchor lamps overlap`,
+    )
+
+    // The question must not sit on the score or the lamps either. Three
+    // things now share the top of the screen and "move it up" is exactly how
+    // the third one ends up on top of the first.
+    assert.ok(
+      g.prompt.y + g.prompt.h <= g.hud.y + 0.5,
+      `${name}: the question overlaps the score block`,
+    )
+    assert.ok(
+      g.prompt.x + g.prompt.w <= anchorsRect(g, ANCHORS).x + 0.5,
+      `${name}: the question overlaps the anchor lamps`,
     )
   }
 })
