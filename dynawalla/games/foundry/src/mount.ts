@@ -368,7 +368,12 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
   }
 
   function onKeyDown(ev: KeyboardEvent): void {
-    if (ev.repeat) return
+    // This listener is on `globalThis` and the manual is a DOM scrim, which
+    // stops the pointer and nothing else. Without this line a child reading the
+    // Controls section and trying the keys it names would drop plates onto a
+    // bar they cannot see — and in this game one over the target loses the fall
+    // on the spot. The scrim was hiding the only feedback there is.
+    if (ev.repeat || guide.isOpen) return
     const k = ev.key.toLowerCase()
     if (k === "arrowleft" || k === "a") {
       armAudio()

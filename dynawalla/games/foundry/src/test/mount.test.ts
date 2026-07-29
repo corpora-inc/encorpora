@@ -50,6 +50,7 @@ type FakeElement = {
   width: number
   height: number
   id: string
+  className: string
   listeners: Map<string, Listener[]>
   children: unknown[]
   attrs: Map<string, string>
@@ -74,6 +75,7 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
       width: 0,
       height: 0,
       id: "",
+      className: "",
       listeners,
       children,
       attrs: new Map<string, string>(),
@@ -137,7 +139,10 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
   return { host: make(), doc, created, ctx }
 }
 
-type Rig = ReturnType<typeof harness> & { frames: Array<(t: number) => void> }
+type Rig = ReturnType<typeof harness> & {
+  frames: Array<(t: number) => void>
+  globals: Map<string, Listener[]>
+}
 
 /**
  * Install the browser globals `mount.ts` needs, run `body`, and take them back
@@ -149,8 +154,9 @@ function withBrowser(
   counter: { calls: number; text: string[] },
   body: (rig: Rig) => void,
 ): void {
-  const rig = harness(size, counter)
-  const g = globalThis as Record<string, unknown>
+  const rig = harness(size, counter) as ReturnType<typeof harness> & {
+    globals: Map<string, Listener[]>
+  }
   const saved = new Map<string, PropertyDescriptor | undefined>()
   const set = (key: string, value: unknown) => {
     saved.set(key, Object.getOwnPropertyDescriptor(globalThis, key))
@@ -172,11 +178,21 @@ function withBrowser(
     paddingBottom: "0px",
     paddingLeft: "0px",
   }))
-  if (typeof g.addEventListener !== "function") set("addEventListener", () => {})
-  if (typeof g.removeEventListener !== "function") set("removeEventListener", () => {})
+  // The global listeners are RECORDED rather than swallowed. `mount.ts` puts
+  // its keyboard on `globalThis`, and the how-to-play panel is a DOM scrim —
+  // which stops the pointer and nothing else — so the only way to test that a
+  // key cannot reach the bout through the manual is to be able to fire one.
+  const globals = new Map<string, Listener[]>()
+  set("addEventListener", (type: string, fn: Listener) => {
+    globals.set(type, [...(globals.get(type) ?? []), fn])
+  })
+  set("removeEventListener", (type: string, fn: Listener) => {
+    globals.set(type, (globals.get(type) ?? []).filter((f) => f !== fn))
+  })
+  rig.globals = globals
 
   try {
-    body({ ...rig, frames })
+    body({ ...rig, frames, globals })
   } finally {
     for (const [key, descriptor] of saved) {
       if (descriptor) Object.defineProperty(globalThis, key, descriptor)
@@ -282,6 +298,78 @@ test("the reduced-motion branch renders the same bout with no particles", () => 
     // written every frame — it just arrives without travel.
     assert.ok(counter.text.length > 0)
     assert.ok(counter.calls > 3000)
+    handle.unmount()
+  })
+})
+
+test("a key cannot drop a plate through the how-to-play panel", () => {
+  // The manual is a DOM scrim. A scrim stops the pointer and nothing else, and
+  // `mount.ts` puts its keyboard on `globalThis` — so before this guard a child
+  // reading the Controls section and trying the keys it names dropped plates
+  // onto a bar hidden behind the panel.
+  //
+  // In this game that is not a cosmetic leak. One over the target loses the
+  // fall on the spot, which is the whole reason mashing does not work, and the
+  // scrim was hiding the only feedback there is. So the assertion is the
+  // player-visible one: the fall must not end in TOO MUCH because of keys
+  // pressed while the rules were open.
+  //
+  // The banner is only DRAWN on a frame and the loop is frozen while the panel
+  // is up, so the panel has to be closed before anything is pumped — the first
+  // draft of this test checked for the banner while the world was still frozen,
+  // passed with the guard removed, and was worth nothing.
+  const counter = { calls: 0, text: [] as string[] }
+  withBrowser({ w: 390, h: 844 }, counter, ({ host, frames, created, globals }) => {
+    const stub = createStubHost({ seed: 0x51ab, reducedMotion: false })
+    const handle = mount(host as unknown as HTMLElement, stub)
+    let t = pump(frames, 120)
+
+    const help = created.find((el) => el.className === "dwc-help")
+    const close = created.find((el) => el.className === "dwc-close")
+    assert.ok(help, "the how-to-play control was never created")
+    assert.ok(close, "the manual had no close button")
+    const keys = globals.get("keydown") ?? []
+    assert.ok(keys.length > 0, "no keyboard listener was installed on the window")
+
+    const press = (n: number): void => {
+      for (let i = 0; i < n; i++) {
+        for (const fn of keys) {
+          fn({ key: "d", repeat: false, preventDefault() {}, stopPropagation() {} })
+        }
+      }
+    }
+    const click = (el: FakeElement): void => {
+      for (const fn of el.listeners.get("click") ?? []) fn({})
+    }
+
+    // Open the manual, lean on the heavy plate — forty taps overshoots any
+    // target this game can serve, several times over — then CLOSE it and let
+    // the world run, which is the only point at which a banner can be drawn.
+    click(help)
+    counter.text.length = 0
+    press(40)
+    click(close)
+    t = pump(frames, 120, t)
+    assert.equal(
+      counter.text.includes("TOO MUCH"),
+      false,
+      "keys pressed behind the manual dropped plates and lost the fall",
+    )
+
+    // And the keyboard works the moment the panel is gone: a gate stuck shut is
+    // the same bug wearing a different hat.
+    counter.text.length = 0
+    for (let i = 0; i < 40; i++) {
+      press(1)
+      t = pump(frames, 2, t)
+    }
+    t = pump(frames, 30, t)
+    assert.equal(
+      counter.text.includes("TOO MUCH"),
+      true,
+      "the keyboard never came back after the manual closed",
+    )
+
     handle.unmount()
   })
 })
