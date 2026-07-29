@@ -1,4 +1,5 @@
 import styles from "./ui/styles.css?inline";
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts";
 import type { Host, Question } from "./contract.ts";
 import { TierMonitor, detectTier } from "./core/tier.ts";
 import { clamp01 } from "./core/util.ts";
@@ -266,6 +267,80 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     hud.showRevive(reviveQ.prompt, opts, reviveQ.answer);
   }
 
+  // --- how to play ----------------------------------------------------------
+  //
+  // The title card says "MATCH A BULLET'S SIGN TO DRINK IT. YOUR TOTAL IS THE
+  // WEAPON. VENT IT AT THE EDGE." — which is exactly right and completely
+  // opaque to a nine-year-old, and it is gone the instant they press PLAY.
+  // Nothing anywhere said that an orb of the wrong sign passes straight
+  // through you, or that the last shield buys one question rather than ending
+  // the run. The manual stays behind the how-to-play button for the whole
+  // session, because the moment a child needs the rules is never the title.
+  const guide = createInstructions(root, {
+    title: "POLARITY",
+    summary: [
+      "Your ship has a sign: plus or minus. Drink every bullet that has the same sign as you.",
+      "The numbers you drink add up. Fire that total back out before it gets too big.",
+    ],
+    sections: [
+      {
+        heading: "Moving and flipping",
+        lines: [
+          "Drag your finger on the screen. The ship follows your finger.",
+          "Tap FLIP to change your sign from plus to minus, or back again.",
+          "On a keyboard: arrow keys or W, A, S, D to move, SPACE to flip, SHIFT to vent.",
+        ],
+      },
+      {
+        heading: "Matching signs",
+        lines: [
+          "Every bullet has a number on it, like +3 or −5.",
+          "A bullet with your sign is food. Fly into it and you drink it.",
+          "A bullet with the other sign hurts you. Flip your sign, or get out of the way.",
+          "A bullet marked 0 is safe either way.",
+        ],
+      },
+      {
+        heading: "Your total",
+        lines: [
+          "The big number at the top is your total. Drinking +3 adds 3. Drinking −5 takes 5 away.",
+          "The bar under it grows right for plus and left for minus.",
+          "The numbers at the ends of the bar are your limit. It starts at 20 each way.",
+          "Go past the limit and the ship overloads: you lose the whole total and cannot move for a moment.",
+          "Keep drinking without being hit and the small × number climbs. It multiplies your score.",
+        ],
+      },
+      {
+        heading: "Venting",
+        lines: [
+          "Tap VENT to fire your whole total back out as darts that chase enemies.",
+          "A bigger total makes more darts. A total smaller than 3 does nothing at all.",
+          "The bar turns red when you are near the limit. That is the moment to vent.",
+          "Vent right at the limit and you get a PERFECT: three times the points and twice the damage.",
+        ],
+      },
+      {
+        heading: "The orbs",
+        lines: [
+          "Now and then a large enemy floats in with a math problem written on it.",
+          "It drops four orbs. Each orb holds a number, and one of them is the answer.",
+          "An orb only touches you if its sign matches yours. Orbs of the other sign pass straight through you.",
+          "So set your sign first, then fly into the orb you picked. A wrong orb blows up and costs a shield.",
+        ],
+      },
+      {
+        heading: "Shields, and coming back",
+        lines: [
+          "The three small diamonds near the top are your shields.",
+          "Being hit costs one shield, halves your total and ends your streak.",
+          "When the last shield goes you get one question. Answer it right and you come back with every shield and a blast that clears the screen.",
+          "Answer it wrong and the run is over.",
+        ],
+      },
+    ],
+    reducedMotion: host.prefersReducedMotion(),
+  });
+
   // --- sizing ---------------------------------------------------------------
   let cssW = 1;
   let cssH = 1;
@@ -297,7 +372,12 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
 
     world.reduced = host.prefersReducedMotion();
 
-    if (!paused) {
+    // Reading the rules is not playing. With the manual open the field holds
+    // its shape, no bullet moves, and the finger resting on the panel is not a
+    // steer — a child who looks something up must not be killed for it.
+    const reading = guide.isOpen;
+
+    if (!paused && !reading) {
       input.step(dt);
       step(world, dt);
       drain();
@@ -313,7 +393,7 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
     }
 
     hud.update(world, Math.abs(world.core) >= world.cap - 4);
-    renderer.draw(world, paused ? 0 : dt);
+    renderer.draw(world, paused || reading ? 0 : dt);
 
     monitor.sample(performance.now() - t0, dt);
   };
@@ -338,6 +418,7 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       saveSeen(world.cues);
       saveBest(world.stats.best);
       input.dispose();
+      guide.destroy();
       hud.dispose();
       renderer.dispose();
       audio.dispose();

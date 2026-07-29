@@ -2,6 +2,7 @@ import { clamp01, fmtScore } from "../core/util.ts";
 import { fmtInt, fmtSigned, parseInt_ } from "../math/signed.ts";
 import { PLAYER } from "../game/constants.ts";
 import type { World } from "../game/world.ts";
+import { applyChromeVars } from "./layout.ts";
 
 /**
  * The HUD is DOM, not canvas: crisp numerals at every density, real safe-area
@@ -83,6 +84,12 @@ export class Hud {
   private touch = false;
 
   constructor(host: HTMLElement, private readonly hooks: HudHooks) {
+    // The stylesheet is a static file and cannot be asserted about, so the
+    // numbers that keep this register clear of the host's two 44px corners
+    // live in `layout.ts` and are handed to the CSS here. The tests read the
+    // same source, so the two cannot drift.
+    applyChromeVars(host);
+
     this.root = el("div", "pol-hud");
 
     // --- top -------------------------------------------------------------
