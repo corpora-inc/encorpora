@@ -1,4 +1,3 @@
-import { labelTile } from "../core/labels.ts";
 import { TAU, angDiff, approach, clamp, clamp01 } from "../core/util.ts";
 import { absorbable, chainMult, overloaded, releaseYield } from "../math/signed.ts";
 import {
@@ -67,8 +66,46 @@ const UNLOCK: readonly EK[][] = [
   [EK.Mote, EK.Weaver, EK.Spinner, EK.Battery, EK.Lancer],
 ];
 
+/**
+ * How deep the run is, and therefore how hard: spawn rate, enemy speed, which
+ * enemies exist at all, and how much hull a boss has.
+ *
+ * **A seal broken, not a clock tick.** It used to be `floor(t / 30)`, so the
+ * arithmetic got faster and more crowded every thirty seconds whether or not the
+ * child had read a single answer — a child still working out `43 + 25` was being
+ * charged rent for thinking. EXPERIENCE_DESIGN.md is explicit that comprehension
+ * time is "not budgeted — the child's time, measured, never limited", and the
+ * rest of this fleet escalates on what the child FINISHED. So does this now.
+ *
+ * A child who is not getting them right stays where they are, for as long as
+ * they like, and the game is still a game: bearers keep arriving, the dodging is
+ * still the dodging. Nothing about the run punishes a slow read.
+ */
+export function stratumOf(w: World): number {
+  return w.stats.right;
+}
+
+/**
+ * How many kinds of enemy exist yet.
+ *
+ * Split off the stratum on purpose. Pressure — spawn rate, speed, boss hull —
+ * rises on what the child ANSWERED, and it must, or the arithmetic charges rent
+ * for thinking. But a roster that also waited on answers would leave a child who
+ * is flying beautifully and reading slowly alone in an empty sky with one kind
+ * of mote, forever, which is not "the dodging is still the dodging" — it is the
+ * floor of it.
+ *
+ * So the world widens on CHARGE ABSORBED: the ship's own arithmetic, performed
+ * by flying, which a child accrues by playing well whether or not they have
+ * broken a seal yet. Idle in the corner and nothing arrives, because nobody is
+ * playing.
+ */
+export function rosterOf(w: World): number {
+  return Math.min(UNLOCK.length - 1, Math.floor(w.stats.absorbs / 40));
+}
+
 function direct(w: World, dt: number): void {
-  const lvl = Math.floor(w.t / PACE.stratum);
+  const lvl = stratumOf(w);
   if (lvl !== w.stratum) {
     w.stratum = lvl;
     if (lvl > 0) {
@@ -80,7 +117,7 @@ function direct(w: World, dt: number): void {
 
   const rate = Math.min(PACE.spawnMax, PACE.spawnBase + lvl * PACE.spawnPerLvl);
   w.spawnAcc += dt * rate;
-  const table = UNLOCK[Math.min(UNLOCK.length - 1, Math.floor(lvl / 1.5))] ?? UNLOCK[0];
+  const table = UNLOCK[rosterOf(w)] ?? UNLOCK[0];
   while (w.spawnAcc >= 1) {
     w.spawnAcc -= 1;
     if (!table) break;
@@ -226,8 +263,7 @@ function absorb(w: World, b: Bullet): void {
   });
   if (big) {
     ring(w, w.px, w.py, 3.2, polHot(b.v), 0.3, 1.4);
-    const tile = labelTile(b.v);
-    if (tile >= 0) addText(w, tile, b.x, b.y, polHot(b.v));
+    addText(w, b.v, b.x, b.y, polHot(b.v));
     punch(w, 0.18);
     w.host.haptic("light");
   }

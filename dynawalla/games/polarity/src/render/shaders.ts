@@ -394,12 +394,16 @@ export const LABEL_VERT = /* glsl */ `
   varying float vAlpha;
   varying vec3 vCol;
   uniform vec2 uGrid;
+  // Cells are wider than they are tall, so a four-digit answer is drawn WIDE
+  // rather than squeezed: iSize is the numeral's height, always.
+  uniform float uAspect;
   void main(){
     float col = mod(iTile, uGrid.x);
     float row = floor(iTile / uGrid.x);
     vUv = (uv + vec2(col, uGrid.y - 1.0 - row)) / uGrid;
     vAlpha = iAlpha; vCol = iCol;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(iPos + position.xy * iSize, 0.0, 1.0);
+    vec2 quad = position.xy * vec2(iSize * uAspect, iSize);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(iPos + quad, 0.0, 1.0);
   }
 `;
 

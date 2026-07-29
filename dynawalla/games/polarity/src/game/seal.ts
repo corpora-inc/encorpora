@@ -1,6 +1,7 @@
-import { labelTile } from "../core/labels.ts";
+import { isPrintable } from "../core/labels.ts";
 import { TAU, approach, clamp } from "../core/util.ts";
-import { parseInt_ } from "../math/signed.ts";
+import { tryParseInt } from "../math/signed.ts";
+import type { Question } from "../contract.ts";
 import {
   BK,
   BULLET,
@@ -36,7 +37,9 @@ import {
  *
  * The whole integration is motion, not UI. A Seal Bearer holds the prompt on
  * its hull and drops four ORBS carrying the answer and three mal-rule
- * distractors. An orb's SIGN is its polarity, so:
+ * distractors. (The Warden does not: its lock is the ship's own running sum, a
+ * number this game invented, and it asks the child nothing — see `stepWarden`.)
+ * An orb's SIGN is its polarity, so:
  *
  *   - you can fly straight through any orb whose sign is not yours — wrong
  *     answers of the opposite sign are ghosts;
@@ -83,8 +86,61 @@ export function launchBoss(w: World): void {
 // asking
 // ---------------------------------------------------------------------------
 
-function askQuestion(w: World, e: Enemy, orbCount: number): void {
-  const q = w.host.next({ difficulty: clamp(0.14 + w.stratum * 0.06, 0, 1) });
+/**
+ * How many items to refuse before giving up on this Bearer.
+ *
+ * Refusing is meant to be a rarity — the atlas prints any integer, so the only
+ * thing left to refuse is an answer that is not one. A bound exists so a host
+ * serving a whole domain this game cannot draw costs a bearer, not a hang.
+ */
+const MAX_ASK_TRIES = 6;
+
+/**
+ * The values an item would put on the field: the answer first, then its wrongs.
+ *
+ * Null means "this game cannot ask this item" — the seal declines it and the
+ * host serves another. Two reasons, both loud where they happen:
+ *
+ *   * a value that will not print, and
+ *   * fewer than two values, which is not a question. One orb on the field is
+ *     the right answer by elimination; a child touching it is not retrieval, and
+ *     reporting it as a correct answer inflates a record that only ever rises.
+ */
+export function orbValues(q: Question, orbCount: number): number[] | null {
+  const answer = tryParseInt(q.answer);
+  // A value the game cannot print must never be offered. There is no third
+  // option where it is offered and comes out blank.
+  if (answer === null || !isPrintable(answer)) return null;
+  const out = [answer];
+  for (const d of q.distractors) {
+    if (out.length >= orbCount) break;
+    const v = tryParseInt(d);
+    // A wrong answer that will not print is dropped, not drawn: three orbs a
+    // child can read beat four where one is a blank disc.
+    if (v === null || !isPrintable(v) || out.includes(v)) continue;
+    out.push(v);
+  }
+  return out.length >= Math.min(2, orbCount) ? out : null;
+}
+
+/** Draw an item this game can actually put on the field, or nothing. */
+function drawAskable(w: World, orbCount: number): { q: Question; values: number[] } | null {
+  for (let i = 0; i < MAX_ASK_TRIES; i++) {
+    const q = w.host.next({ difficulty: clamp(0.14 + w.stratum * 0.06, 0, 1) });
+    const values = orbValues(q, orbCount);
+    if (values) return { q, values };
+    console.error(
+      `[polarity] declined an item POLARITY cannot print: ${q.prompt} = ${JSON.stringify(q.answer)}`,
+    );
+  }
+  console.error("[polarity] no printable item after " + String(MAX_ASK_TRIES) + " tries");
+  return null;
+}
+
+function askQuestion(w: World, e: Enemy, orbCount: number): boolean {
+  const drawn = drawAskable(w, orbCount);
+  if (!drawn) return false;
+  const { q, values } = drawn;
   w.sealSerial++;
   w.seal.serial = w.sealSerial;
   w.seal.state = "asking";
@@ -96,8 +152,6 @@ function askQuestion(w: World, e: Enemy, orbCount: number): void {
   w.promptV++;
   w.stats.asked++;
 
-  const values: number[] = [parseInt_(q.answer)];
-  for (const d of q.distractors) values.push(parseInt_(d));
   const order = w.rng.shuffle(values.map((v, i) => ({ v, correct: i === 0 })));
   const n = Math.min(orbCount, order.length);
 
@@ -117,7 +171,7 @@ function askQuestion(w: World, e: Enemy, orbCount: number): void {
     b.kind = BK.Orb;
     b.owner = 0;
     b.life = 40;
-    b.label = labelTile(o.v);
+    b.labelled = 1;
     b.seal = w.sealSerial;
     b.correct = o.correct ? 1 : 0;
     b.wob = w.rng.f() * TAU;
@@ -128,6 +182,7 @@ function askQuestion(w: World, e: Enemy, orbCount: number): void {
   burst(w, e.x, e.y, 26, 42, COL.gold, { life: 0.6, size: 1.8 });
   punch(w, 0.35);
   cue(w, "seal");
+  return true;
 }
 
 /** Orb flight: glide to the presentation band, hover and weave, then leave. */
@@ -152,6 +207,10 @@ export function stepOrb(w: World, b: Bullet, dt: number, hurry: number): void {
 // ---------------------------------------------------------------------------
 
 function killSealOrbs(w: World, serial: number, correctToo: boolean): void {
+  // Serial 0 is "belongs to no seal", which every chaff round on the field also
+  // carries. A boss whose ask was declined still runs its timeout, and without
+  // this it would sweep the whole playfield clean.
+  if (serial <= 0) return;
   for (let i = 0; i < w.bulletN; i++) {
     const b = w.bullets[i] as Bullet;
     if (b.seal !== serial) continue;
@@ -162,6 +221,21 @@ function killSealOrbs(w: World, serial: number, correctToo: boolean): void {
 }
 
 export function onOrbTouched(w: World, b: Bullet): void {
+  // An orb from a seal that is already over is scenery, not an answer.
+  //
+  // They exist: a wrong answer deliberately leaves the correct orb hanging
+  // there ("the correct orb is still sitting there waiting"), it carries
+  // `life = 40`, and the next Bearer arrives 26 seconds later. Without this
+  // check, flying into that leftover reports its value — and its `correct`
+  // flag — against whichever question is CURRENT, crediting a child with an
+  // answer to a question nobody asked them. It reads as generosity and it is a
+  // false record.
+  if (b.seal !== w.seal.serial) {
+    burst(w, b.x, b.y, 10, 34, polColor(b.v), { life: 0.4, size: 1.4, kind: 1 });
+    b.live = false;
+    return;
+  }
+
   const q = w.seal.q;
   const first = w.seal.state === "asking";
   const correct = b.correct === 1;
@@ -276,9 +350,10 @@ export function stepBoss(w: World, e: Enemy, dt: number, spd: number): void {
 
 function stepBearer(w: World, e: Enemy, _dt: number, spd: number): void {
   if (e.phase === 0 && e.age > 1.15) {
-    e.phase = 1;
-    askQuestion(w, e, 4);
-    e.lockState = 0;
+    // A Bearer with nothing printable to carry is just a boss. It cracks open
+    // rather than hovering over a seal that was never set.
+    e.phase = askQuestion(w, e, 4) ? 1 : 2;
+    e.lockState = e.phase === 1 ? 0 : 2;
     e.fireT = 1.2;
   }
   if (e.phase === 1) {
@@ -308,11 +383,53 @@ function stepBearer(w: World, e: Enemy, _dt: number, spd: number): void {
   }
 }
 
+/** How long a lock stays open, and how long the enrage after it lasts. */
+const LOCK_OPEN_FOR = 15;
+const LOCK_ENRAGE_FOR = 7;
+
 /**
- * The Warden is the deep end: it locks itself to an exact core value taken from
- * a host question, and only a RELEASE at that exact total breaks the lock.
- * Getting within two still does real damage, so a younger player still makes
- * progress; exactness is worth three times as much.
+ * The core value a lock demands.
+ *
+ * The game's OWN number, drawn from inside the band the core can actually reach,
+ * and reported to nobody.
+ *
+ * It used to be a curriculum answer squeezed through `clamp(answer, -cap, cap)`.
+ * With a cap that starts at 20 and an answer stream in the hundreds and
+ * thousands, that clamp fired on essentially every Warden: the boss demanded a
+ * total that had nothing to do with the question printed on its hull, and then
+ * reported that total as the child's answer. A child who played it perfectly was
+ * recorded as answering `20` to `4003 − 87`, and an adaptive controller reading
+ * that record would push them DOWN the ladder for playing well.
+ *
+ * A clamp that changes the question is not a clamp, it is a corruption. The band
+ * now constrains what is ASKED — the lock asks for a number the core can hold —
+ * and it asks it on the game's own behalf, so there is nothing to corrupt.
+ */
+function drawLockTarget(w: World): number {
+  const reach = Math.max(4, Math.min(w.cap, 18));
+  return w.rng.sign() * w.rng.i(3, reach);
+}
+
+/**
+ * The Warden is the deep end: it locks itself to an exact core total, and only a
+ * RELEASE at that exact total breaks the lock. Getting within two still does
+ * real damage, so a younger player still makes progress; exactness is worth
+ * three times as much.
+ *
+ * **It asks the child nothing, and it reports nothing.** The lock is the ship's
+ * own running sum — the arithmetic a child performs by flying — and `pack.ts`
+ * has always said that is "not a question anybody asked, so nothing about it is
+ * reported". The curriculum's questions belong to the Bearer, which can put four
+ * readable values on the field and be answered by touching one.
+ *
+ * Giving the Warden orbs as well was tried and reverted in the same change: the
+ * lock and a live seal share one boss and fight each other — answering cracks
+ * the hull open, which closes the lock, so a right answer would delete the
+ * mechanic and a wrong one would not. Two things at once in a bullet phase is a
+ * design decision that wants a tablet and a child, not a patch.
+ *
+ * Its timing runs off `e.age` rather than `w.seal.askedAt`, because it no longer
+ * owns a seal and a stale `askedAt` would open and close the lock in one frame.
  */
 function stepWarden(w: World, e: Enemy, _dt: number, spd: number): void {
   const hpf = e.hp / e.maxHp;
@@ -337,8 +454,8 @@ function stepWarden(w: World, e: Enemy, _dt: number, spd: number): void {
     }
     if (e.age > 6.5) {
       e.phase = 2;
-      askQuestion(w, e, 0); // no orbs — the lock IS the answer
-      e.lockWant = clamp(parseInt_(w.seal.q?.answer ?? "0"), -w.cap, w.cap);
+      e.age = 0;
+      e.lockWant = drawLockTarget(w);
       e.lockState = 1;
       e.fireT = 0.6;
       cue(w, "lock");
@@ -361,9 +478,9 @@ function stepWarden(w: World, e: Enemy, _dt: number, spd: number): void {
         fireChaff(w, e.x, e.y, -Math.PI / 2 + (i - 1.5) * 0.7, 32 * spd, w.rng.sign());
       }
     }
-    if (w.t - w.seal.askedAt > 15) {
-      sealTimedOut(w);
+    if (e.age > LOCK_OPEN_FOR) {
       e.phase = 3;
+      e.age = 0;
       e.lockState = 0;
       e.fireT = 0.2;
     }
@@ -379,7 +496,7 @@ function stepWarden(w: World, e: Enemy, _dt: number, spd: number): void {
         fireChaff(w, e.x, e.y, t, 38 * spd, arm % 2 ? 1 : -1, hpf < 0.4 ? 2 : 1);
       }
     }
-    if (e.age > 0 && w.t - w.seal.askedAt > 22) {
+    if (e.age > LOCK_ENRAGE_FOR) {
       e.phase = 1;
       e.age = 0;
       e.fireT = 0.5;
@@ -401,18 +518,13 @@ export function tryLock(w: World, e: Enemy): "exact" | "near" | "miss" {
   e.hp -= exact ? Math.ceil(e.maxHp * 0.42) : Math.ceil(e.maxHp * 0.14);
   e.hitFlash = 1;
   e.phase = 3;
+  e.age = 0;
   e.lockState = 0;
   w.stats.score += exact ? SCORE.wardenLockExact : SCORE.wardenLockNear;
-  if (exact && w.seal.state === "asking" && w.seal.q) {
-    w.seal.state = "won";
-    w.stats.right++;
-    w.host.report({
-      questionId: w.seal.q.id,
-      correct: true,
-      ms: Math.max(1, Math.round((w.t - w.seal.askedAt) * 1000)),
-      answered: String(w.core),
-    });
-  }
+  // Nothing is reported here, deliberately. The lock is the ship's own running
+  // sum — a number this game invented, inside a band this game chose — and the
+  // curriculum never asked it. The Warden's actual question is committed by
+  // touching an orb, same as every other question, and that is what is reported.
   hitstop(w, exact ? 0.13 : 0.06);
   slowmo(w, exact ? 0.5 : 0.2, 0.7);
   punch(w, exact ? 1 : 0.5);
@@ -432,8 +544,12 @@ export function tryLock(w: World, e: Enemy): "exact" | "near" | "miss" {
 export function bossDefeated(w: World, e: Enemy): void {
   if (w.seal.state === "asking" && e.seal === w.seal.serial) {
     sealTimedOut(w);
-    killSealOrbs(w, e.seal, true);
   }
+  // Unconditionally, not only when the seal was still open. A seal LOST to a
+  // wrong answer deliberately leaves its correct orb hovering, and that orb
+  // outlives the boss by half a minute — long enough to be flown into while the
+  // next Bearer's question is on screen.
+  killSealOrbs(w, e.seal, true);
   w.bossActive = false;
   w.hush = 0;
   w.stats.score += e.kind === EK.Warden ? SCORE.wardenLockExact : SCORE.bearerKill;

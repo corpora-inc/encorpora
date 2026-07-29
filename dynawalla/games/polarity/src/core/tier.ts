@@ -93,14 +93,18 @@ export function detectTier(): Tier {
  * detected ceiling) so a wrong guess costs ~1.5s of judder, not a session.
  */
 export class TierMonitor {
+  tier: Tier;
   private samples: number[] = [];
   private cursor = 0;
   private cooldown = 0;
-  constructor(
-    public tier: Tier,
-    private readonly onChange: (t: Tier) => void,
-    private readonly ceiling: TierName = tier.name,
-  ) {
+  private readonly onChange: (t: Tier) => void;
+  private readonly ceiling: TierName;
+  // Written out rather than as constructor parameter properties: this module is
+  // imported by the game-layer tests, and node's type stripping refuses them.
+  constructor(tier: Tier, onChange: (t: Tier) => void, ceiling: TierName = tier.name) {
+    this.tier = tier;
+    this.onChange = onChange;
+    this.ceiling = ceiling;
     for (let i = 0; i < 90; i++) this.samples.push(16.7);
   }
 

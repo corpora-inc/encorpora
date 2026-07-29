@@ -31,6 +31,18 @@ export function parseInt_(s: string): number {
 }
 
 /**
+ * `parseInt_` without the throw, for the one caller that is inside the frame
+ * loop. A host is free to hand a pack a value this game has no orb for; that is
+ * a thing to decline out loud, not a thing to crash a child's run over.
+ */
+export function tryParseInt(s: string): number | null {
+  const t = s.trim().replace(/−/g, "-").replace(/^\+/, "");
+  if (!/^-?\d+$/.test(t)) return null;
+  const n = Number(t);
+  return Number.isSafeInteger(n) ? n : null;
+}
+
+/**
  * The polarity a value belongs to. Zero is the origin: it is absorbable in
  * EITHER polarity, which is both a nice mechanic and arithmetically honest.
  */

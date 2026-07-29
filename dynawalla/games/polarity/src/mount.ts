@@ -121,13 +121,15 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       revive(world);
       audio.sealWon();
     },
-    onSkipRevive: () => {
+    onSkipRevive: (answered) => {
       if (reviveQ) {
+        // What the child touched, not an empty string. A wrong answer a child
+        // gave is data; a blank is a claim they gave none, and it is false.
         host.report({
           questionId: reviveQ.id,
           correct: false,
           ms: Math.max(1, Math.round(performance.now() - reviveAt)),
-          answered: "",
+          answered,
         });
         world.stats.asked++;
       }

@@ -1,40 +1,97 @@
 import { CanvasTexture, LinearFilter, SRGBColorSpace, Texture } from "three";
-import { LABEL_COLS, LABEL_COUNT, LABEL_MIN, LABEL_ROWS } from "../core/labels.ts";
+import { LABEL_ASPECT, LABEL_COLS, LABEL_ROWS, LabelBook } from "../core/labels.ts";
 
 const FACE =
   '900 76px ui-rounded, "SF Pro Rounded", "Segoe UI Variable Display", ' +
   '"Nimbus Sans", Inter, system-ui, sans-serif';
 
 /**
- * Bakes -40..40 into one square-tiled texture. White on transparent so the
- * shader can tint per instance; a soft dark rim is baked in so a numeral stays
- * readable when it lands on top of its own additive glow.
+ * The numerals on the playfield, painted on demand.
+ *
+ * White on transparent so the shader can tint per instance; a soft dark rim is
+ * baked in so a numeral stays readable when it lands on top of its own additive
+ * glow. Nothing is baked ahead of time — a cell is painted the first frame its
+ * value is asked for, which is what lets an orb carry `3916` as easily as `7`.
+ *
+ * Cells are `LABEL_ASPECT` times wider than they are tall. A long answer gets
+ * width, not a horizontal squeeze: every numeral on the field is drawn at the
+ * same glyph HEIGHT, which is the thing a child reads at speed.
  */
-export function buildLabelAtlas(tilePx: number): Texture {
-  const c = document.createElement("canvas");
-  c.width = LABEL_COLS * tilePx;
-  c.height = LABEL_ROWS * tilePx;
-  const g = c.getContext("2d");
-  if (!g) throw new Error("[polarity] 2d context unavailable for the label atlas");
+export class LabelAtlas {
+  readonly book: LabelBook;
+  readonly texture: Texture;
+  readonly cols = LABEL_COLS;
+  readonly rows = LABEL_ROWS;
+  readonly aspect = LABEL_ASPECT;
 
-  g.textAlign = "center";
-  g.textBaseline = "middle";
+  private readonly canvas: HTMLCanvasElement;
+  private readonly g: CanvasRenderingContext2D;
+  private readonly cellW: number;
+  private readonly cellH: number;
 
-  for (let i = 0; i < LABEL_COUNT; i++) {
-    const v = i + LABEL_MIN;
-    const col = i % LABEL_COLS;
-    const row = (i / LABEL_COLS) | 0;
-    const cx = col * tilePx + tilePx / 2;
-    const cy = row * tilePx + tilePx / 2;
-    const s = v < 0 ? "−" + -v : String(v);
+  constructor(cellPx: number) {
+    this.book = new LabelBook(LABEL_COLS * LABEL_ROWS);
+    this.cellH = cellPx;
+    this.cellW = cellPx * LABEL_ASPECT;
+    this.canvas = document.createElement("canvas");
+    this.canvas.width = this.cols * this.cellW;
+    this.canvas.height = this.rows * this.cellH;
+    const g = this.canvas.getContext("2d");
+    if (!g) throw new Error("[polarity] 2d context unavailable for the label atlas");
+    this.g = g;
+    g.textAlign = "center";
+    g.textBaseline = "middle";
 
+    const tex = new CanvasTexture(this.canvas);
+    tex.colorSpace = SRGBColorSpace;
+    tex.minFilter = LinearFilter;
+    tex.magFilter = LinearFilter;
+    tex.generateMipmaps = false;
+    tex.anisotropy = 1;
+    tex.needsUpdate = true;
+    this.texture = tex;
+  }
+
+  /** Once per frame, before any `tileFor`. */
+  beginFrame(): void {
+    this.book.beginFrame();
+  }
+
+  /** The tile that prints `v`. Never negative — see `LabelBook.tileFor`. */
+  tileFor(v: number): number {
+    return this.book.tileFor(v);
+  }
+
+  /** Paint whatever changed this frame. A no-op on the frames nothing did. */
+  flush(): void {
+    const dirty = this.book.takeDirty();
+    if (dirty.length === 0) return;
+    for (const tile of dirty) this.paint(tile);
+    this.texture.needsUpdate = true;
+  }
+
+  dispose(): void {
+    this.texture.dispose();
+  }
+
+  private paint(tile: number): void {
+    const s = this.book.textAt(tile);
+    if (s === null) return;
+    const col = tile % this.cols;
+    const row = (tile / this.cols) | 0;
+    const x = col * this.cellW;
+    const y = row * this.cellH;
+    const g = this.g;
+
+    g.clearRect(x, y, this.cellW, this.cellH);
     g.save();
-    g.translate(cx, cy);
-    g.scale(tilePx / 128, tilePx / 128);
+    g.translate(x + this.cellW / 2, y + this.cellH / 2);
+    g.scale(this.cellH / 128, this.cellH / 128);
     g.font = FACE;
-    // squeeze 3-glyph labels so "−40" occupies the same box as "7"
+    // The cell is 256 units wide in this space. Squeeze only what genuinely
+    // overflows it — which the shipping curriculum never does.
     const w = g.measureText(s).width;
-    const maxW = 104;
+    const maxW = 128 * LABEL_ASPECT - 24;
     if (w > maxW) g.scale(maxW / w, 1);
 
     // dark contrast rim first, then the solid face
@@ -47,15 +104,6 @@ export function buildLabelAtlas(tilePx: number): Texture {
     g.fillText(s, 0, 2);
     g.restore();
   }
-
-  const tex = new CanvasTexture(c);
-  tex.colorSpace = SRGBColorSpace;
-  tex.minFilter = LinearFilter;
-  tex.magFilter = LinearFilter;
-  tex.generateMipmaps = false;
-  tex.anisotropy = 1;
-  tex.needsUpdate = true;
-  return tex;
 }
 
 /**
