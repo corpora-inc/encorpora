@@ -1,0 +1,21 @@
+{
+  "name": "@dynawalla/game-chrome",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Safe-area insets, the two host-chrome corners, and the how-to-play sheet — the UI contract every dynawalla game shares. Exists so 27 games do not each solve the notch alone.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"*.test.ts\"",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0"
+  }
+}
