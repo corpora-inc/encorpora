@@ -43,6 +43,11 @@ import {
   KIND_STEAM,
   makeParticles,
 } from "../render/particles.ts"
+import {
+  createInstructions,
+  onInsetsChange,
+  safeRect,
+} from "../../../../packs/shared/game-chrome/index.ts"
 import { drawScene, markRects, overlayQuestionRects } from "../scene/draw.ts"
 import { computeLayout, hit, type Rect } from "./layout.ts"
 import { applyOffer, makeMarkRound } from "./marks.ts"
@@ -69,8 +74,17 @@ export function mount(el: HTMLElement, host: Host): Mounted {
   const pointerFine =
     typeof matchMedia === "function" ? matchMedia("(pointer: fine)").matches : true
 
+  // Rotation swaps the safe-area insets and iPadOS changes them when the pack
+  // is resized in Split View, both of which can happen without the canvas
+  // changing size — and `surface.resize()` reports false in that case. A layout
+  // read once at mount is right until the first turn of the tablet.
+  let relayout = false
+  const stopInsets = onInsetsChange(() => {
+    relayout = true
+  })
+
   const g: Game = {
-    layout: computeLayout(surface.w, surface.h, 1),
+    layout: computeLayout(surface.w, surface.h, 1, safeRect(surface.w, surface.h)),
     economy,
     juice,
     particles,
@@ -732,6 +746,89 @@ export function mount(el: HTMLElement, host: Host): Mounted {
     }
   }
 
+  // --- how to play ---------------------------------------------------------
+  //
+  // The README says "no instructions, because none are needed. Everything
+  // appears when it becomes relevant." That is true of the anvil and false of
+  // everything else. Nothing on screen says a CRUCIBLE makes BELLOWS rather
+  // than sparks, nothing says heat leaks away while you think, and nothing says
+  // the two glowing ingots are a comparison you are supposed to LOOK at the row
+  // to settle. A child who never works that out plays a tapping game.
+  //
+  // It is a manual and not a tutorial: the panel stays reachable during play,
+  // because the moment a child needs the rules is never the title screen.
+  const guide = createInstructions(el, {
+    title: "FORGE",
+    summary: [
+      "You run a forge. Answer the sum on the anvil and you earn sparks.",
+      "Spend sparks on machines. The machines build other machines, and everything you own starts making more, faster.",
+    ],
+    sections: [
+      {
+        heading: "The anvil",
+        lines: [
+          "A bar of hot iron shows a sum, like 15 − 8.",
+          "Four ingots sit under it, each with a number on it. Hit the one that is the answer.",
+          "You are paid the answer itself, plus one second of everything your machines make.",
+          "So a big answer pays more. 12 × 11 pays 132 sparks. 4 + 5 pays 9. Pick the big ones when you can.",
+          "Get several right in a row and each one pays more than the last.",
+        ],
+      },
+      {
+        heading: "The six machines",
+        lines: [
+          "Down the side: BELLOWS, CRUCIBLE, HAMMER, ANVIL, FOUNDRY, REACTOR.",
+          "Bellows make sparks. Crucibles make bellows. Hammers make crucibles. Each machine builds the one above it in the list.",
+          "Tap a machine to buy one. Press and hold to keep buying, and it speeds up the longer you hold.",
+          "A REACTOR makes no sparks at all by itself. It makes the thing that makes the thing that makes sparks. Buy one and watch the counter a minute later.",
+          "The last four machines arrive chained shut. Answer a sum to break the chain. Getting it wrong here costs you nothing — it just asks again.",
+        ],
+      },
+      {
+        heading: "Heat",
+        lines: [
+          "Every right answer pours heat into the forge, and heat multiplies everything you make.",
+          "Heat leaks away all the time, so the bar is dropping while you think.",
+          "A wrong answer costs you a quarter of the heat you had. The better you are doing, the more a guess costs you.",
+        ],
+      },
+      {
+        heading: "Forge marks",
+        lines: [
+          "Sometimes two glowing ingots rise out of the crucible. One says something like +14 HAMMER. The other says ×2 HAMMER.",
+          "Look at the HAMMER row to see how many you own, then work out which ingot gives you more.",
+          "Own 9 hammers? ×2 gives 18, and +14 gives 23. Take the +14.",
+          "Own 400 hammers? ×2 gives 800, and +14 gives 414. Now take the ×2.",
+          "Neither one is wrong and nothing is lost. But the better one changes as you play, so look at the row every time.",
+        ],
+      },
+      {
+        heading: "The quench",
+        lines: [
+          "When the QUENCH plate lights up blue you can plunge the forge, start again from nothing, and keep some carbon.",
+          "Carbon is permanent. It multiplies everything from now on, so the next run gets as far in ninety seconds as this one did in four minutes.",
+          "The screen shows you the square root it worked out to decide how much carbon you get.",
+        ],
+      },
+      {
+        heading: "While you are away",
+        lines: [
+          "The forge keeps working when you close the app, for up to four hours.",
+          "When you come back, one strike claims what it made. A right answer claims all of it, a wrong answer claims half. Nothing is ever taken away.",
+        ],
+      },
+      {
+        heading: "Keyboard",
+        lines: [
+          "A S D F G H buy the six machines.",
+          "1 2 3 4 pick an ingot.",
+          "Space quenches. M turns the sound off.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
+  })
+
   surface.canvas.addEventListener("pointerdown", onDown, { passive: false })
   globalThis.addEventListener("pointerup", onUp)
   globalThis.addEventListener("pointercancel", onUp)
@@ -772,7 +869,10 @@ export function mount(el: HTMLElement, host: Host): Mounted {
     const dt = realDt * juice.timeScale
     g.clock += dt
 
-    if (surface.resize()) g.layout = computeLayout(surface.w, surface.h, g.revealed)
+    if (surface.resize() || relayout) {
+      relayout = false
+      g.layout = computeLayout(surface.w, surface.h, g.revealed, safeRect(surface.w, surface.h))
+    }
 
     // Economy: fixed 60 Hz, frozen during hitstop. Deterministic regardless of
     // display refresh rate — a 120 Hz tablet earns exactly what a 60 Hz one does.
@@ -1058,6 +1158,8 @@ export function mount(el: HTMLElement, host: Host): Mounted {
     unmount() {
       cancelAnimationFrame(raf)
       save(economy, markOom, g.audioOn)
+      guide.destroy()
+      stopInsets()
       surface.canvas.removeEventListener("pointerdown", onDown)
       surface.canvas.removeEventListener("pointermove", onMove)
       globalThis.removeEventListener("pointerup", onUp)

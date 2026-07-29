@@ -26,8 +26,14 @@ seconds later the curve you are watching is visibly steeper.
 The workbench is on the right: a bar of hot iron on the anvil with `15 − 8`
 burned into it, four cast ingots below it, and a hammer. Hit the right one.
 
-No instructions, because none are needed. Everything appears when it becomes
-relevant and nothing arrives with a tutorial attached.
+Nothing arrives with a tutorial attached: everything appears when it becomes
+relevant, and the anvil teaches itself. But the rest of the forge does not.
+Nothing on screen says a CRUCIBLE makes BELLOWS rather than sparks, that heat
+leaks away while you think, or that the two glowing ingots are a comparison you
+settle by *looking at the row*. So there is a manual, on the shared `?` control
+from `packs/shared/game-chrome/`, reachable during play rather than only before
+it — a child needs the rules at the moment they are stuck, which is never the
+title screen.
 
 ---
 

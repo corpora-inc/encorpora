@@ -29,9 +29,14 @@ export function drawOverlay(ctx: CanvasRenderingContext2D, g: Game): void {
 export function overlayQuestionRects(g: Game): { panel: Rect; slugs: Rect[] } {
   const L = g.layout
   const S = L.scale
-  const pw = Math.min(L.w - L.pad * 2, 720 * S)
-  const ph = Math.min(L.h - L.pad * 2, 430 * S)
-  const panel: Rect = { x: (L.w - pw) / 2, y: (L.h - ph) / 2, w: pw, h: ph }
+  const pw = Math.min(L.safe.w - L.pad * 2, 720 * S)
+  const ph = Math.min(L.safe.h - L.pad * 2, 430 * S)
+  const panel: Rect = {
+    x: L.safe.x + (L.safe.w - pw) / 2,
+    y: L.safe.y + (L.safe.h - ph) / 2,
+    w: pw,
+    h: ph,
+  }
   const gap = 10 * S
   const sw = (pw - 40 * S - gap * 3) / 4
   const sh = Math.min(110 * S, ph * 0.26)
@@ -172,9 +177,14 @@ function drawHaul(ctx: CanvasRenderingContext2D, g: Game): void {
 export function markRects(g: Game): { panel: Rect; a: Rect; b: Rect } {
   const L = g.layout
   const S = L.scale
-  const pw = Math.min(L.w - L.pad * 2, 760 * S)
-  const ph = Math.min(L.h - L.pad * 2, 396 * S)
-  const panel: Rect = { x: (L.w - pw) / 2, y: (L.h - ph) / 2, w: pw, h: ph }
+  const pw = Math.min(L.safe.w - L.pad * 2, 760 * S)
+  const ph = Math.min(L.safe.h - L.pad * 2, 396 * S)
+  const panel: Rect = {
+    x: L.safe.x + (L.safe.w - pw) / 2,
+    y: L.safe.y + (L.safe.h - ph) / 2,
+    w: pw,
+    h: ph,
+  }
   const stacked = pw < 520 * S
   if (stacked) {
     const ih = (ph - 190 * S) / 2
@@ -291,9 +301,14 @@ function drawQuench(ctx: CanvasRenderingContext2D, g: Game): void {
   if (g.quenchPhase === "confirm") {
     const k = ease.outQuint(clamp01(g.quenchT))
     scrim(ctx, g, k)
-    const pw = Math.min(L.w - L.pad * 2, 700 * S)
-    const ph = Math.min(L.h - L.pad * 2, 470 * S)
-    const panel: Rect = { x: (L.w - pw) / 2, y: (L.h - ph) / 2, w: pw, h: ph }
+    const pw = Math.min(L.safe.w - L.pad * 2, 700 * S)
+    const ph = Math.min(L.safe.h - L.pad * 2, 470 * S)
+    const panel: Rect = {
+      x: L.safe.x + (L.safe.w - pw) / 2,
+      y: L.safe.y + (L.safe.h - ph) / 2,
+      w: pw,
+      h: ph,
+    }
     ctx.save()
     ctx.globalAlpha = k
     plate(ctx, panel.x, panel.y, panel.w, panel.h, {
