@@ -325,3 +325,27 @@ test("a difficulty request is on the wire, and only the fields that were named",
   assert.deepEqual(seen[2], { id: 3, method: "items.next", params: { skillId: "add.1" } })
   host.dispose()
 })
+
+test("connecting installs the tap guard on the pack document", async (t) => {
+  // The one wire that makes this automatic. If `connect()` stops calling
+  // `installTapZoomGuard`, twenty-seven packs silently get their double-tap
+  // zoom back and every test in `tapzoom.test.ts` still passes.
+  const bound: string[] = []
+  const document = {
+    addEventListener: (type: string) => {
+      bound.push(type)
+    },
+    removeEventListener: () => {},
+  }
+  ;(globalThis as { document?: unknown }).document = document
+  t.after(() => {
+    delete (globalThis as { document?: unknown }).document
+    cleanup()
+  })
+
+  const { client } = withFakeFrame()
+  const host = await client
+  assert.ok(bound.includes("touchend"), `no touchend guard on the pack document: ${bound.join(", ")}`)
+  assert.ok(bound.includes("touchstart"))
+  host.dispose()
+})

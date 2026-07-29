@@ -68,3 +68,15 @@ export type { HostRange, Semver } from "./semver.ts"
 
 export { PackError, connect } from "./guest.ts"
 export type { HostClient, ItemRequest } from "./guest.ts"
+
+// `connect()` installs the guard itself — a pack never has to call this. It is
+// exported so the host and the dev harness can install the same one, and so a
+// pack that runs unframed on purpose still has a way to.
+export {
+  DOUBLE_TAP_MS,
+  DOUBLE_TAP_SLOP_PX,
+  DRAG_SLOP_PX,
+  TapZoomGuard,
+  installTapZoomGuard,
+} from "./tapzoom.ts"
+export type { GuardTouch, GuardTouchEvent, TapGuardOptions, TapGuardTarget } from "./tapzoom.ts"
