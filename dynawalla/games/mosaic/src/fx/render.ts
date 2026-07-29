@@ -8,6 +8,11 @@
  *
  * The play area's aspect is clamped, so a wide desktop window gets stone piers
  * down each side rather than a squashed wall — the window is always a window.
+ * It is fitted inside the SAFE rect rather than the canvas, so the HUD clears
+ * the notch and the home indicator; the gradient and the piers still bleed to
+ * every edge, which is what `viewport-fit=cover` is for. `fx/hud.ts` owns that
+ * arithmetic and the HUD's clearance of the host's two corners, because both
+ * have to be assertable in a test rather than on a device.
  */
 import type { Sim } from "../game/state.ts";
 import { VW } from "../game/state.ts";
@@ -15,8 +20,12 @@ import { MOLTEN_AT, paddleHalf, tileX, tileY, TRAIL_LEN } from "../game/sim.ts";
 import { MASONRY_HP } from "../game/wall.ts";
 import { ruleBanner } from "../game/rules.ts";
 import { FORGE_TIMEOUT } from "../game/forge.ts";
+import type { Rect } from "../../../../packs/shared/game-chrome/index.ts";
+import { NO_INSETS, type Insets } from "../../../../packs/shared/game-chrome/index.ts";
 import type { Camera } from "./camera.ts";
 import { clamp01, easeOutCubic, easeOutQuint } from "./camera.ts";
+import type { HudLayout, View } from "./hud.ts";
+import { fitPlay, hudLayout, insetsFromArea } from "./hud.ts";
 import type { Particles } from "./particles.ts";
 import { Sprites, FONT, TILE_BLEED, roundRect } from "./sprites.ts";
 import {
@@ -33,9 +42,6 @@ import {
   STONE,
   STONE_HI,
 } from "./palette.ts";
-
-const ASPECT_MIN = 1.06;
-const ASPECT_MAX = 1.86;
 
 export type Hud = {
   /** 0..1 pulse used by the charge bar when it is full. */
@@ -62,6 +68,12 @@ export class Renderer {
   private backdrop: HTMLCanvasElement | null = null;
   private fontCache = new Map<string, string>();
   private t = 0;
+  private view: View = fitPlay(360, 640, { x: 0, y: 0, w: 360, h: 640 });
+  private insets: Insets = { ...NO_INSETS };
+  // The HUD layout only changes on a resize or a new rule, so it is computed
+  // then rather than sixty times a second.
+  private layout: HudLayout | null = null;
+  private layoutBanner = "";
 
   constructor(readonly canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext("2d", { alpha: false });
@@ -69,8 +81,16 @@ export class Renderer {
     this.ctx = ctx;
   }
 
-  /** @returns the virtual playfield height the sim should use. */
-  resize(cssW: number, cssH: number, dprCap = 2): number {
+  /**
+   * Size the canvas and fit the window inside `area`.
+   *
+   * `area` is the SAFE rect — `safeRect(cssW, cssH)` — and it is required, not
+   * defaulted. Made optional, a caller that forgets it compiles and quietly
+   * draws the score under the notch, discoverable only on a device that has one.
+   *
+   * @returns the virtual playfield height the sim should use.
+   */
+  resize(cssW: number, cssH: number, area: Rect, dprCap = 2): number {
     this.cssW = cssW;
     this.cssH = cssH;
     this.dpr = Math.min(dprCap, globalThis.devicePixelRatio || 1);
@@ -79,19 +99,16 @@ export class Renderer {
     this.canvas.style.width = `${cssW}px`;
     this.canvas.style.height = `${cssH}px`;
 
-    const want = cssH / cssW;
-    const aspect = Math.max(ASPECT_MIN, Math.min(ASPECT_MAX, want));
-    if (want > aspect) {
-      this.playW = cssW;
-      this.playH = cssW * aspect;
-    } else {
-      this.playH = cssH;
-      this.playW = cssH / aspect;
-    }
-    this.playX = (cssW - this.playW) / 2;
-    this.playY = (cssH - this.playH) / 2;
-    this.scale = this.playW / VW;
-    this.vh = VW * aspect;
+    this.insets = insetsFromArea(cssW, cssH, area);
+    const view = fitPlay(cssW, cssH, area);
+    this.view = view;
+    this.playX = view.playX;
+    this.playY = view.playY;
+    this.playW = view.playW;
+    this.playH = view.playH;
+    this.scale = view.scale;
+    this.vh = view.vh;
+    this.layout = null;
     this.lightSprite = null;
     this.shaftSprite = null;
     this.backdrop = null;
@@ -151,21 +168,11 @@ export class Renderer {
     g.fillRect(0, 0, this.cssW, this.cssH);
     this.drawPiers();
 
-    // Play transform: shake, zoom punch, camera roll.
-    g.save();
-    g.translate(this.playX + cam.offX * this.scale, this.playY + cam.offY * this.scale);
-    g.scale(this.scale, this.scale);
-    g.translate(VW / 2, this.vh / 2);
-    g.scale(cam.zoom, cam.zoom);
-    g.rotate(cam.rot);
-    g.translate(-VW / 2, -this.vh / 2);
-
-    g.beginPath();
-    g.rect(-4, -4, VW + 8, this.vh + 8);
-    g.clip();
-
     const total = Math.max(1, sim.wave.guiltyTotal);
     const clearedFrac = clamp01(sim.broken / total);
+
+    // The world, under the camera: shake, zoom punch, camera roll.
+    this.enter(cam);
 
     if (!this.backdrop) this.backdrop = this.makeBackdrop();
     g.drawImage(this.backdrop, 0, 0, VW, this.vh);
@@ -183,12 +190,26 @@ export class Renderer {
     p.drawRings(g);
     p.drawSparks(g);
     p.drawFloaters(g, FONT);
-
-    this.drawHud(sim, hud, clearedFrac);
-    if (sim.forge) this.drawForge(sim);
-    if (sim.phase === "gameover") this.drawGameOver(sim);
-
     g.restore();
+
+    // The HUD is chrome, not scenery. It now carries a promise — it clears the
+    // host's two 44px corners — and a promise a zoom punch breaks for 100ms is
+    // not one: at 1.17x zoom about the centre, a plate resting 78 units from the
+    // top of a 1775-unit window travels about 66 units further up, which is
+    // straight back under the exit chevron. So it is drawn in the play rect
+    // without the camera. The world still shakes; the score no longer does.
+    this.enter(null);
+    this.drawHud(sim, hud, clearedFrac);
+    g.restore();
+
+    // The forge and the game-over card dim everything under them, so they are
+    // drawn last and stay with the camera.
+    if (sim.forge || sim.phase === "gameover") {
+      this.enter(cam);
+      if (sim.forge) this.drawForge(sim);
+      if (sim.phase === "gameover") this.drawGameOver(sim);
+      g.restore();
+    }
 
     // Flash, budgeted in `Camera`.
     if (cam.flash > 0.002) {
@@ -200,13 +221,51 @@ export class Renderer {
     }
   }
 
+  /**
+   * Enter the play rect. With a camera, the world's transform; without one, the
+   * same frame held still, which is where the HUD is drawn.
+   *
+   * Balanced by the caller's `g.restore()`.
+   */
+  private enter(cam: Camera | null): void {
+    const g = this.ctx;
+    g.save();
+    if (cam) {
+      g.translate(this.playX + cam.offX * this.scale, this.playY + cam.offY * this.scale);
+      g.scale(this.scale, this.scale);
+      g.translate(VW / 2, this.vh / 2);
+      g.scale(cam.zoom, cam.zoom);
+      g.rotate(cam.rot);
+      g.translate(-VW / 2, -this.vh / 2);
+    } else {
+      g.translate(this.playX, this.playY);
+      g.scale(this.scale, this.scale);
+    }
+    g.beginPath();
+    g.rect(-4, -4, VW + 8, this.vh + 8);
+    g.clip();
+  }
+
   // -- layers ---------------------------------------------------------------
 
+  /**
+   * Stone around the window.
+   *
+   * The leftover is no longer symmetric: the play rect is fitted inside the SAFE
+   * rect, so a left notch inset makes the left pier wider than the right one and
+   * a top inset makes the top band taller than the bottom. Each band is drawn
+   * from its own measured width, so the stone still reaches every edge of the
+   * canvas — full bleed under the notch is exactly what `cover` is for.
+   */
   private drawPiers(): void {
     const g = this.ctx;
-    if (this.playX > 1) {
-      const w = this.playX;
-      for (const x of [0, this.playX + this.playW]) {
+    const rightX = this.playX + this.playW;
+    const rightW = this.cssW - rightX;
+    const piers: Array<[number, number]> = [];
+    if (this.playX > 1) piers.push([0, this.playX]);
+    if (rightW > 1) piers.push([rightX, rightW]);
+    if (piers.length) {
+      for (const [x, w] of piers) {
         const grad = g.createLinearGradient(x, 0, x + w, 0);
         grad.addColorStop(0, "#08071a");
         grad.addColorStop(0.5, STONE);
@@ -218,15 +277,16 @@ export class Renderer {
       g.globalAlpha = 0.35;
       const step = Math.max(48, this.cssH / 14);
       for (let y = 0; y < this.cssH; y += step) {
-        g.fillRect(0, y, this.playX, 1.5);
-        g.fillRect(this.playX + this.playW, y, this.playX, 1.5);
+        for (const [x, w] of piers) g.fillRect(x, y, w, 1.5);
       }
       g.globalAlpha = 1;
     }
-    if (this.playY > 1) {
+    const bottomY = this.playY + this.playH;
+    const bottomH = this.cssH - bottomY;
+    if (this.playY > 1 || bottomH > 1) {
       g.fillStyle = "#0a0918";
-      g.fillRect(0, 0, this.cssW, this.playY);
-      g.fillRect(0, this.playY + this.playH, this.cssW, this.playY + 2);
+      if (this.playY > 1) g.fillRect(0, 0, this.cssW, this.playY);
+      if (bottomH > 1) g.fillRect(0, bottomY, this.cssW, bottomH);
     }
   }
 
@@ -678,12 +738,21 @@ export class Renderer {
 
     // THE RULE. The only instruction the game has.
     const banner = ruleBanner(sim.rule);
+    // Where all of this goes is `fx/hud.ts`'s answer, not a column of constants
+    // here: it has to clear the host's two corners, and that is arithmetic a
+    // test can check at every viewport.
+    if (!this.layout || this.layoutBanner !== banner) {
+      this.layoutBanner = banner;
+      this.layout = hudLayout(this.view, this.insets, banner);
+    }
+    const L = this.layout;
+
     const introT = clamp01(hud.waveIntro);
     const pop = 1 + easeOutQuint(1 - introT) * 0 + introT * 0.22;
     g.save();
-    g.translate(VW / 2, 78);
+    g.translate(L.banner.cx, L.banner.cy);
     g.scale(pop, pop);
-    const plateW = Math.max(240, banner.length * 46 + 96);
+    const plateW = L.banner.plateW;
     roundRect(g, -plateW / 2, -50, plateW, 100, 16);
     g.fillStyle = "rgba(10,8,26,0.72)";
     g.fill();
@@ -700,18 +769,19 @@ export class Renderer {
     g.restore();
 
     // Fraction cleared, as a fraction, with the same value drawn as an arc.
-    const fx = 74;
-    const fy = 74;
+    const fx = L.dial.cx;
+    const fy = L.dial.cy;
+    const fr = L.dial.r;
     g.strokeStyle = "rgba(255,255,255,0.13)";
     g.lineWidth = 6;
     g.beginPath();
-    g.arc(fx, fy, 34, 0, Math.PI * 2);
+    g.arc(fx, fy, fr, 0, Math.PI * 2);
     g.stroke();
     g.strokeStyle = CHARGE_HOT;
     g.lineWidth = 6;
     g.lineCap = "round";
     g.beginPath();
-    g.arc(fx, fy, 34, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * cleared);
+    g.arc(fx, fy, fr, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * cleared);
     g.stroke();
     this.text(`${sim.broken}`, fx, fy - 10, 26, 800, "#fff6e4");
     g.strokeStyle = "rgba(255,246,228,0.5)";
@@ -723,8 +793,17 @@ export class Renderer {
     this.text(`${sim.wave.guiltyTotal}`, fx, fy + 16, 22, 700, "rgba(255,246,228,0.75)");
 
     // Score.
-    this.text(String(sim.score), VW - 26, 58, 40, 800, "#fff6e4", "right");
-    this.text(`${sim.wave.index + 1}`, VW - 26, 96, 22, 700, "rgba(255,236,203,0.55)", "right");
+    const rx = L.right.x;
+    this.text(String(sim.score), rx, L.right.scoreY, 40, 800, "#fff6e4", "right");
+    this.text(
+      `${sim.wave.index + 1}`,
+      rx,
+      L.right.waveY,
+      22,
+      700,
+      "rgba(255,236,203,0.55)",
+      "right",
+    );
     // The chain. It is the thing that decides whether the ball catches fire, so
     // it is drawn at a size that says so, and it burns white once it has.
     if (sim.combo > 1) {
@@ -734,39 +813,40 @@ export class Renderer {
       const colour = molten ? "#eaf8ff" : JEWELS[sim.combo % JEWELS.length]!.glow;
       g.globalCompositeOperation = "lighter";
       g.globalAlpha = (0.3 + t * 0.5) * (molten ? 1 : 0.7);
-      this.text(`×${sim.combo}`, VW - 26, 146, size * 1.08, 800, colour, "right");
+      this.text(`×${sim.combo}`, rx, L.right.comboY, size * 1.08, 800, colour, "right");
       g.globalAlpha = 1;
       g.globalCompositeOperation = "source-over";
       g.globalAlpha = 0.45 + t * 0.55;
-      this.text(`×${sim.combo}`, VW - 26, 146, size, 800, colour, "right");
+      this.text(`×${sim.combo}`, rx, L.right.comboY, size, 800, colour, "right");
       g.globalAlpha = 1;
     }
 
     // Beads: how many balls are left, as objects rather than a number.
     for (let i = 0; i < sim.beads; i++) {
-      const x = 30 + i * 26;
-      const y = this.vh - 26;
+      const x = L.beads.x + i * L.beads.step;
+      const y = L.beads.y;
       g.fillStyle = BALL_GLOW;
       g.globalAlpha = 0.9;
       g.beginPath();
-      g.arc(x, y, 7, 0, Math.PI * 2);
+      g.arc(x, y, L.beads.r, 0, Math.PI * 2);
       g.fill();
       g.globalAlpha = 1;
     }
 
     // Charge: a seam of light along the bottom of the window.
-    const cw = VW - 220;
-    const cx = 150;
-    const cy = this.vh - 26;
+    const cw = L.charge.w;
+    const cx = L.charge.x;
+    const cy = L.charge.y;
+    const ch = L.charge.h;
     const frac = clamp01(sim.charge / sim.chargeMax);
     g.fillStyle = "rgba(255,255,255,0.08)";
-    roundRect(g, cx, cy - 5, cw, 10, 5);
+    roundRect(g, cx, cy - ch / 2, cw, ch, ch / 2);
     g.fill();
     if (frac > 0) {
       g.globalCompositeOperation = "lighter";
       g.globalAlpha = 0.6 + hud.chargePulse * 0.4;
       g.fillStyle = CHARGE_HOT;
-      roundRect(g, cx, cy - 5, cw * frac, 10, 5);
+      roundRect(g, cx, cy - ch / 2, cw * frac, ch, ch / 2);
       g.fill();
       g.globalAlpha = 1;
       g.globalCompositeOperation = "source-over";
