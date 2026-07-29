@@ -18,6 +18,10 @@
  *            promise that: its attack time is real, and the first two
  *            milliseconds of a transient go straight through it.
  * `mute`     after the ceiling, so muted means silent and not merely quiet.
+ *            It answers to two independent owners: the app's Sound setting
+ *            (`sound.ts`) and the game's own mute button. Either one closes it;
+ *            only both open it, which is what makes the app setting
+ *            authoritative without any game having to know it exists.
  *
  * The node vocabulary is deliberately tiny — createGain, createWaveShaper,
  * createDynamicsCompressor, connect, and `.value` on a param. That is exactly
@@ -27,6 +31,7 @@
  */
 
 import { CEILING, KNEE, shaperCurve } from "./ceiling.ts"
+import { hostSoundAllowed, onHostSound } from "./sound.ts"
 
 /** The slice of AudioContext this module touches. Nothing else is assumed. */
 export type BusContext = {
@@ -55,10 +60,75 @@ export type SafetyBus = {
   readonly ceiling: number
   /** Master trim before the limiter, 0..1. */
   setLevel(level: number): void
-  /** True silence, after the ceiling. */
+  /**
+   * The GAME's mute button. True silence, after the ceiling.
+   *
+   * It cannot open a gate the app has closed. A game calling `setMuted(false)`
+   * while the app's Sound setting is off records the game's own preference and
+   * changes nothing audible — the bus stays shut until the parent turns Sound
+   * back on, at which point the game's preference is the one that applies.
+   */
   setMuted(muted: boolean): void
+  /**
+   * Whether this bus is silent — the honest reading, not the game's opinion.
+   *
+   * True when the app has turned Sound off OR the game muted itself. A game
+   * that toggles with `setMuted(!bus.muted)` therefore still cannot make noise
+   * against the app setting; the worst it can do is record `false` for later.
+   */
   readonly muted: boolean
+  /** What the game last asked for, ignoring the app setting. */
+  readonly gameMuted: boolean
+  /** Whether the app is allowing sound, ignoring what the game asked for. */
+  readonly hostAllows: boolean
   disconnect(): void
+}
+
+/**
+ * How long the gate takes to open or close, in seconds.
+ *
+ * Not zero. A gain stepped from 1 to 0 in one sample is a discontinuity, and a
+ * discontinuity is a click — a broadband transient, which is precisely the kind
+ * of sound this module exists to stop a child hearing. 12 ms is far below the
+ * ~100 ms at which a delay becomes perceptible as lag, and far above the point
+ * at which the step stops clicking.
+ *
+ * Only used where the context's `AudioParam` implements scheduling. The games'
+ * own fake contexts mostly implement `.value` and nothing else, and the shared
+ * chrome module has already broken four games by assuming otherwise, so the
+ * fallback below is a plain assignment and is equally complete — just abrupt.
+ */
+const GATE_FADE = 0.012
+
+/** A scheduling `AudioParam`, if this context happens to have one. */
+type Schedulable = {
+  value: number
+  cancelScheduledValues?: (when: number) => unknown
+  setValueAtTime?: (value: number, when: number) => unknown
+  linearRampToValueAtTime?: (value: number, when: number) => unknown
+}
+
+/** Move a gain to `target`, smoothly where the context can and bluntly where it cannot. */
+function slew(param: Schedulable, target: number, now: number): void {
+  if (
+    typeof param.cancelScheduledValues === "function" &&
+    typeof param.setValueAtTime === "function" &&
+    typeof param.linearRampToValueAtTime === "function" &&
+    Number.isFinite(now)
+  ) {
+    try {
+      // A linear ramp interpolates from the previous event, so there has to be
+      // one: cancel whatever is pending, pin the value we are actually at, then
+      // ramp. Without the pin, a second toggle inside the fade jumps.
+      param.cancelScheduledValues(now)
+      param.setValueAtTime(param.value, now)
+      param.linearRampToValueAtTime(target, now + GATE_FADE)
+      return
+    } catch (error) {
+      console.warn("[game-audio] could not schedule the mute gate; stepping instead", error)
+    }
+  }
+  param.value = target
 }
 
 /**
@@ -110,9 +180,23 @@ export function createSafetyBus(ctx: BusContext, options: SafetyBusOptions = {})
   limiter.attack.value = ATTACK
   limiter.release.value = RELEASE
 
+  // Two owners, one gate. `gameMuted` is the game's own button; `hostAllows`
+  // is the app's Sound setting, which this bus follows for as long as it lives.
   const mute = ctx.createGain()
-  let muted = options.muted === true
-  mute.gain.value = muted ? 0 : 1
+  let gameMuted = options.muted === true
+  let hostAllows = hostSoundAllowed()
+  const open = (): boolean => hostAllows && !gameMuted
+  // Assigned rather than slewed: at construction there is nothing playing to
+  // click, and a ramp would leave the first 12 ms of a game that mounts muted
+  // audible.
+  mute.gain.value = open() ? 1 : 0
+  const gate = (): void => {
+    slew(mute.gain as unknown as Schedulable, open() ? 1 : 0, ctx.currentTime)
+  }
+  const unfollow = onHostSound((on) => {
+    hostAllows = on
+    gate()
+  })
 
   input.connect(level)
   level.connect(limiter)
@@ -159,13 +243,20 @@ export function createSafetyBus(ctx: BusContext, options: SafetyBusOptions = {})
       level.gain.value = clamp01(v)
     },
     setMuted(next: boolean): void {
-      muted = next
-      mute.gain.value = next ? 0 : 1
+      gameMuted = next
+      gate()
     },
     get muted(): boolean {
-      return muted
+      return !open()
+    },
+    get gameMuted(): boolean {
+      return gameMuted
+    },
+    get hostAllows(): boolean {
+      return hostAllows
     },
     disconnect(): void {
+      unfollow()
       for (const n of [input, level, limiter, shaper, mute]) {
         if (!n) continue
         try {

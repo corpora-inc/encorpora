@@ -61,6 +61,7 @@
 
 import type { Capability, HostClient, Item, TransitionKind } from "../../sdk/src/index.ts"
 import { setHostInsets } from "../game-chrome/insets.ts"
+import { setHostSound } from "../game-audio/index.ts"
 import { connect } from "../../sdk/src/index.ts"
 
 /** The shape both games declare locally. Kept structurally identical. */
@@ -428,8 +429,23 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   // `env(safe-area-inset-*)` belongs to the top-level browsing context, so it
   // reads zeros. The host measures and sends them; publish them to game-chrome
   // here, once, so every pack gets it without each game remembering to.
-  setHostInsets(client.settings.safeArea)
-  client.on("settings", () => setHostInsets(client.settings.safeArea))
+  //
+  // The app's Sound setting travels on the same object and had the same
+  // problem, worse: nothing read it at all. A parent turned Sound off and all
+  // 27 games kept playing, because each one owned a mute button and none of
+  // them owned the setting. Published here it reaches every game's safety bus
+  // at once, and no game has to be edited to obey it.
+  //
+  // Both are re-published on every `settings` event, not only at attach. The
+  // host pushes one whenever the store changes, which is the whole point: a
+  // switch that only takes effect at launch is a switch a parent flips while a
+  // game is loud and watches do nothing.
+  const publish = (): void => {
+    setHostInsets(client.settings.safeArea)
+    setHostSound(client.settings.sound)
+  }
+  publish()
+  client.on("settings", publish)
   const domain = options.domain ?? "arith"
   const autoFlush = options.autoFlush ?? true
   const granted = new Set<Capability>(client.granted)

@@ -17,6 +17,11 @@
  * and in the game's envelope helper:
  *
  *     const a = safeAttack(attack)
+ *
+ * A game does not have to do anything else to honour the app's Sound setting.
+ * `game-host` publishes it through `setHostSound`, every live bus follows it,
+ * and a bus the app has closed cannot be reopened by the game's own mute
+ * button. See `sound.ts`.
  */
 export {
   CEILING,
@@ -37,3 +42,4 @@ export {
   type SafetyBusOptions,
   type BusContext,
 } from "./safetyBus.ts"
+export { setHostSound, hostSoundAllowed, onHostSound, resetHostSound } from "./sound.ts"
