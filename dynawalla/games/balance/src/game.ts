@@ -18,14 +18,16 @@ import {
   isBalanced,
   isPinned,
   minWeightsFor,
-  rackCanMake,
   remainingFor,
+  verdictFor,
+  counts,
 } from "./puzzle.ts";
 import {
   createInstructions,
   type Instructions,
 } from "../../../packs/shared/game-chrome/index.ts";
 import { specFromQuestion } from "./adapter.ts";
+import { makePacing, afterBoard, request, onTheWire, type Pacing } from "./pacing.ts";
 import { layoutForViewport, armDistance, beamPoint, rackSlot } from "./layout.ts";
 import type { Layout } from "./layout.ts";
 import {
@@ -78,7 +80,6 @@ export class Game {
   private bodies: Body[] = [];
   private declared: Frac | null = null;
   private startNetSign = 0;
-  private questionIndex = 0;
   private questionStart = 0;
   private errors = 0;
   private reported = false;
@@ -95,6 +96,9 @@ export class Game {
 
   solvedTotal = 0;
   gems = 0;
+  private pacing: Pacing = makePacing();
+  /** The deepest movement reached, so the plinth announces each one once. */
+  private peakMovement = -1;
 
   private drag: Body | null = null;
   private dragFromRack = -1;
@@ -247,9 +251,11 @@ export class Game {
   }
 
   private loadNext(first = false): void {
-    const q = this.host.next();
-    this.spec = specFromQuestion(q, this.questionIndex);
-    this.questionIndex++;
+    // Ask for a board this child can actually get onto. See `pacing.ts` — with
+    // no request at all the host chose from its whole ladder, and the opening
+    // board of a fresh install was two-digit column addition.
+    const q = this.host.next(request(this.pacing));
+    this.spec = specFromQuestion(q);
     this.declared = null;
     this.errors = 0;
     this.reported = false;
@@ -534,24 +540,25 @@ export class Game {
   private checkAfterPlacement(b: Body): void {
     if (this.phase === "solved") return;
     const placed = this.placed();
-    if (isBalanced(this.spec, placed, this.declared)) {
-      this.solve();
-      return;
+    switch (verdictFor(this.spec, placed, this.declared, this.startNetSign)) {
+      case "solved":
+        this.solve();
+        return;
+      case "overshot":
+        // Too far. The beam has already swung past level and hit its stop; the
+        // dish tips and hands the weight back.
+        this.wrong(b);
+        return;
+      case "deadEnd":
+        // What is left cannot be made from the rack. The dish tips and gives
+        // everything back — the presentation has not changed, and it is still
+        // the gentlest ending in the game. What changed is that it is now
+        // recorded; see `counts` in puzzle.ts for the measurement.
+        this.spill();
+        return;
+      case "continue":
+        return;
     }
-    const netNow = Math.sign(toNumber(this.net()));
-    const crossed = this.startNetSign !== 0 && netNow !== 0 && netNow !== this.startNetSign;
-    if (this.spec.kind === "hang" || crossed) {
-      // Too far. The beam has already swung past level and hit its stop; the
-      // dish tips and hands the weight back.
-      this.wrong(b);
-      return;
-    }
-    // Dead end: what is left cannot be made from the rack (1/3 placed when 1/2
-    // was wanted, and there is no 1/6). The child is not wrong, they are stuck,
-    // and being stuck with no way out is how a puzzle game loses a ten-year-old.
-    // The dish simply tips and gives everything back.
-    const left = remainingFor(this.spec, placed);
-    if (left && !rackCanMake(this.spec.rack, left)) this.spill();
   }
 
   /** Tip the dish: every weight the player put in comes back to the rack. */
@@ -566,6 +573,10 @@ export class Game {
       any = true;
     }
     if (!any) return;
+    if (counts("deadEnd")) {
+      this.errors++;
+      this.report(false);
+    }
     this.audio.chain(5);
     this.cam.addTrauma(0.14);
     this.host.haptic("medium");
@@ -721,9 +732,28 @@ export class Game {
   private advance(): void {
     this.solvedTotal++;
     if (this.errors === 0) this.gems++;
-    const prevMovement = this.spec.movement;
+    // The board is over, so the ladder moves before the next one is pulled.
+    const before = this.pacing;
+    this.pacing = afterBoard(before, this.errors);
+    if (this.pacing.floor > before.floor) {
+      // Feature-detected: the shared host has it, the stub has it, an older
+      // host does not and simply keeps serving what it is asked for. Through
+      // `onTheWire` like every other number this game sends — see `pacing.ts`
+      // for what a literal 1 does to a standing ceiling.
+      this.host.raiseFloor?.(onTheWire(this.pacing.floor));
+    }
     this.loadNext();
-    if (this.spec.movement !== prevMovement || this.solvedTotal === 1) {
+    // Once, on the way up, and never again.
+    //
+    // The test used to be `movement !== prevMovement`, which was safe only
+    // while the movement was `Math.floor(index / 5)` and could not go down.
+    // It is now the child's place on the host's ladder, which moves both ways
+    // — so a child hovering either side of a boundary would get the plinth and
+    // the fanfare every second or third board. A movement is an arrival, and
+    // you only arrive somewhere once.
+    const arrived = this.spec.movement > this.peakMovement;
+    if (arrived) this.peakMovement = this.spec.movement;
+    if (arrived || this.solvedTotal === 1) {
       this.banner = {
         text: this.spec.movementName,
         sub: `MOVEMENT ${ROMAN[Math.min(this.spec.movement, ROMAN.length - 1)]}`,

@@ -235,7 +235,97 @@ export type BodyEvents = {
   onArriveRack?: (b: Body) => void;
 };
 
+/**
+ * The largest step the seat spring survives, and why this constant exists.
+ *
+ * A seated body is pulled home by a stiff spring integrated with semi-implicit
+ * Euler at k = 1000, c = 46. Writing the step as a matrix on (velocity, error):
+ *
+ *     [ 1 − c·dt         −k·dt      ]
+ *     [ dt·(1 − c·dt)   1 − k·dt²   ]
+ *
+ * its eigenvalues sit inside the unit circle only while
+ *
+ *     1000·dt² + 92·dt − 4 < 0     ⟹     dt < 0.0322 s
+ *
+ * — thirty-one frames a second. The frame loop clamped dt at 1/20 and handed
+ * 0.05 straight in, which is 1.55× past that limit, so **every value between
+ * 31 fps and the clamp is exponential runaway** rather than a spring. Measured
+ * on the unfixed integrator, 400 steps from a 141 px displacement:
+ *
+ *     dt = 1/60  →  x = 100      (home)
+ *     dt = 1/30  →  x = −2.10e21
+ *     dt = 1/20  →  x = −1.21e204
+ *
+ * That is the reported "the weights go nuts and fritz out and drift off": one
+ * stalled frame — a WebView resume, a GC pause, a thermal downclock to 30 fps —
+ * and the seated pile is at 1e21 px and never comes back, because nothing in
+ * the old code could pull it home again.
+ *
+ * The fix is not a tighter clamp on dt (that drops simulated time and still
+ * leaves 30 fps devices broken). It is substepping: whatever the frame took,
+ * the integrator only ever advances in slices this size, so the spring is
+ * unconditionally inside its stability region. 1/120 keeps a 3.9× margin.
+ */
+export const MAX_BODY_DT = 1 / 120;
+
+/**
+ * A ceiling on substeps so a pathological dt costs a bounded amount of work.
+ * Sixteen covers 0.133 s, well past the 1/20 the frame loop clamps to; beyond
+ * that the simulation runs slow rather than unstable, which is the right way
+ * round for a game a child is holding.
+ */
+const MAX_SUBSTEPS = 16;
+
+/**
+ * Advance one body. Substeps so the seat spring is stable at any frame rate.
+ *
+ * See `MAX_BODY_DT`. `stepBodyOnce` is the old body of this function, unchanged
+ * except that it is now only ever called with a step it is stable at.
+ */
 export function stepBody(b: Body, dt: number, ev: BodyEvents = {}): void {
+  if (!(dt > 0)) return;
+  let steps = Math.ceil(dt / MAX_BODY_DT);
+  if (!Number.isFinite(steps) || steps > MAX_SUBSTEPS) steps = MAX_SUBSTEPS;
+  const h = Math.min(MAX_BODY_DT, dt / steps);
+  for (let i = 0; i < steps; i++) stepBodyOnce(b, h, ev);
+  settle(b);
+}
+
+/**
+ * Last line of defence: a body whose numbers have stopped being numbers.
+ *
+ * A single NaN is permanent — every later frame propagates it — and it draws as
+ * nothing, so a weight that was part of the *statement of the problem* silently
+ * vanishes. Divides that can reach here at all: `t / b.dur` in the fly arc and
+ * the two `/ dur` in `toss` (both now floored), plus anything a caller writes
+ * into `tx`/`ty` from a layout measured on a zero-sized canvas. Rather than
+ * hunt every producer forever, a body that has left the number line is put back
+ * on its seat, at rest.
+ */
+function settle(b: Body): void {
+  if (
+    Number.isFinite(b.x) &&
+    Number.isFinite(b.y) &&
+    Number.isFinite(b.vx) &&
+    Number.isFinite(b.vy) &&
+    Number.isFinite(b.rot) &&
+    Number.isFinite(b.sq)
+  ) {
+    return;
+  }
+  b.x = Number.isFinite(b.tx) ? b.tx : 0;
+  b.y = Number.isFinite(b.ty) ? b.ty : 0;
+  b.vx = 0;
+  b.vy = 0;
+  b.rot = Number.isFinite(b.trot) ? b.trot : 0;
+  b.rotVel = 0;
+  b.sq = 0;
+  b.sqVel = 0;
+  if (b.state === "fly") b.state = "seated";
+}
+
+function stepBodyOnce(b: Body, dt: number, ev: BodyEvents): void {
   // squash-and-stretch spring, always running
   b.sqVel += -b.sq * 360 * dt;
   b.sqVel *= Math.exp(-11 * dt);
@@ -304,7 +394,9 @@ export function launch(
   b.fy = b.y;
   b.tx = toX;
   b.ty = toY;
-  b.dur = dur;
+  // `t / b.dur` is the arc parameter: a zero duration makes it 0/0 and the body
+  // is at NaN for the rest of the run.
+  b.dur = Math.max(1e-3, dur);
   b.arc = arc;
   b.t = 0;
   b.state = "fly";
@@ -319,10 +411,16 @@ export function toss(
   dur: number,
   gravity = 1750,
 ): void {
-  b.vx = (toX - b.x) / dur;
-  b.vy = (toY - b.y) / dur - 0.5 * gravity * dur;
+  const d = Math.max(1e-3, dur);
+  // Recorded even though the ballistic path does not read them: `settle` puts a
+  // body that has gone non-finite back on `tx`/`ty`, and without these it would
+  // put an ejecting weight back in the dish rather than on the rack rail.
+  b.tx = toX;
+  b.ty = toY;
+  b.vx = (toX - b.x) / d;
+  b.vy = (toY - b.y) / d - 0.5 * gravity * d;
   b.rotVel = (Math.random() < 0.5 ? -1 : 1) * (5 + Math.random() * 6);
   b.t = 0;
-  b.dur = dur;
+  b.dur = d;
   b.state = "eject";
 }

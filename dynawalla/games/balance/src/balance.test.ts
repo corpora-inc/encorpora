@@ -261,7 +261,6 @@ test("a board can be built from a foreign question with no spec attached", () =>
       domain: "add-sub",
       difficulty: 0.2,
     },
-    0,
   );
   assert.equal(spec.kind, "fill");
   assert.equal(spec.fixed.length, 2);
@@ -277,7 +276,6 @@ test("a board can be built from a foreign question with no spec attached", () =>
       domain: "equations",
       difficulty: 0.5,
     },
-    1,
   );
   assert.equal(eq2.kind, "declare");
   assert.equal(eq2.fixed.filter((f) => f.kind === "crate").length, 3);
@@ -292,7 +290,6 @@ test("a board can be built from a foreign question with no spec attached", () =>
       domain: "fractions",
       difficulty: 0.6,
     },
-    2,
   );
   assert.ok(solveWithAnswer(fr));
 });
