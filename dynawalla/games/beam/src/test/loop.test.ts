@@ -44,13 +44,29 @@ function stubSurface(
     apply: () => noop,
   }) as unknown as CanvasRenderingContext2D
 
+  // Rich enough for the shared how-to-play surface, which is real DOM: a
+  // button, a dialog, a stylesheet and an inset probe appended to `body`. It
+  // is built once at mount and torn down in `unmount`, so it is on the path of
+  // every test in this file whether or not the test is about instructions.
   const makeEl = (): HTMLElement => {
     const el = {
       style: { cssText: "" },
       width: 0,
       height: 0,
+      id: "",
+      type: "",
+      className: "",
+      textContent: "",
+      tabIndex: 0,
+      hidden: false,
+      scrollTop: 0,
       appendChild: () => undefined,
+      append: () => undefined,
       remove: () => undefined,
+      focus: () => undefined,
+      setAttribute: () => undefined,
+      getAttribute: () => null,
+      removeAttribute: () => undefined,
       getBoundingClientRect: () => rect,
       getContext: () => noop,
       setPointerCapture: () => undefined,
@@ -110,7 +126,16 @@ function stubSurface(
     globalThis.removeEventListener = ((k: string): void => {
       keys.delete(k)
     }) as unknown as typeof globalThis.removeEventListener
-    ;(globalThis as { document?: unknown }).document = { createElement: () => makeEl() }
+    // `getElementById` and `body` are what the safe-area probe needs: it
+    // measures `env(safe-area-inset-*)` through a hidden fixed element, because
+    // `env()` cannot be read from JavaScript any other way. There is no
+    // `getComputedStyle` here, so it correctly reads zeros and node gets the
+    // plain full-screen layout.
+    ;(globalThis as { document?: unknown }).document = {
+      createElement: () => makeEl(),
+      getElementById: () => null,
+      body: makeEl(),
+    }
     return () => {
       globalThis.requestAnimationFrame = saved.raf
       globalThis.cancelAnimationFrame = saved.caf
