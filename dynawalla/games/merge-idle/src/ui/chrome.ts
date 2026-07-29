@@ -47,13 +47,158 @@ const ROW_GAP = 1
 const MUTE = 30
 const MUTE_GAP = 8
 
-/** The action rail: one row of buttons, its gaps and its padding. */
+/** The action rail: its button, its gaps and its padding. */
 const RAIL_BTN = 46
 const RAIL_GAP = 6
 const RAIL_TOP = 6
 const RAIL_BOTTOM = 10
-/** Above this width the rail is four across instead of two; matches the CSS. */
+/** Above this width the rail is five across instead of three. */
 const RAIL_WIDE = 620
+/**
+ * ...and below this height it is five across too, whatever the width.
+ *
+ * A small phone held sideways has about 320px of glass. Two rows of buttons
+ * take 52px of it, and once the band and the vent strip have taken theirs the
+ * shelf is left with too little to draw a legible 5x6 on — `layout.test.ts`
+ * says so out loud. Height is the scarce axis there and width is not, so the
+ * rail spends the width instead.
+ */
+const RAIL_SHORT = 480
+/**
+ * Every action the rail can EVER show, including the ones a child has not
+ * unlocked yet.
+ *
+ * DISSOLVE used to be `visible: false` until the shelf filled up, and a
+ * `display:none` button takes no grid cell — so the rail was two rows, then
+ * three, and the whole reef jumped upward the moment the shelf filled. A
+ * control appearing must never reflow the playfield, so the slot is counted
+ * here whether or not the button is usable yet, the grid is three across
+ * (five on a wide screen) so five buttons still make two rows (one), and the
+ * button is merely `disabled` until it works — the same greyed-out idiom
+ * UPWELL already uses when a child cannot afford it, which has the side
+ * benefit of advertising that DISSOLVE exists at all.
+ */
+export const RAIL_SLOTS = 5
+
+/** How many buttons the rail puts on a row. Applied to the grid by `hud.ts`. */
+function railColumns(w: number, h: number): number {
+  return w >= RAIL_WIDE || h < RAIL_SHORT ? 5 : 3
+}
+
+/**
+ * Font size of a button's label, px.
+ *
+ * Derived here rather than from a `@media` rule, because a media query
+ * resolves against the VIEWPORT while everything else in this file resolves
+ * against the element the pack was given — and in Split View those are not the
+ * same number.
+ */
+function railLabelPx(w: number): number {
+  return w >= RAIL_WIDE ? 11 : 10
+}
+
+/** `.ab-btn` horizontal padding, matching the stylesheet. */
+const BTN_PAD_X = 6
+
+/**
+ * The width of one rail button, and the width of the text INSIDE it.
+ *
+ * Narrowing the rail from two columns to three is what keeps five buttons in
+ * two rows and stops the reef jumping. It also makes each button narrower, and
+ * `OVERCHARGE` is a long word — so the room for it is arithmetic here and
+ * asserted in `band.test.ts` rather than discovered on a device.
+ */
+export function railButtonText(c: Chrome): number {
+  const inner = c.w - c.railPad.left - c.railPad.right
+  const cols = c.railCols
+  return Math.max(0, (inner - RAIL_GAP * (cols - 1)) / cols - BTN_PAD_X * 2)
+}
+
+/**
+ * How tall the rail is with `buttons` of them showing.
+ *
+ * Exported so the reflow rule can be MEASURED: `band.test.ts` lays the stage
+ * out at four buttons and at five and asserts the shelf does not move. The
+ * layout itself only ever asks for `RAIL_SLOTS`.
+ */
+export function railHeight(w: number, h: number, insetBottom: number, buttons: number): number {
+  const rows = Math.max(1, Math.ceil(buttons / railColumns(w, h)))
+  return RAIL_TOP + rows * RAIL_BTN + (rows - 1) * RAIL_GAP + RAIL_BOTTOM + insetBottom
+}
+
+/* ------------------------------------------------------------------ readout */
+
+/**
+ * Column widths inside the odometer, in units of the digit height.
+ *
+ * These are applied verbatim as inline `width`s by `hud.ts`, so the odometer's
+ * width is arithmetic rather than a font measurement — which is what lets the
+ * check below be a test instead of a screenshot.
+ */
+export const DIGIT_EM = 0.63
+export const SEP_EM = 0.3
+export const UNIT_EM = 0.62
+
+/**
+ * The magnitude meter, as a fixed two-row grid rather than a `flex-wrap` that
+ * breaks wherever it happens to run out of room. Twelve pips wrapped by
+ * `max-width:44%` left ONE orphan dot on a second row, hanging under the right
+ * end of the meter, which is exactly what a child sees as "broken".
+ */
+export const PIPS_PER_ROW = 6
+export const PIP = 7
+export const PIP_GAP = 3
+const PIPS_W = PIPS_PER_ROW * PIP + (PIPS_PER_ROW - 1) * PIP_GAP
+
+/**
+ * The FLOW pill, at the width `×9.9 FLOW` takes: nine characters at 10px and a
+ * 900 weight, plus 7px of padding and a 1px border on each side. It lives in
+ * the right-hand column and NOT on the rate line — sharing that line is what
+ * squeezed `▲ 899 / sec` onto two rows.
+ */
+const FLOW_W = 74
+
+/** The gap between the essence column and the pips/FLOW column beside it. */
+const COL_GAP = 10
+/** The right-hand column: FLOW above, the pip meter below. */
+const SIDE_W = Math.max(PIPS_W, FLOW_W)
+
+/** The longest rate line the game can emit: `▲ 999.9Qi / sec`. */
+const RATE_CHARS = 15
+/** A deliberately fat per-character advance for the rate line's font. */
+const RATE_EM = 0.66
+
+/**
+ * How wide `text` is in the odometer, in px.
+ *
+ * Digits are fixed-width columns; a comma or a decimal point is narrow; the
+ * magnitude suffix (`K`, `Qa`, …) is a letter. Nothing here measures a font,
+ * which is the point.
+ */
+export function odoWidth(text: string, px: number): number {
+  let em = 0
+  for (const ch of text) {
+    if (ch >= '0' && ch <= '9') em += DIGIT_EM
+    else if (ch === ',' || ch === '.') em += SEP_EM
+    else em += UNIT_EM
+  }
+  return em * px
+}
+
+/**
+ * The widest string `fmtCompact` can ever hand the odometer, in units of the
+ * digit height: `999.9Qa` — four digits, a point and a two-letter unit.
+ *
+ * Below 100,000 the formatter uses grouped digits, and `99,999` is 3.45em,
+ * narrower. The odometer's size is capped so that this fits the essence column
+ * at every viewport, because the alternative is what shipped: the digit
+ * columns are `overflow:hidden` flex items, whose automatic minimum size is
+ * therefore ZERO, so when the odometer overflowed they collapsed to nothing
+ * while the comma and the `K` — which are not `overflow:hidden`, and so cannot
+ * shrink below their content — survived. The child saw `.K`, and could not
+ * read their own score.
+ */
+export const ODO_MAX_EM = 4 * DIGIT_EM + SEP_EM + 2 * UNIT_EM
 
 export type Chrome = {
   w: number
@@ -67,16 +212,26 @@ export type Chrome = {
    * which is the assertion in `chrome.test.ts`.
    */
   readout: Rect
+  /** The left column of the readout: the ESSENCE cap, the odometer, the rate. */
+  essence: Rect
+  /** The right column: the FLOW pill above, the magnitude meter below. */
+  side: Rect
   /** Digit height of the odometer, px. */
   odoPx: number
+  /** Font size of the rate line, px — sized so it cannot wrap. */
+  ratePx: number
+  /** How many buttons the action rail puts on a row. */
+  railCols: number
+  /** Font size of a rail button's label, px. */
+  railLabelPx: number
   /** The mute button, in viewport coordinates. */
   mute: Rect
   /** The canvas stage, between the band and the rail. */
   stage: Rect
   /**
-   * The action rail, at the height it takes with the four standing buttons.
-   * DISSOLVE appears only on a crowded shelf and adds a row; the DOM measures
-   * that for itself, and only this nominal height is ever laid out against.
+   * The action rail, at the height it takes with every slot filled — which is
+   * always, now. Nothing in the rail is conditionally present, so this height
+   * is the real one and the stage below it never moves.
    */
   rail: Rect
   /** The band's padding, for the DOM to apply verbatim. */
@@ -124,12 +279,25 @@ export function chromeLayout(w: number, h: number, area: Rect): Chrome {
   const padTop = inset.top + BAND_TOP
   const readoutW = Math.max(1, w - padLeft - padRight)
 
-  const odoPx = Math.round(clamp(26, 48, readoutW * 0.14))
+  // The odometer does NOT get the whole band. It gets the left column, and it
+  // is sized so its widest possible string fits that column — see ODO_MAX_EM.
+  const sideW = Math.min(SIDE_W, Math.max(0, readoutW - COL_GAP - 90))
+  const essenceW = Math.max(1, readoutW - COL_GAP - sideW)
+  // On a short glass the odometer is capped harder. A phone held sideways has
+  // width to spare and no height at all, and a 48px score there costs the reef
+  // the room it needs to draw a legible shelf — `layout.test.ts` fails outright
+  // without this. Height is the scarce axis; spend it where the game is.
+  //
+  // FLOOR, not round: rounding up is how a number that "just fits" the
+  // arithmetic ends up one pixel too wide for the box on the glass.
+  const odoMax = h < RAIL_SHORT ? 34 : 48
+  const odoPx = Math.floor(clamp(22, odoMax, Math.min(essenceW * 0.26, essenceW / ODO_MAX_EM)))
+  const ratePx = Math.floor(clamp(9, 12, essenceW / (RATE_CHARS * RATE_EM)))
   const readoutH = CAP_H + ROW_GAP + odoPx + ROW_GAP + RATE_H
   const bandH = padTop + readoutH + BAND_BOTTOM
 
-  const rows = w >= RAIL_WIDE ? 1 : 2
-  const railH = RAIL_TOP + rows * RAIL_BTN + (rows - 1) * RAIL_GAP + RAIL_BOTTOM + inset.bottom
+  const railCols = railColumns(w, h)
+  const railH = railHeight(w, h, inset.bottom, RAIL_SLOTS)
   const stageH = Math.max(1, h - bandH - railH)
 
   return {
@@ -138,7 +306,12 @@ export function chromeLayout(w: number, h: number, area: Rect): Chrome {
     inset,
     band: { x: 0, y: 0, w, h: bandH },
     readout: { x: padLeft, y: padTop, w: readoutW, h: readoutH },
+    essence: { x: padLeft, y: padTop, w: essenceW, h: readoutH },
+    side: { x: padLeft + essenceW + COL_GAP, y: padTop, w: sideW, h: readoutH },
     odoPx,
+    ratePx,
+    railCols,
+    railLabelPx: railLabelPx(w),
     mute: { x: w - inset.right - MUTE_GAP - MUTE, y: bandH + MUTE_GAP, w: MUTE, h: MUTE },
     stage: { x: 0, y: bandH, w, h: stageH },
     rail: { x: 0, y: bandH + stageH, w, h: railH },

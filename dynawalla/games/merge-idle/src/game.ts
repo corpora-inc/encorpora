@@ -50,7 +50,6 @@ import {
   flowAfter,
   growCost,
   offlineHaul,
-
   reefTrickle,
   SWELL_PERIOD_MS,
   targetStepFor,
@@ -77,8 +76,9 @@ import { Floaters } from './fx/floaters.ts'
 import { Particles, Shockwaves } from './fx/particles.ts'
 import { approach, ease, Punch } from './fx/shake.ts'
 import { CHALK, DANGER, hex, lift, rampAt, TIDE } from './render/palette.ts'
-import { cellAtPoint, cellCentre, Renderer } from './render/renderer.ts'
+import { cellAtPoint, cellCentre, Renderer, shelfCap, ventCap, ventRects } from './render/renderer.ts'
 import { chromeLayout, stageAreaFor } from './ui/chrome.ts'
+import { actionList } from './ui/actions.ts'
 import { Hud, type Action } from './ui/hud.ts'
 
 const MAX_ROWS = 9
@@ -327,29 +327,32 @@ class Game {
   }
 
   private layoutVents(): void {
-    const l = this.renderer.layout
-    const strip = l.ventStrip
-    const n = Math.max(1, this.s.vents.length)
-    if (l.ventColumn) {
-      const gap = Math.max(8, Math.min(16, strip.h * 0.02))
-      const h = Math.min((strip.h - gap * (n - 1)) / n, 190)
-      const top = strip.y + (strip.h - (h * n + gap * (n - 1))) / 2
-      this.s.vents.forEach((v, i) => {
-        v.rect = { x: strip.x, y: top + i * (h + gap), w: strip.w, h }
-      })
-      return
-    }
-    const gap = Math.max(6, Math.min(12, strip.w * 0.02))
-    const w = (strip.w - gap * (n - 1)) / n
+    const rects = ventRects(this.renderer.layout, this.s.vents.length)
     this.s.vents.forEach((v, i) => {
-      v.rect = { x: strip.x + i * (w + gap), y: strip.y, w, h: strip.h }
+      const r = rects[i]
+      if (r) v.rect = r
     })
   }
 
   private get ventCap(): number {
-    const l = this.renderer.layout
-    if (l.ventColumn) return Math.max(2, Math.min(5, Math.floor(l.ventStrip.h / 150)))
-    return l.w < 480 ? 2 : l.w < 760 ? 3 : l.w < 1100 ? 4 : 5
+    return ventCap(this.renderer.layout)
+  }
+
+  /**
+   * How far DEEPEN may grow the shelf.
+   *
+   * The designed ceiling, narrowed by what this particular glass can actually
+   * draw legibly above the vent band — a 9-row shelf does not fit a small
+   * notched phone, and growing into one used to mean the bottom row was drawn
+   * over the vents. Capping growth is the reflow nobody notices; the collision
+   * was one the founder photographed.
+   */
+  private get shelfLimit(): { maxCols: number; maxRows: number } {
+    const cap = shelfCap(this.renderer.layout)
+    return {
+      maxCols: Math.max(START_COLS, Math.min(this.renderer.layout.w < 380 ? 6 : 7, cap.cols)),
+      maxRows: Math.max(START_ROWS, Math.min(MAX_ROWS, cap.rows)),
+    }
   }
 
   /* --------------------------------------------------------------- persist */
@@ -1036,11 +1039,15 @@ class Game {
       this.audio.erupt(2)
     } else if (id === 'deepen') {
       const cost = growCost(s.grows + 1)
-      const maxCols = this.renderer.layout.w < 380 ? 6 : 7
+      const { maxCols, maxRows } = this.shelfLimit
       if (s.essence < cost) return
       const nextCols = s.board.cols < maxCols ? s.board.cols + 1 : s.board.cols
-      const nextRows = nextCols === s.board.cols ? Math.min(MAX_ROWS, s.board.rows + 1) : s.board.rows
-      if (nextCols === s.board.cols && nextRows === s.board.rows) return
+      const nextRows = nextCols === s.board.cols ? Math.min(maxRows, s.board.rows + 1) : s.board.rows
+      // `maxRows` is now what this glass can DRAW, so it can sit below the
+      // shelf a child already has — a save carried over from a tablet, or a
+      // rotation. `grow` refuses to shrink, so without this the cost would be
+      // taken, `grows` would rise and nothing would happen.
+      if (nextCols <= s.board.cols && nextRows <= s.board.rows) return
       s.essence -= cost
       s.grows++
       grow(s.board, nextCols, nextRows)
@@ -1301,55 +1308,19 @@ class Game {
 
   private actions(): Action[] {
     const s = this.s
-    const up = upwellCost(s.upwells)
-    const aw = ventCost(s.vents.length + 1)
-    const dp = growCost(s.grows + 1)
-    const oc = 10 ** (3 + s.overcharges) * 2
-    const maxCols = this.renderer.layout.w < 380 ? 6 : 7
-    const canGrow = s.board.cols < maxCols || s.board.rows < MAX_ROWS
-    const full = emptyCells(s.board).length === 0
-    return [
-      {
-        id: 'upwell',
-        label: 'UPWELL',
-        cost: up,
-        hint: fmtCompact(up),
-        enabled: s.essence >= up && !full,
-        visible: true,
-      },
-      {
-        id: 'awaken',
-        label: 'AWAKEN',
-        cost: aw,
-        hint: s.vents.length >= this.ventCap ? 'max' : fmtCompact(aw),
-        enabled: s.essence >= aw && s.vents.length < this.ventCap,
-        visible: true,
-      },
-      {
-        id: 'deepen',
-        label: 'DEEPEN',
-        cost: dp,
-        hint: canGrow ? fmtCompact(dp) : 'max',
-        enabled: s.essence >= dp && canGrow,
-        visible: true,
-      },
-      {
-        id: 'overcharge',
-        label: 'OVERCHARGE',
-        cost: oc,
-        hint: fmtCompact(oc),
-        enabled: s.essence >= oc,
-        visible: true,
-      },
-      {
-        id: 'purge',
-        label: 'DISSOLVE',
-        cost: 0,
-        hint: 'free',
-        enabled: true,
-        visible: full || s.crowded,
-        urgent: s.crowded,
-      },
-    ]
+    return actionList({
+      essence: s.essence,
+      upwells: s.upwells,
+      grows: s.grows,
+      overcharges: s.overcharges,
+      vents: s.vents.length,
+      ventCap: this.ventCap,
+      cols: s.board.cols,
+      rows: s.board.rows,
+      maxCols: this.shelfLimit.maxCols,
+      maxRows: this.shelfLimit.maxRows,
+      full: emptyCells(s.board).length === 0,
+      crowded: s.crowded,
+    })
   }
 }
