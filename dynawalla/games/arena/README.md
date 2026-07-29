@@ -11,7 +11,7 @@ you, and anything larger will hurt.**
 ```bash
 npm install
 npm run dev      # http://127.0.0.1:5188/
-npm test         # 24 tests, Node's native runner, zero dependencies
+npm test         # 71 tests, Node's native runner, zero dependencies
 npm run tsc      # typecheck
 npm run build:pack   # the installable pack; `../../packs && node build.mjs arena` checks and stages it
 ```
@@ -240,33 +240,59 @@ test that flies a run and a host emitting ten-digit answers.
 
 ## Tuning notes for whoever comes next
 
-Three constants are the entire difficulty curve, and all three were fitted by
-simulating complete twenty-minute runs rather than by looking at the screen:
+**Absorption is exact and is not a tuning knob.** Eat a `4`, gain 4 — at every
+mass, forever, and the same for a rival and for the number a void wears. It did
+not used to be: absorption saturated at a seventh of you, so a `4` at mass 10
+was worth `+1`, and the running equation printed `10 + 1 = 11` under a numeral
+a child had just read as 4. That is a true sentence about a game the child
+cannot see, and a maths product may not ship one. `absorbGain` and `devourGain`
+are the identity and there is nowhere left in either to put a multiplier.
+
+Everything that used to be done by shrinking the gain is now done by **metering
+the supply**, which is the only honest place for it:
 
 - **`FOOD_A` / `FOOD_B`** — mote value scales as `A × mass^B`, *not* as a
   fraction of mass. A fraction compounds, and compounding turns a twenty-minute
-  climb into a ninety-second explosion followed by nothing.
-- **`ABSORB_K` / `ABSORB_SOFT`** — absorption saturates, capping any single mote
-  at a seventh of you, and past `ABSORB_SOFT` the cap itself tightens as
-  `√mass`. Without the cap, the sliver of the near-tie band just below your mass
-  is a free doubling; a child finds it in ninety seconds. Without the tightening
-  the same band is a *fixed fraction* of you, which is an exponential by a
-  slower road — measured at 273 → 3,330,895 → 1,301,388,804 in three hundred
-  seconds, which is a legibility failure before it is a balance one.
-- **`DEVOUR_K`** — the same idea, far more generously, for eating a rival: your
-  own size is worth about a third of you, **at every size**. It deliberately
-  does *not* get the `√mass` tightening, and the asymmetry is the point: the
-  near-tie mote is a supply the game manufactures on purpose, and a rival is
-  not — there are at most 26, they respawn on a timer, and one is only edible
-  below `mass / 1.06`. Measured with a bot that hunts nothing else for twenty
-  minutes, tightening it changed the peak from 34,456 to 11,442 — both five
-  digits, neither an explosion — so it bought no safety and cost the genre its
-  payoff moment. `sim.test.ts` flies that bot as a regression.
+  climb into a ninety-second explosion followed by nothing. `A` fell from 0.40
+  to 0.16 when absorption went exact, because the same table of numbers now
+  feeds a player two to six times faster; the constant moved to keep the CURVE
+  where it already was.
+- **`WALL_RATE`** — one mote in seven is drawn at or above your mass. That band
+  is the declared skill (3,418 against 3,481) so it keeps full frequency at
+  every size — but a wall is never food. A wall is otherwise a *prize with a
+  delay on it*: grow five per cent and the 1.05× you swam around thirty seconds
+  ago is a free hundred-per-cent breakfast, forever, because the field
+  manufactures walls forever. Measured with walls left flippable and absorption
+  exact: a struggling run passed 100,000 inside the first minute. Outgrow a
+  wall now and it **bursts into crumbs** on the ordinary food scale — the
+  genre's best moment kept, as an event rather than a jackpot.
+- **`PRIZE_RATE` / `PRIZE_RATE_EXP` / `PRIZE_RATE_MAX`** — a number *just under*
+  your own is a literal doubling, so it is rationed, and the ration falls as
+  `mass^-0.85`: exactly fast enough that its contribution stays a fixed share of
+  a curve whose other half goes as `√mass`. Flatten the taper and the same
+  twenty-minute run of perfect play finishes at 5,745,335 instead of 255,153.
+- **`VOID_MAX_FRACTION`** — the 11%-of-mass mercy on a void used to clamp the
+  DAMAGE while the label said something else. It now clamps the **label**: same
+  hit to the unit, and `24 − 5 = 19` becomes a sentence the game can print.
 
-A mote's printed number is a **size**, not an addend. A fish that swallows a
-fish nearly its own size does not double, and the floating number that pops on
-absorb is the size you actually gained. The comparison — which is the
-mathematics — is exact and honest; the economy is a separate, tuned layer.
+- **`EXHAUST_SHARE` / `EXHAUST_GRAIN`** — the surge trail is a **ledger**, not a
+  rate. It used to be 26 motes a second worth 3.5% of you each against a burn of
+  11% a second, which was only survivable because eating it back was throttled
+  by the saturation this pass deleted. Measured on the exact-absorption branch
+  before the fix, holding surge one second in five: 42,287 at one minute,
+  28,074,058 at two, 4,268,470,964 at four. The water now gets exactly the mass
+  actually taken off you and a fixed share of it, so boosting still costs
+  something when you turn round and hoover your own trail back up. `main` had a
+  milder version of the same hole — the same bot reached 124,408 at five minutes
+  against roughly 1,300 for a player who never boosted.
+
+A rival is rationed by the world rather than by a constant — at most 26, a
+respawn timer, and only edible below `mass / 1.06`, so a kill can never more
+than 1.94× you — which is what made it safe to make exact. Measured against a
+bot that hunts nothing else for twenty minutes while answering perfectly, over
+three seeds: saturating peaked at 97,715 / 139,611 / 156,320, exact peaks at
+125,210 / 701,405 / 230,764. Six digits at the top of the strongest possible
+play, which is the legibility contract. `sim.test.ts` flies that bot.
 
 `src/sim/sim.test.ts` runs a full twenty-minute headless game and asserts on
 the *shape* of the result rather than on a number: the first minute must be a
