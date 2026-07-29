@@ -144,6 +144,42 @@ function slotText(slot: PromptSlot | undefined): string {
   }
 }
 
+/**
+ * The two operands a child reads, whichever family drew them.
+ *
+ * This file used to reach for `slots[SLOT_TOP]` and `slots[SLOT_BOTTOM]` by
+ * name, and `slotText(undefined)` returns `""`. So when the curriculum grew a
+ * second active family — `gen.arith.number-facts`, which names its slots
+ * `first` and `second` — every question on the six easiest rungs in the product
+ * rendered as `" + "` with no numbers in it, and nothing said so. That is the
+ * failure mode this codebase keeps meeting: a missing thing becoming an empty
+ * string and then becoming a blank screen a child is asked to answer.
+ *
+ * Named slots when a family declares them, declaration order otherwise, so a
+ * family that names its slots anything at all is drawn correctly. And an empty
+ * operand is refused by the caller rather than printed.
+ */
+export function operandsOf(exercise: Exercise): readonly string[] {
+  const slots = exercise.prompt.slots
+  const named = [slots[SLOT_TOP], slots[SLOT_BOTTOM]]
+  const chosen = named.every((slot) => slot !== undefined) ? named : Object.values(slots)
+  return chosen.map((slot) => slotText(slot))
+}
+
+/**
+ * Whether the prompt is a subtraction, by the curriculum's own key convention.
+ *
+ * Every family names its prompts `dw.prompt.<family>.<operation>`, and two
+ * active families already both define a `PROMPT_KEY_SUB` — which is why the
+ * curriculum's index re-exports them by name rather than with `export *`.
+ * Comparing against one family's constant is therefore a comparison that
+ * silently fails for the other. The last segment is the part they agree on, and
+ * `items.test.ts` holds every active family to it.
+ */
+export function isSubtraction(promptKey: string): boolean {
+  return promptKey === PROMPT_KEY_SUB || promptKey.endsWith(".sub")
+}
+
 /** An answer value as a child would write it. Never a float, never rounded. */
 export function answerText(value: AnswerValue, decimalPlaces: number): string | null {
   if (value.kind === "integer" || value.kind === "columnAlgorithm") {
@@ -359,15 +395,27 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         return null
       }
 
+      const [top = "", bottom = ""] = operandsOf(exercise)
+      if (top === "" || bottom === "") {
+        // A blank question is worse than no question: a child cannot answer
+        // `" + "` and cannot tell that anything is wrong with it. Loud, and
+        // named precisely enough to fix — the slot keys are what differ when a
+        // new family arrives and this file has not learned to read it.
+        console.error(
+          `[packs] ${rung.node.id} (${rung.family.family}) drew a prompt with a missing operand: ` +
+            `slots are [${Object.keys(exercise.prompt.slots).join(", ")}] and this read ` +
+            `["${top}", "${bottom}"]`,
+        )
+        return null
+      }
+
       const places = decimalPlacesOf(exercise)
       const choices = choicesFor(exercise, places)
       const id = `${exercise.exerciseId}#${String(sequence)}`
       remember(id, { exercise, rung, places, choices, answered: false })
       practised.add(rung.node.id)
 
-      const top = slotText(exercise.prompt.slots[SLOT_TOP])
-      const bottom = slotText(exercise.prompt.slots[SLOT_BOTTOM])
-      const subtract = exercise.prompt.key === PROMPT_KEY_SUB
+      const subtract = isSubtraction(exercise.prompt.key)
       const digits = digitsOf(exercise)
 
       return {
