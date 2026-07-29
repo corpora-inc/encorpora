@@ -215,9 +215,23 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
         <button
           type="button"
           onClick={onLeave}
-          className="border-line-cut bg-ground/85 text-ink rounded-cut-sm absolute top-[max(var(--safe-top),0.5rem)] right-[max(var(--safe-right),0.5rem)] min-h-11 min-w-11 border px-4 text-sm backdrop-blur"
+          aria-label={strings.packs.leave}
+          className="border-line-cut bg-ground/85 text-ink absolute top-[calc(max(var(--safe-top),0px)+13px)] left-[calc(max(var(--safe-left),0px)+10px)] flex h-11 w-11 items-center justify-center rounded-full border text-lg backdrop-blur"
         >
-          {strings.packs.leave}
+          {/* A chevron, not a word. Top-left back is what a child has already
+              learned from every other app on the device, and an icon has no
+              translated width — so a game can reserve one 44px square and know
+              it is right in every language. The label lives in aria-label so
+              the control is still announced. */}
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none">
+            <path
+              d="M15 4 L7 12 L15 20"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
       )}
 

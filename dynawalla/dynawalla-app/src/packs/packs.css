@@ -16,6 +16,12 @@
      a pack could overflow. */
   min-inline-size: 0;
   overflow: hidden;
+  /* While a pack is up, nothing here pans, pinches or double-tap-zooms. This is
+     deliberately NOT on `body`: the catalog has to scroll, and `touch-action:
+     none` there would freeze it. The stage exists only while a game is running,
+     which is exactly the scope that wants it. */
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 .pack-frame {
