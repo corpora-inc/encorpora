@@ -1,7 +1,15 @@
 /* POLARITY — vector-monitor register. Hard edges, hairline rules, additive
    neon. No cards, no gradients-as-decoration, no rounded SaaS chrome. */
 
+/* The host's chrome floats over this game: a 44px back chevron top-LEFT and a
+   44px how-to-play button top-RIGHT. `ui/layout.ts` owns the numbers that keep
+   this HUD out of those two squares and writes them onto the root at mount;
+   the values here are the same numbers, as fallbacks. Nothing a child reads or
+   touches may land in the corners — the field itself still bleeds to the
+   edges, which is what `viewport-fit=cover` is for. */
 .pol-root {
+  --pol-chrome-top: 63px;
+  --pol-mini-right: 64px;
   --pos: #ffcd52;
   --pos-dim: #7a5a1c;
   --neg: #38dcff;
@@ -37,7 +45,13 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+  /* The four edges were already right. The top now also clears the host's two
+     44px corners: the score and the chain sat in the chevron's square and the
+     shield pips and STRATUM sat under the question mark, and no amount of
+     `env()` can help with that — the chrome floats INSIDE the safe area. Only
+     the top row moves; the middle row absorbs it and the pads stay put. */
+  padding: calc(env(safe-area-inset-top) + var(--pol-chrome-top))
+    max(10px, env(safe-area-inset-right))
     max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -184,8 +198,8 @@
 .pol-keyhint {
   position: absolute;
   bottom: max(10px, env(safe-area-inset-bottom));
-  left: 0;
-  right: 0;
+  left: max(10px, env(safe-area-inset-left));
+  right: max(10px, env(safe-area-inset-right));
   text-align: center;
   font-size: clamp(9px, 1.9vw, 12px);
   letter-spacing: 0.2em;
@@ -201,7 +215,13 @@
   place-items: center;
   background: radial-gradient(120% 90% at 50% 40%, #03040bd0, #03040bfa);
   backdrop-filter: blur(3px);
-  padding: 20px;
+  /* Was a flat `20px`, on all four sides, with no `env()` anywhere — the one
+     surface in this game that ignored the insets entirely. It carries the
+     REPOLARIZE answer orbs, which a child taps, so in landscape on a notched
+     phone the outermost orb ran under the sensor housing. Its contents are
+     centred, so the corners are clear by construction. */
+  padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+    max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
   text-align: center;
 }
 .pol-veil[hidden] { display: none; }
@@ -281,10 +301,15 @@
 .pol-final { font-size: clamp(34px, 11vw, 78px); color: var(--gold); line-height: 1; }
 .pol-over { font-size: clamp(12px, 3vw, 17px); letter-spacing: 0.34em; opacity: 0.55; }
 
+/* Sound and pause. These were `top: max(10px, env())`, `right: max(10px,
+   env())` — the how-to-play button's coordinates, exactly, so the host's `?`
+   printed straight through them. They now sit BESIDE it rather than under it,
+   which is where a player already looks, with at least 10px of air between the
+   game's chrome and the host's at every inset. */
 .pol-mini {
   position: absolute;
   top: max(10px, env(safe-area-inset-top));
-  right: max(10px, env(safe-area-inset-right));
+  right: calc(max(10px, env(safe-area-inset-right)) + var(--pol-mini-right));
   display: flex;
   gap: 8px;
   pointer-events: auto;
