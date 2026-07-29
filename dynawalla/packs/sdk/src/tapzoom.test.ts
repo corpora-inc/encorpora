@@ -41,14 +41,33 @@ class FakeMouseEvent extends Event {
  * click the guard had to put back. Its own class, so the two are told apart by
  * which code path built them rather than by a flag a test could set wrongly.
  */
-class NativeClickEvent extends FakeMouseEvent {}
+class NativeClickEvent extends FakeMouseEvent {
+  constructor(type: string, init: { clientX?: number; clientY?: number; bubbles?: boolean } = {}) {
+    super(type, init)
+    // The guard tells the platform's clicks from its own by exactly this, so
+    // the fake has to carry it. A constructed `Event` is never trusted.
+    Object.defineProperty(this, "isTrusted", { value: true })
+  }
+}
 
 /** A node a touch can land on, and a click can be delivered to. */
 class FakeNode extends EventTarget {
   readonly clicks: FakeMouseEvent[] = []
-  constructor() {
+  readonly doc: FakeDocument | undefined
+  constructor(doc?: FakeDocument) {
     super()
+    this.doc = doc
     this.addEventListener("click", (event) => this.clicks.push(event as FakeMouseEvent))
+  }
+  /**
+   * Every click here bubbles, and the guard is listening at the document — its
+   * OWN re-dispatch included, which is the case that matters: a watcher that
+   * counted its own work would starve the next tap in a chain.
+   */
+  override dispatchEvent(event: Event): boolean {
+    const result = super.dispatchEvent(event)
+    this.doc?.emit(event.type, event)
+    return result
   }
   /** Clicks the guard re-dispatched, as opposed to the ones the platform fired. */
   get restored(): FakeMouseEvent[] {
@@ -108,7 +127,7 @@ function touchEvent(
   return event
 }
 
-/** Let the queued microtask that carries the re-dispatched click run. */
+/** Let the task that carries the re-dispatched click run. */
 function flush(): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, 0))
 }
@@ -116,6 +135,12 @@ function flush(): Promise<void> {
 type Guarded = {
   doc: FakeDocument
   advance: (ms: number) => void
+  /**
+   * Model an engine that raises the compatibility `click` even though the tap
+   * was cancelled — which is what the Touch Events spec actually permits, since
+   * it only promises suppression for a cancelled `touchstart`.
+   */
+  leaky: (on: boolean) => void
   press: (x: number, y: number, node?: FakeNode, downCount?: number) => void
   drag: (x: number, y: number, node?: FakeNode) => void
   /** Returns whether the lift's default action was cancelled. */
@@ -132,6 +157,7 @@ type Guarded = {
 function guarded(): Guarded {
   const doc = new FakeDocument()
   let clock = 1_000
+  let leaky = false
   installTapZoomGuard(doc, { now: () => clock })
 
   const press = (x: number, y: number, node?: FakeNode, downCount = 1): void => {
@@ -142,8 +168,9 @@ function guarded(): Guarded {
     doc.emit("touchend", event)
     // What a browser does next, and the whole reason the guard has to give a
     // click back: an uncancelled `touchend` is followed by the compatibility
-    // `click`, and a cancelled one is not.
-    if (!event.prevented && node) {
+    // `click`. A cancelled one is not — unless the engine does not honour that,
+    // which is what `leaky` is.
+    if ((!event.prevented || leaky) && node) {
       node.dispatchEvent(new NativeClickEvent("click", { clientX: x, clientY: y, bubbles: true }))
     }
     return event.prevented
@@ -154,6 +181,9 @@ function guarded(): Guarded {
     lift,
     advance: (ms) => {
       clock += ms
+    },
+    leaky: (on) => {
+      leaky = on
     },
     drag: (x, y, node) => {
       doc.emit("touchmove", touchEvent({ clientX: x, clientY: y, target: node }, { remaining: 1 }))
@@ -172,7 +202,7 @@ test("rapid deliberate tapping on one spot delivers every tap to the game", asyn
   // same pixel, 80ms apart — indistinguishable from a double tap by geometry,
   // and the child must lose none of them.
   const g = guarded()
-  const pedal = new FakeNode()
+  const pedal = new FakeNode(g.doc)
   const touchends: number[] = []
   g.doc.addEventListener("touchend", (() => touchends.push(1)) as (event: never) => void)
 
@@ -192,7 +222,7 @@ test("a rapid chain is one click per tap however each tap was handled", async ()
   // re-dispatched. Both branches are exercised here, and the count is the same
   // either way — which is the whole point.
   const g = guarded()
-  const node = new FakeNode()
+  const node = new FakeNode(g.doc)
 
   const first = g.tap(50, 50, node)
   g.advance(100)
@@ -215,6 +245,49 @@ test("a rapid chain is one click per tap however each tap was handled", async ()
   )
 })
 
+test("an engine that raises the click anyway does not double it", async () => {
+  // The Touch Events spec only promises that cancelling `touchstart` suppresses
+  // the compatibility mouse events. If an engine raises the `click` after a
+  // cancelled `touchend`, a naive re-dispatch gives the control TWO — a second
+  // answer submitted, a second revive spent. The guard counts instead of
+  // assuming, and keeps the platform's own, which is the one carrying user
+  // activation.
+  const g = guarded()
+  g.leaky(true)
+  const node = new FakeNode(g.doc)
+
+  g.tap(60, 60, node)
+  g.advance(90)
+  assert.equal(g.tap(60, 60, node), true, "still cancelled, so the page still cannot scale")
+  await flush()
+
+  assert.equal(node.clicks.length, 2, "two taps, two clicks — not three")
+  assert.equal(node.restored.length, 0, "and none of them invented")
+})
+
+test("the restored click waits a task, so a leaked platform click gets there first", async () => {
+  // Why a task and not a microtask. A browser dispatches the compatibility
+  // click in the same input turn as the `touchend`, but AFTER the microtask
+  // checkpoint that follows the `touchend` handlers — so a restore queued as a
+  // microtask would run first, see nothing, dispatch, and then be joined by the
+  // platform's own. Modelled by putting the leaked click in a microtask.
+  const g = guarded()
+  const node = new FakeNode(g.doc)
+  g.tap(70, 70, node)
+  g.advance(90)
+  g.press(70, 70, node)
+  const event = touchEvent({ clientX: 70, clientY: 70, target: node })
+  g.doc.emit("touchend", event)
+  assert.equal(event.prevented, true)
+  queueMicrotask(() => {
+    node.dispatchEvent(new NativeClickEvent("click", { clientX: 70, clientY: 70, bubbles: true }))
+  })
+  await flush()
+
+  assert.equal(node.clicks.length, 2, "two taps, two clicks")
+  assert.equal(node.restored.length, 0, "the platform's own was allowed to win the race")
+})
+
 test("the restored click lands after the touchend it belongs to", async () => {
   // Dispatched from inside the `touchend` handler it would arrive BEFORE the
   // game's own `touchend` listener — the guard installs in the capture phase,
@@ -222,7 +295,7 @@ test("the restored click lands after the touchend it belongs to", async () => {
   // `click` would see them inverted. MERGE IDLE's `TapGuard` is exactly such a
   // machine.
   const g = guarded()
-  const node = new FakeNode()
+  const node = new FakeNode(g.doc)
   const log: string[] = []
   g.doc.addEventListener("touchend", (() => log.push("touchend")) as (event: never) => void)
   node.addEventListener("click", () => log.push("click"))
@@ -239,8 +312,8 @@ test("a correction between two controls 20px apart reaches both controls", async
   // The objection that killed the host's guard in #678: two cells of a
   // segmented control, tapped in sequence, well inside the double-tap slop.
   const g = guarded()
-  const left = new FakeNode()
-  const right = new FakeNode()
+  const left = new FakeNode(g.doc)
+  const right = new FakeNode(g.doc)
 
   g.tap(100, 100, left)
   g.advance(120)
@@ -308,7 +381,7 @@ test("a finger-scroll of the manual sheet is never cancelled", async () => {
   // the finger travelled. A cancelled `touchend` there would not stop the
   // scroll, but it WOULD fire a click into the manual that the child never made.
   const g = guarded()
-  const sheet = new FakeNode()
+  const sheet = new FakeNode(g.doc)
   g.press(100, 400, sheet)
   g.drag(100, 380, sheet)
   g.drag(100, 340, sheet)
@@ -369,7 +442,7 @@ test("a cancelled touch clears the chain", () => {
 
 test("a non-cancelable touchend is left alone and costs no click", async () => {
   const g = guarded()
-  const node = new FakeNode()
+  const node = new FakeNode(g.doc)
   g.tap(10, 10, node)
   g.advance(40)
   g.press(10, 10, node)
@@ -395,15 +468,16 @@ test("touchend is non-passive and in the capture phase", () => {
   assert.deepEqual(wiring.get("touchstart"), { capture: true, passive: true })
   assert.deepEqual(wiring.get("touchmove"), { capture: true, passive: true })
   assert.deepEqual(wiring.get("touchcancel"), { capture: true, passive: true })
+  assert.deepEqual(wiring.get("click"), { capture: true, passive: true }, "the click watcher never interferes")
   for (const type of ["gesturestart", "gesturechange", "gestureend"]) {
     assert.deepEqual(wiring.get(type), { capture: true, passive: false }, `${type} must be cancellable`)
   }
-  assert.equal(wiring.size, 7, "four touch events and three gesture events, and nothing silently dropped")
+  assert.equal(wiring.size, 8, "four touch events, a click watcher and three gesture events")
 })
 
 test("installing twice binds one guard, not two", async () => {
   const doc = new FakeDocument()
-  const node = new FakeNode()
+  const node = new FakeNode(doc)
   installTapZoomGuard(doc, { now: () => 0 })
   installTapZoomGuard(doc, { now: () => 0 })
   const bound = doc.bound.length
@@ -414,18 +488,18 @@ test("installing twice binds one guard, not two", async () => {
   doc.emit("touchend", touchEvent({ clientX: 5, clientY: 5, target: node }))
   await flush()
 
-  assert.equal(bound, 7, "seven listeners, once")
+  assert.equal(bound, 8, "eight listeners, once")
   assert.equal(node.clicks.length, 1, "one re-dispatched click, not two")
 })
 
 test("the disposer unbinds, and a target can then be guarded again", () => {
   const doc = new FakeDocument()
   const dispose = installTapZoomGuard(doc, { now: () => 0 })
-  assert.equal(doc.bound.length, 7)
+  assert.equal(doc.bound.length, 8)
   dispose()
   assert.equal(doc.bound.length, 0)
   installTapZoomGuard(doc, { now: () => 0 })
-  assert.equal(doc.bound.length, 7, "the target is no longer marked as guarded")
+  assert.equal(doc.bound.length, 8, "the target is no longer marked as guarded")
 })
 
 test("no document, and no MouseEvent, are both survivable", async () => {
@@ -437,7 +511,7 @@ test("no document, and no MouseEvent, are both survivable", async () => {
   delete (globalThis as { MouseEvent?: unknown }).MouseEvent
   try {
     const g = guarded()
-    const node = new FakeNode()
+    const node = new FakeNode(g.doc)
     g.tap(1, 1, node)
     g.advance(30)
     assert.equal(g.tap(1, 1, node), true, "the zoom is still cancelled")

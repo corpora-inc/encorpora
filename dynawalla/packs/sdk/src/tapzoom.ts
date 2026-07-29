@@ -56,10 +56,21 @@
 // A geometric test cannot separate those from a zoom: a child tapping the same
 // pedal twice in 120ms IS two taps close in time and space. So this does not
 // try. It cancels the tap's default action and then RE-DISPATCHES the `click`
-// the cancellation swallowed, at the same coordinates on the same target, one
-// microtask later so it still lands after the `touchend` it belongs to. The
+// the cancellation swallowed, at the same coordinates on the same target, in a
+// task of its own so it still lands after the `touchend` it belongs to. The
 // zoom is a default action of the touch and does not come back; the activation
 // is not a default action of the touch and does.
+//
+// A task rather than a microtask, and counted rather than assumed. That
+// cancelling `touchend` suppresses the compatibility `click` is engine
+// behaviour this repository cannot observe — the Touch Events spec only
+// promises it for `touchstart` — and an engine that fired the click anyway
+// would give a control TWO. So the guard watches for a trusted `click` and
+// re-dispatches only if none arrived: a microtask would run before the
+// compatibility click and see nothing, a task runs after it. Either way exactly
+// one click reaches the control, and where the platform's own survived, the
+// platform's own is the one that is kept — it is the one carrying user
+// activation.
 //
 // The accounting that follows from that: the FIRST tap of any chain is never
 // cancelled, and every later tap is cancelled and re-clicked. One `click` per
@@ -236,6 +247,8 @@ export function installTapZoomGuard(
   const now = options.now ?? Date.now
   const click = options.click ?? dispatchClick
   const guard = new TapZoomGuard()
+  /** Clicks the platform raised by itself. The re-dispatched ones are not trusted. */
+  let trustedClicks = 0
 
   const onStart = (event: GuardTouchEvent) => {
     const touch = first(event.changedTouches)
@@ -255,15 +268,23 @@ export function installTapZoomGuard(
     if (!guard.end(now(), touch.clientX, touch.clientY, count(event.touches))) return
     if (event.cancelable === false || typeof event.preventDefault !== "function") return
     event.preventDefault()
-    // After the `touchend` finishes dispatching, so the game sees its own
-    // listeners run in the order it wrote them and the click lands where the
-    // real one would have.
+    // After the whole input turn, so the game sees its own listeners run in the
+    // order it wrote them, and so a compatibility click the engine raised in
+    // spite of the cancellation has already been counted.
     const { clientX, clientY } = touch
     const node = touch.target
-    queueMicrotask(() => click(node, clientX, clientY))
+    const seen = trustedClicks
+    setTimeout(() => {
+      if (trustedClicks !== seen) return
+      click(node, clientX, clientY)
+    }, 0)
   }
 
   const onCancel = () => guard.cancel()
+
+  const onClick = (event: { isTrusted?: boolean }) => {
+    if (event.isTrusted !== false) trustedClicks += 1
+  }
 
   // Pinch is a different gesture and this is not the fix for it — it is here
   // because the invariant is "a pack never scales the page", and because
@@ -283,6 +304,10 @@ export function installTapZoomGuard(
     ["touchmove", onMove as (event: never) => void, { capture: true, passive: true }],
     ["touchend", onEnd as (event: never) => void, { capture: true, passive: false }],
     ["touchcancel", onCancel as (event: never) => void, { capture: true, passive: true }],
+    // Watching, never interfering: it cancels nothing and stops nothing, it
+    // only counts, so a control that legitimately receives a click still
+    // receives it.
+    ["click", onClick as (event: never) => void, { capture: true, passive: true }],
     ["gesturestart", onGesture as (event: never) => void, { capture: true, passive: false }],
     ["gesturechange", onGesture as (event: never) => void, { capture: true, passive: false }],
     ["gestureend", onGesture as (event: never) => void, { capture: true, passive: false }],
