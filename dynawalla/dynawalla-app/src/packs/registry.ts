@@ -47,6 +47,13 @@ export interface InstalledPack {
   readonly skills?: readonly string[]
   /** `covers.grades` — inclusive band, `[1, 4]` is grades one to four. */
   readonly grades?: readonly [number, number]
+  /**
+   * `minAge` — the youngest age the game's *hands* are written for, drawn as
+   * `8+`. A floor with no ceiling, and guidance rather than a gate: nothing
+   * anywhere reads this to lock, hide, dim or reorder a pack. Absent means the
+   * pack did not state one, which the card draws as nothing at all.
+   */
+  readonly minAge?: number
 }
 
 export interface RegistryState {

@@ -27,6 +27,7 @@
       5
     ]
   },
+  "minAge": 6,
   "locales": [
     "en"
   ],

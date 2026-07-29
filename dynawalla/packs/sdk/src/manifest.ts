@@ -41,6 +41,17 @@ export const MAX_DOWNLOAD_BYTES = 256 * 1024 * 1024
 
 export const MAX_FILES = 20_000
 
+/**
+ * The bounds on `minAge`.
+ *
+ * A floor with no ceiling, so the numbers stay inside what a *label* can mean:
+ * below three there is no child holding the tablet, and past eighteen the word
+ * "minimum age" has stopped describing a learner. A pack that wants to say
+ * "anyone" omits the field.
+ */
+export const MIN_AGE_FLOOR = 3
+export const MIN_AGE_CEILING = 18
+
 export type PackManifest = {
   readonly schema: number
   readonly id: string
@@ -63,6 +74,26 @@ export type PackManifest = {
     /** Inclusive school-grade band. `[1, 3]` is grades one to three. */
     readonly grades: readonly [number, number]
   }
+  /**
+   * The youngest age the game's **hands** are written for. Guidance, never a
+   * gate.
+   *
+   * A floor and no ceiling — `8` means "eight and up", drawn as `8+`. There is
+   * deliberately no `maxAge`: every game's mathematics adapts upward without
+   * bound, so a range would promise a ceiling the product does not have.
+   *
+   * It is a claim about **motor and attention demand, not about arithmetic**.
+   * The maths adapts down to single-digit facts in every pack, so it is never
+   * the limiting factor; what a five-year-old cannot do is hold a precise
+   * timing window or steer two axes while computing. A parent reading `8+` on
+   * a five-year-old's screen is being told the game may be frustrating, and
+   * nothing in the host reads this field to lock, hide, dim or reorder a pack.
+   *
+   * Optional because a manifest written before this field existed is on disk
+   * today. Absent means unstated, which the catalogue draws as nothing at all
+   * — never as a guess.
+   */
+  readonly minAge?: number
   /** BCP-47 tags the pack renders. `en` is required. */
   readonly locales: readonly string[]
   readonly assets: { readonly files: number; readonly bytes: number }
@@ -230,6 +261,24 @@ export function parseManifest(input: unknown): ManifestResult {
     ) {
       fail("covers.grades must be an inclusive [low, high] band within 0–12")
     }
+  }
+
+  // Absent is allowed and means unstated. Present-but-wrong is not: `"8+"`,
+  // `[6, 10]` and `7.5` are the three shapes an author reaches for, and each
+  // would otherwise reach a parent's screen as `NaN+`, `6,10+` or `7.5+`.
+  const minAge = input["minAge"]
+  if (
+    minAge !== undefined &&
+    (typeof minAge !== "number" ||
+      !Number.isInteger(minAge) ||
+      minAge < MIN_AGE_FLOOR ||
+      minAge > MIN_AGE_CEILING)
+  ) {
+    fail(`minAge must be an integer in ${MIN_AGE_FLOOR}–${MIN_AGE_CEILING} when present`)
+  }
+  // There is no `maxAge` and there never will be: the label is "and up".
+  if (input["maxAge"] !== undefined || input["ageRange"] !== undefined) {
+    fail("there is no age ceiling in this schema — minAge is a floor, drawn as \"and up\"")
   }
 
   const locales = stringArray(input["locales"])

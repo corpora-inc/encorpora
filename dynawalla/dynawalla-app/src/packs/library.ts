@@ -62,6 +62,37 @@ export type LibraryDeps = {
 }
 
 /**
+ * Everything the front door needs to draw a card, lifted off one manifest.
+ *
+ * One function with two callers, and the duplication it replaces is why it
+ * exists: `libraryStore` copies these onto the persisted record and `useHost`
+ * copies them back over it, and the two lists have to agree field for field
+ * forever. They were two hand-written object literals, so the failure mode of
+ * adding a field was a card that drew it after a fresh install and lost it on
+ * the next launch — or the reverse — with every type still correct.
+ */
+export type PackCardFacts = {
+  readonly description: string
+  readonly skills: readonly string[]
+  readonly grades: readonly [number, number]
+  /** Absent, not `undefined`: `exactOptionalPropertyTypes` is on. */
+  readonly minAge?: number
+}
+
+export function cardFacts(entry: LibraryEntry): PackCardFacts {
+  return {
+    description: entry.description,
+    skills: entry.manifest.covers.skills,
+    grades: entry.manifest.covers.grades,
+    // Spread rather than assigned, so a pack that states no minimum age leaves
+    // the key off entirely. The catalogue draws an unstated age as nothing at
+    // all, and an explicit `undefined` is a different thing from an absent key
+    // to both the persisted record and the type checker.
+    ...(entry.manifest.minAge === undefined ? {} : { minAge: entry.manifest.minAge }),
+  }
+}
+
+/**
  * Read the pack root and decide what may run.
  *
  * Pure over its dependencies so the whole decision — a damaged manifest, a pack

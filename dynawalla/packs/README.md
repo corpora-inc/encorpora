@@ -49,6 +49,7 @@ hold at a thousand packs, so it holds at two.
   "entry": "pack.html",
   "capabilities": ["items", "items.reveal", "haptics"],
   "covers": { "skills": ["dw.add.regroup.subtract-multidigit"], "grades": [1, 4] },
+  "minAge": 7,
   "locales": ["en"],
   "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
 }
@@ -56,6 +57,31 @@ hold at a thousand packs, so it holds at two.
 
 `assets.files`, `assets.bytes` and the integrity digest are **generated**. They
 are facts about built output, and a hand-maintained copy of a fact goes stale.
+
+### `minAge` — the one judgement a builder cannot make
+
+Every game must state one, and `packs/sdk/src/fleet.test.ts` fails the build if a
+new directory arrives without it. It is a **floor with no ceiling**: `7` is drawn
+as `7+`, and there is no `maxAge` — the parser rejects one — because every game's
+mathematics adapts upward without bound and a range would print a ceiling the
+product does not have.
+
+**Judge it by motor and attention demand, never by the arithmetic.** The maths
+adapts down to single-digit facts in every pack, so it is never what stops a
+five-year-old; what stops them is a 60 ms timing window, two thumbs on two
+independent sticks, or steering away from something while computing. Roughly:
+
+| | what the hands must do |
+| --- | --- |
+| 5 | discrete taps on large targets, self-paced, nothing moving against the child |
+| 6 | one forgiving continuous gesture (a drag, a free aim), or a soft budget, no dual task |
+| 7 | steer or survive while a question is live, or a window around 200–400 ms, or small targets |
+| 8 | two simultaneous continuous axes, or sustained dodge-plus-compute, or a window under 250 ms |
+| 9 | all of it at once: precision timing, dual task, and fine discrimination between numerals |
+
+**It is guidance, not a gate.** Nothing anywhere reads this field to lock, hide,
+dim or reorder a pack. A five-year-old's parent seeing `8+` is being told the
+game may be frustrating; the game still opens, at full strength, on a press.
 
 ### Where the output goes
 

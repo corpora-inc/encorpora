@@ -320,3 +320,70 @@ test("diagnostics are off until a parent turns them on", () => {
     "the storage breakdown is the point of the mode",
   )
 })
+
+test("a pack's minimum age reaches the card, and an unstated one stays unstated", () => {
+  // The wire from the manifest to the small print: `libraryStore` copies
+  // `manifest.minAge` onto the record, and this is where it becomes something
+  // the catalogue can draw. Everything either side of this hop is typed; this
+  // hop is a hand-written object literal, which is where a field goes missing.
+  const rows = rowsOf("packs", {
+    ...coldHost,
+    packs: [
+      {
+        id: "inc.corpora.pack.stated",
+        name: "Stated",
+        version: "1.0.0",
+        bytes: 1024,
+        sha256: "",
+        installedAt: 0,
+        minAge: 8,
+      },
+      {
+        id: "inc.corpora.pack.silent",
+        name: "Silent",
+        version: "1.0.0",
+        bytes: 1024,
+        sha256: "",
+        installedAt: 0,
+      },
+    ],
+  }).filter((row) => row.kind === "pack")
+
+  assert.equal(rows.length, 2)
+  assert.equal(rows.find((row) => row.name === "Stated")?.minAge, 8)
+  // `null`, not `undefined`: a record written before this field existed is on
+  // a device today, and the card draws nothing rather than guessing.
+  assert.equal(rows.find((row) => row.name === "Silent")?.minAge, null)
+})
+
+test("a minimum age is guidance and never a gate", () => {
+  // The whole product decision in one assertion. A game labelled for older
+  // hands is not locked, not hidden, not dimmed, not sorted away and not
+  // resting: the row is identical to every other row except for two extra
+  // characters of small print, and pressing it launches the pack.
+  const { calls, actions } = recorder()
+  const rows = surfaceOf(
+    "packs",
+    {
+      ...coldHost,
+      packs: [
+        {
+          id: "inc.corpora.pack.oldest",
+          name: "Oldest",
+          version: "1.0.0",
+          bytes: 1024,
+          sha256: "",
+          installedAt: 0,
+          minAge: 18,
+        },
+      ],
+    },
+    actions,
+  ).flatMap((section) => [...section.rows])
+
+  const pack = rows.find((row) => row.kind === "pack")
+  assert.ok(pack?.kind === "pack", "the oldest-labelled game left the front door")
+  assert.equal(pack.resting, false, "an age label must not rest a game")
+  pack.play()
+  assert.deepEqual(calls, ["launchPack"], "the oldest-labelled game did not open")
+})

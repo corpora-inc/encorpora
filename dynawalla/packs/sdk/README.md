@@ -63,6 +63,7 @@ Two consequences worth planning around:
   "entry": "index.html",
   "capabilities": ["items", "haptics"],
   "covers": { "skills": ["add.2digit.regroup"], "grades": [1, 3] },
+  "minAge": 6,
   "locales": ["en", "es"],
   "assets": { "files": 42, "bytes": 3000000 },
   "download": {
@@ -87,6 +88,13 @@ Notes that are not obvious from the shape:
   produces two different hashes for one version number and is unresolvable from
   the device.
 - `covers` is how the host routes a skill to a pack that can teach it.
+- `minAge` is optional, an integer in 3–18, and a **floor with no ceiling** —
+  `6` is drawn as `6+`. There is no `maxAge` and the parser rejects one: every
+  game's mathematics adapts upward without bound, so a range would print a
+  promise the product does not make. It is a claim about **motor and attention
+  demand, not about arithmetic** — the maths adapts down to single-digit facts
+  in every pack, so it is never the limiting factor. **Guidance, never a
+  gate:** nothing in the host reads it to lock, hide, dim or reorder a pack.
 
 ---
 

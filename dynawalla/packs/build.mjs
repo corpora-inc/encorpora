@@ -37,6 +37,8 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
+import { manifestFrom } from "./authoring.mjs"
+
 const here = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(here, "..")
 const GAMES = path.join(root, "games")
@@ -133,29 +135,17 @@ function buildOne(pack) {
   // build for a reason nobody would guess.
   const content = walk(staged)
   const contentBytes = bytesOf(staged, content)
-  const manifest = {
-    schema: 1,
-    id: source.id,
-    version: source.version,
-    name: source.name,
-    description: source.description,
-    ...(source.nameLocalized ? { nameLocalized: source.nameLocalized } : {}),
-    ...(source.descriptionLocalized ? { descriptionLocalized: source.descriptionLocalized } : {}),
-    sdk: source.sdk,
-    host: source.host,
-    entry: source.entry,
-    capabilities: source.capabilities,
-    covers: source.covers,
-    locales: source.locales,
-    assets: {
+  const manifest = manifestFrom(
+    source,
+    {
       files: content.length + 1,
       bytes: Math.ceil((contentBytes + 4096) / 1024) * 1024,
     },
-    download: {
+    {
       bytes: Math.max(1, contentBytes),
       sha256: digestOf(staged, content),
     },
-  }
+  )
   fs.writeFileSync(path.join(staged, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`)
 
   // The gate. Not advisory: a pack that does not pass does not ship, and the
