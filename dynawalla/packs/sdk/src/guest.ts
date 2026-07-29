@@ -33,6 +33,7 @@ import type {
   TransitionKind,
 } from "./protocol.ts"
 import { isConnect, isResponse, PROTOCOL_VERSION } from "./protocol.ts"
+import { installTapZoomGuard } from "./tapzoom.ts"
 
 export class PackError extends Error {
   readonly code: string
@@ -145,6 +146,11 @@ const DEFAULT_TIMEOUT_MS = 15_000
  */
 export function connect(options: { timeoutMs?: number } = {}): Promise<HostClient> {
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS
+  // Before the handshake, not after it. A pack draws a loading state while it
+  // waits for a port, and a child tapping at that is exactly as able to zoom
+  // the host as one tapping at a running game. See `tapzoom.ts` for why this
+  // belongs to the pack and cannot belong to the host.
+  installTapZoomGuard()
   return new Promise<HostClient>((resolve, reject) => {
     if (typeof window === "undefined" || window.parent === window) {
       reject(new PackError("no_host", "this document is not framed by a Dynawalla host"))

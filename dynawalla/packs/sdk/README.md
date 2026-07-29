@@ -192,6 +192,20 @@ the colour scheme, and it follows the host — re-read it on the `settings` even
 - **Nothing by colour alone**, a keyboard path to everything, child-sized
   targets, and 320 px with no horizontal overflow.
 
+### Double-tap zoom is handled for you
+
+A pack is framed, and an iframe has no viewport of its own — so a double tap
+inside your game scales the **host** page, and neither your `<meta viewport>`
+nor your `touch-action: none` stops it. `connect()` installs a guard for this
+before it does anything else, in `tapzoom.ts`. Your game does not call it, does
+not configure it, and cannot forget it.
+
+What that costs you: nothing, on purpose. The guard cancels the second and later
+taps of a rapid chain — which is the only way to stop the zoom — and then
+re-dispatches the `click` the cancellation swallowed, so a control bound to
+`click` still fires on every tap. Read `tapzoom.ts` before you build anything
+that depends on the exact ordering of `touchend` and `click`.
+
 ---
 
 ## Developing a pack
