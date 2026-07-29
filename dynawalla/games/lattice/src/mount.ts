@@ -26,10 +26,11 @@
 // the mouse as an alternative aim and its button as the trigger. Tablet and
 // desktop are first-class targets here, not a phone game stretched.
 
+import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import { Audio } from "./audio/audio.ts"
 import type { Host } from "./contract.ts"
 import { Rng } from "./core/rng.ts"
-import { Arena, type ArenaEvent } from "./game/arena.ts"
+import { Arena, RESONATOR_R, SHIP_R, type ArenaEvent } from "./game/arena.ts"
 import { bestChain, recordChain } from "./game/best.ts"
 import { Scene } from "./render/scene.ts"
 import { BRASS_LIGHT, CELESTIAL, OXIDE } from "./render/palette.ts"
@@ -75,6 +76,79 @@ export function mountLattice(
     width: scene.cssWidth,
     height: scene.cssHeight,
     reduced,
+  })
+
+  // How to play. Nothing on this screen says that the ring wants the ANSWER to
+  // the sum on its face, built out of numbers that multiply — and a child who
+  // does not know that plays the passive layer forever, shooting husks apart
+  // and sweeping them up, and never once does the thinking the game is for. The
+  // manual stays reachable during play, because the moment a child needs the
+  // rules is never the title screen.
+  const guide = createInstructions(el, {
+    title: "THE LATTICE",
+    summary: [
+      "A ring floats in the middle with a sum on it. Work out the answer.",
+      "Then collect glowing numbers that multiply to that answer, and fly into the ring.",
+    ],
+    sections: [
+      {
+        heading: "Flying and shooting",
+        lines: [
+          "Put a thumb on the left half of the screen and slide it. Your ship flies that way.",
+          "Put a thumb on the right half and slide it. Your ship aims that way and shoots.",
+          "On a keyboard: W A S D to fly, arrow keys to shoot, space to shoot straight ahead.",
+        ],
+      },
+      {
+        heading: "Breaking numbers open",
+        lines: [
+          "The stone squares hold big numbers. Shoot one and it breaks into two numbers that multiply back to it. Shoot 72 and you get 8 and 9.",
+          "Keep shooting the pieces. The 8 breaks into 2 and 4. The 4 breaks into 2 and 2.",
+          "Some numbers glow instead. Shooting one only shoves it, because nothing multiplies to make it. Those are called prime numbers, and they are the pieces you collect.",
+        ],
+      },
+      {
+        heading: "Your hold",
+        lines: [
+          "Fly into a glowing number to pick it up. It goes in the bar along the bottom.",
+          "The bar shows what you are carrying, like 2 · 2 · 3, and the number those pieces multiply to: 12.",
+          "Do not fly into a stone square. It knocks your biggest piece loose and drops it back on the field.",
+          "You can carry twelve pieces at once.",
+        ],
+      },
+      {
+        heading: "Opening the ring",
+        lines: [
+          "The ring shows a sum, like 47 + 25. Work it out: 72.",
+          "Now find pieces that multiply to 72. That is 2 · 2 · 2 · 3 · 3.",
+          "Carry exactly those and fly into the ring. It opens, and a new sum arrives.",
+        ],
+      },
+      {
+        heading: "If the ring says NOT YET",
+        lines: [
+          "Your pieces multiply to the wrong number. One extra 5 turns 72 into 360.",
+          "Nothing is lost. Your pieces drop back on the field and you can pick them up again.",
+          "To empty the bar yourself, tap the bar. On a keyboard, press Escape.",
+        ],
+      },
+      {
+        heading: "When the answer is a glowing number",
+        lines: [
+          "Sometimes the answer is a number that cannot be broken, like 41.",
+          "Then no pile of smaller pieces will ever reach it. Look for the single 41 drifting on the field and carry that in on its own.",
+        ],
+      },
+      {
+        heading: "The counters at the top",
+        lines: [
+          "OPENED is how many rings you have opened.",
+          "CHAIN is how many you opened in a row without a wrong one.",
+          "BEST is your longest chain ever.",
+        ],
+      },
+    ],
+    reducedMotion: reduced,
   })
 
   let best = bestChain()
@@ -191,19 +265,52 @@ export function mountLattice(
     firing = aimStick !== null || mouseDown || keys.has(" ") || ax !== 0 || ay !== 0
   }
 
+  /** Whatever the thumbs were doing, they are not doing it any more. */
+  const dropSticks = (): void => {
+    moveStick = null
+    aimStick = null
+    firing = false
+    mouseDown = false
+    keys.clear()
+  }
+
   const tick = (t: number): void => {
     if (!running) return
     frame = requestAnimationFrame(tick)
     const dt = last === 0 ? 16 : Math.min(MAX_STEP_MS, t - last)
     last = t
 
+    // The world is held for two reasons, and the second one is easy to miss:
+    // the host's sheet, and the child reading the rules. A manual that leaves
+    // the arena running is a manual a child cannot afford to open — they come
+    // back to a ship that drifted into a husk, or through the resonator, and
+    // asserted a hold they were not there for. That is the same damage the
+    // host's sheet does unguarded, from a button this pack owns.
+    const held = paused || guide.isOpen
+    if (held && !arena.isPaused) {
+      arena.pause(now())
+      dropSticks()
+    } else if (!held && arena.isPaused) {
+      arena.resume(now())
+    }
+
     // Behind a sheet the arena holds its shape. The frame is still drawn — a
     // frozen pack under a translucent host sheet is what a paused game looks
     // like — but nothing moves and nothing is decided.
-    if (!paused) {
+    if (!held) {
       readKeys()
       if (firing) apply(arena.fire())
       apply(arena.step(dt))
+      // Flying into the resonator is what asserts the hold, and it is the only
+      // act in this game the host ever hears about. `Arena.step` resolves every
+      // other collision itself, but not this one: the assertion is timed
+      // against the wall clock the report carries, and the wall clock belongs
+      // to the shell. Missing, the whole reasoning layer is unreachable — the
+      // ship flies through the ring and nothing at all happens.
+      const res = arena.resonator
+      if (res && Math.hypot(arena.ship.x - res.x, arena.ship.y - res.y) < RESONATOR_R + SHIP_R) {
+        apply(arena.enter(now()))
+      }
       grid.step(dt)
       scene.advance(dt)
     }
@@ -219,7 +326,7 @@ export function mountLattice(
 
   const down = (event: PointerEvent): void => {
     event.preventDefault()
-    if (paused) return
+    if (paused || guide.isOpen) return
     audio.resume()
     const p = at(event)
 
@@ -252,7 +359,7 @@ export function mountLattice(
   }
 
   const move = (event: PointerEvent): void => {
-    if (paused) return
+    if (paused || guide.isOpen) return
     const p = at(event)
     if (moveStick && moveStick.id === event.pointerId) {
       moveStick.x = p.x
@@ -288,8 +395,11 @@ export function mountLattice(
     }
   }
 
+  // While the manual is up, the keyboard belongs to the manual: Escape closes
+  // it rather than dumping the hold, and nothing lands in `keys` to be found
+  // still held down when the child comes back.
   const keyDown = (event: KeyboardEvent): void => {
-    if (paused || event.repeat) return
+    if (paused || guide.isOpen || event.repeat) return
     keys.add(event.key)
     if (event.key === " ") {
       event.preventDefault()
@@ -331,14 +441,9 @@ export function mountLattice(
       if (paused) return
       paused = true
       arena.pause(now())
-      // Whatever the thumbs were doing, they are not doing it any more. Left
-      // set, a resting thumb would fly the ship through the resonator behind
-      // the sheet and assert a product nobody assembled.
-      moveStick = null
-      aimStick = null
-      firing = false
-      mouseDown = false
-      keys.clear()
+      // Left set, a resting thumb would fly the ship through the resonator
+      // behind the sheet and assert a product nobody assembled.
+      dropSticks()
       scene.say("PAUSED", BRASS_LIGHT)
     },
     resume(): void {
@@ -352,6 +457,7 @@ export function mountLattice(
     },
     unmount(): void {
       running = false
+      guide.destroy()
       cancelAnimationFrame(frame)
       canvas.removeEventListener("pointerdown", down)
       canvas.removeEventListener("pointermove", move)

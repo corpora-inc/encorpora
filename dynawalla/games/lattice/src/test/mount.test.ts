@@ -49,12 +49,15 @@ function fakeContext(counter: { calls: number; text: string[] }): CanvasRenderin
 }
 
 type FakeElement = {
-  style: { cssText: string }
+  style: Record<string, string>
   width: number
   height: number
   listeners: Map<string, Listener[]>
   appendChild(child: unknown): void
+  append(...children: unknown[]): void
   remove(): void
+  setAttribute(name: string, value: string): void
+  focus(): void
   addEventListener(type: string, fn: Listener): void
   removeEventListener(type: string, fn: Listener): void
   setPointerCapture(): void
@@ -73,7 +76,10 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
       height: 0,
       listeners,
       appendChild() {},
+      append() {},
       remove() {},
+      setAttribute() {},
+      focus() {},
       addEventListener(type, fn) {
         const list = listeners.get(type) ?? []
         list.push(fn)
@@ -92,7 +98,13 @@ function harness(size: { w: number; h: number }, counter: { calls: number; text:
     }
   }
   const created: FakeElement[] = []
+  // Enough document for the shared how-to-play chrome, which mounts a button
+  // and a panel and asks the safe-area probe where the notch is. `document.body`
+  // is real machinery here, not padding: `safeInsets` appends its probe to it.
   const doc = {
+    body: make(),
+    activeElement: null,
+    getElementById: () => null,
     createElement() {
       const el = make()
       created.push(el)
@@ -232,6 +244,134 @@ for (const [w, h] of [
     })
   }
 }
+
+test("flying into the resonator actually asserts the hold", () => {
+  // The rule for this lives in `Arena.enter`, it is asserted to death in
+  // `arena.test.ts` and `resonance.test.ts` — and the shell never called it.
+  // Every unit test in this package passed while the one act the whole game is
+  // for did nothing at all: a child could fly through the ring for an hour and
+  // the host would never hear a single answer. Nothing threw. Nothing went red.
+  //
+  // Rules tests cannot catch that, because the missing call is not in the
+  // rules. So this flies the REAL shell — the real loop, the real physics, the
+  // real collision — and asserts the host was told something.
+  //
+  // `Date.now` is pinned because `mount` seeds its generator from it. Left
+  // alone, this test would be a different arena every run.
+  const realNow = Date.now
+  Date.now = () => 1_700_000_000_000
+  try {
+    const counter = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, counter, ({ host, frames, created }) => {
+      const answered: string[] = []
+      const stub = createStubHost({
+        seed: 0x1a771ce,
+        reducedMotion: true,
+        onReport: (r) => answered.push(r.answered),
+      })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      const move = canvas.listeners.get("pointermove")?.[0]
+      assert.ok(down && move, "the twin-stick listeners were not installed")
+
+      // Both thumbs down: the left one sweeps the arena on a slow figure that
+      // does not repeat, the right one holds the trigger and turns the guns.
+      down({ preventDefault() {}, pointerId: 1, pointerType: "touch", clientX: 225, clientY: 350 })
+      down({ preventDefault() {}, pointerId: 2, pointerType: "touch", clientX: 675, clientY: 350 })
+
+      let t = 0
+      for (let i = 0; i < 5000 && answered.length === 0; i++) {
+        move({
+          pointerId: 1,
+          pointerType: "touch",
+          clientX: 225 + Math.sin(i / 37) * 70,
+          clientY: 350 + Math.cos(i / 23) * 70,
+        })
+        move({
+          pointerId: 2,
+          pointerType: "touch",
+          clientX: 675 + Math.cos(i / 11) * 50,
+          clientY: 350 + Math.sin(i / 13) * 50,
+        })
+        t = pump(frames, 1, t)
+      }
+
+      assert.ok(
+        answered.length > 0,
+        "a ship flew through the resonator for 5000 frames and the host was never told anything",
+      )
+      handle.unmount()
+    })
+  } finally {
+    Date.now = realNow
+  }
+})
+
+test("reading the rules holds the world, and closing them lets it go", () => {
+  // A manual that leaves a twin-stick arena running is a manual a child cannot
+  // afford to open. They come back to a ship that drifted through the resonator
+  // and asserted a hold they were not there for — the host's sheet does exactly
+  // that damage unguarded, and the how-to-play button is a door this pack owns.
+  const realNow = Date.now
+  Date.now = () => 1_700_000_000_000
+  try {
+    const counter = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, counter, ({ host, frames, created }) => {
+      const answered: string[] = []
+      const stub = createStubHost({
+        seed: 0x1a771ce,
+        reducedMotion: true,
+        onReport: (r) => answered.push(r.answered),
+      })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      const move = canvas.listeners.get("pointermove")?.[0]
+      assert.ok(down && move)
+
+      // The how-to-play button and its PLAY button are the two things the
+      // shared chrome puts a click handler on, in that order.
+      const clickable = created.filter((el) => (el.listeners.get("click")?.length ?? 0) > 0)
+      const help = clickable[0]
+      const play = clickable[1]
+      assert.ok(help && play, "the how-to-play chrome was not mounted")
+
+      down({ preventDefault() {}, pointerId: 1, pointerType: "touch", clientX: 225, clientY: 350 })
+      down({ preventDefault() {}, pointerId: 2, pointerType: "touch", clientX: 675, clientY: 350 })
+
+      /** Fly the same unrepeating sweep as the sitting above, for `n` frames. */
+      let i = 0
+      let t = 0
+      const fly = (n: number, until?: () => boolean): void => {
+        for (let k = 0; k < n; k++, i++) {
+          move({
+            pointerId: 1,
+            pointerType: "touch",
+            clientX: 225 + Math.sin(i / 37) * 70,
+            clientY: 350 + Math.cos(i / 23) * 70,
+          })
+          t = pump(frames, 1, t)
+          if (until?.() === true) return
+        }
+      }
+
+      // Open the manual, then hold both thumbs on the glass for a long time.
+      help.listeners.get("click")?.[0]?.({})
+      fly(3000)
+      assert.equal(answered.length, 0, "an answer was asserted while the child was reading")
+      assert.ok(counter.calls > 0, "the frame stopped being drawn behind the manual")
+
+      // PLAY, and the same arena carries on being an arena.
+      play.listeners.get("click")?.[0]?.({})
+      fly(8000, () => answered.length > 0)
+      assert.ok(answered.length > 0, "the world never came back after the manual closed")
+      handle.unmount()
+    })
+  } finally {
+    Date.now = realNow
+  }
+})
 
 test("a pause that arrives while a thumb is down does not fly the ship on", () => {
   // The shell half of the pause. `Arena` refuses the input; this is the guard
