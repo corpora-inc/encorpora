@@ -32,6 +32,16 @@ export type PlayOptions = {
   readonly limit?: number
   /** Fraction into the draw window at which a draw is committed. */
   readonly drawAt?: number
+  /**
+   * How long this player takes to work the statement out, in absolute ms.
+   *
+   * The point of an absolute think time rather than a fraction is that it is
+   * the *child's* number, not the game's: a bot that always acts at 40% of
+   * whatever window it is given can never be timed out, so it can never detect
+   * a window that is too short. One that takes six seconds because six seconds
+   * is what the cadence table says the item costs can.
+   */
+  readonly thinkMs?: (statement: Statement) => number
 }
 
 export function playRun(
@@ -70,7 +80,10 @@ export function playRun(
     const index = statements.length - 1
     const current = statements[index]
     if (round.phase !== "call" || current === undefined || actedOn === index) continue
-    if (round.elapsedMs < current.windowMs * drawAt) continue
+    const readyAt = options.thinkMs ? options.thinkMs(current) : current.windowMs * drawAt
+    // Still working it out. If the window closes first the call is never made,
+    // which is exactly the failure this option exists to expose.
+    if (round.elapsedMs < readyAt) continue
     if (decide(current) === "draw") consume(round.press())
     actedOn = index
   }

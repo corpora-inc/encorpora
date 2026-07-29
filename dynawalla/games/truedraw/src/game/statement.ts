@@ -22,6 +22,7 @@
 // `distractors` and nothing else, so the day `mul`, `frac` or `alg` are promoted
 // out of draft this game covers them with no change: a claim is a claim.
 
+import { comprehensionMsFor } from "./cadence.ts"
 import { canonicalNumeral, digitCount, sameValue } from "../core/exact.ts"
 import type { Rng } from "../core/rng.ts"
 import type { Question } from "../contract.ts"
@@ -48,23 +49,39 @@ export type Statement = {
 /**
  * The draw window, and the stillness before it.
  *
- * Both are a function of how much numeral there is to verify and of nothing
- * else. In particular **neither depends on how long the run has been going**:
- * `EXPERIENCE_DESIGN.md` bans escalation on run length, and a reaction game that
- * quietly tightens its window every round is exactly that ban's target. A long
- * run in this game is not faster. It is only longer.
+ * Both are a function of the item and of nothing else. In particular **neither
+ * depends on how long the run has been going**: `EXPERIENCE_DESIGN.md` bans
+ * escalation on run length, and a reaction game that quietly tightens its window
+ * every round is exactly that ban's target. A long run in this game is not
+ * faster. It is only longer.
  *
- * The two slopes pull in opposite directions on purpose. The window climbs
- * steeply — `753 + 577 = 1330` needs real time, and `EXPERIENCE_DESIGN.md`'s own
- * cadence table puts multi-digit regrouping at a 6 s p50 — while the stillness
- * *flattens*, because a lead-in long enough for a four-digit sum is dead air on
- * `12 + 5 = 17`. Short statements come at you faster; long ones give more room.
- * Verification is cheaper than computation (the ones column alone rejects most
- * mal-rules), which is why the budget can be under the cadence target at all.
+ * ── the window is the child's time ──────────────────────────────────────────
+ *
+ * The window is `cadence.ts`'s p90 for the item's own class, and nothing here is
+ * allowed to clamp it. It used to be `max(1750, min(3600, 1300 + 215d))`, and
+ * that upper clamp inverted the ramp: measured against the repo's own cadence
+ * table it handed a single-digit fact more than its whole p50 and the
+ * `5,001 − 2,798` class under a third of one, so the harder the item, the less
+ * of the child's measured need it received. `windowMonotone` in the tests is now
+ * the standing guard on that.
+ *
+ * The old comment justified the clamp with "verification is cheaper than
+ * computation — the ones column alone rejects most mal-rules". **That claim is
+ * false**, and `malRule.test.ts` is the proof. Every mal-rule this game
+ * *prefers* — the dropped carry, the smaller-from-larger subtraction, the borrow
+ * left at ten — reproduces the true ones digit exactly, by construction: they
+ * are correct in the ones column and wrong further left. `47 + 25 = 62` and the
+ * true `72` share their last digit. A child who checks only the ones column
+ * accepts every one of them. Verification here costs what computation costs, so
+ * it is budgeted at what computation costs.
+ *
+ * The stillness, meanwhile, still *flattens*: it is the lead-in, not the
+ * thinking, and a lead-in long enough for a four-digit sum is dead air on
+ * `12 + 5 = 17`. The thinking happens with the slate lit, where the child can
+ * end it the moment they are ready by drawing.
  */
 export function windowFor(text: string): number {
-  const d = digitCount(text)
-  return Math.max(1750, Math.min(3600, 1300 + 215 * d))
+  return comprehensionMsFor(text)
 }
 
 export function stillFor(text: string, rng: Rng): number {
