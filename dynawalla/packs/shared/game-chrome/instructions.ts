@@ -202,29 +202,33 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   const onScrim = (e: Event): void => {
     if (e.target === scrim) doClose()
   }
-  const onKey = (e: KeyboardEvent): void => {
-    if (!open) return
-    if (e.key === "Escape") {
-      e.preventDefault()
-      doClose()
-      return
-    }
-    // Keep focus in the dialog while it is modal.
-    if (e.key === "Tab") {
-      e.preventDefault()
-      close.focus()
-    }
-  }
-
   // While the panel is up, the game must not see a key. The panel's own div is
-  // \`tabIndex=-1\` and consumes nothing, so a Space or Enter meant to dismiss the
-  // manual fell straight through to whatever the game bound on \`globalThis\` —
+  // `tabIndex=-1` and consumes nothing, so a Space or Enter meant to dismiss the
+  // manual fell straight through to whatever the game bound on `globalThis` —
   // in one game that fired a shear, reported a wrong answer and cost the child
   // lane cells, all behind the scrim where they could not see it. Capture phase,
   // so it runs before any listener the game registered.
   const swallow = (e: KeyboardEvent): void => {
     if (!open) return
-    if (e.key === "Escape") return // handled by onKey, which closes
+    // Escape is handled HERE, in capture, and stopped like every other key.
+    // Letting it through so the bubble handler could close the panel meant the
+    // game saw it too: one game starts a fresh run on any key, so a child who
+    // opened the rules after dying and pressed Escape to close them lost their
+    // score, combo and best combo to the act of reading. preventDefault was
+    // never enough — it stops the browser's default, not another listener.
+    if (e.key === "Escape") {
+      e.preventDefault()
+      e.stopPropagation()
+      if (e.type === "keydown") doClose()
+      return
+    }
+    // Keep focus in the dialog while it is modal. This lives in the same
+    // capture handler as everything else: a bubble-phase listener would never
+    // run, because the stopPropagation below is what keeps keys off the game.
+    if (e.key === "Tab" && e.type === "keydown") {
+      e.preventDefault()
+      close.focus()
+    }
     e.stopPropagation()
   }
   globalThis.addEventListener("keydown", swallow, true)
@@ -233,7 +237,6 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
   help.addEventListener("click", doOpen)
   close.addEventListener("click", doClose)
   scrim.addEventListener("pointerdown", onScrim)
-  globalThis.addEventListener("keydown", onKey)
 
   return {
     open: doOpen,
@@ -243,7 +246,6 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     },
     destroy(): void {
       stopInsets()
-      globalThis.removeEventListener("keydown", onKey)
       globalThis.removeEventListener("keydown", swallow, true)
       globalThis.removeEventListener("keyup", swallow, true)
       help.removeEventListener("click", doOpen)
