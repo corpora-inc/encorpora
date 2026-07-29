@@ -20,6 +20,10 @@
     /* Keeps the WebView's own chrome — overscroll glow, form controls,
        scrollbars — in the theme the app is actually painting. */
     color-scheme: light;
+    /* On iOS the rubber-band belongs to the scrolling VIEWPORT, not to body.
+       Set on body alone the document still bounces, which is how the catalog
+       slides into view above a running game. */
+    overscroll-behavior: none;
   }
 
   html.dw-dark {
