@@ -9,17 +9,24 @@
 // short. They take the number of milliseconds the *repo* says the item costs,
 // and then the run reports what the game did about it.
 //
-// The failure this catches is the one the audit found: the window was capped at
-// 3.6 s, running out of time on a TRUE slate settles as a hold, and a hold is a
-// miss — so a child working at the documented p50 lost a shot on every true
-// slate, and the bag deals true slates in exact halves. Half their shots gone by
-// arithmetic, regardless of what they knew.
+// The failure this catches is the one the audit found: the window was capped at 3.6 s,
+// running out of time on a TRUE slate settled as a hold, and a hold was a miss — so a
+// child working at the documented p50 lost a shot on every true slate, and the bag
+// deals true slates in exact halves. Half their shots gone by arithmetic, regardless
+// of what they knew.
+//
+// Two things have changed under it and neither weakens it. Running out of time is now a
+// LAPSE, which spends no shot — so the worst case is milder. But the window is still
+// the item's p90 and a child at p50 must still LAND THE CALL, because a lapse earns no
+// coins and a child who can do the sum should be paid for it. So the assertion is the
+// same one: at every rung, a deliberate child answers every slate.
 
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { createStubHost } from "../stub/host.ts"
 import { perfect, playRun } from "../test/harness.ts"
+import { COIN_BASE } from "./bag.ts"
 import { comprehensionLoad, comprehensionP50Ms, comprehensionP90Ms, operandWidth } from "./cadence.ts"
 import type { Statement } from "./statement.ts"
 
@@ -42,13 +49,14 @@ test("a child working at the documented p50 is never timed out, at any rung", ()
       limit: 60,
       thinkMs: p50,
     })
-    const timedOut = result.outcomes.filter((o) => o === "slow").length
+    const timedOut = result.outcomes.filter((o) => o === "lapse").length
     assert.equal(
       timedOut,
       0,
       `level ${String(level)}: ${String(timedOut)} of ${String(result.outcomes.length)} calls were lost to the clock`,
     )
     assert.equal(result.run.shots, 3, `level ${String(level)}: shots spent by a child who was right`)
+    assert.ok(result.run.bag > 0, `level ${String(level)}: a correct deliberate child earned nothing`)
   }
 })
 
@@ -60,7 +68,7 @@ test("even the slowest tenth of the class lands the call", () => {
       limit: 40,
       thinkMs: (s) => p90(s) - 40,
     })
-    const timedOut = result.outcomes.filter((o) => o === "slow").length
+    const timedOut = result.outcomes.filter((o) => o === "lapse").length
     assert.equal(timedOut, 0, `level ${String(level)}: the slowest tenth lost ${String(timedOut)} calls`)
   }
 })
@@ -97,4 +105,36 @@ test("a run at p50 is long, which is the whole point of the format", () => {
   })
   assert.equal(result.run.over, false)
   assert.ok(result.run.calls >= 120, `only ${String(result.run.calls)} calls`)
+})
+
+test("a deliberate child is paid the full base on every single call", () => {
+  // The standing rule: measure and reward, never punish. A child working at their own
+  // class's p50 collects no speed bonus and every coin of the base, at every rung.
+  for (const level of LEVELS) {
+    const result = playRun(createStubHost({ seed: 3900 + level, level }), 3400 + level, perfect, {
+      limit: 30,
+      thinkMs: p50,
+    })
+    const calls = result.outcomes.filter((o) => o === "bank" || o === "spot").length
+    assert.ok(calls > 20, `level ${String(level)}: only ${String(calls)} calls`)
+    assert.equal(
+      result.run.bag,
+      calls * COIN_BASE,
+      `level ${String(level)}: a p50 child was paid ${String(result.run.bag)} for ${String(calls)} calls`,
+    )
+  }
+})
+
+test("a lapse never costs a deliberate child anything", () => {
+  // Even the child who cannot finish inside p90 — the tenth the table says exists —
+  // pays nothing for it. No shot, no coin, and nothing reported.
+  const result = playRun(createStubHost({ seed: 4900, level: 7 }), 4400, perfect, {
+    limit: 12,
+    thinkMs: (s) => s.windowMs * 3,
+  })
+  assert.ok(result.outcomes.length > 8, `only ${String(result.outcomes.length)} rounds`)
+  assert.ok(result.outcomes.every((o) => o === "lapse"))
+  assert.equal(result.run.shots, 3, "a shot was spent on a child who was still thinking")
+  assert.equal(result.run.bag, 0)
+  assert.equal(result.run.over, false)
 })

@@ -132,10 +132,33 @@ test("a short statement comes at you faster than a long one", () => {
   assert.ok(quick < slow - 800, `${String(quick)}ms vs ${String(slow)}ms`)
 })
 
-test("the stillness before the cue is jittered but bounded", () => {
+test("the beat before the statement is short, jittered, and NOT a function of the item", () => {
+  // It used to be 620–1150ms and to scale UP with the digit count — dead air, more of
+  // it the harder the sum, on a game whose complaint was that it was boring. It is now
+  // a flat ~320ms because the slate is BLANK for all of it: the statement is cut in
+  // when the window opens, so there is nothing to read during the lead-in and nothing
+  // for it to be proportional to.
   const rng = new Rng(17)
-  for (let i = 0; i < 500; i++) {
-    const still = stillFor("4003 − 87 = 3916", rng)
-    assert.ok(still >= 450 && still <= 1400, String(still))
+  const seen = new Set<number>()
+  for (const text of ["7 + 8 = 15", "4003 − 87 = 3916", "5001 − 2798 = 2203"]) {
+    for (let i = 0; i < 400; i++) {
+      const still = stillFor(text, rng)
+      assert.ok(still >= 250 && still <= 410, `${text}: ${String(still)}ms`)
+      seen.add(still)
+    }
   }
+  // The jitter is real: a fixed lead would let a child pre-load the flick and stop
+  // reading, and pre-loading is the one way left to fake a fast call.
+  assert.ok(seen.size > 40, `only ${String(seen.size)} distinct lead-ins`)
+})
+
+test("the item's own p50 rides on the statement, so the bag and the ladder agree", () => {
+  const s = buildStatement(question(), true, new Rng(9))
+  assert.equal(s.p50Ms, CADENCE.regroup.p50, `two-digit regrouping got a p50 of ${String(s.p50Ms)}`)
+  const wide = buildStatement(
+    question({ prompt: "5001 − 2798", answer: "2203", distractors: ["3313"] }),
+    true,
+    new Rng(9),
+  )
+  assert.ok(wide.p50Ms > s.p50Ms, "a harder item did not get a longer beat")
 })
