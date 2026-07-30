@@ -110,3 +110,43 @@ export function comprehensionP90Ms(load: number): number {
 export function comprehensionMsFor(text: string): number {
   return comprehensionP90Ms(comprehensionLoad(operandWidth(text)))
 }
+
+/** The p50 beat for a piece of statement text. What "quick" is measured against. */
+export function p50MsFor(text: string): number {
+  return comprehensionP50Ms(comprehensionLoad(operandWidth(text)))
+}
+
+/**
+ * The share of the child's own p50 that a call did NOT use, as 0..1 credit.
+ *
+ * ── why p50 and not the window ───────────────────────────────────────────────
+ *
+ * The window is p90, and p90 is nine-tenths of the class. Scoring speed against
+ * it would hand almost every child almost full credit and measure nothing. p50
+ * is the beat half the class beats, so it is the only number in the table that
+ * discriminates.
+ *
+ * ── why it floors at zero and never goes negative ────────────────────────────
+ *
+ * The standing rule is measure and reward, never punish. A child who takes twice
+ * their class's p50 and gets it right scores `COIN_BASE` — the whole of the
+ * reward for being right, and not one coin less than a fast child's base. What
+ * they do not get is the bonus. There is no branch anywhere that subtracts for
+ * slowness, and `bag.test.ts` asserts that by exhaustion.
+ *
+ * ── the floor at QUICK_FLOOR ─────────────────────────────────────────────────
+ *
+ * Full credit at 35% of p50 rather than at zero. A curve that only paid out at
+ * literally-instant would be a curve nobody is ever paid by, and it would reward
+ * a child who had pre-loaded the gesture over one who read the slate and moved
+ * decisively. 35% of a two-digit regroup's p50 is 2.1 s, which is a real child
+ * reading a real sum and knowing.
+ */
+export const QUICK_FLOOR = 0.35
+
+export function quicknessOf(reactionMs: number, p50Ms: number): number {
+  if (!Number.isFinite(reactionMs) || !Number.isFinite(p50Ms) || p50Ms <= 0) return 0
+  const ratio = Math.max(0, reactionMs) / p50Ms
+  const credit = (1 - ratio) / (1 - QUICK_FLOOR)
+  return Math.max(0, Math.min(1, credit))
+}

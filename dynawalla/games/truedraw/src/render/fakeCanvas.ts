@@ -75,6 +75,8 @@ export function fakeCanvas(width: number, height: number): { canvas: unknown; re
     closePath: record("closePath"),
     moveTo: record("moveTo"),
     lineTo: record("lineTo"),
+    bezierCurveTo: record("bezierCurveTo"),
+    quadraticCurveTo: record("quadraticCurveTo"),
     arc: record("arc"),
     rect: record("rect"),
     clip: record("clip"),

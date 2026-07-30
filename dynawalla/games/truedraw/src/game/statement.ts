@@ -22,8 +22,8 @@
 // `distractors` and nothing else, so the day `mul`, `frac` or `alg` are promoted
 // out of draft this game covers them with no change: a claim is a claim.
 
-import { comprehensionMsFor } from "./cadence.ts"
-import { canonicalNumeral, digitCount, sameValue } from "../core/exact.ts"
+import { comprehensionMsFor, p50MsFor } from "./cadence.ts"
+import { canonicalNumeral, sameValue } from "../core/exact.ts"
 import type { Rng } from "../core/rng.ts"
 import type { Question } from "../contract.ts"
 
@@ -40,10 +40,16 @@ export type Statement = {
   truth: boolean
   /** "47 + 25 = 62" */
   text: string
-  /** How long the draw window stays open once the slate lights, in ms. */
+  /** How long the window stays open once the statement is cut in, in ms. */
   windowMs: number
-  /** How long the street stays still before the slate lights, in ms. */
+  /** How long the empty slate stands before the statement is cut into it, in ms. */
   stillMs: number
+  /**
+   * The item's own p50 from `cadence.ts`. Not a limit and never shown: it is what
+   * "quick" is measured against, by the bag and by the ladder, and it is carried
+   * on the statement so those two can never disagree about which beat they mean.
+   */
+  p50Ms: number
 }
 
 /**
@@ -84,12 +90,33 @@ export function windowFor(text: string): number {
   return comprehensionMsFor(text)
 }
 
-export function stillFor(text: string, rng: Rng): number {
-  const d = digitCount(text)
-  const base = Math.max(620, Math.min(1150, 420 + 80 * d))
-  // A fixed lead would let a child pre-load the press and stop reading. The
-  // jitter is small enough to stay a beat and large enough to defeat that.
-  return Math.round(base + rng.range(-140, 180))
+/**
+ * The beat before the statement is cut in — and the slate is BLANK for all of it.
+ *
+ * It used to scale with the digit count, 620–1150 ms, because the statement was
+ * legible during it: the slate came up already engraved and unlit, and the light
+ * was the go signal of a GO/NO-GO task. That structure is gone, and it took two
+ * things with it.
+ *
+ *   1. **The free thinking time.** A child could read `47 + 25 = 62` for a whole
+ *      second before the window opened, then answer in 40 ms. Every latency this
+ *      game measures would have that second silently subtracted out of it, and the
+ *      ladder would read a deliberate child as a lightning-fast one. With two
+ *      gestures the reaction time is the signal that drives the difficulty, so a
+ *      lead-in the child can think during is a lead-in that corrupts it. The
+ *      statement now appears when the window opens, and `p50Ms` is measured from
+ *      there.
+ *
+ *   2. **The dead air.** Up to 1.15 s per round of a slate you may not answer,
+ *      scaled UP by how hard the sum is, on a game whose complaint was that it was
+ *      boring. It is now a flat ~320 ms: enough for the eye to land on the slate,
+ *      not enough to read anything, and not a function of the item at all.
+ *
+ * The jitter stays. A fixed lead would let a child pre-load the flick and stop
+ * reading, and pre-loading is the one way left to fake a fast call.
+ */
+export function stillFor(_text: string, rng: Rng): number {
+  return Math.round(320 + rng.range(-70, 90))
 }
 
 /**
@@ -148,6 +175,7 @@ export function buildStatement(question: Question, wantTruth: boolean, rng: Rng)
     text,
     windowMs: windowFor(text),
     stillMs: stillFor(text, rng),
+    p50Ms: p50MsFor(text),
   }
 }
 

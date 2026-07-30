@@ -2,7 +2,7 @@
   "id": "dynawalla.truedraw",
   "version": "0.1.0",
   "name": "THE TRUE DRAW",
-  "description": "A statement is cut into a slate across the dust. The street goes still, the slate lights, and you have one beat: draw if it is true, hold if it is false. Drawing at everything gets you exactly half, and half is a very short run.",
+  "description": "A statement is cut into a slate across the dust. Swipe DOWN to keep it, swipe UP to throw it away. Keep the sums that are right; throw away the ones that are wrong. Right calls fill your bag, a wrong call either way empties it faster, and running out of time costs nothing.",
   "sdk": "1.0.0",
   "host": { "min": "0.1.0", "max": "1.0.0" },
   "entry": "pack.html",
