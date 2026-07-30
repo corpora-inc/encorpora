@@ -9,7 +9,7 @@
 import type { Question } from '../contract.ts'
 import { type Rng } from '../core/rng.ts'
 import { heightAtX, LAUNCH_H } from './ballistics.ts'
-import { aimShot } from './verdict.ts'
+import { shotFor } from './verdict.ts'
 
 /** World x of the launch point; ranges are measured from here. */
 export const LAUNCH_X = 6
@@ -23,12 +23,6 @@ export type WaveConfig = {
   ammo: number
   /** rival keeps beyond the ones your boulders are for */
   extraTowers: number
-  /** magnitude cap of the crosswind, 0 for none */
-  wind: number
-  /** wind rerolls between shots */
-  gusty: boolean
-  /** the loft lever is available */
-  loft: boolean
   wall: boolean
   ram: boolean
   /** keeps wear their number on a banner (the choice scaffold) */
@@ -45,9 +39,6 @@ export function waveConfig(i: number): WaveConfig {
     difficulty: d,
     ammo: Math.min(5, 2 + Math.floor((i - 1) / 2)) + (boss ? 1 : 0),
     extraTowers: Math.min(3, 1 + Math.floor((i - 1) / 3)),
-    wind: i < 3 ? 0 : Math.min(9, 2 + Math.floor((i - 3) / 1.6)),
-    gusty: i >= 7,
-    loft: i >= 4,
     wall: i >= 5 && i % 3 !== 1,
     ram: i >= 7 && i % 2 === 1,
     banners: i < 8 ? true : i % 3 !== 0,
@@ -55,33 +46,187 @@ export function waveConfig(i: number): WaveConfig {
   }
 }
 
-/** The lofts the lever offers, flattest first, and the one it starts on. */
-export const LOFTS = [30, 38, 46, 55, 65]
-export const DEFAULT_LOFT = 2
+/**
+ * The one loft the machine throws at.
+ *
+ * There used to be five, on a lever that appeared at wave 4. It changed nothing
+ * a child could be scored on: the shot is solved for the metre she names, so all
+ * five landed on the same metre, and measured over 1,616 wall situations three of
+ * the five settings were identical to this one and the two below it were blocked
+ * by the wall 42.9% and 21.9% of the time. A lever whose every position is either
+ * the default or worse than it is not a choice; it is a way to lose. It is gone.
+ *
+ * The alternative — making the loft the wind's multiplier, so a higher arc hangs
+ * longer and drifts further — was considered and rejected. It would stack a
+ * multiplication on top of the sum and the wind adjustment, three steps deep, on
+ * a child who is here to practise `47 + 25`, and the founder's complaint is that
+ * this game is confusing.
+ */
+export const LOFT_DEG = 46
+
+/**
+ * When the wind starts blowing, as a position on the host's ladder.
+ *
+ * NOT a wave number. A wave counter is a ratchet the pack owns, and it says
+ * nothing about whether this particular child is ready for a second arithmetic
+ * step: it arrives on her twelfth minute whether she has been landing every
+ * boulder or none of them. The item's own difficulty is the host's judgement of
+ * where she is, and it is on every `Question`.
+ *
+ * Measured over the shipped 66-rung ladder, taking 60 questions off every rung
+ * and keeping the ones whose answers a 122-metre field can stand a keep at:
+ *
+ *     0.246  PLACEABLE   4..49     dw.mul.facts.tables-to-twelve L0
+ *     0.277  PLACEABLE  27..99     dw.add.column.add-no-regroup L0
+ *     0.292  PLACEABLE   1..82     dw.add.column.subtract-no-regroup L0
+ *     0.323  PLACEABLE   6..72     dw.mul.facts.tables-to-twelve L1
+ *     ---- 0.34: the wind starts here ----
+ *     0.369  PLACEABLE   6..765    dw.add.column.subtract-no-regroup L1
+ *     0.415  PLACEABLE   6..144    dw.mul.facts.tables-to-twelve L2
+ *     0.462  PLACEABLE  33..171    dw.add.regroup.add-multidigit L0
+ *     0.492  PLACEABLE   3..78     dw.add.regroup.subtract-multidigit L0
+ *
+ * So everything below the line is a table fact or a column sum with no
+ * regrouping. A child on those is meeting the game for the first time and gets
+ * the game the founder is not complaining about: read the sum, dial the answer,
+ * the keep falls. The wind arrives once the ladder has taken her past that —
+ * `game.ts` opens its search at 0.28 and climbs a notch a wave.
+ *
+ * Driven against the real `ladder()` with the real generators and the app's own
+ * rung quantisation, that lands as:
+ *
+ *     wave 1   rung 0.277  answers 98, 87        no wind
+ *     wave 2   rung 0.292  answers 27, 71        no wind
+ *     wave 3   rung 0.308  answers 25, 16        no wind
+ *     wave 4   rung 0.323  answers 16, 30, 45    no wind
+ *     wave 5   rung 0.369  answers 43,80,97,112  WIND, up to 3 metres
+ *     ...      rung 0.369                        WIND, up to 3 metres
+ *
+ * So four waves of the game the founder is not complaining about, and then the
+ * second step. It holds at three metres from there because the pack's arithmetic
+ * escalation is itself pinned by the 122-metre field — the sweep cannot climb past
+ * rung 24 without landing on four-digit column sums no keep can stand at, which is
+ * the plateau #702 documented and is not this change's to move.
+ */
+export const WIND_FROM_D = 0.34
+/** The strongest wind there is. The dial carries this much slack at both ends. */
+export const WIND_MAX = 9
+/** One more metre of wind every this far up the ladder. */
+const WIND_RAMP = 0.06
+
+/**
+ * How hard the wind blows for an item of this difficulty — the size of the second
+ * arithmetic step, in metres.
+ *
+ * Zero below the threshold, and it never OPENS below 3 — so from the first wind she
+ * meets, `rollWind` has the whole of ±1..±3 to draw from and the adjustment is a
+ * different number every shot. A cap of 1 would have made the mechanic a single
+ * nudge of the dial, learnable without arithmetic and then boring.
+ *
+ * It grows a metre every `WIND_RAMP` up the ladder, to `WIND_MAX`. On today's ladder
+ * the pack's own escalation plateaus before that headroom is used — see
+ * `WIND_FROM_D` — so the ramp is what happens when the curriculum or the field
+ * grows, not a promise about this month's content.
+ */
+export function windCapFor(difficulty: number): number {
+  if (!Number.isFinite(difficulty) || difficulty < WIND_FROM_D) return 0
+  return Math.min(WIND_MAX, 3 + Math.floor((difficulty - WIND_FROM_D) / WIND_RAMP))
+}
+
+/* ------------------------------------------------------------------ *
+ * The field, the answers it can hold, and how far the dial reaches.
+ * ------------------------------------------------------------------ */
+
+/**
+ * The window of answers this game can physically ask about.
+ *
+ * A keep stands at its own answer in METRES, on a field 122 metres long, and the
+ * blast is wide enough that two keeps must be `MIN_GAP` (8 m) apart to be distinct
+ * targets. So the answer to every question TREBUCHET poses has to be an integer
+ * in this window — that is not a tuning choice, it is what "the range dial is the
+ * answer" costs.
+ *
+ * Nothing about the question stream guarantees it. The host hands out rungs off a
+ * single cross-domain ladder addressed by a 0..1 difficulty, and a pack cannot
+ * see what arithmetic sits on a rung before it asks. Measured against the shipped
+ * 66-rung ladder, the difficulties this game used to ask for returned:
+ *
+ *     wave 1  d=0.040  dw.add.facts.subtract-within-ten   answers 0-4     0/12 placeable
+ *     wave 2  d=0.112  dw.add.facts.subtract-within-ten   answers 1-9     0/12
+ *     wave 3  d=0.184  dw.add.facts.subtract-across-ten   answers 2-9     0/12
+ *     wave 5  d=0.328  dw.mul.facts.tables-to-twelve      answers 8-81    9/12
+ *     wave 6  d=0.400  dw.add.column.subtract-no-regroup  answers to 5400 0/12
+ *     wave 7  d=0.472  dw.mul.scale.times-power-of-ten    answers in the millions
+ *
+ * Waves 1-3 and 6 upward could not put a single keep on the field, so the rack
+ * came back empty, the equation plaque had nothing to draw and the fire button
+ * had no boulder to throw. That is the whole of the bug this window exists to
+ * make impossible: the game now FINDS a rung it can place instead of assuming it
+ * was handed one.
+ */
+export const PLACEABLE_LO = 14
+export const PLACEABLE_HI = FIELD_MAX - 4
+
+/**
+ * How far the dial winds — and it is WIDER than the field, on purpose.
+ *
+ * The dial is the range in still air, and in a wind the child aims off it: to put
+ * a boulder on metre 14 with the wind pushing 9 metres downrange she has to dial
+ * 5, and to put one on 118 against a 9-metre headwind she has to dial 127. If the
+ * dial stopped at the field the compensation would be inexpressible at both ends —
+ * a correct answer she is physically unable to enter, which is the same defect as
+ * a correct answer scored wrong. So the dial carries `WIND_MAX` of slack past
+ * `PLACEABLE_LO..PLACEABLE_HI` at both ends, and `windValues` can never ask for
+ * more than that.
+ *
+ * Nothing lands out there: a shot dialled to 127 into a 9-metre headwind
+ * decelerates the whole way and comes down at 118, and the drawn ground already
+ * runs 40 metres past the field.
+ */
+export const DIAL_MIN = PLACEABLE_LO - WIND_MAX
+export const DIAL_MAX = PLACEABLE_HI + WIND_MAX
+
+/**
+ * How far the dial may be wound IN THIS WIND, so that the metre she is claiming is
+ * a metre that exists.
+ *
+ * The dial reaches past both ends of the field so that the compensation is always
+ * expressible, and that slack has to be paid for at the other end: dialling 5 into
+ * a nine-metre headwind claims metre −4, and a boulder aimed at metre −4 arcs
+ * forward, turns round in mid-air and comes down behind the trebuchet. Found by
+ * sweeping the dial rather than by reading the code, which is the only way this
+ * kind of corner ever turns up.
+ *
+ * So the claim is held inside `1..DIAL_MAX` and the dial's own stops move with the
+ * wind. **This can never bind on a child who is right**, and that is arithmetic and
+ * not a hope: her dial is `answer − wind` with the answer in `PLACEABLE_LO..HI`, so
+ * the tightest corner is `answer = PLACEABLE_LO` in the strongest tailwind, which
+ * asks for exactly `PLACEABLE_LO − WIND_MAX = DIAL_MIN`, the floor itself. Asserted
+ * over every wind and every answer in `verdict.test.ts`.
+ */
+export function dialRange(wind: number): { lo: number; hi: number } {
+  return { lo: Math.max(DIAL_MIN, 1 - wind), hi: DIAL_MAX - Math.max(0, wind) }
+}
 
 /**
  * Where the rival's outwork stands, and how tall.
  *
- * Two things must both be true of it, and neither was:
+ * **A shot at the nearest keep can always be made.** The wall used to be placed
+ * at `max(14, nearest × 0.46)`, which for a keep at 14–17 m is the keep's own
+ * ground — every shot at it hit the wall. And it was sized off a still-air probe,
+ * while a shot that beats a tailwind launches at `answer − wind` and flies lower,
+ * so on windy waves a correctly aimed shot smashed into it. Height is taken from
+ * the LOWEST the loft can ever be over that point — the strongest tailwind the
+ * wave can produce — so a correct shot clears it in any wind.
  *
- *   - **A shot at the nearest keep can always be made.** The wall used to be
- *     placed at `max(14, nearest × 0.46)`, which for a keep at 14–17 m is the
- *     keep's own ground — every shot at it hit the wall. And it was sized off a
- *     still-air probe, while aiming into a tailwind launches at `dial − wind`
- *     and flies lower, so on windy waves a correctly dialled shot smashed into
- *     it. Height is taken from the LOWEST the default loft can ever be over that
- *     point — the strongest tailwind of the wave — so it clears in any wind.
- *   - **The flattest loft should not clear it**, or the lever it exists to teach
- *     is decoration. Height is also kept above the HIGHEST the flattest can be
- *     there. Where those two bounds cross — a keep so near that no wall can do
- *     both — solvability wins and the wall is scenery for that wave.
+ * It no longer has a second job. The old upper bound existed to keep the wall
+ * tall enough that the flattest loft could not clear it, so that the loft lever
+ * had something to be for; the lever is gone and the bound went with it.
  */
 export function wallFor(nearest: number, windCap: number): { x: number; h: number } {
   const x = Math.max(10, Math.min(Math.round(nearest * 0.46), Math.max(10, nearest - 6)))
-  const ceiling = heightAtX(aimShot(nearest, LOFTS[DEFAULT_LOFT], windCap, LAUNCH_H), x)
-  const floor = heightAtX(aimShot(nearest, LOFTS[0], -windCap, LAUNCH_H), x)
-  const h = floor + 0.7 < ceiling - 0.7 ? (floor + ceiling) / 2 : ceiling * 0.78
-  return { x, h: Math.max(4, h) }
+  const lowest = heightAtX(shotFor(nearest - windCap, LOFT_DEG, windCap, LAUNCH_H), x)
+  return { x, h: Math.max(4, lowest * 0.78) }
 }
 
 /* ------------------------------------------------------------------ */

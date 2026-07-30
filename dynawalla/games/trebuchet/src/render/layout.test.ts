@@ -15,7 +15,7 @@
  *     button, and a centred equation plaque reaches both corners on a 320px
  *     phone. Nothing a child must read or touch may land in those two squares.
  *
- * Everything here goes through `hudLayout(w, h, safeRect(w, h, insets), loft)` —
+ * Everything here goes through `hudLayout(w, h, safeRect(w, h, insets))` —
  * the exact call `TrebuchetGame.resize()` makes — rather than a hand-built rect,
  * so removing the fix turns this red.
  */
@@ -68,9 +68,6 @@ function stateFor(layout: HudLayout): HudState {
     combo: 1,
     wind: -2,
     showWind: true,
-    loftUnlocked: true,
-    loftIndex: 2,
-    loftCount: 5,
     muted: false,
     introT: 1,
     clearT: -1,
@@ -83,23 +80,30 @@ function stateFor(layout: HudLayout): HudState {
 
 for (const [vname, w, h] of VIEWPORTS) {
   for (const [pname, insets] of PROFILES) {
-    for (const loft of [false, true]) {
-      const label = `${vname} (${w}×${h}), ${pname}${loft ? ', loft' : ''}`
+    {
+      const label = `${vname} (${w}×${h}), ${pname}`
 
       test(`every control is inside the safe rect — ${label}`, () => {
-        const layout = hudLayout(w, h, safeRect(w, h, insets), loft)
-        assert.ok(layout.buttons.length >= 4, 'the controls went missing')
+        const layout = hudLayout(w, h, safeRect(w, h, insets))
+        // Fire, plus, minus, mute. The loft lever used to be a fifth, appearing
+        // from wave 4; it is gone, because every notch on it landed the boulder on
+        // the same metre — see `LOFT_DEG`.
+        assert.equal(layout.buttons.length, 4, 'the controls went missing, or grew')
+        assert.equal(
+          layout.buttons.some((b) => b.id === 'loft'),
+          false,
+          'the loft lever is back, and it still does nothing',
+        )
         for (const b of layout.buttons) {
           assert.ok(
             inside(b, layout.area),
             `${b.id} ${show(b)} is outside the safe rect ${show(layout.area)}`,
           )
         }
-        if (loft) assert.ok(layout.buttons.some((b) => b.id === 'loft'), 'no loft lever')
       })
 
       test(`nothing a child touches sits under the host's chrome — ${label}`, () => {
-        const layout = hudLayout(w, h, safeRect(w, h, insets), loft)
+        const layout = hudLayout(w, h, safeRect(w, h, insets))
         for (const b of layout.buttons) {
           assert.equal(
             hitsHostChrome(b, w, insets),
@@ -110,7 +114,7 @@ for (const [vname, w, h] of VIEWPORTS) {
       })
 
       test(`the question stays readable — ${label}`, () => {
-        const layout = hudLayout(w, h, safeRect(w, h, insets), loft)
+        const layout = hudLayout(w, h, safeRect(w, h, insets))
         // `plaqueMax` is the widest the plaque can ever be drawn: a long sum on a
         // narrow phone reaches BOTH corners, so the whole pinned stack starts
         // under them.
@@ -141,7 +145,7 @@ for (const [vname, w, h] of VIEWPORTS) {
       })
 
       test(`the dial numeral is legible wherever the camera puts it — ${label}`, () => {
-        const layout = hudLayout(w, h, safeRect(w, h, insets), loft)
+        const layout = hudLayout(w, h, safeRect(w, h, insets))
         // The numeral rides the aim marker in the world, so the camera decides
         // its anchor — which means every anchor on the glass has to be safe, not
         // just the one a particular shot produces.
@@ -170,7 +174,7 @@ for (const [vname, w, h] of VIEWPORTS) {
 
 test('the pinned stack is ordered, and leaves the field its room', () => {
   for (const [, w, h] of VIEWPORTS) {
-    const layout = hudLayout(w, h, safeRect(w, h), true)
+    const layout = hudLayout(w, h, safeRect(w, h))
     assert.ok(layout.topClear > layout.area.y, 'the stack starts at the very top edge')
     assert.ok(layout.rackTop > layout.plaqueMax.y + layout.plaqueMax.h - 1, 'the rack is on the plaque')
     assert.ok(layout.windY > layout.rackTop + layout.rackH, 'the wind chip is on the rack')

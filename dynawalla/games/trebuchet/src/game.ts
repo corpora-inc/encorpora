@@ -63,13 +63,12 @@ import {
   type Outcome,
   type Solved,
 } from './sim/ballistics.ts'
-import { aimShot, rollWind, verdictFor } from './sim/verdict.ts'
+import { rollWind, shotFor, verdictFor } from './sim/verdict.ts'
 import {
   buildTower,
-  DEFAULT_LOFT,
   FIELD_MAX,
   LAUNCH_X,
-  LOFTS,
+  LOFT_DEG,
   layoutTowerValues,
   pullQuestions,
   ramAdvances,
@@ -77,6 +76,12 @@ import {
   stepBlocks,
   wallFor,
   waveConfig,
+  windCapFor,
+  dialRange,
+  DIAL_MAX,
+  DIAL_MIN,
+  PLACEABLE_HI,
+  PLACEABLE_LO,
   worldX,
   type Boulder,
   type Crater,
@@ -88,38 +93,6 @@ import {
 } from './sim/world.ts'
 
 const MIN_GAP = 8
-const DIAL_MIN = 8
-const DIAL_MAX = FIELD_MAX
-
-/**
- * The window of answers this game can physically ask about.
- *
- * A keep stands at its own answer in METRES, on a field 122 metres long, and the
- * blast is wide enough that two keeps must be `MIN_GAP` apart to be distinct
- * targets. So the answer to every question TREBUCHET poses has to be an integer
- * in this window — that is not a tuning choice, it is what "the range dial is the
- * answer" costs.
- *
- * Nothing about the question stream guarantees it. The host hands out rungs off a
- * single cross-domain ladder addressed by a 0..1 difficulty, and a pack cannot
- * see what arithmetic sits on a rung before it asks. Measured against the shipped
- * 66-rung ladder, the difficulties this game used to ask for returned:
- *
- *     wave 1  d=0.040  dw.add.facts.subtract-within-ten   answers 0-4     0/12 placeable
- *     wave 2  d=0.112  dw.add.facts.subtract-within-ten   answers 1-9     0/12
- *     wave 3  d=0.184  dw.add.facts.subtract-across-ten   answers 2-9     0/12
- *     wave 5  d=0.328  dw.mul.facts.tables-to-twelve      answers 8-81    9/12
- *     wave 6  d=0.400  dw.add.column.subtract-no-regroup  answers to 5400 0/12
- *     wave 7  d=0.472  dw.mul.scale.times-power-of-ten    answers in the millions
- *
- * Waves 1-3 and 6 upward could not put a single keep on the field, so the rack
- * came back empty, the equation plaque had nothing to draw and the fire button
- * had no boulder to throw. That is the whole of the bug this window exists to
- * make impossible: the game now FINDS a rung it can place instead of assuming it
- * was handed one.
- */
-const PLACEABLE_LO = DIAL_MIN + 6
-const PLACEABLE_HI = DIAL_MAX - 4
 
 /**
  * One step of the search for a placeable rung, as a fraction of the ladder.
@@ -209,7 +182,19 @@ export class TrebuchetGame {
   private towers: Tower[] = []
   private rack: Boulder[] = []
   private activeIdx = 0
+  /**
+   * The wind for THIS shot: an exact number of metres, on the chip, and the second
+   * term in the child's arithmetic. Rolled when the question appears and never
+   * again — see `rollWindForShot`.
+   */
   private wind = 0
+  /**
+   * The strongest wind this wave can produce, from the difficulty of the questions
+   * in the rack. 0 for a beginner's wave, which is most of them.
+   */
+  private windCap = 0
+  /** Whether the wind has ever blown in this run, so it is explained exactly once. */
+  private windSeen = false
   private ram: Ram | null = null
   private wall: { x: number; h: number } | null = null
   private scrub = new Float32Array(0)
@@ -218,7 +203,6 @@ export class TrebuchetGame {
 
   // aim
   private dial = 30
-  private loftIdx = DEFAULT_LOFT
   private dialPop = 1
   private aimEmphasis = 0
 
@@ -266,7 +250,7 @@ export class TrebuchetGame {
    * wrong because she nudged the dial while the boulder was in the air. The shot
    * carries its own answer, and impact reads nothing else.
    */
-  private fired: { dial: number; boulder: Boulder; ms: number } | null = null
+  private fired: { dial: number; wind: number; boulder: Boulder; ms: number } | null = null
   private proj = { x: 0, y: 0 }
   private armDeg = ARMED_DEG
   private recoil = 0
@@ -296,8 +280,29 @@ export class TrebuchetGame {
    * difficulty. Both stop here.
    */
   private blocked: () => boolean = () => false
+  /**
+   * Put the rules in front of the child. Wired to the how-to-play panel by
+   * `index.ts`; a no-op in a harness that mounts the game without the chrome.
+   *
+   * There is exactly one caller: the first time the wind ever blows in a run. A
+   * mechanic that arrives silently mid-run and changes what a right answer looks
+   * like is the original defect wearing a different costume, and the manual is no
+   * use to a child who has no reason to open it.
+   */
+  private explain: () => void = () => undefined
+  /**
+   * The wind has started and has not been explained yet.
+   *
+   * Deferred to the next frame rather than raised where the wind is rolled, and the
+   * reason is the constructor: `new TrebuchetGame()` lays out wave 1 before
+   * `mount()` has had a chance to build the manual and call `setExplainer`, so a run
+   * that opens ON a windy rung would have called a no-op and lost the only
+   * explanation the child was ever going to get. Draining it in `update` puts the
+   * call after mount, whatever order the two happen in.
+   */
+  private explainPending = false
   /** The HUD's geometry, re-derived from the SAFE rect on every resize. */
-  private hud: HudLayout = hudLayout(320, 240, { x: 0, y: 0, w: 320, h: 240 }, false)
+  private hud: HudLayout = hudLayout(320, 240, { x: 0, y: 0, w: 320, h: 240 })
   private clearT = -1
   private introT = 0
   private muted = false
@@ -374,6 +379,11 @@ export class TrebuchetGame {
     this.blocked = blocked
   }
 
+  /** How the game raises the manual when a new rule starts applying. */
+  setExplainer(show: () => void): void {
+    this.explain = show
+  }
+
   /** The sheet is gone: the child is looking at the question again, now. */
   restartAnswerClock(): void {
     this.questionShownAt = performance.now()
@@ -406,7 +416,7 @@ export class TrebuchetGame {
     // The notch, the home indicator and the rounded corners are re-measured
     // here, not once at mount: a rotation swaps top/bottom for left/right, and
     // Split View changes them without the game ever unmounting.
-    this.hud = hudLayout(w, h, safeRect(w, h), this.cfg.loft)
+    this.hud = hudLayout(w, h, safeRect(w, h))
     this.unit = this.hud.unit
     this.backdrop.resize(w, h, this.dpr)
     this.btns = this.hud.buttons
@@ -451,10 +461,11 @@ export class TrebuchetGame {
     this.toldAboutStocking = false
     this.probes = 0
     this.probeDir = 0
-    // The loft lever appears mid-run and it moves mute, so the controls belong to
-    // the new wave from the first frame of it, stocked or not.
-    this.hud = hudLayout(this.w, this.h, this.hud.area, cfg.loft)
-    this.btns = this.hud.buttons
+    // No wind until the field is laid out and the rack's difficulty is known: a
+    // chip left over from the last wave, read against a question from this one,
+    // would be a stated wind that is not the wind.
+    this.wind = 0
+    this.windCap = 0
     // Seeded from the band already found, nudged one notch harder: the arithmetic
     // creeps upward as the child keeps clearing waves, and it can only ever creep
     // onto a rung whose answers still fit, because a probe that does not fit is
@@ -574,10 +585,16 @@ export class TrebuchetGame {
     this.towers = values.map((v, i) => buildTower(i, v, this.rng, cfg.volley && i % 2 === 0))
     this.markWanted()
 
-    this.wind = rollWind(cfg.wind, this.rng)
+    // The wind, from the RUNG THE QUESTIONS CAME FROM and not from the wave
+    // number. The lowest difficulty in the rack decides it, so one stray hard item
+    // in a beginner's pool cannot start the wind blowing on a child the ladder has
+    // not moved yet — and it is fixed for the wave, so tapping a different rack
+    // stone can never change the wind she is looking at.
+    this.windCap = Math.min(...boulders.map((b) => windCapFor(b.q.difficulty)))
+    this.rollWindForShot()
     this.wall = null
     if (cfg.wall) {
-      const w = wallFor(Math.min(...values), cfg.wind)
+      const w = wallFor(Math.min(...values), this.windCap)
       this.wall = { x: worldX(w.x), h: w.h }
     }
     this.ram = cfg.ram
@@ -592,8 +609,8 @@ export class TrebuchetGame {
     this.parts.clear()
     this.rings.clear()
     this.hitsThisWave = 0
-    this.dial = clamp(Math.round(values[0] * 0.8), DIAL_MIN, DIAL_MAX)
-    this.loftIdx = DEFAULT_LOFT
+    const opening = dialRange(this.wind)
+    this.dial = clamp(Math.round(values[0] * 0.8), opening.lo, opening.hi)
     this.phase = 'intro'
     this.phaseT = 0
     this.introT = 0
@@ -606,12 +623,34 @@ export class TrebuchetGame {
       sc.push(this.cosmetic.range(-20, worldX(FIELD_MAX) + 20), this.cosmetic.range(0.3, 1.1))
     }
     this.scrub = new Float32Array(sc)
-    // The loft lever appears mid-run, and it changes where mute sits.
-    this.hud = hudLayout(this.w, this.h, this.hud.area, cfg.loft)
-    this.btns = this.hud.buttons
     this.audio.horn(true)
     if (!this.reduced && n % 3 === 0 && this.flash.add(0.16, 0.22, 0.5, 0.2, 1.2)) {
       this.backdrop.strike(this.cosmetic)
+    }
+  }
+
+  /**
+   * Roll the wind for the shot the child is about to take, and never again.
+   *
+   * Called at exactly two moments, and both are BEFORE she can see the question
+   * she will answer with it: when the field is laid out, and when the next boulder
+   * is loaded after a shot has settled. Nothing rolls at release, in flight or at
+   * impact. That is the whole safety property of this mechanic — the wind she reads
+   * is the wind that carries the boulder, so `dial + wind` is a number she can work
+   * out to the metre before she touches anything.
+   *
+   * The first wind of a run raises the manual. The rule about what a right answer
+   * looks like has just changed, and a child cannot be expected to deduce a rule.
+   */
+  private rollWindForShot(): void {
+    this.wind = rollWind(this.windCap, this.rng)
+    // A new wind moves the dial's stops. Re-clamped here so the dial cannot be
+    // left holding a value that names a metre off the field.
+    const range = dialRange(this.wind)
+    this.dial = clamp(this.dial, range.lo, range.hi)
+    if (this.wind !== 0 && !this.windSeen) {
+      this.windSeen = true
+      this.explainPending = true
     }
   }
 
@@ -639,7 +678,7 @@ export class TrebuchetGame {
     if (b) {
       this.canvas.setPointerCapture?.(e.pointerId)
       this.held = { id: b.id, t: 0, accum: 0 }
-      this.pressBtn(b, p)
+      this.pressBtn(b)
       return
     }
     // tapping a rack stone loads that boulder
@@ -694,14 +733,6 @@ export class TrebuchetGame {
         this.setDial(this.dial + big)
         e.preventDefault()
         break
-      case 'ArrowUp':
-        this.setLoft(this.loftIdx + 1)
-        e.preventDefault()
-        break
-      case 'ArrowDown':
-        this.setLoft(this.loftIdx - 1)
-        e.preventDefault()
-        break
       case ' ':
       case 'Enter':
         this.audio.resume()
@@ -723,7 +754,7 @@ export class TrebuchetGame {
     }
   }
 
-  private pressBtn(b: Btn, p: { x: number; y: number }): void {
+  private pressBtn(b: Btn): void {
     switch (b.id) {
       case 'fire':
         this.fire()
@@ -737,11 +768,6 @@ export class TrebuchetGame {
       case 'mute':
         this.toggleMute()
         break
-      case 'loft': {
-        const rel = 1 - clamp01((p.y - b.y) / b.h)
-        this.setLoft(Math.round(rel * (LOFTS.length - 1)))
-        break
-      }
     }
   }
 
@@ -780,9 +806,6 @@ export class TrebuchetGame {
       combo: this.combo,
       wind: this.wind,
       showWind: this.wind !== 0,
-      loftUnlocked: this.cfg.loft,
-      loftIndex: this.loftIdx,
-      loftCount: LOFTS.length,
       muted: this.muted,
       introT: this.introT,
       clearT: this.clearT,
@@ -808,7 +831,10 @@ export class TrebuchetGame {
   }
 
   private setDial(v: number): void {
-    const nv = clamp(Math.round(v), DIAL_MIN, DIAL_MAX)
+    // The stops move with the wind, so the metre she is claiming is always a metre
+    // that exists — see `dialRange`. They never bind on a correct answer.
+    const range = dialRange(this.wind)
+    const nv = clamp(Math.round(v), range.lo, range.hi)
     if (nv === this.dial) return
     const delta = Math.abs(nv - this.dial)
     this.dial = nv
@@ -820,14 +846,6 @@ export class TrebuchetGame {
       this.audio.tick(clamp01((this.dial - DIAL_MIN) / (DIAL_MAX - DIAL_MIN)))
       if (delta >= 1) this.host.haptic('light')
     }
-  }
-
-  private setLoft(i: number): void {
-    const ni = clamp(Math.round(i), 0, LOFTS.length - 1)
-    if (ni === this.loftIdx || !this.cfg.loft) return
-    this.loftIdx = ni
-    this.audio.detent()
-    this.host.haptic('light')
   }
 
   /* ----------------------------------------------------------------- fire */
@@ -845,13 +863,27 @@ export class TrebuchetGame {
   private release(): void {
     const b = this.activeBoulder
     if (!b) return
-    // Aimed at the dial, not displaced by the wind: `aimShot` lays the machine
-    // off into the crosswind so the boulder comes down on the metre she named.
-    const shot = aimShot(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
+    // The dial is the range in still air; the wind carries it the rest of the way.
+    // Her arithmetic, not the crew's — see `shotFor`.
+    const shot = shotFor(this.dial, LOFT_DEG, this.wind, LAUNCH_H)
     // Her answer, and how long it took her — both as they stood when she fired.
     // The flight is the game's time, not hers, so it is not in the latency.
+    //
+    // **The wind is in the snapshot too**, and it has to be: her answer to the sum
+    // is `dial + wind`, so a wind read at impact rather than at release would be a
+    // term in her reported answer that she never saw.
+    //
+    // Said plainly rather than dressed up as coverage: **no test reaches this
+    // field.** `rollWindForShot` is called from exactly two places, the wave layout
+    // and the settle→aim handover, and neither can run between `release` and
+    // `impact` — so swapping `fired.wind` for `this.wind` at impact leaves all 131
+    // tests green. It is here because the dial was in exactly this position before
+    // #661, where the same argument held right up until it did not, and because the
+    // realistic version of the failure — a wind rolled at release, after she has
+    // committed — IS caught, by four tests.
     this.fired = {
       dial: this.dial,
+      wind: this.wind,
       boulder: b,
       ms: Math.max(1, Math.round(performance.now() - this.questionShownAt)),
     }
@@ -907,7 +939,7 @@ export class TrebuchetGame {
     // nothing else — not the keep the blast happened to reach, not the metre the
     // ground recorded, not where the dial has drifted to since. A boulder spent on
     // the ram is not an answer at all.
-    const v = verdictFor({ dial: fired.dial, landing, answer: b.answer, kind })
+    const v = verdictFor({ dial: fired.dial, wind: fired.wind, landing, answer: b.answer, kind })
     const correct = v.correct
     // The ram swallows the boulder where it stands: no keep is touched by a shot
     // that never got past the siege engine.
@@ -1019,19 +1051,24 @@ export class TrebuchetGame {
     }
 
     // --- record -------------------------------------------------------
+    // The crater is labelled with what she SAID, not with what the ground measured.
+    // The two are the same integer while the sim is honest, and if they ever part
+    // company the number burnt into the field must be the one she is being marked
+    // on — a crater reading 72 beside a verdict of "wrong" is the game arguing with
+    // itself in front of her.
     this.craters.push({
       x,
       r: correct ? 3.4 : 2.4,
       depth: 1,
       age: 0,
-      label: landing,
+      label: v.claim,
       correct,
     })
     if (this.craters.length > 14) this.craters.shift()
     if (this.shot) {
       this.ghosts.push({
         pts: samplePath(this.shot, 30).map((p) => ({ x: p.x + LAUNCH_X, y: p.y })),
-        landing,
+        landing: v.claim,
         age: 0,
         hit: correct,
       })
@@ -1170,6 +1207,12 @@ export class TrebuchetGame {
   }
 
   private update(dt: number, rawDt: number): void {
+    // The wind has just started blowing and the rules have changed. Said before
+    // anything else moves — see `explainPending`.
+    if (this.explainPending) {
+      this.explainPending = false
+      this.explain()
+    }
     this.phaseT += rawDt
     this.dialPop = Math.min(1, this.dialPop + rawDt / 0.16)
     this.scorePop = Math.min(1, this.scorePop + rawDt / 0.5)
@@ -1331,7 +1374,9 @@ export class TrebuchetGame {
             this.phase = 'aim'
             this.phaseT = 0
             this.questionShownAt = performance.now()
-            if (this.cfg.gusty) this.wind = rollWind(this.cfg.wind, this.rng)
+            // A fresh wind for a fresh question, rolled here — before she has had a
+            // chance to look at either.
+            this.rollWindForShot()
           }
         }
         break
@@ -1552,10 +1597,14 @@ export class TrebuchetGame {
     ctx.fillStyle = C.steel
     ctx.fill()
 
-    // The loft stub — the first slice of the arc — only once the lever exists to
-    // change it. Before that it would be decoration teaching nothing.
-    if (this.cfg.loft) {
-      const st = aimShot(this.dial, LOFTS[this.loftIdx], this.wind, LAUNCH_H)
+    // The first slice of the arc, drawn only when there is a wind to bend it —
+    // that the shot leans downwind is the mechanic, made visible in the world where
+    // the eye already is. It stops at a third of the flight ON PURPOSE: extend it
+    // to the ground and it becomes a landing marker, and a landing marker does the
+    // child's `dial + wind` for her and turns the game into sliding a caret until
+    // it touches the right keep.
+    if (this.wind !== 0) {
+      const st = shotFor(this.dial, LOFT_DEG, this.wind, LAUNCH_H)
       ctx.beginPath()
       const pts = samplePath(st, 14, st.T * 0.34)
       for (let i = 0; i < pts.length; i++) {
@@ -1682,6 +1731,11 @@ export class TrebuchetGame {
 
   currentWind(): number {
     return this.wind
+  }
+
+  /** The strongest wind this wave can produce; 0 means the wind is not in play. */
+  currentWindCap(): number {
+    return this.windCap
   }
 
   /**

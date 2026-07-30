@@ -15,6 +15,9 @@ import { test } from 'node:test'
 
 import { LAUNCH_H, posAt, resolve, solve } from './ballistics.ts'
 
+// The one loft the machine throws at, plus the four the lever used to offer: the
+// resolution of a shot must not depend on the shape of its arc, and it is worth
+// keeping the spread here even though nothing can select it any more.
 const LOFTS = [30, 38, 46, 55, 65]
 const WORLD_X = (r: number): number => 6 + r
 const KEEP_HALF_W = 4.6 / 2 + 0.55
