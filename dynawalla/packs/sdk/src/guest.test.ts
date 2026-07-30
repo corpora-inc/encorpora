@@ -26,6 +26,10 @@ type Frame = {
 function withFakeFrame(
   options: {
     granted?: string[]
+    /** What the device can actually do. Defaults to all of `granted`. */
+    available?: string[]
+    /** Omit `available` from the connect payload, the way a 1.0 host does. */
+    legacyHost?: boolean
     /** Answers one request. Return `undefined` to leave it pending. */
     answer?: (request: Request) => Omit<Response, "id"> | undefined
     framed?: boolean
@@ -48,6 +52,9 @@ function withFakeFrame(
             host: "0.1.0",
             packId: "abacus.tower",
             granted: options.granted ?? ["items", "storage"],
+            ...(options.legacyHost
+              ? {}
+              : { available: options.available ?? options.granted ?? ["items", "storage"] }),
             settings: {
               locale: "en",
               reducedMotion: false,
@@ -347,5 +354,407 @@ test("connecting installs the tap guard on the pack document", async (t) => {
   const host = await client
   assert.ok(bound.includes("touchend"), `no touchend guard on the pack document: ${bound.join(", ")}`)
   assert.ok(bound.includes("touchstart"))
+  host.dispose()
+})
+
+/* ─── deadlines ──────────────────────────────────────────────────────────── */
+
+test("a host that never answers times out, and the budget is the capability's own", async (t) => {
+  t.after(cleanup)
+  // Two failures in one test, because the second only means anything next to
+  // the first.
+  //
+  // Before the deadline, a host that dropped a request left the pack holding a
+  // promise that never settled: a game awaiting it sat on its loading state for
+  // the rest of the session with nothing in any log. `answer: () => undefined`
+  // is exactly that host.
+  //
+  // And a *single* global deadline would be wrong in both directions — it would
+  // either give a store read ten seconds to fail in, or time out a working
+  // sensor that had to ask a person for permission first. So the same silent
+  // host is asked for both at once: `items.next` gives up at its 2s budget while
+  // `sensors.orientation.start`, on 10s, is still waiting.
+  const said: string[] = []
+  const real = console.error
+  console.error = (...args: unknown[]) => said.push(args.map(String).join(" "))
+  t.after(() => {
+    console.error = real
+  })
+
+  const { client } = withFakeFrame({
+    granted: ["items", "sensors.orientation"],
+    answer: () => undefined,
+  })
+  const host = await client
+
+  const stop = host.tilt.start(() => {})
+  const local = assert.rejects(
+    () => host.nextItem(),
+    (error: unknown) =>
+      error instanceof PackError &&
+      error.code === "timeout" &&
+      // The message names the budget: "it timed out" without the number is a
+      // line nobody can act on.
+      /items\.next did not answer within 2000ms/.test(error.message),
+  )
+  const started = Date.now()
+  await local
+  const elapsed = Date.now() - started
+  assert.ok(elapsed >= 1900, `items.next gave up after ${String(elapsed)}ms`)
+
+  // 600ms past the local budget, and the native start has said nothing: it is
+  // still on its own, longer deadline rather than on a shared one.
+  await new Promise((resolve) => setTimeout(resolve, 600))
+  assert.deepEqual(said, [], "the native start gave up on the local budget")
+  stop()
+  host.dispose()
+})
+
+test("a settled call disarms its deadline rather than leaving it armed", async (t) => {
+  t.after(cleanup)
+  // Measured, not read. The first version of this test asserted that `dispose`
+  // returned quickly and passed perfectly with the `clearTimeout` deleted — the
+  // leaked timers were real (the suite went from 2.6s to 13.2s, because node will
+  // not exit while a timer is pending) and the assertion could not see one.
+  //
+  // `process.getActiveResourcesInfo()` can. A leaked deadline per call is a leak
+  // per call, and in a real pack that is one live timer for every question a
+  // child answers.
+  const timers = () => process.getActiveResourcesInfo().filter((name) => name === "Timeout").length
+
+  const { client } = withFakeFrame({ granted: ["items"], answer: () => ok({ item: null }) })
+  const host = await client
+  const before = timers()
+  for (let index = 0; index < 8; index += 1) {
+    assert.equal(await host.nextItem(), null)
+  }
+  assert.equal(
+    timers(),
+    before,
+    "a settled call left its 2s deadline armed — eight calls, eight live timers",
+  )
+  host.dispose()
+})
+
+/* ─── absence ────────────────────────────────────────────────────────────── */
+
+test("granted and available are different questions", async (t) => {
+  t.after(cleanup)
+  const { client } = withFakeFrame({
+    granted: ["items", "sensors.orientation"],
+    available: ["items"],
+  })
+  const host = await client
+  // The pack declared it, the build implements it, so the method is not refused
+  // — a pack cannot tell a declined permission from a missing sensor.
+  assert.equal(host.can("sensors.orientation.start"), true)
+  // But this device cannot do it, and that is the check a game reads before
+  // drawing a control that would otherwise be a lie.
+  assert.equal(host.available("sensors.orientation"), false)
+  assert.equal(host.available("items"), true)
+  assert.deepEqual([...host.usable], ["items"])
+  assert.equal(host.tilt.available, false)
+  host.dispose()
+})
+
+test("an older host that sends no `available` is read as everything working", async (t) => {
+  t.after(cleanup)
+  // A 1.0 host cannot send the field. Reading its absence as "nothing works"
+  // would break every pack on it; reading it as "everything granted works" is
+  // exactly what those packs were already assuming.
+  const { client } = withFakeFrame({ granted: ["items", "storage"], legacyHost: true })
+  const host = await client
+  assert.equal(host.available("items"), true)
+  assert.equal(host.available("storage"), true)
+  assert.deepEqual([...host.usable], ["items", "storage"])
+  host.dispose()
+})
+
+test("starting an unavailable capability is silent for a child and loud for a developer", async (t) => {
+  t.after(cleanup)
+  const said: string[] = []
+  const real = console.error
+  console.error = (...args: unknown[]) => said.push(args.map(String).join(" "))
+  t.after(() => {
+    console.error = real
+  })
+
+  const { client, seen } = withFakeFrame({
+    granted: ["items", "sensors.orientation"],
+    available: ["items"],
+  })
+  const host = await client
+
+  const samples: unknown[] = []
+  // Never throws and never rejects: absence is not an error path, so a game
+  // needs no try/catch to be correct.
+  const stop = host.tilt.start((sample) => samples.push(sample))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+
+  assert.deepEqual(samples, [], "an unavailable capability delivered something")
+  // And it cost no round trip, so a pack cannot probe what a device or a person
+  // declined by timing the answer.
+  assert.deepEqual(seen, [])
+  // Stop is safe on a stream that never opened.
+  stop()
+  stop()
+
+  assert.equal(said.length, 1, `expected one loud line, got ${String(said.length)}`)
+  const line = said[0] ?? ""
+  assert.match(line, /sensors\.orientation/)
+  assert.match(line, /host\.available/, "the message does not say what to do about it")
+  host.dispose()
+})
+
+test("calling an undeclared native capability says which manifest field is missing", async (t) => {
+  t.after(cleanup)
+  const said: string[] = []
+  const real = console.error
+  console.error = (...args: unknown[]) => said.push(args.map(String).join(" "))
+  t.after(() => {
+    console.error = real
+  })
+
+  const { client, seen } = withFakeFrame({ granted: ["items"] })
+  const host = await client
+  assert.equal(host.tilt.available, false)
+  const samples: unknown[] = []
+  host.tilt.start((sample) => samples.push(sample))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+
+  assert.deepEqual(samples, [])
+  assert.deepEqual(seen, [])
+  assert.equal(said.length, 1)
+  assert.match(said[0] ?? "", /manifest\.json/)
+  host.dispose()
+})
+
+/* ─── streams ────────────────────────────────────────────────────────────── */
+
+/** A sample the host would send. `degrees` is what a gauge reads. */
+const sample = (x: number, y: number) => ({
+  x,
+  y,
+  degrees: { x: x * 25, y: y * 25 },
+})
+
+test("a stream opens, delivers, and is cancelled by the stop function", async (t) => {
+  t.after(cleanup)
+  const { client, seen, hostPort } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: (request) =>
+      request.method === "sensors.orientation.start" ? ok({ stream: request.id }) : ok(null),
+  })
+  const host = await client
+  assert.equal(host.tilt.available, true)
+
+  const samples: { x: number; y: number }[] = []
+  const stop = host.tilt.start((value) => samples.push({ x: value.x, y: value.y }))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+
+  const start = seen.find((request) => request.method === "sensors.orientation.start")
+  assert.ok(start, "the start never reached the host")
+  // The stream id IS the request id. No second namespace, and the pack already
+  // held the number.
+  hostPort.postMessage({ stream: start.id, seq: 1, data: sample(0.5, -0.25) })
+  hostPort.postMessage({ stream: start.id, seq: 2, data: sample(-1, 1) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.deepEqual(samples, [
+    { x: 0.5, y: -0.25 },
+    { x: -1, y: 1 },
+  ])
+
+  stop()
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  const cancel = seen.find((request) => request.method === "stream.cancel")
+  assert.ok(cancel, "stopping did not tell the host")
+  assert.deepEqual(cancel.params, { stream: start.id })
+
+  // And nothing arrives after the stop, even if the host is still sending.
+  hostPort.postMessage({ stream: start.id, seq: 3, data: sample(1, 1) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.equal(samples.length, 2)
+  host.dispose()
+})
+
+test("stopping before the host has answered still cancels the stream it opened", async (t) => {
+  t.after(cleanup)
+  // The leak this prevents: a child leaves during the round trip, the pack's
+  // stop runs before there is a handle to cancel, and the host is left feeding a
+  // sensor to a stream nobody is reading.
+  // A holder rather than a `let`: assigned inside a callback, so TypeScript's
+  // control-flow analysis still believes the variable is `null` at the assertion
+  // below and narrows it to `never`.
+  const held: { release: (() => void) | null } = { release: null }
+  const { client, seen, hostPort } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: (request) => {
+      if (request.method !== "sensors.orientation.start") return ok(null)
+      held.release = () =>
+        hostPort.postMessage({ id: request.id, ok: true, result: { stream: request.id } })
+      return undefined
+    },
+  })
+  const host = await client
+  const samples: unknown[] = []
+  const stop = host.tilt.start((value) => samples.push(value))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+
+  stop()
+  assert.ok(held.release, "the host never saw the start")
+  held.release()
+  await new Promise((resolve) => setTimeout(resolve, 20))
+
+  const start = seen.find((request) => request.method === "sensors.orientation.start")
+  assert.ok(start)
+  const cancel = seen.find((request) => request.method === "stream.cancel")
+  assert.ok(cancel, "a stream opened after the stop was never cancelled")
+  assert.deepEqual(cancel.params, { stream: start.id })
+  // And the late handle is not registered, so a sample on it goes nowhere.
+  hostPort.postMessage({ stream: start.id, seq: 1, data: sample(1, 0) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.deepEqual(samples, [])
+  host.dispose()
+})
+
+test("a sample that is not a sample is dropped rather than fed to the game", async (t) => {
+  t.after(cleanup)
+  const said: string[] = []
+  const real = console.error
+  console.error = (...args: unknown[]) => said.push(args.map(String).join(" "))
+  t.after(() => {
+    console.error = real
+  })
+
+  const { client, seen, hostPort } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: (request) =>
+      request.method === "sensors.orientation.start" ? ok({ stream: request.id }) : ok(null),
+  })
+  const host = await client
+  const samples: unknown[] = []
+  host.tilt.start((value) => samples.push(value))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  const id = seen.find((request) => request.method === "sensors.orientation.start")?.id ?? 0
+
+  // One NaN through a game's steering makes every position after it NaN, the
+  // world vanishes and nothing throws. That is the blank screen this drops.
+  hostPort.postMessage({ stream: id, seq: 1, data: { x: Number.NaN, y: 0, degrees: { x: 0, y: 0 } } })
+  hostPort.postMessage({ stream: id, seq: 2, data: sample(0.25, 0) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.deepEqual(samples, [sample(0.25, 0)])
+  assert.equal(said.length, 1, "a dropped sample was dropped quietly")
+  host.dispose()
+})
+
+test("a repeated or reordered sequence number is dropped", async (t) => {
+  t.after(cleanup)
+  const { client, seen, hostPort } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: (request) =>
+      request.method === "sensors.orientation.start" ? ok({ stream: request.id }) : ok(null),
+  })
+  const host = await client
+  const samples: number[] = []
+  host.tilt.start((value) => samples.push(value.x))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  const id = seen.find((request) => request.method === "sensors.orientation.start")?.id ?? 0
+
+  hostPort.postMessage({ stream: id, seq: 1, data: sample(0.1, 0) })
+  hostPort.postMessage({ stream: id, seq: 3, data: sample(0.3, 0) })
+  // Behind the high-water mark: a step backwards in time for whatever this is
+  // steering, so it is dropped rather than replayed.
+  hostPort.postMessage({ stream: id, seq: 2, data: sample(0.2, 0) })
+  hostPort.postMessage({ stream: id, seq: 3, data: sample(0.9, 0) })
+  hostPort.postMessage({ stream: id, seq: 4, data: sample(0.4, 0) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  // A gap (2 missing) is deliberate — the host throttles — so 3 is delivered.
+  assert.deepEqual(samples, [0.1, 0.3, 0.4])
+  host.dispose()
+})
+
+test("a stream on a pack that was disposed delivers nothing", async (t) => {
+  t.after(cleanup)
+  const { client, seen, hostPort } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: (request) =>
+      request.method === "sensors.orientation.start" ? ok({ stream: request.id }) : ok(null),
+  })
+  const host = await client
+  const samples: unknown[] = []
+  host.tilt.start((value) => samples.push(value))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  const id = seen.find((request) => request.method === "sensors.orientation.start")?.id ?? 0
+
+  hostPort.postMessage({ stream: id, seq: 1, data: sample(0.5, 0) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.equal(samples.length, 1)
+
+  host.dispose()
+  hostPort.postMessage({ stream: id, seq: 2, data: sample(1, 1) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  // Two independent mechanisms hold this and either one alone is enough —
+  // dropping the sink table, and tearing the port down. Removing either on its
+  // own leaves this green, which was measured; removing both fails it here. The
+  // test is written against the property rather than against a mechanism, and the
+  // redundancy is deliberate: the port stops delivery, the table stops a
+  // reference to a torn-down game's closure being held.
+  assert.equal(samples.length, 1, "a sample reached a game that had been torn down")
+})
+
+test("a stream the host says has become unavailable stops quietly for the child", async (t) => {
+  t.after(cleanup)
+  const said: string[] = []
+  const real = console.error
+  console.error = (...args: unknown[]) => said.push(args.map(String).join(" "))
+  t.after(() => {
+    console.error = real
+  })
+
+  const { client, seen, hostPort } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: (request) =>
+      request.method === "sensors.orientation.start" ? ok({ stream: request.id }) : ok(null),
+  })
+  const host = await client
+  const samples: unknown[] = []
+  const stop = host.tilt.start((value) => samples.push(value))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  const id = seen.find((request) => request.method === "sensors.orientation.start")?.id ?? 0
+
+  hostPort.postMessage({ stream: id, done: true, reason: "unavailable" })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  hostPort.postMessage({ stream: id, seq: 1, data: sample(1, 1) })
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.deepEqual(samples, [], "an ended stream kept delivering")
+  assert.equal(said.length, 1)
+  assert.match(said[0] ?? "", /keep playing|without it/i)
+  // And stopping an already-ended stream is not an error.
+  stop()
+  host.dispose()
+})
+
+test("a start the host refuses is announced, and the game is left running", async (t) => {
+  t.after(cleanup)
+  const said: string[] = []
+  const real = console.error
+  console.error = (...args: unknown[]) => said.push(args.map(String).join(" "))
+  t.after(() => {
+    console.error = real
+  })
+
+  const { client } = withFakeFrame({
+    granted: ["sensors.orientation"],
+    answer: () => ({ ok: false as const, error: { code: "unavailable" as const, message: "no sensor" } }),
+  })
+  const host = await client
+  const samples: unknown[] = []
+  // No throw, no rejection: a game must not have to catch this to be correct.
+  const stop = host.tilt.start((value) => samples.push(value))
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  stop()
+  assert.deepEqual(samples, [])
+  assert.equal(said.length, 1)
+  assert.match(said[0] ?? "", /unavailable/)
   host.dispose()
 })

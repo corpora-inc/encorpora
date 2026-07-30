@@ -21,6 +21,20 @@ const tauriRoot = path.resolve(here, "../../src-tauri")
 const readJson = (file: string): Record<string, unknown> =>
   JSON.parse(fs.readFileSync(path.join(tauriRoot, file), "utf8")) as Record<string, unknown>
 
+/**
+ * Every origin in a policy that could reach off the device.
+ *
+ * `ws:` and `wss:` are in the pattern and were not, which was a hole rather than
+ * an omission: the first real network capability this app is likely to grow is a
+ * leaderboard socket (see `docs/NATIVE_CAPABILITIES.md`), the obvious wrong way
+ * to build it is `connect-src wss://…` in this file, and an `http`-only scan
+ * would have watched that go past. There is no `wss:` source here today and this
+ * is what keeps it that way.
+ */
+export function remoteOrigins(policy: string): string[] {
+  return [...policy.matchAll(/(?:https?|wss?):\/\/[^\s;]+/g)].map((match) => match[0])
+}
+
 const config = readJson("tauri.conf.json")
 const capability = readJson("capabilities/default.json")
 
@@ -53,8 +67,8 @@ test("the CSP is non-null and closed by default", () => {
   // `dynawalla-pack:` everywhere else, which is not an http source at all).
   // Content packs are downloaded and verified in Rust, never fetched here.
   const LOCAL_SCHEME_HOSTS = new Set(["http://ipc.localhost", "http://dynawalla-pack.localhost"])
-  for (const source of policy.matchAll(/https?:\/\/[^\s;]+/g)) {
-    assert.ok(LOCAL_SCHEME_HOSTS.has(source[0]), `remote origin in CSP: ${source[0]}`)
+  for (const source of remoteOrigins(policy)) {
+    assert.ok(LOCAL_SCHEME_HOSTS.has(source), `remote origin in CSP: ${source}`)
   }
 
   // A pack is framed, and the only thing that may be framed is a pack.
@@ -64,6 +78,22 @@ test("the CSP is non-null and closed by default", () => {
 
   // script-src must not admit inline script: the whole point of the policy.
   assert.match(policy, /script-src 'self'\s*;/)
+})
+
+test("the origin scan sees a socket, not only an http fetch", () => {
+  // A guard that silently does not fire is worse than no guard, and this one is
+  // read by hand nowhere: it is the only thing standing between this app and a
+  // remote origin in its own policy. Checked against synthetic policies, because
+  // the real one is supposed to have nothing in it to find.
+  assert.deepEqual(remoteOrigins("connect-src 'self' ipc: http://ipc.localhost"), [
+    "http://ipc.localhost",
+  ])
+  assert.deepEqual(remoteOrigins("connect-src 'self' wss://arena.example"), [
+    "wss://arena.example",
+  ])
+  assert.deepEqual(remoteOrigins("connect-src ws://10.0.0.2:8080"), ["ws://10.0.0.2:8080"])
+  assert.deepEqual(remoteOrigins("connect-src https://api.example/v1"), ["https://api.example/v1"])
+  assert.deepEqual(remoteOrigins("default-src 'none'; connect-src 'self'"), [])
 })
 
 test("nothing sets a style attribute the CSP would refuse to apply", () => {

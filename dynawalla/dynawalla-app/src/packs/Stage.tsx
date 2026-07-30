@@ -19,7 +19,12 @@ import { useEffect, useLayoutEffect, useMemo, useState } from "react"
 import { create } from "zustand"
 
 import type { Settings } from "../../../packs/sdk/src/index.ts"
-import { BUILD_VERSION, hapticPorts } from "../app/platform.ts"
+import {
+  BUILD_VERSION,
+  hapticPorts,
+  orientationPorts,
+  primeOrientationPermission,
+} from "../app/platform.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { documentLock } from "../app/zoom.ts"
@@ -29,6 +34,7 @@ import { useProfiles } from "../profiles/store.ts"
 import { useSettings } from "../settings/store.ts"
 import { entryOf, useLibrary } from "./libraryStore.ts"
 import { tauriNative } from "./native.ts"
+import { createOrientationSource } from "./orientation.ts"
 import { PackFrame } from "./PackFrame.tsx"
 import { createServices, packSettings } from "./services.ts"
 
@@ -41,7 +47,21 @@ export interface LaunchState {
 
 export const useLaunch = create<LaunchState>()((set) => ({
   packId: null,
-  play: (packId) => set({ packId }),
+  play: (packId) => {
+    // The one place a motion permission can be asked for.
+    //
+    // `play` runs synchronously inside the tap on a pack's card, which is the
+    // last real user gesture before the pack exists — and iOS will only show
+    // `DeviceOrientationEvent.requestPermission()` from one. A pack cannot ask:
+    // user activation does not cross a `postMessage`, and its opaque origin is
+    // not something a grant could be remembered against. Only for a pack that
+    // declared the capability, so a child playing the other twenty-seven games
+    // is never shown a prompt about a sensor.
+    if (entryOf(packId)?.granted.includes("sensors.orientation")) {
+      primeOrientationPermission()
+    }
+    set({ packId })
+  },
   leave: () => set({ packId: null }),
 }))
 
@@ -117,6 +137,10 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
         // native bridge and whether this WebView has `navigator.vibrate` are
         // facts about the device, and neither can change while a child plays.
         haptics: hapticPorts,
+        // Built per launch, unlike the ports it wraps: the neutral pose a tilt
+        // is measured against belongs to one session, and carrying it between
+        // games would start the next one already steering.
+        orientation: createOrientationSource(orientationPorts),
         onProgress: setProgress,
         onEnd: () => onLeave(),
         onMilestone: (name) => console.info(`[packs] ${packId} reached ${name}`),

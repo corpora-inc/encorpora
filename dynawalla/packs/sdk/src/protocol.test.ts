@@ -4,7 +4,10 @@ import assert from "node:assert/strict"
 import {
   isConnect,
   isHostEvent,
+  isOrientation,
   isResponse,
+  isStreamEnd,
+  isStreamUpdate,
   numberParam,
   parseRequest,
   stringParam,
@@ -128,4 +131,115 @@ test("the guards a pack uses on host traffic are equally exact", () => {
   assert.equal(isConnect(connect), true)
   assert.equal(isConnect({ ...connect, granted: "items" }), false)
   assert.equal(isConnect({ ...connect, event: "ready" }), false)
+})
+
+test("the three host-to-pack envelopes are told apart by shape alone", () => {
+  // The property the guest's demultiplexer depends on. If any two of these
+  // could match the same message, a sensor sample would resolve a promise or a
+  // response would be fed to a game as a sample — both silent.
+  const update = { stream: 7, seq: 1, data: { x: 0, y: 0, degrees: { x: 0, y: 0 } } }
+  const end = { stream: 7, done: true, reason: "cancelled" }
+  const response = { id: 7, ok: true, result: null }
+  const event = { event: "pause" }
+
+  assert.equal(isStreamUpdate(update), true)
+  assert.equal(isStreamEnd(update), false)
+  assert.equal(isResponse(update), false)
+  assert.equal(isHostEvent(update), false)
+
+  assert.equal(isStreamEnd(end), true)
+  assert.equal(isStreamUpdate(end), false, "an end must not also read as an update")
+  // And an envelope carrying BOTH is an end, not an update. This is the case the
+  // `done` check in `isStreamUpdate` exists for: an end has no `seq`, so without
+  // one that carries a `seq` the check is unreachable and would have been deleted
+  // by anyone measuring it. A message that is both would otherwise be dispatched
+  // to a game as a sample and never end the stream.
+  assert.equal(isStreamUpdate({ ...end, seq: 1 }), false, "a done envelope read as a sample")
+  assert.equal(isStreamEnd({ ...end, seq: 1 }), true)
+  assert.equal(isResponse(end), false)
+
+  assert.equal(isResponse(response), true)
+  assert.equal(isStreamUpdate(response), false)
+  assert.equal(isStreamEnd(response), false)
+
+  assert.equal(isHostEvent(event), true)
+  assert.equal(isStreamUpdate(event), false)
+  assert.equal(isStreamEnd(event), false)
+})
+
+test("a stream envelope that is not one is rejected", () => {
+  for (const value of [
+    null,
+    7,
+    [],
+    {},
+    { stream: 7 },
+    { stream: 7, seq: 0 },
+    { stream: 7, seq: -1 },
+    { stream: 7, seq: 1.5 },
+    { stream: -1, seq: 1 },
+    { stream: 1.5, seq: 1 },
+    { stream: "7", seq: 1 },
+  ]) {
+    assert.equal(isStreamUpdate(value), false, `${JSON.stringify(value)} parsed as an update`)
+  }
+  for (const value of [
+    { stream: 7, done: true },
+    { stream: 7, done: true, reason: "bored" },
+    { stream: 7, done: false, reason: "cancelled" },
+    { stream: 7, reason: "cancelled" },
+    { done: true, reason: "cancelled" },
+  ]) {
+    assert.equal(isStreamEnd(value), false, `${JSON.stringify(value)} parsed as an end`)
+  }
+  // Every reason the contract names is accepted, so the guard cannot drift from
+  // the union by somebody adding one to the type and not to the list.
+  for (const reason of ["complete", "cancelled", "unavailable", "closed", "internal"]) {
+    assert.equal(isStreamEnd({ stream: 0, done: true, reason }), true, reason)
+  }
+})
+
+test("a tilt sample must be finite and in range, or it is not a sample", () => {
+  assert.equal(isOrientation({ x: 0, y: 0, degrees: { x: 0, y: 0 } }), true)
+  assert.equal(isOrientation({ x: -1, y: 1, degrees: { x: -25, y: 25 } }), true)
+  // Every one of these would put a NaN or an out-of-range multiplier through a
+  // game's steering, and none of them would throw.
+  for (const value of [
+    null,
+    {},
+    { x: 0, y: 0 },
+    { x: Number.NaN, y: 0, degrees: { x: 0, y: 0 } },
+    { x: 0, y: Number.POSITIVE_INFINITY, degrees: { x: 0, y: 0 } },
+    { x: 1.5, y: 0, degrees: { x: 0, y: 0 } },
+    { x: -1.5, y: 0, degrees: { x: 0, y: 0 } },
+    { x: "0", y: 0, degrees: { x: 0, y: 0 } },
+    { x: 0, y: 0, degrees: { x: Number.NaN, y: 0 } },
+    { x: 0, y: 0, degrees: null },
+  ]) {
+    assert.equal(isOrientation(value), false, `${JSON.stringify(value)} passed as a tilt sample`)
+  }
+})
+
+test("cancelling a stream is a request like any other", () => {
+  const parsed = parseRequest({ id: 4, method: "stream.cancel", params: { stream: 7 } })
+  assert.equal(parsed.ok, true)
+  if (!parsed.ok) return
+  assert.equal(parsed.request.method, "stream.cancel")
+})
+
+test("a connect without `available` is still a connect", () => {
+  // The 1.0 host. A pack on one reads the absent field as "everything granted
+  // works", which is exactly what it was already assuming, so an older host
+  // must not fail the guard.
+  const connect = {
+    event: "connect",
+    protocol: 1,
+    sdk: "1.0.0",
+    host: "0.1.0",
+    packId: "abacus.tower",
+    granted: ["items"],
+    settings: {},
+  }
+  assert.equal(isConnect(connect), true)
+  assert.equal(isConnect({ ...connect, available: ["items"] }), true)
 })

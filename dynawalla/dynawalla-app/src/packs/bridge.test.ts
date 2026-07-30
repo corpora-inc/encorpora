@@ -8,10 +8,22 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
-import { createBridge, MAX_STORAGE_KEYS, MAX_STORAGE_VALUE_LENGTH } from "./bridge.ts"
+import {
+  createBridge,
+  MAX_OPEN_STREAMS,
+  MAX_STORAGE_KEYS,
+  MAX_STORAGE_VALUE_LENGTH,
+} from "./bridge.ts"
 import type { HostServices } from "./bridge.ts"
 import { CAPABILITIES, CAPABILITY_IDS, METHODS, SESSION_METHODS } from "../../../packs/sdk/src/index.ts"
-import type { Capability, Item, Response } from "../../../packs/sdk/src/index.ts"
+import type {
+  Capability,
+  Item,
+  Orientation,
+  Response,
+  StreamEnd,
+  StreamUpdate,
+} from "../../../packs/sdk/src/index.ts"
 
 const ITEM: Item = {
   id: "i1",
@@ -57,6 +69,10 @@ function services(calls: Calls, overrides: Partial<HostServices> = {}): HostServ
       remove: async ({ key }) => void store.delete(key),
       keys: async () => [...store.keys()],
     },
+    // Inert by default: a device with no sensor, which is the case every test
+    // that is not about streams should be running against.
+    sensors: { orientation: async () => null },
+    available: () => CAPABILITY_IDS.filter((id) => id !== "sensors.orientation"),
     progress: (input) => void record("progress", undefined)(input),
     end: (input) => void record("end", undefined)(input),
     transition: (input) => void record("transition", undefined)(input),
@@ -122,7 +138,12 @@ test("session methods work with no grants at all", async () => {
           ? { reason: "quit" }
           : method === "session.transition"
             ? { kind: "level" }
-            : {}
+            : method === "stream.cancel"
+              ? // A handle this pack never opened. Cancelling is idempotent and
+                // says nothing about what it found, so a pack cannot probe for
+                // another stream's existence by inventing a number.
+                { stream: 0 }
+              : {}
     const response = await bridge.handle({ id: 1, method, params })
     assert.ok(response?.ok, `${method} was refused`)
   }
@@ -151,8 +172,21 @@ test("a message with no usable id is dropped rather than answered", async () => 
 test("the whole method table is reachable when everything is granted", async () => {
   // A method in the SDK that the bridge forgot to implement would return
   // undefined and hang the pack's promise forever.
-  const bridge = bridgeWith(CAPABILITY_IDS)
+  //
+  // A device that can do everything, deliberately: a native method refused
+  // because the fixture has no sensor would pass this test for the wrong reason
+  // and hide the case where the dispatch arm is missing entirely.
+  const bridge = createBridge({
+    packId: "abacus.tower",
+    granted: CAPABILITY_IDS,
+    services: services([], {
+      available: () => CAPABILITY_IDS,
+      sensors: { orientation: async () => () => {} },
+    }),
+    push: () => {},
+  })
   const params: Record<string, unknown> = {
+    stream: 0,
     itemId: "i1",
     response: "2203",
     latencyMs: 100,
@@ -375,4 +409,331 @@ test("a difficulty request crosses the boundary, clamped rather than refused", a
   // not thereby pin every question to the easiest rung on the ladder.
   await bridge.handle({ id: 3, method: "items.next", params: { difficulty: "hard" } })
   assert.deepEqual(calls[2]?.input, { packId: "p" })
+})
+
+/* ─── streams, and the native-backed capability behind them ────────────────── */
+//
+// A stream is the first thing on this seam that OUTLIVES the message that opened
+// it, and it is the first thing on it that holds a device resource. Both are new
+// kinds of mistake: a stream nothing ends, and a sensor nothing releases.
+
+type Sensor = {
+  /** A working source. Every started stream is recorded here. */
+  readonly orientation: HostServices["sensors"]["orientation"]
+  /** How many times a stop function was called. */
+  released: () => number
+  /** How many subscriptions were ever handed out. */
+  started: () => number
+  /** Push a sample at every live subscription. */
+  feed: (sample: Orientation) => void
+  /** Tell every live subscription its source has gone. */
+  lose: () => void
+}
+
+function sensor(options: { present?: boolean } = {}): Sensor {
+  let released = 0
+  let started = 0
+  const live = new Set<{ emit: (sample: Orientation) => void; lost: () => void }>()
+  return {
+    orientation: async (input) => {
+      if (options.present === false) return null
+      started += 1
+      const entry = { emit: input.emit, lost: input.lost }
+      live.add(entry)
+      return () => {
+        released += 1
+        live.delete(entry)
+      }
+    },
+    released: () => released,
+    started: () => started,
+    feed: (sample) => {
+      for (const entry of [...live]) entry.emit(sample)
+    },
+    lose: () => {
+      for (const entry of [...live]) entry.lost()
+    },
+  }
+}
+
+const SAMPLE: Orientation = { x: 0.5, y: -0.25, degrees: { x: 12, y: -6 } }
+
+function streamBridge(options: { present?: boolean; granted?: readonly Capability[] } = {}) {
+  const pushed: (StreamUpdate | StreamEnd)[] = []
+  const device = sensor(options.present === false ? { present: false } : {})
+  const bridge = createBridge({
+    packId: "abacus.tower",
+    granted: options.granted ?? ["sensors.orientation"],
+    services: services([], {
+      sensors: { orientation: device.orientation },
+      available: () =>
+        options.present === false
+          ? CAPABILITY_IDS.filter((id) => id !== "sensors.orientation")
+          : CAPABILITY_IDS,
+    }),
+    push: (message) => pushed.push(message),
+  })
+  return { bridge, device, pushed }
+}
+
+const updates = (pushed: readonly (StreamUpdate | StreamEnd)[]): StreamUpdate[] =>
+  pushed.filter((message): message is StreamUpdate => !("done" in message))
+
+const ends = (pushed: readonly (StreamUpdate | StreamEnd)[]): StreamEnd[] =>
+  pushed.filter((message): message is StreamEnd => "done" in message)
+
+test("a stream hands back its own request id and numbers its samples from one", async () => {
+  const { bridge, device, pushed } = streamBridge()
+  const response = await bridge.handle({ id: 9, method: "sensors.orientation.start", params: {} })
+  assert.ok(response?.ok)
+  // The handle IS the request id: no second namespace, and the pack already held
+  // the number it sent.
+  assert.deepEqual(response.result, { stream: 9 })
+  assert.deepEqual(bridge.streams(), [9])
+  assert.equal(device.started(), 1)
+
+  device.feed(SAMPLE)
+  device.feed(SAMPLE)
+  assert.deepEqual(updates(pushed), [
+    { stream: 9, seq: 1, data: SAMPLE },
+    { stream: 9, seq: 2, data: SAMPLE },
+  ])
+})
+
+test("a pack that did not declare the capability cannot open the stream", async () => {
+  const { bridge, device } = streamBridge({ granted: ["items"] })
+  const response = await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  assert.equal(errorOf(response), "denied")
+  // And the denial happened before anything touched the device.
+  assert.equal(device.started(), 0)
+  assert.deepEqual(bridge.streams(), [])
+})
+
+test("a source that refuses is unavailable rather than an open stream", async () => {
+  const { bridge, device } = streamBridge({ present: false })
+  const response = await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  assert.equal(errorOf(response), "unavailable")
+  assert.equal(device.started(), 0)
+  assert.deepEqual(bridge.streams(), [])
+})
+
+test("the bridge refuses an unavailable capability before it touches the device", async () => {
+  // Checked HERE and not only in the guest: the guest short-circuits to save a
+  // round trip, and the bridge is the boundary — it cannot rely on the other side
+  // of itself having done the check.
+  //
+  // The device in this fixture WORKS. That is the whole point of it: a fixture
+  // whose source also returns `null` makes this test pass with the bridge's check
+  // deleted, because the refusal then comes from the source instead. It was
+  // written that way first and measured passing with the fix removed.
+  const device = sensor()
+  const bridge = createBridge({
+    packId: "abacus.tower",
+    granted: ["sensors.orientation"],
+    services: services([], {
+      sensors: { orientation: device.orientation },
+      available: () => CAPABILITY_IDS.filter((id) => id !== "sensors.orientation"),
+    }),
+    push: () => {},
+  })
+  const response = await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  assert.equal(errorOf(response), "unavailable")
+  assert.equal(device.started(), 0, "a capability the device cannot do was started anyway")
+  assert.deepEqual(bridge.streams(), [])
+})
+
+test("cancelling ends the stream once and releases the device", async () => {
+  const { bridge, device, pushed } = streamBridge()
+  await bridge.handle({ id: 3, method: "sensors.orientation.start", params: {} })
+  const response = await bridge.handle({ id: 4, method: "stream.cancel", params: { stream: 3 } })
+  assert.ok(response?.ok)
+  assert.equal(device.released(), 1, "the sensor was left running")
+  assert.deepEqual(ends(pushed), [{ stream: 3, done: true, reason: "cancelled" }])
+  assert.deepEqual(bridge.streams(), [])
+
+  // Nothing arrives afterwards, even if the source is still being fed.
+  device.feed(SAMPLE)
+  assert.deepEqual(updates(pushed), [])
+
+  // And cancelling again is not an error and does not end it twice: a pack
+  // racing its own teardown against a host that already closed the stream is the
+  // normal case, not a fault.
+  const again = await bridge.handle({ id: 5, method: "stream.cancel", params: { stream: 3 } })
+  assert.ok(again?.ok)
+  assert.equal(ends(pushed).length, 1)
+  assert.equal(device.released(), 1)
+})
+
+test("cancelling a handle the pack invented says nothing about it", async () => {
+  const { bridge, pushed } = streamBridge()
+  const response = await bridge.handle({ id: 1, method: "stream.cancel", params: { stream: 7777 } })
+  assert.ok(response?.ok, "a pack learned that a handle was not real")
+  assert.deepEqual(pushed, [])
+  assert.equal(
+    errorOf(await bridge.handle({ id: 2, method: "stream.cancel", params: {} })),
+    "invalid_params",
+  )
+})
+
+test("a stream cancelled while it was still starting leaves nothing behind", async () => {
+  // A permission prompt is on screen, the child presses the back button, and the
+  // pack cancels a stream whose handle it has not been given yet. Before the
+  // handle is reserved ahead of the await there is nothing for the cancel to
+  // find, and the sensor stays subscribed to a stream nobody is reading.
+  const pushed: (StreamUpdate | StreamEnd)[] = []
+  let released = 0
+  // A holder rather than a `let`: assigned inside a callback, so TypeScript's
+  // control-flow analysis still believes the variable is `null` at the assertion
+  // below and narrows it to `never`.
+  const held: { release: (() => void) | null } = { release: null }
+  const bridge = createBridge({
+    packId: "abacus.tower",
+    granted: ["sensors.orientation"],
+    services: services([], {
+      available: () => CAPABILITY_IDS,
+      sensors: {
+        orientation: async () =>
+          new Promise<() => void>((resolve) => {
+            held.release = () =>
+              resolve(() => {
+                released += 1
+              })
+          }),
+      },
+    }),
+    push: (message) => pushed.push(message),
+  })
+
+  const start = bridge.handle({ id: 2, method: "sensors.orientation.start", params: {} })
+  await new Promise((resolve) => setImmediate(resolve))
+  // The handle exists before the source has finished starting, which is the
+  // whole point: the cancel has something to find.
+  assert.deepEqual(bridge.streams(), [2])
+  await bridge.handle({ id: 3, method: "stream.cancel", params: { stream: 2 } })
+  assert.ok(held.release)
+  held.release()
+
+  const response = await start
+  assert.equal(errorOf(response), "unavailable")
+  assert.equal(released, 1, "a source started for a cancelled stream was never released")
+  assert.deepEqual(bridge.streams(), [])
+  // No end message: nothing was ever handed out, so there was no stream to end.
+  // "Exactly one end per stream" is a promise about streams that were opened.
+  assert.deepEqual(ends(pushed), [])
+})
+
+test("a source that turns out to be feeding nothing ends the stream unavailable", async () => {
+  const { bridge, device, pushed } = streamBridge()
+  await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  device.lose()
+  assert.deepEqual(ends(pushed), [{ stream: 1, done: true, reason: "unavailable" }])
+  assert.equal(device.released(), 1)
+  assert.deepEqual(bridge.streams(), [])
+})
+
+test("a paused pack stops receiving samples, and the gap shows in the sequence", async () => {
+  const { bridge, device, pushed } = streamBridge()
+  await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  device.feed(SAMPLE)
+
+  // A game steering behind the day-pass sheet is a game the child is not
+  // playing. The samples are DROPPED rather than queued: a buffer of stale tilt
+  // delivered all at once on resume would snap whatever it steers across the
+  // screen.
+  bridge.setPaused(true)
+  device.feed(SAMPLE)
+  device.feed(SAMPLE)
+  assert.equal(updates(pushed).length, 1)
+
+  bridge.setPaused(false)
+  device.feed(SAMPLE)
+  const seen = updates(pushed)
+  assert.deepEqual(
+    seen.map((message) => message.seq),
+    [1, 2],
+    "a dropped sample consumed a sequence number",
+  )
+  assert.equal(seen.length, 2)
+})
+
+test("closing the bridge ends every stream and releases every device", async () => {
+  // The one guarantee that matters: nothing outlives the pack. A sensor left
+  // subscribed after a child has left is a battery cost nobody can see and
+  // nothing else in this app would notice.
+  const { bridge, device, pushed } = streamBridge()
+  await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  await bridge.handle({ id: 2, method: "sensors.orientation.start", params: {} })
+  assert.equal(device.started(), 2)
+
+  bridge.close()
+  assert.equal(device.released(), 2)
+  assert.deepEqual(ends(pushed), [
+    { stream: 1, done: true, reason: "closed" },
+    { stream: 2, done: true, reason: "closed" },
+  ])
+  assert.deepEqual(bridge.streams(), [])
+
+  // And a message already in flight when the session ended is not served — the
+  // one that must not be is another stream start.
+  assert.equal(await bridge.handle({ id: 3, method: "sensors.orientation.start", params: {} }), null)
+  assert.equal(device.started(), 2)
+  bridge.close()
+  assert.equal(device.released(), 2, "close ran twice")
+})
+
+test("a source whose stop throws still leaves the stream ended", async () => {
+  // `stop` is host code and host code throws. A throw that left the handle in
+  // the table would leave a stream nothing can ever end.
+  const pushed: (StreamUpdate | StreamEnd)[] = []
+  const bridge = createBridge({
+    packId: "abacus.tower",
+    granted: ["sensors.orientation"],
+    services: services([], {
+      available: () => CAPABILITY_IDS,
+      sensors: {
+        orientation: async () => () => {
+          throw new Error("the sensor was already gone")
+        },
+      },
+    }),
+    push: (message) => pushed.push(message),
+  })
+  await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  bridge.close()
+  assert.deepEqual(bridge.streams(), [])
+  assert.deepEqual(ends(pushed), [{ stream: 1, done: true, reason: "closed" }])
+})
+
+test("a pack cannot hoard streams", async () => {
+  const { bridge, device } = streamBridge()
+  for (let id = 1; id <= MAX_OPEN_STREAMS; id += 1) {
+    assert.ok((await bridge.handle({ id, method: "sensors.orientation.start", params: {} }))?.ok)
+  }
+  const over = await bridge.handle({
+    id: MAX_OPEN_STREAMS + 1,
+    method: "sensors.orientation.start",
+    params: {},
+  })
+  assert.equal(errorOf(over), "quota")
+  assert.equal(device.started(), MAX_OPEN_STREAMS)
+  bridge.close()
+})
+
+test("a bridge with nowhere to push does not pretend to stream", async () => {
+  // `push` is optional so that a test about request/response need not supply
+  // one. A pack in that host gets a stream that delivers nothing, which must not
+  // be a throw: this is the shape every existing bridge test constructs.
+  const device = sensor()
+  const bridge = createBridge({
+    packId: "abacus.tower",
+    granted: ["sensors.orientation"],
+    services: services([], {
+      available: () => CAPABILITY_IDS,
+      sensors: { orientation: device.orientation },
+    }),
+  })
+  assert.ok((await bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} }))?.ok)
+  device.feed(SAMPLE)
+  bridge.close()
+  assert.equal(device.released(), 1)
 })

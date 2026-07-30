@@ -349,6 +349,13 @@ export function mountPack(options: MountOptions): MountedPack {
     packId: options.packId,
     granted: options.granted,
     services: options.services,
+    // The third envelope. Streams are traffic nobody asked for at the moment it
+    // is sent, so it cannot come back out of `handle` — the bridge is handed the
+    // port instead, and it is still the only thing that can write to it.
+    push: (message) => {
+      if (disposed || !connected) return
+      channel?.port1.postMessage(message)
+    },
   })
 
   const frame = doc.createElement("iframe")
@@ -451,6 +458,13 @@ export function mountPack(options: MountOptions): MountedPack {
     // the net for that.
     poll = setInterval(tick, limits.pollMs)
 
+    // Granted and available are different questions, and the pack is told both.
+    // A grant is a decision about the pack; availability is a fact about this
+    // device — a tablet with no gyroscope, a build with no plugin, a permission
+    // somebody declined. Intersected here rather than in `services` so that
+    // "available" can never exceed "granted" by construction.
+    const capable = options.services.available()
+    const available = options.granted.filter((capability) => capable.includes(capability))
     const connect: Connect = {
       event: "connect",
       protocol: PROTOCOL_VERSION,
@@ -458,6 +472,7 @@ export function mountPack(options: MountOptions): MountedPack {
       host: options.hostVersion,
       packId: options.packId,
       granted: options.granted,
+      available,
       settings: options.services.settings(),
     }
     // `"*"` because an opaque origin cannot be named. The payload is not a
@@ -480,6 +495,12 @@ export function mountPack(options: MountOptions): MountedPack {
 
   const send = (event: HostEventName, data?: unknown) => {
     if (!connected || disposed) return
+    // Pausing a pack pauses its streams. A game steering behind the day-pass
+    // sheet is a game the child is not playing, and a sensor feeding it is a
+    // battery cost with nobody on the other end. The samples are dropped rather
+    // than queued — see `Bridge.setPaused`.
+    if (event === "pause") bridge.setPaused(true)
+    if (event === "resume") bridge.setPaused(false)
     channel?.port1.postMessage(data === undefined ? { event } : { event, data })
   }
 
@@ -492,12 +513,17 @@ export function mountPack(options: MountOptions): MountedPack {
     pushSettings: (settings) => send("settings", settings),
     dispose: () => {
       if (disposed) return
+      // Streams first, and before `disposed` is set so the end messages can
+      // still reach the pack. Nothing native may outlive a pack: a sensor left
+      // subscribed after a child has left is a cost nobody can see and nothing
+      // else in this app would notice.
+      bridge.close()
       disposed = true
       if (timer !== null) clearTimeout(timer)
       timer = null
       if (poll !== null) clearInterval(poll)
       poll = null
-      // Tell the pack first, so it can stop its own loop before its port dies.
+      // Then tell the pack, so it can stop its own loop before its port dies.
       if (connected) channel?.port1.postMessage({ event: "dispose" })
       win.removeEventListener("message", onReady)
       if (channel) {

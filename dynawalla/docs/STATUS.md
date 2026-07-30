@@ -71,6 +71,9 @@ where they will be read before the mistake is made:
 |---|---|
 | The reset: strip the host, reverse ADR-0003 / ADR-0004, record ADR-0022 | this PR |
 | The pack runtime — install, verify, update, remove, mount | not started; top of the queue |
+| The native capability seam ([ADR-0025](DECISIONS/ADR-0025-native-capability-interface.md), [NATIVE_CAPABILITIES.md](NATIVE_CAPABILITIES.md)) — stream envelope, per-capability budgets, runtime availability, and `sensors.orientation` as its first case | landed; the source is a web API and the plugin behind it is not written |
+| A `tauri-plugin-orientation` behind `OrientationPorts` — the first native capability with real IPC, and the first to pay the ACL tax | not started |
+| Real online competition in ARENA — designed in [NATIVE_CAPABILITIES.md](NATIVE_CAPABILITIES.md), **not built**; blocked on two founder decisions (a handles-and-scores-only surface, and a ranking that is not throughput) | design only |
 | Founder decisions recorded in ADRs 0001 / 0013 / 0015 / 0017 | done 2026-07-25 |
 | Repository-license research ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)) | commissioned 2026-07-25, recommendation pending |
 | Standards-alignment research ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)) | commissioned 2026-07-25, recommendation pending |
