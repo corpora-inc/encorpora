@@ -84,11 +84,23 @@ function recorder(): { ctx: CanvasRenderingContext2D; log: Drawn[]; restores: nu
     textAlign: "start",
     textBaseline: "alphabetic",
   }
+  // Save/restore DEPTH, not a raw count of `restore` calls.
+  //
+  // The world is drawn inside one save/restore pair and every husk, the ship and
+  // the resonator save and restore *inside* it, so a raw count says nothing
+  // about where the world ended. Only the restores that bring the depth back to
+  // zero are boundaries between one block of drawing and the next, and the first
+  // of those is the end of the world and the start of the chrome.
+  let depth = 0
   const api: Record<string, unknown> = {
     measureText: (text: string) => ({ width: advance(text, fontSize(String(state.font))) }),
     createRadialGradient: () => ({ addColorStop() {} }),
+    save: () => {
+      depth += 1
+    },
     restore: () => {
-      restores.push(log.length)
+      depth = Math.max(0, depth - 1)
+      if (depth === 0) restores.push(log.length)
     },
     fillText: (text: string, x: number, y: number) => {
       const px = fontSize(String(state.font))
@@ -165,7 +177,7 @@ function withInsets(insets: Insets, body: () => void): void {
   }
 }
 
-type Frame = { scene: Scene; chrome: Drawn[] }
+type Frame = { scene: Scene; chrome: Drawn[]; arena: Arena }
 
 /**
  * Play a few seconds of a real sitting and draw one real frame.
@@ -173,7 +185,11 @@ type Frame = { scene: Scene; chrome: Drawn[] }
  * The hold is filled first, because an empty tile bar draws nothing and a test
  * that never renders the tiles is a test that cannot see them collide.
  */
-function frame(w: number, h: number, opts: { stalled: boolean; paused: boolean }): Frame {
+function frame(
+  w: number,
+  h: number,
+  opts: { stalled: boolean; paused: boolean; hintTaps?: number },
+): Frame {
   const seed = 0x1a771ce
   const host = createStubHost({ seed, reducedMotion: true })
   const { ctx, log, restores } = recorder()
@@ -188,16 +204,39 @@ function frame(w: number, h: number, opts: { stalled: boolean; paused: boolean }
   for (const body of arena.bodies.slice(0, 5)) arena.touch(body.id)
   assert.ok(arena.bank.size > 0, "the hold stayed empty, so the tile bar drew nothing")
 
+  // The factor tree is chrome too — every numeral and every `?` on it is
+  // something the child reads — so it has to be on screen when this measures.
+  // Asked for rather than waited for: the clock here is a literal `0`.
+  for (let i = 0; i < (opts.hintTaps ?? 0); i++) arena.askHint()
+
   scene.say("RESONANCE", "#f0d878")
-  scene.draw(arena, grid, { best: 12, paused: opts.paused, stalled: opts.stalled })
+  const state = {
+    best: 12,
+    paused: opts.paused,
+    stalled: opts.stalled,
+    hint: arena.hint(),
+  }
+  // Two frames, and the first one is thrown away: the tree schedules its own
+  // arrival on the frame it is first drawn, so a single frame would measure
+  // every node at a fifth of its size and prove nothing about where a
+  // full-sized numeral lands.
+  scene.draw(arena, grid, state)
+  scene.advance(900)
+  log.length = 0
+  restores.length = 0
+  scene.draw(arena, grid, state)
 
   // Everything after the LAST `restore()` is chrome: the world is drawn inside
   // one save/restore pair and the tile bar, the counters and the banner are
   // drawn after it. Bodies and the resonator's prompt are playfield — they
   // drift wherever the physics takes them, including under a corner, and that
   // is the point of `cover`.
-  const last = restores[restores.length - 1] ?? 0
-  return { scene, chrome: log.slice(last) }
+  //
+  // The hint tree draws inside its own save/restore, so the slice is taken from
+  // the restore that closes the WORLD — index 0 of what is left after the world
+  // is the first thing the chrome drew.
+  const last = restores[0] ?? 0
+  return { scene, chrome: log.slice(last), arena }
 }
 
 const inside = (box: Rect, area: Rect): boolean =>
@@ -216,6 +255,11 @@ for (const [name, w, h] of VIEWPORTS) {
           { stalled: false, paused: false },
           { stalled: true, paused: false },
           { stalled: false, paused: true },
+          // The silhouette, the partial, and the whole tree. Every `?` and
+          // every numeral on it is something the child has to read.
+          { stalled: false, paused: false, hintTaps: 1 },
+          { stalled: false, paused: false, hintTaps: 4 },
+          { stalled: false, paused: false, hintTaps: 6 },
         ]) {
           const { chrome } = frame(w, h, state)
           assert.ok(chrome.length > 0, "no chrome was drawn at all")
@@ -284,8 +328,226 @@ for (const [name, w, h] of VIEWPORTS) {
         )
       })
     })
+
+    test(`the hint control can be tapped and never drops the hold at ${name} (${w}×${h}), ${label}`, () => {
+      // Two failures this catches, and the second is the expensive one:
+      //
+      //   * a hint control under the host's exit chevron or under the home
+      //     indicator, which is a child who cannot ask for help at all; and
+      //   * a hint control OVERLAPPING the tile bar, which is a child who
+      //     reaches for help and instead throws away the hold they have spent a
+      //     minute assembling. That is the exact shape of "a hint costs
+      //     something", built out of geometry rather than out of rules.
+      withInsets(insets, () => {
+        const area = safeRect(w, h)
+        const { scene } = frame(w, h, { stalled: false, paused: false })
+        const { cx, cy, r } = hudLayout(w, area).hint
+
+        assert.ok(r * 2 >= 44, `the hint control is ${r * 2}px across, under the 44px minimum`)
+        assert.equal(scene.hitsHint(cx, cy), true, "the hint control is not where it says")
+        assert.ok(
+          inside({ x: cx - r, y: cy - r, w: r * 2, h: r * 2 }, area),
+          `the hint control is outside the safe area at ${w}×${h}`,
+        )
+        assert.equal(
+          hitsHostChrome({ x: cx - r, y: cy - r, w: r * 2, h: r * 2 }, w),
+          false,
+          "the hint control is under one of the host's corners",
+        )
+
+        // Nowhere the hint control answers may the tile bar answer too.
+        for (let i = 0; i <= 6; i++) {
+          for (let j = 0; j <= 6; j++) {
+            const x = cx - r + (r * 2 * i) / 6
+            const y = cy - r + (r * 2 * j) / 6
+            if (!scene.hitsHint(x, y)) continue
+            assert.equal(
+              scene.hitsTileBar(x, y),
+              false,
+              `asking for a hint at ${x},${y} would also drop the hold`,
+            )
+          }
+        }
+      })
+    })
   }
 }
+
+test("the tree has somewhere to be at every shape the fleet has", () => {
+  // A hint nobody can read is not a hint. `TREE_SHARE` set to zero, or a stack
+  // that put the tree box behind the counters, both leave the layout function
+  // returning a perfectly valid rectangle one pixel tall, and every other
+  // assertion in this file goes on passing — the numerals still land inside the
+  // safe area, because they are drawn inside a box that is not there.
+  //
+  // Three claims, in the order they would break: the box is big enough to read,
+  // it is inside the safe area, and it is stacked clear of the two things it
+  // sits on — the hint control and, under that, the tile bar.
+  for (const [name, w, h] of VIEWPORTS) {
+    for (const insets of [NO_INSETS, w > h ? LANDSCAPE_NOTCH : PORTRAIT_NOTCH]) {
+      withInsets(insets, () => {
+        const area = safeRect(w, h)
+        const l = hudLayout(w, area)
+        const box: Rect = l.tree
+
+        // 130 × 180 is the floor the widest and deepest tree in the band needs:
+        // `512 = 2⁹` is nine leaves over four rows, and at the renderer's minimum
+        // node radius of 9 that is 182px across and about 100px down. Anything
+        // under this and the worst case is drawn on top of itself.
+        assert.ok(box.h >= 130, `${name}: the tree gets ${box.h}px of height, which is not a tree`)
+        assert.ok(box.w >= 180, `${name}: the tree gets ${box.w}px of width`)
+        assert.ok(inside(box, area), `${name}: the tree box is outside the safe area`)
+
+        // The control sits BESIDE the tree at the bottom-left of its band, and
+        // the whole band sits on the tile bar. So the separation to check is
+        // horizontal for the control and vertical for the bar.
+        assert.ok(
+          box.x >= l.hint.cx + l.hint.r,
+          `${name}: the tree box runs over the hint control`,
+        )
+        assert.ok(
+          box.y + box.h <= l.bar.y - Math.max(22, l.bar.size) + 0.5,
+          `${name}: the tree hangs into the tile bar's tap zone`,
+        )
+        assert.ok(
+          l.hint.cy + Math.max(22, l.hint.r) <= l.bar.y - Math.max(22, l.bar.size) + 0.5,
+          `${name}: the hint control hangs into the tile bar's tap zone`,
+        )
+        // And it begins below the counters rather than through them.
+        assert.ok(box.y >= l.status.top + l.status.lineH * 2, `${name}: the tree covers the counters`)
+      })
+    }
+  }
+})
+
+test("on a pane too short for it, the tree gives way to the counters", () => {
+  // A Split View slice and a phone held sideways with the keyboard up are both
+  // real shapes, and on them the third-of-the-height cap is not what runs out
+  // first — the top of the screen is. So the tree has a ceiling as well as a
+  // share, and this is the shape that proves the ceiling is load-bearing rather
+  // than decorative: at 1024×320 it is the binding constraint, and without it
+  // the tree draws straight through OPENED and CHAIN.
+  for (const [w, h] of [
+    [1024, 320],
+    [1180, 300],
+    [900, 340],
+    [1180, 260],
+  ] as Array<[number, number]>) {
+    withInsets(NO_INSETS, () => {
+      const area = safeRect(w, h)
+      const l = hudLayout(w, area)
+      assert.ok(
+        l.tree.y >= l.status.top + l.status.lineH * 2,
+        `${w}×${h}: the tree draws through the counters (${l.tree.y} vs ${
+          l.status.top + l.status.lineH * 2
+        })`,
+      )
+      assert.ok(inside(l.tree, area), `${w}×${h}: the tree box left the safe area`)
+    })
+  }
+})
+
+test("and on a pane too short for even that, it still does not turn upside down", () => {
+  // Below about 340px of safe height there is no arrangement that fits: the
+  // counters and the tile bar meet in the middle. The floor then wins over the
+  // ceiling and the tree overlaps the counters, which is ugly and legible.
+  //
+  // What it must NOT do is what it did before the floor existed. `scene.ts`
+  // computes `rowStep = (box.h − 2r) / (rows − 1)` with `r` floored at 9, so a
+  // box under 18px tall gives a NEGATIVE row step — the root draws at the bottom
+  // and the leaves climb above it, through the counters, through the host's exit
+  // chevron, upside down. At 1024×200 the old layout returned a box exactly one
+  // pixel tall.
+  //
+  // The control has a floor of its own for the same reason: on these shapes the
+  // tile bar climbs high enough that its row lands under the host's 44px corner,
+  // and a hint control the host owns the pixels of is not a hint control.
+  for (const [w, h] of [
+    [1024, 200],
+    [800, 240],
+    [1024, 180],
+  ] as Array<[number, number]>) {
+    for (const insets of [NO_INSETS, PORTRAIT_NOTCH]) {
+      withInsets(insets, () => {
+        const area = safeRect(w, h)
+        const l = hudLayout(w, area)
+        // 18px is where `rowStep` changes sign. Anything at or above it lays out
+        // tight rather than inverted, because `usedH` works out to exactly the
+        // box height for any box the renderer will accept.
+        // The floor holds unless the safe area itself is the binding constraint,
+        // and staying on the canvas wins when the two disagree. `scene.ts` clamps
+        // the row step at zero for exactly that residue, and the test below
+        // proves through the real renderer that the tree still comes out the
+        // right way up.
+        assert.ok(
+          l.tree.h >= 24 || l.tree.y === area.y,
+          `${w}×${h}: the tree box is ${l.tree.h}px tall and nothing was pinning it`,
+        )
+        // And it stays ON the canvas. The first version of this floor pushed the
+        // box to y = −4 here and the root row drew off the top of the screen —
+        // which the old assertion, `w > 0 && x >= 0`, could not see and could not
+        // fail: `hudLayout` returns `Math.max(1, …)` for the width and a sum of
+        // non-negative terms for the left edge.
+        assert.ok(
+          inside(l.tree, area),
+          `${w}×${h}: the tree box is off the screen: ${JSON.stringify(l.tree)} vs ${JSON.stringify(area)}`,
+        )
+        assert.equal(
+          hitsHostChrome({ x: l.hint.cx - l.hint.r, y: l.hint.cy - l.hint.r, w: l.hint.r * 2, h: l.hint.r * 2 }, w),
+          false,
+          `${w}×${h}: the hint control rode up under one of the host's corners`,
+        )
+      })
+    }
+  }
+})
+
+test("the tree is drawn the right way up, even where there is no room for it", () => {
+  // The layout can no longer hand the renderer a box that would invert — but
+  // "cannot" is a claim about two files agreeing, and the whole reason this
+  // suite exists is that `Scene.draw` once did not consult the layout at all.
+  //
+  // So this asks the REAL renderer, at the shapes where the box is thinnest:
+  // is the root numeral above the leaves? `rowStep` unclamped goes negative on
+  // a box under 18px and lays the tree out bottom-up, root under leaves,
+  // climbing through the counters.
+  // Note what this can and cannot reach: `Scene.resize` floors the canvas at
+  // 320×320 however small the element measures, so the renderer never sees the
+  // sub-300px safe areas the layout test above exercises. The orientation check
+  // is therefore about the shapes that actually ship; the layout is held to the
+  // stricter bar on its own, one test up.
+  for (const [w, h, insets] of [
+    [1024, 320, PORTRAIT_NOTCH],
+    [844, 390, LANDSCAPE_NOTCH],
+    [1024, 320, NO_INSETS],
+    [320, 568, NO_INSETS],
+    [390, 844, NO_INSETS],
+  ] as Array<[number, number, Insets]>) {
+    withInsets(insets, () => {
+      const { chrome, arena } = frame(w, h, { stalled: false, paused: false, hintTaps: 6 })
+      const res = arena.resonator
+      assert.ok(res, `${w}×${h}: nothing was armed`)
+      const hint = arena.hint()
+      assert.ok(hint, `${w}×${h}: six taps produced no tree`)
+
+      // The root numeral is the target, and at the last stage it is drawn. Every
+      // other node is a proper divisor of it, so nothing else on the tree can
+      // carry the same string.
+      const root = chrome.find((d) => d.text === String(res.target))
+      assert.ok(root, `${w}×${h}: the root of the tree was never drawn`)
+
+      const leaves = hint.placed.leaves.map((i) => String(hint.placed.nodes[i]!.value))
+      const drawnLeaves = chrome.filter((d) => leaves.includes(d.text))
+      assert.ok(drawnLeaves.length > 0, `${w}×${h}: no leaf of the tree was drawn`)
+      for (const leaf of drawnLeaves) {
+        assert.ok(
+          root.box.y <= leaf.box.y,
+          `${w}×${h}: the tree is upside down — the root ${res.target} is at y=${root.box.y}, below its leaf ${leaf.text} at y=${leaf.box.y}`,
+        )
+      }
+    })
+  }
+})
 
 test("the layout consumes the insets it is given", () => {
   // The safe rectangle is the whole contract with the notch, and `hudLayout`

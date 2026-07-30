@@ -35,6 +35,35 @@ const CORNER_GAP = 8
 /** The counters' inset from the safe edge, left and right. */
 const SIDE = 14
 
+/** Breathing room between the tile bar, the hint control and the tree above it. */
+const HINT_GAP = 8
+
+/**
+ * How much of the safe height the factor tree may take.
+ *
+ * A third and a bit. Enough for the four rows a three-digit target's tree needs
+ * and not so much that a child who asked for a hint cannot see the husk they
+ * were about to shoot.
+ */
+const TREE_SHARE = 0.36
+
+/**
+ * The least height the tree may be given, whatever else is competing for it.
+ *
+ * **This is a correctness floor and not a legibility one**, and the difference
+ * matters because the first attempt confused them. `scene.ts` lays the rows out
+ * as `rowStep = (h − 2r) / (rows − 1)` with `r` floored at 9, so `usedH` comes to
+ * exactly `h` for any `h ≥ 18` — a squashed tree is *tight*, not broken. Under
+ * 18 the step goes negative and the tree draws upside down.
+ *
+ * So the floor is 24, with margin, and everything above it is left to the
+ * ceiling. A floor set at what the deepest tree wants to be READ at — 96, which
+ * is what `512 = 2⁹` needs for five rows at nine pixels — wins against the
+ * ceiling on any pane under about 340px of safe height and draws the tree
+ * straight through OPENED and CHAIN. Two unreadable things beats one.
+ */
+const TREE_MIN_H = 24
+
 export type HudLayout = {
   /** `OPENED` / `CHAIN` on the left, `BEST` on the right, the stall notice centred. */
   readonly status: {
@@ -59,6 +88,28 @@ export type HudLayout = {
   readonly banner: { readonly cx: number; readonly cy: number }
   /** The word under the host's sheet. */
   readonly sheet: { readonly cx: number; readonly cy: number }
+  /**
+   * The box the factor-tree hint may grow into: standing on the hint control,
+   * which stands on the tile bar, all of it inside the safe area.
+   *
+   * **The bottom of the arena, and that is not an accident.** `Arena.arm` seeds
+   * every husk and mote with `y` between the top edge and `0.62 · height`, so
+   * the lower third is the emptiest part of the field — the one band a panel
+   * can occupy without hiding the thing the child is trying to shoot. It is
+   * also where their eyes already are, because the tile bar is there and the
+   * tree's leaves are exactly what the bar is about to fill up with.
+   */
+  readonly tree: { readonly x: number; readonly y: number; readonly w: number; readonly h: number }
+  /**
+   * The control that asks for the next piece of the tree.
+   *
+   * A circle, at least 44px across, at the left edge of the safe area on its own
+   * row above the tile bar — clear of the bar's own tap target, which drops the
+   * hold and must not be hit by a child reaching for help. It carries a drawn
+   * branch rather than a word: it is a control a five-year-old meets before they
+   * can read, in a pack that ships in about fifty languages.
+   */
+  readonly hint: { readonly cx: number; readonly cy: number; readonly r: number }
 }
 
 /**
@@ -83,6 +134,53 @@ export function hudLayout(w: number, area: Rect): HudLayout {
   const size = Math.max(12, Math.min(17, w / 46))
   const barSize = Math.max(26, Math.min(40, area.w / 16))
 
+  // The tile bar's own row, and the top of the 44px zone that drops the hold.
+  const barY = area.y + area.h - barSize * 1.5
+  const barTop = barY - Math.max(22, barSize)
+
+  // The hint control sits at the bottom-left of the tree's own band, clear of
+  // the tile bar's 44px tap zone — a child reaching for help must never dump the
+  // hold they have spent a minute assembling — and BESIDE the tree rather than
+  // under it.
+  //
+  // Beside, because a phone held sideways is 390px tall and the host takes the
+  // top hundred of it. Stacking the control on its own row spent sixty of the
+  // remaining hundred and forty and left the tree fifty-nine pixels to draw four
+  // rows in, which is a hint nobody can read. Landscape has width and no height,
+  // so the control is paid for out of the width: the tree keeps a matching
+  // gutter on its right, which also keeps it centred.
+  const hintR = Math.max(22, Math.min(26, area.w / 14))
+  const treeBottom = barTop - HINT_GAP
+  // Never above the host's two corner controls. On a pane a couple of hundred
+  // pixels tall the tile bar climbs high enough that the control's own row lands
+  // underneath the host's exit chevron, and a hint control a child cannot press
+  // because the host owns those pixels is a hint control that is not there.
+  const hintCy = Math.max(cornerBottom + hintR, treeBottom - hintR)
+  const hintCx = area.x + SIDE + hintR
+  const gutter = hintR * 2 + HINT_GAP
+
+  // Capped at just over a third of the safe height so the arena is still an
+  // arena, and floored below the counters so it never draws through them.
+  //
+  // TWO counter rows reserved and not three. The third row is the stall notice,
+  // and a stall is by definition an arena with no resonator on it — so there is
+  // no question, no tree and nothing to reserve for. Reserving it anyway cost
+  // the tree twenty-five pixels it does not have on a phone held sideways.
+  const treeCeiling = cornerBottom + size * 1.5 * 2
+  // Three constraints, in the order they win.
+  //
+  //   * **Never above the safe area.** On a 1024×200 slice the floor below used
+  //     to push `treeTop` to −4 and the root row drew off the top of the canvas.
+  //   * **Then the floor**, which only exists so the row step cannot go negative
+  //     and draw the tree upside down. See `TREE_MIN_H`: it is 24, not 96.
+  //   * **Then the ceiling and the share.** The ceiling keeps the tree off the
+  //     counters and it wins wherever there is any room at all, which is every
+  //     pane above about 260px of safe height.
+  const treeTop = Math.max(
+    area.y,
+    Math.min(treeBottom - TREE_MIN_H, Math.max(treeCeiling, treeBottom - area.h * TREE_SHARE)),
+  )
+
   return {
     status: {
       size,
@@ -98,10 +196,17 @@ export function hudLayout(w: number, area: Rect): HudLayout {
       dotW: barSize * 0.5,
       // Standing on the floor of the safe area rather than the floor of the
       // canvas: on a phone the floor of the canvas is the home indicator.
-      y: area.y + area.h - barSize * 1.5,
+      y: barY,
       cx: area.x + area.w / 2,
     },
     banner: { cx: area.x + area.w / 2, cy: area.y + area.h * 0.46 },
     sheet: { cx: area.x + area.w / 2, cy: area.y + area.h / 2 },
+    tree: {
+      x: area.x + SIDE + gutter,
+      y: treeTop,
+      w: Math.max(1, area.w - (SIDE + gutter) * 2),
+      h: Math.max(1, treeBottom - treeTop),
+    },
+    hint: { cx: hintCx, cy: hintCy, r: hintR },
   }
 }

@@ -17,6 +17,8 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { mount } from "../contract.ts"
+import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
+import { hudLayout } from "../render/hud.ts"
 import { createStubHost } from "../stubHost.ts"
 
 type Listener = (event: unknown) => void
@@ -420,4 +422,251 @@ test("a pause that arrives while a thumb is down does not fly the ship on", () =
     assert.equal(reports.length, said, "an answer was reported across the sheet")
     handle.unmount()
   })
+})
+
+test("the shell is wired to the hint: a tap unfolds the tree, and so does the quiet", () => {
+  // The bug this file already carries a scar from, in a new place. `Arena.enter`
+  // was asserted to death in the rules tests and NEVER CALLED BY THE SHELL, and
+  // the whole reasoning layer was unreachable in the shipped game while every
+  // test was green. `askHint`, `unfold` and `Arena.hint` are three more calls
+  // that live entirely in the shell, and every assertion about them in
+  // `hint.test.ts` would pass with all three unwired — a hint system a child
+  // could never see, in a game whose whole problem is getting stuck.
+  //
+  // So this drives the REAL shell: the real pointer handler, the real loop, the
+  // real renderer, and asks whether a `?` ever reached the canvas.
+  const realNow = Date.now
+  const savedPerformance = Object.getOwnPropertyDescriptor(globalThis, "performance")
+  Date.now = () => 1_700_000_000_000
+  // The hint's quiet is measured against the wall clock the shell reads, so the
+  // wall clock has to be one this test owns. Nothing else in the loop uses it.
+  let wall = 0
+  Object.defineProperty(globalThis, "performance", {
+    configurable: true,
+    writable: true,
+    value: { now: () => wall },
+  })
+  try {
+    const counter = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, counter, ({ host, frames, created }) => {
+      const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      assert.ok(down, "the pointer listener was not installed")
+
+      let t = pump(frames, 8)
+      counter.text.length = 0
+      t = pump(frames, 2, t)
+      assert.equal(
+        counter.text.includes("?"),
+        false,
+        "the factor tree was on screen before anybody asked for it and before any quiet",
+      )
+
+      // A tap on the control, where `hudLayout` says it is. Down AND up: the
+      // control fires on release, so that a thumb coming to rest at the
+      // bottom-left of the screen — which is where the movement stick lives —
+      // does not ask for a hint nobody wanted.
+      const up = canvas.listeners.get("pointerup")?.[0]
+      assert.ok(up, "the release listener was not installed")
+      const { cx, cy } = hudLayout(900, safeRect(900, 700)).hint
+      down({ preventDefault() {}, pointerId: 9, pointerType: "touch", clientX: cx, clientY: cy })
+      wall += 16.7
+      t = pump(frames, 1, t)
+      up({ pointerId: 9, pointerType: "touch", clientX: cx, clientY: cy })
+      counter.text.length = 0
+      t = pump(frames, 3, t)
+      assert.ok(
+        counter.text.includes("?"),
+        "tapping the hint control drew no tree at all — the control is not wired to the arena",
+      )
+
+      handle.unmount()
+    })
+
+    // A thumb that lands on the control and then flies the ship is a child
+    // reaching for the stick, not a child asking for anything. This is the exact
+    // gesture that broke the first cut: the control sits at the bottom-left of
+    // the safe area, which is where a left thumb comes to rest, and firing on
+    // pointer-DOWN meant that settling your hand there BOTH unfolded a tree
+    // nobody wanted AND swallowed the touch, so the ship would not move.
+    const rest = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, rest, ({ host, frames, created }) => {
+      wall = 0
+      const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      const move = canvas.listeners.get("pointermove")?.[0]
+      const up = canvas.listeners.get("pointerup")?.[0]
+      assert.ok(down && move && up)
+
+      let t = pump(frames, 8)
+      const { cx, cy } = hudLayout(900, safeRect(900, 700)).hint
+
+      // Thumb down on the control, then slid up and to the right to fly.
+      down({ preventDefault() {}, pointerId: 3, pointerType: "touch", clientX: cx, clientY: cy })
+      rest.text.length = 0
+      for (let i = 0; i < 40; i++) {
+        move({ pointerId: 3, pointerType: "touch", clientX: cx + 4 + i * 2, clientY: cy - i * 2 })
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      up({ pointerId: 3, pointerType: "touch", clientX: cx + 84, clientY: cy - 80 })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "resting a thumb on the control and then flying asked for a hint nobody wanted",
+      )
+
+      // And a thumb that lands on the control, sweeps out to fly, and comes
+      // back to where it started — which is what a stick held in a circle does
+      // every revolution. It ends up inside the control and it was never a tap.
+      down({ preventDefault() {}, pointerId: 5, pointerType: "touch", clientX: cx, clientY: cy })
+      // Deliberately inside `HINT_TAP_MS`, so that the only thing that can catch
+      // this gesture is the travel flag and not the duration.
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * Math.PI * 2
+        move({
+          pointerId: 5,
+          pointerType: "touch",
+          clientX: cx + Math.sin(a) * 70,
+          clientY: cy - 70 + Math.cos(a) * 70,
+        })
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      up({ pointerId: 5, pointerType: "touch", clientX: cx, clientY: cy })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "a stick swept in a circle back to where it started asked for a hint",
+      )
+
+      // A gesture the PLATFORM took away is not a tap.
+      //
+      // `pointercancel` is WKWebView saying the touch is no longer the child's —
+      // an edge drag, a palm rejected, a system gesture claiming it — and it
+      // arrives with the last known coordinates, so it satisfies every test a
+      // real tap satisfies. Routed into the release handler, which is where it
+      // used to go, a thumb that landed on the control and was cancelled 200ms
+      // later unfolded a stage. That is not a small leak: the clock deliberately
+      // stops one stage short of the reveal, so on a question the child has been
+      // sitting with, the phantom stage IS the one that states the answer.
+      const cancel = canvas.listeners.get("pointercancel")?.[0]
+      assert.ok(cancel, "the cancel listener was not installed")
+      down({ preventDefault() {}, pointerId: 6, pointerType: "touch", clientX: cx, clientY: cy })
+      wall += 200
+      t = pump(frames, 3, t)
+      cancel({ pointerId: 6, pointerType: "touch", clientX: cx, clientY: cy })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "a touch the platform cancelled asked for a hint the child never did",
+      )
+
+      // A thumb that lands there and simply STAYS is not a tap either.
+      down({ preventDefault() {}, pointerId: 4, pointerType: "touch", clientX: cx, clientY: cy })
+      for (let i = 0; i < 60; i++) {
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      up({ pointerId: 4, pointerType: "touch", clientX: cx, clientY: cy })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "a thumb resting on the control for a second asked for a hint",
+      )
+      handle.unmount()
+    })
+
+    // And the same thing again with nobody touching anything, on the clock.
+    const quiet = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, quiet, ({ host, frames, created }) => {
+      wall = 0
+      const felt: string[] = []
+      const stub = createStubHost({
+        seed: 0x1a771ce,
+        reducedMotion: true,
+        onHaptic: (k) => felt.push(k),
+      })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      assert.ok(canvasOf(created))
+      let t = pump(frames, 8)
+      quiet.text.length = 0
+      t = pump(frames, 4, t)
+      assert.equal(quiet.text.includes("?"), false, "a hint arrived in the first fifth of a second")
+
+      // Two minutes of a child sitting there, which is what "stuck" looks like.
+      // The hint's clock is PLAYED time now, accumulated in `Arena.step` off the
+      // frame delta, so this has to be real frames — which is also the point:
+      // `wall` moving on its own can no longer unfold anything.
+      for (let i = 0; i < 8000 && !quiet.text.includes("?"); i++) {
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      assert.ok(
+        quiet.text.includes("?"),
+        "two minutes with the question and the game never offered a thing",
+      )
+      // And it ARRIVED rather than merely appearing. Nobody touched anything for
+      // two minutes, so the only thing that can have made the hand buzz is the
+      // hint event reaching the shell — which is the sound, the ripple under the
+      // ring, and the reason a child looks down at all. Drawn without it, the
+      // tree fades in silently at the bottom of the screen while the child is
+      // watching a husk at the top.
+      assert.deepEqual(felt, ["light"], `the hint never announced itself: ${felt.join(",")}`)
+      handle.unmount()
+    })
+
+    // And on a keyboard, where the child has no thumb to put on the control.
+    // Tablet and desktop are equal targets in this pack, and `H` is the only way
+    // in on one of them.
+    const keys = { calls: 0, text: [] as string[] }
+    const savedAdd = Object.getOwnPropertyDescriptor(globalThis, "addEventListener")
+    const handlers = new Map<string, Array<(e: unknown) => void>>()
+    Object.defineProperty(globalThis, "addEventListener", {
+      configurable: true,
+      writable: true,
+      value: (type: string, fn: (e: unknown) => void) => {
+        handlers.set(type, [...(handlers.get(type) ?? []), fn])
+      },
+    })
+    try {
+      withBrowser({ w: 900, h: 700 }, keys, ({ host, frames, created }) => {
+        wall = 0
+        const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+        const handle = mount(host as unknown as HTMLElement, stub)
+        assert.ok(canvasOf(created))
+        let t = pump(frames, 8)
+        keys.text.length = 0
+        t = pump(frames, 2, t)
+        assert.equal(keys.text.includes("?"), false, "a tree was up before the key was pressed")
+
+        // Every keydown listener on the window, because the shared how-to-play
+        // chrome installs one of its own before this pack installs the arena's
+        // and a real key press reaches both.
+        const keyDowns = handlers.get("keydown") ?? []
+        assert.ok(keyDowns.length > 0, "the keyboard listener was not installed")
+        for (const fn of keyDowns) fn({ key: "h", repeat: false, preventDefault() {} })
+        // A key has no release to wait for; `H` fires on the press.
+        keys.text.length = 0
+        t = pump(frames, 3, t)
+        assert.ok(keys.text.includes("?"), "pressing H drew no tree — the key is not wired")
+        handle.unmount()
+      })
+    } finally {
+      if (savedAdd) Object.defineProperty(globalThis, "addEventListener", savedAdd)
+      else Reflect.deleteProperty(globalThis, "addEventListener")
+    }
+  } finally {
+    Date.now = realNow
+    if (savedPerformance) Object.defineProperty(globalThis, "performance", savedPerformance)
+    else Reflect.deleteProperty(globalThis, "performance")
+  }
 })

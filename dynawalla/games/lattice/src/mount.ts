@@ -49,6 +49,17 @@ const MAX_STEP_MS = 120
 /** Grid density. Chosen so a tablet draws about 1,100 struts, not 10,000. */
 const GRID_CELL = 46
 
+/**
+ * What separates a tap on the hint control from a thumb landing on the stick.
+ *
+ * Ten pixels and four hundred milliseconds. A deliberate press of a 44px control
+ * is well inside both; a thumb settling at the bottom-left and then sliding to
+ * fly is outside one or the other every time, and a thumb that just *rests*
+ * there is outside the second one.
+ */
+const HINT_TAP_SLOP = 10
+const HINT_TAP_MS = 400
+
 type Stick = { id: number; ox: number; oy: number; x: number; y: number } | null
 
 export function mountLattice(
@@ -123,6 +134,15 @@ export function mountLattice(
         ],
       },
       {
+        heading: "The little tree button",
+        lines: [
+          "Above the bar on the left there is a round button with a tiny tree on it. Press it any time you like.",
+          "A factor tree grows above the bar. At first every number on it is hidden. Press again and one of them shows, then another, then all of them.",
+          "The glowing ones at the bottom of the tree are exactly the pieces to collect. If you wait a while, the tree starts showing itself.",
+          "It costs nothing. Use it as much as you want. On a keyboard, press H.",
+        ],
+      },
+      {
         heading: "If the ring says NOT YET",
         lines: [
           "Your pieces multiply to the wrong number. One extra 5 turns 72 into 360.",
@@ -159,6 +179,16 @@ export function mountLattice(
 
   let moveStick: Stick = null
   let aimStick: Stick = null
+  /**
+   * A press that landed on the hint control and has not been released yet.
+   *
+   * `strayed` is set the moment the pointer leaves the slop radius and is never
+   * cleared, which is the difference between measuring the PATH and measuring
+   * the endpoints. A thumb swept round a circle and back to where it started has
+   * a zero endpoint distance — and that is exactly what a stick held in a circle
+   * does every single revolution.
+   */
+  let hintPress: { id: number; x: number; y: number; at: number; strayed: boolean } | null = null
   const keys = new Set<string>()
 
   function now(): number {
@@ -229,6 +259,21 @@ export function mountLattice(
           grid.impulse(event.at.x, event.at.y, 260, 5)
           break
         }
+        case "hint": {
+          // Warm and small. No banner and no word — a hint that announced itself
+          // in language would be the game telling a child, in front of them, that
+          // it had noticed they were struggling. The sheet stirs under the ring
+          // the help is coming from, two notes rise, and the tree is there.
+          //
+          // The tick is `light`, the same one a mote gives when it is swept, and
+          // it is not decoration: an automatic hint arrives while a child is
+          // looking somewhere else in the arena, and a tree that fades in
+          // unnoticed at the bottom of the screen has helped nobody.
+          grid.impulse(event.at.x, event.at.y, 150, 3)
+          audio.hint(event.stage)
+          host.haptic("light")
+          break
+        }
         case "stalled": {
           console.error("[lattice] no askable target; the arena is running without a resonator")
           break
@@ -267,6 +312,7 @@ export function mountLattice(
   const dropSticks = (): void => {
     moveStick = null
     aimStick = null
+    hintPress = null
     firing = false
     mouseDown = false
     keys.clear()
@@ -313,10 +359,16 @@ export function mountLattice(
       // future: it asks again a few seconds later, and this is the only place
       // that clock is read. Inert whenever there is a resonator.
       apply(arena.rearm(now()))
+      // Has the hint moved on its own? The stage is derived rather than timed,
+      // so this is only an edge detector for the sound and the ripple — the
+      // tree would be drawn identically whether or not this line existed. It is
+      // inside the `held` guard because a hint must not unfold behind a sheet: a
+      // child comes back to the tree they left, not to two more stages of it.
+      apply(arena.unfold())
       grid.step(dt)
       scene.advance(dt)
     }
-    scene.draw(arena, grid, { best, paused, stalled: arena.stalled })
+    scene.draw(arena, grid, { best, paused, stalled: arena.stalled, hint: arena.hint() })
   }
 
   // ── pointers ─────────────────────────────────────────────────────────────
@@ -331,6 +383,22 @@ export function mountLattice(
     if (paused || guide.isOpen) return
     audio.resume()
     const p = at(event)
+
+    // Asking for the next piece of the factor tree.
+    //
+    // **A press here is remembered, not acted on**, and the thumb goes on to
+    // drive the movement stick as if the control were not there. The first cut
+    // fired on pointer-DOWN and swallowed the touch, and the control sits at the
+    // bottom-left of the safe area — which on a phone is exactly where a left
+    // thumb comes to rest. A child settling their hand there got a tree they had
+    // not asked for AND a ship that would not move, from the same touch.
+    //
+    // So it fires on release, and only for a press that was a press: it must
+    // come up inside the control, must not have travelled, and must not have
+    // been held. Anything else was the child reaching for the stick.
+    if (scene.hitsHint(p.x, p.y)) {
+      hintPress = { id: event.pointerId, x: p.x, y: p.y, at: now(), strayed: false }
+    }
 
     // Tapping your own hold lets it go. The bank is exact, so a child who swept
     // a stray 5 needs a way out that is not "start again" — and nothing is
@@ -363,6 +431,10 @@ export function mountLattice(
   const move = (event: PointerEvent): void => {
     if (paused || guide.isOpen) return
     const p = at(event)
+    if (hintPress && hintPress.id === event.pointerId && !hintPress.strayed) {
+      const travelled = Math.hypot(p.x - hintPress.x, p.y - hintPress.y)
+      if (travelled > HINT_TAP_SLOP) hintPress.strayed = true
+    }
     if (moveStick && moveStick.id === event.pointerId) {
       moveStick.x = p.x
       moveStick.y = p.y
@@ -387,7 +459,39 @@ export function mountLattice(
     }
   }
 
+  /**
+   * A gesture taken away rather than finished.
+   *
+   * `pointercancel` is the platform saying the touch is no longer the child's —
+   * an edge drag, a palm rejected, a system gesture claiming it — and it arrives
+   * carrying the last known coordinates, so it satisfies every test a real tap
+   * satisfies. Routed into `up` (which is what it was), a thumb that landed on
+   * the control and was then cancelled 200ms later unfolded a stage.
+   *
+   * That is not a small leak. The clock stops one stage short of the reveal, so
+   * on a question the child has been sitting with, the phantom stage IS the one
+   * that states the answer — an abandoned gesture crossing the exact line the
+   * whole design says only a deliberate tap may cross.
+   */
+  const cancel = (event: PointerEvent): void => {
+    hintPress = null
+    up(event)
+  }
+
   const up = (event: PointerEvent): void => {
+    if (hintPress && hintPress.id === event.pointerId) {
+      const press = hintPress
+      hintPress = null
+      const p = at(event)
+      const still = !press.strayed && Math.hypot(p.x - press.x, p.y - press.y) <= HINT_TAP_SLOP
+      const quick = now() - press.at <= HINT_TAP_MS
+      if (still && quick && scene.hitsHint(p.x, p.y)) {
+        // The touch was a tap on the control. It also created a movement stick
+        // on the way in, which is let go below like any other — a stick the
+        // child never moved has already been steering nothing.
+        apply(arena.askHint())
+      }
+    }
     if (event.pointerType === "mouse") mouseDown = false
     if (moveStick && moveStick.id === event.pointerId) {
       moveStick = null
@@ -412,6 +516,7 @@ export function mountLattice(
       audio.resume()
     }
     if (event.key === "Escape") apply(arena.vent())
+    if (event.key === "h" || event.key === "H") apply(arena.askHint())
     if (event.key.startsWith("Arrow")) event.preventDefault()
   }
 
@@ -428,7 +533,7 @@ export function mountLattice(
   canvas.addEventListener("pointerdown", down)
   canvas.addEventListener("pointermove", move)
   canvas.addEventListener("pointerup", up)
-  canvas.addEventListener("pointercancel", up)
+  canvas.addEventListener("pointercancel", cancel)
   globalThis.addEventListener("keydown", keyDown)
   globalThis.addEventListener("keyup", keyUp)
   globalThis.addEventListener("resize", resize)
@@ -468,7 +573,7 @@ export function mountLattice(
       canvas.removeEventListener("pointerdown", down)
       canvas.removeEventListener("pointermove", move)
       canvas.removeEventListener("pointerup", up)
-      canvas.removeEventListener("pointercancel", up)
+      canvas.removeEventListener("pointercancel", cancel)
       globalThis.removeEventListener("keydown", keyDown)
       globalThis.removeEventListener("keyup", keyUp)
       globalThis.removeEventListener("resize", resize)

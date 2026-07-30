@@ -16,12 +16,15 @@ export type Rig = {
   host: Host
   arena: Arena
   reports: Report[]
+  /** Question ids the pack closed without an outcome. See `Host.skip`. */
+  skips: string[]
   transitions: Array<{ kind: string; label?: string }>
   haptics: string[]
 }
 
 export function rig(seed = 0x1a771ce, opts: { difficulty?: number } = {}): Rig {
   const reports: Report[] = []
+  const skips: string[] = []
   const transitions: Array<{ kind: string; label?: string }> = []
   const haptics: string[] = []
   const host = createStubHost({
@@ -29,13 +32,14 @@ export function rig(seed = 0x1a771ce, opts: { difficulty?: number } = {}): Rig {
     reducedMotion: true,
     ...(opts.difficulty === undefined ? {} : { difficulty: opts.difficulty }),
     onReport: (r) => reports.push(r),
+    onSkip: (id) => skips.push(id),
     onHaptic: (k) => haptics.push(k),
     onTransition: (kind, label) =>
       transitions.push(label === undefined ? { kind } : { kind, label }),
   })
   const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: 900, height: 700 })
   arena.begin(0)
-  return { host, arena, reports, transitions, haptics }
+  return { host, arena, reports, skips, transitions, haptics }
 }
 
 /**
