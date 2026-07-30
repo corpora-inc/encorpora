@@ -249,11 +249,16 @@ export class Ladder {
   }
 
   /**
-   * An arming succeeded at `difficulty`. The position moves there.
+   * An arming succeeded, and `difficulty` is where the question it used *came
+   * from* — the rung the host reported serving, never the rung that was asked
+   * for. The position moves there.
    *
    * This is what makes `FLOOR` and `CEILING` a hint rather than a dependency: a
    * position sitting on a barren rung is corrected by the first arming that
-   * finds a live one, and it stays corrected.
+   * finds a live one, and it stays corrected. It only works on the served rung:
+   * `host.next` answers with the pooled question *closest* to a request, so
+   * landing on the request would move the position onto content the child never
+   * saw. See the note at the call site in `arena.arm`.
    */
   landed(difficulty: number): void {
     this.position = clampToBand(difficulty)
