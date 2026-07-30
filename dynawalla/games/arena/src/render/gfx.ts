@@ -313,7 +313,9 @@ export class Gfx {
     const res = world.resonance
     // The hush has to land almost instantly. A 0.4s ramp meant the frame in
     // which the question appears was still the loudest frame in the game.
-    const calm = res.active ? Math.min(1, res.t * 6) * (res.phase >= 3 ? Math.max(0, 1 - (res.t - res.duration) * 2.6) : 1) : 0
+    // `res.resolveT` and not `res.t - res.duration`: the beat no longer has a
+    // duration to be relative to, and the resolve carries its own clock from zero.
+    const calm = res.active ? Math.min(1, res.t * 6) * (res.phase >= 3 ? Math.max(0, 1 - res.resolveT * 2.6) : 1) : 0
 
     // --- cull bounds ------------------------------------------------------
     const halfH = span * 0.5

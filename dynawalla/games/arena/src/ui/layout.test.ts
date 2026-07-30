@@ -16,9 +16,20 @@
 
 import assert from "node:assert/strict"
 import { test } from "node:test"
+import { readFileSync } from "node:fs"
 
 import { hitsHostChrome, type Insets } from "../../../../packs/shared/game-chrome/index.ts"
-import { BOARD_W, DEPTH_W, HUD_EDGE, HUD_TOP, RIBBON_H, hudRects, soundRect } from "./hud.ts"
+import {
+  BOARD_W,
+  DEPTH_W,
+  HUD_EDGE,
+  HUD_TOP,
+  KICKER_PAPER,
+  Q_EDGE,
+  RIBBON_H,
+  hudRects,
+  soundRect,
+} from "./hud.ts"
 
 const NONE: Insets = { top: 0, right: 0, bottom: 0, left: 0 }
 
@@ -148,4 +159,62 @@ test("the ribbon is centred, and stays centred inside an asymmetric notch", () =
   const leftGap = r.x - NOTCH_LANDSCAPE.left
   const rightGap = w - NOTCH_LANDSCAPE.right - (r.x + r.w)
   assert.ok(Math.abs(leftGap - rightGap) < 1, `the ribbon is off-centre by ${Math.abs(leftGap - rightGap)}px`)
+})
+
+/**
+ * THE PAPER INVITATION, as a label rather than as a paragraph.
+ *
+ * The founder asked the game to "invite the kid to take out a piece of paper and
+ * work it out for 10 minutes for the points". What ships is four words in the
+ * kicker slot that already existed above the prompt — `NO TIMER · USE PAPER` in
+ * place of `RESONANCE` — on questions the cadence table puts at a 40-second p90
+ * and on no others.
+ *
+ * Two things are worth pinning and one is not. **Not** an exact pixel width: the
+ * kicker's advance depends on the atlas font's real metrics, which are measured
+ * from a live canvas at runtime and cannot be had in Node. A fixture guessed 15%
+ * narrow elsewhere in this fleet passed a test while the device clipped, so the
+ * bound below is a genuine upper bound rather than an estimate, and the note about
+ * wrapping is why being wrong here is survivable rather than a defect.
+ */
+test("the paper invitation is wired to the item's class, and fits the narrowest phone", () => {
+  // 1. It is not dead copy: the render path chooses between the two by asking
+  //    `invitesPaper`, which `sim/window.test.ts` pins to the 40-second row.
+  const src = readFileSync(new URL("./hud.ts", import.meta.url), "utf8")
+  assert.ok(
+    /invitesPaper\(/.test(src) && src.includes("KICKER_PAPER") && src.includes("KICKER_DEFAULT"),
+    "the HUD no longer chooses its kicker from the item's class",
+  )
+  // Set exactly once, in the same branch as the prompt — never on a timer and
+  // never per frame, so it cannot become status narration that reflows while a
+  // child is reading.
+  assert.equal(
+    (src.match(/this\.qKicker\.textContent =/g) ?? []).length,
+    2,
+    "the kicker is assigned somewhere other than its construction and the one per-question branch",
+  )
+
+  // 2. It fits. `.k` is `clamp(9px, 2.1vw, 12px)` at `.42em` tracking, inside
+  //    `.arena-q`, which is pinned `Q_EDGE` from both safe edges.
+  //
+  //    An uppercase glyph in a heavy sans is at most 0.58em wide, so 0.58 + 0.42
+  //    of tracking is at most 1.0em per character — an upper bound, not a
+  //    measurement. The `·` and the spaces are narrower than that and are counted
+  //    at the same rate, which only makes the bound looser.
+  const WORST_ADVANCE_EM = 1.0
+  for (const [name, w, h] of VIEWPORTS) {
+    const insets = w > h ? NOTCH_LANDSCAPE : NOTCH_PORTRAIT
+    const fontPx = Math.min(12, Math.max(9, w * 0.021))
+    const widest = KICKER_PAPER.length * fontPx * WORST_ADVANCE_EM
+    const available = w - insets.left - insets.right - 2 * Q_EDGE
+    assert.ok(
+      widest <= available,
+      `${name} (${w}×${h}): "${KICKER_PAPER}" needs up to ${widest.toFixed(0)}px and has ${available}px`,
+    )
+  }
+  // And it is short. This is the guard against the invitation growing back into
+  // the paragraph it must not be — `docs`-level house rule, and the kicker slot
+  // has no room for a sentence.
+  assert.ok(KICKER_PAPER.length <= 22, `the invitation is ${KICKER_PAPER.length} characters — it is becoming a sentence`)
+  assert.ok(!/\bYOU SHOULD\b|\bTRY\b|\bDON'T\b/.test(KICKER_PAPER), "the invitation instructs rather than permits")
 })

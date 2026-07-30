@@ -11,7 +11,7 @@ you, and anything larger will hurt.**
 ```bash
 npm install
 npm run dev      # http://127.0.0.1:5188/
-npm test         # 71 tests, Node's native runner, zero dependencies
+npm test         # 91 tests, Node's native runner, zero dependencies
 npm run tsc      # typecheck
 npm run build:pack   # the installable pack; `../../packs && node build.mjs arena` checks and stages it
 ```
@@ -85,14 +85,89 @@ a direct question was also the busiest frame in the game. Both now ride the same
 curve, and the curve is fast.)
 
 - **Right** → a shockwave clears the neighbourhood, every rival is thrown off
-  you, your mass surges and the chord resolves upward with the streak.
-- **Wrong** → you lose a quarter of your mass, the chord sags, and the correct
-  sphere flares for a beat so you *see* which it was. No lecture, no modal.
-- **Timeout** → the water simply comes back. You lost the opportunity, nothing
-  more.
+  you, your mass surges and the chord resolves upward with the streak. Answer
+  *quickly* and it pays up to 70% more, and the celebration is bigger with it.
+- **Wrong** → you lose some mass — 2% near the bottom of the ladder, rising to
+  14% at the top — the chord sags, and the correct sphere flares for a beat so
+  you *see* which it was. No lecture, no modal.
+- **Nothing** → the water simply comes back. Nothing is reported to the host,
+  nothing is taken, and the question returns later.
 
 Inside a Resonance the arena is a fixed-size room however large you have grown,
 so the answer can never be the thing that outruns you.
+
+### There is no timer on a question. Paper is allowed.
+
+**Take as long as you like.** Nothing counts down. The spheres orbit but they
+never drift away, so the answer is exactly where you found it ten minutes later.
+If a question is long — `34,801 ÷ 37` is a real thing this ladder serves — put
+the tablet down, get a pencil, work it out in columns, and come back. You get the
+full points for it. On questions that long the game says so itself, in four words
+over the prompt: **NO TIMER · USE PAPER**.
+
+Answering fast is *rewarded* and answering slowly is never punished, and those are
+two different sentences. A brisk answer earns a bigger share of the wave; a slow
+one earns the whole base reward. There is nothing anywhere in the beat that a
+child loses by thinking, which is a deliberate reversal — this game used to give
+26 seconds at the bottom of the ladder and **six at the top**, on the theory that
+a countdown was something a fast player had earned. It was the wrong theory for
+the content: the house cadence table puts five-column long division at a
+40-second *median*, so the one player fast enough to have "earned" six seconds was
+the only one whose questions could not be answered inside it.
+
+What replaced it is an *allowance* (`src/sim/window.ts`), and it is ten times the
+p90 of the arithmetic rather than one: **one minute on `7 + 5`, ten minutes on
+`34,801 ÷ 37`.** It is derived from the item and from nothing about the run; it is
+never drawn anywhere — no bar, no ring, no number; and when it runs out nothing is
+reported to the host, the pacing controller does not move, and no mass changes
+hands. The seconds are free in the world too: the depth clock, the overdrive and
+the density all ride `playTime`, which excludes every second the arena spent inert,
+so you cannot come back from the paper to a meaner ocean.
+
+Unlike `games/claim` and `games/counterweight`, it is **not refilled by input**, and
+the reason is that ARENA's only control is steering. A first cut refilled on aim
+movement and got the two children exactly backwards: the one working on paper has
+their hands off the glass, so their allowance ran down — while the one ignoring the
+question and swimming about held the beat open forever, and the game could never
+resume.
+
+### The harder maths arrives a rung at a time
+
+ARENA hands the host a position on its ladder and the host decides what that
+means. Two things about that were wrong, and both were arithmetic rather than
+judgement:
+
+The request was an **integer** on a ten-rung scale, and the host's ladder is 66
+rungs — so one step of ARENA's breath was a 7.2-rung jump through the curriculum.
+Measured: ARENA rung 6 asked for `506 + 394`, and rung 7 asked for `721308 ÷ 84`.
+The request is now unrounded, so the same climb walks the curriculum a rung at a
+time.
+
+And the climb itself was as fast as the *world's* — the shared flow controller is
+tuned to escalate density and speed within tens of seconds, which is right for an
+ocean and wrong for arithmetic. Measured, a bot answering everything correctly
+reached the top of the 66-rung curriculum in **five minutes**, with one answer
+moving it eighteen rungs.
+
+The maths now follows the breath **down at once, and up one correct answer at a
+time** — at most a fifty-fifth of the ladder each, so crossing it takes 55 answers,
+which is what PR #715 measured the host's own recalibrated ladder giving a flawless
+child. Relief is never earned; only escalation is. And it is paid in *answers*, not
+in seconds: a per-second version let a child climb by **stalling** (an abandoned
+question is up to ten minutes of clock) and let six early answers carry them to the
+top over twenty minutes of just swimming about.
+
+Measured after, fifteen minutes of play:
+
+| player | curriculum rungs reached (of 65) | step per answer |
+|---|---|---|
+| everything wrong | 0–3 | — |
+| right 85% of the time | 0–14 | 1 |
+| flawless | 0–39 | 1–2 |
+| answers nothing, stalls | no climb at all | — |
+
+The world still leans in on the old fast curve. It is only the arithmetic that
+climbs slowly.
 
 ## Endless, not winnable
 

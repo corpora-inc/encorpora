@@ -14,6 +14,7 @@ import { Rng } from "../core/rng.ts"
 import { Grid } from "../core/grid.ts"
 import { tidyValue } from "../core/digits.ts"
 import { bandForMass, DEPTHS, depthFor, overdrive, type Depth } from "./depths.ts"
+import { guardSeconds } from "./window.ts"
 import type { TierSpec } from "../core/tier.ts"
 import type { Host, Question } from "../contract.ts"
 
@@ -100,7 +101,7 @@ const RIVAL_FLOOR = 0.28
  * here. When the first-grade fact spine lands, this reaches down to it with no
  * change to this file.
  */
-const DIFFICULTY_RUNGS = 10
+export const DIFFICULTY_RUNGS = 10
 
 /**
  * THE QUIET TIDE, and why the world's pace is not simply the breath.
@@ -128,6 +129,90 @@ const DIFFICULTY_RUNGS = 10
  * the world is earned.
  */
 const QUIET_TIDE_SECONDS = 420
+
+
+/**
+ * Seconds between one answered Resonance and the next. The beat's own cadence.
+ *
+ * Named rather than inlined so the cadence the pacing notes quote — "55 answers at
+ * a mean gap of 25 s is a little under 23 minutes" — is read off the constants the
+ * scheduler actually uses rather than off a literal in a call three hundred lines
+ * away.
+ */
+const BEAT_GAP_MIN = 21
+const BEAT_GAP_MAX = 29
+
+/**
+ * Answers it must take to cross the whole difficulty ladder, climbing.
+ *
+ * **The other half of "not Max Cohen mode", and the half the rounding fix did not
+ * reach.** Unrounding the request took the quantisation lurch out — one step of
+ * ARENA's breath used to be a 7.2-rung jump through a 66-rung curriculum — but it
+ * left the underlying climb rate alone, and the climb rate is the real complaint.
+ * Measured, a bot answering everything correctly:
+ *
+ *     the requests it made, as curriculum rungs:  0, 3, 21, 25, 32, 39, 47, 55, 63, 65
+ *     intensity 0.04 -> 1.00 in 300 seconds, so the top of the ladder in FIVE MINUTES
+ *
+ * Three quick correct answers and a child is on five-column long division. That is
+ * the founder's other sentence, from VOLTA and true here verbatim: "you get a few
+ * right just by being lucky and all of a sudden you are asked to do like 87364/9".
+ *
+ * The cause is not a defect in the shared controller — it is `climbBoost`, and it
+ * is deliberately large so an ADULT is not walked up every rung from `0 + 1`. But
+ * one scalar cannot serve both a world that should escalate in tens of seconds and
+ * a curriculum ladder that needs sustained evidence. `world.ts` already separates
+ * those two (`intensity` vs `worldIntensity`); this separates them one step
+ * further, on the axis that was still shared.
+ *
+ * **55 is measured, not chosen.** PR #715 recalibrated the host's own ladder to
+ * sit at 85% and climb only above 95%, and its published table gives a
+ * 100%-correct child at the published median **55 answers to reach the top of the
+ * 66-rung ladder**. So this is not a new opinion about how fast a child should
+ * climb: it is the constraint that ARENA's request may not outrun the host's own
+ * recalibrated ladder. Fewer answers than the host would take is ARENA overriding
+ * the founder's 85/95 band with a three-answer moving average, which is exactly
+ * what it was doing.
+ */
+const LADDER_CLIMB_ANSWERS = 55
+
+
+/**
+ * The largest label the renderer can carry without printing a different number.
+ *
+ * `mval` is an `Int32Array`, because the instanced numeral layer needs the value
+ * as an integer attribute. Anything past this is clamped to `0` on the way in —
+ * so a sphere carrying the right answer would be drawn reading **zero**, and a
+ * child who wanted it could not find it.
+ *
+ * This is not hypothetical. Measured through the real host over the whole
+ * 66-rung ladder, 40 items a rung: the top rung is
+ * `dw.mul.multidigit.long-multiplication` L2, whose products run to ten digits,
+ * and **24 of 40 of its answers exceed this bound** — `18309 × 53248 = 974917632`
+ * is fine, `37388 × 85585 = 3199851980` is not. ARENA's old integer request landed
+ * on exactly that rung whenever the breath reached its ceiling.
+ *
+ * **That measurement was taken against an UNRESTRICTED host, and it is worth being
+ * exact about why it still matters.** `pack.json` declares
+ * `covers.skills: ["dw.ns.compare.whole-numbers"]`, and `game-host` honours that by
+ * restricting the stream to the `dw.ns` domain — so in a normal session ARENA is not
+ * served long multiplication at all and the bound is unreachable. But the
+ * restriction is not a guarantee: `game-host` SURRENDERS it, loudly and for the rest
+ * of the session, whenever it cannot serve the declared domain, and after a
+ * surrender the whole ladder is in scope. The stub host reaches past it too, and
+ * `covers.skills` is a line in a manifest that a future edit can widen without
+ * touching this file.
+ *
+ * So this is a guard on the seam rather than a fix for a bug a child is hitting
+ * today: it costs one comparison per option, and what it prevents is a child being
+ * shown four spheres one of which silently reads `0`.
+ *
+ * `openResonance` refuses to pose an item it cannot draw, in the same way and for
+ * the same reason it already refuses one it cannot supply four distinct options
+ * for. It is a structural check on the item in hand rather than a ceiling on the
+ * request, because the request is relative and the ladder grows.
+ */
+const MAX_DRAWABLE_LABEL = 2147483647
 const QUIET_TIDE_CEILING = 0.62
 
 /**
@@ -477,8 +562,43 @@ export type Resonance = {
   active: boolean
   /** 0 = closed, 1 = opening, 2 = live, 3 = resolving. */
   phase: number
+  /** Seconds since the beat opened. Never reset while it is open. */
   t: number
-  duration: number
+  /**
+   * Seconds the question has been answerable for.
+   *
+   * **The only timer that can end an unanswered Resonance.** Nothing in `render/`
+   * or `ui/` reads it — no bar, no ring, no number — and when it runs out the host
+   * is told nothing and the child loses nothing. See `stepResonance` for why it is
+   * not refilled by input, which is the one place ARENA diverges from `claim` and
+   * `counterweight`.
+   */
+  idle: number
+  /**
+   * The allowance, for THIS item, in seconds.
+   *
+   * `sim/window.ts` computes it from the item and from nothing else. One minute on
+   * `7 + 5`; ten on five-column long division.
+   */
+  guard: number
+  /**
+   * Seconds since the answer was committed. Drives the phase-3 resolve alone.
+   *
+   * Separate from `t` because `t` used to double as the resolve clock via
+   * `res.t - res.duration`, and `duration` was the old intensity-scaled window.
+   * When the window went away there was nothing left for that subtraction to
+   * mean.
+   */
+  resolveT: number
+  /**
+   * Where the ring of spheres is centred — the player's position when the beat
+   * opened, and fixed for the life of the beat.
+   *
+   * The spheres orbit about this and not about `px, py`, so swimming toward one
+   * actually closes the gap.
+   */
+  centreX: number
+  centreY: number
   question: Question | null
   /** Indices into the mote arrays for the four spheres. */
   spheres: Int32Array
@@ -586,6 +706,29 @@ export class World {
    * once, so escalation reads as one thing rather than as six.
    */
   intensity = FLOW.start
+  /**
+   * The breath as the CURRICULUM sees it: the same number, allowed to climb only
+   * as fast as the evidence for climbing accumulates.
+   *
+   * It follows `intensity` down instantly, every frame, and climbs only in
+   * `resolveResonance` — by at most `1 / LADDER_CLIMB_ANSWERS` of the ladder per
+   * CORRECT ANSWER, and never past `intensity`. The asymmetry is the same one the
+   * shared controller uses for `fallSeconds`: **relief is not something to be
+   * earned.** A child who has just missed three gets easier questions on the next
+   * beat; a child who has just got three right does not get five-column long
+   * division on the next beat.
+   *
+   * Nothing but a correct answer moves it up. Not elapsed time, not an abandoned
+   * question, not twenty minutes of swimming on the strength of six early answers —
+   * every one of which a per-second version leaked. See `resolveResonance`.
+   *
+   * Only `ladderPosition` reads it. Density, rivals, speed, growth, the temper of
+   * the water and the reveal all still ride `intensity` or `worldIntensity`, so
+   * nothing about how the arena FEELS is slowed down by this — the world still
+   * leans in within tens of seconds of a good stretch. What is slowed down is only
+   * how fast the arithmetic gets harder.
+   */
+  mathsIntensity = FLOW.start
   /** Smoothed estimate of how the child is doing. Never rendered anywhere. */
   success = seedSuccess(FLOW)
   /** The rung of the difficulty ladder currently stood on, 0-based. */
@@ -656,6 +799,15 @@ export class World {
 
   // -- environment --------------------------------------------------------
   time = 0
+  /**
+   * Seconds the arena has actually been a game — `time` minus every second spent
+   * inside a Resonance.
+   *
+   * The quiet tide rides this. See `worldIntensity`: with no length on a
+   * Resonance, a child who takes the founder's invitation and works something out
+   * on paper must not be handed a denser, faster ocean as the bill for it.
+   */
+  playTime = 0
   arenaR = arenaRadiusFor(START_MASS)
   depth: Depth = DEPTHS[0] as Depth
   depthNext: Depth = (DEPTHS[1] ?? DEPTHS[0]) as Depth
@@ -667,7 +819,11 @@ export class World {
     active: false,
     phase: 0,
     t: 0,
-    duration: 0,
+    idle: 0,
+    guard: 0,
+    resolveT: 0,
+    centreX: 0,
+    centreY: 0,
     question: null,
     spheres: new Int32Array(4).fill(-1),
     labels: ["", "", "", ""],
@@ -730,9 +886,18 @@ export class World {
   /**
    * How hard the WORLD is pushing: the breath, or the quiet tide, whichever is
    * higher. Everything except the maths reads this rather than `intensity`.
+   *
+   * The tide rides `playTime`, not `time`, and that became load-bearing the
+   * moment a Resonance stopped having a length. During a Resonance the arena is
+   * inert — nothing can touch you and you cannot eat — so those seconds are not
+   * seconds the run has been going. Left on `time`, a child who took the
+   * founder's invitation and spent eight minutes on paper would come back to a
+   * fully escalated ocean, and the price of thinking would be a denser, faster,
+   * more crowded arena. That is a clock taking something away from a child with
+   * the countdown filed off.
    */
   get worldIntensity(): number {
-    const tide = QUIET_TIDE_CEILING * curved(Math.min(1, this.time / QUIET_TIDE_SECONDS), "gentle")
+    const tide = QUIET_TIDE_CEILING * curved(Math.min(1, this.playTime / QUIET_TIDE_SECONDS), "gentle")
     return Math.max(this.intensity, tide)
   }
 
@@ -772,56 +937,42 @@ export class World {
   }
 
   /**
-   * Seconds a Resonance stays open — and the reason it is a curve rather than a
-   * constant is the most important pacing decision in this file.
+   * How fast the four spheres orbit while a question is open, in radians a
+   * second.
    *
-   * It was `max(6.5, 10.5 - resonanceCount * 0.16)`: a window that shrank
-   * toward six and a half seconds for EVERY player, regardless of whether they
-   * were keeping up. That is a countdown imposed on a child, and a countdown
-   * imposed on a child is the thing that converts arithmetic into guessing.
+   * **It is an orbit and nothing else. The radius does not change.** This used
+   * to be `sphereDrift`, an outward velocity of up to 22 units a second earned
+   * on the same curve as the old window, and it was the second clock in the
+   * game and the one that was invisible as a clock: the answer physically walked
+   * away from a hesitating child, so "a hesitant answer costs distance" was a
+   * countdown wearing a different hat.
    *
-   * The founder's rule is that time should be measured and REWARDED, never
-   * used to cause anxiety: "I like infinite time to think in most cases ... we
-   * can usually measure, pace and reward, not cause anxiety". So the clock is
-   * something a player EARNS by demonstrating they are comfortably fast.
+   * The spheres still turn, because four dead objects read as a screenshot and
+   * this is a living ocean. What they may never do is recede. Tangential motion
+   * at a fixed radius is the whole of the difference: the picture is alive, the
+   * answer is exactly where the child found it, ten minutes later.
    *
-   *   at the floor    26 s — three times the curriculum's own p50 for this
-   *                          skill, which is as close to "unlimited" as ARENA
-   *                          can honestly offer
-   *   mid-ladder      20 s — still nowhere near pressure
-   *   at the ceiling   6 s — a real countdown, and the player climbed here
-   *
-   * `gentle` is what makes that true: two thirds of the way up the ladder the
-   * window is still over sixteen seconds. A struggling child never meets a
-   * clock. A mathlete opts into one by being visibly ready for it.
-   *
-   * It is not literally unbounded, and the reason is structural rather than
-   * pedagogical: the arena holds its breath during a Resonance — nothing can
-   * touch you and you cannot eat — so a window that never closes is a game that
-   * never resumes for a player who put the tablet down mid-question. What the
-   * floor gives instead is a window nobody working at this level will ever
-   * reach the end of, and no visible clock at all (see `sphereDrift`).
-   *
-   * It reads `intensity`, not `worldIntensity`: the quiet tide may fill the
-   * ocean up around a player who is not answering, but it may never put them
-   * on a clock they did not earn.
+   * A constant, and deliberately so — nothing about the run reaches it, which is
+   * the same prohibition `sim/window.ts` carries. There is no intensity here to
+   * make it faster for a player the game has decided is good.
    */
-  get resonanceSeconds(): number {
-    return valueAt(this.intensity, 26, 6, "gentle")
+  get sphereOrbit(): number {
+    return 0.28
   }
 
   /**
-   * How fast the four spheres drift outward while a question is open.
+   * Where on the host's ladder the next question should come from, 0..1.
    *
-   * The other clock, and the one that was invisible as a clock. At a flat 22
-   * units a second the answer physically walked away from a hesitating child,
-   * so "a hesitant answer costs distance" was a countdown wearing a different
-   * hat. It is now earned on exactly the same terms as the window: zero at the
-   * floor, so a child may think for as long as they like with the answer
-   * staying where they found it.
+   * Unrounded and unquantised — see `openResonance` for the 7.2-rung lurch that
+   * came of telling the host an integer. `rung` still exists, because the HUD
+   * prints it and it carries `rungAt`'s hysteresis so the readout does not
+   * flicker, but it is no longer what the host is told.
+   *
+   * And it is `mathsIntensity`, not `intensity`: the world may lean in over tens
+   * of seconds, and the curriculum ladder may not. See `LADDER_CLIMB_ANSWERS`.
    */
-  get sphereDrift(): number {
-    return valueAt(this.intensity, 0, 22, "gentle")
+  get ladderPosition(): number {
+    return Math.min(1, Math.max(0, this.mathsIntensity))
   }
 
   /**
@@ -1043,6 +1194,7 @@ export class World {
     this.invuln = 1.4
     this.combo = 0
     this.time = 0
+    this.playTime = 0
     this.moteCount = 0
     this.rivalCount = 0
     this.malive.fill(0)
@@ -1051,12 +1203,16 @@ export class World {
     this.ralive.fill(0)
     this.resonance.active = false
     this.resonance.phase = 0
+    this.resonance.idle = 0
+    this.resonance.guard = 0
+    this.resonance.resolveT = 0
     this.nextResonanceAt = 16
     this.resonanceCount = 0
     this.bestMass = START_MASS
     this.deepest = 0
     this.depth = DEPTHS[0] as Depth
     this.intensity = FLOW.start
+    this.mathsIntensity = FLOW.start
     this.success = seedSuccess(FLOW)
     this.rung = rungAt(FLOW.start, DIFFICULTY_RUNGS)
     this.refreshDepth()
@@ -1118,11 +1274,26 @@ export class World {
     // bestMass, not mass, and floored by the band we are already in: the water
     // is a record of how deep this run has been, never a readout of how the
     // last ten seconds went.
-    const d = depthFor(this.bestMass, this.time, this.depth.index)
+    //
+    // `playTime`, not `time`, and this is the ESCALATION SPINE — the line that
+    // makes "thinking is not run time" true rather than merely claimed.
+    //
+    // `worldIntensity` was moved onto `playTime` when the Resonance lost its
+    // length, and this was left behind. `DEPTH_CLOCK_SECONDS` is 100 and
+    // `depthFor` floors the band, so it is a one-way ratchet: measured, a single
+    // 600-second guard on `34801 ÷ 37` at mass 10 — nothing eaten, nothing
+    // gained, the aim parked on the table exactly as the guard is designed for —
+    // sank the run from DRIFT to THE ABYSSAL, six bands, and handed the child
+    // back four hunters, a leviathan, 18% void motes and temper 0.86. It never
+    // came back, because the band cannot fall.
+    //
+    // That is the bill for thinking, and it is the whole thing this pass exists
+    // to abolish. `overdrive` compounds off the same clock and moves with it.
+    const d = depthFor(this.bestMass, this.playTime, this.depth.index)
     this.depth = d.depth
     this.depthNext = d.next
     this.depthT = d.t
-    this.over = overdrive(this.bestMass, this.time)
+    this.over = overdrive(this.bestMass, this.playTime)
     this.arenaR = arenaRadiusFor(this.mass)
     if (this.depth.index > this.deepest) this.deepest = this.depth.index
     if (this.depth.index !== prev) {
@@ -1423,10 +1594,21 @@ export class World {
   step(dt: number): void {
     this.eventCount = 0
     this.time += dt
+    // Only seconds in which the arena was a game count toward the tide. A
+    // Resonance is inert by design — nothing can touch you and you cannot eat —
+    // so thinking time is not run time.
+    if (!this.resonance.active) this.playTime += dt
     // The breath, before anything reads it. One call, one number, and every
     // budget below is a pure function of it.
     this.intensity = settle(FLOW, this.intensity, this.success, dt)
-    this.rung = rungAt(this.intensity, DIFFICULTY_RUNGS, this.rung)
+    // The maths follows the breath DOWN, here and every frame. It only ever climbs
+    // in `resolveResonance`, one correct answer at a time.
+    //
+    // Relief is not something to be earned, so the fall is not on the leash at all
+    // — the same asymmetry the shared controller applies with `fallSeconds` and
+    // #715 applies with its bands ("up needs two things, down needs one").
+    if (this.mathsIntensity > this.intensity) this.mathsIntensity = this.intensity
+    this.rung = rungAt(this.mathsIntensity, DIFFICULTY_RUNGS, this.rung)
     this.invuln = Math.max(0, this.invuln - dt)
     this.stingGrace = Math.max(0, this.stingGrace - dt)
     this.heldCool = Math.max(0, this.heldCool - dt)
@@ -1612,7 +1794,22 @@ export class World {
       this.my[i] = y + vy * dt
       this.mphase[i] = (this.mphase[i] as number) + dt * 1.6
 
-      // Keep them inside the membrane.
+      // Keep them inside the membrane — but never a Resonance sphere.
+      //
+      // This clamp is radial about the WORLD ORIGIN, and the answer ring rotates
+      // about the player. With the player parked at the edge, the two fight: the
+      // rotation moves a sphere outside `arenaR`, the clamp pulls it back toward
+      // the origin, and the ring slides along the membrane instead of turning in
+      // place. `sphereOrbit` promises the answer is exactly where the child found
+      // it ten minutes later, and this is the one line that could make that false.
+      //
+      // The pull above (`pullR`) and the flip below already skip `MK_ANSWER`; this
+      // was the only one of the three that did not. `openResonance` places the ring
+      // at `ringR`, which is about 0.3% of `arenaR` at every mass, so the ring is
+      // never near the membrane except at the very edge — narrow, but the comment
+      // and the README both state the property without qualification, so the code
+      // should hold it without qualification too.
+      if (this.mkind[i] === MK_ANSWER) continue
       const rad = Math.hypot(this.mx[i] as number, this.my[i] as number)
       if (rad > this.arenaR) {
         const s = this.arenaR / rad
@@ -2170,6 +2367,7 @@ export class World {
       return
     }
     res.t += dt
+    if (res.phase === 3) res.resolveT += dt
     if (res.phase === 1 && res.t > 0.55) {
       res.phase = 2
       // THE CLOCK STARTS HERE, and it used to start 0.55 s earlier.
@@ -2188,39 +2386,95 @@ export class World {
       // question and act on it. Nothing else belongs in it.
       res.openedAt = performance.now()
       res.openedT = this.time
+      // The silence starts here too, and for the same reason: nothing before
+      // this instant was answerable, so nothing before it was a child not
+      // answering.
+      res.idle = 0
     }
-    if (res.phase === 2 && res.t > res.duration) {
-      this.emit("resonance-fade", this.px, this.py, 0, 0)
-      // A question that went unanswered comes back LATER, not on the usual
-      // cadence. A player who is not engaging with the maths right now should
-      // not be interrupted every twenty seconds to be asked again — and while a
-      // Resonance is open the arena is inert, so a stream of ignored questions
-      // is also a stream of seconds in which the game is not a game.
-      this.nextResonanceAt = this.time + this.rng.range(40, 55)
-      this.closeResonance()
-      return
+
+    if (res.phase === 2) {
+      // THE ALLOWANCE, and it is the only thing that can end an unanswered
+      // question. It is a pure function of the item — see `sim/window.ts`.
+      //
+      // **It is not refilled by input, and that is a deliberate divergence from
+      // `games/claim` and `games/counterweight`.** Both of those refill their
+      // guard on any hand on the controls, because in those games a hand on the
+      // controls IS engagement with the question: `counterweight`'s child is
+      // striking the plates that answer it.
+      //
+      // ARENA's only control is *steering*, and steering is not answering. A first
+      // cut of this refilled on aim movement and got the two populations exactly
+      // backwards:
+      //
+      //   * a child working `34,801 ÷ 37` out on paper has their hands OFF the
+      //     glass, so the aim is still — and the guard ran down on the one child
+      //     it exists to protect;
+      //   * a child ignoring the question and swimming around has their hand ON
+      //     the stick, so the guard refilled forever — and the beat could never
+      //     end, which is the "a window that never closes is a game that never
+      //     resumes" failure this file has always warned about.
+      //
+      // So the allowance simply runs, and it treats every child the same. What
+      // makes that safe is not a refill, it is the SIZE and the CONSEQUENCE: sixty
+      // seconds on `7 + 5`, ten minutes on five-column long division, nothing
+      // drawn anywhere, and on firing it reports nothing and takes nothing. It is
+      // `beam`'s pattern — an item-pure window — at ten times the p90 instead of
+      // one, wearing claim's and counterweight's rules about what a clock may
+      // never do.
+      res.idle += dt
+      if (res.idle > res.guard) {
+        this.emit("resonance-fade", this.px, this.py, 0, 0)
+        // Nothing is reported and nothing is taken. A child who was still
+        // carrying the hundreds column has told us nothing about what they know,
+        // and a game that filed that as a wrong answer would be lying to the
+        // curriculum about them. `this.success` is untouched, so the pacing
+        // controller never moves either.
+        //
+        // The question comes back LATER, not on the usual cadence: a child who is
+        // not engaging with the maths right now should not be interrupted every
+        // twenty seconds to be asked again, and while a Resonance is open the
+        // arena is inert, so a stream of ignored questions is also a stream of
+        // seconds in which the game is not a game.
+        this.nextResonanceAt = this.time + this.rng.range(40, 55)
+        this.closeResonance()
+        return
+      }
     }
+
     // A right answer resolves in a beat. A miss is held for the reveal, which
     // is long and calm at the bottom of the ladder and absent at the top.
-    if (res.phase === 3 && res.t > res.duration + (res.wasCorrect ? 0.9 : Math.max(0.9, this.revealSeconds))) {
+    if (res.phase === 3 && res.resolveT > (res.wasCorrect ? 0.9 : Math.max(0.9, this.revealSeconds))) {
       this.closeResonance()
       return
     }
 
-    // The four spheres drift outward and orbit, so a hesitant answer costs
-    // distance and the decision has a clock without a countdown bar.
+    // The four spheres ORBIT. They do not recede — see `sphereOrbit`. The answer
+    // is exactly as far away on the tenth minute as it was on the first second,
+    // which is what makes the guard above the only timer in the beat.
+    const spin = res.phase === 2 ? this.sphereOrbit : 0
+    const c = Math.cos(spin * dt)
+    const s2 = Math.sin(spin * dt)
     for (let s = 0; s < 4; s++) {
       const i = res.spheres[s] as number
       if (i < 0 || !this.malive[i]) continue
-      const dx = (this.mx[i] as number) - this.px
-      const dy = (this.my[i] as number) - this.py
-      const d = Math.hypot(dx, dy) || 1
-      const drift = res.phase === 2 ? this.sphereDrift : 0
-      const tangent = 0.32
-      this.mvx[i] = (dx / d) * drift - (dy / d) * drift * tangent
-      this.mvy[i] = (dy / d) * drift + (dx / d) * drift * tangent
-      this.mx[i] = (this.mx[i] as number) + (this.mvx[i] as number) * dt
-      this.my[i] = (this.my[i] as number) + (this.mvy[i] as number) * dt
+      // Rotated about the RING's centre, which `openResonance` fixed at the
+      // player's position when the beat opened — never about `px, py`.
+      //
+      // Rotating about the live player would make the ring follow them: every
+      // step the player took toward a sphere would carry the whole ring the same
+      // distance, the gap would never close, and committing to an answer would be
+      // impossible. Measured with the centre wrong, the solver bot answered zero
+      // of forty-eight questions in a twenty-minute run.
+      const dx = (this.mx[i] as number) - res.centreX
+      const dy = (this.my[i] as number) - res.centreY
+      // A pure rotation of the offset. `cos`/`sin` of the frame's own angle
+      // rather than a tangential velocity, because a tangent stepped by `dt`
+      // walks the radius OUTWARD a little every frame — which is the drift this
+      // pass deleted, reintroduced by arithmetic.
+      this.mx[i] = res.centreX + dx * c - dy * s2
+      this.my[i] = res.centreY + dx * s2 + dy * c
+      this.mvx[i] = 0
+      this.mvy[i] = 0
       this.mphase[i] = (this.mphase[i] as number) + dt * 2.4
     }
   }
@@ -2236,7 +2490,35 @@ export class World {
     // child who had missed the last four in a row was handed a fifth that was
     // harder than all of them. Now the rung is the rung the run's recent work
     // has earned, and it goes down as readily as it goes up.
-    const diff = this.rung + 1
+    // …and it is asked for UNROUNDED, which is the other half of the founder's
+    // complaint and the half that was invisible.
+    //
+    // `DIFFICULTY_RUNGS` is 10 and the request used to be the integer `rung + 1`.
+    // The shared bridge maps a 1..10 ladder index onto the host's own ladder as
+    // `(value - 1) / 9`, and the host's ladder is **66 rungs**. So ARENA's ten
+    // rungs landed on curriculum rungs {0, 7, 14, 22, 29, 36, 43, 51, 58, 65} —
+    // and a single step of ARENA's ladder was a **7.2-rung jump** through the
+    // curriculum. Measured, through the real host:
+    //
+    //     ARENA rung 6  ->  curriculum 43  ->  dw.add.regroup.add-multidigit L2
+    //                                          `506 + 394`
+    //     ARENA rung 7  ->  curriculum 51  ->  dw.div.whole.divide-exact L3
+    //                                          `721308 ÷ 84`
+    //
+    // One rung of the breath, and a child goes from three-digit addition to
+    // six-digit long division. That is "jump right into Max Cohen mode", exactly,
+    // and it is arithmetic rather than judgement.
+    //
+    // Sending the position unrounded gives the host all 66 rungs instead of 10 of
+    // them, so the climb is one curriculum rung at a time and there is nothing
+    // left to lurch. `1 + x * 9` is in [1, 10] for x in [0, 1] and inverts to
+    // exactly `x`, and at x = 0 it sends literally `1` — which the bridge
+    // documents as the BOTTOM of the ladder, so the one ambiguous value on that
+    // wire still reads the way ARENA means it.
+    //
+    // `rung` survives as the hysteresis-bearing readout the HUD prints and the
+    // suite asserts on; it is no longer what the host is told.
+    const diff = 1 + this.ladderPosition * (DIFFICULTY_RUNGS - 1)
     let q: Question
     try {
       q = this.host.next({ difficulty: diff })
@@ -2260,6 +2542,24 @@ export class World {
       if (d !== q.answer && !options.includes(d)) options.push(d)
     }
     if (options.length < 4) {
+      this.nextResonanceAt = this.time + 20
+      return
+    }
+    // A Resonance ARENA cannot DRAW is one it does not pose either.
+    //
+    // The same rule as the line above, applied to the other way this beat can
+    // lie to a child. A sphere's label goes through `mval`, an `Int32Array`, and a
+    // value past `MAX_DRAWABLE_LABEL` lands there as `0` — so the sphere carrying
+    // the answer to `37388 × 85585` reads **zero**, and the child is asked to find
+    // an answer that is not on the screen. Twenty-four of every forty items on the
+    // top rung of the ladder are like that; see the constant.
+    //
+    // Loud rather than silent, because a pack quietly declining to ask questions
+    // is indistinguishable from a pack that is working.
+    for (const text of options) {
+      const v = Number(text)
+      if (Number.isSafeInteger(v) && Math.abs(v) <= MAX_DRAWABLE_LABEL) continue
+      console.warn(`[arena] declining a question ARENA cannot draw: "${q.prompt}" has the option "${text}"`)
       this.nextResonanceAt = this.time + 20
       return
     }
@@ -2294,7 +2594,19 @@ export class World {
     res.active = true
     res.phase = 1
     res.t = 0
-    res.duration = this.resonanceSeconds
+    res.resolveT = 0
+    // The silence guard, from the ITEM and from nothing else.
+    //
+    // This line is the whole of the pacing change. It used to be
+    // `res.duration = this.resonanceSeconds`, and `resonanceSeconds` was
+    // `valueAt(intensity, 26, 6, "gentle")` — a countdown that got SHORTER as the
+    // maths got harder, because both rode the same scalar. `sim/window.ts` states
+    // the invariant and carries the whole argument.
+    res.guard = guardSeconds({ prompt: q.prompt, answer: q.answer })
+    // Zeroed here and re-zeroed at the phase 1 -> 2 transition, which is when the
+    // question first becomes answerable and therefore the first instant a child
+    // can be said not to be answering it.
+    res.idle = 0
     res.question = q
     res.chosen = -1
     // Provisional: both are re-stamped at the phase 1 -> 2 transition, when the
@@ -2306,6 +2618,9 @@ export class World {
 
     const ringR = Math.max(viewSpanFor(this.mass) * 0.30, this.playerRTrue * 3.4)
     res.ringR = ringR
+    // The centre the ring orbits about, fixed here for the life of the beat.
+    res.centreX = this.px
+    res.centreY = this.py
     // The traversal floor, computed the same way `stepPlayer` computes it, so
     // the two cannot drift.
     const travelSpeed = Math.max(this.playerSpeed, ringR / 1.35)
@@ -2351,7 +2666,11 @@ export class World {
 
     const correct = slot === res.correctSlot
     res.phase = 3
-    res.t = res.duration
+    // The resolve runs on its own clock from zero. It used to be `res.t =
+    // res.duration`, which forced `t` forward to the end of the window so that
+    // `res.t - res.duration` read as seconds-since-the-answer — and there is no
+    // window any more for that subtraction to be relative to.
+    res.resolveT = 0
     res.chosen = slot
     res.wasCorrect = correct
     const ms = Math.round(performance.now() - res.openedAt)
@@ -2388,6 +2707,36 @@ export class World {
     // at the moment of the answer and reported to the Host. It has simply never
     // been used to decide anything until now.
     this.success = observe(FLOW, this.success, correct, took)
+
+    // THE LEASH, and this is the only place it is ever let out.
+    //
+    // A correct answer buys at most one `LADDER_CLIMB_ANSWERS`-th of the whole
+    // ladder, and nothing else buys any of it. Never exceeding `intensity`, so the
+    // breath is still the thing that decides WHERE the child belongs; this only
+    // decides how fast they are taken there.
+    //
+    // **Paid in answers, which is what the constant says.** The first cut of this
+    // was a per-second slew limit, `dt / LADDER_CLIMB_SECONDS`, with the seconds
+    // derived from 55 answers at a 25 s cadence. Two things went wrong with that,
+    // and both are the same mistake — time is not evidence:
+    //
+    //   * an abandoned question is up to ten minutes of `dt`, so *stalling* climbed
+    //     the ladder. Measured: six correct answers put the request on curriculum
+    //     rung 9, then two abandoned questions carried it to rung 65 of 65, having
+    //     answered nothing. Answering nothing was the fastest way to hard content,
+    //     and taking the founder's ten minutes on paper was billed at nearly half
+    //     the ladder.
+    //   * and a child who answered six quickly and then simply swam about for
+    //     twenty minutes drifted to the top on the strength of those six, which is
+    //     "you get a few right just by being lucky" with a delay bolted on.
+    //
+    // Counting answers has neither failure, needs no conversion, and states the
+    // constraint exactly as #715 measured it: 55 answers to cross the ladder is
+    // what the host's own recalibrated ladder gives a flawless child, and ARENA's
+    // request may not outrun it.
+    if (correct) {
+      this.mathsIntensity = Math.min(this.intensity, this.mathsIntensity + 1 / LADDER_CLIMB_ANSWERS)
+    }
 
     if (correct) {
       this.combo++
@@ -2466,7 +2815,7 @@ export class World {
       this.moteCount--
       res.spheres[s] = -1
     }
-    this.nextResonanceAt = this.time + this.rng.range(21, 29)
+    this.nextResonanceAt = this.time + this.rng.range(BEAT_GAP_MIN, BEAT_GAP_MAX)
   }
 
   private closeResonance(): void {
@@ -2482,7 +2831,7 @@ export class World {
     res.active = false
     res.phase = 0
     res.question = null
-    if (this.nextResonanceAt <= this.time) this.nextResonanceAt = this.time + this.rng.range(21, 29)
+    if (this.nextResonanceAt <= this.time) this.nextResonanceAt = this.time + this.rng.range(BEAT_GAP_MIN, BEAT_GAP_MAX)
   }
 
   // -------------------------------------------------------------------------

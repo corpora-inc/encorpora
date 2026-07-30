@@ -7,6 +7,7 @@ import {
 } from "../../../../packs/shared/game-chrome/index.ts"
 import { RIVAL_NAMES, type World } from "../sim/world.ts"
 import { DEPTHS } from "../sim/depths.ts"
+import { invitesPaper } from "../sim/window.ts"
 
 const DEPTH_COUNT = DEPTHS.length
 
@@ -228,6 +229,49 @@ const CSS = `
 
 const ROWS = 6
 
+/**
+ * The label above the prompt on an ordinary question.
+ *
+ * It names the moment and nothing else, which is what a kicker is for.
+ */
+export const KICKER_DEFAULT = "RESONANCE"
+
+/**
+ * …and the label on a question long enough that a child might reach for paper.
+ *
+ * **The paper invitation.** The founder:
+ *
+ *   > "maybe they allow infinite time and even invite the kid to take out a piece
+ *   >  of paper and work it out for 10 minutes for the points instead of just
+ *   >  encouraging them to make a quick guess."
+ *
+ * Two facts, four words, no metaphor and no praise. `NO TIMER` is the load-bearing
+ * half: a child cannot otherwise know that nothing is counting, and until they
+ * know it they will guess. `USE PAPER` is the invitation, stated as a permission
+ * rather than an instruction — "take out a piece of paper and work it out" told to
+ * a child who was about to do it in their head is a game correcting them.
+ *
+ * Three things it deliberately is not:
+ *
+ *   * **Not on every question.** `invitesPaper` gates it at the cadence table's
+ *     40-second row, so it appears on `5,001 − 2,798` and on `34,801 ÷ 37` and
+ *     never on `7 + 5`. Telling a seven-year-old to fetch a pencil for a
+ *     single-digit fact is the patronising version of the same idea.
+ *   * **Not a status readout.** It changes when the question changes and at no
+ *     other time, exactly like the prompt it sits over. Nothing here reflows while
+ *     a child is reading.
+ *   * **Not a wall of text.** It replaces a word that was already there. The
+ *     sentence-length version of the argument is in `README.md`, said once, where
+ *     a parent reads it.
+ *
+ * Twenty characters at the kicker's own metrics — `clamp(9px, 2.1vw, 12px)` at
+ * `.42em` tracking — is about 190px on the 320px phone this game supports and
+ * about 250px at the 12px ceiling, inside `.arena-q`'s safe-inset box in every
+ * viewport `layout.test.ts` covers. It is the same `·` separator the perf readout
+ * already uses.
+ */
+export const KICKER_PAPER = "NO TIMER · USE PAPER"
+
 export class Hud {
   readonly root: HTMLDivElement
   private depthEl: HTMLDivElement
@@ -237,6 +281,7 @@ export class Hud {
   private eqEl: HTMLDivElement
   private eqText: HTMLSpanElement
   private qEl: HTMLDivElement
+  private qKicker: HTMLDivElement
   private qPrompt: HTMLDivElement
   private verdictEl: HTMLDivElement
   private perfEl: HTMLDivElement
@@ -318,9 +363,10 @@ export class Hud {
 
     this.qEl = document.createElement("div")
     this.qEl.className = "arena-q"
-    const k = document.createElement("div")
-    k.className = "k"
-    k.textContent = "RESONANCE"
+    this.qKicker = document.createElement("div")
+    this.qKicker.className = "k"
+    this.qKicker.textContent = KICKER_DEFAULT
+    const k = this.qKicker
     this.qPrompt = document.createElement("div")
     this.qPrompt.className = "p"
     this.qEl.appendChild(k)
@@ -472,6 +518,14 @@ export class Hud {
       this.lastQ = q
       if (q) {
         this.qPrompt.textContent = q
+        // The kicker is set here and only here — once per question, in the same
+        // breath as the prompt. See `KICKER_PAPER`.
+        this.qKicker.textContent = invitesPaper({
+          prompt: q,
+          answer: res.question?.answer ?? "",
+        })
+          ? KICKER_PAPER
+          : KICKER_DEFAULT
         this.qEl.classList.add("on")
       } else {
         this.qEl.classList.remove("on")

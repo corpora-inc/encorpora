@@ -1,6 +1,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, FLOOR_MASS, MK_FOOD, MK_VOID, MK_SHED } from "./world.ts"
+import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, DIFFICULTY_RUNGS, FLOOR_MASS, MK_FOOD, MK_VOID, MK_SHED } from "./world.ts"
+import { MAX_GUARD_SECONDS, comprehensionSeconds, guardSeconds } from "./window.ts"
 import { Rng } from "../core/rng.ts"
 import { DEPTHS, depthFor, overdrive } from "./depths.ts"
 import { specFor } from "../core/tier.ts"
@@ -115,7 +116,12 @@ test("a run climbs: the band never falls and a banked rung cannot be taken back"
   // Six minutes of a deliberately BAD player: never aims, never surges, walks
   // into everything. This is the profile that used to oscillate 154 → 65 → 332
   // → 122 → 152 and finish where it started.
-  for (let f = 0; f < 60 * 60 * 6; f++) {
+  // Six minutes of PLAY time, not of wall time. The depth clock rides `playTime`
+  // now — an inert Resonance is not a second of the run — and a bot that never
+  // answers spends a real share of the wall clock inside beats, so counting frames
+  // would be counting the wrong thing and the assertion at the bottom would be
+  // measuring the guard rather than the ratchet.
+  for (let f = 0; f < 60 * 60 * 30 && world.playTime < 60 * 6; f++) {
     world.aimX = Math.sin(f * 0.011) * 1400
     world.aimY = Math.cos(f * 0.008) * 1400
     world.step(1 / 60)
@@ -130,7 +136,7 @@ test("a run climbs: the band never falls and a banked rung cannot be taken back"
       `mass ${world.mass} fell through the banked checkpoint ${world.checkpoint}`,
     )
   }
-  assert.ok(band >= 3, `six minutes must show more than a couple of depths, saw ${band + 1}`)
+  assert.ok(band >= 3, `six minutes of play must show more than a couple of depths, saw ${band + 1} in ${world.playTime.toFixed(0)}s`)
   assert.ok(lowestSinceBand >= FLOOR_MASS)
 })
 
@@ -295,43 +301,115 @@ test("the answer reported to the host is the host's own string, and slot identit
     assert.ok(r.ms >= 0 && Number.isFinite(r.ms), `latency was not a sane number: ${r.ms}`)
   }
 
-  // The specific round trip that would be silent: an answer past 2^31, which
-  // an Int32Array wraps to a *different number* rather than to an error. The
-  // stub host never emits one; a real curriculum eventually will.
-  const big: string[] = ["8030000000", "8030000001", "8029999999", "8030000010"]
-  const bigReports: { correct: boolean; answered: string }[] = []
-  const bigHost: Host = {
+  // The specific round trip that would be silent: the sphere's LABEL goes
+  // through `mval`, an Int32Array, and the answer reported to the host must not
+  // take that trip. A padded string is the cheapest item that can tell the
+  // difference — `Number("0500")` is 500, so a game reporting `String(mval)`
+  // says "500" while the host said "0500", and every other value in the product
+  // survives the round trip and hides the bug.
+  const padReports: { correct: boolean; answered: string }[] = []
+  const padHost: Host = {
     next: () => ({
-      id: "big-1",
-      prompt: "big",
-      answer: big[0] as string,
-      distractors: big.slice(1),
-      domain: "compare",
+      id: "pad-1",
+      prompt: "500 + 0",
+      answer: "0500",
+      distractors: ["0501", "0499", "0510"],
+      domain: "add",
       difficulty: 5,
     }),
-    report: (r) => bigReports.push({ correct: r.correct, answered: r.answered }),
+    report: (r) => padReports.push({ correct: r.correct, answered: r.answered }),
     haptic: () => {},
     prefersReducedMotion: () => false,
   }
-  const bw = new World(bigHost, specFor("low"), 21)
-  for (let f = 0; f < 60 * 60 * 2 && bigReports.length === 0; f++) {
-    const res = bw.resonance
+  const pw = new World(padHost, specFor("low"), 21)
+  for (let f = 0; f < 60 * 60 * 2 && padReports.length === 0; f++) {
+    const res = pw.resonance
     if (res.active && res.phase === 2) {
       const i = res.spheres[res.correctSlot] as number
-      if (i >= 0 && bw.malive[i]) {
-        bw.aimX = bw.mx[i] as number
-        bw.aimY = bw.my[i] as number
+      if (i >= 0 && pw.malive[i]) {
+        pw.aimX = pw.mx[i] as number
+        pw.aimY = pw.my[i] as number
       }
     }
-    bw.step(1 / 60)
+    pw.step(1 / 60)
   }
-  assert.equal(bigReports.length, 1, "the big-number resonance never resolved")
-  assert.equal((bigReports[0] as { correct: boolean }).correct, true)
+  assert.equal(padReports.length, 1, "the padded-answer resonance never resolved")
+  assert.equal((padReports[0] as { correct: boolean }).correct, true)
   assert.equal(
-    (bigReports[0] as { answered: string }).answered,
-    "8030000000",
-    "an answer past 2^31 came back as a different number — it went through the Int32Array",
+    (padReports[0] as { answered: string }).answered,
+    "0500",
+    "the answer came back as a different string — it went through the Int32Array",
   )
+})
+
+/**
+ * The other half of the same seam, and a live defect until this pass.
+ *
+ * `mval` is an `Int32Array` and `openResonance` clamps anything past 2^31 to
+ * **zero** on the way in. So a sphere carrying the answer to `37388 × 85585`
+ * (= 3,199,851,980) was drawn reading `0`: the child was asked to find an answer
+ * that was not on the screen, four spheres all lied, and whichever one they flew
+ * into cost them mass.
+ *
+ * Measured through the real host over the whole 66-rung ladder, 40 items a rung:
+ * the top rung is `dw.mul.multidigit.long-multiplication` L2 and **24 of 40 of
+ * its answers exceed 2^31**. ARENA's old integer difficulty request landed on
+ * exactly that rung whenever the breath reached its ceiling, so this was
+ * reachable by playing well.
+ *
+ * The fix is the rule ARENA already had for an item it cannot pose with four
+ * distinct options, applied to the other way a beat can lie: it declines.
+ */
+test("a question ARENA cannot draw is never asked, and never costs a child anything", () => {
+  const reports: unknown[] = []
+  const warnings: string[] = []
+  const realWarn = console.warn
+  console.warn = (...args: unknown[]) => {
+    warnings.push(args.map(String).join(" "))
+  }
+  try {
+    const bigHost: Host = {
+      next: () => ({
+        id: "big-1",
+        prompt: "37388 × 85585",
+        answer: "3199851980",
+        distractors: ["3199851981", "3199851979", "3199851990"],
+        domain: "multiply",
+        difficulty: 5,
+      }),
+      report: (r) => reports.push(r),
+      haptic: () => {},
+      prefersReducedMotion: () => false,
+    }
+    const bw = new World(bigHost, specFor("low"), 21)
+    let everOpened = 0
+    let drawnZero = 0
+    for (let f = 0; f < 60 * 60 * 4; f++) {
+      const res = bw.resonance
+      if (res.active) {
+        everOpened++
+        for (let s = 0; s < 4; s++) {
+          const i = res.spheres[s] as number
+          if (i >= 0 && bw.malive[i] && bw.mval[i] === 0) drawnZero++
+        }
+        const i = res.spheres[res.correctSlot] as number
+        if (i >= 0 && bw.malive[i]) {
+          bw.aimX = bw.mx[i] as number
+          bw.aimY = bw.my[i] as number
+        }
+      }
+      bw.step(1 / 60)
+    }
+    assert.equal(everOpened, 0, "a question whose answer cannot be drawn was posed to a child anyway")
+    assert.equal(drawnZero, 0, "a sphere was drawn reading 0 instead of its answer")
+    assert.equal(reports.length, 0, "declining to ask a question still reported something to the host")
+    assert.ok(
+      warnings.some((w) => w.includes("cannot draw") && w.includes("3199851980")),
+      `declining was silent — warnings were ${JSON.stringify(warnings)}`,
+    )
+  } finally {
+    console.warn = realWarn
+  }
 })
 
 /**
@@ -632,40 +710,789 @@ test("the world breathes out for a child who is struggling, and in for one who i
 })
 
 /**
- * Time is MEASURED and REWARDED, never imposed.
+ * Time is MEASURED and REWARDED, never imposed — and after this pass it is not
+ * even bounded.
  *
  *   "I like infinite time to think in most cases too ... we can usually
  *    measure, pace and reward, not cause anxiety"
  *
- * Two clocks used to run on every child regardless: a window that shrank with
- * the number of questions asked — `max(6.5, 10.5 - resonanceCount * 0.16)` —
- * and spheres that drifted away at a flat 22 units a second while you thought.
+ *   "if you can do something like 34801 / 37 in your head in 5 seconds you are a
+ *    total math stud .. maybe they allow infinite time and even invite the kid to
+ *    take out a piece of paper and work it out for 10 minutes for the points"
+ *
+ * Three clocks have been deleted from this beat in turn. The first shrank with
+ * the number of questions asked (`max(6.5, 10.5 - resonanceCount * 0.16)`). The
+ * second was spheres drifting away at a flat 22 units a second while you thought.
+ * The third — deleted here — was `valueAt(intensity, 26, 6, "gentle")`: a window
+ * a fast player *earned*, which was defensible until the ladder started serving
+ * five-column long division into six seconds of it.
+ *
+ * What is left is measured over the whole cross product of run states below: the
+ * guard is a function of the item and of nothing else.
  */
-test("a struggling player is never put on a clock, and a fast one is paid for being fast", () => {
-  const world = new World(createStubHost({ seed: 8 }), specFor("mid"), 55)
+test("the time a child gets is a function of the question, and of nothing about the run", () => {
+  // The same item, asked of a world at rest, a world that has been struggling for
+  // five minutes, and a world that has been perfect for seven. If any of the
+  // three disagrees, something about the run is in the window.
+  // The guard is read off the LIVE WORLD — `world.resonance.guard`, installed by
+  // `openResonance` — and never recomputed here.
+  //
+  // The first cut of this test called `guardSeconds(item)` once per arm and
+  // compared the three results. `guardSeconds` is a pure import and `item` is a
+  // module const, so all three were the same constant expression: three
+  // assertions that could not fail, and that would have passed happily while
+  // `openResonance` installed `guardSeconds(q) * (1 - intensity)`. Building three
+  // worlds and flying them for seven minutes made it look like a measurement.
+  const item = { prompt: "34801 ÷ 37", answer: "941" }
+  const fixedHost = (): Host => ({
+    next: () => ({
+      id: "fixed-1",
+      prompt: item.prompt,
+      answer: item.answer,
+      distractors: ["942", "940", "951"],
+      domain: "divide",
+      difficulty: 5,
+    }),
+    report: () => {},
+    haptic: () => {},
+    prefersReducedMotion: () => false,
+  })
+  const at = (seconds: number, accuracy: number): { guard: number; intensity: number } => {
+    const w = new World(fixedHost(), specFor("mid"), 55)
+    if (seconds > 0) fly(w, seconds, accuracy, 13)
+    // Run on until a beat is actually open, and take what the world put there.
+    for (let f = 0; f < 60 * 120; f++) {
+      w.step(1 / 60)
+      const res = w.resonance
+      if (res.active && res.phase === 2) return { guard: res.guard, intensity: w.intensity }
+    }
+    throw new Error("no Resonance opened, so nothing was measured")
+  }
+  const rest = at(0, 0)
+  const lost = at(300, 0)
+  const ace = at(420, 1)
   assert.ok(
-    world.resonanceSeconds >= 24,
-    `a fresh run gives only ${world.resonanceSeconds.toFixed(1)}s to think`,
+    ace.intensity > lost.intensity + 0.3,
+    `the three worlds did not actually diverge, so the claim is untested: ${lost.intensity} vs ${ace.intensity}`,
   )
+  assert.equal(rest.guard, lost.guard, "five minutes of struggle changed the time the same question gets")
+  assert.equal(rest.guard, ace.guard, "seven minutes of mastery changed the time the same question gets")
+  // …and it is the founder's ten minutes, for the item he named.
+  assert.equal(rest.guard, 600, `${item.prompt} was given ${rest.guard}s, not the ten minutes he asked for`)
+  // Belt and braces: the world's number is the module's number, checked once.
+  assert.equal(rest.guard, guardSeconds(item), "the world installed something other than the item's own guard")
+
+  // The spheres do not recede, at any point on the ladder. The old drift was
+  // earned on the same curve as the old window, so at the top of the ladder the
+  // answer physically walked away from a hesitating child at 22 units a second.
+  for (const w of [
+    new World(createStubHost({ seed: 8 }), specFor("mid"), 55),
+    (() => {
+      const x = new World(createStubHost({ seed: 8 }), specFor("mid"), 55)
+      fly(x, 420, 1, 13)
+      return x
+    })(),
+  ]) {
+    // Held open with a still hand, and the ring measured at both ends.
+    let opened = false
+    let r0 = 0
+    let r1 = 0
+    for (let f = 0; f < 60 * 240; f++) {
+      const res = w.resonance
+      if (res.active && res.phase === 2) {
+        const i = res.spheres[0] as number
+        if (i >= 0 && w.malive[i]) {
+          const r = Math.hypot((w.mx[i] as number) - res.centreX, (w.my[i] as number) - res.centreY)
+          if (!opened) {
+            opened = true
+            r0 = r
+          }
+          r1 = r
+        }
+      }
+      // The hand never moves: `aim` is parked, which is what `mount` writes when
+      // nothing is being touched.
+      w.aimX = w.px
+      w.aimY = w.py
+      w.step(1 / 60)
+      if (opened && !w.resonance.active) break
+    }
+    assert.ok(opened, "no Resonance opened in four minutes")
+    assert.ok(
+      Math.abs(r1 - r0) < r0 * 0.02,
+      `the answer moved from ${r0.toFixed(0)} to ${r1.toFixed(0)} units away while the child thought`,
+    )
+  }
+})
+
+/**
+ * The guard fires only on silence, and firing costs nothing.
+ *
+ * `games/claim`: **a clock may never take anything away from a child.** So the
+ * thing that ends an unanswered Resonance measures a *pause* and not a round, it
+ * refills on any hand on the glass, and when it does fire the host is told
+ * nothing, the pacing controller does not move, and no mass changes hands.
+ */
+test("the guard measures silence, refills on a hand, and takes nothing when it fires", () => {
+  const reports: unknown[] = []
+  const world = new World(createStubHost({ seed: 3, onReport: (r) => reports.push(r) }), specFor("low"), 404)
+
+  // Sit through one whole beat without ever touching anything.
+  let fired = 0
+  let openedAt = -1
+  let guard = 0
+  let massAtOpen = 0
+  let successAtOpen = 0
+  for (let f = 0; f < 60 * 900; f++) {
+    const res = world.resonance
+    if (res.active && res.phase === 2 && openedAt < 0) {
+      openedAt = world.time
+      guard = res.guard
+      massAtOpen = world.mass
+      successAtOpen = world.success
+    }
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+    for (let e = 0; e < world.eventLen; e++) {
+      if ((world.events[e] as { kind: string }).kind === "resonance-fade") fired++
+    }
+    if (fired > 0) break
+  }
+  assert.ok(fired === 1, `the guard never fired in fifteen minutes of stillness (fired ${fired})`)
+  assert.ok(guard >= 60, `the guard was only ${guard}s`)
+  // A frame of slack: `openedAt` is stamped the first frame the harness OBSERVES
+  // phase 2, which is one step after the world zeroed `idle`.
+  const held = world.time - openedAt
+  assert.ok(held >= guard - 0.1, `the beat was withdrawn after ${held.toFixed(2)}s against a ${guard}s guard`)
+  assert.equal(reports.length, 0, "a withdrawn question was reported to the host")
+  assert.equal(world.success, successAtOpen, "a withdrawn question moved the pacing controller")
+  assert.ok(world.mass >= massAtOpen, `a withdrawn question cost ${(massAtOpen - world.mass).toFixed(1)} mass`)
+
+  // Now the same beat with a hand on it, wandering — the child is steering, not
+  // answering. This arm used to assert the beat stayed open, on the theory that any
+  // input is a hand on the rack. It is the opposite assertion now, and the reason
+  // is in `stepResonance`: steering is not answering, so a child who ignores the
+  // question must not be able to hold a beat open forever.
+  const w2 = new World(createStubHost({ seed: 3 }), specFor("low"), 404)
+  let longest = 0
+  let openFor = 0
+  let fades = 0
+  for (let f = 0; f < 60 * 1200; f++) {
+    const res = w2.resonance
+    if (res.active && res.phase === 2) {
+      openFor += 1 / 60
+      // A hand on the stick the whole time, going nowhere near a sphere.
+      w2.aimX = w2.px + (f % 120 < 60 ? 60 : -60)
+      w2.aimY = w2.py
+    } else {
+      longest = Math.max(longest, openFor)
+      openFor = 0
+    }
+    w2.step(1 / 60)
+    for (let e = 0; e < w2.eventLen; e++) {
+      if ((w2.events[e] as { kind: string }).kind === "resonance-fade") fades++
+    }
+  }
+  longest = Math.max(longest, openFor)
+  assert.ok(fades > 0, "a child who steered for twenty minutes without answering never had a beat withdrawn")
   assert.ok(
-    world.sphereDrift * world.resonanceSeconds < 2,
-    `the spheres drift ${(world.sphereDrift * world.resonanceSeconds).toFixed(1)} units over a whole window — the answer walks away from a child at the bottom of the ladder`,
+    longest <= MAX_GUARD_SECONDS + 2,
+    `a beat stayed open for ${longest.toFixed(0)}s — longer than any item's allowance, so the game could not resume`,
+  )
+})
+
+/**
+ * Speed is still worth something, and it is worth it as a BONUS.
+ *
+ * The earned countdown is gone; the reward for mastery it stood for is not. A
+ * brisk correct answer pays up to 70% more mass than a laboured one and the
+ * celebration scales with it, and that is now the whole of ARENA's relationship
+ * with the clock. `game-pacing/flow.ts`: "a countdown that kills you and a bonus
+ * that accrues when you are fast read the same clock and produce opposite
+ * emotional experiences."
+ */
+test("a fast answer earns more, and a slow one still wins", () => {
+  const play = (thinkFrames: number): { gain: number; quick: number; mass: number } => {
+    const world = new World(createStubHost({ seed: 44 }), specFor("low"), 707)
+    let gain = 0
+    let quick = -1
+    let waited = 0
+    for (let f = 0; f < 60 * 600 && quick < 0; f++) {
+      const res = world.resonance
+      if (res.active && res.phase === 2) {
+        if (waited < thinkFrames) {
+          waited++
+          // Thinking. The hand is on the stick, so the guard never runs down —
+          // and this is also the only way to spend real time in a beat now.
+          world.aimX = world.px + (waited % 2 === 0 ? 40 : -40)
+          world.aimY = world.py
+        } else {
+          const i = res.spheres[res.correctSlot] as number
+          if (i >= 0 && world.malive[i]) {
+            world.aimX = world.mx[i] as number
+            world.aimY = world.my[i] as number
+          }
+        }
+      }
+      world.step(1 / 60)
+      for (let e = 0; e < world.eventLen; e++) {
+        // `a` is the mass gained; `r` is the quickness the world paid it at —
+        // `resolveResonance` puts it there so the presentation layer can spend it
+        // on spectacle without recomputing it.
+        const ev = world.events[e] as { kind: string; a: number; r: number }
+        if (ev.kind !== "resonance-hit") continue
+        gain = ev.a
+        quick = ev.r
+      }
+    }
+    return { gain, quick, mass: 0 }
+  }
+
+  const brisk = play(0)
+  const slow = play(60 * 20)
+  assert.ok(brisk.quick > 0.5, `an immediate answer scored quickness ${brisk.quick.toFixed(2)}`)
+  assert.ok(slow.quick <= 0.001, `a twenty-second answer still scored quickness ${slow.quick.toFixed(2)}`)
+  assert.ok(brisk.gain > slow.gain, `being fast paid ${brisk.gain.toFixed(1)} against ${slow.gain.toFixed(1)} for being slow`)
+  assert.ok(slow.gain > 0, "a slow correct answer paid nothing at all — slowness must never be a punishment")
+})
+
+/**
+ * The invariant, measured through the REAL scheduler rather than by calling
+ * `guardSeconds` twice.
+ *
+ * `window.test.ts` proves the function is monotone and pure. This proves the game
+ * installs what the function returned, on every beat, over a real run — which is
+ * the assertion that survives somebody adding a "just a small nudge" multiplier
+ * inside `openResonance`.
+ *
+ * Twenty minutes at each of three abilities, every beat's guard recorded against
+ * the item that produced it. Two claims: the guard the world installed is exactly
+ * the item's, and across the whole population a wider item never got less.
+ */
+test("through the real scheduler, the guard is the item's and a harder item never gets less", () => {
+  type Seen = { prompt: string; answer: string; guard: number; p90: number; intensity: number }
+  const seen: Seen[] = []
+
+  for (const accuracy of [0, 0.5, 1]) {
+    const asked = new Map<string, Question>()
+    const stub = createStubHost({ seed: 5150 })
+    const host: Host = {
+      next: (o) => {
+        const q = stub.next(o)
+        asked.set(q.id, q)
+        return q
+      },
+      report: (r) => stub.report(r),
+      haptic: () => {},
+      prefersReducedMotion: () => false,
+    }
+    const world = new World(host, specFor("mid"), 8080)
+    let lastId = ""
+    fly(world, 1200, accuracy, 4242, () => {
+      const res = world.resonance
+      if (!res.active || res.phase < 1 || !res.question) return
+      if (res.question.id === lastId) return
+      lastId = res.question.id
+      const q = asked.get(res.question.id) as Question
+      seen.push({
+        prompt: q.prompt,
+        answer: q.answer,
+        guard: res.guard,
+        p90: comprehensionSeconds({ prompt: q.prompt, answer: q.answer }),
+        intensity: world.intensity,
+      })
+    })
+  }
+
+  assert.ok(seen.length >= 60, `only ${seen.length} questions in an hour of play across three abilities`)
+
+  // 1. What the world installed is what the item asked for. No fudge factor, no
+  //    scaling, no floor applied on the way through.
+  for (const s of seen) {
+    assert.equal(
+      s.guard,
+      guardSeconds({ prompt: s.prompt, answer: s.answer }),
+      `"${s.prompt}" was given a ${s.guard}s guard, not the item's own`,
+    )
+  }
+
+  // 2. The population is monotone in the item's own difficulty. Sorted by p90,
+  //    the guard may never step down.
+  const sorted = [...seen].sort((a, b) => a.p90 - b.p90)
+  for (let i = 1; i < sorted.length; i++) {
+    const lo = sorted[i - 1] as Seen
+    const hi = sorted[i] as Seen
+    assert.ok(
+      hi.guard >= lo.guard,
+      `"${hi.prompt}" (p90 ${hi.p90}s) got ${hi.guard}s while the easier "${lo.prompt}" (p90 ${lo.p90}s) got ${lo.guard}s`,
+    )
+  }
+
+  // 3. And the same item text always got the same guard, however hot the run was
+  //    when it came up. This is the assertion the old `resonanceSeconds` failed.
+  const byPrompt = new Map<string, Seen[]>()
+  for (const s of seen) {
+    const list = byPrompt.get(s.prompt) ?? []
+    list.push(s)
+    byPrompt.set(s.prompt, list)
+  }
+  let compared = 0
+  for (const [prompt, group] of byPrompt) {
+    if (group.length < 2) continue
+    const spread = Math.max(...group.map((g) => g.intensity)) - Math.min(...group.map((g) => g.intensity))
+    for (const g of group) {
+      assert.equal(
+        g.guard,
+        (group[0] as Seen).guard,
+        `"${prompt}" got ${g.guard}s once and ${(group[0] as Seen).guard}s another time`,
+      )
+    }
+    if (spread > 0.2) compared++
+  }
+  assert.ok(compared > 0, "no item ever came up twice at meaningfully different intensities, so the claim is untested")
+
+  const widest = seen.reduce((m, s) => Math.max(m, s.p90), 0)
+  const narrowest = seen.reduce((m, s) => Math.min(m, s.p90), 1e9)
+  assert.ok(
+    widest > narrowest,
+    `every question in an hour of play was the same class (p90 ${widest}s) — the monotonicity claim is vacuous`,
+  )
+  console.log(
+    `[measured] ${seen.length} questions through the real scheduler, ` +
+      `p90 ${narrowest}s..${widest}s, guard ${narrowest * 10}s..${widest * 10}s, ` +
+      `${byPrompt.size} distinct prompts`,
+  )
+})
+
+/**
+ * The lurch, and why it was arithmetic rather than judgement.
+ *
+ *   "the higher levels need to come more gently and not jump right into Max Cohen
+ *    mode"
+ *
+ * `DIFFICULTY_RUNGS` is 10; the shared bridge maps a 1..10 ladder index onto the
+ * host's ladder as `(value - 1) / 9`; the host's ladder is **66 rungs**. So the
+ * integer request `rung + 1` could only ever name curriculum rungs
+ * {0, 7, 14, 22, 29, 36, 43, 51, 58, 65} — and one step of ARENA's breath was a
+ * 7.2-rung jump. Measured through the real host:
+ *
+ *     ARENA rung 6 -> curriculum 43 -> dw.add.regroup.add-multidigit L2  `506 + 394`
+ *     ARENA rung 7 -> curriculum 51 -> dw.div.whole.divide-exact L3      `721308 ÷ 84`
+ *
+ * Unrounded, the same climb walks the ladder a rung at a time.
+ */
+/**
+ * The host's ladder, as the bridge maps ARENA's request onto it: `(d - 1) / 9`
+ * across 66 curriculum rungs. Both figures are the host's and neither is ARENA's
+ * to choose, so they are stated here as the frame the measurement is read in.
+ */
+const CURRICULUM_RUNGS = 66
+
+/** Every difficulty ARENA asked for in `seconds` of play, as curriculum rungs. */
+function requestedRungs(seconds: number, accuracy: number, seed: number): number[] {
+  const asks: number[] = []
+  const stub = createStubHost({ seed: 66 })
+  const host: Host = {
+    next: (o) => {
+      if (o?.difficulty !== undefined) {
+        assert.ok(
+          (o.difficulty as number) >= 1 && (o.difficulty as number) <= 10,
+          `asked the host for difficulty ${String(o.difficulty)}, outside the 1..10 ladder scale the bridge documents`,
+        )
+        asks.push(Math.round((((o.difficulty as number) - 1) / 9) * (CURRICULUM_RUNGS - 1)))
+      }
+      return stub.next(o)
+    },
+    report: () => {},
+    haptic: () => {},
+    prefersReducedMotion: () => false,
+  }
+  const world = new World(host, specFor("mid"), seed)
+  fly(world, seconds, accuracy, 271)
+  return asks
+}
+
+test("the climb walks the curriculum a rung at a time, and a lucky streak cannot reach the top", () => {
+  const perfect = requestedRungs(900, 1, 3141)
+  assert.ok(perfect.length >= 20, `only ${perfect.length} questions were asked in fifteen minutes`)
+
+  const distinct = new Set(perfect)
+  let smallestStep = Infinity
+  let largestStep = 0
+  for (let i = 1; i < perfect.length; i++) {
+    const step = Math.abs((perfect[i] as number) - (perfect[i - 1] as number))
+    if (step > 0) smallestStep = Math.min(smallestStep, step)
+    largestStep = Math.max(largestStep, step)
+  }
+  console.log(
+    `[measured] a perfect player, 15 min: ${perfect.length} requests, ` +
+      `${distinct.size} distinct curriculum rungs of ${CURRICULUM_RUNGS}, ` +
+      `steps ${smallestStep}..${largestStep}, highest rung ${Math.max(...perfect)}`,
   )
 
-  // Struggle: the window gets LONGER, never shorter.
-  const before = world.resonanceSeconds
-  fly(world, 300, 0, 13)
+  // THE LURCH, first, because it is the founder's actual sentence and every other
+  // assertion here is a corroborating measurement of it. Before this pass a
+  // perfect player's requests went `0, 3, 21, 25, 32, 39, 47, 55, 63, 65` — an
+  // EIGHTEEN-rung step between two consecutive questions.
   assert.ok(
-    world.resonanceSeconds >= before - 1e-9,
-    `five minutes of struggle SHRANK the window ${before.toFixed(1)} -> ${world.resonanceSeconds.toFixed(1)}`,
+    largestStep <= 4,
+    `one answer moved the child ${largestStep} curriculum rungs — that is "jump right into Max Cohen mode", and it is what this test exists to stop`,
   )
 
-  // Climb, and a real countdown appears — earned, not imposed.
-  const ace = new World(createStubHost({ seed: 8 }), specFor("mid"), 55)
-  fly(ace, 420, 1, 13)
-  assert.ok(ace.resonanceSeconds < 14, `a mathlete was still given ${ace.resonanceSeconds.toFixed(1)}s`)
-  assert.ok(ace.sphereDrift > 5, "…and the spheres never started moving")
-  assert.ok(ace.intensity > world.intensity)
+  // "You get a few right just by being lucky and all of a sudden you are asked to
+  // do like 87364/9." Five-digit long division is around curriculum rung 40; the
+  // top of the ladder is 65. Neither is reachable on a short lucky streak.
+  const firstFive = perfect.slice(0, 5)
+  assert.ok(
+    Math.max(...firstFive) < 12,
+    `five correct answers put a child on curriculum rung ${Math.max(...firstFive)} of ${CURRICULUM_RUNGS - 1} — a lucky streak reached content nobody has shown they can do`,
+  )
+
+  // Ten is what an INTEGER request could reach at all: `rung + 1` over
+  // `DIFFICULTY_RUNGS` = 10 could only ever name curriculum rungs
+  // {0, 7, 14, 22, 29, 36, 43, 51, 58, 65}. Anything past ten distinct rungs is a
+  // resolution the old request did not have.
+  assert.ok(
+    distinct.size > DIFFICULTY_RUNGS,
+    `the climb reached only ${distinct.size} distinct curriculum rungs — ten is all the old integer request could name`,
+  )
+  // …and it can step by ONE. Measured before this pass, the smallest non-zero step
+  // a perfect player's request ever took was 2, and the median was 7.
+  assert.ok(
+    smallestStep <= 1,
+    `the smallest non-zero step up the curriculum was ${smallestStep} rungs, so the ladder is still quantised`,
+  )
+  // Crossing the whole ladder takes the number of answers the HOST's own
+  // recalibrated ladder would take — see `LADDER_CLIMB_ANSWERS`. Fifteen minutes
+  // of flawless play is about 33 answers, so it must not be at the top yet.
+  assert.ok(
+    Math.max(...perfect) < CURRICULUM_RUNGS - 1,
+    `flawless play reached the very top of the curriculum in ${perfect.length} answers`,
+  )
+
+  // A child at the founder's own "right level" sits, rather than being raced.
+  const sitting = requestedRungs(900, 0.85, 3141)
+  console.log(
+    `[measured] an 85%-correct player, 15 min: rungs ${Math.min(...sitting)}..${Math.max(...sitting)} of ${CURRICULUM_RUNGS - 1}`,
+  )
+  assert.ok(
+    Math.max(...sitting) < 30,
+    `a child right 85% of the time was carried to curriculum rung ${Math.max(...sitting)} — "if you are getting 85% you are at the right level"`,
+  )
+
+  // And a struggling child is at the bottom, which is the property that must not
+  // regress in the other direction.
+  const lost = requestedRungs(600, 0, 3141)
+  assert.ok(Math.max(...lost) <= 4, `a child getting everything wrong was asked for curriculum rung ${Math.max(...lost)}`)
+})
+
+/**
+ * The answer does not move, **including at the edge of the world.**
+ *
+ * `sphereOrbit` rotates the ring about the ring's own centre; `stepMotes` clamps
+ * every live mote radially about the WORLD ORIGIN. Those two disagree, and with the
+ * player parked against the membrane they fight: the rotation carries a sphere
+ * outside `arenaR`, the clamp drags it back toward the origin, and the ring slides
+ * along the membrane instead of turning in place.
+ *
+ * The pull and the flip in `stepMotes` already skipped `MK_ANSWER`; the clamp was
+ * the one of the three that did not. Narrow — `ringR` is about 0.3% of `arenaR` —
+ * but `sphereOrbit` and the README both promise the answer is exactly where the
+ * child found it ten minutes later, with no qualification, so the code should hold
+ * it with no qualification.
+ */
+test("the answer stays put even with the player pinned against the membrane", () => {
+  const reports: unknown[] = []
+  const world = new World(createStubHost({ seed: 17, onReport: (r) => reports.push(r) }), specFor("low"), 2024)
+  // Open a beat, then put the player hard against the membrane so the clamp and
+  // the rotation are both live on the same spheres.
+  let opened = false
+  for (let f = 0; f < 60 * 120 && !opened; f++) {
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+    opened = world.resonance.active && world.resonance.phase === 2
+  }
+  assert.ok(opened, "no Resonance opened")
+
+  const res = world.resonance
+  const edge = world.arenaR
+  // Move the player and the whole ring out to the membrane together, so the ring
+  // straddles it — the geometry the clamp would fight.
+  const dx = edge - res.centreX
+  const dy = -res.centreY
+  world.px += dx
+  world.py += dy
+  res.centreX += dx
+  res.centreY += dy
+  for (let s = 0; s < 4; s++) {
+    const i = res.spheres[s] as number
+    if (i < 0) continue
+    world.mx[i] = (world.mx[i] as number) + dx
+    world.my[i] = (world.my[i] as number) + dy
+  }
+  const radii = (): number[] => {
+    const out: number[] = []
+    for (let s = 0; s < 4; s++) {
+      const i = res.spheres[s] as number
+      if (i < 0 || !world.malive[i]) continue
+      out.push(Math.hypot((world.mx[i] as number) - res.centreX, (world.my[i] as number) - res.centreY))
+    }
+    return out
+  }
+  const before = radii()
+  assert.equal(before.length, 4, "the ring was not intact before the measurement")
+  assert.ok(
+    before.some((r, k) => Math.hypot(res.centreX, res.centreY) + r > edge && k >= 0),
+    "the ring does not actually straddle the membrane, so the clamp is not being exercised",
+  )
+
+  const reportsAtStart = reports.length
+  for (let f = 0; f < 60 * 30; f++) {
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+  }
+
+  // **The ring must still be a ring**, asserted BEFORE the radii and by count.
+  //
+  // The first cut of this compared `before[k]` against `after[k]` over
+  // `after.length`, and the defect it was written for retires spheres — so the two
+  // arrays had different lengths, one surviving sphere was compared against the
+  // first of four, and two equal numbers agreed about nothing. Measured under the
+  // mutation: three of the four spheres were gone inside 253 frames.
+  const after = radii()
+  assert.equal(
+    after.length,
+    4,
+    `${4 - after.length} of the four spheres were consumed while the child sat still at the membrane`,
+  )
+
+  // …and what consumed them was the clamp pushing one into the player, which the
+  // beat read as the child CHOOSING it. That is the severe form of this bug: a
+  // verdict, and a mass penalty, for an answer nobody gave.
+  assert.equal(
+    reports.length,
+    reportsAtStart,
+    "a sphere was pushed into a motionless child and answered the question for them",
+  )
+
+  for (let k = 0; k < 4; k++) {
+    const r0 = before[k] as number
+    const r1 = after[k] as number
+    assert.ok(
+      Math.abs(r1 - r0) < r0 * 0.02,
+      `sphere ${k} slid from ${r0.toFixed(0)} to ${r1.toFixed(0)} units from the ring centre at the membrane`,
+    )
+  }
+})
+
+/**
+ * **Stalling must not make the maths harder.**
+ *
+ * `LADDER_CLIMB_ANSWERS` is stated in ANSWERS and converted to seconds on the
+ * assumption that seconds only pass between answers — and an allowance of up to
+ * ten minutes breaks that assumption inside a single unanswered beat. With the
+ * leash on raw `dt`, measured: six correct answers put the request on curriculum
+ * rung 9, and then two ABANDONED questions — nothing answered, nothing reported,
+ * nothing taken — carried it to rung 40, which is five-digit long division.
+ *
+ * Two things wrong with that at once. Answering nothing was a way to make the
+ * questions harder; and a child who takes the founder's ten minutes on paper and
+ * gets it right was charged nearly half the ladder for the minutes they spent
+ * thinking. Both are the bill for thinking that this pass exists to cancel.
+ */
+test("stalling on a question does not climb the ladder", () => {
+  const item = { prompt: "34801 ÷ 37", answer: "941" }
+  const host: Host = {
+    next: () => ({
+      id: "long-1",
+      prompt: item.prompt,
+      answer: item.answer,
+      distractors: ["942", "940", "951"],
+      domain: "divide",
+      difficulty: 5,
+    }),
+    report: () => {},
+    haptic: () => {},
+    prefersReducedMotion: () => false,
+  }
+  const world = new World(host, specFor("low"), 606)
+
+  // Answer six correctly and fast, so the BREATH is pinned at its ceiling and the
+  // leash is genuinely in its climbing branch. Without this the test exercises the
+  // falling branch and proves nothing.
+  let answered = 0
+  for (let f = 0; f < 60 * 600 && answered < 6; f++) {
+    const res = world.resonance
+    if (res.active && res.phase === 2) {
+      const i = res.spheres[res.correctSlot] as number
+      if (i >= 0 && world.malive[i]) {
+        world.aimX = world.mx[i] as number
+        world.aimY = world.my[i] as number
+      }
+    }
+    world.step(1 / 60)
+    for (let e = 0; e < world.eventLen; e++) {
+      if ((world.events[e] as { kind: string }).kind === "resonance-hit") answered++
+    }
+  }
+  assert.equal(answered, 6, `only ${answered} answers landed, so the climbing branch was never entered`)
+  assert.ok(world.intensity > 0.9, `the breath is only at ${world.intensity.toFixed(3)}, so the leash is not climbing`)
+  const beforeStall = world.ladderPosition
+  assert.ok(beforeStall > 0, "the ladder never left the floor, so a rise could not be detected")
+
+  // Now stall out two whole allowances without answering anything.
+  let fades = 0
+  for (let f = 0; f < 60 * 1500 && fades < 2; f++) {
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+    for (let e = 0; e < world.eventLen; e++) {
+      if ((world.events[e] as { kind: string }).kind === "resonance-fade") fades++
+    }
+  }
+  assert.equal(fades, 2, `only ${fades} questions were abandoned, so the claim is untested`)
+
+  // Time passed — twenty minutes of it — and the ladder did not move, because
+  // none of it was time anybody answered in.
+  // Exactly nothing, not merely "not much": the leash is paid in answers, so with
+  // no answers there is no rung to spend. A per-second version leaked here.
+  const climbed = world.ladderPosition - beforeStall
+  assert.ok(
+    climbed <= 1e-9,
+    `two abandoned questions carried the request ${(climbed * 100).toFixed(1)}% of the way up the ladder ` +
+      `(${beforeStall.toFixed(3)} -> ${world.ladderPosition.toFixed(3)}, about curriculum rung ` +
+      `${Math.round(world.ladderPosition * 65)} of 65) without a single answer`,
+  )
+})
+
+/**
+ * Relief is not earned. The maths ladder falls as fast as the breath does.
+ *
+ * The leash on `mathsIntensity` is one-directional on purpose, and it is the same
+ * asymmetry `game-pacing` already applies to `fallSeconds` and #715 applies to its
+ * bands: "Up needs two things, down needs one." A slew limit in both directions
+ * would be a child who missed four in a row still being asked for long division
+ * twenty minutes later.
+ */
+test("a struggling child's questions get easier at once, not on a leash", () => {
+  const world = new World(createStubHost({ seed: 71 }), specFor("mid"), 1717)
+  // Climb first, so there is something to fall from.
+  fly(world, 900, 1, 271)
+  const high = world.mathsIntensity
+  assert.ok(high > 0.2, `the climb never got anywhere: mathsIntensity ${high.toFixed(3)}`)
+
+  // Now miss everything, and watch the two scalars come down together.
+  fly(world, 120, 0, 271)
+  assert.ok(
+    world.mathsIntensity <= world.intensity + 1e-9,
+    `the maths lagged the breath on the way DOWN: ${world.mathsIntensity.toFixed(3)} against ${world.intensity.toFixed(3)}`,
+  )
+  assert.ok(
+    world.mathsIntensity < high * 0.5,
+    `two minutes of missing everything only took the maths from ${high.toFixed(3)} to ${world.mathsIntensity.toFixed(3)}`,
+  )
+})
+
+/**
+ * Thinking is not run time.
+ *
+ * With no length on a Resonance the quiet tide became a bill for using the
+ * founder's invitation: eight minutes on paper is more than the tide's whole
+ * 420-second ramp, so a child would put the tablet down in a calm ocean and pick
+ * it up in a fully escalated one. The tide rides `playTime`, which excludes every
+ * second the arena spent inert.
+ */
+test("time spent thinking does not escalate the ocean", () => {
+  // A child who does exactly what the founder invited: opens a long question, puts
+  // the tablet on the table, and works it out. Nothing is eaten, nothing is
+  // gained, and the aim never moves — the guard's own design case.
+  const longHost: Host = {
+    next: () => ({
+      id: "long-1",
+      prompt: "34801 ÷ 37",
+      answer: "941",
+      distractors: ["942", "940", "951"],
+      domain: "divide",
+      difficulty: 5,
+    }),
+    report: () => {},
+    haptic: () => {},
+    prefersReducedMotion: () => false,
+  }
+  const world = new World(longHost, specFor("mid"), 12321)
+
+  // Fly to the first open beat, and photograph the world.
+  let opened = false
+  for (let f = 0; f < 60 * 120 && !opened; f++) {
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+    opened = world.resonance.active && world.resonance.phase === 2
+  }
+  assert.ok(opened, "no Resonance opened")
+  const before = {
+    depth: world.depth.index,
+    over: world.over,
+    world: world.worldIntensity,
+    hunters: world.hunterBudget,
+    voids: world.voidRate,
+    mass: world.mass,
+    play: world.playTime,
+  }
+  assert.ok(world.resonance.guard >= 600, `the beat only carried a ${world.resonance.guard}s guard`)
+
+  // Sit out the entire guard without touching anything.
+  let inert = 0
+  for (let f = 0; f < 60 * 900; f++) {
+    if (world.resonance.active) inert++
+    world.aimX = world.px
+    world.aimY = world.py
+    world.step(1 / 60)
+    if (!world.resonance.active && inert > 60 * 300) break
+  }
+  assert.ok(inert > 60 * 550, `only ${(inert / 60).toFixed(0)}s was spent inside the beat`)
+
+  // 1. The bookkeeping. `playTime` did not advance while the arena was inert.
+  assert.ok(
+    Math.abs(world.playTime - before.play) < 2,
+    `${(world.playTime - before.play).toFixed(1)}s of thinking was charged to the run`,
+  )
+
+  // 2. THE ESCALATION SPINE, and this is the assertion the first cut of this test
+  //    was missing. `refreshDepth` was still on `this.time`, and `DEPTH_CLOCK_SECONDS`
+  //    is 100 with a floored band — so ten minutes of thinking sank the run six
+  //    bands, from DRIFT to THE ABYSSAL, and handed the child back four hunters, a
+  //    leviathan, 18% void motes and temper 0.86. It never came back, because the
+  //    band cannot fall. Asserting only the `playTime` arithmetic left that green.
+  assert.equal(
+    world.depth.index,
+    before.depth,
+    `thinking sank the run from depth ${before.depth} to depth ${world.depth.index} — the child paid for the paper in hunters`,
+  )
+  assert.ok(
+    world.over <= before.over + 1e-9,
+    `thinking drove overdrive from ${before.over.toFixed(3)} to ${world.over.toFixed(3)}`,
+  )
+  assert.ok(
+    world.worldIntensity <= before.world + 1e-9,
+    `thinking drove the world from ${before.world.toFixed(3)} to ${world.worldIntensity.toFixed(3)}`,
+  )
+  assert.ok(world.hunterBudget <= before.hunters, `thinking bought ${world.hunterBudget - before.hunters} extra hunters`)
+  assert.ok(world.voidRate <= before.voids + 1e-9, "thinking put more void motes in the water")
+
+  // 3. …and it cost no mass either, which is the other half of "takes nothing".
+  assert.ok(world.mass >= before.mass, `thinking cost ${(before.mass - world.mass).toFixed(1)} mass`)
+
+  // 4. And the ladder did not climb on seconds nobody answered in. With the leash
+  //    on raw `dt`, two abandoned questions moved the request from curriculum rung
+  //    9 to rung 40 — five-digit long division, bought by answering nothing.
+  assert.ok(
+    world.ladderPosition <= 0.12,
+    `stalling carried the request to ladder position ${world.ladderPosition.toFixed(3)} without answering anything`,
+  )
 })
 
 /** Mashing must not be a strategy, and must not be punished either. */
