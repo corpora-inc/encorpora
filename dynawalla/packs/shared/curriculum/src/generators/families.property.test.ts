@@ -37,7 +37,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { allNodes } from "../graph/graph.ts";
-import { CG10_BLOCKED_LEVELS } from "../graph/promotionBlockers.ts";
+import { CG10_BLOCKED_LEVELS, MIN_RUNG_VARIANTS, SMALL_RUNG_LEVELS } from "../graph/promotionBlockers.ts";
 import { familyById } from "./registry.ts";
 import { malRules } from "../malrules/registry.ts";
 import { fingerprintItem, serializeExercise } from "../serialize.ts";
@@ -45,7 +45,7 @@ import { answerAccepted, fractionRational, schemaDefect } from "../types/answer.
 import type { AnswerValue } from "../types/answer.ts";
 import type { Exercise, PromptSlot } from "../types/exercise.ts";
 import { LOC_KEY_PATTERN } from "../types/ids.ts";
-import { cmp, eq as rationalEq, rational } from "../math/rational.ts";
+import { cmp, eq as rationalEq, rational, toString as rationalToString } from "../math/rational.ts";
 import type { Rational } from "../math/rational.ts";
 import { findPromptTemplate, promptRegistry } from "../render/prompts.ts";
 import { repSpecDefect } from "../render/representations.ts";
@@ -447,9 +447,99 @@ test("sweep: every level clears its own minVariants, and the sub-floor levels ar
   });
   assert.deepEqual(
     activeBelow.map((level) => level.label),
-    [],
+    [] as readonly string[],
     "an active level is below CG-10's variant-space floor",
   );
+});
+
+/**
+ * `MIN_RUNG_VARIANTS` over the **whole** graph, drafts included.
+ *
+ * `ladder.test.ts` already measures this floor, and over the right graph for the claim it
+ * makes: `activeNodes`, which is what a child can be served. It is the gate that would
+ * have caught the nine-item bottom rung the founder met by playing four games for an
+ * hour, and it is where the exemption list lives.
+ *
+ * This is the same bound over the twenty-eight rows that are **not** active yet, and it
+ * exists for the reason this whole file does. The gates run on the active graph; most of
+ * this graph is draft; so a rung authored under the floor today is discovered by the
+ * promotion PR at best and by a child at worst. `dw.div.facts.division-facts` is the
+ * precedent — it shipped a difficulty table stated against coefficients it did not have,
+ * because CG-9 does not look at draft rows.
+ *
+ * It matters most for the domain this file's graph has just doubled. `frac` is full of
+ * genuinely small closed spaces — `equivalence("build", 12, 4, 1)` is nineteen problems —
+ * and nineteen is a perfectly honest declaration that must not be a rung. Without this,
+ * the only thing standing between that and a child would be somebody remembering.
+ *
+ * Asserted in both directions against `SMALL_RUNG_LEVELS`, which is the *active* exemption
+ * list: a draft rung under the floor is not on it and fails here, and an exempt rung
+ * widened past the floor has to be struck off.
+ */
+test("sweep: every rung in the whole graph holds MIN_RUNG_VARIANTS distinct items", () => {
+  const subFloor: string[] = [];
+  for (const level of LEVELS) {
+    const distinct = new Set(level.exercises.map(fingerprintItem)).size;
+    if (distinct < MIN_RUNG_VARIANTS) subFloor.push(`${level.label} (${String(distinct)} distinct)`);
+  }
+
+  process.stdout.write(
+    subFloor.length === 0
+      ? `# every rung holds at least ${String(MIN_RUNG_VARIANTS)} distinct items\n`
+      : `# ${String(subFloor.length)} rung(s) below MIN_RUNG_VARIANTS=${String(MIN_RUNG_VARIANTS)}:\n#   ${subFloor.join("\n#   ")}\n`,
+  );
+
+  // Both directions. The exemption list is `SMALL_RUNG_LEVELS`, and it is deliberately the
+  // *active* list rather than a second one: a draft rung has no claim on an exemption
+  // nobody has had to weigh, so the only way a draft level clears this is by being wide
+  // enough.
+  assert.deepEqual(
+    subFloor.map((line) => line.slice(0, line.indexOf(" ("))).sort(),
+    [...SMALL_RUNG_LEVELS].sort(),
+    `the rungs below MIN_RUNG_VARIANTS=${String(MIN_RUNG_VARIANTS)} and promotionBlockers.ts disagree`,
+  );
+});
+
+/**
+ * A level table only ever goes up — on **every** row, draft included.
+ *
+ * CG-9 already checks this, and only over `activeNodes`. That asymmetry has cost real
+ * money once already: `dw.div.facts.division-facts` shipped a difficulty table stated
+ * against coefficients it did not have, and no gate could see it while the row was
+ * draft. Twenty-eight rows are draft right now.
+ *
+ * It matters more than a bookkeeping slip because of what reads the number. `b_item` is
+ * what an answering window is priced off — `PACING_AUDIT_2026-07.md` states the
+ * invariant as "`window(d)` must be MONOTONE NON-DECREASING in item difficulty" — so a
+ * rung that is *easier* than the one below it hands a climbing child a **shorter**
+ * window for harder work, in every pack that prices its clock off difficulty at all. A
+ * level table that goes backwards makes that invariant unsatisfiable no matter how
+ * carefully the pacing primitive is written.
+ */
+test("sweep: every level table strictly increases, on draft rows as well as active ones", () => {
+  const backwards: string[] = [];
+  let compared = 0;
+
+  for (const node of allNodes) {
+    if (node.status === "deprecated") continue;
+    const levels = node.difficulty.levels;
+    for (let index = 1; index < levels.length; index++) {
+      const lower = levels[index - 1];
+      const upper = levels[index];
+      if (lower === undefined || upper === undefined) continue;
+      compared += 1;
+      if (cmp(upper, lower) <= 0) {
+        backwards.push(
+          `${node.id} L${String(index)} is ${rationalToString(upper)} and L${String(index - 1)} is ${rationalToString(lower)}`,
+        );
+      }
+    }
+  }
+
+  // A vacuity guard: the loop above passes on a graph of one-level rows.
+  assert.ok(compared > 100, `only ${String(compared)} level steps compared`);
+  assert.deepEqual(backwards, [] as readonly string[], backwards.join("; "));
+  process.stdout.write(`# level tables: ${String(compared)} step(s) compared, all increasing\n`);
 });
 
 /**

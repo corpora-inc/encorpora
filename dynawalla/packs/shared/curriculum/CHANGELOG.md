@@ -9,6 +9,117 @@ installed pack until that pack is rebuilt and republished.
 
 ## 0.1.0 — Unreleased
 
+### `ns`, `alg` and `frac`: the rungs written out, and a variety floor under every one
+
+Twenty-two rows across three domains had between two and four levels each, and most
+started partway up their own ladder. `dw.ns.compare.whole-numbers` — `gradeBand.earliest:
+1` — began at *three-digit* comparison; `dw.ns.round.whole-numbers` began at three digits;
+the `alg` rows stopped at three when their family reaches four. So a controller walking a
+struggling child down these domains ran out of rungs while the questions were still too
+hard, and a child at the top ran out of ladder before the standards the rows cite do.
+
+**The level tables are authored end to end.** 102 levels across the three domains where
+there were 67 — the whole graph goes from 152 to 187 — from the smallest question each
+family can pose to the largest: place value and comparison to seven digits, rounding from
+`47` to the nearest ten up to six digits with the halfway number, the `alg` shapes to four
+digits, and every `frac` row from its smallest denominators to the family's ceiling.
+
+- **`MIN_RUNG_VARIANTS` now also measures the draft graph.** The floor and its exemption
+  list arrived in the section below, measured by `ladder.test.ts` over `activeNodes` — the
+  right graph for the claim it makes, since that is what a child can be served. But
+  twenty-eight rows are draft and this change more than doubles their level count, so a
+  rung authored under the floor today would be found by the promotion PR at best and by a
+  child at worst. `families.property.test.ts` runs the same bound over the whole graph
+  against the same `SMALL_RUNG_LEVELS`, which is deliberately the *active* exemption list:
+  a draft rung has no claim on an exemption nobody has had to weigh.
+
+  It earned its place immediately. `equivalence("build", 12, 4, 1)` is the natural easiest
+  rung for `dw.frac.equivalence.build-equivalent` and holds nineteen problems — an honest
+  declaration and not a rung — so the row starts at a ceiling of 16 and thirty-five
+  instead.
+- **`CG10_BLOCKED_LEVELS` is empty.** All twenty-four entries resolved, none by argument.
+  Levels whose ceiling was arbitrary were **widened** — `dw.ns.round.whole-numbers`' easiest
+  three-digit rung rounded only to the nearest ten (720 problems) and now rounds to ten or
+  hundred (1,602); `dw.frac.arith.add-like-denominators` L2 went from a ceiling of 16
+  (1,008 problems, read as ~780 by the gate's estimator) to 20 (2,100, read as ~1,180).
+  Levels whose space is all there is **declare `closedFactSet`**: `dw.alg.equality.*` at
+  one digit are 81, 81, 64 and 729 sentences, and the whole `build`/`simplify` fraction
+  task holds six hundred problems at the family's widest denominator, so no level of
+  `dw.frac.equivalence.build-equivalent` could ever clear the floor.
+- **`closedSpaces.test.ts`, and the other half of the same loophole.**
+  `MIN_RUNG_VARIANTS` closed the half where a rung is honestly declared too small. This
+  closes the half where the declaration is simply not the space: CG-10's substituted check
+  is `distinct <= declared`, an upper bound alone, so `closedFactSet: [999_999]` satisfies
+  both the gate and the new floor beside a rung of nine items. Every declaration in the
+  graph is now **exhausted** — drawn until the level stops yielding new items, required to
+  equal the declaration exactly — so over- and under-declaring both fail. All 69 pass,
+  including the 37 that were already here and had never been measured from below. It is
+  also why the field is used only below CG-10's floor: the largest of these needs about
+  15,000 seeds and a 2,280-item space needs six figures.
+- **Every level table is checked to increase, on draft rows as well as active ones.** CG-9
+  checks it over `activeNodes` only, and twenty-eight rows are draft; `dw.div.facts.division-facts`
+  already shipped a table stated against coefficients it did not have because of that gap.
+  It matters more than bookkeeping because `b_item` is what an answering window is priced
+  off: `PACING_AUDIT_2026-07.md` requires `window(d)` to be monotone non-decreasing in
+  difficulty, and a rung easier than the one below it hands a climbing child a *shorter*
+  window for harder work in every pack that prices its clock off difficulty at all.
+- **`NON_BINARY_QUESTION_TEMPLATES`** — the largest promotion blocker in the graph, and it
+  was prose in a file header. Eleven templates declare `operator: "none"`, and the only
+  thing that serves an item composes a question from two operands and a glyph, so it
+  refuses them out loud. "In 4,193, what is the digit in the hundreds place worth?" is a
+  numeral and a place *name*; `2/3 = ☐/12` is an equation between two written fractions.
+  Thirteen draft rows — all six of `ns`, the four `frac.equivalence` rows, the two
+  `frac.compare` rows and `dw.alg.equality.balance-meaning` — can draw no other question,
+  so promoting one serves a rung that generates a question, declines to draw it and asks
+  the child nothing. Measured against the registry in both directions.
+
+**Three `alg` rows go active, and `PACK_STATEMENT_BLOCKED_SKILLS` drops from four to one.**
+Not by a curriculum argument: `games/balance` is the one pack of twenty-eight that builds a
+physical apparatus out of a statement rather than drawing it, and its tokeniser pushed a
+blank without applying the sign it had just read — so the box in `93 − □` was *added* to
+the pan — and could not collapse a product it did not know yet. COUNTERPOISE rebuilt that
+tokeniser around signed `product`/`quotient`/`countOf` terms, and its own `whyUnsolvable`
+now reports a levelling board for every statement this host writes. So
+`dw.alg.equality.missing-subtrahend`, `unknown-minuend` and `missing-factor` are `active`,
+which takes the equality strand from one served row to four and gives it an active row in
+every grade band from 1 to 5.
+
+Independently confirmed by the pack: `games/balance`'s own ladder sweep now walks 77 rungs
+instead of 66, found a legal move on every board the eleven new rungs produce, and added
+none of them to the seven rungs it refuses.
+
+`dw.alg.equality.balance-meaning` stays draft, and **not** for the pack's sake — COUNTERPOISE
+builds a solvable board for `8 + 4 = □ + 5`. Nothing can hand it that string:
+`drawStatement` writes three shapes and no fourth, which is why the row is on
+`NON_BINARY_QUESTION_TEMPLATES`, and it declares the balance scale `required`, which `Item`
+has no field to transmit.
+
+**Every `ns` and `frac` row stays draft, and that is the other half of the finding.** `ns`
+and the `frac` equivalence and comparison rows are on `NON_BINARY_QUESTION_TEMPLATES`; all
+eleven `frac` rows are on `FRACTION_ANSWER_BLOCKED_SKILLS`, because `answerText` returns
+`null` for a fraction and everything downstream reads `null` as `""`. Four fraction games
+ship declaring those ids and are being served nothing. What clears it is a pack that can
+print a fraction, take one as an answer, and draw a question that is not two operands and
+an operator — one PR, in `games/`, with a curriculum that is now waiting on nothing else.
+
+Two tripwires in other packages were revisited rather than deleted, which is what they were
+left for. `dynawalla-app`'s pinned missing-factor card asserted the row was `draft`; it
+asserts `active` now. And its blank-statement sweep asserted that no answer is the number
+already printed on the far side of the card — written to catch a missing factor whose
+"answer" is the product, and now met by `12 − □ = 6`, which wants 6 and is a *halving fact*
+rather than a misstated card. The exception is arithmetic and checked: where the answer
+equals the printed result the card must be a subtraction whose minuend is twice it, and a
+counter asserts the branch is reached at all.
+
+`rev` goes to 2 on all twenty-two rows. **No id moved.** Two `ns` rows and nine `frac` rows
+have a rung **inserted below their top**, which renumbers the levels above it; all eleven
+are `draft` and `shipped-ids.json` carries no release, so nothing keys off the old
+numbering. No `alg` row is renumbered — that domain is append-only here, because one of its
+rows is `active`, and a rung inserted under a live row's levels is the one edit this program
+does not make. Of the probes, three `entry` probes at L0 now land on the new easiest rung,
+which is what an entry probe is for, and `dw.frac.equivalence.mixed-to-improper`'s
+`promotion` probe moved from L2 to L3 to stay on the rung it was written against.
+
 ### "Easy" means `4 + 5`, not the nine smallest facts
 
 The founder, after an hour with four different games:

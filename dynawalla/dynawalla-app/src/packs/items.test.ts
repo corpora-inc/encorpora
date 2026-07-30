@@ -535,10 +535,15 @@ test("the founder's card is drawn, exactly, by the renderer the graph uses", () 
   // > understand the problem to use it correctly) we could use blanks in an equation
   // > `___ × 15 = 165`"
   //
-  // `dw.alg.equality.missing-factor` is **draft** — no pack that declares it can draw a
-  // missing factor, see `PACK_STATEMENT_BLOCKED_SKILLS` — so this drives `ladder([node])`
-  // directly rather than the shipped ladder. The renderer is the same one, which is the
-  // point: the row is held back by a pack, not by the host, and this is what says so.
+  // `dw.alg.equality.missing-factor` is **active** now. It was draft when this test was
+  // written, because `games/balance` could not build a board for a product it did not know
+  // yet, and the row came off `PACK_STATEMENT_BLOCKED_SKILLS` when COUNTERPOISE PR 724
+  // rebuilt its tokeniser around signed `product`/`quotient`/`countOf` terms. The status
+  // line below is the tripwire that made this comment get revisited rather than rot.
+  //
+  // It still drives `ladder([node])` rather than the shipped ladder, and deliberately: the
+  // claim is about one specific card, and picking it out of a 77-rung ladder by difficulty
+  // would make the assertion depend on where the row happens to sit.
   //
   // Pinned on a seed rather than swept, because the assertion is about a specific card:
   // the box **opens** the statement, the 15 is the known factor, the 165 is the given
@@ -546,7 +551,7 @@ test("the founder's card is drawn, exactly, by the renderer the graph uses", () 
   // be wrong in a way a swept "some equation was drawn" check would pass.
   const node = allNodes.find((candidate) => String(candidate.id) === "dw.alg.equality.missing-factor")
   assert.ok(node !== undefined)
-  assert.equal(node.status, "draft", "missing-factor went active without this test being revisited")
+  assert.equal(node.status, "active", "missing-factor left the ladder without this test being revisited")
   const rung = ladder([node]).find((candidate) => candidate.level === 1)
   assert.ok(rung !== undefined)
   const exercise = rung.family.generate({
@@ -581,6 +586,10 @@ test("every blank statement the shipped ladder draws is a true equation, read ba
   const rungs = ladder()
   const service = createItemService({ profileId: "p1", record: noRecord })
   let statements = 0
+  // Cards where the answer is the number already printed on the far side. Counted, so
+  // that the one exception below is known to be *exercised* rather than merely written:
+  // a branch nothing reaches is a branch that has stopped meaning anything.
+  let halvings = 0
 
   for (let i = 0; i < rungs.length; i++) {
     const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
@@ -619,10 +628,33 @@ test("every blank statement the shipped ladder draws is a true equation, read ba
       // And the answer is not simply the other side of the card, which is the shape of
       // the failure this whole change is about: a missing factor whose "answer" is the
       // product reads perfectly and is wrong.
-      assert.notEqual(revealed, sides[1], `"${item.prompt}" wants the number already printed on it`)
+      //
+      // With one exception, and it is arithmetic rather than a waiver. On `a − □ = c` the
+      // answer *is* `c` exactly when `a = 2c` — `12 − □ = 6` wants 6 — and that is a
+      // halving fact, not a card asking the wrong question. It arrives about one item in
+      // nine on `dw.alg.equality.missing-subtrahend`, which went active with the pack fix
+      // that let COUNTERPOISE build a board for a signed blank. So the coincidence is
+      // allowed and *checked*: where the answer equals the printed result, the card must
+      // be a subtraction whose minuend is twice it. Every other glyph, and every other
+      // minuend, still fails.
+      if (revealed === sides[1]) {
+        halvings += 1
+        assert.equal(glyph, "−", `"${item.prompt}" wants the number already printed on it`)
+        assert.equal(right, BLANK, `"${item.prompt}" wants the number already printed on it`)
+        assert.equal(
+          value(left),
+          2n * BigInt(sides[1] ?? ""),
+          `"${item.prompt}" wants the number already printed on it and is not a halving fact`,
+        )
+      }
     }
   }
   assert.ok(statements >= 8, `only ${String(statements)} blank statement(s) were drawn by the shipped ladder`)
+  assert.ok(
+    halvings > 0,
+    "no card drew an answer equal to its printed result, so the halving exception above is unreachable — " +
+      "if the ladder no longer serves a missing subtrahend, delete it",
+  )
 })
 
 test("a missing addend is judged on the addend, and adding the whole card is the diagnosed mistake", () => {

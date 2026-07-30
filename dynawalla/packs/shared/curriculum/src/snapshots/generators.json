@@ -66,6 +66,17 @@
     "gen.arith.multidigit-mul@1|dw.mul.multidigit.long-multiplication|L2": "1239bfc39b12417f",
     "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L0": "44651d77b0560687",
     "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L1": "b9d84b5000ca76cb",
-    "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L2": "e29ba443acfffd08"
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L2": "e29ba443acfffd08",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L3": "eb4ebb3d04a9468c",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-subtrahend|L0": "4e07386678287a17",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-subtrahend|L1": "1a74fd97c8721bde",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-subtrahend|L2": "3a98e0ab2474d59d",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-subtrahend|L3": "a925bdf7dcf43d44",
+    "gen.arith.missing-operand@1|dw.alg.equality.unknown-minuend|L0": "5a05f3c506861ef7",
+    "gen.arith.missing-operand@1|dw.alg.equality.unknown-minuend|L1": "ebdd7cb510ebfe40",
+    "gen.arith.missing-operand@1|dw.alg.equality.unknown-minuend|L2": "0a07317ae46e525b",
+    "gen.arith.missing-operand@1|dw.alg.equality.unknown-minuend|L3": "fdf75af1f79f7e5b",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-factor|L0": "e04016a32e8c3b33",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-factor|L1": "05582769a862aa74"
   }
 }

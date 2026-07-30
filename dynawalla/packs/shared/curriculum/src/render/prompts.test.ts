@@ -55,6 +55,7 @@ import { allNodes } from "../graph/graph.ts";
 import {
   FRACTION_ANSWER_BLOCKED_SKILLS,
   MISSTATED_QUESTION_TEMPLATES,
+  NON_BINARY_QUESTION_TEMPLATES,
   NUMERAL_WIDTH_BLOCKED_LEVELS,
   NUMERAL_WIDTH_BLOCKED_SKILLS,
   PACK_STATEMENT_BLOCKED_SKILLS,
@@ -272,6 +273,70 @@ test("the templates the host cannot state are exactly the blocked list", () => {
   );
 });
 
+test("the templates that state no binary operation are exactly the blocked list, and every row they alone bind is draft", () => {
+  // The other half of "the string a game draws states the question the answer answers":
+  // the templates that state *no* question a two-operand string can hold. The loop above
+  // skips them (`if (operator === "none") continue`), which is right — there is no
+  // arithmetic claim to check — and left the largest promotion blocker in the graph
+  // measured by nothing at all.
+  const nonBinary = promptRegistry
+    .filter((entry) => promptOperator(String(entry.id)) === "none")
+    .map((entry) => String(entry.id));
+
+  assert.deepEqual(
+    [...nonBinary].sort(),
+    [...NON_BINARY_QUESTION_TEMPLATES].sort(),
+    "promotionBlockers.ts and the prompt registry disagree about which templates state no binary operation",
+  );
+
+  // And the direction that matters to a child: a row whose every bound level emits one
+  // of these has no question the shipped serving path will draw, so promoting it serves
+  // silence. Measured off generated output rather than off the row's family, because a
+  // family may emit several templates and only some of them may be `none` — `long-div`
+  // is one — and it is the *level table* that decides which a row can reach.
+  const blocked = new Set(nonBinary);
+  const silent: string[] = [];
+
+  for (const node of allNodes) {
+    if (node.status === "deprecated") continue;
+    const family = familyById(node.generator.family);
+    assert.ok(family !== undefined, `${node.id} binds an unregistered family`);
+    let emitted = 0;
+    let unstatable = 0;
+    node.generator.params.forEach((raw, level) => {
+      const validated = family.paramSchema.validate(raw);
+      if (!validated.ok) return;
+      for (let seed = 1; seed <= 12; seed++) {
+        const exercise = family.generate({
+          skillId: node.id,
+          level,
+          seed,
+          params: validated.value,
+          forms: node.generator.forms,
+        });
+        emitted += 1;
+        if (blocked.has(String(exercise.prompt.key))) unstatable += 1;
+      }
+    });
+    if (emitted > 0 && unstatable === emitted) silent.push(node.id);
+  }
+
+  const served = silent.filter((id) => allNodes.find((node) => node.id === id)?.status === "active");
+  assert.deepEqual(
+    served,
+    [] as readonly string[],
+    `these rows are active and every question they can draw states no binary operation, so the only thing ` +
+      `that serves an item refuses all of them: ${served.join(", ")}`,
+  );
+  assert.ok(
+    silent.length >= 13,
+    `expected the rows a two-operand string cannot state, found ${String(silent.length)}`,
+  );
+  process.stdout.write(
+    `# non-binary questions: ${String(nonBinary.length)} template(s), blocking ${String(silent.length)} draft row(s)\n`,
+  );
+});
+
 test("the levels whose answers are too wide to print are exactly the ones promotionBlockers.ts names", () => {
   // Measured against the narrowest budget any shipped pack declares. This was
   // found by CI rather than by reading: promoting the whole `mul` domain turned
@@ -472,13 +537,21 @@ test("the alg rows a pack cannot draw are exactly the ones promotionBlockers.ts 
     "the draft rows of the alg domain and PACK_STATEMENT_BLOCKED_SKILLS disagree",
   );
 
-  // And the row that came off the list is genuinely on the ladder rather than merely
-  // absent from a blocker list, which is the direction a deletion would satisfy.
+  // And the rows that came off the list are genuinely on the ladder rather than merely
+  // absent from a blocker list, which is the direction a deletion would satisfy. Named
+  // rather than counted, and in the order `algDomainNodes` declares them, because the
+  // claim is about *which* four shapes a child can be asked — the missing addend, both
+  // subtraction shapes, and the missing factor.
   const active = allNodes.filter((node) => node.domain === "alg" && node.status === "active");
   assert.deepEqual(
     active.map((node) => String(node.id)),
-    ["dw.alg.equality.missing-addend"],
-    "the equality row this host can draw is not the one that is active",
+    [
+      "dw.alg.equality.missing-addend",
+      "dw.alg.equality.missing-subtrahend",
+      "dw.alg.equality.unknown-minuend",
+      "dw.alg.equality.missing-factor",
+    ],
+    "the equality rows this host can draw are not the ones that are active",
   );
 });
 
