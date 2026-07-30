@@ -42,6 +42,28 @@ export type PuzzleSpec = {
   rack: Frac[];
   fillSide: Side | null;
   hangSlot: { side: Side; peg: number } | null;
+  /**
+   * The answer is *how many* weights were hung, not what they weigh.
+   *
+   * True only on a measurement-division board — `□ × 15 = 165`, where the rack
+   * holds nothing but 15s and eleven of them is the answer. Everything else about
+   * such a board is an ordinary `fill`: the beam still levels on exact torque and
+   * nothing about the physics changes. The one difference is what gets reported,
+   * and it lives here rather than in a fourth `kind` so that every path that
+   * already handles `fill` — the drop zone, the spill, the verdict, the clean-solve
+   * gem — keeps working without learning a new case.
+   */
+  countAnswer: boolean;
+  /**
+   * The thing the child hangs in the dish is a balloon, so the mass they placed is
+   * the negative of the answer they were asked for.
+   *
+   * `8 − □ = 4` is answered **4** and solved by tying a balloon of 4 to the heavy
+   * dish. Without this, `answeredKey` reported `-4`, the host's own judge parsed
+   * it, `family.check` rejected it, and a child who solved the board was recorded
+   * wrong and stepped down the ladder for it.
+   */
+  fillLifts: boolean;
   prompt: string;
   domain: string;
   difficulty: number;
@@ -71,6 +93,30 @@ export const MOVEMENTS: readonly string[] = [
   "Halves and Quarters",
   "The Long Arm",
   "Sealed and Split",
+];
+
+/**
+ * What is actually standing in front of the child, indexed by `PuzzleSpec.movement`.
+ *
+ * `MOVEMENTS` above is a *ladder* of names and it was engraved by dividing the
+ * child's difficulty into ten, which meant the plinth announced "IDENTICAL
+ * CRATES" and "THE LONG ARM" over boards that had neither — because against the
+ * shipped host every board was a plain pair of dishes. The founder played it and
+ * said the quiet part: *"'identical' doesn't do much .. you just put the matching
+ * weight on the other side."*
+ *
+ * These names describe objects instead, so the engraving is true by construction
+ * and the fanfare fires the first time a child meets a new piece of apparatus
+ * rather than every fifth question. The order is the order they are met in.
+ */
+export const APPARATUS: readonly string[] = [
+  "Both Dishes",
+  "Lift",
+  "Equal Rows",
+  "How Many Fit",
+  "The Sealed Crate",
+  "Identical Crates",
+  "Halves and Quarters",
 ];
 
 function lcm(a: number, b: number): number {
@@ -126,9 +172,15 @@ export function answeredKey(
   declared: Frac | null,
 ): string {
   if (spec.kind === "fill") {
+    // On a measurement-division board the child's answer is the count. `11` is
+    // what the host asked for and `165` is what the brass weighs; reporting the
+    // mass would mark every correct answer wrong.
+    if (spec.countAnswer) return String(placed.length);
     let sum: Frac = ZERO;
     for (const p of placed) sum = add(sum, p.value);
-    return toKey(sum);
+    // A balloon dish holds negative mass and the host asked for a positive
+    // number. See `fillLifts`.
+    return toKey(spec.fillLifts ? frac(-sum.n, sum.d) : sum);
   }
   if (spec.kind === "declare") return declared ? toKey(declared) : "";
   return placed.length > 0 ? toKey(placed[placed.length - 1].value) : "";
@@ -138,8 +190,18 @@ export function answeredKey(
  * The minimum number of rack weights that can make up the answer, for the
  * "clean solve" gem. Small numbers, small rack: exhaustive search is fine.
  */
+export function minWeightsForSpec(spec: PuzzleSpec): number {
+  // A measurement-division board is solved with `answer` copies of the one weight
+  // on the rail, and the answer is a count and not a mass — coin-changing it
+  // against the rack returns 1, which would hand a clean-solve gem to a board that
+  // takes eleven drags.
+  if (spec.countAnswer && spec.answer.d === 1) return Math.abs(spec.answer.n);
+  return minWeightsFor(spec.rack, spec.answer);
+}
+
 export function minWeightsFor(rack: readonly Frac[], target: Frac): number {
   if (isZero(target)) return 0;
+
   let L = target.d;
   for (const f of rack) L = lcm(L, f.d);
   const values = rack.map((f) => f.n * (L / f.d));
@@ -156,20 +218,47 @@ export function minWeightsFor(rack: readonly Frac[], target: Frac): number {
 }
 
 /**
- * Can a target still be made from the rack, using as many copies of each weight
- * as you like? Coin-change over a common denominator, so it is exact.
+ * How far the search got on "can this target be made from the rack, using as many
+ * copies of each weight as you like": `"yes"` and `"no"` are proofs, `"unknown"` is
+ * the search declining to run.
+ *
+ * **The three values are the point.** This was a `boolean` called `rackCanMake`, and
+ * it returned `true` both for "I made it out of the rack" and for "the goal is past
+ * my cap and I did not look" — one bit standing for a proof and for the absence of
+ * one. Every caller then had to already know which it was holding, and the review
+ * that caught it read the optimistic return as a claim that an impossible board is
+ * solvable. Nothing was actually wrong at runtime, because both call sites act only
+ * on a *proved* `"no"`; but a type that cannot distinguish a proof from an unknown
+ * is a type that will eventually be read as the wrong one.
+ *
+ * Why the optimistic direction is right, and must stay: `verdictFor` reads a proved
+ * dead end as *the child made a mistake* — the dish tips, everything comes back, an
+ * error is recorded. The shipped ladder reaches `913072 − 884`, so a capped search
+ * that answered "no" when it meant "I could not check" charged the founder's own
+ * locked room to the child. Not knowing has to fail the safe way. The beam is still
+ * telling them the truth either way, and `remainingFor` still says what is missing.
+ *
+ * The cap is a real limit, not a guess: this is a coin-change table over a common
+ * denominator, so it allocates `goal + 1` entries, and `goal` is the answer scaled
+ * by the LCM of every denominator on the rack.
  */
-export function rackCanMake(rack: readonly Frac[], target: Frac): boolean {
-  if (isZero(target)) return true;
+export type RackReach = "yes" | "no" | "unknown";
+
+/** Widest coin-change table this will build, in entries. */
+const RACK_SEARCH_CAP = 4096;
+
+export function rackReach(rack: readonly Frac[], target: Frac): RackReach {
+  if (isZero(target)) return "yes";
   let L = target.d;
   for (const f of rack) L = lcm(L, f.d);
   const goal = Math.abs(target.n) * (L / target.d);
-  if (goal <= 0 || goal > 4096) return false;
+  if (goal <= 0) return "no";
+  if (goal > RACK_SEARCH_CAP) return "unknown";
   const sign = target.n < 0 ? -1 : 1;
   const vals = rack
     .filter((f) => f.n !== 0 && (f.n < 0 ? -1 : 1) === sign)
     .map((f) => Math.abs(f.n) * (L / f.d));
-  if (vals.length === 0) return false;
+  if (vals.length === 0) return "no";
   const ok = new Array<boolean>(goal + 1).fill(false);
   ok[0] = true;
   for (let i = 1; i <= goal; i++) {
@@ -180,7 +269,7 @@ export function rackCanMake(rack: readonly Frac[], target: Frac): boolean {
       }
     }
   }
-  return ok[goal];
+  return ok[goal] ? "yes" : "no";
 }
 
 /**
@@ -208,7 +297,8 @@ export function verdictFor(
   const crossed = startNetSign !== 0 && net !== 0 && net !== startNetSign;
   if (spec.kind === "hang" || crossed) return "overshot";
   const left = remainingFor(spec, placed);
-  if (left && !rackCanMake(spec.rack, left)) return "deadEnd";
+  // Only a PROVED dead end ends the attempt. `"unknown"` continues: see `rackReach`.
+  if (left && rackReach(spec.rack, left) === "no") return "deadEnd";
   return "continue";
 }
 

@@ -435,6 +435,10 @@ export function puzzleAt(index: number, seed: number): PuzzleSpec {
     rack: d.rack,
     fillSide: d.fillSide,
     hangSlot: d.hangSlot,
+    countAnswer: false,
+    // The local ladder's balloon boards hand the child a negative answer already
+    // (`genBalloon` answers `-x`), so the mass in the dish IS the answer.
+    fillLifts: false,
     prompt: d.prompt,
     domain: d.domain,
     difficulty: Math.min(1, 0.06 + movement * 0.1 + (index % PUZZLES_PER_MOVEMENT) * 0.02),

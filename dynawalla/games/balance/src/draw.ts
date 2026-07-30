@@ -14,7 +14,15 @@
 import type { Frac } from "./frac.ts";
 import { toNumber } from "./frac.ts";
 import type { Layout } from "./layout.ts";
-import { armDistance, beamPoint, rackSlot, MAX_PEG } from "./layout.ts";
+import {
+  armDistance,
+  beamPoint,
+  rackSlot,
+  MAX_PEG,
+  NUMERAL_FACE,
+  fittedNumeralPx,
+  idealNumeralPx,
+} from "./layout.ts";
 import type { Beam, Body } from "./sim.ts";
 import { dishCentre } from "./sim.ts";
 import type { PuzzleSpec, Side } from "./puzzle.ts";
@@ -1070,9 +1078,20 @@ export class Renderer {
       ctx.lineTo(x + s * 0.44, yy);
       ctx.stroke();
     } else {
+      // Fitted, not guessed. The old line picked `r * 0.78` for anything two
+      // digits or wider and drew centred, so `4232831450` — which the shipped
+      // top rung really does produce — laid about four disc-widths of ink across
+      // its neighbours on the rail. `NUMERAL_FACE` is the flat between the
+      // knurled rims; the type shrinks until the measured ink fits inside it and
+      // stops at `NUMERAL_MIN_PX`, the legibility floor. A numeral that would
+      // still not fit at the floor never reaches here: `numeralCapacity` refuses
+      // the board upstream. The clamp is the backstop for that promise, not the
+      // mechanism, and it is the one that guarantees no overrun on any device.
       const digits = label.replace("−", "").replace("-", "").length;
-      const s = r * (digits >= 2 ? 0.78 : 1.02);
-      ctx.font = `600 ${s.toFixed(1)}px ${SERIF}`;
+      const ideal = idealNumeralPx(r, digits);
+      ctx.font = `600 ${ideal.toFixed(1)}px ${SERIF}`;
+      const s = fittedNumeralPx(ideal, ctx.measureText(label).width, r * NUMERAL_FACE);
+      if (s !== ideal) ctx.font = `600 ${s.toFixed(1)}px ${SERIF}`;
       engrave(ctx, label, x, y, color, glow);
     }
     void v;

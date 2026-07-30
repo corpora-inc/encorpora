@@ -17,18 +17,32 @@ import {
   netTorque,
   isBalanced,
   isPinned,
-  minWeightsFor,
+  minWeightsForSpec,
   remainingFor,
   verdictFor,
   counts,
+  answeredKey,
 } from "./puzzle.ts";
 import {
   createInstructions,
   type Instructions,
 } from "../../../packs/shared/game-chrome/index.ts";
-import { specFromQuestion } from "./adapter.ts";
-import { makePacing, afterBoard, request, onTheWire, type Pacing } from "./pacing.ts";
-import { layoutForViewport, armDistance, beamPoint, rackSlot } from "./layout.ts";
+import { widestNumeral } from "./adapter.ts";
+import { pull, type Pull } from "./pull.ts";
+import {
+  makePacing,
+  afterBoard,
+  afterUnshowableBoard,
+  onTheWire,
+  type Pacing,
+} from "./pacing.ts";
+import {
+  layoutForViewport,
+  numeralCapacity,
+  armDistance,
+  beamPoint,
+  rackSlot,
+} from "./layout.ts";
 import type { Layout } from "./layout.ts";
 import {
   makeBeam,
@@ -50,20 +64,8 @@ import { clamp01, easeOutElastic } from "./ease.ts";
 
 type Phase = "intro" | "play" | "judging" | "wrong" | "solved";
 
-const ROMAN = [
-  "I",
-  "II",
-  "III",
-  "IV",
-  "V",
-  "VI",
-  "VII",
-  "VIII",
-  "IX",
-  "X",
-  "XI",
-  "XII",
-];
+/** The standard rack, for asking the layout what this screen could engrave. */
+const RACK_SLOTS = 9;
 
 export class Game {
   private el: HTMLElement;
@@ -97,8 +99,20 @@ export class Game {
   solvedTotal = 0;
   gems = 0;
   private pacing: Pacing = makePacing();
-  /** The deepest movement reached, so the plinth announces each one once. */
-  private peakMovement = -1;
+  /**
+   * Which pieces of apparatus this child has already met, so the plinth announces
+   * each one once.
+   *
+   * A set rather than a high-water mark: `spec.movement` used to be the child's
+   * rung divided into ten and could only be arrived at from below, but it now
+   * names the *object* on the board, and objects are met in whatever order the
+   * ladder serves them.
+   */
+  private metApparatus = new Set<number>();
+  /** How many times the host could not be made to serve a board this game shows. */
+  private fallbacks = 0;
+  /** False on a last-resort board: there is no question id to report against. */
+  private reportable = true;
 
   private drag: Body | null = null;
   private dragFromRack = -1;
@@ -181,11 +195,20 @@ export class Game {
           ],
         },
         {
+          heading: "Piles of the same weight",
+          lines: [
+            "Sometimes a dish holds several weights that are all the same.",
+            "Three fives weigh the same as fifteen. Count them and you have the total.",
+            "Sometimes only one kind of weight is on the rail. Then the question is how many of them fit.",
+          ],
+        },
+        {
           heading: "Sealed boxes",
           lines: [
             "Some boxes are shut and you cannot see inside.",
-            "Work out how heavy the box must be to make the arm flat.",
-            "Then drag that number onto the box to say it out loud.",
+            "When several shut boxes are all the same, they all hold the same amount.",
+            "Work out how heavy one box must be to make the arm flat.",
+            "Then drag that number onto a box to say it out loud.",
           ],
         },
         {
@@ -208,7 +231,11 @@ export class Game {
       reducedMotion: host.prefersReducedMotion(),
     });
 
-    this.L = layoutForViewport(1, 1, 9);
+    // Never read: `resize()` below replaces it before anything is drawn or asked
+    // for. Sized at the same 240px floor `resize` clamps to rather than 1×1, so a
+    // future reader of `this.L` before that point gets a plausible layout instead
+    // of a degenerate one.
+    this.L = layoutForViewport(240, 240, RACK_SLOTS);
     for (let i = 0; i < 44; i++) {
       this.motes[i * 4] = Math.random();
       this.motes[i * 4 + 1] = Math.random();
@@ -218,8 +245,15 @@ export class Game {
       this.moteVel[i * 2 + 1] = -0.004 - Math.random() * 0.008;
     }
 
-    this.loadNext(true);
+    // `resize` first, and this order is load-bearing: `pullBoard` has to know how
+    // wide a numeral this screen can engrave, and until `resize` runs `this.L` is
+    // a 1×1 placeholder that reports room for three characters. `pullBoard` asks
+    // the element rather than the last layout so that the order cannot matter, but
+    // both guards are here because neither can be proved by a test in this
+    // package: `Game` needs a canvas, a `ResizeObserver` and a frame loop, and
+    // none of the three exist in Node.
     this.resize();
+    this.loadNext(true);
 
     this.ro = new ResizeObserver(() => this.resize());
     this.ro.observe(el);
@@ -241,23 +275,65 @@ export class Game {
   private onWinResize = (): void => this.resize();
   private onContextMenu = (e: Event): void => e.preventDefault();
 
-  private resize(): void {
+  /**
+   * The box everything is laid out inside, clamped the way `resize` clamps it.
+   *
+   * Its own method because `pullBoard` needs it too, and reading it from
+   * `this.L` instead was a live bug: the constructor seeds `this.L` with a 1×1
+   * placeholder and calls `loadNext` *before* `resize`, so the very first board of
+   * every session was judged against a layout that reports room for three
+   * characters. `9 + 8` would have been refused as too wide on board one, and the
+   * sweep would have walked the child to the bottom of the ladder looking for
+   * something that fitted. Asking the element rather than the last layout makes
+   * the order of those two calls stop mattering.
+   */
+  private viewport(): { w: number; h: number } {
     const r = this.el.getBoundingClientRect();
-    const w = Math.max(240, Math.round(r.width || window.innerWidth));
-    const h = Math.max(240, Math.round(r.height || window.innerHeight));
+    return {
+      w: Math.max(240, Math.round(r.width || window.innerWidth)),
+      h: Math.max(240, Math.round(r.height || window.innerHeight)),
+    };
+  }
+
+  private resize(): void {
+    const { w, h } = this.viewport();
     // DPR capped at 2: a 3x phone would triple the fill cost for no visible gain.
     const dpr = Math.min(2, window.devicePixelRatio || 1);
-    this.L = layoutForViewport(w, h, this.spec ? this.spec.rack.length : 9);
+    this.L = layoutForViewport(
+      w,
+      h,
+      this.spec ? this.spec.rack.length : RACK_SLOTS,
+      this.spec ? widestNumeral(this.spec) : 1,
+    );
     this.renderer.resize(w, h, dpr);
     this.seatAll(true);
+  }
+
+  /**
+   * A board, always. See `pull.ts` — the loop and the guarantee live there so
+   * that they can be tested without a canvas.
+   */
+  private pullBoard(): Pull {
+    const view = this.viewport();
+    const got = pull(
+      (r) => this.host.next(r),
+      this.pacing,
+      { maxNumeralChars: numeralCapacity(view.w, view.h, RACK_SLOTS) },
+      this.fallbacks,
+    );
+    // Counted only when one actually happened: this is a health signal, and a
+    // pull counter dressed up as a fallback counter is a lie in a log line.
+    if (got.question === null) this.fallbacks++;
+    return got;
   }
 
   private loadNext(first = false): void {
     // Ask for a board this child can actually get onto. See `pacing.ts` — with
     // no request at all the host chose from its whole ladder, and the opening
     // board of a fresh install was two-digit column addition.
-    const q = this.host.next(request(this.pacing));
-    this.spec = specFromQuestion(q);
+    const pulled = this.pullBoard();
+    this.spec = pulled.spec;
+    this.reportable = pulled.question !== null;
     this.declared = null;
     this.errors = 0;
     this.reported = false;
@@ -279,7 +355,12 @@ export class Game {
       });
       this.bodies.push(b);
     }
-    this.L = layoutForViewport(this.L.w, this.L.h, this.spec.rack.length);
+    this.L = layoutForViewport(
+      this.L.w,
+      this.L.h,
+      this.spec.rack.length,
+      widestNumeral(this.spec),
+    );
     this.seatAll(true);
 
     // Assemble: everything drops in from above with a stagger.
@@ -565,6 +646,16 @@ export class Game {
 
   /** Tip the dish: every weight the player put in comes back to the rack. */
   private spill(): void {
+    // Read the dish BEFORE anything is tossed out of it. `toss` sets the body's
+    // state to "eject", so by the end of the loop below `placed()` is empty and
+    // `answeredKey` sums nothing — which reports the string `"0"`. On a
+    // zero-answer board (`1 − 1`, `0 × 4`, thirteen of every forty
+    // `subtract-within-ten` items) `"0"` is the *correct* answer, and the host
+    // re-judges the string rather than trusting the flag: measured, all 8 wrong
+    // discs on all 43 zero-answer boards in the ladder were recorded as correct
+    // and climbed the ladder for it. A six-year-old dropping the wrong weight got
+    // credit for it.
+    const inDish = this.placed();
     let any = false;
     for (const b of this.bodies) {
       if (b.fixed || b.crate || b.state !== "seated") continue;
@@ -577,7 +668,7 @@ export class Game {
     if (!any) return;
     if (counts("deadEnd")) {
       this.errors++;
-      this.report(false);
+      this.report(false, inDish);
     }
     this.audio.chain(5);
     this.cam.addTrauma(0.14);
@@ -736,6 +827,13 @@ export class Game {
     if (this.errors === 0) this.gems++;
     // The board is over, so the ladder moves before the next one is pulled.
     const before = this.pacing;
+    if (!this.reportable) {
+      // A last-resort board: the host never served it and never judged it. See
+      // `afterUnshowableBoard`, which is where the reasoning and the test live.
+      this.pacing = afterUnshowableBoard(before);
+      this.loadNext();
+      return;
+    }
     this.pacing = afterBoard(before, this.errors);
     if (this.pacing.floor > before.floor) {
       // Feature-detected: the shared host has it, the stub has it, an older
@@ -753,33 +851,31 @@ export class Game {
     // — so a child hovering either side of a boundary would get the plinth and
     // the fanfare every second or third board. A movement is an arrival, and
     // you only arrive somewhere once.
-    const arrived = this.spec.movement > this.peakMovement;
-    if (arrived) this.peakMovement = this.spec.movement;
+    const arrived = !this.metApparatus.has(this.spec.movement);
+    if (arrived) this.metApparatus.add(this.spec.movement);
     if (arrived || this.solvedTotal === 1) {
-      this.banner = {
-        text: this.spec.movementName,
-        sub: `MOVEMENT ${ROMAN[Math.min(this.spec.movement, ROMAN.length - 1)]}`,
-        t: 0,
-      };
+      // The name and nothing else. The second line used to read "MOVEMENT VII",
+      // which counted a staircase that no longer exists — the engraving names the
+      // apparatus now, and a Roman numeral against an object is a number about
+      // nothing.
+      this.banner = { text: this.spec.movementName, sub: "", t: 0 };
       if (this.solvedTotal > 0) this.audio.fanfare();
       this.cam.addPunch(0.02);
     }
   }
 
-  private report(correct: boolean): void {
+  private report(correct: boolean, dish?: readonly PlacedItem[]): void {
     if (correct && this.reported) return;
     const ms = performance.now() - this.questionStart;
     this.stats.lastAnswerLatencyMs = ms;
-    let answered = "";
-    if (this.spec.kind === "declare") answered = this.declared ? toKey(this.declared) : "";
-    else if (this.spec.kind === "hang") {
-      const p = this.placed();
-      answered = p.length ? toKey(p[p.length - 1].value) : "";
-    } else {
-      let sum: Frac = ZERO;
-      for (const p of this.placed()) sum = add(sum, p.value);
-      answered = toKey(sum);
-    }
+    // A last-resort board is not the host's question and there is no id to report
+    // it against. See `pullBoard`. The latency above is still recorded, because
+    // the harness reads it and a board the child played is a board they played.
+    if (!this.reportable) return;
+    // `answeredKey` rather than a second copy of the same switch: it is the
+    // function the tests measure, and the one that knows a measurement-division
+    // board reports a count and a balloon dish reports a positive number.
+    const answered = answeredKey(this.spec, dish ?? this.placed(), this.declared);
     this.host.report({ questionId: this.spec.id, correct, ms, answered });
     if (correct) this.reported = true;
   }
@@ -1293,7 +1389,7 @@ export class Game {
       answer: toKey(this.spec.answer),
       solved: this.solvedTotal,
       gems: this.gems,
-      minWeights: minWeightsFor(this.spec.rack, this.spec.answer),
+      minWeights: minWeightsForSpec(this.spec),
       fps: Math.round(this.stats.fpsAvg),
       kbVisible: this.kbVisible,
       theta: Number(this.beam.theta.toFixed(4)),
