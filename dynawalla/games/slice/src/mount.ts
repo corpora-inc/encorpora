@@ -160,7 +160,7 @@ export function mountSlice(
       {
         heading: "Cutting numbers",
         lines: [
-          "Swipe your finger right across a gourd to slice it open.",
+          "The gourds are the fat round fruit with numbers on them. Swipe your finger right across one to slice it open.",
           "A gourd with 48 on it splits into a 6 and an 8. Both of them fly out.",
           "Cut the 8 and it splits again, into 2 and 4.",
           "Some numbers do not split at all. A 7 just bursts into gold. Those are the best ones to find.",
@@ -169,7 +169,7 @@ export function mountSlice(
       {
         heading: "Answering a question",
         lines: [
-          "Some things that fly up are flat tablets with a sum on them, like 7 x 8.",
+          "Some things that fly up are flat tablets with a sum on them, like 7 x 8. The end card calls them sigils.",
           "Cut the tablet and four numbers float up and stop in a row.",
           "Work out the sum, then swipe the number that is the answer.",
           "You cannot cut them straight away. You get a moment to read them first.",
@@ -186,10 +186,12 @@ export function mountSlice(
       {
         heading: "Your three lamps",
         lines: [
-          "You lose a lamp if you cut a bomb. Bombs are small and spiky and have a lit fuse.",
-          "A wrong answer never costs a lamp. It costs the market's favour, which is your multiplier.",
+          "The three lanterns at the top right are your lamps. You lose one if you cut a bomb. Bombs are small and spiky and have a lit fuse.",
+          "A wrong answer never costs a lamp. It costs FAVOUR, the number at the top that multiplies your score, and it goes back to 1.",
           "Thinking is always free, and so is running out of time. Your favour is still yours.",
-          "When all three lamps go out the market shuts. One tap opens it again.",
+          "A right answer takes FAVOUR up one, as far as 4. Read two sigils and one lamp comes back.",
+          "CHAIN counts cuts you land one after another, and a long chain is worth more.",
+          "When all three lamps go out the screen says THE MARKET CLOSES. One tap opens it again.",
         ],
       },
       {
@@ -1215,7 +1217,7 @@ export function mountSlice(
       liveQ = null
       // …and the market pays out. Everything in the air opens at once.
       startWave(x, y)
-      // Three sigils read buys a lamp back. This is the "math instead of an ad"
+      // READ_PER_LAMP sigils read buys a lamp back. This is the "math instead of an ad"
       // beat: where a free-to-play game would show a video to continue, this
       // asks for arithmetic — and it never takes the progress away again.
       if (readCredit >= READ_PER_LAMP && lamps < LAMPS) {
@@ -1884,7 +1886,7 @@ export function mountSlice(
     }
 
     // Progress toward relighting, in sigils read. Only drawn when there is a
-    // lamp to win back, so it is never decoration. Three filled ticks and the
+    // lamp to win back, so it is never decoration. READ_PER_LAMP filled ticks and the
     // dark lamp comes on — this is the game's "watch an ad to continue", and
     // the price is arithmetic.
     if (lamps < LAMPS) {

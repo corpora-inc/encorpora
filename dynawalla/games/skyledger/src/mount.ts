@@ -424,30 +424,44 @@ export function mountSkyLedger(
   const guide = createInstructions(el, {
     title: "SKY LEDGER",
     summary: [
-      "Trails fall out of the dark. Each one is heading for a place in the sky.",
-      "Turn the astrolabe to name that place — across, then up — and strike it.",
+      "Stars fall out of the dark, each one dragging a bright trail. Every star carries a sum.",
+      "The astrolabe is the pair of brass rings at the bottom. Turn them to the answer, then press MARK.",
     ],
     sections: [
       {
         heading: "Naming a place",
         lines: [
           "The sky is a grid. Every place in it has two numbers: how far across, then how far up.",
-          "The astrolabe has one ring for each. Turn them until the pair matches the trail.",
+          "The two together make one number. Four across and seven up is 74.",
+          "The outer ring of the astrolabe says ONES and the inner ring says TENS. Turn each one until the pair is your answer.",
+          "Then press MARK. Marking is how you say the answer out loud.",
+          "If the answer is bigger than 99, the hundreds are already written for you. The two empty boxes are the part you turn.",
           "You are not pointing at the answer. You are saying it.",
         ],
       },
       {
         heading: "Chains",
         lines: [
-          "Strike a second trail before the light fades and the two link.",
-          "Each link renews the light, so a chain is a rhythm rather than a race.",
+          "A chain is a run of right marks with no wrong one in between.",
+          "Mark a second star soon after the first and the two link into a chain.",
+          "Each new link gives you more time for the next one, so a chain is a rhythm rather than a race.",
           "Nine links is the longest chain the sky will hold.",
+          "A mark that is wrong goes wide. It cuts the chain, and the end card counts it under MARKS WIDE.",
+        ],
+      },
+      {
+        heading: "The lamps",
+        lines: [
+          "Seven lamps burn along the horizon. A star that falls all the way down puts one out.",
+          "When the last lamp goes out the night is over. Touch the screen for another one.",
+          "Get through a watch and one lamp comes back on.",
         ],
       },
       {
         heading: "The watch",
         lines: [
-          "There is no winning. The watch ends and the observatory writes down what you logged.",
+          "A watch is one night of work: a set number of stars, then a rest. Each watch sends down more stars than the last, up to ten.",
+          "There is no winning. The watch ends and the observatory writes down what you logged. Logged means marked right.",
           "A longer chain is worth more than a faster one.",
         ],
       },

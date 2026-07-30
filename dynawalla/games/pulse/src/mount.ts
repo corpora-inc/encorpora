@@ -98,14 +98,17 @@ export function mount(el: HTMLElement, host: Host, options: MountOptions = {}): 
           "Sometimes a sum appears at the top, like 1/2 + 1/4.",
           "Several answers ride toward the line together. Each one sits at the place that matches its own value.",
           "Tap the lane when the right answer reaches the line. Your timing is your answer.",
+          "SOLVED means you got it. OFF means you tapped a wrong answer. GONE means the question went by and you tapped nothing.",
         ],
       },
       {
         heading: "Keeping going",
         lines: [
           "The little bar under your score is your health. Missed notes and wrong answers make it shrink.",
+          "If it empties the screen says REGROUP. You do not lose the run: the music drops back a step and you carry on.",
           "Hits in a row build a combo, and a big combo makes every note worth more.",
-          "The music keeps splitting into smaller pieces as you go: quarters, then eighths, then triplets.",
+          "Four questions right in a row lights OVERDRIVE, and every note is worth double for a while.",
+          "The music keeps splitting into smaller pieces as you go: quarters, then eighths, then triplets. Triplets are three notes in the space of two.",
         ],
       },
     ],

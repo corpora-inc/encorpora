@@ -279,7 +279,7 @@ class Claim {
             "Stand on the square with the right answer until it fills up, and the life comes back.",
             "Driving over a square is not choosing it. Only the one you stop on counts.",
             "There is no clock on it. Take as long as you like, and nothing can hurt you while you decide.",
-            "Finish a level and the same squares come up as a bonus. Right pays. Wrong costs nothing, and so does walking away from it.",
+            "Finish a level and the same squares come up as a bonus. The screen calls that the VAULT. Right pays. Wrong costs nothing, and so does walking away from it.",
           ],
         },
       ],

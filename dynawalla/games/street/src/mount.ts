@@ -78,10 +78,11 @@ export function mountStreet(
       {
         heading: "Breaking a crowd",
         lines: [
-          "The crowd is a number. Say there are twelve of them.",
+          "The crowd is a number. The big number at the top left is how many are standing. Say there are twelve of them.",
           "There is a bar of small numbers. Tap one of them to try it.",
-          "Tap 3 and the twelve split into 4 rows of 3, made of the same people.",
+          "Tap 3 and the twelve split into 4 rows of 3, made of the same people. The top left then reads 4 x 3.",
           "That only works if the number goes in evenly. If it does not, nothing breaks and the crowd closes back up.",
+          "When the crowd is down to one single row the top left says IN THE STREET.",
         ],
       },
       {
@@ -107,14 +108,15 @@ export function mountStreet(
         lines: [
           "There is no clock. Standing still and looking at the crowd costs you nothing.",
           "A wrong tap makes the crowd lean on you. Enough of them in a row and it shoves you back a block.",
+          "A block is three crowds. BLOCKS at the top right counts how many you have cleared, and it never goes down.",
           "Even then you keep everything you already built.",
         ],
       },
       {
         heading: "Between crowds",
         lines: [
-          "Before each crowd, a steel shutter rolls down across the street.",
-          "There is a problem chalked on it and four rivets, each with a number.",
+          "Before each crowd, a steel shutter rolls down across the street. A shutter is a rolling metal door.",
+          "There is a problem chalked on it and four rivets. Rivets are the round metal bolts in the door, and each one has a number.",
           "Work out the answer and tap the rivet it is on.",
           "Get it wrong and that rivet goes dark. Try another one — the crowd does not lean on you for this.",
           "Get it right and the shutter rolls up, and the next crowd comes.",

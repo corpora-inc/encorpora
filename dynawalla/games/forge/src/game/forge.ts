@@ -787,7 +787,7 @@ export function mount(el: HTMLElement, host: Host): Mounted {
           "Bellows make sparks. Crucibles make bellows. Hammers make crucibles. Each machine builds the one above it in the list.",
           "Tap a machine to buy one. Press and hold to keep buying, and it speeds up the longer you hold.",
           "A REACTOR makes no sparks at all by itself. It makes the thing that makes the thing that makes sparks. Buy one and watch the counter a minute later.",
-          "The last four machines arrive chained shut. Answer a sum to break the chain. Getting it wrong here costs you nothing — it just asks again.",
+          "The last four machines arrive locked, and the button on them says SEAL. Pay for it, then answer one sum, and the lock comes off. Getting it wrong here costs you nothing — it just asks again.",
         ],
       },
       {
@@ -801,7 +801,8 @@ export function mount(el: HTMLElement, host: Host): Mounted {
       {
         heading: "Forge marks",
         lines: [
-          "Sometimes two glowing ingots rise out of the crucible. One says something like +14 HAMMER. The other says ×2 HAMMER.",
+          "Sometimes two glowing ingots rise out of the crucible. That pair is a forge mark: a free choice between two rewards, and taking either one makes everything you own a little faster.",
+          "One says something like +14 HAMMER. The other says ×2 HAMMER.",
           "Look at the HAMMER row to see how many you own, then work out which ingot gives you more.",
           "Own 9 hammers? ×2 gives 18, and +14 gives 23. Take the +14.",
           "Own 400 hammers? ×2 gives 800, and +14 gives 414. Now take the ×2.",
@@ -811,7 +812,7 @@ export function mount(el: HTMLElement, host: Host): Mounted {
       {
         heading: "The quench",
         lines: [
-          "When the QUENCH plate lights up blue you can plunge the forge, start again from nothing, and keep some carbon.",
+          "To quench something hot is to drop it in water. When the QUENCH plate lights up blue you can plunge the forge, start again from nothing, and keep some carbon. The button that does it says PLUNGE.",
           "Carbon is permanent. It multiplies everything from now on, so the next run gets as far in ninety seconds as this one did in four minutes.",
           "The screen shows you the square root it worked out to decide how much carbon you get.",
         ],

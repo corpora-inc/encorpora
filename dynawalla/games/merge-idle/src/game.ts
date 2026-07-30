@@ -145,7 +145,7 @@ const INSTRUCTIONS = (reducedMotion: boolean): InstructionsSpec => ({
       heading: 'Going away and coming back',
       lines: [
         'This reef keeps going when you are not here. That is not a bug, it is the point.',
-        'Leave, do something else, come back. New polyps grew the whole time you were gone.',
+        'Leave, do something else, come back. New polyps grew the whole time you were gone, for up to eight hours.',
         'Your reef saves itself. It will be exactly where you left it.',
       ],
     },

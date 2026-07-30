@@ -63,9 +63,10 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       {
         heading: "How to cut",
         lines: [
-          "Tap a link. The jaws move there. That is where the cut will happen.",
-          "Pull the SHEAR lever. Everything after the jaws comes off.",
+          "Tap a link. The jaws are the big cutter, and they slide to that link. That is where the cut will happen.",
+          "Pull the SHEAR lever. To shear is to cut, and everything after the jaws comes off.",
           "Take as long as you like. There is no timer and nothing is rushing you.",
+          "Every cut that is exactly right lays one brick in the wall behind you. Eight bricks make a course, which is one whole row of the wall.",
         ],
       },
       {
@@ -91,8 +92,8 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       {
         heading: "If you cut in the wrong place",
         lines: [
-          "The piece does not fit the wall. It drops in the alley as a lump.",
-          "Lumps take up room. With less room, the front of your chain gets buried.",
+          "The piece does not fit the wall. It drops in the alley as a lump. The counter calls those lumps slag.",
+          "Lumps take up room. With less room, the front of your chain gets buried, and a buried link cannot be opened.",
           "A cut that is exactly right smashes two lumps on its way to the wall.",
           "Tap the FURNACE to melt every lump. It eats the chain you are holding.",
         ],

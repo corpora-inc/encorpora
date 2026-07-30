@@ -183,6 +183,7 @@ export class Game {
             "Put a finger anywhere on the screen and drag. Your light swims that way.",
             "On a keyboard, use the arrow keys or W, A, S and D.",
             "You never aim and you never shoot. Steering is the whole game.",
+            "Now and then the screen says A TIDE. That means a crowd of enemies is coming in from one side, so swim out of its way.",
           ],
         },
         {
@@ -197,17 +198,18 @@ export class Game {
         {
           heading: "The CORE",
           lines: [
-            "Every so often a gold CORE appears. Swim into it.",
+            "A CORE is a gold ball that drifts in every so often. It holds a question. Swim into it.",
             "Time slows down and three numbered balls ring the spot. One holds the answer.",
-            "Swim out and touch the right one. For nine seconds nothing can stand near you,",
-            "and that is when a WARDEN can actually be brought down.",
+            "Swim out and touch the right one. The screen says OVERCHARGE: for nine seconds you hit much harder and nothing can stand near you.",
+            "That is when a WARDEN can actually be brought down. A WARDEN is the big enemy that spits a ring of smaller ones out around itself every few seconds.",
             "Touch a wrong one and a ring of enemies drops on top of you. The gold ball then lights up so you can see which it was.",
           ],
         },
         {
           heading: "The CACHE",
           lines: [
-            "Sometimes a fourth card is sealed shut with a question on it.",
+            "A CACHE is a store of something good, kept shut.",
+            "Sometimes a fourth card is sealed shut with a question on it. That is the SEALED CACHE.",
             "Answer it and you get a stronger card than any of the other three.",
             "You never have to open it. Take a plain card instead and nothing is lost.",
           ],
@@ -215,10 +217,11 @@ export class Game {
         {
           heading: "The RIFT",
           lines: [
-            "When your life runs out you do not lose straight away. A RIFT opens.",
-            "Answer questions to fill the round lamps. Fill them all and you come back with full life.",
+            "When your life runs out you do not lose straight away. A RIFT opens: a last round of questions, with a clock on it.",
+            "Answer questions to fill the round lamps. Fill them all and you come back with full life, and the screen says RISEN.",
             "A wrong answer never takes a lamp away. It takes time off the clock.",
             "If the clock empties before the lamps fill, the run is over.",
+            "Each RIFT after the first asks for one more lamp than the last.",
           ],
         },
       ],

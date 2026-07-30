@@ -106,7 +106,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
   const guide = createInstructions(root, {
     title: "LATTICE RUNNER",
     summary: [
-      "Five beams of light run down the hall. Each beam has a number at the bottom.",
+      "Five beams of light run down the hall, and together they are the lattice. Each beam has a number at the bottom.",
       "Robots walk down carrying numbers. Ride a beam and shoot — but a shot only works if the beam's number divides the robot's number.",
     ],
     sections: [
@@ -125,6 +125,8 @@ export function mountBeam(el: HTMLElement, host: Host): {
           "A shot destroys a robot only if you can share its number into equal groups of the beam's number, with nothing left over.",
           "Beam 5 takes 405, because 405 is made of fives. Beam 4 does not.",
           "Big robots can often be taken from more than one beam. The biggest beam that fits is worth the most.",
+          "SOLE ×2 means your beam was the only one on the board that fitted, so that robot was worth double.",
+          "HARMONIC means one shot took three robots at once.",
           "A shot that does not work costs you nothing. The robot just rings and keeps walking.",
         ],
       },
@@ -140,20 +142,22 @@ export function mountBeam(el: HTMLElement, host: Host): {
       {
         heading: "The big blue one",
         lines: [
-          "Every so often a big blue robot comes down the middle with a sum on it, like 247 + 158.",
+          "Every so often a big blue robot comes down the middle with a sum on it, like 247 + 158. The screen calls that robot a core.",
           "It breaks into several robots, each carrying a different number.",
-          "Work out the sum, find the robot with the right number, and shoot that one.",
+          "Work out the sum, find the robot with the right number, and shoot that one. Getting it right is called reading the core.",
           "Take as long as you like. Nothing lands while you are working it out.",
           "If you miss it, the hall stops and the sum finishes itself so you can see it.",
           "Getting it wrong does not cost a light. It only resets how much each robot is worth.",
+          "Reading cores right lifts RESONANCE, the number that multiplies your score. It slips back down if you stop.",
         ],
       },
       {
         heading: "The three lights",
         lines: [
-          "Three lights sit at the top of the screen. A robot that reaches the floor puts one out.",
-          "When all three are out the run is over. Tap to start again.",
-          "Get two sums right and one light comes back on.",
+          "Three lights sit at the top of the screen. The game calls each one an anchor.",
+          "A robot that reaches the floor puts one out.",
+          "When all three are out the run is over and the screen says THE LATTICE GOES DARK. Tap to start again.",
+          "Read two cores right and one anchor lights up again.",
         ],
       },
     ],
