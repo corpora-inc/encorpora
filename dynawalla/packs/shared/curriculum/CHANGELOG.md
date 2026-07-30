@@ -73,16 +73,43 @@ digits, and every `frac` row from its smallest denominators to the family's ceil
   so promoting one serves a rung that generates a question, declines to draw it and asks
   the child nothing. Measured against the registry in both directions.
 
-**Nothing is promoted, and that is the finding.** Every row authored here stays `draft`
-because no shipping pack can serve it: `ns` and the `frac` equivalence and comparison rows
-on `NON_BINARY_QUESTION_TEMPLATES`, all eleven `frac` rows on
-`FRACTION_ANSWER_BLOCKED_SKILLS` (`answerText` returns `null` for a fraction and everything
-downstream reads `null` as `""`), and four of the five `alg` rows on
-`PACK_STATEMENT_BLOCKED_SKILLS`. Four fraction games and two algebra games ship declaring
-these ids today and every one of them is being served nothing. What clears it is a pack
-that can print a fraction, take one as an answer, and draw a question that is not two
-operands and an operator — one PR, in `games/`, with a curriculum that is now waiting on
-nothing else.
+**Three `alg` rows go active, and `PACK_STATEMENT_BLOCKED_SKILLS` drops from four to one.**
+Not by a curriculum argument: `games/balance` is the one pack of twenty-eight that builds a
+physical apparatus out of a statement rather than drawing it, and its tokeniser pushed a
+blank without applying the sign it had just read — so the box in `93 − □` was *added* to
+the pan — and could not collapse a product it did not know yet. COUNTERPOISE rebuilt that
+tokeniser around signed `product`/`quotient`/`countOf` terms, and its own `whyUnsolvable`
+now reports a levelling board for every statement this host writes. So
+`dw.alg.equality.missing-subtrahend`, `unknown-minuend` and `missing-factor` are `active`,
+which takes the equality strand from one served row to four and gives it an active row in
+every grade band from 1 to 5.
+
+Independently confirmed by the pack: `games/balance`'s own ladder sweep now walks 77 rungs
+instead of 66, found a legal move on every board the eleven new rungs produce, and added
+none of them to the seven rungs it refuses.
+
+`dw.alg.equality.balance-meaning` stays draft, and **not** for the pack's sake — COUNTERPOISE
+builds a solvable board for `8 + 4 = □ + 5`. Nothing can hand it that string:
+`drawStatement` writes three shapes and no fourth, which is why the row is on
+`NON_BINARY_QUESTION_TEMPLATES`, and it declares the balance scale `required`, which `Item`
+has no field to transmit.
+
+**Every `ns` and `frac` row stays draft, and that is the other half of the finding.** `ns`
+and the `frac` equivalence and comparison rows are on `NON_BINARY_QUESTION_TEMPLATES`; all
+eleven `frac` rows are on `FRACTION_ANSWER_BLOCKED_SKILLS`, because `answerText` returns
+`null` for a fraction and everything downstream reads `null` as `""`. Four fraction games
+ship declaring those ids and are being served nothing. What clears it is a pack that can
+print a fraction, take one as an answer, and draw a question that is not two operands and
+an operator — one PR, in `games/`, with a curriculum that is now waiting on nothing else.
+
+Two tripwires in other packages were revisited rather than deleted, which is what they were
+left for. `dynawalla-app`'s pinned missing-factor card asserted the row was `draft`; it
+asserts `active` now. And its blank-statement sweep asserted that no answer is the number
+already printed on the far side of the card — written to catch a missing factor whose
+"answer" is the product, and now met by `12 − □ = 6`, which wants 6 and is a *halving fact*
+rather than a misstated card. The exception is arithmetic and checked: where the answer
+equals the printed result the card must be a subtraction whose minuend is twice it, and a
+counter asserts the branch is reached at all.
 
 `rev` goes to 2 on all twenty-two rows. **No id moved.** Two `ns` rows and nine `frac` rows
 have a rung **inserted below their top**, which renumbers the levels above it; all eleven

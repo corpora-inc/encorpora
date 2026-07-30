@@ -333,8 +333,15 @@ test("every board the shipping ladder can serve has a legal move", () => {
   }
   // And two thirds of the ladder is fully served, which it was not before: the
   // ten division rungs were 0 of 400.
+  //
+  // Sixty-six became seventy-seven when the curriculum promoted the three equality rows
+  // this pack's own fix unblocked — `missing-subtrahend`, `unknown-minuend` and
+  // `missing-factor`, four rungs, four rungs and two — plus a fourth rung on
+  // `missing-addend`. Every one of those eleven boards passed the no-stuck-board
+  // assertion above and none of them joined `dead`, which is the measurement the
+  // promotion was made on.
   const whole = [...byRung.values()].filter((r) => r.refused === 0).length;
-  assert.equal(byRung.size, 66);
+  assert.equal(byRung.size, 77);
   assert.ok(whole >= 53, `only ${String(whole)} of ${String(byRung.size)} rungs are served in full`);
 });
 

@@ -537,13 +537,21 @@ test("the alg rows a pack cannot draw are exactly the ones promotionBlockers.ts 
     "the draft rows of the alg domain and PACK_STATEMENT_BLOCKED_SKILLS disagree",
   );
 
-  // And the row that came off the list is genuinely on the ladder rather than merely
-  // absent from a blocker list, which is the direction a deletion would satisfy.
+  // And the rows that came off the list are genuinely on the ladder rather than merely
+  // absent from a blocker list, which is the direction a deletion would satisfy. Named
+  // rather than counted, and in the order `algDomainNodes` declares them, because the
+  // claim is about *which* four shapes a child can be asked — the missing addend, both
+  // subtraction shapes, and the missing factor.
   const active = allNodes.filter((node) => node.domain === "alg" && node.status === "active");
   assert.deepEqual(
     active.map((node) => String(node.id)),
-    ["dw.alg.equality.missing-addend"],
-    "the equality row this host can draw is not the one that is active",
+    [
+      "dw.alg.equality.missing-addend",
+      "dw.alg.equality.missing-subtrahend",
+      "dw.alg.equality.unknown-minuend",
+      "dw.alg.equality.missing-factor",
+    ],
+    "the equality rows this host can draw are not the ones that are active",
   );
 });
 

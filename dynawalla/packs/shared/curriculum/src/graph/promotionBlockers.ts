@@ -318,70 +318,71 @@ export const NON_BINARY_QUESTION_TEMPLATES: readonly string[] = [
 ];
 
 /**
- * Rows the host can now state and a **pack** cannot draw, with what each one needs.
+ * Rows the host can state and a **pack** cannot draw. **One**, and it is not the pack's.
  *
  * ## Why this list has to exist at all
  *
- * Because a stated question is not a drawn one, and the layer that finds out is the
- * one nobody was checking. `packs/shared/game-host` flattens an `Item` to six fields
- * and forwards `prompt` byte for byte, so for twenty-seven of the twenty-eight packs
- * a statement is a string to draw and a longer string is a layout problem at worst.
+ * Because a stated question is not a drawn one, and the layer that finds out is the one
+ * nobody was checking. `packs/shared/game-host` flattens an `Item` to six fields and
+ * forwards `prompt` byte for byte, so for twenty-seven of the twenty-eight packs a
+ * statement is a string to draw and a longer string is a layout problem at worst.
  * `games/balance` is the twenty-eighth: it splits the prompt at the `=` and builds a
- * **physical apparatus** out of each side (`src/adapter.ts:251-253`), and it is the
- * only pack that declares all five of these rows. Its model is a pan of weights that
- * add.
+ * **physical apparatus** out of each side, and it is the only pack that declares all five
+ * of these rows. Its model was a pan of weights that add, and two of these statements are
+ * not sums.
  *
- * Measured by running that pack's own `specFromQuestion` on the statements this host
- * now writes, and asking whether the board balances once the canonical answer is
- * placed on the fill side:
+ * ## Four came off, and by a pack fix rather than an argument
+ *
+ * The list held `missing-subtrahend` (`93 − □ = 47`: `tokenizeSide` set a sign when it
+ * read a minus and pushed the blank term without applying it, so the box was *added* to
+ * the pan), `missing-factor` (`□ × 15 = 165`: the tokeniser collapsed `6 × 2` to a single
+ * weight and could not collapse a product it did not know yet), and `unknown-minuend`,
+ * which drew correctly and was unreachable under CG-4 only because its one prerequisite
+ * was `missing-subtrahend`.
+ *
+ * `games/balance` #724 rebuilt the tokeniser around a signed `Item` with `product`,
+ * `quotient` and `countOf` terms — the founder had been locked into a board by a
+ * *correct* answer to `88965 ÷ 9`, which is the same defect one operator over. Measured
+ * afterwards, by running that pack's own `specFromQuestion` on the statements this host
+ * writes and asking `whyUnsolvable` whether the beam levels with the canonical answer on
+ * the fill side:
  *
  * | statement | board | verdict |
  * |---|---|---|
- * | `47 + □ = 68` | 47 vs 68, fill left, answer 21 | 68 = 68 — **balances** |
- * | `□ − 47 = 68` | −47 vs 68, fill left, answer 115 | 68 = 68 — **balances** |
- * | `8 + 4 = □ + 5` | 8 + 4 vs 5, fill right, answer 7 | 12 = 12 — **balances** |
- * | `93 − □ = 47` | 93 vs 47, fill left, answer 46 | 139 vs 47 — **does not** |
- * | `□ × 15 = 165` | 15 vs 165, fill left, answer 11 | 26 vs 165 — **does not** |
+ * | `47 + □ = 68` | `fill`, left | **solvable** |
+ * | `93 − □ = 47` | `fill`, left | **solvable** |
+ * | `□ − 47 = 68` | `fill`, left | **solvable** |
+ * | `□ × 15 = 165` | `fill`, left | **solvable** |
+ * | `8 + 4 = □ + 5` | `fill`, right | **solvable** |
  *
- * Two distinct defects, and only one of them is a bug:
+ * So three rows are `active`, and the measurement cannot live in this package — the
+ * curriculum imports nothing from `games/` and must not — which is why it is written
+ * down here in the form the previous four measurements were.
  *
- * - `sub-unknown` — `tokenizeSide` sets a `sign` when it reads a minus and then
- *   pushes the blank term **without applying it** (`src/adapter.ts:57-64`), so the box
- *   in `93 − □` is added to the pan instead of taken off it. A pack bug, and a
- *   one-line one.
- * - `mul-unknown` — the tokeniser collapses `6 × 2` to a single weight of 12 and
- *   cannot collapse `□ × 15`, because the product is not known until the child
- *   answers. A missing factor is not a sum of weights at all; balance has a `beam`
- *   mode where distance from the fulcrum multiplies (`6 × 2 = □ × 3`) and
- *   `specFromQuestion` always builds `pans`. Not a bug — a mode the adapter does not
- *   reach for.
+ * ## The one that is left, and it is the host's
  *
- * `unknown-minuend` draws correctly and is here for a third reason entirely: its only
- * `requires` prerequisite is `missing-subtrahend`, so CG-4 makes it unreachable while
- * that row is draft. It is a promotion that comes free with the pack fix above.
+ * `balance-meaning` is the fifth row in that table and it *is* drawable: COUNTERPOISE
+ * builds a solvable board for `8 + 4 = □ + 5`. It stays draft because **nothing can hand
+ * the pack that string.** `drawStatement` in `dynawalla-app/src/packs/items.ts` writes
+ * `a OP b`, `□ OP a = b` and `a OP □ = b` and no fourth shape, and the row's template
+ * declares `operator: "none"` for exactly that reason — see
+ * `NON_BINARY_QUESTION_TEMPLATES`, where it is named alongside the whole `ns` domain.
  *
- * `balance-meaning` draws correctly too, and stays draft on two things neither of
- * which is the pack's: `a + b = □ + d` is three numbers and an operator on each side
- * of the relation, which `PromptBlank` does not express; and the row declares the
- * balance scale `required`, which `Item` in `packs/sdk/src/protocol.ts` has no field
- * to ask a pack for — so promoting it would assert a requirement the host cannot
- * transmit.
+ * It carries a second blocker that would outlast the first: the row declares the balance
+ * scale `required`, and `Item` in `packs/sdk/src/protocol.ts` has no field to ask a pack
+ * for a representation. Promoting it would assert a requirement the host cannot transmit,
+ * to the one pack that would honour it anyway.
  *
  * ## How it is checked
  *
- * `render/prompts.test.ts` asserts every entry is a real node and is `draft`, and — in
- * the other direction — that the draft rows of the `alg` domain are **exactly** these.
- * So promoting one without striking it fails, demoting one without naming it fails,
- * and the day a pack learns to draw a missing factor the list is what the promotion PR
- * reads first. The board measurements themselves cannot live in this package: the
- * curriculum imports nothing from `games/`, and it must not.
+ * `render/prompts.test.ts` asserts every entry is a real node and is `draft`, and — in the
+ * other direction — that the draft rows of the `alg` domain are **exactly** these. So
+ * promoting one without striking it fails, and demoting one without naming it fails.
  */
 export const PACK_STATEMENT_BLOCKED_SKILLS: readonly string[] = [
   "dw.alg.equality.balance-meaning",
-  "dw.alg.equality.missing-factor",
-  "dw.alg.equality.missing-subtrahend",
-  "dw.alg.equality.unknown-minuend",
 ];
+
 
 /**
  * The longest numeral a shipped game will put in front of a child, in characters.

@@ -9,29 +9,35 @@
  * answer" is not making an arithmetic mistake, and waiting until grade 6 to find out
  * is how it survives to grade 6.
  *
- * ## One row is active now, and four are not
+ * ## Four rows are active now, and one is not
  *
- * The domain was entirely `draft` because the host could not state its questions:
- * every shape here puts the unknown *inside* the expression, and a two-operand string
- * cannot say that. `render/prompts.ts` grew `PromptBlank` and the host draws
- * `47 + □ = 68` — so `dw.alg.equality.missing-addend` is `active`, and it is the first
- * equality row this program has ever served a child.
+ * The domain was entirely `draft` because the host could not state its questions: every
+ * shape here puts the unknown *inside* the expression, and a two-operand string cannot
+ * say that. `render/prompts.ts` grew `PromptBlank` and the host draws `47 + □ = 68`,
+ * which made `missing-addend` the first equality row this program ever served a child.
+ * Three more follow it here, and by a **pack** fix rather than a curriculum one.
  *
- * The other four are still draft and **not** for that reason any more. Each has its
- * own blocker, measured rather than assumed, and each is named in
- * `promotionBlockers.ts` with what would clear it:
+ * `games/balance` was the one pack of twenty-eight that does not merely draw the
+ * statement — it builds a physical apparatus out of each side — and its tokeniser pushed
+ * a blank without applying the sign it had just read, so the box in `93 − □` was added to
+ * the pan instead of taken off it, and `□ × 15` was a product it could not collapse.
+ * COUNTERPOISE #724 rebuilt that tokeniser around signed terms with `product`, `quotient`
+ * and `countOf`, and its own `whyUnsolvable` now reports a levelling board for every
+ * statement this host can write. So `missing-subtrahend`, `unknown-minuend` and
+ * `missing-factor` are `active` — the measurement is in `promotionBlockers.ts`, because
+ * the curriculum imports nothing from `games/` and must not.
  *
- * - `missing-subtrahend` — `93 − □ = 47`. The pack drops the minus in front of a box.
- * - `missing-factor` — `□ × 15 = 165`. The pack's apparatus adds; a missing factor
- *   multiplies.
- * - `unknown-minuend` — `□ − 47 = 68`. Draws correctly; its own prerequisite is one
- *   of the two above, so CG-4 makes it unreachable until that one moves.
- * - `balance-meaning` — `8 + 4 = □ + 5`. Three numbers and an operator on each side of
- *   the relation, which `PromptBlank` does not reach: its template is the one shape in
- *   this family that declares `operator: "none"`, so it is named in
- *   `NON_BINARY_QUESTION_TEMPLATES` alongside the whole `ns` domain and the row is
- *   refused rather than mis-drawn. The row also requires the balance scale, which `Item`
- *   in `packs/sdk/src/protocol.ts` has no field to ask a pack for.
+ * `unknown-minuend` comes free with the other two: it drew correctly all along, and CG-4
+ * made it unreachable only because its one prerequisite was `missing-subtrahend`.
+ *
+ * **`balance-meaning` stays draft, and not for the pack's sake.** COUNTERPOISE builds a
+ * solvable board for `8 + 4 = □ + 5`; nothing can hand it that string. `drawStatement`
+ * writes `a OP b`, `□ OP a = b` and `a OP □ = b` and no fourth shape, which is why this
+ * row's template declares `operator: "none"` and is named in
+ * `NON_BINARY_QUESTION_TEMPLATES` alongside the whole `ns` domain. It carries a second
+ * blocker that would outlast the first: the row declares the balance scale `required`,
+ * and `Item` in `packs/sdk/src/protocol.ts` has no field to ask a pack for a
+ * representation.
  *
  * ## CG-10 at L0, which was never the right blocker for any row here
  *
@@ -231,7 +237,7 @@ const balanceMeaning: SkillNode = {
 const missingSubtrahend: SkillNode = {
   id: SKILL_MISSING_SUBTRAHEND,
   rev: 2,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.alg.equality.missing-subtrahend.title"),
   learnerGoal: locKey("dw.skill.alg.equality.missing-subtrahend.goal"),
   domain: "alg",
@@ -273,7 +279,7 @@ const missingSubtrahend: SkillNode = {
 const unknownMinuend: SkillNode = {
   id: SKILL_UNKNOWN_MINUEND,
   rev: 2,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.alg.equality.unknown-minuend.title"),
   learnerGoal: locKey("dw.skill.alg.equality.unknown-minuend.goal"),
   domain: "alg",
@@ -317,7 +323,7 @@ const unknownMinuend: SkillNode = {
 const missingFactor: SkillNode = {
   id: SKILL_MISSING_FACTOR,
   rev: 2,
-  status: "draft",
+  status: "active",
   title: locKey("dw.skill.alg.equality.missing-factor.title"),
   learnerGoal: locKey("dw.skill.alg.equality.missing-factor.goal"),
   domain: "alg",
