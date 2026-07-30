@@ -1084,7 +1084,7 @@ export class Renderer {
       // its neighbours on the rail. `NUMERAL_FACE` is the flat between the
       // knurled rims; the type shrinks until the measured ink fits inside it and
       // stops at `NUMERAL_MIN_PX`, the legibility floor. A numeral that would
-      // still not fit at the floor never reaches here: `numeralBudget` refuses
+      // still not fit at the floor never reaches here: `numeralCapacity` refuses
       // the board upstream. The clamp is the backstop for that promise, not the
       // mechanism, and it is the one that guarantees no overrun on any device.
       const digits = label.replace("−", "").replace("-", "").length;

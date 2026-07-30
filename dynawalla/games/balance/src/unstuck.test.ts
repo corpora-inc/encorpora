@@ -29,8 +29,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import type { Question } from "./contract.ts";
-import { frac, toKey, parseFrac } from "./frac.ts";
+import type { DifficultyRequest, Question } from "./contract.ts";
+import { frac, isZero, toKey, parseFrac } from "./frac.ts";
+import type { Frac } from "./frac.ts";
 import {
   MAX_COPIES,
   boardFor,
@@ -43,6 +44,7 @@ import type { BoardLimits } from "./adapter.ts";
 import {
   PAN_PEG,
   answeredKey,
+  minWeightsForSpec,
   isBalanced,
   netTorque,
   rackCanMake,
@@ -60,8 +62,8 @@ import {
   numeralCapacity,
   radiusForChars,
 } from "./layout.ts";
-import { pull, TRIES } from "./pull.ts";
-import { makePacing } from "./pacing.ts";
+import { pull, STEP, TRIES, TRIES_PER_RUNG } from "./pull.ts";
+import { afterBoard, afterUnshowableBoard, makePacing } from "./pacing.ts";
 import { makeStubHost } from "./stubHost.ts";
 // The host's own item service. `ladder()` is the sixty-six rungs that ship;
 // `answerText` and `choicesFor` are what fill `Question.answer` and
@@ -129,34 +131,82 @@ function sweep(seeds = SEEDS): Served[] {
  * Is there something a child can do here that gets them out?
  *
  * The whole failure was a board with no such thing, so this is the assertion the
- * game turns on. Three parts, and all three were false on `88965 ÷ 9`:
+ * game turns on — and it is computed **without calling `whyUnsolvable`**, which is
+ * the function `boardFor` uses to decide. That independence is not fussiness. The
+ * first version of this helper delegated to `whyUnsolvable`, and measured against
+ * two mutants — the original `÷`-as-whitespace lexer, plus `whyUnsolvable` stubbed
+ * to `null` — the founder's own locked room and all 400 division boards in the
+ * sweep **passed**. A proof checked against itself proves nothing.
+ *
+ * So, from first principles:
  *
  *   1. There is brass on the rail to pick up at all.
- *   2. The contract's own answer solves the board — `whyUnsolvable` is the same
- *      proof `boardFor` runs, so this is a check that the proof is not vacuous.
- *   3. No single placement can strand the child: after any weight lands, the
- *      board is either solved, or the beam swung and everything comes back, or
- *      the answer is still reachable.
+ *   2. The board levels when the answer is put where the answer goes — computed
+ *      here with `isBalanced`, the same exact-rational function the game itself
+ *      uses to decide a child is right.
+ *   3. What has to go in the dish is something the rail can supply.
+ *
+ * `rackCanMake` is deliberately not used for (3): it answers `true` above its
+ * search cap, which is right for the game (not knowing must not be charged to a
+ * child as a dead end) and useless in a test. This counts copies directly.
  */
 function legalMoveExists(spec: PuzzleSpec): string | null {
   if (spec.rack.length === 0) return "the rack is empty";
-  const why = whyUnsolvable(spec, spec.answer);
-  if (why) return why;
-  if (spec.kind !== "fill" || spec.fillSide === null) return null;
-  const startNetSign = Math.sign(netTorque(spec, [], null).n);
-  for (const value of spec.rack) {
-    const placed: PlacedItem[] = [
-      { id: "p", side: spec.fillSide, peg: PAN_PEG, value },
-    ];
-    const verdict = verdictFor(spec, placed, null, startNetSign);
-    if (verdict === "solved" || verdict === "overshot" || verdict === "deadEnd") continue;
-    // `continue` means more brass is on its way. The answer had better still be
-    // reachable from where that leaves the beam.
-    const left = remainingFor(spec, placed);
-    if (!left) return `placing ${toKey(value)} left nothing to compute`;
-    if (left.n <= 0 && spec.answer.n > 0) return `placing ${toKey(value)} overshot without saying so`;
+
+  if (spec.kind === "declare") {
+    if (!spec.rack.some((r) => toKey(r) === toKey(spec.answer))) {
+      return "the answer is not on the rack";
+    }
+    return isBalanced(spec, [], spec.answer)
+      ? null
+      : "declaring the answer does not level the beam";
   }
-  return null;
+  if (spec.kind !== "fill" || spec.fillSide === null) return null;
+
+  const side = spec.fillSide;
+  const put = (values: readonly Frac[]): PlacedItem[] =>
+    values.map((value, i) => ({ id: `p${String(i)}`, side, peg: PAN_PEG, value }));
+
+  if (spec.countAnswer) {
+    const unit = spec.rack[0];
+    if (!unit || isZero(unit)) return "the rack has nothing to count";
+    if (spec.answer.d !== 1 || spec.answer.n < 1) return "a count that is not a whole number";
+    const n = spec.answer.n;
+    if (!isBalanced(spec, put(new Array<Frac>(n).fill(unit)), null)) {
+      return `${String(n)} of ${toKey(unit)} does not level the beam`;
+    }
+    return isBalanced(spec, put(new Array<Frac>(n - 1).fill(unit)), null)
+      ? "one fewer weight also levels it, so the count is not the answer"
+      : null;
+  }
+
+  // The exact object the dish is short by. Found by trying every disc on the rail
+  // and every pair of them — enough for every board this game builds, and it is a
+  // direct search rather than a call into the code under test.
+  for (const a of spec.rack) {
+    if (isBalanced(spec, put([a]), null)) {
+      return valueMatchesAnswer(spec, a) ? null : `${toKey(a)} levels it but the answer is ${toKey(spec.answer)}`;
+    }
+  }
+  for (const a of spec.rack) {
+    for (const b of spec.rack) {
+      if (isBalanced(spec, put([a, b]), null)) return null;
+    }
+  }
+  if (isZero(spec.answer) && isBalanced(spec, [], null)) {
+    return spec.rack.some((r) => isZero(r)) ? null : "the answer is nothing and there is no zero on the rail";
+  }
+  return `no weight or pair of weights on the rail levels this board (answer ${toKey(spec.answer)})`;
+}
+
+/**
+ * The disc that levels the board has to be the answer the host asked for — up to
+ * sign, because a balloon dish holds negative mass and `8 − □ = 4` is answered 4.
+ * This is the check the locked room failed: 88,974 of brass, answer 9,885.
+ */
+function valueMatchesAnswer(spec: PuzzleSpec, placed: Frac): boolean {
+  const a = spec.answer;
+  return (placed.n === a.n && placed.d === a.d) || (placed.n === -a.n && placed.d === a.d);
 }
 
 // ------------------------------------------------------------ THE LOCKED ROOM
@@ -345,17 +395,50 @@ test("division is no longer the ten rungs a child cannot leave", () => {
 
 // ------------------------------------------------------- THERE IS ALWAYS A BOARD
 
+/**
+ * The stub host with its pre-built board taken off.
+ *
+ * `makeStubHost` attaches a whole `PuzzleSpec` to every question, and `boardFor`
+ * returns it untouched — so driving `pull` through the stub as it comes exercises
+ * none of the lexer, none of the four board builders and none of the proof.
+ * Measured: with the stub as-is, `TRIES = 1` passed the "always ends with a board"
+ * test. Stripping the spec is also what the real host does, since it has no idea
+ * what a balance is.
+ */
+function bareStub(seed: number): (r: DifficultyRequest) => Question {
+  const host = makeStubHost({ seed });
+  return (r) => {
+    const { spec: _spec, ...bare } = host.next(r) as Question & { spec?: unknown };
+    return bare;
+  };
+}
+
 test("pull always ends with a board that has a legal move, at every rung", () => {
   for (let rung = 0; rung <= 1.0001; rung += 0.02) {
-    const host = makeStubHost({ seed: 0x9885 });
     const level = Math.min(1, rung);
-    const got = pull((r) => host.next(r), { level, floor: 0, streak: 0 }, NO_LIMITS);
+    const got = pull(bareStub(0x9885), { level, floor: 0, streak: 0 }, NO_LIMITS);
     assert.equal(
       legalMoveExists(got.spec),
       null,
       `at rung ${level.toFixed(2)} the game produced a board with no move`,
     );
+    assert.ok(got.question, `at rung ${level.toFixed(2)} nothing the host offered could be shown`);
   }
+});
+
+test("pull runs the real board builders — the stub's own spec is not a free pass", () => {
+  // `boardFor` returns an attached `PuzzleSpec` untouched, which is how the
+  // standalone shell plays the local ladder. That bypass skips the proof, so a
+  // board the shell supplies is trusted rather than checked. Asserted here so the
+  // bypass is a decision and not an accident, and so the sweep above is known to
+  // be running the parser rather than reading a spec off the wire.
+  const withSpec = makeStubHost({ seed: 4 }).next({ difficulty: 0.3 });
+  assert.ok((withSpec as { spec?: unknown }).spec, "the stub host stopped attaching a spec");
+  const bare = bareStub(4)({ difficulty: 0.3 });
+  assert.equal((bare as { spec?: unknown }).spec, undefined);
+  const built = boardFor(bare, NO_LIMITS);
+  assert.ok(built.ok, `the parser could not rebuild a local-ladder board: ${built.ok ? "" : built.detail}`);
+  assert.equal(legalMoveExists(built.spec), null);
 });
 
 test("a host that refuses everything still leaves the child something to do", () => {
@@ -439,10 +522,132 @@ test("refusals step DOWN the ladder, never permanently cap it", () => {
   const got = pull(refuseFirstFive, makePacing(0.8), NO_LIMITS);
   assert.ok(got.question, "never recovered");
   assert.equal(asked.length, 6);
-  // Four at the rung it was standing on, then a rung down.
-  assert.equal(new Set(asked.slice(0, 4)).size, 1, `the first four draws asked ${asked.slice(0, 4).join(",")}`);
-  assert.ok(asked[4] < asked[0], "the fifth draw did not step down");
-  assert.ok(asked[4] > 0.7, `stepped down ${(asked[0] - asked[4]).toFixed(3)} of the ladder in one go`);
+  // `TRIES_PER_RUNG` draws at the rung it was standing on, then a step down.
+  const atFirstRung = asked.slice(0, TRIES_PER_RUNG);
+  assert.equal(new Set(atFirstRung).size, 1, `the first draws asked ${atFirstRung.join(",")}`);
+  assert.ok(asked[TRIES_PER_RUNG] < asked[0], "the draw after the first rung did not step down");
+  assert.ok(
+    asked[0] - asked[TRIES_PER_RUNG] <= STEP + 1e-9,
+    `stepped down ${(asked[0] - asked[TRIES_PER_RUNG]).toFixed(3)} of the ladder in one go`,
+  );
+  // And the loop is not so deep that it drains the host's prefetch pool. The
+  // shared host holds 64 and refills asynchronously, so a loop past that depth
+  // gets `lastServed` back forever; `game-host`'s own note is that every retry
+  // loop in the repo caps at eight.
+  assert.ok(TRIES <= 32, `pull asks the host up to ${String(TRIES)} times for one board`);
+});
+
+test("a dry question pool is not reported against, and is not retried out of", () => {
+  // Past its prefetch depth the shared host hands back `{ ...lastServed, id: "" }`
+  // and drops any report carrying an empty id on the floor. So a pack that treats
+  // that as a real question lets a child solve a board and records nothing, while
+  // believing it reported — and retrying is pointless, because the same item comes
+  // back every time.
+  let asked = 0;
+  const dry = (): Question => {
+    asked++;
+    return { id: "", prompt: "3 + 4", answer: "7", distractors: [], domain: "add-sub", difficulty: 0.1 };
+  };
+  const got = pull(dry, makePacing(0.1), NO_LIMITS);
+  assert.equal(asked, 1, `asked a dry pool ${String(asked)} times`);
+  assert.equal(got.question, null, "an id-less question was accepted as reportable");
+  assert.equal(legalMoveExists(got.spec), null, "and the board it fell back to has no move");
+});
+
+test("a board the host never served does not climb the ladder", () => {
+  // The fallback board is a one-move `8 = 2 + □`, so a clean solve on it is
+  // guaranteed. Running it through `afterBoard` would climb and, after four of
+  // them, raise a permanent floor into the region this pack has no picture for —
+  // pinning the child at the top of the ladder solving `2 + 6` forever, off the
+  // strength of a board the host never saw.
+  let p = { level: 0.95, floor: 0.9, streak: 3 };
+  const climbed = afterBoard(p, 0);
+  assert.ok(climbed.level > p.level, "the control is wrong: a clean solve does climb");
+
+  for (let i = 0; i < 4; i++) p = afterUnshowableBoard(p) as typeof p;
+  assert.ok(p.level < 0.95, "four unshowable boards did not step the request down");
+  assert.equal(p.streak, 0, "an unshowable board counted towards a clean streak");
+  assert.equal(p.floor, 0.9, "an unshowable board moved the floor the host is promised");
+  // And the walk-down is bounded below.
+  for (let i = 0; i < 60; i++) p = afterUnshowableBoard(p) as typeof p;
+  assert.ok(p.level >= 0, "the request walked below the bottom of the ladder");
+});
+
+test("the reported string is one the host's own judge would accept", () => {
+  // The host does not trust the pack's `correct` flag: it re-parses `answered` and
+  // re-checks it. So every board kind has to report the string the *contract*
+  // asked for, and two of them did not.
+  const cases: Array<[string, string, string]> = [
+    // A balloon dish holds negative mass. `8 − □ = 4` is answered 4, and this
+    // reported `-4`, which the judge rejects — a child who solved the board was
+    // recorded wrong and stepped down for it.
+    ["8 − □ = 4", "4", "4"],
+    ["47 + □ = 68", "21", "21"],
+    ["3 × 5", "15", "15"],
+  ];
+  for (const [prompt, answer, expected] of cases) {
+    const spec = specFromQuestion({
+      id: `j-${prompt}`,
+      prompt,
+      answer,
+      distractors: [],
+      domain: "add-sub",
+      difficulty: 0.3,
+    });
+    assert.ok(spec, prompt);
+    const need = remainingFor(spec, []);
+    assert.ok(need);
+    const dish: PlacedItem[] = [
+      { id: "p", side: spec.fillSide as Side, peg: PAN_PEG, value: need },
+    ];
+    assert.ok(isBalanced(spec, dish, null), `${prompt}: the solving placement does not level it`);
+    assert.equal(
+      answeredKey(spec, dish, null),
+      expected,
+      `${prompt}: solved the board and reported something else`,
+    );
+  }
+});
+
+test("a spilled dish is reported as what was in it, not as an empty one", () => {
+  // `spill()` tosses every weight out and then reports. Reading the dish *after*
+  // that reports the empty sum, `"0"` — and on a zero-answer board `"0"` is the
+  // correct answer, which the host re-judges and accepts. Measured over the real
+  // ladder: 43 zero-answer boards, 8 wrong discs each, 344 of 344 recorded as
+  // correct. So the dish is read first, and this is that value.
+  const spec = specFromQuestion({
+    id: "z-report",
+    prompt: "1 − 1",
+    answer: "0",
+    distractors: [],
+    domain: "add-sub",
+    difficulty: 0,
+  });
+  assert.ok(spec);
+  const wrong = spec.rack.find((r) => !isZero(r));
+  assert.ok(wrong, "a zero-answer rack with nothing wrong on it cannot test this");
+  const dish: PlacedItem[] = [
+    { id: "p", side: spec.fillSide as Side, peg: PAN_PEG, value: wrong },
+  ];
+  assert.notEqual(
+    answeredKey(spec, dish, null),
+    "0",
+    "a wrong disc in the dish reports the correct answer",
+  );
+  assert.equal(answeredKey(spec, [], null), "0", "an empty dish is what used to be sent");
+});
+
+test("a clean-solve gem is not handed out for a board that takes eleven drags", () => {
+  const spec = specFromQuestion({
+    id: "gem",
+    prompt: "□ × 15 = 165",
+    answer: "11",
+    distractors: [],
+    domain: "algebra",
+    difficulty: 0.5,
+  });
+  assert.ok(spec);
+  assert.equal(minWeightsForSpec(spec), 11);
 });
 
 // ------------------------------------------------------------- REPRESENTATIONS
@@ -638,6 +843,24 @@ test("the statement forms the curriculum already emits still build", () => {
     });
     assert.ok(spec, `${prompt} = ${answer} is no longer buildable`);
     assert.equal(legalMoveExists(spec), null, `${prompt} = ${answer}`);
+  }
+});
+
+test("the proof and the independent oracle agree on every board in the sweep", () => {
+  // `legalMoveExists` above is written from first principles precisely so it can
+  // disagree with `whyUnsolvable`, which is what `boardFor` decides on. If the two
+  // ever part company one of them is wrong, and finding out from a child is the
+  // outcome this whole file exists to prevent.
+  for (const s of sweep(6)) {
+    const board = boardFor(s.question, NO_LIMITS);
+    if (!board.ok) continue;
+    const proof = whyUnsolvable(board.spec, board.spec.answer);
+    const oracle = legalMoveExists(board.spec);
+    assert.equal(
+      proof === null,
+      oracle === null,
+      `${s.question.prompt} = ${s.question.answer}: the proof says ${String(proof)} and the oracle says ${String(oracle)}`,
+    );
   }
 });
 

@@ -54,6 +54,16 @@ export type PuzzleSpec = {
    * gem — keeps working without learning a new case.
    */
   countAnswer: boolean;
+  /**
+   * The thing the child hangs in the dish is a balloon, so the mass they placed is
+   * the negative of the answer they were asked for.
+   *
+   * `8 − □ = 4` is answered **4** and solved by tying a balloon of 4 to the heavy
+   * dish. Without this, `answeredKey` reported `-4`, the host's own judge parsed
+   * it, `family.check` rejected it, and a child who solved the board was recorded
+   * wrong and stepped down the ladder for it.
+   */
+  fillLifts: boolean;
   prompt: string;
   domain: string;
   difficulty: number;
@@ -168,7 +178,9 @@ export function answeredKey(
     if (spec.countAnswer) return String(placed.length);
     let sum: Frac = ZERO;
     for (const p of placed) sum = add(sum, p.value);
-    return toKey(sum);
+    // A balloon dish holds negative mass and the host asked for a positive
+    // number. See `fillLifts`.
+    return toKey(spec.fillLifts ? frac(-sum.n, sum.d) : sum);
   }
   if (spec.kind === "declare") return declared ? toKey(declared) : "";
   return placed.length > 0 ? toKey(placed[placed.length - 1].value) : "";
@@ -178,8 +190,18 @@ export function answeredKey(
  * The minimum number of rack weights that can make up the answer, for the
  * "clean solve" gem. Small numbers, small rack: exhaustive search is fine.
  */
+export function minWeightsForSpec(spec: PuzzleSpec): number {
+  // A measurement-division board is solved with `answer` copies of the one weight
+  // on the rail, and the answer is a count and not a mass — coin-changing it
+  // against the rack returns 1, which would hand a clean-solve gem to a board that
+  // takes eleven drags.
+  if (spec.countAnswer && spec.answer.d === 1) return Math.abs(spec.answer.n);
+  return minWeightsFor(spec.rack, spec.answer);
+}
+
 export function minWeightsFor(rack: readonly Frac[], target: Frac): number {
   if (isZero(target)) return 0;
+
   let L = target.d;
   for (const f of rack) L = lcm(L, f.d);
   const values = rack.map((f) => f.n * (L / f.d));

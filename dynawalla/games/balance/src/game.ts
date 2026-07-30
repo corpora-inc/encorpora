@@ -17,7 +17,7 @@ import {
   netTorque,
   isBalanced,
   isPinned,
-  minWeightsFor,
+  minWeightsForSpec,
   remainingFor,
   verdictFor,
   counts,
@@ -29,7 +29,13 @@ import {
 } from "../../../packs/shared/game-chrome/index.ts";
 import { widestNumeral } from "./adapter.ts";
 import { pull, type Pull } from "./pull.ts";
-import { makePacing, afterBoard, onTheWire, type Pacing } from "./pacing.ts";
+import {
+  makePacing,
+  afterBoard,
+  afterUnshowableBoard,
+  onTheWire,
+  type Pacing,
+} from "./pacing.ts";
 import {
   layoutForViewport,
   numeralCapacity,
@@ -307,12 +313,16 @@ export class Game {
    */
   private pullBoard(): Pull {
     const view = this.viewport();
-    return pull(
+    const got = pull(
       (r) => this.host.next(r),
       this.pacing,
       { maxNumeralChars: numeralCapacity(view.w, view.h, RACK_SLOTS) },
-      this.fallbacks++,
+      this.fallbacks,
     );
+    // Counted only when one actually happened: this is a health signal, and a
+    // pull counter dressed up as a fallback counter is a lie in a log line.
+    if (got.question === null) this.fallbacks++;
+    return got;
   }
 
   private loadNext(first = false): void {
@@ -634,6 +644,16 @@ export class Game {
 
   /** Tip the dish: every weight the player put in comes back to the rack. */
   private spill(): void {
+    // Read the dish BEFORE anything is tossed out of it. `toss` sets the body's
+    // state to "eject", so by the end of the loop below `placed()` is empty and
+    // `answeredKey` sums nothing — which reports the string `"0"`. On a
+    // zero-answer board (`1 − 1`, `0 × 4`, thirteen of every forty
+    // `subtract-within-ten` items) `"0"` is the *correct* answer, and the host
+    // re-judges the string rather than trusting the flag: measured, all 8 wrong
+    // discs on all 43 zero-answer boards in the ladder were recorded as correct
+    // and climbed the ladder for it. A six-year-old dropping the wrong weight got
+    // credit for it.
+    const inDish = this.placed();
     let any = false;
     for (const b of this.bodies) {
       if (b.fixed || b.crate || b.state !== "seated") continue;
@@ -646,7 +666,7 @@ export class Game {
     if (!any) return;
     if (counts("deadEnd")) {
       this.errors++;
-      this.report(false);
+      this.report(false, inDish);
     }
     this.audio.chain(5);
     this.cam.addTrauma(0.14);
@@ -805,6 +825,13 @@ export class Game {
     if (this.errors === 0) this.gems++;
     // The board is over, so the ladder moves before the next one is pulled.
     const before = this.pacing;
+    if (!this.reportable) {
+      // A last-resort board: the host never served it and never judged it. See
+      // `afterUnshowableBoard`, which is where the reasoning and the test live.
+      this.pacing = afterUnshowableBoard(before);
+      this.loadNext();
+      return;
+    }
     this.pacing = afterBoard(before, this.errors);
     if (this.pacing.floor > before.floor) {
       // Feature-detected: the shared host has it, the stub has it, an older
@@ -835,17 +862,18 @@ export class Game {
     }
   }
 
-  private report(correct: boolean): void {
+  private report(correct: boolean, dish?: readonly PlacedItem[]): void {
     if (correct && this.reported) return;
-    // A last-resort board is not the host's question and there is no id to report
-    // it against. See `pullBoard`.
-    if (!this.reportable) return;
     const ms = performance.now() - this.questionStart;
     this.stats.lastAnswerLatencyMs = ms;
+    // A last-resort board is not the host's question and there is no id to report
+    // it against. See `pullBoard`. The latency above is still recorded, because
+    // the harness reads it and a board the child played is a board they played.
+    if (!this.reportable) return;
     // `answeredKey` rather than a second copy of the same switch: it is the
-    // function the tests measure, and it is the one that knows a
-    // measurement-division board reports a count and not a mass.
-    const answered = answeredKey(this.spec, this.placed(), this.declared);
+    // function the tests measure, and the one that knows a measurement-division
+    // board reports a count and a balloon dish reports a positive number.
+    const answered = answeredKey(this.spec, dish ?? this.placed(), this.declared);
     this.host.report({ questionId: this.spec.id, correct, ms, answered });
     if (correct) this.reported = true;
   }
@@ -1359,7 +1387,7 @@ export class Game {
       answer: toKey(this.spec.answer),
       solved: this.solvedTotal,
       gems: this.gems,
-      minWeights: minWeightsFor(this.spec.rack, this.spec.answer),
+      minWeights: minWeightsForSpec(this.spec),
       fps: Math.round(this.stats.fpsAvg),
       kbVisible: this.kbVisible,
       theta: Number(this.beam.theta.toFixed(4)),

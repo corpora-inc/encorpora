@@ -22,15 +22,24 @@ import { HEADROOM, onTheWire, request, type Pacing } from "./pacing.ts";
 /**
  * How hard to try before giving up.
  *
- * Four draws at a rung, then a rung down — `STEP` is a shade under a sixty-sixth
- * of the ladder, which is one rung of the one that ships — so 96 tries walks the
- * whole ladder to the floor and then some. Generous on purpose: a wasted draw
- * costs a prefetched question the host discards, and running out costs a child a
- * screen with nothing on it.
+ * Three draws at a rung, then a step of a twentieth of the ladder, so twenty-four
+ * tries walks eight steps — about a quarter of the way down from wherever the
+ * child was standing. That reaches representable content from any rung on the
+ * shipped ladder, where the seven rungs this pack has no picture for are the
+ * multiplications at the very top.
+ *
+ * It was 96 with a one-rung step, and 96 is too deep to ask a host for. The shared
+ * host holds at most 64 prefetched questions and refills *asynchronously*, so no
+ * refill can land inside this loop: past the pool depth `take` starts handing back
+ * `{ ...lastServed, id: "" }` — the same already-refused prompt, forever, with the
+ * step-down turned into a no-op. `game-host` says it plainly: "the deepest bulk
+ * consumer in the repo is FUSE's 26-question pool, and every retry loop caps at
+ * eight." Twenty-four is above that and defensible; ninety-six was not. The empty
+ * id is also detected below, because a dry pool cannot be retried out of.
  */
-export const TRIES = 96;
-export const TRIES_PER_RUNG = 4;
-export const STEP = 0.015;
+export const TRIES = 24;
+export const TRIES_PER_RUNG = 3;
+export const STEP = 0.05;
 
 export type Pull = {
   spec: PuzzleSpec;
@@ -77,6 +86,20 @@ export function pull(
       difficulty: onTheWire(level),
       maxDifficulty: onTheWire(level + HEADROOM),
     });
+    // A question with no id is the shared host telling us its pool has run dry —
+    // it is `lastServed` handed back again, so asking a twenty-fourth time returns
+    // the same thing. And it must never be reported against: the host drops a
+    // report with an empty id on the floor, so a child would solve the board and
+    // have nothing recorded while the pack believed it had reported.
+    if (q.id === "") {
+      const board = boardFor(q, limits);
+      console.error(
+        "[counterpoise] the host's question pool is dry (an item arrived with no id); " +
+          "using a local board so nothing is reported against a question the host cannot judge",
+      );
+      if (!board.ok) refusals.push(board);
+      return { spec: board.ok ? board.spec : lastResortBoard(fallbackIndex), question: null, refusals };
+    }
     const board = boardFor(q, limits);
     if (board.ok) return { spec: board.spec, question: q, refusals };
     refusals.push(board);

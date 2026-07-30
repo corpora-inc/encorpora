@@ -362,7 +362,16 @@ test("the game records the dish tipping, not just the beam swinging past", () =>
     /this\.errors\+\+/,
     "a spill is not recorded against the child, so a guessed board still earns a gem",
   );
-  assert.match(spill[0], /this\.report\(false\)/, "a spill is never reported to the host");
+  // `report(false, inDish)`, not `report(false)`. `toss` sets every body to
+  // "eject", so a bare `report(false)` reads an empty dish and sends the string
+  // `"0"` — which on a zero-answer board is the *correct* answer, and the host
+  // re-judges the string. See `spill` for the measurement.
+  assert.match(
+    spill[0],
+    /this\.report\(false, inDish\)/u,
+    "a spill reports the dish it already emptied, so a wrong disc is sent as the answer",
+  );
+  assert.match(spill[0], /const inDish = this\.placed\(\);[\s\S]*toss\(/u, "the dish is read after it is tipped");
 });
 
 // ------------------------------------------------------------- the same run

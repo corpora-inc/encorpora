@@ -61,8 +61,9 @@ export const MAX_PEG = 5;
  *
  * Those give a two-way conversion: the radius a numeral of N characters needs,
  * and the characters a disc of radius r can hold. `computeLayout` uses the first
- * to grow the disc for a wide board, and the adapter uses the second to refuse a
- * question whose numerals still would not fit. Neither guesses.
+ * to grow the disc for a wide board, and `numeralCapacity` below reports the
+ * second to the adapter, which refuses a question whose numerals still would not
+ * fit. Neither guesses.
  */
 export const NUMERAL_MIN_PX = 15;
 export const NUMERAL_ADVANCE_EM = 0.58;
@@ -87,7 +88,7 @@ export function idealNumeralPx(r: number, chars: number): number {
  * Pure, so the founder's complaint is testable without a canvas: hand it the
  * ideal size, the ink that size measured, and the face it has to fit inside, and
  * it returns a size whose ink is inside the face — or the legibility floor, if
- * even that is not enough, which is the case `numeralBudget` exists to keep off
+ * even that is not enough, which is the case `numeralCapacity` exists to keep off
  * the screen entirely.
  */
 export function fittedNumeralPx(idealPx: number, inkAtIdeal: number, faceW: number): number {
@@ -106,17 +107,6 @@ export function charsAtRadius(r: number): number {
 }
 
 /**
- * The widest numeral this layout can hold — the pack's own legibility ceiling,
- * read back off the arrangement a child is looking at rather than predicted.
- *
- * A phone and a tablet get different answers and that is correct: the tablet's
- * disc is bigger, so it can honestly show more of the ladder.
- */
-export function numeralBudget(L: Layout): number {
-  return charsAtRadius(L.weightR);
-}
-
-/**
  * More characters than any board could want, used to ask `computeLayout` for the
  * biggest disc a viewport can carry. Sixteen: the widest numeral the shipped
  * ladder produces is ten characters.
@@ -127,11 +117,11 @@ const PROBE_CHARS = 16;
  * The widest numeral this *viewport* could ever engrave — the pack's ceiling,
  * measured before a board exists.
  *
- * Distinct from `numeralBudget`, which reads a layout already built for a
- * particular board. This one asks what the screen is capable of, which is the
- * number a question has to be judged against: refusing a wide board because the
- * layout currently on screen was built for a narrow one would refuse boards this
- * device can perfectly well show.
+ * Asked of the *screen*, not of a layout already built for a particular board.
+ * That distinction is the whole point: judging a question against the arrangement
+ * currently on the glass would refuse a wide board because the board before it was
+ * narrow. A phone and a tablet get different answers and that is correct — the
+ * tablet's disc is bigger, so it can honestly show more of the ladder.
  */
 export function numeralCapacity(w: number, h: number, rackCount: number): number {
   const area = safeRect(w, h);
@@ -264,7 +254,7 @@ export function computeLayout(
   // rack. So on a 320×568 phone r=24 holds, r=25 through 35 do not, and r=36 holds
   // again. Searching downward from the wanted radius therefore stopped at 24 —
   // a disc that fits four characters, for a board that needed six — and the
-  // promise `numeralBudget` makes to the adapter would have been a lie. Measured:
+  // promise `numeralCapacity` makes to the adapter would have been a lie. Measured:
   // that is exactly what the first version of this function did.
   for (let r = Math.ceil(want); r <= UP_LIMIT; r++) {
     const candidate = computeAtRadius(w, h, rackCount, area, r);

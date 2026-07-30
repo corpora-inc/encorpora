@@ -84,6 +84,30 @@ export function afterBoard(p: Pacing, errors: number): Pacing {
 }
 
 /**
+ * How far the request drops after a board the pack could not get from the host.
+ *
+ * A twentieth of the ladder — a little over three of the sixty-six rungs that
+ * ship. Enough to walk out of a neighbourhood of content this pack has no picture
+ * for, not so far that one refusal throws a child back to counting on fingers.
+ */
+export const FALLBACK_STEP_DOWN = 0.05;
+
+/**
+ * The board was one the host never served and never judged — see `lastResortBoard`.
+ *
+ * It is a one-move `8 = 2 + □`, so `afterBoard` would read zero errors and climb,
+ * and climbing is exactly backwards: the pack could not draw what the child was
+ * standing on. Four fallbacks in a row would have pushed a permanent floor into
+ * the region this pack has no picture for and pinned the child there, solving
+ * `2 + 6` for the rest of the session. So the request steps down, the streak
+ * breaks, and the floor is left exactly where it was — a floor is a promise to the
+ * host about content the child has *earned*, and nobody earned anything here.
+ */
+export function afterUnshowableBoard(p: Pacing): Pacing {
+  return { level: Math.max(0, p.level - FALLBACK_STEP_DOWN), floor: p.floor, streak: 0 };
+}
+
+/**
  * The largest number this game may put on the wire, and why it is not 1.
  *
  * `packs/shared/game-host` reads a difficulty through `toUnit`, which has to

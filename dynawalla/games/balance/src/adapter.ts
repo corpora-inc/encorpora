@@ -91,7 +91,7 @@ export type RefusalReason =
 export type Refusal = { ok: false; reason: RefusalReason; detail: string };
 export type Board = { ok: true; spec: PuzzleSpec } | Refusal;
 
-/** What the screen can currently show. See `numeralBudget` in `layout.ts`. */
+/** What the screen can currently show. See `numeralCapacity` in `layout.ts`. */
 export type BoardLimits = {
   /** Widest numeral, in characters, a disc can engrave legibly right now. */
   readonly maxNumeralChars: number;
@@ -425,6 +425,8 @@ type Draft = {
   fillSide: Side | null;
   /** True when the answer is *how many* discs were hung, not what they weigh. */
   countAnswer: boolean;
+  /** True when the dish is filled with balloons, so the mass is the negated answer. */
+  fillLifts: boolean;
   rack: Frac[];
   apparatus: number;
 };
@@ -481,6 +483,7 @@ export function boardFor(q: Question, limits: BoardLimits = NO_LIMITS): Board {
     fillSide: d.kind === "fill" ? d.fillSide : null,
     hangSlot: null,
     countAnswer: d.countAnswer,
+    fillLifts: d.fillLifts,
     prompt: q.prompt,
     domain: q.domain,
     difficulty: q.difficulty,
@@ -622,6 +625,7 @@ function sumBoard(st: Statement, answer: Frac, q: Question, rng: Rng): Drafted {
       fixed,
       fillSide: fill,
       countAnswer: false,
+      fillLifts: kind === "fill" && fillSign < 0,
       rack: rackFor(kind === "declare" ? answer : placed, q.distractors, rng),
       apparatus,
     },
@@ -682,6 +686,7 @@ function productBoard(st: Statement, answer: Frac, q: Question, rng: Rng): Draft
       fixed,
       fillSide: fill,
       countAnswer: false,
+      fillLifts: false,
       rack: rackFor(answer, q.distractors, rng),
       apparatus: APPARATUS_ROWS,
     },
@@ -768,6 +773,7 @@ function crateBoard(st: Statement, answer: Frac, q: Question, rng: Rng): Drafted
       fixed,
       fillSide: null,
       countAnswer: false,
+      fillLifts: false,
       rack: rackFor(answer, q.distractors, rng),
       apparatus: crates > 1 ? APPARATUS_CRATES : APPARATUS_CRATE,
     },
@@ -826,6 +832,7 @@ function countBoard(st: Statement, answer: Frac, q: Question): Drafted {
       fixed,
       fillSide: fill,
       countAnswer: true,
+      fillLifts: false,
       // One kind of weight on the rail, and as many as you like. That IS the
       // board: offering anything else would let a child level the beam with a
       // single 165 and report a count of one.
@@ -973,6 +980,7 @@ export function lastResortBoard(n: number): PuzzleSpec {
     fillSide: 1,
     hangSlot: null,
     countAnswer: false,
+    fillLifts: false,
     prompt: `${String(total)} = ${String(have)} + □`,
     domain: "add-sub",
     difficulty: 0,

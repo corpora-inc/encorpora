@@ -343,6 +343,7 @@ test("no float ever reaches a verdict", () => {
     fillSide: 1,
     hangSlot: null,
     countAnswer: false,
+    fillLifts: false,
     prompt: "1/3 + 1/6 = □",
     domain: "fractions",
     difficulty: 0.5,
