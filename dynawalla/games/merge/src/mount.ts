@@ -130,7 +130,11 @@ export function mount(el: HTMLElement, host: Host, opts: MountOptions = {}): { u
     // collapsing its stage to 820x0: a stage with no box quietly rendered at
     // window size, so an honest measurement was never available to anybody. Now
     // the measurement is honest and a missing stage is said out loud instead.
-    if (!saidCollapsed && (el.clientWidth < 2 || el.clientHeight < 2)) {
+    // Only when the *window* has a box. A Tauri window being restored and an
+    // Android rotation both hand out a momentary zero-size viewport, and the
+    // latch below says a thing once and can never retract it.
+    const room = window.innerWidth >= 1 && window.innerHeight >= 1;
+    if (!saidCollapsed && room && (el.clientWidth < 2 || el.clientHeight < 2)) {
       saidCollapsed = true;
       console.error(
         `[fuse] the stage measures ${String(el.clientWidth)}x${String(el.clientHeight)}. ` +
