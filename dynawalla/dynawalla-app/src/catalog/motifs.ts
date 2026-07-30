@@ -665,6 +665,40 @@ const sigil: Motif = (rng) => {
   return out
 }
 
+
+/**
+ * THE GAVEL — three bids in the room, and the hammer one coin over the highest.
+ *
+ * The middle tablet is the highest and is the one lit; the dashed line above the room
+ * is the broker's offer, which is what stops the answer being "bid as much as you
+ * like". The hammer is coming down one coin over the lit tablet.
+ */
+const auction: Motif = (rng) => {
+  const heights = [between(rng, 16, 26), between(rng, 34, 44), between(rng, 20, 30)]
+  const out: Shape[] = [line(6, 88, 94, 88, "veil")]
+  for (let i = 0; i < 3; i++) {
+    const h = heights[i] ?? 20
+    const x = 14 + i * 26
+    const top = 88 - h
+    out.push(
+      box(x, top, 20, h, i === 1 ? "fill" : "line", i === 1 ? 0.26 : 1, 1),
+      box(x, top, 20, h, i === 1 ? "warm" : "pale", i === 1 ? 1 : 0.7, 1),
+      line(x + 4, top + 7, x + 16, top + 7, "pale", 0.55),
+    )
+  }
+  const crown = 88 - (heights[1] ?? 38)
+  out.push(
+    line(8, 20, 92, 20, "veil", 0.6, "4 4"),
+    box(40, 20, 20, 5, "veil", 0.35, 1),
+    line(58, 30, 78, 12, "bold"),
+    box(72, 6, 16, 9, "fill", 0.9, 1),
+    box(72, 6, 16, 9, "glow", 0.5, 1),
+    dot(50, crown - 5, 2.8, "glow", 0.9),
+    dot(50, crown - 5, 1.4, "warm"),
+  )
+  return out
+}
+
 const MOTIFS = {
   orbs,
   balance,
@@ -693,6 +727,7 @@ const MOTIFS = {
   street,
   trebuchet,
   slate,
+  auction,
   sigil,
 } as const satisfies Record<string, Motif>
 
