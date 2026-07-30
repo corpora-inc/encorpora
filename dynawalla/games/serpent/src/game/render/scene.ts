@@ -13,14 +13,15 @@
  *     rising chime *and* growth *and* a bulge travelling down the body.
  */
 
-import { TAU, clamp, easeOutBack, easeOutCubic, easeOutExpo } from "../num.ts";
+import { TAU, clamp, easeOutCubic, easeOutExpo } from "../num.ts";
 import { COLORS, TUNE } from "../tuning.ts";
 import { bolusTintAt } from "../serpent.ts";
 import { orbDrawRadius } from "../orbs.ts";
 import { NO_INSETS, safeRect, type Insets } from "../../../../../packs/shared/game-chrome/index.ts";
 import type { World } from "../world.ts";
 import { GLOW_PX, MOTE_PX, sprites } from "./sprites.ts";
-import { drawLabel, labelWidth, type LabelStyle } from "./glyphs.ts";
+import { drawLabel, labelInk, labelWidth, type LabelStyle } from "./glyphs.ts";
+import { promptDrawScale, promptFit, type PromptBlock } from "./prompt.ts";
 import { PK_BUBBLE, PK_MOTE, PK_SHARD } from "../fx/particles.ts";
 
 /**
@@ -97,9 +98,66 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
   const snowFar: Snow[] = [];
   const snowNear: Snow[] = [];
   let shownPrompt = "";
-  let outgoingPrompt = "";
   let promptT = 1;
   let lastTime = 0;
+
+  /**
+   * The fitted condition, and the block the previous one was fitted to.
+   *
+   * Cached because a fit is a binary search over a measurement and neither belongs
+   * in a frame, and because the outgoing condition has to keep the size it was
+   * fitted at while it blows away — re-fitting it against the new arena would make
+   * the departing string jump before it faded.
+   *
+   * The key carries the arena radius rounded to a whole pixel, so the block is
+   * re-laid-out a handful of times as the vent closes rather than 60 times a
+   * second, and never at all on a screen that is not moving.
+   */
+  let promptBlock: PromptBlock | null = null;
+  let promptKey = "";
+  let outgoingBlock: PromptBlock | null = null;
+  /** The last condition we shouted about, so the shout is once and not per frame. */
+  let promptComplaint = "";
+
+  function fittedPrompt(text: string, arenaR: number): PromptBlock {
+    // Every input the fit reads is in the key, `view.safe.h` included: on a wide,
+    // short viewport the height is what binds a three-line block, and it can change
+    // while `view.scale` and `view.safe.w` do not.
+    const key = `${text}|${Math.round(arenaR * view.scale)}|${Math.round(view.safe.w)}|${Math.round(view.safe.h)}`;
+    if (promptBlock && promptKey === key) return promptBlock;
+    const block = promptFit(text, view.safe, view.scale, arenaR, (line, size) =>
+      labelInk(line, { ...PROMPT_LABEL, size }),
+    );
+    if (!block.fits && promptComplaint !== text) {
+      promptComplaint = text;
+      // Never silent. A condition that cannot be drawn at the legibility floor is
+      // a row this pack should not have been served, and the only way anyone finds
+      // out is if it says so.
+      console.error(
+        `[serpent] the condition "${text}" does not fit the vent at the legibility ` +
+          `floor: ${block.lines.length} line(s) of ${block.size.toFixed(0)}px need ` +
+          `${block.w.toFixed(0)}x${block.h.toFixed(0)}px and the disc is ` +
+          `${(arenaR * view.scale * 2).toFixed(0)}px across. It is drawn anyway, cramped.`,
+      );
+    }
+    promptKey = key;
+    promptBlock = block;
+    return block;
+  }
+
+  /** One condition, one pass, `block.size` already decided. */
+  function drawPromptBlock(
+    block: PromptBlock,
+    x: number,
+    y: number,
+    scale: number,
+    alpha: number,
+  ): void {
+    const style: LabelStyle = { ...PROMPT_LABEL, size: block.size };
+    for (let i = 0; i < block.lines.length; i++) {
+      drawLabel(g, block.lines[i] as string, style, x, y + (block.offsets[i] as number) * scale, view.dpr, scale, alpha);
+    }
+  }
 
   // Scratch buffers for the body outline. Allocated once.
   const nx = new Float32Array(TUNE.maxSegments + 2);
@@ -285,26 +343,29 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     }
 
     // --- the condition, written on the water ------------------------------
+    //
+    // Measured, broken and floored — see `prompt.ts`. The fit is handed
+    // `w.arenaR` and `view.scale` and deliberately NOT `cam.zoom`: the budget
+    // carries the spring's undershoot as a margin, because a fit recomputed on a
+    // spring is a fit that jitters.
     if (w.prompt !== shownPrompt) {
-      outgoingPrompt = shownPrompt;
+      outgoingBlock = promptBlock;
       shownPrompt = w.prompt;
       promptT = 0;
     }
     promptT = Math.min(1, promptT + dt * 1.9);
-    const promptSize = Math.max(56, view.scale * 0.52);
-    const style: LabelStyle = { ...PROMPT_LABEL, size: promptSize };
-    const breathe = 1 + Math.sin(w.cam.t * 0.9) * 0.012;
+    const block = fittedPrompt(shownPrompt, w.arenaR);
     // Additive, so the condition is *light in the water* — it can never read as
     // a dark smudge whatever is behind it, and the serpent swims through it.
     g.globalCompositeOperation = "lighter";
-    if (outgoingPrompt && promptT < 1) {
+    const pop = promptDrawScale(promptT, w.cam.t);
+    if (outgoingBlock && promptT < 1) {
       const k = easeOutCubic(promptT);
-      drawLabel(g, outgoingPrompt, style, X(0), Y(0), view.dpr, (1 + k * 0.55) * breathe, (1 - k) * 0.2);
+      drawPromptBlock(outgoingBlock, X(0), Y(0), (1 + k * 0.55) * pop.breathe, (1 - k) * 0.2);
     }
-    const inK = easeOutBack(Math.min(1, promptT * 1.25));
     const inA = Math.min(1, promptT * 2.2);
-    drawLabel(g, shownPrompt, style, X(0), Y(0), view.dpr, (0.74 + 0.26 * inK) * breathe * 1.08, 0.1 * inA);
-    drawLabel(g, shownPrompt, style, X(0), Y(0), view.dpr, (0.74 + 0.26 * inK) * breathe, 0.26 * inA);
+    drawPromptBlock(block, X(0), Y(0), pop.halo, 0.1 * inA);
+    drawPromptBlock(block, X(0), Y(0), pop.core, 0.26 * inA);
     g.globalCompositeOperation = "source-over";
     g.restore();
 
