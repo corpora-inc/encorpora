@@ -3,7 +3,7 @@ import type { Host, FocusableHost } from "./contract.ts";
 import { Game } from "./game.ts";
 import { Renderer } from "./render.ts";
 import { bindInput } from "./input.ts";
-import { computeLayout, type Layout } from "./layout.ts";
+import { computeLayout, makeStage, type Layout } from "./layout.ts";
 
 export type MountOptions = {
   seed?: string;
@@ -31,7 +31,11 @@ export function mount(el: HTMLElement, host: Host, opts: MountOptions = {}): { u
     "aria-label",
     "FUSE. Drop numbered chips into the well. Touching chips that add up to the key number fuse.",
   );
-  el.style.position = el.style.position || "relative";
+  // The computed position, not the inline one — see `makeStage`. This is the only
+  // place the game asks the browser where the host has put it, and reading it off
+  // `el.style` instead is what made a sibling game a black screen on two app
+  // stores.
+  makeStage(el, getComputedStyle(el).position);
   el.appendChild(canvas);
 
   // How to play, on the shared surface every Dynawalla game uses. Nobody can
@@ -118,9 +122,24 @@ export function mount(el: HTMLElement, host: Host, opts: MountOptions = {}): { u
   let acc = 0;
   const frameTimes: number[] = [];
 
+  /** Said once. A collapsed stage would otherwise say it on every resize. */
+  let saidCollapsed = false;
   const resize = () => {
-    const w = Math.max(1, el.clientWidth || window.innerWidth);
-    const h = Math.max(1, el.clientHeight || window.innerHeight);
+    // `el.clientHeight || window.innerHeight` was here, and the `||` is one of the
+    // two accidents that kept this game alive while `makeStage`'s predecessor was
+    // collapsing its stage to 820x0: a stage with no box quietly rendered at
+    // window size, so an honest measurement was never available to anybody. Now
+    // the measurement is honest and a missing stage is said out loud instead.
+    if (!saidCollapsed && (el.clientWidth < 2 || el.clientHeight < 2)) {
+      saidCollapsed = true;
+      console.error(
+        `[fuse] the stage measures ${String(el.clientWidth)}x${String(el.clientHeight)}. ` +
+          `The canvas is position:absolute inside it, so nothing this game draws has a size. ` +
+          `The host's element needs a box of its own — see makeStage in layout.ts.`,
+      );
+    }
+    const w = Math.max(1, el.clientWidth);
+    const h = Math.max(1, el.clientHeight);
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);

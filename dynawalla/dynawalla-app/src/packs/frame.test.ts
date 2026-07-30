@@ -7,10 +7,24 @@
 // `allow-same-origin` back in would be invisible in every other test in this
 // repository. This is the one that fails.
 
+import { readFileSync } from "node:fs"
 import { test, type TestContext } from "node:test"
 import assert from "node:assert/strict"
 
-import { mountPack } from "./frame.ts"
+import {
+  describeFault,
+  fillsWindow,
+  LIVENESS,
+  MIN_FILL,
+  mountPack,
+  newWatch,
+  step,
+  stillWatching,
+  type LivenessFault,
+  type LivenessLimits,
+  type Observation,
+  type Watch,
+} from "./frame.ts"
 import type { HostServices } from "./bridge.ts"
 import type { Capability, Connect, Settings } from "../../../packs/sdk/src/index.ts"
 
@@ -54,7 +68,19 @@ type Harness = {
   children: unknown[]
   listeners: Map<string, Set<(event: unknown) => void>>
   removed: boolean
+  /** Faults the host reported, in order. */
+  faults: LivenessFault[]
+  /** The box the frame reports from here on. */
+  setBox(width: number, height: number): void
   fire(event: { source: unknown; data: unknown }): void
+}
+
+/** How a mount may be varied. Everything omitted behaves like a healthy app. */
+type HarnessOptions = {
+  readonly granted?: readonly Capability[]
+  /** The frame's box. Defaults to a 820x1180 tablet, which is what it is. */
+  readonly box?: { readonly width: number; readonly height: number }
+  readonly liveness?: Partial<LivenessLimits>
 }
 
 /**
@@ -71,12 +97,18 @@ type Harness = {
  * `dispose()` is idempotent (there is a test for it), so tests may still call it
  * themselves where the call is the thing being asserted.
  */
-function harness(t: TestContext, granted: readonly Capability[] = ["items"]): Harness {
+function harness(t: TestContext, options: HarnessOptions = {}): Harness {
+  const granted = options.granted ?? ["items"]
   const posted: Posted[] = []
   const children: unknown[] = []
+  const faults: LivenessFault[] = []
   const listeners = new Map<string, Set<(event: unknown) => void>>()
   const attributes = new Map<string, string>()
   const state = { removed: false }
+  // A real frame, in a real app, on a real tablet. The liveness watch measures
+  // this, so a fake that reported nothing would make every liveness assertion
+  // below vacuous.
+  const box = { width: options.box?.width ?? 820, height: options.box?.height ?? 1180 }
 
   const contentWindow = {
     postMessage: (data: unknown, targetOrigin: string, transfer: readonly MessagePort[] = []) => {
@@ -86,6 +118,8 @@ function harness(t: TestContext, granted: readonly Capability[] = ["items"]): Ha
 
   const frame: Record<string, unknown> = {
     contentWindow,
+    isConnected: true,
+    getBoundingClientRect: () => ({ ...box }),
     setAttribute: (name: string, value: string) => attributes.set(name, value),
     getAttribute: (name: string) => attributes.get(name) ?? null,
     addEventListener: () => {},
@@ -94,8 +128,10 @@ function harness(t: TestContext, granted: readonly Capability[] = ["items"]): Ha
     },
   }
 
-  const doc = { createElement: () => frame } as unknown as Document
+  const doc = { createElement: () => frame, visibilityState: "visible" } as unknown as Document
   const win = {
+    innerWidth: 820,
+    innerHeight: 1180,
     addEventListener: (type: string, listener: (event: unknown) => void) => {
       const set = listeners.get(type) ?? new Set()
       set.add(listener)
@@ -120,6 +156,8 @@ function harness(t: TestContext, granted: readonly Capability[] = ["items"]): Ha
     title: "Abacus Tower",
     document: doc,
     window: win,
+    onFault: (fault) => faults.push(fault),
+    ...(options.liveness ? { liveness: options.liveness } : {}),
   })
   t.after(() => mounted.dispose())
 
@@ -129,6 +167,11 @@ function harness(t: TestContext, granted: readonly Capability[] = ["items"]): Ha
     posted,
     children,
     listeners,
+    faults,
+    setBox: (width, height) => {
+      box.width = width
+      box.height = height
+    },
     get removed() {
       return state.removed
     },
@@ -194,7 +237,7 @@ test("a ready from anywhere but this frame is ignored", (t) => {
 })
 
 test("the handshake transfers exactly one port and states the grant set", (t) => {
-  const test = harness(t, ["items", "haptics"])
+  const test = harness(t, { granted: ["items", "haptics"] })
   shake(test)
   assert.equal(test.mounted.connected(), true)
   assert.equal(test.posted.length, 1)
@@ -222,7 +265,7 @@ test("a second ready does not hand out a second port", (t) => {
 })
 
 test("traffic on the port reaches the bridge and comes back", async (t) => {
-  const test = harness(t, ["items"])
+  const test = harness(t, { granted: ["items"] })
   shake(test)
   const packPort = test.posted[0]?.transfer[0]
   assert.ok(packPort)
@@ -280,4 +323,469 @@ test("mounting twice makes two independent packs — StrictMode does exactly thi
   assert.equal(second.mounted.connected(), true)
   assert.equal(second.removed, false)
   second.mounted.dispose()
+})
+
+/* -------------------------------------------------------------------------- */
+/* Liveness: noticing that a pack is showing a child nothing.                  */
+/*                                                                            */
+/* VOLTA shipped blank on both platforms and the only net was the handshake    */
+/* timeout, which a pack that connects and then draws nothing sails past.      */
+/* These are the two faults the host can observe for itself, and most of what  */
+/* is below is the other half of the job: proving the watch stays quiet in     */
+/* every situation where a working pack legitimately measures zero or says     */
+/* nothing. A false "this pack is broken" is worse than the silence.           */
+/* -------------------------------------------------------------------------- */
+
+/** A healthy tablet: visible, measurable, filling the window, and it has spoken. */
+const HEALTHY: Observation = {
+  visible: true,
+  measurable: true,
+  width: 820,
+  height: 1180,
+  windowWidth: 820,
+  windowHeight: 1180,
+  messages: 1,
+}
+
+/**
+ * Run a sequence of observations through the watch and collect everything said.
+ *
+ * `dtMs` defaults to the real poll interval, so a count of observations is a
+ * duration and the thresholds under test are the shipped ones.
+ */
+function watchThrough(
+  observations: readonly Observation[],
+  asksForItems = true,
+  limits: LivenessLimits = LIVENESS,
+): { readonly said: readonly LivenessFault[]; readonly watch: Watch } {
+  let watch = newWatch()
+  const said: LivenessFault[] = []
+  for (const observation of observations) {
+    const result = step(watch, observation, limits.pollMs, asksForItems, limits)
+    watch = result.watch
+    said.push(...result.faults)
+  }
+  return { said, watch }
+}
+
+/** `count` copies of one observation. */
+const held = (observation: Observation, count: number): Observation[] =>
+  Array.from({ length: count }, () => observation)
+
+/** Enough ticks to pass a threshold twice over. */
+const ticksFor = (ms: number): number => Math.ceil((ms / LIVENESS.pollMs) * 2)
+
+test("a working pack is never accused, and stops being watched almost at once", () => {
+  const run = watchThrough(held(HEALTHY, ticksFor(LIVENESS.muteAfterMs)))
+  assert.equal(run.said.length, 0, `a healthy pack was accused of ${run.said.join(", ")}`)
+  // And the poll stops: the watch has its answer after one measurement, so a
+  // child's forty-minute session does not carry a timer that can never fire.
+  assert.equal(
+    stillWatching(run.watch, HEALTHY.messages, true),
+    false,
+    "the host kept polling a pack it had already cleared",
+  )
+})
+
+test("a frame with no box is reported, once, after five seconds of being visible", () => {
+  const blank: Observation = { ...HEALTHY, width: 820, height: 0 }
+  // One tick short of the threshold: still nothing said.
+  const early = watchThrough(held(blank, LIVENESS.blankAfterMs / LIVENESS.pollMs - 1))
+  assert.equal(early.said.length, 0, "the watch accused a frame before its grace ran out")
+
+  const run = watchThrough(held(blank, ticksFor(LIVENESS.blankAfterMs)))
+  assert.deepEqual(run.said, ["no-room"], "a frame measuring 820x0 was not reported exactly once")
+  assert.equal(stillWatching(run.watch, blank.messages, true), false)
+})
+
+test("the shape the host's own chain actually breaks into is reported", () => {
+  // 300x150 is not a guess. `Stage.tsx` wraps the frame in a `fixed; inset: 0`
+  // div, and `.pack-frame` / `.pack-frame-host` take their whole box from it by
+  // percentage. Taking that one declaration away was tried in a browser against
+  // the real `packs.css`: the frame does not become 0x0, it becomes 300x150 —
+  // an iframe's intrinsic default, which is what a replaced element falls back to
+  // when a percentage has nothing to resolve against.
+  //
+  // This is the case a check written against zero would have watched go past, and
+  // it is the most likely way this failure ever happens.
+  const defaulted: Observation = { ...HEALTHY, width: 300, height: 150 }
+  assert.equal(fillsWindow(defaulted), false, "a 300x150 iframe counts as filling a tablet")
+  const run = watchThrough(held(defaulted, ticksFor(LIVENESS.blankAfterMs)))
+  assert.deepEqual(run.said, ["no-room"], "the measured failure shape went unreported")
+})
+
+test("either axis counts — a frame the window's height but a sliver wide shows no game", () => {
+  for (const box of [
+    { width: 0, height: 1180 },
+    { width: 820, height: 0 },
+    { width: 0, height: 0 },
+    { width: 300, height: 150 },
+    { width: 820, height: 1180 * MIN_FILL - 1 },
+    { width: 820 * MIN_FILL - 1, height: 1180 },
+  ]) {
+    const run = watchThrough(held({ ...HEALTHY, ...box }, ticksFor(LIVENESS.blankAfterMs)))
+    assert.deepEqual(run.said, ["no-room"], `${box.width}x${box.height} was not reported`)
+  }
+})
+
+test("a small window is not a fault — the yardstick is the window, not a floor", () => {
+  // The false positive a fixed pixel floor would have shipped. A desktop user who
+  // drags the window down to a strip, a phone in split view, a WebView that has
+  // not finished sizing: in every one the frame still fills what it was given, and
+  // a pack drawn into all of a small window is a small game, not a broken one.
+  for (const [name, w, h] of [
+    ["a 320x568 phone", 320, 568],
+    ["a window dragged to a strip", 400, 180],
+    ["a single row of pixels", 900, 2],
+  ] as const) {
+    const small: Observation = {
+      ...HEALTHY,
+      width: w,
+      height: h,
+      windowWidth: w,
+      windowHeight: h,
+    }
+    assert.equal(fillsWindow(small), true, `${name}: a frame filling its window read as too small`)
+    const run = watchThrough(held(small, ticksFor(LIVENESS.muteAfterMs)))
+    assert.equal(run.said.length, 0, `${name}: reported ${run.said.join(", ")}`)
+  }
+})
+
+test("exactly at the threshold is not a fault; a pixel under it is", () => {
+  const at: Observation = { ...HEALTHY, width: 820 * MIN_FILL, height: 1180 * MIN_FILL }
+  assert.equal(fillsWindow(at), true, "the threshold is exclusive where it should be inclusive")
+  assert.equal(fillsWindow({ ...at, height: at.height - 1 }), false)
+})
+
+test("one full measurement, ever, settles it — a stage animating in is not broken", () => {
+  // The frame is zero for four seconds and then has a box. This is a stage
+  // transitioning in, a frame measured before first layout, and a tab that has
+  // just come back; all three had to be safe before this could ship at all.
+  const collapsed: Observation = { ...HEALTHY, height: 0 }
+  const run = watchThrough([
+    ...held(collapsed, (LIVENESS.blankAfterMs / LIVENESS.pollMs) - 4),
+    ...held(HEALTHY, ticksFor(LIVENESS.blankAfterMs)),
+  ])
+  assert.equal(run.said.length, 0, `an animating stage was accused of ${run.said.join(", ")}`)
+  assert.equal(run.watch.everFilled, true)
+})
+
+test("a frame that had a box and then lost it is the host's doing, not the pack's", () => {
+  // The other half of the latch, and the reason it is a latch rather than a
+  // first-few-seconds grace. A pack's stage either has a box or it does not, and
+  // which one is settled at mount; a frame going to zero *after* a minute of
+  // being fine is the host — a sheet, a rotation, a route change, a teardown —
+  // and blaming the pack for it would fire on every game a child ever leaves.
+  const run = watchThrough([
+    ...held(HEALTHY, 40),
+    ...held({ ...HEALTHY, height: 0 }, ticksFor(LIVENESS.blankAfterMs) * 4),
+  ])
+  assert.equal(run.said.length, 0, `a pack the host put away was accused of ${run.said.join(", ")}`)
+})
+
+test("time spent hidden or unmeasurable is not counted, however long it lasts", () => {
+  const cases: Array<[string, Observation]> = [
+    // A backgrounded tab. Layout may be stale and rAF is stopped; nothing
+    // measured here is evidence about the pack.
+    ["a backgrounded app", { ...HEALTHY, visible: false, width: 0, height: 0, messages: 0 }],
+    // The host hid the frame itself: a sheet over a paused pack, a teardown in
+    // flight, an ancestor with `display: none`.
+    ["a frame the host hid", { ...HEALTHY, measurable: false, width: 0, height: 0, messages: 0 }],
+  ]
+  for (const [name, observation] of cases) {
+    const run = watchThrough(held(observation, ticksFor(LIVENESS.muteAfterMs)))
+    assert.equal(run.said.length, 0, `${name}: reported ${run.said.join(", ")}`)
+    assert.equal(run.watch.visibleMs, 0, `${name}: unusable time was counted against the pack`)
+  }
+})
+
+test("a hidden app that comes back is judged on what it does afterwards, not before", () => {
+  const hiddenBlank: Observation = { ...HEALTHY, visible: false, height: 0, messages: 0 }
+  const visibleBlank: Observation = { ...HEALTHY, height: 0, messages: 0 }
+  const run = watchThrough([
+    ...held(hiddenBlank, 400),
+    ...held(visibleBlank, ticksFor(LIVENESS.blankAfterMs)),
+  ])
+  assert.deepEqual(run.said, ["no-room"])
+  // The five seconds were the visible ones, not the hundred spent hidden.
+  assert.ok(
+    run.watch.visibleMs < 400 * LIVENESS.pollMs,
+    "hidden time was charged to the pack after all",
+  )
+})
+
+test("a pack that spoke once is never called mute, however long it then idles", () => {
+  // Measured in a framed pack: 129 messages in the first 1.3 seconds and 13 more
+  // across the next five, whether anyone was playing or not. A gap in traffic is
+  // an idle child as often as a dead pack, so only never-having-spoken counts.
+  const idle: Observation = { ...HEALTHY, messages: 129 }
+  const run = watchThrough(held(idle, ticksFor(LIVENESS.muteAfterMs) * 4))
+  assert.equal(run.said.length, 0, `an idle pack was accused of ${run.said.join(", ")}`)
+})
+
+test("a pack that took its port and never used it is reported, once, after 30s", () => {
+  const mute: Observation = { ...HEALTHY, messages: 0 }
+  const early = watchThrough(held(mute, LIVENESS.muteAfterMs / LIVENESS.pollMs - 1))
+  assert.equal(early.said.length, 0, "the watch accused a pack that was still starting up")
+
+  const run = watchThrough(held(mute, ticksFor(LIVENESS.muteAfterMs)))
+  assert.deepEqual(run.said, ["never-spoke"])
+})
+
+test("a pack that was not granted items is not expected to ask for one", () => {
+  const mute: Observation = { ...HEALTHY, messages: 0 }
+  const run = watchThrough(held(mute, ticksFor(LIVENESS.muteAfterMs) * 4), false)
+  assert.equal(run.said.length, 0, `a pack with no items grant was accused of ${run.said.join(", ")}`)
+  assert.equal(stillWatching(run.watch, 0, false), false, "it is still being polled for nothing")
+})
+
+test("a pack that is both blank and mute is told about both, and each once", () => {
+  const dead: Observation = { ...HEALTHY, width: 820, height: 0, messages: 0 }
+  const run = watchThrough(held(dead, ticksFor(LIVENESS.muteAfterMs)))
+  assert.deepEqual(run.said, ["no-room", "never-spoke"])
+  assert.deepEqual(run.watch.said, ["no-room", "never-spoke"])
+})
+
+test("what is said names the pack, the measurement, and the lie it contradicts", () => {
+  const blank = describeFault("dynawalla.fuse", "no-room", { ...HEALTHY, width: 300, height: 150 })
+  assert.match(blank, /dynawalla\.fuse/)
+  assert.match(blank, /300x150/, "the message does not say what was measured")
+  assert.match(blank, /820x1180/, "the message does not say what it was measured against")
+
+  const mute = describeFault("dynawalla.fuse", "never-spoke", { ...HEALTHY, messages: 0 })
+  assert.match(mute, /dynawalla\.fuse/)
+  // The whole reason this fault is worth reporting: every game's entry answers a
+  // failed start by drawing "<GAME> runs inside Dynawalla", which is the
+  // standalone message. When the host sees this fault it knows that is false.
+  assert.match(mute, /runs\s+inside Dynawalla/)
+  assert.match(mute, /false/)
+})
+
+/* -------------------------------------------------------------------------- */
+/* Why the box is worth watching at all: the host's own stylesheet.            */
+/* -------------------------------------------------------------------------- */
+
+/** The declarations of one rule in the real `packs.css`. */
+function packsCssRule(selector: string): Map<string, string> {
+  const css = readFileSync(new URL("./packs.css", import.meta.url), "utf8")
+  // Comments first: `packs.css` is mostly prose, and a selector inside a comment
+  // is not a rule.
+  const source = css.replace(/\/\*[\s\S]*?\*\//g, "")
+  const rule = new RegExp(`${selector.replace(".", "\\.")}\\s*\\{([^}]*)\\}`).exec(source)
+  assert.ok(rule, `packs.css has no ${selector} rule; this test is measuring the wrong element`)
+  const declarations = new Map<string, string>()
+  for (const part of (rule[1] ?? "").split(";")) {
+    const colon = part.indexOf(":")
+    if (colon < 0) continue
+    declarations.set(part.slice(0, colon).trim(), part.slice(colon + 1).trim())
+  }
+  return declarations
+}
+
+/** Every way a box can be given a size of its own, in one place. */
+const OWN_SIZE = [
+  "height",
+  "block-size",
+  "min-height",
+  "min-block-size",
+  "width",
+  "min-width",
+  "min-inline-size",
+  "aspect-ratio",
+]
+
+test("the frame's box is entirely its ancestor's, which is why it is watched", () => {
+  // The precondition the `no-room` fault exists for, read out of the real
+  // stylesheet rather than restated. `.pack-frame` is 100% of `.pack-frame-host`,
+  // which is 100% of the `fixed; inset: 0` div in `Stage.tsx`. Nothing in the
+  // chain has a size of its own, so the whole app is one edit away from handing a
+  // child a 300x150 iframe where a game should be.
+  //
+  // If this ever fails because the frame was given a real size, the fault is less
+  // necessary than it is today — and that is worth knowing deliberately rather
+  // than by a test quietly going green.
+  for (const selector of [".pack-frame", ".pack-frame-host"]) {
+    const rule = packsCssRule(selector)
+    assert.equal(rule.get("block-size"), "100%", `${selector} no longer sizes by percentage`)
+    assert.equal(rule.get("inline-size"), "100%", `${selector} no longer sizes by percentage`)
+    for (const property of OWN_SIZE) {
+      if (property === "block-size") continue
+      // `.pack-frame-host` sets `min-inline-size: 0`, which takes a size away
+      // rather than giving one.
+      if (property === "min-inline-size" && rule.get(property) === "0") continue
+      assert.equal(rule.get(property), undefined, `${selector} now has its own ${property}`)
+    }
+  }
+})
+
+/**
+ * An iframe's intrinsic size — what a replaced element falls back to when its
+ * percentage has nothing to resolve against. Not a choice of this codebase's:
+ * measured in a browser at exactly this, against this stylesheet.
+ */
+const IFRAME_DEFAULT = { width: 300, height: 150 }
+
+/**
+ * The used box of the frame, given the box of the ancestor `Stage.tsx` wraps it in.
+ *
+ * Resolved from what `packs.css` actually declares, down the real chain
+ * `.pack-frame-host` -> `.pack-frame`, rather than from what the file is
+ * remembered to say. A deliberately tiny slice of CSS and only the slice the
+ * frame's box depends on: a percentage of the containing block, an explicit
+ * length, or — when the ancestor's own box is gone and the percentage cannot
+ * resolve — the replaced element's intrinsic default.
+ *
+ * `null` for the ancestor is the failure: a stage div with no box of its own,
+ * which is what removing `fixed; inset: 0` from `Stage.tsx` produces.
+ */
+function frameBox(
+  ancestor: { width: number; height: number } | null,
+): { width: number; height: number } {
+  if (ancestor === null) return { ...IFRAME_DEFAULT }
+  let box = { ...ancestor }
+  for (const selector of [".pack-frame-host", ".pack-frame"]) {
+    const rule = packsCssRule(selector)
+    const resolve = (declared: string | undefined, against: number, intrinsic: number): number => {
+      if (declared === undefined) return intrinsic
+      if (declared.endsWith("%")) return (against * Number.parseFloat(declared)) / 100
+      if (declared.endsWith("px")) return Number.parseFloat(declared)
+      return intrinsic
+    }
+    box = {
+      width: resolve(rule.get("inline-size"), box.width, IFRAME_DEFAULT.width),
+      height: resolve(rule.get("block-size"), box.height, IFRAME_DEFAULT.height),
+    }
+  }
+  return box
+}
+
+test("the box the host's chain hands the frame, in both states, is what the watch judges", () => {
+  // The arithmetic joined to the fault. The frame's box IS the stage div's, so the
+  // failure is one edit away in `Stage.tsx` or in one rule here — and both
+  // directions are asserted, because a check that fires on a healthy 820x1180
+  // frame is worse than no check at all.
+  const window = { windowWidth: 820, windowHeight: 1180 }
+  const healthy = frameBox({ width: 820, height: 1180 })
+  assert.deepEqual(healthy, { width: 820, height: 1180 }, "the frame no longer fills its ancestor")
+
+  const broken = frameBox(null)
+  // The measurement, pinned. If this ever stops being 300x150 the threshold above
+  // was derived against a shape that no longer happens.
+  assert.deepEqual(broken, IFRAME_DEFAULT, "a boxless ancestor no longer defaults the frame")
+
+  const good = watchThrough(held({ ...HEALTHY, ...healthy, ...window }, ticksFor(LIVENESS.blankAfterMs)))
+  assert.equal(good.said.length, 0, `a full-size frame was accused of ${good.said.join(", ")}`)
+
+  const bad = watchThrough(held({ ...HEALTHY, ...broken, ...window }, ticksFor(LIVENESS.blankAfterMs)))
+  assert.deepEqual(bad.said, ["no-room"], "a defaulted frame went unreported")
+})
+
+/* -------------------------------------------------------------------------- */
+/* The same two faults, through the real mount.                                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Short clocks, so the suite does not wait out half a minute of real time.
+ *
+ * Only ONE fault is armed at a time. Both thresholds live on the same visible
+ * clock, so a test that shortened both would be racing its own assertion against
+ * the second fault arriving — the exact shape of flake this file's `until`
+ * helper was written to avoid.
+ */
+const WATCH_BOX: Partial<LivenessLimits> = { pollMs: 4, blankAfterMs: 24, muteAfterMs: 3_600_000 }
+const WATCH_MUTE: Partial<LivenessLimits> = { pollMs: 4, blankAfterMs: 3_600_000, muteAfterMs: 40 }
+
+test("the watch starts at the handshake, not before it", async (t) => {
+  // A pack that never says `ready` is the handshake timeout's business, and
+  // accusing it of silence as well would be two messages about one failure.
+  t.mock.method(console, "error", () => {})
+  const test = harness(t, { box: { width: 0, height: 0 }, liveness: { pollMs: 4, blankAfterMs: 24, muteAfterMs: 40 } })
+  await new Promise((resolve) => setTimeout(resolve, 150))
+  assert.equal(test.faults.length, 0, `an unconnected pack was accused of ${test.faults.join(", ")}`)
+})
+
+test("a mounted pack whose frame has no box is reported through the real mount", async (t) => {
+  const said: string[] = []
+  t.mock.method(console, "error", (message: string) => said.push(message))
+  const test = harness(t, { box: { width: 820, height: 0 }, liveness: WATCH_BOX })
+  shake(test)
+
+  await until(() => test.faults.includes("no-room"))
+  assert.deepEqual(test.faults, ["no-room"])
+  assert.deepEqual(test.mounted.faults(), ["no-room"])
+  // Once. A 250ms poll over a forty-minute session would otherwise be ten
+  // thousand copies of the same line, which is a log nobody reads.
+  await new Promise((resolve) => setTimeout(resolve, 60))
+  assert.deepEqual(test.faults, ["no-room"], "the fault was repeated")
+  assert.equal(said.length, 1, "the fault was not said out loud exactly once")
+  assert.match(said[0] ?? "", /820x0/)
+})
+
+test("a frame that gains a box before the grace runs out is never reported", async (t) => {
+  t.mock.method(console, "error", () => {})
+  const test = harness(t, { box: { width: 820, height: 0 }, liveness: WATCH_BOX })
+  shake(test)
+  await new Promise((resolve) => setTimeout(resolve, 8))
+  test.setBox(820, 1180)
+
+  await new Promise((resolve) => setTimeout(resolve, 150))
+  assert.equal(test.faults.length, 0, `reported ${test.faults.join(", ")}`)
+})
+
+test("a pack that uses its port is never called mute; one that does not, is", async (t) => {
+  t.mock.method(console, "error", () => {})
+  const talker = harness(t, { liveness: WATCH_MUTE })
+  shake(talker)
+  const port = talker.posted[0]?.transfer[0]
+  assert.ok(port)
+  t.after(() => port.close())
+  port.start()
+  port.postMessage({ id: 1, method: "items.next", params: {} })
+
+  const mute = harness(t, { liveness: WATCH_MUTE })
+  shake(mute)
+
+  await until(() => mute.faults.includes("never-spoke"))
+  assert.deepEqual(mute.faults, ["never-spoke"], "a pack that never spoke was not reported")
+  assert.equal(
+    talker.faults.length,
+    0,
+    `a pack that used its port was accused of ${talker.faults.join(", ")}`,
+  )
+})
+
+test("disposing stops the watch, and clears its timer", async (t) => {
+  // Two claims, and the second is the expensive one.
+  //
+  // "A disposed pack is not accused" passes with the interval still running,
+  // because `tick` also returns early once `disposed` is set — so asserting only
+  // that would prove nothing about the teardown. What has to be asserted is the
+  // handle: a repeating timer nobody cleared keeps node's event loop alive, and
+  // this file's own harness note is about the fifteen minutes of runner time the
+  // last leaked handle here cost.
+  const started: unknown[] = []
+  const stopped: unknown[] = []
+  const reallySet = globalThis.setInterval
+  const reallyClear = globalThis.clearInterval
+  t.mock.method(globalThis, "setInterval", ((...args: Parameters<typeof globalThis.setInterval>) => {
+    const id = reallySet(...args)
+    started.push(id)
+    return id
+  }) as typeof globalThis.setInterval)
+  t.mock.method(globalThis, "clearInterval", ((id: Parameters<typeof globalThis.clearInterval>[0]) => {
+    stopped.push(id)
+    reallyClear(id)
+  }) as typeof globalThis.clearInterval)
+  t.mock.method(console, "error", () => {})
+
+  const test = harness(t, { box: { width: 0, height: 0 }, liveness: WATCH_BOX })
+  shake(test)
+  assert.equal(started.length, 1, "the handshake started no liveness watch at all")
+
+  test.mounted.dispose()
+  assert.equal(stopped.length, 1, "dispose cleared no interval")
+  assert.equal(stopped[0], started[0], "dispose cleared some other interval")
+
+  await new Promise((resolve) => setTimeout(resolve, 150))
+  assert.equal(test.faults.length, 0, `a disposed pack was accused of ${test.faults.join(", ")}`)
 })
