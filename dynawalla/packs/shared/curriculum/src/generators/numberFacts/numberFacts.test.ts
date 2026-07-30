@@ -23,6 +23,13 @@
  * 4. **The root is reachable.** `0 + 1` is in level 0 of `add-within-ten`, `n − 0`
  *    and `n − n` are in level 0 of `subtract-within-ten`, and none of them is an
  *    accident of a parameter that could be flipped without a test noticing.
+ * 5. **The floor is not *only* the root.** `4 + 5`, `6 + 3`, `7 + 2` and `5 + 5`
+ *    are in level 0 too, and the identity facts are a fixed minority of it. Claim
+ *    4 passed for a level of nine trivial items; this is the other half of it, and
+ *    it is the claim the founder's report was about.
+ * 6. **The draw is flat.** χ² over each closed set, in exact rationals. Support
+ *    without shape is a level that keeps asking `0 + 1` with every other test in
+ *    this file green.
  */
 
 import assert from "node:assert/strict";
@@ -35,6 +42,7 @@ import { schemaDefect } from "../../types/answer.ts";
 import type { Exercise } from "../../types/exercise.ts";
 import { serializeExercise } from "../../serialize.ts";
 import { repSpecDefect } from "../../render/representations.ts";
+import { chiSquareUniform } from "../shared/uniformity.ts";
 import { addDomainNodes } from "../../graph/domains/add.ts";
 import { numberFactsFamily } from "./family.ts";
 import { factSet } from "./facts.ts";
@@ -99,7 +107,7 @@ const BOUND_LEVELS = addDomainNodes
   );
 
 test("the graph binds this family, and every bound level declares its closed set", () => {
-  assert.ok(BOUND_LEVELS.length >= 14, `only ${String(BOUND_LEVELS.length)} bound level(s)`);
+  assert.ok(BOUND_LEVELS.length >= 12, `only ${String(BOUND_LEVELS.length)} bound level(s)`);
   for (const bound of BOUND_LEVELS) {
     assert.ok(bound.declared !== undefined, `${bound.label} declares no closedFactSet`);
   }
@@ -252,19 +260,34 @@ test("the fact set is closed, and the generator reaches exactly it", () => {
   process.stdout.write(`# closed fact sets:\n${lines.join("\n")}\n`);
 });
 
+/**
+ * The graph's own level 0, not a fixture written here.
+ *
+ * A row edited to start at `1 + 1` — by dropping `includeZero`, which is one word —
+ * has to fail the tests below, and a test carrying its own parameters would go on
+ * passing while the product's bottom rung quietly moved.
+ */
+function rowLevelZero(id: string): NumberFactsParams {
+  const bound = BOUND_LEVELS.find((candidate) => String(candidate.node.id) === id && candidate.level === 0);
+  assert.ok(bound !== undefined, `the graph has no level 0 of ${id}`);
+  return bound.params;
+}
+
+/**
+ * Enough seeds that a sixty-five-fact floor is covered rather than sampled.
+ *
+ * It was 200, against a floor of nine. On a set of sixty-five a 200-draw sample
+ * misses a named fact about one time in twenty — `3 − 0` was missing the first
+ * time this ran — so the number is raised with the set rather than left to be
+ * flaky. `(64/65)^1500` is 8·10⁻¹¹, and the sample is deterministic anyway: a pass
+ * is a pass on every machine forever.
+ */
+const ROOT_SEEDS = 1500;
+
 test("the root of the ladder is reachable: 0 + 1, n - 0 and n - n are all drawn", () => {
-  // The graph's own level 0, not a fixture written here. A row edited to start at
-  // `1 + 1` — by dropping `includeZero`, which is one word — has to fail this, and
-  // a test carrying its own parameters would go on passing while the product's
-  // bottom rung quietly moved up.
-  const rowLevel = (id: string): NumberFactsParams => {
-    const bound = BOUND_LEVELS.find((candidate) => String(candidate.node.id) === id && candidate.level === 0);
-    assert.ok(bound !== undefined, `the graph has no level 0 of ${id}`);
-    return bound.params;
-  };
-  const root = rowLevel("dw.add.facts.add-within-ten");
+  const root = rowLevelZero("dw.add.facts.add-within-ten");
   const drawn = new Set<string>();
-  for (let seed = 1; seed <= 200; seed++) {
+  for (let seed = 1; seed <= ROOT_SEEDS; seed++) {
     const { first, second } = operands(generate(root, seed));
     drawn.add(`${first.n.toString()}+${second.n.toString()}`);
   }
@@ -276,9 +299,9 @@ test("the root of the ladder is reachable: 0 + 1, n - 0 and n - n are all drawn"
   }
   assert.ok(!drawn.has("0+0"), "the root level draws an empty question");
 
-  const rootSub = rowLevel("dw.add.facts.subtract-within-ten");
+  const rootSub = rowLevelZero("dw.add.facts.subtract-within-ten");
   const drawnSub = new Set<string>();
-  for (let seed = 1; seed <= 200; seed++) {
+  for (let seed = 1; seed <= ROOT_SEEDS; seed++) {
     const { first, second } = operands(generate(rootSub, seed));
     drawnSub.add(`${first.n.toString()}-${second.n.toString()}`);
   }
@@ -286,6 +309,107 @@ test("the root of the ladder is reachable: 0 + 1, n - 0 and n - n are all drawn"
     assert.ok(drawnSub.has(fact), `the root level never draws ${fact}`);
   }
   assert.ok(!drawnSub.has("0-0"), "the root level draws an empty question");
+});
+
+/**
+ * And the other half of the same claim, which is the one that was missing.
+ *
+ * The founder, after an hour with four different games:
+ *
+ * > "it seems like another game that is wayyyyyyyyyyyyy over weighted to 2 plus
+ * >  fucking zero … **easy also means 4+5 not just 2+0 over and over again for an
+ * >  hour.**"
+ *
+ * The row he was served declared `closedFactSet: [9, 20, 65, 45]`: level 0 was
+ * `{0..3}²` minus `0 + 0`, so `4 + 5` was not in the product's bottom rung and
+ * neither was `6 + 3`, `7 + 2` or `5 + 5`. The test above passed the whole time —
+ * it asked only whether the trivial facts were reachable, which they emphatically
+ * were.
+ *
+ * So both halves are asserted, on the graph's own parameters, and the sum of a
+ * child's whole first sitting is checked as well as its members: a floor is not a
+ * floor if it fits on a flashcard.
+ */
+test("the floor is genuinely easy arithmetic, not the nine smallest facts: 4 + 5 is in it", () => {
+  const root = rowLevelZero("dw.add.facts.add-within-ten");
+  const drawn = new Set<string>();
+  for (let seed = 1; seed <= ROOT_SEEDS; seed++) {
+    const { first, second } = operands(generate(root, seed));
+    drawn.add(`${first.n.toString()}+${second.n.toString()}`);
+  }
+  // The founder's example first, then three more of the same kind. Every one of
+  // them is a sum within ten and none was reachable at the floor before.
+  for (const fact of ["4+5", "6+3", "7+2", "5+5", "9+1", "8+2", "3+4", "2+7"]) {
+    assert.ok(drawn.has(fact), `the floor never draws ${fact}: "easy" has been narrowed back to the trivial facts`);
+  }
+
+  // The identities are still a *taste* and not the floor. Twenty of sixty-five
+  // have a zero in them, so a child meets one about every third question, which is
+  // what "reinforce the trivial foundations" asks for and what nine items was not.
+  const withZero = [...drawn].filter((fact) => fact.startsWith("0+") || fact.endsWith("+0"));
+  assert.equal(withZero.length, 20, `the floor has ${String(withZero.length)} identity facts, not 20`);
+  assert.ok(
+    drawn.size >= 3 * withZero.length,
+    `${String(withZero.length)} of the floor's ${String(drawn.size)} facts are identities: they are the level again`,
+  );
+
+  const subRoot = rowLevelZero("dw.add.facts.subtract-within-ten");
+  const drawnSub = new Set<string>();
+  for (let seed = 1; seed <= ROOT_SEEDS; seed++) {
+    const { first, second } = operands(generate(subRoot, seed));
+    drawnSub.add(`${first.n.toString()}-${second.n.toString()}`);
+  }
+  for (const fact of ["9-4", "8-3", "10-6", "7-2"]) {
+    assert.ok(drawnSub.has(fact), `the subtraction floor never draws ${fact}`);
+  }
+  process.stdout.write(
+    `# number-facts: the floor draws ${String(drawn.size)} sums and ${String(drawnSub.size)} differences\n`,
+  );
+});
+
+/**
+ * The draw over a closed set is *flat*, by χ² in exact rationals.
+ *
+ * The closure test above proves the support — every fact is reached and no other
+ * is — and says nothing about the shape. A family that picked `rng.pick` of an
+ * enumeration ought to be flat automatically, and `timesTable.test.ts` and
+ * `signedInt.test.ts` both check it anyway; this one did not, which left the
+ * levels the founder was actually served as the only closed sets in the package
+ * with no uniformity check on them. A draw weighted towards the front of the list
+ * would put `0 + 1` and `0 + 2` at the top of a child's session — the exact
+ * symptom reported — with every other test in this file still green.
+ */
+test("the draw is uniform over each closed set, so no fact is served more than its share", () => {
+  const lines: string[] = [];
+  for (const bound of BOUND_LEVELS) {
+    const set = factSet(bound.params);
+    const counts = new Map<string, number>(set.map((f) => [`${String(f.first)}|${String(f.second)}`, 0]));
+    // Twenty draws per cell. Ten is where χ²'s normal approximation becomes honest;
+    // twenty is so that a *shape* failure is caught by the statistic rather than by
+    // the empty-cell clause below it — a skew that leaves a cell unreached is the
+    // easy case, and the one this test exists for is the skew that does not.
+    const draws = set.length * 20;
+    for (let seed = 1; seed <= draws; seed++) {
+      const exercise = generate(bound.params, seed, bound.level);
+      const { first, second } = operands(exercise);
+      const key = `${first.n.toString()}|${second.n.toString()}`;
+      const seen = counts.get(key);
+      assert.ok(seen !== undefined, `${exercise.exerciseId}: drew a fact outside the closed set`);
+      counts.set(key, seen + 1);
+    }
+    const uniformity = chiSquareUniform([...counts.values()]);
+    assert.equal(uniformity.empty, 0, `${bound.label}: ${String(uniformity.empty)} fact(s) never drawn in ${String(draws)}`);
+    assert.ok(
+      uniformity.uniform,
+      `${bound.label}: the draw is not uniform over its own set — χ² = ${ratToString(uniformity.chiSquare)} ` +
+        `on ${String(uniformity.degreesOfFreedom)} degrees of freedom`,
+    );
+    lines.push(
+      `#   ${bound.label}: χ² ≈ ${String(Number(uniformity.chiSquare.n) / Number(uniformity.chiSquare.d))} on ` +
+        `${String(uniformity.degreesOfFreedom)} df, ${String(draws)} draws`,
+    );
+  }
+  process.stdout.write(`# uniformity over the closed sets:\n${lines.join("\n")}\n`);
 });
 
 test("the quantity picture is drawable, and never shows the answer", () => {

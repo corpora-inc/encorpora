@@ -2578,18 +2578,24 @@ test("a beginner sees far more than nine distinct questions, without any closed 
     prompts.add(item.prompt)
     skills.add(`${item.skillId}#${String(item.level)}`)
   }
-  // The threshold is not taste: it is the size of the bottom rung's own declared
-  // closed set, read off the curriculum. Serving one rung, *however* well, cannot
-  // produce more distinct questions than the rung has in it — so exceeding it is
-  // proof that the neighbours were reached, and it is a number that cannot be
-  // satisfied by any amount of shuffling.
-  const bottom = rungs.find((rung) => rung.node.id === "dw.add.facts.add-within-ten")?.node.generator
-    .closedFactSet?.[0]
-  assert.ok(typeof bottom === "number" && bottom > 0, "the bottom rung declares no closed set")
+  // This assertion measures VARIETY, and `skills.size` below it measures spread.
+  //
+  // It used to do both at once, by comparing against the size of the bottom
+  // rung's own declared closed set: serving one rung cannot produce more
+  // distinct questions than the rung has in it, so exceeding that count proved
+  // the neighbours were reached. That was a good technique and widening the
+  // floor is what retired it — the rung held nine problems and now holds
+  // sixty-five, so twenty draws can no longer out-count it however well the
+  // spread is working. The "neighbours were reached" claim did not weaken; it
+  // simply lives in the `skills.size >= 3` assertion below, which states it
+  // directly instead of inferring it from a counting argument.
+  //
+  // 17 of 20 is a floor on repetition, not taste. The founder played an hour of
+  // a nine-item rung and filed it as one star; the point of this number is that
+  // a child sees a different question nearly every time.
   assert.ok(
-    prompts.size > bottom,
-    `twenty questions at the floor drew ${String(prompts.size)} distinct prompts and the bottom ` +
-      `rung's closed set holds ${String(bottom)} — so nothing outside it was served: ` +
+    prompts.size >= 17,
+    `twenty questions at the floor drew only ${String(prompts.size)} distinct prompts: ` +
       `${[...prompts].join(", ")}`,
   )
   assert.ok(

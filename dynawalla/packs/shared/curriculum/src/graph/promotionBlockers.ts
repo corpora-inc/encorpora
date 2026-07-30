@@ -95,6 +95,77 @@ export const CG10_BLOCKED_SKILLS: readonly string[] = [
 ];
 
 /**
+ * How many distinct problems a rung must have before a child may stand on it.
+ *
+ * ## The gap CG-10 leaves, and what fell through it
+ *
+ * CG-10 has two regimes and both of them are right. A level with an open
+ * parameter space is measured against `VARIANT_SPACE_FLOOR`, 975 problems. A level
+ * that declares `closedFactSet` is measured against its own declaration instead,
+ * because there are 45 additions within ten and no forty-sixth, and a floor
+ * derived from a model of generators that do not close was never a statement about
+ * a closed one.
+ *
+ * Neither regime asks the question a child asks. `dw.add.facts.add-within-ten` L0
+ * declared a closed set of **nine**, reached all nine, overran nothing and passed
+ * every gate in the package — and it was the bottom rung of the whole product, so
+ * every game's difficulty floor parked on it. The founder played four different
+ * games for an hour and reported the same thing from each:
+ *
+ * > "easy also means 4+5 not just 2+0 over and over again for an hour."
+ *
+ * An honestly-declared set of nine is not a lie. It is not a level either. So the
+ * closed-set regime gains the one bound it was missing: **a declared closed set is
+ * a rung a child stands on, and a rung is at least 24 problems.**
+ *
+ * ## Why 24
+ *
+ * A sitting is about 30 questions — the number `items.test.ts` measures
+ * distinct-prompts against. Drawing 30 uniformly from `S` leaves about
+ * `S(1 − (1 − 1/S)³⁰)` distinct, so no single rung ever gives 30 distinct in 30;
+ * the host serves a *distribution* over about six rungs for exactly that reason
+ * (`dynawalla-app/src/packs/items.ts`, PR #699). What the curriculum owes that
+ * mechanism is that no rung inside a beginner's window is a handful of items: at
+ * 24 the worst rung contributes 19 distinct problems to 30 draws, and the four
+ * easiest rungs of the shipped ladder now offer 220 between them.
+ *
+ * It is deliberately **below** every set that is not exempt, so the number is a
+ * floor and not a description. The smallest non-exempt rung is 26.
+ *
+ * ## Not a licence to inflate
+ *
+ * The bound is on the *level table*, never on the declaration. If the mathematics
+ * of a rung is closed at nine, the answer is that nine items must not be a whole
+ * level — widen what the level draws from, or fold it into a neighbour — and never
+ * to write a larger number next to it. CG-10's overrun check catches the second
+ * one immediately: a row that declares 30 and reaches 31 fails.
+ */
+export const MIN_RUNG_VARIANTS = 24;
+
+/**
+ * Active levels under `MIN_RUNG_VARIANTS`. **One**, and it is the top of its row.
+ *
+ * `dw.mul.facts.tables-within-five L2` is `{2..5}²` — sixteen products — which is
+ * the entire multiplication table within five once the zero and identity facts are
+ * out. There is no wider set at that content: `MAX_TRIVIAL_FACTOR` keeps the
+ * trivial facts below the sixes for a reason of its own, so the level above this
+ * one is `dw.mul.facts.tables-to-twelve` L0 at 36.
+ *
+ * It stays because the alternative is worse. Deleting it moves the multiplicative
+ * ladder from −1.05 straight to −0.60, a 0.45-logit hole in the one strand a child
+ * climbs one table at a time; and it is the *top* rung of its row, at ladder
+ * position 19 of 66, so the child standing on it is not a beginner and the host's
+ * kernel spreads five sixths of their questions across neighbouring rungs holding
+ * thousands of items.
+ *
+ * The list is data and asserted in **both** directions by `ladder.test.ts`: a rung
+ * that slips under the floor is named here or the test fails, and a rung widened
+ * past it must be struck off or the test fails too. That is what stops the next
+ * nine-item floor from being discovered by a child.
+ */
+export const SMALL_RUNG_LEVELS: readonly string[] = ["dw.mul.facts.tables-within-five L2"];
+
+/**
  * Prompt templates whose question the host still cannot state — **one**, and what is
  * left after the operator problem and then the blank were fixed.
  *

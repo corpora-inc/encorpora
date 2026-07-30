@@ -27,6 +27,12 @@
  * down this strand lands on. Nothing about them is made harder to look more
  * respectable.
  *
+ * They are also not allowed to *be* the rung. `dw.mul.facts.tables-within-five`
+ * level 0 was `maxFactor: 2` — `{0,1,2}²` minus `0 × 0`, eight products, four of
+ * them `× 0` — and eight is what a child sees for as long as they stand there. The
+ * row starts at `maxFactor: 4` since rev 2, which is twenty-four products of which
+ * nine need a table. `includeTrivial` is a share of a set, never a set.
+ *
  * Two draws are excluded and only two:
  *
  * - **`0 × 0`.** Both operands decided by the same rule, with nothing on either

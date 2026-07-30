@@ -24,6 +24,14 @@
  * - **`0.05` per unit of range** above the root spends the `noAnchor` slot. It is
  *   small on purpose: `2 + 3` and `4 + 5` are not far apart, and a coefficient
  *   large enough to separate them would put `9 + 1` above a crossing fact.
+ *
+ *   This one turned out to be load-bearing on the *curriculum* side and not only
+ *   here. The whole distance from `2 + 1` to `9 + 1` is seven steps, 0.35 logits —
+ *   exactly what the drawn frame below is worth on its own. A level table that
+ *   spent its two easiest rungs walking the sum ceiling from three to five was
+ *   therefore buying 0.10 of a logit and paying for it with a floor of nine
+ *   problems; `graph/domains/add.ts` rev 2 spends them on the scaffold instead.
+ *   If this coefficient is ever raised, that argument has to be re-made.
  * - **`−0.35·picture`** is the `specialCase` slot, at its documented size. A
  *   ten-frame drawn beside the numerals turns a recall question into a counting
  *   question, which is the largest single scaffold this family has.
@@ -105,7 +113,16 @@ export const COEFF_PICTURE = rational(-35n, 100n);
 /** −0.10 when the identity facts are in the set. */
 export const COEFF_INCLUDE_ZERO = rational(-10n, 100n);
 
-/** The range every level is measured against — the root, `0 + 1`. */
+/**
+ * The range every level is measured against: the origin of the range term, not a
+ * level any row binds.
+ *
+ * It was both — `maxTotal: 3` was the shipped floor as well as the scale's zero —
+ * and the two came apart when the floor widened to the whole within-ten table. The
+ * number stays at three because moving it would shift every `b` in the family for
+ * no reason, and `numberFacts.test.ts` pins `offset(add, 3) = 0` so the origin is
+ * asserted rather than remembered.
+ */
 export const ROOT_MAX_TOTAL = 3;
 
 /** Free entry is the only form; the offset is stated so the contract is total. */
