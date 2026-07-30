@@ -17,6 +17,11 @@ import { beforeEach, describe, it } from "node:test"
 import type { HostClient, HostEventName, Settings } from "../../sdk/src/index.ts"
 import { createSafetyBus, resetHostSound, type BusContext } from "../game-audio/index.ts"
 import { setHostInsets, safeInsets } from "../game-chrome/insets.ts"
+import {
+  currentSoundscape,
+  pickSoundscape,
+  resetHostSoundscape,
+} from "../game-soundscape/index.ts"
 import { attachGameHost } from "./index.ts"
 
 // ─── The smallest host that can change its mind ──────────────────────────────
@@ -264,5 +269,54 @@ describe("the app's Sound setting silences the game", () => {
     stub.setSound(false)
     assert.equal(heard(music, musicBus, CUE), 0, "the music bus kept playing")
     assert.equal(heard(sfx, sfxBus, CUE), 0, "the effects bus kept playing")
+  })
+})
+
+// ─── The soundscape, on the same channel ─────────────────────────────────────
+//
+// The third slow-moving fact that has to reach a pack from the host, and the
+// same failure mode is available: publish it once at attach and a child who
+// plays across a key change is in the wrong key for the rest of the session.
+// These assert the wire rather than the music — `game-soundscape` owns whether
+// the notes are right, and this owns whether the pack was told.
+
+describe("the app's soundscape reaches the pack", () => {
+  beforeEach(() => {
+    resetHostSoundscape()
+  })
+
+  it("is published at attach", () => {
+    const scape = pickSoundscape(31)
+    const stub = stubClient({ soundscape: scape })
+    attachGameHost(stub.client)
+    assert.deepEqual(currentSoundscape(), scape)
+    resetHostSoundscape()
+  })
+
+  it("follows a change without a remount", () => {
+    const stub = stubClient({ soundscape: pickSoundscape(1) })
+    attachGameHost(stub.client)
+    const next = pickSoundscape(2)
+    stub.push({ soundscape: next })
+    assert.deepEqual(currentSoundscape(), next, "the pack stayed in the old key")
+    resetHostSoundscape()
+  })
+
+  it("a host that sends none leaves every game with its own sounds", () => {
+    // The ship gate. No host populates this field today, so this is the path
+    // production takes, and `null` has to mean "keep what you had" rather than
+    // "go quiet".
+    const stub = stubClient()
+    attachGameHost(stub.client)
+    assert.equal(currentSoundscape(), null)
+    resetHostSoundscape()
+  })
+
+  it("a malformed one is refused rather than played", () => {
+    const stub = stubClient()
+    attachGameHost(stub.client)
+    stub.push({ soundscape: { modeId: "not.a.mode", rootHz: 130, seed: 1 } as never })
+    assert.equal(currentSoundscape(), null, "a mode the pack does not have was accepted")
+    resetHostSoundscape()
   })
 })

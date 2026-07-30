@@ -14,9 +14,39 @@
 // and the thousands plate is a low, heavy clang. Place value is a thing you can
 // hear here, and a child working the rack learns the four voices before they
 // could tell you why.
+//
+// ── The soundscape ───────────────────────────────────────────────────────────
+//
+// All of the above was true and still boring, and the founder said so: *"right
+// now [we] have the same sound for every +1/−1 … it would be way cooler if it
+// randomly played a melody based on the randomly chosen soundscape for any
+// given moment."* He is right, and the reason is not the timbre. It is that
+// `PLACE_HZ` is a fixed table, so the tenth blow on the ones plate is bit-for-
+// bit the first one. Nothing that happens changes what the next sound is.
+//
+// So when the app publishes a soundscape — a mode, a root and a seed — this
+// class stops reading `PLACE_HZ` and starts asking `packs/shared/game-soundscape`
+// what the next note is. Hanging brass walks the mode up, taking it off walks
+// it down, place buys register instead of a fixed frequency, and a run of blows
+// arcs and comes to rest like a phrase. The drone becomes the soundscape's own
+// root, so the melody cannot be out of tune with it: both are the same number.
+//
+// **Until a host publishes one, none of that happens and the yard sounds
+// exactly as it shipped.** `currentSoundscape()` is `null` by default and no
+// host sends the field yet, so this is the ship-safe path and the four fixed
+// pitches below are still the production sound. The dev harness publishes one
+// (`main.ts`), which is where the idea can be heard.
 
-import type { Place } from "./game/places.ts"
-import { createSafetyBus } from "../../../packs/shared/game-audio/index.ts"
+import { type Place, type Strike } from "./game/places.ts"
+import { createSafetyBus, safeAttack } from "../../../packs/shared/game-audio/index.ts"
+import {
+  Melody,
+  currentSoundscape,
+  onSoundscape,
+  type Gesture,
+  type Voice,
+} from "../../../packs/shared/game-soundscape/index.ts"
+import { gestureForStrike } from "./tune.ts"
 
 type Ctor = new () => AudioContext
 
@@ -26,6 +56,18 @@ const DRONE_SPAN = 0.28
 
 const PLACE_HZ: Record<Place, number> = { 1: 1180, 10: 830, 100: 520, 1000: 288 }
 
+/**
+ * How far the beam's bow may bend the drone when a soundscape is live, in cents.
+ *
+ * Thirty-five, which is a third of a semitone: audible as a bowed string
+ * leaning under pressure, and far too small to be heard as a different note.
+ * The old behaviour moved the drone a major third across the beam's travel,
+ * which is fine when the drone is the only pitched thing in the game and
+ * ruinous when it is the tonic the melody is being derived from — a tonic that
+ * slides is a melody that goes out of tune with itself.
+ */
+const BOW_BEND_CENTS = 35
+
 export class Audio {
   private ctx: AudioContext | null = null
   private master: GainNode | null = null
@@ -33,6 +75,39 @@ export class Audio {
   private droneBand: BiquadFilterNode | null = null
   private droneGain: GainNode | null = null
   private failed = false
+  /**
+   * The soundscape's melody walker, or `null` when no host has published one.
+   *
+   * `null` is the shipping state today and it means every method below takes
+   * the path it always took. Nothing about this game's sound changes until an
+   * app decides to publish a mode and a root.
+   */
+  private melody: Melody | null = null
+  /** The drone's fixed anchor voices — the sub-octave and, if the mode has one, the fifth. */
+  private anchors: OscillatorNode[] = []
+  private readonly unfollow: () => void
+
+  constructor() {
+    const scape = currentSoundscape()
+    this.melody = scape ? new Melody(scape) : null
+    // Following, not reading once: the host re-publishes on every settings
+    // change, and a game that only looked at launch would be in last hour's key.
+    this.unfollow = onSoundscape((next) => {
+      if (!next) {
+        this.melody = null
+        return
+      }
+      if (this.melody) this.melody.retune(next)
+      else this.melody = new Melody(next)
+      // A live drone has to move to the new root, or the melody is in one key
+      // and the thing under it is in another. Rebuilt rather than ramped: the
+      // bow is a half-second fade either way and a key change is not a slide.
+      if (this.droneOsc) {
+        this.release()
+        this.bow()
+      }
+    })
+  }
 
   private context(): AudioContext | null {
     if (this.ctx || this.failed) return this.ctx
@@ -76,16 +151,22 @@ export class Audio {
     })
   }
 
+  /** The pitch the bowed drone sits on: the soundscape's tonic, or the old fixed note. */
+  private droneHz(): number {
+    return this.melody?.soundscape.rootHz ?? DRONE_HZ
+  }
+
   /** Bring the drone up. Called when a round opens. */
   bow(): void {
     const ctx = this.context()
     if (!ctx || !this.master || this.droneOsc) return
+    const root = this.droneHz()
     const osc = ctx.createOscillator()
     osc.type = "sawtooth"
-    osc.frequency.value = DRONE_HZ
+    osc.frequency.value = root
     const band = ctx.createBiquadFilter()
     band.type = "bandpass"
-    band.frequency.value = DRONE_HZ * 3
+    band.frequency.value = root * 3
     band.Q.value = 5.5
     const gain = ctx.createGain()
     gain.gain.value = 0
@@ -97,6 +178,28 @@ export class Audio {
     this.droneOsc = osc
     this.droneBand = band
     this.droneGain = gain
+
+    // The anchor. The bowed voice above bends with the beam; these do not, and
+    // that is what the melody is actually in tune with. Sines, well under the
+    // bow, because a drone you notice is a drone that is too loud.
+    if (!this.melody) return
+    const pitches = this.melody.drone()
+    for (let i = 0; i < pitches.length; i++) {
+      const f = pitches[i]
+      // Skip the tonic itself: the bowed voice is already there and doubling it
+      // exactly would only make it louder.
+      if (f === undefined || Math.abs(f - root) < 0.01) continue
+      const anchor = ctx.createOscillator()
+      anchor.type = "sine"
+      anchor.frequency.value = f
+      const level = ctx.createGain()
+      level.gain.value = 0
+      level.gain.linearRampToValueAtTime(f < root ? 0.05 : 0.028, ctx.currentTime + 1.2)
+      anchor.connect(level)
+      level.connect(gain)
+      anchor.start()
+      this.anchors.push(anchor)
+    }
   }
 
   /**
@@ -112,7 +215,15 @@ export class Audio {
     if (!ctx || !this.droneOsc || !this.droneBand || !this.droneGain) return
     const t = ctx.currentTime
     const clamped = Math.max(-1, Math.min(1, tilt))
-    const hz = DRONE_HZ * (1 + clamped * DRONE_SPAN)
+    const root = this.droneHz()
+    // With a soundscape live the bow BENDS rather than transposes: the tonic is
+    // what the melody is derived from, and a tonic that slides a major third is
+    // a melody that is out of tune with the game it is in. A third of a
+    // semitone still reads as the steel leaning under load, which is all the
+    // cue was ever for.
+    const hz = this.melody
+      ? root * Math.pow(2, (clamped * BOW_BEND_CENTS) / 1200)
+      : root * (1 + clamped * DRONE_SPAN)
     this.droneOsc.frequency.setTargetAtTime(hz, t, 0.06)
     this.droneBand.frequency.setTargetAtTime(hz * (2.4 + ring * 4.5), t, 0.05)
     this.droneGain.gain.setTargetAtTime(0.06 + ring * 0.045, t, 0.08)
@@ -130,20 +241,45 @@ export class Audio {
     const t = ctx.currentTime
     gain.gain.cancelScheduledValues(t)
     gain.gain.setTargetAtTime(0, t, 0.09)
-    try {
-      osc.stop(t + 0.5)
-    } catch {
-      console.warn("[counterweight] the drone would not stop")
+    const anchors = this.anchors
+    this.anchors = []
+    for (const anchor of [osc, ...anchors]) {
+      try {
+        anchor.stop(t + 0.5)
+      } catch {
+        // Loud, never silent: an oscillator that refuses to stop is a drone that
+        // outlives the round it belongs to, and two of them is the game in two
+        // keys at once.
+        console.warn("[counterweight] the drone would not stop")
+      }
     }
   }
 
   /** A plate lands. Pitched by place; harder blows bite harder. */
-  clang(place: Place, impulse: number): void {
+  clang(strike: Strike, impulse: number): void {
     const ctx = this.context()
     if (!ctx || !this.master) return
     const t = ctx.currentTime
-    const hz = PLACE_HZ[place]
     const bite = Math.max(0, Math.min(1, (impulse - 2) / 9))
+
+    // With a soundscape live the plate is a note in a phrase rather than a
+    // fixed pitch. The metallic edge below still fires and still scales with
+    // the blow, so a mashed rack still sounds like a mashed rack — the strain
+    // feedback the game depends on is untouched. Only the pitch became music.
+    if (this.melody) {
+      let top = this.melody.soundscape.rootHz * 4
+      for (const voice of this.melody.emit(gestureForStrike(strike))) {
+        this.play(voice, 1 + bite * 0.3)
+        top = voice.hz
+      }
+      // The edge rides the note the soundscape chose, not a fixed frequency, so
+      // the bite belongs to the plate that was struck instead of sitting on top
+      // of the music at a pitch nothing else in the game is at.
+      this.edge(top, bite, t)
+      return
+    }
+
+    const hz = PLACE_HZ[strike.place]
 
     const osc = ctx.createOscillator()
     osc.type = "triangle"
@@ -158,8 +294,20 @@ export class Audio {
     osc.start(t)
     osc.stop(t + 0.5)
 
-    // The metallic edge: a short burst through a high band-pass. A resonant blow
-    // gets more of it, so mashing sounds like what it is.
+    this.edge(hz, bite, t)
+  }
+
+  /**
+   * The metallic edge: a short burst through a high band-pass. A resonant blow
+   * gets more of it, so mashing sounds like what it is.
+   *
+   * Lifted out of `clang` so the soundscape path keeps it. This is the part of
+   * the cue that reports on the child's *hands* rather than on the maths, and
+   * losing it would have made a mashed rack sound the same as a considered one.
+   */
+  private edge(hz: number, bite: number, t: number): void {
+    const ctx = this.ctx
+    if (!ctx || !this.master) return
     const noise = ctx.createOscillator()
     noise.type = "square"
     noise.frequency.setValueAtTime(hz * 3.7, t)
@@ -180,6 +328,7 @@ export class Audio {
 
   /** A refused strike: the plate is still swinging. A dead, unmusical thud. */
   refuse(): void {
+    if (this.speak({ kind: "refuse" })) return
     const ctx = this.context()
     if (!ctx || !this.master) return
     const t = ctx.currentTime
@@ -204,6 +353,7 @@ export class Audio {
    * behaviour is gone; the sound was worth keeping.
    */
   slide(): void {
+    if (this.speak({ kind: "arrive" })) return
     const ctx = this.context()
     if (!ctx || !this.master) return
     const t = ctx.currentTime
@@ -223,11 +373,13 @@ export class Audio {
 
   /** A good weight: a cold, clean fifth. The best sound in the game. */
   held(): void {
+    if (this.speak({ kind: "success" })) return
     this.chord([784, 1176], 0.1, 0.5)
   }
 
   /** The docket is refused. Low, short, not cruel. */
   lost(): void {
+    if (this.speak({ kind: "failure" })) return
     this.chord([196, 233], 0.085, 0.32)
   }
 
@@ -252,10 +404,139 @@ export class Audio {
 
   /** A scale is cleared. */
   fanfare(): void {
+    if (this.speak({ kind: "levelComplete" })) return
     this.chord([523, 659, 784], 0.09, 0.85)
     const ctx = this.ctx
     if (!ctx) return
     globalThis.setTimeout(() => this.chord([659, 784, 1046], 0.085, 0.9), 190)
+  }
+
+  /**
+   * Say something to the soundscape, and report whether it answered.
+   *
+   * `false` when no host has published one, which is every call in production
+   * today — and is exactly what makes each caller above a two-line change with
+   * the old cue still underneath it.
+   */
+  private speak(gesture: Gesture): boolean {
+    if (!this.melody) return false
+    if (!this.context()) return false
+    for (const voice of this.melody.emit(gesture)) this.play(voice, 1)
+    return true
+  }
+
+  /**
+   * One voice from the soundscape, made audible.
+   *
+   * This is the whole of what the pack owns: the module decided *which* pitch
+   * and *how loud*, and this decides what it is made of. Four timbres, all
+   * warm-ended, none of them white noise.
+   *
+   * Every envelope goes through `safeAttack`, so nothing here can be the 1 ms
+   * step that a child hears as "too loud" however short the module asked for.
+   */
+  private play(voice: Voice, scale: number): void {
+    const ctx = this.ctx
+    if (!ctx || !this.master) return
+    if (voice.timbre === "rubble") {
+      this.rubble(voice)
+      return
+    }
+    const t = ctx.currentTime + Math.max(0, voice.at)
+    const peak = Math.max(0.0002, voice.gain * scale)
+    // Attacks, by timbre. Bloom is bowed and must never be a transient; bell
+    // and pluck are struck and are still four times slower than the 1 ms step
+    // this fleet used to write.
+    const attack = safeAttack(voice.timbre === "bloom" ? 0.18 : voice.timbre === "pluck" ? 0.01 : 0.014)
+
+    // A fundamental plus one partial. The partial is what makes it a struck
+    // object rather than a test tone, and it is an octave rather than an
+    // inharmonic ratio because inharmonic is the sound the founder is calling
+    // abrasive.
+    const partials: readonly { ratio: number; level: number; type: OscillatorType }[] =
+      voice.timbre === "bloom"
+        ? [
+            { ratio: 1, level: 0.62, type: "sine" },
+            { ratio: 2.001, level: 0.2, type: "sine" },
+          ]
+        : voice.timbre === "pluck"
+          ? [
+              { ratio: 1, level: 0.7, type: "triangle" },
+              { ratio: 3, level: 0.12, type: "sine" },
+            ]
+          : [
+              { ratio: 1, level: 0.68, type: "triangle" },
+              { ratio: 2, level: 0.22, type: "sine" },
+              { ratio: 4, level: 0.06, type: "sine" },
+            ]
+
+    // One low-pass over the whole voice, so the top of the register is not the
+    // brightest thing in the game. 2.4 kHz is under the band the ear is most
+    // sensitive in, which is the band "abrasive" lives in.
+    const tone = ctx.createBiquadFilter()
+    tone.type = "lowpass"
+    tone.frequency.value = Math.min(2400, voice.hz * 6)
+    tone.Q.value = 0.7
+    tone.connect(this.master)
+
+    for (const partial of partials) {
+      const osc = ctx.createOscillator()
+      osc.type = partial.type
+      osc.frequency.value = voice.hz * partial.ratio
+      const gain = ctx.createGain()
+      gain.gain.setValueAtTime(0.0001, t)
+      gain.gain.exponentialRampToValueAtTime(peak * partial.level, t + attack)
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + voice.seconds)
+      osc.connect(gain)
+      gain.connect(tone)
+      osc.start(t)
+      osc.stop(t + voice.seconds + 0.1)
+    }
+  }
+
+  /**
+   * A shelf of brass going over — the founder's "building crumbling here
+   * instead of white noise".
+   *
+   * A noise burst is one event with no size to it, which is why it reads as a
+   * hiss rather than as a thing. Rubble is *many* small impacts whose sizes
+   * follow a power law: a few big low ones, a lot of small high ones, scattered
+   * unevenly over a third of a second. That distribution is the difference
+   * between "static" and "masonry", and it costs sixteen short oscillators.
+   *
+   * Every grain is band-passed and none of them is above 1.4 kHz, so the whole
+   * event sits below the band that hurts.
+   */
+  private rubble(voice: Voice): void {
+    const ctx = this.ctx
+    if (!ctx || !this.master) return
+    const t0 = ctx.currentTime + Math.max(0, voice.at)
+    const grains = 16
+    const shelf = ctx.createBiquadFilter()
+    shelf.type = "lowpass"
+    shelf.frequency.value = 1400
+    shelf.Q.value = 0.6
+    shelf.connect(this.master)
+    for (let i = 0; i < grains; i++) {
+      // Size, 1 down to about 1/16. Amplitude goes with size and pitch goes
+      // inversely with it — a small stone is quiet and high, a big one is loud
+      // and low, which is the whole of why this sounds like rubble.
+      const size = 1 / (1 + i)
+      const at = t0 + (i / grains) * voice.seconds * (0.5 + ((i * 7919) % 100) / 200)
+      const osc = ctx.createOscillator()
+      osc.type = "triangle"
+      osc.frequency.setValueAtTime(voice.hz * (0.7 + 1 / Math.max(0.12, size) / 6), at)
+      osc.frequency.exponentialRampToValueAtTime(voice.hz * 0.6, at + 0.05)
+      const gain = ctx.createGain()
+      const peak = Math.max(0.0002, voice.gain * size * 0.9)
+      gain.gain.setValueAtTime(0.0001, at)
+      gain.gain.exponentialRampToValueAtTime(peak, at + safeAttack(0.004))
+      gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.04 + size * 0.12)
+      osc.connect(gain)
+      gain.connect(shelf)
+      osc.start(at)
+      osc.stop(at + 0.25)
+    }
   }
 
   private chord(hz: readonly number[], peak: number, seconds: number): void {
@@ -278,6 +559,9 @@ export class Audio {
   }
 
   dispose(): void {
+    // Before anything else: a closure that retunes a torn-down graph outlives
+    // the game otherwise, and the next mount would have two of them.
+    this.unfollow()
     this.release()
     const ctx = this.ctx
     this.ctx = null

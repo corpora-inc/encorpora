@@ -223,6 +223,41 @@ export type Settings = {
    * getting.
    */
   readonly safeArea?: { top: number; right: number; bottom: number; left: number }
+  /**
+   * The mode, root and seed every pack should be making music in right now.
+   *
+   * **Why this is on the wire and not decided by each pack.** A child leaves
+   * one game and opens another. If each pack chose its own key the app would
+   * change key at every doorway, which is not a soundscape — it is
+   * twenty-eight ringtones. A pack cannot coordinate this itself: its frame is
+   * opaque-origin and sandboxed, its storage is not the app's, and it can see
+   * nothing of the pack that was open a minute ago. So the one slow-moving
+   * fact travels with the other slow-moving facts, on the channel that already
+   * re-fires whenever any of them changes.
+   *
+   * **What is deliberately NOT here.** Pitches, note events, timing. Those are
+   * decided inside the pack, synchronously, because a note is caused by a
+   * finger and a port round-trip is at best two frames — a melody note that
+   * arrives forty milliseconds after the tap is not a melody. The wire carries
+   * what changes every few minutes; the pack computes what changes ten times a
+   * second. See `dynawalla/docs/SOUNDSCAPE_DESIGN_2026-07.md`.
+   *
+   * Optional, so an older host is not a breaking change, and validated rather
+   * than trusted: `packs/shared/game-soundscape` refuses anything malformed and
+   * a pack that gets `undefined` keeps whatever sounds it already had. That is
+   * also why no `SDK_VERSION` bump belongs with this field — it adds no method
+   * and no capability, exactly like `safeArea` before it.
+   */
+  readonly soundscape?: {
+    /** A mode id from the shared corpus, e.g. `maqam.rast`. */
+    readonly modeId: string
+    /** The tonic, in Hz. Low — the drone sits here. */
+    readonly rootHz: number
+    /** Drives every stochastic choice a pack makes from this soundscape. */
+    readonly seed: number
+    /** 0..1. How wound-up the app currently is. */
+    readonly tension?: number
+  }
 }
 
 /**
