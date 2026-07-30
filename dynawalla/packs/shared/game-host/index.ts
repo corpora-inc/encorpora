@@ -85,8 +85,71 @@
 // and it never chooses a difficulty of its own. That is a controller, it lives
 // in `packs/shared/game-pacing/`, and it is somebody else's file. This is the
 // wire it will drive.
+//
+// ── The other axis: what KIND of maths, not how hard ─────────────────────────
+//
+// Difficulty was only half the request. Every pack declares `covers.skills` in
+// its `pack.json`, the SDK's `ItemRequest` has carried a `skillId` since it was
+// written, and the host's `items.next` reads one — and this module never sent
+// it. A pack could not restrict the *kind* of maths it was served at all, which
+// is why TREBUCHET — a declared add/subtract game that stands a keep at the
+// answer in metres on a 122-metre field — was handed
+// `dw.mul.scale.times-power-of-ten` and asked a child to wind the arm to
+// 4,510,000 metres. It had grown a whole search phase looking for a rung it
+// could place, sweeping an axis that cannot express the thing it needed: the
+// division rungs return single-digit quotients and sit *above* placeable
+// multiplication rungs, so "how hard" and "what kind" are genuinely
+// independent orderings and no amount of `maxDifficulty` separates them.
+//
+// **The restriction is a DOMAIN, not a skill set, and that is measured.** The
+// wire names one skill, and one skill is always narrower than what a pack
+// covers, so the granularity had to be chosen against the shipped curriculum
+// (66 rungs over 20 skills) and the 27 shipped `pack.json` files:
+//
+//   * *Exactly the declared skills*: 21 of the 27 packs declare only column and
+//     regrouping skills, whose easiest rung is at ordinate 0.28 — so honouring
+//     the literal declaration would deny a six-year-old in a game that
+//     advertises grade 1 every single-digit fact the curriculum has. Four packs
+//     (arena, balance, claim, pulse) declare *nothing* the shipped ladder can
+//     generate and would be starved outright.
+//   * *The domain* — the first two segments, `dw.add` — keeps all 36 add and
+//     subtract rungs including the whole bottom of the ladder, and excludes the
+//     multiplication and division rungs the add packs never asked for. Five
+//     packs (guilty, horde, merge-idle, mosaic, serpent) declare all three
+//     domains the ladder has and are therefore unaffected, bit for bit.
+//
+// So the domain it is: `covers.skills` is treated as evidence of which domains a
+// pack works in, which is what it is honest about, and not as a whitelist of
+// rungs, which it demonstrably is not.
+//
+// **Nothing is ever refused into starvation.** A question the pack does not
+// declare is not dropped; it is held, and the host is asked *once* for a
+// declared skill instead. If that trade cannot be made — the declared skill is
+// not in this host's curriculum, or pinning it would break a ceiling the game
+// set — the held question is served anyway and the reason is said out loud. And
+// because a pack whose whole declaration is missing from the curriculum would
+// otherwise pay for that trade on every question forever, the restriction
+// SURRENDERS after `SURRENDER_AFTER` consecutive failures: it turns itself off
+// for the rest of the session, loudly, and the pack behaves exactly as it did
+// before this paragraph existed.
+//
+// **Pinning a skill is a blunt instrument and is used as little as possible.**
+// Measured against the shipped `items.ts`: a request naming a `skillId` returns
+// the *first* rung of that skill on the ladder and ignores `difficulty`
+// entirely (asking for 0.9 with a skill named returns 0.28), and it ignores
+// `maxDifficulty` too — a pin can be served *above* a stated ceiling, which
+// four shipped packs rely on being impossible. That is why the pin is a rescue
+// and not the request: an in-domain question is accepted exactly as it arrives,
+// with the host's own spread and its own idea of where the child is, and only a
+// question from a domain the pack does not work in is traded for one.
 
-import type { Capability, HostClient, Item, TransitionKind } from "../../sdk/src/index.ts"
+import type {
+  Capability,
+  HostClient,
+  Item,
+  ItemRequest,
+  TransitionKind,
+} from "../../sdk/src/index.ts"
 import { setHostInsets } from "../game-chrome/insets.ts"
 import { setHostSound } from "../game-audio/index.ts"
 import { connect } from "../../sdk/src/index.ts"
@@ -380,7 +443,7 @@ const KEEP_BAND = 0.12
  * empty pool is not a pause — it is a question with no id, whose answer is
  * dropped because there is nothing to report it against.
  */
-const FLUSH_KEEP = 8
+export const FLUSH_KEEP = 8
 
 /** Outcomes kept for a controller to read back. */
 const OUTCOME_LIMIT = 64
@@ -389,6 +452,51 @@ const OUTCOME_LIMIT = 64
 const FLOOR_REQUEST = 0.05
 
 const EPS = 1e-9
+
+/**
+ * Consecutive failed rescues after which the declaration is abandoned.
+ *
+ * Three, because the first failure is evidence and the third is a pattern. Four
+ * shipped packs (arena, balance, claim, pulse) declare only skills the current
+ * curriculum cannot generate, so for them every rescue fails, and a pack that
+ * paid for a second round trip on every question for the whole session would be
+ * a performance bug shipped in the name of a declaration nobody can honour.
+ * When it surrenders it says so — see `surrender`, which is the only place in
+ * this module that raises its voice about a thing a child will not notice.
+ */
+const SURRENDER_AFTER = 3
+
+/**
+ * Pinned questions served before the host's own stream is read again.
+ *
+ * A child's ladder walks, and it walks *through* the domains: the shipped ladder
+ * interleaves multiplication rungs between two bands of addition, so a pack that
+ * had to start naming a skill at ordinate 0.45 must notice when the child
+ * arrives at 0.6 and the host's own stream is something it covers again. Eight
+ * questions is about a minute of play, and the alternative — never looking — is
+ * a pack pinned to one rung for the rest of the session.
+ */
+const PEEK_EVERY = 8
+
+/**
+ * The domain a skill id belongs to: `dw.add` out of `dw.add.regroup.add-short`.
+ *
+ * Two segments, because that is where the curriculum's own naming puts the
+ * boundary between "what kind of maths" (`add`, `mul`, `div`, `frac`, `alg`,
+ * `ns`) and "which technique within it" (`facts`, `column`, `regroup`), and it
+ * is the coarser of the two that a pack's `covers.skills` is actually honest
+ * about — see the module note for the measurement.
+ *
+ * An id with fewer than three segments is its own domain rather than an error:
+ * this reads ids off a wire, a host is free to name a skill whatever it likes,
+ * and the only wrong answer here is one that quietly groups two unrelated
+ * skills together.
+ */
+export function domainOf(skillId: string): string {
+  const parts = skillId.split(".")
+  if (parts.length < 3) return skillId
+  return `${parts[0] ?? ""}.${parts[1] ?? ""}`
+}
 
 export type GameHostOptions = {
   /** Domain label the game shows or logs. Cosmetic; the host owns the skill. */
@@ -408,6 +516,22 @@ export type GameHostOptions = {
    * turns it off and calls `flush` itself.
    */
   readonly autoFlush?: boolean
+  /**
+   * The skill ids this pack declares it covers — `covers.skills` from its own
+   * `pack.json`, as built into `manifest.json`.
+   *
+   * `createGameHost` reads it off the pack's own manifest, so no game passes it
+   * and no game has to be edited; it is an option because that is what makes
+   * the behaviour testable without a `fetch`, and because a game that wants no
+   * restriction at all can pass `[]` and say so in one place.
+   *
+   * What is honoured is the DOMAINS these ids belong to, not the ids
+   * themselves, and only as far as the host can satisfy them — see the module
+   * note for why that is the granularity and what happens when it cannot be
+   * met. An empty list, or a list whose domains the host has no content in,
+   * behaves exactly as this module did before the field existed.
+   */
+  readonly skills?: readonly string[]
 }
 
 export type MountedHost = {
@@ -424,13 +548,24 @@ type Pooled = {
   readonly skillId: string
 }
 
+/**
+ * Where an item sits on the host's whole ladder, 0..1.
+ *
+ * The `level / 8` fallback is for a host older than the `difficulty` field and is
+ * the reading this module always had. Read through one function so that a
+ * ceiling check, a pin measurement and a printed number cannot each pick a
+ * different fallback — which they did, and one of them picked 0, i.e. "never
+ * above any ceiling".
+ */
+function ordinateOf(item: Item): number {
+  return item.difficulty ?? item.level / 8
+}
+
 function questionFrom(item: Item, canonical: string, domain: string): Question {
   const distractors = (item.choices ?? [])
     .map((choice) => choice.text)
     .filter((text) => text !== canonical)
-  // The host's own ladder ordinate when it sends one. The `level / 8` fallback
-  // is for a host older than this field and is the reading it always had.
-  const ladder = item.difficulty ?? item.level / 8
+  const ladder = ordinateOf(item)
   return {
     id: item.id,
     prompt: item.prompt,
@@ -438,6 +573,86 @@ function questionFrom(item: Item, canonical: string, domain: string): Question {
     distractors,
     domain,
     difficulty: Math.max(0, Math.min(1, ladder)),
+  }
+}
+
+/** How long a manifest read may take before the game starts without it. */
+const MANIFEST_TIMEOUT_MS = 3000
+
+/**
+ * Where this pack's own files live, given the document it is running in.
+ *
+ * A pack is served at `dynawalla-pack://localhost/<packId>/<file>` (or
+ * `http://dynawalla-pack.localhost/<packId>/<file>` on Android and Windows), and
+ * the entry document is somewhere inside that directory. Cut at the pack id
+ * rather than taking the document's own directory, so an entry moved into a
+ * subfolder does not silently start reading a manifest that is not there.
+ *
+ * `null` when the id does not appear in the URL at all, which is a pack being
+ * served from somewhere this function was not told about — the caller treats
+ * that as "no declaration" and says so, rather than guessing a path.
+ */
+export function packRootUrl(documentUrl: string, packId: string): string | null {
+  if (packId === "") return null
+  const marker = `/${packId}/`
+  const at = documentUrl.lastIndexOf(marker)
+  if (at < 0) return null
+  return documentUrl.slice(0, at + marker.length)
+}
+
+/**
+ * `covers.skills` out of the pack's own built manifest.
+ *
+ * **Why a fetch and not a build-time constant.** This module is compiled into
+ * all 27 packs by 27 separate vite configs and has no path to any one pack's
+ * `pack.json`; the host knows every manifest but the wire has no field for it
+ * (`Connect` carries `packId`, `granted` and `settings`, and adding to it is a
+ * protocol change through the app). What every pack *does* have is
+ * `manifest.json` at its own root, written by `packs/build.mjs`, validated by
+ * `dw-pack check`, and served by the same scheme handler that serves the game —
+ * with `Access-Control-Allow-Origin: *` and the scheme in `connect-src`,
+ * precisely so a pack can read its own data from an opaque origin.
+ *
+ * **It fails open, and it says so.** Everything here is best-effort: no
+ * declaration is the state every pack was in until now, so a manifest that
+ * cannot be read costs a warning and nothing else. It is a `warn` and not an
+ * `error` because it is also the honest state of a pack opened outside a host.
+ */
+export async function declaredSkills(deps: {
+  readonly packId: string
+  readonly documentUrl: string
+  readonly fetch: typeof globalThis.fetch
+  readonly timeoutMs?: number
+}): Promise<readonly string[]> {
+  const root = packRootUrl(deps.documentUrl, deps.packId)
+  const url = root === null ? null : `${root}manifest.json`
+  const giveUp = (why: string): readonly string[] => {
+    console.warn(
+      `[pack] the declared skills could not be read from ${url ?? "an unknown manifest URL"} ` +
+        `(${why}); no skill restriction will be applied and questions from every domain the ` +
+        `host has will be served`,
+    )
+    return []
+  }
+  if (url === null) return giveUp(`"${deps.packId}" is not in the document URL ${deps.documentUrl}`)
+  const abort = new AbortController()
+  const timer = setTimeout(() => {
+    abort.abort()
+  }, deps.timeoutMs ?? MANIFEST_TIMEOUT_MS)
+  try {
+    const response = await deps.fetch(url, { cache: "no-store", signal: abort.signal })
+    if (!response.ok) return giveUp(`HTTP ${String(response.status)}`)
+    const body: unknown = await response.json()
+    const covers = (body as { covers?: unknown } | null)?.covers
+    const skills = (covers as { skills?: unknown } | undefined)?.skills
+    if (!Array.isArray(skills)) return giveUp("covers.skills is not an array")
+    const ids = skills.filter((id): id is string => typeof id === "string" && id !== "")
+    if (ids.length !== skills.length) return giveUp("covers.skills holds something that is not an id")
+    return ids
+  } catch (error) {
+    return giveUp(error instanceof Error ? error.message : String(error))
+  } finally {
+    clearTimeout(timer)
   }
 }
 
@@ -449,7 +664,34 @@ function questionFrom(item: Item, canonical: string, domain: string): Question {
  * forever, and the games' entry files render that message.
  */
 export async function createGameHost(options: GameHostOptions = {}): Promise<MountedHost> {
-  return attachGameHost(await connect(), options)
+  return await attachDeclared(await connect(), options, {
+    documentUrl: document.baseURI,
+    fetch: globalThis.fetch.bind(globalThis),
+  })
+}
+
+/**
+ * `createGameHost` minus the connection: read the pack's own declaration, then
+ * attach.
+ *
+ * Separate for the reason the whole module is separate — a `document` and a
+ * `MessagePort` are the two things a test cannot have — and so the step between
+ * `manifest.json` and the wire is one a test can walk end to end rather than a
+ * line of glue nobody ever ran.
+ *
+ * The declaration is read BEFORE the game mounts, so the very first `warm()`
+ * question is already restricted: trebuchet's opening wave is the one this
+ * exists for, and a declaration that arrives a round trip late is a declaration
+ * that does not cover it.
+ */
+export async function attachDeclared(
+  client: HostClient,
+  options: GameHostOptions,
+  deps: { readonly documentUrl: string; readonly fetch: typeof globalThis.fetch },
+): Promise<MountedHost> {
+  const skills =
+    options.skills ?? (await declaredSkills({ packId: client.packId, ...deps }))
+  return attachGameHost(client, { ...options, skills })
 }
 
 /**
@@ -521,6 +763,43 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let filledFor: number | null = null
   let lastFlush = 0
 
+  // ── What kind of maths this pack declared it does ──────────────────────────
+
+  /** `covers.skills`, in declaration order. Empty means "no restriction". */
+  const declared = (options.skills ?? []).filter((id) => id !== "")
+  /** The domains those ids belong to. What is actually honoured. */
+  const domains = new Set(declared.map(domainOf))
+  /**
+   * What a pin for each declared skill was observed to return.
+   *
+   * Learned rather than assumed, because a pack cannot see the host's ladder:
+   * naming a skill returns one fixed rung, and where that rung sits is a fact
+   * only the host knows. Recorded from the pinned request that discovered it,
+   * which is why it is the ordinate a *future* pin for the same skill will get
+   * and not a guess derived from some other arrival.
+   */
+  const pinOrdinate = new Map<string, number>()
+  /** Declared skills this host demonstrably does not have. Never pinned twice. */
+  const absentSkills = new Set<string>()
+  /** Consecutive rescues that failed to produce a question the pack declares. */
+  let rescuesFailed = 0
+  /** Set once the declaration has been abandoned for the session. */
+  let surrendered = false
+  /**
+   * Whether the host's own stream is currently outside what this pack covers.
+   *
+   * A budget, not a preference. Asking, refusing and asking again costs four
+   * calls a question — two `items.next`, a `reveal` and a `skip` — and the host
+   * allows 120 in a sliding second: `warm()` stocks 32 questions back to back, so
+   * the refuse-and-retry shape crosses that window at mount and the pool comes up
+   * short with a rate-limit error. Once the host is known to be parked somewhere
+   * this pack cannot use, the declared skill is asked for directly and a question
+   * costs exactly what it cost before this file learned about domains.
+   */
+  let parked = false
+  /** Pinned questions served since the host's own position was last read. */
+  let sincePeek = 0
+
   /**
    * Things said once per mount.
    *
@@ -534,6 +813,12 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     if (spoken.has(key)) return
     spoken.add(key)
     console.warn(message)
+  }
+  /** The same, at the volume a thing that needs fixing in the repository gets. */
+  const shoutOnce = (key: string, message: string) => {
+    if (spoken.has(key)) return
+    spoken.add(key)
+    console.error(message)
   }
 
   const canReveal = granted.has("items.reveal")
@@ -571,11 +856,228 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     return unit
   }
 
-  const askShape = (): { difficulty?: number; maxDifficulty?: number } => {
-    const ask: { difficulty?: number; maxDifficulty?: number } = {}
+  /**
+   * What the pool should be stocked and searched against, or `null` for
+   * "whatever is in it".
+   *
+   * The game's own request when it makes one, and otherwise where the host's
+   * ladder actually is. A `null` here means neither is known, which happens only
+   * before the first item has ever arrived.
+   */
+  const aim = (): number | null => target ?? fresh
+
+  /**
+   * The request, as one object, in one place.
+   *
+   * `pin` names a skill and is the rescue described in the module note, never
+   * the standing request: a pinned request is served the first rung of that
+   * skill whatever `difficulty` and `maxDifficulty` say, so sending one by
+   * default would replace the host's model of where a child is with a pack's
+   * guess at it. The difficulty fields travel with it anyway — the host reads
+   * them to keep the child's ladder position moving even on a request whose
+   * rung it will not choose with them.
+   */
+  const askShape = (pin?: string): ItemRequest => {
+    const ask: { difficulty?: number; maxDifficulty?: number; skillId?: string } = {}
     if (target !== null) ask.difficulty = target
     if (ceiling !== null) ask.maxDifficulty = ceiling
+    if (pin !== undefined) ask.skillId = pin
     return ask
+  }
+
+  /** Whether the pack's declaration is being honoured at this moment. */
+  const restricting = (): boolean => domains.size > 0 && !surrendered
+
+  /** Whether a skill is one this pack works in. */
+  const admits = (skillId: string): boolean => domains.has(domainOf(skillId))
+
+  /** Whether an item is above a ceiling the game set. */
+  const overCeiling = (item: Item): boolean =>
+    ceiling !== null && ordinateOf(item) > ceiling + EPS
+
+  /**
+   * Close an item the pack asked for and is not going to use.
+   *
+   * The alternative is leaving it open in the host's ledger, which costs a child
+   * nothing but does mean an unanswered item per rescue for a whole session.
+   * Failure is the older-host case and is already said out loud by `skip`.
+   */
+  const close = (itemId: string) => {
+    void client.skip(itemId).catch(() => {
+      // Deliberately quiet HERE: `host.skip` owns that message, says it once,
+      // and states the consequence. Two copies of it is one too many.
+    })
+  }
+
+  /**
+   * The declared skill to ask for instead, or `null` when there is none left.
+   *
+   * Unmeasured candidates first, and that is the whole of the search: a pin
+   * returns one fixed rung and nothing tells a pack where that rung is until it
+   * has asked, so each declared skill is worth one exploratory request and
+   * after that the set is known and the nearest one to what the game wants is
+   * chosen from it. Bounded by the size of the declaration, which the manifest
+   * schema caps at 512 and which no shipped pack takes past nine.
+   *
+   * A candidate known to sit above the game's own ceiling is never chosen while
+   * another exists — a pinned request ignores `maxDifficulty`, so respecting it
+   * is this side's job.
+   */
+  const rescueSkill = (): string | null => {
+    const candidates = declared.filter((id) => !absentSkills.has(id))
+    const unmeasured = candidates.filter((id) => !pinOrdinate.has(id))
+    if (unmeasured.length > 0) return unmeasured[0] ?? null
+    if (candidates.length === 0) return null
+    const want = aim() ?? 0
+    const score = (id: string): number => {
+      const ordinate = pinOrdinate.get(id) ?? 0
+      const over = ceiling !== null && ordinate > ceiling + EPS
+      return Math.abs(ordinate - want) + (over ? 1000 : 0)
+    }
+    return [...candidates].sort((a, b) => score(a) - score(b))[0] ?? null
+  }
+
+  /** Give up on the declaration for the rest of the session, loudly. */
+  const surrender = (why: string) => {
+    surrendered = true
+    shoutOnce(
+      "surrender",
+      `[pack] this pack's covers.skills names ${domains.size === 1 ? "the domain" : "the domains"} ` +
+        `${[...domains].join(", ")} and this host cannot serve ${why} — the declaration is now ` +
+        `IGNORED for the rest of this session and questions from any domain will be served, ` +
+        `because a game with no questions is worse than a game with the wrong ones. Either the ` +
+        `pack declares skills the curriculum does not have, or the curriculum has lost them.`,
+    )
+  }
+
+  /** Reveal the answer and build the question, or `null` if it cannot be placed. */
+  const draw = async (item: Item): Promise<Pooled | null> => {
+    const canonical = canReveal ? await client.reveal(item.id) : ""
+    if (canonical === "") {
+      // No reveal grant means no placeable answer. Both games need one,
+      // so this is loud rather than a silently duller game.
+      console.error("[pack] items.reveal was not granted; questions cannot be placed")
+      return null
+    }
+    const question = questionFrom(item, canonical, domain)
+    // The freshest reading of where the questions are coming from, taken on
+    // arrival rather than on hand-out: a question that is still in the pool has
+    // already told us something, and waiting until a child sees it is waiting the
+    // length of the pool. Taken from whatever is actually pooled, including a
+    // rung this module asked for by name — aiming the pool somewhere none of its
+    // contents can be is what makes a flush discard a pool it just filled, and it
+    // was measured costing a restricted pack a third of its requests again.
+    fresh = question.difficulty
+    return { question, skillId: item.skillId }
+  }
+
+  /**
+   * One question from the host, in a domain this pack declared if that is
+   * possible and with the reason said out loud when it is not.
+   *
+   * `null` is "stop asking for now" — the host has nothing, or the answer could
+   * not be revealed — and is the same signal both call sites already broke on.
+   */
+  /** What a pin for `skill` turned out to return, or that the host lacks it. */
+  const record = (skill: string, item: Item) => {
+    if (item.skillId === skill) pinOrdinate.set(skill, ordinateOf(item))
+    else absentSkills.add(skill)
+  }
+
+  const acquire = async (): Promise<Pooled | null> => {
+    // While the host is parked outside what this pack covers, ask for a declared
+    // skill directly rather than asking, refusing and asking again — see `parked`
+    // for the request budget that makes this the difference between a stocked
+    // pool and a rate-limited one. Every `PEEK_EVERY` questions it falls through
+    // anyway, because the only way to find out that the child's ladder has walked
+    // back into this pack's own domain is to let the host answer for itself.
+    if (restricting() && parked && sincePeek < PEEK_EVERY) {
+      const pin = rescueSkill()
+      if (pin !== null) {
+        sincePeek += 1
+        const pinned = await client.nextItem(askShape(pin))
+        if (pinned !== null) {
+          record(pin, pinned)
+          if (admits(pinned.skillId) && !overCeiling(pinned)) return await draw(pinned)
+          // The pin stopped working — the host lost the skill, or the game has
+          // since set a ceiling below it. Fall through to the host's own stream,
+          // which is where the accounting and the announcements live.
+          close(pinned.id)
+        }
+      }
+      parked = false
+    }
+    sincePeek = 0
+
+    const arrival = await client.nextItem(askShape())
+    if (arrival === null) return null
+    if (!restricting() || admits(arrival.skillId)) {
+      // The host is serving something this pack covers, so it is not parked and
+      // the next question is its own again — levels, spread and all.
+      parked = false
+      return await draw(arrival)
+    }
+
+    const pin = rescueSkill()
+    if (pin === null) {
+      surrender("any of them")
+      return await draw(arrival)
+    }
+    const swap = await client.nextItem(askShape(pin))
+    if (swap === null) {
+      // The host had one question and not two. Use the one it gave.
+      return await draw(arrival)
+    }
+    record(pin, swap)
+
+    if (overCeiling(swap)) {
+      // A pinned request is served whatever rung the skill sits on, ceiling or
+      // no ceiling — proved against the shipped host, which returns 0.28 for a
+      // pin under a `maxDifficulty` of 0.1. A game that set a ceiling did so
+      // because it cannot draw above it, and honouring one declaration by
+      // breaking another is not a trade this module makes.
+      sayOnce(
+        "pin-ceiling",
+        `[pack] "${pin}" is the nearest skill this pack declares and it sits at ` +
+          `${ordinateOf(swap).toFixed(2)}, above the maxDifficulty of ` +
+          `${(ceiling ?? 1).toFixed(2)} this game set — the ceiling wins, so a question from ` +
+          `"${arrival.skillId}" is being served instead of one this pack declares`,
+      )
+      close(swap.id)
+      rescuesFailed += 1
+      if (rescuesFailed >= SURRENDER_AFTER) surrender("anything under the ceiling this game set")
+      return await draw(arrival)
+    }
+
+    if (!admits(swap.skillId)) {
+      close(swap.id)
+      rescuesFailed += 1
+      if (rescuesFailed >= SURRENDER_AFTER) surrender(`"${pin}" or the rest of them`)
+      else {
+        sayOnce(
+          "pin-missing",
+          `[pack] this pack declares "${pin}" and this host does not have it — it answered with ` +
+            `"${swap.skillId}" instead, so a question outside ${[...domains].join(", ")} is being ` +
+            `served`,
+        )
+      }
+      return await draw(arrival)
+    }
+
+    rescuesFailed = 0
+    // The host is somewhere this pack cannot use and the trade worked, so the
+    // questions after this one ask for the declared skill directly.
+    parked = true
+    sayOnce(
+      "rescued",
+      `[pack] the host served "${arrival.skillId}" at ${ordinateOf(arrival).toFixed(2)}, ` +
+        `which is outside the ${[...domains].join(", ")} this pack's covers.skills declares; it ` +
+        `was asked again for "${pin}" and got "${swap.skillId}" at ` +
+        `${ordinateOf(swap).toFixed(2)}. This costs one extra request per question for as ` +
+        `long as the child's ladder position sits outside what this pack covers.`,
+    )
+    close(arrival.id)
+    return await draw(swap)
   }
 
   const fill = () => {
@@ -587,22 +1089,9 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
           if (Date.now() - lastAsk > IDLE_MS) break
           // Read every time round the loop, not once: a difficulty change while
           // a refill is in flight has to reach the questions still to come.
-          const item = await client.nextItem(askShape())
-          if (item === null) break
-          const canonical = canReveal ? await client.reveal(item.id) : ""
-          if (canonical === "") {
-            // No reveal grant means no placeable answer. Both games need one,
-            // so this is loud rather than a silently duller game.
-            console.error("[pack] items.reveal was not granted; questions cannot be placed")
-            break
-          }
-          const question = questionFrom(item, canonical, domain)
-          // The freshest reading of where the host stands, taken on arrival
-          // rather than on hand-out: a question that is still in the pool has
-          // already told us something, and waiting until a child sees it is
-          // waiting the length of the pool.
-          fresh = question.difficulty
-          pool.push({ question, skillId: item.skillId })
+          const entry = await acquire()
+          if (entry === null) break
+          pool.push(entry)
         }
       } catch (error) {
         console.error("[pack] could not fill the question pool", error)
@@ -611,16 +1100,6 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       }
     })()
   }
-
-  /**
-   * What the pool should be stocked and searched against, or `null` for
-   * "whatever is in it".
-   *
-   * The game's own request when it makes one, and otherwise where the host's
-   * ladder actually is. A `null` here means neither is known, which happens only
-   * before the first item has ever arrived.
-   */
-  const aim = (): number | null => target ?? fresh
 
   /** How wrong a pooled question is for what the game is asking for now. */
   const distance = (entry: Pooled): number => {
@@ -895,14 +1374,15 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     warm: async () => {
       // Awaited so the first frame the child sees is already stocked. Filling
       // in the background and hoping is how a game shows a blank chip once.
+      //
+      // Through `acquire` like every other question, so the declaration covers
+      // the opening wave too: trebuchet's first wave was the unplayable one, and
+      // a restriction that starts working on question nine is a restriction that
+      // misses the only part of the session a child might not come back from.
       for (let i = 0; i < POOL_FLOOR && !disposed; i++) {
-        const item = await client.nextItem(askShape())
-        if (item === null) break
-        const canonical = canReveal ? await client.reveal(item.id) : ""
-        if (canonical === "") break
-        const question = questionFrom(item, canonical, domain)
-        fresh = question.difficulty
-        pool.push({ question, skillId: item.skillId })
+        const entry = await acquire()
+        if (entry === null) break
+        pool.push(entry)
       }
       fill()
     },

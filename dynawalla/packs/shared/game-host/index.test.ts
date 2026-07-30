@@ -16,7 +16,16 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import type { Capability, HostClient, Item, ItemRequest, Judgement, Settings } from "../../sdk/src/index.ts"
-import { attachGameHost, toUnit, POOL_FLOOR } from "./index.ts"
+import {
+  attachDeclared,
+  attachGameHost,
+  declaredSkills,
+  domainOf,
+  packRootUrl,
+  toUnit,
+  FLUSH_KEEP,
+  POOL_FLOOR,
+} from "./index.ts"
 
 /** Rungs on the fake host's ladder. Enough that 1/16 is a visible step. */
 const RUNGS = 16
@@ -41,6 +50,8 @@ type Fake = {
   readonly client: HostClient
   /** Every `nextItem` call, in order. */
   readonly asks: Ask[]
+  /** Every method called on the client, in order. The host counts these. */
+  readonly calls: string[]
   /** Every `answer` call, in order. */
   readonly answers: { itemId: string; response: string }[]
   /** Every `items.skip` call, in order. */
@@ -69,9 +80,18 @@ type Fake = {
  * the contract the real `items.ts` implements; this is the smallest thing that
  * implements it too.
  */
-function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fake {
+function fakeHost(
+  options: {
+    granted?: Capability[]
+    rungs?: number
+    /** The skill each rung belongs to. Default: four rungs per `arith.rung.N`. */
+    skillAt?: (index: number) => string
+  } = {},
+): Fake {
   const rungs = options.rungs ?? RUNGS
+  const skillAt = options.skillAt ?? ((index: number) => `arith.rung.${String(Math.floor(index / 4))}`)
   const asks: Ask[] = []
+  const calls: string[] = []
   const answers: { itemId: string; response: string }[] = []
   const skips: string[] = []
   const canonicals = new Map<string, string>()
@@ -83,6 +103,7 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
     skipFails: false,
     standing: RESTING_RUNG,
     asks,
+    calls,
     answers,
     skips,
     client: {
@@ -94,17 +115,32 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
 
       nextItem: (ask: Ask = {}) => {
         asks.push(ask)
+        calls.push("items.next")
         const span = Math.max(1, rungs - 1)
         const cap = ask.maxDifficulty === undefined ? 1 : ask.maxDifficulty
         const wanted = ask.difficulty === undefined ? fake.standing / span : ask.difficulty
-        const index = Math.max(
+        let index = Math.max(
           0,
           Math.min(rungs - 1, Math.round(Math.min(wanted, cap) * span)),
         )
+        // A named skill wins outright and is served at the FIRST rung that
+        // carries it, whatever the difficulty and whatever the ceiling. That is
+        // not a simplification: the shipped host is `rungs.find(r => r.node.id
+        // === skillId) ?? rungAt(drawn)`, measured returning ordinate 0.28 for a
+        // pin sent with `difficulty: 0.9`, and 0.28 again for the same pin sent
+        // with `maxDifficulty: 0.1`. An unknown id is ignored, as it is there.
+        if (ask.skillId !== undefined) {
+          for (let rung = 0; rung < rungs; rung++) {
+            if (skillAt(rung) === ask.skillId) {
+              index = rung
+              break
+            }
+          }
+        }
         sequence += 1
         const item: Item = {
           id: `i${String(sequence)}`,
-          skillId: `arith.rung.${String(Math.floor(index / 4))}`,
+          skillId: skillAt(index),
           // Deliberately NOT the ladder ordinate: `level` is the level within a
           // skill, which is what the shipped host puts here and what the old
           // read-back mistook for a difficulty.
@@ -125,6 +161,7 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
       },
 
       answer: (input) => {
+        calls.push("items.answer")
         answers.push({ itemId: input.itemId, response: input.response })
         if (fake.answerFails) return Promise.reject(new Error("the host is gone"))
         return Promise.resolve({
@@ -134,13 +171,17 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
         } satisfies Judgement)
       },
       skip: (itemId) => {
+        calls.push("items.skip")
         skips.push(itemId)
         // What an older host — one shipped before `items.skip` existed — would
         // do with the call, so the adapter is held to surviving it.
         if (fake.skipFails) return Promise.reject(new Error("unknown method: items.skip"))
         return Promise.resolve()
       },
-      reveal: (itemId) => Promise.resolve(canonicals.get(itemId) ?? ""),
+      reveal: (itemId) => {
+        calls.push("items.reveal")
+        return Promise.resolve(canonicals.get(itemId) ?? "")
+      },
       learnerSummary: () => Promise.resolve({ skills: [] }),
       haptic: () => Promise.resolve(),
       sound: () => Promise.resolve(),
@@ -808,4 +849,597 @@ test("the one value the two scales disagree about is not read in silence", async
   const notes = said.filter((line) => line.includes("exactly 1"))
   assert.equal(notes.length, 1, `said ${String(notes.length)} times: ${said.join(" | ")}`)
   assert.ok(notes[0]?.includes("BOTTOM"), `the notice does not say which reading won: ${String(notes[0])}`)
+})
+
+// ─── The other axis: what kind of maths, not how hard ────────────────────────
+//
+// The ladder these tests use is the shipped one in miniature: 16 rungs, four
+// skills, two domains, and the domains interleaved the way the real curriculum
+// interleaves them — `dw.mul` sits in the MIDDLE of the ladder, between two
+// bands of `dw.add`, because that is the fact that makes difficulty an
+// insufficient axis. On the shipped 66-rung ladder
+// `dw.mul.scale.times-power-of-ten` (answers in the millions) sits at ordinate
+// 0.45 and `dw.div.whole.divide-exact` (single-digit answers) sits at 0.55, one
+// above the other, so no ceiling and no floor can separate a pack from a domain
+// it cannot draw.
+//
+//   rungs  0–3   dw.add.facts.add-within-ten          ordinate 0.00–0.20
+//   rungs  4–7   dw.mul.scale.times-power-of-ten      ordinate 0.27–0.47
+//   rungs  8–11  dw.add.column.add-no-regroup         ordinate 0.53–0.73
+//   rungs 12–15  dw.add.regroup.subtract-across-zero  ordinate 0.80–1.00
+
+/** The skills of the interleaved ladder above, by rung. */
+const LADDER = [
+  "dw.add.facts.add-within-ten",
+  "dw.mul.scale.times-power-of-ten",
+  "dw.add.column.add-no-regroup",
+  "dw.add.regroup.subtract-across-zero",
+]
+
+const skillAt = (index: number): string => LADDER[Math.floor(index / 4)] ?? "dw.add.facts.add-within-ten"
+
+/** What TREBUCHET declares, in its own order, cut to the skills above. */
+const TREBUCHET = ["dw.add.column.add-no-regroup", "dw.add.regroup.subtract-across-zero"]
+
+/**
+ * Answer `count` questions and hand back the skill each one came from.
+ *
+ * Read through `recentOutcomes`, which is the only place a pack can see what it
+ * was served: `Question` carries no skill id, so this is also the seam a game's
+ * own pacing controller would use, and a test that read a private field would
+ * be testing something no game can observe.
+ */
+async function skillsServed(mounted: ReturnType<typeof attachGameHost>, count: number): Promise<string[]> {
+  for (let i = 0; i < count; i++) {
+    const question = mounted.host.next()
+    mounted.host.report({ questionId: question.id, correct: true, ms: 1000, answered: question.answer })
+    await settle(4)
+  }
+  await settle()
+  return mounted.host.recentOutcomes().map((outcome) => outcome.skillId)
+}
+
+test("THE GAP: a pack is served a domain it does not cover, and its declaration cannot stop it", async () => {
+  // The host is standing on rung 5 — inside the multiplication band, which is
+  // exactly where trebuchet was standing when it was asked to wind its arm to
+  // 4,510,000 metres. The pack declares add and subtract only.
+  const fake = fakeHost({ skillAt })
+  fake.standing = 5
+  const mounted = attachGameHost(fake.client, { skills: TREBUCHET })
+  await mounted.warm()
+
+  const served = await skillsServed(mounted, 12)
+  assert.ok(served.length >= 12, `only ${String(served.length)} questions were served`)
+  const foreign = served.filter((skill) => !skill.startsWith("dw.add"))
+  assert.equal(
+    foreign.length,
+    0,
+    `${String(foreign.length)} of ${String(served.length)} questions came from a domain this ` +
+      `pack does not declare: ${[...new Set(foreign)].join(", ")}`,
+  )
+  mounted.dispose()
+})
+
+test("the declaration reaches the wire as a skillId, and only when it has to", async () => {
+  const fake = fakeHost({ skillAt })
+
+  // Standing in the multiplication band: the pack cannot use what arrives, so
+  // it trades, and the trade is a `skillId` on the wire.
+  fake.standing = 5
+  const trading = attachGameHost(fake.client, { skills: TREBUCHET })
+  await trading.warm()
+  const pins = fake.asks.filter((ask) => ask.skillId !== undefined).map((ask) => ask.skillId)
+  assert.ok(pins.length > 0, "not one request named a skill, so the declaration went nowhere")
+  for (const pin of pins) {
+    assert.ok(
+      pin !== undefined && TREBUCHET.includes(pin),
+      `the host was asked for "${String(pin)}", which this pack never declared`,
+    )
+  }
+  trading.dispose()
+
+  // Standing in the addition band: everything that arrives is already something
+  // the pack declares, so nothing is pinned and the host keeps its own spread,
+  // its own levels and its own idea of where the child is.
+  const quiet = fakeHost({ skillAt })
+  quiet.standing = 9
+  const content = attachGameHost(quiet.client, { skills: TREBUCHET })
+  await content.warm()
+  await skillsServed(content, 8)
+  const uninvited = quiet.asks.filter((ask) => ask.skillId !== undefined)
+  assert.equal(
+    uninvited.length,
+    0,
+    `${String(uninvited.length)} requests pinned a skill while the host was already serving one ` +
+      `the pack declares — a pin ignores difficulty and maxDifficulty, so this would cost every ` +
+      `pack its difficulty wire`,
+  )
+  content.dispose()
+})
+
+test("a pack that declares nothing is served exactly what it was served before", async () => {
+  const bare = fakeHost({ skillAt })
+  bare.standing = 5
+  const before = attachGameHost(bare.client)
+  await before.warm()
+  const servedBefore = await skillsServed(before, 8)
+  before.dispose()
+
+  const empty = fakeHost({ skillAt })
+  empty.standing = 5
+  const after = attachGameHost(empty.client, { skills: [] })
+  await after.warm()
+  const servedAfter = await skillsServed(after, 8)
+  after.dispose()
+
+  assert.ok(servedBefore.includes("dw.mul.scale.times-power-of-ten"), "the ladder was not where this test needs it")
+  assert.deepEqual(servedAfter, servedBefore, "an empty declaration changed what a pack is served")
+  assert.equal(
+    bare.asks.filter((ask) => ask.skillId !== undefined).length +
+      empty.asks.filter((ask) => ask.skillId !== undefined).length,
+    0,
+    "a pack that declared nothing had a skill named on its behalf",
+  )
+})
+
+test("the question the pack could not use is closed on the host, not left open", async () => {
+  const fake = fakeHost({ skillAt })
+  fake.standing = 5
+  const mounted = attachGameHost(fake.client, { skills: TREBUCHET })
+  await mounted.warm()
+  await settle()
+
+  assert.ok(fake.skips.length > 0, "a rescued question was abandoned open in the host's ledger")
+  // Every skip is an item the pack never served, and no served item was skipped:
+  // a skip is the honest ending for a question that was drawn and not asked.
+  const answered = new Set(fake.answers.map((answer) => answer.itemId))
+  for (const skipped of fake.skips) {
+    assert.ok(!answered.has(skipped), `item ${skipped} was both answered and closed unanswered`)
+  }
+  mounted.dispose()
+})
+
+// A ladder whose UNUSABLE band is at the bottom, which is what puts a pack's
+// ceiling and its declaration in conflict: everything the pack covers is above
+// the highest rung it is allowed to draw.
+//
+//   rungs 0–3    dw.mul.facts.tables-within-five   0.00–0.20
+//   rungs 4–15   dw.add.column.add-no-regroup      0.27–1.00   a pin lands 0.27
+const lowBandForeign = (index: number): string =>
+  index < 4 ? "dw.mul.facts.tables-within-five" : "dw.add.column.add-no-regroup"
+
+test("a rescue never breaks a ceiling the game set", async () => {
+  const fake = fakeHost({ skillAt: lowBandForeign })
+  const said = await withConsole(async () => {
+    const mounted = attachGameHost(fake.client, { skills: ["dw.add.column.add-no-regroup"] })
+    // The ceiling is stated before the pool is stocked, because a pool stocked
+    // without one already holds questions above it — that is what a flush is for
+    // and it is not what this test is about.
+    mounted.host.next({ maxDifficulty: 0.2 })
+    await mounted.warm()
+    // The game can only draw the bottom fifth of the ladder. The only skill this
+    // pack declares starts at 0.27, and a pinned request is served that rung
+    // whatever the ceiling says — measured against the shipped host, which
+    // returns 0.28 for a pin sent with `maxDifficulty: 0.1`. So the ceiling wins
+    // and the pack keeps the question it can at least draw.
+    for (let i = 0; i < 12; i++) {
+      const question = mounted.host.next({ maxDifficulty: 0.2 })
+      assert.ok(
+        question.difficulty <= 0.2 + 1e-9,
+        `a question at ${question.difficulty.toFixed(2)} was served under a ceiling of 0.20`,
+      )
+      mounted.host.report({ questionId: question.id, correct: true, ms: 900, answered: question.answer })
+      await settle(4)
+    }
+    mounted.dispose()
+  })
+  const notes = said.filter((line) => line.includes("the ceiling wins"))
+  assert.equal(notes.length, 1, `the ceiling/declaration conflict was said ${String(notes.length)} times`)
+  assert.ok(
+    notes[0]?.includes("maxDifficulty of 0.20"),
+    `the notice does not say which ceiling it stopped at: ${String(notes[0])}`,
+  )
+})
+
+test("a trade that keeps failing stops paying for itself, loudly", async () => {
+  // The conflict above, left running: the pack declares a skill the host has and
+  // the game has set a ceiling below it, so no trade can ever succeed. The
+  // request budget is the point — every failed trade costs a second
+  // `items.next`, and the host allows 120 calls in a sliding second.
+  const fake = fakeHost({ skillAt: lowBandForeign })
+  const said = await withConsole(async () => {
+    const mounted = attachGameHost(fake.client, { skills: ["dw.add.column.add-no-regroup"] })
+    mounted.host.next({ maxDifficulty: 0.2 })
+    await mounted.warm()
+    for (let i = 0; i < 24; i++) {
+      const question = mounted.host.next({ maxDifficulty: 0.2 })
+      assert.notEqual(question.id, "", `the pool ran dry on question ${String(i)}`)
+      mounted.host.report({ questionId: question.id, correct: true, ms: 900, answered: question.answer })
+      await settle(4)
+    }
+    mounted.dispose()
+  })
+  const notes = said.filter((line) => line.includes("IGNORED for the rest of this session"))
+  assert.equal(notes.length, 1, `surrender was announced ${String(notes.length)} times: ${said.join(" | ")}`)
+  const pins = fake.asks.filter((ask) => ask.skillId !== undefined)
+  assert.ok(
+    pins.length <= 6,
+    `${String(pins.length)} trades were attempted for a skill that can never be served under ` +
+      `this game's ceiling; it should give up after ${String(3)} consecutive failures`,
+  )
+})
+
+test("a declaration this host cannot satisfy is surrendered, loudly, and once", async () => {
+  // arena, balance, claim and pulse are all in this state today: every skill
+  // they declare is missing from the shipped ladder. The game must keep getting
+  // questions, and the repository must be told.
+  const fake = fakeHost({ skillAt })
+  fake.standing = 5
+  const said = await withConsole(async () => {
+    const mounted = attachGameHost(fake.client, { skills: ["dw.ns.compare.whole-numbers"] })
+    await mounted.warm()
+    const served = await skillsServed(mounted, 20)
+    assert.ok(served.length >= 20, `the pack starved: only ${String(served.length)} questions`)
+    mounted.dispose()
+  })
+  const notes = said.filter((line) => line.includes("IGNORED for the rest of this session"))
+  assert.equal(notes.length, 1, `surrender was announced ${String(notes.length)} times: ${said.join(" | ")}`)
+  assert.ok(notes[0]?.includes("dw.ns"), `the notice does not name the domain: ${String(notes[0])}`)
+  // And it stopped paying for the trade. Two pinned requests at most: one to
+  // discover the skill is not there, and none after that.
+  const pins = fake.asks.filter((ask) => ask.skillId !== undefined)
+  assert.ok(
+    pins.length <= 2,
+    `${String(pins.length)} pinned requests were sent for a skill the host does not have`,
+  )
+})
+
+test("the trade measures each declared skill once and then asks for the nearest", async () => {
+  // Declared hardest-first, on purpose: `dw.add.regroup.subtract-across-zero` is
+  // rung 12 (ordinate 0.80) and `dw.add.column.add-no-regroup` is rung 8 (0.53).
+  // A pack cannot see where a skill sits until it has asked for it, so the first
+  // two trades are the measurement — in declaration order — and every trade
+  // after that has to be the one nearest what the game is asking for, which is
+  // the SECOND of the two. A rescue that just took the first declared skill
+  // would pass the previous test and fail this one.
+  //
+  //   rungs  0–3   dw.mul.facts.tables-within-five       0.00–0.20
+  //   rungs  4–7   dw.add.column.add-no-regroup          0.27–0.47   a pin lands 0.27
+  //   rungs  8–11  dw.mul.scale.times-power-of-ten       0.53–0.73
+  //   rungs 12–15  dw.add.regroup.subtract-across-zero   0.80–1.00   a pin lands 0.80
+  //
+  // Two bands the pack cannot use, one below its cheapest declared skill and one
+  // above it, so the nearest declared skill is a different one depending on where
+  // the game is aiming — which a rescue that always picks the same skill, or the
+  // first declared one, cannot get right twice.
+  const split = (index: number): string =>
+    [
+      "dw.mul.facts.tables-within-five",
+      "dw.add.column.add-no-regroup",
+      "dw.mul.scale.times-power-of-ten",
+      "dw.add.regroup.subtract-across-zero",
+    ][Math.floor(index / 4)] ?? ""
+  const declaredHardestFirst = [
+    "dw.add.regroup.subtract-across-zero",
+    "dw.add.column.add-no-regroup",
+  ]
+  const fake = fakeHost({ skillAt: split })
+  fake.standing = 1
+  const mounted = attachGameHost(fake.client, { skills: declaredHardestFirst })
+  await mounted.warm()
+  await settle()
+
+  const pins = (): string[] =>
+    fake.asks.filter((ask) => ask.skillId !== undefined).map((ask) => ask.skillId ?? "")
+
+  // The measurement, in declaration order, once each.
+  const measured = pins()
+  assert.equal(
+    measured[0],
+    "dw.add.regroup.subtract-across-zero",
+    `the first trade did not measure the first declared skill, it asked for "${String(measured[0])}"`,
+  )
+  assert.equal(
+    measured[1],
+    "dw.add.column.add-no-regroup",
+    `the second declared skill was not measured next; the trade asked for "${String(measured[1])}"`,
+  )
+
+  const drive = async (difficulty: number) => {
+    fake.asks.length = 0
+    for (let i = 0; i < 6; i++) {
+      const question = mounted.host.next({ difficulty })
+      mounted.host.report({ questionId: question.id, correct: true, ms: 900, answered: question.answer })
+      await settle(4)
+    }
+    await settle()
+    const asked = pins()
+    assert.ok(asked.length > 0, `nothing was traded while aiming at ${String(difficulty)}`)
+    return asked[asked.length - 1]
+  }
+
+  // Aiming at the bottom: the cheaper declared skill is the nearer one, and it is
+  // the one declared SECOND.
+  assert.equal(
+    await drive(0),
+    "dw.add.column.add-no-regroup",
+    "aiming at the bottom of the ladder still traded for the hardest skill the pack declares",
+  )
+  // Aiming above the pack's cheap skill: the answer flips to the other one.
+  assert.equal(
+    await drive(0.6),
+    "dw.add.regroup.subtract-across-zero",
+    "aiming at 0.60 traded for the skill at 0.27 rather than the one at 0.80",
+  )
+  mounted.dispose()
+})
+
+test("honouring the declaration does not spend the host's request budget", async () => {
+  // The host allows `MAX_REQUESTS_PER_SECOND` calls in a sliding second and
+  // `warm()` stocks POOL_FLOOR questions back to back, so what a restricted pack
+  // costs at mount is not a detail: the refuse-and-retry shape this started as
+  // spent four calls a question — two `items.next`, a `reveal` and a `skip` —
+  // and doubled the burst. A pack that has to name a skill asks for it directly.
+  const spend = async (skills?: readonly string[]) => {
+    const fake = fakeHost({ skillAt })
+    fake.standing = 5
+    const mounted = attachGameHost(fake.client, skills === undefined ? {} : { skills })
+    await mounted.warm()
+    const burst = fake.calls.length
+    await skillsServed(mounted, 24)
+    mounted.dispose()
+    return { burst, session: fake.calls.length }
+  }
+  const baseline = await spend()
+  const restricted = await spend(TREBUCHET)
+
+  assert.ok(baseline.burst >= 2 * POOL_FLOOR, `the baseline burst was only ${String(baseline.burst)} calls`)
+  assert.ok(
+    restricted.burst <= baseline.burst * 1.25,
+    `stocking the pool cost ${String(restricted.burst)} calls with a declaration against ` +
+      `${String(baseline.burst)} without — ${(restricted.burst / baseline.burst).toFixed(2)}× the ` +
+      `burst, which is how a restricted pack gets rate-limited at mount and shows a child an ` +
+      `empty pool`,
+  )
+  // And over a session, where a pool flushed at a difficulty none of its contents
+  // can be is the other way to spend the budget.
+  assert.ok(
+    restricted.session <= baseline.session * 1.25,
+    `24 questions cost ${String(restricted.session)} calls with a declaration against ` +
+      `${String(baseline.session)} without — ${(restricted.session / baseline.session).toFixed(2)}×`,
+  )
+})
+
+test("a ceiling that arrives after the pack is already pinned is still honoured", async () => {
+  // The pack is pinned first — the host is parked at the bottom of the ladder,
+  // in a band it cannot use — and only then does the game state a ceiling below
+  // the rung it has been pinning. Nothing re-reads a pinned request on the host's
+  // side, so the check has to happen here, on the way in, every time.
+  const fake = fakeHost({ skillAt: lowBandForeign })
+  fake.standing = 1
+  const mounted = attachGameHost(fake.client, { skills: ["dw.add.column.add-no-regroup"] })
+  await mounted.warm()
+  await settle()
+
+  const served: number[] = []
+  const pinsBefore = fake.asks.filter((ask) => ask.skillId !== undefined).length
+  for (let i = 0; i < 24; i++) {
+    const question = mounted.host.next({ maxDifficulty: 0.2 })
+    served.push(question.difficulty)
+    mounted.host.report({ questionId: question.id, correct: true, ms: 900, answered: question.answer })
+    await settle(4)
+  }
+  // The pool it had already stocked at 0.27 is above the new ceiling and is
+  // allowed to drain — that is what a flush is for, and a flush keeps
+  // FLUSH_KEEP of them. What must not happen is the pack going on ASKING for
+  // 0.27 by name once it knows the ceiling, which is a supply of them with no end.
+  const pinsAfter = fake.asks.filter((ask) => ask.skillId !== undefined).length - pinsBefore
+  const over = served.filter((difficulty) => difficulty > 0.2 + 1e-9)
+  assert.ok(
+    over.length <= FLUSH_KEEP,
+    `${String(over.length)} of ${String(served.length)} questions were above the ceiling of ` +
+      `0.20 — at most ${String(FLUSH_KEEP)} of them can be the pool draining`,
+  )
+  // And it stopped ASKING for that rung by name. This is the assertion that
+  // bites: a pooled question above a ceiling is never handed out while anything
+  // else exists, so a pack that goes on pinning an over-ceiling skill does not
+  // look broken from the outside — it just spends its whole pool, and its whole
+  // request budget, on questions no child will ever see. Measured: 4 pinned
+  // requests with the check, 27 without.
+  assert.ok(
+    pinsAfter <= 6,
+    `${String(pinsAfter)} requests named a skill the pack already knew sits above the ceiling ` +
+      `this game set; the pool fills with questions that can never be handed out`,
+  )
+  mounted.dispose()
+})
+
+test("the host is read again, so a child who walks back into the pack's own domain gets it", async () => {
+  //   rungs  0–3   dw.mul.facts.tables-within-five        0.00–0.20
+  //   rungs  4–7   dw.add.column.add-no-regroup           0.27–0.47   a pin lands 0.27
+  //   rungs  8–11  dw.mul.scale.times-power-of-ten        0.53–0.73
+  //   rungs 12–15  dw.add.regroup.subtract-across-zero    0.80–1.00
+  const banded = (index: number): string =>
+    [
+      "dw.mul.facts.tables-within-five",
+      "dw.add.column.add-no-regroup",
+      "dw.mul.scale.times-power-of-ten",
+      "dw.add.regroup.subtract-across-zero",
+    ][Math.floor(index / 4)] ?? ""
+  const fake = fakeHost({ skillAt: banded })
+  // Parked at the bottom, in a band the pack cannot use.
+  fake.standing = 1
+  // ONE declared skill, whose pin lands at 0.27: nothing this pack can ask for by
+  // name reaches the band the child has climbed into, so the only way to be
+  // served it is to let the host answer for itself again.
+  const mounted = attachGameHost(fake.client, { skills: ["dw.add.column.add-no-regroup"] })
+  await mounted.warm()
+  await settle()
+
+  // The child climbs. The host's own stream is now something this pack covers,
+  // and the pack has to notice: a pinned rung is one rung, and a session spent on
+  // it is a session that stopped following the child.
+  fake.standing = 14
+  const seen: number[] = []
+  for (let i = 0; i < 24; i++) {
+    const question = mounted.host.next()
+    seen.push(question.difficulty)
+    mounted.host.report({ questionId: question.id, correct: true, ms: 900, answered: question.answer })
+    await settle(4)
+  }
+  assert.ok(
+    seen.some((difficulty) => difficulty > 0.75),
+    `the child's ladder walked to 0.93 and the pack was still being served ` +
+      `${Math.max(...seen).toFixed(2)} at best — it never looked at the host again`,
+  )
+  mounted.dispose()
+})
+
+// ─── Reading the pack's own declaration ──────────────────────────────────────
+
+test("domainOf cuts a skill id where the curriculum cuts it", () => {
+  assert.equal(domainOf("dw.add.regroup.subtract-across-zero"), "dw.add")
+  assert.equal(domainOf("dw.mul.scale.times-power-of-ten"), "dw.mul")
+  assert.equal(domainOf("dw.frac.arith.add-like-denominators"), "dw.frac")
+  // Three segments is the shortest thing that has a domain.
+  assert.equal(domainOf("arith.rung.0"), "arith.rung")
+  // And anything shorter is its own domain rather than an error or a lie.
+  assert.equal(domainOf("counting"), "counting")
+  assert.equal(domainOf("dw.add"), "dw.add")
+})
+
+test("packRootUrl cuts at the pack, not at the document's directory", () => {
+  assert.equal(
+    packRootUrl("dynawalla-pack://localhost/dynawalla.trebuchet/pack.html", "dynawalla.trebuchet"),
+    "dynawalla-pack://localhost/dynawalla.trebuchet/",
+  )
+  // Android and Windows serve the same directory over the localhost form.
+  assert.equal(
+    packRootUrl("http://dynawalla-pack.localhost/dynawalla.siege/pack.html", "dynawalla.siege"),
+    "http://dynawalla-pack.localhost/dynawalla.siege/",
+  )
+  // An entry moved into a subdirectory still finds the manifest at the root.
+  assert.equal(
+    packRootUrl("dynawalla-pack://localhost/dynawalla.fuse/html/pack.html", "dynawalla.fuse"),
+    "dynawalla-pack://localhost/dynawalla.fuse/",
+  )
+  // No id in the URL is not a path to guess at.
+  assert.equal(packRootUrl("https://example.test/somewhere/index.html", "dynawalla.fuse"), null)
+  assert.equal(packRootUrl("dynawalla-pack://localhost/dynawalla.fuse/pack.html", ""), null)
+})
+
+/** A `fetch` that answers one URL and refuses everything else. */
+function fakeFetch(url: string, body: unknown, status = 200): typeof globalThis.fetch {
+  return ((asked: string | URL) => {
+    if (String(asked) !== url) return Promise.reject(new Error(`unexpected fetch of ${String(asked)}`))
+    return Promise.resolve({
+      ok: status >= 200 && status < 300,
+      status,
+      json: () => Promise.resolve(body),
+    } as Response)
+  }) as typeof globalThis.fetch
+}
+
+const MANIFEST_URL = "dynawalla-pack://localhost/dynawalla.trebuchet/manifest.json"
+const DOCUMENT_URL = "dynawalla-pack://localhost/dynawalla.trebuchet/pack.html"
+
+test("declaredSkills reads covers.skills off the pack's own manifest", async () => {
+  const skills = await declaredSkills({
+    packId: "dynawalla.trebuchet",
+    documentUrl: DOCUMENT_URL,
+    fetch: fakeFetch(MANIFEST_URL, { covers: { skills: TREBUCHET, grades: [1, 3] } }),
+  })
+  assert.deepEqual([...skills], TREBUCHET)
+})
+
+test("a manifest that cannot be read costs a warning and nothing else", async () => {
+  const cases: { name: string; fetch: typeof globalThis.fetch }[] = [
+    { name: "404", fetch: fakeFetch(MANIFEST_URL, {}, 404) },
+    { name: "no covers", fetch: fakeFetch(MANIFEST_URL, { id: "x" }) },
+    { name: "covers.skills is not a list", fetch: fakeFetch(MANIFEST_URL, { covers: { skills: "add" } }) },
+    { name: "a skill is not an id", fetch: fakeFetch(MANIFEST_URL, { covers: { skills: ["ok", 7] } }) },
+    { name: "the scheme refused", fetch: (() => Promise.reject(new Error("blocked by CSP"))) as typeof globalThis.fetch },
+  ]
+  for (const probe of cases) {
+    const said = await withConsole(async () => {
+      const skills = await declaredSkills({
+        packId: "dynawalla.trebuchet",
+        documentUrl: DOCUMENT_URL,
+        fetch: probe.fetch,
+      })
+      assert.equal(skills.length, 0, `${probe.name}: a broken manifest produced a restriction`)
+    })
+    const notes = said.filter((line) => line.includes("no skill restriction will be applied"))
+    assert.equal(notes.length, 1, `${probe.name}: said ${String(notes.length)} times: ${said.join(" | ")}`)
+    assert.ok(
+      notes[0]?.includes("manifest.json"),
+      `${probe.name}: the warning does not name what it tried to read: ${String(notes[0])}`,
+    )
+  }
+})
+
+test("a manifest that never answers does not hold the game up", async () => {
+  // Raced against a timer rather than simply awaited: the failure this guards
+  // against is a read that never returns, and a test that waits for one forever
+  // is a CI job that hangs instead of a test that fails.
+  const said = await withConsole(async () => {
+    const read = declaredSkills({
+      packId: "dynawalla.trebuchet",
+      documentUrl: DOCUMENT_URL,
+      timeoutMs: 5,
+      fetch: ((_url: string | URL, init?: RequestInit) =>
+        new Promise<Response>((_resolve, reject) => {
+          init?.signal?.addEventListener("abort", () => {
+            reject(new Error("This operation was aborted"))
+          })
+        })) as typeof globalThis.fetch,
+    }).then((skills) => `gave up with ${String(skills.length)} skills`)
+    const stall = new Promise<string>((resolve) => setTimeout(() => resolve("still waiting"), 500))
+    assert.equal(
+      await Promise.race([read, stall]),
+      "gave up with 0 skills",
+      "a manifest read that never answers held the game's mount open",
+    )
+  })
+  assert.equal(said.length, 1, `a hung manifest read said: ${said.join(" | ")}`)
+})
+
+test("the declaration travels from the pack's own manifest all the way to the wire", async () => {
+  // The step `createGameHost` takes, with the two things a test cannot have —
+  // a document and a MessagePort — handed in instead.
+  const fake = fakeHost({ skillAt })
+  fake.standing = 5
+  const mounted = await attachDeclared(fake.client, {}, {
+    documentUrl: "dynawalla-pack://localhost/dynawalla.test/pack.html",
+    fetch: fakeFetch("dynawalla-pack://localhost/dynawalla.test/manifest.json", {
+      covers: { skills: TREBUCHET, grades: [1, 3] },
+    }),
+  })
+  await mounted.warm()
+  const served = await skillsServed(mounted, 8)
+  assert.ok(served.length >= 8, `only ${String(served.length)} questions were served`)
+  const foreign = served.filter((skill) => !skill.startsWith("dw.add"))
+  assert.equal(
+    foreign.length,
+    0,
+    `the manifest declared ${TREBUCHET.join(", ")} and ${String(foreign.length)} questions came ` +
+      `from ${[...new Set(foreign)].join(", ")} anyway — the declaration never reached the wire`,
+  )
+  mounted.dispose()
+})
+
+test("a skills option a game passes wins over the manifest", async () => {
+  const fake = fakeHost({ skillAt })
+  fake.standing = 5
+  const mounted = await attachDeclared(fake.client, { skills: [] }, {
+    documentUrl: "dynawalla-pack://localhost/dynawalla.test/pack.html",
+    fetch: (() => Promise.reject(new Error("the manifest must not be read"))) as typeof globalThis.fetch,
+  })
+  await mounted.warm()
+  assert.equal(
+    fake.asks.filter((ask) => ask.skillId !== undefined).length,
+    0,
+    "a pack that opted out of the restriction had a skill named on its behalf",
+  )
+  mounted.dispose()
 })
