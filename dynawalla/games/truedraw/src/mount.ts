@@ -25,23 +25,14 @@ import { bestBag, recordBag } from "./game/best.ts"
 import { Dealer } from "./game/dealer.ts"
 import { HAPTIC } from "./game/energy.ts"
 import { commitDistance, Gesture } from "./game/gesture.ts"
-import { isCorrect, reportsToCurriculum, responseFor } from "./game/response.ts"
-import { Round, TIMING, TIMING_REDUCED, type RoundEvent } from "./game/round.ts"
+import { reportSettled } from "./game/report.ts"
+import { isCorrect } from "./game/response.ts"
+import { MAX_STEP_MS, Round, TIMING, TIMING_REDUCED, type RoundEvent } from "./game/round.ts"
 import { Rng } from "./core/rng.ts"
 import { Scene, type Drag } from "./render/scene.ts"
 
 /** A milestone the child *reached*. Never fired when a run ends. */
 const TRANSITION_EVERY = 10
-
-/**
- * The largest step the clock is allowed to take in one frame.
- *
- * A backgrounded tab hands back a delta of minutes. Letting that through would
- * spend a window, three shots and a whole run while the child was looking at
- * something else. Clamping means time nearly stops when frames stop, which is the
- * only fair reading of "they were not here".
- */
-const MAX_STEP_MS = 120
 
 export function mountTrueDraw(
   el: HTMLElement,
@@ -149,27 +140,11 @@ export function mountTrueDraw(
         }
         case "settled": {
           coins = event.coins
-          // The host is the judge for the four outcomes somebody performed. What
-          // goes across is the value the child effectively asserted — and on a
-          // wrong keep that value is a mal-rule output, so the misconception
-          // routes itself.
-          //
-          // A LAPSE IS NOT ONE OF THEM. It reaches `skip`, not `report`. Reporting
-          // it as `{ correct: false, answered: "" }` is not "unanswered": the SDK
-          // is explicit that the empty string fails to parse and is filed as a
-          // MISS, which steps the ladder down for a child who was merely
-          // deliberate. `skip` is the ending that is honest AND closed — it takes
-          // the item off the host's books without recording anything against it.
-          if (reportsToCurriculum(event.outcome)) {
-            host.report({
-              questionId: event.statement.questionId,
-              correct: isCorrect(event.outcome),
-              ms: event.reactionMs,
-              answered: responseFor(event.outcome, event.statement),
-            })
-          } else {
-            host.skip?.(event.statement.questionId)
-          }
+          // Four of the five outcomes go to `report`; a lapse goes to `skip`.
+          // `report.ts` owns that branch and is tested against a host for a whole
+          // run — it is the most consequential line in the pack and it is not a
+          // line this file is able to prove anything about.
+          reportSettled(host, event)
           // And the request for the NEXT question moves. This is the other half of
           // the two-gesture design: every verdict now carries an honest latency, so
           // fast-and-right climbs nearly four times as fast as slow-and-right, and
@@ -215,7 +190,14 @@ export function mountTrueDraw(
     // Reading the rules is not playing. The manual opens over a live street, and a
     // window that ran while a child was reading would lapse every question they
     // looked away for — which would teach them that asking how to play is punished.
-    if (!guide.isOpen) handle(round.advance(dt))
+    if (guide.isOpen) {
+      // The manual swallows every pointer event aimed at the game, including the
+      // release. A latch held across that is a latch held forever — see
+      // `releasePointer`.
+      releasePointer()
+    } else {
+      handle(round.advance(dt))
+    }
     scene.draw({
       phase: round.phase,
       progress: round.progress,
@@ -227,6 +209,12 @@ export function mountTrueDraw(
       best,
       reduced,
       drag,
+      // The slate goes blank behind the sheet. It is blurred and dimmed by the
+      // manual's own scrim, but "mostly illegible" is the wrong standard for a
+      // file that argues at length against giving a child readable, unanswerable
+      // thinking time — the whole reason the statement is not drawn during the
+      // lead-in. The clock is stopped, so nothing is lost by hiding it.
+      masked: guide.isOpen,
     })
   }
 
@@ -285,11 +273,58 @@ export function mountTrueDraw(
     if (release === "tap") handle(round.tap())
   }
 
-  const cancel = (event: PointerEvent): void => {
-    if (pointer !== event.pointerId) return
+  /**
+   * Forget whatever finger we thought was down. Idempotent, and the ONE way out.
+   *
+   * ── why this is not just `cancel`'s body ─────────────────────────────────────
+   *
+   * The mount latches one pointer id so that a second finger cannot be a second
+   * verdict, and a latch needs a guaranteed release. `pointerup` is not one.
+   * `packs/shared/game-chrome/instructions.ts` installs its pointer swallower as a
+   * CAPTURE-phase listener on `globalThis` and calls `stopPropagation()` on every
+   * event whose target is not one of its own nodes while the sheet is open — so
+   * while the manual is up, `pointerup` never reaches this canvas at all. That
+   * module documents the trade deliberately: "a game holding a drag when the sheet
+   * opens does not get the release that ends it."
+   *
+   * Which is a real sequence and not a corner: a child holds the phone with one
+   * finger resting mid-flick on the glass and taps how-to-play with the other. The
+   * release is swallowed, the latch is never cleared, and from then on EVERY
+   * `pointerdown` returns at the `pointer !== null` guard. The game goes
+   * permanently deaf to touch — no verdict, no tap to start — and `resize` stops
+   * rebuilding the commit distance too, because that is gated on `!gesture.down`.
+   * Keyboard would still work, which on an iPad is no help at all.
+   *
+   * So the latch is released from three more places than `pointerup`: a cancel, a
+   * lost capture, and the frame loop the moment the manual is open.
+   */
+  const releasePointer = (): void => {
+    if (pointer !== null) {
+      try {
+        canvas.releasePointerCapture(pointer)
+      } catch {
+        // Already released, or never captured. Either way there is nothing to do.
+      }
+    }
     gesture.cancel()
     pointer = null
     drag = null
+  }
+
+  const cancel = (event: PointerEvent): void => {
+    if (pointer !== event.pointerId) return
+    releasePointer()
+  }
+
+  /**
+   * The browser took the capture away — the element moved, a system gesture won,
+   * the sheet went up. Whatever the reason, this sequence is over as far as we can
+   * tell, and holding the latch on the strength of a `pointerup` that may never
+   * arrive is how the game goes deaf.
+   */
+  const lostCapture = (event: PointerEvent): void => {
+    if (pointer !== event.pointerId) return
+    releasePointer()
   }
 
   const key = (event: KeyboardEvent): void => {
@@ -335,6 +370,7 @@ export function mountTrueDraw(
   canvas.addEventListener("pointermove", move)
   canvas.addEventListener("pointerup", up)
   canvas.addEventListener("pointercancel", cancel)
+  canvas.addEventListener("lostpointercapture", lostCapture)
   globalThis.addEventListener("keydown", key)
   globalThis.addEventListener("resize", resize)
 
@@ -357,9 +393,7 @@ export function mountTrueDraw(
     // Round.pause().
     pause(): void {
       round.pause()
-      gesture.cancel()
-      pointer = null
-      drag = null
+      releasePointer()
     },
     resume(): void {
       round.resume()
@@ -373,6 +407,7 @@ export function mountTrueDraw(
       canvas.removeEventListener("pointermove", move)
       canvas.removeEventListener("pointerup", up)
       canvas.removeEventListener("pointercancel", cancel)
+      canvas.removeEventListener("lostpointercapture", lostCapture)
       globalThis.removeEventListener("keydown", key)
       globalThis.removeEventListener("resize", resize)
       observer?.disconnect()

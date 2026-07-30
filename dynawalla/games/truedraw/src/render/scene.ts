@@ -17,7 +17,7 @@ import type { Call, Outcome } from "../game/response.ts"
 import { isCorrect } from "../game/response.ts"
 import { exitOf, type Phase } from "../game/round.ts"
 import type { Run } from "../game/run.ts"
-import { SHOTS } from "../game/run.ts"
+import { crowdOf, SHOTS } from "../game/run.ts"
 import type { Statement } from "../game/statement.ts"
 import { correctionFor, digitCellWidth, layout, type Layout } from "./glyphs.ts"
 import { layoutFor, type Layout as Street } from "./street.ts"
@@ -67,6 +67,14 @@ export type SceneState = {
   readonly best: number
   readonly reduced: boolean
   readonly drag: Drag | null
+  /**
+   * The host or the manual has something over the frame. The slate stands, blank.
+   *
+   * Same rule as the lead-in: a statement a child can read but cannot answer is
+   * free thinking time that the reaction clock — which now drives both the bag and
+   * the difficulty — would have silently subtracted out of itself.
+   */
+  readonly masked?: boolean
 }
 
 /**
@@ -182,7 +190,7 @@ export class Scene {
    */
   private drawWitnesses(horizon: number, state: SceneState): void {
     const { ctx } = this
-    const count = Math.min(14, state.run.calls)
+    const count = crowdOf(state.run)
     for (let i = 0; i < count; i++) {
       const side = i % 2 === 0 ? -1 : 1
       const rank = Math.floor(i / 2)
@@ -423,7 +431,9 @@ export class Scene {
     // opens and not one millisecond before: it used to be legible for up to 1.15 s
     // of unanswerable lead-in, and every reaction time this game measures had that
     // lead-in silently subtracted out of it. See `statement.stillFor`.
-    else if (state.phase !== "raise" && state.phase !== "still") this.drawStatement(box, state, lit)
+    else if (state.phase !== "raise" && state.phase !== "still" && state.masked !== true) {
+      this.drawStatement(box, state, lit)
+    }
 
     ctx.restore()
   }
