@@ -130,14 +130,24 @@ function unreadable(color: string): [number, number, number] {
   return [128, 128, 128]
 }
 
+/**
+ * A channel, forced into 0..255.
+ *
+ * `rgba(300,-5,12,1)` is a string a canvas rejects, and a rejected colour inside
+ * a gradient stop is a thrown exception in the frame loop. So the range is closed
+ * here rather than trusted at every call site.
+ */
+function clamp8(n: number): number {
+  return Math.max(0, Math.min(255, Math.round(n)))
+}
+
 /** A 0..255 channel as two hex digits. */
 function hex2(n: number): string {
-  const v = Math.max(0, Math.min(255, Math.round(n)))
-  return v.toString(16).padStart(2, "0")
+  return clamp8(n).toString(16).padStart(2, "0")
 }
 
 export function withAlpha(color: string, a: number): string {
-  const [r, g, b] = channels(color)
+  const [r, g, b] = channels(color).map(clamp8) as [number, number, number]
   const alpha = Number.isFinite(a) ? Math.max(0, Math.min(1, a)) : 1
   return `rgba(${r},${g},${b},${alpha})`
 }

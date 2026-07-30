@@ -150,6 +150,15 @@ test("a colour nobody can read is loud, visible, and never NaN", () => {
   assert.ok(said.length > 0, "an unreadable colour was swallowed silently")
 })
 
+test("a channel out of range is brought back into it", () => {
+  // `rgba(300,-5,0,1)` is a string a canvas rejects, and rejecting it inside a
+  // gradient stop is a thrown exception in the frame loop. Every colour these two
+  // hand back has to be one that parses, whatever they were handed.
+  assert.equal(withAlpha("rgb(300,-5,12)", 0.5), "rgba(255,0,12,0.5)")
+  assert.equal(mix("rgb(300,-5,12)", "#000000", 0).toLowerCase(), "#ff000c")
+  assertParseable(withAlpha("rgb(1e9,-1e9,0)", 1), "withAlpha(out of range, 1)")
+})
+
 test("a non-finite alpha or mix position is not allowed to reach the canvas", () => {
   assertParseable(withAlpha(IRON, Number.NaN), "withAlpha(IRON, NaN)")
   assertParseable(withAlpha(IRON, Number.POSITIVE_INFINITY), "withAlpha(IRON, Infinity)")

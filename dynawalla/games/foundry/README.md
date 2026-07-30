@@ -70,7 +70,7 @@ seconds; a four-digit borrow gets nearly eight.
 ```sh
 npm install
 npm run dev          # http://127.0.0.1:4321 — playable against the stub host
-npm test             # the rules and the surface; 111 cases, no Math.random
+npm test             # the rules and the surface; 112 cases, no Math.random
 npm run tsc
 npm run build:pack   # → dist-pack/, what a tablet installs
 ```
