@@ -7,6 +7,41 @@
 
 import { mount } from "./contract.ts"
 import { createStubHost } from "./stubHost.ts"
+import {
+  MODE_IDS,
+  modeById,
+  pickSoundscape,
+  setHostSoundscape,
+} from "../../../packs/shared/game-soundscape/index.ts"
+
+// ── The soundscape, in the harness only ─────────────────────────────────────
+//
+// The real app does not publish one yet, so in a shipped pack
+// `currentSoundscape()` is `null` and the yard sounds exactly as it always has.
+// Here it is published before mount, which is the only place the idea can
+// currently be heard: a random mode and root each run, or a named one with
+// `?mode=maqam.rast&root=146.8`, so a specific report ("hijaz sounds wrong on
+// the thousands plate") is reproducible rather than a memory.
+//
+// `?mode=list` prints the corpus. `?soundscape=off` is the A/B — the same game
+// with the fixed four pitches, for hearing what this replaces.
+const params = new URLSearchParams(globalThis.location?.search ?? "")
+if (params.get("mode") === "list") console.info("[counterweight] modes:", MODE_IDS.join(", "))
+if (params.get("soundscape") !== "off") {
+  const seed = Number(params.get("seed") ?? ((Date.now() ^ 0x5ca9e) >>> 0))
+  const chosen = pickSoundscape(Number.isFinite(seed) ? seed : 1)
+  const wanted = params.get("mode")
+  const root = Number(params.get("root"))
+  const scape = {
+    ...chosen,
+    ...(wanted && modeById(wanted) ? { modeId: wanted } : {}),
+    ...(Number.isFinite(root) && root > 0 ? { rootHz: root } : {}),
+  }
+  setHostSoundscape(scape)
+  console.info(
+    `[counterweight] soundscape ${scape.modeId} on ${scape.rootHz.toFixed(2)} Hz, seed ${scape.seed}`,
+  )
+}
 
 const root = document.getElementById("app")
 if (!root) throw new Error("counterweight: #app missing")

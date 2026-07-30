@@ -198,7 +198,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
         case "strike": {
           beam.aim(bout.margin)
           beam.hit(event.impulse, event.strike.dir)
-          audio.clang(event.strike.place, event.impulse)
+          audio.clang(event.strike, event.impulse)
           host.haptic(event.impulse >= 6 ? "medium" : "light")
           if (!reduced) {
             const at = scene.faceCentre(event.strike.place, event.strike.dir)

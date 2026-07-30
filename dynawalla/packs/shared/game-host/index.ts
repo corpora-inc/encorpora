@@ -152,6 +152,7 @@ import type {
 } from "../../sdk/src/index.ts"
 import { setHostInsets } from "../game-chrome/insets.ts"
 import { setHostSound } from "../game-audio/index.ts"
+import { setHostSoundscape } from "../game-soundscape/index.ts"
 import { MAX_REQUESTS_PER_SECOND, connect } from "../../sdk/src/index.ts"
 
 /** The shape both games declare locally. Kept structurally identical. */
@@ -792,9 +793,18 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   // host pushes one whenever the store changes, which is the whole point: a
   // switch that only takes effect at launch is a switch a parent flips while a
   // game is loud and watches do nothing.
+  //
+  // The soundscape joins them for the third time the same reason applies: it is
+  // a slow-moving fact about the app that a pack cannot work out for itself. A
+  // pack frame is opaque-origin and sees nothing of the pack the child was in a
+  // minute ago, so if each one chose its own key the bazaar would change key at
+  // every doorway. `game-soundscape` validates it and refuses anything
+  // malformed; a host too old to send one publishes `undefined`, which means
+  // "keep your own sounds" and not "go quiet".
   const publish = (): void => {
     setHostInsets(client.settings.safeArea)
     setHostSound(client.settings.sound)
+    setHostSoundscape(client.settings.soundscape)
   }
   publish()
   client.on("settings", publish)
