@@ -47,7 +47,7 @@ import {
   minWeightsForSpec,
   isBalanced,
   netTorque,
-  rackCanMake,
+  rackReach,
   remainingFor,
   verdictFor,
 } from "./puzzle.ts";
@@ -163,9 +163,11 @@ function sweep(seeds = SEEDS): Served[] {
  *      uses to decide a child is right.
  *   3. What has to go in the dish is something the rail can supply.
  *
- * `rackCanMake` is deliberately not used for (3): it answers `true` above its
+ * `rackReach` is deliberately not used for (3): it answers `"unknown"` above its
  * search cap, which is right for the game (not knowing must not be charged to a
- * child as a dead end) and useless in a test. This counts copies directly.
+ * child as a dead end) and useless in a test. This counts copies directly, so the
+ * guarantee holds at every magnitude the ladder reaches — including the founder's
+ * own `88965 ÷ 9`, whose remainder is far past that cap.
  */
 function legalMoveExists(spec: PuzzleSpec): string | null {
   if (spec.rack.length === 0) return "the rack is empty";
@@ -996,13 +998,25 @@ test("the disc grows for a wide numeral, and the frame still holds", () => {
 });
 
 test("a remainder too big to search is not charged to the child as a dead end", () => {
-  // `rackCanMake` is a coin-change search with a cap on it, and `verdictFor` reads
-  // a `false` from it as a *proved* dead end: the dish tips, everything comes
+  // `rackReach` is a coin-change search with a cap on it, and `verdictFor` reads
+  // a `"no"` from it as a *proved* dead end: the dish tips, everything comes
   // back, and an error is recorded against the child. So "I could not check"
   // must not answer "no". The shipped ladder reaches `913072 − 884`, and a
   // measurement-division board with a heavy unit crosses the cap on its first
   // correct placement.
-  assert.equal(rackCanMake([frac(3)], frac(90000)), true, "a target past the cap is reported impossible");
+  //
+  // Asserted as `"unknown"` and not merely "not no": the whole reason this is a
+  // tri-state is that the optimistic answer here is the ABSENCE of a proof, and a
+  // test that accepted `"yes"` too would pass just as well against a cap raised
+  // high enough to search — which is a different guarantee than the one this
+  // names. 90,000 is past the cap with a rack of 3s; it also happens to be
+  // divisible by 3, so a search WOULD say yes, which is exactly why the weaker
+  // assertion would not notice the cap being gone.
+  assert.equal(
+    rackReach([frac(3)], frac(90000)),
+    "unknown",
+    "a target past the cap was searched, or reported impossible",
+  );
 
   const spec = specFromQuestion({
     id: "big-count",

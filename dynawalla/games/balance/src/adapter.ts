@@ -63,7 +63,7 @@ import type { Question } from "./contract.ts";
 import type { Frac } from "./frac.ts";
 import { frac, parseFrac, toKey, toNumber, isPositive, isZero, eq } from "./frac.ts";
 import type { FixedItem, PuzzleSpec, Side } from "./puzzle.ts";
-import { APPARATUS, PAN_PEG, isBalanced, rackCanMake, remainingFor } from "./puzzle.ts";
+import { APPARATUS, PAN_PEG, isBalanced, rackReach, remainingFor } from "./puzzle.ts";
 import { makeRng, seedFromString } from "./rng.ts";
 import type { Rng } from "./rng.ts";
 
@@ -897,7 +897,10 @@ export function whyUnsolvable(spec: PuzzleSpec, answer: Frac): string | null {
     }
     // Reachable from the rail: the exact disc, or a handful of them. The local
     // ladder builds boards that want two weights and that is a legitimate board.
-    if (!spec.rack.some((r) => eq(r, need)) && !rackCanMake(spec.rack, need)) {
+    // A board is refused only on a PROVED `"no"`. An unsearchably large remainder
+    // is shown, because `unstuck.test.ts` proves every board the ladder serves has
+    // a legal move by counting copies directly, without this capped search.
+    if (!spec.rack.some((r) => eq(r, need)) && rackReach(spec.rack, need) === "no") {
       return `${toKey(need)} cannot be made from the rack`;
     }
     return null;

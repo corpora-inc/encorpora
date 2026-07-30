@@ -218,26 +218,47 @@ export function minWeightsFor(rack: readonly Frac[], target: Frac): number {
 }
 
 /**
- * Can a target still be made from the rack, using as many copies of each weight
- * as you like? Coin-change over a common denominator, so it is exact.
+ * How far the search got on "can this target be made from the rack, using as many
+ * copies of each weight as you like": `"yes"` and `"no"` are proofs, `"unknown"` is
+ * the search declining to run.
+ *
+ * **The three values are the point.** This was a `boolean` called `rackCanMake`, and
+ * it returned `true` both for "I made it out of the rack" and for "the goal is past
+ * my cap and I did not look" — one bit standing for a proof and for the absence of
+ * one. Every caller then had to already know which it was holding, and the review
+ * that caught it read the optimistic return as a claim that an impossible board is
+ * solvable. Nothing was actually wrong at runtime, because both call sites act only
+ * on a *proved* `"no"`; but a type that cannot distinguish a proof from an unknown
+ * is a type that will eventually be read as the wrong one.
+ *
+ * Why the optimistic direction is right, and must stay: `verdictFor` reads a proved
+ * dead end as *the child made a mistake* — the dish tips, everything comes back, an
+ * error is recorded. The shipped ladder reaches `913072 − 884`, so a capped search
+ * that answered "no" when it meant "I could not check" charged the founder's own
+ * locked room to the child. Not knowing has to fail the safe way. The beam is still
+ * telling them the truth either way, and `remainingFor` still says what is missing.
+ *
+ * The cap is a real limit, not a guess: this is a coin-change table over a common
+ * denominator, so it allocates `goal + 1` entries, and `goal` is the answer scaled
+ * by the LCM of every denominator on the rack.
  */
-export function rackCanMake(rack: readonly Frac[], target: Frac): boolean {
-  if (isZero(target)) return true;
+export type RackReach = "yes" | "no" | "unknown";
+
+/** Widest coin-change table this will build, in entries. */
+const RACK_SEARCH_CAP = 4096;
+
+export function rackReach(rack: readonly Frac[], target: Frac): RackReach {
+  if (isZero(target)) return "yes";
   let L = target.d;
   for (const f of rack) L = lcm(L, f.d);
   const goal = Math.abs(target.n) * (L / target.d);
-  if (goal <= 0) return false;
-  // Past the search cap this function does not know, and `false` here is read by
-  // `verdictFor` as a *proved* dead end: the dish tips, everything comes back and
-  // an error is recorded. The shipped ladder reaches `913072 − 884`, so "I could
-  // not check" used to be charged to the child as a mistake. Not knowing must
-  // fail the safe way — the beam is still telling them the truth either way.
-  if (goal > 4096) return true;
+  if (goal <= 0) return "no";
+  if (goal > RACK_SEARCH_CAP) return "unknown";
   const sign = target.n < 0 ? -1 : 1;
   const vals = rack
     .filter((f) => f.n !== 0 && (f.n < 0 ? -1 : 1) === sign)
     .map((f) => Math.abs(f.n) * (L / f.d));
-  if (vals.length === 0) return false;
+  if (vals.length === 0) return "no";
   const ok = new Array<boolean>(goal + 1).fill(false);
   ok[0] = true;
   for (let i = 1; i <= goal; i++) {
@@ -248,7 +269,7 @@ export function rackCanMake(rack: readonly Frac[], target: Frac): boolean {
       }
     }
   }
-  return ok[goal];
+  return ok[goal] ? "yes" : "no";
 }
 
 /**
@@ -276,7 +297,8 @@ export function verdictFor(
   const crossed = startNetSign !== 0 && net !== 0 && net !== startNetSign;
   if (spec.kind === "hang" || crossed) return "overshot";
   const left = remainingFor(spec, placed);
-  if (left && !rackCanMake(spec.rack, left)) return "deadEnd";
+  // Only a PROVED dead end ends the attempt. `"unknown"` continues: see `rackReach`.
+  if (left && rackReach(spec.rack, left) === "no") return "deadEnd";
   return "continue";
 }
 
