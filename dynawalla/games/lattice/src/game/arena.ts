@@ -20,6 +20,7 @@ import { Bank } from "./bank.ts"
 import type { Host, Question } from "../contract.ts"
 import type { Rng } from "../core/rng.ts"
 import {
+  LARGEST_MOTE_PRIME,
   MOTE_PRIMES,
   huskify,
   isPrime,
@@ -27,13 +28,40 @@ import {
   primeFactors,
   splitPair,
 } from "./factor.ts"
-import { isAskable, resonate } from "./resonance.ts"
+import { CEILING, FLOOR, Ladder, rungOf } from "./ladder.ts"
+import {
+  isAskable,
+  isResonant,
+  isSmooth,
+  MIN_TARGET,
+  MIN_WALL,
+  resonate,
+  tileCount,
+} from "./resonance.ts"
 
 /** The largest value a resonator will ask for. See `resonance.isAskable`. */
 export const MAX_TARGET = 999
 
-/** How many questions to draw looking for one a resonator can honestly ask. */
-const DRAW_ATTEMPTS = 8
+/**
+ * How often a prime target — the wall — comes round.
+ *
+ * One resonator in five. The wall is the property the whole game stands on and
+ * it must not be deleted, but a prime has no factor tree, so an unrationed
+ * stream of them is a fifth of the session spent hunting one mote. See
+ * `resonance.MIN_WALL`.
+ */
+const WALL_EVERY = 5
+
+/**
+ * How long the arena waits before trying to arm again after finding nothing.
+ *
+ * The old code had no retry at all: one barren draw set `stalled` and the arena
+ * never asked again for the rest of the session, leaving the *previous*
+ * resonator hanging with its id already spent — so a child could keep flying
+ * into a ring that reported nothing, forever, and the only sign was one line on
+ * a console nobody was reading.
+ */
+const REARM_MS = 2500
 
 /** Radii in arena units. The arena is nominally about 1000 units wide. */
 export const SHIP_R = 15
@@ -42,15 +70,102 @@ export const HUSK_R = 24
 export const RESONATOR_R = 46
 export const SHOT_R = 5
 
-/** Speeds, in arena units per second. */
-const SHIP_ACCEL = 2600
-const SHIP_DRAG = 4.2
-const SHIP_MAX = 620
-const SHOT_SPEED = 1150
+/**
+ * The arena's own size, as a diagonal, at which one unit of "span per second"
+ * is one arena unit per second.
+ *
+ * **This is the Android bug, and it is not tuning.** `render/scene.ts` says it
+ * plainly: "the arena's coordinate space *is* CSS pixel space — `mount.ts`
+ * resizes the arena to the element". There is no camera and no transform, so the
+ * world is exactly as big as the viewport — and every speed in this file used to
+ * be an absolute number of CSS pixels per second, chosen against a tablet. The
+ * comment above even says so: "the arena is nominally about 1000 units wide".
+ *
+ * A phone is not. An Android phone in portrait is about 390×740 CSS pixels, a
+ * diagonal of 836 against a tablet's 1437 — and the ship's measured top speed was
+ * 597px/s on both, which is 0.71 of the phone's whole world a second against 0.42
+ * of the tablet's. **The same ship covered 1.72× more screen per second on the
+ * phone.** It was not misbehaving on Android; it was moving at tablet speed through
+ * a world 58% the size. Nothing about that is fixable by lowering a constant,
+ * because lowering it would then make the tablet sluggish.
+ *
+ * So the ship's dynamics are now stated as a fraction of the arena's own
+ * diagonal per second, and the felt speed is the same on every screen. The
+ * reference is the diagonal of a 1180×820 tablet, which is what the numbers were
+ * tuned against, so a tablet keeps the size of number it had.
+ */
+const REFERENCE_SPAN = Math.hypot(1180, 820)
+
+/**
+ * The ship, in arena diagonals per second and per second squared.
+ *
+ * `SHIP_SPAN_PER_SEC` is the top speed and `SHIP_DRAG` is how hard it is held
+ * to it. There is no acceleration constant: `step` solves `v' = k(V − v)` in
+ * closed form, so the speed the stick asks for *is* the steady state and the
+ * clamp only ever catches the kick from a jostle. Two numbers instead of three,
+ * and no way for them to disagree.
+ *
+ * **What changed and why.** It was `SHIP_ACCEL 2600`, `SHIP_DRAG 4.2`,
+ * `SHIP_MAX 620`, which measured as a 143px coast after the thumb comes off —
+ * four and a half times the 32px reach the ship sweeps a mote at. A child could
+ * not stop on a mote; they could only pass over one and come back. That is what
+ * "moves around too wildly" is, mechanically. The drag is now 7.4, a time constant
+ * of 135ms, and the measured coast is 58px on a tablet and 34px on a phone —
+ * inside two sweeps of the thing you were aiming at, on both.
+ */
+const SHIP_SPAN_PER_SEC = 0.3
+const SHIP_DRAG = 7.4
+
+/** Everything else that is a speed or a length, on the same scale. */
+const SHOT_SPAN_PER_SEC = 0.78
+const DRIFT_MIN_SPAN = 0.021
+const DRIFT_MAX_SPAN = 0.077
+/** The shove a jostle gives the ship, and the one it gives the husk. */
+const JOSTLE_SPAN = 0.18
+const JOSTLE_HUSK_SPAN = 0.083
+/** The shove a shot gives a prime, which is the reward for noticing it cannot split. */
+const WALL_SHOVE_SPAN = 0.063
+
 const SHOT_LIFE_MS = 1400
 const FIRE_COOLDOWN_MS = 110
-const DRIFT_MIN = 30
-const DRIFT_MAX = 110
+
+/**
+ * The step the world is simulated at, however fast the frame arrives.
+ *
+ * A sibling pack (`games/balance`) had a spring integrator that was stable above
+ * 31fps and reached −1.2×10²⁰⁴ at 20fps, and the fix was substepping rather than
+ * clamping. This game's sheet (`sim/grid.ts`) was already substepped at 240Hz for
+ * that reason. The arena was not, and it had the same *class* of defect in a
+ * quieter form:
+ *
+ *   * **Shots tunnelled.** A shot travels 0.78 diagonals a second, which on a
+ *     tablet is 1120 units — 56 units in one 50ms frame, against a hit window of
+ *     `SHOT_R + HUSK_R` = 29 units either side, which is a 58px window against a
+ *     56px step. At 60fps a shot cannot miss a husk it is aimed at; at 20fps,
+ *     measured over sixty runs at three viewports, nine of every eighty stepped
+ *     straight over it. "My shots don't hit" on a slow Android is not the aim.
+ *   * **And the ship's own speed drifted with the frame rate**: 610px/s at 144fps
+ *     against 556px/s at 20fps — a spread of 9.7% — and a coast of 143px against
+ *     119px, because `v += a·dt` then `v *= e^(−k·dt)` is only exact in the limit.
+ *     That half is fixed by solving the ship rather than stepping it; see `step`.
+ *
+ * Sixteen and two thirds of a millisecond, capped at eight substeps so a frame
+ * that arrives after a minute is not a hundred and twenty of them.
+ */
+const SUBSTEP_MS = 1000 / 60
+const MAX_SUBSTEPS = 8
+
+/**
+ * How fast the drawn nose turns toward where the guns are pointed, per second.
+ *
+ * The guns are instant — a shooter whose bullets lag the stick is a shooter that
+ * lies — but the *hull* used to snap to the aim vector on the frame it changed,
+ * which is a large part of what reads as wild. Eighteen per second is a 55ms
+ * time constant: fast enough that the nose is never pointing anywhere the shots
+ * are not, slow enough that a thumb sliding round the right stick turns the ship
+ * instead of flicking it.
+ */
+const FACING_TURN_PER_SEC = 18
 
 /** How long a refused resonator stays dim before it will listen again. */
 const REFUSE_COOLDOWN_MS = 900
@@ -117,7 +232,7 @@ export type ArenaEvent =
   | { kind: "arrive"; at: Vec; target: number; prompt: string }
   | { kind: "stalled" }
 
-export type ArenaOptions = { width: number; height: number }
+export type ArenaOptions = { width: number; height: number; domain?: string }
 
 export class Arena {
   readonly bank = new Bank()
@@ -132,10 +247,23 @@ export class Arena {
   chain = 0
   stalled = false
 
+  /** Where the game is standing on the host's ladder. See `ladder.ts`. */
+  readonly ladder = new Ladder()
+
   private width: number
   private height: number
   private nextId = 1
   private aim: Vec = { x: 1, y: 0 }
+  /**
+   * The drawn nose, as an angle, easing toward `aim`. The guns never wait for it.
+   *
+   * An angle rather than a vector, and that is not a style choice: easing a
+   * *vector* toward its own negation walks it into the origin and back out
+   * pointing the way it came, so a ship told to turn round would freeze facing
+   * forward. A thumb sweeping across the right stick passes through exactly that
+   * every time it crosses the far side.
+   */
+  private faceAngle = 0
   private move: Vec = { x: 0, y: 0 }
   private cooldownMs = 0
   private graceMs = 0
@@ -144,6 +272,12 @@ export class Arena {
   private pausedAt = 0
   /** Wall-clock mark the current resonator was armed at, shifted over a pause. */
   private askedAt = 0
+  /** Resonators armed since the last wall, so a prime target is rationed. */
+  private sinceWall = 0
+  /** Counts down after a barren arming, then the arena tries again. */
+  private rearmMs = 0
+  /** The domain label the resonator's questions are drawn under. */
+  private readonly domain: string
 
   private readonly host: Host
   private readonly rng: Rng
@@ -151,10 +285,31 @@ export class Arena {
   constructor(host: Host, rng: Rng, options: ArenaOptions) {
     this.host = host
     this.rng = rng
-    this.width = Math.max(320, options.width)
-    this.height = Math.max(320, options.height)
+    this.domain = options.domain ?? "add"
+    this.width = Math.max(320, Number.isFinite(options.width) ? options.width : 320)
+    this.height = Math.max(320, Number.isFinite(options.height) ? options.height : 320)
     this.ship.x = this.width / 2
     this.ship.y = this.height * 0.72
+  }
+
+  /**
+   * The arena's own diagonal, which every speed in this file is a fraction of.
+   *
+   * See `REFERENCE_SPAN`: the world is exactly as big as the viewport, so a
+   * speed that is not measured against it is a different speed on every device.
+   */
+  private get span(): number {
+    return Math.hypot(this.width, this.height) / REFERENCE_SPAN
+  }
+
+  /** Top speed, in arena units per second, on this screen. */
+  get shipMax(): number {
+    return SHIP_SPAN_PER_SEC * REFERENCE_SPAN * this.span
+  }
+
+  /** How far the ship carries after the thumb comes off, in arena units. */
+  get shipCoast(): number {
+    return this.shipMax / SHIP_DRAG
   }
 
   // ── the frame ────────────────────────────────────────────────────────────
@@ -164,6 +319,13 @@ export class Arena {
   }
 
   resize(width: number, height: number): void {
+    // A non-finite box would make every speed in the arena `NaN` on the next
+    // frame and every collision test false for the rest of the session. A
+    // `ResizeObserver` on a detached element is the shape that produces one.
+    if (!Number.isFinite(width) || !Number.isFinite(height)) {
+      console.error("[lattice] resize to a box that is not a box", width, height)
+      return
+    }
     this.width = Math.max(320, width)
     this.height = Math.max(320, height)
     const clamp = (p: { x: number; y: number }, r: number): void => {
@@ -205,31 +367,56 @@ export class Arena {
 
   // ── input ────────────────────────────────────────────────────────────────
 
+  /**
+   * The left stick. Magnitude 0..1; anything longer is normalised.
+   *
+   * A non-finite component is refused loudly rather than stored. This is the one
+   * input on the ship that had no guard, and it is not hypothetical bookkeeping:
+   * `move` is multiplied into the ship's velocity every substep, so a single
+   * `NaN` reaching here puts the ship's position beyond recovery for the rest of
+   * the session — `dist2` then returns `NaN`, every `<` against it is false, and
+   * nothing can be swept or struck again. Silent, total, and unreported.
+   */
   setMove(x: number, y: number): void {
     if (this.paused) return
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      console.error("[lattice] setMove was given something that is not a direction", x, y)
+      return
+    }
     const m = Math.hypot(x, y)
     this.move = m > 1 ? { x: x / m, y: y / m } : { x, y }
   }
 
   setAim(x: number, y: number): void {
     if (this.paused) return
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      console.error("[lattice] setAim was given something that is not a direction", x, y)
+      return
+    }
     const m = Math.hypot(x, y)
     if (m > 1e-6) this.aim = { x: x / m, y: y / m }
   }
 
+  /** Where the guns point. Instant, because a shooter that lags its stick lies. */
   get aiming(): Vec {
     return this.aim
+  }
+
+  /** Where the hull points. Eases toward `aiming`; only the renderer reads it. */
+  get facing(): Vec {
+    return { x: Math.cos(this.faceAngle), y: Math.sin(this.faceAngle) }
   }
 
   fire(): ArenaEvent[] {
     if (this.paused || this.cooldownMs > 0) return []
     this.cooldownMs = FIRE_COOLDOWN_MS
+    const shotSpeed = SHOT_SPAN_PER_SEC * REFERENCE_SPAN * this.span
     this.shots.push({
       id: this.nextId++,
       x: this.ship.x + this.aim.x * (SHIP_R + 4),
       y: this.ship.y + this.aim.y * (SHIP_R + 4),
-      vx: this.aim.x * SHOT_SPEED + this.ship.vx * 0.3,
-      vy: this.aim.y * SHOT_SPEED + this.ship.vy * 0.3,
+      vx: this.aim.x * shotSpeed + this.ship.vx * 0.3,
+      vy: this.aim.y * shotSpeed + this.ship.vy * 0.3,
       life: SHOT_LIFE_MS,
     })
     return [{ kind: "fire", at: { x: this.ship.x, y: this.ship.y } }]
@@ -272,8 +459,9 @@ export class Arena {
       // works this out can herd a 13 across the arena with their gun, which is
       // the reward for noticing that primes do not go.
       const m = Math.hypot(body.vx, body.vy) || 1
-      body.vx += (body.vx / m) * 90
-      body.vy += (body.vy / m) * 90
+      const shove = WALL_SHOVE_SPAN * REFERENCE_SPAN * this.span
+      body.vx += (body.vx / m) * shove
+      body.vy += (body.vy / m) * shove
       return [{ kind: "wall", at, value: body.value }]
     }
 
@@ -315,10 +503,12 @@ export class Arena {
       const dx = this.ship.x - body.x
       const dy = this.ship.y - body.y
       const m = Math.hypot(dx, dy) || 1
-      this.ship.vx += (dx / m) * 260
-      this.ship.vy += (dy / m) * 260
-      body.vx -= (dx / m) * 120
-      body.vy -= (dy / m) * 120
+      const kick = JOSTLE_SPAN * REFERENCE_SPAN * this.span
+      const shove = JOSTLE_HUSK_SPAN * REFERENCE_SPAN * this.span
+      this.ship.vx += (dx / m) * kick
+      this.ship.vy += (dy / m) * kick
+      body.vx -= (dx / m) * shove
+      body.vy -= (dy / m) * shove
       return [{ kind: "jostle", at, lost }]
     }
 
@@ -366,7 +556,8 @@ export class Arena {
     // Once per question. A refusal spends the id — the resonator stays as a
     // goal the child can still open, but the host hears one answer, which is
     // the only honest reading of "what did they say when they were asked".
-    if (!res.reported) {
+    const first = !res.reported
+    if (first) {
       res.reported = true
       this.host.report({
         questionId: res.questionId,
@@ -379,6 +570,15 @@ export class Arena {
     if (verdict.kind === "refuse") {
       res.cooldown = REFUSE_COOLDOWN_MS
       this.chain = 0
+      // Down further than up — and only on the answer the host actually heard.
+      //
+      // The second wrong hold carried into the same ring is a real thing the child
+      // did, but it is not a second wrong *answer*: the id was spent on the first
+      // one and nothing after it is reported. Moving the position on every one of
+      // them would let a bump-loop walk the whole band down in about seven
+      // seconds, with the game's idea of where the child is drifting away from the
+      // host's for questions the host never received.
+      if (first) this.ladder.refused()
       // The hold comes back onto the field rather than evaporating. The child
       // keeps every mote they worked for; what they spend is the trip.
       const back = this.bank.release()
@@ -390,6 +590,7 @@ export class Arena {
     const tiles = this.bank.release()
     this.opened += 1
     this.chain += 1
+    this.ladder.opened()
     this.host.haptic("success")
     const events: ArenaEvent[] = [{ kind: "open", at, target: res.target, tiles }]
     // Only ever after something the child finished. Never after a refusal.
@@ -409,10 +610,23 @@ export class Arena {
    */
   step(dtMs: number): ArenaEvent[] {
     if (this.paused) return []
-    const dt = Math.min(120, Math.max(0, dtMs)) / 1000
-    if (dt === 0) return []
+    if (!Number.isFinite(dtMs)) {
+      // `Math.min(120, Math.max(0, NaN))` is `NaN`, and `NaN !== 0`, so the old
+      // guard let one through — and one is enough: every position in the arena
+      // becomes `NaN` and stays that way, with nothing thrown and nothing drawn
+      // in the right place again.
+      console.error("[lattice] step was handed a delta that is not a number", dtMs)
+      return []
+    }
+    const clamped = Math.min(120, Math.max(0, dtMs))
+    if (clamped === 0) return []
     const events: ArenaEvent[] = []
 
+    // Timers advance on the *unclamped* delta and the world on the clamped one,
+    // and that difference is deliberate: a sheet held for a minute should have
+    // burned a refusal's 900ms of dim, but must not teleport a husk across the
+    // arena. `pause`/`resume` cover a sheet the host raised; this covers a
+    // backgrounded tab, which the pack is never told about.
     this.cooldownMs = Math.max(0, this.cooldownMs - dtMs)
     this.graceMs = Math.max(0, this.graceMs - dtMs)
     this.sweepGraceMs = Math.max(0, this.sweepGraceMs - dtMs)
@@ -420,77 +634,116 @@ export class Arena {
       this.resonator.cooldown = Math.max(0, this.resonator.cooldown - dtMs)
       this.resonator.age += dtMs
     }
+    if (this.rearmMs > 0) this.rearmMs = Math.max(0, this.rearmMs - dtMs)
 
-    // The ship.
-    this.ship.vx += this.move.x * SHIP_ACCEL * dt
-    this.ship.vy += this.move.y * SHIP_ACCEL * dt
-    const drag = Math.exp(-SHIP_DRAG * dt)
-    this.ship.vx *= drag
-    this.ship.vy *= drag
-    const speed = Math.hypot(this.ship.vx, this.ship.vy)
-    if (speed > SHIP_MAX) {
-      this.ship.vx = (this.ship.vx / speed) * SHIP_MAX
-      this.ship.vy = (this.ship.vy / speed) * SHIP_MAX
-    }
-    this.ship.x += this.ship.vx * dt
-    this.ship.y += this.ship.vy * dt
-    this.bounce(this.ship, SHIP_R, 0.4)
+    // One 60Hz world, however fast the frame arrives. See `SUBSTEP_MS`.
+    const steps = Math.min(MAX_SUBSTEPS, Math.max(1, Math.ceil(clamped / SUBSTEP_MS)))
+    const h = clamped / steps / 1000
+    const shipMax = this.shipMax
+    const driftMin = DRIFT_MIN_SPAN * REFERENCE_SPAN * this.span
+    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span
+    const decay = Math.exp(-SHIP_DRAG * h)
+    const turn = 1 - Math.exp(-FACING_TURN_PER_SEC * h)
 
-    // Bodies.
-    for (const body of this.bodies) {
-      body.age += dtMs
-      body.x += body.vx * dt
-      body.y += body.vy * dt
-      this.bounce(body, body.prime ? MOTE_R : HUSK_R, 1)
-      // Drifting husks slow to a readable pace rather than pinballing forever.
-      const s = Math.hypot(body.vx, body.vy)
-      if (s > DRIFT_MAX) {
-        const k = Math.exp(-2.2 * dt)
-        body.vx *= k
-        body.vy *= k
-      } else if (s < DRIFT_MIN && s > 1e-6) {
-        body.vx *= 1 + 1.5 * dt
-        body.vy *= 1 + 1.5 * dt
+    for (let n = 0; n < steps; n++) {
+      // The ship, solved rather than stepped.
+      //
+      // `v' = k(V − v)` where `V` is the speed the stick is asking for has a
+      // closed form, and using it makes the ship *exactly* frame-rate independent
+      // rather than nearly so. Substepping alone is not: `ceil(dt / 16.67)` gives
+      // a substep of exactly 1/60s at 60, 30 and 20fps — the three rates anybody
+      // measures — and 1/90s at 45fps, so an iterated integrator that agreed
+      // perfectly at those three still ran 2% fast at 45 and 4% fast on a 144Hz
+      // screen. Every current flagship is a 120 or 144Hz screen. The substepping
+      // stays, because it is what stops a shot stepping over a husk; this is what
+      // stops the ship's speed depending on the panel.
+      const wantX = this.move.x * shipMax
+      const wantY = this.move.y * shipMax
+      const wasX = this.ship.vx - wantX
+      const wasY = this.ship.vy - wantY
+      this.ship.x += wantX * h + (wasX * (1 - decay)) / SHIP_DRAG
+      this.ship.y += wantY * h + (wasY * (1 - decay)) / SHIP_DRAG
+      this.ship.vx = wantX + wasX * decay
+      this.ship.vy = wantY + wasY * decay
+      // The clamp cannot fire from flying — the steady state *is* `shipMax` now,
+      // exactly — so this only ever catches the kick from a jostle.
+      const speed = Math.hypot(this.ship.vx, this.ship.vy)
+      if (speed > shipMax) {
+        this.ship.vx = (this.ship.vx / speed) * shipMax
+        this.ship.vy = (this.ship.vy / speed) * shipMax
       }
-    }
+      this.bounce(this.ship, SHIP_R, 0.4)
 
-    if (this.resonator) {
-      this.resonator.x += this.resonator.vx * dt
-      this.resonator.y += this.resonator.vy * dt
-      this.bounce(this.resonator, RESONATOR_R, 1)
-    }
+      // The drawn nose, easing toward the guns. Never the guns themselves, and
+      // never through the origin — see `faceAngle`.
+      const want = Math.atan2(this.aim.y, this.aim.x)
+      let delta = want - this.faceAngle
+      while (delta > Math.PI) delta -= Math.PI * 2
+      while (delta < -Math.PI) delta += Math.PI * 2
+      this.faceAngle += delta * turn
 
-    // Shots, and what they hit.
-    for (let i = this.shots.length - 1; i >= 0; i--) {
-      const shot = this.shots[i] as Shot
-      shot.life -= dtMs
-      shot.x += shot.vx * dt
-      shot.y += shot.vy * dt
-      if (
-        shot.life <= 0 ||
-        shot.x < -40 ||
-        shot.y < -40 ||
-        shot.x > this.width + 40 ||
-        shot.y > this.height + 40
-      ) {
+      // Bodies.
+      for (const body of this.bodies) {
+        body.age += h * 1000
+        body.x += body.vx * h
+        body.y += body.vy * h
+        this.bounce(body, body.prime ? MOTE_R : HUSK_R, 1)
+        // Drifting husks slow to a readable pace rather than pinballing forever.
+        const s = Math.hypot(body.vx, body.vy)
+        if (s > driftMax) {
+          const k = Math.exp(-2.2 * h)
+          body.vx *= k
+          body.vy *= k
+        } else if (s < driftMin && s > 1e-6) {
+          body.vx *= 1 + 1.5 * h
+          body.vy *= 1 + 1.5 * h
+        }
+      }
+
+      if (this.resonator) {
+        this.resonator.x += this.resonator.vx * h
+        this.resonator.y += this.resonator.vy * h
+        this.bounce(this.resonator, RESONATOR_R, 1)
+      }
+
+      // Shots, and what they hit.
+      for (let i = this.shots.length - 1; i >= 0; i--) {
+        const shot = this.shots[i] as Shot
+        shot.life -= h * 1000
+        shot.x += shot.vx * h
+        shot.y += shot.vy * h
+        if (
+          shot.life <= 0 ||
+          shot.x < -40 ||
+          shot.y < -40 ||
+          shot.x > this.width + 40 ||
+          shot.y > this.height + 40
+        ) {
+          this.shots.splice(i, 1)
+          continue
+        }
+        const hit = this.bodies.find(
+          (b) => dist2(shot, b) < (SHOT_R + (b.prime ? MOTE_R : HUSK_R)) ** 2,
+        )
+        if (!hit) continue
         this.shots.splice(i, 1)
-        continue
+        events.push(...this.strike(hit.id))
       }
-      const hit = this.bodies.find(
-        (b) => dist2(shot, b) < (SHOT_R + (b.prime ? MOTE_R : HUSK_R)) ** 2,
-      )
-      if (!hit) continue
-      this.shots.splice(i, 1)
-      events.push(...this.strike(hit.id))
-    }
 
-    // The ship, and what it reaches. A copy of the id list, because `touch`
-    // mutates `bodies` and a live iteration would skip its neighbour.
-    for (const id of this.bodies.map((b) => b.id)) {
-      const body = this.bodies.find((b) => b.id === id)
-      if (!body) continue
-      const reach = (SHIP_R + (body.prime ? MOTE_R : HUSK_R)) ** 2
-      if (dist2(this.ship, body) < reach) events.push(...this.touch(id))
+      // The ship, and what it reaches.
+      //
+      // Backwards, and that is load-bearing rather than a habit: `touch` splices
+      // the body it swept out of this array and `scatter` can push new ones onto
+      // the end, so a forward loop would skip the neighbour of anything it took
+      // and revisit a mote it had just handed back. Going down, a removal is
+      // always at the index we are on and everything below it is untouched — and
+      // unlike the id-snapshot this replaces, it allocates nothing, which matters
+      // now that the loop runs up to eight times a frame.
+      for (let i = this.bodies.length - 1; i >= 0; i--) {
+        const body = this.bodies[i] as Body
+        const reach = (SHIP_R + (body.prime ? MOTE_R : HUSK_R)) ** 2
+        if (dist2(this.ship, body) < reach) events.push(...this.touch(body.id))
+      }
     }
 
     return events
@@ -504,32 +757,126 @@ export class Arena {
   // ── seeding ──────────────────────────────────────────────────────────────
 
   /**
+   * The arena is without a question and the wait is up. Try again.
+   *
+   * The shell calls this every frame; it is a no-op unless there is nothing to
+   * answer. The clock comes from the shell, like every other clock in this file.
+   */
+  rearm(now: number): ArenaEvent[] {
+    if (this.paused || this.resonator !== null || this.rearmMs > 0) return []
+    return this.arm(now)
+  }
+
+  /**
    * Draw a question, hang a resonator on it, and stock the field with husks
    * that come apart into exactly the primes its answer needs — plus the primes
    * behind one of the host's mal-rule answers, so a child who drops a carry can
    * assemble their own mistake and the misconception routes back to the host.
+   *
+   * **This is where the game says what it needs.** It used to be one line:
+   *
+   *     const drawn = this.host.next({ domain: "add" })
+   *
+   * A cosmetic label and never a difficulty, so the resonator carried whatever
+   * rung the host's ladder was standing on — rung 0 at the start of a session,
+   * which is `2 + 0`. See `ladder.ts` for the whole argument and the measured
+   * band. Three things happen here now:
+   *
+   *   1. **Every draw names a difficulty and a ceiling**, walking outward from
+   *      the game's position until one lands.
+   *   2. **The bar is `isResonant` and not `isAskable`** — a target with a factor
+   *      tree in it, because a target without one is not this game.
+   *   3. **A draw that is not used is skipped, not abandoned.** `host.skip` is
+   *      feature-detected; without it, a discarded question would sit open in the
+   *      host's ledger forever and the child's record would fill with items
+   *      nobody was ever shown.
    */
   private arm(now: number): ArenaEvent[] {
     this.askedAt = now
+    const wall = this.sinceWall >= WALL_EVERY - 1
     let question: Question | null = null
-    for (let i = 0; i < DRAW_ATTEMPTS; i++) {
-      const drawn = this.host.next({ domain: "add" })
-      const target = Number(drawn.answer)
-      if (isAskable(target, MAX_TARGET)) {
-        question = drawn
+    let landedAt = this.ladder.at
+    const drawn: Array<{ question: Question; difficulty: number }> = []
+    for (const request of this.ladder.requests(this.domain)) {
+      const q = this.host.next(request)
+      // **The rung that answered, not the rung that was asked for.**
+      //
+      // `host.next` serves the pooled question *closest* to the request, and the
+      // pool was stocked for whatever came before it — so the two differ, often
+      // and by a lot. Measured against the real adapter over one session: 104 of
+      // 175 draws came from a rung other than the one named, by as much as
+      // nineteen. Learning from the request would therefore write live rungs off
+      // as barren and snap `landed()` onto a rung the child never saw, which is
+      // the whole mechanism that makes `FLOOR` a hint rather than a dependency.
+      //
+      // `items.ts` puts this number on the question for exactly this reason:
+      // "so the pack is told what it got and not what it asked for."
+      const served = Number.isFinite(q.difficulty) ? q.difficulty : request.difficulty
+      drawn.push({ question: q, difficulty: served })
+      const hit = isResonant(Number(q.answer), MAX_TARGET, { wall })
+      // Remembered either way: ten of the thirty-two rungs in the band produce
+      // nothing this game can use. See `ladder.BARREN`.
+      this.ladder.drew(rungOf(served), hit)
+      if (hit) {
+        question = q
+        landedAt = served
         break
       }
     }
+
+    // Nothing in the band was what the game wants. Rather than stall, take the
+    // best of what was already drawn — no extra item is spent on this. A rung is
+    // a distribution, and asking eight times for a factor tree and getting eight
+    // primes is unlucky rather than broken; a wall early, or a two-tile hold, is
+    // a worse round than the game aims for and a far better one than no round.
     if (!question) {
-      // Nothing the resonator could honestly ask for. The arena stays playable
-      // — husks still crack, primes still sweep — and this is loud.
+      const best = this.bestOf(drawn.map((d) => d.question))
+      if (best) {
+        question = best
+        landedAt = drawn.find((d) => d.question.id === best.id)?.difficulty ?? landedAt
+      }
+    }
+
+    // Whatever was drawn and not used is closed rather than left hanging. A skip
+    // records nothing, moves no ladder and produces no outcome, which is exactly
+    // what "the child was never shown this" should look like in the ledger.
+    for (const entry of drawn) {
+      if (entry.question.id !== question?.id) this.host.skip?.(entry.question.id)
+    }
+
+    if (!question) {
+      // Nothing in the whole band the resonator could be a game about. The arena
+      // stays playable — husks still crack, primes still sweep — and it tries
+      // again in a few seconds rather than never asking for anything ever again,
+      // which is what it used to do.
       this.stalled = true
-      console.error("[lattice] no askable target in", DRAW_ATTEMPTS, "draws")
+      this.rearmMs = REARM_MS
+      this.resonator = null
+      // And the field is stocked if it is bare, which is the difference between
+      // "the arena stays playable" being true and being a comment.
+      //
+      // The case that made this necessary is the one that matters most: a brand
+      // new profile. The host warms its pool at *its* position, which for a fresh
+      // profile is rung 0 — answers of one to three — and the first request this
+      // game makes flushes that pool down to a reserve of eight of them. Every
+      // draw of the first arming is then a `2 + 0`, nothing is resonant, and the
+      // arena stalls on the very first frame of the very first session, before
+      // `arm` has reached the line that puts anything on the screen. Without this
+      // the child's first two and a half seconds of THE LATTICE is an empty grid.
+      if (this.bodies.length === 0) this.stockPassiveField()
+      console.error(
+        "[lattice] no resonant target anywhere in the band; retrying in",
+        REARM_MS,
+        "ms",
+      )
       return [{ kind: "stalled" }]
     }
     this.stalled = false
+    this.rearmMs = 0
+    this.ladder.landed(landedAt)
 
     const target = Number(question.answer)
+    this.sinceWall = isPrime(target) ? 0 : this.sinceWall + 1
     const wanted = primeFactors(target)
     const values = huskify(wanted, this.rng)
 
@@ -539,24 +886,25 @@ export class Arena {
     if (decoy.length > 0) values.push(...huskify(decoy, this.rng))
 
     // A little chaff, so "sweep only what you need" is a decision rather than
-    // a formality. Never more than three, and always small enough to read.
-    const chaff = this.rng.int(1, 3)
+    // a formality — and more of it higher up the band.
+    //
+    // The band has a ceiling (`MAX_TARGET` is 999), so a child who reaches the
+    // top of it would otherwise find the game stops getting harder. The
+    // arithmetic cannot go further; the *sweep* can. Two extra decoy motes at the
+    // top of the band is a field where getting the hold exactly right is work.
+    const reach = (this.ladder.at - FLOOR) / Math.max(1e-6, CEILING - FLOOR)
+    const chaff = this.rng.int(1, 3 + Math.round(2 * Math.max(0, Math.min(1, reach))))
     for (let i = 0; i < chaff; i++) values.push(this.rng.pick(MOTE_PRIMES.slice(0, 6)))
 
+    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span
     this.bodies = []
     this.shots = []
     this.rng.shuffle(values)
     for (const value of values) {
       const edge = 70
-      const x = this.rng.range(edge, this.width - edge)
-      const y = this.rng.range(edge, this.height * 0.62)
-      this.spawnAt(
-        value,
-        x,
-        y,
-        this.rng.range(-DRIFT_MAX, DRIFT_MAX),
-        this.rng.range(-DRIFT_MAX, DRIFT_MAX),
-      )
+      const x = this.rng.range(edge, Math.max(edge + 1, this.width - edge))
+      const y = this.rng.range(edge, Math.max(edge + 1, this.height * 0.62))
+      this.spawnAt(value, x, y, this.rng.range(-driftMax, driftMax), this.rng.range(-driftMax, driftMax))
     }
 
     this.resonator = {
@@ -565,8 +913,8 @@ export class Arena {
       target,
       x: this.width / 2,
       y: this.height * 0.26,
-      vx: this.rng.range(-26, 26),
-      vy: this.rng.range(-14, 14),
+      vx: this.rng.range(-26, 26) * this.span,
+      vy: this.rng.range(-14, 14) * this.span,
       cooldown: 0,
       reported: false,
       age: 0,
@@ -583,6 +931,66 @@ export class Arena {
   }
 
   /**
+   * Husks to crack and primes to sweep, with no resonator over them.
+   *
+   * The passive layer on its own. Not a question and not reported — the tile bar
+   * still reads `2·2·3` under a running 12, which is the absorption this game
+   * gives away for free, and the child has something to shoot at while the arena
+   * waits for a target it can be a game about. Drawn from `MOTE_PRIMES` through
+   * the same `huskify` every armed field uses, off the same seeded generator, so
+   * nothing here is a hardcoded problem.
+   */
+  private stockPassiveField(): void {
+    const primes: number[] = []
+    const many = this.rng.int(5, 8)
+    for (let i = 0; i < many; i++) primes.push(this.rng.pick(MOTE_PRIMES.slice(0, 8)))
+    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span
+    for (const value of huskify(primes, this.rng)) {
+      const edge = 70
+      this.spawnAt(
+        value,
+        this.rng.range(edge, Math.max(edge + 1, this.width - edge)),
+        this.rng.range(edge, Math.max(edge + 1, this.height * 0.62)),
+        this.rng.range(-driftMax, driftMax),
+        this.rng.range(-driftMax, driftMax),
+      )
+    }
+  }
+
+  /**
+   * The least bad of a handful of drawn questions, or `null` if none will do.
+   *
+   * The fallback bar, and it is deliberately weaker than `isResonant` in exactly
+   * two ways and no others: a two-tile target is allowed (one crack instead of
+   * two), and a wall may come round early. Ranked by tiles, so the best round
+   * available is the one that gets played.
+   *
+   * What it does **not** give up is either of the two things the founder actually
+   * reported. A target under `MIN_TARGET` is still refused, and so is a prime too
+   * small to be a hunt — that is "finding a 2", and no shortage of alternatives
+   * makes it a round worth playing. And readability is not negotiable either: a
+   * composite whose factorisation needs a mote larger than the game draws is
+   * refused outright rather than ranked below the others, because `2 · 397` is not
+   * a worse round of this game, it is a different one. When every draw in the band
+   * is one of those, the arena would rather have nothing for four seconds.
+   */
+  private bestOf(drawn: readonly Question[]): Question | null {
+    let best: Question | null = null
+    let bestTiles = 0
+    for (const q of drawn) {
+      const target = Number(q.answer)
+      if (!isAskable(target, MAX_TARGET) || target < MIN_TARGET) continue
+      const tiles = tileCount(target)
+      if (isPrime(target) ? target < MIN_WALL : tiles < 2 || !isSmooth(target)) continue
+      if (tiles > bestTiles) {
+        bestTiles = tiles
+        best = q
+      }
+    }
+    return best
+  }
+
+  /**
    * The extra primes one of the host's mal-rule answers needs.
    *
    * `[]` when none of them is reachable without turning the field into a
@@ -595,7 +1003,7 @@ export class Arena {
       if (!isAskable(value, MAX_TARGET)) continue
       const extra = multisetDifference(primeFactors(value), wanted)
       if (extra.length === 0 || extra.length > 3) continue
-      if (extra.some((p) => p > 47)) continue
+      if (extra.some((p) => p > LARGEST_MOTE_PRIME)) continue
       return extra
     }
     return []
@@ -618,7 +1026,8 @@ export class Arena {
         Math.max(MOTE_R, y + Math.sin(angle) * RELEASE_RADIUS),
         this.height - MOTE_R,
       )
-      const speed = this.rng.range(DRIFT_MIN, DRIFT_MAX)
+      const speed =
+        this.rng.range(DRIFT_MIN_SPAN, DRIFT_MAX_SPAN) * REFERENCE_SPAN * this.span
       this.spawnAt(values[i] as number, px, py, Math.cos(angle) * speed, Math.sin(angle) * speed)
     }
   }

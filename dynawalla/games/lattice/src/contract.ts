@@ -26,8 +26,29 @@ export type Question = {
 }
 
 export type Host = {
-  next(opts?: { domain?: string; difficulty?: number }): Question
+  /**
+   * The next question.
+   *
+   * `difficulty` is a 0..1 position on the host's whole ladder and
+   * `maxDifficulty` a ceiling on the same scale. THE LATTICE names both on every
+   * single draw — see `game/ladder.ts` for why a game that names neither is a
+   * game that ends up asking a child to find a 2.
+   */
+  next(opts?: { domain?: string; difficulty?: number; maxDifficulty?: number }): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
+  /**
+   * The child was never shown this one. Close it and record nothing.
+   *
+   * OPTIONAL and feature-detected, like `transition` — the real runtime has it
+   * and a stub host need not. It is load-bearing here rather than tidy: a
+   * resonator can only be a game about a target with a factor tree in it, so an
+   * arming draws until it finds one, and the draws it discards would otherwise
+   * sit open in the host's ledger with a child's record filling up with items
+   * nobody was ever shown. `report` cannot stand in for it — an unanswered
+   * question reported as wrong is a MISS, and the ladder steps down for a
+   * question the child never saw.
+   */
+  skip?(questionId: string): void
   haptic(k: "light" | "medium" | "heavy" | "success" | "failure"): void
   prefersReducedMotion(): boolean
 

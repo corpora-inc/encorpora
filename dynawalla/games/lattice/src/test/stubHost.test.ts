@@ -64,7 +64,9 @@ test("distractors are mal-rule outputs, not answer ± 1 noise", () => {
 test("a dropped carry is actually in there", () => {
   // 27 + 15 with every carry dropped is 32. Whatever else the stub produces,
   // this specific misconception has to be reachable or the diagnosis is empty.
-  const host = createStubHost({ seed: 0xca771 })
+  // Named on the ladder, because a carry needs two columns and the bottom of the
+  // ladder is single-digit facts — the very thing THE LATTICE was stuck on.
+  const host = createStubHost({ seed: 0xca771, difficulty: 30 / 65 })
   let found = false
   for (let i = 0; i < 3000 && !found; i++) {
     const q = host.next()

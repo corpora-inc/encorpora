@@ -21,6 +21,22 @@ export const MAX_HUSK = 9999
 /** Primes small enough to be drawn as a drifting mote and read at speed. */
 export const MOTE_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47] as const
 
+/**
+ * The largest prime the game calls readable, derived rather than repeated.
+ *
+ * `MOTE_PRIMES` has always said which primes are small enough to be a mote, and
+ * the resonator then happily asked for 794 = 2 · 397. A hold with a 397 in it is
+ * not the game this pack describes: `resonance.isResonant` uses this so the two
+ * statements cannot drift apart.
+ */
+export const LARGEST_MOTE_PRIME = MOTE_PRIMES[MOTE_PRIMES.length - 1] as number
+
+/** The biggest prime in `n`'s factorisation. `0` for `n < 2`. */
+export function largestPrimeFactor(n: number): number {
+  const factors = primeFactors(n)
+  return factors.length === 0 ? 0 : (factors[factors.length - 1] as number)
+}
+
 export function isPrime(n: number): boolean {
   if (!Number.isInteger(n) || n < 2) return false
   if (n % 2 === 0) return n === 2
