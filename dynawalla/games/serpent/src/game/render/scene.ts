@@ -120,7 +120,10 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
   let promptComplaint = "";
 
   function fittedPrompt(text: string, arenaR: number): PromptBlock {
-    const key = `${text}|${Math.round(arenaR * view.scale)}|${Math.round(view.safe.w)}`;
+    // Every input the fit reads is in the key, `view.safe.h` included: on a wide,
+    // short viewport the height is what binds a three-line block, and it can change
+    // while `view.scale` and `view.safe.w` do not.
+    const key = `${text}|${Math.round(arenaR * view.scale)}|${Math.round(view.safe.w)}|${Math.round(view.safe.h)}`;
     if (promptBlock && promptKey === key) return promptBlock;
     const block = promptFit(text, view.safe, view.scale, arenaR, (line, size) =>
       labelInk(line, { ...PROMPT_LABEL, size }),
