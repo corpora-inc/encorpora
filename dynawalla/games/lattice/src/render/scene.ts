@@ -445,8 +445,14 @@ export class Scene {
       9,
       Math.min(22, Math.min(box.w / Math.max(1, cols * 2.4), box.h / Math.max(1, rows * 2.6))),
     )
-    const colStep = cols > 1 ? Math.min(box.w / cols, r * 3.2) : 0
-    const rowStep = rows > 1 ? Math.min((box.h - r * 2) / (rows - 1), r * 3) : 0
+    // Both clamped at zero. `r` floors at 9, so on a box shorter than 18px the
+    // row numerator goes NEGATIVE — and `top + depth * rowStep` then draws the
+    // root at the bottom with the leaves climbing above it, through the
+    // counters, upside down. `hud.ts` now floors the box so this cannot happen
+    // from the layout, and this is the belt for that brace: a tree with nowhere
+    // to go collapses onto a point rather than inverting.
+    const colStep = cols > 1 ? Math.max(0, Math.min(box.w / cols, r * 3.2)) : 0
+    const rowStep = rows > 1 ? Math.max(0, Math.min((box.h - r * 2) / (rows - 1), r * 3)) : 0
     const usedW = colStep * (cols - 1) + r * 2
     const usedH = rowStep * (rows - 1) + r * 2
     const cx = box.x + box.w / 2

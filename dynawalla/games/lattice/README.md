@@ -214,9 +214,17 @@ husks make all session — and `game/hint.ts` unfolds it a little at a time.
 | 1 | **The shape.** Every node blank. It says how many pieces the hold needs, and how they branch. | nothing |
 | 2 | **One prime.** The largest leaf: the `7` under four twos, the one a child sweeping twos never stumbles into. | nothing |
 | 3 | **Half a split.** The smaller of the root's two children, its sibling still blank — `129 ⟶ 3 and ⟶ ?`, exactly. | nothing |
-| 4 | **The partial.** The sibling lights: `16 × 7`, root still blank. The stepping stone. | the report |
-| 5 | **The leaves.** Every leaf lit. The hold, spelled out. Nobody is stuck past here. | the report |
-| 6 | **The whole tree.** Every node, root included, and the sentence closes. | the report |
+| 4 | **The partial.** The sibling lights: `16 × 7`, root still blank. The stepping stone. | a tap |
+| 5 | **The leaves.** Every leaf lit. The hold, spelled out. Nobody is stuck past here. | a tap |
+| 6 | **The whole tree.** Every node, root included, and the sentence closes. | a tap |
+
+Which stage crosses from "nothing" to "a tap" is **computed from the tree, not
+fixed at a number**. Usually it is between 3 and 4, but when the largest leaf
+*is* the larger of the root's two children, stage 3 lights both halves of the
+split at once: `129 → 3 · 43` is one of those, and so is `28 → 4 · 7`. Across the
+band that is 120 of the 573 composite targets, so a hardcoded 3 would be wrong
+for one target in five. `hint.freeStages` walks the tree; `revealsAnswer` reads
+the picture.
 
 A prime target — the wall — has no tree, so it has two stages: one lonely blank
 node, and then the numeral. That *is* the hint for a wall, because the only hold
@@ -226,6 +234,12 @@ which mote to hunt.
 The stages are a **masking** of one tree, never a different tree, and each one is
 a superset of the last — asserted over every target the ladder can serve, on
 twelve seeds.
+
+**The clock stops at the free stages.** Time alone will show a child the shape,
+one prime, and usually half of the first split, and then it stops and the control
+is there. Going further is something a child does on purpose, with a thumb.
+Nothing that happens to a child who is merely sitting in front of a question can
+reach a stage that states the answer.
 
 ### It is drawn out of the arena's own pieces
 
@@ -264,16 +278,25 @@ that served it and how many primes the hold is. A harder item buys *more*
 silence, never less, because a hint arriving sooner on a harder problem is the
 game saying it does not think you can do this one.
 
+And it is **played** time, accumulated in `Arena.step`, not the wall clock. A
+host sheet costs nothing because `step` returns early behind one — but so does
+the case a pack is never told about at all: a backgrounded webview hands back a
+delta of minutes and `step` clamps it to 120ms like every other physical quantity
+in the arena, so three minutes in the app switcher advances the quiet by about a
+frame instead of by three stages of tree the child was not in the room for. A
+wall clock with a pause guard bolted on covered the first case and not the
+second, and the second is the one that happens on a phone.
+
 (THE LATTICE has no answer window and this does not add one. Nothing here is a
 deadline: past the last stage the tree simply sits there, complete.)
 
-Mid-band that is a silhouette at about 35 seconds, a prime at 65, half a split at
-95, and the partial at about two minutes. The perfect bot in `pacing.test.ts`
-finishes a whole round in five seconds, so a child who is *playing* is never
-interrupted; the schedule meets one who has stopped. And the gaps are **longer**
-than the first quiet, which is the opposite of what warmth would suggest — the
-offer of help comes quickly because the first three stages cost nothing, and the
-part of it that spends something is unhurried.
+Mid-band that is a silhouette at about 35 seconds, a prime at 65, and half a
+split at 95 — and then the clock has given what it has. The perfect bot in
+`pacing.test.ts` finishes a whole round in five seconds, so a child who is
+*playing* is never interrupted; the schedule meets one who has stopped. The gaps
+are **longer** than the first quiet, which is the opposite of what warmth would
+suggest: spending them slowly is what makes each one a separate thing that
+happened rather than a panel unfolding at a child who has looked away.
 
 ### What a hint costs, and the one thing it changes
 
@@ -283,30 +306,43 @@ were taken and no language about needing help. `hint.test.ts` plays the same
 seeded run twice — once blind, once with the whole tree up from the first frame —
 and asserts the counter, the chain and the haptics come out identical.
 
-What it changes is what the **host** is told. Once the revealed nodes *determine*
-the root — stage 4 for a composite, stage 2 for a wall, computed from the picture
-rather than hardcoded to a stage number — the game has put the answer to
-`642 − 530` on the screen, and a `correct` report against that question would be
-a claim about the child that is not true. `Arena.enter` closes those with
-`host.skip` instead, which the contract defines as "records nothing, moves no
-ladder, produces no outcome".
+### The version of this that failed review, and why
 
-That is the honest reading and it is the only neutral option available: reporting
-a MISS would be a hint that costs, which is forbidden outright, and reporting a
-HIT would write a MASTERED signal into a child's record on the strength of
-something the game printed — and then climb them into harder items on it.
+The first cut reasoned: once the tree states the answer, a `correct` report is a
+claim about the child that is not true, so close the question with `host.skip` —
+"records nothing, moves no ladder, produces no outcome" — instead. Honest, and
+invisible from inside the canvas.
 
-For the same reason the game's own ladder **holds rather than climbing** on a
-handed-over open. `Ladder.opened` is three rungs of harder arithmetic next time,
-and pushing a child into harder arithmetic *because* they had just been shown the
-answer is the one way a hint here could quietly cost them something. A refusal
-still falls, because falling is the direction that makes the next one kinder.
+It is not invisible three pixels above it. `game-host` says of `skip`, verbatim,
+that it *"does not advance the session progress fraction, because that counts
+answered questions"*, and the host paints that fraction as a full-width hairline
+across the top of every pack — the one `hud.ts` already reserves `HOST_PROGRESS_H`
+for. Measured on a seeded run that took the hint to the end five times:
 
-The trade is deliberate and it is worth naming: a chronically stuck child
-generates less signal for the adaptive engine. The alternative was a record full
-of correct answers the game gave, which is worse — and the game's own ladder
-still falls on every refusal, so the *stream* still adapts even when the record
-goes quiet.
+| | opened | ceremonies | reports | progress hairline |
+|---|---|---|---|---|
+| shipped in review | 5 | 5 | **0** | **0 / 40, all sitting** |
+| now | 5 | 5 | 5 | 5 / 40 |
+
+**The child who leans on the hint is the child this feature exists for, and
+theirs was the bar that never moved.** That is a punishment delivered by the one
+persistent indicator on the screen. Worse, it did not need the child to do
+anything: `tiles` is 1 for a prime, so a wall's quiet is short and stage 2 of a
+wall *is* the numeral — a child hunting the single `353` mote for 51 seconds,
+which is the entire task on a wall round and an ordinary length of time to spend
+on it, had the answer printed for them at the finish line and their unaided
+answer thrown away. Walls are one resonator in five.
+
+So two things changed. **The report goes to the host as it always did.** And
+**the clock stops at `freeStages`**, so the reveal line can only ever be crossed
+by a deliberate tap.
+
+What survives of the original concern is the one decision the game actually owns:
+the ladder **holds rather than climbing** on a handed-over open. `Ladder.opened`
+is three rungs of harder arithmetic next time, and pushing a child into harder
+arithmetic *because* they just asked to be shown is the one thing a hint could
+still take. Holding position is the absence of a penalty, not one. A refusal
+still falls, because falling makes the next one kinder.
 
 ### The reveal is adaptive, and mastery is what skips it
 
@@ -340,11 +376,24 @@ the control on its own row spent sixty of the remaining hundred and forty and
 left the tree fifty-nine pixels to draw four rows in. Landscape has width and no
 height, so the control is paid for out of the width.
 
-It is checked before the sticks and before the tile bar, and `chrome.test.ts`
-asserts at every viewport that nowhere the hint control answers does the tile bar
-answer too — because a child who reaches for help and instead throws away the
-hold they spent a minute assembling is "a hint costs something" built out of
-geometry rather than out of rules.
+`chrome.test.ts` asserts at every viewport that nowhere the hint control answers
+does the tile bar answer too — because a child who reaches for help and instead
+throws away the hold they spent a minute assembling is "a hint costs something"
+built out of geometry rather than out of rules.
+
+**It fires on release, not on press**, and that is the same class of bug one
+layer up. The control sits at the bottom-left of the safe area, which is exactly
+where a left thumb comes to rest — and the left half of the screen *is* the
+movement stick. Firing on pointer-down meant that settling your hand there both
+unfolded a tree nobody asked for and swallowed the touch, so the ship would not
+move. Now the press is remembered and the thumb goes on to drive the stick as if
+the control were not there; the hint fires only if the pointer comes up inside
+the control, never strayed more than 10px from where it went down, and was not
+held longer than 400ms.
+
+The travel is measured along the **path**, not between the endpoints. A stick
+held in a circle returns to where it started every revolution, so an endpoint
+check calls that a tap.
 
 ### The ship, and why it was wild on Android specifically
 
@@ -467,13 +516,13 @@ src/
   render/         palette, scene, sparks
   render/hud.ts   where the chrome may be drawn: the safe area, minus two corners
   audio/audio.ts  asset-free Web Audio, C5–C6 pentatonic
-  test/           176 tests: rules, pacing, the ship, the hint, wiring, chrome
+  test/           181 tests: rules, pacing, the ship, the hint, wiring, chrome
 ```
 
 ## Tests
 
 ```
-npm test        176 tests
+npm test        181 tests
 npm run tsc     0 errors
 npm run build   the library build
 npm run build:pack   the pack build → dist-pack/
@@ -491,7 +540,11 @@ The ones that matter:
   the hold out in full, the quiet is pure in the item and monotone
   non-decreasing in both of its difficulty signals, a sheet does not spend it,
   and a hinted run comes out identical to a blind one on everything the child can
-  see. **Every assertion in it verified to fail** by breaking what it covers.
+  see — *including* the report count, which is what the progress hairline is made
+  of and what the first cut of this feature silently zeroed. Also: the clock
+  alone can never reach a stage that states the answer, over six seeds × six
+  rounds × ten minutes of sitting still. **Every assertion in it verified to
+  fail** by breaking what it covers.
 * `resonance.test.ts` — a target is cleared **only** by a genuine prime
   factorisation of it (exhaustive over every multiset of small primes to six
   tiles against every target to 200); a prime target cannot be assembled from

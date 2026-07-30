@@ -207,14 +207,14 @@ function frame(
   // The factor tree is chrome too — every numeral and every `?` on it is
   // something the child reads — so it has to be on screen when this measures.
   // Asked for rather than waited for: the clock here is a literal `0`.
-  for (let i = 0; i < (opts.hintTaps ?? 0); i++) arena.askHint(0)
+  for (let i = 0; i < (opts.hintTaps ?? 0); i++) arena.askHint()
 
   scene.say("RESONANCE", "#f0d878")
   const state = {
     best: 12,
     paused: opts.paused,
     stalled: opts.stalled,
-    hint: arena.hint(0),
+    hint: arena.hint(),
   }
   // Two frames, and the first one is thrown away: the tree schedules its own
   // arrival on the frame it is first drawn, so a single frame would measure
@@ -429,8 +429,8 @@ test("on a pane too short for it, the tree gives way to the counters", () => {
   // the tree draws straight through OPENED and CHAIN.
   for (const [w, h] of [
     [1024, 320],
-    [1180, 300],
-    [900, 340],
+    [1180, 340],
+    [900, 360],
   ] as Array<[number, number]>) {
     withInsets(NO_INSETS, () => {
       const l = hudLayout(w, safeRect(w, h))
@@ -440,7 +440,39 @@ test("on a pane too short for it, the tree gives way to the counters", () => {
           l.status.top + l.status.lineH * 2
         })`,
       )
-      assert.ok(l.tree.h > 0, `${w}×${h}: the tree has no height at all`)
+    })
+  }
+})
+
+test("and on a pane too short for even that, it still does not turn upside down", () => {
+  // Below about 340px of safe height there is no arrangement that fits: the
+  // counters and the tile bar meet in the middle. The floor then wins over the
+  // ceiling and the tree overlaps the counters, which is ugly and legible.
+  //
+  // What it must NOT do is what it did before the floor existed. `scene.ts`
+  // computes `rowStep = (box.h − 2r) / (rows − 1)` with `r` floored at 9, so a
+  // box under 18px tall gives a NEGATIVE row step — the root draws at the bottom
+  // and the leaves climb above it, through the counters, through the host's exit
+  // chevron, upside down. At 1024×200 the old layout returned a box exactly one
+  // pixel tall.
+  //
+  // The control has a floor of its own for the same reason: on these shapes the
+  // tile bar climbs high enough that its row lands under the host's 44px corner,
+  // and a hint control the host owns the pixels of is not a hint control.
+  for (const [w, h] of [
+    [1024, 200],
+    [800, 240],
+    [1180, 260],
+  ] as Array<[number, number]>) {
+    withInsets(NO_INSETS, () => {
+      const l = hudLayout(w, safeRect(w, h))
+      assert.ok(l.tree.h >= 96, `${w}×${h}: the tree box is ${l.tree.h}px tall and will invert`)
+      assert.ok(l.tree.w > 0 && l.tree.x >= 0, `${w}×${h}: the tree box is off the screen`)
+      assert.equal(
+        hitsHostChrome({ x: l.hint.cx - l.hint.r, y: l.hint.cy - l.hint.r, w: l.hint.r * 2, h: l.hint.r * 2 }, w),
+        false,
+        `${w}×${h}: the hint control rode up under one of the host's corners`,
+      )
     })
   }
 })

@@ -41,26 +41,47 @@
 // hint for a wall, because the only hold that opens a prime is the single mote
 // carrying it and the whole task is knowing which mote to hunt.
 //
-// ## What a hint costs
+// ## What a hint costs: nothing, and that had to be checked at the wire
 //
-// Nothing the child can see, ever. Not a point, not the chain, not the BEST
-// counter, not the ceremony when the resonator opens, and there is no counter
-// anywhere that says how many hints were taken. There is no language about
-// needing help. The tree simply arrives.
+// Not a point, not the chain, not the BEST counter, not the ceremony when the
+// resonator opens. No counter anywhere says how many hints were taken and no
+// string anywhere mentions needing help. The tree simply arrives.
 //
-// What it does change is what the **host** is told. Once the revealed nodes
-// determine the root — stage 4 for a composite, stage 2 for a wall — the game
-// has put the answer to `642 − 530` on the screen, and a `correct` report
-// against that question would be a claim about the child that is not true.
-// `arena.enter` closes those with `host.skip` instead, which the contract
-// defines as "records nothing, moves no ladder, produces no outcome". That is
-// the honest reading and it is invisible from inside the game.
+// **The version of this that shipped in review got it wrong, and it is worth
+// writing down why.** The reasoning was: once the tree states the answer, a
+// `correct` report is a claim about the child that is not true, so close the
+// question with `host.skip` — "records nothing, moves no ladder, produces no
+// outcome" — instead. Honest, and invisible from inside the canvas.
 //
-// ## The clock is not a clock
+// It is not invisible three pixels above it. `game-host` says of `skip`, in as
+// many words, that it "does not advance the session progress fraction, because
+// that counts answered questions", and the host paints that fraction as a
+// full-width hairline across the top of every pack. Measured on a seeded run
+// that took the hint to the end five times: five resonators opened, five
+// ceremonies, `OPENED 5` — and the progress bar still on nought. **The child who
+// leans on the hint is the child this feature exists for, and their progress bar
+// was the one that never moved.** That is a punishment, delivered by the one
+// persistent indicator on the screen, and it is exactly what the founder ruled
+// out. So the report goes to the host as it always did.
+//
+// What is left of the concern is handled where the game actually owns the
+// decision: `arena.enter` does **not** climb its own ladder on a resonator whose
+// tree stated the answer. Three rungs of harder arithmetic next time is the one
+// thing a hint could still take, and holding position is the absence of a
+// penalty rather than one.
+//
+// ## The clock never crosses the line, and it is not a clock
 //
 // Hints also arrive on their own, and a struggling child must never see a timer.
 // There is no countdown, no ring filling, no "hint in 3", no banner. The tree
 // fades in the way the sheet ripples: something happened, and it was warm.
+//
+// **And the clock stops at `freeStages`** — the last picture that does not state
+// the answer. Time alone will show a child the shape of the tree and one prime
+// and half of the first split, and then it stops and the control glows. Going
+// further is something a child does on purpose, with a thumb. Nothing that
+// happens to a child who is merely sitting there can reach the stage that holds
+// this pack's own ladder still.
 //
 // The quiet before the first one is `firstHintMs`, and it is held to the same
 // law the fleet holds an answer window to — **a pure function of the item, and
@@ -110,16 +131,14 @@ export const HINT_DWELL_PER_RUNG_MS = 6_000
  * The gap between one stage and the next, as a fraction of the first quiet.
  *
  * **Longer than the first quiet, and that is the opposite of what warmth would
- * suggest.** The reason is the line in `revealsAnswer`: the first three stages
- * cost nothing at all — a silhouette, one prime, half a split — and the fourth
- * puts the answer on the screen and takes the item out of the child's record
- * with it. So the offer of help comes quickly, and the part of it that spends
- * something is unhurried. Mid-band that is a silhouette at 35s, a prime at 65s,
- * half a split at 95s, and the partial at about two minutes — by which point a
- * child has genuinely stopped and the record is the least of it.
+ * suggest.** The clock has only `freeStages` to give — the silhouette, one
+ * prime, and usually half of the first split — and once it has given them it
+ * stops. Spending them slowly is what makes each one a separate thing that
+ * happened rather than a panel unfolding at a child who has looked away.
+ * Mid-band that is a silhouette at 35s, a prime at 65s and half a split at 95s,
+ * and then the control glows and the rest is the child's to ask for.
  *
- * A child who wants it faster taps four times and has it in four seconds, which
- * is the path this is a fallback for.
+ * A child who wants it faster taps, and has the whole tree in four seconds.
  */
 export const HINT_STEP_FRACTION = 0.85
 
@@ -171,6 +190,32 @@ export function scheduledStage(elapsedMs: number, item: HintItem): number {
 /** How many stages this tree has. A wall has two; everything else has six. */
 export function stageCount(placed: Placed): number {
   return placed.nodes.length <= 1 ? WALL_STAGES : HINT_STAGES
+}
+
+/**
+ * The last stage the **clock** may reach on its own: the largest one whose
+ * picture does not determine the root.
+ *
+ * Computed from the tree rather than fixed at a number, because which stage
+ * crosses the line depends on the shape. Usually it is three — the silhouette,
+ * one prime, half of the first split. But when the largest leaf *is* the larger
+ * of the root's two children, stage 3 lights both halves of the split and
+ * crosses a stage early: `129 → 3 · 43` is one of them, and so is `28 → 4 · 7`.
+ * Across the band that is 120 of the 573 composite targets, so a hardcoded 3
+ * would be wrong for one target in five.
+ *
+ * For a wall it is one: the silhouette of a single node, which says "this one
+ * does not come apart, go and find it" and is the whole of what a wall's hint
+ * can honestly be without simply printing the number.
+ */
+export function freeStages(placed: Placed): number {
+  const cap = stageCount(placed)
+  let last = 0
+  for (let stage = 1; stage <= cap; stage++) {
+    if (revealsAnswer(placed, shownAt(placed, stage))) break
+    last = stage
+  }
+  return last
 }
 
 /**

@@ -29,6 +29,7 @@ import {
   splitPair,
 } from "./factor.ts"
 import {
+  freeStages,
   type HintState,
   itemOf,
   revealsAnswer,
@@ -313,6 +314,25 @@ export class Arena {
   private hintSeen = 0
   /** What `firstHintMs` is allowed to read: the item, and nothing else. */
   private hintItem = { difficulty: 0, tiles: 0 }
+  /**
+   * How much of this question the child has actually **played**, in ms.
+   *
+   * Not the wall clock, and that is the whole point. `step` adds to this and
+   * `step` returns early behind a host sheet or the how-to-play panel, so those
+   * cost nothing — but it also covers the case a pack is never told about at
+   * all: a backgrounded webview hands back a delta of minutes, `step` clamps it
+   * to 120ms like every other physical quantity, and three minutes in the app
+   * switcher advances this by about a frame instead of by three whole stages of
+   * tree the child was not in the room for.
+   *
+   * Wall-clock time with a pause guard bolted on covered the first case and not
+   * the second, and the second is the one that happens on a phone.
+   */
+  private hintAgeMs = 0
+  /** The last stage the clock may reach on its own. See `hint.freeStages`. */
+  private hintFree = 0
+  /** The last `HintState` handed out, so a redraw is not a fresh allocation. */
+  private hintCache: { stage: number; state: HintState } | null = null
   /** The domain label the resonator's questions are drawn under. */
   private readonly domain: string
 
@@ -595,37 +615,39 @@ export class Arena {
     // Not "was a hint shown" — a blank silhouette and a single lit prime are
     // both hints and neither of them says what `642 − 530` is. The line is
     // `revealsAnswer`: are there numerals on the screen whose product is the
-    // target. For a composite that is the partial (`16 × 7`); for a wall it is
-    // the numeral itself.
+    // target. It is computed from the picture rather than from a stage number,
+    // because which stage crosses it depends on the tree's shape — see
+    // `hint.freeStages`.
     //
-    // Past that line the child's answer is not evidence about the child, and
-    // reporting it `correct` would write a MASTERED signal into a record on the
-    // strength of something the game printed. So the question is closed with
-    // `skip`, which the contract defines as "records nothing, moves no ladder,
-    // produces no outcome" — the only neutral option there is. Reporting a MISS
-    // instead would be a hint that costs, which is forbidden outright, and
-    // reporting a HIT would quietly climb a stuck child into harder items.
-    //
-    // Nothing about this is visible from inside the game: the ceremony fires,
-    // OPENED goes up, the chain goes up, BEST can be beaten.
-    const given = this.hint(now)?.given === true
+    // It is only ever true because the child **asked**: the clock stops at
+    // `hintFree`, one stage short of the line, so nothing that happens to a
+    // child who is sitting still can reach here.
+    const given = this.hint()?.given === true
 
     // Once per question. A refusal spends the id — the resonator stays as a
     // goal the child can still open, but the host hears one answer, which is
     // the only honest reading of "what did they say when they were asked".
+    //
+    // **Reported whether or not the tree was up**, and the first version of this
+    // was not. It closed a hinted question with `host.skip` instead, on the
+    // reasoning that a `correct` after the game printed the answer is a claim
+    // about the child that is not true. That is true and it is not the whole
+    // truth: `skip` is documented as not advancing the session progress
+    // fraction, and the host paints that fraction as a hairline across the top
+    // of every pack. Measured, five hinted rounds in a row: five ceremonies,
+    // `OPENED 5`, and a progress bar still on nought. The child who leans on the
+    // hint is the one this feature is for, and theirs was the bar that never
+    // moved. A hint may not cost anything, and that cost was three pixels above
+    // a canvas that was congratulating them.
     const first = !res.reported
     if (first) {
       res.reported = true
-      if (given) {
-        this.host.skip?.(res.questionId)
-      } else {
-        this.host.report({
-          questionId: res.questionId,
-          correct: verdict.kind === "open",
-          ms: Math.max(0, Math.round(now - this.askedAt)),
-          answered: String(verdict.asserted),
-        })
-      }
+      this.host.report({
+        questionId: res.questionId,
+        correct: verdict.kind === "open",
+        ms: Math.max(0, Math.round(now - this.askedAt)),
+        answered: String(verdict.asserted),
+      })
     }
 
     if (verdict.kind === "refuse") {
@@ -653,12 +675,14 @@ export class Arena {
     this.chain += 1
     // The ladder does not climb on an answer the game handed over.
     //
-    // This is not a penalty — it is the absence of one. `opened()` is three
-    // rungs harder next time, and pushing a child who had just been shown the
-    // answer into harder arithmetic is the one way a hint could quietly cost
-    // them something. So the game holds its position and asks again at the
-    // level they are actually working at. A refusal still falls, because
-    // falling is the direction that makes the next one kinder.
+    // This is not a penalty — it is the absence of one, and it is the ONE thing
+    // this file still does differently for a hinted round. `opened()` is three
+    // rungs harder next time, and pushing a child who had just asked to be shown
+    // the answer into harder arithmetic is the one way a hint could still cost
+    // them something. So the game holds its position and asks again at the level
+    // they are actually working at. It is invisible, it is reachable only by a
+    // deliberate tap, and a refusal still falls, because falling is the
+    // direction that makes the next one kinder.
     if (!given) this.ladder.opened()
     this.host.haptic("success")
     const events: ArenaEvent[] = [{ kind: "open", at, target: res.target, tiles }]
@@ -704,6 +728,13 @@ export class Arena {
       this.resonator.age += dtMs
     }
     if (this.rearmMs > 0) this.rearmMs = Math.max(0, this.rearmMs - dtMs)
+    // The hint's clock, and it is the CLAMPED delta rather than the raw one —
+    // the opposite of every timer above. Those are things that should burn while
+    // a tab is backgrounded (a refusal's 900ms of dim ought to be over when the
+    // child comes back). Thinking time is not: three minutes in the app switcher
+    // is three minutes the child was not looking at the question, and charging
+    // them for it would unfold the whole tree behind their back.
+    this.hintAgeMs += clamped
 
     // One 60Hz world, however fast the frame arrives. See `SUBSTEP_MS`.
     const steps = Math.min(MAX_SUBSTEPS, Math.max(1, Math.ceil(clamped / SUBSTEP_MS)))
@@ -821,11 +852,11 @@ export class Arena {
   /**
    * Milliseconds the child has had with the current resonator.
    *
-   * Frozen behind a sheet. `resume` shifts `askedAt` forward by exactly the
-   * sheet, so this was already right *after* one — but during one it kept
-   * climbing, and now that the hint reads it, a sheet held for a minute would
-   * have shown two more stages of tree behind the card and none of them would
-   * have made a sound. A child comes back to the tree they left.
+   * Frozen behind a sheet: `resume` shifts `askedAt` forward by exactly the
+   * sheet, so this was already right *after* one, and now it is right during one
+   * too. That is a latency number and nothing else reads it — the hint keeps its
+   * own played-time clock, because a wall clock with a pause guard on it still
+   * runs while the whole webview is in the app switcher.
    */
   elapsed(now: number): number {
     return Math.max(0, (this.paused ? this.pausedAt : now) - this.askedAt)
@@ -848,30 +879,43 @@ export class Arena {
    * quiet. That was free; it is worth saying out loud because it is the kind of
    * thing that is only ever noticed when it is wrong.
    */
-  private hintStage(now: number): number {
+  private hintStage(): number {
     const tree = this.hintTree
     if (!tree || !this.resonator) return 0
     const cap = stageCount(tree)
-    return Math.min(cap, Math.max(scheduledStage(this.elapsed(now), this.hintItem), this.hintTaps))
+    // The clock is capped at `hintFree` — the last picture that does not state
+    // the answer — so nothing that happens to a child who is merely sitting
+    // there can reach a stage that holds this pack's ladder still. Past that
+    // line the tree only moves under a thumb.
+    const byClock = Math.min(this.hintFree, scheduledStage(this.hintAgeMs, this.hintItem))
+    return Math.min(cap, Math.max(byClock, this.hintTaps))
   }
 
   /**
    * The hint as it stands, for the renderer. `null` when there is nothing to
    * hint about or when the tree has not been offered yet.
+   *
+   * Memoised on the stage. The shell calls this every frame and the stage
+   * changes a handful of times a question, so without the cache every frame
+   * allocated a `Set` and re-walked the tree for a picture that had not moved.
    */
-  hint(now: number): HintState | null {
+  hint(): HintState | null {
     const tree = this.hintTree
     if (!tree) return null
-    const stage = this.hintStage(now)
+    const stage = this.hintStage()
     if (stage <= 0) return null
+    const cached = this.hintCache
+    if (cached && cached.stage === stage) return cached.state
     const shown = shownAt(tree, stage)
-    return {
+    const state: HintState = {
       placed: tree,
       stage,
       stages: stageCount(tree),
       shown,
       given: revealsAnswer(tree, shown),
     }
+    this.hintCache = { stage, state }
+    return state
   }
 
   /**
@@ -882,16 +926,16 @@ export class Arena {
    * everything it has. Nothing is counted, nothing is spent, and no other rule
    * in this file reads `hintTaps`.
    */
-  askHint(now: number): ArenaEvent[] {
+  askHint(): ArenaEvent[] {
     if (this.paused) return []
     const tree = this.hintTree
     const res = this.resonator
     if (!tree || !res) return []
     const cap = stageCount(tree)
-    const at = this.hintStage(now)
+    const at = this.hintStage()
     if (at >= cap) return []
     this.hintTaps = at + 1
-    return this.unfold(now)
+    return this.unfold()
   }
 
   /**
@@ -902,11 +946,11 @@ export class Arena {
    * nothing: `hint()` would return the same thing whether or not this is ever
    * called.
    */
-  unfold(now: number): ArenaEvent[] {
+  unfold(): ArenaEvent[] {
     if (this.paused) return []
     const res = this.resonator
     if (!res || !this.hintTree) return []
-    const stage = this.hintStage(now)
+    const stage = this.hintStage()
     if (stage === this.hintSeen) return []
     this.hintSeen = stage
     if (stage <= 0) return []
@@ -964,6 +1008,9 @@ export class Arena {
     this.hintTree = null
     this.hintTaps = 0
     this.hintSeen = 0
+    this.hintAgeMs = 0
+    this.hintFree = 0
+    this.hintCache = null
     const wall = this.sinceWall >= WALL_EVERY - 1
     let question: Question | null = null
     let landedAt = this.ladder.at
@@ -1066,6 +1113,9 @@ export class Arena {
     // suite and in every child's session.
     this.hintTree = placeTree(factorTree(target, this.rng.fork(target)))
     this.hintItem = itemOf(target, landedAt)
+    // Computed once, here, rather than per frame: it is a walk of the whole tree
+    // at every stage and the shell asks for the hint sixty times a second.
+    this.hintFree = freeStages(this.hintTree)
     const values = huskify(wanted, this.rng)
 
     // One reachable mal-rule: the primes it needs that the answer does not

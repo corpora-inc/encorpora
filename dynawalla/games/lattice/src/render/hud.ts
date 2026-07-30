@@ -47,6 +47,19 @@ const HINT_GAP = 8
  */
 const TREE_SHARE = 0.36
 
+/**
+ * The least height the tree may be given, whatever else is competing for it.
+ *
+ * The deepest tree in the band is `512 = 2⁹`: five rows, which at the renderer's
+ * minimum node radius of 9 needs `4 × 19.5 + 18` = 96px exactly. Below that the
+ * rows overlap; below 18px the row step goes negative and the tree draws upside
+ * down. Ninety-six and not a round hundred, deliberately: at 1024×320 — a phone
+ * held sideways — the difference is whether the ceiling or the floor wins, and
+ * the ceiling winning is the outcome where the tree does not sit on the
+ * counters.
+ */
+const TREE_MIN_H = 96
+
 export type HudLayout = {
   /** `OPENED` / `CHAIN` on the left, `BEST` on the right, the stall notice centred. */
   readonly status: {
@@ -134,7 +147,11 @@ export function hudLayout(w: number, area: Rect): HudLayout {
   // gutter on its right, which also keeps it centred.
   const hintR = Math.max(22, Math.min(26, area.w / 14))
   const treeBottom = barTop - HINT_GAP
-  const hintCy = treeBottom - hintR
+  // Never above the host's two corner controls. On a pane a couple of hundred
+  // pixels tall the tile bar climbs high enough that the control's own row lands
+  // underneath the host's exit chevron, and a hint control a child cannot press
+  // because the host owns those pixels is a hint control that is not there.
+  const hintCy = Math.max(cornerBottom + hintR, treeBottom - hintR)
   const hintCx = area.x + SIDE + hintR
   const gutter = hintR * 2 + HINT_GAP
 
@@ -146,7 +163,19 @@ export function hudLayout(w: number, area: Rect): HudLayout {
   // no question, no tree and nothing to reserve for. Reserving it anyway cost
   // the tree twenty-five pixels it does not have on a phone held sideways.
   const treeCeiling = cornerBottom + size * 1.5 * 2
-  const treeTop = Math.max(treeCeiling, treeBottom - area.h * TREE_SHARE)
+  // Floored at `TREE_MIN_H`, and the floor wins over the ceiling.
+  //
+  // On a pane short enough that the counters and the tile bar meet in the middle
+  // — a 1024×200 Split View slice is the shape that produced it — the ceiling
+  // pushed `treeTop` *below* `treeBottom` and the box came out one pixel tall
+  // with a negative row step, which draws the tree upside down through the
+  // counters. Overlapping the counters slightly on a pane nothing can be read on
+  // anyway is the better of the two failures, and it is a failure the renderer
+  // survives.
+  const treeTop = Math.min(
+    treeBottom - TREE_MIN_H,
+    Math.max(treeCeiling, treeBottom - area.h * TREE_SHARE),
+  )
 
   return {
     status: {

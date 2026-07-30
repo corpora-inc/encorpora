@@ -464,14 +464,100 @@ test("the shell is wired to the hint: a tap unfolds the tree, and so does the qu
         "the factor tree was on screen before anybody asked for it and before any quiet",
       )
 
-      // A tap on the control, where `hudLayout` says it is.
+      // A tap on the control, where `hudLayout` says it is. Down AND up: the
+      // control fires on release, so that a thumb coming to rest at the
+      // bottom-left of the screen — which is where the movement stick lives —
+      // does not ask for a hint nobody wanted.
+      const up = canvas.listeners.get("pointerup")?.[0]
+      assert.ok(up, "the release listener was not installed")
       const { cx, cy } = hudLayout(900, safeRect(900, 700)).hint
       down({ preventDefault() {}, pointerId: 9, pointerType: "touch", clientX: cx, clientY: cy })
+      wall += 16.7
+      t = pump(frames, 1, t)
+      up({ pointerId: 9, pointerType: "touch", clientX: cx, clientY: cy })
       counter.text.length = 0
       t = pump(frames, 3, t)
       assert.ok(
         counter.text.includes("?"),
         "tapping the hint control drew no tree at all — the control is not wired to the arena",
+      )
+
+      handle.unmount()
+    })
+
+    // A thumb that lands on the control and then flies the ship is a child
+    // reaching for the stick, not a child asking for anything. This is the exact
+    // gesture that broke the first cut: the control sits at the bottom-left of
+    // the safe area, which is where a left thumb comes to rest, and firing on
+    // pointer-DOWN meant that settling your hand there BOTH unfolded a tree
+    // nobody wanted AND swallowed the touch, so the ship would not move.
+    const rest = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, rest, ({ host, frames, created }) => {
+      wall = 0
+      const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      const move = canvas.listeners.get("pointermove")?.[0]
+      const up = canvas.listeners.get("pointerup")?.[0]
+      assert.ok(down && move && up)
+
+      let t = pump(frames, 8)
+      const { cx, cy } = hudLayout(900, safeRect(900, 700)).hint
+
+      // Thumb down on the control, then slid up and to the right to fly.
+      down({ preventDefault() {}, pointerId: 3, pointerType: "touch", clientX: cx, clientY: cy })
+      rest.text.length = 0
+      for (let i = 0; i < 40; i++) {
+        move({ pointerId: 3, pointerType: "touch", clientX: cx + 4 + i * 2, clientY: cy - i * 2 })
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      up({ pointerId: 3, pointerType: "touch", clientX: cx + 84, clientY: cy - 80 })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "resting a thumb on the control and then flying asked for a hint nobody wanted",
+      )
+
+      // And a thumb that lands on the control, sweeps out to fly, and comes
+      // back to where it started — which is what a stick held in a circle does
+      // every revolution. It ends up inside the control and it was never a tap.
+      down({ preventDefault() {}, pointerId: 5, pointerType: "touch", clientX: cx, clientY: cy })
+      // Deliberately inside `HINT_TAP_MS`, so that the only thing that can catch
+      // this gesture is the travel flag and not the duration.
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * Math.PI * 2
+        move({
+          pointerId: 5,
+          pointerType: "touch",
+          clientX: cx + Math.sin(a) * 70,
+          clientY: cy - 70 + Math.cos(a) * 70,
+        })
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      up({ pointerId: 5, pointerType: "touch", clientX: cx, clientY: cy })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "a stick swept in a circle back to where it started asked for a hint",
+      )
+
+      // A thumb that lands there and simply STAYS is not a tap either.
+      down({ preventDefault() {}, pointerId: 4, pointerType: "touch", clientX: cx, clientY: cy })
+      for (let i = 0; i < 60; i++) {
+        wall += 16.7
+        t = pump(frames, 1, t)
+      }
+      up({ pointerId: 4, pointerType: "touch", clientX: cx, clientY: cy })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "a thumb resting on the control for a second asked for a hint",
       )
       handle.unmount()
     })
@@ -494,8 +580,11 @@ test("the shell is wired to the hint: a tap unfolds the tree, and so does the qu
       assert.equal(quiet.text.includes("?"), false, "a hint arrived in the first fifth of a second")
 
       // Two minutes of a child sitting there, which is what "stuck" looks like.
-      for (let i = 0; i < 200 && !quiet.text.includes("?"); i++) {
-        wall += 600
+      // The hint's clock is PLAYED time now, accumulated in `Arena.step` off the
+      // frame delta, so this has to be real frames — which is also the point:
+      // `wall` moving on its own can no longer unfold anything.
+      for (let i = 0; i < 8000 && !quiet.text.includes("?"); i++) {
+        wall += 16.7
         t = pump(frames, 1, t)
       }
       assert.ok(
@@ -542,6 +631,7 @@ test("the shell is wired to the hint: a tap unfolds the tree, and so does the qu
         const keyDowns = handlers.get("keydown") ?? []
         assert.ok(keyDowns.length > 0, "the keyboard listener was not installed")
         for (const fn of keyDowns) fn({ key: "h", repeat: false, preventDefault() {} })
+        // A key has no release to wait for; `H` fires on the press.
         keys.text.length = 0
         t = pump(frames, 3, t)
         assert.ok(keys.text.includes("?"), "pressing H drew no tree — the key is not wired")
