@@ -152,7 +152,7 @@ import type {
 } from "../../sdk/src/index.ts"
 import { setHostInsets } from "../game-chrome/insets.ts"
 import { setHostSound } from "../game-audio/index.ts"
-import { connect } from "../../sdk/src/index.ts"
+import { MAX_REQUESTS_PER_SECOND, connect } from "../../sdk/src/index.ts"
 
 /** The shape both games declare locally. Kept structurally identical. */
 export type Question = {
@@ -387,12 +387,76 @@ const HAPTIC: Record<HapticKind, "tick" | "seat" | "settle" | "refuse"> = {
  * How many questions to keep ahead of the game.
  *
  * FUSE pumps ten at a time when a level turns over, so the pool has to absorb a
- * burst without the loop ever seeing an empty one. Two round trips per question
- * (`items.next` then `items.reveal`) at 120 requests per second is far more
- * headroom than 64 items need.
+ * burst without the loop ever seeing an empty one.
+ *
+ * The arithmetic that used to be written here — "two round trips per question at
+ * 120 requests per second is far more headroom than 64 items need" — was the
+ * wrong way round, and it was wrong at every mount of every pack. A question
+ * costs two calls, sixty-four of them cost a hundred and twenty-eight, and the
+ * limit is a hundred and twenty in a SLIDING second, not a hundred and twenty
+ * per question. Measured on the shipped code against a fake host that answers
+ * immediately: **130 calls between `attach` and the first question, 10 of them
+ * refused with `rate_limited`** — and 150 with 30 refused for a pack whose
+ * declaration has it pinned, which is the shape the note on `parked` was
+ * already worried about. See `PREFETCH_BUDGET` for what now paces it.
  */
 export const POOL_TARGET = 64
 export const POOL_FLOOR = 32
+
+/**
+ * The share of the host's request budget the PREFETCH is allowed to spend.
+ *
+ * `bridge.ts` allows `MAX_REQUESTS_PER_SECOND` calls from a pack in a sliding
+ * second and refuses the rest with `rate_limited` — every method, prefetch and
+ * answers and haptics alike, counted in one window. Stocking the pool is the
+ * only thing in this module that ever asks for anything in bulk, and it is also
+ * the only thing here that is not urgent: a prefetch is by definition a question
+ * nobody is waiting for. So it gets a share rather than the whole budget, and
+ * the rest is left for the calls a child IS waiting on — the answer they just
+ * gave, the haptic under their thumb.
+ *
+ * Three quarters. Thirty calls a second is a question answered every second
+ * with two dozen haptics under it and still room, and prefetch resumes the
+ * instant the window drains, so the reserve costs nothing when nobody is using
+ * it.
+ *
+ * **The ceiling this puts on sustained supply, since it is a real one.** A
+ * question costs two calls, and the urgent traffic is charged to the same window,
+ * so a pack can be fed `(PREFETCH_BUDGET − urgent) / 2` questions a second
+ * indefinitely: 45 with nothing else going on, and about 40 for a game that
+ * answers and buzzes on every one of them. Above that the pool drains, `take`
+ * hands out `{ ...lastServed, id: "" }`, and 24 of the 27 games draw the previous
+ * question again rather than checking for the empty id. Measured against the
+ * shipped packs, nothing is near it — the deepest bulk consumer in the repo is
+ * FUSE's 26-question pool (`games/merge/src/game.ts`) and every retry loop caps
+ * at eight — and the code this replaces was worse at every rate a pack actually
+ * reaches, because it was being refused outright. If a game ever does become a
+ * bulk consumer, the fix is a hungry-pool tier (a pool under `POOL_FLOOR` is not
+ * a prefetch — the child is about to arrive at it — so it should be allowed past
+ * the share), not a bigger share.
+ *
+ * It is expressed against the SDK's own constant so the two cannot drift on the
+ * DEFAULT: the pack does not get to have an opinion about what the host allows.
+ * `bridge.ts` does take a `maxRequestsPerSecond` override, which today only its
+ * own tests pass; a host that lowered it for a low-end device would put every
+ * pack back over budget, and the honest fix for that is the limit arriving on
+ * `Connect` rather than being assumed here.
+ */
+export const PREFETCH_BUDGET = Math.floor(MAX_REQUESTS_PER_SECOND * 0.75)
+
+/**
+ * The most calls one `acquire()` can spend.
+ *
+ * Worst case is the pinned path that falls through: a pin, the skip that closes
+ * it, the host's own arrival, the swap, the skip that closes THAT, and a reveal.
+ * The budget is checked with this much room left, because an `acquire` abandoned
+ * half way through has already taken an item out of the host and would leave it
+ * open.
+ */
+export const ACQUIRE_MAX_CALLS = 6
+
+/** The window the host's limit is measured over. Its rule, not ours. */
+export const RATE_WINDOW_MS = 1000
 
 /** A pack that has not seen a question in this long has been left running. */
 const IDLE_MS = 5 * 60 * 1000
@@ -532,6 +596,14 @@ export type GameHostOptions = {
    * behaves exactly as this module did before the field existed.
    */
   readonly skills?: readonly string[]
+  /**
+   * The clock the request budget and the flush cooldown are measured on.
+   *
+   * Injectable for the same reason `bridge.ts` injects one: the host's limit is
+   * a sliding SECOND, and a test that has to sleep through one to prove the
+   * prefetch resumes is a test nobody runs. Defaults to `Date.now`.
+   */
+  readonly now?: () => number
 }
 
 export type MountedHost = {
@@ -729,6 +801,91 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   const domain = options.domain ?? "arith"
   const autoFlush = options.autoFlush ?? true
   const granted = new Set<Capability>(client.granted)
+  const now = options.now ?? ((): number => Date.now())
+
+  // ── What this pack has spent of the host's request budget ──────────────────
+  //
+  // The same sliding window `bridge.ts` enforces, kept on this side of the wire
+  // so the prefetch can stay inside it instead of discovering the limit by being
+  // refused. Every call this module makes is charged here — not only the
+  // prefetch — because the host counts them all in one window, and a prefetch
+  // that ignored the answers and haptics a game is producing would be pacing
+  // itself against a budget that is not the one it is spending.
+  //
+  // What is NOT here is any throttle on the calls a child is waiting for. An
+  // answer, a skip and a haptic are sent the moment the game says so, and the
+  // prefetch yields to them. Nor are the calls a game makes on `mounted.client`
+  // itself — forge and merge-idle read a save at mount — which is another reason
+  // the prefetch takes a share and not the lot: the reserve is what covers the
+  // traffic this module cannot see.
+
+  /** When each call this module made was made, oldest first. */
+  const spend: number[] = []
+
+  /** Calls inside the current window, with the expired ones dropped. */
+  const spent = (): number => {
+    const cutoff = now() - RATE_WINDOW_MS
+    while (spend.length > 0 && (spend[0] ?? 0) <= cutoff) spend.shift()
+    return spend.length
+  }
+
+  /**
+   * Charge one call to the window.
+   *
+   * Expired timestamps are dropped HERE and not only where the budget is read,
+   * because a game with a full pool reads it rarely and spends anyway: horde
+   * asks for a haptic per hit, and a window pruned only by the prefetch would
+   * hold every one of them for as long as the pack ran.
+   */
+  const charge = (): void => {
+    spent()
+    spend.push(now())
+  }
+
+  /** Whether the prefetch may start one more `acquire` without going over. */
+  const affordsPrefetch = (): boolean => spent() + ACQUIRE_MAX_CALLS <= PREFETCH_BUDGET
+
+  /**
+   * The client, with every call charged against the window above.
+   *
+   * A wrapper rather than a `charge()` at each of the nine call sites, so a call
+   * added later cannot quietly escape the budget: nothing below this line
+   * touches `client` except `settings`, `on` and `dispose`, none of which cross
+   * the wire.
+   */
+  const metered: Pick<
+    HostClient,
+    "nextItem" | "reveal" | "skip" | "answer" | "progress" | "haptic" | "transition"
+  > = {
+    nextItem: (ask) => {
+      charge()
+      return client.nextItem(ask)
+    },
+    reveal: (itemId) => {
+      charge()
+      return client.reveal(itemId)
+    },
+    skip: (itemId) => {
+      charge()
+      return client.skip(itemId)
+    },
+    answer: (input) => {
+      charge()
+      return client.answer(input)
+    },
+    progress: (fraction) => {
+      charge()
+      return client.progress(fraction)
+    },
+    haptic: (cue) => {
+      charge()
+      return client.haptic(cue)
+    },
+    transition: (kind, label) => {
+      charge()
+      return client.transition(kind, label)
+    },
+  }
 
   const pool: Pooled[] = []
   /** Questions this module has handed to the game and not yet reported on. */
@@ -738,7 +895,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let filling = false
   let disposed = false
   let lastServed: Question | null = null
-  let lastAsk = Date.now()
+  let lastAsk = now()
   let reported = 0
   /** Whether a failed `items.skip` has already been said out loud. */
   let skipFailed = false
@@ -761,7 +918,9 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let fresh: number | null = null
   /** The difficulty the pool was last stocked for. */
   let filledFor: number | null = null
-  let lastFlush = 0
+  /** `now()` and not 0: an injected clock starting near zero would otherwise
+   * arm the flush cooldown at mount, which `Date.now()` never does. */
+  let lastFlush = now()
 
   // ── What kind of maths this pack declared it does ──────────────────────────
 
@@ -903,7 +1062,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
    * Failure is the older-host case and is already said out loud by `skip`.
    */
   const close = (itemId: string) => {
-    void client.skip(itemId).catch(() => {
+    void metered.skip(itemId).catch(() => {
       // Deliberately quiet HERE: `host.skip` owns that message, says it once,
       // and states the consequence. Two copies of it is one too many.
     })
@@ -952,7 +1111,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
 
   /** Reveal the answer and build the question, or `null` if it cannot be placed. */
   const draw = async (item: Item): Promise<Pooled | null> => {
-    const canonical = canReveal ? await client.reveal(item.id) : ""
+    const canonical = canReveal ? await metered.reveal(item.id) : ""
     if (canonical === "") {
       // No reveal grant means no placeable answer. Both games need one,
       // so this is loud rather than a silently duller game.
@@ -995,7 +1154,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       const pin = rescueSkill()
       if (pin !== null) {
         sincePeek += 1
-        const pinned = await client.nextItem(askShape(pin))
+        const pinned = await metered.nextItem(askShape(pin))
         if (pinned !== null) {
           record(pin, pinned)
           if (admits(pinned.skillId) && !overCeiling(pinned)) return await draw(pinned)
@@ -1009,7 +1168,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     }
     sincePeek = 0
 
-    const arrival = await client.nextItem(askShape())
+    const arrival = await metered.nextItem(askShape())
     if (arrival === null) return null
     if (!restricting() || admits(arrival.skillId)) {
       // The host is serving something this pack covers, so it is not parked and
@@ -1023,7 +1182,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       surrender("any of them")
       return await draw(arrival)
     }
-    const swap = await client.nextItem(askShape(pin))
+    const swap = await metered.nextItem(askShape(pin))
     if (swap === null) {
       // The host had one question and not two. Use the one it gave.
       return await draw(arrival)
@@ -1086,7 +1245,16 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     void (async () => {
       try {
         while (!disposed && pool.length < POOL_TARGET) {
-          if (Date.now() - lastAsk > IDLE_MS) break
+          if (now() - lastAsk > IDLE_MS) break
+          // The one place in this module that asks for anything in bulk, and so
+          // the one place that has to look at what is left of the host's budget.
+          // Stopping is safe and waiting is not: `fill` is called again on every
+          // hand-out, on `focus` and on every flush, so the top-up resumes at the
+          // next question the game asks for with the window a second emptier —
+          // and the pool is `POOL_FLOOR` deep before the first frame either way.
+          // Awaiting a timer here instead would put a sleep in front of a child
+          // for questions nobody is waiting for.
+          if (!affordsPrefetch()) break
           // Read every time round the loop, not once: a difficulty change while
           // a refill is in flight has to reach the questions still to come.
           const entry = await acquire()
@@ -1111,7 +1279,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   }
 
   const flushNow = () => {
-    lastFlush = Date.now()
+    lastFlush = now()
     filledFor = aim()
     if (aim() !== null && pool.length > FLUSH_KEEP) {
       // A focused value survives a flush whatever its difficulty. `focus`
@@ -1145,7 +1313,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     // spread the host serves from.
     const band = target === null ? HOST_FLUSH_BAND : FLUSH_BAND
     if (moved < band) return
-    if (moved < FLUSH_URGENT && Date.now() - lastFlush < FLUSH_COOLDOWN_MS) return
+    if (moved < FLUSH_URGENT && now() - lastFlush < FLUSH_COOLDOWN_MS) return
     flushNow()
   }
 
@@ -1165,7 +1333,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   }
 
   const take = (request?: DifficultyRequest): Question => {
-    lastAsk = Date.now()
+    lastAsk = now()
     applyRequest(request)
     // Once per question, whether or not the game said anything. `applyRequest`
     // returns early when there is no request, and that early return is exactly
@@ -1267,7 +1435,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       // at a tablet wants: forty answered questions is a session.
       reported += 1
       const fraction = Math.min(1, reported / SESSION_ITEMS)
-      void client.progress(fraction).catch(() => {})
+      void metered.progress(fraction).catch(() => {})
       options.onProgress?.(fraction)
 
       const land = (verdict: boolean, judged: boolean) => {
@@ -1289,7 +1457,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       // kept beside it rather than discarded: it is the only signal available
       // if this round trip never comes back, and it is available a round trip
       // sooner when it does.
-      void client
+      void metered
         .answer({ itemId: questionId, response: answered, latencyMs: Math.max(0, Math.round(ms)) })
         .then(
           (judgement) => {
@@ -1310,7 +1478,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       // no longer produce an `items.answer` call, so nothing about this
       // question can turn into a wrong attempt afterwards.
       served.delete(questionId)
-      void client.skip(questionId).catch((error: unknown) => {
+      void metered.skip(questionId).catch((error: unknown) => {
         if (skipFailed) return
         skipFailed = true
         // Loud, once. The consequence is small and worth stating precisely: the
@@ -1327,7 +1495,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
 
     haptic: (kind) => {
       if (!granted.has("haptics")) return
-      void client.haptic(HAPTIC[kind]).catch(() => {
+      void metered.haptic(HAPTIC[kind]).catch(() => {
         // A device with no motor is not an error a child should hear about,
         // and the host has already logged anything that is.
       })
@@ -1362,7 +1530,7 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       // Synchronous on the outside, because it is called from inside a game
       // loop where there is no `await`, and swallowed on the inside: a host
       // that could not take a stopping point must not take the game down.
-      void client.transition(kind, label).catch((error: unknown) => {
+      void metered.transition(kind, label).catch((error: unknown) => {
         console.error("[pack] a stopping point could not be reported", error)
       })
     },
@@ -1379,7 +1547,17 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       // the opening wave too: trebuchet's first wave was the unplayable one, and
       // a restriction that starts working on question nine is a restriction that
       // misses the only part of the session a child might not come back from.
-      for (let i = 0; i < POOL_FLOOR && !disposed; i++) {
+      //
+      // Inside the budget like every other question too. `2 * POOL_FLOOR` is 64
+      // and the prefetch share is 90, so on a fresh mount — an empty window, by
+      // construction: the bridge is built with the pack — this loop runs all the
+      // way and the first frame is stocked exactly as deep as it was. The check
+      // is here for the shapes that cost more than two calls a question: a pinned
+      // pack pays three, and a `PEEK_EVERY` fall-through pays five. Stocking
+      // twenty-five questions and letting the pool finish filling as the child
+      // plays is a game that works; stocking thirty-two and being refused for the
+      // last of them is a game that logs `rate_limited` at every mount.
+      for (let i = 0; i < POOL_FLOOR && !disposed && affordsPrefetch(); i++) {
         const entry = await acquire()
         if (entry === null) break
         pool.push(entry)

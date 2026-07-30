@@ -16,16 +16,50 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import type { Capability, HostClient, Item, ItemRequest, Judgement, Settings } from "../../sdk/src/index.ts"
+import { MAX_REQUESTS_PER_SECOND } from "../../sdk/src/index.ts"
+import type { GameHostOptions, MountedHost } from "./index.ts"
 import {
   attachDeclared,
-  attachGameHost,
+  attachGameHost as attachOnClock,
   declaredSkills,
   domainOf,
   packRootUrl,
   toUnit,
+  ACQUIRE_MAX_CALLS,
   FLUSH_KEEP,
   POOL_FLOOR,
+  POOL_TARGET,
+  PREFETCH_BUDGET,
+  RATE_WINDOW_MS,
 } from "./index.ts"
+
+/**
+ * How long a fake round trip takes.
+ *
+ * The adapter now measures what it spends of the host's per-second request
+ * budget (`PREFETCH_BUDGET`), so a fake host that answers in *zero* elapsed time
+ * is no longer a neutral fake: it models a wire with infinite bandwidth, and
+ * every test below that serves two dozen questions would be claiming a child
+ * answered them all inside the same millisecond. Fifteen milliseconds a call is
+ * a plausible `postMessage` round trip through the host's generator, and every
+ * method the adapter charges spends one — see `tick`, which is separate from
+ * `record` for exactly that reason. That puts the fake at 66 calls a second:
+ * measured peak 67 in any virtual second against a gate of 84, so the pacing
+ * never binds and every assertion in this file means what it meant before it
+ * existed. The two `[measured]` lines this file prints are byte-identical to the
+ * ones it printed on main, which is the check that says so.
+ *
+ * A test that wants the *worst* case says so, by passing a frozen clock: see
+ * "an attach and a first question stay inside the host's own rate limit".
+ */
+const ROUND_TRIP_MS = 15
+
+/** Virtual milliseconds. Monotonic across the file; only ever moves forward. */
+let clock = 0
+
+/** `attachGameHost` on that clock, unless a test brings its own. */
+const attachGameHost = (client: HostClient, options: GameHostOptions = {}): MountedHost =>
+  attachOnClock(client, { now: () => clock, ...options })
 
 /** Rungs on the fake host's ladder. Enough that 1/16 is a visible step. */
 const RUNGS = 16
@@ -92,6 +126,26 @@ function fakeHost(
   const skillAt = options.skillAt ?? ((index: number) => `arith.rung.${String(Math.floor(index / 4))}`)
   const asks: Ask[] = []
   const calls: string[] = []
+  /**
+   * A round trip's worth of virtual time.
+   *
+   * Separate from `record` because three of the methods the adapter CHARGES —
+   * `haptic`, `progress` and `transition` — are deliberately not in `calls`,
+   * which several tests count. They still cross the wire and still cost time, and
+   * a fake that charged them without spending any clock ran at 89 charged calls a
+   * virtual second: over the prefetch gate, which stalled the top-up half way
+   * through `skillsServed(24)` and quietly made the budget, rather than the pool
+   * logic, the thing that test was measuring.
+   */
+  const tick = (): void => {
+    clock += ROUND_TRIP_MS
+  }
+
+  /** One call across the wire: recorded, and the clock moves by a round trip. */
+  const record = (method: string): void => {
+    calls.push(method)
+    tick()
+  }
   const answers: { itemId: string; response: string }[] = []
   const skips: string[] = []
   const canonicals = new Map<string, string>()
@@ -115,7 +169,7 @@ function fakeHost(
 
       nextItem: (ask: Ask = {}) => {
         asks.push(ask)
-        calls.push("items.next")
+        record("items.next")
         const span = Math.max(1, rungs - 1)
         const cap = ask.maxDifficulty === undefined ? 1 : ask.maxDifficulty
         const wanted = ask.difficulty === undefined ? fake.standing / span : ask.difficulty
@@ -161,7 +215,7 @@ function fakeHost(
       },
 
       answer: (input) => {
-        calls.push("items.answer")
+        record("items.answer")
         answers.push({ itemId: input.itemId, response: input.response })
         if (fake.answerFails) return Promise.reject(new Error("the host is gone"))
         return Promise.resolve({
@@ -171,7 +225,7 @@ function fakeHost(
         } satisfies Judgement)
       },
       skip: (itemId) => {
-        calls.push("items.skip")
+        record("items.skip")
         skips.push(itemId)
         // What an older host — one shipped before `items.skip` existed — would
         // do with the call, so the adapter is held to surviving it.
@@ -179,11 +233,14 @@ function fakeHost(
         return Promise.resolve()
       },
       reveal: (itemId) => {
-        calls.push("items.reveal")
+        record("items.reveal")
         return Promise.resolve(canonicals.get(itemId) ?? "")
       },
       learnerSummary: () => Promise.resolve({ skills: [] }),
-      haptic: () => Promise.resolve(),
+      haptic: () => {
+        tick()
+        return Promise.resolve()
+      },
       sound: () => Promise.resolve(),
       milestone: () => Promise.resolve(),
       storage: {
@@ -192,9 +249,15 @@ function fakeHost(
         remove: () => Promise.resolve(),
         keys: () => Promise.resolve([]),
       },
-      progress: () => Promise.resolve(),
+      progress: () => {
+        tick()
+        return Promise.resolve()
+      },
       end: () => Promise.resolve(),
-      transition: () => Promise.resolve(),
+      transition: () => {
+        tick()
+        return Promise.resolve()
+      },
       on: () => () => {},
       dispose: () => {},
     },
@@ -1207,6 +1270,203 @@ test("honouring the declaration does not spend the host's request budget", async
     restricted.session <= baseline.session * 1.25,
     `24 questions cost ${String(restricted.session)} calls with a declaration against ` +
       `${String(baseline.session)} without — ${(restricted.session / baseline.session).toFixed(2)}×`,
+  )
+})
+
+/* ────────────────────── the budget in absolute terms ────────────────────────
+ *
+ * The test above compares a restricted mount to an unrestricted one and never
+ * asks what either of them costs, which is how the unrestricted one went on
+ * breaching the limit in every pack for as long as it did. `warm()` awaits
+ * POOL_FLOOR questions and the fill behind it goes on to POOL_TARGET, at two
+ * calls each: 128 calls before the first question, against a hundred and twenty
+ * in a sliding second. Measured on the code before this, with a frozen clock:
+ * 130 calls, 10 of them refused with `rate_limited`; 150 and 30 for a pack whose
+ * declaration has it pinned. What a child got for that was a pool that came up
+ * short and a `fill` that died on the rejection, and it happened at every mount
+ * of all 27 packs.
+ */
+
+/**
+ * Every call a mount makes, counted — including the ones `fakeHost` ignores.
+ *
+ * `{...client}` is safe for the fake, which is a plain object; it would drop
+ * getters and prototype methods from a real `connect()` client, and there is no
+ * reason to point one at this.
+ */
+function countingClient(client: HostClient): { client: HostClient; count: () => number } {
+  let n = 0
+  const tick = <T,>(run: () => T): T => {
+    n += 1
+    return run()
+  }
+  const counted: HostClient = {
+    ...client,
+    nextItem: (ask) => tick(() => client.nextItem(ask)),
+    reveal: (itemId) => tick(() => client.reveal(itemId)),
+    skip: (itemId) => tick(() => client.skip(itemId)),
+    answer: (input) => tick(() => client.answer(input)),
+    progress: (fraction) => tick(() => client.progress(fraction)),
+    haptic: (cue) => tick(() => client.haptic(cue)),
+    sound: (cue) => tick(() => client.sound(cue)),
+    milestone: (name) => tick(() => client.milestone(name)),
+    transition: (kind, label) => tick(() => client.transition(kind, label)),
+    learnerSummary: () => tick(() => client.learnerSummary()),
+  }
+  return { client: counted, count: () => n }
+}
+
+test("an attach and a first question stay inside the host's own rate limit", async () => {
+  // The clock is FROZEN, which is the worst case and also the one the app is:
+  // `bridge.ts` counts every method in one sliding second and dispatches on the
+  // same thread that generates the question, so nothing here has to be slow for
+  // all of it to land inside one window.
+  const spend = async (skills?: readonly string[]) => {
+    const fake = fakeHost({ skillAt })
+    // Rung 5 for the pinned arm, because that is the ONE band in this ladder
+    // TREBUCHET cannot use (`dw.mul.scale.times-power-of-ten`) and standing
+    // anywhere else means measuring an unpinned pack while calling it pinned.
+    fake.standing = skills === undefined ? 12 : 5
+    const counted = countingClient(fake.client)
+    const mounted = attachOnClock(counted.client, {
+      now: () => 0,
+      ...(skills === undefined ? {} : { skills }),
+    })
+    await withConsole(async () => {
+      await mounted.warm()
+      // Everything a child's first question costs: the question, the answer they
+      // give, the haptic under it, and the top-up behind all three.
+      const first = mounted.host.next()
+      mounted.host.haptic("light")
+      mounted.host.report({ questionId: first.id, correct: true, ms: 1200, answered: first.answer })
+      await settle()
+    })
+    mounted.dispose()
+    return { calls: counted.count(), pinnedAsks: fake.asks.filter((ask) => ask.skillId !== undefined).length }
+  }
+
+  const plain = await spend()
+  const pinned = await spend(TREBUCHET)
+
+  // The arms have to be the two things they claim to be, or this test is one
+  // measurement written down twice.
+  assert.equal(plain.pinnedAsks, 0, "the unrestricted arm named a skill")
+  assert.ok(
+    pinned.pinnedAsks > 0,
+    "the pinned arm never named a skill, so it measured an unrestricted mount",
+  )
+
+  assert.ok(
+    plain.calls <= MAX_REQUESTS_PER_SECOND,
+    `an attach and a first question spent ${String(plain.calls)} calls in one sliding second; the host ` +
+      `refuses everything past ${String(MAX_REQUESTS_PER_SECOND)}, so the pool comes up short and ` +
+      `the child waits for a question that was rate-limited`,
+  )
+  assert.ok(
+    pinned.calls <= MAX_REQUESTS_PER_SECOND,
+    `the same mount for a pack whose declaration has it pinned spent ${String(pinned.calls)} calls`,
+  )
+})
+
+test("and the pool is still stocked when the child arrives", async () => {
+  // The other half, and the reason this is not fixed by prefetching less: a
+  // budget kept by never stocking anything is a blank chip in a child's hand.
+  // POOL_FLOOR questions back to back, on the same frozen clock, out of a pool
+  // that was never allowed a second call.
+  //
+  // Both arms, because `warm` is now allowed to stop early and a PINNED pack pays
+  // three calls a question rather than two — so what its mount comes back with is
+  // a thing this file has to state rather than leave to the arithmetic. The
+  // promise is the same for both and it is the one `warm` always made: POOL_FLOOR
+  // questions a child can play out of, before the first frame, inside one window.
+  // Measured, frozen clock: 43 drainable questions unrestricted and 37 pinned.
+  const stocked = async (skills?: readonly string[]) => {
+    const fake = fakeHost({ skillAt })
+    // Rung 5 is the band TREBUCHET cannot use; see the test above.
+    fake.standing = skills === undefined ? 12 : 5
+    const mounted = attachOnClock(fake.client, {
+      now: () => 0,
+      ...(skills === undefined ? {} : { skills }),
+    })
+    const want = POOL_FLOOR
+    const said = await withConsole(async () => {
+      await mounted.warm()
+      await settle()
+      for (let i = 0; i < want; i++) {
+        const question = mounted.host.next()
+        assert.notEqual(
+          question.id,
+          "",
+          `question ${String(i + 1)} of ${String(want)} came out of a dry pool` +
+            `${skills === undefined ? "" : " (pinned pack)"}`,
+        )
+      }
+    })
+    mounted.dispose()
+    assert.deepEqual(
+      said.filter((line) => line.includes("ran dry")),
+      [],
+      `the pool ran dry inside the first ${String(want)} questions`,
+    )
+    assert.equal(
+      fake.asks.some((ask) => ask.skillId !== undefined),
+      skills !== undefined,
+      "the pinned arm has to be pinned and the plain arm has to not be",
+    )
+  }
+  await stocked()
+  await stocked(TREBUCHET)
+})
+
+test("the prefetch resumes once the window has drained", async () => {
+  // Stopping is only safe if it starts again. `fill` is called on every hand-out,
+  // so the top-up resumes at the next question the game asks for — with the
+  // window a second emptier, and without a timer anywhere.
+  const fake = fakeHost()
+  let at = 0
+  const mounted = attachOnClock(fake.client, { now: () => at })
+  await mounted.warm()
+  await settle()
+  const atMount = fake.asks.length
+  // The premise: a full pool costs more than the share, so a mount inside one
+  // window cannot have reached POOL_TARGET. Said out loud, because lowering
+  // POOL_TARGET below the share would make the assertion below meaningless
+  // rather than false.
+  assert.ok(
+    2 * POOL_TARGET > PREFETCH_BUDGET,
+    `a full pool costs ${String(2 * POOL_TARGET)} calls and the prefetch share is ` +
+      `${String(PREFETCH_BUDGET)}; this test cannot say anything while it fits`,
+  )
+  assert.ok(
+    atMount < POOL_TARGET,
+    `the mount stocked ${String(atMount)} questions inside one window, which is more than the ` +
+      `budget allows it to`,
+  )
+
+  at += RATE_WINDOW_MS + 1
+  mounted.host.next()
+  await settle()
+  assert.ok(
+    fake.asks.length > POOL_TARGET,
+    `the pool stopped at ${String(fake.asks.length)} questions and never came back for the rest ` +
+      `of POOL_TARGET (${String(POOL_TARGET)}) — a prefetch that stops has to start again`,
+  )
+  mounted.dispose()
+})
+
+test("the share leaves the host room, and warm fits inside the share", () => {
+  // Two facts about the constants, so that raising one of them fails here rather
+  // than at a child's mount.
+  assert.ok(
+    PREFETCH_BUDGET < MAX_REQUESTS_PER_SECOND,
+    `the prefetch may spend ${String(PREFETCH_BUDGET)} of the host's ` +
+      `${String(MAX_REQUESTS_PER_SECOND)}, which leaves nothing for the answer a child just gave`,
+  )
+  assert.ok(
+    2 * POOL_FLOOR + ACQUIRE_MAX_CALLS <= PREFETCH_BUDGET,
+    `warm() stocks POOL_FLOOR (${String(POOL_FLOOR)}) questions at two calls each before the first ` +
+      `frame, which is ${String(2 * POOL_FLOOR)} of the ${String(PREFETCH_BUDGET)} the prefetch ` +
+      `has — so the pool a child starts with would be capped by the budget rather than by the floor`,
   )
 })
 
