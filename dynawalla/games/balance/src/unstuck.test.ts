@@ -67,12 +67,24 @@ import { afterBoard, afterUnshowableBoard, makePacing } from "./pacing.ts";
 import { makeStubHost } from "./stubHost.ts";
 // The host's own item service. `ladder()` is the sixty-six rungs that ship;
 // `answerText` and `choicesFor` are what fill `Question.answer` and
-// `Question.distractors`; the prompt is assembled the way `items.ts` assembles
-// it, glyph for glyph, including U+00F7 for division.
+// `Question.distractors`.
+//
+// **The prompt is assembled by calling the host's own `drawStatement`, not by
+// interpolating `a OP b` here.** This file used to do the latter, and it was the
+// twenty-ninth harness in this repository to make that mistake — `items.ts:116`
+// names the other twenty-eight: "all 28 stub hosts write `a OP b` and never a
+// blank". The cost was specific. `dw.alg.equality.missing-addend` is an active
+// row that the host serves as `7 + □ = 12`; reconstructed as `7 + 12` it is a
+// statement the adapter is right to refuse, so all three of its levels showed up
+// as content this pack cannot draw — when in fact a beam is the best picture of a
+// missing addend there is. A harness that writes the prompt itself measures the
+// harness.
 import {
   answerText,
   binaryOperator,
+  blankPosition,
   choicesFor,
+  drawStatement,
   ladder,
   operandsOf,
 } from "../../../dynawalla-app/src/packs/items.ts";
@@ -113,7 +125,12 @@ function sweep(seeds = SEEDS): Served[] {
         operator: operator.glyph,
         question: {
           id: `${exercise.exerciseId}#${String(s)}`,
-          prompt: `${operands[0]} ${operator.glyph} ${operands[1]}`,
+          prompt: drawStatement(
+            operands[0],
+            operands[1],
+            operator.glyph,
+            blankPosition(exercise.prompt.key) ?? "none",
+          ),
           answer: canonical,
           distractors: choicesFor(exercise, places)
             .map((c) => c.text)
