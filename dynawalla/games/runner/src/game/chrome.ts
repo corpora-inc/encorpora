@@ -190,11 +190,17 @@ const PROMPT_W = 300;
  * Room above the voltage bar for its own label.
  *
  * An *allowance*, not a mirror: the label is `font-size:clamp(8px,1.5vw,11px)`
- * five pixels above the bar, so 16px is the most it ever needs and 18 is what it
- * gets. Erring upward is the safe direction — it makes the box this file reports
- * slightly larger than the ink, so every clearance assertion is conservative.
+ * five pixels above the bar, inside 1px of padding on a bed of its own — so 18px
+ * is the most it ever needs and 20 is what it gets. Erring upward is the safe
+ * direction: it makes the box this file reports slightly larger than the ink, so
+ * every clearance assertion is conservative.
+ *
+ * The bed is why the padding is here at all. In landscape this label is out over
+ * the OCEAN rather than the deck, and in THE BLEACH the ocean is bone while the
+ * deck is near-black — one ink cannot clear both, so it is given a backdrop it
+ * can be derived against. See `contrast.ts`.
  */
-const VOLT_LABEL_H = 18;
+const VOLT_LABEL_H = 20;
 
 /**
  * Every HUD box a child reads or touches, in CSS pixels.

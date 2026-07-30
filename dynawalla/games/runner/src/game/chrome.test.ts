@@ -44,6 +44,7 @@ import {
   type StageEl,
 } from "./chrome.ts";
 import { HUD_CSS } from "./hud.ts";
+import { inkVars } from "./contrast.ts";
 import { BAND, fullFrame, payoffEdge, popupEdge, readBand, type GateGeom } from "./readband.ts";
 import { INK, TRACK } from "./glyphs.ts";
 
@@ -332,13 +333,20 @@ test("hudVars fills in every custom property the stylesheet asks for", () => {
   // silently falls back to its default, which is how a HUD laid out for a phone
   // with no insets would keep painting on one that has them.
   const vars = hudVars(360, 780, { top: 24, right: 0, bottom: 0, left: 0 });
-  // `--vt-accent` is the live biome colour, written on the root by `mount.ts` on
-  // every biome change. It is not geometry and does not belong in `hudVars`.
-  const setElsewhere = new Set(["--vt-accent"]);
+  // The colours are the other half of the same contract and are owned by
+  // `contrast.ts` — geometry here, ink there, and between them every `var()` in
+  // the sheet has an author-supplied value. `--vt-accent` is the live biome
+  // colour, written on the root by `mount.ts` on every biome change.
+  const inks = inkVars(0x02030c, 0x071230, 0x070a18, 0x37ecff);
+  const setElsewhere = new Set(["--vt-accent", ...Object.keys(inks)]);
   for (const m of HUD_CSS.matchAll(/var\((--vt-[a-z-]+)/g)) {
     const name = m[1] ?? "";
     if (setElsewhere.has(name)) continue;
     assert.ok(name in vars, `the stylesheet reads ${name} and hudVars never sets it`);
+  }
+  // ...and neither module may quietly claim the other's property.
+  for (const name of Object.keys(vars)) {
+    assert.ok(!(name in inks), `${name} is set by BOTH hudVars and inkVars; one of them loses`);
   }
   for (const [name, value] of Object.entries(vars)) {
     assert.ok(/^-?\d+(\.\d+)?px$/.test(value), `${name} is "${value}", which is not a length`);

@@ -19,6 +19,7 @@ import { biomeAt, biomeLength } from "./biomes.ts";
 import { detectTier, TierController, type TierName } from "./tiers.ts";
 import { buildHud, groupDigits, layoutHud, ringCircumference } from "./hud.ts";
 import { makeStage, ndcFrame } from "./chrome.ts";
+import { inkVars } from "./contrast.ts";
 import type { Frame } from "./readband.ts";
 import {
   createInstructions,
@@ -225,6 +226,13 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
   const tmpA = new THREE.Color();
   const tmpB = new THREE.Color();
   const numeralInk: [number, number, number] = [1, 1, 1];
+  // The last blend the inks were derived from. Deriving is a dozen luminance
+  // sums and this runs on every frame of a crossing, so it is skipped when the
+  // three colours it depends on have not moved — which is most frames.
+  let inkTop = -1;
+  let inkSky = -1;
+  let inkDeck = -1;
+  let inkAccent = -1;
   function applyBiomeUniforms(): void {
     const m = easeOutCubic(biomeMix);
     const mixHex = (a: number, b: number, out: THREE.Color) => {
@@ -243,10 +251,32 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     (sky.material.uniforms.uStars as { value: number }).value = lerp(prevBiome.starDensity, biome.starDensity, m);
     const vig = post.composite.uniforms.uVignetteColor.value as THREE.Color;
     vig.copy(shared.uFogColor.value).multiplyScalar(biome.inverted ? 1.1 : 0.55);
-    hud.root.style.color = biome.inverted ? "#12121a" : "#eaf6ff";
     // The chrome borrows the world's accent, so the recharge gate is lit by the
     // biome you died in rather than being a grey box bolted over the top of it.
     hud.root.style.setProperty("--vt-accent", `#${shared.uAccent.value.getHexString()}`);
+    // ...and every ink is derived from the surface it lands on, off the LIVE
+    // blend rather than the biome record, so a child who dies half way through a
+    // crossing gets a recharge gate legible against the sky that is actually on
+    // screen. This used to be one flat `hud.root.style.color` chosen from
+    // `biome.inverted` — which describes the sky, and the veils do not sit on
+    // the sky. See contrast.ts.
+    const topHex = shared.uSkyTop.value.getHex(THREE.SRGBColorSpace);
+    const skyHex = shared.uSkyBot.value.getHex(THREE.SRGBColorSpace);
+    const deckHex = shared.uDeck.value.getHex(THREE.SRGBColorSpace);
+    const accentHex = shared.uAccent.value.getHex(THREE.SRGBColorSpace);
+    if (
+      topHex !== inkTop ||
+      skyHex !== inkSky ||
+      deckHex !== inkDeck ||
+      accentHex !== inkAccent
+    ) {
+      inkTop = topHex;
+      inkSky = skyHex;
+      inkDeck = deckHex;
+      inkAccent = accentHex;
+      const vars = inkVars(topHex, skyHex, deckHex, accentHex);
+      for (const [name, value] of Object.entries(vars)) hud.root.style.setProperty(name, value);
+    }
     post.composite.uniforms.uExposure.value = biome.inverted ? 0.88 : 1.06;
     // Candidate numerals are hot white ink with a black stroke in the dark
     // worlds, and black ink with a bone stroke in THE BLEACH. Contrast is never
