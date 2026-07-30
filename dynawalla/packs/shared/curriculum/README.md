@@ -41,7 +41,7 @@ npm run snapshots:update    # rewrite the CG-16 output hashes
 | `src/generators/columnOp/` | `gen.arith.column-op` — the column algorithm, add and subtract, with exact regrouping control including across zeros. |
 | `src/malrules/` | Sixteen executable buggy procedures, and the classifier. |
 | `src/board/` | Reading a column item back out of the public prompt contract, and the **counting-board contrast pair**. |
-| `src/graph/` | The graph, and `ladder.test.ts` — one root, everything climbing from it, `activeNodes()` in prerequisite order. |
+| `src/graph/` | The graph, `ladder.test.ts` — one root, everything climbing from it, `activeNodes()` in prerequisite order — and `closedSpaces.test.ts`, which exhausts every `closedFactSet` declaration so the CG-10 exemption cannot be bought with a large number. |
 | `src/render/registry.ts` | Renderer *declarations*. The data behind CG-8. |
 | `src/validate/` | The gates and `dw-curriculum check`. Tooling: never imported by a pack. |
 | `src/boundary.test.ts` | The pack-consumability boundary, enforced. |

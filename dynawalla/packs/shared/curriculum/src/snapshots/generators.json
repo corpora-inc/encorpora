@@ -66,6 +66,7 @@
     "gen.arith.multidigit-mul@1|dw.mul.multidigit.long-multiplication|L2": "1239bfc39b12417f",
     "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L0": "44651d77b0560687",
     "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L1": "b9d84b5000ca76cb",
-    "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L2": "e29ba443acfffd08"
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L2": "e29ba443acfffd08",
+    "gen.arith.missing-operand@1|dw.alg.equality.missing-addend|L3": "eb4ebb3d04a9468c"
   }
 }

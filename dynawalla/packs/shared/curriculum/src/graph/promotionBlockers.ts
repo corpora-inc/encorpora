@@ -10,13 +10,20 @@
  *
  * Three further blockers are named below, and each is a different kind of thing.
  *
- * **CG-10**, the variant-space floor. It requires an estimated space of 975 — a
- * 40-item practice run repeating no more than one item in fifty — and the levels
- * in `CG10_BLOCKED_LEVELS` do not clear it. Some are genuinely short of problems in
- * the world: `dw.alg.equality.missing-subtrahend` L0 draws both operands from 1..9,
- * so its true space is exactly 81 items and no generator work changes that. Others
- * would clear the floor with a wider draw, and two of them now have one — see the
- * note under the list.
+ * **CG-10**, the variant-space floor — and `CG10_BLOCKED_LEVELS` is now **empty**. It
+ * requires an estimated space of 975, a 40-item practice run repeating no more than
+ * one item in fifty. Twenty-four levels did not clear it and every one is resolved,
+ * by one of the two instruments and never by argument: a level whose ceiling was
+ * arbitrarily small was widened, and a level whose space is genuinely all there is
+ * declares `closedFactSet` and is exhausted in `closedSpaces.test.ts`. See the note
+ * under the list.
+ *
+ * **`MIN_RUNG_VARIANTS`**, the floor *under* the floor: 24 distinct problems per rung,
+ * whatever CG-10 says about it, with `SMALL_RUNG_LEVELS` naming the one active level
+ * that is exempt and why. `ladder.test.ts` measures it over the *active* graph, which
+ * is what a child stands on; `families.property.test.ts` measures the same bound over
+ * the **whole** graph, so a draft rung authored under the floor is named before it can
+ * be promoted rather than after.
  *
  * **The apparatus a pack builds**, in `PACK_STATEMENT_BLOCKED_SKILLS`, and this one
  * is new with the blank statement. A question the host can now *state* is not a
@@ -44,49 +51,52 @@
  * Labels are `<skill id> L<level>`, the same form the sweep prints.
  */
 
-export const CG10_BLOCKED_LEVELS: readonly string[] = [
-  "dw.ns.place.digit-in-place L0",
-  "dw.ns.round.whole-numbers L0",
-  "dw.frac.equivalence.build-equivalent L0",
-  "dw.frac.equivalence.build-equivalent L1",
-  "dw.frac.equivalence.build-equivalent L2",
-  "dw.frac.equivalence.lowest-terms L0",
-  "dw.frac.equivalence.lowest-terms L1",
-  "dw.frac.equivalence.lowest-terms L2",
-  "dw.frac.equivalence.improper-to-mixed L0",
-  "dw.frac.equivalence.improper-to-mixed L1",
-  "dw.frac.equivalence.mixed-to-improper L0",
-  "dw.frac.equivalence.mixed-to-improper L1",
-  "dw.frac.arith.add-like-denominators L0",
-  "dw.frac.arith.add-like-denominators L1",
-  "dw.frac.arith.add-unlike-denominators L0",
-  "dw.frac.arith.subtract-fractions L0",
-  "dw.frac.arith.subtract-fractions L1",
-  "dw.frac.arith.multiply-by-a-whole L0",
-  "dw.frac.arith.multiply-by-a-whole L1",
-  "dw.frac.arith.multiply-fractions L0",
-  "dw.alg.equality.balance-meaning L0",
-  "dw.alg.equality.missing-subtrahend L0",
-  "dw.alg.equality.unknown-minuend L0",
-  "dw.alg.equality.missing-factor L0",
-];
+export const CG10_BLOCKED_LEVELS: readonly string[] = [];
 
 /**
- * Two levels came off this list, and neither by argument.
+ * **Empty**, and it stays here for the reason `NUMERAL_WIDTH_BLOCKED_LEVELS` does: the
+ * list is asserted in *both* directions, so the day a level slips under the floor it is
+ * named by a failing build rather than by somebody noticing.
  *
- * `dw.mul.scale.times-power-of-ten L0` was `47 × 100` — ninety multiplicands times
- * one power, ninety problems — and is now three digits by two powers, which is
- * 1,800. `dw.div.whole.divide-exact L0` was a two-digit quotient over a one-digit
- * divisor, 720 problems, and is now a three-digit quotient, which is 7,200. Both
- * were bounded by a digit count that nothing about the content asked to be small,
- * which is precisely the case `GeneratorBinding.closedFactSet` must not be used
- * for. A level that could be widened and simply has not been is a level that gets
- * widened.
+ * ## What was on it, and what took it off
  *
- * The fact rows added alongside them are the other case and take the other route:
- * there are 121 multiplications in the tables to twelve and no 122nd, so they
- * declare `closedFactSet` and are measured against it. Nothing on this list moved
- * because the floor was argued down.
+ * Twenty-four levels, and two before them. `dw.mul.scale.times-power-of-ten L0` was
+ * `47 × 100` — ninety multiplicands times one power, ninety problems — and is three
+ * digits by two powers, which is 1,800. `dw.div.whole.divide-exact L0` was a two-digit
+ * quotient over a one-digit divisor, 720 problems, and is a three-digit quotient, which
+ * is 7,200. Both were bounded by a digit count that nothing about the content asked to
+ * be small: **a level that could be widened and simply has not been is a level that
+ * gets widened.**
+ *
+ * The remaining twenty-four were the whole of `ns`'s two sub-floor levels, nine `frac`
+ * rows and four `alg` rows, and they split the same way:
+ *
+ * - **Widened**, because the ceiling was arbitrary. `dw.ns.round.whole-numbers`' easiest
+ *   three-digit rung rounded only to the nearest ten (720 problems) and now rounds to
+ *   ten *or* hundred (1,602). `dw.frac.arith.add-like-denominators` L2 was a ceiling of
+ *   16 (1,008 problems, read as ~780 by the gate's estimator) and is a ceiling of 20
+ *   (2,100, read as ~1,180).
+ * - **Declared closed and exhausted**, because the space is all there is.
+ *   `dw.alg.equality.missing-subtrahend` L0 draws both operands from 1..9, so its space
+ *   is exactly 81 items and no generator work changes that. Neither does anything change
+ *   `dw.frac.equivalence.build-equivalent`, whose *entire task* — a reduced fraction
+ *   scaled up, at the family's widest denominator — holds six hundred problems.
+ *
+ * ## The rule the second route now follows, and the loophole it closes
+ *
+ * `closedFactSet` exempts a level from the floor, so an inflated declaration would be a
+ * way to buy the exemption without earning it: CG-10's substituted check is
+ * `distinct ≤ declared`, which passes trivially for any number large enough. So every
+ * declaration in this graph is **exhausted** in `closedSpaces.test.ts` — drawn until the
+ * level stops yielding new items, and required to equal the declared count exactly.
+ * Over-declaring fails, and so does under-declaring.
+ *
+ * That test is also why the field is used only where the space is **below** the floor.
+ * Exhausting a space of a few hundred costs a few thousand seeds; exhausting the 2,280
+ * same-numerator comparisons inside twentieths costs six figures, which is not a PR
+ * gate. Two rungs are left unauthored as a result and `domains/frac.ts` records them:
+ * their true spaces clear the floor and the estimator says otherwise, which is a finding
+ * about CG-10's estimator rather than about the content.
  */
 
 /** The skills above, deduplicated. */
@@ -165,6 +175,23 @@ export const MIN_RUNG_VARIANTS = 24;
  */
 export const SMALL_RUNG_LEVELS: readonly string[] = ["dw.mul.facts.tables-within-five L2"];
 
+/*
+ * Measured twice, over two different graphs, and both directions each time.
+ *
+ * `ladder.test.ts` runs the list above over `activeNodes` — what a child can actually be
+ * served, which is the claim that matters most. `families.property.test.ts` runs the same
+ * bound over the whole graph including the twenty-eight draft rows, and it has to: this
+ * package authors rungs long before it promotes them, so a draft level under the floor
+ * that nothing measured would be discovered by the promotion PR at best and by a child at
+ * worst. It is the same asymmetry that let `dw.div.facts.division-facts` ship a difficulty
+ * table no gate had checked.
+ *
+ * `closedSpaces.test.ts` adds the third reading, from the other side of the same number:
+ * over a level's **whole declared space** rather than over a 500-seed sample of it. A
+ * sample reports what it happened to draw; a space reports what exists, and a rung whose
+ * universe is nineteen items cannot be made wider by sampling it harder.
+ */
+
 /**
  * Prompt templates whose question the host still cannot state — **one**, and what is
  * left after the operator problem and then the blank were fixed.
@@ -228,6 +255,67 @@ export const SMALL_RUNG_LEVELS: readonly string[] = ["dw.mul.facts.tables-within
  * named here by an existing test, not by somebody noticing.
  */
 export const MISSTATED_QUESTION_TEMPLATES: readonly string[] = ["dw.prompt.long-div.remainder"];
+
+/**
+ * Templates whose question is **not a binary operation at all**, and which the only
+ * thing that serves an item therefore refuses outright.
+ *
+ * ## Why this needed to be data
+ *
+ * Because it is the whole reason the `ns` domain has never served a child a single
+ * question, and it was prose in a file header.
+ *
+ * `dynawalla-app/src/packs/items.ts` composes a question out of two operands, an
+ * operator glyph and a blank position. `binaryOperator()` returns `null` for a
+ * template that declares `operator: "none"`, and the caller returns `null` rather than
+ * guessing:
+ *
+ * ```
+ * [packs] … emits the prompt template …, which the curriculum does not declare as a
+ * binary operation — there is no operator to draw between "295" and
+ * "dw.term.place.hundreds", so nothing is served.
+ * ```
+ *
+ * That is correct behaviour and it is the right log line. But it means a promotion of
+ * any row below buys a rung that generates a question, refuses to draw it, and serves
+ * the child *nothing* — the failure `NUMERAL_WIDTH_BLOCKED_LEVELS` describes as "a Seal
+ * Bearer that asks nothing, forever". `MISSTATED_QUESTION_TEMPLATES` catches a card that
+ * states the wrong question; this catches a card that states no question.
+ *
+ * The three shapes here are not one missing feature. "In 4,193, what is the digit in
+ * the hundreds place worth?" needs a numeral and a **place name**; "which is greater,
+ * 3/8 or 3/5?" needs two numbers and a **relation**; `2/3 = ☐/12` needs an equation
+ * between two written fractions. `PromptBlank` reaches none of them, deliberately —
+ * `a OP b`, `☐ OP a = b` and `a OP ☐ = b` and no wider — and stretching it to would be
+ * the guess this registry exists to retire.
+ *
+ * ## How it is checked
+ *
+ * `render/prompts.test.ts` reads the operator off every registered declaration and
+ * requires the `none` set to equal this list, and requires every skill whose bound
+ * levels emit *only* such templates to be `draft`. Both directions: a template that
+ * gains an operator must be struck off, and one added as `none` must be named.
+ *
+ * The rows it blocks are all six of `ns`, the four `frac.equivalence` rows, the two
+ * `frac.compare` rows and `dw.alg.equality.balance-meaning` — thirteen of the graph's
+ * twenty-eight draft rows, and the largest single reason the draft list is as long as
+ * it is. It clears when a pack lands a renderer for a question that is not two
+ * operands and a glyph; that is the same PR as `--strict-renderers` going green, and
+ * it is a pack's, not the curriculum's.
+ */
+export const NON_BINARY_QUESTION_TEMPLATES: readonly string[] = [
+  "dw.prompt.compare-order.greater",
+  "dw.prompt.compare-order.lesser",
+  "dw.prompt.frac-equivalence.build",
+  "dw.prompt.frac-equivalence.simplify",
+  "dw.prompt.frac-equivalence.to-improper",
+  "dw.prompt.frac-equivalence.to-mixed",
+  "dw.prompt.missing-operand.both-sides",
+  "dw.prompt.place-value.digit-in-place",
+  "dw.prompt.place-value.digit-value",
+  "dw.prompt.place-value.total-in-place",
+  "dw.prompt.round-estimate.round",
+];
 
 /**
  * Rows the host can now state and a **pack** cannot draw, with what each one needs.
