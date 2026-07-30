@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>THE GAVEL — dev harness</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #0b0d18;
+        overscroll-behavior: none;
+      }
+      #app {
+        position: fixed;
+        inset: 0;
+      }
+      #readout {
+        position: fixed;
+        left: 8px;
+        bottom: 6px;
+        z-index: 5;
+        font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: rgba(255, 255, 255, 0.42);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="readout">host.report → 0/0</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

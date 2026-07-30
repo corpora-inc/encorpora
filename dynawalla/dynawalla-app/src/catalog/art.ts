@@ -81,6 +81,7 @@ const MOTIF_BY_PACK: Readonly<Record<string, MotifKey>> = {
   "dynawalla.colossus": "tower",
   "dynawalla.counterweight": "steelyard",
   "dynawalla.forge": "anvil",
+  "dynawalla.gavel": "auction",
   "dynawalla.foundry": "ring",
   "dynawalla.guilty": "crosshair",
   "dynawalla.horde": "swarm",
