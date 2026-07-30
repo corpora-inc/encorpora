@@ -151,9 +151,80 @@ locally in the client, without a round trip.
 | `audio`        | `host.sound("settle")`                                  |
 | `milestones`   | `host.milestone("tower.built")`                         |
 | `storage`      | 200 keys, 16 KB per value, scoped to your pack          |
+| `sensors.orientation` | `host.tilt` — how the device is being held             |
 
-`host.progress(fraction)`, `host.end(reason)` and `host.transition(kind)` need
-no capability: they are how a session is a session.
+`host.progress(fraction)`, `host.end(reason)`, `host.transition(kind)` and
+cancelling a stream need no capability: they are how a session is a session.
+
+### Native capabilities, and how to fail well
+
+A capability marked **native** is answered by the *device* rather than by the
+host's own code — a sensor today, a voice or an on-device model later. Two things
+about them are different from everything above, and one of them is your job.
+
+**They can be granted and still unavailable.** A tablet with no gyroscope, a
+build shipped without a plugin, a permission somebody declined: all of those are
+normal, none of them is an error, and a child must never see a message about one.
+
+```ts
+// The check to write before DRAWING a control that depends on one — a tilt
+// toggle, a "read it to me" button. Not before calling it.
+if (host.available("sensors.orientation")) drawTiltToggle()
+```
+
+**Calling one that is absent is already harmless.** Nothing on the native surface
+throws or rejects. It writes **one** loud `console.error` naming the capability
+and the fix, and then does nothing — so a game with no `if` and no `try` is
+already correct, and the only way to get this wrong is to draw a control that
+promises something the device cannot do.
+
+**They may be slow.** Each one declares its own budget: 2 seconds for anything
+local, 10 for something that may have to ask a person for permission, more for a
+model. If the host does not answer inside it you get `PackError("timeout")`
+rather than a promise that never settles. Never block a frame on one.
+
+### `host.tilt` — steering by how the device is held
+
+```ts
+if (!host.tilt.available) return                    // draw no tilt control
+const stop = host.tilt.start(({ x, y, degrees }) => {
+  steer(x, y)                                       // −1..1, screen-relative
+  gauge(degrees.x)                                  // whole degrees, for a dial
+})
+// …later, when the child leaves the part of the game that steers:
+stop()
+```
+
+**A sample says which way a marble sitting on your screen would roll.** `x` is
++1 when it would roll toward the right-hand edge, `y` is +1 when it would roll
+toward the top — whatever way up the device is being held, because the host has
+already resolved the screen's rotation for you.
+
+Three things the host has done that you must not redo:
+
+- **Zeroed on the pose the stream opened in.** Nobody plays with a tablet flat on
+  a table, and an absolute reading is pinned before your game starts. Turning the
+  device re-zeroes it.
+- **Dead-zoned and clamped.** Full deflection at 25° from neutral, nothing inside
+  2°, and never outside −1..1.
+- **Throttled to 30 Hz, and silent when the device is still.** No message is not
+  a stream that stopped: keep the last value you were given. Your samples carry a
+  `seq` and a gap in it is a deliberate drop.
+
+**Call `stop()`.** The host ends every stream when your pack goes away, so
+nothing leaks — but a sensor running behind your menu is a battery cost for
+nothing. And a paused pack receives no samples at all, so the `pause` event you
+already handle is enough to stop steering behind a sheet.
+
+You cannot read `DeviceOrientationEvent` yourself and you should not try: a pack
+frame is `sandbox="allow-scripts"` with `allow=""`, so its origin is opaque and
+motion sensors are switched off explicitly. That is why this is a capability and
+not an API.
+
+To develop against it, `npm run serve` gives you a real stream — from the
+machine's own sensor if it has one, and otherwise from **dragging the pointer**
+over the workbench. That is synthetic and the log says so; a control that felt
+right against a mouse can feel wrong against a wrist.
 
 ### `host.transition` — say when your game reached a natural ending
 

@@ -33,8 +33,19 @@ import { isMethod } from "./capabilities.ts"
 /** Bumped when a message shape changes in a way an old pack would misread. */
 export const PROTOCOL_VERSION = 1
 
-/** The version of this SDK's method surface. Compared with `sdkCompatible`. */
-export const SDK_VERSION = "1.0.0"
+/**
+ * The version of this SDK's method surface. Compared with `sdkCompatible`.
+ *
+ * 1.1.0 added the stream envelopes below, `stream.cancel`, per-method budgets
+ * and the first native-backed capability. All additive: `sdkCompatible` lets a
+ * 1.0 pack run on a 1.1 host, and a 1.1 pack is refused by a 1.0 host, which is
+ * exactly right — the methods it was built against do not exist there.
+ *
+ * `PROTOCOL_VERSION` is deliberately NOT bumped. A stream envelope carries
+ * neither `id`+`ok` nor `event`, so a 1.0 pack's `port.onmessage` ignores one
+ * outright; and a 1.0 pack never opens a stream, so it never receives one.
+ */
+export const SDK_VERSION = "1.1.0"
 
 /**
  * A pack may not queue work faster than a child can cause it. 120 requests per
@@ -81,6 +92,73 @@ export type HostEventName = "settings" | "pause" | "resume" | "dispose"
 
 export type HostEvent = { readonly event: HostEventName; readonly data?: unknown }
 
+// ─── Streams ─────────────────────────────────────────────────────────────────
+//
+// The third envelope, and the one the request/response pair could not express.
+//
+// A native answer often arrives over time: samples off a sensor, word
+// boundaries out of a synthesiser, tokens out of a model. Before this there was
+// no way to say that on the wire. `Response` is one-shot, and `HostEvent` is a
+// closed set of four names with no correlation to anything a pack asked for, so
+// two concurrent utterances or two concurrent generations would be
+// indistinguishable.
+//
+//     pack → host   { id: 7, method: "sensors.orientation.start", params: {} }
+//     host → pack   { id: 7, ok: true, result: { stream: 7 } }
+//     host → pack   { stream: 7, seq: 1, data: {...} }
+//     host → pack   { stream: 7, seq: 2, data: {...} }
+//     pack → host   { id: 8, method: "stream.cancel", params: { stream: 7 } }
+//     host → pack   { stream: 7, done: true, reason: "cancelled" }
+//
+// **The stream id IS the request id that opened it.** No second namespace, no
+// allocation on the host side, and a pack already holds the number — it is the
+// id it sent. The host echoes it in the result anyway, so a reader following
+// raw traffic never has to infer it.
+//
+// Two guarantees the host owes, and both are what a pack is entitled to assume:
+//
+//   * **Exactly one end.** Every stream that was opened is ended, with a
+//     reason, including when the session is torn down. A pack that never sees
+//     an end has found a host bug, not a quiet stream.
+//   * **`seq` is monotonic from 1.** A pack that cares can see a gap. Nothing
+//     is retransmitted; a gap means samples were dropped on purpose (throttled,
+//     or delivery suspended while the pack was paused).
+
+export type StreamEndReason =
+  /** The host had nothing more to send. A finite stream ran out. */
+  | "complete"
+  /** The pack asked, with `stream.cancel`. */
+  | "cancelled"
+  /** The device stopped being able to do this. Not the pack's fault. */
+  | "unavailable"
+  /** The session ended underneath it. Nothing outlives a pack. */
+  | "closed"
+  /** The host threw. The pack is told nothing about what. */
+  | "internal"
+
+/** One datum on an open stream, host → pack. */
+export type StreamUpdate = {
+  readonly stream: number
+  /** Monotonic from 1. A gap is a drop, and drops are deliberate. */
+  readonly seq: number
+  readonly data: unknown
+}
+
+/** The end of a stream, host → pack. Exactly one per stream, always. */
+export type StreamEnd = {
+  readonly stream: number
+  readonly done: true
+  readonly reason: StreamEndReason
+}
+
+export const STREAM_END_REASONS: readonly StreamEndReason[] = [
+  "complete",
+  "cancelled",
+  "unavailable",
+  "closed",
+  "internal",
+]
+
 /**
  * The first message on the port, host → pack: what the pack got and what it
  * did not. A pack reads `granted` and hides the surfaces it cannot drive
@@ -93,6 +171,27 @@ export type Connect = {
   readonly host: string
   readonly packId: string
   readonly granted: readonly Capability[]
+  /**
+   * Which of `granted` can actually do something on THIS device, right now.
+   *
+   * Granted and available are different questions, and conflating them is the
+   * mistake this field exists to prevent. A grant is a decision about a pack —
+   * it declared the capability, the build implements it, so the method is not
+   * refused. Availability is a fact about a device: a tablet with no gyroscope,
+   * a build shipped without a plugin, a permission somebody declined. The first
+   * is stable for the life of an install; the second is not knowable until the
+   * app is running on the hardware.
+   *
+   * Every non-native capability is always available, so for a pack that asks
+   * for nothing native this list equals `granted`.
+   *
+   * Optional so that an older host is not a breaking change: a pack that sees
+   * `undefined` should read it as "everything granted is available", which is
+   * what it was already assuming. A pack built against 1.1 will never see
+   * `undefined` from a 1.1 host — `sdkCompatible` refuses that pairing — so the
+   * fallback is a courtesy to 1.0 packs rather than a path anything relies on.
+   */
+  readonly available?: readonly Capability[]
   readonly settings: Settings
 }
 
@@ -125,6 +224,83 @@ export type Settings = {
    */
   readonly safeArea?: { top: number; right: number; bottom: number; left: number }
 }
+
+/**
+ * How the device is being held, resolved by the host into something a game can
+ * steer with.
+ *
+ * ── Why not raw angles ──────────────────────────────────────────────────────
+ *
+ * `DeviceOrientationEvent` reports `beta` and `gamma` in the *device's* frame.
+ * Rotate the tablet a quarter turn and the two axes swap and one of them
+ * inverts; a game that read them directly would steer sideways in landscape and
+ * backwards upside-down, and every pack would have to rediscover the same
+ * `screen.orientation.angle` table. The host resolves it once.
+ *
+ * ── Why it is relative to a neutral pose ────────────────────────────────────
+ *
+ * Nobody plays with a tablet flat on a table. A child holds it at thirty or
+ * forty degrees, and an absolute reading is therefore pinned at full deflection
+ * before the game starts. The pose the device was in when the stream opened is
+ * zero, and everything after it is measured from there.
+ *
+ * ── What is deliberately not here ───────────────────────────────────────────
+ *
+ * No compass heading, no magnetometer, no rotation rate, no acceleration, no
+ * `absolute` flag. Two axes of tilt and their angles is all a game needs to
+ * steer, and it is the smallest thing that cannot be turned into a claim about
+ * where a child is or which way they are facing.
+ */
+export type Orientation = {
+  /**
+   * Left/right tilt, −1..1, screen-relative and clamped.
+   *
+   * +1 is the right-hand edge of the screen pushed down, whatever way up the
+   * device is being held.
+   */
+  readonly x: number
+  /** Front/back tilt, −1..1. +1 is the top edge pushed away from the child. */
+  readonly y: number
+  /**
+   * The same two axes in whole degrees from the neutral pose, unclamped in
+   * meaning but bounded in practice by the sensor.
+   *
+   * For a game that shows a slope on a gauge rather than steering with it: a
+   * child reading "hold it at fifteen degrees" needs the number, and −1..1 is
+   * not a number they can be asked to hold.
+   */
+  readonly degrees: { readonly x: number; readonly y: number }
+}
+
+/**
+ * The tilt, in degrees from neutral, that reads as full deflection.
+ *
+ * Part of the contract rather than a host preference: `x = 1` has to mean the
+ * same thing in every pack, or a game tuned on one build steers differently on
+ * the next. Twenty-five degrees is a wrist, not a shoulder — reachable while
+ * holding a 12" tablet with two hands, and reachable in both directions from a
+ * pose a child is already holding.
+ */
+export const ORIENTATION_FULL_TILT_DEG = 25
+
+/**
+ * Tilt inside this many degrees of neutral reads as exactly zero.
+ *
+ * A hand is not still. Without a dead zone a game drifts while a child holds it
+ * as steadily as they can, which reads as the game being broken rather than as
+ * the child being human.
+ */
+export const ORIENTATION_DEADZONE_DEG = 2
+
+/**
+ * The most samples per second the host will post.
+ *
+ * The sensor fires faster than this on both platforms and a game cannot use it:
+ * at 30 Hz a sample lands at least once per frame at 30 fps and there is
+ * nothing to interpolate. It is a ceiling, not a rate — a device held still
+ * produces no messages at all, and a pack keeps the last value it was given.
+ */
+export const ORIENTATION_MAX_HZ = 30
 
 export type ItemChoice = {
   readonly id: string
@@ -317,4 +493,42 @@ export function isHostEvent(value: unknown): value is HostEvent {
   if (!isRecord(value)) return false
   const name = value["event"]
   return name === "settings" || name === "pause" || name === "resume" || name === "dispose"
+}
+
+/** A stream handle, non-negative and safe: the request id that opened it. */
+const isStreamId = (value: unknown): value is number =>
+  typeof value === "number" && Number.isSafeInteger(value) && value >= 0
+
+export function isStreamUpdate(value: unknown): value is StreamUpdate {
+  if (!isRecord(value)) return false
+  if (!isStreamId(value["stream"])) return false
+  if (value["done"] !== undefined) return false
+  const seq = value["seq"]
+  return typeof seq === "number" && Number.isSafeInteger(seq) && seq >= 1
+}
+
+export function isStreamEnd(value: unknown): value is StreamEnd {
+  if (!isRecord(value)) return false
+  if (!isStreamId(value["stream"])) return false
+  if (value["done"] !== true) return false
+  return STREAM_END_REASONS.includes(value["reason"] as StreamEndReason)
+}
+
+/**
+ * Whether a sample off the orientation stream is one.
+ *
+ * The host is more trusted than a pack, and this is still checked, because the
+ * failure it prevents is silent: one `NaN` reaching a game's steering makes
+ * every position after it `NaN`, the world disappears, and nothing throws.
+ * A dropped sample is a frame of stale steering; an accepted `NaN` is a blank
+ * screen, which is the failure mode this repository has shipped four times.
+ */
+export function isOrientation(value: unknown): value is Orientation {
+  if (!isRecord(value)) return false
+  const unit = (n: unknown): boolean => typeof n === "number" && Number.isFinite(n) && n >= -1 && n <= 1
+  if (!unit(value["x"]) || !unit(value["y"])) return false
+  const degrees = value["degrees"]
+  if (!isRecord(degrees)) return false
+  const angle = (n: unknown): boolean => typeof n === "number" && Number.isFinite(n)
+  return angle(degrees["x"]) && angle(degrees["y"])
 }

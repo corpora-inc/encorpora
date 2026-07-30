@@ -25,6 +25,11 @@ Read in this order on your first task. Skim headings after that.
   reactions, the character, construction, art direction and the hostile reference board.
 - [PACK_SYSTEM.md](PACK_SYSTEM.md) — why V1 has no downloadable packs and what would
   have to be true to add them.
+- [NATIVE_CAPABILITIES.md](NATIVE_CAPABILITIES.md) — the contract for a capability
+  answered by the *device* rather than by the host: how it is declared, granted,
+  versioned, feature-detected, and what a pack must do when it is absent. Worked
+  examples for text to speech, an on-device model and a leaderboard socket.
+  **Read before adding one.**
 - [RELEASE_ENGINEERING.md](RELEASE_ENGINEERING.md) — CI topology, the merge queue,
   release triggers, build numbers, the traps.
 - [TEST_STRATEGY.md](TEST_STRATEGY.md) — what is tested where, and what tests cannot

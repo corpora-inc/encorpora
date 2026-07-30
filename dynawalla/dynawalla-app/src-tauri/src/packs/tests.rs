@@ -258,6 +258,34 @@ fn the_pack_policy_admits_no_remote_origin_and_never_says_self() {
 }
 
 #[test]
+fn a_pack_cannot_open_a_socket_either() {
+    // The test above checks for `https://` and for a stray `http://`, and would
+    // have watched `wss://` go straight past — `"wss://"` does not contain
+    // `"http"` and does not contain `"ws://"`.
+    //
+    // That is not a hypothetical gap. `connect-src` is the directive that governs
+    // `WebSocket`, and the first network capability this product is likely to
+    // want is a leaderboard socket for ARENA. The obvious wrong way to build one
+    // is to add its origin here, which hands every installed pack arbitrary
+    // network reach in order to serve one of them — and the pack boundary is
+    // exactly this string. See `docs/NATIVE_CAPABILITIES.md`.
+    //
+    // Pinned to equality rather than to a list of things it must not contain, so
+    // that any added source fails rather than only the ones somebody thought of.
+    let policy = pack_csp();
+    let connect = policy
+        .split(';')
+        .map(str::trim)
+        .find(|d| d.starts_with("connect-src"))
+        .expect("connect-src");
+    assert_eq!(
+        connect,
+        format!("connect-src {SCHEME_SOURCES}"),
+        "a source was added to the directive that governs fetch, XHR and WebSocket"
+    );
+}
+
+#[test]
 fn scripts_are_external_only_and_wasm_is_allowed() {
     let policy = pack_csp();
     let script = policy

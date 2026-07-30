@@ -8,14 +8,27 @@ export {
   CAPABILITIES,
   CAPABILITY_IDS,
   METHODS,
+  NATIVE_CAPABILITIES,
+  SESSION_BUDGET_MS,
   SESSION_METHODS,
+  STREAM_METHODS,
+  budgetOf,
   capabilityOf,
   isCapability,
   isMethod,
+  isNativeBacked,
   labelOf,
+  opensStream,
   permits,
 } from "./capabilities.ts"
-export type { Capability, Method, CapabilityMethod, SessionMethod } from "./capabilities.ts"
+export type {
+  Capability,
+  Method,
+  CapabilityMethod,
+  NativeCapability,
+  SessionMethod,
+  StreamMethod,
+} from "./capabilities.ts"
 
 export {
   MANIFEST_SCHEMA,
@@ -33,12 +46,19 @@ export type { ManifestResult, PackManifest } from "./manifest.ts"
 
 export {
   MAX_REQUESTS_PER_SECOND,
+  ORIENTATION_DEADZONE_DEG,
+  ORIENTATION_FULL_TILT_DEG,
+  ORIENTATION_MAX_HZ,
   PROTOCOL_VERSION,
   SDK_VERSION,
+  STREAM_END_REASONS,
   TRANSITION_KINDS,
   isConnect,
   isHostEvent,
+  isOrientation,
   isResponse,
+  isStreamEnd,
+  isStreamUpdate,
   isTransitionKind,
   numberParam,
   parseRequest,
@@ -55,11 +75,15 @@ export type {
   ItemChoice,
   Judgement,
   LearnerSummary,
+  Orientation,
   ParsedRequest,
   Request,
   Response,
   Settings,
   SoundCue,
+  StreamEnd,
+  StreamEndReason,
+  StreamUpdate,
   TransitionKind,
 } from "./protocol.ts"
 
@@ -67,7 +91,7 @@ export { compareSemver, compareVersions, isSemver, parseSemver, satisfies, sdkCo
 export type { HostRange, Semver } from "./semver.ts"
 
 export { PackError, connect } from "./guest.ts"
-export type { HostClient, ItemRequest } from "./guest.ts"
+export type { HostClient, ItemRequest, TiltReader } from "./guest.ts"
 
 // `connect()` installs the guard itself — a pack never has to call this. It is
 // exported so the host and the dev harness can install the same one, and so a

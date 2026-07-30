@@ -11,13 +11,17 @@
 // child who played.
 
 import type {
+  Capability,
   Item,
+  NativeCapability,
   Settings,
   SoundCue,
   TransitionKind,
 } from "../../../packs/sdk/src/index.ts"
+import { CAPABILITY_IDS, isNativeBacked } from "../../../packs/sdk/src/index.ts"
 import type { HostServices } from "./bridge.ts"
 import { fireHaptic, type HapticPorts } from "./haptics.ts"
+import type { OrientationSource } from "./orientation.ts"
 import { createItemService, type ItemService } from "./items.ts"
 import { report } from "./host.ts"
 import { packStorageFor } from "./storage.ts"
@@ -151,6 +155,14 @@ export type ServicesDeps = {
    * fix, reintroduced one layer up. The compiler asks instead.
    */
   readonly haptics: HapticPorts
+  /**
+   * Where a tilt reading comes from.
+   *
+   * Required for the same reason `haptics` is: a defaulted source would make
+   * "nobody wired the sensor" compile, run, and look exactly like a device that
+   * has none. The compiler asks instead.
+   */
+  readonly orientation: OrientationSource
   readonly onProgress?: (fraction: number) => void
   readonly onEnd?: (reason: "finished" | "quit") => void
   readonly onMilestone?: (name: string) => void
@@ -237,6 +249,45 @@ export function createServices(deps: ServicesDeps): LaunchServices {
         return Promise.resolve()
       },
       keys: (input) => Promise.resolve(keysOf(input.packId)),
+    },
+
+    /**
+     * The native-backed surface. One entry so far, and the shape is the point.
+     *
+     * Nothing here is gated on a setting: `settings.haptics` exists because a
+     * buzz is something the app *does to* a child, and how a tablet is being
+     * held is something the app reads at a game's request. There is a real
+     * consent question here and it is answered one layer down — the permission
+     * is asked for by the host on a user gesture, and a device that says no is
+     * simply unavailable.
+     */
+    sensors: {
+      orientation: (input) => deps.orientation.start({ emit: input.emit, lost: input.lost }),
+    },
+
+    /**
+     * What this device can do, as opposed to what this build supports.
+     *
+     * A `Record` over `NativeCapability` rather than a list, so that adding a
+     * native capability to the SDK's table **fails to compile here** until
+     * somebody has decided how to detect it. A missing entry would otherwise
+     * mean "unavailable forever", which degrades correctly and says nothing.
+     */
+    available: () => {
+      const native: Readonly<Record<NativeCapability, boolean>> = {
+        "sensors.orientation": deps.orientation.available,
+      }
+      const list: Capability[] = []
+      for (const capability of CAPABILITY_IDS) {
+        // Everything the host answers itself is available by definition: it is
+        // this code, and this code is running.
+        if (!isNativeBacked(capability)) {
+          list.push(capability)
+          continue
+        }
+        if (native[capability as NativeCapability]) list.push(capability)
+      }
+      return list
     },
 
     progress: (input) => deps.onProgress?.(input.fraction),

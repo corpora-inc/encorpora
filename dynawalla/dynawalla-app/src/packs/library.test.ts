@@ -9,6 +9,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
+import { CAPABILITY_IDS } from "../../../packs/sdk/src/index.ts"
 import { HOST_SUPPORTS, cardFacts, hostProfile, readLibrary } from "./library.ts"
 import type { InstalledPackRow, PackNative } from "./native.ts"
 
@@ -105,12 +106,23 @@ test("the localised name is what a child is shown", async () => {
 test("this build supports every capability the SDK defines", () => {
   // A capability in the table that no build honours is a capability a pack can
   // declare, be refused for, and never find out why. If one is ever genuinely
-  // unsupported it belongs here as a deliberate omission with a note, not as an
-  // oversight.
-  assert.deepEqual(
-    [...HOST_SUPPORTS].sort(),
-    ["audio", "haptics", "items", "items.reveal", "learner.read", "milestones", "storage"],
-  )
+  // unsupported it belongs in `DELIBERATELY_UNSUPPORTED` with a sentence saying
+  // which build it is missing from and why, not as an oversight.
+  //
+  // Compared against the SDK's own table rather than a frozen literal, which is
+  // what makes this the invariant its name claims: a hard-coded list passes by
+  // being edited, and the edit is exactly the moment somebody would have had to
+  // notice the omission.
+  //
+  // In particular a NATIVE-backed capability belongs here as soon as the build
+  // implements it, whatever the device in somebody's hand can do. This list
+  // feeds `gateInstall`, which refuses the *install* of a pack asking for
+  // something missing from it, so removing one to describe a tablet with no
+  // gyroscope would stop that tablet installing the pack rather than letting the
+  // pack run without tilt. Device-level absence is `HostServices.available()`.
+  const DELIBERATELY_UNSUPPORTED: readonly string[] = []
+  const expected = CAPABILITY_IDS.filter((id) => !DELIBERATELY_UNSUPPORTED.includes(id))
+  assert.deepEqual([...HOST_SUPPORTS].sort(), [...expected].sort())
 })
 
 test("the card's facts carry the minimum age, and carry its absence as absence", async () => {

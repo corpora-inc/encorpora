@@ -148,6 +148,75 @@ async function answer(method, params) {
 
 const frame = document.getElementById("pack")
 
+/* ─── tilt ──────────────────────────────────────────────────────────────────
+ *
+ * A pack that declares `sensors.orientation` gets a real stream here, because
+ * otherwise there is no way to develop tilt steering at all: the capability is
+ * host-pushed by design, so a pack cannot fake it from inside itself.
+ *
+ * The reading comes from `deviceorientation` where there is one, and from the
+ * POINTER otherwise — drag anywhere over the workbench and the pack is steered.
+ * That is synthetic and is said out loud in the log, because a control that felt
+ * right against a mouse and wrong against a wrist is the mistake this is for.
+ *
+ * The angles match the contract: full deflection at ±25°, dead zone 2°, and a
+ * sample says which way a marble on the screen would roll.
+ */
+const FULL_TILT_DEG = 25
+const DEADZONE_DEG = 2
+/** Open tilt streams, handle → the last `seq` sent on it. */
+const streams = new Map()
+
+/** The same curve `orientation.ts` uses: the dead zone is subtracted, not clipped. */
+const shape = (degrees) => {
+  const magnitude = Math.abs(degrees)
+  if (magnitude <= DEADZONE_DEG) return 0
+  const span = FULL_TILT_DEG - DEADZONE_DEG
+  return Math.sign(degrees) * Math.min(1, (magnitude - DEADZONE_DEG) / span)
+}
+
+function feedTilt(port, degX, degY) {
+  if (streams.size === 0) return
+  const sample = {
+    x: shape(degX),
+    y: shape(degY),
+    degrees: { x: Math.round(degX), y: Math.round(degY) },
+  }
+  for (const [stream, seq] of [...streams]) {
+    streams.set(stream, seq + 1)
+    port.postMessage({ stream, seq: seq + 1, data: sample })
+  }
+}
+
+function wireTilt(port) {
+  let neutral = null
+  addEventListener("deviceorientation", (event) => {
+    if (event.beta === null || event.gamma === null) return
+    neutral ??= { beta: event.beta, gamma: event.gamma }
+    feedTilt(port, event.gamma - neutral.gamma, -(event.beta - neutral.beta))
+  })
+
+  // The pointer fallback. Dragging from the centre of the window to an edge is
+  // full deflection, which is the only mapping a mouse can honestly offer.
+  let dragging = false
+  const fromPointer = (event) => {
+    const x = ((event.clientX / innerWidth) * 2 - 1) * FULL_TILT_DEG
+    const y = -((event.clientY / innerHeight) * 2 - 1) * FULL_TILT_DEG
+    feedTilt(port, x, y)
+  }
+  addEventListener("pointerdown", (event) => {
+    dragging = true
+    fromPointer(event)
+  })
+  addEventListener("pointermove", (event) => {
+    if (dragging) fromPointer(event)
+  })
+  addEventListener("pointerup", () => {
+    dragging = false
+    feedTilt(port, 0, 0)
+  })
+}
+
 addEventListener("message", (event) => {
   if (event.source !== frame.contentWindow) return
   if (!event.data || event.data.event !== "ready") return
@@ -160,6 +229,21 @@ addEventListener("message", (event) => {
       channel.port1.postMessage({ id, ok: false, error: { code: "unknown_method", message: String(method) } })
       return
     }
+    if (method === "sensors.orientation.start") {
+      streams.set(id, 0)
+      write("in", `tilt stream ${id} opened — drag over the workbench to steer (synthetic)`)
+      channel.port1.postMessage({ id, ok: true, result: { stream: id } })
+      return
+    }
+    if (method === "stream.cancel") {
+      const stream = params.stream
+      if (streams.delete(stream)) {
+        write("out", `stream ${stream} cancelled`)
+        channel.port1.postMessage({ stream, done: true, reason: "cancelled" })
+      }
+      channel.port1.postMessage({ id, ok: true, result: null })
+      return
+    }
     try {
       const result = await answer(method, params)
       channel.port1.postMessage({ id, ok: true, result: result ?? null })
@@ -169,6 +253,7 @@ addEventListener("message", (event) => {
     }
   }
   channel.port1.start()
+  wireTilt(channel.port1)
 
   frame.contentWindow.postMessage(
     {
@@ -177,6 +262,12 @@ addEventListener("message", (event) => {
       sdk: surface.sdk,
       host: "0.0.0-workbench",
       packId: surface.packId,
+      // Everything granted is available in the workbench: this is a desktop
+      // browser and the point of it is to exercise the capability, not to
+      // simulate a tablet that lacks it. A pack's absent path is exercised by
+      // REMOVING the capability from its manifest, which is one line and is what
+      // an author should do before shipping.
+      available: surface.granted,
       granted: surface.granted,
       settings,
     },

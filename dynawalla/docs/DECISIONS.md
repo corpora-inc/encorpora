@@ -63,6 +63,7 @@ saying what changed, so the history is readable without `git log`.
 | [0021](DECISIONS/ADR-0021-pack-capabilities-are-per-pack.md) | Capability is per pack; the microphone stays closed | Accepted |
 | [0022](DECISIONS/ADR-0022-host-ships-no-content.md) | The host ships no content; packs are the product | Accepted |
 | [0024](DECISIONS/ADR-0024-day-pass-not-subscription.md) | The day pass replaces the subscription | Accepted |
+| [0025](DECISIONS/ADR-0025-native-capability-interface.md) | The native side is reached through the pack capability seam | Accepted |
 
 ## Reversed on 2026-07-26
 
@@ -106,6 +107,12 @@ Four ADRs closed in one pass, recorded from the founder's own words in each ADR:
   analytics or SDKs) are locked unconditionally; a parental-gate primitive is built and
   every link-out routes through it; the category election, **and the age band inside
   it**, are deferred to submission.
+
+- **ADR-0025 The native side is reached through the pack capability seam** — a pack is
+  never handed a sensor, a socket, a token or an `invoke`; a native capability is a row
+  in the same closed table, and **a capability is never delivered by relaxing the
+  sandbox**. Grant and availability become two different questions. The contract is
+  [NATIVE_CAPABILITIES.md](NATIVE_CAPABILITIES.md).
 
 ## Still open
 

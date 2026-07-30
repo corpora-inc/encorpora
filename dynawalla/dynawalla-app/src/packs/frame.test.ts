@@ -26,7 +26,14 @@ import {
   type Watch,
 } from "./frame.ts"
 import type { HostServices } from "./bridge.ts"
-import type { Capability, Connect, Settings } from "../../../packs/sdk/src/index.ts"
+import { CAPABILITY_IDS } from "../../../packs/sdk/src/index.ts"
+import type {
+  Capability,
+  Connect,
+  Orientation,
+  Settings,
+  StreamUpdate,
+} from "../../../packs/sdk/src/index.ts"
 
 const SETTINGS: Settings = {
   locale: "en",
@@ -38,7 +45,7 @@ const SETTINGS: Settings = {
   haptics: true,
 }
 
-const services = (): HostServices => ({
+const services = (overrides: Partial<HostServices> = {}): HostServices => ({
   nextItem: async () => null,
   judge: async () => ({ correct: true, canonical: "2203", advance: true }),
   skip: async () => {},
@@ -56,7 +63,10 @@ const services = (): HostServices => ({
   progress: () => {},
   end: () => {},
   transition: () => {},
+  sensors: { orientation: async () => null },
+  available: () => CAPABILITY_IDS,
   settings: () => SETTINGS,
+  ...overrides,
 })
 
 type Posted = { data: unknown; targetOrigin: string; transfer: readonly MessagePort[] }
@@ -81,6 +91,8 @@ type HarnessOptions = {
   /** The frame's box. Defaults to a 820x1180 tablet, which is what it is. */
   readonly box?: { readonly width: number; readonly height: number }
   readonly liveness?: Partial<LivenessLimits>
+  /** Replaces part of the host surface. For the native-backed capabilities. */
+  readonly services?: Partial<HostServices>
 }
 
 /**
@@ -151,7 +163,7 @@ function harness(t: TestContext, options: HarnessOptions = {}): Harness {
     packId: "abacus.tower",
     entryUrl: "dynawalla-pack://localhost/abacus.tower/index.html",
     granted,
-    services: services(),
+    services: services(options.services ?? {}),
     hostVersion: "0.4.0",
     title: "Abacus Tower",
     document: doc,
@@ -809,4 +821,123 @@ test("disposing stops the watch, and clears its timer", async (t) => {
 
   await new Promise((resolve) => setTimeout(resolve, 150))
   assert.equal(test.faults.length, 0, `a disposed pack was accused of ${test.faults.join(", ")}`)
+})
+
+/* ─── native-backed capabilities, at the frame ────────────────────────────── */
+
+test("the connect payload states what is granted AND what this device can do", async (t) => {
+  // Two different questions, and conflating them is the mistake the field exists
+  // to prevent. A grant is a decision about a pack; availability is a fact about
+  // a device — a tablet with no gyroscope, a build with no plugin, a permission
+  // somebody declined.
+  const test1 = harness(t, {
+    granted: ["items", "sensors.orientation"],
+    services: { available: () => ["items", "haptics"] },
+  })
+  shake(test1)
+  await until(() => test1.mounted.connected())
+  const connect = test1.posted[0]?.data as Connect
+  assert.deepEqual([...connect.granted], ["items", "sensors.orientation"])
+  // Intersected, so "available" can never exceed "granted": `haptics` is
+  // something this device can do and this pack did not ask for.
+  assert.deepEqual([...(connect.available ?? [])], ["items"])
+})
+
+test("everything granted is available when the device can do it all", async (t) => {
+  const test1 = harness(t, { granted: ["items", "sensors.orientation"] })
+  shake(test1)
+  await until(() => test1.mounted.connected())
+  const connect = test1.posted[0]?.data as Connect
+  assert.deepEqual([...(connect.available ?? [])], ["items", "sensors.orientation"])
+})
+
+test("no sensor outlives the pack it was started for", async (t) => {
+  // The failure this is the net for is invisible: a stream left open holds a
+  // subscription in the host's realm, the frame is removed, the child goes back
+  // to the catalogue, and the sensor keeps running for the rest of the app's
+  // life with nothing on the other end of it.
+  let released = 0
+  const test1 = harness(t, {
+    granted: ["sensors.orientation"],
+    services: {
+      sensors: {
+        orientation: async () => () => {
+          released += 1
+        },
+      },
+    },
+  })
+  shake(test1)
+  await until(() => test1.mounted.connected())
+  const started = await test1.mounted.bridge.handle({
+    id: 1,
+    method: "sensors.orientation.start",
+    params: {},
+  })
+  assert.ok(started?.ok)
+  assert.deepEqual(test1.mounted.bridge.streams(), [1])
+
+  test1.mounted.dispose()
+  assert.equal(released, 1, "the pack was torn down and the sensor was not")
+  assert.deepEqual(test1.mounted.bridge.streams(), [])
+})
+
+test("stream samples reach the pack's port, and a paused pack gets none", async (t) => {
+  // Read from the pack's own end of the port — the one the frame transferred —
+  // so this is the wire and not a spy on the bridge. Two things it holds that
+  // nothing else does: `push` is actually wired to the port at all, and `send`
+  // reaches `setPaused`, without which a game keeps steering behind the day-pass
+  // sheet.
+  const feed: ((sample: Orientation) => void)[] = []
+  const test1 = harness(t, {
+    granted: ["sensors.orientation"],
+    services: {
+      sensors: {
+        orientation: async (input) => {
+          feed.push(input.emit)
+          return () => {}
+        },
+      },
+    },
+  })
+  shake(test1)
+  await until(() => test1.mounted.connected())
+
+  const port = test1.posted[0]?.transfer[0]
+  assert.ok(port, "no port was transferred")
+  const seen: StreamUpdate[] = []
+  port.onmessage = (event: MessageEvent) => {
+    const data: unknown = event.data
+    if (data !== null && typeof data === "object" && "seq" in data) seen.push(data as StreamUpdate)
+  }
+  port.start()
+  t.after(() => {
+    port.onmessage = null
+  })
+
+  await test1.mounted.bridge.handle({ id: 1, method: "sensors.orientation.start", params: {} })
+  const emit = feed[0]
+  assert.ok(emit)
+
+  const sample: Orientation = { x: 0.5, y: 0, degrees: { x: 12, y: 0 } }
+  emit(sample)
+  await until(() => seen.length === 1)
+  assert.deepEqual(seen, [{ stream: 1, seq: 1, data: sample }])
+
+  test1.mounted.send("pause")
+  emit(sample)
+  emit(sample)
+  await new Promise((resolve) => setTimeout(resolve, 20))
+  assert.equal(seen.length, 1, "a paused pack was still being fed")
+
+  test1.mounted.send("resume")
+  emit(sample)
+  await until(() => seen.length === 2)
+  // The gap is visible in `seq`, which is exactly what `seq` is for: the pack can
+  // tell that samples were dropped rather than that the sensor went quiet.
+  assert.deepEqual(
+    seen.map((message) => message.seq),
+    [1, 2],
+  )
+  assert.deepEqual(test1.mounted.bridge.streams(), [1])
 })

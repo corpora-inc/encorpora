@@ -49,6 +49,12 @@ function stubClient(initial: Partial<Settings> = {}): Stub {
     packId: "dynawalla.test",
     hostVersion: "0.1.0",
     granted: [],
+    // Nothing is granted to this stub, so nothing is usable and the tilt reader
+    // is unavailable — which is what the SDK's own client reports for a pack that
+    // declared no native capability. See `docs/NATIVE_CAPABILITIES.md`.
+    usable: [],
+    available: () => false,
+    tilt: { available: false, start: () => () => {} },
     get settings() {
       return settings
     },

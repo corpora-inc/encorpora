@@ -13,12 +13,16 @@ import assert from "node:assert/strict"
 
 import { createServices } from "./services.ts"
 import type { HapticPorts, HapticStyle } from "./haptics.ts"
+import type { OrientationSource } from "./orientation.ts"
 import type { HapticCue, Settings } from "../../../packs/sdk/src/index.ts"
 
 const CUES: readonly HapticCue[] = ["tick", "seat", "settle", "refuse"]
 
 /** Which pack asked. Carried by every host call; irrelevant to the gate. */
 const PACK = "dw.test"
+
+/** A device with no sensor. `orientation.test.ts` is where the real one is driven. */
+const NO_SENSOR: OrientationSource = { available: false, start: async () => null }
 
 const SETTINGS = (haptics: boolean): Settings => ({
   locale: "en",
@@ -51,7 +55,7 @@ function recorder(): { ports: HapticPorts; fired: (HapticStyle | number | number
 /** A fresh session. `profileId` is unique per test so no storage is shared. */
 function session(profileId: string, haptics: boolean) {
   const { ports, fired } = recorder()
-  const launch = createServices({ profileId, settings: SETTINGS(haptics), haptics: ports })
+  const launch = createServices({ profileId, settings: SETTINGS(haptics), haptics: ports, orientation: NO_SENSOR })
   return { launch, fired }
 }
 
@@ -101,7 +105,12 @@ test("haptics off silences the vibrator too, not just the plugin", async () => {
       return true
     },
   }
-  const launch = createServices({ profileId: "p-web", settings: SETTINGS(false), haptics: ports })
+  const launch = createServices({
+    profileId: "p-web",
+    settings: SETTINGS(false),
+    haptics: ports,
+    orientation: NO_SENSOR,
+  })
   for (const cue of CUES) await launch.services.haptic({ packId: PACK, cue })
   assert.deepEqual(fired, [])
 

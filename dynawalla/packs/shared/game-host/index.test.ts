@@ -164,6 +164,14 @@ function fakeHost(
       packId: "dynawalla.test",
       hostVersion: "0.1.0",
       granted: options.granted ?? ["items", "items.reveal", "haptics"],
+      // Every capability this stub is granted works, and none of them is
+      // native-backed. `usable`, `available` and `tilt` are the native-capability
+      // surface (SDK 1.1, `docs/NATIVE_CAPABILITIES.md`); nothing in this file
+      // exercises one, so the stub reports "everything granted works" and a tilt
+      // reader that is honestly unavailable.
+      usable: options.granted ?? ["items", "items.reveal", "haptics"],
+      available: () => true,
+      tilt: { available: false, start: () => () => {} },
       settings: SETTINGS,
       can: () => true,
 

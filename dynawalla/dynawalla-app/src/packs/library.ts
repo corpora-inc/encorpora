@@ -17,7 +17,18 @@ import { gateRun, type HostProfile, type Refusal } from "./gate.ts"
 import { readInstalled } from "./install.ts"
 import type { PackNative } from "./native.ts"
 
-/** Everything this build can honour. A pack asking for more is refused. */
+/**
+ * Everything this build can honour. A pack asking for more is refused.
+ *
+ * **A native-backed capability belongs here as soon as the build implements it,
+ * and must never be removed to express a device that cannot do it.** This list
+ * feeds `gateInstall`, which *refuses the install* of a pack that asks for
+ * something missing from it — so dropping `sensors.orientation` for a tablet
+ * with no gyroscope would stop that tablet installing the pack at all instead of
+ * letting the pack run without tilt. Which capabilities a *device* can actually
+ * do is a separate, runtime answer: `HostServices.available()`, sent to the pack
+ * as `Connect.available`. See `docs/NATIVE_CAPABILITIES.md`.
+ */
 export const HOST_SUPPORTS: readonly Capability[] = [
   "items",
   "items.reveal",
@@ -26,6 +37,7 @@ export const HOST_SUPPORTS: readonly Capability[] = [
   "audio",
   "milestones",
   "storage",
+  "sensors.orientation",
 ]
 
 /**
