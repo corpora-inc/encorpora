@@ -8,8 +8,7 @@
   "entry": "pack.html",
   "capabilities": ["items", "items.reveal", "haptics"],
   "covers": {
-    "skills": ["dw.ns.compare.whole-numbers"],
-    "grades": [1, 4]
+    "skills": ["dw.ns.compare.whole-numbers"]
   },
   "minAge": 8,
   "locales": ["en"],

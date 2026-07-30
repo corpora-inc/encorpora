@@ -17,9 +17,8 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-import { fill, strings } from "../app/strings.ts"
+import { strings } from "../app/strings.ts"
 import { ART_HUES, DRAWN_PACKS, artOf, hashOf, hueClass, isMotifKey, rngFrom } from "./art.ts"
-import { gradeLabel, minAgeLabel } from "./labels.ts"
 import { MOTIF_KEYS, shapesOf, type Shape } from "./motifs.ts"
 import { DOMAIN_IDS, chipsFor, domainOfSkill, domainsOf } from "./domains.ts"
 
@@ -216,65 +215,81 @@ test("the generator is seeded, spread and engine-independent", () => {
   assert.ok(Math.abs(mean - 0.5) < 0.06, `the generator is biased: mean ${mean}`)
 })
 
-/* ── The card's small print ───────────────────────────────────────────────── */
+/* ── The card's small print: no grade band, no age, no ceiling ────────────── */
+//
+// The card used to print "Grades 1–4" and "7+" under every game. Both are gone
+// by founder instruction, and the instruction was not "shrink it" — it was that
+// the product must never name a top. The mathematics in every pack adapts
+// upward without bound and adults and mathletes are an explicit goal, so a band
+// ending at 4 is a sign on the door telling most of the audience to leave.
+//
+// These are worth guarding rather than trusting to a diff because the pull back
+// is constant: a grade band is the single most obvious thing to put on an
+// education card, and it will be proposed again. Each of the three tests below
+// closes one of the three doors it could come back through — the copy, the
+// data, and the component.
 
-test("a minimum age is drawn as a floor and never as a range", () => {
-  // The founder's instruction was an "and up" scheme and explicitly NOT a
-  // range: every game's mathematics adapts upward without bound, so a `6–10`
-  // on a card would promise a ceiling the product does not have.
-  assert.equal(minAgeLabel(5), "5+")
-  assert.equal(minAgeLabel(8), "8+")
-  for (const age of [5, 6, 7, 8, 9]) {
-    const label = minAgeLabel(age)
-    assert.ok(label, `no label for ${age}`)
-    assert.ok(!/[–—-]/.test(label), `${label} reads as a range`)
-    assert.ok(label.includes(String(age)), `${label} does not name the age`)
+test("no catalogue string names a grade, an age, or a range with a top", () => {
+  // The copy door. `strings.catalog` is the only place card text can come from,
+  // so a band cannot be printed if there is no string to print it with.
+  const catalog = strings.catalog as Record<string, unknown>
+  assert.equal("grades" in catalog, false, "strings.catalog.grades is back")
+  assert.equal("minAge" in catalog, false, "strings.catalog.minAge is back")
+
+  for (const [key, value] of Object.entries(catalog)) {
+    if (typeof value !== "string") continue
+    assert.doesNotMatch(value, /grade/i, `strings.catalog.${key} says "grade": ${value}`)
+    // `{{from}}`–`{{to}}` is the shape a band takes once it is templated. It is
+    // the template, not the word, that makes it a range with a top.
+    assert.ok(
+      !(value.includes("{{from}}") && value.includes("{{to}}")),
+      `strings.catalog.${key} is a from–to range: ${value}`,
+    )
   }
 })
 
-test("the age template keeps its slot, so a translation cannot empty the label", () => {
-  // `fill` leaves an unknown slot in place rather than blanking it, so a
-  // translation that drops `{{age}}` prints a literal `{{age}}` — visible, and
-  // a bug report. A translation that drops the NUMBER, though, would render a
-  // bare `+` and look like a rendering fault instead. This is what catches it.
-  assert.match(strings.catalog.minAge, /\{\{age\}\}/, "the age slot is gone")
-  assert.equal(fill(strings.catalog.minAge, { age: 42 }).includes("42"), true)
-})
-
-test("an unstated age is drawn as nothing, never as a guess or a placeholder", () => {
-  // A pack record written before this field existed is on a device today, and
-  // `minAge` is optional in the schema for exactly that reason.
-  assert.equal(minAgeLabel(null), null)
-  for (const nonsense of [0, -3, 7.5, Number.NaN, Number.POSITIVE_INFINITY]) {
-    assert.equal(minAgeLabel(nonsense), null, `${nonsense} reached a card`)
-  }
-})
-
-test("a grade band with a hole in it is drawn as nothing rather than as Grades ?–?", () => {
-  assert.equal(gradeLabel([1, 4]), "Grades 1–4")
-  assert.equal(gradeLabel(null), null)
-  assert.equal(gradeLabel([Number.NaN, 4]), null)
-  assert.equal(gradeLabel([1, Number.POSITIVE_INFINITY]), null)
-})
-
-test("every shipped game states a minimum age, and the catalogue can label it", () => {
-  // The fleet rule itself is enforced in `packs/sdk/src/fleet.test.ts`, which
-  // is the suite the `dynawalla/games/**` CI filter actually runs. This is the
-  // other half: that what the packs declare is something this catalogue can
-  // draw. A number the schema accepts but `minAgeLabel` rejects would ship a
-  // fleet of cards with a silent hole where the age should be.
-  const ages = fs
+test("no shipped game declares a grade band, so no card can be given one", () => {
+  // The data door. `covers.grades` is gone from the schema, but a pack.json can
+  // still carry any key it likes — the parser tolerates a legacy band rather
+  // than rejecting a manifest that is installed on devices today. Our own fleet
+  // is held to the stricter rule here.
+  const packs = fs
     .readdirSync(gamesRoot, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .map((entry) => path.join(gamesRoot, entry.name, "pack.json"))
     .filter((file) => fs.existsSync(file))
-    .map((file) => JSON.parse(fs.readFileSync(file, "utf8")) as { id: string; minAge?: number })
+    .map(
+      (file) =>
+        JSON.parse(fs.readFileSync(file, "utf8")) as {
+          id: string
+          covers?: Record<string, unknown>
+        },
+    )
 
-  assert.ok(ages.length > 20, `expected the catalogue, found ${ages.length} packs`)
-  const undrawable = ages.filter((pack) => minAgeLabel(pack.minAge ?? null) === null)
+  assert.ok(packs.length > 20, `expected the catalogue, found ${packs.length} packs`)
   assert.deepEqual(
-    undrawable.map((pack) => pack.id),
+    packs.filter((pack) => pack.covers && "grades" in pack.covers).map((pack) => pack.id),
     [],
-    "games whose minAge the catalogue cannot draw",
+    "games still declaring covers.grades",
   )
+})
+
+test("the card component draws neither a grade band nor an age", () => {
+  // The component door, and the only one that has to be checked as source text:
+  // Node's type stripper does not read JSX and there is no DOM in this runner,
+  // so `Catalog.tsx` cannot be rendered here. A source assertion is weaker than
+  // a render, but the alternative is no guard at all on the exact file the
+  // founder was looking at — and the label helpers it used to call are deleted,
+  // so a reintroduction has to be written in full and is hard to do by accident.
+  const source = fs.readFileSync(path.join(here, "Catalog.tsx"), "utf8")
+  const code = source
+    // Strip `/* … */` and `// …` so the explanatory comments above the removal
+    // — which necessarily quote "Grades 1–4" and "7+" — do not fail this.
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "")
+
+  for (const banned of ["gradeLabel", "minAgeLabel", "row.grades", "row.minAge"]) {
+    assert.ok(!code.includes(banned), `Catalog.tsx draws ${banned} again`)
+  }
+  assert.doesNotMatch(code, /grade/i, "Catalog.tsx mentions a grade outside a comment")
 })

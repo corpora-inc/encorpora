@@ -14,8 +14,7 @@
       "dw.div.whole.divide-exact",
       "dw.add.regroup.add-multidigit",
       "dw.add.regroup.subtract-multidigit"
-    ],
-    "grades": [2, 5]
+    ]
   },
   "minAge": 7,
   "locales": ["en"],

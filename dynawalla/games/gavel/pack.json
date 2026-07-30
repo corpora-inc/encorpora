@@ -27,8 +27,7 @@
       "dw.div.facts.division-facts",
       "dw.div.whole.divide-exact",
       "dw.div.whole.zero-in-the-quotient"
-    ],
-    "grades": [1, 5]
+    ]
   },
   "minAge": 6,
   "locales": ["en"],

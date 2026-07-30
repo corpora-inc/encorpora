@@ -16,8 +16,7 @@
       "dw.add.regroup.add-short-addend",
       "dw.add.regroup.subtract-short-subtrahend",
       "dw.add.regroup.subtract-across-zero"
-    ],
-    "grades": [1, 4]
+    ]
   },
   "minAge": 6,
   "locales": ["en"],

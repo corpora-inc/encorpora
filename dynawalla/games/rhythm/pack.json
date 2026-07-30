@@ -15,8 +15,7 @@
       "dw.frac.arith.multiply-fractions",
       "dw.frac.equivalence.build-equivalent",
       "dw.mul.multidigit.times-one-digit"
-    ],
-    "grades": [3, 5]
+    ]
   },
   "minAge": 7,
   "locales": ["en"],

@@ -23,7 +23,7 @@ const valid = () => ({
   host: { min: "0.1.0", max: "1.0.0" },
   entry: "index.html",
   capabilities: ["items", "haptics"],
-  covers: { skills: ["add.2digit.regroup"], grades: [1, 3] },
+  covers: { skills: ["add.2digit.regroup"] },
   locales: ["en", "es"],
   assets: { files: 42, bytes: 3_000_000 },
   download: { url: "https://packs.example/abacus-tower-1.2.0.zip", bytes: 900_000, sha256: "a".repeat(64) },
@@ -130,14 +130,30 @@ test("ids are the on-disk directory name and are constrained to look like one", 
   }
 })
 
-test("a grade band is inclusive, ordered and inside 0–12", () => {
-  for (const grades of [[3, 1], [-1, 3], [1, 13], [1], [1, 2, 3], ["1", "3"]]) {
-    const problems = problemsFor((draft) => {
-      const covers = draft["covers"] as Record<string, unknown>
-      draft["covers"] = { ...covers, grades }
-    })
-    assert.ok(problems.some((p) => p.includes("covers.grades")), `${JSON.stringify(grades)} passed`)
+test("there is no grade band in this schema, and a legacy one is ignored not rejected", () => {
+  // `covers.grades` used to be required here as an inclusive band capped at 12.
+  // It is gone: a band names a top, and this product does not have one — every
+  // pack's mathematics adapts upward without bound.
+  //
+  // Tolerated rather than rejected, and the distinction is the whole test. A
+  // pack published against the old schema is installed on a device right now.
+  // If this parser failed on it, the next launch would drop a working game out
+  // of the family's catalogue — a copy decision would have uninstalled a game.
+  // So every one of these shapes, including the ones the old validator existed
+  // to reject, must now simply parse.
+  for (const grades of [[1, 4], [3, 1], [-1, 3], [1, 13], [1], [1, 2, 3], ["1", "3"], null]) {
+    const draft = valid() as unknown as Record<string, unknown>
+    const covers = draft["covers"] as Record<string, unknown>
+    draft["covers"] = { ...covers, grades }
+    const result = parseManifest(draft)
+    assert.equal(result.ok, true, `a legacy ${JSON.stringify(grades)} was rejected`)
   }
+
+  // And it must not reappear on the typed surface: nothing downstream may read
+  // a band back out, because nothing is allowed to draw one.
+  const clean = parseManifest(valid())
+  assert.ok(clean.ok)
+  assert.equal("grades" in clean.manifest.covers, false, "the schema grew a band back")
 })
 
 test("en is required, because name and description are the fallback", () => {

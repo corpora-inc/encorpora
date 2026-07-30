@@ -23,7 +23,7 @@ const manifest = (over: Record<string, unknown> = {}) => ({
   host: { min: "0.1.0", max: "1.0.0" },
   entry: "pack.html",
   capabilities: ["items", "items.reveal", "haptics"],
-  covers: { skills: ["dw.add.regroup.add-multidigit"], grades: [1, 4] },
+  covers: { skills: ["dw.add.regroup.add-multidigit"] },
   locales: ["en"],
   assets: { files: 3, bytes: 80000 },
   download: { bytes: 70000, sha256: "a".repeat(64) },
@@ -125,23 +125,28 @@ test("this build supports every capability the SDK defines", () => {
   assert.deepEqual([...HOST_SUPPORTS].sort(), [...expected].sort())
 })
 
-test("the card's facts carry the minimum age, and carry its absence as absence", async () => {
+test("the card's facts are description and skills — no grade band, no age", async () => {
   // `libraryStore` persists this projection and `useHost` lays it back over the
-  // stored record. It is one function precisely so those two cannot disagree,
-  // and this is what holds the manifest end of it: a field dropped here reaches
-  // the catalogue as a card with a silent hole in its small print, with every
-  // type still correct on both sides.
+  // stored record. It is one function precisely so those two cannot disagree.
+  //
+  // This used to carry `grades` and `minAge` too, for the card to print as
+  // "Grades 1–4" and "8+". Both were removed by founder instruction: a band
+  // names a top, and this product does not have one. So the assertion is now an
+  // exact key set rather than a subset check — a subset check is what would let
+  // a band quietly reappear in the persisted record and reach a card again.
   const stated = await readLibrary({
     native: nativeWith([rowFor(manifest({ minAge: 8 }))]),
     host: hostProfile("0.1.0"),
   })
   const withAge = stated.entries[0]
   assert.ok(withAge)
+  // The manifest still states a minimum age — it is an editorial claim about
+  // motor demand that store age declarations rest on, and `fleet.test.ts` still
+  // requires one. What changed is that nothing projects it onto a card.
+  assert.equal(withAge.manifest.minAge, 8, "the manifest lost its stated age")
   assert.deepEqual(cardFacts(withAge), {
     description: "Chips that add to the key number fuse.",
     skills: ["dw.add.regroup.add-multidigit"],
-    grades: [1, 4],
-    minAge: 8,
   })
 
   const silent = await readLibrary({
@@ -151,9 +156,7 @@ test("the card's facts carry the minimum age, and carry its absence as absence",
   const withoutAge = silent.entries[0]
   assert.ok(withoutAge)
   const facts = cardFacts(withoutAge)
-  // Absent, not present-and-undefined. The persisted record and the type
-  // checker both treat those as different things, and a stored `undefined`
-  // would be written into a family's localStorage forever.
-  assert.equal("minAge" in facts, false, "an unstated age was stored as undefined")
-  assert.deepEqual(Object.keys(facts).sort(), ["description", "grades", "skills"])
+  assert.equal("minAge" in facts, false, "an age reached the card again")
+  assert.equal("grades" in facts, false, "a grade band reached the card again")
+  assert.deepEqual(Object.keys(facts).sort(), ["description", "skills"])
 })

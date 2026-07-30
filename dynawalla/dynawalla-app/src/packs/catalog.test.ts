@@ -14,7 +14,7 @@ const entry = (overrides: Record<string, unknown> = {}) => ({
   host: { min: "0.3.0" },
   entry: "index.html",
   capabilities: ["items"],
-  covers: { skills: ["add.2digit.regroup"], grades: [1, 3] },
+  covers: { skills: ["add.2digit.regroup"] },
   locales: ["en"],
   assets: { files: 12, bytes: 400_000 },
   download: {

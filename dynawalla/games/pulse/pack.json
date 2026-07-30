@@ -13,8 +13,7 @@
       "dw.frac.arith.add-unlike-denominators",
       "dw.frac.arith.subtract-fractions",
       "dw.frac.arith.multiply-by-a-whole"
-    ],
-    "grades": [3, 5]
+    ]
   },
   "minAge": 9,
   "locales": ["en"],

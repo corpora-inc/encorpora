@@ -21,10 +21,6 @@
       "dw.alg.equality.missing-subtrahend",
       "dw.alg.equality.unknown-minuend",
       "dw.alg.equality.missing-factor"
-    ],
-    "grades": [
-      1,
-      5
     ]
   },
   "minAge": 6,

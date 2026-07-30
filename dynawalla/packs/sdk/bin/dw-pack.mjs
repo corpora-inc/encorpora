@@ -129,7 +129,7 @@ function check(dir) {
   console.log(`  host         ${manifest.host.min}${manifest.host.max ? ` … <${manifest.host.max}` : " and later"}`)
   console.log(`  sdk          ${manifest.sdk} (this SDK is ${SDK_VERSION})`)
   console.log(`  capabilities ${manifest.capabilities.join(", ") || "none"}`)
-  console.log(`  covers       ${manifest.covers.skills.length} skills, grades ${manifest.covers.grades.join("–")}`)
+  console.log(`  covers       ${manifest.covers.skills.length} skills`)
   console.log(`  min age      ${manifest.minAge === undefined ? "unstated" : `${manifest.minAge}+`}`)
   console.log(`  on disk      ${files.length} files, ${bytes} bytes`)
 }

@@ -45,15 +45,13 @@ export interface InstalledPack {
   readonly description?: string
   /** `covers.skills` — the ids the subject filter is derived from. */
   readonly skills?: readonly string[]
-  /** `covers.grades` — inclusive band, `[1, 4]` is grades one to four. */
-  readonly grades?: readonly [number, number]
-  /**
-   * `minAge` — the youngest age the game's *hands* are written for, drawn as
-   * `8+`. A floor with no ceiling, and guidance rather than a gate: nothing
-   * anywhere reads this to lock, hide, dim or reorder a pack. Absent means the
-   * pack did not state one, which the card draws as nothing at all.
-   */
-  readonly minAge?: number
+  /* No grade band and no age here, deliberately. Both used to be carried for
+     the catalogue card to print as "Grades 1–4" and "8+", and both are gone
+     from every surface: a band has a top, and this product does not have one.
+     A record written by an older build still has the keys on disk — they are
+     simply never read. `minAge` survives in the pack manifest, where it is an
+     editorial claim about motor demand used for store age declarations, and
+     `fleet.test.ts` still requires every game to state one. */
 }
 
 export interface RegistryState {

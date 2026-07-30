@@ -3,7 +3,6 @@ import { useId, useMemo, useState } from "react"
 import { strings } from "../app/strings.ts"
 import type { Row } from "../shell/surfaces.ts"
 import { chipsFor, domainName, domainsOf, type DomainId } from "./domains.ts"
-import { gradeLabel, minAgeLabel } from "./labels.ts"
 import { PackArt } from "./PackArt.tsx"
 
 type PackRow = Extract<Row, { kind: "pack" }>
@@ -29,8 +28,6 @@ const folded = (text: string): string => text.toLocaleLowerCase()
  * rather than a price.
  */
 function Card({ row, active }: { row: PackRow; active: DomainId | null }) {
-  const grades = gradeLabel(row.grades)
-  const age = minAgeLabel(row.minAge)
   const domains = domainsOf(row.skills)
   // Lead with the subject the child actually filtered by. Taking `domains[0]`
   // instead meant a card answering a Multiplication filter labelled itself
@@ -100,21 +97,18 @@ function Card({ row, active }: { row: PackRow; active: DomainId | null }) {
               {domainName(domain)}
             </span>
           ))}
-          {grades ? <span className="numeral text-ink-muted text-[0.6875rem]">{grades}</span> : null}
-          {/* Beside the grade band, in the same type as the version and the
-              "Play" word, because it is the same class of thing: small print
-              about who the game is for. It is NOT a badge — no border, no
-              fill, no colour of its own — and it must never become one. A
-              loud `8+` on a five-year-old's screen reads as a refusal, and
-              this is guidance.
+          {/* No grade band and no age here. The card used to print "Grades 1–4"
+              and "7+" in this exact spot, and both are gone for the same
+              reason: they name a top, and this product does not have one. The
+              mathematics in every pack adapts upward without bound, the
+              audience deliberately runs past school age — adults and mathletes
+              are the goal, not an edge case — and "Grades 1–4" on a card is a
+              sign on the door saying who should not come in.
 
-              It is here rather than on the title line, which is where it was
-              asked for, and the reason is measured rather than aesthetic: the
-              10.5rem column above is sized to exactly the 142px COUNTERWEIGHT
-              needs at 15px, with no slack at all. Any sibling on that line
-              takes width from the title and brings back "COUNTERPOI / SE",
-              which has already reached a screen once. */}
-          {age ? <span className="numeral text-ink-muted text-[0.6875rem]">{age}</span> : null}
+              The subject chips above stay, because "Multiplication" says what
+              a game is about without saying who is too old for it. If a
+              who-is-this-for line is ever wanted here again, it has to be a
+              floor with no ceiling, and it has to be worth the width. */}
           <span className="numeral text-ink-muted text-[0.6875rem]">
             {row.resting ? strings.packs.tomorrow : strings.packs.play}
           </span>

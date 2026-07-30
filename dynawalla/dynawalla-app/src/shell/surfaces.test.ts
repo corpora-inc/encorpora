@@ -29,6 +29,7 @@ import assert from "node:assert/strict"
 import { DESTINATIONS, type Destination } from "../app/routes.ts"
 import { DEFAULT_PROFILE_ID, deviceKey, storageKey } from "../app/profile.ts"
 import { EMPTY_RECORD } from "../learner/record.ts"
+import type { InstalledPack } from "../packs/registry.ts"
 import { DEFAULT_SETTINGS } from "../settings/store.ts"
 import { FIGURES, surfaceOf, learnerName, type HostActions, type HostView, type Row } from "./surfaces.ts"
 
@@ -321,46 +322,45 @@ test("diagnostics are off until a parent turns them on", () => {
   )
 })
 
-test("a pack's minimum age reaches the card, and an unstated one stays unstated", () => {
-  // The wire from the manifest to the small print: `libraryStore` copies
-  // `manifest.minAge` onto the record, and this is where it becomes something
-  // the catalogue can draw. Everything either side of this hop is typed; this
-  // hop is a hand-written object literal, which is where a field goes missing.
-  const rows = rowsOf("packs", {
-    ...coldHost,
-    packs: [
-      {
-        id: "inc.corpora.pack.stated",
-        name: "Stated",
-        version: "1.0.0",
-        bytes: 1024,
-        sha256: "",
-        installedAt: 0,
-        minAge: 8,
-      },
-      {
-        id: "inc.corpora.pack.silent",
-        name: "Silent",
-        version: "1.0.0",
-        bytes: 1024,
-        sha256: "",
-        installedAt: 0,
-      },
-    ],
-  }).filter((row) => row.kind === "pack")
+test("a legacy grade band or age on a stored record never reaches a row", () => {
+  // The card used to print "Grades 1–4" and "8+", and this hop is where the
+  // stored record became something the catalogue could draw. Both are gone: a
+  // band names a top, and this product does not have one.
+  //
+  // Removing the fields from the type is not enough to prove it, because the
+  // type describes new records and the records this reads are *on devices
+  // now*, written by a build that stored both keys. So the fixture below is
+  // deliberately built as one of those older records — extra keys and all, via
+  // a cast the current type would otherwise refuse — and the assertion is that
+  // the row model comes out without them. A spread-based mapper would have
+  // carried them straight through to a card.
+  const legacy = {
+    id: "inc.corpora.pack.legacy",
+    name: "Legacy",
+    version: "1.0.0",
+    bytes: 1024,
+    sha256: "",
+    installedAt: 0,
+    grades: [1, 4],
+    minAge: 8,
+  } as unknown as InstalledPack
 
-  assert.equal(rows.length, 2)
-  assert.equal(rows.find((row) => row.name === "Stated")?.minAge, 8)
-  // `null`, not `undefined`: a record written before this field existed is on
-  // a device today, and the card draws nothing rather than guessing.
-  assert.equal(rows.find((row) => row.name === "Silent")?.minAge, null)
+  const rows = rowsOf("packs", { ...coldHost, packs: [legacy] }).filter(
+    (row) => row.kind === "pack",
+  )
+  const row = rows.find((candidate) => candidate.name === "Legacy")
+  assert.ok(row, "the legacy record left the front door entirely")
+
+  const carried = row as unknown as Record<string, unknown>
+  assert.equal("grades" in carried, false, "a stored grade band reached a row")
+  assert.equal("minAge" in carried, false, "a stored age reached a row")
 })
 
-test("a minimum age is guidance and never a gate", () => {
-  // The whole product decision in one assertion. A game labelled for older
-  // hands is not locked, not hidden, not dimmed, not sorted away and not
-  // resting: the row is identical to every other row except for two extra
-  // characters of small print, and pressing it launches the pack.
+test("a game an older build labelled 18+ is not gated, hidden or rested", () => {
+  // The whole product decision in one assertion, and the reason it survives the
+  // label's removal: the label was never a gate, so deleting it must not change
+  // a single thing about how the row behaves. A record still carrying `18` from
+  // an older build opens at full strength on a press.
   const { calls, actions } = recorder()
   const rows = surfaceOf(
     "packs",
@@ -375,7 +375,7 @@ test("a minimum age is guidance and never a gate", () => {
           sha256: "",
           installedAt: 0,
           minAge: 18,
-        },
+        } as unknown as InstalledPack,
       ],
     },
     actions,
