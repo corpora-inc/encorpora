@@ -51,6 +51,14 @@ type Fake = {
   answerFails: boolean
   /** Make `skip` reject, as an older host with no such method would. */
   skipFails: boolean
+  /**
+   * The rung the fake's own ladder is standing on, which a test may move.
+   *
+   * The real host's position moves on every answer, and a fake that stands still
+   * forever cannot show the defect this exists for: a pool stocked at rung 0
+   * being served to a child the ladder has already carried to rung 25.
+   */
+  standing: number
 }
 
 /**
@@ -73,6 +81,7 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
     verdict: true,
     answerFails: false,
     skipFails: false,
+    standing: RESTING_RUNG,
     asks,
     answers,
     skips,
@@ -87,7 +96,7 @@ function fakeHost(options: { granted?: Capability[]; rungs?: number } = {}): Fak
         asks.push(ask)
         const span = Math.max(1, rungs - 1)
         const cap = ask.maxDifficulty === undefined ? 1 : ask.maxDifficulty
-        const wanted = ask.difficulty === undefined ? RESTING_RUNG / span : ask.difficulty
+        const wanted = ask.difficulty === undefined ? fake.standing / span : ask.difficulty
         const index = Math.max(
           0,
           Math.min(rungs - 1, Math.round(Math.min(wanted, cap) * span)),
@@ -297,29 +306,123 @@ async function questionsUntilEasy(mounted: ReturnType<typeof attachGameHost>): P
   return Number.POSITIVE_INFINITY
 }
 
-test("without a flush the change lands a whole pool later; with one it lands next question", async () => {
-  // Both start from a *full* pool — `warm` awaits the floor and tops up in the
-  // background, and it is the topped-up sixty-four that a real game meets.
-  const stale = attachGameHost(fakeHost().client, { autoFlush: false })
-  await stale.warm()
-  await settle()
-  const before = await questionsUntilEasy(stale)
-  stale.dispose()
+test("a difficulty change lands next question, and the pool is re-stocked for it", async () => {
+  // Both arms start from a *full* pool — `warm` awaits the floor and tops up in
+  // the background, and it is the topped-up sixty-four that a real game meets.
+  //
+  // This test used to read "without a flush the change lands a whole pool later",
+  // and the reason it no longer can is worth stating: the pool used to be
+  // refilled in batches of thirty-two, when it drained past `POOL_FLOOR`, so
+  // between batches there was nothing stocked at the new difficulty for the
+  // *search* to find and the flush was the only thing that could help. It is
+  // topped up one question at a time now — for a different reason, see `fresh` in
+  // `index.ts` — so the search alone lands a change within a question or two even
+  // with `autoFlush` off. What the flush still does, and what is asserted here,
+  // is discard the sixty-four questions the child will now never see, so the pool
+  // in front of them is stocked for where they are rather than where they were.
+  const measure = async (autoFlush: boolean) => {
+    const fake = fakeHost()
+    const mounted = attachGameHost(fake.client, { autoFlush })
+    await mounted.warm()
+    await settle()
+    const asked = fake.asks.length
+    const questions = await questionsUntilEasy(mounted)
+    await settle()
+    const stocked = fake.asks.length - asked
+    mounted.dispose()
+    return { questions, stocked }
+  }
+  const stale = await measure(false)
+  const fresh = await measure(true)
 
-  const fresh = attachGameHost(fakeHost().client)
-  await fresh.warm()
-  await settle()
-  const after = await questionsUntilEasy(fresh)
-  fresh.dispose()
-
-  console.log(`[measured] questions until a difficulty change lands: ${String(before)} → ${String(after)}`)
+  console.log(
+    `[measured] questions until a difficulty change lands: ` +
+      `${String(stale.questions)} → ${String(fresh.questions)}; questions re-stocked for it: ` +
+      `${String(stale.stocked)} → ${String(fresh.stocked)}`,
+  )
 
   assert.ok(
-    before >= POOL_FLOOR,
-    `a stale pool should hold the old difficulty for at least ${String(POOL_FLOOR)} questions, not ${String(before)}`,
+    fresh.questions <= 2,
+    `a flushed pool should follow within 2 questions, not ${String(fresh.questions)}`,
   )
-  assert.ok(after <= 2, `a flushed pool should follow within 2 questions, not ${String(after)}`)
-  assert.ok(after < before, `flushing changed nothing: ${String(after)} vs ${String(before)}`)
+  // A pool that was only searched grows back by the handful of questions that
+  // were taken out of it. A pool that was flushed is trimmed to `FLUSH_KEEP` and
+  // has to be refetched, which is most of `POOL_TARGET`.
+  assert.ok(
+    fresh.stocked > POOL_FLOOR,
+    `a flush should re-stock more than ${String(POOL_FLOOR)} questions for the new difficulty, ` +
+      `not ${String(fresh.stocked)}`,
+  )
+  assert.ok(
+    stale.stocked < POOL_FLOOR,
+    `with autoFlush off nothing should be discarded, so nothing much should be re-stocked; ` +
+      `${String(stale.stocked)} questions were`,
+  )
+})
+
+test("a game that drives no difficulty at all still gets the host's current rung", async () => {
+  // THE test for the founder's report. TRUE DRAW calls `host.next()` with no
+  // arguments — it has no difficulty model of its own and does not want one — so
+  // `target` is never set, and the flush used to return early on exactly that.
+  // The pool it was handed at `warm()` was therefore stocked at whatever rung the
+  // ladder stood on before the child answered anything, and stayed in front of
+  // the child for the whole depth of the pool, permanently:
+  //
+  //   "I've gotten 10 correct in a row fast and I still get 2+0=1 ... 25 in a
+  //    row max speed and I get 2+0=1"
+  //
+  // Here the host's ladder starts at the bottom and is carried to the top, which
+  // is what twenty-five correct answers do to it. The question is how many
+  // questions a child has to answer before they see it.
+  // The measured depth on the code this replaces, on this same fake, was **65
+  // questions** — `POOL_FLOOR` awaited by `warm()` plus the top-up to
+  // `POOL_TARGET` on the first hand-out, and then never refreshed. It is not
+  // reproducible from here by flipping `autoFlush`, because three separate things
+  // had to change to fix it and that option only disables one: the pool is now
+  // *aimed* at the host's own position (`fresh`), *searched* against that aim,
+  // and topped up one question at a time so the aim is current. Delete any one of
+  // them and this test fails — measured at 65, 65 and 34 respectively.
+  const fake = fakeHost()
+  fake.standing = 0
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  await settle()
+  // The ladder moves, exactly as `items.ts` moves it on a correct answer. The
+  // game is told nothing and asks for nothing.
+  fake.standing = RUNGS - 1
+  const asked = fake.asks.length
+  let served = Number.POSITIVE_INFINITY
+  for (let n = 1; n <= 400; n++) {
+    const q = mounted.host.next()
+    if (q.difficulty >= 0.9) {
+      served = n
+      break
+    }
+    await settle(3)
+  }
+  await settle()
+  // Searched *and* discarded. Finding the one fresh question in a pool of
+  // sixty-four stale ones is what makes the next question right; throwing the
+  // sixty-four away is what makes the question after that right too, and it is a
+  // separate mechanism (`maybeFlush` from `take`) with a separate failure mode. A
+  // pool that was only searched grows back by the handful taken out of it.
+  const stocked = fake.asks.length - asked
+  mounted.dispose()
+  console.log(
+    `[measured] questions a game driving no difficulty serves before it sees the host's own ` +
+      `rung: ${String(served)} (was 65); questions re-stocked for it: ${String(stocked)}`,
+  )
+  assert.ok(
+    served <= 8,
+    `a game that drives nothing waited ${String(served)} questions for the ladder it is standing ` +
+      `on; the pool is aimed at the host's own position now, so it should be a handful`,
+  )
+  assert.ok(
+    stocked > POOL_FLOOR,
+    `the stale pool was searched but never discarded: only ${String(stocked)} questions were ` +
+      `re-stocked for the rung the child is now on, so most of what is queued in front of them ` +
+      `is still the rung they left`,
+  )
 })
 
 test("flush never empties the pool, so a flushed question is still reportable", async () => {
