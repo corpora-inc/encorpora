@@ -14,6 +14,14 @@
  */
 
 import { hudVars } from "./chrome.ts";
+import {
+  PLAIN_STOPS,
+  REVIVE_STOPS,
+  VOLT_BED,
+  VOLT_BED_A,
+  gradientStops,
+  laneFaceStops,
+} from "./contrast.ts";
 import type { Insets } from "../../../../packs/shared/game-chrome/index.ts";
 
 /**
@@ -42,17 +50,27 @@ const SA_B = "var(--vt-sa-b, 0px)";
 const SA_L = "var(--vt-sa-l, 0px)";
 
 /**
- * The stylesheet, exported so `chrome.test.ts` can hold it to two rules that
+ * The stylesheet, exported so `chrome.test.ts` can hold it to three rules that
  * cannot be checked any other way: it contains no `env(safe-area-inset-*)` — the
  * value that is zero inside a pack and shipped the founder's three collisions —
- * and every positional declaration on the five in-run HUD boxes is a `var()`
- * filled in by `chrome.ts`, so the sheet has no geometry of its own to drift.
+ * every positional declaration on the five in-run HUD boxes is a `var()` filled
+ * in by `chrome.ts`, so the sheet has no geometry of its own to drift, and every
+ * `color` on something a child reads is a `var()` filled in by `contrast.ts`, so
+ * it has no *ink* of its own either. A fixed ink is how the recharge gate came
+ * to be near-black numerals on a near-black panel in THE BLEACH; see
+ * `contrast.ts` for the three separate instances of that one mistake.
  */
 export const HUD_CSS = `
 .vt-root { position:absolute; inset:0; pointer-events:none; overflow:hidden;
   font-family:"Archivo Black","Helvetica Neue","Arial Black","Segoe UI",system-ui,sans-serif;
   font-weight:900; -webkit-font-smoothing:antialiased; text-transform:uppercase;
-  color:#eaf6ff; user-select:none; -webkit-user-select:none; }
+  color:var(--vt-ink-sky,#eaf6ff); user-select:none; -webkit-user-select:none; }
+/* Each family of surfaces takes the ink derived for the thing it lands on. The
+   sky and the deck are different backdrops and used to share one colour, which
+   is why the voltage bar was #12121a on a #0b0b0d deck in THE BLEACH. */
+.vt-prompt, .vt-tl, .vt-tr, .vt-banner { color:var(--vt-ink-sky,#eaf6ff); }
+.vt-volt, .vt-tools, .vt-perf { color:var(--vt-ink-deck,#eaf6ff); }
+.vt-veil { color:var(--vt-ink-veil,#eaf6ff); }
 .vt-root * { box-sizing:border-box; }
 .vt-num { font-variant-numeric:tabular-nums; letter-spacing:0.01em; }
 
@@ -76,16 +94,22 @@ export const HUD_CSS = `
    arithmetic here to disagree with it. */
 .vt-tl { position:absolute; left:var(--vt-tl-x,10px); top:var(--vt-tl-y,63px); }
 .vt-tr { position:absolute; right:var(--vt-tr-x,10px); top:var(--vt-tr-y,63px); text-align:right; }
-.vt-label { font-size:clamp(8px,1.5vw,11px); letter-spacing:0.28em; opacity:0.5; }
+/* Quiet, but never quiet enough to stop being readable. These carried an
+   opacity, and an opacity composites the ink into the sky — halfway through the
+   crossing from THE ABYSS to THE BLEACH the sky is a mid grey where no ink has
+   contrast to spare, so every value below 1 was under the bar. contrast.ts
+   softens and then corrects back, so the number does not have to be a
+   compromise between the darkest world and the greyest one. */
+.vt-label { font-size:clamp(8px,1.5vw,11px); letter-spacing:0.28em; color:var(--vt-ink-sky-dim,#eaf6ff); }
 /* Tracking adds a trailing space after the last letter, which right-aligned
    text pushes off a narrow screen. Pull it back. */
 .vt-tr .vt-label { margin-right:-0.28em; }
 .vt-tr .vt-surge { margin-right:-0.02em; }
 .vt-score { font-size:clamp(24px,5.4vw,48px); line-height:1; text-shadow:0 2px 14px rgba(0,0,0,0.8); }
-.vt-dist { font-size:clamp(12px,2.4vw,19px); opacity:0.72; line-height:1.3; }
+.vt-dist { font-size:clamp(12px,2.4vw,19px); color:var(--vt-ink-sky-dim,#eaf6ff); line-height:1.3; }
 
 .vt-surge { display:flex; align-items:baseline; justify-content:flex-end; gap:2px; }
-.vt-surge-x { font-size:clamp(14px,2.6vw,22px); opacity:0.6; }
+.vt-surge-x { font-size:clamp(14px,2.6vw,22px); color:var(--vt-ink-sky-dim,#eaf6ff); }
 .vt-surge-n { font-size:clamp(28px,6.4vw,56px); line-height:1;
   text-shadow:0 0 26px currentColor, 0 2px 12px rgba(0,0,0,0.85); }
 .vt-surge.vt-bump .vt-surge-n { animation:vt-bump 0.42s cubic-bezier(.16,1.5,.4,1); }
@@ -103,16 +127,21 @@ export const HUD_CSS = `
    strip eats the pixels and reports an inset of zero. See GESTURE_STRIP. */
 .vt-volt { position:absolute; left:var(--vt-volt-l,10px); right:var(--vt-volt-r,10px);
   bottom:var(--vt-volt-b,36px); height:var(--vt-volt-h,9px);
-  border:2px solid rgba(255,255,255,0.30); display:flex; align-items:stretch; padding:2px; }
+  border:2px solid rgba(255,255,255,0.30); display:flex; align-items:stretch; padding:2px;
+  /* A bed, so the fill has a backdrop that is known rather than whatever stretch
+     of deck or ocean happens to be under the bar. THE BLEACH's deck is #0b0b0d
+     and its ocean is #c9c3b4 — no single fill colour clears 4.5:1 against both,
+     and a full-width bar crosses both. */
+  background:rgba(${(VOLT_BED >> 16) & 255},${(VOLT_BED >> 8) & 255},${VOLT_BED & 255},${VOLT_BED_A}); }
 .vt-volt-fill { height:100%; width:100%; transform-origin:0 50%; transition:none;
-  box-shadow:0 0 18px currentColor; background:currentColor; }
+  box-shadow:0 0 18px currentColor; background:var(--vt-volt-fill,#eaf6ff); }
 .vt-volt-ticks { position:absolute; inset:2px; display:flex; }
 .vt-volt-ticks i { flex:1; border-right:2px solid rgba(0,0,0,0.55); }
 .vt-volt-ticks i:last-child { border-right:0; }
 .vt-volt.vt-crit { animation:vt-crit 0.85s steps(2,end) infinite; }
 @keyframes vt-crit { 0%,60%{opacity:1;} 61%,100%{opacity:0.45;} }
 .vt-volt-label { position:absolute; left:0; bottom:calc(100% + 5px); font-size:clamp(8px,1.5vw,11px);
-  letter-spacing:0.28em; opacity:0.5; }
+  letter-spacing:0.28em; color:var(--vt-ink-deck-dim,#eaf6ff); }
 
 /* ---- biome banner ---- */
 .vt-banner { position:absolute; left:0; right:0; top:38%; text-align:center; opacity:0;
@@ -133,19 +162,20 @@ export const HUD_CSS = `
   justify-content:center; pointer-events:auto;
   padding:calc(${SA_T} + clamp(14px,4vw,40px)) calc(${SA_R} + clamp(14px,4vw,40px))
           calc(${SA_B} + clamp(14px,4vw,40px)) calc(${SA_L} + clamp(14px,4vw,40px));
-  background:radial-gradient(ellipse at 50% 45%, rgba(2,4,12,0.55) 0%, rgba(2,4,12,0.93) 72%); }
+  background:radial-gradient(ellipse at 50% 45%, ${gradientStops(PLAIN_STOPS)}); }
 .vt-veil.vt-on { display:flex; }
 .vt-title { font-size:clamp(38px,12vw,110px); line-height:0.86; letter-spacing:0.04em;
   text-shadow:0 0 60px currentColor; }
-.vt-sub { font-size:clamp(11px,2.3vw,16px); letter-spacing:0.3em; opacity:0.62; margin-top:14px; text-align:center; }
-.vt-hint { font-size:clamp(10px,2vw,14px); letter-spacing:0.22em; opacity:0.45; margin-top:26px; text-align:center; line-height:2; }
-/* background:currentColor only works while color is still the inherited accent
-   — setting color on the button itself paints it black on black. The label
-   carries its own dark colour instead. */
+.vt-sub { font-size:clamp(11px,2.3vw,16px); letter-spacing:0.3em; color:var(--vt-ink-veil-dim,#eaf6ff); margin-top:14px; text-align:center; }
+.vt-hint { font-size:clamp(10px,2vw,14px); letter-spacing:0.22em; color:var(--vt-ink-veil-dim,#eaf6ff); margin-top:26px; text-align:center; line-height:2; }
+/* background:currentColor only works while color is still the inherited ink —
+   setting color on the button itself paints it black on black. The label carries
+   its own colour instead, derived from the ink the fill is painted in. It was a
+   fixed #04060f, which is a coin toss the moment the ink stops being pale. */
 .vt-btn { pointer-events:auto; margin-top:26px; padding:clamp(12px,2.6vw,20px) clamp(26px,7vw,64px);
   font:inherit; font-size:clamp(15px,3.4vw,26px); letter-spacing:0.18em; text-transform:uppercase;
   background:currentColor; border:0; cursor:pointer; box-shadow:0 0 40px currentColor; }
-.vt-btn span { color:#04060f; }
+.vt-btn span { color:var(--vt-on-veil-ink,#04060f); }
 .vt-btn:active { transform:translateY(2px); }
 .vt-btn:focus-visible { outline:3px solid #fff; outline-offset:3px; }
 
@@ -156,10 +186,14 @@ export const HUD_CSS = `
    keeps rushing past in full colour through a thin scrim, the whole rig is lit
    in the current biome's accent, and the three answers are built out of the same
    posts-and-lintel the gates out on the track are. It is a gate, indoors. */
+   The scrim's stops live in contrast.ts, not here: the clear window where the
+   causeway shows through is the top two fifths, and below it the scrim comes up
+   to a floor because that is where the question and the three answers are. A
+   numeral cannot be legible against a band that runs from bone to black behind
+   it, and that band is exactly what shipped. */
 .vt-veil[data-v="revive"] {
   background:
-    linear-gradient(180deg, rgba(3,7,18,0.82) 0%, rgba(3,7,18,0.16) 26%,
-                            rgba(3,7,18,0.16) 52%, rgba(3,7,18,0.88) 82%),
+    linear-gradient(180deg, ${gradientStops(REVIVE_STOPS)}),
     radial-gradient(ellipse at 50% 42%, rgba(0,0,0,0) 40%, rgba(2,5,14,0.55) 100%);
   justify-content:flex-end; padding-bottom:calc(${SA_B} + clamp(20px,5vh,54px)); }
 /* A charge front sweeping up the screen. Slow, wide, low-contrast: energy, not
@@ -170,8 +204,11 @@ export const HUD_CSS = `
 @keyframes vt-charge { 0%{transform:translateY(120%);} 100%{transform:translateY(-160%);} }
 
 .vt-charge { display:flex; align-items:center; gap:clamp(10px,2.4vw,20px); margin-bottom:clamp(6px,1.4vh,14px); }
-.vt-charge-label { font-size:clamp(11px,2.3vw,16px); letter-spacing:0.34em; opacity:0.8;
-  color:var(--vt-accent, currentColor); text-shadow:0 0 22px currentColor; }
+/* The accent, corrected only as far as it takes to clear 4.5:1 on the scrim —
+   so it still reads as the biome you died in. --vt-accent is the raw world
+   colour and belongs to glows and rules, never to a word. */
+.vt-charge-label { font-size:clamp(11px,2.3vw,16px); letter-spacing:0.34em; opacity:1;
+  color:var(--vt-accent-veil, currentColor); text-shadow:0 0 22px var(--vt-accent, currentColor); }
 .vt-revive-prompt { font-size:clamp(36px,9.6vw,88px); line-height:1; margin:2px 0 clamp(14px,2.4vh,28px);
   paint-order:stroke fill; -webkit-text-stroke:8px rgba(2,5,14,0.6);
   text-shadow:0 0 46px var(--vt-accent, currentColor); }
@@ -180,7 +217,7 @@ export const HUD_CSS = `
 .vt-lane { pointer-events:auto; position:relative; flex:1; min-width:0; aspect-ratio:3/2.5;
   border:0; border-left:clamp(4px,0.9vw,7px) solid var(--vt-accent, #6cf);
   border-right:clamp(4px,0.9vw,7px) solid var(--vt-accent, #6cf);
-  background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(4,10,22,0.30) 55%, rgba(4,10,22,0.62));
+  background:linear-gradient(180deg, ${laneFaceStops()});
   color:inherit; font:inherit; cursor:pointer; overflow:hidden;
   font-size:clamp(30px,8.6vw,66px); display:flex; align-items:center; justify-content:center;
   font-variant-numeric:tabular-nums; letter-spacing:0.01em;
@@ -191,11 +228,12 @@ export const HUD_CSS = `
   background:var(--vt-accent, #6cf); box-shadow:0 0 24px var(--vt-accent, #6cf); }
 .vt-lane::after { content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
   background:var(--vt-accent, #6cf); opacity:0.45; }
-.vt-lane span { position:relative; text-shadow:0 0 30px rgba(0,0,0,0.9), 0 3px 0 rgba(0,0,0,0.55); }
+.vt-lane span { position:relative; color:var(--vt-ink-lane,#eaf6ff);
+  text-shadow:0 0 30px rgba(0,0,0,0.9), 0 3px 0 rgba(0,0,0,0.55); }
 .vt-lane:active { transform:translateY(3px); }
 .vt-lane:focus-visible { outline:3px solid #fff; outline-offset:4px; }
 .vt-lane.vt-right { background:var(--vt-accent, #6cf); box-shadow:0 0 70px var(--vt-accent, #6cf); }
-.vt-lane.vt-right span { color:#04060f; text-shadow:none; }
+.vt-lane.vt-right span { color:var(--vt-on-accent,#04060f); text-shadow:none; }
 .vt-lane.vt-wrong { opacity:0.22; }
 .vt-ring { width:clamp(52px,11vw,84px); height:clamp(52px,11vw,84px); }
 .vt-ring circle { fill:none; stroke-width:9; }
@@ -208,7 +246,7 @@ export const HUD_CSS = `
   margin-top:clamp(16px,3vw,30px); }
 .vt-stat { text-align:left; }
 .vt-stat b { display:block; font-size:clamp(20px,5vw,40px); line-height:1; font-variant-numeric:tabular-nums; }
-.vt-stat i { display:block; font-style:normal; font-size:clamp(8px,1.6vw,11px); letter-spacing:0.26em; opacity:0.5; margin-top:5px; }
+.vt-stat i { display:block; font-style:normal; font-size:clamp(8px,1.6vw,11px); letter-spacing:0.26em; color:var(--vt-ink-veil-dim,#eaf6ff); margin-top:5px; }
 
 /* ---- settings ----
    Stacked on the voltage readout rather than measured from the bottom edge, so
@@ -219,7 +257,7 @@ export const HUD_CSS = `
   background:rgba(2,5,14,0.55); color:inherit; font:inherit; font-size:clamp(11px,2.2vw,14px);
   cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
 .vt-tool[aria-pressed="true"] { background:currentColor; }
-.vt-tool[aria-pressed="true"] span { color:#04060f; }
+.vt-tool[aria-pressed="true"] span { color:var(--vt-on-deck-ink,#04060f); }
 .vt-tool:focus-visible { outline:3px solid #fff; outline-offset:2px; }
 .vt-perf { position:absolute; left:var(--vt-perf-l,10px); bottom:var(--vt-perf-b,110px);
   font-size:11px; letter-spacing:0.1em; opacity:0.6; white-space:pre; display:none;

@@ -28,6 +28,88 @@ const SCALES: Record<ScaleName, { root: number; degrees: number[] }> = {
   void: { root: 60, degrees: [0, 2, 4, 6, 7, 9, 11, 12, 14, 16, 18, 19] },
 };
 
+/**
+ * The ship's voice.
+ *
+ * ── what it was ─────────────────────────────────────────────────────────────
+ *
+ * A sawtooth at 52-86 Hz and a band of white noise, both into one lowpass with
+ * **Q = 7**. That is not a spaceship; it is the standard recipe for a two-stroke
+ * engine, and the founder heard it as exactly that — "static and annoying like a
+ * 4-bit motorcycle". Two things did it. A sawtooth has every harmonic at 1/n, so
+ * at 58 Hz there is significant energy right through the ear's most sensitive
+ * band; and a Q of 7 puts a 17 dB resonant peak on a filter that is being swept
+ * by the player's own speed, which is heard as a nasal whine that tracks them.
+ *
+ * ── what it is ──────────────────────────────────────────────────────────────
+ *
+ * Two triangles a few cents apart. A triangle's harmonics fall off at 1/n², so
+ * it is warm at the same fundamental, and the detune makes the pair beat slowly
+ * against each other — that beating is the "magical electrical" the founder
+ * asked for, and it costs one extra oscillator. The filter's resonance comes
+ * down to just above flat so the sweep reads as opening rather than whining, and
+ * a quiet high partial drifts over the top for the space-age end of it. The
+ * noise stays, because a bed with no noise at all sounds synthetic, but at a
+ * quarter of what it was.
+ *
+ * And it is quieter. `ENGINE.gain` is a little over half the old curve at every
+ * speed, and the wind band roughly half — the founder asked for that too, and a
+ * bed is the one sound in a game that is never not playing.
+ *
+ * Exported as data rather than buried in `setDrive` so `audio.test.ts` can hold
+ * it to those claims without a real `AudioContext`: quieter than the old curve
+ * everywhere, no sawtooth, resonance under the whine threshold, detune non-zero.
+ */
+export const ENGINE = {
+  /** The two body oscillators. Triangle, not sawtooth: 1/n² and not 1/n. */
+  type: "triangle" as OscillatorType,
+  /** Cents between the pair. Wide enough to beat, narrow enough to stay one note. */
+  detuneCents: 9,
+  /** Fundamental, in Hz, at rest and at terminal velocity. */
+  hz: [52, 86] as const,
+  /** The sub sine, an octave below and a touch flat of it. */
+  subHz: [26, 41] as const,
+  subGain: 0.38,
+  /** Body filter. Q was 7 — a 17 dB peak swept by the player. */
+  cutoffHz: [420, 1900] as const,
+  q: 1.1,
+  /** Noise into the body filter. Air, not grit. */
+  noiseGain: 0.022,
+  /** The high partial that drifts over the top, as a multiple of the fundamental. */
+  shimmerMul: 6,
+  shimmerGain: 0.014,
+  /** How fast the shimmer breathes, in Hz. Slow enough to be weather. */
+  shimmerLfoHz: 0.19,
+  /** Bed level at rest and at terminal velocity. Was 0.13 and 0.24. */
+  gain: [0.075, 0.13] as const,
+  /** Level while dead. */
+  deadGain: 0.014,
+  /** The wind band. Was 0.006..0.056 at 700..2600 Hz. */
+  windGain: [0.004, 0.032] as const,
+  windHz: [520, 1670] as const,
+} as const;
+
+/** Everything the engine bed should be doing at `speed01`. */
+export function engineAt(speed01: number, alive: boolean): {
+  gain: number;
+  cutoff: number;
+  hz: number;
+  subHz: number;
+  windGain: number;
+  windHz: number;
+} {
+  const s = Math.max(0, Math.min(1, speed01));
+  const at = ([lo, hi]: readonly [number, number]): number => lo + (hi - lo) * s;
+  return {
+    gain: alive ? at(ENGINE.gain) : ENGINE.deadGain,
+    cutoff: at(ENGINE.cutoffHz),
+    hz: at(ENGINE.hz),
+    subHz: at(ENGINE.subHz),
+    windGain: alive ? at(ENGINE.windGain) : 0,
+    windHz: at(ENGINE.windHz),
+  };
+}
+
 export class Audio {
   private ctx: AudioContext | null = null;
   private master!: GainNode;
@@ -40,7 +122,11 @@ export class Audio {
 
   // engine bed
   private engOsc: OscillatorNode | null = null;
+  /** The detuned twin. The beat between the two is the whole character. */
+  private engOsc2: OscillatorNode | null = null;
   private engSub: OscillatorNode | null = null;
+  private engShimmer: OscillatorNode | null = null;
+  private engShimmerLfo: OscillatorNode | null = null;
   private engNoise: AudioBufferSourceNode | null = null;
   private engFilter!: BiquadFilterNode;
   private engGain!: GainNode;
@@ -138,33 +224,65 @@ export class Audio {
 
     this.engFilter = ctx.createBiquadFilter();
     this.engFilter.type = "lowpass";
-    this.engFilter.frequency.value = 420;
-    this.engFilter.Q.value = 7;
+    this.engFilter.frequency.value = ENGINE.cutoffHz[0];
+    this.engFilter.Q.value = ENGINE.q;
     this.engFilter.connect(this.engGain);
 
+    // The pair. Same note, `detuneCents` apart, so they drift in and out of
+    // phase over a couple of seconds — an electrical shimmer rather than a tone.
+    const bodyG = ctx.createGain();
+    bodyG.gain.value = 0.3;
+    bodyG.connect(this.engFilter);
     this.engOsc = ctx.createOscillator();
-    this.engOsc.type = "sawtooth";
-    this.engOsc.frequency.value = 58;
-    const oscG = ctx.createGain();
-    oscG.gain.value = 0.32;
-    this.engOsc.connect(oscG);
-    oscG.connect(this.engFilter);
+    this.engOsc.type = ENGINE.type;
+    this.engOsc.frequency.value = ENGINE.hz[0];
+    this.engOsc.detune.value = -ENGINE.detuneCents / 2;
+    this.engOsc.connect(bodyG);
     this.engOsc.start();
+    this.engOsc2 = ctx.createOscillator();
+    this.engOsc2.type = ENGINE.type;
+    this.engOsc2.frequency.value = ENGINE.hz[0];
+    this.engOsc2.detune.value = ENGINE.detuneCents / 2;
+    this.engOsc2.connect(bodyG);
+    this.engOsc2.start();
 
     this.engSub = ctx.createOscillator();
     this.engSub.type = "sine";
-    this.engSub.frequency.value = 29;
+    this.engSub.frequency.value = ENGINE.subHz[0];
     const subG = ctx.createGain();
-    subG.gain.value = 0.5;
+    subG.gain.value = ENGINE.subGain;
     this.engSub.connect(subG);
     subG.connect(this.engGain);
     this.engSub.start();
+
+    // A high partial that breathes. This is the space-age end of it, and it is
+    // deliberately below the noise floor of anything else in the mix — it should
+    // be noticeable only when it stops.
+    this.engShimmer = ctx.createOscillator();
+    this.engShimmer.type = "sine";
+    this.engShimmer.frequency.value = ENGINE.hz[0] * ENGINE.shimmerMul;
+    const shG = ctx.createGain();
+    // Every GainNode arrives at 1. The LFO writes an offset onto this, so it
+    // starts at zero and the LFO's own depth is what it swings by.
+    shG.gain.value = 0;
+    this.engShimmer.connect(shG);
+    shG.connect(this.engGain);
+    this.engShimmer.start();
+    this.engShimmerLfo = ctx.createOscillator();
+    this.engShimmerLfo.type = "sine";
+    this.engShimmerLfo.frequency.value = ENGINE.shimmerLfoHz;
+    const lfoDepth = ctx.createGain();
+    lfoDepth.gain.value = ENGINE.shimmerGain / 2;
+    this.engShimmerLfo.connect(lfoDepth);
+    lfoDepth.connect(shG.gain);
+    shG.gain.value = ENGINE.shimmerGain / 2;
+    this.engShimmerLfo.start();
 
     this.engNoise = ctx.createBufferSource();
     this.engNoise.buffer = this.noiseBuf;
     this.engNoise.loop = true;
     const nG = ctx.createGain();
-    nG.gain.value = 0.09;
+    nG.gain.value = ENGINE.noiseGain;
     this.engNoise.connect(nG);
     nG.connect(this.engFilter);
     this.engNoise.start();
@@ -175,7 +293,7 @@ export class Audio {
     this.windGain.connect(this.master);
     this.windFilter = ctx.createBiquadFilter();
     this.windFilter.type = "bandpass";
-    this.windFilter.frequency.value = 900;
+    this.windFilter.frequency.value = ENGINE.windHz[0];
     this.windFilter.Q.value = 0.7;
     this.windFilter.connect(this.windGain);
     const wSrc = ctx.createBufferSource();
@@ -194,7 +312,10 @@ export class Audio {
   dispose(): void {
     try {
       this.engOsc?.stop();
+      this.engOsc2?.stop();
       this.engSub?.stop();
+      this.engShimmer?.stop();
+      this.engShimmerLfo?.stop();
       this.engNoise?.stop();
       void this.ctx?.close();
     } catch {
@@ -217,13 +338,17 @@ export class Audio {
   setDrive(speed01: number, alive: boolean): void {
     if (!this.ctx) return;
     const t = this.ctx.currentTime;
-    const s = Math.max(0, Math.min(1, speed01));
-    this.engGain.gain.setTargetAtTime(alive ? 0.13 + s * 0.11 : 0.02, t, 0.25);
-    this.engFilter.frequency.setTargetAtTime(300 + s * 1150, t, 0.3);
-    this.engOsc?.frequency.setTargetAtTime(52 + s * 34, t, 0.4);
-    this.engSub?.frequency.setTargetAtTime(26 + s * 15, t, 0.4);
-    this.windGain.gain.setTargetAtTime(alive ? 0.006 + s * 0.05 : 0, t, 0.3);
-    this.windFilter.frequency.setTargetAtTime(700 + s * 1900, t, 0.3);
+    // Every number here is `ENGINE`'s, so `audio.test.ts` is measuring the bed
+    // the ship actually makes rather than a second copy of the curve.
+    const e = engineAt(speed01, alive);
+    this.engGain.gain.setTargetAtTime(e.gain, t, 0.25);
+    this.engFilter.frequency.setTargetAtTime(e.cutoff, t, 0.3);
+    this.engOsc?.frequency.setTargetAtTime(e.hz, t, 0.4);
+    this.engOsc2?.frequency.setTargetAtTime(e.hz, t, 0.4);
+    this.engShimmer?.frequency.setTargetAtTime(e.hz * ENGINE.shimmerMul, t, 0.5);
+    this.engSub?.frequency.setTargetAtTime(e.subHz, t, 0.4);
+    this.windGain.gain.setTargetAtTime(e.windGain, t, 0.3);
+    this.windFilter.frequency.setTargetAtTime(e.windHz, t, 0.3);
   }
 
   setScale(name: ScaleName, bpm: number): void {
