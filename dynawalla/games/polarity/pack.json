@@ -14,8 +14,7 @@
       "dw.alg.equality.unknown-minuend",
       "dw.add.column.add-no-regroup",
       "dw.add.column.subtract-no-regroup"
-    ],
-    "grades": [1, 5]
+    ]
   },
   "minAge": 9,
   "locales": ["en"],

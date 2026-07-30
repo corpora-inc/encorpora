@@ -774,7 +774,6 @@ async function main() {
         installedAt: Date.now(),
         description: manifest.description,
         skills: manifest.covers.skills,
-        grades: manifest.covers.grades,
       }
     }),
   }

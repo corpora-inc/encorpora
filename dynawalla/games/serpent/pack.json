@@ -17,8 +17,7 @@
       "dw.frac.compare.same-numerator",
       "dw.frac.compare.unlike-fractions",
       "dw.frac.equivalence.lowest-terms"
-    ],
-    "grades": [1, 5]
+    ]
   },
   "minAge": 8,
   "locales": ["en"],

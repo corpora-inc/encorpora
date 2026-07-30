@@ -13,8 +13,7 @@
       "dw.add.column.subtract-no-regroup",
       "dw.add.regroup.add-multidigit",
       "dw.add.regroup.subtract-multidigit"
-    ],
-    "grades": [1, 3]
+    ]
   },
   "minAge": 6,
   "locales": ["en"],

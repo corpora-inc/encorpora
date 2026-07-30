@@ -8,7 +8,7 @@
   "host": { "min": "0.1.0" },
   "entry": "index.html",
   "capabilities": ["items", "haptics"],
-  "covers": { "skills": ["sub.4digit.zero"], "grades": [2, 4] },
+  "covers": { "skills": ["sub.4digit.zero"] },
   "minAge": 5,
   "locales": ["en"],
   "assets": { "files": 4, "bytes": 32768 },

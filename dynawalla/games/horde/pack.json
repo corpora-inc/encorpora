@@ -25,10 +25,6 @@
       "dw.mul.multidigit.times-one-digit",
       "dw.mul.multidigit.times-two-digit",
       "dw.div.whole.divide-exact"
-    ],
-    "grades": [
-      1,
-      5
     ]
   },
   "minAge": 8,

@@ -19,10 +19,6 @@
       "dw.frac.arith.multiply-by-a-whole",
       "dw.frac.equivalence.lowest-terms",
       "dw.frac.compare.unlike-fractions"
-    ],
-    "grades": [
-      3,
-      5
     ]
   },
   "minAge": 8,

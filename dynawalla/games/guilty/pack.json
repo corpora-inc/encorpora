@@ -23,10 +23,6 @@
       "dw.add.regroup.subtract-short-subtrahend",
       "dw.mul.multidigit.times-one-digit",
       "dw.div.whole.divide-exact"
-    ],
-    "grades": [
-      1,
-      5
     ]
   },
   "minAge": 8,

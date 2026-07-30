@@ -20,7 +20,7 @@ const manifest = (overrides: Record<string, unknown> = {}) => ({
   host: { min: "0.3.0", max: "1.0.0" },
   entry: "index.html",
   capabilities: ["items", "haptics"],
-  covers: { skills: ["add.2digit.regroup"], grades: [1, 3] },
+  covers: { skills: ["add.2digit.regroup"] },
   locales: ["en"],
   assets: { files: 12, bytes: 400_000 },
   download: { url: "https://encorpora.io/dynawalla/packs/a.zip", bytes: 90_000, sha256: "a".repeat(64) },

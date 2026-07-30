@@ -86,21 +86,12 @@ export type LibraryDeps = {
 export type PackCardFacts = {
   readonly description: string
   readonly skills: readonly string[]
-  readonly grades: readonly [number, number]
-  /** Absent, not `undefined`: `exactOptionalPropertyTypes` is on. */
-  readonly minAge?: number
 }
 
 export function cardFacts(entry: LibraryEntry): PackCardFacts {
   return {
     description: entry.description,
     skills: entry.manifest.covers.skills,
-    grades: entry.manifest.covers.grades,
-    // Spread rather than assigned, so a pack that states no minimum age leaves
-    // the key off entirely. The catalogue draws an unstated age as nothing at
-    // all, and an explicit `undefined` is a different thing from an absent key
-    // to both the persisted record and the type checker.
-    ...(entry.manifest.minAge === undefined ? {} : { minAge: entry.manifest.minAge }),
   }
 }
 

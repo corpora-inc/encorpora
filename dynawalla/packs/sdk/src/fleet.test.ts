@@ -35,7 +35,11 @@ import { manifestFrom } from "../../authoring.mjs"
 const here = path.dirname(fileURLToPath(import.meta.url))
 const gamesRoot = path.resolve(here, "../../../games")
 
-type PackSource = { readonly id?: unknown; readonly minAge?: unknown }
+type PackSource = {
+  readonly id?: unknown
+  readonly minAge?: unknown
+  readonly covers?: Record<string, unknown>
+}
 
 /** Every `games/<name>/pack.json`, as `[directory, parsed]`. */
 function fleet(): readonly (readonly [string, PackSource])[] {
@@ -92,6 +96,30 @@ test("no game declares an age ceiling — the label is a floor and says so", () 
         (source as Record<string, unknown>)[field],
         undefined,
         `${name} declares "${field}" — there is no ceiling in this schema`,
+      )
+    }
+  }
+})
+
+test("no game declares a grade band — a band names a top, and there is no top", () => {
+  // `covers.grades` was removed from the schema, but removal alone does not
+  // stop it coming back: the parser deliberately *tolerates* a legacy band
+  // rather than rejecting it, because manifests published against the old
+  // schema are installed on devices today and failing them would uninstall
+  // working games. That tolerance is the hole this test covers for our own
+  // fleet, and it is the suite the `dynawalla/games/**` CI filter runs.
+  //
+  // The reason it is banned rather than merely unused: "Grades 1–4" on a card
+  // told a mathlete, an adult and an accelerated nine-year-old that the game
+  // was not for them, when every pack's mathematics adapts upward without
+  // bound. `covers.skills` says what a game teaches without saying who is too
+  // old for it, and it is the only claim a pack gets to make.
+  for (const [name, source] of fleet()) {
+    for (const field of ["grades", "gradeBand", "gradeRange", "maxGrade"]) {
+      assert.equal(
+        source.covers === undefined ? undefined : source.covers[field],
+        undefined,
+        `${name} declares "covers.${field}" — this product does not name a top grade`,
       )
     }
   }

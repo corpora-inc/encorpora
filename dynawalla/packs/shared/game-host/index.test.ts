@@ -1615,7 +1615,7 @@ test("declaredSkills reads covers.skills off the pack's own manifest", async () 
   const skills = await declaredSkills({
     packId: "dynawalla.trebuchet",
     documentUrl: DOCUMENT_URL,
-    fetch: fakeFetch(MANIFEST_URL, { covers: { skills: TREBUCHET, grades: [1, 3] } }),
+    fetch: fakeFetch(MANIFEST_URL, { covers: { skills: TREBUCHET } }),
   })
   assert.deepEqual([...skills], TREBUCHET)
 })
@@ -1680,7 +1680,7 @@ test("the declaration travels from the pack's own manifest all the way to the wi
   const mounted = await attachDeclared(fake.client, {}, {
     documentUrl: "dynawalla-pack://localhost/dynawalla.test/pack.html",
     fetch: fakeFetch("dynawalla-pack://localhost/dynawalla.test/manifest.json", {
-      covers: { skills: TREBUCHET, grades: [1, 3] },
+      covers: { skills: TREBUCHET },
     }),
   })
   await mounted.warm()

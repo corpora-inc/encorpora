@@ -13,8 +13,7 @@
       "dw.add.regroup.subtract-across-zero",
       "dw.add.regroup.add-multidigit",
       "dw.add.regroup.subtract-tenths"
-    ],
-    "grades": [1, 4]
+    ]
   },
   "minAge": 6,
   "locales": ["en"],

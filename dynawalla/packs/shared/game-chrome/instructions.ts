@@ -117,6 +117,41 @@ export function sheetTop(insets: Insets = safeInsets()): number {
 const DISMISS_PX = 96
 const DISMISS_VELOCITY = 0.5
 
+/**
+ * The height of the gradient the pinned footer paints over the foot of the
+ * scroller (`.dwc-foot::before`). It is anchored at `bottom:100%` of the
+ * footer, so it covers the bottom `FADE_H` pixels of the scrolling body — the
+ * text is fading, not ending.
+ */
+const FADE_H = 28
+
+/**
+ * Clear air the last line keeps ABOVE the top of that gradient.
+ *
+ * "instructions need a little bit more padding because you can't scroll all the
+ * way and get the last line just a little faded out." The body's bottom padding
+ * was `.5rem` — 8px, against a 28px fade — so at maximum scroll the final line
+ * still had 20px of gradient over it and there was no further scroll left to
+ * pull it clear. A manual whose last rule is unreadable is a manual with one
+ * fewer rule in it.
+ */
+const READ_GAP = 12
+
+/**
+ * What the scroller reserves below its last line, so that at `scrollTop ===
+ * scrollHeight - clientHeight` the final line sits entirely above the fade.
+ *
+ * This deliberately does NOT add `insets.bottom`. The home indicator is already
+ * cleared by the footer, which is BELOW the body and carries `.7rem +
+ * insets.bottom` of its own bottom padding — the body's box stops at the
+ * footer's top edge and never reaches the safe area at all. Adding the inset
+ * here a second time would buy nothing and spend 34px of a notched phone's
+ * sheet on blank space. `instructions.test.ts` models the whole vertical stack
+ * and asserts both clearances from the one geometry, so the claim is checked
+ * rather than asserted twice.
+ */
+const BODY_PAD_B = FADE_H + READ_GAP
+
 function styleSheet(reduced: boolean): string {
   // Motion is a branch, not a degradation: reduced motion still gets a
   // cross-fade so the sheet does not appear without explanation, it just does
@@ -177,7 +212,10 @@ function styleSheet(reduced: boolean): string {
      one gesture, and nothing else. */
   touch-action:pan-y;-webkit-overflow-scrolling:touch;
   padding:0 clamp(20px,5vw,32px);
-  padding-bottom:.5rem}
+  /* Written from JS in place() as well, from the same constant. This is what a
+     sheet gets before the first measurement; the two must never disagree, and
+     the test asserts they do not. */
+  padding-bottom:${BODY_PAD_B}px}
 .dwc-sum{margin:0 0 1.1rem;font-size:clamp(1rem,2.9vw,1.12rem);line-height:1.55;color:#dbe4f2}
 .dwc-sum p{margin:.32rem 0}
 .dwc-sec{margin:1.1rem 0 0}
@@ -191,7 +229,7 @@ function styleSheet(reduced: boolean): string {
 .dwc-foot{flex:none;position:relative;padding:.7rem clamp(20px,5vw,32px)}
 /* Fades the text under the footer rather than guillotining it, so it stays
    visible that the manual continues. */
-.dwc-foot::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:28px;pointer-events:none;
+.dwc-foot::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:${FADE_H}px;pointer-events:none;
   background:linear-gradient(rgba(12,16,23,0),#0c1017)}
 .dwc-close{width:100%;min-height:52px;border:0;border-radius:14px;cursor:pointer;
   font:800 1rem/1 ${FONT};letter-spacing:.03em;color:#0b1020;background:#f3d089;
@@ -338,6 +376,11 @@ export function createInstructions(root: HTMLElement, spec: InstructionsSpec): I
     help.style.right = `${i.right + HOST_MARGIN}px`
     sheet.style.maxHeight = `calc(100% - ${sheetTop(i)}px)`
     foot.style.paddingBottom = `calc(.7rem + ${i.bottom}px)`
+    // The scroller's own floor. It is a constant, not a function of `i` — see
+    // BODY_PAD_B — but it is written here beside the other two so all three
+    // numbers that decide where the manual ends live in one place, and so a
+    // future term that IS inset-dependent has an obvious home.
+    body.style.paddingBottom = `${BODY_PAD_B}px`
   }
   place()
   const stopInsets = onInsetsChange(place)

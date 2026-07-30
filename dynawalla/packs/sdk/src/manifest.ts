@@ -68,11 +68,19 @@ export type PackManifest = {
   /** Relative path to the document the host frames. Always an HTML file. */
   readonly entry: string
   readonly capabilities: readonly Capability[]
-  /** What the pack can teach, so the router can hand it a skill. */
+  /**
+   * What the pack can teach, so the router can hand it a skill.
+   *
+   * Skills and nothing else. There is deliberately **no grade band** here and
+   * there never will be: a band has a top, and the top is a claim this product
+   * does not make. Every game's mathematics adapts upward without bound, the
+   * audience runs from a five-year-old to an adult, and "grades 1–4" printed on
+   * a card told a mathlete the game was not for them. A manifest published
+   * before this was removed may still carry `covers.grades`; it is ignored
+   * rather than rejected, because that manifest is on a device today.
+   */
   readonly covers: {
     readonly skills: readonly string[]
-    /** Inclusive school-grade band. `[1, 3]` is grades one to three. */
-    readonly grades: readonly [number, number]
   }
   /**
    * The youngest age the game's **hands** are written for. Guidance, never a
@@ -239,7 +247,7 @@ export function parseManifest(input: unknown): ManifestResult {
 
   const covers = input["covers"]
   if (!isRecord(covers)) {
-    fail("covers must be { skills, grades }")
+    fail("covers must be { skills }")
   } else {
     const skills = stringArray(covers["skills"])
     if (skills === null || skills.length === 0) {
@@ -247,20 +255,12 @@ export function parseManifest(input: unknown): ManifestResult {
     } else if (skills.length > 512) {
       fail("covers.skills is capped at 512 entries")
     }
-    const grades = covers["grades"]
-    if (
-      !Array.isArray(grades) ||
-      grades.length !== 2 ||
-      typeof grades[0] !== "number" ||
-      typeof grades[1] !== "number" ||
-      !Number.isInteger(grades[0]) ||
-      !Number.isInteger(grades[1]) ||
-      grades[0] < 0 ||
-      grades[1] > 12 ||
-      grades[0] > grades[1]
-    ) {
-      fail("covers.grades must be an inclusive [low, high] band within 0–12")
-    }
+    // `covers.grades` used to live here as an inclusive `[low, high]` band
+    // capped at 12. It is gone, and a legacy manifest that still carries it is
+    // *tolerated and ignored* rather than rejected — packs published against
+    // the old schema are installed on devices right now, and failing them would
+    // uninstall working games. Our own fleet is held to the stricter rule by
+    // `fleet.test.ts`, which fails if any `pack.json` declares a band.
   }
 
   // Absent is allowed and means unstated. Present-but-wrong is not: `"8+"`,
