@@ -36,9 +36,9 @@ export type Mount = (
    *
    * The host can put a sheet over a still-mounted pack — a purchase surface, a
    * parent gate — and the SDK documents that the pack keeps running underneath
-   * it. Here that means the sweep still sweeping, the slot still turning over
-   * and `dither` still compounding behind something the child cannot reach
-   * through. Idempotent both ways.
+   * it. Here that means the sweep still sweeping, the slot still turning over and
+   * the abandonment guard still counting a silence the child cannot break.
+   * Idempotent both ways.
    */
   setPaused(paused: boolean): void
 }

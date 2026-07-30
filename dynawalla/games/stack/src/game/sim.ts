@@ -16,11 +16,13 @@
  */
 
 import type { Host, Question } from "../contract.ts";
+import { guardSecondsFor } from "./guard.ts";
 import {
   T,
   difficultyFor,
   holdMs,
   perfectTol,
+  revealDwell,
   slotsFor,
   swayAmp,
   sweepSpeed,
@@ -91,15 +93,33 @@ export class Sim {
   sweep = 0;
   dir: 1 | -1 = 1;
   holdLeft = 0;
-  cyclesIdle = 0;
-  dither = 1;
   private startSide: 1 | -1 = 1;
+
+  /**
+   * Seconds of silence this item may sit through before it goes back.
+   *
+   * Derived from the item at the moment it is asked and from nothing else — see
+   * `guard.ts`, which also carries the whole account of the dither it replaced.
+   * **Nothing in `view/` or `ui/` may read either of these fields**: a guard a
+   * child can watch is a countdown, and `sim.test.ts` scans those directories to
+   * hold the line.
+   */
+  guardSeconds = 0;
+  /** Seconds since the last hand on the glass. Zero after any input at all. */
+  idleSeconds = 0;
 
   combo = 0;
   bestCombo = 0;
   perfects = 0;
   placed = 0;
   correctCount = 0;
+  /**
+   * True values in a row, right now. Zero after a wrong one.
+   *
+   * The marinate beat's whole input — see `revealDwell`, which explains why it is
+   * this and not the height of the tower.
+   */
+  correctStreak = 0;
 
   swayExcite = 0;
   swayT = 0;
@@ -107,9 +127,16 @@ export class Sim {
   swayZ = 0;
 
   /**
-   * After a wrong value the equation completes itself for a beat instead of
-   * being marked wrong. The sweep is held for the same beat so the player is
-   * never reading one thing while aiming at another.
+   * After a wrong value the equation completes itself instead of being marked
+   * wrong, and the sweep is held while it is up so the player is never reading
+   * one thing while aiming at another.
+   *
+   * `revealLeft` is a **cap on a screen nobody is touching**, not a wait: one tap
+   * takes it down (`dismissReveal`) and the sweep starts again in the same frame.
+   * It used to be 0.85 s flat — long enough to notice a mistake and not long
+   * enough to read the sum it was about, which is a receipt rather than a lesson.
+   * "There is no reason to be like WRONG and then just rush past the
+   * lesson/content." See `revealDwell`.
    */
   revealPrompt: string | null = null;
   revealAnswer: string | null = null;
@@ -151,6 +178,7 @@ export class Sim {
     this.perfects = 0;
     this.placed = 0;
     this.correctCount = 0;
+    this.correctStreak = 0;
     this.swayExcite = 0;
     this.swayT = 0;
     this.swayX = 0;
@@ -158,8 +186,9 @@ export class Sim {
     this.stratum = 0;
     this.revives = 0;
     this.reviveQ = null;
-    this.cyclesIdle = 0;
-    this.dither = 1;
+    this.revealPrompt = null;
+    this.revealAnswer = null;
+    this.revealLeft = 0;
     this.startSide = 1;
     this.slabs.push({ i: 0, cx: 0, cz: 0, wx: this.wx, wz: this.wz, label: "", perfect: false, cracked: false });
     this.nextQuestion();
@@ -225,28 +254,54 @@ export class Sim {
     this.slots = vals;
     this.slot = 0;
     this.questionAt = 0;
-    this.cyclesIdle = 0;
-    this.dither = 1;
+    // The guard comes from the item and the stone's faces, at the moment the item
+    // is known, so that by the time `update` needs it there is no other number it
+    // could have come from. See `guard.ts`.
+    this.guardSeconds = guardSecondsFor(
+      { prompt: this.question.prompt, answer: this.question.answer },
+      this.slots.length,
+    );
+    this.idleSeconds = 0;
     this.startSide = (-this.startSide) as 1 | -1;
     const half = this.sweepHalf;
     this.sweep = this.startSide * half;
     this.dir = (-this.startSide) as 1 | -1;
-    this.holdLeft = Math.max(holdMs(this.floor) / 1000, this.revealLeft);
+    this.holdLeft = holdMs(this.floor) / 1000;
     this.events.push({ type: "tick", slot: this.slot, value: this.value });
+  }
+
+  /**
+   * Any hand on the glass at all.
+   *
+   * Puts the whole abandonment guard back — a tap the phase refuses, a key that
+   * does nothing, a finger on a stone that is mid-hold. Counterweight's rule: a
+   * child drumming on the screen must never be told nobody was there.
+   */
+  nudge(): void {
+    this.idleSeconds = 0;
+  }
+
+  /**
+   * A tap while the completed sum is up. Takes it down, and nothing else.
+   *
+   * Returns true when it consumed the tap, so `mount` knows not to also set a
+   * stone with it — and it must not, twice over: the sweep is parked out past the
+   * tower's edge while the sum is being read, so that tap used to be a guaranteed
+   * miss, and a reveal is not an answering window in the first place.
+   */
+  dismissReveal(): boolean {
+    this.idleSeconds = 0;
+    if (this.revealLeft <= 0) return false;
+    this.revealLeft = 0;
+    this.revealPrompt = null;
+    this.revealAnswer = null;
+    return true;
   }
 
   /* ── stepping ─────────────────────────────────────────────────────────── */
 
   /** `dt` in seconds, already scaled by hit-stop and any slow-motion. */
   update(dt: number, elapsed: number): void {
-    if (this.revealLeft > 0) {
-      this.revealLeft -= dt;
-      if (this.revealLeft <= 0) {
-        this.revealLeft = 0;
-        this.revealPrompt = null;
-        this.revealAnswer = null;
-      }
-    }
     // Sway runs in every phase — a collapsing tower still whips.
     this.swayT += dt;
     this.swayExcite = Math.max(0, this.swayExcite - this.swayExcite * T.SWAY_DECAY * dt);
@@ -255,7 +310,34 @@ export class Sim {
     this.swayZ = amp * Math.sin(this.swayT * Math.PI * 2 * T.SWAY_HZ_B + 1.1);
 
     if (this.phase !== "sweep") return;
+
+    // THE MARINATE BEAT. The stone is held where it is while the sum finishes
+    // itself, and the next item's clock has not started: `questionAt` is stamped
+    // below, so the seconds a child spends reading `7 + 3 = 10` are billed to
+    // nobody. Nothing descends, nothing turns over, no guard runs — and one tap
+    // ends it, so a player faster than the beat is never held by it.
+    if (this.revealLeft > 0) {
+      this.revealLeft -= dt;
+      if (this.revealLeft <= 0) {
+        this.revealLeft = 0;
+        this.revealPrompt = null;
+        this.revealAnswer = null;
+      }
+      return;
+    }
+
     if (this.questionAt === 0) this.questionAt = elapsed;
+
+    // The only clock in MONUMENT, and it is not on the answer. It runs while the
+    // child is doing NOTHING, any tap at all puts the whole budget back, and when
+    // it does fire it reports nothing and takes nothing — the item simply goes
+    // back and another comes up. `guard.ts` carries the account of the dither it
+    // replaced; nothing in `view/` or `ui/` may read it.
+    this.idleSeconds += dt;
+    if (this.idleSeconds >= this.guardSeconds) {
+      this.nextQuestion();
+      return;
+    }
 
     if (this.holdLeft > 0) {
       this.holdLeft -= dt;
@@ -263,7 +345,7 @@ export class Sim {
     }
 
     const half = this.sweepHalf;
-    const v = sweepSpeed(this.floor, this.dither);
+    const v = sweepSpeed(this.floor);
     this.sweep += this.dir * v * dt;
 
     if (this.sweep >= half || this.sweep <= -half) {
@@ -271,12 +353,6 @@ export class Sim {
       this.dir = (-this.dir) as 1 | -1;
       this.holdLeft = holdMs(this.floor) / 1000;
       this.slot = (this.slot + 1) % this.slots.length;
-      if (this.slot === 0) {
-        this.cyclesIdle++;
-        if (this.cyclesIdle >= T.DITHER_CYCLES) {
-          this.dither = Math.min(T.DITHER_MAX, this.dither + T.DITHER_STEP);
-        }
-      }
       this.events.push({ type: "tick", slot: this.slot, value: this.value });
     }
   }
@@ -285,6 +361,10 @@ export class Sim {
 
   place(elapsed: number): PlaceEvent | null {
     if (this.phase !== "sweep") return null;
+    // A completed sum is not an answering window. `mount` calls `dismissReveal`
+    // first and never reaches here with one up; this is the structural half of
+    // the same promise, for any other caller.
+    if (this.revealLeft > 0) return null;
 
     const axis = this.axis;
     const prevW = axis === 0 ? this.wx : this.wz;
@@ -358,7 +438,16 @@ export class Sim {
       ms: Math.max(0, Math.round((elapsed - this.questionAt) * 1000)),
       answered,
     });
-    if (correct) this.correctCount++;
+    // Captured before it is spent: the run the child was *carrying in* is what
+    // decides how long the completed sum is held, and a wrong value has by
+    // definition just ended it.
+    const carried = this.correctStreak;
+    if (correct) {
+      this.correctCount++;
+      this.correctStreak++;
+    } else {
+      this.correctStreak = 0;
+    }
     this.placed++;
 
     const advanced = outcome !== "miss";
@@ -419,7 +508,7 @@ export class Sim {
     if (!correct) {
       this.revealPrompt = this.question.prompt;
       this.revealAnswer = this.question.answer;
-      this.revealLeft = 0.85;
+      this.revealLeft = revealDwell(carried);
     }
 
     const band = Math.floor(this.floor / T.STRATUM_FLOORS);
@@ -492,6 +581,7 @@ export class Sim {
     this.cz = top.cz;
     this.swayExcite = 0;
     this.combo = 0;
+    this.correctStreak = 0;
     this.reviveQ = null;
     this.phase = "sweep";
     this.nextQuestion();

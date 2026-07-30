@@ -24,6 +24,7 @@ import { test } from "node:test"
 import { mount } from "./mount.ts"
 import type { Sim } from "./sim.ts"
 import { createStubHost } from "../host/stub.ts"
+import { sweepSpeed } from "./tuning.ts"
 
 type Handler = (e: unknown) => void
 type Report = { questionId: string; correct: boolean; ms: number; answered: string }
@@ -338,8 +339,8 @@ function snapshot(s: Surface): string {
     sweep: sim.sweep,
     dir: sim.dir,
     slot: sim.slot,
-    dither: sim.dither,
-    cyclesIdle: sim.cyclesIdle,
+    idleSeconds: sim.idleSeconds,
+    guardSeconds: sim.guardSeconds,
     holdLeft: sim.holdLeft,
     swayT: sim.swayT,
     floor: sim.floor,
@@ -379,29 +380,50 @@ test("THE SWEEP STOPS: nothing advances while the manual is up", () => {
   }
 })
 
-test("WAITING IS FREE, INCLUDING READING: the dither does not compound behind the sheet", () => {
-  // The exact contradiction this fix exists to end. The last line of MONUMENT's
-  // own manual is "Waiting never costs you anything", and `dither` is the one
-  // mechanism in the game that makes waiting cost something: three idle cycles
-  // and the stone gets 16% faster, up to a 1.9× ceiling. Three minutes behind
-  // the sheet is more than enough idle cycles to hit that ceiling.
+test("WAITING IS FREE, INCLUDING READING: the stone never speeds up, sheet or no sheet", () => {
+  // The last line of MONUMENT's own manual is "Waiting never costs you anything",
+  // and `dither` — three idle sweeps and the stone got 16% faster, compounding to
+  // a 1.90× ceiling — was the one mechanism in the game that made that a lie. It
+  // compounded behind this very sheet. It is deleted, so this asserts the promise
+  // in full rather than one exception to it: six minutes of a child being careful,
+  // three of them with the rules open, and the stone is going exactly the speed it
+  // was going before.
   const { s, handle, restore } = begin()
   try {
     for (let i = 0; i < 300; i++) s.step(16)
     const sim = dev().sim
-    assert.equal(sim.dither, 1, "the run started already dithering")
-    const idleBefore = sim.cyclesIdle
+    const speed = sweepSpeed(sim.floor)
 
     openManual(s)
     for (let i = 0; i < 11_250; i++) s.step(16)
-    assert.equal(sim.dither, 1, `three minutes of reading pushed the stone to ${sim.dither}× speed`)
-    assert.equal(sim.cyclesIdle, idleBefore, "the child was billed idle cycles for reading the rules")
+    assert.equal(sweepSpeed(sim.floor), speed, "reading the rules moved the sweep")
 
-    // And the penalty is still armed — this test must not be passing because
-    // dithering was quietly removed.
     closeManual(s)
-    for (let i = 0; i < 3600; i++) s.step(16)
-    assert.ok(sim.dither > 1, "dithering no longer happens at all, so the assertion above is vacuous")
+    // Three more minutes, in front of the sheet this time, doing nothing at all.
+    for (let i = 0; i < 11_250; i++) s.step(16)
+    assert.equal(sim.floor, 0, "a stone was set without a tap")
+    assert.equal(
+      sweepSpeed(sim.floor),
+      speed,
+      `six minutes of a child being careful pushed the stone to ${sweepSpeed(sim.floor)} u/s from ${speed}`,
+    )
+
+    // The anti-vacuity half: the sweep really can change speed in this harness —
+    // it just may never do it because of a clock. Climbing the tower does. Tapped
+    // only while the stone is actually over the tower, because a tap at a parked
+    // turnaround is a miss and a miss sets nothing.
+    for (let i = 0; i < 40; i++) {
+      const from: number = sim.floor
+      for (let k = 0; k < 400 && sim.floor === from; k++) {
+        s.step(16)
+        if (sim.holdLeft <= 0 && Math.abs(sim.sweep) < 0.02) dev().tap()
+      }
+    }
+    assert.ok(sim.floor > 0, "forty careful taps set no stones, so nothing here was measured")
+    assert.ok(
+      sweepSpeed(sim.floor) > speed,
+      `climbing ${sim.floor} floors did not change the sweep at all — ${sweepSpeed(sim.floor)} u/s`,
+    )
   } finally {
     handle.unmount()
     restore()

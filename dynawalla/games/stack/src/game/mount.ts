@@ -236,10 +236,11 @@ export function mount(
   /* ── the clock, and who is allowed to stop it ───────────────────────────
    *
    * MONUMENT had no pause of any kind. Behind the manual the sweep kept
-   * sweeping, the slot kept turning over — and worse, `dither` kept compounding,
-   * so the sheet that says "Waiting never costs you anything" was itself making
-   * the stone faster while it was open. Behind a host sheet the same, with no
-   * scrim of ours to catch the tap.
+   * sweeping and the slot kept turning over — and worse, the sweep's old
+   * impatience penalty kept compounding, so the sheet that says "Waiting never
+   * costs you anything" was itself making the stone faster while it was open.
+   * The penalty is gone now (`guard.ts`); the pause stays, because a sum turning
+   * over behind a sheet is still a sum the child never saw.
    *
    * Declared above `createInstructions` because the sheet closes over them.
    */
@@ -286,7 +287,16 @@ export function mount(
         lines: [
           "If the stone is showing a wrong number, do not tap. Let it go round again.",
           "You get a whole pass to read a number and decide.",
-          "Waiting never costs you anything.",
+          "Waiting never costs you anything. Nothing speeds up while you think.",
+          "If nobody touches the screen for a long time, the sum is swapped for a new one. That costs nothing at all.",
+        ],
+      },
+      {
+        heading: "A stone that cracks",
+        lines: [
+          "If you drop a wrong number, the sum finishes itself at the top so you can see it.",
+          "Everything stops while it is up. Read it for as long as you like.",
+          "Tap once when you are ready and the stone starts moving again.",
         ],
       },
     ],
@@ -731,6 +741,10 @@ export function mount(
     // landing behind a paywall must not set a stone the child never aimed.
     if (paused) return;
     audio.resume();
+    // A tap while the sum is finishing itself moves on, and does nothing else.
+    // Checked before anything can be aimed, THE GAVEL's `nudge()` shape, so the
+    // tap that dismisses cannot also set a stone with the same finger.
+    if (sim.dismissReveal()) return;
     if (sim.phase !== "sweep") return;
     if (drop.active) return;
     const t0 = performance.now();
@@ -772,11 +786,17 @@ export function mount(
   };
 
   const onPointerDown = (e: PointerEvent): void => {
+    // A hand on the glass is a hand on the glass even when it lands on a button
+    // or in a phase that refuses it, so the guard is put back before anything
+    // else can turn the tap away. Otherwise a child fiddling with the sound
+    // toggle could be told nobody was there.
+    sim.nudge();
     if ((e.target as HTMLElement).closest("button")) return;
     e.preventDefault();
     tap(e.timeStamp);
   };
   const onKey = (e: KeyboardEvent): void => {
+    sim.nudge();
     if (paused) return;
     if (e.code === "Space" || e.code === "Enter" || e.code === "ArrowDown" || e.code === "KeyR") {
       e.preventDefault();
@@ -1105,13 +1125,12 @@ export function mount(
     block.scale.set(sim.wx, T.SLAB_H, sim.wz);
     blockMat.color.copy(cSlab).multiplyScalar(1.1);
 
-    // A hot pulse that quickens as the sweep is pushed by dithering, so the
-    // impatience penalty is visible before it is felt.
-    const urgency = (sim.dither - 1) / (T.DITHER_MAX - 1);
-    const pulse = 0.08 + 0.05 * Math.sin(clock * (7 + urgency * 22));
-    // Self-lit stone at rest; it only goes ACCENT-hot when dithering has begun,
-    // which is exactly when the player needs to be told to commit.
-    blockMat.emissive.copy(cSlab).lerp(cAccent, urgency * 0.85).multiplyScalar(pulse + urgency * 0.55);
+    // A slow self-lit breath, and that is all. It used to go ACCENT-hot and beat
+    // three times faster as `dither` climbed — a visible urgency cue whose whole
+    // job was to tell a child who was still thinking to commit. There is nothing
+    // left on this stone that knows how long they have had.
+    const pulse = 0.08 + 0.05 * Math.sin(clock * 7);
+    blockMat.emissive.copy(cSlab).multiplyScalar(pulse);
 
     plaqueBlock.group.position.set(x, y, z);
     plaqueBlock.face(camera);

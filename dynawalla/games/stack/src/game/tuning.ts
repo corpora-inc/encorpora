@@ -6,6 +6,8 @@
  * are, because the tower is literally thin.
  */
 
+import { SECOND_GRADE_FLOW, revealMs } from "../../../../packs/shared/game-pacing/index.ts";
+
 export const T = {
   /** A slab is 1.0 × SLAB_H × 1.0 at full width. */
   SLAB_H: 0.42,
@@ -41,10 +43,23 @@ export const T = {
   HOLD_MS0: 185,
   HOLD_MS1: 85,
   HOLD_FLOORS: 55,
-  /** After this many full cycles without a drop, the sweep leans on you. */
-  DITHER_CYCLES: 3,
-  DITHER_STEP: 0.16,
-  DITHER_MAX: 1.9,
+
+  /**
+   * True values in a row that count as fluency, for the marinate beat.
+   *
+   * MONUMENT's `intensity`: a child who has just read eight sums correctly and
+   * slipped on the ninth is at the top, and everybody else is at the calm end.
+   * See `revealDwell`.
+   */
+  REVEAL_STREAK: 8,
+  /**
+   * The shortest the completed sum may be held, in seconds.
+   *
+   * `revealMs` goes to zero at the ceiling, and zero would take the sum down in
+   * the same frame the stone cracked. Gavel's `MIN_REVEAL_MS` for the same
+   * reason: the floor is the length of the beat, not a lesson.
+   */
+  REVEAL_MIN: 0.9,
 
   /** Faces the sliding block cycles through: answer + (n-1) mal-rule values. */
   SLOTS_MIN: 2,
@@ -116,9 +131,46 @@ export function perfectTol(floor: number): number {
   return T.PERFECT_TOL0 + (T.PERFECT_TOL1 - T.PERFECT_TOL0) * ramp(floor, T.TOL_FLOORS);
 }
 
-export function sweepSpeed(floor: number, dither: number): number {
-  const base = Math.min(T.SWEEP_SPEED_MAX, T.SWEEP_SPEED0 * (1 + floor * T.SWEEP_SPEED_PER_FLOOR));
-  return base * dither;
+/**
+ * How fast the stone sweeps, in world units a second.
+ *
+ * **A function of the floor and of nothing else.** It used to take a second
+ * argument, `dither`, which the sim raised every three sweeps a child spent
+ * thinking — up to 1.90×, so half a minute of honest work nearly doubled the
+ * speed of the target. That parameter is gone rather than defaulted, so nothing
+ * can pass it again by accident; `sim.test.ts` holds the line.
+ */
+export function sweepSpeed(floor: number): number {
+  return Math.min(T.SWEEP_SPEED_MAX, T.SWEEP_SPEED0 * (1 + floor * T.SWEEP_SPEED_PER_FLOOR));
+}
+
+/**
+ * How long the completed sum is held on the plate, in seconds, given the run of
+ * true values the child was **carrying into** the drop that ended it.
+ *
+ * Not this game's curve: `packs/shared/game-pacing`'s, the one ARENA and THE
+ * GAVEL already spend — `revealCalmMs × (1 − intensity)²`, patient at the calm
+ * end and skipped at the top, "because being held for it would be a punishment
+ * for being good". Floored, so the top gets a brief beat rather than none at all.
+ *
+ * 4.2 s from a standing start, 2.4 s on a run of two, 0.9 s from five up. It used
+ * to be 0.85 s flat, for every child, in every state.
+ *
+ * **Why the streak, and not the floor or the clock.** Both of the obvious signals
+ * are tenure, and tenure is the wrong thing to spend patience on. THE SPLIT tried
+ * its director's escalation heat and it reached half its range twenty-five
+ * seconds into a run, so a child still struggling in minute five got the floor.
+ * MONUMENT's height is better — a tower only rises on a stone that was set — but
+ * it is still one-way: measured, eleven wrong drops in a row took the reveal from
+ * 4.20 s to 2.21 s, which is patience being withdrawn from exactly the child who
+ * needed it. A streak is not one-way. It is zero for anybody who has just made
+ * two mistakes, whatever they have built, and it is only high for somebody who
+ * has just answered several in a row — which is the one state where blowing past
+ * the sum is a reward rather than a loss.
+ */
+export function revealDwell(streak: number): number {
+  const intensity = ramp(streak, T.REVEAL_STREAK);
+  return Math.max(T.REVEAL_MIN, revealMs(SECOND_GRADE_FLOW, intensity) / 1000);
 }
 
 export function holdMs(floor: number): number {

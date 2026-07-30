@@ -50,16 +50,76 @@ test("only a bomb can put a lamp out", () => {
 })
 
 test("favour after a verdict is economy.ts's decision, not the mount's", () => {
-  // The regression: a timeout goes back to `Math.max(1, favour - 1)` while a
-  // wrong answer stays at `favour = 1`, and the timeout is cheap again.
+  // The regression: the mount starts deciding for itself what a verdict costs.
+  // Which cost it picks is `economy.ts`'s business and `economy.test.ts` plays
+  // bots against it; what this file holds is that the mount still asks.
   assert.equal(count("favourAfter(verdict, favour)"), 3, "a favour update bypassed favourAfter")
   assert.ok(!/favour\s*=\s*Math\.min\(FAVOUR_MAX/.test(CODE), "the old inline favour climb is back")
-  // Scoped to `expireQuestion`: the slow *drain* elsewhere in the frame loop is
-  // a different mechanism and legitimately steps favour down by one.
   const expire = CODE.slice(CODE.indexOf("function expireQuestion"))
   const body = expire.slice(0, expire.indexOf("\n  }"))
-  assert.ok(!/favour\s*=\s*Math\.max\(1, favour - 1\)/.test(body), "the old cheap timeout is back")
-  assert.ok(body.includes("favourAfter(verdict, favour)"), "a timeout no longer costs what a wrong answer costs")
+  assert.ok(!/favour\s*=\s*Math\.max\(1, favour - 1\)/.test(body), "a timeout sets favour behind economy.ts's back")
+  assert.ok(!/favour\s*=\s*1/.test(body), "a timeout sets favour behind economy.ts's back")
+  assert.ok(body.includes("favourAfter(verdict, favour)"), "a timeout no longer asks what it costs")
+  // **A timeout must not zero the favour timer either.** `favourLeft = 0` parks
+  // the multiplier where it stands rather than letting it decay on its own clock,
+  // and it was how the mount took back what `favourAfter` had just left alone.
+  assert.ok(
+    !/favourLeft\s*=\s*0/.test(body),
+    "expireQuestion stops the favour clock — being slow is charged again",
+  )
+})
+
+test("a wrong lantern is completed, not scolded", () => {
+  // The regression: the four channels BEAM deleted creep back into the wrong-answer
+  // branch — a red screen flash, a damage vignette, a `failure` haptic and a red
+  // burst. A wrong lantern costs the whole favour economy, which is the reason a
+  // guess is not free; it may not also tell a child off.
+  const at = CODE.indexOf("function onMoteCut")
+  const fn = CODE.slice(at, CODE.indexOf("\n  function ", at + 10))
+  const branch = fn.slice(fn.lastIndexOf("} else {"))
+  assert.ok(branch.length > 200, "the wrong-answer branch of onMoteCut moved — this scan is stale")
+  assert.ok(!branch.includes("requestFlash"), "the red screen flash on a wrong answer is back")
+  assert.ok(!/vignette\s*=\s*1/.test(branch), "the damage vignette on a wrong answer is back")
+  assert.ok(!branch.includes('haptic("failure")'), "the failure haptic on a wrong answer is back")
+  assert.ok(!/burst\([^)]*WRONG/.test(branch), "the red burst on a wrong answer is back")
+  assert.ok(branch.includes("showReveal("), "a wrong lantern stopped completing the sum")
+  // The vignette is damage, and damage is a bomb. Exactly one place may raise it.
+  assert.equal(count("vignette = 1"), 1, "something other than a bomb is drawing damage")
+})
+
+test("the completed sum is held, dismissed and cleared by the three things that may", () => {
+  // The regression: the reveal goes back to a `showBanner` with a hard-coded
+  // length, or the dismissal is dropped and a fast player is held again, or the
+  // clear-on-new-question goes and a child reads an old answer across a live sum.
+  assert.ok(
+    CODE.includes("revealDwellSeconds(revealIntensity(carried))"),
+    "the dwell is a constant in the mount again",
+  )
+  // …and it is the favour the child was CARRYING, not the one the wrong lantern
+  // left them with: `favourAfter` sets it to one, so a reveal read after that
+  // would be the patient version for everybody, at every rung, for ever.
+  const cut = CODE.slice(CODE.indexOf("function onMoteCut"))
+  const wrongBranch = cut.slice(0, cut.indexOf("\n  }"))
+  const branch = wrongBranch.slice(wrongBranch.lastIndexOf("} else {"))
+  assert.ok(
+    branch.indexOf("const carried = favour") < branch.indexOf("favour = favourAfter"),
+    "the reveal now reads the favour the wrong answer left, which is always one",
+  )
+  assert.ok(branch.includes("showReveal(liveQ.prompt, liveQ.answer, carried)"))
+  // Three each: the declaration, and the two places a question can settle /
+  // the two things that may take the sum down.
+  assert.equal(count("showReveal("), 3, "the reveal is raised or declared somewhere new")
+  assert.equal(count("dismissReveal("), 3, "the reveal is dismissed somewhere new")
+  const down = CODE.slice(CODE.indexOf("function onDown"))
+  assert.ok(
+    down.slice(0, down.indexOf("\n  }")).includes("dismissReveal()"),
+    "a stroke no longer takes the completed sum down — a fast player is held again",
+  )
+  const open = CODE.slice(CODE.indexOf("function openSigil"))
+  assert.ok(
+    open.slice(0, open.indexOf("\n  }")).includes("dismissReveal(true)"),
+    "a new question no longer clears the old sum",
+  )
 })
 
 test("a timeout is never reported to the ladder", () => {
