@@ -68,9 +68,11 @@ export const ABANDON_FACTOR = 2
  */
 export const MIN_GUARD_SECONDS = 30
 
+import { fillBlank } from "../blank.ts"
+
 /** What the guard is handed: the item, exactly as the child reads it. */
 export type Item = {
-  /** `47 + ? = 72`, or `3/4 + 1/4 = ?`. */
+  /** `47 + □ = 72`, or `3/4 + 1/4 = □`. */
   readonly prompt: string
   /** The canonical answer the host gave. Never computed here. */
   readonly answer: string
@@ -89,17 +91,23 @@ export function widestColumn(item: Item): number {
 /**
  * Whether the sum carries or borrows.
  *
- * Takes the whole item, because MONUMENT's prompts carry the blank — `47 + ? = 72`
+ * Takes the whole item, because MONUMENT's prompts carry the blank — `47 + □ = 72`
  * has no second operand until the answer is put back into it, and a version of
  * this that read the prompt alone could never parse anything at all and would
  * quietly hand every item in the game the same allowance.
+ *
+ * That is not hypothetical: this looked for a literal `"?"` until the host began
+ * writing `□`, at which point the substitution stopped matching and every blank
+ * statement fell through to the fail-open branch below. Harmless in direction —
+ * the child got the *longer* silence — but the measurement was not being made.
+ * The blank glyph lives in `src/blank.ts` now, once, for this file and the HUD.
  *
  * **Fails open.** Anything this cannot parse — a fraction, a comparison, a family
  * this file has never heard of — is treated as needing to regroup, so an
  * unreadable item is always given the *longer* silence and never the shorter one.
  */
 export function needsRegrouping(item: Item): boolean {
-  const filled = item.prompt.includes("?") ? item.prompt.replace("?", item.answer) : item.prompt
+  const filled = fillBlank(item.prompt, item.answer)
   const bare = filled.replace(/\s*=.*$/, "")
   const m = OPERATOR.exec(bare)
   if (!m) return true
