@@ -459,6 +459,25 @@ export function mountLattice(
     }
   }
 
+  /**
+   * A gesture taken away rather than finished.
+   *
+   * `pointercancel` is the platform saying the touch is no longer the child's —
+   * an edge drag, a palm rejected, a system gesture claiming it — and it arrives
+   * carrying the last known coordinates, so it satisfies every test a real tap
+   * satisfies. Routed into `up` (which is what it was), a thumb that landed on
+   * the control and was then cancelled 200ms later unfolded a stage.
+   *
+   * That is not a small leak. The clock stops one stage short of the reveal, so
+   * on a question the child has been sitting with, the phantom stage IS the one
+   * that states the answer — an abandoned gesture crossing the exact line the
+   * whole design says only a deliberate tap may cross.
+   */
+  const cancel = (event: PointerEvent): void => {
+    hintPress = null
+    up(event)
+  }
+
   const up = (event: PointerEvent): void => {
     if (hintPress && hintPress.id === event.pointerId) {
       const press = hintPress
@@ -514,7 +533,7 @@ export function mountLattice(
   canvas.addEventListener("pointerdown", down)
   canvas.addEventListener("pointermove", move)
   canvas.addEventListener("pointerup", up)
-  canvas.addEventListener("pointercancel", up)
+  canvas.addEventListener("pointercancel", cancel)
   globalThis.addEventListener("keydown", keyDown)
   globalThis.addEventListener("keyup", keyUp)
   globalThis.addEventListener("resize", resize)
@@ -554,7 +573,7 @@ export function mountLattice(
       canvas.removeEventListener("pointerdown", down)
       canvas.removeEventListener("pointermove", move)
       canvas.removeEventListener("pointerup", up)
-      canvas.removeEventListener("pointercancel", up)
+      canvas.removeEventListener("pointercancel", cancel)
       globalThis.removeEventListener("keydown", keyDown)
       globalThis.removeEventListener("keyup", keyUp)
       globalThis.removeEventListener("resize", resize)

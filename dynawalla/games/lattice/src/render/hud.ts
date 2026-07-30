@@ -50,15 +50,19 @@ const TREE_SHARE = 0.36
 /**
  * The least height the tree may be given, whatever else is competing for it.
  *
- * The deepest tree in the band is `512 = 2⁹`: five rows, which at the renderer's
- * minimum node radius of 9 needs `4 × 19.5 + 18` = 96px exactly. Below that the
- * rows overlap; below 18px the row step goes negative and the tree draws upside
- * down. Ninety-six and not a round hundred, deliberately: at 1024×320 — a phone
- * held sideways — the difference is whether the ceiling or the floor wins, and
- * the ceiling winning is the outcome where the tree does not sit on the
- * counters.
+ * **This is a correctness floor and not a legibility one**, and the difference
+ * matters because the first attempt confused them. `scene.ts` lays the rows out
+ * as `rowStep = (h − 2r) / (rows − 1)` with `r` floored at 9, so `usedH` comes to
+ * exactly `h` for any `h ≥ 18` — a squashed tree is *tight*, not broken. Under
+ * 18 the step goes negative and the tree draws upside down.
+ *
+ * So the floor is 24, with margin, and everything above it is left to the
+ * ceiling. A floor set at what the deepest tree wants to be READ at — 96, which
+ * is what `512 = 2⁹` needs for five rows at nine pixels — wins against the
+ * ceiling on any pane under about 340px of safe height and draws the tree
+ * straight through OPENED and CHAIN. Two unreadable things beats one.
  */
-const TREE_MIN_H = 96
+const TREE_MIN_H = 24
 
 export type HudLayout = {
   /** `OPENED` / `CHAIN` on the left, `BEST` on the right, the stall notice centred. */
@@ -163,18 +167,18 @@ export function hudLayout(w: number, area: Rect): HudLayout {
   // no question, no tree and nothing to reserve for. Reserving it anyway cost
   // the tree twenty-five pixels it does not have on a phone held sideways.
   const treeCeiling = cornerBottom + size * 1.5 * 2
-  // Floored at `TREE_MIN_H`, and the floor wins over the ceiling.
+  // Three constraints, in the order they win.
   //
-  // On a pane short enough that the counters and the tile bar meet in the middle
-  // — a 1024×200 Split View slice is the shape that produced it — the ceiling
-  // pushed `treeTop` *below* `treeBottom` and the box came out one pixel tall
-  // with a negative row step, which draws the tree upside down through the
-  // counters. Overlapping the counters slightly on a pane nothing can be read on
-  // anyway is the better of the two failures, and it is a failure the renderer
-  // survives.
-  const treeTop = Math.min(
-    treeBottom - TREE_MIN_H,
-    Math.max(treeCeiling, treeBottom - area.h * TREE_SHARE),
+  //   * **Never above the safe area.** On a 1024×200 slice the floor below used
+  //     to push `treeTop` to −4 and the root row drew off the top of the canvas.
+  //   * **Then the floor**, which only exists so the row step cannot go negative
+  //     and draw the tree upside down. See `TREE_MIN_H`: it is 24, not 96.
+  //   * **Then the ceiling and the share.** The ceiling keeps the tree off the
+  //     counters and it wins wherever there is any room at all, which is every
+  //     pane above about 260px of safe height.
+  const treeTop = Math.max(
+    area.y,
+    Math.min(treeBottom - TREE_MIN_H, Math.max(treeCeiling, treeBottom - area.h * TREE_SHARE)),
   )
 
   return {

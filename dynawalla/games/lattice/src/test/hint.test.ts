@@ -302,7 +302,7 @@ test("the founder's own examples, as pictures", () => {
   // **And 129 is the shape where that picture does not exist**, which is worth
   // pinning rather than papering over. Its tree is `3 · 43` and 43 is both the
   // largest leaf (stage 2) and the larger root child, so stage 3 lights both
-  // halves at once and states the answer a stage early. 120 of the 573 composite
+  // halves at once and states the answer a stage early. Around 118 of the 410 composite
   // targets do that. It is why `freeStages` walks the tree instead of returning
   // a hardcoded 3, and why `given` is computed from the picture.
   //
@@ -600,7 +600,15 @@ test("nothing the clock does on its own can ever reach the stage that states the
         false,
         `seed ${seed} round ${round}: the clock alone stated the answer to ${res.prompt} (= ${res.target}, prime=${isPrime(res.target)})`,
       )
-      assert.ok(hint.stage >= 1, "the clock gave nothing in ten minutes")
+      // Not `stage >= 1`, which `hint()` guarantees by returning null below it.
+      // Ten minutes is far past every step in the schedule, so the clock should
+      // be standing on its ceiling — which is also what makes the `given` check
+      // above a check on the CEILING rather than on the clock being slow.
+      assert.equal(
+        hint.stage,
+        freeStages(hint.placed),
+        `seed ${seed} round ${round}: ten minutes did not exhaust the clock's own stages`,
+      )
     }
   }
 })

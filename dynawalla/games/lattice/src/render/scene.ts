@@ -445,12 +445,18 @@ export class Scene {
       9,
       Math.min(22, Math.min(box.w / Math.max(1, cols * 2.4), box.h / Math.max(1, rows * 2.6))),
     )
-    // Both clamped at zero. `r` floors at 9, so on a box shorter than 18px the
-    // row numerator goes NEGATIVE — and `top + depth * rowStep` then draws the
-    // root at the bottom with the leaves climbing above it, through the
-    // counters, upside down. `hud.ts` now floors the box so this cannot happen
-    // from the layout, and this is the belt for that brace: a tree with nowhere
-    // to go collapses onto a point rather than inverting.
+    // Both clamped at zero, and this is **unreachable defence** rather than a
+    // live guard — said plainly, because an unfalsifiable comment is worse than
+    // no comment.
+    //
+    // `r` floors at 9, so a box under 18px tall makes the row numerator negative
+    // and `top + depth * rowStep` draws the root at the bottom with the leaves
+    // climbing above it, upside down. Two things stop that arriving here:
+    // `resize` above floors the canvas at 320×320 whatever the element measures,
+    // and `hud.ts` floors the box inside that. Reaching this clamp needs a
+    // `hudLayout` called with a safe area under about 130px tall, which only a
+    // test does. It stays because it costs two `Math.max` calls and the thing it
+    // prevents is silent and total.
     const colStep = cols > 1 ? Math.max(0, Math.min(box.w / cols, r * 3.2)) : 0
     const rowStep = rows > 1 ? Math.max(0, Math.min((box.h - r * 2) / (rows - 1), r * 3)) : 0
     const usedW = colStep * (cols - 1) + r * 2

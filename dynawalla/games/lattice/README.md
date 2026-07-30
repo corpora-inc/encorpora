@@ -213,7 +213,7 @@ husks make all session — and `game/hint.ts` unfolds it a little at a time.
 |---|---|---|
 | 1 | **The shape.** Every node blank. It says how many pieces the hold needs, and how they branch. | nothing |
 | 2 | **One prime.** The largest leaf: the `7` under four twos, the one a child sweeping twos never stumbles into. | nothing |
-| 3 | **Half a split.** The smaller of the root's two children, its sibling still blank — `129 ⟶ 3 and ⟶ ?`, exactly. | nothing |
+| 3 | **Half a split.** The smaller of the root's two children, its sibling still blank — the founder's `129 ⟶ 3 and ⟶ ?`. | usually nothing |
 | 4 | **The partial.** The sibling lights: `16 × 7`, root still blank. The stepping stone. | a tap |
 | 5 | **The leaves.** Every leaf lit. The hold, spelled out. Nobody is stuck past here. | a tap |
 | 6 | **The whole tree.** Every node, root included, and the sentence closes. | a tap |
@@ -222,9 +222,9 @@ Which stage crosses from "nothing" to "a tap" is **computed from the tree, not
 fixed at a number**. Usually it is between 3 and 4, but when the largest leaf
 *is* the larger of the root's two children, stage 3 lights both halves of the
 split at once: `129 → 3 · 43` is one of those, and so is `28 → 4 · 7`. Across the
-band that is 120 of the 573 composite targets, so a hardcoded 3 would be wrong
-for one target in five. `hint.freeStages` walks the tree; `revealsAnswer` reads
-the picture.
+band — 573 targets the resonator can put up, of which 410 are composite — that
+is 112 to 123 of the 410 depending on the seed, so **roughly three composites in
+ten**. `hint.freeStages` walks the tree; `revealsAnswer` reads the picture.
 
 A prime target — the wall — has no tree, so it has two stages: one lonely blank
 node, and then the numeral. That *is* the hint for a wall, because the only hold

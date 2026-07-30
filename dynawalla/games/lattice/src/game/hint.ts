@@ -26,8 +26,14 @@
 //   2. **ONE PRIME.** The largest leaf lights. In `112 = 2·2·2·2·7` that is the
 //      `7` — the one a child sweeping twos will never stumble into.
 //   3. **HALF A SPLIT.** The smaller of the root's two children lights, and its
-//      sibling stays blank. This is the founder's `129 ⟶ 3 and ⟶ ?` exactly. It
-//      is the last stage that does **not** state the answer.
+//      sibling stays blank — the founder's `129 ⟶ 3 and ⟶ ?`. On most trees this
+//      is the last picture that does not state the answer.
+//
+//      On about three composites in ten it is not, and 129 is one of them: its
+//      tree is `3 · 43`, and 43 is both the largest leaf (stage 2) and the larger
+//      root child, so this stage lights both halves at once. That is why nothing
+//      here is keyed to a stage number — `freeStages` walks the tree and
+//      `revealsAnswer` reads the picture. See both.
 //   4. **THE PARTIAL.** The sibling lights too: `16 × 7`, with the root still
 //      blank. The stepping stone. From here the answer is on the screen — in a
 //      form the child finishes themselves, which is the point.
@@ -201,8 +207,10 @@ export function stageCount(placed: Placed): number {
  * one prime, half of the first split. But when the largest leaf *is* the larger
  * of the root's two children, stage 3 lights both halves of the split and
  * crosses a stage early: `129 → 3 · 43` is one of them, and so is `28 → 4 · 7`.
- * Across the band that is 120 of the 573 composite targets, so a hardcoded 3
- * would be wrong for one target in five.
+ * Measured over the whole band — 573 targets the resonator can put up, of which
+ * 410 are composite — that is between 112 and 123 of the 410 depending on the
+ * seed, so **roughly three composites in ten**. A hardcoded 3 would be wrong for
+ * about a third of them.
  *
  * For a wall it is one: the silhouette of a single node, which says "this one
  * does not come apart, go and find it" and is the whole of what a wall's hint

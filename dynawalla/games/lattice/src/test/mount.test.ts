@@ -546,6 +546,29 @@ test("the shell is wired to the hint: a tap unfolds the tree, and so does the qu
         "a stick swept in a circle back to where it started asked for a hint",
       )
 
+      // A gesture the PLATFORM took away is not a tap.
+      //
+      // `pointercancel` is WKWebView saying the touch is no longer the child's —
+      // an edge drag, a palm rejected, a system gesture claiming it — and it
+      // arrives with the last known coordinates, so it satisfies every test a
+      // real tap satisfies. Routed into the release handler, which is where it
+      // used to go, a thumb that landed on the control and was cancelled 200ms
+      // later unfolded a stage. That is not a small leak: the clock deliberately
+      // stops one stage short of the reveal, so on a question the child has been
+      // sitting with, the phantom stage IS the one that states the answer.
+      const cancel = canvas.listeners.get("pointercancel")?.[0]
+      assert.ok(cancel, "the cancel listener was not installed")
+      down({ preventDefault() {}, pointerId: 6, pointerType: "touch", clientX: cx, clientY: cy })
+      wall += 200
+      t = pump(frames, 3, t)
+      cancel({ pointerId: 6, pointerType: "touch", clientX: cx, clientY: cy })
+      t = pump(frames, 3, t)
+      assert.equal(
+        rest.text.includes("?"),
+        false,
+        "a touch the platform cancelled asked for a hint the child never did",
+      )
+
       // A thumb that lands there and simply STAYS is not a tap either.
       down({ preventDefault() {}, pointerId: 4, pointerType: "touch", clientX: cx, clientY: cy })
       for (let i = 0; i < 60; i++) {

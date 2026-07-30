@@ -177,7 +177,7 @@ function withInsets(insets: Insets, body: () => void): void {
   }
 }
 
-type Frame = { scene: Scene; chrome: Drawn[] }
+type Frame = { scene: Scene; chrome: Drawn[]; arena: Arena }
 
 /**
  * Play a few seconds of a real sitting and draw one real frame.
@@ -236,7 +236,7 @@ function frame(
   // the restore that closes the WORLD — index 0 of what is left after the world
   // is the first thing the chrome drew.
   const last = restores[0] ?? 0
-  return { scene, chrome: log.slice(last) }
+  return { scene, chrome: log.slice(last), arena }
 }
 
 const inside = (box: Rect, area: Rect): boolean =>
@@ -429,17 +429,20 @@ test("on a pane too short for it, the tree gives way to the counters", () => {
   // the tree draws straight through OPENED and CHAIN.
   for (const [w, h] of [
     [1024, 320],
-    [1180, 340],
-    [900, 360],
+    [1180, 300],
+    [900, 340],
+    [1180, 260],
   ] as Array<[number, number]>) {
     withInsets(NO_INSETS, () => {
-      const l = hudLayout(w, safeRect(w, h))
+      const area = safeRect(w, h)
+      const l = hudLayout(w, area)
       assert.ok(
         l.tree.y >= l.status.top + l.status.lineH * 2,
         `${w}×${h}: the tree draws through the counters (${l.tree.y} vs ${
           l.status.top + l.status.lineH * 2
         })`,
       )
+      assert.ok(inside(l.tree, area), `${w}×${h}: the tree box left the safe area`)
     })
   }
 })
@@ -462,17 +465,86 @@ test("and on a pane too short for even that, it still does not turn upside down"
   for (const [w, h] of [
     [1024, 200],
     [800, 240],
-    [1180, 260],
+    [1024, 180],
   ] as Array<[number, number]>) {
-    withInsets(NO_INSETS, () => {
-      const l = hudLayout(w, safeRect(w, h))
-      assert.ok(l.tree.h >= 96, `${w}×${h}: the tree box is ${l.tree.h}px tall and will invert`)
-      assert.ok(l.tree.w > 0 && l.tree.x >= 0, `${w}×${h}: the tree box is off the screen`)
-      assert.equal(
-        hitsHostChrome({ x: l.hint.cx - l.hint.r, y: l.hint.cy - l.hint.r, w: l.hint.r * 2, h: l.hint.r * 2 }, w),
-        false,
-        `${w}×${h}: the hint control rode up under one of the host's corners`,
-      )
+    for (const insets of [NO_INSETS, PORTRAIT_NOTCH]) {
+      withInsets(insets, () => {
+        const area = safeRect(w, h)
+        const l = hudLayout(w, area)
+        // 18px is where `rowStep` changes sign. Anything at or above it lays out
+        // tight rather than inverted, because `usedH` works out to exactly the
+        // box height for any box the renderer will accept.
+        // The floor holds unless the safe area itself is the binding constraint,
+        // and staying on the canvas wins when the two disagree. `scene.ts` clamps
+        // the row step at zero for exactly that residue, and the test below
+        // proves through the real renderer that the tree still comes out the
+        // right way up.
+        assert.ok(
+          l.tree.h >= 24 || l.tree.y === area.y,
+          `${w}×${h}: the tree box is ${l.tree.h}px tall and nothing was pinning it`,
+        )
+        // And it stays ON the canvas. The first version of this floor pushed the
+        // box to y = −4 here and the root row drew off the top of the screen —
+        // which the old assertion, `w > 0 && x >= 0`, could not see and could not
+        // fail: `hudLayout` returns `Math.max(1, …)` for the width and a sum of
+        // non-negative terms for the left edge.
+        assert.ok(
+          inside(l.tree, area),
+          `${w}×${h}: the tree box is off the screen: ${JSON.stringify(l.tree)} vs ${JSON.stringify(area)}`,
+        )
+        assert.equal(
+          hitsHostChrome({ x: l.hint.cx - l.hint.r, y: l.hint.cy - l.hint.r, w: l.hint.r * 2, h: l.hint.r * 2 }, w),
+          false,
+          `${w}×${h}: the hint control rode up under one of the host's corners`,
+        )
+      })
+    }
+  }
+})
+
+test("the tree is drawn the right way up, even where there is no room for it", () => {
+  // The layout can no longer hand the renderer a box that would invert — but
+  // "cannot" is a claim about two files agreeing, and the whole reason this
+  // suite exists is that `Scene.draw` once did not consult the layout at all.
+  //
+  // So this asks the REAL renderer, at the shapes where the box is thinnest:
+  // is the root numeral above the leaves? `rowStep` unclamped goes negative on
+  // a box under 18px and lays the tree out bottom-up, root under leaves,
+  // climbing through the counters.
+  // Note what this can and cannot reach: `Scene.resize` floors the canvas at
+  // 320×320 however small the element measures, so the renderer never sees the
+  // sub-300px safe areas the layout test above exercises. The orientation check
+  // is therefore about the shapes that actually ship; the layout is held to the
+  // stricter bar on its own, one test up.
+  for (const [w, h, insets] of [
+    [1024, 320, PORTRAIT_NOTCH],
+    [844, 390, LANDSCAPE_NOTCH],
+    [1024, 320, NO_INSETS],
+    [320, 568, NO_INSETS],
+    [390, 844, NO_INSETS],
+  ] as Array<[number, number, Insets]>) {
+    withInsets(insets, () => {
+      const { chrome, arena } = frame(w, h, { stalled: false, paused: false, hintTaps: 6 })
+      const res = arena.resonator
+      assert.ok(res, `${w}×${h}: nothing was armed`)
+      const hint = arena.hint()
+      assert.ok(hint, `${w}×${h}: six taps produced no tree`)
+
+      // The root numeral is the target, and at the last stage it is drawn. Every
+      // other node is a proper divisor of it, so nothing else on the tree can
+      // carry the same string.
+      const root = chrome.find((d) => d.text === String(res.target))
+      assert.ok(root, `${w}×${h}: the root of the tree was never drawn`)
+
+      const leaves = hint.placed.leaves.map((i) => String(hint.placed.nodes[i]!.value))
+      const drawnLeaves = chrome.filter((d) => leaves.includes(d.text))
+      assert.ok(drawnLeaves.length > 0, `${w}×${h}: no leaf of the tree was drawn`)
+      for (const leaf of drawnLeaves) {
+        assert.ok(
+          root.box.y <= leaf.box.y,
+          `${w}×${h}: the tree is upside down — the root ${res.target} is at y=${root.box.y}, below its leaf ${leaf.text} at y=${leaf.box.y}`,
+        )
+      }
     })
   }
 })
