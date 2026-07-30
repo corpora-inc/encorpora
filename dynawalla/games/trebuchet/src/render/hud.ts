@@ -86,7 +86,7 @@ const eqSizeFor = (unit: number, area: Rect): number =>
  *
  * `area` is required on purpose — see the file header.
  */
-export function hudLayout(w: number, h: number, area: Rect, loftUnlocked: boolean): HudLayout {
+export function hudLayout(w: number, h: number, area: Rect): HudLayout {
   const unit = hudUnit(w, h)
   const pad = Math.round(unit * 0.4)
   const right = area.x + area.w
@@ -141,27 +141,25 @@ export function hudLayout(w: number, h: number, area: Rect, loftUnlocked: boolea
   }
 
   // Controls. Fire and its steppers ride the bottom-right corner of the SAFE
-  // rect; the loft lever the bottom-left. Mute used to sit top-right, directly
-  // under the host's how-to-play button — it moves to the bottom-left, beside
-  // the lever when there is one, where nothing floats over it.
+  // rect. Mute used to sit top-right, directly under the host's how-to-play
+  // button — it moves to the bottom-left, where nothing floats over it.
+  //
+  // The bottom-left used to hold a five-notch loft lever as well, from wave 4 on.
+  // It is gone: every notch on it landed the boulder on the same metre, and the
+  // two below the default were blocked by the wall 42.9% and 21.9% of the time,
+  // so the lever's whole range was "the same, or worse". See `LOFT_DEG`.
   const fire = Math.round(unit * 1.6)
   const small = Math.round(unit * 0.72)
   const gap = Math.round(fire - small * 2)
   const by = bottom - pad - fire
   const bx = right - pad - fire
   const mute = Math.round(small * 0.8)
-  const lw = Math.round(unit * 0.95)
-  const lh = Math.round(unit * 2.6)
-  // A full pad between the lever and mute: the lever is tall and a child
-  // grabbing the bottom of it must not silence the game by accident.
-  const muteX = area.x + pad + (loftUnlocked ? lw + pad : 0)
   const buttons: Btn[] = [
     { id: 'fire', x: bx, y: by, w: fire, h: fire },
     { id: 'plus', x: bx - Math.round(pad * 0.6) - small, y: by, w: small, h: small },
     { id: 'minus', x: bx - Math.round(pad * 0.6) - small, y: by + small + gap, w: small, h: small },
-    { id: 'mute', x: muteX, y: bottom - pad - mute, w: mute, h: mute },
+    { id: 'mute', x: area.x + pad, y: bottom - pad - mute, w: mute, h: mute },
   ]
-  if (loftUnlocked) buttons.push({ id: 'loft', x: area.x + pad, y: bottom - pad - lh, w: lw, h: lh })
 
   return {
     w,
@@ -223,9 +221,6 @@ export type HudState = {
   combo: number
   wind: number
   showWind: boolean
-  loftUnlocked: boolean
-  loftIndex: number
-  loftCount: number
   muted: boolean
   /** 0..1 intro banner progress */
   introT: number
@@ -297,26 +292,54 @@ export function drawHud(ctx: CanvasRenderingContext2D, st: HudState, btns: Btn[]
   ctx.globalAlpha = 1
   void time
 
-  /* ---- wind ---- */
+  /* ---- wind ----
+   *
+   * The second number in the sum, and the only other thing on the glass a child
+   * has to read. It used to be a decoration — the crew aimed off for her, so the
+   * chip was true and irrelevant — and it now decides where the boulder comes
+   * down, so it is drawn as an instrument: a bordered pill, sitting up off the
+   * background, big enough to read from arm's length.
+   *
+   * A magnitude and a direction, and no words: the arrow points the way the wind
+   * will carry the stone. The number is unsigned, because the arrow already says
+   * which way and a `−` next to a leftward arrow is the same fact twice — and this
+   * number is about to be added to or taken off the answer, so the one thing it
+   * must not look like is a negative number.
+   *
+   * What is deliberately NOT drawn anywhere: the metre the boulder is going to
+   * land on. `dial + wind` is the child's arithmetic to do. A landing marker would
+   * turn this game into sliding a caret until it touches the right keep. */
   if (st.showWind) {
     const wy = st.layout.windY
-    const s = Math.round(unit * 0.5)
+    const s = Math.round(unit * 0.52)
     ctx.font = font(s, 900)
-    const txt = (st.wind > 0 ? '+' : '') + String(st.wind)
+    const txt = String(Math.abs(st.wind))
     const tw = ctx.measureText(txt).width
     const aw = s * 1.5
     const cx = area.x + area.w / 2
+    const innerW = aw + s * 0.35 + tw
+    const padX = s * 0.42
     ctx.globalAlpha = intro
-    // the arrow: direction is shape, not colour
+    roundRect(ctx, cx - innerW / 2 - padX, wy - s * 0.72, innerW + padX * 2, s * 1.44, 5)
+    ctx.fillStyle = 'rgba(6,8,18,0.62)'
+    ctx.fill()
+    ctx.strokeStyle = 'rgba(143,227,255,0.34)'
+    ctx.lineWidth = 1.5
+    ctx.stroke()
+    // The arrow: direction is shape, not colour. It stays inside its own slot,
+    // whichever way it points — the old one was drawn from a fixed tail and ran
+    // out of the left of the readout on every leftward wind.
     const dir = Math.sign(st.wind) || 1
-    const ax = cx - (tw + aw) / 2
+    const ax = cx - innerW / 2
+    const tail = dir > 0 ? ax : ax + aw
+    const head = dir > 0 ? ax + aw : ax
     ctx.beginPath()
-    ctx.moveTo(ax, wy)
-    ctx.lineTo(ax + aw * dir, wy)
-    ctx.moveTo(ax + aw * dir, wy)
-    ctx.lineTo(ax + (aw - s * 0.4) * dir, wy - s * 0.25)
-    ctx.moveTo(ax + aw * dir, wy)
-    ctx.lineTo(ax + (aw - s * 0.4) * dir, wy + s * 0.25)
+    ctx.moveTo(tail, wy)
+    ctx.lineTo(head, wy)
+    ctx.moveTo(head, wy)
+    ctx.lineTo(head - s * 0.4 * dir, wy - s * 0.25)
+    ctx.moveTo(head, wy)
+    ctx.lineTo(head - s * 0.4 * dir, wy + s * 0.25)
     ctx.strokeStyle = C.windChip
     ctx.lineWidth = Math.max(2, s * 0.12)
     ctx.lineCap = 'round'
@@ -362,7 +385,6 @@ export function drawHud(ctx: CanvasRenderingContext2D, st: HudState, btns: Btn[]
     else if (b.id === 'minus') drawStep(ctx, b, '−')
     else if (b.id === 'plus') drawStep(ctx, b, '+')
     else if (b.id === 'mute') drawMute(ctx, b, st.muted)
-    else if (b.id === 'loft') drawLoft(ctx, b, st.loftIndex, st.loftCount)
   }
 
   /* ---- wave clear card ---- */
@@ -468,35 +490,6 @@ function drawMute(ctx: CanvasRenderingContext2D, b: Btn, muted: boolean): void {
     }
   }
   ctx.restore()
-}
-
-function drawLoft(ctx: CanvasRenderingContext2D, b: Btn, idx: number, count: number): void {
-  roundRect(ctx, b.x, b.y, b.w, b.h, b.w * 0.24)
-  ctx.fillStyle = 'rgba(10,14,28,0.42)'
-  ctx.fill()
-  ctx.strokeStyle = 'rgba(143,227,255,0.22)'
-  ctx.lineWidth = 2
-  ctx.stroke()
-  const n = count
-  const cell = b.h / n
-  for (let i = 0; i < n; i++) {
-    // bottom = flat, top = lofted; the notch shape says which is which
-    const y = b.y + b.h - (i + 0.5) * cell
-    const on = i === idx
-    const wdt = b.w * (0.22 + (i / (n - 1)) * 0.42)
-    ctx.beginPath()
-    ctx.moveTo(b.x + b.w / 2 - wdt / 2, y)
-    ctx.lineTo(b.x + b.w / 2 + wdt / 2, y)
-    ctx.strokeStyle = on ? C.steel : 'rgba(143,227,255,0.28)'
-    ctx.lineWidth = on ? 4 : 2
-    ctx.lineCap = 'round'
-    ctx.stroke()
-  }
-  const y = b.y + b.h - (idx + 0.5) * cell
-  ctx.beginPath()
-  ctx.arc(b.x + b.w / 2, y, b.w * 0.16, 0, Math.PI * 2)
-  ctx.fillStyle = C.steel
-  ctx.fill()
 }
 
 /**

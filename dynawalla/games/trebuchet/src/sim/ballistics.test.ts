@@ -3,6 +3,8 @@ import { test } from 'node:test'
 
 import { G, GRAZE_M, heightAtX, posAt, resolve, samplePath, shotScore, solve } from './ballistics.ts'
 
+// Angles, not settings. `solve` is the physics and it has to be right at any
+// angle; the game only ever throws at `LOFT_DEG`.
 const LOFTS = [26, 34, 42, 52, 63]
 
 test('the dial IS the range: landing = power + wind, exactly, for every integer input', () => {
@@ -30,7 +32,7 @@ test('the arc actually arrives where the integer says it does', () => {
   }
 })
 
-test('loft changes the shape of the arc, never the landing', () => {
+test('the launch angle changes the shape of the arc, never the landing', () => {
   const flat = solve(70, LOFTS[0], 0)
   const high = solve(70, LOFTS[4], 0)
   assert.equal(flat.landing, high.landing)
@@ -38,7 +40,7 @@ test('loft changes the shape of the arc, never the landing', () => {
   assert.ok(high.T > flat.T, 'a high loft must hang longer')
 })
 
-test('a high loft clears an obstacle a flat one hits', () => {
+test('a high angle clears an obstacle a flat one hits', () => {
   const wallX = 30
   const flat = heightAtX(solve(80, LOFTS[0], 0), wallX)
   const high = heightAtX(solve(80, LOFTS[4], 0), wallX)

@@ -105,7 +105,15 @@ function installDom(): { el: HTMLElement; canvas: Record<string, unknown> } {
 
 type Reported = { questionId: string; correct: boolean; ms: number; answered: string }
 
-function recordingHost(answers: number[]): { host: Host; reports: Reported[] } {
+/**
+ * A host that serves the answers it is given, on the rung it is told to.
+ *
+ * The rung matters now: `windCapFor` reads the item's own difficulty to decide
+ * whether the wind blows, so a test that wants the beginner's game asks for an easy
+ * rung and a test that wants the wind asks for a harder one. Nothing here is a wave
+ * number.
+ */
+function recordingHost(answers: number[], difficulty = 0.4): { host: Host; reports: Reported[] } {
   const reports: Reported[] = []
   let n = 0
   const host: Host = {
@@ -118,7 +126,7 @@ function recordingHost(answers: number[]): { host: Host; reports: Reported[] } {
         answer: String(a),
         distractors: [String(a + 11), String(a - 13)],
         domain: 'add-sub',
-        difficulty: 0.4,
+        difficulty,
       }
     },
     report: (r) => reports.push(r),
@@ -132,7 +140,7 @@ function recordingHost(answers: number[]): { host: Host; reports: Reported[] } {
 
 /** Tap a HUD button through the canvas's own pointerdown listener. */
 function tap(canvas: Record<string, unknown>, id: string): void {
-  const layout = hudLayout(VIEW.w, VIEW.h, { x: 0, y: 0, w: VIEW.w, h: VIEW.h }, true)
+  const layout = hudLayout(VIEW.w, VIEW.h, { x: 0, y: 0, w: VIEW.w, h: VIEW.h })
   const btn = layout.buttons.find((b) => b.id === id)
   assert.ok(btn, `no ${id} button in the HUD`)
   const listeners = canvas.__listeners as Listeners
@@ -151,12 +159,16 @@ function runUntil(game: TrebuchetGame, done: () => boolean, maxFrames = 1200): b
   return false
 }
 
-function newGame(answers: number[], wave: number): ReturnType<typeof installDom> & {
+function newGame(
+  answers: number[],
+  wave: number,
+  difficulty = 0.4,
+): ReturnType<typeof installDom> & {
   game: TrebuchetGame
   reports: Reported[]
 } {
   const dom = installDom()
-  const { host, reports } = recordingHost(answers)
+  const { host, reports } = recordingHost(answers, difficulty)
   const game = new TrebuchetGame(dom.el, host, 0xb01de)
   game.manualDrive()
   game.jumpToWave(wave)
@@ -166,6 +178,14 @@ function newGame(answers: number[], wave: number): ReturnType<typeof installDom>
   // and every assertion below it read -1 and passed anyway.
   assert.notEqual(game.currentAnswer(), -1, 'the wave became playable with an empty rack')
   return { ...dom, game, reports }
+}
+
+/**
+ * The dial a child who has done BOTH steps sets: the answer, less the wind she can
+ * see on the chip. With no wind it is just the answer, which is the beginner's game.
+ */
+function correctDial(game: TrebuchetGame): number {
+  return game.currentAnswer() - game.currentWind()
 }
 
 /**
@@ -341,7 +361,7 @@ test('the fire button is never lit over an empty rack', () => {
       assert.notEqual(game.currentAnswer(), -1, `frame ${i}: the button is lit with no boulder`)
     }
     if (game.currentPhase === 'aim' && game.currentAnswer() > 0) {
-      game.aimAt(game.currentAnswer())
+      game.aimAt(correctDial(game))
       tap(dom.canvas, 'fire')
     }
   }
@@ -547,7 +567,7 @@ test('a bullseye stays a bullseye when the dial is nudged mid-flight', () => {
   const answer = game.currentAnswer()
   assert.ok(game.towerRanges().includes(answer), 'the answer must have a keep')
 
-  game.aimAt(answer)
+  game.aimAt(correctDial(game))
   game.fireNow()
   assert.ok(runUntil(game, () => game.currentPhase === 'flight'), 'the shot never left')
 
@@ -565,16 +585,16 @@ test('a wrong dial stays wrong when it is corrected mid-flight', () => {
   // The mirror: turning the dial onto the answer after the boulder has gone must
   // not buy the answer, and must not blow up a keep the shot never went near.
   const { game, reports } = newGame([42, 60, 78, 96], 8)
-  const answer = game.currentAnswer()
   const standing = game.towerRanges()
   // A metre with no keep on it and none within blast range.
   const wrong = standing.reduce((a, b) => Math.max(a, b), 0) + 4
+  const wind = game.currentWind()
 
-  game.aimAt(wrong)
+  game.aimAt(wrong - wind)
   game.fireNow()
   assert.ok(runUntil(game, () => game.currentPhase === 'flight'), 'the shot never left')
 
-  game.aimAt(answer)
+  game.aimAt(correctDial(game))
 
   assert.ok(runUntil(game, () => reports.length > 0), 'nothing was ever reported')
   const r = reports[0]
@@ -593,7 +613,7 @@ test('the reported latency is thinking time, not boulder flight time', () => {
   try {
     const { game, reports } = newGame([42, 60, 78, 96], 4)
     clock += 4000 // she thinks for four seconds
-    game.aimAt(game.currentAnswer())
+    game.aimAt(correctDial(game))
     game.fireNow()
     assert.ok(
       runUntil(game, () => {
@@ -624,7 +644,7 @@ test('the whole rack can be answered without a false verdict', () => {
     const a = game.currentAnswer()
     if (a < 0 || !game.towerRanges().includes(a)) break
     dialled.push(a)
-    game.aimAt(a)
+    game.aimAt(correctDial(game))
     game.fireNow()
     const want = reports.length + 1
     if (!runUntil(game, () => reports.length >= want)) break
@@ -637,4 +657,256 @@ test('the whole rack can be answered without a false verdict', () => {
     assert.equal(reports[i].correct, true, `shot ${i + 1} on ${dialled[i]} was scored wrong`)
     assert.equal(reports[i].answered, String(dialled[i]), `shot ${i + 1} reported the wrong number`)
   }
+})
+
+/* ------------------------------------------------------- the wind, at the mount */
+
+test('the beginner never meets a wind, and dialling the answer is enough', () => {
+  // The founder is not complaining about the low end and it must not move. A rung
+  // of two-digit tables and no-regroup column sums — d=0.28, which is where the
+  // game's own search opens — has no wind on it at all, on any wave, however long
+  // the child plays. And the whole promise still holds: work the sum, wind the dial
+  // to that number, the keep comes down.
+  const { game, canvas, reports } = newGame([42, 60, 78, 96], 3, 0.28)
+  for (const wave of [1, 3, 6, 9, 14, 20]) {
+    game.jumpToWave(wave)
+    assert.ok(runUntil(game, () => game.currentPhase === 'aim', 3000), `wave ${wave} never stocked`)
+    assert.equal(game.currentWindCap(), 0, `wave ${wave} put a wind on a beginner's rung`)
+    assert.equal(game.currentWind(), 0, `wave ${wave} is blowing`)
+  }
+  const answer = game.currentAnswer()
+  game.aimAt(answer)
+  tap(canvas, 'fire')
+  assert.ok(runUntil(game, () => reports.length > 0), 'nothing was ever reported')
+  assert.equal(reports[0].answered, String(answer))
+  assert.equal(reports[0].correct, true, 'the beginner dialled her answer and was marked wrong')
+})
+
+test('on a harder rung the wind decides the shot: ignoring it misses, taking it off lands', () => {
+  // The founder's actual question — "are we supposed to shoot it longer, shorter,
+  // ignore it?" — answered through the real fire button rather than in `sim/`.
+  //
+  // Both children fire at the same keep. The one who dials her answer and ignores
+  // the wind is wrong, and is recorded as having answered the metre the boulder
+  // reached. The one who takes the wind off her answer first is right. That is the
+  // whole of "the wind does something".
+  const ignoring = newGame([42, 60, 78, 96], 6, 0.55)
+  const cap = ignoring.game.currentWindCap()
+  assert.ok(cap >= 3, `a rung at d=0.55 must have a wind; cap is ${cap}`)
+  const wind = ignoring.game.currentWind()
+  assert.notEqual(wind, 0, 'a wind of zero is not a wind')
+  const answer = ignoring.game.currentAnswer()
+
+  ignoring.game.aimAt(answer)
+  tap(ignoring.canvas, 'fire')
+  assert.ok(runUntil(ignoring.game, () => ignoring.reports.length > 0), 'nothing was reported')
+  assert.equal(ignoring.reports[0].correct, false, 'ignoring the wind still lands the shot')
+  assert.equal(
+    ignoring.reports[0].answered,
+    String(answer + wind),
+    'she is recorded as having named the metre her boulder actually reached',
+  )
+  assert.ok(
+    ignoring.game.towerRanges().includes(answer),
+    'the keep she failed to allow for must still be standing',
+  )
+
+  const thinking = newGame([42, 60, 78, 96], 6, 0.55)
+  const answer2 = thinking.game.currentAnswer()
+  thinking.game.aimAt(correctDial(thinking.game))
+  tap(thinking.canvas, 'fire')
+  assert.ok(runUntil(thinking.game, () => thinking.reports.length > 0), 'nothing was reported')
+  assert.equal(thinking.reports[0].correct, true, 'the child who did the arithmetic was marked wrong')
+  assert.equal(thinking.reports[0].answered, String(answer2), 'her answer is the sum, not the dial')
+  assert.ok(!thinking.game.towerRanges().includes(answer2), 'the keep she named must come down')
+})
+
+test('the dial reaches every compensation the wind can ask for', () => {
+  // A correct answer she cannot physically enter is the same defect as a correct
+  // answer scored wrong. The dial's stops move with the wind (`dialRange`), so this
+  // drives the REAL `setDial` through `aimAt` and checks the number stuck.
+  const { game } = newGame([14, 40, 72, 100, 118], 6, 1)
+  assert.equal(game.currentWindCap(), 9, 'the top of the ladder must blow its hardest')
+  for (let shot = 0; shot < 40; shot++) {
+    if (game.currentPhase !== 'aim' && !runUntil(game, () => game.currentPhase === 'aim')) break
+    const answer = game.currentAnswer()
+    if (answer < 0) break
+    const want = correctDial(game)
+    game.aimAt(want)
+    assert.equal(
+      game.stats().dial,
+      want,
+      `wind ${game.currentWind()}, answer ${answer}: the dial would not go to ${want}`,
+    )
+    game.fireNow()
+    if (!runUntil(game, () => game.currentPhase === 'aim' || game.currentPhase === 'clear')) break
+  }
+})
+
+test('the wind does not move between the question appearing and the boulder landing', () => {
+  // The safety property the whole mechanic rests on. The original defect was a term
+  // added AFTER the child committed; if the wind can change while she is thinking,
+  // or between her pressing fire and the impact, then `dial + wind` is not a number
+  // she could have worked out and this is the same bug again.
+  //
+  // Sampled every frame from the moment the question is on the glass to the moment
+  // the host is told, rather than at two moments — the two moments are the easy part.
+  const { game, reports } = newGame([42, 60, 78, 96], 6, 0.55)
+  for (let shot = 0; shot < 6; shot++) {
+    if (game.currentPhase !== 'aim' && !runUntil(game, () => game.currentPhase === 'aim')) break
+    const answer = game.currentAnswer()
+    if (answer < 0) break
+    const shown = game.currentWind()
+    assert.notEqual(shown, 0, 'this test is pointless without a wind')
+    const seen = new Set<number>([shown])
+    // She reads it, thinks about it, winds the dial about. Nothing may move.
+    for (let i = 0; i < 40; i++) {
+      game.stepFrames(1)
+      game.aimAt(20 + i)
+      seen.add(game.currentWind())
+    }
+    game.aimAt(answer - shown)
+    const want = reports.length + 1
+    game.fireNow()
+    assert.ok(
+      runUntil(game, () => {
+        seen.add(game.currentWind())
+        return reports.length >= want
+      }),
+      'nothing was ever reported',
+    )
+    assert.deepEqual([...seen], [shown], `the wind moved under her: saw ${[...seen].join(', ')}`)
+    assert.equal(reports[want - 1].correct, true, 'a correct, compensated shot was scored wrong')
+    assert.equal(reports[want - 1].answered, String(answer))
+  }
+  assert.ok(reports.length >= 3, `only ${reports.length} shots resolved`)
+})
+
+test('the manual is raised the first time the wind blows, and only then', () => {
+  // A mechanic that arrives silently mid-run and changes what a right answer looks
+  // like is the original defect in a new costume. `index.ts` wires this to
+  // `guide.open()`; here it is a counter, so the rule "exactly once a run" is a test
+  // and not a comment.
+  const dom = installDom()
+  const { host } = recordingHost([42, 60, 78, 96], 0.55)
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  let raised = 0
+  game.setExplainer(() => {
+    raised++
+  })
+  game.manualDrive()
+  assert.ok(runUntil(game, () => game.currentPhase === 'aim'), 'the wave never became playable')
+  assert.ok(game.currentWindCap() > 0, 'this rung must have a wind on it')
+  assert.equal(raised, 1, `the wind arrived and the manual was raised ${raised} times`)
+
+  // Twelve more waves of it, and it is never explained again.
+  for (const wave of [2, 3, 4, 7, 9, 11, 13]) {
+    game.jumpToWave(wave)
+    assert.ok(runUntil(game, () => game.currentPhase === 'aim', 3000), `wave ${wave} never stocked`)
+  }
+  assert.equal(raised, 1, `the manual was raised ${raised} times across nine waves`)
+})
+
+test('the manual is never raised on a run that has no wind in it', () => {
+  // The mirror. A child on the beginner's rungs must not have a panel about wind
+  // thrown at her; there is no wind, so there is nothing to explain.
+  const dom = installDom()
+  const { host } = recordingHost([42, 60, 78, 96], 0.28)
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  let raised = 0
+  game.setExplainer(() => {
+    raised++
+  })
+  game.manualDrive()
+  for (const wave of [1, 4, 8, 12, 18]) {
+    game.jumpToWave(wave)
+    assert.ok(runUntil(game, () => game.currentPhase === 'aim', 3000), `wave ${wave} never stocked`)
+    assert.equal(game.currentWind(), 0)
+  }
+  assert.equal(raised, 0, 'a windless run explained the wind')
+})
+
+test('a whole windy rack can be answered without one false verdict', () => {
+  // Perfect play on a rung the wind is blowing on: every report correct, every
+  // report the answer to the SUM and not the number on the dial, and every keep she
+  // named on the ground.
+  const { game, reports } = newGame([42, 60, 78, 96, 30, 110], 6, 0.55)
+  assert.ok(game.currentWindCap() > 0, 'this rung must have a wind on it')
+  const named: number[] = []
+  const dials: number[] = []
+  for (let shot = 0; shot < 12; shot++) {
+    if (game.currentPhase !== 'aim' && !runUntil(game, () => game.currentPhase === 'aim')) break
+    const a = game.currentAnswer()
+    if (a < 0 || !game.towerRanges().includes(a)) break
+    named.push(a)
+    dials.push(correctDial(game))
+    game.aimAt(correctDial(game))
+    game.fireNow()
+    const want = reports.length + 1
+    if (!runUntil(game, () => reports.length >= want)) break
+    assert.ok(!game.towerRanges().includes(a), `the keep at ${a} was named and stayed standing`)
+  }
+  assert.ok(reports.length >= 6, `only ${reports.length} shots resolved`)
+  for (let i = 0; i < reports.length; i++) {
+    assert.equal(reports[i].correct, true, `shot ${i + 1} on ${named[i]} was scored wrong`)
+    assert.equal(reports[i].answered, String(named[i]), `shot ${i + 1} reported the wrong number`)
+  }
+  // ...and the dial genuinely was a different number from the answer, or this test
+  // would pass with the wind switched off.
+  assert.ok(
+    dials.some((d, i) => d !== named[i]),
+    'no shot in this run needed any compensation at all',
+  )
+})
+
+test('the loft lever is gone, and nothing took its place in the corner', () => {
+  // It changed nothing a child could be scored on and its two lowest notches were
+  // strictly worse than the default. A control that does nothing teaches a child
+  // that controls do nothing.
+  //
+  // Checked at the mount, on a wave the lever used to be on: the layout the game
+  // hands the renderer, and the buttons the hit test walks, are the same object, so
+  // this is about the control a child can actually press.
+  const { game, canvas } = newGame([42, 60, 78, 96], 9)
+  const layout = hudLayout(VIEW.w, VIEW.h, { x: 0, y: 0, w: VIEW.w, h: VIEW.h })
+  assert.equal(layout.buttons.some((b) => b.id === 'loft'), false, 'the lever is back')
+  assert.deepEqual(
+    layout.buttons.map((b) => b.id).sort(),
+    ['fire', 'minus', 'mute', 'plus'],
+    'the control set changed',
+  )
+  // Mute has the bottom-left corner to itself now, and pressing it must be pressing
+  // mute rather than a lever that used to sit on top of it.
+  const before = game.stats().dial
+  tap(canvas, 'mute')
+  assert.equal(game.stats().dial, before, 'the bottom-left corner moved the dial')
+})
+
+test('the wind arrives because the LADDER moved, not because waves went by', () => {
+  // Driven by `ladderHost`, which is the measured shape of the shipped ladder —
+  // quantised requests, non-monotonic answer magnitudes, a lagging pool. The game
+  // opens its search at 0.28, which serves two-digit tables and no-regroup column
+  // sums, and climbs a notch a wave.
+  //
+  // Two things have to be true at once, and a wave counter can only ever manage one
+  // of them: the opening waves are windless, AND the wind does eventually arrive.
+  const dom = installDom()
+  const { host } = ladderHost()
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  game.manualDrive()
+  assert.ok(runUntil(game, () => game.currentPhase === 'aim'), 'wave 1 never stocked')
+  const opened = game.stockedDifficulty()
+  assert.ok(opened !== null && opened < 0.34, `the search opened at ${opened}, above the threshold`)
+  assert.equal(game.currentWindCap(), 0, 'a child on her first wave was handed a wind')
+
+  const caps: number[] = [game.currentWindCap()]
+  for (let wave = 2; wave <= 14; wave++) {
+    game.jumpToWave(wave)
+    assert.ok(runUntil(game, () => game.currentPhase === 'aim', 3000), `wave ${wave} never stocked`)
+    caps.push(game.currentWindCap())
+  }
+  assert.deepEqual(caps.slice(0, 2), [0, 0], `the wind blew on waves 1-2: ${caps.join(',')}`)
+  assert.ok(caps.some((c) => c > 0), `the wind never arrived across 14 waves: ${caps.join(',')}`)
+  // And when it does arrive it is a real adjustment, not a nudge.
+  for (const c of caps) assert.ok(c === 0 || c >= 3, `a cap of ${c} is not arithmetic`)
 })

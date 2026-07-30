@@ -5,11 +5,10 @@ import type { Question } from '../contract.ts'
 import { makeRng } from '../core/rng.ts'
 import { createStubHost } from '../stubHost.ts'
 import { heightAtX, LAUNCH_H } from './ballistics.ts'
-import { aimShot, windValues } from './verdict.ts'
+import { shotFor, windValues } from './verdict.ts'
 import {
   buildTower,
-  DEFAULT_LOFT,
-  LOFTS,
+  LOFT_DEG,
   layoutTowerValues,
   pullQuestions,
   ramAdvances,
@@ -17,6 +16,9 @@ import {
   stepBlocks,
   wallFor,
   waveConfig,
+  WIND_FROM_D,
+  WIND_MAX,
+  windCapFor,
   type Phase,
 } from './world.ts'
 
@@ -99,21 +101,73 @@ test('escalation is monotonic where it should be and bounded everywhere', () => 
     prevDiff = c.difficulty
     assert.ok(c.ammo >= 2 && c.ammo <= 6)
     assert.ok(c.extraTowers >= 1 && c.extraTowers <= 3)
-    assert.ok(c.wind >= 0 && c.wind <= 9)
   }
   // the first two waves are deliberately bare: one idea at a time
   for (const w of [1, 2]) {
     const c = waveConfig(w)
-    assert.equal(c.wind, 0)
-    assert.equal(c.loft, false)
     assert.equal(c.wall, false)
     assert.equal(c.ram, false)
     assert.equal(c.banners, true)
   }
-  assert.ok(waveConfig(3).wind > 0, 'wind arrives at wave 3')
-  assert.equal(waveConfig(4).loft, true, 'the loft lever arrives at wave 4')
   assert.equal(waveConfig(5).volley, true, 'every fifth wave is a volley')
   assert.ok(waveConfig(7).ram, 'the ram arrives at wave 7')
+})
+
+test('the wave number cannot start the wind blowing — only the ladder can', () => {
+  // The founder's complaint about the wind was that it was pointless; the fix for
+  // that is a second arithmetic step, and a second arithmetic step handed out on a
+  // TIMER is worse than a pointless one. `waveConfig` no longer has a `wind` field
+  // to read, which is what makes this a compile-time fact and not a convention:
+  // there is nowhere left for a wave counter to say how hard the wind blows.
+  const cfg = waveConfig(20) as Record<string, unknown>
+  assert.equal('wind' in cfg, false, 'the wave still decides the wind')
+  assert.equal('gusty' in cfg, false, 'the wave still decides whether the wind rerolls')
+  assert.equal('loft' in cfg, false, 'the wave still unlocks a lever that no longer exists')
+})
+
+test('the wind arrives on the ladder, above the facts and the no-regroup columns', () => {
+  // Measured over the shipped 66-rung ladder: every rung whose answers a 122-metre
+  // field can stand a keep at, and what arithmetic it is. The threshold sits above
+  // the last of the easy ones on purpose — a child still on tables or on column sums
+  // with no regrouping is meeting this game for the first time and gets the game
+  // that has no wind in it at all.
+  const beginner = [
+    { d: 0.246, what: 'tables-to-twelve L0' },
+    { d: 0.277, what: 'add.column.add-no-regroup L0' },
+    { d: 0.292, what: 'add.column.subtract-no-regroup L0' },
+    { d: 0.323, what: 'tables-to-twelve L1' },
+  ]
+  for (const rung of beginner) {
+    assert.equal(windCapFor(rung.d), 0, `${rung.what} (d=${String(rung.d)}) must have no wind`)
+  }
+  const higher = [
+    { d: 0.369, what: 'add.column.subtract-no-regroup L1' },
+    { d: 0.415, what: 'tables-to-twelve L2' },
+    { d: 0.462, what: 'add.regroup.add-multidigit L0' },
+    { d: 0.492, what: 'add.regroup.subtract-multidigit L0' },
+  ]
+  for (const rung of higher) {
+    assert.ok(windCapFor(rung.d) >= 3, `${rung.what} (d=${String(rung.d)}) must have a wind`)
+  }
+})
+
+test('the wind is never 1, never past WIND_MAX, and never shrinks with difficulty', () => {
+  // A wind of 1 metre is not arithmetic: a child can nudge the dial one notch and
+  // watch. And the dial only carries WIND_MAX of slack past the field, so a cap
+  // above it would ask for a compensation she cannot enter.
+  let prev = 0
+  for (let d = 0; d <= 1.0001; d += 0.002) {
+    const cap = windCapFor(d)
+    assert.ok(cap === 0 || cap >= 3, `d=${d.toFixed(3)} gives a cap of ${String(cap)}`)
+    assert.ok(cap <= WIND_MAX, `d=${d.toFixed(3)} gives a cap of ${String(cap)}`)
+    assert.ok(cap >= prev, `the wind dropped at d=${d.toFixed(3)}`)
+    prev = cap
+  }
+  assert.equal(windCapFor(WIND_FROM_D - 0.001), 0, 'just below the threshold, no wind')
+  assert.equal(windCapFor(WIND_FROM_D), 3, 'at the threshold, three metres')
+  assert.equal(windCapFor(1), WIND_MAX, 'at the top of the ladder, the strongest wind')
+  // A difficulty that is not a number must not become a wind.
+  assert.equal(windCapFor(Number.NaN), 0, 'NaN is not a difficulty')
 })
 
 test('the ram does not roll while the child is working the sum out', () => {
@@ -130,33 +184,41 @@ test('the ram does not roll while the child is working the sum out', () => {
   }
 })
 
-test('the wall can always be cleared, in any wind, at the loft the lever starts on', () => {
-  // The wall is the only reason the loft lever exists. It may never stand between
-  // a child and a keep she has named correctly — and the compensation for the
-  // wind launches lower, so still air is not the case to size it against.
-  let blocks = 0
+test('the wall can never stand between a child and a keep she named correctly', () => {
+  // It may never block a correct shot — and a correct shot in a tailwind is
+  // launched at `answer - wind`, which flies lower than the same shot in still
+  // air, so still air is not the case to size the wall against.
+  //
+  // The wall used to have a second job: be tall enough that the FLATTEST loft
+  // could not clear it, so the loft lever had a reason to exist. The lever is gone
+  // (see `LOFT_DEG`) and so is that bound.
   let walls = 0
+  let worstMargin = Infinity
   for (let w = 1; w <= 40; w++) {
     const cfg = waveConfig(w)
     if (!cfg.wall) continue
-    for (let nearest = 14; nearest <= 118; nearest += 3) {
-      const wall = wallFor(nearest, cfg.wind)
-      walls++
-      assert.ok(wall.x < nearest, `wave ${w}: the wall stands on the keep at ${nearest}`)
-      let flatBlocked = false
-      for (const wind of cfg.wind ? windValues(cfg.wind) : [0]) {
-        const opened = aimShot(nearest, LOFTS[DEFAULT_LOFT], wind, LAUNCH_H)
-        assert.ok(
-          heightAtX(opened, wall.x) > wall.h,
-          `wave ${w}, keep ${nearest}, wind ${wind}: the default loft cannot clear a ${wall.h.toFixed(1)} m wall`,
-        )
-        if (heightAtX(aimShot(nearest, LOFTS[0], wind, LAUNCH_H), wall.x) < wall.h) flatBlocked = true
+    for (const cap of [0, 3, 5, 7, WIND_MAX]) {
+      for (let nearest = 14; nearest <= 118; nearest += 3) {
+        const wall = wallFor(nearest, cap)
+        walls++
+        assert.ok(wall.x < nearest, `wave ${w}: the wall stands on the keep at ${nearest}`)
+        for (const wind of cap ? windValues(cap) : [0]) {
+          // The shot a child who got it right actually fires: dial the answer less
+          // the wind, and let the wind carry it home.
+          const opened = shotFor(nearest - wind, LOFT_DEG, wind, LAUNCH_H)
+          const margin = heightAtX(opened, wall.x) - wall.h
+          worstMargin = Math.min(worstMargin, margin)
+          assert.ok(
+            margin > 0,
+            `wave ${w}, keep ${nearest}, wind ${wind}, cap ${cap}: a correct shot cannot clear a ` +
+              `${wall.h.toFixed(1)} m wall (margin ${margin.toFixed(2)} m)`,
+          )
+        }
       }
-      if (flatBlocked) blocks++
     }
   }
-  // ...and it must still be worth having: most walls stop the flattest shot.
-  assert.ok(blocks / walls > 0.6, `only ${blocks}/${walls} walls stop a flat shot`)
+  assert.ok(walls > 500, `only ${walls} walls were measured`)
+  assert.ok(worstMargin > 0.3, `the worst clearance is only ${worstMargin.toFixed(2)} m`)
 })
 
 test('a struck keep comes apart and then settles — no perpetual motion', () => {

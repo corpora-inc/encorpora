@@ -3,21 +3,47 @@
  *
  * `game.ts` states the law at the top of `pending`: a keep standing in the way is
  * scenery, because "anything else would punish correct arithmetic, which is the one
- * thing this game may never do." The wind used to do exactly that. From wave 3 the
- * landing was `dial + wind` while the aim caret, the numeral and the whole promise
- * of the game stood on `dial`, so a child who worked out 47 + 25 = 72 and dialled 72
- * watched her shot land somewhere else and was told she was wrong — and, worse, the
- * metre the wind chose was the string sent to the curriculum as her answer.
+ * thing this game may never do."
  *
- * Two rules now hold this together, and both are tested:
+ * ## The wind, and the two ways of getting it wrong
  *
- *   1. **The dial is the landing metre.** The crew aims upwind by exactly the
- *      crosswind, so the boulder is launched off-target and blown onto the number.
- *      The arc still visibly bends — the wind is real, it is drawn, it is on the
- *      chip — it simply no longer decides whether a child knows her sums.
- *   2. **The child's answer is the number on the dial.** Not the metre struck, not
- *      the value of whichever keep happened to be nearest, not a landing the wind
- *      moved. What she named is what is reported.
+ * **The original defect (fixed in #654).** The crosswind was a hidden term added
+ * after the child committed: `landing = dial + wind`, while the aim caret, the
+ * numeral and the whole promise of the game stood on `dial`. Nothing on the screen
+ * told her the wind was going to move her boulder and nothing let her account for
+ * it, so a child who worked out `47 + 25 = 72` and dialled 72 was scored wrong with
+ * probability `1 − 1/cap` — 8/9 by wave 16 — and the metre the wind chose was sent
+ * to the curriculum as her answer.
+ *
+ * **The fix that made the wind pointless (#654).** `aimShot` laid the machine off
+ * into the crosswind, launching at `dial − wind`, so the boulder came down on the
+ * metre she named whatever the wind did. Correct, and it left the wind decorative:
+ * the arc bent, the chip read a number, and ignoring it was optimal. Measured over
+ * 2,460 shots across waves 1–20, the wind moved the landing metre 0 times, changed
+ * the verdict 0 times and changed the report 0 times — while a child who *did*
+ * reason about it and aimed off herself was scored WRONG in 480 of 492 cases. The
+ * game punished exactly the child who was thinking.
+ *
+ * ## What holds now
+ *
+ * The crew does not do the subtraction any more. The child does, and she is told
+ * everything she needs to do it before she commits to anything:
+ *
+ *   1. **The wind is exact, stated, and fixed before the shot.** An integer number
+ *      of metres, on the chip, rolled when the question appears and never touched
+ *      again — not at release, not in flight, not at impact. So the metre the
+ *      boulder will come down on is `dial + wind`, and she can work that out to the
+ *      metre before she presses anything. There is nothing left in this game that a
+ *      child could not have accounted for.
+ *   2. **Her answer to the sum is `dial + wind`** — the metre she is claiming the
+ *      keep stands at. That number, and not the dial, is what reaches the
+ *      curriculum, because the dial is now deliberately a different number from her
+ *      answer. It is computed from her own two inputs by integer addition, never
+ *      read back off the physics; the landing is checked against it and a
+ *      disagreement is logged loudly, with her claim still winning.
+ *   3. **Below `WIND_FROM_D` there is no wind at all**, the cap is 0, and every
+ *      formula above collapses to `claim = dial`. The beginner's game is the game
+ *      it always was.
  */
 
 import { solve, type Solved } from './ballistics.ts'
@@ -30,7 +56,7 @@ export function windValues(cap: number): number[] {
   return out
 }
 
-/** A crosswind for the wave. Never 0: a wind chip reading 0 lies about the mechanic. */
+/** A crosswind for the shot. Never 0: a wind chip reading 0 lies about the mechanic. */
 export function rollWind(cap: number, rng: Rng): number {
   if (!cap) return 0
   let v = 0
@@ -39,19 +65,20 @@ export function rollWind(cap: number, rng: Rng): number {
 }
 
 /**
- * The shot that comes down on the metre the child dialled.
+ * The shot the machine actually throws.
  *
- * `solve` lands at `power + wind`, so the power asked for is `dial − wind`: the
- * machine is laid off into the wind and the wind carries the boulder home. Both
- * terms are integers, so the landing is the dial exactly — not 71.98.
+ * `dialM` is the range wound onto the dial — where the boulder would land in still
+ * air — and the wind carries it `wind` metres further on top of that. Both terms
+ * are integers, so the landing metre is `dial + wind` exactly, not 71.98.
+ *
+ * There is no compensation in here any more. The physical shot is unchanged from
+ * the one #654 fired: a child who wants to hit metre `A` in a wind of `w` dials
+ * `A − w`, and this launches at power `A − w` — the same power the old `aimShot`
+ * computed for her behind her back. The only thing that moved is which number she
+ * turns and who does the subtraction.
  */
-export function aimShot(dialM: number, angleDeg: number, wind: number, h: number): Solved {
-  // Never laid off past the launch point. A target nearer than the wind's push
-  // would ask for a backwards throw, so the offset stops at 1 m of power and the
-  // modelled bend gives instead — the LANDING is exact either way, which is the
-  // part a child is marked on. Only reachable by dialling below the whole field.
-  const power = Math.max(1, dialM - wind)
-  return solve(power, angleDeg, dialM - power, h)
+export function shotFor(dialM: number, angleDeg: number, wind: number, h: number): Solved {
+  return solve(dialM, angleDeg, wind, h)
 }
 
 /**
@@ -61,9 +88,11 @@ export function aimShot(dialM: number, angleDeg: number, wind: number, h: number
 export type ShotKind = 'tower' | 'ground' | 'wall' | 'ram'
 
 export type ShotFacts = {
-  /** the metre the child named */
+  /** the range wound onto the dial */
   dial: number
-  /** the metre the boulder came down on — must equal the dial */
+  /** the wind she was shown, frozen when she committed */
+  wind: number
+  /** the metre the boulder came down on — must equal `dial + wind` */
   landing: number
   /** what the loaded boulder asked for */
   answer: number
@@ -81,21 +110,37 @@ export type Verdict = {
   correct: boolean
   /** the string the host is given, and the only thing the curriculum judges */
   answered: string
+  /** the metre she named as the answer: `dial + wind` */
+  claim: number
 }
 
+/**
+ * The metre the child is claiming the keep stands at.
+ *
+ * Her answer to the sum, in one integer addition over the two numbers she had in
+ * front of her: the dial she set and the wind she was shown. Nothing from the
+ * simulation is in here, which is the point — the last time this game read the
+ * ground to find out what a child had said, it reported the metre the wind chose.
+ */
+export const claimOf = (dial: number, wind: number): number => dial + wind
+
 export function verdictFor(f: ShotFacts): Verdict {
-  if (f.landing !== f.dial) {
-    // Unreachable while `aimShot` is what fires the boulder. If it ever happens,
-    // something has put a term between the dial and the ground again, and a child
-    // is about to be marked on it — so it is loud, and the dial still wins.
+  const claim = claimOf(f.dial, f.wind)
+  if (f.landing !== claim) {
+    // Unreachable while `shotFor` is what throws the boulder: `solve` returns
+    // `R + wind` and this adds the same two integers. If it ever happens,
+    // something has put a term between her arithmetic and the ground again, and a
+    // child is about to be marked on it — so it is loud, and her claim still wins.
     console.error(
-      `[trebuchet] the boulder landed at ${f.landing} but the dial said ${f.dial}; reporting the dial`,
+      `[trebuchet] the boulder landed at ${f.landing} but the dial said ${f.dial} in a wind of ` +
+        `${f.wind}, which is ${claim}; reporting ${claim}`,
     )
   }
   const answersTheQuestion = f.kind !== 'ram'
   return {
     report: answersTheQuestion,
-    correct: answersTheQuestion && f.dial === f.answer,
-    answered: String(f.dial),
+    correct: answersTheQuestion && claim === f.answer,
+    answered: String(claim),
+    claim,
   }
 }

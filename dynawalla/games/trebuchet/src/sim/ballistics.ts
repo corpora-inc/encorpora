@@ -1,17 +1,21 @@
 /**
  * Ballistics.
  *
- * The honesty rule: **the dial is the range**. A shot dialled to 56 with no wind
- * lands at exactly 56 metres — not 55.98. The float maths below shapes the arc for
- * the eye; it never decides anything. Every outcome is decided by integer compare
- * in `resolve()`.
+ * The honesty rule: **the dial is the range, and the wind is exactly the wind**. A
+ * shot dialled to 56 in a wind of 5 lands at exactly 61 metres — not 60.98. The
+ * float maths below shapes the arc for the eye; it never decides anything. Every
+ * outcome is decided by integer compare in `resolve()`.
  *
  * Solution: launch from height `h`, land on y = 0, horizontal distance R, at the
- * chosen launch angle. Two knobs that do genuinely different jobs:
- *   power  -> WHERE it lands   (R, integer metres)
- *   loft   -> the SHAPE of the arc getting there (same landing, different sky)
+ * chosen launch angle. Two inputs that do genuinely different jobs:
+ *   R      -> WHERE it lands in still air (integer metres)
+ *   angle  -> the SHAPE of the arc getting there (same landing, different sky)
  * Wind is a constant horizontal acceleration sized so the landing is displaced by
  * exactly `wind` metres — the arc visibly bends and the arithmetic stays exact.
+ *
+ * The angle is not a control any more. The game throws every boulder at `LOFT_DEG`
+ * and the child never chooses it; the parameter stays because the physics has to be
+ * right at any angle and the wall clearance is measured through it.
  */
 
 /** Heavier-than-Earth gravity: a 100 m shot flies for ~2.5 s, which is the drama window. */
