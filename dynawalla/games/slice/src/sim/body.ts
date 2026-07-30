@@ -4,10 +4,16 @@
 // colour second — which is what keeps the game readable for a colour-blind
 // child and at 0.45 seconds of glance time:
 //
-//   NUMERAL  a heavy round gourd on a full-gravity arc
-//   SIGIL    a flat lacquer tablet, slow, tumbling end over end
-//   MOTE     a lantern that *floats* — a third of gravity, drifting
+//   GOURD    a heavy round fruit with a numeral on it, full-gravity arc
+//   MELON    large, seamed, NO glyph, a slower arc — you cannot see inside
+//   MOTE     a lantern that *floats* — the bomb gate's answer row
 //   BOMB     a small hard-edged iron sphere with a live fuse
+//
+// **A helpful gourd and a decoy gourd are the same object.** Same silhouette,
+// same flesh, same motion, same size for the same number of digits. Telling them
+// apart is arithmetic and nothing else — there is no colour tell and no size
+// tell, and `radiusFor` scaling with digit count is a MAGNITUDE tell, which is
+// desirable, and must never become a helpfulness tell. That is the game.
 //
 // A cut chunk keeps the *half of the numeral that was on it*: the polygon is
 // used as a clip path over the same pre-rendered glyph, so a 48 cut down the
@@ -17,15 +23,15 @@
 import { Rng } from "../core/rng.ts"
 import { clipHalfPlane, centroid, regularPolygon } from "../core/geom.ts"
 
-export const B_NUMERAL = 0
-export const B_SIGIL = 1
+export const B_GOURD = 0
+export const B_MELON = 1
 export const B_MOTE = 2
 export const B_BOMB = 3
 
 export const MAX_POLY = 14
 
 export class Body {
-  kind = B_NUMERAL
+  kind = B_GOURD
   alive = false
   x = 0
   y = 0
@@ -40,10 +46,12 @@ export class Body {
   fleshIdx = 0
   /** MOTE only: is this the answer? */
   correct = false
-  /** MOTE/SIGIL only: which question it belongs to. */
+  /** MOTE only: which gate question it belongs to. */
   qid = ""
-  /** How deep in a cascade this numeral is — scoring and pitch use it. */
-  depth = 0
+  /** A GOURD carrying an ABSURD glyph — `π`, `−∞`, `½`. Never a whole number. */
+  absurd = false
+  /** Set on the two halves a melon opens into, so the split cannot cascade. */
+  fromMelon = false
   /** Wall-clock ms the body was created; drives the spawn squash. */
   bornAt = 0
   poly = new Float32Array(MAX_POLY * 2)
@@ -77,7 +85,8 @@ export class Body {
     this.alive = false
     this.text = ""
     this.qid = ""
-    this.depth = 0
+    this.absurd = false
+    this.fromMelon = false
     this.correct = false
     this.cuttableAt = 0
     this.waveMark = 0
@@ -161,24 +170,10 @@ export class World {
     return live >= this.chunkLimit ? oldest : null
   }
 
-  /** Give a body a shape. Gourds wobble; tablets are rectangles; bombs are round. */
+  /** Give a body a shape. Gourds wobble; melons are rounder and fatter; bombs are hard. */
   shape(b: Body, rng: Rng): void {
-    if (b.kind === B_SIGIL) {
-      const w = b.r * 1.55
-      const h = b.r * 0.82
-      b.poly[0] = -w
-      b.poly[1] = -h
-      b.poly[2] = w
-      b.poly[3] = -h
-      b.poly[4] = w
-      b.poly[5] = h
-      b.poly[6] = -w
-      b.poly[7] = h
-      b.polyN = 4
-      return
-    }
-    const sides = b.kind === B_BOMB ? 12 : 11
-    const wobble = b.kind === B_BOMB ? 0 : 0.11
+    const sides = b.kind === B_BOMB ? 12 : b.kind === B_MELON ? 13 : 11
+    const wobble = b.kind === B_BOMB ? 0 : b.kind === B_MELON ? 0.04 : 0.11
     const seed = rng.next()
     b.polyN = regularPolygon(b.poly, sides, b.r, seed * Math.PI, wobble, (i) =>
       // A cheap deterministic per-vertex jitter — no allocation, no extra rng draw.

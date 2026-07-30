@@ -1,4 +1,4 @@
-// THE SPLIT — night market at the blue hour.
+// MATH NINJA — night market at the blue hour.
 //
 // The register: an indigo sky an hour after sunset, sodium lamps strung on
 // wires, and fruit that glows from *inside* once it is cut open, as if the lamp

@@ -5,7 +5,12 @@ import { join } from "node:path"
 import { Feel } from "../core/feel.ts"
 import { Director } from "../sim/director.ts"
 import { Rng } from "../core/rng.ts"
-import { buildNumberPool } from "../sim/factor.ts"
+import {
+  observe,
+  SECOND_GRADE_FLOW,
+  seedSuccess,
+  settle,
+} from "../../../../packs/shared/game-pacing/index.ts"
 
 test("nothing blocks: advance always returns simulation time outside a hitstop", () => {
   const f = new Feel({ reducedMotion: false })
@@ -96,36 +101,54 @@ test("escalation cannot see a streak — no source file may mention one", () => 
   assert.deepEqual(offenders, [], "streak-keyed escalation is forbidden")
 })
 
-test("the director escalates forever and never completes", () => {
-  const d = new Director(new Rng(5), buildNumberPool(2, 144))
+test("THE WORLD ESCALATES ON EVIDENCE AND NEVER ON THE CLOCK", () => {
+  // This game used to fail this. `Director.heat` was `1 − e^(−t/15)` and friends
+  // — a stopwatch — and it was root cause 3 of `PACING_AUDIT_2026-07.md`. There
+  // is now nothing in the director that a wall clock can move, and the ladder it
+  // rides on is the shared flow controller, which only ever hears about answers.
+  const d = new Director(new Rng(5))
   const out = Array.from({ length: 24 }, () => ({
-    kind: "numeral" as const,
+    kind: "gourd" as const,
     value: 0,
+    glyph: "",
     delayMs: 0,
     bandT: 0,
     apex: 0,
   }))
-  const heats: number[] = []
+  const m = { live: 4, frontierLive: 1, frontier: [3], printed: [3, 9], residual: 6 }
+  d.intensity = 0.5
   let throws = 0
-  // Twenty minutes at 60fps.
-  for (let i = 0; i < 60 * 60 * 20; i++) {
-    throws += d.step(1 / 60, out)
-    if (i % (60 * 120) === 0) heats.push(d.heat)
-  }
+  for (let i = 0; i < 60 * 60 * 20; i++) throws += d.step(1 / 60, out, m)
   assert.ok(throws > 2000, `only ${throws} throws in 20 minutes`)
-  for (let i = 1; i < heats.length; i++) {
-    assert.ok((heats[i] as number) >= (heats[i - 1] as number), "heat must never fall")
+  assert.equal(d.intensity, 0.5, "the director moved its own difficulty")
+
+  // …and the climb itself: correct-and-quick answers carry a player up the whole
+  // range, and one bad patch brings the world back down.
+  let intensity = SECOND_GRADE_FLOW.start
+  let success = seedSuccess(SECOND_GRADE_FLOW)
+  for (let i = 0; i < 60 * 120; i++) {
+    if (i % 120 === 0) success = observe(SECOND_GRADE_FLOW, success, true, 2)
+    intensity = settle(SECOND_GRADE_FLOW, intensity, success, 1 / 60)
   }
-  assert.ok((heats.at(-1) as number) > (heats[0] as number) + 0.5, "twenty minutes must feel different")
-  assert.ok(d.heat <= 1)
+  assert.ok(intensity > 0.8, `two minutes of fast correct answers only reached ${intensity.toFixed(2)}`)
+  const top = intensity
+  for (let i = 0; i < 60 * 60; i++) {
+    if (i % 120 === 0) success = observe(SECOND_GRADE_FLOW, success, false, 20)
+    intensity = settle(SECOND_GRADE_FLOW, intensity, success, 1 / 60)
+  }
+  assert.ok(intensity < top * 0.5, `struggling only brought the world from ${top.toFixed(2)} to ${intensity.toFixed(2)}`)
 })
 
-test("difficulty tracks the player and stays inside the host's band", () => {
-  const d = new Director(new Rng(5), buildNumberPool(2, 144))
-  for (let i = 0; i < 60 * 600; i++) d.step(1 / 60, [])
-  for (const acc of [0, 0.25, 0.5, 0.75, 1]) {
-    const q = d.questionDifficulty(acc)
-    assert.ok(q >= 1 && q <= 10, `difficulty ${q} out of band`)
+test("difficulty tracks the one axis and stays inside the host's band", () => {
+  for (const i of [0, 0.25, 0.5, 0.75, 1]) {
+    const d = new Director(new Rng(5))
+    d.intensity = i
+    const q = d.questionDifficulty()
+    assert.ok(q >= 1 && q <= 10, `difficulty ${q} out of band at intensity ${i}`)
   }
-  assert.ok(d.questionDifficulty(1) > d.questionDifficulty(0), "doing well must ask for more")
+  const easy = new Director(new Rng(5))
+  const hard = new Director(new Rng(5))
+  easy.intensity = 0
+  hard.intensity = 1
+  assert.ok(hard.questionDifficulty() > easy.questionDifficulty(), "doing well must ask for more")
 })

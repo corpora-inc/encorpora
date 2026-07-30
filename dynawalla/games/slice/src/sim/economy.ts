@@ -1,24 +1,31 @@
-// What a question costs, what it pays, and how long the child gets.
+// What an order pays, what a mistake costs, and how long a completed sum is
+// held. Pure; `economy.test.ts` plays bots against it.
 //
-// This used to be five constants and three `if`s scattered through a 2,000-line
-// `mount.ts`, which is why nothing noticed that they added up to a game where
-// **the winning move was to never answer**:
+// ── THERE IS NO CLOCK ON ANY ARITHMETIC IN THIS GAME ────────────────────────
 //
-//   * a wrong lantern cost a lamp;
-//   * a timeout cost nothing but a point of favour;
-//   * and the window was 4.2 s, of which 0.42 s is spent under the read-lock, so
-//     3.78 s of it was usable — against this repo's own 6 s p50 for the exact
-//     skill `pack.json` declares.
+// The three functions that used to be the centre of this file — `moteSecondsFor`,
+// `usableAnswerSeconds` and `marketHushSeconds` — are gone, and they were not
+// tuned away, they were designed away. They sized an answering WINDOW, and the
+// whole of MATH NINJA's arithmetic layer now has nothing to put a window on:
 //
-// A child who read the equation honestly could not finish inside the window, and
-// a child who guessed to beat the window lost a lamp three times in four. The
-// only strategy that never lost anything was to let every sigil expire. The
-// pressure did not make the game harder. It made the maths optional.
+//   * the standing order never expires. The child holds it for as long as they
+//     want, and unlimited thinking time is delivered by the generator RE-OFFERING
+//     a needed numeral (`Director`'s offer invariant) rather than by a long
+//     timer. Timers are the root cause `PACING_AUDIT_2026-07.md` found seventeen
+//     times over, and a timer that is merely generous is still a timer;
+//   * the bomb gate is the one modal question in the game and it has no timer of
+//     any kind. Not a long one — none. The child has already stopped moving.
 //
-// Everything that decides that is in this file, it is pure, and
-// `economy.test.ts` plays bots against it.
+// So the cadence table below survives for one honest purpose: sizing how long a
+// completed sum is HELD, which is a floor on the child's reading time rather
+// than a ceiling on their thinking time. It is still monotone non-decreasing in
+// difficulty, which is still the fleet invariant.
 
-import { SECOND_GRADE_FLOW, revealMs } from "../../../../packs/shared/game-pacing/index.ts"
+import {
+  SECOND_GRADE_FLOW,
+  revealMs,
+  revealShown,
+} from "../../../../packs/shared/game-pacing/index.ts"
 
 /**
  * `EXPERIENCE_DESIGN.md`'s cadence table, in milliseconds. Instrumented p50/p90,
@@ -79,54 +86,28 @@ export function comprehensionP90Ms(difficulty: number): number {
   return interpolate(comprehensionLoad(difficulty), "p90")
 }
 
+// ── verdicts ───────────────────────────────────────────────────────────────
+
 /**
- * How long the lanterns hang, in seconds.
+ * What happened.
  *
- * p90 for the item's class **plus** the read-lock, so that the time a child can
- * actually act in is never less than the time the repo measured them needing. It
- * was `4.2 + (difficulty − 1) × 0.2`, which topped out at 6 s gross for the
- * hardest item the pack covers — against a 40 s p90.
+ * `fill` — an order completed. `overshoot` — the one miss in the game: a value
+ * cut that is larger than the residual. There is no third verdict any more:
+ * `timeout` is gone because nothing in MATH NINJA can time out.
  */
-export function moteSecondsFor(difficulty: number): number {
-  return usableAnswerSeconds(difficulty) + CANDIDATE_READ_LOCK_MS / 1000
-}
-
-/**
- * The part of the window a child can actually cut in, and the number the fleet
- * invariant is quoted against. Derived first, so no float rounding can shave a
- * millisecond off the p90 on its way back out of `moteSecondsFor`.
- */
-export function usableAnswerSeconds(difficulty: number): number {
-  return comprehensionP90Ms(difficulty) / 1000
-}
-
-// ── what an answer is worth, and what it costs ──────────────────────────────
-
-export type Verdict = "correct" | "wrong" | "timeout"
+export type Verdict = "fill" | "overshoot"
 
 export const FAVOUR_MAX = 4
 export const FAVOUR_SECONDS = 9
-/** Sigils read to buy a lamp back. Cumulative, never consecutive. */
-export const READ_PER_LAMP = 2
 export const LAMPS = 3
 
 /**
- * Lamps a verdict costs. **Zero, for all three.**
+ * Lamps a verdict costs. **Zero, for both.**
  *
- * This is the fix, and it is a subtraction rather than an addition. The rule the
- * audit set is that a timeout may never cost *less* than an honest wrong answer,
- * because the moment it does, not-answering strictly dominates answering and the
- * arithmetic becomes optional. There are two ways to satisfy that and only one
- * of them is allowed: taking a lamp on a timeout punishes a child for still
- * thinking, which is the one thing this product does not do. So the wrong answer
- * gives its lamp up instead.
- *
- * A wrong lantern still costs the whole economy — favour drops to one, and
- * favour multiplies *everything*, every gourd and every prime and every cascade.
- * That was always the real deterrent to guessing; the lamp was a second, harsher
- * one stacked on top of it, and it was the reason a rational child never
- * answered at all. Lamps are now spent on bombs, which are the one hazard a
- * child chooses to touch.
+ * A lamp is spent by exactly one thing: cutting a bomb, which is the one hazard
+ * a child *chooses* to touch — and even then the gate hands it straight back for
+ * a correct answer. Nothing about arithmetic may cost a life, and nothing about
+ * being slow may cost anything at all.
  */
 export function lampCost(verdict: Verdict): number {
   void verdict
@@ -134,80 +115,65 @@ export function lampCost(verdict: Verdict): number {
 }
 
 /**
- * Favour after a verdict.
+ * Favour after a verdict. A fill climbs; an overshoot falls all the way to one.
  *
- * Correct climbs. **A wrong answer falls all the way to one. A timeout costs
- * nothing at all.**
- *
- * This is a reversal of the line that used to be here, and the reasoning it
- * replaces was sound about the wrong thing. The rule the audit set was "a
- * timeout may never cost *less* than an honest wrong answer", because a timeout
- * that is cheaper than a guess makes not-answering the dominant strategy. That
- * was satisfied here by sending both verdicts to one — and the price of it was
- * that a child who was still thinking was charged the same as a child who was
- * wrong. THE SPLIT then flashed the answer past them and moved on. A timeout is
- * not a wrong answer; it is the sound of a child working.
- *
- * The rule is kept, but it is kept where it belongs: in `marketHushSeconds`. A
- * timeout forfeits the **whole window** of market a child who answers hands
- * straight back — thirteen seconds at difficulty five, forty at ten — and market
- * time is where nearly all of the score comes from. Refusing is still strictly
- * dominated, at every difficulty and at every price a second of slicing could
- * be worth; `economy.test.ts` plays the bots that prove it, including one that
- * banks favour to the ceiling and then refuses on purpose.
- *
- * So a timeout costs the window, not the score. Nothing about being slow takes
- * anything away from the child.
+ * Favour multiplies everything, so an overshoot is still the most expensive
+ * thing a child can do — and it costs no lamp, no points already banked and no
+ * progress they had made. §4.8's distinction, which is the whole product:
+ * mashing becomes a *bad* strategy without ever becoming a *punished* one.
  */
 export function favourAfter(verdict: Verdict, favour: number): number {
-  if (verdict === "correct") return Math.min(FAVOUR_MAX, favour + 1)
-  if (verdict === "timeout") return favour
+  if (verdict === "fill") return Math.min(FAVOUR_MAX, favour + 1)
   return 1
 }
 
 /**
  * Whether a verdict is evidence about the child, fit to send to the ladder.
  *
- * A timeout is not. A child who was still computing is not a child who does not
- * know the skill, and the ladder is the one place that mistake compounds: it
- * would feed them easier items, which is exactly the wrong medicine for somebody
- * who is merely deliberate. The game still charges the timeout — see
- * `marketHushSeconds` — it just does not lie to the curriculum about it.
+ * Both are. What is NOT is a fruit that fell uncut — the same argument that used
+ * to exempt a timeout: a numeral the child let go past is not a claim about
+ * anything, and the mount never reports one.
  */
 export function reportsToCurriculum(verdict: Verdict): boolean {
-  return verdict !== "timeout"
+  void verdict
+  return true
 }
 
-/** What a correct lantern pays, before the favour wave doubles it. */
-export function answerGain(difficulty: number, mult: number): number {
-  return Math.round((320 + difficulty * 110) * mult)
+// ── what an order is worth ─────────────────────────────────────────────────
+
+/**
+ * What FILLING an order pays, before combo and favour multiply it.
+ *
+ * **Score comes from one source only: advancing or filling an order.** Not from
+ * cutting. That single rule does most of the anti-mash work in this game,
+ * because it converts mashing from *punished* — which the product's principles
+ * forbid — into *worthless*, which is the only sanction this product is allowed
+ * to apply. A cut that does not advance the order pays nothing at all, and there
+ * is no volume of swiping that adds up to a number.
+ *
+ * The old build paid `10 + value * 0.9` per prime and `3 + value * 0.16` per
+ * composite, unconditionally, which is why a pure-guesser bot scored 31,208
+ * against a skilled bot's 31,190 over the same seventy seconds.
+ */
+export function orderValue(target: number): number {
+  return Math.round(120 + Math.sqrt(Math.max(1, target)) * 60)
+}
+
+/** What one helpful cut pays on the way. Small — the fill is the event. */
+export function advanceValue(target: number): number {
+  return Math.round(orderValue(target) * 0.12)
 }
 
 /**
- * How long the market stays hushed for, given a verdict at `answeredAtSeconds`.
- *
- * **This is where a timeout costs more than a wrong answer.**
- *
- * The market holds its breath for as long as a question is live — see
- * `Director.quiet`, which is now genuinely quiet — so the hush ends when the
- * question is settled, however it is settled. A child who answers, right or
- * wrong, hands the market back at the moment they cut. A child who lets the
- * sigil expire hands it back at the end of the window, and everything they could
- * have been slicing in between is gone.
- *
- * So the cost ordering is: correct (short hush, plus favour, plus the wave) <
- * wrong (short hush, favour gone) < timeout (the entire window, favour gone).
- * Never-answering is strictly dominated, and nothing in that chain punishes a
- * slow child — the time a deliberate child spends is time they are using.
+ * Filling in exactly three cuts is the founder's mock — `__ + __ + ___ = 33` —
+ * and it is paid as an INCENTIVE rather than enforced as a constraint, which is
+ * the house style. The elastic tail means a child is never told how many parts
+ * to use; this is what makes three worth aiming at anyway.
  */
-export function marketHushSeconds(
-  verdict: Verdict,
-  difficulty: number,
-  answeredAtSeconds: number,
-): number {
-  const window = moteSecondsFor(difficulty)
-  if (verdict === "timeout") return window
-  return Math.max(0, Math.min(window, answeredAtSeconds))
+export const TIDY_CUTS = 3
+
+export function tidyBonus(target: number, cuts: number): number {
+  return cuts === TIDY_CUTS ? Math.round(orderValue(target) * 0.5) : 0
 }
 
 // ── the marinate beat ───────────────────────────────────────────────────────
@@ -225,43 +191,53 @@ export const REVEAL_MIN_SECONDS = 0.9
 export const REVEAL_FADE_SECONDS = 0.45
 
 /**
- * Where the child is between the calm end and the top, 0…1, from the favour they
- * were carrying when the question settled.
- *
- * **Favour and not elapsed time.** The obvious signal was `Director.heat`, THE
- * SPLIT's own escalation curve, and it is the wrong one: heat is a stopwatch. It
- * reaches half its range about twenty-five seconds into a run, so a child who was
- * still struggling in minute five would have been handed the same nine-tenths of
- * a second the game already gave them, and the patient reveal would have existed
- * only for the first twenty seconds anybody ever played. Measured, in
- * `marinate.test.ts`'s own table, before it was changed.
- *
- * Favour is the one thing in this game that says something about the child rather
- * than about the clock: it climbs one rung per correct answer and drops to one on
- * a wrong one. So the top is a player who has just answered four in a row and
- * slipped on the fifth — blowing past the sum is the reward for that — and the
- * calm end is everybody else, at any point in any run, for as long as they need
- * it.
- */
-export function revealIntensity(favour: number): number {
-  const f = Math.max(1, Math.min(FAVOUR_MAX, favour))
-  return (f - 1) / (FAVOUR_MAX - 1)
-}
-
-/**
- * How long the completed sum stays up, given `revealIntensity`.
+ * How long the completed sum stays up, given the flow controller's intensity.
  *
  * Not this game's curve: `packs/shared/game-pacing`'s, the one ARENA and THE
  * GAVEL already spend — `revealCalmMs × (1 − intensity)²`, patient at the calm
- * end and skipped at the top, "because being held for it would be a punishment
- * for being good".
+ * end and brief at the top, "because being held for it would be a punishment for
+ * being good".
  *
- * It is a **cap on a screen nobody is touching**, not a hold. The child's very
- * next stroke takes it down, and the next sigil going live clears it outright, so
- * nothing here can hold a fast player for a moment. "There is no reason to be
- * like WRONG and then just rush past the lesson/content — let the kid marinate on
- * it and dismiss it or answer or move on in their own time."
+ * **Intensity, not a stopwatch and no longer a proxy.** This used to ride
+ * `revealIntensity(favour)`, which was itself a stand-in for the evidence signal
+ * this game did not have. It has one now: `intensity` is the shared flow
+ * controller's, computed out of orders filled and overshoots made, so the
+ * patient version reaches exactly the children who are working and the brief one
+ * exactly the children who are not.
  */
 export function revealDwellSeconds(intensity: number): number {
   return Math.max(REVEAL_MIN_SECONDS, revealMs(SECOND_GRADE_FLOW, intensity) / 1000)
+}
+
+/**
+ * How long the market is HELD while the completed sum is on screen, in seconds.
+ *
+ * `games/stack`'s rule, and the doctrine this whole batch is held to: **never
+ * aim at one thing while reading another.** `stack/src/game/sim.ts:234` is the
+ * reference — `holdLeft = Math.max(holdMs(floor)/1000, revealLeft)`. Here the
+ * hold is `Director.quiet`, which already stops the market outright.
+ *
+ * Zero above the point the shared curve says the reveal is not worth showing at
+ * all — skipping it is the reward for mastery, and it is what makes the top of
+ * the spectrum feel like world-championship Fruit Ninja. A stroke ends the hold
+ * early at every intensity, so a fast player is never held even when it is on.
+ */
+export function revealHoldSeconds(intensity: number): number {
+  if (!revealShown(SECOND_GRADE_FLOW, intensity)) return 0
+  return revealDwellSeconds(intensity)
+}
+
+/**
+ * How long the BOMB GATE's completed sum is held, in seconds.
+ *
+ * The gate is the one modal question in the game and it has no timer; this is
+ * the other end of the same beat — a floor on reading time rather than a ceiling
+ * on thinking time. A harder item is held longer, which keeps the fleet's
+ * monotone-non-decreasing invariant on the one function that still consults the
+ * cadence table. Capped at six seconds because the child has just lost a lamp
+ * and being sat still is not the lesson, and dismissible by a stroke regardless.
+ */
+export function gateHoldSeconds(difficulty: number, intensity: number): number {
+  const patient = Math.min(6, comprehensionP50Ms(difficulty) / 1000)
+  return Math.max(REVEAL_MIN_SECONDS, Math.max(patient, revealHoldSeconds(intensity)))
 }
