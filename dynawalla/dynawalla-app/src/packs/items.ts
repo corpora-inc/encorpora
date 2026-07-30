@@ -198,35 +198,60 @@ const CHOICE_COUNT = 4
  * mind. Asymmetric because *easier than you can do* and *harder than you can do*
  * are not the same event: the first is a fluency rep, the second is a child stuck.
  *
- * **What the numbers are, and where they come from.** They are not taste; they
- * are the founder's accuracy target read as a mix. With the constants below the
- * kernel is
+ * **What the numbers are, and where they come from.** They are not taste. With
+ * the constants below the kernel is
  *
  * | offset | −3   | −2   | −1   | 0    | +1   | +2   |
  * |--------|------|------|------|------|------|------|
- * | weight | .125 | .25  | .5   | 1    | .35  | .1225|
- * | share  | 5.2% | 10.4%| 20.9%| 41.7%| 14.6%| 5.1% |
+ * | weight | .125 | .25  | .5   | 1    | .25  | .0625|
+ * | share  | 5.7% | 11.4%| 22.9%| 45.7%| 11.4%| 2.9% |
  *
- * so **20% of questions are above the rung the child is standing on** and 5% are
- * two above. Against the accuracy a child plausibly has at each offset — near
- * everything below level, ~90% at level, ~60% one above, ~30% two above — that
- * mix measures out at **83% correct**, which is the "80%+ correct but slowly"
- * the founder asked the calibration to find. The distribution and the staircase
- * are therefore aiming at the same number from two directions, which is the only
- * reason it is safe to run them at once.
+ * so **14% of questions are above the rung the child is standing on** and 2.9%
+ * are two above.
+ *
+ * **`ABOVE_RATIO` is fixed by the promotion gate, and this is the one number the
+ * two mechanisms are not free to choose separately.** `PROMOTE_AT` is 0.95, so a
+ * child has five points of head-room: to be allowed to climb they may miss no
+ * more than a twentieth of what they are shown. Content two rungs above where
+ * they are standing is the part of the mix a child at their own level plausibly
+ * cannot do at all. If its share is *larger than the head-room*, then a child who
+ * is right about literally everything else measures under 95% and **can never
+ * promote again, at any level, forever.** That is not a tuning risk, it is a
+ * deadlock, and the ratio this file shipped with was on the wrong side of it:
+ *
+ * | `ABOVE_RATIO` | above | two above | a child perfect except two-above | can climb? |
+ * |---------------|-------|-----------|----------------------------------|------------|
+ * | 0.35 (was)    | 20.1% | 5.2%      | 94.8%                            | **no**     |
+ * | 0.28          | 16.0% | 3.5%      | 96.5%                            | yes        |
+ * | 0.25 (is)     | 14.3% | 2.9%      | 97.1%                            | yes        |
+ * | 0.20          | 11.3% | 1.9%      | 98.1%                            | yes        |
+ *
+ * 0.25 is the widest reach that clears the gate with better than a factor of one
+ * and a half in hand (2.9% against 5%), which is the margin worth having because
+ * "cannot do at all" is an idealisation and the real number moves.
+ *
+ * Read the other way — against the accuracy a child plausibly has at each offset,
+ * near everything below level, ~90% at level, ~60% one above, ~30% two above —
+ * the mix measures **88.1% correct** for a child standing exactly at their own
+ * level, against 85.4% at the old ratio. The founder's sitting band is 85–95%, so
+ * the old mix put a child at their own level *on its floor* with nothing to
+ * spare; this one puts them in the middle of it. See `PROMOTE_AT`.
  *
  * Two more properties it has to have, and does:
  *
  *   * **Consecutive questions differ.** The chance two draws land on the same
- *     rung is `Σ p²` = 25.5%, so three questions in four move.
- *   * **A rung the child cannot do is rare.** Two above is 5%, three above is
- *     not served at all.
+ *     rung is `Σ p²` = 29.1%, so about seven questions in ten move. Narrowing the
+ *     upward reach concentrates the centre and pushes this number up — it was
+ *     26.6% — which is why the reach is narrowed as far as the gate requires and
+ *     no further.
+ *   * **A rung the child cannot do is rare.** Two above is a thirty-fifth, three
+ *     above is not served at all.
  *
  * **Reflected at the ends, not clipped.** At the bottom of the ladder there is
  * nowhere below to go, and clipping would pile 78% of a beginner's questions
  * onto rung 0 — nine items — which is the exact defect this exists to fix. So
  * the mass that falls off an end is *reflected back inward*: at rung 0 the
- * kernel becomes 43% / 36% / 16% / 5% over rungs 0..3, which is `add-within-ten`
+ * kernel becomes 46% / 34% / 14% / 6% over rungs 0..3, which is `add-within-ten`
  * L0 and L1 and `subtract-within-ten` L0 and L1 — about sixty distinct items
  * rather than nine, with nothing inflated and no closed set relabelled. That is
  * the answer to a small honest fact set: **reach the neighbours**, never pretend
@@ -235,7 +260,7 @@ const CHOICE_COUNT = 4
 export const SPREAD_BELOW = 3
 export const SPREAD_ABOVE = 2
 export const BELOW_RATIO = 0.5
-export const ABOVE_RATIO = 0.35
+export const ABOVE_RATIO = 0.25
 
 /**
  * The weight of every rung on the ladder for a child standing on `centre`.
@@ -313,9 +338,11 @@ export function pickRung(centre: number, span: number, unit: number): number {
  * the queue finally turned over. The queue is fixed there; the search is fixed
  * here.
  *
- * **The shape: a weighted staircase with a decaying step.** Standard psychophysics,
- * and it is the right standard because the problem is literally threshold
- * estimation — find the difficulty at which this child is right 80% of the time.
+ * **The shape: a decaying stride, aimed by a gate on sustained accuracy.** The
+ * stride is standard psychophysics and is the right standard, because the problem
+ * is literally threshold estimation. What the *direction* is decided by is not
+ * standard, and it is not standard because the founder's rule is not a threshold —
+ * see `PROMOTE_AT`, which is where the band, the window and the arithmetic live.
  *
  *   * **The stride shrinks.** It opens at `STEP_START` rungs, multiplies by
  *     `STEP_DECAY` after every answer, and is *halved again at every reversal* —
@@ -329,41 +356,198 @@ export function pickRung(centre: number, span: number, unit: number): number {
  *     perfect child is preserved by construction rather than by tuning. Once
  *     bracketed it bottoms out at `STEP_TRACK`, a quarter of a rung, which is
  *     what makes the tracking gentle.
- *   * **Down is four times up.** Kaernbach's weighted up/down rule: a staircase
- *     converges on the proportion `p` correct when the step ratio is
- *     `up : down = (1 − p) : p`. For the founder's 80% that ratio is **1:4**, and
- *     `DESCENT_RATIO` is that four. It is not a punishment and it is not tuned;
- *     it is the arithmetic of the number he asked for. At the tracking floor it
- *     comes out as +0.25 of a rung for a right answer and −1 for a wrong one —
- *     so a miss costs precisely the one rung it always cost, and only the reward
- *     changed.
  *   * **In the child's own currency.** The descent is scaled by `pace`, a running
  *     mean of what this child's correct answers have actually been worth
  *     (`climbRungs`, unchanged — quick, expected and tail regimes all still
  *     apply, and they now scale the stride instead of being the whole of it). A
- *     child worth 0.4 of a rung an answer falls 0.4 × 4 × step, not 1 × 4 × step.
- *     Without this the ratio is 1:4 only for a child answering at the median and
- *     nearer 1:10 for a deliberate one, which would park every slow child several
- *     rungs below the fast child who knows exactly as much.
+ *     child worth 0.4 of a rung an answer falls 0.4 × step, not 1 × step. Without
+ *     this a deliberate child would fall at the rate of a quick one and climb at
+ *     their own, which parks every slow child several rungs below the fast child
+ *     who knows exactly as much.
  *   * **The first miss is symmetric.** Before any reversal the descent weight is
- *     1, not 4: the first wrong answer is the move that *closes* the bracket, and
- *     it should be the same size as the moves that opened it. Multiplying an
- *     opening stride of four rungs by four would throw a child sixteen rungs down
- *     for one slip, which is the lurch in the other direction.
+ *     1, whatever the band says: the first wrong answer is the move that *closes*
+ *     the bracket, and it should be the same size as the moves that opened it.
+ *     Multiplying an opening stride of four rungs by the decisive weight would
+ *     throw a child twelve rungs down for one slip, which is the lurch in the
+ *     other direction.
  *
- * **A guesser still cannot climb.** One tap in four on a four-slab grid: their
- * expected move once bracketed is `¼(+0.25) − ¾(4 × 0.25) = −0.69` rungs an
- * answer, against `¼(+1) − ¾(1) = −0.5` under the rule this replaces. The
- * speedcuber bonus is still gated behind `QUICK_RUN_FOR_BONUS` consecutive quick
- * *correct* answers, which a guesser reaches one time in 4⁶. `items.test.ts`
- * runs the bot.
+ * **A guesser still cannot climb.** One tap in four on a four-slab grid never
+ * gets a forty-answer window to 95%, so `bandOf` reads `lost` on essentially
+ * every answer and the guesser is pinned. The speedcuber bonus is still gated
+ * behind `QUICK_RUN_FOR_BONUS` consecutive quick *correct* answers, which a
+ * guesser reaches one time in 4⁶. `items.test.ts` runs the bot.
  */
 export const STEP_START = 4
 export const STEP_OPEN = 1
 export const STEP_TRACK = 0.25
 export const STEP_DECAY = 0.72
 export const REVERSAL_DECAY = 0.5
-export const DESCENT_RATIO = 4
+
+/**
+ * ## The founder's band: sit at 85%, climb only above 95%, and below 75% get out
+ *
+ * This replaces a single Kaernbach target, and the reason it replaces it is that
+ * the founder's rule has **two** thresholds in it and a weighted staircase has
+ * one. Him, having played VOLTA on 0.3.3:
+ *
+ * > "you get a few right just by being lucky and all of a sudden you are asked to
+ * > do like 87364/9 or something super treacherous.... the level should be
+ * > adjusted I think so that the person is getting 80-90% right and it's a bit
+ * > easier... not that it's smashing you through with a 50% because you are
+ * > getting lucky and it's racing you to impossible mode."
+ *
+ * and then the rule itself:
+ *
+ * > "i think there is a principle here. **you only progress when sustaining >~95%**
+ * > ... **if you are getting 85% you are at the right level. if you are less than
+ * > ~75% its too hard.** Volta right now will just ream your ass if you get a few
+ * > right!"
+ *
+ * **Why a weighted staircase cannot express that.** Kaernbach's rule — down/up =
+ * `p/(1 − p)` — has exactly one accuracy at which the drift is zero, and it drifts
+ * at every other accuracy. Set it to 80% and the child is walked to 80%; set it to
+ * 85% and the child is walked to 85%. There is no ratio that *sits still* over a
+ * range, and "85% is the right level, 95% is where you progress" is a range. What
+ * is more, the staircase moves on a single answer: at the tracking floor one
+ * correct answer was worth +0.25 of a rung and at the opening stride it was worth
+ * four, so four lucky answers in a row moved a child about twelve rungs. That is
+ * the "a few right just by being lucky" in one sentence, and no choice of ratio
+ * fixes it, because the instrument has a denominator of one.
+ *
+ * **The instrument.** A running window of the last `RECENT_WINDOW` answers, and
+ * four bands over its accuracy:
+ *
+ * | window accuracy | band     | what happens                                  |
+ * |-----------------|----------|-----------------------------------------------|
+ * | ≥ `PROMOTE_AT`  | `climb`  | a correct answer climbs, by stride × its worth |
+ * | ≥ `SIT_AT`      | `sit`    | nothing moves — this is the right level        |
+ * | ≥ `LOST_AT`     | `slip`   | down one stride, in the child's own currency  |
+ * | below that      | `lost`   | down `DESCENT_FAR` strides                     |
+ *
+ * The window is the whole fix. **A single answer can no longer move a child a
+ * rung on its own evidence**: to climb at all, the last forty answers have to be
+ * at 95%, which is at most two misses. Four lucky taps do not reach it — four
+ * correct answers out of four is 100%, but the *fifth* answer a guesser gets wrong
+ * puts the window at 80% and the band at `slip`, and it stays there. Where the old
+ * rule let one right answer buy a rung back immediately after a miss, one miss now
+ * costs a child the climb until it ages out of the window.
+ *
+ * **Two thresholds, and a dead band between them.** Climbing needs 95%; falling
+ * starts under 85%; between the two the ladder holds still. That dead band *is*
+ * "if you are getting 85% you are at the right level", said as code, and it is why
+ * the settled accuracy is a range and not a point: a child climbing from below
+ * stops just under 95%, and a child sinking from above stops just over 85%.
+ * **Every settled accuracy this rule can produce is inside the founder's band by
+ * construction, from either direction.** Simulated against the real service, five
+ * children of five different true abilities — 60%, 75%, 85% and 95% own-rung
+ * accuracy at rung 20, plus a beginner at rung 3 — settle at a **measured 88.3% to
+ * 89.9% correct**. The rule this replaced settled every one of the same five at
+ * **80.0%**, because that is what one Kaernbach target does: it walks a child to
+ * its number regardless of who they are. `items.test.ts` pins the two ends of the
+ * band through the service — a 90% child comes to rest and stays, an 80% child is
+ * walked down off a floor they cannot sit on — and the drift's change of sign
+ * inside the band from the binomial.
+ *
+ * **Demotion is readier than promotion, and it is the gate that makes it so, not
+ * the step size.** At a true accuracy of 85% — the bottom of the band — the
+ * probability that one answer's window reads `climb` is 4.9%, and the probability
+ * it reads `slip` or `lost` is 39.3%: **eight times readier down than up**, with
+ * the two step sizes equal. Computed from the binomial, not tuned:
+ *
+ * | true accuracy | `climb` | `sit` | `slip` | `lost` | down : up |
+ * |---------------|---------|-------|--------|--------|-----------|
+ * | 100%          | 100.0%  |  0.0% |   0.0% |   0.0% | never     |
+ * | 95%           |  67.7%  | 32.0% |   0.3% |   0.0% | 1 : 226   |
+ * | 90%           |  22.3%  | 67.8% |   9.8% |   0.1% | 1 : 2.2   |
+ * | 85%           |   4.9%  | 55.8% |  36.3% |   3.0% | 8 : 1     |
+ * | 80%           |   0.8%  | 27.8% |  55.3% |  16.1% | 90 : 1    |
+ * | 75%           |   0.1%  |  9.5% |  48.8% |  41.6% | 890 : 1   |
+ *
+ * Read the last two rows against "Volta right now will just ream your ass": at
+ * 75% correct the ladder now moves down on nine answers in ten and up on one in a
+ * thousand.
+ *
+ * **A perfect child is not slowed by any of this.** 100% correct is above 95% from
+ * the very first answer, so `bandOf` reads `climb` on every one of them and the
+ * gate is not in the way at all: the slow-perfect child's 126 answers to the top
+ * of the 66-rung ladder are the same 126 they were, and `items.test.ts` asserts
+ * the number rather than trusting the argument.
+ *
+ * **A miss inside a sustained window costs nothing.** Up needs both a correct
+ * answer and a window at 95%; down needs only the window. So a child at 100% who
+ * slips once holds their rung — the window still says this is their level, and one
+ * miss is not evidence about a level, it is evidence about an item. This is the
+ * direct answer to "will just ream your ass if you get a few right".
+ */
+export const PROMOTE_AT = 0.95
+export const SIT_AT = 0.85
+export const LOST_AT = 0.75
+
+/**
+ * How many recent answers the band is read off.
+ *
+ * **Derived, from the width of the dead band.** The window is a Bernoulli
+ * estimate, so its standard error at accuracy `p` is `√(p(1−p)/N)`. For the dead
+ * band between `SIT_AT` and `PROMOTE_AT` to actually *hold a child still* rather
+ * than be crossed by noise in both directions every few answers, that error has to
+ * be no wider than half the band. At the middle of the band, `p` = 0.90:
+ *
+ * `√(0.9 × 0.1 / N) ≤ (0.95 − 0.85) / 2` ⟹ `N ≥ 0.09 / 0.0025` = **36**
+ *
+ * Forty is that, rounded to a number a person can hold. Below it the band is
+ * narrower than the measurement and the ladder wanders: at N = 20 the error is
+ * 6.7 points against a 5-point half-band, and a child in the middle of the band
+ * reads `climb` on 39% of answers instead of 22%.
+ *
+ * The cost of a longer window is how long a miss is held against a child, and that
+ * cost is the point. At forty, `PROMOTE_AT` admits two misses, so a third one
+ * stops the climb until the oldest ages out — which is "sustaining", and about two
+ * minutes of play rather than about ten seconds.
+ *
+ * `items.test.ts` re-derives this from `SIT_AT` and `PROMOTE_AT` rather than
+ * restating 40, so a future edit to either threshold fails until the window is
+ * recomputed.
+ */
+export const RECENT_WINDOW = 40
+
+/**
+ * How many strides a `slip` costs, and how many a `lost` costs.
+ *
+ * `DESCENT_NEAR` is **one**: a level that turns out to be wrong is left at the
+ * same rate it was entered. The asymmetry the founder asked for lives in the gate
+ * and is worth a factor of eight there (see the table on `PROMOTE_AT`), so buying
+ * it a second time in the step size would be double-counting, and a sweep of
+ * `DESCENT_NEAR` over 1 and 2 moved neither the settled rung nor the settled
+ * accuracy of any simulated child.
+ *
+ * `DESCENT_FAR` is **three**, and three is `LOST_AT / (1 − LOST_AT)` — the
+ * Kaernbach weight for the accuracy the founder named as too hard. It is the same
+ * arithmetic PR 699 used to get four out of 80%, applied to the threshold he
+ * actually named, and it means the decisive branch falls at exactly the rate a
+ * classical staircase aimed at 75% would: below 75% correct the ladder does not
+ * merely drift down, it is being driven down.
+ *
+ * Measured, on a child parked twenty rungs above their level and answering at
+ * their true accuracy, counting answers until the standing rung is back within a
+ * rung of it:
+ *
+ * | `DESCENT_FAR` | answers to get back |
+ * |---------------|---------------------|
+ * | 1             | 73                  |
+ * | 2             | 37                  |
+ * | 3 (is)        | 25                  |
+ * | 4             | 19                  |
+ * | 6             | 13                  |
+ *
+ * Twenty-five is inside one window, which is the property that matters: a child
+ * who has been thrown into content they cannot do is out of it before the evidence
+ * that put them there has even aged out. Every one of these values leaves the
+ * settled accuracy inside the founder's band — the gate sets that, not the step —
+ * so the derivation is what picks, and the table is what confirms the derivation
+ * is not absurd.
+ */
+export const DESCENT_NEAR = 1
+export const DESCENT_FAR = 3
 
 /**
  * How fast `pace` forgets. A quarter, so five answers carry ~76% of the weight:
@@ -404,26 +588,84 @@ export function ascentOf(stair: Staircase, gain: number): number {
 }
 
 /**
- * How far this wrong answer moves the centre.
+ * How far a `slip` or a `lost` answer moves the centre.
  *
- * Symmetric with the ascent until the bracket closes, then `DESCENT_RATIO` times
- * it — in the child's own currency, so the 1:4 that produces 80% correct holds
- * for a deliberate child as well as a quick one.
+ * One stride for a `slip` and `DESCENT_FAR` for a `lost`, in the child's own
+ * currency — and one stride for both until the bracket closes, because the move
+ * that closes the bracket must be the size of the moves that opened it.
  */
-export function descentOf(stair: Staircase): number {
-  const weight = stair.reversed ? DESCENT_RATIO : 1
+export function descentOf(stair: Staircase, band: Band): number {
+  const weight = !stair.reversed ? 1 : band === "lost" ? DESCENT_FAR : DESCENT_NEAR
   return weight * stair.step * Math.max(PACE_FLOOR, stair.pace)
 }
 
-/** The search after one answer in `dir`, worth `gain` rungs if it was correct. */
-export function advanceStaircase(stair: Staircase, dir: 1 | -1, gain: number | null): Staircase {
-  const isReversal = stair.lastDir !== 0 && dir !== stair.lastDir
+/**
+ * The search after one answer in `dir`, worth `gain` rungs if it was correct.
+ *
+ * `dir` of `0` is a `sit`: the stride still decays — a child sitting in the band
+ * is not searching, and the stride they eventually leave the band with should be a
+ * tracking stride and not the one they arrived with — but the direction and the
+ * bracket are untouched, because holding still is not a reversal.
+ */
+export function advanceStaircase(
+  stair: Staircase,
+  dir: 0 | 1 | -1,
+  gain: number | null,
+): Staircase {
+  const isReversal = dir !== 0 && stair.lastDir !== 0 && dir !== stair.lastDir
   const reversed = stair.reversed || isReversal
   const floor = reversed ? STEP_TRACK : STEP_OPEN
   const base = isReversal ? stair.step * REVERSAL_DECAY : stair.step
   const step = Math.max(floor, floor + (base - floor) * STEP_DECAY)
   const pace = gain === null ? stair.pace : stair.pace + PACE_ALPHA * (gain - stair.pace)
-  return { step, lastDir: dir, reversed, pace }
+  return { step, lastDir: dir === 0 ? stair.lastDir : dir, reversed, pace }
+}
+
+/**
+ * Which of the four bands on `PROMOTE_AT`'s table a window of answers is in.
+ *
+ * `sit` on an empty window: before there is any evidence the ladder holds still,
+ * which is the only reading of no evidence that cannot be gamed.
+ */
+export type Band = "climb" | "sit" | "slip" | "lost"
+
+/**
+ * The last `RECENT_WINDOW` answers, oldest first. Plain booleans rather than a
+ * running count, because the accuracy has to be *re-read* as answers age out and a
+ * counter that only ever increments cannot do that.
+ */
+export type Recent = readonly boolean[]
+
+/** `recent` with one more answer on the end, and the oldest dropped if it is full. */
+export function noteRecent(recent: Recent, correct: boolean): Recent {
+  const kept = recent.length < RECENT_WINDOW ? recent : recent.slice(recent.length - RECENT_WINDOW + 1)
+  return [...kept, correct]
+}
+
+/**
+ * The window's accuracy, or `null` when there is nothing in it.
+ *
+ * Divided by how many answers there *are*, not by `RECENT_WINDOW`. A child four
+ * answers into a session who has been right four times is at 100% and climbing;
+ * padding the denominator to forty would read them as 10% and drive them to the
+ * floor, and padding it with imaginary correct answers would let four lucky taps
+ * read as 95% — which is the defect this whole rule exists to end.
+ */
+export function recentAccuracy(recent: Recent): number | null {
+  if (recent.length === 0) return null
+  let hits = 0
+  for (const bit of recent) if (bit) hits += 1
+  return hits / recent.length
+}
+
+/** The band, read off the window. See `PROMOTE_AT` for the table. */
+export function bandOf(recent: Recent): Band {
+  const accuracy = recentAccuracy(recent)
+  if (accuracy === null) return "sit"
+  if (accuracy >= PROMOTE_AT) return "climb"
+  if (accuracy >= SIT_AT) return "sit"
+  if (accuracy >= LOST_AT) return "slip"
+  return "lost"
 }
 
 export type Rung = {
@@ -996,6 +1238,15 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
    */
   let stair = openStaircase()
   /**
+   * The last `RECENT_WINDOW` answers, which is what decides the direction.
+   *
+   * Session-scoped for the same reason as `progress` and `stair`: it is evidence
+   * about a sitting, and a window carried across sittings would let a child who
+   * was fluent last night be demoted for warming up this morning. See
+   * `PROMOTE_AT`.
+   */
+  let recent: Recent = []
+  /**
    * Consecutive quick, correct answers. Reset by anything else — see
    * `QUICK_RUN_FOR_BONUS` for why a single one earns nothing.
    */
@@ -1285,26 +1536,42 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       if (!served.answered) {
         served.answered = true
         deps.record({ packId, correct: verdict.correct })
-        // The ladder moves on what actually happened, and how far is the
-        // staircase's stride times what this answer was worth. Up on every
-        // correct answer — by more than a rung when it was quick for this
-        // question, by a fraction of one when it came from the item's slow tail
-        // — and down on any miss. Slow is not wrong: it is the same direction,
-        // taken at the child's own speed. Wrong is the only thing that
-        // descends, which is what stops a guesser. See `STEP_START` for why the
-        // stride opens wide and shrinks, and `DESCENT_RATIO` for why down is
-        // four times up once the child's level has been bracketed.
+        // The ladder moves on the last `RECENT_WINDOW` answers, not on this one.
+        // `bandOf` is the founder's rule — climb only while sustaining 95%, sit at
+        // 85%, leave decisively under 75% — and `PROMOTE_AT` carries the whole
+        // argument for why a single answer is not evidence about a level.
+        //
+        // Up needs two things and down needs one: a climb needs both a correct
+        // answer and a window that says this child is over the level, while a fall
+        // needs only the window. So a miss inside a sustained window costs
+        // nothing, and a correct answer inside a collapsing one does not rescue
+        // it. How *far* is still the stride times what the answer was worth — see
+        // `STEP_START` for why the stride opens wide and shrinks, and
+        // `DESCENT_FAR` for the two descent weights.
+        recent = noteRecent(recent, verdict.correct)
+        const band = bandOf(recent)
         if (verdict.correct) {
           const gain = climbFor(served, latencyMs)
-          progress = progress + ascentOf(stair, gain)
-          stair = advanceStaircase(stair, 1, gain)
+          if (band === "climb") {
+            progress = progress + ascentOf(stair, gain)
+            stair = advanceStaircase(stair, 1, gain)
+          } else if (band === "sit") {
+            stair = advanceStaircase(stair, 0, gain)
+          } else {
+            progress = progress - descentOf(stair, band)
+            stair = advanceStaircase(stair, -1, gain)
+          }
         } else {
-          progress = progress - descentOf(stair)
-          stair = advanceStaircase(stair, -1, null)
           // A miss ends the run, however fast it was. Speed on a wrong answer
           // is not evidence of anything at all — it is what guessing looks
           // like — and the speedcuber's rate has to be earned again.
           quickRun = 0
+          if (band === "climb" || band === "sit") {
+            stair = advanceStaircase(stair, 0, null)
+          } else {
+            progress = progress - descentOf(stair, band)
+            stair = advanceStaircase(stair, -1, null)
+          }
         }
         // One clamp for both directions, and the floor is written as a floor:
         // no sequence of answers can put a child below the easiest rung the
