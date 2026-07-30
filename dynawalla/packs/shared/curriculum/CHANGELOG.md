@@ -9,6 +9,99 @@ installed pack until that pack is rebuilt and republished.
 
 ## 0.1.0 — Unreleased
 
+### "Easy" means `4 + 5`, not the nine smallest facts
+
+The founder, after an hour with four different games:
+
+> "it seems like another game that is wayyyyyyyyyyyyy over weighted to 2 plus
+>  fucking zero. if i see 2 plus 0 a-fucking-gain I'm going to scream and break my
+>  phone. **easy also means 4+5 not just 2+0 over and over again for an hour.**"
+
+`dw.add.facts.add-within-ten` L0 declared `closedFactSet: [9, 20, 65, 45]`. Level 0
+was `{0..3}²` minus `0 + 0` — **nine problems**, every operand 0, 1, 2 or 3 — and it
+is the bottom rung of the whole product, so every game's difficulty floor parked on
+it. `4 + 5` was not reachable there. Neither was `6 + 3`, `7 + 2` or `5 + 5`.
+
+Nothing was broken. The row declared nine, reached nine, overran nothing and passed
+every gate; the brief it was written to asked for the trivial identities and said
+not to skip them, which was right. The level table answered by making them the
+whole floor.
+
+- **Five rows re-levelled, `rev` bumped, ids untouched.** Every one of them still
+  teaches what its id says; only which slice of it each rung serves changed. There
+  is no per-level durable state on any device to orphan — `@dynawalla/engine` is
+  unwired, `dynawalla-app/src/learner/record.ts` stores two integers, and the ladder
+  position is session-scoped — which is why this is a `rev` and not a new id. If a
+  `FactKey` of the form `skill:…#L3#free-entry` existed anywhere, it would be.
+
+  | row | was | is |
+  |---|---|---|
+  | `dw.add.facts.add-within-ten` | 9, 20, 65, 45 | **65, 45, 45** |
+  | `dw.add.facts.subtract-within-ten` | 9, 20, 65, 45 | **65, 45, 45** |
+  | `dw.add.facts.add-across-ten` | 15, 26, 36 | **26, 33, 36** |
+  | `dw.add.facts.subtract-across-ten` | 15, 26, 36 | **26, 33, 36** |
+  | `dw.mul.facts.tables-within-five` | 8, 15, 35, 16 | **24, 35, 16** |
+
+- **The within-ten ramp is the scaffold, not the sum ceiling.** All three rungs draw
+  from the whole within-ten table; what comes away is the ten-frame and the
+  identities. The argument is a coefficient this package already had:
+  `numberFacts/constants.ts` prices range at **0.05 a unit** and the drawn frame at
+  **−0.35**, so the entire distance from `2 + 1` to `9 + 1` is what the frame is
+  worth by itself. With ten counters on the screen `7 + 2` is the same act as
+  `2 + 1`. Two rungs spent walking the ceiling from three to five bought 0.10 of a
+  logit and paid for it with a nine-item floor.
+- **The identities are a share, not a level.** Twenty of level 0's sixty-five facts
+  have a zero in them, so a child on the bottom rung meets one about every third
+  question. `numberFacts.test.ts` still names `0 + 1`, `1 + 0`, `n − 0` and `n − n`
+  individually — and now names `4 + 5`, `6 + 3`, `7 + 2` and `5 + 5` beside them,
+  because the first test passed throughout the hour the founder is describing.
+- **The multiplicative floor had the same defect and takes the other route.**
+  `tables-within-five` L0 was `{0,1,2}²` minus `0 × 0` — eight products, four of them
+  `× 0`, flagged as "it reads repetitive" by its own author. Here the factor knob is
+  *real* gradation: this family prices it at 0.15 a step against `number-facts`' 0.05,
+  because one more in a factor is a whole further table. So the ramp by table is kept
+  and only its empty first rung is gone; L0 is now the tables to four, twenty-four
+  products of which nine need a table.
+- **No `b` on the ladder moved.** Each row's anchor absorbed the re-level, so L0 of
+  every touched row lands on exactly the number it landed on before: −3.00, −2.85,
+  −1.60, −1.55, −1.20. The ladder is three rungs shorter (66 → 63) and every rung
+  above the fact rows is where it was.
+- **`MIN_RUNG_VARIANTS = 24`, in `promotionBlockers.ts`** — the bound CG-10's two
+  regimes left between them. An open parameter space answers to the 975-problem
+  floor; a closed set answers to its own declaration; nobody asked whether the
+  declaration was big enough to be a rung. It is a bound on the *level table* and
+  never on the declaration — a set genuinely closed at nine must not be a whole
+  level, and writing a bigger number beside it fails CG-10's overrun check.
+  `SMALL_RUNG_LEVELS` names the one exempt level, `tables-within-five L2`
+  (`{2..5}²`, sixteen products, the top of its row and ladder position 14 of 63);
+  deleting it would open a 0.45-logit hole in the one strand a child climbs one
+  table at a time. `ladder.test.ts` asserts the list in both directions and prints
+  every active level's width, so the next nine-item floor is named by a failing
+  build rather than by a child.
+- **`numberFacts.test.ts` gained the χ² uniformity check it never had.**
+  `timesTable` and `signedInt` both measure the shape of their draw; the family that
+  serves the floor did not, so a draw weighted towards the front of the enumeration
+  would have put `0 + 1` and `0 + 2` at the top of every session with every other
+  test in the file green. Ten draws per cell, exact rationals, all twelve bound
+  levels. Root-reachability sampling went from 200 seeds to 1,500 for the same
+  reason the floor widened: on a sixty-five-fact set, 200 draws miss a named fact
+  about one time in twenty, and `3 − 0` was missing the first time it ran.
+- **Measured, at the floor rung, 30 questions:** 8.7 → **24.1** distinct prompts.
+  Through the host's own reflected kernel at rung 0: 17.4 → **25.9**. The four
+  easiest rungs held 58 problems between them, with 43% of a beginner's questions on
+  the nine; they hold 220, none of them under 45.
+
+**Known and not fixed here, because it is outside this change's tree:**
+`dynawalla-app/src/packs/items.test.ts` proves the beginner's spread by asserting
+that 20 questions draw more distinct prompts than the bottom rung's declared closed
+set holds. That technique only works while the bottom rung is smaller than the
+sample, and it no longer is — 19 distinct of 20, against a rung of 65. The test's
+claim still holds (four rungs served, 19 of 20 distinct); its proof needs a fixed
+threshold instead. It will not go red on this pull request: the `dynawalla_app` CI
+filter covers `dynawalla/curriculum/` and not `dynawalla/packs/shared/curriculum/`,
+which is the same gap the comment above `dynawalla_curriculum` describes one filter
+over.
+
 ### The operator is drawn, and seven rows go active
 
 The blocker the section below named is fixed on the other side of the boundary:

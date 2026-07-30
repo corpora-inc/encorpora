@@ -8,25 +8,35 @@
  * too large to write down: four-digit subtraction borrowing through two zeros has
  * millions of instances.
  *
- * A number fact has the opposite problem. "Addition within ten" is **thirty-six
- * problems in the world** — not thirty-six that this generator happens to reach,
- * thirty-six that exist. Enumerating them and picking one uniformly is therefore
- * both simpler and stronger than rejection sampling: the level's variant space
- * stops being a number estimated from observed collisions and becomes a list that
- * a test can compare against, in both directions. `numberFacts.test.ts` asserts
- * that the generator reaches every fact in the list and never emits one outside
- * it, which no amount of sampling could establish.
+ * A number fact has the opposite problem. "Addition within ten" is **forty-five
+ * problems in the world**, or sixty-five once `n + 0` and `0 + n` are admitted —
+ * not forty-five that this generator happens to reach, forty-five that exist.
+ * Enumerating them and picking one uniformly is therefore both simpler and
+ * stronger than rejection sampling: the level's variant space stops being a number
+ * estimated from observed collisions and becomes a list that a test can compare
+ * against, in both directions. `numberFacts.test.ts` asserts that the generator
+ * reaches every fact in the list and never emits one outside it, which no amount
+ * of sampling could establish, and that the draw over the list is flat.
  *
  * It is also what makes `GeneratorBinding.closedFactSet` honest: the number a
  * curriculum row declares is `factSet(params).length`, and CG-10 checks the
  * measured draw against it rather than against a floor derived from a model of
  * generators that do not close.
  *
- * ## The trivial facts are in the set
+ * ## The trivial facts are in the set, and they are not the set
  *
- * `0 + 1`, `1 + 0`, `n − 0` and `n − n` are facts, and they are the bottom of the
- * ladder every game reaches down to. A child who has slid down after struggling
- * arrives at a guaranteed win, which is the only thing that rung is for.
+ * `0 + 1`, `1 + 0`, `n − 0` and `n − n` are facts, and a child who has slid down
+ * after struggling should arrive at a guaranteed win. `includeZero` admits them,
+ * and the bottom rung of the shipped ladder sets it.
+ *
+ * What that must not become is the whole floor. The graph's level 0 was once a
+ * `maxTotal` of three, which is this enumeration's nine smallest entries and
+ * nothing else, and a child served it for an hour met `2 + 0` over and over. The
+ * bound `includeZero` carries is a *share*: on a level whose ceiling is ten, twenty
+ * of the sixty-five entries have a zero in them. That is one question in three, and
+ * it is a proportion of a set rather than a set. `graph/domains/add.ts` rev 2 is
+ * the level table that says so and `promotionBlockers.ts`'s `MIN_RUNG_VARIANTS` is
+ * the bound that keeps it said.
  *
  * One pair is excluded and only one: **both operands zero**. An empty frame added
  * to an empty frame is not a question a child can be asked — there is nothing on

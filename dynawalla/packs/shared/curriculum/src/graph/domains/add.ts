@@ -158,25 +158,95 @@ export const SKILL_SUBTRACT_TENTHS = skillId("dw.add.regroup.subtract-tenths");
  * this change exists to fix. A row nobody can draw is a warning; a floor that is
  * not the floor is a child stuck.
  *
- * **The trivial facts are in, unhedged.** `0 + 1`, `1 + 0`, `n − 0` and `n − n`
- * are all in level 0's set. They are not there for completeness — they are the
- * rung a child who has slid all the way down lands on, and a bottom rung that is
- * still a small challenge is not a bottom rung. Nothing about them is made harder
- * to look more respectable.
+ * ## rev 2: "easy" means `4 + 5`, not the nine smallest facts
  *
- * **The one gap that is honest and not filled.** Sorted, the fourteen fact levels
- * run −3.00, −2.90, −2.85, −2.75, −2.65, −2.50, −2.20, −2.05, then −1.60, −1.55,
- * −1.50, −1.45, −1.30, −1.25, and the easiest column item is −0.90. Every step is
- * 0.05 to 0.30 except one: **0.45, between −2.05 and −1.60**, where the ladder
- * leaves ten behind. That is not an authoring oversight. Crossing ten *is* the
- * discontinuity of first-grade arithmetic, and the coefficient that produces the
- * step is column-op's regrouping coefficient reused unchanged, on the argument
- * that crossing ten and regrouping are one phenomenon measured twice. A row
- * invented to sit in the gap would be a row with no mathematics of its own.
+ * These rows shipped with the sum ceiling as the ramp — `maxTotal` 3, then 5,
+ * then 10, then 10 without the identities — and level 0 of that ramp is
+ * `{0..3}²` minus `0 + 0`. **Nine problems**, every operand 0, 1, 2 or 3. The
+ * founder played four different games for an hour and reported the same thing
+ * from each of them:
+ *
+ * > "easy also means 4+5 not just 2+0 over and over again for an hour."
+ *
+ * He is right, and the brief that produced the nine-item level is the thing that
+ * was wrong. It asked for the trivial identities and said not to skip them —
+ * which was correct — and the level table answered by making them *the whole
+ * floor*. `4 + 5` was not reachable at the bottom of this product. Neither was
+ * `6 + 3`, `7 + 2` or `5 + 5`.
+ *
+ * **What replaces it, and why the sum ceiling is the wrong ramp.** The ramp is
+ * now the *scaffold* coming away, over the whole within-ten table at every rung:
+ *
+ * | level | set | what changes |
+ * |---|---|---|
+ * | L0 | 65 | every sum within ten, identities in, drawn in a ten-frame |
+ * | L1 | 45 | the frame stays, the identities come out |
+ * | L2 | 45 | numerals alone |
+ *
+ * The argument is `numberFacts/constants.ts`, unchanged and load-bearing: the
+ * range coefficient is **0.05 per unit** and the frame is **−0.35**, so the
+ * whole distance from `2 + 1` to `9 + 1` is 0.35 logits — exactly what the drawn
+ * frame is worth by itself. The frame, not the size of the numbers, is what
+ * makes the floor easy: with ten counters on the screen `7 + 2` is the same act
+ * as `2 + 1`. Spending the two easiest rungs on a knob the difficulty function
+ * prices at a twentieth of a logit per step is what produced a nine-item floor,
+ * and it bought no gradation worth having.
+ *
+ * **The identities are still here, and they are still reachable.** Twenty of
+ * level 0's sixty-five facts have a zero in them, and twenty of
+ * `subtract-within-ten` L0's sixty-five are `n − 0` or `n − n`. A child on the
+ * bottom rung meets one about every third question — a first taste rather than
+ * the whole meal — and `numberFacts.test.ts` names `0 + 1`, `1 + 0`, `n − 0` and
+ * `n − n` individually so that dropping `includeZero`, which is one word, fails.
+ * Nothing about the floor is made harder to look more respectable; it is made
+ * *wider*, which is a different thing.
+ *
+ * **The crossing rows widened for the same reason.** `add-across-ten` L0 was
+ * sums to twelve — fifteen facts — and is now sums to fourteen, which is
+ * twenty-six. Still every one of them a first bridge just past ten; eleven more
+ * sums in the set and a rung that is a session rather than a loop.
+ *
+ * **What this costs, stated rather than glossed.** A child whose written
+ * curriculum is CCSS K.OA.A.5 — "within 5" — now meets sums to ten on the bottom
+ * rung, where before they met sums to three and then to five. The trade is
+ * deliberate and the frame is what pays for it: within-five facts are still 20 of
+ * the 65 and still drawn, the counters are on the screen for all of them, and the
+ * alternative was a rung a five-year-old exhausts in nine questions and then
+ * repeats for an hour. A within-five band, if one is ever wanted, is a **ceiling a
+ * pack asks for** — `next({ maxDifficulty })`, which `packs/sdk` already has and
+ * `polarity` already uses — and not a narrower floor for every child in the
+ * product.
+ *
+ * **The one gap that is honest and not filled.** Sorted, the twelve fact levels
+ * run −3.00, −2.90, −2.85, −2.75, −2.55, −2.40, then −1.60, −1.55, −1.50, −1.45,
+ * −1.40, −1.35, and the easiest column item is −0.90. Every step is 0.05 to 0.20
+ * except one: **0.80, between −2.40 and −1.60**, where the ladder leaves ten
+ * behind. That is not an authoring oversight. Crossing ten *is* the discontinuity
+ * of first-grade arithmetic, and the coefficient that produces the step is
+ * column-op's regrouping coefficient reused unchanged, on the argument that
+ * crossing ten and regrouping are one phenomenon measured twice. A row invented
+ * to sit in the gap would be a row with no mathematics of its own. It is wider
+ * than it was because the rungs on both sides of it moved inward onto their own
+ * widest honest sets, which is the change; the gap itself is the same
+ * discontinuity it always was.
  */
 const addWithinTen: SkillNode = {
   id: SKILL_ADD_WITHIN_TEN,
-  rev: 1,
+  /**
+   * rev 2: the level table. Four rungs ramped by sum ceiling became three ramped
+   * by scaffold, and the floor went from nine problems to sixty-five.
+   *
+   * **Why a `rev` on a live id and not a new id.** The rule is that changing what
+   * a skill *teaches* is a new skill, because a mastery record keyed on the id
+   * would silently change meaning. This row still teaches addition within ten —
+   * that was always its whole set; the level table only chose which slice of it
+   * each rung served. And the durable state that would have been at risk does not
+   * exist yet: `@dynawalla/engine` is unwired (`dynawalla-app/src/learner/
+   * record.ts`), the host stores two integers, and the ladder position is
+   * session-scoped. There is no `FactKey` of the form `skill:…#L3#free-entry` on
+   * any device to orphan. If there were, this would be a new id.
+   */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.facts.add-within-ten.title"),
   learnerGoal: locKey("dw.skill.add.facts.add-within-ten.goal"),
@@ -192,39 +262,43 @@ const addWithinTen: SkillNode = {
   classification: "fluency",
   fluencyTarget: { p50Ms: 6000 },
   prereqs: [],
-  difficulty: { b: b(-255n), levels: [b(-300n), b(-290n), b(-265n), b(-220n)] },
+  // b = −2.90, so L0 still lands on exactly −3.00: the bottom of the ladder does
+  // not move, only what stands on it. Every rung above is measured from the same
+  // origin it always was.
+  difficulty: { b: b(-290n), levels: [b(-300n), b(-290n), b(-255n)] },
   misconceptions: [],
   // Optional and not required, on the same terms as every other row in this file:
   // no pack draws a representation yet, and a row that declared one `required`
   // today would be a curriculum row the app cannot draw. The generator emits the
-  // spec on the first three levels regardless, so the picture arrives with the
+  // spec on the first two levels regardless, so the picture arrives with the
   // renderer rather than after a second authoring pass.
   representations: { required: [], optional: [REP_TEN_FRAME] },
   generator: {
     family: NUMBER_FACTS_FAMILY,
     familyRev: NUMBER_FACTS_FAMILY_REV,
-    // The root, then within five, then within ten, then within ten with the frame
-    // taken away and the identity facts with it. Four rungs across a range a
-    // five-year-old can walk in a sitting.
+    // The whole within-ten table on every rung. What comes away is the scaffold:
+    // the frame with the identities, then the frame, then nothing. See the note
+    // above for why the sum ceiling is not the ramp.
     params: [
-      fact("add", 3, { includeZero: true, picture: true }),
-      fact("add", 5, { includeZero: true, picture: true }),
       fact("add", 10, { includeZero: true, picture: true }),
+      fact("add", 10, { picture: true }),
       fact("add", 10),
     ],
     forms: [FACTS_FORM_FREE_ENTRY],
-    // Nine: level 0's whole set, which the smallest gate sample already collects.
-    // `minVariants` counts distinct items *in a sample*, so on a closed set it can
-    // never assert more than the sample size makes reachable, and the assertion
-    // that matters is in `numberFacts.test.ts` — it enumerates each level's set
-    // from the level's stated rules and checks the generator reaches every member.
-    minVariants: 9,
-    closedFactSet: [9, 20, 65, 45],
+    // Twenty-four. `minVariants` counts distinct items *in a sample*, so it is
+    // bounded by the sample and not by the mathematics: the smallest gate sample
+    // is forty seeds, which reaches 31 of L0's 65 and 25 of L1's and L2's 45. It
+    // is also the floor `MIN_RUNG_VARIANTS` states for a rung, so a level table
+    // narrowed back towards nine fails here as well as there. The assertion that
+    // matters is in `numberFacts.test.ts` — it enumerates each level's set from
+    // the level's stated rules and checks the generator reaches every member.
+    minVariants: 24,
+    closedFactSet: [65, 45, 45],
     consumes: [],
   },
   probes: [
     { level: 0, seed: 1, purpose: "entry" },
-    { level: 3, seed: 2, purpose: "promotion" },
+    { level: 2, seed: 2, purpose: "promotion" },
   ],
   provides: [CAP_SUMS_WITHIN_TEN],
   standards: { ccss: ["K.OA.A.5", "1.OA.C.6"] },
@@ -232,7 +306,8 @@ const addWithinTen: SkillNode = {
 
 const subtractWithinTen: SkillNode = {
   id: SKILL_SUBTRACT_WITHIN_TEN,
-  rev: 1,
+  /** rev 2: the same re-levelling as its addition sibling, for the same reason. */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.facts.subtract-within-ten.title"),
   learnerGoal: locKey("dw.skill.add.facts.subtract-within-ten.goal"),
@@ -252,26 +327,27 @@ const subtractWithinTen: SkillNode = {
   // both would report a fluency the child does not have in the direction that is
   // actually failing.
   prereqs: [{ kind: "requires", to: SKILL_ADD_WITHIN_TEN }],
-  difficulty: { b: b(-255n), levels: [b(-285n), b(-275n), b(-250n), b(-205n)] },
+  // b = −2.90, the same anchor as its sibling; the +0.15 subtraction term is what
+  // puts L0 at −2.85 rather than −3.00, exactly as before.
+  difficulty: { b: b(-290n), levels: [b(-285n), b(-275n), b(-240n)] },
   misconceptions: [],
   representations: { required: [], optional: [REP_TEN_FRAME] },
   generator: {
     family: NUMBER_FACTS_FAMILY,
     familyRev: NUMBER_FACTS_FAMILY_REV,
     params: [
-      fact("sub", 3, { includeZero: true, picture: true }),
-      fact("sub", 5, { includeZero: true, picture: true }),
       fact("sub", 10, { includeZero: true, picture: true }),
+      fact("sub", 10, { picture: true }),
       fact("sub", 10),
     ],
     forms: [FACTS_FORM_FREE_ENTRY],
-    minVariants: 9,
-    closedFactSet: [9, 20, 65, 45],
+    minVariants: 24,
+    closedFactSet: [65, 45, 45],
     consumes: [CAP_SUMS_WITHIN_TEN],
   },
   probes: [
     { level: 0, seed: 1, purpose: "entry" },
-    { level: 3, seed: 2, purpose: "promotion" },
+    { level: 2, seed: 2, purpose: "promotion" },
   ],
   provides: [CAP_DIFFERENCES_WITHIN_TEN],
   standards: { ccss: ["K.OA.A.5", "1.OA.C.6"] },
@@ -279,7 +355,12 @@ const subtractWithinTen: SkillNode = {
 
 const addAcrossTen: SkillNode = {
   id: SKILL_ADD_ACROSS_TEN,
-  rev: 1,
+  /**
+   * rev 2: L0 was sums to twelve, which is fifteen facts in the world — a rung a
+   * forty-question sitting walks around nearly three times. Sums to fourteen is
+   * twenty-six, and every one of them is still a first bridge just past ten.
+   */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.facts.add-across-ten.title"),
   learnerGoal: locKey("dw.skill.add.facts.add-across-ten.goal"),
@@ -294,7 +375,8 @@ const addAcrossTen: SkillNode = {
   classification: "fluency",
   fluencyTarget: { p50Ms: 8000 },
   prereqs: [{ kind: "requires", to: SKILL_ADD_WITHIN_TEN }],
-  difficulty: { b: b(-260n), levels: [b(-160n), b(-150n), b(-130n)] },
+  // b = −2.70, so L0 still lands on exactly −1.60 and nothing above it moves.
+  difficulty: { b: b(-270n), levels: [b(-160n), b(-150n), b(-140n)] },
   misconceptions: [],
   // No frame: a sum past ten does not fit in one, and by this row the numerals
   // are the thing being read. The picture is a scaffold for cardinality, not a
@@ -304,16 +386,16 @@ const addAcrossTen: SkillNode = {
     family: NUMBER_FACTS_FAMILY,
     familyRev: NUMBER_FACTS_FAMILY_REV,
     params: [
-      fact("add", 12, { crossesTen: true }),
       fact("add", 14, { crossesTen: true }),
+      fact("add", 16, { crossesTen: true }),
       fact("add", 18, { crossesTen: true }),
     ],
     forms: [FACTS_FORM_FREE_ENTRY],
-    // Twelve, under the thirteen a forty-seed sample reaches of level 0's fifteen.
+    // Twenty, which is what a forty-seed sample reaches of level 0's twenty-six.
     // See the note on the within-ten rows: on a closed set this number is bounded
     // by the sample, not by the mathematics.
-    minVariants: 12,
-    closedFactSet: [15, 26, 36],
+    minVariants: 20,
+    closedFactSet: [26, 33, 36],
     consumes: [CAP_SUMS_WITHIN_TEN],
   },
   probes: [
@@ -326,7 +408,8 @@ const addAcrossTen: SkillNode = {
 
 const subtractAcrossTen: SkillNode = {
   id: SKILL_SUBTRACT_ACROSS_TEN,
-  rev: 1,
+  /** rev 2: the same widening as its addition sibling, for the same reason. */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.add.facts.subtract-across-ten.title"),
   learnerGoal: locKey("dw.skill.add.facts.subtract-across-ten.goal"),
@@ -349,23 +432,24 @@ const subtractAcrossTen: SkillNode = {
     { kind: "requires", to: SKILL_SUBTRACT_WITHIN_TEN },
     { kind: "requires", to: SKILL_ADD_ACROSS_TEN },
   ],
-  difficulty: { b: b(-270n), levels: [b(-155n), b(-145n), b(-125n)] },
+  // b = −2.80, so L0 still lands on exactly −1.55 and nothing above it moves.
+  difficulty: { b: b(-280n), levels: [b(-155n), b(-145n), b(-135n)] },
   misconceptions: [],
   representations: { required: [], optional: [] },
   generator: {
     family: NUMBER_FACTS_FAMILY,
     familyRev: NUMBER_FACTS_FAMILY_REV,
     params: [
-      fact("sub", 12, { crossesTen: true }),
       fact("sub", 14, { crossesTen: true }),
+      fact("sub", 16, { crossesTen: true }),
       fact("sub", 18, { crossesTen: true }),
     ],
     forms: [FACTS_FORM_FREE_ENTRY],
-    // Twelve, under the thirteen a forty-seed sample reaches of level 0's fifteen.
-    // See the note on the within-ten rows: on a closed set this number is bounded
-    // by the sample, not by the mathematics.
-    minVariants: 12,
-    closedFactSet: [15, 26, 36],
+    // Twenty-two, which is what a forty-seed sample reaches of level 0's
+    // twenty-six. See the note on the within-ten rows: on a closed set this
+    // number is bounded by the sample, not by the mathematics.
+    minVariants: 22,
+    closedFactSet: [26, 33, 36],
     consumes: [CAP_DIFFERENCES_WITHIN_TEN, CAP_SUMS_ACROSS_TEN],
   },
   probes: [

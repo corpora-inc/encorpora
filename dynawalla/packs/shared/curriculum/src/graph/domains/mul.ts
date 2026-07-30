@@ -134,10 +134,29 @@ export const SKILL_LONG_MULTIPLICATION = skillId("dw.mul.multidigit.long-multipl
  * each level's parameters, and `timesTable.test.ts` enumerates each set
  * independently and asserts the generator reaches every member of it and nothing
  * outside it.
+ *
+ * **rev 2 of `tables-within-five`: the same defect the addition floor had.** Its
+ * level 0 was `table(2, true)` — `{0,1,2}²` minus `0 × 0`, **eight facts**, and
+ * eight of them is what a child sees for as long as they stand there. The author
+ * of the row flagged it in the same words the founder later used about `2 + 0`:
+ * "half of them × 0 … it reads repetitive". The ramp now starts at the tables to
+ * four, which is twenty-four, and the reason it is a re-level rather than the
+ * collapse `add-within-ten` got is that the factor knob is *real* gradation here:
+ * this family prices it at 0.15 a step against `number-facts`' 0.05, because one
+ * more in a factor is a whole further table and one more in a sum is one more
+ * count. So the ramp by table is kept; only its first rung, which had nothing in
+ * it, is gone. `{0..4}²` contains the whole of the twos, the threes and the fours.
  */
 const tablesWithinFive: SkillNode = {
   id: SKILL_TABLES_WITHIN_FIVE,
-  rev: 1,
+  /**
+   * rev 2: the level table. Four rungs starting at eight facts became three
+   * starting at twenty-four. The row still teaches the tables within five — that
+   * was always its whole set — and, as with `dw.add.facts.add-within-ten` rev 2,
+   * there is no per-level durable state on any device to orphan: the engine is
+   * unwired and the host stores two integers.
+   */
+  rev: 2,
   status: "active",
   title: locKey("dw.skill.mul.facts.tables-within-five.title"),
   learnerGoal: locKey("dw.skill.mul.facts.tables-within-five.goal"),
@@ -160,12 +179,15 @@ const tablesWithinFive: SkillNode = {
   // Repeated addition is what a first table fact is: `3 × 4` is four and four and
   // four, and the skip count that replaces it crosses ten on its second step.
   prereqs: [{ kind: "requires", to: SKILL_ADD_ACROSS_TEN }],
-  // Placed so the strand is continuous rather than parallel: `2 × 2` at −1.20 sits
-  // just above the hardest addition fact (`15 − 8`, at −1.25) and just below the
+  // Placed so the strand is continuous rather than parallel: L0 at −1.20 sits just
+  // above the hardest addition fact (`18 − 9`, at −1.35) and just below the
   // easiest column sum (`43 + 25`, at −0.90), and the top of this row is under the
   // easiest written multiplication. A table fact must be below every item that
   // *uses* table facts, which `ladder.test.ts` asserts across the whole strand.
-  difficulty: { b: b(-110n), levels: [b(-120n), b(-105n), b(-75n), b(-65n)] },
+  //
+  // b = −1.40 rather than −1.10 so that L0 lands on exactly −1.20 after the
+  // re-level: the rung kept its place on the ladder and changed what stands on it.
+  difficulty: { b: b(-140n), levels: [b(-120n), b(-105n), b(-95n)] },
   misconceptions: [],
   // The array model belongs here and is not claimed: nothing in this repository
   // draws a representation, and a row that declared one `required` today would be
@@ -175,20 +197,22 @@ const tablesWithinFive: SkillNode = {
   generator: {
     family: TIMES_TABLE_FAMILY,
     familyRev: TIMES_TABLE_FAMILY_REV,
-    // The twos, the threes, the whole of the tables to five, and then the same
-    // range with the zero and identity facts taken away.
-    params: [table(2, true), table(3, true), table(5, true), table(5)],
+    // The tables to four, the tables to five, and then the same range with the
+    // zero and identity facts taken away.
+    params: [table(4, true), table(5, true), table(5)],
     forms: [TABLE_FORM],
-    // Eight: level 0's whole set. `minVariants` counts distinct items *in a
-    // sample*, so on a closed set it can never assert more than the sample makes
-    // reachable; the assertion that matters is the closure test.
-    minVariants: 8,
-    closedFactSet: [8, 15, 35, 16],
+    // Twelve. `minVariants` counts distinct items *in a sample*, so on a closed
+    // set it can never assert more than the sample makes reachable: forty seeds
+    // reach 20 of L0's 24, 25 of L1's 35 and 16 of L2's 16. Twelve is under all
+    // three and over the eight the old L0 had in the world, which is the point of
+    // stating it at all; the assertion that matters is the closure test.
+    minVariants: 12,
+    closedFactSet: [24, 35, 16],
     consumes: [CAP_SUMS_ACROSS_TEN],
   },
   probes: [
     { level: 0, seed: 1, purpose: "entry" },
-    { level: 3, seed: 2, purpose: "promotion" },
+    { level: 2, seed: 2, purpose: "promotion" },
   ],
   provides: [CAP_TABLES_WITHIN_FIVE],
   standards: { ccss: ["3.OA.A.1", "3.OA.B.5", "3.OA.C.7"], sg: ["P2-MD-1"] },

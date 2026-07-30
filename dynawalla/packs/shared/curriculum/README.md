@@ -105,8 +105,8 @@ Implementation notes where the document and the code differ, all deliberate:
   which is 975 problems per level. The space itself is estimated from the collisions
   observed, and that estimator is optimistic at high collision rates, so a level
   near the floor deserves a look and CG-9's hard `minVariants` count backs it up.
-- **CG-10 does not apply to a closed fact set.** There are thirty-six additions
-  within ten and there is no thirty-seventh, so the floor above — which reads a
+- **CG-10 does not apply to a closed fact set.** There are forty-five additions
+  within ten and there is no forty-sixth, so the floor above — which reads a
   repeat as evidence of a shallow generator — would forbid teaching number facts.
   A level that declares `GeneratorBinding.closedFactSet` is measured against that
   number instead: the gate fails when the generator reaches a problem the row says
@@ -118,6 +118,17 @@ Implementation notes where the document and the code differ, all deliberate:
   in the tables to twelve and no 122nd. `uniformity.ts` adds the check the closure
   cannot make — that the draw over the closed set is *flat*, by χ² in exact
   rationals.
+- **`MIN_RUNG_VARIANTS` is the bound the two CG-10 regimes left between them.** An
+  honestly-declared closed set of nine passes both of them, and
+  `dw.add.facts.add-within-ten` L0 was exactly that while also being the bottom
+  rung of the whole product — so every game's difficulty floor parked on the nine
+  smallest additions in the world. A declared closed set is a rung a child stands
+  on, and a rung is at least 24 problems; `graph/promotionBlockers.ts` states the
+  number and names the one exempt level, and `graph/ladder.test.ts` asserts the two
+  against each other in both directions. It is a bound on the level table and never
+  on the declaration: a set that is genuinely closed at nine must not be a whole
+  level, and writing a larger number beside it fails CG-10's overrun check on the
+  next run.
 - **CG-12** also checks the *declaration* half of the mal-rule contract: every id in
   a node's `misconceptions` resolves in the registry and belongs to the family the
   node binds, and every diagnosis the node's own items emit as a distractor is

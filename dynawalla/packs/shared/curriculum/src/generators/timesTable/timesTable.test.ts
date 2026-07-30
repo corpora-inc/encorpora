@@ -113,7 +113,7 @@ const BOUND_LEVELS = allNodes
   );
 
 test("the graph binds this family, and every bound level declares its closed set", () => {
-  assert.ok(BOUND_LEVELS.length >= 10, `only ${String(BOUND_LEVELS.length)} bound level(s)`);
+  assert.ok(BOUND_LEVELS.length >= 9, `only ${String(BOUND_LEVELS.length)} bound level(s)`);
   // Both directions of the binding, and the second is the one that matters: a
   // family bound by nothing is dead code, and a level without `closedFactSet`
   // falls back to CG-10's floor of 975, which no table can reach.
@@ -282,8 +282,11 @@ test("the root of the strand is reachable: 0 x 1, 1 x n, 0 ÷ n and n ÷ 1 are a
     return bound.params;
   };
 
+  // 600 rather than 200: the strand's bottom rung was eight facts and is now
+  // twenty-four, so a 200-draw sample would leave a named fact missing by luck
+  // about one time in fifty. `(23/24)^600` is 2·10⁻¹¹.
   const drawn = new Set<string>();
-  for (let seed = 1; seed <= 200; seed++) {
+  for (let seed = 1; seed <= 600; seed++) {
     const { first, second } = operands(generate(rowLevel("dw.mul.facts.tables-within-five", 0), seed));
     drawn.add(`${first.n.toString()}x${second.n.toString()}`);
   }
@@ -291,6 +294,18 @@ test("the root of the strand is reachable: 0 x 1, 1 x n, 0 ÷ n and n ÷ 1 are a
     assert.ok(drawn.has(fact), `the root level never draws ${fact}`);
   }
   assert.ok(!drawn.has("0x0"), "the root level draws a question with nothing on either side");
+
+  // And the other half, which is what the addition floor's report was about: the
+  // bottom rung of this strand must be real multiplication and not eight facts of
+  // which half are `× 0`. `3 × 4` and `4 × 4` were both out of reach before.
+  for (const fact of ["3x4", "4x3", "4x4", "2x3", "3x3", "2x4"]) {
+    assert.ok(drawn.has(fact), `the root level never draws ${fact}: the floor is trivial facts again`);
+  }
+  const trivial = [...drawn].filter((fact) => /(^[01]x)|(x[01]$)/.test(fact));
+  assert.ok(
+    drawn.size - trivial.length >= 9,
+    `only ${String(drawn.size - trivial.length)} of the root level's ${String(drawn.size)} facts need a table`,
+  );
 
   const drawnDiv = new Set<string>();
   for (let seed = 1; seed <= 400; seed++) {
