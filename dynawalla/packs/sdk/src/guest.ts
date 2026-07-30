@@ -132,9 +132,27 @@ export type ItemRequest = {
    * rungs, 0 follows them down and no pack has to be rebuilt. The item that
    * comes back reports the position it was actually drawn from, on the same
    * scale, so a pack can see when a request was clamped.
+   *
+   * **A hint, and it is clamped to the host's own band.** The host serves it
+   * only within one rung of where its own evidence about this child stands, so
+   * a request of 1 is "one rung harder than they are on", not "the hardest
+   * thing in the curriculum" — a game shapes how a question feels and does not
+   * decide what the child is ready for. Sustained accuracy is what moves the
+   * ladder, and a pack that keeps asking upward moves the child up exactly as
+   * fast as they can sustain it. Read the ordinate on the item that comes back
+   * to see where a request actually landed; the difference between what was
+   * asked and what was served is the host disagreeing, and it is not an error.
    */
   readonly difficulty?: number
-  /** A ceiling on the same 0..1 scale. Never serve harder than this. */
+  /**
+   * A ceiling on the same 0..1 scale. Never serve harder than this.
+   *
+   * Unlike `difficulty` this is absolute, because it is a pack saying what it
+   * can physically draw rather than what it would like: a ceiling is honoured
+   * below the host's band as well as above it. Set it only to what the game
+   * genuinely cannot render — a ceiling pinned to the request is a game
+   * deciding a child's level, which `difficulty` deliberately no longer does.
+   */
   readonly maxDifficulty?: number
 }
 

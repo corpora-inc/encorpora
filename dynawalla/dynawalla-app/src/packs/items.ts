@@ -608,6 +608,76 @@ export const PACE_ALPHA = 0.25
  */
 export const PACE_FLOOR = 0.1
 
+/**
+ * ## How far a pack's `difficulty` may reach past the rung the evidence gives
+ *
+ * A pack proposes; the host disposes. A `difficulty` is honoured only within
+ * this many rungs of where the host's own band has put the child, so a game can
+ * shape the texture of a question and cannot outrun the evidence about the
+ * child.
+ *
+ * **What it was before.** Issue 733 measured it. Seventeen of the twenty-seven
+ * shipping packs send a `difficulty`, **none** of them reads `position()`, and
+ * `next()` applied the request by rewriting the whole rung —
+ * `progress = index + (progress − Math.floor(progress))`. The band would climb
+ * on the evidence and the very next draw put it back: ARENA measured
+ * `host pos 22 → 26 → 22`, every question. Every one of the seventeen derives
+ * its number from its own game state — `stack` asks for `difficultyFor(floor)`,
+ * the height of the tower — so for those seventeen games arithmetic difficulty
+ * was a function of how well the *game* was going, which is close to the inverse
+ * of the founder's rule and is the pacing audit's single defect one level up.
+ * The band governed only the ten packs that never asked.
+ *
+ * **Why one rung.**
+ *
+ *   * **Not zero.** Zero is "the host owns the ladder outright", and it deletes
+ *     the texture seventeen games are built out of — ARENA's breath, MONUMENT's
+ *     floors — one of which the founder has called "almost perfect". A game
+ *     saying "this chip should feel like a hard one" is a legitimate thing for a
+ *     game to say. It is only not a legitimate thing for it to *decide*.
+ *   * **Not two.** One rung is the size of the largest move the host itself can
+ *     make on a single answer once the search has bracketed the child:
+ *     `DESCENT_FAR × STEP_TRACK` is `3 × 0.25` = 0.75 of a rung at a pace of 1,
+ *     and the climb at the same point is `STEP_TRACK` times what the answer was
+ *     worth. So ±1 is about one decisive answer's worth of evidence — the most a
+ *     pack can be handed while the host is still able to take it back within a
+ *     handful of answers. At ±2 a pack moves the served content further in one
+ *     draw than the band can correct in eight answers of evidence, and the pack
+ *     is driving again with extra steps.
+ *   * **Whole rungs**, because a rung is the unit the ladder moves a child in —
+ *     see `progress`, where the whole part is the rung and the fraction is
+ *     credit toward the next one.
+ *
+ * **It is a reach and not a drift.** The clamp is anchored on `Math.floor(progress)`
+ * as `judge` left it and the request is *never written back* to `progress` — see
+ * `next()`. A clamp that re-derived its anchor from its own previous output would
+ * be a ratchet: a pack asking for rung 40 would be handed 23, then 24, then 25,
+ * and would arrive at 40 in seventeen questions having answered to nobody.
+ *
+ * **A pack can still pull a child up — at the rate the evidence allows.** Asking
+ * for one rung above serves one rung above; if the child sustains `PROMOTE_AT`
+ * there, the band climbs and the anchor climbs with it, and the next request is
+ * measured from the new rung. What cannot happen is arriving somewhere the last
+ * forty answers do not support.
+ *
+ * The ceiling is not this. `maxDifficulty` is a *capability* — "I cannot draw a
+ * question harder than this" — and it still binds absolutely, below the band and
+ * above it, because handing a pack a rung it cannot render is PR 694 again.
+ *
+ * **Which leaves one way out, and it should be said rather than implied.** A
+ * pack that pins its ceiling *to* its request has opted out of the band: it is
+ * served at its ceiling and it pulls the ladder down to it, exactly as it did
+ * before. `counterweight` does this on purpose (`difficulty: rung,
+ * maxDifficulty: rung`), and `balance`, `horde`, `merge-idle`, `polarity`,
+ * `gavel` and `lattice` carry standing ceilings that dilute it. So this constant
+ * makes the founder's rule govern the `difficulty` channel across the fleet; it
+ * does not make it govern a game that has declared it can only draw one rung.
+ * That is pack work — widen what those games can render — and it cannot be done
+ * from here without serving a game a question it cannot put on the screen.
+ * `items.test.ts` pins the boundary so it is not mistaken for coverage.
+ */
+export const HINT_BAND = 1
+
 /** Where the search is: the stride, the direction, and the child's own currency. */
 export type Staircase = {
   /** Rungs, before the regime multiplier. Never below the current floor. */
@@ -1249,9 +1319,21 @@ export type ItemService = {
      * it are authored, the same request lands on those instead and no pack is
      * rebuilt. What it can never do is fail — the index is clamped into the
      * ladder, so an unsatisfiable request becomes the nearest satisfiable one.
+     *
+     * **A hint, not an instruction.** It is honoured within `HINT_BAND` rungs of
+     * where the host's own band has the child and clamped there otherwise: a
+     * game shapes the texture of a question, it does not decide what the child
+     * is ready for. A pack that wants to know what it got reads the ordinate on
+     * the item that comes back, which is the rung that was used and not the one
+     * that was asked for.
      */
     difficulty?: number
-    /** A ceiling on the same scale. The stream never goes above it. */
+    /**
+     * A ceiling on the same scale. The stream never goes above it.
+     *
+     * Unlike `difficulty` this is absolute — it is a pack saying what it can
+     * physically draw, and it binds below `HINT_BAND` as well as above it.
+     */
     maxDifficulty?: number
   }): Item | null
   judge(input: {
@@ -1419,7 +1501,13 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
 
   return {
     /** The rung being stood on: the whole part of `progress`, never a fraction.
-        A pack asked for a rung index and a half-climbed one is not one. */
+        A pack asked for a rung index and a half-climbed one is not one.
+
+        This is the *host's* rung — what the last `RECENT_WINDOW` answers say —
+        and while a pack is driving `difficulty` the rung it is served may sit up
+        to `HINT_BAND` away from it. That is the one place the two numbers differ,
+        and the item's own `difficulty` ordinate is what says where a question
+        actually came from. */
     position: () => Math.floor(progress),
 
     next: ({ packId, skillId, difficulty, maxDifficulty }) => {
@@ -1429,32 +1517,64 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       const wanted =
         skillId === undefined ? null : (rungs.find((rung) => rung.node.id === skillId) ?? null)
 
-      // A difficulty is the same kind of request, one rung lower down. It moves
-      // the ladder rather than reading past it, so there is one position and
-      // not two: a pack that drives the difficulty and then stops driving it
-      // resumes from where it left the child, and `judge` keeps climbing and
-      // stepping down from there.
+      // A difficulty is the same kind of request, one rung lower down — and it
+      // is a request. It is honoured within `HINT_BAND` rungs of where the
+      // host's own evidence stands and no further, which is what makes the
+      // founder's 85/95 rule reach the seventeen packs that drive difficulty off
+      // their own game state — every one of them except where a pack has also
+      // declared a ceiling it cannot draw above. See `HINT_BAND` for why one
+      // rung, and for the ceiling's way out of it.
       const span = Math.max(0, rungs.length - 1)
-      let index = Math.floor(progress)
-      if (difficulty !== undefined || maxDifficulty !== undefined) {
-        const asked = difficulty === undefined ? index / Math.max(1, span) : difficulty
-        // The request rounds to the nearest rung — a pack asking for 0.5 wants the
-        // middle and not the rung below it. The **ceiling floors**, and the two are
-        // deliberately different: `maxDifficulty` is documented as "the stream never
-        // goes above it", and rounding a cap can only round it up. A pack that says
-        // 0.2 on a 59-rung ladder got 12/58 = 0.203 — over its own ceiling, by a
-        // rung, silently. It passed for as long as it did because 0.2 × 42 happened
-        // to round down; the ladder grew and it stopped happening, which is the
-        // shape of every rounding bug this codebase has met.
-        const cap = maxDifficulty === undefined ? span : Math.floor(maxDifficulty * span)
-        index = Math.max(0, Math.min(span, cap, Math.round(asked * span)))
-        // The rung the pack named, carrying the credit already earned toward
-        // the next one. Overwriting the whole number would let a game that
-        // drives difficulty on every question quietly delete the fraction a
-        // slow-and-correct child had banked, over and over, and that child
-        // would never move — which is the bug this rule was rewritten to end.
-        progress = index + (progress - Math.floor(progress))
+      // **The anchor**, read once and read here: the rung `judge` left the child
+      // on, before a single thing the pack asked for has been looked at.
+      //
+      // Nothing below writes a pack's request into `progress`, and that is not
+      // tidiness, it is the whole clamp. `progress` is moved by `judge` and by
+      // the ceiling and by nothing else, so the next question's anchor is the
+      // next question's *evidence*. Anchoring on the previous draw instead — on
+      // this function's own clamped output — would make the band a ratchet a
+      // pack could climb one rung per question, which is the bug wearing a
+      // clamp as a hat.
+      //
+      // The banked fraction is safe by construction now rather than by
+      // arithmetic: the rule this replaced kept `progress − Math.floor(progress)`
+      // by hand, because rewriting the whole number would let a game that drives
+      // difficulty every question quietly delete the credit a slow-and-correct
+      // child had earned toward their next rung. Not writing at all keeps the
+      // fraction *and* the rung.
+      const anchor = Math.floor(progress)
+      let index = anchor
+      if (difficulty !== undefined) {
+        // The request rounds to the nearest rung — a pack asking for 0.5 wants
+        // the middle and not the rung below it — and is then pulled inside the
+        // band. What comes back to the pack is the ordinate it *got*, so a
+        // clamped request is visible on the pack's side.
+        const asked = Math.round(difficulty * span)
+        index = Math.max(anchor - HINT_BAND, Math.min(anchor + HINT_BAND, asked))
       }
+      if (maxDifficulty !== undefined) {
+        // The **ceiling floors** where the request rounds, and the two are
+        // deliberately different: `maxDifficulty` is documented as "the stream
+        // never goes above it", and rounding a cap can only round it up. A pack
+        // that says 0.2 on a 59-rung ladder got 12/58 = 0.203 — over its own
+        // ceiling, by a rung, silently. It passed for as long as it did because
+        // 0.2 × 42 happened to round down; the ladder grew and it stopped
+        // happening, which is the shape of every rounding bug this codebase has
+        // met.
+        //
+        // It binds after the band and it wins, because it is not a pedagogy
+        // request: it is a pack saying what it can physically draw, and PR 694
+        // exists because polarity was handed a rung it could not render.
+        const cap = Math.floor(maxDifficulty * span)
+        index = Math.min(index, cap)
+        // And a standing ceiling pins the ladder itself, exactly as it always
+        // has: a position standing above content the pack can never test the
+        // child on is a fiction. Downward only, and only when it bites — so it
+        // cannot be the ratchet the note above is about — carrying the banked
+        // fraction, which is what `progress − anchor` is.
+        if (cap < anchor) progress = Math.max(0, cap) + (progress - anchor)
+      }
+      index = Math.max(0, Math.min(span, index))
 
       sequence += 1
 
@@ -1466,7 +1586,9 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       // ceiling the spread could reach over is not a ceiling.
       //
       // **Only when the centre is the host's own.** A `difficulty` the pack
-      // named is honoured as the point the SDK documents it to be, and the
+      // named is honoured as the point the SDK documents it to be — a point
+      // inside `HINT_BAND` of the host's rung since issue 733, but still a
+      // point — and the
       // reason is not caution, it is four shipped games: `counterweight` pins
       // `maxDifficulty` *equal* to its request, `polarity` and `balance` and
       // `horde` pin a ceiling to what they can physically draw, and PR 694 exists
