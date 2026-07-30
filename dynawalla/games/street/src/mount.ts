@@ -108,7 +108,7 @@ export function mountStreet(
         lines: [
           "There is no clock. Standing still and looking at the crowd costs you nothing.",
           "A wrong tap makes the crowd lean on you. Enough of them in a row and it shoves you back a block.",
-          "A block is three crowds. BLOCKS at the top right counts how many you have cleared, and it never goes down.",
+          "A block is three crowds. BLOCKS at the top right counts the blocks you have cleared, and being shoved back never takes one away. You just start the crowd you were on again.",
           "Even then you keep everything you already built.",
         ],
       },
