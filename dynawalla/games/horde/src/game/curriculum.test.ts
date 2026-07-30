@@ -107,17 +107,14 @@ const LONG_RUN = 50
  *     every run, forever, which is worse than the thing it fixes.
  *
  * So the seed belongs to the bot, and the assertion that read one random draw is
- * replaced below by the two claims that draw was standing in for.
+ * replaced below by the two claims that draw was standing in for. Every bot that
+ * draws gets its own `seeded(n)`, the convention the measurement tests further
+ * down already use — one generator per bot, so two of them cannot share a stream.
  */
-const seedFor = (name: string): (() => number) => {
-  let h = 0x811c9dc5
-  for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x01000193) >>> 0
-  return seeded(h)
-}
 
 test("a bot that answers everything WRONG never climbs past the first rung", () => {
   const { host, asks } = recordingHost()
-  const c = new Curriculum(seedFor("wrong"))
+  const c = new Curriculum(seeded(0x1a))
 
   for (let i = 0; i < LONG_RUN; i++) {
     const q = c.ask(host)
@@ -141,7 +138,7 @@ test("a bot that answers everything WRONG never climbs past the first rung", () 
 
 test("a bot that never answers at all never climbs either", () => {
   const { host, asks } = recordingHost()
-  const c = new Curriculum(seedFor("silent"))
+  const c = new Curriculum(seeded(0x2b))
 
   for (let i = 0; i < LONG_RUN; i++) {
     c.ask(host)
@@ -155,7 +152,7 @@ test("a bot that never answers at all never climbs either", () => {
 
 test("a bot that answers everything RIGHT climbs, and reaches the top", () => {
   const { host, asks } = recordingHost()
-  const c = new Curriculum(seedFor("right"))
+  const c = new Curriculum(seeded(0x3c))
 
   for (let i = 0; i < LONG_RUN; i++) {
     const q = c.ask(host)
@@ -215,7 +212,7 @@ test("the ladder tracks right answers alone — the clock is not an input", () =
 
 test("a timeout reports NOTHING to the host", () => {
   const { host, reports } = recordingHost()
-  const c = new Curriculum(seedFor("timeout"))
+  const c = new Curriculum(seeded(0x4d))
 
   const q = c.ask(host)
   c.expired()
@@ -236,7 +233,7 @@ test("a timeout reports NOTHING to the host", () => {
 
 test("an answer — right or wrong — reports the exact payload the host expects", () => {
   const { host, reports } = recordingHost()
-  const c = new Curriculum(seedFor("payload"))
+  const c = new Curriculum(seeded(0x5e))
 
   const a = c.ask(host)
   c.answered(host, a, a.answer, true, 1234.6)
@@ -279,7 +276,7 @@ test("the rift asks below what the run has earned, never above", () => {
 
 test("the run panel counts questions the child ANSWERED, not questions it served", () => {
   const { host } = recordingHost()
-  const c = new Curriculum(seedFor("panel"))
+  const c = new Curriculum(seeded(0x6f))
 
   for (let i = 0; i < 5; i++) {
     const q = c.ask(host)

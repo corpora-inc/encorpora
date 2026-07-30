@@ -420,8 +420,27 @@ export const POOL_FLOOR = 32
  * instant the window drains, so the reserve costs nothing when nobody is using
  * it.
  *
- * It is expressed against the SDK's own constant so the two cannot drift: the
- * pack does not get to have an opinion about what the host allows.
+ * **The ceiling this puts on sustained supply, since it is a real one.** A
+ * question costs two calls, and the urgent traffic is charged to the same window,
+ * so a pack can be fed `(PREFETCH_BUDGET − urgent) / 2` questions a second
+ * indefinitely: 45 with nothing else going on, and about 40 for a game that
+ * answers and buzzes on every one of them. Above that the pool drains, `take`
+ * hands out `{ ...lastServed, id: "" }`, and 24 of the 27 games draw the previous
+ * question again rather than checking for the empty id. Measured against the
+ * shipped packs, nothing is near it — the deepest bulk consumer in the repo is
+ * FUSE's 26-question pool (`games/merge/src/game.ts`) and every retry loop caps
+ * at eight — and the code this replaces was worse at every rate a pack actually
+ * reaches, because it was being refused outright. If a game ever does become a
+ * bulk consumer, the fix is a hungry-pool tier (a pool under `POOL_FLOOR` is not
+ * a prefetch — the child is about to arrive at it — so it should be allowed past
+ * the share), not a bigger share.
+ *
+ * It is expressed against the SDK's own constant so the two cannot drift on the
+ * DEFAULT: the pack does not get to have an opinion about what the host allows.
+ * `bridge.ts` does take a `maxRequestsPerSecond` override, which today only its
+ * own tests pass; a host that lowered it for a low-end device would put every
+ * pack back over budget, and the honest fix for that is the limit arriving on
+ * `Connect` rather than being assumed here.
  */
 export const PREFETCH_BUDGET = Math.floor(MAX_REQUESTS_PER_SECOND * 0.75)
 
@@ -899,7 +918,9 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let fresh: number | null = null
   /** The difficulty the pool was last stocked for. */
   let filledFor: number | null = null
-  let lastFlush = 0
+  /** `now()` and not 0: an injected clock starting near zero would otherwise
+   * arm the flush cooldown at mount, which `Date.now()` never does. */
+  let lastFlush = now()
 
   // ── What kind of maths this pack declared it does ──────────────────────────
 
