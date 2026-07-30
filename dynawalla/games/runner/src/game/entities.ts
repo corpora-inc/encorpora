@@ -4,7 +4,10 @@ import type { DigitField } from "./digits.ts";
 import type { Rng } from "./rng.ts";
 import type { Projector } from "./project.ts";
 import { LANE_W, DECK_HALF } from "./world.ts";
-import { readBand, payoffHeight, keepInside, payoffEdge, popupEdge, type Frame } from "./readband.ts";
+import {
+  readBand, payoffHeight, keepInside, payoffEdge, popupEdge,
+  type Frame, type GateGeom,
+} from "./readband.ts";
 import { laneOptions } from "./options.ts";
 import { clamp01, easeOutBack, easeOutCubic, easeOutQuint } from "./juice.ts";
 
@@ -46,8 +49,6 @@ export type Gate = {
   burst: number;
   /** Reading window this gate was granted, in seconds. Reported for tuning. */
   window: number;
-  /** Distance ahead the gate was spawned at; drives the read-band spread. */
-  spawn: number;
   /** Where the three numerals last drew, in NDC, so the payoff can start there. */
   ndcX: [number, number, number];
   ndcY: number;
@@ -107,7 +108,7 @@ export class Entities {
       this.gates.push({
         active: false, z: 0, q: null, values: ["", "", ""], correctLane: 1,
         chosenLane: -1, state: "incoming", shownAt: 0, intro: 0, burst: 0, window: 0,
-        spawn: 100, ndcX: [-0.58, 0, 0.58], ndcY: 0.3, ndcH: 0.2,
+        ndcX: [-0.58, 0, 0.58], ndcY: 0.3, ndcH: 0.2,
       });
     for (let i = 0; i < hazardCap; i++)
       this.hazards.push({ active: false, kind: "pylon", z: 0, lane: 1, phase: 0, span: 1, hit: false, grazed: false });
@@ -140,7 +141,6 @@ export class Entities {
     g.intro = 0;
     g.burst = 0;
     g.window = window;
-    g.spawn = distance;
     for (let i = 0; i < 3; i++) g.values[i] = values[i];
     return g;
   }
@@ -310,6 +310,12 @@ export class Entities {
    * where the row wants to sit, the second re-linearises around the row's own
    * height. The camera is pitched about three degrees, and one refinement takes
    * the residual well under a pixel.
+   *
+   * Every input to the layout is measured off this gate: where its middle lane
+   * projects to, how far apart its lanes are on screen, how tall its arches are.
+   * The row therefore travels with the gate, grows with it and settles into the
+   * windows — before, all three numbers were screen constants and the row was a
+   * HUD element that happened to be drawn in the world.
    */
   private drawCandidates(
     g: Gate, digits: DigitField, glow: GlowField, proj: Projector,
@@ -318,21 +324,33 @@ export class Entities {
     H: number,
     frame: Frame,
   ): void {
-    const dist = Math.max(0, -g.z);
-    const approach = clamp01(1 - dist / Math.max(1, g.spawn));
-
     const u = TMP_UNITS;
     proj.at(g.z, H);
-    const archTop = proj.ndcY(H);
+    const geom: GateGeom = {
+      centre: proj.x0,
+      lanePitch: Math.abs(proj.kx) * LANE_W,
+      archTop: proj.ndcY(H),
+      archH: Math.abs(proj.ky) * H,
+      deck: proj.ndcY(0),
+    };
     for (let i = 0; i < 3; i++) u[i] = Math.max(1e-4, digits.measure(g.values[i], 1));
 
-    let band = readBand(u, proj.kx, proj.ky, approach, archTop, frame);
+    let band = readBand(u, proj.kx, proj.ky, geom, frame);
+    // Re-linearise around the row's own height. `centre`, `lanePitch`, `archTop`,
+    // `archH` and `deck` are re-measured with it: they are all functions of the
+    // reference height, and holding the first pass's values here is what would
+    // put the row half a lane off its arch on a pitched camera.
     proj.at(g.z, proj.worldY(band.y));
-    band = readBand(u, proj.kx, proj.ky, approach, archTop, frame);
+    geom.centre = proj.x0;
+    geom.lanePitch = Math.abs(proj.kx) * LANE_W;
+    geom.archTop = proj.ndcY(H);
+    geom.archH = Math.abs(proj.ky) * H;
+    geom.deck = proj.ndcY(0);
+    band = readBand(u, proj.kx, proj.ky, geom, frame);
 
-    // The row is dealt outward from the vanishing point as the gate resolves out
-    // of the fog. Overshoot is deliberate — `readBand` keeps a 30% gutter, so a
-    // 13% back-ease can never close it.
+    // The row is dealt outward from the gate's centre as it resolves out of the
+    // fog. Overshoot is deliberate — `readBand` keeps a 30% gutter, so a 13%
+    // back-ease can never close it.
     const deal = clamp01(g.intro * 1.35);
     const spread = easeOutBack(deal);
     const scale = easeOutBack(clamp01(g.intro * 1.6));
@@ -344,23 +362,27 @@ export class Entities {
     g.ndcH = band.hNdc * scale;
 
     for (let i = 0; i < 3; i++) {
-      const nx = band.x[i] * spread;
+      const nx = band.x[1] + (band.x[i] - band.x[1]) * spread;
       g.ndcX[i] = nx;
       const xW = proj.worldX(nx);
 
-      // A leader from the numeral down to the top of its own arch. Left-to-right
-      // order alone is enough to guess the mapping from; the leader means a
-      // child never has to guess it.
+      // A leader from the numeral down to the top of its own arch, for as long as
+      // there is a gap to lead across. It fades out as the numeral settles into
+      // the window: a line of dots from a numeral to the arch it is already
+      // standing in is a line of dots to nowhere.
       const ax = laneX(i);
       const ay = H + 0.5;
-      for (let k = 1; k <= 5; k++) {
-        const t = k / 6;
-        const lt = t * t; // bunch the dots toward the arch, where the answer is
-        glow.add(
-          xW + (ax - xW) * lt, yW - hW * 0.62 + (ay - (yW - hW * 0.62)) * lt, g.z + 0.02,
-          hW * (0.16 + t * 0.1), alpha * (0.1 + t * 0.42), 1, 0,
-          ac[0], ac[1], ac[2],
-        );
+      const lead = alpha * (1 - band.onGate);
+      if (lead > 0.02) {
+        for (let k = 1; k <= 5; k++) {
+          const t = k / 6;
+          const lt = t * t; // bunch the dots toward the arch, where the answer is
+          glow.add(
+            xW + (ax - xW) * lt, yW - hW * 0.62 + (ay - (yW - hW * 0.62)) * lt, g.z + 0.02,
+            hW * (0.16 + t * 0.1), lead * (0.1 + t * 0.42), 1, 0,
+            ac[0], ac[1], ac[2],
+          );
+        }
       }
       // ...and a hard cap sitting on the arch, so the endpoint is unmissable.
       glow.add(ax, ay, g.z + 0.02, LANE_W * 0.5, alpha * 0.5, 0.12, 3, ac[0], ac[1], ac[2]);

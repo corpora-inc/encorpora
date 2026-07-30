@@ -13,7 +13,8 @@
  * reads as a worksheet or a settings app.
  */
 
-import { READOUT_CLEAR } from "./chrome.ts";
+import { hudVars } from "./chrome.ts";
+import type { Insets } from "../../../../packs/shared/game-chrome/index.ts";
 
 /**
  * The safe-area insets, as CSS values.
@@ -23,16 +24,31 @@ import { READOUT_CLEAR } from "./chrome.ts";
  * edge of the glass. The HUD should not: a voltage bar under the home indicator
  * is a voltage bar with a white pill through it, and a score under the cutout is
  * a score nobody can read.
+ *
+ * **These are custom properties and not `env()`, and that is the whole point.**
+ * `env(safe-area-inset-*)` belongs to the top-level browsing context. A pack runs
+ * in an iframe sandboxed `allow-scripts` with no `allow-same-origin`, so all four
+ * resolve to **0** inside it — on every device, in every orientation, for ever.
+ * This stylesheet used to read them directly, so on the founder's phone the score
+ * painted eighteen pixels under the host's exit chevron and the voltage bar
+ * painted inside Android's gesture strip. The host measures the real insets and
+ * posts them; `chrome.ts` turns them into these properties and `layoutHud` writes
+ * them on. Nothing here may reach for `env()` again — `chrome.test.ts` fails the
+ * build if it does.
  */
-const SA_T = "env(safe-area-inset-top, 0px)";
-const SA_R = "env(safe-area-inset-right, 0px)";
-const SA_B = "env(safe-area-inset-bottom, 0px)";
-const SA_L = "env(safe-area-inset-left, 0px)";
+const SA_T = "var(--vt-sa-t, 0px)";
+const SA_R = "var(--vt-sa-r, 0px)";
+const SA_B = "var(--vt-sa-b, 0px)";
+const SA_L = "var(--vt-sa-l, 0px)";
 
-/** The HUD's own margin from the safe edge. */
-const M = "clamp(10px,2.2vw,26px)";
-
-const CSS = `
+/**
+ * The stylesheet, exported so `chrome.test.ts` can hold it to two rules that
+ * cannot be checked any other way: it contains no `env(safe-area-inset-*)` — the
+ * value that is zero inside a pack and shipped the founder's three collisions —
+ * and every positional declaration on the five in-run HUD boxes is a `var()`
+ * filled in by `chrome.ts`, so the sheet has no geometry of its own to drift.
+ */
+export const HUD_CSS = `
 .vt-root { position:absolute; inset:0; pointer-events:none; overflow:hidden;
   font-family:"Archivo Black","Helvetica Neue","Arial Black","Segoe UI",system-ui,sans-serif;
   font-weight:900; -webkit-font-smoothing:antialiased; text-transform:uppercase;
@@ -41,7 +57,7 @@ const CSS = `
 .vt-num { font-variant-numeric:tabular-nums; letter-spacing:0.01em; }
 
 /* ---- prompt ---- */
-.vt-prompt { position:absolute; left:50%; top:max(15%, calc(${SA_T} + 8px)); transform:translate(-50%,0);
+.vt-prompt { position:absolute; left:50%; top:var(--vt-prompt-y,15%); transform:translate(-50%,0);
   display:flex; align-items:center; gap:clamp(8px,2.2vw,18px); white-space:nowrap; }
 .vt-prompt-bar { width:clamp(10px,3vw,26px); height:clamp(3px,0.7vw,5px); background:currentColor;
   opacity:0.55; }
@@ -55,9 +71,11 @@ const CSS = `
 /* The host paints an exit control in the top-LEFT 44px corner and a
    how-to-play control in the top-RIGHT one, over this pack. The score used
    to sit under the first and the surge meter under the second. They drop
-   clear of both — the readouts move, the world behind them does not. */
-.vt-tl { position:absolute; left:calc(${SA_L} + ${M}); top:calc(${SA_T} + ${READOUT_CLEAR}px); }
-.vt-tr { position:absolute; right:calc(${SA_R} + ${M}); top:calc(${SA_T} + ${READOUT_CLEAR}px); text-align:right; }
+   clear of both — the readouts move, the world behind them does not.
+   Every offset comes from hudBoxes in chrome.ts. There is deliberately no
+   arithmetic here to disagree with it. */
+.vt-tl { position:absolute; left:var(--vt-tl-x,10px); top:var(--vt-tl-y,63px); }
+.vt-tr { position:absolute; right:var(--vt-tr-x,10px); top:var(--vt-tr-y,63px); text-align:right; }
 .vt-label { font-size:clamp(8px,1.5vw,11px); letter-spacing:0.28em; opacity:0.5; }
 /* Tracking adds a trailing space after the last letter, which right-aligned
    text pushes off a narrow screen. Pull it back. */
@@ -80,9 +98,11 @@ const CSS = `
 .vt-chain.vt-clean .vt-pip { animation:vt-clean 0.5s ease-out; }
 @keyframes vt-clean { 0%{transform:scaleY(3.4); opacity:1;} 100%{transform:scaleY(1);} }
 
-/* ---- voltage ---- */
-.vt-volt { position:absolute; left:calc(${SA_L} + ${M}); right:calc(${SA_R} + ${M});
-  bottom:calc(${SA_B} + clamp(12px,2.6vw,28px)); height:clamp(9px,1.8vw,15px);
+/* ---- voltage ----
+   The bottom offset clears Android's gesture strip as well as the reported inset: the
+   strip eats the pixels and reports an inset of zero. See GESTURE_STRIP. */
+.vt-volt { position:absolute; left:var(--vt-volt-l,10px); right:var(--vt-volt-r,10px);
+  bottom:var(--vt-volt-b,36px); height:var(--vt-volt-h,9px);
   border:2px solid rgba(255,255,255,0.30); display:flex; align-items:stretch; padding:2px; }
 .vt-volt-fill { height:100%; width:100%; transform-origin:0 50%; transition:none;
   box-shadow:0 0 18px currentColor; background:currentColor; }
@@ -190,16 +210,18 @@ const CSS = `
 .vt-stat b { display:block; font-size:clamp(20px,5vw,40px); line-height:1; font-variant-numeric:tabular-nums; }
 .vt-stat i { display:block; font-style:normal; font-size:clamp(8px,1.6vw,11px); letter-spacing:0.26em; opacity:0.5; margin-top:5px; }
 
-/* ---- settings ---- */
-.vt-tools { position:absolute; right:calc(${SA_R} + ${M}); bottom:calc(${SA_B} + clamp(34px,6vw,58px));
+/* ---- settings ----
+   Stacked on the voltage readout rather than measured from the bottom edge, so
+   the gap between the two cannot be closed by a change to either. */
+.vt-tools { position:absolute; right:var(--vt-tools-r,10px); bottom:var(--vt-tools-b,66px);
   display:flex; gap:6px; pointer-events:auto; }
-.vt-tool { width:clamp(30px,6vw,40px); height:clamp(30px,6vw,40px); border:2px solid rgba(255,255,255,0.28);
+.vt-tool { width:var(--vt-tool-s,30px); height:var(--vt-tool-s,30px); border:2px solid rgba(255,255,255,0.28);
   background:rgba(2,5,14,0.55); color:inherit; font:inherit; font-size:clamp(11px,2.2vw,14px);
   cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
 .vt-tool[aria-pressed="true"] { background:currentColor; }
 .vt-tool[aria-pressed="true"] span { color:#04060f; }
 .vt-tool:focus-visible { outline:3px solid #fff; outline-offset:2px; }
-.vt-perf { position:absolute; left:calc(${SA_L} + ${M}); bottom:calc(${SA_B} + clamp(58px,10vw,96px));
+.vt-perf { position:absolute; left:var(--vt-perf-l,10px); bottom:var(--vt-perf-b,110px);
   font-size:11px; letter-spacing:0.1em; opacity:0.6; white-space:pre; display:none;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:400; text-transform:none; }
 .vt-perf.vt-on { display:block; }
@@ -269,7 +291,7 @@ const RING_C = 2 * Math.PI * RING_R;
 
 export function buildHud(host: HTMLElement): HudRefs {
   const style = document.createElement("style");
-  style.textContent = CSS;
+  style.textContent = HUD_CSS;
   host.appendChild(style);
 
   const root = document.createElement("div");
@@ -372,6 +394,23 @@ export function buildHud(host: HTMLElement): HudRefs {
     motionBtn: q('[data-a="motion"]'),
     perf: q(".vt-perf"),
   };
+}
+
+/**
+ * Put the HUD where the host's measured insets say it goes.
+ *
+ * Called on mount, on every resize and on every inset change — rotation swaps
+ * top and bottom with left and right, and iPadOS moves them again when the pack
+ * is resized in Split View, so a HUD laid out once at mount is correct until the
+ * first rotation and wrong after it.
+ *
+ * There is no path by which the stylesheet can place these boxes itself: it
+ * declares `left: var(--vt-tl-x)` and friends, and `chrome.ts` owns every one of
+ * those values.
+ */
+export function layoutHud(refs: HudRefs, w: number, h: number, insets: Insets): void {
+  const vars = hudVars(w, h, insets);
+  for (const [name, value] of Object.entries(vars)) refs.root.style.setProperty(name, value);
 }
 
 export const ringCircumference = RING_C;

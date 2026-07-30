@@ -17,7 +17,7 @@ import { InputController } from "./input.ts";
 import { Rng } from "./rng.ts";
 import { biomeAt, biomeLength } from "./biomes.ts";
 import { detectTier, TierController, type TierName } from "./tiers.ts";
-import { buildHud, groupDigits, ringCircumference } from "./hud.ts";
+import { buildHud, groupDigits, layoutHud, ringCircumference } from "./hud.ts";
 import { makeStage, ndcFrame } from "./chrome.ts";
 import type { Frame } from "./readband.ts";
 import {
@@ -32,8 +32,9 @@ import {
   GAIN_GATE, GAIN_SPARK, GAIN_GRAZE, VOLT_BLEED, CHAIN_PER_SURGE, SURGE_MAX,
   STUMBLE_TIME, CLEAN_READ_SHARE, REVIVE_GRACE, RESOLVE_HOLD,
   speedAt, readWindow, breather, beatTime, difficultyFor,
-  gateDistance, hazardLandsOnRead,
+  gateDistance, hazardLandsOnRead, preReadLead,
 } from "./pacing.ts";
+import { comprehensionTarget } from "./comprehension.ts";
 
 type Phase = "idle" | "running" | "dying" | "revive" | "over";
 
@@ -290,7 +291,13 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     }
     vw = Math.max(1, Math.round(r.width));
     vh = Math.max(1, Math.round(r.height));
-    frameNdc = ndcFrame(vw, vh, safeInsets());
+    const insets = safeInsets();
+    frameNdc = ndcFrame(vw, vh, insets);
+    // The DOM HUD is laid out from the same measured insets as the read band, on
+    // the same call. It used to lay itself out from `env(safe-area-inset-*)` in
+    // its own stylesheet, which is ZERO inside a pack — so the two disagreed by
+    // the whole inset on every device that has one.
+    layoutHud(hud, vw, vh, insets);
     const dpr = Math.min(window.devicePixelRatio || 1, tiers.settings.dprCap) * tiers.renderScale;
     renderer.setPixelRatio(1);
     const bw = Math.max(2, Math.round(vw * dpr));
@@ -526,6 +533,20 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     pendingQuestion = q;
     promptShown = true;
     setPrompt(q.prompt);
+    // ...and then lengthen the road, not the clock. The item says how long it
+    // takes (`comprehensionTarget`, which cannot see the world); the gate itself
+    // can only ever deliver ~3.2s of that, because it cannot spawn beyond the far
+    // plane; the rest is bought as runway in front of it. Nothing about the speed
+    // changes — a five-digit sum simply has a lot more road before its gate.
+    //
+    // Written onto `gateCooldown` rather than kept beside it so there is exactly
+    // one number that decides when the next gate is requested, and so
+    // `hazardLandsOnRead` — which is handed `gateCooldown` — sees the real
+    // corridor rather than the one `breather` would have predicted.
+    gateCooldown = Math.max(
+      gateCooldown,
+      preReadLead(comprehensionTarget(q)),
+    );
   }
 
   function requestGate(): void {

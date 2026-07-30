@@ -61,34 +61,58 @@ read.
 
 - The **prompt lives in DOM**, at a fixed spot just above the horizon, at native
   crispness. It never moves and it is never a texture.
-- **The three candidates are typeset in screen units, not world units.** This is
-  the single most important thing in the game and it took two attempts. The
-  camera sits 11.4 units behind a causeway whose lanes are 3.35 apart, so the
+- **The three candidates are typeset in screen units, and placed from the gate.**
+  This is the single most important thing in the game and it took three attempts.
+  The camera sits 11.4 units behind a causeway whose lanes are 3.35 apart, so the
   *widest* the lane pitch ever gets on screen is about 12% of the viewport, and
   only in the last third of a second before the gate lands. Numerals placed at
   the lanes therefore ran together — a judge captured `13 | 42 | 36` rendering as
   `134236` — and a fan-out compensation big enough to fix that pushed the third
-  value clean off a 390px phone. Perspective is the wrong tool for typesetting
-  three values a child has half a second to compare. So `readband.ts` decides an
-  explicit pitch, an explicit 30% gutter, an explicit page margin and one shared
-  ink height, all in NDC, and `project.ts` converts that layout back into the
-  world positions the instanced digit shader wants — so the numerals still fog,
-  still bend with the causeway, still belong to the world. They lift above the
-  arches, keep left-middle-right order, trail a dotted leader down to their own
-  gate, and converge into it as it arrives.
-- `readband.test.ts` hammers that layout across nine viewports × three fields of
-  view × seven distances × three font widths × four digit counts and asserts the
-  two things that actually matter: **adjacent numerals never touch** and
-  **nothing leaves the viewport**. The same file covers the two other places ink
-  can escape the frame — the winning numeral rushing the camera, and the score
-  popups over the outer lanes.
+  value clean off a 390px phone. So `readband.ts` decides an explicit pitch, an
+  explicit 30% gutter, an explicit page margin and one shared ink height, all in
+  NDC, and `project.ts` converts that layout back into the world positions the
+  instanced digit shader wants — the numerals still fog, still bend with the
+  causeway, still belong to the world.
+- **The row belongs to its gate, and the second attempt did not.** Measured on a
+  360x780 phone at 78°, against the version the founder played: the outer
+  candidate was drawn at x = 305px for the *entire* approach while the arch it
+  names travelled from 198px to 286px; it was 98px tall from the moment it
+  appeared to the moment it was crossed, while the arch grew from 27px to 158px;
+  and it floated a flat 27px above the lintel throughout. Steering made it worse —
+  the chase camera follows the player at 0.6x, so with the child in the left lane
+  the outer answer ended up 44px on the *wrong side* of its own arch. Three
+  numbers, none of them a function of the gate: that is a HUD element drawn in the
+  world, and "the answers would be better if they sat with the windows" was the
+  right note. The row is now derived from the gate's own projected geometry — its
+  centre, its lane pitch, the height of its arch — and falls back on the
+  legibility floors only where the geometry cannot honour them. Same measurement
+  after: 52px at a hundred units, 28px at thirty, 3px at ten, 0px at six, with the
+  numeral growing 46px → 80px and sitting *inside* the window from about forty
+  units in. Where the answer is too wide for the window — three readable
+  three-digit numerals need 315 of a phone's 360 pixels — the row converges as far
+  as legibility allows and no further, and that limit is written down in
+  `gatelayout.test.ts` with the numbers rather than smoothed over.
+- Two test files, deliberately split. `readband.test.ts` is pure arithmetic and
+  hammers the layout across nine viewports × three fields of view × seven
+  distances × three font widths × four digit counts × four gate positions,
+  asserting the two things that always matter — **adjacent numerals never touch**
+  and **nothing leaves the viewport** — plus the two other places ink can escape
+  the frame, the winning numeral rushing the camera and the score popups over the
+  outer lanes. `gatelayout.test.ts` builds the *real* `THREE.PerspectiveCamera`,
+  poses it exactly as `render()` does, runs the real `Projector` and measures in
+  CSS pixels, because "do the answers sit with the windows" is a question about a
+  pitched, lane-following camera and a hand-rolled pinhole model would answer it
+  about a camera the game does not have.
 - **Gate numerals are baked with a dark stroke *and* a soft dark shadow**, and
   the red channel separates fill from outline, so the shader can recolour a
   numeral without ever recolouring its own contrast. They stay readable over an
   aurora, over a white-out, over a shockwave.
-- Apparent size does not depend on distance, so a numeral is never eleven pixels
-  tall at the far end of the reading window and never a wall of ink at the near
-  end.
+- Apparent size **tracks the gate**, floored at a 46px cap height. It used to be
+  flat — identical at 240 units and at 4 — which is precisely what made the row
+  read as chrome rather than as something on the causeway. A numeral is still
+  never eleven pixels tall at the far end of the reading window, because the floor
+  is in pixels and not in NDC: 0.1 NDC is 39px on a 780-tall phone and 108px on a
+  desktop.
 - Numerals **never depth-test**. A roadside monolith eclipsing the one value a
   child needed is not atmosphere, it is a lost run.
 - A character the atlas does not know renders as `?`, never as nothing. Silently
@@ -103,6 +127,40 @@ read.
   `subtract-across-zero`, and `docs/EXPERIENCE_DESIGN.md` instruments two-digit
   regrouping at p50 6s; a gate cycle — read it, then run the corridor — is about
   5.3 seconds, which is the number that has to answer to that table.
+- **A harder question gets more time, not less — and it gets it as road.** VOLTA
+  had the fleet's root pacing defect: the comprehension window was derived from a
+  motion constant, and the motion constant was also the escalation knob, so every
+  step that made the run more exciting took thinking time away. Measured through
+  the real scheduler: 8.00s with the question on the opening gate, where the
+  content is `5 − 2`, falling to 4.78s at terminal velocity on the smallest
+  quality tier, where it is four- and five-digit column arithmetic. The founder,
+  exactly: *"you have 5 seconds to do 2x1 and then 2 seconds to do 84302+4186."*
+  `docs/PACING_AUDIT_2026-07.md` names it across seventeen games and sets the
+  invariant — **`window(d)` must be monotone non-decreasing in item difficulty.**
+
+  The obvious fix is to slow down as the arithmetic hardens. The founder offered
+  that and then offered the better one: *"the vehicle could still be racing but ...
+  we maybe need some miles to figure out the answer."* So nothing about the speed
+  changes. `comprehension.ts` reads the *item* — operand width, whether a column
+  carries or borrows, which operation — and returns the seconds
+  `docs/EXPERIENCE_DESIGN.md` instruments for that shape: 2.8s for a single-digit
+  fact, 6s for a two-digit regroup, 16s for the `5,001 − 2,798` class. It imports
+  nothing at all, so there is no speed, no travel, no draw distance and no tier in
+  scope for it to be derived from, and `comprehension.test.ts` asserts that by
+  reading the module's own source. `pacing.ts` then buys those seconds as
+  **runway**: the dodge corridor in front of a hard gate gets longer, the prompt
+  sits on the HUD across the whole of it, and hazards and sparks keep arriving
+  through it at their own cadence. At terminal velocity a 16s question is about
+  900 units of road. After: 8.00s, 6.91s, 10.10s, 16.08s across that same ladder,
+  and every rung is asserted through the scheduler, not from the formula.
+
+  Two honest edges. The floor is generous, so an easy question early in a run still
+  gets 8.00s — more than its 2.8s target, and more than a two-digit regroup gets
+  mid-run; the invariant is an ordering at a given state of the world, and nothing
+  ever gets *less* than its own target. And the hazard guard's projection knows the
+  live corridor exactly but cannot know how hard the *next* item will be, so it
+  models later cycles at the shortest corridor a run can have — wrong in the safe
+  direction, and written down where it happens.
 - **The sum arrives a corridor before the gate does.** The far plane caps the time
   between a gate becoming visible and reaching the answer plane at 3.20s at p50
   however the pacing is tuned, which is half of that 6s. So the next question is
@@ -116,6 +174,28 @@ read.
   velocity, and both of those are decisions about frame rate and feel rather than
   about reading. `pacing.test.ts` pins the number as a band so neither shrinking
   the pre-read nor quietly reaching the target goes unnoticed.
+- **The HUD is laid out from the insets the host measured, never from `env()`.**
+  `env(safe-area-inset-*)` belongs to the top-level browsing context, and a pack
+  frame is sandboxed `allow-scripts` with no `allow-same-origin` — so all four
+  resolve to **zero** inside it, on every device, for ever. `hud.ts` read them
+  directly, so on the founder's phone the score painted at y = 63 instead of y = 87
+  and sat eighteen pixels under the host's exit chevron, the surge meter did the
+  same under the how-to-play control, and the tests passed because they handed the
+  arithmetic a 24px inset the stylesheet never saw. The fix is not a better test:
+  the stylesheet no longer computes any position at all. Every in-run HUD box comes
+  from `hudBoxes` in `chrome.ts` and is written on as a custom property, and
+  `chrome.test.ts` fails the build if `env(safe-area-inset` appears in the sheet or
+  if any positional declaration on those five selectors is not a `var()`.
+- **Android's gesture strip is not the reported bottom inset.** The value the
+  WebView reports describes the display *cutout*; the thing that eats the pixels
+  and the tap is the gesture-navigation handle, and plenty of devices report a
+  bottom inset of zero while it is there. The voltage bar sat 12px off the bottom
+  edge, so all 13px of it were inside the strip — which is what the founder's
+  screenshot shows. `GESTURE_STRIP` is 24 CSS px, taken off the raw bottom edge as
+  well as the reported inset, whichever binds harder; `games/pulse` met this first
+  and this is its constant. Every readable and tappable box is asserted clear of it
+  at seven viewports including **a zero bottom inset**, which is the case that
+  broke.
 - **The host's element is the only thing on screen with a size.** The canvas and
   every HUD layer are `position:absolute; inset:0` inside it, so a stage with no
   box is the whole game gone. `pack.html` gives `#app` its box with
@@ -198,6 +278,42 @@ nothing carries information on its own.
 - Readable at 320px (verified at 320×640 portrait). Full keyboard play.
 - No ads, loot boxes, variable-ratio rewards, streak anxiety, scarcity or social
   pressure.
+
+## Motion control, and why it is not here
+
+It was asked for — *"Volta could ask for motion control on a mobile device .. or
+the user could toggle it optionally"* — and the toggle is deliberately absent,
+because an opt-in that silently does nothing is worse than not offering one.
+
+`DeviceOrientationEvent` and `DeviceMotionEvent` are gated by the
+Permissions-Policy features `gyroscope`, `accelerometer` and `magnetometer`, whose
+default allowlist is `self`. A pack is mounted by `dynawalla-app`'s
+`packs/frame.ts` with `sandbox="allow-scripts"` — no `allow-same-origin`, so the
+pack's origin is *opaque* — and with `allow=""`, which disables every
+policy-controlled feature explicitly. So the events cannot reach a pack twice
+over: the default allowlist already excludes a cross-origin child, and the empty
+container policy would exclude it anyway. On iOS there is a third barrier:
+`DeviceOrientationEvent.requestPermission()` grants **per origin**, and an opaque
+origin is not an origin a grant can be remembered against.
+
+Nothing in the fleet uses either API — the grep across all 27 games, the shared
+modules and the app is empty — so there is no precedent to copy and no evidence
+this works anywhere in the product today.
+
+**What a host change would have to be.** Not `allow="gyroscope; accelerometer"`
+on the pack frame: that hands motion sensors to all 27 packs at once to serve one
+of them, and `frame.ts` says out loud what it is protecting — *"Nothing in the
+permissions policy: no camera, no microphone, no geolocation, no autoplay grant. A
+pack asks the host for feedback, it does not take it."* The shape that fits the
+boundary already exists in this repository: the **host** reads the orientation and
+posts it, exactly as it already measures the safe-area insets a pack cannot see
+and sends them over the `settings` channel. One number crossing a message port,
+one permission prompt owned by the app, one place to turn it off. That is a host
+decision and a host PR, and it is the founder's to make.
+
+None of the above has been checked on a device by this change. It is read off the
+Permissions Policy and DeviceOrientation Event specifications and off the host's
+own source; what would settle it is a build with the grant added, on hardware.
 
 ## Performance
 

@@ -15,29 +15,74 @@
  * Everything is NDC: x and y run -1..+1 across the viewport, so "0.5" means a
  * quarter of the screen's width regardless of device, orientation or DPR. The
  * caller converts back to world space with `Projector`.
+ *
+ * ── the row belongs to the gate ─────────────────────────────────────────────
+ *
+ * It did not. The founder's screenshot, and then the arithmetic: on a 360x780
+ * phone the outer candidate was drawn at x = 305px for the *entire* approach,
+ * while the arch it names travelled from 198px to 286px; it was 98px tall from
+ * the moment it appeared to the moment it was crossed, while the arch grew from
+ * 27px to 158px; and it sat 27px clear above the lintel throughout. Worse, the
+ * chase camera follows the player at 0.6x, so steering slid the whole gate
+ * cluster sideways under a row that was pinned to the middle of the glass — at
+ * four units out, with the child in the left lane, the outer numeral was 44px
+ * to the *wrong side* of its own arch.
+ *
+ * Three numbers, none of which was a function of the gate. "Which lane says
+ * what" was a guess supported by left-to-right order and a line of dots.
+ *
+ * So the row is now derived from the gate's own projected geometry — its centre,
+ * its lane pitch, the height of its arch — and falls back on the legibility
+ * floors only where the geometry cannot honour them. Far out, the arch is 16px
+ * wide and no readable numeral fits in it, so the row is a legible board held
+ * above the gate; as the gate closes the pitch, the size and the height all
+ * converge and each numeral settles into its own window and travels with it.
+ * Choosing a lane and choosing an answer become the same act, which is the whole
+ * design of the game.
+ *
+ * The floors are not negotiable and are asserted here: a numeral that sits
+ * prettily on an arch at eleven pixels is the bug this file was written to kill,
+ * and it killed it once already.
  */
 
 const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 export const BAND = {
-  /** NDC x between adjacent candidates while the gate is still distant. */
-  pitchFar: 0.58,
-  /** ...and by the time it arrives. The row opens out as it comes at you. */
-  pitchNear: 0.72,
   /**
    * The share of the pitch a numeral's ink may occupy. The remaining 30% is
    * gutter, and it is the whole reason this file exists. Do not raise it.
    */
   fill: 0.7,
+  /**
+   * ...and a floor on that gutter in absolute NDC, because `fill` alone is a
+   * *ratio*: it keeps a wide numeral apart and lets three small ones close to
+   * within a couple of pixels of each other. Since the row now shrinks with its
+   * gate, small is the common case.
+   */
+  gutter: 0.14,
   /** Ceiling on apparent size, in NDC y. A single digit would otherwise fill the screen. */
   maxH: 0.3,
+  /**
+   * Cap height, in CSS pixels, below which a numeral stops being an answer.
+   *
+   * The floor the row falls back on when its gate is too far away to carry a
+   * readable numeral. 46px is a shade over the 44px the two named legibility
+   * tests demand, so the margin is visible in the constant rather than implied
+   * by one. It is in *pixels*, not NDC, because legibility is: 0.1 NDC is 39px
+   * on a 780-tall phone and 108px on a desktop.
+   */
+  minCapPx: 46,
+  /**
+   * Share of its window's height a numeral standing in one may fill.
+   *
+   * 0.62 leaves a visible margin of arch above and below the ink, which is what
+   * makes it read as framed by the gate rather than jammed into it.
+   */
+  archShare: 0.62,
   /** Hard page margin on a device with no insets: no ink past |x| = this. */
   edge: 0.94,
   /** The row never rises past here — above it lives the prompt. */
   top: 0.56,
-  /** ...nor sinks below here, which is roughly the horizon. */
-  bottom: 0.06,
   /** Clear air between the numeral row and the top of its own gate arch. */
   lift: 0.07,
 } as const;
@@ -62,12 +107,62 @@ export type Frame = {
   edge: number;
   /** The row's top edge never rises above this NDC y. */
   top: number;
-  /** The row's bottom edge never sinks below this NDC y. */
+  /**
+   * The row's bottom edge never sinks below this NDC y.
+   *
+   * This is the HUD's own bottom furniture — the voltage bar, plus whatever the
+   * system has taken off the bottom edge — and nothing else. It used to be a
+   * flat 0.06, "roughly the horizon", which is the wrong shape of limit: the
+   * horizon is a property of the *gate's depth*, not of the screen, and a flat
+   * screen-space floor is exactly what stopped the row descending into its own
+   * window at mid range. The deck now bounds the row from `GateGeom.deck`,
+   * measured at the gate.
+   */
   bottom: number;
+  /**
+   * Floor on the row's ink height, in NDC, for this surface.
+   *
+   * `BAND.minCapPx` resolved against the viewport height. Carried on the frame
+   * rather than computed here because this file never learns how tall the
+   * surface is — everything else it does is scale-free.
+   */
+  minH: number;
 };
 
-/** The frame on a surface with no insets at all: the old constants, exactly. */
-export const FULL_FRAME: Frame = { edge: BAND.edge, top: BAND.top, bottom: BAND.bottom };
+/** The frame on a surface of height `vh` with no insets at all. */
+export function fullFrame(vh: number): Frame {
+  return {
+    edge: BAND.edge,
+    top: BAND.top,
+    bottom: -1,
+    minH: (2 * BAND.minCapPx) / Math.max(1, vh),
+  };
+}
+
+/**
+ * The gate the row belongs to, in NDC, at the depth it currently sits at.
+ *
+ * Every field is a projection of something the child can see, and that is the
+ * point: the row is laid out *from the gate* and only clamped by the frame.
+ */
+export type GateGeom = {
+  /**
+   * NDC x of the gate's middle lane.
+   *
+   * Not zero. The chase camera follows the player at 0.6x, so the gate cluster
+   * slides across the glass as the child steers, and a row centred on the
+   * screen leaves its arches behind.
+   */
+  centre: number;
+  /** NDC x between adjacent lane centres, magnitude. */
+  lanePitch: number;
+  /** NDC y of the top of the arch — the underside of the lintel. */
+  archTop: number;
+  /** NDC height of the arch, deck to lintel. */
+  archH: number;
+  /** NDC y of the deck at the gate's depth. The row never sinks below it. */
+  deck: number;
+};
 
 export type Band = {
   /** Ink height, in NDC y. Multiply by `1/|ky|` for world units. */
@@ -80,61 +175,97 @@ export type Band = {
   pitch: number;
   /** NDC width of the widest candidate at `hNdc`. */
   wNdc: number;
+  /**
+   * How much of the row is standing in its window: 0 held above the lintel, 1
+   * framed by the arch.
+   *
+   * The renderer fades the leader dots out with it — a leader from a numeral to
+   * the arch it is already sitting in is a line of dots to nowhere.
+   */
+  onGate: number;
 };
 
 /**
- * @param units    world width of each candidate at ink height 1, left to right
- * @param kx       NDC x per world unit at the gate's depth (magnitude)
- * @param ky       NDC y per world unit at the gate's depth (magnitude)
- * @param approach 0 when the gate spawns, 1 when it reaches the answer plane
- * @param archTop  NDC y of the top of the gate's arch
- * @param frame    the NDC rectangle the row may occupy — see `Frame`
+ * @param units world width of each candidate at ink height 1, left to right
+ * @param kx    NDC x per world unit at the gate's depth (magnitude)
+ * @param ky    NDC y per world unit at the gate's depth (magnitude)
+ * @param geom  the gate, in NDC — see `GateGeom`
+ * @param frame the NDC rectangle the row may occupy — see `Frame`
  */
 export function readBand(
   units: readonly [number, number, number],
   kx: number,
   ky: number,
-  approach: number,
-  archTop: number,
+  geom: GateGeom,
   frame: Frame,
 ): Band {
   const ax = Math.max(1e-6, Math.abs(kx));
   const ay = Math.max(1e-6, Math.abs(ky));
-  const t = clamp01(approach);
 
   // One size for all three. Three different sizes on one row reads as three
   // different kinds of thing, and the eye stops comparing them.
   const widest = Math.max(units[0], units[1], units[2], 1e-6);
+  /** NDC width the widest candidate occupies per NDC of ink height. */
+  const wPerH = Math.max(1e-6, (widest * ax) / ay);
+
+  // The size the GATE asks for, floored at what a child can read. Far out the
+  // floor wins and the row is bigger than the arch; from about twenty units the
+  // arch wins and the row is a thing standing in a window.
+  //
+  // Bounded by the window in BOTH dimensions, which is not fussiness. Sizing off
+  // the arch's height alone, a numeral on a tablet outgrew the arch's *width* on
+  // the approach — the gutter rule then pushed the row wider than the lanes to
+  // keep the ink apart, so the answers came unstuck again in the last twenty
+  // units, on the larger screen only. `fill` rather than the window's full width
+  // so that a numeral sized this way needs exactly the lane pitch and no more.
+  const wantH = Math.min(
+    geom.archH * BAND.archShare,
+    (BAND.fill * geom.lanePitch) / Math.max(1e-6, wPerH),
+  );
+  let hNdc = Math.min(BAND.maxH, Math.max(frame.minH, wantH));
+  let wNdc = hNdc * wPerH;
 
   // The widest a numeral can ever be: the point where the gutter rule
-  // (w <= fill * pitch) and the page margin (pitch + w/2 <= edge) meet.
+  // (w <= fill * pitch) and the page margin (pitch + w/2 <= edge) meet. A
+  // three-digit answer on a 320px phone is held here, not by the floor above,
+  // and that has always been the binding constraint for wide answers.
   const wCeil = (BAND.fill * frame.edge) / (1 + BAND.fill / 2);
-  // The width at which the apparent-size cap bites. On a narrow phone this is
-  // enormous, which is exactly why the pitch has to be free to open up: a
-  // three-digit answer on a 320px screen needs most of the width or it lands at
-  // twenty pixels, and twenty pixels is the bug we are here to kill.
-  const wWanted = (BAND.maxH * widest * ax) / ay;
+  if (wNdc > wCeil) wNdc = wCeil;
 
-  let wNdc = Math.min(wCeil, wWanted);
-  // The row spreads as the gate closes, but never tighter than the gutter needs.
-  let pitch = Math.max(lerp(BAND.pitchFar, BAND.pitchNear, t), wNdc / BAND.fill);
+  // The row sits on the lanes, and opens wider than them only when it must.
+  let pitch = Math.max(geom.lanePitch, wNdc / BAND.fill, wNdc + BAND.gutter);
   const pitchCeil = frame.edge - wNdc / 2;
   if (pitch > pitchCeil) pitch = pitchCeil;
-  wNdc = Math.min(wNdc, BAND.fill * pitch);
+  wNdc = Math.min(wNdc, BAND.fill * pitch, Math.max(0, pitch - BAND.gutter));
 
-  const hNdc = (wNdc / (widest * ax)) * ay;
-
+  hNdc = wNdc / wPerH;
   const half = hNdc / 2;
-  // Sit just clear of the arch, but never behind the prompt and never under the
-  // deck. When the two limits collide the top wins: off the bottom is invisible,
-  // slightly tight against the prompt is merely close.
-  const lo = frame.bottom + half;
+
+  // Centred on the gate, and pulled back inside the page margin as a whole
+  // rather than per numeral: the row is one object and a row whose left half is
+  // clamped and right half is not is a row with an uneven pitch, which is the
+  // one thing the gutter rule exists to prevent.
+  const room = Math.max(0, frame.edge - (pitch + wNdc / 2));
+  const centre = geom.centre < -room ? -room : geom.centre > room ? room : geom.centre;
+
+  // Descend into the window as the window grows big enough to hold the row.
+  // Continuous by construction: `onGate` is a ratio of two heights, so there is
+  // no frame on which the numerals jump.
+  const onGate = clamp01(geom.archH / Math.max(1e-6, hNdc));
+  const above = geom.archTop + half + BAND.lift;
+  const inside = geom.archTop - geom.archH / 2;
+  let y = above + (inside - above) * onGate;
+
+  // Never below the deck at the gate's own depth — under it a numeral lies on
+  // the causeway instead of standing in a window — nor into the HUD's bottom
+  // furniture, nor behind the prompt. When two limits collide the top wins: off
+  // the bottom is invisible, slightly tight against the prompt is merely close.
+  const lo = Math.max(frame.bottom, geom.deck) + half;
   const hi = frame.top - half;
-  let y = archTop + half + BAND.lift;
   if (y < lo) y = lo;
   if (y > hi) y = hi;
 
-  return { hNdc, x: [-pitch, 0, pitch], y, pitch, wNdc };
+  return { hNdc, x: [centre - pitch, centre, centre + pitch], y, pitch, wNdc, onGate };
 }
 
 /* -------------------------------------------------------------------------- */
