@@ -14,6 +14,9 @@ import {
   ascentOf,
   ABOVE_RATIO,
   bandOf,
+  BLANK,
+  blankPosition,
+  drawStatement,
   cadenceFor,
   choicesFor,
   binaryOperator,
@@ -29,6 +32,7 @@ import {
   LOST_AT,
   noteRecent,
   normalizeMinus,
+  operandsOf,
   openStaircase,
   pickRung,
   PROMOTE_AT,
@@ -43,12 +47,13 @@ import {
   STEP_TRACK,
 } from "./items.ts"
 import type { Band, Recent, Rung, Staircase } from "./items.ts"
-import type { PromptSlot } from "./curriculum.ts"
+import type { PromptBlank, PromptSlot } from "./curriculum.ts"
 import {
   activeNodes,
   allNodes,
   familyById,
   FORM_FREE_ENTRY,
+  promptBlank,
   promptOperator,
   promptRegistry,
   SLOT_BOTTOM,
@@ -398,7 +403,8 @@ test("every rung on the ladder draws a question with numbers in it", () => {
     const item = service.next({ packId: "dynawalla.fuse", difficulty: at })
     const rung = rungs[i]
     assert.ok(item, `rung ${String(i)} (${String(rung?.node.id)}) served nothing at all`)
-    families.add(rung?.family.family ?? "?")
+    assert.ok(rung !== undefined)
+    families.add(rung.family.family)
 
     assert.equal(item.operands.length, 2, `${item.skillId} did not draw two operands`)
     for (const operand of item.operands) {
@@ -406,11 +412,21 @@ test("every rung on the ladder draws a question with numbers in it", () => {
     }
     // The prompt a child reads, and a screen reader speaks. `" + "` is what
     // this used to be. All four glyphs, because `[+−]` was itself a statement
-    // that this product only adds and subtracts.
+    // that this product only adds and subtracts — and one of three shapes, because
+    // the curriculum can now put the unknown *inside* the expression and say so.
+    // The shape asserted is the one the rung's own template declares, so a rung
+    // drawn in the wrong shape fails here rather than passing a looser pattern.
+    const shape = declaredBlanksOf(rung)
+    assert.equal(
+      shape.size,
+      1,
+      `${item.skillId} L${String(rung.level)} emits templates with ${String(shape.size)} different blank ` +
+        `positions (${[...shape].join(", ")}) — a rung whose question changes shape cannot be checked here`,
+    )
     assert.match(
       item.prompt,
-      /^-?\d[\d ,.]*\s[+−×÷]\s-?\d/u,
-      `${item.skillId} drew the prompt "${item.prompt}"`,
+      STATEMENT_SHAPE[[...shape][0] as PromptBlank],
+      `${item.skillId} declares blank "${[...shape][0] as string}" and drew the prompt "${item.prompt}"`,
     )
     assert.ok(item.prompt.includes(item.operands[0] ?? "!"))
     assert.ok(item.prompt.includes(item.operands[1] ?? "!"))
@@ -445,13 +461,274 @@ test("every rung on the ladder draws a question with numbers in it", () => {
       item.prompt.includes(` ${glyph} `),
       `${item.skillId} declares ${glyph} and drew "${item.prompt}"`,
     )
-    assert.equal(
-      item.operator,
-      glyph === "−" ? "-" : glyph,
-      `${item.skillId} declares ${glyph} and reported operator "${String(item.operator)}"`,
-    )
+    // `Item.operator` is reported for a plain `a OP b` and **withheld** on a blank
+    // statement, where the two numerals are not the operands of the glyph between
+    // them: on `□ × 15 = 165` they are 15 and the *product* 165, and a pack handed
+    // `operator: "×"` alongside them could compute 2,475 and be reasonable about it.
+    // `form` carries the distinction a pack would branch on.
+    if ([...declaredBlanksOf(rung)][0] === "none") {
+      assert.equal(
+        item.operator,
+        glyph === "−" ? "-" : glyph,
+        `${item.skillId} declares ${glyph} and reported operator "${String(item.operator)}"`,
+      )
+      assert.equal(item.form, "binary-op", item.skillId)
+    } else {
+      assert.equal(
+        item.operator,
+        undefined,
+        `${item.skillId} draws "${item.prompt}" and still reports operator ` +
+          `"${String(item.operator)}" over two numerals that are not its operands`,
+      )
+      assert.equal(item.form, "value", item.skillId)
+    }
   }
 })
+
+test("drawStatement writes the three shapes, and the box is U+25A1", () => {
+  // The shapes as strings, which is the only form a reviewer can check against a card.
+  assert.equal(drawStatement("15", "165", "×", "first"), "□ × 15 = 165")
+  assert.equal(drawStatement("47", "68", "+", "second"), "47 + □ = 68")
+  assert.equal(drawStatement("47", "68", "−", "first"), "□ − 47 = 68")
+  assert.equal(drawStatement("93", "47", "−", "second"), "93 − □ = 47")
+  // And a question with no blank is byte-for-byte what it was before this existed.
+  // Every active row in the product but one is this branch.
+  assert.equal(drawStatement("473", "641", "+", "none"), "473 + 641")
+
+  // The code point, not the shape of the character. U+2610 BALLOT BOX is what the
+  // curriculum's prose writes (`☐`) and it is **not** what any pack in the fleet
+  // tokenises — `games/balance/src/adapter.ts:60` accepts `□`, `?` and `_` and
+  // nothing else — so the two must not be confusable by eye here.
+  assert.equal(BLANK, "□")
+  assert.notEqual(BLANK, "☐")
+  // Whitespace-delimited, because that is how the one pack that parses a statement
+  // finds it. `___` fails this, and so does `□×15`.
+  assert.deepEqual(drawStatement("15", "165", "×", "first").split(" "), [BLANK, "×", "15", "=", "165"])
+})
+
+test("the blank position is a table read with no fallback, and every operator has one", () => {
+  assert.equal(blankPosition("dw.prompt.missing-operand.mul-unknown"), "first")
+  assert.equal(blankPosition("dw.prompt.missing-operand.sub-unknown-minuend"), "first")
+  assert.equal(blankPosition("dw.prompt.missing-operand.add-unknown"), "second")
+  assert.equal(blankPosition("dw.prompt.missing-operand.sub-unknown"), "second")
+  assert.equal(blankPosition("dw.prompt.column-op.add"), "none")
+  assert.equal(blankPosition("dw.prompt.nothing.at-all"), null)
+  assert.equal(blankPosition(""), null)
+
+  // The pairing `next()` depends on. It reads the operator and the blank with two
+  // calls, and a key that answered one and not the other would let a statement be
+  // drawn with its box missing — so every key the operator lookup answers, the blank
+  // lookup answers too, over the whole registry rather than over the seven lines above.
+  let blanks = 0
+  for (const entry of promptRegistry) {
+    const key = String(entry.id)
+    assert.notEqual(blankPosition(key), null, `${key} has no blank position`)
+    if (binaryOperator(key) === null) continue
+    const blank = blankPosition(key)
+    if (blank !== "none") blanks += 1
+  }
+  assert.ok(blanks >= 4, `only ${String(blanks)} binary template(s) declare a blank`)
+})
+
+test("the founder's card is drawn, exactly, by the renderer the graph uses", () => {
+  // > "maybe to prevent the calculator (or at least make it so that you have to
+  // > understand the problem to use it correctly) we could use blanks in an equation
+  // > `___ × 15 = 165`"
+  //
+  // `dw.alg.equality.missing-factor` is **draft** — no pack that declares it can draw a
+  // missing factor, see `PACK_STATEMENT_BLOCKED_SKILLS` — so this drives `ladder([node])`
+  // directly rather than the shipped ladder. The renderer is the same one, which is the
+  // point: the row is held back by a pack, not by the host, and this is what says so.
+  //
+  // Pinned on a seed rather than swept, because the assertion is about a specific card:
+  // the box **opens** the statement, the 15 is the known factor, the 165 is the given
+  // product, and the answer is the factor and not the product. Three of those four could
+  // be wrong in a way a swept "some equation was drawn" check would pass.
+  const node = allNodes.find((candidate) => String(candidate.id) === "dw.alg.equality.missing-factor")
+  assert.ok(node !== undefined)
+  assert.equal(node.status, "draft", "missing-factor went active without this test being revisited")
+  const rung = ladder([node]).find((candidate) => candidate.level === 1)
+  assert.ok(rung !== undefined)
+  const exercise = rung.family.generate({
+    skillId: rung.node.id,
+    level: rung.level,
+    seed: 4124,
+    params: rung.params,
+    forms: rung.node.generator.forms,
+  })
+  const [a = "", b = ""] = operandsOf(exercise)
+  const operator = binaryOperator(exercise.prompt.key)
+  const blank = blankPosition(exercise.prompt.key)
+  assert.ok(operator !== null && blank !== null)
+  assert.equal(drawStatement(a, b, operator.glyph, blank), "□ × 15 = 165")
+  assert.equal(exercise.answer.canonical.kind, "integer")
+  assert.equal(
+    exercise.answer.canonical.kind === "integer" ? exercise.answer.canonical.value.n : 0n,
+    11n,
+    "the card asks for the missing factor and wants something other than 11",
+  )
+})
+
+test("every blank statement the shipped ladder draws is a true equation, read back off the string", () => {
+  // The assertion that would have caught the operator defect, the misstatement defect
+  // and a wrong blank position, all three, and it is the one that matters: take the
+  // string a child reads, put the revealed answer in the box, and check the equation is
+  // true — parsed back out of the prompt rather than rebuilt from the parts that made
+  // it. A renderer that agreed with itself and with nothing else fails here.
+  //
+  // Held over the whole ladder rather than over the one row that has a blank today, so
+  // the next row promoted is covered by this existing.
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p1", record: noRecord })
+  let statements = 0
+
+  for (let i = 0; i < rungs.length; i++) {
+    const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
+    for (let repeat = 0; repeat < 8; repeat++) {
+      const item = service.next({ packId: "dynawalla.balance", difficulty: at })
+      assert.ok(item)
+      if (!item.prompt.includes(BLANK)) continue
+      statements += 1
+      const revealed = service.reveal(item.id)
+      const sides = item.prompt.split(" = ")
+      assert.equal(sides.length, 2, `"${item.prompt}" is a blank statement with no single equals sign`)
+      const tokens = (sides[0] ?? "").split(" ")
+      assert.equal(tokens.length, 3, `"${item.prompt}" has a left side this cannot read: ${tokens.join("|")}`)
+      const [left = "", glyph = "", right = ""] = tokens
+      assert.equal(
+        [left, right].filter((token) => token === BLANK).length,
+        1,
+        `"${item.prompt}" does not have exactly one box on its left side`,
+      )
+      const value = (token: string): bigint => BigInt(token === BLANK ? revealed : token)
+      const stated =
+        glyph === "+"
+          ? value(left) + value(right)
+          : glyph === "−"
+            ? value(left) - value(right)
+            : glyph === "×"
+              ? value(left) * value(right)
+              : (() => {
+                  assert.fail(`"${item.prompt}" is written with the glyph "${glyph}"`)
+                })()
+      assert.equal(
+        stated,
+        BigInt(sides[1] ?? ""),
+        `"${item.prompt}" with ${revealed} in the box claims ${String(stated)} = ${String(sides[1])}`,
+      )
+      // And the answer is not simply the other side of the card, which is the shape of
+      // the failure this whole change is about: a missing factor whose "answer" is the
+      // product reads perfectly and is wrong.
+      assert.notEqual(revealed, sides[1], `"${item.prompt}" wants the number already printed on it`)
+    }
+  }
+  assert.ok(statements >= 8, `only ${String(statements)} blank statement(s) were drawn by the shipped ladder`)
+})
+
+test("a missing addend is judged on the addend, and adding the whole card is the diagnosed mistake", () => {
+  // The end-to-end claim, on the row that is now active: a child who reads
+  // `9 + □ = 18` and answers 9 is right, a child who answers 27 — every number on the
+  // card added up, `mis.alg.add-all-numbers`, one of the two best-evidenced errors in
+  // elementary algebra — is wrong *and named*, and a child who answers the printed
+  // total is wrong and **not** named, because this shape does not instantiate
+  // `mis.alg.equals-as-operator` and a diagnosis nobody earned is worse than none.
+  //
+  // Without the blank this row drew `9 + 18` and wanted 9, so the child who answered 27
+  // was reading the card correctly and was marked wrong — and the child making the
+  // diagnosed mistake was marked right. That is what is being fixed, and this is it
+  // stated as three verdicts.
+  const node = allNodes.find((candidate) => String(candidate.id) === "dw.alg.equality.missing-addend")
+  assert.ok(node !== undefined)
+  assert.equal(node.status, "active")
+  const rung = ladder([node]).find((candidate) => candidate.level === 0)
+  assert.ok(rung !== undefined)
+
+  let judged = 0
+  for (let seed = 0; seed < 12; seed++) {
+    const service = createItemService({ profileId: `learner-${String(seed)}`, record: noRecord, rungs: [rung] })
+    const item = service.next({ packId: "dynawalla.balance" })
+    assert.ok(item)
+    const sides = item.prompt.split(" = ")
+    const known = (sides[0] ?? "").split(" ")[0] ?? ""
+    const total = sides[1] ?? ""
+    const correct = service.reveal(item.id)
+    assert.notEqual(correct, total, `"${item.prompt}" wants the number already printed on it`)
+    const addAll = String(BigInt(known) + BigInt(total))
+    assert.notEqual(addAll, correct, `"${item.prompt}" — the mal-rule agrees with the answer`)
+
+    const right = service.judge({ packId: "dynawalla.balance", itemId: item.id, response: correct, latencyMs: 4000 })
+    assert.equal(right.correct, true, `"${item.prompt}" marked ${correct} wrong`)
+    assert.equal(right.canonical, correct)
+
+    // One attempt per item, so each verdict needs its own service on the same seeded
+    // profile — `judge` spends the attempt, which is what makes returning the canonical
+    // value safe at all.
+    const replay = (response: string) => {
+      const again = createItemService({ profileId: `learner-${String(seed)}`, record: noRecord, rungs: [rung] })
+      const same = again.next({ packId: "dynawalla.balance" })
+      assert.ok(same && same.prompt === item.prompt, "the same seeded profile drew a different card")
+      return again.judge({ packId: "dynawalla.balance", itemId: same.id, response, latencyMs: 4000 })
+    }
+
+    const diagnosed = replay(addAll)
+    assert.equal(diagnosed.correct, false, `"${item.prompt}" accepted ${addAll}`)
+    assert.equal(
+      diagnosed.diagnosis,
+      "mis.alg.add-all-numbers",
+      `"${item.prompt}" answered ${addAll} was not diagnosed: ${String(diagnosed.diagnosis)}`,
+    )
+
+    const echoedTotal = replay(total)
+    assert.equal(echoedTotal.correct, false, `"${item.prompt}" accepted the printed total ${total}`)
+    assert.equal(
+      echoedTotal.diagnosis,
+      undefined,
+      `"${item.prompt}" answered ${total} was diagnosed ${String(echoedTotal.diagnosis)} — this shape does not ` +
+        `instantiate that rule, and a named misconception the child does not hold aims a repair at nothing`,
+    )
+    judged += 1
+  }
+  assert.equal(judged, 12)
+})
+
+/**
+ * The three statement shapes, as the patterns a drawn prompt has to match.
+ *
+ * Written out per position rather than as one permissive alternation, because a
+ * pattern that accepted all three would pass a missing-addend drawn as a plain sum —
+ * which is the entire defect `PromptBlank` exists to close. The box is spelled as its
+ * code point so that a copy-paste of U+2610 BALLOT BOX, which no pack in the fleet
+ * tokenises, fails here.
+ */
+const STATEMENT_SHAPE: Readonly<Record<PromptBlank, RegExp>> = {
+  none: /^-?\d[\d ,.]*\s[+−×÷]\s-?\d/u,
+  first: /^□\s[+−×÷]\s-?\d[\d ,.]*\s=\s-?\d/u,
+  second: /^-?\d[\d ,.]*\s[+−×÷]\s□\s=\s-?\d/u,
+}
+
+/**
+ * The blank positions a rung's own templates declare, read off the curriculum.
+ *
+ * The sibling of `declaredOperatorsOf`, and generated rather than guessed for the same
+ * reason: a level may emit more than one template and which one a seed draws is not
+ * something a caller can know without drawing it.
+ */
+function declaredBlanksOf(rung: Rung): ReadonlySet<PromptBlank> {
+  const blanks = new Set<PromptBlank>()
+  for (let seed = 1; seed <= 20; seed++) {
+    const exercise = rung.family.generate({
+      skillId: rung.node.id,
+      level: rung.level,
+      seed,
+      params: rung.params,
+      forms: rung.node.generator.forms,
+    })
+    const blank = promptBlank(String(exercise.prompt.key))
+    assert.ok(blank !== null, `${rung.node.id} emits ${exercise.prompt.key}, which declares no blank position`)
+    blanks.add(blank)
+  }
+  return blanks
+}
 
 /**
  * The operator glyphs a rung's own templates declare, read off the curriculum.

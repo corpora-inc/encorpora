@@ -25,6 +25,7 @@ import {
   rational,
   sub as ratSub,
   toScaled,
+  toString as rationalToString,
 } from "../math/rational.ts";
 import type { Rational } from "../math/rational.ts";
 import { skillId } from "../types/ids.ts";
@@ -646,21 +647,76 @@ test("missing-operand: substituting the answer balances the sentence, on every s
   }
 });
 
-test("missing-operand: a one-digit missing addend has exactly 81 items in the world", () => {
+test("missing-operand: a one-digit missing addend has exactly 81 items in the world, and they are the 81", () => {
   // `dw.alg.equality.missing-addend` L0 is `sentence("add-unknown", 1)`: the known
   // addend and the answer are each drawn 1..9 and nothing else varies, so the true
   // variant space is 9 × 9 = 81 — countable, not estimable.
   //
   // The sweep's `N²/2C` estimator reads ~298 on this level and CG-10 at 200 seeds
-  // reads 161; the node declares `minVariants: 40`, half its entire universe. This
-  // pins the real number so nobody sizes that row's promotion off the estimate:
-  // it is not a floor to negotiate, it is a generator that needs more shapes.
-  const drawn = new Set(
-    items(erase(missingOperandFamily), { shape: "add-unknown", digits: 1, balance: false }, ["free-entry"], 4000).map(
-      fingerprintItem,
-    ),
+  // reads 161; the node declares `minVariants: 40`, half its entire universe.
+  //
+  // **This test used to end "it is not a floor to negotiate, it is a generator that
+  // needs more shapes", and that reading has been reversed.** There are no more shapes
+  // to add at one digit: the eighty-one are the single-digit addition facts read
+  // backwards, the same closed set `dw.add.facts.add-within-ten` already declares a
+  // *nine*-item slice of, and a row that may not repeat one of eighty-one facts in a
+  // forty-item run is a row that may not teach number facts. So L0 declares
+  // `closedFactSet: 81` and CG-10 measures the count against it instead of against the
+  // floor — a sharper check, since it fails on an eighty-second.
+  //
+  // Which makes the count a claim about the mathematics rather than about a draw, so it
+  // is pinned from both ends: the set is enumerated independently below and the
+  // generator is required to reach **every** member. A generator that drew eighty-one
+  // distinct sentences that were not these eighty-one would pass the size assertion
+  // alone.
+  const drawn = items(
+    erase(missingOperandFamily),
+    { shape: "add-unknown", digits: 1, balance: false },
+    ["free-entry"],
+    4000,
   );
-  assert.equal(drawn.size, 81, "the one-digit add-unknown space is 9 × 9");
+  assert.equal(new Set(drawn.map(fingerprintItem)).size, 81, "the one-digit add-unknown space is 9 × 9");
+
+  // `known + ☐ = total`, so the pair on the card is (known, known + answer).
+  const wanted = new Set<string>();
+  for (let known = 1n; known <= 9n; known++) {
+    for (let answer = 1n; answer <= 9n; answer++) {
+      wanted.add(`${String(known)}+${String(known + answer)}=${String(answer)}`);
+    }
+  }
+  const reached = new Set<string>();
+  for (const exercise of drawn) {
+    const known = exercise.prompt.slots["known"];
+    const total = exercise.prompt.slots["total"];
+    assert.ok(known?.kind === "number" && total?.kind === "number", "a one-digit missing addend lost a slot");
+    const value = exercise.answer.canonical;
+    assert.equal(value.kind, "integer");
+    reached.add(
+      `${rationalToString(known.value)}+${rationalToString(total.value)}=${rationalToString(value.value)}`,
+    );
+  }
+  assert.deepEqual([...reached].sort(), [...wanted].sort(), "the eighty-one drawn are not the eighty-one there are");
+
+  // And the two levels above it, which take the ordinary floor and clear it by an order
+  // of magnitude. Pinned as floors rather than exact counts — they are draws from a
+  // space far larger than the sample, so an exact number would be a fact about the
+  // seed count — because the claim `closedFactSet: [81, null, null]` makes about L1 and
+  // L2 is precisely that they are *not* closed.
+  for (const [digits, floor] of [
+    [2, 7000],
+    [3, 19000],
+  ] as const) {
+    const size = new Set(
+      items(erase(missingOperandFamily), { shape: "add-unknown", digits, balance: false }, ["free-entry"], 20000).map(
+        fingerprintItem,
+      ),
+    ).size;
+    assert.ok(
+      size >= floor,
+      `${String(digits)}-digit add-unknown drew only ${String(size)} distinct items in 20,000 seeds — ` +
+        `it is declared open and must clear CG-10's floor on its own`,
+    );
+  }
 });
 
 test("missing-operand: the balance scale is rejected on a sentence with one side", () => {

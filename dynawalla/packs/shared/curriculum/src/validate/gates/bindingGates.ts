@@ -72,6 +72,10 @@ export function cg7(context: ValidationContext): GateResult {
         );
       }
       binding.closedFactSet.forEach((size, level) => {
+        // `null` is a level that takes the ordinary floor. See
+        // `GeneratorBinding.closedFactSet`: closure is a property of a level, and a
+        // row may be closed at one digit and open above it.
+        if (size === null) return;
         if (!Number.isSafeInteger(size) || size <= 0) {
           findings.push(fail("CG-7", `L${String(level)} closedFactSet size must be a positive integer`, node.id));
           return;

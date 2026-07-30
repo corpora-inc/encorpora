@@ -150,8 +150,11 @@ export function cg10(_context: ValidationContext, samples: readonly LevelSample[
     const distinct = new Set(sample.exercises.map(fingerprintItem)).size;
     const collisions = draws - distinct;
 
-    const declared = sample.node.generator.closedFactSet?.[sample.level];
-    if (declared !== undefined) {
+    // `?? null` folds "no array" and "this level is not closed" together: both mean
+    // the ordinary floor applies. See `GeneratorBinding.closedFactSet` — a row may be
+    // closed at one digit and open above it, and `dw.alg.equality.missing-addend` is.
+    const declared = sample.node.generator.closedFactSet?.[sample.level] ?? null;
+    if (declared !== null) {
       if (distinct > declared) {
         findings.push(
           fail(

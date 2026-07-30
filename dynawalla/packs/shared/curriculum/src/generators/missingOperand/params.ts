@@ -6,8 +6,10 @@
  * - `add-unknown` — `a + ☐ = c`, the missing addend.
  * - `sub-unknown` — `a − ☐ = c`, where the undoing is a subtraction.
  * - `sub-unknown-minuend` — `☐ − a = c`, where it is an addition.
- * - `mul-unknown` — `a × ☐ = c`, always exact; a missing factor with a remainder
- *   is a sentence with no whole-number answer.
+ * - `mul-unknown` — `☐ × a = c`, always exact; a missing factor with a remainder
+ *   is a sentence with no whole-number answer. The box opens this one and closes the
+ *   additive pair; see `PROMPT_KEY_MUL_UNKNOWN` for why that is a convention here and
+ *   a different question there.
  * - `both-sides` — `a + b = ☐ + d`.
  *
  * `balance` is rejected on every shape but `both-sides`: the scale carries "these

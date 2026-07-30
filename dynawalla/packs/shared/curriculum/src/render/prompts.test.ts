@@ -27,12 +27,25 @@
  *
  * The claim underneath the operator, which the operator fix does not make true:
  * **the string a game draws states the question the answer answers**. That is
- * checkable from here without the app, because it is arithmetic — apply the
- * declared operator to the two operands the host would read and compare it with the
- * canonical answer, in exact rationals. What disagrees is
- * `MISSTATED_QUESTION_TEMPLATES`, asserted in both directions so it cannot go stale
- * as families are added, and it is what still stops `dw.div.whole.find-the-remainder`
- * and the `dw.alg.equality.*` rows.
+ * checkable from here without the app, because it is arithmetic.
+ *
+ * It used to be checked by applying the declared operator to the two operands the host
+ * would read and comparing the result with the canonical answer, and that reading is
+ * now the `blank: "none"` case of a wider one. `render/prompts.ts` also declares
+ * **where the box sits** (`PromptBlank`), so the check writes the statement out,
+ * substitutes the canonical answer for the box, and compares the two sides of the
+ * equation: `47 + □ = 68` claims `47 + 21 = 68` and `□ × 15 = 165` claims
+ * `11 × 15 = 165`. Both are true, and there is no product of two numerals in the
+ * second one to have compared with anything.
+ *
+ * What disagrees is `MISSTATED_QUESTION_TEMPLATES`, asserted in both directions so it
+ * cannot go stale as families are added, and it is down to one entry:
+ * `dw.prompt.long-div.remainder`, whose answer is not the box in `129 ÷ 2 = □`.
+ *
+ * The `alg` rows are no longer here. Four of the five are still draft and this file
+ * asserts `PACK_STATEMENT_BLOCKED_SKILLS` instead — a question the host can state is
+ * not one every pack that declares it can draw, and that is measured against the packs
+ * rather than against arithmetic.
  */
 
 import assert from "node:assert/strict";
@@ -44,6 +57,7 @@ import {
   MISSTATED_QUESTION_TEMPLATES,
   NUMERAL_WIDTH_BLOCKED_LEVELS,
   NUMERAL_WIDTH_BLOCKED_SKILLS,
+  PACK_STATEMENT_BLOCKED_SKILLS,
   SHIPPED_NUMERAL_MAX_CHARS,
 } from "../graph/promotionBlockers.ts";
 import { familyById } from "../generators/registry.ts";
@@ -51,8 +65,8 @@ import * as rational from "../math/rational.ts";
 import type { Rational } from "../math/rational.ts";
 import type { AnswerValue } from "../types/answer.ts";
 import type { PromptSlot } from "../types/exercise.ts";
-import { findPromptTemplate, promptOperator, promptRegistry } from "./prompts.ts";
-import type { PromptOperator } from "./prompts.ts";
+import { findPromptTemplate, promptBlank, promptOperator, promptRegistry } from "./prompts.ts";
+import type { PromptBlank, PromptOperator } from "./prompts.ts";
 
 /**
  * The two operands the host reads, in the order it reads them.
@@ -102,6 +116,57 @@ function apply(operator: Exclude<PromptOperator, "none">, a: Rational, b: Ration
   return rational.div(a, b);
 }
 
+/**
+ * The statement as a child reads it. A transcription of `drawStatement` in
+ * `dynawalla-app/src/packs/items.ts`, for failure messages only — the curriculum
+ * cannot import the app, and a message that named the operands without saying where
+ * the box was would be a message nobody could act on.
+ */
+function drawn(
+  operator: Exclude<PromptOperator, "none">,
+  blank: PromptBlank,
+  a: Rational,
+  b: Rational,
+): string {
+  const left = rational.toString(a);
+  const right = rational.toString(b);
+  if (blank === "first") return `□ ${operator} ${left} = ${right}`;
+  if (blank === "second") return `${left} ${operator} □ = ${right}`;
+  return `${left} ${operator} ${right}`;
+}
+
+/**
+ * The statement a card makes, written out in exact rationals, with the canonical
+ * answer already substituted for the blank.
+ *
+ * Returns the two sides of the claim the card is making, so the caller compares them
+ * rather than comparing an expression with an answer. That is what generalises the
+ * check across the blank positions:
+ *
+ * - `none` — the card says `a OP b` and the claim is `a OP b = answer`.
+ * - `second` — the card says `a OP □ = b` and the claim is `a OP answer = b`.
+ * - `first` — the card says `□ OP a = b` and the claim is `answer OP a = b`.
+ *
+ * A `switch` with no default, so a fourth `PromptBlank` fails to compile here rather
+ * than being silently measured as one of the three that exist.
+ */
+function claimOf(
+  operator: Exclude<PromptOperator, "none">,
+  blank: PromptBlank,
+  a: Rational,
+  b: Rational,
+  answer: Rational,
+): { readonly stated: Rational; readonly wanted: Rational } {
+  switch (blank) {
+    case "none":
+      return { stated: apply(operator, a, b), wanted: answer };
+    case "second":
+      return { stated: apply(operator, a, answer), wanted: b };
+    case "first":
+      return { stated: apply(operator, answer, a), wanted: b };
+  }
+}
+
 test("every registered template declares the operator its question is written with", () => {
   const glyphs = new Map<PromptOperator, number>();
   for (const entry of promptRegistry) {
@@ -131,12 +196,21 @@ test("an unregistered key has no operator, and the answer is null rather than a 
   assert.equal(findPromptTemplate("dw.prompt.nothing.at-all" as never), undefined);
 });
 
-test("the templates a two-operand string does not state are exactly the blocked list", () => {
+test("the templates the host cannot state are exactly the blocked list", () => {
   // Measured, not asserted. Every bound level of every template with an operator is
-  // generated, the operator is applied to the two operands the host would draw, and
-  // the result is compared with the canonical answer in exact rationals. A template
-  // where those ever disagree is a card that reads perfectly and marks a correct
-  // child wrong, which is the failure this whole file is about.
+  // generated, the statement its two declarations describe is written out, the
+  // canonical answer is substituted for the box, and the two sides of the resulting
+  // equation are compared in exact rationals. A template where those ever disagree is
+  // a card that reads perfectly and marks a correct child wrong, which is the failure
+  // this whole file is about.
+  //
+  // Substituting the answer rather than evaluating the operands is what makes the
+  // check cover a blank: on `□ × 15 = 165` there is no product of the two numerals to
+  // compare with anything, and the claim the card actually makes is that some number
+  // times 15 is 165. Before `PromptBlank` this loop applied the operator to the two
+  // operands unconditionally and therefore reported four templates as misstated that
+  // are now stated — which is exactly what it should have done, because at the time
+  // nothing could state them.
   const misstated = new Map<string, string>();
   const checked = new Set<string>();
 
@@ -170,13 +244,16 @@ test("the templates a two-operand string does not state are exactly the blocked 
           continue;
         }
         checked.add(key);
-        const stated = apply(operator, left, right);
-        if (rational.cmp(stated, wanted) !== 0 && !misstated.has(key)) {
+        const blank = promptBlank(key);
+        assert.ok(blank !== null, `${node.id} emits ${key}, which declares no blank position`);
+        const claim = claimOf(operator, blank, left, right, wanted);
+        if (rational.cmp(claim.stated, claim.wanted) !== 0 && !misstated.has(key)) {
           misstated.set(
             key,
             `${node.id} L${String(level)} seed ${String(seed)}: the card reads ` +
-              `"${rational.toString(left)} ${operator} ${rational.toString(right)}" — which is ` +
-              `${rational.toString(stated)} — and the answer it wants is ${rational.toString(wanted)}`,
+              `"${drawn(operator, blank, left, right)}" and with the answer ` +
+              `${rational.toString(wanted)} in it that claims ` +
+              `${rational.toString(claim.stated)} = ${rational.toString(claim.wanted)}`,
           );
         }
       }
@@ -278,7 +355,7 @@ test("the rows whose answer is a fraction are exactly the ones promotionBlockers
   }
 });
 
-test("no active row emits a template a two-operand string does not state", () => {
+test("no active row emits a template the host cannot state", () => {
   // The claim the blocker list is *for*, checked against the graph rather than
   // against the list. Promoting a row named in `MISSTATED_QUESTION_TEMPLATES` puts
   // a wrong question in front of a child — not a blank card, which a reviewer would
@@ -319,6 +396,90 @@ test("no active row emits a template a two-operand string does not state", () =>
       }
     });
   }
+});
+
+test("every registered template declares where its blank sits, and the two lookups agree", () => {
+  // The declaration `PromptBlank` adds, held to the same standard as the operator: a
+  // table read with no fallback, in both directions. The pairing matters because
+  // `items.ts` reads the two with two calls — a key with an operator and no blank
+  // position would let a statement be drawn as `a OP b` with the box missing, and the
+  // host refuses the item rather than guessing, which this pins from the other side.
+  let withBlank = 0;
+  for (const entry of promptRegistry) {
+    const blank = promptBlank(String(entry.id));
+    assert.ok(blank !== null, `${entry.id} declares no blank position`);
+    assert.equal(blank, entry.blank, `${entry.id} does not read back what it declares`);
+    const operator = promptOperator(String(entry.id));
+    assert.ok(operator !== null, `${entry.id} has a blank position and no operator`);
+    if (blank === "none") continue;
+    withBlank += 1;
+    // A blank with no operator to sit beside is not a statement this type can write:
+    // `□ = 5` has no expression in it, and nothing in `PromptBlank` says where a
+    // second operand went.
+    assert.notEqual(operator, "none", `${entry.id} puts a blank in a question with no operator`);
+  }
+  // The four `missing-operand` shapes a two-operand equation reaches. Stated as a
+  // floor rather than an equality so a fifth is not a test edit, and as a floor above
+  // zero so deleting the field's only users fails here.
+  assert.ok(withBlank >= 4, `only ${String(withBlank)} template(s) declare a blank`);
+
+  // No fallback, in either direction — the same two assertions `promptOperator` gets.
+  assert.equal(promptBlank("dw.prompt.nothing.at-all"), null);
+  assert.equal(promptBlank(""), null);
+});
+
+test("the blank statements are drawn as the equations they are, box and equals included", () => {
+  // The shapes, spelled out as strings, so a change to a declared position is visible
+  // as the card a child would read rather than as an enum value.
+  //
+  // `drawn` here is the curriculum's transcription of the host's `drawStatement`; the
+  // authoritative version and the assertion that these two agree live in
+  // `dynawalla-app/src/packs/items.test.ts`, where the renderer is.
+  const fifteen = rational.rational(15n);
+  const oneSixtyFive = rational.rational(165n);
+  assert.equal(drawn("×", "first", fifteen, oneSixtyFive), "□ × 15 = 165");
+  assert.equal(drawn("+", "second", rational.rational(47n), rational.rational(68n)), "47 + □ = 68");
+  assert.equal(drawn("−", "first", rational.rational(47n), rational.rational(68n)), "□ − 47 = 68");
+  assert.equal(drawn("−", "second", rational.rational(93n), rational.rational(47n)), "93 − □ = 47");
+  // And a question with no blank is untouched, bit for bit. This is the regression
+  // that would break every active row in the product.
+  assert.equal(drawn("+", "none", rational.rational(47n), rational.rational(68n)), "47 + 68");
+});
+
+test("the alg rows a pack cannot draw are exactly the ones promotionBlockers.ts names", () => {
+  // The blocker that is not arithmetic, asserted in both directions over the domain it
+  // is about. The board measurements behind the list are in `promotionBlockers.ts` and
+  // cannot be made here — the curriculum imports nothing from `games/` — so what is
+  // checkable from this side is that the list and the graph agree about which rows are
+  // waiting: promoting one without striking it fails, demoting one without naming it
+  // fails, and an id that is not in the graph at all fails.
+  for (const id of PACK_STATEMENT_BLOCKED_SKILLS) {
+    const node = allNodes.find((candidate) => String(candidate.id) === id);
+    assert.ok(node !== undefined, `${id} is named as blocked and is not in the graph`);
+    assert.equal(
+      node.status,
+      "draft",
+      `${id} is ${node.status} and no pack that declares it can draw its statement`,
+    );
+  }
+
+  const draftAlg = allNodes
+    .filter((node) => node.domain === "alg" && node.status === "draft")
+    .map((node) => String(node.id));
+  assert.deepEqual(
+    draftAlg.sort(),
+    [...PACK_STATEMENT_BLOCKED_SKILLS].sort(),
+    "the draft rows of the alg domain and PACK_STATEMENT_BLOCKED_SKILLS disagree",
+  );
+
+  // And the row that came off the list is genuinely on the ladder rather than merely
+  // absent from a blocker list, which is the direction a deletion would satisfy.
+  const active = allNodes.filter((node) => node.domain === "alg" && node.status === "active");
+  assert.deepEqual(
+    active.map((node) => String(node.id)),
+    ["dw.alg.equality.missing-addend"],
+    "the equality row this host can draw is not the one that is active",
+  );
 });
 
 test("every template a bound level can emit is registered, and nothing is registered that none emits", () => {

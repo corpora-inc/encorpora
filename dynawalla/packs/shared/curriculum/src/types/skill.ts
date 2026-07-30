@@ -82,8 +82,25 @@ export type GeneratorBinding = {
    *
    * Omitted means the ordinary floor applies. A level that could be widened and
    * simply has not been must never carry this field.
+   *
+   * ## `null` for a level that is not closed, and why the array is not sparse
+   *
+   * Closure is a property of a **level**, not of a row, and the first row to need
+   * that said so is `dw.alg.equality.missing-addend`: `4 + ☐ = 9` draws both numbers
+   * 1..9, so L0 is the eighty-one single-digit missing addends and there is no
+   * eighty-second — while L1 and L2 are two- and three-digit and have 7,400 and
+   * 19,800 problems measured, far above CG-10's floor. Declaring the row closed at
+   * every level to get L0 exempted would be a false claim about two levels that must
+   * clear the floor and do; leaving L0 on the floor keeps a grade-1 row draft for a
+   * reason that is not true of it.
+   *
+   * So an entry may be `null`, meaning "this level takes the ordinary floor". CG-7
+   * still requires one entry per level — a short array would silently leave the last
+   * levels on the floor while the row read as though they were exempt, which is the
+   * failure the length check was added for — so the shape of the row is written out
+   * rather than inferred from an omission.
    */
-  readonly closedFactSet?: readonly number[];
+  readonly closedFactSet?: readonly (number | null)[];
   /** Capabilities the generated items assume the child already has (gate CG-6). */
   readonly consumes: readonly CapabilityTag[];
 };
