@@ -185,16 +185,166 @@ no extra wiring.
 
 ---
 
+---
+
+## The hint, and why it is a factor tree
+
+The founder's report is the specification:
+
+> The Lattice is almost rad. But, it can be wildly hard. Trying to look at
+> `642 − 530` and know that `2×2×2×2×7 = 112` is a pretty heroic task. But, if we
+> could show the factorization tree as a dazzling hint … perhaps in a cool way
+> like leaving some of the leaves blank or … maybe giving a partial like
+> `16*7=112` … right now it's easy to get stuck and overwhelmed but … it could be
+> OK to basically reveal the answer in a really satisfying way.
+
+Two hard steps were stacked with nothing between them: work out `642 − 530`, and
+*then* work out that the answer is four twos and a seven. A child who could do
+the first and not the second had no way forward and no way to ask, and the
+arena's only response was to keep drifting.
+
+So `game/tree.ts` builds the real tree — off `splitPair`, the same function a
+shot uses, so it is balanced and it is the shape the child has been watching
+husks make all session — and `game/hint.ts` unfolds it a little at a time.
+
+### The six stages
+
+| | what appears | what it costs |
+|---|---|---|
+| 1 | **The shape.** Every node blank. It says how many pieces the hold needs, and how they branch. | nothing |
+| 2 | **One prime.** The largest leaf: the `7` under four twos, the one a child sweeping twos never stumbles into. | nothing |
+| 3 | **Half a split.** The smaller of the root's two children, its sibling still blank — `129 ⟶ 3 and ⟶ ?`, exactly. | nothing |
+| 4 | **The partial.** The sibling lights: `16 × 7`, root still blank. The stepping stone. | the report |
+| 5 | **The leaves.** Every leaf lit. The hold, spelled out. Nobody is stuck past here. | the report |
+| 6 | **The whole tree.** Every node, root included, and the sentence closes. | the report |
+
+A prime target — the wall — has no tree, so it has two stages: one lonely blank
+node, and then the numeral. That *is* the hint for a wall, because the only hold
+that opens a prime is the single mote carrying it and the whole task is knowing
+which mote to hunt.
+
+The stages are a **masking** of one tree, never a different tree, and each one is
+a superset of the last — asserted over every target the ladder can serve, on
+twelve seeds.
+
+### It is drawn out of the arena's own pieces
+
+A lit leaf is the same celestial hexagon as the mote drifting out there; an
+unopened node is the same carved stone as the husk holding it. Nobody has to be
+told the tree is a map of the field.
+
+It stands in the **bottom third**, which is not a taste decision: `Arena.arm`
+seeds every husk and mote between the top edge and `0.62 · height`, so the lower
+band is the emptiest part of the field and the one place a panel can sit without
+hiding what the child is aiming at. It is also where their eyes already are,
+because the tile bar is there — and the tree's leaves are exactly what the bar is
+about to fill up with.
+
+**The juice fires on the maths.** A leaf whose prime reaches the hold gets a
+brass collar and throws a spark the frame it earns one, and the last one throws a
+bigger spark: `2·2·2·2·7` assembling itself, one mote at a time. That is the only
+thing in the game that celebrates a *factorisation* rather than a resonator, and
+it is the moment the learning actually happens. The collar is a multiset walk and
+not an `includes` — four twos on the tree and two in the hold must collar exactly
+two, or the picture is a lie about what is left to find.
+
+### The clock is not a clock
+
+Hints also arrive on their own. There is no countdown, no ring filling, no "hint
+in 3", no banner, and no word anywhere. The tree fades in the way the sheet
+ripples, with two rising notes on the same felt mallet as everything else and the
+same light tick a swept mote gives.
+
+The quiet before the first one is `firstHintMs`, and it is held to the law the
+fleet holds an answer window to: **a pure function of the item, monotone
+non-decreasing in the item's difficulty.** No speed, no elapsed time, no streak,
+no reading of how the child is doing goes into it, and the proof is that it is a
+sum of non-negative multiples of the item's own two difficulty signals — the rung
+that served it and how many primes the hold is. A harder item buys *more*
+silence, never less, because a hint arriving sooner on a harder problem is the
+game saying it does not think you can do this one.
+
+(THE LATTICE has no answer window and this does not add one. Nothing here is a
+deadline: past the last stage the tree simply sits there, complete.)
+
+Mid-band that is a silhouette at about 35 seconds, a prime at 65, half a split at
+95, and the partial at about two minutes. The perfect bot in `pacing.test.ts`
+finishes a whole round in five seconds, so a child who is *playing* is never
+interrupted; the schedule meets one who has stopped. And the gaps are **longer**
+than the first quiet, which is the opposite of what warmth would suggest — the
+offer of help comes quickly because the first three stages cost nothing, and the
+part of it that spends something is unhurried.
+
+### What a hint costs, and the one thing it changes
+
+Nothing the child can see. Not a point, not the chain, not BEST, not the ceremony
+when the resonator opens. There is no counter anywhere that says how many hints
+were taken and no language about needing help. `hint.test.ts` plays the same
+seeded run twice — once blind, once with the whole tree up from the first frame —
+and asserts the counter, the chain and the haptics come out identical.
+
+What it changes is what the **host** is told. Once the revealed nodes *determine*
+the root — stage 4 for a composite, stage 2 for a wall, computed from the picture
+rather than hardcoded to a stage number — the game has put the answer to
+`642 − 530` on the screen, and a `correct` report against that question would be
+a claim about the child that is not true. `Arena.enter` closes those with
+`host.skip` instead, which the contract defines as "records nothing, moves no
+ladder, produces no outcome".
+
+That is the honest reading and it is the only neutral option available: reporting
+a MISS would be a hint that costs, which is forbidden outright, and reporting a
+HIT would write a MASTERED signal into a child's record on the strength of
+something the game printed — and then climb them into harder items on it.
+
+For the same reason the game's own ladder **holds rather than climbing** on a
+handed-over open. `Ladder.opened` is three rungs of harder arithmetic next time,
+and pushing a child into harder arithmetic *because* they had just been shown the
+answer is the one way a hint here could quietly cost them something. A refusal
+still falls, because falling is the direction that makes the next one kinder.
+
+The trade is deliberate and it is worth naming: a chronically stuck child
+generates less signal for the adaptive engine. The alternative was a record full
+of correct answers the game gave, which is worse — and the game's own ladder
+still falls on every refusal, so the *stream* still adapts even when the record
+goes quiet.
+
+### The reveal is adaptive, and mastery is what skips it
+
+`revealPaceMs` is the only thing in the hint system that reads the child at all,
+and it reads the chain rather than a clock. At the bottom the reveal is long and
+calm — a child who is finding this hard gets to watch each piece arrive, and that
+watching is most of the value. On a chain of six the same reveal snaps into place
+in a couple of frames, because a child who is flying does not want a ceremony in
+front of their arena and skipping it is the reward. It changes nothing about
+*what* is revealed or *when*; only how it lands.
+
+---
+
 ## Controls
 
 Twin-stick, on every input a child might have. Tablet and desktop are equal
 targets.
 
-| | Move | Aim / fire | Drop the hold |
-|---|---|---|---|
-| Touch | left thumb, anywhere on the left half | right thumb | tap the tile bar |
-| Keyboard | `WASD` | arrow keys, or `space` to fire straight ahead | `Escape` |
-| Mouse | `WASD` | the cursor aims, the button fires | tap the tile bar |
+| | Move | Aim / fire | Drop the hold | Ask for a hint |
+|---|---|---|---|---|
+| Touch | left thumb, anywhere on the left half | right thumb | tap the tile bar | tap the branch button |
+| Keyboard | `WASD` | arrow keys, or `space` to fire straight ahead | `Escape` | `H` |
+| Mouse | `WASD` | the cursor aims, the button fires | tap the tile bar | click the branch button |
+
+The hint control is a brass ring with a three-node tree drawn inside it — a
+glyph and not a word, because it is a control a five-year-old meets before they
+can read, in a pack that ships in about fifty languages. It sits at the
+bottom-left of the tree's own band, **beside** the tree rather than under it: a
+phone held sideways is 390px tall and the host takes the top hundred, so stacking
+the control on its own row spent sixty of the remaining hundred and forty and
+left the tree fifty-nine pixels to draw four rows in. Landscape has width and no
+height, so the control is paid for out of the width.
+
+It is checked before the sticks and before the tile bar, and `chrome.test.ts`
+asserts at every viewport that nowhere the hint control answers does the tile bar
+answer too — because a child who reaches for help and instead throws away the
+hold they spent a minute assembling is "a hint costs something" built out of
+geometry rather than out of rules.
 
 ### The ship, and why it was wild on Android specifically
 
@@ -308,6 +458,8 @@ src/
                      target has to be for the game to be a game about it
   game/ladder.ts     what the game asks the host for: the band, and the walk
   game/steer.ts      what a thumb means: a dead zone and a response curve
+  game/tree.ts       the factor tree, generated and laid out; it may not lie
+  game/hint.ts       the escalation, the quiet, and where the answer is given
   game/bank.ts       the hold, and the factor tile bar
   game/arena.ts      the rules: husks, motes, the ship, the resonator
   game/best.ts       the longest chain, guarded for a pack frame
@@ -315,13 +467,13 @@ src/
   render/         palette, scene, sparks
   render/hud.ts   where the chrome may be drawn: the safe area, minus two corners
   audio/audio.ts  asset-free Web Audio, C5–C6 pentatonic
-  test/           132 tests: rules, pacing, the ship, wiring, and the chrome
+  test/           176 tests: rules, pacing, the ship, the hint, wiring, chrome
 ```
 
 ## Tests
 
 ```
-npm test        132 tests
+npm test        176 tests
 npm run tsc     0 errors
 npm run build   the library build
 npm run build:pack   the pack build → dist-pack/
@@ -329,6 +481,17 @@ npm run build:pack   the pack build → dist-pack/
 
 The ones that matter:
 
+* `hint.test.ts` — **the tree may not lie.** The generator is checked as a
+  property, not by example: every whole number from 12 to 999, on twelve seeds,
+  every node the exact product of its two children, every leaf prime, and the
+  leaves exactly `primeFactors(n)` as a multiset. A hint that says
+  `112 = 2·2·2·7` sends a child to sweep 56 and be refused by the game that told
+  them to. Then: the escalation is a superset chain, the silhouette and the first
+  prime provably cannot state the answer, the last-but-one stage always spells
+  the hold out in full, the quiet is pure in the item and monotone
+  non-decreasing in both of its difficulty signals, a sheet does not spend it,
+  and a hinted run comes out identical to a blind one on everything the child can
+  see. **Every assertion in it verified to fail** by breaking what it covers.
 * `resonance.test.ts` — a target is cleared **only** by a genuine prime
   factorisation of it (exhaustive over every multiset of small primes to six
   tiles against every target to 200); a prime target cannot be assembled from
@@ -373,7 +536,12 @@ The ones that matter:
   hold — is reachable. **Verified to fail with the layout reverted**, not by
   reading it.
 * `mount.test.ts` — the shell, including the one that got away: flying into the
-  resonator asserts the hold. `Arena.enter` was covered exhaustively by the
+  resonator asserts the hold. It also drives the real pointer handler, the real
+  loop and the real renderer to ask whether a `?` ever reaches the canvas —
+  because `askHint`, `unfold` and `Arena.hint` live entirely in the shell, and
+  every assertion about them in `hint.test.ts` would pass with all three
+  unwired: a hint system a child could never see, in a game whose whole problem
+  is getting stuck. **Verified to fail** with each of the three cut. `Arena.enter` was covered exhaustively by the
   rules tests and **never called by the shell**, so the entire reasoning layer
   was unreachable in the shipped game while every test was green. It also
   asserts that reading the manual holds the world and that closing it lets go,

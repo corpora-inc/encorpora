@@ -17,11 +17,14 @@
 import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import type { Arena, Body, Resonator } from "../game/arena.ts"
 import { HUSK_R, MOTE_R, RESONATOR_R, SHIP_R, SHOT_R } from "../game/arena.ts"
+import { heldLeaves, type HintState, revealPaceMs } from "../game/hint.ts"
+import type { PlacedNode } from "../game/tree.ts"
 import type { Grid } from "../sim/grid.ts"
 import { hudLayout, type HudLayout } from "./hud.ts"
 import { Sparks } from "./particles.ts"
 import {
   BRASS,
+  BRASS_DIM,
   BRASS_LIGHT,
   CELESTIAL,
   CELESTIAL_DIM,
@@ -47,6 +50,12 @@ export type Banner = { text: string; tint: string; age: number }
 
 const BANNER_MS = 1400
 
+/** How long one node of the hint tree takes to fade and swell into place. */
+const NODE_GROW_MS = 200
+
+/** The scrim the tree is read against, so a numeral never fights a strut. */
+const TREE_SCRIM = "rgba(5,8,16,0.72)"
+
 export class Scene {
   private ctx: CanvasRenderingContext2D
   private dpr = 1
@@ -68,6 +77,22 @@ export class Scene {
    * the insets over and Split View changes them without one.
    */
   private hud: HudLayout
+
+  /**
+   * The hint's own clock and memory.
+   *
+   * A stage is a *derived* value in the arena — there is no timer over there —
+   * so the animation state lives here: when each node started to appear, when
+   * each numeral did, and which leaves the child is already carrying. All of it
+   * is thrown away when the resonator changes, keyed on the question id.
+   */
+  private clock = 0
+  private treeKey = ""
+  private nodeAt = new Map<number, number>()
+  private numeralAt = new Map<number, number>()
+  private filled = new Set<number>()
+  /** Where the hint control was last drawn. It is a touch target. */
+  private hintRect = { x: 0, y: 0, w: 0, h: 0 }
 
   private readonly canvas: HTMLCanvasElement
   private reduced: boolean
@@ -113,6 +138,7 @@ export class Scene {
   }
 
   advance(dtMs: number): void {
+    this.clock += dtMs
     this.sparks.step(dtMs)
     this.shake *= Math.exp(-0.009 * dtMs)
     if (this.shake < 0.15) this.shake = 0
@@ -122,7 +148,23 @@ export class Scene {
     }
   }
 
-  draw(arena: Arena, grid: Grid, state: { best: number; paused: boolean; stalled: boolean }): void {
+  draw(
+    arena: Arena,
+    grid: Grid,
+    state: {
+      best: number
+      paused: boolean
+      stalled: boolean
+      /**
+       * The hint as the arena has it this frame, or `null` for none.
+       *
+       * REQUIRED, and the argument is `hud.ts`'s: made optional, a caller that
+       * forgets it still compiles and quietly ships a game whose hint system is
+       * never drawn, and the only way anybody finds out is by getting stuck.
+       */
+      hint: HintState | null
+    },
+  ): void {
     const ctx = this.ctx
     const w = this.cssWidth
     const h = this.cssHeight
@@ -165,6 +207,7 @@ export class Scene {
     this.sparks.draw(ctx)
     ctx.restore()
 
+    this.drawHint(arena, state.hint)
     this.drawTileBar(arena)
     this.drawStatus(arena, state)
     if (state.paused) this.drawSheet()
@@ -366,6 +409,266 @@ export class Scene {
   // ── the chrome ───────────────────────────────────────────────────────────
 
   /**
+   * THE HINT — the factor tree, and the control that unfolds it.
+   *
+   * Drawn in the same materials as the field, which is the whole idea: a lit
+   * leaf is the same celestial hexagon as the mote drifting out there, and an
+   * unopened node is the same carved stone as the husk holding it. A child does
+   * not have to be told the tree is a map of the arena; it is drawn out of the
+   * arena's own pieces.
+   *
+   * A leaf whose prime is already in the hold gets a brass collar, and the frame
+   * it earns one it throws a spark. That is the maths moment — `2·2·2·2·7`
+   * assembling itself one piece at a time — and it is the only thing in the
+   * game that celebrates a factorisation rather than a resonator.
+   */
+  private drawHint(arena: Arena, hint: HintState | null): void {
+    const res = arena.resonator
+    if (!res) {
+      this.hintRect = { x: 0, y: 0, w: 0, h: 0 }
+      return
+    }
+    this.drawHintControl(hint)
+    if (!hint) {
+      // A new question wipes the animation state, so the next tree grows rather
+      // than snapping in half-finished with the last one's timings.
+      if (this.treeKey !== "") this.forgetTree("")
+      return
+    }
+    if (this.treeKey !== res.questionId) this.forgetTree(res.questionId)
+
+    const { placed, shown } = hint
+    const box = this.hud.tree
+    const cols = placed.columns
+    const rows = placed.rows
+    const r = Math.max(
+      9,
+      Math.min(22, Math.min(box.w / Math.max(1, cols * 2.4), box.h / Math.max(1, rows * 2.6))),
+    )
+    const colStep = cols > 1 ? Math.min(box.w / cols, r * 3.2) : 0
+    const rowStep = rows > 1 ? Math.min((box.h - r * 2) / (rows - 1), r * 3) : 0
+    const usedW = colStep * (cols - 1) + r * 2
+    const usedH = rowStep * (rows - 1) + r * 2
+    const cx = box.x + box.w / 2
+    // Bottom-anchored: the leaves hang closest to the tile bar they are about
+    // to fill, and a shallow tree does not float in the middle of the arena.
+    const top = box.y + box.h - usedH + r
+    const at = (node: PlacedNode): { x: number; y: number } => ({
+      x: cx + (node.u - (cols - 1) / 2) * colStep,
+      y: top + node.depth * rowStep,
+    })
+
+    const pace = this.reduced ? 0 : revealPaceMs(arena.chain)
+    this.schedule(hint, pace)
+
+    const ctx = this.ctx
+    const pad = 12
+    ctx.save()
+    ctx.fillStyle = TREE_SCRIM
+    roundRect(ctx, cx - usedW / 2 - pad, top - r - pad, usedW + pad * 2, usedH + pad * 2, 10)
+    ctx.fill()
+    ctx.strokeStyle = BRASS_DIM
+    ctx.lineWidth = 1
+    roundRect(ctx, cx - usedW / 2 - pad, top - r - pad, usedW + pad * 2, usedH + pad * 2, 10)
+    ctx.stroke()
+
+    // The branches first, so every node sits on top of its own lines.
+    ctx.strokeStyle = BRASS_DIM
+    ctx.lineWidth = 1.6
+    ctx.beginPath()
+    for (let i = 0; i < placed.nodes.length; i++) {
+      const node = placed.nodes[i] as PlacedNode
+      if (node.parent < 0) continue
+      if (this.growth(i) <= 0) continue
+      const a = at(placed.nodes[node.parent] as PlacedNode)
+      const b = at(node)
+      ctx.moveTo(a.x, a.y + r * 0.7)
+      ctx.lineTo(b.x, b.y - r * 0.7)
+    }
+    ctx.stroke()
+
+    const holding = heldLeaves(placed, shown, arena.bank.tiles)
+    for (let i = 0; i < placed.nodes.length; i++) {
+      const node = placed.nodes[i] as PlacedNode
+      const grow = this.growth(i)
+      if (grow <= 0) continue
+      const p = at(node)
+      this.drawTreeNode(node, p.x, p.y, r * grow, shown.has(i) && this.numeralIn(i), holding.has(i))
+    }
+    ctx.restore()
+
+    // The click. A leaf that has just been satisfied throws a spark, and the
+    // last one throws a bigger one — the factorisation is complete in the hold.
+    for (const index of holding) {
+      if (this.filled.has(index)) continue
+      const p = at(placed.nodes[index] as PlacedNode)
+      const last = holding.size === placed.leaves.length
+      this.sparks.burst(p.x, p.y, last ? 14 : 5, last ? 260 : 150, BRASS_LIGHT, last ? 2.4 : 1.5)
+    }
+    this.filled = holding
+  }
+
+  /** The branch glyph that asks for one more piece. No word, in any language. */
+  private drawHintControl(hint: HintState | null): void {
+    const ctx = this.ctx
+    const { cx, cy, r } = this.hud.hint
+    // A 44px minimum target, per the touch-target rule, whatever `r` came out as.
+    const half = Math.max(22, r)
+    this.hintRect = { x: cx - half, y: cy - half, w: half * 2, h: half * 2 }
+
+    const more = hint === null || hint.stage < hint.stages
+    ctx.save()
+    ctx.beginPath()
+    ctx.arc(cx, cy, r, 0, Math.PI * 2)
+    ctx.fillStyle = "rgba(5,8,16,0.72)"
+    ctx.fill()
+    ctx.lineWidth = 2
+    ctx.strokeStyle = more ? BRASS : BRASS_DIM
+    ctx.stroke()
+
+    // A three-node factor tree, drawn small: one above, two below.
+    const s = r * 0.46
+    ctx.strokeStyle = more ? BRASS_LIGHT : BRASS_DIM
+    ctx.lineWidth = 1.6
+    ctx.beginPath()
+    ctx.moveTo(cx, cy - s * 0.35)
+    ctx.lineTo(cx - s, cy + s * 0.7)
+    ctx.moveTo(cx, cy - s * 0.35)
+    ctx.lineTo(cx + s, cy + s * 0.7)
+    ctx.stroke()
+    ctx.fillStyle = more ? BRASS_LIGHT : BRASS_DIM
+    for (const [dx, dy] of [
+      [0, -s * 0.7],
+      [-s, s * 0.9],
+      [s, s * 0.9],
+    ] as Array<[number, number]>) {
+      ctx.beginPath()
+      ctx.arc(cx + dx, cy + dy, r * 0.15, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    ctx.restore()
+  }
+
+  private drawTreeNode(
+    node: PlacedNode,
+    x: number,
+    y: number,
+    r: number,
+    numeral: boolean,
+    held: boolean,
+  ): void {
+    const ctx = this.ctx
+    if (!numeral) {
+      // Blank. A ring and a question mark, in the same brass the arena's own
+      // frame is made of — never a warning colour, never a gap.
+      ctx.beginPath()
+      ctx.arc(x, y, r * 0.86, 0, Math.PI * 2)
+      ctx.fillStyle = "rgba(20,26,40,0.9)"
+      ctx.fill()
+      ctx.strokeStyle = BRASS_DIM
+      ctx.lineWidth = 1.6
+      ctx.stroke()
+      ctx.fillStyle = INK_DIM
+      ctx.font = numeralFont(r * 0.95)
+      ctx.textAlign = "center"
+      ctx.textBaseline = "middle"
+      ctx.fillText("?", x, y + 1)
+      return
+    }
+
+    if (node.prime) {
+      // The same hexagon as a mote, because it *is* a mote — one drifting out
+      // there with this number on it, and the child's job is to go and get it.
+      ctx.beginPath()
+      for (let i = 0; i < 6; i++) {
+        const a = (i / 6) * Math.PI * 2 - Math.PI / 2
+        const px = x + Math.cos(a) * r
+        const py = y + Math.sin(a) * r
+        if (i === 0) ctx.moveTo(px, py)
+        else ctx.lineTo(px, py)
+      }
+      ctx.closePath()
+      ctx.fillStyle = CELESTIAL
+      ctx.fill()
+      ctx.strokeStyle = held ? BRASS_LIGHT : CELESTIAL_DIM
+      ctx.lineWidth = held ? 3 : 2
+      ctx.stroke()
+      ctx.fillStyle = CELESTIAL_INK
+      ctx.font = numeralFont(r * 1)
+      ctx.textAlign = "center"
+      ctx.textBaseline = "middle"
+      ctx.fillText(String(node.value), x, y + 1)
+      return
+    }
+
+    // The same carved stone as a husk, for the same reason.
+    const k = r * 0.82
+    ctx.beginPath()
+    ctx.rect(x - k, y - k, k * 2, k * 2)
+    ctx.fillStyle = STONE
+    ctx.fill()
+    ctx.strokeStyle = STONE_EDGE
+    ctx.lineWidth = 2
+    ctx.stroke()
+    ctx.fillStyle = STONE_INK
+    const digits = String(node.value).length
+    ctx.font = numeralFont((k * 1.5) / Math.max(1, digits * 0.62))
+    ctx.textAlign = "center"
+    ctx.textBaseline = "middle"
+    ctx.fillText(String(node.value), x, y + 1)
+  }
+
+  /** Wipe the tree's animation memory. A new question grows from nothing. */
+  private forgetTree(key: string): void {
+    this.treeKey = key
+    this.nodeAt.clear()
+    this.numeralAt.clear()
+    this.filled = new Set<number>()
+  }
+
+  /**
+   * Give every node and every newly lit numeral a moment to arrive at.
+   *
+   * The stagger is `pace`, which comes from the chain: long and calm for a child
+   * who is finding it hard, near-instant for one on a run. Nothing here decides
+   * *what* is revealed — the arena did that — only the order it lands in.
+   */
+  private schedule(hint: HintState, pace: number): void {
+    const { placed, shown } = hint
+    if (this.nodeAt.size === 0) {
+      // The silhouette, growing downward from the root.
+      for (let i = 0; i < placed.nodes.length; i++) {
+        this.nodeAt.set(i, this.clock + (placed.nodes[i] as PlacedNode).depth * pace)
+      }
+    }
+    let k = 0
+    for (const index of shown) {
+      if (this.numeralAt.has(index)) continue
+      this.numeralAt.set(index, this.clock + k * pace)
+      k += 1
+    }
+  }
+
+  /** 0 before a node has begun to appear, 1 once it is fully there. */
+  private growth(index: number): number {
+    const at = this.nodeAt.get(index)
+    if (at === undefined) return 0
+    if (this.clock < at) return 0
+    return Math.min(1, Math.max(0.2, (this.clock - at) / NODE_GROW_MS))
+  }
+
+  private numeralIn(index: number): boolean {
+    const at = this.numeralAt.get(index)
+    return at !== undefined && this.clock >= at
+  }
+
+  /** Did a press land on the hint control? That gesture asks for one more piece. */
+  hitsHint(x: number, y: number): boolean {
+    const r = this.hintRect
+    return r.w > 0 && x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h
+  }
+
+  /**
    * The factor tile bar. This is the passive layer and it is the reason the
    * game teaches anything at all when nobody is trying: `2·2·3` sitting under a
    * running 12, changing the instant a mote is swept.
@@ -522,4 +825,34 @@ export class Scene {
   dispose(): void {
     this.canvas.remove()
   }
+}
+
+/**
+ * A rounded rectangle path, drawn by hand.
+ *
+ * `CanvasRenderingContext2D.roundRect` is not in every WebView this pack runs
+ * in — an older Android System WebView is a real device in the fleet — and a
+ * missing method here would throw inside the draw loop and take the whole frame
+ * with it.
+ */
+function roundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+): void {
+  const k = Math.max(0, Math.min(r, Math.min(w, h) / 2))
+  ctx.beginPath()
+  ctx.moveTo(x + k, y)
+  ctx.lineTo(x + w - k, y)
+  ctx.quadraticCurveTo(x + w, y, x + w, y + k)
+  ctx.lineTo(x + w, y + h - k)
+  ctx.quadraticCurveTo(x + w, y + h, x + w - k, y + h)
+  ctx.lineTo(x + k, y + h)
+  ctx.quadraticCurveTo(x, y + h, x, y + h - k)
+  ctx.lineTo(x, y + k)
+  ctx.quadraticCurveTo(x, y, x + k, y)
+  ctx.closePath()
 }

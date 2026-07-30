@@ -134,6 +134,21 @@ export class Audio {
     }
   }
 
+  /**
+   * A piece of the factor tree arriving.
+   *
+   * Two notes, rising, quiet, on the same felt mallet as everything else — and
+   * deliberately built out of the *sweep* interval rather than the refusal's, so
+   * a child hears help as a small good thing happening rather than as a
+   * correction. It never gets more insistent as the stages go up; it climbs the
+   * pentatonic, which is the same shape a resonance opening makes.
+   */
+  hint(stage: number): void {
+    const i = Math.min(PENTATONIC.length - 2, Math.max(0, stage - 1))
+    this.strike(PENTATONIC[i] as number, 0.075, 260)
+    this.strike(PENTATONIC[i + 1] as number, 0.06, 320, 0.09)
+  }
+
   /** A refusal. Lower, shorter, and quieter than a resonance — never a buzzer. */
   refuse(): void {
     this.strike(233.08, 0.1, 190, 0, "triangle")

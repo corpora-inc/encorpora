@@ -123,6 +123,15 @@ export function mountLattice(
         ],
       },
       {
+        heading: "The little tree button",
+        lines: [
+          "Above the bar on the left there is a round button with a tiny tree on it. Press it any time you like.",
+          "A factor tree grows above the bar. At first every number on it is hidden. Press again and one of them shows, then another, then all of them.",
+          "The glowing ones at the bottom of the tree are exactly the pieces to collect. If you wait a while, the tree starts showing itself.",
+          "It costs nothing. Use it as much as you want. On a keyboard, press H.",
+        ],
+      },
+      {
         heading: "If the ring says NOT YET",
         lines: [
           "Your pieces multiply to the wrong number. One extra 5 turns 72 into 360.",
@@ -229,6 +238,21 @@ export function mountLattice(
           grid.impulse(event.at.x, event.at.y, 260, 5)
           break
         }
+        case "hint": {
+          // Warm and small. No banner and no word — a hint that announced itself
+          // in language would be the game telling a child, in front of them, that
+          // it had noticed they were struggling. The sheet stirs under the ring
+          // the help is coming from, two notes rise, and the tree is there.
+          //
+          // The tick is `light`, the same one a mote gives when it is swept, and
+          // it is not decoration: an automatic hint arrives while a child is
+          // looking somewhere else in the arena, and a tree that fades in
+          // unnoticed at the bottom of the screen has helped nobody.
+          grid.impulse(event.at.x, event.at.y, 150, 3)
+          audio.hint(event.stage)
+          host.haptic("light")
+          break
+        }
         case "stalled": {
           console.error("[lattice] no askable target; the arena is running without a resonator")
           break
@@ -313,10 +337,16 @@ export function mountLattice(
       // future: it asks again a few seconds later, and this is the only place
       // that clock is read. Inert whenever there is a resonator.
       apply(arena.rearm(now()))
+      // Has the hint moved on its own? The stage is derived rather than timed,
+      // so this is only an edge detector for the sound and the ripple — the
+      // tree would be drawn identically whether or not this line existed. It is
+      // inside the `held` guard because a hint must not unfold behind a sheet: a
+      // child comes back to the tree they left, not to two more stages of it.
+      apply(arena.unfold(now()))
       grid.step(dt)
       scene.advance(dt)
     }
-    scene.draw(arena, grid, { best, paused, stalled: arena.stalled })
+    scene.draw(arena, grid, { best, paused, stalled: arena.stalled, hint: arena.hint(now()) })
   }
 
   // ── pointers ─────────────────────────────────────────────────────────────
@@ -331,6 +361,15 @@ export function mountLattice(
     if (paused || guide.isOpen) return
     audio.resume()
     const p = at(event)
+
+    // Asking for the next piece of the factor tree. Checked before the sticks,
+    // like the tile bar, because the whole left half of the screen is otherwise
+    // a thumbstick — and checked before the bar because it is the smaller
+    // target of the two and sits directly above it.
+    if (scene.hitsHint(p.x, p.y)) {
+      apply(arena.askHint(now()))
+      return
+    }
 
     // Tapping your own hold lets it go. The bank is exact, so a child who swept
     // a stray 5 needs a way out that is not "start again" — and nothing is
@@ -412,6 +451,7 @@ export function mountLattice(
       audio.resume()
     }
     if (event.key === "Escape") apply(arena.vent())
+    if (event.key === "h" || event.key === "H") apply(arena.askHint(now()))
     if (event.key.startsWith("Arrow")) event.preventDefault()
   }
 

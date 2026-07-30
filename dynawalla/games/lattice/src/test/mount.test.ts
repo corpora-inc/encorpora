@@ -17,6 +17,8 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { mount } from "../contract.ts"
+import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
+import { hudLayout } from "../render/hud.ts"
 import { createStubHost } from "../stubHost.ts"
 
 type Listener = (event: unknown) => void
@@ -420,4 +422,138 @@ test("a pause that arrives while a thumb is down does not fly the ship on", () =
     assert.equal(reports.length, said, "an answer was reported across the sheet")
     handle.unmount()
   })
+})
+
+test("the shell is wired to the hint: a tap unfolds the tree, and so does the quiet", () => {
+  // The bug this file already carries a scar from, in a new place. `Arena.enter`
+  // was asserted to death in the rules tests and NEVER CALLED BY THE SHELL, and
+  // the whole reasoning layer was unreachable in the shipped game while every
+  // test was green. `askHint`, `unfold` and `Arena.hint` are three more calls
+  // that live entirely in the shell, and every assertion about them in
+  // `hint.test.ts` would pass with all three unwired — a hint system a child
+  // could never see, in a game whose whole problem is getting stuck.
+  //
+  // So this drives the REAL shell: the real pointer handler, the real loop, the
+  // real renderer, and asks whether a `?` ever reached the canvas.
+  const realNow = Date.now
+  const savedPerformance = Object.getOwnPropertyDescriptor(globalThis, "performance")
+  Date.now = () => 1_700_000_000_000
+  // The hint's quiet is measured against the wall clock the shell reads, so the
+  // wall clock has to be one this test owns. Nothing else in the loop uses it.
+  let wall = 0
+  Object.defineProperty(globalThis, "performance", {
+    configurable: true,
+    writable: true,
+    value: { now: () => wall },
+  })
+  try {
+    const counter = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, counter, ({ host, frames, created }) => {
+      const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      assert.ok(down, "the pointer listener was not installed")
+
+      let t = pump(frames, 8)
+      counter.text.length = 0
+      t = pump(frames, 2, t)
+      assert.equal(
+        counter.text.includes("?"),
+        false,
+        "the factor tree was on screen before anybody asked for it and before any quiet",
+      )
+
+      // A tap on the control, where `hudLayout` says it is.
+      const { cx, cy } = hudLayout(900, safeRect(900, 700)).hint
+      down({ preventDefault() {}, pointerId: 9, pointerType: "touch", clientX: cx, clientY: cy })
+      counter.text.length = 0
+      t = pump(frames, 3, t)
+      assert.ok(
+        counter.text.includes("?"),
+        "tapping the hint control drew no tree at all — the control is not wired to the arena",
+      )
+      handle.unmount()
+    })
+
+    // And the same thing again with nobody touching anything, on the clock.
+    const quiet = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, quiet, ({ host, frames, created }) => {
+      wall = 0
+      const felt: string[] = []
+      const stub = createStubHost({
+        seed: 0x1a771ce,
+        reducedMotion: true,
+        onHaptic: (k) => felt.push(k),
+      })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      assert.ok(canvasOf(created))
+      let t = pump(frames, 8)
+      quiet.text.length = 0
+      t = pump(frames, 4, t)
+      assert.equal(quiet.text.includes("?"), false, "a hint arrived in the first fifth of a second")
+
+      // Two minutes of a child sitting there, which is what "stuck" looks like.
+      for (let i = 0; i < 200 && !quiet.text.includes("?"); i++) {
+        wall += 600
+        t = pump(frames, 1, t)
+      }
+      assert.ok(
+        quiet.text.includes("?"),
+        "two minutes with the question and the game never offered a thing",
+      )
+      // And it ARRIVED rather than merely appearing. Nobody touched anything for
+      // two minutes, so the only thing that can have made the hand buzz is the
+      // hint event reaching the shell — which is the sound, the ripple under the
+      // ring, and the reason a child looks down at all. Drawn without it, the
+      // tree fades in silently at the bottom of the screen while the child is
+      // watching a husk at the top.
+      assert.deepEqual(felt, ["light"], `the hint never announced itself: ${felt.join(",")}`)
+      handle.unmount()
+    })
+
+    // And on a keyboard, where the child has no thumb to put on the control.
+    // Tablet and desktop are equal targets in this pack, and `H` is the only way
+    // in on one of them.
+    const keys = { calls: 0, text: [] as string[] }
+    const savedAdd = Object.getOwnPropertyDescriptor(globalThis, "addEventListener")
+    const handlers = new Map<string, Array<(e: unknown) => void>>()
+    Object.defineProperty(globalThis, "addEventListener", {
+      configurable: true,
+      writable: true,
+      value: (type: string, fn: (e: unknown) => void) => {
+        handlers.set(type, [...(handlers.get(type) ?? []), fn])
+      },
+    })
+    try {
+      withBrowser({ w: 900, h: 700 }, keys, ({ host, frames, created }) => {
+        wall = 0
+        const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+        const handle = mount(host as unknown as HTMLElement, stub)
+        assert.ok(canvasOf(created))
+        let t = pump(frames, 8)
+        keys.text.length = 0
+        t = pump(frames, 2, t)
+        assert.equal(keys.text.includes("?"), false, "a tree was up before the key was pressed")
+
+        // Every keydown listener on the window, because the shared how-to-play
+        // chrome installs one of its own before this pack installs the arena's
+        // and a real key press reaches both.
+        const keyDowns = handlers.get("keydown") ?? []
+        assert.ok(keyDowns.length > 0, "the keyboard listener was not installed")
+        for (const fn of keyDowns) fn({ key: "h", repeat: false, preventDefault() {} })
+        keys.text.length = 0
+        t = pump(frames, 3, t)
+        assert.ok(keys.text.includes("?"), "pressing H drew no tree — the key is not wired")
+        handle.unmount()
+      })
+    } finally {
+      if (savedAdd) Object.defineProperty(globalThis, "addEventListener", savedAdd)
+      else Reflect.deleteProperty(globalThis, "addEventListener")
+    }
+  } finally {
+    Date.now = realNow
+    if (savedPerformance) Object.defineProperty(globalThis, "performance", savedPerformance)
+    else Reflect.deleteProperty(globalThis, "performance")
+  }
 })
