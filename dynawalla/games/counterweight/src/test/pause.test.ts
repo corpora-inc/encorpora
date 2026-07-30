@@ -2,13 +2,13 @@
 //
 // The host can raise a sheet — a transition surface, a parent gate — over a pack
 // that is still mounted and whose rAF is still running, and it sends `pause`
-// rather than unmounting. This game calls `transition` every time a Turk goes
-// over, so the sheet is not hypothetical: it is raised by the game's own success.
+// rather than unmounting. This game calls `transition` every time a scale is
+// cleared, so the sheet is not hypothetical: it is raised by the game's own
+// success.
 //
-// Without the guards, the press window opens and closes behind that sheet, the
-// whistle seats the beam wherever it stood, and the child is marked wrong — and
-// loses ground — for a column they were never shown. A reward that costs the
-// match is the worst bug this game could have.
+// Without the guards, the abandonment guard runs out behind that sheet and racks
+// a lot the child never saw, while the steel quietly heals underneath. A reward
+// that costs the child their round is the worst bug this game could have.
 //
 // Every assertion below fails if `Bout.pause` stops stopping the clock.
 
@@ -38,51 +38,52 @@ function opened(): Bout {
   return bout
 }
 
-test("the clock does not run behind the sheet", () => {
+test("the guard does not run behind the sheet", () => {
   const bout = opened()
   bout.pause()
   assert.equal(bout.paused, true)
 
   const before = bout.elapsedMs
-  // Far more than the whole window, and then some.
+  const idle = bout.idle
+  // Far more than the whole guard, and then some.
   const events = bout.advance(120_000)
 
   assert.deepEqual(events, [], "something happened behind the sheet")
   assert.equal(bout.elapsedMs, before, "the clock ran behind the sheet")
-  assert.equal(bout.phase, "press", "the window closed behind the sheet")
+  assert.equal(bout.idle, idle, "the guard ran down behind the sheet")
+  assert.equal(bout.phase, "press", "the round ended behind the sheet")
 
   bout.resume()
   assert.equal(bout.paused, false)
-  bout.advance(bout.pressMs + 10)
-  assert.equal(bout.phase, "settle", "the clock did not restart on resume")
+  bout.advance(bout.guardMs + 10)
+  assert.equal(bout.phase, "settle", "the guard did not restart on resume")
 })
 
-test("a round cannot be lost behind the sheet", () => {
-  // The bug, exactly: an unpaused window closes, the whistle seats a beam the
-  // child never saw, and the arm goes the wrong way for it.
+test("a lot cannot be racked behind the sheet", () => {
+  // The bug, exactly: an unpaused guard runs out and takes away a round the child
+  // never saw.
   const bout = opened()
   bout.pause()
-  const arm = bout.match.arm
-  const held = bout.match.held
+  const run = bout.day.run
+  const held = bout.day.held
 
   bout.advance(120_000)
 
-  assert.equal(bout.match.arm, arm, "ground was taken behind the sheet")
-  assert.equal(bout.match.held, held)
-  assert.equal(bout.seat, null, "the beam was judged behind the sheet")
+  assert.equal(bout.day.run, run, "the day's run moved behind the sheet")
+  assert.equal(bout.day.held, held)
+  assert.equal(bout.docket, null, "a docket was written behind the sheet")
 })
 
-test("the pan does not settle behind the sheet either", () => {
-  // The sag is a clock too, and a slow one. Left running behind a sheet it turns
-  // a correct load into a wrong one without a single frame the child saw.
+test("the brass does not move behind the sheet either", () => {
+  // Nothing moves a pan on its own any more — the sag is gone — so this is a
+  // regression fence rather than a live bug: if anything ever starts draining a
+  // pan again, it must not do it where nobody can see it.
   const bout = opened()
-  // Armed first: the sag does not run before the child's first blow of the
-  // round, so a bout nobody has touched would pass this vacuously.
   bout.strike({ place: 1, dir: 1 })
   const load = bout.load
   bout.pause()
   bout.advance(120_000)
-  assert.equal(bout.load, load, "the pan sagged behind the sheet")
+  assert.equal(bout.load, load, "the pan moved behind the sheet")
 })
 
 test("the steel does not bleed behind the sheet", () => {
@@ -100,27 +101,29 @@ test("the steel does not bleed behind the sheet", () => {
   assert.equal(bout.strain.level, strain, "the steel healed behind the sheet")
 })
 
-test("a tap on the sheet is a tap on the sheet — not a blow, not a seat", () => {
+test("a tap on the sheet is a tap on the sheet — not a blow, not a stamp", () => {
   const bout = opened()
   const load = bout.load
   bout.pause()
 
   assert.deepEqual(bout.strike({ place: 100, dir: 1 }), [{ kind: "refused", reason: "phase" }])
   assert.equal(bout.load, load, "a blow landed through the sheet")
-  assert.deepEqual(bout.seatNow(), [{ kind: "refused", reason: "phase" }])
-  assert.equal(bout.seat, null, "the beam was seated through the sheet")
+  assert.deepEqual(bout.stamp(), [{ kind: "refused", reason: "phase" }])
+  assert.equal(bout.docket, null, "a docket was written through the sheet")
 })
 
-test("resuming does not hand back a window that has already gone", () => {
-  // A sheet raised with two seconds left leaves two seconds, not thirteen.
+test("a sheet is not a way to buy the guard back either", () => {
+  // The guard freezes, it does not refill. A sheet raised with two seconds of
+  // silence left leaves two seconds of silence, not the whole guard — otherwise a
+  // pack left face-down on a table would hold an item checked out for ever.
   const bout = opened()
-  bout.advance(bout.pressMs - 2000)
+  bout.advance(bout.guardMs - 2000)
   bout.pause()
   bout.advance(60_000)
   bout.resume()
 
   bout.advance(1900)
-  assert.equal(bout.phase, "press", "the window grew while the sheet was up")
+  assert.equal(bout.phase, "press", "the guard shrank while the sheet was up")
   bout.advance(200)
-  assert.equal(bout.phase, "settle", "the window did not close when it should have")
+  assert.equal(bout.phase, "settle", "the guard grew while the sheet was up")
 })

@@ -5,10 +5,10 @@
 // ... stressing me out even more."
 //
 // This is the game that was named. The shared how-to-play sheet holds the sound
-// itself now, and the keys and the taps with it — but it cannot hold a game's
-// own clock, and the clock is the part with teeth here. A press window that
-// opens, runs and whistles behind the scrim costs the child a weight they never
-// saw, and the sag drains their pan while they read.
+// itself now, and the keys and the taps with it — but it cannot hold a game's own
+// clock. There is no press window left to run behind the scrim, and no sag to
+// drain the pan while a child reads — but the abandonment guard is still there,
+// and left running it decides nobody is home and racks a lot the child never saw.
 //
 // `mount.test.ts` already drives the host's `pause()` and a backgrounded tab.
 // Neither of those is this: the defect was that the manual reached NEITHER of
@@ -35,9 +35,9 @@ function facePoints(): Array<{ x: number; y: number }> {
   )
 }
 
-function seatPoint(): { x: number; y: number } {
-  const { seat } = viewLayout(W, H)
-  return { x: seat.x + seat.w / 2, y: seat.y + seat.h / 2 }
+function stampPoint(): { x: number; y: number } {
+  const { stamp } = viewLayout(W, H)
+  return { x: stamp.x + stamp.w / 2, y: stamp.y + stamp.h / 2 }
 }
 
 /** The shared module's own controls, found the way a child's finger finds them. */
@@ -117,8 +117,9 @@ test("MANUAL FREEZES THE YARD: no window opens, closes or whistles behind the ru
 
     const closed = world.closed.length
     const asked = world.asked
-    // A hundred seconds behind the scrim — more than two whole press windows,
-    // which is exactly what the child used to lose by reading.
+    // A hundred seconds behind the scrim — more than the longest abandonment
+    // guard in the pack, which is exactly what the child used to lose by
+    // reading.
     t = pump(frames, 6000, t, clock)
 
     assert.equal(
@@ -173,7 +174,7 @@ test("a blow struck behind the manual is not a blow", () => {
       hit(p)
       t = pump(frames, 20, t, clock)
     }
-    hit(seatPoint())
+    hit(stampPoint())
     t = pump(frames, 60, t, clock)
 
     assert.equal(world.haptics.length, haptics, "a blow behind the manual reached the rack")
@@ -215,7 +216,7 @@ test("the read is not billed to the child as thinking time", () => {
 
     // Then the child seats the beam. A whistle is not reported at all, so the
     // round has to be *declared* for there to be an `ms` to bill.
-    const lever = seatPoint()
+    const lever = stampPoint()
     down({ preventDefault: () => undefined, clientX: lever.x, clientY: lever.y })
     up({})
     t = pump(frames, 30, t, clock)
@@ -234,7 +235,7 @@ test("the read is not billed to the child as thinking time", () => {
 
 test("THE MANUAL ONLY LIFTS ITS OWN PAUSE: closing it cannot restart a host-paused game", () => {
   // The host puts a sheet over a still-mounted pack — a parent gate, a stopping
-  // point, and this game raises one itself every time a Turk goes over. A child
+  // point, and this game raises one itself every time a scale is cleared. A child
   // stuck behind it opens the rules and closes them again. Without the guard,
   // the yard is handed back RUNNING underneath a sheet that is still up, and
   // the next window opens and whistles where nobody can see it.
@@ -306,11 +307,14 @@ test("opening and closing the manual repeatedly is not a stack of pauses", () =>
       open()
       open() // already open: the module refuses, and `onOpen` must not run twice
       const asked = world.asked
-      t = pump(frames, 1200, t, clock)
+      t = pump(frames, 2600, t, clock)
       assert.equal(world.asked, asked, `read ${round} did not stop the yard`)
       close()
       close() // and a double close must not resume a game twice
-      t = pump(frames, 1200, t, clock)
+      // Long enough for the abandonment guard to rack an untouched lot. It used to
+      // be 1200 frames — 20.0 s, a whole press window. There is no window now, and
+      // the guard on the bottom rung is `MIN_GUARD_SECONDS`: 30 s.
+      t = pump(frames, 2600, t, clock)
       assert.ok(world.asked > asked, `read ${round} left the game stuck paused`)
     }
     handle.unmount()

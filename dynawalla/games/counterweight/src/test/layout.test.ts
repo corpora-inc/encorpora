@@ -2,7 +2,7 @@
 //
 // Two things were wrong with this game's layout and neither could be seen from
 // a desk. The pack declares `viewport-fit=cover`, so the canvas runs under the
-// notch and the home indicator, and the seat lever — the one control the round
+// notch and the home indicator, and the stamp — the one control the round
 // ends on — was pinned to `h - pad` and therefore underneath the home
 // indicator. And the host floats an exit control over the top-left corner and a
 // how-to-play control over the top-right, so `TURK 4` at one end of the HUD and
@@ -69,7 +69,7 @@ for (const [vname, w, h] of VIEWPORTS) {
         ["the pans", panExtent(l)],
         ["the gauge", l.gauge],
         ["the rack", l.rack],
-        ["the seat lever", l.seat],
+        ["the stamp", l.stamp],
         ...l.pillars.flatMap(
           (p): Array<[string, Rect]> => [
             [`the ${p.place} ADD face`, p.up],
@@ -93,11 +93,11 @@ for (const [vname, w, h] of VIEWPORTS) {
 
     test(`every touch target is still hittable at ${vname} (${w}×${h}), ${iname}`, () => {
       const l = viewLayout(w, h, insets)
-      // The rack and the seat are the whole input vocabulary. A face under the
+      // The rack and the stamp are the whole input vocabulary. A face under the
       // touch floor is a blow the child meant to land and did not, and on this
       // beam an unintended second blow is how you shear it.
       const targets: Array<[string, Rect]> = [
-        ["the seat lever", l.seat],
+        ["the stamp", l.stamp],
         ...l.pillars.flatMap(
           (p): Array<[string, Rect]> => [
             [`the ${p.place} ADD face`, p.up],
@@ -140,7 +140,7 @@ test("the safe area moves the yard, it does not merely shrink it", () => {
   const notched = viewLayout(390, 844, { top: 59, right: 0, bottom: 34, left: 0 })
   assert.ok(notched.hud.y > bare.hud.y, "the HUD did not move down for the notch")
   assert.ok(
-    notched.seat.y + notched.seat.h < bare.seat.y + bare.seat.h,
-    "the seat lever did not lift off the home indicator",
+    notched.stamp.y + notched.stamp.h < bare.stamp.y + bare.stamp.h,
+    "the stamp did not lift off the home indicator",
   )
 })

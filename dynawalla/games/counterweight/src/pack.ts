@@ -3,11 +3,11 @@
 // The seam and nothing else. `mount` is handed the real host in place of the
 // stub, because the adapter presents the same synchronous surface `Host` in
 // `contract.ts` already describes — so the beam, the rack, the strain and the
-// yard are untouched.
+// weigh-house are untouched.
 //
-// What crosses the boundary is the weight on his pan. The curriculum draws a
+// What crosses the boundary is the weight of the lot. The curriculum draws a
 // column operation, the host reveals its canonical value, and that value is what
-// the beam is weighed against. **`items.reveal` is declared and it is
+// the brass is weighed against. **`items.reveal` is declared and it is
 // load-bearing**: without it the adapter gets an empty canonical value, drops
 // every item, and the pack mounts and warms and serves no questions at all, with
 // nothing failing anywhere.
@@ -40,11 +40,11 @@ async function start(el: HTMLElement): Promise<void> {
 
   // **The sheet.** A transition can put a surface over the frame, and the SDK
   // documents that the pack then receives `pause` while it stays mounted and
-  // running. This game calls `transition` every time a Turk goes over, so it is
-  // not hypothetical: an unpaused press window would open and close behind that
-  // sheet, seat the beam wherever it happened to stand, mark the child wrong for
-  // a column they were never shown, and take ground off them for it. A reward
-  // that costs the match is the worst bug this game could have.
+  // running. This game calls `transition` every time a scale is cleared, so it is
+  // not hypothetical: an unpaused abandonment guard would run out behind that
+  // sheet and rack a lot the child was never shown, while the steel quietly
+  // healed. A reward that costs the child their round is the worst bug this game
+  // could have.
   //
   // These two lines are the whole subscription, and without them the handle's
   // `pause`/`resume` are inert — the methods exist, and nothing ever calls them.

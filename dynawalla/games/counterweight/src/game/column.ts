@@ -1,4 +1,4 @@
-// The prompt, split back into the column the Turk's pan has to draw.
+// The chit, split back into the column the goods' pan has to draw.
 //
 // The host hands over a display string — `"473 + 168"` — and the column is this
 // game's own presentation of it, because lining the places up is the thing the

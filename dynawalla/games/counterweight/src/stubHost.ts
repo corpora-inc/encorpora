@@ -13,8 +13,8 @@
 //   1. **Exact arithmetic.** Every operand, answer and distractor is an integer.
 //      No float ever reaches an answer string or a comparison.
 //   2. **Seeded and deterministic.** Same seed → same question stream, forever.
-//      That is what makes "no mashing strategy beats a Turk" a claim a test can
-//      settle rather than an opinion.
+//      That is what makes "no mashing strategy clears a scale" a claim a test
+//      can settle rather than an opinion.
 //   3. **Distractors are real mal-rule outputs.** Each one is the value a child
 //      running a specific broken procedure actually writes down. The procedures
 //      are ported from `packs/shared/curriculum/src/malrules/columnOp.ts` —
@@ -24,11 +24,11 @@
 //      Never `answer ± 1`, and never a fixed offset off the answer.
 //
 // The third one earns its keep here. THE STEELYARD never *places* a
-// distractor — there is nothing to choose between, only a beam to hold — but the
-// value the child's beam asserts is reported verbatim, so a child who drops a
-// carry seats their pan on the carry-dropped value and the Turk recognises it.
-// He has seen that one before. That beat is the diagnosis, and a stub that made
-// wrong answers up would fire it at random.
+// distractor — there is nothing to choose between, only a weight to find — but
+// the number the child writes on the docket is reported verbatim, so a child who
+// drops a carry stamps the carry-dropped value and the host recognises it. That
+// is the diagnosis, and a stub that made wrong answers up would fire it at
+// random.
 
 import type { Host, Question } from "./contract.ts"
 import { Rng } from "./core/rng.ts"

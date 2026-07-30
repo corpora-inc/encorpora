@@ -1,9 +1,9 @@
 {
   "name": "@dynawalla/game-counterweight",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
-  "description": "THE STEELYARD — a steelyard arm-wrestle against the Iron Turk. His pan carries a column sum you must evaluate; yours carries a number you steer with place-value counterweights. Hold one notch ahead.",
+  "description": "THE STEELYARD — the weigh-house of the Dynawalla Bazaar. The chit carries a column sum you must evaluate; the pan carries brass you steer with place-value weights. Put on the lightest brass that tips the beam and stamp the docket.",
   "engines": {
     "node": ">=22.12"
   },

@@ -1,16 +1,35 @@
-// The yard, drawn.
+// The weigh-house, drawn.
 //
 // One canvas, no DOM, no images and no fonts to load — nothing on the answer
-// path waits for the world. Every frame is: the yard, the arm, the beam with its
-// two pans, the strain gauge, the rack, the seat lever.
+// path waits for the world. Every frame is: the room, the day's tally, the beam
+// with its two pans, the strain gauge, the rack, the stamp.
 //
-// **What the beam is allowed to say.** His pan carries the column and never its
-// total. Your pan carries your load. The beam carries the difference, and only
-// near level does it carry it finely — see `sim/beam.ts`. Nothing on this canvas
-// ever draws his number, and nothing draws the answer after a seat either: the
-// child is told *what they claimed*, which is the thing that is theirs.
+// **What the beam is allowed to say.** The far pan carries the chit and never its
+// total. The near pan carries your brass. The beam carries the difference, and
+// only near level does it carry it finely — see `sim/beam.ts`. Nothing on this
+// canvas ever draws the goods' weight, and nothing draws it after a stamp
+// either: the child is told *what they wrote*, which is the thing that is theirs.
+//
+// **AND NOTHING ON THIS CANVAS COUNTS DOWN.**
+//
+// There used to be a bar across the bottom that drained over the round and went
+// red in its last 28%. The window it drained was generous and measured, and the
+// founder still said "the action is rushed by the timer going down" — because a
+// visible countdown is an anxiety cue however much time it grants. It is gone,
+// along with the limit it was drawing. `games/claim` deleted its draining ring
+// for the same reason, and the rule it wrote down holds here: **a clock may never
+// take anything away from a child.**
+//
+// What is left in that row is the strain gauge, and the strain gauge is the
+// opposite of a clock: it is empty until the child's own hands fill it, it drains
+// while they wait, and it is entirely a report on what they just did.
+//
+// The abandonment guard in `game/guard.ts` is not readable from this directory at
+// all — `guard.test.ts` scans every file in `render/` for the accessors that would
+// let it be drawn, and fails if one appears. A guard a child can watch is a
+// countdown with a different name.
 
-import { GROUND, type Bout, type Seat, type Verdict } from "../game/bout.ts"
+import { RUN, type Bout, type Docket, type Verdict } from "../game/bout.ts"
 import type { Column } from "../game/column.ts"
 import type { Place } from "../game/places.ts"
 import type { Beam } from "../sim/beam.ts"
@@ -22,39 +41,45 @@ export type SceneState = {
   readonly bout: Bout
   readonly beam: Beam
   readonly reduced: boolean
-  readonly best: { turks: number; hold: number }
+  readonly best: { scales: number; hold: number }
   /** Pillars pressed this frame, for the depressed look. */
   readonly pressed: ReadonlySet<string>
-  readonly seatHeld: boolean
+  readonly stampHeld: boolean
   /** Set while the host has a sheet over the frame. */
   readonly paused: boolean
-  /** The split column on the Turk's pan, or null when the prompt would not split. */
+  /** The split column on the far pan, or null when the chit would not split. */
   readonly column: Column | null
   readonly promptRaw: string
 }
 
 const VERDICT_WORD: Record<Verdict, string> = {
-  true: "HELD",
-  short: "UNDER",
+  true: "GOOD",
+  short: "SHORT",
   over: "OVER",
   shear: "SHEARED",
-  expired: "TIME",
+  lapsed: "WENT BACK",
 }
 
 const VERDICT_HUE: Record<Verdict, string> = {
   true: PALETTE.seat,
   short: PALETTE.ember,
   over: PALETTE.ember,
-  // Deliberately the dimmest brass in the palette and not the ember: a whistle
-  // is not a verdict, nothing was lost, and it must not read like a buzzer.
-  expired: PALETTE.brassDim,
+  // Deliberately the dimmest brass in the palette and not the ember: nobody was
+  // there, nothing was lost, and it must not read like a buzzer.
+  lapsed: PALETTE.brassDim,
   shear: PALETTE.strain,
 }
 
-/** Thousands separators, so a four-digit load reads at a glance. */
+/**
+ * Thousands separators, so a four-digit load reads at a glance.
+ *
+ * A THIN SPACE, not a plain one — deliberately, and it went missing once in a
+ * rewrite. A full space at this size pushes `8 367` wider than the pan it is
+ * centred in on a 320-point phone.
+ */
 function grouped(n: number): string {
   const sign = n < 0 ? "−" : ""
-  return sign + Math.abs(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+  return sign + Math.abs(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u2009")
 }
 
 function placeLabel(place: Place, dir: 1 | -1): string {
@@ -86,6 +111,14 @@ export class Scene {
   private shakeAmp = 0
   private flashMs = 0
   private flashHue: string = PALETTE.seat
+  /**
+   * Seconds since mount, for the waiting breath on the stamp.
+   *
+   * A phase of a sine and nothing else. It is not a fraction of anything, it has
+   * no end, and it looks the same in the fortieth second of a round as in the
+   * first — which is the whole difference between a breath and a countdown.
+   */
+  private time = 0
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
@@ -113,8 +146,8 @@ export class Scene {
   }
 
   /** Which face, if any, is under this point. */
-  pick(x: number, y: number): { kind: "face"; place: Place; dir: 1 | -1 } | { kind: "seat" } | null {
-    if (hit(this.box.seat, x, y, this.box.unit * 0.5)) return { kind: "seat" }
+  pick(x: number, y: number): { kind: "face"; place: Place; dir: 1 | -1 } | { kind: "stamp" } | null {
+    if (hit(this.box.stamp, x, y, this.box.unit * 0.5)) return { kind: "stamp" }
     for (const pillar of this.box.pillars) {
       if (hit(pillar.up, x, y, this.box.unit * 0.25)) {
         return { kind: "face", place: pillar.place, dir: 1 }
@@ -146,6 +179,7 @@ export class Scene {
 
   advance(dtMs: number, reduced: boolean): void {
     if (!reduced) this.sparks.advance(dtMs)
+    this.time += dtMs / 1000
     this.shakeMs = Math.max(0, this.shakeMs - dtMs)
     if (this.shakeMs === 0) this.shakeAmp = 0
     this.flashMs = Math.max(0, this.flashMs - dtMs)
@@ -159,12 +193,12 @@ export class Scene {
       ctx.translate(Math.sin(this.shakeMs * 0.9) * this.shakeAmp * k, Math.cos(this.shakeMs * 1.3) * this.shakeAmp * k * 0.6)
     }
 
-    this.drawYard(state)
+    this.drawRoom(state)
     this.drawHud(state)
     this.drawBeam(state)
-    this.drawGauge(state)
+    this.drawStrain(state)
     this.drawRack(state)
-    this.drawSeat(state)
+    this.drawStamp(state)
     if (!state.reduced) this.sparks.draw(ctx)
     this.drawFlash()
     if (state.paused) this.drawSheet()
@@ -172,7 +206,7 @@ export class Scene {
 
   // ---------------------------------------------------------------------------
 
-  private drawYard(state: SceneState): void {
+  private drawRoom(state: SceneState): void {
     const ctx = this.ctx
     const { w, h } = this.box
     const sky = ctx.createLinearGradient(0, 0, 0, h)
@@ -182,8 +216,8 @@ export class Scene {
     ctx.fillStyle = sky
     ctx.fillRect(0, 0, w, h)
 
-    // The brazier behind his pan. Reduced motion holds it still rather than
-    // removing it — the light is the set, not an effect.
+    // The brazier at the door, over the barrow. Reduced motion holds it still
+    // rather than removing it — the light is the set, not an effect.
     const glow = ctx.createRadialGradient(
       w * 0.78,
       this.box.stage.y + this.box.stage.h * 0.3,
@@ -202,20 +236,20 @@ export class Scene {
   private drawHud(state: SceneState): void {
     const ctx = this.ctx
     const { hud, unit } = this.box
-    const match = state.bout.match
+    const day = state.bout.day
 
     ctx.textBaseline = "alphabetic"
     ctx.textAlign = "left"
     ctx.font = font(FACE_TEXT, unit * 0.86)
     ctx.fillStyle = PALETTE.inkDim
-    ctx.fillText(`TURK ${match.bout}`, hud.x, hud.y + unit * 0.95)
+    ctx.fillText(`SCALE ${day.scale}`, hud.x, hud.y + unit * 0.95)
 
     ctx.textAlign = "right"
     ctx.fillStyle = PALETTE.inkFaint
-    const tally = state.best.turks > 0 ? `BEST ${state.best.turks}` : "FIRST BOUT"
+    const tally = state.best.scales > 0 ? `BEST ${state.best.scales}` : "FIRST DAY"
     ctx.fillText(tally, hud.x + hud.w, hud.y + unit * 0.95)
 
-    // The arm: a tug bar. Centre is level; his end is on the right.
+    // The day's run. Centre is level; the goods' end is on the right.
     const barY = hud.y + unit * 1.6
     const barH = Math.max(4, unit * 0.5)
     const bar: Rect = { x: hud.x, y: barY, w: hud.w, h: barH }
@@ -224,8 +258,8 @@ export class Scene {
     ctx.fill()
 
     const mid = hud.x + hud.w / 2
-    const reach = (hud.w / 2) * (match.arm / GROUND)
-    const ahead = match.arm >= 0
+    const reach = (hud.w / 2) * (day.run / RUN)
+    const ahead = day.run >= 0
     ctx.fillStyle = ahead ? PALETTE.seat : PALETTE.ember
     if (Math.abs(reach) > 0.5) {
       roundRect(
@@ -244,8 +278,8 @@ export class Scene {
     const ctx = this.ctx
     const { fulcrum, unit } = this.box
     const angle = state.beam.angle
-    // Positive margin is your side *down*: an arm-wrestle pushes the loser's
-    // hand toward the table, and your side is the left one.
+    // Positive margin is your side *down*: brass outweighing the goods pushes
+    // your pan toward the floor, and your side is the left one.
     const tilt = -angle
 
     // The post.
@@ -295,8 +329,8 @@ export class Scene {
 
     this.drawChain(lx, ly, this.box.panDrop)
     this.drawChain(rx, ry, this.box.panDrop)
-    this.drawYourPan(state, panRect(this.box, lx, ly))
-    this.drawHisPan(state, panRect(this.box, rx, ry))
+    this.drawBrassPan(state, panRect(this.box, lx, ly))
+    this.drawGoodsPan(state, panRect(this.box, rx, ry))
   }
 
   private drawChain(x: number, y: number, drop: number): void {
@@ -309,7 +343,7 @@ export class Scene {
     ctx.stroke()
   }
 
-  private drawYourPan(state: SceneState, r: Rect): void {
+  private drawBrassPan(state: SceneState, r: Rect): void {
     const ctx = this.ctx
     const { panW, panH, unit } = this.box
     const cx = r.x + r.w / 2
@@ -324,14 +358,14 @@ export class Scene {
     ctx.textBaseline = "middle"
     ctx.fillStyle = PALETTE.inkFaint
     ctx.font = font(FACE_TEXT, unit * 0.72)
-    ctx.fillText("YOUR LOAD", cx, r.y + unit * 0.86)
+    ctx.fillText("YOUR BRASS", cx, r.y + unit * 0.86)
 
     ctx.fillStyle = PALETTE.steelBright
     ctx.font = font(FACE_NUM, Math.min(unit * 2.5, panW / 3.1))
     ctx.fillText(grouped(state.bout.load), cx, r.y + panH * 0.62)
   }
 
-  private drawHisPan(state: SceneState, r: Rect): void {
+  private drawGoodsPan(state: SceneState, r: Rect): void {
     const ctx = this.ctx
     const { panW, panH, unit } = this.box
     const cx = r.x + r.w / 2
@@ -346,9 +380,9 @@ export class Scene {
     ctx.textBaseline = "middle"
     ctx.fillStyle = PALETTE.inkFaint
     ctx.font = font(FACE_TEXT, unit * 0.72)
-    ctx.fillText("HIS", cx, r.y + unit * 0.86)
+    ctx.fillText("THE GOODS", cx, r.y + unit * 0.86)
 
-    // The column. Two lines and a rule — and no total, ever. Right-aligned on a
+    // The chit. Two lines and a rule — and no total, ever. Right-aligned on a
     // tabular grid so the places line up, because lining the places up is the
     // whole skill this row of the graph is about.
     const size = Math.min(unit * 1.55, panW / 4.4)
@@ -376,46 +410,33 @@ export class Scene {
     }
   }
 
-  private drawGauge(state: SceneState): void {
+  /**
+   * The strain in the steel, and **nothing else in this row**.
+   *
+   * The left two-thirds of this strip used to be the press-window clock: a bar
+   * that drained over the round and turned ember in its last 28%. Both the bar
+   * and the limit behind it are gone. What is here now fills only when the child
+   * strikes and empties on its own while they think, so the only way to see it
+   * move is to move it.
+   */
+  private drawStrain(state: SceneState): void {
     const ctx = this.ctx
     const { gauge, unit } = this.box
-    const bout = state.bout
-
-    // Left two-thirds: the window. Right third: the strain in the steel.
-    const split = Math.round(gauge.w * 0.62)
-    const clock: Rect = { x: gauge.x, y: gauge.y, w: split, h: gauge.h }
-    const strainBar: Rect = {
-      x: gauge.x + split + unit * 0.7,
-      y: gauge.y,
-      w: gauge.w - split - unit * 0.7,
-      h: gauge.h,
-    }
 
     ctx.fillStyle = PALETTE.stone
-    roundRect(ctx, clock, gauge.h / 2)
+    roundRect(ctx, gauge, gauge.h / 2)
     ctx.fill()
-    if (bout.phase === "press") {
-      const left = 1 - bout.progress
-      const urgent = left < 0.28
-      ctx.fillStyle = urgent ? PALETTE.ember : PALETTE.brassDim
-      roundRect(ctx, { ...clock, w: Math.max(2, clock.w * left) }, gauge.h / 2)
-      ctx.fill()
-    }
-
-    ctx.fillStyle = PALETTE.stone
-    roundRect(ctx, strainBar, gauge.h / 2)
-    ctx.fill()
-    const load = bout.strain.load
+    const load = state.bout.strain.load
     if (load > 0) {
       ctx.fillStyle = mix(PALETTE.brass, PALETTE.strain, load)
-      roundRect(ctx, { ...strainBar, w: Math.max(2, strainBar.w * load) }, gauge.h / 2)
+      roundRect(ctx, { ...gauge, w: Math.max(2, gauge.w * load) }, gauge.h / 2)
       ctx.fill()
     }
     ctx.textAlign = "right"
     ctx.textBaseline = "middle"
     ctx.font = font(FACE_TEXT, unit * 0.62)
     ctx.fillStyle = load > 0.72 ? PALETTE.strain : PALETTE.inkFaint
-    ctx.fillText("STRAIN", strainBar.x + strainBar.w, strainBar.y - unit * 0.62)
+    ctx.fillText("STRAIN", gauge.x + gauge.w, gauge.y - unit * 0.62)
   }
 
   private drawRack(state: SceneState): void {
@@ -452,67 +473,86 @@ export class Scene {
     }
   }
 
-  private drawSeat(state: SceneState): void {
+  /**
+   * The stamp, and the one moving thing left on the screen that is not the beam.
+   *
+   * While the round is open the rim **breathes** — a slow, wide pulse that says
+   * the counter is holding still and waiting for you. It is a sine of the wall
+   * clock: it does not shrink, it does not change colour as time passes, and it
+   * looks identical in the fortieth second of a round and in the first. That is
+   * the difference between a breath and a countdown, and it is deliberately
+   * copied from `games/claim`'s gate halo, which replaced a draining ring for
+   * exactly the reason this replaced a draining bar.
+   */
+  private drawStamp(state: SceneState): void {
     const ctx = this.ctx
-    const { seat, unit } = this.box
+    const { stamp, unit } = this.box
     const bout = state.bout
-    const showing = bout.seat
+    const showing = bout.docket
+    const waiting = bout.phase === "press" && !state.paused && !showing
+    // Held at mid for a calmer screen. Nobody loses information to it, because
+    // there is no information in it.
+    const breath = !waiting ? 0 : state.reduced ? 0.5 : 0.5 + Math.sin(this.time * 1.7) * 0.5
 
-    ctx.fillStyle = state.seatHeld ? mix(PALETTE.stone, PALETTE.seat, 0.3) : PALETTE.stone
-    roundRect(ctx, seat, unit * 0.5)
+    ctx.fillStyle = state.stampHeld ? mix(PALETTE.stone, PALETTE.seat, 0.3) : PALETTE.stone
+    roundRect(ctx, stamp, unit * 0.5)
     ctx.fill()
-    ctx.strokeStyle = showing ? VERDICT_HUE[showing.verdict] : PALETTE.brassDim
-    ctx.lineWidth = 1.8
+    ctx.strokeStyle = showing
+      ? VERDICT_HUE[showing.verdict]
+      : waiting
+        ? mix(PALETTE.brassDim, PALETTE.brassBright, breath * 0.55)
+        : PALETTE.brassDim
+    ctx.lineWidth = waiting ? 1.8 + breath * 1.4 : 1.8
     ctx.stroke()
 
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
-    const cx = seat.x + seat.w / 2
-    const cy = seat.y + seat.h / 2
+    const cx = stamp.x + stamp.w / 2
+    const cy = stamp.y + stamp.h / 2
 
     if (showing) {
-      this.drawVerdict(showing, cx, cy)
+      this.drawDocket(showing, cx, cy)
       return
     }
     if (bout.phase === "hang") {
       ctx.font = font(FACE_TEXT, unit * 1.0)
       ctx.fillStyle = PALETTE.inkFaint
-      ctx.fillText(this.box.compact ? "HE HANGS" : "HE HANGS A WEIGHT", cx, cy)
+      ctx.fillText(this.box.compact ? "NEXT LOT" : "THE NEXT LOT IS COMING ON", cx, cy)
       return
     }
     ctx.font = font(FACE_TEXT, unit * 1.22)
     ctx.fillStyle = PALETTE.brassBright
-    ctx.fillText(this.box.compact ? "SEAT" : "SEAT THE BEAM", cx, cy)
+    ctx.fillText(this.box.compact ? "STAMP" : "STAMP THE DOCKET", cx, cy)
   }
 
-  private drawVerdict(showing: Seat, cx: number, cy: number): void {
+  private drawDocket(showing: Docket, cx: number, cy: number): void {
     const ctx = this.ctx
     const unit = this.box.unit
     ctx.font = font(FACE_TEXT, unit * 1.22)
     ctx.fillStyle = VERDICT_HUE[showing.verdict]
     const compact = this.box.compact
     if (showing.verdict === "true") {
-      ctx.fillText(compact ? "HELD" : "HELD — ONE AHEAD", cx, cy)
+      ctx.fillText(compact ? "GOOD WEIGHT" : "GOOD WEIGHT — ONE OVER", cx, cy)
       return
     }
     if (showing.verdict === "shear") {
       ctx.fillText(compact ? "SHEARED" : "SHEARED — TOO MANY BLOWS", cx, cy)
       return
     }
-    if (showing.verdict === "expired") {
-      // No number. The pan's load was never a claim — the child never said it —
-      // and printing it as one would be the screen scoring a round the rules
-      // just decided not to score.
-      ctx.fillText(compact ? "TIME" : "TIME — NO GROUND LOST", cx, cy)
+    if (showing.verdict === "lapsed") {
+      // No number. The brass on the pan was never a claim — the child never
+      // stamped it — and printing it as one would be the screen scoring a round
+      // the rules just decided not to score.
+      ctx.fillText(compact ? "WENT BACK" : "THE LOT WENT BACK — NOTHING LOST", cx, cy)
       return
     }
-    // What the child claimed, never what the answer was. The number they put on
-    // the beam is theirs; the Turk's total stays the Turk's.
+    // What the child wrote, never what the goods weighed. The number they put on
+    // the docket is theirs; the barrow's total stays the barrow's.
     const called = grouped(showing.asserted)
     ctx.fillText(
       compact
         ? `${VERDICT_WORD[showing.verdict]} · ${called}`
-        : `${VERDICT_WORD[showing.verdict]} — YOU CALLED ${called}`,
+        : `${VERDICT_WORD[showing.verdict]} — YOU WROTE ${called}`,
       cx,
       cy,
     )
@@ -526,7 +566,7 @@ export class Scene {
   }
 
   private drawSheet(): void {
-    // The host has something over the frame. The yard is still there, dimmed,
+    // The host has something over the frame. The room is still there, dimmed,
     // and nothing under it is running.
     const ctx = this.ctx
     ctx.fillStyle = alpha(PALETTE.nightDeep, 0.55)

@@ -16,9 +16,9 @@
 //
 // The second is the host's chrome. The host floats an exit control over the
 // top-LEFT corner and the how-to-play control over the top-RIGHT, 44px each.
-// They overlay; the yard does not get to reserve a band under them, because
+// They overlay; the room does not get to reserve a band under them, because
 // giving up 67px of a 568px phone is worse than the problem it solves. So the
-// HUD row — `TURK n` at one end, the tally at the other, the arm bar between
+// HUD row — `SCALE n` at one end, the tally at the other, the day's run between
 // them — is inset HORIZONTALLY, into the strip between the two corners. That
 // costs no height at all, and on the narrowest phone we support the strip is
 // still a little over 200px wide.
@@ -37,7 +37,7 @@ import { MAX_TILT } from "../sim/beam.ts"
 /**
  * The platform's minimum touch target, and this game's floor for both of them.
  *
- * The rack and the seat are the whole input vocabulary — eight faces and one
+ * The rack and the stamp are the whole input vocabulary — eight faces and one
  * lever. A face a child misses is a blow they meant to land, and on this beam a
  * blow they did not mean to land is a shear. So these two get the floor and the
  * rest of the stack takes what is left, not the other way round.
@@ -69,19 +69,20 @@ export type Layout = {
   readonly panDrop: number
   readonly panW: number
   readonly panH: number
+  /** The strain gauge, and nothing else. There is no clock in this row. */
   readonly gauge: Rect
   readonly rack: Rect
   readonly pillars: readonly PillarRects[]
-  readonly seat: Rect
+  readonly stamp: Rect
 }
 
 /**
- * The yard, laid out inside `area`.
+ * The weigh-house, laid out inside `area`.
  *
  * `area` is REQUIRED, and deliberately so. An optional safe rectangle is a
  * rectangle a caller forgets, and forgetting it compiles, passes every test and
- * then draws the seat lever under the home indicator on a device nobody in the
- * room is holding. Callers who just want "the current screen" want
+ * then draws the stamp under the home indicator on a device nobody in the room
+ * is holding. Callers who just want "the current screen" want
  * `viewLayout` below, which is the one the renderer uses.
  */
 export function layoutFor(w: number, h: number, area: Rect): Layout {
@@ -98,10 +99,10 @@ export function layoutFor(w: number, h: number, area: Rect): Layout {
   const rackH = Math.round(
     Math.max(TOUCH_FLOOR * 2 + gap, Math.min(area.h * 0.34, unit * 12.4)),
   )
-  // The seat commits the answer. It was sized at a tenth of the height, which
+  // The stamp commits the answer. It was sized at a tenth of the height, which
   // on a phone held sideways is 39px — under the touch floor, for the one
   // control the whole round ends on.
-  const seatH = Math.round(Math.max(TOUCH_FLOOR, Math.min(area.h * 0.1, unit * 3.4)))
+  const stampH = Math.round(Math.max(TOUCH_FLOOR, Math.min(area.h * 0.1, unit * 3.4)))
   const gaugeH = Math.round(unit * 1.5)
 
   const innerX = area.x + pad
@@ -123,15 +124,15 @@ export function layoutFor(w: number, h: number, area: Rect): Layout {
   const faceGap = Math.max(0, Math.min(gap, (rackW - rackNeeds) / (PLACES.length - 1)))
 
   const hud: Rect = { x: hudX, y: area.y + pad, w: hudW, h: hudH }
-  const seat: Rect = { x: innerX, y: area.y + area.h - pad - seatH, w: innerW, h: seatH }
-  const rack: Rect = { x: rackX, y: seat.y - pad * 0.6 - rackH, w: rackW, h: rackH }
+  const stamp: Rect = { x: innerX, y: area.y + area.h - pad - stampH, w: innerW, h: stampH }
+  const rack: Rect = { x: rackX, y: stamp.y - pad * 0.6 - rackH, w: rackW, h: rackH }
   const gauge: Rect = {
     x: innerX,
     y: rack.y - pad * 0.5 - gaugeH,
     w: innerW,
     h: gaugeH,
   }
-  // The stage carries the two numbers of the round — his column and your load —
+  // The stage carries the two numbers of the round — the chit and your brass —
   // so it starts below the host's corners as well as below the HUD. On a phone
   // that is a few pixels; the HUD is already almost past them.
   const stageTop = Math.max(
@@ -190,7 +191,7 @@ export function layoutFor(w: number, h: number, area: Rect): Layout {
     gauge,
     rack,
     pillars,
-    seat,
+    stamp,
   }
 }
 
@@ -230,7 +231,7 @@ export function panRect(l: Layout, hookX: number, hookY: number): Rect {
 /**
  * The box both pans stay inside across every tilt the beam is read at.
  *
- * The load and the column are the two numbers of the round, so this is the rect
+ * The brass and the chit are the two numbers of the round, so this is the rect
  * the tests hold to the safe area. A shear *slams* past this — that is a
  * transient with nothing readable in it, and it is meant to look like the beam
  * lost the argument.

@@ -23,9 +23,9 @@ const host = createStubHost({
     if (r.correct) right += 1
     if (readout) {
       readout.textContent =
-        `${right}/${asked} held · last ${r.answered} in ${r.ms} ms · ` +
+        `${right}/${asked} good · last ${r.answered} in ${r.ms} ms · ` +
         `${transitions} stopping point${transitions === 1 ? "" : "s"} · ` +
-        `Q/A ±1000 · W/S ±100 · E/D ±10 · R/F ±1 · space = seat`
+        `Q/A ±1000 · W/S ±100 · E/D ±10 · R/F ±1 · space = stamp`
     }
   },
   onTransition: () => {

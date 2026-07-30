@@ -1,10 +1,11 @@
-// The yard behind the bazaar's weighing house: night, a cold sky, and one
-// brazier. Brass for the beam, cold steel for your side, ember for his.
+// The bazaar's weigh-house at night: a cold sky through the doorway and one
+// brazier over the barrow. Brass for the beam, cold steel for your side of it,
+// ember for the goods.
 //
 // The vocabulary is mechanical, not confetti — EXPERIENCE_DESIGN's juice
 // ceiling. Nothing in here is a primary colour and nothing celebrates in
-// rainbow: a held notch is a *cold* highlight seating into brass, which reads as
-// precision rather than as a prize.
+// rainbow: a good weight is a *cold* highlight settling into brass, which reads
+// as precision rather than as a prize.
 
 export const PALETTE = {
   night: "#0a0b0e",
@@ -29,7 +30,7 @@ export const PALETTE = {
   inkDim: "#7d879a",
   inkFaint: "#4a5364",
 
-  /** The cold seat highlight. The best colour in the game, used sparingly. */
+  /** The cold good-weight highlight. The best colour in the game, used sparingly. */
   seat: "#8fe6ff",
   /** Strain past the safe reach. */
   strain: "#e0573f",
