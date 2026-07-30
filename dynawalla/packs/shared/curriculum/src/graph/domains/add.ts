@@ -59,7 +59,13 @@ const CAP_ADD_CARRY = capabilityTag("cap.arith.add-carry");
  * the ladder from `0 + 1` to `4003 − 87` continuous rather than asserted.
  */
 const CAP_SUMS_WITHIN_TEN = capabilityTag("cap.arith.sums-within-ten");
-const CAP_DIFFERENCES_WITHIN_TEN = capabilityTag("cap.arith.differences-within-ten");
+/**
+ * Exported alongside `CAP_SUMS_ACROSS_TEN`, and for the same kind of reason: the
+ * equality strand consumes it. `dw.alg.equality.missing-addend` recovers the box in
+ * `47 + □ = 68` by taking one number from the other, so a missing addend within ten
+ * *is* a difference within ten, and `domains/alg.ts` says so rather than implying it.
+ */
+export const CAP_DIFFERENCES_WITHIN_TEN = capabilityTag("cap.arith.differences-within-ten");
 /**
  * Exported, unlike its three siblings, because the multiplicative strand consumes
  * it: a carry out of a single-digit multiplication pass is a sum across ten, and

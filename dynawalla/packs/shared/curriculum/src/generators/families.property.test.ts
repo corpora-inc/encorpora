@@ -80,7 +80,7 @@ type Level = {
   readonly status: string;
   readonly minVariants: number;
   /** The level's whole problem space, where it is closed. See `GeneratorBinding`. */
-  readonly closedFactSet: number | undefined;
+  readonly closedFactSet: number | null;
   readonly declared: ReadonlySet<string>;
   readonly exercises: readonly Exercise[];
   readonly timingsNs: readonly bigint[];
@@ -126,7 +126,7 @@ function sweep(): Level[] {
         level,
         status: node.status,
         minVariants: node.generator.minVariants,
-        closedFactSet: node.generator.closedFactSet?.[level],
+        closedFactSet: node.generator.closedFactSet?.[level] ?? null,
         declared: new Set(node.misconceptions.map(String)),
         exercises,
         timingsNs,
@@ -390,7 +390,7 @@ test("sweep: every level clears its own minVariants, and the sub-floor levels ar
     // `GeneratorBinding.closedFactSet`: on thirty-six additions within ten a
     // repeat is retrieval practice, not a shallow draw. The substituted check is
     // the sharper one — it fails on a generator that reaches a thirty-seventh.
-    if (level.closedFactSet !== undefined) {
+    if (level.closedFactSet !== null) {
       assert.ok(
         distinct <= level.closedFactSet,
         `${level.label}: ${String(distinct)} distinct items, above the declared closed fact set of ${String(level.closedFactSet)}`,
@@ -439,7 +439,7 @@ test("sweep: every level clears its own minVariants, and the sub-floor levels ar
   // The one thing that must never silently become true: an *active* level under
   // the floor. CG-10 would fail on it, and this says so first and by name.
   const activeBelow = LEVELS.filter((level) => level.status === "active").filter((level) => {
-    if (level.closedFactSet !== undefined) return false;
+    if (level.closedFactSet !== null) return false;
     const distinct = new Set(level.exercises.map(fingerprintItem)).size;
     const collisions = level.exercises.length - distinct;
     if (collisions === 0) return false;

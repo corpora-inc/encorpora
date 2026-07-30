@@ -41,6 +41,7 @@ import type {
   AnswerValue,
   AnyGeneratorFamily,
   Exercise,
+  PromptBlank,
   PromptOperator,
   PromptSlot,
   Rational,
@@ -50,6 +51,7 @@ import {
   activeNodes,
   familyById,
   FORM_FREE_ENTRY,
+  promptBlank,
   promptOperator,
   rational,
   seedFrom,
@@ -90,6 +92,46 @@ const OPERATOR_PROTOCOL: Readonly<
   "×": "×",
   "÷": "÷",
 }
+
+/**
+ * The blank a child fills in, and why it is **U+25A1 WHITE SQUARE** and not `___`.
+ *
+ * The founder asked for the shape in underscores:
+ *
+ * > "maybe to prevent the calculator (or at least make it so that you have to
+ * > understand the problem to use it correctly) we could use blanks in an equation
+ * > `___ × 15 = 165`"
+ *
+ * The shape is right and the glyph is not, and the difference is measurable rather
+ * than a matter of taste. `games/balance` is the only pack in the fleet that builds
+ * a physical apparatus out of the statement instead of merely drawing it: it splits
+ * the prompt at the `=` and tokenises each side (`src/adapter.ts:251-253`), and its
+ * blank is matched as **exactly one of `□`, `?` or `_`** (`src/adapter.ts:60`). A run
+ * of three underscores is not any of those, so it falls through the tokeniser to
+ * `parseFrac` and is dropped — measured on the real pack code, `___ × 15 = 165`
+ * builds a board with **no fill slot at all**, and `fillSide` then defaults to the
+ * far pan (`src/adapter.ts:283`). The child is asked to load the pan the question
+ * did not ask about. That is a silent-blank failure of exactly the kind this
+ * repository has shipped four of in a week, and it is invisible to every test in the
+ * fleet because all 28 stub hosts write `a OP b` and never a blank.
+ *
+ * `□` is also what balance *writes* when it generates its own boards —
+ * `src/generate.ts:71` and the `6 × 2 = □ × 3` in `buildPrompt` — so this is the
+ * fleet's existing notation rather than a new one, and it is the box CCSS 1.OA.D.8
+ * and this curriculum's own comments (`☐`) already use for an unknown.
+ *
+ * `?` would parse too, and is rejected for a different measured reason: the fleet
+ * already spends `?` on *failure*. `games/polarity` prints `?` for a numeral it
+ * cannot draw (`src/core/labels.ts`, `LABEL_FAULT_TILE`) and `games/arena` refuses
+ * to append a reveal to any prompt containing one (`src/mount.ts:392`). A blank that
+ * shares its glyph with the fault marker is a blank that reads as a broken card.
+ *
+ * Note the code point: U+25A1 WHITE SQUARE, **not** U+2610 BALLOT BOX (`☐`), which
+ * the prose in the curriculum uses and which balance's tokeniser does not accept.
+ * Written as an escape so a copy-paste of the wrong box fails in `items.test.ts`
+ * rather than on a child's screen.
+ */
+export const BLANK = "□"
 
 /** Items kept addressable for `judge` and `reveal`. Oldest evicted first. */
 const LEDGER_LIMIT = 512
@@ -808,6 +850,58 @@ export function binaryOperator(
 }
 
 /**
+ * Where this question's blank sits, read off the same declaration for the same
+ * reason — or `null` for a key the curriculum does not register.
+ *
+ * The second half of what `binaryOperator` started. A correct operator is not a
+ * stated question: `dw.alg.equality.missing-factor` drawn as `15 × 165` has the right
+ * glyph in it and asks for the product of two numbers when it wants the factor
+ * between one of them and the other. `promotionBlockers.ts` named four templates of
+ * that shape in `MISSTATED_QUESTION_TEMPLATES` and kept the whole `alg` domain draft
+ * because of them; this is the field that lets the statement be written down.
+ *
+ * `null` and not `"none"` on an unknown key, the same discipline and for the same
+ * reason: the failing direction is silent, and a blank drawn as though it were not
+ * there marks a correct child wrong.
+ */
+export function blankPosition(promptKey: string): PromptBlank | null {
+  return promptBlank(promptKey)
+}
+
+/**
+ * The question as a child reads it, from the two operands and the declaration.
+ *
+ * Three statements and no fourth, because `PromptBlank` has three values and this
+ * switch has no default — a fourth position added to the curriculum fails to compile
+ * *here*, at the renderer that would have to draw it, rather than falling into
+ * whichever branch happened to be last. That is not hypothetical in this file: see
+ * `slotText`, where the `fraction` slot kind arrived exactly that way.
+ *
+ * `a` and `b` are the operands in the order the host reads them. On a blank statement
+ * `a` is the number written beside the box and `b` is the result on the far side of
+ * the equals sign, which is what makes `□ × 15 = 165` a missing factor and not a
+ * multiplication: the 165 is *given*, and the child has to know that recovering 11
+ * from it means dividing. `render/prompts.test.ts` substitutes the canonical answer
+ * into the box and checks the equation is true in exact rationals, over every bound
+ * level of every registered template, so a statement this function writes wrongly is
+ * a failing build rather than a wrong card.
+ *
+ * Space-separated throughout, including around the `=`. Not cosmetic: `games/balance`
+ * tokenises the statement on whitespace after inserting spaces around operator
+ * glyphs, and its blank has to be a token of its own to be seen at all.
+ */
+export function drawStatement(a: string, b: string, glyph: string, blank: PromptBlank): string {
+  switch (blank) {
+    case "none":
+      return `${a} ${glyph} ${b}`
+    case "first":
+      return `${BLANK} ${glyph} ${a} = ${b}`
+    case "second":
+      return `${a} ${glyph} ${BLANK} = ${b}`
+  }
+}
+
+/**
  * A minus sign as a child's keypad might spell it, as the parser spells it.
  *
  * The host draws U+2212 in every prompt it writes — so a pack that echoes the
@@ -1456,6 +1550,22 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         return null
       }
 
+      // And where the blank goes, from the same registry. `null` here can only mean
+      // the entry has an operator and no blank position, which the type makes
+      // impossible — so it is a corrupt registry rather than an unstated question,
+      // and it is refused rather than defaulted to `"none"`. Defaulting is what
+      // would draw `15 × 165` for a missing factor.
+      const blank = blankPosition(exercise.prompt.key)
+      if (blank === null) {
+        console.error(
+          `[packs] ${rung.node.id} (${rung.family.family}) emits ${exercise.prompt.key}, which ` +
+            `declares the operator ${operator.glyph} and no blank position — the registry in ` +
+            `render/prompts.ts is inconsistent and nothing is served rather than guessing that the ` +
+            `question has no blank in it.`,
+        )
+        return null
+      }
+
       const places = decimalPlacesOf(exercise)
       // The answer this file can write. A fraction answer comes back `null` from
       // `answerText`, which would make `reveal` an empty string and every response
@@ -1488,15 +1598,28 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
 
       const digits = digitsOf(exercise)
 
+      // `form` and `operator` are the two fields a pack could use to rebuild the
+      // question itself, and on a blank statement they would rebuild the wrong one.
+      // `operands` on `□ × 15 = 165` are the two numerals a child reads, 15 and 165
+      // — and 165 is the *product*, not the second factor, so reporting them as the
+      // operands of a `×` is a false statement of exactly the class this change
+      // exists to retire. So a blank statement reports `form: "value"` and **omits
+      // `operator` entirely**: nothing implies an arithmetic relation between the two
+      // numerals, and the whole question lives in `prompt`, which is the only field
+      // `packs/shared/game-host` forwards anyway (`questionFrom`, index.ts:636-649,
+      // drops `operands`, `operator`, `form`, `answerKind` and `digits`). A plain
+      // `a OP b` is unchanged, bit for bit.
+      const statement = drawStatement(top, bottom, operator.glyph, blank)
+
       return {
         id,
         skillId: rung.node.id,
         level: rung.level,
         difficulty: ordinate,
-        form: "binary-op",
-        operator: operator.protocol,
+        form: blank === "none" ? "binary-op" : "value",
+        ...(blank === "none" ? { operator: operator.protocol } : {}),
         operands: [top, bottom],
-        prompt: `${top} ${operator.glyph} ${bottom}`,
+        prompt: statement,
         choices,
         answerKind: "integer",
         ...(digits === undefined ? {} : { digits }),

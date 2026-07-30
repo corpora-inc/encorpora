@@ -13,10 +13,15 @@
  * **CG-10**, the variant-space floor. It requires an estimated space of 975 — a
  * 40-item practice run repeating no more than one item in fifty — and the levels
  * in `CG10_BLOCKED_LEVELS` do not clear it. Some are genuinely short of problems in
- * the world: `dw.alg.equality.missing-addend` L0 draws both operands from 1..9, so
- * its true space is exactly 81 items and no generator work changes that. Others
+ * the world: `dw.alg.equality.missing-subtrahend` L0 draws both operands from 1..9,
+ * so its true space is exactly 81 items and no generator work changes that. Others
  * would clear the floor with a wider draw, and two of them now have one — see the
  * note under the list.
+ *
+ * **The apparatus a pack builds**, in `PACK_STATEMENT_BLOCKED_SKILLS`, and this one
+ * is new with the blank statement. A question the host can now *state* is not a
+ * question every pack that declares it can *draw*, and the failure is the same silent
+ * shape one layer out: a board whose pans cannot balance under any answer.
  *
  * **The unstated question**, in `MISSTATED_QUESTION_TEMPLATES`, and this one is not
  * a gap in the curriculum at all. It is a defect in the only thing that draws a
@@ -60,7 +65,6 @@ export const CG10_BLOCKED_LEVELS: readonly string[] = [
   "dw.frac.arith.multiply-by-a-whole L0",
   "dw.frac.arith.multiply-by-a-whole L1",
   "dw.frac.arith.multiply-fractions L0",
-  "dw.alg.equality.missing-addend L0",
   "dw.alg.equality.balance-meaning L0",
   "dw.alg.equality.missing-subtrahend L0",
   "dw.alg.equality.unknown-minuend L0",
@@ -91,10 +95,10 @@ export const CG10_BLOCKED_SKILLS: readonly string[] = [
 ];
 
 /**
- * Prompt templates whose question a two-operand string does not state — **not** an
- * operator problem, and what is left of one after the operator problem was fixed.
+ * Prompt templates whose question the host still cannot state — **one**, and what is
+ * left after the operator problem and then the blank were fixed.
  *
- * ## The blocker this replaces
+ * ## The blocker before this one, and the blocker before that
  *
  * `OPERATOR_BLOCKED_TEMPLATES` named the twelve templates the shipped renderer
  * drew with the wrong sign. `dynawalla-app/src/packs/items.ts` picked the operator
@@ -105,36 +109,119 @@ export const CG10_BLOCKED_SKILLS: readonly string[] = [
  * no fallback, and `items.test.ts` holds every registered template to what the
  * registry declares rather than to the shape of its id.
  *
- * ## The blocker that is left, and it is the same shape one level down
+ * ## Four of the five came off this list, and by a field rather than an argument
  *
- * A correct operator is not a stated question. These templates name a question the
- * string `a OP b` does not ask, so a child reading the card correctly answers
- * something other than what is wanted — the same silent, invisible failure, and it
- * survives the operator fix untouched:
+ * A correct operator is not a stated question, and this list used to hold four
+ * templates whose unknown is *inside* the expression. The string `a OP b` cannot say
+ * that, so a child reading the card correctly answered something other than what was
+ * wanted:
  *
- * | template | what a child reads | what it wants |
+ * | template | what a child read | what it wanted |
  * |---|---|---|
- * | `long-div.remainder` | `129 ÷ 2` | 1 — the *remainder*, not 64 |
  * | `missing-operand.add-unknown` | `1 + 10` | 9 — the operand, not 11 |
  * | `missing-operand.mul-unknown` | `3 × 15` | 5 |
  * | `missing-operand.sub-unknown-minuend` | `1 − 5` | 6 |
  *
- * `dw.prompt.long-div.quotient-remainder` is not on the list and is blocked anyway,
- * by `FRACTION_ANSWER_BLOCKED_SKILLS` below: `487 ÷ 9` *is* what its answer
- * answers, but the answer is `54 1/9`.
+ * `render/prompts.ts` now carries a second field beside the operator — `PromptBlank`,
+ * where the box sits — and the host writes the whole statement from the two operands
+ * and the two declarations: `47 + □ = 68`, `□ − 47 = 68`, `□ × 15 = 165`. The
+ * templates are struck off because the defect is, not because the floor moved. The
+ * founder asked for the shape in as many words, and he was right about more than he
+ * said: a blank in the *middle* is the one arrangement a calculator cannot answer for
+ * a child, because finding it means knowing which operation undoes the one on the
+ * card.
+ *
+ * `missing-operand.sub-unknown` was never on this list and is worth a line, because
+ * it is why "the operator is right" is not enough. Its slots are `known + answer` and
+ * `known`, so `93 − 47` wanting 46 is a perfectly *true* subtraction — the card was
+ * arithmetically fine and asked the wrong skill. It draws `93 − □ = 47` now, which is
+ * the missing subtrahend the row is named for.
+ *
+ * ## The one that is left
+ *
+ * | template | what a child reads | what it wants |
+ * |---|---|---|
+ * | `long-div.remainder` | `129 ÷ 2` | 1 — the *remainder*, not 64 |
+ *
+ * Not a blank: `129 ÷ 2 = □` would want 64. The statement it needs is a third shape
+ * — `129 ÷ 2 = 64 r □`, a quotient *and* a remainder — and `PromptBlank` deliberately
+ * does not reach it. `dw.prompt.long-div.quotient-remainder` is not on the list and is
+ * blocked anyway, by `FRACTION_ANSWER_BLOCKED_SKILLS` below: `487 ÷ 9` *is* what its
+ * answer answers, but the answer is `54 1/9`.
  *
  * The list is measured rather than asserted: `render/prompts.test.ts` runs every
- * bound level of every registered template, applies the declared operator to the
- * two operands the host would draw, and compares the result with the canonical
- * answer in exact rationals. What disagrees must be exactly this list, in both
- * directions — so a family added tomorrow whose question a binary-op string cannot
- * state is named here by an existing test, not by somebody noticing.
+ * bound level of every registered template, writes the statement the two declarations
+ * describe, substitutes the canonical answer for the box, and checks the equation is
+ * true in exact rationals. What disagrees must be exactly this list, in both
+ * directions — so a family added tomorrow whose question the host cannot state is
+ * named here by an existing test, not by somebody noticing.
  */
-export const MISSTATED_QUESTION_TEMPLATES: readonly string[] = [
-  "dw.prompt.long-div.remainder",
-  "dw.prompt.missing-operand.add-unknown",
-  "dw.prompt.missing-operand.mul-unknown",
-  "dw.prompt.missing-operand.sub-unknown-minuend",
+export const MISSTATED_QUESTION_TEMPLATES: readonly string[] = ["dw.prompt.long-div.remainder"];
+
+/**
+ * Rows the host can now state and a **pack** cannot draw, with what each one needs.
+ *
+ * ## Why this list has to exist at all
+ *
+ * Because a stated question is not a drawn one, and the layer that finds out is the
+ * one nobody was checking. `packs/shared/game-host` flattens an `Item` to six fields
+ * and forwards `prompt` byte for byte, so for twenty-seven of the twenty-eight packs
+ * a statement is a string to draw and a longer string is a layout problem at worst.
+ * `games/balance` is the twenty-eighth: it splits the prompt at the `=` and builds a
+ * **physical apparatus** out of each side (`src/adapter.ts:251-253`), and it is the
+ * only pack that declares all five of these rows. Its model is a pan of weights that
+ * add.
+ *
+ * Measured by running that pack's own `specFromQuestion` on the statements this host
+ * now writes, and asking whether the board balances once the canonical answer is
+ * placed on the fill side:
+ *
+ * | statement | board | verdict |
+ * |---|---|---|
+ * | `47 + □ = 68` | 47 vs 68, fill left, answer 21 | 68 = 68 — **balances** |
+ * | `□ − 47 = 68` | −47 vs 68, fill left, answer 115 | 68 = 68 — **balances** |
+ * | `8 + 4 = □ + 5` | 8 + 4 vs 5, fill right, answer 7 | 12 = 12 — **balances** |
+ * | `93 − □ = 47` | 93 vs 47, fill left, answer 46 | 139 vs 47 — **does not** |
+ * | `□ × 15 = 165` | 15 vs 165, fill left, answer 11 | 26 vs 165 — **does not** |
+ *
+ * Two distinct defects, and only one of them is a bug:
+ *
+ * - `sub-unknown` — `tokenizeSide` sets a `sign` when it reads a minus and then
+ *   pushes the blank term **without applying it** (`src/adapter.ts:57-64`), so the box
+ *   in `93 − □` is added to the pan instead of taken off it. A pack bug, and a
+ *   one-line one.
+ * - `mul-unknown` — the tokeniser collapses `6 × 2` to a single weight of 12 and
+ *   cannot collapse `□ × 15`, because the product is not known until the child
+ *   answers. A missing factor is not a sum of weights at all; balance has a `beam`
+ *   mode where distance from the fulcrum multiplies (`6 × 2 = □ × 3`) and
+ *   `specFromQuestion` always builds `pans`. Not a bug — a mode the adapter does not
+ *   reach for.
+ *
+ * `unknown-minuend` draws correctly and is here for a third reason entirely: its only
+ * `requires` prerequisite is `missing-subtrahend`, so CG-4 makes it unreachable while
+ * that row is draft. It is a promotion that comes free with the pack fix above.
+ *
+ * `balance-meaning` draws correctly too, and stays draft on two things neither of
+ * which is the pack's: `a + b = □ + d` is three numbers and an operator on each side
+ * of the relation, which `PromptBlank` does not express; and the row declares the
+ * balance scale `required`, which `Item` in `packs/sdk/src/protocol.ts` has no field
+ * to ask a pack for — so promoting it would assert a requirement the host cannot
+ * transmit.
+ *
+ * ## How it is checked
+ *
+ * `render/prompts.test.ts` asserts every entry is a real node and is `draft`, and — in
+ * the other direction — that the draft rows of the `alg` domain are **exactly** these.
+ * So promoting one without striking it fails, demoting one without naming it fails,
+ * and the day a pack learns to draw a missing factor the list is what the promotion PR
+ * reads first. The board measurements themselves cannot live in this package: the
+ * curriculum imports nothing from `games/`, and it must not.
+ */
+export const PACK_STATEMENT_BLOCKED_SKILLS: readonly string[] = [
+  "dw.alg.equality.balance-meaning",
+  "dw.alg.equality.missing-factor",
+  "dw.alg.equality.missing-subtrahend",
+  "dw.alg.equality.unknown-minuend",
 ];
 
 /**

@@ -33,7 +33,21 @@ export const PROMPT_KEY_ADD_UNKNOWN = locKey("dw.prompt.missing-operand.add-unkn
 export const PROMPT_KEY_SUB_UNKNOWN = locKey("dw.prompt.missing-operand.sub-unknown");
 /** `☐ − a = c` */
 export const PROMPT_KEY_SUB_UNKNOWN_MINUEND = locKey("dw.prompt.missing-operand.sub-unknown-minuend");
-/** `a × ☐ = c` */
+/**
+ * `☐ × a = c`
+ *
+ * The box **opens** this one, where it closes `add-unknown` and `sub-unknown`, and
+ * the asymmetry is deliberate rather than an accident of authoring. There is only
+ * one multiplicative shape in this family precisely because multiplication commutes:
+ * `a × ☐ = c` and `☐ × a = c` are the same question with the same answer, which is
+ * why the subtractive pair needs two keys and this needs one. So the written
+ * position here is a *convention* and not a second question, and the convention is
+ * the one the founder asked for — `□ × 15 = 165` — which is also the one that reads
+ * closest to the `3x = 165` this row is the on-ramp to.
+ *
+ * It is declared in `render/prompts.ts` as `blank: "first"` and drawn from that
+ * declaration. Nothing infers it from the key.
+ */
 export const PROMPT_KEY_MUL_UNKNOWN = locKey("dw.prompt.missing-operand.mul-unknown");
 /** `a + b = ☐ + d` */
 export const PROMPT_KEY_BOTH_SIDES = locKey("dw.prompt.missing-operand.both-sides");

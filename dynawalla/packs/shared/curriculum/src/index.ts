@@ -134,8 +134,8 @@ export {
   rendererRegistry,
   repRendererId,
 } from "./render/registry.ts";
-export { findPromptTemplate, promptOperator, promptRegistry } from "./render/prompts.ts";
-export type { PromptOperator, PromptTemplateDeclaration } from "./render/prompts.ts";
+export { findPromptTemplate, promptBlank, promptOperator, promptRegistry } from "./render/prompts.ts";
+export type { PromptBlank, PromptOperator, PromptTemplateDeclaration } from "./render/prompts.ts";
 export type { RendererDeclaration } from "./render/registry.ts";
 export {
   balanceLowerPan,
