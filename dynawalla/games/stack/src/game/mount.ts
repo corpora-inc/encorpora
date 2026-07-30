@@ -277,13 +277,14 @@ export function mount(
         heading: "The tower",
         lines: [
           "Any part of the stone that hangs over the edge breaks off, so the tower gets thinner.",
-          "Land it dead straight and the tower gets wider instead.",
+          "Land it dead straight and the screen says True, and the tower gets wider instead. True here means dead straight.",
           "Drop a wrong number and the stone cracks and takes even more off.",
-          "If the tower gets too thin, it falls over and the run is done.",
+          "If the tower gets too thin it falls over. Then you get one more sum, and getting it right shores the tower up so you can carry on.",
+          "Shoring up always works, but it hands back a narrower tower each time.",
         ],
       },
       {
-        heading: "Waiting is free",
+        heading: "Waiting",
         lines: [
           "If the stone is showing a wrong number, do not tap. Let it go round again.",
           "You get a whole pass to read a number and decide.",
@@ -297,6 +298,13 @@ export function mount(
           "If you drop a wrong number, the sum finishes itself at the top so you can see it.",
           "Everything stops while it is up. Read it for as long as you like.",
           "Tap once when you are ready and the stone starts moving again.",
+        ],
+      },
+      {
+        heading: "The word at the side",
+        lines: [
+          "Stratum is the colour band the tower has climbed into. It changes every eight floors.",
+          "It is only the look of the place. Nothing about it changes what you have to do.",
         ],
       },
     ],

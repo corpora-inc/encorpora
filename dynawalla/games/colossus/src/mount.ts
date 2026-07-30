@@ -61,7 +61,7 @@ export function mountColossus(
     title: "COLOSSUS",
     summary: [
       "A stone tower stands in front of the giant. Every floor has a number on it.",
-      "Work out the sum on the keystone. Then punch out the floors that multiply to that answer.",
+      "The keystone is the hanging slab with a sum on it. Work the sum out, then punch out the floors whose numbers multiply to that answer.",
     ],
     sections: [
       {
@@ -85,7 +85,7 @@ export function mountColossus(
         heading: "Bringing it down",
         lines: [
           "A right strike blows those floors out, and everything above falls into the hole.",
-          "Clear every keystone and the whole tower comes down.",
+          "Clear every keystone and the whole tower comes down. The screen says THE COLOSSUS KNEELS, and that is the win.",
           "Some floors carry numbers that look close but are wrong. Do the sum before you swing.",
           "Sometimes one floor on its own is the whole answer.",
         ],

@@ -180,7 +180,7 @@ export class Siege {
         {
           heading: "Getting embers",
           lines: [
-            "A sum is always waiting at the bottom of the screen.",
+            "The panel across the bottom of the screen is the ANVIL. There is always a sum on it.",
             "Four answers sit under it. Tap the right one and embers fly up to the counter.",
             "Tap a wrong one and the anvil goes cold for about a second. You lose no life. You just cannot earn while it is cold.",
           ],
@@ -213,7 +213,9 @@ export class Siege {
           heading: "Staying alive",
           lines: [
             "The row of small orange bars at the top is your forge. Every enemy that reaches it takes one away.",
-            "When they are all gone the run is over, and you can start again.",
+            "When they are all gone the screen says THE FORGE WENT COLD. That is the end of the run. Tap RELIGHT to start again.",
+            "WAVES HELD is your score: how many waves you stopped.",
+            "The two numbers at the top help you read the fight. DPS is how much damage all your guns do in one second. HP IN is how much life is still walking towards you in this wave.",
             "Waves get harder. Build early, and keep answering sums while you fight.",
           ],
         },

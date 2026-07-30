@@ -225,7 +225,7 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
         lines: [
           "Eat a right number and your tail grows longer.",
           "Eat a wrong number and you cough up part of your tail.",
-          "Eat several right ones in a row and the ring in the corner fills up. A full ring gives you a shield.",
+          "Eat several right ones in a row and the ring in the corner fills up. A full ring gives you a shield, and a shield saves you the next time you would die.",
         ],
       },
       {
@@ -233,6 +233,7 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
         lines: [
           "Do not swim into your own tail.",
           "Do not push into the glowing edge of the water for long.",
+          "The number in the top corner is your depth. It is how far down you have got, and it goes up one for every nine right numbers you eat.",
           "Deeper down, the water gets smaller and some numbers start chasing you.",
         ],
       },

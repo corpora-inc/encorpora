@@ -290,7 +290,8 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
         lines: [
           "Drag your finger on the screen. The ship follows your finger.",
           "Tap FLIP to change your sign from plus to minus, or back again.",
-          "On a keyboard: arrow keys or W, A, S, D to move, SPACE to flip, SHIFT to vent.",
+          "Flip just as a bullet is about to hit you and the screen says CLUTCH. The bullet turns into food instead of hurting you.",
+          "On a keyboard: arrow keys or W, A, S, D to move, SPACE to flip, SHIFT to fire your total back out.",
         ],
       },
       {
@@ -315,10 +316,11 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       {
         heading: "Venting",
         lines: [
-          "Tap VENT to fire your whole total back out as darts that chase enemies.",
+          "Tap VENT to fire your whole total back out as darts that chase enemies. To vent is to let it all out at once.",
           "A bigger total makes more darts. A total smaller than 3 does nothing at all.",
           "The bar turns red when you are near the limit. That is the moment to vent.",
           "Vent right at the limit and you get a PERFECT: three times the points and twice the damage.",
+          "If the screen says VENT EXACTLY, a big enemy wants one exact total. Drink until your number is that number, then vent.",
         ],
       },
       {
@@ -328,6 +330,8 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
           "It drops four orbs. Each orb holds a number, and one of them is the answer.",
           "An orb only touches you if its sign matches yours. Orbs of the other sign pass straight through you.",
           "So set your sign first, then fly into the orb you picked. A wrong orb blows up and costs a shield.",
+          "The screen calls each of these questions a seal. SEALS 4/6 means six were asked and you got four right, and SEAL BROKEN means you have just got one.",
+          "STRATUM at the top is how many you have got right in all. It is how deep you have gone.",
         ],
       },
       {
@@ -335,7 +339,8 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
         lines: [
           "The three small diamonds near the top are your shields.",
           "Being hit costs one shield, halves your total and ends your streak.",
-          "When the last shield goes you get one question. Answer it right and you come back with every shield and a blast that clears the screen.",
+          "When the last shield goes you get one question. That screen says REPOLARIZE, which just means getting your sign working again.",
+          "Answer it right and you come back with every shield and a blast that clears the screen.",
           "Answer it wrong and the run is over.",
         ],
       },

@@ -177,6 +177,7 @@ export class Game {
             "When the two sides weigh the same, the arm stops tipping and sits flat.",
             "That flat arm is the equals sign. Both sides really do weigh the same.",
             "The words cut into the stone say the same thing with numbers.",
+            "A counterpoise is a weight you put on to balance another weight. That is what you are doing, and it is what the game is called.",
           ],
         },
         {
@@ -200,6 +201,7 @@ export class Game {
           lines: [
             "Nothing buzzes at you when you are wrong. The arm just swings the way you made it swing.",
             "Take the weight off and try a different one. You can try as many times as you want.",
+            "The banner that says MOVEMENT and a Roman number is the stage you have reached. MOVEMENT IV is stage four.",
           ],
         },
       ],

@@ -104,7 +104,7 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
       {
         heading: "The dark moment",
         lines: [
-          "Every so often the water goes dark and a math question appears above you.",
+          "Every so often the water goes dark and a math question appears above you. The screen calls it a RESONANCE, which is just the name for this moment.",
           "Four glass balls float around you. Each ball holds a different answer.",
           "Swim into the ball with the right answer and you grow a lot.",
           "Pick the wrong ball and you lose some size. The right ball lights up so you can see it.",
@@ -115,6 +115,7 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
         lines: [
           "The deeper you go, the more the water changes colour and the more there is to dodge.",
           "The small marks under the depth name fill in as you go down. They never empty.",
+          "RANK counts the numbers bigger than you. RANK 4 means three of them are bigger; RANK 1 means none are.",
           "If something much bigger hits you, you burst and scatter, then come straight back.",
           "There is no ending and no way to lose the run. You play until you want to stop.",
         ],

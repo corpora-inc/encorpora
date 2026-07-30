@@ -1016,7 +1016,10 @@ export function mount(
         heading: "Waves and lives",
         lines: [
           "You start with three lives. Clear a wave and the next one sinks faster.",
-          "Every sixth wave is a big one.",
+          "Every sixth wave brings THE ARBITER, one huge ship. An arbiter is someone who decides who is right.",
+          "Bullets bounce off its shield. Only a right answer breaks it, so keep reading the sums.",
+          "From wave twelve the screen says SHUT SHELLS. The numbers are scrambled until a shell has sunk part of the way down, so wait for it to open before you read it.",
+          "If the screen says ONE MORE, the next answer decides the run. Get it right and you keep going.",
           "Get a lot right in a row and each one is worth more.",
         ],
       },

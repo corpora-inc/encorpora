@@ -190,15 +190,22 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
           "Now and then a question appears at the top of the screen.",
           "Three notes come at you, one in each lane, and each one has an answer on it.",
           "Tap the lane with the right answer when it reaches the line.",
-          "A right answer adds one block of charge. A wrong one takes two away.",
+          "A right answer adds one block of charge, and the screen says SPLIT. A wrong one takes two blocks away.",
         ],
       },
       {
         heading: "Charge",
         lines: [
           "The five blocks near the top are your charge.",
-          "If they all run out the music breaks down. Answer one more question right and it starts again.",
+          "If they all run out the music breaks down and the screen says RESTART THE HEART. Answer one more question right and the music starts again.",
           "The run never ends. You always get another go.",
+        ],
+      },
+      {
+        heading: "The words along the top",
+        lines: [
+          "BPM is how fast the beat is going. LV is how hard the questions are.",
+          "INDIGO, EMBER, GLACIER and the rest are just the name of the colour and sound you are in now. They change nothing you have to do.",
         ],
       },
     ],

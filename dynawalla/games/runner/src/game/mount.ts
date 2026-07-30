@@ -365,7 +365,7 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
         heading: "Answering",
         lines: [
           "Read the sum at the top of the screen.",
-          "Three numbers float above the road. Only one is the answer.",
+          "Three numbers float above the road. Only one is the answer. That row of numbers across the road is the gate.",
           "Get into that lane before you reach the gate. The lane you are in is your answer.",
           "You do not press anything. Driving through is answering.",
         ],
@@ -373,15 +373,16 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
       {
         heading: "The blue bar",
         lines: [
-          "The bar along the bottom is your power.",
+          "The bar along the bottom is your power. The screen calls it Voltage.",
           "A right answer adds power. A wrong answer takes a lot away, and you stumble.",
           "Hitting a wall or a bar also takes power away.",
+          "It also drains slowly all on its own, so keep answering.",
         ],
       },
       {
         heading: "When the power runs out",
         lines: [
-          "The run stops and you get one more sum, with three big buttons.",
+          "The run stops and you get one more sum, with three big buttons. The screen calls this a Recharge.",
           "Get it right and you carry on with full power.",
           "Get it wrong and the run is over. Then you can start again.",
         ],
@@ -389,8 +390,9 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
       {
         heading: "Going faster",
         lines: [
-          "Three right answers in a row make your score count for more.",
-          "One wrong answer sets that back to normal.",
+          "Three right answers in a row lift your Surge by one. Surge is the number that multiplies your score.",
+          "One wrong answer sets Surge back to 1.",
+          "Get Surge all the way to 9 and the screen says OVERDRIVE. Every gate then pays double.",
           "The road never ends. See how far you can get.",
         ],
       },
