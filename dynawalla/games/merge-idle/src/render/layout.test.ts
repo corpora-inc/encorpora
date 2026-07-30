@@ -1,32 +1,40 @@
-// THE SHELF AND THE VENTS ARE TWO PLACES, NOT ONE PLACE TWICE.
+// THE SHELF AND THE MOUTH ARE TWO PLACES, NOT ONE PLACE TWICE.
 //
-// From a device photo: the four vent number-pills were painted along the bottom
-// edge of the reef, over the last row of polyps, whose digits a child then
-// could not read or aim a drag at. The founder asked the right question —
-// "shouldn't the pill numbers be under the polyps horizontally rather than over
-// them in Z?" — and the answer is that this is a layout bug, not a paint-order
-// one. The vents draw AFTER the polyps, on the same canvas, with a 0.95-alpha
-// chimney; whatever they overlap they erase. Restacking, dimming or shrinking
-// the pills would all be ways of not fixing it.
+// From a device photo of the previous build: the four vent number-pills were
+// painted along the bottom edge of the reef, over the last row of polyps, whose
+// digits a child then could not read or aim a drag at. The founder asked the right
+// question — "shouldn't the pill numbers be under the polyps horizontally rather
+// than over them in Z?" — and the answer is that this was a layout bug, not a
+// paint-order one: the strip drew AFTER the polyps with a 0.95-alpha body, so
+// whatever it overlapped it erased.
 //
 // What was wrong: `computeLayout` sized the grid as if a polyp were exactly its
-// cell. A polyp sprite is SPRITE_SCALE — 1.62 — cells across, centred on the
-// cell, so it reaches POLYP_BLEED (0.31) of a cell past the cell box on every
-// side. The clearance left between the grid's arithmetic bottom and the vent
-// strip was a single `pad`, 8 to 22px, which is smaller than that bleed at
-// every portrait size the fleet has.
+// cell. A polyp sprite is SPRITE_SCALE — 1.62 — cells across, centred on the cell,
+// so it reaches POLYP_BLEED (0.31) of a cell past the cell box on every side, and
+// the rock under it reaches further still. The clearance left was a single `pad`,
+// 8 to 22px, which is smaller than that at every portrait size the fleet has.
 //
-// So this file asserts the thing the screenshot showed, at the shapes the fleet
-// actually has, for every shelf the game can grow into and every vent count a
-// screen can hold: the polyps as DRAWN and the vents as DRAWN are disjoint.
+// There is one mouth now instead of up to five vents, and it is a DROP TARGET, so
+// this file asserts three things at every shape the fleet has and every shelf the
+// reef can grow into: the polyps as DRAWN and the mouth as DRAWN are disjoint, the
+// mouth is big enough to hit, and the mouth does not reach the two stage buttons.
 
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { safeRect, type Insets, type Rect } from '../../../../packs/shared/game-chrome/index.ts'
+import { type Insets, type Rect } from '../../../../packs/shared/game-chrome/index.ts'
 import { makeBoard } from '../core/board.ts'
-import { chromeLayout, stageAreaFor } from '../ui/chrome.ts'
-import { computeLayout, LEGIBLE_CELL, promptPlate, shelfCap, ventCap, ventRects } from './renderer.ts'
+import { START_COLS, START_ROWS } from '../core/engine.ts'
+import { chromeLayout, MOUTH_END_PAD, stageAreaFor, STAGE_BTN } from '../ui/chrome.ts'
+import {
+  computeLayout,
+  fedSlotRect,
+  LEGIBLE_CELL,
+  MOUTH_MIN,
+  mouthRect,
+  shelfCap,
+  totalRect,
+} from './renderer.ts'
 
 const NONE: Insets = { top: 0, right: 0, bottom: 0, left: 0 }
 const TALL: Insets = { top: 47, right: 0, bottom: 34, left: 0 }
@@ -35,11 +43,8 @@ const WIDE: Insets = { top: 0, right: 47, bottom: 21, left: 47 }
 const VIEWPORTS: Array<[string, number, number]> = [
   ['phone portrait, small', 320, 568],
   ['phone portrait, tall', 390, 844],
-  // The founder's device: 1080x2340 physical, which is this in CSS px.
   ['phone portrait, android', 360, 780],
   ['phone landscape', 844, 390],
-  // Every portrait shape turned sideways. A vent is a drop target, and it is
-  // the SHORT landscape stage that squeezes the chimneys under 44px.
   ['phone landscape, small', 568, 320],
   ['phone landscape, android', 780, 360],
   ['tablet portrait', 768, 1024],
@@ -47,139 +52,140 @@ const VIEWPORTS: Array<[string, number, number]> = [
   ['laptop', 1440, 900],
 ]
 
-/** Every shelf the game can grow into: 5x6 at the start, 7x9 at the ceiling. */
+/**
+ * Every shelf the reef can grow into. The starting board is bigger than the old
+ * game's 5x6 — the founder asked for "more room for a bigger board", and deleting
+ * the vent strip and the five-button rail is what paid for it.
+ */
 const SHELVES: Array<[number, number]> = [
-  [5, 6],
-  [6, 6],
-  [5, 9],
-  [6, 9],
+  [START_COLS, START_ROWS],
+  [7, 7],
   [7, 9],
+  [8, 9],
+  [9, 11],
 ]
 
-const insetCases = (w: number, h: number): Array<[string, Insets]> => [
-  ['no insets', NONE],
-  ['notched', w > h ? WIDE : TALL],
-]
-
-/** The overlap of two rectangles, or null when they do not touch. */
-function overlap(a: Rect, b: Rect): { w: number; h: number } | null {
-  const w = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)
-  const h = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y)
-  return w > 0.001 && h > 0.001 ? { w, h } : null
-}
-
-const say = (r: Rect): string =>
-  `[${r.x.toFixed(1)},${r.y.toFixed(1)} ${r.w.toFixed(1)}x${r.h.toFixed(1)}]`
-
-for (const [name, w, h] of VIEWPORTS) {
-  for (const [label, ins] of insetCases(w, h)) {
-    for (const [cols, rows] of SHELVES) {
-      test(`the vents never touch the shelf at ${name} (${w}×${h}, ${label}, ${cols}×${rows})`, () => {
-        const c = chromeLayout(w, h, safeRect(w, h, ins))
-        const b = makeBoard(cols, rows)
-        const l = computeLayout(c.stage.w, c.stage.h, 2, b, stageAreaFor(c, c.stage.w, c.stage.h))
-        const vents = ventRects(l, ventCap(l))
-
-        for (let i = 0; i < vents.length; i++) {
-          const v = vents[i]
-          if (!v) continue
-          // The chimney: opaque, drawn last, and therefore the thing that
-          // actually erased the polyps.
-          const onVent = overlap(l.gridRect, v)
-          assert.equal(
-            onVent,
-            null,
-            `vent ${i} ${say(v)} covers the shelf ${say(l.gridRect)} by ` +
-              `${onVent?.w.toFixed(1)}x${onVent?.h.toFixed(1)}px — a child cannot read the bottom row`,
-          )
-          // And the number plate on it: the pill the founder photographed.
-          const onPill = overlap(l.gridRect, promptPlate(v))
-          assert.equal(
-            onPill,
-            null,
-            `the number pill on vent ${i} sits over the shelf by ` +
-              `${onPill?.w.toFixed(1)}x${onPill?.h.toFixed(1)}px`,
-          )
-        }
-
-        // A vent is a DROP target — a polyp dragged anywhere onto a chimney is
-        // fed to it — so the chimney, not the little pill, is what has to clear
-        // the platform's 44px minimum. (The pill is a label; nothing is bound
-        // to it.) The axis that matters is the one the vents stack along.
-        for (const v of vents) {
-          assert.ok(
-            v.w >= 44 && v.h >= 44,
-            `a vent is ${v.w.toFixed(0)}x${v.h.toFixed(0)}px — under the 44px touch minimum`,
-          )
-        }
-
-        // The shelf must still be worth playing on after the band is reserved:
-        // below LEGIBLE_CELL the numerals on the polyps collide. Only shelves
-        // the game will actually grow into are held to it — an oversized shelf
-        // carried in from a tablet save has to shrink, and shrinking is what
-        // `computeLayout` now does instead of overrunning the vents.
-        const cap = shelfCap(l)
-        if (cols <= cap.cols && rows <= cap.rows) {
-          assert.ok(
-            l.cell >= LEGIBLE_CELL,
-            `the cell is ${l.cell.toFixed(1)}px — the numerals on the polyps collide`,
-          )
-        }
-        // And the drawn shelf has to stay inside the region it was given, or
-        // "disjoint from the vents" is true only by luck.
-        assert.ok(
-          l.gridRect.x >= l.board.x - 0.5 &&
-            l.gridRect.y >= l.board.y - 0.5 &&
-            l.gridRect.x + l.gridRect.w <= l.board.x + l.board.w + 0.5 &&
-            l.gridRect.y + l.gridRect.h <= l.board.y + l.board.h + 0.5,
-          `the drawn shelf ${say(l.gridRect)} spills out of its region ${say(l.board)}`,
-        )
-      })
-    }
-  }
-}
-
-test('DEEPEN is never allowed to grow a shelf this glass cannot draw', () => {
-  // The other half of the fix: `computeLayout` shrinks a shelf that does not
-  // fit rather than overrunning the vents with it, and `shelfCap` stops the
-  // game ever CHOOSING one. Every shelf the cap admits must be legible.
-  for (const [name, w, h] of VIEWPORTS) {
-    for (const [label, ins] of insetCases(w, h)) {
-      const c = chromeLayout(w, h, safeRect(w, h, ins))
-      const probe = computeLayout(c.stage.w, c.stage.h, 2, makeBoard(5, 6), stageAreaFor(c, c.stage.w, c.stage.h))
-      const cap = shelfCap(probe)
-      assert.ok(cap.cols >= 5 && cap.rows >= 6, `${name} ${label}: cannot even hold the starting 5×6 shelf`)
-      const at = computeLayout(
-        c.stage.w,
-        c.stage.h,
-        2,
-        makeBoard(Math.min(7, cap.cols), Math.min(9, cap.rows)),
-        stageAreaFor(c, c.stage.w, c.stage.h),
-      )
-      assert.ok(
-        at.cell >= LEGIBLE_CELL,
-        `${name} ${label}: the cap admits a ${cap.cols}×${cap.rows} shelf whose cell is ${at.cell.toFixed(1)}px`,
-      )
-    }
-  }
+const rectOf = (i: Insets, w: number, h: number): Rect => ({
+  x: i.left,
+  y: i.top,
+  w: w - i.left - i.right,
+  h: h - i.top - i.bottom,
 })
 
-test('the vent band is a band: it is below the shelf in portrait, beside it in landscape', () => {
-  // The regions are disjoint by CONSTRUCTION — the vents are placed first and
-  // the shelf gets the remainder — so this also documents which way round.
-  for (const [name, w, h] of VIEWPORTS) {
-    const c = chromeLayout(w, h, safeRect(w, h, NONE))
-    const l = computeLayout(c.stage.w, c.stage.h, 2, makeBoard(5, 6), stageAreaFor(c, c.stage.w, c.stage.h))
-    if (l.ventColumn) {
-      assert.ok(
-        l.board.x + l.board.w <= l.ventStrip.x,
-        `${name}: the shelf runs into the vent column`,
-      )
-    } else {
-      assert.ok(
-        l.board.y + l.board.h <= l.ventStrip.y,
-        `${name}: the shelf runs into the vent band`,
-      )
+const overlaps = (a: Rect, b: Rect): boolean =>
+  a.x < b.x + b.w - 0.01 && b.x < a.x + a.w - 0.01 && a.y < b.y + b.h - 0.01 && b.y < a.y + a.h - 0.01
+
+for (const [name, w, h] of VIEWPORTS) {
+  for (const [label, inset] of [
+    ['no insets', NONE],
+    ['notch + home indicator', TALL],
+    ['sensor housing, sideways', WIDE],
+  ] as Array<[string, Insets]>) {
+    const chrome = chromeLayout(w, h, rectOf(inset, w, h))
+    const stageW = chrome.stage.w
+    const stageH = chrome.stage.h
+    const area = stageAreaFor(chrome, stageW, stageH)
+
+    for (const [cols, rows] of SHELVES) {
+      const l = computeLayout(stageW, stageH, 2, makeBoard(cols, rows), area, MOUTH_END_PAD)
+      const m = mouthRect(l)
+
+      test(`${name}, ${label}, ${cols}x${rows}: the drawn shelf never meets the mouth`, () => {
+        assert.equal(
+          overlaps(l.gridRect, m),
+          false,
+          `gridRect ${JSON.stringify(l.gridRect)} overlaps the mouth ${JSON.stringify(m)}`,
+        )
+      })
+
+      test(`${name}, ${label}, ${cols}x${rows}: the mouth is a target a child can hit`, () => {
+        assert.ok(m.w >= MOUTH_MIN, `the mouth is ${m.w.toFixed(1)}px wide`)
+        assert.ok(m.h >= MOUTH_MIN, `the mouth is ${m.h.toFixed(1)}px tall`)
+      })
+
+      test(`${name}, ${label}, ${cols}x${rows}: neither the mouth nor the shelf covers a button`, () => {
+        for (const btn of [chrome.dissolve, chrome.mute]) {
+          const inStage: Rect = { x: btn.x, y: btn.y - chrome.stage.y, w: btn.w, h: btn.h }
+          assert.equal(
+            overlaps(m, inStage),
+            false,
+            `the mouth ${JSON.stringify(m)} covers a ${STAGE_BTN}px button at ${JSON.stringify(inStage)}`,
+          )
+          assert.equal(
+            overlaps(l.gridRect, inStage),
+            false,
+            `the shelf ${JSON.stringify(l.gridRect)} covers a button at ${JSON.stringify(inStage)}`,
+          )
+        }
+      })
+
+      test(`${name}, ${label}, ${cols}x${rows}: every fed slot and the total stay inside the mouth`, () => {
+        for (const slots of [1, 2, 3]) {
+          for (let i = 0; i < slots; i++) {
+            const box = fedSlotRect(m, i, slots)
+            assert.ok(box.w > 0 && box.h > 0, `slot ${i}/${slots} is ${box.w}x${box.h}`)
+            assert.ok(box.x >= m.x - 0.01 && box.x + box.w <= m.x + m.w + 0.01, `slot ${i} leaves the mouth`)
+            assert.ok(box.y >= m.y - 0.01 && box.y + box.h <= m.y + m.h + 0.01)
+          }
+        }
+        const tot = totalRect(m)
+        assert.ok(tot.w > 0 && tot.h > 0)
+        assert.ok(tot.x + tot.w <= m.x + m.w + 0.01)
+        // The slots and the total must not draw on top of each other.
+        assert.equal(overlaps(fedSlotRect(m, 2, 3), tot), false, 'the last slot runs into the total')
+      })
+
+      test(`${name}, ${label}, ${cols}x${rows}: the shelf and the mouth stay inside the safe area`, () => {
+        const right = area.x + area.w
+        assert.ok(l.gridRect.x >= area.x - 0.01, 'the shelf runs under the left inset')
+        assert.ok(l.gridRect.x + l.gridRect.w <= right + 0.01, 'the shelf runs under the right inset')
+        assert.ok(m.x >= area.x - 0.01, 'the mouth runs under the left inset')
+        assert.ok(m.x + m.w <= right + 0.01, 'the mouth runs under the right inset')
+        assert.ok(m.y + m.h <= area.y + area.h + 0.01, 'the mouth runs under the home indicator')
+      })
     }
+
+    test(`${name}, ${label}: the starting shelf is drawn at a legible cell`, () => {
+      const l = computeLayout(stageW, stageH, 2, makeBoard(START_COLS, START_ROWS), area, MOUTH_END_PAD)
+      assert.ok(l.cell >= LEGIBLE_CELL, `the starting cell is ${l.cell.toFixed(1)}px`)
+    })
+
+    test(`${name}, ${label}: growth is capped at what this glass can draw legibly`, () => {
+      const l = computeLayout(stageW, stageH, 2, makeBoard(START_COLS, START_ROWS), area, MOUTH_END_PAD)
+      const cap = shelfCap(l)
+      const grown = makeBoard(Math.max(START_COLS, cap.cols), Math.max(START_ROWS, cap.rows))
+      const g = computeLayout(stageW, stageH, 2, grown, area, MOUTH_END_PAD)
+      assert.equal(overlaps(g.gridRect, mouthRect(g)), false, 'a shelf grown to the cap hits the mouth')
+    })
   }
+}
+
+/**
+ * Deleting the vent strip and the action rail was supposed to BUY board. This is the
+ * receipt: the same phone, the same insets, and the shelf gets materially more room
+ * than the old layout's 21%-of-stage vent strip plus a 62px rail left it.
+ */
+test('the mouth costs the shelf less than the old vent strip and rail did', () => {
+  const w = 390
+  const h = 844
+  const chrome = chromeLayout(w, h, rectOf(TALL, w, h))
+  const area = stageAreaFor(chrome, chrome.stage.w, chrome.stage.h)
+  const l = computeLayout(chrome.stage.w, chrome.stage.h, 2, makeBoard(START_COLS, START_ROWS), area, MOUTH_END_PAD)
+  const share = l.board.h / chrome.stage.h
+  // The old layout: a 21%-of-stage vent strip, and a stage that was already 62px
+  // shorter because the rail took it.
+  assert.ok(share > 0.75, `the shelf only got ${(share * 100).toFixed(0)}% of the stage's height`)
+  assert.ok(l.cell >= LEGIBLE_CELL + 6, `a 6x7 shelf on a tall phone should be roomy, got ${l.cell.toFixed(1)}px`)
+})
+
+test('landscape puts the mouth down the right and hands the width back to the shelf', () => {
+  const w = 1024
+  const h = 768
+  const chrome = chromeLayout(w, h, rectOf(NONE, w, h))
+  const area = stageAreaFor(chrome, chrome.stage.w, chrome.stage.h)
+  const l = computeLayout(chrome.stage.w, chrome.stage.h, 2, makeBoard(8, 9), area, MOUTH_END_PAD)
+  assert.equal(l.mouthColumn, true)
+  const m = mouthRect(l)
+  assert.ok(m.x > l.gridRect.x + l.gridRect.w, 'the mouth should be to the RIGHT of the shelf')
+  assert.equal(overlaps(l.gridRect, m), false)
 })

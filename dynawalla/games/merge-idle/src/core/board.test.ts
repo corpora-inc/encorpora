@@ -18,6 +18,7 @@ import {
   purgeLowest,
   reefMass,
   spawn,
+  trySplit,
   tryMerge,
 } from './board.ts'
 import { makeRng } from './rng.ts'
@@ -53,7 +54,7 @@ test('unequal values never merge, at any distance', () => {
 
 test('a merge past the top of the ladder is refused rather than corrupting a value', () => {
   const b = makeBoard(2, 2)
-  const top = 7 * 2 ** 17
+  const top = 15 * 2 ** 17
   place(b, 0, top)
   place(b, 1, top)
   assert.equal(tryMerge(b, 0, 1), null)
@@ -62,7 +63,10 @@ test('a merge past the top of the ladder is refused rather than corrupting a val
 
 test('off-ladder values can never be placed', () => {
   const b = makeBoard(2, 2)
-  assert.equal(place(b, 0, 11), null)
+  // 11 and 15 ARE polyp values now — the ladder went from four seeds to eight,
+  // see `core/ladder.ts`. 17 is the first integer that is not.
+  assert.equal(place(b, 0, 17), null)
+  assert.equal(place(b, 0, 34), null)
   assert.equal(place(b, 0, 0), null)
   assert.equal(place(b, 0, -8), null)
   assert.equal(polyps(b).length, 0)
@@ -194,5 +198,53 @@ test('a thousand random operations never break the board invariant', () => {
       if (ps.length) cull(b, rng.pick(ps).cell)
     }
     assert.ok(invariant(b), `invariant broke at op ${i}`)
+  }
+})
+
+/* -------------------------------------------------------------------- split */
+
+test('SPLIT halves a polyp into two of itself, and needs a free cell for the second', () => {
+  const b = makeBoard(2, 1)
+  place(b, 0, 16)
+  const res = trySplit(b, 0, makeRng(3))
+  assert.ok(res)
+  assert.equal(res.value, 8)
+  assert.deepEqual(
+    polyps(b)
+      .map((p) => p.value)
+      .sort((x, y) => x - y),
+    [8, 8],
+  )
+  assert.ok(invariant(b))
+})
+
+test('a seed polyp cannot be split — 3 does not halve, and that is arithmetic', () => {
+  const b = makeBoard(3, 1)
+  place(b, 0, 3)
+  assert.equal(trySplit(b, 0, makeRng(3)), null)
+  assert.deepEqual(polyps(b).map((p) => p.value), [3])
+})
+
+test('split refuses when the shelf is full rather than losing half a polyp', () => {
+  const b = makeBoard(2, 1)
+  place(b, 0, 16)
+  place(b, 1, 5)
+  assert.equal(trySplit(b, 0, makeRng(3)), null)
+  assert.equal(at(b, 0)?.value, 16, 'the polyp must be left exactly as it was')
+  assert.ok(invariant(b))
+})
+
+test('split then merge is the identity — the doubling fact, both ways', () => {
+  const rng = makeRng(11)
+  for (const v of [2, 6, 10, 14, 18, 22, 26, 30, 1024, 960]) {
+    const b = makeBoard(3, 3)
+    place(b, 0, v)
+    const res = trySplit(b, 0, rng)
+    assert.ok(res, `${v} should split`)
+    const cells = polyps(b).map((p) => p.cell)
+    assert.equal(cells.length, 2)
+    const merged = tryMerge(b, cells[0] as number, cells[1] as number)
+    assert.ok(merged)
+    assert.equal(merged.value, v, `${v} split and merged should come back to ${v}`)
   }
 })

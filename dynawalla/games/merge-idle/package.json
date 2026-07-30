@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "ABYSSAL BLOOM — a bioluminescent merge-and-idle reef. Merge to double; feed the vent the number it asks for.",
+  "description": "ABYSSAL BLOOM — a bioluminescent merge reef. One target at the top; build it out of polyps.",
   "engines": {
     "node": ">=22.12"
   },
