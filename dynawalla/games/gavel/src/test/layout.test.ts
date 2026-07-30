@@ -20,7 +20,7 @@ import {
   setHostInsets,
   type Insets,
 } from "../../../../packs/shared/game-chrome/index.ts"
-import { MIN_NUMERAL_PX, MIN_TABLET_W, PROMPT_MAX_CHARS } from "../game/ladder.ts"
+import { MIN_TABLET_W, PROMPT_MAX_CHARS } from "../game/ladder.ts"
 import { MIN_KEY, columnsFor, criticalRects, hitKey, hitTablet, layout, promptPx } from "../render/layout.ts"
 
 type Case = { name: string; w: number; h: number; insets: Insets }
@@ -128,10 +128,15 @@ test("a tablet is never narrower than the width the prompt budget was derived fr
           `${c.name} with ${String(count)} tablets: a tablet is ${rect.w.toFixed(0)}px wide, under the ` +
             `${String(MIN_TABLET_W)}px the character budget assumes`,
         )
-        const size = promptPx("1".repeat(PROMPT_MAX_CHARS), rect.w, rect.h)
+        // `promptPx` clamps at `MIN_NUMERAL_PX`, so asserting the floor here would pass
+        // with the whole width calculation deleted. The claim worth making is that the
+        // widest prompt a tablet will ACCEPT still FITS at the size it is given.
+        const widest = "1".repeat(PROMPT_MAX_CHARS)
+        const size = promptPx(widest, rect.w, rect.h)
         assert.ok(
-          size >= MIN_NUMERAL_PX,
-          `${c.name}: the widest accepted prompt would print at ${String(size)}px`,
+          PROMPT_MAX_CHARS * size * 0.63 <= rect.w - 16 + 1,
+          `${c.name}: the widest accepted prompt is ${String(size)}px and overflows a ` +
+            `${rect.w.toFixed(0)}px tablet`,
         )
       }
     }

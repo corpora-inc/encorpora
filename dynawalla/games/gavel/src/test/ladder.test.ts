@@ -21,6 +21,9 @@ import { test } from "node:test"
 
 import {
   LOT_STEP_SECONDS,
+  MAX_BID_DIGITS,
+  MAX_MARGIN,
+  MAX_TABLET_VALUE,
   MAX_TABLETS,
   MIN_NUMERAL_PX,
   MIN_TABLETS,
@@ -164,17 +167,44 @@ test("a tablet carries a whole non-negative price, or the question is refused", 
   assert.equal(tabletValue(q({ answer: "1/2" })), null)
   assert.equal(tabletValue(q({ answer: "2.5" })), null)
   assert.equal(tabletValue(q({ answer: "-4" })), null)
-  assert.equal(tabletValue(q({ answer: "10000" })), null)
+  assert.equal(tabletValue(q({ answer: String(MAX_TABLET_VALUE) })), MAX_TABLET_VALUE)
+  assert.equal(tabletValue(q({ answer: String(MAX_TABLET_VALUE + 1) })), null)
   assert.equal(tabletValue(q({ answer: " 17 " })), 17)
   assert.equal(tabletValue(q({ prompt: "1".repeat(PROMPT_MAX_CHARS + 1) })), null)
   assert.equal(tryParseBid("007"), 7)
   assert.equal(tryParseBid(""), null)
   assert.equal(tryParseBid("1e3"), null)
+  // The paddle has to hold the offer as well as the bid, and the offer sits up to
+  // `MAX_MARGIN` above the highest tablet.
+  assert.ok(String(MAX_TABLET_VALUE + MAX_MARGIN).length <= MAX_BID_DIGITS)
 })
 
-test("a refusal that is a fact about the rung caps it; the pool sentinel never does", () => {
-  assert.equal(rungCannotDraw(q()), false)
+test("the whole live ladder fits on a tablet, including the rung that used to cap it", () => {
+  // `dw.mul.multidigit.times-one-digit` is active and reaches `4827 × 6 = 28962`. At the
+  // old 9,999 ceiling that item was refused — and, because the refusal was misread as a
+  // fact about the RUNG, it capped the stream below its own ordinate and took 21 of the
+  // shipped ladder's 66 rungs out of the run, including all three rungs of
+  // `dw.add.regroup.subtract-across-zero`, whose answers fit a tablet perfectly.
+  assert.equal(tabletValue(q({ prompt: "4827 × 6", answer: "28962" })), 28962)
+  assert.equal(tabletValue(q({ prompt: "9999 × 9", answer: "89991" })), 89991)
+})
+
+test("a refusal that is a fact about the rung caps it; an item-level refusal never does", () => {
+  // Two rung facts, both constants of this game: a prompt wider than a tablet, and an
+  // answer that is not a whole number at all. A fraction rung emits fractions forever.
   assert.equal(rungCannotDraw(q({ answer: "1/2" })), true)
+  assert.equal(rungCannotDraw(q({ answer: "2.5" })), true)
+  assert.equal(rungCannotDraw(q({ prompt: "1".repeat(PROMPT_MAX_CHARS + 1) })), true)
+
+  // Everything else is a fact about the ITEM. The pair below comes from the SAME rung,
+  // and capping on the first one is what deleted a third of the ladder.
+  assert.equal(rungCannotDraw(q()), false)
+  assert.equal(rungCannotDraw(q({ prompt: "4827 × 6", answer: "99999999" })), false)
+  assert.equal(rungCannotDraw(q({ prompt: "1023 × 2", answer: "2046" })), false)
+  // A negative comes from a signed rung that also emits positives, so it is an item too.
+  assert.equal(rungCannotDraw(q({ answer: "-4" })), false)
+  assert.equal(tabletValue(q({ answer: "-4" })), null)
+
   assert.equal(rungCannotDraw(q({ answer: "1/2", id: "" })), false)
 })
 

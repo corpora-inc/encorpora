@@ -12,6 +12,7 @@
 import { easeOutCubic, unit } from "../core/feel.ts"
 import type { Settled } from "../game/auction.ts"
 import type { Room } from "../game/lot.ts"
+import { MIN_NUMERAL_PX } from "../game/ladder.ts"
 import { hitKey, hitTablet, layout, promptPx, type Key, type Layout, type Rect } from "./layout.ts"
 import {
   BRASS,
@@ -40,7 +41,6 @@ export type View = {
   coins: number
   storeroom: number
   remaining: number
-  consignment: number
   armed: boolean
   paused: boolean
   stalled: boolean
@@ -241,34 +241,48 @@ export class Scene {
     void view
   }
 
-  /** One pip per lot still owed to the broker. A wrong bid adds pips. */
+  /**
+   * One pip per lot still owed to the broker, and one oxide pip per lot on the shelf.
+   *
+   * **Countable, and drawn rather than written.** This used to print `CONSIGNMENT 1` and
+   * `3 UNSOLD` at nine pixels — numerals a child has to read, at two thirds of this pack's
+   * own stated floor of thirteen, next to a comment citing SERPENT's four-pixel orbs. The
+   * information was never the numeral: a wrong bid means one more pip, and the shelf is a
+   * row of dull ones. Both are legible from across a room, which nine-pixel type is not,
+   * and the consignment ordinal was narration nobody needs.
+   */
   private strip(view: View): void {
     const g = this.ctx
     const r = this.lay.strip
-    const n = Math.max(1, view.remaining)
-    const pip = Math.min(12, (r.w - 90) / Math.max(6, n) - 2)
-    g.textBaseline = "middle"
-    g.textAlign = "left"
-    g.font = `600 9px ${TITLE}`
-    g.fillStyle = INK_DIM
-    g.fillText(`CONSIGNMENT ${String(view.consignment)}`, r.x, r.y + r.h / 2)
-    let x = r.x + 96
-    for (let i = 0; i < n; i++) {
+    const owed = Math.max(1, view.remaining)
+    const total = owed + view.storeroom
+    const pip = Math.max(4, Math.min(13, r.w / Math.max(10, total + 2) - 3))
+    let x = r.x
+    for (let i = 0; i < owed; i++) {
       g.fillStyle = i === 0 ? BRASS_LIT : BRASS_DIM
-      g.beginPath()
-      g.moveTo(x + pip / 2, r.y + 1)
-      g.lineTo(x + pip, r.y + r.h / 2)
-      g.lineTo(x + pip / 2, r.y + r.h - 1)
-      g.lineTo(x, r.y + r.h / 2)
-      g.closePath()
-      g.fill()
+      this.pip(x, r, pip)
       x += pip + 3
     }
-    if (view.storeroom > 0) {
-      g.textAlign = "right"
+    // The shelf, in copper oxide: lots bought over the offer that nobody will buy. Set
+    // apart by a gap, because they are not lots still to be sold.
+    x += pip
+    for (let i = 0; i < view.storeroom; i++) {
       g.fillStyle = OXIDE
-      g.fillText(`${String(view.storeroom)} UNSOLD`, r.x + r.w, r.y + r.h / 2)
+      this.pip(x, r, pip)
+      x += pip + 3
     }
+  }
+
+  /** One lozenge on the consignment strip. */
+  private pip(x: number, r: Rect, w: number): void {
+    const g = this.ctx
+    g.beginPath()
+    g.moveTo(x + w / 2, r.y + 1)
+    g.lineTo(x + w, r.y + r.h / 2)
+    g.lineTo(x + w / 2, r.y + r.h - 1)
+    g.lineTo(x, r.y + r.h / 2)
+    g.closePath()
+    g.fill()
   }
 
   /** The lot on the block, and the offer plate beside it. */
@@ -295,9 +309,15 @@ export class Scene {
     this.sigil(left.x + left.w - 14 - sigilR, left.y + left.h / 2, sigilR, view.lot)
 
     const settled = view.phase === "settled" ? view.settled : null
-    g.font = `600 11px ${TITLE}`
+    // The verdict carries the coins earned, so it is a numeral a child reads and it obeys
+    // the floor. It used to print at eleven pixels.
+    g.font = `600 ${String(MIN_NUMERAL_PX)}px ${TITLE}`
     g.fillStyle = settled ? this.tint(settled) : INK_DIM
-    g.fillText(settled ? this.verdict(settled) : "ON THE BLOCK", left.x + 12, left.y + left.h - 14)
+    g.fillText(
+      settled ? this.verdict(settled) : "ON THE BLOCK",
+      left.x + 12,
+      left.y + left.h - 13,
+    )
 
     // The offer. Lapis, and lapis is used for nothing else in the game.
     this.plate(o, LAPIS, LAPIS_LIT)
@@ -375,10 +395,12 @@ export class Scene {
 
     g.textBaseline = "middle"
     g.textAlign = "left"
-    g.font = `600 10px ${TITLE}`
+    // `BEATING 88 + 61` is the marked tablet's own sum — exactly the class of text the
+    // floor exists for — and it used to print at ten pixels.
+    g.font = `600 ${String(MIN_NUMERAL_PX)}px ${TITLE}`
     g.fillStyle = INK_DIM
     g.fillText(
-      marked ? `BEATING  ${marked.prompt}` : "MARK A TABLET, THEN SET YOUR BID",
+      marked ? `BEATING  ${marked.prompt}` : "MARK A TABLET, THEN BID",
       r.x + 12,
       r.y + r.h / 2,
     )
@@ -470,18 +492,21 @@ export class Scene {
 
   private verdict(s: Settled): string {
     switch (s.outcome) {
+      // Short, because they are drawn at the legibility floor on a 320px phone, where the
+      // block's left plate is about 180 pixels wide. The long-form versions of these
+      // ("PAID OVER THE OFFER — NOBODY WILL BUY IT") needed 254 pixels at that size, so
+      // the choice was between shortening them and printing them too small to read. What
+      // a wrong bid costs is on the strip and in the manual; the verdict names it.
       case "sold":
-        return s.keen
-          ? `KEEN BID  ONE OVER THE ROOM  +${String(s.coins)} ◉`
-          : `SOLD ON  +${String(s.coins)} ◉`
+        return s.keen ? `KEEN BID  +${String(s.coins)} ◉` : `SOLD  +${String(s.coins)} ◉`
       case "even":
-        return "SOLD ON  NOTHING IN IT"
+        return "SOLD  NOTHING IN IT"
       case "outbid":
-        return "OUTBID  THE LOT COMES ROUND AGAIN"
+        return "OUTBID"
       case "unsold":
-        return "PAID OVER THE OFFER  NOBODY WILL BUY IT"
+        return "OVER THE OFFER  UNSOLD"
       case "folded":
-        return s.coins > 0 ? `FOLDED  +${String(s.coins)} ◉ FOR THE WARNING` : "FOLDED"
+        return s.coins > 0 ? `FOLDED  +${String(s.coins)} ◉` : "FOLDED"
     }
   }
 
