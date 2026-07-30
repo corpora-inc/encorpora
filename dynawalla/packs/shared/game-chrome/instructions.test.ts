@@ -758,6 +758,246 @@ test("onOpen fires so a game can freeze its loop, exactly once per open", () => 
   r.restore()
 })
 
+// --- the last line of the manual has to be readable -------------------------
+//
+// Founder report: "instructions need a little bit more padding because you
+// can't scroll all the way and get the last line just a little faded out."
+//
+// The pinned footer paints a gradient over the foot of the scroller so a manual
+// that continues LOOKS like it continues rather than being guillotined. The
+// scroller reserved `.5rem` — 8px — below its last line, against a 28px fade.
+// So at MAXIMUM scroll, with nothing left to pull, the final rule of the game
+// still sat 20px inside that gradient and there was no way to get it out. A
+// manual whose last rule cannot be read is a manual with one fewer rule in it.
+//
+// "Added some padding" is not a fix and cannot be reviewed. What follows models
+// the sheet's entire vertical stack in pixels — every number either read back
+// out of the module or declared here — and checks where the last line's bottom
+// edge actually lands relative to the top of the fade, the top of the safe
+// area, and the end of the scroll.
+
+/** The one number this file cannot read out of the module. */
+const REM = 16
+
+/** Resolve `40px`, `.7rem`, `calc(.7rem + 34px)` — every form this module writes. */
+function px(v: string | undefined, what: string): number {
+  assert.equal(typeof v, "string", `${what} was never written`)
+  assert.notEqual(v, "", `${what} is empty`)
+  let total = 0
+  let matched = false
+  for (const m of (v as string).matchAll(/(-?[\d.]+)(rem|px)/g)) {
+    matched = true
+    total += Number.parseFloat(m[1] as string) * (m[2] === "rem" ? REM : 1)
+  }
+  assert.ok(matched, `${what} is "${v as string}", which has no length in it`)
+  return total
+}
+
+/** A declared height out of the stylesheet, e.g. `.dwc-foot::before` → 28. */
+function cssHeight(css: string, selector: string): number {
+  const at = css.indexOf(`${selector}{`)
+  assert.ok(at >= 0, `no ${selector} rule in the stylesheet`)
+  const block = css.slice(at, css.indexOf("}", at))
+  const m = /height:([\d.]+)px/.exec(block)
+  assert.ok(m, `${selector} declares no height`)
+  return Number.parseFloat((m as RegExpExecArray)[1] as string)
+}
+
+/** The `padding-bottom` a rule declares, so the stylesheet cannot drift from place(). */
+function cssPaddingBottom(css: string, selector: string): number {
+  const at = css.indexOf(`${selector}{`)
+  assert.ok(at >= 0, `no ${selector} rule in the stylesheet`)
+  const block = css.slice(at, css.indexOf("}", at))
+  const m = /padding-bottom:([\d.]+)px/.exec(block)
+  assert.ok(m, `${selector} declares no padding-bottom in px`)
+  return Number.parseFloat((m as RegExpExecArray)[1] as string)
+}
+
+/** Count the line boxes the module actually rendered into the scroller. */
+function lineCount(body: El): number {
+  let n = 0
+  const walk = (el: El): void => {
+    if (el.children.length === 0) {
+      if (el.textContent !== "") n += 1
+      return
+    }
+    for (const c of el.children) walk(c)
+  }
+  walk(body)
+  return n
+}
+
+/**
+ * A manual long enough to overflow any phone: four sections, and exactly
+ * `MANUAL_LINES` line boxes once the module has rendered it.
+ */
+const LONG: InstructionsSpec = {
+  title: "SKY LEDGER",
+  summary: [
+    "You are the night watch, and the sky is your ledger.",
+    "Every lamp you light is a number written down.",
+    "Name where a star sits and the astrolabe agrees, or it does not.",
+    "Miss three and the watch ends.",
+  ],
+  sections: [
+    { heading: "NAMING A STAR", lines: ["Read the ring.", "Read the arm.", "Say the pair.", "Ring first, always."] },
+    { heading: "THE LAMPS", lines: ["Three lamps.", "A wrong pair costs one.", "A refill every forty seconds.", "Lamps do not stack."] },
+    { heading: "THE LEDGER", lines: ["Right answers are written down.", "So are the wrong ones.", "The ledger is the score.", "Nothing is erased."] },
+    { heading: "THE ASTROLABE", lines: ["The ring is the hour.", "The arm is the height.", "Both, or neither counts.", "It never lies."] },
+    { heading: "SCORING THE NIGHT", lines: ["A pair is one mark.", "A streak doubles it.", "A miss ends the streak.", "The best streak is kept."] },
+    { heading: "ENDING THE WATCH", lines: ["Dawn ends it.", "So does the third miss.", "The ledger is kept either way.", "This is the last line of the manual."] },
+  ],
+}
+/**
+ * 4 summary lines + 6 headings + 24 rules. Asserted against the DOM below.
+ *
+ * Long on purpose: the manual has to overflow the scroller by a clear margin at
+ * EVERY inset profile, including the flat one with no notch, or the model would
+ * be describing a sheet that never scrolls and the assertions below would be
+ * about nothing.
+ */
+const MANUAL_LINES = 34
+
+test("the last line of the manual clears the fade at full scroll", () => {
+  // --- the model. Every number is either declared here or read back. --------
+  const VIEWPORT_H = 780 // CSS px of frame the pack was given
+  const NOTCH: Insets = { top: 59, right: 0, bottom: 34, left: 0 }
+  const LINE_H = 22 // one line box of the manual at its type scale
+  const HEAD_H = 48 // .dwc-head: the title row, above the scroller
+
+  setHostInsets(NOTCH)
+  const r = rig(LONG)
+  r.ui.open()
+
+  const css = r.root.children.find((c) => c.tagName === "style")?.textContent ?? ""
+  const sheet = r.root.find("dwc-sheet")
+  const body = r.root.find("dwc-body")
+  const foot = r.root.find("dwc-foot")
+
+  assert.equal(lineCount(body), MANUAL_LINES, "the model and the rendered manual disagree")
+
+  const FADE_H = cssHeight(css, ".dwc-foot::before")
+  const GRAB_H = cssHeight(css, ".dwc-grab")
+  const CLOSE_H = (() => {
+    const at = css.indexOf(".dwc-close{")
+    const m = /min-height:([\d.]+)px/.exec(css.slice(at, css.indexOf("}", at)))
+    assert.ok(m, "PLAY declares no height")
+    return Number.parseFloat((m as RegExpExecArray)[1] as string)
+  })()
+  const bodyPadB = px(body.style.paddingBottom, ".dwc-body padding-bottom")
+  const footPadB = px(foot.style.paddingBottom, ".dwc-foot padding-bottom")
+  const footPadT = 0.7 * REM // `.dwc-foot{padding:.7rem ...}`
+
+  // The CSS default and the JS value must agree, or the sheet moves on its
+  // first inset change.
+  assert.equal(
+    px(`${cssPaddingBottom(css, ".dwc-body")}px`, ".dwc-body stylesheet padding-bottom"),
+    bodyPadB,
+    "the stylesheet and place() disagree about where the manual ends",
+  )
+
+  // --- the stack, in absolute viewport coordinates --------------------------
+  assert.equal(sheet.style.maxHeight, `calc(100% - ${sheetTop(NOTCH)}px)`)
+  const sheetH = VIEWPORT_H - sheetTop(NOTCH) // 780 - 126 = 654
+  const footH = footPadT + CLOSE_H + footPadB // 11.2 + 52 + 45.2 = 108.4
+  const bodyH = sheetH - GRAB_H - HEAD_H - footH // 654 - 44 - 48 - 108.4 = 453.6
+
+  const sheetY = VIEWPORT_H - sheetH // the sheet is bottom-aligned: 126
+  const bodyTop = sheetY + GRAB_H + HEAD_H // 218
+  const bodyBottom = bodyTop + bodyH // 671.6
+  const fadeTop = bodyBottom - FADE_H // 643.6 — the gradient starts here
+  const safeBottom = VIEWPORT_H - NOTCH.bottom // 746 — the home indicator
+
+  assert.equal(bodyBottom, VIEWPORT_H - footH, "the model lost the footer")
+  assert.ok(bodyH > 0, `the scroller has no height at all (${bodyH})`)
+
+  // --- (b) the scroll actually reaches that far -----------------------------
+  const contentH = MANUAL_LINES * LINE_H + bodyPadB // scrollHeight: 528 + 40 = 568
+  const maxScroll = contentH - bodyH // 114.4
+  assert.ok(
+    maxScroll > 0,
+    `the model manual does not even overflow (content ${contentH} in ${bodyH}) — this test proves nothing`,
+  )
+
+  // At scrollTop === scrollHeight - clientHeight the content's bottom edge is
+  // flush with the scroller's bottom edge. The last line ends one padding above
+  // it, and that is the whole of the fix.
+  const contentBottomAtMaxScroll = bodyBottom
+  const lastLineBottom = contentBottomAtMaxScroll - bodyPadB // 631.6
+  const lastLineTop = lastLineBottom - LINE_H // 609.6
+
+  // --- (a) it clears the fade -----------------------------------------------
+  assert.ok(
+    lastLineBottom <= fadeTop,
+    `at full scroll the last line ends at ${lastLineBottom} but the fade starts at ${fadeTop} — ` +
+      `${fadeTop - lastLineBottom < 0 ? -(fadeTop - lastLineBottom) : 0}px of the last rule is greyed out ` +
+      `(body padding-bottom ${bodyPadB}px against a ${FADE_H}px fade)`,
+  )
+  assert.ok(
+    fadeTop - lastLineBottom >= 12,
+    `the last line ends ${fadeTop - lastLineBottom}px above the fade — that is touching it, not clearing it`,
+  )
+  // ...and the WHOLE line, not just its baseline.
+  assert.ok(
+    lastLineTop >= bodyTop && lastLineBottom <= fadeTop,
+    `the last line occupies ${lastLineTop}..${lastLineBottom}, outside the readable band ${bodyTop}..${fadeTop}`,
+  )
+
+  // --- and the safe area, which the FOOTER is what clears -------------------
+  // The body's box stops at the footer's top edge, so it never reaches the home
+  // indicator; the footer's own `.7rem + inset` padding is what keeps PLAY off
+  // it. Both are asserted from the same model so neither can be assumed.
+  assert.ok(
+    lastLineBottom < safeBottom,
+    `the last line ends at ${lastLineBottom}, under the home indicator at ${safeBottom}`,
+  )
+  const playBottom = VIEWPORT_H - footPadB // 734.8
+  assert.ok(
+    playBottom <= safeBottom,
+    `PLAY ends at ${playBottom}, under the home indicator at ${safeBottom}`,
+  )
+
+  r.ui.destroy()
+  r.restore()
+  setHostInsets(null)
+})
+
+test("...and at every inset profile, not just the one phone it was found on", () => {
+  const VIEWPORT_H = 780
+  const LINE_H = 22
+  const HEAD_H = 48
+  for (const i of PROFILES) {
+    setHostInsets(i)
+    const r = rig(LONG)
+    r.ui.open()
+    const css = r.root.children.find((c) => c.tagName === "style")?.textContent ?? ""
+    const body = r.root.find("dwc-body")
+    const foot = r.root.find("dwc-foot")
+    const FADE_H = cssHeight(css, ".dwc-foot::before")
+    const GRAB_H = cssHeight(css, ".dwc-grab")
+    const bodyPadB = px(body.style.paddingBottom, ".dwc-body padding-bottom")
+    const footH = 0.7 * REM + 52 + px(foot.style.paddingBottom, ".dwc-foot padding-bottom")
+    const sheetH = VIEWPORT_H - sheetTop(i)
+    const bodyH = sheetH - GRAB_H - HEAD_H - footH
+    const bodyBottom = VIEWPORT_H - footH
+    const contentH = MANUAL_LINES * LINE_H + bodyPadB
+
+    assert.ok(contentH - bodyH > 0, `the manual does not overflow at inset ${JSON.stringify(i)}`)
+    assert.ok(
+      bodyBottom - bodyPadB <= bodyBottom - FADE_H,
+      `at inset ${JSON.stringify(i)} the last line ends at ${bodyBottom - bodyPadB}, ` +
+        `inside the fade that starts at ${bodyBottom - FADE_H}`,
+    )
+    assert.ok(
+      bodyBottom - bodyPadB < VIEWPORT_H - i.bottom,
+      `at inset ${JSON.stringify(i)} the last line ends under the home indicator`,
+    )
+    r.ui.destroy()
+    r.restore()
+  }
+  setHostInsets(null)
+})
+
 test("destroy takes every listener with it", () => {
   const r = rig()
   r.ui.open()
