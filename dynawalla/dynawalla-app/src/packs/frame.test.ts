@@ -632,31 +632,43 @@ const IFRAME_DEFAULT = { width: 300, height: 150 }
  * `.pack-frame-host` -> `.pack-frame`, rather than from what the file is
  * remembered to say. A deliberately tiny slice of CSS and only the slice the
  * frame's box depends on: a percentage of the containing block, an explicit
- * length, or — when the ancestor's own box is gone and the percentage cannot
- * resolve — the replaced element's intrinsic default.
+ * length, or — when the containing block has no definite size of its own and the
+ * percentage therefore cannot resolve — the replaced element's intrinsic default.
  *
- * `null` for the ancestor is the failure: a stage div with no box of its own,
- * which is what removing `fixed; inset: 0` from `Stage.tsx` produces.
+ * `null` on an axis is a containing block with no definite size on that axis,
+ * which is what taking `fixed; inset: 0` off the stage div produces. It is passed
+ * *through the real declarations* rather than short-circuited, so this returns
+ * 300x150 only because `packs.css` really does size both boxes by percentage.
  */
-function frameBox(
-  ancestor: { width: number; height: number } | null,
-): { width: number; height: number } {
-  if (ancestor === null) return { ...IFRAME_DEFAULT }
-  let box = { ...ancestor }
+function frameBox(ancestor: {
+  width: number | null
+  height: number | null
+}): { width: number; height: number } {
+  const resolve = (
+    declared: string | undefined,
+    against: number | null,
+    intrinsic: number,
+  ): number | null => {
+    if (declared === undefined) return null
+    if (declared.endsWith("px")) return Number.parseFloat(declared)
+    if (!declared.endsWith("%")) return null
+    // A percentage of an indefinite containing block does not resolve. For an
+    // iframe — a replaced element — what is left is its intrinsic size.
+    return against === null ? intrinsic : (against * Number.parseFloat(declared)) / 100
+  }
+
+  let box: { width: number | null; height: number | null } = { ...ancestor }
   for (const selector of [".pack-frame-host", ".pack-frame"]) {
     const rule = packsCssRule(selector)
-    const resolve = (declared: string | undefined, against: number, intrinsic: number): number => {
-      if (declared === undefined) return intrinsic
-      if (declared.endsWith("%")) return (against * Number.parseFloat(declared)) / 100
-      if (declared.endsWith("px")) return Number.parseFloat(declared)
-      return intrinsic
-    }
     box = {
       width: resolve(rule.get("inline-size"), box.width, IFRAME_DEFAULT.width),
       height: resolve(rule.get("block-size"), box.height, IFRAME_DEFAULT.height),
     }
   }
-  return box
+  return {
+    width: box.width ?? IFRAME_DEFAULT.width,
+    height: box.height ?? IFRAME_DEFAULT.height,
+  }
 }
 
 test("the box the host's chain hands the frame, in both states, is what the watch judges", () => {
@@ -668,10 +680,13 @@ test("the box the host's chain hands the frame, in both states, is what the watc
   const healthy = frameBox({ width: 820, height: 1180 })
   assert.deepEqual(healthy, { width: 820, height: 1180 }, "the frame no longer fills its ancestor")
 
-  const broken = frameBox(null)
-  // The measurement, pinned. If this ever stops being 300x150 the threshold above
-  // was derived against a shape that no longer happens.
+  const broken = frameBox({ width: null, height: null })
+  // The measurement, pinned, and reached through the real declarations rather than
+  // asserted about a constant: a percentage of an indefinite box does not resolve,
+  // and what an iframe is left with is 300x150. If this ever stops being that, the
+  // threshold above was derived against a shape that no longer happens.
   assert.deepEqual(broken, IFRAME_DEFAULT, "a boxless ancestor no longer defaults the frame")
+  assert.equal(fillsWindow({ ...HEALTHY, ...broken, ...window }), false)
 
   const good = watchThrough(held({ ...HEALTHY, ...healthy, ...window }, ticksFor(LIVENESS.blankAfterMs)))
   assert.equal(good.said.length, 0, `a full-size frame was accused of ${good.said.join(", ")}`)
@@ -776,6 +791,12 @@ test("disposing stops the watch, and clears its timer", async (t) => {
     stopped.push(id)
     reallyClear(id)
   }) as typeof globalThis.clearInterval)
+  // So that this test *fails* rather than hangs when the assertion below trips.
+  // A 4ms interval nobody cleared keeps node's loop alive, and the last leaked
+  // handle in this file turned a 700ms run into forty-five seconds.
+  t.after(() => {
+    for (const id of started) reallyClear(id as Parameters<typeof globalThis.clearInterval>[0])
+  })
   t.mock.method(console, "error", () => {})
 
   const test = harness(t, { box: { width: 0, height: 0 }, liveness: WATCH_BOX })

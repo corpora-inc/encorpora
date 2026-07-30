@@ -64,9 +64,20 @@ const HANDSHAKE_TIMEOUT_MS = 20_000
 // So neither channel separates a blank pack from a playing one, and **nothing
 // here could have caught VOLTA.** That collapse happened one document deeper
 // than the host can reach, and catching it needs the pack to measure its own
-// stage and say so — which is what `makeStage` and the stage-collapse error in
-// `games/runner` and `games/merge` now do, in the only place the measurement
-// exists.
+// stage and say so, in the only place the measurement exists. `games/merge` does
+// that now (`makeStage`, and a stage-collapse error in its `resize`).
+// **`games/runner` does not** — as of this commit it still carries the line that
+// blanked it, and the repair is in an open PR, not in this tree. Nothing here
+// fixes VOLTA and nothing here can notice it.
+//
+// Neither fault has a consumer in a release build yet. They are written to the
+// console and offered on `onFault` / `MountedPack.faults()`, and `Stage.tsx` does
+// not pass `onFault`; there is also no console-to-native bridge in this app, so
+// on a device these lines reach a WebInspector session and nowhere else. That
+// makes this a dev-loop instrument today rather than the thing that would have
+// told somebody other than the founder. Wiring a consumer — a fault on the
+// developer surface, or a native log — is the next step and belongs to
+// `Stage.tsx`.
 //
 // What the box *does* catch is the host's own copy of that bug, one level up,
 // which was completely unwatched. That is not hypothetical either: taking
@@ -113,7 +124,7 @@ export type LivenessFault =
   /**
    * The pack took its port and then never used it.
    *
-   * All twenty-eight shipping games do the same three things in the same order:
+   * All twenty-seven shipping games do the same three things in the same order:
    * `createGameHost()`, `await warm()`, then mount. `warm()` is `items.next`, so
    * every one of them speaks within milliseconds of the handshake — measured at
    * **11ms** in a real framed pack. A pack that was granted `items` and has said
