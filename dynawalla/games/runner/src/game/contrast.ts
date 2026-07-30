@@ -120,16 +120,30 @@ export function minContrast(ink: number, bgs: readonly number[]): number {
  */
 export function toward(ink: number, bgs: readonly number[], target = AA): number {
   if (minContrast(ink, bgs) >= target) return ink;
-  const pole = luma(ink) >= luma(bgs[0] ?? 0) ? 0xffffff : 0x000000;
-  if (minContrast(pole, bgs) < target) return pole;
-  let lo = 0;
-  let hi = 1;
-  for (let i = 0; i < 24; i++) {
-    const midT = (lo + hi) / 2;
-    if (minContrast(mix(ink, pole, midT), bgs) >= target) hi = midT;
-    else lo = midT;
-  }
-  return mix(ink, pole, hi);
+  const search = (pole: number): number => {
+    let lo = 0;
+    let hi = 1;
+    for (let i = 0; i < 24; i++) {
+      const midT = (lo + hi) / 2;
+      if (minContrast(mix(ink, pole, midT), bgs) >= target) hi = midT;
+      else lo = midT;
+    }
+    // `hi` is only ever assigned a blend that satisfied the predicate, so the
+    // result clears `target` even though min-contrast-over-a-set is not monotone
+    // in the blend.
+    return mix(ink, pole, hi);
+  };
+  // The near pole first, because moving less keeps more of the hue — but if it
+  // cannot clear the bar, the far one is tried before giving up. Picking the
+  // pole by `bgs[0]` alone and never reconsidering loses outright on any ink
+  // whose backgrounds straddle mid grey.
+  const near = luma(ink) >= luma(bgs[0] ?? 0) ? 0xffffff : 0x000000;
+  const far = near === 0xffffff ? 0x000000 : 0xffffff;
+  if (minContrast(near, bgs) >= target) return search(near);
+  if (minContrast(far, bgs) >= target) return search(far);
+  // Neither pole clears it — no ink does. Hand back the better of the two, which
+  // is still the most readable colour available.
+  return minContrast(near, bgs) >= minContrast(far, bgs) ? near : far;
 }
 
 /**
@@ -306,6 +320,60 @@ export function laneBackdrops(sky: number): number[] {
 }
 
 /**
+ * The band of sky the HUD's top furniture is actually printed on.
+ *
+ * The sky is not one colour. `world.ts`'s fragment shader is
+ * `mix(uSkyBot, uSkyTop, pow(d.y * 0.5 + 0.5, 0.75))`, so the prompt at 15% down
+ * sits on roughly 72% `uSkyTop` and the corner readouts on roughly 81% of it —
+ * and this used to derive the ink from `uSkyBot` alone. Halfway through the
+ * crossing from THE ABYSS to THE BLEACH that is not a rounding error: the ink
+ * came out *dark* against a backdrop where the light one was the right choice.
+ *
+ * Sampling the whole span rather than one point in it costs nothing here — within
+ * a biome the two ends are the same family, and across a crossing they move
+ * together — and it means the ink is right wherever on the sky the text lands.
+ *
+ * Both mix spaces are sampled: the shader blends in linear light and a browser
+ * would blend in gamma, and the ink has to survive whichever is nearer the truth.
+ */
+export function skyBackdrops(skyTop: number, skyBot: number): number[] {
+  const out: number[] = [];
+  for (let i = 0; i <= 8; i++) {
+    const t = i / 8;
+    out.push(mix(skyBot, skyTop, t), mixLinear(skyBot, skyTop, t));
+  }
+  return out;
+}
+
+/** Blend two packed colours in linear light, as a shader does. */
+export function mixLinear(a: number, b: number, t: number): number {
+  const toLin = (v: number): number => {
+    const s = v / 255;
+    return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  };
+  const toSrgb = (v: number): number => {
+    const s = v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
+    return s * 255;
+  };
+  const c = (i: number): number =>
+    toSrgb(toLin(ch(a, i)) + (toLin(ch(b, i)) - toLin(ch(a, i))) * t);
+  return pack(c(0), c(1), c(2));
+}
+
+/**
+ * The ocean's surface colour, as `world.ts` derives it.
+ *
+ * The ocean shader bases itself on `uSkyBot * 0.35` in linear light, and the
+ * bottom HUD furniture crosses it: the deck is only `DECK_HALF` metres wide, so
+ * on a landscape viewport the voltage readout's left end is out over the water.
+ * In THE BLEACH that is a bone deck-side and a near-black deck, which is why
+ * everything down there sits on a bed — no single ink clears both.
+ */
+export function oceanFrom(skyBot: number): number {
+  return mixLinear(0x000000, skyBot, 0.35);
+}
+
+/**
  * `ink`, softened toward its backdrop by `SOFTEN`, then corrected back to AA.
  *
  * The whole trick is that the correction is unconditional: on a backdrop with
@@ -341,6 +409,22 @@ export type Ink = {
   accentOnVeil: number;
   /** The voltage fill, on its own bed. */
   voltFill: number;
+  /**
+   * The stroke the sky-band text is painted around, so it carries its own ground.
+   *
+   * Exactly halfway through the crossing between a dark biome and THE BLEACH the
+   * sky is a mid grey — around `#70756f` — and against a mid grey *no flat ink
+   * clears 4.5:1*. Pure black reaches 4.46 and pure white less; the sky is
+   * simply the worst backdrop there is, and no amount of choosing a colour fixes
+   * a colour problem that has no solution.
+   *
+   * So the glyph stops relying on the sky. `paint-order: stroke fill` puts a
+   * contrasting stroke behind the fill, which means the ink's real backdrop is
+   * the stroke and not the world — the same move `.vt-banner` and
+   * `.vt-revive-prompt` already make in this stylesheet, for the same reason.
+   * Sparsen the field; the effects stay.
+   */
+  halo: number;
   /** SCORE / SURGE, tracked and quiet, on the sky. */
   skyDim: number;
   /** VOLTAGE, tracked and quiet, on the deck. */
@@ -356,22 +440,32 @@ export type Ink = {
  * crossfade's current blend, so a child who dies half way between AURORA and
  * SOLAR gets a recharge gate derived from the sky that is actually on screen.
  */
-export function inkFor(sky: number, deck: number, accent: number): Ink {
-  const veilBgs = [...reviveBackdrops(sky), ...plainBackdrops(sky)];
+export function inkFor(skyTop: number, skyBot: number, deck: number, accent: number): Ink {
+  // The veils scrim the sky, and the darkest thing they can scrim is what sets
+  // how much scrim is enough — so they are modelled against the whole sky band,
+  // not just its bottom.
+  const skyBgs = skyBackdrops(skyTop, skyBot);
+  const veilBgs = [...reviveBackdrops(skyBot), ...plainBackdrops(skyBot), ...reviveBackdrops(skyTop)];
   const veil = readableInk(veilBgs);
-  const deckBgs = [deck, over(VOLT_BED, VOLT_BED_A, deck)];
+  // Everything along the bottom edge is drawn on a bed, because the alternative
+  // is an ink that has to clear both a near-black deck and a bone ocean at once,
+  // and there is no such ink. The bed is what makes the backdrop knowable.
+  const bedded = (c: number): number => over(VOLT_BED, VOLT_BED_A, c);
+  const deckBgs = [bedded(deck), bedded(oceanFrom(skyBot)), bedded(oceanFrom(skyTop))];
   const deckInk = readableInk(deckBgs);
+  const skyInk = readableInk(skyBgs);
   return {
-    sky: readableInk([sky]),
+    sky: skyInk,
     deck: deckInk,
     veil,
-    lane: readableInk(laneBackdrops(sky)),
+    lane: readableInk([...laneBackdrops(skyBot), ...laneBackdrops(skyTop)]),
     onAccent: readableInk([accent]),
     onVeilInk: readableInk([veil]),
     onDeckInk: readableInk([deckInk]),
     accentOnVeil: toward(accent, veilBgs),
-    voltFill: readableInk([over(VOLT_BED, VOLT_BED_A, deck)]),
-    skyDim: dimInk(readableInk([sky]), [sky]),
+    halo: readableInk([skyInk]),
+    voltFill: readableInk(deckBgs),
+    skyDim: dimInk(skyInk, skyBgs),
     deckDim: dimInk(deckInk, deckBgs),
     veilDim: dimInk(veil, veilBgs),
   };
@@ -384,8 +478,13 @@ export function inkFor(sky: number, deck: number, accent: number): Ink {
  * same contract `hudVars` has for geometry. `chrome.test.ts` checks that every
  * `var(--vt-ink-*)` and `var(--vt-on-*)` the sheet asks for is produced here.
  */
-export function inkVars(sky: number, deck: number, accent: number): Record<string, string> {
-  const k = inkFor(sky, deck, accent);
+export function inkVars(
+  skyTop: number,
+  skyBot: number,
+  deck: number,
+  accent: number,
+): Record<string, string> {
+  const k = inkFor(skyTop, skyBot, deck, accent);
   return {
     "--vt-ink-sky": hex(k.sky),
     "--vt-ink-deck": hex(k.deck),
@@ -396,6 +495,7 @@ export function inkVars(sky: number, deck: number, accent: number): Record<strin
     "--vt-on-deck-ink": hex(k.onDeckInk),
     "--vt-accent-veil": hex(k.accentOnVeil),
     "--vt-volt-fill": hex(k.voltFill),
+    "--vt-halo-sky": hex(k.halo),
     "--vt-ink-sky-dim": hex(k.skyDim),
     "--vt-ink-deck-dim": hex(k.deckDim),
     "--vt-ink-veil-dim": hex(k.veilDim),

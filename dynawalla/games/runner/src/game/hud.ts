@@ -79,8 +79,13 @@ export const HUD_CSS = `
   display:flex; align-items:center; gap:clamp(8px,2.2vw,18px); white-space:nowrap; }
 .vt-prompt-bar { width:clamp(10px,3vw,26px); height:clamp(3px,0.7vw,5px); background:currentColor;
   opacity:0.55; }
+/* Paint-order stroke, so the ink's backdrop is the stroke and not the sky.
+   Halfway through a crossing into THE BLEACH the sky is a mid grey, and against
+   a mid grey NO flat ink clears 4.5:1 — black gets to 4.46 and white less. The
+   glyph has to bring its own ground. Same move .vt-banner already makes. */
 .vt-prompt-text { font-size:clamp(30px,7.4vw,72px); line-height:0.95; letter-spacing:0.005em;
-  text-shadow:0 0 22px rgba(0,0,0,0.85), 0 3px 0 rgba(0,0,0,0.55), 0 0 60px currentColor;
+  paint-order:stroke fill; -webkit-text-stroke:clamp(4px,0.9vw,7px) var(--vt-halo-sky,#04060f);
+  text-shadow:0 0 22px rgba(0,0,0,0.85), 0 0 60px currentColor;
   transform-origin:50% 50%; }
 .vt-prompt.vt-punch .vt-prompt-text { animation:vt-punch 0.34s cubic-bezier(.16,1.4,.4,1); }
 @keyframes vt-punch { 0%{transform:scale(1.55);opacity:0.25;} 45%{transform:scale(0.94);opacity:1;} 100%{transform:scale(1);} }
@@ -100,18 +105,23 @@ export const HUD_CSS = `
    contrast to spare, so every value below 1 was under the bar. contrast.ts
    softens and then corrects back, so the number does not have to be a
    compromise between the darkest world and the greyest one. */
-.vt-label { font-size:clamp(8px,1.5vw,11px); letter-spacing:0.28em; color:var(--vt-ink-sky-dim,#eaf6ff); }
+.vt-label { font-size:clamp(8px,1.5vw,11px); letter-spacing:0.28em; color:var(--vt-ink-sky-dim,#eaf6ff);
+  paint-order:stroke fill; -webkit-text-stroke:2px var(--vt-halo-sky,#04060f); }
 /* Tracking adds a trailing space after the last letter, which right-aligned
    text pushes off a narrow screen. Pull it back. */
 .vt-tr .vt-label { margin-right:-0.28em; }
 .vt-tr .vt-surge { margin-right:-0.02em; }
-.vt-score { font-size:clamp(24px,5.4vw,48px); line-height:1; text-shadow:0 2px 14px rgba(0,0,0,0.8); }
-.vt-dist { font-size:clamp(12px,2.4vw,19px); color:var(--vt-ink-sky-dim,#eaf6ff); line-height:1.3; }
+.vt-score { font-size:clamp(24px,5.4vw,48px); line-height:1;
+  paint-order:stroke fill; -webkit-text-stroke:clamp(3px,0.7vw,5px) var(--vt-halo-sky,#04060f); }
+.vt-dist { font-size:clamp(12px,2.4vw,19px); color:var(--vt-ink-sky-dim,#eaf6ff); line-height:1.3;
+  paint-order:stroke fill; -webkit-text-stroke:2px var(--vt-halo-sky,#04060f); }
 
 .vt-surge { display:flex; align-items:baseline; justify-content:flex-end; gap:2px; }
-.vt-surge-x { font-size:clamp(14px,2.6vw,22px); color:var(--vt-ink-sky-dim,#eaf6ff); }
+.vt-surge-x { font-size:clamp(14px,2.6vw,22px); color:var(--vt-ink-sky-dim,#eaf6ff);
+  paint-order:stroke fill; -webkit-text-stroke:2px var(--vt-halo-sky,#04060f); }
 .vt-surge-n { font-size:clamp(28px,6.4vw,56px); line-height:1;
-  text-shadow:0 0 26px currentColor, 0 2px 12px rgba(0,0,0,0.85); }
+  paint-order:stroke fill; -webkit-text-stroke:clamp(3px,0.7vw,5px) var(--vt-halo-sky,#04060f);
+  text-shadow:0 0 26px currentColor; }
 .vt-surge.vt-bump .vt-surge-n { animation:vt-bump 0.42s cubic-bezier(.16,1.5,.4,1); }
 @keyframes vt-bump { 0%{transform:scale(1.9) rotate(-5deg);} 60%{transform:scale(0.92);} 100%{transform:scale(1);} }
 .vt-chain { display:flex; gap:3px; justify-content:flex-end; margin-top:5px; }
@@ -140,15 +150,21 @@ export const HUD_CSS = `
 .vt-volt-ticks i:last-child { border-right:0; }
 .vt-volt.vt-crit { animation:vt-crit 0.85s steps(2,end) infinite; }
 @keyframes vt-crit { 0%,60%{opacity:1;} 61%,100%{opacity:0.45;} }
+/* Above the bar, so the bar's own bed does not reach it. It gets its own —
+   in landscape this label is out over the OCEAN rather than the deck (the deck
+   is only DECK_HALF metres wide), and in THE BLEACH the ocean is bone while the
+   deck is near-black. One ink cannot clear both; a bed means it does not have
+   to. */
 .vt-volt-label { position:absolute; left:0; bottom:calc(100% + 5px); font-size:clamp(8px,1.5vw,11px);
-  letter-spacing:0.28em; color:var(--vt-ink-deck-dim,#eaf6ff); }
+  letter-spacing:0.28em; color:var(--vt-ink-deck-dim,#eaf6ff); padding:1px 5px;
+  background:rgba(${(VOLT_BED >> 16) & 255},${(VOLT_BED >> 8) & 255},${VOLT_BED & 255},${VOLT_BED_A}); }
 
 /* ---- biome banner ---- */
 .vt-banner { position:absolute; left:0; right:0; top:38%; text-align:center; opacity:0;
   font-size:clamp(20px,5.6vw,54px); letter-spacing:0.2em;
   /* Paint-order stroke, not a glow: in the inverted biome the banner is dark
      ink on bone and a same-colour glow just smears it. */
-  paint-order:stroke fill; -webkit-text-stroke:6px rgba(0,0,0,0.28);
+  paint-order:stroke fill; -webkit-text-stroke:6px var(--vt-halo-sky,#04060f);
   text-shadow:0 0 40px currentColor; }
 .vt-banner.vt-show { animation:vt-banner 2.6s ease-out forwards; }
 @keyframes vt-banner {
@@ -185,7 +201,8 @@ export const HUD_CSS = `
    a flat near-black panel and the run visibly died behind it. Now the causeway
    keeps rushing past in full colour through a thin scrim, the whole rig is lit
    in the current biome's accent, and the three answers are built out of the same
-   posts-and-lintel the gates out on the track are. It is a gate, indoors. */
+   posts-and-lintel the gates out on the track are. It is a gate, indoors.
+
    The scrim's stops live in contrast.ts, not here: the clear window where the
    causeway shows through is the top two fifths, and below it the scrim comes up
    to a floor because that is where the question and the three answers are. A
@@ -260,6 +277,7 @@ export const HUD_CSS = `
 .vt-tool[aria-pressed="true"] span { color:var(--vt-on-deck-ink,#04060f); }
 .vt-tool:focus-visible { outline:3px solid #fff; outline-offset:2px; }
 .vt-perf { position:absolute; left:var(--vt-perf-l,10px); bottom:var(--vt-perf-b,110px);
+  padding:2px 5px; background:rgba(${(VOLT_BED >> 16) & 255},${(VOLT_BED >> 8) & 255},${VOLT_BED & 255},${VOLT_BED_A});
   font-size:11px; letter-spacing:0.1em; opacity:0.6; white-space:pre; display:none;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:400; text-transform:none; }
 .vt-perf.vt-on { display:block; }

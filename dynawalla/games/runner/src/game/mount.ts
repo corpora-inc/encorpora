@@ -229,6 +229,7 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
   // The last blend the inks were derived from. Deriving is a dozen luminance
   // sums and this runs on every frame of a crossing, so it is skipped when the
   // three colours it depends on have not moved — which is most frames.
+  let inkTop = -1;
   let inkSky = -1;
   let inkDeck = -1;
   let inkAccent = -1;
@@ -259,14 +260,21 @@ export function mountRunner(el: HTMLElement, host: Host): { unmount(): void } {
     // screen. This used to be one flat `hud.root.style.color` chosen from
     // `biome.inverted` — which describes the sky, and the veils do not sit on
     // the sky. See contrast.ts.
+    const topHex = shared.uSkyTop.value.getHex(THREE.SRGBColorSpace);
     const skyHex = shared.uSkyBot.value.getHex(THREE.SRGBColorSpace);
     const deckHex = shared.uDeck.value.getHex(THREE.SRGBColorSpace);
     const accentHex = shared.uAccent.value.getHex(THREE.SRGBColorSpace);
-    if (skyHex !== inkSky || deckHex !== inkDeck || accentHex !== inkAccent) {
+    if (
+      topHex !== inkTop ||
+      skyHex !== inkSky ||
+      deckHex !== inkDeck ||
+      accentHex !== inkAccent
+    ) {
+      inkTop = topHex;
       inkSky = skyHex;
       inkDeck = deckHex;
       inkAccent = accentHex;
-      const vars = inkVars(skyHex, deckHex, accentHex);
+      const vars = inkVars(topHex, skyHex, deckHex, accentHex);
       for (const [name, value] of Object.entries(vars)) hud.root.style.setProperty(name, value);
     }
     post.composite.uniforms.uExposure.value = biome.inverted ? 0.88 : 1.06;

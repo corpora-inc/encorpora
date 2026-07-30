@@ -337,7 +337,7 @@ test("hudVars fills in every custom property the stylesheet asks for", () => {
   // `contrast.ts` — geometry here, ink there, and between them every `var()` in
   // the sheet has an author-supplied value. `--vt-accent` is the live biome
   // colour, written on the root by `mount.ts` on every biome change.
-  const inks = inkVars(0x071230, 0x070a18, 0x37ecff);
+  const inks = inkVars(0x02030c, 0x071230, 0x070a18, 0x37ecff);
   const setElsewhere = new Set(["--vt-accent", ...Object.keys(inks)]);
   for (const m of HUD_CSS.matchAll(/var\((--vt-[a-z-]+)/g)) {
     const name = m[1] ?? "";

@@ -63,6 +63,8 @@ const SCALES: Record<ScaleName, { root: number; degrees: number[] }> = {
 export const ENGINE = {
   /** The two body oscillators. Triangle, not sawtooth: 1/n² and not 1/n. */
   type: "triangle" as OscillatorType,
+  /** The pair's shared trim into the body filter. */
+  bodyGain: 0.3,
   /** Cents between the pair. Wide enough to beat, narrow enough to stay one note. */
   detuneCents: 9,
   /** Fundamental, in Hz, at rest and at terminal velocity. */
@@ -231,7 +233,7 @@ export class Audio {
     // The pair. Same note, `detuneCents` apart, so they drift in and out of
     // phase over a couple of seconds — an electrical shimmer rather than a tone.
     const bodyG = ctx.createGain();
-    bodyG.gain.value = 0.3;
+    bodyG.gain.value = ENGINE.bodyGain;
     bodyG.connect(this.engFilter);
     this.engOsc = ctx.createOscillator();
     this.engOsc.type = ENGINE.type;
@@ -262,9 +264,11 @@ export class Audio {
     this.engShimmer.type = "sine";
     this.engShimmer.frequency.value = ENGINE.hz[0] * ENGINE.shimmerMul;
     const shG = ctx.createGain();
-    // Every GainNode arrives at 1. The LFO writes an offset onto this, so it
-    // starts at zero and the LFO's own depth is what it swings by.
-    shG.gain.value = 0;
+    // Every GainNode arrives at 1, and an oscillator connected to an AudioParam
+    // ADDS to that param rather than driving it — so the swing is split in two:
+    // half is the param's own value and half is the LFO's depth. The partial
+    // then breathes across [0, shimmerGain] and never inverts.
+    shG.gain.value = ENGINE.shimmerGain / 2;
     this.engShimmer.connect(shG);
     shG.connect(this.engGain);
     this.engShimmer.start();
@@ -275,7 +279,6 @@ export class Audio {
     lfoDepth.gain.value = ENGINE.shimmerGain / 2;
     this.engShimmerLfo.connect(lfoDepth);
     lfoDepth.connect(shG.gain);
-    shG.gain.value = ENGINE.shimmerGain / 2;
     this.engShimmerLfo.start();
 
     this.engNoise = ctx.createBufferSource();
