@@ -56,29 +56,104 @@ export function stamp(px: number, weight = 800): string {
   return `${weight} ${px}px/1 "Avenir Next Condensed", "Helvetica Neue", Impact, system-ui, sans-serif`
 }
 
-export function withAlpha(hex: string, a: number): string {
-  const h = hex.replace("#", "")
-  const r = Number.parseInt(h.slice(0, 2), 16)
-  const g = Number.parseInt(h.slice(2, 4), 16)
-  const b = Number.parseInt(h.slice(4, 6), 16)
-  return `rgba(${r},${g},${b},${Math.max(0, Math.min(1, a))})`
+/**
+ * A colour string, as three 0..255 channels.
+ *
+ * **This is the reason THE GRAPPLE FOUNDRY went blank on the first kick-out.**
+ *
+ * `withAlpha` and `mix` used to assume `#rrggbb` and slice the string by index.
+ * `heatColor` returns whatever `mix` returns, so `withAlpha(heatColor(t), a)` fed
+ * `"rgb(255,246,226)"` into a hex parser: it stripped a `#` that was not there,
+ * read `"rg"` as base 16, and produced `"rgba(NaN,11,37,0.3)"`. Six call sites
+ * across `ring.ts`, `hud.ts`, `particles.ts` and `decals.ts` composed the two
+ * that way.
+ *
+ * Assigning an unparseable colour to `fillStyle` is *silently ignored* by the
+ * canvas — the mark comes out in whatever colour was set before it — so five of
+ * those six sites merely drew the wrong colour and nothing failed anywhere. The
+ * sixth handed the same string to `CanvasGradient.addColorStop`, which is
+ * specified to **throw** a `SyntaxError`. That call is the scorch glow in
+ * `decals.ts`, a scorch is laid down only by an escape, and it is drawn inside
+ * `drawMat` — before the wrestlers, the referee, the near ropes and the whole
+ * HUD. `frame()` re-arms its `requestAnimationFrame` on its first line, so the
+ * loop kept running and kept throwing at the same place: every frame cleared the
+ * canvas, painted the crowd, the far posts and the mat, and stopped. The audio
+ * graph is not on the frame loop, so the hall kept roaring over a half-drawn
+ * ring for the twelve seconds a scorch takes to cool.
+ *
+ * So the parser now understands every form these two functions can be handed —
+ * `#rgb`, `#rrggbb`, `rgb()` and `rgba()` — and `mix` returns hex, which keeps
+ * the composition closed. Anything it still cannot read is reported loudly and
+ * comes back as a visible colour rather than as `NaN`: a wrong colour is a bug
+ * to fix on Monday, and a `NaN` in a gradient stop is a black screen in front of
+ * a child.
+ */
+function channels(color: string): [number, number, number] {
+  const s = color.trim()
+  if (s.startsWith("#")) {
+    const h = s.slice(1)
+    if (h.length === 3) {
+      // `#abc` is `#aabbcc`: each digit doubled.
+      const r = Number.parseInt(h.slice(0, 1).repeat(2), 16)
+      const g = Number.parseInt(h.slice(1, 2).repeat(2), 16)
+      const b = Number.parseInt(h.slice(2, 3).repeat(2), 16)
+      if (Number.isFinite(r) && Number.isFinite(g) && Number.isFinite(b)) return [r, g, b]
+    } else if (h.length >= 6) {
+      const r = Number.parseInt(h.slice(0, 2), 16)
+      const g = Number.parseInt(h.slice(2, 4), 16)
+      const b = Number.parseInt(h.slice(4, 6), 16)
+      if (Number.isFinite(r) && Number.isFinite(g) && Number.isFinite(b)) return [r, g, b]
+    }
+    return unreadable(color)
+  }
+  const open = s.indexOf("(")
+  if ((s.startsWith("rgb(") || s.startsWith("rgba(")) && s.endsWith(")")) {
+    const parts = s.slice(open + 1, -1).split(",")
+    const r = Number.parseFloat(parts[0] ?? "")
+    const g = Number.parseFloat(parts[1] ?? "")
+    const b = Number.parseFloat(parts[2] ?? "")
+    if (Number.isFinite(r) && Number.isFinite(g) && Number.isFinite(b)) {
+      return [Math.round(r), Math.round(g), Math.round(b)]
+    }
+  }
+  return unreadable(color)
 }
 
-/** Mix two hex colours. `t` 0 → `from`, 1 → `to`. */
+/** Colours already complained about, so a bad one costs one line and not sixty a second. */
+const complained = new Set<string>()
+
+function unreadable(color: string): [number, number, number] {
+  if (!complained.has(color)) {
+    complained.add(color)
+    console.error(`[foundry] unreadable colour ${JSON.stringify(color)} — drawn as grey`)
+  }
+  return [128, 128, 128]
+}
+
+/** A 0..255 channel as two hex digits. */
+function hex2(n: number): string {
+  const v = Math.max(0, Math.min(255, Math.round(n)))
+  return v.toString(16).padStart(2, "0")
+}
+
+export function withAlpha(color: string, a: number): string {
+  const [r, g, b] = channels(color)
+  const alpha = Number.isFinite(a) ? Math.max(0, Math.min(1, a)) : 1
+  return `rgba(${r},${g},${b},${alpha})`
+}
+
+/**
+ * Mix two colours. `t` 0 → `from`, 1 → `to`.
+ *
+ * Returns `#rrggbb` rather than `rgb()` so that the result can be handed back to
+ * `withAlpha` or to `mix` again. `heatColor` is `mix`, and every use of it in the
+ * game composes, so the output form is load-bearing rather than cosmetic.
+ */
 export function mix(from: string, to: string, t: number): string {
-  const k = Math.max(0, Math.min(1, t))
-  const pa = from.replace("#", "")
-  const pb = to.replace("#", "")
-  const r = Math.round(
-    Number.parseInt(pa.slice(0, 2), 16) * (1 - k) + Number.parseInt(pb.slice(0, 2), 16) * k,
-  )
-  const g = Math.round(
-    Number.parseInt(pa.slice(2, 4), 16) * (1 - k) + Number.parseInt(pb.slice(2, 4), 16) * k,
-  )
-  const b = Math.round(
-    Number.parseInt(pa.slice(4, 6), 16) * (1 - k) + Number.parseInt(pb.slice(4, 6), 16) * k,
-  )
-  return `rgb(${r},${g},${b})`
+  const k = Number.isFinite(t) ? Math.max(0, Math.min(1, t)) : 0
+  const [ra, ga, ba] = channels(from)
+  const [rb, gb, bb] = channels(to)
+  return `#${hex2(ra * (1 - k) + rb * k)}${hex2(ga * (1 - k) + gb * k)}${hex2(ba * (1 - k) + bb * k)}`
 }
 
 /**

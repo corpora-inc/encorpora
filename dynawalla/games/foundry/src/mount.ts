@@ -32,6 +32,7 @@ import { Audio } from "./audio.ts"
 import { Feel } from "./core/feel.ts"
 import { detectTier, TierGovernor } from "./core/tiers.ts"
 import { Bout, type BoutEvent } from "./game/bout.ts"
+import { SECTIONS, SUMMARY, TITLE } from "./manual.ts"
 import { loadBelt, recordBelt } from "./game/save.ts"
 import { REACTIONS } from "./game/reaction.ts"
 import { Crowd } from "./render/crowd.ts"
@@ -407,70 +408,18 @@ export function mountFoundry(el: HTMLElement, host: Host): { unmount(): void } {
 
   // ── how to play ──────────────────────────────────────────────────────────
   //
-  // This game shipped with nothing at all telling a child what the pedals were
-  // for, and the one rule that decides every fall — that going over loses on
-  // the spot — was discoverable only by losing to it. So it is stated first,
-  // plainly, in the summary a child sees before their first tap.
+  // The words are in `manual.ts`, with the reason they are written the way they
+  // are. In short: this game invents a *fall*, a *pin*, a *kick out*, a *count*
+  // and a *belt*, it used to use all of them without ever saying what they were,
+  // and a child cannot play a game whose rules are in a language it has not been
+  // taught.
   //
   // Opening the manual stops the count: a child who went to read the rules must
   // not come back to a fall they lost while reading them.
   const guide = createInstructions(root, {
-    title: "THE GRAPPLE FOUNDRY",
-    summary: [
-      "Someone has you pinned. The board above the ring shows a sum.",
-      "Work out the answer, then tap the two pedals until the bar holds exactly that number. Go one over and you lose.",
-    ],
-    sections: [
-      {
-        heading: "How to get free",
-        lines: [
-          "Read the board. It shows a sum, like 45 + 28.",
-          "Work out the answer in your head. The game never shows it to you.",
-          "The two pedals at the bottom each have a number stamped on them. Tapping a pedal adds that number to the bar.",
-          "Tap until the number on the bar is exactly your answer. Then the bar tips and you kick out.",
-        ],
-      },
-      {
-        heading: "Going over loses at once",
-        lines: [
-          "One over the answer and the fall is lost. Not close. Over.",
-          "So tapping fast never works. Work out the taps first, then tap.",
-          "Say the answer is 25 and your pedals are 7 and 4. Three taps of 7 makes 21, then one tap of 4 makes 25. That is the escape.",
-        ],
-      },
-      {
-        heading: "When there is no way out",
-        lines: [
-          "Sometimes the number you have left cannot be made from your two pedals.",
-          "If you need 3 more and the pedals are 4 and 7, nothing makes 3. The game stops the fall and tells you.",
-          "So think about what you will have left, not just about the next tap.",
-        ],
-      },
-      {
-        heading: "The count",
-        lines: [
-          "The referee slaps the mat three times. When the third slap lands, the fall is over.",
-          "A longer sum and a longer escape both give you more time.",
-          "Winning lots of falls never takes time away. The clock is set by the work, not by how well you are doing.",
-        ],
-      },
-      {
-        heading: "The finish that gets waved off",
-        lines: [
-          "Some totals are the answer you get when you do the sum a common wrong way.",
-          "Land on one of those and the crowd roars, and then the referee waves it off.",
-          "It costs you count. It never costs you the fall. Keep going.",
-        ],
-      },
-      {
-        heading: "Controls",
-        lines: [
-          "Tap the left half of the screen for the LIGHT pedal, the right half for the HEAVY one.",
-          "On a keyboard, A and D work, and so do the left and right arrows.",
-          "Press M to turn the sound off.",
-        ],
-      },
-    ],
+    title: TITLE,
+    summary: SUMMARY,
+    sections: SECTIONS,
     onClose: (): void => {
       last = 0
     },

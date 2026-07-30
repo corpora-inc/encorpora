@@ -11,6 +11,7 @@ import { test } from "node:test"
 import type { Host, Question } from "../contract.ts"
 import {
   Bout,
+  FALLBACK,
   fallsToBeat,
   normalizeDifficulty,
   promptDigits,
@@ -411,4 +412,57 @@ test("an over-the-target mal-rule total is named rather than merely refused", ()
   const miss = plain.events.find((e) => e.kind === "pinfall")
   assert.ok(miss && miss.kind === "pinfall" && miss.diagnosed === false)
   assert.equal(plain.reports[0]?.answered, "30")
+})
+
+test("an item this game cannot use still cuts a fall whose board and bar agree", () => {
+  // What FOUNDRY needs from an item is an integer answer of 1 or more: the answer
+  // IS the number the bar has to reach, and a bar cannot hold nothing. Everything
+  // else — an answer of `0`, an empty string, a value that is not a number — is a
+  // hole in the curriculum reaching a game that has to keep going anyway.
+  //
+  // It must not keep going by *lying*. This used to hold on to the item's own
+  // prompt and quietly set the target to 12, so a `3 − 3` on the board could only
+  // be escaped by building twelve: the child would work out zero, be right, and
+  // lose the fall for it. And it must not do the trebuchet thing either — spawn
+  // nothing, and draw an empty ring as though it were a playable one.
+  const unusable: Array<[string, string]> = [
+    ["3 − 3", "0"],
+    ["0 + 0", "0"],
+    ["8 + 4", ""],
+    ["8 + 4", "twelve"],
+    ["9 − 20", "-11"],
+    ["", "0"],
+  ]
+  for (const [prompt, answer] of unusable) {
+    const r = rig([{ id: "hole", prompt, answer, distractors: [], domain: "add", difficulty: 0 }])
+    const f = r.bout.fall
+
+    // Playable: a real target, a real pair of plates, and a way out of them.
+    assert.equal(f.target, FALLBACK.target, `${answer || "(empty)"}: no usable target`)
+    assert.ok(f.plates.a > 0 && f.plates.b > 0, "a plate with no weight")
+    assert.equal(f.plates.a * f.plates.x + f.plates.b * f.plates.y, f.target, "an escape that misses")
+    assert.ok(f.minTaps >= 1, "a fall with no taps in it")
+
+    // Honest: the board carries a sum whose answer is the number the bar needs.
+    assert.equal(f.prompt, FALLBACK.prompt, `the board kept a sum it cannot be escaped by`)
+    assert.equal(
+      f.prompt.split("+").map((s) => Number.parseInt(s.trim(), 10)).reduce((a, b) => a + b, 0),
+      f.target,
+      `the board says "${f.prompt}" and the bar needs ${f.target}`,
+    )
+
+    // Unreported: there is no item to report it against.
+    toPin(r.bout)
+    r.bout.fall.plates = { a: 1, b: f.target, x: 0, y: 1, taps: 1 }
+    r.bout.tap("b")
+    assert.equal(r.bout.phase, "kickout", "the fallback fall could not be escaped")
+    assert.deepEqual(r.reports, [], "a fall cut from an unusable item was reported")
+  }
+})
+
+test("a usable item keeps its own sum on the board", () => {
+  // The other half of the fallback: it fires only when it has to.
+  const r = rig([q(31, "17 + 14", ["21"])])
+  assert.equal(r.bout.fall.prompt, "17 + 14")
+  assert.equal(r.bout.fall.target, 31)
 })

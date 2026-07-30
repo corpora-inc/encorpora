@@ -10,216 +10,28 @@
 // and an escape, and asserts that nothing threw and that the world actually
 // moved. It is not a rendering test — there are no pixels to look at — it is a
 // test that the whole thing is wired to itself.
+//
+// The canvas it runs against lives in `rig.ts` and *enforces the parts of the 2D
+// specification that throw*. The version of this file that shipped the blank-ring
+// bug used a `Proxy` that answered every call with a stub, so nine hundred frames
+// of a real bout could not fail for a colour, a radius or a transform — and did
+// not, while every frame after the first kick-out was dying inside `drawMat`.
 
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { mount } from "../contract.ts"
 import { createStubHost } from "../stubHost.ts"
+import {
+  canvasOf,
+  pump,
+  recorder,
+  recordingContext,
+  withBrowser,
+  type FakeElement,
+} from "./rig.ts"
 
 type Listener = (event: unknown) => void
-
-/** A 2D context that answers every call and records how much work it was asked for. */
-function fakeContext(counter: { calls: number; text: string[] }): CanvasRenderingContext2D {
-  const store = new Map<string, unknown>()
-  const noop = (name: string) =>
-    function (...args: unknown[]) {
-      counter.calls++
-      if (name === "fillText" && typeof args[0] === "string") counter.text.push(args[0])
-      // Gradients are the one call whose result is used, so everything returns
-      // something that can take a colour stop.
-      return { addColorStop() {} }
-    }
-  return new Proxy(
-    {},
-    {
-      get(_t, prop: string) {
-        if (store.has(prop)) return store.get(prop)
-        return noop(prop)
-      },
-      set(_t, prop: string, value) {
-        store.set(prop, value)
-        return true
-      },
-    },
-  ) as unknown as CanvasRenderingContext2D
-}
-
-type FakeElement = {
-  style: { cssText: string; top: string; right: string }
-  width: number
-  height: number
-  id: string
-  className: string
-  listeners: Map<string, Listener[]>
-  children: unknown[]
-  attrs: Map<string, string>
-  appendChild(child: unknown): void
-  append(...children: unknown[]): void
-  setAttribute(name: string, value: string): void
-  remove(): void
-  focus(): void
-  addEventListener(type: string, fn: Listener): void
-  removeEventListener(type: string, fn: Listener): void
-  getBoundingClientRect(): { width: number; height: number; left: number; top: number }
-  getContext(): CanvasRenderingContext2D
-}
-
-function harness(size: { w: number; h: number }, counter: { calls: number; text: string[] }) {
-  const ctx = fakeContext(counter)
-  const make = (): FakeElement => {
-    const listeners = new Map<string, Listener[]>()
-    const children: unknown[] = []
-    return {
-      style: { cssText: "", top: "", right: "" },
-      width: 0,
-      height: 0,
-      id: "",
-      className: "",
-      listeners,
-      children,
-      attrs: new Map<string, string>(),
-      appendChild(child) {
-        children.push(child)
-      },
-      append(...kids) {
-        children.push(...kids)
-      },
-      setAttribute(name, value) {
-        this.attrs.set(name, value)
-      },
-      remove() {},
-      focus() {},
-      addEventListener(type, fn) {
-        const list = listeners.get(type) ?? []
-        list.push(fn)
-        listeners.set(type, list)
-      },
-      removeEventListener(type, fn) {
-        listeners.set(type, (listeners.get(type) ?? []).filter((f) => f !== fn))
-      },
-      getBoundingClientRect: () => ({ width: size.w, height: size.h, left: 0, top: 0 }),
-      getContext: () => ctx,
-    }
-  }
-  const created: FakeElement[] = []
-  // The shared chrome measures `env(safe-area-inset-*)` through a hidden probe
-  // element and mounts a how-to-play button, so this document has to answer
-  // `getElementById`, own a `body`, and hand back elements that can take
-  // attributes. A partial document is worse than none: it type-checks, it looks
-  // like a browser, and it throws on the first real call.
-  const byId = new Map<string, FakeElement>()
-  const body = make()
-  body.appendChild = (child: unknown): void => {
-    const el = child as FakeElement
-    if (el?.id) byId.set(el.id, el)
-  }
-  const doc = {
-    visibilityState: "visible",
-    body,
-    activeElement: null,
-    listeners: new Map<string, Listener[]>(),
-    createElement() {
-      const el = make()
-      created.push(el)
-      return el
-    },
-    getElementById(id: string) {
-      return byId.get(id) ?? null
-    },
-    addEventListener(type: string, fn: Listener) {
-      const list = doc.listeners.get(type) ?? []
-      list.push(fn)
-      doc.listeners.set(type, list)
-    },
-    removeEventListener(type: string, fn: Listener) {
-      doc.listeners.set(type, (doc.listeners.get(type) ?? []).filter((f) => f !== fn))
-    },
-  }
-  return { host: make(), doc, created, ctx }
-}
-
-type Rig = ReturnType<typeof harness> & {
-  frames: Array<(t: number) => void>
-  globals: Map<string, Listener[]>
-}
-
-/**
- * Install the browser globals `mount.ts` needs, run `body`, and take them back
- * off again — including when `body` throws, which is the case this file exists
- * to catch.
- */
-function withBrowser(
-  size: { w: number; h: number },
-  counter: { calls: number; text: string[] },
-  body: (rig: Rig) => void,
-): void {
-  const rig = harness(size, counter) as ReturnType<typeof harness> & {
-    globals: Map<string, Listener[]>
-  }
-  const saved = new Map<string, PropertyDescriptor | undefined>()
-  const set = (key: string, value: unknown) => {
-    saved.set(key, Object.getOwnPropertyDescriptor(globalThis, key))
-    Object.defineProperty(globalThis, key, { configurable: true, writable: true, value })
-  }
-  const frames: Array<(t: number) => void> = []
-  set("document", rig.doc)
-  set("devicePixelRatio", 2)
-  set("requestAnimationFrame", (fn: (t: number) => void) => {
-    frames.push(fn)
-    return frames.length
-  })
-  set("cancelAnimationFrame", () => {})
-  // No notch off a real device. Zeros are the honest answer, and are what the
-  // safe-area probe resolves to on a laptop too.
-  set("getComputedStyle", () => ({
-    paddingTop: "0px",
-    paddingRight: "0px",
-    paddingBottom: "0px",
-    paddingLeft: "0px",
-  }))
-  // The global listeners are RECORDED rather than swallowed. `mount.ts` puts
-  // its keyboard on `globalThis`, and the how-to-play panel is a DOM scrim —
-  // which stops the pointer and nothing else — so the only way to test that a
-  // key cannot reach the bout through the manual is to be able to fire one.
-  const globals = new Map<string, Listener[]>()
-  set("addEventListener", (type: string, fn: Listener) => {
-    globals.set(type, [...(globals.get(type) ?? []), fn])
-  })
-  set("removeEventListener", (type: string, fn: Listener) => {
-    globals.set(type, (globals.get(type) ?? []).filter((f) => f !== fn))
-  })
-  rig.globals = globals
-
-  try {
-    body({ ...rig, frames, globals })
-  } finally {
-    for (const [key, descriptor] of saved) {
-      if (descriptor) Object.defineProperty(globalThis, key, descriptor)
-      else Reflect.deleteProperty(globalThis, key)
-    }
-  }
-}
-
-/** The canvas is the second element `mount` creates: the root div, then it. */
-function canvasOf(created: FakeElement[]): FakeElement {
-  const el = created[1]
-  if (!el) throw new Error("mount did not create a canvas")
-  return el
-}
-
-/** Run `n` frames at 60Hz, draining the rAF queue each time. */
-function pump(frames: Array<(t: number) => void>, n: number, from = 0): number {
-  let t = from
-  for (let i = 0; i < n; i++) {
-    const next = frames.pop()
-    frames.length = 0
-    if (!next) break
-    t += 16.7
-    next(t)
-  }
-  return t
-}
 
 for (const [w, h] of [
   [320, 568],
@@ -227,9 +39,9 @@ for (const [w, h] of [
   [1366, 1024],
 ] as const) {
   test(`a whole bout renders without throwing at ${w}×${h}`, () => {
-    const counter = { calls: 0, text: [] as string[] }
+    const rec = recorder()
     const reports: Array<{ correct: boolean }> = []
-    withBrowser({ w, h }, counter, ({ host, frames, created, doc }) => {
+    withBrowser({ w, h }, recordingContext(rec), ({ host, frames, created, doc }) => {
       const stub = createStubHost({
         seed: 0x51ab,
         reducedMotion: false,
@@ -241,29 +53,38 @@ for (const [w, h] of [
       // Long enough for the lockup, a full three-count, the pinfall beat and the
       // next takedown — several times over.
       let t = pump(frames, 900)
-      assert.ok(counter.calls > 5000, `only ${counter.calls} draw calls in 900 frames`)
-      assert.ok(counter.text.length > 0, "nothing was ever written on the board")
+      assert.ok(rec.calls > 5000, `only ${rec.calls} draw calls in 900 frames`)
+      assert.ok(rec.text.length > 0, "nothing was ever written on the board")
 
       // And a tap goes all the way through the input handler into the rules.
       const down = canvas.listeners.get("pointerdown")?.[0]
       assert.ok(down, "no pointerdown listener was installed")
-      const before = counter.calls
+      const before = rec.calls
       for (let i = 0; i < 30; i++) {
         down({ preventDefault() {}, clientX: i % 2 === 0 ? w * 0.25 : w * 0.75, clientY: h * 0.9 })
         t = pump(frames, 12, t)
       }
-      assert.ok(counter.calls > before)
+      assert.ok(rec.calls > before)
 
       // Backgrounding the tab must stop the world without stopping the loop.
       doc.visibilityState = "hidden"
       for (const fn of doc.listeners.get("visibilitychange") ?? []) fn({})
-      const paused = counter.calls
+      const paused = rec.calls
       t = pump(frames, 60, t)
-      assert.equal(counter.calls, paused, "the count kept running while hidden")
+      assert.equal(rec.calls, paused, "the count kept running while hidden")
       doc.visibilityState = "visible"
       for (const fn of doc.listeners.get("visibilitychange") ?? []) fn({})
       t = pump(frames, 30, t)
-      assert.ok(counter.calls > paused, "the world never came back")
+      assert.ok(rec.calls > paused, "the world never came back")
+
+      // Nothing was ever handed a colour the canvas would have thrown out, and no
+      // draw call leaked a `save()` — a leaked `clip()` hides everything after it.
+      assert.deepEqual(
+        [...new Set(rec.invalid)],
+        [],
+        "a colour string the canvas cannot parse reached it",
+      )
+      assert.equal(rec.imbalance, 0, "a draw call restored more than it saved")
 
       handle.unmount()
       assert.equal(canvas.listeners.get("pointerdown")?.length ?? 0, 0)
@@ -284,8 +105,8 @@ for (const [w, h] of [
 }
 
 test("the reduced-motion branch renders the same bout with no particles", () => {
-  const counter = { calls: 0, text: [] as string[] }
-  withBrowser({ w: 768, h: 1024 }, counter, ({ host, frames, created }) => {
+  const rec = recorder()
+  withBrowser({ w: 768, h: 1024 }, recordingContext(rec), ({ host, frames, created }) => {
     const stub = createStubHost({ seed: 0x51ab, reducedMotion: true })
     const handle = mount(host as unknown as HTMLElement, stub)
     let t = pump(frames, 300)
@@ -296,8 +117,9 @@ test("the reduced-motion branch renders the same bout with no particles", () => 
     }
     // The information is all still there — the board, the bar and the plates are
     // written every frame — it just arrives without travel.
-    assert.ok(counter.text.length > 0)
-    assert.ok(counter.calls > 3000)
+    assert.ok(rec.text.length > 0)
+    assert.ok(rec.calls > 3000)
+    assert.deepEqual([...new Set(rec.invalid)], [], "reduced motion produced an unparseable colour")
     handle.unmount()
   })
 })
@@ -318,8 +140,8 @@ test("a key cannot drop a plate through the how-to-play panel", () => {
   // is up, so the panel has to be closed before anything is pumped — the first
   // draft of this test checked for the banner while the world was still frozen,
   // passed with the guard removed, and was worth nothing.
-  const counter = { calls: 0, text: [] as string[] }
-  withBrowser({ w: 390, h: 844 }, counter, ({ host, frames, created, globals }) => {
+  const rec = recorder()
+  withBrowser({ w: 390, h: 844 }, recordingContext(rec), ({ host, frames, created, globals }) => {
     const stub = createStubHost({ seed: 0x51ab, reducedMotion: false })
     const handle = mount(host as unknown as HTMLElement, stub)
     let t = pump(frames, 120)
@@ -346,26 +168,26 @@ test("a key cannot drop a plate through the how-to-play panel", () => {
     // target this game can serve, several times over — then CLOSE it and let
     // the world run, which is the only point at which a banner can be drawn.
     click(help)
-    counter.text.length = 0
+    rec.text.length = 0
     press(40)
     click(close)
     t = pump(frames, 120, t)
     assert.equal(
-      counter.text.includes("TOO MUCH"),
+      rec.text.includes("TOO MUCH"),
       false,
       "keys pressed behind the manual dropped plates and lost the fall",
     )
 
     // And the keyboard works the moment the panel is gone: a gate stuck shut is
     // the same bug wearing a different hat.
-    counter.text.length = 0
+    rec.text.length = 0
     for (let i = 0; i < 40; i++) {
       press(1)
       t = pump(frames, 2, t)
     }
     t = pump(frames, 30, t)
     assert.equal(
-      counter.text.includes("TOO MUCH"),
+      rec.text.includes("TOO MUCH"),
       true,
       "the keyboard never came back after the manual closed",
     )

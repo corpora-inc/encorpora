@@ -48,6 +48,16 @@ export type BoutEvent =
 /** The three slaps, and then you are out. */
 export const SLAP_COUNT = 3
 
+/**
+ * The fall cut for an item this game cannot use.
+ *
+ * A sum and its own answer, together, because the board and the bar must agree:
+ * a fallback target under somebody else's prompt is a fall the child loses for
+ * being right. Small enough that the plates come out short and the escape is over
+ * quickly — nothing is reported off it, so it should not cost a child much time.
+ */
+export const FALLBACK = { prompt: "7 + 5", target: 12 } as const
+
 const LOCKUP_S = 0.82
 const PINFALL_S = 1.3
 /** A false finish costs count, but it may never *be* the third slap. */
@@ -206,11 +216,23 @@ export class Bout {
   private cutFall(): Fall {
     const q: Question = this.host.next()
     const parsed = Number.parseInt(q.answer, 10)
-    // A pool that ran dry hands back a drawable question with no id. The fall is
-    // still playable — a child must never see a frozen ring — but nothing about
-    // it is reported, because there is no item to report it against.
+    // What this game needs from an item: an integer answer of 1 or more, because
+    // the answer IS the number the bar has to reach and a bar cannot hold nothing.
+    //
+    // A pool that ran dry hands back a drawable question with no id, and every
+    // other unusable item is a hole in the curriculum: an answer of `0`, an empty
+    // string, something that is not a number. The fall is still playable — a child
+    // must never see a frozen ring — and nothing about it is reported, because
+    // there is no item to report it against.
+    //
+    // **The board and the bar have to agree even then.** This used to keep the
+    // item's own prompt and quietly set the target to 12, so a `3 − 3` on the
+    // board could only be escaped by building twelve, and the child would have
+    // been right and lost anyway. So the fallback replaces the sum as well as the
+    // answer, and `bout.test.ts` asserts the pair always agrees.
     const usable = Number.isInteger(parsed) && parsed >= 1
-    const target = usable ? parsed : 12
+    const target = usable ? parsed : FALLBACK.target
+    const prompt = usable ? q.prompt : FALLBACK.prompt
     const difficulty = normalizeDifficulty(q.difficulty)
     const plates = choosePlates(target, this.rng, { pressure: difficulty })
     const minTaps = minTapsFor(target, plates.a, plates.b) ?? plates.taps
@@ -240,7 +262,7 @@ export class Bout {
 
     return {
       questionId: usable ? q.id : "",
-      prompt: q.prompt,
+      prompt,
       target,
       plates,
       load: 0,
@@ -250,7 +272,7 @@ export class Bout {
       minTaps,
       traps,
       sprung: [],
-      slapPeriod: slapPeriodFor(minTaps, promptDigits(q.prompt), difficulty),
+      slapPeriod: slapPeriodFor(minTaps, promptDigits(prompt), difficulty),
       elapsed: 0,
       advance: 0,
       slaps: 0,

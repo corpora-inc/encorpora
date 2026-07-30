@@ -70,7 +70,7 @@ seconds; a four-digit borrow gets nearly eight.
 ```sh
 npm install
 npm run dev          # http://127.0.0.1:4321 — playable against the stub host
-npm test             # the rules; 75 cases, no canvas, no Math.random
+npm test             # the rules and the surface; 111 cases, no Math.random
 npm run tsc
 npm run build:pack   # → dist-pack/, what a tablet installs
 ```
@@ -88,6 +88,9 @@ src/
   contract.ts      the Host interface — byte-identical in shape across games
   stubHost.ts      seeded column add/sub with real mal-rule distractors
   mount.ts         surface, loop, input and juice. Decides nothing.
+  manual.ts        how-to-play, with every term this game invents defined at
+                   first use — a child who does not know what a "fall" is
+                   cannot use any rule that mentions one
   audio.ts         procedural Web Audio; silence is a cue, not an absence
   core/            rng · feel (screenshake, hitstop, flash) · quality tiers
   game/
@@ -96,7 +99,21 @@ src/
     reaction.ts    tier picker, with no run-length input and a test that says so
     save.ts        the belt, monotone, and safe on an opaque origin
   render/          layout · crowd · ring · decals · particles · hud · palette
+  test/
+    rig.ts         a canvas that records marks in screen space and throws
+                   exactly where the 2D spec throws
 ```
 
 `game/` holds every rule and every integer. `render/` draws state and judges
 nothing. That split is why the tests are about the game and not about pixels.
+
+The one thing `render/` still has to get right is that its colour helpers
+compose. `heatColor` *is* `mix`, and six call sites hand its output straight back
+to `withAlpha` or `mix`, so the output form is a rule: hex in, hex out. It was
+`rgb(...)` once, `withAlpha` parsed hex, and the first kick-out of a session put
+`rgba(NaN,11,37,0.3)` into a gradient stop — which throws, inside `drawMat`,
+before the wrestlers and the referee and the whole HUD. `frame()` re-arms its rAF
+on its first line, so the loop stayed alive and repainted the crowd, the far posts
+and the mat and nothing else, over and over, with the audio still running.
+`palette.test.ts` asserts the property; `test/rig.ts` is why a bout test can fail
+for a colour now.

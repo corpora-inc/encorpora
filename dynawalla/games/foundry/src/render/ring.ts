@@ -140,7 +140,14 @@ export type PinPose = {
   rise: number
   /** 0..1 how much the challenger is bearing down. */
   press: number
-  /** Struggle wobble, in radians. */
+  /**
+   * The struggle clock, in **seconds**, and read only as a phase.
+   *
+   * The caller passes a monotonic clock, so nothing here may use this value as an
+   * angle or an offset: a body rotated by `wobble * 0.05` is level at the start of
+   * a session and upside down about a minute in, which is how the pinned player
+   * used to drift out from under the bar over a long sitting.
+   */
   wobble: number
   /** 0..1 of the way through the count — drives the challenger's lean. */
   count: number
@@ -193,7 +200,9 @@ export function drawGrapple(
   // ── the player, on their back ──────────────────────────────────────────
   g.save()
   g.translate(cx, cy)
-  g.rotate(pose.wobble * 0.05)
+  // A struggle, not a spin: ±0.05 rad at about a third of a hertz. `wobble` is a
+  // monotonic clock and using it raw rotated the body without bound.
+  g.rotate(Math.sin(pose.wobble * 2.1) * 0.05)
   g.fillStyle = IRON
   // Torso lying along the mat, head to the left.
   limb(g, -u * 1.5, -rise * u * 0.9, u * 0.5, -rise * u * 0.35, u * 0.52, u * 0.62)
