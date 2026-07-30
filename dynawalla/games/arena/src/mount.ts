@@ -8,6 +8,7 @@ import { Camera } from "./feel/camera.ts"
 import { Floaters } from "./feel/floaters.ts"
 import { guessTier, specFor, TierGovernor, type TierName } from "./core/tier.ts"
 import { R_K, viewSpanFor, World, type GameEvent } from "./sim/world.ts"
+import { statesAnswer } from "./ribbon.ts"
 
 const FIXED = 1 / 60
 const MAX_SUBSTEPS = 3
@@ -390,7 +391,7 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
         const q = world.resonance.question
         if (q) {
           const p = q.prompt
-          hud.showEquation(p.length <= 28 && !p.includes("?") ? `${p} = ${q.answer}` : `${q.answer}`, 2.8, "solved")
+          hud.showEquation(statesAnswer(p, q.answer), 2.8, "solved")
         }
         hud.showVerdict(e.b >= 3 ? `RESONANT ×${e.b}` : "RESONANT", "#b9ffe4")
         audio.resonanceHit(e.b)
@@ -408,11 +409,7 @@ export function mountArena(el: HTMLElement, host: Host, opts?: MountOptions): { 
         const hold = world.revealSeconds
         if (rq && hold >= 0.25) {
           const rp = rq.prompt
-          hud.showEquation(
-            rp.length <= 28 && !rp.includes("?") ? `${rp} = ${rq.answer}` : `${rq.answer}`,
-            hold,
-            "reveal",
-          )
+          hud.showEquation(statesAnswer(rp, rq.answer), hold, "reveal")
         }
         cam.addTrauma(0.5)
         cam.addHitstop(0.07)

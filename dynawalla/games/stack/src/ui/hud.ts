@@ -33,6 +33,7 @@ import {
   TOOL_SIZE,
   cssScale,
 } from "./place.ts";
+import { BLANK } from "../blank.ts";
 
 const CSS = `
 .mn { position:absolute; inset:0; pointer-events:none; overflow:hidden;
@@ -267,9 +268,14 @@ export class Hud {
   }
 
   /**
-   * `?` in the prompt is drawn in the accent so the blank is obvious at a
-   * glance; on a reveal the answer replaces it in the same colour, so the eye
-   * lands on exactly the thing that changed.
+   * The blank in the prompt is drawn in the accent so it is obvious at a glance;
+   * on a reveal the answer replaces it in the same colour, so the eye lands on
+   * exactly the thing that changed.
+   *
+   * The blank is whatever `src/blank.ts` says it is — `□` as the host writes it,
+   * with `?` and `_` tolerated. This used to match a literal `"?"`, which meant
+   * the reveal substituted nothing for every `47 + □ = 68` the host served and
+   * the child saw the card back with the box still empty.
    */
   setPrompt(prompt: string, reveal: string | null): void {
     // Called every frame, so it compares its two inputs directly instead of
@@ -280,8 +286,8 @@ export class Hud {
     this.lastPrompt = prompt;
     this.lastReveal = reveal;
     const html = reveal
-      ? escape(prompt).replace("?", `<span class="fill">${escape(reveal)}</span>`)
-      : escape(prompt).replace("?", `<span class="q">?</span>`);
+      ? escape(prompt).replace(BLANK, () => `<span class="fill">${escape(reveal)}</span>`)
+      : escape(prompt).replace(BLANK, (glyph) => `<span class="q">${glyph}</span>`);
     this.promptEl.innerHTML = html;
     this.promptEl.classList.toggle("reveal", reveal !== null);
     if (!this.reduced && (fresh || reveal)) {
@@ -386,7 +392,10 @@ export class Hud {
     this.overBig.textContent = "";
     this.overSub.textContent = "";
     this.overQ.style.display = "";
-    this.overQ.innerHTML = escape(prompt).replace("?", `<span class="q">?</span>`);
+    this.overQ.innerHTML = escape(prompt).replace(
+      BLANK,
+      (glyph) => `<span class="q">${glyph}</span>`,
+    );
     this.choicesEl.style.display = "";
     this.choicesEl.textContent = "";
     for (const c of choices) {
