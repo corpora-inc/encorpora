@@ -25,6 +25,57 @@ import { COLS, ROWS } from "./core/rules.ts";
  * still bleed to the edges, which is the point of `cover`.
  */
 
+/* --------------------------------- the stage ------------------------------- */
+
+/**
+ * Just enough of an element for `makeStage`: the inline style it writes.
+ *
+ * Structural rather than `HTMLElement` so a test can hand it an object literal
+ * and read back exactly what was written, with no cast and no DOM.
+ */
+export type StageEl = {
+  style: { position: string };
+};
+
+/**
+ * Take the host's element over as FUSE's stage.
+ *
+ * The canvas is `position: absolute; inset: 0`, so the stage is the only node in
+ * the tree with a size of its own — and it is the host *document* that decides
+ * what that size is. This function's whole job is to not take that away.
+ *
+ * **What it replaces shipped a black screen in a sibling game.** The line was
+ *
+ *     el.style.position = el.style.position || "relative";
+ *
+ * and `el.style.position` reads the *inline* declaration, which is empty for an
+ * element positioned from a stylesheet. `pack.html` says
+ * `#root { position: fixed; inset: 0 }`, so the fallback always fired and wrote
+ * an inline `relative` that won the cascade — taking the `inset: 0` with it,
+ * because insets do nothing to a relatively positioned box. The stage fell back
+ * to `height: auto` with nothing but an absolutely positioned canvas inside it.
+ * Measured in a framed pack before this fix: `#root` **820x0**.
+ *
+ * `games/runner` shipped exactly this to two app stores. FUSE did not, and it is
+ * worth saying why it did not, because neither reason was a decision:
+ *
+ *   * it never writes `overflow: hidden` on the stage, so the canvas paints
+ *     *outside* the collapsed box rather than being clipped to nothing;
+ *   * `resize()` sized that canvas with `el.clientHeight || window.innerHeight`,
+ *     and the `||` swallowed the zero.
+ *
+ * Two accidents, either of which an ordinary edit removes. So: branch on the
+ * *computed* position, never the inline one, and write one only when nobody has
+ * positioned the element at all.
+ *
+ * Invisible in `npm run dev` for the same reason it was there: `index.html`
+ * gives `#root` a position too, and the dev harness is full-size either way.
+ * Only the entry a child runs collapses.
+ */
+export function makeStage(el: StageEl, computedPosition: string): void {
+  if (computedPosition === "static") el.style.position = "relative";
+}
+
 export type Layout = {
   w: number;
   h: number;

@@ -1,8 +1,9 @@
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { hitsHostChrome, safeRect } from "../../../packs/shared/game-chrome/index.ts";
 import { COLS, ROWS } from "./core/rules.ts";
-import { cellCenter, colAt, computeLayout } from "./layout.ts";
+import { cellCenter, colAt, computeLayout, makeStage, type StageEl } from "./layout.ts";
 
 /** every viewport the game is expected to survive */
 const SIZES: [string, number, number][] = [
@@ -251,4 +252,138 @@ test("the incoming strip stays inside the safe area once it has moved clear", ()
       b.x < l.wellX + l.wellW && l.wellX < b.x + b.w && b.y < l.wellY + l.wellH && l.wellY < b.y + b.h;
     assert.equal(onWell, false, `${name}: the incoming strip covers the well`);
   }
+});
+
+/* -------------------------------------------------------------------------- */
+/* The stage.                                                                 */
+/*                                                                            */
+/* `games/runner` shipped to two app stores completely blank because           */
+/* `el.style.position = el.style.position || "relative"` read the INLINE       */
+/* position — empty for an element positioned from a stylesheet — and so       */
+/* always fired, overwriting `#app { position: fixed; inset: 0 }` and taking   */
+/* the insets with it. FUSE carried the identical line against the identical   */
+/* shape of `pack.html`, and its stage measured 820x0 in a framed pack too. It */
+/* played anyway, on two accidents: no `overflow: hidden` on the stage, and an */
+/* `el.clientHeight || window.innerHeight` whose `||` caught the zero.         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * What `pack.html` declares about the element the pack mounts into.
+ *
+ * Read out of the real file rather than restated here, because the defect this
+ * section pins is exactly a disagreement between that file and this game's code:
+ * the only box `#root` has comes from the stylesheet, and any inline `position`
+ * the game writes wins over it.
+ */
+function packStageRule(): Map<string, string> {
+  const html = readFileSync(new URL("../pack.html", import.meta.url), "utf8");
+  const rule = /#root\s*\{([^}]*)\}/.exec(html);
+  assert.ok(rule, "pack.html has no #root rule; this test is measuring the wrong element");
+  const decls = new Map<string, string>();
+  for (const part of (rule[1] ?? "").split(";")) {
+    const colon = part.indexOf(":");
+    if (colon < 0) continue;
+    decls.set(part.slice(0, colon).trim(), part.slice(colon + 1).trim());
+  }
+  return decls;
+}
+
+/**
+ * The used height of the stage in CSS pixels, on a `viewportH`-tall surface.
+ *
+ * A deliberately tiny slice of CSS, and only the slice FUSE's layout depends on:
+ * the canvas is `position: absolute; inset: 0`, so the stage has no in-flow
+ * content and `height: auto` resolves to zero. It gets a height from exactly two
+ * places — an explicit `height`, or being out of flow with both `top` and
+ * `bottom` pinned. Inline declarations beat the stylesheet, which is the whole
+ * mechanism of the bug.
+ */
+function stageHeight(
+  sheet: Map<string, string>,
+  inline: Map<string, string>,
+  viewportH: number,
+): number {
+  const used = (prop: string): string | undefined => inline.get(prop) ?? sheet.get(prop);
+  const height = used("height");
+  if (height === "100%") return viewportH;
+  if (height !== undefined && height.endsWith("px")) return Number.parseFloat(height);
+
+  const position = used("position") ?? "static";
+  const inset = used("inset");
+  const top = used("top") ?? inset;
+  const bottom = used("bottom") ?? inset;
+  const outOfFlow = position === "fixed" || position === "absolute";
+  if (outOfFlow && top === "0" && bottom === "0") return viewportH;
+  // In flow, height auto, and nothing in flow inside it.
+  return 0;
+}
+
+test("the pack's stage is sized only by being out of flow", () => {
+  // The precondition that makes the rest of this section mean anything. If
+  // pack.html ever gives #root a height of its own, an inline `position` stops
+  // being able to collapse it and these tests are measuring a bug that is gone.
+  const sheet = packStageRule();
+  assert.equal(sheet.get("height"), undefined, "#root now has a height; re-derive this section");
+  assert.equal(sheet.get("position"), "fixed");
+  assert.equal(sheet.get("inset"), "0");
+  assert.equal(stageHeight(sheet, new Map(), 1180), 1180, "#root has no box even untouched");
+});
+
+test("an inline position on the stage collapses the whole game to nothing", () => {
+  // The failure, stated. Measured in a framed pack before the fix: #root 820x0,
+  // canvas 820x1180 painting *outside* it, and the only reason a child saw
+  // anything at all.
+  const sheet = packStageRule();
+  assert.equal(stageHeight(sheet, new Map([["position", "relative"]]), 1180), 0);
+  assert.equal(stageHeight(sheet, new Map([["position", "static"]]), 1180), 0);
+});
+
+test("makeStage leaves a stage the document has already positioned alone", () => {
+  const sheet = packStageRule();
+  // What a browser computes for #root at the moment `mount` runs.
+  const computed = sheet.get("position") ?? "static";
+  const el: StageEl = { style: { position: "" } };
+  makeStage(el, computed);
+
+  const inline = new Map<string, string>();
+  if (el.style.position !== "") inline.set("position", el.style.position);
+  assert.equal(
+    stageHeight(sheet, inline, 1180),
+    1180,
+    `makeStage wrote position:${el.style.position} over the document's ${computed}`,
+  );
+});
+
+test("makeStage still positions a stage nobody else has", () => {
+  // A host that hands over a plain in-flow div — and `index.html`'s `#root`
+  // before it had a rule of its own — still needs the canvas to have something to
+  // be absolute against.
+  const el: StageEl = { style: { position: "" } };
+  makeStage(el, "static");
+  assert.equal(el.style.position, "relative");
+});
+
+test("makeStage never overwrites any position the document computed", () => {
+  for (const computed of ["relative", "absolute", "fixed", "sticky"]) {
+    const el: StageEl = { style: { position: "" } };
+    makeStage(el, computed);
+    assert.equal(el.style.position, "", `makeStage overwrote a computed ${computed}`);
+  }
+});
+
+test("a collapsed stage is not a survivable state for this game any more", () => {
+  // The second accident, pinned. `resize()` used `el.clientHeight ||
+  // window.innerHeight`, which turned a stage with no box into a full-window
+  // canvas — so the game kept playing and the collapse was invisible to
+  // everybody, including the author of the line that caused it. The layout is now
+  // computed from the stage's real box, and a zero box produces a layout that
+  // visibly has nothing in it rather than a plausible full-screen one.
+  const collapsed = computeLayout(1, 1, 2, safeRect(1, 1));
+  const real = computeLayout(820, 1180, 2, safeRect(820, 1180));
+  assert.notEqual(
+    collapsed.cell,
+    real.cell,
+    "a 1x1 stage laid out the same as a real one; the collapse is still invisible",
+  );
+  assert.ok(collapsed.boardW <= 1 + COLS * 18, "a 1x1 stage produced a full-size board");
 });

@@ -144,6 +144,29 @@ viewport. The plasma, the well walls and the sparks still bleed to the edges.
 How to play is the shared `createInstructions` panel, reachable during a run,
 not just before it.
 
+### The stage belongs to the host
+
+The canvas is `position: absolute; inset: 0`, so the element the host hands to
+`mount()` is the only node with a size of its own — and the host *document*
+decides what that size is. `makeStage` therefore branches on the **computed**
+position and writes one only when nobody has positioned the element at all.
+
+It used to read `el.style.position`, which is the *inline* declaration and is
+empty for an element positioned from a stylesheet. `pack.html` gives `#root` its
+entire box with `position: fixed; inset: 0` and nothing else, so the fallback
+always fired, the inline `relative` won the cascade, and the insets stopped
+meaning anything. Measured in a framed pack: `#root` **820x0**. `games/runner`
+shipped that same line to two app stores as a black screen; FUSE survived it on
+two accidents — no `overflow: hidden` on the stage, so the canvas painted
+outside the collapsed box instead of being clipped, and an
+`el.clientHeight || window.innerHeight` whose `||` swallowed the zero. Neither
+was a decision, and either is one ordinary edit from being removed.
+
+The measurement is now honest and `resize()` says so out loud, once, when the
+stage comes back under two pixels on either axis. `layout.test.ts` reads the real
+`#root` rule out of `pack.html` and resolves the two-declaration cascade the bug
+lived in, so the fix cannot be undone quietly.
+
 ## Structure
 
 ```
