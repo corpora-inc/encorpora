@@ -8,8 +8,18 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { Bank } from "../game/bank.ts"
-import { isPrime, primeFactors, productOf } from "../game/factor.ts"
-import { isAskable, opens, resonate } from "../game/resonance.ts"
+import { isPrime, LARGEST_MOTE_PRIME, primeFactors, productOf } from "../game/factor.ts"
+import {
+  isAskable,
+  isResonant,
+  isSmooth,
+  MIN_TARGET,
+  MIN_TILES,
+  MIN_WALL,
+  opens,
+  resonate,
+  tileCount,
+} from "../game/resonance.ts"
 
 /** Every multiset of primes drawn from `alphabet` with at most `depth` tiles. */
 function banksFrom(alphabet: readonly number[], depth: number): number[][] {
@@ -113,6 +123,73 @@ test("a target the arena will not ask for is refused rather than fudged", () => 
   // And if one ever got through, the rule refuses rather than opening.
   assert.equal(opens(1, [2]), false)
   assert.equal(opens(0, [2]), false)
+})
+
+test("a target with nothing to decompose is not a target this game asks for", () => {
+  // **The founder's report, as a predicate.** "I'm seeing 2+0 over and over
+  // again, finding a 2" — every one of those answers is `isAskable` and none of
+  // them is `isResonant`, because the game's second stage does not exist at one
+  // tile and is a formality at two.
+  const wall = { wall: false }
+  for (const degenerate of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
+    assert.equal(
+      isResonant(degenerate, 999, wall),
+      false,
+      `${degenerate} = ${primeFactors(degenerate).join("·")} was accepted as a resonator target`,
+    )
+  }
+  // And the founder's own examples are.
+  assert.equal(isResonant(12, 999, wall), true, "8 + 4 = 12 = 2·2·3 was refused")
+  assert.equal(isResonant(72, 999, wall), true, "47 + 25 = 72 = 2·2·2·3·3 was refused")
+  assert.equal(tileCount(72), 5)
+  // A semiprime is legal and is not this game: one crack, and no choice about it.
+  assert.equal(isResonant(15, 999, wall), false, "15 = 3·5 has one crack in it")
+  assert.equal(isResonant(91, 999, wall), false, "91 = 7·13 has one crack in it")
+  assert.equal(MIN_TILES, 3)
+  assert.equal(MIN_TARGET, 12)
+})
+
+test("the wall is kept, rationed, and never a hunt for a 2", () => {
+  // Primeness is the property the whole game stands on, so a filter that deleted
+  // it would be worse than the defect. It survives — behind a flag the arena
+  // owns, because how often a wall comes round is pacing.
+  assert.equal(isResonant(41, 999, { wall: true }), true, "the wall was filtered out of the game")
+  assert.equal(isResonant(41, 999, { wall: false }), false, "the wall is not rationed at all")
+  assert.equal(isResonant(991, 999, { wall: true }), true)
+  // But never the degenerate end of it, flag or no flag.
+  for (const small of [2, 3, 5, 7, 11]) {
+    assert.equal(
+      isResonant(small, 999, { wall: true }),
+      false,
+      `a resonator would have asked a child to find a ${small}`,
+    )
+  }
+  assert.equal(MIN_WALL, 13)
+})
+
+test("every prime in a target is one the game can draw as a readable mote", () => {
+  // `794` is three digits, composite, and factorises as `2 · 397` — so the old bar
+  // took it and sent the child to find a 397, while `MOTE_PRIMES` has always
+  // stopped at 47. Three-digit answers are 65% trees and only 37% *readable*
+  // trees, so this is the difference between 804 = 2·2·3·67 and 600 = 2·2·2·3·5·5.
+  assert.equal(LARGEST_MOTE_PRIME, 47)
+  assert.equal(isSmooth(600), true, `600 = ${primeFactors(600).join("·")}`)
+  assert.equal(isSmooth(804), false, `804 = ${primeFactors(804).join("·")}`)
+  assert.equal(isResonant(804, 999, { wall: false }), false, "804 needs a 67 mote")
+  assert.equal(isResonant(794, 999, { wall: false }), false, "794 needs a 397 mote")
+  assert.equal(isResonant(600, 999, { wall: false }), true)
+  // A prime target is exempt: the single mote carrying it is the whole point, and
+  // a 991 drifting on its own is the most legible thing in the game.
+  assert.equal(isResonant(991, 999, { wall: true }), true, "a large prime wall was refused")
+  // Exhaustively: nothing the game will ask for needs a mote it will not draw.
+  for (let target = 2; target <= 999; target++) {
+    if (!isResonant(target, 999, { wall: true })) continue
+    if (isPrime(target)) continue
+    assert.ok(
+      Math.max(...primeFactors(target)) <= LARGEST_MOTE_PRIME,
+      `${target} = ${primeFactors(target).join("·")} is a target with an unreadable mote in it`,
+    )
+  }
 })
 
 test("the bank's own invariant holds through the resonance rule", () => {

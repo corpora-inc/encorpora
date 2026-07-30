@@ -22,85 +22,10 @@ import { test } from "node:test"
 
 import { Rng } from "../core/rng.ts"
 import { Arena } from "../game/arena.ts"
-import { multisetDifference, primeFactors } from "../game/factor.ts"
 import { createStubHost } from "../stubHost.ts"
+import { playCarefully } from "./harness.ts"
 
 type Report = { correct: boolean; answered: string }
-
-/** Fly toward a point, and aim there too. */
-function steer(arena: Arena, x: number, y: number): void {
-  const dx = x - arena.ship.x
-  const dy = y - arena.ship.y
-  arena.setMove(dx, dy)
-  arena.setAim(dx, dy)
-}
-
-function nearest<T extends { x: number; y: number }>(arena: Arena, xs: readonly T[]): T | null {
-  let best: T | null = null
-  let bestD = Number.POSITIVE_INFINITY
-  for (const item of xs) {
-    const d = Math.hypot(item.x - arena.ship.x, item.y - arena.ship.y)
-    if (d < bestD) {
-      bestD = d
-      best = item
-    }
-  }
-  return best
-}
-
-/**
- * A child who is playing properly: work out what the resonator needs, break
- * open whatever is holding those primes, collect exactly them, and go.
- */
-function playCarefully(arena: Arena, frames: number): void {
-  let t = 0
-  for (let f = 0; f < frames; f++) {
-    t += 16
-    const res = arena.resonator
-    if (!res) break
-
-    const wanted = primeFactors(res.target)
-    const held = arena.bank.tiles.slice()
-    const surplus = multisetDifference(held, wanted)
-
-    if (surplus.length > 0) {
-      // Something got swept that the resonator does not want. Drop the lot and
-      // start the hold again — the primes go back on the field.
-      arena.vent()
-    } else if (held.length === wanted.length) {
-      // The hold is right. Run at it.
-      steer(arena, res.x, res.y)
-      if (Math.hypot(res.x - arena.ship.x, res.y - arena.ship.y) < 60) arena.enter(t)
-    } else {
-      const needed = multisetDifference(wanted, held)
-      const motes = arena.bodies.filter((b) => b.prime && needed.includes(b.value))
-      const mote = nearest(arena, motes)
-      if (mote) {
-        steer(arena, mote.x, mote.y)
-      } else {
-        // Nothing loose carries what is needed, so open something that does.
-        const husks = arena.bodies.filter(
-          (b) => !b.prime && needed.some((p) => b.value % p === 0),
-        )
-        const husk = nearest(arena, husks) ?? nearest(arena, arena.bodies.filter((b) => !b.prime))
-        if (husk) {
-          // Stand off and shoot rather than flying into it — a husk jostles.
-          const dx = husk.x - arena.ship.x
-          const dy = husk.y - arena.ship.y
-          arena.setAim(dx, dy)
-          const range = Math.hypot(dx, dy)
-          arena.setMove(range > 220 ? dx : -dx, range > 220 ? dy : -dy)
-          arena.fire()
-        } else {
-          // The field has nothing left that helps. Sit still rather than
-          // thrashing; the assertion below is what reports it.
-          arena.setMove(0, 0)
-        }
-      }
-    }
-    arena.step(16)
-  }
-}
 
 test("a child who plays it properly opens resonators, over and over", () => {
   for (const seed of [0x1a771ce, 0x0c105, 0x5eed, 0xbea7, 0x9a11]) {

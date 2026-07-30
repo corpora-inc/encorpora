@@ -293,7 +293,12 @@ export class Scene {
 
   private drawShip(arena: Arena): void {
     const ctx = this.ctx
-    const aim = arena.aiming
+    // The hull, not the guns. `facing` eases toward `aiming` over about 55ms, so
+    // a thumb sliding round the right stick turns the ship rather than flicking
+    // it — a large part of what read as "moves around too wildly". The shots
+    // still leave along `aiming`, because a shooter whose bullets lag its stick
+    // lies about where it is pointed.
+    const aim = arena.facing
     const a = Math.atan2(aim.y, aim.x)
     ctx.save()
     ctx.translate(arena.ship.x, arena.ship.y)

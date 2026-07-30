@@ -363,7 +363,16 @@ test("reading the rules holds the world, and closing them lets it go", () => {
       assert.ok(counter.calls > 0, "the frame stopped being drawn behind the manual")
 
       // PLAY, and the same arena carries on being an arena.
+      //
+      // Both thumbs go down again, because that is what actually happens: the
+      // manual's PLAY button is a DOM control, so the child's thumbs came off the
+      // canvas to reach it, and opening the manual let the sticks go anyway (a
+      // stick still held behind a sheet is the bug the guard exists for). Without
+      // pressing again this test flew nothing at all and passed on the Brownian
+      // motion of a drifting resonator finding a stationary ship.
       play.listeners.get("click")?.[0]?.({})
+      down({ preventDefault() {}, pointerId: 1, pointerType: "touch", clientX: 225, clientY: 350 })
+      down({ preventDefault() {}, pointerId: 2, pointerType: "touch", clientX: 675, clientY: 350 })
       fly(8000, () => answered.length > 0)
       assert.ok(answered.length > 0, "the world never came back after the manual closed")
       handle.unmount()

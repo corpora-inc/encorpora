@@ -32,6 +32,7 @@ import type { Host } from "./contract.ts"
 import { Rng } from "./core/rng.ts"
 import { Arena, RESONATOR_R, SHIP_R, type ArenaEvent } from "./game/arena.ts"
 import { bestChain, recordChain } from "./game/best.ts"
+import { shapeStick, STICK_RANGE } from "./game/steer.ts"
 import { Scene } from "./render/scene.ts"
 import { BRASS_LIGHT, CELESTIAL, OXIDE } from "./render/palette.ts"
 import { Grid } from "./sim/grid.ts"
@@ -47,9 +48,6 @@ const MAX_STEP_MS = 120
 
 /** Grid density. Chosen so a tablet draws about 1,100 struts, not 10,000. */
 const GRID_CELL = 46
-
-/** How far a virtual stick has to travel to be at full deflection. */
-const STICK_RANGE = 64
 
 type Stick = { id: number; ox: number; oy: number; x: number; y: number } | null
 
@@ -311,6 +309,10 @@ export function mountLattice(
       if (res && Math.hypot(arena.ship.x - res.x, arena.ship.y - res.y) < RESONATOR_R + SHIP_R) {
         apply(arena.enter(now()))
       }
+      // A barren band leaves the arena without a question rather than without a
+      // future: it asks again a few seconds later, and this is the only place
+      // that clock is read. Inert whenever there is a resonator.
+      apply(arena.rearm(now()))
       grid.step(dt)
       scene.advance(dt)
     }
@@ -364,7 +366,11 @@ export function mountLattice(
     if (moveStick && moveStick.id === event.pointerId) {
       moveStick.x = p.x
       moveStick.y = p.y
-      arena.setMove((p.x - moveStick.ox) / STICK_RANGE, (p.y - moveStick.oy) / STICK_RANGE)
+      // Shaped, not divided: a dead zone under a resting thumb's tremor and a
+      // curve that leaves most of the stick's travel for the slow, accurate part.
+      // See `game/steer.ts`.
+      const shaped = shapeStick(p.x - moveStick.ox, p.y - moveStick.oy, STICK_RANGE)
+      arena.setMove(shaped.x, shaped.y)
       return
     }
     if (aimStick && aimStick.id === event.pointerId) {
