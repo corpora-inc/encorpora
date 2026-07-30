@@ -810,6 +810,19 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     return spend.length
   }
 
+  /**
+   * Charge one call to the window.
+   *
+   * Expired timestamps are dropped HERE and not only where the budget is read,
+   * because a game with a full pool reads it rarely and spends anyway: horde
+   * asks for a haptic per hit, and a window pruned only by the prefetch would
+   * hold every one of them for as long as the pack ran.
+   */
+  const charge = (): void => {
+    spent()
+    spend.push(now())
+  }
+
   /** Whether the prefetch may start one more `acquire` without going over. */
   const affordsPrefetch = (): boolean => spent() + ACQUIRE_MAX_CALLS <= PREFETCH_BUDGET
 
@@ -826,31 +839,31 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
     "nextItem" | "reveal" | "skip" | "answer" | "progress" | "haptic" | "transition"
   > = {
     nextItem: (ask) => {
-      spend.push(now())
+      charge()
       return client.nextItem(ask)
     },
     reveal: (itemId) => {
-      spend.push(now())
+      charge()
       return client.reveal(itemId)
     },
     skip: (itemId) => {
-      spend.push(now())
+      charge()
       return client.skip(itemId)
     },
     answer: (input) => {
-      spend.push(now())
+      charge()
       return client.answer(input)
     },
     progress: (fraction) => {
-      spend.push(now())
+      charge()
       return client.progress(fraction)
     },
     haptic: (cue) => {
-      spend.push(now())
+      charge()
       return client.haptic(cue)
     },
     transition: (kind, label) => {
-      spend.push(now())
+      charge()
       return client.transition(kind, label)
     },
   }
