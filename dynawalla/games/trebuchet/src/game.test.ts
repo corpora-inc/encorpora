@@ -169,38 +169,57 @@ function newGame(answers: number[], wave: number): ReturnType<typeof installDom>
 }
 
 /**
- * A host that behaves like the shipped one: the answers it serves depend on the
- * difficulty the game asks for, and the game cannot see the mapping.
+ * The shape of the shipped ladder, rung by rung.
  *
- * The numbers are the measured ladder. `ladder()` over the shipped 66 rungs, at
- * the difficulties `waveConfig` asks for, returns `dw.add.facts.subtract-within-ten`
- * (answers 0-9) at the bottom, two-digit answers in the middle, and
- * `dw.add.column.subtract-no-regroup` / `dw.mul.scale.times-power-of-ten`
- * (answers in the thousands and the millions) above it. Only the middle fits on a
- * 122-metre field.
+ * Not invented: this is the measured `ladder()` over the 66 active rungs, banded by
+ * the magnitude of the answers each returns. The two things it exists to preserve
+ * are the two that break a naive search:
  *
- * `lagPulls` models the other half of the real host: the question pool is refilled
- * ASYNCHRONOUSLY, so the first few `next()` calls after a difficulty change still
- * return the old rung. A game that retried inside one synchronous call would never
- * see the new questions at all.
+ *   - **Magnitude is NOT monotonic.** Division rungs return single-digit QUOTIENTS
+ *     and they sit ABOVE placeable multiplication-table rungs. Measured:
+ *     0.323 placeable (8..81), 0.338 quotients (0..5), 0.415 placeable (6..110),
+ *     0.508 quotients (2..12), 0.538 hundreds of thousands. A search that treats a
+ *     "too small" verdict as a floor excludes the placeable band and never returns.
+ *   - **Only a narrow middle fits on 122 metres.** Everything below is single-digit
+ *     facts; everything above is column arithmetic in the thousands and scaling in
+ *     the millions.
  */
-function ladderHost(lagPulls = 0, startDifficulty = 0.04): { host: Host; asks: number[] } {
+const RUNGS: Array<{ upto: number; lo: number; hi: number }> = [
+  { upto: 0.246, lo: 0, hi: 9 }, // add/sub facts within ten
+  { upto: 0.33, lo: 8, hi: 81 }, // tables — placeable
+  { upto: 0.354, lo: 0, hi: 5 }, // division facts — small, and ABOVE a placeable rung
+  { upto: 0.43, lo: 6, hi: 110 }, // tables — placeable
+  { upto: 0.523, lo: 2, hi: 12 }, // division facts — small again, higher still
+  { upto: 0.75, lo: 2000, hi: 5400 }, // column arithmetic
+  { upto: 1.01, lo: 1_000_000, hi: 9_000_000 }, // times a power of ten
+]
+
+/**
+ * A host that behaves like the shipped one.
+ *
+ * Faithful in the four ways that decide whether the search is correct:
+ *
+ *   - the answers depend on the rung, and the game cannot see the mapping;
+ *   - the ladder is quantised — a request lands on `round(d * 65)`, so many distinct
+ *     requests are the same rung, exactly as in `items.ts`;
+ *   - the difficulty reported back is the ORDINATE OF THE RUNG SERVED, not the
+ *     number that was asked for, which is what the app actually returns;
+ *   - `lagPulls` models the asynchronous pool: the first calls after a change still
+ *     return the old rung, so a game that retried inside one synchronous call would
+ *     never see the new questions.
+ */
+function ladderHost(
+  lagPulls = 0,
+  opts: { start?: number; rungs?: typeof RUNGS; nonInteger?: boolean } = {},
+): { host: Host; asks: number[]; served: number[] } {
+  const table = opts.rungs ?? RUNGS
   const asks: number[] = []
+  const served: number[] = []
+  const span = 65
   let n = 0
-  // The resting rung, which is near the bottom — so the very first questions a
-  // wave sees are the ones that do not fit, exactly as they do on the device.
-  let difficulty = startDifficulty
+  let difficulty = opts.start ?? 0.04
   let pending: number | null = null
   let lag = 0
-  const answerFor = (d: number): number => {
-    n++
-    // Below the field, on the field, then far above it — monotonic in magnitude,
-    // which is what makes the game's search converge.
-    if (d < 0.22) return n % 10
-    if (d < 0.58) return 14 + ((n * 7) % 100)
-    if (d < 0.75) return 2000 + ((n * 137) % 4000)
-    return 1_000_000 + n
-  }
   const host: Host & { setDifficulty?: (d: number) => void } = {
     next: (): Question => {
       if (pending !== null) {
@@ -210,14 +229,23 @@ function ladderHost(lagPulls = 0, startDifficulty = 0.04): { host: Host; asks: n
           pending = null
         }
       }
-      const a = answerFor(difficulty)
+      n++
+      // The app's own quantisation: a 0..1 request picks a whole rung.
+      const index = Math.max(0, Math.min(span, Math.round(difficulty * span)))
+      const ordinate = index / span
+      const band = table.find((b) => ordinate < b.upto) ?? table[table.length - 1]
+      const spread = band.hi - band.lo + 1
+      const a = band.lo + ((n * 7) % spread)
+      served.push(ordinate)
       return {
         id: `q${n}`,
         prompt: `? = ${a}`,
-        answer: String(a),
+        // A rung of fractions is a rung this game can never place, and it must not
+        // be able to stop the search either.
+        answer: opts.nonInteger ? `${String(a)}.5` : String(a),
         distractors: [String(a + 11), String(a + 23)],
         domain: 'add-sub',
-        difficulty,
+        difficulty: ordinate,
       }
     },
     report: () => undefined,
@@ -226,10 +254,14 @@ function ladderHost(lagPulls = 0, startDifficulty = 0.04): { host: Host; asks: n
     setDifficulty: (d: number) => {
       asks.push(d)
       pending = d
-      lag = lagPulls
+      // Only a big move restarts the wait. `game-host` flushes and refills its pool
+      // when a request moves by `FLUSH_BAND` (0.1) or more and otherwise just retargets
+      // it, so a search stepping by a fraction of a rung does NOT keep resetting the
+      // refill — and a test that assumed it did would demand the impossible.
+      if (Math.abs(d - difficulty) >= 0.1) lag = lagPulls
     },
   }
-  return { host, asks }
+  return { host, asks, served }
 }
 
 /* ------------------------------------------------------------------ tests */
@@ -284,7 +316,14 @@ test('the fire button is never lit over an empty rack', () => {
   // the moment is the easy part: what has to hold is that the button and the
   // machine never disagree, in any phase, on any wave.
   const dom = installDom()
-  const { host } = ladderHost()
+  // A ladder whose placeable band is nowhere near where the first search starts, so
+  // the game genuinely opens with an empty rack and has to go looking.
+  const { host } = ladderHost(0, {
+    rungs: [
+      { upto: 0.8, lo: 0, hi: 9 },
+      { upto: 1.01, lo: 20, hi: 90 },
+    ],
+  })
   const game = new TrebuchetGame(dom.el, host, 0xb01de)
   game.manualDrive()
 
@@ -295,7 +334,7 @@ test('the fire button is never lit over an empty rack', () => {
   assert.equal(game.fireArmed(), false, 'the fire button is lit over an empty rack')
 
   let armedFrames = 0
-  for (let i = 0; i < 900; i++) {
+  for (let i = 0; i < 3000; i++) {
     game.stepFrames(1)
     if (game.fireArmed()) {
       armedFrames++
@@ -326,8 +365,74 @@ test('the search for a placeable rung survives a pool that refills late', () => 
   )
   assert.notEqual(game.currentAnswer(), -1)
   assert.ok(asks.length > 1, 'the game never asked for a different rung')
+  const a = game.currentAnswer()
+  assert.ok(a >= 14 && a <= 118, `${a} does not fit on the field`)
+})
+
+test('a ladder whose difficulty does not track answer size is still searched', () => {
+  // The premise a bisection would need, and the one the real ladder breaks. Division
+  // rungs return single-digit quotients and sit ABOVE placeable multiplication
+  // rungs, so "the answers here are too small" is not evidence that the band is
+  // higher up. A search that treated it as a floor would raise its bound past the
+  // placeable band at 0.246-0.43 and search only the region where nothing fits —
+  // turning the fix for a blank screen into a blank screen.
+  //
+  // Started deliberately on the HIGHER of the two small-quotient rungs (0.5), which
+  // is the exact probe that would poison a bisection.
+  const dom = installDom()
+  const { host } = ladderHost(0, { start: 0.5 })
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  game.manualDrive()
+  game.jumpToWave(9) // difficulty 0.616 — above the band, below the millions
+
+  assert.ok(
+    runUntil(game, () => game.currentPhase === 'aim', 3000),
+    'a non-monotonic ladder was never searched successfully',
+  )
+  const a = game.currentAnswer()
+  assert.ok(a >= 14 && a <= 118, `${a} does not fit on the field`)
+})
+
+test('a rung that yields no verdict at all does not stop the search', () => {
+  // Every probe must move. A rung of non-integer answers is unplaceable and says
+  // nothing about direction — nothing is too big, nothing is too small — and a probe
+  // that drew no conclusion used to leave the difficulty untouched. The next probe
+  // then re-asked nothing, because a difficulty already stated is not re-stated, and
+  // re-read the identical stream: a search that has silently finished, with a dark
+  // button on an empty field. Standing still is the one outcome not allowed.
+  const dom = installDom()
+  const fractions = [{ upto: 1.01, lo: 20, hi: 90 }]
+  const { host, asks } = ladderHost(0, { rungs: fractions, nonInteger: true })
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  game.manualDrive()
+  for (let i = 0; i < 300; i++) game.stepFrames(1)
+
+  assert.equal(game.currentPhase, 'stocking', 'fractions cannot stand on the field')
+  // The point: it kept looking. A frozen search asks once and never again.
+  assert.ok(asks.length > 8, `the search stopped after ${asks.length} asks`)
+  const unique = new Set(asks)
+  assert.ok(unique.size > 8, `the search re-asked the same rung: ${unique.size} distinct`)
+})
+
+test('the search walks the whole ladder rather than excluding parts of it', () => {
+  // A band that exists only at the very top, reached from the very bottom. Nothing
+  // may be ruled out on the way: the walk steps by less than one rung and wraps, so
+  // every rung is visited whatever shape the ladder has.
+  const dom = installDom()
+  const topOnly = [
+    { upto: 0.9, lo: 2, hi: 6 },
+    { upto: 1.01, lo: 30, hi: 90 },
+  ]
+  const { host } = ladderHost(0, { start: 0.0, rungs: topOnly })
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  game.manualDrive()
+
+  assert.ok(
+    runUntil(game, () => game.currentPhase === 'aim', 6000),
+    'a band at the top of the ladder was never reached from the bottom',
+  )
   const found = game.stockedDifficulty()
-  assert.ok(found !== null && found >= 0.22 && found < 0.58, `settled on an unplaceable rung ${found}`)
+  assert.ok(found !== null && found >= 0.9, `settled at ${found}, which is not where the band is`)
 })
 
 test('a wave that cannot be stocked at all says so out loud', () => {
@@ -359,7 +464,7 @@ test('a wave that cannot be stocked at all says so out loud', () => {
   try {
     const game = new TrebuchetGame(dom.el, host, 0xb01de)
     game.manualDrive()
-    for (let i = 0; i < 700; i++) game.stepFrames(1) // ~11 s of frames
+    for (let i = 0; i < 1300; i++) game.stepFrames(1) // ~22 s: past a full pass of the ladder
     assert.equal(game.currentPhase, 'stocking')
     assert.equal(game.fireArmed(), false, 'the button is lit on a field with no keeps')
   } finally {
@@ -375,44 +480,62 @@ test('a rung far above the field is searched downward, not only upward', () => {
   // returns millions, and neither can put a keep on 122 metres of field. So the
   // same blank screen and dead button waited for anyone who got that far. The
   // search has to move both ways.
+  // A ladder whose only placeable rungs are BELOW where the first search starts, and
+  // where everything above them is in the thousands. The opening probe therefore
+  // reads "too big" and the sweep has to go down to find the field.
   const dom = installDom()
-  const { host } = ladderHost()
+  const { host } = ladderHost(0, {
+    rungs: [
+      { upto: 0.14, lo: 20, hi: 90 },
+      { upto: 1.01, lo: 2000, hi: 9000 },
+    ],
+  })
   const game = new TrebuchetGame(dom.el, host, 0xb01de)
   game.manualDrive()
-  // Jumped before a single frame runs, so nothing has been found yet and the wave's
-  // own difficulty — 0.832, the millions — is genuinely where the search starts.
-  game.jumpToWave(12)
-  assert.equal(game.stockedDifficulty(), null, 'a band was already known; nothing is being searched')
-  assert.equal(game.currentPhase, 'stocking', 'a wave in the millions claimed to be playable')
+  const opening: string = game.currentPhase
+  assert.equal(opening, 'stocking', 'a rung in the thousands claimed to be playable')
 
   assert.ok(
-    runUntil(game, () => game.currentPhase === 'aim', 2400),
+    runUntil(game, () => game.currentPhase === 'aim', 3000),
     'a wave above the field never came back down to it',
   )
   const answer = game.currentAnswer()
   assert.notEqual(answer, -1, 'there is no question on the screen')
   assert.ok(answer >= 14 && answer <= 118, `${answer} does not fit on the field`)
   const found = game.stockedDifficulty()
-  assert.ok(found !== null && found < 0.832, `the search never came down from 0.832 (settled ${found})`)
+  assert.ok(found !== null && found < 0.14, `the search never came down to the band (settled ${found})`)
 })
 
-test('a wave configured above the field does not drag the game back off it', () => {
-  // Once a band is known it is kept. `waveConfig` keeps raising the arithmetic it
-  // asks for — 0.83 by wave 12 — and honouring that would walk the stream straight
-  // back out of the window the dial can express. The wave's escalation is wind, the
-  // wall, the ram and the keeps; the arithmetic stops at the width of the field.
+test('the arithmetic creeps up with the waves and never off the field', () => {
+  // `waveConfig` keeps raising the difficulty it asks for — 0.83 by wave 12 — and
+  // honouring that walks the stream straight out of the window the dial can express,
+  // which is how waves 6 upward went blank. But pinning it forever would mean a
+  // twenty-wave run of the same two-digit sums.
+  //
+  // So each wave asks for one notch above the rung that last worked, and a notch
+  // that does not fit is not adopted. The result has to be both: it moves, and it
+  // never leaves the field.
   const dom = installDom()
   const { host } = ladderHost()
   const game = new TrebuchetGame(dom.el, host, 0xb01de)
   game.manualDrive()
   assert.ok(runUntil(game, () => game.currentPhase === 'aim'), 'wave 1 never stocked')
-  const band = game.stockedDifficulty()
+  const first = game.stockedDifficulty()
+  assert.ok(first !== null)
 
-  game.jumpToWave(12)
-  assert.ok(runUntil(game, () => game.currentPhase === 'aim', 2400), 'wave 12 never stocked')
-  assert.equal(game.stockedDifficulty(), band, 'the band found at wave 1 was thrown away')
-  const answer = game.currentAnswer()
-  assert.ok(answer >= 14 && answer <= 118, `${answer} does not fit on the field`)
+  const bands: number[] = []
+  for (let w = 2; w <= 12; w++) {
+    game.jumpToWave(w)
+    assert.ok(runUntil(game, () => game.currentPhase === 'aim', 3000), `wave ${w} never stocked`)
+    const a = game.currentAnswer()
+    assert.ok(a >= 14 && a <= 118, `wave ${w} put ${a} on a 122-metre field`)
+    const band = game.stockedDifficulty()
+    assert.ok(band !== null)
+    bands.push(band)
+  }
+  assert.ok(bands[bands.length - 1] > first, 'the arithmetic never got any harder across 12 waves')
+  // ...and it did not run away up the ladder either: every wave stayed placeable,
+  // which is asserted above, wave by wave.
 })
 
 test('a bullseye stays a bullseye when the dial is nudged mid-flight', () => {

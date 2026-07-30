@@ -121,6 +121,37 @@ const DIAL_MAX = FIELD_MAX
 const PLACEABLE_LO = DIAL_MIN + 6
 const PLACEABLE_HI = DIAL_MAX - 4
 
+/**
+ * One step of the search for a placeable rung, as a fraction of the ladder.
+ *
+ * Smaller than one rung on the shipped 66-rung ladder (1/65 = 0.0154), so the walk
+ * cannot stride over a narrow band of placeable rungs, and it wraps — so a full
+ * pass visits all of them.
+ */
+const PROBE_STEP = 0.012
+/**
+ * How much harder each new wave asks for than the rung that last worked.
+ *
+ * About one rung. This is the game's arithmetic escalation, and it is deliberately
+ * this small: the field is 122 metres, so the questions cannot climb into the
+ * thousands however long the child plays. Wind, the wall, the ram, the extra keeps
+ * and the loft lever are where a later wave gets harder.
+ */
+const ESCALATE = 0.016
+/** Probes before the search is called stalled and says so. A full pass is ~84. */
+const PROBE_LIMIT = 100
+/**
+ * Where the FIRST search starts, before anything is known.
+ *
+ * A guess, and only a guess — correctness does not depend on it, because the sweep
+ * visits every rung either way. But `waveConfig(1).difficulty` is 0.04, the very
+ * bottom of the ladder, which is the worst possible opening bid for a game that
+ * needs two-digit answers: it cost 13 probes and 140 curriculum items to walk up out
+ * of the single-digit facts. On the shipped ladder the two-digit region is around
+ * 0.20-0.38, so starting in the middle of it usually stocks on the first probe.
+ */
+const PROBE_START = 0.28
+
 const PAL: Palette = {
   dust: C.dust,
   debris: [C.stone, C.stoneLit, '#0d1222'],
@@ -194,20 +225,22 @@ export class TrebuchetGame {
   /** The distractor pools that came with the rack, kept for the tower layout. */
   private pools: number[][] = []
   /**
-   * The difficulty last known to return answers this field can hold, and the
-   * bisection state used to find it. `stockD` survives the wave so the search
-   * runs once a run; the bounds are re-opened per wave.
+   * The difficulty last known to return answers this field can hold. It survives
+   * the wave, so the search runs once a run and every later wave starts from a rung
+   * that is known to work.
    */
   private stockD: number | null = null
+  /** The rung being probed now. */
   private probeD = 0
-  private probeLo = 0
-  private probeHi = 1
   /** The last difficulty actually stated to the host, so it is not re-stated. */
   private askedD: number | null = null
+  /** Probes spent on this wave. */
+  private probes = 0
+  /** Which way this wave's search is sweeping: -1, +1, or 0 for not yet decided. */
+  private probeDir = 0
   /** Seconds waited in 'stocking' since the last probe. */
   private stockT = 0
-  /** Seconds this wave has spent unable to stock, and whether that was said. */
-  private stockStall = 0
+  /** Whether the stall was already reported for this wave. */
   private toldAboutStocking = false
 
   // shot
@@ -396,18 +429,37 @@ export class TrebuchetGame {
     // when it will not, the wave waits in 'stocking' and tries again on a later
     // frame, because the pool behind `host.next()` refills asynchronously and a
     // synchronous retry can only ever re-read the same drained pool.
+    //
+    // The previous wave is struck FIRST, before the search begins. A stocking gap
+    // between waves would otherwise leave the last wave's craters, ghosts, wall and
+    // ram sitting on a field with no keeps on it — the old wave's wreckage as the
+    // backdrop to the new wave's empty plaque.
     this.rack = []
     this.activeIdx = 0
     this.towers = []
+    this.craters = []
+    this.ghosts = []
+    this.wall = null
+    this.ram = null
+    this.parts.clear()
+    this.rings.clear()
+    this.hitsThisWave = 0
+    this.clearT = -1
     this.phase = 'stocking'
     this.phaseT = 0
     this.stockT = 0
-    this.stockStall = 0
-    this.probeD = this.stockD ?? cfg.difficulty
-    // A fresh bisection per wave, but seeded from the band already found, so the
-    // search happens once a run and not once a wave.
-    this.probeLo = 0
-    this.probeHi = 1
+    this.toldAboutStocking = false
+    this.probes = 0
+    this.probeDir = 0
+    // The loft lever appears mid-run and it moves mute, so the controls belong to
+    // the new wave from the first frame of it, stocked or not.
+    this.hud = hudLayout(this.w, this.h, this.hud.area, cfg.loft)
+    this.btns = this.hud.buttons
+    // Seeded from the band already found, nudged one notch harder: the arithmetic
+    // creeps upward as the child keeps clearing waves, and it can only ever creep
+    // onto a rung whose answers still fit, because a probe that does not fit is
+    // not adopted. `stockD` is the floor it falls back to.
+    this.probeD = this.stockD === null ? PROBE_START : Math.min(1, this.stockD + ESCALATE)
     if (!this.stock()) return
     this.layOutWave()
   }
@@ -415,19 +467,47 @@ export class TrebuchetGame {
   /**
    * Ask for a rung, and say whether the answers can stand on the field.
    *
-   * Everything about the request is a request: `setDifficulty` is a 0..1 position
-   * on a ladder whose arithmetic the pack cannot see, so the only way to find out
-   * whether a rung's answers fit in `PLACEABLE_LO..PLACEABLE_HI` is to ask and
-   * look. When they do not, the answers that came back say which way to move —
-   * all too small means ask harder, all too large means ask easier — and answer
-   * magnitude rises with the ladder, so a bisection converges on the band in a
-   * handful of probes instead of sweeping 66 rungs blind.
+   * `setDifficulty` is a 0..1 position on a ladder whose arithmetic the pack cannot
+   * see, so the only way to find out whether a rung's answers fit in
+   * `PLACEABLE_LO..PLACEABLE_HI` is to ask and look.
    *
-   * The difficulty that worked is remembered in `stockD` for every later wave.
-   * The arithmetic therefore stops climbing at the width of the field, which is
-   * honest: a 122-metre field cannot pose a question whose answer is 5400. The
-   * wave's own escalation — wind, the wall, the ram, more keeps, less ammunition,
-   * the loft lever — is untouched and is where TREBUCHET gets harder.
+   * **This walks; it does not bisect, and the difference is the whole correctness
+   * argument.** Bisecting assumes answer magnitude rises with the ladder. It does
+   * not. Measured over all 66 shipped rungs:
+   *
+   *     0.323  PLACEABLE  8..81      dw.mul.facts.tables-to-twelve L1
+   *     0.338      -       0..5      dw.div.facts.division-facts L0
+   *     0.415  PLACEABLE  6..110     dw.mul.facts.tables-to-twelve L2
+   *     0.508      -       2..12     dw.div.facts.division-facts L2
+   *     0.538      -       311710..989670000
+   *
+   * Division rungs return single-digit QUOTIENTS and they sit above placeable
+   * multiplication rungs. A bisection that read "too small" at 0.508 would raise
+   * its floor above the entire placeable band at 0.246-0.415 and never come back —
+   * so the fix for a blank screen would have been a blank screen.
+   *
+   * So the answers choose a DIRECTION, once, and after that the walk sweeps that
+   * way in steps smaller than one rung, wrapping at the ends. Two properties come
+   * out of that, and both are needed:
+   *
+   *   - **It cannot oscillate.** Steering on every verdict looks smarter and is not.
+   *     Walking down from the millions reaches the small-quotient rungs at 0.43-0.523,
+   *     reads "too small", turns around, reads "too big", and paces across that one
+   *     boundary forever with the placeable band a few rungs below it. Fixing the
+   *     direction for the wave is what makes the band reachable.
+   *   - **It cannot exclude anything.** A monotonic sweep with wrapping visits every
+   *     rung on the ladder within `1 / PROBE_STEP` probes, whatever shape the ladder
+   *     has, so no verdict can put the band out of reach.
+   *
+   * And it always steps, on every outcome — a rung of non-integer answers, of
+   * unparseable answers, of no answers at all. A probe that changed nothing would
+   * re-ask nothing (see `askedD`) and re-read the same stream forever, which is a
+   * search that has silently stopped: the same dark button on the same empty field
+   * this whole change exists to remove.
+   *
+   * Success does not depend on the direction being right. A wave is stocked when a
+   * pull actually YIELDS placeable answers, so a wrong or stale verdict costs probes
+   * and can never cost correctness.
    */
   private stock(): boolean {
     const cfg = this.cfg
@@ -439,16 +519,17 @@ export class TrebuchetGame {
       this.askedD = this.probeD
       anyHost.setDifficulty?.(this.probeD)
     }
+    this.probes++
 
-    // A small draw, not a drained pool: this may be one probe of several, and
-    // every question pulled is a curriculum item spent.
+    // A small draw, not a drained pool. Every question pulled is a curriculum item
+    // the host records as served, and this may be one probe of many.
     const { boulders, pools, seen } = pullQuestions(
       () => this.host.next(),
       cfg.ammo,
       MIN_GAP,
       PLACEABLE_LO,
       PLACEABLE_HI,
-      32,
+      cfg.ammo + 8,
     )
     if (boulders.length > 0) {
       this.rack = boulders
@@ -457,22 +538,20 @@ export class TrebuchetGame {
       return true
     }
 
-    // Nothing placeable. Steer — but only on questions that came from the rung
-    // that was asked for. Anything else is the pool's previous contents, and
-    // reading it would move the search on evidence about a rung already left.
-    const fresh = seen.filter((s) => Math.abs(s.difficulty - this.probeD) <= 0.08)
-    if (fresh.length === 0) return false
-
-    const tooSmall = fresh.filter((s) => s.answer < PLACEABLE_LO).length
-    const tooBig = fresh.filter((s) => s.answer > PLACEABLE_HI).length
-    if (tooSmall === 0 && tooBig === 0) return false
-    if (tooSmall >= tooBig) {
-      this.probeLo = Math.max(this.probeLo, this.probeD)
-      this.probeD = Math.min(1, (this.probeD + this.probeHi) / 2)
-    } else {
-      this.probeHi = Math.min(this.probeHi, this.probeD)
-      this.probeD = Math.max(0, (this.probeLo + this.probeD) / 2)
+    // The direction is chosen once per wave, from the first probe that had an
+    // opinion, and then held. A rung of fractions or of nothing at all has no
+    // opinion and leaves the direction to be decided later — but still steps.
+    if (this.probeDir === 0) {
+      const tooBig = seen.filter((s) => s.answer > PLACEABLE_HI).length
+      const tooSmall = seen.filter((s) => s.answer < PLACEABLE_LO).length
+      if (tooBig > tooSmall) this.probeDir = -1
+      else if (tooSmall > 0) this.probeDir = 1
     }
+    // Wrapping, so the sweep cannot park itself against 0 or 1.
+    let next = this.probeD + (this.probeDir === 0 ? 1 : this.probeDir) * PROBE_STEP
+    if (next > 1) next -= 1
+    if (next < 0) next += 1
+    this.probeD = next
     return false
   }
 
@@ -1129,25 +1208,27 @@ export class TrebuchetGame {
 
     switch (this.phase) {
       case 'stocking': {
-        // Probe about six times a second. Each attempt asks for a different rung
-        // and gives the pool behind `host.next()` a frame or two to refill, which
-        // is the whole reason this is a phase and not a loop.
+        // Five probes a second. Each asks for a different rung and gives the pool
+        // behind `host.next()` a frame or two to refill, which is the whole reason
+        // this is a phase and not a loop. Past a full pass of the ladder the rate
+        // drops hard: the questions are real curriculum items, and a pack that
+        // cannot be served must not spend the host's whole budget saying so.
+        const stalled = this.probes >= PROBE_LIMIT
         this.stockT += rawDt
-        if (this.stockT >= 0.16) {
+        if (this.stockT >= (stalled ? 2 : 0.12)) {
           this.stockT = 0
           if (this.stock()) this.layOutWave()
         }
-        // Said out loud, once. A wave that cannot be stocked shows a field with no
-        // keeps and no equation, which is precisely the screen that was reported
-        // as "I can't see the problem and I can't fire" — so if it ever comes back
-        // it says so in the console instead of looking like a game that is merely
-        // slow. Five seconds is many times the handful of probes a search needs.
-        this.stockStall += rawDt
-        if (this.stockStall > 5 && !this.toldAboutStocking) {
+        // Said out loud, once per wave, and only if it is still true. A wave that
+        // cannot be stocked shows a field with no keeps and no equation, which is
+        // precisely the screen reported as "I can't see the problem and I can't
+        // fire" — so if it ever comes back it says so instead of passing for a game
+        // that is merely slow.
+        if (stalled && !this.toldAboutStocking && this.phase === 'stocking') {
           this.toldAboutStocking = true
           console.error(
-            `[trebuchet] wave ${String(this.wave)} cannot be stocked: no rung between ` +
-              `${String(this.probeLo)} and ${String(this.probeHi)} returns an answer in ` +
+            `[trebuchet] wave ${String(this.wave)} cannot be stocked: ${String(this.probes)} ` +
+              `probes across the whole difficulty range found no rung returning an answer in ` +
               `${String(PLACEABLE_LO)}..${String(PLACEABLE_HI)}, which is the only window a ` +
               `${String(FIELD_MAX)}-metre field can stand a keep on. The child is looking at an ` +
               `empty field.`,
