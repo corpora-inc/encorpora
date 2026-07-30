@@ -497,6 +497,9 @@ test("the founder's rule: a pack asking for the top while the child sustains 60%
   )
   // Said again as a number a person can check against the ladder: asking for the
   // hardest rung in the curriculum, three hundred times, never got half way to it.
+  // Guarded on the ladder's size, because this form of the claim is the only one
+  // in this test that a shorter curriculum could falsify on correct code.
+  assert.ok(span >= 44, `a ${String(span)}-rung ladder is too short for the claim below`)
   assert.ok(
     2 * highest < span,
     `the pack asked for rung ${String(span)} on every one of 300 questions and reached rung ` +
@@ -607,11 +610,24 @@ test("the banked fraction survives a pack that names a difficulty on every quest
   // Nothing is written to `progress` by a request now, so the fraction and the
   // rung both survive; this holds the property from the outside, where a future
   // author who reintroduces a write can see it fail.
+  //
+  // **The child is walked off rung 0 first, and the request names a different
+  // rung, and both of those are load-bearing.** An earlier draft of this test ran
+  // the whole thing at rung 0 asking for rung 0, and it passed with the fix
+  // reverted — at an anchor of 0 the old `progress = index + (progress −
+  // Math.floor(progress))` is the identity, so it exercised the one arrangement
+  // in which the deleted write does nothing. A test that passes against the code
+  // it was written to reject is worse than no test, because it is counted.
   const rungs = ladder()
   const span = rungs.length - 1
+  assert.ok(span > 8)
   const service = createItemService({ profileId: "p-slow", record: noRecord, rungs })
+  climbTo(service, 5)
+  const from = service.position()
   let answers = 0
-  while (service.position() < 1 && answers < 200) {
+  while (service.position() <= from && answers < 200) {
+    // A rung below the child, every question, which is what a game whose own
+    // ladder is pinned lower than the host's does all session.
     const item = service.next({ packId: "dynawalla.truedraw", difficulty: 0 })
     assert.ok(item)
     answers += 1
@@ -625,9 +641,9 @@ test("the banked fraction survives a pack that names a difficulty on every quest
     })
   }
   assert.ok(
-    service.position() >= 1,
-    `a slow-and-correct child with a pack naming a difficulty every question never left rung 0 ` +
-      `in ${String(answers)} answers`,
+    service.position() > from,
+    `a slow-and-correct child with a pack naming a difficulty every question never got off rung ` +
+      `${String(from)} in ${String(answers)} answers`,
   )
   // And it was banked rather than bought: more than one answer went into it, so
   // what moved the child was the accumulated fraction and not one whole stride.
@@ -635,7 +651,45 @@ test("the banked fraction survives a pack that names a difficulty on every quest
     answers > 1,
     "the first answer in the slow tail was worth a whole rung, so this proves nothing about the fraction",
   )
-  assert.ok(span > 1)
+})
+
+test("a ceiling below the child still pins the ladder, which is the one way a pack still drives it", () => {
+  // The boundary of the clamp, asserted so that nobody reads the tests above as
+  // saying more than they do. `maxDifficulty` is not a hint and is not banded: it
+  // is a pack declaring what it can physically draw, and a pack whose ceiling
+  // sits below the child's rung both gets served at its ceiling *and* pulls the
+  // host's ladder down to it — exactly as it did before the band existed, and
+  // deliberately, because a position standing above content the pack can never
+  // test the child on is a fiction, and because handing a game a rung it cannot
+  // render is how PR 694 happened.
+  //
+  // The cost is real and is worth stating plainly: a pack that pins its ceiling
+  // to its own request has opted out of the clamp entirely. `counterweight` does
+  // exactly that (`games/counterweight/src/game/ladder.ts`, `difficulty: rung,
+  // maxDifficulty: rung`), and `balance`, `horde`, `merge-idle`, `polarity`,
+  // `gavel` and `lattice` all carry a standing ceiling that dilutes it. Widening
+  // what those games can draw is pack work; it cannot be done from here without
+  // serving a game a question it cannot put on the screen.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-ceiling", record: noRecord, rungs })
+  climbTo(service, 20)
+  assert.ok(service.position() >= 20)
+
+  const pinned = 3
+  const item = service.next({
+    packId: "dynawalla.counterweight",
+    difficulty: pinned / span,
+    maxDifficulty: pinned / span,
+  })
+  assert.ok(item)
+  assert.equal(Math.round((item.difficulty ?? -1) * span), pinned, "the ceiling was not honoured")
+  assert.equal(
+    service.position(),
+    pinned,
+    "a ceiling under the child's rung no longer pins the ladder — that is a change to what " +
+      "`maxDifficulty` means, not to what `difficulty` means",
+  )
 })
 
 test("every rung on the ladder draws a question with numbers in it", () => {

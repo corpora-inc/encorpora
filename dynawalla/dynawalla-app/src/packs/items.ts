@@ -663,6 +663,18 @@ export const PACE_FLOOR = 0.1
  * The ceiling is not this. `maxDifficulty` is a *capability* — "I cannot draw a
  * question harder than this" — and it still binds absolutely, below the band and
  * above it, because handing a pack a rung it cannot render is PR 694 again.
+ *
+ * **Which leaves one way out, and it should be said rather than implied.** A
+ * pack that pins its ceiling *to* its request has opted out of the band: it is
+ * served at its ceiling and it pulls the ladder down to it, exactly as it did
+ * before. `counterweight` does this on purpose (`difficulty: rung,
+ * maxDifficulty: rung`), and `balance`, `horde`, `merge-idle`, `polarity`,
+ * `gavel` and `lattice` carry standing ceilings that dilute it. So this constant
+ * makes the founder's rule govern the `difficulty` channel across the fleet; it
+ * does not make it govern a game that has declared it can only draw one rung.
+ * That is pack work — widen what those games can render — and it cannot be done
+ * from here without serving a game a question it cannot put on the screen.
+ * `items.test.ts` pins the boundary so it is not mistaken for coverage.
  */
 export const HINT_BAND = 1
 
@@ -1508,8 +1520,10 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       // A difficulty is the same kind of request, one rung lower down — and it
       // is a request. It is honoured within `HINT_BAND` rungs of where the
       // host's own evidence stands and no further, which is what makes the
-      // founder's 85/95 rule reach the seventeen packs that drive difficulty
-      // off their own game state. See `HINT_BAND` for why one rung.
+      // founder's 85/95 rule reach the seventeen packs that drive difficulty off
+      // their own game state — every one of them except where a pack has also
+      // declared a ceiling it cannot draw above. See `HINT_BAND` for why one
+      // rung, and for the ceiling's way out of it.
       const span = Math.max(0, rungs.length - 1)
       // **The anchor**, read once and read here: the rung `judge` left the child
       // on, before a single thing the pack asked for has been looked at.
