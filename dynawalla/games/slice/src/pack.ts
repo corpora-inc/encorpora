@@ -1,4 +1,4 @@
-// THE SPLIT, as a Dynawalla pack.
+// MATH NINJA, as a Dynawalla pack.
 //
 // The seam and nothing else. `mount` is handed the real host in place of the
 // stub, because the adapter presents the same synchronous surface `Host` in
@@ -54,5 +54,5 @@ async function start(el: HTMLElement): Promise<void> {
 
 void start(root).catch((error: unknown) => {
   console.error("[slice] could not start", error)
-  renderNoHost(root, "THE SPLIT")
+  renderNoHost(root, "MATH NINJA")
 })

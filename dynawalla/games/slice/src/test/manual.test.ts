@@ -1,10 +1,9 @@
 // The market stops while the rules are up.
 //
 // "I can hear counterweight playing in the background while I'm reading the
-// instructions ... stressing me out even more." THE SPLIT had the same defect
-// and worse than most: the answering window IS the lanterns' fall, so a child
-// who opened the manual *because they were stuck* watched the question they were
-// stuck on expire behind the scrim, and a bomb could take a lamp while they read
+// instructions ... stressing me out even more." MATH NINJA had the same defect
+// and worse than most: a child who opened the manual *because they were stuck*
+// watched bombs arrive behind the scrim and could lose a lamp while reading
 // about bombs.
 //
 // `wiring.test.ts` reads `mount.ts` as text and says so; this file does not. It
@@ -23,8 +22,8 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import {
+  B_BOMB,
   B_MOTE,
-  B_SIGIL,
   begin,
   closeManual,
   dbg,
@@ -32,6 +31,7 @@ import {
   snapshot,
   swipe,
   type Report,
+  type Surface,
   type Target,
 } from "./harness.ts"
 
@@ -63,7 +63,7 @@ test("the manual does not serve the child a question they never saw", () => {
     const before = nextCount()
     openManual(s)
     for (let i = 0; i < 11_250; i++) s.step(16)
-    assert.equal(nextCount(), before, "the director drew questions from the host behind the sheet")
+    assert.equal(nextCount(), before, "the game drew questions from the host behind the sheet")
   } finally {
     handle.unmount()
     restore()
@@ -113,53 +113,57 @@ test("closing the manual does not hand the loop one enormous frame", () => {
   }
 })
 
-test("THE READ IS NOT BILLED: a question survives the manual, and costs nothing", () => {
-  // The wall-clock half of the fix. `liveQAt` is a `performance.now()` mark and
-  // the answering window is a countdown; a manual left up for three minutes must
-  // not expire the question, and the latency handed to the curriculum must be
-  // the child's thinking, not their reading.
+/** Play until a bomb is in reach, cut it, and open the gate. */
+function openTheGate(s: Surface): boolean {
+  dbg().setIntensity(0.85)
+  s.step(16)
+  for (let i = 0; i < 20000; i++) {
+    const b = dbg()
+      .targets()
+      .find((t) => t.kind === B_BOMB && t.y > 80 && t.y < 900)
+    if (b) {
+      swipe(s, b.x, b.y)
+      s.step(16)
+      if (String(dbg().stats().gate) !== "") return true
+    }
+    s.step(16)
+  }
+  return false
+}
+
+test("THE READ IS NOT BILLED: the gate survives the manual, and costs nothing", () => {
+  // The wall-clock half of the fix. The gate has no timer, so nothing can expire
+  // behind the sheet — but the LATENCY handed to the curriculum is a
+  // `performance.now()` difference, and three minutes of reading the rules must
+  // not be billed to the child as three minutes of thinking.
   const reports: Report[] = []
   const { s, handle, restore } = begin({ seed: 0x5161, onReport: (r) => reports.push(r) })
   try {
-    let sliced = false
-    for (let i = 0; i < 4000 && !sliced; i++) {
-      s.step(16)
-      const sigil = dbg()
-        .targets()
-        .find((t) => t.kind === B_SIGIL)
-      if (sigil) {
-        swipe(s, sigil.x, sigil.y)
-        s.step(16)
-        sliced = dbg().targets().some((t) => t.kind === B_MOTE)
-      }
-    }
-    assert.ok(sliced, "never managed to open a sigil, so this test proved nothing")
-
-    // Let the read-lock lapse so the candidates are cuttable.
+    assert.ok(openTheGate(s), "never met a bomb, so this test proved nothing")
     for (let i = 0; i < 60; i++) s.step(16)
-    const liveBefore = String(dbg().stats().liveQ)
-    assert.ok(liveBefore.length > 0, "no question was live after the sigil opened")
+    const gateBefore = String(dbg().stats().gate)
+    assert.ok(gateBefore.length > 0, "no question was live after the bomb")
     const motesBefore = dbg().targets().filter((t) => t.kind === B_MOTE).length
 
     openManual(s)
     for (let i = 0; i < 11_250; i++) s.step(16)
     closeManual(s)
 
-    assert.equal(String(dbg().stats().liveQ), liveBefore, "the question expired behind the manual")
+    assert.equal(String(dbg().stats().gate), gateBefore, "the gate changed behind the manual")
     assert.equal(
       dbg().targets().filter((t) => t.kind === B_MOTE).length,
       motesBefore,
-      "candidates went away while the child was reading",
+      "the lanterns went away while the child was reading",
     )
 
     const mote = dbg()
       .targets()
       .find((t) => t.kind === B_MOTE)
-    assert.ok(mote, "the candidates vanished across the pause")
+    assert.ok(mote, "the lanterns vanished across the pause")
     const n = reports.length
     swipe(s, mote.x, mote.y)
     s.step(16)
-    assert.equal(reports.length, n + 1, "cutting a candidate after the manual reported nothing")
+    assert.equal(reports.length, n + 1, "cutting a lantern after the manual reported nothing")
     const r = reports[reports.length - 1] as Report
     assert.ok(
       r.ms < 60_000,
@@ -171,28 +175,17 @@ test("THE READ IS NOT BILLED: a question survives the manual, and costs nothing"
   }
 })
 
-test("the read-lock survives the manual — a candidate is not cuttable on the way back", () => {
-  // `cuttableAt` is the other wall-clock mark, and it is the one the manual
-  // says out loud: "You cannot cut them straight away. You get a moment to read
-  // them first." Unshifted, three minutes of reading burns the lock, and the
-  // stroke a child makes as they close the sheet answers a question they have
-  // not looked at yet.
+test("the read-lock survives the manual — a lantern is not cuttable on the way back", () => {
+  // `cuttableAt` is a wall-clock mark and it is the one the manual says out loud:
+  // "you get a moment to read them first". Unshifted, three minutes of reading
+  // burns the lock, and the stroke a child makes as they close the sheet answers
+  // a question they have not looked at yet.
   const reports: Report[] = []
   const { s, handle, restore } = begin({ seed: 0x5161, onReport: (r) => reports.push(r) })
   try {
-    let motes: Target[] = []
-    for (let i = 0; i < 4000 && motes.length === 0; i++) {
-      s.step(16)
-      const sigil = dbg()
-        .targets()
-        .find((t) => t.kind === B_SIGIL)
-      if (sigil) {
-        swipe(s, sigil.x, sigil.y)
-        s.step(16)
-        motes = dbg().targets().filter((t) => t.kind === B_MOTE)
-      }
-    }
-    assert.ok(motes.length > 0, "never managed to open a sigil, so this test proved nothing")
+    assert.ok(openTheGate(s), "never met a bomb, so this test proved nothing")
+    let motes: Target[] = dbg().targets().filter((t) => t.kind === B_MOTE)
+    assert.ok(motes.length > 0, "the gate hung no lanterns")
 
     // Straight into the manual, inside the 420ms lock.
     openManual(s)
@@ -203,20 +196,21 @@ test("the read-lock survives the manual — a candidate is not cuttable on the w
     const mote = dbg()
       .targets()
       .find((t) => t.kind === B_MOTE)
-    assert.ok(mote, "the candidates vanished across the pause")
+    assert.ok(mote, "the lanterns vanished across the pause")
     swipe(s, mote.x, mote.y)
     s.step(16)
-    assert.equal(reports.length, n, "the read-lock was spent on the manual — the first stroke back answered")
+    assert.equal(reports.length, n, "the read-lock was spent on the manual — the first stroke answered")
 
     // And the lock does still lapse, on the game's own time.
     for (let i = 0; i < 60; i++) s.step(16)
     const m2 = dbg()
       .targets()
       .find((t) => t.kind === B_MOTE)
-    assert.ok(m2, "the candidates fell away before the lock lapsed")
+    assert.ok(m2, "the lanterns fell away before the lock lapsed")
     swipe(s, m2.x, m2.y)
     s.step(16)
-    assert.equal(reports.length, n + 1, "the lock never lapsed — the candidates are permanently uncuttable")
+    assert.equal(reports.length, n + 1, "the lock never lapsed — the lanterns are permanently uncuttable")
+    motes = []
   } finally {
     handle.unmount()
     restore()

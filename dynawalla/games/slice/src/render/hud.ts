@@ -1,7 +1,7 @@
 // WHERE THE READOUTS GO.
 //
-// THE SPLIT draws its whole HUD on the canvas — the score, the three lamps, the
-// chain and favour lines, the question banner — and a canvas cannot read
+// MATH NINJA draws its whole HUD on the canvas — the score, the three lamps, the
+// stream and favour lines, the order plate — and a canvas cannot read
 // `env(safe-area-inset-*)`. The document declares `viewport-fit=cover`, which is
 // not a neutral setting: it opts this game *into* the notch, the home indicator
 // and the rounded corners. So `fillText` at `y = 12` landed under the notch, and
@@ -72,11 +72,11 @@ export type HudLayout = {
   readonly lampR: number
   /** Centre of a lantern; the wire above it starts at `top`. */
   readonly lampY: number
-  /** Top of the relight ticks. */
+  /** The bottom of the lamp block, where its wires and glass end. */
   readonly tickY: number
-  /** The three lanterns and the ticks under them. */
+  /** The three lanterns and the air under them. */
   readonly lamps: Rect
-  /** The live-question banner. */
+  /** THE ORDER PLATE. The most prominent thing on the canvas. */
   readonly banner: Rect
 }
 
@@ -192,17 +192,6 @@ export function hudLayout(w: number, h: number, area: Rect): HudLayout {
 /** Centre x of lamp `i`, counting right to left from the safe right edge. */
 export function lampX(l: HudLayout, i: number): number {
   return l.area.x + l.area.w - l.pad - l.lampR - i * (l.lampR * 2.9)
-}
-
-/** Left edge of relight tick `i`, and their width. */
-export function tickRect(i: number, l: HudLayout): Rect {
-  const tw = l.lampR * 1.5
-  return {
-    x: l.area.x + l.area.w - l.pad - tw - i * (tw + 4),
-    y: l.tickY,
-    w: tw,
-    h: 3.5,
-  }
 }
 
 export type CandidateRow = {

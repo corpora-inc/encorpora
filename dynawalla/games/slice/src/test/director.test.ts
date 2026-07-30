@@ -1,332 +1,589 @@
-// Pacing is a measurable property, not a vibe.
+// DENSITY IS A MEASURED NUMBER, NOT A VIBE.
 //
-// A playtest of the first build reported an average of 2.8–4.2 live objects for
-// the first sixty seconds, a **minimum of zero**, and a first market rush at 82
-// seconds — on a game whose own source comments say "an empty screen in the
-// first ten seconds is the difference between a game and a worksheet with a
-// countdown". The intent was right and the curve did not deliver it, and the
-// only reason that shipped is that nothing measured it.
+// The design document measured the build the founder played by driving the real
+// `Director` for 180 simulated seconds at 60 Hz with a MASHER model — swipes
+// continuously at 6 cuts/second, never reads a numeral, takes cascade children
+// as they appear. It reported:
 //
-// So this file measures it. The simulation below is deliberately pessimistic:
-// it models the SHORTEST flight time any supported viewport produces, so a
-// number that passes here is a floor and not a best case.
+//     live cuttable objects   median 7 · p90 25 · p99 30 · max 34
+//     free cuts per arithmetic decision                     27.4
+//     objects on screen at t = 13 s                           16
+//
+//   "the first time you open it it still has 1 billion things to slice and it is
+//    still the same button mashing crap it was before."
+//
+// This file re-runs the SAME measurement against the shipped director and prints
+// the table. A claim of "calmer" that is not a number is not a claim, so the
+// numbers are asserted rather than admired, and every threshold is quoted
+// against the baseline it has to beat.
 
 import test from "node:test"
 import assert from "node:assert/strict"
 
-import { Director, type Throw } from "../sim/director.ts"
+import { Director, type Market, type Throw } from "../sim/director.ts"
 import { Rng } from "../core/rng.ts"
-import { buildNumberPool, omega } from "../sim/factor.ts"
+import { BANDS, makeTarget, Order, printedFor } from "../sim/order.ts"
 
-const POOL = buildNumberPool(2, 324)
+/** THE BASELINE. Every number below is quoted against these. */
+const SHIPPED = { median: 7, p90: 25, p99: 30, max: 34, freeCutsPerDecision: 27.4, atThirteen: 16 }
 
 function blank(): Throw {
-  return { kind: "numeral", value: 0, delayMs: 0, bandT: 0, apex: 0 }
+  return { kind: "gourd", value: 0, glyph: "", delayMs: 0, bandT: 0, apex: 0 }
 }
 
 /**
- * Run the director against a model of the world and report live-object density
- * per second. `flight` is how long a thrown object stays cuttable — 1.8s is
- * what a 320×568 phone actually produces, the harshest case.
+ * `arm` is the flight time before an object is within reach of a blade — it has
+ * to rise toward its apex first. Without it a bot at 6 cuts/second deletes every
+ * object on the frame it is thrown and the measured density is trivially zero,
+ * which would flatter this build rather than measure it.
  */
-function density(
-  seconds: number,
-  flight = 1.8,
-  seed = 7,
-): { perSecond: number[]; min: number; firstRushAt: number } {
-  const d = new Director(new Rng(seed), POOL)
+const ARM_SECONDS = 0.35
+
+type Airborne = { life: number; arm: number; value: number; kind: Throw["kind"]; absurd: boolean }
+
+type RunOptions = {
+  seconds?: number
+  /** Cuts per second. 6 is the document's masher. 0 never touches the screen. */
+  cutsPerSecond?: number
+  /** Does the bot read the numeral before it cuts? */
+  reads?: boolean
+  intensity?: number
+  seed?: number
+  /** Seconds a thrown object stays cuttable. 1.8 s is the harshest viewport. */
+  flight?: number
+}
+
+type RunResult = {
+  live: number[]
+  median: number
+  p90: number
+  p99: number
+  max: number
+  atThirteen: number
+  emptyFraction: number
+  freeCuts: number
+  decisions: number
+  fills: number
+  overshoots: number
+  cuts: number
+  fillsPerCut: number
+  ratio: number
+  maxDrySeconds: number
+  overCap: number
+}
+
+function rungFor(intensity: number): number {
+  return Math.max(0, Math.min(BANDS.length - 1, Math.floor(intensity * BANDS.length)))
+}
+
+/**
+ * Drive the real director and the real order model against a bot.
+ *
+ * Everything the game itself would do on a cut is done here: helpful advances
+ * the order, overshoot rotates it, decoy and absurd change nothing at all.
+ */
+function run(opts: RunOptions = {}): RunResult {
+  const seconds = opts.seconds ?? 180
+  const cps = opts.cutsPerSecond ?? 6
+  const flight = opts.flight ?? 1.8
+  const intensity = opts.intensity ?? 0.5
+  const rng = new Rng(opts.seed ?? 12345)
+  const d = new Director(rng)
+  d.intensity = intensity
   const out = Array.from({ length: 24 }, blank)
-  const alive: number[] = [] // remaining life of each live body
-  const perSecond: number[] = []
-  let min = Infinity
-  let firstRushAt = Infinity
-  let acc = 0
-  let samples = 0
-  let sum = 0
+
+  const rung = rungFor(intensity)
+  let order = new Order(rung, makeTarget(rung, () => rng.next()))
+  const printed = printedFor(rung)
+
+  const air: Airborne[] = []
+  const buf: number[] = []
+  const market: Market = { live: 0, frontierLive: 0, frontier: buf, printed, residual: 0 }
+
+  const live: number[] = []
+  let atThirteen = 0
+  let empty = 0
+  let frames = 0
+  let freeCuts = 0
+  let decisions = 0
+  let fills = 0
+  let overshoots = 0
+  let cutDebt = 0
+  let cuts = 0
+  let dry = 0
+  let maxDry = 0
+  let overCap = 0
+
+  const refresh = (): void => {
+    order.frontier(buf)
+    market.residual = order.residual
+  }
+  refresh()
 
   const dt = 1 / 60
   for (let i = 0; i < seconds * 60; i++) {
-    for (let k = alive.length - 1; k >= 0; k--) {
-      const v = (alive[k] as number) - dt
-      if (v <= 0) alive.splice(k, 1)
-      else alive[k] = v
+    for (let k = air.length - 1; k >= 0; k--) {
+      const a = air[k] as Airborne
+      a.life -= dt
+      a.arm -= dt
+      if (a.life <= 0) air.splice(k, 1)
     }
-    const n = d.step(dt, out, alive.length)
+
+    market.live = air.length
+    market.frontierLive = air.filter(
+      (a) => a.kind === "gourd" && !a.absurd && buf.includes(a.value),
+    ).length
+    const n = d.step(dt, out, market)
     for (let k = 0; k < n; k++) {
       const t = out[k] as Throw
-      // A sigil is answerable, not sliceable-and-gone; it is not part of the
-      // density the floor promises, so it is not counted.
-      if (t.kind !== "sigil") alive.push(flight)
+      air.push({
+        life: flight,
+        arm: ARM_SECONDS,
+        value: t.value,
+        kind: t.kind,
+        absurd: t.kind === "gourd" && t.glyph !== "",
+      })
     }
-    if (d.rushLeft > 0 && firstRushAt === Infinity) firstRushAt = d.elapsed
-    // Ignore the first half second: the very first wave is still in the air.
-    if (i > 30) min = Math.min(min, alive.length)
-    sum += alive.length
-    samples++
-    acc += dt
-    if (acc >= 1) {
-      acc -= 1
-      perSecond.push(sum / samples)
-      sum = 0
-      samples = 0
+    if (air.length > d.absoluteCap()) overCap++
+
+    // R3, checked every frame: either something useful is up, or something
+    // useful is queued.
+    const available =
+      market.frontierLive > 0 || d.nextFrontierEtaMs(market) < Number.POSITIVE_INFINITY
+    if (available) dry = 0
+    else {
+      dry += dt
+      maxDry = Math.max(maxDry, dry)
     }
-  }
-  return { perSecond, min, firstRushAt }
-}
 
-test("the field is never empty, on the harshest viewport, for five minutes", () => {
-  for (const seed of [1, 7, 99, 12345]) {
-    const { min } = density(300, 1.8, seed)
-    assert.ok(min >= 3, `seed ${seed}: field dropped to ${min} live objects`)
-  }
-})
-
-test("a child is juggling five objects by second ten, not second eighty", () => {
-  const { perSecond } = density(60)
-  const atTen = perSecond[9] as number
-  assert.ok(atTen >= 5, `only ${atTen.toFixed(1)} objects at t=10s`)
-  const firstMinute = perSecond.reduce((a, b) => a + b, 0) / perSecond.length
-  assert.ok(firstMinute >= 6, `first-minute average was ${firstMinute.toFixed(1)} objects`)
-})
-
-test("the first market rush lands inside the first half minute", () => {
-  for (const seed of [1, 7, 99]) {
-    const { firstRushAt } = density(90, 1.8, seed)
-    assert.ok(firstRushAt <= 26, `seed ${seed}: first rush at ${firstRushAt.toFixed(1)}s`)
-  }
-})
-
-test("density climbs across a twenty-minute session and never collapses", () => {
-  const { perSecond } = density(1200)
-  const mean = (a: number[]): number => a.reduce((x, y) => x + y, 0) / a.length
-  const early = mean(perSecond.slice(10, 60))
-  const late = mean(perSecond.slice(1000, 1190))
-  assert.ok(late > early, `late ${late.toFixed(1)} must beat early ${early.toFixed(1)}`)
-  for (let i = 0; i < perSecond.length; i++) {
-    assert.ok((perSecond[i] as number) >= 3, `second ${i} averaged ${perSecond[i]}`)
-  }
-})
-
-test("questions arrive at least twice as often as the old build's 10.6s", () => {
-  const d = new Director(new Rng(3), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  let sigils = 0
-  for (let i = 0; i < 60 * 300; i++) {
-    const n = d.step(1 / 60, out, 8)
-    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "sigil") sigils++
-  }
-  const gap = 300 / sigils
-  assert.ok(gap <= 5.2, `a sigil every ${gap.toFixed(1)}s`)
-})
-
-test("a refused sigil is retried, never dropped", () => {
-  const d = new Director(new Rng(3), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  let sigils = 0
-  let refusals = 0
-  for (let i = 0; i < 60 * 120; i++) {
-    const n = d.step(1 / 60, out, 8)
-    for (let k = 0; k < n; k++) {
-      if ((out[k] as Throw).kind !== "sigil") continue
-      sigils++
-      // Refuse every other one, as a live question would.
-      if (sigils % 2 === 0) {
-        refusals++
-        d.sigilRefused()
+    // The bot.
+    cutDebt += cps * dt
+    while (cutDebt >= 1 && air.length > 0) {
+      cutDebt -= 1
+      const reachable = air.filter((a) => a.arm <= 0)
+      if (reachable.length === 0) break
+      let pick: Airborne
+      if (opts.reads) {
+        // A reader takes a frontier value when one is within reach, and lets
+        // everything else go past. That is the whole skill this game asks for.
+        const found = reachable.find((a) => a.kind === "gourd" && !a.absurd && buf.includes(a.value))
+        if (!found) break
+        pick = found
+      } else {
+        pick = reachable[Math.floor(rng.next() * reachable.length)] as Airborne
+      }
+      cuts++
+      const a = air.splice(air.indexOf(pick), 1)[0] as Airborne
+      if (a.kind !== "gourd" || a.absurd) {
+        freeCuts++
+        continue
+      }
+      const k = order.take(a.value)
+      if (k === "helpful") {
+        decisions++
+        if (order.filled) {
+          fills++
+          d.settleOrder()
+          order = new Order(rung, makeTarget(rung, () => rng.next()))
+        }
+        refresh()
+      } else if (k === "overshoot") {
+        decisions++
+        overshoots++
+        order = new Order(rung, makeTarget(rung, () => rng.next()))
+        refresh()
+      } else {
+        freeCuts++
       }
     }
-  }
-  assert.ok(refusals > 5, "the test did not exercise refusal")
-  // With half of them refused and retried within half a second, the offered
-  // rate must stay far above the scheduled rate — that is the whole point.
-  assert.ok(sigils >= 30, `only ${sigils} sigils offered in two minutes`)
-})
 
-test("every value the director can throw is legible: three digits, integer", () => {
-  const d = new Director(new Rng(11), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  const seen = new Set<number>()
-  for (let i = 0; i < 60 * 1200; i++) {
-    const n = d.step(1 / 60, out, 6)
-    for (let k = 0; k < n; k++) {
-      const t = out[k] as Throw
-      if (t.kind !== "numeral") continue
-      seen.add(t.value)
+    live.push(air.length)
+    if (air.length === 0) empty++
+    if (i === 13 * 60) atThirteen = air.length
+    frames++
+  }
+
+  const sorted = [...live].sort((a, b) => a - b)
+  const at = (q: number): number =>
+    sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * q))] as number
+  return {
+    live,
+    median: at(0.5),
+    p90: at(0.9),
+    p99: at(0.99),
+    max: sorted[sorted.length - 1] as number,
+    atThirteen,
+    emptyFraction: empty / frames,
+    freeCuts,
+    decisions,
+    fills,
+    overshoots,
+    cuts,
+    fillsPerCut: fills / Math.max(1, cuts),
+    ratio: freeCuts / Math.max(1, decisions),
+    maxDrySeconds: maxDry,
+    overCap,
+  }
+}
+
+test("THE HEADLINE: the field a child faces, measured the way the design doc measured it", () => {
+  // Two bots, because one of them alone is misleading. The MASHER is the design
+  // document's model and the number the founder's complaint is about; the
+  // OBSERVER never touches the screen and reports the raw density the market
+  // produces, which is what a child sees in the moment before they swipe.
+  const rows: Array<Record<string, string | number>> = []
+  const results: RunResult[] = []
+  for (const intensity of [0, 0.25, 0.5, 0.75, 1]) {
+    for (const [who, cps] of [
+      ["masher 6/s", 6],
+      ["observer 0/s", 0],
+    ] as const) {
+      const r = run({ intensity, seed: 12345, cutsPerSecond: cps })
+      results.push(r)
+      rows.push({
+        intensity,
+        who,
+        median: r.median,
+        p90: r.p90,
+        p99: r.p99,
+        max: r.max,
+        "t=13s": r.atThirteen,
+        "empty %": (r.emptyFraction * 100).toFixed(1),
+      })
     }
   }
-  assert.ok(seen.size > 60, `only ${seen.size} distinct values in twenty minutes`)
-  for (const v of seen) {
-    assert.ok(Number.isInteger(v), `${v} is not an integer`)
-    assert.ok(v >= 2 && v <= 999, `${v} is out of the legible band`)
-    assert.ok(String(v).length <= 3, `${v} is four digits`)
+  rows.push({
+    intensity: "SHIPPED 0.3.6",
+    who: "masher 6/s",
+    median: SHIPPED.median,
+    p90: SHIPPED.p90,
+    p99: SHIPPED.p99,
+    max: SHIPPED.max,
+    "t=13s": SHIPPED.atThirteen,
+    "empty %": "0.0",
+  })
+  console.table(rows)
+
+  for (const r of results) {
+    assert.ok(r.max <= 13, `the absolute cap of 13 was breached: ${r.max} simultaneous objects`)
+    assert.ok(r.p90 < SHIPPED.p90, `p90 ${r.p90} did not beat the shipped ${SHIPPED.p90}`)
+    assert.ok(r.p99 < SHIPPED.p99, `p99 ${r.p99} did not beat the shipped ${SHIPPED.p99}`)
+    assert.ok(
+      r.median <= 9,
+      `median ${r.median} is above the design table's live target of 9 at the very top`,
+    )
+    assert.equal(r.overCap, 0, `the field was over its own absolute cap on ${r.overCap} frames`)
   }
+  // The calm end, on the observer, is Fruit Ninja's opening and not a swarm.
+  const calm = results[1] as RunResult
+  assert.ok(calm.p90 <= 4, `the calm end offers a p90 of ${calm.p90} objects`)
+  assert.ok(calm.median <= 3, `the calm end's median is ${calm.median}`)
 })
 
-test("the cascade gets deeper over a long run", () => {
-  const d = new Director(new Rng(11), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  let earlyMax = 0
-  let lateMax = 0
-  for (let i = 0; i < 60 * 900; i++) {
-    const n = d.step(1 / 60, out, 6)
-    for (let k = 0; k < n; k++) {
-      const t = out[k] as Throw
-      if (t.kind !== "numeral") continue
-      const w = omega(t.value)
-      if (d.elapsed < 30) earlyMax = Math.max(earlyMax, w)
-      else if (d.elapsed > 600) lateMax = Math.max(lateMax, w)
-    }
-  }
-  assert.ok(lateMax > earlyMax, `late omega ${lateMax} must beat early ${earlyMax}`)
+test("THE OPENING IS TWO OR THREE THINGS, not sixteen", () => {
+  // The founder, twice: "fruit ninja might have 2 or 3 things pop up to start",
+  // and "the first time you open it it still has 1 billion things to slice".
+  //
+  // A fresh run starts at the flow controller's floor, so this is measured there
+  // and not in the middle of the range.
+  const first = run({ intensity: 0.04, seconds: 20, cutsPerSecond: 0 })
+  const opening = first.live.slice(0, 15 * 60)
+  const peak = Math.max(...opening)
+  const mean = opening.reduce((a, b) => a + b, 0) / opening.length
+  console.log(
+    `first fifteen seconds: peak ${peak}, mean ${mean.toFixed(2)}, at t=13s ${first.live[13 * 60]}` +
+      ` — the build the founder played had ${SHIPPED.atThirteen} at t=13s`,
+  )
+  assert.ok(peak <= 4, `the opening peaked at ${peak} simultaneous objects`)
+  assert.ok(mean <= 3, `the opening averaged ${mean.toFixed(2)} objects`)
 })
 
-test("a rush is always a reward: no bombs, ever", () => {
-  const d = new Director(new Rng(4), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  let rushFrames = 0
-  for (let i = 0; i < 60 * 600; i++) {
-    const n = d.step(1 / 60, out, 6)
-    const inRush = d.rushLeft > 0
-    if (inRush) rushFrames++
-    for (let k = 0; k < n; k++) {
-      if (inRush) assert.notEqual((out[k] as Throw).kind, "bomb", "a bomb during a rush")
-    }
-  }
-  assert.ok(rushFrames > 60 * 40, "the test did not see enough rush")
-})
-
-test("rushes get longer and closer together, forever", () => {
-  const d = new Director(new Rng(4), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  const lengths: number[] = []
-  let cur = 0
-  for (let i = 0; i < 60 * 1200; i++) {
-    d.step(1 / 60, out, 6)
-    if (d.rushLeft > 0) cur += 1 / 60
-    else if (cur > 0) {
-      lengths.push(cur)
-      cur = 0
-    }
-  }
-  assert.ok(lengths.length >= 8, `only ${lengths.length} rushes in twenty minutes`)
+test("AN EMPTY SCREEN IS ALLOWED, and at the calm end it happens", () => {
+  // This deliberately reverses the old file's "density contract". Emptiness
+  // between waves is anticipation, and it is thinking time. It is also the
+  // direct cause of the complaint when it is forbidden.
+  const calm = run({ intensity: 0, cutsPerSecond: 0, seconds: 60 })
   assert.ok(
-    (lengths.at(-1) as number) > (lengths[0] as number) + 1,
-    `last rush ${lengths.at(-1)}s vs first ${lengths[0]}s`,
+    calm.emptyFraction > 0.02,
+    `the field was empty on only ${(calm.emptyFraction * 100).toFixed(1)}% of frames — the floor is back`,
   )
 })
 
-// ── the hush ────────────────────────────────────────────────────────────────
-//
-// `quiet` used to throttle the wave timer by 14% and shrink the wave to two or
-// three objects — and never touch `floorCount()`, which is the only thing in
-// this file that actually promises anything. So while a child was working out
-// `47 + 25`, the director was still topping the field up to its guaranteed six
-// to eight cuttable objects and still rolling for bombs on every one of them.
-// The moment designated for thinking was the busiest moment in the game.
-//
-// A designated thinking moment either pauses everything that competes for the
-// child's attention or it is not a thinking moment. These are the tests that say
-// so, and the *last* one is the one that stops the fix from becoming a nerf.
+test("R3 THE OFFER INVARIANT: a useful numeral is never more than offerGap away", () => {
+  // The whole reason there is no clock on any arithmetic in this game. A child
+  // who needs forty seconds watches the market go by and the number they need is
+  // in it, again and again. A bot that never cuts is the harshest case: nothing
+  // is ever consumed, so the market has to keep re-offering on its own.
+  const rows: Array<Record<string, string | number>> = []
+  for (const intensity of [0, 0.25, 0.5, 0.75, 1]) {
+    for (const seed of [1, 7, 99, 2024]) {
+      const r = run({ intensity, seed, cutsPerSecond: 0, seconds: 120 })
+      const d = new Director(new Rng(seed))
+      d.intensity = intensity
+      const bound = d.offerGap() + 1 / 30
+      if (seed === 1) {
+        rows.push({
+          intensity,
+          "offerGap (s)": d.offerGap().toFixed(2),
+          "worst dry spell (s)": r.maxDrySeconds.toFixed(2),
+        })
+      }
+      assert.ok(
+        r.maxDrySeconds <= bound,
+        `intensity ${intensity} seed ${seed}: the child had nothing useful for ` +
+          `${r.maxDrySeconds.toFixed(2)}s against a bound of ${bound.toFixed(2)}s`,
+      )
+    }
+  }
+  console.table(rows)
+})
 
-test("nothing at all is launched while a question is live", () => {
-  const d = new Director(new Rng(21), POOL)
+test("R3 holds when the child is cutting everything as fast as they can", () => {
+  for (const intensity of [0, 0.3, 0.6, 1]) {
+    for (const seed of [4242, 77, 3]) {
+      const r = run({ intensity, cutsPerSecond: 8, seconds: 180, seed })
+      const d = new Director(new Rng(1))
+      d.intensity = intensity
+      assert.ok(
+        r.maxDrySeconds <= d.offerGap() + 1 / 30,
+        `intensity ${intensity} seed ${seed}: a masher went ${r.maxDrySeconds.toFixed(2)}s ` +
+          `with nothing useful available`,
+      )
+    }
+  }
+})
+
+test("MASHING IS WORTHLESS, NOT PUNISHED", () => {
+  // The distinction is the whole product. A masher is never scolded, never
+  // loses a lamp and never has a point taken off them. They simply do not get
+  // anywhere, because **an overshoot rotates the order** — their next
+  // indiscriminate slice destroys the order they were accumulating.
+  //
+  // Both bots are given the SAME six cuts a second, so this is not a comparison
+  // between a fast player and a slow one. The reader spends its budget only when
+  // something useful is within reach and lets everything else go past.
+  const rows: Array<Record<string, string | number>> = []
+  for (const intensity of [0, 0.25, 0.5, 0.75, 1]) {
+    const masher = run({ intensity, cutsPerSecond: 6, reads: false, seed: 8080 })
+    const reader = run({ intensity, cutsPerSecond: 6, reads: true, seed: 8080 })
+    rows.push({
+      intensity,
+      "masher cuts": masher.cuts,
+      "masher orders": masher.fills,
+      "masher wrecked": masher.overshoots,
+      "reader cuts": reader.cuts,
+      "reader orders": reader.fills,
+      "orders ÷": (reader.fills / Math.max(1, masher.fills)).toFixed(1),
+      "fills/cut ÷": (reader.fillsPerCut / Math.max(1e-9, masher.fillsPerCut)).toFixed(1),
+    })
+    assert.ok(
+      reader.fills > masher.fills,
+      `intensity ${intensity}: a reader filled ${reader.fills} orders against a masher's ` +
+        `${masher.fills} at the same cut rate — mashing is still viable`,
+    )
+    // The anti-mash lock, stated directly: a masher destroys more orders than
+    // they finish. It costs them nothing; it just never gets them anywhere.
+    //
+    // **Exempt at the very floor, on purpose.** Rung 0 is `□ = 4` with a pool of
+    // {1, 2, 3}, and there is nothing there to be wrong about — a child at the
+    // bottom of the ladder should be able to blunder into a filled order. The
+    // lock is a property of the ladder, not of its first step.
+    if (intensity > 0.05) {
+      assert.ok(
+        masher.overshoots > masher.fills,
+        `intensity ${intensity}: a masher wrecked ${masher.overshoots} orders and completed ` +
+          `${masher.fills} — the anti-mash lock is not holding`,
+      )
+    }
+    assert.ok(
+      reader.fillsPerCut > masher.fillsPerCut * (intensity > 0.05 ? 2 : 1),
+      `intensity ${intensity}: a reader gets ${reader.fillsPerCut.toFixed(3)} orders per cut ` +
+        `against a masher's ${masher.fillsPerCut.toFixed(3)} — swiping more still pays`,
+    )
+    assert.equal(
+      reader.overshoots,
+      0,
+      "a reader who only takes frontier values overshot, which is impossible",
+    )
+  }
+  console.table(rows)
+})
+
+test("FREE CUTS PER ARITHMETIC DECISION: the 27:1 ratio is gone", () => {
+  const rows: Array<Record<string, string | number>> = []
+  let worst = 0
+  for (const intensity of [0, 0.25, 0.5, 0.75, 1]) {
+    const r = run({ intensity, cutsPerSecond: 6, seed: 5150 })
+    worst = Math.max(worst, r.ratio)
+    rows.push({ intensity, "free cuts": r.freeCuts, decisions: r.decisions, ratio: r.ratio.toFixed(2) })
+  }
+  rows.push({
+    intensity: "SHIPPED 0.3.6",
+    "free cuts": "—",
+    decisions: "—",
+    ratio: SHIPPED.freeCutsPerDecision.toFixed(2),
+  })
+  console.table(rows)
+  assert.ok(
+    worst < SHIPPED.freeCutsPerDecision / 10,
+    `the worst ratio is ${worst.toFixed(2)} free cuts per decision, against a shipped ` +
+      `${SHIPPED.freeCutsPerDecision}`,
+  )
+})
+
+// ── the escalation ──────────────────────────────────────────────────────────
+
+test("NOTHING IN THE DIRECTOR IS A FUNCTION OF ELAPSED TIME", () => {
+  // Pacing-audit root cause 3, and this game was one of the seventeen. Twenty
+  // minutes at a fixed intensity must produce exactly the same knobs as second
+  // one at the same intensity.
+  const d = new Director(new Rng(5))
+  d.intensity = 0.4
   const out = Array.from({ length: 24 }, blank)
-  // Run the market up to full heat first, so this is the hardest case: a hush
-  // at minute ten, when the floor would otherwise be at its highest.
-  for (let i = 0; i < 60 * 600; i++) d.step(1 / 60, out, 6)
+  const m: Market = { live: 6, frontierLive: 2, frontier: [3, 4], printed: [3, 4, 9], residual: 7 }
+  const snap = (): Record<string, number> => ({
+    target: d.targetCount(),
+    cap: d.hardCap(),
+    gap: d.waveInterval(),
+    offer: d.offerGap(),
+    bomb: d.bombChance(),
+    absurd: d.absurdChance(),
+    difficulty: d.questionDifficulty(),
+  })
+  const before = snap()
+  for (let i = 0; i < 60 * 60 * 20; i++) d.step(1 / 60, out, m)
+  assert.ok(d.elapsed > 1190, "the director's clock did not advance, so this proved nothing")
+  assert.deepEqual(
+    snap(),
+    before,
+    "twenty minutes changed a knob without any evidence about the child",
+  )
+})
+
+test("every knob moves with intensity, in the direction the design table states", () => {
+  const rows: Array<Record<string, string | number>> = []
+  const knobs = [0, 0.25, 0.5, 0.75, 1].map((i) => {
+    const d = new Director(new Rng(3))
+    d.intensity = i
+    rows.push({
+      i,
+      "live target": d.targetCount(),
+      "hard cap": d.hardCap(),
+      "wave gap (s)": d.waveInterval().toFixed(2),
+      "offer gap (s)": d.offerGap().toFixed(2),
+      "bomb P/object": d.bombChance().toFixed(3),
+      "absurd P": d.absurdChance().toFixed(2),
+      difficulty: d.questionDifficulty(),
+    })
+    return d
+  })
+  console.table(rows)
+  for (let i = 1; i < knobs.length; i++) {
+    const lo = knobs[i - 1] as Director
+    const hi = knobs[i] as Director
+    assert.ok(hi.targetCount() >= lo.targetCount(), "the target count fell as the world pushed harder")
+    assert.ok(hi.hardCap() >= lo.hardCap(), "the cap fell")
+    assert.ok(hi.waveInterval() <= lo.waveInterval(), "waves got further apart")
+    assert.ok(hi.offerGap() >= lo.offerGap(), "the offer gap did not widen")
+    assert.ok(hi.bombChance() >= lo.bombChance(), "bombs got rarer")
+    assert.ok(hi.questionDifficulty() >= lo.questionDifficulty(), "the maths got easier")
+  }
+  const calm = knobs[0] as Director
+  assert.equal(calm.bombChance(), 0, "a child at the floor met a bomb")
+  assert.equal(calm.absurdChance(), 0, "a child at the floor met an absurd glyph")
+  const top = knobs[knobs.length - 1] as Director
+  assert.equal(top.hardCap(), 12, "the scheduled cap at the top of the range moved")
+  assert.equal(top.absoluteCap(), 13, "the largest field a child can ever face is not the design's 13")
+})
+
+test("nothing at all is launched while the child is being held", () => {
+  const d = new Director(new Rng(21))
+  d.intensity = 1
+  const out = Array.from({ length: 24 }, blank)
+  const m: Market = { live: 0, frontierLive: 0, frontier: [2, 3], printed: [2, 3, 9], residual: 5 }
+  for (let i = 0; i < 60 * 60; i++) d.step(1 / 60, out, m)
 
   d.quiet = true
   let launched = 0
-  for (let i = 0; i < 60 * 45; i++) {
-    // `live = 0` is a starved field — the exact condition that used to make the
-    // floor fire a top-up wave immediately.
-    launched += d.step(1 / 60, out, 0)
-  }
-  assert.equal(launched, 0, `${launched} objects were thrown at a child who was reading`)
-  assert.equal(d.floorCount(), 0, "the density floor still applies during a hush")
+  const dryBefore = d.dryFor
+  for (let i = 0; i < 60 * 45; i++) launched += d.step(1 / 60, out, m)
+  assert.equal(launched, 0, `${launched} objects were thrown at a child reading a completed sum`)
+  assert.equal(
+    d.dryFor,
+    dryBefore,
+    "the offer invariant's clock ran during a hold — a hold is the child's own time",
+  )
 })
 
-test("no bomb is ever spawned into a live question", () => {
-  const d = new Director(new Rng(22), POOL)
+test("A MARKET RUSH IS NOT A FREE-FOR-ALL: bombs still spawn in one", () => {
+  // The build the founder played returned a hard zero for `bombChance()` for the
+  // whole rush, so the highest-scoring phase in the game was the one in which
+  // indiscriminate swiping could not be punished, and the banner read "cut
+  // everything".
+  const d = new Director(new Rng(4))
+  d.intensity = 0.9
   const out = Array.from({ length: 24 }, blank)
-  let bombs = 0
+  const m: Market = { live: 2, frontierLive: 1, frontier: [4], printed: [4, 9, 99], residual: 20 }
+  let rushFrames = 0
+  let rushBombs = 0
+  for (let i = 0; i < 60 * 900; i++) {
+    const n = d.step(1 / 60, out, m)
+    const inRush = d.rushLeft > 0
+    if (inRush) rushFrames++
+    for (let k = 0; k < n; k++) if (inRush && (out[k] as Throw).kind === "bomb") rushBombs++
+  }
+  assert.ok(rushFrames > 60 * 60, `only ${(rushFrames / 60).toFixed(0)}s of rush in fifteen minutes`)
+  assert.ok(rushBombs > 0, "a rush is still a phase in which mashing cannot be punished")
+  assert.equal(d.sieveOn, d.rushLeft > 0, "the sieve and the rush are not the same phase")
+})
+
+test("a rush never opens for a child who is finding it hard", () => {
+  const d = new Director(new Rng(4))
+  d.intensity = 0.1
+  const out = Array.from({ length: 24 }, blank)
+  const m: Market = { live: 2, frontierLive: 1, frontier: [2], printed: [2, 3], residual: 5 }
+  for (let i = 0; i < 60 * 900; i++) d.step(1 / 60, out, m)
+  assert.equal(d.rushCount, 0, "a struggling child was handed a market rush")
+})
+
+test("every gourd the director throws is a printed value or an absurd glyph", () => {
+  const d = new Director(new Rng(11))
+  d.intensity = 0.7
+  const out = Array.from({ length: 24 }, blank)
+  const printed = printedFor(3)
+  const m: Market = { live: 3, frontierLive: 1, frontier: [10, 20], printed, residual: 120 }
+  let gourds = 0
+  let absurds = 0
   for (let i = 0; i < 60 * 600; i++) {
-    // Alternate ten seconds of market with ten of hush, all run long enough for
-    // the bomb rate to be at its ceiling.
-    d.quiet = Math.floor(i / (60 * 10)) % 2 === 1
-    const n = d.step(1 / 60, out, 4)
-    if (!d.quiet) continue
-    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "bomb") bombs++
+    const n = d.step(1 / 60, out, m)
+    for (let k = 0; k < n; k++) {
+      const t = out[k] as Throw
+      if (t.kind !== "gourd") continue
+      if (t.glyph !== "") {
+        absurds++
+        assert.equal(t.value, 0, "an absurd gourd also carries a number")
+        continue
+      }
+      gourds++
+      assert.ok(printed.includes(t.value), `the director printed ${t.value}, not in the rung's set`)
+    }
   }
-  assert.equal(bombs, 0, `${bombs} bombs landed during a hush`)
+  assert.ok(gourds > 500, `only ${gourds} gourds in ten minutes`)
+  assert.ok(absurds > 20, `only ${absurds} absurd glyphs in ten minutes`)
 })
 
-test("no second sigil, and no market rush, opens across a live question", () => {
-  const d = new Director(new Rng(23), POOL)
+test("a reset really resets, so a restart is not the last run with the numbers rubbed off", () => {
+  const d = new Director(new Rng(9))
+  d.intensity = 0.8
   const out = Array.from({ length: 24 }, blank)
-  for (let i = 0; i < 60 * 30; i++) d.step(1 / 60, out, 6)
-  const rushesBefore = d.rushCount
-  d.quiet = true
-  let sigils = 0
-  // Forty seconds — the whole window the hardest item in the pack is given.
-  for (let i = 0; i < 60 * 40; i++) {
-    const n = d.step(1 / 60, out, 6)
-    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "sigil") sigils++
-  }
-  assert.equal(sigils, 0, "a second tablet was offered while one was being read")
-  assert.equal(d.rushCount, rushesBefore, "a MARKET RUSH opened over a live equation")
-  assert.ok(d.rushLeft <= 0, `a rush was running with ${String(d.rushLeft)}s left`)
-})
-
-test("the market comes back louder than it left", () => {
-  // The fix must not read as "the game got worse". A question is a held breath
-  // and the breath is let out: `settleQuestion` raises the floor and shortens
-  // the wave interval for a couple of seconds.
-  const d = new Director(new Rng(24), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  for (let i = 0; i < 60 * 120; i++) d.step(1 / 60, out, 6)
-  const calm = d.floorCount()
-
-  d.quiet = true
-  for (let i = 0; i < 60 * 8; i++) d.step(1 / 60, out, 0)
-  d.quiet = false
-  d.settleQuestion()
-  assert.ok(d.floorCount() > calm, `surge floor ${d.floorCount()} did not beat calm ${calm}`)
-
-  let launched = 0
-  for (let i = 0; i < 60 * 2; i++) launched += d.step(1 / 60, out, 0)
-  assert.ok(launched >= calm, `only ${launched} objects in the two seconds after an answer`)
-})
-
-test("the hush ends and the floor is restored within a second", () => {
-  const d = new Director(new Rng(25), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  for (let i = 0; i < 60 * 200; i++) d.step(1 / 60, out, 6)
-  d.quiet = true
-  for (let i = 0; i < 60 * 20; i++) d.step(1 / 60, out, 0)
-  d.quiet = false
-  d.settleQuestion()
-  let launched = 0
-  for (let i = 0; i < 60; i++) launched += d.step(1 / 60, out, 0)
-  assert.ok(launched >= 4, `only ${launched} objects in the first second back`)
-})
-
-test("the next sigil is not fired into the child's face the moment they answer", () => {
-  // `nextSigilIn` used to keep counting down through the whole live question, so
-  // it was always overdue the instant the question resolved. With a
-  // comprehension-sized window that would put the next tablet in the air before
-  // the favour wave had finished sweeping, every single time.
-  const d = new Director(new Rng(26), POOL)
-  const out = Array.from({ length: 24 }, blank)
-  for (let i = 0; i < 60 * 120; i++) d.step(1 / 60, out, 6)
-  d.quiet = true
-  for (let i = 0; i < 60 * 30; i++) d.step(1 / 60, out, 0)
-  d.quiet = false
-  d.settleQuestion()
-  let sigils = 0
-  for (let i = 0; i < 60 * 2; i++) {
-    const n = d.step(1 / 60, out, 6)
-    for (let k = 0; k < n; k++) if ((out[k] as Throw).kind === "sigil") sigils++
-  }
-  assert.equal(sigils, 0, "the next tablet arrived within two seconds of the last answer")
+  const m: Market = { live: 1, frontierLive: 0, frontier: [3], printed: [3, 9], residual: 6 }
+  for (let i = 0; i < 60 * 300; i++) d.step(1 / 60, out, m)
+  assert.ok(d.elapsed > 200)
+  d.reset()
+  assert.equal(d.elapsed, 0)
+  assert.equal(d.rushCount, 0)
+  assert.equal(d.rushLeft, 0)
+  assert.equal(d.dryFor, 0)
+  assert.equal(d.intensity, 0)
+  assert.equal(d.quiet, false)
 })

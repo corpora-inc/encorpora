@@ -1,536 +1,350 @@
-// The dominant strategy, measured.
+// THE ECONOMY, played by bots.
 //
-// The audit's finding about THE SPLIT was not "the window is a bit tight". It
-// was that **not doing the maths was the winning move**, and that is a claim
-// about an ordering of strategies, so it is testable and it was never tested.
+// The previous build's economy had one measurable defect and this file's
+// ancestor is what found it: a pure-guesser bot scored 31,208 against a skilled
+// bot's 31,190 over the same seventy seconds, because score came overwhelmingly
+// from slicing and the arithmetic was a ten-second interruption to a slicer.
 //
-// Three numbers made it true:
+// MATH NINJA answers that at the root rather than by nerfing the slicing:
 //
-//   1. the answer window was 4.2 s gross, 3.78 s usable after the read-lock,
-//      against this repo's own 6 s p50 for the two-digit regrouping skills
-//      `pack.json` declares — so a child reading honestly could not finish;
-//   2. a wrong lantern cost a lamp and a timeout cost nothing, so a child who
-//      could not finish was better off letting the sigil expire than guessing;
-//   3. `quiet` throttled the wave timer and the wave size and never touched
-//      `floorCount()`, so the market kept its guaranteed six-to-eight objects
-//      and its bomb spawner running the whole time — which meant refusing to
-//      engage was not even a pause. It was uninterrupted slicing.
+//     SCORE COMES FROM ONE SOURCE ONLY — ADVANCING OR FILLING AN ORDER.
 //
-// The bots below play both rulebooks over the same seeds. The old one is not a
-// straw man: it is the three functions this game shipped with, inlined.
+// which converts mashing from *punished*, which this product's principles
+// forbid, into *worthless*, which is the only sanction it is allowed to apply.
+// The bots below are the proof, and they are played against the real pure
+// functions and the real order model.
+//
+// Everything about answering WINDOWS is gone from this file because it is gone
+// from the game: nothing in MATH NINJA has a clock on it. What is left of the
+// cadence table sizes how long a completed sum is HELD, which is a floor on
+// reading time rather than a ceiling on thinking time.
 
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { Rng } from "../core/rng.ts"
 import {
-  answerGain,
+  advanceValue,
   CADENCE,
-  FAVOUR_MAX,
-  CANDIDATE_READ_LOCK_MS,
+  comprehensionLoad,
   comprehensionP50Ms,
   comprehensionP90Ms,
+  FAVOUR_MAX,
   favourAfter,
-  lampCost,
+  gateHoldSeconds,
   LAMPS,
-  marketHushSeconds,
-  moteSecondsFor,
+  lampCost,
+  MAX_DIFFICULTY,
+  MIN_DIFFICULTY,
+  orderValue,
   reportsToCurriculum,
-  usableAnswerSeconds,
+  REVEAL_MIN_SECONDS,
+  revealDwellSeconds,
+  revealHoldSeconds,
+  TIDY_CUTS,
+  tidyBonus,
   type Verdict,
 } from "../sim/economy.ts"
+import { BANDS, makeTarget, Order, printedFor } from "../sim/order.ts"
 
-// ── the window ──────────────────────────────────────────────────────────────
+const DIFFICULTIES = Array.from({ length: MAX_DIFFICULTY }, (_, i) => i + MIN_DIFFICULTY)
 
-test("the usable window is monotone non-decreasing in difficulty", () => {
-  // The fleet invariant. A harder item may never get less time than an easier
-  // one — not by a millisecond, at any difficulty, ever.
-  let previous = 0
-  for (let d = 1; d <= 10; d++) {
-    const s = usableAnswerSeconds(d)
-    assert.ok(s >= previous, `difficulty ${String(d)} got ${s.toFixed(2)}s after ${previous.toFixed(2)}s`)
-    previous = s
+// ── the cadence table's one remaining job ───────────────────────────────────
+
+test("the hold a completed sum gets is monotone non-decreasing in difficulty", () => {
+  // The fleet invariant, on the one function that still consults the cadence
+  // table. A harder sum may never be whipped off the screen sooner than an
+  // easier one.
+  for (const intensity of [0, 0.25, 0.5, 0.75, 1]) {
+    let previous = -Infinity
+    for (const d of DIFFICULTIES) {
+      const v = gateHoldSeconds(d, intensity)
+      assert.ok(
+        v >= previous - 1e-9,
+        `intensity ${intensity}: difficulty ${d} is held for ${v.toFixed(2)}s, less than ${previous.toFixed(2)}s`,
+      )
+      previous = v
+    }
   }
 })
 
-test("no item gets less usable window than the child's measured p90", () => {
-  // Usable, not gross: 420 ms of every window is spent under the read-lock that
-  // stops the stroke which opened the tablet from also answering it. That is
-  // real time the child does not have, so the invariant is quoted net of it.
-  for (let d = 1; d <= 10; d++) {
-    const usable = usableAnswerSeconds(d) * 1000
-    assert.ok(
-      usable >= comprehensionP90Ms(d),
-      `difficulty ${String(d)}: ${(usable / 1000).toFixed(2)}s usable against a ${(comprehensionP90Ms(d) / 1000).toFixed(1)}s p90`,
-    )
-  }
-})
-
-test("the declared skills get the cadence the declared skills were measured at", () => {
-  // `pack.json` covers `dw.add.regroup.*` including `subtract-across-zero`. The
-  // table's own rows for those are 6 s / 14 s and 16 s / 40 s.
-  assert.ok(usableAnswerSeconds(1) * 1000 >= CADENCE.fact.p90)
-  assert.ok(usableAnswerSeconds(10) * 1000 >= CADENCE.wide.p90)
-  assert.ok(comprehensionP50Ms(1) === CADENCE.fact.p50)
-  assert.ok(comprehensionP50Ms(10) === CADENCE.wide.p50)
-})
-
-test("the shipped window, and this one, per difficulty", () => {
-  const shipped = (d: number): number => 4.2 + Math.max(0, Math.min(9, d - 1)) * 0.2
-  const rows = []
-  for (let d = 1; d <= 10; d++) {
-    const beforeUsable = shipped(d) - CANDIDATE_READ_LOCK_MS / 1000
-    const afterUsable = usableAnswerSeconds(d)
-    rows.push({
-      difficulty: d,
-      p50s: (comprehensionP50Ms(d) / 1000).toFixed(1),
-      p90s: (comprehensionP90Ms(d) / 1000).toFixed(1),
-      beforeUsableS: beforeUsable.toFixed(2),
-      beforePctOfP50: `${((beforeUsable * 1000) / comprehensionP50Ms(d) * 100).toFixed(0)}%`,
-      afterUsableS: afterUsable.toFixed(2),
-      afterPctOfP50: `${((afterUsable * 1000) / comprehensionP50Ms(d) * 100).toFixed(0)}%`,
-    })
-  }
+test("the gate's sum is always held long enough to be read, at every difficulty", () => {
+  const rows = DIFFICULTIES.map((d) => ({
+    difficulty: d,
+    "p50 (s)": (comprehensionP50Ms(d) / 1000).toFixed(1),
+    "held, calm child (s)": gateHoldSeconds(d, 0).toFixed(2),
+    "held, fluent child (s)": gateHoldSeconds(d, 1).toFixed(2),
+  }))
   console.table(rows)
-  // The property the table exists to show: the shipped window gave a smaller
-  // share of the child's need the harder the item got. The ramp was inverted.
-  const first = (shipped(1) * 1000 - CANDIDATE_READ_LOCK_MS) / comprehensionP50Ms(1)
-  const last = (shipped(10) * 1000 - CANDIDATE_READ_LOCK_MS) / comprehensionP50Ms(10)
-  assert.ok(last < first, "the old ramp was not inverted after all — re-derive this whole file")
-})
-
-// ── the costs ───────────────────────────────────────────────────────────────
-
-test("a timeout costs the window, not the score", () => {
-  // **The reversal.** This case used to read "a timeout never costs less than an
-  // honest wrong answer", and it asserted `favourAfter("timeout", 4) === 1` —
-  // equal to a wrong answer, deliberately, because a timeout cheaper than a guess
-  // makes not-answering dominant. The price of satisfying it that way was that a
-  // child who was still thinking was charged exactly what a child who was wrong
-  // was charged, and then had the answer flashed past them.
-  //
-  // The rule is kept and moved to where it belongs: the hush. A wrong answer gives
-  // up the whole favour ladder; a timeout gives up the whole *window*, which is
-  // most of the income in the game. So a timeout is cheap, and it is not free.
-  assert.equal(favourAfter("wrong", 4), 1, "a wrong lantern stopped costing the economy")
-  assert.equal(favourAfter("timeout", 4), 4, "being slow still costs a child their multiplier")
-  assert.equal(favourAfter("timeout", 1), 1)
-  assert.ok(
-    favourAfter("timeout", 4) > favourAfter("wrong", 4),
-    "a timeout does not cost less than an honest wrong answer",
-  )
-  assert.equal(lampCost("timeout"), lampCost("wrong"))
-  // …and the whole ordering, on the one axis that is left.
-  const d = 5
-  const window = moteSecondsFor(d)
-  assert.ok(marketHushSeconds("timeout", d, window) > marketHushSeconds("wrong", d, 3))
-})
-
-test("no verdict costs a lamp — a slow child is never a punished child", () => {
-  // The other half of the same rule. There are two ways to stop a timeout being
-  // cheaper than a wrong answer and only one of them is allowed: charging the
-  // timeout a lamp would bill a child for still thinking.
-  for (const v of ["correct", "wrong", "timeout"] as const) assert.equal(lampCost(v), 0)
-})
-
-test("a timeout is not reported to the ladder as a wrong answer", () => {
-  assert.equal(reportsToCurriculum("correct"), true)
-  assert.equal(reportsToCurriculum("wrong"), true)
-  assert.equal(reportsToCurriculum("timeout"), false)
-})
-
-test("a timeout costs the whole market; an answer hands it straight back", () => {
-  const d = 5
-  const window = moteSecondsFor(d)
-  assert.equal(marketHushSeconds("timeout", d, window), window)
-  assert.ok(marketHushSeconds("correct", d, 3) < window)
-  assert.ok(marketHushSeconds("wrong", d, 3) < window)
-  // Strictly more, for every answering time the window allows.
-  for (let at = 0; at < window; at += 0.5) {
-    assert.ok(
-      marketHushSeconds("timeout", d, at) >= marketHushSeconds("wrong", d, at),
-      `answering at ${at.toFixed(1)}s cost more market than refusing to`,
-    )
+  for (const d of DIFFICULTIES) {
+    for (const i of [0, 0.5, 1]) {
+      assert.ok(
+        gateHoldSeconds(d, i) >= REVEAL_MIN_SECONDS,
+        `difficulty ${d} at intensity ${i} would tear the sum off the screen`,
+      )
+      assert.ok(gateHoldSeconds(d, i) <= 6.01, "the gate hold ran away past six seconds")
+    }
   }
+  assert.ok(comprehensionLoad(1) < comprehensionLoad(10), "the cadence axis is flat")
+  assert.ok(comprehensionP90Ms(10) > comprehensionP50Ms(10), "p90 is not above p50")
+  assert.equal(CADENCE.fact.p50, 2800)
+})
+
+test("the reveal is patient at the calm end, brief in the middle, and skipped at the top", () => {
+  const rows = [0, 0.2, 0.4, 0.6, 0.8, 1].map((i) => ({
+    intensity: i,
+    "dwell (s)": revealDwellSeconds(i).toFixed(2),
+    "market held (s)": revealHoldSeconds(i).toFixed(2),
+  }))
+  console.table(rows)
+  assert.ok(revealDwellSeconds(0) > 3, `a struggling child is held for only ${revealDwellSeconds(0).toFixed(2)}s`)
+  assert.ok(revealDwellSeconds(0) > revealDwellSeconds(1), "the dwell is not adaptive at all")
+  let previous = Infinity
+  for (let i = 0; i <= 1.0001; i += 0.01) {
+    const v = revealDwellSeconds(i)
+    assert.ok(v <= previous + 1e-9, `the sum was held LONGER at intensity ${i.toFixed(2)}`)
+    assert.ok(v >= REVEAL_MIN_SECONDS - 1e-9, `intensity ${i.toFixed(2)} would tear the sum down`)
+    previous = v
+  }
+  assert.equal(revealHoldSeconds(1), 0, "the top of the range is still held for the reveal")
+  assert.ok(revealHoldSeconds(0) > 3, "the calm end is not held for the reveal at all")
+  assert.ok(Number.isFinite(revealDwellSeconds(Number.NaN)))
+})
+
+// ── what a verdict costs ────────────────────────────────────────────────────
+
+test("no verdict costs a lamp — nothing about arithmetic may cost a life", () => {
+  for (const v of ["fill", "overshoot"] as Verdict[]) {
+    assert.equal(lampCost(v), 0, `a ${v} cost a lamp`)
+  }
+  assert.equal(LAMPS, 3)
+})
+
+test("both verdicts are evidence; a fruit that fell uncut is not a verdict at all", () => {
+  assert.equal(reportsToCurriculum("fill"), true)
+  assert.equal(reportsToCurriculum("overshoot"), true)
+})
+
+test("favour climbs on a fill and falls all the way on an overshoot", () => {
+  let f = 1
+  for (let i = 0; i < 10; i++) f = favourAfter("fill", f)
+  assert.equal(f, FAVOUR_MAX, "favour did not reach its ceiling")
+  assert.equal(favourAfter("overshoot", f), 1, "an overshoot did not cost the whole economy")
+  assert.equal(favourAfter("overshoot", 1), 1)
+})
+
+// ── what an order pays ──────────────────────────────────────────────────────
+
+test("a bigger order is worth more, and an advance is a fraction of the fill", () => {
+  let previous = -1
+  for (const t of [2, 5, 12, 33, 60, 120, 400, 1000, 3000]) {
+    const v = orderValue(t)
+    assert.ok(v > previous, `an order for ${t} pays no more than a smaller one`)
+    previous = v
+    assert.ok(advanceValue(t) > 0, "an advance pays nothing at all")
+    assert.ok(advanceValue(t) < v / 2, "an advance pays more than half of the fill")
+  }
+})
+
+test("three cuts exactly is worth a bonus, and every other count is not", () => {
+  assert.equal(TIDY_CUTS, 3)
+  for (const cuts of [1, 2, 4, 5, 9]) {
+    assert.equal(tidyBonus(33, cuts), 0, `${cuts} cuts paid the three-cut bonus`)
+  }
+  assert.ok(tidyBonus(33, 3) > 0, "filling in exactly three cuts paid nothing extra")
 })
 
 // ── the bots ────────────────────────────────────────────────────────────────
 
-/** The three functions that decide whether the maths is optional. */
-type Rules = {
-  readonly name: string
-  usableSeconds(difficulty: number): number
-  lampCost(verdict: Verdict): number
-  favourAfter(verdict: Verdict, favour: number): number
-  /** Seconds of market the child loses to a question settled this way. */
-  hushSeconds(verdict: Verdict, difficulty: number, atSeconds: number): number
-  /** Does the market keep throwing while an equation is on screen? */
-  readonly marketAliveDuringQuestion: boolean
-}
-
-const AFTER: Rules = {
-  name: "after",
-  usableSeconds: usableAnswerSeconds,
-  lampCost,
-  favourAfter,
-  hushSeconds: marketHushSeconds,
-  marketAliveDuringQuestion: false,
-}
-
-/** The three functions THE SPLIT shipped with, inlined verbatim. */
-const BEFORE: Rules = {
-  name: "before",
-  usableSeconds: (d) => 4.2 + Math.max(0, Math.min(9, d - 1)) * 0.2 - CANDIDATE_READ_LOCK_MS / 1000,
-  lampCost: (v) => (v === "wrong" ? 1 : 0),
-  favourAfter: (v, f) => (v === "correct" ? Math.min(4, f + 1) : v === "wrong" ? 1 : Math.max(1, f - 1)),
-  // `quiet` throttled two knobs and left the density floor and the bomb spawner
-  // alone, so a live question cost the child nothing they were not choosing to
-  // spend. Refusing to engage was uninterrupted slicing.
-  hushSeconds: () => 0,
-  marketAliveDuringQuestion: true,
-}
-
 type Bot = {
-  readonly name: string
-  /** Seconds this child needs to work the item out. `Infinity` = never engages. */
-  readSeconds(difficulty: number, rng: Rng): number
-  /** Given that they finished in time, are they right? */
-  isRight(rng: Rng): boolean
-}
-
-/** Never touches a lantern. The strategy the format has to defeat. */
-const REFUSER: Bot = {
-  name: "never answers",
-  readSeconds: () => Number.POSITIVE_INFINITY,
-  isRight: () => false,
+  name: string
+  /** Which airborne value it takes, or -1 for none. */
+  choose(order: Order, up: number[], rng: Rng): number
 }
 
 /**
- * Reads the equation and works it out, at the pace this repo says a child works
- * at: a spread whose median is the table's p50 and whose ninth decile is its
- * p90. Right nine times in ten once they have finished.
+ * Play a bot against the real order model and the real scoring for a fixed
+ * number of CUTS, so that no bot can win by simply swiping more.
  */
-const READER: Bot = {
-  name: "reads it, honestly and slowly",
-  readSeconds: (d, rng) => {
-    const p50 = comprehensionP50Ms(d) / 1000
-    const p90 = comprehensionP90Ms(d) / 1000
-    // Log-normal through the two quantiles: exp(mu) = p50, and the 1.2816 is the
-    // standard normal's 90th percentile.
-    const mu = Math.log(p50)
-    const sigma = Math.log(p90 / p50) / 1.2816
-    // Box–Muller off the seeded stream; no Math.random anywhere in this file.
-    const u1 = Math.max(1e-9, rng.next())
-    const u2 = rng.next()
-    const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2)
-    return Math.exp(mu + sigma * z)
-  },
-  isRight: (rng) => rng.chance(0.9),
-}
-
-/**
- * Works it out and gets it right — and takes the number of seconds this repo
- * says that costs. Right every single time, once finished.
- *
- * This is the bot the audit named: "answers correctly but slowly". It carries no
- * distribution and no luck, so what it measures is unambiguous — whether a child
- * working at the documented pace can land an answer at all.
- */
-const SLOW_READER: Bot = {
-  name: "answers correctly, at the documented p50",
-  readSeconds: (d) => comprehensionP50Ms(d) / 1000,
-  isRight: () => true,
-}
-
-/** Swipes a lantern the moment it can. One in four. */
-const GUESSER: Bot = {
-  name: "guesses immediately",
-  readSeconds: () => 0.05,
-  isRight: (rng) => rng.chance(0.25),
-}
-
-/**
- * **The exploit a free timeout would open, played on purpose.**
- *
- * A timeout no longer costs favour, so a child who has banked the multiplier to
- * its ceiling could in principle sit on it and let every sigil expire — earning at
- * ×4 for ever and never doing another sum. This bot does exactly that: it reads
- * honestly until `favour` is at the top, and from then on it refuses everything.
- *
- * It has to lose, and it has to lose to a bot that keeps answering, or "a timeout
- * costs the window, not the score" is just a nicer way of saying the maths is
- * optional again. `simulate` is deliberately harsher on this than the real game
- * is: it has no favour *decay* at all, so a hoarder's ×4 here is permanent, where
- * in play `favourLeft` walks it back down a step every nine seconds.
- */
-const HOARDER: Bot = {
-  name: "banks favour to the ceiling, then refuses",
-  readSeconds: (d, rng) => (hoarding ? READER.readSeconds(d, rng) : Number.POSITIVE_INFINITY),
-  isRight: () => true,
-}
-/** Set by `simulate` before every `readSeconds` call. Single-threaded; no state escapes a run. */
-let hoarding = true
-
-type RunOptions = {
-  readonly seconds: number
-  readonly difficulty: number
-  /** Points a second of live market is worth at multiplier one. */
-  readonly slicePerSecond: number
-  /** Seconds of live market between sigils. */
-  readonly sigilGap: number
-  /** Chance per live-market second that the child clips a bomb. */
-  readonly bombPerSecond: number
-}
-
-type RunResult = { score: number; answered: number; correct: number; lampsLost: number; survived: number }
-
-/**
- * One run, in market-seconds.
- *
- * Deliberately coarse: slicing is an income rate rather than a physics sim, and
- * a question is a hole in that income. What it models exactly is the only thing
- * under test — what each of the three ways a question can end actually costs.
- */
-function simulate(rules: Rules, bot: Bot, seed: number, o: RunOptions): RunResult {
+function play(bot: Bot, rung: number, cuts: number, seed: number): { score: number; fills: number; wrecked: number } {
   const rng = new Rng(seed)
-  let t = 0
-  let lamps = LAMPS
-  let favour = 1
+  const printed = printedFor(rung)
+  let order = new Order(rung, makeTarget(rung, () => rng.next()))
   let score = 0
-  let answered = 0
-  let correct = 0
-  let lampsLost = 0
-  let untilSigil = o.sigilGap
-  const step = 0.1
+  let fills = 0
+  let wrecked = 0
+  let favour = 1
+  let combo = 0
+  const buf: number[] = []
 
-  while (t < o.seconds && lamps > 0) {
-    // A live market second: income, and a chance of clipping a bomb.
-    score += o.slicePerSecond * favour * step
-    if (rng.chance(o.bombPerSecond * step)) {
-      lamps -= 1
-      lampsLost += 1
-      favour = 1
-      if (lamps <= 0) break
+  for (let n = 0; n < cuts; n++) {
+    // Four values in the air, drawn the way the director draws them: uniform
+    // over the whole printed set, so helpful and decoy are indistinguishable
+    // without doing the arithmetic.
+    const up: number[] = []
+    for (let i = 0; i < 4; i++) up.push(printed[Math.floor(rng.next() * printed.length)] as number)
+    order.frontier(buf)
+    // The offer invariant: one of them always advances the order.
+    if (!up.some((v) => buf.includes(v)) && buf.length > 0) {
+      up[0] = buf[Math.floor(rng.next() * buf.length)] as number
     }
-    t += step
-    untilSigil -= step
-    if (untilSigil > 0) continue
 
-    // ── a sigil ───────────────────────────────────────────────────────────
-    untilSigil = o.sigilGap
-    const usable = rules.usableSeconds(o.difficulty)
-    hoarding = favour < FAVOUR_MAX
-    const need = bot.readSeconds(o.difficulty, rng)
-    const finished = need <= usable
-    const verdict: Verdict = !finished ? "timeout" : bot.isRight(rng) ? "correct" : "wrong"
-    const at = finished ? need : usable
-
-    if (verdict === "correct") {
-      answered++
-      correct++
-      favour = rules.favourAfter(verdict, favour)
-      // The answer, and the favour wave it fires: the wave doubles, and it opens
-      // roughly a second's worth of market all at once.
-      score += answerGain(o.difficulty, favour) + o.slicePerSecond * favour * 2
-    } else {
-      if (verdict === "wrong") answered++
-      favour = rules.favourAfter(verdict, favour)
-    }
-    lamps -= rules.lampCost(verdict)
-    lampsLost += rules.lampCost(verdict)
-    if (lamps <= 0) break
-
-    // The hole the question left. Under the old rules the market never stopped,
-    // so a refusing child kept earning right through it; a reading child did
-    // not, because they were reading.
-    const hush = rules.hushSeconds(verdict, o.difficulty, at)
-    const blind = rules.marketAliveDuringQuestion ? (Number.isFinite(need) ? Math.min(need, usable) : 0) : hush
-    // Bomb exposure continues wherever the market is alive.
-    if (rules.marketAliveDuringQuestion) {
-      const exposed = Number.isFinite(need) ? Math.min(need, usable) : usable
-      if (rng.chance(o.bombPerSecond * exposed * 0.5)) {
-        lamps -= 1
-        lampsLost += 1
-        favour = 1
+    const v = bot.choose(order, up, rng)
+    if (v < 0) continue
+    const target = order.target
+    const mult = (1 + Math.min(5, Math.floor(combo / 4))) * favour
+    const k = order.take(v)
+    if (k === "helpful") {
+      combo++
+      score += Math.round(advanceValue(target) * mult)
+      if (order.filled) {
+        fills++
+        favour = favourAfter("fill", favour)
+        score += Math.round((orderValue(target) + tidyBonus(target, order.cuts)) * ((1 + Math.min(5, Math.floor(combo / 4))) * favour))
+        order = new Order(rung, makeTarget(rung, () => rng.next()))
       }
-      // A refusing child was slicing right through the window.
-      if (!Number.isFinite(need)) score += o.slicePerSecond * favour * usable
+    } else if (k === "overshoot") {
+      wrecked++
+      combo = 0
+      favour = favourAfter("overshoot", favour)
+      order = new Order(rung, makeTarget(rung, () => rng.next()))
     }
-    t += Math.max(blind, Number.isFinite(need) ? Math.min(need, usable) : usable)
+    // A decoy: nothing. Not a point, not a penalty, not a combo break.
   }
-
-  return { score, answered, correct, lampsLost, survived: Math.min(t, o.seconds) }
+  return { score, fills, wrecked }
 }
 
-function meanScore(rules: Rules, bot: Bot, o: RunOptions, runs = 60): number {
-  let total = 0
-  for (let i = 0; i < runs; i++) total += simulate(rules, bot, 1000 + i * 7919, o).score
-  return total / runs
+const MASHER: Bot = {
+  name: "masher — swipes at whatever is nearest, never reads",
+  choose: (_o, up, rng) => up[Math.floor(rng.next() * up.length)] as number,
 }
 
-const BASE: RunOptions = {
-  seconds: 300,
-  difficulty: 5,
-  slicePerSecond: 120,
-  sigilGap: 6,
-  bombPerSecond: 0.01,
+const READER: Bot = {
+  name: "reader — takes a value that advances the order, lets the rest go",
+  choose: (o, up) => {
+    const f = o.frontier([])
+    const hit = up.find((v) => f.includes(v))
+    return hit ?? -1
+  },
 }
 
-test("BEFORE: never answering outscored answering correctly but slowly", () => {
-  // The defect, played out. Not an assertion about the fix — an assertion about
-  // what the game shipped as, kept green so the "before" column cannot rot.
-  //
-  // The slow reader is right every time. It loses no lamps, guesses at nothing
-  // and makes no mistakes. It simply takes the number of seconds this repo says
-  // the item takes, and the window it shipped with was shorter than that — so it
-  // never landed a single answer, and paid for the attempt in market time it did
-  // not spend slicing.
-  const refuser = meanScore(BEFORE, REFUSER, BASE)
-  const reader = meanScore(BEFORE, SLOW_READER, BASE)
-  const landed = simulate(BEFORE, SLOW_READER, 4242, BASE).answered
-  console.log(
-    `  before: refuser ${refuser.toFixed(0)} vs correct-but-slow ${reader.toFixed(0)} ` +
-      `(${String(landed)} answers landed in ${String(BASE.seconds)}s)`,
-  )
-  assert.equal(landed, 0, "the shipped window was answerable at the documented p50 after all")
-  assert.ok(
-    refuser > reader,
-    `the old rules did not actually favour refusing: ${refuser.toFixed(0)} vs ${reader.toFixed(0)}`,
-  )
-})
+const HOARDER: Bot = {
+  name: "hoarder — reads, and holds out for the exact finisher",
+  choose: (o, up) => {
+    if (up.includes(o.residual)) return o.residual
+    const f = o.frontier([])
+    const hit = up.find((v) => f.includes(v))
+    return hit ?? -1
+  },
+}
 
-test("BEFORE: refusing also beat guessing, which is the same bug from the other side", () => {
-  // A child at second 3.7 with the sum half-done had two moves: swipe, or let it
-  // go. Swiping cost a lamp three times in four. Letting it go cost one point of
-  // favour. The rational play was to look away.
-  const refuser = meanScore(BEFORE, REFUSER, BASE)
-  const guesser = meanScore(BEFORE, GUESSER, BASE)
-  assert.ok(
-    refuser > guesser,
-    `guessing was already worse than refusing: ${guesser.toFixed(0)} vs ${refuser.toFixed(0)}`,
-  )
-})
-
-test("AFTER: answering correctly but slowly beats never answering, at every difficulty", () => {
-  // The inversion, directly. Same bot, same seeds, same market.
-  for (let difficulty = 1; difficulty <= 10; difficulty++) {
-    const o = { ...BASE, difficulty }
-    const refuser = meanScore(AFTER, REFUSER, o)
-    const reader = meanScore(AFTER, SLOW_READER, o)
+test("READING BEATS MASHING AT EVERY RUNG, given the same number of cuts", () => {
+  const rows: Array<Record<string, string | number>> = []
+  for (let rung = 0; rung < BANDS.length; rung++) {
+    const m = play(MASHER, rung, 600, 0x51ce + rung)
+    const r = play(READER, rung, 600, 0x51ce + rung)
+    const h = play(HOARDER, rung, 600, 0x51ce + rung)
+    rows.push({
+      rung: BANDS[rung]!.name,
+      "masher score": m.score,
+      "masher orders": m.fills,
+      "masher wrecked": m.wrecked,
+      "reader score": r.score,
+      "reader orders": r.fills,
+      "hoarder score": h.score,
+      "reader ÷ masher": (r.score / Math.max(1, m.score)).toFixed(1),
+    })
     assert.ok(
-      reader > refuser,
-      `difficulty ${String(difficulty)}: refusing scored ${refuser.toFixed(0)}, correct-but-slow scored ${reader.toFixed(0)}`,
+      r.score > m.score * 2,
+      `${BANDS[rung]!.name}: a reader scored ${r.score} against a masher's ${m.score} on the same ` +
+        `600 cuts — guessing is still competitive`,
     )
+    assert.equal(r.wrecked, 0, "a reader wrecked an order, which is impossible")
   }
+  console.table(rows)
 })
 
-test("AFTER: reading the equation beats refusing to, at every difficulty", () => {
-  for (let difficulty = 1; difficulty <= 10; difficulty++) {
-    const o = { ...BASE, difficulty }
-    const refuser = meanScore(AFTER, REFUSER, o)
-    const reader = meanScore(AFTER, READER, o)
-    assert.ok(
-      reader > refuser,
-      `difficulty ${String(difficulty)}: refusing scored ${refuser.toFixed(0)}, reading scored ${reader.toFixed(0)}`,
-    )
-  }
-})
-
-test("AFTER: reading beats refusing however much the slicing is worth", () => {
-  // The one parameter a reader could reasonably argue about is how much a second
-  // of market is worth. So it is swept rather than chosen: the ordering has to
-  // survive a market worth ten times as much per second as this one.
-  for (const slicePerSecond of [20, 60, 120, 240, 600, 1200]) {
-    const o = { ...BASE, slicePerSecond }
-    const refuser = meanScore(AFTER, REFUSER, o)
-    const reader = meanScore(AFTER, READER, o)
-    assert.ok(
-      reader > refuser,
-      `at ${String(slicePerSecond)} points/s: refusing ${refuser.toFixed(0)}, reading ${reader.toFixed(0)}`,
-    )
-  }
-})
-
-test("AFTER: reading beats guessing, which beats refusing", () => {
-  // The whole ordering, in one line. Guessing above refusing is correct and
-  // deliberate: engaging badly must still beat not engaging, or the game is
-  // teaching a child that the safe move is to look away. Reading above guessing
-  // is what keeps it real maths — a guesser burns the favour economy three
-  // times in four.
-  const refuser = meanScore(AFTER, REFUSER, BASE)
-  const guesser = meanScore(AFTER, GUESSER, BASE)
-  const reader = meanScore(AFTER, READER, BASE)
-  console.log(
-    `  after:  refuser ${refuser.toFixed(0)} < guesser ${guesser.toFixed(0)} < reader ${reader.toFixed(0)}`,
-  )
-  assert.ok(guesser > refuser, `guessing ${guesser.toFixed(0)} did not beat refusing ${refuser.toFixed(0)}`)
-  assert.ok(reader > guesser, `reading ${reader.toFixed(0)} did not beat guessing ${guesser.toFixed(0)}`)
-})
-
-test("AFTER: the honest reader actually lands their answers", () => {
-  // The reason the old ordering existed at all: at 3.78 s usable against a 6 s
-  // p50, a child reading honestly finished about a fifth of the time. The fix is
-  // only a fix if that number moves.
-  const before = simulate(BEFORE, READER, 4242, BASE)
-  const after = simulate(AFTER, READER, 4242, BASE)
-  const beforeRate = before.answered / Math.max(1, Math.round(before.survived / BASE.sigilGap))
-  assert.ok(beforeRate < 0.5, `the shipped window already worked: ${(beforeRate * 100).toFixed(0)}%`)
-  assert.ok(after.answered > before.answered * 2, `${String(before.answered)} → ${String(after.answered)}`)
-})
-
-test("AFTER: banking favour and then refusing loses to just answering", () => {
-  // The exploit a free timeout would open, closed. Swept over difficulty and over
-  // how much a second of market is worth, because those are the two knobs that
-  // decide whether a ×4 sat on is worth more than a ×4 spent.
-  for (let difficulty = 1; difficulty <= 10; difficulty++) {
-    for (const slicePerSecond of [20, 120, 1200]) {
-      const o = { ...BASE, difficulty, slicePerSecond }
-      const hoarder = meanScore(AFTER, HOARDER, o)
-      const reader = meanScore(AFTER, SLOW_READER, o)
-      assert.ok(
-        reader > hoarder,
-        `difficulty ${String(difficulty)} at ${String(slicePerSecond)} pts/s: ` +
-          `hoarding favour scored ${hoarder.toFixed(0)}, answering scored ${reader.toFixed(0)}`,
-      )
+test("A CUT THAT DOES NOT ADVANCE THE ORDER PAYS NOTHING — the whole anti-mash rule", () => {
+  // Stated as a property rather than as a comment. Walk every rung, visiting a
+  // wide spread of residuals, and at each state try every printed value: a
+  // value that does not advance the order leaves the order bit-for-bit
+  // unchanged, and `economy.ts` has no function that takes a non-advancing cut
+  // as an argument at all. There is nothing for volume to buy.
+  const rng = new Rng(0xdec0)
+  let decoys = 0
+  let overshoots = 0
+  const rows: Array<Record<string, string | number>> = []
+  for (let rung = 0; rung < BANDS.length; rung++) {
+    const printed = printedFor(rung)
+    let rungDecoys = 0
+    let rungHelpful = 0
+    let rungOver = 0
+    for (let run = 0; run < 200; run++) {
+      const order = new Order(rung, makeTarget(rung, () => rng.next()))
+      const buf: number[] = []
+      let guard = 0
+      while (!order.filled && guard++ < 30) {
+        for (const v of printed) {
+          const k = order.classify(v)
+          if (k === "helpful") {
+            rungHelpful++
+            continue
+          }
+          const before = { residual: order.residual, cuts: order.cuts, plate: order.plate() }
+          assert.equal(order.take(v), k)
+          assert.equal(order.residual, before.residual, `a ${k} paid its way into the order`)
+          assert.equal(order.cuts, before.cuts)
+          assert.equal(order.plate(), before.plate)
+          if (k === "decoy") rungDecoys++
+          else rungOver++
+        }
+        const f = order.frontier(buf)
+        order.take(f[Math.floor(rng.next() * f.length)] as number)
+      }
     }
-  }
-  const hoarder = meanScore(AFTER, HOARDER, BASE)
-  const refuser = meanScore(AFTER, REFUSER, BASE)
-  const reader = meanScore(AFTER, SLOW_READER, BASE)
-  console.log(
-    `  after:  refuser ${refuser.toFixed(0)} < hoarder ${hoarder.toFixed(0)} < reader ${reader.toFixed(0)}`,
-  )
-  // And the hoarder does beat the pure refuser, which is the anti-vacuity half:
-  // the free timeout really is worth something, it is just worth less than doing
-  // the sums. A hoarder that scored the same as a refuser would mean the bot never
-  // banked any favour and this case measured nothing.
-  assert.ok(
-    hoarder > refuser * 1.2,
-    `hoarding ${hoarder.toFixed(0)} is no better than refusing ${refuser.toFixed(0)} — the bot never banked favour`,
-  )
-})
-
-test("AFTER: a timeout leaves the multiplier where it was, at every rung", () => {
-  // The property directly, so the bots above cannot be the only thing asserting
-  // it. A child who ran out of time keeps everything they had earned.
-  for (let favour = 1; favour <= FAVOUR_MAX; favour++) {
-    assert.equal(favourAfter("timeout", favour), favour, `a timeout at favour ${String(favour)}`)
-    assert.equal(favourAfter("wrong", favour), 1, `a wrong lantern at favour ${String(favour)}`)
-  }
-})
-
-test("AFTER: an honest reader never loses a lamp to the arithmetic", () => {
-  // Lamps come off bombs, which are a thing a child chooses to touch. Nothing a
-  // child does with a lantern — right, wrong, or too slow — can put one out.
-  for (let difficulty = 1; difficulty <= 10; difficulty++) {
-    const o = { ...BASE, difficulty, bombPerSecond: 0 }
-    for (const bot of [REFUSER, READER, GUESSER]) {
-      const r = simulate(AFTER, bot, 555 + difficulty, o)
-      assert.equal(
-        r.lampsLost,
-        0,
-        `difficulty ${String(difficulty)}, ${bot.name}: lost ${String(r.lampsLost)} lamps with no bombs in play`,
-      )
+    decoys += rungDecoys
+    overshoots += rungOver
+    rows.push({
+      rung: BANDS[rung]!.name,
+      "printed values": printed.length,
+      helpful: rungHelpful,
+      decoy: rungDecoys,
+      overshoot: rungOver,
+      "% of cuts that are a real judgement": (
+        ((rungDecoys + rungOver) / (rungDecoys + rungOver + rungHelpful)) *
+        100
+      ).toFixed(0),
+    })
+    if (rung > 0) {
+      assert.ok(rungDecoys > 0, `${BANDS[rung]!.name}: no printed value is ever a decoy`)
     }
+    assert.ok(rungOver > 0, `${BANDS[rung]!.name}: no printed value ever overshoots`)
+  }
+  console.table(rows)
+  assert.ok(decoys > 1000 && overshoots > 1000, "the walk did not visit enough states")
+})
+
+test("banking a big multiplier and then mashing loses to just reading", () => {
+  // The shape of the old build's dominant strategy, retried against the new one:
+  // build favour to the ceiling, then cash in on volume. It cannot work, because
+  // volume pays nothing and the first overshoot takes the multiplier back to one.
+  const OPPORTUNIST: Bot = {
+    name: "opportunist — reads until favour is banked, then swipes",
+    choose: (o, up, rng) => {
+      if (o.cuts === 0) {
+        const f = o.frontier([])
+        const hit = up.find((v) => f.includes(v))
+        return hit ?? -1
+      }
+      return up[Math.floor(rng.next() * up.length)] as number
+    },
+  }
+  for (let rung = 1; rung < BANDS.length; rung++) {
+    const o = play(OPPORTUNIST, rung, 600, 0xbeef + rung)
+    const r = play(READER, rung, 600, 0xbeef + rung)
+    assert.ok(
+      r.score > o.score,
+      `${BANDS[rung]!.name}: banking and then swiping scored ${o.score} against a reader's ${r.score}`,
+    )
   }
 })

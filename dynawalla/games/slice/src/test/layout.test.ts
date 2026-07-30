@@ -1,6 +1,6 @@
 // THE ROOM.
 //
-// THE SPLIT draws its whole HUD on a canvas, and a canvas cannot read
+// MATH NINJA draws its whole HUD on a canvas, and a canvas cannot read
 // `env(safe-area-inset-*)`. It also declares `viewport-fit=cover`, which opts
 // the document INTO the notch, the home indicator and the rounded corners. So
 // for as long as this game has existed its score has been drawn at `y = 12`,
@@ -31,7 +31,7 @@ import {
   type Insets,
   type Rect,
 } from "../../../../packs/shared/game-chrome/index.ts"
-import { candidateHome, candidateRow, hudLayout, lampX, tickRect } from "../render/hud.ts"
+import { candidateHome, candidateRow, hudLayout, lampX } from "../render/hud.ts"
 
 const VIEWPORTS: Array<[string, number, number]> = [
   ["phone portrait, small", 320, 568],
@@ -71,7 +71,7 @@ for (const [pname, insets] of PROFILES) {
       for (const [what, box] of [
         ["the score column", l.left],
         ["the lamps", l.lamps],
-        ["the question banner", l.banner],
+        ["the order plate", l.banner],
       ] as const) {
         assert.equal(
           hitsHostChrome(box, w, insets),
@@ -101,12 +101,12 @@ for (const [pname, insets] of PROFILES) {
             `a lantern row from (${fromX.toFixed(0)},${fromY.toFixed(0)}) leaves the safe rect: ` +
               JSON.stringify(row.box),
           )
-          // The banner carries the sum being asked. A lantern row on top of it
-          // takes away the one place the question can be re-read.
+          // The plate carries the order. A lantern row on top of it takes away
+          // the one place the child can re-read what they are filling.
           assert.ok(
             row.box.y >= l.banner.y + l.banner.h,
-            `a lantern row from (${fromX.toFixed(0)},${fromY.toFixed(0)}) covers the question ` +
-              `banner by ${(l.banner.y + l.banner.h - row.box.y).toFixed(1)}px`,
+            `a lantern row from (${fromX.toFixed(0)},${fromY.toFixed(0)}) covers the order ` +
+              `plate by ${(l.banner.y + l.banner.h - row.box.y).toFixed(1)}px`,
           )
           // Every lantern is individually reachable, not just the row's box.
           for (let i = 0; i < 4; i++) {
@@ -133,8 +133,8 @@ for (const [pname, insets] of PROFILES) {
 
       // The banner never lands on the readouts. It is drawn last and it is
       // opaque, so an overlap does not crowd the score — it erases it.
-      assert.equal(overlaps(l.banner, l.left), false, "the question banner covers the score column")
-      assert.equal(overlaps(l.banner, l.lamps), false, "the question banner covers the lamps")
+      assert.equal(overlaps(l.banner, l.left), false, "the order plate covers the score column")
+      assert.equal(overlaps(l.banner, l.lamps), false, "the order plate covers the lamps")
 
       // Three lanterns, in order, all inside the safe rect.
       let prev = Number.POSITIVE_INFINITY
@@ -146,12 +146,6 @@ for (const [pname, insets] of PROFILES) {
           x - l.lampR >= l.area.x - 0.5 && x + l.lampR <= l.area.x + l.area.w + 0.5,
           `lamp ${i} hangs outside the safe rect at x=${x.toFixed(1)}`,
         )
-      }
-
-      // The relight ticks live under the lamps, inside the lamps' own box.
-      for (let i = 0; i < 2; i++) {
-        const t = tickRect(i, l)
-        assert.ok(inside(t, l.lamps), `relight tick ${i} escapes the lamp block`)
       }
 
       // Legibility: the score is the largest thing on the HUD and it must not

@@ -16,14 +16,25 @@ import { createStubHost } from "../stubHost.ts"
 
 export type Handler = (e: unknown) => void
 export type Report = { questionId: string; correct: boolean; ms: number; answered: string }
-export type Target = { x: number; y: number; r: number; kind: number; text: string; correct: boolean }
+export type Target = {
+  x: number
+  y: number
+  r: number
+  kind: number
+  text: string
+  correct: boolean
+  value: number
+}
 export type Dbg = {
   stats(): Record<string, number | string>
   targets(): Target[]
+  setIntensity(v: number): void
 }
 
-export const B_SIGIL = 1
+export const B_GOURD = 0
+export const B_MELON = 1
 export const B_MOTE = 2
+export const B_BOMB = 3
 
 /**
  * A surface with no pixels, but one that counts.
@@ -238,7 +249,7 @@ export function snapshot(s: Surface): string {
     draws: s.drawsSoFar(),
     elapsed: st.elapsed,
     bodies: st.bodies,
-    heat: st.heat,
+    intensity: st.intensity,
     score: st.score,
     lamps: st.lamps,
     particles: st.particles,
@@ -274,6 +285,37 @@ export function begin(
 }
 
 /** A swipe straight through a point, fast enough to be a cut and not a drag. */
+/** The values that would advance the order right now, straight off the plate. */
+export function frontier(): number[] {
+  const raw = String(dbg().stats().frontier)
+  return raw === "" ? [] : raw.split(",").map(Number)
+}
+
+/** A gourd in the air whose value would advance the order, if one is up. */
+export function helpfulUp(): Target | undefined {
+  const f = frontier()
+  return dbg()
+    .targets()
+    .find((t) => t.kind === B_GOURD && t.value > 0 && f.includes(t.value))
+}
+
+/** A gourd in the air that is bigger than what is left — the one miss. */
+export function overshootUp(): Target | undefined {
+  const residual = Number(dbg().stats().residual)
+  return dbg()
+    .targets()
+    .find((t) => t.kind === B_GOURD && t.value > residual)
+}
+
+/** Step until a predicate holds, or give up. Returns whether it held. */
+export function until(s: Surface, frames: number, ok: () => boolean): boolean {
+  for (let i = 0; i < frames; i++) {
+    if (ok()) return true
+    s.step(16)
+  }
+  return ok()
+}
+
 export function swipe(s: Surface, x: number, y: number): void {
   const canvas = s.made.find((e) => e.listeners.has("pointerdown"))
   assert.ok(canvas, "the canvas never bound a pointerdown")
