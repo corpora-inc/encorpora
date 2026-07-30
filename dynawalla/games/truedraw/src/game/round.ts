@@ -102,11 +102,19 @@ export const TIMING: Timing = {
     // The bow, and the slate rolling itself right before it flies away. The
     // longest thing in the game, because it is the best thing in the game.
     spot: 940,
-    // You banked a counterfeit. It goes down like a bank and the coins drain
-    // back out. No sound, no buzz, no colour — the loss is the whole of it.
-    dud: 560,
-    // You threw a good slate away. It flies up and the coins drain. Also silent.
-    burn: 560,
+    // You banked a counterfeit. THE SLATE FINISHES THE SUM: the true value
+    // arrives in the accent, and then it is HELD there. `REVEAL_SHARE` in
+    // `scene.ts` spends the first 45% completing it and the remaining 55% —
+    // about half a second — standing still so it can be read. That hold is the
+    // whole reason this beat is longer than a bank's.
+    //
+    // It is not a punishment beat and it is not a spectacle: no buzz, no colour
+    // but the accent, no caller, and a voice a fifth the loudness of a
+    // celebration. `energy.ts` proves it stays the smallest reaction there is.
+    dud: 900,
+    // You threw a good slate away, so the sum on it was true all along. Same
+    // beat, and the slate confirms rather than corrects.
+    burn: 900,
     // Nobody said anything. The slate just sinks. The shortest beat there is,
     // because there is nothing to show and a child who is still thinking should
     // not be made to watch a reaction to their not answering.
@@ -123,10 +131,14 @@ export const TIMING_REDUCED: Timing = {
     // Still the longest, still the payoff: a cross-fade from the wrong numeral
     // to the right one instead of a roll. A branch, not a degradation.
     spot: 520,
-    // Unchanged, and they are the ones that could not change: there is no motion
-    // in a silent loss to reduce.
-    dud: 560,
-    burn: 560,
+    // UNCHANGED, and deliberately. The reduced branch shortens things that MOVE;
+    // most of a miss beat is a completed sum standing still being read, and
+    // reading time is not motion. Shortening it would take a child who asked for
+    // less movement and give them less time to see the answer — which is the one
+    // thing the beat exists for. What reduced motion changes here is HOW the sum
+    // completes: a cross-fade in place instead of a rolling counter wheel.
+    dud: 900,
+    burn: 900,
     lapse: 300,
   },
   overLock: 900,

@@ -29,6 +29,7 @@ import { reportSettled } from "./game/report.ts"
 import { isCorrect } from "./game/response.ts"
 import { MAX_STEP_MS, Round, TIMING, TIMING_REDUCED, type RoundEvent } from "./game/round.ts"
 import { Rng } from "./core/rng.ts"
+import { Flourishes, type Flourish } from "./render/flourish.ts"
 import { Scene, type Drag } from "./render/scene.ts"
 
 /** A milestone the child *reached*. Never fired when a run ends. */
@@ -52,7 +53,14 @@ export function mountTrueDraw(
   const reduced = host.prefersReducedMotion()
   const scene = new Scene(canvas)
   const audio = new Audio()
-  const rng = new Rng((Date.now() ^ 0x51ed) >>> 0)
+  const seed = (Date.now() ^ 0x51ed) >>> 0
+  const rng = new Rng(seed)
+  // A SEPARATE stream from the dealer's, on purpose. Sharing one would make which
+  // celebration a child sees a function of how many falsehoods the dealer happened
+  // to build — so a replay of the same seed would diverge the moment the host
+  // served a question with one usable distractor instead of two, and neither the
+  // animation nor the arithmetic would be reproducible.
+  const flourishes = new Flourishes(new Rng((seed ^ 0x9e3779b9) >>> 0))
   const dealer = new Dealer(host, rng)
   const round = new Round(() => dealer.deal(), reduced ? TIMING_REDUCED : TIMING)
 
@@ -75,9 +83,10 @@ export function mountTrueDraw(
         heading: "The two moves",
         lines: [
           "Read the slate. It says something like 47 + 25 = 62.",
-          "If that sum is RIGHT, swipe down. The slate drops into your bag and you get coins.",
-          "If that sum is WRONG, swipe up. The slate is thrown away, and you get coins for spotting it.",
-          "As soon as your finger moves, the way you are heading lights up.",
+          "There is an = at the bottom of the screen and a ≠ at the top. Those are the two answers.",
+          "If the sum is right, swipe DOWN to the =. The slate lands on your pile and you get coins.",
+          "If it is not, swipe UP to the ≠. The slate is thrown away, and you get coins for spotting it.",
+          "As soon as your finger moves, the mark you are heading for lights up.",
         ],
       },
       {
@@ -130,6 +139,8 @@ export function mountTrueDraw(
   let frame = 0
   let milestones = 0
   let coins = 0
+  /** The celebration or reveal the current verdict drew. One decision, two senses. */
+  let flourish: Flourish | null = null
 
   const handle = (events: readonly RoundEvent[]): void => {
     for (const event of events) {
@@ -150,7 +161,11 @@ export function mountTrueDraw(
           // fast-and-right climbs nearly four times as fast as slow-and-right, and
           // a lapse moves nothing at all.
           dealer.settle(event.outcome, event.quickness)
-          audio.outcome(event.outcome)
+          // ONE draw, for the picture and the sound together. Two independent
+          // picks would drift and hand the child a bloom with a bank's chime
+          // under it.
+          flourish = flourishes.next(event.outcome)
+          audio.outcome(event.outcome, flourish?.voice ?? 0)
           const cue = HAPTIC[event.outcome]
           if (cue) host.haptic(cue)
           // A run of ten calls is a thing the child finished. A run that ended is
@@ -174,6 +189,7 @@ export function mountTrueDraw(
         case "begin": {
           milestones = 0
           coins = 0
+          flourish = null
           break
         }
         default:
@@ -209,6 +225,7 @@ export function mountTrueDraw(
       best,
       reduced,
       drag,
+      flourish,
       // The slate goes blank behind the sheet. It is blurred and dimmed by the
       // manual's own scrim, but "mostly illegible" is the wrong standard for a
       // file that argues at length against giving a child readable, unanswerable

@@ -21,6 +21,25 @@ export const BRASS_LIT = "#e6c281"
 
 export const LAPIS = "#22406b"
 
+/**
+ * THE ACCENT — and the one thing in this pack that is allowed to be called that.
+ *
+ * It is `BRASS_LIT`, the brightest material on the street, and it has exactly one
+ * job beyond being the frame's highlight: **it is the colour a missed sum
+ * completes itself in.**
+ *
+ * The fleet rule, from `games/stack`, which is the reference implementation: when
+ * a child gets it wrong the equation simply completes itself in the accent, held
+ * long enough to read, with no adjective attached to the child. NEVER red. NEVER
+ * the word WRONG. There is no red anywhere in this palette and there must never
+ * be one — `scene.test.ts` asserts that against the ink the renderer actually
+ * emits, not against this comment.
+ *
+ * Aliased rather than duplicated so a future re-tint of the brass cannot leave the
+ * correction the only thing on the street still wearing the old colour.
+ */
+export const ACCENT = BRASS_LIT
+
 /** The statement before the slate lights: legible, and plainly unlit. */
 export const CHALK_UNLIT = "#5c6577"
 /** The statement once it lights. Cold, celestial, the only bright thing. */

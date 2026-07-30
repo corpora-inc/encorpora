@@ -19,13 +19,20 @@
 // makes on rotation. A clearance test that calls `layoutFor` itself is a test
 // of the arguments the test chose, not of the ones the game passes.
 
-import { hitsHostChrome, NO_INSETS, type Insets } from "../../../../packs/shared/game-chrome/index.ts"
+import {
+  exitRect,
+  helpRect,
+  hitsHostChrome,
+  HOST_PROGRESS_H,
+  NO_INSETS,
+  type Insets,
+} from "../../../../packs/shared/game-chrome/index.ts"
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { fakeCanvas } from "./fakeCanvas.ts"
 import { Scene } from "./scene.ts"
-import { layoutFor, type Rect } from "./street.ts"
+import { columnOf, densityOf, GESTURE_STRIP, layoutFor, type Rect } from "./street.ts"
 
 const VIEWPORTS: readonly (readonly [string, number, number])[] = [
   ["phone portrait, small", 320, 568],
@@ -105,6 +112,123 @@ for (const [shape, w, h] of VIEWPORTS) {
           `${name} ${show(box)} runs outside the safe area ${show(area)} at ${String(w)}×${String(h)} ${where}`,
         )
       }
+    })
+    // ── THE PINNING, which is the founder's note, at every shape ────────────
+    //
+    // "The cache/keep score/pile could be locked to the bottom of the screen and
+    // the discard target to the top." Locked, not merely near: each of the two
+    // destinations sits ON the boundary of the column the game owns, and the
+    // boundaries themselves come out of `layoutFor` rather than being recomputed
+    // here — a clearance test that derives its own edge is a test of the edge it
+    // derived.
+
+    test(`THE HOARD IS LOCKED TO THE BOTTOM — ${shape} (${String(w)}×${String(h)}), ${where}`, () => {
+      const l = streetAt(w, h, insets).layout
+      const bottom = l.bag.y + l.bag.h
+
+      assert.ok(
+        Math.abs(bottom - l.floor) < 0.5,
+        `the hoard ends at ${bottom.toFixed(1)} and the floor is ${l.floor.toFixed(1)} — ` +
+          `${(l.floor - bottom).toFixed(1)}px of nothing under the keep pile`,
+      )
+      // The floor itself clears BOTH hazards. Android's gesture strip reports an
+      // inset of ZERO on many devices — it is an overlay, not a cutout — so the
+      // bottom inset alone is not enough and never was.
+      assert.ok(
+        l.floor <= h - GESTURE_STRIP + 0.001,
+        `the floor at ${l.floor.toFixed(1)} is inside the ${String(GESTURE_STRIP)}px the system swipes in`,
+      )
+      assert.ok(
+        l.floor <= h - insets.bottom + 0.001,
+        `the floor at ${l.floor.toFixed(1)} is under the ${String(insets.bottom)}px bottom inset`,
+      )
+      // The shots ride directly above it rather than floating somewhere.
+      assert.ok(l.shots.y + l.shots.h <= l.bag.y + 0.5, "the shots are inside the hoard")
+      assert.ok(
+        l.bag.y - (l.shots.y + l.shots.h) < (l.floor - l.ceiling) * 0.1,
+        "the shots have drifted away from the hoard they belong to",
+      )
+    })
+
+    test(`THE CHUTE IS LOCKED TO THE TOP — ${shape} (${String(w)}×${String(h)}), ${where}`, () => {
+      const l = streetAt(w, h, insets).layout
+      assert.ok(
+        Math.abs(l.chute.y - l.ceiling) < 0.5,
+        `the chute starts at ${l.chute.y.toFixed(1)} and the ceiling is ${l.ceiling.toFixed(1)}`,
+      )
+      // And the ceiling clears everything the HOST paints over the game: both 44px
+      // corner controls and the progress hairline. The chute is pinned BELOW them
+      // rather than threading between them, which is the only placement correct at
+      // every width — at 320px there are 192px between the two corners and at 320px
+      // in landscape with a side notch there are fewer.
+      const exit = exitRect(insets)
+      const help = helpRect(w, insets)
+      assert.ok(l.ceiling >= exit.y + exit.h, `the ceiling is inside the exit control`)
+      assert.ok(l.ceiling >= help.y + help.h, `the ceiling is inside the how-to-play control`)
+      assert.ok(l.ceiling >= insets.top + HOST_PROGRESS_H, `the ceiling is under the progress hairline`)
+      assert.equal(hitsHostChrome(l.chute, w, insets), false)
+    })
+
+    test(`NOTHING OVERLAPS AND NO BAND IS DEAD — ${shape} (${String(w)}×${String(h)}), ${where}`, () => {
+      const l = streetAt(w, h, insets).layout
+      const column = columnOf(l)
+
+      // In order, top to bottom, with nothing sitting on anything else.
+      let cursor = l.ceiling
+      for (const [name, box] of column) {
+        assert.ok(
+          box.y >= cursor - 0.5,
+          `${name} ${show(box)} starts at ${box.y.toFixed(1)}, above ${cursor.toFixed(1)}`,
+        )
+        cursor = box.y + box.h
+      }
+      assert.ok(cursor <= l.floor + 0.5, `the column runs ${(cursor - l.floor).toFixed(1)}px past the floor`)
+
+      // ── the founder's actual complaint, as two numbers ──────────────────
+      //
+      // The layout this replaced measured everything downward from the slate and
+      // then simply stopped: on a 320×568 phone with a notch it left 163px — 39%
+      // of the column — dead in one continuous strip below the hoard, and covered
+      // only 39% of it. Those are the numbers this asserts against, and the old
+      // layout fails both by a wide margin.
+      // The chevrons and the marks each keep their own band inside their own
+      // destination. "Put the mark in the middle of the chevrons" is legible on a
+      // 190px iPad hoard and a smudge on a 40px one, which is why these are
+      // rectangles rather than fractions written into the drawing code.
+      for (const [name, band, host] of [
+        ["the chute's chevrons", l.chuteFlow, l.chute],
+        ["the ≠ mark", l.chuteMark, l.chute],
+        ["the hoard's chevrons", l.hoardFlow, l.bag],
+        ["the = mark", l.hoardMark, l.bag],
+      ] as const) {
+        assert.ok(band.y >= host.y - 0.001, `${name} starts above its destination`)
+        assert.ok(band.y + band.h <= host.y + host.h + 0.001, `${name} runs past its destination`)
+        assert.ok(band.h > 0, `${name} has no height`)
+      }
+      const apart = (a: Rect, b: Rect): boolean => a.y + a.h <= b.y + 0.001 || b.y + b.h <= a.y + 0.001
+      assert.ok(apart(l.chuteFlow, l.chuteMark), "the ≠ is drawn through the chevrons")
+      assert.ok(apart(l.hoardFlow, l.hoardMark), "the = is drawn through the chevrons")
+      // And the mark fits the band it was sized for, rather than overflowing the
+      // one thing on the street that has to be readable at 40px.
+      assert.ok(
+        l.markPx * 0.75 <= Math.min(l.chuteMark.h, l.hoardMark.h) + 1,
+        `a ${String(l.markPx)}px mark in a ${Math.min(l.chuteMark.h, l.hoardMark.h).toFixed(1)}px band`,
+      )
+      // The pile, the lip and the count stack down the hoard without colliding.
+      assert.ok(l.hoardMark.y + l.hoardMark.h <= l.lipY + 0.001, "the = mark sits on the lip")
+      assert.ok(l.lipY < l.countY, "the count is above the lip it sits on")
+      assert.ok(l.countY < l.pileY, "the count is buried in the card stack")
+      assert.ok(l.pileY + l.cardH <= l.bag.y + l.bag.h, "the card stack runs out of the hoard")
+
+      const { covered, deadest } = densityOf(l)
+      assert.ok(
+        covered >= 0.55,
+        `only ${(covered * 100).toFixed(0)}% of the playable column is used at ${String(w)}×${String(h)} ${where}`,
+      )
+      assert.ok(
+        deadest <= 0.2,
+        `a dead band of ${(deadest * 100).toFixed(0)}% of the column at ${String(w)}×${String(h)} ${where}`,
+      )
     })
   }
 }
