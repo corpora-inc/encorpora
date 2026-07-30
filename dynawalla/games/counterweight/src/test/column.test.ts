@@ -1,4 +1,4 @@
-// The Turk's pan draws a column, and the host hands over a string. This is the
+// The goods' pan draws a column, and the host hands over a string. This is the
 // join, and its only hard rule is that the pan is never empty.
 
 import assert from "node:assert/strict"

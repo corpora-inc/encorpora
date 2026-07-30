@@ -1,10 +1,11 @@
 // THE STEELYARD.
 //
 // The wiring, and nothing else: the rules are in `game/bout.ts`, the physics in
-// `sim/beam.ts`, the yard in `render/scene.ts`. This file owns the frame, the
-// input, the host calls and the clock — and the clock is the part with teeth,
-// because a clock that runs behind a sheet costs the child a round they never
-// saw.
+// `sim/beam.ts`, the room in `render/scene.ts`. This file owns the frame, the
+// input, the host calls and the frame clock — and the frame clock is still the
+// part with teeth. There is no longer a limit on the round, but the abandonment
+// guard, the strain bleed and the beam all run on it, and a rAF that keeps
+// ticking behind a sheet racks a lot the child never saw.
 
 import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
 import type { Handle, Host } from "./contract.ts"
@@ -22,9 +23,9 @@ import { Scene } from "./render/scene.ts"
  * The largest step the clock is allowed to take in one frame.
  *
  * A backgrounded tab hands back a delta of minutes. Letting that through would
- * spend a press window and seat the beam wherever it stood. Clamping means time
- * nearly stops when frames stop, which is the only fair reading of "they were
- * not here".
+ * burn the whole abandonment guard in one frame and rack a lot the child was
+ * mid-way through. Clamping means time nearly stops when frames stop, which is
+ * the only fair reading of "they were not here".
  */
 const MAX_STEP_MS = 120
 
@@ -52,18 +53,18 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   const beam = new Beam(reduced ? TUNING_REDUCED : TUNING)
 
   /**
-   * The deal reads the match *at the moment the weight is hung*, which is why it
-   * goes through a mutable handle rather than closing over a rung.
+   * The deal reads the day *at the moment the lot comes on*, which is why it goes
+   * through a mutable handle rather than closing over a rung.
    *
    * `Bout.hang()` runs inside the same event batch that carries the `won` or
-   * `pinned` that caused it, and it runs FIRST — so a rung updated from those
+   * `sentBack` that caused it, and it runs FIRST — so a rung updated from those
    * events in `handle()` below would always be one round stale. Reading
-   * `bout.match` lazily is what makes the Turk who just went over the reason the
-   * next weight is heavier.
+   * `bout.day` lazily is what makes the scale just cleared the reason the next
+   * lot is heavier.
    */
   let table: Bout | null = null
   const bout = new Bout(
-    () => host.next(requestFor(table?.match)),
+    () => host.next(requestFor(table?.day)),
     reduced ? TIMING_REDUCED : TIMING,
   )
   table = bout
@@ -71,28 +72,29 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   const guide = createInstructions(el, {
     title: "THE STEELYARD",
     summary: [
-      "The Iron Turk's pan holds a sum. Work out its answer yourself — it is never shown.",
-      "Load your pan to exactly one more than his answer, then press SEAT.",
-      "Take as long as you need to work it out. Nothing moves until you touch the rack.",
+      "You weigh goods for the market. Nothing is sold here until you have weighed it.",
+      "A card comes with each load. Add the two numbers up yourself — nobody tells you the total.",
+      "Put brass on your pan until it is one more than that total, then press STAMP.",
+      "There is no timer. Take all day if you want to.",
     ],
     sections: [
       {
-        heading: "Loading your pan",
+        heading: "Why one more, and not the same",
         lines: [
-          "There are four pillars: thousands, hundreds, tens and ones.",
-          "The top face of a pillar adds one of that size. The bottom face takes one off.",
-          "Your load stays where you left it. Each round you only change the difference.",
-          "If his weights change size, the yard racks your pan back near them.",
+          "A flat beam has not told you anything. It could tip either way.",
+          "So you add brass until the beam just dips to your side.",
+          "One more than the goods is the smallest amount that makes it dip.",
+          "Then you know what the goods weigh, and you write it down.",
+          "Two more is too much. You have only shown the goods are lighter than a big number.",
         ],
       },
       {
-        heading: "One more. Exactly one.",
+        heading: "Putting brass on",
         lines: [
-          "Not two more. Not nearly. One.",
-          "That is what winning an arm-wrestle looks like: just in front.",
-          "Press SEAT and the beam is judged.",
-          "One ahead and he gives ground. Five lengths of ground and the Turk goes over.",
-          "Anything else and he takes one length back. Nothing else is lost.",
+          "There are four pillars: thousands, hundreds, tens and ones.",
+          "The top face of a pillar adds one of that size. The bottom face takes one off.",
+          "Your brass stays on the pan. Each load you only change the difference.",
+          "If the loads change size a lot, the weigh-master lays out a fresh set for you.",
         ],
       },
       {
@@ -103,29 +105,37 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
         ],
       },
       {
+        heading: "The day",
+        lines: [
+          "A good weight moves the bar at the top one step your way.",
+          "A wrong one moves it one step back. Nothing else is lost.",
+          "Five steps your way and that scale is done. A bigger one is wheeled in.",
+          "Five steps the other way and the load goes back, and they send you lighter goods.",
+        ],
+      },
+      {
         heading: "Do not hammer the plates",
         lines: [
           "The beam is a bar of steel. Hit it again while it is still ringing and the ring grows.",
-          "Ring it too hard and the beam shears, and the round is over.",
+          "Ring it too hard and the beam shears. The lot goes back and the bar moves one step against you.",
           "Leave a beat between blows and that never happens.",
         ],
       },
       {
-        heading: "The whistle",
+        heading: "Nothing is counting",
         lines: [
-          "Each weight has its own window, and a bigger sum gets a longer one.",
-          "It is long enough to work the sum out and strike every plate it needs.",
-          "If it does run out, the round is simply over. No ground is lost.",
-          "Once you have started striking, a pan left alone slowly settles.",
-          "Any strike puts it back, and it never settles before your first blow.",
+          "No clock runs while you think. Nothing on your pan moves on its own.",
+          "Stop halfway and check your adding. It will all still be there.",
+          "If you walk away and nobody touches the rack for a long time, the load goes back.",
+          "That costs nothing at all, and it is not a wrong answer.",
         ],
       },
     ],
     reducedMotion: reduced,
     // This is the game the complaint was about: "I can hear counterweight
     // playing in the background while I'm reading the instructions." The sound
-    // is held for us; the press window is not, and a window that opens and
-    // whistles behind the scrim costs a round the child never saw.
+    // is held for us; the abandonment guard is not, and a guard that runs out
+    // behind the scrim racks a lot the child never saw.
     //
     // The manual only lifts a pause it put on itself. The host can already have
     // a sheet over the frame, and the tab can already be in the background —
@@ -154,15 +164,15 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   let column: Column | null = null
   let promptRaw = ""
   /**
-   * When the current window opened, on the wall clock. Latency the child is
-   * billed for is measured from here, and a pause shifts it forward so a sheet
-   * is not charged as thinking time.
+   * When the current round opened, on the wall clock. The latency reported to the
+   * host is measured from here — **measured, never limited** — and a pause shifts
+   * it forward so a sheet is not charged as thinking time.
    */
   let openedAt = 0
   let pausedAt = 0
   let holdRun = 0
   const pressed = new Set<string>()
-  let seatHeld = false
+  let stampHeld = false
   /** Item ids already reported. One report per item, ever. */
   const reported = new Set<string>()
 
@@ -200,38 +210,40 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
           if (event.reason === "cooldown") audio.refuse()
           break
         }
-        case "sag": {
-          beam.aim(bout.margin)
-          audio.sag()
-          break
-        }
         case "rerack": {
           beam.aim(bout.margin)
-          audio.sag()
+          audio.slide()
           host.haptic("light")
           scene.flash(PALETTE.brassDim, 200)
           break
         }
-        case "seat": {
-          if (event.seat.verdict === "expired") {
-            // The whistle. Close the item and say nothing about it — not
-            // `report`, which would file a miss against a sum the child was
-            // still working and step the host's ladder down for it.
-            skip(event.seat.question.id)
-            beam.aim(bout.margin)
-            audio.sag()
+        case "stamp": {
+          const docket = event.docket
+          // **Only a stamped docket is an answer.** `declared` is the whole test,
+          // and there are two ways for it to be false: the guard decided nobody
+          // was there, and the beam sheared. In both cases the brass on the pan is
+          // where the child had *got to*, not something they said — reporting it
+          // would file a number they never asserted against a sum they were still
+          // working, and walk the host's ladder down for it.
+          if (docket.declared) {
+            report(docket.question.id, docket.verdict === "true", docket.asserted)
+          } else {
+            skip(docket.question.id)
+          }
+          beam.aim(bout.margin)
+          if (docket.verdict === "lapsed") {
+            // Nobody was there. Nothing is lost, so nothing is even reset.
+            audio.slide()
             break
           }
-          report(event.seat.question.id, event.seat.verdict === "true", event.seat.asserted)
-          beam.aim(bout.margin)
-          if (event.seat.verdict === "true") {
+          if (docket.verdict === "true") {
             holdRun += 1
             audio.held()
             host.haptic("success")
             scene.flash(PALETTE.seat, 200)
           } else {
             holdRun = 0
-            if (event.seat.verdict === "shear") {
+            if (docket.verdict === "shear") {
               audio.shear()
               host.haptic("failure")
               beam.slam(-1)
@@ -244,21 +256,21 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
               host.haptic("heavy")
             }
           }
-          tally = recordTally(bout.match.won, Math.max(tally.hold, holdRun))
+          tally = recordTally(bout.day.won, Math.max(tally.hold, holdRun))
           break
         }
         case "won": {
           audio.fanfare()
           host.haptic("success")
           scene.flash(PALETTE.brassBright, 240)
-          tally = recordTally(bout.match.won, Math.max(tally.hold, holdRun))
-          // The one call site. A Turk going over is a thing the child *reached*;
-          // being pinned is not, and a purchase surface next to a defeat is
+          tally = recordTally(bout.day.won, Math.max(tally.hold, holdRun))
+          // The one call site. A scale cleared is a thing the child *reached*; a
+          // barrow going back is not, and a purchase surface next to a setback is
           // forbidden outright.
-          host.transition?.("boss", `Turk ${event.bout}`)
+          host.transition?.("boss", `Scale ${event.scale}`)
           break
         }
-        case "pinned": {
+        case "sentBack": {
           audio.lost()
           host.haptic("heavy")
           holdRun = 0
@@ -274,8 +286,8 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
    * Close an item nobody answered.
    *
    * Shares the `reported` set with `report`, which is what makes the two endings
-   * mutually exclusive: an item that expired can never also be reported, and an
-   * item that was seated can never also be skipped.
+   * mutually exclusive: an item the child never declared can never also be
+   * reported, and an item they stamped can never also be skipped.
    */
   const skip = (questionId: string): void => {
     if (questionId === "" || reported.has(questionId)) return
@@ -286,9 +298,9 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   const report = (questionId: string, correct: boolean, asserted: number): void => {
     if (questionId === "" || reported.has(questionId)) return
     reported.add(questionId)
-    // The host judges. What crosses is the value the beam asserted his column to
-    // be — which, when the child ran a broken column procedure, is exactly the
-    // mal-rule output, so the diagnosis routes with nothing else to write.
+    // The host judges. What crosses is the weight the child wrote on the docket
+    // — which, when they ran a broken column procedure, is exactly the mal-rule
+    // output, so the diagnosis routes with nothing else to write.
     host.report({
       questionId,
       correct,
@@ -317,7 +329,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
       reduced,
       best: tally,
       pressed,
-      seatHeld,
+      stampHeld,
       paused: sheeted,
       column,
       promptRaw,
@@ -332,9 +344,9 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
   const act = (target: ReturnType<Scene["pick"]>): void => {
     if (!target) return
     audio.resume()
-    if (target.kind === "seat") {
-      seatHeld = true
-      handle(bout.seatNow())
+    if (target.kind === "stamp") {
+      stampHeld = true
+      handle(bout.stamp())
       return
     }
     pressed.add(`${target.place}:${target.dir}`)
@@ -355,7 +367,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
 
   const up = (): void => {
     pressed.clear()
-    seatHeld = false
+    stampHeld = false
   }
 
   const key = (event: KeyboardEvent): void => {
@@ -363,7 +375,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
     const k = event.key.toLowerCase()
     if (k === " " || k === "enter") {
       event.preventDefault()
-      act({ kind: "seat" })
+      act({ kind: "stamp" })
       globalThis.setTimeout(up, 90)
       return
     }
@@ -434,9 +446,9 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
     /**
      * The host has raised a sheet over a still-mounted, still-running pack.
      *
-     * Both halves matter. The clock stops, so a press window cannot open and
-     * close behind the sheet and seat the beam on a column the child never saw.
-     * And input stops, so a tap meant for the sheet is not a blow on the rack.
+     * Both halves matter. The clock stops, so the abandonment guard cannot run
+     * out behind the sheet and rack a lot the child never saw. And input stops,
+     * so a tap meant for the sheet is not a blow on the rack.
      */
     pause(): void {
       pauseAll()

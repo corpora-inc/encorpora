@@ -4,7 +4,7 @@
 // narrow band-pass, the note a heavy steel bar makes when it is under load.
 // Its pitch tracks the tilt of the beam — flat and low at dead level, rising as
 // your side goes down. So the beam is audible as well as visible, which is what
-// lets a child hold the notch with their eyes on the rack.
+// lets a child find the tipping point with their eyes on the rack.
 //
 // It is deliberately quiet and deliberately narrow in range. A drone that swept
 // an octave would be a siren; this one moves about a major third across the
@@ -76,7 +76,7 @@ export class Audio {
     })
   }
 
-  /** Bring the drone up. Called when a window opens. */
+  /** Bring the drone up. Called when a round opens. */
   bow(): void {
     const ctx = this.context()
     if (!ctx || !this.master || this.droneOsc) return
@@ -196,8 +196,14 @@ export class Audio {
     osc.stop(t + 0.12)
   }
 
-  /** The pan settles a unit on its own. A tiny descending tick. */
-  sag(): void {
+  /**
+   * Brass sliding on the pan: the weigh-master laying out a fresh set, or a lot
+   * going back on the barrow. A tiny descending tick, and never a buzzer.
+   *
+   * Was `sag()`, for a pan that drained under a child who stopped to think. That
+   * behaviour is gone; the sound was worth keeping.
+   */
+  slide(): void {
     const ctx = this.context()
     if (!ctx || !this.master) return
     const t = ctx.currentTime
@@ -215,12 +221,12 @@ export class Audio {
     osc.stop(t + 0.2)
   }
 
-  /** The beam seats true: a cold, clean fifth. The best sound in the game. */
+  /** A good weight: a cold, clean fifth. The best sound in the game. */
   held(): void {
     this.chord([784, 1176], 0.1, 0.5)
   }
 
-  /** He takes ground. Low, short, not cruel. */
+  /** The docket is refused. Low, short, not cruel. */
   lost(): void {
     this.chord([196, 233], 0.085, 0.32)
   }
@@ -244,7 +250,7 @@ export class Audio {
     osc.stop(t + 0.7)
   }
 
-  /** A Turk goes over. */
+  /** A scale is cleared. */
   fanfare(): void {
     this.chord([523, 659, 784], 0.09, 0.85)
     const ctx = this.ctx

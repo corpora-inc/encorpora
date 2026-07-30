@@ -4,7 +4,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import type { Question } from "../contract.ts"
-import { Bout, GROUND, openingLoad, RERACK_SLACK, TIMING, type BoutEvent } from "../game/bout.ts"
+import { Bout, openingLoad, RERACK_SLACK, RUN, TIMING, type BoutEvent } from "../game/bout.ts"
 import { planStrikes } from "../game/places.ts"
 
 function question(answer: number, id = "q1"): Question {
@@ -24,7 +24,7 @@ function fixed(answer: number): () => Question {
   return () => question(answer, `q${++n}`)
 }
 
-/** Advance to the open window and hand back the events on the way. */
+/** Advance to the open round and hand back the events on the way. */
 function open(bout: Bout): BoutEvent[] {
   const events = bout.begin()
   events.push(...bout.advance(TIMING.hangMs + 1))
@@ -41,19 +41,19 @@ function loadTo(bout: Bout, value: number): void {
   assert.equal(bout.load, value)
 }
 
-test("a round opens with a weight on his pan and a window on yours", () => {
+test("a round opens with a lot on the far pan and brass already on yours", () => {
   const bout = new Bout(fixed(641))
   const events = open(bout)
   const hang = events.find((e) => e.kind === "hang")
   assert.ok(hang && hang.kind === "hang")
   assert.equal(hang.question.answer, "641")
-  assert.equal(bout.his, 641)
-  // The delta the round is asking for: his value, one notch, less what is there.
+  assert.equal(bout.goods, 641)
+  // The delta the round is asking for: the goods, one over, less the brass there.
   assert.equal(hang.delta, 641 + 1 - bout.load)
   assert.ok(events.some((e) => e.kind === "open"))
 })
 
-test("one notch ahead holds; nothing else does", () => {
+test("one over is a good weight; nothing else is", () => {
   for (const [load, verdict] of [
     [642, "true"],
     [641, "short"],
@@ -64,135 +64,166 @@ test("one notch ahead holds; nothing else does", () => {
     const bout = new Bout(fixed(641))
     open(bout)
     loadTo(bout, load)
-    const [event] = bout.seatNow()
-    assert.ok(event && event.kind === "seat")
-    assert.equal(event.seat.verdict, verdict, `a load of ${load} judged ${event.seat.verdict}`)
+    const [event] = bout.stamp()
+    assert.ok(event && event.kind === "stamp")
+    assert.equal(event.docket.verdict, verdict, `${load} of brass judged ${event.docket.verdict}`)
   }
 })
 
-test("what crosses to the host is the value the beam claimed his column was", () => {
+test("what crosses to the host is the weight the child wrote on the docket", () => {
   const bout = new Bout(fixed(641))
   open(bout)
   loadTo(bout, 632)
-  const [event] = bout.seatNow()
-  assert.ok(event && event.kind === "seat")
-  // A child who dropped a ten claims 631, not "wrong". That is the diagnosis.
-  assert.equal(event.seat.asserted, 631)
-  assert.equal(event.seat.load, 632)
-  assert.equal(event.seat.declared, true)
+  const [event] = bout.stamp()
+  assert.ok(event && event.kind === "stamp")
+  // A child who dropped a ten writes 631, not "wrong". That is the diagnosis.
+  assert.equal(event.docket.asserted, 631)
+  assert.equal(event.docket.load, 632)
+  assert.equal(event.docket.declared, true)
 })
 
-test("a held round takes ground and a missed one gives it back", () => {
+test("a good weight moves the day's run, and a refused docket moves it back", () => {
   const bout = new Bout(fixed(500))
   open(bout)
   loadTo(bout, 501)
-  bout.seatNow()
-  assert.equal(bout.match.arm, 1)
-  assert.equal(bout.match.held, 1)
+  bout.stamp()
+  assert.equal(bout.day.run, 1)
+  assert.equal(bout.day.held, 1)
   bout.advance(TIMING.settleMs + TIMING.hangMs + 4)
   assert.equal(bout.phase, "press")
   loadTo(bout, 400)
-  bout.seatNow()
-  assert.equal(bout.match.arm, 0)
+  bout.stamp()
+  assert.equal(bout.day.run, 0)
 })
 
-test("five held rounds put the Turk over, and only then", () => {
+test("five good weights clear the scale, and only then", () => {
   const bout = new Bout(fixed(500))
   const events: BoutEvent[] = []
   open(bout)
-  for (let i = 0; i < GROUND; i++) {
+  for (let i = 0; i < RUN; i++) {
     loadTo(bout, 501)
-    events.push(...bout.seatNow())
+    events.push(...bout.stamp())
     events.push(...bout.advance(TIMING.settleMs + TIMING.hangMs + 4))
   }
   const won = events.filter((e) => e.kind === "won")
-  assert.equal(won.length, 1, "the Turk went over the wrong number of times")
-  assert.equal(bout.match.won, 1)
-  assert.equal(bout.match.bout, 2)
-  assert.equal(bout.match.arm, 0, "the arm did not go back to level for the next Turk")
+  assert.equal(won.length, 1, "the scale was cleared the wrong number of times")
+  assert.equal(bout.day.won, 1)
+  assert.equal(bout.day.scale, 2)
+  assert.equal(bout.day.run, 0, "the run did not go back to level for the next scale")
 })
 
-test("being pinned costs the arm and nothing else — no Turk, no tally, no punishment", () => {
+test("a barrow going back costs the run and nothing else — no tally, no punishment", () => {
   const bout = new Bout(fixed(500))
   const events: BoutEvent[] = []
   open(bout)
-  for (let i = 0; i < GROUND; i++) {
-    events.push(...bout.seatNow())
+  for (let i = 0; i < RUN; i++) {
+    events.push(...bout.stamp())
     events.push(...bout.advance(TIMING.settleMs + TIMING.hangMs + 4))
   }
-  const pinned = events.filter((e) => e.kind === "pinned")
-  assert.equal(pinned.length, 1)
-  assert.equal(bout.match.won, 0)
-  // Stakes without loss: the same Turk squares back up, no harder than before.
-  assert.equal(bout.match.bout, 1)
-  assert.equal(bout.match.arm, 0)
-  // And a pin is never a stopping point: nothing here is a `won` event.
+  const back = events.filter((e) => e.kind === "sentBack")
+  assert.equal(back.length, 1)
+  assert.equal(bout.day.won, 0)
+  // Stakes without loss: the same scale carries on, no harder than before.
+  assert.equal(bout.day.scale, 1)
+  assert.equal(bout.day.run, 0)
+  // And it is never a stopping point: nothing here is a `won` event.
   assert.equal(events.filter((e) => e.kind === "won").length, 0)
 })
 
-test("the window running out takes nothing — no verdict, no ground, no answer", () => {
-  // **A timeout is not a wrong answer.** It used to be: the beam was judged
-  // where it stood, which took a length of ground off a child who was still
-  // carrying the hundreds column and filed a miss against them with the host.
-  // Now the round is simply over.
+// ---------------------------------------------------------------------------
+// **THERE IS NO CLOCK ON THE ANSWER.**
+//
+// The founder's second report on this game was "the action is rushed by the timer
+// going down", against a window that was already generous and measured. So the
+// window went. What is left is an abandonment guard, and the four cases below are
+// the difference between the two, stated as behaviour.
+// ---------------------------------------------------------------------------
+
+test("a round has no length: any hand on the rack buys the whole guard back", () => {
+  // **The headline change.** A child who is working — striking a plate, checking
+  // the column, striking another — can never be timed out, however long the round
+  // takes in total. Fifteen times the guard goes by here.
   const bout = new Bout(fixed(500))
   open(bout)
-  // Deliberately NOT on the notch — the point is that being caught mid-sum
-  // costs nothing, not that a finished round is honoured.
-  loadTo(bout, 480)
-  const before = bout.match.arm
-  const events = bout.advance(bout.pressMs + 100)
-  const seat = events.find((e) => e.kind === "seat")
-  assert.ok(seat && seat.kind === "seat")
-  assert.equal(seat.seat.verdict, "expired")
-  assert.equal(seat.seat.declared, false, "the whistle was recorded as a declaration")
-  assert.equal(seat.arm, before, "the whistle moved the arm")
-  assert.equal(bout.match.arm, before)
-  assert.equal(bout.match.held, 0)
+  const guard = bout.guardMs
+  for (let i = 0; i < 15; i++) {
+    bout.advance(guard - 200)
+    assert.equal(bout.phase, "press", `the round ended after ${i} refills`)
+    bout.strike({ place: 1, dir: i % 2 === 0 ? 1 : -1 })
+  }
+  assert.ok(bout.elapsedMs > guard * 14, "the round was not actually long")
+  assert.equal(bout.phase, "press")
+  assert.equal(bout.day.run, 0, "a long round cost the child something")
 })
 
-test("a whistle on a pan that happened to be right is still not a hold", () => {
-  // The old rule honoured this one, and honouring it is what made the losing
-  // case defensible. Both go: the child never said it.
+test("even a blow a swinging pillar refuses buys the guard back", () => {
+  // A child drumming on one plate is a child who is there. The refusal is about
+  // the plate, not about the room, and it must never be read as an empty one.
+  //
+  // Asserted on `idle` directly rather than by playing a round out: an accepted
+  // blow resets the guard too, so any sequence that reaches a refusal through one
+  // would pass whether or not the refusal itself counted.
   const bout = new Bout(fixed(500))
   open(bout)
-  loadTo(bout, 501)
-  const events = bout.advance(bout.pressMs + 100)
-  const seat = events.find((e) => e.kind === "seat")
-  assert.ok(seat && seat.kind === "seat")
-  assert.equal(seat.seat.verdict, "expired")
-  assert.equal(bout.match.arm, 0)
-  assert.equal(bout.match.held, 0)
+  bout.strike({ place: 10, dir: 1 })
+  bout.advance(50)
+  assert.ok(bout.idle > 0, "the guard was not running, so this proves nothing")
+  assert.ok(bout.cooling(10), "the pillar had already swung back")
+
+  const refused = bout.strike({ place: 10, dir: 1 })
+  assert.deepEqual(refused, [{ kind: "refused", reason: "cooldown" }])
+  assert.equal(bout.idle, 0, "a hand on the rack was read as an empty room")
 })
 
-test("a pan nobody is tending settles, and a strike re-seats it", () => {
-  const bout = new Bout(fixed(500))
-  open(bout)
-  // The sag is armed by the first blow, so a round has to be *started* before
-  // anything can be neglected. The case below is the one that matters.
-  bout.strike({ place: 1, dir: 1 })
-  const before = bout.load
-  bout.advance(TIMING.sagGraceMs + TIMING.sagPeriodMs * 3 + 20)
-  assert.equal(bout.load, before - 3, "the pan did not settle under a load left alone")
-
-  const now = bout.load
-  bout.strike({ place: 1, dir: 1 })
-  bout.advance(TIMING.sagGraceMs - 10)
-  assert.equal(bout.load, now + 1, "the sag did not start over after a strike")
-})
-
-test("the pan does not move while the child is reading his column", () => {
-  // **The defect the founder felt as "sometimes the timing is sort of
-  // impossible".** The sag used to run from the instant the window opened, at a
-  // grace of 1.5 s and a period that fell to 0.75 s — so a child taking the
-  // house table's own p90 for a two-digit regrouping (14 s) reached the rack
-  // with a pan nine units below where they had read it, and the sum they had
-  // just done in their head was wrong through no fault of theirs.
+test("nothing on your pan moves on its own, ever", () => {
+  // **The sag, deleted.** It used to take a unit off any pan left alone for three
+  // seconds after the first blow, then another every 1.6 s — which fired on
+  // exactly the behaviour this game most wants, a child stopping halfway to check
+  // their column, and made the arithmetic they had just done wrong without
+  // telling them. A clock may not take anything away from a child, and brass on a
+  // pan does not evaporate.
   const bout = new Bout(fixed(500))
   open(bout)
   const read = bout.load
-  bout.advance(bout.pressMs - 50)
+  bout.advance(bout.guardMs - 50)
   assert.equal(bout.load, read, "the pan drained while the child was still reading")
+
+  // And after the first blow, which is where the sag used to arm itself.
+  bout.strike({ place: 100, dir: 1 })
+  const struck = bout.load
+  bout.advance(bout.guardMs - 50)
+  assert.equal(bout.load, struck, "the pan drained under a child who had started")
+  assert.equal(bout.phase, "press")
+})
+
+test("the guard fires only on silence, and takes nothing when it does", () => {
+  // **A lapse is not a wrong answer.** No run moves, nothing is declared, and the
+  // pan is not read as a claim — the child never stamped it.
+  const bout = new Bout(fixed(500))
+  open(bout)
+  loadTo(bout, 480)
+  const before = bout.day.run
+  const events = bout.advance(bout.guardMs + 100)
+  const stamped = events.find((e) => e.kind === "stamp")
+  assert.ok(stamped && stamped.kind === "stamp")
+  assert.equal(stamped.docket.verdict, "lapsed")
+  assert.equal(stamped.docket.declared, false, "a lapse was recorded as a declaration")
+  assert.equal(stamped.run, before, "a lapse moved the day's run")
+  assert.equal(bout.day.run, before)
+  assert.equal(bout.day.held, 0)
+})
+
+test("a lapse on a pan that happened to be right is still not a good weight", () => {
+  // The child never stamped it, so nobody said it.
+  const bout = new Bout(fixed(500))
+  open(bout)
+  loadTo(bout, 501)
+  const events = bout.advance(bout.guardMs + 100)
+  const stamped = events.find((e) => e.kind === "stamp")
+  assert.ok(stamped && stamped.kind === "stamp")
+  assert.equal(stamped.docket.verdict, "lapsed")
+  assert.equal(bout.day.run, 0)
+  assert.equal(bout.day.held, 0)
 })
 
 test("the ladder moving out from under the pan re-racks it", () => {
@@ -207,7 +238,7 @@ test("the ladder moving out from under the pan re-racks it", () => {
   })
   open(bout)
   loadTo(bout, 8001)
-  bout.seatNow()
+  bout.stamp()
   const events = bout.advance(TIMING.settleMs + TIMING.hangMs + 4)
   const rerack = events.find((e) => e.kind === "rerack")
   assert.ok(rerack && rerack.kind === "rerack", "the pan was left four digits out of position")
@@ -229,7 +260,7 @@ test("a pan a few strikes out of position is left exactly where it was", () => {
   })
   open(bout)
   loadTo(bout, 501)
-  bout.seatNow()
+  bout.stamp()
   const events = bout.advance(TIMING.settleMs + TIMING.hangMs + 4)
   assert.equal(
     events.filter((e) => e.kind === "rerack").length,
@@ -251,12 +282,12 @@ test("a pillar still swinging back refuses the next blow", () => {
   assert.equal(bout.strike({ place: 100, dir: 1 })[0]?.kind, "strike")
 })
 
-test("nothing can be struck outside the window", () => {
+test("nothing can be struck while the lot is still coming on", () => {
   const bout = new Bout(fixed(500))
   bout.begin()
   assert.equal(bout.phase, "hang")
   assert.deepEqual(bout.strike({ place: 1, dir: 1 }), [{ kind: "refused", reason: "phase" }])
-  assert.deepEqual(bout.seatNow(), [{ kind: "refused", reason: "phase" }])
+  assert.deepEqual(bout.stamp(), [{ kind: "refused", reason: "phase" }])
 })
 
 test("shearing the steel ends the round on the blow that broke it", () => {
@@ -267,38 +298,38 @@ test("shearing the steel ends the round on the blow that broke it", () => {
     events = bout.strike({ place: (i % 2 === 0 ? 1 : 10) as 1 | 10, dir: 1 })
     bout.advance(56)
   }
-  const seat = events.find((e) => e.kind === "seat")
-  assert.ok(seat && seat.kind === "seat", "mashing never sheared the beam")
-  assert.equal(seat.seat.verdict, "shear")
-  assert.equal(bout.match.arm, -1)
+  const stamped = events.find((e) => e.kind === "stamp")
+  assert.ok(stamped && stamped.kind === "stamp", "mashing never sheared the beam")
+  assert.equal(stamped.docket.verdict, "shear")
+  assert.equal(bout.day.run, -1)
 })
 
-test("the Turk never tightens a clock — the same weight gets the same window forever", () => {
+test("the scale never tightens anything — the same lot gets the same patience forever", () => {
   // **The ratchet, and its absence.** `timingForBout` used to take 1.1 s off the
-  // press window per Turk, down to a 7.6 s floor, while the bout counter it read
-  // was also what escalated the arithmetic. Nothing left in this file may do
-  // that: put the same weight up at the ninth Turk as at the first and every
-  // duration has to come back identical.
+  // press window per opponent, down to a 7.6 s floor, while the same counter was
+  // also what escalated the arithmetic. Nothing left in this file may do that:
+  // put the same lot on at the ninth scale as at the first and every duration has
+  // to come back identical.
   const bout = new Bout(fixed(500))
   open(bout)
-  const first = { press: bout.pressMs, ...bout.timings }
-  for (let turk = 0; turk < 9; turk++) {
-    for (let i = 0; i < GROUND; i++) {
+  const first = { guard: bout.guardMs, ...bout.timings }
+  for (let scale = 0; scale < 9; scale++) {
+    for (let i = 0; i < RUN; i++) {
       loadTo(bout, 501)
-      bout.seatNow()
+      bout.stamp()
       bout.advance(TIMING.settleMs + TIMING.hangMs + 4)
     }
   }
-  assert.ok(bout.match.won >= 9, `only ${bout.match.won} Turks went over`)
-  assert.deepEqual({ press: bout.pressMs, ...bout.timings }, first)
+  assert.ok(bout.day.won >= 9, `only ${bout.day.won} scales were cleared`)
+  assert.deepEqual({ guard: bout.guardMs, ...bout.timings }, first)
 })
 
-test("the first pan of a session starts a few strikes off, never on the answer", () => {
+test("the first pan of a day starts a few strikes off, never on the answer", () => {
   for (const target of [45, 641, 1287, 9004]) {
     const load = openingLoad(target)
     assert.ok(Number.isInteger(load))
-    assert.ok(load > 0, `an opening load of ${load} is an empty pan`)
-    assert.notEqual(load, target + 1, "the opening load was the answer")
+    assert.ok(load > 0, `an opening set of ${load} is an empty pan`)
+    assert.notEqual(load, target + 1, "the opening set was the answer")
     const strikes = planStrikes(target + 1 - load).length
     assert.ok(strikes >= 2 && strikes <= 20, `${target} opened ${strikes} strikes away`)
   }
@@ -327,7 +358,7 @@ test("driving your own pan to nothing is not a way out of the round", () => {
   open(bout)
   loadTo(bout, 0)
   assert.equal(bout.load, 0)
-  bout.seatNow()
+  bout.stamp()
   bout.advance(TIMING.settleMs + TIMING.hangMs + 4)
   assert.equal(bout.phase, "press")
   assert.equal(bout.load, 0, "the pan was quietly re-seeded")

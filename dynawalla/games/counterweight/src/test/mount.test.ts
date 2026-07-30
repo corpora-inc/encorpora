@@ -7,8 +7,8 @@
 //
 // So this mounts the real game against `./browser.ts` — a canvas that records
 // instead of painting and a clock the test drives by hand — pushes several
-// hundred frames through weights hung, plates struck, beams seated and Turks
-// put over, and asserts that nothing threw and that the world actually moved.
+// hundred frames through lots hung, plates struck, dockets stamped and scales
+// cleared, and asserts that nothing threw and that the world actually moved.
 // It is not a rendering test — there are no pixels — it is a test that the
 // whole thing is wired to itself.
 //
@@ -39,10 +39,10 @@ function facePoints(w: number, h: number): Array<{ x: number; y: number }> {
   )
 }
 
-/** The seat lever, likewise. */
-function seatPoint(w: number, h: number): { x: number; y: number } {
-  const { seat } = viewLayout(w, h)
-  return { x: seat.x + seat.w / 2, y: seat.y + seat.h / 2 }
+/** The stamp, likewise. */
+function stampPoint(w: number, h: number): { x: number; y: number } {
+  const { stamp } = viewLayout(w, h)
+  return { x: stamp.x + stamp.w / 2, y: stamp.y + stamp.h / 2 }
 }
 
 for (const [w, h] of [
@@ -80,8 +80,8 @@ for (const [w, h] of [
       }
       assert.ok(counter.calls > before)
 
-      // The seat lever, at the very bottom.
-      const lever = seatPoint(w, h)
+      // The stamp, at the very bottom.
+      const lever = stampPoint(w, h)
       for (let i = 0; i < 30; i++) {
         down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
         up({})
@@ -118,7 +118,7 @@ test("the reduced-motion branch plays the same match with no sparks", () => {
       up({})
       t = pump(frames, 20, t)
     }
-    const lever = seatPoint(768, 1024)
+    const lever = stampPoint(768, 1024)
     for (let i = 0; i < 8; i++) {
       down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
       up({})
@@ -133,7 +133,7 @@ test("the reduced-motion branch plays the same match with no sparks", () => {
   assert.ok(reports.length > 0)
 })
 
-test("a Turk going over is the only thing that ever reaches `transition`", () => {
+test("a scale cleared is the only thing that ever reaches `transition`", () => {
   const counter = { calls: 0, text: [] as string[] }
   const stops: string[] = []
   const reports: Array<{ correct: boolean }> = []
@@ -189,11 +189,11 @@ test("the very first weight of a session is asked for at the bottom of the ladde
   assert.equal(asks[0]?.difficulty, OPENING_RUNG, "the opening weight was not the easiest one")
   assert.equal(asks[0]?.maxDifficulty, OPENING_RUNG, "the opening stream had no ceiling")
   for (const ask of asks) {
-    assert.equal(ask?.difficulty, OPENING_RUNG, "the rung moved without a Turk going over")
+    assert.equal(ask?.difficulty, OPENING_RUNG, "the rung moved without a scale being cleared")
   }
 })
 
-test("the sheet stops the world, and lifting it gives the window back", () => {
+test("the sheet stops the world, and lifting it gives the guard back", () => {
   // The host's `pause`, exactly as the pack seam calls it. Both halves are under
   // test: the clock must stop, and a tap on the sheet must not reach the rack.
   const counter = { calls: 0, text: [] as string[] }
@@ -222,7 +222,7 @@ test("the sheet stops the world, and lifting it gives the window back", () => {
       down({ preventDefault() {}, clientX: p.x, clientY: p.y })
       up({})
     }
-    const lever = seatPoint(768, 1024)
+    const lever = stampPoint(768, 1024)
     down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
     up({})
     t = pump(frames, 60, t)
@@ -315,7 +315,7 @@ test("a round can be held all the way through the canvas", () => {
       t = pump(frames, 20, t)
     }
 
-    const lever = seatPoint(w, h)
+    const lever = stampPoint(w, h)
     down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
     up({})
     pump(frames, 10, t)
@@ -351,16 +351,16 @@ test("time behind the sheet is not billed to the child as thinking time", () => 
     t = pump(frames, SHEET_FRAMES, t, clock)
     handle.resume()
     t = pump(frames, 30, t, clock)
-    // And then the child seats the beam. A whistle is not reported at all any
-    // more, so the round has to be *declared* for there to be an `ms` to bill.
-    const lever = seatPoint(768, 1024)
+    // And then the child stamps the docket. Nothing undeclared is reported any
+    // more, so the round has to be *stamped* for there to be an `ms` to bill.
+    const lever = stampPoint(768, 1024)
     down({ preventDefault() {}, clientX: lever.x, clientY: lever.y })
     up({})
     t = pump(frames, 30, t, clock)
     handle.unmount()
   })
 
-  assert.ok(reports.length > 0, "no round was ever seated")
+  assert.ok(reports.length > 0, "no docket was ever stamped")
   const sheetMs = SHEET_FRAMES * 16.7
   const first = reports[0] as { ms: number }
   assert.ok(

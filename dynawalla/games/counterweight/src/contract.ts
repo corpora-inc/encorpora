@@ -54,9 +54,9 @@ export type Host = {
    * game must not care. Fire and forget: nothing is returned, nothing may be
    * awaited, and the game must not branch on it.
    *
-   * **Never after a failure.** Here that means exactly one call site: the Turk
-   * going over. Being pinned yourself is not a stopping point, and a purchase
-   * surface next to a defeat is forbidden outright.
+   * **Never after a failure.** Here that means exactly one call site: a scale
+   * cleared. A barrow going back is not a stopping point, and a purchase surface
+   * next to a setback is forbidden outright.
    */
   transition?(kind: "level" | "run" | "boss", label?: string): void
 }
@@ -65,10 +65,10 @@ export type Host = {
  * The handle `mount` returns.
  *
  * `pause` and `resume` are not optional decoration. The host can drop a sheet
- * over a still-mounted, still-running pack — a transition surface, a parent
- * gate — and this game's round is a clock with a verdict at the end of it. A
- * window that opened and closed behind a sheet would seat the beam wherever it
- * happened to stand and mark the child wrong for a sum they were never shown.
+ * over a still-mounted, still-running pack — a transition surface, a parent gate
+ * — and this game still has an abandonment guard behind that sheet. Left running,
+ * it decides nobody is there and racks a lot the child was never shown, while the
+ * strain in the steel quietly heals underneath.
  */
 export type Handle = {
   unmount(): void
