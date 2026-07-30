@@ -11,7 +11,7 @@
 //
 // Three numbers already in this repository bound it from below.
 //
-//   * `packs/shared/sdk/src/tapzoom.ts` calls anything past `DRAG_SLOP_PX = 10` a
+//   * `dynawalla/packs/sdk/src/tapzoom.ts` calls travel past `DRAG_SLOP_PX = 10` a
 //     drag rather than a tap. That module cancels the second tap of a zoom-shaped
 //     chain and re-dispatches its `click`; a *drag* it leaves entirely alone. So a
 //     committed swipe must be comfortably past 10 px, and at 34 it is 3.4× clear.
@@ -118,9 +118,30 @@ export class Gesture {
     return this.active
   }
 
-  /** How far the live pointer has travelled vertically. Down is positive. */
+  /** Whether this sequence has already produced its one verdict. */
+  get committed(): boolean {
+    return this.fired
+  }
+
+  /**
+   * ── the three accessors below are THE LIVE DRAG, and they go neutral the
+   *    instant a verdict commits ──────────────────────────────────────────────
+   *
+   * Not a nicety. A finger does not stop when it crosses the threshold: it keeps
+   * travelling and then it RESTS on the glass, and `move` keeps recording `x`/`y`
+   * for all of it. If these kept reporting that travel, the renderer would be
+   * handed a large drag on a slate that had already been answered — and, because
+   * the pointer is only cleared on release, that same drag would still be there
+   * 1.2 s later when the NEXT slate came up. A child who flicks down and rests
+   * their thumb would watch the following statement render 165 px below its rest
+   * position with the bag lit, unreadable and unanswerable until they lifted.
+   *
+   * `pull` is clamped and `dy` deliberately is not — the renderer wants the real
+   * travel so the slate has weight — which is exactly why the guard has to live
+   * here, on the concept, rather than at the one call site that reads it today.
+   */
   get dy(): number {
-    return this.active ? this.y - this.startY : 0
+    return this.active && !this.fired ? this.y - this.startY : 0
   }
 
   /** 0..1 towards a commit, for the renderer. Clamped, so the slate cannot fly off. */
@@ -137,7 +158,7 @@ export class Gesture {
    * which is why the controls do not have to be explained twice.
    */
   get heading(): Call | null {
-    if (!this.active) return null
+    if (!this.active || this.fired) return null
     const dy = this.dy
     if (Math.abs(dy) <= TAP_SLOP_PX) return null
     if (Math.abs(dy) <= Math.abs(this.x - this.startX) * DOMINANCE) return null

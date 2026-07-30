@@ -179,13 +179,16 @@ test("a cancel owes nothing — the system taking the gesture is not a verdict",
 })
 
 test("the live drag is clamped, so the slate can never be dragged off the world", () => {
+  // Driven with a travel the DOMINANCE rule refuses to commit — a huge horizontal
+  // component — because a committed gesture has no live drag at all by design, and a
+  // clamp is only interesting while the finger is still deciding.
   const g = new Gesture(50)
-  g.begin(100, 200)
-  g.move(100, 5000)
-  assert.equal(g.pull, 1)
-  g.begin(100, 200)
-  g.move(100, -5000)
-  assert.equal(g.pull, 1)
+  for (const dy of [5000, -5000]) {
+    g.begin(100, 200)
+    g.move(100 + 20_000, 200 + dy)
+    assert.equal(g.committed, false, "the guard travel committed after all")
+    assert.equal(g.pull, 1, `a pull of ${String(g.pull)} would throw the slate off the world`)
+  }
 })
 
 test("the heading lights up before the verdict fires, which is the whole affordance", () => {

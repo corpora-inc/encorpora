@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url"
 
 import { createStubHost } from "../stub/host.ts"
 import { alwaysWait, perfect, playRun } from "../test/harness.ts"
+import { reportSettled } from "./report.ts"
 
 const read = (relative: string): string =>
   readFileSync(fileURLToPath(new URL(relative, import.meta.url)), "utf8")
@@ -29,31 +30,50 @@ const strip = (source: string): string =>
     .join("\n")
 
 const MOUNT = strip(read("../mount.ts"))
+const REPORT = strip(read("./report.ts"))
 const STATEMENT = strip(read("./statement.ts"))
 const DEALER = strip(read("./dealer.ts"))
 
 const count = (haystack: string, needle: string): number => haystack.split(needle).length - 1
 
-test("A LAPSE GOES TO host.skip AND NEVER TO host.report", () => {
-  // The regression this exists for is not hypothetical: this pack was one of the six
-  // named in the SDK as having reported timeouts as `{ correct: false, answered: "" }`,
-  // which is filed as a MISS and steps the ladder DOWN for a child who was still
-  // thinking. There is exactly one `report` and exactly one `skip`, and the `skip` is
-  // in the else of the guard.
-  assert.equal(count(MOUNT, "host.report("), 1, "a new report call appeared in mount.ts")
-  assert.equal(count(MOUNT, "host.skip?.("), 1, "the skip call is gone or duplicated")
-  assert.ok(MOUNT.includes("reportsToCurriculum(event.outcome)"), "the report is unguarded again")
-  const settled = MOUNT.slice(MOUNT.indexOf('case "settled"'))
-  const guard = settled.indexOf("reportsToCurriculum(")
-  const report = settled.indexOf("host.report(")
-  const skip = settled.indexOf("host.skip?.(")
-  assert.ok(guard !== -1 && guard < report, "the report is no longer behind the guard")
-  assert.ok(report < skip, "the skip is not in the else branch of the guard")
-  // And nothing reports an empty string on purpose, which is the shape of the bug.
+test("there is exactly ONE place a settled round crosses the wire", () => {
+  // The behaviour is proved against a host further down. What this guards is that a
+  // SECOND path does not appear later — a "quick" report added inline in the mount
+  // would bypass the branch entirely and nothing about it would look wrong.
+  assert.equal(count(MOUNT, "host.report("), 0, "mount.ts reports directly again")
+  assert.equal(count(MOUNT, "host.skip"), 0, "mount.ts skips directly again")
+  assert.equal(count(MOUNT, "reportSettled(host, event)"), 1, "the one seam is gone or doubled")
+  assert.equal(count(REPORT, "host.report("), 1, "report.ts grew a second report call")
+  assert.equal(count(REPORT, "host.skip?.("), 1, "report.ts grew a second skip call")
+  assert.ok(REPORT.includes("reportsToCurriculum(event.outcome)"), "the report is unguarded")
+  // And nothing reports a literal empty answer on purpose, which is the shape of the
+  // bug: the SDK files the empty string as a MISS, not as "unanswered".
+  assert.ok(!/answered:\s*""/.test(REPORT + MOUNT), "a literal empty answer is being reported")
+})
+
+test("THE POINTER LATCH HAS A GUARANTEED RELEASE, and pointerup is not one", () => {
+  // The regression, and it is the worst one this rework could ship. The mount latches
+  // one pointer id so a second finger cannot be a second verdict. `game-chrome`'s
+  // manual installs its pointer swallower as a CAPTURE-phase listener on `globalThis`
+  // and stops every event not aimed at its own nodes while it is open — so a finger
+  // resting on the glass when a child taps how-to-play never delivers its `pointerup`
+  // to this canvas. Without another way out, the latch is held forever and the game
+  // goes permanently deaf to touch.
+  assert.ok(MOUNT.includes("const releasePointer ="), "the single release path is gone")
   assert.ok(
-    !/answered:\s*""/.test(MOUNT),
-    "mount.ts reports a literal empty answer, which the host files as a miss",
+    MOUNT.includes('canvas.addEventListener("lostpointercapture"'),
+    "a lost capture no longer clears the latch",
   )
+  const tick = MOUNT.slice(MOUNT.indexOf("const tick ="), MOUNT.indexOf("const liveDrag ="))
+  assert.ok(
+    /guide\.isOpen[\s\S]{0,200}releasePointer\(\)/.test(tick),
+    "the frame loop no longer releases the latch while the manual is open",
+  )
+  const pause = MOUNT.slice(MOUNT.indexOf("pause(): void {"))
+  assert.ok(pause.includes("releasePointer()"), "pause no longer clears the latch")
+  // And the manual is checked before a touch is accepted at all.
+  const downFn = MOUNT.slice(MOUNT.indexOf("const down ="), MOUNT.indexOf("const move ="))
+  assert.ok(downFn.includes("guide.isOpen"), "a touch behind the sheet is accepted as a gesture")
 })
 
 test("the window comes from the cadence table, with nothing clamping it", () => {
@@ -109,24 +129,79 @@ test("a tap is never a verdict, anywhere in the mount", () => {
 // And the same two claims played rather than read, through the stub host.
 // ---------------------------------------------------------------------------
 
-test("a lapse reaches skip and never reaches report, end to end", () => {
+/**
+ * Every settled event of a run, routed through the REAL `reportSettled` into a real
+ * stub host — which is the whole reason that branch lives in `report.ts` and not
+ * inside `mount.ts`.
+ *
+ * The previous version of this test built the same two arrays and then filled them
+ * from its own `if (event.outcome === "lapse")`, because a harness that drives
+ * `Round` never touches a `Host`. It therefore asserted its own `if` and passed with
+ * the entire routing block deleted from the mount. It was vacuous.
+ */
+function routeRun(
+  seed: number,
+  decide: Parameters<typeof playRun>[2],
+  options: Parameters<typeof playRun>[3] = {},
+): { reports: string[]; skips: string[]; outcomes: readonly string[] } {
   const reports: string[] = []
   const skips: string[] = []
   const host = createStubHost({
-    seed: 5,
-    onReport: (r) => reports.push(`${r.questionId}:${String(r.correct)}:${r.answered}`),
+    seed,
+    onReport: (r) => reports.push(`${r.questionId}|${String(r.correct)}|${r.answered}`),
     onSkip: (id) => skips.push(id),
   })
-  // The harness drives the round machine, and the mount's reporting is the thing under
-  // test — so the reporting rule is applied here exactly as `mount.ts` applies it.
-  const result = playRun(host, 6, alwaysWait, { limit: 20 })
+  const result = playRun(host, seed + 1, decide, options)
   for (const event of result.events) {
-    if (event.kind !== "settled") continue
-    if (event.outcome === "lapse") skips.push(event.statement.questionId)
-    else reports.push(event.statement.questionId)
+    if (event.kind === "settled") reportSettled(host, event)
   }
-  assert.ok(skips.length > 15, `only ${String(skips.length)} lapses in twenty rounds`)
-  assert.equal(reports.length, 0, `a lapse was reported: ${reports.join(",")}`)
+  return { reports, skips, outcomes: result.outcomes }
+}
+
+test("A LAPSE REACHES skip AND NEVER REACHES report — through the real host seam", () => {
+  const { reports, skips, outcomes } = routeRun(5, alwaysWait, { limit: 20 })
+  assert.ok(outcomes.every((o) => o === "lapse"))
+  assert.ok(skips.length > 15, `only ${String(skips.length)} lapses reached items.skip`)
+  assert.equal(reports.length, 0, `a lapse was reported: ${reports.join(", ")}`)
+})
+
+test("and every performed verdict reaches report, with the value the child asserted", () => {
+  // The counterweight: the test above would also pass if `reportSettled` did nothing
+  // at all.
+  const { reports, skips } = routeRun(15, perfect, { limit: 20, thinkMs: () => 200 })
+  assert.ok(reports.length > 15, `only ${String(reports.length)} verdicts reached items.answer`)
+  assert.equal(skips.length, 0, `a performed verdict was skipped: ${skips.join(", ")}`)
+  // Every one of them is judged correct and carries a parseable numeral — never the
+  // empty string, which is the shape of the bug this whole seam exists for.
+  for (const line of reports) {
+    const [, correct, answered] = line.split("|")
+    assert.equal(correct, "true", line)
+    assert.ok(answered !== undefined && answered.length > 0 && /^\d+$/.test(answered), line)
+  }
+})
+
+test("a wrong keep reaches report as a miss carrying the mal-rule value", () => {
+  // The format's best property, through the seam: the host records the miss AND names
+  // the misconception the child just demonstrated.
+  const { reports } = routeRun(25, () => "keep", { limit: 20, thinkMs: () => 200 })
+  const misses = reports.filter((line) => line.split("|")[1] === "false")
+  assert.ok(misses.length > 0, "a keep-everything bot produced no misses")
+  for (const line of misses) {
+    const answered = line.split("|")[2]
+    assert.ok(answered !== undefined && /^\d+$/.test(answered), `no mal-rule value on ${line}`)
+  }
+})
+
+test("a wrong toss reaches report as a miss with no misconception invented for it", () => {
+  // "I do not believe 47 + 25 = 72" is not a broken procedure with an output, so
+  // nothing is named. It is still a miss and it is still sent — which is exactly what
+  // the second gesture bought.
+  const { reports } = routeRun(35, () => "toss", { limit: 20, thinkMs: () => 200 })
+  const misses = reports.filter((line) => line.split("|")[1] === "false")
+  assert.ok(misses.length > 0, "a toss-everything bot produced no misses")
+  for (const line of misses) {
+    assert.equal(line.split("|")[2], "", `a mal-rule was invented for a burn: ${line}`)
+  }
 })
 
 test("a fast correct player drags the request up the ladder, question by question", () => {

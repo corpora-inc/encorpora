@@ -98,7 +98,20 @@ export function stepFor(outcome: Outcome, quickness: number): number {
   return UP_MIN + (UP_MAX - UP_MIN) * credit
 }
 
-/** The one number, and the only thing that moves it. */
+/**
+ * The one number, and the only thing that moves it.
+ *
+ * **A run ending does not touch it, and there is no method that could.** A child
+ * who reached rung eight and then ran out of shots is a child who can do rung
+ * eight; handing them `1 + 0 = 1` again because a run ended is the exact complaint
+ * this module answers. What a finished run costs is the run, not the standing —
+ * `mount.ts` builds one `Dealer`, and therefore one of these, per mount.
+ *
+ * There used to be a no-op `reset()` here to say so. It said nothing: an empty
+ * method body cannot be wrong, so the test for it could not fail. The standing is
+ * now asserted where it is observable, by playing two runs through one dealer —
+ * see `ladder.test.ts`.
+ */
 export class Ladder {
   private at: number
 
@@ -114,14 +127,6 @@ export class Ladder {
   settle(outcome: Outcome, quickness: number): number {
     this.at = clamp(this.at + stepFor(outcome, quickness))
     return this.at
-  }
-
-  /** A new run starts where the last one left off; the child did not get worse. */
-  reset(): void {
-    // Deliberately NOT back to START. A child who reached rung eight and then ran
-    // out of shots is a child who can do rung eight; handing them `1 + 0 = 1`
-    // again because a run ended is the exact complaint this module answers. What a
-    // finished run costs is the run, not the standing.
   }
 }
 

@@ -36,6 +36,28 @@ import { applyFlinch, applyOutcome, newRun, type Run } from "./run.ts"
 import { isCorrect, outcomeOf, type Call, type Outcome } from "./response.ts"
 import type { Statement } from "./statement.ts"
 
+/**
+ * The largest step the clock is allowed to take in one frame.
+ *
+ * A backgrounded tab hands back a delta of minutes. Letting that through would
+ * spend a window, three shots and a whole run while the child was looking at
+ * something else, so it is clamped.
+ *
+ * **It was 120 ms, and 120 ms was a bias rather than a guard.** A device that
+ * drops to 5 fps produces real 200 ms frames, and clamping those makes `elapsed`
+ * accrue 120 ms for every 200 ms the child actually spent — so every reaction
+ * time on a slow phone was under-reported by about 40%, and the child collected a
+ * systematic speed bonus and a faster ladder climb for owning a worse device.
+ * Now that reaction time drives both the bag and the difficulty, that is not a
+ * rounding error.
+ *
+ * 400 ms is above any frame a running app produces — 2.5 fps — and far below the
+ * seconds-to-minutes a suspended one hands back. Jank is charged to the child,
+ * because during jank the child was there; suspension is not, because they were
+ * not.
+ */
+export const MAX_STEP_MS = 400
+
 export type Phase = "idle" | "raise" | "still" | "call" | "verdict" | "clear" | "over"
 
 export type RoundEvent =
