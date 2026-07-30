@@ -30,10 +30,10 @@ async function start(el: HTMLElement): Promise<void> {
   const game = mount(el, mounted.host as unknown as Host);
 
   // The host can put a sheet over a still-mounted pack — a purchase surface, a
-  // parent gate — and MONUMENT's whole promise is that waiting is free. Behind
-  // a sheet it is not: the sweep keeps sweeping, the value on the stone keeps
-  // turning over, and the dither keeps making it faster. The clock stops dead
-  // instead.
+  // parent gate — and MONUMENT's whole promise is that waiting is free. Behind a
+  // sheet it is not: the sweep keeps sweeping, the value on the stone keeps
+  // turning over, and the abandonment guard counts a silence nobody can break.
+  // The clock stops dead instead.
   mounted.client.on("pause", () => {
     game.setPaused(true);
   });

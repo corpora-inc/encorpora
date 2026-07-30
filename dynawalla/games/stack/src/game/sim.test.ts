@@ -33,8 +33,16 @@ function fixedHost(over: Partial<Host> = {}): Host & { reports: unknown[] } {
   };
 }
 
-/** Put the sweep exactly `delta` from true, with `value` showing. */
+/**
+ * Put the sweep exactly `delta` from true, with `value` showing.
+ *
+ * Takes down a completed sum first, the way a child's next tap does. Every
+ * sequence of two wrong drops in this file goes through here, and a reveal that
+ * outlives the child's next intention would make `place()` refuse — which is
+ * exactly what it is for, and exactly what a harness must not be caught by.
+ */
 function aim(sim: Sim, delta: number, value: string): void {
+  sim.dismissReveal();
   const i = sim.slots.indexOf(value);
   assert.notEqual(i, -1, `value ${value} not among slots ${sim.slots.join(",")}`);
   sim.slot = i;
@@ -196,8 +204,19 @@ test("a wrong value reveals the truth, and the sweep is held while it is on scre
   sim.place(1);
   assert.equal(sim.revealPrompt, "7 + ? = 10");
   assert.equal(sim.revealAnswer, "3");
-  assert.ok(sim.holdLeft >= sim.revealLeft - 1e-9, "never aim at one thing while reading another");
-  sim.update(1.0, 2);
+
+  // "Never aim at one thing while reading another" — asserted directly now,
+  // rather than through `holdLeft >= revealLeft`. The sweep does not move at all
+  // while the sum is up, and a tap that arrives anyway cannot set a stone.
+  const parked = sim.sweep;
+  const floor = sim.floor;
+  for (let i = 0; i < 60; i++) sim.update(1 / 60, 2 + i / 60);
+  assert.equal(sim.sweep, parked, "the stone moved while the sum was being read");
+  assert.equal(sim.place(3), null, "a stone was set out of an answering window");
+  assert.equal(sim.floor, floor, "the tap that should have been a dismissal built a course");
+
+  // And it comes down by itself in the end, on a screen nobody is touching.
+  for (let i = 0; i < 60 * 10; i++) sim.update(1 / 60, 3 + i / 60);
   assert.equal(sim.revealPrompt, null);
 });
 

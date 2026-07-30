@@ -66,6 +66,9 @@ import {
   moteSecondsFor,
   READ_PER_LAMP,
   reportsToCurriculum,
+  REVEAL_FADE_SECONDS,
+  revealDwellSeconds,
+  revealIntensity,
   type Verdict,
 } from "./sim/economy.ts"
 import { buildNumberPool, chooseSplit, isPrime } from "./sim/factor.ts"
@@ -185,8 +188,16 @@ export function mountSlice(
         lines: [
           "You lose a lamp if you cut a bomb. Bombs are small and spiky and have a lit fuse.",
           "A wrong answer never costs a lamp. It costs the market's favour, which is your multiplier.",
-          "Thinking is always free, and so is running out of time.",
+          "Thinking is always free, and so is running out of time. Your favour is still yours.",
           "When all three lamps go out the market shuts. One tap opens it again.",
+        ],
+      },
+      {
+        heading: "When the sum finishes itself",
+        lines: [
+          "If you cut the wrong lantern, or the lanterns go out on their own, the sum finishes itself.",
+          "It stays up. Look at it for as long as you like — nothing is waiting on you.",
+          "Your next cut takes it away, so you can also just carry on.",
         ],
       },
     ],
@@ -320,6 +331,50 @@ export function mountSlice(
       weight: 1,
     })
   let banner: Banner | null = null
+
+  /**
+   * THE COMPLETED SUM, after a wrong lantern or a window that ran out.
+   *
+   * `left` is the dwell — the cap on a screen nobody is touching, from
+   * `revealDwellSeconds` — and `fade` is how it leaves. Neither is a hold: the
+   * market is already running again by the time this is raised, the child's next
+   * stroke takes it down, and a sigil going live clears it outright so it can
+   * never be read across a live question.
+   *
+   * It replaces a 1.2 s banner that shrank and faded while it was being read, and
+   * a red screen flash and a `failure` haptic alongside it. What is left is the
+   * sum finishing itself, in the colour a correct answer is celebrated in.
+   */
+  type Reveal = { prompt: string; answer: string; left: number; fade: number }
+  let reveal: Reveal | null = null
+
+  /**
+   * Finish the sum, and leave it up until the child moves on.
+   *
+   * Never called with a question still live: both callers null `liveQ` in the
+   * same tick, so this is never inside an answering window.
+   */
+  function showReveal(prompt: string, answer: string, carried: number): void {
+    reveal = {
+      prompt,
+      answer,
+      left: revealDwellSeconds(revealIntensity(carried)),
+      fade: REVEAL_FADE_SECONDS,
+    }
+  }
+
+  /**
+   * A stroke, or a new sigil. Starts the sum leaving; `hard` takes it at once.
+   *
+   * Returns nothing and refuses nothing — a stroke that dismisses the sum is also
+   * a stroke, and it goes on to cut whatever it was aimed at. Nobody is ever held
+   * for a beat they have already read.
+   */
+  function dismissReveal(hard = false): void {
+    if (!reveal) return
+    if (hard) reveal = null
+    else reveal.left = 0
+  }
 
   const slashes: Slash[] = []
   for (let i = 0; i < 24; i++)
@@ -485,10 +540,10 @@ export function mountSlice(
       // Always inside the frame, on every viewport.
       px = Math.max(hw + 4, Math.min(W - hw - 4, px))
       py = Math.max(size * 0.7, Math.min(H - size * 0.9, py))
-      // And never inside a live banner. The banner is the equation the child is
-      // being shown; a score label laid across it is the run-on defect again,
-      // just with two different kinds of number.
-      if (banner) {
+      // And never inside a live banner or a completed sum. Both are the equation
+      // the child is being shown; a score label laid across one is the run-on
+      // defect again, just with two different kinds of number.
+      if (banner || reveal) {
         const bt = H * 0.34
         if (py > bt - size * 1.5 && py < bt + size * 2.2) {
           py = py < bt ? bt - size * 1.6 : bt + size * 2.3
@@ -624,6 +679,10 @@ export function mountSlice(
     if (!q) return
     pendingQ.delete(b.qid)
     if (liveQ) expireQuestion()
+    // A new question and a finished one may never share the screen: whatever is
+    // still up goes now, not over a fade, so nothing can be read across a live
+    // equation.
+    dismissReveal(true)
     liveQ = q
     liveQAt = performance.now()
     moteWindow = moteSecondsFor(q.difficulty)
@@ -1168,12 +1227,19 @@ export function mountSlice(
       }
     } else {
       audio.ash()
-      // No hitstop on a miss — the retry must stay fast. A kick instead.
+      // What a wrong lantern is made of, and what it is deliberately NOT made of.
+      //
+      // It used to be a red screen flash, a damage vignette, a `failure` haptic
+      // and a red burst — four channels of feedback about having been wrong — and
+      // then the sum was taken away after 1.4 s. Maximum discouragement, minimum
+      // information, in that order. BEAM deleted exactly these four; this is the
+      // same deletion. A wrong lantern still costs the whole favour economy, which
+      // is the reason a guess is not free, and it has never cost a lamp.
+      //
+      // No hitstop on a miss either — the retry must stay fast. A kick instead.
       feel.kick(-dx, -dy, 15)
       feel.addTrauma(0.34)
-      feel.requestFlash(0.16, WRONG)
-      host.haptic("failure")
-      vignette = 1
+      host.haptic("light")
       chain = 0
       chainTimer = 0
       // The whole economy, gone — and that is now the *entire* cost. Favour
@@ -1182,13 +1248,17 @@ export function mountSlice(
       // longer costs a lamp on top, because a lamp was the thing that made
       // never answering the safe play. `lampCost` is where that is written
       // down and `economy.test.ts` is where it is enforced.
+      // The favour the child was *carrying*, captured before the wrong lantern
+      // takes it: it is what says whether they need the patient version.
+      const carried = favour
       favour = favourAfter(verdict, favour)
       favourLeft = 0
       // No bare red numeral floating over the field — the equation completes
-      // itself instead, in the sigil's own colour. Never a lecture, never a
-      // cross; just the thing that was true, stated once.
-      if (liveQ) showBanner(`${liveQ.prompt} = ${liveQ.answer}`, "", SIGIL_HOT, 1.4)
-      burst(x, y, WRONG, 26, 320)
+      // itself instead, in the colour a correct answer is celebrated in. Never a
+      // lecture, never a cross; just the thing that was true, left up until the
+      // child is done with it.
+      if (liveQ) showReveal(liveQ.prompt, liveQ.answer, carried)
+      burst(x, y, SIGIL_HOT, 26, 320)
       clearMotes(true)
       for (let i = 0; i < lampCost(verdict); i++) loseLamp()
     }
@@ -1238,6 +1308,7 @@ export function mountSlice(
     pendingQ.clear()
     moteLeft = 0
     banner = null
+    reveal = null
     world.clear()
     parts.clear()
     splats.clear()
@@ -1264,6 +1335,10 @@ export function mountSlice(
       restart()
       return
     }
+    // A stroke while the sum is up moves on. It is not a wait for an answer — the
+    // question is already settled — so ending it early costs nothing, and the same
+    // stroke goes on to cut whatever it was aimed at. A fast player is never held.
+    dismissReveal()
     if (blades.size >= MAX_BLADES) return
     const b = new Blade()
     b.maxSamples = gov.quality.trail
@@ -1472,6 +1547,16 @@ export function mountSlice(
       banner.life -= dtS
       if (banner.life <= 0) banner = null
     }
+    // The completed sum's own clock. Full opacity for the whole dwell — it does
+    // not shrink or fade while it is being read, which is the flash it replaces —
+    // and then it leaves.
+    if (reveal) {
+      if (reveal.left > 0) reveal.left = Math.max(0, reveal.left - dtS)
+      else {
+        reveal.fade -= dtS
+        if (reveal.fade <= 0) reveal = null
+      }
+    }
 
     audio.setIntensity(director.heat * (director.rushLeft > 0 ? 1 : 0.7))
   }
@@ -1492,15 +1577,19 @@ export function mountSlice(
         answered: "",
       })
     }
-    // Never punished with damage, and never with less than an honest wrong
-    // answer either: favour falls all the way to one, exactly as a wrong lantern
-    // does. What a timeout costs *more* of is market — the hush ran the whole
-    // window rather than ending at the cut.
+    // **A timeout costs the window, not the score.** It used to send favour all
+    // the way to one, exactly as a wrong lantern does — deliberately, because a
+    // timeout that is cheaper than a guess makes not-answering the dominant
+    // strategy. That rule is kept, but it is kept in `marketHushSeconds` where it
+    // belongs: the hush ran the *whole* window, and market time is where nearly
+    // all of the score comes from, so refusing is still strictly dominated at
+    // every difficulty. What is gone is the part that charged a child for still
+    // thinking. `favourLeft` is left running rather than zeroed, so the multiplier
+    // decays on its own clock exactly as it would have if nothing had happened.
     favour = favourAfter(verdict, favour)
-    favourLeft = 0
     for (let i = 0; i < lampCost(verdict); i++) loseLamp()
     director.settleQuestion()
-    showBanner(`${q.prompt} = ${q.answer}`, "", SIGIL_EDGE, 1.2)
+    showReveal(q.prompt, q.answer, favour)
     clearMotes(true)
   }
 
@@ -1910,6 +1999,33 @@ export function mountSlice(
       ctx.globalAlpha = 1
     }
 
+    // THE COMPLETED SUM. Drawn where the banner is drawn, in two runs on one
+    // baseline: the question as it was, then the part that is new, in PRIME_GOLD —
+    // the colour a correct answer is celebrated in. There is no red here and there
+    // is no word for what happened. Held at full opacity for the whole dwell; the
+    // only thing that fades is it leaving.
+    if (reveal && !banner && !over) {
+      const s = Math.max(26, Math.min(64, W * 0.062))
+      const tail = ` = ${reveal.answer}`
+      ctx.globalAlpha = reveal.left > 0 ? 1 : Math.max(0, reveal.fade / REVEAL_FADE_SECONDS)
+      ctx.font = font(UI_FONT, s)
+      ctx.textAlign = "left"
+      ctx.textBaseline = "alphabetic"
+      ctx.lineJoin = "round"
+      const wholeW = ctx.measureText(reveal.prompt + tail).width
+      const x0 = W / 2 - wholeW / 2
+      const y0 = H * 0.34
+      ctx.strokeStyle = "rgba(5,3,12,0.9)"
+      ctx.lineWidth = s * 0.16
+      ctx.strokeText(reveal.prompt + tail, x0, y0)
+      ctx.fillStyle = PAPER
+      ctx.fillText(reveal.prompt, x0, y0)
+      ctx.fillStyle = PRIME_GOLD
+      ctx.fillText(tail, x0 + ctx.measureText(reveal.prompt).width, y0)
+      ctx.textAlign = "center"
+      ctx.globalAlpha = 1
+    }
+
     if (over) {
       ctx.fillStyle = "rgba(6,4,16,0.72)"
       ctx.fillRect(0, 0, W, H)
@@ -2172,6 +2288,9 @@ export function mountSlice(
         right,
         lastAnswerMs,
         liveQ: liveQ ? liveQ.prompt : "",
+        reveal: reveal ? `${reveal.prompt} = ${reveal.answer}` : "",
+        revealLeft: reveal ? Number(reveal.left.toFixed(3)) : -1,
+        revealFade: reveal ? Number(reveal.fade.toFixed(3)) : -1,
         blades: blades.size,
         bladeVisible: [...blades.values()].filter((b) => b.visible(performance.now())).length,
         bladeSamples: [...blades.values()].reduce((a, b) => a + b.sampleCount, 0),

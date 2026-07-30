@@ -26,6 +26,7 @@ import { Rng } from "../core/rng.ts"
 import {
   answerGain,
   CADENCE,
+  FAVOUR_MAX,
   CANDIDATE_READ_LOCK_MS,
   comprehensionP50Ms,
   comprehensionP90Ms,
@@ -100,12 +101,29 @@ test("the shipped window, and this one, per difficulty", () => {
 
 // ── the costs ───────────────────────────────────────────────────────────────
 
-test("a timeout never costs less than an honest wrong answer", () => {
-  // The rule the whole failure comes down to. Lamps equal, favour equal — and
-  // the tiebreak, market time, goes *against* the timeout. See below.
+test("a timeout costs the window, not the score", () => {
+  // **The reversal.** This case used to read "a timeout never costs less than an
+  // honest wrong answer", and it asserted `favourAfter("timeout", 4) === 1` —
+  // equal to a wrong answer, deliberately, because a timeout cheaper than a guess
+  // makes not-answering dominant. The price of satisfying it that way was that a
+  // child who was still thinking was charged exactly what a child who was wrong
+  // was charged, and then had the answer flashed past them.
+  //
+  // The rule is kept and moved to where it belongs: the hush. A wrong answer gives
+  // up the whole favour ladder; a timeout gives up the whole *window*, which is
+  // most of the income in the game. So a timeout is cheap, and it is not free.
+  assert.equal(favourAfter("wrong", 4), 1, "a wrong lantern stopped costing the economy")
+  assert.equal(favourAfter("timeout", 4), 4, "being slow still costs a child their multiplier")
+  assert.equal(favourAfter("timeout", 1), 1)
+  assert.ok(
+    favourAfter("timeout", 4) > favourAfter("wrong", 4),
+    "a timeout does not cost less than an honest wrong answer",
+  )
   assert.equal(lampCost("timeout"), lampCost("wrong"))
-  assert.equal(favourAfter("timeout", 4), favourAfter("wrong", 4))
-  assert.equal(favourAfter("timeout", 4), 1)
+  // …and the whole ordering, on the one axis that is left.
+  const d = 5
+  const window = moteSecondsFor(d)
+  assert.ok(marketHushSeconds("timeout", d, window) > marketHushSeconds("wrong", d, 3))
 })
 
 test("no verdict costs a lamp — a slow child is never a punished child", () => {
@@ -231,6 +249,28 @@ const GUESSER: Bot = {
   isRight: (rng) => rng.chance(0.25),
 }
 
+/**
+ * **The exploit a free timeout would open, played on purpose.**
+ *
+ * A timeout no longer costs favour, so a child who has banked the multiplier to
+ * its ceiling could in principle sit on it and let every sigil expire — earning at
+ * ×4 for ever and never doing another sum. This bot does exactly that: it reads
+ * honestly until `favour` is at the top, and from then on it refuses everything.
+ *
+ * It has to lose, and it has to lose to a bot that keeps answering, or "a timeout
+ * costs the window, not the score" is just a nicer way of saying the maths is
+ * optional again. `simulate` is deliberately harsher on this than the real game
+ * is: it has no favour *decay* at all, so a hoarder's ×4 here is permanent, where
+ * in play `favourLeft` walks it back down a step every nine seconds.
+ */
+const HOARDER: Bot = {
+  name: "banks favour to the ceiling, then refuses",
+  readSeconds: (d, rng) => (hoarding ? READER.readSeconds(d, rng) : Number.POSITIVE_INFINITY),
+  isRight: () => true,
+}
+/** Set by `simulate` before every `readSeconds` call. Single-threaded; no state escapes a run. */
+let hoarding = true
+
 type RunOptions = {
   readonly seconds: number
   readonly difficulty: number
@@ -279,6 +319,7 @@ function simulate(rules: Rules, bot: Bot, seed: number, o: RunOptions): RunResul
     // ── a sigil ───────────────────────────────────────────────────────────
     untilSigil = o.sigilGap
     const usable = rules.usableSeconds(o.difficulty)
+    hoarding = favour < FAVOUR_MAX
     const need = bot.readSeconds(o.difficulty, rng)
     const finished = need <= usable
     const verdict: Verdict = !finished ? "timeout" : bot.isRight(rng) ? "correct" : "wrong"
@@ -435,6 +476,47 @@ test("AFTER: the honest reader actually lands their answers", () => {
   const beforeRate = before.answered / Math.max(1, Math.round(before.survived / BASE.sigilGap))
   assert.ok(beforeRate < 0.5, `the shipped window already worked: ${(beforeRate * 100).toFixed(0)}%`)
   assert.ok(after.answered > before.answered * 2, `${String(before.answered)} → ${String(after.answered)}`)
+})
+
+test("AFTER: banking favour and then refusing loses to just answering", () => {
+  // The exploit a free timeout would open, closed. Swept over difficulty and over
+  // how much a second of market is worth, because those are the two knobs that
+  // decide whether a ×4 sat on is worth more than a ×4 spent.
+  for (let difficulty = 1; difficulty <= 10; difficulty++) {
+    for (const slicePerSecond of [20, 120, 1200]) {
+      const o = { ...BASE, difficulty, slicePerSecond }
+      const hoarder = meanScore(AFTER, HOARDER, o)
+      const reader = meanScore(AFTER, SLOW_READER, o)
+      assert.ok(
+        reader > hoarder,
+        `difficulty ${String(difficulty)} at ${String(slicePerSecond)} pts/s: ` +
+          `hoarding favour scored ${hoarder.toFixed(0)}, answering scored ${reader.toFixed(0)}`,
+      )
+    }
+  }
+  const hoarder = meanScore(AFTER, HOARDER, BASE)
+  const refuser = meanScore(AFTER, REFUSER, BASE)
+  const reader = meanScore(AFTER, SLOW_READER, BASE)
+  console.log(
+    `  after:  refuser ${refuser.toFixed(0)} < hoarder ${hoarder.toFixed(0)} < reader ${reader.toFixed(0)}`,
+  )
+  // And the hoarder does beat the pure refuser, which is the anti-vacuity half:
+  // the free timeout really is worth something, it is just worth less than doing
+  // the sums. A hoarder that scored the same as a refuser would mean the bot never
+  // banked any favour and this case measured nothing.
+  assert.ok(
+    hoarder > refuser * 1.2,
+    `hoarding ${hoarder.toFixed(0)} is no better than refusing ${refuser.toFixed(0)} — the bot never banked favour`,
+  )
+})
+
+test("AFTER: a timeout leaves the multiplier where it was, at every rung", () => {
+  // The property directly, so the bots above cannot be the only thing asserting
+  // it. A child who ran out of time keeps everything they had earned.
+  for (let favour = 1; favour <= FAVOUR_MAX; favour++) {
+    assert.equal(favourAfter("timeout", favour), favour, `a timeout at favour ${String(favour)}`)
+    assert.equal(favourAfter("wrong", favour), 1, `a wrong lantern at favour ${String(favour)}`)
+  }
 })
 
 test("AFTER: an honest reader never loses a lamp to the arithmetic", () => {
