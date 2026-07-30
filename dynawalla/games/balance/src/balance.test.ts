@@ -13,9 +13,24 @@ import {
   minWeightsFor,
   answeredKey,
 } from "./puzzle.ts";
-import { specFromQuestion } from "./adapter.ts";
+import { specFromQuestion as buildSpec, type BoardLimits } from "./adapter.ts";
+import type { Question } from "./contract.ts";
 import { makeRng } from "./rng.ts";
 import { makeStubHost } from "./stubHost.ts";
+
+/**
+ * The board, or a failed assertion.
+ *
+ * `specFromQuestion` can now refuse — see `adapter.ts`, which is where the
+ * founder's lockout was. Every question in this file is one the game is expected
+ * to be able to build, so a refusal here is a real failure and should read as
+ * one rather than as `null` propagating into a confusing assertion further down.
+ */
+function specFromQuestion(q: Question, limits?: BoardLimits): PuzzleSpec {
+  const spec = buildSpec(q, limits);
+  assert.ok(spec, `COUNTERPOISE refused a board it must be able to build: ${q.prompt} = ${q.answer}`);
+  return spec;
+}
 
 const SEED = 0x5eed1e;
 const N = 400; // ~80 movements deep: far past anything a session reaches
@@ -327,6 +342,7 @@ test("no float ever reaches a verdict", () => {
     rack: [frac(1, 6), frac(1, 3), frac(1, 2)],
     fillSide: 1,
     hangSlot: null,
+    countAnswer: false,
     prompt: "1/3 + 1/6 = □",
     domain: "fractions",
     difficulty: 0.5,

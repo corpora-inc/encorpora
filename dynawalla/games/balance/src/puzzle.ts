@@ -42,6 +42,18 @@ export type PuzzleSpec = {
   rack: Frac[];
   fillSide: Side | null;
   hangSlot: { side: Side; peg: number } | null;
+  /**
+   * The answer is *how many* weights were hung, not what they weigh.
+   *
+   * True only on a measurement-division board — `□ × 15 = 165`, where the rack
+   * holds nothing but 15s and eleven of them is the answer. Everything else about
+   * such a board is an ordinary `fill`: the beam still levels on exact torque and
+   * nothing about the physics changes. The one difference is what gets reported,
+   * and it lives here rather than in a fourth `kind` so that every path that
+   * already handles `fill` — the drop zone, the spill, the verdict, the clean-solve
+   * gem — keeps working without learning a new case.
+   */
+  countAnswer: boolean;
   prompt: string;
   domain: string;
   difficulty: number;
@@ -71,6 +83,30 @@ export const MOVEMENTS: readonly string[] = [
   "Halves and Quarters",
   "The Long Arm",
   "Sealed and Split",
+];
+
+/**
+ * What is actually standing in front of the child, indexed by `PuzzleSpec.movement`.
+ *
+ * `MOVEMENTS` above is a *ladder* of names and it was engraved by dividing the
+ * child's difficulty into ten, which meant the plinth announced "IDENTICAL
+ * CRATES" and "THE LONG ARM" over boards that had neither — because against the
+ * shipped host every board was a plain pair of dishes. The founder played it and
+ * said the quiet part: *"'identical' doesn't do much .. you just put the matching
+ * weight on the other side."*
+ *
+ * These names describe objects instead, so the engraving is true by construction
+ * and the fanfare fires the first time a child meets a new piece of apparatus
+ * rather than every fifth question. The order is the order they are met in.
+ */
+export const APPARATUS: readonly string[] = [
+  "Both Dishes",
+  "Lift",
+  "Equal Rows",
+  "How Many Fit",
+  "The Sealed Crate",
+  "Identical Crates",
+  "Halves and Quarters",
 ];
 
 function lcm(a: number, b: number): number {
@@ -126,6 +162,10 @@ export function answeredKey(
   declared: Frac | null,
 ): string {
   if (spec.kind === "fill") {
+    // On a measurement-division board the child's answer is the count. `11` is
+    // what the host asked for and `165` is what the brass weighs; reporting the
+    // mass would mark every correct answer wrong.
+    if (spec.countAnswer) return String(placed.length);
     let sum: Frac = ZERO;
     for (const p of placed) sum = add(sum, p.value);
     return toKey(sum);
@@ -164,7 +204,13 @@ export function rackCanMake(rack: readonly Frac[], target: Frac): boolean {
   let L = target.d;
   for (const f of rack) L = lcm(L, f.d);
   const goal = Math.abs(target.n) * (L / target.d);
-  if (goal <= 0 || goal > 4096) return false;
+  if (goal <= 0) return false;
+  // Past the search cap this function does not know, and `false` here is read by
+  // `verdictFor` as a *proved* dead end: the dish tips, everything comes back and
+  // an error is recorded. The shipped ladder reaches `913072 − 884`, so "I could
+  // not check" used to be charged to the child as a mistake. Not knowing must
+  // fail the safe way — the beam is still telling them the truth either way.
+  if (goal > 4096) return true;
   const sign = target.n < 0 ? -1 : 1;
   const vals = rack
     .filter((f) => f.n !== 0 && (f.n < 0 ? -1 : 1) === sign)

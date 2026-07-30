@@ -8,16 +8,32 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
-import type { Question } from "./contract.ts";
+import type { DifficultyRequest, Question } from "./contract.ts";
 import { toKey } from "./frac.ts";
 import type { Frac } from "./frac.ts";
-import { specFromQuestion } from "./adapter.ts";
+import { specFromQuestion as buildSpec, type BoardLimits } from "./adapter.ts";
 import { PAN_PEG, netTorque, verdictFor, counts } from "./puzzle.ts";
+import type { PuzzleSpec } from "./puzzle.ts";
 import { makeRng, freshSeed } from "./rng.ts";
 import { makeStubHost } from "./stubHost.ts";
+import { pull } from "./pull.ts";
 import { puzzleAt } from "./generate.ts";
 import { makePacing, afterBoard, request, onTheWire, FLOOR } from "./pacing.ts";
 import { toUnit } from "../../../packs/shared/game-host/index.ts";
+
+/**
+ * The board, or a failed assertion.
+ *
+ * `specFromQuestion` can now refuse — see `adapter.ts`, which is where the
+ * founder's lockout was. Every question in this file is one the game is expected
+ * to be able to build, so a refusal here is a real failure and should read as
+ * one rather than as `null` propagating into a confusing assertion further down.
+ */
+function specFromQuestion(q: Question, limits?: BoardLimits): PuzzleSpec {
+  const spec = buildSpec(q, limits);
+  assert.ok(spec, `COUNTERPOISE refused a board it must be able to build: ${q.prompt} = ${q.answer}`);
+  return spec;
+}
 
 const RACK = 9;
 /** A bot picking blind out of a nine-weight rack. */
@@ -433,17 +449,31 @@ test("a host that is asked for a rung serves that rung, not the next one along",
 });
 
 test("the game asks the host for a rung — the wire is actually connected", () => {
-  // `Game` needs a canvas, a ResizeObserver and a rAF loop, none of which exist
-  // in Node, so the one line that joins the pacing to the host is checked where
-  // it is written. Everything either side of it is unit tested above.
-  const src = readFileSync(new URL("./game.ts", import.meta.url), "utf8");
-  const call = /this\.host\.next\(([^)]*)\)/.exec(src);
-  assert.ok(call, "game.ts no longer calls host.next at all");
-  assert.match(
-    call[1],
-    /request\(/,
-    `game.ts calls host.next(${call[1]}) — it must pass a difficulty request`,
+  // This used to read `game.ts` as text and match `host.next(request(` in it,
+  // because the call sat inside a class that needs a canvas to build. The loop
+  // moved to `pull.ts` for exactly that reason, so the wire can now be driven
+  // instead of grepped: what is asserted is the request the host is handed.
+  const asked: DifficultyRequest[] = [];
+  const host = makeStubHost({ seed: 11 });
+  const climbed = { level: 0.62, floor: 0.4, streak: 3 };
+  pull(
+    (r) => {
+      asked.push(r);
+      return host.next(r);
+    },
+    climbed,
+    { maxNumeralChars: Number.POSITIVE_INFINITY },
   );
+  assert.equal(asked.length, 1, "the first board took more than one draw");
+  assert.ok(
+    Math.abs((asked[0].difficulty ?? -1) - climbed.level) < 0.01,
+    `asked for ${String(asked[0].difficulty)} while the child stood at ${String(climbed.level)}`,
+  );
+  assert.ok(
+    (asked[0].maxDifficulty ?? 0) > (asked[0].difficulty ?? 0),
+    "no standing ceiling went out with the request",
+  );
+  const src = readFileSync(new URL("./game.ts", import.meta.url), "utf8");
   assert.match(src, /this\.host\.raiseFloor\?\./, "the floor is never reported to the host");
 });
 
