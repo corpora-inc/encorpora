@@ -315,13 +315,13 @@ src/
   render/         palette, scene, sparks
   render/hud.ts   where the chrome may be drawn: the safe area, minus two corners
   audio/audio.ts  asset-free Web Audio, C5–C6 pentatonic
-  test/           131 tests: rules, pacing, the ship, wiring, and the chrome
+  test/           132 tests: rules, pacing, the ship, wiring, and the chrome
 ```
 
 ## Tests
 
 ```
-npm test        131 tests
+npm test        132 tests
 npm run tsc     0 errors
 npm run build   the library build
 npm run build:pack   the pack build → dist-pack/

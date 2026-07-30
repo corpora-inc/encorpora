@@ -813,6 +813,13 @@ export class Arena {
       // "so the pack is told what it got and not what it asked for."
       const served = Number.isFinite(q.difficulty) ? q.difficulty : request.difficulty
       drawn.push({ question: q, difficulty: served })
+      // A question with no id is not a question. The host hands one back when its
+      // prefetch pool has run dry — a clone of the last one, with the id blanked —
+      // and its `report` is then dropped on the floor at the far end. `MAX_DRAWS`
+      // exists so an arming cannot empty the pool in the first place, and this is
+      // the belt for that brace: a child who solves a resonator nothing can be
+      // recorded against is the worst outcome available here, and it is silent.
+      if (q.id === "") continue
       const hit = isResonant(Number(q.answer), MAX_TARGET, { wall })
       // Remembered either way: ten of the thirty-two rungs in the band produce
       // nothing this game can use. See `ladder.BARREN`.
@@ -978,6 +985,7 @@ export class Arena {
     let best: Question | null = null
     let bestTiles = 0
     for (const q of drawn) {
+      if (q.id === "") continue
       const target = Number(q.answer)
       if (!isAskable(target, MAX_TARGET) || target < MIN_TARGET) continue
       const tiles = tileCount(target)

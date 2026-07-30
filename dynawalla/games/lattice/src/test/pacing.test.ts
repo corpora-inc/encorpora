@@ -403,6 +403,25 @@ test("a second wrong hold in the same ring is not a second wrong answer", () => 
   )
 })
 
+test("a question with no id is not a question, however answerable it looks", () => {
+  // The host hands one back when its prefetch pool has run dry: a clone of the
+  // last question with the id blanked. `report` on it is then dropped at the far
+  // end — so a child would work out `47 + 25`, assemble `2·2·2·3·3`, open the ring
+  // and have the whole thing recorded nowhere. `MAX_DRAWS` is why the pool should
+  // never empty; this is why an empty one is not silent damage if it does.
+  const inner = createStubHost({ seed: 0x0117e55, reducedMotion: true })
+  const dry: StubHost = {
+    ...inner,
+    // Perfectly resonant, and unreportable.
+    next: (request) => ({ ...inner.next(request), id: "", answer: "72" }),
+  }
+  const arena = new Arena(dry, new Rng(0x0117e55), { width: 900, height: 700 })
+  const events = arena.begin(0)
+  assert.equal(arena.resonator, null, "a resonator was armed on a question with no id")
+  assert.ok(events.some((e) => e.kind === "stalled"), "the arena took it and said nothing")
+  assert.ok(arena.bodies.length > 0, "and it still left the child an empty screen")
+})
+
 test("a host with no skip is still a host this game runs on", () => {
   // `skip` is feature-detected, like `transition`. A runtime older than the one
   // that grew it must not be a pack that throws on its first arming.
