@@ -5,6 +5,8 @@
 // is disableable and never carries information on its own: everything you can
 // hear, you can also see.
 
+import { createSafetyBus, type SafetyBus } from "../../../../packs/shared/game-audio/index.ts"
+
 const A4 = 440
 /** Pentatonic minor degrees in semitones — nothing here can sound wrong. */
 const SCALE = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22, 24]
@@ -16,6 +18,14 @@ function hz(semitonesFromA4: number): number {
 export class Audio {
   private ctx: AudioContext | null = null
   private master: GainNode | null = null
+  /**
+   * The shared ceiling every pack's output passes through.
+   *
+   * CLAIM was one of the two games the fleet audio pass could not route, because
+   * this file was being edited at the time. The bus is a `WaveShaperNode`, so the
+   * largest entry in its curve is the largest sample emittable for any input.
+   */
+  private safety: SafetyBus | null = null
   private noiseBuf: AudioBuffer | null = null
   private tensionOsc: OscillatorNode | null = null
   private tensionGain: GainNode | null = null
@@ -35,7 +45,9 @@ export class Audio {
     const ctx = new Ctor()
     const master = ctx.createGain()
     master.gain.value = 0.55
-    master.connect(ctx.destination)
+    // The one line that used to read `master.connect(ctx.destination)`.
+    this.safety = createSafetyBus(ctx)
+    master.connect(this.safety.input)
     this.ctx = ctx
     this.master = master
 
