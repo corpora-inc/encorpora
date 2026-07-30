@@ -26,6 +26,7 @@ import {
   DESCENT_FAR,
   DESCENT_NEAR,
   descentOf,
+  HINT_BAND,
   isQuick,
   itemPace,
   ladder,
@@ -46,7 +47,7 @@ import {
   STEP_START,
   STEP_TRACK,
 } from "./items.ts"
-import type { Band, Recent, Rung, Staircase } from "./items.ts"
+import type { Band, ItemService, Recent, Rung, Staircase } from "./items.ts"
 import type { PromptBlank, PromptSlot } from "./curriculum.ts"
 import {
   activeNodes,
@@ -61,6 +62,33 @@ import {
 } from "./curriculum.ts"
 
 const noRecord = () => {}
+
+/**
+ * Walk a service up to a rung the way a child does: by being right, at the pace
+ * the item's own class publishes.
+ *
+ * There is no other way in, and since issue 733 there is deliberately no other way
+ * in — a `difficulty` is a hint clamped to `HINT_BAND` rungs of where the host
+ * already stands, so a test that wants the host on rung 20 has to put it there
+ * with evidence. Which is the point: it is the same route a child takes.
+ */
+function climbTo(service: ItemService, rung: number, packId = "dynawalla.fuse"): void {
+  for (let guard = 0; guard < 400 && service.position() < rung; guard++) {
+    const item = service.next({ packId })
+    assert.ok(item)
+    service.judge({
+      packId,
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+  assert.ok(
+    service.position() >= rung,
+    `400 correct answers at the published median did not reach rung ${String(rung)} — the ladder ` +
+      `stopped at ${String(service.position())}`,
+  )
+}
 
 test("the ladder is every generatable binding, easiest first, and it is not empty", () => {
   const rungs = ladder()
@@ -282,10 +310,12 @@ test("choices are stable for an exercise, so a redraw does not move the right sl
   assert.deepEqual(choicesFor(exercise, 0), choicesFor(exercise, 0))
 })
 
-test("a difficulty request selects the rung, and the item says which rung it came from", () => {
+test("a difficulty request selects a rung inside the host's band, and the item says which rung it came from", () => {
   const rungs = ladder()
-  assert.ok(rungs.length > 1, "a one-rung ladder cannot demonstrate selection")
+  const span = rungs.length - 1
+  assert.ok(span > 2 * HINT_BAND, "the ladder is too short to tell a band from the whole of it")
   const service = createItemService({ profileId: "p1", record: noRecord })
+  assert.equal(service.position(), 0, "a fresh service does not start on rung 0")
 
   const easiest = service.next({ packId: "dynawalla.slice", difficulty: 0 })
   const hardest = service.next({ packId: "dynawalla.slice", difficulty: 1 })
@@ -293,17 +323,28 @@ test("a difficulty request selects the rung, and the item says which rung it cam
 
   // The ordinate the pack is told is the position of the rung it was served,
   // 0..1 across the whole ladder — not `level`, which is the level within one
-  // skill and is not comparable between two of them.
+  // skill and is not comparable between two of them. And it is the rung it was
+  // *served*: this service stands on rung 0 with no evidence about the child at
+  // all, so a request for the top of the ladder is honoured as far as the band
+  // reaches and stops there. Before issue 733 the second line of this test asserted
+  // `1`, and a pack could put a beginner on the hardest rung the curriculum has
+  // by asking.
   assert.equal(easiest.difficulty, 0)
-  assert.equal(hardest.difficulty, 1)
+  assert.equal(hardest.difficulty, HINT_BAND / span)
   assert.equal(rungs[0]?.node.id, easiest.skillId)
-  assert.equal(rungs[rungs.length - 1]?.node.id, hardest.skillId)
-  assert.notEqual(easiest.prompt, hardest.prompt)
+  assert.equal(rungs[HINT_BAND]?.node.id, hardest.skillId)
 
-  // The middle of the ladder is the middle of the ladder, and it moves.
-  const middle = service.next({ packId: "dynawalla.slice", difficulty: 0.5 })
-  const where = middle?.difficulty ?? -1
-  assert.ok(where > 0.3 && where < 0.7, `0.5 landed at ${String(where)}`)
+  // The request still selects *within* the band, in both directions, and the
+  // band moves with the child rather than with the ladder. Walked up on the
+  // host's own evidence first, because a band around rung 0 has only one side.
+  climbTo(service, 20)
+  const where = service.position()
+  const low = service.next({ packId: "dynawalla.slice", difficulty: 0 })
+  const high = service.next({ packId: "dynawalla.slice", difficulty: 1 })
+  assert.ok(low && high)
+  assert.equal(Math.round((low.difficulty ?? -1) * span), where - HINT_BAND)
+  assert.equal(Math.round((high.difficulty ?? -1) * span), where + HINT_BAND)
+  assert.notEqual(low.prompt, high.prompt)
 })
 
 test("a ceiling is honoured, and an unsatisfiable request clamps to the nearest rung that exists", () => {
@@ -336,51 +377,265 @@ test("a ceiling is honoured, and an unsatisfiable request clamps to the nearest 
   assert.equal(under.difficulty, 0, "an impossible request did not land on the easiest rung")
   const over = service.next({ packId: "dynawalla.siege", difficulty: 99 })
   assert.ok(over)
-  assert.equal(over.difficulty, 1, "an impossible request did not land on the hardest rung")
+  // The nearest satisfiable request, and since issue 733 what is satisfiable is the
+  // band as well as the ladder: this service stands on rung 0, so the nearest
+  // rung it can be asked for is `HINT_BAND` above it. Worth noting because a
+  // request of 99 is not hypothetical — `beam` sends `2 + Math.round(level × 7)`
+  // and `stack` sends a floor number, on scales that were never 0..1, and every
+  // one of them used to arrive as "the hardest rung in the curriculum, please".
+  assert.equal(
+    over.difficulty,
+    HINT_BAND / (ladder().length - 1),
+    "an impossible request did not land on the hardest rung the band allows",
+  )
 })
 
-test("driving the difficulty moves the one ladder, so judging resumes from where the pack left it", () => {
-  const service = createItemService({ profileId: "p1", record: noRecord })
-  assert.equal(service.position(), 0)
+test("driving the difficulty does not move the ladder: the pack proposes and the band disposes", () => {
+  // This test asserted the *opposite* until issue 733, and the sentence it asserted —
+  // "driving the difficulty moves the one ladder" — is the defect written down
+  // as a property. `next()` used to apply a request by rewriting the whole rung
+  // of `progress`, keeping only the banked fraction, so a pack that drives
+  // difficulty every question overwrote the band's climb before the band could
+  // serve a single item from it. ARENA measured `host pos 22 → 26 → 22`, every
+  // question, on the real scheduler. Seventeen of the twenty-seven shipping
+  // packs drive difficulty and not one of them reads `position()`, so for
+  // seventeen games the founder's 85/95 rule was computed and then discarded.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p1", record: noRecord, rungs })
+  climbTo(service, 20)
+  const where = service.position()
 
   const item = service.next({ packId: "dynawalla.stack", difficulty: 1 })
   assert.ok(item)
-  const top = service.position()
-  assert.ok(top > 0, "a difficulty request left the ladder standing where it was")
+  assert.equal(service.position(), where, "a difficulty request moved the host's rung")
+  // Honoured, as far as the band reaches: the pack asked for the top and got one
+  // rung up, which is a game shaping the texture of a question.
+  assert.equal(Math.round((item.difficulty ?? -1) * span), where + HINT_BAND)
 
-  // A pack that stops driving resumes from where it left the child, and the
-  // host's own climb-and-step-down goes on from there. Two positions would mean
-  // a child who was moved down by their game gets moved back up by the ladder
-  // the moment the game stops asking.
+  // And a pack that stops driving is served from the host's own spread around
+  // the host's own rung — which is where the child was the whole time, because
+  // nothing the pack asked for was ever written into it.
   const after = service.next({ packId: "dynawalla.stack" })
   assert.ok(after)
-  assert.equal(service.position(), top)
-  // Not the same ordinate: with the pack no longer naming a difficulty the host
-  // serves from its own spread around where it was left (`rungWeights`). What
-  // must hold is that it is still *there* — within the spread of the rung the
-  // pack drove it to, and not back at the bottom of the ladder.
-  const span = ladder().length - 1
-  const drove = item.difficulty ?? -1
-  const served = after.difficulty ?? -1
+  assert.equal(service.position(), where)
+  const served = Math.round((after.difficulty ?? -1) * span)
   assert.ok(
-    served >= drove - (SPREAD_BELOW + 1) / span && served <= drove + SPREAD_ABOVE / span,
-    `the pack left the child at ${drove.toFixed(3)} and the host served ${served.toFixed(3)}`,
+    served >= where - SPREAD_BELOW && served <= where + SPREAD_ABOVE,
+    `the host stands on rung ${String(where)} and served rung ${String(served)}`,
   )
 
+  // And judging goes on from the host's rung, whatever the pack asked for on the
+  // way in. This child climbed on a clean window, so one miss costs them nothing
+  // — see `PROMOTE_AT`, "a miss inside a sustained window costs nothing" — and
+  // what the assertion is really about is that they are still standing where the
+  // *evidence* put them and not where `difficulty: 1` did.
   service.judge({
     packId: "dynawalla.stack",
     itemId: after.id,
     response: "definitely wrong",
     latencyMs: 1000,
   })
-  // Exactly the opening stride: nothing has been answered yet, so the staircase
-  // is still where `openStaircase` puts it.
   assert.equal(
     service.position(),
-    // `"lost"` because the window holds one answer and it was wrong, which is 0%.
-    top - descentOf(openStaircase(), "lost"),
-    "the ladder did not step down from the pack's position by the opening stride",
+    where,
+    "a miss inside a sustained window moved the ladder off the rung the evidence put it on",
   )
+})
+
+test("the founder's rule: a pack asking for the top while the child sustains 60% is served the child's rung", () => {
+  // > "you only progress when sustaining >~95% ... if you are getting 85% you
+  // > are at the right level. if you are less than ~75% its too hard."
+  //
+  // The rule, from the pack's side of the boundary. A child is walked up to a
+  // real rung on their own evidence, then starts getting three in five right —
+  // under the founder's floor at every rung — while the pack goes on asking for
+  // the hardest content the curriculum has, every single question. What the
+  // child is *served* has to follow the child down.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-60", record: noRecord, rungs })
+  climbTo(service, 20)
+  const started = service.position()
+  assert.ok(started >= 20)
+
+  let highest = 0
+  let everStood = 0
+  for (let answered = 0; answered < 300; answered++) {
+    const standing = service.position()
+    everStood = Math.max(everStood, standing)
+    const item = service.next({ packId: "dynawalla.arena", difficulty: 1 })
+    assert.ok(item)
+    const served = Math.round((item.difficulty ?? 0) * span)
+    assert.ok(
+      served <= standing + HINT_BAND,
+      `the child stands on rung ${String(standing)}, the pack asked for rung ${String(span)}, ` +
+        `and rung ${String(served)} was served`,
+    )
+    highest = Math.max(highest, served)
+    const right = answered % 5 < 3
+    service.judge({
+      packId: "dynawalla.arena",
+      itemId: item.id,
+      response: right ? service.reveal(item.id) : "definitely wrong",
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+  // Walked down off a level they cannot sit on, with the pack asking for the top
+  // the entire way. Under the old rule every one of those 300 questions was rung
+  // 76 — the hardest thing in the curriculum, handed to a child getting three in
+  // five right, forever.
+  assert.ok(
+    service.position() < started - 5,
+    `a child sustaining 60% was left on rung ${String(service.position())} having started on ` +
+      `rung ${String(started)}`,
+  )
+  assert.ok(
+    highest <= everStood + HINT_BAND,
+    `the pack asked for rung ${String(span)} and reached rung ${String(highest)}, and the highest ` +
+      `rung the child ever stood on was ${String(everStood)}`,
+  )
+  // Said again as a number a person can check against the ladder: asking for the
+  // hardest rung in the curriculum, three hundred times, never got half way to it.
+  assert.ok(
+    2 * highest < span,
+    `the pack asked for rung ${String(span)} on every one of 300 questions and reached rung ` +
+      `${String(highest)} of ${String(span)}`,
+  )
+})
+
+test("the founder's rule, the other way: a pack asking for rung 2 cannot hold a child who sustains 95%", () => {
+  // The converse, and it matters as much: a game whose own ladder is pinned low
+  // — `merge-idle` at depth 1, `stack` on floor 1 — must not be able to park a
+  // fluent child on the easiest content in the curriculum. The child is pulled
+  // up by their own evidence and the pack's request is dragged up with them.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-95", record: noRecord, rungs })
+  const packRung = 2
+
+  let lowest = span
+  for (let answered = 0; answered < 200; answered++) {
+    const standing = service.position()
+    const item = service.next({ packId: "dynawalla.stack", difficulty: packRung / span })
+    assert.ok(item)
+    const served = Math.round((item.difficulty ?? 0) * span)
+    assert.ok(
+      served >= standing - HINT_BAND,
+      `the child stands on rung ${String(standing)} and was served rung ${String(served)}`,
+    )
+    if (standing > packRung) lowest = Math.min(lowest, served)
+    service.judge({
+      packId: "dynawalla.stack",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+  assert.ok(
+    service.position() > 20,
+    `a child who was right every time was held at rung ${String(service.position())} by a pack ` +
+      `asking for rung ${String(packRung)}`,
+  )
+  assert.ok(
+    lowest > packRung,
+    `the pack asked for rung ${String(packRung)} and was still being served rung ` +
+      `${String(lowest)} after the child had climbed past it`,
+  )
+})
+
+test("the ARENA pattern: a pack asking for its own number every question no longer resets the climb", () => {
+  // The measurement in issue 733, as a test. ARENA derives its difficulty from its
+  // own game state — the depth of the arena — and asks for it on every draw. The
+  // host's position was observed going 22 → 26 → 22 → 26 → 22: the band climbed
+  // on the evidence, `next()` wrote the pack's rung back over it, and the child
+  // spent the session on a ladder the pack was holding still.
+  //
+  // Here the pack pins its number *below* the child and asks for it every
+  // question while the child answers every one correctly. The host's rung must
+  // never once move on a `next()`, and it must never be reset to the pack's.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-arena", record: noRecord, rungs })
+  const packRung = 4
+
+  const walked: number[] = []
+  for (let answered = 0; answered < 150; answered++) {
+    const before = service.position()
+    const item = service.next({ packId: "dynawalla.arena", difficulty: packRung / span })
+    assert.ok(item)
+    assert.equal(
+      service.position(),
+      before,
+      `drawing a question with a difficulty of ${String(packRung)}/${String(span)} moved the host ` +
+        `from rung ${String(before)} to rung ${String(service.position())}`,
+    )
+    walked.push(service.position())
+    service.judge({
+      packId: "dynawalla.arena",
+      itemId: item.id,
+      response: service.reveal(item.id),
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+
+  // A child who is never wrong never steps down, so the walk is monotonic — and
+  // that is precisely the property the sawtooth broke.
+  assert.ok(walked.length === 150)
+  for (let i = 1; i < walked.length; i++) {
+    assert.ok(
+      (walked[i] as number) >= (walked[i - 1] as number),
+      `the host stood on rung ${String(walked[i - 1])} and then on rung ${String(walked[i])} ` +
+        `without a single wrong answer between them`,
+    )
+  }
+  assert.ok(
+    service.position() > 4 * packRung,
+    `a child who was right 150 times running finished on rung ${String(service.position())} with ` +
+      `a pack asking for rung ${String(packRung)}`,
+  )
+})
+
+test("the banked fraction survives a pack that names a difficulty on every question", () => {
+  // The property the rule this replaced kept by hand, and the reason it kept it.
+  // A child who is right every time and slow every time earns a *fraction* of a
+  // rung per answer — in the tail regime an item's own p90 over the latency —
+  // and it is carried in the fraction of `progress` until it adds up to a rung.
+  // Overwriting the whole number on every draw is what deleted it, over and over,
+  // and that child never moved at all.
+  //
+  // Nothing is written to `progress` by a request now, so the fraction and the
+  // rung both survive; this holds the property from the outside, where a future
+  // author who reintroduces a write can see it fail.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-slow", record: noRecord, rungs })
+  let answers = 0
+  while (service.position() < 1 && answers < 200) {
+    const item = service.next({ packId: "dynawalla.truedraw", difficulty: 0 })
+    assert.ok(item)
+    answers += 1
+    service.judge({
+      packId: "dynawalla.truedraw",
+      itemId: item.id,
+      // Ten times the widest published median: deep in the tail, so no single
+      // answer is worth anything close to a whole rung.
+      response: service.reveal(item.id),
+      latencyMs: 10 * P50_WIDEST_PUBLISHED_MS,
+    })
+  }
+  assert.ok(
+    service.position() >= 1,
+    `a slow-and-correct child with a pack naming a difficulty every question never left rung 0 ` +
+      `in ${String(answers)} answers`,
+  )
+  // And it was banked rather than bought: more than one answer went into it, so
+  // what moved the child was the accumulated fraction and not one whole stride.
+  assert.ok(
+    answers > 1,
+    "the first answer in the slow tail was worth a whole rung, so this proves nothing about the fraction",
+  )
+  assert.ok(span > 1)
 })
 
 test("every rung on the ladder draws a question with numbers in it", () => {
@@ -394,16 +649,22 @@ test("every rung on the ladder draws a question with numbers in it", () => {
   //
   // Every rung, not a sample: the rung this would next catch is by definition
   // one nobody thought to name.
+  // Addressed by building the service on the one rung under test rather than by
+  // asking for a `difficulty`. Since issue 733 a difficulty is a hint clamped to
+  // `HINT_BAND` rungs of where the host's own evidence stands, so it cannot
+  // address the ladder at all — and it never should have been the way to,
+  // because `deps.rungs` says which rung exactly and a request only ever said
+  // roughly. A sweep that could be made to skip rungs by a change in the host's
+  // ladder policy was a sweep in name.
   const rungs = ladder()
-  const service = createItemService({ profileId: "p1", record: noRecord })
   const families = new Set<string>()
 
   for (let i = 0; i < rungs.length; i++) {
-    const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
-    const item = service.next({ packId: "dynawalla.fuse", difficulty: at })
     const rung = rungs[i]
-    assert.ok(item, `rung ${String(i)} (${String(rung?.node.id)}) served nothing at all`)
     assert.ok(rung !== undefined)
+    const service = createItemService({ profileId: "p1", record: noRecord, rungs: [rung] })
+    const item = service.next({ packId: "dynawalla.fuse" })
+    assert.ok(item, `rung ${String(i)} (${String(rung.node.id)}) served nothing at all`)
     families.add(rung.family.family)
 
     assert.equal(item.operands.length, 2, `${item.skillId} did not draw two operands`)
@@ -444,11 +705,11 @@ test("every rung on the ladder draws a question with numbers in it", () => {
   // counted as coverage.
   assert.ok(families.size >= 1)
   for (let i = 0; i < rungs.length; i++) {
-    const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
-    const item = service.next({ packId: "dynawalla.fuse", difficulty: at })
-    assert.ok(item)
     const rung = rungs[i]
     assert.ok(rung)
+    const service = createItemService({ profileId: "p2", record: noRecord, rungs: [rung] })
+    const item = service.next({ packId: "dynawalla.fuse" })
+    assert.ok(item)
     const declared = declaredOperatorsOf(rung)
     assert.equal(
       declared.size,
@@ -583,8 +844,10 @@ test("every blank statement the shipped ladder draws is a true equation, read ba
   //
   // Held over the whole ladder rather than over the one row that has a blank today, so
   // the next row promoted is covered by this existing.
+  // One service per rung, for the reason given on the sweep above: a
+  // `difficulty` is a hint clamped to the host's band since issue 733 and does not
+  // address the ladder. `deps.rungs` does, exactly.
   const rungs = ladder()
-  const service = createItemService({ profileId: "p1", record: noRecord })
   let statements = 0
   // Cards where the answer is the number already printed on the far side. Counted, so
   // that the one exception below is known to be *exercised* rather than merely written:
@@ -592,9 +855,15 @@ test("every blank statement the shipped ladder draws is a true equation, read ba
   let halvings = 0
 
   for (let i = 0; i < rungs.length; i++) {
-    const at = rungs.length === 1 ? 0 : i / (rungs.length - 1)
-    for (let repeat = 0; repeat < 8; repeat++) {
-      const item = service.next({ packId: "dynawalla.balance", difficulty: at })
+    const rung = rungs[i]
+    assert.ok(rung !== undefined)
+    const service = createItemService({ profileId: "p1", record: noRecord, rungs: [rung] })
+    // Thirty-two draws a rung rather than eight. The halving coincidence the
+    // exception below is written for arrives about one item in nine on one row,
+    // and eight draws of one row is not enough of it to be *exercised* — see the
+    // `halvings > 0` assertion at the end, which is what noticed.
+    for (let repeat = 0; repeat < 32; repeat++) {
+      const item = service.next({ packId: "dynawalla.balance" })
       assert.ok(item)
       if (!item.prompt.includes(BLANK)) continue
       statements += 1
