@@ -8,6 +8,7 @@ import type { Phase } from "../game/round.ts"
 import { newRun, applyOutcome, type Run } from "../game/run.ts"
 import type { Statement } from "../game/statement.ts"
 import { fakeCanvas, numbersIn, type Recorder } from "./fakeCanvas.ts"
+import { Gesture } from "../game/gesture.ts"
 import { Scene, type Drag, type SceneState } from "./scene.ts"
 
 const SIZES: readonly [number, number][] = [
@@ -75,24 +76,27 @@ test("the street draws without throwing at every phase, size, motion branch and 
           for (const progress of [0, 0.24, 0.5, 0.76, 1]) {
             for (const drag of DRAGS) {
               for (const coins of [0, 10, -12]) {
-                rec.reset()
-                s.draw(
-                  state({
-                    phase,
-                    outcome,
-                    progress,
-                    elapsedMs: progress * 900,
-                    reduced,
-                    drag,
-                    coins,
-                  }),
-                )
-                const bad = numbersIn(rec.ops).filter((n) => !Number.isFinite(n))
-                assert.equal(
-                  bad.length,
-                  0,
-                  `${String(w)}×${String(h)} ${phase}/${String(outcome)} drag=${JSON.stringify(drag)}`,
-                )
+                for (const masked of [false, true]) {
+                  rec.reset()
+                  s.draw(
+                    state({
+                      phase,
+                      outcome,
+                      progress,
+                      elapsedMs: progress * 900,
+                      reduced,
+                      drag,
+                      coins,
+                      masked,
+                    }),
+                  )
+                  const bad = numbersIn(rec.ops).filter((n) => !Number.isFinite(n))
+                  assert.equal(
+                    bad.length,
+                    0,
+                    `${String(w)}×${String(h)} ${phase}/${String(outcome)} drag=${JSON.stringify(drag)}`,
+                  )
+                }
               }
             }
           }
@@ -121,34 +125,125 @@ test("THE SLATE FOLLOWS THE FINGER, and it follows it the right way", () => {
   assert.ok(up < rest - 20, `an upward flick moved the slate from ${String(rest)} to ${String(up)}`)
 })
 
-test("THE DESTINATION LIGHTS UP UNDER A COMMITTING FINGER", () => {
-  // The affordance that means the controls do not have to be explained twice. The
-  // chevrons on the side you are heading for get brighter and thicker as you pull.
+/**
+ * The brightness of the chevrons ABOVE the slate and BELOW it, told apart by where
+ * they were actually drawn.
+ *
+ * The previous version of this took a `side` argument and then `void side`, returning
+ * the max alpha over every chevron in the frame — so its two calls computed the
+ * identical number and swapping the chute and the bag in `drawGutters` left it
+ * passing. A `stroke` op carries no coordinates, so each one is attributed to the y
+ * of the most recent `moveTo` before it, which does.
+ */
+function gutterGlow(
+  s: Scene,
+  rec: Recorder,
+  drag: Drag | null,
+): { above: number; below: number } {
+  rec.reset()
+  s.draw(state({ phase: "call", drag }))
+  // The STATIC layout, not the drawn slate: under a drag the slate moves and the
+  // gutters do not, so attributing chevrons to where the slate currently is would
+  // reclassify them the moment a finger pulled. `chute` is above the slate's rest
+  // position and `bag` is below it, by construction and by `street.test.ts`.
+  const { chute, bag } = s.layout
+  let cursorY = Number.NaN
+  let above = 0
+  let below = 0
+  for (const op of rec.ops) {
+    if (op.name === "moveTo") cursorY = Number(op.args[1])
+    if (op.name !== "stroke") continue
+    const alpha = Number(/rgba\(230, 194, 129, ([\d.]+)\)/.exec(op.style)?.[1] ?? Number.NaN)
+    if (!Number.isFinite(alpha) || !Number.isFinite(cursorY)) continue
+    // A chevron's `moveTo` is one of its two feet, so the band is widened by the
+    // chevron's own rise rather than being the box exactly.
+    const rise = chute.h
+    if (cursorY <= chute.y + chute.h + rise) above = Math.max(above, alpha)
+    else if (cursorY >= bag.y - rise) below = Math.max(below, alpha)
+  }
+  return { above, below }
+}
+
+test("THE DESTINATION LIGHTS UP UNDER A COMMITTING FINGER — the RIGHT one", () => {
+  // The affordance that means the controls do not have to be explained twice, and the
+  // direction is half of it: pulling UP must light the chute above the slate and pulling
+  // DOWN must light the bag below it. Getting that backwards would teach a child the
+  // wrong gesture and would cost them a shot every time they believed it.
   const { scene: s, rec } = scene(390, 844)
-  const brightness = (drag: Drag | null, side: "top" | "bottom"): number => {
+  const idle = gutterGlow(s, rec, null)
+  const up = gutterGlow(s, rec, { dy: -70, pull: 0.95, heading: "toss" })
+  const down = gutterGlow(s, rec, { dy: 70, pull: 0.95, heading: "keep" })
+
+  assert.ok(idle.above > 0 && idle.below > 0, "the gutters are not drawn at rest at all")
+  assert.ok(
+    up.above > idle.above * 2,
+    `pulling up barely lit the chute: ${idle.above.toFixed(3)} → ${up.above.toFixed(3)}`,
+  )
+  assert.ok(
+    down.below > idle.below * 2,
+    `pulling down barely lit the bag: ${idle.below.toFixed(3)} → ${down.below.toFixed(3)}`,
+  )
+  // ...and the OTHER side stays where it was. This is the assertion the old version
+  // could not make, and the one that catches the two being swapped.
+  assert.ok(
+    up.below < up.above,
+    `pulling up lit the bag as brightly as the chute: below ${up.below.toFixed(3)} vs above ${up.above.toFixed(3)}`,
+  )
+  assert.ok(
+    down.above < down.below,
+    `pulling down lit the chute as brightly as the bag: above ${down.above.toFixed(3)} vs below ${down.below.toFixed(3)}`,
+  )
+})
+
+test("A COMMITTED FLICK LEAVES NO LIVE DRAG BEHIND IT", () => {
+  // The bug this closes: a finger does not stop when it crosses the threshold, it keeps
+  // travelling and then RESTS. The recogniser's live-drag accessors go neutral the
+  // instant a verdict commits (`gesture.ts`), so a slate that has been answered — and,
+  // 1.2s later, the NEXT slate — is never handed a drag from a finger that is merely
+  // still down.
+  const g = new Gesture(50)
+  g.begin(100, 400)
+  assert.equal(g.move(100, 460), "keep")
+  // The finger travels on, and then rests.
+  g.move(100, 700)
+  g.move(100, 700)
+  assert.equal(g.committed, true)
+  assert.equal(g.dy, 0, "a committed gesture still reports travel")
+  assert.equal(g.pull, 0)
+  assert.equal(g.heading, null)
+  // And the renderer therefore draws the slate at rest.
+  const { scene: s, rec } = scene(390, 844)
+  const yOf = (drag: Drag | null): number => {
     rec.reset()
     s.draw(state({ phase: "call", drag }))
-    const slate = rec.ops.find((op) => op.name === "fillRect" && Number(op.args[0]) > 1 && Number(op.args[3]) > 40)
-    const slateY = Number(slate?.args[1] ?? 0)
-    const chevrons = rec.ops.filter(
-      (op) => op.name === "stroke" && /rgba\(230, 194, 129/.test(op.style),
+    return Number(
+      rec.ops.find((op) => op.name === "fillRect" && Number(op.args[0]) > 1 && Number(op.args[3]) > 40)
+        ?.args[1],
     )
-    // The chevrons are stroked in a known brass; read the alpha out of the colour.
-    const alphas = chevrons.map((op) => Number(/, ([\d.]+)\)$/.exec(op.style)?.[1] ?? 0))
-    // Top-half chevrons are the chute, bottom-half are the bag; a `stroke` op carries
-    // no coordinates, so they are told apart by count and by the frame they appear in.
-    void slateY
-    void side
-    return alphas.length === 0 ? 0 : Math.max(...alphas)
   }
-  const idle = brightness(null, "top")
-  const pulling = brightness({ dy: -70, pull: 0.95, heading: "toss" }, "top")
-  assert.ok(
-    pulling > idle * 2,
-    `the chute barely changed under a committing finger: ${idle.toFixed(3)} → ${pulling.toFixed(3)}`,
-  )
-  const keeping = brightness({ dy: 70, pull: 0.95, heading: "keep" }, "bottom")
-  assert.ok(keeping > idle * 2, `the bag barely changed: ${idle.toFixed(3)} → ${keeping.toFixed(3)}`)
+  const live: Drag | null = g.down ? { dy: g.dy, pull: g.pull, heading: g.heading } : null
+  assert.equal(yOf(live), yOf(null), "the slate was drawn thrown by a finger merely resting")
+})
+
+test("THE SLATE GOES BLANK BEHIND A SHEET", () => {
+  // Same rule as the lead-in. The manual dims and blurs the frame, but "mostly
+  // illegible" is the wrong standard for readable, unanswerable thinking time in a game
+  // whose reaction clock now drives both the bag and the difficulty.
+  const { scene: s, rec } = scene(768, 1024)
+  for (const phase of ["call", "verdict"] as const) {
+    rec.reset()
+    s.draw(state({ phase, masked: true }))
+    const texts = rec.ops.filter((op) => op.name === "fillText").map((op) => String(op.args[0]))
+    assert.ok(
+      !texts.includes("4") && !texts.includes("9"),
+      `the statement was legible behind the sheet during ${phase}: ${texts.join("")}`,
+    )
+    // The slate itself still stands — it is masked, not removed.
+    assert.ok(
+      rec.ops.some((op) => op.name === "fillRect" && Number(op.args[0]) > 1 && Number(op.args[3]) > 40),
+      `the slate vanished during ${phase}`,
+    )
+  }
 })
 
 test("THE SLATE IS BLANK BEFORE THE WINDOW OPENS", () => {

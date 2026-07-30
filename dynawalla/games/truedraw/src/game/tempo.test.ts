@@ -15,7 +15,7 @@ import { test } from "node:test"
 import { createStubHost } from "../stub/host.ts"
 import { perfect, playRun } from "../test/harness.ts"
 import { comprehensionMsFor } from "./cadence.ts"
-import { Round, TIMING } from "./round.ts"
+import { MAX_STEP_MS, Round, TIMING } from "./round.ts"
 import type { Statement } from "./statement.ts"
 
 /** A child who is certain, fast, on every slate. */
@@ -81,8 +81,16 @@ test("NOW: a certain child pays what they thought, whichever verdict it is", () 
       settled.reactionMs <= CERTAIN_MS + 40,
       `${call} cost ${String(settled.reactionMs)}ms of a ${String(window)}ms window`,
     )
-    // ...and it is 1/45th of what the same verdict used to cost.
-    assert.ok(settled.reactionMs * 40 < oldVerdictCostMs(truth, window, CERTAIN_MS) || truth)
+    // ...and for the verdict that used to be expressed by waiting, it is a fortieth
+    // of what it used to cost. Asserted only on that half of the pair: the `|| truth`
+    // escape hatch this line used to carry made the other half tautological, which is
+    // worse than not asserting it.
+    if (!truth) {
+      assert.ok(
+        settled.reactionMs * 40 < oldVerdictCostMs(truth, window, CERTAIN_MS),
+        `a toss costs ${String(settled.reactionMs)}ms against the old ${String(oldVerdictCostMs(truth, window, CERTAIN_MS))}ms`,
+      )
+    }
   }
 })
 
@@ -146,6 +154,28 @@ test("NEITHER verdict now costs more than the other — the asymmetry is gone", 
 // WHAT THE LATENCY MEASURES. Three anchors are wrong and one is right, and two
 // sibling packs shipped the wrong ones.
 // ---------------------------------------------------------------------------
+
+test("a frame a slow phone actually produces is charged to the child", () => {
+  // `MAX_STEP_MS` was 120, which is below a real frame on a device dropping to 5 fps —
+  // so `elapsed` accrued 120ms for every 200ms the child actually spent, every reaction
+  // time on a slow phone was under-reported by about 40%, and the child collected a
+  // systematic speed bonus and a faster ladder climb for owning a worse device. Now
+  // that the reaction time drives both the bag and the difficulty, that is a bias and
+  // not a rounding error.
+  assert.ok(
+    MAX_STEP_MS >= 250,
+    `MAX_STEP_MS is ${String(MAX_STEP_MS)}ms, which clamps frames a running app produces`,
+  )
+  // Jank is charged; suspension is not. A round driven in 200ms lumps reports the real
+  // elapsed time.
+  const round = new Round(() => statement(true, 14000), TIMING)
+  round.tap()
+  round.advance(TIMING.raise + 320)
+  for (let i = 0; i < 10; i++) round.advance(Math.min(MAX_STEP_MS, 200))
+  const settled = round.verdict("keep").find((e) => e.kind === "settled")
+  assert.ok(settled?.kind === "settled")
+  assert.equal(settled.reactionMs, 2000, "a janky two seconds was not charged in full")
+})
 
 test("the clock starts when the statement becomes ANSWERABLE, not when the slate is drawn", () => {
   // The slate rises and stands blank for ~320 ms before the statement is cut in. Not

@@ -11,6 +11,10 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
+import { Rng } from "../core/rng.ts"
+import { createStubHost } from "../stub/host.ts"
+import { perfect, playRun } from "../test/harness.ts"
+import { Dealer } from "./dealer.ts"
 import { CEILING, DOWN, Ladder, START, stepFor, UP_MAX, UP_MIN } from "./ladder.ts"
 import { OUTCOMES } from "./response.ts"
 
@@ -105,12 +109,42 @@ test("a NaN quickness cannot strand the ladder", () => {
   assert.equal(ladder.difficulty, START + UP_MIN)
 })
 
-test("a finished run does not send the child back to the bottom", () => {
+test("A FINISHED RUN DOES NOT SEND THE CHILD BACK TO THE BOTTOM", () => {
   // A child who reached rung eight can do rung eight. Handing them `1 + 0 = 1` again
   // because a run ended is the exact complaint this module answers.
+  //
+  // This used to assert that a no-op `reset()` was a no-op, which is a thing that
+  // cannot fail — an empty method body is always empty. So it is now asserted where
+  // it is actually observable: two whole runs through ONE dealer, which is what a
+  // mount has, watching what the host is asked for on the first question of the
+  // second run.
+  const asked: number[] = []
+  const host = createStubHost({ seed: 88, onNext: (d) => asked.push(d) })
+  const dealer = new Dealer(host, new Rng(89))
+
+  playRun(host, 90, perfect, { limit: 12, thinkMs: () => 120, dealer })
+  const reached = asked.at(-1) ?? -1
+  assert.ok(reached > 0.7, `twelve fast correct calls only reached ${reached.toFixed(3)}`)
+
+  const before = asked.length
+  playRun(host, 91, perfect, { limit: 3, thinkMs: () => 120, dealer })
+  const firstOfSecondRun = asked[before] ?? -1
+  assert.ok(
+    firstOfSecondRun >= reached,
+    `a new run asked for ${firstOfSecondRun.toFixed(3)} after the last one ended at ${reached.toFixed(3)}`,
+  )
+  assert.ok(firstOfSecondRun > 0.7, "the second run opened near the bottom of the ladder")
+})
+
+test("...but three wrong verdicts in a first run DO leave the child near the floor", () => {
+  // The honest other half, stated rather than hidden. `START` is 0.2 and `DOWN` is
+  // 0.11, so a run that ends on three wrong verdicts leaves the standing request at
+  // zero: the easiest content the curriculum has. That is deliberate — a child who
+  // got their first three calls wrong should be met at the bottom — but it is a real
+  // consequence of `DOWN > START / 2` and it should not be a surprise to whoever
+  // changes either constant.
   const ladder = new Ladder()
-  for (let i = 0; i < 8; i++) ladder.settle("bank", 1)
-  const reached = ladder.difficulty
-  ladder.reset()
-  assert.equal(ladder.difficulty, reached)
+  for (let i = 0; i < 3; i++) ladder.settle("dud", 0)
+  assert.equal(ladder.difficulty, 0)
+  assert.ok(DOWN * 3 > START, "the arithmetic this test describes no longer holds")
 })

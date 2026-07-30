@@ -285,6 +285,7 @@ with an empty answer is visible in one glance.
 ## Shape
 
     src/contract.ts     the host seam — must not drift. `skip` lives here.
+    src/game/report.ts  the ONE place a settled round crosses the wire
     src/game/           the rules: statement, schedule, gesture, bag, ladder, round
     src/render/         the street: one slate, a chute above, a bag below
     src/audio/          asset-free Web Audio; no sound for a wrong verdict or a lapse
