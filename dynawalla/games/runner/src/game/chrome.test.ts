@@ -23,21 +23,28 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  chromeRects,
   HOST_CONTROL,
   hitsHostChrome,
   safeRect,
   type Insets,
+  type Rect,
 } from "../../../../packs/shared/game-chrome/index.ts";
 import {
+  GESTURE_STRIP,
+  hudBoxes,
   hudEdge,
+  hudVars,
   makeStage,
   ndcFrame,
   readoutRect,
   READOUT_CLEAR,
   STAGE_BG,
+  systemBottom,
   type StageEl,
 } from "./chrome.ts";
-import { BAND, FULL_FRAME, payoffEdge, popupEdge, readBand } from "./readband.ts";
+import { HUD_CSS } from "./hud.ts";
+import { BAND, fullFrame, payoffEdge, popupEdge, readBand, type GateGeom } from "./readband.ts";
 import { INK, TRACK } from "./glyphs.ts";
 
 const NONE: Insets = { top: 0, right: 0, bottom: 0, left: 0 };
@@ -129,6 +136,234 @@ test("the HUD margin matches the clamp the stylesheet resolves to", () => {
 });
 
 /* -------------------------------------------------------------------------- */
+/* Every HUD box, at every viewport, against every piece of chrome.            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The insets a phone can actually report, including the one that broke.
+ *
+ * A **zero bottom inset with a real top inset** is not a hypothetical: it is what
+ * Android reports on a device with gesture navigation and a punch-hole camera,
+ * and it is the founder's phone. The reported inset describes the display cutout;
+ * the gesture handle eats the bottom of the glass and is not in it. Every case
+ * with `bottom: 0` below is that case, and the voltage bar was underneath the
+ * navigation bar in all of them.
+ */
+const DEVICE_INSETS: Array<[string, Insets]> = [
+  ["no insets at all (a browser window)", NONE],
+  ["android, gesture nav, zero bottom inset", { top: 24, right: 0, bottom: 0, left: 0 }],
+  ["android, punch-hole status bar, zero bottom inset", { top: 40, right: 0, bottom: 0, left: 0 }],
+  ["ios portrait, notch and home indicator", { top: 47, right: 0, bottom: 34, left: 0 }],
+  ["ios landscape, cutout on both sides", { top: 0, right: 47, bottom: 21, left: 47 }],
+];
+
+/** The founder's phone first: 1080x2340 physical, DPR 3, and DPR 2.75 beside it. */
+const DEVICE_VIEWPORTS: Array<[string, number, number]> = [
+  ["founder's phone at dpr 3", 360, 780],
+  ["founder's phone at dpr 2.75", 393, 851],
+  ["phone portrait, small", 320, 568],
+  ["phone portrait", 390, 844],
+  ["phone landscape", 844, 390],
+  ["tablet portrait", 768, 1024],
+  ["tablet landscape", 1024, 768],
+];
+
+/**
+ * Every (viewport, insets) pair a device can actually be in.
+ *
+ * Crossed by orientation rather than exhaustively, for the reason `insetsFor`
+ * already gives above: a 360-wide portrait phone never has 47 pixels of cutout
+ * down each side, and asserting against shapes no device produces only tempts the
+ * fix into clamping the safe area away to make an imaginary case pass.
+ */
+function deviceCases(): Array<[string, number, number, Insets]> {
+  const out: Array<[string, number, number, Insets]> = [];
+  for (const [vname, w, h] of DEVICE_VIEWPORTS) {
+    for (const [iname, insets] of DEVICE_INSETS) {
+      const sideways = insets.left > 0 || insets.right > 0;
+      if (sideways !== w > h && (sideways || insets.top > 0)) continue;
+      out.push([`${vname} (${w}x${h}), ${iname}`, w, h, insets]);
+    }
+  }
+  return out;
+}
+
+const overlap = (a: Rect, b: Rect): { w: number; h: number } => ({
+  w: Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)),
+  h: Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y)),
+});
+
+test("no HUD box a child reads or touches is under the host's chrome", () => {
+  for (const [ctx, w, h, insets] of deviceCases()) {
+    const boxes = hudBoxes(w, h, insets);
+    for (const [key, rect] of Object.entries(boxes)) {
+      assert.equal(
+        hitsHostChrome(rect, w, insets),
+        false,
+        `${ctx}: the ${key} box ${JSON.stringify(rect)} is under the host's chrome ` +
+          `(exit ${JSON.stringify(chromeRects(w, insets)[0])}, help ${JSON.stringify(chromeRects(w, insets)[1])})`,
+      );
+    }
+    assert.ok(h > 0);
+  }
+});
+
+test("no HUD box a child reads or touches is outside the safe rect", () => {
+  for (const [name, w, h, insets] of deviceCases()) {
+    const safe = safeRect(w, h, insets);
+    for (const [key, r] of Object.entries(hudBoxes(w, h, insets))) {
+      const ctx = `${name}: the ${key} box`;
+      assert.ok(r.x >= safe.x - 1e-9, `${ctx} starts at x=${r.x.toFixed(1)}, inside the left inset`);
+      assert.ok(r.y >= safe.y - 1e-9, `${ctx} starts at y=${r.y.toFixed(1)}, under the top inset`);
+      assert.ok(
+        r.x + r.w <= safe.x + safe.w + 1e-9,
+        `${ctx} reaches x=${(r.x + r.w).toFixed(1)} of a safe area ending at ${(safe.x + safe.w).toFixed(1)}`,
+      );
+      assert.ok(
+        r.y + r.h <= safe.y + safe.h + 1e-9,
+        `${ctx} reaches y=${(r.y + r.h).toFixed(1)} of a safe area ending at ${(safe.y + safe.h).toFixed(1)}`,
+      );
+    }
+  }
+});
+
+/**
+ * Height of Android's gesture-navigation handle, in CSS pixels.
+ *
+ * Written here as its own number rather than read from `GESTURE_STRIP`, because a
+ * test whose floor is the constant it is checking passes when somebody sets that
+ * constant to zero. This is a fact about the platform; `GESTURE_STRIP` is the
+ * game's response to it, and the two are asserted against each other below.
+ */
+const ANDROID_HANDLE_PX = 24;
+
+test("nothing at the bottom is inside the strip the system swipes in", () => {
+  // The safe rect is not enough here and that is the entire point: on the
+  // founder's phone the reported bottom inset is ZERO and the gesture handle
+  // still owns the bottom 24 CSS pixels. Before this allowance the voltage bar
+  // sat 12px off the bottom edge, so all 13px of it were inside the strip.
+  assert.ok(
+    GESTURE_STRIP >= ANDROID_HANDLE_PX,
+    `GESTURE_STRIP is ${String(GESTURE_STRIP)}px against a ${String(ANDROID_HANDLE_PX)}px handle`,
+  );
+  for (const [ctx, w, h, insets] of deviceCases()) {
+    const boxes = hudBoxes(w, h, insets);
+    const floor = h - ANDROID_HANDLE_PX;
+    for (const key of ["voltage", "tools", "perf"] as const) {
+      const r = boxes[key];
+      assert.ok(
+        r.y + r.h <= floor + 1e-9,
+        `${ctx}: the ${key} box ends at y=${(r.y + r.h).toFixed(1)} of ${String(h)} — ` +
+          `${(r.y + r.h - floor).toFixed(1)}px inside the ${String(ANDROID_HANDLE_PX)}px the system swipes in`,
+      );
+    }
+    assert.ok(systemBottom(insets) >= ANDROID_HANDLE_PX, `${ctx}: the bottom allowance collapsed`);
+  }
+});
+
+test("the bottom readouts and the two buttons do not sit on each other", () => {
+  // Only the three bottom boxes, and deliberately not the corner readouts
+  // against the prompt. `READOUT_W`/`READOUT_H` and `PROMPT_W` are *allowances* —
+  // each is far larger than the ink it stands for, on purpose, so that every
+  // clearance assertion above is conservative. Two allowances overlapping tells
+  // you about the allowances. These three are tight boxes around real furniture
+  // and are stacked in the same corner, so their overlap is real.
+  for (const [ctx, w, h, insets] of deviceCases()) {
+    const b = hudBoxes(w, h, insets);
+    for (const [a, c] of [
+      ["voltage", "tools"],
+      ["voltage", "perf"],
+      ["tools", "perf"],
+    ] as const) {
+      const o = overlap(b[a], b[c]);
+      assert.ok(o.w === 0 || o.h === 0, `${ctx}: ${a} and ${c} overlap by ${o.w.toFixed(1)}x${o.h.toFixed(1)}px`);
+    }
+    assert.ok(w > 0 && h > 0);
+  }
+});
+
+/* -------------------------------------------------------------------------- */
+/* ...and the stylesheet cannot disagree with any of it.                       */
+/* -------------------------------------------------------------------------- */
+
+test("the stylesheet never reaches for env(safe-area-inset-*)", () => {
+  // The whole defect, in one assertion. `env()` belongs to the top-level
+  // browsing context; a pack frame is sandboxed `allow-scripts` with no
+  // `allow-same-origin`, so all four resolve to ZERO inside it, on every device,
+  // for ever. The tests above were passing with insets the CSS never saw.
+  assert.ok(
+    !/env\(\s*safe-area-inset/.test(HUD_CSS),
+    "hud.ts reads env(safe-area-inset-*), which is 0 inside a pack — use the host's measured insets",
+  );
+});
+
+test("every in-run HUD box takes its position from chrome.ts and nowhere else", () => {
+  // A structural guard, not a string match on the values: if a positional
+  // declaration on one of these five selectors is anything other than a `var()`,
+  // the stylesheet has geometry of its own again and the two can drift — which
+  // is how this shipped twice.
+  const rules = new Map<string, string>();
+  for (const m of HUD_CSS.matchAll(/(^|\n)(\.vt-[a-z-]+)\s*\{([^}]*)\}/g)) {
+    rules.set(m[2] ?? "", (rules.get(m[2] ?? "") ?? "") + ";" + (m[3] ?? ""));
+  }
+  const POSITIONAL = ["left", "right", "top", "bottom"];
+  for (const sel of [".vt-prompt", ".vt-tl", ".vt-tr", ".vt-volt", ".vt-tools", ".vt-perf"]) {
+    const body = rules.get(sel);
+    assert.ok(body !== undefined, `${sel} is not in the stylesheet any more; this test is measuring nothing`);
+    for (const decl of body.split(";")) {
+      const colon = decl.indexOf(":");
+      if (colon < 0) continue;
+      const prop = decl.slice(0, colon).trim();
+      const value = decl.slice(colon + 1).trim();
+      if (!POSITIONAL.includes(prop)) continue;
+      // `left: 50%` on the prompt is the centring transform's own anchor, not an
+      // inset, and it is paired with `translate(-50%, 0)`.
+      if (sel === ".vt-prompt" && prop === "left") continue;
+      assert.ok(
+        value.startsWith("var(--vt-"),
+        `${sel} { ${prop}: ${value} } — that is arithmetic the stylesheet owns, and chrome.ts owns the same number`,
+      );
+    }
+  }
+});
+
+test("hudVars fills in every custom property the stylesheet asks for", () => {
+  // The other half of the guard above: a `var()` with no author-supplied value
+  // silently falls back to its default, which is how a HUD laid out for a phone
+  // with no insets would keep painting on one that has them.
+  const vars = hudVars(360, 780, { top: 24, right: 0, bottom: 0, left: 0 });
+  // `--vt-accent` is the live biome colour, written on the root by `mount.ts` on
+  // every biome change. It is not geometry and does not belong in `hudVars`.
+  const setElsewhere = new Set(["--vt-accent"]);
+  for (const m of HUD_CSS.matchAll(/var\((--vt-[a-z-]+)/g)) {
+    const name = m[1] ?? "";
+    if (setElsewhere.has(name)) continue;
+    assert.ok(name in vars, `the stylesheet reads ${name} and hudVars never sets it`);
+  }
+  for (const [name, value] of Object.entries(vars)) {
+    assert.ok(/^-?\d+(\.\d+)?px$/.test(value), `${name} is "${value}", which is not a length`);
+  }
+});
+
+test("the measured insets reach the boxes at all — the drift that shipped", () => {
+  // Stated as an assertion because the previous two tests would both pass on a
+  // HUD that ignored its argument. The founder's phone: a 24px top inset and the
+  // host's chevron 37..81px down the glass.
+  const flat = hudBoxes(360, 780, NONE);
+  const android = hudBoxes(360, 780, { top: 24, right: 0, bottom: 0, left: 0 });
+  assert.equal(android.score.y - flat.score.y, 24, "the top inset does not move the score");
+  assert.equal(flat.score.y, READOUT_CLEAR, "with no insets the score sits exactly under the control");
+  // And the geometry it used to paint at — 63px, inside a 37..81px chevron.
+  const exit = chromeRects(360, { top: 24, right: 0, bottom: 0, left: 0 })[0];
+  assert.ok(exit !== undefined);
+  assert.ok(
+    flat.score.y < exit.y + exit.h,
+    `a score at y=${String(flat.score.y)} would be clear of a chevron ending at ${String(exit.y + exit.h)} — ` +
+      "the regression this pins is gone and so is its evidence",
+  );
+});
+
+/* -------------------------------------------------------------------------- */
 /* The safe area, in NDC, where the answers are drawn.                        */
 /* -------------------------------------------------------------------------- */
 
@@ -141,8 +376,11 @@ test("with no insets the frame is exactly the margins the game always had", () =
   const f = ndcFrame(390, 844, NONE);
   assert.equal(f.edge, BAND.edge);
   assert.equal(f.top, BAND.top);
-  assert.equal(f.bottom, BAND.bottom);
-  assert.deepEqual(f, FULL_FRAME);
+  assert.equal(f.minH, fullFrame(844).minH);
+  // The floor is the HUD's own bottom furniture, which exists on every device,
+  // so it is never the bare bottom of the glass.
+  assert.ok(f.bottom > -1, "the row may sink under the voltage bar");
+  assert.ok(f.bottom < -0.7, `the floor is ${f.bottom.toFixed(2)} NDC — that is a reserved band`);
 });
 
 test("a side cutout pulls the page margin in, so the outer answer stays visible", () => {
@@ -154,9 +392,15 @@ test("a side cutout pulls the page margin in, so the outer answer stays visible"
 
 /* The camera, mirrored from `mount.ts` so the numbers are the real ones. */
 const CAM_Z = 11.4;
+const ARCH = 4.9;
+const LANE_W = 3.35;
 function scales(w: number, h: number, fovDeg: number, dist: number): { kx: number; ky: number } {
   const ky = 1 / Math.tan((fovDeg * Math.PI) / 360) / (dist + CAM_Z);
   return { kx: ky / (w / h), ky };
+}
+function geomFor(kx: number, ky: number, archTop: number, centre = 0): GateGeom {
+  const archH = Math.abs(ky) * ARCH;
+  return { centre, lanePitch: Math.abs(kx) * LANE_W, archTop, archH, deck: archTop - archH };
 }
 /** World width of a numeral at ink height 1, for `digits` digits. */
 const unit = (digits: number, advance: number): number => digits * advance * (1 / INK) * TRACK;
@@ -175,10 +419,10 @@ test("no answer is ever drawn under the cutout, at any viewport or rotation", ()
           for (const adv of [0.36, 0.43, 0.5]) {
             for (const n of [1, 2, 3, 4]) {
               const u = unit(n, adv);
-              for (const approach of [0, 0.5, 1]) {
+              for (const centre of [-0.8, -0.25, 0, 0.4]) {
                 for (const archTop of [-0.4, 0.2, 1.4]) {
-                  const band = readBand([u, u, u], kx, ky, approach, archTop, frame);
-                  const ctx = `${name} ${label} fov${fov} d${dist} adv${adv} n${n} a${approach}`;
+                  const band = readBand([u, u, u], kx, ky, geomFor(kx, ky, archTop, centre), frame);
+                  const ctx = `${name} ${label} fov${fov} d${dist} adv${adv} n${n} cx${centre}`;
 
                   const leftPx = ndcToPx(band.x[0] - band.wNdc / 2, w);
                   const rightPx = ndcToPx(band.x[2] + band.wNdc / 2, w);
@@ -223,7 +467,7 @@ test("the answers are still large enough to read once the cutout is respected", 
       const frame = ndcFrame(w, h, insets);
       const { kx, ky } = scales(w, h, 74, 90);
       const u = unit(3, 0.5);
-      const band = readBand([u, u, u], kx, ky, 0, 0.1, frame);
+      const band = readBand([u, u, u], kx, ky, geomFor(kx, ky, 0.1), frame);
       const capPx = (band.hNdc / 2) * h;
       const gutterPx = ((band.pitch - band.wNdc) / 2) * w;
       assert.ok(capPx >= 24, `${name}, ${label}: three digits render at ${capPx.toFixed(1)}px cap height`);

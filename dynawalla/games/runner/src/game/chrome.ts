@@ -1,7 +1,7 @@
 /**
  * Where VOLTA is allowed to put things a child has to read or touch.
  *
- * Two separate encroachments, both invisible in a browser window and both
+ * Three separate encroachments, all invisible in a browser window and all
  * certain on a device:
  *
  * **The safe area.** `pack.html` declares `viewport-fit=cover`, which is not a
@@ -19,9 +19,37 @@
  * VOLTA put its score in one of those corners and its surge meter in the other,
  * so both readouts shipped underneath a button.
  *
+ * **The system's bottom edge.** Android's gesture-navigation handle eats a strip
+ * of the bottom of the glass and reports a safe-area inset of ZERO on plenty of
+ * devices, so a bar placed correctly inside the reported safe area is still
+ * under it. `games/pulse` hit this and named the allowance; VOLTA now carries
+ * the same one. See `GESTURE_STRIP`.
+ *
  * The chrome *overlays* — it does not reserve a band, and this file must not
  * pretend it does. The causeway, the sky and the ocean still bleed to all four
  * edges; that is the entire point of `cover`. Only the readouts move.
+ *
+ * ── one source of truth, because the last two were not ──────────────────────
+ *
+ * The first version of this file was arithmetic that *described* the stylesheet:
+ * `readoutRect` computed what `hud.ts` was believed to resolve to, and the tests
+ * asserted against the arithmetic. They were not the same thing, and the
+ * disagreement was the whole bug. `hud.ts` wrote
+ * `top: calc(env(safe-area-inset-top) + 63px)`, and **`env()` is zero inside a
+ * pack**: the frame is sandboxed `allow-scripts` with no `allow-same-origin`, and
+ * the safe-area environment variables belong to the TOP-LEVEL browsing context,
+ * so a cross-origin child resolves all four to 0. The host measures the real
+ * values and posts them; `safeInsets()` returns those. So the arithmetic here was
+ * handed a 24px top inset by the test, and the CSS on the device was handed 0 —
+ * a row the test placed at y = 87 painted at y = 63, eighteen pixels under the
+ * exit chevron, and the test passed.
+ *
+ * The fix is not a better test. It is that the stylesheet no longer computes any
+ * position at all: every box below is produced *here*, by `hudBoxes`, and written
+ * onto the root as custom properties by `hudVars`. There is nothing left for the
+ * CSS to disagree with, and `chrome.test.ts` asserts that too — no `env()`
+ * anywhere in the sheet, and every positional declaration on the five HUD boxes
+ * is a `var()`.
  */
 
 import {
@@ -85,6 +113,8 @@ export function makeStage(el: StageEl, computedPosition: string): void {
   el.style.background = STAGE_BG;
 }
 
+/* ------------------------------- the HUD boxes ---------------------------- */
+
 /** Clear air between the bottom of a host control and the readout under it. */
 const GAP = 6;
 
@@ -97,9 +127,36 @@ const GAP = 6;
  */
 export const READOUT_CLEAR = HOST_PROGRESS_H + HOST_MARGIN + HOST_CONTROL + GAP;
 
-/** The HUD's own side margin, mirroring `clamp(10px, 2.2vw, 26px)` in the CSS. */
+/**
+ * How much of the bottom edge belongs to the system rather than to the game.
+ *
+ * The reported bottom inset is honest on iOS, where it is the home indicator. On
+ * Android it is not enough: the value the WebView reports describes the DISPLAY
+ * CUTOUT, while the thing that eats the pixels and the tap is the
+ * gesture-navigation handle — a strip along the bottom edge that the system
+ * claims for swipe-up-to-home and that reports a bottom inset of **zero** on
+ * plenty of devices. That is exactly the shape of the founder's screenshot: the
+ * voltage bar was inside the reported safe area, correctly, and underneath the
+ * navigation bar.
+ *
+ * 24 CSS px is the Android gesture handle's own height, and it is taken off the
+ * raw bottom edge *as well as* the reported inset, whichever binds harder.
+ * Lifted verbatim from `games/pulse`, which met this first.
+ */
+export const GESTURE_STRIP = 24;
+
+/** The bottom edge the HUD may actually use, in CSS px from the bottom. */
+export function systemBottom(insets: Insets): number {
+  return Math.max(insets.bottom, GESTURE_STRIP);
+}
+
+/** `clamp(lo, mid, hi)` as CSS resolves it. */
+const clampPx = (lo: number, mid: number, hi: number): number =>
+  Math.min(hi, Math.max(lo, mid));
+
+/** The HUD's own side margin: the old `clamp(10px, 2.2vw, 26px)`. */
 export function hudEdge(w: number): number {
-  return Math.min(26, Math.max(10, w * 0.022));
+  return clampPx(10, w * 0.022, 26);
 }
 
 /**
@@ -117,18 +174,138 @@ const READOUT_H = 110;
 /**
  * The box a top-corner readout occupies: `left` is the score, `right` the surge.
  *
- * This is what the CSS in `hud.ts` resolves to, expressed as arithmetic so a
- * test can assert it against `hitsHostChrome` at every viewport instead of
- * finding out on a device.
+ * This is what `hud.ts` *is*, not what it is believed to resolve to — the
+ * stylesheet reads `left: var(--vt-tl-x)` and this is what fills it in.
  */
 export function readoutRect(side: "left" | "right", w: number, insets: Insets): Rect {
   const m = hudEdge(w);
-  const x =
-    side === "left"
-      ? insets.left + m
-      : Math.max(0, w - insets.right - m - READOUT_W);
+  const x = side === "left" ? insets.left + m : Math.max(0, w - insets.right - m - READOUT_W);
   return { x, y: insets.top + READOUT_CLEAR, w: READOUT_W, h: READOUT_H };
 }
+
+/** The prompt's nominal box: centred, and as wide as a five-digit sum gets. */
+const PROMPT_W = 300;
+
+/**
+ * Room above the voltage bar for its own label.
+ *
+ * An *allowance*, not a mirror: the label is `font-size:clamp(8px,1.5vw,11px)`
+ * five pixels above the bar, so 16px is the most it ever needs and 18 is what it
+ * gets. Erring upward is the safe direction — it makes the box this file reports
+ * slightly larger than the ink, so every clearance assertion is conservative.
+ */
+const VOLT_LABEL_H = 18;
+
+/**
+ * Every HUD box a child reads or touches, in CSS pixels.
+ *
+ * The four in-run surfaces plus the debug readout. The veils are deliberately
+ * absent: an overlay owns the whole screen, is dismissed by its own button, and
+ * pads itself off all four insets.
+ */
+export type HudBoxes = {
+  /** `5 − 2`, just above the horizon. */
+  prompt: Rect;
+  /** Score and distance, top-left, under the exit control. */
+  score: Rect;
+  /** Surge and the chain pips, top-right, under the how-to-play control. */
+  surge: Rect;
+  /** The voltage bar and its label, across the bottom. */
+  voltage: Rect;
+  /** Sound and reduce-motion, bottom-right, above the voltage bar. */
+  tools: Rect;
+  /** The perf readout, bottom-left. `?perf` only, but it is still text. */
+  perf: Rect;
+};
+
+export function hudBoxes(w: number, h: number, insets: Insets): HudBoxes {
+  const m = hudEdge(w);
+  const sysB = systemBottom(insets);
+
+  // Prompt: a fifteenth of the way down, or under the host's controls, whichever
+  // is lower. It is centred and `white-space:nowrap`, so a five-digit sum is wide
+  // enough to reach both top corners — on a short viewport with a real top inset
+  // it used to reach them at exactly their own height.
+  const promptH = clampPx(30, w * 0.074, 72);
+  const prompt: Rect = {
+    x: Math.max(0, (w - PROMPT_W) / 2),
+    y: Math.max(h * 0.15, insets.top + READOUT_CLEAR),
+    w: Math.min(w, PROMPT_W),
+    h: promptH,
+  };
+
+  // Voltage: the bar, plus its label sitting on top of it.
+  const voltLift = clampPx(12, w * 0.026, 28);
+  const voltH = clampPx(9, w * 0.018, 15);
+  const voltBottom = h - sysB - voltLift;
+  const voltage: Rect = {
+    x: insets.left + m,
+    y: voltBottom - voltH - VOLT_LABEL_H,
+    w: Math.max(0, w - insets.left - insets.right - 2 * m),
+    h: voltH + VOLT_LABEL_H,
+  };
+
+  // The two tool buttons sit on the voltage readout rather than at their own
+  // offset from the bottom edge. Derived, so the gap between them cannot be
+  // closed by a change to either one.
+  const toolS = clampPx(30, w * 0.06, 40);
+  const toolsBottom = voltage.y - GAP;
+  const tools: Rect = {
+    x: Math.max(0, w - insets.right - m - (2 * toolS + 6)),
+    y: toolsBottom - toolS,
+    w: 2 * toolS + 6,
+    h: toolS,
+  };
+
+  const perf: Rect = { x: insets.left + m, y: tools.y - GAP - 44, w: 220, h: 44 };
+
+  return {
+    prompt,
+    score: readoutRect("left", w, insets),
+    surge: readoutRect("right", w, insets),
+    voltage,
+    tools,
+    perf,
+  };
+}
+
+/**
+ * The custom properties `hud.ts` positions itself from.
+ *
+ * Written onto `.vt-root` on mount and again on every resize and every inset
+ * change. The stylesheet holds no arithmetic of its own — see the module note.
+ */
+export function hudVars(w: number, h: number, insets: Insets): Record<string, string> {
+  const b = hudBoxes(w, h, insets);
+  const px = (v: number): string => `${String(Math.round(v * 100) / 100)}px`;
+  return {
+    // The two sizes the stylesheet would otherwise carry itself. They are here
+    // because `hudBoxes` uses them to place the boxes: a height in CSS and a
+    // height in the arithmetic are two heights, and they drift.
+    "--vt-volt-h": px(clampPx(9, w * 0.018, 15)),
+    "--vt-tool-s": px(clampPx(30, w * 0.06, 40)),
+    "--vt-prompt-y": px(b.prompt.y),
+    "--vt-tl-x": px(b.score.x),
+    "--vt-tl-y": px(b.score.y),
+    "--vt-tr-x": px(w - (b.surge.x + b.surge.w)),
+    "--vt-tr-y": px(b.surge.y),
+    "--vt-volt-l": px(b.voltage.x),
+    "--vt-volt-r": px(w - (b.voltage.x + b.voltage.w)),
+    "--vt-volt-b": px(h - (b.voltage.y + b.voltage.h)),
+    "--vt-tools-r": px(w - (b.tools.x + b.tools.w)),
+    "--vt-tools-b": px(h - (b.tools.y + b.tools.h)),
+    "--vt-perf-l": px(b.perf.x),
+    "--vt-perf-b": px(h - (b.perf.y + b.perf.h)),
+    // The veils pad themselves off all four edges. They own the screen, so they
+    // want the raw insets and not the gesture allowance.
+    "--vt-sa-t": px(insets.top),
+    "--vt-sa-r": px(insets.right),
+    "--vt-sa-b": px(systemBottom(insets)),
+    "--vt-sa-l": px(insets.left),
+  };
+}
+
+/* ----------------------------- the answer frame --------------------------- */
 
 /**
  * The NDC rectangle the numeral row may occupy on a `w`x`h` surface.
@@ -144,7 +321,11 @@ export function ndcFrame(w: number, h: number, insets: Insets): Frame {
   const side = Math.max(insets.left, insets.right);
 
   const edge = Math.max(0.2, Math.min(BAND.edge, 1 - (2 * side) / vw));
-  const bottom = Math.max(BAND.bottom, -1 + (2 * insets.bottom) / vh);
+  // The floor is the HUD's own bottom furniture, measured, not a guess at where
+  // the horizon is: the row's real vertical limit at any given moment is the
+  // deck at its gate's depth, and `readBand` takes that from the gate.
+  const bottomPx = hudBoxes(vw, vh, insets).voltage;
+  const bottom = Math.min(0.9, -1 + (2 * (vh - bottomPx.y)) / vh);
   // The top is bounded by the prompt, by the safe area, and by the host's two
   // controls. The controls only bite on a surface short enough that a twelfth
   // of it reaches down past the prompt line — but that is exactly the surface
@@ -154,5 +335,5 @@ export function ndcFrame(w: number, h: number, insets: Insets): Frame {
     Math.min(BAND.top, 1 - (2 * (insets.top + READOUT_CLEAR)) / vh),
   );
 
-  return { edge, top, bottom };
+  return { edge, top, bottom, minH: (2 * BAND.minCapPx) / vh };
 }

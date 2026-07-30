@@ -191,7 +191,89 @@ export function deliveredWindow(travel: number, speed: number, far: number, redu
  */
 export const COMPREHENSION_FLOOR = 4.7;
 export function comprehensionWindow(travel: number, speed: number, far: number, reduced: boolean): number {
-  return Math.max(0, breather(travel) - RESOLVE_HOLD) + deliveredWindow(travel, speed, far, reduced);
+  return comprehensionFor(0, travel, speed, far, reduced);
+}
+
+/* ------------------------------- the runway ---------------------------------- */
+
+/**
+ * Ceiling on the pre-read lead, in seconds.
+ *
+ * A guard rather than a limiter: the widest content the cadence table describes
+ * asks for 20s and the gate is separately held to delivering at least
+ * `DELIVERED_WINDOW_FLOOR` of it, so the lead never exceeds 16.9s and this number
+ * never binds. It is here so that a future
+ * table, or a host that starts serving long division, cannot silently turn VOLTA
+ * into a road with no gates on it — and `pacing.test.ts` asserts that it does not
+ * bind today, so raising the table without thinking about the runway fails.
+ */
+export const RUNWAY_MAX = 18;
+
+/**
+ * Seconds of road, ahead of the gate, that the prompt is already on the HUD for.
+ *
+ * **Runway, not deceleration.** The founder offered both and then chose:
+ *
+ *   > "the vehicle could still be racing but ... we maybe need some miles to
+ *   > figure out the answer"
+ *
+ * Slowing down as the arithmetic hardens is the obvious fix and it is the wrong
+ * one: the velocity is what VOLTA *is*, and trading it for thinking time swaps
+ * one complaint for another. So nothing about the motion changes. The dodge
+ * corridor in front of a hard question simply gets longer, the prompt sits on the
+ * HUD across the whole of it, and hazards and sparks keep arriving through it at
+ * their own cadence — the runner is still a runner, there is just more road
+ * before the next gate.
+ *
+ * **Why the lead is the only lever.** A gate cannot spawn beyond the far plane,
+ * so the time between one becoming visible and reaching the answer plane is
+ * capped at ~3.2s (`deliveredWindow`) however the pacing is tuned. The pre-read
+ * is not bounded by the draw distance, because the prompt is on the HUD before
+ * the gate is in view at all.
+ *
+ * **Sized against the FLOOR of the gate's own window, not the live one.** The
+ * obvious arithmetic is `target - deliveredWindow(now)`, and it is wrong twice
+ * over. The world accelerates across the runway, so the gate that eventually
+ * spawns gets a shorter window than the one predicted when the prompt went up —
+ * measured through the scheduler, a 16s question came out at 15.85s. And, worse,
+ * it would put a motion constant inside the one number that exists to be free of
+ * them. `DELIVERED_WINDOW_FLOOR` is a floor the geometry is separately held to, so
+ * subtracting it makes this a pure function of the item, and errs by handing a
+ * child *more* time early in a run, when the gate's own window is at its longest.
+ *
+ * @param target seconds the ITEM asks for — `comprehensionTarget`. The only
+ *               argument, and that is the point: there is nothing else in scope
+ *               for a lead to be derived from.
+ */
+export function preReadLead(target: number): number {
+  return clampN(target - DELIVERED_WINDOW_FLOOR, 0, RUNWAY_MAX);
+}
+
+/**
+ * The whole time a child has with a question of a given target: the runway the
+ * prompt is up for, plus the gate's own window.
+ *
+ * Monotone non-decreasing in `target` by construction — `max` and `clamp` both
+ * are — and never below `target` for any state of the world, which is the fleet
+ * invariant `docs/PACING_AUDIT_2026-07.md` sets out. Motion constants can only
+ * ever *add* to this number; they are on the left of a `max` and nowhere else.
+ *
+ * Still **not** a hazard-free window, and must not turn into one: pylons live in
+ * the corridor, which is what #665 built it for. The window in which nothing can
+ * hit a child is `deliveredWindow`.
+ */
+export function comprehensionFor(
+  target: number,
+  travel: number,
+  speed: number,
+  far: number,
+  reduced: boolean,
+): number {
+  const corridor = Math.max(
+    Math.max(0, breather(travel) - RESOLVE_HOLD),
+    preReadLead(target),
+  );
+  return corridor + deliveredWindow(travel, speed, far, reduced);
 }
 
 /* ------------------------- the reading corridor ------------------------ */
@@ -242,6 +324,17 @@ export type FlightState = {
  * lands, and answers with what the child will be doing when it gets there.
  *
  * ~500 iterations of arithmetic, once per hazard beat. It is not a frame cost.
+ *
+ * **One honest limit, since the runway landed.** The corridor in front of a hard
+ * question is now `preReadLead` long rather than `breather(travel)` long. The
+ * *live* corridor is exact here — the caller passes the real `cooldown` — but the
+ * projection cannot know how hard the *next* item will be, so every cycle after
+ * this one is modelled at `breather(travel)`, the shortest a corridor can be. A
+ * hazard is airborne for one to three cycles, so the error is real and it is in
+ * the safe direction: modelling gates as arriving sooner than they will means
+ * this occasionally reports a read that turns out to be open road, and a beat is
+ * spent on a decorative arch instead of a pylon. It never reports open road that
+ * turns out to be a read.
  */
 export function hazardLandsOnRead(s: FlightState): boolean {
   const step = 1 / 30;

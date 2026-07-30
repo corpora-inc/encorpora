@@ -3,14 +3,16 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   speedAt, readWindow, breather, beatTime, difficultyFor,
-  gateDistance, deliveredWindow, comprehensionWindow, hazardLandsOnRead,
+  gateDistance, deliveredWindow, comprehensionWindow, comprehensionFor,
+  preReadLead, hazardLandsOnRead,
   READ_WINDOW_FLOOR, DELIVERED_WINDOW_FLOOR, DODGE_CORRIDOR_FLOOR,
-  COMPREHENSION_FLOOR, RESOLVE_HOLD,
+  COMPREHENSION_FLOOR, RESOLVE_HOLD, RUNWAY_MAX,
   V_SURGE_BOOST_MAX, GATES_PER_STEP,
   V_START, V_TERMINAL, V_REDUCED_CAP,
   COST_WRONG_GATE, COST_HAZARD, GAIN_GATE, VOLT_BLEED, VOLT_MAX,
 } from "./pacing.ts";
 import { Rng } from "./rng.ts";
+import { comprehensionTarget, MAX_TARGET } from "./comprehension.ts";
 
 /* ------------------------- the spawn loop, headless ------------------------ */
 
@@ -41,8 +43,19 @@ type Sim = {
   minComprehension: number;
 };
 
-function replay(opts: { until: number; from?: number; far: number; guard?: boolean }): Sim {
-  const { until, from = 0, far, guard = true } = opts;
+function replay(opts: {
+  until: number;
+  from?: number;
+  far: number;
+  guard?: boolean;
+  /**
+   * Seconds the ITEM asks for, as `comprehensionTarget` would answer. 0 models a
+   * host serving nothing but content the geometry already covers, which is what
+   * this harness measured before the runway existed.
+   */
+  target?: number;
+}): Sim {
+  const { until, from = 0, far, guard = true, target = 0 } = opts;
   const rng = new Rng(1234);
   const dt = 1 / 60;
   const spawnZ = far * 0.88;
@@ -90,8 +103,13 @@ function replay(opts: { until: number; from?: number; far: number; guard?: boole
     }
     if (!gate) {
       gateCooldown -= dt;
-      // `preRead()`: the next sum goes on the HUD partway through the corridor.
-      if (promptAt === null && gateCooldown <= breather(travel) - RESOLVE_HOLD) promptAt = elapsed;
+      // `preRead()`: the next sum goes on the HUD partway through the corridor,
+      // and then lengthens the corridor to whatever the item asks for. Both halves,
+      // in the order and with the arithmetic `mount.ts` uses.
+      if (promptAt === null && gateCooldown <= breather(travel) - RESOLVE_HOLD) {
+        promptAt = elapsed;
+        gateCooldown = Math.max(gateCooldown, preReadLead(target));
+      }
       if (gateCooldown <= 0) {
         const dist = gateDistance(speed, readWindow(travel, false), far);
         gate = { z: -dist };
@@ -322,6 +340,166 @@ test("and the pre-read is wired into the corridor, not just available", () => {
   // the question was not pre-read.
   const req = src.slice(src.indexOf("function requestGate("), src.indexOf("function resolveGate("));
   assert.ok(req.includes("if (!announced) setPrompt("), "a pre-read sum must not be announced twice");
+});
+
+/* ---------------------- the window a question asks for --------------------- */
+
+/** Everything the motion can be, which is what may not be allowed to matter. */
+const MOTION: Array<[string, number, number, number, boolean]> = [];
+for (const far of FARS) {
+  for (const travel of [0, 600, 2600, 20000, 1e6]) {
+    for (let speed = V_START; speed <= V_TERMINAL * V_SURGE_BOOST_MAX + 0.01; speed += 2.5) {
+      for (const reduced of [false, true]) {
+        MOTION.push([`far=${far} travel=${travel} speed=${speed.toFixed(1)} rm=${String(reduced)}`, travel, speed, far, reduced]);
+      }
+    }
+  }
+}
+
+/** Every target the cadence table can produce, in order. */
+const TARGETS = [2.8, 4.2, 6.0, 7.0, 10.0, 11.0, 14.0, 16.0, 20.0];
+
+test("a harder question is never given less time than an easier one", () => {
+  // `docs/PACING_AUDIT_2026-07.md`: "window(d) must be MONOTONE NON-DECREASING in
+  // item difficulty." VOLTA was inverted — 8.00s for `5 − 2` on the opening gate
+  // and 4.02s for a five-digit sum at terminal velocity on the smallest tier,
+  // because the window was derived from the speed and the speed was the escalation
+  // knob. Asserted at EVERY state of the world, not at a representative one.
+  for (const [ctx, travel, speed, far, reduced] of MOTION) {
+    let prev = -Infinity;
+    for (const target of TARGETS) {
+      const w = comprehensionFor(target, travel, speed, far, reduced);
+      assert.ok(
+        w >= prev - 1e-9,
+        `${ctx}: a ${target}s question gets ${w.toFixed(2)}s, less than the ${prev.toFixed(2)}s an easier one got`,
+      );
+      prev = w;
+    }
+  }
+});
+
+test("the window is never shorter than the item asked for, in any state of the world", () => {
+  // The other half, and the one that makes the invariant a floor rather than an
+  // ordering: no combination of speed, distance travelled, draw distance or reduced
+  // motion can take a question below its own target. Motion is on the left of a
+  // `max` in `comprehensionFor` and nowhere else, so it can only ever add.
+  for (const [ctx, travel, speed, far, reduced] of MOTION) {
+    for (const target of TARGETS) {
+      const w = comprehensionFor(target, travel, speed, far, reduced);
+      assert.ok(w >= target - 1e-9, `${ctx}: a ${target}s question got ${w.toFixed(2)}s`);
+    }
+  }
+});
+
+test("the speed is untouched — the runway is what grows", () => {
+  // The founder offered slowing down and then offered the better mechanism:
+  // "the vehicle could still be racing but ... we maybe need some miles". So the
+  // extra time has to arrive as distance, and the speed curve may not appear in
+  // any of it. `preReadLead` takes one argument and it is the item's target, so
+  // this is enforced by the signature; what is asserted here is that the seconds
+  // it asks for are real road at the speed the world is actually moving.
+  for (const target of TARGETS) {
+    const lead = preReadLead(target);
+    if (target <= DELIVERED_WINDOW_FLOOR) continue;
+    assert.ok(lead > 0, `a ${target}s question bought no road at all`);
+    for (const [ctx, , speed] of MOTION) {
+      assert.ok(lead * speed > 0, `${ctx}: a ${target}s question bought no road`);
+    }
+  }
+  assert.ok(
+    preReadLead(16) * V_TERMINAL > 700,
+    `16s at terminal velocity is only ${(preReadLead(16) * V_TERMINAL).toFixed(0)} units of road`,
+  );
+  // ...and the speed curve itself is untouched: the two ends of the run are the
+  // same numbers they were before the runway existed.
+  assert.equal(speedAt(0, false), V_START);
+  assert.ok(Math.abs(speedAt(1e6, false) - V_TERMINAL) < 1e-6);
+});
+
+test("the runway ceiling is a guard, not a limiter", () => {
+  // If `RUNWAY_MAX` ever binds, some item is being served less time than the table
+  // says it needs and the clamp is hiding it. Raising the table without thinking
+  // about the runway fails here.
+  for (const target of [...TARGETS, MAX_TARGET]) {
+    assert.ok(
+      preReadLead(target) < RUNWAY_MAX - 1e-9,
+      `a ${target}s question hit the ${RUNWAY_MAX}s ceiling: ${preReadLead(target).toFixed(2)}s of lead`,
+    );
+  }
+  assert.ok(MAX_TARGET <= 20, `the table now tops out at ${MAX_TARGET}s; re-derive RUNWAY_MAX`);
+});
+
+test("the runway is road, not dead air: hazards keep arriving across it", () => {
+  // A long corridor must not become a pause. Hazard beats are on their own cadence
+  // — `beatTime` knows nothing about the gate cycle — so the longest runway the
+  // table can ask for still has a dozen beats in it.
+  for (const travel of [0, 2600, 20000]) {
+    const lead = preReadLead(MAX_TARGET);
+    const beats = lead / beatTime(travel);
+    assert.ok(beats >= 8, `the longest runway at travel=${travel} holds only ${beats.toFixed(1)} hazard beats`);
+  }
+});
+
+test("measured through the scheduler: the inversion the founder saw is gone", () => {
+  // The replay, not the formula. `5 − 2` on the opening gate against the hardest
+  // thing the table describes deep into a run on the smallest quality tier — the
+  // exact two ends of his sentence.
+  const easy = replay({ until: 40, far: 520, target: comprehensionTarget({ prompt: "5 − 2", answer: "3" }) });
+  const hard = replay({ until: 300, from: 90, far: 300, target: comprehensionTarget({ prompt: "5001 − 2798", answer: "2203" }) });
+  assert.ok(easy.gates > 3 && hard.gates > 3, "nothing was measured");
+  assert.ok(
+    hard.minComprehension > easy.minComprehension,
+    `the hard question gets ${hard.minComprehension.toFixed(2)}s and the easy one ${easy.minComprehension.toFixed(2)}s`,
+  );
+  assert.ok(
+    hard.minComprehension >= 16 - 1e-9,
+    `a four-digit borrow across zero gets ${hard.minComprehension.toFixed(2)}s against the table's 16s`,
+  );
+  // And the gate's own hazard-free window is untouched by any of it.
+  assert.ok(hard.minDelivered >= DELIVERED_WINDOW_FLOOR - 1e-9, `the gate's window fell to ${hard.minDelivered.toFixed(2)}s`);
+});
+
+test("measured through the scheduler: every rung of the table is delivered", () => {
+  let prev = -Infinity;
+  for (const target of TARGETS) {
+    const sim = replay({ until: 400, from: 90, far: 300, target });
+    assert.ok(sim.gates > 3, `${target}s: only ${sim.gates} gates`);
+    assert.ok(sim.minComprehension >= target - 1e-9, `${target}s: a real run gave ${sim.minComprehension.toFixed(2)}s`);
+    assert.ok(sim.minComprehension >= prev - 1e-9, `${target}s went backwards from ${prev.toFixed(2)}s`);
+    assert.ok(sim.minDelivered >= DELIVERED_WINDOW_FLOOR - 1e-9, `${target}s: the gate's own window fell to ${sim.minDelivered.toFixed(2)}s`);
+    prev = sim.minComprehension;
+  }
+});
+
+test("and the runway is wired into the corridor, not just available", () => {
+  // Same reason as the pre-read test above: the replay is a model, so it would
+  // pass with `mount.ts` never applying the lead.
+  const src = readFileSync(new URL("./mount.ts", import.meta.url), "utf8");
+  const pre = src.slice(src.indexOf("function preRead("), src.indexOf("function requestGate("));
+  assert.ok(pre.length > 80, "preRead has moved; this test needs re-aiming");
+  assert.ok(pre.includes("comprehensionTarget(q)"), "the runway must be sized from the ITEM");
+  assert.ok(pre.includes("preReadLead("), "the corridor must be lengthened for a hard question");
+  assert.ok(pre.includes("gateCooldown = Math.max("), "the lead must reach the one number that schedules the gate");
+  // And nothing in the scheduling may reach for the speed to size it.
+  assert.ok(
+    !/preReadLead\([^)]*speedAt/.test(src),
+    "the runway is being sized from the speed curve, which is the defect it exists to remove",
+  );
+});
+
+test("a hazard is still kept out of a read across the longer corridor", () => {
+  // #665's guard is handed the LIVE cooldown, so a runway-lengthened corridor is
+  // exact for the cycle a hazard is actually flying through. Asserted rather than
+  // assumed, at the longest runway the table can produce.
+  for (const far of FARS) {
+    const sim = replay({ until: 400, from: 90, far, target: MAX_TARGET });
+    assert.ok(sim.gates > 3, `far=${far}: nothing was measured`);
+    assert.equal(
+      sim.arrivalsWhileReading,
+      0,
+      `far=${far}: ${sim.arrivalsWhileReading} of ${sim.arrivals} hazards landed while a gate was up`,
+    );
+  }
 });
 
 test("the pre-read is still short of the cadence table, and that is written down", () => {
