@@ -1,134 +1,140 @@
 import { strict as assert } from 'node:assert'
 import { test } from 'node:test'
 import {
-  assayPayout,
   baseStepFor,
   bloomLevel,
-  difficultyForStep,
-  emitValueFor,
-  eruptionYield,
-  flowAfter,
-  growCost,
-  offlineHaul,
+  bloomYield,
+  DIFFICULTY_CAP,
+  difficultyAt,
+  difficultyFor,
+  emitPeriodMs,
+  FORM_UNLOCK,
+  formsAt,
+  GROW_EVERY,
+  growthsAt,
+  maxDifficultyAt,
+  maxDifficultyFor,
+  offlineGrowth,
   OFFLINE_CAP_MS,
+  OFFLINE_MAX_POLYPS,
   OFFLINE_MIN_MS,
-  purgeCost,
-  reefTrickle,
-  targetStepFor,
-  tideMultiplier,
-  upwellCost,
-  ventCost,
-  ventPeriodMs,
-  ventRate,
+  STOCK_PERIOD_MS,
+  sumSlotsAt,
+  wantDigitsAt,
 } from './economy.ts'
-import { onLadder, decompose } from './ladder.ts'
 
-test('vent rate climbs with tier and never stalls at the bottom', () => {
-  assert.ok(ventRate(1) >= 1)
-  for (let t = 1; t < 14; t++) assert.ok(ventRate(t + 1) > ventRate(t), `tier ${t}`)
-})
-
-test('vent period shortens with tier but floors, so a deep vent never machine-guns', () => {
-  for (let t = 1; t < 30; t++) assert.ok(ventPeriodMs(t + 1) <= ventPeriodMs(t))
-  assert.ok(ventPeriodMs(99) >= 1100, 'there must be a floor')
-})
-
-test('eruption yield grows but is capped, so a full shelf is never buried', () => {
-  assert.ok(eruptionYield(1) >= 2)
-  assert.ok(eruptionYield(40) <= 9)
-})
-
-test('flow rewards a run and caps — it can never become the whole score', () => {
-  assert.equal(flowAfter(0), 1)
-  assert.ok(flowAfter(3) > flowAfter(1))
-  assert.equal(flowAfter(1000), 6)
-})
-
-test('payout is a positive integer and scales with the polyp you spent', () => {
-  const a = assayPayout(48, 3, 1)
-  const b = assayPayout(96, 3, 1)
-  assert.ok(Number.isInteger(a) && a > 0)
-  assert.ok(b > a, 'a bigger polyp must be worth more')
-  assert.ok(assayPayout(48, 3, 2) > a, 'flow must matter')
-})
-
-test('offline haul is capped at eight hours and ignored below the minimum', () => {
-  assert.equal(offlineHaul(10, OFFLINE_MIN_MS - 1), 0)
-  const oneHour = offlineHaul(10, 60 * 60 * 1000)
-  const capped = offlineHaul(10, OFFLINE_CAP_MS)
-  const beyond = offlineHaul(10, OFFLINE_CAP_MS * 20)
-  assert.ok(oneHour > 0)
-  assert.equal(capped, beyond, 'past the cap the haul must stop growing')
-  assert.ok(Number.isInteger(capped))
-})
-
-test('offline is worth less than the same time played — a gift, not a strategy', () => {
-  const away = offlineHaul(10, 60 * 60 * 1000)
-  const played = 10 * 60 * 60
-  assert.ok(away < played, `${away} must be under ${played}`)
-})
-
-test('the tide gate never drops below a full claim, however many tries it takes', () => {
-  assert.equal(tideMultiplier(0), 3)
-  assert.equal(tideMultiplier(1), 2)
-  assert.equal(tideMultiplier(2), 1)
-  assert.equal(tideMultiplier(50), 1)
-})
-
-test('costs climb by roughly an order of magnitude each time', () => {
-  assert.equal(ventCost(1), 0, 'the first vent is free')
-  for (let n = 2; n < 6; n++) assert.ok(ventCost(n + 1) > ventCost(n) * 5)
-  for (let n = 1; n < 5; n++) assert.ok(growCost(n + 1) > growCost(n) * 5)
-  for (let n = 0; n < 8; n++) assert.ok(upwellCost(n + 1) > upwellCost(n))
-})
-
-test('dissolving is free — the escape hatch is never gated on wealth', () => {
-  assert.equal(purgeCost(), 0)
-})
-
-test('reef trickle rewards holding a shelf but sub-linearly', () => {
-  assert.equal(reefTrickle(0), 0)
-  assert.ok(reefTrickle(400) > reefTrickle(100))
-  assert.ok(reefTrickle(400) < reefTrickle(100) * 4, 'must not run away')
-})
-
-test('base rung and bloom climb with magnitude and stay in range', () => {
-  let prev = -1
-  for (let m = 0; m < 20; m++) {
-    const s = baseStepFor(m)
-    assert.ok(s >= 0 && s <= 9)
-    assert.ok(s >= prev, 'the base rung must never drop')
-    prev = s
-    const b = bloomLevel(m)
-    assert.ok(b >= 0 && b <= 1)
+test('the currency is gone — nothing here prices anything', async () => {
+  const src = await import('node:fs/promises').then((fs) =>
+    fs.readFile(new URL('./economy.ts', import.meta.url), 'utf8'),
+  )
+  // The founder: "the score number doesn't even show, the 4.7M/sec, the essence,
+  // the flowx2 .. none of that even really makes sense or seems to do anything".
+  for (const gone of ['ventRate', 'assayPayout', 'flowAfter', 'ventCost', 'growCost', 'upwellCost', 'tideMultiplier']) {
+    assert.equal(src.includes(`export function ${gone}`), false, `${gone} should be deleted`)
   }
 })
 
-test('difficulty stays inside the contract band for every rung', () => {
-  for (let step = -3; step < 40; step++) {
-    const d = difficultyForStep(step)
-    assert.ok(d >= 1 && d <= 10, `step ${step} -> ${d}`)
-    assert.ok(Number.isInteger(d))
+test('depth drives everything, and every curve is monotone in it', () => {
+  let lastBloom = -1
+  let lastStep = -1
+  let lastYield = -1
+  let lastPeriod = 1e9
+  for (let d = 0; d <= 120; d++) {
+    assert.ok(bloomLevel(d) >= lastBloom)
+    assert.ok(baseStepFor(d) >= lastStep)
+    assert.ok(bloomYield(d) >= lastYield)
+    assert.ok(emitPeriodMs(d) <= lastPeriod)
+    lastBloom = bloomLevel(d)
+    lastStep = baseStepFor(d)
+    lastYield = bloomYield(d)
+    lastPeriod = emitPeriodMs(d)
+  }
+  assert.equal(bloomLevel(0), 0)
+  assert.equal(bloomLevel(1000), 1)
+  assert.ok(emitPeriodMs(1000) >= 1400, 'the reef must never out-emit a child')
+})
+
+test('the shelf grows every GROW_EVERY blooms and never un-grows', () => {
+  assert.equal(growthsAt(0), 0)
+  assert.equal(growthsAt(GROW_EVERY - 1), 0)
+  assert.equal(growthsAt(GROW_EVERY), 1)
+  assert.equal(growthsAt(GROW_EVERY * 4), 4)
+  for (let d = 1; d < 200; d++) assert.ok(growthsAt(d) >= growthsAt(d - 1))
+})
+
+test('forms unlock in the order the curriculum teaches them, and never lock again', () => {
+  assert.deepEqual(formsAt(0), ['sum'])
+  assert.deepEqual(formsAt(FORM_UNLOCK.minus), ['sum', 'minus'])
+  assert.deepEqual(formsAt(FORM_UNLOCK.times), ['sum', 'minus', 'times'])
+  assert.deepEqual(formsAt(FORM_UNLOCK.over), ['sum', 'minus', 'times', 'over'])
+  for (let d = 1; d < 60; d++) {
+    for (const f of formsAt(d - 1)) assert.ok(formsAt(d).includes(f), `${f} was taken away at depth ${d}`)
   }
 })
 
-test('what a vent emits is always on the ladder and always below what it asks for', () => {
-  for (let strain = 0; strain < 4; strain++) {
-    for (let base = 0; base < 8; base++) {
-      for (let tier = 1; tier < 12; tier++) {
-        const target = targetStepFor(base, tier)
-        const v = emitValueFor(strain as 0 | 1 | 2 | 3, target)
-        assert.ok(onLadder(v), `${v} must be a polyp value`)
-        const id = decompose(v)
-        assert.ok(id)
-        assert.equal(id.strain, strain, 'the vent must seed its own ladder')
-        assert.ok(id.step <= target, 'you must be able to merge up to the answer')
-      }
+test('a sum starts at two polyps and opens to three', () => {
+  assert.equal(sumSlotsAt(0), 2)
+  assert.equal(sumSlotsAt(5), 2)
+  assert.equal(sumSlotsAt(6), 3)
+  assert.equal(sumSlotsAt(200), 3)
+})
+
+/**
+ * The founder's `58042 + 968`. The ceiling exists so a target is never a number
+ * three polyps cannot build; see the note on `DIFFICULTY_CAP` and the measurement
+ * in `target.test.ts`.
+ */
+test('the difficulty request is capped, and the ceiling is never below the request', () => {
+  for (let d = 0; d <= 300; d++) {
+    const want = difficultyAt(d)
+    const cap = maxDifficultyAt(d)
+    assert.ok(want >= 1 && want <= DIFFICULTY_CAP, `depth ${d} asked for ${want}`)
+    assert.ok(cap >= want, `depth ${d}: ceiling ${cap} below request ${want}`)
+    assert.ok(cap <= DIFFICULTY_CAP)
+  }
+  assert.equal(difficultyAt(0), 1)
+  assert.ok(difficultyAt(200) > difficultyAt(0), 'it still has to get harder')
+})
+
+test('the target size the score aims for climbs with depth and stops at four digits', () => {
+  assert.equal(wantDigitsAt(0), 1)
+  for (let d = 1; d < 200; d++) assert.ok(wantDigitsAt(d) >= wantDigitsAt(d - 1))
+  assert.equal(wantDigitsAt(1000), 4)
+})
+
+/* ------------------------------------------------------------------ offline */
+
+test('away time is paid in polyps, is capped, and never nags for a short absence', () => {
+  assert.equal(offlineGrowth(0, 0), 0)
+  assert.equal(offlineGrowth(OFFLINE_MIN_MS - 1, 0), 0)
+  assert.ok(offlineGrowth(OFFLINE_MIN_MS, 0) >= 1)
+  const eight = offlineGrowth(OFFLINE_CAP_MS, 0)
+  const forty = offlineGrowth(OFFLINE_CAP_MS * 5, 0)
+  assert.equal(eight, forty, 'past the cap, staying away longer must be worth nothing')
+  // A gift, not a strategy: eight hours is about a shelf, not a shortcut.
+  assert.ok(eight <= OFFLINE_MAX_POLYPS, `eight hours away paid ${eight} polyps, which is a shortcut`)
+  assert.ok(offlineGrowth(OFFLINE_MIN_MS * 4, 0) < eight, 'a longer absence should still be worth more')
+})
+
+test('an operator target is asked BELOW the plain one, because its polyps are not its size', () => {
+  for (let d = 0; d <= 200; d += 7) {
+    assert.equal(difficultyFor(d, 'sum'), difficultyAt(d))
+    assert.equal(difficultyFor(d, 'minus'), difficultyAt(d))
+    assert.ok(difficultyFor(d, 'times') <= difficultyAt(d))
+    assert.ok(difficultyFor(d, 'over') <= difficultyFor(d, 'times'))
+    for (const f of ['sum', 'minus', 'times', 'over'] as const) {
+      assert.ok(difficultyFor(d, f) >= 1, `${f} at depth ${d} asked for ${difficultyFor(d, f)}`)
+      assert.ok(maxDifficultyFor(d, f) >= difficultyFor(d, f))
+      assert.ok(maxDifficultyFor(d, f) <= DIFFICULTY_CAP)
     }
   }
+  // The offsets have to be a real shift, or the rare forms go back to never
+  // appearing — see FORM_RUNGS for the measurement.
+  assert.ok(difficultyAt(200) - difficultyFor(200, 'over') >= 3)
 })
 
-test('target rung rises with the base rung and with vent tier', () => {
-  assert.ok(targetStepFor(2, 1) > targetStepFor(0, 1))
-  assert.ok(targetStepFor(0, 9) > targetStepFor(0, 1))
+test('a debt on the shelf is paid far faster than the reef ordinarily breathes', () => {
+  for (let d = 0; d <= 120; d += 10) {
+    assert.ok(STOCK_PERIOD_MS * 3 < emitPeriodMs(d), `depth ${d}: stocking is not fast enough to matter`)
+  }
 })

@@ -1,31 +1,28 @@
 /**
- * The DOM chrome: the essence odometer, the rate, the magnitude pips, the
- * action rail and the tide gate.
+ * The DOM chrome: the target, the bloom hairline, and two buttons.
  *
  * Text lives in the DOM rather than on the canvas because a numeral rendered by
- * the browser is crisp at every device pixel ratio for free, and because the
- * odometer — the single most important animation in a merge-and-idle game — is
- * four transform updates a frame here and would be a per-digit re-rasterise on
- * a canvas.
+ * the browser is crisp at every device pixel ratio for free — and the target is
+ * the most important numeral in the game, so it gets the crispest surface there
+ * is.
+ *
+ * ## What used to be here
+ *
+ * A rolling-digit essence odometer, a per-second rate line, a FLOW pill, a
+ * twelve-pip magnitude meter, a five-button action rail (UPWELL, AWAKEN, DEEPEN,
+ * OVERCHARGE, DISSOLVE) and a full-screen tide gate with four answer chips. The
+ * founder's report on the first four was that "none of that even really makes
+ * sense or seems to do anything", and the tide gate was the second half of "2
+ * games on the same screen instead of a cohesive game". `core/economy.ts` argues
+ * each deletion; this file is what is left.
+ *
+ * Two buttons survive, in the corners the host's chrome does not use: CLEAR,
+ * because a crowded shelf must never be a losing position, and the mute toggle.
+ * `ui/chrome.ts` decides where they go — in landscape they both move to the right,
+ * because the bottom-left of a landscape stage is shelf.
  */
 
-import { fmtCompact } from '../core/ladder.ts'
-import { DIGIT_EM, PIP, PIP_GAP, PIPS_PER_ROW, SEP_EM, UNIT_EM, type Chrome } from './chrome.ts'
-import { TapGuard, type TapEvent } from './tapGuard.ts'
-
-/** The width of one odometer column, in px, for the character it holds. */
-const colWidth = (ch: string, px: number): number =>
-  px * (ch >= '0' && ch <= '9' ? DIGIT_EM : ch === ',' || ch === '.' ? SEP_EM : UNIT_EM)
-
-export type Action = {
-  id: string
-  label: string
-  cost: number
-  hint: string
-  enabled: boolean
-  visible: boolean
-  urgent?: boolean
-}
+import { faceSizeFor, METER_H, STAGE_BTN, type Chrome } from './chrome.ts'
 
 const CSS = `
 .ab-root{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;
@@ -36,100 +33,55 @@ const CSS = `
 .ab-stage{position:relative;flex:1 1 auto;min-height:0}
 .ab-stage canvas{position:absolute;inset:0;display:block}
 
-/* The band bleeds edge to edge; its PADDING is written by chrome.ts so the
-   readout clears the notch and both of the host's 44px corners. */
-.ab-top{position:relative;z-index:3;display:flex;align-items:flex-end;gap:10px;
-  padding:8px 12px 6px;flex:0 0 auto;
+/* The band bleeds edge to edge; its PADDING is written by chrome.ts so the target
+   clears the notch and both of the host's 44px corners. */
+.ab-top{position:relative;z-index:3;display:flex;flex-direction:column;flex:0 0 auto;
   background:linear-gradient(180deg,rgba(4,7,18,.94),rgba(4,7,18,.45) 70%,rgba(4,7,18,0));}
-.ab-essence{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1 1 auto}
-/* Fixed line boxes: the band's height is the canvas stage's origin, and an
-   origin that drifts with a platform font metric is an origin that is wrong. */
-.ab-cap{font-size:9px;line-height:11px;height:11px;flex:0 0 auto;letter-spacing:.24em;font-weight:800;opacity:.5;text-transform:uppercase;white-space:nowrap}
-.ab-odo{display:flex;align-items:baseline;flex:0 0 auto;font-weight:900;line-height:1;
-  font-variant-numeric:tabular-nums;letter-spacing:-.02em;
-  filter:drop-shadow(0 0 12px var(--ab-odo-glow,rgba(120,232,255,.5)));}
-/* flex:0 0 auto is load-bearing. A digit column is overflow:hidden, so its
-   automatic minimum size is ZERO — left shrinkable it collapsed to nothing the
-   moment the odometer outgrew its column, while the comma and the magnitude
-   letter (not overflow:hidden, so floored at their content) survived. The child
-   saw ".K" where their score should be. chrome.ts now sizes the digits so the
-   widest possible number fits; this makes sure they can never be squeezed. */
-.ab-dig{position:relative;overflow:hidden;display:inline-block;flex:0 0 auto}
-.ab-dig>span{display:block;text-align:center}
-.ab-sep{display:inline-block;flex:0 0 auto;text-align:center;opacity:.55}
-.ab-rate{line-height:14px;height:14px;flex:0 0 auto;font-weight:800;opacity:.72;letter-spacing:.04em;
-  white-space:nowrap;overflow:hidden}
-.ab-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:4px;flex:0 0 auto}
-.ab-flow{font-weight:900;font-size:10px;line-height:12px;padding:1px 7px;border-radius:999px;white-space:nowrap;
-  background:rgba(255,209,46,.16);color:#ffd12e;border:1px solid rgba(255,209,46,.34)}
-.ab-flow[hidden]{display:none}
-/* A fixed grid, not a wrap: twelve pips inside a percentage max-width broke
-   wherever they happened to run out of room and left one orphan dot hanging
-   under the right-hand end of the meter. */
-.ab-pips{display:grid;gap:3px;justify-content:end}
-.ab-pip{width:7px;height:7px;border-radius:2px;background:rgba(238,246,255,.14);transition:background .3s,box-shadow .3s}
-.ab-pip.on{background:var(--ab-pip,#78e8ff);box-shadow:0 0 8px var(--ab-pip,#78e8ff)}
+/* A FIXED line box. Its height is the canvas stage's origin, so a height that
+   moved with the target would move every polyp on the shelf every time the
+   number changed. chrome.ts sizes the box; faceSizeFor fits the type inside it. */
+.ab-face{flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  font-weight:900;line-height:1;letter-spacing:-.01em;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+  filter:drop-shadow(0 0 14px var(--ab-face-glow,rgba(120,232,255,.55)));}
+.ab-face .op{opacity:.62;font-weight:800}
+.ab-face .blank{opacity:.42;font-weight:800}
+/* The bloom hairline: how close the reef is to growing. */
+.ab-meter{flex:0 0 auto;position:relative;border-radius:999px;overflow:hidden;
+  background:rgba(238,246,255,.12)}
+.ab-meter i{position:absolute;inset:0 auto 0 0;border-radius:999px;
+  background:var(--ab-meter,#78e8ff);box-shadow:0 0 10px var(--ab-meter,#78e8ff);
+  transition:width .4s cubic-bezier(.2,.9,.2,1)}
+@keyframes ab-grew{0%{filter:brightness(1)}30%{filter:brightness(2.4)}100%{filter:brightness(1)}}
+.ab-meter.grew{animation:ab-grew .7s ease-out}
 
-/* The rail's column count AND its label size come from chrome.ts, not from a
-   media query here. Two sources of truth for how many buttons fit on a row is
-   how the reserved rail height and the real rail height end up disagreeing —
-   and a media query resolves against the viewport while chrome.ts resolves
-   against the element the pack was actually given, which in Split View is a
-   different number. */
-.ab-rail{position:relative;z-index:3;flex:0 0 auto;display:grid;gap:6px;padding:6px 10px 10px;
-  background:linear-gradient(0deg,rgba(4,7,18,.96),rgba(4,7,18,.55));}
-/* A FIXED height, not a minimum: a label that wrapped would grow the rail,
-   which shrinks the stage, which moves every polyp on the shelf. */
-.ab-btn{appearance:none;border:1px solid rgba(238,246,255,.16);border-radius:12px;
-  background:linear-gradient(180deg,rgba(30,44,80,.85),rgba(10,16,36,.9));
-  color:#eef6ff;padding:7px 6px;display:flex;flex-direction:column;align-items:center;gap:1px;
-  font-family:inherit;cursor:pointer;transition:transform .09s cubic-bezier(.2,1.6,.4,1),filter .12s,opacity .12s;
-  height:46px;justify-content:center;overflow:hidden}
-.ab-btn:active{transform:scale(.94)}
-.ab-btn[disabled]{opacity:.34;cursor:default}
-.ab-btn[hidden]{display:none}
-.ab-btn .n{font-size:var(--ab-btn-px,10px);font-weight:900;letter-spacing:.05em;white-space:nowrap}
-.ab-btn .c{font-size:var(--ab-btn-px,10px);font-weight:800;opacity:.78;font-variant-numeric:tabular-nums;white-space:nowrap}
-.ab-btn.urgent{border-color:rgba(255,78,92,.7);box-shadow:0 0 0 1px rgba(255,78,92,.28),0 0 18px rgba(255,78,92,.35);
-  animation:ab-urge 1.1s ease-in-out infinite}
-@keyframes ab-urge{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
-
-.ab-toasts{position:absolute;left:0;right:0;top:52%;z-index:5;display:flex;flex-direction:column;
+.ab-toasts{position:absolute;left:0;right:0;top:8%;z-index:5;display:flex;flex-direction:column;
   align-items:center;gap:6px;pointer-events:none}
 .ab-toast{font-weight:900;font-size:15px;letter-spacing:.06em;padding:7px 16px;border-radius:999px;
   background:rgba(4,7,18,.8);border:1px solid rgba(238,246,255,.22);text-shadow:0 2px 10px #000}
 .ab-toast.danger{border-color:rgba(255,78,92,.6);color:#ffd0d4}
 
-.ab-gate{position:absolute;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;
-  padding:18px;background:rgba(2,4,12,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
-.ab-gate[hidden]{display:none}
-.ab-card{width:min(460px,100%);max-height:100%;overflow:auto;border-radius:20px;padding:18px 16px 16px;
-  background:radial-gradient(120% 100% at 50% 0%,rgba(60,40,120,.62),rgba(8,12,30,.96));
-  border:1px solid rgba(238,246,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.7);text-align:center}
-.ab-gate-kicker{font-size:10px;letter-spacing:.3em;font-weight:800;opacity:.62;text-transform:uppercase}
-.ab-gate-haul{font-size:clamp(34px,11vw,56px);font-weight:900;line-height:1.05;margin:4px 0 2px;
-  font-variant-numeric:tabular-nums;color:#78e8ff;filter:drop-shadow(0 0 18px rgba(120,232,255,.55))}
-.ab-gate-sub{font-size:12px;font-weight:700;opacity:.72;margin-bottom:12px}
-.ab-gate-prompt{font-size:clamp(26px,8.5vw,40px);font-weight:900;letter-spacing:.01em;margin:8px 0 12px}
-.ab-chips{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.ab-chip{appearance:none;font-family:inherit;font-weight:900;font-size:clamp(18px,5.5vw,24px);
-  padding:13px 6px;border-radius:14px;color:#eef6ff;cursor:pointer;font-variant-numeric:tabular-nums;
-  border:1px solid rgba(238,246,255,.24);background:linear-gradient(180deg,rgba(40,58,104,.9),rgba(12,18,40,.94));
-  transition:transform .09s cubic-bezier(.2,1.6,.4,1),opacity .2s,filter .2s}
-.ab-chip:active{transform:scale(.95)}
-.ab-chip.wrong{opacity:.28;filter:grayscale(1)}
-.ab-chip.right{border-color:#7cf5a0;box-shadow:0 0 0 2px rgba(124,245,160,.4),0 0 26px rgba(124,245,160,.5)}
-.ab-gate-mult{margin-top:11px;font-size:12px;font-weight:800;letter-spacing:.1em;opacity:.8}
+/* Both stage buttons. Square, 44px, in the two corners the host does NOT use. */
+.ab-sbtn{position:absolute;z-index:6;border-radius:14px;
+  border:1px solid rgba(238,246,255,.18);background:rgba(4,7,18,.66);color:#eef6ff;cursor:pointer;
+  font-family:inherit;font-weight:900;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:1px;line-height:1;
+  transition:transform .09s cubic-bezier(.2,1.6,.4,1),opacity .12s}
+.ab-sbtn:active{transform:scale(.93)}
+.ab-sbtn[disabled]{opacity:.32;cursor:default}
+.ab-sbtn .k{font-size:16px}
+.ab-sbtn .n{font-size:7px;letter-spacing:.08em;opacity:.72}
+.ab-sbtn.urgent{border-color:rgba(255,78,92,.7);box-shadow:0 0 0 1px rgba(255,78,92,.28),0 0 18px rgba(255,78,92,.35);
+  animation:ab-urge 1.1s ease-in-out infinite}
+@keyframes ab-urge{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
 
-.ab-badge{position:absolute;right:8px;bottom:8px;z-index:4;font-size:10px;font-weight:800;
-  opacity:.45;letter-spacing:.08em;pointer-events:none;font-variant-numeric:tabular-nums}
-.ab-mute{position:absolute;right:8px;top:8px;z-index:6;width:30px;height:30px;border-radius:10px;
-  border:1px solid rgba(238,246,255,.18);background:rgba(4,7,18,.6);color:#eef6ff;cursor:pointer;
-  font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;font-family:inherit}
+.ab-badge{position:absolute;left:50%;transform:translateX(-50%);bottom:6px;z-index:4;font-size:10px;
+  font-weight:800;opacity:.4;letter-spacing:.08em;pointer-events:none;font-variant-numeric:tabular-nums}
 
 @media (prefers-reduced-motion:reduce){
-  .ab-btn,.ab-chip{transition:none}
-  .ab-btn.urgent{animation:none;filter:brightness(1.25)}
+  .ab-sbtn,.ab-meter i{transition:none}
+  .ab-sbtn.urgent{animation:none;filter:brightness(1.25)}
+  .ab-meter.grew{animation:none}
 }
 `
 
@@ -143,98 +95,8 @@ function installStyle(): void {
   styleInstalled = true
 }
 
-/** `12.5K` -> `ddsdu`: which columns are digits, separators and unit letters. */
-const shapeOf = (text: string): string =>
-  Array.from(text, (c) => (c >= '0' && c <= '9' ? 'd' : c === ',' || c === '.' ? 's' : 'u')).join('')
-
-/** A rolling-digit odometer. Rebuilt only when the column shape changes. */
-class Odometer {
-  readonly el = document.createElement('div')
-  private cols: HTMLElement[] = []
-  private chars = ''
-  /** Zero until the frame is laid out, so the first `setSize` always applies. */
-  private sizePx = 0
-
-  constructor() {
-    this.el.className = 'ab-odo'
-  }
-
-  setSize(px: number): void {
-    if (px === this.sizePx) return
-    this.sizePx = px
-    this.el.style.fontSize = `${px}px`
-    // Explicit, because the row is baseline-aligned: a comma's descender would
-    // otherwise stretch the flex line past the digits and push the band taller
-    // than `chrome.ts` computed — and the band's height is the stage's origin.
-    this.el.style.height = `${px}px`
-    // A rebuild, not a patch. The ten digit `<span>`s inside a column carry
-    // their own `height` and `line-height`, and resizing only the column left
-    // them laid out at the OLD size while `set()` went on translating the
-    // stack by the new one — so after a rotation the odometer showed the wrong
-    // digit until the number happened to change shape. In an idle game that is
-    // seconds of a score that is simply false.
-    const text = this.chars
-    this.chars = ''
-    if (text) this.set(text)
-  }
-
-  set(text: string): void {
-    // Rebuilt on a change of SHAPE, not of length. `99,999` and `100.0K` are
-    // both six characters but their columns are not interchangeable: reusing
-    // them put a digit inside a separator column and read the `.` as a zero.
-    if (shapeOf(text) !== shapeOf(this.chars)) this.rebuild(text)
-    for (let i = 0; i < text.length; i++) {
-      const ch = text[i] ?? ''
-      const col = this.cols[i]
-      if (!col) continue
-      if (col.classList.contains('ab-dig')) {
-        const d = ch >= '0' && ch <= '9' ? Number(ch) : 0
-        const stack = col.firstElementChild as HTMLElement | null
-        if (stack) stack.style.transform = `translateY(${-d * this.sizePx}px)`
-      } else if (col.textContent !== ch) {
-        col.textContent = ch
-      }
-    }
-    this.chars = text
-  }
-
-  private rebuild(text: string): void {
-    this.el.textContent = ''
-    this.cols = []
-    for (const ch of text) {
-      if (ch >= '0' && ch <= '9') {
-        const col = document.createElement('span')
-        col.className = 'ab-dig'
-        col.style.height = `${this.sizePx}px`
-        col.style.width = `${colWidth(ch, this.sizePx)}px`
-        const stack = document.createElement('span')
-        stack.style.height = `${this.sizePx * 10}px`
-        stack.style.transition = 'transform .34s cubic-bezier(.2,.9,.2,1)'
-        for (let d = 0; d <= 9; d++) {
-          const s = document.createElement('span')
-          s.textContent = String(d)
-          s.style.height = `${this.sizePx}px`
-          s.style.lineHeight = `${this.sizePx}px`
-          stack.appendChild(s)
-        }
-        col.appendChild(stack)
-        this.el.appendChild(col)
-        this.cols.push(col)
-      } else {
-        const sep = document.createElement('span')
-        sep.className = 'ab-sep'
-        sep.style.width = `${colWidth(ch, this.sizePx)}px`
-        sep.textContent = ch
-        this.el.appendChild(sep)
-        this.cols.push(sep)
-      }
-    }
-  }
-}
-
 export type HudCallbacks = {
-  onAction(id: string): void
-  onChip(index: number): void
+  onDissolve(): void
   onMute(muted: boolean): void
 }
 
@@ -242,27 +104,17 @@ export class Hud {
   readonly root = document.createElement('div')
   readonly stage = document.createElement('div')
   private top = document.createElement('div')
-  private odo = new Odometer()
-  private rateEl = document.createElement('div')
-  private flowEl = document.createElement('span')
-  private sideEl = document.createElement('div')
-  private pipsEl = document.createElement('div')
-  private railEl = document.createElement('div')
+  private faceEl = document.createElement('div')
+  private meterEl = document.createElement('div')
+  private meterFill = document.createElement('i')
   private toastEl = document.createElement('div')
   private badge = document.createElement('div')
+  private dissolveBtn = document.createElement('button')
   private muteBtn = document.createElement('button')
-  private gate = document.createElement('div')
-  private gateKicker = document.createElement('div')
-  private gateHaul = document.createElement('div')
-  private gateSub = document.createElement('div')
-  private gatePrompt = document.createElement('div')
-  private gateChips = document.createElement('div')
-  private gateMult = document.createElement('div')
-  private buttons = new Map<string, HTMLButtonElement>()
-  private pips: HTMLElement[] = []
   private muted = false
-  /** Keeps the tap that OPENS the tide gate from also answering it. */
-  private guard = new TapGuard()
+  private shownFace = ''
+  private facePx = 0
+  private chrome: Chrome | null = null
 
   private cb: HudCallbacks
 
@@ -271,98 +123,44 @@ export class Hud {
     installStyle()
     this.root.className = 'ab-root'
 
-    const top = this.top
-    top.className = 'ab-top'
-    const ess = document.createElement('div')
-    ess.className = 'ab-essence'
-    const cap = document.createElement('div')
-    cap.className = 'ab-cap'
-    cap.textContent = 'Essence'
-    this.rateEl.className = 'ab-rate'
-    this.rateEl.textContent = '▲ 0 / sec'
-    this.flowEl.className = 'ab-flow'
-    this.flowEl.hidden = true
-    ess.append(cap, this.odo.el, this.rateEl)
-    // FLOW and the magnitude meter share the right-hand column. FLOW used to
-    // sit on the rate line, where it left `▲ 899 / sec` too little room and the
-    // line wrapped onto two rows inside a one-row box.
-    this.sideEl.className = 'ab-side'
-    this.pipsEl.className = 'ab-pips'
-    this.pipsEl.style.gridTemplateColumns = `repeat(${PIPS_PER_ROW},${PIP}px)`
-    this.pipsEl.style.gap = `${PIP_GAP}px`
-    this.sideEl.append(this.flowEl, this.pipsEl)
-    top.append(ess, this.sideEl)
+    this.top.className = 'ab-top'
+    this.faceEl.className = 'ab-face'
+    this.meterEl.className = 'ab-meter'
+    this.meterEl.appendChild(this.meterFill)
+    this.top.append(this.faceEl, this.meterEl)
 
     this.stage.className = 'ab-stage'
-    this.railEl.className = 'ab-rail'
     this.toastEl.className = 'ab-toasts'
     this.badge.className = 'ab-badge'
-    this.muteBtn.className = 'ab-mute'
+
+    this.dissolveBtn.className = 'ab-sbtn'
+    this.dissolveBtn.type = 'button'
+    this.dissolveBtn.setAttribute('aria-label', 'Dissolve the smallest polyps')
+    const dk = document.createElement('span')
+    dk.className = 'k'
+    dk.textContent = '✳'
+    const dn = document.createElement('span')
+    dn.className = 'n'
+    dn.textContent = 'CLEAR'
+    this.dissolveBtn.append(dk, dn)
+    this.dissolveBtn.addEventListener('click', () => this.cb.onDissolve())
+
+    this.muteBtn.className = 'ab-sbtn'
     this.muteBtn.type = 'button'
-    this.muteBtn.textContent = '♪'
     this.muteBtn.setAttribute('aria-label', 'Mute sound')
+    const mk = document.createElement('span')
+    mk.className = 'k'
+    mk.textContent = '♪'
+    this.muteBtn.append(mk)
     this.muteBtn.addEventListener('click', () => {
       this.muted = !this.muted
-      this.muteBtn.textContent = this.muted ? '⊘' : '♪'
+      mk.textContent = this.muted ? '⊘' : '♪'
       this.muteBtn.setAttribute('aria-label', this.muted ? 'Unmute sound' : 'Mute sound')
       this.cb.onMute(this.muted)
     })
 
-    this.buildGate()
-    this.stage.append(this.toastEl, this.badge, this.muteBtn, this.gate)
-    this.root.append(top, this.stage, this.railEl)
-
-    // The whole pack's gesture state, in the capture phase so it is known
-    // before any surface gets a look at the event.
-    this.root.addEventListener('pointerdown', () => this.guard.pointerDown(), true)
-    this.root.addEventListener('pointerup', () => this.guard.pointerUp(), true)
-    this.root.addEventListener('pointercancel', () => this.guard.pointerUp(), true)
-
-    for (let i = 0; i < 12; i++) {
-      const p = document.createElement('div')
-      p.className = 'ab-pip'
-      this.pips.push(p)
-      this.pipsEl.appendChild(p)
-    }
-  }
-
-  private buildGate(): void {
-    this.gate.className = 'ab-gate'
-    this.gate.hidden = true
-    // The gate is opened from a `pointerdown` on the canvas beneath it, so the
-    // rest of that same tap — the `pointerup`, and the `click` the browser
-    // synthesises from it — would otherwise land on whichever answer chip has
-    // just appeared under the finger. Swallowed here, at the gate's own edge,
-    // rather than inside each chip: every future control on this card is
-    // covered without having to remember.
-    for (const kind of ['pointerdown', 'pointerup', 'click'] as TapEvent[]) {
-      this.gate.addEventListener(
-        kind,
-        (e) => {
-          if (this.guard.accept(kind)) return
-          e.stopPropagation()
-          e.preventDefault()
-        },
-        true,
-      )
-    }
-    const card = document.createElement('div')
-    card.className = 'ab-card'
-    this.gateKicker.className = 'ab-gate-kicker'
-    this.gateHaul.className = 'ab-gate-haul'
-    this.gateSub.className = 'ab-gate-sub'
-    this.gatePrompt.className = 'ab-gate-prompt'
-    this.gateChips.className = 'ab-chips'
-    this.gateMult.className = 'ab-gate-mult'
-    card.append(
-      this.gateKicker,
-      this.gateHaul,
-      this.gateSub,
-      this.gatePrompt,
-      this.gateChips,
-      this.gateMult,
-    )
-    this.gate.appendChild(card)
+    this.stage.append(this.toastEl, this.badge, this.dissolveBtn, this.muteBtn)
+    this.root.append(this.top, this.stage)
   }
 
   mount(parent: HTMLElement): void {
@@ -376,95 +174,99 @@ export class Hud {
   /**
    * Put the DOM where `chrome.ts` says it goes.
    *
-   * This is the only place the band's padding, the band's height and the mute
-   * button's corner are decided, and every number comes from `chromeLayout`.
-   * The stylesheet deliberately holds no safe-area rule of its own: two sources
-   * of truth for "where the notch is" is how a HUD ends up half-corrected.
+   * This is the only place the band's padding, its height and the two buttons'
+   * corners are decided, and every number comes from `chromeLayout`. The
+   * stylesheet deliberately holds no safe-area rule of its own: two sources of
+   * truth for "where the notch is" is how a HUD ends up half-corrected — and
+   * `env(safe-area-inset-*)` reads ZERO inside a pack frame anyway.
    */
   applyChrome(c: Chrome): void {
+    this.chrome = c
     const t = this.top.style
     t.paddingTop = `${c.bandPad.top}px`
     t.paddingRight = `${c.bandPad.right}px`
     t.paddingBottom = `${c.bandPad.bottom}px`
     t.paddingLeft = `${c.bandPad.left}px`
     t.height = `${c.band.h}px`
-    this.odo.setSize(c.odoPx)
-    this.rateEl.style.fontSize = `${c.ratePx}px`
-    this.sideEl.style.width = `${c.side.w}px`
 
-    const r = this.railEl.style
-    r.gridTemplateColumns = `repeat(${c.railCols},1fr)`
-    r.setProperty('--ab-btn-px', `${c.railLabelPx}px`)
-    r.paddingTop = `${c.railPad.top}px`
-    r.paddingRight = `${c.railPad.right}px`
-    r.paddingBottom = `${c.railPad.bottom}px`
-    r.paddingLeft = `${c.railPad.left}px`
+    this.faceEl.style.height = `${c.facePx}px`
+    this.meterEl.style.height = `${METER_H}px`
+    this.meterEl.style.marginTop = `${c.meter.y - c.face.y - c.face.h}px`
 
-    // The mute button lives in the stage, so its top is measured from the band's
-    // underside — which is already below the host's corners.
-    this.muteBtn.style.top = `${c.mute.y - c.stage.y}px`
-    this.muteBtn.style.right = `${c.w - c.mute.x - c.mute.w}px`
+    // Both buttons live in the stage, so their `y` is measured from the band's
+    // underside.
+    for (const [btn, r] of [
+      [this.dissolveBtn, c.dissolve],
+      [this.muteBtn, c.mute],
+    ] as const) {
+      btn.style.width = `${STAGE_BTN}px`
+      btn.style.height = `${STAGE_BTN}px`
+      btn.style.left = `${r.x}px`
+      btn.style.top = `${r.y - c.stage.y}px`
+    }
+
+    // Re-fit the type: the box changed, so the size inside it did too.
+    const face = this.shownFace
+    this.shownFace = ''
+    this.facePx = 0
+    if (face) this.setFace(face, this.faceEl.style.getPropertyValue('--ab-face-glow'))
   }
 
   /* ------------------------------------------------------------------ state */
 
-  setEssence(shown: number, glowColour: string): void {
-    this.odo.set(fmtCompact(shown))
-    this.odo.el.style.setProperty('--ab-odo-glow', glowColour)
-  }
-
-  setRate(perSec: number): void {
-    const t = `▲ ${fmtCompact(Math.round(perSec))} / sec`
-    if (this.rateEl.textContent !== t) this.rateEl.textContent = t
-  }
-
-  setFlow(flow: number): void {
-    const on = flow > 1.01
-    this.flowEl.hidden = !on
-    if (on) {
-      const t = `×${(Math.round(flow * 10) / 10).toFixed(1)} FLOW`
-      if (this.flowEl.textContent !== t) this.flowEl.textContent = t
+  /**
+   * The target, as the child reads it.
+   *
+   * The blanks and the operator are their own spans so they can be dimmed — a
+   * `15 = ▢ ÷ ▢` whose notation is as loud as its number is a `15` that is harder
+   * to find.
+   */
+  setFace(face: string, glow: string): void {
+    const c = this.chrome
+    const px = c ? faceSizeFor(c, face) : 32
+    if (face === this.shownFace && px === this.facePx) {
+      if (glow) this.faceEl.style.setProperty('--ab-face-glow', glow)
+      return
+    }
+    this.shownFace = face
+    this.facePx = px
+    this.faceEl.style.fontSize = `${px}px`
+    if (glow) this.faceEl.style.setProperty('--ab-face-glow', glow)
+    this.faceEl.textContent = ''
+    for (const part of face.split(' ')) {
+      const el = document.createElement('span')
+      if (part === '▢') el.className = 'blank'
+      else if (part === '=' || part === '+' || part === '−' || part === '×' || part === '÷') el.className = 'op'
+      el.textContent = part
+      this.faceEl.appendChild(el)
+      const sp = document.createElement('span')
+      sp.textContent = ' '
+      this.faceEl.appendChild(sp)
     }
   }
 
-  setMagnitude(m: number, colour: string): void {
-    for (let i = 0; i < this.pips.length; i++) {
-      const p = this.pips[i]
-      if (!p) continue
-      const on = i < m
-      if (p.classList.contains('on') !== on) p.classList.toggle('on', on)
-      if (on) p.style.setProperty('--ab-pip', colour)
-    }
+  /** The bloom hairline: `done` of `of` blooms until the shelf grows. */
+  setMeter(done: number, of: number, colour: string): void {
+    const frac = of <= 0 ? 0 : Math.max(0, Math.min(1, done / of))
+    this.meterFill.style.width = `${(frac * 100).toFixed(1)}%`
+    this.meterEl.style.setProperty('--ab-meter', colour)
+  }
+
+  /** Flash the meter when the shelf actually grows. */
+  pulseMeter(): void {
+    this.meterEl.classList.remove('grew')
+    // Force a reflow so the animation restarts on a second growth.
+    void this.meterEl.offsetWidth
+    this.meterEl.classList.add('grew')
+  }
+
+  setDissolve(enabled: boolean, urgent: boolean): void {
+    if (this.dissolveBtn.disabled === enabled) this.dissolveBtn.disabled = !enabled
+    this.dissolveBtn.classList.toggle('urgent', urgent)
   }
 
   setBadge(text: string): void {
     if (this.badge.textContent !== text) this.badge.textContent = text
-  }
-
-  setActions(actions: Action[]): void {
-    for (const a of actions) {
-      let btn = this.buttons.get(a.id)
-      if (!btn) {
-        btn = document.createElement('button')
-        btn.type = 'button'
-        btn.className = 'ab-btn'
-        const n = document.createElement('span')
-        n.className = 'n'
-        const c = document.createElement('span')
-        c.className = 'c'
-        btn.append(n, c)
-        btn.addEventListener('click', () => this.cb.onAction(a.id))
-        this.buttons.set(a.id, btn)
-        this.railEl.appendChild(btn)
-      }
-      const n = btn.firstElementChild as HTMLElement
-      const c = btn.lastElementChild as HTMLElement
-      if (n.textContent !== a.label) n.textContent = a.label
-      if (c.textContent !== a.hint) c.textContent = a.hint
-      if (btn.disabled === a.enabled) btn.disabled = !a.enabled
-      if (btn.hidden === a.visible) btn.hidden = !a.visible
-      btn.classList.toggle('urgent', !!a.urgent)
-    }
   }
 
   toast(text: string, danger = false): void {
@@ -472,7 +274,6 @@ export class Hud {
     el.className = danger ? 'ab-toast danger' : 'ab-toast'
     el.textContent = text
     this.toastEl.appendChild(el)
-    let alpha = 1
     const start = performance.now()
     const tick = (): void => {
       const t = (performance.now() - start) / 1500
@@ -480,62 +281,10 @@ export class Hud {
         el.remove()
         return
       }
-      alpha = t < 0.8 ? 1 : 1 - (t - 0.8) / 0.2
-      el.style.opacity = String(alpha)
+      el.style.opacity = String(t < 0.8 ? 1 : 1 - (t - 0.8) / 0.2)
       el.style.transform = `translateY(${-t * 18}px)`
       requestAnimationFrame(tick)
     }
     requestAnimationFrame(tick)
-  }
-
-  /* ------------------------------------------------------------------- gate */
-
-  showGate(o: {
-    kicker: string
-    haul: string
-    sub: string
-    prompt: string
-    chips: string[]
-    mult: string
-  }): void {
-    this.gateKicker.textContent = o.kicker
-    this.gateHaul.textContent = o.haul
-    this.gateSub.textContent = o.sub
-    this.gatePrompt.textContent = o.prompt
-    this.gateMult.textContent = o.mult
-    this.gateChips.textContent = ''
-    o.chips.forEach((text, i) => {
-      const b = document.createElement('button')
-      b.type = 'button'
-      b.className = 'ab-chip'
-      b.textContent = text
-      b.addEventListener('click', () => this.cb.onChip(i))
-      this.gateChips.appendChild(b)
-    })
-    const wasOpen = !this.gate.hidden
-    this.gate.hidden = false
-    // Only a fresh appearance needs guarding. The next question after a wrong
-    // answer reuses a card that is already on screen and already armed, and
-    // disarming it there would cost the child a tap.
-    if (!wasOpen) this.guard.open()
-  }
-
-  markChip(index: number, right: boolean): void {
-    const el = this.gateChips.children[index] as HTMLElement | undefined
-    if (!el) return
-    el.classList.add(right ? 'right' : 'wrong')
-  }
-
-  setGateMult(text: string): void {
-    this.gateMult.textContent = text
-  }
-
-  hideGate(): void {
-    this.gate.hidden = true
-    this.guard.close()
-  }
-
-  get gateOpen(): boolean {
-    return !this.gate.hidden
   }
 }

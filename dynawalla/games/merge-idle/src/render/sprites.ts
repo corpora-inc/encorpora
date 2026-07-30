@@ -89,7 +89,16 @@ function drawGlow(colour: Rgb, px: number, dpr: number): HTMLCanvasElement {
   return c
 }
 
-/** The silhouette outline, centred at (cx,cy) with body radius `r`. */
+/**
+ * The silhouette outline, centred at (cx,cy) with body radius `r`.
+ *
+ * One parametric path for all EIGHT strains rather than eight hand-written arms.
+ * The ladder widened from four seeds to eight — see `core/ladder.ts` for the
+ * measurement that forced it — and hand-drawing four more shapes is how two of
+ * them end up indistinguishable at a 20px cell. Here `waves` is the count,
+ * `depth` how far the outline dents, and `sharpness` how pointed the result is,
+ * so every pair differs in at least two of the three.
+ */
 function silhouettePath(
   g: CanvasRenderingContext2D,
   kind: Silhouette,
@@ -98,52 +107,24 @@ function silhouettePath(
   r: number,
 ): void {
   g.beginPath()
-  switch (kind) {
-    case 'ring': {
-      g.arc(cx, cy, r, 0, Math.PI * 2)
-      break
-    }
-    case 'lobed': {
-      const lobes = 7
-      for (let i = 0; i <= 180; i++) {
-        const t = (i / 180) * Math.PI * 2
-        const rr = r * (0.86 + 0.14 * Math.cos(t * lobes))
-        const x = cx + Math.cos(t) * rr
-        const y = cy + Math.sin(t) * rr
-        if (i === 0) g.moveTo(x, y)
-        else g.lineTo(x, y)
-      }
-      g.closePath()
-      break
-    }
-    case 'spiked': {
-      const spikes = 12
-      for (let i = 0; i < spikes * 2; i++) {
-        const t = (i / (spikes * 2)) * Math.PI * 2 - Math.PI / 2
-        const rr = i % 2 === 0 ? r : r * 0.63
-        const x = cx + Math.cos(t) * rr
-        const y = cy + Math.sin(t) * rr
-        if (i === 0) g.moveTo(x, y)
-        else g.lineTo(x, y)
-      }
-      g.closePath()
-      break
-    }
-    case 'starred': {
-      const arms = 5
-      for (let i = 0; i <= 240; i++) {
-        const t = (i / 240) * Math.PI * 2 - Math.PI / 2
-        const wave = Math.cos(t * arms)
-        const rr = r * (0.6 + 0.4 * Math.sign(wave) * Math.abs(wave) ** 0.55)
-        const x = cx + Math.cos(t) * rr
-        const y = cy + Math.sin(t) * rr
-        if (i === 0) g.moveTo(x, y)
-        else g.lineTo(x, y)
-      }
-      g.closePath()
-      break
-    }
+  if (kind.waves <= 0 || kind.depth <= 0) {
+    g.arc(cx, cy, r, 0, Math.PI * 2)
+    return
   }
+  // Enough samples that even a nine-wave outline has no visible facets, and a
+  // multiple of the wave count so the path closes exactly on a crest.
+  const steps = kind.waves * 24
+  for (let i = 0; i <= steps; i++) {
+    const t = (i / steps) * Math.PI * 2 - Math.PI / 2
+    const wave = Math.cos(t * kind.waves)
+    const shaped = Math.sign(wave) * Math.abs(wave) ** (1 / kind.sharpness)
+    const rr = r * (1 - kind.depth + kind.depth * shaped)
+    const x = cx + Math.cos(t) * rr
+    const y = cy + Math.sin(t) * rr
+    if (i === 0) g.moveTo(x, y)
+    else g.lineTo(x, y)
+  }
+  g.closePath()
 }
 
 function drawPolyp(value: number, cellPx: number, dpr: number): HTMLCanvasElement {

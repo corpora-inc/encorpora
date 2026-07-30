@@ -13,8 +13,30 @@ export type Question = {
 }
 
 export type Host = {
-  next(opts?: { domain?: string; difficulty?: number }): Question
+  next(opts?: { domain?: string; difficulty?: number; maxDifficulty?: number }): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
+  /**
+   * Close a question the child never saw an answer for.
+   *
+   * ABYSSAL BLOOM refuses a number it cannot build — see `core/ask.ts` — and this
+   * is how it closes the item honestly. It is explicitly NOT a wrong answer:
+   * `packs/shared/game-host` records nothing, produces no `Outcome`, and does not
+   * move the ladder. Reporting `{ correct: false, answered: "" }` instead would
+   * file a MISS against a child who was never asked.
+   *
+   * Optional, because the standalone stub and older hosts may not have it.
+   */
+  skip?(questionId: string): void
+  /**
+   * Bias the question stream so its ANSWERS land in a set the game can express.
+   *
+   * The reason this pack needs it is the whole subject of `core/ask.ts`: the
+   * board's answer surface is three polyps wide, so the game tells the host which
+   * numbers those three polyps can make. Up to 32 values; best effort.
+   *
+   * Optional, and feature-detected.
+   */
+  focus?(spec: { key: number; wanted: number[] }): void
   haptic(k: 'light' | 'medium' | 'heavy' | 'success' | 'failure'): void
   prefersReducedMotion(): boolean
 }

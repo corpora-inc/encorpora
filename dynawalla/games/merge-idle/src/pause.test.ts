@@ -6,16 +6,17 @@
  * stressing me out even more."
  *
  * Sound, keys and taps are held by the shared sheet for every game. A game's own
- * simulation clock is the one thing it cannot reach, and ABYSSAL BLOOM is the
- * genre where that clock is the *subject*: essence accrues with nobody's hands
- * on the glass, vents cough polyps out on a timer, a choked vent warms back up
- * on a timer, and a swell rises on a timer. All of it ran behind the manual.
+ * simulation clock is the one thing it cannot reach, and ABYSSAL BLOOM is the genre
+ * where that clock is the *subject*: the reef coughs polyps onto the shelf on a
+ * timer, a debt it owes the shelf is paid on a timer, and `askedAt` — the thinking
+ * time reported to the learner model — is a wall-clock mark. All of it ran behind
+ * the manual.
  *
- * **The idle question was decided deliberately, not by accident.** A read is
- * outside of time: nothing accrues and nothing decays. See `setPaused` in
- * `game.ts` for why crediting the read would have been a second, unquestioned
- * path to essence — and, because the hold is measured on the wall clock, a way
- * to farm backgrounded time past the tide gate that exists to charge for it.
+ * **The idle question was decided deliberately, not by accident.** A read is outside
+ * of time: nothing grows and nothing decays. See `setPaused` in `game.ts`, and note
+ * that away-time is now paid in POLYPS rather than in a currency — so a read left
+ * un-rebased would hand a child free reef, and, because the hold is measured on the
+ * wall clock, a way to farm real backgrounded time as well.
  *
  * **This is a mount-level test, on purpose.** ABYSSAL BLOOM had no headless
  * harness: every one of its existing tests proves a pure function or a layout
@@ -49,12 +50,13 @@ type FakeEl = {
 } & Record<string, unknown>
 
 type Save = {
-  essence: number
-  magnitude: number
+  v: number
+  depth: number
+  grows: number
   cols: number
   rows: number
   cells: Array<[number, number]>
-  vents: Array<{ tier: number }>
+  mouth: number[]
   lastSeen: number
 }
 
@@ -261,8 +263,8 @@ function harness(w = 820, h = 1180): Harness {
       writable: true,
     })
     // The reef's save is a seam precisely so a pack frame with no `localStorage`
-    // still remembers. Here it is the best observable the game has: it carries
-    // the essence, the shelf and the wall-clock stamp `offlineHaul` measures from.
+    // still remembers. Here it is the best observable the game has: it carries the
+    // shelf, the depth and the wall-clock stamp away-time is measured from.
     useSaveSlot({
       read: () => null,
       write: (value) => {
@@ -338,12 +340,12 @@ function click(el: FakeEl): void {
 /** Everything the reef persists that is SIMULATION — `lastSeen` is not. */
 function reef(s: Save): unknown {
   return {
-    essence: s.essence,
-    magnitude: s.magnitude,
+    depth: s.depth,
+    grows: s.grows,
     cols: s.cols,
     rows: s.rows,
     cells: s.cells,
-    vents: s.vents,
+    mouth: s.mouth,
   }
 }
 
@@ -362,9 +364,13 @@ test('nothing on the reef advances while the manual is open', () => {
   try {
     for (let i = 0; i < WARM; i++) h.step(16)
 
-    // The reef has to actually be blooming, or "nothing advanced" is vacuous.
+    // The reef has to actually be growing, or "nothing advanced" is vacuous.
     assert.ok(h.saves.length >= 3, `only ${h.saves.length} autosaves in the warm-up`)
-    assert.ok(last(h).essence > 0, 'no essence ever accrued — the observable proves nothing')
+    const first = h.saves[0] as Save
+    assert.ok(
+      last(h).cells.length > first.cells.length,
+      `the reef never emitted a polyp (${first.cells.length} -> ${last(h).cells.length}) — the observable proves nothing`,
+    )
     assert.ok(h.draws() > 0, 'nothing ever drew — the counter proves nothing')
 
     // Line the observable up with the sheet: pump until the reef autosaves, then
@@ -379,18 +385,18 @@ test('nothing on the reef advances while the manual is open', () => {
     const savesBefore = h.saves.length
     const drawsBefore = h.draws()
 
-    // Two full minutes of a child reading. At this rate that is a visible pile
-    // of essence and about twenty-four polyps coughed onto the shelf.
+    // Two full minutes of a child reading. At this cadence that is about
+    // twenty-eight polyps coughed onto the shelf.
     for (let i = 0; i < 7500; i++) h.step(16)
 
     assert.equal(h.saves.length, savesBefore, 'the autosave ran behind the sheet')
     assert.equal(h.draws(), drawsBefore, `${h.draws() - drawsBefore} draw calls behind the sheet`)
-    assert.deepEqual(reef(last(h)), before, 'the reef bloomed behind the sheet')
+    assert.deepEqual(reef(last(h)), before, 'the reef grew behind the sheet')
 
     click(control(h, 'dwc-close'))
 
-    // The reef is handed back exactly as it was left — to the polyp, and to the
-    // unit of essence. This is the "a read is outside of time" claim, stated.
+    // The reef is handed back exactly as it was left, to the polyp. This is the
+    // "a read is outside of time" claim, stated.
     assert.deepEqual(reef(last(h)), before, 'closing the manual paid out the read')
 
     for (let i = 0; i < 400; i++) h.step(16)
@@ -435,11 +441,11 @@ test('a read costs the child nothing and gives them nothing — the resume does 
 })
 
 test('the read is not banked as away-time the next launch pays out', () => {
-  // `offlineHaul` measures from `lastSeen`, and it is the ONE surface that pays
-  // for time the child was not playing — capped, discounted, and collected by
-  // answering a tide gate. If a read left `lastSeen` two minutes stale, the
-  // manual would become a way to farm that gate: open the rules, put the tablet
-  // down, come back rich. The refusal has to hold from both ends.
+  // `offlineGrowth` measures from `lastSeen`, and it is the ONE surface that pays
+  // for time the child was not playing — capped at eight hours and at forty polyps.
+  // If a read left `lastSeen` two minutes stale, the manual would become a way to
+  // farm it: open the rules, put the tablet down, come back to a full shelf. The
+  // refusal has to hold from both ends.
   const h = harness()
   const restore = h.install()
   const handle = new Game(h.root, makeStubHost({ seed: 0xab1e })).handle()
@@ -459,10 +465,10 @@ test('the read is not banked as away-time the next launch pays out', () => {
 })
 
 test('the read is not charged to the child as thinking time', () => {
-  // `askedAt` is a `performance.now()` mark and it is what ABYSSAL BLOOM reports
-  // as how long a child took over a vent's sum. Left alone across a two-minute
-  // read it turns a child who was shown a sheet into a child who could not
-  // answer, and the learner model believes it.
+  // `askedAt` is a `performance.now()` mark and it is what ABYSSAL BLOOM reports as
+  // how long a child took over the target. Left alone across a two-minute read it
+  // turns a child who was shown a sheet into a child who could not answer, and the
+  // learner model believes it.
   const h = harness()
   const restore = h.install()
   const reports: number[] = []
@@ -477,21 +483,20 @@ test('the read is not charged to the child as thinking time', () => {
     for (let i = 0; i < 7500; i++) h.step(16) // two minutes of reading
     click(control(h, 'dwc-close'))
 
-    // Walk the cursor over the shelf posting whatever it finds into vent 1. The
+    // Walk the cursor over the shelf feeding whatever it finds to the mouth. The
     // shelf is seeded from the run's own RNG, so which cell holds a polyp is not
-    // this test's business — only that something gets posted and reported.
-    outer: for (let row = 0; row < 6; row++) {
-      for (let col = 0; col < 5; col++) {
-        h.press(' ')
-        h.press('1')
+    // this test's business — only that something gets fed and the mouth resolves.
+    outer: for (let row = 0; row < 7; row++) {
+      for (let col = 0; col < 6; col++) {
+        h.press('f')
         if (reports.length > 0) break outer
         h.press('ArrowRight')
       }
-      for (let col = 0; col < 5; col++) h.press('ArrowLeft')
+      for (let col = 0; col < 6; col++) h.press('ArrowLeft')
       h.press('ArrowDown')
     }
 
-    assert.ok(reports.length > 0, 'nothing was ever posted into a vent — the test proved nothing')
+    assert.ok(reports.length > 0, 'nothing was ever fed to the mouth — the test proved nothing')
     const ms = reports[0] as number
     assert.ok(ms >= 0, `thinking time went negative: ${ms}ms`)
     assert.ok(ms < 20_000, `the sheet's two minutes were billed to the child: ${ms}ms`)

@@ -18,7 +18,10 @@ import {
   coords,
   type Board,
 } from '../core/board.ts'
-import { rank, silhouetteOf } from '../core/ladder.ts'
+import { fmt, rank } from '../core/ladder.ts'
+import { running } from '../core/mouth.ts'
+import { FORM_GLYPH } from '../core/target.ts'
+import { isMouthColumn } from '../ui/chrome.ts'
 import { BUDGET, type State, type Rect } from '../core/state.ts'
 import { ease } from '../fx/shake.ts'
 import type { Floaters } from '../fx/floaters.ts'
@@ -35,9 +38,8 @@ import {
   TIDE,
   waterDeep,
   waterHigh,
-  type Rgb,
 } from './palette.ts'
-import { drawGhost, FONT_STACK, SPRITE_SCALE, SpriteBook } from './sprites.ts'
+import { FONT_STACK, SPRITE_SCALE, SpriteBook } from './sprites.ts'
 
 export type Layout = {
   w: number
@@ -54,9 +56,10 @@ export type Layout = {
    * This — not the grid — is the rectangle the vents have to stay out of.
    */
   gridRect: Rect
-  ventStrip: Rect
-  /** true when the vents run down the right-hand side instead of along the bottom */
-  ventColumn: boolean
+  /** The region the one mouth lives in. Disjoint from `gridRect` by construction. */
+  mouthStrip: Rect
+  /** true when the mouth is a panel down the right instead of a bar along the bottom */
+  mouthColumn: boolean
 }
 
 /**
@@ -104,55 +107,87 @@ export const LEGIBLE_CELL = 18
 const MIN_CELL = 1
 
 /**
- * Portrait stacks the vents along the bottom under the thumbs. Landscape turns
- * them into a column down the right, which is the only way a tablet or a
- * desktop stops looking like a phone screenshot with grey bars beside it — and
- * it hands the whole reclaimed width back to the shelf.
+ * Portrait puts the mouth along the bottom under the thumbs. Landscape turns it
+ * into a panel down the right, which is the only way a tablet or a desktop stops
+ * looking like a phone screenshot with grey bars beside it — and it hands the whole
+ * reclaimed width back to the shelf.
+ *
+ * There is ONE mouth. There used to be up to five vents, each with its own prompt
+ * and its own row of answer pills, and the founder's verdict was "two vents too
+ * just seems like sort of extra useless" and "why do I even care about the vents
+ * actually?". One wide socket a seven-year-old can hit with a polyp in flight beats
+ * a row of narrow ones — and everything the row used to cost in width and height
+ * goes back to the shelf, which is the "more room for a bigger board" he asked for.
  *
  * `area` is the region of the stage the game may put readable things in — see
- * `ui/chrome.ts`, `stageAreaFor`. It is REQUIRED, deliberately, and not
- * optional: a caller that forgets it gets a shelf and a column of vents laid
- * out to the raw canvas edges, which on a phone held wide puts the vent that
- * holds the question under the sensor housing. The only way to notice that is
- * on a device. Required, forgetting it does not compile.
+ * `ui/chrome.ts`, `stageAreaFor`. It is REQUIRED, deliberately, and not optional: a
+ * caller that forgets it gets a shelf and a mouth laid out to the raw canvas edges,
+ * which on a phone held wide puts the socket under the sensor housing. The only way
+ * to notice that is on a device. Required, forgetting it does not compile.
  *
- * The WATER is not laid out against `area` and must not be. The gradient, the
- * light shafts and every particle run to the glass edges and under the rounded
- * corners, which is the whole reason the document asks for `viewport-fit=cover`
- * in the first place.
+ * `mouthPad` is how far the mouth is held off each side edge, so a polyp let go over
+ * one of the two bottom-corner stage buttons does not go down it —
+ * `MOUTH_END_PAD` in `ui/chrome.ts`.
+ *
+ * The WATER is not laid out against `area` and must not be. The gradient, the light
+ * shafts and every particle run to the glass edges and under the rounded corners,
+ * which is the whole reason the document asks for `viewport-fit=cover`.
  */
-export function computeLayout(w: number, h: number, dpr: number, b: Board, area: Rect): Layout {
+export function computeLayout(
+  w: number,
+  h: number,
+  dpr: number,
+  b: Board,
+  area: Rect,
+  mouthPad = 0,
+): Layout {
   // Padding scales off the SHORTER side of the stage, not the width. A phone
   // held sideways is wide and barely 160px tall; charging it 22px of margin
   // top and bottom because it happens to be 568px across is how a notched
   // small phone ended up unable to draw a legible starting shelf at all.
   const pad = Math.max(8, Math.min(22, Math.min(w, h) * 0.03))
-  const ventColumn = w / Math.max(1, h) > 1.15
+  // The same predicate `ui/chrome.ts` places the two stage buttons with. Imported
+  // rather than repeated: two answers to "is the mouth on the right?" is how a mute
+  // button ends up inside the mouth.
+  const mouthColumn = isMouthColumn(w, h)
   const right = area.x + area.w
   const bottom = area.y + area.h
-  // The vents are placed FIRST and the shelf is given what is left. Doing it in
-  // this order is the whole point: the two regions are disjoint by
-  // construction, not by an offset that happens to work on one device.
+  // The mouth is placed FIRST and the shelf is given what is left. Doing it in
+  // this order is the whole point: the two regions are disjoint by construction,
+  // not by an offset that happens to work on one device.
   let board: Rect
-  let ventStrip: Rect
-  if (ventColumn) {
-    const cw = Math.max(190, Math.min(300, area.w * 0.26))
-    ventStrip = { x: right - cw - pad * 0.5, y: area.y + pad, w: cw, h: area.h - pad * 2 }
+  let mouthStrip: Rect
+  if (mouthColumn) {
+    const cw = Math.max(150, Math.min(260, area.w * 0.22))
+    mouthStrip = {
+      x: right - cw - pad * 0.5,
+      y: area.y + pad,
+      // `mouthPad` comes off the BOTTOM here: the two stage buttons live inside the
+      // column's footprint in landscape.
+      h: Math.max(60, area.h - pad * 2 - mouthPad),
+      w: cw,
+    }
     board = {
       x: area.x + pad,
       y: area.y + pad,
-      w: Math.max(1, ventStrip.x - pad - (area.x + pad)),
+      w: Math.max(1, mouthStrip.x - pad - (area.x + pad)),
       h: area.h - pad * 2,
     }
   } else {
-    const ventH = Math.max(104, Math.min(180, area.h * 0.21))
+    const mouthH = Math.max(92, Math.min(150, area.h * 0.17))
     const top = area.y + pad * 0.6
-    ventStrip = { x: area.x + pad, y: bottom - ventH, w: area.w - pad * 2, h: ventH - pad * 0.5 }
+    const side = area.x + pad + mouthPad
+    mouthStrip = {
+      x: side,
+      y: bottom - mouthH,
+      w: Math.max(60, right - pad - mouthPad - side),
+      h: mouthH - pad * 0.5,
+    }
     board = {
       x: area.x + pad,
       y: top,
       w: area.w - pad * 2,
-      h: Math.max(1, ventStrip.y - pad - top),
+      h: Math.max(1, mouthStrip.y - pad - top),
     }
   }
   const gap = Math.max(3, Math.min(9, Math.min(board.w, board.h) * 0.018))
@@ -206,42 +241,52 @@ export function computeLayout(w: number, h: number, dpr: number, b: Board, area:
       w: gridW + bleed * 2,
       h: gridH + bleed * 2,
     },
-    ventStrip,
-    ventColumn,
+    mouthStrip,
+    mouthColumn,
   }
 }
 
+/** The platform's minimum touch target, and the mouth is one — you drop onto it. */
+export const MOUTH_MIN = 44
+
 /**
- * Where each vent sits inside the strip.
+ * Where the mouth sits.
  *
  * Pure, and out here rather than inside `Game`, so a test can ask for the very
- * rectangles the child sees and check them against the shelf. The whole rect is
- * the drop target — a polyp dragged anywhere onto a chimney is fed to it — so
- * this, not the little number plate, is what has to clear 44px.
+ * rectangle the child sees and check it against the shelf and against the two
+ * stage buttons. The WHOLE rect is the drop target — a polyp let go anywhere on it
+ * goes in — so this, not the socket circle inside it, is what has to clear 44px.
  */
-export function ventRects(l: Layout, n: number): Rect[] {
-  const strip = l.ventStrip
-  const count = Math.max(1, n)
-  const out: Rect[] = []
-  if (l.ventColumn) {
-    const gap = Math.max(8, Math.min(16, strip.h * 0.02))
-    const h = Math.min((strip.h - gap * (count - 1)) / count, 190)
-    const top = strip.y + (strip.h - (h * count + gap * (count - 1))) / 2
-    for (let i = 0; i < count; i++) out.push({ x: strip.x, y: top + i * (h + gap), w: strip.w, h })
-    return out
+export function mouthRect(l: Layout): Rect {
+  const strip = l.mouthStrip
+  if (l.mouthColumn) {
+    const h = Math.max(MOUTH_MIN, Math.min(strip.h, 320))
+    return { x: strip.x, y: strip.y + (strip.h - h) / 2, w: strip.w, h }
   }
-  const gap = Math.max(6, Math.min(12, strip.w * 0.02))
-  const w = (strip.w - gap * (count - 1)) / count
-  for (let i = 0; i < count; i++) out.push({ x: strip.x + i * (w + gap), y: strip.y, w, h: strip.h })
-  return out
+  return { ...strip }
 }
 
-/**
- * The number plate on a chimney — the "pill" a child reads the target off.
- * A label, not a target: the drop zone is the whole vent.
- */
-export function promptPlate(r: Rect): Rect {
-  return { x: r.x + r.w * 0.06, y: r.y + r.h * 0.1, w: r.w * 0.88, h: r.h * 0.36 }
+/** Where the `n`th fed polyp is drawn inside the mouth. */
+export function fedSlotRect(r: Rect, index: number, slots: number): Rect {
+  const n = Math.max(1, slots)
+  // The row of slots takes the left two thirds; the running total takes the right.
+  const zone = l2(r)
+  const w = zone.w / n
+  return { x: zone.x + w * index, y: zone.y, w, h: zone.h }
+}
+
+/** The part of the mouth that holds the fed polyps. */
+function l2(r: Rect): Rect {
+  const inset = Math.min(10, r.h * 0.1)
+  const w = r.w * 0.62
+  return { x: r.x + inset, y: r.y + inset, w: w - inset, h: r.h - inset * 2 }
+}
+
+/** The part of the mouth that shows the running total. */
+export function totalRect(r: Rect): Rect {
+  const inset = Math.min(10, r.h * 0.1)
+  const x = r.x + r.w * 0.62
+  return { x, y: r.y + inset, w: r.x + r.w - inset - x, h: r.h - inset * 2 }
 }
 
 /**
@@ -269,31 +314,6 @@ export function shelfCap(l: Layout): { cols: number; rows: number } {
       ),
     )
   return { cols: fit(l.board.w), rows: fit(l.board.h) }
-}
-
-/** The platform's minimum touch target, and a vent is one — you drop onto it. */
-export const VENT_MIN = 44
-
-/**
- * How many vents this shape of screen will ever hold.
- *
- * Bounded by the 44px drop minimum as well as by taste. A phone held wide has
- * barely 80px of stage between the band and the rail, and the old floor of two
- * vents split that into a pair of 37px chimneys — a target a seven-year-old
- * cannot hit with a polyp in flight. One vent that can be aimed at beats two
- * that cannot.
- */
-export function ventCap(l: Layout): number {
-  const strip = l.ventStrip
-  if (l.ventColumn) {
-    const gap = Math.max(8, Math.min(16, strip.h * 0.02))
-    const fits = Math.floor((strip.h + gap) / (VENT_MIN + gap))
-    return Math.max(1, Math.min(5, fits, Math.max(2, Math.floor(strip.h / 150))))
-  }
-  const gap = Math.max(6, Math.min(12, strip.w * 0.02))
-  const fits = Math.floor((strip.w + gap) / (VENT_MIN + gap))
-  const byWidth = l.w < 480 ? 2 : l.w < 760 ? 3 : l.w < 1100 ? 4 : 5
-  return Math.max(1, Math.min(5, fits, byWidth))
 }
 
 export function cellCentre(l: Layout, b: Board, i: number): { x: number; y: number } {
@@ -343,6 +363,8 @@ export class Renderer {
   layout: Layout
   /** The stage's safe rectangle, kept so `relayout` does not have to be told twice. */
   private area: Rect = { x: 0, y: 0, w: 1, h: 1 }
+  /** Kept for the same reason as `area`: `relayout` must not need telling twice. */
+  private mouthPad = 0
   private glowScale = 0.5
   private waterGrad: CanvasGradient | null = null
   private gradKey = ''
@@ -356,7 +378,7 @@ export class Renderer {
     this.wg = ctx(this.water)
     this.gg = ctx(this.glow)
     this.sg = ctx(this.sharp)
-    this.layout = { w: 1, h: 1, dpr: 1, board: { x: 0, y: 0, w: 1, h: 1 }, cell: 20, gap: 4, originX: 0, originY: 0, gridRect: { x: 0, y: 0, w: 1, h: 1 }, ventStrip: { x: 0, y: 0, w: 1, h: 1 }, ventColumn: false }
+    this.layout = { w: 1, h: 1, dpr: 1, board: { x: 0, y: 0, w: 1, h: 1 }, cell: 20, gap: 4, originX: 0, originY: 0, gridRect: { x: 0, y: 0, w: 1, h: 1 }, mouthStrip: { x: 0, y: 0, w: 1, h: 1 }, mouthColumn: false }
   }
 
   destroy(): void {
@@ -366,7 +388,16 @@ export class Renderer {
     this.book.clear()
   }
 
-  resize(w: number, h: number, dpr: number, b: Board, tier: State['tier'], area: Rect): void {
+  resize(
+    w: number,
+    h: number,
+    dpr: number,
+    b: Board,
+    tier: State['tier'],
+    area: Rect,
+    mouthPad = 0,
+  ): void {
+    this.mouthPad = mouthPad
     const budget = BUDGET[tier]
     this.glowScale = budget.glowScale
     this.book.setDpr(dpr)
@@ -390,14 +421,14 @@ export class Renderer {
     this.gg.setTransform(dpr * this.glowScale, 0, 0, dpr * this.glowScale, 0, 0)
     this.sg.setTransform(dpr, 0, 0, dpr, 0, 0)
     this.area = area
-    this.layout = computeLayout(w, h, dpr, b, area)
+    this.layout = computeLayout(w, h, dpr, b, area, mouthPad)
     this.waterGrad = null
     this.gradKey = ''
   }
 
   relayout(b: Board): void {
     const l = this.layout
-    this.layout = computeLayout(l.w, l.h, l.dpr, b, this.area)
+    this.layout = computeLayout(l.w, l.h, l.dpr, b, this.area, this.mouthPad)
     this.book.clear()
   }
 
@@ -443,13 +474,12 @@ export class Renderer {
 
     this.drawShelf(sg, gg, s, t)
     this.drawPolyps(sg, gg, s, t)
-    this.drawVents(sg, gg, s, t)
+    this.drawMouth(sg, gg, s, t)
 
     waves.draw(gg, 1)
     particles.draw(gg, this.book, 1)
     if (budget.caustics) this.drawTopLight(gg, s, t)
 
-    this.drawSwell(sg, gg, s, t)
     this.drawDrag(sg, gg, s, t)
     floaters.draw(sg, 1)
     if (s.crowded) this.drawCrowdBanner(sg, s, t)
@@ -636,198 +666,128 @@ export class Renderer {
     }
   }
 
-  /* ------------------------------------------------------------------ vents */
+  /* ------------------------------------------------------------------ mouth */
 
-  private drawVents(
+  /**
+   * THE MOUTH. One socket, the fed polyps in a row beside it, and the running
+   * total of what is in there.
+   *
+   * The child reads the target off the band at the top and reads what they have
+   * built off this. The two ends of one sentence, and nothing between them — the
+   * old vent strip carried a prompt, a ghost silhouette, a charge ring, a tier
+   * chevron row, a COLD badge and a row of four answer pills, all at once.
+   */
+  private drawMouth(
     sg: CanvasRenderingContext2D,
     gg: CanvasRenderingContext2D,
     s: State,
     t: number,
   ): void {
-    const now = performance.now()
-    for (const v of s.vents) {
-      const r = v.rect
-      if (r.w <= 0) continue
-      const cold = now < v.coldUntil
-      const shakeX = v.shake > 0 ? Math.sin(now * 0.06) * v.shake * 9 : 0
-      const answer = v.answerValue
-      const hue = answer ? rampAt(rank(answer)) : TIDE
-      const body = cold ? mix(hue, DANGER, 0.6) : hue
-      const targeted = s.drag.active && s.drag.overVent === v.id
+    const r = s.mouthRect
+    if (r.w <= 0 || r.h <= 0) return
+    const target = s.target
+    const shakeX = s.mouthShake > 0 ? Math.sin(t * 60) * s.mouthShake * 9 : 0
+    const hue = target ? rampAt(rank(target.value)) : TIDE
+    const body = s.mouthShake > 0.02 ? mix(hue, DANGER, 0.55) : hue
+    const targeted = s.drag.active && s.drag.overMouth
 
-      sg.save()
-      sg.translate(r.x + shakeX, r.y)
+    sg.save()
+    sg.translate(r.x + shakeX, r.y)
 
-      // chimney
-      const grad = sg.createLinearGradient(0, 0, 0, r.h)
-      grad.addColorStop(0, rgba(mix(shelfColour(s.bloom), body, 0.34), 0.95))
-      grad.addColorStop(1, rgba(mix(INK, body, 0.14), 0.95))
-      roundRect(sg, 0, 0, r.w, r.h, Math.min(18, r.w * 0.12))
-      sg.fillStyle = grad
-      sg.fill()
-      sg.lineWidth = targeted ? 3.4 : 1.6
-      sg.strokeStyle = rgba(targeted ? lift(body, 0.6) : body, targeted ? 0.95 : 0.42 + v.glow * 0.5)
-      sg.stroke()
+    // the socket's shell
+    const grad = sg.createLinearGradient(0, 0, 0, r.h)
+    grad.addColorStop(0, rgba(mix(shelfColour(s.bloom), body, 0.3), 0.94))
+    grad.addColorStop(1, rgba(mix(INK, body, 0.16), 0.96))
+    roundRect(sg, 0, 0, r.w, r.h, Math.min(20, r.h * 0.24))
+    sg.fillStyle = grad
+    sg.fill()
+    sg.lineWidth = targeted ? 3.6 : 1.6
+    sg.strokeStyle = rgba(targeted ? lift(body, 0.6) : body, targeted ? 0.95 : 0.44 + s.mouthFlash * 0.5)
+    sg.stroke()
+    sg.restore()
 
-      // mouth: the socket you drop into
-      const mouthR = Math.min(r.h * 0.3, r.w * 0.19)
-      const mx = r.w / 2
-      const my = r.h - mouthR - r.h * 0.11
-      sg.beginPath()
-      sg.arc(mx, my, mouthR, 0, Math.PI * 2)
-      const mg = sg.createRadialGradient(mx, my, 1, mx, my, mouthR)
-      mg.addColorStop(0, rgba(INK, 0.95))
-      mg.addColorStop(0.72, rgba(mix(INK, body, 0.22), 0.95))
-      mg.addColorStop(1, rgba(body, 0.5))
-      sg.fillStyle = mg
-      sg.fill()
-
-      // the ghost of the polyp it wants
-      if (answer !== null) {
-        const hinted = now > v.hintAt
-        const kind = hinted ? silhouetteOf(answer) : 'ring'
-        const a = 0.3 + 0.22 * Math.sin(t * 3.1) + (targeted ? 0.35 : 0)
-        drawGhost(sg, kind, mx, my, mouthR * 0.72, lift(body, 0.5), Math.min(1, a))
-        sg.font = `900 ${mouthR * 0.8}px ${FONT_STACK}`
-        sg.textAlign = 'center'
-        sg.textBaseline = 'middle'
-        sg.fillStyle = rgba(lift(body, 0.7), 0.55)
-        sg.fillText('?', mx, my + mouthR * 0.03)
-      }
-
-      // charge ring
-      const period = 1
-      void period
-      const frac = Math.max(0, Math.min(1, 1 - v.emitMs / Math.max(1, v.emitMs + 1)))
-      void frac
-      sg.beginPath()
-      sg.arc(mx, my, mouthR + 5, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * v.glow)
-      sg.strokeStyle = rgba(lift(body, 0.45), 0.65)
-      sg.lineWidth = 2.5
-      sg.stroke()
-
-      // the request
-      const q = v.q
-      if (q) {
-        // Same arithmetic as `promptPlate`, in the vent's own coordinates —
-        // that function is what the layout test measures.
-        const plate = promptPlate(r)
-        const plateH = plate.h
-        roundRect(sg, plate.x - r.x, plate.y - r.y, plate.w, plateH, plateH * 0.28)
-        sg.fillStyle = rgba(INK, 0.66)
-        sg.fill()
-        let fs = Math.min(plateH * 0.62, r.w * 0.2)
-        sg.textAlign = 'center'
-        sg.textBaseline = 'middle'
-        for (let i = 0; i < 10; i++) {
-          sg.font = `800 ${fs}px ${FONT_STACK}`
-          if (sg.measureText(q.prompt).width <= r.w * 0.79) break
-          fs *= 0.9
-        }
-        sg.fillStyle = rgba(cold ? mix(CHALK, DANGER, 0.5) : CHALK, cold ? 0.55 : 1)
-        sg.fillText(q.prompt, r.w / 2, r.h * 0.1 + plateH / 2)
-      }
-
-      // tier chevrons — how deep this vent runs
-      const chevrons = Math.min(9, v.tier)
-      for (let i = 0; i < chevrons; i++) {
-        const bx = r.w * 0.09 + i * Math.min(9, r.w * 0.055)
-        sg.beginPath()
-        sg.moveTo(bx, r.h - 7)
-        sg.lineTo(bx + 4, r.h - 13)
-        sg.lineTo(bx + 8, r.h - 7)
-        sg.strokeStyle = rgba(lift(body, 0.5), 0.75)
+    // the fed polyps, in order, at the size the shelf draws them
+    const slots = Math.max(1, s.mouth.slots)
+    const glyph = target ? FORM_GLYPH[target.form] : '+'
+    for (let i = 0; i < slots; i++) {
+      const box = fedSlotRect(r, i, slots)
+      const cx = box.x + box.w / 2
+      const cy = box.y + box.h / 2
+      const fed = s.mouth.fed[i]
+      const dragged = s.drag.active && s.drag.fedIdx === i
+      if (!fed || dragged) {
+        // an empty slot: a dashed socket, so a child can SEE how many will fit
+        sg.save()
+        sg.setLineDash([box.h * 0.12, box.h * 0.1])
         sg.lineWidth = 2
+        sg.strokeStyle = rgba(lift(body, 0.4), 0.34)
+        sg.beginPath()
+        sg.arc(cx, cy, Math.min(box.w, box.h) * 0.32, 0, Math.PI * 2)
         sg.stroke()
+        sg.restore()
+      } else {
+        const cell = Math.min(box.w * 0.62, box.h * 0.66)
+        const size = cell * SPRITE_SCALE
+        const born = ease.outBack(Math.min(1, fed.born), 2.6)
+        const breathe = 1 + 0.03 * Math.sin(t * 2.2 + fed.phase * 6.28)
+        const fh = rampAt(rank(fed.value))
+        const haloR = cell * 0.95
+        const img = this.book.glow(fh, haloR * 2)
+        gg.globalAlpha = 0.3 * born
+        gg.drawImage(img, cx - haloR, cy - haloR, haloR * 2, haloR * 2)
+        gg.globalAlpha = 1
+        sg.save()
+        sg.translate(cx, cy)
+        sg.scale(born * breathe, born * breathe)
+        sg.drawImage(this.book.polyp(fed.value, cell), -size / 2, -size / 2, size, size)
+        sg.restore()
       }
-
-      if (cold) {
-        sg.font = `800 ${Math.min(13, r.w * 0.09)}px ${FONT_STACK}`
-        sg.textAlign = 'right'
-        sg.fillStyle = rgba(DANGER, 0.9)
-        sg.fillText('COLD', r.w - 8, r.h - 11)
+      // the operator between the slots
+      if (i < slots - 1) {
+        sg.font = `900 ${Math.min(20, box.h * 0.3)}px ${FONT_STACK}`
+        sg.textAlign = 'center'
+        sg.textBaseline = 'middle'
+        sg.fillStyle = rgba(CHALK, 0.6)
+        sg.fillText(glyph, box.x + box.w, cy)
       }
-      sg.restore()
-
-      // vent glow into the bloom layer
-      const gr = mouthR * (2.4 + v.flash * 4)
-      const img = this.book.glow(body, gr * 2)
-      gg.globalAlpha = 0.2 + v.flash * 0.8 + v.glow * 0.2
-      gg.drawImage(img, r.x + mx - gr, r.y + my - gr, gr * 2, gr * 2)
-      gg.globalAlpha = 1
-
-      // sigils, for the day the host hands us an answer that is not a polyp
-      if (v.chips) this.drawChips(sg, gg, s, v.chips, r, body, t)
     }
-  }
 
-  private drawChips(
-    sg: CanvasRenderingContext2D,
-    gg: CanvasRenderingContext2D,
-    s: State,
-    chips: string[],
-    r: Rect,
-    body: Rgb,
-    t: number,
-  ): void {
-    const n = chips.length
-    const w = Math.min(r.w / n - 6, 72)
-    const h = Math.min(w * 0.62, 38)
-    const y = r.y - h - 10
-    for (let i = 0; i < n; i++) {
-      if (s.drag.active && s.drag.chipIdx === i && s.drag.chipVent >= 0) continue
-      const x = r.x + (r.w / n) * i + (r.w / n - w) / 2
-      roundRect(sg, x, y, w, h, h * 0.32)
-      sg.fillStyle = rgba(mix(INK, body, 0.3), 0.94)
-      sg.fill()
-      sg.strokeStyle = rgba(body, 0.6)
-      sg.lineWidth = 1.6
-      sg.stroke()
-      sg.font = `800 ${h * 0.5}px ${FONT_STACK}`
-      sg.textAlign = 'center'
-      sg.textBaseline = 'middle'
-      sg.fillStyle = rgba(CHALK, 1)
-      sg.fillText(chips[i] ?? '', x + w / 2, y + h / 2)
-      const img = this.book.glow(body, w)
-      gg.globalAlpha = 0.12 + 0.06 * Math.sin(t * 2 + i)
-      gg.drawImage(img, x + w / 2 - w / 2, y + h / 2 - w / 2, w, w)
-      gg.globalAlpha = 1
+    // the running total — what the child has made so far
+    const tot = totalRect(r)
+    const value = target ? running(s.mouth, target.form) : null
+    sg.save()
+    roundRect(sg, tot.x, tot.y, tot.w, tot.h, Math.min(14, tot.h * 0.3))
+    sg.fillStyle = rgba(INK, 0.6)
+    sg.fill()
+    sg.strokeStyle = rgba(lift(body, 0.3), 0.28)
+    sg.lineWidth = 1
+    sg.stroke()
+    const text = value === null ? '?' : fmt(value)
+    let fs = Math.min(tot.h * 0.6, tot.w * 0.42)
+    sg.textAlign = 'center'
+    sg.textBaseline = 'middle'
+    for (let i = 0; i < 10; i++) {
+      sg.font = `900 ${fs}px ${FONT_STACK}`
+      if (sg.measureText(text).width <= tot.w * 0.82) break
+      fs *= 0.9
     }
+    // Near the target and still under it, the total warms towards the target's
+    // own colour. Over it, nothing warms — but the mouth has already resolved by
+    // then, so a child never sees an overshoot sitting there being scolded.
+    const close = target && value !== null && value <= target.value
+    sg.fillStyle = rgba(close ? lift(hue, 0.5) : CHALK, 0.95)
+    sg.fillText(text, tot.x + tot.w / 2, tot.y + tot.h / 2)
+    sg.restore()
+
+    // the flash into the bloom layer
+    const gr = Math.min(r.w, r.h) * (0.7 + s.mouthFlash * 3)
+    const img = this.book.glow(body, gr * 2)
+    gg.globalAlpha = 0.18 + s.mouthFlash * 0.8
+    gg.drawImage(img, r.x + r.w / 2 - gr, r.y + r.h / 2 - gr, gr * 2, gr * 2)
+    gg.globalAlpha = 1
   }
 
   /* ------------------------------------------------------------------- misc */
-
-  private drawSwell(
-    sg: CanvasRenderingContext2D,
-    gg: CanvasRenderingContext2D,
-    s: State,
-    t: number,
-  ): void {
-    const sw = s.swell
-    if (!sw) return
-    const r = 30 + 5 * Math.sin(t * 3)
-    const img = this.book.glow(TIDE, r * 4)
-    gg.globalAlpha = 0.7
-    gg.drawImage(img, sw.x - r * 2, sw.y - r * 2, r * 4, r * 4)
-    gg.globalAlpha = 1
-    sg.save()
-    sg.beginPath()
-    sg.arc(sw.x, sw.y, r, 0, Math.PI * 2)
-    const g2 = sg.createRadialGradient(sw.x, sw.y - r * 0.4, r * 0.1, sw.x, sw.y, r)
-    g2.addColorStop(0, rgba(lift(TIDE, 0.7), 0.95))
-    g2.addColorStop(1, rgba(TIDE, 0.35))
-    sg.fillStyle = g2
-    sg.fill()
-    sg.strokeStyle = rgba(CHALK, 0.75)
-    sg.lineWidth = 2
-    sg.stroke()
-    sg.font = `900 ${r * 0.52}px ${FONT_STACK}`
-    sg.textAlign = 'center'
-    sg.textBaseline = 'middle'
-    sg.fillStyle = rgba(INK, 0.9)
-    sg.fillText('TIDE', sw.x, sw.y)
-    sg.restore()
-  }
 
   private drawDrag(
     sg: CanvasRenderingContext2D,
@@ -838,9 +798,9 @@ export class Renderer {
     const d = s.drag
     if (!d.active) return
     const l = this.layout
-    let value = 0
-    if (d.cell >= 0) value = at(s.board, d.cell)?.value ?? 0
-    else if (d.chipVent >= 0) value = d.chipValue
+    // The drag carries its own value: a polyp pulled back OUT of the mouth has
+    // no cell on the shelf to look it up from.
+    const value = d.cell >= 0 ? (at(s.board, d.cell)?.value ?? d.value) : d.value
     if (!value) return
     const size = l.cell * SPRITE_SCALE * 1.16
     const hue = rampAt(rank(value))

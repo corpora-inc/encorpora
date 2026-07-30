@@ -6,7 +6,7 @@
  * render/ and fx/ and may never write back into this file's state.
  */
 
-import { decompose, onLadder, rank } from './ladder.ts'
+import { canSplit, decompose, onLadder, rank } from './ladder.ts'
 import type { Rng } from './rng.ts'
 
 export type Polyp = {
@@ -149,6 +149,47 @@ export function tryMerge(b: Board, from: number, to: number): MergeResult | null
   return { merged: t, from, value: sum, rank: rank(sum) }
 }
 
+export type SplitResult = { kept: Polyp; made: Polyp; value: number }
+
+/**
+ * SPLIT — a polyp halves into two of itself. The merge run backwards.
+ *
+ * Legal only when the value is not a seed (3 does not halve; 12 halves into two
+ * 6s) and only when there is a free cell to put the second half in. Both
+ * refusals are honest arithmetic a child meets with their hands rather than a
+ * rule they have to be told, and neither costs them anything.
+ *
+ * This is what makes an exact target reachable when the shelf is one odd polyp
+ * short: `23 = 16 + 7` needs a 7, and a shelf holding a 14 has one.
+ */
+export function trySplit(b: Board, cell: number, rng: Rng): SplitResult | null {
+  const p = b.cells[cell]
+  if (!p) return null
+  if (!canSplit(p.value)) return null
+  const free = emptyCells(b)
+  if (free.length === 0) return null
+  // Prefer a neighbouring cell, so the two halves land side by side and the
+  // merge back up is one drag away.
+  const { cx, cy } = coords(b, cell)
+  const near: number[] = []
+  for (const [dx, dy] of NEIGHBOURS) {
+    const nx = cx + dx
+    const ny = cy + dy
+    if (!inBounds(b, nx, ny)) continue
+    const j = idx(b, nx, ny)
+    if (!b.cells[j]) near.push(j)
+  }
+  const half = p.value / 2
+  const into = near.length > 0 ? rng.pick(near) : rng.pick(free)
+  p.value = half
+  p.squash = 1
+  p.age = 0
+  const made = place(b, into, half, rng.int(0, 999) / 1000)
+  if (!made) return null
+  made.born = 0
+  return { kept: p, made, value: half }
+}
+
 /** Does any legal merge exist anywhere on the board? (Adjacency is not required.) */
 export function hasLegalMerge(b: Board): boolean {
   const seen = new Set<number>()
@@ -166,7 +207,7 @@ export function isCrowded(b: Board): boolean {
   return !hasLegalMerge(b)
 }
 
-/** Remove a polyp; returns the essence it dissolves into (integer). */
+/** Remove a polyp; returns the value that left the shelf, or 0. */
 export function cull(b: Board, cell: number): number {
   const p = b.cells[cell]
   if (!p) return 0
@@ -181,7 +222,13 @@ export function lowestValue(b: Board): number {
   return lo
 }
 
-/** Dissolve every polyp at the lowest value. Returns essence gained. */
+/**
+ * DISSOLVE — clear every polyp at the lowest value on the shelf.
+ *
+ * Free, and always available, because it is the only guarantee that a crowded
+ * board is never a losing position. `gained` is the total value that left, which
+ * the floaters print so the child can see the size of what they spent.
+ */
 export function purgeLowest(b: Board): { gained: number; cells: number[] } {
   const lo = lowestValue(b)
   if (lo === 0) return { gained: 0, cells: [] }

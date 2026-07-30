@@ -2,53 +2,63 @@
  * The shape of a running game. Kept in one place so the renderer can read it
  * without importing the orchestrator, and the orchestrator can be tested
  * without importing a canvas.
+ *
+ * ONE board, ONE target, ONE mouth. What used to be here and is not any more:
+ * `vents[]`, `essence`, `shown`, `magnitude`, `correctRun`, `flow`, `ratePerSec`,
+ * `upwells`, `overcharges`, `swell`, `swellMs` and the whole `TideGate` — a modal
+ * with a prompt and four answer pills that was the second game on the same
+ * screen. See `core/economy.ts` for the argument on each one.
  */
 
-import type { Question } from '../contract.ts'
 import type { Board } from './board.ts'
-import type { Strain } from './ladder.ts'
+import type { Mouth } from './mouth.ts'
+import type { Form } from './target.ts'
 
 export type Tier = 'low' | 'mid' | 'ultra'
 
 export type Rect = { x: number; y: number; w: number; h: number }
 
-export type Vent = {
-  readonly id: number
-  tier: number
-  /** The live request. Null only in the single frame before the first draw. */
-  q: Question | null
-  /** The answer as an integer when it sits on the polyp ladder, else null. */
-  answerValue: number | null
-  /** Which ladder this vent seeds, so its own request is always buildable. */
-  strain: Strain
-  /** The rung this vent emits, always two doublings below what it is asking for. */
-  emitValue: number
-  /** performance.now() when the request went up — the latency we report. */
+/**
+ * The one number at the top, and everything about how it may be answered.
+ *
+ * `route` is a WITNESS, not a solution to be followed: it is the route that
+ * existed when the target went up, kept so a test can assert reachability and so
+ * the stocking knows what to emit. It is never shown to the child and the child is
+ * never required to use it — any polyps that make the number are right.
+ */
+export type Target = {
+  /** The number the child has to make. */
+  readonly value: number
+  readonly form: Form
+  /** How many polyps the mouth will hold: 1..3 for a sum, exactly 2 otherwise. */
+  readonly slots: number
+  /** One way to make it, from the shelf as it stood when this went up. */
+  readonly route: readonly number[]
+  /**
+   * The host item this target IS the answer to, or null.
+   *
+   * Null when the curriculum could not be talked into a number this board can
+   * build (rare, and measured in `target.test.ts`). A null id means the child's
+   * work is real but **nothing is reported** — an absence, which is honest,
+   * rather than an attempt filed against an item they never saw.
+   */
+  readonly questionId: string | null
+  /** The prompt the host authored, kept for the QA overlay only. */
+  readonly hostPrompt: string
+  /** `performance.now()` when it went up — the thinking time we report. */
   askedAt: number
-  /** Sigils shown when the answer is not a polyp value (shuffled, includes it). */
-  chips: string[] | null
-  /** ms until it emits again */
-  emitMs: number
-  /** timestamp until which it is cold after a choke */
-  coldUntil: number
-  /** timestamp after which the silhouette hint appears */
-  hintAt: number
-  /** render only */
-  flash: number
-  shake: number
-  glow: number
-  rect: Rect
+  /** Render only: how long the target has been up, for the settle animation. */
+  age: number
 }
 
 export type DragState = {
   active: boolean
-  /** board cell being dragged, or -1 when dragging a chip */
+  /** board cell being dragged, or -1 */
   cell: number
-  /** chip index + vent id when dragging a sigil */
-  chipVent: number
-  chipIdx: number
-  chipValue: number
-  chipText: string
+  /** index of the polyp in the MOUTH being dragged back out, or -1 */
+  fedIdx: number
+  /** the value under the finger, so the renderer never has to look it up */
+  value: number
   pointerId: number
   x: number
   y: number
@@ -59,69 +69,54 @@ export type DragState = {
   grabDy: number
   /** cell the drop would land on, -1 for none */
   overCell: number
-  /** vent the drop would feed, -1 for none */
-  overVent: number
+  /** true when the drop is over the mouth */
+  overMouth: boolean
   /** true when overCell holds a matching value */
   wouldMerge: boolean
   startedAt: number
   moved: boolean
 }
 
-export type TideGate = {
-  open: boolean
-  /** 'offline' shows the away framing, 'swell' the in-session one */
-  kind: 'offline' | 'swell'
-  haul: number
-  attempt: number
-  q: Question | null
-  askedAt: number
-  /** index of the chip the child just got wrong, for the dim animation */
-  wrongIdx: number
-  chips: string[]
-}
-
 export type Toast = { text: string; life: number; max: number; danger: boolean }
 
 export type State = {
   board: Board
-  vents: Vent[]
-  nextVentId: number
+  /** The live target. Null only in the single frame before the first ask. */
+  target: Target | null
+  mouth: Mouth
 
-  essence: number
-  /** integer shown; lerps up to `essence` so the counter always climbs */
-  shown: number
-  magnitude: number
-  /** consecutive correct assays; drives the flow multiplier */
-  correctRun: number
-  flow: number
-
-  ratePerSec: number
-  baseStep: number
+  /** Targets bloomed. The only progression number in the game. */
+  depth: number
+  /** How bright the water is, 0..1, derived from depth. */
   bloom: number
-
+  /** The rung new polyps arrive on, derived from depth. */
+  baseStep: number
+  /** How many times the shelf has actually grown. */
   grows: number
-  upwells: number
-  overcharges: number
+
+  /** Values the reef still owes the shelf so the target stays buildable. */
+  stock: number[]
+  emitMs: number
 
   crowded: boolean
-  crowdedSince: number
-
-  swellMs: number
-  /** an uncollected swell drifting on screen, or null */
-  swell: { x: number; y: number; vy: number; haul: number; life: number } | null
-
-  tide: TideGate
   toasts: Toast[]
 
   elapsed: number
-  assays: number
   merges: number
+  splits: number
+  spills: number
   bestValue: number
 
   drag: DragState
   /** value the child tapped to highlight; -1 for none */
   pinged: number
   pingMs: number
+
+  /** Render only: a decaying flash and shake on the mouth. */
+  mouthFlash: number
+  mouthShake: number
+  /** Where the mouth is on the stage, in stage coordinates. */
+  mouthRect: Rect
 
   tier: Tier
   reduceMotion: boolean
@@ -131,10 +126,8 @@ export function emptyDrag(): DragState {
   return {
     active: false,
     cell: -1,
-    chipVent: -1,
-    chipIdx: -1,
-    chipValue: 0,
-    chipText: '',
+    fedIdx: -1,
+    value: 0,
     pointerId: -1,
     x: 0,
     y: 0,
@@ -143,23 +136,10 @@ export function emptyDrag(): DragState {
     grabDx: 0,
     grabDy: 0,
     overCell: -1,
-    overVent: -1,
+    overMouth: false,
     wouldMerge: false,
     startedAt: 0,
     moved: false,
-  }
-}
-
-export function emptyTide(): TideGate {
-  return {
-    open: false,
-    kind: 'swell',
-    haul: 0,
-    attempt: 0,
-    q: null,
-    askedAt: 0,
-    wrongIdx: -1,
-    chips: [],
   }
 }
 
