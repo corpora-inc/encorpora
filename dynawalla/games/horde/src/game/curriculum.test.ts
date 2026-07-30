@@ -79,9 +79,45 @@ function recordingHost(): {
  */
 const LONG_RUN = 50
 
+/**
+ * Why every bot below is handed a seed.
+ *
+ * `askUnit` draws a random step down the band for each question, and `Curriculum`
+ * defaults its `rng` to `Math.random` — which is right for the game and wrong for
+ * a test that reads one of those draws back. The all-right-answers bot asserted
+ * on its LAST draw, so one time in forty-nine that draw was the bottom of the
+ * six-rung spread and the whole suite went red: measured on pristine main,
+ * **4 failures in 400 runs, every one of them `topped out at 0.8898305084745763`**
+ * — which is the top of the ladder less exactly `SPREAD_RUNGS` rungs, i.e. the
+ * band doing precisely what it is designed to do. It red-lit the merge queue for
+ * unrelated PRs twice in one day.
+ *
+ * The production default stays `Math.random`, and that is not a dodge:
+ *
+ *   - It is not what makes a run reproducible. The QUESTIONS come from the host
+ *     (`items.next`), which this game cannot seed; the seedable one is
+ *     `stubHost.ts`, and `main.ts` already passes it a fixed seed. All this rng
+ *     picks is how far under the earned edge one question is drawn from.
+ *   - Everything else in DEEPSWARM that is random is unseeded too — `game.ts`
+ *     derives its own generator from `Date.now()`, and `loadout.ts`,
+ *     `ui/shuffle.ts` and `core/audio.ts` call `Math.random` directly. A run
+ *     reproducible from a seed is a real feature and it is a run-seed threaded
+ *     through all of them plus a host that replays, not one default in this file.
+ *   - A fixed default would make every child's band descend in the same order in
+ *     every run, forever, which is worse than the thing it fixes.
+ *
+ * So the seed belongs to the bot, and the assertion that read one random draw is
+ * replaced below by the two claims that draw was standing in for.
+ */
+const seedFor = (name: string): (() => number) => {
+  let h = 0x811c9dc5
+  for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x01000193) >>> 0
+  return seeded(h)
+}
+
 test("a bot that answers everything WRONG never climbs past the first rung", () => {
   const { host, asks } = recordingHost()
-  const c = new Curriculum()
+  const c = new Curriculum(seedFor("wrong"))
 
   for (let i = 0; i < LONG_RUN; i++) {
     const q = c.ask(host)
@@ -105,7 +141,7 @@ test("a bot that answers everything WRONG never climbs past the first rung", () 
 
 test("a bot that never answers at all never climbs either", () => {
   const { host, asks } = recordingHost()
-  const c = new Curriculum()
+  const c = new Curriculum(seedFor("silent"))
 
   for (let i = 0; i < LONG_RUN; i++) {
     c.ask(host)
@@ -119,7 +155,7 @@ test("a bot that never answers at all never climbs either", () => {
 
 test("a bot that answers everything RIGHT climbs, and reaches the top", () => {
   const { host, asks } = recordingHost()
-  const c = new Curriculum()
+  const c = new Curriculum(seedFor("right"))
 
   for (let i = 0; i < LONG_RUN; i++) {
     const q = c.ask(host)
@@ -132,9 +168,36 @@ test("a bot that answers everything RIGHT climbs, and reaches the top", () => {
     asks[asks.length - 1]! > asks[0]!,
     "the ladder has to actually move for a child who is getting them right",
   )
+
+  // What "reaches the top" means, in the two parts the old single-sample
+  // assertion conflated. The band is `SPREAD_RUNGS` wide by design, so no ONE
+  // draw can be the top — but every draw is inside the band, and the run does
+  // reach the top of it.
+  const edge = c.edgeUnit()
+  // Said in absolute terms as well as against the game's own edge, so a ladder
+  // that quietly stopped climbing at the middle cannot satisfy the two claims
+  // below by moving the goalposts with itself.
   assert.ok(
-    (asks[asks.length - 1] as number) > 0.9,
-    `a run that answered fifty questions right topped out at ${asks[asks.length - 1]}`,
+    edge > 1 - 1 / LADDER_SPAN,
+    `a run that has topped the ladder out should be drawing from its top rung; the edge is ${edge}`,
+  )
+  const bandFloor = edge - SPREAD_RUNGS / LADDER_SPAN
+  for (const [i, ask] of asks.entries()) {
+    // From the point the ladder is topped out — solved 18 earns rung 10 — every
+    // question comes from the top band and none from below it. True of every
+    // seed: this is the width the band states, not a tolerance.
+    if (i < 2 * (MAX_DIFFICULTY - 1) + 2) continue
+    assert.ok(
+      ask >= bandFloor - 1e-12,
+      `question ${i + 1} of a run that has answered everything right came from ${ask}, below the ` +
+        `stated ${SPREAD_RUNGS}-rung band under the top of the ladder (${bandFloor})`,
+    )
+  }
+  assert.equal(
+    Math.max(...asks),
+    edge,
+    `a run that answered fifty questions right never once saw the top of the ladder (${edge}); ` +
+      `the hardest question it was asked came from ${Math.max(...asks)}`,
   )
 })
 
@@ -152,7 +215,7 @@ test("the ladder tracks right answers alone — the clock is not an input", () =
 
 test("a timeout reports NOTHING to the host", () => {
   const { host, reports } = recordingHost()
-  const c = new Curriculum()
+  const c = new Curriculum(seedFor("timeout"))
 
   const q = c.ask(host)
   c.expired()
@@ -173,7 +236,7 @@ test("a timeout reports NOTHING to the host", () => {
 
 test("an answer — right or wrong — reports the exact payload the host expects", () => {
   const { host, reports } = recordingHost()
-  const c = new Curriculum()
+  const c = new Curriculum(seedFor("payload"))
 
   const a = c.ask(host)
   c.answered(host, a, a.answer, true, 1234.6)
@@ -216,7 +279,7 @@ test("the rift asks below what the run has earned, never above", () => {
 
 test("the run panel counts questions the child ANSWERED, not questions it served", () => {
   const { host } = recordingHost()
-  const c = new Curriculum()
+  const c = new Curriculum(seedFor("panel"))
 
   for (let i = 0; i < 5; i++) {
     const q = c.ask(host)
