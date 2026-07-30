@@ -9,6 +9,14 @@ import { newRun, applyOutcome, type Run } from "../game/run.ts"
 import type { Statement } from "../game/statement.ts"
 import { fakeCanvas, numbersIn, type Recorder } from "./fakeCanvas.ts"
 import { Gesture } from "../game/gesture.ts"
+import {
+  CELEBRATIONS,
+  MISSES,
+  type CelebrationKind,
+  type Flourish,
+  type MissKind,
+} from "./flourish.ts"
+import { NUDGE_MS } from "./hint.ts"
 import { Scene, type Drag, type SceneState } from "./scene.ts"
 
 const SIZES: readonly [number, number][] = [
@@ -286,31 +294,344 @@ test("the slate leaves in the direction it was thrown", () => {
   assert.ok(yOf("burn") < rest, "a thrown good slate did not fly up")
 })
 
-test("a wrong verdict adds no mark, no light and no colour", () => {
-  // The design claim, at the level of the renderer. The bag losing coins is the ledger
-  // telling the truth; it is not a reaction. So: no strike, no correction, no bow, and
-  // the street exactly as dim as the window left it. What HAS changed since the old
-  // "not one op" fingerprint is that the slate now leaves — in the direction the child
-  // threw it — and coins come out of the bag. Those two, and nothing else.
-  const { scene: s, rec } = scene(768, 1024)
-  const st = statement({ windowMs: 2800 })
+// ── THE MISS ────────────────────────────────────────────────────────────────
+//
+// The test that used to live here asserted the opposite of everything below:
+// "a wrong verdict adds no mark, no light and no colour", and specifically that a
+// wrong keep was NEVER shown the correction. That rule was written to avoid
+// punishing a child and it succeeded — and it also meant the single most teachable
+// second in the game was spent showing them nothing at all, which is most of what
+// the founder was reacting to when he called the failure state lame.
+//
+// The fleet rule, from `games/stack`, is the opposite and it is binding: when a
+// child gets it wrong the equation simply COMPLETES ITSELF in the accent colour,
+// held long enough to read, with no adjective attached to the child. Never red.
+// Never the word WRONG.
 
-  const inkOf = (over: Partial<SceneState>): { texts: string[]; brass: number } => {
-    rec.reset()
-    s.draw(state({ statement: st, ...over }))
-    return {
-      texts: rec.ops.filter((op) => op.name === "fillText").map((op) => String(op.args[0])),
-      brass: rec.ops.filter((op) => op.style === "#e6c281" || /230, 194, 129/.test(op.style)).length,
+const ACCENT_HEX = "#e6c281"
+
+const missState = (over: Partial<SceneState> = {}): Partial<SceneState> => ({
+  phase: "verdict",
+  outcome: "dud",
+  progress: 0.9,
+  elapsedMs: 800,
+  coins: -12,
+  ...over,
+})
+
+const flourishOf = (kind: MissKind | CelebrationKind, outcome: Outcome): Flourish => ({
+  outcome,
+  kind,
+  voice: 0,
+  spin: 0.37,
+})
+
+/** Every colour the frame actually put on the screen, as rgb triples. */
+function inkColours(rec: Recorder): { r: number; g: number; b: number; raw: string }[] {
+  const out: { r: number; g: number; b: number; raw: string }[] = []
+  for (const op of rec.ink()) {
+    const hex = /^#([0-9a-f]{6})$/i.exec(op.style)
+    if (hex) {
+      const n = Number.parseInt(hex[1] ?? "0", 16)
+      out.push({ r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255, raw: op.style })
+      continue
+    }
+    const rgb = /rgba?\((\d+), ?(\d+), ?(\d+)/.exec(op.style)
+    if (rgb) {
+      out.push({
+        r: Number(rgb[1]),
+        g: Number(rgb[2]),
+        b: Number(rgb[3]),
+        raw: op.style,
+      })
+    }
+  }
+  return out
+}
+
+test("A MISS COMPLETES THE SUM, IN THE ACCENT, AND HOLDS IT THERE", () => {
+  // `4003 − 87 = 3926` was kept, and the truth is `3916`. The child must see that
+  // second digit become a `1`, in the accent, and it must still be there when the
+  // beat ends — the hold IS the teaching, and a reveal that flashed past would be
+  // the old "show them nothing" with extra steps.
+  const { scene: s, rec } = scene(768, 1024)
+  for (const kind of MISSES) {
+    for (const outcome of ["dud", "burn"] as const) {
+      for (const reduced of [false, true]) {
+        const seen: number[] = []
+        for (const progress of [0.5, 0.75, 1]) {
+          rec.reset()
+          s.draw(
+            state(
+              missState({
+                outcome,
+                progress,
+                reduced,
+                flourish: flourishOf(kind, outcome),
+              }),
+            ),
+          )
+          const accent = rec.ops.filter(
+            (op) => op.name === "fillText" && op.style === ACCENT_HEX && op.alpha > 0.3,
+          )
+          seen.push(accent.length)
+          assert.ok(
+            accent.length > 0,
+            `${kind}/${outcome}${reduced ? " reduced" : ""} at ${String(progress)}: the sum was not completed in the accent`,
+          )
+        }
+        assert.ok(
+          (seen.at(-1) ?? 0) >= (seen[0] ?? 0),
+          `${kind}/${outcome}: the completed sum thinned out instead of being held (${seen.join(" → ")})`,
+        )
+      }
     }
   }
 
-  const wrong = inkOf({ phase: "verdict", outcome: "dud", progress: 0.6, coins: -12 })
-  const right = inkOf({ phase: "verdict", outcome: "bank", progress: 0.6, coins: 10 })
-  // The corrected digit is the slate admitting it was wrong, and it happens only when
-  // the child spotted it. A wrong keep never gets the answer handed to it.
-  assert.ok(!wrong.texts.includes("1"), "a wrong keep was shown the correction")
-  // And the stamp — the one bright mark in the game — is only ever on a correct keep.
-  assert.ok(right.brass > wrong.brass, "a wrong verdict got as much brass as a right one")
+  // ...and the corrected DIGIT itself, not merely some accent ink.
+  rec.reset()
+  s.draw(state(missState({ flourish: flourishOf("settle", "dud"), progress: 1 })))
+  const texts = rec.ops
+    .filter((op) => op.name === "fillText" && op.style === ACCENT_HEX)
+    .map((op) => String(op.args[0]))
+  assert.ok(texts.includes("1"), `the true digit is never shown: ${texts.join("")}`)
+})
+
+test("NOTHING ABOUT A MISS IS RED, AND THE STREET NEVER SAYS WRONG", () => {
+  // Both halves of the binding rule, swept over every miss the game can draw. The
+  // failure this catches is a future "just make it a bit clearer" that reaches for
+  // the one colour a child reads as a mark against them.
+  const { scene: s, rec } = scene(390, 844)
+  for (const kind of MISSES) {
+    for (const outcome of ["dud", "burn"] as const) {
+      for (const phase of ["verdict", "clear"] as const) {
+        for (const progress of [0, 0.3, 0.6, 1]) {
+          for (const reduced of [false, true]) {
+            rec.reset()
+            s.draw(
+              state(
+                missState({ outcome, phase, progress, reduced, flourish: flourishOf(kind, outcome) }),
+              ),
+            )
+            for (const c of inkColours(rec)) {
+              assert.ok(
+                !(c.r > 150 && c.r > c.g * 1.6 && c.r > c.b * 1.6),
+                `${kind}/${outcome} at ${String(progress)} drew ${c.raw} — that reads as red`,
+              )
+            }
+            for (const op of rec.ops) {
+              if (op.name !== "fillText") continue
+              const text = String(op.args[0]).toUpperCase()
+              for (const banned of ["WRONG", "MISS", "NO", "X"]) {
+                assert.notEqual(text, banned, `the slate said "${String(op.args[0])}"`)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+})
+
+test("THE STATEMENT IS NEVER DRAWN SOLID TWICE DURING A REVEAL", () => {
+  // A shipped defect, found by looking at the screen and not by any test that
+  // existed. `95 + 5 = 90` and `95 + 5 = 100` are different WIDTHS, so they are
+  // centred at different origins. Fading out only the claimed value and drawing the
+  // corrected statement over it draws the shared prefix TWICE, both opaque, a few
+  // pixels apart — a doubled smear exactly where the child is supposed to read the
+  // answer. It was invisible while both halves were the same chalk grey; the accent
+  // made it unmissable.
+  const { scene: s, rec } = scene(768, 1024)
+  const claim = statement({ claimed: "90", answer: "100", expression: "95 + 5", text: "95 + 5 = 90" })
+  const longest = [...`95 + 5 = 100`].length
+  for (const outcome of ["dud", "burn", "spot"] as const) {
+    for (const kind of MISSES) {
+      for (const progress of [0.3, 0.5, 0.7, 0.85, 1]) {
+        rec.reset()
+        s.draw(
+          state({
+            phase: "verdict",
+            outcome,
+            progress,
+            elapsedMs: 700,
+            statement: claim,
+            coins: outcome === "spot" ? 12 : -12,
+            flourish: flourishOf(kind, outcome),
+          }),
+        )
+        const solid = rec.ops.filter((op) => op.name === "fillText" && op.alpha > 0.6)
+        assert.ok(
+          solid.length <= longest + 1,
+          `${outcome}/${kind} at ${String(progress)} drew ${String(solid.length)} opaque glyphs for a ` +
+            `${String(longest)}-glyph line: ${solid.map((op) => String(op.args[0])).join("")}`,
+        )
+      }
+    }
+  }
+})
+
+test("the three miss reveals are three different animations, not one re-skinned", () => {
+  // A pool whose members render identically is a pool of one, and the founder would
+  // read it exactly the way he read the shipped version.
+  const { scene: s, rec } = scene(768, 1024)
+  const fingerprint = (kind: MissKind): string => {
+    rec.reset()
+    s.draw(state(missState({ progress: 0.4, flourish: flourishOf(kind, "dud") })))
+    return rec.ops
+      .filter((op) => op.name === "fillText")
+      .map((op) => `${String(op.args[0])}@${Number(op.args[2]).toFixed(1)}:${op.alpha.toFixed(2)}`)
+      .join("|")
+  }
+  const prints = MISSES.map(fingerprint)
+  assert.equal(new Set(prints).size, prints.length, `two miss reveals draw identically: ${prints.join("\n")}`)
+})
+
+test("A MISS IS STILL QUIETER THAN EVERY CELEBRATION — every variant, both ways", () => {
+  // `energy.ts` holds "being wrong is never more interesting than being right" on
+  // duration × movers × loudness. This is the same invariant at the level of the
+  // pixels: the LOUDEST miss the pool can draw must put less on the screen than the
+  // QUIETEST celebration it can draw.
+  const { scene: s, rec } = scene(768, 1024)
+  const inkFor = (kind: string, outcome: Outcome, coins: number): number => {
+    rec.reset()
+    s.draw(
+      state({
+        phase: "verdict",
+        outcome,
+        progress: 0.6,
+        elapsedMs: 500,
+        coins,
+        flourish: flourishOf(kind as MissKind, outcome),
+      }),
+    )
+    return rec.ink().length
+  }
+  const celebrations = CELEBRATIONS.flatMap((k) => [inkFor(k, "bank", 10), inkFor(k, "spot", 14)])
+  const misses = MISSES.flatMap((k) => [inkFor(k, "dud", -12), inkFor(k, "burn", -12)])
+  assert.ok(
+    Math.max(...misses) < Math.min(...celebrations),
+    `the loudest miss drew ${String(Math.max(...misses))} marks, the quietest celebration ${String(Math.min(...celebrations))}`,
+  )
+})
+
+test("the four celebrations are four different animations", () => {
+  const { scene: s, rec } = scene(768, 1024)
+  const fingerprint = (kind: CelebrationKind): string => {
+    rec.reset()
+    s.draw(
+      state({
+        phase: "verdict",
+        outcome: "bank",
+        progress: 0.55,
+        elapsedMs: 300,
+        coins: 10,
+        flourish: flourishOf(kind, "bank"),
+      }),
+    )
+    return rec.ink().map((op) => `${op.name}:${op.style}`).join("|")
+  }
+  const prints = CELEBRATIONS.map(fingerprint)
+  assert.equal(new Set(prints).size, prints.length, "two celebrations render identically")
+})
+
+test("A CELEBRATION IS ONLY EVER DRAWN BY A CORRECT ANSWER", () => {
+  // The binding rule at the level of the renderer: the juice fires on the MATHS
+  // moment. Handing the scene a celebration on a wrong outcome — which nothing in
+  // the game does, but a future refactor might — must not draw one.
+  const { scene: s, rec } = scene(768, 1024)
+  const ink = (outcome: Outcome): number => {
+    rec.reset()
+    s.draw(
+      state({
+        phase: "verdict",
+        outcome,
+        progress: 0.5,
+        elapsedMs: 300,
+        coins: 0,
+        flourish: flourishOf("bloom", outcome),
+      }),
+    )
+    return rec.ink().length
+  }
+  const cheating = ink("dud")
+  const honest = ink("bank")
+  assert.ok(cheating < honest, `a miss handed a celebration drew ${String(cheating)} against ${String(honest)}`)
+})
+
+test("THE TWO MARKS ARE ON THE STREET THE WHOLE TIME, AND THE RIGHT ONE LIGHTS", () => {
+  // `≠` above and `=` below — the whole of the instructions, in the notation the
+  // child is already reading, in no language at all. They are permanent chrome, so a
+  // child who joins mid-run has not missed a tutorial.
+  const { scene: s, rec } = scene(390, 844)
+  const brightAround = (y0: number, y1: number, drag: Drag | null): number => {
+    rec.reset()
+    s.draw(state({ phase: "call", drag }))
+    let cursorY = Number.NaN
+    let best = 0
+    for (const op of rec.ops) {
+      if (op.name === "moveTo") cursorY = Number(op.args[1])
+      if (op.name !== "stroke") continue
+      const alpha = Number(/rgba\(230, 194, 129, ([\d.]+)\)/.exec(op.style)?.[1] ?? Number.NaN)
+      if (!Number.isFinite(alpha) || !Number.isFinite(cursorY)) continue
+      if (cursorY >= y0 && cursorY <= y1) best = Math.max(best, alpha)
+    }
+    return best
+  }
+  // The mark bands come out of `street.ts`, not out of this test's opinion of where
+  // they are — and they exclude the chevron bands entirely, so a mark that stopped
+  // being drawn could not be masked by the chevrons lighting.
+  const { chuteMark, hoardMark } = s.layout
+  const topBand = [chuteMark.y, chuteMark.y + chuteMark.h] as const
+  const lowBand = [hoardMark.y, hoardMark.y + hoardMark.h] as const
+
+  assert.ok(brightAround(topBand[0], topBand[1], null) > 0.1, "the ≠ mark is not drawn at rest")
+  assert.ok(brightAround(lowBand[0], lowBand[1], null) > 0.1, "the = mark is not drawn at rest")
+
+  const up: Drag = { dy: -70, pull: 1, heading: "toss" }
+  const down: Drag = { dy: 70, pull: 1, heading: "keep" }
+  assert.ok(
+    brightAround(topBand[0], topBand[1], up) > brightAround(topBand[0], topBand[1], null) * 1.8,
+    "pulling up barely lit the ≠",
+  )
+  assert.ok(
+    brightAround(lowBand[0], lowBand[1], down) > brightAround(lowBand[0], lowBand[1], null) * 1.8,
+    "pulling down barely lit the =",
+  )
+})
+
+test("THE GHOST TEACHES THE GESTURE AND THEN GETS OUT OF THE WAY", () => {
+  // It appears only for a child who has not yet landed a correct call AND has
+  // hesitated, and it is gone for good after the first one. A tutorial that outstays
+  // its welcome is condescension; `hint.ts` owns the gating and this asserts the
+  // renderer honours it.
+  const { scene: s, rec } = scene(390, 844)
+  const ghosts = (over: Partial<SceneState>): number => {
+    rec.reset()
+    s.draw(state({ phase: "call", elapsedMs: NUDGE_MS + 600, ...over }))
+    // The ghost is the hollow slate inset by six on every side. The drag's echo
+    // trail is also a brass `strokeRect` but is inset by two, so the width tells
+    // them apart — and a test that could not tell them apart would report the
+    // trail as a demonstration.
+    const ghostW = s.layout.slate.w - 12
+    return rec.ops.filter(
+      (op) =>
+        op.name === "strokeRect" &&
+        /rgba\(230, 194, 129/.test(op.style) &&
+        Math.abs(Number(op.args[2]) - ghostW) < 0.001,
+    ).length
+  }
+  const learning = ghosts({})
+  assert.ok(learning > 0, "a child who has landed nothing and hesitated gets no demonstration")
+
+  let landed = newRun()
+  landed = settle(landed, "bank")
+  assert.equal(ghosts({ run: landed }), 0, "the ghost is still there after a correct call")
+  assert.equal(ghosts({ elapsedMs: 200 }), 0, "the ghost pre-empted a fast answer")
+  assert.equal(
+    ghosts({ drag: { dy: 20, pull: 0.3, heading: "keep" } }),
+    0,
+    "the ghost competed with a live drag",
+  )
 })
 
 test("the light goes out of the window, and that is the only clock", () => {
