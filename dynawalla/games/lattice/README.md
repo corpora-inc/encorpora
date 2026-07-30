@@ -248,8 +248,10 @@ And two things that are taste rather than defect:
   carry is 34px on a phone and 58px on a tablet.
 * **The stick.** `game/steer.ts` puts a tenth of the range under a dead zone —
   a resting thumb's tremor used to be full-authority thrust — and bends the rest
-  so half deflection is 29% authority instead of 50%, which is where the slow,
-  accurate part of the stick came from. The direction is never touched.
+  so the stick reads 4 / 23 / 56 / 100% authority at a quarter, half, three
+  quarters and full deflection, against a straight line's 25 / 50 / 75 / 100. That
+  is where the slow, accurate part of the stick came from. The direction is never
+  touched, only the magnitude.
 * **The hull** eases toward the aim over about 55ms instead of snapping to it. The
   *guns* do not: a shooter whose bullets lag its stick lies.
 

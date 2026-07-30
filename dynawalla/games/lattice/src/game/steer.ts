@@ -17,9 +17,9 @@
 //      accurate part, the part you line up on a mote with — was about a
 //      centimetre wide and shared with everything else.
 //
-// So: a dead zone, then a curve that gives the first half of the stick travel a
-// quarter of the authority, then a hard clamp at full deflection. The direction
-// is never touched — only the magnitude — because a curve that bends the
+// So: a dead zone, then a curve that leaves the first half of the stick's travel
+// under a quarter of the authority, then a hard clamp at full deflection. The
+// direction is never touched — only the magnitude — because a curve that bends the
 // direction is a stick that lies about where the child pointed.
 //
 // This module is pure arithmetic on two numbers, and it is here rather than in
@@ -44,10 +44,11 @@ export const DEAD_ZONE = 0.1
 /**
  * The response curve's exponent.
  *
- * `1.8` puts half deflection at 29% authority instead of 50%. Chosen rather than
- * 2 because a pure square makes the last quarter of the stick feel like all of
- * it, and chosen rather than 1.4 because the whole complaint is that the middle
- * of the stick had too much in it.
+ * With the dead zone, `1.8` puts the stick at 4% authority a quarter of the way
+ * out, 23% at half, 56% at three quarters and 100% at the edge — against a
+ * straight line's 25/50/75/100. Chosen rather than 2 because a pure square makes
+ * the last quarter of the stick feel like all of it, and rather than 1.4 because
+ * the whole complaint is that the middle of the stick had too much in it.
  */
 export const CURVE = 1.8
 
