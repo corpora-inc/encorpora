@@ -126,7 +126,18 @@ jobs:
           # `../../../engine/src/index.ts` imports across `src/work/`). A change to
           # either can turn the app's tsc, tests or build red, and without this the
           # app job would not run on the PR that did it.
-          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum|engine)/|\.github/workflows/ci\.yml$)'
+          #
+          # `dynawalla/packs/shared/curriculum/` is in here for exactly the same
+          # reason and was MISSING, which is a different path from the dev
+          # workspace at `dynawalla/curriculum/` above. The app imports the
+          # library directly (`src/packs/curriculum.ts`), and its ladder tests
+          # assert against the shipped graph — so widening a curriculum level can
+          # and did turn `dynawalla-app` red. That break was caught only by
+          # accident: the PR's diff base carried other already-merged work, so the
+          # file list tripped this filter anyway. A cleanly-rebased
+          # curriculum-only PR would have skipped the app job and reported green
+          # with the app broken.
+          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum|engine|packs/shared/curriculum)/|\.github/workflows/ci\.yml$)'
           # The committed slice of gen/android and the recorded template it was
           # curated from. `tauri android init` never overwrites an existing
           # file, which is what makes the allowlist survive a CI re-init — and
