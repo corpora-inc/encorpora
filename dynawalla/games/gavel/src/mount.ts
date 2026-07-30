@@ -21,7 +21,7 @@ import { Rng } from "./core/rng.ts"
 import { Auction, type AuctionEvent } from "./game/auction.ts"
 import { MIN_TABLETS } from "./game/ladder.ts"
 import { Scene, type View } from "./render/scene.ts"
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 
 /**
  * The largest step the clock may take in one frame.
@@ -199,7 +199,6 @@ export function mountGavel(
     coins: game.coins,
     storeroom: game.storeroom,
     remaining: game.remaining,
-    consignment: game.consignmentNumber,
     armed: game.armed,
     paused,
     stalled: game.stalled,
@@ -301,6 +300,14 @@ export function mountGavel(
     scene.resize()
   }
 
+  // The insets change more often than "never": rotation swaps them, and iPadOS changes
+  // them when a pack is resized in Split View. They also arrive from the HOST rather
+  // than from anything this frame can measure, so a push with no size change is a real
+  // event and `resize` alone would miss it.
+  const stopWatchingInsets = onInsetsChange(() => {
+    scene.resize()
+  })
+
   canvas.addEventListener("pointerdown", press)
   globalThis.addEventListener("keydown", key)
   globalThis.addEventListener("resize", resize)
@@ -330,7 +337,10 @@ export function mountGavel(
       canvas.removeEventListener("pointerdown", press)
       globalThis.removeEventListener("keydown", key)
       globalThis.removeEventListener("resize", resize)
+      stopWatchingInsets()
       observer?.disconnect()
+      // Every question still on the bench or the board, closed rather than left open.
+      game.closeAll()
       audio.dispose()
       guide.destroy()
       canvas.remove()

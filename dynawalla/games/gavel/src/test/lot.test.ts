@@ -21,7 +21,8 @@ import type { Ask, Host, Question } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
 import { Auction } from "../game/auction.ts"
 import { MAX_MARGIN, MIN_MARGIN, PROMPT_MAX_CHARS } from "../game/ladder.ts"
-import { assembleRoom, bestBid, isTrap, tightest, type Tablet } from "../game/lot.ts"
+import { BENCH_CAP } from "../game/auction.ts"
+import { POOL_EXTRA, assembleRoom, bestBid, isTrap, tightest, type Tablet } from "../game/lot.ts"
 import { PERFECT, rig, settleOn, stepClock } from "./harness.ts"
 
 const SEEDS = [0x1, 0xbeef, 0x2718, 0x5eed1ce, 0xfeed, 0xd00d]
@@ -208,10 +209,86 @@ test("a rung whose answers cannot go on a tablet caps the stream, and stays capp
     (capped[0]?.maxDifficulty ?? 0) < 10,
     "the ceiling was sent as the top of the ladder rather than below the banned rung",
   )
-  // Monotone: a second, higher undrawable rung must not raise it.
-  const before = game.ceiling
+})
+
+test("a ceiling only ever comes down: a higher undrawable rung cannot raise it", () => {
+  // The guard this covers — `if (this.drawCeiling !== null && this.drawCeiling <= capped)
+  // return` — was unguarded when it shipped. The test that claimed to cover it called
+  // `begin()` a second time on a game that was already stalled, where `begin` early-
+  // returns and does nothing at all, so deleting the guard left the whole suite green.
+  //
+  // A rung that could not be drawn once cannot be drawn later, so a ceiling that drifted
+  // back up would re-enter the same starve every time the child climbed.
+  let n = 0
+  const wide = "1".repeat(PROMPT_MAX_CHARS + 4)
+  const { host } = scriptedHost(() => {
+    n++
+    // The first draw is from a middling rung, everything after it from a high one. Both
+    // are undrawable, and only the first may set the ceiling.
+    return {
+      id: `q${String(n)}`,
+      prompt: `${wide} + 1`,
+      answer: "12",
+      distractors: [],
+      domain: "add",
+      difficulty: n === 1 ? 0.5 : 0.9,
+    }
+  })
+  const game = new Auction(host, new Rng(31), 0)
   game.begin(0)
-  assert.equal(game.ceiling, before)
+  assert.ok(n > 2, "the second, higher rung was never served")
+  assert.equal(game.stalled, true)
+  assert.ok(game.ceiling !== null)
+  assert.ok(
+    (game.ceiling ?? 1) < 0.5,
+    `the ceiling is ${String(game.ceiling)}: a rung at 0.9 raised a ceiling set at 0.5`,
+  )
+})
+
+test("the pool is flushed only after the new ceiling has gone out on the wire", () => {
+  // POLARITY flushed the instant it set a ceiling. `game-host`'s flush ranks the pool with
+  // a distance function that reads the host's OWN ceiling, and that is only updated inside
+  // `next()` — so flushing first ranked every pooled question against the STALE ceiling and
+  // kept precisely the rung it meant to discard. Measured there as ten consecutive silent
+  // questions, about four and a half minutes.
+  const calls: string[] = []
+  let n = 0
+  const wide = "1".repeat(PROMPT_MAX_CHARS + 4)
+  const host: Host = {
+    next(ask) {
+      calls.push(ask?.maxDifficulty === undefined ? "ask" : "ask+ceiling")
+      n++
+      return {
+        id: `q${String(n)}`,
+        prompt: `${wide} + 1`,
+        answer: "12",
+        distractors: [],
+        domain: "add",
+        difficulty: 0.6,
+      }
+    },
+    report() {},
+    skip() {},
+    flush() {
+      calls.push("flush")
+    },
+    haptic() {},
+    prefersReducedMotion: () => true,
+  }
+  const game = new Auction(host, new Rng(41), 0)
+  game.begin(0)
+
+  const firstFlush = calls.indexOf("flush")
+  const firstCeiling = calls.indexOf("ask+ceiling")
+  assert.ok(firstFlush > 0, `nothing was ever flushed: ${calls.join(" ")}`)
+  assert.ok(firstCeiling > 0, `no ask ever carried the ceiling: ${calls.join(" ")}`)
+  assert.ok(
+    firstFlush > firstCeiling,
+    `the pool was flushed at ${String(firstFlush)} before the ceiling reached the wire at ` +
+      `${String(firstCeiling)}: ${calls.join(" ")}`,
+  )
+  // Exactly one flush per ceiling change, not one per refusal.
+  assert.equal(calls.filter((c) => c === "flush").length, 1, calls.join(" "))
 })
 
 test("a duplicate value is a fact about two questions and must never cap a rung", () => {
@@ -348,13 +425,20 @@ test("a question the room passed over waits on the bench and can come up later",
 })
 
 test("the bench is a buffer and not a hoard: the overflow is closed, oldest first", () => {
-  // A stream of values the tightest window keeps passing over, so the bench fills.
+  // **The cap has to be able to bind, and it could not.** `assembleRoom` fills to
+  // `want + POOL_EXTRA` and keeps `want`, so the bench it hands back holds at most
+  // `POOL_EXTRA` — and `BENCH_CAP` shipped at 14 against a `POOL_EXTRA` of 10. Measured
+  // over 120 lots: max bench 10, trims executed 0. So the hoard the cap exists to prevent
+  // was real and unprevented, because `tightest` keeps the cluster and benches the
+  // outliers: ten questions the room never wants, open in the host's ledger all session.
+  assert.ok(BENCH_CAP < POOL_EXTRA, `BENCH_CAP ${String(BENCH_CAP)} can never bind`)
+
+  // A stream that alternates a tight cluster with far outliers, so the bench fills with
+  // values the room will keep passing over.
   let n = 0
   const { host, skips } = scriptedHost(() => {
     n++
-    // Alternating tight cluster and far outliers: the outliers are usable, are never
-    // wanted, and would sit on the bench for the whole session without the cap.
-    const value = n % 2 === 0 ? 100 + n : 5000 - n * 7
+    const value = n % 2 === 0 ? 100 + n : 8000 - n * 7
     return {
       id: `q${String(n)}`,
       prompt: `${String(value)} + 0`,
@@ -367,7 +451,62 @@ test("the bench is a buffer and not a hoard: the overflow is closed, oldest firs
   const game = new Auction(host, new Rng(29), 0)
   game.begin(0)
   const clock = stepClock()
-  for (let i = 0; i < 20; i++) {
+  const onABoard = new Set<string>()
+  for (let i = 0; i < 24; i++) {
+    const room = game.room
+    if (!room) break
+    for (const t of room.tablets) onABoard.add(t.id)
+    game.tapTablet(0)
+    const t = room.tablets[0]
+    if (!t) break
+    for (const ch of String(t.value + 1)) game.pressDigit(Number(ch))
+    game.hammer(clock())
+    game.nudge()
+    game.advance(1, clock())
+    assert.ok(game.benched <= BENCH_CAP, `the bench reached ${String(game.benched)}`)
+  }
+  assert.ok(game.trimmed > 0, "the bench never overflowed — the cap is dead code again")
+  assert.equal(new Set(skips).size, skips.length, "a question was closed twice")
+
+  // Oldest first. Every question here is usable, so a skip that never stood on a board is
+  // a bench trim, and the ids this host issues ascend with the draw order.
+  const trims = skips.filter((id) => !onABoard.has(id)).map((id) => Number(id.slice(1)))
+  assert.equal(trims.length, game.trimmed)
+  for (let i = 1; i < trims.length; i++) {
+    assert.ok(
+      (trims[i] ?? 0) > (trims[i - 1] ?? 0),
+      `the bench was trimmed out of order: ${trims.join(", ")}`,
+    )
+  }
+})
+
+test("every question ever served is answered, closed, on the board or on the bench", () => {
+  // The accounting invariant, which is the one the old bench test was reaching for and
+  // did not state: it asserted that a count of CLOSED items was over a hundred, which
+  // 24 lots of ordinary play satisfies whatever the bench does.
+  let served = 0
+  const answered: string[] = []
+  const { host, skips } = scriptedHost(() => {
+    served++
+    return {
+      id: `q${String(served)}`,
+      prompt: `${String(served)} + 7`,
+      answer: String(served + 7),
+      distractors: [],
+      domain: "add",
+      difficulty: 0.1,
+    }
+  })
+  const withReports: Host = {
+    ...host,
+    report: (r) => {
+      answered.push(r.questionId)
+    },
+  }
+  const game = new Auction(withReports, new Rng(37), 0)
+  game.begin(0)
+  const clock = stepClock()
+  for (let i = 0; i < 30; i++) {
     const room = game.room
     if (!room) break
     game.tapTablet(0)
@@ -378,8 +517,20 @@ test("the bench is a buffer and not a hoard: the overflow is closed, oldest firs
     game.nudge()
     game.advance(1, clock())
   }
-  assert.ok(skips.length > 0, "the bench grew without bound — nothing was ever closed")
-  assert.equal(new Set(skips).size, skips.length, "a question was closed twice")
+  const onBoard = game.room?.tablets.length ?? 0
+  assert.equal(
+    answered.length + skips.length + game.benched + onBoard,
+    served,
+    `${String(served)} questions served; ${String(answered.length)} answered, ` +
+      `${String(skips.length)} closed, ${String(game.benched)} benched, ${String(onBoard)} on the board`,
+  )
+
+  // …and `unmount` closes the rest, which is the one path that used to leak about fifteen.
+  const held = game.benched + onBoard
+  game.closeAll()
+  assert.equal(skips.length, served - answered.length, "unmount left questions open")
+  assert.equal(game.benched, 0)
+  assert.ok(held > 0, "there was nothing left to close, so this proved nothing")
 })
 
 test("a room is assembled from the host and never from a constant", () => {

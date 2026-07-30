@@ -85,9 +85,17 @@ export const MAX_CONSIGNMENT = 12
  * The assembler wants a wide choice — see `lot.ts` — and the bench is what stops that
  * costing ten fresh questions a lot. The cap is what stops it becoming a hoard: a
  * benched question the room never wants is closed rather than held forever, oldest
- * first, so the bench turns over on its own as the ladder moves.
+ * first.
+ *
+ * **It must be smaller than `POOL_EXTRA` or it is dead code.** The assembler fills to
+ * `want + POOL_EXTRA` and keeps `want`, so the bench it hands back is at most
+ * `POOL_EXTRA` entries — and the first version of this constant was 14 against a
+ * `POOL_EXTRA` of 10. Instrumented over 120 lots: max bench 10, trims executed 0. The
+ * hoard the cap exists to prevent was therefore real and unprevented, because
+ * `tightest` keeps the cluster and benches the outliers, so ten questions the room never
+ * wants would have sat open in the host's ledger for the whole session.
  */
-export const BENCH_CAP = 14
+export const BENCH_CAP = 7
 
 /**
  * What the broker pays for being told a lot is not worth bidding on.
@@ -204,6 +212,15 @@ export class Auction {
   coins = 0
   /** Lots bought above the offer and still on the shelf. Countable, and it stays. */
   storeroom = 0
+  /**
+   * Benched questions closed to keep the bench inside `BENCH_CAP`.
+   *
+   * Test-facing, and it exists because the cap it counts was dead code once already: at
+   * `BENCH_CAP = 14` against a `POOL_EXTRA` of 10 the trim could never run, two tests
+   * claimed to guard it, and both passed with the whole trim deleted. A counter is the
+   * cheapest thing that cannot be satisfied by the ordinary per-lot closing.
+   */
+  trimmed = 0
   readonly tally: Tally = {
     sold: 0,
     even: 0,
@@ -281,6 +298,11 @@ export class Auction {
 
   get ceiling(): number | null {
     return this.drawCeiling
+  }
+
+  /** Questions drawn, unshown, and waiting for a board. Test-facing. */
+  get benched(): number {
+    return this.bench.length
   }
 
   get stalled(): boolean {
@@ -536,6 +558,25 @@ export class Auction {
     return [{ kind: "settled", settled }]
   }
 
+  /**
+   * Close every question this pack is still holding.
+   *
+   * Called from `unmount`. A pack that is going away holds up to `POOL_EXTRA` on the
+   * bench plus the three to five on the live board — about fifteen questions that were
+   * drawn, never shown and never answered. `lot.ts` says outright that such a question
+   * "has to be skipped, not silently dropped, or it stays open in the host's ledger
+   * forever", and this is the one path where that was not honoured.
+   *
+   * An open item costs a child nothing, so this is tidiness rather than a defect. It is
+   * here because this game holds fifteen of them where a one-question game holds one.
+   */
+  closeAll(): void {
+    for (const tablet of this.bench) this.close(tablet)
+    this.bench = []
+    for (const tablet of this.roomState?.tablets ?? []) this.close(tablet)
+    this.roomState = null
+  }
+
   /** The reveal is over. Wrap the consignment if it is empty, then draw a room. */
   private nextLot(now: number): AuctionEvent[] {
     const events: AuctionEvent[] = []
@@ -585,7 +626,10 @@ export class Auction {
     this.bench = [...assembly.bench]
     while (this.bench.length > BENCH_CAP) {
       const stale = this.bench.shift()
-      if (stale) this.close(stale)
+      if (stale) {
+        this.close(stale)
+        this.trimmed += 1
+      }
     }
 
     if (!assembly.room) {

@@ -152,9 +152,9 @@ test("the latency reported is thinking time, with any sheet the host raised take
   const r = rig(0x777)
   r.game.tapTablet(0)
   typeBid(r.game, 9)
-  // The lot came to the block at t = 0. A sheet goes up at 1 s and comes off at 61 s,
-  // and the child answers at 63 s: two seconds of looking at the room, not
-  // sixty-three.
+  // The lot came to the block at t = 0. A sheet goes up at 1 s and comes off at 61 s, and
+  // the child answers at 63 s: one second before the sheet plus two after it, so three
+  // seconds of looking at the room rather than sixty-three.
   r.game.pause(1_000)
   r.game.resume(61_000)
   r.game.hammer(63_000)

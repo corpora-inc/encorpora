@@ -182,6 +182,11 @@ function tabletOf(q: Question, value: number): Tablet {
  * Sorted by value, then the window of `take` consecutive entries with the
  * smallest span. Ties go to the lowest window, which keeps the room's prices
  * nearer the bottom of what the rung offers and costs nothing.
+ *
+ * **`dropped` comes back in the pool's own order, not in value order.** The caller uses
+ * it as a bench and trims the front of it when it overflows, so value order would trim
+ * the cheapest questions rather than the stalest ones — and since the pool is
+ * `[...bench, ...freshly drawn]`, pool order is draw order and the trim is a real FIFO.
  */
 export function tightest(
   pool: readonly Tablet[],
@@ -202,7 +207,8 @@ export function tightest(
     }
   }
   const kept = sorted.slice(bestAt, bestAt + n)
-  const dropped = [...sorted.slice(0, bestAt), ...sorted.slice(bestAt + n)]
+  const keeping = new Set<Tablet>(kept)
+  const dropped = pool.filter((entry) => !keeping.has(entry))
   return { kept, dropped }
 }
 

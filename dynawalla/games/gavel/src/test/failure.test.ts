@@ -201,20 +201,21 @@ test("the scout's fee is the only coin that arrives without a sale", () => {
   assert.ok(sales > fees * 10, `the fees are ${String(fees)} against ${String(sales)} from selling`)
 })
 
-test("the bench is bounded, so a long sitting cannot grow one", () => {
-  // Not a gameplay rule — a leak guard. The bench holds questions drawn and not shown,
-  // and an unbounded one would hold every question the room ever passed over.
-  assert.ok(BENCH_CAP > 0 && BENCH_CAP < 64)
+test("a long sitting never holds more than a boardful and a benchful of questions", () => {
+  // A leak guard, and it replaces a test that asserted a count of CLOSED questions was
+  // over a hundred — which 120 lots of ordinary play satisfies whatever the bench does.
+  // The accounting identity is in `lot.test.ts`; this is the bound over a long sitting.
   const r = rig(0xd00d)
   const clock = stepClock()
+  let worst = 0
   for (let i = 0; i < 120; i++) {
     const room = r.game.room
     if (!room) break
     PERFECT.act(r.game, room, undefined as never, clock())
     settleOn(r.game, clock)
+    worst = Math.max(worst, r.game.benched)
+    assert.ok(r.game.benched <= BENCH_CAP, `the bench reached ${String(r.game.benched)}`)
   }
-  // Every question ever served is either answered, closed, or standing on the board or
-  // the bench right now — and the last two are bounded.
-  const open = r.skips.length + r.reports.length
-  assert.ok(open > 100)
+  assert.equal(worst, BENCH_CAP, `the bench never filled: high-water mark ${String(worst)}`)
+  assert.ok(r.game.trimmed > 20, `only ${String(r.game.trimmed)} benched questions were closed`)
 })

@@ -32,8 +32,10 @@ import { test } from "node:test"
 import { mount } from "../contract.ts"
 import type { Host } from "../contract.ts"
 import { createStubHost } from "../stubHost.ts"
+import { Auction } from "../game/auction.ts"
+import { Rng } from "../core/rng.ts"
 import { layout } from "../render/layout.ts"
-import { MIN_TABLETS } from "../game/ladder.ts"
+import { MIN_NUMERAL_PX, MIN_TABLETS } from "../game/ladder.ts"
 
 type Handler = (event: unknown) => void
 
@@ -161,8 +163,9 @@ function install(width: number, height: number): Rig {
   }
   performance.now = () => clock
   // The run is seeded from the wall clock, which is right on a device and fatal in a
-  // test. Pinned, so a green run is green every time.
-  Date.now = () => 0x9a7e1
+  // test. Pinned to the value that makes `mount`'s `Date.now() ^ 0x9a7e1` come out zero,
+  // so `firstRoom` below can mirror the run exactly.
+  Date.now = () => SEED
   ;(globalThis as { devicePixelRatio?: number }).devicePixelRatio = 2
   globalThis.addEventListener = ((k: string, h: Handler): void => {
     globals.set(k, [...(globals.get(k) ?? []), h])
@@ -238,7 +241,7 @@ type World = {
 }
 
 function stub(world: World): Host {
-  const base = createStubHost({ seed: 0x9a7e1, reducedMotion: false })
+  const base = createStubHost({ seed: SEED, reducedMotion: false })
   return {
     ...base,
     next: (ask) => {
@@ -257,8 +260,12 @@ function stub(world: World): Host {
   }
 }
 
+
+
 const W = 768
 const H = 1024
+/** Pinned in `install`, and the seed the harness gives the stub host. */
+const SEED = 0x9a7e1
 
 function pump(rig: Rig, frames: number): void {
   for (let i = 0; i < frames; i++) rig.step(16)
@@ -272,14 +279,34 @@ function points() {
     assert.ok(k, `no ${id} key`)
     return { x: k.rect.x + k.rect.w / 2, y: k.rect.y + k.rect.h / 2 }
   }
-  const first = l.tablets[0]
-  assert.ok(first)
+  const at = (index: number) => {
+    const t = l.tablets[index]
+    assert.ok(t, `no tablet ${String(index)}`)
+    return { x: t.x + t.w / 2, y: t.y + t.h / 2 }
+  }
   return {
-    tablet: { x: first.x + first.w / 2, y: first.y + first.h / 2 },
+    tablet: at(0),
+    at,
+    digit: (d: number) => key(`d${String(d)}`),
     one: key("d1"),
     two: key("d2"),
     gavel: key("gavel"),
   }
+}
+
+/**
+ * The room the mounted game is about to show, computed rather than guessed.
+ *
+ * `install` pins `Date.now` and the harness pins the host seed, so an `Auction` built with
+ * the same two numbers draws the same first room. That is what lets a mount-level test bid
+ * a *winning* price without reaching inside the mounted game.
+ */
+function firstRoom() {
+  const mirror = new Auction(createStubHost({ seed: SEED, reducedMotion: false }), new Rng(0), 0)
+  mirror.begin(0)
+  const room = mirror.room
+  assert.ok(room, "the mirrored auction drew no room")
+  return room
 }
 
 test("a lot can be marked, bid on and hammered through the real mount", () => {
@@ -305,6 +332,79 @@ test("a lot can be marked, bid on and hammered through the real mount", () => {
       false,
       "a losing lot fired the failure haptic — this pack has no buzzer",
     )
+  } finally {
+    handle.unmount()
+    rig.restore()
+  }
+})
+
+/**
+ * Every numeral a child has to read, and the size it was drawn at.
+ *
+ * Walks the transcript keeping the current `font`, and reports each `fillText` whose text
+ * contains a digit. A caption with no digits in it is exempt: "BROKER PAYS" at ten pixels
+ * is a label on a plate whose number is drawn at thirty-four.
+ */
+function numerals(frame: readonly string[]): Array<{ text: string; px: number }> {
+  const out: Array<{ text: string; px: number }> = []
+  let px = 0
+  for (const call of frame) {
+    const font = /^font=.*?(\d+(?:\.\d+)?)px/.exec(call)
+    if (font) {
+      px = Number(font[1])
+      continue
+    }
+    const drawn = /^fillText\((.*),[-\d.]+,[-\d.]+\)$/.exec(call)
+    if (drawn && /\d/.test(drawn[1] ?? "")) out.push({ text: drawn[1] ?? "", px })
+  }
+  return out
+}
+
+test("no numeral a child has to read is drawn under the pack's own legibility floor", () => {
+  // `MIN_NUMERAL_PX = 13` is described in `ladder.ts` as "a floor, not a target", citing
+  // SERPENT's four-to-seven-pixel orbs. Four numerals were under it and nothing measured:
+  // `CONSIGNMENT 1` and `3 UNSOLD` at 9px, the verdict line carrying the coins earned at
+  // 11px, and `BEATING 88 + 61` — the marked tablet's own sum — at 10px.
+  //
+  // A transcript walk rather than a list of call sites, so the next numeral is covered by
+  // being drawn rather than by somebody remembering to add it here.
+  const rig = install(W, H)
+  const world: World = { asked: 0, reports: [], skips: [], haptics: [] }
+  const handle = mount(rig.el, stub(world))
+  try {
+    pump(rig, 3)
+    const p = points()
+    const room = firstRoom()
+    const best = room.tablets.findIndex((t) => t.value === room.highest)
+    // Live room, with a mark on a tablet so the paddle prints `BEATING <sum>`.
+    rig.tap(p.at(best).x, p.at(best).y)
+    pump(rig, 2)
+    const live = numerals(rig.frame)
+    assert.ok(live.length > 8, `only ${String(live.length)} numerals drawn on a live room`)
+
+    // A keen bid, so the settled room prints a verdict WITH COINS IN IT. Bidding blind
+    // here would usually be outbid, whose verdict has no numeral in it at all, and the
+    // 11px verdict line would go unmeasured — which is exactly how it shipped.
+    for (const ch of String(room.highest + 1)) {
+      const k = p.digit(Number(ch))
+      rig.tap(k.x, k.y)
+    }
+    rig.tap(p.gavel.x, p.gavel.y)
+    pump(rig, 30)
+    assert.equal(world.reports.length, 1)
+    assert.ok(
+      rig.frame.some((call) => call.startsWith("fillText(") && /◉/.test(call)),
+      "the settled room printed no coin verdict, so the verdict's size went unmeasured",
+    )
+    const settled = numerals(rig.frame)
+    assert.ok(settled.length > 8, `only ${String(settled.length)} numerals drawn on a settled room`)
+
+    for (const { text, px } of [...live, ...settled]) {
+      assert.ok(
+        px >= MIN_NUMERAL_PX,
+        `"${text}" was drawn at ${String(px)}px, under the ${String(MIN_NUMERAL_PX)}px floor`,
+      )
+    }
   } finally {
     handle.unmount()
     rig.restore()

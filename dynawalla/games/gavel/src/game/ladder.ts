@@ -53,10 +53,9 @@ export const SPEC: FlowSpec = {
  *
  * A number, not a measurement. `settle` needs a step to move on and the only
  * honest step in a game with no clock is "one lot happened": six is roughly what
- * a lot takes when a child knows what they are doing, so `climbSeconds: 300`
- * reads as "fifty unhurried lots to cross the whole ladder at the slowest
- * climb", and `climbBoost` carries somebody who is obviously fluent up in five
- * or six.
+ * a lot takes when a child knows what they are doing, so `climbSeconds` reads
+ * as "seventy unhurried lots to cross the whole ladder at the slowest climb", and
+ * `climbBoost` carries somebody who is obviously fluent up in about a dozen.
  */
 export const LOT_STEP_SECONDS = 6
 
@@ -139,14 +138,21 @@ export function settleAfterLot(intensity: number, success: number): number {
 // ── what fits on a tablet ────────────────────────────────────────────────────
 
 /**
- * The largest bid the paddle can hold and the largest value a tablet can carry.
+ * The largest value a tablet can carry, and the paddle that has to hold one more.
  *
- * Five digits fit on the paddle; four is the cap on what the room may ask for,
- * because the broker's offer sits above the highest rival bid and the child's
- * bid sits above that, and all three have to stay inside the same paddle.
+ * The chain is: a rival bids `v`, the broker's offer sits up to `MAX_MARGIN` above it,
+ * and the child's bid sits above the rival — so the paddle has to hold `v + MAX_MARGIN`
+ * and `MAX_TABLET_VALUE` is that bound read backwards from five digits.
+ *
+ * **It was 9,999, and that was a real cost.** `dw.mul.multidigit.times-one-digit` is
+ * active and reaches `4827 × 6 = 28962`, so about half that rung's items were refused —
+ * and the refusal used to cap the whole rung and everything above it, which took
+ * `dw.add.regroup.subtract-across-zero` out of the run entirely even though its answers
+ * fit a tablet perfectly. Widening the paddle is the honest half of that fix; the other
+ * half is `rungCannotDraw` below, which no longer mistakes a magnitude for a rung.
  */
-export const MAX_TABLET_VALUE = 9999
 export const MAX_BID_DIGITS = 5
+export const MAX_TABLET_VALUE = 99_999 - MAX_MARGIN
 
 /** Narrowest tablet the gallery layout will ever produce, in CSS pixels. */
 export const MIN_TABLET_W = 132
@@ -187,16 +193,32 @@ export function tryParseBid(text: string): number | null {
 /**
  * The value a tablet would carry for this question, or null if it cannot.
  *
- * A tablet is a *price*. A price is a whole number of coins, it is not negative,
- * and it has to be small enough that one more coin than it still fits on the
- * paddle. A fraction, a decimal, a negative or a five-digit answer is refused —
- * and refusing is loud where it happens.
+ * A tablet is a *price*. A price is a whole number of coins, it is not negative, and it
+ * has to be small enough that one more coin than it still fits on the paddle. A
+ * fraction, a decimal, a negative or a six-digit answer is refused — and refusing is
+ * loud where it happens.
+ *
+ * The three reasons are not interchangeable, and `rungCannotDraw` is where that matters.
  */
 export function tabletValue(q: Question): number | null {
+  if (!priceable(q.answer)) return null
   const value = tryParseBid(q.answer)
   if (value === null || value > MAX_TABLET_VALUE) return null
   if (visibleLength(q.prompt) > PROMPT_MAX_CHARS) return null
   return value
+}
+
+/**
+ * Is this answer even the SHAPE of a price — a whole number, of any size or sign?
+ *
+ * Separate from `tabletValue` because it is the only refusal that is a fact about the
+ * *representation a rung uses* rather than about one item. A fraction rung emits
+ * fractions and a tenths rung emits decimals for every item it will ever produce; a
+ * multiplication rung emits some answers that fit a five-digit paddle and some that do
+ * not, from the very same rung.
+ */
+export function priceable(answer: string): boolean {
+  return /^[+-]?\d+$/.test(answer.trim())
 }
 
 /** Characters that count against the tablet's width. */
@@ -207,24 +229,47 @@ export function visibleLength(prompt: string): number {
 /**
  * Is this refusal a fact about the RUNG, or only about this item?
  *
- * Everything `tabletValue` refuses is a property of the rung — the width of the
- * paddle and the width of the tablet are constants, so if one item from a rung
- * will not fit then every item from it is equally hopeless. That is not true of
- * the one other reason a board rejects an item, which is a value already on the
- * board: a collision is a fact about a pair of items and nothing about a rung.
- * `polarity` conflated the two and pinned a whole session at the easiest rung in
- * the product off one transient empty pool.
+ * Getting this wrong in either direction is expensive, and it has been shipped both
+ * ways in this repository:
+ *
+ *   * Too eager, and one unlucky item deletes a third of the curriculum. The first
+ *     version of this function read "`tabletValue` said no" as a rung fact, and that
+ *     included *magnitude*. On `dw.mul.multidigit.times-one-digit` — a live rung — a
+ *     single `4827 × 6 = 28962` capped the stream below its ordinate for the rest of the
+ *     run, which excluded 21 of the shipped ladder's 66 rungs including all three of
+ *     `dw.add.regroup.subtract-across-zero`, a skill `pack.json` promises and whose
+ *     answers fit a tablet perfectly. From the same rung, `1023 × 2 = 2046` is drawable.
+ *     Magnitude depends on the operands drawn, so it is an ITEM fact.
+ *   * Too shy, and a rung this game genuinely cannot draw is a soft-lock rather than a
+ *     degradation: declining is per-item and the host serves by RUNG, so asking again at
+ *     the same difficulty gets the same rung, the board spends its whole draw budget
+ *     being refused, and the child is served a stall.
+ *
+ * So exactly two things are rung facts, and both are constants of this game rather than
+ * of the item drawn:
+ *
+ *   * **The prompt is wider than a tablet.** The tablet is a fixed width, so if one
+ *     item's prompt overflows it, every item from that rung does.
+ *   * **The answer is not a whole number at all.** A fraction rung emits fractions and a
+ *     tenths rung emits decimals, for every item, forever. Nothing from such a rung can
+ *     ever be a price.
+ *
+ * Everything else — a value too large for the paddle, a negative value, a value already
+ * on the board — is declined per item and caps nothing. `polarity` conflated exactly
+ * this and pinned a whole session at the easiest rung in the product off one transient
+ * empty pool.
  *
  * `id === ""` is the shared host's marker for "the pool ran dry, here is something
  * drawable". It describes no rung and must never cap one. Today's sentinel answers
- * `"0"`, which is a perfectly good price, so the check below would refuse to cap on it
+ * `"0"`, which is a perfectly good price, so the checks below would refuse to cap on it
  * anyway — the id line is there because the sentinel belongs to the host and the next
  * one may not parse. `test/lot.test.ts` covers both, so the line is load-bearing
  * against a future host rather than against this one.
  */
 export function rungCannotDraw(q: Question): boolean {
   if (q.id === "") return false
-  return tabletValue(q) === null
+  if (visibleLength(q.prompt) > PROMPT_MAX_CHARS) return true
+  return !priceable(q.answer)
 }
 
 /**
