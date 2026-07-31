@@ -90,6 +90,11 @@ export function playRun(
   consume(round.begin())
   for (let i = 0; i < 2_000_000 && round.phase !== "over"; i++) {
     consume(round.advance(step))
+    // A miss now HOLDS the completed sum with no deadline on it, so a harness
+    // that only advances time sits on one slate forever. This is the hand that
+    // takes it down — and it cannot be moved above `advance`, because `tap` is
+    // deaf inside the reveal's settle floor.
+    if (round.dismissible) consume(round.tap())
     if (statements.length > limit) break
     const index = statements.length - 1
     const current = statements[index]

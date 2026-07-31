@@ -196,6 +196,8 @@ export function mountGavel(
     digits: game.digits,
     phase: game.phase,
     settled: game.settled,
+    studying: game.studying,
+    nudgeable: game.nudgeable,
     coins: game.coins,
     storeroom: game.storeroom,
     remaining: game.remaining,

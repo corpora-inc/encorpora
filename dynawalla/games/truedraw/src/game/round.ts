@@ -33,8 +33,13 @@
 import { coinsFor } from "./bag.ts"
 import { quicknessOf } from "./cadence.ts"
 import { applyFlinch, applyOutcome, newRun, type Run } from "./run.ts"
-import { isCorrect, outcomeOf, type Call, type Outcome } from "./response.ts"
+import { isCorrect, isMiss, outcomeOf, type Call, type Outcome } from "./response.ts"
 import type { Statement } from "./statement.ts"
+import {
+  REVEAL_SETTLE_MS,
+  SECOND_GRADE_FLOW,
+  revealPlan,
+} from "../../../../packs/shared/game-pacing/index.ts"
 
 /**
  * The largest step the clock is allowed to take in one frame.
@@ -58,7 +63,29 @@ import type { Statement } from "./statement.ts"
  */
 export const MAX_STEP_MS = 400
 
-export type Phase = "idle" | "raise" | "still" | "call" | "verdict" | "clear" | "over"
+export type Phase =
+  | "idle"
+  | "raise"
+  | "still"
+  | "call"
+  | "verdict"
+  /**
+   * The completed sum, standing still, with no deadline on it.
+   *
+   * `verdict` runs the animation — the cross-fade that puts the true value on the
+   * slate — and this is what the animation was FOR. A miss beat used to be a flat
+   * 900 ms of which `REVEAL_SHARE` spent 45%, leaving about half a second of
+   * standing-still reading time for every child in every state. "There is no
+   * reason to be like WRONG and then just rush past the lesson/content .. let the
+   * kid marinate on it and dismiss it or answer or move on in their own time."
+   *
+   * Nothing takes this phase down but a hand. `revealPlan` decides whether it is
+   * entered at all, which is where the adaptation lives: a child on a long run of
+   * true calls is not held for an explanation of a sum they plainly know.
+   */
+  | "study"
+  | "clear"
+  | "over"
 
 export type RoundEvent =
   | { kind: "present"; statement: Statement }
@@ -149,6 +176,22 @@ export function exitOf(outcome: Outcome | null): 1 | -1 {
   return outcome === "spot" || outcome === "burn" ? -1 : 1
 }
 
+/**
+ * Correct calls in a row that count as fluency, for the study beat.
+ *
+ * MONUMENT's `REVEAL_STREAK`, and the same number for the same reason: eight
+ * true calls with no miss between them is somebody who does not need this.
+ */
+export const STUDY_STREAK = 8
+
+/** The streak, as the shared module's one scalar. Nothing else feeds it. */
+export function studyIntensity(streak: number): number {
+  return Math.max(0, Math.min(1, streak / STUDY_STREAK))
+}
+
+/** Phases in which `outcome` is the thing on the slate. */
+const SHOWING: ReadonlySet<Phase> = new Set<Phase>(["verdict", "study", "clear"])
+
 export class Round {
   private readonly deal: () => Statement
   private readonly timing: Timing
@@ -160,6 +203,27 @@ export class Round {
   private lastOutcome: Outcome | null = null
   private committed: Outcome | null = null
   private reaction = 0
+  /**
+   * Correct calls in a row, and the only thing the study beat is spent on.
+   *
+   * MONUMENT's choice, for MONUMENT's reason: the two obvious signals — how long
+   * the run has lasted, how far up the ladder it is — are both TENURE, and tenure
+   * is one-way. A child eleven misses into a bad patch has a high ladder rung and
+   * needs more patience, not less. A streak is zero for anybody who has just made
+   * two mistakes, whatever else they have done, and high only for somebody in the
+   * one state where blowing past the sum is a reward rather than a loss.
+   */
+  private correctStreak = 0
+  /**
+   * …and the value it had going INTO the outcome now being shown.
+   *
+   * MONUMENT's wording, and it has to be this one: a miss zeroes `correctStreak`,
+   * so a beat that read the live value would find zero on every single miss and
+   * hand the full patient hold to a child eight true calls into a flawless run.
+   * The question the reveal is answering is "did they know this already", and the
+   * evidence for that is what they had built up before they slipped.
+   */
+  private carriedStreak = 0
   private state: Run = newRun()
   private stopped = false
 
@@ -182,7 +246,22 @@ export class Round {
 
   /** The outcome the verdict is currently showing, if any. */
   get outcome(): Outcome | null {
-    return this.phaseName === "verdict" || this.phaseName === "clear" ? this.lastOutcome : null
+    return SHOWING.has(this.phaseName) ? this.lastOutcome : null
+  }
+
+  /** Is the slate being held open for the child rather than for a clock? */
+  get studying(): boolean {
+    return this.phaseName === "study"
+  }
+
+  /** Would a touch end that hold right now, or is it still inside the settle floor? */
+  get dismissible(): boolean {
+    return this.phaseName === "study" && this.elapsed >= REVEAL_SETTLE_MS
+  }
+
+  /** Correct calls in a row, right now. Zero after a miss. See `studyIntensity`. */
+  get streak(): number {
+    return this.correctStreak
   }
 
   /** Whether a flick would mean anything right now. */
@@ -297,6 +376,15 @@ export class Round {
       case "idle": {
         return this.begin()
       }
+      case "study": {
+        // The child's own hand, and the only thing that ends a held sum. Refused
+        // inside the settle floor: the flick that MADE the reveal is routinely
+        // still landing, and without this its follow-through would take the
+        // lesson away inside its own cross-fade.
+        if (this.elapsed < REVEAL_SETTLE_MS) return []
+        this.enter("clear", this.timing.clear)
+        return []
+      }
       case "over": {
         if (this.elapsed < this.timing.overLock) return []
         return this.begin()
@@ -331,6 +419,17 @@ export class Round {
         return this.settle("lapse")
       }
       case "verdict": {
+        // The animation is finished. Whether the finished sum now STANDS is the
+        // whole of this change — see `Phase["study"]`.
+        if (this.holdsAfterVerdict()) {
+          this.enter("study", Number.POSITIVE_INFINITY)
+          return []
+        }
+        this.enter("clear", this.timing.clear)
+        return []
+      }
+      case "study": {
+        // Only reachable if something ever gives this phase a finite duration.
         this.enter("clear", this.timing.clear)
         return []
       }
@@ -346,10 +445,25 @@ export class Round {
     }
   }
 
+  /**
+   * Does the finished sum stand after the animation, or slide away?
+   *
+   * Only a MISS has a sum to stand: a `bank` and a `spot` are celebrations of a
+   * call the child already made correctly, and holding those would turn the game
+   * into a queue of dismissals. A `lapse` draws no reveal at all today — see the
+   * PR — so there is nothing to hold there either, yet.
+   */
+  private holdsAfterVerdict(): boolean {
+    if (this.lastOutcome === null || !isMiss(this.lastOutcome)) return false
+    return revealPlan(SECOND_GRADE_FLOW, studyIntensity(this.carriedStreak)).holdMs > 0
+  }
+
   private settle(outcome: Outcome): RoundEvent[] {
     const statement = this.current
     this.lastOutcome = outcome
     this.committed = outcome
+    this.carriedStreak = this.correctStreak
+    this.correctStreak = isCorrect(outcome) ? this.correctStreak + 1 : 0
     const reactionMs = Math.round(this.reaction)
     const quickness = quicknessOf(reactionMs, statement?.p50Ms ?? 0)
     const coins = coinsFor(outcome, quickness)

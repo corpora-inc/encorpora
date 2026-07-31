@@ -60,7 +60,7 @@ import {
   tryParseBid,
 } from "./ladder.ts"
 import { LOTS, assembleRoom, isTrap, profitOf, type Room, type Tablet } from "./lot.ts"
-import { seedSuccess } from "../../../../packs/shared/game-pacing/index.ts"
+import { revealPlan, seedSuccess } from "../../../../packs/shared/game-pacing/index.ts"
 
 /** Lots the broker consigns at a time. */
 export const CONSIGNMENT = 5
@@ -145,6 +145,29 @@ export type Settled = {
   readonly marked: Tablet | null
 }
 
+/**
+ * Does this settled lot have anything left to teach?
+ *
+ * True on every outcome except a lot the child bought at a profit having got the
+ * arithmetic right — the one case where the room holds no information they did
+ * not already have. Everything else does:
+ *
+ *   * `folded` — they declined and want to see whether that was right. The
+ *     founder's case.
+ *   * `outbid` / `unsold` — the room beat them or the broker would not buy, and
+ *     the numbers that decided it are on the tablets.
+ *   * a wrong `claimed` — the reason the tablet said what it said.
+ *   * `even` — sold with nothing in it, which is the near miss most worth
+ *     looking at: the arithmetic was right and the pricing was one coin out.
+ *
+ * Exported because `test/patience.test.ts` enumerates `Outcome` against it, so a
+ * sixth outcome cannot be added without a decision being made about it.
+ */
+export function teaches(settled: Settled): boolean {
+  if (settled.arithmetic === false) return true
+  return settled.outcome !== "sold"
+}
+
 export type AuctionEvent =
   | { kind: "lot"; lot: string; room: Room }
   | { kind: "mark"; tablet: Tablet }
@@ -165,6 +188,9 @@ export type Tally = {
   /** Lots that came to the block, settled one way or another. */
   settled: number
 }
+
+/** What `revealPlan` would say about a lot with nothing to teach. */
+const NO_REVEAL = { settleMs: 0, holdMs: 0 } as const
 
 type Slot = { readonly serial: number; readonly lot: string }
 
@@ -188,6 +214,24 @@ export class Auction {
   private phaseName: "bidding" | "settled" = "bidding"
   private elapsed = 0
   private duration = 0
+  /**
+   * The settled room is waiting for the child's hand and no timer will end it.
+   *
+   * True on every lot that carried something to learn — see `finish`. `duration`
+   * is meaningless while this is set; nothing but `nudge` clears it.
+   */
+  private waiting = false
+  /**
+   * Milliseconds the settled room must be up before `nudge` will listen.
+   *
+   * THE GAVEL puts the reveal up with the same gesture that ended the lot — the
+   * hammer key, the fold key — and `mount.ts` routes *every* press during the
+   * settled phase to `nudge`. Without this, the second tap of an impatient
+   * double-tap on the hammer takes the reveal down inside its own 260 ms
+   * fade-in, and the child sees the rivals' values appear and vanish in one
+   * frame. That is the report this exists to answer.
+   */
+  private settleMs = 0
   private lastSettled: Settled | null = null
 
   /** Wall-clock mark for the lot on the block, shifted forward across a pause. */
@@ -313,9 +357,26 @@ export class Auction {
     return this.paused
   }
 
-  /** Milliseconds left of the settled room's reveal. Zero while bidding. */
+  /**
+   * Milliseconds left of the settled room's reveal. Zero while bidding.
+   *
+   * `Number.POSITIVE_INFINITY` while the room is waiting for the child, which is
+   * the honest answer: there is no amount of time after which it goes away.
+   */
   get holdLeft(): number {
-    return this.phaseName === "settled" ? Math.max(0, this.duration - this.elapsed) : 0
+    if (this.phaseName !== "settled") return 0
+    if (this.waiting) return Number.POSITIVE_INFINITY
+    return Math.max(0, this.duration - this.elapsed)
+  }
+
+  /** Is the settled room being held open for the child rather than for a timer? */
+  get studying(): boolean {
+    return this.phaseName === "settled" && this.waiting
+  }
+
+  /** Would a tap end the reveal right now, or is it still inside its settle floor? */
+  get nudgeable(): boolean {
+    return this.phaseName === "settled" && !this.paused && this.elapsed >= this.settleMs
   }
 
   /** Whether the hammer would do anything if it were tapped right now. */
@@ -463,10 +524,24 @@ export class Auction {
     )
   }
 
-  /** A tap during the reveal. Ends it now; it was never a wait for an answer. */
+  /**
+   * A tap during the reveal. Ends it; it was never a wait for an answer.
+   *
+   * **The only thing that ends a studied reveal.** On a lot that carried a
+   * lesson the room is up until this is called, however long that is — "you
+   * should be able to study the answers and then go on". This is the "then go
+   * on", and it is the child's, so it has no deadline in front of it.
+   *
+   * Refused inside `settleMs`, which is what stops the gesture that *made* the
+   * reveal from also dismissing it.
+   */
   nudge(): AuctionEvent[] {
     if (this.paused || this.phaseName !== "settled") return []
-    this.elapsed = this.duration
+    if (this.elapsed < this.settleMs) return []
+    this.waiting = false
+    // Also collapses the brisk beat of a lot with nothing to study, which is the
+    // other thing this is called for.
+    this.duration = 0
     return []
   }
 
@@ -477,11 +552,16 @@ export class Auction {
    * cannot accumulate while they are thinking — FOUNDRY STREET's shape, and its
    * comment: "a child who is thinking must never be losing". The only phase with a
    * duration is the reveal, which happens after the hammer has already fallen.
+   *
+   * …and a child who is *reading* must never be losing either. While `waiting` no
+   * amount of `dt` draws the next room; `elapsed` still runs, but only so that the
+   * settle floor can expire. Nothing else in this game reads a clock.
    */
   advance(dt: number, now: number): AuctionEvent[] {
     if (this.paused || this.stalledFlag) return []
     if (this.phaseName === "bidding") return []
     this.elapsed += Math.max(0, dt)
+    if (this.waiting) return []
     if (this.elapsed < this.duration) return []
     return this.nextLot(now)
   }
@@ -554,7 +634,33 @@ export class Auction {
     this.digitsText = ""
     this.phaseName = "settled"
     this.elapsed = 0
-    this.duration = revealHoldMs(this.intensityValue)
+
+    // The settled room prints every rival's value, so it is the only place in
+    // this game where the arithmetic is ever completed in front of the child.
+    // On a lot that went well there is nothing to study — they read the room and
+    // priced it, and holding them for a receipt would turn an auction into a
+    // queue of dismissals. On a lot that did not, it is the whole lesson, and it
+    // waits: "there is no reason to be like WRONG and then just rush past the
+    // lesson/content .. let the kid marinate on it and dismiss it or answer or
+    // move on in their own time".
+    //
+    // A FOLD is in that set and is the case the founder raised. Folding asserts
+    // nothing and reports nothing, so it never moved the controller and it never
+    // will — but it is exactly when a child wants to look at what the rivals had
+    // and see whether letting the lot go was right. "When you fold you should be
+    // able to study the answers and then go on."
+    const plan = teaches(settled) ? revealPlan(SPEC, this.intensityValue) : NO_REVEAL
+    // An infinite hold IS the wait, and reading it here rather than re-deciding
+    // it is what keeps the shared claim load-bearing at this call site.
+    this.waiting = !Number.isFinite(plan.holdMs)
+    this.settleMs = plan.settleMs
+    // The brisk beat, for a lot with nothing to study — and ZERO for one that
+    // has, because there `waiting` is the whole mechanism and there is no clock
+    // to run. Deliberately not `Infinity` here as well: two mechanisms enforcing
+    // one rule means neither can be tested and one of them quietly rots.
+    // Measured — with the belt AND the braces on, deleting the `waiting` guard
+    // in `advance` broke nothing at all.
+    this.duration = this.waiting ? 0 : revealHoldMs(this.intensityValue)
     return [{ kind: "settled", settled }]
   }
 
@@ -646,6 +752,8 @@ export class Auction {
     this.phaseName = "bidding"
     this.elapsed = 0
     this.duration = 0
+    this.waiting = false
+    this.settleMs = 0
     this.askedAt = now
     return [{ kind: "lot", lot: head.lot, room: assembly.room }]
   }

@@ -20,6 +20,7 @@ import { Rng } from "../core/rng.ts"
 import { Auction } from "../game/auction.ts"
 import { isTrap, type Room } from "../game/lot.ts"
 import { createStubHost } from "../stubHost.ts"
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts"
 
 export type Report = { questionId: string; correct: boolean; ms: number; answered: string }
 
@@ -71,8 +72,17 @@ export function clearBid(game: Auction): void {
   while (game.digits !== "") game.backspace()
 }
 
-/** Take the room through the reveal and on to the next lot. */
+/**
+ * Take the room through the reveal and on to the next lot.
+ *
+ * **A settled room the child has something to learn from does not end on its
+ * own**, so this models the hand that ends it: wait out the reveal's settle
+ * floor — `nudge` is deliberately deaf inside it, so the gesture that made the
+ * reveal cannot also dismiss it — and only then tap. A helper that just called
+ * `nudge()` would leave every room in the suite standing forever.
+ */
 export function settleOn(game: Auction, clock: () => number): void {
+  game.advance(REVEAL_SETTLE_MS, clock())
   game.nudge()
   game.advance(1, clock())
 }
