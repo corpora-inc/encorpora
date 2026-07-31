@@ -18,6 +18,7 @@ import { COLORS, TUNE } from "../tuning.ts";
 import { bolusTintAt } from "../serpent.ts";
 import { orbDrawRadius } from "../orbs.ts";
 import { NO_INSETS, safeRect, type Insets } from "../../../../../packs/shared/game-chrome/index.ts";
+import { arenaScale } from "../arena.ts";
 import type { World } from "../world.ts";
 import { GLOW_PX, MOTE_PX, sprites } from "./sprites.ts";
 import { drawLabel, labelInk, labelWidth, type LabelStyle } from "./glyphs.ts";
@@ -234,13 +235,14 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     view.dpr = dpr;
     view.insets = insets;
     view.safe = safe;
-    // The arena is centred in the SAFE box and sized off its short side. On a
-    // device with no insets this is exactly what it always was; on a phone held
-    // sideways it stops the rim — a wall you can die against — from sliding
-    // under the rounded corner.
+    // The arena is centred in the SAFE box and INSCRIBED in it: the ellipse
+    // reaches the top and bottom of a tall phone and the sides of a wide one,
+    // while every part of the rim — a wall a child can die against — stays clear
+    // of the cutout and the rounded corner. `arena.ts` owns both numbers; the
+    // shape itself is `world.aspectX/aspectY`, set from the same safe box.
     view.cx = safe.x + safe.w / 2;
     view.cy = safe.y + safe.h / 2;
-    view.scale = Math.min(safe.w, safe.h) * 0.44;
+    view.scale = arenaScale(safe.w, safe.h);
     canvas.width = Math.max(1, Math.floor(w * dpr));
     canvas.height = Math.max(1, Math.floor(h * dpr));
     canvas.style.width = `${w}px`;
@@ -315,29 +317,39 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     drawSnow(snowFar, 0);
 
     // --- the arena floor --------------------------------------------------
-    const aR = w.arenaR * S;
+    const aX = w.arenaR * w.aspectX * S;
+    const aY = w.arenaR * w.aspectY * S;
     g.save();
     g.beginPath();
-    g.arc(X(0), Y(0), aR, 0, TAU);
+    g.ellipse(X(0), Y(0), aX, aY, 0, 0, TAU);
     g.clip();
 
-    const floor = g.createRadialGradient(X(0), Y(0), 0, X(0), Y(0), aR);
+    // A radial gradient is a circle, so the floor is painted in a squashed frame
+    // and comes out as the same ellipse the clip already is — the alternative is
+    // a round pool of light sitting inside an oval board with dark ends.
+    g.save();
+    g.translate(X(0), Y(0));
+    g.scale(1, aY / aX);
+    const floor = g.createRadialGradient(0, 0, 0, 0, 0, aX);
     floor.addColorStop(0, "rgba(34,124,150,0.7)");
     floor.addColorStop(0.45, "rgba(14,72,104,0.56)");
     floor.addColorStop(0.82, "rgba(6,36,62,0.4)");
     floor.addColorStop(1, "rgba(2,14,28,0.16)");
     g.fillStyle = floor;
-    g.fillRect(X(0) - aR, Y(0) - aR, aR * 2, aR * 2);
+    g.fillRect(-aX, -aX, aX * 2, aX * 2);
+    g.restore();
 
     // The vent itself: a slow amber heart. Teal water against a warm centre is
     // the only complementary pair in the palette, and without it the whole
     // screen is one hue and reads flat however bright you make it.
     const ventGlow = sp.glow[0];
     if (ventGlow) {
-      const vs = aR * (1.15 + 0.05 * Math.sin(w.cam.t * 0.55));
+      const k = 1.15 + 0.05 * Math.sin(w.cam.t * 0.55);
+      const vw = aX * k;
+      const vh = aY * k;
       g.globalCompositeOperation = "lighter";
       g.globalAlpha = 0.13 + 0.03 * Math.sin(w.cam.t * 0.8) + w.depthPulse * 0.16;
-      g.drawImage(ventGlow, X(0) - vs / 2, Y(0) - vs / 2, vs, vs);
+      g.drawImage(ventGlow, X(0) - vw / 2, Y(0) - vh / 2, vw, vh);
       g.globalAlpha = 1;
       g.globalCompositeOperation = "source-over";
     }
@@ -450,7 +462,7 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     g.globalCompositeOperation = "source-over";
 
     // --- the vent rim -----------------------------------------------------
-    drawRim(w, X, Y, S, aR);
+    drawRim(w, X, Y, S, aX, aY);
 
     // --- floating score ---------------------------------------------------
     const floatStyle: LabelStyle = {
@@ -718,19 +730,25 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     X: (x: number) => number,
     Y: (y: number) => number,
     S: number,
-    aR: number,
+    aX: number,
+    aY: number,
   ): void {
     const cx = X(0);
     const cy = Y(0);
-    const headA = Math.atan2(w.serpent.y, w.serpent.x);
+    // The head's ECCENTRIC angle, not its polar one: `ctx.ellipse` walks the
+    // parameter, so the arc a segment covers is `(aX cos t, aY sin t)` and the
+    // hot patch has to be found in the same parameter or the glow drifts away
+    // from the serpent everywhere except the four axis points.
+    const headA = Math.atan2(w.serpent.y / (w.arenaR * w.aspectY), w.serpent.x / (w.arenaR * w.aspectX));
     const segs = 72;
 
     g.globalCompositeOperation = "lighter";
     const halo = sp.softRing[w.grazeGlow > 0.4 ? 5 : 2];
     if (halo) {
-      const size = aR * 2 * 1.14;
+      const hw = aX * 2 * 1.14;
+      const hh = aY * 2 * 1.14;
       g.globalAlpha = 0.5 + w.grazeGlow * 0.4 + w.depthPulse * 0.35;
-      g.drawImage(halo, cx - size / 2, cy - size / 2, size, size);
+      g.drawImage(halo, cx - hw / 2, cy - hh / 2, hw, hh);
     }
 
     g.lineCap = "butt";
@@ -745,7 +763,7 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
       g.strokeStyle = heat > 0.05 ? COLORS.rimHot : COLORS.rim;
       g.lineWidth = Math.max(2.5, S * (0.014 + heat * 0.016));
       g.beginPath();
-      g.arc(cx, cy, aR, a0, a1);
+      g.ellipse(cx, cy, aX, aY, 0, a0, a1);
       g.stroke();
       // A thin white-hot lip just inside, so the edge is a hard line the eye
       // can trust rather than a soft glow you can misjudge at speed.
@@ -753,7 +771,7 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
       g.strokeStyle = heat > 0.05 ? "#ffd9c4" : "#d6fbff";
       g.lineWidth = Math.max(1, S * 0.004);
       g.beginPath();
-      g.arc(cx, cy, aR - S * 0.009, a0, a1);
+      g.ellipse(cx, cy, Math.max(1, aX - S * 0.009), Math.max(1, aY - S * 0.009), 0, a0, a1);
       g.stroke();
     }
 
@@ -766,7 +784,7 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
         const wob = 1 + Math.sin(w.cam.t * 1.3 + i) * 0.012;
         const size = S * 0.016 * (1 + 0.4 * Math.sin(w.cam.t * 2 + i * 1.7));
         g.globalAlpha = 0.5;
-        g.drawImage(dot, cx + Math.cos(a) * aR * wob - size / 2, cy + Math.sin(a) * aR * wob - size / 2, size, size);
+        g.drawImage(dot, cx + Math.cos(a) * aX * wob - size / 2, cy + Math.sin(a) * aY * wob - size / 2, size, size);
       }
     }
     g.globalAlpha = 1;

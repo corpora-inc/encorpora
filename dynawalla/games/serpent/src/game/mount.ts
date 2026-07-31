@@ -19,7 +19,7 @@ import { simDelta, updateCamera } from "./fx/camera.ts";
 import { createRenderer, type View } from "./render/scene.ts";
 import { hudLayout, soundTarget } from "./render/chrome.ts";
 import { drawHud } from "./render/hud.ts";
-import { confirmPressed, createWorld, setPaused, stepWorld, type World } from "./world.ts";
+import { confirmPressed, createWorld, setArenaAspect, setPaused, stepWorld, type World } from "./world.ts";
 import { clamp } from "./num.ts";
 
 const FIXED = 1 / 120;
@@ -69,6 +69,10 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
     // inset for two side ones, and iPadOS changes them when the pack is resized
     // in Split View. Read once and you are correct until the first rotation.
     renderer.resize(w, h, Math.min(window.devicePixelRatio || 1, 2.5), safeInsets());
+    // The board IS the screen: the vent is the ellipse inscribed in that same
+    // safe box. The renderer measures the box, the simulation takes the shape
+    // from it, and neither owns a second copy of the arithmetic.
+    setArenaAspect(world, renderer.view.safe.w, renderer.view.safe.h);
   }
   layout();
   // A rotation does not always change the element's box — a square-ish split

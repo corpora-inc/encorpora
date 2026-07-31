@@ -55,7 +55,8 @@ import {
   stepSerpent,
   type Serpent,
 } from "./serpent.ts";
-import { createOrb, molt, orbDrawRadius, placeOrb, stepOrbs, type Orb } from "./orbs.ts";
+import { createOrb, molt, orbDrawRadius, placeOrb, stepOrbs, type Axes, type Orb } from "./orbs.ts";
+import { arenaAspect, pullInside, rimEdge, type Edge } from "./arena.ts";
 import type { Audio } from "./audio.ts";
 
 const BEST_KEY = "serpent.best";
@@ -105,8 +106,24 @@ export type World = {
   correctEats: number;
   wrongEats: number;
 
+  /**
+   * The vent's SHORT semi-axis, in world units. It closes as a child dives.
+   *
+   * Called a radius for most of this pack's life and still the same number: the
+   * arena is an ellipse now (see `arena.ts`) and this is the axis it was tuned
+   * on, so nothing about how the game feels across the narrow way changed.
+   */
   arenaR: number;
   arenaTargetR: number;
+  /**
+   * The vent's proportions, short axis normalised to exactly 1.
+   *
+   * Set from the safe rectangle by `setArenaAspect` on every layout, so the board
+   * is the screen. Both are 1 until the first layout arrives, which is a circle —
+   * the shape the game shipped with, and one that every later aspect contains.
+   */
+  aspectX: number;
+  aspectY: number;
 
   prompt: string;
   pending: Trial[];
@@ -176,6 +193,8 @@ export function createWorld(host: Host, audio: Audio, reduced: boolean): World {
 
     arenaR: TUNE.arenaStart,
     arenaTargetR: TUNE.arenaStart,
+    aspectX: 1,
+    aspectY: 1,
 
     prompt: "",
     pending: [],
@@ -198,6 +217,44 @@ export function createWorld(host: Host, audio: Audio, reduced: boolean): World {
   };
   resetRun(w, "attract");
   return w;
+}
+
+// -------------------------------------------------------------------- shape
+
+/** The vent's semi-axes, this frame. */
+export function arenaAxes(w: World): Axes {
+  return { a: w.arenaR * w.aspectX, b: w.arenaR * w.aspectY };
+}
+
+/** Where the rim is from a point, which way it faces, how far away it is. */
+export function arenaEdge(w: World, x: number, y: number): Edge {
+  return rimEdge(w.arenaR * w.aspectX, w.arenaR * w.aspectY, x, y);
+}
+
+/**
+ * Fit the vent to the safe rectangle.
+ *
+ * Called on every layout, so a rotation reshapes the board. That is the one
+ * moment the arena can get *smaller* along an axis — portrait to landscape swaps
+ * a tall ellipse for a wide one — so everything loose is walked back inside the
+ * new rim rather than left stranded in the black with a wall between it and the
+ * game. The serpent's recorded path is not: it is history, the head drags it back
+ * within a body length, and rewriting it would put a kink in the animal.
+ */
+export function setArenaAspect(w: World, safeW: number, safeH: number): void {
+  const next = arenaAspect(safeW, safeH);
+  if (next.x === w.aspectX && next.y === w.aspectY) return;
+  w.aspectX = next.x;
+  w.aspectY = next.y;
+  const { a, b } = arenaAxes(w);
+  for (const o of w.orbs) {
+    const put = pullInside(a, b, o.x, o.y, TUNE.orbRadius * 1.1);
+    o.x = put.x;
+    o.y = put.y;
+  }
+  const head = pullInside(a, b, w.serpent.x, w.serpent.y, TUNE.headRadius * 1.6);
+  w.serpent.x = head.x;
+  w.serpent.y = head.y;
 }
 
 // ------------------------------------------------------------------ content
@@ -230,10 +287,24 @@ function pullQuestion(w: World): boolean {
   return false;
 }
 
+/**
+ * How many orbs, and how many of them are edible.
+ *
+ * Both scale with the vent's AREA, which is the one gameplay consequence of the
+ * board becoming the screen. `orbs.ts` says the field is the maze — "the arena is
+ * dense with wrong answers you have to swim *through*, so reading the field is
+ * the same act as steering through it" — and a tall phone is a 2.2× larger board,
+ * so holding the counts fixed would have halved that density and quietly taken
+ * the obstacle course out of the game on the device most children hold. The ratio
+ * of edible to inedible is preserved exactly; only the scale changes.
+ */
 function fieldTargets(w: World): { count: number; good: number } {
+  const area = w.aspectX * w.aspectY;
   return {
-    count: Math.min(TUNE.orbMaxCount, TUNE.orbBaseCount + (w.depth - 1) * TUNE.orbPerDepth),
-    good: Math.min(TUNE.goodMax, TUNE.goodBase + Math.floor((w.depth - 1) / 3)),
+    count: Math.round(
+      Math.min(TUNE.orbMaxCount, TUNE.orbBaseCount + (w.depth - 1) * TUNE.orbPerDepth) * area,
+    ),
+    good: Math.round(Math.min(TUNE.goodMax, TUNE.goodBase + Math.floor((w.depth - 1) / 3)) * area),
   };
 }
 
@@ -253,7 +324,7 @@ function addOrb(w: World, good: boolean): Orb {
   orb.label = pickLabel(w, good);
   orb.good = good;
   orb.hunter = w.depth >= TUNE.hunterFromDepth && Math.random() < TUNE.hunterChance;
-  placeOrb(orb, w.orbs, w.arenaR, w.serpent.x, w.serpent.y);
+  placeOrb(orb, w.orbs, arenaAxes(w), w.serpent.x, w.serpent.y);
   w.orbs.push(orb);
   return orb;
 }
@@ -302,7 +373,8 @@ function beginMutation(w: World, q: Question): void {
   slowmo(w.cam, TUNE.slowmoMutateTime, TUNE.slowmoMutateScale);
   addTrauma(w.cam, 0.18);
   flash(w.cam, "#4ff0d6", 0.1);
-  ring(w.rings, 0, 0, w.arenaR * 0.05, w.arenaR * 0.9, 0.7, 0.02, 2);
+  const reach = w.arenaR * Math.max(w.aspectX, w.aspectY);
+  ring(w.rings, 0, 0, reach * 0.05, reach * 0.9, 0.7, 0.02, 2);
   w.audio.mutate();
   if (w.phase === "play") w.host.haptic("medium");
 }
@@ -469,7 +541,10 @@ function descend(w: World): void {
   w.scorePulse = 1;
   addTrauma(w.cam, TUNE.traumaDepth);
   punch(w.cam, TUNE.punchDepth);
-  ring(w.rings, 0, 0, w.arenaR * 1.02, w.arenaR * 0.55, 0.75, 0.02, 4);
+  // Out to the LONG axis, so the "the water is closing in" beat sweeps the whole
+  // board rather than stopping halfway up a tall one.
+  const reach = w.arenaR * Math.max(w.aspectX, w.aspectY);
+  ring(w.rings, 0, 0, reach * 1.02, reach * 0.55, 0.75, 0.02, 4);
   burstBubbles(w.particles, w.serpent.x, w.serpent.y, 12);
   w.audio.depth(w.depth);
   if (w.phase === "play") w.host.haptic("medium");
@@ -477,22 +552,25 @@ function descend(w: World): void {
 }
 
 /** Slam into the vent wall: bounce inward, pay for it, keep the run. */
-function hitWall(w: World, dist: number): void {
+function hitWall(w: World, e: Edge): void {
   const s = w.serpent;
-  const d = dist || 1;
-  const nx = s.x / d;
-  const ny = s.y / d;
-  const px = nx * w.arenaR;
-  const py = ny * w.arenaR;
+  // The wall's own normal at the point that was actually hit, not the direction
+  // back to the middle. On a circle those were the same vector and the code could
+  // not tell; on an ellipse they differ by up to about 30°, and using the wrong
+  // one would slide the serpent along the rim instead of off it and put the
+  // debris burst somewhere the serpent never touched.
+  const nx = e.nx;
+  const ny = e.ny;
+  const px = e.x;
+  const py = e.y;
 
   // Deflect along the wall, never *reflect* off it. A mirror bounce at normal
   // incidence turns the head through 180° and drives it straight back into its
   // own neck — an instant death handed out for touching a wall, which is the
   // opposite of the point. Sliding picks the tangent the serpent was already
   // closest to and adds a little inward drift.
-  const inside = w.arenaR - TUNE.headRadius * 1.6;
-  s.x = nx * inside;
-  s.y = ny * inside;
+  s.x = px - nx * TUNE.headRadius * 1.6;
+  s.y = py - ny * TUNE.headRadius * 1.6;
   const hx = Math.cos(s.heading);
   const hy = Math.sin(s.heading);
   const sign = hx * -ny + hy * nx >= 0 ? 1 : -1;
@@ -509,7 +587,7 @@ function hitWall(w: World, dist: number): void {
   burstDebris(w.particles, px, py, Math.atan2(ny, nx), TUNE.shrinkPerWall);
   burstBad(w.particles, px, py);
   ring(w.rings, px, py, 0.01, 0.34, 0.5, 0.016, 5);
-  floater(w, px * 0.92, py * 0.92, `−${TUNE.shrinkPerWall}`, 1);
+  floater(w, px - nx * 0.08, py - ny * 0.08, `−${TUNE.shrinkPerWall}`, 1);
   hitstop(w.cam, TUNE.hitstopWallMs);
   addTrauma(w.cam, TUNE.traumaWall);
   punch(w.cam, TUNE.punchWrong);
@@ -573,9 +651,10 @@ function die(w: World, x: number, y: number): void {
 /** Attract-mode pilot. It plays the game so the player never reads a rule. */
 function autoHeading(w: World): number {
   const s = w.serpent;
-  const d = Math.hypot(s.x, s.y);
-  // Turn away from the rim before anything else.
-  if (d > w.arenaR - TUNE.headRadius * 7) return Math.atan2(-s.y, -s.x) + Math.sin(w.time * 0.7) * 0.5;
+  // Turn away from the rim before anything else — straight off the wall it is
+  // near, which on a long vent is nothing like "toward the middle".
+  const e = arenaEdge(w, s.x, s.y);
+  if (e.gap < TUNE.headRadius * 7) return Math.atan2(-e.ny, -e.nx) + Math.sin(w.time * 0.7) * 0.5;
   let best: Orb | null = null;
   let bestD = Infinity;
   for (const o of w.orbs) {
@@ -633,7 +712,7 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
     w.deathT += dt;
     stepOrbs(w.orbs, {
       dt,
-      arenaR: w.arenaR,
+      axes: arenaAxes(w),
       headX: s.x,
       headY: s.y,
       current: 0,
@@ -660,7 +739,7 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
 
   stepOrbs(w.orbs, {
     dt,
-    arenaR: w.arenaR,
+    axes: arenaAxes(w),
     headX: s.x,
     headY: s.y,
     current: w.depth >= 4 ? 0.03 : 0,
@@ -686,8 +765,12 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
   }
 
   // --- grazing the rim, which is worth points precisely because it is stupid
-  const dist = Math.hypot(s.x, s.y);
-  const grazing = dist > w.arenaR - TUNE.grazeBand;
+  //
+  // One measurement of the rim serves the graze band, the wall and nothing else,
+  // so the band a child is paid for and the line they are punished on are the
+  // same curve by construction rather than by two expressions agreeing.
+  const edge = arenaEdge(w, s.x, s.y);
+  const grazing = edge.gap < TUNE.grazeBand;
   w.grazeGlow = clamp(w.grazeGlow + (grazing ? dt * 6 : -dt * 3), 0, 1);
   if (grazing && s.alive) {
     w.grazeT += dt;
@@ -711,16 +794,17 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
   // outgrowing your own turning circle. That is also what makes the arena
   // closing in mean something: it squeezes you into yourself.
   w.wallT = Math.max(0, w.wallT - dt);
-  if (dist > w.arenaR - TUNE.headRadius * 0.75 && w.wallT <= 0) {
-    hitWall(w, dist);
+  if (edge.gap < TUNE.headRadius * 0.75 && w.wallT <= 0) {
+    hitWall(w, edge);
   } else if (w.invulnT <= 0 && selfHit(s)) {
     die(w, s.x, s.y);
   }
 
   if (Math.random() < dt * 2.4) {
     const a = randRange(0, TAU);
-    const r = Math.sqrt(Math.random()) * w.arenaR;
-    burstBubbles(w.particles, Math.cos(a) * r, Math.sin(a) * r, 1);
+    const r = Math.sqrt(Math.random());
+    const { a: ax, b: ay } = arenaAxes(w);
+    burstBubbles(w.particles, Math.cos(a) * r * ax, Math.sin(a) * r * ay, 1);
   }
 }
 

@@ -10,10 +10,20 @@
 
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createWorld, confirmPressed, stepWorld, startRun, type World } from "./world.ts";
+import {
+  arenaAxes,
+  arenaEdge,
+  createWorld,
+  confirmPressed,
+  setArenaAspect,
+  stepWorld,
+  startRun,
+  type World,
+} from "./world.ts";
+import { createOrb, placeOrb } from "./orbs.ts";
 import { createStubHost } from "../stub/host.ts";
 import { TUNE } from "./tuning.ts";
-import { angleDelta } from "./num.ts";
+import { TAU, angleDelta } from "./num.ts";
 import { parseLabel, satisfies, type Predicate } from "../stub/exact.ts";
 import type { Audio } from "./audio.ts";
 import type { Host, Question, Report } from "../contract.ts";
@@ -289,11 +299,12 @@ test("the wall costs length and throws you back — it never ends the run", () =
   assert.equal(hits, 1, "driving straight at the wall must register a wall hit");
   assert.equal(w.phase, "play", "the rim must not end the run");
   assert.ok(w.serpent.targetSegments < before, "the rim must cost length");
-  assert.ok(Math.hypot(w.serpent.x, w.serpent.y) < w.arenaR, "the serpent must be put back inside the arena");
+  assert.ok(arenaEdge(w, w.serpent.x, w.serpent.y).gap > 0, "the serpent must be put back inside the arena");
   assert.equal(w.combo, 0, "the rim must break the combo");
   // And the deflection must not aim the head back down its own body.
-  const away = Math.cos(w.serpent.heading) * w.serpent.x + Math.sin(w.serpent.heading) * w.serpent.y;
-  assert.ok(away < 0, "the deflection must send the serpent inward, not along the wall forever");
+  const e = arenaEdge(w, w.serpent.x, w.serpent.y);
+  const away = -(Math.cos(w.serpent.heading) * e.nx + Math.sin(w.serpent.heading) * e.ny);
+  assert.ok(away > 0, "the deflection must send the serpent inward, not along the wall forever");
 });
 
 test("outgrowing your own turning circle is what ends a run", () => {
@@ -388,4 +399,229 @@ test("the simulation step stays far inside a 60fps budget", () => {
   // Two sim steps per rendered frame at 60fps. The whole simulation must be a
   // rounding error next to the 16.7ms frame, leaving the budget for drawing.
   assert.ok(perStep < 0.35, `sim step cost ${perStep.toFixed(3)}ms at body ${heavy}`);
+});
+
+/* -------------------------------------------------------------------------- */
+/* The board is the screen — and the wall came with it.                       */
+/* -------------------------------------------------------------------------- */
+
+/** The safe box the arena is inscribed in, at the shapes a child holds. */
+const SCREENS: Array<[string, number, number]> = [
+  ["phone portrait, small", 320, 568],
+  ["phone portrait", 390, 844],
+  ["phone landscape", 844, 390],
+  ["tablet portrait", 768, 1024],
+  ["tablet landscape", 1024, 768],
+  ["square", 600, 600],
+];
+
+function fresh(seed: string, safeW: number, safeH: number): World {
+  const { host } = instrument(seed);
+  const w = createWorld(host, silentAudio(), false);
+  setArenaAspect(w, safeW, safeH);
+  startRun(w);
+  return w;
+}
+
+test("the rim is a wall you can die against from every direction, on every screen", () => {
+  // The circle is gone, so the direction back to the middle is no longer the
+  // direction the wall faces — off the end of a long vent they differ by about
+  // 30°. Drive at the rim from twelve headings on six screens and check the three
+  // things a wall owes the player: it registers, it puts you back inside, and it
+  // turns you off the wall rather than turning you round into your own neck.
+  for (const [name, sw, sh] of SCREENS) {
+    for (let i = 0; i < 12; i++) {
+      const heading = (i / 12) * TAU;
+      const w = fresh(`wall-${name}-${i}`, sw, sh);
+      // Nothing but the wall may interrupt: a bite would change the heading.
+      w.orbs.length = 0;
+      // The heading on the frame the wall took it, not the random one the run
+      // opened with — the turn being measured is the deflection's own.
+      let before = w.serpent.heading;
+      let hit = false;
+      for (let step = 0; step < 4000 && !hit; step++) {
+        const prior = w.serpent.heading;
+        stepWorld(w, FIXED, { heading, boost: false });
+        if (w.wallT > 0) {
+          before = prior;
+          hit = true;
+        }
+      }
+      const where = `${name}, heading ${((heading * 180) / Math.PI).toFixed(0)}°`;
+      assert.ok(hit, `${where}: driving straight at the rim never registered a wall hit`);
+      const s = w.serpent;
+      const e = arenaEdge(w, s.x, s.y);
+      assert.ok(
+        e.gap > 0,
+        `${where}: the wall left the serpent ${(-e.gap).toFixed(4)} OUTSIDE the vent`,
+      );
+      // Deflection, not reflection. The head keeps most of its along-wall speed
+      // and picks up a definite push off the surface; a mirror bounce at normal
+      // incidence would instead be a 180° turn into its own body.
+      const inward = -(Math.cos(s.heading) * e.nx + Math.sin(s.heading) * e.ny);
+      assert.ok(
+        inward > 0.5,
+        `${where}: after the hit the head is only ${inward.toFixed(3)} of the way off the wall`,
+      );
+      // A deflection turns the head at most 136° even head-on (`0.7 × tangent −
+      // 0.72 × normal`); a mirror bounce at normal incidence turns it a full π.
+      assert.ok(
+        Math.abs(angleDelta(before, s.heading)) < 2.6,
+        `${where}: the head was turned ${Math.abs(angleDelta(before, s.heading)).toFixed(2)} rad — ` +
+          `that is a mirror bounce, and it drives the serpent back down its own neck`,
+      );
+    }
+  }
+});
+
+test("the graze band is the same wall, paid for a moment earlier", () => {
+  // Two expressions about the edge that disagree is the bug this change invites:
+  // paid for grazing a circle while dying against an ellipse. So the band a child
+  // is paid in must always have opened BEFORE the wall bites, on every screen.
+  assert.ok(
+    TUNE.grazeBand > TUNE.headRadius * 0.75,
+    "the graze band is narrower than the wall — there is nothing to be paid for",
+  );
+  for (const [name, sw, sh] of SCREENS) {
+    for (const heading of [0, Math.PI / 2, 2.2, 4.4]) {
+      const w = fresh(`graze-${name}-${heading}`, sw, sh);
+      w.orbs.length = 0;
+      let grazedFor = 0;
+      let hit = false;
+      // The band is not observable directly, but `grazeGlow` only ever RISES
+      // while the game thinks the serpent is in it, which is the same thing.
+      let glow = w.grazeGlow;
+      let deepest = 0;
+      for (let step = 0; step < 4000 && !hit; step++) {
+        stepWorld(w, FIXED, { heading, boost: false });
+        if (w.grazeGlow > glow) {
+          grazedFor++;
+          deepest = Math.max(deepest, arenaEdge(w, w.serpent.x, w.serpent.y).gap);
+        }
+        glow = w.grazeGlow;
+        hit = w.wallT > 0;
+      }
+      const where = `${name}, heading ${heading}`;
+      assert.ok(hit, `${where}: never reached the wall`);
+      // Neither half of the deal may drift from the other: the band never opens
+      // out in open water. The 15% is slack for a frame of travel, not for a
+      // different curve — a circular band inside this ellipse pays from sixteen
+      // times the band's width out.
+      assert.ok(
+        deepest <= TUNE.grazeBand * 1.15,
+        `${where}: the serpent was credited with grazing while it was ${deepest.toFixed(3)} from ` +
+          `the rim, and the band is ${TUNE.grazeBand}`,
+      );
+      // … and it always opens before the wall bites.
+      assert.ok(
+        grazedFor > 4,
+        `${where}: the wall bit after only ${grazedFor} frames in the graze band — the band and ` +
+          `the wall are not the same curve`,
+      );
+    }
+  }
+});
+
+test("an orb is never spawned against the wall, whatever shape the vent is", () => {
+  // Asserted at the spawner and not through a frame of play, because `stepOrbs`
+  // walks a stray orb back inside on the very next step and would hide this — the
+  // clearance exists so an orb is REACHABLE, and one that appears on the rim and
+  // is shoved off it has already been placed somewhere a child cannot bite.
+  const clear = TUNE.orbRadius * 2.2;
+  for (const [name, sw, sh] of SCREENS) {
+    const w = fresh(`spawn-${name}`, sw, sh);
+    for (const arenaR of [TUNE.arenaStart, 0.8, TUNE.arenaFloor]) {
+      w.arenaR = arenaR;
+      const axes = arenaAxes(w);
+      const orb = createOrb();
+      let worst = Infinity;
+      for (let i = 0; i < 300; i++) {
+        placeOrb(orb, w.orbs, axes, w.serpent.x, w.serpent.y);
+        worst = Math.min(worst, arenaEdge(w, orb.x, orb.y).gap);
+      }
+      assert.ok(
+        worst >= clear - 1e-9,
+        `${name}, vent ${arenaR}: an orb was placed ${worst.toFixed(4)} from the rim and the ` +
+          `spawn clearance is ${clear.toFixed(4)}`,
+      );
+    }
+  }
+});
+
+test("nothing is ever put outside the vent, whatever shape it is", () => {
+  // Spawning, drifting, hunting and the shape changing under everything at once.
+  // An orb outside the rim is a correct answer a child cannot reach.
+  for (const [name, sw, sh] of SCREENS) {
+    const w = fresh(`field-${name}`, sw, sh);
+    let worst = Infinity;
+    let worstAt = "";
+    const steps = Math.round(90 / FIXED);
+    for (let i = 0; i < steps; i++) {
+      if (w.phase === "dead" && w.deathT > 0.6) confirmPressed(w);
+      stepWorld(w, FIXED, { heading: pilotHeading(w, 0.9), boost: i % 700 < 90 });
+      for (const o of w.orbs) {
+        const gap = arenaEdge(w, o.x, o.y).gap;
+        if (gap < worst) {
+          worst = gap;
+          worstAt = `(${o.x.toFixed(3)},${o.y.toFixed(3)}) carrying "${o.label}"`;
+        }
+      }
+    }
+    assert.ok(
+      worst >= -1e-9,
+      `${name}: an orb was ${(-worst).toFixed(4)} outside the rim at ${worstAt}`,
+    );
+    // And it is a real ellipse being tested, not a circle wearing a new name.
+    const axes = arenaAxes(w);
+    const ratio = Math.max(axes.a, axes.b) / Math.min(axes.a, axes.b);
+    assert.ok(
+      name === "square" ? ratio === 1 : ratio > 1.2,
+      `${name}: the vent came out ${ratio.toFixed(2)}:1 — the screen's shape did not reach the game`,
+    );
+  }
+});
+
+test("a rotation reshapes the board without stranding anything outside it", () => {
+  // The one moment the vent gets SMALLER along an axis: a tall ellipse becomes a
+  // wide one and everything in the ends of the old shape is now in the black.
+  const w = fresh("rotate", 390, 844);
+  for (let i = 0; i < Math.round(45 / FIXED); i++) {
+    stepWorld(w, FIXED, { heading: pilotHeading(w, 0.9), boost: false });
+  }
+  const before = w.orbs.map((o) => ({ x: o.x, y: o.y }));
+  assert.ok(
+    before.some((o) => Math.abs(o.y) > w.arenaR * 1.05),
+    "no orb was out in the tall end of the vent, so the rotation proves nothing",
+  );
+  setArenaAspect(w, 844, 390);
+  for (const o of w.orbs) {
+    assert.ok(
+      arenaEdge(w, o.x, o.y).gap >= TUNE.orbRadius * 1.1 - 1e-9,
+      `an orb was left at (${o.x.toFixed(3)},${o.y.toFixed(3)}) after the rotation`,
+    );
+  }
+  assert.ok(arenaEdge(w, w.serpent.x, w.serpent.y).gap > 0, "the serpent was left outside the new vent");
+  // And the run keeps running through it.
+  for (let i = 0; i < 600; i++) stepWorld(w, FIXED, { heading: pilotHeading(w, 0.9), boost: false });
+  assert.ok(Number.isFinite(w.serpent.x) && Number.isFinite(w.serpent.y));
+});
+
+test("a taller board carries a proportionally denser field, not a sparser one", () => {
+  // The field IS the maze — `orbs.ts` says so. A 2.2x board holding the same ten
+  // orbs is half the density and half the obstacle course, on the device most
+  // children hold.
+  const square = fresh("density-square", 600, 600);
+  const tall = fresh("density-tall", 390, 844);
+  const areaRatio = (tall.aspectX * tall.aspectY) / (square.aspectX * square.aspectY);
+  assert.ok(areaRatio > 2, `the tall board is only ${areaRatio.toFixed(2)}x the area`);
+  const ratio = tall.orbs.length / square.orbs.length;
+  assert.ok(
+    Math.abs(ratio - areaRatio) < 0.25,
+    `the tall board is ${areaRatio.toFixed(2)}x the area but carries ${ratio.toFixed(2)}x the orbs`,
+  );
+  const goodShare = (x: World): number => x.orbs.filter((o) => o.good).length / x.orbs.length;
+  assert.ok(
+    Math.abs(goodShare(tall) - goodShare(square)) < 0.12,
+    `the share of edible orbs changed with the screen: ${goodShare(square).toFixed(2)} to ${goodShare(tall).toFixed(2)}`,
+  );
 });
