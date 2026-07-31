@@ -31,7 +31,7 @@
 
 import { strict as assert } from 'node:assert'
 import { test } from 'node:test'
-import { Engine, ESCAPE_SLACK } from './engine.ts'
+import { Engine, ESCAPE_CELLS } from './engine.ts'
 import { at, emptyCells, hasLegalMerge, place, polyps } from './board.ts'
 import { canSplit, decompose } from './ladder.ts'
 import { makeRng } from './rng.ts'
@@ -168,6 +168,10 @@ test('the founder’s board: 5 = ▢ + ▢ + ▢ on a shelf of nothing under 18'
   assert.equal(fours.length, 2)
   assert.ok(engine.merge((fours[0] as { cell: number }).cell, (fours[1] as { cell: number }).cell))
   assert.equal(engine.reachable(), false, 'the shelf can no longer build 5 — this is the moment')
+  // Nothing on this shelf is on the 5-ladder, so no amount of joining or halving
+  // produces a five: the reef has to owe one, and it has to know that it does.
+  assert.deepEqual(engine.s.stock, [5], 'the reef must owe the five')
+  assert.equal(engine.solvable(), true, 'and the position must still be winnable')
 
   // From here the child is patient and does everything the glass affords, CLEAR
   // included. The reef must give them a five.
@@ -205,16 +209,18 @@ test('CLEAR always works: a full shelf is always opened up, and SPLIT works agai
   assert.equal(emptyCells(engine.s.board).length, 0, 'the shelf is full again')
 
   // The founder's exact complaint about the old CLEAR: "only one goes away".
-  const owed = engine.s.stock.length
   const events = engine.dissolve()
   const cleared = events.find((e) => e.kind === 'dissolve')
   assert.ok(cleared, 'CLEAR must do something on a full shelf')
   const free = emptyCells(engine.s.board).length
   assert.ok(
-    free >= owed + ESCAPE_SLACK,
-    `CLEAR left ${free} cells for a debt of ${owed} — that is not an escape`,
+    free >= ESCAPE_CELLS,
+    `CLEAR left ${free} cells, which is under the ${ESCAPE_CELLS} a debt can need — not an escape`,
   )
-  assert.ok(free > 1, `CLEAR freed ${free} cell(s); the shipped one freed exactly one`)
+  assert.ok(
+    engine.s.stock.length <= free,
+    `the reef owes ${engine.s.stock.length} polyps into ${free} cells`,
+  )
 
   // "88 on a full board so you can't even split it" — a split needs a free cell,
   // so an escape that does not restore one has not restored the game either.
@@ -227,10 +233,19 @@ test('CLEAR always works: a full shelf is always opened up, and SPLIT works agai
 
 test('CLEAR is offered before the shelf jams solid, and never when there is already room', () => {
   const engine = makeEngine(fixedHost(5), 11)
-  loadShelf(engine, 6, [...HIGH, 1, 4, 4])
+  // ONE free cell — not jammed, but nowhere near enough to pay a debt into and
+  // one drag away from being jammed. Waiting for the last cell to go before
+  // offering the way out is a minute of a child watching nothing happen.
+  loadShelf(engine, 6, [...HIGH.slice(0, 38), 1, 4, 4])
   engine.ask()
-  assert.equal(engine.needsRoom, true, 'a full shelf needs room')
+  assert.equal(emptyCells(engine.s.board).length, 1, 'the shelf must have exactly one cell left')
+  assert.equal(engine.needsRoom, true, 'one free cell is not room')
+
   engine.dissolve()
+  assert.ok(
+    emptyCells(engine.s.board).length >= ESCAPE_CELLS,
+    'CLEAR must leave at least the slack it promises',
+  )
   assert.equal(engine.needsRoom, false, 'a shelf CLEAR has just opened up does not need more')
 })
 

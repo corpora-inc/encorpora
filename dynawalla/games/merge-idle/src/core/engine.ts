@@ -113,6 +113,20 @@ const RECENT = 4
  */
 export const ESCAPE_SLACK = 2
 
+/**
+ * The biggest debt the reef can ever owe: three terms, two halves apiece.
+ *
+ * A constant and not `stock.length` on purpose. CLEAR clears room and then works
+ * out what it owes, and on the founder's own board the clearing is what CREATES
+ * the debt — it takes away the last small polyp, so a target that was answerable
+ * a moment ago now needs stocking. Sizing the escape against the debt as it stood
+ * *before* the purge left the shelf one cell short of the debt the purge made.
+ */
+export const MAX_DEBT = 6
+
+/** The room CLEAR restores, and the point below which it is offered. */
+export const ESCAPE_CELLS = MAX_DEBT + ESCAPE_SLACK
+
 export class Engine {
   readonly s: State
   private deps: EngineDeps
@@ -322,7 +336,7 @@ export class Engine {
 
   /** How much room the shelf needs before the reef can pay what it owes. */
   private escapeRoom(): number {
-    return this.s.stock.length + ESCAPE_SLACK
+    return ESCAPE_CELLS
   }
 
   /**
