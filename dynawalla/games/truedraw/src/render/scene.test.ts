@@ -7,7 +7,7 @@ import { OUTCOMES } from "../game/response.ts"
 import type { Phase } from "../game/round.ts"
 import { newRun, applyOutcome, type Run } from "../game/run.ts"
 import type { Statement } from "../game/statement.ts"
-import { fakeCanvas, numbersIn, type Recorder } from "./fakeCanvas.ts"
+import { fakeCanvas, numbersIn, type Op, type Recorder } from "./fakeCanvas.ts"
 import { Gesture } from "../game/gesture.ts"
 import {
   CELEBRATIONS,
@@ -18,6 +18,8 @@ import {
 } from "./flourish.ts"
 import { NUDGE_MS } from "./hint.ts"
 import { Scene, type Drag, type SceneState } from "./scene.ts"
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts"
+import { BRASS_DIM } from "./palette.ts"
 
 const SIZES: readonly [number, number][] = [
   [320, 568],
@@ -26,7 +28,7 @@ const SIZES: readonly [number, number][] = [
   [1280, 800],
 ]
 
-const PHASES: readonly Phase[] = ["idle", "raise", "still", "call", "verdict", "clear", "over"]
+const PHASES: readonly Phase[] = ["idle", "raise", "still", "call", "verdict", "study", "clear", "over"]
 
 function statement(over: Partial<Statement> = {}): Statement {
   return {
@@ -863,5 +865,81 @@ test("reduced motion does not tilt the slate, and still follows the finger", () 
     } else {
       assert.ok(rotates.length > restRotates.length, "the slate did not tilt as it was thrown")
     }
+  }
+})
+
+test("a held sum says it is waiting, and only once a touch would be honoured", () => {
+  // `study` has no deadline on it, and a street that is waiting with no sign of
+  // waiting reads as a street that has stopped. The sign is a brass hairline
+  // under the slate — `drawOnward` — and it arrives after `Round.tap`'s settle
+  // floor, so it is never an invitation to touch something that is being
+  // swallowed.
+  //
+  // Identified by its shape rather than by its position in the frame: a single
+  // horizontal stroke, in dim brass, at less than full strength. Nothing else in
+  // the street draws one.
+  const hairlines = (ops: readonly Op[]): number => {
+    let n = 0
+    for (let i = 2; i < ops.length; i++) {
+      const stroke = ops[i]
+      const to = ops[i - 1]
+      const from = ops[i - 2]
+      if (stroke?.name !== "stroke" || to?.name !== "lineTo" || from?.name !== "moveTo") continue
+      if (to.args[1] !== from.args[1]) continue
+      if (stroke.style !== BRASS_DIM || stroke.alpha >= 1) continue
+      n++
+    }
+    return n
+  }
+
+  const frame = (phase: Phase, elapsedMs: number): Op[] => {
+    const { scene: sc, rec } = scene(390, 844)
+    sc.resize()
+    rec.reset()
+    sc.draw(
+      state({
+        phase,
+        elapsedMs,
+        progress: 1,
+        outcome: "dud",
+        run: settle(newRun(), "dud"),
+        flourish: { kind: "recut", outcome: "dud" } as Flourish,
+      }),
+    )
+    return rec.ops
+  }
+
+  // …and the thing it is inviting a touch on is still on the slate. `study` is a
+  // fourth phase in which a verdict is showing, and every branch in `scene.ts`
+  // that lists the others has to list it too — otherwise the hold holds a blank
+  // slate, which is worse than the flash it replaced.
+  const printed = (ops: readonly Op[]): string =>
+    ops
+      .filter((op) => op.name === "fillText")
+      .map((op) => String(op.args[0]))
+      .join("")
+  assert.ok(
+    printed(frame("study", 4000)).includes(statement().answer),
+    `the true value is not on the slate while it is being held: ${printed(frame("study", 4000))}`,
+  )
+  assert.equal(
+    printed(frame("study", 4000)),
+    printed(frame("verdict", 4000)),
+    "the held sum is not the frame the animation ended on",
+  )
+
+  const quiet = hairlines(frame("study", REVEAL_SETTLE_MS - 1))
+  const cued = hairlines(frame("study", 4000))
+  assert.equal(
+    cued,
+    quiet + 1,
+    `a held sum past its settle floor drew ${String(cued)} go-on marks against ${String(quiet)} inside it`,
+  )
+  assert.equal(quiet, 0, "the go-on mark appeared inside the settle floor, where a touch does nothing")
+
+  // It exists in no other phase: not over the animation it follows, not once the
+  // slate is leaving, not over a live window.
+  for (const phase of ["verdict", "clear", "call"] as const) {
+    assert.equal(hairlines(frame(phase, 4000)), 0, `the go-on mark leaked into ${phase}`)
   }
 })

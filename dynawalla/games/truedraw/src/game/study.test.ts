@@ -56,6 +56,23 @@ function pump(round: Round, ms: number): void {
   for (let t = 0; t < ms; t += 16) round.advance(16)
 }
 
+/**
+ * Frames until the street reaches `phase`, and BOUNDED.
+ *
+ * The bound is the point. An unbounded `while (round.phase !== "call")` is how
+ * this file first failed a mutation check by hanging for two minutes instead of
+ * saying anything: a change that holds a beat forever makes the loop immortal,
+ * and a test that never returns reports nothing at all.
+ */
+function runTo(round: Round, phase: string, ms = 30_000): void {
+  for (let t = 0; t < ms && round.phase !== phase; t += 16) round.advance(16)
+  assert.equal(
+    round.phase,
+    phase,
+    `the street never reached ${phase} in ${String(ms / 1000)}s — it is stuck in ${round.phase}`,
+  )
+}
+
 /** A round parked on a held miss: kept a counterfeit, animation finished. */
 function atStudy(): Round {
   const round = atCall(fixed(false))
@@ -135,6 +152,11 @@ test("a correct call is never held — the street is not a queue of dismissals",
     pump(round, TIMING.verdict.spot + TIMING.clear + TIMING.raise + 320 + 64)
     assert.notEqual(round.phase, "study", "a correct call held the child for a receipt")
     assert.equal(round.phase, "call", "a correct call needed a touch to move on")
+    // …and it keeps doing so, unattended, for slate after slate.
+    for (let i = 0; i < 5; i++) {
+      round.verdict(truth ? "keep" : "toss")
+      runTo(round, "call", 8_000)
+    }
   }
 })
 
@@ -157,7 +179,7 @@ test("a child on a run of true calls is not held for a sum they plainly know", (
   const round = new Round(fixed(true), TIMING)
   round.tap()
   for (let i = 0; i < STUDY_STREAK; i++) {
-    while (round.phase !== "call") round.advance(16)
+    runTo(round, "call", 8_000)
     round.verdict("keep")
     assert.equal(round.phase, "verdict", `call ${String(i)} was not banked`)
     pump(round, TIMING.verdict.bank + TIMING.clear + 32)
@@ -165,7 +187,7 @@ test("a child on a run of true calls is not held for a sum they plainly know", (
   assert.equal(round.streak, STUDY_STREAK, `only ${String(round.streak)} correct calls in a row`)
 
   // …and now a miss. No hold: skipping the ceremony is the reward for mastery.
-  while (round.phase !== "call") round.advance(16)
+  runTo(round, "call", 8_000)
   round.verdict("toss")
   pump(round, TIMING.verdict.burn + 32)
   assert.notEqual(round.phase, "study", "a child eight true calls into a run was held for a reveal")
