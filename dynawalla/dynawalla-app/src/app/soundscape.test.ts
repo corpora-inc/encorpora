@@ -155,6 +155,29 @@ test("the key CANNOT move under a child, whatever the clock says", () => {
   )
 })
 
+test("replaying one game is still a doorway, once you have left it", () => {
+  // The other side of the ownership guard, and the failure it would otherwise
+  // be: a child who plays THE STEELYARD, leaves, and opens it again is at a
+  // doorway like any other. If leaving did not give the key back, the pack id
+  // would still match on the way in and that child would hear one mode for the
+  // rest of the day — the guard turned into a freeze.
+  resetAppSoundscape(21)
+  const STEELYARD = "dw.counterweight"
+  const first = soundscapeForPack(STEELYARD, T0)
+  claimSoundscape(STEELYARD)
+  assert.deepEqual(
+    soundscapeForPack(STEELYARD, T0 + 2 * ROTATION_MS),
+    first,
+    "the key moved while the game was still open",
+  )
+  releaseSoundscape(STEELYARD)
+  assert.notDeepEqual(
+    soundscapeForPack(STEELYARD, T0 + 2 * ROTATION_MS),
+    first,
+    "a child replaying one game heard the same key forever",
+  )
+})
+
 test("packSettings is a pure function of what it is handed — it reads no clock", () => {
   // The other half of the same guarantee, and the cheapest way to measure it:
   // take the clock away. Anything on this path that reads one throws.

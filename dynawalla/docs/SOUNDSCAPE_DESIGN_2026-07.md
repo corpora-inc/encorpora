@@ -435,13 +435,20 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
    * **A new key every eight minutes after that** — long enough that a whole run
      at one game sits inside one key, short enough that a long afternoon hears
      five or six.
-   * **The clock is only read at a doorway.** The key is drawn when a pack is
-     mounted and pinned for the life of that mount. A change *underneath* a
+   * **The key cannot move while a pack owns it.** A change *underneath* a
      child — mid-question, because a timer went off — would slide the drone
      under the plate they are holding, and that is worse than repetition. So the
      app changes key while a child is walking between games and never while they
      are in one. A forty-minute session at a single pack stays in one key on
      purpose; the walker is what keeps that from being the same ding twice.
+
+     This is an invariant of the module rather than a convention the caller
+     keeps. `packSettings` re-runs on every settings change — a parent moving
+     the text size slider — so "the host remembered to pin it" would be one
+     refactor away from a key that rotates under a playing child with nothing
+     failing. `soundscapeForPack(packId, now)` hands the same key back to the
+     pack that already has it, however often it asks; leaving the stage is what
+     lets the next doorway rotate.
    * **Never the same mode twice running.** A uniform draw from 38 repeats about
      one doorway in 38, and a repeat is exactly the "stale and repetitive" the
      brief names. Re-drawing costs one comparison.
@@ -483,7 +490,7 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 | Where it is published to a pack | `packs/shared/game-host/index.ts` → `publish()` |
 | Which key the app is in, and when it moves | `dynawalla-app/src/app/soundscape.ts` |
 | Where it is put on the wire | `dynawalla-app/src/packs/services.ts` → `packSettings()` |
-| The doorway that draws one | `dynawalla-app/src/packs/Stage.tsx` |
+| The doorway that draws one, and gives it back | `dynawalla-app/src/packs/Stage.tsx` |
 | THE STEELYARD's whole musical vocabulary | `games/counterweight/src/tune.ts` |
 | The synthesis, and the rubble recipe | `games/counterweight/src/audio.ts` |
 | Where it is turned on, for now | `games/counterweight/src/main.ts` |
