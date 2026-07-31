@@ -314,8 +314,10 @@ test("the shared audio modules the host imports are arithmetic, and only arithme
 
     assert.deepEqual(escapes, [], `${path.relative(src, entry)} reaches outside itself`)
     assert.deepEqual(dom, [], `${path.relative(src, entry)} touches the DOM`)
-    // A walk that found one file would pass both assertions on nothing.
-    assert.ok(seen.size >= 5, `only ${seen.size} files walked from ${entry}`)
+    // A walk that found only the entry point would pass both assertions on
+    // nothing. Deliberately loose: this is a non-vacuity floor, not a file
+    // count, and merging two modules must not turn a green refactor red.
+    assert.ok(seen.size >= 3, `only ${seen.size} files walked from ${entry}`)
   }
 })
 

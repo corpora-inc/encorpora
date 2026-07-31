@@ -157,6 +157,7 @@ export const CUE_PEAK = 0.12
 export type CueContext = BusContext & {
   readonly state?: string
   resume?: () => unknown
+  close?: () => unknown
   createOscillator: () => OscillatorNode
 }
 
@@ -171,6 +172,33 @@ const openAudioContext: CueOpener = () => {
     typeof AudioContext === "function" ? AudioContext : undefined
   if (!Ctor) return null
   return new Ctor()
+}
+
+/**
+ * Give the device back: disconnect the bus and close the context.
+ *
+ * Lifted out of `createServices` so it can be driven against a real cue graph
+ * in a test — the leak was in the session, and a session's `AudioContext` is
+ * made lazily on the first cue inside a closure nothing else can reach.
+ *
+ * Each step is guarded independently and loudly: a bus that refuses to
+ * disconnect must not stop the context being closed, because the context is the
+ * scarce one. Idempotent, because React runs a cleanup twice in development and
+ * an unmount after a failed launch runs it against a session that never played.
+ */
+export function closeCueAudio(audio: CueAudio): void {
+  try {
+    audio.bus?.disconnect()
+  } catch (error) {
+    console.error("[packs] the cue bus would not disconnect", error)
+  }
+  audio.bus = null
+  try {
+    audio.context?.close?.()
+  } catch (error) {
+    console.error("[packs] the cue context would not close", error)
+  }
+  audio.context = null
 }
 
 /**
@@ -269,6 +297,17 @@ export type LaunchServices = {
    * restart a child's run to change a colour.
    */
   push: (settings: Settings) => void
+  /**
+   * End the session's hold on the device.
+   *
+   * Called when the stage unmounts. Nothing in Web Audio may outlive a pack:
+   * the safety bus subscribes to the app's Sound setting for as long as it
+   * lives (`game-audio/sound.ts` keeps a module-global set of live buses), and
+   * an `AudioContext` is a scarce resource — Chromium allows six per document
+   * and refuses the seventh, which is a child opening eight games in a sitting
+   * and the host's cues going silent for the rest of the app session.
+   */
+  dispose: () => void
 }
 
 /**
@@ -386,5 +425,6 @@ export function createServices(deps: ServicesDeps): LaunchServices {
     push: (settings) => {
       current = settings
     },
+    dispose: () => closeCueAudio(audio),
   }
 }

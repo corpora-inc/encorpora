@@ -25,8 +25,7 @@
 //   2. **A new key every `ROTATION_MS` after that.** Eight minutes. Long enough
 //      that a whole run at one game sits inside one key; short enough that a
 //      long afternoon hears five or six of them.
-//   3. **The clock is only read at a doorway.** `soundscapeAtDoorway` is called
-//      when a pack is mounted and nowhere else. A key change *underneath* a
+//   3. **The key cannot move while a pack owns it.** A key change *underneath* a
 //      child — mid-question, because a timer went off — is the jarring thing,
 //      and it is worse than repetition: the drone would slide and the plate a
 //      child is holding would answer in a different mode than it did a second
@@ -35,6 +34,16 @@
 //      therefore stays in one key on purpose; the walker is what keeps that
 //      from being the same ding twice, and stage 2's `levelComplete` feedback
 //      is the designed place for a mid-session change.
+//
+//      This is an invariant of THIS module and not a convention the caller has
+//      to keep, which matters: `packSettings` re-runs on every settings change
+//      — a parent moving the text size slider — so "the host remembered to pin
+//      it in `useState`" is one refactor away from a key that rotates under a
+//      playing child, and nothing would fail. `soundscapeForPack` takes the id
+//      of the pack asking and hands the *same* key back to the pack that
+//      already has it, whatever the clock says and however often it is called.
+//      Rotation is what happens when a DIFFERENT pack asks, or when the one
+//      that owned it has left.
 //   4. **Never the same mode twice running.** A uniform draw from 38 modes
 //      repeats about one doorway in 38, and a repeat is exactly the "stale and
 //      repetitive" the brief names. Re-drawing costs one comparison.
@@ -99,6 +108,16 @@ let launchSeed = drawLaunchSeed()
 let held: Held | null = null
 
 /**
+ * The pack that currently owns the key, or `null` when nothing is on the stage.
+ *
+ * The whole of the "it does not move under a child" guarantee. A pack id rather
+ * than a boolean because the two moments overlap: React renders the incoming
+ * pack before it runs the outgoing one's cleanup, so a counter would still be
+ * held by the pack being torn down and the doorway would never rotate.
+ */
+let owner: string | null = null
+
+/**
  * A seed for one key, from the launch seed, the epoch and the re-draw attempt.
  *
  * Exported because it is the part worth asserting: two adjacent epochs must not
@@ -139,32 +158,57 @@ function draw(epoch: number, avoid: string | null): Soundscape {
 }
 
 /**
- * The key to play a pack in, asked for at the moment the pack is mounted.
+ * The key to play a pack in.
  *
- * This is the ONLY function in the host that reads a clock about music, and the
- * only one that can change the app's key. Call it at a doorway; pin what it
- * returns for the life of the mount, so that a parent changing the text size
- * mid-game re-publishes the *same* four numbers rather than a new key.
+ * The ONLY function in the host that reads a clock about music, and the only
+ * one that can change the app's key. Two rules, and between them they are the
+ * whole policy:
  *
- * Idempotent inside the rotation window, which is not only for React's
- * double-invoked initialisers: two packs opened a minute apart must be the same
- * key, or the bazaar changes key at every doorway again with a slower rhythm.
+ *   * **The pack that owns the key gets it back.** Ask again — from a settings
+ *     push, from a re-render, from React's double-invoked initialiser — and the
+ *     answer is the same four numbers, ten rotation windows later or not.
+ *   * **Anyone else rotates it if it is due.** Two packs opened a minute apart
+ *     are the same key, or the bazaar changes key at every doorway again with a
+ *     slower rhythm; two opened nine minutes apart are not.
  *
  * A clock that has gone backwards — a device whose time was corrected, or a
  * WebView restored from a snapshot — rotates once and then settles, rather than
- * pinning the app in one key until the wall clock catches up.
+ * pinning the app in one key until the wall clock catches up. A clock that is
+ * not a number at all does not move the key, because a guard that pinned
+ * `since` at zero would rotate at every doorway forever afterwards.
  */
-export function soundscapeAtDoorway(now: number): Soundscape {
-  const at = Number.isFinite(now) ? now : 0
+export function soundscapeForPack(packId: string, now: number): Soundscape {
   const previous = held
+  if (previous !== null && owner === packId) return previous.scape
+  const at = Number.isFinite(now) ? now : (previous?.since ?? 0)
   if (previous !== null) {
     const elapsed = at - previous.since
-    if (elapsed >= 0 && elapsed < ROTATION_MS) return previous.scape
+    if (elapsed >= 0 && elapsed < ROTATION_MS) {
+      owner = packId
+      return previous.scape
+    }
   }
   const epoch = previous === null ? 0 : previous.epoch + 1
   const scape = draw(epoch, previous?.scape.modeId ?? null)
   held = { scape, since: at, epoch }
+  owner = packId
   return scape
+}
+
+/**
+ * This pack is on the stage and the key is its until it leaves.
+ *
+ * Called from an effect rather than during render, so that React's development
+ * double-invoke — mount, tear down, mount again — ends with the ownership it
+ * started with instead of with nobody holding the key.
+ */
+export function claimSoundscape(packId: string): void {
+  owner = packId
+}
+
+/** This pack has left the stage. The next doorway may rotate. */
+export function releaseSoundscape(packId: string): void {
+  if (owner === packId) owner = null
 }
 
 /**
@@ -178,4 +222,5 @@ export function soundscapeAtDoorway(now: number): Soundscape {
 export function resetAppSoundscape(seed?: number): void {
   launchSeed = typeof seed === "number" && Number.isFinite(seed) ? seed >>> 0 : drawLaunchSeed()
   held = null
+  owner = null
 }

@@ -35,7 +35,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
-import { CUE_PEAK, playCue, type CueAudio, type CueContext } from "./services.ts"
+import { CUE_PEAK, closeCueAudio, playCue, type CueAudio, type CueContext } from "./services.ts"
 import type { SoundCue } from "../../../packs/sdk/src/index.ts"
 import { CEILING } from "../../../packs/shared/game-audio/index.ts"
 
@@ -86,6 +86,7 @@ class Param {
 }
 
 class Node {
+  disconnected = false
   readonly gain = new Param(1)
   readonly frequency = new Param(440)
   readonly threshold = new Param()
@@ -107,6 +108,7 @@ class Node {
     return d
   }
   disconnect(): void {
+    this.disconnected = true
     this.outs.length = 0
   }
   start(): void {
@@ -136,6 +138,7 @@ class Ctx {
   currentTime = 0
   state = "running"
   resumed = 0
+  closed = 0
   readonly destination = new Node("dest")
   readonly made: Node[] = []
   private mk(kind: Kind): Node {
@@ -145,6 +148,9 @@ class Ctx {
   }
   resume(): void {
     this.resumed += 1
+  }
+  close(): void {
+    this.closed += 1
   }
   createGain(): GainNode {
     return this.mk("gain") as unknown as GainNode
@@ -319,4 +325,40 @@ test("a context that throws is logged, loudly, and does not take the host down",
     console.error = real
   }
   assert.equal(errors.length, 1, "a failing cue was swallowed silently")
+})
+
+test("closing a session gives the device back, totally and idempotently", () => {
+  // Not tidiness. `createSafetyBus` registers a listener in `game-audio`'s
+  // module-global set of live buses, which keeps the bus, its nodes and the
+  // context reachable for the life of the app — and an `AudioContext` is
+  // scarce: Chromium allows six per document and throws on the seventh. A child
+  // who opens eight games in one sitting would find the host's cues silent for
+  // the rest of the session, with one caught-and-logged error to show for it.
+  //
+  // Idempotent because React runs a cleanup twice in development StrictMode,
+  // and an unmount after a launch that never played runs it against a session
+  // with no context at all.
+  const ctx = new Ctx()
+  const audio: CueAudio = { context: null, bus: null }
+  playCue(audio, "tick", () => asContext(ctx))
+  // The bus's own nodes: the chain after the oscillator and the cue's envelope.
+  // The envelope gain is per-tap and is collected when the oscillator stops,
+  // which is the same thing every game in the fleet relies on.
+  const nodes = path(ctx).slice(2)
+  assert.ok(nodes.length >= 4, `the bus is only ${nodes.length} nodes`)
+
+  closeCueAudio(audio)
+  assert.ok(nodes.every((n) => n.disconnected), "a bus node was left connected")
+  assert.equal(ctx.closed, 1)
+  assert.equal(audio.bus, null)
+  assert.equal(audio.context, null)
+
+  closeCueAudio(audio)
+  assert.equal(ctx.closed, 1, "a second close reached the device")
+  closeCueAudio({ context: null, bus: null })
+
+  // And the session can play again afterwards: a new context, a new bus, and
+  // the ceiling still in the path.
+  playCue(audio, "seat", () => asContext(new Ctx()))
+  assert.notEqual(audio.bus, null)
 })
