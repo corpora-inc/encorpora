@@ -14,6 +14,10 @@
 
 import { TAU, randRange } from "./num.ts";
 import { TUNE } from "./tuning.ts";
+import { pullInside, rimEdge } from "./arena.ts";
+
+/** The vent's semi-axes this frame. The short one is `world.arenaR`; see `arena.ts`. */
+export type Axes = { a: number; b: number };
 
 export type Orb = {
   x: number;
@@ -58,16 +62,22 @@ export function createOrb(): Orb {
  * and not on top of another orb. Falls back to the best of N tries rather than
  * looping forever.
  */
-export function placeOrb(orb: Orb, orbs: Orb[], arenaR: number, headX: number, headY: number): void {
+export function placeOrb(orb: Orb, orbs: Orb[], axes: Axes, headX: number, headY: number): void {
   let bestX = 0;
   let bestY = 0;
   let bestScore = -1;
-  const limit = arenaR - TUNE.orbRadius * 2.2;
+  const clear = TUNE.orbRadius * 2.2;
+  // Candidates are drawn from the vent shrunk by the clearance, which is uniform
+  // over the ellipse rather than over a disc; the `pullInside` at the end is what
+  // actually guarantees the clearance, because a concentric ellipse is not the
+  // same curve as the rim offset inward and only one of those is the rule.
+  const sa = Math.max(TUNE.orbRadius, axes.a - clear);
+  const sb = Math.max(TUNE.orbRadius, axes.b - clear);
   for (let attempt = 0; attempt < 14; attempt++) {
     const a = randRange(0, TAU);
-    const r = Math.sqrt(Math.random()) * limit;
-    const x = Math.cos(a) * r;
-    const y = Math.sin(a) * r;
+    const r = Math.sqrt(Math.random());
+    const x = Math.cos(a) * r * sa;
+    const y = Math.sin(a) * r * sb;
     const dHead = Math.hypot(x - headX, y - headY);
     if (dHead < TUNE.spawnClearance && attempt < 10) continue;
     let nearest = dHead;
@@ -82,8 +92,9 @@ export function placeOrb(orb: Orb, orbs: Orb[], arenaR: number, headX: number, h
     }
     if (bestScore > TUNE.spawnClearance) break;
   }
-  orb.x = bestX;
-  orb.y = bestY;
+  const put = pullInside(axes.a, axes.b, bestX, bestY, clear);
+  orb.x = put.x;
+  orb.y = put.y;
   const a = randRange(0, TAU);
   const s = randRange(0.3, 1) * TUNE.orbDrift;
   orb.vx = Math.cos(a) * s;
@@ -103,7 +114,7 @@ export function molt(orb: Orb, label: string, good: boolean, dur: number): void 
 
 export type OrbStepOptions = {
   dt: number;
-  arenaR: number;
+  axes: Axes;
   headX: number;
   headY: number;
   /** Rotating current, from depth 4. 0 disables it. */
@@ -153,16 +164,20 @@ export function stepOrbs(orbs: Orb[], o: OrbStepOptions): void {
     orb.x += orb.vx * dt;
     orb.y += orb.vy * dt;
 
-    const d = Math.hypot(orb.x, orb.y);
-    const limit = o.arenaR - TUNE.orbRadius * 1.1;
-    if (d > limit && d > 0) {
-      const nx = orb.x / d;
-      const ny = orb.y / d;
-      orb.x = nx * limit;
-      orb.y = ny * limit;
-      const dot = orb.vx * nx + orb.vy * ny;
-      orb.vx -= 2 * dot * nx;
-      orb.vy -= 2 * dot * ny;
+    // The rim contains the field too, and by the same shape the serpent hits.
+    const limit = TUNE.orbRadius * 1.1;
+    const e = rimEdge(o.axes.a, o.axes.b, orb.x, orb.y);
+    if (e.gap < limit) {
+      orb.x = e.x - e.nx * limit;
+      orb.y = e.y - e.ny * limit;
+      const dot = orb.vx * e.nx + orb.vy * e.ny;
+      // Only a drift that is still heading OUT is turned around. Reflecting
+      // unconditionally would flip an orb that the line above has already sent
+      // inward straight back at the wall, and it would sit there buzzing.
+      if (dot > 0) {
+        orb.vx -= 2 * dot * e.nx;
+        orb.vy -= 2 * dot * e.ny;
+      }
     }
   }
 }
