@@ -283,3 +283,41 @@ test("update planning offers only what would actually install", async () => {
   )
   assert.equal(offers[0]?.downloadBytes, 90_000)
 })
+
+test("a pack the catalogue has dropped entirely is left alone, not chased", () => {
+  // **The retirement path.** A game can leave the fleet — THE GRAPPLE FOUNDRY
+  // and THE GAVEL were withdrawn before the first production release — and when
+  // it does, its id simply stops appearing in the catalogue. There is no
+  // tombstone entry, no `download.url` set to null, no "unlisted" flag: the row
+  // is gone.
+  //
+  // What this pins, in the terms it was measured in: an installed pack with no
+  // catalogue row produces NO offer, throws nothing, and does not take the
+  // offers of the packs beside it down with it. So a device holding a retired
+  // game is never shown an update it has no artefact for.
+  //
+  // It survives two independent guards, which is worth writing down because it
+  // means neither can be removed on the assumption that the other is load
+  // bearing. `planUpdates` iterates the INSTALLED side and skips an id the
+  // catalogue does not answer for; and deleting that skip does not change this
+  // test's result, because `gateInstall` then refuses the `undefined` it is
+  // handed. Checked by mutating the skip away and re-running.
+  const installed: InstalledPack[] = [
+    { manifest: asManifest(raw({ version: "1.1.0" })), bytes: 1 },
+    { manifest: asManifest(raw({ id: "dynawalla.gavel", version: "1.0.0" })), bytes: 1 },
+    { manifest: asManifest(raw({ id: "dynawalla.foundry", version: "1.0.0" })), bytes: 1 },
+  ]
+  // The catalogue this build publishes: the retired pair are not in it at all.
+  const catalog = [asManifest(raw())]
+
+  const offers = planUpdates(catalog, installed, host)
+  assert.deepEqual(
+    offers.map((offer) => offer.manifest.id),
+    ["abacus.tower"],
+    "a retired pack was offered an update it has no artefact for",
+  )
+
+  // An empty catalogue is the same answer, not a special case: it is what a
+  // device sees if the catalogue fetch returns a build that ships no packs.
+  assert.deepEqual(planUpdates([], installed, host), [])
+})

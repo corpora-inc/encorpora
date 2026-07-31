@@ -94,6 +94,36 @@ test("a damaged pack is reported rather than dropped", async () => {
   assert.equal(problems[0]?.id, "broken")
 })
 
+test("a retired pack — installed, gone from the catalogue — is still a launchable card", async () => {
+  // **What happens to a child who already has a game that got retired.**
+  //
+  // Games leave the fleet: THE GRAPPLE FOUNDRY and THE GAVEL were withdrawn
+  // before the first production release. The fear that has to be answered is a
+  // front door that lists a withdrawn pack, tries to fetch it, and draws a
+  // broken tile or a 404 on a device where the pack is sitting on disk, whole.
+  //
+  // It cannot happen, and this is why: the library is read from the pack root
+  // and *nothing else*. `readLibrary` never asks for the catalogue, so a pack's
+  // absence from it is not an input to whether the card appears. The native
+  // `catalog` here throws to prove that — the test fails the moment the front
+  // door starts consulting a remote list to decide what a child may open.
+  const native: PackNative = {
+    ...nativeWith([rowFor(manifest({ id: "dynawalla.gavel" }), "dynawalla.gavel")]),
+    catalog: () => Promise.reject(new Error("the front door asked for the catalogue")),
+  }
+  const { entries, problems } = await readLibrary({ native, host: hostProfile("0.1.0") })
+
+  assert.deepEqual(problems, [])
+  assert.equal(entries.length, 1, "a pack the catalogue no longer lists vanished from the device")
+  const entry = entries[0]
+  assert.ok(entry)
+  // Launchable, not merely listed: it holds a grant and an entry document, which
+  // is everything `PackFrame` needs to open it off the local pack scheme.
+  assert.deepEqual([...entry.granted], ["items", "items.reveal", "haptics"])
+  assert.equal(entry.manifest.entry, "pack.html")
+  assert.equal(await native.entryUrl(entry.manifest.id, entry.manifest.entry), "dynawalla-pack://localhost/dynawalla.gavel/pack.html")
+})
+
 test("the localised name is what a child is shown", async () => {
   const { entries } = await readLibrary({
     native: nativeWith([rowFor(manifest({ nameLocalized: { es: "FUSIÓN" } }))]),
