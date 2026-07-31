@@ -326,15 +326,18 @@ export const REVEAL_SETTLE_MS = 350
  * a single duration everywhere in the fleet.
  */
 export type RevealPlan = {
-  /** Whether there is a reveal at all. False is mastery, not neglect. */
-  readonly shown: boolean
-  /** Milliseconds before the child's own input may take it down. */
+  /** Milliseconds before the child's own input may take the reveal down. */
   readonly settleMs: number
   /**
    * Milliseconds after which the reveal takes ITSELF down.
    *
-   * `Number.POSITIVE_INFINITY` whenever it is shown: nothing but the child ends
-   * a reveal. Zero when it is not shown, so the game moves on in the same frame.
+   * `Number.POSITIVE_INFINITY` whenever there is a reveal at all: nothing but
+   * the child ends one. `0` when there is not — mastery, not neglect — so the
+   * game moves on in the same frame.
+   *
+   * There is deliberately no second `shown` field beside this. One was written,
+   * and THE GAVEL then consumed only that and never this, so the whole
+   * never-expires claim could be deleted from the module without a game noticing.
    */
   readonly holdMs: number
 }
@@ -368,8 +371,8 @@ export type RevealPlan = {
  * then just rush past the lesson/content".
  */
 export function revealPlan(spec: FlowSpec, intensity: number): RevealPlan {
-  if (!revealShown(spec, intensity)) return { shown: false, settleMs: 0, holdMs: 0 }
-  return { shown: true, settleMs: REVEAL_SETTLE_MS, holdMs: Number.POSITIVE_INFINITY }
+  if (!revealShown(spec, intensity)) return { settleMs: 0, holdMs: 0 }
+  return { settleMs: REVEAL_SETTLE_MS, holdMs: Number.POSITIVE_INFINITY }
 }
 
 /**

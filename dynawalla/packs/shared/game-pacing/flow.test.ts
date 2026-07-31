@@ -431,7 +431,7 @@ test("a reveal that is shown at all is never taken away by a timer", () => {
   // a reveal up, nothing but the child may take it down.
   for (let i = 0; i <= 1.0001; i += 0.01) {
     const plan = revealPlan(S, i)
-    if (!plan.shown) continue
+    if (plan.holdMs === 0) continue
     assert.equal(
       plan.holdMs,
       Number.POSITIVE_INFINITY,
@@ -440,20 +440,18 @@ test("a reveal that is shown at all is never taken away by a timer", () => {
   }
   // …and the calm end is emphatically inside that region.
   assert.equal(revealPlan(S, 0).holdMs, Number.POSITIVE_INFINITY)
-  assert.equal(revealPlan(S, 0).shown, true)
 })
 
 test("the reveal is skipped entirely at mastery, and that is the only way it ends without a hand", () => {
   const top = revealPlan(S, 1)
-  assert.equal(top.shown, false, "a player at the ceiling must not be held for a reveal")
-  assert.equal(top.holdMs, 0, "an unshown reveal must not delay the next item by a single ms")
+  assert.equal(top.holdMs, 0, "a player at the ceiling must not be held for a reveal")
   assert.equal(top.settleMs, 0, "an unshown reveal must not swallow input")
 
   // The line is `revealShown`'s and nobody else's — the plan may not invent a
   // second, differently-placed threshold.
   for (let i = 0; i <= 1.0001; i += 0.005) {
     assert.equal(
-      revealPlan(S, i).shown,
+      revealPlan(S, i).holdMs > 0,
       revealShown(S, i),
       `revealPlan and revealShown disagree at intensity ${i.toFixed(3)}`,
     )

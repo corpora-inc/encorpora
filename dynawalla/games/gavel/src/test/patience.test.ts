@@ -153,7 +153,7 @@ test("a lot already at the reveal's floor waits too — that was the whole compl
     MIN_REVEAL_MS,
     `at ${game.intensity.toFixed(3)} the old hold was ${revealHoldMs(game.intensity).toFixed(0)}ms, not the floor — pick a different lot count`,
   )
-  assert.equal(revealPlan(SPEC, game.intensity).shown, true, "the shared curve would skip this one")
+  assert.ok(revealPlan(SPEC, game.intensity).holdMs > 0, "the shared curve would skip this one")
 
   const clock = stepClock()
   const room = game.room
@@ -244,8 +244,8 @@ test("at the top of the ladder there is no reveal to wait for at all", () => {
   const sitting = play(PERFECT, 24)
   const game = sitting.game
   assert.equal(
-    revealPlan(SPEC, game.intensity).shown,
-    false,
+    revealPlan(SPEC, game.intensity).holdMs,
+    0,
     `twenty-four flawless lots only reached ${game.intensity.toFixed(3)} — not the ceiling`,
   )
   const clock = stepClock()

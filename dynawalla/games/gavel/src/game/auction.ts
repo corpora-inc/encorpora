@@ -190,7 +190,7 @@ export type Tally = {
 }
 
 /** What `revealPlan` would say about a lot with nothing to teach. */
-const NO_REVEAL = { shown: false, settleMs: 0, holdMs: 0 } as const
+const NO_REVEAL = { settleMs: 0, holdMs: 0 } as const
 
 type Slot = { readonly serial: number; readonly lot: string }
 
@@ -539,9 +539,8 @@ export class Auction {
     if (this.paused || this.phaseName !== "settled") return []
     if (this.elapsed < this.settleMs) return []
     this.waiting = false
-    // Not `elapsed = duration`: `duration` is infinite on a studied reveal and
-    // `Infinity - Infinity` is NaN. Collapsing the beat is the same statement
-    // and it survives both cases.
+    // Also collapses the brisk beat of a lot with nothing to study, which is the
+    // other thing this is called for.
     this.duration = 0
     return []
   }
@@ -651,12 +650,17 @@ export class Auction {
     // and see whether letting the lot go was right. "When you fold you should be
     // able to study the answers and then go on."
     const plan = teaches(settled) ? revealPlan(SPEC, this.intensityValue) : NO_REVEAL
-    this.waiting = plan.shown
+    // An infinite hold IS the wait, and reading it here rather than re-deciding
+    // it is what keeps the shared claim load-bearing at this call site.
+    this.waiting = !Number.isFinite(plan.holdMs)
     this.settleMs = plan.settleMs
-    // Only reached when the reveal is not being studied: the brisk beat that
-    // lets the room fade out, and the mastery case where there is no lesson to
-    // hold at all.
-    this.duration = plan.shown ? Number.POSITIVE_INFINITY : revealHoldMs(this.intensityValue)
+    // The brisk beat, for a lot with nothing to study — and ZERO for one that
+    // has, because there `waiting` is the whole mechanism and there is no clock
+    // to run. Deliberately not `Infinity` here as well: two mechanisms enforcing
+    // one rule means neither can be tested and one of them quietly rots.
+    // Measured — with the belt AND the braces on, deleting the `waiting` guard
+    // in `advance` broke nothing at all.
+    this.duration = this.waiting ? 0 : revealHoldMs(this.intensityValue)
     return [{ kind: "settled", settled }]
   }
 
