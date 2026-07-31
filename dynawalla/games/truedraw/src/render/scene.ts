@@ -34,6 +34,7 @@
 // driven to the pixel by `drag.test.ts`.
 
 import { safeInsets, safeRect, type Insets } from "../../../../packs/shared/game-chrome/index.ts"
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts"
 import { commitDistance } from "../game/gesture.ts"
 import type { Call, Outcome } from "../game/response.ts"
 import { isCorrect, isMiss } from "../game/response.ts"
@@ -122,6 +123,21 @@ const WINDOW_FLOOR = 0.45
 /** Share of the miss verdict spent completing the sum. The rest is the HOLD. */
 const REVEAL_SHARE = 0.45
 
+/** How long the "go on when you like" hairline takes to arrive. See `drawOnward`. */
+const ONWARD_MS = 900
+
+/**
+ * Phases in which the slate is showing a settled verdict.
+ *
+ * `study` is the held one: `verdict` runs the cross-fade that completes the sum
+ * and `study` is that finished sum standing still with no deadline on it. Every
+ * `phase === "verdict" ? progress : 1` in this file therefore reads 1 during
+ * `study`, which is exactly the frame the hold is meant to hold — the animation
+ * at its end. Listed once because four sites branched on the pair and a fifth
+ * would otherwise have been left short.
+ */
+const SETTLED_PHASES: ReadonlySet<string> = new Set(["verdict", "study", "clear"])
+
 const easeOut = (t: number): number => 1 - (1 - t) * (1 - t) * (1 - t)
 const easeInOut = (t: number): number => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2)
 const clamp01 = (t: number): number => Math.max(0, Math.min(1, t))
@@ -200,6 +216,7 @@ export class Scene {
     this.drawDestinations(state, hint)
     this.drawGhost(hint)
     this.drawSlate(state)
+    this.drawOnward(state)
     this.drawCelebration(state)
     this.drawShots(state)
     this.drawHoard(state)
@@ -462,7 +479,7 @@ export class Scene {
       const cool = clamp01((state.elapsedMs - 90) / Math.max(1, window - 90))
       return rise * (1 - (1 - WINDOW_FLOOR) * cool)
     }
-    if (state.phase === "verdict" || state.phase === "clear") {
+    if (SETTLED_PHASES.has(state.phase)) {
       if (state.outcome === null) return 1
       return isCorrect(state.outcome) ? 1 : WINDOW_FLOOR
     }
@@ -593,7 +610,7 @@ export class Scene {
    * paused across the settle — falls back rather than showing nothing.
    */
   private flourishOf(state: SceneState): Flourish | null {
-    if (state.phase !== "verdict" && state.phase !== "clear") return null
+    if (!SETTLED_PHASES.has(state.phase)) return null
     if (state.outcome === null) return null
     if (state.flourish && state.flourish.outcome === state.outcome) return state.flourish
     return defaultFlourish(state.outcome)
@@ -738,7 +755,7 @@ export class Scene {
       ctx.stroke()
     }
 
-    if (state.outcome === "bank" && (state.phase === "verdict" || state.phase === "clear")) {
+    if (state.outcome === "bank" && SETTLED_PHASES.has(state.phase)) {
       this.drawStrike(box, state)
     }
   }
@@ -1015,6 +1032,38 @@ export class Scene {
   // ── the hud, such as it is ──────────────────────────────────────────────
 
   /** Three brass pips. A spent one is an empty ring, and it goes out in silence. */
+  /**
+   * "Go on when you like": a brass hairline under the slate, and nothing else.
+   *
+   * The held sum has no deadline on it, and a street that is waiting with no sign
+   * that it is waiting reads as a street that has stopped. This is that sign, and
+   * it is a mark rather than a sentence — state lives in the design, and the
+   * string would ship fifty-odd times translated to say what the shape says.
+   *
+   * It arrives only once `Round.tap` would actually be honoured, so it is never
+   * an invitation to touch something that is being swallowed, and it arrives
+   * SLOWLY: anything that moves quickly beside a finished sum competes with it.
+   */
+  private drawOnward(state: SceneState): void {
+    if (state.phase !== "study") return
+    const t = clamp01((state.elapsedMs - REVEAL_SETTLE_MS) / ONWARD_MS)
+    if (t <= 0) return
+    const { ctx } = this
+    const { slate } = this.street
+    const w = slate.w * 0.3 * t
+    const y = slate.y + slate.h + Math.max(6, slate.h * 0.09)
+    ctx.strokeStyle = BRASS_DIM
+    ctx.globalAlpha = 0.3 + 0.4 * t
+    ctx.lineWidth = 2
+    ctx.lineCap = "round"
+    ctx.beginPath()
+    ctx.moveTo(slate.x + slate.w / 2 - w / 2, y)
+    ctx.lineTo(slate.x + slate.w / 2 + w / 2, y)
+    ctx.stroke()
+    ctx.globalAlpha = 1
+    ctx.lineCap = "butt"
+  }
+
   private drawShots(state: SceneState): void {
     const { ctx } = this
     // Before a run starts there is nothing on the street but the caller and three
@@ -1098,7 +1147,7 @@ export class Scene {
    * they are told.
    */
   private drawCoins(state: SceneState): void {
-    if (state.phase !== "verdict" && state.phase !== "clear") return
+    if (!SETTLED_PHASES.has(state.phase)) return
     if (state.coins === 0) return
     const { ctx } = this
     const { bag, slate } = this.street
