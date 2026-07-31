@@ -624,3 +624,71 @@ fn an_apk_without_bundled_packs_installs_nothing() {
     assert_eq!(fs::read_dir(&root).unwrap().count(), 0);
     let _ = fs::remove_dir_all(&root);
 }
+
+/// Writes a pack directory: a manifest, and one asset so a wipe is visible.
+fn pack_dir(root: &Path, id: &str, version: &str, digest: &str) -> PathBuf {
+    let dir = root.join(id);
+    fs::create_dir_all(&dir).expect("pack dir");
+    fs::write(
+        dir.join("manifest.json"),
+        manifest_json(id, version, Some(digest)),
+    )
+    .expect("manifest");
+    fs::write(dir.join("pack.html"), b"<!doctype html>").expect("entry");
+    dir
+}
+
+#[test]
+fn a_pack_that_is_no_longer_bundled_stays_installed_and_playable() {
+    // **This is what happens to a child's device when a game is retired.**
+    //
+    // A build that drops a pack drops it from `src-tauri/packs/`, so the next
+    // launch runs this sync against a source directory that no longer mentions
+    // it. The pack is already unpacked in the pack root, complete — manifest,
+    // entry document, assets — and nothing here walks the root looking for
+    // strangers. So it is left exactly where it is: `packs_list` still finds
+    // it, `readLibrary` still gates it, and the card still launches from disk.
+    // Retiring a game does not reach through a store listing and break the copy
+    // a child already has.
+    //
+    // **And it must not.** The pack root is not a mirror of the bundle — it is
+    // also where `packs_install` puts everything downloaded from the
+    // catalogue. A sync that deleted whatever it did not ship would uninstall
+    // every downloaded pack on every launch. The absence of a prune is the
+    // design, not an omission, which is why it is pinned here.
+    let root = scratch("retired-root");
+    let source = scratch("retired-source");
+
+    // On the device already: one pack this build still ships, and one it does not.
+    pack_dir(&root, "abacus", "0.1.0", &"a".repeat(64));
+    let retired = pack_dir(&root, "gavel", "0.1.0", &"b".repeat(64));
+
+    // In the new build: only the survivor.
+    pack_dir(&source, "abacus", "0.2.0", &"c".repeat(64));
+
+    sync_from_directory(&source, &root);
+
+    assert!(
+        retired.join("manifest.json").exists(),
+        "a retired pack was uninstalled from under a child"
+    );
+    assert!(
+        retired.join("pack.html").exists(),
+        "a retired pack lost the document it launches"
+    );
+    assert_eq!(
+        fs::read_to_string(retired.join("manifest.json")).expect("manifest"),
+        manifest_json("gavel", "0.1.0", Some(&"b".repeat(64))),
+        "a retired pack's manifest was rewritten",
+    );
+    // The survivor is still upgraded in the same pass — proving the sync ran at
+    // all, so the assertions above are not passing on a no-op.
+    assert_eq!(
+        fs::read_to_string(root.join("abacus").join("manifest.json")).expect("manifest"),
+        manifest_json("abacus", "0.2.0", Some(&"c".repeat(64))),
+        "the bundled pack was not refreshed",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&source);
+}
