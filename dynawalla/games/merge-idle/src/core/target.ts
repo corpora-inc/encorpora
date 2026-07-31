@@ -289,15 +289,27 @@ export function formsFor(
  */
 export function stockFor(bag: Bag, route: readonly number[]): number[] {
   const spare = new Map(bag)
+  const take = (v: number): boolean => {
+    const held = spare.get(v) ?? 0
+    if (held <= 0) return false
+    spare.set(v, held - 1)
+    return true
+  }
   const out: number[] = []
   for (const term of route) {
-    const held = spare.get(term) ?? 0
-    if (held > 0) {
-      spare.set(term, held - 1)
+    if (take(term)) continue
+    if (!canSplit(term)) {
+      out.push(term)
       continue
     }
-    if (canSplit(term)) out.push(term / 2, term / 2)
-    else out.push(term)
+    // Halves the shelf ALREADY holds are not asked for again. Without this the
+    // debt is recomputed from a shelf that is halfway through paying it, the reef
+    // emits the same halves a second time, and a board that was one merge from the
+    // answer fills up with duplicates of it instead.
+    const half = term / 2
+    let owed = 2
+    while (owed > 0 && take(half)) owed--
+    for (let i = 0; i < owed; i++) out.push(half)
   }
   return out
 }

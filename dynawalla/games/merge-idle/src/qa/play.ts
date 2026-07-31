@@ -43,6 +43,12 @@ export type Report = {
     viaHost: boolean
     /** True when the shelf could already build it the moment it went up. */
     reachable: boolean
+    /**
+     * True when the child could still WIN from here — the shelf holds the answer,
+     * or holds the material to merge and split its way to it, or the reef owes the
+     * rest and has room to pay. See `Engine.solvable`.
+     */
+    solvable: boolean
     /** How many polyps the reef still owed the shelf when it went up. */
     stock: number
   }>
@@ -109,6 +115,7 @@ export function play(o: { policy: Policy; seed: number; steps?: number }): Repor
       depth: engine.s.depth,
       viaHost: t.questionId !== null,
       reachable: engine.reachable(),
+      solvable: engine.solvable(),
       stock: engine.s.stock.length,
     })
   }

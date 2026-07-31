@@ -73,17 +73,24 @@ test('EVERY target ever put up is buildable — the design mistake, gone', () =>
 
 test('a target the shelf cannot answer yet always arrives with the polyps it needs', () => {
   let unreachable = 0
-  let unstocked = 0
+  let stocking = 0
+  const dead: string[] = []
   for (const t of targets()) {
-    if (t.reachable) continue
-    unreachable++
-    // Not on the shelf yet is fine and normal — the reef is coughing up the halves.
-    // Not on the shelf AND nothing owed would be a dead target.
-    if (t.stock === 0) unstocked++
+    // Not literally on the shelf is fine and normal, and covers two good cases:
+    // the reef is coughing up the halves, OR the child already holds the material
+    // and has a merge to do. `solvable` is the one that has to hold, every time —
+    // asserting `stock > 0` instead used to look like the same statement, and it
+    // is not: it fails a shelf that is one join away from the answer.
+    if (!t.reachable) unreachable++
+    if (t.stock > 0) stocking++
+    if (!t.solvable) dead.push(`${t.value} (${t.form}) at depth ${t.depth}, owes ${t.stock}`)
   }
   const pct = (100 * unreachable) / Math.max(1, targets().length)
-  console.log(`   ${pct.toFixed(1)}% of targets needed stocking when they went up`)
-  assert.equal(unstocked, 0, `${unstocked} targets were neither buildable nor being stocked`)
+  console.log(
+    `   ${pct.toFixed(1)}% of targets were not literally on the shelf; ` +
+      `${((100 * stocking) / Math.max(1, targets().length)).toFixed(1)}% arrived with a debt`,
+  )
+  assert.deepEqual(dead.slice(0, 8), [] as string[], `${dead.length} targets could not be won`)
 })
 
 /* ---------------------------------------------------------- the distribution */

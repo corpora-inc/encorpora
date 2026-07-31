@@ -135,9 +135,10 @@ const INSTRUCTIONS = (reducedMotion: boolean): InstructionsSpec => ({
     {
       heading: 'When the reef is full',
       lines: [
-        'If every space is full and no two numbers match, the CLEAR button starts glowing.',
+        'When the reef runs out of room, the CLEAR button starts glowing.',
         'Press it. It is free.',
-        'It clears away all the smallest polyps to make room.',
+        'It clears away the smallest polyps until there is real room again.',
+        'Then the reef grows the polyps your number needs.',
         'You can never get stuck. CLEAR always works.',
       ],
     },
@@ -940,8 +941,10 @@ export class Game {
       this.hud.setFace(face, `rgba(${hue[0]},${hue[1]},${hue[2]},.55)`)
     }
     this.hud.setMeter(s.depth % GROW_EVERY, GROW_EVERY, hex(hue))
-    const full = emptyCells(s.board).length === 0
-    this.hud.setDissolve(full || s.crowded, s.crowded)
+    // Offered the moment the shelf has less room than the reef needs to pay what
+    // it owes — not once the board has jammed solid. Waiting for the jam is a
+    // minute of a child watching nothing happen with the way out greyed out.
+    this.hud.setDissolve(this.engine.needsRoom, s.crowded)
 
     if (this.debug) {
       const n = this.fpsSamples.length
