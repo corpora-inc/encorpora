@@ -148,6 +148,13 @@ test('stockFor asks for HALVES, so a missing term arrives as a merge to do', () 
   assert.deepEqual(stockFor(bagOf([16]), [16, 2]), [1, 1])
   // ...and two of a term needs two of it on the shelf.
   assert.deepEqual(stockFor(bagOf([16]), [16, 16]), [8, 8])
+  // A HALF that is already on the shelf is not asked for again. The debt is
+  // recomputed after every move now, so a shelf halfway through paying one is the
+  // normal case — and asking for both halves again fills the board with duplicates
+  // of the polyp the child was one drag away from making.
+  assert.deepEqual(stockFor(bagOf([8]), [16]), [8], 'one half held, one half owed')
+  assert.deepEqual(stockFor(bagOf([8, 8]), [16]), [], 'both halves held, nothing owed')
+  assert.deepEqual(stockFor(bagOf([1, 8]), [16, 2]), [8, 1], 'each term credited separately')
 })
 
 test('a stocked route becomes buildable once the stock has landed', () => {

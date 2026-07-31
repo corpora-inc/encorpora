@@ -223,11 +223,44 @@ export function lowestValue(b: Board): number {
 }
 
 /**
+ * CLEAR — dissolve from the bottom of the shelf until there is `want` room.
+ *
+ * ## Why this is not `purgeLowest`
+ *
+ * It was, and the manual's promise — *"You can never get stuck. CLEAR always
+ * works."* — was false because of it. One value class is often one polyp, so on
+ * the full board the founder was handed, CLEAR freed a single cell, the reef put
+ * something back into it, and he was exactly where he started:
+ *
+ *   "now I hit 'clear' and only one goes away and a FREAKING 44 comes out .. so,
+ *    now I just have a full board and it's stuck and the game sucks."
+ *
+ * So CLEAR keeps going up the values until the shelf has real room, and the room
+ * it makes is measured against what the reef owes: enough cells for every polyp
+ * the current target still needs, plus slack to shuffle them. Smallest first,
+ * because that is the cheapest reef mass to spend and it is what the child was
+ * told would happen.
+ *
+ * Free, always, and it stops the moment there is room — so it can never take more
+ * of a reef than the escape costs.
+ */
+export function purgeUpTo(b: Board, want: number): { gained: number; cells: number[] } {
+  const cells: number[] = []
+  let gained = 0
+  while (emptyCells(b).length < want) {
+    const round = purgeLowest(b)
+    if (round.cells.length === 0) break
+    gained += round.gained
+    cells.push(...round.cells)
+  }
+  return { gained, cells }
+}
+
+/**
  * DISSOLVE — clear every polyp at the lowest value on the shelf.
  *
- * Free, and always available, because it is the only guarantee that a crowded
- * board is never a losing position. `gained` is the total value that left, which
- * the floaters print so the child can see the size of what they spent.
+ * One rung of `purgeUpTo`. `gained` is the total value that left, which the
+ * floaters print so the child can see the size of what they spent.
  */
 export function purgeLowest(b: Board): { gained: number; cells: number[] } {
   const lo = lowestValue(b)

@@ -63,10 +63,53 @@ export function growthsAt(depth: number): number {
  * At bloom one a child merges 1s and 5s; forty blooms in they are merging 96s and
  * 448s. The arithmetic gets harder because the *world* got bigger, which is the
  * only difficulty ramp that never reads as punishment.
+ *
+ * **This is no longer the emission floor.** It was, and that was the bug — see
+ * `emitCeiling` below. It survives only as the rung a *fresh, empty* shelf is
+ * seeded on, where there is no target to measure against yet.
  */
 export function baseStepFor(depth: number): number {
   return Math.max(0, Math.min(9, Math.floor(depth / 6)))
 }
+
+/* ---------------------------------------------------------- the emission band */
+
+/**
+ * THE EMISSION BAND, and why it is one rung high.
+ *
+ * ## The bug
+ *
+ * Ambient emission used to be `strain * 2 ** baseStepFor(depth)`: a floor that
+ * rose with the reef, never came back down, and never once consulted the number
+ * the child was being asked for. The founder played 0.3.7 and reported it twice,
+ * in exactly these words:
+ *
+ *   "the numbers that come out are too high for the problem .. I want to see
+ *    1,3,5,7 ... now I hit 'clear' and only one goes away and a FREAKING 44 comes
+ *    out .. so, now I just have a full board and it's stuck"
+ *
+ *   "____ + ____ = 5 and EVERY FREAKING NUMBER is like above 18"
+ *
+ * With `5 = ▢ + ▢` the only polyps that can take part are 1, 2, 3 and 4. At
+ * `baseStep >= 1` **not one of them can spawn**, so the shelf fills with numbers
+ * that cannot be part of any answer and no amount of play recovers it. His 18 is
+ * `9 × 2`, his 44 is `11 × 4`, his 88 is `11 × 8` — all legal ladder values, at a
+ * rung that makes them furniture. And a big polyp on a full shelf cannot even be
+ * SPLIT back down, because a split needs a free cell to put the other half in.
+ *
+ * ## The rule
+ *
+ * **A fresh polyp is always a seed.** Step 0, at every depth, forever. Big numbers
+ * are EARNED by merging and are never handed out. There is no depth→value
+ * coupling left in this game: what escalates is the target, the operator form and
+ * the size of the shelf, none of which can fill a board with numbers no answer can
+ * use.
+ *
+ * The one exception is the reef's DEBT — the halves it owes so the current target
+ * is buildable at all (see `core/target.ts`, `stockFor`). Those are derived from
+ * the number the child is being asked for, which is the whole point of them.
+ */
+export const EMIT_STEP = 0
 
 /**
  * How bright the world is, 0..1. Drives the whole escalation: the abyss starts

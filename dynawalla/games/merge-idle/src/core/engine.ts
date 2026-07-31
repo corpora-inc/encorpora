@@ -32,7 +32,7 @@ import {
   move,
   place,
   polyps,
-  purgeLowest,
+  purgeUpTo,
   spawn,
   trySplit,
   tryMerge,
@@ -43,6 +43,7 @@ import {
   baseStepFor,
   bloomLevel,
   bloomYield,
+  EMIT_STEP,
   emitPeriodMs,
   growthsAt,
   offlineGrowth,
@@ -60,7 +61,7 @@ import {
 } from './mouth.ts'
 import type { Rng } from './rng.ts'
 import { askTarget, type AskHost } from './ask.ts'
-import { bagOf, faceOf, routeIn, type Form } from './target.ts'
+import { bagOf, faceOf, ladderRoute, routeIn, stockFor, type Form } from './target.ts'
 import { BUDGET, emptyDrag, type State, type Target, type Tier } from './state.ts'
 
 export type Event =
@@ -100,6 +101,31 @@ export const START_ROWS = 7
 
 /** How many recent targets to remember, so the same number twice running is rare. */
 const RECENT = 4
+
+/**
+ * The room CLEAR guarantees, over and above what the reef currently owes.
+ *
+ * A debt is at most six polyps — three terms, two halves each — so six cells is
+ * enough to *land* it. Two more are the slack to work in: a polyp may be dragged
+ * onto any empty cell from anywhere, so one spare cell is already enough to bring
+ * any two halves together, and two is enough that a child never has to think
+ * about it.
+ */
+export const ESCAPE_SLACK = 2
+
+/**
+ * The biggest debt the reef can ever owe: three terms, two halves apiece.
+ *
+ * A constant and not `stock.length` on purpose. CLEAR clears room and then works
+ * out what it owes, and on the founder's own board the clearing is what CREATES
+ * the debt — it takes away the last small polyp, so a target that was answerable
+ * a moment ago now needs stocking. Sizing the escape against the debt as it stood
+ * *before* the purge left the shelf one cell short of the debt the purge made.
+ */
+export const MAX_DEBT = 6
+
+/** The room CLEAR restores, and the point below which it is offered. */
+export const ESCAPE_CELLS = MAX_DEBT + ESCAPE_SLACK
 
 export class Engine {
   readonly s: State
@@ -142,12 +168,18 @@ export class Engine {
 
   /* ------------------------------------------------------------------ setup */
 
-  /** Stock a fresh shelf so the very first target has something to be made of. */
+  /**
+   * Stock a fresh shelf so the very first target has something to be made of.
+   *
+   * At step 0, always. A returning child whose shelf was emptied gets 1, 3, 5, 7
+   * back, not the rung their depth would have justified — the reef's own emission
+   * band starts at the seeds too, and a shelf that opens above it is a shelf
+   * nothing can be built out of.
+   */
   seed(n = 8): void {
-    const step = this.s.baseStep
     for (let i = 0; i < n; i++) {
       const strain = this.deps.rng.int(0, 7) as Strain
-      const p = spawn(this.s.board, valueOf(strain, step), this.deps.rng)
+      const p = spawn(this.s.board, valueOf(strain, 0), this.deps.rng)
       if (p) p.born = 1
     }
   }
@@ -189,10 +221,10 @@ export class Engine {
     }
     this.s.target = target
     this.s.mouth = emptyMouth(a.slots)
-    this.s.stock = [...a.stock]
-    // A debt starts being paid on the NEXT frame, not on whatever was left of the
-    // slow cadence: the child is already looking at a number they cannot make.
-    if (this.s.stock.length > 0) this.s.emitMs = Math.min(this.s.emitMs, STOCK_PERIOD_MS)
+    // `askTarget` already worked the debt out; `restock` is the same computation
+    // against the same shelf, and going through it means there is exactly ONE
+    // place in this engine that decides what the reef owes.
+    this.restock()
     this.recent.push(a.value)
     while (this.recent.length > RECENT) this.recent.shift()
     return [{ kind: 'target', value: a.value, form: a.form, face: this.face }]
@@ -223,6 +255,142 @@ export class Engine {
     return routeIn(bag, t.value, t.form, t.slots) !== null
   }
 
+  /**
+   * Every polyp the child controls: the shelf, plus whatever is in the mouth.
+   *
+   * The mouth counts. A polyp in it can be pulled back out for free and a spill
+   * hands all of them back, so a route that is half-fed is a route the child still
+   * holds — and a debt computed off the shelf alone would ask the reef to grow a
+   * second copy of the 16 they are standing there holding.
+   */
+  private get held() {
+    return bagOf([...polyps(this.s.board).map((p) => p.value), ...this.s.mouth.fed.map((f) => f.value)])
+  }
+
+  /**
+   * Can the child GET to this route with the polyps they hold, given merges and
+   * splits? The honest form of "is this winnable", and it is a counting argument.
+   *
+   * A polyp's strain is its odd part, and the only two moves that change a value
+   * are merge (double) and split (halve). So a strain never converts into another
+   * strain, and within a strain everything is fungible: a 44 is four 11s, a 22 is
+   * two, and the child can go either way. Count each strain's holding in SEEDS —
+   * `2 ** step` apiece — and a route is affordable exactly when every strain it
+   * calls for is covered.
+   *
+   * This is what `solvable()` needed and did not have. The first version asked
+   * `routeIn`, which reads the shelf literally, and a shelf holding a 40 and two
+   * 2s failed it while `40 − (2+2) = 36` was one drag away.
+   */
+  private canAfford(route: readonly number[]): boolean {
+    const have = new Map<number, number>()
+    for (const [value, n] of this.held) {
+      const id = decompose(value)
+      if (!id) continue
+      have.set(id.strain, (have.get(id.strain) ?? 0) + 2 ** id.step * n)
+    }
+    const need = new Map<number, number>()
+    for (const v of route) {
+      const id = decompose(v)
+      if (!id) return false
+      need.set(id.strain, (need.get(id.strain) ?? 0) + 2 ** id.step)
+    }
+    for (const [strain, want] of need) if ((have.get(strain) ?? 0) < want) return false
+    return true
+  }
+
+  /** The terms the current target is made of, whatever the child holds. */
+  private routeFor(t: Target): readonly number[] {
+    return routeIn(this.held, t.value, t.form, t.slots) ?? ladderRoute(t.value, t.form, t.slots) ?? t.route
+  }
+
+  /**
+   * CAN THE CHILD STILL WIN FROM HERE? The invariant the manual promises.
+   *
+   * `game.ts` tells a child, in as many words: *"You can never get stuck. CLEAR
+   * always works."* This is that sentence, decidable, on live state — and it was
+   * false in 0.3.7, which is why the founder was handed a board he could not win.
+   *
+   * Two ways to be true, and only two:
+   *
+   *   1. The shelf builds the target NOW — `reachable()`.
+   *   2. The reef OWES the polyps that build it, and there is somewhere for them
+   *      to land: room already, or room `dissolve()` will make.
+   *
+   * Note what is not here: hope. "The reef will emit something eventually" was the
+   * old answer and it is how a board fills with numbers no answer can use. If
+   * neither clause holds, the child is stuck, and this returns false rather than
+   * shrugging.
+   */
+  solvable(): boolean {
+    const t = this.s.target
+    if (!t) return true
+    if (this.canAfford(this.routeFor(t))) return true
+    const owed = this.s.stock.length
+    if (owed === 0) return false
+    // Room already, or room CLEAR will make — `purgeUpTo` keeps going up the
+    // values until there is `escapeRoom()`, so any shelf with a polyp on it can
+    // be opened up. An empty shelf needs no opening.
+    return emptyCells(this.s.board).length >= owed || polyps(this.s.board).length > 0
+  }
+
+  /** How much room the shelf needs before the reef can pay what it owes. */
+  private escapeRoom(): number {
+    return ESCAPE_CELLS
+  }
+
+  /**
+   * Is CLEAR worth offering? True when pressing it would actually free something.
+   *
+   * Not "the board is full": a shelf with three cells left and a five-polyp debt
+   * is already a shelf the reef cannot pay, and waiting for it to jam completely
+   * before offering the way out is how a child spends a minute watching nothing
+   * happen.
+   */
+  get needsRoom(): boolean {
+    return emptyCells(this.s.board).length < this.escapeRoom() && polyps(this.s.board).length > 0
+  }
+
+  /**
+   * Make the reef owe whatever the target still needs.
+   *
+   * Called after EVERY change to the shelf, which is the whole repair. The
+   * previous version computed the debt once, when the target went up, and then
+   * again only on a spill — so a child who merged the last term of their own route
+   * into something bigger (a legal, sensible move) left the target unbuildable
+   * with the reef owing nothing, and ambient emission cheerfully filled the shelf
+   * with numbers that could not be part of any answer.
+   *
+   * Idempotent: `stockFor` is recomputed against the shelf as it stands, so a
+   * half that has already landed is not asked for twice and a term the child has
+   * merged up is dropped from the debt.
+   */
+  private restock(): void {
+    const t = this.s.target
+    if (!t) return
+    const route = this.routeFor(t)
+    // Nothing is owed while the child can still get there themselves. `canAfford`
+    // and not `holdable` on purpose: a shelf one merge away from the answer is a
+    // shelf with a merge to do, not a shelf to pour more polyps onto.
+    if (this.canAfford(route)) {
+      this.s.stock = []
+      return
+    }
+    const owed = stockFor(this.held, route)
+    this.s.stock = owed
+    // A debt starts being paid on the NEXT frame: the child is already looking at
+    // a number they cannot make.
+    if (owed.length > 0) this.s.emitMs = Math.min(this.s.emitMs, STOCK_PERIOD_MS)
+  }
+
+  /** Everything that has to be true again after the shelf changes. */
+  private settle(events: Event[]): void {
+    this.restock()
+    const c = isCrowded(this.s.board)
+    if (c && !this.s.crowded) events.push({ kind: 'crowded' })
+    this.s.crowded = c
+  }
+
   /* ----------------------------------------------------------------- merges */
 
   merge(from: number, to: number): { res: MergeResult; events: Event[] } | null {
@@ -231,7 +399,7 @@ export class Engine {
     this.s.merges++
     if (res.value > this.s.bestValue) this.s.bestValue = res.value
     const events: Event[] = [{ kind: 'merge', cell: to, value: res.value, rank: res.rank, chain: 0 }]
-    this.refreshCrowd(events)
+    this.settle(events)
     return { res, events }
   }
 
@@ -262,7 +430,9 @@ export class Engine {
     if (!move(this.s.board, from, to)) return []
     const p = at(this.s.board, to)
     if (p) p.squash = 0.5
-    return [{ kind: 'move', cell: to }]
+    const events: Event[] = [{ kind: 'move', cell: to }]
+    this.settle(events)
+    return events
   }
 
   /**
@@ -278,7 +448,7 @@ export class Engine {
     if (!res) return [{ kind: 'refuse', why: 'no-room' }]
     this.s.splits++
     const events: Event[] = [{ kind: 'split', cell, into: res.made.cell, value: before / 2 }]
-    this.refreshCrowd(events)
+    this.settle(events)
     return events
   }
 
@@ -301,7 +471,13 @@ export class Engine {
     feedMouth(this.s.mouth, p.value, this.deps.rng.int(0, 999) / 1000)
     const events: Event[] = [{ kind: 'fed', value: p.value, index: this.s.mouth.fed.length - 1 }]
     const verdict = resolve(this.s.mouth, t.form, t.value)
-    if (verdict.kind === 'open') return events
+    // A polyp in the mouth is a polyp off the shelf, so the route the child had
+    // may have just been spent. The reef owes whatever is left of it from HERE,
+    // not from whatever the shelf looked like when the target went up.
+    if (verdict.kind === 'open') {
+      this.settle(events)
+      return events
+    }
     this.report(t, verdict.kind === 'bloom', verdict.answered)
     if (verdict.kind === 'bloom') events.push(...this.bloom(t))
     else events.push(...this.spill(verdict.produced))
@@ -334,7 +510,7 @@ export class Engine {
     }
     events.push(...this.growIfEarned())
     events.push(...this.ask())
-    this.refreshCrowd(events)
+    this.settle(events)
     return events
   }
 
@@ -357,15 +533,11 @@ export class Engine {
       if (p) p.born = 0
     }
     const events: Event[] = [{ kind: 'spill', produced, back }]
-    // The target is NOT replaced and NOT taken away. It stays up, and it is still
-    // reachable — the reef re-stocks whatever the spill could not put back.
-    const t = this.s.target
-    if (t && !this.reachable()) {
-      const bag = bagOf(polyps(this.s.board).map((p) => p.value))
-      const missing = routeIn(bag, t.value, t.form, t.slots)
-      if (!missing) this.s.stock.push(...t.route.filter((v) => (bag.get(v) ?? 0) === 0))
-    }
-    this.refreshCrowd(events)
+    // The target is NOT replaced and NOT taken away. It stays up, and `settle`
+    // makes the reef owe whatever the spill could not put back — the same guard
+    // every other move goes through, rather than a special case that only a spill
+    // benefited from.
+    this.settle(events)
     return events
   }
 
@@ -408,48 +580,102 @@ export class Engine {
     return [{ kind: 'grow', cols: b.cols, rows: b.rows }]
   }
 
+  /**
+   * CLEAR — the escape hatch, and the one promise this game makes out loud.
+   *
+   * The manual tells the child *"You can never get stuck. CLEAR always works."*
+   * That sentence was false: `purgeLowest` cleared one value class, which on a
+   * shelf of forty distinct numbers is one polyp, the reef put something back into
+   * the hole, and the founder was exactly where he started. So CLEAR now goes up
+   * the values until there is room for everything the reef owes plus slack to work
+   * in, and `settle` reloads that debt on the way out — pressing it leaves a
+   * position the child can win from, which is the only thing the word means.
+   */
   dissolve(): Event[] {
-    const { gained, cells } = purgeLowest(this.s.board)
+    const { gained, cells } = purgeUpTo(this.s.board, this.escapeRoom())
     if (cells.length === 0) return []
     const events: Event[] = [{ kind: 'dissolve', cells, gained }]
-    this.refreshCrowd(events)
+    this.settle(events)
     return events
-  }
-
-  private refreshCrowd(events: Event[]): void {
-    const c = isCrowded(this.s.board)
-    if (c && !this.s.crowded) events.push({ kind: 'crowded' })
-    this.s.crowded = c
   }
 
   /* -------------------------------------------------------------- emissions */
 
   /**
-   * One polyp onto the shelf.
+   * One polyp onto the shelf, and the second half of the repair.
    *
    * `stock` first: those are the halves the reef owes so the current target stays
    * buildable, and they are the mechanism behind "the game can know what would be a
    * fun number to put on the vent and you build it with the polyps".
    *
-   * Otherwise a value from the live band. The strain is drawn from what the shelf
-   * ALREADY HOLDS three times out of four, because eight strains scattered at
-   * random is a board with nothing to merge — and a merge board that never offers a
-   * pair is the meanest thing this genre can do.
+   * ## What the ambient emission does now, and what it used to do
+   *
+   * It used to be `strain * 2 ** baseStep`, and `baseStep` came from DEPTH. So the
+   * smallest polyp the reef could produce climbed with the session and never came
+   * back down, and nothing in the expression mentioned the number the child was
+   * being asked for. That is the whole of the founder's report: `5 = ▢ + ▢` with a
+   * shelf where every polyp is above 18, and a CLEAR that frees one cell only for
+   * a 44 to drop into it.
+   *
+   * Both halves of the draw are now answerable to the target:
+   *
+   *   * **the strain** comes from the terms the target is made of, three times in
+   *     four. A polyp's strain is its odd part and merging only ever doubles, so a
+   *     strain-5 polyp can only ever become 11, 22, 44, 88 — which means the
+   *     strains the target needs are *exactly* the polyps that can take part in
+   *     answering it. The fourth draw is from what the shelf already holds, or the
+   *     whole ladder, because a board with only one strain on it is a board with
+   *     nothing to join.
+   *   * **the rung** is always 0 — a bare seed, at every depth, forever. Big
+   *     numbers are earned by merging and are never handed out. See `EMIT_STEP`.
    */
   emitOne(): Polyp | null {
     const owed = this.s.stock.shift()
     if (owed !== undefined) return spawn(this.s.board, owed, this.deps.rng)
     const rng = this.deps.rng
-    const here = polyps(this.s.board)
-    const strains = new Set<number>()
-    for (const p of here) {
-      const id = decompose(p.value)
-      if (id) strains.add(id.strain)
+    const pool = this.strainPool(rng)
+    // Among the strains that would help, the one the shelf is shortest of. A pool
+    // picked flat put thirty 1s on a forty-cell shelf, because strain 0 is in
+    // almost every route; "I want to see 1,3,5,7" is a SPREAD, not a monoculture.
+    let best = pool[0] as number
+    let fewest = Infinity
+    for (const strain of rng.shuffle([...pool])) {
+      const n = this.countStrain(strain)
+      if (n < fewest) {
+        fewest = n
+        best = strain
+      }
     }
-    const pool = strains.size > 0 && rng.chance(3, 4) ? [...strains].sort((a, b) => a - b) : [0, 1, 2, 3, 4, 5, 6, 7]
-    const strain = rng.pick(pool) as Strain
-    const step = Math.max(0, this.s.baseStep + (rng.chance(1, 3) ? 1 : 0))
-    return spawn(this.s.board, valueOf(strain, step), this.deps.rng)
+    return spawn(this.s.board, valueOf(best as Strain, EMIT_STEP), this.deps.rng)
+  }
+
+  private countStrain(strain: number): number {
+    let n = 0
+    for (const p of polyps(this.s.board)) if (decompose(p.value)?.strain === strain) n++
+    return n
+  }
+
+  /**
+   * Which strains a fresh polyp may be drawn from.
+   *
+   * A polyp's strain is its odd part, and merging only ever doubles — so a
+   * strain-5 polyp can only ever become 11, 22, 44, 88. The strains the target's
+   * route needs are therefore *exactly* the polyps that can take part in answering
+   * it, which is why the pool is drawn from the route three times in four. The
+   * fourth draw is wider, because a shelf carrying one strain is a shelf whose
+   * every polyp is a duplicate of every other.
+   */
+  private strainPool(rng: Rng): number[] {
+    const t = this.s.target
+    if (t && rng.chance(3, 4)) {
+      const wanted = new Set<number>()
+      for (const v of this.routeFor(t)) {
+        const id = decompose(v)
+        if (id) wanted.add(id.strain)
+      }
+      if (wanted.size > 0) return [...wanted].sort((a, b) => a - b)
+    }
+    return [0, 1, 2, 3, 4, 5, 6, 7]
   }
 
   /**
@@ -475,7 +701,7 @@ export class Engine {
       const p = this.emitOne()
       if (p) {
         events.push({ kind: 'emit', cell: p.cell, value: p.value })
-        this.refreshCrowd(events)
+        this.settle(events)
       }
     }
     return events
