@@ -302,6 +302,77 @@ export function revealShown(spec: FlowSpec, intensity: number): boolean {
 }
 
 /**
+ * How long a reveal must be up before ANY input may take it down, in ms.
+ *
+ * Not pedagogy — latency. A reveal is put up by the same gesture that ended the
+ * question, and on a touch screen that gesture is routinely still arriving: a
+ * second tap of an impatient double-tap, a finger that had already committed to
+ * the next key. Without a floor those taps land inside the reveal's own fade-in
+ * and the child sees the lesson appear and vanish in the same breath, which is
+ * precisely the report this constant exists to answer — "the answers flashed for
+ * a second and then go on".
+ *
+ * Deliberately SHORT. It is a lockout, and a long lockout is its own rudeness:
+ * "dismiss it or answer or move on in their own time" means the child's hand
+ * wins, and this only makes sure the hand meant it. Long enough to outlast a
+ * reveal's fade-in (THE GAVEL's is 260 ms) and a double-tap, and no longer.
+ */
+export const REVEAL_SETTLE_MS = 350
+
+/**
+ * What a game should do with a reveal it has just put up.
+ *
+ * See `revealPlan`. Two independent facts, because they were being conflated by
+ * a single duration everywhere in the fleet.
+ */
+export type RevealPlan = {
+  /** Whether there is a reveal at all. False is mastery, not neglect. */
+  readonly shown: boolean
+  /** Milliseconds before the child's own input may take it down. */
+  readonly settleMs: number
+  /**
+   * Milliseconds after which the reveal takes ITSELF down.
+   *
+   * `Number.POSITIVE_INFINITY` whenever it is shown: nothing but the child ends
+   * a reveal. Zero when it is not shown, so the game moves on in the same frame.
+   */
+  readonly holdMs: number
+}
+
+/**
+ * The reveal, as a plan rather than as a number.
+ *
+ * **A shown reveal never expires.** `revealMs` says how much patience this
+ * intensity deserves, and every game in the fleet spent that answer as a
+ * countdown — hold the finished sum for 1050 ms, or 900, or 850, then take it
+ * away whether or not anybody had finished reading. That is the defect: a child
+ * who has just been told they are wrong is the slowest reader in the session,
+ * and a timer sized for a fluent one removes the evidence exactly when it was
+ * about to be useful. The founder: "let the user marinate on the displayed
+ * answers and never rush through", and "you should be able to study the answers
+ * and then go on, not just have the answers flashed for a second and then go
+ * on". "Then go on" is the child's own hand, and a hand needs no deadline.
+ *
+ * **The adaptation survives, on the same scalar, inverted — it just moved from
+ * the length to the existence.** `revealShown` already draws the line at
+ * 250 ms, below which the module's own view is that the reveal is not worth
+ * putting up; above intensity ≈0.75 the plan is therefore no reveal at all and
+ * an immediate move on. Skipping the ceremony is still the reward for mastery.
+ * What has gone is the middle: the half-patient reveal that was long enough to
+ * be noticed and too short to be read, which served nobody at either end.
+ *
+ * **Games decide WHEN to ask for one, and should not ask after a clean win.**
+ * There is nothing to marinate on in a sum you just got right, and a reveal on
+ * every item would turn a flowing game into a queue of dismissals. This is for
+ * the miss, the fold, and the timeout — "there is no reason to be like WRONG and
+ * then just rush past the lesson/content".
+ */
+export function revealPlan(spec: FlowSpec, intensity: number): RevealPlan {
+  if (!revealShown(spec, intensity)) return { shown: false, settleMs: 0, holdMs: 0 }
+  return { shown: true, settleMs: REVEAL_SETTLE_MS, holdMs: Number.POSITIVE_INFINITY }
+}
+
+/**
  * The success estimate that would demand a given intensity.
  *
  * The inverse of `demandFor`, and it exists so a fresh run can be seeded

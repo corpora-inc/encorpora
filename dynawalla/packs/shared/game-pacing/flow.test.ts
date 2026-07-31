@@ -15,7 +15,9 @@ import {
   observe,
   outcomeScore,
   rungAt,
+  REVEAL_SETTLE_MS,
   revealMs,
+  revealPlan,
   revealShown,
   secondsBetween,
   seedSuccess,
@@ -422,4 +424,60 @@ test("the answer reveal is patient at the bottom and skipped at the top", () => 
   assert.ok(revealMs(S, 0.15) > S.revealCalmMs * 0.6, `at 0.15 the reveal was already down to ${revealMs(S, 0.15)}ms`)
   assert.ok(revealMs(S, 0.6) < S.revealCalmMs * 0.25, `at 0.6 the reveal was still ${revealMs(S, 0.6)}ms`)
   assert.ok(Number.isFinite(revealMs(S, NaN)))
+})
+
+test("a reveal that is shown at all is never taken away by a timer", () => {
+  // The whole complaint, as an assertion. Anywhere the module is willing to put
+  // a reveal up, nothing but the child may take it down.
+  for (let i = 0; i <= 1.0001; i += 0.01) {
+    const plan = revealPlan(S, i)
+    if (!plan.shown) continue
+    assert.equal(
+      plan.holdMs,
+      Number.POSITIVE_INFINITY,
+      `at intensity ${i.toFixed(2)} the reveal expires by itself after ${String(plan.holdMs)}ms`,
+    )
+  }
+  // …and the calm end is emphatically inside that region.
+  assert.equal(revealPlan(S, 0).holdMs, Number.POSITIVE_INFINITY)
+  assert.equal(revealPlan(S, 0).shown, true)
+})
+
+test("the reveal is skipped entirely at mastery, and that is the only way it ends without a hand", () => {
+  const top = revealPlan(S, 1)
+  assert.equal(top.shown, false, "a player at the ceiling must not be held for a reveal")
+  assert.equal(top.holdMs, 0, "an unshown reveal must not delay the next item by a single ms")
+  assert.equal(top.settleMs, 0, "an unshown reveal must not swallow input")
+
+  // The line is `revealShown`'s and nobody else's — the plan may not invent a
+  // second, differently-placed threshold.
+  for (let i = 0; i <= 1.0001; i += 0.005) {
+    assert.equal(
+      revealPlan(S, i).shown,
+      revealShown(S, i),
+      `revealPlan and revealShown disagree at intensity ${i.toFixed(3)}`,
+    )
+  }
+})
+
+test("the settle floor outlasts an in-flight tap and is still short enough to be polite", () => {
+  // Long enough to survive a fade-in and the second tap of a double-tap…
+  assert.ok(
+    REVEAL_SETTLE_MS >= 300,
+    `a ${String(REVEAL_SETTLE_MS)}ms floor is inside a double-tap and would be eaten by one`,
+  )
+  // …and short enough that the child's own hand still owns the pace.
+  assert.ok(
+    REVEAL_SETTLE_MS <= 600,
+    `${String(REVEAL_SETTLE_MS)}ms is a lockout, not a settle — the child's hand must win`,
+  )
+  assert.equal(revealPlan(S, 0).settleMs, REVEAL_SETTLE_MS)
+  // A settle is a floor on a hold, so it can never exceed one.
+  for (let i = 0; i <= 1.0001; i += 0.01) {
+    const plan = revealPlan(S, i)
+    assert.ok(
+      plan.settleMs <= plan.holdMs,
+      `at ${i.toFixed(2)} the reveal locks input for ${String(plan.settleMs)}ms but only lasts ${String(plan.holdMs)}ms`,
+    )
+  }
 })

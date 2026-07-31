@@ -514,8 +514,7 @@ test("every question ever served is answered, closed, on the board or on the ben
     if (!t) break
     for (const ch of String(t.value + 1)) game.pressDigit(Number(ch))
     game.hammer(clock())
-    game.nudge()
-    game.advance(1, clock())
+    settleOn(game, clock)
   }
   const onBoard = game.room?.tablets.length ?? 0
   assert.equal(

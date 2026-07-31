@@ -38,6 +38,10 @@ export type View = {
   digits: string
   phase: "bidding" | "settled"
   settled: Settled | null
+  /** The settled room is being held open for the child, not for a timer. */
+  studying: boolean
+  /** …and it is past its settle floor, so a tap would now take it down. */
+  nudgeable: boolean
   coins: number
   storeroom: number
   remaining: number
@@ -52,6 +56,21 @@ const TITLE = "system-ui,-apple-system,'Segoe UI',sans-serif"
 /** How long the room takes to come up, and the settled values to appear. */
 const RAISE_MS = 380
 const REVEAL_MS = 260
+/**
+ * How long the "go on when you like" hairline takes to arrive, in ms.
+ *
+ * The settled room now waits for the child rather than for a clock, and a screen
+ * that waits with no sign that it is waiting reads as a screen that has hung.
+ * This is that sign, and it is a line rather than a sentence: state lives in the
+ * design, and the string would ship fifty-odd times translated to say something
+ * the shape already says.
+ *
+ * **It arrives only once a tap would actually work** — after `nudge`'s settle
+ * floor — so it is never an invitation to press something that is being
+ * swallowed. Slow on purpose: it must not read as a countdown, and anything that
+ * moves quickly next to an answer competes with the answer.
+ */
+const CUE_MS = 900
 
 export class Scene {
   private readonly canvas: HTMLCanvasElement
@@ -67,6 +86,8 @@ export class Scene {
   private raise = 1
   /** 0..1, how far the settled values are in. */
   private reveal = 0
+  /** 0..1, how far the "go on when you like" hairline is in. */
+  private cue = 0
   private shownCoins = 0
   private pressed: string | null = null
   private pressAge = 0
@@ -117,6 +138,10 @@ export class Scene {
   advance(dt: number, view: View): void {
     this.raise = unit(this.raise + dt / RAISE_MS)
     if (view.phase === "settled") this.reveal = unit(this.reveal + dt / REVEAL_MS)
+    this.cue =
+      view.phase === "settled" && view.studying && view.nudgeable
+        ? unit(this.cue + dt / CUE_MS)
+        : 0
     // The coin counter walks rather than jumping, because the walk is the reward.
     const gap = view.coins - this.shownCoins
     this.shownCoins =
@@ -152,6 +177,7 @@ export class Scene {
     this.strip(view)
     this.block(view)
     this.gallery(view)
+    this.onward()
     this.paddle(view)
     this.keys(view)
 
@@ -384,6 +410,32 @@ export class Scene {
       }
       g.globalAlpha = 1
     }
+  }
+
+  /**
+   * "Go on when you like": a brass hairline under the gallery, and nothing else.
+   *
+   * See `CUE_MS`. It is drawn short of the full width and centred so it reads as
+   * a mark rather than as a rule, and it never blinks — a flash next to a
+   * finished sum is a distraction, and this is a children's product with a hard
+   * flash-rate limit anyway.
+   */
+  private onward(): void {
+    if (this.cue <= 0) return
+    const g = this.ctx
+    const r = this.lay.gallery
+    const w = r.w * 0.34 * this.cue
+    const y = r.y + r.h + 5
+    g.strokeStyle = BRASS_DIM
+    g.globalAlpha = 0.28 + 0.4 * this.cue
+    g.lineWidth = 2
+    g.lineCap = "round"
+    g.beginPath()
+    g.moveTo(r.x + r.w / 2 - w / 2, y)
+    g.lineTo(r.x + r.w / 2 + w / 2, y)
+    g.stroke()
+    g.globalAlpha = 1
+    g.lineCap = "butt"
   }
 
   /** The paddle: what you are about to bid, and what you are beating. */

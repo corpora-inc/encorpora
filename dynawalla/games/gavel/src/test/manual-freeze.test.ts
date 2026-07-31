@@ -496,10 +496,16 @@ test("MANUAL FREEZES THE GALLERY: the same frame, over and over, until it closes
     close()
     pump(rig, 2)
     assert.notDeepEqual(rig.frame, held, "the gallery never came back after the manual closed")
-    // The reveal it was holding finished, and the next lot came to the block. At the
-    // bottom of the ladder the hold is the full patient reveal — four and a bit seconds
-    // of a settled room, which is the point of it — so this takes a while on purpose.
+
+    // …and the settled room the child left is STILL THERE. It was a lot with
+    // something to learn from, so no amount of frames takes it down: seven
+    // seconds here, against a reveal whose old full-patience length was 4.2 s.
     pump(rig, 400)
+    assert.equal(world.asked, asked, "the settled room expired while the manual was up")
+
+    // It goes when the child's own hand says so, and not before.
+    rig.tap(p.gavel.x, p.gavel.y)
+    pump(rig, 2)
     assert.ok(world.asked > asked, "no new lot was ever called")
   } finally {
     handle.unmount()
