@@ -291,6 +291,7 @@ function points() {
     one: key("d1"),
     two: key("d2"),
     gavel: key("gavel"),
+    fold: key("fold"),
   }
 }
 
@@ -544,3 +545,41 @@ test("the host's own pause does the same thing, and resuming does not skip the r
     rig.restore()
   }
 })
+
+test("a room that is waiting for the child says so, and only once a tap would work", () => {
+  // The settled room after a fold now has no deadline on it, and a screen that
+  // is waiting with no sign that it is waiting reads as a screen that has hung.
+  // The sign is a brass hairline under the gallery — `Scene.onward`, the only
+  // thing in the renderer that sets a round line cap — and it arrives AFTER
+  // `nudge`'s settle floor, so it is never an invitation to press something that
+  // is being swallowed.
+  const rig = install(W, H)
+  const world: World = { asked: 0, reports: [], skips: [], haptics: [] }
+  const handle = mount(rig.el, stub(world))
+  const cued = (): boolean => rig.frame.includes("lineCap=round")
+  try {
+    pump(rig, 3)
+    assert.equal(cued(), false, "the go-on mark was drawn over a live room the child is still bidding on")
+
+    rig.tap(p_fold().x, p_fold().y)
+    pump(rig, 1)
+    assert.equal(cued(), false, "the go-on mark appeared inside the settle floor, where a tap does nothing")
+
+    // Past the settle floor and far enough into the cue's own ramp to be visible.
+    pump(rig, 90)
+    assert.equal(cued(), true, "a room with no deadline on it never said it was waiting")
+
+    // …and it goes with the room it belongs to.
+    rig.tap(p_fold().x, p_fold().y)
+    pump(rig, 2)
+    assert.equal(cued(), false, "the go-on mark outlived the room it was inviting a tap on")
+  } finally {
+    handle.unmount()
+    rig.restore()
+  }
+})
+
+/** The FOLD key, from the real layout. */
+function p_fold(): { x: number; y: number } {
+  return points().fold
+}
