@@ -14,11 +14,11 @@
  *
  * **Why `null` is the default, and why that is the whole ship-safety story.**
  * Until a host publishes a soundscape, `currentSoundscape()` is `null` and a
- * game keeps whatever sound it already had. No host publishes one today, so
- * this module changes nothing audible in production the day it lands. A pack's
- * dev harness publishes one, which is where the idea can be heard. Turning it
- * on for real is one line in the host, deliberately not taken in the change
- * that introduces this.
+ * game keeps whatever sound it already had. Dynawalla's host publishes one
+ * (`dynawalla-app/src/app/soundscape.ts`); a pack's dev harness publishes one;
+ * a host older than the field, or one whose Music switch is off, publishes
+ * nothing, and that is not an error. `null` means "keep your own sounds" and
+ * never "go quiet" — which is the whole of how the switch is implemented.
  *
  * Shaped exactly like `game-audio/sound.ts`, on purpose: `game-host` already
  * knows how to publish that one on every `settings` event, and a second thing

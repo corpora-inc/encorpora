@@ -112,6 +112,12 @@ export const strings = {
     light: "Light",
     dark: "Dark",
     sound: "Sound",
+    /**
+     * The generative soundscape switch. One word, and it is "Music" rather
+     * than "Soundscape": a parent reading a settings row is deciding whether
+     * the tablet plays tunes, and the word for that is not a term of art.
+     */
+    music: "Music",
     haptics: "Haptics",
     motion: "Reduce motion",
     textSize: "Text size",

@@ -303,9 +303,11 @@ describe("the app's soundscape reaches the pack", () => {
   })
 
   it("a host that sends none leaves every game with its own sounds", () => {
-    // The ship gate. No host populates this field today, so this is the path
-    // production takes, and `null` has to mean "keep what you had" rather than
-    // "go quiet".
+    // Dynawalla's host publishes one now, but two other hosts do not: a pack
+    // dev harness, and any build older than the field. `null` therefore still
+    // has to mean "keep what you had" rather than "go quiet", and the app's own
+    // Music switch reaches a pack down exactly this path rather than by a
+    // second, quieter spelling of off.
     const stub = stubClient()
     attachGameHost(stub.client)
     assert.equal(currentSoundscape(), null)

@@ -31,11 +31,13 @@
 // arcs and comes to rest like a phrase. The drone becomes the soundscape's own
 // root, so the melody cannot be out of tune with it: both are the same number.
 //
-// **Until a host publishes one, none of that happens and the yard sounds
-// exactly as it shipped.** `currentSoundscape()` is `null` by default and no
-// host sends the field yet, so this is the ship-safe path and the four fixed
-// pitches below are still the production sound. The dev harness publishes one
-// (`main.ts`), which is where the idea can be heard.
+// **Dynawalla's app publishes one**, so inside it the plates play a phrase. Two
+// other callers do not, and both are ordinary rather than exceptional: a host
+// older than the field, and a parent who has turned the app's Music switch off.
+// For them `currentSoundscape()` is `null`, none of the above happens, and the
+// four fixed pitches below are the sound — "keep your own sounds", never "go
+// quiet". The dev harness (`main.ts`) publishes its own, which is where a
+// specific mode and root can be pinned and heard on demand.
 
 import { type Place, type Strike } from "./game/places.ts"
 import { createSafetyBus, safeAttack } from "../../../packs/shared/game-audio/index.ts"
@@ -78,9 +80,11 @@ export class Audio {
   /**
    * The soundscape's melody walker, or `null` when no host has published one.
    *
-   * `null` is the shipping state today and it means every method below takes
-   * the path it always took. Nothing about this game's sound changes until an
-   * app decides to publish a mode and a root.
+   * `null` means every method below takes the path this game always took: the
+   * four fixed pitches in `PLACE_HZ` and a drone that transposes. That is what
+   * a dev harness with no host, a host older than the field, and a parent who
+   * has turned the app's Music switch off all get. Dynawalla's app publishes
+   * one, so inside it this is a `Melody` and the plates play a phrase.
    */
   private melody: Melody | null = null
   /** The drone's fixed anchor voices — the sub-octave and, if the mode has one, the fifth. */
@@ -93,15 +97,22 @@ export class Audio {
     // Following, not reading once: the host re-publishes on every settings
     // change, and a game that only looked at launch would be in last hour's key.
     this.unfollow = onSoundscape((next) => {
-      if (!next) {
-        this.melody = null
-        return
-      }
-      if (this.melody) this.melody.retune(next)
+      if (!next) this.melody = null
+      else if (this.melody) this.melody.retune(next)
       else this.melody = new Melody(next)
       // A live drone has to move to the new root, or the melody is in one key
       // and the thing under it is in another. Rebuilt rather than ramped: the
       // bow is a half-second fade either way and a key change is not a slide.
+      //
+      // **Losing the soundscape rebuilds it too**, and that is not symmetry for
+      // its own sake. The anchors this.bow() adds — the sub-octave and the
+      // mode's fifth — only exist when there is a melody, and nothing else ever
+      // stops them: a parent turning the app's Music switch off mid-round would
+      // otherwise leave two sines ringing at the old root while `track()` walks
+      // the bowed voice back to the fixed DRONE_HZ and the plates go back to
+      // their fixed pitches over the top. That is a semitone-off cluster for
+      // the rest of the round, produced by a switch whose whole job is to make
+      // the game sound like it did before.
       if (this.droneOsc) {
         this.release()
         this.bow()

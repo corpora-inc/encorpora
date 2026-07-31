@@ -375,6 +375,12 @@ function settingsSurface(view: HostView, act: HostActions): readonly Section[] {
         switchRow("sound", strings.settings.sound, settings.sound, (on) =>
           act.setSettings({ sound: on }),
         ),
+        // Directly under Sound, because it is a narrowing of it: with Sound off
+        // this changes nothing audible, and with Sound on it chooses between
+        // the app's generative key and the fixed cues each pack shipped with.
+        switchRow("music", strings.settings.music, settings.music, (on) =>
+          act.setSettings({ music: on }),
+        ),
         switchRow("haptics", strings.settings.haptics, settings.haptics, (on) =>
           act.setSettings({ haptics: on }),
         ),

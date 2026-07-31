@@ -25,6 +25,7 @@ import {
   orientationPorts,
   primeOrientationPermission,
 } from "../app/platform.ts"
+import { claimSoundscape, releaseSoundscape, soundscapeForPack } from "../app/soundscape.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { documentLock } from "../app/zoom.ts"
@@ -121,11 +122,32 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
   const [restedBefore] = useState(() => !usePass.getState().mayOpen(packId))
   const [offering, setOffering] = useState(false)
 
+  // ── The doorway ────────────────────────────────────────────────────────────
+  //
+  // This component's identity IS a session — `PackStage` renders it with
+  // `key={packId}`, so opening a different game remounts it — which makes its
+  // mount the one moment the app is allowed to change key. Everything else
+  // about a soundscape is a slow-moving fact, and `soundscapeAtDoorway` will
+  // hand back the same four numbers for every doorway inside the rotation
+  // window, so walking from one game to the next does not change the music.
+  //
+  // Pinned in state as well, but the pinning is belt and braces rather than the
+  // guarantee: `soundscapeForPack` hands the same key back to the pack that
+  // already owns it however often it is asked, so `forPack` being rebuilt when
+  // a parent touches a setting cannot put the game into a new key mid-question
+  // even if somebody later inlines this call into the memo below. The claim and
+  // the release are what let the NEXT pack rotate.
+  const [soundscape] = useState(() => soundscapeForPack(packId, Date.now()))
+  useEffect(() => {
+    claimSoundscape(packId)
+    return () => releaseSoundscape(packId)
+  }, [packId])
+
   // Built by the one function that knows how a host setting becomes a pack
   // setting, so the mapping cannot drift between the launch and the push.
   const forPack: Settings = useMemo(
-    () => packSettings({ settings, theme: themeMode, systemPrefersDark: systemDark }),
-    [settings, themeMode, systemDark],
+    () => packSettings({ settings, theme: themeMode, systemPrefersDark: systemDark, soundscape }),
+    [settings, themeMode, systemDark, soundscape],
   )
 
   const launch = useMemo(
@@ -163,6 +185,13 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
   useEffect(() => {
     launch.push(forPack)
   }, [launch, forPack])
+
+  // Nothing native, and nothing in Web Audio, may outlive a pack. The host's own
+  // cue context and its safety bus are built per launch and the bus holds a
+  // subscription to the app's Sound setting for as long as it lives — so a child
+  // who opens eight games in a sitting would otherwise leave eight live
+  // AudioContexts in this document, and Chromium refuses the seventh.
+  useEffect(() => () => launch.dispose(), [launch])
 
   const manifestEntry = entry?.manifest.entry
   useEffect(() => {

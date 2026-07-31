@@ -89,6 +89,47 @@ const SDK_ENTRY = path.resolve(src, "../../packs/sdk/src/index.ts")
 const CURRICULUM_ENTRY = path.resolve(src, "../../packs/shared/curriculum/src/index.ts")
 
 /**
+ * The third and fourth: the two shared audio modules.
+ *
+ * Same test as the other two — is this a *contract both sides are built
+ * against*, or is it content? Both are contracts, and for the same structural
+ * reason the SDK is:
+ *
+ *   * `packs/shared/game-soundscape` is the mode corpus, the walker and the
+ *     four-number soundscape the wire carries. The host decides *which* mode
+ *     the app is in — a pack cannot, since its frame is opaque-origin and sees
+ *     nothing of the pack that was open a minute ago — and the pack turns the
+ *     same four numbers into the same pitches. A second copy of the corpus is a
+ *     host and a pack that disagree about what `maqam.rast` means, which is a
+ *     drone in one key over a melody in another and nothing that fails to
+ *     compile.
+ *   * `packs/shared/game-audio` is the output ceiling: a limiter, a
+ *     `WaveShaperNode` flat at −1 dBFS, and the mute gate after it. Every pack
+ *     passes it and `game-audio/routing.test.ts` fails any game that does not.
+ *     The host's own cues did not, which made the host the one audio source in
+ *     the product with nothing over it. A second copy of a hearing-safety
+ *     guarantee is not a guarantee.
+ *
+ * Neither contains a game, a screen, an asset or a problem. Neither touches the
+ * DOM, and the walk below measures that rather than trusting it.
+ */
+const SOUNDSCAPE_ENTRY = path.resolve(src, "../../packs/shared/game-soundscape/index.ts")
+const AUDIO_ENTRY = path.resolve(src, "../../packs/shared/game-audio/index.ts")
+
+/**
+ * Each exempted entry point, and the ONE host module allowed to name it.
+ *
+ * The door matters as much as the exemption. "What does the host use out of the
+ * curriculum" is answerable by reading one file, and the same has to be true of
+ * the other three or the exemption becomes a tunnel by a hundred small imports.
+ */
+const SHARED_DOORS: readonly { readonly entry: string; readonly door: string }[] = [
+  { entry: CURRICULUM_ENTRY, door: "packs/curriculum.ts" },
+  { entry: SOUNDSCAPE_ENTRY, door: "app/soundscape.ts" },
+  { entry: AUDIO_ENTRY, door: "packs/services.ts" },
+]
+
+/**
  * The only modules in the host that may know what an exercise is: the page that
  * names the curriculum, and the service built on it.
  *
@@ -145,11 +186,12 @@ test("the host imports no curriculum and no content of any kind", () => {
       // The contract, and only the contract. Every other path out of `src/` is
       // still an offence, including another file in the same SDK directory.
       if (resolved === SDK_ENTRY) continue
-      if (resolved === CURRICULUM_ENTRY) {
-        // `packs/curriculum.ts` is the single module that names it. Every other
-        // module in the host reaches the curriculum through that one page, so
-        // "what does the host use out of it" is a file you can read.
-        if (path.relative(src, file) === "packs/curriculum.ts") continue
+      const shared = SHARED_DOORS.find((allowed) => allowed.entry === resolved)
+      if (shared) {
+        // One module names each. Every other module in the host reaches these
+        // through that one page, so "what does the host use out of it" is a
+        // file you can read.
+        if (path.relative(src, file) === shared.door) continue
         offenders.push(`${path.relative(src, file)} -> ${specifier}`)
         continue
       }
@@ -229,6 +271,54 @@ test("the curriculum the host imports is arithmetic, and only arithmetic", () =>
 
   assert.deepEqual(escapes, [], "the curriculum reaches outside itself")
   assert.deepEqual(dom, [], "the curriculum touches the DOM")
+})
+
+test("the shared audio modules the host imports are arithmetic, and only arithmetic", () => {
+  // The same measurement as the curriculum's, applied to the two audio
+  // exemptions. `game-soundscape` must stay pure arithmetic — cents, a seeded
+  // walker, four numbers — and `game-audio` must stay the ceiling and nothing
+  // else. Either one growing a renderer, an asset loader, a `document` or an
+  // import out of its own package would put content back in the host through a
+  // door the offender scan waves past, with the whole suite still green.
+  //
+  // It also holds the entry points to being entry points: a `Melody` the host
+  // could reach would be the host synthesising notes, which is the exact split
+  // the design rejected — selection is global and slow, pitches are local and
+  // synchronous.
+  for (const entry of [SOUNDSCAPE_ENTRY, AUDIO_ENTRY]) {
+    assert.ok(fs.existsSync(entry), `the exempted module ${entry} does not exist`)
+
+    const pkg = path.dirname(entry)
+    const escapes: string[] = []
+    const dom: string[] = []
+    const seen = new Set<string>()
+
+    const walk = (file: string): void => {
+      if (seen.has(file)) return
+      seen.add(file)
+      if (/\b(document|window|localStorage|HTMLElement)\b/.test(code(file))) {
+        dom.push(path.relative(pkg, file))
+      }
+      for (const specifier of specifiers(file)) {
+        const target = specifier.startsWith(".")
+          ? path.resolve(path.dirname(file), specifier)
+          : null
+        if (target === null || path.relative(pkg, target).startsWith("..")) {
+          escapes.push(`${path.relative(pkg, file)} -> ${specifier}`)
+          continue
+        }
+        walk(target)
+      }
+    }
+    walk(entry)
+
+    assert.deepEqual(escapes, [], `${path.relative(src, entry)} reaches outside itself`)
+    assert.deepEqual(dom, [], `${path.relative(src, entry)} touches the DOM`)
+    // A walk that found only the entry point would pass both assertions on
+    // nothing. Deliberately loose: this is a non-vacuity floor, not a file
+    // count, and merging two modules must not turn a green refactor red.
+    assert.ok(seen.size >= 3, `only ${seen.size} files walked from ${entry}`)
+  }
 })
 
 test("exactly one module in the host knows what an exercise is", () => {
