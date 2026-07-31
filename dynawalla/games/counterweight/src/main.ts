@@ -16,10 +16,11 @@ import {
 
 // ── The soundscape, in the harness only ─────────────────────────────────────
 //
-// The real app does not publish one yet, so in a shipped pack
-// `currentSoundscape()` is `null` and the yard sounds exactly as it always has.
-// Here it is published before mount, which is the only place the idea can
-// currently be heard: a random mode and root each run, or a named one with
+// The real app publishes one now (`dynawalla-app/src/app/soundscape.ts`), so
+// inside the app the yard plays in whatever key the bazaar is in. This harness
+// has no host at all, so it publishes its own before mount — which is where a
+// specific soundscape can be pinned and heard on demand: a random mode and root
+// each run, or a named one with
 // `?mode=maqam.rast&root=146.8`, so a specific report ("hijaz sounds wrong on
 // the thousands plate") is reproducible rather than a memory.
 //

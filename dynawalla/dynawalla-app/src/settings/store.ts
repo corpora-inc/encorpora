@@ -28,6 +28,19 @@ export type Quality = "full" | "plain"
 
 export interface Settings {
   readonly sound: boolean
+  /**
+   * Whether the app hands a pack the generative key it is in.
+   *
+   * A second switch rather than a second meaning for `sound`, because they are
+   * different questions a parent can reasonably answer differently: `sound` is
+   * "may this tablet make noise at all" and is total — it closes the gate after
+   * the ceiling in every pack's safety bus, so off means silent. This is "may
+   * the noise be music", and off means a pack falls back to the fixed cues it
+   * shipped with. **Off is not quiet.** A host too old to send a soundscape
+   * publishes `undefined` and that already means "keep your own sounds"; this
+   * switch reuses that path exactly rather than inventing a quieter one.
+   */
+  readonly music: boolean
   readonly haptics: boolean
   readonly reduceMotion: boolean
   readonly textSize: TextSize
@@ -38,6 +51,7 @@ export interface Settings {
 
 export const DEFAULT_SETTINGS: Settings = {
   sound: true,
+  music: true,
   haptics: true,
   reduceMotion: false,
   textSize: "normal",
@@ -62,8 +76,9 @@ export const useSettings = create<SettingsState>()(
       name: deviceKey("settings"),
       version: 1,
       storage: durable,
-      partialize: ({ sound, haptics, reduceMotion, textSize, quality, developer }) => ({
+      partialize: ({ sound, music, haptics, reduceMotion, textSize, quality, developer }) => ({
         sound,
+        music,
         haptics,
         reduceMotion,
         textSize,
@@ -80,6 +95,10 @@ export const useSettings = create<SettingsState>()(
         return {
           ...current,
           sound: flag(stored?.sound, DEFAULT_SETTINGS.sound),
+          // A tablet that was set up before this switch existed has no stored
+          // value, and the default is on: the soundscape is the feature, and a
+          // parent who wants the old fixed cues can say so.
+          music: flag(stored?.music, DEFAULT_SETTINGS.music),
           haptics: flag(stored?.haptics, DEFAULT_SETTINGS.haptics),
           reduceMotion: flag(stored?.reduceMotion, DEFAULT_SETTINGS.reduceMotion),
           developer: flag(stored?.developer, DEFAULT_SETTINGS.developer),

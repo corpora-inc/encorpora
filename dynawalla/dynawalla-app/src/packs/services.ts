@@ -19,6 +19,12 @@ import type {
   TransitionKind,
 } from "../../../packs/sdk/src/index.ts"
 import { CAPABILITY_IDS, isNativeBacked } from "../../../packs/sdk/src/index.ts"
+import {
+  createSafetyBus,
+  type BusContext,
+  type SafetyBus,
+} from "../../../packs/shared/game-audio/index.ts"
+import type { Soundscape } from "../app/soundscape.ts"
 import type { HostServices } from "./bridge.ts"
 import { fireHaptic, type HapticPorts } from "./haptics.ts"
 import type { OrientationSource } from "./orientation.ts"
@@ -54,6 +60,18 @@ export type SettingsInput = {
   /** BCP-47. One locale until the i18n runtime lands; a pack must not guess. */
   readonly locale?: string  /** Override for tests; production measures the live tokens. */
   readonly safeArea?: { top: number; right: number; bottom: number; left: number }
+  /**
+   * The key the app is in, drawn at the doorway this pack was opened through.
+   *
+   * Required rather than optional-with-a-default, and required for the reason
+   * `haptics` above is: a defaulted one would let "nobody pinned a soundscape"
+   * compile, run, and sound exactly like a host that has none — which is the
+   * state this change exists to leave. It also forces the value to be *pinned*
+   * by the caller. `packSettings` runs again on every settings change, and if
+   * it drew its own the app would change key when a parent moved the text size
+   * slider, mid-question, under a child. See `app/soundscape.ts`.
+   */
+  readonly soundscape: Soundscape
 }
 
 /** The device facts a pack is handed. No name, no birthday, no identifier. */
@@ -85,6 +103,16 @@ export function readSafeArea(): { top: number; right: number; bottom: number; le
 
 export function packSettings(input: SettingsInput): Settings {
   const { settings } = input
+  // Two switches, and both have to be on. `sound` is the total one — a pack's
+  // safety bus closes its gate after the ceiling, so off is silent rather than
+  // quiet — and `music` chooses between the app's generative key and the fixed
+  // cues a pack shipped with.
+  //
+  // The field is OMITTED rather than sent as `undefined`, which `exactOptional
+  // PropertyTypes` insists on and which is also the honest wire: absent is what
+  // a host too old to know about soundscapes sends, and `game-soundscape`
+  // already reads absent as "keep your own sounds" and never as "go quiet".
+  const music = settings.sound && settings.music
   return {
     locale: input.locale ?? "en",
     reducedMotion: settings.reduceMotion,
@@ -94,6 +122,7 @@ export function packSettings(input: SettingsInput): Settings {
     sound: settings.sound,
     haptics: settings.haptics,
     safeArea: input.safeArea ?? readSafeArea(),
+    ...(music ? { soundscape: input.soundscape } : {}),
   }
 }
 
@@ -106,7 +135,43 @@ const SOUND_CUE: Readonly<Record<SoundCue, { hz: number; ms: number }>> = {
   arrive: { hz: 990, ms: 200 },
 }
 
-type Audio = { context: AudioContext | null }
+/**
+ * The peak of a cue's envelope, linear.
+ *
+ * Named because a `GainNode`'s `gain` defaults to **1**, not to 0 — so the
+ * three scheduling calls below are not decoration, they are the only thing
+ * standing between a cue and full scale, and a test can now say which number
+ * it expects to measure rather than reading the ramp back.
+ */
+export const CUE_PEAK = 0.12
+
+/**
+ * The slice of `AudioContext` the host's own cues touch.
+ *
+ * `BusContext` is what the shared safety bus needs; the oscillator and the two
+ * resume members are what a cue needs on top of it. Written as a structural
+ * type rather than `AudioContext` so the graph this builds can be rendered in a
+ * test, which is the only way to *measure* the ceiling instead of asserting
+ * that a line of code exists.
+ */
+export type CueContext = BusContext & {
+  readonly state?: string
+  resume?: () => unknown
+  createOscillator: () => OscillatorNode
+}
+
+/** The one context and the one bus a session's cues share. */
+export type CueAudio = { context: CueContext | null; bus: SafetyBus | null }
+
+/** How a cue reaches a device. Production opens a real context; a test hands one in. */
+export type CueOpener = () => CueContext | null
+
+const openAudioContext: CueOpener = () => {
+  const Ctor: typeof AudioContext | undefined =
+    typeof AudioContext === "function" ? AudioContext : undefined
+  if (!Ctor) return null
+  return new Ctor()
+}
 
 /**
  * One short tone.
@@ -115,15 +180,32 @@ type Audio = { context: AudioContext | null }
  * one before a gesture, and a suspended context created at mount is a context
  * that never plays anything. Every failure is swallowed *loudly* — a device
  * that refuses audio must not take a game down with it.
+ *
+ * ── The ceiling ─────────────────────────────────────────────────────────────
+ *
+ * This used to end `.connect(context.destination)`, which made the host the one
+ * audio source in the whole product with no ceiling over it. Every pack's
+ * output passes `createSafetyBus` — a limiter, then a `WaveShaperNode` whose
+ * curve is flat at −1 dBFS, then the mute gate — and `game-audio/routing.test.ts`
+ * fails any game that skips it. The host was exempt only because nobody had
+ * written the rule down for it.
+ *
+ * Five short triangle tones at 0.12 were never going to hurt anybody, which is
+ * why it went unnoticed. It stops being harmless the moment the host owns the
+ * continuous ambient bed the soundscape design gives it (stage 3): a bed and a
+ * cue summing on an output path that nothing limits is the MOSAIC incident with
+ * the roles swapped, and a bed is by definition always playing.
+ *
+ * One bus per session, built on the first cue and reused. A bus per cue would
+ * be five nodes and a `sound.ts` subscription leaked on every tap.
  */
-function playCue(audio: Audio, cue: SoundCue): void {
+export function playCue(audio: CueAudio, cue: SoundCue, open: CueOpener = openAudioContext): void {
   try {
-    const Ctor: typeof AudioContext | undefined =
-      typeof AudioContext === "function" ? AudioContext : undefined
-    if (!Ctor) return
-    audio.context ??= new Ctor()
+    audio.context ??= open()
     const context = audio.context
-    if (context.state === "suspended") void context.resume()
+    if (!context) return
+    if (context.state === "suspended") void context.resume?.()
+    audio.bus ??= createSafetyBus(context)
     const { hz, ms } = SOUND_CUE[cue]
     const now = context.currentTime
     const osc = context.createOscillator()
@@ -131,9 +213,11 @@ function playCue(audio: Audio, cue: SoundCue): void {
     osc.type = "triangle"
     osc.frequency.value = hz
     gain.gain.setValueAtTime(0.0001, now)
-    gain.gain.exponentialRampToValueAtTime(0.12, now + 0.008)
+    gain.gain.exponentialRampToValueAtTime(CUE_PEAK, now + 0.008)
     gain.gain.exponentialRampToValueAtTime(0.0001, now + ms / 1000)
-    osc.connect(gain).connect(context.destination)
+    // The bus, never `context.destination`. This is the line the comment above
+    // is about, and `cues.test.ts` renders the graph it produces.
+    osc.connect(gain).connect(audio.bus.input)
     osc.start(now)
     osc.stop(now + ms / 1000 + 0.02)
   } catch (error) {
@@ -197,7 +281,7 @@ export type LaunchServices = {
 export function createServices(deps: ServicesDeps): LaunchServices {
   const items = createItemService({ profileId: deps.profileId, record: report })
   const store = packStorageFor(deps.profileId)
-  const audio: Audio = { context: null }
+  const audio: CueAudio = { context: null, bus: null }
   const haptics = deps.haptics
   let current = deps.settings
 

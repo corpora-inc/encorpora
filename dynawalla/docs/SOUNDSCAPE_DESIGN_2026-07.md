@@ -1,9 +1,17 @@
 # The Dynawalla soundscape
 
-**Status:** designed, and one game built against it. `packs/shared/game-soundscape/`
-exists, has 45 tests, and THE STEELYARD plays through it behind a gate that is off
-in production. Everything in *Where it lives* below stage 1 is proposed and needs
-a founder decision — the open questions are at the end.
+**Status:** live. `packs/shared/game-soundscape/` exists and has 45 tests; the host
+now chooses a soundscape and publishes it, so THE STEELYARD plays through it in
+production. Stage 2 (games talking back) and stage 3 (the host's ambient bed) are
+still proposed. The founder's answers to the open questions are recorded at the
+end.
+
+**What turning it on actually was.** Not a change to any pack: the pack side was
+finished and waiting. `dynawalla-app/src/app/soundscape.ts` chooses one key for
+the whole app and `packSettings` puts it on the wire, where `game-host`'s
+`publish()` was already forwarding it. THE STEELYARD's own ship gate — "nothing
+in the shipped pack turns the soundscape on" — still passes unchanged, because
+turning it on was the host's job and never the pack's.
 
 ---
 
@@ -260,8 +268,9 @@ wired end to end and its dev harness (`npm run dev`) publishes a soundscape, whi
 is where the idea can be heard: `?mode=maqam.rast&seed=7` to pin one,
 `?soundscape=off` for the A/B against what ships now.
 
-**Stage 2 — the host chooses, and games can talk back.** The host picks a
-soundscape at launch, rotates it on a slow schedule, and publishes it. Games get
+**Stage 2 — the host chooses (done), and games can talk back (not yet).** The
+host picks a soundscape at launch, rotates it on a slow schedule, and publishes
+it — that half is built, and the rotation policy is written down below. Games get
 to *affect* it with a `feedback.soundscape` method under the **existing `audio`
 capability** — `{ gesture: "moreTension" | "lessTension" | "levelComplete" }`, fire
 and forget, 2 s budget, not native. The host adjusts and re-publishes through
@@ -276,11 +285,13 @@ not send audio, it sends four numbers, and the same pure module turns them into
 the same pitches on both sides. That is the elegant part and it is why Option B
 is not a compromise.
 
-> **A defect stage 3 must fix on the way past.** `dynawalla-app/src/packs/services.ts`
-> `playCue()` connects straight to `context.destination`. The host's own cues are
-> **not** subject to any ceiling. Nothing has complained yet because they are five
-> short triangle tones, but the moment the host owns a continuous bed it needs
-> `createSafetyBus` too.
+> **A defect stage 3 must fix on the way past — fixed.** `dynawalla-app/src/packs/services.ts`
+> `playCue()` connected straight to `context.destination`, so the host's own cues
+> were **not** subject to any ceiling. Nothing had complained because they are five
+> short triangle tones, but a continuous bed on an unlimited path is the MOSAIC
+> incident with the roles swapped. The host now builds one `createSafetyBus` per
+> session and every cue passes it. `dynawalla-app/src/packs/cues.test.ts` renders
+> the graph and measures the peak rather than grepping for the line.
 
 ---
 
@@ -411,13 +422,37 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 
 ## 7. Open questions for the founder
 
-1. **Is the bed the host's or the pack's?** (Stage 3.) Host = never a silent gap at
-   a doorway, one continuous piece of music, and the shell has music too. Pack =
-   simpler, already inside the ceiling, and dies at every doorway. Recommendation:
-   host, and give it its own switch.
-2. **How often does the soundscape rotate?** Per launch? Per game? On a slow timer?
-   Recommendation: per launch, plus on `levelComplete` at most once every few
-   minutes, so a child notices the key changed after they achieved something.
+1. **Is the bed the host's or the pack's?** (Stage 3.) **ANSWERED: the host owns
+   one bed.** Never a silent gap at a doorway, one continuous piece of music, and
+   the shell has music too. The ceiling hole that would have made it unsafe is
+   closed; building the bed itself is the next piece of work.
+2. **How often does the soundscape rotate?** **ANSWERED, and implemented in
+   `dynawalla-app/src/app/soundscape.ts`:**
+
+   * **A fresh key every launch.** The launch seed is drawn once per process, so
+     a child who plays for ninety seconds and closes the app still hears a
+     different mode tomorrow.
+   * **A new key every eight minutes after that** — long enough that a whole run
+     at one game sits inside one key, short enough that a long afternoon hears
+     five or six.
+   * **The clock is only read at a doorway.** The key is drawn when a pack is
+     mounted and pinned for the life of that mount. A change *underneath* a
+     child — mid-question, because a timer went off — would slide the drone
+     under the plate they are holding, and that is worse than repetition. So the
+     app changes key while a child is walking between games and never while they
+     are in one. A forty-minute session at a single pack stays in one key on
+     purpose; the walker is what keeps that from being the same ding twice.
+   * **Never the same mode twice running.** A uniform draw from 38 repeats about
+     one doorway in 38, and a repeat is exactly the "stale and repetitive" the
+     brief names. Re-drawing costs one comparison.
+   * **Always optional, two ways.** `sound` is total and unchanged — off is
+     silent, not quiet. A second switch, **Music**, chooses between the app's
+     generative key and the fixed cues a pack shipped with; off publishes
+     *nothing*, which is the path a host too old to know about soundscapes
+     already takes, and it means "keep your own sounds".
+
+   Still open: `levelComplete` moving the key, which needs the stage 2 feedback
+   channel.
 3. **Chord progressions.** The brief asks for "many chord progressions to choose
    from" and beatlounge has ~994 generated ones. This design deliberately has
    **none** — a moving progression means the melody's home note moves, and a
@@ -446,6 +481,9 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 | The soundscape the app is in | `packs/shared/game-soundscape/host.ts` |
 | The wire field | `packs/sdk/src/protocol.ts` → `Settings.soundscape` |
 | Where it is published to a pack | `packs/shared/game-host/index.ts` → `publish()` |
+| Which key the app is in, and when it moves | `dynawalla-app/src/app/soundscape.ts` |
+| Where it is put on the wire | `dynawalla-app/src/packs/services.ts` → `packSettings()` |
+| The doorway that draws one | `dynawalla-app/src/packs/Stage.tsx` |
 | THE STEELYARD's whole musical vocabulary | `games/counterweight/src/tune.ts` |
 | The synthesis, and the rubble recipe | `games/counterweight/src/audio.ts` |
 | Where it is turned on, for now | `games/counterweight/src/main.ts` |

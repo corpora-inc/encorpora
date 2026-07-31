@@ -25,6 +25,7 @@ import {
   orientationPorts,
   primeOrientationPermission,
 } from "../app/platform.ts"
+import { soundscapeAtDoorway } from "../app/soundscape.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { documentLock } from "../app/zoom.ts"
@@ -121,11 +122,29 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
   const [restedBefore] = useState(() => !usePass.getState().mayOpen(packId))
   const [offering, setOffering] = useState(false)
 
+  // ── The doorway ────────────────────────────────────────────────────────────
+  //
+  // This component's identity IS a session — `PackStage` renders it with
+  // `key={packId}`, so opening a different game remounts it — which makes its
+  // mount the one moment the app is allowed to change key. Everything else
+  // about a soundscape is a slow-moving fact, and `soundscapeAtDoorway` will
+  // hand back the same four numbers for every doorway inside the rotation
+  // window, so walking from one game to the next does not change the music.
+  //
+  // Pinned in state rather than read per render, and that is the whole of the
+  // bug this avoids: `forPack` is rebuilt whenever a parent touches a setting
+  // and pushed to the running pack, so a soundscape drawn during render would
+  // put the game into a new key because somebody moved the text size — in the
+  // middle of a question, with the drone sliding under it. React's initialiser
+  // is double-invoked in StrictMode and that is fine: the call is idempotent
+  // inside the window.
+  const [soundscape] = useState(() => soundscapeAtDoorway(Date.now()))
+
   // Built by the one function that knows how a host setting becomes a pack
   // setting, so the mapping cannot drift between the launch and the push.
   const forPack: Settings = useMemo(
-    () => packSettings({ settings, theme: themeMode, systemPrefersDark: systemDark }),
-    [settings, themeMode, systemDark],
+    () => packSettings({ settings, theme: themeMode, systemPrefersDark: systemDark, soundscape }),
+    [settings, themeMode, systemDark, soundscape],
   )
 
   const launch = useMemo(
