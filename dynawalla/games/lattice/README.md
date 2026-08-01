@@ -187,6 +187,83 @@ no extra wiring.
 
 ---
 
+## The opening, and why the first screen is one number
+
+The founder's report is the specification:
+
+> Lattice runner is pretty cool but it's too hard and fast for a human .. maybe
+> one number at a time and a slower ramp up from an easier baseline .. first
+> time you enter it could be just one number calmly coming down the lattice.
+> Maybe it even highlights/hints when it is blastable and why. It needs to be a
+> bit more hand-holdy on the first run. slower, easier, more hand-holdy. the way
+> it starts for me now is chaotic and impossible.
+
+### What it opened with, measured
+
+Driving the real `Arena` against the stub host at three viewports over sixty
+seeds, at the rung a brand new profile actually starts on:
+
+| | at t=0 | fully ground down | fastest thing on the field |
+|---|---|---|---|
+| **as it shipped** | up to **6** numbers | up to **9** | **10.4%** of the arena's diagonal a second |
+| **a first sitting now** | **1** | up to **5** | **3.0%** |
+
+Four to six numbers, every one of them already moving, all of which the child is
+expected to read and sort into "shoot this one" and "collect that one", on the
+first screen they have ever seen. That is the "chaotic and impossible", and it
+was not a difficulty setting — it was the whole field arriving at once.
+
+### The ramp
+
+Six positions, indexed by how many resonators this child has ever opened.
+`game/seen.ts` remembers that across sittings, so a child coming back to their
+fifth ring is not walked through the first one again.
+
+| step | numbers at t=0 | ground down | drift | guided |
+|---|---|---|---|---|
+| 0 | 1 | 5 | 3.0% | yes |
+| 1 | 1 | 5 | 4.5% | yes |
+| 2 | 3 | 6 | 6.3% | yes |
+| 3 | 5 | 7 | 7.5% | yes |
+| 4 | 6 | 8 | 9.8% | no |
+| 5+ | 6 | 9 | 10.4% | no |
+
+Step 5 is the shipped game, unchanged. Every quantity is monotone
+non-decreasing in the step and the guidance is monotone non-increasing;
+`opening.test.ts` asserts both rather than taking the table on trust.
+
+Nothing here is a window, a timer or a deadline. THE LATTICE has never had one
+and this does not add one — `openingAt` reads one integer and that integer counts
+rings the child *finished*.
+
+### The first field carries the answer, and that is on purpose
+
+At steps 0 and 1 the whole factorisation is gathered into **one** husk, so the
+numeral on that stone is the target. The first screen teaches the *mechanic* —
+shoot it, it becomes two, collect the lit ones, fly into the ring — not the
+arithmetic. Because the answer is on the field, `arena.enter` treats the round
+exactly as `hint.ts` treats a tree that stated the answer: the host still hears
+the outcome, so the progress bar still moves, and the arena does **not** climb
+its own ladder.
+
+## Which one goes in, and why
+
+`game/live.ts`. Take the target, take out what the hold already carries, and
+what remains is a number. A lit mote belongs in the hold **iff it divides that
+number**; a stone husk is worth shooting **iff it shares a factor with it**.
+
+While the opening is guided, the field says so. A mote that goes in wears a
+celestial collar and states the reason underneath it as arithmetic — `18÷3` —
+and a stone with a piece of the answer inside it wears a brass one. A `spare` is
+drawn exactly as it always was: nothing is crossed out, dimmed or marked wrong,
+because half the point is that the contrast does the teaching.
+
+**This is not the factor tree.** The tree says *how to factor the target* and
+unfolds on a clock the child can outrun; this says *which of the numbers in front
+of you right now is live*. A child can have the whole tree up and still not know
+whether the 13 drifting past is one of theirs. What the two share is the rule
+above: a round the game guided does not climb the arena's ladder.
+
 ## The hint, and why it is a factor tree
 
 The founder's report is the specification:
@@ -522,7 +599,7 @@ src/
 ## Tests
 
 ```
-npm test        181 tests
+npm test        207 tests
 npm run tsc     0 errors
 npm run build   the library build
 npm run build:pack   the pack build → dist-pack/
@@ -530,6 +607,24 @@ npm run build:pack   the pack build → dist-pack/
 
 The ones that matter:
 
+* `opening.test.ts` — **the calm opening, as a measurement.** The real `Arena`
+  is armed at every step of the ramp, at three viewports, over sixty seeds, and
+  what the child is looking at is counted: numbers on the screen at t=0, numbers
+  once that field has been shot all the way down to primes, and the fastest
+  thing on it as a fraction of the arena's own diagonal. Then a minute of a child
+  who is just *looking* at it, sampled every second, and a husk knocked down to a
+  crawl to check that the band's floor came down with its ceiling. Also: the table
+  is monotone in both directions, `gather` conserves the product over four
+  thousand fuzzed cases, and a round the opening guided does not climb the
+  arena's ladder — counted at `Ladder.opened` itself, because reading the ladder's
+  *position* would have passed with the rule deleted.
+* `live.test.ts` — **the marking may not lie.** Checked at three levels: against
+  an independent trial-division oracle over roughly a million (target, hold,
+  value) triples, exactly the divisors and no more; through the real `Arena`, by
+  a child who does exactly what the marking says and nothing else and opens the
+  ring on thirty seeds; and through the real `Scene.draw` against a context that
+  records instead of paints, where the collars on the field must be one per
+  marked number and not one more.
 * `hint.test.ts` — **the tree may not lie.** The generator is checked as a
   property, not by example: every whole number from 12 to 999, on twelve seeds,
   every node the exact product of its two children, every leaf prime, and the

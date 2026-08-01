@@ -38,6 +38,8 @@ import {
   stageCount,
 } from "./hint.ts"
 import { CEILING, FLOOR, Ladder, rungOf } from "./ladder.ts"
+import { markField, remainingOf, type Mark } from "./live.ts"
+import { gather, openingAt, type Opening } from "./opening.ts"
 import { factorTree, placeTree, type Placed } from "./tree.ts"
 import {
   isAskable,
@@ -255,7 +257,22 @@ export type ArenaEvent =
   | { kind: "hint"; at: Vec; stage: number; stages: number }
   | { kind: "stalled" }
 
-export type ArenaOptions = { width: number; height: number; domain?: string }
+export type ArenaOptions = {
+  width: number
+  height: number
+  domain?: string
+  /**
+   * How many resonators this child has opened **before this sitting**.
+   *
+   * REQUIRED, and deliberately not defaulted. The whole of `game/opening.ts`
+   * hangs off it, and a default would mean a shell that never wired it still
+   * compiled and quietly shipped either the chaotic opening the founder
+   * reported or the calm one to a child who has played for a month — with
+   * nothing failing anywhere and no way to notice from inside the canvas.
+   * `render/scene.ts` makes the same argument about its `hint` argument.
+   */
+  experience: number
+}
 
 export class Arena {
   readonly bank = new Bank()
@@ -335,6 +352,31 @@ export class Arena {
   private hintCache: { stage: number; state: HintState } | null = null
   /** The domain label the resonator's questions are drawn under. */
   private readonly domain: string
+  /** Resonators opened before this sitting. See `ArenaOptions.experience`. */
+  private readonly experience: number
+  /**
+   * The drift band this field was seeded with, as a fraction of the ordinary
+   * one. Latched at `arm` rather than read per frame, so the field keeps its
+   * character for the whole of the question it was stocked for.
+   *
+   * It is applied to the band in `step` as well as to the velocities at spawn,
+   * and that second half is the one that is easy to miss: `step` *accelerates*
+   * anything drifting below `DRIFT_MIN_SPAN`, so a husk seeded at three tenths
+   * of the pace would have been wound back up to full speed inside a second and
+   * the calm opening would have been calm for exactly one frame.
+   */
+  private driftScale = 1
+  /**
+   * Does the field, as seeded, hand the answer over?
+   *
+   * True at the very start of a child's first sitting, where the whole
+   * factorisation is gathered into one husk and the numeral on that stone IS
+   * the target. That is the point of the first screen — it teaches the
+   * mechanic, not the arithmetic — and it is treated exactly as `hint.ts`
+   * treats a tree that stated the answer: the host still hears the outcome, so
+   * the progress bar still moves, and the arena does not climb its own ladder.
+   */
+  private givenByField = false
 
   private readonly host: Host
   private readonly rng: Rng
@@ -343,6 +385,9 @@ export class Arena {
     this.host = host
     this.rng = rng
     this.domain = options.domain ?? "add"
+    this.experience = Number.isFinite(options.experience)
+      ? Math.max(0, Math.floor(options.experience))
+      : 0
     this.width = Math.max(320, Number.isFinite(options.width) ? options.width : 320)
     this.height = Math.max(320, Number.isFinite(options.height) ? options.height : 320)
     this.ship.x = this.width / 2
@@ -367,6 +412,44 @@ export class Arena {
   /** How far the ship carries after the thumb comes off, in arena units. */
   get shipCoast(): number {
     return this.shipMax / SHIP_DRAG
+  }
+
+  // ── the opening ──────────────────────────────────────────────────────────
+
+  /**
+   * Where this child stands on the calm ramp: everything they have ever opened,
+   * plus everything they have opened this sitting.
+   */
+  get openingStep(): number {
+    return this.experience + this.opened
+  }
+
+  /** The opening this field was stocked under. See `game/opening.ts`. */
+  get opening(): Opening {
+    return openingAt(this.openingStep)
+  }
+
+  /**
+   * What is left of the target once the hold is taken out. `null` when there is
+   * no question, or when the hold has already gone past what the ring wants.
+   */
+  get remaining(): number | null {
+    const res = this.resonator
+    if (!res) return null
+    return remainingOf(res.target, this.bank.tiles)
+  }
+
+  /**
+   * Which numbers on the field divide what is left, for the renderer.
+   *
+   * `null` — not an empty map — once the child is past the guided opening, so
+   * there is exactly one place the guidance is switched off and the renderer
+   * cannot draw a stale marking by forgetting to ask.
+   */
+  liveMarks(): Map<number, Mark> | null {
+    const res = this.resonator
+    if (!res || !this.opening.guided) return null
+    return markField(res.target, this.bank.tiles, this.bodies)
   }
 
   // ── the frame ────────────────────────────────────────────────────────────
@@ -561,7 +644,13 @@ export class Arena {
       const dy = this.ship.y - body.y
       const m = Math.hypot(dx, dy) || 1
       const kick = JOSTLE_SPAN * REFERENCE_SPAN * this.span
-      const shove = JOSTLE_HUSK_SPAN * REFERENCE_SPAN * this.span
+      // The husk's half of a bump is the FIELD's motion, so it is scaled with
+      // the field's pace; the ship's half is the ship's and is not. Measured,
+      // unscaled: a lone husk drifting into a ship nobody was flying bumped it
+      // once a second and wound itself up to 6.1% of the arena's diagonal a
+      // second — three times the calm opening's whole drift band, off one
+      // untouched screen. The ship's kick is `SHIP_*` territory; see #716.
+      const shove = JOSTLE_HUSK_SPAN * REFERENCE_SPAN * this.span * this.driftScale
       this.ship.vx += (dx / m) * kick
       this.ship.vy += (dy / m) * kick
       body.vx -= (dx / m) * shove
@@ -622,7 +711,21 @@ export class Arena {
     // It is only ever true because the child **asked**: the clock stops at
     // `hintFree`, one stage short of the line, so nothing that happens to a
     // child who is sitting still can reach here.
-    const given = this.hint()?.given === true
+    //
+    // Two more things count as the game having given it away, and both are
+    // read BEFORE the counters move, because `opening` is a function of
+    // `opened` and this method is about to increment it:
+    //
+    //   * the field itself stated the answer — the calm opening's one husk
+    //     carries the target and its numeral is on the stone;
+    //   * the opening was **guided**, so `live.ts` marked which primes divide
+    //     what was left and the hold was assembled with that in front of them.
+    //
+    // Neither is a penalty and neither is reported differently. What they do is
+    // hold the arena's own ladder still, exactly as a tree that stated the
+    // answer does, so nothing here walks a child up into harder arithmetic on
+    // the strength of a round the game helped them through.
+    const given = this.hint()?.given === true || this.givenByField || this.opening.guided
 
     // Once per question. A refusal spends the id — the resonator stays as a
     // goal the child can still open, but the host hears one answer, which is
@@ -740,8 +843,8 @@ export class Arena {
     const steps = Math.min(MAX_SUBSTEPS, Math.max(1, Math.ceil(clamped / SUBSTEP_MS)))
     const h = clamped / steps / 1000
     const shipMax = this.shipMax
-    const driftMin = DRIFT_MIN_SPAN * REFERENCE_SPAN * this.span
-    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span
+    const driftMin = DRIFT_MIN_SPAN * REFERENCE_SPAN * this.span * this.driftScale
+    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span * this.driftScale
     const decay = Math.exp(-SHIP_DRAG * h)
     const turn = 1 - Math.exp(-FACING_TURN_PER_SEC * h)
 
@@ -1116,11 +1219,19 @@ export class Arena {
     // Computed once, here, rather than per frame: it is a walk of the whole tree
     // at every stage and the shell asks for the hint sixty times a second.
     this.hintFree = freeStages(this.hintTree)
-    const values = huskify(wanted, this.rng)
+
+    // How busy this field is allowed to be. See `game/opening.ts` — at the very
+    // start it is one husk, no decoy, no chaff, drifting at three tenths of the
+    // pace, and it walks out to the shipped field over five openings.
+    const plan = this.opening
+    this.driftScale = plan.drift
+    const values = Number.isFinite(plan.husks)
+      ? gather(wanted, plan.husks)
+      : huskify(wanted, this.rng)
 
     // One reachable mal-rule: the primes it needs that the answer does not
     // already supply. Kept small, or the field becomes a haystack.
-    const decoy = this.pickDecoy(question, wanted)
+    const decoy = plan.decoy ? this.pickDecoy(question, wanted) : []
     if (decoy.length > 0) values.push(...huskify(decoy, this.rng))
 
     // A little chaff, so "sweep only what you need" is a decision rather than
@@ -1131,10 +1242,23 @@ export class Arena {
     // arithmetic cannot go further; the *sweep* can. Two extra decoy motes at the
     // top of the band is a field where getting the hold exactly right is work.
     const reach = (this.ladder.at - FLOOR) / Math.max(1e-6, CEILING - FLOOR)
-    const chaff = this.rng.int(1, 3 + Math.round(2 * Math.max(0, Math.min(1, reach))))
+    const chaff = Number.isFinite(plan.chaff)
+      ? plan.chaff
+      : this.rng.int(1, 3 + Math.round(2 * Math.max(0, Math.min(1, reach))))
     for (let i = 0; i < chaff; i++) values.push(this.rng.pick(MOTE_PRIMES.slice(0, 6)))
 
-    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span
+    // **Does the field, as it now stands, state the answer?**
+    //
+    // Asked here rather than off `plan.husks`, and after the decoy and the chaff
+    // have gone in, because it is a question about the picture and not about the
+    // plan. One stone, alone, carrying the target: the numeral on it IS the
+    // answer and there is nothing else it could be. That is true of the first
+    // two openings and of nothing else — a prime target puts the target on the
+    // field as a mote at every step of the ramp, but from step 2 on there is
+    // chaff drifting beside it and knowing *which* mote is the one is the round.
+    this.givenByField = values.length === 1 && values[0] === target
+
+    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span * this.driftScale
     this.bodies = []
     this.shots = []
     this.rng.shuffle(values)
@@ -1152,8 +1276,8 @@ export class Arena {
       difficulty: landedAt,
       x: this.width / 2,
       y: this.height * 0.26,
-      vx: this.rng.range(-26, 26) * this.span,
-      vy: this.rng.range(-14, 14) * this.span,
+      vx: this.rng.range(-26, 26) * this.span * this.driftScale,
+      vy: this.rng.range(-14, 14) * this.span * this.driftScale,
       cooldown: 0,
       reported: false,
       age: 0,
@@ -1180,11 +1304,17 @@ export class Arena {
    * nothing here is a hardcoded problem.
    */
   private stockPassiveField(): void {
+    const plan = this.opening
+    this.driftScale = plan.drift
+    this.givenByField = false
     const primes: number[] = []
     const many = this.rng.int(5, 8)
     for (let i = 0; i < many; i++) primes.push(this.rng.pick(MOTE_PRIMES.slice(0, 8)))
-    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span
-    for (const value of huskify(primes, this.rng)) {
+    const driftMax = DRIFT_MAX_SPAN * REFERENCE_SPAN * this.span * this.driftScale
+    const values = Number.isFinite(plan.husks)
+      ? gather(primes, plan.husks)
+      : huskify(primes, this.rng)
+    for (const value of values) {
       const edge = 70
       this.spawnAt(
         value,
@@ -1267,7 +1397,10 @@ export class Arena {
         this.height - MOTE_R,
       )
       const speed =
-        this.rng.range(DRIFT_MIN_SPAN, DRIFT_MAX_SPAN) * REFERENCE_SPAN * this.span
+        this.rng.range(DRIFT_MIN_SPAN, DRIFT_MAX_SPAN) *
+        REFERENCE_SPAN *
+        this.span *
+        this.driftScale
       this.spawnAt(values[i] as number, px, py, Math.cos(angle) * speed, Math.sin(angle) * speed)
     }
   }

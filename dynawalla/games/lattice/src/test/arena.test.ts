@@ -10,6 +10,7 @@ import { test } from "node:test"
 import { Rng } from "../core/rng.ts"
 import { Arena, MAX_TARGET } from "../game/arena.ts"
 import { isPrime, primeFactors, productOf, sameMultiset } from "../game/factor.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { createStubHost } from "../stubHost.ts"
 import { grindToPrimes, rig, sweepFactorisation } from "./harness.ts"
 
@@ -177,7 +178,7 @@ test("a resonator asking for a prime opens only for the mote carrying it", () =>
   // The wall, in the arena rather than in the rule: a stub host wound forward
   // to a prime answer, ground down, and every smaller prime on the field swept.
   const host = createStubHost({ seed: 0x7a11, reducedMotion: true })
-  const arena = new Arena(host, new Rng(0x7a11), { width: 900, height: 700 })
+  const arena = new Arena(host, new Rng(0x7a11), { width: 900, height: 700, experience: CALM_OPENINGS })
   arena.begin(0)
   let guard = 0
   while (arena.resonator && !isPrime(arena.resonator.target) && guard++ < 200) {

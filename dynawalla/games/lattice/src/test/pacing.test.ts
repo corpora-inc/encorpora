@@ -46,6 +46,7 @@ import { Rng } from "../core/rng.ts"
 import { Arena } from "../game/arena.ts"
 import { primeFactors } from "../game/factor.ts"
 import { CEILING, FLOOR, RUNGS, rungOf } from "../game/ladder.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { MIN_TARGET, MIN_TILES, isSmooth } from "../game/resonance.ts"
 import { createStubHost, type StubHost } from "../stubHost.ts"
 import { grindToPrimes, playCarefully, rig } from "./harness.ts"
@@ -66,7 +67,7 @@ function sit(seed: number, frames = TEN_MINUTES) {
     onDraw: (d) => draws.push(d),
     onSkip: (id) => skipped.push(id),
   })
-  const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: 900, height: 700 })
+  const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: 900, height: 700, experience: CALM_OPENINGS })
   arena.begin(0)
   const played = playCarefully(arena, frames, FRAME_MS)
   return { host, arena, draws, skipped, ...played }
@@ -274,7 +275,7 @@ test("a barren band is an arena with something to shoot, not an empty screen", (
     ...bottom,
     next: () => bottom.next({ difficulty: 0 }),
   }
-  const arena = new Arena(stuck, new Rng(0x60770), { width: 900, height: 700 })
+  const arena = new Arena(stuck, new Rng(0x60770), { width: 900, height: 700, experience: CALM_OPENINGS })
   const events = arena.begin(0)
 
   assert.equal(arena.stalled, true, "the bottom of the ladder armed a resonator")
@@ -336,7 +337,7 @@ test("the game learns from the rung that answered, not the rung it asked for", (
       return inner.next({ ...request, difficulty: STALE / (RUNGS - 1) })
     },
   }
-  const arena = new Arena(stale, new Rng(0x57a1e), { width: 900, height: 700 })
+  const arena = new Arena(stale, new Rng(0x57a1e), { width: 900, height: 700, experience: CALM_OPENINGS })
   arena.begin(0)
   assert.ok(arena.resonator, "the stale host armed nothing")
   assert.ok(asked.length > 0)
@@ -415,7 +416,7 @@ test("a question with no id is not a question, however answerable it looks", () 
     // Perfectly resonant, and unreportable.
     next: (request) => ({ ...inner.next(request), id: "", answer: "72" }),
   }
-  const arena = new Arena(dry, new Rng(0x0117e55), { width: 900, height: 700 })
+  const arena = new Arena(dry, new Rng(0x0117e55), { width: 900, height: 700, experience: CALM_OPENINGS })
   const events = arena.begin(0)
   assert.equal(arena.resonator, null, "a resonator was armed on a question with no id")
   assert.ok(events.some((e) => e.kind === "stalled"), "the arena took it and said nothing")
@@ -431,6 +432,7 @@ test("a host with no skip is still a host this game runs on", () => {
   const arena = new Arena(rest as unknown as StubHost, new Rng(0x0b4e), {
     width: 900,
     height: 700,
+    experience: CALM_OPENINGS,
   })
   arena.begin(0)
   assert.ok(arena.resonator, "a host without skip armed nothing")

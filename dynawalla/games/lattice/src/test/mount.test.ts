@@ -20,6 +20,7 @@ import { mount } from "../contract.ts"
 import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import { hudLayout } from "../render/hud.ts"
 import { createStubHost } from "../stubHost.ts"
+import { noteOpen, opensEver, resetOpensForTest } from "../game/seen.ts"
 
 type Listener = (event: unknown) => void
 
@@ -668,5 +669,198 @@ test("the shell is wired to the hint: a tap unfolds the tree, and so does the qu
     Date.now = realNow
     if (savedPerformance) Object.defineProperty(globalThis, "performance", savedPerformance)
     else Reflect.deleteProperty(globalThis, "performance")
+  }
+})
+
+// ── THE FIRST SCREEN, THROUGH THE REAL SHELL ────────────────────────────────
+//
+// The calm opening hangs off one wire: `mountLattice` reads `game/seen.ts` and
+// hands it to the arena as `experience`. Every assertion in `opening.test.ts`
+// is about the arena and would pass in full with that wire cut — the arena
+// would simply never be told, and a first-time child would get the field the
+// founder reported. So it is asserted here, at the shell, on the frame a child
+// actually sees.
+//
+// What is counted is the numerals the renderer was asked to fill that are
+// nothing but digits. On the first frame that is exactly the numbers on the
+// field: the resonator's prompt has an operator and a space in it, the counters
+// read `OPENED 0` and `BEST 0`, the empty hold reads `SWEEP THE LIT ONES`, and
+// the factor tree is at stage nought and draws nothing at all.
+
+/** Run `body` with a `localStorage` that starts out holding `seed`. */
+function withStorage(seed: Record<string, string>, body: () => void): void {
+  const store = new Map(Object.entries(seed))
+  const saved = Object.getOwnPropertyDescriptor(globalThis, "localStorage")
+  Object.defineProperty(globalThis, "localStorage", {
+    configurable: true,
+    writable: true,
+    value: {
+      getItem: (k: string) => store.get(k) ?? null,
+      setItem: (k: string, v: string) => store.set(k, String(v)),
+      removeItem: (k: string) => store.delete(k),
+    },
+  })
+  try {
+    body()
+  } finally {
+    if (saved) Object.defineProperty(globalThis, "localStorage", saved)
+    else Reflect.deleteProperty(globalThis, "localStorage")
+  }
+}
+
+/** The numerals on the field, on the first frame after mounting. */
+function numeralsOnFirstFrame(opens: string | null): string[] {
+  const counter = { calls: 0, text: [] as string[] }
+  let out: string[] = []
+  withStorage(opens === null ? {} : { "dw.lattice.opens": opens }, () => {
+    resetOpensForTest()
+    withBrowser({ w: 390, h: 740 }, counter, ({ host, frames }) => {
+      const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      counter.text.length = 0
+      pump(frames, 1)
+      out = counter.text.filter((s) => /^\d+$/.test(s))
+      handle.unmount()
+    })
+    resetOpensForTest()
+  })
+  return out
+}
+
+test("a child who has never played this opens on ONE number", () => {
+  const numerals = numeralsOnFirstFrame(null)
+  assert.equal(
+    numerals.length,
+    1,
+    `the first screen of a first sitting had ${numerals.length} numbers on it: ${numerals.join(", ")}`,
+  )
+})
+
+test("a child who has played before does not get walked through it again", () => {
+  const fresh = numeralsOnFirstFrame(null)
+  const returning = numeralsOnFirstFrame("9")
+  assert.equal(fresh.length, 1)
+  assert.ok(
+    returning.length > fresh.length,
+    `a child on their tenth ring got ${returning.length} numbers, the same as a first sitting`,
+  )
+})
+
+test("what a sitting opened is remembered for the next one", () => {
+  withStorage({}, () => {
+    resetOpensForTest()
+    assert.equal(opensEver(), 0, "a device that has never run this remembers something")
+    assert.equal(noteOpen(), 1)
+    assert.equal(noteOpen(), 2)
+    assert.equal(noteOpen(), 3)
+    // A new sitting: the module's memory is gone and only what was written back
+    // is left, which is the whole point of the slot.
+    resetOpensForTest()
+    assert.equal(opensEver(), 3, "three rings opened were not there the next morning")
+    resetOpensForTest()
+  })
+})
+
+test("a frame with no storage at all still runs, and starts calm", () => {
+  // `localStorage` throws on an opaque origin, which a pack frame is. The
+  // failure mode has to be the gentle opening, never a game that will not start.
+  const saved = Object.getOwnPropertyDescriptor(globalThis, "localStorage")
+  Object.defineProperty(globalThis, "localStorage", {
+    configurable: true,
+    get() {
+      throw new Error("SecurityError: the document is on an opaque origin")
+    },
+  })
+  try {
+    resetOpensForTest()
+    assert.equal(opensEver(), 0)
+    assert.equal(noteOpen(), 1, "a write that could not land lost the count in memory too")
+  } finally {
+    if (saved) Object.defineProperty(globalThis, "localStorage", saved)
+    else Reflect.deleteProperty(globalThis, "localStorage")
+    resetOpensForTest()
+  }
+})
+
+test("a ring opened through the shell is written down for the next sitting", () => {
+  // The other half of the wire. `numeralsOnFirstFrame` proves the shell READS
+  // what a child has opened; this proves it WRITES it, by flying the real ship
+  // through the real ring until the host hears a correct answer and then asking
+  // the storage slot what it holds.
+  //
+  // Reachable blind precisely because of the calm opening: the first field is
+  // one husk carrying the whole answer and nothing else, so every prime the
+  // ship can possibly sweep is one of the answer's own.
+  const realNow = Date.now
+  Date.now = () => 1_700_000_000_000
+  const store = new Map<string, string>()
+  const saved = Object.getOwnPropertyDescriptor(globalThis, "localStorage")
+  Object.defineProperty(globalThis, "localStorage", {
+    configurable: true,
+    writable: true,
+    value: {
+      getItem: (k: string) => store.get(k) ?? null,
+      setItem: (k: string, v: string) => store.set(k, String(v)),
+      removeItem: (k: string) => store.delete(k),
+    },
+  })
+  try {
+    resetOpensForTest()
+    const counter = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 900, h: 700 }, counter, ({ host, frames, created }) => {
+      let opened = 0
+      const stub = createStubHost({
+        seed: 0x1a771ce,
+        reducedMotion: true,
+        // Every open calls `transition("level", ...)` and nothing else does.
+        // `report` will not do: a resonator that refused once has spent its id,
+        // so the open that follows it is never reported at all — measured, the
+        // slot held 2 against 1 correct answer, which is the shell being right
+        // and the assertion being wrong.
+        onTransition: (kind) => {
+          if (kind === "level") opened += 1
+        },
+      })
+      const handle = mount(host as unknown as HTMLElement, stub)
+      const canvas = canvasOf(created)
+      const down = canvas.listeners.get("pointerdown")?.[0]
+      const move = canvas.listeners.get("pointermove")?.[0]
+      assert.ok(down && move, "the twin-stick listeners were not installed")
+      down({ preventDefault() {}, pointerId: 1, pointerType: "touch", clientX: 225, clientY: 350 })
+      down({ preventDefault() {}, pointerId: 2, pointerType: "touch", clientX: 675, clientY: 350 })
+      let t = 0
+      // A circle whose heading turns about 1.4 radians a second — at the ship's
+      // top speed that is an orbit of roughly 250 units — with the heading's
+      // bias walking slowly round, so the orbit's centre crawls over the whole
+      // arena and the ship passes through everything on it, the ring included.
+      for (let i = 0; i < 30_000 && opened === 0; i++) {
+        const heading = i * 0.023 + Math.sin(i / 900) * 2.4
+        move({
+          pointerId: 1,
+          pointerType: "touch",
+          clientX: 225 + Math.cos(heading) * 70,
+          clientY: 350 + Math.sin(heading) * 70,
+        })
+        move({
+          pointerId: 2,
+          pointerType: "touch",
+          clientX: 675 + Math.cos(i / 11) * 50,
+          clientY: 350 + Math.sin(i / 13) * 50,
+        })
+        t = pump(frames, 1, t)
+      }
+      assert.ok(opened > 0, "no ring was ever opened, so there is nothing to have written down")
+      assert.equal(
+        store.get("dw.lattice.opens"),
+        String(opened),
+        `${opened} rings opened and the slot holds ${String(store.get("dw.lattice.opens"))}`,
+      )
+      handle.unmount()
+    })
+  } finally {
+    Date.now = realNow
+    if (saved) Object.defineProperty(globalThis, "localStorage", saved)
+    else Reflect.deleteProperty(globalThis, "localStorage")
+    resetOpensForTest()
   }
 })

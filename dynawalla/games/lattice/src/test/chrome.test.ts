@@ -36,6 +36,7 @@ import {
 } from "../../../../packs/shared/game-chrome/index.ts"
 import { Rng } from "../core/rng.ts"
 import { Arena } from "../game/arena.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { hudLayout } from "../render/hud.ts"
 import { Scene } from "../render/scene.ts"
 import { Grid } from "../sim/grid.ts"
@@ -194,7 +195,7 @@ function frame(
   const host = createStubHost({ seed, reducedMotion: true })
   const { ctx, log, restores } = recorder()
   const scene = new Scene(fakeCanvas(w, h, ctx), true)
-  const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: w, height: h })
+  const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: w, height: h, experience: CALM_OPENINGS })
   const grid = new Grid({ cols: 8, rows: 8, width: w, height: h, reduced: true })
   arena.begin(0)
 
