@@ -4,7 +4,8 @@ import { Rng } from "../rng.ts";
 import { createSim, launch, paddleHalf, step, tileAt } from "./sim.ts";
 import type { Sim, SimEvent } from "./state.ts";
 import { VW } from "./state.ts";
-import { chooseShard, openForge, stepForge } from "./forge.ts";
+import { chooseShard, dismissForge, openForge, stepForge } from "./forge.ts";
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts";
 import type { Host, Question } from "../contract.ts";
 
 const DT = 1 / 120;
@@ -280,6 +281,111 @@ test("a wrong rune costs the charge and the power, and nothing else", () => {
   assert.equal(out.some((e) => e.t === "power"), false);
   // The right answer lights up anyway. Nobody is told off, they are shown.
   assert.equal(sim.forge!.shards.find((s) => s.correct)!.state, 1);
+});
+
+test("a miss holds the completed sum until a hand takes it down", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  const wrong = sim.forge!.shards.findIndex((s) => !s.correct);
+  assert.equal(chooseShard(sim, host, wrong, []), "wrong");
+
+  // Nothing but the child ends it. Ten minutes of frames do not.
+  assert.equal(sim.forge!.held, true);
+  for (let i = 0; i < 12000; i++) assert.equal(stepForge(sim, 0.05), false);
+  assert.ok(sim.forge, "the reveal expired on its own");
+  // The prompt and the correct rune are both still up: the sum is completed in
+  // front of the child, and the wrong rune is dimmed rather than marked.
+  assert.equal(sim.forge!.prompt, "7 × 8");
+  assert.equal(sim.forge!.shards.find((s) => s.correct)!.state, 1);
+  assert.equal(sim.forge!.shards[wrong]!.state, -1);
+
+  assert.equal(dismissForge(sim), true);
+  assert.equal(sim.forge, null);
+});
+
+test("a held reveal stops the world instead of running it underneath", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  const ball = sim.balls[0]!;
+  // Mid-rally, well above the paddle, heading down: the exact moment a child
+  // would take their hand off the glass to read.
+  ball.x = VW / 2;
+  ball.y = sim.vh * 0.5;
+  ball.vx = 120;
+  ball.vy = ball.speed;
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  chooseShard(sim, host, sim.forge!.shards.findIndex((s) => !s.correct), []);
+
+  const before = { x: ball.x, y: ball.y, descent: sim.descent, beads: sim.beads, run: sim.runTime };
+  // Two full minutes of reading.
+  for (let i = 0; i < 14400; i++) step(sim, DT, []);
+  assert.equal(ball.x, before.x, "the ball travelled under a held reveal");
+  assert.equal(ball.y, before.y, "the ball travelled under a held reveal");
+  assert.equal(sim.descent, before.descent, "the wall crept under a held reveal");
+  assert.equal(sim.beads, before.beads, "reading the answer cost a bead");
+  assert.equal(sim.runTime, before.run);
+  assert.equal(sim.phase, "play");
+
+  // And it starts again the instant the reveal is taken down.
+  stepForge(sim, 1);
+  assert.equal(dismissForge(sim), true);
+  step(sim, DT, []);
+  assert.notEqual(ball.y, before.y);
+});
+
+test("a held reveal freezes the runes where they were chosen", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  for (let i = 0; i < 40; i++) stepForge(sim, 1 / 60);
+  chooseShard(sim, host, sim.forge!.shards.findIndex((s) => !s.correct), []);
+  const right = sim.forge!.shards.find((s) => s.correct)!;
+  const at = { x: right.x, y: right.y };
+  // The runes rise on an arc with gravity under them. Under an unbounded hold
+  // that arc used to carry the lit answer off the bottom of the screen.
+  for (let i = 0; i < 6000; i++) stepForge(sim, 1 / 60);
+  assert.equal(right.x, at.x, "the correct rune drifted while it was being read");
+  assert.equal(right.y, at.y, "the correct rune drifted while it was being read");
+  assert.ok(right.y < VH, "the correct rune left the screen");
+});
+
+test("the settle lockout stops a stray second tap eating the reveal", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  const wrong = sim.forge!.shards.findIndex((s) => !s.correct);
+  chooseShard(sim, host, wrong, []);
+  // The tap that raised the reveal is still arriving. It may not take it down.
+  assert.equal(dismissForge(sim), false);
+  assert.ok(sim.forge);
+  assert.ok(sim.forge!.settleAt > 0);
+  stepForge(sim, REVEAL_SETTLE_MS / 1000 + 0.01);
+  assert.equal(dismissForge(sim), true);
+});
+
+test("a clean win is not held — there is nothing to marinate on", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 4242);
+  const right = sim.forge!.shards.findIndex((s) => s.correct);
+  assert.equal(chooseShard(sim, host, right, []), "right");
+  assert.equal(sim.forge!.held, false);
+  assert.equal(dismissForge(sim), false, "a win should not need dismissing");
+  let closed = false;
+  for (let i = 0; i < 200 && !closed; i++) closed = stepForge(sim, 0.02);
+  assert.equal(closed, true, "the celebration never ended");
+  assert.equal(sim.forge, null);
 });
 
 test("hesitating in the forge is never punished", () => {

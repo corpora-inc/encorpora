@@ -13,8 +13,9 @@ import { createStubHost } from "./stubHost.ts";
 import type { Sim } from "./game/state.ts";
 import { VW } from "./game/state.ts";
 import { buildWave } from "./game/wall.ts";
-import { chooseShard } from "./game/forge.ts";
-import { launch, paddleHalf } from "./game/sim.ts";
+import { chooseShard, dismissForge } from "./game/forge.ts";
+import { createRemix } from "./game/remix.ts";
+import { launch, paddleHalf, wallLeft } from "./game/sim.ts";
 import type { Host } from "./contract.ts";
 
 const el = document.getElementById("stage");
@@ -43,6 +44,12 @@ if (dev && q.get("wave")) {
   const wave = buildWave({ seed: dev.sim.seed, index });
   dev.sim.wave = wave;
   dev.sim.rule = wave.rule;
+  // The remix is per-wave state. Jumping the wall without rebuilding it left
+  // wave 21 running wave 1's ceiling, which is below its own pane count, so
+  // re-glazing bailed on its first line every time and the wave you jumped to
+  // was the one wave in the game that never remixed.
+  dev.sim.remix = createRemix(dev.sim.seed, wave);
+  dev.sim.sway = 0;
   dev.sim.broken = 0;
   const grid = new Int32Array(wave.cols * wave.rows).fill(-1);
   dev.sim.cellW = (VW - 100) / wave.cols;
@@ -62,6 +69,13 @@ if (dev && q.get("bot")) {
       return;
     }
     if (sim.forge) {
+      // A miss holds its reveal for ever. The bot reads it for a second and
+      // taps, the way a child does; without this it sits on the first wrong
+      // answer of the run and the watch loop is dead.
+      if (sim.forge.held) {
+        if (sim.forge.age > 1.2) dismissForge(sim);
+        return;
+      }
       // Answer correctly nine times in ten, so both outcomes get exercised.
       if (sim.forge.age > 1.2 && sim.forge.resolving <= 0) {
         const i = Math.random() < 0.9 ? sim.forge.shards.findIndex((s) => s.correct) : 0;
@@ -84,8 +98,9 @@ if (dev && q.get("bot")) {
     let best: { x: number; y: number } | null = null;
     let bestD = Infinity;
     for (const t of sim.wave.tiles) {
-      if (!t.alive || !t.guilty) continue;
-      const tx = sim.wallX + (t.col + 0.5) * sim.cellW;
+      // `drop > 0` is a pane still in the air: not solid yet, so not aimable.
+      if (!t.alive || !t.guilty || t.drop > 0) continue;
+      const tx = wallLeft(sim) + (t.col + 0.5) * sim.cellW;
       const ty = sim.wallY + sim.descent + (t.row + 0.5) * sim.cellH;
       const d = Math.hypot(tx - landing, ty - sim.paddleY);
       if (d < bestD) {

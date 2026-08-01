@@ -23,7 +23,7 @@ import { Camera, clamp01, lerp } from "./fx/camera.ts";
 import { Particles } from "./fx/particles.ts";
 import { Renderer } from "./fx/render.ts";
 import { JEWELS, DANGER, CHARGE_HOT, BALL_GLOW, POWER_LOOK } from "./fx/palette.ts";
-import { chooseShard, forgeShardAt, openForge, stepForge } from "./game/forge.ts";
+import { chooseShard, dismissForge, forgeShardAt, openForge, stepForge } from "./game/forge.ts";
 import {
   createSim,
   fireLaser,
@@ -107,6 +107,7 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
           "Tap once while it glows. Time slows down and four glass shapes float up with a question above them.",
           "Each shape holds an answer and a prize. Tap the one with the right answer to win its prize: a wider paddle, a laser, extra balls, or a slower ball.",
           "A wrong answer only costs the glow. You do not lose a ball.",
+          "When you get one wrong the right answer lights up under the question. Look at it for as long as you like, then tap once to carry on.",
         ],
       },
       {
@@ -114,6 +115,7 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
         lines: [
           "The dots at the bottom are the balls you have left. You lose one when the ball goes past the paddle.",
           "The wall slides down while you play, so keep breaking.",
+          "New panes drop into the empty spaces, stone tiles sometimes light up and turn into targets, and the whole window drifts from side to side. Keep looking at it — it is never the same wall twice.",
         ],
       },
     ],
@@ -180,6 +182,15 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
   /** One tap, one meaning: use the best thing available right now. */
   const act = (vx: number, vy: number) => {
     audio.start();
+    // Before the game-over branch: a held reveal is the only thing on screen,
+    // and the tap that takes it down must never be spent restarting the run.
+    if (sim.forge?.held) {
+      if (dismissForge(sim)) {
+        cam.timeScaleTarget = 1;
+        audio.setSlowed(false);
+      }
+      return;
+    }
     if (sim.phase === "gameover") {
       restart(sim, (sim.seed * 1103515245 + 12345) >>> 0);
       particles.clearAll();
@@ -249,10 +260,15 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
     moved = false;
     if (v.y > vh * 0.18) pointerTargetX = v.x;
     if (sim.forge) {
-      const i = forgeShardAt(sim.forge, v.x, v.y);
-      if (i >= 0) {
+      if (sim.forge.held) {
         act(v.x, v.y);
         moved = true; // consumed
+      } else {
+        const i = forgeShardAt(sim.forge, v.x, v.y);
+        if (i >= 0) {
+          act(v.x, v.y);
+          moved = true; // consumed
+        }
       }
     }
     canvas.focus?.();
@@ -295,7 +311,7 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
     } else if (e.key === "m" || e.key === "M") {
       audio.setMuted(audio.enabled);
     } else if (e.key >= "1" && e.key <= "4") {
-      if (sim.forge) resolveForge(Number(e.key) - 1);
+      if (sim.forge && !sim.forge.held) resolveForge(Number(e.key) - 1);
     }
   };
   const onKeyUp = (e: KeyboardEvent) => {
@@ -473,6 +489,26 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
         cam.timeScaleTarget = 0.3;
         slowUntil = performance.now() + 900;
         buzz("failure");
+        break;
+      }
+      case "reglaze": {
+        // A pane arriving is a small, bright, entirely good thing. It gets the
+        // charge pip rather than a cue of its own: nothing in MOSAIC names a
+        // pitch, and there is no reason for a new sound where one already fits.
+        audio.charge(0.35);
+        particles.cone(e.x, e.y - sim.cellH * 1.2, 6, JEWELS[e.tile.colour]!.glow, 0, 1, 0.7);
+        break;
+      }
+      case "kindle": {
+        audio.charge(0.85);
+        cam.addTrauma(0.05);
+        particles.ring(e.x, e.y, 6, 120, JEWELS[e.tile.colour]!.glow, 0.4, 4);
+        particles.burst(e.x, e.y, 8, "#ffe9b8", 200, 0.45, 8);
+        buzz("light");
+        break;
+      }
+      case "turn": {
+        cam.addTrauma(0.04);
         break;
       }
       case "danger": {

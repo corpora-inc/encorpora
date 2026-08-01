@@ -19,8 +19,30 @@ export type TileKind = "glass" | "crystal" | "star";
 /** Chips a masonry tile takes before it gives way. */
 export const MASONRY_HP = 3;
 
-/** A wall thinner than this does not read as a window. */
+/** A wall thinner than this does not read as a window before it is carved. */
 const MIN_TILES = 26;
+
+/**
+ * The floor a carve may not take the wall below.
+ *
+ * The layout masks are chosen against `MIN_TILES` so there is something solid
+ * to carve *from*; the carve is then allowed to open the window right down to
+ * here. Twenty panes still reads as a rose and leaves plenty to break.
+ */
+const CARVE_FLOOR = 20;
+
+/**
+ * How far the window may drift sideways, as a fraction of one cell.
+ *
+ * Bounded by the stone frame rather than by the glass: `drawTracery` draws
+ * `TRACERY_BLEED` units outside the tile grid on every side, so the number that
+ * has to fit inside the wall margin is `MAX_SWAY_CELLS * cellW + TRACERY_BLEED`,
+ * not the sway alone. At 0.42 the tiles stayed on screen and the frame did not.
+ */
+export const MAX_SWAY_CELLS = 0.26;
+
+/** How far outside the tile grid the stone frame is drawn. See `drawTracery`. */
+export const TRACERY_BLEED = 24;
 
 export type Tile = {
   col: number;
@@ -36,6 +58,17 @@ export type Tile = {
   hit: number;
   /** Cosmetic: 0..1, set when the ball passes close and the tile is guilty. */
   warm: number;
+  /**
+   * Seconds left of a pane's fall into its cell.
+   *
+   * A re-glazed pane is `alive` from the instant it is scheduled — so the wave
+   * cannot declare itself clear while one is still in the air — but it is not
+   * *there* yet, so `tileAt` refuses to return it and nothing can collide with
+   * it. Zero for every tile the wall was born with.
+   */
+  drop: number;
+  /** Cosmetic: 0..1, decays. The flash of masonry catching light. */
+  kindle: number;
 };
 
 export type Wave = {
@@ -49,6 +82,13 @@ export type Wave = {
   descentRate: number;
   ballSpeed: number;
   layout: string;
+  /** How many cells the carve took out of the layout mask. Reporting only. */
+  carved: number;
+  /** Share of this wall's panes that are targets — what re-glazing matches. */
+  guiltyShare: number;
+  /** Colour-band parameters, kept so a re-glazed pane joins the same design. */
+  palette: number;
+  bands: number;
 };
 
 const LAYOUTS = [
@@ -104,8 +144,75 @@ function occupies(layout: string, c: number, r: number, cols: number, rows: numb
   }
 }
 
+/**
+ * The carve — the difference between nine walls and an unbounded supply.
+ *
+ * The nine layout masks are hand-written shapes, and nine shapes played at two
+ * column counts is fourteen distinct openings in the entire game: measured over
+ * four hundred seeds, wave one was *one* shape — a filled 9×4 rectangle, every
+ * single run, for ever. The founder's word for it was "boring", and he was
+ * describing a fact rather than a feeling.
+ *
+ * So the mask now only says what *kind* of window this is. The carve says which
+ * one: one to three elliptical voids punched out of it, plus a scatter of single
+ * missing panes, all at seeded positions. Every cut is made at a cell **and at
+ * its mirror**, so the result is still a designed rose window — sparser, holed,
+ * asymmetric top-to-bottom, and different every run — rather than a chewed edge.
+ *
+ * A cut that would take the wall below `CARVE_FLOOR` is rolled back whole, so
+ * the floor is a guarantee and not a tendency.
+ */
+function carve(grid: boolean[][], cols: number, rows: number, rng: Rng): number {
+  const half = Math.floor((cols - 1) / 2);
+  const count = (): number => {
+    let n = 0;
+    for (const row of grid) for (const on of row) if (on) n++;
+    return n;
+  };
+  const before = count();
+
+  /** Apply `cut` to the half-grid and its mirror; roll back if it goes too far. */
+  const attempt = (cut: (c: number, r: number) => boolean): void => {
+    const snapshot = grid.map((row) => row.slice());
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c <= half; c++) {
+        if (!cut(c, r)) continue;
+        grid[r]![c] = false;
+        grid[r]![cols - 1 - c] = false;
+      }
+    }
+    if (count() >= CARVE_FLOOR) return;
+    for (let r = 0; r < rows; r++) grid[r] = snapshot[r]!;
+  };
+
+  const voids = rng.int(1, 3);
+  for (let v = 0; v < voids; v++) {
+    const cc = rng.int(0, half);
+    const cr = rng.int(0, rows - 1);
+    const rx = 0.55 + rng.f() * 1.7;
+    const ry = 0.45 + rng.f() * 1.25;
+    attempt((c, r) => {
+      const dx = (c - cc) / rx;
+      const dy = (r - cr) / ry;
+      return dx * dx + dy * dy <= 1;
+    });
+  }
+
+  // Panes that were simply never fitted. One at a time, so each is rolled back
+  // on its own and the scatter stops exactly at the floor.
+  const speckle = rng.int(0, 5);
+  for (let s = 0; s < speckle; s++) {
+    const sc = rng.int(0, half);
+    const sr = rng.int(0, rows - 1);
+    if (!grid[sr]![sc]) continue;
+    attempt((c, r) => c === sc && r === sr);
+  }
+
+  return before - count();
+}
+
 /** Colour index from a symmetric function so the wall reads as a design. */
-function colourAt(c: number, r: number, cols: number, palette: number, bands: number): number {
+export function colourAt(c: number, r: number, cols: number, palette: number, bands: number): number {
   const cx = (cols - 1) / 2;
   const dx = Math.abs(c - cx);
   const v = Math.round(dx * 0.9 + r * 0.6 + palette);
@@ -209,7 +316,7 @@ function exprFor(v: number, rng: Rng, hard: boolean): Face {
  * mal-rule outputs, so scanning it is the same cognitive act as choosing
  * between distractors, just with a ball involved.
  */
-function makeFace(rule: Rule, wantGuilty: boolean, rng: Rng, stage: number): Face {
+export function makeFace(rule: Rule, wantGuilty: boolean, rng: Rng, stage: number): Face {
   const hard = stage >= 2;
   switch (rule.kind) {
     case "multiple": {
@@ -276,9 +383,40 @@ function makeFace(rule: Rule, wantGuilty: boolean, rng: Rng, stage: number): Fac
 
 export type WaveOptions = { seed: number; index: number };
 
+/** The difficulty rung a wave sits on. Pure function of the wave index. */
+export function stageFor(index: number): number {
+  return Math.min(6, Math.floor(index / 3));
+}
+
+/**
+ * A face with the guilt the caller asked for, belt-and-braces checked.
+ *
+ * The generator is the only source of truth for guilt, so the answer is
+ * verified and a drifting family falls back to the stage-0 path. Shared with
+ * the remix, so a pane that drops in mid-wave is generated by exactly the same
+ * code as a pane the wall was born with — there is no second face generator to
+ * disagree with this one.
+ */
+export function faceFor(rule: Rule, wantGuilty: boolean, rng: Rng, stage: number): Face {
+  const face = makeFace(rule, wantGuilty, rng, stage);
+  if (guilty(rule, face.value) === wantGuilty) return face;
+  return makeFace(rule, wantGuilty, rng, 0);
+}
+
+/**
+ * The opening wall is deliberately gentle, but it is no longer a rectangle.
+ *
+ * Wave one used to be hard-coded to `solid`, which is why it was the same
+ * thirty-six-pane block in every run the game has ever played. It now draws
+ * from the shapes that stay legible at four or five rows — no `frame`, which is
+ * a maze, and no `chevron`, whose diagonal banding needs height to read — and
+ * then gets carved like every other wall.
+ */
+const OPENING_LAYOUTS = ["solid", "arch", "rose", "stair", "checker", "lattice"] as const;
+
 export function buildWave({ seed, index }: WaveOptions): Wave {
   const rng = new Rng(subSeed(seed, index, 0x51ed));
-  const stage = Math.min(6, Math.floor(index / 3));
+  const stage = stageFor(index);
 
   const rule = ruleForWave(index, rng);
   const cols = index === 0 ? 9 : 9 + rng.int(0, 1) * 2; // 9 or 11, always odd
@@ -290,8 +428,9 @@ export function buildWave({ seed, index }: WaveOptions): Wave {
   //    and the first one dense enough wins — deterministic, and never a
   //    fourteen-tile wave.
   // The opening wave is deliberately the smallest wall in the game.
-  const baseRows = index === 0 ? 4 : Math.min(7, 5 + Math.floor(index / 5));
-  const candidates = index === 0 ? ["solid"] : rng.shuffle([...LAYOUTS]);
+  const baseRows = index === 0 ? 4 + rng.int(0, 1) : Math.min(7, 5 + Math.floor(index / 5));
+  const candidates =
+    index === 0 ? rng.shuffle([...OPENING_LAYOUTS]) : rng.shuffle([...LAYOUTS]);
   let layout = "solid";
   let rows = baseRows;
   let occupied: boolean[][] = [];
@@ -326,6 +465,9 @@ export function buildWave({ seed, index }: WaveOptions): Wave {
     }
   }
 
+  // 1b. Carve. The mask picked the family; this picks the individual.
+  const carved = carve(occupied, cols, rows, rng);
+
   // 2. Guilt, mirrored. Aim for a share of the wall that keeps every wave
   //    winnable inside a couple of minutes without becoming a chore.
   const share = index === 0 ? 0.62 : 0.6 - Math.min(0.14, stage * 0.025);
@@ -351,12 +493,7 @@ export function buildWave({ seed, index }: WaveOptions): Wave {
     for (let c = 0; c < cols; c++) {
       if (!occupied[r]![c]) continue;
       const wantGuilty = guiltyMask[r]![c]!;
-      let face = makeFace(rule, wantGuilty, rng, stage);
-      // Belt and braces: the generator is the only source of truth for guilt,
-      // so assert it and fall back to a bare integer if a family ever drifts.
-      if (guilty(rule, face.value) !== wantGuilty) {
-        face = makeFace(rule, wantGuilty, rng, 0);
-      }
+      const face = faceFor(rule, wantGuilty, rng, stage);
       const isGuilty = guilty(rule, face.value);
       let kind: TileKind = "glass";
       // Masonry is not indestructible, only stubborn: three chips, and only
@@ -382,6 +519,8 @@ export function buildWave({ seed, index }: WaveOptions): Wave {
         alive: true,
         hit: 0,
         warm: 0,
+        drop: 0,
+        kindle: 0,
       });
     }
   }
@@ -396,5 +535,9 @@ export function buildWave({ seed, index }: WaveOptions): Wave {
     descentRate: index < 2 ? 0 : Math.min(9, 1.2 + (index - 2) * 0.5),
     ballSpeed: Math.min(1250, 820 + index * 28),
     layout,
+    carved,
+    guiltyShare: guiltyTotal / Math.max(1, tiles.length),
+    palette,
+    bands,
   };
 }
