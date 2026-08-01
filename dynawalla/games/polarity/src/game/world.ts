@@ -190,6 +190,7 @@ const mkBullet = (): Bullet => ({
   dmg: 1,
   wob: 0,
   grow: 0,
+  lane: 0,
 });
 
 const mkEnemy = (): Enemy => ({
@@ -247,9 +248,6 @@ const mkText = (): FloatText => ({
   life: 1,
   value: 0,
   size: 1,
-  r: 1,
-  g: 1,
-  b: 1,
 });
 
 function fill<T>(n: number, f: () => T): T[] {
@@ -365,6 +363,7 @@ export function addBullet(w: World): Bullet | null {
   b.dmg = 1;
   b.wob = 0;
   b.grow = 0;
+  b.lane = 0;
   b.spin = 0;
   b.rot = 0;
   b.owner = 0;
@@ -405,7 +404,13 @@ export function addPart(w: World): Particle | null {
   return p;
 }
 
-export function addText(w: World, value: number, x: number, y: number, c: readonly number[]): void {
+/**
+ * A rising numeral. It carries no colour of its own: what it is drawn in is
+ * derived from the surfaces it rises through, in `render/ink.ts`, keyed on the
+ * sign of the value — which is the same thing the `polHot` tint it used to be
+ * handed was keyed on, and now it comes with a halo that can survive them.
+ */
+export function addText(w: World, value: number, x: number, y: number): void {
   if (w.textN >= w.texts.length) return;
   const t = w.texts[w.textN] as FloatText;
   w.textN++;
@@ -417,9 +422,6 @@ export function addText(w: World, value: number, x: number, y: number, c: readon
   t.life = 0.95;
   t.value = value;
   t.size = 6.4;
-  t.r = c[0] as number;
-  t.g = c[1] as number;
-  t.b = c[2] as number;
 }
 
 // ---------------------------------------------------------------------------

@@ -43,6 +43,13 @@ export type Bullet = {
   dmg: number;
   wob: number;
   grow: number;
+  /**
+   * Seal orbs only: the x this orb presents at, in playfield units.
+   *
+   * The lane is state and not a velocity because a velocity was what shipped,
+   * and a decaying velocity does not arrive — see `ORB_LANE_EASE`.
+   */
+  lane: number;
 };
 
 export type Enemy = {
@@ -105,9 +112,6 @@ export type FloatText = {
   /** the number to print */
   value: number;
   size: number;
-  r: number;
-  g: number;
-  b: number;
 };
 
 export type SealState = "idle" | "asking" | "won" | "lost";

@@ -9,13 +9,49 @@
  * therefore never load-bearing on its own.
  */
 
-export const COMMON = /* glsl */ `
+import { CHG, HALO, MIXW, ORB, PAL, WARD, type RGB } from "./ink.ts";
+
+/**
+ * A `vec3` literal, and a `#define`, built from a number that lives in TS.
+ *
+ * The palette and the shapes a numeral is read against are declared in
+ * `ink.ts`, not here, and interpolated in — because the numerals' contrast is a
+ * measured claim ABOUT them. While they were literals in two places the orb
+ * could be warmed up without a single number in the legibility table moving,
+ * which is the failure mode `balance/src/ink.ts` was written to design against.
+ */
+const v3 = (c: RGB): string => `vec3(${c.map((n) => n.toFixed(3)).join(", ")})`;
+const def = (name: string, v: number): string => `  #define ${name} ${v.toFixed(4)}\n`;
+
+export const COMMON =
+  /* glsl */ `
   #define TAU 6.28318530718
-  vec3 POS_A = vec3(1.00, 0.80, 0.28);
-  vec3 POS_B = vec3(1.00, 0.38, 0.06);
-  vec3 NEG_A = vec3(0.22, 0.86, 1.00);
-  vec3 NEG_B = vec3(0.44, 0.28, 1.00);
-  vec3 NEU_A = vec3(0.80, 0.83, 0.92);
+  vec3 POS_A = ${v3(PAL.posA)};
+  vec3 POS_B = ${v3(PAL.posB)};
+  vec3 NEG_A = ${v3(PAL.negA)};
+  vec3 NEG_B = ${v3(PAL.negB)};
+  vec3 NEU_A = ${v3(PAL.neuA)};
+` +
+  def("ORB_R", ORB.r) +
+  def("ORB_BODY", ORB.body) +
+  def("ORB_RIM", ORB.rim) +
+  def("ORB_RIMAMP", ORB.rimAmp) +
+  def("ORB_COLLAR", ORB.collar) +
+  def("ORB_COLLARTH", ORB.collarTh) +
+  def("CHG_R", CHG.r) +
+  def("CHG_BODY", CHG.body) +
+  def("CHG_RIM", CHG.rim) +
+  def("HALO_R", HALO.r) +
+  def("HALO_K", HALO.k) +
+  def("HALO_AMP", HALO.amp) +
+  def("MIX_BODY", MIXW.body) +
+  def("MIX_RIM", MIXW.rim) +
+  def("WARD_R", WARD.r) +
+  def("WARD_SHELL", WARD.shell) +
+  def("WARD_HALO_R", WARD.haloR) +
+  def("WARD_HALO_K", WARD.haloK) +
+  def("WARD_HALO_AMP", WARD.haloAmp) +
+  /* glsl */ `
 
   vec3 polA(float p){ return p > 0.5 ? POS_A : (p < -0.5 ? NEG_A : NEU_A); }
   vec3 polB(float p){ return p > 0.5 ? POS_B : (p < -0.5 ? NEG_B : NEU_A); }
@@ -181,15 +217,15 @@ export const BULLET_FRAG =
       }
     } else if (vKind < 1.5) {
       // CHARGE — a heavy plate that carries a printed numeral
-      float d = (vPol > 0.0) ? (ngon(p, 4.0, 0.785) - 0.92) : (r - 0.92);
-      body = aa(d, w) * 0.80;
-      rim  = aa(abs(d) - 0.10, w);
+      float d = (vPol > 0.0) ? (ngon(p, 4.0, 0.785) - CHG_R) : (r - CHG_R);
+      body = aa(d, w) * CHG_BODY;
+      rim  = aa(abs(d) - CHG_RIM, w);
     } else if (vKind < 2.5) {
       // SEAL ORB — big, slow, unmistakable, with a counter-rotating collar
-      float d = (vPol > 0.0) ? (ngon(p, 6.0, 0.0) - 0.86) : (r - 0.86);
-      body = aa(d, w) * 0.68;
-      rim  = aa(abs(d) - 0.075, w) * 1.4;
-      float coll = abs(r - 1.16) - 0.045;
+      float d = (vPol > 0.0) ? (ngon(p, 6.0, 0.0) - ORB_R) : (r - ORB_R);
+      body = aa(d, w) * ORB_BODY;
+      rim  = aa(abs(d) - ORB_RIM, w) * ORB_RIMAMP;
+      float coll = abs(r - ORB_COLLAR) - ORB_COLLARTH;
       rim += aa(coll, w) * (0.5 + 0.5 * sin(atan(p.y, p.x) * 8.0));
     } else if (vKind < 3.5) {
       // PLAYER SHOT — a hot little bolt
@@ -208,8 +244,8 @@ export const BULLET_FRAG =
       rim = aa(abs(d) - 0.07, w);
     }
 
-    float halo = exp(-max(0.0, r - 0.9) * 2.6) * 0.55;
-    vec3 col = B * body * 0.9 + A * rim * 1.5 + A * halo * (0.5 + vPull);
+    float halo = exp(-max(0.0, r - HALO_R) * HALO_K) * HALO_AMP;
+    vec3 col = B * body * MIX_BODY + A * rim * MIX_RIM + A * halo * (0.5 + vPull);
     col += vec3(1.0) * glyph * 1.25;
     col += A * vPull * 0.7 * body;
 
@@ -294,8 +330,8 @@ export const ENEMY_FRAG =
       shell += aa(ring2, w) * 0.8;
       mark = aa(abs(ngon(p, 3.0, -uTime * 0.7) - 0.34) - 0.06, w);
     } else {                                  // WARDEN
-      float o = ngon(p, 8.0, 0.0) - 1.0;
-      shell = aa(abs(o) - 0.075, w);
+      float o = ngon(p, 8.0, 0.0) - WARD_R;
+      shell = aa(abs(o) - WARD_SHELL, w);
       shell += aa(abs(ngon(p, 4.0, uTime * 0.4) - 0.70) - 0.045, w) * 0.9;
       shell += aa(abs(r - 0.34) - 0.05, w);
       mark = aa(plusMask(p, 0.22, 0.055), w) * step(0.0, vPol);
@@ -306,7 +342,7 @@ export const ENEMY_FRAG =
     vec3 col = A * shell * (1.3 + hurt * 0.9) + B * core * 0.55 + vec3(1.0) * mark * 0.9;
     col += mix(vec3(0.0), vec3(1.0, 0.35, 0.32), hurt * 0.5) * shell * 0.5;
     col += vec3(1.0) * vFlash * (shell + core) * 1.8;
-    float halo = exp(-max(0.0, r - 0.95) * 3.0) * 0.30;
+    float halo = exp(-max(0.0, r - WARD_HALO_R) * WARD_HALO_K) * WARD_HALO_AMP;
     col += A * halo;
 
     float a = clamp(max(max(shell, core * 0.9), mark) + halo + vFlash * 0.3, 0.0, 1.0);
@@ -390,9 +426,11 @@ export const LABEL_VERT = /* glsl */ `
   attribute float iTile;
   attribute float iAlpha;
   attribute vec3 iCol;
+  attribute vec3 iHalo;
   varying vec2 vUv;
   varying float vAlpha;
   varying vec3 vCol;
+  varying vec3 vHalo;
   uniform vec2 uGrid;
   // Cells are wider than they are tall, so a four-digit answer is drawn WIDE
   // rather than squeezed: iSize is the numeral's height, always.
@@ -401,24 +439,39 @@ export const LABEL_VERT = /* glsl */ `
     float col = mod(iTile, uGrid.x);
     float row = floor(iTile / uGrid.x);
     vUv = (uv + vec2(col, uGrid.y - 1.0 - row)) / uGrid;
-    vAlpha = iAlpha; vCol = iCol;
+    vAlpha = iAlpha; vCol = iCol; vHalo = iHalo;
     vec2 quad = position.xy * vec2(iSize * uAspect, iSize);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(iPos + quad, 0.0, 1.0);
   }
 `;
 
+/**
+ * A numeral is an INK and an opaque COUNTER-INK HALO, and this is where the
+ * pair is resolved.
+ *
+ * `t.a` is the whole inked blob — the stroked halo plus the glyph inside it —
+ * and `t.r` is the glyph alone, so `mix` puts the ink inside the halo and lets
+ * the antialiased boundary between them ramp. Neither colour is decided here:
+ * both arrive per instance from `ink.ts`, derived from the surfaces the object
+ * being labelled actually presents.
+ *
+ * **This material is `NormalBlending`, and that is load-bearing.** It used to
+ * be additive like every other layer in the pack, which meant the halo — then a
+ * hard-coded `vec3(0.0)` — added exactly nothing, and the glyph could only
+ * brighten a ground that on a bunched-up orb was already clipped to white. See
+ * the header of `ink.ts`: the ceiling for any additive ink is 1.00:1.
+ */
 export const LABEL_FRAG = /* glsl */ `
   varying vec2 vUv;
   varying float vAlpha;
   varying vec3 vCol;
+  varying vec3 vHalo;
   uniform sampler2D uMap;
   void main(){
     vec4 t = texture2D(uMap, vUv);
     float a = t.a * vAlpha;
     if (a < 0.005) discard;
-    // the baked dark rim stays dark; the face takes the instance tint
-    vec3 col = mix(vec3(0.0), vCol, t.r);
-    gl_FragColor = vec4(col, a);
+    gl_FragColor = vec4(mix(vHalo, vCol, t.r), a);
   }
 `;
 

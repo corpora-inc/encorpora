@@ -1,4 +1,5 @@
 import { CanvasTexture, LinearFilter, SRGBColorSpace, Texture } from "three";
+import { HALO_ALPHA } from "./ink.ts";
 import {
   LABEL_ASPECT,
   LABEL_CELL_H,
@@ -16,10 +17,11 @@ const FACE =
 /**
  * The numerals on the playfield, painted on demand.
  *
- * White on transparent so the shader can tint per instance; a soft dark rim is
- * baked in so a numeral stays readable when it lands on top of its own additive
- * glow. Nothing is baked ahead of time — a cell is painted the first frame its
- * value is asked for, which is what lets an orb carry `3916` as easily as `7`.
+ * A MASK, not a picture: the glyph is white and the halo stroked around it is
+ * black, so `t.r` is the glyph and `t.a` is the blob, and the shader colours
+ * both per instance from `ink.ts`. Nothing is baked ahead of time — a cell is
+ * painted the first frame its value is asked for, which is what lets an orb
+ * carry `3916` as easily as `7`.
  *
  * Cells are `LABEL_ASPECT` times wider than they are tall. A long answer gets
  * width, not a horizontal squeeze: every numeral on the field is drawn at the
@@ -117,10 +119,21 @@ export class LabelAtlas {
     const w = g.measureText(s).width;
     if (w > LABEL_INK_W) g.scale(LABEL_INK_W / w, 1);
 
-    // dark contrast rim first, then the solid face
+    // The halo first, then the glyph inside it. Both are painted in pure
+    // channels rather than in colour: `a` is the whole inked blob and `r` is
+    // the glyph alone, and `LABEL_FRAG` mixes the instance's ink and counter-
+    // ink between them. So the atlas never decides a colour, which is the
+    // point — the colour is decided by the surface, in `ink.ts`.
+    //
+    // OPAQUE, and that is the fix. It was `rgba(0,0,0,0.92)`, which under the
+    // additive blending this layer used to have contributed literally nothing:
+    // black adds nothing, so the contrast rim the pack believed it had never
+    // existed. At alpha 1 over `NormalBlending` the halo replaces the ground,
+    // which is what makes the 4.5:1 letterform claim a claim about the halo
+    // instead of about whatever the glyph happened to land on.
     g.lineJoin = "round";
     g.miterLimit = 2;
-    g.strokeStyle = "rgba(0,0,0,0.92)";
+    g.strokeStyle = `rgba(0,0,0,${String(HALO_ALPHA)})`;
     g.lineWidth = 13;
     g.strokeText(s, 0, 2);
     g.fillStyle = "#ffffff";
@@ -151,7 +164,8 @@ export function buildPromptTexture(prompt: string, wpx = 1024, hpx = 256): Textu
   if (w > maxW) g.scale(maxW / w, 1);
   g.lineJoin = "round";
   g.miterLimit = 2;
-  g.strokeStyle = "rgba(0,0,0,0.94)";
+  // opaque, for the same reason the numerals' halo is — see `LabelAtlas.paint`
+  g.strokeStyle = `rgba(0,0,0,${String(HALO_ALPHA)})`;
   g.lineWidth = 20;
   g.strokeText(prompt, 0, 4);
   g.fillStyle = "#ffffff";
