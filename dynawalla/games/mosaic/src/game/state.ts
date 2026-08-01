@@ -6,6 +6,7 @@
  * turns those into shake, shards, sound and buzz. That split is what lets the
  * physics be unit-tested headlessly and the juice be tuned without fear.
  */
+import type { Remix } from "./remix.ts";
 import type { Rule } from "./rules.ts";
 import type { Tile, Wave } from "./wall.ts";
 
@@ -63,6 +64,14 @@ export type Forge = {
   shards: ForgeShard[];
   /** >0 while the resolution animation plays before the beat closes. */
   resolving: number;
+  /**
+   * The reveal is up and waiting for a hand. Set only on a miss, and while it
+   * is set nothing — no timer, no next frame, no `FORGE_TIMEOUT` — may close
+   * the beat. See `chooseShard`.
+   */
+  held: boolean;
+  /** `age` before which even the child's own input may not dismiss the reveal. */
+  settleAt: number;
   outcome: "none" | "right" | "wrong";
 };
 
@@ -93,7 +102,13 @@ export type SimEvent =
   | { t: "power"; kind: PowerKind }
   | { t: "laser"; x: number; y: number }
   | { t: "gameover" }
-  | { t: "danger" };
+  | { t: "danger" }
+  /** A pane has been scheduled to fall back into an empty cell. */
+  | { t: "reglaze"; x: number; y: number; tile: Tile }
+  /** A stone tile has caught light and become a target. */
+  | { t: "kindle"; x: number; y: number; tile: Tile }
+  /** The window has taken a new swing. */
+  | { t: "turn" };
 
 export type Sim = {
   /** Virtual playfield height; width is always `VW`. */
@@ -119,6 +134,15 @@ export type Sim = {
   /** Wall origin (top-left of cell 0,0) and cell size, in virtual units. */
   wallX: number;
   wallY: number;
+  /**
+   * Horizontal drift of the whole window, in virtual units.
+   *
+   * The twin of `descent`, and like it a property of the wall rather than of
+   * any tile: one number added to every column's x. Bounded by
+   * `MAX_SWAY_CELLS`, which is chosen so the swung wall still fits inside the
+   * playfield with the tracery on.
+   */
+  sway: number;
   cellW: number;
   cellH: number;
   /** Grid lookup: row * cols + col -> tile index, or -1. */
@@ -138,6 +162,9 @@ export type Sim = {
   powers: Powers;
 
   forge: Forge | null;
+
+  /** The live-remix scheduler for the wave currently on screen. */
+  remix: Remix;
 
   phase: Phase;
   /** Counts down during the fever/clear celebration. */

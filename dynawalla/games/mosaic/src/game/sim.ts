@@ -21,6 +21,7 @@ import type { Ball, PowerKind, Sim, SimEvent } from "./state.ts";
 import { VW } from "./state.ts";
 import type { Tile, Wave } from "./wall.ts";
 import { buildWave, MASONRY_HP } from "./wall.ts";
+import { createRemix, stepRemix } from "./remix.ts";
 
 export const TRAIL_LEN = 22;
 
@@ -108,6 +109,7 @@ export function createSim(seed: number, vh: number): Sim {
     aimDir: 1,
     wallX: 0,
     wallY: 0,
+    sway: 0,
     cellW: 0,
     cellH: 0,
     grid: new Int32Array(0),
@@ -123,6 +125,7 @@ export function createSim(seed: number, vh: number): Sim {
     chargeMax: CHARGE_MAX,
     powers: { wide: 0, slow: 0, laserShots: 0 },
     forge: null,
+    remix: createRemix(seed, wave),
     phase: "serve",
     feverT: 0,
     stall: 0,
@@ -166,7 +169,9 @@ export function nextWave(sim: Sim): void {
   const wave = buildWave({ seed: sim.seed, index: sim.wave.index + 1 });
   sim.wave = wave;
   sim.rule = wave.rule;
+  sim.remix = createRemix(sim.seed, wave);
   sim.descent = 0;
+  sim.sway = 0;
   sim.stall = 0;
   sim.waveTime = 0;
   sim.broken = 0;
@@ -190,7 +195,9 @@ export function restart(sim: Sim, seed: number): void {
   sim.best = 0;
   sim.powers = { wide: 0, slow: 0, laserShots: 0 };
   sim.forge = null;
+  sim.remix = createRemix(seed, wave);
   sim.descent = 0;
+  sim.sway = 0;
   sim.stall = 0;
   sim.waveTime = 0;
   sim.runTime = 0;
@@ -203,8 +210,13 @@ export function restart(sim: Sim, seed: number): void {
 // Geometry helpers
 // ---------------------------------------------------------------------------
 
+/** Left edge of the window right now — the base origin plus the drift. */
+export function wallLeft(sim: Sim): number {
+  return sim.wallX + sim.sway;
+}
+
 export function tileX(sim: Sim, col: number): number {
-  return sim.wallX + col * sim.cellW;
+  return wallLeft(sim) + col * sim.cellW;
 }
 export function tileY(sim: Sim, row: number): number {
   return sim.wallY + row * sim.cellH + sim.descent;
@@ -215,7 +227,9 @@ export function tileAt(sim: Sim, col: number, row: number): Tile | null {
   const i = sim.grid[row * cols + col]!;
   if (i < 0) return null;
   const t = tiles[i]!;
-  return t.alive ? t : null;
+  // A pane still in the air is alive — the wave may not clear while one is
+  // falling — but it is not yet *there*, so nothing may collide with it.
+  return t.alive && t.drop <= 0 ? t : null;
 }
 
 export function paddleHalf(sim: Sim): number {
@@ -335,8 +349,9 @@ function collideTiles(sim: Sim, b: Ball, out: SimEvent[]): boolean {
   const bottom = top + rows * sim.cellH;
   if (b.y + b.r < top || b.y - b.r > bottom) return false;
 
-  const c0 = Math.max(0, Math.floor((b.x - b.r - sim.wallX) / sim.cellW));
-  const c1 = Math.min(cols - 1, Math.floor((b.x + b.r - sim.wallX) / sim.cellW));
+  const left = wallLeft(sim);
+  const c0 = Math.max(0, Math.floor((b.x - b.r - left) / sim.cellW));
+  const c1 = Math.min(cols - 1, Math.floor((b.x + b.r - left) / sim.cellW));
   const r0 = Math.max(0, Math.floor((b.y - b.r - top) / sim.cellH));
   const r1 = Math.min(rows - 1, Math.floor((b.y + b.r - top) / sim.cellH));
 
@@ -500,7 +515,7 @@ function stepBolts(sim: Sim, dt: number, out: SimEvent[]): void {
         bolt.alive = false;
         break;
       }
-      const c = Math.floor((bolt.x - sim.wallX) / sim.cellW);
+      const c = Math.floor((bolt.x - wallLeft(sim)) / sim.cellW);
       const r = Math.floor((bolt.y - top) / sim.cellH);
       if (c < 0 || r < 0 || c >= cols || r >= rows) continue;
       const t = tileAt(sim, c, r);
@@ -576,6 +591,10 @@ export function step(sim: Sim, dt: number, out: SimEvent[]): void {
   for (const t of sim.wave.tiles) {
     if (t.hit > 0) t.hit = Math.max(0, t.hit - dt * 3.2);
     if (t.warm > 0) t.warm = Math.max(0, t.warm - dt * 2.6);
+    if (t.kindle > 0) t.kindle = Math.max(0, t.kindle - dt * 1.4);
+    // A falling pane lands even while the ball is being re-served, so a life
+    // lost mid-drop never leaves a pane hanging in the air for ever.
+    if (t.drop > 0) t.drop = Math.max(0, t.drop - dt);
   }
 
   // Serving: sweep the aim so a launch is a choice, not a coin flip.
@@ -599,6 +618,7 @@ export function step(sim: Sim, dt: number, out: SimEvent[]): void {
       sim.aim = lo;
       sim.aimDir = 1;
     }
+    stepRemix(sim, dt, out, false);
     stepBolts(sim, dt, out);
     return;
   }
@@ -617,6 +637,9 @@ export function step(sim: Sim, dt: number, out: SimEvent[]): void {
     out.push({ t: "danger" });
   }
 
+  // The window is still being built while you are breaking it. See `remix.ts`.
+  stepRemix(sim, dt, out);
+
   for (const b of sim.balls) {
     if (!b.alive || b.held) continue;
     stepBall(sim, b, dt, out);
@@ -627,7 +650,7 @@ export function step(sim: Sim, dt: number, out: SimEvent[]): void {
   // only for a moment — it confirms, it never lets you plan without reading.
   for (const b of sim.balls) {
     if (!b.alive || b.held) continue;
-    const c = Math.round((b.x - sim.wallX) / sim.cellW);
+    const c = Math.round((b.x - wallLeft(sim)) / sim.cellW);
     const r = Math.round((b.y - sim.wallY - sim.descent) / sim.cellH);
     for (let dr = -1; dr <= 1; dr++) {
       for (let dc = -1; dc <= 1; dc++) {

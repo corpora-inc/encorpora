@@ -15,6 +15,7 @@
  * is explained; the correct rune simply lights up as everything else goes dark,
  * which is the same information without the scolding.
  */
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts";
 import type { Host } from "../contract.ts";
 import { Rng } from "../rng.ts";
 import type { Forge, ForgeShard, PowerKind, Sim, SimEvent } from "./state.ts";
@@ -60,6 +61,8 @@ export function openForge(sim: Sim, host: Host, rngSeed: number): void {
     prompt: q.prompt,
     shards,
     resolving: 0,
+    held: false,
+    settleAt: 0,
     outcome: "none",
   };
   sim.forge = forge;
@@ -93,7 +96,17 @@ export function chooseShard(
     answered: shard.text,
   });
 
-  forge.resolving = shard.correct ? 0.85 : 1.15;
+  // A win has nothing to marinate on, so it plays its flourish and goes. A MISS
+  // holds — `revealPlan`'s `holdMs: Infinity`, which is the fleet-wide answer to
+  // "the answers flashed for a second and then go on". The correct rune lights
+  // up under the prompt that asked for it, in the warm accent and never in red,
+  // and it stays there until a hand takes it down. `settleAt` is the only
+  // deadline anywhere near it and it runs the other way: it is a lockout, so the
+  // second tap of an impatient double-tap cannot dismiss the lesson it just
+  // raised.
+  forge.resolving = shard.correct ? 0.85 : Number.POSITIVE_INFINITY;
+  forge.held = !shard.correct;
+  forge.settleAt = forge.age + REVEAL_SETTLE_MS / 1000;
   forge.outcome = shard.correct ? "right" : "wrong";
   sim.charge = 0;
 
@@ -110,6 +123,20 @@ export function chooseShard(
   return "wrong";
 }
 
+/**
+ * Take a held reveal down, if the child's own input is allowed to yet.
+ *
+ * Returns true when the beat actually closed, so the caller knows whether the
+ * tap was spent here or is still free to mean something else.
+ */
+export function dismissForge(sim: Sim): boolean {
+  const forge = sim.forge;
+  if (!forge || !forge.held) return false;
+  if (forge.age < forge.settleAt) return false;
+  sim.forge = null;
+  return true;
+}
+
 /** Advance the beat in REAL time — the forge is not slowed by its own slow-mo. */
 export function stepForge(sim: Sim, dtReal: number): boolean {
   const forge = sim.forge;
@@ -122,6 +149,9 @@ export function stepForge(sim: Sim, dtReal: number): boolean {
     s.vy += 2.2 * dtReal;
     if (s.pop > 0) s.pop = Math.max(0, s.pop - dtReal * 1.6);
   }
+
+  // A held reveal never expires. Nothing but the child ends one.
+  if (forge.held) return false;
 
   if (forge.resolving > 0) {
     forge.resolving -= dtReal;

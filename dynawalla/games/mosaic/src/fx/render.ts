@@ -16,7 +16,8 @@
  */
 import type { Sim } from "../game/state.ts";
 import { VW } from "../game/state.ts";
-import { MOLTEN_AT, paddleHalf, tileX, tileY, TRAIL_LEN } from "../game/sim.ts";
+import { MOLTEN_AT, paddleHalf, tileX, tileY, TRAIL_LEN, wallLeft } from "../game/sim.ts";
+import { DROP_SECONDS } from "../game/remix.ts";
 import { MASONRY_HP } from "../game/wall.ts";
 import { ruleBanner } from "../game/rules.ts";
 import { FORGE_TIMEOUT } from "../game/forge.ts";
@@ -461,7 +462,7 @@ export class Renderer {
   /** The stone frame the window sits in. */
   private drawTracery(sim: Sim): void {
     const g = this.ctx;
-    const x = sim.wallX - 16;
+    const x = wallLeft(sim) - 16;
     const y = sim.wallY + sim.descent - 16;
     const w = sim.wave.cols * sim.cellW + 32;
     const h = sim.wave.rows * sim.cellH + 32;
@@ -483,7 +484,13 @@ export class Renderer {
     for (const t of sim.wave.tiles) {
       if (!t.alive) continue;
       const x = tileX(sim, t.col);
-      const y = tileY(sim, t.row);
+      // A re-glazed pane falls the last two cells into its slot and fades up as
+      // it comes, so it is unmistakably arriving rather than having always been
+      // there — and it is not solid until it has landed (see `tileAt`).
+      const fall = t.drop > 0 ? t.drop / DROP_SECONDS : 0;
+      const y = tileY(sim, t.row) - fall * fall * cellH * 2.6;
+      const pane = 1 - fall * 0.75;
+      if (fall > 0) g.globalAlpha = pane;
       // Glass variants live at 0, 3 and 4; star at 1; crystal at 2.
       const cut = (t.col + t.row * 2) % 3;
       const kindIndex = t.kind === "star" ? 1 : t.kind === "crystal" ? 2 : cut === 0 ? 0 : cut + 2;
@@ -501,7 +508,7 @@ export class Renderer {
       // Numerals: dark leading on lit glass. Sized to fit the longest face.
       const size = numSize * (t.face.width > 4 ? 0.74 : t.face.width > 3 ? 0.86 : 1);
       this.text(t.face.text, x + cellW / 2, y + cellH / 2 + 1, size, 800, INK);
-      g.globalAlpha = 0.28;
+      g.globalAlpha = 0.28 * pane;
       this.text(t.face.text, x + cellW / 2, y + cellH / 2 - 1.6, size, 800, "#ffffff");
       g.globalAlpha = 1;
 
@@ -537,6 +544,18 @@ export class Renderer {
         g.globalAlpha = 1;
         g.globalCompositeOperation = "source-over";
       }
+      // Stone that has just caught light. The one thing on the wall that
+      // changed while you were looking somewhere else, so it says so loudly.
+      if (t.kindle > 0) {
+        g.globalCompositeOperation = "lighter";
+        g.globalAlpha = t.kindle * 0.7;
+        g.fillStyle = LIGHT_WARM;
+        roundRect(g, x + 1, y + 1, cellW - 2, cellH - 2, 6);
+        g.fill();
+        g.globalAlpha = 1;
+        g.globalCompositeOperation = "source-over";
+      }
+
       if (t.warm > 0 && t.guilty) {
         // The glass answers heat. Confirmation only — it never fires far
         // enough ahead of the ball to plan a shot with.
@@ -557,7 +576,7 @@ export class Renderer {
       g.globalCompositeOperation = "lighter";
       g.globalAlpha = cleared * 0.06;
       g.fillStyle = LIGHT_WARM;
-      g.fillRect(sim.wallX, sim.wallY + sim.descent, sim.wave.cols * cellW, sim.wave.rows * cellH);
+      g.fillRect(wallLeft(sim), sim.wallY + sim.descent, sim.wave.cols * cellW, sim.wave.rows * cellH);
       g.globalAlpha = 1;
       g.globalCompositeOperation = "source-over";
     }
@@ -935,7 +954,10 @@ export class Renderer {
       g.save();
       g.translate(s.x, s.y);
       g.scale(scale, scale);
-      g.globalAlpha = dim ? Math.max(0, 1 - pop * 1.4) : 1;
+      // A dimmed rune fades DOWN and stays down. It used to fade back to full
+      // as `pop` decayed, which meant that a second after a miss the wall of
+      // runes looked untouched again and the held reveal read as noise.
+      g.globalAlpha = dim ? 1 - clamp01((1 - pop) * 2) * 0.74 : 1;
 
       // A glass plate cut as a hexagon, in its power's colour.
       g.beginPath();

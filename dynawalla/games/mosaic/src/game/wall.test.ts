@@ -74,12 +74,87 @@ test("every wave is winnable and worth playing: enough targets, not all targets"
 
 test("wave 1 is the tutorial and has no tutorial", () => {
   const w = buildWave({ seed: 3, index: 0 });
-  // Even numbers, a full grid, no descent, no crystal or star to explain.
+  // Even numbers, no descent, no crystal or star to explain. The SHAPE is no
+  // longer part of the contract — see the opening-board tests below.
   assert.equal(w.rule.kind, "multiple");
   assert.equal(w.rule.target.n, 2);
   assert.equal(w.descentRate, 0);
-  assert.equal(w.layout, "solid");
   for (const t of w.tiles) assert.equal(t.kind, "glass");
+});
+
+// ---------------------------------------------------------------------------
+// The opening board
+//
+// "The first board is just a rectangle of the numbers and it's boring." It was:
+// measured over four hundred seeds, wave one produced exactly ONE shape — a
+// filled 9×4 block, fill fraction 1.000, every run the game has ever played.
+// These four tests are the ones that would go green again if the carve were
+// deleted, so they assert the property and not the implementation.
+// ---------------------------------------------------------------------------
+
+/** A shape key: which cells are occupied, independent of what is printed on them. */
+function shapeKey(w: ReturnType<typeof buildWave>): string {
+  return (
+    w.tiles
+      .map((t) => `${t.col},${t.row}`)
+      .sort()
+      .join("|") + `#${w.cols}x${w.rows}`
+  );
+}
+
+const SPREAD_SEEDS = Array.from({ length: 300 }, (_, i) => (i * 2654435761 + 12345) >>> 0);
+
+test("the opening board is not a filled rectangle", () => {
+  let full = 0;
+  for (const seed of SPREAD_SEEDS) {
+    const w = buildWave({ seed, index: 0 });
+    if (w.tiles.length === w.cols * w.rows) full++;
+  }
+  // A carve may legitimately roll back to nothing on the odd seed; a majority
+  // of full rectangles would mean the carve is not doing its job.
+  assert.ok(full / SPREAD_SEEDS.length < 0.05, `${full}/${SPREAD_SEEDS.length} openings were solid blocks`);
+});
+
+test("the opening board is a different shape nearly every run", () => {
+  const shapes = new Set(SPREAD_SEEDS.map((seed) => shapeKey(buildWave({ seed, index: 0 }))));
+  assert.ok(
+    shapes.size > SPREAD_SEEDS.length * 0.8,
+    `only ${shapes.size} distinct opening shapes across ${SPREAD_SEEDS.length} seeds`,
+  );
+});
+
+test("the opening board is not always the same KIND of window either", () => {
+  // The carve alone would satisfy the two tests above while wave one still
+  // drew from a single hard-coded mask for ever. It does not: the opening
+  // draws from a family of shapes that stay legible at four or five rows.
+  const families = new Set(SPREAD_SEEDS.map((seed) => buildWave({ seed, index: 0 }).layout));
+  assert.ok(families.size >= 3, `the opening only ever uses ${[...families].join(", ")}`);
+});
+
+test("two fresh sessions do not open on the same wall", () => {
+  // What `mount.ts` actually does: seed from the clock. Consecutive launches a
+  // few milliseconds apart must still differ.
+  const now = 1785000000000;
+  const a = buildWave({ seed: (now ^ 0x5eed1e) >>> 0, index: 0 });
+  const b = buildWave({ seed: ((now + 1) ^ 0x5eed1e) >>> 0, index: 0 });
+  const c = buildWave({ seed: ((now + 17) ^ 0x5eed1e) >>> 0, index: 0 });
+  assert.notEqual(shapeKey(a), shapeKey(b));
+  assert.notEqual(shapeKey(b), shapeKey(c));
+  assert.notDeepEqual(
+    a.tiles.map((t) => t.face.text),
+    b.tiles.map((t) => t.face.text),
+  );
+});
+
+test("carving never takes a wall below the floor it promises", () => {
+  for (let index = 0; index < WAVES; index++) {
+    for (const seed of SPREAD_SEEDS.slice(0, 60)) {
+      const w = buildWave({ seed, index });
+      assert.ok(w.tiles.length >= 20, `wave ${index} seed ${seed} carved down to ${w.tiles.length}`);
+      assert.ok(w.carved >= 0);
+      assert.equal(w.guiltyShare, w.guiltyTotal / w.tiles.length);
+    }
+  }
 });
 
 test("difficulty escalates monotonically where it should", () => {

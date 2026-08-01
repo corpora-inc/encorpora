@@ -4,7 +4,8 @@ import { Rng } from "../rng.ts";
 import { createSim, launch, paddleHalf, step, tileAt } from "./sim.ts";
 import type { Sim, SimEvent } from "./state.ts";
 import { VW } from "./state.ts";
-import { chooseShard, openForge, stepForge } from "./forge.ts";
+import { chooseShard, dismissForge, openForge, stepForge } from "./forge.ts";
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts";
 import type { Host, Question } from "../contract.ts";
 
 const DT = 1 / 120;
@@ -280,6 +281,61 @@ test("a wrong rune costs the charge and the power, and nothing else", () => {
   assert.equal(out.some((e) => e.t === "power"), false);
   // The right answer lights up anyway. Nobody is told off, they are shown.
   assert.equal(sim.forge!.shards.find((s) => s.correct)!.state, 1);
+});
+
+test("a miss holds the completed sum until a hand takes it down", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  const wrong = sim.forge!.shards.findIndex((s) => !s.correct);
+  assert.equal(chooseShard(sim, host, wrong, []), "wrong");
+
+  // Nothing but the child ends it. Ten minutes of frames do not.
+  assert.equal(sim.forge!.held, true);
+  for (let i = 0; i < 12000; i++) assert.equal(stepForge(sim, 0.05), false);
+  assert.ok(sim.forge, "the reveal expired on its own");
+  // The prompt and the correct rune are both still up: the sum is completed in
+  // front of the child, and the wrong rune is dimmed rather than marked.
+  assert.equal(sim.forge!.prompt, "7 × 8");
+  assert.equal(sim.forge!.shards.find((s) => s.correct)!.state, 1);
+  assert.equal(sim.forge!.shards[wrong]!.state, -1);
+
+  assert.equal(dismissForge(sim), true);
+  assert.equal(sim.forge, null);
+});
+
+test("the settle lockout stops a stray second tap eating the reveal", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  const wrong = sim.forge!.shards.findIndex((s) => !s.correct);
+  chooseShard(sim, host, wrong, []);
+  // The tap that raised the reveal is still arriving. It may not take it down.
+  assert.equal(dismissForge(sim), false);
+  assert.ok(sim.forge);
+  assert.ok(sim.forge!.settleAt > 0);
+  stepForge(sim, REVEAL_SETTLE_MS / 1000 + 0.01);
+  assert.equal(dismissForge(sim), true);
+});
+
+test("a clean win is not held — there is nothing to marinate on", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 4242);
+  const right = sim.forge!.shards.findIndex((s) => s.correct);
+  assert.equal(chooseShard(sim, host, right, []), "right");
+  assert.equal(sim.forge!.held, false);
+  assert.equal(dismissForge(sim), false, "a win should not need dismissing");
+  let closed = false;
+  for (let i = 0; i < 200 && !closed; i++) closed = stepForge(sim, 0.02);
+  assert.equal(closed, true, "the celebration never ended");
+  assert.equal(sim.forge, null);
 });
 
 test("hesitating in the forge is never punished", () => {
