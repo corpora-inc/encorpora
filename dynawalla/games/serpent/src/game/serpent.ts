@@ -265,16 +265,27 @@ export function rebuildBody(s: Serpent): void {
   }
 }
 
-/** Distance from the head to the nearest body point that can kill it. */
-export function selfHit(s: Serpent): boolean {
+/**
+ * The body point the head is currently inside, or −1.
+ *
+ * The index and not just a yes/no, because the two things that can happen next
+ * both need to know WHERE: a death bursts there, and a bump before the serpent
+ * has grown turns the head straight off that point (`world.ts: bumpSelf`).
+ */
+export function selfHitIndex(s: Serpent): number {
   const lethal = TUNE.headRadius * TUNE.selfHitFactor;
   const r2 = lethal * lethal;
   for (let i = TUNE.neckSegments; i < s.bodyCount; i++) {
     const dx = (s.bodyX[i] as number) - s.x;
     const dy = (s.bodyY[i] as number) - s.y;
-    if (dx * dx + dy * dy < r2) return true;
+    if (dx * dx + dy * dy < r2) return i;
   }
-  return false;
+  return -1;
+}
+
+/** Is the head inside its own body? */
+export function selfHit(s: Serpent): boolean {
+  return selfHitIndex(s) >= 0;
 }
 
 export function bolusTintAt(s: Serpent, i: number): number {

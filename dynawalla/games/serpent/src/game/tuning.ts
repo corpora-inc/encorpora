@@ -37,6 +37,22 @@ export const TUNE = {
   /** Body points nearer the head than this can never kill you. */
   neckSegments: 17,
   selfHitFactor: 0.55,
+  /**
+   * The length at which running into your own body starts to END a run.
+   *
+   * A child who has just picked the game up turns the way they turn in every
+   * other game they own, the head comes round into its own flank at 34 segments,
+   * and the run is over before they have read the condition once. That is being
+   * punished by a rule you have not been taught, and the founder filed it as
+   * "if I turn around he eats himself ... too hard".
+   *
+   * So until the serpent has grown — three correct answers, `startSegments +
+   * 3 × growPerCorrect` — a self-hit is a BUMP: the head is turned off its own
+   * flank with a thud and a moment of grace, and the dive carries on. The latch
+   * is one-way for the whole run (`world.selfHitArmed`), so coughing length back
+   * up cannot buy the grace a second time and a player cannot hover under it.
+   */
+  selfHitArmsAt: 49,
 
   // ---- arena -------------------------------------------------------------
   arenaStart: 1.0,
@@ -64,11 +80,31 @@ export const TUNE = {
    * forward turns a side-swipe into a near miss, which is what it looks like.
    */
   biteOffset: 0.78,
-  orbBaseCount: 10,
-  orbPerDepth: 1,
-  orbMaxCount: 20,
-  goodBase: 3,
-  goodMax: 5,
+  /**
+   * The opening field, and how it grows.
+   *
+   * `orbBaseCount` was 10 and the count was then multiplied by the board's AREA,
+   * so the first screen of a dive on a tall phone carried about twenty numbers.
+   * The founder: "why are there so many choices when I first start ... too hard
+   * and crowded and frustrating for the starting density."
+   *
+   * Five to open, and the field grows only with `depth` — which is nine CORRECT
+   * answers each, so it is demonstrated competence and never elapsed time and
+   * never the size of the screen. A child who is finding it hard is never handed
+   * a denser board for having been there a while.
+   */
+  orbBaseCount: 5,
+  orbPerDepth: 2,
+  orbMaxCount: 24,
+  /**
+   * How much of the field is edible, and the floor and ceiling on it.
+   *
+   * A share rather than a schedule, so the opening's five orbs and a deep dive's
+   * twenty-four read the same way: about a third of what you can see is food.
+   */
+  goodShare: 0.32,
+  goodBase: 2,
+  goodMax: 7,
   orbDrift: 0.022,
   hunterFromDepth: 5,
   hunterChance: 0.22,
@@ -82,6 +118,7 @@ export const TUNE = {
 
   // ---- juice (all measured; see README) -----------------------------------
   hitstopEatMs: 28,
+  hitstopBumpMs: 90,
   hitstopWrongMs: 110,
   hitstopWallMs: 95,
   hitstopShieldMs: 180,
@@ -90,6 +127,7 @@ export const TUNE = {
   traumaEat: 0.1,
   traumaWrong: 0.45,
   traumaWall: 0.55,
+  traumaBump: 0.34,
   traumaDepth: 0.25,
   traumaShield: 0.5,
   traumaDeath: 0.9,

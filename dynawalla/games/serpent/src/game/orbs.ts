@@ -14,10 +14,7 @@
 
 import { TAU, randRange } from "./num.ts";
 import { TUNE } from "./tuning.ts";
-import { pullInside, rimEdge } from "./arena.ts";
-
-/** The vent's semi-axes this frame. The short one is `world.arenaR`; see `arena.ts`. */
-export type Axes = { a: number; b: number };
+import { pullInside, rimEdge, type Board } from "./arena.ts";
 
 export type Orb = {
   x: number;
@@ -62,17 +59,17 @@ export function createOrb(): Orb {
  * and not on top of another orb. Falls back to the best of N tries rather than
  * looping forever.
  */
-export function placeOrb(orb: Orb, orbs: Orb[], axes: Axes, headX: number, headY: number): void {
+export function placeOrb(orb: Orb, orbs: Orb[], board: Board, headX: number, headY: number): void {
   let bestX = 0;
   let bestY = 0;
   let bestScore = -1;
   const clear = TUNE.orbRadius * 2.2;
-  // Candidates are drawn from the vent shrunk by the clearance, which is uniform
-  // over the ellipse rather than over a disc; the `pullInside` at the end is what
-  // actually guarantees the clearance, because a concentric ellipse is not the
-  // same curve as the rim offset inward and only one of those is the rule.
-  const sa = Math.max(TUNE.orbRadius, axes.a - clear);
-  const sb = Math.max(TUNE.orbRadius, axes.b - clear);
+  // Candidates are drawn from a board shrunk by the clearance, so they are spread
+  // over the shape rather than over a disc inside it. The `pullInside` at the end
+  // is what actually GUARANTEES the clearance: a concentric shrink is not the same
+  // curve as the rim offset inward, and only one of those is the rule.
+  const sa = Math.max(TUNE.orbRadius, board.a - clear);
+  const sb = Math.max(TUNE.orbRadius, board.b - clear);
   for (let attempt = 0; attempt < 14; attempt++) {
     const a = randRange(0, TAU);
     const r = Math.sqrt(Math.random());
@@ -92,7 +89,7 @@ export function placeOrb(orb: Orb, orbs: Orb[], axes: Axes, headX: number, headY
     }
     if (bestScore > TUNE.spawnClearance) break;
   }
-  const put = pullInside(axes.a, axes.b, bestX, bestY, clear);
+  const put = pullInside(board, bestX, bestY, clear);
   orb.x = put.x;
   orb.y = put.y;
   const a = randRange(0, TAU);
@@ -114,7 +111,7 @@ export function molt(orb: Orb, label: string, good: boolean, dur: number): void 
 
 export type OrbStepOptions = {
   dt: number;
-  axes: Axes;
+  board: Board;
   headX: number;
   headY: number;
   /** Rotating current, from depth 4. 0 disables it. */
@@ -166,7 +163,7 @@ export function stepOrbs(orbs: Orb[], o: OrbStepOptions): void {
 
     // The rim contains the field too, and by the same shape the serpent hits.
     const limit = TUNE.orbRadius * 1.1;
-    const e = rimEdge(o.axes.a, o.axes.b, orb.x, orb.y);
+    const e = rimEdge(o.board, orb.x, orb.y);
     if (e.gap < limit) {
       orb.x = e.x - e.nx * limit;
       orb.y = e.y - e.ny * limit;

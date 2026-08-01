@@ -48,7 +48,7 @@ import { dirname, join } from "node:path";
 import test from "node:test";
 
 import { NO_INSETS, safeRect, type Insets } from "../../../../../packs/shared/game-chrome/index.ts";
-import { arenaScale } from "../arena.ts";
+import { arenaFrame, topChromeBand } from "../arena.ts";
 import { CAP_EM, type Ink } from "./glyphs.ts";
 import { TUNE } from "../tuning.ts";
 import {
@@ -179,11 +179,11 @@ function frames(): Frame[] {
   for (const [name, w, h] of VIEWPORTS) {
     for (const [label, insets] of insetsFor(w, h)) {
       const safe = safeRect(w, h, insets);
-      // `scene.ts: resize` — the arena is centred in the safe box and inscribed
-      // in it. `arenaScale` is the shipping expression, imported rather than
-      // copied; the condition is fitted to the disc INSIDE the ellipse, which is
-      // the short semi-axis, so `arenaR × scale` is still the radius that binds.
-      const scale = arenaScale(safe.w, safe.h);
+      // `scene.ts: resize` — the board is fitted to the safe box less the host's
+      // chrome band. `arenaFrame` is the shipping expression, imported rather than
+      // copied; the condition is fitted to the disc INSIDE the board, which is the
+      // short half-extent, so `arenaR × scale` is still the radius that binds.
+      const scale = arenaFrame(safe.w, safe.h, topChromeBand(w, safe.y, safe.h, insets)).scale;
       for (const arenaR of ARENA_RADII) {
         out.push({
           where: `${name} (${w}x${h}), ${label}, vent ${(arenaR * scale * 2).toFixed(0)}px across`,

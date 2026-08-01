@@ -1,21 +1,25 @@
 /**
- * The shape of the vent, checked against something that is not itself.
+ * The shape of the board, checked against something that is not itself.
  *
- * The arena stopped being a circle: it is the ellipse inscribed in the safe
- * rectangle, so the board is the screen. That is a one-line change to a constant
- * and a real change to the *physics*, because on a circle "how far is the wall",
- * "which way does it face" and "where is the nearest legal spot inside it" are
- * `Math.hypot` and on an ellipse they are the root of a quartic. Those three
- * answers decide where a child dies, where they are paid for grazing, and where
- * an orb is allowed to appear, so every one of them is checked here against a
- * **brute-force sweep of the rim** rather than against a rearrangement of the
- * same algebra.
+ * The board is a rounded rectangle fitted to the real limit: the safe rectangle,
+ * minus the two 44px squares the host paints over every game, minus the rim's own
+ * ink measured in pixels. Nothing else is held back — there is no fill fraction
+ * any more.
  *
- * The other half is the promise the change was made for and the promise it must
- * not break at the same time: the rim reaches the ends of the screen, and no part
- * of it — through the worst shake and the peak of the camera's punch — leaves the
- * safe box. Both are asserted at the five viewports the rest of the pack is held
- * at, with and without a cutout.
+ * Two families of assertion, and both have to hold or the change is not the change:
+ *
+ *   · **It reaches the edge.** The fraction of the safe rectangle the playfield
+ *     covers is asserted with a floor, because that number is the founder's
+ *     question and a regression in it is the answer going backwards.
+ *   · **It stops at the edge.** The rim is a wall a child dies against, so no part
+ *     of it may sit under a rounded display corner or under the host's own
+ *     buttons, in ANY frame the game can draw — the camera's peak zoom and its
+ *     bounded shake included, both measured by running the real camera rather than
+ *     by believing a hand-derived number.
+ *
+ * The geometry underneath is checked against a 60,000-point brute-force sweep of
+ * the rim. A rounded rect's nearest point is closed form where the ellipse it
+ * replaces needed an iteration, and "the code is simpler now" is not evidence.
  */
 
 import assert from "node:assert/strict";
@@ -23,110 +27,133 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import test from "node:test";
 
-import { NO_INSETS, safeRect, type Insets } from "../../../../packs/shared/game-chrome/index.ts";
 import {
-  ARENA_FILL,
-  MAX_ARENA_ASPECT,
-  arenaAspect,
-  arenaScale,
-  closestOnRim,
+  NO_INSETS,
+  chromeRects,
+  safeRect,
+  type Insets,
+} from "../../../../packs/shared/game-chrome/index.ts";
+import {
+  CORNER_FRACTION,
+  SHAKE_HEADROOM,
+  ZOOM_PEAK,
+  arenaBoard,
+  arenaFrame,
   insideRim,
   pullInside,
   rimEdge,
+  rimPerimeter,
+  rimReach,
+  sampleRim,
+  topChromeBand,
+  type Board,
 } from "./arena.ts";
 import { addTrauma, createCamera, punch, updateCamera } from "./fx/camera.ts";
 import { TAU } from "./num.ts";
 import { TUNE } from "./tuning.ts";
 
+const label = (k: Board): string => `a=${k.a.toFixed(3)} b=${k.b.toFixed(3)} r=${k.r.toFixed(3)}`;
+
 /* -------------------------------------------------------------------------- */
 /* The geometry, against a sweep.                                             */
 /* -------------------------------------------------------------------------- */
 
+const SWEEP = 60000;
+const sweepX = new Float32Array(SWEEP);
+const sweepY = new Float32Array(SWEEP);
+const sweepNX = new Float32Array(SWEEP);
+const sweepNY = new Float32Array(SWEEP);
+
 /**
  * The nearest point on the rim, found by looking at 60,000 of them.
  *
- * Dumb on purpose. It can only ever be *worse* than the true minimum, so
- * "`closestOnRim` is no further than this" is a real bound and not a tolerance —
- * an implementation that lands on the wrong side of the ellipse, or stops
- * iterating, is further away and this catches it.
+ * Dumb on purpose. It can only ever be *worse* than the true minimum, so "the
+ * closed form is no further than this" is a bound and not a tolerance.
  */
-function sweepNearest(a: number, b: number, px: number, py: number): number {
+function sweepNearest(px: number, py: number): number {
   let best = Infinity;
-  const N = 60000;
-  for (let i = 0; i < N; i++) {
-    const t = (i / N) * TAU;
-    const d = Math.hypot(a * Math.cos(t) - px, b * Math.sin(t) - py);
+  for (let i = 0; i < SWEEP; i++) {
+    const d = Math.hypot((sweepX[i] as number) - px, (sweepY[i] as number) - py);
     if (d < best) best = d;
   }
   return best;
 }
 
-/** Every shape the game can be in, from a square to the cap, at both vent sizes. */
-const SHAPES: Array<[number, number]> = [];
+/** Every shape the game can be in, from a square to a corridor, at both vent sizes. */
+const SHAPES: Board[] = [];
 for (const r of [TUNE.arenaStart, 0.8, TUNE.arenaFloor]) {
-  for (const k of [1, 1.2, 1.777, 2.165, MAX_ARENA_ASPECT]) {
-    SHAPES.push([r, r * k]);
-    if (k !== 1) SHAPES.push([r * k, r]);
+  for (const k of [1, 1.2, 1.85, 2.4, 4]) {
+    SHAPES.push(arenaBoard(r, { x: k, y: 1 }));
+    if (k !== 1) SHAPES.push(arenaBoard(r, { x: 1, y: k }));
   }
 }
 
-/** Points worth asking about: the middle, the axes, off-axis, and well outside. */
-function probes(a: number, b: number): Array<[number, number]> {
+/** Points worth asking about: the middle, the sides, the corners, and well outside. */
+function probes(k: Board): Array<[number, number]> {
   const out: Array<[number, number]> = [[0, 0]];
-  for (const f of [0.01, 0.35, 0.9, 0.99, 1, 1.05, 1.6]) {
-    for (let i = 0; i < 12; i++) {
-      const t = (i / 12) * TAU + 0.11;
-      out.push([Math.cos(t) * a * f, Math.sin(t) * b * f]);
+  for (const f of [0.01, 0.4, 0.92, 0.999, 1.04, 1.7]) {
+    for (let i = 0; i < 16; i++) {
+      const t = (i / 16) * TAU + 0.13;
+      out.push([Math.cos(t) * k.a * f, Math.sin(t) * k.b * f]);
+    }
+  }
+  // And straight at the corner arcs, where the two branches meet.
+  for (const sx of [-1, 1]) {
+    for (const sy of [-1, 1]) {
+      out.push([sx * (k.a - k.r), sy * (k.b - k.r)]);
+      out.push([sx * (k.a - k.r * 0.3), sy * (k.b - k.r * 0.3)]);
+      out.push([sx * k.a, sy * k.b]);
     }
   }
   return out;
 }
 
 test("the nearest point on the rim is on the rim, and nothing on the rim is nearer", () => {
-  for (const [a, b] of SHAPES) {
-    for (const [px, py] of probes(a, b)) {
-      const c = closestOnRim(a, b, px, py);
-      const on = (c.x / a) ** 2 + (c.y / b) ** 2;
+  for (const k of SHAPES) {
+    sampleRim(k, SWEEP, sweepX, sweepY, sweepNX, sweepNY);
+    for (const [px, py] of probes(k)) {
+      const e = rimEdge(k, px, py);
+      // On the rim: the rounded rect's own distance function is zero there.
+      const qx = Math.max(0, Math.abs(e.x) - (k.a - k.r));
+      const qy = Math.max(0, Math.abs(e.y) - (k.b - k.r));
+      const on = Math.hypot(qx, qy) - k.r;
       assert.ok(
-        Math.abs(on - 1) < 1e-9,
-        `a=${a} b=${b} from (${px.toFixed(3)},${py.toFixed(3)}): the "nearest point on the rim" ` +
-          `is not on the rim — x²/a²+y²/b² = ${on}`,
+        Math.abs(on) < 1e-9,
+        `${label(k)} from (${px.toFixed(3)},${py.toFixed(3)}): the "nearest point on the rim" ` +
+          `is ${on} off the rim`,
       );
-      const mine = Math.hypot(px - c.x, py - c.y);
-      const swept = sweepNearest(a, b, px, py);
+      const mine = Math.hypot(px - e.x, py - e.y);
+      const swept = sweepNearest(px, py);
       assert.ok(
-        mine <= swept + 1e-9,
-        `a=${a} b=${b} from (${px.toFixed(3)},${py.toFixed(3)}): a sweep of the rim found a point ` +
-          `${swept.toFixed(9)} away and closestOnRim settled for ${mine.toFixed(9)}`,
+        mine <= swept + 1e-6,
+        `${label(k)} from (${px.toFixed(3)},${py.toFixed(3)}): a sweep of the rim found a point ` +
+          `${swept.toFixed(9)} away and rimEdge settled for ${mine.toFixed(9)}`,
       );
     }
   }
 });
 
 test("the rim's normal is the unit outward normal, and the query sits on it", () => {
-  for (const [a, b] of SHAPES) {
-    for (const [px, py] of probes(a, b)) {
-      const e = rimEdge(a, b, px, py);
+  for (const k of SHAPES) {
+    for (const [px, py] of probes(k)) {
+      const e = rimEdge(k, px, py);
       const len = Math.hypot(e.nx, e.ny);
-      assert.ok(Math.abs(len - 1) < 1e-9, `a=${a} b=${b}: the normal is ${len} long, not 1`);
-      // Outward: stepping along it leaves the ellipse, stepping back stays in.
+      assert.ok(Math.abs(len - 1) < 1e-9, `${label(k)}: the normal is ${len} long, not 1`);
       assert.ok(
-        !insideRim(a, b, e.x + e.nx * 1e-6, e.y + e.ny * 1e-6),
-        `a=${a} b=${b}: the normal points INTO the vent`,
+        !insideRim(k, e.x + e.nx * 1e-6, e.y + e.ny * 1e-6),
+        `${label(k)}: the normal points INTO the board`,
       );
-      assert.ok(insideRim(a, b, e.x - e.nx * 1e-6, e.y - e.ny * 1e-6));
-      // The foot of a perpendicular: the query lies on the normal line.
+      assert.ok(insideRim(k, e.x - e.nx * 1e-6, e.y - e.ny * 1e-6));
       const cross = e.nx * (py - e.y) - e.ny * (px - e.x);
       assert.ok(
-        Math.abs(cross) < 1e-7,
-        `a=${a} b=${b} from (${px.toFixed(3)},${py.toFixed(3)}): the query is ${cross} off the ` +
+        Math.abs(cross) < 1e-9,
+        `${label(k)} from (${px.toFixed(3)},${py.toFixed(3)}): the query is ${cross} off the ` +
           `normal line, so the "nearest" point is not a foot of a perpendicular`,
       );
-      // The sign of the gap is the side of the wall you are on. Asked only of
-      // points that are on a side: a probe placed exactly ON the rim has a gap of
-      // zero and rounds either way, which is not a fact about the shape.
+      // A probe exactly ON the rim has a gap of zero and rounds either way, which
+      // is not a fact about the shape.
       if (Math.abs(e.gap) > 1e-9) {
-        assert.equal(e.gap > 0, insideRim(a, b, px, py), `a=${a} b=${b}: the gap's sign is inside-out`);
+        assert.equal(e.gap > 0, insideRim(k, px, py), `${label(k)}: the gap's sign is inside-out`);
       }
       assert.ok(
         Math.abs(Math.abs(e.gap) - Math.hypot(px - e.x, py - e.y)) < 1e-12,
@@ -145,14 +172,14 @@ const MARGINS: Array<[string, number]> = [
 ];
 
 test("pullInside puts a body exactly its margin inside, whatever the shape", () => {
-  for (const [a, b] of SHAPES) {
+  for (const k of SHAPES) {
     for (const [what, m] of MARGINS) {
-      for (const [px, py] of probes(a, b)) {
-        const p = pullInside(a, b, px, py, m);
-        const gap = rimEdge(a, b, p.x, p.y).gap;
+      for (const [px, py] of probes(k)) {
+        const p = pullInside(k, px, py, m);
+        const gap = rimEdge(k, p.x, p.y).gap;
         assert.ok(
           gap >= m - 1e-9,
-          `a=${a} b=${b}, ${what} (${m}): (${px.toFixed(3)},${py.toFixed(3)}) was put at ` +
+          `${label(k)}, ${what} (${m}): (${px.toFixed(3)},${py.toFixed(3)}) was put at ` +
             `(${p.x.toFixed(3)},${p.y.toFixed(3)}), which is ${gap.toFixed(6)} from the wall`,
         );
       }
@@ -160,25 +187,58 @@ test("pullInside puts a body exactly its margin inside, whatever the shape", () 
   }
 });
 
-test("the aspect cap is what keeps pullInside exact", () => {
+test("the corner radius is what keeps pullInside exact", () => {
   // Walking `m` back along the normal lands exactly `m` inside only while `m` is
-  // under the smallest radius of curvature the ellipse has. That is the real
-  // reason MAX_ARENA_ASPECT exists, and it is worth the smallest vent and the
-  // largest margin the game can put together.
-  const short = TUNE.arenaFloor;
-  const long = TUNE.arenaFloor * MAX_ARENA_ASPECT;
-  const tightest = (short * short) / long;
+  // under the corner radius — past it the corner has run out and the offset curve
+  // is no longer a rounded rect. Worth the SMALLEST board the game can close to
+  // and the largest clearance it asks for. Note this does not depend on the aspect
+  // at all, which is why there is no cap on how long a board may be.
+  const tightest = TUNE.arenaFloor * CORNER_FRACTION;
   const worst = Math.max(...MARGINS.map(([, m]) => m));
   assert.ok(
     tightest > worst * 1.3,
-    `at the vent floor and the aspect cap the rim's tightest radius of curvature is ` +
-      `${tightest.toFixed(4)} and the game asks for ${worst.toFixed(4)} of clearance — ` +
-      `the offset stops being exact`,
+    `at the vent's floor the corner radius is ${tightest.toFixed(4)} and the game asks for ` +
+      `${worst.toFixed(4)} of clearance — the offset stops being exact`,
   );
 });
 
+test("the rim walk lands on the rim, evenly, facing outward", () => {
+  // `sampleRim` is a second description of the same curve — the renderer strokes
+  // it and the polyps ride it — so it has to agree with `rimEdge`, or the wall a
+  // child sees and the wall they hit are different objects.
+  const n = 400;
+  const x = new Float32Array(n);
+  const y = new Float32Array(n);
+  const nx = new Float32Array(n);
+  const ny = new Float32Array(n);
+  for (const k of SHAPES) {
+    sampleRim(k, n, x, y, nx, ny);
+    const step = rimPerimeter(k) / n;
+    for (let i = 0; i < n; i++) {
+      const e = rimEdge(k, x[i] as number, y[i] as number);
+      assert.ok(
+        Math.abs(e.gap) < 1e-6,
+        `${label(k)}: rim sample ${i} is ${e.gap.toFixed(9)} off the rim rimEdge describes`,
+      );
+      assert.ok(
+        Math.hypot((nx[i] as number) - e.nx, (ny[i] as number) - e.ny) < 1e-6,
+        `${label(k)}: rim sample ${i} faces a different way than rimEdge says the wall does`,
+      );
+      const j = (i + 1) % n;
+      const d = Math.hypot((x[j] as number) - (x[i] as number), (y[j] as number) - (y[i] as number));
+      // Chord, not arc, so a corner sample is a hair short — never long, and never
+      // by more than the sag of one step.
+      assert.ok(
+        d <= step + 1e-6 && d > step * 0.99,
+        `${label(k)}: samples ${i}→${j} are ${d.toFixed(6)} apart and the step is ${step.toFixed(6)} — ` +
+          `the walk is not even, so the graze glow will crawl at a corner`,
+      );
+    }
+  }
+});
+
 /* -------------------------------------------------------------------------- */
-/* The board is the screen — and stays inside it.                             */
+/* The board reaches the edge of the screen, and stops there.                 */
 /* -------------------------------------------------------------------------- */
 
 const PORTRAIT: Insets = { top: 47, right: 0, bottom: 34, left: 0 };
@@ -200,130 +260,249 @@ function insetsFor(w: number, h: number): Array<[string, Insets]> {
   ];
 }
 
-/**
- * What the camera can actually do to the picture, measured by running it.
- *
- * Hand-derived numbers are how a margin goes stale. `prompt.ts` records that this
- * spring undershoots to 0.990 for exactly the same reason; this takes the other
- * end of it, and the shake, off the shipping code.
- */
-function cameraExtremes(): { zoom: number; shake: number } {
-  const cam = createCamera(false);
-  const biggest = Math.max(TUNE.punchEat, TUNE.punchWrong, TUNE.punchDepth, TUNE.punchDeath);
-  punch(cam, biggest);
-  addTrauma(cam, 1);
-  let zoom = 1;
-  let shake = 0;
-  for (let i = 0; i < 1200; i++) {
-    updateCamera(cam, 1 / 240);
-    zoom = Math.max(zoom, cam.zoom);
-    shake = Math.max(shake, Math.abs(cam.shakeX), Math.abs(cam.shakeY));
+type Fitted = {
+  where: string;
+  vw: number;
+  vh: number;
+  insets: Insets;
+  safe: { x: number; y: number; w: number; h: number };
+  band: number;
+  frame: ReturnType<typeof arenaFrame>;
+};
+
+function fits(): Fitted[] {
+  const out: Fitted[] = [];
+  for (const [name, vw, vh] of VIEWPORTS) {
+    for (const [tag, insets] of insetsFor(vw, vh)) {
+      const safe = safeRect(vw, vh, insets);
+      const band = topChromeBand(vw, safe.y, safe.h, insets);
+      out.push({
+        where: `${name} (${vw}x${vh}), ${tag}`,
+        vw,
+        vh,
+        insets,
+        safe,
+        band,
+        frame: arenaFrame(safe.w, safe.h, band),
+      });
+    }
   }
-  return { zoom, shake };
+  return out;
 }
 
 /**
- * The furthest ink `scene.ts: drawRim` puts from the centre, on one axis.
+ * What the camera can actually do to the picture, measured by running it.
  *
- * Mirrors the draw calls: the rim stroke straddles the semi-axis by half its
- * width, and the polyps ride at `1.012` of it with half a sprite beyond that.
- * The soft halo is deliberately not here — it is a radial gradient that has faded
- * out before it reaches its own edge, it is not a wall, and the 0.44 circle this
- * replaces let it past the safe box too.
+ * Hand-derived numbers are how a margin goes stale. The shake is reported RAW
+ * here, before `scene.ts` clamps it, so the assertion below is about the clamp
+ * doing work and not about the shake happening to be small.
  */
-function rimReach(semiAxisPx: number, S: number): number {
+function cameraExtremes(): { zoom: number; rawShake: number } {
+  const cam = createCamera(false);
+  punch(cam, Math.max(TUNE.punchEat, TUNE.punchWrong, TUNE.punchDepth, TUNE.punchDeath));
+  addTrauma(cam, 1);
+  let zoom = 1;
+  let rawShake = 0;
+  for (let i = 0; i < 1200; i++) {
+    updateCamera(cam, 1 / 240);
+    zoom = Math.max(zoom, cam.zoom);
+    rawShake = Math.max(rawShake, Math.abs(cam.shakeX), Math.abs(cam.shakeY));
+  }
+  return { zoom, rawShake };
+}
+
+test("the reserved zoom and shake are the ones the camera really produces", () => {
+  const cam = cameraExtremes();
+  assert.ok(
+    cam.zoom <= ZOOM_PEAK,
+    `the camera punches to ${cam.zoom.toFixed(5)} and the layout reserves ${ZOOM_PEAK}`,
+  );
+  assert.ok(cam.zoom > 1.001, `the punch measured ${cam.zoom} — the spring is not being driven`);
+  // The clamp has to be doing something, or reserving for it is theatre.
+  assert.ok(
+    cam.rawShake > SHAKE_HEADROOM,
+    `the raw shake peaks at ${cam.rawShake.toFixed(4)} and the clamp is ${SHAKE_HEADROOM} — ` +
+      `the clamp never bites, so it is not the reason the rim stays inside`,
+  );
+  // …and every shake a child is still steering through must be under it, or the
+  // clamp is trimming play and not just the death slam.
+  for (const [what, trauma] of [
+    ["a wall hit", TUNE.traumaWall],
+    ["a wrong answer", TUNE.traumaWrong],
+    ["a self-bump", TUNE.traumaBump],
+    ["a depth", TUNE.traumaDepth],
+    ["a bite", TUNE.traumaEat],
+  ] as const) {
+    assert.ok(
+      trauma * trauma * TUNE.shakeMax <= SHAKE_HEADROOM,
+      `${what} shakes to ${(trauma * trauma * TUNE.shakeMax).toFixed(4)}, past the ${SHAKE_HEADROOM} clamp`,
+    );
+  }
+});
+
+/** The rim line and its outward ink, in pixels from the board's centre. */
+function rimInk(semiAxisPx: number, S: number): number {
   const stroke = semiAxisPx + Math.max(2.5, S * (0.014 + 0.016)) / 2;
-  const polyps = semiAxisPx * 1.012 + (S * 0.016 * 1.4) / 2;
+  const polyps = semiAxisPx + S * (0.012 + 0.016 * 1.4 * 0.5);
   return Math.max(stroke, polyps);
 }
 
 test("no part of the rim ever leaves the safe box", () => {
   const cam = cameraExtremes();
-  for (const [name, vw, vh] of VIEWPORTS) {
-    for (const [label, insets] of insetsFor(vw, vh)) {
-      const safe = safeRect(vw, vh, insets);
-      const scale = arenaScale(safe.w, safe.h);
-      const aspect = arenaAspect(safe.w, safe.h);
-      const cx = safe.x + safe.w / 2;
-      const cy = safe.y + safe.h / 2;
-      for (const arenaR of [TUNE.arenaStart, 0.8, TUNE.arenaFloor]) {
-        const S = scale * cam.zoom;
-        const jitter = cam.shake * scale;
-        const rx = rimReach(arenaR * aspect.x * S, S) + jitter;
-        const ry = rimReach(arenaR * aspect.y * S, S) + jitter;
-        const where = `${name} (${vw}x${vh}), ${label}, vent ${arenaR}`;
-        assert.ok(cx - rx >= safe.x - 1e-9, `${where}: the rim crosses the left inset by ${(safe.x - (cx - rx)).toFixed(2)}px`);
-        assert.ok(cx + rx <= safe.x + safe.w + 1e-9, `${where}: the rim crosses the right inset by ${(cx + rx - safe.x - safe.w).toFixed(2)}px`);
-        assert.ok(cy - ry >= safe.y - 1e-9, `${where}: the rim crosses the top inset by ${(safe.y - (cy - ry)).toFixed(2)}px`);
-        assert.ok(cy + ry <= safe.y + safe.h + 1e-9, `${where}: the rim crosses the bottom inset by ${(cy + ry - safe.y - safe.h).toFixed(2)}px`);
+  for (const f of fits()) {
+    for (const arenaR of [TUNE.arenaStart, 0.8, TUNE.arenaFloor]) {
+      const S = f.frame.scale * cam.zoom;
+      const jitter = SHAKE_HEADROOM * f.frame.scale;
+      const cx = f.safe.x + f.frame.cx;
+      const cy = f.safe.y + f.frame.cy;
+      // The scene is drawn at S = scale x zoom, so the board's own half-extent is
+      // scaled too — measuring the ink off the UNZOOMED extent is how this passes
+      // while the punch quietly carries the rim off the screen.
+      const rx = rimInk(arenaR * f.frame.aspect.x * S, S) + jitter;
+      const ry = rimInk(arenaR * f.frame.aspect.y * S, S) + jitter;
+      const where = `${f.where}, vent ${arenaR}`;
+      assert.ok(cx - rx >= f.safe.x - 1e-9, `${where}: the rim crosses the left inset by ${(f.safe.x - (cx - rx)).toFixed(2)}px`);
+      assert.ok(cx + rx <= f.safe.x + f.safe.w + 1e-9, `${where}: the rim crosses the right inset by ${(cx + rx - f.safe.x - f.safe.w).toFixed(2)}px`);
+      assert.ok(cy - ry >= f.safe.y - 1e-9, `${where}: the rim crosses the top inset by ${(f.safe.y - (cy - ry)).toFixed(2)}px`);
+      assert.ok(cy + ry <= f.safe.y + f.safe.h + 1e-9, `${where}: the rim crosses the bottom inset by ${(cy + ry - f.safe.y - f.safe.h).toFixed(2)}px`);
+    }
+  }
+});
+
+test("no part of the rim ever passes under the host's own buttons", () => {
+  // The host paints `<` and `?` OVER the game. Water under them is water; a WALL
+  // under them is a thing that kills a child from behind a button. Sampled off the
+  // real rim walk rather than off the bounding box, because it is the corner arcs
+  // that come nearest.
+  const cam = cameraExtremes();
+  const n = 900;
+  const x = new Float32Array(n);
+  const y = new Float32Array(n);
+  const nx = new Float32Array(n);
+  const ny = new Float32Array(n);
+  for (const f of fits()) {
+    const squares = chromeRects(f.vw, f.insets);
+    assert.ok(squares.length >= 2, "the host stopped painting chrome — this test is now vacuous");
+    for (const arenaR of [TUNE.arenaStart, 0.8, TUNE.arenaFloor]) {
+      const board = arenaBoard(arenaR, f.frame.aspect);
+      sampleRim(board, n, x, y, nx, ny);
+      const S = f.frame.scale * cam.zoom;
+      const ink = S * (0.012 + 0.016 * 1.4 * 0.5);
+      const jitter = SHAKE_HEADROOM * f.frame.scale;
+      const cx = f.safe.x + f.frame.cx;
+      const cy = f.safe.y + f.frame.cy;
+      for (let i = 0; i < n; i++) {
+        // Push each sample as far out as the frame can carry it, in every direction.
+        const ox = (x[i] as number) * S + (nx[i] as number) * ink;
+        const oy = (y[i] as number) * S + (ny[i] as number) * ink;
+        for (const dx of [-jitter, jitter]) {
+          for (const dy of [-jitter, jitter]) {
+            const px = cx + ox + dx;
+            const py = cy + oy + dy;
+            for (const c of squares) {
+              // Touching the square's edge is clear: the board is fitted right up
+              // to the limit, and "up to" is where the limit is.
+              assert.ok(
+                px <= c.x + 1e-9 ||
+                  px >= c.x + c.w - 1e-9 ||
+                  py <= c.y + 1e-9 ||
+                  py >= c.y + c.h - 1e-9,
+                `${f.where}, vent ${arenaR}: the rim runs under a host control at ` +
+                  `(${px.toFixed(1)},${py.toFixed(1)}) — the square is ${c.x},${c.y} ${c.w}x${c.h}`,
+              );
+            }
+          }
+        }
       }
     }
   }
 });
 
-test("the board really is the screen, on every shape of screen", () => {
-  // The assertion the founder asked for, and the one a revert cannot pass: the
-  // vent spans ARENA_FILL of the safe box on BOTH axes, not on the short one with
-  // dead black bands on the other. A disc sized off the short side spans that
-  // fraction of the short side and a much smaller fraction of the long one.
-  for (const [name, vw, vh] of VIEWPORTS) {
-    for (const [label, insets] of insetsFor(vw, vh)) {
-      const safe = safeRect(vw, vh, insets);
-      const scale = arenaScale(safe.w, safe.h);
-      const aspect = arenaAspect(safe.w, safe.h);
-      const where = `${name} (${vw}x${vh}), ${label}`;
-      const spanX = TUNE.arenaStart * aspect.x * scale * 2;
-      const spanY = TUNE.arenaStart * aspect.y * scale * 2;
-      assert.ok(
-        Math.abs(spanX / safe.w - ARENA_FILL) < 1e-9,
-        `${where}: the vent is ${((spanX / safe.w) * 100).toFixed(1)}% of the safe width, not ${ARENA_FILL * 100}%`,
-      );
-      assert.ok(
-        Math.abs(spanY / safe.h - ARENA_FILL) < 1e-9,
-        `${where}: the vent is ${((spanY / safe.h) * 100).toFixed(1)}% of the safe height, not ${ARENA_FILL * 100}%`,
-      );
-      // And the fit the condition is measured against is still the disc inside
-      // the ellipse, so `arenaR × scale` has to stay the SHORT semi-axis.
-      assert.equal(Math.min(aspect.x, aspect.y), 1, `${where}: the short semi-axis is no longer arenaR`);
-    }
+test("the board really is the screen — the number that answers the question", () => {
+  // The founder asked three times why the board is not the whole screen. This is
+  // the answer as a number, with a floor under it so it cannot quietly go
+  // backwards. For reference, the shape this replaces — an ellipse at 0.9 of each
+  // axis — covered `0.81 × π/4 = 63.6%`, the same on every screen.
+  const rows: string[] = [];
+  for (const f of fits()) {
+    const board = arenaBoard(TUNE.arenaStart, f.frame.aspect);
+    const s = f.frame.scale;
+    const covered = (4 * board.a * board.b - (4 - Math.PI) * board.r * board.r) * s * s;
+    const share = covered / (f.safe.w * f.safe.h);
+    rows.push(`  ${f.where.padEnd(46)} ${(share * 100).toFixed(1)}%`);
+    // Measured range at the ten frames below: 77.0% to 84.4%. What is NOT board is
+    // the host's own two buttons (7.5 points on a tall phone, 11.7 on the shortest
+    // safe box the fleet tests) and the rim's ink, and nothing else.
+    assert.ok(
+      share > 0.76,
+      `${f.where}: the board covers only ${(share * 100).toFixed(1)}% of the safe rectangle`,
+    );
+    // And it is genuinely flush on the axis the host's band does not eat: the
+    // board's half-width plus the rim's ink IS the safe box's half-width.
+    const widest = board.a * s * ZOOM_PEAK + f.frame.reach;
+    assert.ok(
+      Math.abs(widest - f.safe.w / 2) < 1e-4,
+      `${f.where}: the board's widest frame is ${(f.safe.w / 2 - widest).toFixed(4)}px short of the safe box`,
+    );
+  }
+  console.log(`\n  playfield share of the safe rectangle (was 63.6% everywhere):\n${rows.join("\n")}\n`);
+});
+
+test("the fitted frame is a fixed point, not an approximation of one", () => {
+  for (const f of fits()) {
+    assert.ok(
+      Math.abs(rimReach(f.frame.scale) - f.frame.reach) < 1e-6,
+      `${f.where}: the frame reserved ${f.frame.reach} and its own scale needs ${rimReach(f.frame.scale)}`,
+    );
+    assert.equal(Math.min(f.frame.aspect.x, f.frame.aspect.y), 1, `${f.where}: neither axis is the short one`);
+    // The band really is the host's, not a number somebody picked.
+    const deepest = Math.max(...chromeRects(f.vw, f.insets).map((c) => c.y + c.h));
+    assert.ok(
+      Math.abs(f.band - (deepest - f.safe.y)) < 1e-9,
+      `${f.where}: the reserved band is ${f.band} and the host's chrome ends at ${deepest - f.safe.y}`,
+    );
   }
 });
 
 test("the shape reaches the renderer and the run, and by no other route", () => {
   // Source-level for the same reason `prompt.test.ts` is: `createRenderer` needs a
-  // canvas and there is none in Node. Two half-done states this guards, and both
-  // compile clean and look almost right:
-  //
-  //   · `mount.ts` never tells the world its shape, so the simulation stays a
-  //     circle, the renderer draws that circle, and the whole change ships as a
-  //     4% larger disc that nobody asked for;
-  //   · the simulation is an ellipse and the renderer still strokes a circle, so
-  //     the drawn wall and the wall a child dies against are different curves.
+  // canvas and there is none in Node. Four half-done states this guards, and all
+  // four compile clean and look almost right — the world never told its shape, the
+  // renderer fitting its own frame, the host's band unreserved, or the shake left
+  // unclamped so the board slides off a screen it is now flush against.
   const here = dirname(new URL(import.meta.url).pathname);
   const mount = readFileSync(join(here, "mount.ts"), "utf8");
   assert.ok(
-    /setArenaAspect\(\s*world,\s*renderer\.view\.safe\.w,\s*renderer\.view\.safe\.h\s*\)/.test(mount),
-    "mount.ts no longer fits the vent to the measured safe box — the arena is a circle again",
+    /setArenaAspect\(\s*world,\s*renderer\.view\.aspect\s*\)/.test(mount),
+    "mount.ts no longer hands the fitted shape to the world — the board is a square again",
   );
 
   const scene = readFileSync(join(here, "render", "scene.ts"), "utf8");
   assert.ok(
-    scene.includes("arenaScale(safe.w, safe.h)"),
-    "scene.ts sizes the arena itself again — that expression is `arenaScale` now, and a second " +
-      "copy of it is how the renderer and the shape part company",
+    scene.includes("arenaFrame(safe.w, safe.h, band)"),
+    "scene.ts fits the board itself again — that is `arenaFrame` now, and a second copy of it " +
+      "is how the renderer and the shape part company",
+  );
+  // The whole expression, not just the call: a band that is measured and then
+  // scaled, offset or ignored on its way into the frame reserves the wrong number
+  // and reads as if it reserves the right one.
+  assert.ok(
+    scene.includes("const band = topChromeBand(w, safe.y, safe.h, insets);"),
+    "scene.ts no longer reserves the host's chrome band as it is measured — the rim runs " +
+      "under the buttons",
   );
   assert.ok(
-    scene.includes("w.arenaR * w.aspectX * S") && scene.includes("w.arenaR * w.aspectY * S"),
-    "scene.ts draws the arena off one radius again, so it is a circle inside an elliptical vent",
+    scene.includes("clamp(cam.shakeX, -SHAKE_HEADROOM, SHAKE_HEADROOM)") &&
+      scene.includes("clamp(cam.shakeY, -SHAKE_HEADROOM, SHAKE_HEADROOM)"),
+    "scene.ts applies the camera shake unclamped — the board is flush to the safe box now, so " +
+      "an unclamped shake carries a lethal rim off it",
   );
   assert.ok(
-    scene.includes("g.ellipse(X(0), Y(0), aX, aY, 0, 0, TAU)"),
-    "the arena's clip is not the arena's shape",
+    scene.includes("sampleRim(board, segs, rimX, rimY, rimNX, rimNY)"),
+    "scene.ts no longer strokes the rim off the shared walk, so the drawn wall and the wall a " +
+      "child hits are two different curves",
   );
-  assert.ok(
-    scene.includes("g.ellipse(cx, cy, aX, aY, 0, a0, a1)"),
-    "the rim a child steers against is still stroked as a circle",
-  );
+  assert.ok(scene.includes("g.clip()"), "the board's clip is gone — see the header of prompt.ts");
 });
 
 test("an absurd surface produces a shape, not a NaN", () => {
@@ -335,13 +514,15 @@ test("an absurd surface produces a shape, not a NaN", () => {
     [4000, 320],
     [200, 60],
   ] as const) {
-    const s = arenaScale(w, h);
-    const k = arenaAspect(w, h);
-    assert.ok(Number.isFinite(s) && s > 0, `${w}x${h}: the scale is ${s}`);
-    assert.ok(Number.isFinite(k.x) && Number.isFinite(k.y), `${w}x${h}: the aspect is NaN`);
-    assert.equal(Math.min(k.x, k.y), 1, `${w}x${h}: neither axis is the short one`);
-    assert.ok(Math.max(k.x, k.y) <= MAX_ARENA_ASPECT + 1e-12, `${w}x${h}: the aspect cap was passed`);
-    const e = rimEdge(TUNE.arenaFloor * k.x, TUNE.arenaFloor * k.y, 0, 0);
+    const band = topChromeBand(w, 0, h, NO_INSETS);
+    const f = arenaFrame(w, h, band);
+    assert.ok(Number.isFinite(f.scale) && f.scale > 0, `${w}x${h}: the scale is ${f.scale}`);
+    assert.ok(Number.isFinite(f.aspect.x) && Number.isFinite(f.aspect.y), `${w}x${h}: the aspect is NaN`);
+    assert.equal(Math.min(f.aspect.x, f.aspect.y), 1, `${w}x${h}: neither axis is the short one`);
+    const board = arenaBoard(TUNE.arenaFloor, f.aspect);
+    const e = rimEdge(board, 0, 0);
     assert.ok(Number.isFinite(e.gap) && Number.isFinite(e.nx), `${w}x${h}: the rim went NaN at the centre`);
+    const p = pullInside(board, 99, 99, TUNE.orbRadius * 2.2);
+    assert.ok(Number.isFinite(p.x) && Number.isFinite(p.y), `${w}x${h}: pullInside went NaN`);
   }
 });
