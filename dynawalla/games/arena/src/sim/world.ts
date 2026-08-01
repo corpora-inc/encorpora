@@ -477,6 +477,81 @@ export function viewSpanFor(mass: number): number {
 }
 
 /**
+ * The floor under APPARENT speed, in screen-heights per second.
+ *
+ * "when you get big the game seems to slow down. I'm not sure if it's the actual
+ *  framerate. It doesn't seem like it. It seems like maybe the scale of the world
+ *  just changes such that it feels like I'm moving extremely slowly."
+ *
+ * He is right, and it is neither the framerate nor a damping term. Measured, mid
+ * tier, a twenty-minute run at 0.7 accuracy:
+ *
+ *   t=5s    mass 36      world speed  526 u/s   0.030 ms/frame   1.025 screen-widths/s
+ *   t=60s   mass 1,095   world speed 1065 u/s   0.032 ms/frame   0.616
+ *   t=300s  mass 19,429  world speed 1905 u/s   0.039 ms/frame   0.299
+ *   t=1200s mass 47,301  world speed 2263 u/s   0.030 ms/frame   0.234
+ *
+ * The simulation cost does not move — it cannot, because the mote and rival
+ * budgets are hard caps (360 and 26) that do not grow with mass, and the field
+ * at twenty minutes carried FEWER motes than the field at five seconds. World
+ * speed does not fall either; it rises 4.7x. What falls is the ratio, because
+ * `viewSpanFor` widens 6.4x faster than speed rises. Apparent speed is a
+ * quantity nothing in this file owned, so it was whatever the two curves
+ * happened to leave behind: a 4.6x decay, running the wrong way round.
+ *
+ * So apparent speed becomes a DESIGNED quantity with a floor. Below the
+ * crossover — about mass 2,200, roughly the second minute — nothing changes at
+ * all, because the opening is not what he complained about. Above it, speed is
+ * whatever holds the view crossing at this rate, which is exactly half the
+ * opening's 0.483. Growing still slows you down; it can no longer slow you down
+ * without limit.
+ *
+ * The floor is stated in screen-heights because that is the unit `gfx` renders
+ * in. On a 1080x2340 the same number is 0.52 screen-WIDTHS per second.
+ */
+export const APPARENT_FLOOR = 0.24
+
+/**
+ * The speed curve as it has always been, extracted unchanged so that the player
+ * and every rival read it from one place.
+ *
+ * `base` is the speed a 28-unit body makes; 400 is the player's. `exp` is
+ * Agar's law — mass buys back only part of its speed. Nothing here is new; the
+ * apparent-speed floor is a multiplier ON this, applied by `speedScaleFor`.
+ */
+export function baseSpeedFor(mass: number, base = 400, exp = 0.42): number {
+  return base * Math.pow(Math.max(18, R_K * Math.sqrt(mass)) / 28, exp)
+}
+
+/**
+ * ONE multiplier on every travel speed in the arena, keyed to the CAMERA rather
+ * than to the body that is moving.
+ *
+ * The first attempt floored each body against its own view span, which looks
+ * equivalent and is not. `baseSpeedFor` is a 0.21 power of mass; a span floor is
+ * a 0.5 power of mass. Flooring per-body therefore makes speed far more
+ * sensitive to size than the curve ever was, and the sign of a chase flips: the
+ * largest legally edible rival (mass / 1.07) used to make 1.01x the player's
+ * speed and would have made 0.99x, which turns the one prize that cannot be
+ * caught into the one prize that always can. Measured, the hunting bot went from
+ * 13 kills and a peak of 2.8e5 to 42 kills and 1.5e9 — every kill compounds, so
+ * a small change in catchability is orders of magnitude in mass.
+ *
+ * A single scale cannot do that. Player:rival, rival:rival and leviathan:
+ * everything are all preserved exactly, because they are all multiplied by the
+ * same number. What changes is only the thing that was wrong — how much of the
+ * SCREEN a second of swimming buys.
+ */
+export function speedScaleFor(playerMass: number): number {
+  return Math.max(1, (viewSpanFor(playerMass) * APPARENT_FLOOR) / baseSpeedFor(playerMass))
+}
+
+/** The player's own travel speed, in world units per second. */
+export function traversalSpeedFor(playerMass: number): number {
+  return baseSpeedFor(playerMass) * speedScaleFor(playerMass)
+}
+
+/**
  * How many view-spans of world lie between the player and the membrane.
  *
  * "Why is there an edge of the board?" — because there was one, five seconds
@@ -1055,9 +1130,12 @@ export class World {
     // mass still costs agility, below, which is where "majestic" actually comes
     // from. Measured, with the wider opening view: 0.48 screen-heights per
     // second at the start (was 1.13) and 0.13 at mass 20,000 (was 0.12).
+    //
+    // That pass fixed the opening and left the far end alone; APPARENT_FLOOR is
+    // the far end. Everything below the crossover is still exactly the two
+    // numbers above.
   get playerSpeed(): number {
-    const r = this.playerRTrue
-    return 400 * Math.pow(Math.max(18, r) / 28, 0.42)
+    return traversalSpeedFor(this.mass)
   }
 
   /** The largest rival `k` may be before the world recycles it. */
@@ -1870,6 +1948,7 @@ export class World {
 
   private stepRivals(dt: number): void {
     const frame = (this.time * 60) | 0
+    const scale = speedScaleFor(this.mass)
     for (let i = 0; i < MAX_RIVALS; i++) {
       if ((this.rrespawn[i] as number) > 0) {
         this.rrespawn[i] = (this.rrespawn[i] as number) - dt
@@ -1924,8 +2003,12 @@ export class World {
       // did: at DRIFT's temper of 0.22 a rival makes 324 against the player's
       // 403, so early prey is genuinely catchable; at THE LAST LIGHT's 1.0 it
       // makes 410 and nothing is safe.
+      //
+      // Both ends move together at the far end too. `speedScaleFor` is keyed to
+      // the PLAYER's mass, not this rival's, precisely so that every ratio this
+      // comment is about survives the apparent-speed floor untouched.
       const base = lev ? 240 : 300 + temper * 110
-      let speed = base * Math.pow(Math.max(18, rr) / 28, lev ? 0.35 : 0.42)
+      let speed = baseSpeedFor(m, base, lev ? 0.35 : 0.42) * scale
 
       // Surging costs a rival mass exactly as it costs the player, so a long
       // chase genuinely wears the hunter down and the leaderboard churns.

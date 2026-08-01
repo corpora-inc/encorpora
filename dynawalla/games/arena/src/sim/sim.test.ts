@@ -1,6 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, DIFFICULTY_RUNGS, FLOOR_MASS, MK_FOOD, MK_VOID, MK_SHED } from "./world.ts"
+import { absorbGain, devourGain, radiusForValue, viewSpanFor, arenaRadiusFor, World, APPARENT_FLOOR, baseSpeedFor, speedScaleFor, traversalSpeedFor, DIFFICULTY_RUNGS, FLOOR_MASS, MK_FOOD, MK_VOID, MK_SHED } from "./world.ts"
 import { MAX_GUARD_SECONDS, comprehensionSeconds, guardSeconds } from "./window.ts"
 import { Rng } from "../core/rng.ts"
 import { DEPTHS, depthFor, overdrive } from "./depths.ts"
@@ -1595,6 +1595,148 @@ test("a child cannot find the edge of the world by swimming at it", () => {
     assert.ok(Number.isFinite(arenaRadiusFor(m)))
     assert.ok(arenaRadiusFor(m) > viewSpanFor(m) * 60, `the arena is only ${arenaRadiusFor(m) / viewSpanFor(m)} spans wide at mass ${m}`)
   }
+})
+
+/**
+ * "when you get big the game seems to slow down ... It seems like maybe the
+ *  scale of the world just changes such that it feels like I'm moving extremely
+ *  slowly ... it could stay a little faster feeling when floating around"
+ *
+ * He was right about the cause and it was worth measuring before touching
+ * anything, because two duller explanations had to die first.
+ *
+ *   * NOT the framerate. Mid tier, one seed, a twenty-minute run: the sim cost
+ *     0.030 ms a frame at mass 36 and 0.030 ms a frame at mass 47,301, with no
+ *     trend anywhere in between. It cannot move — the mote and rival budgets are
+ *     hard caps (360 and 26) that are not functions of mass, and the field at
+ *     twenty minutes carried 94 motes against the opening field's 83.
+ *   * NOT a damping term. There is no speed-versus-mass penalty in the sim at
+ *     all; world speed RISES with mass, 403 u/s to 2,456 u/s across that run.
+ *
+ * It was the third thing: `viewSpanFor` widened 6.4x while speed rose 4.7x, so
+ * the ratio — the only quantity a player can actually perceive — fell from 1.03
+ * screen-widths a second to 0.23. Nothing in the file owned that number, so it
+ * was whatever the two curves happened to leave behind.
+ *
+ * It is owned now, and this is the assertion on it. The property is a BAND, not
+ * a constant: growing must still slow you down, because that is where the sense
+ * of scale comes from. It may no longer slow you down without limit.
+ */
+test("apparent speed is a designed band, and the opening is not in it", () => {
+  const masses: number[] = []
+  for (let m = 10; m <= 1_000_000; m *= 1.3) masses.push(Math.round(m))
+
+  let lo = Infinity
+  let hi = 0
+  let loAt = 0
+  for (const m of masses) {
+    const apparent = traversalSpeedFor(m) / viewSpanFor(m)
+    if (apparent < lo) {
+      lo = apparent
+      loAt = m
+    }
+    hi = Math.max(hi, apparent)
+  }
+
+  // The floor is the whole fix: at a million mass the old curve crossed the
+  // glass at 0.037 screen-heights a second, which is the founder's "extremely
+  // slowly" and is 13x slower than the opening.
+  // The number is written out here rather than read from `APPARENT_FLOOR`, and
+  // that is not a style choice: the first cut of this test asserted against the
+  // constant, so setting the constant to zero — deleting the entire fix — moved
+  // the goalposts with it and the assertion passed. A design decision has to be
+  // pinned somewhere the code cannot reach.
+  assert.ok(
+    lo >= 0.24 - 1e-9,
+    `the slowest the arena ever feels is ${lo.toFixed(4)} screen-heights/s at mass ${loAt}, under the 0.24 floor the design chose`,
+  )
+  // …and the ceiling is the opening, untouched. A "fix" that made the whole
+  // game faster would pass the floor and fail the founder, who likes the
+  // opening: "Arena is pretty good."
+  assert.ok(hi <= 0.49, `the arena now peaks at ${hi.toFixed(4)} screen-heights/s; the opening was 0.4835`)
+  assert.ok(hi / lo <= 2.05, `apparent speed still swings ${(hi / lo).toFixed(2)}x across a run; it used to swing 13x`)
+
+  // Growing is still a real cost — this is a floor, not a flattening.
+  const openApparent = traversalSpeedFor(10) / viewSpanFor(10)
+  const grownApparent = traversalSpeedFor(1000) / viewSpanFor(1000)
+  assert.ok(
+    openApparent > grownApparent,
+    `growing to mass 1,000 cost nothing: ${openApparent.toFixed(4)} -> ${grownApparent.toFixed(4)} screen-heights/s`,
+  )
+
+  // Bigger is never slower in WORLD units. Agar's law lives on `agility`, and a
+  // floor that ran downhill anywhere would be a floor applied to the wrong term.
+  for (let i = 1; i < masses.length; i++) {
+    const a = traversalSpeedFor(masses[i - 1] as number)
+    const b = traversalSpeedFor(masses[i] as number)
+    assert.ok(b >= a, `speed fell from ${a.toFixed(1)} to ${b.toFixed(1)} between mass ${masses[i - 1]} and ${masses[i]}`)
+  }
+
+  // Below the crossover nothing changed at all, to the bit. The opening was
+  // tuned by hand and is not what he complained about.
+  for (const m of [10, 30, 100, 300, 1000, 2000]) {
+    assert.equal(speedScaleFor(m), 1, `the scale engaged at mass ${m}, inside the opening`)
+    assert.equal(traversalSpeedFor(m), baseSpeedFor(m), `travel speed moved at mass ${m}, inside the opening`)
+  }
+
+  assert.equal(APPARENT_FLOOR, 0.24, "the floor moved; if that was deliberate, the numbers in this file move with it")
+})
+
+/**
+ * The same property, measured off the simulation rather than off the formula.
+ *
+ * A test that only calls `traversalSpeedFor` is a test that passes with the fix
+ * deleted from `stepPlayer`, which is exactly the failure mode this file has
+ * shipped before. So this one swims: it pins a mass, points the core at a
+ * horizon five million units away, waits out the turn lag, and measures how much
+ * of the SCREEN the next two seconds actually bought.
+ */
+test("a child at any size crosses the glass at a rate the design chose", () => {
+  const swum = (mass: number, seed: number): number => {
+    const world = new World(createStubHost({ seed }), specFor("mid"), seed * 13)
+    world.mass = mass
+    world.bestMass = mass
+    world.massVis = mass
+    // Mass is re-pinned every frame: this measures travel, and a swallow or a
+    // sting mid-sample would be measuring the economy instead.
+    const aim = (): void => {
+      world.mass = mass
+      world.aimX = world.px + 5_000_000
+      world.aimY = world.py
+    }
+    for (let f = 0; f < 180; f++) {
+      aim()
+      world.step(1 / 60)
+    }
+    let travelled = 0
+    for (let f = 0; f < 120; f++) {
+      aim()
+      const x0 = world.px
+      const y0 = world.py
+      world.step(1 / 60)
+      travelled += Math.hypot(world.px - x0, world.py - y0)
+    }
+    return travelled / 2 / viewSpanFor(mass)
+  }
+
+  // Measured before this pass, same harness: 0.484 / 0.368 / 0.248 / 0.147 /
+  // 0.073 / 0.037. The last three are the complaint.
+  for (const seed of [3, 21]) {
+    for (const mass of [5_000, 20_000, 100_000, 400_000]) {
+      const apparent = swum(mass, seed)
+      // 0.228 is the 0.24 floor with 5% of slack for the turn lag and for
+      // Float32 position resolution out at the far coordinates. Written out,
+      // not read from the constant — see the note in the test above.
+      assert.ok(
+        apparent >= 0.228,
+        `at mass ${mass} a child actually swims ${apparent.toFixed(4)} screen-heights a second, under the 0.24 the design chose`,
+      )
+      assert.ok(apparent <= 0.49, `at mass ${mass} a child swims ${apparent.toFixed(4)} screen-heights a second — faster than the opening`)
+    }
+  }
+
+  // And the opening still swims at the number the previous pass tuned it to.
+  assert.ok(Math.abs(swum(10, 3) - 0.4835) < 0.01, `the opening now swims at ${swum(10, 3).toFixed(4)}, not 0.4835`)
 })
 
 /**
