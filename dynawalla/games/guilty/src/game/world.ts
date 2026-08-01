@@ -18,8 +18,8 @@ import { MAX_BULLETS, MAX_HUSKS, MAX_PARTICLES } from "../core/config.ts";
 import type { HudLayout } from "./hudLayout.ts";
 
 /*
- * The three enumerations below are frozen objects with a companion type rather
- * than `const enum`s.
+ * The three enumerations below are `as const` objects with a companion type
+ * rather than `const enum`s.
  *
  * `const enum` needs a compiler to erase it, and this package's tests run under
  * Node's strip-only TypeScript, which refuses one outright — so a `const enum`
@@ -27,6 +27,12 @@ import type { HudLayout } from "./hudLayout.ts";
  * `game.ts` is exactly that import graph, and the opening of this game is the
  * thing most worth a test. The values are unchanged and every `Mode.Dying`
  * still reads the same at every call site.
+ *
+ * **What is lost, honestly.** A `const enum` is nominal; these are structural,
+ * so `Mode` and `Phase` are both `0|1|2|3|4|5` to the checker and it would no
+ * longer object to `world.phase = Mode.Dying`. No call site crosses them today.
+ * They are also not `Object.freeze`d — `as const` is a compile-time promise, so
+ * `Mode.Dying = 9` is a type error and not a runtime one.
  */
 
 export const Mode = {
@@ -215,7 +221,28 @@ export type World = {
   focusT: number;
 
   question: Question | null;
+  /** Wall time the question was asked. Drives its entrance animation ONLY. */
   askedAt: number;
+
+  /**
+   * The only clock a child's answer is ever measured against.
+   *
+   * It advances when — and only when — the player could actually be acting on
+   * the question in front of them: the run is in a wave, the trench is armed,
+   * and no correction is being held. So the seconds spent looking at a
+   * motionless opening, and the seconds spent reading a completed sum, are
+   * billed to nobody.
+   *
+   * `world.time` cannot do this job: it drives every animation in the game and
+   * has to keep running through both. Measuring latency on it made a child who
+   * read carefully for thirty seconds and then answered in two look, to the
+   * host's ladder and to this game's own speed bonus, like the slowest answer
+   * in the session — which is the exact inversion of "speed is REWARDED, never
+   * enforced".
+   */
+  answerClock: number;
+  /** `answerClock` when the current question was asked. */
+  answeredFrom: number;
   firstWrong: string | null;
   resolved: boolean;
   perfectWave: boolean;

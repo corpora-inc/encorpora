@@ -119,6 +119,7 @@ function makeSurface(): {
   frame(ms?: number): TextOp[];
   said(needle: string): TextOp | undefined;
   key(k: string): void;
+  press(ms: number): void;
   /** Point the ship at a world x, and give it time to get there. */
   aim(worldX: number): void;
   canvas(): FakeEl | undefined;
@@ -289,6 +290,16 @@ function makeSurface(): {
     key(k: string): void {
       fireWindow("keydown", { key: k, repeat: false });
       fireWindow("keyup", { key: k });
+    },
+    /** A finger, down and up, held for `ms` and never moving. */
+    press(ms: number): void {
+      const c = canvas();
+      assert.ok(c, "the game mounted no canvas");
+      c.fire("pointerdown", { pointerId: 3, pointerType: "touch", clientX: WIDTH / 2, clientY: 500 });
+      clock += ms;
+      // On the WINDOW, which is where `attachInput` listens for a release — a
+      // finger that leaves the canvas mid-gesture still has to end it.
+      fireWindow("pointerup", { pointerId: 3 });
     },
     aim(worldX: number): void {
       // Screen x from world x, through the camera's own arithmetic: the focal
@@ -570,7 +581,10 @@ test("a shell that crosses the line is never reported as an answer", () => {
     // reading and flip the wave in the frame they looked up.
     const wave = r.handle.pacing().wave;
     for (let i = 0; i < 1250; i++) r.surface.step(16);
-    r.surface.key(" ");
+    // A LONG press, not a tap. Every hand on the glass means "I have read it"
+    // while the sum is up — a deliberate press that did nothing there would
+    // leave a child pressing a screen that is asking to be pressed.
+    r.surface.press(700);
     r.surface.frame();
     assert.equal(r.handle.pacing().revealed, false, "a tap did not take the correction down");
     assert.equal(r.handle.pacing().wave, wave, "the wave turned over in the frame the correction came down");
@@ -607,6 +621,97 @@ test("a right answer is still reported, and still clears the wave", () => {
     if (cleared) break;
   }
   assert.ok(cleared, "no lane in wave one could be answered correctly at all");
+});
+
+test("reading time is billed to nobody", () => {
+  // Speed is REWARDED, never enforced — so the reward has to be measured on
+  // time the child could actually have been answering in. `world.time` runs
+  // every animation in the game and cannot stop; it used to be what latency was
+  // measured on, so half a minute of looking at a motionless opening was
+  // reported to the ladder as half a minute of thinking, and `quickness()`
+  // scores anything past twelve seconds at zero. A child who read carefully and
+  // then answered at once came out looking like the slowest in the session.
+  let checked = false;
+  for (const lane of lanes()) {
+    const r = rig();
+    try {
+      begin(r);
+      // Half a minute of a child reading the sum before touching anything.
+      for (let i = 0; i < 1875; i++) r.surface.step(16);
+      r.surface.aim(lane);
+      r.surface.key(" ");
+      pumpUntil(r, () => r.reports.length > 0, 120);
+      const report = r.reports[0];
+      if (!report) continue;
+      assert.ok(
+        report.ms < 8000,
+        `${report.ms}ms was reported for an answer given seconds after a long look`,
+      );
+      assert.ok(report.ms > 0, "the answer clock never ran at all");
+      checked = true;
+    } finally {
+      r.stop();
+    }
+    if (checked) break;
+  }
+  assert.ok(checked, "no lane in wave one produced an answer to measure");
+});
+
+test("a run that ends on a wave nobody answered still shows the sum, then the ledger", () => {
+  // The compound of two new rules. `phaseT` is frozen while a correction is up,
+  // and the game-over screen fades in on `phaseT` — so a run whose LAST life
+  // goes to a wave that ran out used to reach a state where the ledger was
+  // painted at alpha zero over a stopped trench, forever, with the correction
+  // suppressed too. That is the most likely ending for exactly the child this
+  // change is for.
+  const r = rig();
+  try {
+    begin(r);
+    r.surface.aim(EMPTY_LANE);
+    r.surface.key(" ");
+
+    // Let wave after wave run out, dismissing each correction, until the run is
+    // over. Three lives and one second wind.
+    let guard = 0;
+    while (!r.handle.pacing().over && guard++ < 20) {
+      pumpUntil(r, () => r.handle.pacing().revealed || r.handle.pacing().over);
+      if (r.handle.pacing().over) break;
+      for (let i = 0; i < 40; i++) r.surface.step(16);
+      r.surface.key(" ");
+      r.surface.frame();
+    }
+    assert.equal(r.handle.pacing().over, true, "the run never ended");
+    assert.equal(r.reports.length, 0, "a run of waves nobody answered reported something");
+
+    // The sum stands, alone, and the ledger is not painted invisibly behind it.
+    assert.equal(r.handle.pacing().revealed, true, "the last wave taught nothing");
+    const held = r.surface.frame();
+    assert.ok(
+      held.some((op) => op.text.includes("=") && op.style === C.amber),
+      "no completed sum on the screen that ended the run",
+    );
+    assert.ok(
+      !held.some((op) => op.text.includes("THE TRENCH TAKES YOU")),
+      "the ledger was drawn behind the correction, where its fade-in cannot run",
+    );
+
+    // A hand takes it down; only then does the ledger arrive, and it is legible.
+    for (let i = 0; i < 40; i++) r.surface.step(16);
+    r.surface.key(" ");
+    assert.equal(r.handle.pacing().revealed, false, "the correction outlived the hand");
+    let ledger: TextOp[] = [];
+    for (let i = 0; i < 90; i++) ledger = r.surface.frame();
+    assert.ok(
+      ledger.some((op) => op.text.includes("THE TRENCH TAKES YOU")),
+      "the run ended and never said so",
+    );
+    assert.ok(
+      ledger.some((op) => op.text.includes("BEST")),
+      "the run ended and never showed the ledger",
+    );
+  } finally {
+    r.stop();
+  }
 });
 
 test("the gate is where the game says it is", () => {

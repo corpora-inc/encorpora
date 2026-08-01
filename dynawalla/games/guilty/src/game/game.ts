@@ -203,6 +203,8 @@ export function mount(
     focusT: 0,
     question: null,
     askedAt: 0,
+    answerClock: 0,
+    answeredFrom: 0,
     firstWrong: null,
     resolved: true,
     perfectWave: true,
@@ -287,6 +289,7 @@ export function mount(
     const q: Question = host.next();
     world.question = q;
     world.askedAt = world.time;
+    world.answeredFrom = world.answerClock;
     world.firstWrong = null;
     world.resolved = false;
 
@@ -382,7 +385,7 @@ export function mount(
     host.report({
       questionId: world.question.id,
       correct: clean,
-      ms: Math.round((world.time - world.askedAt) * 1000),
+      ms: Math.round((world.answerClock - world.answeredFrom) * 1000),
       answered: world.firstWrong ?? (correct ? world.question.answer : ""),
     });
   }
@@ -396,12 +399,22 @@ export function mount(
    * is not an answer, so it does not become one here: the item is closed, the
    * ladder never sees it, and it costs the run a life exactly as it always did.
    *
-   * There is no `skip` on this game's `Host`, so "not reported" is literal —
-   * the session simply does not advance for an item nobody attempted. That is
-   * the honest trade and it is bounded: a run has three lives and one second
-   * wind, so an idle player reaches the game-over screen rather than looping
-   * forever against a session that never moves. And with `armed` in front of
-   * it, a child who is only looking never reaches this path at all.
+   * **What was chosen, and what was not.** The runtime host does have a
+   * `skip(itemId)` — `packs/shared/game-host` exposes one, and it closes the
+   * item on the host's ledger without scoring it. This game's own `contract.ts`
+   * copy of `Host` has four methods and `skip` is not among them, and skip is
+   * not free either: it closes an item without advancing session progress,
+   * which is its own trap (it bit LATTICE and had to be reverted). So the
+   * choice here is silence rather than either lie: not `report`, because a
+   * timeout is not a wrong answer, and not `skip`, because widening this game's
+   * contract to reach for a call whose progress semantics are still a live
+   * problem elsewhere is not this change.
+   *
+   * The cost of silence is that the session does not advance for an item nobody
+   * attempted, and the item stays open in the host's `served` map. It is
+   * bounded: a run has three lives and one second wind, so an idle player
+   * reaches the game-over screen rather than looping forever. And with `armed`
+   * in front of it, a child who is only looking never reaches this path at all.
    */
   function abandonQuestion(): void {
     world.resolved = true;
@@ -451,7 +464,7 @@ export function mount(
 
   function onCorrect(h: Husk): void {
     resolveQuestion(true);
-    const seconds = world.time - world.askedAt;
+    const seconds = world.answerClock - world.answeredFrom;
     world.combo += 1;
     world.bestCombo = Math.max(world.bestCombo, world.combo);
     const speedBonus = Math.round(100 * clamp(1 - (seconds - 0.9) / 4, 0, 1));
@@ -853,6 +866,11 @@ export function mount(
     // line. A child who has just opened the game and is reading it is not on a
     // clock, and cannot lose anything by taking their time.
     if (playing && world.armed) {
+      // The one clock an answer is measured against, and it runs on exactly the
+      // condition the trench moves on: if the shells are not sinking, the child
+      // is not on the hook for the seconds. That covers both new stillnesses —
+      // the opening before the first shot, and the held correction.
+      world.answerClock += realDt;
       // The last stretch is the fastest: once the formation is in the gate's
       // shadow it dives. Every wave gets a heartbeat ending instead of a
       // constant slide, and the player feels the deadline without a timer.
@@ -1031,15 +1049,25 @@ export function mount(
     }
 
     if (world.phase === Phase.Title) drawTitle(world);
-    else if (world.phase === Phase.Over) drawGameOver(world);
-    else {
+    else if (world.phase === Phase.Over) {
+      // THE LEDGER WAITS BEHIND THE CORRECTION. `drawGameOver` fades in on
+      // `phaseT`, and `phaseT` is frozen while a reveal is up — so drawing it
+      // here would paint the score, the wave, the best run and TAP TO DIVE
+      // AGAIN at alpha zero, forever, over a trench that had also stopped. The
+      // most common way to reach this state is the one this whole change is
+      // for: a struggling child losing their last life to a wave that ran out.
+      // So the sum stands alone first, and the ledger arrives when a hand takes
+      // it down.
+      if (world.revealPrompt === null) drawGameOver(world);
+    } else {
       if (world.phase === Phase.SecondWind) drawSecondWind(world);
       drawHud(world);
-      // Last, over everything: the rule while the trench is still waiting, and
-      // the completed sum while it is stopped.
+      // The rule, while the trench is still waiting.
       if (!world.armed) drawReady(world);
-      drawReveal(world);
     }
+    // Last, over everything, in every phase: the completed sum while the trench
+    // is stopped.
+    drawReveal(world);
   }
 
   /* -------------------------------------------------------------- the loop */
@@ -1076,6 +1104,12 @@ export function mount(
   /** Returns true if this input actually began a run, so its owner can stop. */
   function begin(): boolean {
     void world.audio.resume();
+    // A correction outranks a new run. Losing the last life to a wave that ran
+    // out puts the sum up on the game-over screen, and the press that would
+    // otherwise restart has to take that down first — otherwise the one moment
+    // the lesson was most worth showing is also the one moment a reflex wipes
+    // it, along with the score the child never got to see.
+    if (world.revealPrompt !== null) return false;
     if (world.phase !== Phase.Title && world.phase !== Phase.Over) return false;
     for (const h of world.husks) h.active = false;
     for (const b of world.bullets) b.active = false;
@@ -1109,8 +1143,10 @@ export function mount(
    * first time, or fire.
    */
   function onFire(): void {
-    if (world.phase === Phase.Title || world.phase === Phase.Over) return;
+    // The correction first, and in EVERY phase — including `Over`, which is
+    // where a run that ended on an unanswered wave puts one.
     if (dismissReveal()) return;
+    if (world.phase === Phase.Title || world.phase === Phase.Over) return;
     if (world.paused) return;
     if (!tryFire(world)) return;
     // THE FIRST SHOT STARTS THE GAME. Not the tap that dismissed the title, not
@@ -1119,8 +1155,12 @@ export function mount(
   }
 
   function spendFocus(): void {
+    // A press on a held correction takes it down, whichever gesture the press
+    // turned out to be. Every hand on the glass means the same thing while the
+    // sum is up — "I have read it" — and a long press that did nothing there
+    // would leave a child pressing a screen that is asking to be pressed.
+    if (dismissReveal()) return;
     if (world.phase === Phase.Title || world.phase === Phase.Over) return;
-    if (world.revealPrompt !== null) return;
     if (world.focus < 1 || world.focusT > 0) return;
     world.focus = 0;
     world.focusT = FOCUS_DURATION;

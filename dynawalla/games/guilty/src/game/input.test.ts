@@ -305,6 +305,32 @@ test("the key that begins a run does not also answer its first question", () => 
   }
 });
 
+test("no still press does nothing at all", () => {
+  // There were two thresholds — a tap under 230ms, a hold at 430 — and a silent
+  // gap between them, which is exactly where an unhurried, deliberate press by
+  // a child who is not rushing lands. A press that does nothing on a screen
+  // asking to be pressed is the same confusion as a shot nobody asked for. Now
+  // there is one threshold and every still press means something.
+  for (const held of [0, 40, 120, 229, 230, 300, 380, 429, 430, 700, 2000]) {
+    const r = rig();
+    try {
+      const { handlers, calls } = counted(() => false);
+      const input = attachInput(r.canvas, fakeWorld(), handlers);
+      r.fire("pointerdown", down());
+      r.advance(held);
+      r.fire("pointerup", { pointerId: 1 });
+      assert.equal(
+        calls.onFire + calls.onFocus,
+        1,
+        `a still press of ${held}ms did ${calls.onFire + calls.onFocus} things`,
+      );
+      input.detach();
+    } finally {
+      r.restore();
+    }
+  }
+});
+
 test("a long still press is deep focus, and never also a shot", () => {
   const r = rig();
   try {

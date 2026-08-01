@@ -21,9 +21,15 @@
 import { screenToWorldX } from "../core/camera.ts";
 import type { World } from "./world.ts";
 
-/** Under this, a press is a tap and a tap is a shot. */
-const TAP_MS = 230;
-/** At or over this, a still press is a request for Deep Focus. */
+/**
+ * At or over this, a still press is a request for Deep Focus. Under it, a shot.
+ *
+ * ONE threshold, not two. It was a tap under 230 ms and a hold over 430, which
+ * left a silent dead zone in between — and a deliberate, unhurried press by a
+ * child who is not rushing lands squarely in it. A press that does nothing, on
+ * a screen that is asking to be tapped, is the same confusion as a shot nobody
+ * asked for.
+ */
 const HOLD_MS = 430;
 
 export type Input = {
@@ -116,8 +122,8 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
     // is a shot; a deliberate press is the slow-motion. Deep Focus resolves on
     // RELEASE rather than on a timer, so nothing in here needs a clock — and a
     // press that turns into a drag is steering and is neither.
-    if (held < TAP_MS) on.onFire();
-    else if (held >= HOLD_MS) on.onFocus();
+    if (held >= HOLD_MS) on.onFocus();
+    else on.onFire();
   };
 
   const keyDown = (e: KeyboardEvent): void => {
