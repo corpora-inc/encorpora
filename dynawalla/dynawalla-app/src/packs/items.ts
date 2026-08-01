@@ -240,54 +240,97 @@ const CHOICE_COUNT = 4
  * mind. Asymmetric because *easier than you can do* and *harder than you can do*
  * are not the same event: the first is a fluency rep, the second is a child stuck.
  *
- * **What the numbers are, and where they come from.** They are not taste. With
- * the constants below the kernel is
+ * ## What the numbers are, and why the upward reach was widened
  *
- * | offset | −3   | −2   | −1   | 0    | +1   | +2   |
- * |--------|------|------|------|------|------|------|
- * | weight | .125 | .25  | .5   | 1    | .25  | .0625|
- * | share  | 5.7% | 11.4%| 22.9%| 45.7%| 11.4%| 2.9% |
+ * The founder again, having watched a child play the shipped mix:
  *
- * so **14% of questions are above the rung the child is standing on** and 2.9%
- * are two above.
+ * > "the interlude problems stay extremely easy for a long time. Do we have the
+ * > concept of mixing in problems from the next higher level to measure the
+ * > person's performance there and add variety? ... maybe we need to mix in a
+ * > range and try people at a level higher just to see if they can do it ... when
+ * > the person starts the preponderance is on the easy side but there is some
+ * > probability that slightly harder stuff comes out even in the first few"
  *
- * **`ABOVE_RATIO` is fixed by the promotion gate, and this is the one number the
- * two mechanisms are not free to choose separately.** `PROMOTE_AT` is 0.95, so a
- * child has five points of head-room: to be allowed to climb they may miss no
- * more than a twentieth of what they are shown. Content two rungs above where
- * they are standing is the part of the mix a child at their own level plausibly
- * cannot do at all. If its share is *larger than the head-room*, then a child who
- * is right about literally everything else measures under 95% and **can never
- * promote again, at any level, forever.** That is not a tuning risk, it is a
- * deadlock, and the ratio this file shipped with was on the wrong side of it:
+ * The mix he was describing is the one this kernel used to make. Measured:
  *
- * | `ABOVE_RATIO` | above | two above | a child perfect except two-above | can climb? |
- * |---------------|-------|-----------|----------------------------------|------------|
- * | 0.35 (was)    | 20.1% | 5.2%      | 94.8%                            | **no**     |
- * | 0.28          | 16.0% | 3.5%      | 96.5%                            | yes        |
- * | 0.25 (is)     | 14.3% | 2.9%      | 97.1%                            | yes        |
- * | 0.20          | 11.3% | 1.9%      | 98.1%                            | yes        |
+ * | offset       | −3   | −2   | −1   | 0    | +1   | +2   |
+ * |--------------|------|------|------|------|------|------|
+ * | weight, was  | .125 | .25  | .5   | 1    | .25  | .0625|
+ * | share, was   | 5.7% | 11.4%| 22.9%| 45.7%| 11.4%| 2.9% |
+ * | weight, is   | .125 | .25  | .5   | 1    | .45  | .2025|
+ * | share, is    | 4.9% | 9.9% | 19.8%| 39.6%| 17.8%| 8.0% |
  *
- * 0.25 is the widest reach that clears the gate with better than a factor of one
- * and a half in hand (2.9% against 5%), which is the margin worth having because
- * "cannot do at all" is an idealisation and the real number moves.
+ * The rung immediately above went from **one question in nine to one in five and
+ * a half**, and the whole upward reach from 14.3% to 25.8%.
  *
- * Read the other way — against the accuracy a child plausibly has at each offset,
- * near everything below level, ~90% at level, ~60% one above, ~30% two above —
- * the mix measures **88.1% correct** for a child standing exactly at their own
- * level, against 85.4% at the old ratio. The founder's sitting band is 85–95%, so
- * the old mix put a child at their own level *on its floor* with nothing to
- * spare; this one puts them in the middle of it. See `PROMOTE_AT`.
+ * **Why it could not be widened before, and what changed.** `ABOVE_RATIO` used to
+ * be fixed by the promotion gate, and the argument was airtight *given how the
+ * gate read its evidence*. `PROMOTE_AT` is 0.95, so a child had five points of
+ * head-room; content two rungs above is the part of the mix a child at their own
+ * level plausibly cannot do at all; and the gate charged those draws against them.
+ * If the two-above share exceeded the head-room, a child right about literally
+ * everything else measured under 95% and **could never promote again, at any
+ * level, forever.** A deadlock, not a tuning risk — so the reach was pinned at
+ * whatever fitted under 5%.
+ *
+ * That constraint is gone, because the gate no longer reads the mixture. See
+ * `ladderBand`: the founder's 95/85/75 thresholds are now read off the answers
+ * drawn **at the rung the child is standing on**, and a draw above the centre is a
+ * *probe* — evidence about the rung above, which is what it was always for — and
+ * can never lower the promotion gate. There is therefore no share of two-above
+ * content that deadlocks anything, and the reach is free to be set by what makes
+ * it *informative* instead of by what makes it survivable.
+ *
+ * **What sets it now.** Three requirements, in the order they bind:
+ *
+ *   1. **The preponderance stays on the easy side** — his words. At or below the
+ *      centre is **74.2%** of the stream, comfortably over two thirds.
+ *   2. **Easier stays likelier than harder at every distance**, which is
+ *      `ABOVE_RATIO < BELOW_RATIO`. Being served a rung below your level is a
+ *      fluency rep; being served one above it is being stuck, and the two are not
+ *      the same event at the same distance.
+ *   3. **The probe has to arrive in time to be used.** This is the requirement
+ *      that actually binds, and it comes straight out of `ladderBand`: a rung is
+ *      read directly once there are `EVIDENCE_MIN` answers about it, and until
+ *      then the reading is *borrowed from the rungs below* — which is the one
+ *      reading that is systematically wrong in the permissive direction, because
+ *      everything below a child is easy. So the rung above has to have gathered
+ *      `EVIDENCE_MIN` answers by the time the child arrives on it, out of a memory
+ *      `ATTEMPT_LOG` questions long. Requiring it inside *half* the log — so the
+ *      evidence about the next rung is in the recent half of what is remembered
+ *      rather than at its stalest end — is
+ *      `share(+1) ≥ 2 × EVIDENCE_MIN / ATTEMPT_LOG` = **1 question in 6**.
+ *
+ * That is the whole of what the probe is for, and it is worth saying what it is
+ * *not* for, because it was built and measured and thrown away. A cap on the climb
+ * — "you may not climb past a rung the probe has measured you failing" — reads
+ * like the obvious companion to this and does nothing at all: by the time the
+ * probe has `EVIDENCE_MIN` answers in it the staircase has decayed to
+ * `STEP_TRACK`, an ascent is a fraction of a rung, and a cap of one rung never
+ * binds. Simulated over three learners at two paces, adding it and removing it
+ * produced identical output to the last digit. The evidence the probe gathers is
+ * spent by `ladderBand`, not by a second mechanism.
+ *
+ * 0.45 is the round number that clears (3) — 17.8% against 16.7% — while still
+ * clearing (2). 0.40 misses it, at 16.4%. 0.5 would satisfy (3) and break (2) by
+ * making one rung up exactly as likely as one rung down.
+ *
+ * **What it costs, said plainly.** Read against the accuracy a child plausibly has
+ * at each offset — near everything below level, ~90% at level, ~60% one above,
+ * ~30% two above — a child standing exactly at their own level now gets **82.6%**
+ * of the whole stream right, where before they got 88.1%. That is roughly one
+ * question in six rather than one in eight, and it is the price of the variety he
+ * asked for: "occasionally the person will be getting something too easy or too
+ * hard but it's fun for the variety". It is **not** charged against their level
+ * any more, which is the half of this change that makes the price payable.
  *
  * Two more properties it has to have, and does:
  *
  *   * **Consecutive questions differ.** The chance two draws land on the same
- *     rung is `Σ p²` = 29.1%, so about seven questions in ten move. Narrowing the
- *     upward reach concentrates the centre and pushes this number up — it was
- *     26.6% — which is why the reach is narrowed as far as the gate requires and
- *     no further.
- *   * **A rung the child cannot do is rare.** Two above is a thirty-fifth, three
- *     above is not served at all.
+ *     rung is `Σ p²` = **24.6%**, down from 29.1%: widening the reach spreads the
+ *     centre out rather than concentrating it, so three questions in four move.
+ *   * **A rung the child cannot do is uncommon, and present.** Two above is one
+ *     question in twelve; three above is not served at all.
  *
  * **Reflected at the ends, not clipped.** At the bottom of the ladder there is
  * nowhere below to go, and clipping would pile 78% of a beginner's questions
@@ -302,7 +345,7 @@ const CHOICE_COUNT = 4
 export const SPREAD_BELOW = 3
 export const SPREAD_ABOVE = 2
 export const BELOW_RATIO = 0.5
-export const ABOVE_RATIO = 0.25
+export const ABOVE_RATIO = 0.45
 
 /**
  * The weight of every rung on the ladder for a child standing on `centre`.
@@ -742,17 +785,16 @@ export function advanceStaircase(
 export type Band = "climb" | "sit" | "slip" | "lost"
 
 /**
- * The last `RECENT_WINDOW` answers, oldest first. Plain booleans rather than a
- * running count, because the accuracy has to be *re-read* as answers age out and a
- * counter that only ever increments cannot do that.
+ * A window of answers, oldest first. Plain booleans rather than a running count,
+ * because the accuracy has to be *re-read* as answers age out and a counter that
+ * only ever increments cannot do that.
+ *
+ * Never held as state. The ladder keeps an `Attempt` log and cuts a window out of
+ * it with `windowFor` on every reading, which is what makes "the last forty
+ * answers **at this rung**" a thing that can be asked for at all: a stored window
+ * would have to have been told in advance which question it was the answer to.
  */
 export type Recent = readonly boolean[]
-
-/** `recent` with one more answer on the end, and the oldest dropped if it is full. */
-export function noteRecent(recent: Recent, correct: boolean): Recent {
-  const kept = recent.length < RECENT_WINDOW ? recent : recent.slice(recent.length - RECENT_WINDOW + 1)
-  return [...kept, correct]
-}
 
 /**
  * The window's accuracy, or `null` when there is nothing in it.
@@ -779,6 +821,170 @@ export function bandOf(recent: Recent): Band {
   if (accuracy >= LOST_AT) return "slip"
   return "lost"
 }
+
+/**
+ * ## One answer, and which rung of the ladder it came from
+ *
+ * A `Recent` is a row of booleans, which is all the mixture-reading gate ever
+ * needed. It is not enough for the founder's next request:
+ *
+ * > "if they are getting ~95% level 1 and 70% level 2 ... we could concentrate on
+ * > 2 with occasional level 1 and level 3"
+ *
+ * "95% at level 1 and 70% at level 2" is two numbers, and a row of booleans over a
+ * mixed stream is one. So every answer now carries **the rung it was drawn from**,
+ * and the accuracy the ladder acts on is read at a chosen rung rather than over
+ * everything.
+ *
+ * **The rung and not the offset**, which is a distinction that cost a revision to
+ * find. Recording each answer's offset from wherever the child was standing at the
+ * time is the smaller change and it is wrong, because a window of "answers at
+ * offset 0" pools answers taken at rungs that are nothing like each other: an
+ * offset-0 window forty answers deep spans a hundred questions, and if the centre
+ * moved during those hundred questions it is reading yesterday's rung as though it
+ * were today's. Measured, with an offset-keyed window: a child who is 95% at rung
+ * 20 overshot to 23, read the resulting misses as evidence about wherever they
+ * currently stood, and was driven all the way to the floor and back in a cycle —
+ * the settled centre came out at **11.5**, worse than the mixture-reading gate it
+ * replaced. Keyed by rung, the same misses stay attached to rung 23, the reading
+ * changes the moment the centre steps off it, and the fall stops after one rung.
+ *
+ * A record rather than a bare boolean is also where the guess floor goes when
+ * issue 729 is picked up. A true/false pack is right half the time by tapping, so
+ * its answers are not comparable with a free-entry pack's on the same axis; the
+ * chance-corrected reading is `(p − g) / (1 − g)` for a floor `g`, and it has to be
+ * applied per answer because the floor is a property of *how the item was
+ * presented*, not of the child. That field is deliberately not added here — this
+ * change does not fix 729 — but the shape that can carry it is.
+ */
+export type Attempt = {
+  readonly correct: boolean
+  /** The index on the ladder this question was drawn from. */
+  readonly rung: number
+}
+
+/**
+ * How many answers the ladder remembers, across every offset.
+ *
+ * Longer than `RECENT_WINDOW`, because `RECENT_WINDOW` is the width of a *reading*
+ * and this is the pool a reading is taken from. The narrowest reading is the
+ * centre's, and the centre carries 39.6% of the stream (see `ABOVE_RATIO`), so the
+ * pool has to be about two and a half times the window for the centre's window to
+ * fill at all: `RECENT_WINDOW / 0.396` = 101. Three windows is that, rounded to a
+ * number a person can hold, and it leaves the reach's evidence — which by
+ * construction arrives inside half the pool — sitting in the recent half of it.
+ */
+export const ATTEMPT_LOG = 3 * RECENT_WINDOW
+
+/** `log` with one more answer on the end, and the oldest dropped if it is full. */
+export function noteAttempt(
+  log: readonly Attempt[],
+  attempt: Attempt,
+): readonly Attempt[] {
+  const kept = log.length < ATTEMPT_LOG ? log : log.slice(log.length - ATTEMPT_LOG + 1)
+  return [...kept, attempt]
+}
+
+/**
+ * The most recent `limit` answers drawn at a rung the predicate accepts, oldest
+ * first — a `Recent`, so every reading in this file goes through the same
+ * `bandOf` and the same `recentAccuracy`.
+ *
+ * Walked from the newest end so that a thin rung yields *recent* answers rather
+ * than however many happen to be in the pool. Nothing older than `ATTEMPT_LOG`
+ * questions can be returned at any rung, which is the property a per-rung counter
+ * could not have: a rung fed 5% of the stream would otherwise hold answers from
+ * eight hundred questions ago and read as gospel.
+ */
+export function windowFor(
+  log: readonly Attempt[],
+  matches: (rung: number) => boolean,
+  limit: number = RECENT_WINDOW,
+): Recent {
+  const bits: boolean[] = []
+  for (let i = log.length - 1; i >= 0 && bits.length < limit; i--) {
+    const attempt = log[i] as Attempt
+    if (matches(attempt.rung)) bits.push(attempt.correct)
+  }
+  return bits.reverse()
+}
+
+/**
+ * The fewest answers at one offset that can carry a decision about it.
+ *
+ * **Derived from the dead band.** In a window of `n`, one answer is worth `1/n` of
+ * the accuracy. If that is wider than the gap between `SIT_AT` and `PROMOTE_AT`
+ * then a single answer can carry a child across the whole dead band, and the
+ * reading is not a reading — it is the last answer wearing a denominator. So
+ * `n ≥ 1 / (PROMOTE_AT − SIT_AT)` = **10**.
+ *
+ * Rounded rather than ceilinged only because `0.95 − 0.85` in binary floats is
+ * 0.09999999999999998 and `Math.ceil` of its reciprocal is 11. `items.test.ts`
+ * re-derives the number from the two thresholds so an edit to either fails here.
+ */
+export const EVIDENCE_MIN = Math.round(1 / (PROMOTE_AT - SIT_AT))
+
+/**
+ * ## The founder's rule, read at the rung the child is standing on
+ *
+ * This is the change the whole file turns on. `bandOf` is unchanged and the three
+ * thresholds are unchanged; what changed is **which answers they are read over**.
+ *
+ * **What was wrong.** The gate read the mixture — every answer, wherever it came
+ * from. But the mixture deliberately contains content above the child, so a child
+ * who is *perfect at their own rung* still measures well under 95% overall, and
+ * the promotion gate is a gate they cannot open by being good at their level. Read
+ * off the old kernel and the plausible-accuracy model on `ABOVE_RATIO`, the
+ * mixture measures `0.469 + 0.457 × a` for a child whose own-rung accuracy is `a`,
+ * so `sit` — the band where nothing moves — covered **own-rung accuracy from 83%
+ * all the way to 100%**. A child who never once missed a question at their own
+ * level sat there for ever. That is the founder's report, arithmetically:
+ *
+ * > "the interlude problems stay extremely easy for a long time"
+ *
+ * Simulated against the real service before this change, a child who is 95%
+ * correct at rung 20 came to rest with their centre at **17.5** — two and a half
+ * rungs below their own level, on content they get right 99% of the time.
+ *
+ * **What it is now.** The accuracy is read at offset 0: the answers drawn at the
+ * rung the child is standing on. So the table on `PROMOTE_AT` means exactly what
+ * the founder said it means — *at your level* you climb above 95%, sit at 85–95%,
+ * and are in the wrong place under 75% — and the settled centre is the rung where
+ * the child sits in that band, rather than two rungs under it.
+ *
+ * **A widening reach downward, until there is enough to read.** A gate that waited
+ * for `EVIDENCE_MIN` answers at the centre rung before doing anything would be
+ * shut for the first twenty-five questions of a sitting, and shut again for
+ * twenty-five more every time the child moved — and a ladder that cannot move is a
+ * failure this file has shipped before. So the reading starts at the centre alone
+ * and, while it is thin, borrows from the rung below, then the one below that, out
+ * to `SPREAD_BELOW` — the width of the mix itself, so it can never borrow from a
+ * rung the child is not being served. Then anything at or below the centre at all.
+ *
+ * **It never borrows upward, at any tier.** An answer drawn above the centre
+ * cannot enter the promotion reading and cannot push a child down. That is the
+ * property that released `ABOVE_RATIO` from the deadlock argument, and it is the
+ * property that keeps a `lost` reading attached to the rung that produced it: a
+ * child who overshoots reads `lost` at the rung they overshot to, falls off it, and
+ * the very next reading is the rung below's — which is why the fall stops after one
+ * rung instead of running to the floor.
+ *
+ * The last resort is the whole log, which is the old mixture reading. It runs on
+ * the first answers of a session, where it is the only evidence there is, and for a
+ * pack that pins one `skillId` far above the child — where without it the ladder
+ * would freeze on the grounds that nothing has ever been served at or below where
+ * it stands.
+ */
+export function ladderBand(log: readonly Attempt[], centre: number): Band {
+  for (let radius = 0; radius <= SPREAD_BELOW; radius++) {
+    const near = windowFor(log, (rung) => rung <= centre && rung >= centre - radius)
+    if (near.length >= EVIDENCE_MIN) return bandOf(near)
+  }
+  const standing = windowFor(log, (rung) => rung <= centre)
+  if (standing.length > 0) return bandOf(standing)
+  return bandOf(windowFor(log, () => true))
+}
+
 
 export type Rung = {
   readonly node: SkillNode
@@ -1293,6 +1499,13 @@ type Served = {
   readonly choices: readonly ItemChoice[]
   /** Width of the widest operand as drawn. 0 when the prompt held no numerals. */
   readonly digits: number
+  /**
+   * Which rung of the ladder this question was drawn from. Recorded here rather
+   * than recomputed in `judge`, because by the time an answer arrives the ladder
+   * has usually moved and the spread has usually been re-drawn: the rung a
+   * question *was* drawn from is not the rung it *would be* drawn from now.
+   */
+  readonly rungIndex: number
   answered: boolean
 }
 
@@ -1414,14 +1627,15 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
    */
   let stair = openStaircase()
   /**
-   * The last `RECENT_WINDOW` answers, which is what decides the direction.
+   * The last `ATTEMPT_LOG` answers and the offsets they were drawn at, which is
+   * what decides the direction. See `ladderBand` for which of them a given
+   * decision is read over, and `Attempt` for why an offset is carried at all.
    *
    * Session-scoped for the same reason as `progress` and `stair`: it is evidence
-   * about a sitting, and a window carried across sittings would let a child who
-   * was fluent last night be demoted for warming up this morning. See
-   * `PROMOTE_AT`.
+   * about a sitting, and a log carried across sittings would let a child who was
+   * fluent last night be demoted for warming up this morning. See `PROMOTE_AT`.
    */
-  let recent: Recent = []
+  let log: readonly Attempt[] = []
   /**
    * Consecutive quick, correct answers. Reset by anything else — see
    * `QUICK_RUN_FOR_BONUS` for why a single one earns nothing.
@@ -1714,6 +1928,11 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         places,
         choices,
         digits: widestOperandDigits([top, bottom]),
+        // The rung that was actually used, whoever chose it — the spread, a
+        // pack's clamped `difficulty`, or a pinned `skillId`. What the child was
+        // asked is what the evidence is about, and there is no third party's
+        // opinion in this number.
+        rungIndex: used,
         answered: false,
       })
       practised.add(rung.node.id)
@@ -1781,10 +2000,12 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
       if (!served.answered) {
         served.answered = true
         deps.record({ packId, correct: verdict.correct })
-        // The ladder moves on the last `RECENT_WINDOW` answers, not on this one.
-        // `bandOf` is the founder's rule — climb only while sustaining 95%, sit at
-        // 85%, leave decisively under 75% — and `PROMOTE_AT` carries the whole
-        // argument for why a single answer is not evidence about a level.
+        // The ladder moves on the last `RECENT_WINDOW` answers *at the rung the
+        // child is standing on*, not on this one and not on the mixture.
+        // `ladderBand` is the founder's rule — climb only while sustaining 95%,
+        // sit at 85%, leave decisively under 75% — read where he meant it to be
+        // read, and `PROMOTE_AT` carries the whole argument for why a single
+        // answer is not evidence about a level.
         //
         // Up needs two things and down needs one: a climb needs both a correct
         // answer and a window that says this child is over the level, while a fall
@@ -1793,8 +2014,9 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         // it. How *far* is still the stride times what the answer was worth — see
         // `STEP_START` for why the stride opens wide and shrinks, and
         // `DESCENT_FAR` for the two descent weights.
-        recent = noteRecent(recent, verdict.correct)
-        const band = bandOf(recent)
+        log = noteAttempt(log, { correct: verdict.correct, rung: served.rungIndex })
+        const centre = Math.floor(progress)
+        const band = ladderBand(log, centre)
         if (verdict.correct) {
           const gain = climbFor(served, latencyMs)
           if (band === "climb") {
