@@ -51,7 +51,7 @@ const games = readdirSync(GAMES).filter((g) => statSync(join(GAMES, g)).isDirect
 
 describe("every game routes its output through the safety bus", () => {
   it("finds the games at all — a stale path here would pass on nothing", () => {
-    assert.ok(games.length >= 26, `only ${games.length} game directories found under ${GAMES}`)
+    assert.ok(games.length >= 25, `only ${games.length} game directories found under ${GAMES}`)
   })
 
   for (const game of games) {

@@ -96,7 +96,6 @@ const MOTIF_BY_PACK: Readonly<Record<string, MotifKey>> = {
   "dynawalla.skyledger": "astrolabe",
   "dynawalla.slice": "split",
   "dynawalla.stack": "slabs",
-  "dynawalla.street": "street",
   "dynawalla.trebuchet": "trebuchet",
   "dynawalla.truedraw": "slate",
 }

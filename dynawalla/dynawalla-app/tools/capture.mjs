@@ -72,7 +72,7 @@
    refuses to invent packs when there is no Tauri runtime, which is the honest
    answer and the right one. Rather than mock the *screen*, this seeds the
    layer underneath it — a shim for `window.__TAURI_INTERNALS__` that answers
-   `packs_list` with the REAL `pack.json` of all 26 games in `dynawalla/games/`.
+   `packs_list` with the REAL `pack.json` of all 25 games in `dynawalla/games/`.
    The app then takes its own native path: the same manifest parse, the same
    run gate, the same localisation, the same registry mirror. Names, blurbs,
    skills and grade bands on the captured cards are the shipped ones.
