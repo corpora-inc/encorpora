@@ -7,7 +7,7 @@
  * any given moment … so we are in a certain maqam in a certain root note, then
  * the little sound effects play a nice little song."*
  *
- * Six files, and no Web Audio in any of them:
+ * Seven files, and no Web Audio in any of them:
  *
  *   `pitch`      cents, and the two conversions everything is built from.
  *   `modes`      38 modes — Western, Hindustani thaats, Arabic maqamat —
@@ -15,6 +15,8 @@
  *   `rng`        a seeded stream, so "random" is a thing a test can assert.
  *   `soundscape` mode + root + seed + tension, small enough to sit on the wire.
  *   `melody`     the walker: gestures in, in-tune voices out.
+ *   `groove`     the same soundscape read as TIME: a probability matrix over
+ *                the bar, whose two inputs are the mode and the density.
  *   `host`       the soundscape the app is in, published by the host.
  *
  * Usage, in a game:
@@ -31,6 +33,17 @@
  * every sound in the pack in tune with the drone and with every other pack.
  */
 export { CENTS_PER_OCTAVE, centsBetween, centsToRatio, foldIntoRange, hz } from "./pitch.ts"
+export {
+  MIN_AFFINITY,
+  divOfBeat,
+  expectedNotes,
+  grooveMatrix,
+  grooveSlotBeats,
+  metreWeight,
+  modeAffinity,
+  type GrooveSlot,
+  type GrooveSpec,
+} from "./groove.ts"
 export { MODES, MODE_IDS, modeById, type Mode, type ModeFamily } from "./modes.ts"
 export { Rng } from "./rng.ts"
 export {

@@ -33,10 +33,17 @@ import {
   PENTATONIC,
   type LayerId,
 } from "../audio/music.ts";
-import { barNotes, BEATS_PER_BAR, laneVoices, type ChartNote } from "./chart.ts";
+import {
+  barNotes,
+  BEATS_PER_BAR,
+  chartContext,
+  laneVoices,
+  type ChartContext,
+  type ChartNote,
+} from "./chart.ts";
 import { buildGate, type BuiltGate, type GateFit } from "./gate.ts";
 import { classify, multiplierFor, NoteQueue, WINDOWS, type Judgment, type LiveNote } from "./judge.ts";
-import { gatesToClear, stageAt, type StageSpec } from "./stages.ts";
+import { gatesToClear, readyForMoreLanes, stageAt, type StageSpec } from "./stages.ts";
 import { makeRng, hashSeed, type Rng } from "../rng.ts";
 
 export type GateOutcome = "correct" | "wrong" | "expired";
@@ -149,6 +156,11 @@ export class Run {
   private readonly fx: Fx;
   private readonly rng: Rng;
   readonly seed: string;
+  /**
+   * The seed and the app's key, resolved once. The key must not move under a
+   * child mid-phrase, so it is read at construction and never again.
+   */
+  readonly chart: ChartContext;
 
   stageIndex = 0;
   stage: StageSpec = stageAt(0);
@@ -189,8 +201,9 @@ export class Run {
   constructor(o: RunOptions) {
     this.host = o.host;
     this.fx = o.fx;
-    this.seed = o.seed ?? `pulse-${Date.now().toString(36)}`;
+    this.seed = o.seed ?? `pulse-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
     this.rng = makeRng(hashSeed(this.seed));
+    this.chart = chartContext(this.seed);
     this.calibrationMs = o.calibrationMs ?? 0;
     this.onCalibrationChange = o.onCalibrationChange;
     if (o.startStage) {
@@ -309,7 +322,8 @@ export class Run {
     if (
       bar > 0 &&
       bar - this.stageStartBar >= this.stage.bars &&
-      this.stageGatesCorrect >= gatesToClear(this.stage)
+      this.stageGatesCorrect >= gatesToClear(this.stage) &&
+      this.mayTakeNextStage()
     ) {
       this.setStage(this.stageIndex + 1, beat0);
     }
@@ -345,7 +359,7 @@ export class Run {
     }
 
     // --- Player notes.
-    for (const n of barNotes(this.stage, this.seed, bar)) {
+    for (const n of barNotes(this.stage, this.chart, bar)) {
       const beat = beat0 + n.beatInBar;
       this.notes.add({
         time: this.timeline.timeAt(beat),
@@ -454,6 +468,26 @@ export class Run {
         Math.min(this.viewportFit.maxCandidates, candidatesForStage(this.stageIndex)),
       ),
     };
+  }
+
+  /**
+   * A wider stage is a third hand, and it is bought rather than waited out.
+   *
+   * A stage that is no wider than the one being played passes on its gates
+   * alone, unchanged. A stage that adds a lane also asks whether the run is
+   * currently keeping the two it has — `readyForMoreLanes` — and a run that is
+   * not simply plays the same stage again. Nothing here reads a clock, and
+   * nothing here is a failure state: the bars come round, more gates come with
+   * them, and the child carries on.
+   */
+  mayTakeNextStage(): boolean {
+    const next = stageAt(this.stageIndex + 1);
+    if (next.lanes <= this.stage.lanes) return true;
+    return readyForMoreLanes({
+      accuracy: this.accuracy(),
+      stageGatesCorrect: this.stageGatesCorrect,
+      gatesToClear: gatesToClear(this.stage),
+    });
   }
 
   private setStage(index: number, atBeat: number): void {

@@ -169,7 +169,12 @@ test("a strike aimed at the drawn line is judged there, on a coarse clock", () =
   run.start();
 
   const struck = new Set<number>();
-  for (let frame = 0; frame < 60 * 60; frame++) {
+  // Three minutes rather than one. The chart is generated from a density that now
+  // starts genuinely sparse — about 0.7 notes a second in the opening stage
+  // against the old saturated 1.5 — so a minute of play no longer carries
+  // enough strikes for the timing spread below to mean anything. The sample
+  // size is what this test needs; the play rate is not what it is measuring.
+  for (let frame = 0; frame < 180 * 60; frame++) {
     ctx.advance(FRAME_SEC);
     nowClock.advance(FRAME_SEC * 1000);
     run.update();
