@@ -8,6 +8,24 @@ Nine agents read the source of three games each; a tenth synthesised. Every numb
 below came from a constant in the source, not from playing — see **Honest limits**
 at the foot, which matters more than any single finding here.
 
+> **Three of the twenty-seven have since been retired from the fleet**, and this
+> document is left at twenty-seven on purpose: it is a dated measurement, not a
+> roster. Everything it says about those three was true when it was measured and
+> is still readable at the commit before each removal.
+>
+> | pack | retired in | last commit that still contains it |
+> |---|---|---|
+> | `foundry` (THE GRAPPLE FOUNDRY) | #749 | `ccb79ece0dde16754de5d93d6fccf7f2ba4555c6^` |
+> | `gavel` (THE GAVEL) | #749 | `ccb79ece0dde16754de5d93d6fccf7f2ba4555c6^` |
+> | `street` (FOUNDRY STREET) | this PR | `c499f9043c2f7205c0e61c9d7832c13d22cbd9fb^` |
+>
+> `git checkout <sha>^ -- dynawalla/games/<pack>` restores any of them whole.
+>
+> **A rule does not stop being true because the pack that demonstrated it was
+> shelved.** `street` is cited below as the reference implementation for the one
+> finding this audit cared about most, and that citation stands: the shape it
+> shows is the shape to copy, and the file it lives in is one command away.
+
 ## Why pace is not a comfort preference
 
 Mental arithmetic runs in working memory. So does precise motor control under time
@@ -125,10 +143,14 @@ wrong answer will actively punish competence while these exist.
 | `street` | about right | — | yes | Nothing in FOUNDRY STREET is on a clock — the two input phases have duration 0 and `advance` returns early on them, so the only stake is an error budget of six, and it is spent by being wrong, never by being slow. |
 ## The reference implementations — copy these, do not reinvent
 
-- **`street`** — the purest and cheapest to copy. `durationOf()` returns 0 for both
+- **`street`** — *retired from the fleet (see the note at the top); still the reference.*
+  The purest and cheapest to copy. `durationOf()` returns 0 for both
   input phases and `advance()` returns early on them, so elapsed time *literally cannot
   accumulate while the child is thinking*. Its comment says it: **"a child who is
-  thinking must never be losing."**
+  thinking must never be losing."** The pack was shelved for being unfun, which is a
+  judgement about juice, sound and legibility and says nothing about this: read it at
+  `git show c499f9043c2f7205c0e61c9d7832c13d22cbd9fb^:dynawalla/games/street/src/game/street.ts`.
+  If a live example is wanted instead, `colossus` and `siege` below are both shipping.
 - **`colossus`** — the reference for *proving* pacing rather than asserting it.
   `antimash.test.ts` plays one seed at 8000 ms/strike and at 200 ms/strike and requires
   byte-identical height, tally and reported answers. Also the best failure shape in the

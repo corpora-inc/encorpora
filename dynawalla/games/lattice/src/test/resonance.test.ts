@@ -72,7 +72,11 @@ test("a composite tile never opens anything, even when the product is right", ()
 })
 
 test("a prime target is a wall: nothing smaller assembles it", () => {
-  // The same property `foundry street` relies on, asserted the hard way. For
+  // The same property `foundry street` relied on, asserted the hard way. That
+  // pack has since been shelved — `git checkout
+  // c499f9043c2f7205c0e61c9d7832c13d22cbd9fb^ -- dynawalla/games/street` brings
+  // it back — but primeness did not stop being a wall when the pack left, and
+  // this test is the assertion, not the citation. For
   // every prime target under 200, every multiset of *strictly smaller* primes —
   // exhaustively, to eight tiles — fails to reach it. The only bank that opens
   // a prime is the single mote carrying it, which has to be found on the field

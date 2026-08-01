@@ -58,7 +58,10 @@ it. The game never decides whether an answer was right.
 **Primeness is a wall.** When the answer is prime, no amount of sweeping smaller
 numbers reaches it: the only hold that opens a prime `p` is the single mote `p`,
 which has to be found drifting on the field. It is the same property `foundry
-street` relies on, and it is asserted exhaustively in `resonance.test.ts`.
+street` relied on — that pack has since been shelved, recoverable at
+`c499f9043c2f7205c0e61c9d7832c13d22cbd9fb^` — and it is asserted exhaustively
+here in `resonance.test.ts`, which is why THE LATTICE does not depend on
+anything outside itself for it.
 
 ---
 

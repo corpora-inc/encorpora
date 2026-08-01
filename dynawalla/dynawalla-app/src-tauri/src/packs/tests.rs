@@ -656,31 +656,39 @@ fn a_pack_that_is_no_longer_bundled_stays_installed_and_playable() {
     // catalogue. A sync that deleted whatever it did not ship would uninstall
     // every downloaded pack on every launch. The absence of a prune is the
     // design, not an omission, which is why it is pinned here.
+    //
+    // Three packs have been retired this way — `foundry` and `gavel` in PR 749,
+    // `street` (FOUNDRY STREET) after them — so the fixture carries two at once:
+    // a retirement is not a one-off migration to be special-cased, it is a thing
+    // that keeps happening, and each one has to be as uneventful as the last.
     let root = scratch("retired-root");
     let source = scratch("retired-source");
 
-    // On the device already: one pack this build still ships, and one it does not.
+    // On the device already: one pack this build still ships, and two it does not.
     pack_dir(&root, "abacus", "0.1.0", &"a".repeat(64));
     let retired = pack_dir(&root, "gavel", "0.1.0", &"b".repeat(64));
+    let shelved = pack_dir(&root, "street", "0.1.0", &"d".repeat(64));
 
     // In the new build: only the survivor.
     pack_dir(&source, "abacus", "0.2.0", &"c".repeat(64));
 
     sync_from_directory(&source, &root);
 
-    assert!(
-        retired.join("manifest.json").exists(),
-        "a retired pack was uninstalled from under a child"
-    );
-    assert!(
-        retired.join("pack.html").exists(),
-        "a retired pack lost the document it launches"
-    );
-    assert_eq!(
-        fs::read_to_string(retired.join("manifest.json")).expect("manifest"),
-        manifest_json("gavel", "0.1.0", Some(&"b".repeat(64))),
-        "a retired pack's manifest was rewritten",
-    );
+    for (dir, id, digest) in [(&retired, "gavel", "b"), (&shelved, "street", "d")] {
+        assert!(
+            dir.join("manifest.json").exists(),
+            "{id} was uninstalled from under a child"
+        );
+        assert!(
+            dir.join("pack.html").exists(),
+            "{id} lost the document it launches"
+        );
+        assert_eq!(
+            fs::read_to_string(dir.join("manifest.json")).expect("manifest"),
+            manifest_json(id, "0.1.0", Some(&digest.repeat(64))),
+            "{id}'s manifest was rewritten",
+        );
+    }
     // The survivor is still upgraded in the same pass — proving the sync ran at
     // all, so the assertions above are not passing on a no-op.
     assert_eq!(
