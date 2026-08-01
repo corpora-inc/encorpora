@@ -4,6 +4,7 @@
  */
 import type { Card } from "../game/loadout.ts"
 import type { Question } from "../contract.ts"
+import { applyCardVars } from "./cards.ts"
 import { applyChromeVars, watchChromeVars } from "./layout.ts"
 import { shuffleWithAnswer } from "./shuffle.ts"
 
@@ -56,6 +57,9 @@ export class Overlay {
   private soundBtn: HTMLButtonElement
   private pauseBtn: HTMLButtonElement
   private unwatch: () => void = () => {}
+  /** How many cards are on screen, so a rotation can re-cut them to fit. */
+  private dealt = 3
+  private sealedDealt = false
 
   onPickCard: (i: number) => void = () => {}
   onSealed: (r: SealedResult) => void = () => {}
@@ -80,6 +84,7 @@ export class Overlay {
     // arrives through `safeInsets()`; `watchChromeVars` keeps it current
     // through a rotation.
     applyChromeVars(root)
+    applyCardVars(root, 3, false)
     this.unwatch = watchChromeVars(root)
 
     const hud = h("div", "hz-hud")
@@ -125,7 +130,10 @@ export class Overlay {
     hud.append(xp, top, life, this.weps, this.banner, this.subBanner, this.fps, corner)
 
     /* ---- level-up ---- */
-    this.cardModal = h("div", "hz-modal")
+    // `hz-picks` is what carries the host-chrome clearance and the computed
+    // lettering. The other three panels are short and narrow and keep the
+    // design's own sizes — see `style.css`.
+    this.cardModal = h("div", "hz-modal hz-picks")
     this.cardTitle = h("div", "hz-title", "CHOOSE")
     this.cardRow = h("div", "hz-cards")
     this.cardModal.append(this.cardTitle, this.cardRow)
@@ -240,6 +248,12 @@ export class Overlay {
   showCards(cards: Card[], sealed: Question | null, level: number): void {
     this.cardTitle.textContent = `LEVEL ${level}`
     this.cardRow.textContent = ""
+    // How tall a card may be depends on how many are being dealt and on the
+    // band the host's chrome leaves behind, so the sizes are worked out here
+    // and not by the stylesheet. Kept for the rotation: see `relayout`.
+    this.dealt = cards.length + (sealed ? 1 : 0)
+    this.sealedDealt = sealed !== null
+    applyCardVars(this.root, this.dealt, this.sealedDealt)
 
     cards.forEach((c, i) => {
       const el = h("button", `hz-card hz-card-r${c.rarity}`)
@@ -298,6 +312,18 @@ export class Overlay {
 
   hideCards(): void {
     this.cardModal.classList.remove("hz-open")
+  }
+
+  /**
+   * Re-cut the cards to the frame.
+   *
+   * A phone turned on its side while the panel is open has a different band to
+   * put the cards in — shorter, and side by side rather than stacked — and a
+   * card sized for the old one is either clipped or lost. `game.ts` calls this
+   * from the same `ResizeObserver` that resizes the canvas.
+   */
+  relayout(): void {
+    applyCardVars(this.root, this.dealt, this.sealedDealt)
   }
 
   /* ---------------------------------------------------------------- rift */

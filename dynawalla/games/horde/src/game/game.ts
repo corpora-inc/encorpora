@@ -27,6 +27,7 @@ import {
   type Build, type Card,
 } from "./loadout.ts"
 import { Curriculum } from "./curriculum.ts"
+import { LevelUps } from "./levelup.ts"
 import { ORB_RADIUS, type Orb, advance as advanceOrbs, place as placeOrbs, reached } from "./orbs.ts"
 import { Bullets, Enemies, Gems, Grid, Numbers, Particles, Shocks } from "./world.ts"
 import { Overlay } from "../ui/overlay.ts"
@@ -94,6 +95,11 @@ export class Game {
   private revives = 0
   private hurtCd = 0
   private levelUps = 0
+  /**
+   * Levels earned but not yet spent on a panel of cards. A level earned inside
+   * a CORE waits for the question to finish instead of killing it.
+   */
+  private levels = new LevelUps()
   /**
    * Every question this run: which one to ask next, and what the host is told
    * about it. Escalation lives in here and it reads right answers, not the
@@ -310,6 +316,9 @@ export class Game {
     const h = Math.max(200, rect.height || window.innerHeight)
     const dpr = Math.min(window.devicePixelRatio || 1, this.T.maxDpr)
     this.r.resize(w, h, dpr * this.T.renderScale)
+    // The level-up cards are cut to the frame they are dealt into; a rotation
+    // is a different frame. See `ui/cards.ts`.
+    this.ui.relayout()
     const aspect = w / h
     this.halfW = AREA * Math.sqrt(aspect)
     this.halfH = AREA / Math.sqrt(aspect)
@@ -340,6 +349,7 @@ export class Game {
     this.overcharge = 0
     this.revives = 0
     this.levelUps = 0
+    this.levels.clear()
     this.curriculum.reset()
     this.bestMs = 0
     this.spawnAcc = 0
@@ -436,6 +446,11 @@ export class Game {
 
     if (this.mode === "rift" && !reading) this.riftTick(frame)
     this.desat += ((this.mode === "rift" ? 0.85 : 0) - this.desat) * Math.min(1, frame * 6)
+
+    // A level earned inside a CORE, a RIFT or another panel of cards opens here
+    // — on the first frame the game is back in ordinary play — and never in the
+    // middle of the step that earned it. See `levelup.ts`.
+    if (!reading && this.levels.take(this.mode)) this.levelUp()
 
     this.draw(frame)
   }
@@ -1257,7 +1272,12 @@ export class Game {
       this.xp -= this.xpNeed
       this.level++
       this.xpNeed = xpForLevel(this.level)
-      this.levelUp()
+      // Banked, not opened. A gem collected inside a CORE used to take the
+      // screen mid-question and leave the ring of orbs dead for the rest of the
+      // run; two levels from one gem used to overwrite the first three cards
+      // before they were touched. See `levelup.ts`.
+      this.levels.earned()
+      this.ui.setLevel(this.level)
     }
     this.ui.setXp(this.xp / this.xpNeed)
     this.ui.setKills(this.kills)
@@ -1540,6 +1560,13 @@ export class Game {
 
   /* -------------------------------------------------------------- level up */
 
+  /**
+   * Open the cards for one banked level.
+   *
+   * Called from the frame loop and from nowhere else — never from inside the
+   * physics step, where it used to interrupt a live question. `levelup.ts` says
+   * why at length.
+   */
   private levelUp(): void {
     this.levelUps++
     this.ui.setLevel(this.level)
@@ -1587,7 +1614,13 @@ export class Game {
       this.feel.flash(1, 0.88, 0.5, 0.28, 3.6)
       this.feel.punch(0.5)
       this.feel.shake(0.4)
+      // Tagged with the panel it belongs to. A child who opens the cache and
+      // then picks an upgrade inside this beat is already back in play, and a
+      // banked level may have opened the NEXT panel by the time this fires —
+      // which this would then close without a card being taken.
+      const panel = this.levelUps
       window.setTimeout(() => {
+        if (this.levelUps !== panel || this.mode !== "levelup") return
         this.ui.hideCards()
         this.ui.say(reward.title, `${reward.tag} — SEALED CACHE`, "#ffd166")
         this.syncHud()
