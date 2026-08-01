@@ -17,15 +17,34 @@ import type { Rng } from "../math/rng.ts";
 import { MAX_BULLETS, MAX_HUSKS, MAX_PARTICLES } from "../core/config.ts";
 import type { HudLayout } from "./hudLayout.ts";
 
-export const enum Mode {
-  Entering = 0,
-  Formation = 1,
-  Hostile = 2,
-  Dying = 3,
-  Orbit = 4,
+/*
+ * The three enumerations below are `as const` objects with a companion type
+ * rather than `const enum`s.
+ *
+ * `const enum` needs a compiler to erase it, and this package's tests run under
+ * Node's strip-only TypeScript, which refuses one outright — so a `const enum`
+ * anywhere in the import graph makes the game itself untestable in process.
+ * `game.ts` is exactly that import graph, and the opening of this game is the
+ * thing most worth a test. The values are unchanged and every `Mode.Dying`
+ * still reads the same at every call site.
+ *
+ * **What is lost, honestly.** A `const enum` is nominal; these are structural,
+ * so `Mode` and `Phase` are both `0|1|2|3|4|5` to the checker and it would no
+ * longer object to `world.phase = Mode.Dying`. No call site crosses them today.
+ * They are also not `Object.freeze`d — `as const` is a compile-time promise, so
+ * `Mode.Dying = 9` is a type error and not a runtime one.
+ */
+
+export const Mode = {
+  Entering: 0,
+  Formation: 1,
+  Hostile: 2,
+  Dying: 3,
+  Orbit: 4,
   /** Attract mode only: sinks on its own, hurts nobody. */
-  Drift = 5,
-}
+  Drift: 5,
+} as const;
+export type Mode = (typeof Mode)[keyof typeof Mode];
 
 export type Husk = {
   active: boolean;
@@ -72,11 +91,12 @@ export type Bullet = {
   prevY: number;
 };
 
-export const enum PKind {
-  Spark = 0,
-  Shard = 1,
-  Ember = 2,
-}
+export const PKind = {
+  Spark: 0,
+  Shard: 1,
+  Ember: 2,
+} as const;
+export type PKind = (typeof PKind)[keyof typeof PKind];
 
 export type Particle = {
   active: boolean;
@@ -121,23 +141,26 @@ export type Ship = {
   alive: boolean;
   muzzle: number;
   /**
-   * The gun only fires from a standstill. That is the rule that makes a
-   * fixed-position shooter with auto-fire *fair*: crossing the field to reach
-   * the guilty number can never cost you an innocent, because you are not
-   * shooting while you cross. It also gives the loop its rhythm — dash, settle,
-   * fire — and it is taught entirely by the nose lighting up.
+   * 0 while crossing the field, 1 once the ship has come to rest.
+   *
+   * It no longer gates anything. It used to BE the trigger — the gun fired by
+   * itself from a standstill — and that is the whole reason a child who had
+   * just opened the game was answering questions they had not chosen to answer.
+   * What survives is the readout: the sight brightens and the brackets close as
+   * the ship settles, so "my aim is steady" is still a shape on the glass.
    */
   settled: number;
 };
 
-export const enum Phase {
-  Title = 0,
-  Wave = 1,
-  Clear = 2,
-  Breach = 3,
-  SecondWind = 4,
-  Over = 5,
-}
+export const Phase = {
+  Title: 0,
+  Wave: 1,
+  Clear: 2,
+  Breach: 3,
+  SecondWind: 4,
+  Over: 5,
+} as const;
+export type Phase = (typeof Phase)[keyof typeof Phase];
 
 export type Boss = {
   active: boolean;
@@ -198,10 +221,62 @@ export type World = {
   focusT: number;
 
   question: Question | null;
+  /** Wall time the question was asked. Drives its entrance animation ONLY. */
   askedAt: number;
+
+  /**
+   * The only clock a child's answer is ever measured against.
+   *
+   * It advances when — and only when — the player could actually be acting on
+   * the question in front of them: the run is in a wave, the trench is armed,
+   * and no correction is being held. So the seconds spent looking at a
+   * motionless opening, and the seconds spent reading a completed sum, are
+   * billed to nobody.
+   *
+   * `world.time` cannot do this job: it drives every animation in the game and
+   * has to keep running through both. Measuring latency on it made a child who
+   * read carefully for thirty seconds and then answered in two look, to the
+   * host's ladder and to this game's own speed bonus, like the slowest answer
+   * in the session — which is the exact inversion of "speed is REWARDED, never
+   * enforced".
+   */
+  answerClock: number;
+  /** `answerClock` when the current question was asked. */
+  answeredFrom: number;
   firstWrong: string | null;
   resolved: boolean;
   perfectWave: boolean;
+
+  /**
+   * False from the moment a run begins until the player's FIRST shot.
+   *
+   * While it is false the formation hangs where it was born and the trench
+   * costs nothing at all. "The first time you jump in, you don't know what is
+   * going on" — so the opening state of this game is *looking*, and the child
+   * decides when it turns into playing. It is set by firing and by nothing
+   * else, so a child who never touches the glass is never scored, never
+   * hurried, and never wrong.
+   */
+  armed: boolean;
+
+  /**
+   * The completed sum, standing still, with no deadline on it.
+   *
+   * Raised on a miss and on a shell that crossed the line, never on a clean
+   * answer — there is nothing to marinate on in a sum you just got right.
+   * While it is up NOTHING in the trench advances: no descent, no swing, no
+   * bullets, no collisions, no phase timer. It is taken down by the child's own
+   * hand and by nothing else, which is `revealPlan`'s `holdMs: Infinity`.
+   */
+  revealPrompt: string | null;
+  revealAnswer: string | null;
+  /** Seconds left before the child's own input may take the reveal down. */
+  revealSettle: number;
+  /** Seconds the reveal has been up. Drives its fade-in only. */
+  revealAge: number;
+
+  /** One-shot: has this run already explained Deep Focus? */
+  taughtFocus: boolean;
   /** Formation descent, world units per second. */
   descent: number;
   swingAmp: number;

@@ -4,16 +4,33 @@
  * TOUCH — drag anywhere. The ship keeps its offset from the finger, so a child
  * can steer from the bottom corner without their hand covering the thing they
  * are aiming at, and the first touch never teleports the ship. A quick tap
- * (short, still) spends Deep Focus.
+ * (short, still) FIRES. Press and hold, still, and let go: Deep Focus.
  *
  * DESKTOP — the ship tracks the mouse's x directly, with no button held: the
- * pointer *is* the ship. Arrow keys and A/D work at full speed for players who
- * want them, space spends Deep Focus. Both schemes are live at once and either
- * can take over mid-run.
+ * pointer *is* the ship. A click fires. Arrow keys and A/D work at full speed
+ * for players who want them, space fires, F spends Deep Focus. Both schemes are
+ * live at once and either can take over mid-run.
+ *
+ * **The tap that begins a run is not also a shot.** `onStart` says whether it
+ * consumed the input, and when it did, the matching release fires nothing.
+ * Otherwise the single tap on TAP TO BEGIN would start the game and immediately
+ * answer its first question — the exact reflex this whole change exists to
+ * remove, wearing a smaller hat.
  */
 
 import { screenToWorldX } from "../core/camera.ts";
 import type { World } from "./world.ts";
+
+/**
+ * At or over this, a still press is a request for Deep Focus. Under it, a shot.
+ *
+ * ONE threshold, not two. It was a tap under 230 ms and a hold over 430, which
+ * left a silent dead zone in between — and a deliberate, unhurried press by a
+ * child who is not rushing lands squarely in it. A press that does nothing, on
+ * a screen that is asking to be tapped, is the same confusion as a shot nobody
+ * asked for.
+ */
+const HOLD_MS = 430;
 
 export type Input = {
   /** -1..1 from the keyboard, 0 when nothing is held. */
@@ -36,7 +53,10 @@ export type InputHandlers = {
    * on screen saying why.
    */
   blocked(): boolean;
-  onStart(): void;
+  /** Begin a run from the title or the game-over screen. True if it did. */
+  onStart(): boolean;
+  /** The player asked for a shot — a tap, a click, or the space bar. */
+  onFire(): void;
   onFocus(): void;
   onToggleMute(): void;
   onTogglePause(): void;
@@ -52,6 +72,8 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
   let downAt = 0;
   let downX = 0;
   let moved = 0;
+  /** The press that began a run. Its release fires nothing. */
+  let consumedByStart = false;
 
   const rectX = (): number => canvas.getBoundingClientRect().left;
 
@@ -70,7 +92,7 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
       dragOffset = 0;
       world.ship.targetX = screenToWorldX(world.cam, e.clientX - rectX());
     }
-    on.onStart();
+    consumedByStart = on.onStart();
     e.preventDefault();
   };
 
@@ -89,11 +111,26 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
     if (e.pointerId !== pointerId || on.blocked()) return;
     dragging = false;
     pointerId = -1;
-    if (performance.now() - downAt < 230 && moved < 14) on.onFocus();
+    const held = performance.now() - downAt;
+    const still = moved < 14;
+    if (consumedByStart) {
+      consumedByStart = false;
+      return;
+    }
+    if (!still) return;
+    // Two gestures on one finger, separated by how long it stayed down. A tap
+    // is a shot; a deliberate press is the slow-motion. Deep Focus resolves on
+    // RELEASE rather than on a timer, so nothing in here needs a clock — and a
+    // press that turns into a drag is steering and is neither.
+    if (held >= HOLD_MS) on.onFocus();
+    else on.onFire();
   };
 
   const keyDown = (e: KeyboardEvent): void => {
     if (e.repeat || on.blocked()) return;
+    // First, not last: the key that begins a run must be able to tell the rest
+    // of this switch that it has already been spent.
+    const started = on.onStart();
     switch (e.key) {
       case "ArrowLeft":
       case "a":
@@ -107,8 +144,12 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
         break;
       case " ":
       case "Spacebar":
-        on.onFocus();
+        if (!started) on.onFire();
         e.preventDefault();
+        break;
+      case "f":
+      case "F":
+        if (!started) on.onFocus();
         break;
       case "m":
       case "M":
@@ -122,7 +163,6 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
         on.onToggleStats();
         break;
     }
-    on.onStart();
   };
 
   const keyUp = (e: KeyboardEvent): void => {
@@ -136,6 +176,7 @@ export function attachInput(canvas: HTMLCanvasElement, world: World, on: InputHa
     left = false;
     right = false;
     dragging = false;
+    consumedByStart = false;
   };
 
   canvas.addEventListener("pointerdown", pointerDown);

@@ -23,6 +23,25 @@ import type { World } from "./world.ts";
 const UI_FONT = `700 %SIZE%px system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif`;
 const font = (size: number): string => UI_FONT.replace("%SIZE%", String(Math.round(size)));
 
+/**
+ * Sets the font to the largest size at or under `size` that fits `maxW`.
+ *
+ * Every line in this file that a child must READ goes through here. A phone in
+ * portrait has a third of a laptop's width and these are whole sentences, not
+ * numerals — a constant size means the rule of the game runs off the glass on
+ * the device most likely to be a child's first one.
+ */
+function fitFont(ctx: CanvasRenderingContext2D, text: string, size: number, maxW: number): number {
+  let px = size;
+  ctx.font = font(px);
+  const w = ctx.measureText(text).width;
+  if (w > maxW && w > 0) {
+    px = Math.max(9, size * (maxW / w));
+    ctx.font = font(px);
+  }
+  return px;
+}
+
 export function drawEquation(world: World): void {
   const q = world.question;
   if (!q) return;
@@ -157,6 +176,96 @@ function drawBanner(world: World): void {
   ctx.globalAlpha = 1;
 }
 
+/**
+ * The rule, on the glass, while the trench is still waiting.
+ *
+ * Shown from the first frame of a run until the first shot, over a formation
+ * that is not moving and cannot cost anything. GUILTY shipped with the rule
+ * that makes it a maths game stated nowhere a player would find it, and the
+ * word GUILTY is itself an inversion — the guilty shell is the one telling the
+ * TRUTH — so it is spelled out here, where a child first meets it, in the same
+ * breath as the only control they need.
+ */
+export function drawReady(world: World): void {
+  const { ctx, hud } = world;
+  const { w, h } = hud.safe;
+  const maxW = w * 0.9;
+  const y = hud.safe.y + h * 0.6;
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  const rule = "THE GUILTY SHELL IS THE ONE WITH THE RIGHT ANSWER";
+  const ruleSize = fitFont(ctx, rule, Math.min(w * 0.05, h * 0.03), maxW);
+  ctx.globalCompositeOperation = "lighter";
+  drawGlow(ctx, C.amber, hud.cx, y, ruleSize * 6, 0.06);
+  ctx.globalCompositeOperation = "source-over";
+  ctx.fillStyle = rgba(C.amber, 0.88);
+  ctx.fillText(rule, hud.cx, y);
+
+  const call = "SHOOT IT";
+  const callSize = fitFont(ctx, call, Math.min(w * 0.075, h * 0.045), maxW);
+  ctx.fillStyle = rgba(C.white, 0.9);
+  ctx.fillText(call, hud.cx, y + ruleSize * 1.9);
+
+  const how = world.touch ? "TAP TO FIRE" : "PRESS SPACE TO FIRE";
+  fitFont(ctx, how, callSize * 0.62, maxW);
+  ctx.fillStyle = rgba(C.cyan, 0.45 + Math.sin(world.time * 3) * 0.3);
+  ctx.fillText(how, hud.cx, y + ruleSize * 1.9 + callSize * 1.4);
+
+  const wait = "NOTHING MOVES UNTIL YOU DO";
+  fitFont(ctx, wait, callSize * 0.44, maxW);
+  ctx.fillStyle = rgba(C.cyan, 0.4);
+  ctx.fillText(wait, hud.cx, y + ruleSize * 1.9 + callSize * 2.4);
+  ctx.textAlign = "left";
+}
+
+/**
+ * The completed sum, standing still, with no deadline on it.
+ *
+ * The accent colour, never red, and it never says WRONG. A child who has just
+ * missed is the slowest reader in the session, so nothing here is on a timer:
+ * `game.ts` freezes the trench while this is up and only a hand takes it down.
+ */
+export function drawReveal(world: World): void {
+  if (world.revealPrompt === null || world.revealAnswer === null) return;
+  const { ctx, hud } = world;
+  const { w, h } = hud.safe;
+  const t = clamp(world.revealAge / 0.26, 0, 1);
+  const fade = ease.outCubic(t);
+
+  // A scrim over the whole GLASS. The trench behind it is frozen; dimming it is
+  // what says so, and a scrim that stopped at the safe area would draw a bright
+  // band across the notch.
+  ctx.fillStyle = rgba("#02060c", 0.62 * fade);
+  ctx.fillRect(0, 0, world.w, world.h);
+
+  const line = `${world.revealPrompt} = ${world.revealAnswer}`;
+  const maxW = w * 0.88;
+  const y = hud.cy;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.globalAlpha = fade;
+
+  const size = fitFont(ctx, line, Math.min(w * 0.16, h * 0.085), maxW);
+  ctx.globalCompositeOperation = "lighter";
+  drawGlow(ctx, C.amber, hud.cx, y, size * 2.6, 0.1 * fade);
+  ctx.globalCompositeOperation = "source-over";
+  ctx.fillStyle = C.amber;
+  ctx.fillText(line, hud.cx, y);
+
+  // The way on, and only once the tap that ended the question can no longer be
+  // the tap that dismisses this.
+  if (world.revealSettle <= 0) {
+    const go = world.touch ? "TAP WHEN YOU HAVE READ IT" : "PRESS SPACE WHEN YOU HAVE READ IT";
+    fitFont(ctx, go, size * 0.3, maxW);
+    ctx.fillStyle = rgba(C.cyan, 0.4 + Math.sin(world.time * 3) * 0.22);
+    ctx.fillText(go, hud.cx, y + size * 1.1);
+  }
+  ctx.globalAlpha = 1;
+  ctx.textAlign = "left";
+}
+
 export function drawTitle(world: World): void {
   const { ctx, hud } = world;
   const { w, h } = hud.safe;
@@ -169,15 +278,22 @@ export function drawTitle(world: World): void {
   ctx.globalCompositeOperation = "source-over";
   drawGlyph(ctx, getGlyph("GUILTY", C.amber, 900), hud.cx, y, size * ease.outBack(clamp(t, 0, 1)));
 
-  ctx.font = font(Math.max(13, size * 0.13));
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+  // The rule, before anything can cost anything. A child meets the word GUILTY
+  // here and nowhere else, and it means the opposite of what they will guess.
+  const rule = "SHOOT THE SHELL WITH THE RIGHT ANSWER ON IT";
+  fitFont(ctx, rule, Math.max(12, size * 0.145), hud.safe.w * 0.9);
+  ctx.fillStyle = rgba(C.amber, 0.78);
+  ctx.fillText(rule, hud.cx, y + size * 0.62);
+
+  ctx.font = font(Math.max(13, size * 0.13));
   ctx.fillStyle = rgba(C.cyan, 0.5 + Math.sin(world.time * 3) * 0.28);
-  ctx.fillText(world.touch ? "TAP TO BEGIN" : "PRESS ANY KEY", hud.cx, y + size * 0.72);
+  ctx.fillText(world.touch ? "TAP TO BEGIN" : "PRESS ANY KEY", hud.cx, y + size * 0.86);
   if (world.best > 0) {
     ctx.fillStyle = rgba(C.amber, 0.45);
     ctx.font = font(Math.max(11, size * 0.1));
-    ctx.fillText(`BEST ${world.best}`, hud.cx, y + size * 0.95);
+    ctx.fillText(`BEST ${world.best}`, hud.cx, y + size * 1.07);
   }
   ctx.globalAlpha = 1;
 }
@@ -231,7 +347,14 @@ export function drawSecondWind(world: World): void {
   ctx.textBaseline = "middle";
   ctx.fillStyle = rgba(C.hostile, 0.6 + Math.sin(world.time * 4) * 0.3);
   // Above the ship, under the action: the husks stay readable.
-  ctx.fillText("ONE MORE", hud.cx, hud.safe.y + h * 0.8);
+  const y = hud.safe.y + h * 0.8;
+  ctx.fillText("ONE MORE", hud.cx, y);
+  // What it MEANS, where it is met. Two words in a red pulse is a threat; the
+  // line under it is the only thing that makes it a chance.
+  const sub = "GET THIS ONE RIGHT AND YOU KEEP GOING";
+  fitFont(ctx, sub, size * 0.24, w * 0.9);
+  ctx.fillStyle = rgba(C.cyan, 0.6);
+  ctx.fillText(sub, hud.cx, y + size * 0.46);
 }
 
 function drawStats(world: World): void {

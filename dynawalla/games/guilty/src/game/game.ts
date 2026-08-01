@@ -8,6 +8,31 @@
  * The loop, the phases, the collisions and the scoring all live here; the feel
  * lives in `../core/juice.ts` and the look in `./husk.ts`, `./scene.ts` and
  * `./ship.ts`.
+ *
+ * ── THE OPENING ─────────────────────────────────────────────────────────────
+ *
+ * "The first time you jump in, you don't know what is going on but you are
+ * blasting all of the wrong things ... I think maybe you should choose when to
+ * shoot, eh?"
+ *
+ * Three things used to compound into that report, and all three are gone.
+ *
+ * 1. The gun fired by itself from a standstill, so standing still and reading
+ *    the trench WAS answering, over and over, wrongly. Firing is now a tap, a
+ *    click or the space bar (`tryFire`), and nothing else makes a bullet.
+ *
+ * 2. A miss did `world.descent *= 1.14`. The game got faster because the child
+ *    got it wrong — so every accidental answer bought them less time to work
+ *    out what was happening than they had a second earlier. Nothing in this
+ *    file escalates on a wrong answer any more.
+ *
+ * 3. A shell crossing the line reported `correct: false` — a wrong answer
+ *    nobody had given. An unanswered wave is now reported to nobody at all.
+ *
+ * On top of those, `world.armed`: from the first frame of a run until the
+ * player's first shot the formation hangs still and the trench costs nothing,
+ * and the rule is stated on the glass. Doing nothing is safe, and it is the
+ * state the game opens in.
  */
 
 import {
@@ -56,7 +81,16 @@ import { bakeVignette, clearGlyphCache } from "../render/bake.ts";
 import { clamp, damp, makeLineBatch } from "../render/draw.ts";
 import { drawBoss } from "./boss.ts";
 import { drawParticles, embers, ring, shards, sparks, stepParticles } from "./fx.ts";
-import { drawEquation, drawGameOver, drawHud, drawSecondWind, drawTitle, frameStats } from "./hud.ts";
+import {
+  drawEquation,
+  drawGameOver,
+  drawHud,
+  drawReady,
+  drawReveal,
+  drawSecondWind,
+  drawTitle,
+  frameStats,
+} from "./hud.ts";
 import { drawHusk, resetHusk, updateHusk } from "./husk.ts";
 import { attachInput } from "./input.ts";
 import { bakeScene, drawBackground, drawFloor, drawVignette, seedMotes } from "./scene.ts";
@@ -67,23 +101,42 @@ import {
   findTarget,
   fireBolt as fireBoltAt,
   stepBullets,
+  tryFire,
   updateShip,
 } from "./ship.ts";
+import {
+  SECOND_GRADE_FLOW,
+  revealPlan,
+} from "../../../../packs/shared/game-pacing/index.ts";
 import { hudLayout } from "./hudLayout.ts";
 import { bannerFor, specFor } from "./waves.ts";
 import { Mode, Phase, freeHusk, makePools, type Husk, type World } from "./world.ts";
 
 const BEST_KEY = "dynawalla.guilty.best";
 
+/** A read-only snapshot of the pacing. Nothing here can be written back. */
+export type Pacing = {
+  descent: number;
+  formationY: number;
+  armed: boolean;
+  revealed: boolean;
+  lives: number;
+  wave: number;
+  over: boolean;
+};
+
 /**
  * Mounts the game. The return type is the contract's `GameHandle` plus a
- * read-only `stats()` — extra structure a host may ignore entirely, and the
- * only way the QA driver ever touches the running game.
+ * read-only `stats()` and `pacing()` — extra structure a host may ignore
+ * entirely, and the only way the QA driver ever touches the running game.
+ *
+ * `pacing()` is a *reading*, never a lever: there is no setter beside it, so a
+ * test that wants the trench to move has to play the game to move it.
  */
 export function mount(
   el: HTMLElement,
   host: Host,
-): GameHandle & { stats(): ReturnType<typeof frameStats> } {
+): GameHandle & { stats(): ReturnType<typeof frameStats>; pacing(): Pacing } {
   const canvas = document.createElement("canvas");
   canvas.style.cssText = "display:block;width:100%;height:100%;touch-action:none;outline:none";
   canvas.tabIndex = 0;
@@ -150,9 +203,17 @@ export function mount(
     focusT: 0,
     question: null,
     askedAt: 0,
+    answerClock: 0,
+    answeredFrom: 0,
     firstWrong: null,
     resolved: true,
     perfectWave: true,
+    armed: false,
+    revealPrompt: null,
+    revealAnswer: null,
+    revealSettle: 0,
+    revealAge: 0,
+    taughtFocus: false,
     descent: 12,
     swingAmp: 0,
     swingFreq: 0.4,
@@ -228,6 +289,7 @@ export function mount(
     const q: Question = host.next();
     world.question = q;
     world.askedAt = world.time;
+    world.answeredFrom = world.answerClock;
     world.firstWrong = null;
     world.resolved = false;
 
@@ -323,21 +385,98 @@ export function mount(
     host.report({
       questionId: world.question.id,
       correct: clean,
-      ms: Math.round((world.time - world.askedAt) * 1000),
+      ms: Math.round((world.answerClock - world.answeredFrom) * 1000),
       answered: world.firstWrong ?? (correct ? world.question.answer : ""),
     });
+  }
+
+  /**
+   * The wave ended and nobody answered it. Report NOTHING.
+   *
+   * A shell crossing the line used to be sent to the host as `correct: false`
+   * with an empty `answered` — a wrong answer attributed to a child who had not
+   * given one, from a game that until now was firing on their behalf. A timeout
+   * is not an answer, so it does not become one here: the item is closed, the
+   * ladder never sees it, and it costs the run a life exactly as it always did.
+   *
+   * **What was chosen, and what was not.** The runtime host does have a
+   * `skip(itemId)` — `packs/shared/game-host` exposes one, and it closes the
+   * item on the host's ledger without scoring it. This game's own `contract.ts`
+   * copy of `Host` has four methods and `skip` is not among them, and skip is
+   * not free either: it closes an item without advancing session progress,
+   * which is its own trap (it bit LATTICE and had to be reverted). So the
+   * choice here is silence rather than either lie: not `report`, because a
+   * timeout is not a wrong answer, and not `skip`, because widening this game's
+   * contract to reach for a call whose progress semantics are still a live
+   * problem elsewhere is not this change.
+   *
+   * The cost of silence is that the session does not advance for an item nobody
+   * attempted, and the item stays open in the host's `served` map. It is
+   * bounded: a run has three lives and one second wind, so an idle player
+   * reaches the game-over screen rather than looping forever. And with `armed`
+   * in front of it, a child who is only looking never reaches this path at all.
+   */
+  function abandonQuestion(): void {
+    world.resolved = true;
+  }
+
+  /* ---------------------------------------------------------------- reveal */
+
+  /**
+   * Put the completed sum on the glass and stop the trench.
+   *
+   * `revealPlan` decides whether it is worth showing at all, and the intensity
+   * it is asked about is the difficulty the HOST is currently serving — which
+   * is exactly the adaptive signal here, since the ladder walks up on clean
+   * answers and drops on a miss. High on the ladder, the plan is no reveal and
+   * an immediate carry-on: skipping the ceremony is the reward for mastery.
+   * Below that, `holdMs` is `Infinity` and only a hand takes it down.
+   */
+  function raiseReveal(): void {
+    const q = world.question;
+    if (!q) return;
+    const plan = revealPlan(SECOND_GRADE_FLOW, q.difficulty);
+    if (plan.holdMs <= 0) return;
+    world.revealPrompt = q.prompt;
+    world.revealAnswer = q.answer;
+    world.revealSettle = plan.settleMs / 1000;
+    world.revealAge = 0;
+  }
+
+  function clearReveal(): void {
+    world.revealPrompt = null;
+    world.revealAnswer = null;
+    world.revealSettle = 0;
+    world.revealAge = 0;
+  }
+
+  /** A hand on the glass while the sum is up. Takes it down, and nothing else. */
+  function dismissReveal(): boolean {
+    if (world.revealPrompt === null) return false;
+    // The settle floor is latency, not pedagogy: the tap that ended the
+    // question is routinely still arriving.
+    if (world.revealSettle > 0) return true;
+    clearReveal();
+    return true;
   }
 
   /* --------------------------------------------------------------- outcomes */
 
   function onCorrect(h: Husk): void {
     resolveQuestion(true);
-    const seconds = world.time - world.askedAt;
+    const seconds = world.answerClock - world.answeredFrom;
     world.combo += 1;
     world.bestCombo = Math.max(world.bestCombo, world.combo);
     const speedBonus = Math.round(100 * clamp(1 - (seconds - 0.9) / 4, 0, 1));
     world.score += (100 + speedBonus) * world.combo;
     world.focus = Math.min(1, world.focus + FOCUS_PER_SOLVE);
+    // DEEP FOCUS, named the first time a child has one. The bar along the
+    // bottom charging is not a sentence, and a power nobody knows the gesture
+    // for is not a power.
+    if (world.focus >= 1 && !world.taughtFocus) {
+      world.taughtFocus = true;
+      showBanner("DEEP FOCUS", world.touch ? "HOLD TO SLOW THE TRENCH" : "PRESS F TO SLOW THE TRENCH");
+    }
 
     kill(h, true);
     host.haptic("success");
@@ -364,7 +503,8 @@ export function mount(
   }
 
   function onWrong(h: Husk): void {
-    if (world.firstWrong === null) world.firstWrong = h.label;
+    const first = world.firstWrong === null;
+    if (first) world.firstWrong = h.label;
     world.combo = 0;
     world.perfectWave = false;
     h.hostile = true;
@@ -375,8 +515,18 @@ export function mount(
     h.shroud = 0;
     h.hitFlash = 1;
     h.squash = 0.7;
-    // The rest of the formation takes it personally.
-    world.descent *= 1.14;
+    // NOTHING ESCALATES HERE. `world.descent *= 1.14` used to live on this
+    // line, and a boss answered a mistake with a three-bolt volley. Both made
+    // the game faster because the child got it wrong, which is the one thing a
+    // miss must never do — least of all while the correction is on screen.
+    // The shell turning on you is the premise and it stays; the clock does not
+    // move.
+    if (first) {
+      // Answered, once, at the moment they answered. Waiting for the eventual
+      // right shot would bill the reading of the correction as thinking time.
+      resolveQuestion(false);
+      raiseReveal();
+    }
 
     host.haptic("failure");
     world.audio.wrong();
@@ -387,7 +537,6 @@ export function mount(
     flash(world.juice, 0.24, C.hostile);
     ring(world, h.x, h.y, 0, C.hostile, h.radius, 150, 0.42, 3);
     sparks(world, h.x, h.y, 0, 26, 130, C.hostile, { life: 0.6, size: 1.8 });
-    if (world.boss.active) bossVolley(3);
   }
 
   function kill(h: Husk, big: boolean): void {
@@ -434,7 +583,14 @@ export function mount(
   }
 
   function onBreach(x: number): void {
-    resolveQuestion(false);
+    // A shell crossed the line. If the child had already answered, `onWrong`
+    // reported it at the time and has already shown them the sum; if they had
+    // not, nobody answered, nobody is told anything, and the sum finishes
+    // itself here — a wave that ran out is the most useful moment in the game
+    // to be shown what the answer was.
+    const unanswered = !world.resolved;
+    abandonQuestion();
+    if (unanswered) raiseReveal();
     world.combo = 0;
     host.haptic("heavy");
     world.audio.breach();
@@ -663,7 +819,18 @@ export function mount(
   function update(realDt: number): void {
     const dt = stepJuice(world.juice, realDt);
     world.time += realDt;
-    world.phaseT += realDt;
+    // THE HELD CORRECTION. While the completed sum is up, the trench does not
+    // move: no descent, no swing, no bullets, no husks, no boss, no collisions
+    // and no phase timer. Light, sound and the shake from the hit carry on, so
+    // it reads as time stopping on the numbers rather than as a crash. Nothing
+    // takes it down but a hand.
+    const holding = world.revealPrompt !== null;
+    if (holding) {
+      world.revealAge += realDt;
+      world.revealSettle = Math.max(0, world.revealSettle - realDt);
+    } else {
+      world.phaseT += realDt;
+    }
     world.bannerT = Math.max(0, world.bannerT - realDt);
     world.displayScore = damp(world.displayScore, world.score, 9, realDt);
     world.audio.tick(realDt);
@@ -689,12 +856,21 @@ export function mount(
     if (bot) bot(realDt);
 
     updateShip(world, dt, realDt);
-    stepBullets(world, dt);
+    if (!holding) stepBullets(world, dt);
     stepParticles(world, dt);
 
-    const playing = world.phase === Phase.Wave || world.phase === Phase.SecondWind;
+    const playing = !holding && (world.phase === Phase.Wave || world.phase === Phase.SecondWind);
 
-    if (playing) {
+    // `armed` is the opening. Until the player's first shot the formation hangs
+    // exactly where it was born: no descent, no swing, nothing approaching the
+    // line. A child who has just opened the game and is reading it is not on a
+    // clock, and cannot lose anything by taking their time.
+    if (playing && world.armed) {
+      // The one clock an answer is measured against, and it runs on exactly the
+      // condition the trench moves on: if the shells are not sinking, the child
+      // is not on the hook for the seconds. That covers both new stillnesses —
+      // the opening before the first shot, and the held correction.
+      world.answerClock += realDt;
       // The last stretch is the fastest: once the formation is in the gate's
       // shadow it dives. Every wave gets a heartbeat ending instead of a
       // constant slide, and the player feels the deadline without a timer.
@@ -704,7 +880,7 @@ export function mount(
       world.swingPhaseX = Math.sin(world.swingPhase * Math.PI * 2) * world.swingAmp;
     }
 
-    if (world.boss.active) {
+    if (world.boss.active && !holding) {
       const boss = world.boss;
       boss.spin += dt * 0.55;
       boss.flash = Math.max(0, boss.flash - realDt * 2.6);
@@ -723,7 +899,7 @@ export function mount(
             { life: 0.8, size: 2 },
           );
         }
-      } else if (world.phase === Phase.Wave) {
+      } else if (world.phase === Phase.Wave && world.armed) {
         boss.y -= 3.4 * dt;
         boss.volleyCd -= dt;
         if (boss.volleyCd <= 0) {
@@ -733,21 +909,25 @@ export function mount(
       }
     }
 
-    for (const h of world.husks) {
-      if (!h.active) continue;
-      updateHusk(world, h, dt);
+    if (!holding) {
+      for (const h of world.husks) {
+        if (!h.active) continue;
+        updateHusk(world, h, dt);
+      }
     }
 
     if (playing) collide();
 
-    if (world.phase === Phase.Clear && world.phaseT > (bossFinishing ? 1.9 : WAVE_GAP)) {
-      advance();
-    }
-    if (world.phase === Phase.Breach && world.phaseT > 1) {
-      if (world.lives > 0) advance();
-    }
-    if (world.phase === Phase.Title) {
-      idleDrift(realDt);
+    if (!holding) {
+      if (world.phase === Phase.Clear && world.phaseT > (bossFinishing ? 1.9 : WAVE_GAP)) {
+        advance();
+      }
+      if (world.phase === Phase.Breach && world.phaseT > 1) {
+        if (world.lives > 0) advance();
+      }
+      if (world.phase === Phase.Title) {
+        idleDrift(realDt);
+      }
     }
 
     // Adaptive quality: hold 60 by thinning the fireworks, never the game.
@@ -827,7 +1007,10 @@ export function mount(
     world.batch.reset();
     if (world.boss.active) drawBoss(world);
     if (world.phase !== Phase.Title && world.phase !== Phase.Over) {
-      drawSight(world, world.ship.settled > 0.05 ? findTarget(world) : null);
+      // Always. The sight used to appear only once the ship had settled, which
+      // meant the one thing that answers "which number will my tap destroy" was
+      // missing from exactly the frames a hesitating child spends deciding.
+      drawSight(world, findTarget(world));
     }
     drawBullets(world);
 
@@ -866,11 +1049,25 @@ export function mount(
     }
 
     if (world.phase === Phase.Title) drawTitle(world);
-    else if (world.phase === Phase.Over) drawGameOver(world);
-    else {
+    else if (world.phase === Phase.Over) {
+      // THE LEDGER WAITS BEHIND THE CORRECTION. `drawGameOver` fades in on
+      // `phaseT`, and `phaseT` is frozen while a reveal is up — so drawing it
+      // here would paint the score, the wave, the best run and TAP TO DIVE
+      // AGAIN at alpha zero, forever, over a trench that had also stopped. The
+      // most common way to reach this state is the one this whole change is
+      // for: a struggling child losing their last life to a wave that ran out.
+      // So the sum stands alone first, and the ledger arrives when a hand takes
+      // it down.
+      if (world.revealPrompt === null) drawGameOver(world);
+    } else {
       if (world.phase === Phase.SecondWind) drawSecondWind(world);
       drawHud(world);
+      // The rule, while the trench is still waiting.
+      if (!world.armed) drawReady(world);
     }
+    // Last, over everything, in every phase: the completed sum while the trench
+    // is stopped.
+    drawReveal(world);
   }
 
   /* -------------------------------------------------------------- the loop */
@@ -904,34 +1101,66 @@ export function mount(
 
   /* ------------------------------------------------------------ start/stop */
 
-  function begin(): void {
+  /** Returns true if this input actually began a run, so its owner can stop. */
+  function begin(): boolean {
     void world.audio.resume();
-    if (world.phase === Phase.Title || world.phase === Phase.Over) {
-      for (const h of world.husks) h.active = false;
-      for (const b of world.bullets) b.active = false;
-      world.wave = 1;
-      world.lives = START_LIVES;
-      world.score = 0;
-      world.displayScore = 0;
-      world.combo = 0;
-      world.bestCombo = 0;
-      world.focus = 0;
-      world.focusT = 0;
-      world.usedSecondWind = false;
-      world.ship.alive = true;
-      world.ship.invuln = 1.2;
-      world.ship.x = 0;
-      world.ship.targetX = 0;
-      bossFinishing = false;
-      startWave();
-    }
+    // A correction outranks a new run. Losing the last life to a wave that ran
+    // out puts the sum up on the game-over screen, and the press that would
+    // otherwise restart has to take that down first — otherwise the one moment
+    // the lesson was most worth showing is also the one moment a reflex wipes
+    // it, along with the score the child never got to see.
+    if (world.revealPrompt !== null) return false;
+    if (world.phase !== Phase.Title && world.phase !== Phase.Over) return false;
+    for (const h of world.husks) h.active = false;
+    for (const b of world.bullets) b.active = false;
+    world.wave = 1;
+    world.lives = START_LIVES;
+    world.score = 0;
+    world.displayScore = 0;
+    world.combo = 0;
+    world.bestCombo = 0;
+    world.focus = 0;
+    world.focusT = 0;
+    world.usedSecondWind = false;
+    world.taughtFocus = false;
+    world.ship.alive = true;
+    world.ship.invuln = 1.2;
+    world.ship.x = 0;
+    world.ship.targetX = 0;
+    // The run opens UNARMED and with nothing held over from the last one.
+    world.armed = false;
+    clearReveal();
+    bossFinishing = false;
+    startWave();
+    return true;
+  }
+
+  /**
+   * The player asked for a shot.
+   *
+   * Three jobs in order, because they are three different meanings of the same
+   * tap: take down a correction that is being read, arm the trench for the
+   * first time, or fire.
+   */
+  function onFire(): void {
+    // The correction first, and in EVERY phase — including `Over`, which is
+    // where a run that ended on an unanswered wave puts one.
+    if (dismissReveal()) return;
+    if (world.phase === Phase.Title || world.phase === Phase.Over) return;
+    if (world.paused) return;
+    if (!tryFire(world)) return;
+    // THE FIRST SHOT STARTS THE GAME. Not the tap that dismissed the title, not
+    // the mount, not a timer: the first bullet the child chose to send.
+    world.armed = true;
   }
 
   function spendFocus(): void {
-    if (world.phase === Phase.Title || world.phase === Phase.Over) {
-      begin();
-      return;
-    }
+    // A press on a held correction takes it down, whichever gesture the press
+    // turned out to be. Every hand on the glass means the same thing while the
+    // sum is up — "I have read it" — and a long press that did nothing there
+    // would leave a child pressing a screen that is asking to be pressed.
+    if (dismissReveal()) return;
+    if (world.phase === Phase.Title || world.phase === Phase.Over) return;
     if (world.focus < 1 || world.focusT > 0) return;
     world.focus = 0;
     world.focusT = FOCUS_DURATION;
@@ -948,6 +1177,7 @@ export function mount(
     // it is read long after the whole mount has finished.
     blocked: () => guide.isOpen,
     onStart: begin,
+    onFire,
     onFocus: spendFocus,
     onToggleMute: () => world.audio.setMuted(!world.audio.muted()),
     onTogglePause: () => {
@@ -969,30 +1199,42 @@ export function mount(
   // which reads as the game being unfair rather than as a punishment for
   // guessing.
   //
+  // The sheet is no longer the only place the rule lives — `drawTitle` and
+  // `drawReady` state it on the glass, before the trench costs anything — but
+  // it is still where the whole of it is written down.
+  //
   // The panel stays reachable during play, and opening it freezes the descent:
   // a child who goes to read the rules must not lose a life while reading them.
   const guide = createInstructions(el, {
     title: "GUILTY",
     summary: [
-      "A sum hangs over the trench. Four shells sink out of it, each with a different answer on it.",
-      "Only one answer is right. Shoot that one. Shoot a wrong one and it turns on you.",
+      "A sum hangs over the trench. Shells sink out of it, each with a different answer on it.",
+      "The guilty shell is the one telling the truth: the one with the right answer. Shoot that one.",
     ],
     sections: [
       {
         heading: "How to play",
         lines: [
           "Read the sum at the top and work out the answer yourself.",
-          "Four shells sink towards the line above your ship. Each shell carries a number.",
-          "Find the shell with your answer on it and shoot it. The other three scatter and you are safe.",
+          "The shells sink towards the line above your ship. Each shell carries a number.",
+          "Find the shell with your answer on it and shoot it. The others scatter and you are safe.",
           "Do not let a shell reach the line. If one crosses it, you lose a life.",
+        ],
+      },
+      {
+        heading: "Nothing happens until you shoot",
+        lines: [
+          "When a run begins the shells hang still and nothing sinks. Take as long as you like to look at them.",
+          "The trench starts moving on your first shot, and not before. If you are not sure yet, do not shoot yet.",
         ],
       },
       {
         heading: "The wrong answers are real mistakes",
         lines: [
-          "The three wrong numbers are not random. Each one is what you get if you make a mistake people really make.",
+          "The wrong numbers are not random. Each one is what you get if you make a mistake people really make.",
           "So a wrong number can look very close to the right one. Work the sum out properly instead of picking the one that looks about right.",
-          "Shoot a wrong shell and it turns red and starts shooting back. That is why guessing is a bad plan.",
+          "Shoot a wrong shell and it turns and comes at you. That is why guessing is a bad plan.",
+          "When that happens the sum finishes itself in the middle of the screen and everything stops. Read it for as long as you want; tap when you are ready to carry on.",
         ],
       },
       {
@@ -1001,14 +1243,15 @@ export function mount(
           "On a touch screen, drag anywhere to steer. Your finger does not have to be on the ship, so your hand never covers what you are aiming at.",
           "With a mouse, just move it. The ship follows the pointer.",
           "The arrow keys and A and D work too.",
-          "Your gun fires by itself. It stops while you are sliding fast and starts again the moment you settle, so aim first, then hold still.",
+          "A quick tap shoots. With a keyboard, the space bar shoots. The gun never fires on its own, so you decide when to answer.",
+          "The thin beam from the nose of your ship shows exactly which shell your next shot will hit.",
         ],
       },
       {
         heading: "Deep focus",
         lines: [
           "Every right answer fills the thin bar along the bottom of the screen.",
-          "When it is full, tap once quickly, or press the space bar, to slow the whole trench down.",
+          "When it is full, press and hold anywhere for a moment, or press F, to slow the whole trench down.",
           "Use it when the shells are close to the line and you need a moment to think.",
         ],
       },
@@ -1016,6 +1259,7 @@ export function mount(
         heading: "Waves and lives",
         lines: [
           "You start with three lives. Clear a wave and the next one sinks faster.",
+          "Getting one wrong never makes the trench faster. Only clearing a wave does that.",
           "Every sixth wave brings THE ARBITER, one huge ship. An arbiter is someone who decides who is right.",
           "Bullets bounce off its shield. Only a right answer breaks it, so keep reading the sums.",
           "From wave twelve the screen says SHUT SHELLS. The numbers are scrambled until a shell has sunk part of the way down, so wait for it to open before you read it.",
@@ -1027,7 +1271,7 @@ export function mount(
         heading: "Keyboard",
         lines: [
           "Left and right arrows, or A and D, steer.",
-          "Space uses deep focus. M turns the sound off. P pauses.",
+          "Space shoots. F uses deep focus. M turns the sound off. P pauses.",
         ],
       },
     ],
@@ -1042,7 +1286,7 @@ export function mount(
   let bot: ((dt: number) => void) | null = null;
   if (params.has("bot")) {
     const skill = Number(params.get("bot")) || 1;
-    bot = makeBot(world, skill, begin, spendFocus);
+    bot = makeBot(world, skill, begin, onFire, spendFocus);
   }
   if (params.has("wave")) {
     world.wave = Math.max(1, Number(params.get("wave")) || 1);
@@ -1053,6 +1297,15 @@ export function mount(
 
   return {
     stats: () => frameStats(world),
+    pacing: () => ({
+      descent: world.descent,
+      formationY: world.formationY,
+      armed: world.armed,
+      revealed: world.revealPrompt !== null,
+      lives: world.lives,
+      wave: world.wave,
+      over: world.phase === Phase.Over,
+    }),
     unmount() {
       running = false;
       cancelAnimationFrame(raf);
@@ -1088,13 +1341,15 @@ function saveBest(value: number): void {
 
 /**
  * A deterministic autoplayer. It exists for QA — it drives the *real* input
- * surface (a target x and the focus button), never a private hook, so anything
- * it proves is true of a human playing.
+ * surface (a target x, the trigger and the focus button), never a private hook,
+ * so anything it proves is true of a human playing. It now has to pull the
+ * trigger itself, like everybody else.
  */
 function makeBot(
   world: World,
   skill: number,
-  begin: () => void,
+  begin: () => boolean,
+  onFire: () => void,
   spendFocus: () => void,
 ): (dt: number) => void {
   let think = 0;
@@ -1106,6 +1361,11 @@ function makeBot(
     }
     if (world.phase === Phase.Over) {
       begin();
+      return;
+    }
+    // A reveal is a hand's job. The bot has a hand.
+    if (world.revealPrompt !== null) {
+      onFire();
       return;
     }
     think -= dt;
@@ -1140,6 +1400,9 @@ function makeBot(
           : aim.vx;
       const flight = Math.max(0, (aim.y - SHIP_Y) / 560);
       world.ship.targetX = aim.x + swingV * flight;
+      // Pull the trigger only when the nose is actually on it, which is what a
+      // player does and what the sight line is for.
+      if (Math.abs(world.ship.x - aim.x) < aim.radius * 0.8) onFire();
     }
     if (world.focus >= 1 && world.rng.nextFloat() < dt * 0.6) spendFocus();
   };
