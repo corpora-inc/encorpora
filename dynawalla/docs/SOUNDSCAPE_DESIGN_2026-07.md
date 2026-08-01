@@ -1,10 +1,21 @@
 # The Dynawalla soundscape
 
-**Status:** live. `packs/shared/game-soundscape/` exists and has 45 tests; the host
+**Status:** live. `packs/shared/game-soundscape/` exists and has 57 tests; the host
 now chooses a soundscape and publishes it, so THE STEELYARD plays through it in
 production. Stage 2 (games talking back) and stage 3 (the host's ambient bed) are
 still proposed. The founder's answers to the open questions are recorded at the
 end.
+
+**Second pack wired, and the module grew a seventh file.** PULSE reads the same
+soundscape as TIME rather than as pitch. The founder's brief for it — *"some
+probability matrix that makes a nice tune on the beat … when the input is sort of
+the mode and the desired density"* — is `groove.ts`: a mode is a set of positions
+in a cyclic space of 1200 cents and a bar is a set of positions in a cyclic space
+of four beats, so projecting one onto the other gives a bar this key likes the
+shape of. Twelve tests. It lives in the shared module and not in the pack because
+the next rhythm game will want it, and because a matrix a pack owned privately
+would be one more thing that stops agreeing with the drone. PULSE still names no
+pitch and chooses no key: `groove.ts` returns probabilities, never frequencies.
 
 **What turning it on actually was.** Not a change to any pack: the pack side was
 finished and waiting. `dynawalla-app/src/app/soundscape.ts` chooses one key for
@@ -260,7 +271,7 @@ added exactly this way. `game-host` publishes it in one line beside those two.
 ### The three stages, and what is actually built
 
 **Stage 1 — shipped in this change, off in production.**
-`packs/shared/game-soundscape/` (six source files and an index, 45 tests). `Settings.soundscape?`
+`packs/shared/game-soundscape/` (seven source files and an index, 57 tests). `Settings.soundscape?`
 on the wire. `game-host` publishes it. `game-audio`-style module state means
 `currentSoundscape()` is `null` until somebody publishes one, and **no host
 publishes one today**, so nothing in production changes audibly. THE STEELYARD is
@@ -485,6 +496,7 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 | The 38-mode corpus | `packs/shared/game-soundscape/modes.ts` |
 | Mode + root + seed + tension, and the wire guard | `packs/shared/game-soundscape/soundscape.ts` |
 | The walker, the gestures, the voices | `packs/shared/game-soundscape/melody.ts` |
+| The bar as a probability matrix, by mode and density | `packs/shared/game-soundscape/groove.ts` |
 | The soundscape the app is in | `packs/shared/game-soundscape/host.ts` |
 | The wire field | `packs/sdk/src/protocol.ts` → `Settings.soundscape` |
 | Where it is published to a pack | `packs/shared/game-host/index.ts` → `publish()` |
@@ -492,6 +504,7 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 | Where it is put on the wire | `dynawalla-app/src/packs/services.ts` → `packSettings()` |
 | The doorway that draws one, and gives it back | `dynawalla-app/src/packs/Stage.tsx` |
 | THE STEELYARD's whole musical vocabulary | `games/counterweight/src/tune.ts` |
+| PULSE's chart, generated from the mode and the density | `games/pulse/src/game/chart.ts` |
 | The synthesis, and the rubble recipe | `games/counterweight/src/audio.ts` |
 | Where it is turned on, for now | `games/counterweight/src/main.ts` |
 | The corpus this was ported from | `corpan/packs/beatlounge/src/music/modes/` |

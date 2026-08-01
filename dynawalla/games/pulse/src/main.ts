@@ -7,6 +7,11 @@
  * nothing at all where it does not.
  */
 
+import {
+  MODE_IDS,
+  pickSoundscape,
+  setHostSoundscape,
+} from "../../../packs/shared/game-soundscape/index.ts";
 import { mount } from "./mount.ts";
 import { createStubHost } from "./stubHost.ts";
 
@@ -22,6 +27,24 @@ const root = document.getElementById("root");
 if (!root) throw new Error("pulse: #root missing");
 
 const params = new URLSearchParams(location.search);
+
+// ── The soundscape, in the harness only ─────────────────────────────────────
+//
+// The real app publishes one and `game-host` forwards it, so the shipped pack
+// is told which key the bazaar is in. Here there is no app, so the harness
+// publishes one — and PULSE reads it as RHYTHM: the chart's probability matrix
+// is built from the mode (`game/chart.ts` → `packs/shared/game-soundscape/groove.ts`).
+// `?mode=maqam.rast` pins one and `?scape=<n>` draws a specific seed, which is
+// how one groove can be listened to twice. `?soundscape=off` is the A/B.
+if (params.get("soundscape") !== "off") {
+  const seed = Number(params.get("scape") ?? Math.floor(Math.random() * 0xffffffff));
+  const drawn = pickSoundscape(Number.isFinite(seed) ? seed : 1);
+  const wanted = params.get("mode");
+  const scape = wanted && MODE_IDS.includes(wanted) ? { ...drawn, modeId: wanted } : drawn;
+  setHostSoundscape(scape);
+  console.info(`[pulse] soundscape ${scape.modeId}, seed ${scape.seed}`);
+}
+
 const host = createStubHost({
   seed: params.get("seed") ?? "pulse-dev",
   startDifficulty: Number(params.get("difficulty") ?? "0.12"),

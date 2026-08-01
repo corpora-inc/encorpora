@@ -60,6 +60,31 @@ export type SceneOptions = {
 };
 
 const FRACTION_TOKEN = /^(-?\d+)\/(\d+)$/;
+
+/** How long an ordinary banner — SOLVED, OVERDRIVE, a stage name — is up. */
+const BANNER_SEC = 1.5;
+
+/**
+ * How long a completed sum is held after a wrong or unanswered gate.
+ *
+ * A fixed number of seconds, not a number of bars: the tempo is this game's
+ * difficulty knob, and a child who has got good must not thereby get less time
+ * to read the answer they just missed. See `run.ts`'s `GATE_READ_SEC`, which is
+ * the same rule at the other end of the question.
+ */
+export const REVEAL_SEC = 4.5;
+
+/**
+ * What a child is shown when a gate goes wrong or goes by unanswered.
+ *
+ * Pure, exported and tested, because it is the one piece of this file that is a
+ * promise rather than a picture: `scene.test.ts` holds it to finishing the sum,
+ * to never being red, and to never being a verdict.
+ */
+export function missReveal(g: BuiltGate): { text: string; ink: Ink } {
+  const answer = g.candidates.find((c) => c.correct);
+  return { text: answer ? `${g.prompt} = ${answer.label}` : g.prompt, ink: "amber" };
+}
 const WINDOW_GOOD_SEC = WINDOWS.good;
 const WINDOW_PERFECT_SEC = WINDOWS.perfect;
 
@@ -81,7 +106,7 @@ export class Scene {
   private chroma = 0;
   private stageCard: { stage: StageSpec; index: number; t: number } | null = null;
   private gateGlow = 0;
-  private gateBanner: { text: string; ink: Ink; t: number } | null = null;
+  private gateBanner: { text: string; ink: Ink; t: number; hold: number } | null = null;
   private overdriveGlow = 0;
   private stumbleGlow = 0;
   private beatFlashT = 1;
@@ -213,7 +238,7 @@ export class Scene {
     this.gateGlow = 1;
   }
 
-  gateResolved(outcome: GateOutcome, note: LiveNote | null, _g: BuiltGate, laneCount: number, nowBeat: number): void {
+  gateResolved(outcome: GateOutcome, note: LiveNote | null, g: BuiltGate, laneCount: number, nowBeat: number): void {
     const reduced = this.opts.reducedMotion();
     if (outcome === "correct" && note) {
       const u = (note.beat - nowBeat) / BEATS_PER_BAR;
@@ -245,18 +270,33 @@ export class Scene {
       });
       this.ripples.add(p.x, p.y, 8, Math.max(this.s.w, this.s.h) * 0.95, 0.72, "lime", 2.2);
       this.ripples.add(p.x, p.y, 8, Math.max(this.s.w, this.s.h) * 0.6, 0.5, "white", 1.4);
-      this.gateBanner = { text: "SOLVED", ink: "lime", t: 0 };
+      this.gateBanner = { text: "SOLVED", ink: "lime", t: 0, hold: BANNER_SEC };
     } else {
       this.shake.add(reduced ? 0 : 0.42);
       this.hitstop.hit(reduced ? 16 : 120, 0.12);
       this.chroma = 0.85;
       this.stumbleGlow = 1;
-      this.gateBanner = { text: outcome === "wrong" ? "OFF" : "GONE", ink: "rose", t: 0 };
+      /**
+       * A miss FINISHES THE SUM, in the accent colour, never in red.
+       *
+       * What was here said "OFF" or "GONE" in rose and then took the question
+       * away, so a child who got it wrong — or who was still working when the
+       * bar ended — was told off and never told the answer. The one moment they
+       * are certainly paying attention is the moment they find out they were
+       * wrong, and it was being spent on a red word.
+       *
+       * So the banner is the completed statement, and it is held four times as
+       * long because it is now something to read rather than a verdict to
+       * flinch at. The hold is a fixed number of seconds and is not derived
+       * from the tempo: getting good at the game must never shorten the time a
+       * child gets to look at the answer.
+       */
+      this.gateBanner = { ...missReveal(g), t: 0, hold: REVEAL_SEC };
       if (note) {
         const u = (note.beat - nowBeat) / BEATS_PER_BAR;
         const p = this.layout.pt(Math.max(0, Math.min(0.06, u)), this.layout.laneV(Math.min(note.lane, laneCount - 1)));
         this.particles.emit(p.x, p.y, {
-          ink: "rose",
+          ink: "amber",
           count: reduced ? 6 : 26,
           speed: 320,
           life: 0.8,
@@ -296,19 +336,19 @@ export class Scene {
     this.stumbleGlow = 1.4;
     this.shake.add(this.opts.reducedMotion() ? 0 : 0.8);
     this.chroma = 1;
-    this.gateBanner = { text: "REGROUP", ink: "rose", t: 0 };
+    this.gateBanner = { text: "REGROUP", ink: "rose", t: 0, hold: BANNER_SEC };
   }
 
   overdriveSet(on: boolean): void {
     this.overdriveGlow = on ? 1 : 0;
     if (on) {
-      this.gateBanner = { text: "OVERDRIVE", ink: "violet", t: 0 };
+      this.gateBanner = { text: "OVERDRIVE", ink: "violet", t: 0, hold: BANNER_SEC };
       this.flash.request(this.time, 1);
     }
   }
 
   layerBanner(name: string): void {
-    this.gateBanner = { text: name.toUpperCase(), ink: "cyan", t: 0 };
+    this.gateBanner = { text: name.toUpperCase(), ink: "cyan", t: 0, hold: BANNER_SEC };
   }
 
   private popup(x: number, y: number, text: string, ink: Ink, size: number): void {
@@ -385,7 +425,7 @@ export class Scene {
     }
     if (this.gateBanner) {
       this.gateBanner.t += dtReal;
-      if (this.gateBanner.t > 1.5) this.gateBanner = null;
+      if (this.gateBanner.t > this.gateBanner.hold) this.gateBanner = null;
     }
     this.displayScore = approach(this.displayScore, run.score, 9, dtReal);
     for (const n of run.notes.all()) if (n.pop > 0) n.pop = Math.max(0, n.pop - dtReal / 0.3);
@@ -1005,9 +1045,14 @@ export class Scene {
     const b = this.gateBanner;
     if (!b) return;
     const { ctx, w, h } = this.s;
-    const k = clamp01(b.t / 1.5);
-    const a = (1 - k) * (1 - k);
-    const s = (this.layout.compact ? 30 : 48) * (1 + outQuint(clamp01(b.t * 4)) * 0.3);
+    // Fade over the last second only. A four-second reveal that is fading from
+    // the first frame is a four-second reveal a child cannot read.
+    const a = clamp01(Math.min(1, (b.hold - b.t) / 0.9)) ** 2;
+    const grow = 1 + outQuint(clamp01(b.t * 4)) * 0.3;
+    const base = (this.layout.compact ? 30 : 48) * grow;
+    // A completed sum is a whole sentence, not a word. Fit it to the field
+    // rather than letting it run off both edges of a phone.
+    const s = Math.min(base, (this.layout.area.w * 0.92) / Math.max(6, b.text.length * 0.56));
     neon(ctx, b.text, w / 2, h * (this.layout.orient === "h" ? 0.34 : 0.3), s, b.ink, { alpha: a });
   }
 
