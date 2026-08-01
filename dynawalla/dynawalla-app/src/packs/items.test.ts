@@ -13,7 +13,9 @@ import {
   advanceStaircase,
   ascentOf,
   ABOVE_RATIO,
+  ATTEMPT_LOG,
   bandOf,
+  BELOW_RATIO,
   BLANK,
   blankPosition,
   drawStatement,
@@ -26,12 +28,14 @@ import {
   DESCENT_FAR,
   DESCENT_NEAR,
   descentOf,
+  EVIDENCE_MIN,
   HINT_BAND,
   isQuick,
   itemPace,
   ladder,
+  ladderBand,
   LOST_AT,
-  noteRecent,
+  noteAttempt,
   normalizeMinus,
   operandsOf,
   openStaircase,
@@ -46,8 +50,9 @@ import {
   STEP_OPEN,
   STEP_START,
   STEP_TRACK,
+  windowFor,
 } from "./items.ts"
-import type { Band, ItemService, Recent, Rung, Staircase } from "./items.ts"
+import type { Attempt, Band, ItemService, Recent, Rung, Staircase } from "./items.ts"
 import type { PromptBlank, PromptSlot } from "./curriculum.ts"
 import {
   activeNodes,
@@ -1760,11 +1765,19 @@ test("an answer at the published median is worth a whole stride, and the bonus d
   // sum of the first six strides rather than to anything larger, which is what
   // the speedcuber bonus leaking into ordinary pace would look like.
   const rungs = ladder()
+  const span = rungs.length - 1
   const service = createItemService({ profileId: "p1", record: noRecord, rungs })
   let stair = openStaircase()
-  let recent: Recent = []
+  // The ladder's own evidence, rebuilt from the outside: which rung each question
+  // came from and whether it was answered. `ladderBand` is called rather than
+  // restated because *which* answers the band is read over is pinned in its own
+  // tests; what this test is for is that the service composes the band it reads
+  // with the stride it is carrying, and that composition is the thing a rewrite
+  // drops. The bands it actually walks through are asserted below as a sequence.
+  let log: readonly Attempt[] = []
   let expected = 0
   for (let i = 0; i < 6; i++) {
+    const centre = service.position()
     const item = service.next({ packId: "dynawalla.siege" })
     assert.ok(item)
     service.judge({
@@ -1773,25 +1786,27 @@ test("an answer at the published median is worth a whole stride, and the bonus d
       response: service.reveal(item.id),
       latencyMs: publishedP50Ms(widthOf(item.operands)),
     })
-    recent = noteRecent(recent, true)
-    assert.equal(bandOf(recent), "climb", "six right in a row is not a sustained window")
+    log = noteAttempt(log, { correct: true, rung: Math.round((item.difficulty ?? 0) * span) })
+    assert.equal(ladderBand(log, centre), "climb", "six right in a row is not a sustained window")
     expected += ascentOf(stair, 1)
     stair = advanceStaircase(stair, 1, 1)
   }
   assert.equal(service.position(), Math.floor(expected))
 
-  // Then three misses, which walk the window down through every band below the
-  // gate: 6/7 is still inside the sitting band and must cost **nothing at all**,
-  // 6/8 is under it and costs a stride, and 6/9 is decisive. The bands are read
-  // here rather than assumed, because what this test is for is that the service
-  // *composes* the window and the stride — the bands themselves are pinned at
-  // their edges in "the four bands are the founder's sentence".
+  // Then four misses, which walk the reading down through every band below the
+  // gate: the first is still inside the sitting band and must cost **nothing at
+  // all**, the next two are under it and cost a stride each, and the fourth is
+  // decisive. The bands are read here rather than assumed, because what this test
+  // is for is that the service *composes* the reading and the stride — the bands
+  // themselves are pinned at their edges in "the four bands are the founder's
+  // sentence".
   //
-  // Three and not more: six misses put this child through the floor of the ladder,
-  // and two numbers that are both clamped to rung 0 agree about nothing.
+  // Four and not more: seven misses put this child through the floor of the
+  // ladder, and two numbers that are both clamped to rung 0 agree about nothing.
   const climbed = service.position()
   const seen: Band[] = []
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
+    const centre = service.position()
     const item = service.next({ packId: "dynawalla.siege" })
     assert.ok(item)
     service.judge({
@@ -1800,8 +1815,8 @@ test("an answer at the published median is worth a whole stride, and the bonus d
       response: "definitely wrong",
       latencyMs: 1_000,
     })
-    recent = noteRecent(recent, false)
-    const band = bandOf(recent)
+    log = noteAttempt(log, { correct: false, rung: Math.round((item.difficulty ?? 0) * span) })
+    const band = ladderBand(log, centre)
     seen.push(band)
     if (band !== "climb" && band !== "sit") {
       expected -= descentOf(stair, band)
@@ -1823,8 +1838,8 @@ test("an answer at the published median is worth a whole stride, and the bonus d
   }
   assert.deepEqual(
     seen,
-    ["sit", "slip", "lost"],
-    "three misses after six right did not walk the window through the founder's bands",
+    ["sit", "slip", "slip", "lost"],
+    "four misses after six right did not walk the reading through the founder's bands",
   )
   assert.ok(expected > 0, "the arithmetic under test fell through the floor and is being clamped")
   assert.equal(
@@ -1916,6 +1931,22 @@ function window(hits: number, seen: number): Recent {
   return bits
 }
 
+/**
+ * A window grown one answer at a time along the path the service actually uses.
+ *
+ * The ladder does not keep a `Recent`; it keeps an `Attempt` log and reads windows
+ * out of it with `windowFor`, and the forgetting is `windowFor`'s limit rather
+ * than a mechanism of its own. So a test about what a window forgets has to grow
+ * one this way to be testing anything that ships. Every answer is put at the same
+ * rung, because these tests are about the window and not about where the answers
+ * came from.
+ */
+function grown(answers: readonly boolean[]): Recent {
+  let log: readonly Attempt[] = []
+  for (const correct of answers) log = noteAttempt(log, { correct, rung: 0 })
+  return windowFor(log, (rung) => rung === 0)
+}
+
 test("the three thresholds are the three numbers the founder named", () => {
   // Restated deliberately, because these three are the founder's ruling and not a
   // derivation — a test that recomputed them from the code would be asserting that
@@ -1973,16 +2004,17 @@ test("the window is a window: it forgets, and its denominator is what was seen",
   assert.equal(bandOf(window(4, 4)), "climb")
   // It forgets. A full window plus one answer is still `RECENT_WINDOW` long, and
   // the answer that fell off the front is the oldest one.
-  let recent: Recent = window(0, RECENT_WINDOW)
-  assert.equal(recent.length, RECENT_WINDOW)
-  for (let i = 0; i < RECENT_WINDOW; i++) recent = noteRecent(recent, true)
+  const answers = [...window(0, RECENT_WINDOW)]
+  assert.equal(grown(answers).length, RECENT_WINDOW)
+  for (let i = 0; i < RECENT_WINDOW; i++) answers.push(true)
+  const recent = grown(answers)
   assert.equal(recent.length, RECENT_WINDOW, "the window grew past its own length")
   assert.equal(recentAccuracy(recent), 1, "a full window of misses never aged out")
   // One more answer than the window holds, from empty.
-  let filling: Recent = []
-  for (let i = 0; i <= RECENT_WINDOW; i++) filling = noteRecent(filling, i > 0)
-  assert.equal(filling.length, RECENT_WINDOW)
-  assert.equal(recentAccuracy(filling), 1, "the one miss at the start did not age out")
+  const filling: boolean[] = []
+  for (let i = 0; i <= RECENT_WINDOW; i++) filling.push(i > 0)
+  assert.equal(grown(filling).length, RECENT_WINDOW)
+  assert.equal(recentAccuracy(grown(filling)), 1, "the one miss at the start did not age out")
 })
 
 test("the four bands are the founder's sentence, at their exact edges", () => {
@@ -2009,26 +2041,38 @@ test("a few right by being lucky cannot climb, which is the report this fixes", 
   // go. What must not survive is the *fifth* answer: under the rule this replaced,
   // one miss cost a rung and the next correct answer bought it straight back, so a
   // guesser at one-in-four rode the noise upward. Now the miss is in the window.
-  let recent: Recent = []
-  for (let i = 0; i < 4; i++) recent = noteRecent(recent, true)
-  assert.equal(bandOf(recent), "climb", "four right in a row is not evidence of anything at all")
-  recent = noteRecent(recent, false)
-  assert.equal(bandOf(recent), "slip", "one miss in five is 80% and the climb must stop dead")
+  const answers: boolean[] = []
+  for (let i = 0; i < 4; i++) answers.push(true)
+  assert.equal(
+    bandOf(grown(answers)),
+    "climb",
+    "four right in a row is not evidence of anything at all",
+  )
+  answers.push(false)
+  assert.equal(
+    bandOf(grown(answers)),
+    "slip",
+    "one miss in five is 80% and the climb must stop dead",
+  )
   // And it stays stopped: the child cannot buy the climb back with one answer, or
   // with ten. `PROMOTE_AT` over a window with a miss in it needs the window full.
   for (let i = 0; i < 10; i++) {
-    recent = noteRecent(recent, true)
+    answers.push(true)
     assert.notEqual(
-      bandOf(recent),
+      bandOf(grown(answers)),
       "climb",
       `a single miss was bought back after ${String(i + 1)} correct answers — the window is ` +
-        `${String(recent.length)} long, and 95% of it does not admit a miss until it is ` +
+        `${String(grown(answers).length)} long, and 95% of it does not admit a miss until it is ` +
         `${String(Math.ceil(1 / (1 - PROMOTE_AT)))} long`,
     )
   }
   // It comes back, when it has genuinely been sustained.
-  for (let i = 0; i < RECENT_WINDOW; i++) recent = noteRecent(recent, true)
-  assert.equal(bandOf(recent), "climb", "a child who did sustain 95% is still not allowed to climb")
+  for (let i = 0; i < RECENT_WINDOW; i++) answers.push(true)
+  assert.equal(
+    bandOf(grown(answers)),
+    "climb",
+    "a child who did sustain 95% is still not allowed to climb",
+  )
 })
 
 test("demotion is readier than promotion, and under 75% it is not a contest", () => {
@@ -2332,11 +2376,11 @@ test("regime 2: a child who is right every single time and slow every single tim
   // Structurally, not just numerically: at no point in that climb was the window
   // anything but `climb`, so there is no path by which the gate could have held
   // them. A window of nothing but correct answers is 100% at every length.
-  let perfect: Recent = []
+  const perfect: boolean[] = []
   for (let i = 0; i < 3 * RECENT_WINDOW; i++) {
-    perfect = noteRecent(perfect, true)
+    perfect.push(true)
     assert.equal(
-      bandOf(perfect),
+      bandOf(grown(perfect)),
       "climb",
       `after ${String(i + 1)} correct answers in a row the gate stopped reading climb`,
     )
@@ -2767,89 +2811,298 @@ test("the spread is centred, asymmetric, and reaches both ways", () => {
   }
 })
 
-test("the spread's upward reach fits under the promotion gate, with margin", () => {
+test("the upward reach is set by what makes the probe informative, not by the gate", () => {
   const p = shares(20, 40)
   const below = p.slice(0, 20).reduce((a, b) => a + b, 0)
+  const centre = p[20] as number
   const above = p.slice(21).reduce((a, b) => a + b, 0)
+  const oneAbove = p[21] as number
   const twoAbove = p[22] as number
 
-  // **The constraint that fixes `ABOVE_RATIO`, and the reason it moved from 0.35.**
-  // Content two rungs above where a child is standing is the part of the mix a
-  // child at their own level plausibly cannot do at all. `PROMOTE_AT` gives them
-  // `1 − PROMOTE_AT` of head-room. If the two-above share is bigger than the
-  // head-room, a child who is right about everything else measures under the gate
-  // and can never climb again, at any level, forever — a deadlock, not a tuning
-  // risk. At `ABOVE_RATIO` 0.35 the share was 5.2% against 5.0% of head-room,
-  // which is on the wrong side of it.
-  const headroom = 1 - PROMOTE_AT
+  // **What used to fix `ABOVE_RATIO`, and why it no longer does.** Content two
+  // rungs above a child is the part of the mix they plausibly cannot do at all,
+  // and the gate used to charge it against them: if the two-above share exceeded
+  // the `1 − PROMOTE_AT` of head-room, a child right about everything else
+  // measured under the gate and could never climb again, at any level, forever. So
+  // the reach was pinned at whatever fitted under five points.
+  //
+  // It no longer fits under five points — two above is now well over the head-room
+  // — and that is deliberate and safe, because `ladderBand` does not read the
+  // mixture. "an answer above the child's rung can never lower the promotion gate"
+  // is that claim asserted directly; this assertion exists so that a future edit
+  // which quietly puts the probes back into the gate has a failing test waiting
+  // for it rather than a silent deadlock.
   assert.ok(
-    twoAbove < headroom,
-    `two rungs up is ${(twoAbove * 100).toFixed(1)}% of the stream and the promotion gate leaves ` +
-      `${(headroom * 100).toFixed(1)}% of head-room, so a child who is perfect on everything ` +
-      `else measures ${((1 - twoAbove) * 100).toFixed(1)}% and is frozen out of climbing forever`,
-  )
-  // With margin, because "cannot do at all" is an idealisation and the real number
-  // moves. A factor of one and a half is what `ABOVE_RATIO` 0.25 buys.
-  assert.ok(
-    twoAbove * 1.5 < headroom,
-    `two rungs up is ${(twoAbove * 100).toFixed(1)}% against ${(headroom * 100).toFixed(1)}% of ` +
-      `head-room — inside the gate, but with nothing in hand`,
-  )
-  // Stated the other way as well, because the deadlock is what the shares mean and
-  // a reader should not have to do the division: a fluent child who fails only the
-  // two-above items must clear the gate.
-  assert.ok(
-    1 - twoAbove >= PROMOTE_AT,
-    `a child perfect except two rungs up measures ${((1 - twoAbove) * 100).toFixed(1)}%`,
+    twoAbove > 1 - PROMOTE_AT,
+    `two rungs up is ${(twoAbove * 100).toFixed(1)}% of the stream, which still fits inside the ` +
+      `${((1 - PROMOTE_AT) * 100).toFixed(0)} points of head-room a mixture-reading gate would ` +
+      `leave — the reach has not actually been widened past what the old constraint allowed`,
   )
 
-  // Still a real reach upward, though: the stretch item has to exist.
-  assert.ok(above > 0.1, `only ${(above * 100).toFixed(1)}% of questions are harder`)
-  assert.ok(twoAbove > 0.01, `two rungs up is ${(twoAbove * 100).toFixed(1)}% — that is absent`)
-  // And there are real easier questions in the stream — "we could still throw in
+  // **(1) The preponderance stays on the easy side.** The founder: "when the
+  // person starts the preponderance is on the easy side but there is some
+  // probability that slightly harder stuff comes out even in the first few."
+  assert.ok(
+    below + centre >= 2 / 3,
+    `only ${((below + centre) * 100).toFixed(1)}% of the stream is at or below the child's rung`,
+  )
+
+  // **(2) Easier stays likelier than harder at the same distance.** Being served a
+  // rung below your level is a fluency rep; being served one above it is being
+  // stuck, and the two are not the same event.
+  assert.ok(
+    ABOVE_RATIO < BELOW_RATIO,
+    `the kernel decays at ${String(ABOVE_RATIO)} upward and ${String(BELOW_RATIO)} downward — a ` +
+      `reach that is not slower than the descent makes one rung up exactly as likely as one rung ` +
+      `down, and the spread stops being a spread around where the child is`,
+  )
+
+  // **(3) The probe has to arrive in time to be used.** `ladderBand` reads a rung
+  // directly once it has `EVIDENCE_MIN` answers about it and borrows from the rungs
+  // BELOW until then — and the borrowed reading is the one that is systematically
+  // wrong in the permissive direction, because everything below a child is easy. So
+  // the rung above has to have gathered `EVIDENCE_MIN` answers by the time the child
+  // arrives on it, out of a memory `ATTEMPT_LOG` questions long. Inside half the log
+  // is what sets the share, and it is the requirement that binds.
+  const needed = (2 * EVIDENCE_MIN) / ATTEMPT_LOG
+  assert.ok(
+    oneAbove >= needed,
+    `one rung up is ${(oneAbove * 100).toFixed(1)}% of the stream, so the ${String(
+      EVIDENCE_MIN,
+    )} answers ladderBand needs to read it take ${Math.ceil(EVIDENCE_MIN / oneAbove).toFixed(0)} ` +
+      `questions to arrive against a log of ${String(ATTEMPT_LOG)} — a child arriving on that ` +
+      `rung is still being read off the easy rungs below it`,
+  )
+  // Which the shipped ratio clears, and 0.40 does not: 16.4% against the 16.7%
+  // this requires. The number is pinned so the doc table and the code agree.
+  assert.equal(ABOVE_RATIO, 0.45)
+
+  // Still a real reach upward, and a real reach down — "we could still throw in
   // some single digit problems".
+  assert.ok(above > 0.2, `only ${(above * 100).toFixed(1)}% of questions are harder`)
   assert.ok(below > 0.3, `only ${(below * 100).toFixed(1)}% of questions are easier`)
+  // And two above is present without being common: the genuinely-too-hard draw the
+  // founder asked for is about one question in twelve, not one in four.
+  assert.ok(
+    twoAbove > 0.05 && twoAbove < 0.12,
+    `two rungs up is ${(twoAbove * 100).toFixed(1)}% of the stream`,
+  )
 
   // Consecutive questions differ: the chance two independent draws land on the
-  // same rung is Σp², and a spread that fails this is a point in disguise. This is
-  // the cost of narrowing the upward reach — it concentrates the centre — and is
-  // why the reach is narrowed as far as the gate needs and no further.
+  // same rung is Σp², and a spread that fails this is a point in disguise. Widening
+  // the reach spreads the centre out rather than concentrating it, so this number
+  // improved — it was 29.1% — which is variety in the founder's other sense.
   const same = p.reduce((a, b) => a + b * b, 0)
-  assert.ok(same < 0.3, `two questions running land on the same rung ${(same * 100).toFixed(1)}% of the time`)
+  assert.ok(
+    same < 0.26,
+    `two questions running land on the same rung ${(same * 100).toFixed(1)}% of the time`,
+  )
 })
 
-test("the at-level mix does not put a child under the founder's floor", () => {
+test("the mix is harder than the founder's floor, and it is not what the gate measures", () => {
   // The distribution read as an accuracy. Against the accuracy a child plausibly
   // has at each offset — near everything below level, ~90% at it, ~60% one above,
-  // ~30% two above — a child standing exactly at their own level measures this
-  // much, and it has to be inside the founder's 85–95% band. At `ABOVE_RATIO` 0.35
-  // it was 85.4%: on the floor of the band with nothing to spare, so any pessimism
-  // about the two harder offsets put the content mix alone under his floor.
-  const byOffset: Record<number, number> = { [-3]: 0.98, [-2]: 0.98, [-1]: 0.98, 0: 0.9, 1: 0.6, 2: 0.3 }
-  const p = shares(20, 40)
-  let measured = 0
-  for (let offset = -SPREAD_BELOW; offset <= SPREAD_ABOVE; offset++) {
-    measured += (p[20 + offset] as number) * (byOffset[offset] as number)
+  // ~30% two above — this is what a child standing exactly at their own level gets
+  // right across the whole stream.
+  const byOffset: Record<number, number> = {
+    [-3]: 0.98,
+    [-2]: 0.98,
+    [-1]: 0.98,
+    0: 0.9,
+    1: 0.6,
+    2: 0.3,
   }
+  const p = shares(20, 40)
+  let stream = 0
+  for (let offset = -SPREAD_BELOW; offset <= SPREAD_ABOVE; offset++) {
+    stream += (p[20 + offset] as number) * (byOffset[offset] as number)
+  }
+
+  // It is **under** the founder's sitting floor, and that is the deliberate change:
+  // this used to have to stay above `SIT_AT` because the gate read this number, and
+  // keeping it there is exactly what kept the mix "extremely easy for a long time".
+  // Now it is the price of the variety he asked for — "occasionally the person will
+  // be getting something too easy or too hard but it's fun for the variety" — and
+  // it buys a fifth of the stream being a probe.
   assert.ok(
-    measured > SIT_AT,
-    `a child standing at their own level measures ${(measured * 100).toFixed(1)}% on this mix, ` +
-      `and the founder's floor is ${(SIT_AT * 100).toFixed(0)}% — the content alone is enough to ` +
-      `demote them`,
+    stream < SIT_AT,
+    `a child at their own level gets ${(stream * 100).toFixed(1)}% of the whole stream right, ` +
+      `which is still above the founder's sitting floor — the mix has not been widened at all`,
+  )
+  // But not a beating. Four in five, floor, is the line: below it a child at their
+  // own level is missing more than one question in five, and the variety has
+  // stopped being a spice.
+  assert.ok(
+    stream > 0.8,
+    `a child at their own level gets only ${(stream * 100).toFixed(1)}% of the stream right — ` +
+      `more than one question in five wrong is not variety, it is a hard time`,
+  )
+
+  // And the number the gate reads instead: the accuracy at the rung the child is
+  // standing on, undiluted. The whole point is that these two are different, and
+  // that the second one is the founder's.
+  const own = byOffset[0] as number
+  let log: readonly Attempt[] = []
+  for (let i = 0; i < RECENT_WINDOW; i++) {
+    log = noteAttempt(log, { correct: i < Math.round(own * RECENT_WINDOW), rung: 20 })
+  }
+  assert.equal(
+    ladderBand(log, 20),
+    "sit",
+    `a child who is ${(own * 100).toFixed(0)}% correct at their own rung must read as sitting at ` +
+      `the right level, whatever the rest of the mix does to them`,
   )
   assert.ok(
-    measured - SIT_AT > 0.02,
-    `a child at their own level measures ${(measured * 100).toFixed(1)}%, which is on the floor ` +
-      `of the band rather than inside it`,
+    bandOf(log.map((attempt) => attempt.correct)) === ladderBand(log, 20),
+    "the two readings disagree on a log with nothing but the child's own rung in it",
+  )
+})
+
+test("an answer above the child's rung can never lower the promotion gate", () => {
+  // **The property that released `ABOVE_RATIO`.** The probe exists to measure the
+  // rung above; charging its misses against the child's own level is what made the
+  // reach a deadlock risk and what parked a fluent child two rungs under
+  // themselves. So: a clean window at the child's own rung, buried under nothing
+  // but failed probes, must still read `climb`.
+  const CENTRE = 20
+  let log: readonly Attempt[] = []
+  for (let i = 0; i < EVIDENCE_MIN; i++) log = noteAttempt(log, { correct: true, rung: CENTRE })
+  assert.equal(ladderBand(log, CENTRE), "climb", `${String(EVIDENCE_MIN)} clean answers at the child's own rung do not read as climbing`)
+
+  for (let i = 0; i < ATTEMPT_LOG - EVIDENCE_MIN; i++) {
+    // Every rung the kernel can reach above the centre, all of them missed.
+    log = noteAttempt(log, { correct: false, rung: CENTRE + 1 + (i % SPREAD_ABOVE) })
+    assert.equal(
+      ladderBand(log, CENTRE),
+      "climb",
+      `after ${String(i + 1)} failed probes the gate stopped reading climb — a child perfect at ` +
+        `their own level is being held down by content that is above it, which is the deadlock ` +
+        `the old ABOVE_RATIO constraint existed to avoid and the reason it could not be widened`,
+    )
+  }
+  // Nothing was evicted: the clean answers are still in there, so this is the gate
+  // ignoring the probes rather than the log forgetting them.
+  assert.equal(log.length, ATTEMPT_LOG)
+  assert.equal(log.filter((attempt) => attempt.correct).length, EVIDENCE_MIN)
+  // And what the mixture-reading gate would have made of exactly the same evidence,
+  // so the size of what was retired is on the record.
+  assert.equal(
+    bandOf(log.map((attempt) => attempt.correct)),
+    "lost",
+    "the mixture reading of this log is not the decisive demotion the per-rung reading ignores",
+  )
+})
+
+test("the founder's three numbers are read at the rung the child is standing on", () => {
+  // The table on `PROMOTE_AT`, applied where he said to apply it: "you only
+  // progress when sustaining >~95% ... if you are getting 85% you are at the right
+  // level. if you are less than ~75% its too hard." Every boundary, in whole
+  // answers out of `RECENT_WINDOW` at the child's OWN rung, with a stream of failed
+  // probes on top of them that must change nothing at all.
+  const CENTRE = 20
+  const cases: readonly (readonly [number, Band])[] = [
+    [RECENT_WINDOW, "climb"],
+    [38, "climb"], // 95.0% — the gate, exactly
+    [37, "sit"], //   92.5% — not sustaining it
+    [34, "sit"], //   85.0% — the right level, exactly
+    [33, "slip"], //  82.5%
+    [30, "slip"], //  75.0% — the floor, exactly
+    [29, "lost"], //  72.5% — too hard
+    [0, "lost"],
+  ]
+  for (const [hits, expected] of cases) {
+    let log: readonly Attempt[] = []
+    for (let i = 0; i < RECENT_WINDOW; i++) {
+      log = noteAttempt(log, { correct: i < hits, rung: CENTRE })
+    }
+    for (let i = 0; i < 20; i++) log = noteAttempt(log, { correct: false, rung: CENTRE + 1 })
+    assert.equal(
+      ladderBand(log, CENTRE),
+      expected,
+      `a child right ${String(hits)} times in ${String(RECENT_WINDOW)} at their own rung ` +
+        `(${((hits / RECENT_WINDOW) * 100).toFixed(1)}%) read as ` +
+        `${ladderBand(log, CENTRE)} and not ${expected}`,
+    )
+  }
+})
+
+test("the gate borrows downward when the centre is thin, and never upward", () => {
+  // A gate that waited for `EVIDENCE_MIN` answers at the centre before doing
+  // anything would be shut for the first twenty-five questions of a sitting and
+  // shut again every time the child moved. So a thin centre borrows from the rung
+  // below, out to `SPREAD_BELOW` — the width of the mix, so it can never borrow
+  // from a rung the child is not being served.
+  const CENTRE = 20
+  // One answer at the centre and nine below it: too thin to read alone, and the
+  // borrowed reading is the one that fires.
+  let thin: readonly Attempt[] = [{ correct: false, rung: CENTRE }]
+  for (let i = 0; i < 9; i++) thin = noteAttempt(thin, { correct: true, rung: CENTRE - 1 })
+  assert.ok(
+    thin.filter((attempt) => attempt.rung === CENTRE).length < EVIDENCE_MIN,
+    "the centre is not actually thin, so this test is not testing the borrow",
+  )
+  assert.equal(
+    ladderBand(thin, CENTRE),
+    "sit",
+    "a thin centre did not borrow from the rung below it — 9 right in 10 is the sitting band",
+  )
+
+  // It does not borrow past `SPREAD_BELOW`, because past there is content the child
+  // is not being served and cannot be evidence about them.
+  const far: readonly Attempt[] = Array.from({ length: RECENT_WINDOW }, () => ({
+    correct: true,
+    rung: CENTRE - SPREAD_BELOW - 1,
+  }))
+  // It still reads them — the last resort is everything at or below the centre —
+  // but only after the widening search has failed, which is what stops a rung four
+  // below from outvoting a rung one below.
+  const mixed = [
+    ...far,
+    ...Array.from({ length: EVIDENCE_MIN }, () => ({ correct: false, rung: CENTRE })),
+  ]
+  assert.equal(
+    ladderBand(mixed, CENTRE),
+    "lost",
+    "a full centre window was outvoted by answers from four rungs below it",
+  )
+
+  // And the last resort is the whole log, which is the only thing that keeps a pack
+  // pinning one `skillId` far above the child from freezing the ladder outright.
+  const pinned: readonly Attempt[] = Array.from({ length: RECENT_WINDOW }, () => ({
+    correct: true,
+    rung: CENTRE + 20,
+  }))
+  assert.equal(
+    ladderBand(pinned, CENTRE),
+    "climb",
+    "a pack that pins a skill above the child froze the ladder instead of moving it",
+  )
+})
+
+test("EVIDENCE_MIN is the width at which one answer stops being the whole reading", () => {
+  // Derived, not chosen: in a window of `n` one answer is worth `1/n`, and if that
+  // is wider than the dead band then a single answer carries a child across the
+  // whole of it and the reading is the last answer wearing a denominator.
+  const band = PROMOTE_AT - SIT_AT
+  assert.ok(
+    1 / EVIDENCE_MIN <= band + 1e-9,
+    `one answer in ${String(EVIDENCE_MIN)} is worth ${((1 / EVIDENCE_MIN) * 100).toFixed(1)} ` +
+      `points against a dead band ${(band * 100).toFixed(1)} points wide`,
   )
   assert.ok(
-    measured < PROMOTE_AT,
-    `a child at their own level measures ${(measured * 100).toFixed(1)}% and would be promoted ` +
-      `off it — the mix is easier than the level it claims to be`,
+    1 / (EVIDENCE_MIN - 1) > band + 1e-9,
+    `${String(EVIDENCE_MIN - 1)} answers would also do, so ${String(EVIDENCE_MIN)} is not the ` +
+      `smallest width the derivation gives`,
   )
-  // And the ratio it takes to get there, so the number in the doc table is pinned
-  // from the test side too.
-  assert.equal(ABOVE_RATIO, 0.25)
+  // And the log is long enough for the narrowest reading — the centre's — to fill
+  // its own window, which is what `ATTEMPT_LOG` is for.
+  const centreShare = shares(20, 40)[20] as number
+  assert.ok(
+    ATTEMPT_LOG >= RECENT_WINDOW / centreShare,
+    `the centre carries ${(centreShare * 100).toFixed(1)}% of the stream, so a window of ` +
+      `${String(RECENT_WINDOW)} needs ${Math.ceil(RECENT_WINDOW / centreShare).toFixed(0)} ` +
+      `questions to fill and the log only remembers ${String(ATTEMPT_LOG)}`,
+  )
 })
 
 test("the spread reflects at the ends of the ladder rather than piling onto them", () => {
@@ -2961,6 +3214,183 @@ test("a beginner sees far more than nine distinct questions, without any closed 
   // And they are all still first-grade facts, not a stretch into column
   // arithmetic: the spread is narrow, it is only not a point.
   for (const key of skills) assert.match(key, /^dw\.add\.facts\./, `the floor reached ${key}`)
+})
+
+/**
+ * A learner, as a per-rung accuracy curve.
+ *
+ * Anchored at `level`, where they are right `pLevel` of the time, and falling by a
+ * fixed log-odds slope per rung above it — which is what an ability curve is, and
+ * is the one thing a fixed "right nine times in ten wherever it came from" pattern
+ * cannot express. Capped at 0.99, because nobody is perfect, and floored at 0.02,
+ * which is what a child with no idea taps.
+ *
+ * The slope is 1.2 log-odds a rung: a child who is 95% at their level is 85% one
+ * rung up and 63% two up. That is the shape the whole mechanism is arguing about,
+ * so it is stated here in one place rather than assumed in three tests.
+ */
+function learner(level: number, pLevel: number, slope = 1.2): (rung: number) => number {
+  const logit = Math.log(pLevel / (1 - pLevel))
+  return (rung) =>
+    Math.min(0.99, Math.max(0.02, 1 / (1 + Math.exp(-(logit - slope * (rung - level))))))
+}
+
+/** A deterministic uniform stream, so a simulated child is the same child twice. */
+function stream(seed: number): () => number {
+  let a = seed >>> 0
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+/** Where a learner's centre comes to rest, and what they are served once it has. */
+function settle(profileId: string, ability: (rung: number) => number, seed: number) {
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const rng = stream(seed)
+  const service = createItemService({ profileId, record: noRecord, rungs })
+  const QUESTIONS = 1_500
+  const TAIL = 500
+  const centres: number[] = []
+  const offsets = new Map<number, number>()
+  let right = 0
+  for (let n = 0; n < QUESTIONS; n++) {
+    const centre = service.position()
+    const item = service.next({ packId: "dynawalla.truedraw" })
+    assert.ok(item)
+    const served = Math.round((item.difficulty ?? 0) * span)
+    const correct = rng() < ability(served)
+    if (n >= QUESTIONS - TAIL) {
+      centres.push(centre)
+      offsets.set(served - centre, (offsets.get(served - centre) ?? 0) + 1)
+      if (correct) right += 1
+    }
+    service.judge({
+      packId: "dynawalla.truedraw",
+      itemId: item.id,
+      response: correct ? service.reveal(item.id) : "definitely wrong",
+      latencyMs: publishedP50Ms(widthOf(item.operands)),
+    })
+  }
+  const mean = centres.reduce((a, b) => a + b, 0) / centres.length
+  return {
+    mean,
+    lowest: Math.min(...centres),
+    highest: Math.max(...centres),
+    /** What the child gets right at the rung their centre came to rest on. */
+    ownRung: ability(Math.round(mean)),
+    /** What they get right across the whole served stream, probes included. */
+    experienced: right / TAIL,
+    shareAt: (offset: number) => (offsets.get(offset) ?? 0) / TAIL,
+  }
+}
+
+test("a learner's centre comes to rest at their own level, not two rungs under it", () => {
+  // **The deliverable.** Three children of three different abilities, each run
+  // fifteen hundred questions through the real service, measured over the last
+  // five hundred. Against the rule this replaced — which read the mixture — the
+  // same three settled at 17.5, 16.3 and 0.3, on content they were getting 99%,
+  // 99% and 97% right: "the interlude problems stay extremely easy for a long
+  // time", which is the report this change answers.
+  //
+  // What must be true of each of them, and is asserted rather than described:
+  //
+  //   * the centre lands on the rung they actually are — within one rung of it;
+  //   * what they get right THERE is inside the founder's 85–95% band, which is
+  //     the definition of "the right level";
+  //   * the centre is steady, not a child being walked up and down the ladder;
+  //   * and they are still being probed above it, which is the whole point.
+  for (const [name, level, pLevel, seed] of [
+    ["a child who is 95% at rung 20", 20, 0.95, 1],
+    ["a child who is 70% at rung 20", 20, 0.7, 2],
+    ["a beginner, 90% at rung 1", 1, 0.9, 3],
+  ] as const) {
+    const child = settle(name, learner(level, pLevel), seed)
+    const where = `${name} settled at ${child.mean.toFixed(1)} (${String(child.lowest)}..${String(child.highest)}), ` +
+      `getting ${(child.ownRung * 100).toFixed(0)}% right there and ` +
+      `${(child.experienced * 100).toFixed(1)}% across the stream`
+
+    // The rung they belong on is the highest one they can still sit the band at,
+    // and a child who is 70% at rung 20 does not belong at rung 20 — the founder's
+    // own rule says under 75% is too hard. So the claim is not "the centre equals
+    // `level`", it is that the centre is within a rung of it, in the direction the
+    // rule says.
+    assert.ok(
+      Math.abs(child.mean - level) <= 1.5,
+      `${where} — that is not the rung they are on`,
+    )
+    // What they are getting right AT their settled centre is the founder's band.
+    assert.ok(
+      child.ownRung >= SIT_AT && child.ownRung <= PROMOTE_AT,
+      `${where} — the founder's band is ${(SIT_AT * 100).toFixed(0)}–` +
+        `${(PROMOTE_AT * 100).toFixed(0)}% at the level you are standing on`,
+    )
+    // Steady. The old rule ranged this child over twenty rungs; a centre that
+    // wanders further than the spread it draws from is not a centre.
+    assert.ok(
+      child.highest - child.lowest <= SPREAD_BELOW + SPREAD_ABOVE,
+      `${where} — the centre wandered ${String(child.highest - child.lowest)} rungs`,
+    )
+    // And still probed. This is the founder's request, measured on the child rather
+    // than on the kernel: a real fraction of what they see is above them.
+    assert.ok(
+      child.shareAt(1) > 0.15,
+      `${where} — only ${(child.shareAt(1) * 100).toFixed(0)}% of what they saw was one rung up`,
+    )
+    assert.ok(
+      child.shareAt(2) > 0.05,
+      `${where} — only ${(child.shareAt(2) * 100).toFixed(0)}% of what they saw was two rungs up`,
+    )
+    // Not a beating, either: they are still getting four questions in five right
+    // across the whole stream, probes and all.
+    assert.ok(
+      child.experienced > 0.8,
+      `${where} — that is more than one question in five wrong`,
+    )
+  }
+})
+
+test("a skipped question is not evidence, and cannot be evidence of failure", () => {
+  // A timeout is a `skip`, and a timeout reported as a wrong answer poisons the
+  // per-rung estimate at exactly the rung the child ran out of time on — which is
+  // usually a probe, and would make the probe self-fulfilling. `skip` spends the
+  // attempt and records nothing, and this asserts the "records nothing" half
+  // through the position rather than through the ledger.
+  const rungs = ladder()
+  const service = createItemService({ profileId: "p-skip", record: noRecord, rungs })
+  climbTo(service, 8)
+  const standing = service.position()
+  for (let i = 0; i < 3 * ATTEMPT_LOG; i++) {
+    const item = service.next({ packId: "dynawalla.siege" })
+    assert.ok(item)
+    service.skip(item.id)
+  }
+  assert.equal(
+    service.position(),
+    standing,
+    `three logs' worth of skipped questions moved the child from rung ${String(standing)} to ` +
+      `${String(service.position())} — a question nobody answered is not evidence about anybody`,
+  )
+  // And a skip does not consume the attempt for the ladder either: the child is
+  // still exactly where their answered questions left them, so the next real
+  // answer is read against those and not against a window of imaginary misses.
+  const item = service.next({ packId: "dynawalla.siege" })
+  assert.ok(item)
+  const judged = service.judge({
+    packId: "dynawalla.siege",
+    itemId: item.id,
+    response: service.reveal(item.id),
+    latencyMs: publishedP50Ms(widthOf(item.operands)),
+  })
+  assert.equal(judged.correct, true)
+  assert.ok(
+    service.position() >= standing,
+    `a correct answer after a run of skips demoted the child from ${String(standing)} to ` +
+      `${String(service.position())}`,
+  )
 })
 
 test("the stream a child is served stays inside the spread of where the ladder stands", () => {
