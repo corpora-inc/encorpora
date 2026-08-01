@@ -22,6 +22,7 @@ import { test } from "node:test"
 
 import { Rng } from "../core/rng.ts"
 import { Arena } from "../game/arena.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { createStubHost } from "../stubHost.ts"
 import { playCarefully } from "./harness.ts"
 
@@ -35,7 +36,7 @@ test("a child who plays it properly opens resonators, over and over", () => {
       reducedMotion: true,
       onReport: (r) => reports.push({ correct: r.correct, answered: r.answered }),
     })
-    const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: 900, height: 700 })
+    const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: 900, height: 700, experience: CALM_OPENINGS })
     arena.begin(0)
 
     playCarefully(arena, 9000)
@@ -56,7 +57,7 @@ test("a child who plays it properly opens resonators, over and over", () => {
 
 test("a chain builds when nothing goes wrong, and the count is honest", () => {
   const host = createStubHost({ seed: 0xc4a1, reducedMotion: true })
-  const arena = new Arena(host, new Rng(0xc4a1), { width: 1100, height: 800 })
+  const arena = new Arena(host, new Rng(0xc4a1), { width: 1100, height: 800, experience: CALM_OPENINGS })
   arena.begin(0)
   playCarefully(arena, 9000)
   assert.equal(arena.chain, arena.opened, "a clean run did not build a chain")
@@ -67,7 +68,7 @@ test("the arena never runs out of things to shoot", () => {
   // Every resonator restocks the field, so a sitting cannot arrive at an empty
   // arena with a question still on the board.
   const host = createStubHost({ seed: 0x5106, reducedMotion: true })
-  const arena = new Arena(host, new Rng(0x5106), { width: 900, height: 700 })
+  const arena = new Arena(host, new Rng(0x5106), { width: 900, height: 700, experience: CALM_OPENINGS })
   arena.begin(0)
   let emptyFrames = 0
   for (let f = 0; f < 6000; f++) {

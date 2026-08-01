@@ -18,6 +18,7 @@ import { safeRect } from "../../../../packs/shared/game-chrome/index.ts"
 import type { Arena, Body, Resonator } from "../game/arena.ts"
 import { HUSK_R, MOTE_R, RESONATOR_R, SHIP_R, SHOT_R } from "../game/arena.ts"
 import { heldLeaves, type HintState, revealPaceMs } from "../game/hint.ts"
+import type { Mark } from "../game/live.ts"
 import type { PlacedNode } from "../game/tree.ts"
 import type { Grid } from "../sim/grid.ts"
 import { hudLayout, type HudLayout } from "./hud.ts"
@@ -194,7 +195,12 @@ export class Scene {
 
     this.drawGrid(grid)
     if (arena.resonator) this.drawResonator(arena.resonator, arena.ship)
-    for (const body of arena.bodies) this.drawBody(body)
+    // Which numbers divide what is left. `null` — never an empty map — once the
+    // child is past the guided opening, so there is exactly one switch and the
+    // renderer cannot draw a stale marking by forgetting to ask. See `live.ts`.
+    const marks = arena.liveMarks()
+    const remaining = marks === null ? null : arena.remaining
+    for (const body of arena.bodies) this.drawBody(body, marks?.get(body.id) ?? null, remaining)
 
     ctx.fillStyle = BRASS_LIGHT
     for (const shot of arena.shots) {
@@ -285,10 +291,42 @@ export class Scene {
 
   // ── the bodies ───────────────────────────────────────────────────────────
 
-  private drawBody(body: Body): void {
+  /**
+   * One number on the field, and — while the opening is guided — whether it
+   * divides what is left.
+   *
+   * The marking is drawn in the materials the pieces are already made of
+   * rather than in a new colour: a mote that goes in is collared in the same
+   * celestial light it is lit with, a stone with a piece of the answer inside
+   * it is collared in brass. **And a needed mote states the reason underneath
+   * it**, as arithmetic and not as a sentence: `18÷3`. That is the "and why"
+   * in the report, it is language-free so it costs nothing to translate, and it
+   * is the exact rule the game runs on rather than a paraphrase of it.
+   *
+   * A `spare` is drawn as it always was. Nothing is crossed out, dimmed or
+   * marked wrong — a mote that is not one of yours is not a mistake, and half
+   * the point of the guidance is that the contrast does the teaching.
+   */
+  private drawBody(body: Body, mark: Mark | null, remaining: number | null): void {
     const ctx = this.ctx
     const pop = Math.min(1, body.age / 160)
     const r = (body.prime ? MOTE_R : HUSK_R) * (0.6 + 0.4 * pop)
+
+    if (mark === "needed" || mark === "carries") {
+      const beat = this.reduced ? 0 : Math.sin(this.clock / 260 + body.id) * 1.6
+      ctx.beginPath()
+      ctx.arc(body.x, body.y, r + 9 + beat, 0, Math.PI * 2)
+      ctx.strokeStyle = mark === "needed" ? CELESTIAL : BRASS
+      ctx.lineWidth = 3
+      ctx.stroke()
+    }
+    if (mark === "needed" && remaining !== null && remaining > 1) {
+      ctx.fillStyle = CELESTIAL
+      ctx.font = numeralFont(Math.max(11, r * 0.62))
+      ctx.textAlign = "center"
+      ctx.textBaseline = "top"
+      ctx.fillText(`${remaining}÷${body.value}`, body.x, body.y + r + 14)
+    }
 
     if (body.prime) {
       // A prime is the only thing in the arena that is its own light source.

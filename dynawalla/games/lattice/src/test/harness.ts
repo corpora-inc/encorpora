@@ -8,6 +8,7 @@ import type { Host } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
 import { Arena } from "../game/arena.ts"
 import { multisetDifference, primeFactors } from "../game/factor.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { createStubHost } from "../stubHost.ts"
 
 export type Report = { questionId: string; correct: boolean; ms: number; answered: string }
@@ -22,7 +23,18 @@ export type Rig = {
   haptics: string[]
 }
 
-export function rig(seed = 0x1a771ce, opts: { difficulty?: number } = {}): Rig {
+/**
+ * A rig, at the steady state by default.
+ *
+ * `experience` is `CALM_OPENINGS` unless a test says otherwise, so every test
+ * written before `game/opening.ts` existed keeps asking about the game a child
+ * who has played before actually gets. `opening.test.ts` is the one that asks
+ * for a first sitting, and it says so out loud.
+ */
+export function rig(
+  seed = 0x1a771ce,
+  opts: { difficulty?: number; experience?: number } = {},
+): Rig {
   const reports: Report[] = []
   const skips: string[] = []
   const transitions: Array<{ kind: string; label?: string }> = []
@@ -37,7 +49,11 @@ export function rig(seed = 0x1a771ce, opts: { difficulty?: number } = {}): Rig {
     onTransition: (kind, label) =>
       transitions.push(label === undefined ? { kind } : { kind, label }),
   })
-  const arena = new Arena(host, new Rng(seed ^ 0x51de), { width: 900, height: 700 })
+  const arena = new Arena(host, new Rng(seed ^ 0x51de), {
+    width: 900,
+    height: 700,
+    experience: opts.experience ?? CALM_OPENINGS,
+  })
   arena.begin(0)
   return { host, arena, reports, skips, transitions, haptics }
 }

@@ -43,6 +43,7 @@ import {
   stageCount,
   WALL_STAGES,
 } from "../game/hint.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { isResonant, MIN_TARGET } from "../game/resonance.ts"
 import {
   factorTree,
@@ -764,7 +765,7 @@ test("the ladder holds rather than climbing on an answer the game handed over", 
       haptic: () => undefined,
       prefersReducedMotion: () => true,
     }
-    const arena = new Arena(host, new Rng(0x5eed ^ 0x51de), { width: 900, height: 700 })
+    const arena = new Arena(host, new Rng(0x5eed ^ 0x51de), { width: 900, height: 700, experience: CALM_OPENINGS })
     arena.begin(0)
     const firstArming = asked.length
     const res = arena.resonator
@@ -890,7 +891,7 @@ test("with no resonator there is nothing to hint about and nothing throws", () =
       prefersReducedMotion: () => true,
     },
     new Rng(3),
-    { width: 900, height: 700 },
+    { width: 900, height: 700, experience: CALM_OPENINGS },
   )
   // Every draw is `2`, which is not a target this game asks for, so the arena
   // arms nothing at all.

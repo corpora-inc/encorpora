@@ -32,6 +32,7 @@ import type { Host } from "./contract.ts"
 import { Rng } from "./core/rng.ts"
 import { Arena, RESONATOR_R, SHIP_R, type ArenaEvent } from "./game/arena.ts"
 import { bestChain, recordChain } from "./game/best.ts"
+import { noteOpen, opensEver } from "./game/seen.ts"
 import { shapeStick, STICK_RANGE } from "./game/steer.ts"
 import { Scene } from "./render/scene.ts"
 import { BRASS_LIGHT, CELESTIAL, OXIDE } from "./render/palette.ts"
@@ -78,6 +79,9 @@ export function mountLattice(
   const arena = new Arena(host, new Rng(seed), {
     width: scene.cssWidth,
     height: scene.cssHeight,
+    // Everything this child has ever opened, so a first sitting starts on one
+    // number moving slowly and a fifth one does not. See `game/opening.ts`.
+    experience: opensEver(),
   })
   const grid = new Grid({
     cols: Math.max(6, Math.round(scene.cssWidth / GRID_CELL)),
@@ -244,6 +248,10 @@ export function mountLattice(
           scene.celebrate(event.at.x, event.at.y, event.tiles)
           audio.open(event.tiles.length)
           if (recordChain(arena.chain)) best = arena.chain
+          // Remembered across sittings, and never shown. The ramp in
+          // `game/opening.ts` is indexed on it, so a child who opened three
+          // rings yesterday comes back to the fourth field and not the first.
+          noteOpen()
           break
         }
         case "refuse": {

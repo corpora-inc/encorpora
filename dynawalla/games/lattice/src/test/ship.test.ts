@@ -38,6 +38,7 @@ import { test } from "node:test"
 
 import { Rng } from "../core/rng.ts"
 import { Arena, HUSK_R, MOTE_R, SHIP_R, SHOT_R } from "../game/arena.ts"
+import { CALM_OPENINGS } from "../game/opening.ts"
 import { createStubHost } from "../stubHost.ts"
 
 /** The three screens this pack has to be the same game on. */
@@ -63,7 +64,7 @@ type Spawn = { spawnAt(v: number, x: number, y: number, vx: number, vy: number):
 /** An arena with nothing in it, so the ship is the only thing being measured. */
 function bare(w: number, h: number, seed = 0x5417): Arena {
   const host = createStubHost({ seed, reducedMotion: true })
-  const arena = new Arena(host, new Rng(seed), { width: w, height: h })
+  const arena = new Arena(host, new Rng(seed), { width: w, height: h, experience: CALM_OPENINGS })
   arena.begin(0)
   arena.bodies.length = 0
   arena.shots.length = 0
