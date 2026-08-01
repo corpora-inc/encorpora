@@ -91,8 +91,14 @@ export type Game = {
   sealTier: number
   sealT: number
   mark: MarkRound | null
-  /** Queued behind the milestone punch so the two big moments do not collide. */
-  pendingMark: MarkRound | null
+  /**
+   * A mark is OWED, not yet cut. Queued behind the milestone punch so the two
+   * big moments do not collide — and the round itself is built at the instant
+   * the card opens rather than here, because the player keeps buying and the
+   * stations keep producing during the wait, and a card cut a second early
+   * prints a C the player no longer has.
+   */
+  pendingMark: boolean
   pendingMarkIn: number
   markT: number
   markPicked: number

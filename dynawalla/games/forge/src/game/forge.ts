@@ -116,7 +116,7 @@ export function mount(el: HTMLElement, host: Host): Mounted {
     sealTier: -1,
     sealT: 0,
     mark: null,
-    pendingMark: null,
+    pendingMark: false,
     pendingMarkIn: 0,
     markT: 0,
     markPicked: -1,
@@ -488,7 +488,7 @@ export function mount(el: HTMLElement, host: Host): Mounted {
       // settles, and THEN two ingots rise out of the crucible.
       if (oom >= 4 && oom > markOom && !g.pendingMark && !g.mark) {
         markOom = oom
-        g.pendingMark = makeMarkRound(economy, rng)
+        g.pendingMark = true
         g.pendingMarkIn = 0.95
       }
     }
@@ -801,12 +801,12 @@ export function mount(el: HTMLElement, host: Host): Mounted {
       {
         heading: "Forge marks",
         lines: [
-          "Sometimes two glowing ingots rise out of the crucible. That pair is a forge mark: a free choice between two rewards, and taking either one makes everything you own a little faster.",
-          "One says something like +14 HAMMER. The other says ×2 HAMMER.",
-          "Look at the HAMMER row to see how many you own, then work out which ingot gives you more.",
-          "Own 9 hammers? ×2 gives 18, and +14 gives 23. Take the +14.",
-          "Own 400 hammers? ×2 gives 800, and +14 gives 414. Now take the ×2.",
-          "Neither one is wrong and nothing is lost. But the better one changes as you play, so look at the row every time.",
+          "Sometimes two glowing ingots rise out of the crucible. That pair is a FORGE MARK: a free choice between two rewards, and taking either one makes everything you own a little faster.",
+          "One says something like +14 HAMMER. The other says ×2 HAMMER. Take the one that leaves you with more hammers. That is the whole mission.",
+          "The card tells you how many you have, and each ingot shows you what you would end up with. You keep whichever you take.",
+          "Own 9 hammers? ×2 leaves 18, and +14 leaves 23. Take the +14.",
+          "Own 400 hammers? ×2 leaves 800, and +14 leaves 414. Now take the ×2.",
+          "Neither one is wrong and nothing is ever lost. But which one is bigger changes as you grow, so read the numbers every time.",
         ],
       },
       {
@@ -923,8 +923,12 @@ export function mount(el: HTMLElement, host: Host): Mounted {
     if (g.pendingMark) {
       g.pendingMarkIn -= dt
       if (g.pendingMarkIn <= 0 && g.mode === "play" && g.struckAt < 0) {
-        g.mark = g.pendingMark
-        g.pendingMark = null
+        // Cut the card HERE, on the frame it opens, so the C it prints is the
+        // C the player owns as they look at it. The wait above can be long —
+        // the player holds a row and buys thirty more of the very station the
+        // mark is about — and every number on the card is frozen from now on.
+        g.mark = makeMarkRound(economy, rng)
+        g.pendingMark = false
         g.markPicked = -1
         g.markGood = false
         g.markT = 0
