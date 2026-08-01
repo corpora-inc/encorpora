@@ -50,7 +50,8 @@ export const MAX_PEG = 5;
  * real thing:
  *
  *   - `NUMERAL_MIN_PX` — the floor a numeral may be shrunk to. 15px, which is
- *     the floor a repo-wide audit set for an answer a child has to read.
+ *     the floor a repo-wide audit set for an answer a child has to read, and
+ *     which is load-bearing for the character budget — see below.
  *   - `NUMERAL_ADVANCE_EM` — how wide one digit is in the game's serif stack.
  *     Lining figures in Palatino, Georgia and Times all advance 0.50em; 0.58 is
  *     deliberately above every one of them, because over-estimating costs a
@@ -65,21 +66,98 @@ export const MAX_PEG = 5;
  * second to the adapter, which refuses a question whose numerals still would not
  * fit. Neither guesses.
  */
+/**
+ * The floor a numeral may be shrunk to. **Still 15, and that is a finding.**
+ *
+ * The founder's second reading of this pack was *"they are a bit small"*, and
+ * this looks like the number to raise. It is not, and the reason is worth
+ * writing down so the next person does not spend the afternoon rediscovering it.
+ *
+ * Raising this floor is not free. `charsAtRadius` divides by it, so every pixel
+ * costs the disc characters of budget; `numeralCapacity` hands that budget to the
+ * adapter; and the adapter **refuses** a board whose numerals no longer fit. A
+ * raised floor does not draw a board smaller, it deletes the board.
+ *
+ * Measured, at rack 9 — which is the rack size `game.ts` passes to
+ * `numeralCapacity` — over every viewport from 280×280 to 1600×1600, counting the
+ * ones that could show a six-character board (the widest the shipping ladder
+ * serves) and then could not:
+ *
+ *   | floor | viewports that stop serving six characters | band                        |
+ *   |-------|--------------------------------------------|-----------------------------|
+ *   | 15px  | — (the baseline)                            | —                           |
+ *   | 16px  |  3,080                                      | w 280–354, h 715–761        |
+ *   | 17px  |  7,073                                      | w 280–376, h 715–807        |
+ *   | 18px  | 12,057                                      | w 280–399, h 715–853        |
+ *
+ * They are not all obscure. At 17px the band has grown far enough to swallow
+ * **360×800 — Pixel-class Android, one of the most common viewports in the
+ * world**, which drops from six characters to five, taking 360×780 with it. At
+ * 18px it reaches 390×844 and 393×873. Sixteen keeps every named device but
+ * still costs three thousand viewports, and buys one pixel.
+ *
+ * So the floor holds at 15 and the numerals get bigger a different way: through
+ * `NUMERAL_EM` below, which `charsAtRadius` does not read and which therefore
+ * costs no board anywhere. `legibility.test.ts` pins 360×800 at exactly six
+ * characters so that a future raise of this constant fails loudly instead of
+ * quietly emptying a phone's question pool.
+ */
 export const NUMERAL_MIN_PX = 15;
 export const NUMERAL_ADVANCE_EM = 0.58;
 export const NUMERAL_FACE = 1.7;
 
 /**
- * The type size an engraved numeral starts at, before it is fitted.
+ * How much of the disc's radius a numeral's type size is, before fitting.
  *
- * `r * 0.78` for two characters or more and `r * 1.02` for one, which is what the
- * renderer always used — with the legibility floor now under it. That floor
- * matters at the small end and was being missed there: `weightR` clamps to 17 on
- * a narrow screen, and `17 × 0.78` is 13.3px, so a plain two-digit answer was
- * drawn under the 15px floor before any question of width came up.
+ * `0.78` for two characters or more and `1.02` for one is what shipped, and the
+ * 0.78 is the one the founder was looking at: a two-digit answer on a 320×568
+ * phone came out at **16.1px**, and on the 390×844 phone at 19.6px. There was no
+ * reason for a two-digit numeral to be a quarter smaller than a one-digit one —
+ * `fittedNumeralPx` already shrinks anything that does not fit, so the ideal size
+ * is free to be generous and let the fitter take it back.
+ *
+ * `0.98` and `1.14` are what the face can actually carry. Two characters at
+ * `0.98r` lay `2 × 0.58 × 0.98r = 1.14r` of ink inside a `1.7r` face, so they are
+ * never fitted down at all; three characters land at `1.71r`, a hair over, and
+ * come back essentially unchanged. Nothing is clipped and nothing overflows,
+ * because the fitter is still underneath — this only raises where it starts.
+ *
+ * Measured effect on a plain two-digit weight: 16.1px → **20.2px** at 320×568,
+ * 19.6px → 24.7px at 390×844, 22.5px in phone landscape, 26.5px → 33.3px on a
+ * tablet.
+ *
+ * **This is the knob that was safe to turn.** `charsAtRadius` and
+ * `radiusForChars` do not read it, so the disc's character budget, the layout it
+ * produces and every refusal the adapter makes are bit-for-bit what they were —
+ * unlike `NUMERAL_MIN_PX` above, where the same size gain would have cost a
+ * 360×800 phone its six-character boards.
  */
+export const NUMERAL_EM = 0.98;
+export const NUMERAL_EM_SOLO = 1.14;
+
+/** The type size an engraved numeral starts at, before it is fitted. */
 export function idealNumeralPx(r: number, chars: number): number {
-  return Math.max(NUMERAL_MIN_PX, r * (chars >= 2 ? 0.78 : 1.02));
+  return Math.max(NUMERAL_MIN_PX, r * (chars >= 2 ? NUMERAL_EM : NUMERAL_EM_SOLO));
+}
+
+/**
+ * The type size of ONE ROW of a stacked fraction — `1/2` engraved on a disc.
+ *
+ * Its own knob, because two rows and a bar have to share the height one row had,
+ * so it cannot simply be `NUMERAL_EM`. It shipped at a flat `r * 0.5`, which put
+ * a `1/2` weight at **10.3px** on a 320×568 phone while a `12` weight on the same
+ * disc got 16.1px — so the founder's "a bit small" was worse on the fractions
+ * than on the integers he happened to be looking at, and the size pass would have
+ * widened that gap rather than closed it.
+ *
+ * `0.58r` is what the belly of the disc carries with a halo on both rows,
+ * measured at every viewport. The floor is `NUMERAL_MIN_PX * 0.8` and is
+ * load-bearing rather than decorative: `haloWidth`'s 2px minimum is a larger
+ * FRACTION of a smaller glyph, and under 12px the halo begins closing the
+ * counters of 0, 6, 8 and 9. `legibility.test.ts` holds both ends.
+ */
+export function stackedNumeralPx(r: number): number {
+  return Math.max(NUMERAL_MIN_PX * 0.8, r * 0.58);
 }
 
 /**

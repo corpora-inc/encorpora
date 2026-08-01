@@ -22,7 +22,22 @@ import {
   NUMERAL_FACE,
   fittedNumeralPx,
   idealNumeralPx,
+  stackedNumeralPx,
 } from "./layout.ts";
+import {
+  BALLOON_BODY,
+  BRASS_BODY,
+  BRASS_HI,
+  BRASS_LO,
+  BRASS_MID,
+  BRASS_TOP,
+  COPPER,
+  balloonGround,
+  haloFor,
+  inkFor,
+  weightGround,
+  type CrateState,
+} from "./ink.ts";
 import type { Beam, Body } from "./sim.ts";
 import { dishCentre } from "./sim.ts";
 import type { PuzzleSpec, Side } from "./puzzle.ts";
@@ -30,6 +45,76 @@ import type { Camera, Particles } from "./juice.ts";
 import { clamp01, easeOutCubic, easeOutQuint, easeOutBack } from "./ease.ts";
 
 const BG_SCALE = 0.5;
+
+/**
+ * Paint a gradient from a stop list in `ink.ts`.
+ *
+ * The point of the indirection is that the legibility test measures those same
+ * arrays. A numeral's contrast is a claim about the surface under it, so the
+ * surface a test believes in and the surface the canvas paints have to be one
+ * object — otherwise the first person to warm up the brass silently invalidates
+ * every number in the table without a single test going red.
+ */
+function stops(
+  gr: CanvasGradient,
+  list: ReadonlyArray<readonly [number, string]>,
+): CanvasGradient {
+  for (const [at, colour] of list) gr.addColorStop(at, colour);
+  return gr;
+}
+
+/**
+ * The ink a numeral on plain brass is engraved in, and the halo behind it.
+ *
+ * Derived once, from the brass itself, rather than typed in. What was typed in
+ * was `#ffeec4`, which measures **1.03:1** against the specular streak of the
+ * disc it is engraved on — the numeral and the brass being, to a reader, the same
+ * colour. See the header of `ink.ts`.
+ */
+export const WEIGHT_INK = inkFor(weightGround());
+export const BALLOON_INK = inkFor(balloonGround());
+
+/**
+ * Which of the three things a crate window can be showing.
+ *
+ * Pulled out of the draw call so the legibility test can drive the same three
+ * states the renderer does, off the same predicate. A test that re-derived
+ * "wrong beats declared" by hand would keep passing after somebody swapped the
+ * order here, which is the whole failure it exists to catch.
+ */
+export function crateState(v: Pick<ViewState, "wrong" | "declared">): CrateState {
+  if (v.wrong > 0) return v.declared ? "rejected" : "rejectedEmpty";
+  return v.declared ? "declared" : "unknown";
+}
+
+/**
+ * The verdigris a rejected value is written in — lifted from `C.verdigris`.
+ *
+ * The frame around a rejected crate stays `#5fae95`; the numeral inside it does
+ * not. Verdigris is the one ink in this pack whose luminance sits in the middle
+ * (0.349), which is the worst place to be: too dark to separate from mist-lit
+ * glass, too light for the dark halo to carry it. Measured against the darkest
+ * ground a crate label reaches — mist over `#0f1a20`, the `rejectedEmpty` state
+ * — `#5fae95` and its halo come to **2.82:1**, under the non-text bar.
+ *
+ * `#7fccb3` is the same hue at luminance 0.510 and measures 3.39:1 there. It is
+ * still unmistakably cold copper-oxide rather than the celebration gold, which
+ * is the whole job the colour is doing.
+ */
+const VERDIGRIS_INK = "#7fccb3";
+
+/**
+ * The ink a crate's label is written in. Unlike the brass and the balloon these
+ * colours carry meaning and are not free to be derived — a rejected value goes
+ * cold copper-oxide and never warm, so the colour agrees with the slam and the
+ * returned weight rather than contradicting them. What IS derived is the halo
+ * behind them, and `legibility.test.ts` measures all four states against the
+ * window, the specular arc, the rim, the iron and the banding.
+ */
+export function crateInk(state: CrateState): string {
+  if (state === "rejected" || state === "rejectedEmpty") return VERDIGRIS_INK;
+  return state === "declared" ? C.gold : "#cfe3ea";
+}
 
 export const SERIF =
   '"Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif';
@@ -39,9 +124,12 @@ const C = {
   night1: "#101725",
   night2: "#18213247",
   brassDark: "#3a2a0e",
-  brassMid: "#b08a3c",
-  brassHi: "#f7e6b4",
-  brassLo: "#6a4f1d",
+  // The brass lives in `ink.ts`, which is where its contrast is measured. Two
+  // copies of `#f7e6b4` meant the disc could be warmed up without the column it
+  // stands on following, and without the legibility table noticing either.
+  brassMid: BRASS_MID,
+  brassHi: BRASS_HI,
+  brassLo: BRASS_LO,
   ivory: "#f2e9d8",
   ink: "#1a1207",
   iron0: "#161b22",
@@ -51,7 +139,7 @@ const C = {
   stone1: "#171a20",
   stone2: "#3a3d46",
   gold: "#ffd07a",
-  copper: "#c8763f",
+  copper: COPPER,
   verdigris: "#5fae95",
   glass: "#8fb6c9",
 };
@@ -820,16 +908,9 @@ export class Renderer {
     }
 
     // body
-    const g = this.grad(`wbody${r.toFixed(1)}`, (c) => {
-      const gr = c.createLinearGradient(-r, 0, r, 0);
-      gr.addColorStop(0, "#2b1e07");
-      gr.addColorStop(0.14, C.brassLo);
-      gr.addColorStop(0.34, C.brassHi);
-      gr.addColorStop(0.52, C.brassMid);
-      gr.addColorStop(0.8, "#7a5a1e");
-      gr.addColorStop(1, "#201604");
-      return gr;
-    });
+    const g = this.grad(`wbody${r.toFixed(1)}`, (c) =>
+      stops(c.createLinearGradient(-r, 0, r, 0), BRASS_BODY),
+    );
     ctx.save();
     ctx.shadowColor = "rgba(0,0,0,0.45)";
     ctx.shadowBlur = 10;
@@ -846,14 +927,9 @@ export class Renderer {
     ctx.restore();
 
     // top face
-    const tg = this.grad(`wtop${r.toFixed(1)}`, (c) => {
-      const gr = c.createLinearGradient(-r, -h / 2 - ry, r, -h / 2 + ry);
-      gr.addColorStop(0, "#8a6a26");
-      gr.addColorStop(0.4, "#e9d197");
-      gr.addColorStop(0.62, C.brassHi);
-      gr.addColorStop(1, "#7c5d1f");
-      return gr;
-    });
+    const tg = this.grad(`wtop${r.toFixed(1)}`, (c) =>
+      stops(c.createLinearGradient(-r, -h / 2 - ry, r, -h / 2 + ry), BRASS_TOP),
+    );
     ctx.fillStyle = tg;
     ctx.beginPath();
     ctx.ellipse(0, -h / 2, r, ry, 0, 0, Math.PI * 2);
@@ -886,7 +962,7 @@ export class Renderer {
       ctx.stroke();
     }
 
-    this.numeral(toKeyDisplay(b.value), 0, h * 0.06, r, v);
+    this.numeral(toKeyDisplay(b.value), 0, h * 0.06, r, v, WEIGHT_INK);
   }
 
   private balloon(L: Layout, v: ViewState, b: Body, r: number): void {
@@ -903,14 +979,9 @@ export class Renderer {
     ctx.quadraticCurveTo(r * 0.3, r * 1.9, -r * 0.08, r * 2.65);
     ctx.stroke();
 
-    const g = this.grad(`balloon${r.toFixed(1)}`, (c) => {
-      const gr = c.createRadialGradient(-r * 0.35, -r * 0.5, r * 0.08, 0, 0, r * 1.35);
-      gr.addColorStop(0, "#ffe6c8");
-      gr.addColorStop(0.28, "#e79a5c");
-      gr.addColorStop(0.72, C.copper);
-      gr.addColorStop(1, "#612f12");
-      return gr;
-    });
+    const g = this.grad(`balloon${r.toFixed(1)}`, (c) =>
+      stops(c.createRadialGradient(-r * 0.35, -r * 0.5, r * 0.08, 0, 0, r * 1.35), BALLOON_BODY),
+    );
     ctx.save();
     ctx.shadowColor = "rgba(0,0,0,0.4)";
     ctx.shadowBlur = 12;
@@ -938,7 +1009,7 @@ export class Renderer {
     ctx.fill();
     ctx.restore();
 
-    this.numeral(toKeyDisplay(b.value), 0, r * 0.08, r * 0.94, v, "#3a1a08");
+    this.numeral(toKeyDisplay(b.value), 0, r * 0.08, r * 0.94, v, BALLOON_INK);
     ctx.restore();
   }
 
@@ -1032,10 +1103,7 @@ export class Renderer {
     ctx.restore();
 
     const label = v.declared ? toKeyDisplay(v.declared) : "x";
-    // A rejected value goes cold copper-oxide, never warm: the colour agrees
-    // with the slam and the returned weight rather than contradicting them.
-    const labelColour = v.wrong > 0 ? C.verdigris : v.declared ? C.gold : "#cfe3ea";
-    this.numeral(label, 0, 0, wr * 1.45, v, labelColour, true);
+    this.numeral(label, 0, 0, wr * 1.45, v, crateInk(crateState(v)), true);
 
     if (v.wrong > 0) {
       ctx.save();
@@ -1056,27 +1124,47 @@ export class Renderer {
     y: number,
     r: number,
     v: ViewState,
-    color = "#ffeec4",
+    color: string,
     glow = false,
   ): void {
     const ctx = this.ctx;
     const slash = label.indexOf("/");
+    // The counter-ink, derived from the ink, which was derived from the surface.
+    // See the header of `ink.ts`: there is provably no single colour that reads
+    // against all of the brass, so the numeral is drawn as a pair.
+    const halo = haloFor(color);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     if (slash > 0) {
       const n = label.slice(0, slash);
       const d = label.slice(slash + 1);
-      const s = r * 0.5;
-      const yy = y + r * 0.12; // clear the machined top face
+      const s = stackedNumeralPx(r);
+      // Was `r * 0.12`. The bigger rows plus their halos put the denominator's
+      // descender 0.03px past the brass belly on a 320×568 phone — measured, by
+      // the assertion in `legibility.test.ts` that now guards it — so the whole
+      // stack sits a little higher. The top face it was dropping clear of is a
+      // surface the halo is measured against now anyway.
+      const yy = y + r * 0.09;
       ctx.font = `600 ${s.toFixed(1)}px ${SERIF}`;
-      engrave(ctx, n, x, yy - s * 0.52, color, glow);
-      engrave(ctx, d, x, yy + s * 0.54, color, glow);
-      ctx.strokeStyle = color;
-      ctx.lineWidth = Math.max(1, r * 0.055);
+      // Pushed apart from 0.52/0.54: at the bigger type both rows carry a halo,
+      // and at the old spacing the numerator's halo and the bar's halo closed to
+      // within half a pixel and read as one dark mass with a hairline in it.
+      engrave(ctx, n, x, yy - s * 0.58, color, glow, s, halo);
+      engrave(ctx, d, x, yy + s * 0.6, color, glow, s, halo);
+      // The bar carries the same pair. A hairline in the ink alone disappears
+      // into the specular streak exactly as the digits did, and a vanished bar
+      // turns 1/2 into two stacked numbers.
+      ctx.lineCap = "round";
       ctx.beginPath();
       ctx.moveTo(x - s * 0.44, yy);
       ctx.lineTo(x + s * 0.44, yy);
+      ctx.strokeStyle = halo;
+      ctx.lineWidth = Math.max(1, r * 0.055) + haloWidth(s);
       ctx.stroke();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = Math.max(1, r * 0.055);
+      ctx.stroke();
+      ctx.lineCap = "butt";
     } else {
       // Fitted, not guessed. The old line picked `r * 0.78` for anything two
       // digits or wider and drew centred, so `4232831450` — which the shipped
@@ -1092,7 +1180,7 @@ export class Renderer {
       ctx.font = `600 ${ideal.toFixed(1)}px ${SERIF}`;
       const s = fittedNumeralPx(ideal, ctx.measureText(label).width, r * NUMERAL_FACE);
       if (s !== ideal) ctx.font = `600 ${s.toFixed(1)}px ${SERIF}`;
-      engrave(ctx, label, x, y, color, glow);
+      engrave(ctx, label, x, y, color, glow, s, halo);
     }
     void v;
   }
@@ -1456,16 +1544,57 @@ function measureTracked(ctx: CanvasRenderingContext2D, s: string, track: number)
   return w;
 }
 
-function engrave(
+/**
+ * How wide the halo behind a numeral of `px` type is, in pixels.
+ *
+ * A stroke is centred on the outline, so half of this lies outside the glyph —
+ * `px * 0.075` — and half lies inside, where the fill immediately paints over it.
+ * The stems therefore keep their full weight and only the outside is gained,
+ * which is the whole reason the halo is stroked before the fill and not after.
+ *
+ * 0.15em is a working span rather than a maximum, and the counters — the holes in
+ * 0, 6, 8 and 9 — are the constraint in the other direction, because nothing
+ * fills those back in. At the pack's 15px floor the halo closes in by 1.13px on
+ * each side of a counter roughly 4px wide, which leaves it open; at twice this
+ * width it would shut. `legibility.test.ts` holds both ends.
+ */
+export function haloWidth(px: number): number {
+  return Math.max(2, px * 0.15);
+}
+
+/**
+ * A numeral, cut into whatever it is lying on.
+ *
+ * Three passes, and each one is load-bearing:
+ *
+ *   1. the halo, offset down — the shadow that makes the digit read as *struck
+ *      into* the brass rather than painted onto it. This is what the old single
+ *      `rgba(28,18,4,0.85)` copy was doing, and it is the only part of the old
+ *      version that was doing anything for contrast: one direction out of four.
+ *   2. the halo, on the glyph's own centre — the ring. This is the new part. It
+ *      is what makes the contrast claim in `ink.ts` true in every direction
+ *      rather than only below the glyph.
+ *   3. the ink.
+ */
+export function engrave(
   ctx: CanvasRenderingContext2D,
   text: string,
   x: number,
   y: number,
   color: string,
   glow: boolean,
+  px: number,
+  halo: string,
 ): void {
-  ctx.fillStyle = "rgba(28,18,4,0.85)";
-  ctx.fillText(text, x, y + 1.4);
+  const w = haloWidth(px);
+  ctx.save();
+  ctx.lineJoin = "round";
+  ctx.miterLimit = 2;
+  ctx.strokeStyle = halo;
+  ctx.lineWidth = w;
+  ctx.strokeText(text, x, y + Math.max(1, px * 0.06));
+  ctx.strokeText(text, x, y);
+  ctx.restore();
   if (glow) {
     ctx.save();
     ctx.shadowColor = color;
