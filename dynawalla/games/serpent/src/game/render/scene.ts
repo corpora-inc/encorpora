@@ -18,7 +18,18 @@ import { COLORS, TUNE } from "../tuning.ts";
 import { bolusTintAt } from "../serpent.ts";
 import { orbDrawRadius } from "../orbs.ts";
 import { NO_INSETS, safeRect, type Insets } from "../../../../../packs/shared/game-chrome/index.ts";
-import { arenaScale } from "../arena.ts";
+import {
+  POLYP_OUT,
+  SHAKE_HEADROOM,
+  arenaBoard,
+  arenaFrame,
+  rimEdge,
+  rimPerimeter,
+  sampleRim,
+  topChromeBand,
+  type Aspect,
+  type Board,
+} from "../arena.ts";
 import type { World } from "../world.ts";
 import { GLOW_PX, MOTE_PX, sprites } from "./sprites.ts";
 import { drawLabel, labelInk, labelWidth, type LabelStyle } from "./glyphs.ts";
@@ -45,6 +56,16 @@ export type View = {
   insets: Insets;
   /** The viewport minus those insets. */
   safe: { x: number; y: number; w: number; h: number };
+  /**
+   * The board's proportions, short half-extent normalised to 1.
+   *
+   * The renderer measures the frame; `mount.ts` hands this straight to the world,
+   * so the shape a child steers against and the shape that is drawn are one
+   * measurement and not two.
+   */
+  aspect: Aspect;
+  /** The band across the top of the safe box the host's own chrome sits in. */
+  chromeBand: number;
 };
 
 type Snow = { x: number; y: number; r: number; vy: number; vx: number; a: number; phase: number };
@@ -94,6 +115,8 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     dpr: 1,
     insets: NO_INSETS,
     safe: { x: 0, y: 0, w: 1, h: 1 },
+    aspect: { x: 1, y: 1 },
+    chromeBand: 0,
   };
   let bg: HTMLCanvasElement | null = null;
   const snowFar: Snow[] = [];
@@ -159,6 +182,17 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
       drawLabel(g, block.lines[i] as string, style, x, y + (block.offsets[i] as number) * scale, view.dpr, scale, alpha);
     }
   }
+
+  /**
+   * The most rim samples ever taken, and the buffers they land in.
+   *
+   * Allocated once: `drawRim` runs every frame and the walk must not allocate.
+   */
+  const RIM_SAMPLES = 200;
+  const rimX = new Float32Array(RIM_SAMPLES);
+  const rimY = new Float32Array(RIM_SAMPLES);
+  const rimNX = new Float32Array(RIM_SAMPLES);
+  const rimNY = new Float32Array(RIM_SAMPLES);
 
   // Scratch buffers for the body outline. Allocated once.
   const nx = new Float32Array(TUNE.maxSegments + 2);
@@ -235,14 +269,18 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     view.dpr = dpr;
     view.insets = insets;
     view.safe = safe;
-    // The arena is centred in the SAFE box and INSCRIBED in it: the ellipse
-    // reaches the top and bottom of a tall phone and the sides of a wide one,
-    // while every part of the rim — a wall a child can die against — stays clear
-    // of the cutout and the rounded corner. `arena.ts` owns both numbers; the
-    // shape itself is `world.aspectX/aspectY`, set from the same safe box.
-    view.cx = safe.x + safe.w / 2;
-    view.cy = safe.y + safe.h / 2;
-    view.scale = arenaScale(safe.w, safe.h);
+    // The board takes every pixel that is not the cutout and not the host's own
+    // two buttons. `arena.ts` solves the frame — the rim's ink is reserved in
+    // pixels and nothing else is held back — and the shape it returns is handed
+    // to the simulation by `mount.ts`, so the wall that is drawn and the wall a
+    // child dies against are one measurement.
+    const band = topChromeBand(w, safe.y, safe.h, insets);
+    const frame = arenaFrame(safe.w, safe.h, band);
+    view.chromeBand = band;
+    view.aspect = frame.aspect;
+    view.cx = safe.x + frame.cx;
+    view.cy = safe.y + frame.cy;
+    view.scale = frame.scale;
     canvas.width = Math.max(1, Math.floor(w * dpr));
     canvas.height = Math.max(1, Math.floor(h * dpr));
     canvas.style.width = `${w}px`;
@@ -283,8 +321,12 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
 
     const cam = w.cam;
     const S = view.scale * cam.zoom;
-    const ox = view.cx + cam.shakeX * view.scale;
-    const oy = view.cy + cam.shakeY * view.scale;
+    // The board is fitted flush to the safe box, so the shake that translates it
+    // is bounded rather than free — see SHAKE_HEADROOM. Everything survivable is
+    // already under the bound; only the death slam is trimmed, and it keeps its
+    // hitstop, its slow-motion, its flash and its debris.
+    const ox = view.cx + clamp(cam.shakeX, -SHAKE_HEADROOM, SHAKE_HEADROOM) * view.scale;
+    const oy = view.cy + clamp(cam.shakeY, -SHAKE_HEADROOM, SHAKE_HEADROOM) * view.scale;
     const X = (x: number): number => ox + x * S;
     const Y = (y: number): number => oy + y * S;
 
@@ -317,27 +359,28 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     drawSnow(snowFar, 0);
 
     // --- the arena floor --------------------------------------------------
-    const aX = w.arenaR * w.aspectX * S;
-    const aY = w.arenaR * w.aspectY * S;
+    const board = arenaBoard(w.arenaR, { x: w.aspectX, y: w.aspectY });
+    const aX = board.a * S;
+    const aY = board.b * S;
+    const aR = board.r * S;
     g.save();
-    g.beginPath();
-    g.ellipse(X(0), Y(0), aX, aY, 0, 0, TAU);
+    rimPath(X(0), Y(0), aX, aY, aR);
     g.clip();
 
-    // A radial gradient is a circle, so the floor is painted in a squashed frame
-    // and comes out as the same ellipse the clip already is — the alternative is
-    // a round pool of light sitting inside an oval board with dark ends.
-    g.save();
-    g.translate(X(0), Y(0));
-    g.scale(1, aY / aX);
-    const floor = g.createRadialGradient(0, 0, 0, 0, 0, aX);
-    floor.addColorStop(0, "rgba(34,124,150,0.7)");
-    floor.addColorStop(0.45, "rgba(14,72,104,0.56)");
-    floor.addColorStop(0.82, "rgba(6,36,62,0.4)");
-    floor.addColorStop(1, "rgba(2,14,28,0.16)");
+    // A flat wash first, so the board is lit floor all the way into its corners.
+    // A radial gradient alone is a round pool of light, and a rectangular board
+    // lit by one has four dark corners — which is most of what the founder was
+    // reading as "not the whole screen".
+    g.fillStyle = "rgba(9,46,72,0.42)";
+    g.fillRect(X(0) - aX, Y(0) - aY, aX * 2, aY * 2);
+
+    const lit = Math.min(aX, aY) * 1.25;
+    const floor = g.createRadialGradient(X(0), Y(0), 0, X(0), Y(0), lit);
+    floor.addColorStop(0, "rgba(34,124,150,0.52)");
+    floor.addColorStop(0.5, "rgba(14,72,104,0.3)");
+    floor.addColorStop(1, "rgba(6,36,62,0)");
     g.fillStyle = floor;
-    g.fillRect(-aX, -aX, aX * 2, aX * 2);
-    g.restore();
+    g.fillRect(X(0) - aX, Y(0) - aY, aX * 2, aY * 2);
 
     // The vent itself: a slow amber heart. Teal water against a warm centre is
     // the only complementary pair in the palette, and without it the whole
@@ -345,8 +388,8 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     const ventGlow = sp.glow[0];
     if (ventGlow) {
       const k = 1.15 + 0.05 * Math.sin(w.cam.t * 0.55);
-      const vw = aX * k;
-      const vh = aY * k;
+      const vw = Math.min(aX, aY) * k * 1.4;
+      const vh = vw;
       g.globalCompositeOperation = "lighter";
       g.globalAlpha = 0.13 + 0.03 * Math.sin(w.cam.t * 0.8) + w.depthPulse * 0.16;
       g.drawImage(ventGlow, X(0) - vw / 2, Y(0) - vh / 2, vw, vh);
@@ -462,7 +505,7 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     g.globalCompositeOperation = "source-over";
 
     // --- the vent rim -----------------------------------------------------
-    drawRim(w, X, Y, S, aX, aY);
+    drawRim(w, X, Y, S, aX, aY, aR);
 
     // --- floating score ---------------------------------------------------
     const floatStyle: LabelStyle = {
@@ -725,6 +768,33 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     return best;
   }
 
+  /**
+   * The rim, as a path: four straight runs and four quarter-circles.
+   *
+   * Built with `arcTo` rather than `roundRect` — the shipping surface is a
+   * WKWebView whose version is the OS's, not the app's, and a board that vanishes
+   * on an older iPad because a path method was missing is not a trade worth
+   * making for four fewer lines.
+   */
+  function rimPath(cx: number, cy: number, aX: number, aY: number, r: number): void {
+    const l = cx - aX;
+    const rt = cx + aX;
+    const t = cy - aY;
+    const b = cy + aY;
+    const k = Math.max(0, Math.min(r, Math.min(aX, aY)));
+    g.beginPath();
+    g.moveTo(l + k, t);
+    g.lineTo(rt - k, t);
+    g.arcTo(rt, t, rt, t + k, k);
+    g.lineTo(rt, b - k);
+    g.arcTo(rt, b, rt - k, b, k);
+    g.lineTo(l + k, b);
+    g.arcTo(l, b, l, b - k, k);
+    g.lineTo(l, t + k);
+    g.arcTo(l, t, l + k, t, k);
+    g.closePath();
+  }
+
   function drawRim(
     w: World,
     X: (x: number) => number,
@@ -732,59 +802,75 @@ export function createRenderer(canvas: HTMLCanvasElement): Renderer {
     S: number,
     aX: number,
     aY: number,
+    aR: number,
   ): void {
     const cx = X(0);
     const cy = Y(0);
-    // The head's ECCENTRIC angle, not its polar one: `ctx.ellipse` walks the
-    // parameter, so the arc a segment covers is `(aX cos t, aY sin t)` and the
-    // hot patch has to be found in the same parameter or the glow drifts away
-    // from the serpent everywhere except the four axis points.
-    const headA = Math.atan2(w.serpent.y / (w.arenaR * w.aspectY), w.serpent.x / (w.arenaR * w.aspectX));
-    const segs = 72;
+    const board: Board = arenaBoard(w.arenaR, { x: w.aspectX, y: w.aspectY });
 
     g.globalCompositeOperation = "lighter";
     const halo = sp.softRing[w.grazeGlow > 0.4 ? 5 : 2];
     if (halo) {
-      const hw = aX * 2 * 1.14;
-      const hh = aY * 2 * 1.14;
-      g.globalAlpha = 0.5 + w.grazeGlow * 0.4 + w.depthPulse * 0.35;
+      const hw = aX * 2 * 1.16;
+      const hh = aY * 2 * 1.16;
+      g.globalAlpha = 0.4 + w.grazeGlow * 0.4 + w.depthPulse * 0.3;
       g.drawImage(halo, cx - hw / 2, cy - hh / 2, hw, hh);
     }
 
+    // One sample every ~22 device-independent pixels of rim, so a corner is smooth
+    // on a tablet and the count does not run away on one. Sampled by ARC LENGTH:
+    // an angular walk would bunch the samples into the corners and make the graze
+    // glow crawl as the serpent rounded one.
+    const perimeterPx = rimPerimeter(board) * S;
+    const segs = Math.max(72, Math.min(RIM_SAMPLES, Math.round(perimeterPx / 22)));
+    sampleRim(board, segs, rimX, rimY, rimNX, rimNY);
+
+    // The hot patch follows the serpent along the WALL, by distance to the head's
+    // own point on the rim. There is no angle on a rounded rect to compare against,
+    // and this is the thing the angle was standing in for anyway.
+    const hot = rimEdge(board, w.serpent.x, w.serpent.y);
+    const span = w.arenaR * 0.55;
+
     g.lineCap = "butt";
     for (let i = 0; i < segs; i++) {
-      const a0 = (i / segs) * TAU;
-      const a1 = ((i + 1) / segs) * TAU;
-      let d = Math.abs(((a0 + a1) / 2 - headA + Math.PI * 3) % TAU) - Math.PI;
-      d = Math.abs(d);
-      const heat = w.grazeGlow * clamp(1 - d / 0.55, 0, 1);
+      const j = (i + 1) % segs;
+      const mx = ((rimX[i] as number) + (rimX[j] as number)) / 2;
+      const my = ((rimY[i] as number) + (rimY[j] as number)) / 2;
+      const heat = w.grazeGlow * clamp(1 - Math.hypot(mx - hot.x, my - hot.y) / span, 0, 1);
       const pulse = 0.72 + 0.16 * Math.sin(w.cam.t * 1.7 + i * 0.4) + w.depthPulse * 0.4;
       g.globalAlpha = clamp(pulse * (0.7 + heat), 0, 1);
       g.strokeStyle = heat > 0.05 ? COLORS.rimHot : COLORS.rim;
       g.lineWidth = Math.max(2.5, S * (0.014 + heat * 0.016));
       g.beginPath();
-      g.ellipse(cx, cy, aX, aY, 0, a0, a1);
-      g.stroke();
-      // A thin white-hot lip just inside, so the edge is a hard line the eye
-      // can trust rather than a soft glow you can misjudge at speed.
-      g.globalAlpha = clamp(pulse * (0.5 + heat * 0.8), 0, 1);
-      g.strokeStyle = heat > 0.05 ? "#ffd9c4" : "#d6fbff";
-      g.lineWidth = Math.max(1, S * 0.004);
-      g.beginPath();
-      g.ellipse(cx, cy, Math.max(1, aX - S * 0.009), Math.max(1, aY - S * 0.009), 0, a0, a1);
+      g.moveTo(X(rimX[i] as number), Y(rimY[i] as number));
+      g.lineTo(X(rimX[j] as number), Y(rimY[j] as number));
       g.stroke();
     }
 
-    // Polyps: a living edge rather than a drawn circle.
-    const polyps = 40;
+    // A thin white-hot lip just inside, so the edge is a hard line the eye can
+    // trust rather than a soft glow you can misjudge at speed. One path for the
+    // whole rim: a hairline has nowhere to put a shimmer, and this is the pass
+    // that has to read as a LINE against a screen edge.
+    const inset = S * 0.011;
+    g.globalAlpha = clamp(0.6 + w.depthPulse * 0.3, 0, 1);
+    g.strokeStyle = "#d6fbff";
+    g.lineWidth = Math.max(1, S * 0.005);
+    rimPath(cx, cy, Math.max(1, aX - inset), Math.max(1, aY - inset), Math.max(0, aR - inset));
+    g.stroke();
+
+    // Polyps: a living edge rather than a drawn line. They ride POLYP_OUT outside
+    // the rim, which is the outward ink `arena.ts` reserves room for.
+    const polyps = Math.min(56, Math.max(28, Math.round(segs / 3)));
     const dot = sp.mote[4];
     if (dot) {
       for (let i = 0; i < polyps; i++) {
-        const a = (i / polyps) * TAU + w.cam.t * 0.03;
-        const wob = 1 + Math.sin(w.cam.t * 1.3 + i) * 0.012;
+        const k = Math.floor((i / polyps) * segs);
+        const wob = POLYP_OUT * w.arenaR * (0.5 + 0.5 * Math.sin(w.cam.t * 1.3 + i));
         const size = S * 0.016 * (1 + 0.4 * Math.sin(w.cam.t * 2 + i * 1.7));
+        const px = X((rimX[k] as number) + (rimNX[k] as number) * wob);
+        const py = Y((rimY[k] as number) + (rimNY[k] as number) * wob);
         g.globalAlpha = 0.5;
-        g.drawImage(dot, cx + Math.cos(a) * aX * wob - size / 2, cy + Math.sin(a) * aY * wob - size / 2, size, size);
+        g.drawImage(dot, px - size / 2, py - size / 2, size, size);
       }
     }
     g.globalAlpha = 1;

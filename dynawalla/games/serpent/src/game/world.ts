@@ -51,12 +51,12 @@ import {
   createSerpent,
   grow,
   resetSerpent,
-  selfHit,
+  selfHitIndex,
   stepSerpent,
   type Serpent,
 } from "./serpent.ts";
-import { createOrb, molt, orbDrawRadius, placeOrb, stepOrbs, type Axes, type Orb } from "./orbs.ts";
-import { arenaAspect, pullInside, rimEdge, type Edge } from "./arena.ts";
+import { createOrb, molt, orbDrawRadius, placeOrb, stepOrbs, type Orb } from "./orbs.ts";
+import { arenaBoard, pullInside, rimEdge, type Aspect, type Board, type Edge } from "./arena.ts";
 import type { Audio } from "./audio.ts";
 
 const BEST_KEY = "serpent.best";
@@ -116,14 +116,22 @@ export type World = {
   arenaR: number;
   arenaTargetR: number;
   /**
-   * The vent's proportions, short axis normalised to exactly 1.
+   * The board's proportions, short half-extent normalised to exactly 1.
    *
-   * Set from the safe rectangle by `setArenaAspect` on every layout, so the board
-   * is the screen. Both are 1 until the first layout arrives, which is a circle —
-   * the shape the game shipped with, and one that every later aspect contains.
+   * Set from the fitted frame by `setArenaAspect` on every layout, so the board is
+   * the screen. Both are 1 until the first layout arrives, which is a square — and
+   * a square is contained by every later shape, so nothing is ever stranded.
    */
   aspectX: number;
   aspectY: number;
+
+  /**
+   * Has the serpent grown past `TUNE.selfHitArmsAt` at any point in this run?
+   *
+   * One-way for the whole run. Before it trips, swimming into your own body is a
+   * bump; after it, it is the only thing that can end a dive.
+   */
+  selfHitArmed: boolean;
 
   prompt: string;
   pending: Trial[];
@@ -195,6 +203,7 @@ export function createWorld(host: Host, audio: Audio, reduced: boolean): World {
     arenaTargetR: TUNE.arenaStart,
     aspectX: 1,
     aspectY: 1,
+    selfHitArmed: false,
 
     prompt: "",
     pending: [],
@@ -221,38 +230,37 @@ export function createWorld(host: Host, audio: Audio, reduced: boolean): World {
 
 // -------------------------------------------------------------------- shape
 
-/** The vent's semi-axes, this frame. */
-export function arenaAxes(w: World): Axes {
-  return { a: w.arenaR * w.aspectX, b: w.arenaR * w.aspectY };
+/** The board, this frame: half-extents and corner radius in world units. */
+export function arenaAxes(w: World): Board {
+  return arenaBoard(w.arenaR, { x: w.aspectX, y: w.aspectY });
 }
 
 /** Where the rim is from a point, which way it faces, how far away it is. */
 export function arenaEdge(w: World, x: number, y: number): Edge {
-  return rimEdge(w.arenaR * w.aspectX, w.arenaR * w.aspectY, x, y);
+  return rimEdge(arenaAxes(w), x, y);
 }
 
 /**
- * Fit the vent to the safe rectangle.
+ * Take the shape of the fitted frame.
  *
  * Called on every layout, so a rotation reshapes the board. That is the one
- * moment the arena can get *smaller* along an axis — portrait to landscape swaps
- * a tall ellipse for a wide one — so everything loose is walked back inside the
- * new rim rather than left stranded in the black with a wall between it and the
- * game. The serpent's recorded path is not: it is history, the head drags it back
- * within a body length, and rewriting it would put a kink in the animal.
+ * moment the board can get *smaller* along an axis — portrait to landscape swaps
+ * a tall rectangle for a wide one — so everything loose is walked back inside the
+ * new rim rather than left stranded outside with a wall between it and the game.
+ * The serpent's recorded path is not: it is history, the head drags it back within
+ * a body length, and rewriting it would put a kink in the animal.
  */
-export function setArenaAspect(w: World, safeW: number, safeH: number): void {
-  const next = arenaAspect(safeW, safeH);
-  if (next.x === w.aspectX && next.y === w.aspectY) return;
-  w.aspectX = next.x;
-  w.aspectY = next.y;
-  const { a, b } = arenaAxes(w);
+export function setArenaAspect(w: World, aspect: Aspect): void {
+  if (aspect.x === w.aspectX && aspect.y === w.aspectY) return;
+  w.aspectX = aspect.x;
+  w.aspectY = aspect.y;
+  const board = arenaAxes(w);
   for (const o of w.orbs) {
-    const put = pullInside(a, b, o.x, o.y, TUNE.orbRadius * 1.1);
+    const put = pullInside(board, o.x, o.y, TUNE.orbRadius * 1.1);
     o.x = put.x;
     o.y = put.y;
   }
-  const head = pullInside(a, b, w.serpent.x, w.serpent.y, TUNE.headRadius * 1.6);
+  const head = pullInside(board, w.serpent.x, w.serpent.y, TUNE.headRadius * 1.6);
   w.serpent.x = head.x;
   w.serpent.y = head.y;
 }
@@ -290,22 +298,20 @@ function pullQuestion(w: World): boolean {
 /**
  * How many orbs, and how many of them are edible.
  *
- * Both scale with the vent's AREA, which is the one gameplay consequence of the
- * board becoming the screen. `orbs.ts` says the field is the maze — "the arena is
- * dense with wrong answers you have to swim *through*, so reading the field is
- * the same act as steering through it" — and a tall phone is a 2.2× larger board,
- * so holding the counts fixed would have halved that density and quietly taken
- * the obstacle course out of the game on the device most children hold. The ratio
- * of edible to inedible is preserved exactly; only the scale changes.
+ * A function of `depth` and of NOTHING ELSE. Depth is nine correct answers each,
+ * so the field grows with demonstrated competence — never with elapsed time, and
+ * never with the size of the screen.
+ *
+ * It used to be multiplied by the board's area, which is how the first screen of
+ * a dive came to hold about twenty numbers once the board became the whole
+ * screen. Density is a thing you earn, and a bigger screen is not an achievement.
+ * `orbs.ts` is still right that the field IS the maze — it just has to be a maze
+ * the child walked into rather than one they were dropped in.
  */
 function fieldTargets(w: World): { count: number; good: number } {
-  const area = w.aspectX * w.aspectY;
-  return {
-    count: Math.round(
-      Math.min(TUNE.orbMaxCount, TUNE.orbBaseCount + (w.depth - 1) * TUNE.orbPerDepth) * area,
-    ),
-    good: Math.round(Math.min(TUNE.goodMax, TUNE.goodBase + Math.floor((w.depth - 1) / 3)) * area),
-  };
+  const count = Math.min(TUNE.orbMaxCount, TUNE.orbBaseCount + (w.depth - 1) * TUNE.orbPerDepth);
+  const good = clamp(Math.round(count * TUNE.goodShare), TUNE.goodBase, TUNE.goodMax);
+  return { count, good: Math.min(good, count - 1) };
 }
 
 function pickLabel(w: World, good: boolean): string {
@@ -373,7 +379,7 @@ function beginMutation(w: World, q: Question): void {
   slowmo(w.cam, TUNE.slowmoMutateTime, TUNE.slowmoMutateScale);
   addTrauma(w.cam, 0.18);
   flash(w.cam, "#4ff0d6", 0.1);
-  const reach = w.arenaR * Math.max(w.aspectX, w.aspectY);
+  const reach = Math.hypot(w.arenaR * w.aspectX, w.arenaR * w.aspectY);
   ring(w.rings, 0, 0, reach * 0.05, reach * 0.9, 0.7, 0.02, 2);
   w.audio.mutate();
   if (w.phase === "play") w.host.haptic("medium");
@@ -425,6 +431,7 @@ export function resetRun(w: World, phase: Phase): void {
   w.wrongEats = 0;
   w.arenaR = TUNE.arenaStart;
   w.arenaTargetR = TUNE.arenaStart;
+  w.selfHitArmed = false;
   w.orbs = [];
   w.pending = [];
   w.goodPool = [];
@@ -541,9 +548,9 @@ function descend(w: World): void {
   w.scorePulse = 1;
   addTrauma(w.cam, TUNE.traumaDepth);
   punch(w.cam, TUNE.punchDepth);
-  // Out to the LONG axis, so the "the water is closing in" beat sweeps the whole
-  // board rather than stopping halfway up a tall one.
-  const reach = w.arenaR * Math.max(w.aspectX, w.aspectY);
+  // Out to the CORNER, so the "the water is closing in" beat sweeps the whole
+  // board rather than stopping halfway up a tall one or short of its corners.
+  const reach = Math.hypot(w.arenaR * w.aspectX, w.arenaR * w.aspectY);
   ring(w.rings, 0, 0, reach * 1.02, reach * 0.55, 0.75, 0.02, 4);
   burstBubbles(w.particles, w.serpent.x, w.serpent.y, 12);
   w.audio.depth(w.depth);
@@ -595,6 +602,48 @@ function hitWall(w: World, e: Edge): void {
   w.grazeGlow = 1;
   w.audio.wall();
   if (w.phase === "play") w.host.haptic("heavy");
+}
+
+/**
+ * Swim into your own flank before you have grown: a thud, not an ending.
+ *
+ * The head is turned to face straight off the body point it touched and given
+ * half a second of grace, which is enough to be clear of it. It costs no length —
+ * a cost here would keep a child under `selfHitArmsAt` and hand them the grace
+ * for ever — and it does not break the combo, because this is a lesson and not a
+ * mistake. It is loud, though: hitstop, a shove of debris, a ring and the same
+ * thud the wall makes, so a child learns exactly what they must not do at the one
+ * moment it is free to learn it.
+ */
+function bumpSelf(w: World, index: number): void {
+  const s = w.serpent;
+  const bx = s.bodyX[index] as number;
+  const by = s.bodyY[index] as number;
+  let dx = s.x - bx;
+  let dy = s.y - by;
+  const d = Math.hypot(dx, dy);
+  if (d > 1e-6) {
+    dx /= d;
+    dy /= d;
+  } else {
+    // Dead centre on its own body: any way out will do, so take the one it is
+    // already pointing, reversed.
+    dx = -Math.cos(s.heading);
+    dy = -Math.sin(s.heading);
+  }
+  // The heading is snapped, never the position: the body follows the head's
+  // recorded path, and teleporting the head would draw a straight seam across the
+  // animal. Turning it is the nudge.
+  s.heading = Math.atan2(dy, dx);
+  s.targetHeading = s.heading;
+  w.invulnT = Math.max(w.invulnT, 0.5);
+  hitstop(w.cam, TUNE.hitstopBumpMs);
+  addTrauma(w.cam, TUNE.traumaBump);
+  punch(w.cam, TUNE.punchWrong);
+  burstDebris(w.particles, s.x, s.y, s.heading, 6);
+  ring(w.rings, s.x, s.y, TUNE.headRadius, TUNE.headRadius * 6, 0.42, 0.012, 3);
+  w.audio.wall();
+  if (w.phase === "play") w.host.haptic("medium");
 }
 
 function die(w: World, x: number, y: number): void {
@@ -712,7 +761,7 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
     w.deathT += dt;
     stepOrbs(w.orbs, {
       dt,
-      axes: arenaAxes(w),
+      board: arenaAxes(w),
       headX: s.x,
       headY: s.y,
       current: 0,
@@ -739,7 +788,7 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
 
   stepOrbs(w.orbs, {
     dt,
-    axes: arenaAxes(w),
+    board: arenaAxes(w),
     headX: s.x,
     headY: s.y,
     current: w.depth >= 4 ? 0.03 : 0,
@@ -793,18 +842,24 @@ export function stepWorld(w: World, dt: number, input: StepInput): void {
   // length and throws you back, and the only thing that can end a run is
   // outgrowing your own turning circle. That is also what makes the arena
   // closing in mean something: it squeezes you into yourself.
+  // The latch never falls back: length coughed up by a wrong answer or a wall does
+  // not buy the opening's grace a second time.
+  if (s.targetSegments >= TUNE.selfHitArmsAt) w.selfHitArmed = true;
+
   w.wallT = Math.max(0, w.wallT - dt);
   if (edge.gap < TUNE.headRadius * 0.75 && w.wallT <= 0) {
     hitWall(w, edge);
-  } else if (w.invulnT <= 0 && selfHit(s)) {
-    die(w, s.x, s.y);
+  } else if (w.invulnT <= 0) {
+    const hit = selfHitIndex(s);
+    if (hit >= 0) {
+      if (w.selfHitArmed) die(w, s.x, s.y);
+      else bumpSelf(w, hit);
+    }
   }
 
   if (Math.random() < dt * 2.4) {
-    const a = randRange(0, TAU);
-    const r = Math.sqrt(Math.random());
-    const { a: ax, b: ay } = arenaAxes(w);
-    burstBubbles(w.particles, Math.cos(a) * r * ax, Math.sin(a) * r * ay, 1);
+    const board = arenaAxes(w);
+    burstBubbles(w.particles, randRange(-board.a, board.a), randRange(-board.b, board.b), 1);
   }
 }
 

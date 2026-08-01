@@ -69,10 +69,10 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
     // inset for two side ones, and iPadOS changes them when the pack is resized
     // in Split View. Read once and you are correct until the first rotation.
     renderer.resize(w, h, Math.min(window.devicePixelRatio || 1, 2.5), safeInsets());
-    // The board IS the screen: the vent is the ellipse inscribed in that same
-    // safe box. The renderer measures the box, the simulation takes the shape
-    // from it, and neither owns a second copy of the arithmetic.
-    setArenaAspect(world, renderer.view.safe.w, renderer.view.safe.h);
+    // The board IS the screen. The renderer solves the frame — safe box, minus the
+    // host's two buttons, minus the rim's own ink — and the simulation takes the
+    // shape straight off it, so neither owns a second copy of the arithmetic.
+    setArenaAspect(world, renderer.view.aspect);
   }
   layout();
   // A rotation does not always change the element's box — a square-ish split
@@ -236,6 +236,7 @@ export function mountSerpent(el: HTMLElement, host: Host): SerpentHandle {
         heading: "Staying alive",
         lines: [
           "Do not swim into your own tail.",
+          "While you are still short, bumping your tail only knocks you off it. Once you have grown, it ends the dive.",
           "Do not push into the glowing edge of the water for long.",
           "The number in the top corner is your depth. It is how far down you have got, and it goes up one for every nine right numbers you eat.",
           "Deeper down, the water gets smaller and some numbers start chasing you.",

@@ -21,6 +21,8 @@ import {
   type World,
 } from "./world.ts";
 import { createOrb, placeOrb } from "./orbs.ts";
+import { arenaFrame, topChromeBand } from "./arena.ts";
+import { NO_INSETS, safeRect } from "../../../../packs/shared/game-chrome/index.ts";
 import { createStubHost } from "../stub/host.ts";
 import { TUNE } from "./tuning.ts";
 import { TAU, angleDelta } from "./num.ts";
@@ -77,11 +79,14 @@ type Instrumented = {
   host: Host;
   served: Question[];
   reports: Report[];
+  /** How many questions had been served when this run first answered one. */
+  servedBeforeFirstAnswer(): number;
 };
 
 function instrument(seed: string, startLevel?: number): Instrumented {
   const served: Question[] = [];
   const reports: Report[] = [];
+  let before = Infinity;
   const inner = createStubHost(startLevel === undefined ? { seed } : { seed, startLevel });
   const host: Host = {
     next() {
@@ -90,13 +95,14 @@ function instrument(seed: string, startLevel?: number): Instrumented {
       return q;
     },
     report(r) {
+      if (reports.length === 0) before = served.length;
       reports.push(r);
       inner.report(r);
     },
     haptic() {},
     prefersReducedMotion: () => false,
   };
-  return { host, served, reports };
+  return { host, served, reports, servedBeforeFirstAnswer: () => before };
 }
 
 /**
@@ -107,7 +113,11 @@ function instrument(seed: string, startLevel?: number): Instrumented {
  */
 function pilotHeading(w: World, skill: number): number | null {
   const s = w.serpent;
-  const rim = Math.hypot(s.x, s.y);
+  // Off the wall it actually has. `Math.hypot` was the distance from the middle,
+  // which on a circle was the same thing; on a board that is the whole screen it
+  // pins the bot to the centre of a tall phone and makes the game look unplayable
+  // when it is the measuring instrument that is broken.
+  const rim = arenaEdge(w, s.x, s.y);
 
   let best: { x: number; y: number } | null = null;
   let bestCost = Infinity;
@@ -128,9 +138,9 @@ function pilotHeading(w: World, skill: number): number | null {
 
   let ax = best ? best.x - s.x : -s.x;
   let ay = best ? best.y - s.y : -s.y;
-  if (rim > w.arenaR - 0.3) {
-    ax -= s.x * 5;
-    ay -= s.y * 5;
+  if (rim.gap < 0.3) {
+    ax -= rim.nx * 5;
+    ay -= rim.ny * 5;
   }
   // Look ahead: sample where the head will be and steer off anything there.
   for (const lead of [0.14, 0.26]) {
@@ -242,14 +252,24 @@ test("twenty minutes of play escalates and never leaves its budgets", () => {
     smallestArena = Math.min(smallestArena, w.arenaR);
   }
 
-  assert.ok(deepest >= 8, `only reached depth ${deepest} in twenty minutes`);
+  // Six and not the eight this asked for before the field was thinned. The
+  // opening went from ten orbs times the board's AREA to five, so the serpent
+  // swims further per bite and a depth costs more minutes. Escalation still
+  // arrives, and the number that actually matters — how many questions a child
+  // is asked — is asserted below and went UP, not down.
+  assert.ok(deepest >= 6, `only reached depth ${deepest} in twenty minutes`);
   assert.ok(smallestArena <= TUNE.arenaStart - TUNE.arenaShrinkPerDepth * 3, `arena barely closed: ${smallestArena}`);
   assert.ok(smallestArena >= TUNE.arenaFloor - 1e-6, `arena shrank past its floor: ${smallestArena}`);
   assert.ok(maxParticles <= w.particles.cap, `particle cap breached: ${maxParticles}`);
   assert.ok(maxOrbs <= TUNE.orbMaxCount, `orb cap breached: ${maxOrbs}`);
   assert.ok(maxBody <= TUNE.maxSegments, `segment cap breached: ${maxBody}`);
   assert.ok(w.rings.count <= w.rings.cap);
-  assert.ok(reports.length > 200, `twenty minutes produced only ${reports.length} answers`);
+  // The retrieval-volume floor, and the reason a sparser field is not a quieter
+  // game. Twenty simulated minutes of a competent pilot puts ~548 questions to the
+  // child — better than twenty a minute. If thinning the field ever starts
+  // starving the question stream, this is where it shows up, and it is the metric
+  // this product is actually judged on.
+  assert.ok(reports.length > 400, `twenty minutes produced only ${reports.length} answers`);
   assert.ok(Number.isFinite(w.score) && w.score >= 0);
   assert.ok(Number.isFinite(w.serpent.x) && Number.isFinite(w.serpent.y));
 });
@@ -280,7 +300,12 @@ test("eating wrong costs length; eating right pays it back", () => {
   assert.ok(w.wrongEats > 4, `expected the bad pilot to eat wrong things, got ${w.wrongEats}`);
   assert.ok(w.serpent.targetSegments < start || w.phase === "dead", "wrong answers must cost something");
   assert.ok(w.serpent.targetSegments >= TUNE.minSegments, "the serpent must never shrink below its floor");
-  assert.equal(w.combo, 0);
+  // A pilot eating wrong answers cannot build a run of right ones. Asserted as the
+  // BEST combo of the whole run rather than the combo on the last frame: the
+  // opening field is sparse and about a third of it is edible, so a pilot aiming
+  // for wrong orbs stumbles into a right one now and then, and which frame the run
+  // happens to end on is not a rule.
+  assert.ok(w.bestCombo <= 2, `a pilot eating wrong answers reached a combo of ${w.bestCombo}`);
 });
 
 test("the wall costs length and throws you back — it never ends the run", () => {
@@ -374,8 +399,14 @@ test("the same seed serves the same questions to the same run", () => {
   startRun(wb);
   play(wa, 60, 0.9);
   play(wb, 60, 0.4);
-  const n = Math.min(a.served.length, b.served.length, 30);
-  assert.ok(n >= 10);
+  // Up to the first ANSWER, and no further. The host is adaptive by design — it
+  // is handed every report and is entitled to serve a struggling child something
+  // else — so two runs with different accuracy are supposed to diverge, and a
+  // test that compares past that point is asserting the learner model does not
+  // work. What is seed-determined, and what this holds, is everything the host
+  // says before it has been told anything.
+  const n = Math.min(a.servedBeforeFirstAnswer(), b.servedBeforeFirstAnswer(), 30);
+  assert.ok(n >= 5, `only ${n} questions were served before either run answered one`);
   for (let i = 0; i < n; i++) {
     assert.equal((a.served[i] as Question).prompt, (b.served[i] as Question).prompt);
     assert.equal((a.served[i] as Question).answer, (b.served[i] as Question).answer);
@@ -415,10 +446,13 @@ const SCREENS: Array<[string, number, number]> = [
   ["square", 600, 600],
 ];
 
-function fresh(seed: string, safeW: number, safeH: number): World {
+/** A run on a given screen, shaped exactly the way `scene.ts` would shape it. */
+function fresh(seed: string, viewW: number, viewH: number): World {
   const { host } = instrument(seed);
   const w = createWorld(host, silentAudio(), false);
-  setArenaAspect(w, safeW, safeH);
+  const safe = safeRect(viewW, viewH, NO_INSETS);
+  const band = topChromeBand(viewW, safe.y, safe.h, NO_INSETS);
+  setArenaAspect(w, arenaFrame(safe.w, safe.h, band).aspect);
   startRun(w);
   return w;
 }
@@ -571,12 +605,16 @@ test("nothing is ever put outside the vent, whatever shape it is", () => {
       worst >= -1e-9,
       `${name}: an orb was ${(-worst).toFixed(4)} outside the rim at ${worstAt}`,
     );
-    // And it is a real ellipse being tested, not a circle wearing a new name.
-    const axes = arenaAxes(w);
-    const ratio = Math.max(axes.a, axes.b) / Math.min(axes.a, axes.b);
+    // And the screen's shape really did reach the game. A "square" viewport is not
+    // a square board — the host's chrome band comes off the top first — so it is
+    // only asserted to be near one.
+    const board = arenaAxes(w);
+    const ratio = Math.max(board.a, board.b) / Math.min(board.a, board.b);
+    const want = Math.max(sw, sh - 57) / Math.min(sw, sh - 57);
     assert.ok(
-      name === "square" ? ratio === 1 : ratio > 1.2,
-      `${name}: the vent came out ${ratio.toFixed(2)}:1 — the screen's shape did not reach the game`,
+      Math.abs(ratio - want) < 0.15,
+      `${name}: the board came out ${ratio.toFixed(2)}:1 on a ${want.toFixed(2)}:1 frame — ` +
+        `the screen's shape did not reach the game`,
     );
   }
 });
@@ -593,7 +631,8 @@ test("a rotation reshapes the board without stranding anything outside it", () =
     before.some((o) => Math.abs(o.y) > w.arenaR * 1.05),
     "no orb was out in the tall end of the vent, so the rotation proves nothing",
   );
-  setArenaAspect(w, 844, 390);
+  const wide = safeRect(844, 390, NO_INSETS);
+  setArenaAspect(w, arenaFrame(wide.w, wide.h, topChromeBand(844, wide.y, wide.h, NO_INSETS)).aspect);
   for (const o of w.orbs) {
     assert.ok(
       arenaEdge(w, o.x, o.y).gap >= TUNE.orbRadius * 1.1 - 1e-9,
@@ -606,22 +645,272 @@ test("a rotation reshapes the board without stranding anything outside it", () =
   assert.ok(Number.isFinite(w.serpent.x) && Number.isFinite(w.serpent.y));
 });
 
-test("a taller board carries a proportionally denser field, not a sparser one", () => {
-  // The field IS the maze — `orbs.ts` says so. A 2.2x board holding the same ten
-  // orbs is half the density and half the obstacle course, on the device most
-  // children hold.
-  const square = fresh("density-square", 600, 600);
-  const tall = fresh("density-tall", 390, 844);
-  const areaRatio = (tall.aspectX * tall.aspectY) / (square.aspectX * square.aspectY);
-  assert.ok(areaRatio > 2, `the tall board is only ${areaRatio.toFixed(2)}x the area`);
-  const ratio = tall.orbs.length / square.orbs.length;
+/* -------------------------------------------------------------------------- */
+/* The opening.                                                               */
+/* -------------------------------------------------------------------------- */
+
+test("the first screen of a dive is not crowded, on any screen", () => {
+  // The founder, on the shipped 0.3.8: "why are there so many choices when I
+  // first start ... it's too hard and crowded and frustrating for the starting
+  // density". His screenshot carried about twenty orbs at LV1, because the count
+  // was multiplied by the board's AREA and the board had just become the screen.
+  //
+  // The opening is now the same five numbers whatever a child is holding.
+  //
+  // The ceiling is absolute and comes first, because everything below compares
+  // the field to `TUNE.orbBaseCount` and would happily agree with itself at any
+  // value — an opening of twenty orbs matching a constant that says twenty is
+  // exactly the state that shipped.
   assert.ok(
-    Math.abs(ratio - areaRatio) < 0.25,
-    `the tall board is ${areaRatio.toFixed(2)}x the area but carries ${ratio.toFixed(2)}x the orbs`,
+    TUNE.orbBaseCount <= 6,
+    `a dive opens on ${TUNE.orbBaseCount} numbers; the founder filed 22 as "too hard and ` +
+      `crowded and frustrating for the starting density"`,
   );
-  const goodShare = (x: World): number => x.orbs.filter((o) => o.good).length / x.orbs.length;
+  for (const [name, sw, sh] of SCREENS) {
+    const w = fresh(`opening-${name}`, sw, sh);
+    assert.equal(
+      w.orbs.length,
+      TUNE.orbBaseCount,
+      `${name}: a dive opens on ${w.orbs.length} orbs and the opening is ${TUNE.orbBaseCount}`,
+    );
+    const good = w.orbs.filter((o) => o.good).length;
+    assert.ok(good >= 1, `${name}: nothing on the opening screen is edible`);
+    assert.ok(
+      good < w.orbs.length,
+      `${name}: everything on the opening screen is edible — there is no question to answer`,
+    );
+  }
+});
+
+/**
+ * The biggest field seen at each depth of a real dive.
+ *
+ * Measured off a played run and not by poking `w.depth`, because `ensureField` is
+ * called by the game at the moments the game calls it — a test that sets the depth
+ * and asks nicely is testing an expression, not the field a child sees.
+ */
+function fieldByDepth(w: World, maxDepth: number, minutes: number): Map<number, { count: number; good: number }> {
+  // The field the child mostly SEES, taken as the commonest (count, edible) pair
+  // over every frame at that depth. Not the peak: a bite is answered by a spawn
+  // and a molt on different frames, so the extremes catch the board mid-restock
+  // and make two identical boards look like two different ones.
+  const tally = new Map<number, Map<string, number>>();
+  const steps = Math.round((minutes * 60) / FIXED);
+  for (let i = 0; i < steps && w.depth <= maxDepth; i++) {
+    if (w.phase === "dead" && w.deathT > 0.6) confirmPressed(w);
+    // A measuring instrument, and it says so: it swims straight at the nearest
+    // edible orb and is held at the opening length so it never coils into itself.
+    // The question here is what the FIELD does with depth, and a bot that dies at
+    // depth three answers a different one — the real pilot's survival is measured
+    // by the twenty-minute test above.
+    w.serpent.targetSegments = Math.min(w.serpent.targetSegments, TUNE.startSegments);
+    w.serpent.segments = Math.min(w.serpent.segments, TUNE.startSegments);
+    let want = w.serpent.heading;
+    let near = Infinity;
+    for (const o of w.orbs) {
+      if (!o.good || o.scale < 0.7 || o.moltT > 0) continue;
+      const d = Math.hypot(o.x - w.serpent.x, o.y - w.serpent.y);
+      if (d < near) {
+        near = d;
+        want = Math.atan2(o.y - w.serpent.y, o.x - w.serpent.x);
+      }
+    }
+    stepWorld(w, FIXED, { heading: want, boost: false });
+    if (w.phase !== "play" || w.mutateT > 0) continue;
+    const key = `${w.orbs.length}/${w.orbs.filter((o) => o.good).length}`;
+    const at = tally.get(w.depth) ?? new Map<string, number>();
+    at.set(key, (at.get(key) ?? 0) + 1);
+    tally.set(w.depth, at);
+  }
+  const out = new Map<number, { count: number; good: number }>();
+  for (const [depth, at] of tally) {
+    let best = "";
+    let bestN = -1;
+    for (const [key, n] of at) {
+      if (n > bestN) {
+        bestN = n;
+        best = key;
+      }
+    }
+    const [count, good] = best.split("/").map(Number) as [number, number];
+    out.set(depth, { count, good });
+  }
+  return out;
+}
+
+test("the field grows with correct answers, and with nothing else", () => {
+  // Not elapsed time and not the size of the screen: a child who is finding it
+  // hard is never handed a denser board for having been there a while, and a
+  // bigger screen is not an achievement.
+  const shapes: Array<[string, number, number]> = [
+    ["phone portrait, small", 320, 568],
+    ["tablet landscape", 1024, 768],
+    ["phone portrait", 390, 844],
+  ];
+  const byShape = shapes.map(([name, sw, sh]) => [name, fieldByDepth(fresh(`grow-${name}`, sw, sh), 5, 8)] as const);
+
+  const rows: string[] = [];
+  for (let depth = 1; depth <= 5; depth++) {
+    const seen = new Set<string>();
+    for (const [name, m] of byShape) {
+      const f = m.get(depth);
+      assert.ok(f, `${name} never reached depth ${depth} in eight minutes of perfect play`);
+      seen.add(`${f.count}/${f.good}`);
+    }
+    assert.equal(
+      seen.size,
+      1,
+      `at depth ${depth} three different screens carry different fields: ${[...seen].join(", ")}`,
+    );
+    const f = (byShape[0] as (readonly [string, Map<number, { count: number; good: number }>]))[1].get(depth) as {
+      count: number;
+      good: number;
+    };
+    rows.push(
+      `  LV${String(depth).padEnd(3)} ${String(f.count).padStart(2)} orbs, ${f.good} edible ` +
+        `(${((f.good / f.count) * 100).toFixed(0)}%)`,
+    );
+    // About a third of what a child can see is edible, at every depth: a sparse
+    // board where everything is food teaches nothing, and a deep one where almost
+    // nothing is food is a needle hunt.
+    const share = f.good / f.count;
+    assert.ok(
+      share >= 0.2 && share <= 0.45,
+      `at depth ${depth} the field is ${f.count} orbs with ${f.good} edible (${(share * 100).toFixed(0)}%)`,
+    );
+  }
+  console.log(`\n  the field, by depth (nine correct answers each):\n${rows.join("\n")}\n`);
+
+  const counts = [1, 2, 3, 4, 5].map(
+    (d) => ((byShape[0] as (readonly [string, Map<number, { count: number; good: number }>]))[1].get(d) as { count: number }).count,
+  );
+  for (let i = 1; i < counts.length; i++) {
+    assert.ok(
+      (counts[i] as number) >= (counts[i - 1] as number),
+      `the field shrank between depth ${i} and ${i + 1}: ${counts[i - 1]} then ${counts[i]}`,
+    );
+  }
   assert.ok(
-    Math.abs(goodShare(tall) - goodShare(square)) < 0.12,
-    `the share of edible orbs changed with the screen: ${goodShare(square).toFixed(2)} to ${goodShare(tall).toFixed(2)}`,
+    (counts[4] as number) >= (counts[0] as number) * 2,
+    `five depths only took the field from ${counts[0]} to ${counts[4]} — there is nothing to earn`,
   );
+});
+
+test("a minute of a first dive stays sparse", () => {
+  // The measurement the founder's complaint is really about: not the opening
+  // frame, but what the first minute FEELS like. A competent pilot is used, so
+  // this is the crowding a child gets for playing WELL — a struggling child sees
+  // strictly less.
+  const w = fresh("minute", 390, 844);
+  let total = 0;
+  let peak = 0;
+  const steps = Math.round(60 / FIXED);
+  const marks: string[] = [];
+  for (let i = 0; i < steps; i++) {
+    if (w.phase === "dead" && w.deathT > 0.6) confirmPressed(w);
+    stepWorld(w, FIXED, { heading: pilotHeading(w, 0.9), boost: false });
+    total += w.orbs.length;
+    peak = Math.max(peak, w.orbs.length);
+    if ((i + 1) % Math.round(10 / FIXED) === 0) {
+      marks.push(`${(i + 1) * FIXED}s: ${w.orbs.length} orbs, LV${w.depth}`);
+    }
+  }
+  const mean = total / steps;
+  console.log(`\n  first minute, competent pilot: mean ${mean.toFixed(1)} orbs, peak ${peak}\n    ${marks.join("\n    ")}\n`);
+  assert.ok(mean <= 9, `the first minute averaged ${mean.toFixed(1)} orbs on screen`);
+  assert.ok(peak <= 13, `the first minute peaked at ${peak} orbs on screen`);
+});
+
+/* -------------------------------------------------------------------------- */
+/* Turning around.                                                            */
+/* -------------------------------------------------------------------------- */
+
+/** Hold the tightest turn the serpent can make until something happens. */
+function coilUntil(w: World, stop: (w: World) => boolean, limit = 6000): boolean {
+  for (let i = 0; i < limit; i++) {
+    stepWorld(w, FIXED, { heading: w.serpent.heading + 1.4, boost: false });
+    if (stop(w)) return true;
+  }
+  return false;
+}
+
+test("turning around at the start of a dive is a thud, not an ending", () => {
+  // "he zooms around and grows and if I turn around he eats himself ... it's too
+  // hard". At `startSegments` the head closes a full loop on itself inside two
+  // seconds, so a child who turns the way they turn in every other game they own
+  // loses the run before they have read the condition once.
+  const w = fresh("bump", 390, 844);
+  w.orbs.length = 0; // nothing to eat, so nothing arms the latch
+  assert.equal(w.selfHitArmed, false, "a dive must open unarmed");
+
+  const before = w.serpent.targetSegments;
+  // Stop on EITHER outcome, so the assertion that fires names the one that
+  // happened: "it ended the run" and "it never touched its own body" are very
+  // different failures and a single stop condition reports them both as the second.
+  const touched = coilUntil(w, (x) => x.invulnT > 0.4 || x.phase === "dead");
+  assert.ok(touched, "a hard turn at the opening length never reached its own body");
+  assert.equal(w.phase, "play", "turning around at the opening length ended the run");
+  assert.ok(w.serpent.alive, "the serpent died on its own tail before it had grown");
+  assert.equal(
+    w.serpent.targetSegments,
+    before,
+    "the bump cost length — which would keep a child under the arming length for ever",
+  );
+  // And it is a real event, not a silent no-op: the child feels it.
+  assert.ok(w.cam.trauma > 0.1, "the bump was silent — a lesson nobody notices is not a lesson");
+
+  // It also keeps working: a child who has not yet earned length can bump again.
+  const second = coilUntil(w, (x) => x.invulnT > 0.4 || x.phase === "dead");
+  assert.ok(second, "the grace ran out after one bump without the serpent having grown");
+  assert.equal(w.phase, "play");
+});
+
+test("once the serpent has grown, its own body ends the dive again", () => {
+  const w = fresh("armed", 390, 844);
+  w.orbs.length = 0;
+  w.serpent.targetSegments = TUNE.selfHitArmsAt;
+  w.serpent.segments = TUNE.selfHitArmsAt;
+  const ended = coilUntil(w, (x) => x.phase === "dead");
+  assert.ok(w.selfHitArmed, "growing past the arming length did not arm the body");
+  assert.ok(ended, "a grown serpent coiled into itself and lived");
+});
+
+test("the grace is one-way: coughing length back up does not buy it again", () => {
+  // Otherwise a player could hover under the arming length and be immortal, and
+  // the one thing that can end a dive would be optional.
+  const w = fresh("latch", 390, 844);
+  w.orbs.length = 0;
+  w.serpent.targetSegments = TUNE.selfHitArmsAt;
+  w.serpent.segments = TUNE.selfHitArmsAt;
+  stepWorld(w, FIXED, { heading: 0, boost: false });
+  assert.ok(w.selfHitArmed, "the latch did not trip at the arming length");
+
+  w.serpent.targetSegments = TUNE.startSegments;
+  w.serpent.segments = TUNE.startSegments;
+  stepWorld(w, FIXED, { heading: 0, boost: false });
+  assert.ok(w.selfHitArmed, "shrinking back below the arming length disarmed the body");
+  const ended = coilUntil(w, (x) => x.phase === "dead");
+  assert.ok(ended, "a serpent that had grown and shrank back was immortal");
+});
+
+test("the arming length is reachable, and it is reached by answering correctly", () => {
+  // Three correct answers, by construction — and the constant has to actually BE
+  // three growths above the opening or the grace is either nothing or for ever.
+  assert.ok(
+    TUNE.selfHitArmsAt > TUNE.startSegments,
+    "the serpent is armed the moment a dive opens — there is no grace at all",
+  );
+  assert.ok(
+    TUNE.selfHitArmsAt <= TUNE.startSegments + TUNE.growPerCorrect * 3,
+    `the grace lasts ${(TUNE.selfHitArmsAt - TUNE.startSegments) / TUNE.growPerCorrect} correct ` +
+      `answers, which is long enough to be a mechanic rather than a lesson`,
+  );
+  const { host } = instrument("arming");
+  const w = createWorld(host, silentAudio(), false);
+  startRun(w);
+  for (let i = 0; i < Math.round(200 / FIXED) && !w.selfHitArmed; i++) {
+    stepWorld(w, FIXED, { heading: pilotHeading(w, 1), boost: false });
+  }
+  assert.ok(w.selfHitArmed, "a pilot answering correctly never grew into the lethal length");
+  assert.ok(w.correctEats >= 3, `it armed after only ${w.correctEats} correct answers`);
 });
