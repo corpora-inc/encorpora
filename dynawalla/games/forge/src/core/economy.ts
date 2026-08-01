@@ -103,7 +103,12 @@ export type Tier = {
   purchased: bigint
   /** Units produced by the station above, in micro. */
   stock: Micro
-  /** Extra doublings won from FORGE MARKs, on top of purchased/10. */
+  /**
+   * Extra doublings banked by older saves. Nothing writes this any more: a
+   * FORGE MARK `x2` now doubles the count on the row, which is the number the
+   * ingot printed. Still read, and still persisted, so a save made before that
+   * change keeps every doubling it earned.
+   */
   bonusDoublings: bigint
   unlocked: boolean
   /** Cached cost of the next purchase, in whole sparks. Exact. */

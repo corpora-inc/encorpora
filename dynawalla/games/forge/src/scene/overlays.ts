@@ -4,7 +4,7 @@
 import { MICRO, compact, readout, superscript } from "../core/bigmath.ts"
 import { QUENCH_FLOOR, TIERS } from "../core/economy.ts"
 import type { Rect } from "../game/layout.ts"
-import { offerLabel, resultingCount } from "../game/marks.ts"
+import { markOutcome, offerLabel } from "../game/marks.ts"
 import type { Game } from "../game/types.ts"
 import { GLOW_COLD, GLOW_GOLD, GLOW_HOT, PAL, glow, plate, text } from "../render/gfx.ts"
 import { clamp01, ease } from "../render/juice.ts"
@@ -223,8 +223,8 @@ function drawMark(ctx: CanvasRenderingContext2D, g: Game): void {
     rimWidth: 2.5,
   })
 
-  text(ctx, "FORGE MARK", panel.x + panel.w / 2, panel.y + 48 * S, {
-    size: Math.round(20 * S),
+  text(ctx, "FORGE MARK", panel.x + panel.w / 2, panel.y + 38 * S, {
+    size: Math.round(18 * S),
     align: "center",
     color: PAL.gold,
     tracking: 6 * S,
@@ -232,15 +232,29 @@ function drawMark(ctx: CanvasRenderingContext2D, g: Game): void {
   })
 
   // The one fact you need: how many you already have. Everything else on this
-  // screen is the two expressions being compared.
-  const have = `${TIERS[m.tier].name}  ${m.have}`
-  text(ctx, have, panel.x + panel.w / 2, panel.y + 108 * S, {
-    size: Math.round(34 * S),
+  // screen is the two expressions being compared. This number is `m.have`, the
+  // frozen C — never the live count, which is still climbing behind the scrim.
+  const have = `YOU HAVE ${m.have} ${TIERS[m.tier].name}`
+  const hs = fitSize(ctx, have, panel.w - 60 * S, Math.round(32 * S), true)
+  text(ctx, have, panel.x + panel.w / 2, panel.y + 90 * S, {
+    size: hs,
     mono: true,
     align: "center",
     color: PAL.white,
     glowColor: GLOW_HOT,
     glowRadius: 60 * S,
+  })
+
+  // The mission, in words, because a child who cannot tell what is being asked
+  // cannot do the maths even when they can do the maths.
+  const mission = "TAKE THE ONE THAT LEAVES YOU MORE"
+  const mtrack = 2.5 * S
+  const ms = fitSize(ctx, mission, panel.w - 50 * S, Math.round(13 * S), false, mtrack)
+  text(ctx, mission, panel.x + panel.w / 2, panel.y + 124 * S, {
+    size: ms,
+    align: "center",
+    color: "rgba(255,206,84,0.85)",
+    tracking: mtrack,
   })
 
   for (let i = 0; i < 2; i++) {
@@ -279,13 +293,21 @@ function drawMark(ctx: CanvasRenderingContext2D, g: Game): void {
       glowColor: GLOW_HOT,
       glowRadius: fs,
     })
-    // The consequence, small, under the offer: the number this becomes.
-    const res = resultingCount(g.economy, m.offers[i]) / MICRO
-    text(ctx, `→ ${res}`, 0, fs * 0.34 + 30 * S, {
-      size: Math.round(17 * S),
+    // The consequence, under the offer: the number this leaves you with. It is
+    // on the card BEFORE the choice, because the whole decision is which of
+    // these two is bigger — hiding both until after the tap removes the thing
+    // being decided. It comes off the frozen `have`, so it is the same number
+    // whether it is read now or three seconds from now.
+    const res = `→ ${markOutcome(m, i)}`
+    // Offset from the ingot's own height: the two-up landscape plate is twice
+    // the height of the stacked portrait one, and a fixed drop hangs the
+    // number off the bottom edge of the short plate.
+    const rs = fitSize(ctx, res, r.w - 34 * S, Math.round(Math.min(20 * S, r.h * 0.22)), true)
+    text(ctx, res, 0, fs * 0.34 + Math.min(34 * S, r.h * 0.32), {
+      size: rs,
       mono: true,
       align: "center",
-      color: g.markPicked >= 0 ? PAL.bright : "rgba(255,200,140,0.0)",
+      color: picked ? PAL.white : PAL.bright,
     })
     ctx.restore()
     if (good) glow(ctx, r.x + r.w / 2, r.y + r.h / 2, r.h * 1.2, GLOW_GOLD, 0.7)
