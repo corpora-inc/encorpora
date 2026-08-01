@@ -3,8 +3,17 @@ import assert from "node:assert/strict";
 
 import type { Host, Question } from "../contract.ts";
 import { tierByName } from "../core/tier.ts";
-import { BK, EK, PACE } from "./constants.ts";
-import { bossDefeated, launchBoss, onOrbTouched, stepBoss, tryLock } from "./seal.ts";
+import { BK, BULLET, EK, HALF_W, ORB_SWAY, PACE } from "./constants.ts";
+import { LABEL_ASPECT } from "../core/labels.ts";
+import {
+  bossDefeated,
+  launchBoss,
+  onOrbTouched,
+  orbLane,
+  stepBoss,
+  stepOrb,
+  tryLock,
+} from "./seal.ts";
 import { startRun, step, stratumOf, rosterOf } from "./sim.ts";
 import type { Bullet, Enemy } from "./types.ts";
 import { makeWorld, type World } from "./world.ts";
@@ -412,4 +421,125 @@ test("the run gets harder on seals broken", () => {
   step(w, 1 / 60);
   assert.equal(w.stratum, 3);
   assert.ok(w.events.includes("stratum"), "nothing marked the depth the child earned");
+});
+
+// ---------------------------------------------------------------------------
+// the answers do not sit on top of each other
+// ---------------------------------------------------------------------------
+
+/**
+ * How wide the numeral drawn on an orb is, in playfield units.
+ *
+ * `renderer.ts` draws an orb's label at `r * 1.35` tall by `LABEL_ASPECT` times
+ * that wide, and boosts it 1.18 on a screen under 520 CSS px — the founder's
+ * phone. The quad and not the ink, because the halo the numeral now wears goes
+ * right out to the ink's edge and two halos touching is two numerals touching.
+ */
+const LABEL_W = BULLET.orbR * 1.35 * LABEL_ASPECT * 1.18;
+
+/**
+ * The founder's screenshot: three answers bunched, each one inside the others'
+ * additive halos, one of them illegible.
+ *
+ * The cause was not the weave. `askQuestion` aimed each orb at a lane with
+ * `vx = (tx - e.x) * 0.55` and `stepOrb` decayed that velocity with a 0.4s
+ * half-life, so an orb covered `0.55 * 0.4 / ln 2 ≈ 32%` of the distance to its
+ * lane and stopped — three orbs aimed at −28, 0 and +28 arriving at −8.9, 0 and
+ * +8.9, wearing numerals 19.4 wide.
+ */
+test("two answers never sit inside each other's halo", () => {
+  const { host } = fakeHost(CURRICULUM);
+  const w = world(host);
+  launchBoss(w);
+  const e = w.enemies[w.enemyN - 1] as Enemy;
+  askUntilSeal(w, e);
+  const dropped = orbs(w, w.seal.serial);
+  assert.equal(dropped.length, 4, "the Bearer dropped a different number of orbs");
+
+  const dt = 1 / 60;
+  let closest = Infinity;
+  let settled = -1;
+  // twelve seconds — longer than any seal is on the field
+  for (let f = 0; f < 720; f++) {
+    w.t += dt;
+    for (const b of dropped) stepOrb(w, b, dt, 1);
+    let gap = Infinity;
+    for (let i = 0; i < dropped.length; i++) {
+      for (let j = i + 1; j < dropped.length; j++) {
+        const a = dropped[i] as Bullet;
+        const b = dropped[j] as Bullet;
+        gap = Math.min(gap, Math.abs(a.x - b.x));
+      }
+    }
+    if (gap >= LABEL_W && settled < 0) settled = f * dt;
+    if (settled >= 0) closest = Math.min(closest, gap);
+    // nothing leaves the field, numeral and all
+    for (const b of dropped) {
+      assert.ok(
+        Math.abs(b.x) + LABEL_W / 2 <= HALF_W,
+        `an orb's numeral reached ${(Math.abs(b.x) + LABEL_W / 2).toFixed(1)} of ${String(HALF_W)}`,
+      );
+    }
+  }
+  assert.ok(settled >= 0, "the orbs never separated at all");
+  assert.ok(
+    settled <= 0.5,
+    `the answers were still overlapping ${settled.toFixed(2)}s after they were dropped`,
+  );
+  assert.ok(
+    closest >= LABEL_W,
+    `two answers came within ${closest.toFixed(1)} units, and a numeral is ${LABEL_W.toFixed(1)} wide`,
+  );
+});
+
+/**
+ * The sway is not sanded down to buy that separation — it is bought with PHASE.
+ * Every orb is at the same offset at the same instant, so the gap between two
+ * lanes is the lane width whatever the row is doing, and the amplitude stays
+ * the same 5.5 units as the bob it plays against.
+ */
+test("the row still sways, all of it together", () => {
+  const { host } = fakeHost(CURRICULUM);
+  const w = world(host);
+  launchBoss(w);
+  const e = w.enemies[w.enemyN - 1] as Enemy;
+  askUntilSeal(w, e);
+  const dropped = orbs(w, w.seal.serial);
+  const dt = 1 / 60;
+  for (let f = 0; f < 240; f++) {
+    w.t += dt;
+    for (const b of dropped) stepOrb(w, b, dt, 1);
+  }
+  // on station: x is exactly lane + sway, and the offsets agree
+  const offsets = dropped.map((b) => b.x - b.lane);
+  const spread = Math.max(...offsets) - Math.min(...offsets);
+  assert.ok(spread < 1e-9, `the orbs sway out of step by ${spread.toFixed(4)} units`);
+
+  let lo = Infinity;
+  let hi = -Infinity;
+  for (let f = 0; f < 600; f++) {
+    w.t += dt;
+    for (const b of dropped) stepOrb(w, b, dt, 1);
+    const o = (dropped[0] as Bullet).x - (dropped[0] as Bullet).lane;
+    lo = Math.min(lo, o);
+    hi = Math.max(hi, o);
+  }
+  assert.ok(
+    hi - lo > ORB_SWAY * 1.9,
+    `the row only swept ${(hi - lo).toFixed(1)} units of a possible ${String(ORB_SWAY * 2)}`,
+  );
+});
+
+test("a lane is wide enough for the numeral that stands in it", () => {
+  // Two, three or four orbs — `orbValues` fills up to four and stops early if
+  // the distractors collide, and the tightest lane is therefore four.
+  for (const n of [2, 3, 4]) {
+    for (let i = 0; i + 1 < n; i++) {
+      const gap = orbLane(i + 1, n) - orbLane(i, n);
+      assert.ok(gap >= LABEL_W, `with ${String(n)} orbs the lanes are ${gap.toFixed(1)} apart`);
+    }
+    // and the outermost numeral stays on the glass at the far end of the sway
+    const outer = Math.abs(orbLane(n - 1, n)) + ORB_SWAY + LABEL_W / 2;
+    assert.ok(outer <= HALF_W, `the outer numeral reaches ${outer.toFixed(1)} at full sway`);
+  }
 });

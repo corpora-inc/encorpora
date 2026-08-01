@@ -10,7 +10,10 @@ import {
   EK,
   ENEMY,
   HALF_W,
+  ORB_LANE_EASE,
   ORB_SPREAD,
+  ORB_SWAY,
+  ORB_SWAY_RATE,
   PACE,
   SCORE,
   polColor,
@@ -278,10 +281,10 @@ function askQuestion(w: World, e: Enemy, orbCount: number): boolean {
     if (!o) continue;
     const b = addBullet(w);
     if (!b) continue;
-    const tx = -ORB_SPREAD / 2 + (ORB_SPREAD * (i + 0.5)) / n;
+    b.lane = orbLane(i, n);
     b.x = e.x;
     b.y = e.y - e.r * 0.4;
-    b.vx = (tx - e.x) * 0.55;
+    b.vx = 0;
     b.vy = -ORB_SPEED_IN;
     b.v = o.v;
     b.r = BULLET.orbR;
@@ -302,19 +305,37 @@ function askQuestion(w: World, e: Enemy, orbCount: number): boolean {
   return true;
 }
 
-/** Orb flight: glide to the presentation band, hover and weave, then leave. */
+/**
+ * Where the i-th of n orbs presents its numeral. Lanes, evenly across the
+ * spread, and the ONLY thing that decides an orb's x once it is on station.
+ */
+export function orbLane(i: number, n: number): number {
+  return -ORB_SPREAD / 2 + (ORB_SPREAD * (i + 0.5)) / Math.max(1, n);
+}
+
+/**
+ * Orb flight: glide to the presentation band, hover and weave, then leave.
+ *
+ * `x` is `lane + sway` and nothing else — no integration, no leftover velocity.
+ * The sway is a function of the WORLD clock, so every orb in a row is at the
+ * same offset at the same instant and two lanes stay exactly one lane width
+ * apart for the whole presentation. That is what keeps a numeral out of its
+ * neighbour's halo; see `ORB_SWAY` for why it is bought with phase instead of
+ * with amplitude.
+ */
 export function stepOrb(w: World, b: Bullet, dt: number, hurry: number): void {
   const band = -w.halfH * 0.06;
   b.wob += dt * 1.15;
+  const sway = Math.cos(w.t * ORB_SWAY_RATE) * ORB_SWAY;
   if (b.y > band) {
     b.y += b.vy * dt * hurry;
-    b.vx = approach(b.vx, 0, 0.4, dt);
-    b.x += b.vx * dt;
+    // ease to the lane on the way down: an orb is read while it is falling
+    b.x = approach(b.x, b.lane + sway, ORB_LANE_EASE, dt);
   } else {
     b.y = approach(b.y, band + Math.sin(b.wob * 1.3) * 5.5, 0.5, dt);
-    b.x += Math.cos(b.wob * 0.9 + b.v) * 11 * dt * hurry;
-    b.x = clamp(b.x, -HALF_W + b.r, HALF_W - b.r);
+    b.x = b.lane + sway;
   }
+  b.x = clamp(b.x, -HALF_W + b.r, HALF_W - b.r);
   b.rot += (b.v > 0 ? 0.9 : -0.7) * dt;
   if (b.grow > 0) b.grow = Math.max(0, b.grow - dt * 3.4);
 }

@@ -22,10 +22,11 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import { LABEL_COLS, LABEL_ROWS } from "../core/labels.ts";
 import type { Tier } from "../core/tier.ts";
 import { clamp, clamp01, wobble } from "../core/util.ts";
-import { BK, COL, EK, HALF_W, PLAYER, polColor, polHot } from "../game/constants.ts";
+import { BK, EK, HALF_W, PLAYER, polColor } from "../game/constants.ts";
 import type { Bullet, Enemy, FloatText, Particle } from "../game/types.ts";
 import type { World } from "../game/world.ts";
 import { LabelAtlas, buildPromptTexture } from "./atlas.ts";
+import { FLOAT_HOLD, classOfBullet, classOfFloat, labelInk, type LabelClass } from "./ink.ts";
 import {
   BACKDROP_FRAG,
   BACKDROP_VERT,
@@ -100,6 +101,20 @@ export class Renderer {
   readonly canvas: HTMLCanvasElement;
   private readonly gl: WebGLRenderer;
   private readonly scene = new Scene();
+  /**
+   * The numerals, and only the numerals.
+   *
+   * A second scene composited AFTER the bloom pass and after the full-screen
+   * composite, rather than a layer inside the first one. Both of those are
+   * additive whole-screen lifts, and a numeral drawn underneath them is read
+   * THROUGH them: the bloom bleeds an orb's own glow across its digits and a
+   * flash whites the field out. Underneath is where the founder's third orb
+   * was. Above, the glyph's ground is its own opaque halo and nothing
+   * composited later can wash it out — which is what makes the table in
+   * `ink.test.ts` a statement about what is on the glass rather than about an
+   * intermediate buffer.
+   */
+  private readonly overlay = new Scene();
   private readonly cam = new OrthographicCamera(-50, 50, 70, -70, 0, 10);
   private composer: EffectComposer | null = null;
   private bloom: UnrealBloomPass | null = null;
@@ -190,7 +205,13 @@ export class Renderer {
     };
     this.uBullet = { uBoost: { value: 1 }, uPx: { value: 0.1 } };
     this.uEnemy = { uTime: { value: 0 }, uPx: { value: 0.1 } };
-    this.uPrompt = { uMap: { value: null }, uAlpha: { value: 0 }, uCol: { value: [1, 1, 1] } };
+    const promptInk = labelInk("prompt");
+    this.uPrompt = {
+      uMap: { value: null },
+      uAlpha: { value: 0 },
+      uCol: { value: [...promptInk.ink] },
+      uHalo: { value: [...promptInk.halo] },
+    };
 
     this.backdrop = new Mesh(QUAD, shader(BACKDROP_VERT, BACKDROP_FRAG, this.uBack, NormalBlending));
     this.backdrop.frustumCulled = false;
@@ -223,12 +244,20 @@ export class Renderer {
     );
     this.labels = makeLayer(
       512,
-      { iPos: 2, iSize: 1, iTile: 1, iAlpha: 1, iCol: 3 },
-      shader(LABEL_VERT, LABEL_FRAG, {
-        uMap: { value: this.atlas.texture },
-        uGrid: { value: new Vector2(LABEL_COLS, LABEL_ROWS) },
-        uAspect: { value: this.atlas.aspect },
-      }),
+      { iPos: 2, iSize: 1, iTile: 1, iAlpha: 1, iCol: 3, iHalo: 3 },
+      shader(
+        LABEL_VERT,
+        LABEL_FRAG,
+        {
+          uMap: { value: this.atlas.texture },
+          uGrid: { value: new Vector2(LABEL_COLS, LABEL_ROWS) },
+          uAspect: { value: this.atlas.aspect },
+        },
+        // NOT additive, unlike every other layer here. An additive glyph cannot
+        // darken anything, so its halo is a no-op and its ceiling on a clipped
+        // ground is 1.00:1 — see `ink.ts`.
+        NormalBlending,
+      ),
       40,
     );
 
@@ -243,12 +272,13 @@ export class Renderer {
         varying vec2 vUv; uniform vec2 uPos; uniform vec2 uSize;
         void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(uPos + position.xy * uSize, 0.0, 1.0); }`,
         /* glsl */ `
-        varying vec2 vUv; uniform sampler2D uMap; uniform float uAlpha; uniform vec3 uCol;
+        varying vec2 vUv;
+        uniform sampler2D uMap; uniform float uAlpha; uniform vec3 uCol; uniform vec3 uHalo;
         void main(){
           vec4 t = texture2D(uMap, vUv);
           float a = t.a * uAlpha;
           if (a < 0.005) discard;
-          gl_FragColor = vec4(mix(vec3(0.0), uCol, t.r), a);
+          gl_FragColor = vec4(mix(uHalo, uCol, t.r), a);
         }`,
         { ...this.uPrompt, uPos: { value: new Vector2(0, 0) }, uSize: { value: new Vector2(1, 1) } },
         NormalBlending,
@@ -261,13 +291,24 @@ export class Renderer {
     this.front.frustumCulled = false;
     this.front.renderOrder = 100;
 
-    for (const l of [this.waves, this.parts, this.enemies, this.bullets, this.labels])
-      this.scene.add(l.mesh);
-    this.scene.add(this.player, this.promptMesh, this.front);
+    for (const l of [this.waves, this.parts, this.enemies, this.bullets]) this.scene.add(l.mesh);
+    this.scene.add(this.player, this.front);
+    this.overlay.add(this.labels.mesh, this.promptMesh);
 
     this.buildPost(tier);
   }
 
+  /**
+   * The post chain, and where the numerals sit in it.
+   *
+   * `RenderPass` draws into the READ buffer and declares `needsSwap = false`,
+   * which is exactly what an overlay needs: a second one with `clear = false`
+   * placed after the bloom paints the numerals on top of the frame the rest of
+   * the chain has built, and the grade still runs over the result so the
+   * numerals get the same aberration and grain as everything else and do not
+   * look pasted on. When there is no grade the bloom is the pass that reaches
+   * the screen, and the overlay follows it there.
+   */
   private buildPost(tier: Tier): void {
     this.composer?.dispose();
     this.composer = null;
@@ -280,12 +321,17 @@ export class Renderer {
       this.bloom = new UnrealBloomPass(new Vector2(this.w, this.h), 0.62, 0.68, 0.12);
       c.addPass(this.bloom);
     }
+    const over = new RenderPass(this.overlay, this.cam);
+    over.clear = false;
     if (tier.grade) {
+      c.addPass(over);
       this.grade = new ShaderPass(GRADE_SHADER as never);
       this.grade.renderToScreen = true;
       c.addPass(this.grade);
-    } else if (this.bloom) {
-      this.bloom.renderToScreen = true;
+    } else {
+      if (this.bloom) this.bloom.renderToScreen = true;
+      over.renderToScreen = true;
+      c.addPass(over);
     }
     this.composer = c;
     c.setSize(this.w, this.h);
@@ -393,8 +439,16 @@ export class Renderer {
       this.bloom.strength = 0.55 + fx.glow * 0.5 + (w.reduced ? 0 : tr * 0.5);
     }
 
-    if (this.composer) this.composer.render();
-    else this.gl.render(this.scene, this.cam);
+    if (this.composer) {
+      this.composer.render();
+    } else {
+      // LOW tier: no post chain at all, so the overlay is a second direct
+      // render with the clear suppressed. The numerals still land last.
+      this.gl.render(this.scene, this.cam);
+      this.gl.autoClear = false;
+      this.gl.render(this.overlay, this.cam);
+      this.gl.autoClear = true;
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -517,24 +571,22 @@ export class Renderer {
     const tile = (L.attrs.iTile as InstancedBufferAttribute).array as Float32Array;
     const alpha = (L.attrs.iAlpha as InstancedBufferAttribute).array as Float32Array;
     const col = (L.attrs.iCol as InstancedBufferAttribute).array as Float32Array;
+    const halo = (L.attrs.iHalo as InstancedBufferAttribute).array as Float32Array;
     let n = 0;
-    const put = (
-      x: number,
-      y: number,
-      s: number,
-      t: number,
-      a: number,
-      c: readonly number[],
-    ): void => {
+    const put = (x: number, y: number, s: number, t: number, a: number, cls: LabelClass): void => {
       if (n >= L.cap || t < 0) return;
+      const pair = labelInk(cls);
       pos[n * 2] = x;
       pos[n * 2 + 1] = y;
       size[n] = s;
       tile[n] = t;
       alpha[n] = a;
-      col[n * 3] = c[0] as number;
-      col[n * 3 + 1] = c[1] as number;
-      col[n * 3 + 2] = c[2] as number;
+      col[n * 3] = pair.ink[0];
+      col[n * 3 + 1] = pair.ink[1];
+      col[n * 3 + 2] = pair.ink[2];
+      halo[n * 3] = pair.halo[0];
+      halo[n * 3 + 1] = pair.halo[1];
+      halo[n * 3 + 2] = pair.halo[2];
       n++;
     };
 
@@ -547,20 +599,22 @@ export class Renderer {
         this.orbFault(b.v, b.kind === BK.Orb);
         continue;
       }
-      const s = (b.kind === BK.Orb ? b.r * 1.35 : b.r * 1.55) * boost;
-      put(b.x, b.y, s, t, 1, polHot(b.v));
+      const isOrb = b.kind === BK.Orb;
+      const s = (isOrb ? b.r * 1.35 : b.r * 1.55) * boost;
+      put(b.x, b.y, s, t, 1, classOfBullet(isOrb, b.v));
     }
     for (let i = 0; i < w.textN; i++) {
       const t = w.texts[i] as FloatText;
       const k = clamp01(t.age / t.life);
-      put(t.x, t.y, t.size * (1 + k * 0.5), A.tileFor(t.value), (1 - k) * (1 - k), [t.r, t.g, t.b]);
+      const a = Math.min(1, (1 - k) * FLOAT_HOLD) ** 2;
+      put(t.x, t.y, t.size * (1 + k * 0.5), A.tileFor(t.value), a, classOfFloat(t.value));
     }
     // the Warden prints the exact total it demands, right on its hull
     for (let i = 0; i < w.enemyN; i++) {
       const e = w.enemies[i] as Enemy;
       if (e.kind !== EK.Warden || e.lockState !== 1) continue;
       const pulse = 0.7 + 0.3 * Math.sin(w.wall * 5);
-      put(e.x, e.y, e.r * 1.15, A.tileFor(e.lockWant), pulse, COL.gold);
+      put(e.x, e.y, e.r * 1.15, A.tileFor(e.lockWant), pulse, "wardenLock");
     }
     A.flush();
     L.geo.instanceCount = n;
@@ -620,7 +674,6 @@ export class Renderer {
     (u.uPos as { value: Vector2 }).value.set(host.x, host.y + host.r * 1.28);
     (u.uSize as { value: Vector2 }).value.set(wide, wide * 0.25);
     (u.uAlpha as { value: number }).value = 1;
-    (u.uCol as { value: number[] }).value = [...COL.gold] as number[];
   }
 
   /** The polarity colour a HUD element should use. Kept here so CSS matches GLSL. */

@@ -90,6 +90,41 @@ export const BULLET = {
  */
 export const ORB_SPREAD = (HALF_W - 8) * 2;
 
+/**
+ * The lane geometry that keeps two answers from sitting on top of each other.
+ *
+ * The founder's screenshot is three orbs BUNCHED, each inside the others'
+ * additive halos, and the reason was not the weave: it was that an orb never
+ * reached the lane it was aimed at. `askQuestion` gave it `vx = (tx - e.x) *
+ * 0.55` and `stepOrb` then decayed that velocity with a 0.4s half-life, so the
+ * orb travelled `0.55 * 0.4 / ln 2 ≈ 0.317` of the way to `tx` and stopped.
+ * Three orbs aimed at −28, 0 and +28 arrived at −8.9, 0 and +8.9 — nine units
+ * apart, wearing numerals nineteen units wide.
+ *
+ * So the lane is a POSITION the orb eases to, and the weave happens about it:
+ *
+ *   - `ORB_LANE_EASE` is the half-life of that ease, and it is 0.1s because the
+ *     arithmetic says so: adjacent lanes are 21 units apart at four orbs and a
+ *     numeral is 19.4 wide, so the row is only clear of itself once the ease is
+ *     92.2% of the way home — 3.68 half-lives. At 0.1s that is 0.37s, and
+ *     `seal.test.ts` holds it under half a second. A numeral is read on the way
+ *     down as well as at rest.
+ *   - `ORB_SWAY` is how far the row drifts either side, and it is driven by the
+ *     WORLD clock rather than each orb's own phase, so all of them sway
+ *     together like a curtain and the distance between two lanes is exactly the
+ *     lane width whatever the sway is doing. The weave is not sanded down to
+ *     buy the separation — it is 5.5 units, the same amplitude as the vertical
+ *     bob it plays against, and the separation is bought by the phase instead.
+ *
+ * The cap on `ORB_SWAY` is the field edge: the outermost lane of four sits at
+ * `ORB_SPREAD * 3/8 = 31.5`, its numeral reaches 9.7 further at the widest, and
+ * the field ends at 50 — so anything up to 8.8 keeps the whole row on the
+ * glass. `core/labels.test.ts` holds both bounds.
+ */
+export const ORB_LANE_EASE = 0.1;
+export const ORB_SWAY = 5.5;
+export const ORB_SWAY_RATE = 1.0;
+
 // --- enemies ----------------------------------------------------------------
 /** Enemy kinds. Same shape and the same reason as `BK`. */
 export const EK = {

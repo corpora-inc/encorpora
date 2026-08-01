@@ -263,7 +263,7 @@ function absorb(w: World, b: Bullet): void {
   });
   if (big) {
     ring(w, w.px, w.py, 3.2, polHot(b.v), 0.3, 1.4);
-    addText(w, b.v, b.x, b.y, polHot(b.v));
+    addText(w, b.v, b.x, b.y);
     punch(w, 0.18);
     w.host.haptic("light");
   }
