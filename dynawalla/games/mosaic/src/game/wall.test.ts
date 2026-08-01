@@ -151,7 +151,6 @@ test("carving never takes a wall below the floor it promises", () => {
     for (const seed of SPREAD_SEEDS.slice(0, 60)) {
       const w = buildWave({ seed, index });
       assert.ok(w.tiles.length >= 20, `wave ${index} seed ${seed} carved down to ${w.tiles.length}`);
-      assert.ok(w.carved >= 0);
       assert.equal(w.guiltyShare, w.guiltyTotal / w.tiles.length);
     }
   }

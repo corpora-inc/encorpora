@@ -565,6 +565,16 @@ export function grantPower(sim: Sim, kind: PowerKind, out: SimEvent[]): void {
 // ---------------------------------------------------------------------------
 
 export function step(sim: Sim, dt: number, out: SimEvent[]): void {
+  // A held reveal STOPS THE WORLD. The forge already ran the game underneath
+  // itself at a twelfth speed while a beat was open, which was harmless when a
+  // beat lasted at most seven seconds; a reveal the child dismisses in their
+  // own time is unbounded, and the manual now tells them to take it. Without
+  // this the ball keeps travelling and the wall keeps creeping while their hand
+  // is off the glass — measured, a ten-second read cost a bead in 81 runs out
+  // of 120, and on the last bead it ended the run underneath the lesson.
+  // Nothing here is a clock, so nothing here may run while one is being read.
+  if (sim.forge?.held) return;
+
   sim.runTime += dt;
 
   if (sim.phase === "gameover") return;

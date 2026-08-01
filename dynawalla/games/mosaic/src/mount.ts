@@ -182,6 +182,15 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
   /** One tap, one meaning: use the best thing available right now. */
   const act = (vx: number, vy: number) => {
     audio.start();
+    // Before the game-over branch: a held reveal is the only thing on screen,
+    // and the tap that takes it down must never be spent restarting the run.
+    if (sim.forge?.held) {
+      if (dismissForge(sim)) {
+        cam.timeScaleTarget = 1;
+        audio.setSlowed(false);
+      }
+      return;
+    }
     if (sim.phase === "gameover") {
       restart(sim, (sim.seed * 1103515245 + 12345) >>> 0);
       particles.clearAll();
@@ -191,15 +200,6 @@ export function mount(el: HTMLElement, host: Host): GameHandle {
       return;
     }
     if (sim.forge) {
-      // A held reveal is taken down by the child's own hand, anywhere on the
-      // screen, whenever they have finished with it — never by a timer.
-      if (sim.forge.held) {
-        if (dismissForge(sim)) {
-          cam.timeScaleTarget = 1;
-          audio.setSlowed(false);
-        }
-        return;
-      }
       const i = forgeShardAt(sim.forge, vx, vy);
       if (i >= 0) resolveForge(i);
       return;

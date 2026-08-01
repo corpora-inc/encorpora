@@ -5,7 +5,7 @@ import { createSim, launch, paddleHalf, step, tileAt } from "./sim.ts";
 import type { Sim, SimEvent } from "./state.ts";
 import { VW } from "./state.ts";
 import { guilty } from "./rules.ts";
-import { MAX_SWAY_CELLS } from "./wall.ts";
+import { MAX_SWAY_CELLS, TRACERY_BLEED } from "./wall.ts";
 import { BEAT_MAX, ENDGAME_LOCK, kindle, reglaze, remainingTargets } from "./remix.ts";
 
 const DT = 1 / 120;
@@ -205,7 +205,6 @@ test("a remixed board is still solvable — every seed, played to the end", () =
     assert.equal(r.sim.broken, r.sim.wave.guiltyTotal, `seed ${seed}: broken/total disagree`);
     // Including the ones the remix put there: the wave is only over once the
     // added targets have been broken too.
-    assert.ok(r.addedPeak >= 0);
     if (r.addedPeak > 0) {
       assert.ok(
         r.sim.broken > r.sim.wave.guiltyTotal - r.addedPeak,
@@ -355,8 +354,11 @@ test("the window drifts, and the drift never leaves the playfield", () => {
   assert.ok(early.maxSway < early.sim.cellW * 0.2, `the tutorial wall swung ${early.maxSway}`);
   const sim = createSim(5, VH);
   const margin = sim.wallX;
+  // The STONE FRAME is what has to fit, not the glass: the tracery is drawn
+  // `TRACERY_BLEED` units outside the tile grid, and at the old bound the tiles
+  // stayed on screen while the frame clipped off the left edge by eight units.
   assert.ok(
-    MAX_SWAY_CELLS * sim.cellW < margin,
-    `a full swing of ${MAX_SWAY_CELLS * sim.cellW} would push a ${margin}-unit margin off screen`,
+    MAX_SWAY_CELLS * sim.cellW + TRACERY_BLEED <= margin,
+    `a full swing puts the frame at ${margin - MAX_SWAY_CELLS * sim.cellW - TRACERY_BLEED} from the edge`,
   );
 });

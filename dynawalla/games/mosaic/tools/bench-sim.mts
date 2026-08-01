@@ -13,7 +13,8 @@
  * Run: `npm run bench`
  */
 import { Rng } from "../src/rng.ts";
-import { createSim, launch, paddleHalf, step } from "../src/game/sim.ts";
+import { createSim, launch, paddleHalf, step, wallLeft } from "../src/game/sim.ts";
+import { createRemix } from "../src/game/remix.ts";
 import type { Sim, SimEvent } from "../src/game/state.ts";
 import { VW } from "../src/game/state.ts";
 import { buildWave } from "../src/game/wall.ts";
@@ -47,8 +48,8 @@ function aimingPaddle(sim: Sim, rng: Rng): void {
   let best: { x: number; y: number } | null = null;
   let bestD = Infinity;
   for (const t of sim.wave.tiles) {
-    if (!t.alive || !t.guilty) continue;
-    const tx = sim.wallX + (t.col + 0.5) * sim.cellW;
+    if (!t.alive || !t.guilty || t.drop > 0) continue;
+    const tx = wallLeft(sim) + (t.col + 0.5) * sim.cellW;
     const ty = sim.wallY + sim.descent + (t.row + 0.5) * sim.cellH;
     const d = Math.hypot(tx - landing, ty - sim.paddleY);
     if (d < bestD) {
@@ -71,6 +72,9 @@ function playWave(seed: number, index: number, limit = 400): { t: number; cleare
     const wave = buildWave({ seed, index });
     sim.wave = wave;
     sim.rule = wave.rule;
+    // Per-wave state, and the benchmark is the tool that measures the remix.
+    sim.remix = createRemix(seed, wave);
+    sim.sway = 0;
     const grid = new Int32Array(wave.cols * wave.rows).fill(-1);
     sim.cellW = (VW - 100) / wave.cols;
     sim.cellH = Math.min(sim.cellW / 1.62, 62);

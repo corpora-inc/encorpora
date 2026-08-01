@@ -18,6 +18,7 @@ import type { Sim } from "../game/state.ts";
 import { VW } from "../game/state.ts";
 import { MOLTEN_AT, paddleHalf, tileX, tileY, TRAIL_LEN, wallLeft } from "../game/sim.ts";
 import { DROP_SECONDS } from "../game/remix.ts";
+import { TRACERY_BLEED } from "../game/wall.ts";
 import { MASONRY_HP } from "../game/wall.ts";
 import { ruleBanner } from "../game/rules.ts";
 import { FORGE_TIMEOUT } from "../game/forge.ts";
@@ -462,10 +463,12 @@ export class Renderer {
   /** The stone frame the window sits in. */
   private drawTracery(sim: Sim): void {
     const g = this.ctx;
-    const x = wallLeft(sim) - 16;
-    const y = sim.wallY + sim.descent - 16;
-    const w = sim.wave.cols * sim.cellW + 32;
-    const h = sim.wave.rows * sim.cellH + 32;
+    // 16 + 5 for the outer rect + half of its 6-unit stroke = TRACERY_BLEED.
+    // `MAX_SWAY_CELLS` is chosen against that sum; keep them together.
+    const x = wallLeft(sim) - (TRACERY_BLEED - 8);
+    const y = sim.wallY + sim.descent - (TRACERY_BLEED - 8);
+    const w = sim.wave.cols * sim.cellW + (TRACERY_BLEED - 8) * 2;
+    const h = sim.wave.rows * sim.cellH + (TRACERY_BLEED - 8) * 2;
     g.strokeStyle = "rgba(120,110,180,0.16)";
     g.lineWidth = 2;
     roundRect(g, x, y, w, h, 18);

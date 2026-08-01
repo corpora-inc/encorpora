@@ -31,8 +31,18 @@ const MIN_TILES = 26;
  */
 const CARVE_FLOOR = 20;
 
-/** How far the window may drift sideways, as a fraction of one cell. */
-export const MAX_SWAY_CELLS = 0.42;
+/**
+ * How far the window may drift sideways, as a fraction of one cell.
+ *
+ * Bounded by the stone frame rather than by the glass: `drawTracery` draws
+ * `TRACERY_BLEED` units outside the tile grid on every side, so the number that
+ * has to fit inside the wall margin is `MAX_SWAY_CELLS * cellW + TRACERY_BLEED`,
+ * not the sway alone. At 0.42 the tiles stayed on screen and the frame did not.
+ */
+export const MAX_SWAY_CELLS = 0.26;
+
+/** How far outside the tile grid the stone frame is drawn. See `drawTracery`. */
+export const TRACERY_BLEED = 24;
 
 export type Tile = {
   col: number;

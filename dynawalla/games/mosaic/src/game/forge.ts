@@ -143,15 +143,21 @@ export function stepForge(sim: Sim, dtReal: number): boolean {
   if (!forge) return false;
   forge.age += dtReal;
 
+  // A held reveal never expires, and NOTHING in it moves. `age` keeps running
+  // because the settle floor is measured in it, but the runes are frozen where
+  // they were chosen: they are on a rising arc with gravity under them, and
+  // under an unbounded hold that arc carried the lit correct answer off the
+  // bottom of the screen in about twenty seconds. A reveal advertised as
+  // unlimited that empties itself while you read it is worse than the timer it
+  // replaced.
+  if (forge.held) return false;
+
   for (const s of forge.shards) {
     s.x += s.vx * dtReal;
     s.y += s.vy * dtReal;
     s.vy += 2.2 * dtReal;
     if (s.pop > 0) s.pop = Math.max(0, s.pop - dtReal * 1.6);
   }
-
-  // A held reveal never expires. Nothing but the child ends one.
-  if (forge.held) return false;
 
   if (forge.resolving > 0) {
     forge.resolving -= dtReal;

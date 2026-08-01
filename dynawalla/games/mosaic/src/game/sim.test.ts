@@ -306,6 +306,56 @@ test("a miss holds the completed sum until a hand takes it down", () => {
   assert.equal(sim.forge, null);
 });
 
+test("a held reveal stops the world instead of running it underneath", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  const ball = sim.balls[0]!;
+  // Mid-rally, well above the paddle, heading down: the exact moment a child
+  // would take their hand off the glass to read.
+  ball.x = VW / 2;
+  ball.y = sim.vh * 0.5;
+  ball.vx = 120;
+  ball.vy = ball.speed;
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  chooseShard(sim, host, sim.forge!.shards.findIndex((s) => !s.correct), []);
+
+  const before = { x: ball.x, y: ball.y, descent: sim.descent, beads: sim.beads, run: sim.runTime };
+  // Two full minutes of reading.
+  for (let i = 0; i < 14400; i++) step(sim, DT, []);
+  assert.equal(ball.x, before.x, "the ball travelled under a held reveal");
+  assert.equal(ball.y, before.y, "the ball travelled under a held reveal");
+  assert.equal(sim.descent, before.descent, "the wall crept under a held reveal");
+  assert.equal(sim.beads, before.beads, "reading the answer cost a bead");
+  assert.equal(sim.runTime, before.run);
+  assert.equal(sim.phase, "play");
+
+  // And it starts again the instant the reveal is taken down.
+  stepForge(sim, 1);
+  assert.equal(dismissForge(sim), true);
+  step(sim, DT, []);
+  assert.notEqual(ball.y, before.y);
+});
+
+test("a held reveal freezes the runes where they were chosen", () => {
+  const sim = createSim(2, VH);
+  launch(sim);
+  sim.charge = sim.chargeMax;
+  const host = recordingHost();
+  openForge(sim, host, 99);
+  for (let i = 0; i < 40; i++) stepForge(sim, 1 / 60);
+  chooseShard(sim, host, sim.forge!.shards.findIndex((s) => !s.correct), []);
+  const right = sim.forge!.shards.find((s) => s.correct)!;
+  const at = { x: right.x, y: right.y };
+  // The runes rise on an arc with gravity under them. Under an unbounded hold
+  // that arc used to carry the lit answer off the bottom of the screen.
+  for (let i = 0; i < 6000; i++) stepForge(sim, 1 / 60);
+  assert.equal(right.x, at.x, "the correct rune drifted while it was being read");
+  assert.equal(right.y, at.y, "the correct rune drifted while it was being read");
+  assert.ok(right.y < VH, "the correct rune left the screen");
+});
+
 test("the settle lockout stops a stray second tap eating the reveal", () => {
   const sim = createSim(2, VH);
   launch(sim);
