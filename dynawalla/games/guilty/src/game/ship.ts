@@ -3,10 +3,15 @@
  *
  * The sight line is the single most important piece of interface in the game
  * and it is not text: a thin beam runs from the nose to whatever the next shot
- * will hit, and brackets close around that husk. The gun fires on its own, so
- * the player's whole job is *where to stand* — and the beam means they always
- * know, exactly, which number they are about to destroy. Shooting an innocent
- * is then a decision, never an accident, which is what earns the punishment.
+ * will hit, and brackets close around that husk. It is always drawn, from the
+ * first frame of a run, so a child can stand still and read the beam and the
+ * numbers for as long as they like before anything happens at all.
+ *
+ * **The gun does not fire by itself.** It used to, from a standstill, which
+ * made the first thirty seconds of this game a burst of answers nobody chose to
+ * give. Now `tryFire` is called by a tap, a click or the space bar and by
+ * nothing else, and `FIRE_INTERVAL` is only a rate limit on how fast the player
+ * may ask.
  */
 
 import { project } from "../core/camera.ts";
@@ -65,20 +70,13 @@ export function updateShip(world: World, dt: number, realDt: number): void {
 
   if (!ship.alive) return;
 
-  // Settle gate. Cross the field freely; the gun wakes when you stop.
+  // Steadiness, as a readout and nothing more: the sight brightens and the
+  // brackets close as the ship comes to rest. It does not fire anything.
   const moving = Math.abs(ship.vx) > FIRE_SPEED_GATE;
   const was = ship.settled;
   ship.settled = moving ? 0 : Math.min(1, ship.settled + realDt / 0.11);
   if (was < 1 && ship.settled >= 1) world.audio.lock();
-  if (moving) {
-    ship.fireCd = Math.max(ship.fireCd, 0.05);
-  } else if (ship.settled >= 1) {
-    ship.fireCd -= realDt;
-    if (ship.fireCd <= 0) {
-      ship.fireCd += FIRE_INTERVAL;
-      fire(world);
-    }
-  }
+  ship.fireCd = Math.max(0, ship.fireCd - realDt);
 
   // Thruster wake, on world time so it stretches beautifully in slow motion.
   if (world.rng.nextFloat() < dt * 62) {
@@ -91,6 +89,22 @@ export function updateShip(world: World, dt: number, realDt: number): void {
       drag: 5,
     });
   }
+}
+
+/**
+ * The player asked for a shot. Returns true if one left the nose.
+ *
+ * The only path to a bullet. It refuses only while the gun is on its cooldown
+ * or the ship is gone — never because the ship is moving, because a tap the
+ * game silently swallows is exactly as confusing as a shot the child never
+ * asked for.
+ */
+export function tryFire(world: World): boolean {
+  const ship = world.ship;
+  if (!ship.alive || ship.fireCd > 0) return false;
+  ship.fireCd = FIRE_INTERVAL;
+  fire(world);
+  return true;
 }
 
 function fire(world: World): void {
@@ -162,7 +176,10 @@ export function drawSight(world: World, target: Husk | null): void {
   const ax = a.x;
   const ay = a.y;
   const b = project(cam, ship.x, topY, 0);
-  const ready = ship.settled;
+  // Never fully dark. The beam is the answer to "which number will this tap
+  // destroy", and that question is asked hardest by a child who has not decided
+  // to shoot yet — so it is legible while crossing and blazing once settled.
+  const ready = 0.45 + ship.settled * 0.55;
   const locked = target !== null;
   batch.push(
     ax,

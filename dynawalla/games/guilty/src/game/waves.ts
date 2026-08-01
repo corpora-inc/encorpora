@@ -48,10 +48,17 @@ export function specFor(wave: number): WaveSpec {
   };
 }
 
-/** The banner a wave earns, if any. Empty means no banner at all. */
+/**
+ * The banner a wave earns, if any. Empty means no banner at all.
+ *
+ * Every invented name here is defined on the line under it. THE ARBITER and
+ * SHUT SHELLS were explained only in the how-to-play sheet, which is the one
+ * place a child in the middle of a wave is not looking — and "IT ONLY BREAKS TO
+ * THE TRUTH" explained a name with a riddle rather than with a rule.
+ */
 export function bannerFor(wave: number): [string, string] {
-  if (wave % BOSS_EVERY === 0) return ["THE ARBITER", "IT ONLY BREAKS TO THE TRUTH"];
-  if (wave === 12) return ["SHUT SHELLS", ""];
+  if (wave % BOSS_EVERY === 0) return ["THE ARBITER", "ONLY THE RIGHT ANSWER BREAKS ITS SHIELD"];
+  if (wave === 12) return ["SHUT SHELLS", "THE NUMBERS SHOW ONCE THE SHELLS OPEN"];
   if (wave % 25 === 0) return [`WAVE ${wave}`, ""];
   return ["", ""];
 }

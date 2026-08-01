@@ -23,8 +23,17 @@ export const SHIP_HALF_W = 8.5;
 
 export const BULLET_SPEED = 560;
 export const BULLET_R = 2.6;
+/**
+ * The shortest gap between two shots the player asks for.
+ *
+ * It is a rate limit on a deliberate act, not a metronome for an automatic one.
+ * The gun used to fire on this interval by itself, which is the defect this
+ * file's history turns on: "the default of just going into the game is that you
+ * are just blasting everything, it's all wrong and you don't know what the F is
+ * going on."
+ */
 export const FIRE_INTERVAL = 0.155;
-/** Above this lateral speed the gun sleeps — see `Ship.settled`. */
+/** Above this lateral speed the ship is crossing rather than aiming. */
 export const FIRE_SPEED_GATE = 74;
 
 export const SHIP_MAX_SPEED = 460;
