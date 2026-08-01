@@ -62,6 +62,27 @@ export const WEAPON_BLURB: Record<WeaponKey, string> = {
 
 export const MAX_WEAPONS = 5
 
+/**
+ * Every headline a card can carry.
+ *
+ * The overlay sizes a card's lettering so that the LONGEST of these still fits
+ * on one line inside the card — see `ui/cards.ts`. That is only true if this
+ * list is the whole set, so `loadout.test.ts` deals thousands of real cards out
+ * of real builds and fails on any headline that is not in here.
+ */
+export const CARD_TITLES: readonly string[] = [
+  // weapons — a new-weapon card and every weapon upgrade card use `w.name`
+  "SPLINTER", "HALO", "ARC", "PULSE", "SWARM", "LANCE", "SPORE",
+  // passives
+  "FEROCITY", "QUICKENING", "WIDENING", "CARAPACE", "CURRENT", "PULL",
+  "FRACTURE", "SHATTER", "MEND", "PLATING", "AVARICE",
+  // the heal, and the fourth card
+  "SURGE", "SEALED CACHE",
+]
+
+/** The longest headline in the game, in characters. The card is cut for this. */
+export const LONGEST_TITLE = CARD_TITLES.reduce((n, t) => Math.max(n, t.length), 0)
+
 export function makeWeapon(key: WeaponKey): Weapon {
   return { ...BASE[key], t: 0, phase: Math.random() * Math.PI * 2, level: 1 }
 }

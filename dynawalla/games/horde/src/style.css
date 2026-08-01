@@ -231,7 +231,9 @@
   /* All four edges. The top and bottom were padded and the SIDES were a bare
      12px, so in landscape on a notched phone the outermost rift answer and the
      outermost upgrade card — both things a child taps — ran under the sensor
-     housing and the rounded corner. */
+     housing and the rounded corner.
+
+     */
   padding:
     max(12px, var(--hz-safe-top, env(safe-area-inset-top)))
     max(12px, var(--hz-safe-right, env(safe-area-inset-right)))
@@ -242,9 +244,33 @@
   backdrop-filter: blur(9px) saturate(0.85);
   -webkit-backdrop-filter: blur(9px) saturate(0.85);
 }
+/* The level-up panel, and ONLY it, clears the host's chrome as well as the safe
+   edge. The host floats a back chevron and a how-to-play button over the game
+   rather than reserving a band for them, so a full-width row of cards centred in
+   the whole frame puts something a child taps under both. `--hz-chrome-top` is
+   where those two squares end and it is the host's own published geometry — see
+   `ui/layout.ts`; `ui/cards.ts` measures its band from the same number.
+
+   The rift, the title and the game-over panels keep the plain safe-area padding:
+   they are narrow and short, they never reached the corners, and 63px of extra
+   top padding on a phone held sideways pushed DIVE AGAIN toward the bottom edge
+   for nothing. */
+.hz-picks {
+  padding-top: max(12px, calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-chrome-top)));
+}
+
 .hz-modal.hz-open { display: flex; animation: hz-fade 170ms ease-out; }
 @keyframes hz-fade { from { opacity: 0; } to { opacity: 1; } }
 
+/* `LEVEL 7` over the cards is sized with them — it shares their band, so when
+   they shrink to fit a small screen it has to. Every other panel's heading is
+   sized by the design: `--hz-c-heading` is the CARDS' number and means nothing
+   to a rift that has the whole frame to itself. */
+.hz-picks .hz-title {
+  font-size: var(--hz-c-heading, clamp(13px, 3.4vw, 19px));
+  line-height: var(--hz-c-line, 1.3);
+  margin-bottom: var(--hz-c-heading-gap, clamp(8px, 2vw, 18px));
+}
 .hz-title {
   font-size: clamp(13px, 3.4vw, 19px);
   font-weight: 900;
@@ -255,10 +281,17 @@
   text-align: center;
 }
 
-/* cards */
+/* cards
+
+   EVERY size below comes from `ui/cards.ts` through a custom property. The
+   clamps that remain are `var()` fallbacks for a stylesheet loaded without a
+   mounted root; the mounted game always overwrites them, and the tests assert
+   the numbers the game computes, not these. Sizing anything here on its own
+   again would make those assertions a fiction — `cards.test.ts` parses this
+   file and fails if a rule stops reading its variable. */
 .hz-cards {
   display: flex;
-  gap: clamp(7px, 1.6vw, 16px);
+  gap: var(--hz-c-gap, clamp(7px, 1.6vw, 16px));
   width: min(1080px, 96vw);
   justify-content: center;
   align-items: stretch;
@@ -275,11 +308,11 @@
   border: 1px solid rgba(140, 200, 255, 0.22);
   background: linear-gradient(170deg, rgba(16, 26, 52, 0.94), rgba(6, 10, 24, 0.96));
   border-radius: 5px;
-  padding: clamp(9px, 1.8vw, 20px) clamp(8px, 1.6vw, 18px);
+  padding: var(--hz-c-pad, clamp(9px, 1.8vw, 20px)) var(--hz-c-padx, clamp(8px, 1.6vw, 18px));
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: clamp(3px, 0.8vw, 8px);
+  gap: var(--hz-c-inner, clamp(3px, 0.8vw, 8px));
   overflow: hidden;
   transition: transform 110ms cubic-bezier(0.16, 1, 0.3, 1), border-color 110ms, box-shadow 140ms;
   animation: hz-card-in 260ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
@@ -287,6 +320,18 @@
   color: inherit;
   font: inherit;
 }
+/* Portrait puts the main axis in the BLOCK direction, and `flex: 1 1 0` up
+   there means a base HEIGHT of zero, to be grown out of free space that a
+   content-sized container does not have. Every card came out 20px tall — one
+   border, two paddings, no content — and `overflow: hidden` then cut the labels
+   through the middle of their capitals. Down this axis a card is as tall as
+   what it holds, and `cards.ts` has already cut what it holds to fit the
+   screen. This rule must stay AFTER `.hz-card` above: a media query adds no
+   specificity, so source order is the whole of its authority. */
+@media (max-aspect-ratio: 4/5) {
+  .hz-card { flex: 0 0 auto; }
+}
+
 .hz-card:nth-child(1) { animation-delay: 0ms; }
 .hz-card:nth-child(2) { animation-delay: 55ms; }
 .hz-card:nth-child(3) { animation-delay: 110ms; }
@@ -323,15 +368,22 @@
 }
 .hz-card-r0 .hz-card-rarity { display: none; }
 
+/* Every label states its own line height. A card's height is then arithmetic
+   `cards.ts` can do, instead of a property of whichever system font the device
+   turned out to have — SF Pro Rounded on an iPad, Roboto on a Pixel, and 8%
+   between them in ascender-plus-descender. `--hz-c-line` is over both. */
 .hz-card-title {
-  font-size: clamp(13px, 2.6vw, 20px);
+  font-size: var(--hz-c-title, clamp(13px, 2.6vw, 20px));
+  line-height: var(--hz-c-line, 1.3);
+  white-space: nowrap;
   font-weight: 900;
   letter-spacing: 0.11em;
   color: var(--hue, #cfe9ff);
   padding-left: 8px;
 }
 .hz-card-tag {
-  font-size: clamp(10px, 2vw, 13px);
+  font-size: var(--hz-c-tag, clamp(10px, 2vw, 13px));
+  line-height: var(--hz-c-line, 1.3);
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #e9f5ff;
@@ -340,10 +392,10 @@
 .hz-card-math {
   padding-left: 8px;
   margin-top: auto;
-  font-size: clamp(10px, 1.9vw, 13px);
+  font-size: var(--hz-c-math, clamp(10px, 1.9vw, 13px));
   color: #7fa0c0;
   letter-spacing: 0.02em;
-  line-height: 1.5;
+  line-height: var(--hz-c-line, 1.3);
 }
 .hz-card-math .hz-was { text-decoration: line-through; opacity: 0.65; }
 .hz-card-math .hz-now { color: #eaf7ff; font-weight: 800; }
@@ -352,16 +404,21 @@
   display: flex;
   align-items: baseline;
   gap: 6px;
+  /* The row is given the full reserve even though the numeral's own line box is
+     tighter, so the height `cards.ts` budgeted is the height it gets. */
+  font-size: var(--hz-c-head, clamp(26px, 6vw, 46px));
+  line-height: var(--hz-c-head-line, 1.15);
+  min-height: calc(var(--hz-c-head, 26px) * var(--hz-c-head-row, 1.4));
 }
 .hz-card-head b {
-  font-size: clamp(26px, 6vw, 46px);
+  font-size: 1em;
   font-weight: 900;
-  line-height: 0.95;
+  line-height: var(--hz-c-head-line, 1.15);
   color: #fff;
   text-shadow: 0 0 22px var(--hue, #7fe6ff);
 }
 .hz-card-head span {
-  font-size: clamp(8px, 1.7vw, 11px);
+  font-size: var(--hz-c-sub, clamp(8px, 1.7vw, 11px));
   letter-spacing: 0.2em;
   color: #85a8c8;
   font-weight: 800;
@@ -376,20 +433,27 @@
 }
 .hz-sealed:hover { transform: none; box-shadow: none; border-color: rgba(255, 209, 102, 0.5); }
 .hz-seal-prompt {
-  font-size: clamp(20px, 5vw, 38px);
+  font-size: var(--hz-c-seal, clamp(20px, 5vw, 38px));
+  line-height: var(--hz-c-line, 1.3);
   font-weight: 900;
   color: #fff;
   text-align: center;
   letter-spacing: 0.02em;
   text-shadow: 0 0 26px rgba(255, 209, 102, 0.8);
-  padding: clamp(2px, 1vw, 8px) 0;
+  padding: 0;
 }
+/* The answers wrap when three of them will not fit across the card, and
+   `cards.ts` budgets the rows they take. `--hz-c-orbmin` is the width one of
+   them needs for the widest number the curriculum asks — it is what makes the
+   wrap happen where the metrics say it happens rather than wherever the text
+   ran out of room. */
 .hz-seal-orbs { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
 .hz-orb {
   flex: 1 1 0;
-  min-width: 52px;
-  padding: clamp(7px, 1.6vw, 13px) 4px;
-  font-size: clamp(15px, 3.4vw, 24px);
+  min-width: var(--hz-c-orbmin, 52px);
+  padding: var(--hz-c-orbpad, clamp(7px, 1.6vw, 13px)) 2px;
+  font-size: var(--hz-c-orb, clamp(15px, 3.4vw, 24px));
+  line-height: var(--hz-c-line, 1.3);
   font-weight: 900;
   color: #ffe9b8;
   background: rgba(255, 209, 102, 0.09);
@@ -407,7 +471,8 @@
 @keyframes hz-pop { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
 .hz-seal-note {
   text-align: center;
-  font-size: clamp(8px, 1.7vw, 11px);
+  font-size: var(--hz-c-note, clamp(8px, 1.7vw, 11px));
+  line-height: var(--hz-c-line, 1.3);
   letter-spacing: 0.18em;
   color: #c8a95e;
   font-weight: 800;
