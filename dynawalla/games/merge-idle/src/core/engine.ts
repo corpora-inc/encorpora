@@ -215,12 +215,17 @@ export class Engine {
    * band starts at the seeds too, and a shelf that opens above it is a shelf
    * nothing can be built out of.
    */
-  seed(n = 8): void {
+  seed(n = CLEAR_SEEDS): Polyp[] {
+    const made: Polyp[] = []
     for (let i = 0; i < n; i++) {
       const strain = this.deps.rng.int(0, 7) as Strain
       const p = spawn(this.s.board, valueOf(strain, 0), this.deps.rng)
-      if (p) p.born = 1
+      if (p) {
+        p.born = 1
+        made.push(p)
+      }
     }
+    return made
   }
 
   /** Away time, paid in polyps. See `economy.ts`, `offlineGrowth`. */
@@ -673,10 +678,11 @@ export class Engine {
     const { gained, cells } = purgeAll(this.s.board)
     if (cells.length === 0) return []
     const events: Event[] = [{ kind: 'dissolve', cells, gained }]
-    for (let i = 0; i < CLEAR_SEEDS; i++) {
-      const strain = this.deps.rng.int(0, 7) as Strain
-      const p = spawn(this.s.board, valueOf(strain, 0), this.deps.rng)
-      if (p) events.push({ kind: 'emit', cell: p.cell, value: p.value })
+    // Literally `seed()` — the same call a brand-new reef opens with, which is the
+    // whole claim this button now makes and not a second implementation of it.
+    for (const p of this.seed(CLEAR_SEEDS)) {
+      p.born = 0
+      events.push({ kind: 'emit', cell: p.cell, value: p.value })
     }
     this.settle(events)
     return events
