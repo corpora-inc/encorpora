@@ -215,67 +215,91 @@ export function cull(b: Board, cell: number): number {
   return p.value
 }
 
-/** Lowest value present, or 0 on an empty board. */
-export function lowestValue(b: Board): number {
-  let lo = 0
-  for (const c of b.cells) if (c && (lo === 0 || c.value < lo)) lo = c.value
-  return lo
-}
-
 /**
- * CLEAR — dissolve from the bottom of the shelf until there is `want` room.
+ * CLEAR — wipe the shelf. Every polyp, no exceptions.
  *
- * ## Why this is not `purgeLowest`
+ * ## Why this takes everything, and why the two cleverer versions did not work
  *
- * It was, and the manual's promise — *"You can never get stuck. CLEAR always
- * works."* — was false because of it. One value class is often one polyp, so on
- * the full board the founder was handed, CLEAR freed a single cell, the reef put
- * something back into it, and he was exactly where he started:
+ * The manual promises the child *"You can never get stuck. CLEAR always works."*
+ * Two shipped attempts at making that true both failed, in opposite directions:
  *
- *   "now I hit 'clear' and only one goes away and a FREAKING 44 comes out .. so,
- *    now I just have a full board and it's stuck and the game sucks."
+ *   * `purgeLowest` cleared one value class, which on a shelf of forty distinct
+ *     numbers is ONE polyp. The reef put something back into the hole and the
+ *     founder was exactly where he started — *"only one goes away and a FREAKING
+ *     44 comes out .. so, now I just have a full board and it's stuck"*.
+ *   * `purgeUpTo` climbed the values until there was room. It made room, and it
+ *     made it out of the wrong polyps: smallest first takes the 1, 3, 5 and 7 —
+ *     the only values a small target can be answered with — and leaves the
+ *     accumulated giants standing. *"'clear' tends to just take out the good
+ *     (small) numbers instead of the enormous retarded numbers."*
  *
- * So CLEAR keeps going up the values until the shelf has real room, and the room
- * it makes is measured against what the reef owes: enough cells for every polyp
- * the current target still needs, plus slack to shuffle them. Smallest first,
- * because that is the cheapest reef mass to spend and it is what the child was
- * told would happen.
+ * Both were reasoning about *room*. Room was never the scarce thing; USEFUL
+ * polyps were. So CLEAR stops choosing. It takes the lot, the reef re-seeds (see
+ * `Engine.dissolve`), and the promise becomes trivially true rather than argued —
+ * there is no shelf from which pressing it fails to help, because there is no
+ * shelf afterwards.
  *
- * Free, always, and it stops the moment there is room — so it can never take more
- * of a reef than the escape costs.
+ * `gained` is the total value that left, which the floaters print so the child
+ * can see the size of what they spent.
  */
-export function purgeUpTo(b: Board, want: number): { gained: number; cells: number[] } {
-  const cells: number[] = []
-  let gained = 0
-  while (emptyCells(b).length < want) {
-    const round = purgeLowest(b)
-    if (round.cells.length === 0) break
-    gained += round.gained
-    cells.push(...round.cells)
-  }
-  return { gained, cells }
-}
-
-/**
- * DISSOLVE — clear every polyp at the lowest value on the shelf.
- *
- * One rung of `purgeUpTo`. `gained` is the total value that left, which the
- * floaters print so the child can see the size of what they spent.
- */
-export function purgeLowest(b: Board): { gained: number; cells: number[] } {
-  const lo = lowestValue(b)
-  if (lo === 0) return { gained: 0, cells: [] }
+export function purgeAll(b: Board): { gained: number; cells: number[] } {
   const cells: number[] = []
   let gained = 0
   for (let i = 0; i < b.cells.length; i++) {
     const c = b.cells[i]
-    if (c && c.value === lo) {
-      gained += c.value
-      cells.push(i)
-      b.cells[i] = null
-    }
+    if (!c) continue
+    gained += c.value
+    cells.push(i)
+    b.cells[i] = null
   }
   return { gained, cells }
+}
+
+/**
+ * THE UNDERTOW — carry the `n` biggest polyps off the shelf.
+ *
+ * Fired on a BLOOM, which is the maths moment: answer the number and the reef
+ * takes back what the answer was built beside. It is the turnover the founder
+ * asked for — *"when you get one right it shuffles and smashes and clears"* — and
+ * it is also the mechanism that stops the junk in the first place, because the
+ * only way a polyp gets big is that a child merged it, and the reef never hands
+ * one out (`EMIT_STEP` is 0). Take from the TOP and a shelf cannot silently
+ * accumulate a wall of numbers no small target can use.
+ */
+export function purgeTop(b: Board, n: number): { gained: number; cells: number[] } {
+  if (n <= 0) return { gained: 0, cells: [] }
+  const ranked = polyps(b)
+    .slice()
+    .sort((a, z) => z.value - a.value || a.cell - z.cell)
+    .slice(0, n)
+  const cells: number[] = []
+  let gained = 0
+  for (const p of ranked) {
+    gained += p.value
+    cells.push(p.cell)
+    b.cells[p.cell] = null
+  }
+  cells.sort((a, z) => a - z)
+  return { gained, cells }
+}
+
+/**
+ * Re-scatter every polyp into a fresh cell. Pure churn: nothing is created,
+ * destroyed or changed in value, and the bag the target is answered out of is
+ * bit-for-bit the same one. It exists so a bloom visibly *moves* the reef.
+ */
+export function shuffleCells(b: Board, rng: Rng): void {
+  const live = polyps(b)
+  if (live.length < 2) return
+  const slots = rng.shuffle(live.map((p) => p.cell))
+  b.cells = new Array(b.cols * b.rows).fill(null)
+  for (let i = 0; i < live.length; i++) {
+    const p = live[i] as Polyp
+    const cell = slots[i] as number
+    p.cell = cell
+    p.squash = 1
+    b.cells[cell] = p
+  }
 }
 
 /**

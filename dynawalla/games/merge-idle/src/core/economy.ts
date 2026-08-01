@@ -276,6 +276,63 @@ export function bloomYield(depth: number): number {
   return Math.min(7, 3 + Math.floor(depth / 8))
 }
 
+/* ---------------------------------------------------------------- turnover */
+
+/**
+ * THE UNDERTOW — what a bloom carries away, and why a reward takes something.
+ *
+ * The founder played 0.3.8 with a shelf inherited from an older build and could
+ * not get out of it:
+ *
+ *   "I'm in this state where I have all of the old numbers from previous versions
+ *    so I have a bunch of irrelevant crap numbers and I can[not] clear them ...
+ *    there is no way to shake them up or get some random new numbers ... I think
+ *    the answer is constant juicy turnover and change"
+ *
+ * and he said what the turnover should be attached to: *"when you get one right it
+ * shuffles and smashes and clears"*. So a bloom does three things to the shelf
+ * instead of one — it re-scatters it, it carries the biggest polyps off it, and it
+ * throws `bloomYield` fresh seeds onto it.
+ *
+ * ## Why the BIGGEST, and why a quarter
+ *
+ * The reef only ever emits seeds (`EMIT_STEP` is 0), so every large polyp on the
+ * shelf is one a child merged. Without an undertow they are permanent: nothing
+ * consumes them but the mouth, and the mouth only takes the ones a target happens
+ * to call for. That is exactly how forty cells fill with numbers no small target
+ * can use, and it is the state he is stuck in.
+ *
+ * A quarter, measured against what a bloom puts back: `bloomYield` is 3 rising to
+ * 7, so on a shelf of 12 the undertow takes 3 and the bloom returns 3 — churn at
+ * flat mass. On a full 42-cell shelf it takes 10 and returns 5, which drains it,
+ * which is the point: the shelf that needs turning over most is the one that is
+ * full. Below the floor nothing is taken at all, because a sparse shelf has no
+ * accumulation to clear and a child in the first minute should never watch a
+ * reward remove things.
+ */
+export const UNDERTOW_DIVISOR = 4
+
+/** At or under this many polyps a bloom takes nothing. */
+export const UNDERTOW_FLOOR = 5
+
+export function undertowAt(count: number): number {
+  if (count <= UNDERTOW_FLOOR) return 0
+  return Math.max(1, Math.round(count / UNDERTOW_DIVISOR))
+}
+
+/**
+ * How many fresh seeds CLEAR leaves on the wiped shelf.
+ *
+ * CLEAR takes everything (see `board.ts`, `purgeAll`), and a bare shelf is not an
+ * escape: the reef owes at most six polyps, pays them at `STOCK_PERIOD_MS`, and
+ * then trickles at `emitPeriodMs` — 1.4 s at the very best, 4.2 s at the start. A
+ * target usually needs joining as well as landing, so a wipe with no re-seed is
+ * the better part of a minute of a child watching an empty board. Eight is what
+ * `seed()` opens a fresh reef with, so pressing CLEAR hands back exactly the
+ * position the game begins from.
+ */
+export const CLEAR_SEEDS = 8
+
 /* ------------------------------------------------------------------ offline */
 
 /** Eight hours. Past this the reef stops growing, so nobody feels obliged. */

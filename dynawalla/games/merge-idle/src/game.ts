@@ -133,13 +133,22 @@ const INSTRUCTIONS = (reducedMotion: boolean): InstructionsSpec => ({
       ],
     },
     {
-      heading: 'When the reef is full',
+      heading: 'CLEAR',
       lines: [
-        'When the reef runs out of room, the CLEAR button starts glowing.',
-        'Press it. It is free.',
-        'It clears away the smallest polyps until there is real room again.',
-        'Then the reef grows the polyps your number needs.',
+        'The CLEAR button is always ready, and it is free.',
+        'Press it and every polyp goes. The reef starts again with eight small ones.',
+        'Use it whenever you like — when the reef is full, or when you just want different numbers.',
+        'When the reef runs out of room, CLEAR starts glowing to remind you.',
         'You can never get stuck. CLEAR always works.',
+      ],
+    },
+    {
+      heading: 'Every bloom shakes the reef',
+      lines: [
+        'When you make the number, the reef blooms — and it does not sit still.',
+        'The biggest polyps are carried away, the rest are shaken into new places,',
+        'and new small ones grow in the gaps.',
+        'So the reef never fills up with huge numbers you cannot use.',
       ],
     },
     {
@@ -826,6 +835,24 @@ export class Game {
           }
           break
         }
+        case 'undertow': {
+          // The smash half of "it shuffles and smashes and clears". It arrives in
+          // the same batch as the bloom, so it reads as one event with the maths
+          // moment rather than as a separate thing happening TO the child.
+          for (const cell of ev.cells) {
+            const c = cellCentre(l, s.board, cell)
+            if (!s.reduceMotion) this.particles.burst(c.x, c.y, 10, TIDE, 200, this.rnd)
+          }
+          this.audio.cull()
+          break
+        }
+        case 'shuffle': {
+          if (!s.reduceMotion) {
+            this.waves.add(l.w / 2, l.h * 0.45, 6, Math.max(l.w, l.h) * 0.7, 0.5, 11, TIDE)
+            this.punch.add(0.35)
+          }
+          break
+        }
         case 'grew-away':
           this.hud.toast(`${ev.polyps} NEW POLYPS GREW WHILE YOU WERE GONE`)
           break
@@ -941,10 +968,11 @@ export class Game {
       this.hud.setFace(face, `rgba(${hue[0]},${hue[1]},${hue[2]},.55)`)
     }
     this.hud.setMeter(s.depth % GROW_EVERY, GROW_EVERY, hex(hue))
-    // Offered the moment the shelf has less room than the reef needs to pay what
-    // it owes — not once the board has jammed solid. Waiting for the jam is a
-    // minute of a child watching nothing happen with the way out greyed out.
-    this.hud.setDissolve(this.engine.needsRoom, s.crowded)
+    // Live whenever there is a polyp to clear — a child who does not like the
+    // shelf they are looking at may say so at any moment, and CLEAR takes the reef
+    // with it, so it is a price rather than an exploit. `needsRoom` and `crowded`
+    // only make it GLOW, which is the job the gate should always have had.
+    this.hud.setDissolve(this.engine.canClear, this.engine.needsRoom || s.crowded)
 
     if (this.debug) {
       const n = this.fpsSamples.length
