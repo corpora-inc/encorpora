@@ -9,14 +9,15 @@ import {
   hasLegalMerge,
   invariant,
   isCrowded,
-  lowestValue,
   makeBoard,
   move,
   peakValue,
   place,
   polyps,
-  purgeLowest,
+  purgeAll,
+  purgeTop,
   reefMass,
+  shuffleCells,
   spawn,
   trySplit,
   tryMerge,
@@ -131,16 +132,67 @@ test('an empty or partly empty shelf is never crowded', () => {
   assert.equal(isCrowded(b), false)
 })
 
-test('purge dissolves exactly the lowest rung and pays out its whole value', () => {
+test('CLEAR takes every polyp and pays out the whole shelf', () => {
   const b = makeBoard(3, 1)
   place(b, 0, 3)
   place(b, 1, 3)
   place(b, 2, 24)
-  const { gained, cells } = purgeLowest(b)
-  assert.equal(gained, 6)
-  assert.deepEqual(cells, [0, 1])
-  assert.equal(polyps(b).length, 1)
-  assert.equal(lowestValue(b), 24)
+  const { gained, cells } = purgeAll(b)
+  assert.equal(gained, 30)
+  assert.deepEqual(cells, [0, 1, 2])
+  assert.equal(polyps(b).length, 0, 'nothing may survive CLEAR')
+  assert.equal(emptyCells(b).length, 3)
+})
+
+test('the undertow takes the biggest polyps and nothing else', () => {
+  const b = makeBoard(5, 1)
+  place(b, 0, 3)
+  place(b, 1, 96)
+  place(b, 2, 5)
+  place(b, 3, 48)
+  place(b, 4, 1)
+  const { gained, cells } = purgeTop(b, 2)
+  assert.equal(gained, 144, '96 + 48 is what the undertow carried off')
+  assert.deepEqual(cells, [1, 3])
+  assert.deepEqual(
+    polyps(b)
+      .map((p) => p.value)
+      .sort((a, z) => a - z),
+    [1, 3, 5],
+    'the small useful polyps are exactly what stays',
+  )
+})
+
+test('the undertow takes nothing when asked for nothing', () => {
+  const b = makeBoard(2, 1)
+  place(b, 0, 3)
+  place(b, 1, 96)
+  const { gained, cells } = purgeTop(b, 0)
+  assert.equal(gained, 0)
+  assert.equal(cells.length, 0)
+  assert.equal(polyps(b).length, 2)
+})
+
+test('the shuffle moves polyps without creating, destroying or changing one', () => {
+  const b = makeBoard(4, 3)
+  const before = [1, 3, 5, 7, 9, 11, 13]
+  for (let i = 0; i < before.length; i++) place(b, i, before[i] as number)
+  shuffleCells(b, makeRng(20260728))
+  assert.deepEqual(
+    polyps(b)
+      .map((p) => p.value)
+      .sort((a, z) => a - z),
+    [...before].sort((a, z) => a - z),
+    'the shuffle is pure churn — the bag the target is answered from is unchanged',
+  )
+  assert.ok(invariant(b), 'every polyp still agrees with the cell it sits in')
+  const after = polyps(b).map((p) => p.cell)
+  assert.equal(new Set(after).size, after.length, 'no two polyps may share a cell')
+  // Churn, not a no-op: with seven polyps a fixed-point permutation is possible
+  // but this seed is not one, and a shuffle that never moved anything would be
+  // no turnover at all.
+  const moved = polyps(b).filter((p) => p.value !== before[p.cell]).length
+  assert.ok(moved > 0, 'the shuffle must actually move something')
 })
 
 test('growing the shelf keeps every polyp at the same column and row', () => {

@@ -32,7 +32,9 @@ import {
   move,
   place,
   polyps,
-  purgeUpTo,
+  purgeAll,
+  purgeTop,
+  shuffleCells,
   spawn,
   trySplit,
   tryMerge,
@@ -43,12 +45,14 @@ import {
   baseStepFor,
   bloomLevel,
   bloomYield,
+  CLEAR_SEEDS,
   EMIT_STEP,
   emitPeriodMs,
   growthsAt,
   offlineGrowth,
   STOCK_PERIOD_MS,
   sumSlotsAt,
+  undertowAt,
 } from './economy.ts'
 import { canSplit, decompose, rank, valueOf, type Strain } from './ladder.ts'
 import {
@@ -75,6 +79,8 @@ export type Event =
   | { kind: 'grow'; cols: number; rows: number }
   | { kind: 'emit'; cell: number; value: number }
   | { kind: 'dissolve'; cells: number[]; gained: number }
+  | { kind: 'undertow'; cells: number[]; gained: number }
+  | { kind: 'shuffle' }
   | { kind: 'crowded' }
   | { kind: 'target'; value: number; form: Form; face: string }
   | { kind: 'refuse'; why: 'mouth-full' | 'no-halves' | 'no-room' | 'shelf-full' }
@@ -126,6 +132,39 @@ export const MAX_DEBT = 6
 
 /** The room CLEAR restores, and the point below which it is offered. */
 export const ESCAPE_CELLS = MAX_DEBT + ESCAPE_SLACK
+
+/**
+ * The save schema this reef writes.
+ *
+ * ## Why the shelf, and only the shelf, is thrown away on the way up from 2
+ *
+ * Version 2 was written by every build from 0.3.0 to 0.3.8, and 0.3.8's whole
+ * subject was the emitter: up to and including 0.3.7 a fresh polyp was
+ * `strain * 2 ** baseStepFor(depth)`, so the reef handed out 18s and 44s and the
+ * shelf filled with numbers no small target can use. 0.3.8 fixed the emitter and
+ * fixed nothing for anybody who already had a save — which was every tester:
+ *
+ *   "I'm in this state where I have all of the old numbers from previous versions
+ *    so I have a bunch of irrelevant crap numbers and I can[not] clear them and
+ *    leaving and coming back doesn't clear."
+ *
+ * The alternative considered and rejected was a load-time sweep of "values the
+ * current emitter could not have produced". It cannot work, and it is worth
+ * saying why rather than leaving it as a taste: the current emitter produces only
+ * seeds, and MERGING produces everything else, so the predicate "this game could
+ * not have made this polyp" is false for every value on the ladder. A sweep that
+ * dropped everything above step 0 would delete a legitimately merged 512 from a
+ * child at depth 40, and one that dropped nothing would leave the founder exactly
+ * where he is.
+ *
+ * So the version carries it. A v2 save loads, keeps `depth` and `grows` and the
+ * shelf's dimensions, and gets a fresh eight-seed shelf; it is then written back
+ * as v3 and never migrated again.
+ */
+export const SAVE_VERSION = 3
+
+/** The version whose SHELF cannot be trusted, though the rest of it can. */
+export const STALE_SHELF_VERSION = 2
 
 export class Engine {
   readonly s: State
@@ -352,6 +391,21 @@ export class Engine {
   }
 
   /**
+   * May CLEAR be pressed? Whenever there is a polyp to clear — *"'clear' should
+   * always be active"*.
+   *
+   * `needsRoom` used to gate the button as well as glow it, so a child who simply
+   * did not like the shelf they were looking at could not do anything about it
+   * until the shelf was nearly jammed. That is the founder's *"there is no way to
+   * shake them up or get some random new numbers"*, and it costs nothing to fix:
+   * CLEAR takes the reef with it, so pressing it early is a price, not an exploit.
+   * `needsRoom` still drives the glow, which is the only job it should have had.
+   */
+  get canClear(): boolean {
+    return polyps(this.s.board).length > 0
+  }
+
+  /**
    * Make the reef owe whatever the target still needs.
    *
    * Called after EVERY change to the shelf, which is the whole repair. The
@@ -503,6 +557,18 @@ export class Engine {
     this.s.baseStep = baseStepFor(this.s.depth)
     events.push({ kind: 'bloom', value: t.value, form: t.form, depth: this.s.depth })
 
+    // THE UNDERTOW — "when you get one right it shuffles and smashes and clears".
+    // The biggest polyps go, the survivors are re-scattered, and fresh seeds land
+    // in the churn. All three fire on the MATHS moment, not on a collision, and
+    // all three happen BEFORE `ask()` so the next target is chosen against the
+    // shelf the child is actually going to answer it from.
+    const swept = purgeTop(this.s.board, undertowAt(polyps(this.s.board).length))
+    if (swept.cells.length > 0) events.push({ kind: 'undertow', cells: swept.cells, gained: swept.gained })
+    if (polyps(this.s.board).length > 1) {
+      shuffleCells(this.s.board, this.deps.rng)
+      events.push({ kind: 'shuffle' })
+    }
+
     // The reward that is material: more life to merge.
     for (let i = 0; i < bloomYield(this.s.depth); i++) {
       const p = this.emitOne()
@@ -583,18 +649,35 @@ export class Engine {
   /**
    * CLEAR — the escape hatch, and the one promise this game makes out loud.
    *
-   * The manual tells the child *"You can never get stuck. CLEAR always works."*
-   * That sentence was false: `purgeLowest` cleared one value class, which on a
-   * shelf of forty distinct numbers is one polyp, the reef put something back into
-   * the hole, and the founder was exactly where he started. So CLEAR now goes up
-   * the values until there is room for everything the reef owes plus slack to work
-   * in, and `settle` reloads that debt on the way out — pressing it leaves a
-   * position the child can win from, which is the only thing the word means.
+   * **It wipes the shelf and re-seeds it.** Founder's ruling, and the third
+   * attempt at this button; the two that came before it are argued in `board.ts`
+   * above `purgeAll`. The short of it: both of them chose *which* polyps to take,
+   * both chose wrong, and the second chose wrong in the worst possible direction —
+   * smallest first eats the 1, 3, 5 and 7 that a small target is answered with and
+   * leaves the giants standing.
+   *
+   *   "'clear' tends to just take out the good (small) numbers instead of the
+   *    enormous retarded numbers that have accumulated ... maybe 'clear' should
+   *    always be active and should just wipe out all of the polyps or something."
+   *
+   * So it takes the lot and hands back `CLEAR_SEEDS` fresh seeds — the same eight
+   * a brand-new reef opens with. There is now nothing to argue about: the shelf
+   * after CLEAR is the shelf the game starts from, which is a position every
+   * target in the game is answerable from, so *"you can never get stuck"* is true
+   * by construction rather than by an argument about room.
+   *
+   * Free, always, and — see `canClear` — never greyed out while there is anything
+   * on the shelf at all.
    */
   dissolve(): Event[] {
-    const { gained, cells } = purgeUpTo(this.s.board, this.escapeRoom())
+    const { gained, cells } = purgeAll(this.s.board)
     if (cells.length === 0) return []
     const events: Event[] = [{ kind: 'dissolve', cells, gained }]
+    for (let i = 0; i < CLEAR_SEEDS; i++) {
+      const strain = this.deps.rng.int(0, 7) as Strain
+      const p = spawn(this.s.board, valueOf(strain, 0), this.deps.rng)
+      if (p) events.push({ kind: 'emit', cell: p.cell, value: p.value })
+    }
     this.settle(events)
     return events
   }
@@ -716,7 +799,7 @@ export class Engine {
       if (p) cells.push([i, p.value])
     }
     return JSON.stringify({
-      v: 2,
+      v: SAVE_VERSION,
       depth: this.s.depth,
       grows: this.s.grows,
       cols: this.s.board.cols,
@@ -741,7 +824,10 @@ export class Engine {
       mouth?: number[]
       lastSeen?: number
     }
-    if (Number(d.v) !== 2) throw new Error('merge-idle: save is from an older reef')
+    const v = Number(d.v)
+    if (v !== SAVE_VERSION && v !== STALE_SHELF_VERSION) {
+      throw new Error('merge-idle: save is from an older reef')
+    }
     this.s.depth = Math.max(0, Number(d.depth) || 0)
     this.s.grows = Math.max(0, Number(d.grows) || 0)
     this.s.bloom = bloomLevel(this.s.depth)
@@ -751,12 +837,25 @@ export class Engine {
     const cols = Math.max(START_COLS, Math.min(maxCols, Number(d.cols) || START_COLS))
     const rows = Math.max(START_ROWS, Math.min(maxRows, Number(d.rows) || START_ROWS))
     this.s.board = makeBoard(cols, rows)
-    for (const [cell, value] of d.cells ?? []) {
-      place(this.s.board, cell, value, this.deps.rng.int(0, 999) / 1000)
+    if (v === STALE_SHELF_VERSION) {
+      // A shelf written by a reef that emitted `strain * 2 ** baseStepFor(depth)`.
+      // Every polyp on it may be a number this game would never have handed out,
+      // and there is no way to tell which: a 44 a child MERGED and a 44 the old
+      // vent coughed up are the same integer. So the shelf goes and nothing else
+      // does — `depth` survives, and depth is all the progress there is. It drives
+      // how bright the water is, which operator forms are unlocked, what the host
+      // is asked for, how much a bloom yields and how big the shelf has grown, so
+      // a returning child keeps every one of those and loses only the junk they
+      // wrote in to complain about.
+      this.seed(CLEAR_SEEDS)
+    } else {
+      for (const [cell, value] of d.cells ?? []) {
+        place(this.s.board, cell, value, this.deps.rng.int(0, 999) / 1000)
+      }
+      // Anything that was in the mouth comes back to the shelf, not to the mouth:
+      // a target chosen for the old board may not be the one that comes up now.
+      for (const value of d.mouth ?? []) spawn(this.s.board, value, this.deps.rng)
     }
-    // Anything that was in the mouth comes back to the shelf, not to the mouth:
-    // a target chosen for the old board may not be the one that comes up now.
-    for (const value of d.mouth ?? []) spawn(this.s.board, value, this.deps.rng)
     for (const p of polyps(this.s.board)) p.born = 1
     this.s.crowded = isCrowded(this.s.board)
     return Math.max(0, Date.now() - (Number(d.lastSeen) || Date.now()))

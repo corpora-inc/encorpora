@@ -17,7 +17,9 @@
  * each deletion; this file is what is left.
  *
  * Two buttons survive, in the corners the host's chrome does not use: CLEAR,
- * because a crowded shelf must never be a losing position, and the mute toggle.
+ * because a crowded shelf must never be a losing position — and because a child
+ * who simply does not like the numbers in front of them must be able to say so —
+ * and the mute toggle.
  * `ui/chrome.ts` decides where they go — in landscape they both move to the right,
  * because the bottom-left of a landscape stage is shelf.
  */
@@ -135,7 +137,10 @@ export class Hud {
 
     this.dissolveBtn.className = 'ab-sbtn'
     this.dissolveBtn.type = 'button'
-    this.dissolveBtn.setAttribute('aria-label', 'Dissolve the smallest polyps')
+    // Not "dissolve the smallest polyps" any more, and the label mattered: it was
+    // the only place a child was told which polyps CLEAR takes, and it was telling
+    // them the thing the founder played and hated. It takes all of them.
+    this.dissolveBtn.setAttribute('aria-label', 'Clear the whole reef and start it again')
     const dk = document.createElement('span')
     dk.className = 'k'
     dk.textContent = '✳'

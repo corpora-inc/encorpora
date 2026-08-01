@@ -601,3 +601,83 @@ test('opening and closing the manual repeatedly never double-pauses or double-re
     restore()
   }
 })
+
+/* ------------------------------------------------------------------- CLEAR */
+
+/**
+ * The CLEAR button is live from the first frame — mount level, because the wiring
+ * is the only thing here that can be wrong.
+ *
+ * `Engine.canClear` is asserted in `core/stuck.test.ts`. What that file cannot see
+ * is `game.ts` passing it to `hud.setDissolve`, and that line is the whole of the
+ * founder's *"maybe 'clear' should always be active"*: before it, the button was
+ * gated on `needsRoom`, so a reef with room was a reef whose way out was greyed
+ * out. Revert it and this test fails on the first assertion.
+ */
+function clearButton(h: Harness): FakeEl {
+  const found = h.made.filter(
+    (el) =>
+      el.className === 'ab-sbtn' &&
+      (el.children as FakeEl[]).some((c) => c.textContent === 'CLEAR'),
+  )
+  assert.equal(found.length, 1, `expected exactly one CLEAR button, found ${found.length}`)
+  return found[0] as FakeEl
+}
+
+test('CLEAR is live on a reef with plenty of room, and it takes the giants with it', () => {
+  const h = harness()
+  const restore = h.install()
+  // The founder's shelf, at mount: twelve numbers he cannot use and thirty free
+  // cells, so this is emphatically NOT the crowded case — which is the only case
+  // the old button was ever offered in.
+  const giants = [512, 256, 128, 96, 88, 80, 72, 64, 56, 48, 40, 32]
+  const saves: Save[] = []
+  useSaveSlot({
+    read: () =>
+      JSON.stringify({
+        v: 3,
+        depth: 12,
+        grows: 0,
+        cols: 6,
+        rows: 7,
+        cells: giants.map((v, i) => [i, v]),
+        mouth: [],
+        lastSeen: Date.now(),
+      }),
+    write: (value) => {
+      saves.push(JSON.parse(value) as Save)
+    },
+  })
+  const handle = new Game(h.root, makeStubHost({ seed: 0xab1e })).handle()
+  try {
+    for (let i = 0; i < 900 && saves.length === 0; i++) h.step(16)
+    const btn = clearButton(h)
+    assert.equal(btn.disabled, false, 'CLEAR must not be greyed out on a reef with room')
+
+    const before = saves[saves.length - 1] as Save
+    assert.ok(before, 'the reef never saved — the observable proves nothing')
+    const bigBefore = before.cells.filter(([, v]) => v >= 32).length
+    assert.equal(bigBefore, giants.length, `only ${bigBefore} giants were on the shelf`)
+
+    click(btn)
+    assert.equal(btn.disabled, false, 'and it is still live afterwards')
+    // One frame, then unmount — which saves. The shelf is read as CLEAR left it,
+    // BEFORE the reef has had a chance to pay any debt into it: a debt is settled
+    // at `STOCK_PERIOD_MS`, 320 ms, and those payments can legitimately be large,
+    // so a snapshot taken four seconds later is a snapshot of the reef and not of
+    // the button.
+    h.step(16)
+    handle.unmount()
+    const after = saves[saves.length - 1] as Save
+    assert.equal(
+      after.cells.filter(([, v]) => v >= 32).length,
+      0,
+      `CLEAR left ${after.cells.filter(([, v]) => v >= 32).length} of the giants standing`,
+    )
+    assert.ok(after.cells.length >= 8, `CLEAR left only ${after.cells.length} polyps to play with`)
+    assert.equal(after.depth, 12, 'and it costs the child none of their depth')
+  } finally {
+    handle.unmount()
+    restore()
+  }
+})

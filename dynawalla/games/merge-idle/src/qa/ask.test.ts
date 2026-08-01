@@ -119,10 +119,33 @@ test('the target distribution is reported: sizes, forms, and where they come fro
   console.log('   depth   : ' + [...bands].sort().map(([b, n]) => `${b} ${pc(n)}`).join('  '))
   console.log(`   from the curriculum: ${pc(viaHost)}   multiples of 10: ${pc(round10)}, of 5: ${pc(round5)}`)
 
-  // The founder's "it might be kinda simple usually - 18": the great majority of
-  // targets are one to three digits, which is what a shelf of polyps can say.
+  // The founder's "it might be kinda simple usually - 18", asserted where the
+  // sentence actually means something: **inside the first 34 blooms**, which is
+  // every child who has not yet unlocked division. Measured over these 100
+  // sessions, 100.0% of the 3,400 targets in that band are one to three digits.
+  //
+  // The flat share over the whole run is NOT that claim and never was. It is
+  // `wantDigitsAt`, which is designed to reach four digits at depth 36 and does;
+  // so the number it reports is mostly a measure of how far the bot got, and it
+  // moved from 79.6% to 77.3% for the honest reason that the turnover in 0.3.9
+  // makes a 700-step session reach 118 blooms instead of 96. It is kept, below the
+  // measurement, as a floor on the mix rather than as the small-targets claim.
+  const early = rows.filter((t) => t.depth < 34)
+  const earlySmall = early.filter((t) => String(t.value).length <= 3).length
+  assert.ok(early.length > 2000, `only ${early.length} targets inside the first 34 blooms`)
+  assert.equal(
+    earlySmall,
+    early.length,
+    `${early.length - earlySmall} of ${early.length} early targets ran past three digits`,
+  )
   const small = (digits.get(1) ?? 0) + (digits.get(2) ?? 0) + (digits.get(3) ?? 0)
-  assert.ok(small / rows.length > 0.8, `only ${pc(small)} of targets were 1-3 digits`)
+  assert.ok(small / rows.length > 0.72, `only ${pc(small)} of targets were 1-3 digits`)
+  // Five figures is the founder's photograph — `58042 + 968`. It is not zero here
+  // only because the very deepest sessions brush it; it must stay a rounding error.
+  assert.ok(
+    (digits.get(5) ?? 0) / rows.length < 0.005,
+    `${pc(digits.get(5) ?? 0)} of targets were five figures`,
+  )
   // And not so simple that one polyp does it: the big five-figure numbers are gone.
   assert.equal(digits.get(6) ?? 0, 0, 'a six-figure target is the bug this redesign is about')
 })

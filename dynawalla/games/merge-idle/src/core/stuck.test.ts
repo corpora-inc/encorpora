@@ -27,12 +27,28 @@
  *
  * `the founder's board` below reproduces all three against the real `Engine`
  * through nothing but public methods, and it FAILS on the code that shipped.
+ *
+ * ## What 0.3.9 adds, and why the file grew
+ *
+ * 0.3.8 fixed the emitter and the debt. The founder played it and was still stuck,
+ * for three reasons that are all here too:
+ *
+ *   4. **CLEAR took the wrong polyps.** It climbed from the SMALLEST, so it ate the
+ *      1, 3, 5 and 7 a small target is answered with and left the giants — *"'clear'
+ *      tends to just take out the good (small) numbers"*. It now wipes the shelf.
+ *   5. **A save from 0.3.7 was a permanent junk board.** The emitter fix reached
+ *      nobody who already had one, which was every tester. `a 0.3.7 save full of
+ *      old-emitter junk` is that save, byte for byte.
+ *   6. **Nothing ever left the shelf.** A polyp was permanent unless the mouth
+ *      happened to call for it, so the board could only accumulate. A bloom now
+ *      shuffles, sweeps the top and re-seeds.
  */
 
 import { strict as assert } from 'node:assert'
 import { test } from 'node:test'
-import { Engine, ESCAPE_CELLS } from './engine.ts'
-import { at, emptyCells, hasLegalMerge, place, polyps } from './board.ts'
+import { Engine, ESCAPE_CELLS, SAVE_VERSION, STALE_SHELF_VERSION } from './engine.ts'
+import { at, emptyCells, place, polyps } from './board.ts'
+import { CLEAR_SEEDS, UNDERTOW_FLOOR } from './economy.ts'
 import { canSplit, decompose } from './ladder.ts'
 import { makeRng } from './rng.ts'
 import { bagOf, ladderRoute, ladderValues, routeIn } from './target.ts'
@@ -69,7 +85,7 @@ function makeEngine(host: AskHost & { report(r: never): void }, seed: number): E
 function loadShelf(engine: Engine, depth: number, values: readonly number[]): void {
   engine.restore(
     JSON.stringify({
-      v: 2,
+      v: SAVE_VERSION,
       depth,
       grows: 0,
       cols: 6,
@@ -199,7 +215,7 @@ test('the reef owes the polyps the target needs the moment the shelf stops holdi
 
 /* ------------------------------------------------------------------------ CLEAR */
 
-test('CLEAR always works: a full shelf is always opened up, and SPLIT works again', () => {
+test('CLEAR wipes the wall of giants and leaves a shelf a small target can be built from', () => {
   const engine = makeEngine(fixedHost(5), 7)
   loadShelf(engine, 6, [...HIGH, 1, 4, 4])
   engine.ask()
@@ -207,11 +223,26 @@ test('CLEAR always works: a full shelf is always opened up, and SPLIT works agai
   engine.merge((fours[0] as { cell: number }).cell, (fours[1] as { cell: number }).cell)
   while (emptyCells(engine.s.board).length > 0) engine.tick(STEP_MS)
   assert.equal(emptyCells(engine.s.board).length, 0, 'the shelf is full again')
+  const giantsBefore = polyps(engine.s.board).filter((p) => p.value >= 18).length
+  assert.ok(giantsBefore >= 30, `only ${giantsBefore} giants on the founder's shelf`)
 
-  // The founder's exact complaint about the old CLEAR: "only one goes away".
   const events = engine.dissolve()
   const cleared = events.find((e) => e.kind === 'dissolve')
   assert.ok(cleared, 'CLEAR must do something on a full shelf')
+  assert.equal(cleared.cells.length, 42, 'CLEAR takes the WHOLE shelf, not a value class')
+
+  // The founder's complaint about the 0.3.8 CLEAR, which is the opposite of the
+  // 0.3.7 one: it took the small useful polyps and left the giants standing.
+  assert.equal(
+    polyps(engine.s.board).filter((p) => p.value >= 18).length,
+    0,
+    'not one of the accumulated giants may survive CLEAR',
+  )
+  const left = polyps(engine.s.board)
+  assert.equal(left.length, CLEAR_SEEDS, 'CLEAR hands back the eight a fresh reef opens with')
+  for (const p of left) {
+    assert.equal(decompose(p.value)?.step, 0, `CLEAR left a ${p.value}; only seeds may come back`)
+  }
   const free = emptyCells(engine.s.board).length
   assert.ok(
     free >= ESCAPE_CELLS,
@@ -221,17 +252,22 @@ test('CLEAR always works: a full shelf is always opened up, and SPLIT works agai
     engine.s.stock.length <= free,
     `the reef owes ${engine.s.stock.length} polyps into ${free} cells`,
   )
+  assert.equal(engine.solvable(), true, 'the position after CLEAR must be winnable')
 
   // "88 on a full board so you can't even split it" — a split needs a free cell,
   // so an escape that does not restore one has not restored the game either.
-  const big = polyps(engine.s.board).find((p) => canSplit(p.value))
-  assert.ok(big, 'the shelf still holds something halvable')
+  // Nothing on a re-seeded shelf halves (they are all seeds), so put an 88 back on
+  // it and check the gesture the jammed board refused.
+  const spare = emptyCells(engine.s.board)[0]
+  assert.ok(spare !== undefined, 'CLEAR left somewhere to put it')
+  assert.ok(place(engine.s.board, spare, 88), 'the 88 goes back on the shelf')
   const before = engine.s.splits
-  engine.split(big.cell)
+  engine.split(spare)
   assert.equal(engine.s.splits, before + 1, 'SPLIT must be possible again after CLEAR')
+  assert.equal(at(engine.s.board, spare)?.value, 44, 'and the 88 is now a pair of 44s')
 })
 
-test('CLEAR is offered before the shelf jams solid, and never when there is already room', () => {
+test('CLEAR is always pressable, and glows once the shelf is short of room', () => {
   const engine = makeEngine(fixedHost(5), 11)
   // ONE free cell — not jammed, but nowhere near enough to pay a debt into and
   // one drag away from being jammed. Waiting for the last cell to go before
@@ -240,6 +276,7 @@ test('CLEAR is offered before the shelf jams solid, and never when there is alre
   engine.ask()
   assert.equal(emptyCells(engine.s.board).length, 1, 'the shelf must have exactly one cell left')
   assert.equal(engine.needsRoom, true, 'one free cell is not room')
+  assert.equal(engine.canClear, true, 'a shelf with polyps on it can always be cleared')
 
   engine.dissolve()
   assert.ok(
@@ -247,6 +284,216 @@ test('CLEAR is offered before the shelf jams solid, and never when there is alre
     'CLEAR must leave at least the slack it promises',
   )
   assert.equal(engine.needsRoom, false, 'a shelf CLEAR has just opened up does not need more')
+  // And it is STILL pressable — the founder wants to be able to shake the reef up
+  // whenever he likes, not only once it has jammed.
+  assert.equal(engine.canClear, true, 'CLEAR is never greyed out while there is a polyp')
+})
+
+test('CLEAR is pressable on a roomy shelf a child simply does not like', () => {
+  const engine = makeEngine(fixedHost(5), 13)
+  loadShelf(engine, 6, [96, 96, 96])
+  assert.ok(emptyCells(engine.s.board).length > ESCAPE_CELLS, 'this shelf has plenty of room')
+  assert.equal(engine.needsRoom, false, 'and so it does not glow')
+  assert.equal(engine.canClear, true, 'but it is still pressable')
+  const events = engine.dissolve()
+  assert.ok(
+    events.some((e) => e.kind === 'dissolve'),
+    'pressing CLEAR on a roomy shelf must still clear it',
+  )
+  assert.equal(
+    polyps(engine.s.board).some((p) => p.value === 96),
+    false,
+    'the numbers the child wanted rid of are gone',
+  )
+})
+
+test('CLEAR does nothing at all on an empty shelf, and is not offered there', () => {
+  const engine = makeEngine(fixedHost(5), 17)
+  loadShelf(engine, 6, [])
+  assert.equal(polyps(engine.s.board).length, 0)
+  assert.equal(engine.canClear, false, 'there is nothing to clear')
+  assert.equal(engine.dissolve().length, 0, 'and pressing it must not re-seed out of nowhere')
+})
+
+/* --------------------------------------------------- the save he is actually in */
+
+/**
+ * The exact 0.3.7 shelf, written by the old emitter: `strain * 2 ** baseStepFor
+ * (depth)` at depth 30, so `baseStep` is 5 and every polyp is a seed times 32.
+ * Not one of these values is something the current reef could ever hand out, and
+ * a shelf of nothing but them is the founder's *"bunch of irrelevant crap
+ * numbers"*.
+ */
+const OLD_EMITTER_SHELF: readonly number[] = Array.from(
+  { length: 42 },
+  (_, i) => ([1, 3, 5, 7, 9, 11, 13, 15][i % 8] as number) * 32,
+)
+
+/** The literal bytes 0.3.7 wrote into `dynawalla.abyssal-bloom.v1`. */
+function stale037Save(depth: number, values: readonly number[]): string {
+  return JSON.stringify({
+    v: STALE_SHELF_VERSION,
+    depth,
+    grows: 4,
+    cols: 8,
+    rows: 9,
+    cells: values.map((v, i) => [i, v]),
+    mouth: [],
+    lastSeen: Date.now(),
+  })
+}
+
+test('a 0.3.7 save full of old-emitter junk loads into a shelf that is not stuck', () => {
+  const engine = makeEngine(fixedHost(5), 20260728)
+  engine.restore(stale037Save(30, OLD_EMITTER_SHELF))
+
+  // Every one of them is gone. This is the whole defect: 0.3.8 fixed the emitter
+  // and did nothing for a player who already had a save, which was every tester.
+  const left = polyps(engine.s.board)
+  assert.equal(left.length, CLEAR_SEEDS, `the stale shelf left ${left.length} polyps behind`)
+  for (const p of left) {
+    assert.equal(decompose(p.value)?.step, 0, `a ${p.value} survived the migration; only seeds may`)
+  }
+  assert.equal(
+    left.some((p) => OLD_EMITTER_SHELF.includes(p.value)),
+    false,
+    'not one of the old numbers may come back',
+  )
+
+  // And nothing else was taken. Depth is the only progress this game has: it is
+  // what brightens the water, unlocks the operator forms, sizes the ask and pays
+  // the bloom yield.
+  assert.equal(engine.s.depth, 30, 'depth must survive the migration')
+  assert.equal(engine.s.grows, 4, 'and the growths that earned the bigger shelf')
+  assert.equal(engine.s.board.cols, 8, 'and the shelf he grew')
+  assert.equal(engine.s.board.rows, 9)
+
+  // The founder's actual situation, stated as the thing he could not do: play.
+  engine.ask()
+  assert.equal(engine.solvable(), true, 'a migrated shelf must be a winnable position')
+  assert.ok(
+    playUntilBloom(engine, 400),
+    `never bloomed after migrating. shelf: [${polyps(engine.s.board)
+      .map((p) => p.value)
+      .sort((a, b) => a - b)
+      .join(', ')}]`,
+  )
+
+  // And it is written back as v3, so the migration happens once and never again.
+  assert.equal(JSON.parse(engine.snapshot()).v, SAVE_VERSION)
+})
+
+test('a v3 save keeps the shelf it was written with', () => {
+  const engine = makeEngine(fixedHost(5), 3)
+  loadShelf(engine, 6, [1, 3, 5, 7, 96])
+  assert.deepEqual(
+    polyps(engine.s.board)
+      .map((p) => p.value)
+      .sort((a, z) => a - z),
+    [1, 3, 5, 7, 96],
+    'the migration must not fire on a save this build wrote',
+  )
+})
+
+test('a save from a schema this reef has never seen is refused rather than misread', () => {
+  const engine = makeEngine(fixedHost(5), 3)
+  assert.throws(() => engine.restore(JSON.stringify({ v: 1, depth: 9, cells: [[0, 3]] })), /older reef/)
+})
+
+/* --------------------------------------------------------------- the turnover */
+
+test('a bloom carries the biggest polyps off the shelf and shakes the rest', () => {
+  const engine = makeEngine(fixedHost(5), 20260728)
+  // Twelve giants and the route to five, so the bloom is one feed away and the
+  // shelf it blooms on is exactly the accumulation the founder is complaining of.
+  loadShelf(engine, 6, [512, 256, 128, 96, 88, 80, 72, 64, 56, 48, 40, 32, 5])
+  engine.ask()
+  const before = polyps(engine.s.board).map((p) => p.value)
+  const five = polyps(engine.s.board).find((p) => p.value === 5)
+  assert.ok(five, 'the shelf holds the five')
+
+  const events = engine.feed(five.cell)
+  assert.ok(
+    events.some((e) => e.kind === 'bloom'),
+    'feeding the five must bloom',
+  )
+  const swept = events.find((e) => e.kind === 'undertow')
+  assert.ok(swept, 'a bloom must carry something off a shelf of thirteen')
+  // Thirteen polyps, one eaten by the mouth: twelve left, a quarter of which is 3.
+  assert.equal(swept.cells.length, 3, `the undertow took ${swept.cells.length}`)
+  assert.equal(swept.gained, 512 + 256 + 128, 'and it took them off the TOP')
+  assert.equal(
+    polyps(engine.s.board).some((p) => p.value === 512),
+    false,
+    'the biggest number on the shelf is exactly what a bloom is supposed to clear',
+  )
+  assert.ok(
+    events.some((e) => e.kind === 'shuffle'),
+    'and the survivors are shaken up',
+  )
+  assert.ok(
+    events.some((e) => e.kind === 'emit'),
+    'and fresh polyps land in the churn',
+  )
+  assert.ok(before.length > 0)
+})
+
+test('a bloom takes nothing off a sparse shelf — a reward may not feel like a tax', () => {
+  const engine = makeEngine(fixedHost(5), 5)
+  loadShelf(engine, 6, [5, 96, 48])
+  assert.ok(polyps(engine.s.board).length <= UNDERTOW_FLOOR, 'this shelf is under the floor')
+  engine.ask()
+  const five = polyps(engine.s.board).find((p) => p.value === 5)
+  assert.ok(five)
+  const events = engine.feed(five.cell)
+  assert.ok(events.some((e) => e.kind === 'bloom'))
+  assert.equal(
+    events.some((e) => e.kind === 'undertow'),
+    false,
+    'nothing may be carried off a shelf a child has barely started',
+  )
+  assert.equal(
+    polyps(engine.s.board).some((p) => p.value === 96),
+    true,
+    'the 96 they built is still theirs',
+  )
+})
+
+test('over a real session no polyp is permanent — the shelf is a different shelf twenty blooms later', () => {
+  // The founder's state is a shelf that only ever accumulates: *"I have all of the
+  // old numbers from previous versions ... and leaving and coming back doesn't
+  // clear."* So the claim to check is about IDENTITY, not about values — every
+  // polyp is stamped with one at birth and nothing ever copies it — and it is the
+  // claim the old build fails outright: without an undertow a polyp only leaves
+  // the shelf if the mouth happens to call for it.
+  const host = makeStubHost({ seed: 0x51ed })
+  const engine = makeEngine(host as never, 20260728)
+  engine.seed()
+  engine.ask()
+  // Get past the opening so the shelf is a real one, not eight seeds.
+  for (let i = 0; i < 4000 && engine.s.depth < 20; i++) {
+    engine.tick(STEP_MS)
+    step(engine)
+  }
+  assert.ok(engine.s.depth >= 20, `only reached depth ${engine.s.depth}`)
+  const before = new Set(polyps(engine.s.board).map((p) => p.id))
+  assert.ok(before.size >= 10, `only ${before.size} polyps on the shelf to measure`)
+  const mark = engine.s.depth
+  for (let i = 0; i < 4000 && engine.s.depth < mark + 20; i++) {
+    engine.tick(STEP_MS)
+    step(engine)
+  }
+  assert.ok(engine.s.depth >= mark + 20, `only reached depth ${engine.s.depth}`)
+  const survivors = polyps(engine.s.board).filter((p) => before.has(p.id)).length
+  const share = survivors / before.size
+  console.log(
+    `   twenty blooms on, ${survivors} of ${before.size} polyps are the same ones ` +
+      `(${(share * 100).toFixed(1)}%)`,
+  )
+  assert.ok(
+    share < 0.25,
+    `${survivors} of ${before.size} polyps sat through twenty blooms — that is the silt`,
+  )
 })
 
 /* ------------------------------------------------------------- the emission band */
@@ -271,7 +518,11 @@ test('the strains the reef emits are strains the target can actually use', () =>
   let onRoute = 0
   let total = 0
   for (let seed = 1; seed <= 6; seed++) {
-    drive(seed, 500, (value, owed, engine) => {
+    // 900 steps and not 500: the reef turns over faster now, so a larger share of
+    // what it emits is DEBT — the halves it owes — and those are excluded from
+    // this measurement by design. The sample is of ambient draws, so it has to be
+    // taken over enough play to still be one.
+    drive(seed, 900, (value, owed, engine) => {
       if (owed) return
       const t = engine.s.target
       if (!t) return
@@ -432,20 +683,23 @@ function step(engine: Engine, after: (where: string) => void = () => {}): void {
       return
     }
   }
-  if (emptyCells(s.board).length < 2 || !hasLegalMerge(s.board)) {
-    engine.dissolve()
-    after('CLEAR')
-    return
-  }
+  // SPLIT before CLEAR, and CLEAR only as the last thing left. This changed when
+  // CLEAR became a full wipe: the old bot pressed it whenever the shelf was merely
+  // *cramped*, which under the new button throws away a reef the child spent the
+  // session building. No player does that — CLEAR is the way out of a position you
+  // cannot play, and a bot that spends it casually is modelling nobody. Measured
+  // over the same 16 seeds × 2,500 steps: the casual bot bloomed 51 times at worst
+  // and sat on one target for 2,200 steps; this one blooms 412 times at worst and
+  // never sits longer than 131.
   const half = polyps(s.board)
     .filter((p) => canSplit(p.value))
     .sort((a, z) => z.value - a.value)[0]
-  if (half) {
+  if (half && emptyCells(s.board).length > 0) {
     engine.split(half.cell)
     after('a split')
+    return
   }
+  engine.dissolve()
+  after('CLEAR')
 }
 
-/** Kept honest: `place` and `at` are the shelf's only writers. */
-void place
-void at
