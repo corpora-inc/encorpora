@@ -24,168 +24,11 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-// From `audioHold.ts` directly, not the barrel: `index.ts` deliberately does
-// NOT re-export this, because a game that reached for it would defeat the hold
-// for the whole pack. Node 24 enforces that; Node 22 does not, which is how the
-// wrong import passed locally and failed in CI.
-import { forgetAudioContexts } from "../../../../packs/shared/game-chrome/audioHold.ts"
+import { LOGGED_PAST_CALM } from "../game/opening.ts"
+import { noteLogged, resetLoggedForTest } from "../game/seen.ts"
 import { mountSkyLedger } from "../mount.ts"
 import { createStubHost } from "../stubHost.ts"
-
-type Handler = (e: unknown) => void
-
-type FakeEl = {
-  className: string
-  tag?: string
-  fire(type: string, event?: unknown): void
-  [key: string]: unknown
-}
-
-function makeSurface(width = 768, height = 1024) {
-  const created: FakeEl[] = []
-  const rect = { left: 0, top: 0, right: width, bottom: height, width, height, x: 0, y: 0 }
-
-  const ctx: unknown = new Proxy(
-    {},
-    {
-      get(_t, prop) {
-        if (prop === "then") return undefined
-        if (typeof prop === "symbol") return undefined
-        return () => ctx
-      },
-      set: () => true,
-    },
-  )
-
-  const makeEl = (): FakeEl => {
-    const listeners = new Map<string, Handler[]>()
-    const el = {
-      style: {} as Record<string, unknown>,
-      width: 0,
-      height: 0,
-      id: "",
-      type: "",
-      className: "",
-      textContent: "",
-      tabIndex: 0,
-      hidden: false,
-      scrollTop: 0,
-      offsetHeight: 400,
-      appendChild: (c: unknown) => c,
-      append: () => undefined,
-      remove: () => undefined,
-      focus: () => undefined,
-      setAttribute: () => undefined,
-      getAttribute: () => null,
-      removeAttribute: () => undefined,
-      getBoundingClientRect: () => rect,
-      getContext: () => ctx,
-      setPointerCapture: () => undefined,
-      releasePointerCapture: () => undefined,
-      hasPointerCapture: () => false,
-      addEventListener(type: string, h: Handler) {
-        const list = listeners.get(type) ?? []
-        list.push(h)
-        listeners.set(type, list)
-      },
-      removeEventListener(type: string, h: Handler) {
-        const list = listeners.get(type) ?? []
-        const at = list.indexOf(h)
-        if (at >= 0) list.splice(at, 1)
-      },
-      fire(type: string, event: unknown = {}) {
-        for (const h of [...(listeners.get(type) ?? [])]) h(event)
-      },
-    } as unknown as FakeEl
-    created.push(el)
-    return el
-  }
-
-  const root = makeEl()
-  const globalKeys = new Map<string, Handler[]>()
-  let pending: ((t: number) => void) | null = null
-  let clock = 0
-
-  const saved = {
-    raf: globalThis.requestAnimationFrame,
-    caf: globalThis.cancelAnimationFrame,
-    ro: (globalThis as { ResizeObserver?: unknown }).ResizeObserver,
-    now: performance.now,
-    dateNow: Date.now,
-    add: globalThis.addEventListener,
-    remove: globalThis.removeEventListener,
-    doc: (globalThis as { document?: unknown }).document,
-    dpr: (globalThis as { devicePixelRatio?: number }).devicePixelRatio,
-  }
-
-  const install = (): (() => void) => {
-    globalThis.requestAnimationFrame = ((cb: (t: number) => void): number => {
-      pending = cb
-      return 1
-    }) as typeof globalThis.requestAnimationFrame
-    globalThis.cancelAnimationFrame = ((): void => {
-      pending = null
-    }) as typeof globalThis.cancelAnimationFrame
-    ;(globalThis as { ResizeObserver?: unknown }).ResizeObserver = class {
-      observe(): void {}
-      disconnect(): void {}
-    }
-    performance.now = () => clock
-    // The scene seeds itself from the wall clock, which is right on a tablet and
-    // fatal in a test: a suite that is green four runs in five has proved
-    // nothing.
-    Date.now = () => 0x5eed
-    globalThis.addEventListener = ((type: string, h: Handler): void => {
-      const list = globalKeys.get(type) ?? []
-      list.push(h)
-      globalKeys.set(type, list)
-    }) as unknown as typeof globalThis.addEventListener
-    globalThis.removeEventListener = ((type: string, h: Handler): void => {
-      const list = globalKeys.get(type) ?? []
-      const at = list.indexOf(h)
-      if (at >= 0) list.splice(at, 1)
-    }) as unknown as typeof globalThis.removeEventListener
-    ;(globalThis as { document?: unknown }).document = {
-      createElement: (tag: string) => {
-        const el = makeEl()
-        el.tag = tag
-        return el
-      },
-      getElementById: () => null,
-      body: makeEl(),
-      activeElement: null,
-      addEventListener: () => undefined,
-      removeEventListener: () => undefined,
-    }
-    ;(globalThis as { devicePixelRatio?: number }).devicePixelRatio = 2
-    return () => {
-      globalThis.requestAnimationFrame = saved.raf
-      globalThis.cancelAnimationFrame = saved.caf
-      ;(globalThis as { ResizeObserver?: unknown }).ResizeObserver = saved.ro
-      performance.now = saved.now
-      Date.now = saved.dateNow
-      globalThis.addEventListener = saved.add
-      globalThis.removeEventListener = saved.remove
-      ;(globalThis as { document?: unknown }).document = saved.doc
-      ;(globalThis as { devicePixelRatio?: number }).devicePixelRatio = saved.dpr
-      forgetAudioContexts()
-    }
-  }
-
-  return {
-    root,
-    install,
-    step(ms: number): void {
-      clock += ms
-      const cb = pending
-      pending = null
-      cb?.(clock)
-    },
-    /** The shared module's own controls, found the way a finger finds them. */
-    help: () => created.find((e) => e.className === "dwc-help"),
-    closeButton: () => created.find((e) => e.className === "dwc-close"),
-  }
-}
+import { makeSurface } from "./surface.ts"
 
 type Rig = {
   surface: ReturnType<typeof makeSurface>
@@ -200,6 +43,12 @@ type Rig = {
 function rig(seed = 0x5c7ed6): Rig {
   const surface = makeSurface()
   const restore = surface.install()
+  // A practised child. This file is about the MANUAL, not about the opening: it
+  // needs stars that land inside its twenty-four seconds, which is the shipped
+  // descent and not the calm one. Seeded AFTER `install`, so the count lands in
+  // this rig's own storage and not in the one the last rig took away with it.
+  resetLoggedForTest()
+  for (let i = 0; i < LOGGED_PAST_CALM; i++) noteLogged()
   const haptics: string[] = []
   const reports: Array<{ ms: number }> = []
   let served = 0

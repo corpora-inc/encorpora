@@ -24,6 +24,7 @@ import {
   FIGURE_FONT,
   LAPIS_LIT,
   OXIDE,
+  PLATE_FONT,
   sized,
   STARLIGHT,
   STONE,
@@ -66,6 +67,15 @@ export type SceneState = {
   chromaRpx: number
   over: { logged: number; watches: number; longest: number; wide: number; best: number } | null
   stalled: boolean
+  /**
+   * A sum the observatory completed for the child, already written out as a
+   * finished sentence by the rules — `247 + 225 = 472`.
+   *
+   * It is STATE, not an effect: there is no age, no life and no fade, because
+   * the reveal ends when a hand ends it and this layer is not allowed to have an
+   * opinion about when that is. `null` when nothing is held.
+   */
+  shown: string | null
 }
 
 export class Scene {
@@ -232,8 +242,56 @@ export class Scene {
 
     drawAstrolabe(g, l, state.dial, state.held, this.reduced)
 
+    if (state.shown !== null) this.drawShown(state.shown)
     if (state.stalled) this.drawStalled()
     if (state.over) this.drawLedgerPage(state.over)
+  }
+
+  /**
+   * The sum, finished, held.
+   *
+   * Drawn in BRASS_LIT — the accent this observatory writes its own record in,
+   * the same ink as a logged station and the ledger page. Never `OXIDE`, which
+   * is this palette's refusal colour, and never red: the child has already been
+   * told the mark went wide by the cold ring that is still on the plane behind
+   * this. What is on the glass now is the line completed, which is the lesson,
+   * and a lesson is not a scolding.
+   *
+   * No timer anywhere in here. `Scene` is not told how long this has been up and
+   * has no way to take it down.
+   */
+  private drawShown(line: string): void {
+    const g = this.g
+    const l = this.layout
+    const cx = l.sky.x + l.sky.w / 2
+    const cy = l.sky.y + l.sky.h / 2
+
+    // A scrim over the sky only. The astrolabe stays lit and legible underneath,
+    // because the next thing the child does is turn it.
+    g.fillStyle = "rgba(5, 8, 16, 0.82)"
+    g.fillRect(l.sky.x, l.sky.y, l.sky.w, l.sky.h)
+
+    let size = Math.max(16, Math.min(l.cell * 0.92, 44 * Math.max(1, l.rpx * 1.4)))
+    g.textAlign = "center"
+    g.textBaseline = "middle"
+    // The line is the whole event, so it is fitted to the room rather than
+    // clipped: a four-digit sum on a phone must still be readable end to end.
+    const room = l.sky.w * 0.86
+    for (let i = 0; i < 8; i++) {
+      g.font = sized(PLATE_FONT, size)
+      if (g.measureText(line).width <= room) break
+      size *= 0.88
+    }
+    g.font = sized(PLATE_FONT, size)
+
+    g.strokeStyle = alpha(BRASS, 0.8)
+    g.lineWidth = Math.max(1, l.rpx * 2.5)
+    const pw = Math.min(room + size, l.sky.w * 0.94)
+    const ph = size * 2.4
+    g.strokeRect(cx - pw / 2, cy - ph / 2, pw, ph)
+
+    g.fillStyle = BRASS_LIT
+    g.fillText(line, cx, cy)
   }
 
   private drawRelease(): void {
