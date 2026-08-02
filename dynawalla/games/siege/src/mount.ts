@@ -316,16 +316,21 @@ export class Siege {
 
   private resize(): void {
     const b = this.hud.board;
+    // Measured every resize, never cached from construction: a rotation trades
+    // one top inset for two side ones, and iPadOS changes them when the pack is
+    // resized in Split View. Read once and you are correct until the first
+    // rotation and wrong after it.
+    const insets = safeInsets();
+    // Publish BEFORE measuring. The status bar's and the console's padding are
+    // derived from these, so they decide how much height is left for the board;
+    // a board measured first is a board measured against the previous insets.
+    this.hud.setInsets(insets);
     const w = Math.max(1, b.clientWidth);
     const h = Math.max(1, b.clientHeight);
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     this.hud.canvas.width = Math.round(w * dpr);
     this.hud.canvas.height = Math.round(h * dpr);
-    // Measured every resize, never cached from construction: a rotation trades
-    // one top inset for two side ones, and iPadOS changes them when the pack is
-    // resized in Split View. Read once and you are correct until the first
-    // rotation and wrong after it.
-    this.view = computeView(w, h, dpr, boardSafe(w, h, safeInsets()));
+    this.view = computeView(w, h, dpr, boardSafe(w, h, insets));
   }
 
   restart(): void {
