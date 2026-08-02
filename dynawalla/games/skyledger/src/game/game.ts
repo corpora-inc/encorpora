@@ -41,6 +41,7 @@
 import type { Host, Question } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
 import { Escalation, type Channels, type Release } from "./escalation.ts"
+import { openingAt, revealFor, stepFor, type Opening } from "./opening.ts"
 import {
   RINGS,
   answerOf,
@@ -103,7 +104,14 @@ export type Star = {
   askedAt: number
   /** Set once the child has sighted it, so latency is thinking time. */
   taken: boolean
-  state: "falling" | "caught" | "landed"
+  /**
+   * `shown` is the calm opening's outcome: the mark went wide, the observatory
+   * completed the sum in front of the child, and the star came off the sky. It
+   * is not a bloom (nothing is logged, no link, no lamp relit) and it is not a
+   * landing (no lamp goes out). It was already reported, once, when the mark
+   * went wide, and it is never reported again.
+   */
+  state: "falling" | "caught" | "landed" | "shown"
 }
 
 export type GameEvent =
@@ -112,6 +120,7 @@ export type GameEvent =
   | { kind: "refused"; reason: "dry" | "nothing-sighted" }
   | { kind: "bloom"; star: Star; station: Station; channels: Channels; link: number }
   | { kind: "wide"; star: Star; station: Station; value: number; recognised: boolean }
+  | { kind: "shown"; star: Star; line: string }
   | { kind: "release"; release: Release }
   | { kind: "land"; star: Star; lamp: number }
   | { kind: "watch"; watch: number; logged: number; relit: boolean }
@@ -154,14 +163,38 @@ export class Game {
   private over = false
   private stalledFlag = false
 
+  /**
+   * Stars this child has ever logged. Seeded from `game/seen.ts` at the shell
+   * and only ever climbs, including across a `restart` — a run ending is not a
+   * reason to forget that the child can do this.
+   */
+  private competence: number
+  private opening: Opening
+
+  /**
+   * A sum the observatory completed in front of the child, held until they take
+   * it down. Nothing moves while it is up: the sky, the chain, the refill and
+   * the input are all stopped, because a lesson a child is reading must not
+   * cost them a lamp.
+   */
+  private held: { star: Star; line: string; at: number } | null = null
+
   readonly ledger: Ledger = { logged: 0, watches: 0, longest: 0, wide: 0 }
 
-  constructor(host: Host, rng: Rng, now: number, reduced: boolean) {
+  /**
+   * `experience` — stars logged in every previous sitting — is REQUIRED, not
+   * defaulted. Every construction site has to state it, so no shell can quietly
+   * hand a child who has played for a month the first-minute opening, or a child
+   * who has never seen the astrolabe four sums at once.
+   */
+  constructor(host: Host, rng: Rng, now: number, reduced: boolean, experience: number) {
     this.host = host
     this.rng = rng
     this.chain = new Escalation(reduced)
     this.clock = now
     this.refillAt = now + REFILL_MS
+    this.competence = Number.isFinite(experience) ? Math.max(0, Math.floor(experience)) : 0
+    this.opening = openingAt(stepFor(this.competence))
   }
 
   /** Open the first watch. Separate from the constructor so events can be seen. */
@@ -229,6 +262,37 @@ export class Game {
 
   get stalled(): boolean {
     return this.stalledFlag
+  }
+
+  /** Which position on the ramp this sitting currently stands at. */
+  get opened(): Opening {
+    return this.opening
+  }
+
+  /**
+   * The sum the observatory has completed and is holding, or `null`.
+   *
+   * A finished sentence — `247 + 225 = 472` — and nothing else: no verdict, no
+   * adjective, no colour named here. It is built in the rules because the render
+   * layer is not allowed to see an answer.
+   */
+  get shown(): string | null {
+    return this.held?.line ?? null
+  }
+
+  /**
+   * The line the sighted star's plate should read, or `null` when the opening is
+   * past needing it.
+   *
+   * The right-hand side is the child's OWN reading off the astrolabe, live, so
+   * this tells them nothing they did not produce — it only says where the number
+   * they are making is going to stand.
+   */
+  get guide(): string | null {
+    if (!this.opening.reading) return null
+    const star = this.sighted
+    const value = this.reading
+    return star && value !== null ? `${star.item.prompt} = ${value}` : null
   }
 
   // ── the verbs ─────────────────────────────────────────────────────────────
@@ -304,10 +368,51 @@ export class Game {
       // saying something untrue about the sky, and the light goes out on it.
       const release = this.chain.cut()
       if (release) events.push({ kind: "release", release })
+
+      // The calm opening finishes the sum rather than leaving the child to
+      // guess again. The star comes off the sky WITH the reveal — not because a
+      // second try would be unkind, but because a child who has just been shown
+      // `247 + 225 = 472` and then dials 472 would be reported as having worked
+      // it out, and the register would be lying about them. It was reported
+      // once, above, as the wrong answer it was. That is the honest entry.
+      if (truth !== null && revealFor(this.opening).holdMs > 0) {
+        star.state = "shown"
+        if (star.id === this.sightedId) this.sightedId = -1
+        const line = `${star.item.prompt} = ${truth}`
+        this.held = { star, line, at: now }
+        events.push({ kind: "shown", star, line })
+      }
       return events
     }
 
     return this.bloom(star, value, now)
+  }
+
+  /**
+   * The child takes a completed sum down.
+   *
+   * `settleMs` is the only thing between the reveal going up and the child being
+   * able to dismiss it, and it is short on purpose: a lockout is its own
+   * rudeness, and all this one does is make sure the tap that lands was meant —
+   * the second tap of an impatient double-tap arrives inside it. There is no
+   * ceiling. `revealPlan` gives `holdMs: Infinity` and nothing in this file
+   * counts it down; the reveal ends when a hand ends it.
+   */
+  dismiss(now: number): GameEvent[] {
+    const held = this.held
+    if (!held || this.paused || this.over) return []
+    if (now - held.at < revealFor(this.opening).settleMs) return []
+    this.held = null
+    // Put the next line under the sight, the way a bloom does. The sky is
+    // exactly where the child left it — nothing fell while they were reading.
+    const next = this.lowestFalling()
+    if (!next) return []
+    this.sightedId = next.id
+    if (!next.taken) {
+      next.taken = true
+      next.askedAt = now
+    }
+    return [{ kind: "sight", star: next }]
   }
 
   /**
@@ -319,7 +424,10 @@ export class Game {
    * descent while the blooms play.
    */
   tick(dt: number, now: number): GameEvent[] {
-    if (this.paused || this.over || this.stalledFlag) return []
+    // A held reveal stops the world exactly as a pause does. A child reading the
+    // sum they just got wrong must not be losing lamps behind it, and the chain
+    // they were in the middle of must not expire while they read.
+    if (this.paused || this.over || this.stalledFlag || this.held !== null) return []
     this.clock = now
     this.world += Math.max(0, dt)
     const events: GameEvent[] = []
@@ -334,9 +442,21 @@ export class Game {
       this.refillAt = now + REFILL_MS
     }
 
+    // How many ledger lines are already in the air and readable. This is the
+    // number the founder's report is about, and it is the number the opening
+    // caps: a star waits for its gap on the world clock AND for room on the
+    // board. At `onBoard: Infinity` the second test cannot fire and release is
+    // the shipped 2.6-second cadence, unchanged.
+    let onBoard = 0
+    for (const star of this.sky) if (star.state === "falling" && star.t > 0) onBoard += 1
+
     for (const star of this.sky) {
       if (star.state !== "falling") continue
-      if (this.world < star.releaseIn) continue
+      if (star.t === 0) {
+        if (this.world < star.releaseIn) continue
+        if (onBoard >= this.opening.onBoard) continue
+        onBoard += 1
+      }
       star.t += dt / star.fallMs
       if (star.t < 1) continue
       star.t = 1
@@ -401,12 +521,18 @@ export class Game {
     for (const star of this.sky) star.askedAt += by
     this.chain.shift(by)
     this.refillAt += by
+    // A reveal's settle is a wall-clock mark like any other. Without this a
+    // thirty-second sheet raised over a held sum would hand it back already
+    // dismissible, and the tap that took the sheet down would take the lesson
+    // with it.
+    if (this.held) this.held.at += by
   }
 
   /** Start the next run after the ledger page. */
   restart(now: number): GameEvent[] {
     if (!this.over) return []
     this.over = false
+    this.held = null
     this.lampsLit = LAMPS
     this.watchNo = 0
     this.ledger.logged = 0
@@ -421,7 +547,7 @@ export class Game {
   // ── internals ─────────────────────────────────────────────────────────────
 
   private active(): boolean {
-    return !this.paused && !this.over && !this.stalledFlag
+    return !this.paused && !this.over && !this.stalledFlag && this.held === null
   }
 
   /**
@@ -456,6 +582,11 @@ export class Game {
       star.state = "caught"
       this.ledger.logged += 1
       this.loggedThisWatch += 1
+      // The one thing the ramp is indexed by, and it is banked here — at the
+      // moment a true assertion is made — rather than at a watch boundary or on
+      // a clock. `mount.ts` writes the same event to storage so it survives the
+      // sitting.
+      this.competence += 1
       const channels = this.chain.link(now)
       this.ledger.longest = Math.max(this.ledger.longest, this.chain.links)
       events.push({
@@ -516,9 +647,17 @@ export class Game {
     this.world = 0
     this.sky = []
     this.sightedId = -1
+    this.held = null
+
+    // Where the child stands NOW. Read once per watch rather than per frame, so
+    // a watch has one shape from end to end — but read every watch, so a child
+    // who earns the second line does not have to close the game to be given it.
+    this.opening = openingAt(stepFor(this.competence))
 
     const count = Math.min(WATCH_MAX, WATCH_BASE + (this.watchNo - 1) * WATCH_STEP)
-    const fallMs = Math.max(FALL_FLOOR_MS, FALL_BASE_MS - (this.watchNo - 1) * FALL_STEP_MS)
+    const fallMs =
+      Math.max(FALL_FLOOR_MS, FALL_BASE_MS - (this.watchNo - 1) * FALL_STEP_MS) *
+      this.opening.fall
 
     for (let i = 0; i < count; i++) {
       const item = this.drawOne()

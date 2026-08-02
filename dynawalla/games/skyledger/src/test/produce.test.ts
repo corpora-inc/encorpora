@@ -22,6 +22,7 @@ import { test } from "node:test"
 import type { Host, Question } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
 import { Game } from "../game/game.ts"
+import { LOGGED_PAST_CALM } from "../game/opening.ts"
 import { RINGS, detentsBetween, type Station } from "../game/station.ts"
 import { createStubHost } from "../stubHost.ts"
 import { raise, rig, truthOf } from "./harness.ts"
@@ -139,8 +140,8 @@ test("where a star is in the sky is not a function of what it is worth", () => {
   const plain = createStubHost({ seed: 0xa11e })
   const altered = shift(createStubHost({ seed: 0xa11e }))
 
-  const a = new Game(plain, new Rng(0xbeef), 0, false)
-  const b = new Game(altered, new Rng(0xbeef), 0, false)
+  const a = new Game(plain, new Rng(0xbeef), 0, false, LOGGED_PAST_CALM)
+  const b = new Game(altered, new Rng(0xbeef), 0, false, LOGGED_PAST_CALM)
   a.begin(0)
   b.begin(0)
 

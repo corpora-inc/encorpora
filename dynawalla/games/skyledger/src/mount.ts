@@ -30,12 +30,13 @@
 // particles spawned by the impact are already on screen, so the freeze contains
 // the flash rather than preceding it.
 
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 import { Audio } from "./audio/audio.ts"
 import type { Host } from "./contract.ts"
 import { unit } from "./core/feel.ts"
 import { Rng } from "./core/rng.ts"
 import { bestChain, recordChain } from "./game/best.ts"
+import { loggedEver, noteLogged } from "./game/seen.ts"
 import { CHAIN_CAP } from "./game/escalation.ts"
 import { Game, LAMPS, SIGHTINGS, type GameEvent } from "./game/game.ts"
 import { angleAt, ringAt, type Ring } from "./render/astrolabe.ts"
@@ -75,7 +76,9 @@ export function mountSkyLedger(
     return typeof performance === "object" ? performance.now() : Date.now()
   }
 
-  const game = new Game(host, new Rng(seed), now(), reduced)
+  // The calm opening's index: stars this child has logged in every previous
+  // sitting. Read ONCE, here — the rules keep counting within the sitting.
+  const game = new Game(host, new Rng(seed), now(), reduced, loggedEver())
   let best = bestChain()
 
   let running = true
@@ -119,6 +122,9 @@ export function mountSkyLedger(
         case "bloom": {
           scene.addBloom(event.star, event.station, unit(event.link / CHAIN_CAP), event.link)
           logged.add(event.station.y * 10 + event.station.x)
+          // The write side of the ramp. One true assertion, banked, so tomorrow
+          // starts where today finished.
+          noteLogged()
           audio.bloom(event.link)
           host.haptic(event.link >= 4 ? "heavy" : "success")
           hitstopLeft = Math.max(hitstopLeft, event.channels.hitstopMs)
@@ -134,6 +140,16 @@ export function mountSkyLedger(
           scene.addCold(event.station)
           audio.wide()
           host.haptic(event.recognised ? "light" : "medium")
+          break
+        }
+        case "shown": {
+          // The observatory finishes the sum and holds it. No shake, no red,
+          // no buzzer: the register is writing a line out. What is DRAWN comes
+          // from `game.shown` on every frame, because the reveal has no
+          // duration — it is up until a hand takes it down — so it cannot be a
+          // fading effect the scene owns.
+          audio.wide()
+          host.haptic("light")
           break
         }
         case "refused": {
@@ -184,6 +200,12 @@ export function mountSkyLedger(
 
   const view = (t: number): SceneState => {
     const sighted = game.sighted
+    // The whole tutorial, and it is one string the rules built out of the star's
+    // own prompt and the child's own reading: the sighted plate says
+    // `247 + 225 = 74` while the rings stand at 74. Nothing is revealed — the
+    // right-hand side is theirs — and no new copy is shipped, which matters at
+    // fifty locales. `null` once the opening is past needing it.
+    const plate = game.guide
     const stars: StarView[] = game.stars
       .filter((s) => s.state === "falling")
       .map((s) => ({
@@ -191,7 +213,7 @@ export function mountSkyLedger(
         lane: s.lane,
         t: s.t,
         order: s.order,
-        prompt: s.item.prompt,
+        prompt: plate !== null && sighted?.id === s.id ? plate : s.item.prompt,
         sighted: sighted?.id === s.id,
         visible: s.t > 0,
       }))
@@ -203,6 +225,7 @@ export function mountSkyLedger(
       bloom: bloomLevel,
       chromaRpx: chroma,
       stalled: game.stalled,
+      shown: game.shown,
       over: game.isOver
         ? { ...game.ledger, best: Math.max(best, game.ledger.longest) }
         : null,
@@ -264,6 +287,14 @@ export function mountSkyLedger(
     pointer = e.pointerId
     canvas.setPointerCapture?.(e.pointerId)
     const { px, py } = local(e)
+
+    // A held sum is taken down by the same hand that would have done anything
+    // else. Checked FIRST, and it consumes the gesture: a tap that lands on the
+    // dial while the lesson is up must not also turn a ring.
+    if (game.shown !== null) {
+      apply(game.dismiss(now()))
+      return
+    }
 
     if (game.isOver) {
       apply(game.restart(now()))
@@ -339,6 +370,12 @@ export function mountSkyLedger(
    */
   const onKey = (e: KeyboardEvent): void => {
     if (paused) return
+    if (game.shown !== null) {
+      // Any key, and only the dismissal. The rings must not move under a lesson.
+      e.preventDefault()
+      apply(game.dismiss(now()))
+      return
+    }
     switch (e.key) {
       case "ArrowRight":
         apply(game.dial("ones", 1))
@@ -379,6 +416,15 @@ export function mountSkyLedger(
   const observer =
     typeof ResizeObserver === "function" ? new ResizeObserver(() => scene.resize()) : null
   observer?.observe(canvas)
+  // The safe rect is not a constant and it does not always move with the canvas
+  // box. `env(safe-area-inset-*)` resolves to ZERO inside a pack frame — the
+  // document is opaque-origin, and `env()` is a property of the TOP-LEVEL
+  // browsing context — so the real numbers arrive from the host on the
+  // `settings` channel, AFTER this shell has already laid itself out once, and
+  // change again on a Split View resize that leaves the canvas the same shape.
+  // `Layout` is computed from `safeRect()` at `resize` and nowhere else, so
+  // without this the astrolabe and the lattice stay where the zeros put them.
+  const unwatchInsets = onInsetsChange(() => scene.resize())
 
   // ── the pause ────────────────────────────────────────────────────────────
   // One pair, reached from two places: the host, through the handle below, and
@@ -493,6 +539,7 @@ export function mountSkyLedger(
       canvas.removeEventListener("pointercancel", onUp)
       globalThis.removeEventListener("keydown", onKey)
       globalThis.removeEventListener("resize", onResize)
+      unwatchInsets()
       observer?.disconnect()
       audio.close()
       canvas.remove()
