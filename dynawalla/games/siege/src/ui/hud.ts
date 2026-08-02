@@ -6,7 +6,8 @@
  * crisp on every device.
  */
 import { TOWERS, type TowerKind } from "../game/constants.ts";
-import { chromeVars } from "./chrome.ts";
+import { applySafeVars, chromeVars } from "./chrome.ts";
+import type { Insets } from "../../../../packs/shared/game-chrome/index.ts";
 import type { Question } from "../contract.ts";
 
 export type HudCallbacks = {
@@ -122,6 +123,7 @@ export class Hud {
   private end: HTMLDivElement | null = null;
 
   private flyPool: HTMLDivElement[] = [];
+  private insets: Insets | null = null;
   private cb: HTMLCallbacksShim;
 
   constructor(host: HTMLElement, cb: HudCallbacks) {
@@ -129,13 +131,16 @@ export class Hud {
     const root = el("div", "sg");
     this.root = root;
 
-    // `styles.css` uses `env()` directly everywhere it can — exact, no
-    // JavaScript, and it survives a rotation with no listener. The one thing it
-    // cannot know is how wide the HOST's controls are, so that single number is
-    // written in from the shared constants here.
+    // Two things the stylesheet cannot work out for itself. How wide the HOST's
+    // controls are, which never changes and so can live in a `<style>` tag —
+    // and the safe area, which changes on every rotation and, more to the
+    // point, is not readable from inside a pack frame at all: `env()` resolves
+    // to zero in a cross-origin child. It is written onto the root as custom
+    // properties instead, from the host's own measurement.
     this.style = document.createElement("style");
     this.style.textContent = chromeVars();
     root.appendChild(this.style);
+    applySafeVars(root);
 
     // -- top bar -----------------------------------------------------------
     const top = el("div", "sg-top");
@@ -249,6 +254,21 @@ export class Hud {
 
     root.append(top, this.board, this.anvil);
     host.appendChild(root);
+  }
+
+  /**
+   * Republish the safe area onto the root.
+   *
+   * Called on every resize rather than once at mount: a rotation trades one top
+   * inset for two side ones, and the host re-sends its measurement whenever the
+   * app's own layout moves. Idempotent — nothing is written when the numbers
+   * have not moved, so this is safe to call from a `ResizeObserver` without
+   * writing style the browser then has to measure again.
+   */
+  setInsets(insets: Insets): void {
+    if (applySafeVars(this.root, insets, this.insets)) {
+      this.insets = { ...insets };
+    }
   }
 
   // -- stats ---------------------------------------------------------------

@@ -59,7 +59,13 @@
 
    All four edges honour the safe area, not just the top. `viewport-fit=cover`
    opts this document into the rounded corners on every side, and in landscape
-   the cutout is a SIDE inset — which is where the ember count lives. */
+   the cutout is a SIDE inset — which is where the ember count lives.
+
+   The safe area arrives as `--sg-safe-*`, written onto `.sg` by `applySafeVars`
+   from the host's own measurement. The `env()` inside each `var()` is the DEV
+   fallback and nothing else: a pack frame is cross-origin, so `env()` resolves
+   to zero there, and reading it directly is how this bar came to be painted
+   under an Android status bar. */
 .sg-top {
   display: flex;
   align-items: center;
@@ -67,9 +73,9 @@
   min-width: 0;
   overflow: hidden;
   padding: 8px 10px calc(8px) 10px;
-  padding-top: max(8px, env(safe-area-inset-top, 0px));
-  padding-left: calc(env(safe-area-inset-left, 0px) + var(--sg-corner, 54px));
-  padding-right: calc(env(safe-area-inset-right, 0px) + var(--sg-corner, 54px));
+  padding-top: max(8px, var(--sg-safe-top, env(safe-area-inset-top, 0px)));
+  padding-left: calc(var(--sg-safe-left, env(safe-area-inset-left, 0px)) + var(--sg-corner, 54px));
+  padding-right: calc(var(--sg-safe-right, env(safe-area-inset-right, 0px)) + var(--sg-corner, 54px));
   background: linear-gradient(#170f12, #100a0d);
   border-bottom: 1px solid var(--seam);
 }
@@ -305,17 +311,25 @@
 /* Portrait is the default shape: a full-width console under a square board.
    A phone screen is tall, the board can only be as wide as the screen, so the
    space left over belongs to the maths. */
+/* `--sg-pad` exists so the two layout media queries can change the console's
+   padding WITHOUT re-stating it as a shorthand. They used to: `padding: 8px` in
+   the short-viewport block reset all four longhands, and the three safe-area
+   rules below it were silently thrown away on exactly the shapes — a landscape
+   phone, a small window — where the home indicator is closest to the answer
+   buttons. A breakpoint that has to remember to re-apply the safe area is a
+   breakpoint that will forget. */
 .sg-anvil {
+  --sg-pad: 10px;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto;
   gap: 10px;
   align-items: center;
-  padding: 10px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
-  padding-left: max(10px, env(safe-area-inset-left, 0px));
-  padding-right: max(10px, env(safe-area-inset-right, 0px));
+  padding: var(--sg-pad);
+  padding-bottom: max(var(--sg-pad), var(--sg-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--sg-pad), var(--sg-safe-left, env(safe-area-inset-left, 0px)));
+  padding-right: max(var(--sg-pad), var(--sg-safe-right, env(safe-area-inset-right, 0px)));
   background: linear-gradient(#150e11, #0d0709);
   border-top: 1px solid var(--seam);
 }
@@ -582,11 +596,16 @@
 
 .sg-banner {
   position: absolute;
-  left: env(safe-area-inset-left, 0px);
-  right: env(safe-area-inset-right, 0px);
+  left: var(--sg-safe-left, env(safe-area-inset-left, 0px));
+  right: var(--sg-safe-right, env(safe-area-inset-right, 0px));
   /* Below the host's controls even on a short landscape phone, where 16% of the
-     height is less than a 44px button. */
-  top: max(16%, calc(env(safe-area-inset-top, 0px) + 68px));
+     height is less than a 44px button. `--sg-chrome-bottom` is the host's own
+     geometry — hairline, margin, control — not a number typed in here.
+     No top inset in this sum: the banner is a child of `.sg-board`, and the
+     board already begins below a status bar that has paid the top inset in
+     full. Adding it again here would push the wave call a second inset down
+     the screen for a notch it has already cleared. */
+  top: max(16%, calc(var(--sg-chrome-bottom, 57px) + 11px));
   z-index: 8;
   display: grid;
   justify-items: center;
@@ -631,8 +650,10 @@
   place-content: center;
   justify-items: center;
   gap: 16px;
-  padding: calc(20px + env(safe-area-inset-top, 0px)) calc(20px + env(safe-area-inset-right, 0px))
-    calc(20px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
+  padding: calc(20px + var(--sg-safe-top, env(safe-area-inset-top, 0px)))
+    calc(20px + var(--sg-safe-right, env(safe-area-inset-right, 0px)))
+    calc(20px + var(--sg-safe-bottom, env(safe-area-inset-bottom, 0px)))
+    calc(20px + var(--sg-safe-left, env(safe-area-inset-left, 0px)));
   background: radial-gradient(circle at 50% 46%, rgba(60, 12, 4, 0.72), rgba(6, 3, 4, 0.94));
   backdrop-filter: blur(3px);
   animation: sg-oc-in 0.24s ease-out;
@@ -700,8 +721,13 @@
   place-content: center;
   justify-items: center;
   gap: 10px;
-  padding: calc(env(safe-area-inset-top, 0px) + 68px) calc(env(safe-area-inset-right, 0px) + 12px)
-    calc(env(safe-area-inset-bottom, 0px) + 12px) calc(env(safe-area-inset-left, 0px) + 12px);
+  /* The top is the host's chrome plus air, not a bare 68: the defeat card is a
+     child of `.sg` and its heading DOES have to clear the exit and how-to-play
+     controls, which the banner does not. */
+  padding: calc(var(--sg-safe-top, env(safe-area-inset-top, 0px)) + var(--sg-chrome-bottom, 57px) + 11px)
+    calc(var(--sg-safe-right, env(safe-area-inset-right, 0px)) + 12px)
+    calc(var(--sg-safe-bottom, env(safe-area-inset-bottom, 0px)) + 12px)
+    calc(var(--sg-safe-left, env(safe-area-inset-left, 0px)) + 12px);
   background: rgba(5, 3, 4, 0.9);
   animation: sg-oc-in 0.6s ease-out;
 }
@@ -746,10 +772,12 @@
    `orientation`, which does not answer the question being asked. */
 @media (max-height: 619px) {
   .sg-anvil {
+    /* `--sg-pad`, never `padding: 8px` — the shorthand would take the safe-area
+       longhands with it and put the answer buttons under a home indicator. */
+    --sg-pad: 8px;
     grid-template-columns: minmax(0, 1fr) 116px;
     grid-template-rows: auto;
     gap: 8px;
-    padding: 8px;
   }
   .sg-slugs { grid-template-columns: repeat(4, 1fr); gap: 7px; }
   .sg-slug { height: clamp(42px, 13vh, 68px); font-size: clamp(18px, 3.2vw, 26px); }
@@ -791,9 +819,7 @@
     border-top: 0;
     border-left: 1px solid var(--seam);
     gap: 14px;
-    padding: 14px;
-    padding-right: max(14px, env(safe-area-inset-right, 0px));
-    padding-bottom: max(14px, env(safe-area-inset-bottom, 0px));
+    --sg-pad: 14px;
   }
   .sg-pal { display: grid; }
   .sg-anvil::before {

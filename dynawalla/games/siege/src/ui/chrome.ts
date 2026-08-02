@@ -1,14 +1,31 @@
 /**
  * The room the host leaves SIEGE, and what the pack promises about it.
  *
- * SIEGE was one of the seven games that already read `env(safe-area-inset-*)`,
- * which turned out to be the half-fix it usually is: `.sg-top` honoured
- * `--top` and `.sg-anvil` honoured `--bottom`, and **neither side was touched
- * at all**. `viewport-fit=cover` opts a document into the rounded corners and
- * the display cutout on every edge, not just the one that is obvious in
- * portrait. Held sideways the ember count and the sound switch sat under the
- * cutout, which is a currency a child cannot read and a control they cannot
- * press.
+ * **The defect that survived the first pass.** SIEGE read
+ * `env(safe-area-inset-*)` from `styles.css` and believed that was the fix. It
+ * is not, and inside the shipped app it is not even close: a pack runs in an
+ * iframe sandboxed `allow-scripts` with no `allow-same-origin`, and
+ * `env(safe-area-inset-*)` is a property of the TOP-LEVEL browsing context. A
+ * cross-origin child resolves all four to **zero**. Every rule in the
+ * stylesheet therefore collapsed to its 8px/10px fallback, and on a 1080x2340
+ * Android phone the ember count was painted under the OS status bar and the
+ * overcharge lever under the three-button navigation bar. The canvas was fine
+ * the whole time, because `mount.ts` fitted the board against `safeInsets()` —
+ * the DOM half of the same game disagreed with the canvas half about where the
+ * screen was.
+ *
+ * So the numbers now arrive the only way they can: as an ARGUMENT from the
+ * host, through `game-chrome`'s `safeInsets()`, published onto the root as four
+ * custom properties by `applySafeVars` below. `styles.css` reads
+ * `var(--sg-safe-top, env(safe-area-inset-top, 0px))` — the property inside the
+ * app, the `env()` only in a dev browser tab where it happens to be right.
+ *
+ * **The half-fix before that.** `.sg-top` honoured `--top` and `.sg-anvil`
+ * honoured `--bottom`, and **neither side was touched at all**.
+ * `viewport-fit=cover` opts a document into the rounded corners and the display
+ * cutout on every edge, not just the one that is obvious in portrait. Held
+ * sideways the ember count and the sound switch sat under the cutout, which is
+ * a currency a child cannot read and a control they cannot press.
  *
  * The second encroachment is the host's own chrome: an exit control over the
  * top-LEFT 44px corner and a how-to-play control over the top-RIGHT one. SIEGE's
@@ -30,6 +47,9 @@
 import {
   HOST_CONTROL,
   HOST_MARGIN,
+  HOST_PROGRESS_H,
+  NO_INSETS,
+  safeInsets,
   safeRect,
   type Insets,
   type Rect,
@@ -47,6 +67,15 @@ export const CORNER_CLEAR = HOST_MARGIN + HOST_CONTROL;
 
 /** The status bar's own margin from whatever edge it ends up against. */
 export const BAR_PAD = 10;
+
+/**
+ * Down from the SAFE top edge to the bottom of the host's row of controls.
+ *
+ * Anything that must be read and is laid out across the full width — a banner,
+ * the defeat card — starts below this, because it cannot dodge the two corners
+ * sideways the way the status bar does.
+ */
+export const CHROME_BOTTOM = HOST_PROGRESS_H + HOST_MARGIN + HOST_CONTROL;
 
 /**
  * The box the status bar's contents may use.
@@ -102,14 +131,59 @@ export function boardSafe(w: number, h: number, insets: Insets): Rect {
 /**
  * The CSS the stylesheet cannot express on its own.
  *
- * `styles.css` uses `env()` directly wherever it can — that is exact, it needs
- * no JavaScript, and it survives a rotation without a listener. The one thing it
- * cannot do is know how wide a host control is, so that number is written in
- * from here as a custom property and every rule that needs it reads
- * `var(--sg-corner)`.
+ * How wide a host control is, and how far in the bar's own margin sits. Written
+ * in from the shared constants so the pack follows if the host moves its chrome.
+ * These are fixed for the life of the pack, so they can live in a `<style>` tag;
+ * the safe area cannot, and goes through `applySafeVars` instead.
  */
 export function chromeVars(): string {
-  return `.sg{--sg-corner:${CORNER_CLEAR}px;--sg-bar-pad:${BAR_PAD}px}`;
+  return `.sg{--sg-corner:${CORNER_CLEAR}px;--sg-bar-pad:${BAR_PAD}px;--sg-chrome-bottom:${CHROME_BOTTOM}px}`;
+}
+
+/** The four custom properties `styles.css` does its safe-area arithmetic with. */
+export const SAFE_VARS = ["--sg-safe-top", "--sg-safe-right", "--sg-safe-bottom", "--sg-safe-left"] as const;
+
+/** The narrow slice of an element this needs — so a test can drive it with a stub. */
+export type StyleTarget = { style: { setProperty(name: string, value: string): void } };
+
+/**
+ * Hand the stylesheet the safe area, as four lengths it can do arithmetic with.
+ *
+ * Zeros are written EXPLICITLY rather than left unset. `var(--sg-safe-top, …)`
+ * falls back to its `env()` only when the property is absent, and inside the app
+ * `env()` is the wrong answer even when the true inset happens to be zero — it
+ * is the wrong answer *especially* then, because it is indistinguishable from
+ * the right one until the child picks up a phone with a notch.
+ *
+ * @returns whether anything actually changed, so a caller on a resize path can
+ *   avoid touching style it did not need to touch.
+ */
+export function applySafeVars(
+  root: StyleTarget,
+  insets: Insets = safeInsets(),
+  previous?: Insets | null,
+): boolean {
+  const i = insets ?? NO_INSETS;
+  const now: Insets = {
+    top: Math.max(0, i.top),
+    right: Math.max(0, i.right),
+    bottom: Math.max(0, i.bottom),
+    left: Math.max(0, i.left),
+  };
+  if (
+    previous &&
+    previous.top === now.top &&
+    previous.right === now.right &&
+    previous.bottom === now.bottom &&
+    previous.left === now.left
+  ) {
+    return false;
+  }
+  root.style.setProperty("--sg-safe-top", `${now.top}px`);
+  root.style.setProperty("--sg-safe-right", `${now.right}px`);
+  root.style.setProperty("--sg-safe-bottom", `${now.bottom}px`);
+  root.style.setProperty("--sg-safe-left", `${now.left}px`);
+  return true;
 }
 
 /** What `computeView` hands the renderer. Declared here so the fit can be tested. */

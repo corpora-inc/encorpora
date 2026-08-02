@@ -10,9 +10,13 @@
  * SIEGE's status bar runs the full width of exactly that row.
  *
  * **Removing the fix fails this file.** Set `CORNER_CLEAR` to 0 and the corner
- * tests trip; drop the side `env()` rules out of `styles.css` and the stylesheet
- * test trips; hand `computeView` the whole element instead of the safe box and
- * the board test trips.
+ * tests trip; drop the side safe-area rules out of `styles.css` and the
+ * stylesheet test trips; hand `computeView` the whole element instead of the
+ * safe box and the board test trips.
+ *
+ * This file works in the pack's own vocabulary — rects and constants. The
+ * stylesheet's arithmetic is evaluated to pixels next door, in
+ * `safearea.test.ts`, which is where the defect that survived this file lived.
  */
 
 import { test } from "node:test";
@@ -133,9 +137,20 @@ test("the status bar stays inside the safe area on every edge", () => {
 test("the stylesheet honours all four edges, not only the two obvious ones", () => {
   // The original defect: `.sg-top` had `padding-top: env(...)` and `.sg-anvil`
   // had `padding-bottom: env(...)`, and that was the whole of it. Held sideways
-  // the cutout is a SIDE inset. This asserts the rules themselves, because they
-  // are the fix — there is no JavaScript to test.
-  const css = read("./styles.css");
+  // the cutout is a SIDE inset.
+  //
+  // What this test USED to assert was `body.includes("env(safe-area-inset-…")`,
+  // and that is a lesson worth leaving in the file. It passed on the day SIEGE
+  // shipped its ember count under an Android status bar, because the rule was in
+  // the stylesheet and resolved to zero: a pack frame is cross-origin and
+  // `env()` belongs to the top-level document. A substring search proves the
+  // text is present. It cannot tell you what the text evaluates to.
+  //
+  // So this now asserts the SHAPE of the fix — every edge is read from a
+  // `--sg-safe-*` property, which is the only channel the host's measurement can
+  // arrive on — and `safearea.test.ts` next door evaluates the stylesheet to
+  // pixels at ten viewports and asserts the geometry.
+  const css = read("./styles.css").replace(/\/\*[\s\S]*?\*\//g, "");
   const rule = (selector: string): string => {
     const at = css.indexOf(`${selector} {`);
     assert.ok(at >= 0, `${selector} is gone from the stylesheet`);
@@ -150,8 +165,8 @@ test("the stylesheet honours all four edges, not only the two obvious ones", () 
     const body = rule(selector);
     for (const edge of edges) {
       assert.ok(
-        body.includes(`env(safe-area-inset-${edge}`),
-        `${selector} does not honour safe-area-inset-${edge}`,
+        body.includes(`var(--sg-safe-${edge},`),
+        `${selector} does not read --sg-safe-${edge} — an inset it cannot get any other way`,
       );
     }
   }
