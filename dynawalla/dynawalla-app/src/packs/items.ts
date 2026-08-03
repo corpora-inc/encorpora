@@ -706,6 +706,8 @@ export const PACE_FLOOR = 0.1
  * The ceiling is not this. `maxDifficulty` is a *capability* — "I cannot draw a
  * question harder than this" — and it still binds absolutely, below the band and
  * above it, because handing a pack a rung it cannot render is PR 694 again.
+ * `minDifficulty` is the same kind of statement pointing the other way, and it
+ * binds the same way; see it for why half a capability window was not enough.
  *
  * **Which leaves one way out, and it should be said rather than implied.** A
  * pack that pins its ceiling *to* its request has opted out of the band: it is
@@ -718,6 +720,22 @@ export const PACE_FLOOR = 0.1
  * That is pack work — widen what those games can render — and it cannot be done
  * from here without serving a game a question it cannot put on the screen.
  * `items.test.ts` pins the boundary so it is not mistaken for coverage.
+ *
+ * **What this constant cost, and why `minDifficulty` exists.** The escape above
+ * only opens downward. `index = min(clamp(asked, anchor ± 1), cap)`: a ceiling
+ * can pull a pack below the band and nothing could push one above it. That is
+ * fine for a pack whose renderable content sits under the child and fatal for
+ * one whose renderable content sits over them, and TREBUCHET is the second kind
+ * — a keep stands at its own answer in METRES on a 122-metre field, so the only
+ * questions it can put on the screen at all are the ones whose answer is an
+ * integer in 14..118, and nothing on the bottom rungs of this ladder
+ * (`dw.add.facts.*`, answers 0..10) is one of them. `progress` opens every
+ * session at 0, so from 0.3.7 to 0.3.9 the pack's whole rung search — which
+ * sweeps the ladder precisely because answer magnitude is not monotonic in it —
+ * was served rung 1 on all hundred probes, dropped all thousand answers, and
+ * left a child looking at an empty prompt frame on an empty field. Measured on
+ * the shipped service in `items.test.ts`: **0 of 1000 draws placeable**, against
+ * 0.3.6 which stocked on the first probe.
  */
 export const HINT_BAND = 1
 
@@ -1548,6 +1566,19 @@ export type ItemService = {
      * physically draw, and it binds below `HINT_BAND` as well as above it.
      */
     maxDifficulty?: number
+    /**
+     * A floor on the same scale. The stream never goes below it.
+     *
+     * The other half of `maxDifficulty`, and absolute for the same reason: a
+     * pack whose renderable content sits ABOVE the child is as real as one whose
+     * sits below, and until this field existed only the second could say so. See
+     * `HINT_BAND` for what the missing half cost TREBUCHET.
+     *
+     * It never moves the ladder. A ceiling pulls `progress` down when it bites,
+     * because standing above content a pack can never test is a fiction; the
+     * mirror write would let a pack push a child UP, so there is not one.
+     */
+    minDifficulty?: number
   }): Item | null
   judge(input: {
     packId: string
@@ -1724,7 +1755,7 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         actually came from. */
     position: () => Math.floor(progress),
 
-    next: ({ packId, skillId, difficulty, maxDifficulty }) => {
+    next: ({ packId, skillId, difficulty, minDifficulty, maxDifficulty }) => {
       // A pack may name a skill it covers. It is a request, not an instruction:
       // an unknown id falls back to the ladder rather than failing, because a
       // pack built against a later curriculum must still be playable.
@@ -1788,6 +1819,48 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         // fraction, which is what `progress − anchor` is.
         if (cap < anchor) progress = Math.max(0, cap) + (progress - anchor)
       }
+      if (minDifficulty !== undefined) {
+        // The **floor ceils** where the request rounds, for the mirror of the
+        // reason the cap floors: rounding a floor down puts the stream under the
+        // rung a pack has just said it cannot draw beneath.
+        //
+        // It binds after the band and after the ceiling, and it wins over the
+        // band for the same reason the ceiling does — it is not a pedagogy
+        // request, it is a pack saying what it can physically draw. A floor that
+        // yielded to `HINT_BAND` would be no floor at all: `progress` opens at 0
+        // every session, so the band is exactly where a pack whose content sits
+        // above the child gets starved, and starved is what TREBUCHET was.
+        //
+        // **It never moves `progress`, and that asymmetry with the ceiling is
+        // the whole safety of it.** A ceiling pulls the ladder DOWN when it
+        // bites, which is safe in the worst case — the child is handed work that
+        // is too easy. The mirror write would push a child UP the ladder on a
+        // pack's say-so, which is `HINT_BAND` inverted and would let one
+        // mis-declared manifest promote every child who opened it. So the host's
+        // model of where the child stands is left exactly as `judge` left it;
+        // what changes is only which of its rungs this pack is served from, and
+        // the answers come back as evidence at the rung they were drawn from
+        // (`Attempt.rung`) so the band still converges on its own.
+        //
+        // The ceiling wins a contradiction. A pack declaring `min > max` has
+        // declared an empty window, which is a pack bug, and of the two rules
+        // "never serve above what a pack can render" is the one whose failure is
+        // a blank screen in front of a child — PR 694 again.
+        const bottom = Math.ceil(minDifficulty * span)
+        index = Math.max(index, bottom)
+        if (maxDifficulty !== undefined) {
+          const cap = Math.floor(maxDifficulty * span)
+          if (bottom > cap) {
+            index = cap
+            sayOnce(
+              `window:${packId}`,
+              `[packs] ${packId} asked for a minDifficulty of ${minDifficulty.toFixed(2)} and a ` +
+                `maxDifficulty of ${maxDifficulty.toFixed(2)}, which is an empty window — the ` +
+                `ceiling wins, because serving above one is a question the pack cannot render`,
+            )
+          }
+        }
+      }
       index = Math.max(0, Math.min(span, index))
 
       sequence += 1
@@ -1820,6 +1893,17 @@ export function createItemService(deps: ItemServiceDeps): ItemService {
         if (maxDifficulty !== undefined) {
           drawn = Math.min(drawn, Math.max(0, Math.floor(maxDifficulty * span)))
         }
+        // And back inside the floor, for the reason the ceiling is re-applied
+        // here: a spread that can reach under a stated floor is not a floor. The
+        // ceiling is applied first so it still wins an empty window, exactly as
+        // above.
+        if (minDifficulty !== undefined) {
+          drawn = Math.max(drawn, Math.min(span, Math.ceil(minDifficulty * span)))
+          if (maxDifficulty !== undefined) {
+            drawn = Math.min(drawn, Math.max(0, Math.floor(maxDifficulty * span)))
+          }
+        }
+        drawn = Math.max(0, Math.min(span, drawn))
       }
 
       const rung = wanted ?? rungAt(drawn)

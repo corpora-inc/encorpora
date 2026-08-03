@@ -910,3 +910,154 @@ test('the wind arrives because the LADDER moved, not because waves went by', () 
   // And when it does arrive it is a real adjustment, not a nudge.
   for (const c of caps) assert.ok(c === 0 || c >= 3, `a cap of ${c} is not arithmetic`)
 })
+
+/* ------------------------------------------------------------------ *
+ * The band, which the harness above does not have.
+ * ------------------------------------------------------------------ */
+
+/**
+ * A host that behaves like the shipped one *including its band*.
+ *
+ * `ladderHost` models a host that serves whatever rung it is asked for, and
+ * every search test in this file passed against it while the game was showing
+ * the founder an empty prompt frame over an empty field on a real tablet. What
+ * it was missing is `HINT_BAND`: since host 0.3.7 a `difficulty` is a HINT,
+ * clamped to one rung either side of where the host's own evidence stands, and
+ * that evidence opens at rung 0 every session. So the sweep asked for rung 18
+ * a hundred times and was served rung 1 a hundred times.
+ *
+ * `minDifficulty` is the host's capability channel and is honoured absolutely,
+ * because a question the game cannot put on the field is not a question. This
+ * host honours it the way `items.ts` does: after the band, ceil-rounded, and it
+ * never moves the ladder — a pack does not get to promote a child by declaring
+ * what it can draw.
+ */
+function bandedHost(opts: { standing?: number; rungs?: typeof RUNGS } = {}): {
+  host: Host
+  asks: number[]
+  floors: Array<number | null>
+  served: number[]
+} {
+  const table = opts.rungs ?? RUNGS
+  const span = 65
+  const standing = opts.standing ?? 0
+  const asks: number[] = []
+  const floors: Array<number | null> = []
+  const served: number[] = []
+  let want: number | null = null
+  let floor: number | null = null
+  let n = 0
+  const host: Host & {
+    setDifficulty?: (d: number) => void
+    setMinDifficulty?: (d: number | null) => void
+  } = {
+    next: (): Question => {
+      n++
+      const asked = want === null ? standing : Math.round(want * span)
+      let index = Math.max(standing - 1, Math.min(standing + 1, asked))
+      if (floor !== null) index = Math.max(index, Math.ceil(floor * span))
+      index = Math.max(0, Math.min(span, index))
+      const ordinate = index / span
+      const band = table.find((b) => ordinate < b.upto) ?? table[table.length - 1]
+      const spread = band.hi - band.lo + 1
+      const a = band.lo + ((n * 7) % spread)
+      served.push(ordinate)
+      return {
+        id: `q${n}`,
+        prompt: `? = ${a}`,
+        answer: String(a),
+        distractors: [String(a + 11), String(a + 23)],
+        domain: 'add-sub',
+        difficulty: ordinate,
+      }
+    },
+    report: () => undefined,
+    haptic: () => undefined,
+    prefersReducedMotion: () => true,
+    setDifficulty: (d: number) => {
+      asks.push(d)
+      want = d
+    },
+    setMinDifficulty: (d: number | null) => {
+      floors.push(d)
+      floor = d
+    },
+  }
+  return { host, asks, floors, served }
+}
+
+test('the opening wave stocks against a host that clamps a difficulty to its own band', () => {
+  // **The founder's screenshot, reproduced and then fixed.** 0.3.9, Android,
+  // portrait: the prompt box drew as an empty rounded rectangle and the range
+  // held no keeps at all. The trebuchet, the ground, the ruler and every control
+  // rendered normally, because the pack mounts and lays out fine — it had simply
+  // been handed a hundred probes' worth of `dw.add.facts` and could not stand a
+  // keep at an answer of 7.
+  //
+  // Nothing in this pack had changed. `HINT_BAND` landed in the host in 0.3.7
+  // and there was no channel through which a game could say "I cannot draw a
+  // question that easy", only one for "I cannot draw a question that hard".
+  const dom = installDom()
+  const { host, floors } = bandedHost({ standing: 0 })
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  game.manualDrive()
+
+  assert.ok(
+    runUntil(game, () => game.currentPhase === 'aim'),
+    'the wave never became playable — the search was served the bottom of the ladder on every ' +
+      'probe and dropped every answer, which is an empty prompt frame over an empty field',
+  )
+  const answer = game.currentAnswer()
+  assert.notEqual(answer, -1, 'there is no question on the screen')
+  assert.ok(game.towerRanges().length > 0, 'the range has no keeps standing on it')
+  assert.ok(game.towerRanges().includes(answer), 'the answer has no keep to knock down')
+
+  // And it got there by SAYING what it cannot draw, not by luck.
+  assert.ok(floors.length > 0, 'the pack never stated a floor, so the band was never escaped')
+})
+
+test('every probe states the floor it is probing, so the sweep is a sweep', () => {
+  // The floor moves WITH the search. A pack that stated one floor and then swept
+  // its `difficulty` underneath it would be pinned at the opening guess forever,
+  // because the floor is the only channel the host honours — the `difficulty`
+  // under it is a hint the band eats. And the opening guess is documented as a
+  // guess: answer magnitude is not monotonic in the ladder, which is the whole
+  // reason `stock()` walks instead of bisecting.
+  //
+  // So the ladder here has NOTHING placeable at the opening probe. A floor
+  // stated once and held pins the served rung there and the wave never stocks;
+  // a floor that follows the sweep climbs out. A table whose opening probe is
+  // already placeable was written here first and proved neither.
+  const dom = installDom()
+  const { host, asks, floors } = bandedHost({
+    standing: 0,
+    rungs: [
+      { upto: 0.5, lo: 0, hi: 9 }, // where the search opens — unplaceable
+      { upto: 1.01, lo: 20, hi: 90 }, // placeable, and only reachable by sweeping
+    ],
+  })
+  const game = new TrebuchetGame(dom.el, host, 0xb01de)
+  game.manualDrive()
+
+  assert.ok(
+    runUntil(game, () => game.currentPhase === 'aim'),
+    'the search never climbed out of the unplaceable rungs it opened on — a floor that does not ' +
+      'follow the sweep is a floor that pins it',
+  )
+  assert.notEqual(game.currentAnswer(), -1, 'there is no question on the screen')
+
+  assert.ok(asks.length > 1, 'the search stocked on its first probe, so it never had to move')
+  assert.equal(
+    floors.length,
+    asks.length,
+    `the pack made ${String(asks.length)} difficulty requests and stated ${String(floors.length)} ` +
+      `floors — a probe without a floor is a probe the band eats`,
+  )
+  for (let i = 0; i < asks.length; i++) {
+    assert.equal(
+      floors[i],
+      asks[i],
+      `probe ${String(i)} asked for ${String(asks[i])} and declared a floor of ${String(floors[i])}`,
+    )
+  }
+})

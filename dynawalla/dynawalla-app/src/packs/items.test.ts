@@ -3433,3 +3433,237 @@ test("the stream a child is served stays inside the spread of where the ladder s
   assert.ok(worstAbove >= SPREAD_ABOVE, "the spread never once reached its own ceiling")
   assert.ok(worstBelow >= SPREAD_BELOW, "the spread never once reached its own floor")
 })
+
+/* ------------------------------------------------------------------ *
+ * `minDifficulty`: the other half of the capability window.
+ * ------------------------------------------------------------------ */
+
+/**
+ * TREBUCHET's field, as the pack states it.
+ *
+ * A keep stands at its own answer in METRES on a 122-metre field, so the only
+ * questions the game can put on the screen at all are the ones whose answer is
+ * an integer in this window. Copied rather than imported because this file
+ * tests the HOST and must not gain a dependency on a pack; the numbers are
+ * `PLACEABLE_LO`/`PLACEABLE_HI` in `games/trebuchet/src/sim/world.ts` and the
+ * test below fails loudly if the pack moves them without moving these.
+ */
+const TREBUCHET_LO = 14
+const TREBUCHET_HI = 118
+
+/** Trebuchet's rung search, as `game.ts` runs it. */
+const PROBE_START = 0.28
+const PROBE_STEP = 0.012
+const PROBE_LIMIT = 100
+
+test("a pack whose renderable content sits above the child is served something it can render", () => {
+  // **The founder's bug, at the layer that caused it.** On 0.3.9 he opened
+  // TREBUCHET on an Android tablet and got an empty prompt frame over an empty
+  // field: no sum, no keeps, nothing to shoot at. Nothing in the pack had
+  // changed since he last played it.
+  //
+  // `HINT_BAND` is what changed, in 0.3.7. A `difficulty` is a hint clamped to
+  // one rung either side of `Math.floor(progress)`, `progress` opens at 0 every
+  // session, and rungs 0 and 1 are `dw.add.facts.add-within-ten` — answers 0..10,
+  // none of which is a distance this game has a field for. So the pack's rung
+  // search, which sweeps the whole ladder precisely because answer magnitude is
+  // NOT monotonic in it, was served rung 1 on all hundred of its probes and
+  // dropped every answer it was handed. Measured on the service as shipped:
+  // 0 placeable out of 1000.
+  //
+  // `maxDifficulty` could not have saved it. That channel is absolute — a pack
+  // saying what it can physically draw — but it only points downward, so a pack
+  // whose renderable content sits BELOW the child could say so and a pack whose
+  // renderable content sits ABOVE the child could not. `minDifficulty` is the
+  // missing half.
+  //
+  // Driven the way the pack drives it, and not with a hand-written request: the
+  // thing under test is whether the search terminates, and a search is the one
+  // shape a single call cannot stand in for.
+  const service = createItemService({ profileId: "p-trebuchet", record: noRecord })
+  assert.equal(service.position(), 0, "a fresh session no longer opens at the bottom of the ladder")
+
+  let probeD = PROBE_START
+  let direction = 0
+  let stocked: number[] | null = null
+  let drawn = 0
+  let placeableSeen = 0
+
+  for (let probe = 0; probe < PROBE_LIMIT && stocked === null; probe++) {
+    const answers: number[] = []
+    const keeps: number[] = []
+    for (let pull = 0; pull < 10; pull++) {
+      const item = service.next({
+        packId: "dynawalla.trebuchet",
+        difficulty: probeD,
+        minDifficulty: probeD,
+      })
+      assert.ok(item, "the service served nothing at all")
+      const answer = Number(service.reveal(item.id))
+      service.skip(item.id)
+      drawn += 1
+      answers.push(answer)
+      if (Number.isInteger(answer) && answer >= TREBUCHET_LO && answer <= TREBUCHET_HI) {
+        keeps.push(answer)
+        placeableSeen += 1
+      }
+    }
+    if (keeps.length > 0) {
+      stocked = keeps
+      break
+    }
+    if (direction === 0) {
+      const tooBig = answers.filter((a) => a > TREBUCHET_HI).length
+      const tooSmall = answers.filter((a) => a < TREBUCHET_LO).length
+      if (tooBig > tooSmall) direction = -1
+      else if (tooSmall > 0) direction = 1
+    }
+    probeD += (direction === 0 ? 1 : direction) * PROBE_STEP
+    if (probeD > 1) probeD -= 1
+    if (probeD < 0) probeD += 1
+  }
+
+  assert.ok(
+    stocked !== null,
+    `the search swept ${String(PROBE_LIMIT)} probes and ${String(drawn)} questions without one ` +
+      `answer it could stand a keep at — this is the founder's empty field, and it is what ` +
+      `0.3.7 through 0.3.9 shipped (0 of 1000 placeable)`,
+  )
+  assert.ok(placeableSeen > 0)
+
+  // And the pack did NOT get to promote the child by saying so. This is the
+  // asymmetry with `maxDifficulty` and it is the whole safety of the channel: a
+  // ceiling pulls `progress` down when it bites, a floor moves it not at all.
+  assert.equal(
+    service.position(),
+    0,
+    "a stated floor moved the host's ladder — a pack can now promote a child by declaring a " +
+      "capability, which is `HINT_BAND` inverted",
+  )
+})
+
+test("a floor is honoured above the host's band, where a difficulty is not", () => {
+  // The narrow statement of the same thing, so a failure says which half broke.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-floor", record: noRecord, rungs })
+  assert.ok(span > 4 * HINT_BAND, "the ladder is too short to tell a floor from the band")
+
+  const wanted = 4 * HINT_BAND
+  const hinted = service.next({ packId: "dynawalla.trebuchet", difficulty: wanted / span })
+  assert.ok(hinted)
+  assert.equal(
+    Math.round((hinted.difficulty ?? -1) * span),
+    HINT_BAND,
+    "a difficulty stopped being clamped to the band",
+  )
+
+  const floored = service.next({
+    packId: "dynawalla.trebuchet",
+    difficulty: wanted / span,
+    minDifficulty: wanted / span,
+  })
+  assert.ok(floored)
+  assert.equal(
+    Math.round((floored.difficulty ?? -1) * span),
+    wanted,
+    "a stated floor was clamped back into the band, which makes it not a floor",
+  )
+})
+
+test("a floor rounds up, because rounding one down serves under it", () => {
+  // The mirror of the rounding note on the ceiling, and the same bug: a cap that
+  // rounded up was served a rung over a pack's stated ceiling, silently, for as
+  // long as the arithmetic happened to work out. A floor that rounded down is
+  // that bug pointing the other way — and for TREBUCHET a rung under the floor
+  // is a rung whose answers do not fit on the field, which is a blank screen.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-round", record: noRecord, rungs })
+
+  // Deliberately between two rungs and NEARER THE LOWER ONE, so that rounding to
+  // nearest lands under the floor and only ceiling lands on or above it. 0.4 was
+  // written here first and proved nothing: `round(9.6)` and `ceil(9.6)` are both
+  // 10, so the assertion passed against either rule.
+  const target = 10
+  const between = (target - 0.8) / span
+  const item = service.next({
+    packId: "dynawalla.trebuchet",
+    difficulty: between,
+    minDifficulty: between,
+  })
+  assert.ok(item)
+  const served = Math.round((item.difficulty ?? -1) * span)
+  assert.equal(served, target, "a floor between two rungs was rounded down, under itself")
+  assert.ok((item.difficulty ?? -1) >= between, "the served rung is below the stated floor")
+})
+
+test("an empty window is resolved by the ceiling, and the host says so once", () => {
+  // Two capability claims that contradict each other is a pack bug, and of the
+  // two rules "never serve above what a pack can render" is the one whose
+  // failure is PR 694 — a question on the screen that the game cannot draw.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-empty", record: noRecord, rungs })
+
+  const warnings: string[] = []
+  const realWarn = console.warn
+  console.warn = (...args: unknown[]) => {
+    warnings.push(args.map(String).join(" "))
+  }
+  try {
+    // BOTH paths through `next`. A pack that states a difficulty is served a
+    // point; one that does not is served the host's own spread around its rung,
+    // and the two resolve the window in different code. Asserting only the
+    // spread let a mutation that resolved the point upward pass.
+    for (const difficulty of [undefined, 20 / span]) {
+      for (let i = 0; i < 3; i++) {
+        const item = service.next({
+          packId: "dynawalla.impossible",
+          ...(difficulty === undefined ? {} : { difficulty }),
+          minDifficulty: 20 / span,
+          maxDifficulty: 5 / span,
+        })
+        assert.ok(item)
+        assert.equal(
+          Math.round((item.difficulty ?? -1) * span),
+          5,
+          "an empty capability window was resolved upward — a pack was handed a rung it declared " +
+            "it cannot render",
+        )
+      }
+    }
+  } finally {
+    console.warn = realWarn
+  }
+  const said = warnings.filter((line) => line.includes("empty window"))
+  assert.equal(said.length, 1, "the empty window was announced " + String(said.length) + " times, not once")
+})
+
+test("the spread the host draws around its own rung cannot reach under a stated floor", () => {
+  // A pack that states a floor and no difficulty gets the host's own kernel,
+  // which is deliberately several rungs wide. A spread that could reach under
+  // the floor is not a floor — the same argument the ceiling's own re-clamp is
+  // already written for.
+  const rungs = ladder()
+  const span = rungs.length - 1
+  const service = createItemService({ profileId: "p-spread", record: noRecord, rungs })
+  climbTo(service, 20)
+
+  const bottom = 18
+  let lowest = span
+  for (let i = 0; i < 200; i++) {
+    const item = service.next({ packId: "dynawalla.trebuchet", minDifficulty: bottom / span })
+    assert.ok(item)
+    const served = Math.round((item.difficulty ?? -1) * span)
+    assert.ok(
+      served >= bottom,
+      `the spread served rung ${String(served)}, under the stated floor of ${String(bottom)}`,
+    )
+    lowest = Math.min(lowest, served)
+    service.skip(item.id)
+  }
+  // And it really was the floor doing the work, not a spread that never reached
+  // down there anyway.
+  assert.equal(lowest, bottom, "the spread never once came down to the floor, so this proves nothing")
+})

@@ -181,9 +181,15 @@ function fakeHost(
         const span = Math.max(1, rungs - 1)
         const cap = ask.maxDifficulty === undefined ? 1 : ask.maxDifficulty
         const wanted = ask.difficulty === undefined ? fake.standing / span : ask.difficulty
+        // The floor is honoured the way the shipped host honours it: absolutely,
+        // after the request and after the ceiling, and the ceiling wins an empty
+        // window because serving over one is a question the pack cannot render.
+        // A fake that ignored `minDifficulty` would let every assertion below
+        // pass against an adapter that never sent it.
+        const bottom = ask.minDifficulty === undefined ? 0 : ask.minDifficulty
         let index = Math.max(
           0,
-          Math.min(rungs - 1, Math.round(Math.min(wanted, cap) * span)),
+          Math.min(rungs - 1, Math.round(Math.min(Math.max(Math.min(wanted, cap), bottom), cap) * span)),
         )
         // A named skill wins outright and is served at the FIRST rung that
         // carries it, whatever the difficulty and whatever the ceiling. That is
@@ -1708,6 +1714,109 @@ test("a skills option a game passes wins over the manifest", async () => {
     fake.asks.filter((ask) => ask.skillId !== undefined).length,
     0,
     "a pack that opted out of the restriction had a skill named on its behalf",
+  )
+  mounted.dispose()
+})
+
+/* ------------------------------------------------------------------ *
+ * `setMinDifficulty`: the capability floor, on the wire.
+ * ------------------------------------------------------------------ */
+
+test("a floor a game states reaches the host, and it stands until it is withdrawn", async () => {
+  // TREBUCHET's bug, at this layer. `setDifficulty` alone is a hint the host
+  // clamps into its own band, and a game whose renderable content sits above
+  // the child is served the bottom of the ladder and drops every question. The
+  // floor is the channel that says "cannot", not "would like", and this asserts
+  // it actually crosses the wire — the whole defect was a request nobody heard.
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  const before = fake.asks.length
+
+  mounted.host.setMinDifficulty(0.6)
+  mounted.host.next()
+  await settle(6)
+
+  const sent = fake.asks.slice(before)
+  assert.ok(sent.length > 0, "no request was made at all")
+  assert.ok(
+    sent.every((ask) => ask.minDifficulty === 0.6),
+    `the floor reached the host on ${String(sent.filter((a) => a.minDifficulty === 0.6).length)} ` +
+      `of ${String(sent.length)} requests — it is a standing statement, not a per-question one`,
+  )
+
+  // And it comes back off when the game says so, because a game that has found
+  // its band and then re-opened its search must not be pinned by the old one.
+  const mark = fake.asks.length
+  mounted.host.setMinDifficulty(null)
+  mounted.host.next()
+  await settle(6)
+  const after = fake.asks.slice(mark)
+  assert.ok(
+    after.every((ask) => ask.minDifficulty === undefined),
+    "a withdrawn floor was still being sent",
+  )
+  mounted.dispose()
+})
+
+test("a floor that RISES flushes the pool it invalidated", async () => {
+  // The stall this whole change exists to remove, one layer down. A pack
+  // searching for a rung it can render states a floor, and the sixty-four
+  // questions already pooled under it are now unrenderable — TREBUCHET cannot
+  // stand a keep at an answer of 7 however near rung 1 is to the rung it asked
+  // for. `maybeFlush` cannot see this: it measures how far the AIM moved, and a
+  // game that states a floor without ever stating a difficulty moves it by
+  // nothing at all. So the floor has to flush on its own.
+  //
+  // Two floors, not one, and that is the whole point of the test: the FIRST
+  // request of any kind flushes anyway, so a test that states one floor proves
+  // nothing about this at all.
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+
+  mounted.host.setMinDifficulty(0.5)
+  await settle(12)
+  const settled = mounted.host.next()
+  assert.ok(settled.difficulty >= 0.5 - 1e-9, "the first floor was not honoured")
+  assert.ok(settled.difficulty < 0.9, "the pool is already above the second floor, so this proves nothing")
+  await settle(12)
+
+  const floor = 0.9
+  mounted.host.setMinDifficulty(floor)
+  await settle(12)
+
+  for (let i = 0; i < 12; i++) {
+    const question = mounted.host.next()
+    assert.ok(
+      question.difficulty >= floor - 1e-9,
+      `question ${String(i)} came back at ${String(question.difficulty)}, under the stated floor ` +
+        `of ${String(floor)} — a floor that rose did not flush the pool it invalidated`,
+    )
+    await settle(2)
+  }
+  mounted.dispose()
+})
+
+test("a floor is not `raiseFloor`, and the two do not collapse into one", async () => {
+  // `raiseFloor` is siege's preference — it moves this module's own target and
+  // the host is free to clamp it back. `setMinDifficulty` is a capability and
+  // goes on the wire. Merging them would silently promote every siege wave into
+  // a statement the host must honour absolutely.
+  const fake = fakeHost()
+  const mounted = attachGameHost(fake.client)
+  await mounted.warm()
+  const before = fake.asks.length
+
+  mounted.host.raiseFloor(0.5)
+  mounted.host.next()
+  await settle(6)
+
+  const sent = fake.asks.slice(before)
+  assert.ok(sent.length > 0)
+  assert.ok(
+    sent.every((ask) => ask.minDifficulty === undefined),
+    "`raiseFloor` now sends a capability claim the host must honour absolutely",
   )
   mounted.dispose()
 })

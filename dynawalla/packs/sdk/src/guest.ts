@@ -154,6 +154,25 @@ export type ItemRequest = {
    * deciding a child's level, which `difficulty` deliberately no longer does.
    */
   readonly maxDifficulty?: number
+  /**
+   * A floor on the same 0..1 scale. Never serve easier than this.
+   *
+   * The other half of `maxDifficulty` and absolute for the same reason: it is a
+   * pack saying what it can physically draw, so it is honoured above the host's
+   * band as well as below it. A game whose renderable content sits ABOVE where
+   * the host has the child — TREBUCHET, where the answer is a distance on a
+   * 122-metre field and nothing under 14 fits — is served nothing usable
+   * without it, because `difficulty` alone is clamped to the band and the band
+   * opens at the bottom of the ladder every session.
+   *
+   * Set it only to what the game genuinely cannot render. It does not move the
+   * child's ladder position in either direction, so a floor that is really a
+   * preference buys a pack nothing except a child stuck on work too hard: the
+   * host will keep serving inside the window and the band will never rescue
+   * them. If the window is empty (`minDifficulty` above `maxDifficulty`) the
+   * ceiling wins and the host says so once.
+   */
+  readonly minDifficulty?: number
 }
 
 export type HostClient = {
@@ -547,6 +566,7 @@ function makeClient(connectMessage: Connect, port: MessagePort): HostClient {
       if (options.skillId !== undefined) params["skillId"] = options.skillId
       if (options.difficulty !== undefined) params["difficulty"] = options.difficulty
       if (options.maxDifficulty !== undefined) params["maxDifficulty"] = options.maxDifficulty
+      if (options.minDifficulty !== undefined) params["minDifficulty"] = options.minDifficulty
       const result = await call("items.next", params)
       return (result as { item: Item | null }).item
     },
