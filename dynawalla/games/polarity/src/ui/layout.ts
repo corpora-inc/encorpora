@@ -21,14 +21,32 @@
  * asserted about. These constants are written onto the root as custom
  * properties at mount, the stylesheet reads them through `var()`, and
  * `hudRects` reports the same geometry to the tests. One source.
+ *
+ * **And why the SAFE AREA is one of those numbers now.** `.pol-hud` padded all
+ * four edges with `env(safe-area-inset-*)` and had done since the first commit —
+ * and every one of those rules resolved to zero on a device. A pack runs in an
+ * iframe sandboxed `allow-scripts` with no `allow-same-origin`, and
+ * `env(safe-area-inset-*)` belongs to the TOP-LEVEL browsing context, so a
+ * cross-origin child reads all four as 0. `max(10px, env(...))` is 10px on every
+ * phone ever made, and `hudRects` below was reporting a padding the stylesheet
+ * never produced: the tests proved a HUD nobody shipped. SIEGE had exactly this
+ * and the founder found it, with the score painted under an Android clock.
+ *
+ * So `applySafeVars` publishes the host's measurement as four more custom
+ * properties and the stylesheet reads `var(--pol-safe-*, env(...))` — the
+ * `env()` kept only as the fallback for a dev browser tab, where there is no
+ * host and where it is right.
  */
 
 import {
   HOST_CONTROL,
   HOST_MARGIN,
   HOST_PROGRESS_H,
+  publishSafeVars,
+  safeInsets,
   type Insets,
   type Rect,
+  type StyleTarget,
 } from "../../../../packs/shared/game-chrome/index.ts";
 
 /**
@@ -100,4 +118,30 @@ export function hudRects(
 export function applyChromeVars(root: HTMLElement): void {
   root.style.setProperty("--pol-chrome-top", `${CHROME_TOP}px`);
   root.style.setProperty("--pol-mini-right", `${MINI_RIGHT}px`);
+}
+
+/** The namespace the four published safe-area lengths live under. */
+export const SAFE_PREFIX = "--pol-safe-";
+
+/** One safe edge, as a length `styles.css` can do arithmetic with. */
+export const cssSafe = (side: "top" | "right" | "bottom" | "left"): string =>
+  `var(${SAFE_PREFIX}${side}, env(safe-area-inset-${side}, 0px))`;
+
+/**
+ * Hand the stylesheet the safe area, from the host's own measurement.
+ *
+ * Separate from `applyChromeVars` because the two have different lifetimes: the
+ * host's control size is fixed for the life of the pack, the safe area changes
+ * on every rotation and again when a tablet is resized in Split View. This is
+ * called at mount and on every resize; it is idempotent, so nothing is written
+ * when the numbers have not moved.
+ *
+ * @returns whether anything changed.
+ */
+export function applySafeVars(
+  root: StyleTarget,
+  insets: Insets = safeInsets(),
+  previous?: Insets | null,
+): boolean {
+  return publishSafeVars(root, SAFE_PREFIX, insets, previous);
 }

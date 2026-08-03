@@ -1,7 +1,15 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-import { NO_INSETS, safeInsets, setHostInsets, safeRect } from "./insets.ts"
+import {
+  NO_INSETS,
+  publishSafeVars,
+  safeInsets,
+  setHostInsets,
+  safeRect,
+  type Insets,
+  type StyleTarget,
+} from "./insets.ts"
 import { HOST_CONTROL, chromeRects, exitRect, helpRect, hitsHostChrome } from "./hostChrome.ts"
 
 test("with no document to measure, the insets are zero rather than undefined", () => {
@@ -121,4 +129,62 @@ test("a malformed payload from the host is refused, not trusted", () => {
     }
   }
   setHostInsets(null)
+})
+
+// ---------------------------------------------------------------------------
+// Publishing the safe area to a stylesheet.
+//
+// A pack's DOM chrome cannot read `env()` at all — it is a cross-origin child —
+// so the four numbers have to be written onto the root as custom properties and
+// the stylesheet has to read them through `var()`. These are the two properties
+// every pack that does this depends on.
+// ---------------------------------------------------------------------------
+
+const spy = (): { seen: Map<string, string>; writes: number; el: StyleTarget } => {
+  const seen = new Map<string, string>()
+  const box = { writes: 0 }
+  const el: StyleTarget = {
+    style: {
+      setProperty(name: string, value: string): void {
+        box.writes++
+        seen.set(name, value)
+      },
+    },
+  }
+  return {
+    seen,
+    get writes(): number {
+      return box.writes
+    },
+    el,
+  }
+}
+
+test("all four properties are published, with zeros written out", () => {
+  const s = spy()
+  publishSafeVars(s.el, "--mn-safe-", { top: 24, right: 0, bottom: 48, left: 0 })
+  assert.deepEqual(
+    [...s.seen.entries()].sort(),
+    [
+      ["--mn-safe-bottom", "48px"],
+      ["--mn-safe-left", "0px"],
+      ["--mn-safe-right", "0px"],
+      ["--mn-safe-top", "24px"],
+    ],
+  )
+  // A zero must be WRITTEN, not left unset: an absent custom property falls
+  // through to the `env()` fallback beside it, and inside a pack frame that is
+  // the number zero whatever the real inset is. Leaving it out is the bug.
+  assert.equal(s.seen.get("--mn-safe-right"), "0px", "a zero inset was left for env() to answer")
+})
+
+test("republishing an unchanged safe area writes nothing; a rotation writes", () => {
+  const s = spy()
+  const i: Insets = { top: 24, right: 0, bottom: 48, left: 0 }
+  assert.equal(publishSafeVars(s.el, "--x-", i, null), true)
+  assert.equal(s.writes, 4)
+  assert.equal(publishSafeVars(s.el, "--x-", { ...i }, i), false, "an unchanged inset was rewritten")
+  assert.equal(s.writes, 4)
+  assert.equal(publishSafeVars(s.el, "--x-", { ...i, top: 47 }, i), true, "a rotation was not published")
+  assert.equal(s.writes, 8)
 })

@@ -6,10 +6,28 @@
    this HUD out of those two squares and writes them onto the root at mount;
    the values here are the same numbers, as fallbacks. Nothing a child reads or
    touches may land in the corners — the field itself still bleeds to the
-   edges, which is what `viewport-fit=cover` is for. */
+   edges, which is what `viewport-fit=cover` is for.
+
+   THE SAFE AREA ARRIVES THE SAME WAY, and this is not a style choice. A pack
+   runs in an iframe sandboxed `allow-scripts` with no `allow-same-origin`, and
+   `env(safe-area-inset-*)` is a property of the TOP-LEVEL browsing context — so
+   a cross-origin child resolves all four to ZERO. Every rule below that once
+   read `env()` directly resolved to its 10px/20px fallback on every device, and
+   `layout.ts`'s numbers, which the tests assert, described a HUD that was never
+   drawn. `--pol-safe-*` is the host's real measurement, published by
+   `applySafeVars`; the `env()` behind each one is the dev-browser fallback,
+   where there is no host and where it happens to be right. Never read an
+   `env(safe-area-inset-*)` here except as the fallback of its `--pol-safe-*`. */
 .pol-root {
   --pol-chrome-top: 63px;
   --pol-mini-right: 64px;
+  /* The HUD's gap from every safe edge, and the veil's. Kept as custom
+     properties so a breakpoint can change a gutter WITHOUT restating a
+     `padding:` shorthand — a shorthand resets all four longhands and would take
+     the safe area with it, which is how SIEGE lost its bottom inset on every
+     landscape phone. */
+  --pol-hud-edge: 10px;
+  --pol-veil-pad: 20px;
   --pos: #ffcd52;
   --pos-dim: #7a5a1c;
   --neg: #38dcff;
@@ -45,14 +63,17 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* The four edges were already right. The top now also clears the host's two
-     44px corners: the score and the chain sat in the chevron's square and the
-     shield pips and STRATUM sat under the question mark, and no amount of
-     `env()` can help with that — the chrome floats INSIDE the safe area. Only
-     the top row moves; the middle row absorbs it and the pads stay put. */
-  padding: calc(env(safe-area-inset-top) + var(--pol-chrome-top))
-    max(10px, env(safe-area-inset-right))
-    max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  /* The top clears the host's two 44px corners as well as the notch: the score
+     and the chain sat in the chevron's square and the shield pips and STRATUM
+     sat under the question mark, and no inset can help with that — the chrome
+     floats INSIDE the safe area. Only the top row moves; the middle row absorbs
+     it and the pads stay put.
+
+     Four longhands, deliberately not a shorthand. See --pol-hud-edge above. */
+  padding-top: calc(var(--pol-safe-top, env(safe-area-inset-top, 0px)) + var(--pol-chrome-top));
+  padding-right: max(var(--pol-hud-edge), var(--pol-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: max(var(--pol-hud-edge), var(--pol-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--pol-hud-edge), var(--pol-safe-left, env(safe-area-inset-left, 0px)));
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
@@ -197,9 +218,9 @@
 
 .pol-keyhint {
   position: absolute;
-  bottom: max(10px, env(safe-area-inset-bottom));
-  left: max(10px, env(safe-area-inset-left));
-  right: max(10px, env(safe-area-inset-right));
+  bottom: max(var(--pol-hud-edge), var(--pol-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  left: max(var(--pol-hud-edge), var(--pol-safe-left, env(safe-area-inset-left, 0px)));
+  right: max(var(--pol-hud-edge), var(--pol-safe-right, env(safe-area-inset-right, 0px)));
   text-align: center;
   font-size: clamp(9px, 1.9vw, 12px);
   letter-spacing: 0.2em;
@@ -220,8 +241,10 @@
      REPOLARIZE answer orbs, which a child taps, so in landscape on a notched
      phone the outermost orb ran under the sensor housing. Its contents are
      centred, so the corners are clear by construction. */
-  padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
-    max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  padding-top: max(var(--pol-veil-pad), var(--pol-safe-top, env(safe-area-inset-top, 0px)));
+  padding-right: max(var(--pol-veil-pad), var(--pol-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: max(var(--pol-veil-pad), var(--pol-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--pol-veil-pad), var(--pol-safe-left, env(safe-area-inset-left, 0px)));
   text-align: center;
 }
 .pol-veil[hidden] { display: none; }
@@ -308,8 +331,11 @@
    game's chrome and the host's at every inset. */
 .pol-mini {
   position: absolute;
-  top: max(10px, env(safe-area-inset-top));
-  right: calc(max(10px, env(safe-area-inset-right)) + var(--pol-mini-right));
+  top: max(var(--pol-hud-edge), var(--pol-safe-top, env(safe-area-inset-top, 0px)));
+  right: calc(
+    max(var(--pol-hud-edge), var(--pol-safe-right, env(safe-area-inset-right, 0px))) +
+      var(--pol-mini-right)
+  );
   display: flex;
   gap: 8px;
   pointer-events: auto;

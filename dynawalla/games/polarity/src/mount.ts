@@ -1,5 +1,9 @@
 import styles from "./ui/styles.css?inline";
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts";
+import {
+  createInstructions,
+  onInsetsChange,
+  safeInsets,
+} from "../../../packs/shared/game-chrome/index.ts";
 import type { Host, Question } from "./contract.ts";
 import { TierMonitor, detectTier } from "./core/tier.ts";
 import { clamp01 } from "./core/util.ts";
@@ -352,6 +356,11 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
   let cssW = 1;
   let cssH = 1;
   function measure(): void {
+    // Read every time, never cached from construction: a rotation trades one top
+    // inset for two side ones, and iPadOS changes them when the pack is resized
+    // in Split View. Read once at mount and the register is correct until the
+    // first rotation and wrong after it.
+    hud.setInsets(safeInsets());
     const r = root.getBoundingClientRect();
     cssW = Math.max(1, Math.round(r.width));
     cssH = Math.max(1, Math.round(r.height));
@@ -360,6 +369,10 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
   }
   const ro = new ResizeObserver(() => measure());
   ro.observe(root);
+  // The insets can move without the frame moving: the host publishes its
+  // measurement over the `settings` channel, and a tablet's Split View changes
+  // them outright. Without this the register keeps the shape the pack opened in.
+  const stopInsets = onInsetsChange(() => measure());
   measure();
 
   // --- loop -----------------------------------------------------------------
@@ -422,6 +435,7 @@ export function mount(el: HTMLElement, host: Host): { unmount(): void } {
       cancelAnimationFrame(raf);
       document.removeEventListener("visibilitychange", onVis);
       ro.disconnect();
+      stopInsets();
       saveSeen(world.cues);
       saveBest(world.stats.best);
       input.dispose();

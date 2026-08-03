@@ -8,7 +8,16 @@
  * `audioHold`   — the pack's sound, stopped while that surface is up. Mounting
  *                 the manual arms it; no game imports it or calls it.
  */
-export { safeInsets, setHostInsets, onInsetsChange, safeRect, NO_INSETS, type Insets } from "./insets.ts"
+export {
+  safeInsets,
+  setHostInsets,
+  onInsetsChange,
+  safeRect,
+  publishSafeVars,
+  NO_INSETS,
+  type Insets,
+  type StyleTarget,
+} from "./insets.ts"
 export {
   exitRect,
   helpRect,

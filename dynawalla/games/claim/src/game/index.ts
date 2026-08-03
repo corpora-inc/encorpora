@@ -10,6 +10,7 @@
 import {
   createInstructions,
   onInsetsChange,
+  publishSafeVars,
   safeInsets,
   type Instructions,
 } from "../../../../packs/shared/game-chrome/index.ts"
@@ -316,6 +317,12 @@ class Claim {
     // when a pack is resized in Split View, and a game that reads them once at
     // mount is correct until the first rotation and wrong after it.
     const insets = safeInsets()
+    // The cards centre their contents in the whole frame, so they need the raw
+    // insets rather than a derived box. Published here for the same reason
+    // everything else in this game is: `env()` resolves to zero inside a pack
+    // frame, because a pack is a cross-origin child and `env()` belongs to the
+    // top-level document.
+    publishSafeVars(this.root, "--cl-safe-", insets)
     this.r.resize(w, h, arenaRect(w, h, insets))
     const fw = this.root.clientWidth || w
     const fh = this.root.clientHeight || h
