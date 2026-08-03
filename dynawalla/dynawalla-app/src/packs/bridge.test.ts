@@ -411,6 +411,36 @@ test("a difficulty request crosses the boundary, clamped rather than refused", a
   assert.deepEqual(calls[2]?.input, { packId: "p" })
 })
 
+test("a floor crosses the boundary too, and it is not silently dropped", async () => {
+  // The half of the capability window this boundary did not carry. A field the
+  // wire drops is the worst shape of this bug — the pack states it, every test
+  // on either side passes, and the child still gets the empty field, because
+  // nothing between them ever said the word. TREBUCHET spent three releases in
+  // exactly that state for want of the field itself.
+  const calls: Calls = []
+  const bridge = createBridge({ packId: "p", granted: ["items"], services: services(calls) })
+
+  await bridge.handle({
+    id: 1,
+    method: "items.next",
+    params: { difficulty: 0.28, minDifficulty: 0.28, maxDifficulty: 0.9 },
+  })
+  assert.deepEqual(calls[0]?.input, {
+    packId: "p",
+    difficulty: 0.28,
+    maxDifficulty: 0.9,
+    minDifficulty: 0.28,
+  })
+
+  // Clamped like every other number here, and absent when it is not a number:
+  // a floor of `NaN` must not become a floor of zero, which reads as "no floor"
+  // and is the failure this field exists to prevent.
+  await bridge.handle({ id: 2, method: "items.next", params: { minDifficulty: 7 } })
+  assert.deepEqual(calls[1]?.input, { packId: "p", minDifficulty: 1 })
+  await bridge.handle({ id: 3, method: "items.next", params: { minDifficulty: "high" } })
+  assert.deepEqual(calls[2]?.input, { packId: "p" })
+})
+
 /* ─── streams, and the native-backed capability behind them ────────────────── */
 //
 // A stream is the first thing on this seam that OUTLIVES the message that opened

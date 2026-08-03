@@ -199,6 +199,16 @@ export type DifficultyRequest = {
    * until the game names a different one.
    */
   readonly maxDifficulty?: number
+  /**
+   * A floor on the same scale. The stream never goes below it, and it stands
+   * until the game names a different one.
+   *
+   * The other half of `maxDifficulty`. Absolute on the host's side — it is a
+   * pack saying what it can physically draw, so it is honoured above the host's
+   * own band as well as below it, which is exactly what `difficulty` is not.
+   * See `setMinDifficulty` for when a game is entitled to one.
+   */
+  readonly minDifficulty?: number
 }
 
 /**
@@ -350,6 +360,29 @@ export type GameHost = {
    * feature-detecting this since it shipped.
    */
   setDifficulty(difficulty: number): void
+  /**
+   * The easiest question this game can physically put on the screen, as a
+   * standing statement, or `null` to withdraw it.
+   *
+   * **Not a preference, and not `raiseFloor`.** `raiseFloor` is a game saying
+   * "a wave I have reached justifies a floor under the maths" — it moves this
+   * module's own `target`, which the host is free to clamp back into its band.
+   * This one goes on the wire as `minDifficulty` and the host honours it
+   * absolutely, because the alternative is handing a game a question it cannot
+   * render. That is the same promise `maxDifficulty` already makes, and it was
+   * only ever made in one direction: a pack whose renderable content sits BELOW
+   * the child could say so and a pack whose content sits ABOVE the child could
+   * not, so it was served the bottom of the ladder and dropped every question.
+   * TREBUCHET — whose answer is a distance on a 122-metre field, so nothing
+   * under 14 fits — showed a child an empty frame on an empty field for three
+   * releases because of it.
+   *
+   * A game with no such constraint must not call this. It does not move the
+   * child's ladder position, so a floor that is really a preference cannot be
+   * corrected by the host's own evidence: it just parks a child above their
+   * level for as long as the game keeps stating it.
+   */
+  setMinDifficulty(difficulty: number | null): void
   /**
    * Raise the floor under the stream and never lower it again. siege has been
    * feature-detecting this since it shipped: a wave that has been reached
@@ -914,6 +947,14 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   let target: number | null = null
   /** A standing ceiling, 0..1, or null for none. */
   let ceiling: number | null = null
+  /**
+   * A standing floor the host honours absolutely, 0..1, or null for none.
+   *
+   * Distinct from `floor` below, and the two must not be merged: that one is a
+   * game's own preference and this one is a statement about what the game can
+   * draw at all. See `setMinDifficulty`.
+   */
+  let renderFloor: number | null = null
   /** A floor that only ever rises. siege drives this. */
   let floor = 0
   /**
@@ -1047,9 +1088,15 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
    * rung it will not choose with them.
    */
   const askShape = (pin?: string): ItemRequest => {
-    const ask: { difficulty?: number; maxDifficulty?: number; skillId?: string } = {}
+    const ask: {
+      difficulty?: number
+      maxDifficulty?: number
+      minDifficulty?: number
+      skillId?: string
+    } = {}
     if (target !== null) ask.difficulty = target
     if (ceiling !== null) ask.maxDifficulty = ceiling
+    if (renderFloor !== null) ask.minDifficulty = renderFloor
     if (pin !== undefined) ask.skillId = pin
     return ask
   }
@@ -1283,14 +1330,25 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
   const distance = (entry: Pooled): number => {
     const want = aim() ?? ceiling ?? entry.question.difficulty
     const over = ceiling !== null && entry.question.difficulty > ceiling + EPS
-    // A question above a stated ceiling is never the answer while anything else
-    // exists, and is still an answer when nothing else does.
-    return Math.abs(entry.question.difficulty - want) + (over ? 1000 : 0)
+    // A question below a stated floor is unrenderable for the same reason one
+    // above the ceiling is, so it is ranked the same way: never while anything
+    // else exists, and still an answer when nothing else does. Without this the
+    // pool a game filled BEFORE it stated its floor keeps being served out of
+    // preferentially, and the floor takes sixty-four questions to bite.
+    const under = renderFloor !== null && entry.question.difficulty < renderFloor - EPS
+    return Math.abs(entry.question.difficulty - want) + (over || under ? 1000 : 0)
   }
 
   const flushNow = () => {
     lastFlush = now()
     filledFor = aim()
+    // The reserve below is chosen by `distance`, which already ranks a question
+    // under a stated floor a thousand short of anything else — so a reserve is
+    // made of renderable questions whenever any exist. Emptying the pool of the
+    // under-floor ones outright was tried and reverted: it hands the game the
+    // dry-pool sentinel, which is a question with no id whose answer cannot be
+    // reported, and a game searching for a rung it can render would meet one on
+    // every probe. Eight stale questions the game drops is the cheaper failure.
     if (aim() !== null && pool.length > FLUSH_KEEP) {
       // A focused value survives a flush whatever its difficulty. `focus`
       // outranks difficulty when a question is handed out — FUSE's chip has to
@@ -1334,11 +1392,21 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
       const unit = readScale(request.maxDifficulty, "maxDifficulty")
       if (unit !== null) ceiling = unit
     }
+    if (request.minDifficulty !== undefined) {
+      const unit = readScale(request.minDifficulty, "minDifficulty")
+      if (unit !== null) renderFloor = unit
+    }
     if (request.difficulty !== undefined) {
       const unit = readScale(request.difficulty, "difficulty")
       if (unit !== null) target = Math.max(unit, floor)
     }
     if (target !== null && ceiling !== null) target = Math.min(target, ceiling)
+    // The floor is a capability and the ceiling is a capability, so between the
+    // two of them there is nothing to choose here — the HOST resolves an empty
+    // window and says so once. What is resolved here is only where this module
+    // AIMS: a target under a stated floor would sort the pool toward questions
+    // the game has just said it cannot draw.
+    if (target !== null && renderFloor !== null) target = Math.max(target, renderFloor)
     maybeFlush()
   }
 
@@ -1522,6 +1590,26 @@ export function attachGameHost(client: HostClient, options: GameHostOptions = {}
 
     setDifficulty: (difficulty) => {
       applyRequest({ difficulty })
+    },
+
+    setMinDifficulty: (difficulty) => {
+      if (difficulty === null) {
+        if (renderFloor === null) return
+        renderFloor = null
+        return
+      }
+      // `readScale` once and here, not again inside `applyRequest`: it is
+      // idempotent on a value already in 0..1, but relying on that is how a
+      // second scale conversion goes unnoticed until a game speaks the other
+      // one. `applyRequest` is then handed the raw request, as everywhere else.
+      if (readScale(difficulty, "minDifficulty") === renderFloor) return
+      applyRequest({ minDifficulty: difficulty })
+      // Unconditionally, and not through `maybeFlush`. A floor that rose past
+      // the pool invalidates every question in it, and `maybeFlush` measures how
+      // far the AIM moved — which is zero for a game that states a floor without
+      // ever stating a difficulty. Sixty-four unrenderable questions is exactly
+      // the stall this whole change exists to remove.
+      flushNow()
     },
 
     raiseFloor: (difficulty) => {

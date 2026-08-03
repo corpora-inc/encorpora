@@ -522,12 +522,31 @@ export class TrebuchetGame {
    */
   private stock(): boolean {
     const cfg = this.cfg
-    const anyHost = this.host as Host & { setDifficulty?: (d: number) => void }
+    const anyHost = this.host as Host & {
+      setDifficulty?: (d: number) => void
+      setMinDifficulty?: (d: number | null) => void
+    }
     // Only when it has actually moved. Re-stating a difficulty makes the host
     // flush and refill its pool, so asking again for what was already asked keeps
     // the pool permanently empty — the search would outrun the questions.
     if (this.askedD !== this.probeD) {
       this.askedD = this.probeD
+      // **The floor first, and it is what makes the sweep a sweep.** A
+      // `difficulty` is a hint the host clamps to one rung either side of where
+      // its own evidence has the child, and that evidence opens every session at
+      // the bottom of the ladder — so from host 0.3.7 this whole search was
+      // served rung 1 on every one of its hundred probes, dropped every answer
+      // for being under 14 metres, and left the child looking at an empty prompt
+      // frame on an empty field. `minDifficulty` is the host's capability
+      // channel and is honoured absolutely, because a question this game cannot
+      // put on the field is not a question.
+      //
+      // Stating the CURRENT probe as the floor is a true claim and not a way
+      // round the band: every rung under it has already been probed and found
+      // unplaceable, or has not been probed and will be if the sweep turns
+      // round, in which case the floor comes down with it. The sweep is the
+      // pack measuring what it can render, and this is where it reports it.
+      anyHost.setMinDifficulty?.(this.probeD)
       anyHost.setDifficulty?.(this.probeD)
     }
     this.probes++

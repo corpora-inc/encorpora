@@ -86,6 +86,8 @@ export type HostServices = {
     difficulty?: number
     /** 0..1 ceiling. The stream never goes above it. */
     maxDifficulty?: number
+    /** 0..1 floor. The stream never goes below it. */
+    minDifficulty?: number
   }): Promise<Item | null>
   /** Records the attempt and judges it. One call, in that order. */
   judge(input: {
@@ -377,11 +379,13 @@ export function createBridge(options: BridgeOptions): Bridge {
         // an author can act on.
         const difficulty = unitParam(params, "difficulty")
         const maxDifficulty = unitParam(params, "maxDifficulty")
+        const minDifficulty = unitParam(params, "minDifficulty")
         const item = await services.nextItem({
           packId,
           ...(skillId === null ? {} : { skillId }),
           ...(difficulty === null ? {} : { difficulty }),
           ...(maxDifficulty === null ? {} : { maxDifficulty }),
+          ...(minDifficulty === null ? {} : { minDifficulty }),
         })
         return ok(id, { item })
       }

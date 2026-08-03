@@ -315,12 +315,21 @@ test("a difficulty request is on the wire, and only the fields that were named",
 
   // The whole point: a pack can say how hard it wants the next question, and
   // the ordinate it was actually served comes back on the item.
-  const served = await host.nextItem({ difficulty: 0.25, maxDifficulty: 0.6 })
+  // Both halves of the capability window travel, and the floor is asserted here
+  // rather than assumed: a field the guest never packs is a field the host never
+  // sees, every test on either side of the wire still passes, and the child gets
+  // the empty screen the pack declared it was avoiding. That is TREBUCHET's bug
+  // one layer further out.
+  const served = await host.nextItem({
+    difficulty: 0.25,
+    maxDifficulty: 0.6,
+    minDifficulty: 0.1,
+  })
   assert.equal(served?.difficulty, 0.25)
   assert.deepEqual(seen[0], {
     id: 1,
     method: "items.next",
-    params: { difficulty: 0.25, maxDifficulty: 0.6 },
+    params: { difficulty: 0.25, maxDifficulty: 0.6, minDifficulty: 0.1 },
   })
 
   // A field nobody named is absent rather than an explicit `undefined`: a
