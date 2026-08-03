@@ -155,3 +155,61 @@ export function safeRect(
     h: Math.max(0, h - y - Math.min(insets.bottom, h)),
   }
 }
+
+/** The narrow slice of an element `publishSafeVars` needs, so a test can stub it. */
+export type StyleTarget = { style: { setProperty(name: string, value: string): void } }
+
+/**
+ * Hand a STYLESHEET the safe area, as four custom properties it can do
+ * arithmetic with.
+ *
+ * **Why a stylesheet cannot just ask.** `env(safe-area-inset-*)` belongs to the
+ * top-level browsing context, and a pack is a cross-origin child, so all four
+ * resolve to 0 there — every `padding: env(safe-area-inset-top)` in a pack
+ * silently collapses to its fallback. That is not a rare edge: it is every
+ * device, every time, and SIEGE, STACK and POLARITY all shipped a DOM HUD under
+ * the Android status bar because of it. The numbers have to arrive as an
+ * argument from the host, which is what this does.
+ *
+ * The stylesheet then reads `var(--x-safe-top, env(safe-area-inset-top, 0px))`:
+ * the property inside the app, the `env()` only in a dev browser tab where there
+ * is no host and where it happens to be right.
+ *
+ * Zeros are written EXPLICITLY rather than left unset. `var()` falls back to its
+ * `env()` when the property is absent, and inside the app that is the wrong
+ * answer even when the true inset happens to be zero — it is the wrong answer
+ * *especially* then, because it is indistinguishable from the right one until
+ * the child picks up a phone with a notch.
+ *
+ * @param prefix the pack's own namespace, e.g. `"--mn-safe-"`.
+ * @param previous what was last published, so a resize path can skip a write.
+ * @returns whether anything changed.
+ */
+export function publishSafeVars(
+  root: StyleTarget,
+  prefix: string,
+  insets: Insets = safeInsets(),
+  previous?: Insets | null,
+): boolean {
+  const i = insets ?? NO_INSETS
+  const now: Insets = {
+    top: Math.max(0, i.top),
+    right: Math.max(0, i.right),
+    bottom: Math.max(0, i.bottom),
+    left: Math.max(0, i.left),
+  }
+  if (
+    previous &&
+    previous.top === now.top &&
+    previous.right === now.right &&
+    previous.bottom === now.bottom &&
+    previous.left === now.left
+  ) {
+    return false
+  }
+  root.style.setProperty(`${prefix}top`, `${now.top}px`)
+  root.style.setProperty(`${prefix}right`, `${now.right}px`)
+  root.style.setProperty(`${prefix}bottom`, `${now.bottom}px`)
+  root.style.setProperty(`${prefix}left`, `${now.left}px`)
+  return true
+}

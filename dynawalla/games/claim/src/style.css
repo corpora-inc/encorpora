@@ -366,7 +366,22 @@
   justify-content: center;
   gap: 10px;
   text-align: center;
-  padding: 20px;
+  /* The card is full-bleed and centres its children, so this padding is what
+     decides where a centred stack ends up. A flat 20px ignored the insets
+     entirely — on a 393x851 Android phone held sideways, with a 24px status
+     bar, the big goal fraction started at y=21 and the top of it was under the
+     clock. The insets are published by `Claim.layout` from the same
+     `safeInsets()` everything else here uses; the `env()`s are the dev-tab
+     fallback, where there is no host to publish anything.
+
+     Four longhands, not a shorthand: a shorthand resets all four sides, so a
+     breakpoint that only wanted a tighter card would take the safe area with
+     it. Change --cl-card-pad instead. */
+  --cl-card-pad: 20px;
+  padding-top: calc(var(--cl-card-pad) + var(--cl-safe-top, env(safe-area-inset-top, 0px)));
+  padding-right: calc(var(--cl-card-pad) + var(--cl-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: calc(var(--cl-card-pad) + var(--cl-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: calc(var(--cl-card-pad) + var(--cl-safe-left, env(safe-area-inset-left, 0px)));
   pointer-events: none;
 }
 .cl-card.cl-on {

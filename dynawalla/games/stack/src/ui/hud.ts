@@ -16,6 +16,7 @@
  * asserting against the geometry that actually ships, not a copy of it.
  */
 
+import type { Insets } from "../../../../packs/shared/game-chrome/index.ts";
 import {
   BEST_NUM,
   CSS_CLEAR_LEFT,
@@ -31,11 +32,17 @@ import {
   LABEL,
   PROMPT,
   TOOL_SIZE,
+  applySafeVars,
+  cssSafe,
   cssScale,
 } from "./place.ts";
 import { BLANK } from "../blank.ts";
 
-const CSS = `
+/**
+ * The stylesheet, exported so `safearea.test.ts` can parse the string that
+ * actually ships rather than a copy of what it was meant to say.
+ */
+export const CSS = `
 .mn { position:absolute; inset:0; pointer-events:none; overflow:hidden;
   font-family: ui-sans-serif,-apple-system,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   color:var(--fg); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
@@ -74,7 +81,7 @@ const CSS = `
   opacity:0; will-change:transform,opacity; text-shadow:0 0 60px color-mix(in srgb,var(--ac) 60%,transparent); }
 
 .mn-band { position:absolute; left:0; right:0; top:57%; text-align:center; opacity:0; will-change:transform,opacity;
-  padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right); box-sizing:border-box; }
+  padding-left:${cssSafe("left")}; padding-right:${cssSafe("right")}; box-sizing:border-box; }
 .mn-band u { text-decoration:none; display:block; font-size:clamp(9px,2.4vmin,13px); font-weight:800; letter-spacing:.42em;
   color:var(--dim); text-transform:uppercase; }
 .mn-band b { display:block; font-size:clamp(28px,8.5vmin,62px); font-weight:800; letter-spacing:.06em; }
@@ -87,8 +94,16 @@ const CSS = `
 .mn-over { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:clamp(12px,3vmin,24px); pointer-events:auto; opacity:0; visibility:hidden;
   background:radial-gradient(120% 90% at 50% 45%, transparent 18%, color-mix(in srgb,var(--bg) 99%,transparent) 62%);
-  padding:calc(env(safe-area-inset-top) + 20px) calc(env(safe-area-inset-right) + 20px)
-    calc(env(safe-area-inset-bottom) + 20px) calc(env(safe-area-inset-left) + 20px);
+  /* Four longhands, driven by a custom property, and deliberately NOT a
+     \`padding:\` shorthand. A shorthand resets all four sides, so a breakpoint
+     that wanted a tighter card on a short screen would silently delete the safe
+     area along with the gutter — which is exactly how SIEGE lost its bottom
+     inset on every landscape phone. Change --mn-card-pad; leave these alone. */
+  --mn-card-pad:20px;
+  padding-top:calc(${cssSafe("top")} + var(--mn-card-pad));
+  padding-right:calc(${cssSafe("right")} + var(--mn-card-pad));
+  padding-bottom:calc(${cssSafe("bottom")} + var(--mn-card-pad));
+  padding-left:calc(${cssSafe("left")} + var(--mn-card-pad));
   transition:opacity .28s ease; }
 .mn-over.on { opacity:1; visibility:visible; }
 .mn-over h1 { font-size:clamp(11px,2.8vmin,15px); font-weight:800; letter-spacing:.42em; color:var(--dim); text-transform:uppercase; }
@@ -157,6 +172,7 @@ export class Hud {
   private lastPrompt = "";
   private lastReveal: string | null = null;
   private lastFloor = -1;
+  private insets: Insets | null = null;
   private reduced: boolean;
   private anims: Animation[] = [];
 
@@ -189,6 +205,12 @@ export class Hud {
       <div class="mn-perf"></div>`;
     parent.appendChild(d);
     this.root = d;
+
+    // The stylesheet above cannot work the safe area out for itself: `env()`
+    // resolves to zero in a cross-origin child, which is what every pack is. It
+    // is written onto this root as four custom properties instead, from the
+    // host's own measurement, and republished on every resize.
+    applySafeVars(d);
 
     const q = <T extends Element>(s: string): T => d.querySelector<T>(s)!;
     this.floorEl = q(".mn-floor");
@@ -240,6 +262,20 @@ export class Hud {
       if (this.choicesEl.style.display !== "none" && this.choicesEl.children.length) return;
       cb.onRestart();
     });
+  }
+
+  /**
+   * Republish the safe area onto the HUD root.
+   *
+   * Called on every resize rather than once at mount: a rotation trades one top
+   * inset for two side ones, and the host re-sends its measurement whenever the
+   * app's own layout moves. Idempotent, so a `ResizeObserver` may call it
+   * freely — nothing is written when the numbers have not moved.
+   */
+  setInsets(insets: Insets): void {
+    if (applySafeVars(this.root, insets, this.insets)) {
+      this.insets = { ...insets };
+    }
   }
 
   /* ── palette ──────────────────────────────────────────────────────────── */

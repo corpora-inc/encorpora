@@ -19,11 +19,23 @@
  * Here that means the readouts step INWARD, past the corner squares, onto the
  * same row as the host's own controls.
  *
- * **`env()` cannot be read from JavaScript.** So this module owns the numbers
- * in both dialects at once: a `calc(env(...) + Npx)` string that `hud.ts`
- * interpolates into its stylesheet, and the same N as a number that
- * `place.test.ts` feeds to `hitsHostChrome`. One source, two readers — a test
- * that re-derived the geometry would prove only that it agreed with itself.
+ * **`env()` cannot be read from JavaScript, and inside a pack it cannot be read
+ * at all.** A pack runs in an iframe sandboxed `allow-scripts` with no
+ * `allow-same-origin`, and `env(safe-area-inset-*)` belongs to the TOP-LEVEL
+ * browsing context — so a cross-origin child resolves all four to ZERO. This
+ * module used to hand `hud.ts` a `calc(env(...) + Npx)` string, which meant the
+ * numeric dialect below was correct about a notch the stylesheet could not see:
+ * `place.test.ts` proved the floor count cleared a 59px status bar while the
+ * shipped rule put it at 13px. SIEGE shipped the identical split and the founder
+ * found it on an Android phone, with the currency painted under the OS clock.
+ *
+ * So the CSS dialect now reads `var(--mn-safe-*, env(...))`, and the four
+ * properties are published onto the HUD root from the host's own measurement by
+ * `publishSafeVars`. The `env()` stays as the fallback because it is right in a
+ * dev browser tab, where there is no host to publish anything.
+ *
+ * One source, two readers — a test that re-derived the geometry would prove only
+ * that it agreed with itself.
  */
 
 import {
@@ -31,8 +43,11 @@ import {
   HOST_MARGIN,
   HOST_PROGRESS_H,
   NO_INSETS,
+  publishSafeVars,
+  safeInsets,
   type Insets,
   type Rect,
+  type StyleTarget,
 } from "../../../../packs/shared/game-chrome/index.ts";
 
 /* ── the geometry ───────────────────────────────────────────────────────── */
@@ -116,8 +131,39 @@ export const FLOOR_DIGITS = 3;
 
 /* ── the CSS dialect ────────────────────────────────────────────────────── */
 
+/** The namespace the four published lengths live under. */
+export const SAFE_PREFIX = "--mn-safe-";
+
+/**
+ * One safe edge plus a gutter, as a length the stylesheet can use.
+ *
+ * The property first, the `env()` only as the fallback — see the module
+ * docblock. Inside the app the fallback is always the wrong answer; in a dev
+ * browser tab, where nothing publishes, it is the only one available.
+ */
 const safe = (side: "top" | "right" | "bottom" | "left", px: number): string =>
-  `calc(env(safe-area-inset-${side}) + ${px}px)`;
+  `calc(${cssSafe(side)} + ${px}px)`;
+
+/** Just the safe edge, with no gutter added. */
+export const cssSafe = (side: "top" | "right" | "bottom" | "left"): string =>
+  `var(${SAFE_PREFIX}${side}, env(safe-area-inset-${side}, 0px))`;
+
+/**
+ * Hand the stylesheet the safe area, from the host's measurement.
+ *
+ * Called at mount and again on every resize: a rotation trades one top inset for
+ * two side ones, and iPadOS changes them when a pack is resized in Split View.
+ * Idempotent — nothing is written when the numbers have not moved.
+ *
+ * @returns whether anything changed.
+ */
+export function applySafeVars(
+  root: StyleTarget,
+  insets: Insets = safeInsets(),
+  previous?: Insets | null,
+): boolean {
+  return publishSafeVars(root, SAFE_PREFIX, insets, previous);
+}
 
 /** The row the host's controls sit on. The readouts join it, beside them. */
 export const CSS_ROW_TOP = safe("top", CHROME_TOP);
@@ -126,7 +172,7 @@ export const CSS_CLEAR_RIGHT = safe("right", CHROME_CLEAR);
 export const CSS_EDGE_LEFT = safe("left", EDGE);
 export const CSS_TOOL_RIGHT = safe("right", TOOL_EDGE);
 export const CSS_TOOL_BOTTOM = safe("bottom", TOOL_EDGE);
-export const CSS_HINT_BOTTOM = `calc(env(safe-area-inset-bottom) + 12%)`;
+export const CSS_HINT_BOTTOM = `calc(${cssSafe("bottom")} + 12%)`;
 
 /**
  * The prompt's centre: 18% down, or below the floor readout, whichever is

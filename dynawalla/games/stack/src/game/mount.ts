@@ -26,7 +26,11 @@ import {
   SRGBColorSpace,
 } from "three";
 
-import { createInstructions } from "../../../../packs/shared/game-chrome/index.ts";
+import {
+  createInstructions,
+  onInsetsChange,
+  safeInsets,
+} from "../../../../packs/shared/game-chrome/index.ts";
 import type { Host } from "../contract.ts";
 import { Sim, type PlaceEvent, type SimEvent } from "./sim.ts";
 import { T } from "./tuning.ts";
@@ -825,6 +829,11 @@ export function mount(
   /* ── resize ─────────────────────────────────────────────────────────── */
 
   function resize(): void {
+    // Measured every resize, never cached from construction: a rotation trades
+    // one top inset for two side ones, and iPadOS changes them when the pack is
+    // resized in Split View. Read once at mount and the HUD is correct until the
+    // first rotation and wrong after it.
+    hud.setInsets(safeInsets());
     const w = holder.clientWidth || 320;
     const h = holder.clientHeight || 480;
     aspect = w / h;
@@ -839,6 +848,11 @@ export function mount(
 
   const ro = new ResizeObserver(() => resize());
   ro.observe(holder);
+  // The insets can move without the frame moving: the host publishes its
+  // measurement over the `settings` channel after the handshake, and Split View
+  // changes them on a tablet. Without this the HUD keeps the shape the pack
+  // opened in.
+  const stopInsets = onInsetsChange(() => resize());
   resize();
   applyStratum(stratumAt(0), 1);
   camY.set(camTargetY());
@@ -1266,6 +1280,7 @@ export function mount(
       running = false;
       cancelAnimationFrame(raf);
       ro.disconnect();
+      stopInsets();
       holder.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("keydown", onKey);
       guide.destroy();

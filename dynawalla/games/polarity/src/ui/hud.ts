@@ -2,7 +2,8 @@ import { clamp01, fmtScore } from "../core/util.ts";
 import { fmtInt, fmtSigned, tryParseInt } from "../math/signed.ts";
 import { PLAYER } from "../game/constants.ts";
 import type { World } from "../game/world.ts";
-import { applyChromeVars } from "./layout.ts";
+import { applyChromeVars, applySafeVars } from "./layout.ts";
+import type { Insets } from "../../../../packs/shared/game-chrome/index.ts";
 
 /**
  * The HUD is DOM, not canvas: crisp numerals at every density, real safe-area
@@ -83,6 +84,7 @@ export class Hud {
   };
   private cueKey = "";
   private touch = false;
+  private insets: Insets | null = null;
 
   constructor(host: HTMLElement, private readonly hooks: HudHooks) {
     // The stylesheet is a static file and cannot be asserted about, so the
@@ -92,6 +94,13 @@ export class Hud {
     applyChromeVars(host);
 
     this.root = el("div", "pol-hud");
+
+    // The safe area cannot be read from the stylesheet at all: `env()` resolves
+    // to zero in a cross-origin child, which is what every pack frame is. It
+    // arrives from the host instead, written onto this element as four custom
+    // properties and inherited by everything under it — the mini controls, the
+    // key hint and the veil included. Republished on every resize.
+    applySafeVars(this.root);
 
     // --- top -------------------------------------------------------------
     const top = el("div", "pol-top");
@@ -184,6 +193,19 @@ export class Hud {
       },
       { capture: true },
     );
+  }
+
+  /**
+   * Republish the safe area onto the HUD root.
+   *
+   * Called on every resize rather than once at mount: a rotation trades one top
+   * inset for two side ones, and iPadOS changes them when the pack is resized in
+   * Split View. Idempotent — nothing is written when the numbers have not moved.
+   */
+  setInsets(insets: Insets): void {
+    if (applySafeVars(this.root, insets, this.insets)) {
+      this.insets = { ...insets };
+    }
   }
 
   dispose(): void {
