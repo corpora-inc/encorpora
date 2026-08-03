@@ -53,6 +53,7 @@ import {
   windowFor,
 } from "./items.ts"
 import type { Attempt, Band, ItemService, Recent, Rung, Staircase } from "./items.ts"
+import type { Item } from "../../../packs/sdk/src/index.ts"
 import type { PromptBlank, PromptSlot } from "./curriculum.ts"
 import {
   activeNodes,
@@ -3666,4 +3667,123 @@ test("the spread the host draws around its own rung cannot reach under a stated 
   // And it really was the floor doing the work, not a spread that never reached
   // down there anyway.
   assert.equal(lowest, bottom, "the spread never once came down to the floor, so this proves nothing")
+})
+
+/* ── The rows THE GAVEL took with it, and the pack that has them now ───────── */
+
+/** ARENA's `MAX_DRAWABLE_LABEL` (`games/arena/src/sim/world.ts`), int32. */
+const ARENA_MAX_LABEL = 2147483647
+
+/** Everything a child would have to read off a sphere for one item. */
+function labelsOf(item: Item, service: ItemService): readonly string[] {
+  return [service.reveal(item.id) ?? "", ...(item.choices ?? []).map((choice) => choice.text)]
+}
+
+/** Whether ARENA could put this whole item on the screen. */
+function arenaCanDraw(labels: readonly string[]): boolean {
+  const distinct = new Set(labels)
+  if (distinct.size < 4) return false
+  for (const text of labels) {
+    const v = Number(text)
+    if (!Number.isSafeInteger(v) || Math.abs(v) > ARENA_MAX_LABEL) return false
+  }
+  return true
+}
+
+/**
+ * Every question the six rows can generate is one ARENA can actually build.
+ *
+ * These are the rows no shipping pack stated: the four THE GAVEL took with it
+ * when it was retired (PR 749) and the two — `dw.mul.scale.times-power-of-ten`,
+ * `dw.mul.multidigit.long-multiplication` — that were promoted to `active` and
+ * never claimed by anybody at all. ARENA declares them now, so this is the check
+ * that the declaration is a fact rather than a hope: the whole point of
+ * `covers.skills` is defeated by a pack that says it teaches a row and then meets
+ * a question from it that it cannot put on the screen. That has shipped four
+ * times in a fortnight — trebuchet 698, foundry 711, lattice 716, balance 724
+ * — and every one of them was a board built out of a prompt the pack had already
+ * decided to keep.
+ *
+ * "Build" is ARENA's own two conditions, and nothing else: **four distinct
+ * numerals**, because the beat is four spheres and it declines rather than draw a
+ * duplicate; and **every one of them inside int32**, because a label goes through
+ * `mval` and a value past that lands there as `0`. Every level, forty seeds each.
+ */
+test("every question ARENA's new rows can generate is one ARENA can build", () => {
+  const rungs = ladder()
+  const declared = new Set([
+    "dw.mul.facts.tables-within-five",
+    "dw.mul.facts.tables-to-twelve",
+    "dw.mul.scale.times-power-of-ten",
+    "dw.mul.multidigit.long-multiplication",
+    "dw.div.facts.division-facts",
+    "dw.div.whole.zero-in-the-quotient",
+  ])
+  const mine = rungs.filter((rung) => declared.has(String(rung.node.id)))
+  // Six rows, nineteen levels between them. Without this the filter can go stale
+  // against a renamed id and every assertion below passes on an empty sweep.
+  assert.equal(new Set(mine.map((rung) => String(rung.node.id))).size, 6, "a declared row is not on the ladder")
+  assert.ok(mine.length >= 15, `only ${String(mine.length)} levels swept — the ladder filter has gone stale`)
+
+  const unbuildable: string[] = []
+  for (const rung of mine) {
+    const service = createItemService({
+      profileId: `arena-${String(rung.node.id)}-${String(rung.level)}`,
+      record: noRecord,
+      rungs: [rung],
+    })
+    for (let seed = 0; seed < 40; seed++) {
+      const item = service.next({ packId: "dynawalla.arena", difficulty: 0.5 })
+      assert.ok(item, `${String(rung.node.id)} L${String(rung.level)} generated nothing`)
+      if (!arenaCanDraw(labelsOf(item, service))) {
+        unbuildable.push(`${String(rung.node.id)} L${String(rung.level)}: ${item.prompt}`)
+      }
+      service.skip(item.id)
+    }
+  }
+
+  // One level fails, it is the top of the whole ladder, and it is the level
+  // ARENA's ceiling exists to take out — see the test below. Everything else is
+  // clean, which is what the declaration is claiming.
+  const rows = new Set(unbuildable.map((line) => line.split(":")[0]))
+  assert.deepEqual(
+    [...rows].sort(),
+    ["dw.mul.multidigit.long-multiplication L2"],
+    `rows ARENA declares and cannot build: ${[...rows].sort().join(", ")}`,
+  )
+})
+
+/**
+ * …and the ceiling that covers the one level above it costs exactly one rung.
+ *
+ * A capability window is only honest if it is measured. ARENA's ceiling is
+ * derived at runtime from whatever it was actually refused, so the thing to pin
+ * here is the ladder-side fact that makes it cheap: `long-multiplication` L2 is
+ * the ONLY rung in the whole shipped curriculum that reaches past int32, and it
+ * is the TOP one. If that stopped being true — a new row landed above it, or a
+ * level widened underneath it — ARENA's ceiling would start costing a child
+ * content it can draw perfectly well, silently, and this is what says so.
+ */
+test("exactly one rung on the shipped ladder is out of ARENA's reach, and it is the last one", () => {
+  const rungs = ladder()
+  assert.ok(rungs.length > 40, `the ladder has ${String(rungs.length)} rungs — this sweep proves nothing`)
+  const over: number[] = []
+  for (let index = 0; index < rungs.length; index++) {
+    const rung = rungs[index] as Rung
+    const service = createItemService({ profileId: `reach-${String(index)}`, record: noRecord, rungs: [rung] })
+    for (let seed = 0; seed < 40; seed++) {
+      const item = service.next({ packId: "dynawalla.arena", difficulty: 0.5 })
+      assert.ok(item)
+      if (!arenaCanDraw(labelsOf(item, service))) {
+        over.push(index)
+        break
+      }
+      service.skip(item.id)
+    }
+  }
+  assert.deepEqual(
+    over,
+    [rungs.length - 1],
+    `rungs ARENA cannot draw: ${over.map((i) => `${String(i)} ${String((rungs[i] as Rung).node.id)}`).join(", ")}`,
+  )
 })

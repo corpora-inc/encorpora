@@ -31,6 +31,7 @@ import { fileURLToPath } from "node:url"
 import { MIN_AGE_CEILING, MIN_AGE_FLOOR, parseManifest } from "./manifest.ts"
 // @ts-expect-error — a plain .mjs pipeline module with no type declarations.
 import { manifestFrom } from "../../authoring.mjs"
+import { activeNodes, allNodes } from "../../shared/curriculum/src/index.ts"
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 const gamesRoot = path.resolve(here, "../../../games")
@@ -131,6 +132,75 @@ test("the fleet spreads across the ladder rather than labelling everything the s
   // is the guard against a future bulk edit that flattens the judgement.
   const ages = new Set(fleet().map(([, source]) => source.minAge))
   assert.ok(ages.size >= 3, `every game claims one of ${ages.size} ages — that is not guidance`)
+})
+
+/* ── What the fleet teaches ───────────────────────────────────────────────── */
+
+/**
+ * Every skill id any pack in this repository claims, as a set.
+ *
+ * A pack states its claims in `covers.skills` and nowhere else, so this is the
+ * whole of what the fleet says it teaches. Read off the same glob as everything
+ * above it, for the same reason: a game arrives as a directory.
+ */
+function claimedSkills(): ReadonlySet<string> {
+  const claimed = new Set<string>()
+  for (const [, source] of fleet()) {
+    const skills = source.covers?.["skills"]
+    if (!Array.isArray(skills)) continue
+    for (const skill of skills) if (typeof skill === "string") claimed.add(skill)
+  }
+  return claimed
+}
+
+test("every active curriculum row is taught by some shipping pack", () => {
+  // **This is the assertion whose absence made a retirement silent.** PR #749
+  // retired THE GAVEL, which was the only pack covering
+  // `dw.mul.facts.tables-within-five`, `dw.mul.facts.tables-to-twelve`,
+  // `dw.div.facts.division-facts` and `dw.div.whole.zero-in-the-quotient`. Its
+  // own commit message says so, and then says the part that matters: "Nothing
+  // asserts fleet-wide skill coverage, so this is silent." A maths product for a
+  // nine-year-old shipped for three days teaching no times tables, and no test
+  // in the repository could go red about it.
+  //
+  // The direction is one-way on purpose. `active ⊆ claimed` is the product
+  // claim — a row the curriculum says is shipped is a row a child can reach. The
+  // converse is NOT a defect: twelve of the ids the fleet names are `draft`
+  // rows, authored ahead of promotion, and a pack that is ready before the
+  // curriculum row is promoted is exactly the order these things should happen
+  // in. `no pack claims a skill the graph has never heard of` below is the guard
+  // that keeps that tolerance from swallowing a typo.
+  //
+  // It lives here rather than in the app for the reason at the top of this file:
+  // `dynawalla_packs` is `^dynawalla/(games|packs)/`, which is BOTH halves of
+  // this assertion — deleting `games/gavel/` runs it, and promoting a row under
+  // `packs/shared/curriculum/` runs it too. The app's filter would have missed
+  // the first and the curriculum's job would have missed the second.
+  const active = activeNodes().map((node) => String(node.id))
+  // Neither side may be empty, or the set difference below is vacuously empty
+  // and this test reports green on nothing at all.
+  assert.ok(active.length > 20, `expected the shipped graph, found ${String(active.length)} active rows`)
+  const claimed = claimedSkills()
+  assert.ok(claimed.size > 20, `expected the fleet's claims, found ${String(claimed.size)} skill ids`)
+
+  const orphans: string[] = active.filter((id) => !claimed.has(id))
+  assert.deepEqual(
+    orphans,
+    [] as string[],
+    `active curriculum rows no shipping pack states in covers.skills — a child cannot reach them: ${orphans.join(", ")}`,
+  )
+})
+
+test("no pack claims a skill the graph has never heard of", () => {
+  // The other half, and a weaker claim than coverage on purpose: a pack may
+  // name a `draft` row, but it may not name a row that does not exist. Without
+  // this, a mistyped id in `covers.skills` would satisfy nothing, teach nothing
+  // and fail nowhere — and the coverage test above would still be green because
+  // a phantom id is simply not in `active`.
+  const known = new Set(allNodes.map((node) => String(node.id)))
+  assert.ok(known.size > 40, `expected the whole graph, found ${String(known.size)} rows`)
+  const phantom: string[] = [...claimedSkills()].filter((id) => !known.has(id)).sort()
+  assert.deepEqual(phantom, [] as string[], `skill ids in pack.json that no curriculum row defines: ${phantom.join(", ")}`)
 })
 
 /* ── The builder's projection ─────────────────────────────────────────────── */
