@@ -60,6 +60,8 @@ function stateFor(layout: HudLayout): HudState {
   return {
     layout,
     equation: '347 + 268',
+    reveal: null,
+    revealAge: 0,
     rack: ['347 + 268', '91 − 47', '8 × 7', '120 − 65', '46 + 39'],
     rackActive: 0,
     wave: 3,

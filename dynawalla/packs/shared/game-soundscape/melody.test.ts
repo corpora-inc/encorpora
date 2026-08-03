@@ -55,6 +55,8 @@ test("every note a game can cause is a degree of the live mode", () => {
     { kind: "levelComplete" },
     { kind: "refuse" },
     { kind: "arrive" },
+    { kind: "collapse" },
+    { kind: "collapse", weight: 0 },
   ]
   for (let seed = 0; seed < 60; seed++) {
     const s = scape(seed, seed % 2 === 0 ? 0 : 0.9)
@@ -84,6 +86,8 @@ test("every voice is inside the register and the loudness budget", () => {
     voices.push(...melody.emit({ kind: "failure" }))
     voices.push(...melody.emit({ kind: "refuse" }))
     voices.push(...melody.emit({ kind: "arrive" }))
+    voices.push(...melody.emit({ kind: "collapse" }))
+    voices.push(...melody.emit({ kind: "collapse", weight: 0 }))
     voices.push(...melody.emit({ kind: "success" }))
     for (const v of voices) {
       assert.ok(v.hz >= MELODY_MIN_HZ && v.hz <= MELODY_MAX_HZ, `${v.hz} Hz is outside the register`)
@@ -256,6 +260,73 @@ test("a refusal is low, short and modelled rather than noise", () => {
   assert.equal(v.timbre, "rubble")
   assert.ok(v.seconds < 0.5, "a refusal that long is a telling-off")
   assert.ok(v.hz < 300, `a refusal at ${v.hz} Hz is a beep, not a crumble`)
+})
+
+test("a building coming down is masonry, staggered, and never a note anyone chose", () => {
+  // The primitive this module did not have. A collapse is percussive and BIG,
+  // and the only thing a game could reach for was `refuse` — a shelf of brass —
+  // or, as TREBUCHET did, a band-passed noise burst in its own file.
+  for (let seed = 0; seed < 30; seed++) {
+    const melody = new Melody(scape(seed, seed % 2 === 0 ? 0 : 0.8))
+    const voices = melody.emit({ kind: "collapse" })
+    assert.ok(voices.length >= 2, `a collapse of ${voices.length} voice(s) lands all at once`)
+    for (const v of voices) {
+      assert.equal(v.timbre, "rubble", "a collapse must be modelled, never a noise burst")
+      assert.ok(v.hz < 400, `a collapse at ${v.hz} Hz is a beep, not a building`)
+    }
+    const [face, rest] = voices
+    assert.ok(face && rest)
+    assert.ok(rest.at > face.at, "the whole building landed in the same instant")
+    assert.ok(face.hz < rest.hz, "the heaviest part of the fall is not the lowest")
+  }
+})
+
+test("a collapse is sized by its weight and leaves the phrase alone", () => {
+  // Weight buys body, exactly as it does for `step` — and the walker is
+  // untouched, so a game that celebrates in the same breath still cadences.
+  const light = new Melody(scape(5))
+  const heavy = new Melody(scape(5))
+  for (let i = 0; i < 4; i++) {
+    light.emit({ kind: "step", direction: 1 })
+    heavy.emit({ kind: "step", direction: 1 })
+  }
+  const before = heavy.position
+  const small = light.emit({ kind: "collapse", weight: 0 })[0]
+  const big = heavy.emit({ kind: "collapse", weight: 1 })[0]
+  assert.ok(small && big)
+  assert.ok(big.seconds > small.seconds, "a keep falls no longer than a garden wall")
+  assert.ok(big.gain > small.gain, "a keep falls no heavier than a garden wall")
+  assert.equal(heavy.position, before, "the collapse moved the walker")
+})
+
+test("two collapses in the same key are not the same collapse", () => {
+  // The defect the whole module exists to end: "nothing that happens changes
+  // what the next sound is". A fall pinned to the tonic would be one fixed thud
+  // forever however long a child plays — and reading the walker instead is the
+  // same thud in any game whose other gestures all cadence home, which is why
+  // this drives ONLY collapses.
+  for (let seed = 0; seed < 20; seed++) {
+    const melody = new Melody(scape(seed))
+    const heard = new Set<number>()
+    for (let i = 0; i < 14; i++) {
+      const v = melody.emit({ kind: "collapse" })[0]
+      assert.ok(v)
+      heard.add(Math.round(v.hz * 100))
+    }
+    assert.ok(heard.size >= 2, `seed ${seed}: fourteen collapses were all the same pitch`)
+  }
+})
+
+test("a collapse is reproducible from the seed", () => {
+  // It consumes randomness, so it must consume it deterministically — otherwise
+  // a reported bug cannot be replayed.
+  const a = new Melody(scape(4))
+  const b = new Melody(scape(4))
+  for (let i = 0; i < 8; i++) {
+    assert.deepEqual(a.emit({ kind: "collapse" }), b.emit({ kind: "collapse" }))
+    a.emit({ kind: "step", direction: 1 })
+    b.emit({ kind: "step", direction: 1 })
+  }
 })
 
 test("a failure is warm and never a buzzer", () => {

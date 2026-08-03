@@ -213,6 +213,19 @@ export function dialNumeralBox(
 export type HudState = {
   layout: HudLayout
   equation: string
+  /**
+   * The COMPLETED sum, after a miss, or `null`.
+   *
+   * It replaces the equation on the plaque rather than appearing beside it, and
+   * that is the whole design: the child is already looking at that rectangle,
+   * it is the most legible thing on the screen, and the only thing that changes
+   * is that the sum now has its answer on the end of it in the accent colour.
+   * Nothing says WRONG, nothing turns red, and there is no word anywhere —
+   * being shown the finished sum IS the correction.
+   */
+  reveal: string | null
+  /** 0..1 how far into the reveal's own entrance we are. */
+  revealAge: number
   rack: string[]
   rackActive: number
   wave: number
@@ -238,33 +251,49 @@ export function drawHud(ctx: CanvasRenderingContext2D, st: HudState, btns: Btn[]
   ctx.save()
   ctx.textBaseline = 'middle'
 
-  /* ---- the equation: the most legible thing on the screen ---- */
+  /* ---- the equation: the most legible thing on the screen ----
+   *
+   * …and, after a miss, the same sum with its answer on the end. The reveal
+   * borrows this plaque instead of raising a card of its own, because a card is
+   * a thing you dismiss and a plaque is a thing you read. */
+  const revealing = st.reveal !== null
+  const text = st.reveal ?? st.equation
+  const grow = revealing ? 1 + (1 - easeOutCubic(clamp01(st.revealAge / 0.32))) * 0.16 : 1
   const intro = easeOutExpo(clamp01(st.introT))
   const maxW = st.layout.plaqueMax.w
   let eqSize = eqSizeFor(unit, area)
   ctx.font = font(eqSize, 900)
-  let mw = ctx.measureText(st.equation).width
+  let mw = ctx.measureText(text).width
   // A long question used to run off both edges of a 320px phone. Shrink to fit
   // the safe width instead — the sum has to be readable more than it has to be big.
   if (mw + eqSize * 1.6 > maxW && mw > 0) {
     eqSize = Math.max(11, Math.floor((eqSize * maxW) / (mw + eqSize * 1.6)))
     ctx.font = font(eqSize, 900)
-    mw = ctx.measureText(st.equation).width
+    mw = ctx.measureText(text).width
   }
   const pw = Math.min(maxW, Math.max(mw + eqSize * 1.6, eqSize * 5.4))
   const ph = eqSize * 1.62
   const px = area.x + (area.w - pw) / 2
   const py = st.layout.plaqueMax.y + (1 - intro) * -60
+  ctx.save()
   ctx.globalAlpha = intro
+  // The pop is around the plaque's own centre, so a long sum does not swing in
+  // from the left edge of the glass.
+  ctx.translate(area.x + area.w / 2, py + ph / 2)
+  ctx.scale(grow, grow)
+  ctx.translate(-(area.x + area.w / 2), -(py + ph / 2))
   roundRect(ctx, px, py, pw, ph, 6)
-  ctx.fillStyle = 'rgba(6,8,18,0.62)'
+  ctx.fillStyle = revealing ? 'rgba(20,12,4,0.78)' : 'rgba(6,8,18,0.62)'
   ctx.fill()
-  ctx.strokeStyle = 'rgba(242,233,213,0.16)'
-  ctx.lineWidth = 1
+  // The accent, never red. A miss is answered by the answer, and the only thing
+  // that says anything happened is that the sum is now finished and warm.
+  ctx.strokeStyle = revealing ? C.fire1 : 'rgba(242,233,213,0.16)'
+  ctx.lineWidth = revealing ? 2 : 1
   ctx.stroke()
-  ctx.fillStyle = C.bone
+  ctx.fillStyle = revealing ? C.fire1 : C.bone
   ctx.textAlign = 'center'
-  ctx.fillText(st.equation, area.x + area.w / 2, py + ph / 2 + 1)
+  ctx.fillText(text, area.x + area.w / 2, py + ph / 2 + 1)
+  ctx.restore()
   ctx.globalAlpha = 1
 
   /* ---- the rack: every boulder left, and what is written on it ---- */

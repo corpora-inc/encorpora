@@ -5,6 +5,8 @@
  * `createSafetyBus` — the graph a game's output must pass through.
  * `safeAttack`      — the shortest onset an envelope may use.
  * `VoiceBudget`     — the polyphony cap, with no timers and an injected clock.
+ * `playVoice`       — the synthesis for a `game-soundscape` voice, including
+ *                     the rubble recipe, so no pack writes its own.
  *
  * Usage, in a game's `start()`:
  *
@@ -43,3 +45,16 @@ export {
   type BusContext,
 } from "./safetyBus.ts"
 export { setHostSound, hostSoundAllowed, onHostSound, resetHostSound } from "./sound.ts"
+export {
+  RUBBLE_CEILING_HZ,
+  RUBBLE_GRAINS,
+  TONE_CEILING_HZ,
+  playVoice,
+  voiceBrightestHz,
+  voiceGrains,
+  voicePeak,
+  type Grain,
+  type PlayableVoice,
+  type VoiceContext,
+  type VoiceTimbre,
+} from "./voices.ts"
