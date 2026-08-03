@@ -192,27 +192,39 @@ const LADDER_CLIMB_ANSWERS = 55
  * is fine, `37388 × 85585 = 3199851980` is not. ARENA's old integer request landed
  * on exactly that rung whenever the breath reached its ceiling.
  *
- * **That measurement was taken against an UNRESTRICTED host, and it is worth being
- * exact about why it still matters.** `pack.json` declares
- * `covers.skills: ["dw.ns.compare.whole-numbers"]`, and `game-host` honours that by
- * restricting the stream to the `dw.ns` domain — so in a normal session ARENA is not
- * served long multiplication at all and the bound is unreachable. But the
- * restriction is not a guarantee: `game-host` SURRENDERS it, loudly and for the rest
- * of the session, whenever it cannot serve the declared domain, and after a
- * surrender the whole ladder is in scope. The stub host reaches past it too, and
- * `covers.skills` is a line in a manifest that a future edit can widen without
- * touching this file.
+ * **That measurement was taken against an UNRESTRICTED host, and this is now the
+ * ordinary case rather than the exotic one.** This paragraph used to say the bound
+ * was unreachable in a normal session, because `pack.json` declared only
+ * `dw.ns.compare.whole-numbers` and `game-host` restricts the stream to the
+ * declared *domains*. Both halves of that were wrong. Every `dw.ns` row is `draft`,
+ * so the host cannot serve one at all and `game-host` SURRENDERS the restriction
+ * three questions in — after which the whole ladder was already in scope, exactly
+ * as it is here. And the manifest now declares the `dw.mul` and `dw.div` rows this
+ * pack actually teaches, which puts the top rung in scope by design.
  *
- * So this is a guard on the seam rather than a fix for a bug a child is hitting
- * today: it costs one comparison per option, and what it prevents is a child being
- * shown four spheres one of which silently reads `0`.
- *
- * `openResonance` refuses to pose an item it cannot draw, in the same way and for
- * the same reason it already refuses one it cannot supply four distinct options
- * for. It is a structural check on the item in hand rather than a ceiling on the
- * request, because the request is relative and the ladder grows.
+ * So the guard is load-bearing, and a guard on its own is not enough: refusing item
+ * after item from a rung the host has no reason to stop serving is a beat a child
+ * never gets, every twenty seconds, forever. `lowerDrawCeiling` turns the first
+ * refusal into a stated capability — `next({ maxDifficulty })` — so the second one
+ * never happens.
  */
 const MAX_DRAWABLE_LABEL = 2147483647
+
+/**
+ * How far below a refused item's own ordinate the ceiling is set.
+ *
+ * A hundredth of the host's ladder. The pack cannot count the host's rungs — the
+ * wire is a 0..1 ordinate precisely so it does not have to — so the margin is
+ * expressed in the same units the refusal arrived in: whatever rung that item was,
+ * the ceiling goes under it. On the 77-rung ladder this ships against a rung is
+ * 0.0132 wide, so this drops exactly the rung that was refused and nothing else;
+ * on a ladder long enough for a hundredth to span two rungs it drops two, which is
+ * the safe direction to be wrong in.
+ *
+ * It is not zero, because `items.ts` caps with `Math.floor(maxDifficulty * span)`
+ * and a ceiling set *at* the refused ordinate re-admits the rung that was refused.
+ */
+const DRAW_CEILING_MARGIN = 0.01
 const QUIET_TIDE_CEILING = 0.62
 
 /**
@@ -914,6 +926,13 @@ export class World {
   }
   private nextResonanceAt = 16
   private resonanceCount = 0
+  /**
+   * The highest ordinate ARENA will accept, once it has met one it cannot draw.
+   *
+   * `null` until the first refusal, and monotone non-increasing after it. See
+   * `MAX_DRAWABLE_LABEL` and `lowerDrawCeiling`.
+   */
+  private drawCeiling: number | null = null
 
   // -- events -------------------------------------------------------------
   private readonly eventPool: GameEvent[] = Array.from({ length: MAX_EVENTS }, blankEvent)
@@ -2562,6 +2581,44 @@ export class World {
     }
   }
 
+  /**
+   * Say, on the wire, that the rung just refused is above what ARENA can draw.
+   *
+   * The refusal above is a check on the item in hand; this is the half that was
+   * missing. Without it the host has no reason to stop offering that rung, so a
+   * child at the top of the ladder gets a refused beat every twenty seconds and
+   * the game simply stops asking questions while looking like it is working.
+   *
+   * **Derived, never typed.** The number is the ordinate of the item ARENA could
+   * not draw, less `DRAW_CEILING_MARGIN` — so it is measured off the actual
+   * refusal against the actual ladder, and a curriculum that grows a rung, moves
+   * one, or renumbers all of them needs no edit here. A constant here would be a
+   * rung index somebody counted by hand against a ladder that is 66 rungs in one
+   * comment in this file and 77 in the shipped graph.
+   *
+   * **Monotone non-increasing**, and never below zero. A ceiling that could rise
+   * again would re-admit the rung it was set for on the next breath, which is the
+   * decline loop with extra steps; and one that could go negative would ask the
+   * host for an empty window, which `items.ts` answers by saying so and serving
+   * anyway.
+   */
+  private lowerDrawCeiling(ordinate: number): void {
+    if (!Number.isFinite(ordinate)) return
+    const want = Math.max(0, ordinate - DRAW_CEILING_MARGIN)
+    if (this.drawCeiling !== null && want >= this.drawCeiling) return
+    this.drawCeiling = want
+    console.warn(
+      `[arena] capping the stream at ${want.toFixed(3)} — the rung at ` +
+        `${ordinate.toFixed(3)} carries numerals past ${String(MAX_DRAWABLE_LABEL)}, ` +
+        `which this pack cannot print`,
+    )
+  }
+
+  /** What ARENA has told the host it cannot draw above, or `null` if nothing. */
+  get drawableCeiling(): number | null {
+    return this.drawCeiling
+  }
+
   private openResonance(): void {
     const res = this.resonance
     // The difficulty comes from the BREATH, not from the depth.
@@ -2604,7 +2661,14 @@ export class World {
     const diff = 1 + this.ladderPosition * (DIFFICULTY_RUNGS - 1)
     let q: Question
     try {
-      q = this.host.next({ difficulty: diff })
+      // `maxDifficulty` is a CAPABILITY and not a preference, so it is sent only
+      // once ARENA has actually met something it cannot draw — see
+      // `lowerDrawCeiling`. A ceiling asserted before the evidence would be this
+      // pack guessing at the shape of a ladder it cannot see.
+      q =
+        this.drawCeiling === null
+          ? this.host.next({ difficulty: diff })
+          : this.host.next({ difficulty: diff, maxDifficulty: this.drawCeiling })
     } catch (err) {
       console.error("[arena] host.next failed", err)
       this.nextResonanceAt = this.time + 20
@@ -2643,6 +2707,7 @@ export class World {
       const v = Number(text)
       if (Number.isSafeInteger(v) && Math.abs(v) <= MAX_DRAWABLE_LABEL) continue
       console.warn(`[arena] declining a question ARENA cannot draw: "${q.prompt}" has the option "${text}"`)
+      this.lowerDrawCeiling(q.difficulty)
       this.nextResonanceAt = this.time + 20
       return
     }

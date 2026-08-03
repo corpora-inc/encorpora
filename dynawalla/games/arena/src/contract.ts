@@ -1,6 +1,14 @@
 export type Question = { id: string; prompt: string; answer: string; distractors: string[]; domain: string; difficulty: number }
 export type Host = {
-  next(opts?: { domain?: string; difficulty?: number }): Question
+  /**
+   * `maxDifficulty` is a CAPABILITY, not a preference: "I cannot draw a question
+   * harder than this." `packs/shared/game-host` holds it as a standing ceiling
+   * once sent and puts it on the wire on every request after, and the host
+   * honours it absolutely — above the child's band as well as below it. ARENA
+   * sends it only after meeting a numeral it cannot print; see
+   * `lowerDrawCeiling` in `sim/world.ts`.
+   */
+  next(opts?: { domain?: string; difficulty?: number; maxDifficulty?: number }): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
   haptic(k: "light" | "medium" | "heavy" | "success" | "failure"): void
   prefersReducedMotion(): boolean

@@ -413,6 +413,105 @@ test("a question ARENA cannot draw is never asked, and never costs a child anyth
 })
 
 /**
+ * Declining is half a capability. This is the other half.
+ *
+ * The test above proves ARENA never poses a numeral it cannot print. On its own
+ * that is a pack that stops asking questions while looking exactly like a pack
+ * that is working: the host has no reason to stop offering the rung, so the beat
+ * is refused, retried twenty seconds later, and refused again, for the rest of
+ * the session. That is the defect `next({ maxDifficulty })` exists for, and it is
+ * the one this pack was carrying — POLARITY and TREBUCHET each shipped a release
+ * of it before the window grew the half they needed.
+ *
+ * Two claims, and the second is the one that makes it a capability rather than a
+ * mood: the ceiling is DERIVED from the refused item's own ordinate, and it only
+ * ever goes down.
+ */
+test("meeting a numeral it cannot print makes ARENA state a ceiling, once and downward", () => {
+  const realWarn = console.warn
+  console.warn = () => {}
+  try {
+    const asks: ({ difficulty?: number; maxDifficulty?: number } | undefined)[] = []
+    // The LOW rung first, then the high one for the rest of the run. This
+    // ordering is the whole reason the fixture is shaped like this: a ceiling
+    // that simply tracked the latest refusal would be set to 0.70, then RAISED to
+    // 0.93 on the next question, and would re-admit the very rung it was set for.
+    // Written the other way round — high first, then low — every mutation of the
+    // monotone guard still passes, because the numbers happen to descend on their
+    // own. (It was written that way round first, and M4 below caught nothing.)
+    //
+    // This stub deliberately ignores `maxDifficulty`: what is under test is what
+    // ARENA says, not whether a host obeys it.
+    const ordinates = [0.71, 0.94]
+    let served = 0
+    const bigHost: Host = {
+      next: (opts) => {
+        asks.push(opts)
+        const at = ordinates[Math.min(served, ordinates.length - 1)] as number
+        served++
+        return {
+          id: `big-${String(served)}`,
+          prompt: "37388 × 85585",
+          answer: "3199851980",
+          distractors: ["3199851981", "3199851979", "3199851990"],
+          domain: "multiply",
+          difficulty: at,
+        }
+      },
+      report: () => {},
+      haptic: () => {},
+      prefersReducedMotion: () => false,
+    }
+    const bw = new World(bigHost, specFor("low"), 21)
+    for (let f = 0; f < 60 * 60 * 4; f++) bw.step(1 / 60)
+
+    assert.ok(asks.length >= 3, `the host was asked ${String(asks.length)} times — too few to see a ceiling`)
+    // Nothing is claimed before there is evidence for it. A pack that asserted a
+    // ceiling on its opening request would be guessing at a ladder it cannot see.
+    assert.equal(
+      asks[0]?.maxDifficulty,
+      undefined,
+      "ARENA stated a ceiling before it had ever been handed something it could not draw",
+    )
+    // …and every request after the first refusal carries one, under the rung
+    // that was refused rather than at it: `items.ts` caps with
+    // `floor(maxDifficulty * span)`, so a ceiling set AT the refused ordinate
+    // re-admits the rung it was set for.
+    const after = asks.slice(1)
+    for (const ask of after) {
+      assert.equal(typeof ask?.maxDifficulty, "number", `a request after a refusal carried no ceiling: ${JSON.stringify(ask)}`)
+    }
+    const first = after[0]?.maxDifficulty as number
+    assert.ok(
+      first < 0.71,
+      `the ceiling was ${String(first)}, which does not exclude the 0.71 rung that was refused — ` +
+        `\`items.ts\` caps with floor(maxDifficulty × span), so a ceiling set AT the refused ` +
+        `ordinate re-admits the rung it was set for`,
+    )
+    // Derived from the refusal, not typed: it tracks the ordinate that arrived.
+    // A margin of zero, or a hard-coded ceiling, or one read off the wrong
+    // question all miss this by more than a float's worth.
+    assert.ok(
+      Math.abs(first - 0.7) < 1e-9,
+      `the ceiling was ${String(first)} — not one margin under the 0.71 rung the host actually offered`,
+    )
+    // Monotone. Every question after the first is offered at 0.94, which is ABOVE
+    // the ceiling already set: a ceiling that tracked the latest refusal would
+    // climb to 0.93 here and hand a child back the rung it had just excluded.
+    for (const ask of after) {
+      const c = ask?.maxDifficulty as number
+      assert.ok(
+        Math.abs(c - 0.7) < 1e-9,
+        `the ceiling moved from 0.7 to ${String(c)} — a refusal at a HARDER rung raised it`,
+      )
+    }
+    assert.equal(bw.drawableCeiling, first, "the world reports a different ceiling from the one it sends")
+  } finally {
+    console.warn = realWarn
+  }
+})
+
+/**
  * The other exploit, and the one that decided the shape of `devourGain`.
  *
  * The twenty-minute test above flies a bot that eats motes. This one flies the

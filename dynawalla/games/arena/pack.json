@@ -2,13 +2,21 @@
   "id": "dynawalla.arena",
   "version": "0.1.0",
   "name": "ARENA",
-  "description": "A bioluminescent growth arena. You are a number in a black ocean where everything obeys one radius law, so \"smaller than me\" is something you see before you read it — and telling 3,418 from 3,481 at speed is the whole game.",
+  "description": "A bioluminescent growth arena. You are a number in a black ocean where everything obeys one radius law, so \"smaller than me\" is something you see before you read it. Then the water stills, four identical spheres rise, and only the times table tells them apart.",
   "sdk": "1.0.0",
   "host": { "min": "0.1.0", "max": "1.0.0" },
   "entry": "pack.html",
   "capabilities": ["items", "items.reveal", "haptics"],
   "covers": {
-    "skills": ["dw.ns.compare.whole-numbers"]
+    "skills": [
+      "dw.ns.compare.whole-numbers",
+      "dw.mul.facts.tables-within-five",
+      "dw.mul.facts.tables-to-twelve",
+      "dw.mul.scale.times-power-of-ten",
+      "dw.mul.multidigit.long-multiplication",
+      "dw.div.facts.division-facts",
+      "dw.div.whole.zero-in-the-quotient"
+    ]
   },
   "minAge": 8,
   "locales": ["en"],
