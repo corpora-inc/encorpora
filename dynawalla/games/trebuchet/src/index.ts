@@ -53,7 +53,7 @@ export function mount(el: HTMLElement, host: Host): Mounted {
         // panel opens by itself the first time the wind blows.
         heading: 'Wind',
         lines: [
-          'When the sums get harder, a wind starts blowing across the field.',
+          'The wind arrives after you have knocked down a dozen keeps.',
           'The wind readout sits under your row of boulders: an arrow, and a number.',
           'The arrow shows which way the wind will push your boulder, and the number is how many metres it will push it.',
           'So the wind moves the boulder AFTER it leaves. You have to aim into the wind, and let the wind carry the stone the rest of the way.',
@@ -63,6 +63,8 @@ export function mount(el: HTMLElement, host: Host): Mounted {
           'If the arrow points back towards you, the wind holds the boulder 5 metres short instead, so dial 5 more. 72 and 5 is 77.',
           'Work out the sum first. Then take the wind off your answer, or add it on.',
           'The wind does not change while you are thinking. The number you can see is the number you get.',
+          'If you forget the wind, the boulder sails four to six metres past the keep, or lands that far short of it, and the keep stays standing.',
+          'The crater tells you the metre you actually claimed, which is the dial plus the wind. Answer 72, arrow pointing away with a 5, and you dial 72 anyway: the crater reads 77.',
         ],
       },
       {

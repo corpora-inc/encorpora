@@ -11,12 +11,16 @@
 
 import type { Host, Question } from './contract.ts'
 import { makeRng, shuffled, type Rng } from './core/rng.ts'
+// The one MIN_GAP. It used to be typed out here as well, and it now sets the
+// strongest wind the game can blow (`WIND_MAX = MIN_GAP - 2`), so a second copy is
+// a way for the stub's keeps and the real wind bounds to drift apart in silence.
+export { MIN_GAP } from './sim/ballistics.ts'
+
+import { MIN_GAP } from './sim/ballistics.ts'
 
 /** Towers stand at their own value in metres, so answers must fit the field. */
 export const ANSWER_MIN = 14
 export const ANSWER_MAX = 118
-/** Two towers closer than this would overlap on screen. */
-export const MIN_GAP = 8
 
 export type Report = { questionId: string; correct: boolean; ms: number; answered: string }
 

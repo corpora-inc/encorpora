@@ -8,8 +8,13 @@
 
 import type { Question } from '../contract.ts'
 import { type Rng } from '../core/rng.ts'
-import { heightAtX, LAUNCH_H } from './ballistics.ts'
+import { heightAtX, LAUNCH_H, WIND_MAX, WIND_MIN } from './ballistics.ts'
 import { shotFor } from './verdict.ts'
+
+// The field geometry is declared next to the blast that gives it its meaning; it
+// is re-exported here because this is the module the rest of the game asks about
+// the field.
+export { MIN_GAP, WIND_MAX, WIND_MIN } from './ballistics.ts'
 
 /** World x of the launch point; ranges are measured from here. */
 export const LAUNCH_X = 6
@@ -65,72 +70,60 @@ export function waveConfig(i: number): WaveConfig {
 export const LOFT_DEG = 46
 
 /**
- * When the wind starts blowing, as a position on the host's ladder.
+ * When the wind starts blowing, and how hard: a ladder indexed by what the child
+ * has DEMONSTRATED, not by where the curriculum happens to be pointing.
  *
- * NOT a wave number. A wave counter is a ratchet the pack owns, and it says
- * nothing about whether this particular child is ready for a second arithmetic
- * step: it arrives on her twelfth minute whether she has been landing every
- * boulder or none of them. The item's own difficulty is the host's judgement of
- * where she is, and it is on every `Question`.
+ * It used to be a position on the host's ladder (`WIND_FROM_D = 0.34`), on the
+ * reasoning that the item's own difficulty is the host's judgement of where the
+ * child is. The reasoning is sound and the measurement killed it: `game.ts` climbs
+ * the difficulty it asks for by a notch a wave and SWEEPS, wrapping, whenever a
+ * rung's answers will not fit on 122 metres, so the rung served oscillates and the
+ * wind oscillated with it — on at wave 4, off at 8, back at 14, gone at 18. See
+ * `sim/felled.ts` for the run.
  *
- * Measured over the shipped 66-rung ladder, taking 60 questions off every rung
- * and keeping the ones whose answers a 122-metre field can stand a keep at:
+ * So it is bought instead, with keeps felled. Three steps, and the whole table is
+ * here so that "monotone non-decreasing in what she has demonstrated" is something
+ * you can read rather than something you have to trust:
  *
- *     0.246  PLACEABLE   4..49     dw.mul.facts.tables-to-twelve L0
- *     0.277  PLACEABLE  27..99     dw.add.column.add-no-regroup L0
- *     0.292  PLACEABLE   1..82     dw.add.column.subtract-no-regroup L0
- *     0.323  PLACEABLE   6..72     dw.mul.facts.tables-to-twelve L1
- *     ---- 0.34: the wind starts here ----
- *     0.369  PLACEABLE   6..765    dw.add.column.subtract-no-regroup L1
- *     0.415  PLACEABLE   6..144    dw.mul.facts.tables-to-twelve L2
- *     0.462  PLACEABLE  33..171    dw.add.regroup.add-multidigit L0
- *     0.492  PLACEABLE   3..78     dw.add.regroup.subtract-multidigit L0
+ *     felled  0..11   no wind        — the game the founder is not complaining about
+ *     felled 12..23   ±4 or ±5       — two magnitudes: not one nudge to memorise
+ *     felled 24+      ±4, ±5 or ±6   — the whole mechanic
  *
- * So everything below the line is a table fact or a column sum with no
- * regrouping. A child on those is meeting the game for the first time and gets
- * the game the founder is not complaining about: read the sum, dial the answer,
- * the keep falls. The wind arrives once the ladder has taken her past that —
- * `game.ts` opens its search at 0.28 and climbs a notch a wave.
+ * The first twelve are necessarily felled in still air, because there is no wind
+ * below twelve, so step 1 is bought by fluency at the ONE-step game; the twelve
+ * after it are felled in a wind, so step 2 is bought by fluency at the two-step
+ * game. Twelve keeps is roughly the first four or five waves' worth of boulders,
+ * which is where the old difficulty gate landed too — but now it lands there
+ * because she has been putting boulders on the metre, and a child who has not is
+ * simply still playing the one-step game. There is no clock in this and no wave
+ * counter: a child can take six goes at a keep and the twelfth felled keep still
+ * buys the wind.
  *
- * Driven against the real `ladder()` with the real generators and the app's own
- * rung quantisation, that lands as:
- *
- *     wave 1   rung 0.277  answers 98, 87        no wind
- *     wave 2   rung 0.292  answers 27, 71        no wind
- *     wave 3   rung 0.308  answers 25, 16        no wind
- *     wave 4   rung 0.323  answers 16, 30, 45    no wind
- *     wave 5   rung 0.369  answers 43,80,97,112  WIND, up to 3 metres
- *     ...      rung 0.369                        WIND, up to 3 metres
- *
- * So four waves of the game the founder is not complaining about, and then the
- * second step. It holds at three metres from there because the pack's arithmetic
- * escalation is itself pinned by the 122-metre field — the sweep cannot climb past
- * rung 24 without landing on four-digit column sums no keep can stand at, which is
- * the plateau #702 documented and is not this change's to move.
+ * The steps stop at three because the geometry stops there. `WIND_MIN` is one
+ * metre past the blast and `WIND_MAX` one metre inside the garrison's reach (see
+ * `ballistics.ts`), so 4..6 is the entire honest range and there is nothing left to
+ * stagger. A fourth step would have to invent headroom the field does not have.
  */
-export const WIND_FROM_D = 0.34
-/** The strongest wind there is. The dial carries this much slack at both ends. */
-export const WIND_MAX = 9
-/** One more metre of wind every this far up the ladder. */
-const WIND_RAMP = 0.06
+export const WIND_STEPS: ReadonlyArray<{ felled: number; cap: number }> = [
+  { felled: 0, cap: 0 },
+  { felled: 12, cap: WIND_MIN + 1 },
+  { felled: 24, cap: WIND_MAX },
+]
 
 /**
- * How hard the wind blows for an item of this difficulty — the size of the second
- * arithmetic step, in metres.
+ * How hard the wind may blow for a child who has felled this many keeps — the size
+ * of the second arithmetic step, in metres.
  *
- * Zero below the threshold, and it never OPENS below 3 — so from the first wind she
- * meets, `rollWind` has the whole of ±1..±3 to draw from and the adjustment is a
- * different number every shot. A cap of 1 would have made the mechanic a single
- * nudge of the dial, learnable without arithmetic and then boring.
- *
- * It grows a metre every `WIND_RAMP` up the ladder, to `WIND_MAX`. On today's ladder
- * the pack's own escalation plateaus before that headroom is used — see
- * `WIND_FROM_D` — so the ramp is what happens when the curriculum or the field
- * grows, not a promise about this month's content.
+ * A pure function of the count and nothing else. It never opens below `WIND_MIN`,
+ * so from the first wind she ever meets the adjustment is a real subtraction and
+ * not a nudge of the dial she could learn by watching; and it never shrinks, so the
+ * rule about what a right answer looks like changes exactly once.
  */
-export function windCapFor(difficulty: number): number {
-  if (!Number.isFinite(difficulty) || difficulty < WIND_FROM_D) return 0
-  return Math.min(WIND_MAX, 3 + Math.floor((difficulty - WIND_FROM_D) / WIND_RAMP))
+export function windCapFor(felled: number): number {
+  if (!Number.isFinite(felled)) return 0
+  let cap = 0
+  for (const step of WIND_STEPS) if (felled >= step.felled) cap = step.cap
+  return cap
 }
 
 /* ------------------------------------------------------------------ *
@@ -171,15 +164,15 @@ export const PLACEABLE_HI = FIELD_MAX - 4
  * How far the dial winds — and it is WIDER than the field, on purpose.
  *
  * The dial is the range in still air, and in a wind the child aims off it: to put
- * a boulder on metre 14 with the wind pushing 9 metres downrange she has to dial
- * 5, and to put one on 118 against a 9-metre headwind she has to dial 127. If the
- * dial stopped at the field the compensation would be inexpressible at both ends —
- * a correct answer she is physically unable to enter, which is the same defect as
- * a correct answer scored wrong. So the dial carries `WIND_MAX` of slack past
+ * a boulder on metre 14 with the wind pushing 6 metres downrange she has to dial 8,
+ * and to put one on 118 against a 6-metre headwind she has to dial 124. If the dial
+ * stopped at the field the compensation would be inexpressible at both ends — a
+ * correct answer she is physically unable to enter, which is the same defect as a
+ * correct answer scored wrong. So the dial carries `WIND_MAX` of slack past
  * `PLACEABLE_LO..PLACEABLE_HI` at both ends, and `windValues` can never ask for
  * more than that.
  *
- * Nothing lands out there: a shot dialled to 127 into a 9-metre headwind
+ * Nothing lands out there: a shot dialled to 124 into a 6-metre headwind
  * decelerates the whole way and comes down at 118, and the drawn ground already
  * runs 40 metres past the field.
  */
@@ -191,11 +184,16 @@ export const DIAL_MAX = PLACEABLE_HI + WIND_MAX
  * a metre that exists.
  *
  * The dial reaches past both ends of the field so that the compensation is always
- * expressible, and that slack has to be paid for at the other end: dialling 5 into
- * a nine-metre headwind claims metre −4, and a boulder aimed at metre −4 arcs
- * forward, turns round in mid-air and comes down behind the trebuchet. Found by
- * sweeping the dial rather than by reading the code, which is the only way this
- * kind of corner ever turns up.
+ * expressible, and that slack used to have to be paid for at the other end: when
+ * the wind reached 9, dialling 5 into a nine-metre headwind claimed metre −4, and a
+ * boulder aimed at metre −4 arced forward, turned round in mid-air and came down
+ * behind the trebuchet. Found by sweeping the dial rather than by reading the code,
+ * which is the only way that kind of corner ever turns up.
+ *
+ * At `WIND_MAX = 6` the floor is 8 and `1 − wind` never exceeds 7, so the `1 −
+ * wind` term can no longer bind and the corner is gone from the geometry rather
+ * than merely guarded. The guard stays because it is the thing that has to remain
+ * true if the field or the blast ever move, and it costs one `Math.max`.
  *
  * So the claim is held inside `1..DIAL_MAX` and the dial's own stops move with the
  * wind. **This can never bind on a child who is right**, and that is arithmetic and
