@@ -106,6 +106,28 @@ export type Gesture =
   | { readonly kind: "levelComplete" }
   /** An input was declined — too soon, not allowed, nothing there. */
   | { readonly kind: "refuse" }
+  /**
+   * A STRUCTURE CAME DOWN. Masonry, not a noise burst.
+   *
+   * `refuse` is the small version of this — a shelf going over — and it is what
+   * the module had. A siege game knocking a stone keep off a field needs the
+   * big one, and until this existed the only way to make it was a white-noise
+   * burst in the game's own file, which is the exact sound the founder called
+   * out: *"the building destroyed is a bit white noise instead of a nice
+   * building crumbling sound"*. A gesture, not a recipe: the `rubble` timbre
+   * already carries the recipe (`SOUNDSCAPE_DESIGN_2026-07.md`), and this says
+   * how big the thing that fell was and on which degrees it lands.
+   *
+   * `weight` is 0..1 — a garden wall at 0, a keep at 1. It buys length and body
+   * and nothing else, exactly as it does for `step`.
+   *
+   * It does NOT move the walker. A building falling over is not a note anybody
+   * chose, so a phrase in progress carries on across it rather than being
+   * reset — which matters here because the game that knocks a keep down is
+   * usually celebrating in the same breath, and the cadence belongs to the
+   * `success` that follows.
+   */
+  | { readonly kind: "collapse"; readonly weight?: number }
   /** Something appeared, arrived, or was laid out. */
   | { readonly kind: "arrive" }
   /** Wind the soundscape up. Silent in itself; the bed and the melody change. */
@@ -147,6 +169,17 @@ export const MELODY_MAX_HZ = 1250
  */
 const TOP_OCTAVE = 2
 const REGISTER_SPAN = 3
+
+/**
+ * The heaviest band there is — the one a full-weight `step` already lands in.
+ *
+ * Named rather than written as `-1` because `collapse` reaches for it too, and
+ * a second literal is how the two would drift apart. Nothing may go below it:
+ * the "nothing is ever folded" claim in `melody.test.ts` is a claim about
+ * exactly four bands, and a fifth would put the bottom one under
+ * `MELODY_MIN_HZ` on the lowest roots.
+ */
+const BOTTOM_OCTAVE = TOP_OCTAVE - REGISTER_SPAN
 
 /** How much one `moreTension` or `lessTension` moves the dial. */
 export const TENSION_STEP = 0.18
@@ -254,6 +287,8 @@ export class Melody {
         return this.flourish()
       case "refuse":
         return this.crumble()
+      case "collapse":
+        return this.fall(gesture.weight ?? 1)
       case "arrive":
         return this.bloom()
       case "moreTension":
@@ -384,6 +419,58 @@ export class Melody {
   /** A shelf of brass going over. Low, brief, and not a note anyone chose. */
   private crumble(): readonly Voice[] {
     return [{ hz: this.pitch(0, 0), at: 0, seconds: 0.34, gain: 0.09, timbre: "rubble" }]
+  }
+
+  /**
+   * A building coming down. `crumble` with a size to it, and the size is heard.
+   *
+   * TWO rubble clouds rather than one, staggered, and that is what makes it a
+   * building rather than a bigger shelf: the first is the face going, in the
+   * heaviest band, and the second is the rest of it arriving a beat later a
+   * register up, the way real masonry does not land all at once. Both are
+   * degrees of the live mode, so the whole event is still in tune with the
+   * drone even though nothing in it is a note.
+   *
+   * Long, low and unhurried at full weight — 1.2 s at the bottom of the
+   * register, which is the opposite of the 300 ms of band-passed hiss it
+   * replaces.
+   *
+   * **It lands on a resting degree DRAWN each time, and does not move the
+   * walker.** Pinning it to the tonic was tried first and is wrong for the
+   * reason the whole module exists: a fixed low thud forever is exactly
+   * "nothing that happens changes what the next sound is", and a siege game
+   * knocks down five keeps a minute. Reading the walker's live degree instead
+   * was tried second and is wrong too — in a game whose only other gestures are
+   * `success` and `failure`, both of which cadence home, the walker is at the
+   * tonic every single time it is asked.
+   *
+   * So the draw comes off this walker's own seeded stream, weighted to the
+   * tonic the way `resolve` weights a cadence. It is consonant by construction,
+   * different from one keep to the next, and reproducible from the seed. It
+   * does consume randomness, so a collapse does change the phrase that follows
+   * it — which is the property this module is for, not a side effect of it.
+   */
+  private fall(weight: number): readonly Voice[] {
+    const w = clamp01(weight)
+    const mode = modeOf(this.scape)
+    const rest = mode.rest
+    const landing = rest[this.rng.weighted(rest.map((_, i) => (i === 0 ? 3 : 1)))] ?? 0
+    return [
+      {
+        hz: this.pitch(landing, BOTTOM_OCTAVE),
+        at: 0,
+        seconds: 0.55 + w * 0.65,
+        gain: 0.085 + w * 0.045,
+        timbre: "rubble",
+      },
+      {
+        hz: this.pitch(mode.rest[1] ?? 2, BOTTOM_OCTAVE + 1),
+        at: 0.13 + w * 0.09,
+        seconds: 0.4 + w * 0.45,
+        gain: 0.045 + w * 0.03,
+        timbre: "rubble",
+      },
+    ]
   }
 
   /** Something was laid out. The tonic, breathed in rather than struck. */

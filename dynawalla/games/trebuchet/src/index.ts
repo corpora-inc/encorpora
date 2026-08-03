@@ -43,6 +43,8 @@ export function mount(el: HTMLElement, host: Host): Mounted {
           'Say you dial 54 instead of 56. The boulder lands two metres short.',
           'It leaves a crater with 54 written in it, out where you can see it.',
           'So you do not just get told you were wrong. You get to see how far off you were.',
+          'Then the finished sum comes up at the top, and the keep you were aiming at lights up out on the field.',
+          'Nothing moves while it is there. It waits for you. Touch the screen or press a key when you have finished looking.',
         ],
       },
       {

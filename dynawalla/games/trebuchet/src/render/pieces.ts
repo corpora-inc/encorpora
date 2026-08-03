@@ -383,8 +383,18 @@ export function drawTower(
   if (!t.alive) return
 
   // banner
+  //
+  // `reveal` is the keep the child was aiming at, lit while the completed sum
+  // is held on the glass. It used to change NOTHING for the first eight waves:
+  // `waveConfig` sets `banners: true` up to wave 8, so `showBanner` was already
+  // true, the geometry was already drawn and the only line that read `reveal`
+  // was the fill — behind an `&& !showBanner` that made it unreachable. A
+  // child's whole first session had a reveal that redrew the same banner in the
+  // same colour in the same place. So the colour now answers to `reveal` alone,
+  // and a lit banner lifts and glows whether or not it was already up.
   if (showBanner || reveal) {
-    const top = t.heightM + 3.4
+    const lift = reveal ? easeOutCubic(clamp01(t.reveal)) : 0
+    const top = t.heightM + 3.4 + lift * 1.1
     const rv = showBanner ? 1 : easeOutCubic(clamp01(t.reveal))
     const sway = Math.sin(time * 1.7 + t.range) * 0.16
     ctx.save()
@@ -408,9 +418,15 @@ export function drawTower(
     ctx.lineTo(0, top - bh * 0.78)
     ctx.lineTo(-bw / 2 + sway * 0.4, top - bh)
     ctx.closePath()
-    ctx.fillStyle = reveal && !showBanner ? C.bannerWanted : C.banner
+    ctx.fillStyle = reveal ? C.bannerWanted : C.banner
     ctx.globalAlpha = 0.92 * rv
     ctx.fill()
+    if (lift > 0) {
+      ctx.strokeStyle = C.fire1
+      ctx.globalAlpha = 0.8 * lift
+      ctx.lineWidth = 2.4 / s
+      ctx.stroke()
+    }
     ctx.globalAlpha = 1
     worldText(ctx, s, 0, top - 0.7, (c) => {
       c.font = font(Math.max(13, Math.min(30, s * 2.3)), 900)

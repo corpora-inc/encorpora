@@ -350,8 +350,23 @@ a building crumbling — is the recipe:
 > difference between "static" and "masonry"**, and it costs sixteen short
 > oscillators — which must be budgeted as ONE voice, because it is one gesture.
 
-Implemented in `games/counterweight/src/audio.ts` `rubble()`. The same recipe with
-different size exponents is gravel, a collapsing shelf, a wave, a fire.
+Implemented in `packs/shared/game-audio/voices.ts` `playVoice()` / `voiceGrains()`,
+where any pack can reach it. The same recipe with different size exponents is
+gravel, a collapsing shelf, a wave, a fire.
+
+`games/counterweight/src/audio.ts` still carries its own private copy — it was the
+first caller and the recipe was written there. Folding it into the shared one is a
+follow-up, and worth doing: the private version drops the `VoiceBudget` scale on the
+rubble path, so a spent budget silences every other timbre and not that one.
+
+**A collapse is now a gesture, not a recipe a game re-types.** `refuse` was the only
+thing in the vocabulary that produced rubble, and it is the *small* version — a shelf
+of brass going over, 340 ms. A building coming down is a different event, and a siege
+game that had to make one had no way to say so, so TREBUCHET said it in white noise
+in its own file. `{ kind: "collapse", weight }` says it: two staggered rubble clouds
+in the bottom two registers, sized by the weight, landing on a resting degree drawn
+from the walker's own stream so that five keeps a minute are not five identical thuds.
+It does not move the walker — the `success` that usually follows it owns the cadence.
 
 ### Loudness
 
@@ -505,7 +520,8 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 | The doorway that draws one, and gives it back | `dynawalla-app/src/packs/Stage.tsx` |
 | THE STEELYARD's whole musical vocabulary | `games/counterweight/src/tune.ts` |
 | PULSE's chart, generated from the mode and the density | `games/pulse/src/game/chart.ts` |
-| The synthesis, and the rubble recipe | `games/counterweight/src/audio.ts` |
+| The synthesis, and the rubble recipe | `packs/shared/game-audio/voices.ts` |
+| TREBUCHET's collapse, reward, horns and reveal | `games/trebuchet/src/audio/audio.ts` |
 | Where it is turned on, for now | `games/counterweight/src/main.ts` |
 | The corpus this was ported from | `corpan/packs/beatlounge/src/music/modes/` |
 | The ceiling everything still passes | `packs/shared/game-audio/` |

@@ -28,6 +28,8 @@ import { Rings } from './fx/rings.ts'
 import { Trail } from './fx/trail.ts'
 import { Backdrop } from './render/backdrop.ts'
 import { safeRect } from '../../../packs/shared/game-chrome/index.ts'
+import { revealPlan, SECOND_GRADE_FLOW } from '../../../packs/shared/game-pacing/index.ts'
+import { completedSum } from './reveal.ts'
 import {
   dialNumeralBox,
   drawHud,
@@ -265,7 +267,32 @@ export class TrebuchetGame {
   private scorePop = 0
   private hitsThisWave = 0
   private platformDamage = 0
-  private revealT = 0
+
+  /* --------------------------------------------------------------- reveal */
+
+  /**
+   * THE COMPLETED SUM, held on the glass after a miss.
+   *
+   * `null` is the ordinary state. Non-null means the child is being shown what
+   * the answer was, and **the game has stopped** — see `stopped`.
+   *
+   * What was here before, and why it was nothing at all: `revealT = 1.6`, a
+   * countdown that lit `t.reveal` on the keeps still WANTED — never on the one
+   * she had just missed, because `markWanted()` runs after the boulder is
+   * spent — and drew their number on a banner. On waves 1 to 7 `waveConfig`
+   * already sets `banners: true`, so every one of those numbers was on the
+   * screen the whole time and the reveal drew the same banner in the same
+   * place: a visual no-op for a child's entire first session. Meanwhile the ram
+   * kept rolling, the settle clock kept running and the wave moved on
+   * underneath her at 1.6 seconds whether or not she had read anything.
+   *
+   * `settle` is a lockout in seconds and NOT a lifetime: the tap that ended the
+   * question is routinely still arriving on a touch screen, and without a floor
+   * it lands inside the reveal's own fade-in. Nothing else times this out.
+   * `revealPlan` says `holdMs: Infinity` for a reveal that is shown, and the
+   * one mechanism honouring that is the absence of any expiry in this file.
+   */
+  private reveal: { sum: string; answer: number; settle: number; age: number } | null = null
 
   // hud
   private btns: Btn[] = []
@@ -446,6 +473,11 @@ export class TrebuchetGame {
     // backdrop to the new wave's empty plaque.
     this.rack = []
     this.activeIdx = 0
+    // A reveal belongs to a question that is over. Nothing should be able to
+    // start a wave underneath one — the phase machine cannot while it is up —
+    // but the harness's `jumpToWave` can, and a sum left hanging over a fresh
+    // field would freeze the new wave forever.
+    this.reveal = null
     this.towers = []
     this.craters = []
     this.ghosts = []
@@ -692,6 +724,9 @@ export class TrebuchetGame {
   private onPointerDown = (e: PointerEvent): void => {
     if (this.blocked()) return
     this.audio.resume()
+    // Her hand ends the reveal, and nothing else does. It is spent on that and
+    // does not also wind the dial to the metre it landed on.
+    if (this.dismissReveal()) return
     const p = this.pointerPos(e)
     const b = hitBtn(this.btns, p.x, p.y)
     if (b) {
@@ -737,11 +772,22 @@ export class TrebuchetGame {
   private onWheel = (e: WheelEvent): void => {
     e.preventDefault()
     if (this.blocked()) return
+    // A wheel is not a hand on the glass — a trackpad emits dozens of these from
+    // one flick — so it does not dismiss. It simply does nothing while the sum
+    // is up, rather than winding a dial nobody can see.
+    if (this.stopped) return
     this.setDial(this.dial + (e.deltaY > 0 ? -1 : 1))
   }
 
   private key(e: KeyboardEvent, down: boolean): void {
     if (!down || this.blocked()) return
+    // Any key takes the sum down and is spent doing it. One rule for the hand,
+    // whichever hand it is: the space bar must not both dismiss the reveal and
+    // fire the next boulder in the same press.
+    if (this.dismissReveal()) {
+      e.preventDefault()
+      return
+    }
     const big = e.shiftKey ? 10 : 1
     switch (e.key) {
       case 'ArrowLeft':
@@ -817,6 +863,8 @@ export class TrebuchetGame {
     return {
       layout: this.hud,
       equation: b ? b.q.prompt : '',
+      reveal: this.reveal?.sum ?? null,
+      revealAge: this.reveal?.age ?? 0,
       rack: live.map((x) => x.r.q.prompt),
       rackActive: live.findIndex((x) => x.i === this.activeIdx),
       wave: this.wave,
@@ -1109,12 +1157,79 @@ export class TrebuchetGame {
       // Only a wrong ANSWER breaks the chain. Spending a boulder on the ram is a
       // choice about the siege, and the game does not punish it as arithmetic.
       this.combo = 0
-      this.revealT = 1.6
+      this.raiseReveal(b)
     }
     // The boulder is gone either way: it was thrown.
     b.spent = true
     void destroyed
     this.markWanted()
+  }
+
+  /* --------------------------------------------------------------- reveal */
+
+  /**
+   * Finish the sum in front of her, and stop the siege while she reads it.
+   *
+   * **Adaptation lives in whether this happens at all, not in how long it
+   * lasts.** `revealPlan` returns `holdMs: 0` above intensity ≈0.75 and
+   * `Infinity` below it, so a child the ladder has taken to the top of the
+   * range is moved straight on — skipping the ceremony is the reward for
+   * mastery — and everybody else gets a sum that waits for them. There is no
+   * middle setting, because the half-patient reveal was long enough to be
+   * noticed and too short to be read.
+   *
+   * The intensity is the ITEM's own difficulty, which is the host's live
+   * judgement of where this child is standing. A wave number would not be: it
+   * arrives on her twelfth minute whether she has been landing every boulder or
+   * none of them, which is the same argument `WIND_FROM_D` makes.
+   *
+   * Nothing is drawn about being wrong. The finished equation, in the accent,
+   * and the keep she was aiming at lighting up out on the field — no red, no
+   * cross, no word.
+   */
+  private raiseReveal(b: Boulder): void {
+    const plan = revealPlan(SECOND_GRADE_FLOW, b.q.difficulty)
+    if (plan.holdMs <= 0) return
+    this.reveal = {
+      sum: completedSum(b.q.prompt, b.q.answer),
+      answer: b.answer,
+      settle: plan.settleMs / 1000,
+      age: 0,
+    }
+    this.audio.reveal()
+  }
+
+  /**
+   * A hand on the glass while the sum is up. Takes it down, and nothing else.
+   *
+   * @returns true when the gesture was spent on the reveal, so the caller must
+   *          not also act on it — a tap that dismissed the sum must not, in the
+   *          same breath, wind the dial to the metre under the finger.
+   */
+  private dismissReveal(): boolean {
+    const r = this.reveal
+    if (!r) return false
+    // Latency, not pedagogy. A short lockout only makes sure the hand meant it.
+    if (r.settle > 0) return true
+    this.reveal = null
+    this.audio.detent()
+    return true
+  }
+
+  /**
+   * Is the world stopped?
+   *
+   * **One condition, used everywhere, and that is deliberate.** The rule "a
+   * child who is reading must never be losing" was previously enforced nowhere;
+   * the tempting fix is to enforce it twice — a flag AND a phase — and the cost
+   * of that is that deleting either leaves the suite green. Everything that
+   * could move the game on reads this and only this.
+   *
+   * (Not to be confused with `this.held`, which is the +/− button somebody is
+   * leaning on.)
+   */
+  private get stopped(): boolean {
+    return this.reveal !== null
   }
 
   /** The struck keep's number blows apart into shards. */
@@ -1232,13 +1347,17 @@ export class TrebuchetGame {
       this.explainPending = false
       this.explain()
     }
-    this.phaseT += rawDt
+    // The reveal's own two clocks: how long it has been up, which the entrance
+    // animation rides, and the input lockout counting down. Neither ends it.
+    if (this.reveal) {
+      this.reveal.age += rawDt
+      this.reveal.settle = Math.max(0, this.reveal.settle - rawDt)
+    }
     this.dialPop = Math.min(1, this.dialPop + rawDt / 0.16)
     this.scorePop = Math.min(1, this.scorePop + rawDt / 0.5)
     this.aimEmphasis = approach(this.aimEmphasis, this.phase === 'aim' || this.phase === 'intro' ? 1 : 0, 4, rawDt)
     this.introT = Math.min(1, this.introT + rawDt / 0.5)
     this.recoil = approach(this.recoil, 0, 6, rawDt)
-    this.revealT = Math.max(0, this.revealT - rawDt)
     this.flash.update(rawDt)
     this.backdrop.update(rawDt)
     this.parts.update(dt, 0)
@@ -1249,10 +1368,36 @@ export class TrebuchetGame {
     for (const g of this.ghosts) g.age += rawDt
     for (const t of this.towers) {
       t.flash = Math.max(0, t.flash - rawDt * 3)
-      if (t.wanted && this.revealT > 0) t.reveal = Math.min(1, t.reveal + rawDt * 4)
+      // The keep she was AIMING AT — not whichever keeps happen to still be
+      // wanted, which is what this used to light and is why it could never be
+      // the thing she had just missed: `markWanted()` runs after her boulder is
+      // spent, so its own keep is the one keep guaranteed to be excluded.
+      if (this.reveal && t.value === this.reveal.answer) t.reveal = Math.min(1, t.reveal + rawDt * 4)
       else t.reveal = Math.max(0, t.reveal - rawDt * 3)
       stepBlocks(t, dt)
     }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // THE HELD SUM — and this line is the whole of it.
+    //
+    // Everything above is cosmetic: dust still falling, the camera easing back,
+    // the reveal's own two clocks. Everything below MOVES THE GAME ON — the
+    // phase clock, the dial repeat, the phase machine, the counter-fire and the
+    // ram — and none of it runs while a child is reading. A child who is
+    // reading must never be losing.
+    //
+    // **One gate, not two.** The first draft of this also guarded `phaseT`
+    // separately, and the two of them independently froze the phase machine: a
+    // mutation deleting this entire block left all 163 tests green, because the
+    // other half was still holding. That is the exact defect #748 records — two
+    // mechanisms enforcing one rule are both untestable — and it survived here
+    // for about an hour. `phaseT` now advances below this line and nowhere else.
+    // ─────────────────────────────────────────────────────────────────────────
+    if (this.stopped) {
+      this.updateCamera(rawDt)
+      return
+    }
+    this.phaseT += rawDt
 
     // Held +/- repeat. The accumulator matters: the dial is an integer, so adding
     // a fraction of a metre per frame and rounding would move nothing at all.
@@ -1387,7 +1532,7 @@ export class TrebuchetGame {
             this.phase = 'clear'
             this.phaseT = 0
             this.clearT = 0
-            this.audio.horn(this.hitsThisWave === this.rack.length)
+            this.audio.horn(this.hitsThisWave === this.rack.length, true)
           } else {
             this.activeIdx = nextIdx
             this.phase = 'aim'
@@ -1550,7 +1695,10 @@ export class TrebuchetGame {
 
     if (this.wall) drawWall(ctx, s, this.wall.x, this.wall.h)
     for (const t of this.towers) {
-      drawTower(ctx, s, t, this.cfg.banners, t.wanted && this.revealT > 0, this.time)
+      // `t.reveal > 0`, not the condition that SET it. Recomputing "is this the
+      // keep she wanted" here would be a second mechanism for one rule, and the
+      // renderer's copy could drift from the update loop's with nothing failing.
+      drawTower(ctx, s, t, this.cfg.banners, t.reveal > 0, this.time)
     }
     if (this.ram?.alive) drawRam(ctx, s, this.ram, this.time)
     drawCraterLabels(ctx, s, this.craters)
@@ -1769,5 +1917,32 @@ export class TrebuchetGame {
   /** The difficulty the game last found it could place answers from. */
   stockedDifficulty(): number | null {
     return this.stockD
+  }
+
+  /**
+   * The completed sum being held on the glass, or `null`.
+   *
+   * Read off the real `hudState()` rather than off the field, so a test
+   * asserting the reveal exists is asserting about the string a child is
+   * looking at — the same argument `fireArmed()` makes about the fire button.
+   */
+  revealedSum(): string | null {
+    return this.hudState().reveal
+  }
+
+  /**
+   * The keeps currently lit by a reveal, by value.
+   *
+   * There must be exactly one and it must be the answer she missed. The old
+   * reveal lit the keeps still WANTED, which is the one set that can never
+   * contain it — `markWanted()` runs after her boulder is spent.
+   */
+  litKeeps(): number[] {
+    return this.towers.filter((t) => t.reveal > 0).map((t) => t.value)
+  }
+
+  /** How far the ram has rolled, or `null` when this wave has none. */
+  ramRangeM(): number | null {
+    return this.ram?.alive ? this.ram.range : null
   }
 }
