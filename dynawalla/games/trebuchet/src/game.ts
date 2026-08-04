@@ -1191,7 +1191,10 @@ export class TrebuchetGame {
    * The intensity is the ITEM's own difficulty, which is the host's live
    * judgement of where this child is standing. A wave number would not be: it
    * arrives on her twelfth minute whether she has been landing every boulder or
-   * none of them, which is the same argument `WIND_FROM_D` makes.
+   * none of them. `WIND_STEPS` makes the same argument one step further along —
+   * the wind is indexed on keeps this child has actually felled, because the
+   * ladder's own position turned out to oscillate as `stock()` sweeps for a rung
+   * that fits on the field, and the wind oscillated with it.
    *
    * Nothing is drawn about being wrong. The finished equation, in the accent,
    * and the keep she was aiming at lighting up out on the field — no red, no
