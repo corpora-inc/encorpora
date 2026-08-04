@@ -34,7 +34,9 @@ import {
   PLACEABLE_HI,
   PLACEABLE_LO,
   WIND_MAX,
+  WIND_MIN,
   windCapFor,
+  WIND_STEPS,
 } from './world.ts'
 import { makeRng } from '../core/rng.ts'
 
@@ -86,8 +88,13 @@ const dialFor = (answer: number, wind: number): number => answer - wind
  */
 const recordedCorrect = (answered: string, answer: number): boolean => answered === String(answer)
 
-/** Every wind cap the game can put on the field, weakest first. */
-const CAPS = [0, 3, 4, 5, 6, 7, 8, WIND_MAX]
+/**
+ * Every wind cap the game can put on the field, weakest first — read off the ramp
+ * itself rather than typed out beside it, so a step added to `WIND_STEPS` is a step
+ * the whole of this file sweeps. The old hand-written list ran to a cap of 9, and
+ * five of its eight entries are caps the game has never been able to produce.
+ */
+const CAPS = WIND_STEPS.map((step) => step.cap)
 const pct = (n: number, d: number): string => (d === 0 ? 'n/a' : `${((n / d) * 100).toFixed(1)}%`)
 
 /* ------------------------------------------------------------------ *
@@ -132,24 +139,26 @@ test('the correct child always lands it: every wind, every answer on the field',
     `${failures.length} of ${shots} correct shots were punished`,
   )
   // A guard on the sweep itself, so a loop that quietly stopped iterating cannot
-  // pass by testing nothing. 8,925 today: 85 winds across the caps, 105 answers.
-  assert.ok(shots > 8000, `only ${shots} shots were swept`)
+  // pass by testing nothing. 1,155 today: 11 winds across the three steps of the
+  // ramp (still air, ±4..5, ±4..6), times the 105 answers the field can hold.
+  assert.equal(shots, 1155, `${shots} shots — the ramp is not the shape this file sweeps`)
 })
 
-test('the correct child always lands it, at every difficulty the ladder has', () => {
+test('the correct child always lands it, however many keeps she has felled', () => {
   // The same sweep, driven the way the game drives it: the wind cap comes from the
-  // item's difficulty, so walk the whole ladder rather than a list of caps someone
-  // chose. A rung whose cap the dial cannot express is a rung that punishes her.
+  // number of keeps she has brought down in still air, so walk that rather than a
+  // list of caps someone chose. A cap the dial cannot express is a cap that
+  // punishes her.
   const failures: string[] = []
-  for (let d = 0; d <= 1.0001; d += 0.01) {
-    const cap = windCapFor(d)
+  for (let felled = 0; felled <= 60; felled++) {
+    const cap = windCapFor(felled)
     for (const wind of cap ? windValues(cap) : [0]) {
       for (const answer of [PLACEABLE_LO, 40, 72, 99, PLACEABLE_HI]) {
         const dial = dialFor(answer, wind)
         const stops = dialRange(wind)
         const r = takeShot(dial, answer, wind)
         if (dial < stops.lo || dial > stops.hi || r.landing !== answer || !r.correct) {
-          failures.push(`d=${d.toFixed(2)} cap ${cap} wind ${wind} answer ${answer}: dial ${dial}, landed ${r.landing}, correct ${String(r.correct)}`)
+          failures.push(`felled ${felled} cap ${cap} wind ${wind} answer ${answer}: dial ${dial}, landed ${r.landing}, correct ${String(r.correct)}`)
         }
       }
     }
@@ -196,12 +205,12 @@ test('the wind is not decoration: ignoring it misses, accounting for it lands', 
   )
 })
 
-test('below the threshold there is no wind, and the dial is the answer', () => {
+test('before she has bought it there is no wind, and the dial is the answer', () => {
   // The low end is untouched, and that is a promise: a child meeting this game gets
-  // one idea — read the sum, dial the answer, the keep falls. Every rung the shipped
-  // ladder has below `WIND_FROM_D` that this field can hold.
-  for (const d of [0, 0.169, 0.2, 0.246, 0.262, 0.277, 0.292, 0.308, 0.323, 0.339]) {
-    assert.equal(windCapFor(d), 0, `d=${String(d)} has a wind on it`)
+  // one idea — read the sum, dial the answer, the keep falls. It stays that way
+  // however hard the arithmetic gets, until she has demonstrated she can do it.
+  for (const felled of [0, 1, 2, 5, 8, 10, 11]) {
+    assert.equal(windCapFor(felled), 0, `${String(felled)} keeps put a wind on the field`)
   }
   for (const answer of FIELD) {
     const r = takeShot(answer, answer, 0)
@@ -230,7 +239,7 @@ test('the number reported is her answer to the SUM, not the dial', () => {
   // reported is the whole question. #654 established that the dial was reported,
   // because then the dial WAS her answer. It is not any more: she is asked for 72
   // and turns the dial to 67.
-  for (const wind of [-9, -5, -1, 1, 5, 9]) {
+  for (const wind of windValues(WIND_MAX)) {
     for (const answer of [20, 47, 72, 100]) {
       const dial = dialFor(answer, wind)
       const r = takeShot(dial, answer, wind)
@@ -246,7 +255,7 @@ test('her answer is computed from what she saw, never read off the ground', () =
   // original defect reported the metre the wind chose, and it did that by reading
   // the ground.
   for (const dial of [-4, 0, 8, 72, 127, 500]) {
-    for (const wind of [-9, 0, 9]) {
+    for (const wind of [-WIND_MAX, 0, WIND_MAX]) {
       assert.equal(claimOf(dial, wind), dial + wind, `dial ${dial}, wind ${wind}`)
     }
   }
@@ -388,7 +397,7 @@ test('a boulder spent on the ram is not an answer to the question', () => {
 })
 
 test('rollWind only ever produces a wind the tests enumerate', () => {
-  for (const cap of [3, 5, 9]) {
+  for (const cap of CAPS.filter((c) => c > 0)) {
     const allowed = new Set(windValues(cap))
     const rng = makeRng(0x51e6e)
     const seen = new Set<number>()
@@ -400,8 +409,15 @@ test('rollWind only ever produces a wind the tests enumerate', () => {
     assert.equal(seen.size, allowed.size, `cap ${cap} did not cover its range`)
   }
   assert.equal(rollWind(0, makeRng(1)), 0, 'no wind means no wind')
+  // A cap the ramp has not reached is not a weak wind, it is no wind: a chip
+  // reading 1, 2 or 3 would ask for an adjustment the blast swallows.
+  for (let cap = 0; cap < WIND_MIN; cap++) {
+    assert.equal(rollWind(cap, makeRng(1)), 0, `a cap of ${String(cap)} blew`)
+  }
   // Never zero when there IS a wind: a chip reading 0 tells a child to adjust by
   // nothing, which is a lie about a mechanic she has just been taught.
   const rng = makeRng(9)
-  for (let i = 0; i < 2000; i++) assert.notEqual(rollWind(3, rng), 0)
+  for (let i = 0; i < 2000; i++) {
+    assert.ok(Math.abs(rollWind(WIND_MAX, rng)) >= WIND_MIN, 'a wind the blast would swallow')
+  }
 })

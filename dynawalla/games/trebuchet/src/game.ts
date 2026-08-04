@@ -65,6 +65,7 @@ import {
   type Outcome,
   type Solved,
 } from './sim/ballistics.ts'
+import { felledEver, noteFelled } from './sim/felled.ts'
 import { rollWind, shotFor, verdictFor } from './sim/verdict.ts'
 import {
   buildTower,
@@ -82,6 +83,7 @@ import {
   dialRange,
   DIAL_MAX,
   DIAL_MIN,
+  MIN_GAP,
   PLACEABLE_HI,
   PLACEABLE_LO,
   worldX,
@@ -93,8 +95,6 @@ import {
   type Tower,
   type WaveConfig,
 } from './sim/world.ts'
-
-const MIN_GAP = 8
 
 /**
  * One step of the search for a placeable rung, as a fraction of the ladder.
@@ -191,8 +191,8 @@ export class TrebuchetGame {
    */
   private wind = 0
   /**
-   * The strongest wind this wave can produce, from the difficulty of the questions
-   * in the rack. 0 for a beginner's wave, which is most of them.
+   * The strongest wind this wave can produce, from the number of keeps this child
+   * has already brought down. 0 until she has bought it.
    */
   private windCap = 0
   /** Whether the wind has ever blown in this run, so it is explained exactly once. */
@@ -636,12 +636,17 @@ export class TrebuchetGame {
     this.towers = values.map((v, i) => buildTower(i, v, this.rng, cfg.volley && i % 2 === 0))
     this.markWanted()
 
-    // The wind, from the RUNG THE QUESTIONS CAME FROM and not from the wave
-    // number. The lowest difficulty in the rack decides it, so one stray hard item
-    // in a beginner's pool cannot start the wind blowing on a child the ladder has
-    // not moved yet — and it is fixed for the wave, so tapping a different rack
-    // stone can never change the wind she is looking at.
-    this.windCap = Math.min(...boulders.map((b) => windCapFor(b.q.difficulty)))
+    // The wind, from WHAT THIS CHILD HAS ALREADY DONE. Not the wave number, and no
+    // longer the rung the questions came from either: the search that finds a
+    // placeable rung sweeps and wraps, so the difficulty served oscillates and the
+    // wind oscillated with it — on at wave 4, off at 8, back at 14, gone at 18,
+    // for reasons invisible from where she is sitting. See `sim/felled.ts`.
+    //
+    // Read once, here, and held for the whole wave: the twelfth keep may fall
+    // mid-rack, and a wind that started between two boulders would change the rule
+    // about what a right answer looks like while she was in the middle of a wave.
+    // It starts at the next one, where the manual can meet it.
+    this.windCap = windCapFor(felledEver())
     this.rollWindForShot()
     this.wall = null
     if (cfg.wall) {
@@ -1093,6 +1098,11 @@ export class TrebuchetGame {
         void freed
         struck.alive = false
         destroyed = true
+        // The currency the wind is bought with, and the ONLY thing that spends
+        // into it: a keep on the ground. A wrong answer buys nothing and costs
+        // nothing — the count only ever goes up — and a boulder spent on the ram
+        // never reaches this branch at all.
+        noteFelled()
         this.audio.collapse()
         this.audio.fanfare(this.combo)
         this.host.haptic('success')
@@ -1181,7 +1191,10 @@ export class TrebuchetGame {
    * The intensity is the ITEM's own difficulty, which is the host's live
    * judgement of where this child is standing. A wave number would not be: it
    * arrives on her twelfth minute whether she has been landing every boulder or
-   * none of them, which is the same argument `WIND_FROM_D` makes.
+   * none of them. `WIND_STEPS` makes the same argument one step further along —
+   * the wind is indexed on keeps this child has actually felled, because the
+   * ladder's own position turned out to oscillate as `stock()` sweeps for a rung
+   * that fits on the field, and the wind oscillated with it.
    *
    * Nothing is drawn about being wrong. The finished equation, in the accent,
    * and the keep she was aiming at lighting up out on the field — no red, no

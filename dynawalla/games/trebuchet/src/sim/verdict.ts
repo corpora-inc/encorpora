@@ -41,27 +41,53 @@
  *      answer. It is computed from her own two inputs by integer addition, never
  *      read back off the physics; the landing is checked against it and a
  *      disagreement is logged loudly, with her claim still winning.
- *   3. **Below `WIND_FROM_D` there is no wind at all**, the cap is 0, and every
- *      formula above collapses to `claim = dial`. The beginner's game is the game
- *      it always was.
+ *   3. **Until she has felled twelve keeps in still air there is no wind at all**,
+ *      the cap is 0, and every formula above collapses to `claim = dial`. The
+ *      beginner's game is the game it always was, and it is now bought with right
+ *      answers rather than handed over when the curriculum ladder drifts.
+ *
+ * ## The third way of getting it wrong, and the fix in this change
+ *
+ * **Being invisible.** The arithmetic above was honest and the wind was still, in
+ * the founder's words, "confusing and doesn't necessarily do anything" — because
+ * its whole range was smaller than the blast. Measured over 450 shots through the
+ * real game, a child who worked the sum out correctly and dialled her answer
+ * without adjusting for the wind came down INSIDE the target keep's blast radius
+ * 165 times out of 190: the boulder hit the tower she was aiming at, the tower
+ * cracked and leaned, and the game recorded a wrong answer. She had no way to read
+ * that as "the wind carried it three metres long" rather than as "the game is
+ * broken". So the wind now starts one metre past the blast (`WIND_MIN`), and an
+ * ignored wind lands in open ground and burns her own number into it.
  */
 
-import { solve, type Solved } from './ballistics.ts'
+import { solve, WIND_MIN, type Solved } from './ballistics.ts'
 import type { Rng } from '../core/rng.ts'
 
-/** Every wind `rollWind` can produce for a cap — the roll never yields 0. */
+/**
+ * Every wind `rollWind` can produce for a cap.
+ *
+ * The roll never yields 0, and it never yields anything weaker than `WIND_MIN`
+ * either — which is the correction this whole change turns on. A wind of 1, 2 or 3
+ * metres is smaller than the blast it moves the boulder by, so a child who ignored
+ * it watched her boulder strike the right keep and was told she was wrong; measured
+ * on `origin/main`, 86.8% of the shots of a child who ignored the wind came down
+ * inside the target keep's blast radius. A wind you cannot see is not a variable,
+ * it is a tax.
+ */
 export function windValues(cap: number): number[] {
   const out: number[] = []
-  for (let v = -cap; v <= cap; v++) if (v !== 0) out.push(v)
+  for (let v = -cap; v <= cap; v++) if (Math.abs(v) >= WIND_MIN) out.push(v)
   return out
 }
 
-/** A crosswind for the shot. Never 0: a wind chip reading 0 lies about the mechanic. */
+/**
+ * A crosswind for the shot. Never 0 and never below `WIND_MIN`: a wind chip
+ * reading 0 lies about the mechanic, and a wind the blast swallows lies harder.
+ */
 export function rollWind(cap: number, rng: Rng): number {
-  if (!cap) return 0
-  let v = 0
-  while (v === 0) v = rng.int(-cap, cap)
-  return v
+  if (!Number.isFinite(cap) || cap < WIND_MIN) return 0
+  const mag = rng.int(WIND_MIN, Math.floor(cap))
+  return rng.next() < 0.5 ? -mag : mag
 }
 
 /**

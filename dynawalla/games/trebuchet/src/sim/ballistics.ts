@@ -117,8 +117,75 @@ export type Outcome<T extends TargetRef = TargetRef> = {
   errorM: number
 }
 
+/* ------------------------------------------------------------------ *
+ * The metre-scale of the field.
+ *
+ * Four numbers, and three of them are derived from the first two, because the
+ * relationship BETWEEN them is what decides whether the wind is an honest
+ * mechanic or a decoration. Measured on `origin/main` over 450 shots across five
+ * seeds and waves 1–20, driven through the real game against the faithful ladder
+ * harness, for a child who works the sum out correctly and dials her answer
+ * without accounting for the wind:
+ *
+ *     wind cap 3   n=95   displacement 1..3 m   graze 72%  solid 28%  MISS 0%
+ *     wind cap 4   n=95   displacement 1..4 m   graze 55%  solid 25%  miss 20%
+ *
+ * 165 of those 190 windy shots — 86.8% — came down INSIDE the blast radius of the
+ * keep she was aiming at. The boulder struck the tower, the tower cracked and
+ * leaned, masonry came off it, and the game recorded a wrong answer. That is the
+ * founder's report, exactly: "they are confusing and don't necessarily do
+ * anything". A variable whose whole range is smaller than the blast it moves is
+ * invisible in the world and audible only in the verdict, which is the worst of
+ * both — it looks ignorable and it is not.
+ *
+ * So the wind's magnitude is now pinned to this geometry at both ends:
+ *
+ *   - it must be STRICTLY BIGGER than the blast, or an ignored wind still knocks
+ *     dust off the right keep and the child is told she is wrong about a shot she
+ *     watched hit;
+ *   - it must be small enough that a shot at the answer cannot read as a shot at
+ *     the NEXT keep along. `game.ts` fires the garrison — the wrong-horn, the
+ *     failure haptic, the counter-volley — when a landing comes down within 1 m of
+ *     a keep that is not the one asked for, and that would tell her she had named
+ *     the wrong number when what she had actually done was ignore the wind. Keeps
+ *     stand at least `MIN_GAP` apart, so the wind may not reach `MIN_GAP − 1`.
+ *
+ * What is deliberately NOT claimed: that an ignored wind touches nothing at all. At
+ * the closest spacing the field allows, a six-metre wind puts the boulder two
+ * metres from the neighbouring keep and the blast shakes it. That is the truth
+ * about the shot — she was six metres long — and it is told in the right place, out
+ * on the ground, next to a keep that is not hers. Making it touch nothing would
+ * need `MIN_GAP` at 10, which narrows the 104-metre field to the point where a wave
+ * cannot always find six answers to stand apart on it; the mechanic does not get to
+ * shorten the waves.
+ *
+ * Every bound here is asserted through behaviour, not through its own arithmetic,
+ * in `sim/world.test.ts`.
+ * ------------------------------------------------------------------ */
+
 /** Blast reach in metres — a landing this close still shakes a tower's footings. */
 export const GRAZE_M = 3
+
+/**
+ * The closest two keeps may ever stand. Two keeps nearer than this would be one
+ * target: the blast reaches `GRAZE_M` either side, so at 6 m apart a landing
+ * between them shakes both.
+ */
+export const MIN_GAP = 8
+
+/**
+ * The weakest wind there is. One metre past the blast, so a shot that ignores it
+ * lands in open ground and leaves a crater with her number in it — which is the
+ * feedback the manual has always promised for a wrong answer and which the wind
+ * was, measurably, never able to trigger.
+ */
+export const WIND_MIN = GRAZE_M + 1
+
+/**
+ * The strongest wind there is. One metre inside the garrison's reach, so a shot
+ * that ignores the wind is never mistaken for a claim about the neighbouring keep.
+ */
+export const WIND_MAX = MIN_GAP - 2
 
 /**
  * Where did the shot land, and what did that mean? `landing` and every `range`
