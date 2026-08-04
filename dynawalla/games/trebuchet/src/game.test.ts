@@ -1092,6 +1092,15 @@ test('a miss in a wind stops the siege, and hands the wind back when she is read
   assert.ok(runUntil(game, () => reports.length > 1), 'the next shot never resolved')
   assert.equal(reports[1].correct, true, 'the shot after a miss was scored wrong')
   assert.equal(cells.get('dw.trebuchet.felled'), String(FLUENT + 1), 'the keep she felled bought nothing')
+
+  // And across the wave boundary, which is the only place the loss would show.
+  // `windCap` is read once per wave, so a miss that quietly spent the count would
+  // leave this wave blowing exactly as before and take the wind away at the NEXT
+  // one — a mechanic disappearing a minute after the thing that cost her it.
+  assert.ok(dismissReveal(game, canvas), 'a reveal was left standing')
+  game.jumpToWave(4)
+  assert.ok(runUntil(game, () => game.currentPhase === 'aim', 3000), 'the next wave never stocked')
+  assert.equal(game.currentWindCap(), WIND_MAX, 'the wind was gone by the next wave')
 })
 
 test('the wind arrives because she FELLED KEEPS, and only then', () => {
