@@ -43,7 +43,7 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import { Rng } from "../core/rng.ts"
-import { Arena } from "../game/arena.ts"
+import { Arena, REARM_MS } from "../game/arena.ts"
 import { primeFactors } from "../game/factor.ts"
 import { CEILING, FLOOR, RUNGS, rungOf } from "../game/ladder.ts"
 import { CALM_OPENINGS } from "../game/opening.ts"
@@ -118,7 +118,17 @@ test("ten minutes of perfect play is spent on the real game, not below it", () =
     targets = targets.concat(played.targets)
     withoutQuestionMs += played.withoutQuestionMs
     rungs.push(...played.host.servedRungs())
-    assert.equal(played.arena.stalled, false, `seed ${seed.toString(16)} ended stalled`)
+    // **Not `arena.stalled` on the final frame.** That is what this line used to
+    // be, and it cannot tell the two failures apart: it is true of a
+    // two-and-a-half-second rearm that is about to close and false of an arena
+    // that was empty for nine minutes and happened to arm on the last one. The
+    // longest single gap is the number that means something, and a gap longer
+    // than a couple of rearms is a band the game cannot draw from.
+    assert.ok(
+      played.longestGapMs <= 3 * REARM_MS,
+      `seed ${seed.toString(16)} went ${(played.longestGapMs / 1000).toFixed(1)}s with no ring on ` +
+        `the screen, which is more than three rearms`,
+    )
     // The host's own ladder ends inside the band too, because every request the
     // game makes moves it — a pack that drove the stream out of its own reach and
     // left it there is the shape of the defect at the other end of this fix.
@@ -161,13 +171,13 @@ test("ten minutes of perfect play is spent on the real game, not below it", () =
     "a hold needed a mote larger than the game draws",
   )
 
-  // The arena is essentially never without something to answer. Measured at
-  // roughly 500 of every 600 seconds before and at 10 seconds in 3,000 after —
-  // the fallback tier refuses a hold with an unreadable mote in it, and a couple
-  // of `REARM_MS` waits a sitting is what that costs.
+  // The arena is essentially never without something to answer. Roughly 500 of
+  // every 600 seconds before the ladder existed; 2.5 seconds in 3,000 now, on
+  // one seed of five, against a host that models `HINT_BAND`. The budget is
+  // twelve, which is four rearms across five ten-minute sittings.
   assert.ok(
-    withoutQuestionMs < 45_000,
-    `the arena had no question for ${(withoutQuestionMs / 1000).toFixed(0)}s across five sittings`,
+    withoutQuestionMs < 12_000,
+    `the arena had no question for ${(withoutQuestionMs / 1000).toFixed(1)}s across five sittings`,
   )
 
   // And no rung below the floor was ever served — not even once, not even while
@@ -326,7 +336,12 @@ test("the game learns from the rung that answered, not the rung it asked for", (
   // the position onto a rung the child never saw, which breaks all three of the
   // mechanisms this fix is built on.
   const STALE = 21
-  const inner = createStubHost({ seed: 0x57a1e, reducedMotion: true })
+  // `band: false`, and it is the one thing this case needs off: it is a
+  // statement about the PACK's ladder — that `landed()` follows the rung that
+  // answered — and it works by forcing every answer to come from one rung. A
+  // host that then clamped that rung into its own band would be answering from a
+  // rung of its choosing, and there would be nothing left to measure.
+  const inner = createStubHost({ seed: 0x57a1e, reducedMotion: true, band: false })
   const asked: number[] = []
   const stale: StubHost = {
     ...inner,

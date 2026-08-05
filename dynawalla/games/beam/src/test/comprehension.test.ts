@@ -24,6 +24,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
 
+import { REVEAL_SETTLE_MS } from "../../../../packs/shared/game-pacing/index.ts"
 import { mount } from "../contract.ts"
 import type { Host, Question } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
@@ -31,6 +32,8 @@ import { geomForViewport } from "../render/geom.ts"
 import { promptPlate, PROMPT_MIN_PX } from "../render/hall.ts"
 import { buildCore } from "../sim/core.ts"
 import { Director, readingRelief } from "../sim/director.ts"
+import { noteRead, resetReadForTest } from "../sim/learned.ts"
+import { CALM_CORES } from "../sim/opening.ts"
 import { A_CANDIDATE, A_ORDINARY } from "../sim/field.ts"
 import { shovedUrgency } from "../sim/pulse.ts"
 import {
@@ -48,7 +51,7 @@ type Painted = { text: string; px: number; x: number; y: number }
 
 type Recorder = {
   el: HTMLElement
-  install(): () => void
+  install(step?: number): () => void
   step(ms: number): void
   /** What `fillText` drew, frame by frame. Index is the frame number. */
   readonly frames: Painted[][]
@@ -170,7 +173,20 @@ function recorder(width: number, height: number, wallClock: number): Recorder {
   return {
     el: makeEl(),
     frames,
-    install: () => {
+    /**
+     * @param step where on the ramp this child is. **The steady state by
+     *   default**, exactly as `games/lattice`'s `rig()` defaults its
+     *   `experience` — every case in this file was written about the shipped
+     *   game and must keep asking about the shipped game. `opening.test.ts` is
+     *   the one that asks for a first sitting, and it says so out loud.
+     *
+     *   Reset either way: the ramp's memory is module state, node has no
+     *   `localStorage`, and it survives every mount in the process. A test that
+     *   did not clear it would play a different game than the one before it did.
+     */
+    install: (step: number = CALM_CORES) => {
+      resetReadForTest()
+      for (let i = 0; i < step; i++) noteRead()
       globalThis.requestAnimationFrame = ((cb: (t: number) => void): number => {
         pending = cb
         return 1
@@ -816,6 +832,17 @@ test("after a wrong submission the sum is completed on screen too", () => {
   // The same beat, reached the other way: the child handed in a value and it
   // was not the one. Nothing about what follows says so — the statement simply
   // finishes, in the colour a correct answer is celebrated in.
+  //
+  // **The floor is the settle and not a duration.** The reveal no longer expires
+  // at all (see `mount.reveal` and `game-pacing`'s `revealPlan`), so the only
+  // thing that ends one is the child's own hand — and the bot below is leaning
+  // on the controls, so what is measured here is a child who dismissed it
+  // immediately. `REVEAL_SETTLE_MS` is the lockout that stops the second tap of
+  // a double-tap taking down a sum the first tap only just put up, and it is
+  // what a completed sum is worth even to a child who wants nothing to do with
+  // it. The test below this one is the other end: nobody touches anything, and
+  // the sum is still there three minutes later.
+  const settleFrames = Math.floor(REVEAL_SETTLE_MS / 16)
   let seen = 0
   for (const seed of [0x2b1, 0x2b2, 0x2b3, 0x2b4]) {
     const rec = recorder(360, 640, seed * 31)
@@ -851,6 +878,10 @@ test("after a wrong submission the sum is completed on screen too", () => {
       restore()
     }
     for (const miss of misses) {
+      // A miss in the last breath of the run has no room left to be held FOR;
+      // the recording simply stops. Counting one would be measuring the length
+      // of the test rather than the length of the reveal.
+      if (miss.frame + settleFrames >= rec.frames.length) continue
       let held = 0
       let smallest = Infinity
       for (let f = miss.frame; f < rec.frames.length; f++) {
@@ -859,12 +890,136 @@ test("after a wrong submission the sum is completed on screen too", () => {
         held++
         smallest = Math.min(smallest, Math.max(...hit.map((p) => p.px)))
       }
-      assert.ok(held >= 60, `"${miss.finished}" was completed for only ${String(held)} frames`)
+      assert.ok(
+        held >= settleFrames,
+        `"${miss.finished}" was completed for only ${String(held)} frames, under the ` +
+          `${String(settleFrames)}-frame settle`,
+      )
       assert.ok(smallest >= PROMPT_MIN_PX, `the completed sum was ${smallest.toFixed(1)}px`)
       seen++
     }
   }
   assert.ok(seen > 0, "random play never once missed, so nothing was proved")
+})
+
+test("THE FINISHED SUM DOES NOT EXPIRE — IT WAITS FOR THE CHILD'S OWN HAND", () => {
+  // > "you should be able to study the answers and then go on, not just have the
+  // > answers flashed for a second and then go on"
+  //
+  // `revealSeconds` used to answer that with one and a half to three seconds and
+  // then take the sum away whether or not anybody had finished reading it. The
+  // child who has just missed is the slowest reader in the session; a timer
+  // sized for a fluent one removes the evidence exactly when it becomes useful.
+  //
+  // Nobody touches anything here. Three minutes later the sum is still up, the
+  // hall is still held, and NOTHING has been drawn from the host in the
+  // meantime — a reveal that quietly let the next wave in behind it would pass
+  // the first assertion and fail the child.
+  const rec = recorder(768, 1024, 0x5e77)
+  const restore = rec.install()
+  let served = 0
+  const host: Host = {
+    next: () => {
+      served++
+      return {
+        id: `tiny-${String(served)}`,
+        prompt: "4 + 4",
+        answer: "8",
+        distractors: ["6", "9", "12"],
+        domain: "add",
+        difficulty: 1,
+      }
+    },
+    report: () => undefined,
+    skip: () => undefined,
+    haptic: () => undefined,
+    prefersReducedMotion: () => false,
+  }
+  const handle = mount(rec.el, host)
+  try {
+    // Long enough for the first wave to arrive and run out untouched.
+    for (let i = 0; i < 1400 && !handle.snapshot().revealed; i++) rec.step(16)
+    assert.equal(handle.snapshot().revealed, true, "no wave ever ran out, so nothing was proved")
+    const askedWhenRevealed = handle.snapshot().asked
+    // Three minutes of a child reading, and a child reading touches nothing.
+    for (let i = 0; i < 11_250; i++) rec.step(16)
+    assert.equal(
+      handle.snapshot().revealed,
+      true,
+      "the finished sum took itself away while the child was still reading it",
+    )
+    assert.equal(
+      handle.snapshot().asked,
+      askedWhenRevealed,
+      "the game drew the next question from behind the sum it was still showing",
+    )
+    assert.equal(handle.snapshot().prompt, null, "a wave was live behind the reveal")
+
+    // And now the child's own hand, which is the only thing that ends it. The
+    // first key is refused — that is `REVEAL_SETTLE_MS`, and by three minutes in
+    // it has long since run down, so this one lands.
+    rec.press(" ")
+    rec.step(16)
+    assert.equal(handle.snapshot().revealed, false, "the child could not put the sum away")
+  } finally {
+    handle.unmount()
+    restore()
+  }
+})
+
+test("a tap arriving in the same breath as the miss cannot take the sum away", () => {
+  // `REVEAL_SETTLE_MS` is latency and not patience. The gesture that ended the
+  // wave is routinely still arriving on a touch screen — the second tap of an
+  // impatient double-tap, a finger that had already committed — and without a
+  // lockout those land inside the reveal's own fade-in and the child watches the
+  // lesson appear and vanish in one breath.
+  const rec = recorder(768, 1024, 0x5e78)
+  const restore = rec.install()
+  let served = 0
+  const host: Host = {
+    next: () => {
+      served++
+      return {
+        id: `tiny-${String(served)}`,
+        prompt: "4 + 4",
+        answer: "8",
+        distractors: ["6", "9", "12"],
+        domain: "add",
+        difficulty: 1,
+      }
+    },
+    report: () => undefined,
+    skip: () => undefined,
+    haptic: () => undefined,
+    prefersReducedMotion: () => false,
+  }
+  const handle = mount(rec.el, host)
+  try {
+    for (let i = 0; i < 1400 && !handle.snapshot().revealed; i++) rec.step(16)
+    assert.equal(handle.snapshot().revealed, true, "no wave ever ran out")
+    // Every frame of the settle, hammered. None of them may land. `floor` and
+    // not `ceil`: the frame the settle actually runs out ON is the first one
+    // allowed to let go, and asserting it is still up would be asserting a
+    // rounding.
+    const settleFrames = Math.floor(REVEAL_SETTLE_MS / 16)
+    for (let i = 0; i < settleFrames; i++) {
+      rec.press(" ")
+      assert.equal(
+        handle.snapshot().revealed,
+        true,
+        `a key ${String(i)} frame(s) into the settle took the sum away`,
+      )
+      rec.step(16)
+    }
+    // And then it lets go, on the child's next key and not on its own.
+    rec.step(16)
+    assert.equal(handle.snapshot().revealed, true, "the sum expired rather than being dismissed")
+    rec.press(" ")
+    assert.equal(handle.snapshot().revealed, false, "the settle never let go")
+  } finally {
+    handle.unmount()
+    restore()
+  }
 })
 
 test("THE REVEAL HOLDS THE HALL, AND THE HOLD IS BILLED TO NOBODY", () => {

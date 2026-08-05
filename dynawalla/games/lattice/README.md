@@ -140,7 +140,7 @@ the shipped difficulty wire:
 | rung reached (min / median / max) | 0 / 29 / 50 | 16 / 45 / 47 |
 | targets with a factor tree | 42% | 82% |
 | targets under 12 ("find a 2") | 21% | 0% |
-| time with no resonator at all | ~500s of every 600 | 8s in 3,000 |
+| time with no resonator at all | ~500s of every 600 | 2.5s in 3,000 |
 | first four targets | 5, 7, 10, 16 | 36, 40, 60, 98 |
 
 That "500s of every 600" is the half nobody had reported, because nobody had
@@ -149,12 +149,45 @@ failed, and the arena stalled — permanently, because there was no retry, leavi
 the previous resonator hanging with its id already spent. A child could fly into
 that ring forever and the host would never hear another word.
 
-There is one case where the arena still finds nothing, and it is the first session
-of a brand new profile: the host warms its pool at *its* position, which for a new
-profile is rung 0, and the first request flushes that down to a reserve of eight
-`2 + 0`s. So a stall is now a wait rather than a session — it stocks the field with
-husks and motes so the passive layer still works, says so on the HUD, and asks
-again 2.5 seconds later, by which time the pool has refilled where it was asked to.
+### The floor has to be *stated*, or there is no ring at all
+
+Everything above was true and none of it was enough, because from host 0.3.7 a
+`difficulty` stopped being a request:
+
+> **A hint, not an instruction.** It is honoured within `HINT_BAND` rungs of
+> where the host's own band has the child and clamped there otherwise.
+>
+> — `dynawalla-app/src/packs/items.ts`
+
+`HINT_BAND` is **one rung**, and the host's own position opens at rung 0 on every
+session of every fresh profile. So THE LATTICE asked for rung 16 and was served
+rung 1: answers of two to six, none of which can carry a factor tree. All six
+draws of the arming failed, the arena stalled, and the HUD drew
+`NO RESONATOR — SWEEP ON` — which is what the founder read out to us against a
+manual promising a ring in the middle with a sum on it.
+
+And it could not clear. The only thing that moves the host's position is a
+report, the only thing that produces a report is a resonator opening, and there
+was no resonator. Every rearm for the rest of the session drew from rung 1 again.
+
+The way out is the other channel, and it is a different kind of claim.
+`minDifficulty` is a **capability** — the pack stating what it can physically put
+on the screen — so the host honours it absolutely, above its own band as well as
+below it, and never moves the child's ladder for it. THE LATTICE's floor was
+always exactly that kind of claim: `MIN_TARGET` is 12 because a smaller answer
+has no factor tree in it. It is now on every single request. TREBUCHET had the
+identical defect for three releases and PR 771 built this channel for it.
+
+`stubHost.ts` models the band now, by default, because it not modelling the band
+is how two hundred and seven passing tests sat on top of a game with no ring in
+it. `band: false` is the opt-out, and only two cases want it.
+
+There is one case where the arena still finds nothing, and it is a rung being
+unlucky rather than a band it cannot reach. A stall is a wait and not a session —
+it stocks the field with husks and motes so the passive layer still works, says
+so on the HUD, and asks again 2.5 seconds later. Measured over five ten-minute
+sittings from a fresh profile, played perfectly, that now costs **2.5 seconds in
+3,000**, on one seed of five, and the longest single gap is one rearm.
 
 ---
 

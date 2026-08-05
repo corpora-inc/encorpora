@@ -248,6 +248,47 @@ for (const [w, h] of [
   }
 }
 
+test("a fresh profile never sees NO RESONATOR — SWEEP ON", () => {
+  // **The founder's screen, at the shell.** `band.test.ts` has the full account
+  // and the rules-level assertions; this one is here because the line he read
+  // out is drawn by `render/scene.ts` off `arena.stalled`, and neither the rules
+  // nor the renderer can be asked on its own whether a child saw it.
+  //
+  // So: the real mount, the real loop, the real HUD, a canvas that records every
+  // string it is asked to paint, and a host whose own ladder is standing on rung
+  // 0 the way it is on every launch of every fresh profile. Sixty seconds of it.
+  //
+  // Against the shipped 0.3.10 build this fails on the first frame and stays
+  // failed: the notice is the only thing on the screen that changes.
+  const realNow = Date.now
+  Date.now = () => 1_700_000_000_000
+  try {
+    const counter = { calls: 0, text: [] as string[] }
+    withBrowser({ w: 390, h: 740 }, counter, ({ host, frames }) => {
+      const stub = createStubHost({ seed: 0x1a771ce, reducedMotion: true })
+      assert.equal(stub.position(), 0, "the host did not open on a fresh profile")
+      const handle = mount(host as unknown as HTMLElement, stub)
+      pump(frames, 3600)
+      const stalls = counter.text.filter((s) => s.includes("NO RESONATOR"))
+      assert.deepEqual(
+        stalls.slice(0, 1),
+        [],
+        `a child on a fresh profile was told there is no resonator, on ${stalls.length} frames ` +
+          `of 3600`,
+      )
+      // And the ring was really drawn, rather than the notice merely being
+      // absent because nothing was drawn at all.
+      assert.ok(
+        counter.text.some((s) => /^\d+\s[+−]\s\d+$/.test(s)),
+        "no resonator ever put a problem on its face",
+      )
+      handle.unmount()
+    })
+  } finally {
+    Date.now = realNow
+  }
+})
+
 test("flying into the resonator actually asserts the hold", () => {
   // The rule for this lives in `Arena.enter`, it is asserted to death in
   // `arena.test.ts` and `resonance.test.ts` — and the shell never called it.

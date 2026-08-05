@@ -164,7 +164,7 @@ const balance: Motif = (rng) => {
   ]
 }
 
-/** LATTICE RUNNER — ride a beam, fire, hear the remainder. */
+/** THE TUNING HALL (pack id `dynawalla.beam`) — ride a beam, fire, hear the remainder. */
 const beams: Motif = (rng) => {
   const out: Shape[] = []
   const rows = [24, 42, 60, 78]

@@ -11,11 +11,18 @@
 //   2. **`toUnit`**, character for character the reading in
 //      `packs/shared/game-host` — under 1 is a fraction, 1 or over is a ladder
 //      index — so a request written here means what it means there.
-//   3. **A named `difficulty` lands on exactly one rung.** `dynawalla-app`'s
-//      `items.next` spreads a rung *only* when the pack named none; a pack that
-//      drives its own difficulty is honoured as the point it asked for. So is
-//      `maxDifficulty`, which floors rather than rounds.
-//   4. **With nothing named, the rung is the host's own position**, and that
+//   3. **A named `difficulty` is a HINT, and it is clamped.** `dynawalla-app`'s
+//      `items.next` honours it within `HINT_BAND` — one rung — of where the
+//      host's own evidence stands, and clamps it there otherwise. See
+//      `HINT_BAND` below: this is the one the stub did not model, and not
+//      modelling it is how THE LATTICE shipped a screen with no ring on it.
+//   4. **A named `maxDifficulty` or `minDifficulty` is a CAPABILITY, and it is
+//      absolute.** The ceiling floors where the request rounds and the floor
+//      ceils, both bind after the band and both beat it, because they are the
+//      pack saying what it can physically draw rather than what it thinks the
+//      child is ready for. Only the ceiling moves the child's ladder, and only
+//      downward, and only when it bites.
+//   5. **With nothing named, the rung is the host's own position**, and that
 //      moves on `report` through the shipped staircase: an opening stride of four
 //      rungs decaying by 0.72 toward one, a correct answer worth
 //      `min(1, tail/latency)` of a stride, a wrong one worth a whole one down.
@@ -45,6 +52,24 @@ export const RUNGS = 66
 const SPAN = RUNGS - 1
 
 /**
+ * How far from its own evidence the host will follow a pack's `difficulty`.
+ *
+ * `dynawalla-app/src/packs/items.ts`, `HINT_BAND`, and it is **one rung**. This
+ * constant is the whole reason the founder saw `NO RESONATOR — SWEEP ON` on a
+ * fresh profile: THE LATTICE asks for rung 16 and up, the host's own `progress`
+ * opens every session at 0, so every draw of every arming came back from rung 1
+ * with an answer under seven — and nothing under twelve can carry a factor tree.
+ * All six draws missed, the arena stalled, and the stall could not clear because
+ * the only thing that moves `progress` is a report and the only thing that
+ * produces a report is a resonator.
+ *
+ * A `minDifficulty` is the way out and it is not a way round: it is the pack
+ * saying what it can physically draw, so the host honours it absolutely and
+ * never moves the child's ladder for it.
+ */
+export const HINT_BAND = 1
+
+/**
  * A difficulty on whichever of the two scales the caller speaks, as 0..1.
  *
  * The same rule as `packs/shared/game-host`, including its one ambiguous value:
@@ -58,10 +83,29 @@ export function toUnit(value: number): number | null {
   return Math.min(1, (value - 1) / 9)
 }
 
-/** The largest operand a rung draws. */
+/**
+ * The largest operand a rung draws.
+ *
+ * The base is set by the header's last calibration point — **"past 999 from
+ * about rung 47"** — and it is a statement about the *answer*, which is two
+ * operands. `3 · 1.115^47` is 500, so rung 47 is where a sum first reaches a
+ * thousand and rung 48 is where the game's `MAX_TARGET` stops being reachable.
+ *
+ * It was 1.125, and that put the sum past 999 from rung 44: at rung 47, 57% of
+ * answers were over the ceiling and only 16% were resonant. Nothing noticed for
+ * as long as nothing sat there. Modelling `HINT_BAND` put the game exactly
+ * there — a standing `maxDifficulty` pulls the host's own ladder down onto it,
+ * and the band then serves the two rungs either side of it and no others — and
+ * ten minutes of perfect play went from ten seconds without a question to
+ * eighty. That was the stub being wrong about the top of the ladder rather than
+ * the game being wrong about anything: `game/ladder.ts`'s table, measured
+ * against the shipped curriculum graph, has rung 46 at **57% usable**, and a
+ * model that says 26% would have this pack tuned against a rung that does not
+ * exist.
+ */
 export function operandCeilingAt(rung: number): number {
   const clamped = Math.max(0, Math.min(SPAN, Math.round(rung)))
-  return Math.max(2, Math.round(3 * Math.pow(1.125, clamped)))
+  return Math.max(2, Math.round(3 * Math.pow(1.115, clamped)))
 }
 
 /** The staircase's constants, from `dynawalla-app/src/packs/items.ts`. */
@@ -183,9 +227,31 @@ export type StubHostOptions = {
   /** Observe stopping points. The real host may sheet the frame on one. */
   onTransition?: (kind: string, label?: string) => void
   /** Observe every draw: what was asked for, and which rung answered. */
-  onDraw?: (draw: { asked: number | null; ceiling: number | null; rung: number; id: string }) => void
+  onDraw?: (draw: {
+    asked: number | null
+    ceiling: number | null
+    /** The render floor the pack stated, if any. See `band`. */
+    bottom: number | null
+    rung: number
+    id: string
+  }) => void
   /** Observe skips, so a test can hold the pack to closing what it discards. */
   onSkip?: (questionId: string) => void
+  /**
+   * Model `HINT_BAND` — the host's clamp on a pack's `difficulty`.
+   *
+   * **On by default, because the shipped host does it and this stub not doing it
+   * is how THE LATTICE shipped with no resonator on the screen.** From host
+   * 0.3.7 a `difficulty` is a *hint*, honoured only within one rung either side
+   * of where the host's own evidence stands, and that evidence opens every
+   * session at rung 0. A pack whose content sits above the child is therefore
+   * starved unless it also states a `minDifficulty`, which is a capability and
+   * is honoured absolutely. See `dynawalla-app/src/packs/items.ts`, `HINT_BAND`.
+   *
+   * Off only for the tests that are measuring the *pack's* own ladder in
+   * isolation and need the rung they asked for.
+   */
+  band?: boolean
 }
 
 /** What the stub is willing to say about itself, for the tests that measure it. */
@@ -203,6 +269,7 @@ export function createStubHost(opts: StubHostOptions = {}): StubHost {
   let n = 0
   const domains: Domain[] = ["add", "add", "sub"]
   const standing = opts.difficulty === undefined ? null : toUnit(opts.difficulty)
+  const band = opts.band !== false
 
   /** Where the host's own ladder is, carried as a real number like `items.ts`. */
   let progress = standing === null ? 0 : standing * SPAN
@@ -214,23 +281,43 @@ export function createStubHost(opts: StubHostOptions = {}): StubHost {
     next(o) {
       const asked = o?.difficulty === undefined ? standing : toUnit(o.difficulty)
       const ceiling = o?.maxDifficulty === undefined ? null : toUnit(o.maxDifficulty)
-      let rung = Math.floor(progress)
-      // Either field moves the rung, which is `items.next`'s own gate: a request
-      // that names only a ceiling still has to be honoured, or the ceiling half of
-      // the wire is modelled by nothing.
-      if (asked !== null || ceiling !== null) {
-        // The ceiling *floors* and the request *rounds*, exactly as `items.next`
-        // does it: rounding a cap can only round it up, and a cap that can be
-        // rounded over is not a cap.
-        const cap = ceiling === null ? SPAN : Math.floor(ceiling * SPAN)
-        // With no `difficulty` named, `items.next` reads the ladder's own position
-        // as the request and then applies the cap to it.
-        const want = asked === null ? Math.floor(progress) / Math.max(1, SPAN) : asked
-        rung = Math.max(0, Math.min(SPAN, cap, Math.round(want * SPAN)))
-        // The whole number the pack named, keeping the fraction already earned
-        // toward the next rung.
-        progress = rung + (progress - Math.floor(progress))
+      const bottom = o?.minDifficulty === undefined ? null : toUnit(o.minDifficulty)
+      // **The anchor: the rung the host's own evidence left the child on.** Read
+      // once, before anything the pack asked for is looked at, and never written
+      // back to from a request — which is what stops the band being a ratchet a
+      // pack climbs one rung a question. See `items.next`.
+      const anchor = Math.floor(progress)
+      let rung = anchor
+      if (asked !== null) {
+        // A request *rounds* to the nearest rung and is then pulled inside the
+        // band. With `band` off it is honoured as asked, which is the pre-0.3.7
+        // wire and is only for tests measuring the pack's own ladder.
+        const want = Math.round(asked * SPAN)
+        rung = band ? Math.max(anchor - HINT_BAND, Math.min(anchor + HINT_BAND, want)) : want
       }
+      if (ceiling !== null) {
+        // The ceiling *floors* where the request rounds, exactly as `items.next`
+        // does it: rounding a cap can only round it up, and a cap that can be
+        // rounded over is not a cap. It binds after the band and it wins.
+        const cap = Math.floor(ceiling * SPAN)
+        rung = Math.min(rung, cap)
+        // A standing ceiling pins the ladder itself, downward only and only when
+        // it bites — a position above content the pack cannot draw is a fiction.
+        if (cap < anchor) progress = Math.max(0, cap) + (progress - anchor)
+      }
+      if (bottom !== null) {
+        // The floor *ceils*, for the mirror of the reason the cap floors, and it
+        // wins over the band for the same reason the ceiling does: it is not a
+        // pedagogy request, it is the pack saying what it can physically draw.
+        // It never moves `progress` — the mirror write would let a pack promote
+        // a child by declaring a manifest.
+        const floor = Math.ceil(bottom * SPAN)
+        rung = Math.max(rung, floor)
+        // An empty window is a pack bug, and the ceiling wins it: serving above
+        // what a pack can render is a blank screen in front of a child.
+        if (ceiling !== null) rung = Math.min(rung, Math.floor(ceiling * SPAN))
+      }
+      rung = Math.max(0, Math.min(SPAN, rung))
 
       const domain = (o?.domain as Domain | undefined) ?? rng.pick(domains)
       const [a, b] = operandsFor(domain, rung, rng)
@@ -252,7 +339,7 @@ export function createStubHost(opts: StubHostOptions = {}): StubHost {
       const id = `stub-${n}`
       served.set(id, { rung, digits: Math.max(digitsOf(a), digitsOf(b)) })
       rungs.push(rung)
-      opts.onDraw?.({ asked, ceiling, rung, id })
+      opts.onDraw?.({ asked, ceiling, bottom, rung, id })
       return {
         id,
         prompt: `${a} ${GLYPH[domain]} ${b}`,

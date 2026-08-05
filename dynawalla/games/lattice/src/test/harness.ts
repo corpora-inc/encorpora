@@ -131,6 +131,17 @@ export type Sitting = {
   readonly targets: number[]
   /** Wall-clock milliseconds the arena had no question at all. */
   readonly withoutQuestionMs: number
+  /**
+   * The longest single run of them.
+   *
+   * The total is a budget and this is the promise: an arming that misses stalls
+   * for `REARM_MS` and tries again, so a gap of a few seconds is a rung being
+   * unlucky and a gap of a minute is a game with no ring in it. The founder's
+   * report is the second, and only this number can tell them apart — a snapshot
+   * of `arena.stalled` on the final frame cannot, because it is true for a
+   * two-and-a-half-second gap and false for one that has just closed.
+   */
+  readonly longestGapMs: number
   /** How long until the first target with a real factor tree in it. */
   readonly firstTreeMs: number | null
 }
@@ -147,12 +158,20 @@ export function playCarefully(arena: Arena, frames: number, frameMs = 16): Sitti
   const targets: number[] = []
   const seen = new Set<string>()
   let withoutQuestionMs = 0
+  let longestGapMs = 0
+  let gapMs = 0
   let firstTreeMs: number | null = null
   let t = 0
   for (let f = 0; f < frames; f++) {
     t += frameMs
     const res = arena.resonator
-    if (!res) withoutQuestionMs += frameMs
+    if (!res) {
+      withoutQuestionMs += frameMs
+      gapMs += frameMs
+      longestGapMs = Math.max(longestGapMs, gapMs)
+    } else {
+      gapMs = 0
+    }
     if (res && !seen.has(res.questionId)) {
       seen.add(res.questionId)
       targets.push(res.target)
@@ -208,5 +227,5 @@ export function playCarefully(arena: Arena, frames: number, frameMs = 16): Sitti
     // a permanent stall in a test and would not be one in the game.
     arena.rearm(t)
   }
-  return { targets, withoutQuestionMs, firstTreeMs }
+  return { targets, withoutQuestionMs, longestGapMs, firstTreeMs }
 }

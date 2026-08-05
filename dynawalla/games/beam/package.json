@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "LATTICE RUNNER — ride a divisor beam. A pulse fired up beam b destroys an automaton carrying v if and only if b divides v, and the beam sings the remainder while you decide.",
+  "description": "THE TUNING HALL — ride a divisor beam. A pulse fired up beam b destroys an automaton carrying v if and only if b divides v, and the beam sings the remainder while you decide.",
   "engines": {
     "node": ">=24.0.0"
   },

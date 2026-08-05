@@ -1,9 +1,36 @@
-# LATTICE RUNNER
+# THE TUNING HALL
 
-> after *Beam Rider* (1983). Rank 23, S tier, wave 2 of `docs/catalog/ARCADE_CANON.md`.
+> after *Beam Rider* (1983). Rank 23, S tier, wave 2 of `docs/catalog/ARCADE_CANON.md`,
+> where the design is catalogued as **Lattice Runner** — see the rename below.
 >
 > **Loop:** ride a divisor beam; only a beam that divides the automaton kills it.
 > **Juice:** resonance lock as two waveforms phasing — division made audible.
+
+## The name
+
+It shipped as **LATTICE RUNNER** and the catalogue also carries **THE LATTICE**
+(`games/lattice`), a twin-stick factor-tree arena that is a completely different
+game. Two names one word apart in one listing is a bad enough problem on its own;
+what it actually cost is on the record:
+
+> "Lattice runner is pretty cool but it's too hard and fast for a human .. maybe
+> one number at a time and a slower ramp up from an easier baseline .. the way it
+> starts for me now is chaotic and impossible."
+
+That report is quoted at the top of `games/lattice/src/game/opening.ts` and the
+calm opening it asks for was built **into the other pack**. LATTICE RUNNER did not
+get one, which is why the next report was "LATTICE RUNNER IS TOO FUCKING FAST FOR
+THE 100TH TIME." A pack that cannot be named unambiguously cannot be fixed
+reliably.
+
+So the display name is now THE TUNING HALL — a place in the bazaar where things
+are tuned until the wobble stops, which is this game's own verb — and the word
+"lattice" appears on no surface a child sees.
+
+**The pack id and the directory are still `beam`**, exactly as MATH NINJA and THE
+PEDDLER kept theirs: `dynawalla.beam` is what the catalogue, the build, the
+installed-pack record and the storage slots are keyed on, and renaming it would
+break every one of them for a cosmetic gain.
 
 ## The rule
 
@@ -158,6 +185,57 @@ resolving, and that exposure is worth something even when the answer is not. It 
 reason the miss is spent on the mathematics rather than on feedback about the miss:
 there is no red, no shake, no word for what happened, and no lamp goes out.
 
+**And it does not expire.** It used to run down `revealSeconds` — a second and a half to
+three — and then take the sum away whether or not anybody had finished reading it. That
+is the defect `packs/shared/game-pacing`'s `revealPlan` exists to name, and its answer is
+`holdMs: Infinity`: a child who has just missed is the slowest reader in the session, so
+a timer sized for a fluent one removes the evidence exactly when it becomes useful. The
+hall now stays held until the child's own hand ends it, with `REVEAL_SETTLE_MS` of
+lockout so the second tap of an impatient double-tap cannot dismiss a sum the first tap
+only just put up.
+
+## The opening
+
+> "LATTICE RUNNER IS TOO FUCKING FAST FOR THE 100TH TIME. NO ONE CAN THINK THAT FAST."
+
+The comprehension window was decoupled from the motion knob a while ago and stayed
+decoupled (see above), and the game was still too fast — because the window is only one
+of the two things that make a board fast. The other is **how much is happening while you
+use it**, and that had no floor at all: the director opened at `floorCount: 2` and the
+fracture threw out four candidates, so a child's very first screen was up to eight
+numbered hulls, six of them irrelevant to the sum on the seventh.
+
+Worse, the escalation was a **clock**. `Director.pressure` is
+`elapsed/90 × 0.65 + kills/60 × 0.45`, so two thirds of it was time served rather than
+anything demonstrated — and `drawWave` asks the host for `2 + round(level × 7)`, which
+means the clock was raising the *arithmetic*. A child who had answered nothing in ninety
+seconds was being handed item difficulty 7 and five hulls at a 1.3-second spawn gap.
+
+`sim/opening.ts` is the ramp, indexed by cores this child has **read** — `sim/learned.ts`
+persists it, `+1` for a core read and `−1` for a miss or a wave that reached the floor,
+floored at zero, never shown to anybody. Measured through the real shell, the real frame
+loop and the real keyboard handler, sixty seconds, five seeds, 768×1024, with a bot that
+slides, fires and dismisses the way a child's hands do:
+
+| | shipped | first sitting |
+|---|---|---|
+| numbered hulls, peak | 8 | **2** |
+| numbered hulls, mean | 3.92 | **1.62** |
+| the second problem arrives | 6.1s | **11.2s** |
+| problems asked in 60s | 10.8 | **5.8** |
+| item difficulty after 90s of sitting still | 7 | **2** |
+
+The first sitting is the CORE by itself until it fractures and then two candidates: one
+sum, two answers, nothing else moving. The board comes back up as the child reads cores —
+5.8 problems a minute at step 0, 8–9 by step 4 — and **the top step is the shipped game
+in every field**, asserted in `opening.test.ts` against the constants themselves. Nothing
+is lost at the ceiling; a child simply has to arrive there.
+
+Nothing in the ramp touches `sim/window.ts`. `descentScale` moves the ordinary stream and
+the core's approach — the motion, which is the excitement — and a candidate's fall is
+still computed from the item's own `windowSeconds` at fracture time. Speed is rewarded
+and never enforced.
+
 ## Stakes
 
 Three anchors. An ordinary automaton reaching the floor breaches one; at zero the lattice
@@ -167,7 +245,9 @@ cores read relights an anchor, cumulatively, and that progress is never taken aw
 
 Escalation is on the size of the run — elapsed time and total kills — and never on an
 unbroken streak. `src/test/director.test.ts` asserts that two runs reaching the same
-totals by different routes land on identical pressure.
+totals by different routes land on identical pressure. During the ramp that curve is
+**capped** at `opening.ceiling`; at the top step the cap is 1 and the curve is exactly
+what it always was. See "The opening".
 
 ## Running it
 

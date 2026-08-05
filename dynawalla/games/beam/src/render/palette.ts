@@ -1,4 +1,4 @@
-// LATTICE RUNNER — a resonance hall, cut into stone, lit only by the lattice.
+// THE TUNING HALL — a resonance hall, cut into stone, lit only by its beams.
 //
 // The register is the house one: brass, lapis, carved stone, cold celestial
 // light. Not neon, not gradient soup. The beams are the only light source in

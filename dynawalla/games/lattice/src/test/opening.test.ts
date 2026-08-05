@@ -8,7 +8,7 @@
 // sixty seeds, and what a child would be looking at is counted.
 //
 // The shipped opening, measured the same way (the `step: 5` row below is
-// literally it, unchanged): up to six numbers on the screen before the child
+// literally it, unchanged): up to seven numbers on the screen before the child
 // has touched anything, the fastest of them crossing the arena's diagonal in
 // nine and a half seconds, and up to nine on the screen once that field is
 // ground down to primes.
@@ -36,8 +36,7 @@ const VIEWPORTS: Array<[string, number, number]> = [
 const SEEDS = Array.from({ length: 60 }, (_, i) => i * 7919 + 1)
 
 /**
- * The bounds. Measured, then written down one notch loose so an unlucky seed
- * does not fail the suite and a regression of any size does.
+ * The bounds.
  *
  * `bodies` is what is on the screen at t=0. `ground` is what is on the screen
  * after every husk in that field has been shot all the way down to primes —
@@ -45,14 +44,28 @@ const SEEDS = Array.from({ length: 60 }, (_, i) => i * 7919 + 1)
  * fastest anything is moving, as a percentage of the arena's own diagonal per
  * second, which is the only frame-of-reference that means the same thing on a
  * phone and on a tablet (see `arena.REFERENCE_SPAN`).
+ *
+ * `bodies` and `ground` are measured over three hundred seeds at three
+ * viewports and written down at the maximum. `drift` is **not** measured: a
+ * body's velocity is drawn per axis from `±DRIFT_MAX_SPAN · plan.drift`, so its
+ * magnitude cannot exceed `√2 · 7.7% · plan.drift` however many bodies there
+ * are, and the row below is that number rounded up. An empirical maximum here
+ * is an order statistic over however many bodies the field happened to have,
+ * which is what the old row was — it was set from sixty seeds, sat a tenth of a
+ * point under the real ceiling, and a change to the *question stream* moved a
+ * body count and walked it over. The ceiling does not move for a seed.
+ *
+ * They are literals and not a derivation, deliberately: `√2 · DRIFT_MAX_SPAN ·
+ * openingAt(step).drift` would agree with itself at any value of either
+ * constant, and the point is that doubling the drift constant fails this file.
  */
 const BOUNDS: Array<{ step: number; bodies: number; ground: number; drift: number }> = [
-  { step: 0, bodies: 1, ground: 5, drift: 3.0 },
-  { step: 1, bodies: 1, ground: 5, drift: 4.5 },
-  { step: 2, bodies: 3, ground: 6, drift: 6.3 },
-  { step: 3, bodies: 5, ground: 7, drift: 7.5 },
-  { step: 4, bodies: 6, ground: 8, drift: 9.8 },
-  { step: 5, bodies: 6, ground: 9, drift: 10.5 },
+  { step: 0, bodies: 1, ground: 5, drift: 3.3 },
+  { step: 1, bodies: 1, ground: 5, drift: 4.9 },
+  { step: 2, bodies: 3, ground: 6, drift: 6.6 },
+  { step: 3, bodies: 5, ground: 8, drift: 8.2 },
+  { step: 4, bodies: 7, ground: 9, drift: 9.9 },
+  { step: 5, bodies: 7, ground: 9, drift: 10.9 },
 ]
 
 function armed(seed: number, w: number, h: number, experience: number): Arena {

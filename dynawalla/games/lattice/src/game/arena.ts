@@ -73,7 +73,7 @@ const WALL_EVERY = 5
  * into a ring that reported nothing, forever, and the only sign was one line on
  * a console nobody was reading.
  */
-const REARM_MS = 2500
+export const REARM_MS = 2500
 
 /** Radii in arena units. The arena is nominally about 1000 units wide. */
 export const SHIP_R = 15

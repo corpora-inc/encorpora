@@ -126,18 +126,15 @@ export function comprehensionWindow(item: Item): number {
 /**
  * How long the finished statement is held on the wall after a miss.
  *
- * This is the other half of the same argument and it is not a punishment
- * interval. A child who cannot yet produce `473 + 168` can still absorb it if
- * the game shows the whole thing completing — learning by exposure, at the
- * bottom of the range, which is a stated goal of the product. The miss is the
- * teaching moment, so the game spends it on the mathematics rather than on
- * feedback about the failure.
+ * **There is no such function any more, and this note is why.** It returned 1.5
+ * to 3 seconds and the shell spent it as a countdown, taking the completed sum
+ * away whether or not anybody had finished reading it. That is the defect
+ * `packs/shared/game-pacing`'s `revealPlan` names, and its answer is
+ * `holdMs: Infinity` — a child who has just missed is the slowest reader in the
+ * session, and a timer sized for a fluent one removes the evidence exactly when
+ * it becomes useful. `mount.completeSum` now holds the hall until the child's
+ * own hand ends it, with `REVEAL_SETTLE_MS` of lockout and nothing else.
  *
- * Longer for a wider sum, because a wider sum takes longer to read. Bounded at
- * both ends: never so short that it flashes past, never so long that a child
- * who knows what happened is kept waiting.
+ * Do not bring it back. A duration here is a deadline on reading, and reading is
+ * the only thing a miss is for.
  */
-export function revealSeconds(item: Item): number {
-  const columns = Math.max(1, Math.min(BY_COLUMNS.length - 1, widestColumn(item)))
-  return Math.min(3, 1.5 + columns * 0.3)
-}
