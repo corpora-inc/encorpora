@@ -11,6 +11,7 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 
+import { HUSK_R } from "../core/config.ts";
 import { C } from "../core/palette.ts";
 
 import {
@@ -21,13 +22,18 @@ import {
   crystalColor,
   crystalGround,
   crystalSurfaces,
+  EDGE_FLASH_GAIN,
+  edgeWidthPx,
   equationBloom,
   equationGround,
+  GLYPH_PAD,
   INK_RIM,
+  luma,
   MIN_LETTERFORM,
   MIN_OBJECT,
   plus,
   rgb,
+  rimReachPx,
   RIM_WIDTH,
   worstAgainst,
   worstEdge,
@@ -99,7 +105,13 @@ test("the numeral the game USED to draw is unreadable against its own bloom", ()
   assert.ok(struck < 1.1, `a struck crystal's digit measured ${struck.toFixed(3)}:1 on its bloom`);
 });
 
-test("the letterform clears 4.5:1 against its rim in every crystal state", () => {
+test("the letterform clears 4.5:1 against its rim, in both inks", () => {
+  // Both inks, not eight states: `contrast(core, rim)` depends on the accent and
+  // nothing else, so the eight rows would be six duplicates. The states are
+  // still walked, because which accent a state uses is `crystalColor`'s answer
+  // and not this file's — but the claim is about the two inks.
+  const inks = new Set(STATES.map(([, s]) => crystalColor(s)));
+  assert.equal(inks.size, 2, "a crystal is drawn in an ink this test does not measure");
   for (const [name, s] of STATES) {
     const ratio = contrast(core(crystalColor(s)), rim);
     assert.ok(
@@ -134,27 +146,58 @@ test("the accusation at the top of the trench is fixed by the same rim", () => {
   );
 });
 
-test("the wireframe crossing a digit is an artifact, not the ground", () => {
+test("the wireframe is WIDER than the rim, and crosses it additively", () => {
   // `game.ts` flushes the line batch AFTER every husk has blitted its glyph, and
-  // flushes it under `lighter` — so the twelve edges of the cell are ADDED on
-  // top of the numeral wherever they cross it. That is measured here rather than
-  // quietly folded into `crystalGround`, because it is 1.5px against a rim of
-  // `RIM_WIDTH` em and it crosses the ring instead of replacing it.
+  // flushes it under `lighter`, so the twelve edges of the cell are ADDED on top
+  // of the numeral wherever they cross it.
+  //
+  // The first version of this test claimed the rim outlasted that crossing by
+  // measuring the rim at its very widest — a ONE-digit label at the size cap —
+  // against an edge at a scale this game never runs at. Both halves of the
+  // comparison were picked at operating points that never co-occur. The truth is
+  // the other way round and is asserted as such below: at every viewport the
+  // edge is two to five times the ring.
+  //
+  // What makes the pair hold anyway is that the ring is a CLOSED CONTOUR and the
+  // crossing is ADDITIVE. It brightens a short arc of the ring and the core
+  // under it by the same amount; it cannot darken the core, cannot invert the
+  // pair, and cannot reach the rest of the contour, which is what the letterform
+  // is read against.
   const cyan = rgb(C.cyan);
   const litRim = plus(cyan, rim, 0.72);
   const litCore = plus(cyan, core(C.cyan), 0.72);
   assert.ok(
+    luma(litRim) >= luma(rim) && luma(litCore) >= luma(core(C.cyan)),
+    "an edge crossing the numeral darkened it, so it is not being added",
+  );
+  assert.ok(
     contrast(litCore, litRim) < MIN_LETTERFORM,
     "an additive edge over the digit no longer washes it out, so this note is stale",
   );
-  // What bounds the damage is geometry, not colour: at the size a phone draws a
-  // husk numeral the rim is wider than the line that crosses it.
-  const HUSK_NUMERAL_PX = 40; // r * scale * 1.5 on a 320px-wide phone
-  const rimOnScreen = (HUSK_NUMERAL_PX * RIM_WIDTH) / 2;
-  assert.ok(
-    rimOnScreen > 1.5,
-    `the rim is ${rimOnScreen.toFixed(2)}px where the wireframe crossing it is 1.5px`,
-  );
+
+  // The real widths, at the two extremes this game runs at. `scale = h / 260`
+  // (`fitCamera` maps `VIEW_HALF_H` onto half the glass at `CAM_Z`), and a
+  // three-digit label — the one the fit change was for — draws at about
+  // `0.89 × r × scale`, which is where the ring is narrowest.
+  for (const [name, glassH] of [
+    ["320×568 portrait", 568],
+    ["844×390 landscape", 390],
+  ] as Array<[string, number]>) {
+    const scale = glassH / 260;
+    const size = 0.89 * HUSK_R * scale;
+    const ring = rimReachPx(size);
+    assert.ok(
+      ring < edgeWidthPx(scale, 0),
+      `${name}: the ring is ${ring.toFixed(2)}px and a resting edge ${edgeWidthPx(scale, 0).toFixed(2)}px — if the ring now wins, say so instead of this`,
+    );
+    // And the widest crossings are transient: `hitFlash` decays at 5.5/s from 1,
+    // so `1 + EDGE_FLASH_GAIN` of edge lives about 180ms — after a strike has
+    // landed, which is a frame a child has answered in rather than read in.
+    assert.ok(
+      edgeWidthPx(scale, 1) / edgeWidthPx(scale, 0) <= 1 + EDGE_FLASH_GAIN + 0.001,
+      `${name}: a struck husk's edge grew more than the flash gain allows`,
+    );
+  }
 });
 
 test("a shut shell stays deliberately unreadable, and that is on purpose", () => {
@@ -177,9 +220,15 @@ test("a shut shell stays deliberately unreadable, and that is on purpose", () =>
 });
 
 test("the rim fits inside the sprite's own padding", () => {
-  // `getGlyph` pads the bake by 0.62 em on every side for the blurred halo. The
-  // rim is stroked centred on the letterform, so it reaches half its width
-  // beyond the advance — if that ever exceeded the padding the sprite would clip
-  // its own contour and the digit would read as a broken outline.
-  assert.ok(RIM_WIDTH / 2 < 0.62, `the rim reaches ${RIM_WIDTH / 2} em into a 0.62 em pad`);
+  // `getGlyph` pads the bake by `GLYPH_PAD` em on every side for the blurred
+  // halo. The rim is stroked centred on the letterform, so it reaches half its
+  // width beyond the advance — if that ever exceeded the padding the sprite
+  // would clip its own contour and the digit would read as a broken outline.
+  //
+  // Against the constant `bake.ts` actually pads with, not a literal copy of it:
+  // a copy passes happily while somebody tightens the pad underneath it.
+  assert.ok(
+    RIM_WIDTH / 2 < GLYPH_PAD,
+    `the rim reaches ${String(RIM_WIDTH / 2)} em into a ${String(GLYPH_PAD)} em pad`,
+  );
 });

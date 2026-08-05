@@ -499,9 +499,16 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
     const costly = hintItem.breaks > 0
     const clockStage = costly && !flight ? Math.min(FREE_STAGES, scheduledStage(idle, hintItem)) : 0
     const stage = Math.max(clockStage, asked)
-    hintShown = stage
+    // Only what is actually on the glass. Assigned unconditionally, a tap during
+    // the flight of a severed piece advanced `asked` past a picture the child
+    // never saw.
+    if (!flight) hintShown = stage
+    // Built whenever there is a round to build it about, INCLUDING at stage 0.
+    // `drawHint` returns immediately below `STAGE_SHAPE`, so nothing is drawn —
+    // but the gauge reads `more` off this to say that it can be pressed, and at
+    // stage 0 is exactly when a child has not yet found that out.
     const hintState: HintState | null =
-      round && stage > 0 && !flight
+      round && !flight
         ? {
             stage,
             plan: planFor(board.links, round.demand),

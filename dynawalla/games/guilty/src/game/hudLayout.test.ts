@@ -316,10 +316,10 @@ test("the ledger wraps only where it has to, and never loses a fact", () => {
         LEDGER_ONE_ROW,
         `${vname}, ${iname}: the ledger rows do not reassemble into the ledger`,
       );
-      assert.ok(
-        ledger.length <= COPY.ledger.length,
-        `${vname}, ${iname}: the ledger split into ${ledger.length} rows for ${COPY.ledger.length} facts`,
-      );
+      // No assertion on the row COUNT here: the greedy pack pushes at most one
+      // row per fact, so "no more rows than facts" is true of any implementation
+      // of that loop and would pass whatever it did. The `join` above is the
+      // check — it fails if a fact is dropped, duplicated or reordered.
     }
   }
 });

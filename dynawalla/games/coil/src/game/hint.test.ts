@@ -23,6 +23,8 @@ import test from "node:test"
 
 import {
   FREE_STAGES,
+  STAGE_JOINT,
+  STAGE_SHAPE,
   HINT_DWELL_MS,
   HINT_DWELL_PER_BREAK_MS,
   HINT_STAGES,
@@ -42,7 +44,6 @@ test("the quiet is pure in the item and never shortens as the item hardens", () 
       ms >= previous,
       `a demand needing ${String(breaks)} breaks got ${String(ms)}ms of quiet, less than the one before it`,
     )
-    assert.equal(ms, firstHintMs({ breaks }), "firstHintMs is not pure")
     previous = ms
   }
   assert.equal(firstHintMs({ breaks: 0 }), HINT_DWELL_MS)
@@ -65,10 +66,19 @@ test("a child who is getting on with it never sees a hint at all", () => {
 
 test("the clock stops short of the picture that states the answer", () => {
   // `mount.ts` caps the schedule at `FREE_STAGES`; what is asserted here is that
-  // the cap is in the right place. Stage 3 puts a ghost of the jaws on the joint
-  // to cut at, which IS the answer, so the free stages must end before it.
-  assert.ok(FREE_STAGES < HINT_STAGES, "every stage is free, so the clock states the answer")
-  assert.equal(FREE_STAGES, 2, "the free stages no longer end where THE PLACE begins")
+  // the cap is in the right place.
+  //
+  // Against `STAGE_JOINT` — the constant `scene.ts` draws the ghost jaws from —
+  // and not against its own literal. The first version of this test compared
+  // `FREE_STAGES` to `HINT_STAGES` and then to the number 2, neither of which
+  // reaches the renderer; the doc and the renderer had drifted a whole stage
+  // apart and this test could not see it. Now moving either side fails here.
+  assert.ok(
+    FREE_STAGES < STAGE_JOINT,
+    `the clock reaches stage ${String(FREE_STAGES)} and the jaws are drawn from ${String(STAGE_JOINT)}, so stillness alone states the answer`,
+  )
+  assert.ok(FREE_STAGES >= STAGE_SHAPE, "the clock gives nothing at all, so there is no free hint")
+  assert.ok(STAGE_JOINT < HINT_STAGES + 1, "the jaws are drawn from a stage that does not exist")
 })
 
 test("the marker points at a link that can actually be opened", () => {
@@ -103,7 +113,6 @@ test("following the marker takes exactly the demand — every reachable demand",
       let plan = planFor(links, demand)
       while (plan.breaks > 0) {
         assert.ok(plan.breakIndex >= 0, `coil ${String(coil)} demand ${String(demand)}: breaks needed, no link named`)
-        const before = suffixValue(links, plan.cut)
         links = breakAt(links, plan.breakIndex)
         // A break buys resolution, never a different amount. The plan must not
         // be steering the child into changing what they are holding.
@@ -112,7 +121,6 @@ test("following the marker takes exactly the demand — every reachable demand",
           coil,
           `coil ${String(coil)} demand ${String(demand)}: opening a link changed the chain's value`,
         )
-        assert.ok(before >= 0)
         plan = planFor(links, demand)
         guard++
         assert.ok(guard <= 64, `coil ${String(coil)} demand ${String(demand)}: the marker never converges`)

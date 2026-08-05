@@ -8,7 +8,7 @@
  */
 
 import { mix, rgba } from "../core/palette.ts";
-import { CORE_MIX, INK_RIM, RIM_WIDTH } from "./ink.ts";
+import { CORE_MIX, GLYPH_PAD, INK_RIM, RIM_WIDTH } from "./ink.ts";
 
 export type Glyph = {
   canvas: HTMLCanvasElement;
@@ -65,7 +65,7 @@ export function getGlyph(text: string, color: string, weight = 800, px = BAKE_PX
   probe.font = font;
   const inkW = probe.measureText(text).width;
 
-  const pad = px * 0.62;
+  const pad = px * GLYPH_PAD;
   const w = inkW + pad * 2;
   const h = px * 1.28 + pad * 2;
   const canvas = makeCanvas(w, h);

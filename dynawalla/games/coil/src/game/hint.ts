@@ -24,20 +24,18 @@
 // and for the same reason, that copy ships about fifty times translated and a
 // picture of the mechanic does not.
 //
-//   1. **THE SHAPE.** The demand, drawn as links, beside the piece the jaws are
-//      already holding. Two drums and five beads against two beads. It says the
-//      single most useful thing and says it in silhouettes: *this is what has to
-//      come off, and it is not what you have.*
-//   2. **THE CHANGE.** One crack mark per break the demand still needs. This is
-//      the borrow, as a count: *you cannot take this until you open that many
-//      links.* Zero marks is information too — *it is all there, go and find the
-//      joint.*
-//   3. **THE PLACE.** A ghost of the jaws, on the lane, at the link to put them
-//      on next — live, and it moves every time the child cracks something. When
-//      that link is one to open, the ten-for-one it yields is written beside it:
-//      a drum shows `10×1`, a ring shows `10×10`. Numerals and a multiplication
-//      sign, in a game whose whole subject is that ten of one place is one of
-//      the next.
+//   1. **THE SHAPE.** The demand, drawn as its own chain of links in the cells
+//      after the child's tail. Two drums and five beads next to two beads. It
+//      says the single most useful thing and says it in silhouettes: *this is
+//      what has to come off, and it is not what you have.*
+//   2. **THE PLACE.** The link that has to be opened, ringed on the lane, with
+//      the ten-for-one it yields written under it: a drum shows `10×1`, a ring
+//      shows `10×10`. Numerals and a multiplication sign, in a game whose whole
+//      subject is that ten of one place is one of the next. Live — it moves
+//      every time the child cracks something, and it is simply absent when
+//      nothing needs opening, which is information too.
+//   3. **THE JOINT.** A ghost of the jaws on the joint the cut has to finish at.
+//      **This is the answer**, which is why the clock never reaches it.
 //   4. **THE NUMBER.** What the jaws are holding, and what the wall wants, as
 //      two numerals. The gauge refuses to print these during normal play on
 //      purpose — *"if it printed 25 the child would nudge until the digits
@@ -54,11 +52,20 @@
 //
 // ## The clock stops before the answer
 //
-// Stages 1 and 2 arrive on their own after a long stillness. **Stage 3 pins the
-// exact joint, so the clock never reaches it.** Past `FREE_STAGES` a hint is
-// something a child asks for with a thumb, by tapping the gauge — the panel that
-// already answers "what am I holding". Nothing that happens to a child who is
-// merely sitting there ever puts the answer on the screen.
+// Stillness alone reaches THE SHAPE and THE PLACE — what has to come off, and
+// which link stands in the way of taking it. It never reaches **THE JOINT**,
+// which is where to cut and therefore the answer. Past `FREE_STAGES` a hint is
+// something a child asks for with a thumb, by pressing the gauge — the panel
+// that already answers "what am I holding". Nothing that happens to a child who
+// is merely sitting there ever puts the answer on the screen.
+//
+// That boundary is a pair of constants both this file and the renderer read, so
+// it cannot be moved on one side only: `scene.ts` draws the ghost jaws from
+// `STAGE_JOINT`, and `hint.test.ts` asserts `FREE_STAGES < STAGE_JOINT`. An
+// earlier version of this file described stage 2 as a count of crack marks that
+// nothing drew, and asserted the boundary by comparing `FREE_STAGES` to its own
+// literal — which is how a doc and a renderer came to disagree about what the
+// clock gives away.
 //
 // And the quiet is a **pure function of the item, monotone non-decreasing in the
 // item's difficulty** — the same law THE LATTICE holds its hint to. The item's
@@ -71,17 +78,23 @@
 
 import { breaksNeeded, canBreak, linkValue } from "./place.ts"
 
+/** The four pictures, by name. `scene.ts` draws from these, not from literals. */
+export const STAGE_SHAPE = 1
+export const STAGE_PLACE = 2
+export const STAGE_JOINT = 3
+export const STAGE_NUMBER = 4
+
 /** The four pictures. See the list above. */
-export const HINT_STAGES = 4
+export const HINT_STAGES = STAGE_NUMBER
 
 /**
- * The last stage the CLOCK may reach on its own.
+ * The last picture the CLOCK may reach on its own.
  *
- * Two, because stage 3 puts a ghost of the jaws on the joint to aim at, and that
- * is the answer. A child who is merely sitting there gets the shape of the
- * demand and the number of links to open, and then it stops.
+ * THE PLACE, because the one after it is THE JOINT and the joint is the answer.
+ * A child who is merely sitting there is shown what has to come off and which
+ * link is in the way of taking it, and then it stops.
  */
-export const FREE_STAGES = 2
+export const FREE_STAGES = STAGE_PLACE
 
 /**
  * The quiet before the first picture, and what it is allowed to depend on.

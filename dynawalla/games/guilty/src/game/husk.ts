@@ -13,7 +13,7 @@ import { GATE_Y, HUSK_R } from "../core/config.ts";
 import { C, rgba } from "../core/palette.ts";
 import { drawGlow, drawGlyph, getGlyph } from "../render/bake.ts";
 import { clamp, ease } from "../render/draw.ts";
-import { MEMBRANE } from "../render/ink.ts";
+import { edgeWidthPx, MEMBRANE } from "../render/ink.ts";
 import { Mode, type Husk, type World } from "./world.ts";
 
 const VERTS: ReadonlyArray<readonly [number, number, number]> = [
@@ -212,7 +212,7 @@ export function drawHusk(world: World, h: Husk): void {
     }
   }
 
-  const width = Math.max(0.9, 1.5 * scale * (1 + flash * 1.6));
+  const width = edgeWidthPx(scale, flash);
   for (const e of EDGES) {
     batch.push(
       sx[e[0]],

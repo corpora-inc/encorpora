@@ -10,7 +10,13 @@
 // exactly one cold light — the recess. Nothing glows for encouragement.
 
 import type { Brick } from "../game/session.ts"
-import type { HintState } from "../game/hint.ts"
+import {
+  STAGE_JOINT,
+  STAGE_NUMBER,
+  STAGE_PLACE,
+  STAGE_SHAPE,
+  type HintState,
+} from "../game/hint.ts"
 import type { Round } from "../game/round.ts"
 import { coilOf, linkValue } from "../game/place.ts"
 import { COURSE } from "../game/session.ts"
@@ -683,7 +689,7 @@ export class Scene {
    */
   private drawHint(s: SceneState, lane: Lane): void {
     const hint = s.hintState
-    if (!hint || hint.stage < 1 || s.hint <= 0.01 || s.links.length === 0) return
+    if (!hint || hint.stage < STAGE_SHAPE || s.hint <= 0.01 || s.links.length === 0) return
     const { ctx } = this
     const tail = this.cellForLink(s, s.links.length - 1)
     if (tail < 0) return
@@ -710,11 +716,11 @@ export class Scene {
       drawLink(ctx, c.x, c.y, unit, want[k] as number, 0.5)
     }
 
-    // 2. THE CHANGE. The link that has to be opened, ringed, with the ten-for-one
+    // 2. THE PLACE. The link that has to be opened, ringed, with the ten-for-one
     //    it yields written under it. Numerals and a multiplication sign: the
     //    whole subject of the game is that ten of one place is one of the next,
     //    and no sentence says it better than `10×1` under a drum.
-    if (hint.stage >= 2 && hint.plan.breakIndex >= 0) {
+    if (hint.stage >= STAGE_PLACE && hint.plan.breakIndex >= 0) {
       const cell = this.cellForLink(s, hint.plan.breakIndex)
       if (cell >= 0 && cell < lane.capacity) {
         const c = cellAt(lane, cell)
@@ -739,10 +745,12 @@ export class Scene {
       }
     }
 
-    // 3. THE PLACE. A ghost of the jaws on the joint to put them on next — the
+    // 3. THE JOINT. A ghost of the jaws on the joint to put them on next — the
     //    link to open while there is one, and the joint to cut at once there is
-    //    not. Live: it moves the instant a link is cracked.
-    if (hint.stage >= 3) {
+    //    not. Live: it moves the instant a link is cracked. THIS IS THE ANSWER,
+    //    which is why `FREE_STAGES` stops below `STAGE_JOINT` and only a thumb
+    //    gets here.
+    if (hint.stage >= STAGE_JOINT) {
       const cell = this.cellForLink(s, hint.plan.aim)
       if (cell >= 0 && cell < lane.capacity) {
         const here = cellAt(lane, cell)
@@ -903,11 +911,18 @@ export class Scene {
     ctx.fillStyle = withAlpha(STONE_DEEP, 0.72)
     roundRect(ctx, x, y, w, h, 8)
     ctx.fill()
-    // The affordance, and the only one this needs: when there is more hint to be
-    // had, the panel that gives it brightens. No button, no word, no badge.
+    // The affordance, and the only one this needs: while there is more hint to be
+    // had, the panel that gives it is lit a little brighter than a panel. No
+    // button, no word, no badge.
+    //
+    // The lift is a CONSTANT and not a function of `s.hint`, because the state
+    // it has to speak in is the one where no hint is showing at all — a child
+    // who has not yet discovered that this panel answers when pressed. A lift
+    // that faded in with the hint only appeared to children who had already
+    // found it.
     const more = s.hintState?.more ?? false
-    ctx.strokeStyle = withAlpha(CELESTIAL_DIM, more ? 0.45 + s.hint * 0.5 : 0.45)
-    ctx.lineWidth = more ? 1.2 + s.hint * 1.1 : 1.2
+    ctx.strokeStyle = withAlpha(CELESTIAL_DIM, more ? 0.68 : 0.45)
+    ctx.lineWidth = more ? 1.8 : 1.2
     ctx.stroke()
 
     const piece = s.links.slice(s.cut)
@@ -949,7 +964,7 @@ export class Scene {
     // Fitted to the panel, because that is the defect this whole change is
     // about: the shipped hint was type laid into this rect without measuring it.
     const hint = s.hintState
-    if (hint && hint.stage >= 4 && s.hint > 0.01) {
+    if (hint && hint.stage >= STAGE_NUMBER && s.hint > 0.01) {
       const line = `${String(hint.holding)} / ${String(hint.demand)}`
       let size = Math.min(h * 0.3, 20)
       ctx.font = numerals(size, 700)

@@ -119,15 +119,63 @@ export function plus(src: RGB, dst: RGB, alpha: number): RGB {
 export const CORE_MIX = 0.62;
 
 /**
+ * Padding the bake leaves round a glyph, as a fraction of the em.
+ *
+ * It exists for the blurred halo, and the rim has to fit inside it too — a rim
+ * that reached past the sprite's edge would clip its own contour and the digit
+ * would read as a broken outline. `legibility.test.ts` asserts that against THIS
+ * constant rather than against a literal copied out of `bake.ts`.
+ */
+export const GLYPH_PAD = 0.62;
+
+/**
  * Rim width as a fraction of the bake em, stroked centred on the letterform —
  * so half of it lies under the core fill and half of it shows.
  *
- * 0.115 em is about 2.4 screen pixels on a husk numeral at the size a phone
- * draws it, which is the smallest ring that survives the additive wireframe
- * edge crossing it (that edge is 1.5px at scale 1) and still leaves the digit's
- * counters open at three digits.
+ * **The ring is narrower than the wireframe edge that crosses it, and that is
+ * stated here rather than wished away.** The visible reach is `0.0575 × size`,
+ * and a three-digit label draws at about `0.89 × r × scale` — so on the two
+ * extremes this game runs at, 320×568 portrait (`scale = 2.18`) and 844×390
+ * landscape (`scale = 1.50`), the ring reaches 1.50px and 1.03px while a husk
+ * edge is `EDGE_WIDTH × scale` = 3.28px and 2.25px, and up to 2.6× that in the
+ * frames after a strike. An earlier version of `legibility.test.ts` asserted the
+ * opposite by measuring the ring at its widest (a one-digit label at the size
+ * cap) against an edge at a scale the game never reaches.
+ *
+ * What makes the pair hold anyway is that the ring is a **closed contour** and
+ * the edge is a straight stroke laid over it *additively*. A crossing brightens
+ * a short arc of the ring and the core beneath it by the same amount — it
+ * cannot darken the core, cannot invert the pair, and cannot reach the rest of
+ * the contour, which is what the letterform is resolved against. And the widest
+ * crossings, at full `hitFlash`, live in the ~0.18s after a strike has already
+ * landed: a frame in which the child has answered, not one in which they are
+ * reading.
+ *
+ * 0.115 em is then the widest ring that still leaves a three-digit label's
+ * counters open at the size a phone draws it.
  */
 export const RIM_WIDTH = 0.115;
+
+/**
+ * The husk wireframe, as `drawHusk` strokes it: `EDGE_WIDTH × scale`, times up
+ * to `1 + EDGE_FLASH_GAIN` in the frames after a strike, floored at 0.9px.
+ *
+ * Here rather than in `husk.ts` because the claim above is a claim about the
+ * relationship between this and `RIM_WIDTH`, and a claim about a copy of a
+ * constant is not a claim about anything.
+ */
+export const EDGE_WIDTH = 1.5;
+export const EDGE_FLASH_GAIN = 1.6;
+
+/** How far the rim reaches beyond the letterform, in screen pixels, at `size`. */
+export function rimReachPx(size: number): number {
+  return (size * RIM_WIDTH) / 2;
+}
+
+/** The width of a husk's wireframe edge, in screen pixels. */
+export function edgeWidthPx(scale: number, flash: number): number {
+  return Math.max(0.9, EDGE_WIDTH * scale * (1 + flash * EDGE_FLASH_GAIN));
+}
 
 /**
  * The counter-ink: the trench's own darkest water.
