@@ -35,11 +35,15 @@ import {
   type Rect,
 } from "../../../../packs/shared/game-chrome/index.ts";
 import { EQUATION_Y, VIEW_HALF_H } from "../core/config.ts";
-import { hudLayout } from "./hudLayout.ts";
+import { gameOverLayout, hudLayout } from "./hudLayout.ts";
 
 const VIEWPORTS: Array<[string, number, number]> = [
   ["phone portrait, small", 320, 568],
   ["phone portrait", 390, 844],
+  // The founder's own handset: 1080×2340 physical, which the browser reports as
+  // 393×851 CSS px at devicePixelRatio 2.75.
+  ["the founder's phone, portrait", 393, 851],
+  ["the founder's phone, landscape", 851, 393],
   ["tablet portrait", 768, 1024],
   ["tablet landscape", 1024, 768],
   ["phone landscape", 844, 390],
@@ -52,10 +56,17 @@ const NOTCH: Insets = { top: 47, right: 0, bottom: 34, left: 0 };
 /** The same phone on its side. Both long edges lose room. */
 const NOTCH_SIDE: Insets = { top: 0, right: 47, bottom: 21, left: 47 };
 
+/** An Android phone with a status bar and a three-button navigation bar. */
+const ANDROID: Insets = { top: 24, right: 0, bottom: 48, left: 0 };
+/** The same phone turned sideways: the nav bar moves to the trailing edge. */
+const ANDROID_SIDE: Insets = { top: 0, right: 48, bottom: 0, left: 24 };
+
 const INSETS: Array<[string, Insets]> = [
   ["flat", FLAT],
   ["notched", NOTCH],
   ["notched, on its side", NOTCH_SIDE],
+  ["android status + 3-button nav", ANDROID],
+  ["android, on its side", ANDROID_SIDE],
 ];
 
 const inside = (r: Rect, a: Rect): boolean =>
@@ -174,5 +185,163 @@ test("the trench is not letterboxed by the insets", () => {
     assert.equal(notched.glass.h, h, `${name}: a notch shortened the glass`);
     assert.equal(flat.safe.h, h, `${name}: the flat safe area is not the whole height`);
     assert.ok(notched.safe.h < h, `${name}: the notch cost the HUD nothing, which cannot be right`);
+  }
+});
+
+/* ───────────────────────────────────────────────────── the death screen fits */
+
+// *"the death screen doesn't quite fit."*
+//
+// It did not. `drawGameOver` set four font sizes from the viewport and then
+// called `fillText` on all four without measuring any of them — the only card in
+// this game that skipped `fitFont`. What follows is computed at real viewports
+// from the same `gameOverLayout` the canvas draws from, with a text metric of
+// its own, so it fails if the fitting is removed rather than restating it.
+
+/**
+ * Advance width for a bold uppercase run, per character per pixel of type size.
+ *
+ * 0.62, not the 0.56 the harness in `opening.test.ts` uses for mixed case. Every
+ * line on this card is `700`-weight and three of the four are ALL CAPS, and caps
+ * in a UI sans run wider than the average glyph. A layout test that models the
+ * type as narrower than it is passes for the wrong reason.
+ */
+const ADVANCE = 0.62;
+const measure = (text: string, size: number): number => text.length * size * ADVANCE;
+
+/**
+ * The worst card this game can put up: a six-figure best, a two-figure wave and
+ * a two-figure run, which is what the ledger line looks like after a good
+ * session rather than after the first one.
+ */
+const COPY = {
+  headline: "THE TRENCH TAKES YOU",
+  score: "104820",
+  ledger: ["BEST 128640", "WAVE 24", "BEST RUN ×31"],
+  prompt: "TAP TO DIVE AGAIN",
+};
+
+/** The ledger as it reads when all three facts share one row. */
+const LEDGER_ONE_ROW = COPY.ledger.join("   ·   ");
+
+for (const [vname, w, h] of VIEWPORTS) {
+  for (const [iname, insets] of INSETS) {
+    test(`the death screen fits — ${vname} (${w}×${h}), ${iname}`, () => {
+      const area = safeRect(w, h, insets);
+      const l = hudLayout(w, h, area);
+      const card = gameOverLayout(l, COPY, measure);
+
+      for (const line of card.lines) {
+        assert.ok(
+          inside(line.box, area),
+          `"${line.text}" leaves the safe area: ${JSON.stringify(line.box)} vs ${JSON.stringify(area)}`,
+        );
+        assert.equal(
+          hitsHostChrome(line.box, w, insets),
+          false,
+          `"${line.text}" is under a host control: ${JSON.stringify(line.box)}`,
+        );
+      }
+    });
+  }
+}
+
+test("the death screen's headline really did run off a phone before this", () => {
+  // The defect, measured, so that "it fits now" is a statement about a change
+  // and not about a constant. This is the unfitted arithmetic `drawGameOver`
+  // used to do: `font(size * 0.62)` and straight into `fillText`.
+  for (const [name, w, h] of [
+    ["phone portrait, small", 320, 568],
+    ["the founder's phone, portrait", 393, 851],
+  ] as Array<[string, number, number]>) {
+    const area = safeRect(w, h, ANDROID);
+    const size = Math.min(area.w * 0.16, area.h * 0.1);
+    const headline = measure(COPY.headline, size * 0.62);
+    const ledger = measure(LEDGER_ONE_ROW, size * 0.3);
+    assert.ok(
+      headline > area.w,
+      `${name}: the unfitted headline was ${headline.toFixed(0)}px across a ${area.w}px screen`,
+    );
+    assert.ok(
+      ledger > area.w,
+      `${name}: the unfitted ledger was ${ledger.toFixed(0)}px across a ${area.w}px screen`,
+    );
+  }
+});
+
+test("the death screen shrinks type rather than moving the block", () => {
+  // Two properties that together say the card is FITTED and not merely nudged.
+  //
+  // 1. A narrow phone gets smaller type than a wide one for the same line.
+  // 2. The rows stay where the nominal size puts them, so the card does not
+  //    creep upward on the devices where it is already tightest.
+  const narrow = gameOverLayout(hudLayout(320, 568, safeRect(320, 568, FLAT)), COPY, measure);
+  const wide = gameOverLayout(hudLayout(1024, 768, safeRect(1024, 768, FLAT)), COPY, measure);
+  const headline = (c: typeof narrow): number => (c.lines[0] as { size: number }).size;
+  assert.ok(
+    headline(narrow) < narrow.size * 0.62 - 0.5,
+    `a 320px phone got the full ${(narrow.size * 0.62).toFixed(1)}px headline, so nothing was fitted`,
+  );
+  assert.ok(
+    Math.abs(headline(wide) - wide.size * 0.62) < 0.5,
+    "a tablet's headline was shrunk even though it fits, which means the fit is a blanket clamp",
+  );
+  const drops = (c: typeof narrow): number[] =>
+    c.lines.map((line) => Number(((line.y - (c.lines[0] as { y: number }).y) / c.size).toFixed(2)));
+  assert.deepEqual(
+    drops(wide),
+    [0, 1.05, 1.75, 2.5],
+    "a tablet did not get the single-row card this game has always had",
+  );
+  // The narrow phone wraps the ledger onto a second row, and the prompt moves
+  // down by exactly one ledger step to make room — nothing else moves. If the
+  // rows tracked the FITTED type instead of the nominal size these would drift.
+  assert.deepEqual(
+    drops(narrow),
+    [0, 1.05, 1.75, 2.17, 2.92],
+    "the rows moved with the fitted type instead of with the nominal size",
+  );
+});
+
+test("the ledger wraps only where it has to, and never loses a fact", () => {
+  // The wrap is a width decision and nothing else. Whatever the safe rectangle
+  // is, the three facts are all still on the card, in order, once.
+  for (const [vname, w, h] of VIEWPORTS) {
+    for (const [iname, insets] of INSETS) {
+      const l = hudLayout(w, h, safeRect(w, h, insets));
+      const card = gameOverLayout(l, COPY, measure);
+      const ledger = card.lines.slice(2, -1).map((line) => line.text);
+      assert.equal(
+        ledger.join("   ·   "),
+        LEDGER_ONE_ROW,
+        `${vname}, ${iname}: the ledger rows do not reassemble into the ledger`,
+      );
+      // No assertion on the row COUNT here: the greedy pack pushes at most one
+      // row per fact, so "no more rows than facts" is true of any implementation
+      // of that loop and would pass whatever it did. The `join` above is the
+      // check — it fails if a fact is dropped, duplicated or reordered.
+    }
+  }
+});
+
+test("a wide safe rectangle keeps the ledger on one row", () => {
+  // The counterpart, and the reason the wrap is a width decision rather than a
+  // blanket restyle: wherever the ledger fits at full size it is still the
+  // single line this card has always had. That is every landscape window,
+  // because `size` is driven by the SHORT edge and the ledger is limited by the
+  // long one. Portrait is the other way round and wraps — see the rule in
+  // `gameOverLayout`.
+  for (const [vname, w, h] of [
+    ["tablet landscape", 1024, 768],
+    ["the founder's phone, landscape", 851, 393],
+    ["phone landscape", 844, 390],
+  ] as Array<[string, number, number]>) {
+    const l = hudLayout(w, h, safeRect(w, h, FLAT));
+    const card = gameOverLayout(l, COPY, measure);
+    assert.equal(
+      card.lines.length,
+      4,
+      `${vname}: the ledger wrapped into ${card.lines.length - 3} rows on a screen with room for one`,
+    );
   }
 });

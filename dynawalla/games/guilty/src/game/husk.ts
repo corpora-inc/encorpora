@@ -13,6 +13,7 @@ import { GATE_Y, HUSK_R } from "../core/config.ts";
 import { C, rgba } from "../core/palette.ts";
 import { drawGlow, drawGlyph, getGlyph } from "../render/bake.ts";
 import { clamp, ease } from "../render/draw.ts";
+import { edgeWidthPx, MEMBRANE } from "../render/ink.ts";
 import { Mode, type Husk, type World } from "./world.ts";
 
 const VERTS: ReadonlyArray<readonly [number, number, number]> = [
@@ -203,7 +204,7 @@ export function drawHusk(world: World, h: Husk): void {
     ctx.lineTo(sx[2], sy[2]);
     ctx.lineTo(sx[3], sy[3]);
     ctx.closePath();
-    ctx.fillStyle = `rgba(3,10,17,${0.72 * alpha})`;
+    ctx.fillStyle = rgba(MEMBRANE, 0.72 * alpha);
     ctx.fill();
     if (world.quality > 0.7) {
       ctx.fillStyle = rgba(hostile ? C.hostileDeep : C.cyanDeep, (0.34 + flash * 0.4) * alpha);
@@ -211,7 +212,7 @@ export function drawHusk(world: World, h: Husk): void {
     }
   }
 
-  const width = Math.max(0.9, 1.5 * scale * (1 + flash * 1.6));
+  const width = edgeWidthPx(scale, flash);
   for (const e of EDGES) {
     batch.push(
       sx[e[0]],
@@ -256,10 +257,18 @@ export function drawHusk(world: World, h: Husk): void {
     }
     const label = shut ? scrambled(world, h) : h.label;
     const glyph = getGlyph(label, hostile ? C.hostile : C.cyan, 800);
-    // Fit a three-digit answer inside the cell instead of letting it spill:
-    // the drawn ink width is `inkW * size / 92`, so cap `size` by the cell.
-    const maxInk = r * scale * (shut ? 1 : 1.55);
-    const size = Math.min(r * scale * (shut ? 0.9 : 1.5), (maxInk * 92) / glyph.inkW);
+    // Fit a three-digit answer inside the cell instead of letting it spill.
+    //
+    // The drawn ink is `(inkW + 2 × rimW) × size / 92` now that a numeral
+    // carries a counter-ink rim, and the budget counts the rim. It moved from
+    // 1.55 half-widths to 1.7 for exactly that reason: the LETTERFORMS come out
+    // the size they always were — 1.55/110 and 1.7/120.6 agree to four decimal
+    // places on a two-digit label — and the extra 0.15 is the ring around them.
+    // Shrinking the digits to make room for the thing that was added to make
+    // them legible would have been a strange way to answer the brief.
+    const maxInk = r * scale * (shut ? 1.1 : 1.7);
+    const ink = glyph.inkW + glyph.rimW * 2;
+    const size = Math.min(r * scale * (shut ? 0.9 : 1.5), (maxInk * 92) / ink);
     drawGlyph(ctx, glyph, cxp, cyp, size, alpha * (shut ? 0.32 : 1));
   }
 }

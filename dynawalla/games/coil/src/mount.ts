@@ -29,14 +29,20 @@ import { createInstructions, onInsetsChange } from "../../../packs/shared/game-c
 import type { Host } from "./contract.ts"
 import { Audio } from "./audio/audio.ts"
 import { SLAG_CELLS, buried as buriedCount } from "./game/board.ts"
-import { breaksNeeded, coilOf } from "./game/place.ts"
+import {
+  FREE_STAGES,
+  HINT_STAGES,
+  type HintItem,
+  type HintState,
+  planFor,
+  scheduledStage,
+} from "./game/hint.ts"
+import { breaksNeeded, coilOf, suffixValue } from "./game/place.ts"
 import { REACTIONS, type Tier, tierFor } from "./game/reactions.ts"
 import { COURSE, createSession } from "./game/session.ts"
 import { cellAt, cellNear, inside } from "./render/layout.ts"
 import { type SceneState, Scene } from "./render/scene.ts"
 
-/** Hesitation before the hint offers itself. Long, and it never hurries. */
-const HINT_AFTER_MS = 9_000
 
 export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
   const container = document.createElement("div")
@@ -66,6 +72,7 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
           "Tap a link. The jaws are the big cutter, and they slide to that link. That is where the cut will happen.",
           "Pull the SHEAR lever. To shear is to cut, and everything after the jaws comes off.",
           "Take as long as you like. There is no timer and nothing is rushing you.",
+          "Stuck? Press the panel between the two levers. It shows you a little more each time, and it never costs you anything.",
           "Every cut that is exactly right lays one brick in the wall behind you. Eight bricks make a course, which is one whole row of the wall.",
         ],
       },
@@ -138,6 +145,19 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
   let flight: SceneState["flight"] = null
   let breaksThisRound = 0
   let lastInputAt = performance.now()
+  // How far the CHILD has asked the hint to unfold, this round. The clock's own
+  // stage is computed fresh every frame from `lastInputAt`; this one is not, so
+  // reaching for the jaws after asking for help does not take the help away.
+  let asked = 0
+  // The stage actually on the glass last frame. A tap advances from what the
+  // child can SEE, not from what they have asked for — so the first tap after
+  // the clock has already offered two pictures gives the third, not the first.
+  let hintShown = 0
+  // The item the quiet is a pure function of, captured when the round arrives
+  // rather than read live — cracking a link lowers `breaksNeeded`, and a hint
+  // schedule that moved while a child worked would be reading the child.
+  let hintItem: HintItem = { breaks: 0 }
+  let hintRound = ""
   let running = true
   let raf = 0
   let last = performance.now()
@@ -255,7 +275,6 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
     session.stoke()
     breaksThisRound = 0
     lastInputAt = performance.now()
-    fx.hint = 0
   }
 
   let pointer = -1
@@ -274,9 +293,17 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
     pointer = e.pointerId
     void audio.start()
     lastInputAt = performance.now()
-    fx.hint = 0
     const { x, y } = local(e)
 
+    // ASK FOR MORE. The gauge already answers "what am I holding"; a tap on it
+    // asks it to keep going. There is no hint button and no new word anywhere —
+    // copy in this fleet ships about fifty times translated, and a panel that
+    // unfolds when you press it needs none.
+    if (inside(scene.layout.gauge, x, y)) {
+      asked = Math.min(HINT_STAGES, Math.max(asked, hintShown) + 1)
+      host.haptic("light")
+      return
+    }
     if (inside(scene.layout.shear, x, y)) {
       onShear = true
       fx.shearPress = 1
@@ -347,7 +374,6 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
     if (guide.isOpen) return
     const board = session.board
     lastInputAt = performance.now()
-    fx.hint = 0
     switch (e.key) {
       case "ArrowLeft":
         session.aim(board.cut - 1)
@@ -439,18 +465,60 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       }
     }
 
-    // The hint arrives on its own after a long stillness, and only when the
-    // demand actually costs a regrouping — telling a child the shape of a cut
-    // they could already reach is noise, not help.
-    const idle = now - lastInputAt
     const round = session.round
-    const costly = round ? breaksNeeded(session.board.links, round.demand) > 0 : false
-    fx.hint =
-      idle > HINT_AFTER_MS && costly && !flight
-        ? Math.min(1, fx.hint + dt * 1.4)
-        : decay(fx.hint, dt, 0.4)
-
     const board = session.board
+
+    // A new round: the schedule is re-read from the item, and the child's own
+    // asking starts again from nothing.
+    //
+    // Keyed on the coil and the demand as well as the id, because the id is the
+    // HOST's and nothing in the contract stops it serving one twice. Keyed on
+    // the id alone, a repeat would carry a stale `breaksNeeded` into a different
+    // coil — the quiet has to be a pure function of the item that is actually on
+    // the lane.
+    const key = `${round?.questionId ?? ""}|${String(round?.coil ?? 0)}|${String(round?.demand ?? 0)}`
+    if (round && key !== hintRound) {
+      hintRound = key
+      hintItem = { breaks: Math.max(0, breaksNeeded(board.links, round.demand)) }
+      asked = 0
+    }
+
+    // The hint. Two clocks and no countdown.
+    //
+    // The first is stillness, and it only ever offers the two pictures that do
+    // not state the answer — and only when the demand actually costs a
+    // regrouping, because telling a child the shape of a cut they could already
+    // reach is noise rather than help. That gate is the one this game shipped
+    // with and it is kept.
+    //
+    // The second is the child's thumb, and it has no gate at all: a tap on the
+    // gauge always answers, on any round, however recently they moved. That is
+    // the whole of the founder's *"needs more hints"* — the game never
+    // volunteers noise, and it always answers when asked.
+    const idle = now - lastInputAt
+    const costly = hintItem.breaks > 0
+    const clockStage = costly && !flight ? Math.min(FREE_STAGES, scheduledStage(idle, hintItem)) : 0
+    const stage = Math.max(clockStage, asked)
+    // Only what is actually on the glass. Assigned unconditionally, a tap during
+    // the flight of a severed piece advanced `asked` past a picture the child
+    // never saw.
+    if (!flight) hintShown = stage
+    // Built whenever there is a round to build it about, INCLUDING at stage 0.
+    // `drawHint` returns immediately below `STAGE_SHAPE`, so nothing is drawn —
+    // but the gauge reads `more` off this to say that it can be pressed, and at
+    // stage 0 is exactly when a child has not yet found that out.
+    const hintState: HintState | null =
+      round && !flight
+        ? {
+            stage,
+            plan: planFor(board.links, round.demand),
+            demand: round.demand,
+            holding: suffixValue(board.links, board.cut),
+            more: stage < HINT_STAGES,
+          }
+        : null
+    fx.hint = hintState ? Math.min(1, fx.hint + dt * 1.4) : decay(fx.hint, dt, 0.4)
+
     const state: SceneState = {
       round,
       links: board.links,
@@ -470,6 +538,7 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
       shearPress: fx.shearPress,
       whip: reduced ? 0 : fx.whip,
       hint: fx.hint,
+      hintState,
       flight,
     }
     scene.draw(state)

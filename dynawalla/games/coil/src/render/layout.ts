@@ -62,6 +62,18 @@ export type Layout = {
   courses: Rect
   lane: Lane
   levers: Rect
+  /**
+   * The panel between the two levers: what the jaws are holding, and the hint.
+   *
+   * It is a rect in the layout rather than a sum the renderer works out for
+   * itself, and that is the fix for *"hints don't fit on mobile."* The scene
+   * used to derive this strip inline as `shear.x − (furnace.x + furnace.w) − 24`
+   * and give up silently when the answer came out under 60px — so on a narrow
+   * safe rectangle the one panel that says what you are holding, and the hint
+   * inside it, both disappeared with nothing to see. Here it is geometry, and
+   * `chrome.test.ts` asserts a floor on it at every viewport.
+   */
+  gauge: Rect
   shear: Rect
   furnace: Rect
 }
@@ -81,6 +93,21 @@ function clamp(v: number, lo: number, hi: number): number {
  * costs the alley no height at all.
  */
 const CORNER = HOST_MARGIN + HOST_CONTROL + 2
+
+/**
+ * The lever row, as three panels that must all survive a 320px phone.
+ *
+ * `SHEAR_MIN` and `FURNACE_MIN` are the widths that shipped and they are touch
+ * targets first — both are far wider than the 44px platform minimum even at the
+ * floor, because both carry a word. The gauge takes what is left, and 72px is
+ * the width below which the held piece clips to a single link and the panel
+ * stops answering the question it exists to answer; `chrome.test.ts` gates on it
+ * rather than this file clamping to it, so a change to either lever that
+ * squeezed the gauge out would fail a test instead of shipping.
+ */
+const LEVER_GAP = 12
+const SHEAR_MIN = 108
+const FURNACE_MIN = 84
 
 /**
  * Where everything is, inside `area`.
@@ -163,21 +190,41 @@ export function layout(w: number, h: number, area: Rect): Layout {
     capacity: Math.min(LANE_CELLS, rows * cols),
   }
 
-  const leverW = clamp(levers.w * 0.34, 108, 220)
+  // The lever row: FURNACE, the gauge, SHEAR, left to right, sharing the width.
+  //
+  // The two levers are sized exactly as they always were; what is new is that
+  // the strip between them is a rect in this file. It used to be worked out a
+  // second time inside `Scene.drawGauge`, as
+  // `shear.x − (furnace.x + furnace.w) − 24`, with a hardcoded 12px gap that
+  // this file knew nothing about and a silent `if (w < 60) return` at the end —
+  // so the panel that answers "what am I holding", and the hint inside it,
+  // could vanish with nothing on screen to say why. Two formulas for one strip,
+  // one of them able to give up. Now there is one, and it is asserted.
+  //
+  // No floor on what is left over, deliberately, for the reason the recess has
+  // none: a floor here would push the levers into each other to satisfy an
+  // arithmetic constraint and hide the real problem, which is a row too narrow
+  // to hold three panels. That it is wide enough is asserted at every viewport
+  // in `chrome.test.ts`, where it fails loudly.
+  const gap = LEVER_GAP
+  const shearW = clamp(levers.w * 0.34, SHEAR_MIN, 220)
+  const furnaceW = clamp(levers.w * 0.26, FURNACE_MIN, 168)
+  const furnace: Rect = { x: levers.x, y: levers.y, w: furnaceW, h: levers.h }
   const shear: Rect = {
-    x: levers.x + levers.w - leverW,
+    x: levers.x + levers.w - shearW,
     y: levers.y,
-    w: leverW,
+    w: shearW,
     h: levers.h,
   }
-  const furnace: Rect = {
-    x: levers.x,
+  const gaugeX = furnace.x + furnace.w + gap
+  const gauge: Rect = {
+    x: gaugeX,
     y: levers.y,
-    w: clamp(levers.w * 0.26, 84, 168),
+    w: Math.max(0, shear.x - gap - gaugeX),
     h: levers.h,
   }
 
-  return { w, h, compact, wall, recess, courses, lane, levers, shear, furnace }
+  return { w, h, compact, wall, recess, courses, lane, levers, gauge, shear, furnace }
 }
 
 /**
@@ -228,6 +275,21 @@ export function cellNear(lane: Lane, px: number, py: number, count: number): num
     }
   }
   return best
+}
+
+/**
+ * Where a label of `width` goes when it wants to be centred on `cx` but must
+ * stay on the lane.
+ *
+ * The hint writes `10×100` under the link a child has to open, and that link can
+ * be in the last column. Centring it there would hang it off the same edge the
+ * shipped hint hung off — which is the entire defect this pack was sent back
+ * for. It is a function rather than two `Math.min`s inside the renderer so that
+ * `hint.test.ts` can measure the worst label at every viewport.
+ */
+export function labelX(lane: Rect, cx: number, width: number): number {
+  const right = lane.x + lane.w - width - 2
+  return Math.min(Math.max(lane.x + 2, cx - width / 2), Math.max(lane.x + 2, right))
 }
 
 export function inside(r: Rect, px: number, py: number): boolean {

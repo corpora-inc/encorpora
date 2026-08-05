@@ -13,6 +13,7 @@ import { project, type Camera } from "../core/camera.ts";
 import { GATE_Y, VIEW_HALF_H } from "../core/config.ts";
 import { C, rgba } from "../core/palette.ts";
 import { drawGlow } from "../render/bake.ts";
+import { SHEEN, WATER } from "../render/ink.ts";
 import type { World } from "./world.ts";
 
 const FLOOR_Y = -178;
@@ -27,18 +28,18 @@ export function bakeScene(w: number, h: number): void {
   g.width = Math.max(1, Math.ceil(w));
   g.height = Math.max(1, Math.ceil(h));
   const gc = g.getContext("2d") as CanvasRenderingContext2D;
+  // The stops come from `ink.ts` because the numeral's contrast is a claim about
+  // this water. When the two were separate literals the trench could be warmed
+  // up without a single number in the legibility table changing.
   const grad = gc.createLinearGradient(0, 0, 0, h);
-  grad.addColorStop(0, "#02060d");
-  grad.addColorStop(0.2, "#02070e");
-  grad.addColorStop(0.6, "#030c15");
-  grad.addColorStop(0.88, "#05161f");
-  grad.addColorStop(1, "#020a11");
+  const at = [0, 0.2, 0.6, 0.88, 1];
+  WATER.forEach((stop, i) => grad.addColorStop(at[i] as number, stop));
   gc.fillStyle = grad;
   gc.fillRect(0, 0, w, h);
   // A cold sheen from the surface, far above and to one side.
   const sheen = gc.createRadialGradient(w * 0.32, -h * 0.4, 0, w * 0.32, -h * 0.4, h * 0.95);
-  sheen.addColorStop(0, rgba(C.surface, 0.17));
-  sheen.addColorStop(1, rgba(C.surface, 0));
+  sheen.addColorStop(0, rgba(SHEEN, 0.17));
+  sheen.addColorStop(1, rgba(SHEEN, 0));
   gc.fillStyle = sheen;
   gc.fillRect(0, 0, w, h);
   gradient = g;
