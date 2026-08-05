@@ -29,7 +29,7 @@
  * shipped rule put it at 13px. SIEGE shipped the identical split and the founder
  * found it on an Android phone, with the currency painted under the OS clock.
  *
- * So the CSS dialect now reads `var(--mn-safe-*, env(...))`, and the four
+ * So the CSS dialect now reads `var(--dw-safe-*, env(...))`, and the four
  * properties are published onto the HUD root from the host's own measurement by
  * `publishSafeVars`. The `env()` stays as the fallback because it is right in a
  * dev browser tab, where there is no host to publish anything.
@@ -43,6 +43,8 @@ import {
   HOST_MARGIN,
   HOST_PROGRESS_H,
   NO_INSETS,
+  SAFE_PREFIX,
+  safeVar,
   publishSafeVars,
   safeInsets,
   type Insets,
@@ -131,8 +133,15 @@ export const FLOOR_DIGITS = 3;
 
 /* ── the CSS dialect ────────────────────────────────────────────────────── */
 
-/** The namespace the four published lengths live under. */
-export const SAFE_PREFIX = "--mn-safe-";
+/**
+ * The namespace the four published safe-area lengths live under.
+ *
+ * Re-exported from `packs/shared/game-chrome` rather than declared here. It
+ * used to be `--mn-safe-`, one of five per-pack spellings of the same four numbers
+ * — and five spellings is five chances to misspell one, and nothing a fleet
+ * gate can state as a rule. There is one name now and this pack does not own it.
+ */
+export { SAFE_PREFIX };
 
 /**
  * One safe edge plus a gutter, as a length the stylesheet can use.
@@ -144,9 +153,14 @@ export const SAFE_PREFIX = "--mn-safe-";
 const safe = (side: "top" | "right" | "bottom" | "left", px: number): string =>
   `calc(${cssSafe(side)} + ${px}px)`;
 
-/** Just the safe edge, with no gutter added. */
-export const cssSafe = (side: "top" | "right" | "bottom" | "left"): string =>
-  `var(${SAFE_PREFIX}${side}, env(safe-area-inset-${side}, 0px))`;
+/**
+ * Just the safe edge, with no gutter added.
+ *
+ * The shared builder, not a local copy of the same eight tokens — a hand-typed
+ * copy is a chance to leave the `var()` off, and leaving the `var()` off is
+ * the whole defect.
+ */
+export const cssSafe = safeVar;
 
 /**
  * Hand the stylesheet the safe area, from the host's measurement.

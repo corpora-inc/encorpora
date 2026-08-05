@@ -26,7 +26,7 @@
 // the mouse as an alternative aim and its button as the trigger. Tablet and
 // desktop are first-class targets here, not a phone game stretched.
 
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 import { Audio } from "./audio/audio.ts"
 import type { Host } from "./contract.ts"
 import { Rng } from "./core/rng.ts"
@@ -550,6 +550,13 @@ export function mountLattice(
     typeof ResizeObserver === "function" ? new ResizeObserver(() => resize()) : null
   observer?.observe(el)
 
+  // A ResizeObserver is not enough on its own. The host's real insets arrive
+  // over the settings channel AFTER the first layout, and iPadOS changes them
+  // in Split View without the element's box moving at all — so the observer
+  // never fires and a game that read the safe rectangle once at mount stays
+  // laid out against the probe's zeros for ever. MERGE shipped exactly that.
+  const stopInsets = onInsetsChange(() => resize())
+
   resize()
   scene.say("SHOOT WHAT SPLITS", CELESTIAL)
   apply(arena.begin(now()))
@@ -586,6 +593,7 @@ export function mountLattice(
       globalThis.removeEventListener("keyup", keyUp)
       globalThis.removeEventListener("resize", resize)
       observer?.disconnect()
+      stopInsets()
       audio.dispose()
       scene.dispose()
     },

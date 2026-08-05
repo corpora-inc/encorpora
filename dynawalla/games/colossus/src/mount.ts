@@ -24,7 +24,7 @@ import { bestStreak, recordStreak } from "./game/best.ts"
 import { Game, type GameEvent } from "./game/game.ts"
 import { Scene, type Banner } from "./render/scene.ts"
 import { STRIKE_ON } from "./render/palette.ts"
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 
 /**
  * The largest step the clock may take in one frame.
@@ -273,6 +273,13 @@ export function mountColossus(
       : null
   observer?.observe(el)
 
+  // A ResizeObserver is not enough on its own. The host's real insets arrive
+  // over the settings channel AFTER the first layout, and iPadOS changes them
+  // in Split View without the element's box moving at all — so the observer
+  // never fires and a game that read the safe rectangle once at mount stays
+  // laid out against the probe's zeros for ever. MERGE shipped exactly that.
+  const stopInsets = onInsetsChange(() => scene.resize())
+
   apply(game.begin(now()))
   frame = requestAnimationFrame(tick)
 
@@ -290,6 +297,7 @@ export function mountColossus(
       globalThis.removeEventListener("keydown", key)
       globalThis.removeEventListener("resize", resize)
       observer?.disconnect()
+      stopInsets()
       audio.dispose()
       guide.destroy()
       canvas.remove()

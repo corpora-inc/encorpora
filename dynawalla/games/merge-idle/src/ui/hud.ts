@@ -24,9 +24,10 @@
  * because the bottom-left of a landscape stage is shelf.
  */
 
+import { SAFE_VARS } from '../../../../packs/shared/game-chrome/index.ts'
 import { faceSizeFor, METER_H, STAGE_BTN, type Chrome } from './chrome.ts'
 
-const CSS = `
+export const CSS = `
 .ab-root{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;
   background:#04060f;color:#eef6ff;user-select:none;-webkit-user-select:none;touch-action:none;
   font-family:"SF Pro Rounded",ui-rounded,"Nunito","Avenir Next",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -57,7 +58,7 @@ const CSS = `
 @keyframes ab-grew{0%{filter:brightness(1)}30%{filter:brightness(2.4)}100%{filter:brightness(1)}}
 .ab-meter.grew{animation:ab-grew .7s ease-out}
 
-.ab-toasts{position:absolute;left:0;right:0;top:8%;z-index:5;display:flex;flex-direction:column;
+.ab-toasts{--dw-safe-exempt:"inside .ab-stage, which starts below the band that already pays the top inset";position:absolute;left:0;right:0;top:8%;z-index:5;display:flex;flex-direction:column;
   align-items:center;gap:6px;pointer-events:none}
 .ab-toast{font-weight:900;font-size:15px;letter-spacing:.06em;padding:7px 16px;border-radius:999px;
   background:rgba(4,7,18,.8);border:1px solid rgba(238,246,255,.22);text-shadow:0 2px 10px #000}
@@ -77,7 +78,17 @@ const CSS = `
   animation:ab-urge 1.1s ease-in-out infinite}
 @keyframes ab-urge{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
 
-.ab-badge{position:absolute;left:50%;transform:translateX(-50%);bottom:6px;z-index:4;font-size:10px;
+/* THE FOUNDER'S DEFECT, and the reason this pack was reopened.
+   .ab-badge is a child of .ab-stage, which is the flex-grow row: its bottom
+   edge IS the bottom of the glass. bottom: 6px therefore put "12 blooms · 40
+   joins" six pixels off the panel — entirely inside a 48px three-button
+   navigation bar on the founder's phone, and inside the home indicator on every
+   notched iPhone.
+   Note what it is NOT: there was no env(safe-area-inset-bottom) here to be
+   zero. This rule never mentioned the safe area at all, so no search for the
+   text found it. That is why the fleet gate now evaluates edge offsets to
+   numbers rather than looking for a string. */
+.ab-badge{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(6px + ${SAFE_VARS.bottom});z-index:4;font-size:10px;
   font-weight:800;opacity:.4;letter-spacing:.08em;pointer-events:none;font-variant-numeric:tabular-nums}
 
 @media (prefers-reduced-motion:reduce){
@@ -181,7 +192,7 @@ export class Hud {
    *
    * This is the only place the band's padding, its height and the two buttons'
    * corners are decided, and every number comes from `chromeLayout`. The
-   * stylesheet deliberately holds no safe-area rule of its own: two sources of
+   * stylesheet holds exactly ONE safe-area rule of its own — `.ab-badge`, which
    * truth for "where the notch is" is how a HUD ends up half-corrected — and
    * `env(safe-area-inset-*)` reads ZERO inside a pack frame anyway.
    */

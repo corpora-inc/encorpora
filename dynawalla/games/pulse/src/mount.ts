@@ -19,7 +19,7 @@ import { gateFitFor } from "./render/layout.ts";
 import { Scene } from "./render/scene.ts";
 import { loadSettings, prefersReducedMotion, saveSettings } from "./settings.ts";
 
-const CSS = `
+export const CSS = `
 .pulse-root{position:relative;width:100%;height:100%;min-height:320px;background:#04050a;
 overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;
 -webkit-tap-highlight-color:transparent;color-scheme:dark;contain:layout paint size;}

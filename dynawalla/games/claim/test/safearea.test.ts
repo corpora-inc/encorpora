@@ -41,6 +41,7 @@ import {
   parseCss,
   type Viewport,
 } from "../../../packs/shared/game-chrome/cssSafeArea.ts"
+import { envReadDirectly } from "../../../packs/shared/game-chrome/cssSafeArea.ts"
 import { hudFrame, muteRect } from "../src/game/layout.ts"
 
 const read = (rel: string): string =>
@@ -72,7 +73,7 @@ function published(w: number, h: number, insets: Insets, vp: Viewport): Map<stri
   vars.set("--cl-mute-s", `${m.w}px`)
   // …and the raw insets, for the cards, which centre in the whole frame.
   for (const side of ["top", "right", "bottom", "left"] as const) {
-    vars.set(`--cl-safe-${side}`, `${insets[side]}px`)
+    vars.set(`--dw-safe-${side}`, `${insets[side]}px`)
   }
   return vars
 }
@@ -264,22 +265,17 @@ test("the safe area never clips the card that the frame was not already clipping
 // ---------------------------------------------------------------------------
 
 test("no rule takes its answer from env() — it is zero where this game runs", () => {
-  // The rule this pack already followed, now enforced: an `env(safe-area-inset-*)`
-  // may only appear as the FALLBACK of a `--cl-*` custom property. Read directly
-  // it is the number zero inside a pack frame, whatever the device.
-  const stripped = CSS.replace(/\/\*[\s\S]*?\*\//g, "")
-  const found = [...stripped.matchAll(/env\(safe-area-inset-(top|right|bottom|left)/g)]
-  assert.ok(found.length > 0, "the dev-harness fallbacks are gone entirely")
-  for (const m of found) {
-    const before = stripped.slice(0, m.index)
-    const open = before.lastIndexOf("var(--cl-")
-    const close = before.lastIndexOf(")")
-    assert.ok(
-      open > close,
-      `env(safe-area-inset-${m[1]}) at ${m.index} is read directly, not as the fallback of a ` +
-        `--cl-* property — inside a pack frame that is the number zero`,
-    )
-  }
+  // An `env(safe-area-inset-*)` may only ever appear as the FALLBACK of the
+  // shared `--dw-safe-<side>` property. Read directly it is the number zero
+  // inside a pack frame, whatever the device.
+  //
+  // The rule used to be spelled out here against this pack's own `--cl-*`
+  // namespace. It is the shared check now, from `packs/shared/game-chrome`,
+  // because five packs each carrying their own copy of one rule is five
+  // chances for one of them to drift — and it is the SAME function
+  // `packs/sdk/src/safearea.test.ts` runs over every pack in the fleet.
+  assert.ok(/env\(safe-area-inset/.test(CSS), "the dev-harness fallbacks are gone entirely")
+  assert.deepEqual(envReadDirectly(CSS), [])
 })
 
 test("no surface uses a `padding:` shorthand that a breakpoint could reset", () => {
@@ -314,10 +310,10 @@ test("every published property is written unconditionally, zeros included", () =
     "--cl-mute-r",
     "--cl-mute-b",
     "--cl-mute-s",
-    "--cl-safe-top",
-    "--cl-safe-right",
-    "--cl-safe-bottom",
-    "--cl-safe-left",
+    "--dw-safe-top",
+    "--dw-safe-right",
+    "--dw-safe-bottom",
+    "--dw-safe-left",
   ]) {
     const v = vars.get(name)
     assert.ok(v !== undefined, `${name} is not published at all on a device with no insets`)
@@ -338,7 +334,7 @@ test("the game publishes the frame at mount and again whenever the insets move",
   assert.ok(body.includes("this.hud.layout("), "layout() never republishes the HUD's frame")
   assert.ok(body.includes("muteRect("), "layout() never republishes the mute button")
   assert.ok(
-    body.includes('publishSafeVars(this.root, "--cl-safe-", insets)'),
+    body.includes("publishSafeVars(this.root, SAFE_PREFIX, insets)"),
     "layout() never publishes the raw insets — the cards fall back to an env() of zero",
   )
   assert.ok(index.includes("this.layout()"), "the frame is never published at all")

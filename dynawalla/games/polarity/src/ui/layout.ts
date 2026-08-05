@@ -33,7 +33,7 @@
  * and the founder found it, with the score painted under an Android clock.
  *
  * So `applySafeVars` publishes the host's measurement as four more custom
- * properties and the stylesheet reads `var(--pol-safe-*, env(...))` — the
+ * properties and the stylesheet reads `var(--dw-safe-*, env(...))` — the
  * `env()` kept only as the fallback for a dev browser tab, where there is no
  * host and where it is right.
  */
@@ -42,6 +42,8 @@ import {
   HOST_CONTROL,
   HOST_MARGIN,
   HOST_PROGRESS_H,
+  SAFE_PREFIX,
+  safeVar,
   publishSafeVars,
   safeInsets,
   type Insets,
@@ -120,12 +122,24 @@ export function applyChromeVars(root: HTMLElement): void {
   root.style.setProperty("--pol-mini-right", `${MINI_RIGHT}px`);
 }
 
-/** The namespace the four published safe-area lengths live under. */
-export const SAFE_PREFIX = "--pol-safe-";
+/**
+ * The namespace the four published safe-area lengths live under.
+ *
+ * Re-exported from `packs/shared/game-chrome` rather than declared here. It
+ * used to be `--pol-safe-`, one of five per-pack spellings of the same four numbers
+ * — and five spellings is five chances to misspell one, and nothing a fleet
+ * gate can state as a rule. There is one name now and this pack does not own it.
+ */
+export { SAFE_PREFIX };
 
-/** One safe edge, as a length `styles.css` can do arithmetic with. */
-export const cssSafe = (side: "top" | "right" | "bottom" | "left"): string =>
-  `var(${SAFE_PREFIX}${side}, env(safe-area-inset-${side}, 0px))`;
+/**
+ * One safe edge, as a length `styles.css` can do arithmetic with.
+ *
+ * The shared builder, not a local copy of the same eight tokens. A hand-typed
+ * copy is a chance to leave the `var()` off, and leaving the `var()` off is
+ * the entire defect.
+ */
+export const cssSafe = safeVar;
 
 /**
  * Hand the stylesheet the safe area, from the host's own measurement.

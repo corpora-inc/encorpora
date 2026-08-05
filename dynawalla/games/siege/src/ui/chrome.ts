@@ -17,7 +17,7 @@
  * So the numbers now arrive the only way they can: as an ARGUMENT from the
  * host, through `game-chrome`'s `safeInsets()`, published onto the root as four
  * custom properties by `applySafeVars` below. `styles.css` reads
- * `var(--sg-safe-top, env(safe-area-inset-top, 0px))` — the property inside the
+ * `var(--dw-safe-top, env(safe-area-inset-top, 0px))` — the property inside the
  * app, the `env()` only in a dev browser tab where it happens to be right.
  *
  * **The half-fix before that.** `.sg-top` honoured `--top` and `.sg-anvil`
@@ -48,11 +48,14 @@ import {
   HOST_CONTROL,
   HOST_MARGIN,
   HOST_PROGRESS_H,
-  NO_INSETS,
+  SAFE_PREFIX,
+  SIDES,
+  publishSafeVars,
   safeInsets,
   safeRect,
   type Insets,
   type Rect,
+  type StyleTarget,
 } from "../../../../packs/shared/game-chrome/index.ts";
 import { BOARD } from "../game/constants.ts";
 
@@ -140,16 +143,20 @@ export function chromeVars(): string {
   return `.sg{--sg-corner:${CORNER_CLEAR}px;--sg-bar-pad:${BAR_PAD}px;--sg-chrome-bottom:${CHROME_BOTTOM}px}`;
 }
 
-/** The four custom properties `styles.css` does its safe-area arithmetic with. */
-export const SAFE_VARS = ["--sg-safe-top", "--sg-safe-right", "--sg-safe-bottom", "--sg-safe-left"] as const;
-
-/** The narrow slice of an element this needs — so a test can drive it with a stub. */
-export type StyleTarget = { style: { setProperty(name: string, value: string): void } };
+/**
+ * The four custom properties `styles.css` does its safe-area arithmetic with.
+ *
+ * Derived from the shared prefix rather than typed out. They used to be
+ * `--sg-safe-*`, one of five per-pack spellings of the same four numbers, and
+ * five spellings is five chances to get one wrong and nothing a fleet gate can
+ * state as a rule. There is one name now and this pack does not own it.
+ */
+export const SAFE_VARS = SIDES.map((side) => `${SAFE_PREFIX}${side}`);
 
 /**
  * Hand the stylesheet the safe area, as four lengths it can do arithmetic with.
  *
- * Zeros are written EXPLICITLY rather than left unset. `var(--sg-safe-top, …)`
+ * Zeros are written EXPLICITLY rather than left unset. `var(--dw-safe-top, …)`
  * falls back to its `env()` only when the property is absent, and inside the app
  * `env()` is the wrong answer even when the true inset happens to be zero — it
  * is the wrong answer *especially* then, because it is indistinguishable from
@@ -163,27 +170,7 @@ export function applySafeVars(
   insets: Insets = safeInsets(),
   previous?: Insets | null,
 ): boolean {
-  const i = insets ?? NO_INSETS;
-  const now: Insets = {
-    top: Math.max(0, i.top),
-    right: Math.max(0, i.right),
-    bottom: Math.max(0, i.bottom),
-    left: Math.max(0, i.left),
-  };
-  if (
-    previous &&
-    previous.top === now.top &&
-    previous.right === now.right &&
-    previous.bottom === now.bottom &&
-    previous.left === now.left
-  ) {
-    return false;
-  }
-  root.style.setProperty("--sg-safe-top", `${now.top}px`);
-  root.style.setProperty("--sg-safe-right", `${now.right}px`);
-  root.style.setProperty("--sg-safe-bottom", `${now.bottom}px`);
-  root.style.setProperty("--sg-safe-left", `${now.left}px`);
-  return true;
+  return publishSafeVars(root, SAFE_PREFIX, insets, previous);
 }
 
 /** What `computeView` hands the renderer. Declared here so the fit can be tested. */

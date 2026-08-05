@@ -147,7 +147,7 @@ test("the stylesheet honours all four edges, not only the two obvious ones", () 
   // text is present. It cannot tell you what the text evaluates to.
   //
   // So this now asserts the SHAPE of the fix — every edge is read from a
-  // `--sg-safe-*` property, which is the only channel the host's measurement can
+  // `--dw-safe-*` property, which is the only channel the host's measurement can
   // arrive on — and `safearea.test.ts` next door evaluates the stylesheet to
   // pixels at ten viewports and asserts the geometry.
   const css = read("./styles.css").replace(/\/\*[\s\S]*?\*\//g, "");
@@ -165,8 +165,8 @@ test("the stylesheet honours all four edges, not only the two obvious ones", () 
     const body = rule(selector);
     for (const edge of edges) {
       assert.ok(
-        body.includes(`var(--sg-safe-${edge},`),
-        `${selector} does not read --sg-safe-${edge} — an inset it cannot get any other way`,
+        body.includes(`var(--dw-safe-${edge},`),
+        `${selector} does not read --dw-safe-${edge} — an inset it cannot get any other way`,
       );
     }
   }

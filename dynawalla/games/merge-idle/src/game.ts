@@ -36,7 +36,7 @@
 
 import {
   createInstructions,
-  onInsetsChange,
+  installSafeArea,
   safeRect,
   type Instructions,
   type InstructionsSpec,
@@ -357,7 +357,13 @@ export class Game {
   private observeSize(): void {
     // Insets change more often than "never": a rotation swaps top and bottom with
     // left and right, and iPadOS changes them when a pack is resized in Split View.
-    this.detach.push(onInsetsChange(() => this.layout()))
+    // `installSafeArea` rather than a bare `onInsetsChange`: it also PUBLISHES
+    // the four insets onto the HUD root as `--dw-safe-*`, which `.ab-badge`
+    // reads. Subscribing without publishing is how the badge came to sit in the
+    // navigation bar — the canvas half knew where the safe rectangle was and
+    // the one DOM rule that needed it had no way to ask.
+    const safeArea = installSafeArea(this.hud.root, () => this.layout())
+    this.detach.push(() => safeArea.dispose())
     if (typeof ResizeObserver === 'undefined') {
       const onResize = (): void => this.layout()
       window.addEventListener('resize', onResize)

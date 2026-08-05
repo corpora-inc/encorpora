@@ -44,6 +44,7 @@ import {
   type StageEl,
 } from "./chrome.ts";
 import { HUD_CSS } from "./hud.ts";
+import { envReadDirectly } from "../../../../packs/shared/game-chrome/cssSafeArea.ts";
 import { inkVars } from "./contrast.ts";
 import { BAND, fullFrame, payoffEdge, popupEdge, readBand, type GateGeom } from "./readband.ts";
 import { INK, TRACK } from "./glyphs.ts";
@@ -287,14 +288,28 @@ test("the bottom readouts and the two buttons do not sit on each other", () => {
 /* ...and the stylesheet cannot disagree with any of it.                       */
 /* -------------------------------------------------------------------------- */
 
-test("the stylesheet never reaches for env(safe-area-inset-*)", () => {
+test("no rule takes its ANSWER from env(safe-area-inset-*)", () => {
   // The whole defect, in one assertion. `env()` belongs to the top-level
   // browsing context; a pack frame is sandboxed `allow-scripts` with no
   // `allow-same-origin`, so all four resolve to ZERO inside it, on every device,
   // for ever. The tests above were passing with insets the CSS never saw.
-  assert.ok(
-    !/env\(\s*safe-area-inset/.test(HUD_CSS),
-    "hud.ts reads env(safe-area-inset-*), which is 0 inside a pack — use the host's measured insets",
+  //
+  // This used to forbid the four characters `env(` outright. That was the right
+  // instinct and the wrong rule: the fleet now has ONE way to write a safe-area
+  // length — `var(--dw-safe-<side>, env(safe-area-inset-<side>, 0px))` — where
+  // the published property is the answer inside the app and the `env()` behind
+  // it only ever answers in a dev browser tab, which IS the top-level context
+  // and where it is right. Forbidding the string forbade the shared form too,
+  // and a pack that cannot use the shared form goes back to inventing its own.
+  //
+  // `envReadDirectly` is the shared check and it is not a substring search: it
+  // fails any occurrence that is not exactly the fallback of the published
+  // property. `packs/sdk/src/safearea.test.ts` runs the same rule over every
+  // pack in the fleet, on every pull request.
+  assert.deepEqual(
+    envReadDirectly(HUD_CSS),
+    [],
+    "hud.ts reads env(safe-area-inset-*) as an ANSWER, which is 0 inside a pack",
   );
 });
 

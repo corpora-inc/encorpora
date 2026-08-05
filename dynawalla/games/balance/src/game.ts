@@ -25,6 +25,7 @@ import {
 } from "./puzzle.ts";
 import {
   createInstructions,
+  onInsetsChange,
   type Instructions,
 } from "../../../packs/shared/game-chrome/index.ts";
 import { widestNumeral } from "./adapter.ts";
@@ -257,6 +258,13 @@ export class Game {
 
     this.ro = new ResizeObserver(() => this.resize());
     this.ro.observe(el);
+    // A ResizeObserver is not enough on its own. The insets arrive from the HOST,
+    // over the settings channel, AFTER the first layout — and iPadOS changes them
+    // in Split View without the element's box moving at all, so the observer never
+    // fires. A game that reads the safe rectangle once at mount therefore lays
+    // itself out against the probe's zeros and stays there. MERGE shipped exactly
+    // that; every pack in this fleet now subscribes.
+    this.stopInsets = onInsetsChange(() => this.resize());
     window.addEventListener("resize", this.onWinResize);
 
     this.canvas.addEventListener("pointerdown", this.onDown);
@@ -1410,11 +1418,16 @@ export class Game {
     }),
   };
 
+  /** Drops the inset subscription. A listener that outlives the frame keeps the whole closure alive. */
+  private stopInsets: (() => void) | null = null;
+
   unmount(): void {
     this.running = false;
     this.guide.destroy();
     cancelAnimationFrame(this.raf);
     this.ro?.disconnect();
+    this.stopInsets?.();
+    this.stopInsets = null;
     window.removeEventListener("resize", this.onWinResize);
     window.removeEventListener("keydown", this.onKey);
     this.canvas.removeEventListener("pointerdown", this.onDown);

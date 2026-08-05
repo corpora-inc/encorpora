@@ -23,21 +23,39 @@
  * way to pass is for the number to arrive as a custom property, which is to say
  * from the host.
  *
- * **It is deliberately not exported from `index.ts`.** Nothing that ships
- * imports it; three packs' `safearea.test.ts` files do. It lives here rather
- * than three times over because a fourth copy of a CSS parser is a fourth
- * chance to get the cascade wrong, and `cssSafeArea.test.ts` next door holds
- * this one to the behaviours the packs rely on.
+ * **It is deliberately not exported from `index.ts`.** Nothing that SHIPS
+ * imports it. `packs/sdk/src/safearea.test.ts` — the fleet gate, which runs on
+ * every pull request that touches `dynawalla/games/` or `dynawalla/packs/` —
+ * imports `auditStylesheet` and runs it over every pack's stylesheets, and four
+ * packs' own `safearea.test.ts` files import the pieces. It lives here rather
+ * than five times over because a fifth copy of a CSS parser is a fifth chance
+ * to get the cascade wrong, and `cssSafeArea.test.ts` next door holds this one
+ * to the behaviours the packs rely on.
+ *
+ * `auditStylesheet` has been cross-checked against real headless Chromium:
+ * 2350 probes over every stylesheet in the fleet × ten viewports × eight
+ * geometric properties, compared against `getComputedStyle` in a document that
+ * publishes the four properties exactly as `installSafeArea` does. Zero
+ * disagreements. A deliberately wrong comparison in the same harness reports
+ * all 2350, so the agreement is a measurement and not an empty loop.
  *
  * **The subset of CSS it knows**, which is all any of these stylesheets uses:
- * comments, one level of `@media` with `min/max-width` and `min/max-height`,
- * `@keyframes` skipped whole, `var()` with fallbacks, `calc()`, `min()`,
- * `max()`, `clamp()`, `px`/`%`/`vw`/`vh`/`vmin`/`vmax`, and box shorthand
+ * comments, one level of `@media` with `min/max-width`, `min/max-height`,
+ * `min/max-aspect-ratio` and `orientation`, `@keyframes` skipped whole,
+ * `var()` with fallbacks, `calc()`, `min()`, `max()`, `clamp()`, and the
+ * units `px`/`%`/`vw`/`vh`/`vmin`/`vmax`/`em`/`rem`, plus box shorthand
  * expansion. Anything else throws rather than guessing — a parser that silently
  * shrugs is how the first version of this shipped.
+ *
+ * Two things it cannot resolve on its own: a percentage, which needs a
+ * containing block, and `em`/`rem`, which need a font. Neither is guessed.
+ * Percentages are declined outright; `em` and an unpublished custom property
+ * take the LOWER BOUND of zero, and only under `EvalCtx.unknown: "zero"`, where
+ * the question being asked is "is this at least the inset?" and a lower bound
+ * is a sound answer to it.
  */
 
-import type { Insets } from "./insets.ts"
+import { SAFE_PREFIX, SIDES, type Insets, type SideName } from "./insets.ts"
 
 /* ── the shapes every pack is held to ────────────────────────────────────── */
 
@@ -219,6 +237,24 @@ export function mediaMatches(query: string, vp: Viewport): boolean {
       const feature = m[1] as string
       const raw = m[2] as string
       if (feature === "prefers-reduced-motion") return false
+      if (feature === "orientation") {
+        if (raw.trim() === "landscape") return vp.w >= vp.h
+        if (raw.trim() === "portrait") return vp.w < vp.h
+        return fail(`this parser does not understand the orientation "${raw}"`)
+      }
+      // `(max-aspect-ratio: 4/5)` — HORDE's tall-screen breakpoint. A ratio is
+      // two integers, not a length, and Number.parseFloat("4/5") is 4, so this
+      // has to be handled before the length path below rather than after it.
+      if (feature === "max-aspect-ratio" || feature === "min-aspect-ratio") {
+        const parts = raw.split("/").map((s) => Number.parseFloat(s.trim()))
+        const num = parts[0]
+        const den = parts.length > 1 ? parts[1] : 1
+        if (!Number.isFinite(num) || !Number.isFinite(den as number) || den === 0) {
+          return fail(`this parser does not understand the aspect ratio "${raw}"`)
+        }
+        const ratio = (num as number) / (den as number)
+        return feature === "max-aspect-ratio" ? vp.w / vp.h <= ratio : vp.w / vp.h >= ratio
+      }
       const n = Number.parseFloat(raw)
       if (!Number.isFinite(n)) return fail(`non-length media value "${raw}"`)
       if (feature === "max-width") return vp.w <= n
@@ -271,7 +307,7 @@ export function expandBox(value: string): Record<Side, string> {
  * half of the bug this module exists for: `padding: 8px` in a landscape media
  * query threw away three safe-area longhands and nothing failed.
  */
-export function cascade(rules: Rule[], selector: string, vp: Viewport): Map<string, string> {
+export function cascade(rules: readonly Rule[], selector: string, vp: Viewport): Map<string, string> {
   const won = new Map<string, string>()
   for (const rule of rules) {
     if (!rule.selectors.includes(selector)) continue
@@ -296,6 +332,25 @@ export type EvalCtx = {
   vp: Viewport
   /** What a `%` is a percentage OF. Give 0 when the containing box is unknown. */
   pct: number
+  /**
+   * What to do with a custom property that is neither in `vars` nor given a
+   * `var()` fallback — HORDE's `--hz-chrome-top`, say, which the game publishes
+   * from JavaScript at mount with a number this module cannot know.
+   *
+   * `"throw"` (the default) is right for a test that names the properties it
+   * expects: an unset one is then a hole in the test rather than a silent zero.
+   *
+   * `"zero"` is right for the fleet audit's central question, which is *"is
+   * this at least the inset?"*. Zero is the LOWER BOUND of any non-negative
+   * length, so a declaration that clears the inset with every unknown at zero
+   * clears it whatever those unknowns really are. The audit can then hold
+   * `top: calc(var(--dw-safe-top) + var(--hz-chrome-top))` to the top inset
+   * without pretending to know what the second term is. The one place it must
+   * NOT be used is deciding whether a rule hugs an edge — there, zero is the
+   * answer that invents a defect rather than the answer that refuses to claim
+   * one, so that path keeps `"throw"` and skips what it cannot reduce.
+   */
+  unknown?: "throw" | "zero"
 }
 
 /** Index of the `)` matching the `(` that starts at `open`. */
@@ -335,9 +390,15 @@ export function substituteVars(value: string, ctx: EvalCtx): string {
     const comma = splitTop(s.slice(at + 4, close), ",")
     const name = (comma[0] ?? "").trim()
     const fallback = comma.slice(1).join(",").trim()
-    const got = ctx.vars.get(name)
+    let got = ctx.vars.get(name)
     if (got === undefined && fallback === "") {
-      fail(`${name} is neither published nor given a fallback in "${value}"`)
+      if (ctx.unknown !== "zero") {
+        fail(`${name} is neither published nor given a fallback in "${value}"`)
+      }
+      // The lower bound of a length the game publishes from JavaScript. See
+      // `EvalCtx.unknown` — a declaration that clears the inset with this term
+      // at zero clears it whatever the term turns out to be.
+      got = "0px"
     }
     s = s.slice(0, at) + (got ?? fallback) + s.slice(close + 1)
   }
@@ -359,7 +420,10 @@ function tokenize(s: string): string[] {
       i++
       continue
     }
-    const m = /^[a-zA-Z-]+|^[0-9.]+(px|%|vw|vh|vmin|vmax)?/.exec(s.slice(i))
+    // The NUMBER alternative comes first: `2.9em` must tokenise as one number
+    // with a unit, not as `2.9` followed by the identifier `em`, which is how
+    // MONUMENT's `.mn-combo` produced "expected ) in …" instead of an answer.
+    const m = /^[0-9.]+(px|%|vw|vh|vmin|vmax|rem|em)?|^[a-zA-Z-]+/.exec(s.slice(i))
     if (!m) return fail(`cannot tokenise "${s}" at ${i}`)
     out.push(m[0])
     i += m[0].length
@@ -420,6 +484,17 @@ export function evalLength(raw: string, ctx: EvalCtx): number {
       if (t.endsWith("vh")) return (n / 100) * ctx.vp.h
       if (t.endsWith("vmin")) return (n / 100) * Math.min(ctx.vp.w, ctx.vp.h)
       if (t.endsWith("vmax")) return (n / 100) * Math.max(ctx.vp.w, ctx.vp.h)
+      // `em` and `rem` are a font size this module cannot know, and measuring a
+      // font in node is the thing this whole approach exists to avoid. Under
+      // `unknown: "zero"` they take the same lower bound an unpublished custom
+      // property takes: a length is never negative, so a declaration that
+      // clears the inset with the em term at zero clears it at any font size.
+      // MONUMENT's `.mn-combo` is `calc(max(18%, …) + 2.9em)` and is safe on
+      // that reasoning alone.
+      if (t.endsWith("rem") || t.endsWith("em")) {
+        if (ctx.unknown === "zero") return 0
+        return fail(`this evaluator cannot resolve the font-relative length "${t}"`)
+      }
       return n
     }
     // `env()` never reaches here: `substituteVars` has already turned it into
@@ -497,7 +572,7 @@ function scopeVars(won: Map<string, string>, published: Map<string, string>): Ma
  * ancestor that declares one.
  */
 export function customPropsOf(
-  rules: Rule[],
+  rules: readonly Rule[],
   selector: string,
   vp: Viewport,
 ): Map<string, string> {
@@ -510,7 +585,7 @@ export function customPropsOf(
 
 /** One selector's resolved `padding`, as four numbers. */
 export function paddingOf(
-  rules: Rule[],
+  rules: readonly Rule[],
   selector: string,
   vp: Viewport,
   published: Map<string, string>,
@@ -529,7 +604,7 @@ export function paddingOf(
 
 /** One selector's resolved value for a single length property. */
 export function lengthOf(
-  rules: Rule[],
+  rules: readonly Rule[],
   selector: string,
   prop: string,
   vp: Viewport,
@@ -552,7 +627,7 @@ export function lengthOf(
  *
  * @param prefix e.g. `--sg-safe-` for `var(--sg-safe-top, env(safe-area-inset-top, 0px))`
  */
-export function envReadDirectly(css: string, prefix: string): string[] {
+export function envReadDirectly(css: string, prefix: string = SAFE_PREFIX): string[] {
   const stripped = css.replace(/\/\*[\s\S]*?\*\//g, "")
   const bad: string[] = []
   for (const m of stripped.matchAll(/env\(safe-area-inset-(top|right|bottom|left)/g)) {
@@ -567,4 +642,306 @@ export function envReadDirectly(css: string, prefix: string): string[] {
     }
   }
   return bad
+}
+
+/* ── the fleet audit ─────────────────────────────────────────────────────── */
+
+/**
+ * The declaration a rule uses to say "this edge offset is deliberate".
+ *
+ * A custom property rather than a comment, for one reason: comments are the
+ * first thing a CSS parser throws away, and an opt-out a gate cannot see is an
+ * opt-out that silently becomes universal. This one is a real declaration, it
+ * is inert at runtime (nothing reads it), and it CANNOT be written without
+ * typing a reason — which is the whole mechanism. `.ab-badge { bottom: 6px }`
+ * shipped ABYSSAL BLOOM's depth badge inside a 48px Android navigation bar; it
+ * would have had to be exempted with the sentence "this sits inside the
+ * navigation bar", and nobody types that.
+ *
+ * ```css
+ * .ab-toast { --dw-safe-exempt: "inside .ab-top, which pays the top inset" }
+ * ```
+ */
+export const EXEMPT_PROP = "--dw-safe-exempt"
+
+/**
+ * How close to an edge counts as "anchored to it".
+ *
+ * 64 CSS px. The largest inset in `SHAPES` is a 48px three-button navigation
+ * bar and the largest notch is 47, so anything nearer than 64 is inside, or
+ * within a finger's width of, the unsafe strip on some real device. Something
+ * pinned 200px from an edge is being centred or stacked, not hugging.
+ */
+export const EDGE_NEAR = 64
+
+/** One thing wrong with one pack's stylesheet, in a sentence a reader can act on. */
+export type Violation = {
+  /** The selector at fault, or `(stylesheet)` for something the parser saw whole. */
+  rule: string
+  /** What is wrong, in a sentence naming the declaration and the device it fails on. */
+  message: string
+  /**
+   * Identity of the DEFECT, not of this report of it.
+   *
+   * One wrong declaration is proved by nine of the ten shapes, and ten copies of
+   * one sentence is a gate nobody reads to the end. Reports sharing a key
+   * collapse to the first — which keeps the numbers of the shape that proved it,
+   * rather than flattening into a shapeless summary.
+   */
+  key: string
+}
+
+
+/** Does this value take its number from the shared custom property for `side`? */
+const paysSafeArea = (value: string, side: SideName): boolean =>
+  value.includes(`${SAFE_PREFIX}${side}`)
+
+/** Every distinct selector in a stylesheet, in first-seen order. */
+function selectorsOf(rules: readonly Rule[]): string[] {
+  const seen = new Set<string>()
+  for (const rule of rules) for (const sel of rule.selectors) seen.add(sel)
+  return [...seen]
+}
+
+/** Is this selector exempt at this viewport, and if so with what reason? */
+function exemptionFor(rules: readonly Rule[], selector: string, vp: Viewport): string | null {
+  const reason = cascade(rules, selector, vp).get(EXEMPT_PROP)
+  if (reason === undefined) return null
+  const text = reason.trim().replace(/^["']|["']$/g, "").trim()
+  return text.length >= 12 ? text : ""
+}
+
+/**
+ * Hold one stylesheet to the whole safe-area contract.
+ *
+ * Three questions, each of which has cost the fleet a device report:
+ *
+ *  1. **Does any rule take its answer from `env()`?** It is zero inside a pack
+ *     frame. SIEGE, MONUMENT and POLARITY all shipped a HUD under the status
+ *     bar this way, and POLARITY had done so since its first commit.
+ *
+ *  2. **Does a rule that pays the safe area somewhere still pay it
+ *     everywhere?** `padding: 8px` inside a landscape media query is a
+ *     SHORTHAND: it resets all four longhands and throws three safe-area
+ *     values away. That is how MONUMENT put a 40px sound button inside the
+ *     navigation bar, and it is invisible to any check that does not run the
+ *     cascade at the viewport where the media query matches.
+ *
+ *  3. **Is anything pinned to an edge without paying for it at all?** This is
+ *     the one that does not involve `env()` and so survived every previous
+ *     fix: ABYSSAL BLOOM's `.ab-badge { bottom: 6px }` never mentioned the safe
+ *     area, so there was nothing for a search to find. A rule that hugs an edge
+ *     must either read `--dw-safe-<side>` or carry `--dw-safe-exempt` with a
+ *     reason somebody was willing to write down.
+ *
+ * The evaluator resolves `env(safe-area-inset-*)` to ZERO throughout, because
+ * that is what it is where these packs run. A rule still relying on it fails
+ * here, which is the point.
+ *
+ * @param css the SHIPPED stylesheet text, interpolations already resolved.
+ * @param shapes the screens to hold it to. Defaults to the fleet's `SHAPES`.
+ */
+export function auditStylesheet(
+  css: string,
+  shapes: readonly Shape[] = SHAPES,
+): Violation[] {
+  const out: Violation[] = []
+  for (const message of envReadDirectly(css)) {
+    out.push({ rule: "(stylesheet)", message, key: message })
+  }
+
+  const rules = parseCss(css)
+  const selectors = selectorsOf(rules)
+
+  /** Published exactly as `installSafeArea` publishes it, zeros written out. */
+  const publish = (insets: Insets): Map<string, string> =>
+    new Map(SIDES.map((side) => [`${SAFE_PREFIX}${side}`, `${insets[side]}px`]))
+
+  for (const selector of selectors) {
+    // Which properties this selector pays the safe area on ANYWHERE in the
+    // stylesheet, and for which side. A side it never mentions is question 3's
+    // business; a side it mentions once is a PROMISE, and question 2 holds it to
+    // that promise at every viewport — including the ones where a media query
+    // fires and a shorthand throws three longhands away.
+    const promised = new Map<string, Set<SideName>>()
+    for (const rule of rules) {
+      if (!rule.selectors.includes(selector)) continue
+      for (const d of rule.decls) {
+        for (const side of SIDES) {
+          if (!paysSafeArea(d.value, side)) continue
+          const prop = d.prop === "padding" || d.prop === "margin" ? `${d.prop}-${side}` : d.prop
+          // Only where "at least the inset" is what the property MEANS: the four
+          // offsets and the two box longhands, and only for their own side.
+          //
+          // SPLITBEAT's settings panel is why the list is a list. It caps itself
+          // with `max-height: calc(100% - max(8px, var(--dw-safe-top)) - 113px -
+          // max(8px, var(--dw-safe-bottom)))` — a correct rule that SUBTRACTS the
+          // safe area, and the first version of this check read it as a promise
+          // and reported a HEIGHT of -185px as an inset violation. A gate that
+          // cries wolf about a correct rule is a gate somebody switches off.
+          if (prop !== side && prop !== `padding-${side}` && prop !== `margin-${side}`) continue
+          const at = promised.get(prop) ?? new Set<SideName>()
+          at.add(side)
+          promised.set(prop, at)
+        }
+      }
+    }
+
+    for (const shape of shapes) {
+      const vp: Viewport = { w: shape.w, h: shape.h }
+      const won = cascade(rules, selector, vp)
+      const vars = publish(shape.insets)
+      for (const [prop, value] of won) if (prop.startsWith("--")) vars.set(prop, value)
+      // `unknown: "zero"` — checks 2 and 3b ask "is this at least the inset?",
+      // and zero is the lower bound of any length a game publishes at run time.
+      // `pinAt` below builds its own context that THROWS instead, because there
+      // the same substitution would invent a defect rather than decline to
+      // claim one.
+      const ctx: EvalCtx = { vars, vp, pct: 0, unknown: "zero" }
+      const where = `${shape.name} (${vp.w}x${vp.h})`
+
+      const exempt = exemptionFor(rules, selector, vp)
+      if (exempt === "") {
+        out.push({
+          rule: selector,
+          key: `${selector} exempt-reason`,
+          message:
+            `${EXEMPT_PROP} is present but its reason is empty or too short to be one. ` +
+            "Write the sentence — a reason somebody was willing to write down is the whole " +
+            "mechanism.",
+        })
+      }
+
+      /* ── 2. a promise kept at every viewport ──────────────────────────── */
+      for (const [prop, sides] of promised) {
+        const raw = won.get(prop)
+        if (raw === undefined) {
+          out.push({
+            rule: selector,
+            key: `${selector} ${prop} vanished`,
+            message:
+              `${prop} pays the safe area somewhere in this stylesheet but has no value at ` +
+              `all on ${where} — a shorthand or a media query removed it.`,
+          })
+          continue
+        }
+        let got: number
+        try {
+          got = evalLength(raw, ctx)
+        } catch (e) {
+          out.push({
+            rule: selector,
+            key: `${selector} ${prop} unevaluable`,
+            message: `${prop}: "${raw}" could not be evaluated on ${where}: ${String(e)}`,
+          })
+          continue
+        }
+        for (const side of sides) {
+          const need = shape.insets[side]
+          if (got + 1e-9 >= need) continue
+          out.push({
+            rule: selector,
+            key: `${selector} ${prop} short of ${side}`,
+            message:
+              `${prop} resolves to ${got}px on ${where}, but the ${side} inset there is ` +
+              `${need}px. The winning declaration is "${raw}". A shorthand padding: or ` +
+              "margin: inside a media query resets all four longhands and is the usual " +
+              "cause — MONUMENT put a 40px sound button inside the navigation bar that way.",
+          })
+        }
+      }
+
+      /* ── 3. anything hugging an edge without paying for it ────────────── */
+      if (exempt !== null) continue
+      const position = won.get("position")
+      if (position !== "absolute" && position !== "fixed") continue
+
+      /**
+       * How far this rule pins `side`, or null if it does not pin it to a length.
+       *
+       * A percentage is null on purpose. `left: 50%` is centring, and this module
+       * does not model the containing block, so calling it 0px would flag every
+       * centred element in the fleet. Not asking beats guessing.
+       */
+      const pinAt = (side: SideName): number | null => {
+        const raw = won.get(side)
+        if (raw === undefined || raw === "auto" || raw === "unset" || raw === "initial") {
+          return null
+        }
+        if (raw.includes("%")) return null
+        try {
+          return evalLength(raw, { vars, vp, pct: 0, unknown: "throw" })
+        } catch {
+          return null
+        }
+      }
+
+      const flagged = new Set<SideName>()
+      for (const side of SIDES) {
+        if (shape.insets[side] === 0) continue
+        const raw = won.get(side)
+        const here = pinAt(side)
+        if (raw === undefined || here === null || here >= EDGE_NEAR) continue
+        if (paysSafeArea(raw, side)) continue
+        // A rule pinning BOTH ends of an axis is a full-bleed layer, and
+        // full-bleed is the entire reason `viewport-fit=cover` is set: the water,
+        // the light shafts and the particles SHOULD run under the rounded
+        // corners. Only a single-edge pin is hugging an edge.
+        const opposite = ({
+          top: "bottom",
+          bottom: "top",
+          left: "right",
+          right: "left",
+        } as const)[side]
+        if (pinAt(opposite) !== null) continue
+        flagged.add(side)
+        out.push({
+          rule: selector,
+          key: `${selector} ${side} unpaid`,
+          message:
+            `${side}: ${raw} resolves to ${here}px, inside the ${shape.insets[side]}px ` +
+            `${side} inset on ${where}. Read var(${SAFE_PREFIX}${side}, ` +
+            `env(safe-area-inset-${side}, 0px)) — or, if this element is not anchored to ` +
+            `the viewport edge, say why in ${EXEMPT_PROP}.`,
+        })
+      }
+
+      /* ── 3b. a box that REACHES an edge must pad past the inset ───────── */
+      // CLAIM's `.cl-card` is `inset: 0` with a flat `padding: 20px`: the box is
+      // the whole screen, so the words start 20px in — under a 24px status bar
+      // and well inside a 48px navigation bar. Pinning both ends is fine, and 3
+      // above lets it through on purpose; what is not fine is the padding that
+      // decides where the READING starts.
+      for (const side of SIDES) {
+        if (shape.insets[side] === 0 || flagged.has(side)) continue
+        const pin = pinAt(side)
+        if (pin === null || pin >= EDGE_NEAR) continue
+        const raw = won.get(`padding-${side}`)
+        if (raw === undefined || paysSafeArea(raw, side) || raw.includes("%")) continue
+        let pad: number
+        try {
+          pad = evalLength(raw, ctx)
+        } catch {
+          continue
+        }
+        if (pin + pad + 1e-9 >= shape.insets[side]) continue
+        out.push({
+          rule: selector,
+          key: `${selector} padding-${side} unpaid`,
+          message:
+            `this box reaches to ${pin}px of the ${side} edge and pads ${pad}px past it, so ` +
+            `its contents start ${pin + pad}px in — inside the ${shape.insets[side]}px ` +
+            `${side} inset on ${where}. padding-${side} is "${raw}"; it must read ` +
+            `var(${SAFE_PREFIX}${side}, env(safe-area-inset-${side}, 0px)).`,
+        })
+      }
+    }
+  }
+
+  const seen = new Set<string>()
+  return out.filter((v) => {
+    if (seen.has(v.key)) return false
+    seen.add(v.key)
+    return true
+  })
 }

@@ -22,7 +22,12 @@ import {
   gradientStops,
   laneFaceStops,
 } from "./contrast.ts";
-import type { Insets } from "../../../../packs/shared/game-chrome/index.ts";
+import {
+  SAFE_PREFIX,
+  SAFE_VARS,
+  publishSafeVars,
+  type Insets,
+} from "../../../../packs/shared/game-chrome/index.ts";
 
 /**
  * The safe-area insets, as CSS values.
@@ -97,8 +102,14 @@ export const HUD_CSS = `
    clear of both — the readouts move, the world behind them does not.
    Every offset comes from hudBoxes in chrome.ts. There is deliberately no
    arithmetic here to disagree with it. */
-.vt-tl { position:absolute; left:var(--vt-tl-x,10px); top:var(--vt-tl-y,63px); }
-.vt-tr { position:absolute; right:var(--vt-tr-x,10px); top:var(--vt-tr-y,63px); text-align:right; }
+/* The fallbacks measure from the SAFE edge, not from the glass.
+   hudBoxes in chrome.ts publishes the real offsets and they already pay the
+   insets — but a fallback is what stands before the first layout and after any
+   failure to run one, and 10px from the glass is 38px inside a three-button
+   navigation bar. A fallback that is only right on a phone with no notch is a
+   fallback that hides the bug it exists to survive. */
+.vt-tl { position:absolute; left:var(--vt-tl-x,calc(${SAFE_VARS.left} + 10px)); top:var(--vt-tl-y,calc(${SAFE_VARS.top} + 63px)); }
+.vt-tr { position:absolute; right:var(--vt-tr-x,calc(${SAFE_VARS.right} + 10px)); top:var(--vt-tr-y,calc(${SAFE_VARS.top} + 63px)); text-align:right; }
 /* Quiet, but never quiet enough to stop being readable. These carried an
    opacity, and an opacity composites the ink into the sky — halfway through the
    crossing from THE ABYSS to THE BLEACH the sky is a mid grey where no ink has
@@ -135,8 +146,8 @@ export const HUD_CSS = `
 /* ---- voltage ----
    The bottom offset clears Android's gesture strip as well as the reported inset: the
    strip eats the pixels and reports an inset of zero. See GESTURE_STRIP. */
-.vt-volt { position:absolute; left:var(--vt-volt-l,10px); right:var(--vt-volt-r,10px);
-  bottom:var(--vt-volt-b,36px); height:var(--vt-volt-h,9px);
+.vt-volt { position:absolute; left:var(--vt-volt-l,calc(${SAFE_VARS.left} + 10px)); right:var(--vt-volt-r,calc(${SAFE_VARS.right} + 10px));
+  bottom:var(--vt-volt-b,calc(${SAFE_VARS.bottom} + 36px)); height:var(--vt-volt-h,9px);
   border:2px solid rgba(255,255,255,0.30); display:flex; align-items:stretch; padding:2px;
   /* A bed, so the fill has a backdrop that is known rather than whatever stretch
      of deck or ocean happens to be under the bar. THE BLEACH's deck is #0b0b0d
@@ -155,7 +166,7 @@ export const HUD_CSS = `
    is only DECK_HALF metres wide), and in THE BLEACH the ocean is bone while the
    deck is near-black. One ink cannot clear both; a bed means it does not have
    to. */
-.vt-volt-label { position:absolute; left:0; bottom:calc(100% + 5px); font-size:clamp(8px,1.5vw,11px);
+.vt-volt-label { --dw-safe-exempt:"sits on .vt-volt, which is position:absolute and pays the insets itself"; position:absolute; left:0; bottom:calc(100% + 5px); font-size:clamp(8px,1.5vw,11px);
   letter-spacing:0.28em; color:var(--vt-ink-deck-dim,#eaf6ff); padding:1px 5px;
   background:rgba(${(VOLT_BED >> 16) & 255},${(VOLT_BED >> 8) & 255},${VOLT_BED & 255},${VOLT_BED_A}); }
 
@@ -240,10 +251,10 @@ export const HUD_CSS = `
   font-variant-numeric:tabular-nums; letter-spacing:0.01em;
   box-shadow:0 0 32px -6px var(--vt-accent, #6cf), inset 0 0 40px -14px var(--vt-accent, #6cf); }
 /* The lintel: the same overhead bar the gates on the causeway wear. */
-.vt-lane::before { content:""; position:absolute; left:calc(-1 * clamp(4px,0.9vw,7px));
+.vt-lane::before { --dw-safe-exempt:"the lintel of .vt-lane, which is position:relative inside .vt-lanes"; content:""; position:absolute; left:calc(-1 * clamp(4px,0.9vw,7px));
   right:calc(-1 * clamp(4px,0.9vw,7px)); top:0; height:clamp(7px,1.5vw,11px);
   background:var(--vt-accent, #6cf); box-shadow:0 0 24px var(--vt-accent, #6cf); }
-.vt-lane::after { content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+.vt-lane::after { --dw-safe-exempt:"the underline of .vt-lane, which is position:relative inside .vt-lanes"; content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
   background:var(--vt-accent, #6cf); opacity:0.45; }
 .vt-lane span { position:relative; color:var(--vt-ink-lane,#eaf6ff);
   text-shadow:0 0 30px rgba(0,0,0,0.9), 0 3px 0 rgba(0,0,0,0.55); }
@@ -268,7 +279,7 @@ export const HUD_CSS = `
 /* ---- settings ----
    Stacked on the voltage readout rather than measured from the bottom edge, so
    the gap between the two cannot be closed by a change to either. */
-.vt-tools { position:absolute; right:var(--vt-tools-r,10px); bottom:var(--vt-tools-b,66px);
+.vt-tools { position:absolute; right:var(--vt-tools-r,calc(${SAFE_VARS.right} + 10px)); bottom:var(--vt-tools-b,calc(${SAFE_VARS.bottom} + 66px));
   display:flex; gap:6px; pointer-events:auto; }
 .vt-tool { width:var(--vt-tool-s,30px); height:var(--vt-tool-s,30px); border:2px solid rgba(255,255,255,0.28);
   background:rgba(2,5,14,0.55); color:inherit; font:inherit; font-size:clamp(11px,2.2vw,14px);
@@ -276,7 +287,7 @@ export const HUD_CSS = `
 .vt-tool[aria-pressed="true"] { background:currentColor; }
 .vt-tool[aria-pressed="true"] span { color:var(--vt-on-deck-ink,#04060f); }
 .vt-tool:focus-visible { outline:3px solid #fff; outline-offset:2px; }
-.vt-perf { position:absolute; left:var(--vt-perf-l,10px); bottom:var(--vt-perf-b,110px);
+.vt-perf { position:absolute; left:var(--vt-perf-l,calc(${SAFE_VARS.left} + 10px)); bottom:var(--vt-perf-b,calc(${SAFE_VARS.bottom} + 110px));
   padding:2px 5px; background:rgba(${(VOLT_BED >> 16) & 255},${(VOLT_BED >> 8) & 255},${VOLT_BED & 255},${VOLT_BED_A});
   font-size:11px; letter-spacing:0.1em; opacity:0.6; white-space:pre; display:none;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:400; text-transform:none; }
@@ -465,6 +476,11 @@ export function buildHud(host: HTMLElement): HudRefs {
  * those values.
  */
 export function layoutHud(refs: HudRefs, w: number, h: number, insets: Insets): void {
+  // The four shared lengths first. They are what every FALLBACK above reads,
+  // so they have to be on the element before a var() can miss and fall through
+  // to one — and they are published from the SAME insets that hudVars is about
+  // to place the boxes from, so the two can never describe different screens.
+  publishSafeVars(refs.root, SAFE_PREFIX, insets);
   const vars = hudVars(w, h, insets);
   for (const [name, value] of Object.entries(vars)) refs.root.style.setProperty(name, value);
 }

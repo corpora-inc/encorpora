@@ -86,11 +86,14 @@
   z-index: 2;
   flex: 0 0 auto;
   /* Published by `Hud.layout` from `layout.ts`, which is the version under
-     test. The `env()` fallbacks are what a HUD that never gets laid out
-     falls back to — correct for the notch, blind to the host's controls. */
-  padding: var(--cl-pt, calc(8px + env(safe-area-inset-top)))
-    var(--cl-pr, calc(12px + env(safe-area-inset-right))) 0
-    var(--cl-pl, calc(12px + env(safe-area-inset-left)));
+     test. The fallbacks are what a HUD that never gets laid out falls back to:
+     the safe edge plus a gutter, blind to the host's controls but never blind
+     to the notch. They used to read `env(safe-area-inset-*)` directly, which
+     inside a pack frame is the number ZERO — so the fallback path put the
+     score 8px from the top of the glass, under an Android clock. */
+  padding: var(--cl-pt, calc(8px + var(--dw-safe-top, env(safe-area-inset-top, 0px))))
+    var(--cl-pr, calc(12px + var(--dw-safe-right, env(safe-area-inset-right, 0px)))) 0
+    var(--cl-pl, calc(12px + var(--dw-safe-left, env(safe-area-inset-left, 0px))));
   will-change: transform;
 }
 .cl-hud.cl-punch {
@@ -209,11 +212,19 @@
   border: 2px solid rgba(244, 241, 232, 0.16);
   overflow: hidden;
 }
+/* The five layers of the fraction bar. Every one of them is positioned inside
+   `.cl-meter`, which is `position: relative` twenty lines up — so `left: 0`
+   here is the left end of a 20px-tall bar in the middle of the HUD, not the
+   left edge of the glass, and the safe area is `.cl-hud`'s padding to pay.
+   Said in a declaration rather than in this comment because the fleet gate
+   parses CSS and throws comments away, and an exemption it cannot see is an
+   exemption that quietly becomes universal. */
 .cl-ticks,
 .cl-fill,
 .cl-band,
 .cl-danger,
 .cl-marker {
+  --dw-safe-exempt: "inside .cl-meter, which is position:relative — these offsets are bar-relative";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -277,7 +288,7 @@
     margin: 2px 0;
   }
   .cl-hud {
-    padding-top: var(--cl-pt, calc(6px + env(safe-area-inset-top)));
+    padding-top: var(--cl-pt, calc(6px + var(--dw-safe-top, env(safe-area-inset-top, 0px))));
   }
 }
 
@@ -378,10 +389,10 @@
      breakpoint that only wanted a tighter card would take the safe area with
      it. Change --cl-card-pad instead. */
   --cl-card-pad: 20px;
-  padding-top: calc(var(--cl-card-pad) + var(--cl-safe-top, env(safe-area-inset-top, 0px)));
-  padding-right: calc(var(--cl-card-pad) + var(--cl-safe-right, env(safe-area-inset-right, 0px)));
-  padding-bottom: calc(var(--cl-card-pad) + var(--cl-safe-bottom, env(safe-area-inset-bottom, 0px)));
-  padding-left: calc(var(--cl-card-pad) + var(--cl-safe-left, env(safe-area-inset-left, 0px)));
+  padding-top: calc(var(--cl-card-pad) + var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+  padding-right: calc(var(--cl-card-pad) + var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: calc(var(--cl-card-pad) + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: calc(var(--cl-card-pad) + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
   pointer-events: none;
 }
 .cl-card.cl-on {
@@ -470,8 +481,8 @@
      gesture. 44px is the platform touch floor, and the box was 34.
      Published by `Claim.layout` from `muteRect`, which is the version under
      test; the `env()` fallbacks cover a layout that never runs. */
-  right: var(--cl-mute-r, calc(10px + env(safe-area-inset-right)));
-  bottom: var(--cl-mute-b, calc(10px + env(safe-area-inset-bottom)));
+  right: var(--cl-mute-r, calc(10px + var(--dw-safe-right, env(safe-area-inset-right, 0px))));
+  bottom: var(--cl-mute-b, calc(10px + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px))));
   width: var(--cl-mute-s, 44px);
   height: var(--cl-mute-s, 44px);
   border: 2px solid rgba(244, 241, 232, 0.22);

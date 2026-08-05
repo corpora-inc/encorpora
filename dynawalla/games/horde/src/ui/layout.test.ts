@@ -139,10 +139,10 @@ function fakeRoot(): { el: HTMLElement; vars: Map<string, string> } {
 test("the safe area reaches the stylesheet as numbers, not as env()", () => {
   const { el, vars } = fakeRoot()
   applySafeVars(el, NOTCH_PORTRAIT)
-  assert.equal(vars.get("--hz-safe-top"), "47px")
-  assert.equal(vars.get("--hz-safe-bottom"), "34px")
-  assert.equal(vars.get("--hz-safe-left"), "0px")
-  assert.equal(vars.get("--hz-safe-right"), "0px")
+  assert.equal(vars.get("--dw-safe-top"), "47px")
+  assert.equal(vars.get("--dw-safe-bottom"), "34px")
+  assert.equal(vars.get("--dw-safe-left"), "0px")
+  assert.equal(vars.get("--dw-safe-right"), "0px")
 })
 
 test("a zero inset is written explicitly, never left to the env() fallback", () => {
@@ -151,18 +151,18 @@ test("a zero inset is written explicitly, never left to the env() fallback", () 
   // zero has to be stated.
   const { el, vars } = fakeRoot()
   applySafeVars(el, NONE)
-  for (const k of ["--hz-safe-top", "--hz-safe-right", "--hz-safe-bottom", "--hz-safe-left"]) {
+  for (const k of ["--dw-safe-top", "--dw-safe-right", "--dw-safe-bottom", "--dw-safe-left"]) {
     assert.equal(vars.get(k), "0px", `${k} was left unset, so the CSS falls back to env()`)
   }
 })
 
 test("the offsets the CSS composes put the HUD where hudRects says it is", () => {
   // The composition the stylesheet performs, spelled out: every top offset is
-  // `var(--hz-safe-top) + var(--hz-chrome-top)`. This is the arithmetic that
+  // `var(--dw-safe-top) + var(--hz-chrome-top)`. This is the arithmetic that
   // silently produced 63 instead of 110.
   const { el, vars } = fakeRoot()
   applySafeVars(el, NOTCH_PORTRAIT)
-  const safeTop = Number.parseFloat(vars.get("--hz-safe-top") as string)
+  const safeTop = Number.parseFloat(vars.get("--dw-safe-top") as string)
   const composed = safeTop + CHROME_TOP
   assert.equal(composed, hudRects(390, 844, NOTCH_PORTRAIT).top.y)
   assert.ok(
