@@ -479,6 +479,54 @@ test("the band's pattern is drawn from the groove, not written down", () => {
   }
 });
 
+test("only the layers that OWN the bar line play on it", () => {
+  /**
+   * A regression that shipped in the first draft of this work and was caught by
+   * measuring rather than by listening.
+   *
+   * `grooveMatrix` forces beat 0 to a certainty, so a layer that reads the
+   * matrix straight plays the bar line in every single bar. That is right for
+   * the bass, which IS the pulse. It is wrong for the arp, which used to land
+   * there in one bar of three and started landing there in 300 of 300 —
+   * stacking a pluck onto the bass and onto the chart's own always-present
+   * downbeat, which is a thicker transient and a stiffer bar line, the exact
+   * opposite of what this change is for.
+   *
+   * And the layer must not PAY for standing back: beat 0 was worth 1 of the
+   * budget, so it is shared out rather than lost.
+   */
+  let arpOnDownbeat = 0;
+  let arpNotes = 0;
+  let bassOnDownbeat = 0;
+  let bassNotes = 0;
+  let bars = 0;
+  for (let r = 0; r < 10; r++) {
+    _clearChartCache();
+    const c = ctx(`downbeat-${r}`);
+    for (let bar = 0; bar < 300; bar++) {
+      if (bar > 0 && bar % 4 === 0) c.groove.advance(4);
+      const arp = bandBeats(c, bar, "arp", 1 / 3, "leave");
+      const bass = bandBeats(c, bar, "bass", 3 / 8);
+      if (arp.includes(0)) arpOnDownbeat++;
+      if (bass.includes(0)) bassOnDownbeat++;
+      arpNotes += arp.length;
+      bassNotes += bass.length;
+      bars++;
+    }
+  }
+  assert.equal(arpOnDownbeat, 0, `the arp doubled the bar line in ${arpOnDownbeat} of ${bars} bars`);
+  assert.equal(bassOnDownbeat, bars, "the bass lost the bar line it is supposed to carry");
+  // The hand-written arp averaged 8/3 notes a bar and the hand-written bass 3.
+  assert.ok(
+    Math.abs(arpNotes / bars - 8 / 3) < 0.15,
+    `the arp plays ${(arpNotes / bars).toFixed(3)} notes a bar against the 2.667 it replaced`,
+  );
+  assert.ok(
+    Math.abs(bassNotes / bars - 3) < 0.15,
+    `the bass plays ${(bassNotes / bars).toFixed(3)} notes a bar against the 3 it replaced`,
+  );
+});
+
 test("the band changes its MIND over minutes, not merely its notes", () => {
   /**
    * The distinction that matters, and the one the first version of this work

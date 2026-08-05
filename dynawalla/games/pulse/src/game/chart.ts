@@ -503,16 +503,41 @@ export function barNotes(stage: StageSpec, ctx: ChartContext, bar: number): Char
  * Eighths and quarters only. A bass that could land on a triplet against a
  * sixteenth chart would be a band fighting the child, and the subdivisions the
  * game TEACHES belong to the chart.
+ *
+ * `downbeat` is which of the two kinds of layer this is, and getting it wrong
+ * was a real regression rather than a hypothetical. The matrix forces beat 0 to
+ * a certainty — it is not negotiable, which is right for a bass — so a layer
+ * that simply reads the matrix plays the bar line in EVERY bar. The arp used to
+ * land on it in one bar of three, and reading the matrix straight put it on all
+ * of them: measured, 300 of 300 bars against 100 of 300, stacking a pluck onto
+ * the bass and the chart's own downbeat and stiffening the exact bar line this
+ * work set out to loosen. `"leave"` hands the bar line to the layers that own
+ * it — and hands beat 0's share of the budget back to the rest of the bar, so
+ * the layer keeps the note count it was asked for instead of quietly losing one
+ * a bar.
  */
 export function bandBeats(
   ctx: ChartContext,
   bar: number,
   layer: string,
   density: number,
+  downbeat: "keep" | "leave" = "keep",
 ): number[] {
   const rng = makeRng(hashSeed(`${ctx.seed}|band-${layer}|${bar}|${ctx.groove.revision}`));
+  const slots = ctx.groove.matrix({ beatsPerBar: BEATS_PER_BAR, divs: [1, 2], density });
   const out: number[] = [];
-  for (const slot of ctx.groove.matrix({ beatsPerBar: BEATS_PER_BAR, divs: [1, 2], density })) {
+  if (downbeat === "leave") {
+    const rest = slots.slice(1);
+    let total = 0;
+    for (const s of rest) total += s.p;
+    // The downbeat was worth exactly 1 of the budget. Share it out in
+    // proportion, and keep the per-slot ceiling so no instant becomes a
+    // certainty — a decorative layer that is certain anywhere is a loop again.
+    const scale = total > 0 ? (total + 1) / total : 1;
+    for (const s of rest) if (rng.bool(Math.min(0.95, s.p * scale))) out.push(s.beat);
+    return out;
+  }
+  for (const slot of slots) {
     if (rng.bool(slot.p)) out.push(slot.beat);
   }
   return out;

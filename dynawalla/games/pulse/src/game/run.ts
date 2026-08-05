@@ -454,14 +454,16 @@ export class Run {
     }
     if (this.layers.has("arp")) {
       const seq = PENTATONIC;
-      for (const b of bandBeats(this.chart, bar, "arp", 1 / 3)) {
+      // `"leave"`: the bar line already has the bass and the chart's downbeat
+      // on it, and a third voice there is a thicker transient rather than a
+      // richer bar. See `bandBeats`.
+      for (const b of bandBeats(this.chart, bar, "arp", 1 / 3, "leave")) {
         const k = Math.round(b * 2);
         const semi = chord.root + seq[(k + bar) % seq.length]! + 36;
         this.voices.pluck(t + b * spb, hz(semi), 0.3, 1.4);
       }
     }
   }
-
 
   private scheduleGateBar(bar: number, t: number, spb: number): void {
     // The band takes over so the groove never thins while the player thinks.

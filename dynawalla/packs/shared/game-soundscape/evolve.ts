@@ -189,6 +189,18 @@ const SLOTS_PER_MUTATION = 8
 const COMMIT_STEP = 0.28
 const OPEN_STEP = 0.28
 
+/**
+ * How many answers one phrase boundary will spend.
+ *
+ * `advance` already clamps a caller that hands over a nonsense number of bars;
+ * this is the same guard on the other input, because each pending gesture now
+ * re-reads the field and so costs a matrix build. Six is far above anything a
+ * game can produce in four bars — PULSE serves a gate every five or six bars —
+ * and it means a caller that reported a thousand answers between boundaries
+ * pays for six of them rather than for a thousand.
+ */
+const MAX_PENDING = 6
+
 /** A lean below this is not worth carrying, and dropping it keeps the map small. */
 const LEAN_EPSILON = 1e-4
 
@@ -400,25 +412,30 @@ export class Groove {
     }
     this.room *= Math.pow(0.5, BARS_PER_MUTATION / ROOM_HALF_LIFE_BARS)
 
-    const live = this.liveSlots()
-
-    // What the child did, spent first: correctness STEERS the walk and the
-    // random step EXPLORES from wherever the steering left it. That ordering is
-    // the design — the other way round, a run of right answers would be
-    // scribbled over by the noise that followed it in the same step.
-    for (let i = 0; i < this.pending.agree; i++) this.commit(live)
-    for (let i = 0; i < this.pending.room; i++) this.open(live)
-    if (this.pending.room > 0) {
-      this.room = Math.min(1, this.room + ROOM_PER_MISS * Math.min(3, this.pending.room))
-    }
-    if (this.pending.agree > 0) {
-      this.room *= Math.pow(ROOM_KEPT_ON_AGREE, Math.min(3, this.pending.agree))
-    }
+    /**
+     * What the child did, spent first: correctness STEERS the walk and the
+     * random step EXPLORES from wherever the steering left it. That ordering is
+     * the design — the other way round, a run of right answers would be
+     * scribbled over by the noise that followed it in the same step.
+     *
+     * **The field is re-read between gestures**, and it has to be. Four right
+     * answers inside one phrase read against a snapshot all scored the SAME
+     * instant highest and piled 4 x `COMMIT_STEP` onto it, saturating one beat
+     * instead of opening four — which contradicts both the plural in the brief
+     * ("add … different beats") and this file's own prose. Re-reading costs one
+     * matrix build per gesture, and `MAX_PENDING` is what bounds that.
+     */
+    const answered = Math.min(MAX_PENDING, this.pending.agree)
+    const missed = Math.min(MAX_PENDING, this.pending.room)
+    for (let i = 0; i < answered; i++) this.commit(this.liveSlots())
+    for (let i = 0; i < missed; i++) this.open(this.liveSlots())
+    if (missed > 0) this.room = Math.min(1, this.room + ROOM_PER_MISS * Math.min(3, missed))
+    if (answered > 0) this.room *= Math.pow(ROOM_KEPT_ON_AGREE, Math.min(3, answered))
     this.pending.agree = 0
     this.pending.room = 0
 
-    // And then the stochastic part: one instant, either way, every phrase.
-    this.wander(live)
+    // And then the stochastic part, over the field the steering just left.
+    this.wander(this.liveSlots())
 
     this.rev += 1
   }

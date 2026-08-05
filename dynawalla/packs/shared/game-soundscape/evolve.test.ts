@@ -348,6 +348,42 @@ test("right ADDS and wrong REMOVES — on every grid PULSE plays", () => {
   }
 })
 
+test("a burst of right answers opens DIFFERENT instants, not one instant harder", () => {
+  /**
+   * The plural in the brief — *"add and remove different beats"* — and a real
+   * regression, caught in review rather than by a test.
+   *
+   * `step()` used to snapshot the field once and spend every pending gesture
+   * against it, so four right answers inside one phrase all scored the SAME
+   * instant highest and piled four steps onto one beat, saturating it instead
+   * of opening four. Re-reading between gestures fixes it, and this counts the
+   * result: a bigger burst lifts strictly more instants, up to the point where
+   * the tether and the ceiling take over.
+   */
+  const spec = GRIDS[3]!.spec
+  const lifted = (n: number): number => {
+    let total = 0
+    for (const scape of scapes(60)) {
+      const g = grooveOn(scape, spec)
+      const before = g.matrix(spec).slice(1).map((s) => g.leanAt(s.beat))
+      for (let i = 0; i < n; i++) g.agree()
+      g.advance(BARS_PER_MUTATION)
+      const after = g.matrix(spec).slice(1).map((s) => g.leanAt(s.beat))
+      for (let i = 0; i < before.length; i++) {
+        if ((after[i] ?? 0) - (before[i] ?? 0) > 0.2) total++
+      }
+    }
+    return total / 60
+  }
+  const one = lifted(1)
+  const four = lifted(4)
+  assert.ok(one >= 1, `one right answer lifted only ${one.toFixed(2)} instants`)
+  assert.ok(
+    four > one * 1.4,
+    `four right answers lifted ${four.toFixed(2)} instants against ${one.toFixed(2)} for one — a burst is landing on the same beat`,
+  )
+})
+
 test("being right never hands a child a busier bar", () => {
   // The whole reason right ADDS an instant rather than a note. If this ever
   // fails, correctness has started buying difficulty, which is a punishment

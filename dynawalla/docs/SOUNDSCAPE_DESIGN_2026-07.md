@@ -1,6 +1,6 @@
 # The Dynawalla soundscape
 
-**Status:** live. `packs/shared/game-soundscape/` exists and has 79 tests; the host
+**Status:** live. `packs/shared/game-soundscape/` exists and has 80 tests; the host
 now chooses a soundscape and publishes it, so THE STEELYARD plays through it in
 production. **Stage 2 is now partly built** — games talk back through
 `session.transition`, and correctness shapes the beat (see *The groove evolves*,
@@ -232,6 +232,30 @@ instant of the bar and an instant means the same thing in the new mode. So a
 shape a child earned in one key is still their shape in the next one, and a
 rotation lands as a modulation of the groove that was playing rather than as one
 groove stopping and a different one starting.
+
+### Two regressions caught in review, and what they teach
+
+Both were introduced by this change and both were found by *measuring* rather
+than by listening, which is the only reason they were found at all.
+
+**The arp started playing every bar line.** `grooveMatrix` forces beat 0 to a
+certainty — correct, it is not negotiable — so a backing layer that reads the
+matrix straight lands on the bar line in every bar. The hand-written arp landed
+there in one bar of three; the new one landed there in **300 of 300**, stacking a
+pluck onto the bass and onto the chart's own downbeat. A thicker transient and a
+stiffer bar line: the exact opposite of the point. `bandBeats` now takes
+`downbeat: "keep" | "leave"` — the bass keeps it because the bass *is* the
+pulse, the arp leaves it — and a layer that stands back has beat 0's share of
+the budget handed back to it so it does not silently lose a note a bar. The
+lesson: **a certainty in the matrix is a certainty for every layer that reads
+it**, and only one layer should own the bar line.
+
+**A burst of right answers landed on one instant.** `step()` snapshotted the
+field once and spent every queued gesture against it, so four right answers in
+one phrase all scored the same instant highest and piled four steps onto it —
+saturating one beat instead of opening four, against the plural in the brief and
+against this file's own prose. The field is now re-read between gestures, capped
+at `MAX_PENDING`. Measured: one right answer lifts 1.8 instants, four lift 3.0.
 
 ### Seams left for FORGE and TREBUCHET
 
