@@ -470,8 +470,15 @@ export function mountCoil(el: HTMLElement, host: Host): { unmount(): void } {
 
     // A new round: the schedule is re-read from the item, and the child's own
     // asking starts again from nothing.
-    if (round && round.questionId !== hintRound) {
-      hintRound = round.questionId
+    //
+    // Keyed on the coil and the demand as well as the id, because the id is the
+    // HOST's and nothing in the contract stops it serving one twice. Keyed on
+    // the id alone, a repeat would carry a stale `breaksNeeded` into a different
+    // coil — the quiet has to be a pure function of the item that is actually on
+    // the lane.
+    const key = `${round?.questionId ?? ""}|${String(round?.coil ?? 0)}|${String(round?.demand ?? 0)}`
+    if (round && key !== hintRound) {
+      hintRound = key
       hintItem = { breaks: Math.max(0, breaksNeeded(board.links, round.demand)) }
       asked = 0
     }
