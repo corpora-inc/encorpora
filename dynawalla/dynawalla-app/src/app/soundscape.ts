@@ -275,6 +275,30 @@ export function rotateOnTransition(packId: string, now: number): Soundscape {
 }
 
 /**
+ * `rotateOnTransition` at the wall clock.
+ *
+ * The clock read lives HERE and not at the call site, and that is a rule the
+ * React compiler enforces rather than a preference. `Stage`'s transition
+ * handler is defined inside the `useMemo` that builds the pack's services, and
+ * the compiler cannot see that `createServices` only stores the callback — so a
+ * `Date.now()` in it is a clock read the compiler must assume happens during
+ * render, and `react-hooks/purity` rejects it, correctly, because a render that
+ * reads a clock is a render that is not idempotent. `useEffectEvent` is the
+ * slot React provides for a function defined in render and called only outside
+ * it, but it may not be passed to anything, which is exactly what this callback
+ * has to be.
+ *
+ * So the component stops knowing about time at all, which is the better shape
+ * anyway: this module already owns every clock the music has — `ROTATION_MS`,
+ * `TRANSITION_ROTATION_MS`, and the `since` they are measured from. The pure
+ * function keeps taking `now`, so the whole policy stays assertable against a
+ * fixed instant; this is one line on top of it and has no logic to test.
+ */
+export function rotateOnTransitionNow(packId: string): Soundscape {
+  return rotateOnTransition(packId, Date.now())
+}
+
+/**
  * This pack is on the stage and the key is its until it leaves.
  *
  * Called from an effect rather than during render, so that React's development

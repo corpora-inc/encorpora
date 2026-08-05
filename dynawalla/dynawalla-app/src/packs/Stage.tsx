@@ -28,7 +28,7 @@ import {
 import {
   claimSoundscape,
   releaseSoundscape,
-  rotateOnTransition,
+  rotateOnTransitionNow,
   soundscapeForPack,
 } from "../app/soundscape.ts"
 import { strings } from "../app/strings.ts"
@@ -179,18 +179,19 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
            * A transition is the game saying "the child finished something and
            * nothing is in front of them", which is the same condition a doorway
            * satisfies — see `app/soundscape.ts` for why that upholds the
-           * never-under-a-child rule rather than breaking it. `rotateOnTransition`
-           * owns the floor and the ownership check; this only has to push what
-           * comes back, and the `push` effect below carries it to the pack on the
-           * `settings` channel that already exists.
+           * never-under-a-child rule rather than breaking it. That module owns
+           * the floor, the ownership check AND the clock: this component reads
+           * no time, because a `Date.now()` here is a clock read the React
+           * compiler must assume happens during render. See
+           * `rotateOnTransitionNow`.
            *
-           * Unconditional `setSoundscape`: the rotation is refused far more often
-           * than it is granted (a level inside the floor gets the same key back),
-           * and React bails out of a re-render when the state is identical, so the
-           * common case costs nothing and there is no second condition to keep in
-           * step with the policy.
+           * Unconditional `setSoundscape`: the rotation is refused far more
+           * often than it is granted — a level inside the floor gets the same
+           * key back — and React bails out of a re-render when the state is
+           * identical, so the common case costs nothing and there is no second
+           * condition to keep in step with the policy.
            */
-          setSoundscape(rotateOnTransition(packId, Date.now()))
+          setSoundscape(rotateOnTransitionNow(packId))
           // The store decides and records in one call, so two transitions
           // arriving in the same frame cannot both be "the first one today".
           if (reachTransition(packId) === "rest") setOffering(true)
