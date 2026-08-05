@@ -137,16 +137,18 @@ export const mount: Mount = (el: HTMLElement, host: Host) => {
         lines: [
           "Now and then a question appears at the top of the screen.",
           "Three notes come at you, one in each lane, and each one has an answer on it.",
-          "Tap the lane with the right answer when it reaches the line.",
-          "A right answer adds one block of charge, and the screen says SPLIT. A wrong one takes two blocks away.",
+          "Tap the lane with the right answer when it reaches the line. Take as long as you like — the tiles wait for you.",
+          "A right answer refills your charge, and the screen says SPLIT.",
+          "If you get one wrong the finished sum stays on screen. It waits there until you play your next note, so you can read it for as long as you want.",
         ],
       },
       {
         heading: "Charge",
         lines: [
-          "The five blocks near the top are your charge.",
-          "If they all run out the music breaks down and the screen says RESTART THE HEART. Answer one more question right and the music starts again.",
-          "The run never ends. You always get another go.",
+          "The five blocks near the top are your charge. Missing a note takes a little off. Hitting one puts a little back.",
+          "If they run out the screen says RESTART THE HEART and the next question comes early. The music keeps playing the whole time.",
+          "Answer that question and you carry straight on from where you were. Nothing goes back to the beginning, ever.",
+          "The game gets easier on its own when you are finding it hard, and only gets harder when you are finding it easy.",
         ],
       },
       {

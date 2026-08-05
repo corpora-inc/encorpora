@@ -19,7 +19,8 @@ import { installFakeAudio } from "../dev/fakeAudio.ts";
 const audio = installFakeAudio();
 
 // After the fake is installed, so `new AudioEngine()` finds it.
-const { Game, MAX_CHARGE, READ_SEC } = await import("./core.ts");
+const { Game, MAX_CHARGE } = await import("./core.ts");
+const { READ_FLOOR } = await import("./answer.ts");
 
 import type { Host } from "../contract.ts";
 
@@ -166,10 +167,15 @@ test("a gate that expires does not move the difficulty and does not cost charge"
   const r = await play("never", LONG_RUN_SEC, 5);
 
   assert.ok(r.difficultyAsked.length > 4);
-  assert.equal(
-    r.difficulty,
-    5,
-    "a child who was still computing has said nothing about the maths; the ladder must not move",
+  // Exact to floating point, not merely "close": the bot played every ordinary
+  // note perfectly for four minutes, so the NOTE channel of the flow controller
+  // is pinned at 1 and is straining upward the whole time. The ladder holds
+  // because the controller steers on the WORSE of its two channels and the
+  // maths channel heard nothing at all — which is the claim.
+  assert.ok(
+    Math.abs(r.difficulty - 5) < 1e-9,
+    `a child who was still computing has said nothing about the maths; the ladder must not ` +
+      `move, and it moved to ${r.difficulty}`,
   );
   assert.equal(r.charge, MAX_CHARGE, "the run was played perfectly; only the gates went unanswered");
   assert.equal(r.phase, "playing", "an unanswered gate must not be able to end a run on its own");
@@ -226,9 +232,9 @@ test("the reading window never shrinks because the tempo went up", async () => {
 
   const worst = Math.min(...r.readingWindows);
   assert.ok(
-    worst >= READ_SEC,
+    worst >= READ_FLOOR,
     `a child got ${worst.toFixed(2)}s to read a question at ${r.bpm} BPM; the floor is ` +
-      `${READ_SEC}s and it must not fall as the music speeds up`,
+      `${READ_FLOOR}s and it must not fall as the music speeds up`,
   );
 });
 
@@ -284,7 +290,7 @@ test("the reading window survives a pause taken after a sector change", async ()
     );
     const barDur = (60 / game.bpm) * 4;
     assert.ok(
-      barDur * (1 + inner.cycleInhale) >= READ_SEC,
+      barDur * (1 + inner.cycleInhale) >= READ_FLOOR,
       `a resumed cycle at ${game.bpm} BPM leads by ${(barDur * (1 + inner.cycleInhale)).toFixed(2)}s`,
     );
   }

@@ -39,6 +39,29 @@ export function windowsFor(spacing: number): Windows {
   };
 }
 
+/**
+ * The windows on one of the three ANSWER tiles.
+ *
+ * `strikeSec` comes from `answerPlan(item)` and from nothing else — see
+ * `answer.ts` for why that matters — so unlike `windowsFor` this takes no
+ * spacing, consults no tempo, and cannot narrow because the run sped up. The
+ * four bands keep the same proportions the base windows have, so the verdict
+ * word a child sees on a tile means what it means everywhere else.
+ *
+ * `windowsFor` is deliberately NOT reused with `spacing = strikeSec * 2`: it
+ * clamps against `BASE_WINDOWS`, so every plan above ±205 ms would silently
+ * collapse back onto the motion constant this exists to escape.
+ */
+export function strikeWindows(strikeSec: number): Windows {
+  const s = Number.isFinite(strikeSec) && strikeSec > 0 ? strikeSec : BASE_WINDOWS.miss;
+  return {
+    perfect: s * (BASE_WINDOWS.perfect / BASE_WINDOWS.miss),
+    great: s * (BASE_WINDOWS.great / BASE_WINDOWS.miss),
+    good: s * (BASE_WINDOWS.good / BASE_WINDOWS.miss),
+    miss: s,
+  };
+}
+
 /** `delta` is (hitTime - noteTime); sign is kept by the caller for the meter. */
 export function verdictFor(delta: number, w: Windows): Verdict | null {
   const a = Math.abs(delta);

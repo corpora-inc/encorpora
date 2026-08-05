@@ -1,14 +1,18 @@
 /**
- * Pattern generation.
+ * Pattern generation: the fixed shapes.
  *
  * A bar is a grid of `cells` equal slices — which is exactly what a denominator
  * is. `cells: 8` means the bar is cut into eighths, the floor is ruled into 8
  * segments, and the notes land on the cuts. When the player answers a gate with
  * `1/8`, the world re-rules itself into 8 and they PLAY the answer they gave.
  *
- * Lane assignment follows metric weight rather than chance, because a random
- * sprinkle of notes does not feel like a groove and a child can tell.
+ * The ORDINARY bar — the one the player spends almost every second inside —
+ * lives in `groove.ts`, because it is no longer a pure function of the bar
+ * index: it evolves. What is left here is the three shapes that are fixed by
+ * what they mean, plus the mapping from an answer to a subdivision.
  */
+
+import { laneOf } from "./groove.ts";
 
 export type Lane = 0 | 1 | 2;
 
@@ -66,77 +70,22 @@ function rngFor(seed: number) {
   };
 }
 
-/** Lane by metric weight: downbeats are low, backbeats are mid, the rest ride. */
-function laneFor(cell: number, cells: number): Lane {
-  const beat = (cell * 4) / cells;
-  const onBeat = Math.abs(beat - Math.round(beat)) < 1e-9;
-  if (cells === 2 || cells % 4 === 0) {
-    if (onBeat) {
-      const b = Math.round(beat) % 4;
-      return b === 0 || b === 2 ? 0 : 1;
-    }
-    return 2;
-  }
-  // 3, 6, 12: a cyclic three-feel. Every third cell is the anchor.
-  const m = cell % 3;
-  return m === 0 ? 0 : m === 1 ? 2 : 1;
-}
-
-export type BarSpec = {
-  bar: number;
-  cells: number;
-  accentEvery: number;
-  /** 0..1, how much of the grid is filled beyond the structural notes */
-  density: number;
-  difficulty: number;
-  /** true for the payoff bars right after a correct gate */
-  showcase: boolean;
-};
-
 /**
- * One bar of groove. Structural notes (bar start, backbeats) are always
- * present; everything else is filled by density so the pattern breathes.
+ * The payoff bar: the answer, played in full.
+ *
+ * Every slice is struck, because the point of the bar is that the denominator
+ * the child just answered with is the thing under their hands. Lane assignment
+ * comes from `groove.ts` so the payoff and the groove agree about which lane a
+ * slice belongs to — they disagreed once, and a payoff that moves the kick to a
+ * lane the player has not been using is a payoff they fumble.
  */
-export function grooveBar(spec: BarSpec, out: ChartNote[]): ChartNote[] {
+export function showcaseBar(cells: number, accentEvery: number, out: ChartNote[]): ChartNote[] {
   out.length = 0;
-  const { bar, cells, accentEvery, density, difficulty, showcase } = spec;
-  const rnd = rngFor(bar * 2654435761 + cells * 40503);
-
-  for (let i = 0; i < cells; i++) {
-    const beat = (i * 4) / cells;
-    const lane = laneFor(i, cells);
-    const accent = i % accentEvery === 0;
-
-    let keep: boolean;
-    if (i === 0) {
-      keep = true; // the bar always announces itself
-    } else if (showcase) {
-      keep = true; // the payoff plays the answer in full, every slice
-    } else if (lane === 1) {
-      keep = true; // never drop a backbeat; it is the spine of the groove
-    } else if (lane === 0) {
-      keep = rnd() < 0.72 + density * 0.28;
-    } else {
-      keep = rnd() < density;
-    }
-    if (keep) out.push({ beat, lane, accent, cell: i, cells });
+  const n = Math.max(2, Math.round(cells));
+  const every = Math.max(1, Math.min(Math.round(accentEvery), n));
+  for (let i = 0; i < n; i++) {
+    out.push({ beat: (i * 4) / n, lane: laneOf(i, n), accent: i % every === 0, cell: i, cells: n });
   }
-
-  // Syncopation: from difficulty 5, occasionally pull a note off the grid into
-  // the slot just before a backbeat. This is what stops long runs feeling like
-  // a metronome.
-  if (!showcase && difficulty >= 5 && cells >= 8 && rnd() < 0.35) {
-    const target = Math.round((cells * 3) / 4); // beat 3
-    const idx = out.findIndex((n) => n.cell === target);
-    if (idx >= 0 && target - 1 > 0 && !out.some((n) => n.cell === target - 1)) {
-      const n = out[idx]!;
-      n.cell = target - 1;
-      n.beat = ((target - 1) * 4) / cells;
-      n.accent = true;
-    }
-  }
-
-  out.sort((a, b) => a.beat - b.beat);
   return out;
 }
 
@@ -174,10 +123,22 @@ export function polyBar(bar: number, out: ChartNote[]): ChartNote[] {
   return out;
 }
 
-/** A near-empty bar: the inhale before a gate, so the question can be read. */
-export function inhaleBar(out: ChartNote[]): ChartNote[] {
+/**
+ * A near-empty bar: the inhale before a gate, so the question can be read.
+ *
+ * Two notes, always — the density is the point and `phase` may not touch it.
+ * What `phase` moves is WHERE the second one falls, and that matters for a
+ * reason beyond taste: the inhale used to be byte-identical every single time,
+ * and a cycle carries three or four of them, so a long run was full of
+ * verbatim-repeating phrases even when the groove itself was evolving. Both
+ * notes also used to land in lane 0, which meant the sparsest bar in the game
+ * — the one a beginner has the most time to look at — taught them nothing
+ * about the other two lanes.
+ */
+export function inhaleBar(phase: number, out: ChartNote[]): ChartNote[] {
   out.length = 0;
   out.push({ beat: 0, lane: 0, accent: true, cell: 0, cells: 4 });
-  out.push({ beat: 2, lane: 0, accent: false, cell: 2, cells: 4 });
+  const second = [2, 3, 2, 1][((phase % 4) + 4) % 4]!;
+  out.push({ beat: second, lane: laneOf(second, 4), accent: false, cell: second, cells: 4 });
   return out;
 }

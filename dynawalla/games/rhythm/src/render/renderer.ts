@@ -24,6 +24,7 @@ import {
 } from "../theme.ts";
 import { safeInsets, safeRect } from "../../../../packs/shared/game-chrome/index.ts";
 import { layoutFor, LEAD, type Layout } from "./layout.ts";
+import { PROMPT_STROKE_ALPHA } from "./ink.ts";
 import { drawRich, measureRich } from "./typeset.ts";
 import {
   Particles, PAL_BLOOM, PAL_DIM, PAL_GOLD, PAL_HORIZON, PAL_WHITE,
@@ -329,7 +330,7 @@ export class Renderer {
           this.bigFlash(now, 0.36);
           break;
         }
-        case "breakdown":
+        case "heart-out":
           this.particles.burst(this.strikeX, this.playTop + this.playH / 2, this.spec.sparks >> 2, PAL_DIM, 700, rnd, false);
           break;
         case "revive":
@@ -663,7 +664,7 @@ export class Renderer {
     const H = this.playH;
 
     for (const gate of g.gates) {
-      if (!gate.active || gate === g.reviveGate) continue;
+      if (!gate.active) continue;
       // the slab rides just behind the tiles
       const sx = this.xAt(gate.time + 0.14, now);
       if (sx < -this.W || sx > this.W * 2) continue;
@@ -891,17 +892,30 @@ export class Renderer {
     // --- charge ------------------------------------------------------
     const cellW = lay.chargeCellW;
     const cx0 = lay.chargeX;
+    // The heart is continuous now — a miss takes a slice off, a landed note puts
+    // one back — so the block it is currently inside fills PARTIALLY. The state
+    // lives in the design rather than in a number: a player watching the last
+    // block drain can see they are recovering it, which is the whole difference
+    // between the meter reading as a countdown and reading as something you are
+    // playing against.
     for (let i = 0; i < 5; i++) {
-      const on = i < g.charge;
+      const fill = Math.max(0, Math.min(1, g.charge - i));
       const x = cx0 + i * (cellW + u * 0.1);
-      ctx.fillStyle = on ? rgba(th.horizon, 0.95) : "rgba(255,255,255,0.13)";
+      ctx.fillStyle = "rgba(255,255,255,0.13)";
       this.roundRect(ctx, x, lay.chargeY, cellW, lay.chargeCellH, u * 0.16);
       ctx.fill();
-      if (!on) {
+      if (fill < 1) {
         ctx.strokeStyle = "rgba(255,255,255,0.22)";
         ctx.lineWidth = 1;
         ctx.stroke();
       }
+      if (fill <= 0) continue;
+      ctx.save();
+      this.roundRect(ctx, x, lay.chargeY, cellW, lay.chargeCellH, u * 0.16);
+      ctx.clip();
+      ctx.fillStyle = rgba(th.horizon, 0.95);
+      ctx.fillRect(x, lay.chargeY, cellW * fill, lay.chargeCellH);
+      ctx.restore();
     }
 
     // --- combo -------------------------------------------------------
@@ -926,7 +940,7 @@ export class Renderer {
     }
 
     // --- the question ------------------------------------------------
-    const gate = g.phase === "breakdown" ? g.reviveGate : g.activeGate;
+    const gate = g.activeGate;
     if (gate && gate.q && !gate.resolved && now >= gate.revealAt - 0.05) {
       const size = Math.min(u * 2.5, lay.area.w / (measureRich(ctx, gate.q.prompt, 100) / 100) * 0.86);
       const bw = measureRich(ctx, gate.q.prompt, size) + u * 2.4;
@@ -936,7 +950,7 @@ export class Renderer {
       ctx.fillStyle = "rgba(4,6,18,0.82)";
       this.roundRect(ctx, bx, by, bw, bh, u * 0.55);
       ctx.fill();
-      ctx.strokeStyle = rgba(th.horizon, 0.55);
+      ctx.strokeStyle = rgba(th.horizon, PROMPT_STROKE_ALPHA);
       ctx.lineWidth = Math.max(1.5, u * 0.1);
       this.roundRect(ctx, bx, by, bw, bh, u * 0.55);
       ctx.stroke();
@@ -946,11 +960,47 @@ export class Renderer {
         glowWidth: size * 0.4,
       }, true);
 
-      if (g.phase !== "breakdown") {
-        const remain = Math.max(0, Math.min(1, (gate.time - now) / 2.4));
-        ctx.fillStyle = rgba(th.horizon, 0.85);
-        ctx.fillRect(bx + u * 0.4, by + bh - u * 0.3, (bw - u * 0.8) * remain, u * 0.18);
+      const remain = Math.max(0, Math.min(1, (gate.time - now) / 2.4));
+      ctx.fillStyle = rgba(th.horizon, 0.85);
+      ctx.fillRect(bx + u * 0.4, by + bh - u * 0.3, (bw - u * 0.8) * remain, u * 0.18);
+
+      // RESTART THE HEART — the founder likes the phrase, and it survives. What
+      // does not survive is the modal it used to head: this is a BANNER over an
+      // ordinary gate, on a field that never stopped moving, and there is no
+      // scrim anywhere near the question. See `ink.ts` for the 2.30:1 that the
+      // scrim was costing.
+      if (gate.debt) {
+        const pulse = 0.5 + 0.5 * Math.sin(now * 5);
+        ctx.textAlign = "center";
+        ctx.font = font(u * 1.05, 900);
+        ctx.fillStyle = rgba(th.horizon, 0.72 + pulse * 0.28);
+        ctx.fillText("RESTART THE HEART", lay.cx, by - u * 0.85);
       }
+    }
+
+    // --- the completed sum, held --------------------------------------
+    // Accent colour, never red, and no deadline: `game-pacing`'s `revealPlan`
+    // gives `holdMs: Infinity` and only the child's own next note takes it down.
+    if (!gate && g.reveal) {
+      const r = g.reveal;
+      const text = `${r.prompt} = ${r.answer}`;
+      const size = Math.min(u * 2.2, (lay.area.w / Math.max(1, measureRich(ctx, text, 100) / 100)) * 0.8);
+      const bw = measureRich(ctx, text, size) + u * 2.4;
+      const bh = size * 2.3;
+      const bx = lay.cx - bw / 2;
+      const by = lay.promptY;
+      ctx.fillStyle = "rgba(4,6,18,0.82)";
+      this.roundRect(ctx, bx, by, bw, bh, u * 0.55);
+      ctx.fill();
+      ctx.strokeStyle = rgba(th.horizon, PROMPT_STROKE_ALPHA);
+      ctx.lineWidth = Math.max(1.5, u * 0.1);
+      this.roundRect(ctx, bx, by, bw, bh, u * 0.55);
+      ctx.stroke();
+      drawRich(ctx, text, lay.cx, by + bh / 2, size, {
+        fill: "#ffffff",
+        glow: rgba(th.horizon, 0.8),
+        glowWidth: size * 0.4,
+      }, true);
     }
 
     // --- timing meter ------------------------------------------------
@@ -995,34 +1045,6 @@ export class Renderer {
       ctx.fillStyle = rgba(th.horizon, 0.9);
       ctx.fillText(g.sector.name, lay.cx, this.playTop + this.playH / 2);
       ctx.globalAlpha = 1;
-    }
-
-    // --- breakdown overlay -------------------------------------------
-    if (g.phase === "breakdown" && g.reviveGate) {
-      ctx.fillStyle = "rgba(3,4,12,0.72)";
-      ctx.fillRect(0, 0, this.W, this.H);
-      const pulse = 0.5 + 0.5 * Math.sin(now * 5);
-      ctx.textAlign = "center";
-      ctx.font = font(u * 1.15, 900);
-      ctx.fillStyle = rgba(th.horizon, 0.7 + pulse * 0.3);
-      ctx.fillText("RESTART THE HEART", lay.cx, this.playTop - u * 1.2);
-
-      for (let l = 0; l < 3; l++) {
-        const y = this.laneY(l);
-        const c = LANE_COLOR[l]!;
-        const w = Math.min(lay.area.w * 0.82, u * 20);
-        const h = this.laneH * 0.78;
-        ctx.fillStyle = "rgba(7,10,24,0.95)";
-        this.roundRect(ctx, lay.cx - w / 2, y - h / 2, w, h, u * 0.6);
-        ctx.fill();
-        ctx.strokeStyle = rgba(c, 0.75 + pulse * 0.25);
-        ctx.lineWidth = Math.max(3, u * 0.24);
-        this.roundRect(ctx, lay.cx - w / 2, y - h / 2, w, h, u * 0.6);
-        ctx.stroke();
-        drawRich(ctx, g.reviveGate.labels[l]!, lay.cx, y, Math.min(h * 0.44, u * 2.6), {
-          fill: "#ffffff", glow: rgba(c, 0.9), glowWidth: u,
-        }, true);
-      }
     }
   }
 }
