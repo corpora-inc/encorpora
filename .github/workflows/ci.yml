@@ -1252,6 +1252,25 @@ jobs:
             exit 1
           fi
 
+      # ── the pack runtime's own tests ─────────────────────────────────────
+      #
+      # No workflow in this repository ran `cargo test`, at all, until this
+      # step. That is not a theoretical gap: PR 749 added a regression test
+      # asserting the bundled-pack sync stays additive — the thing standing
+      # between a bad refactor and every downloaded pack being uninstalled from
+      # every device at launch — and it had never executed on a pull request.
+      # A test that never runs is a comment.
+      #
+      # Scoped to `packs::` and to the one crate whose pack runtime this is.
+      # `--all-targets` above already compiled these; this links and runs them,
+      # measured at a few seconds after that. Widening it to the whole test
+      # suite of both apps is a separate, larger decision about job time.
+      - name: cargo test (dynawalla pack runtime)
+        working-directory: dynawalla/dynawalla-app/src-tauri
+        # Quoted: a plain YAML scalar ending in a colon is a mapping key, and
+        # `packs::` unquoted is a parse error rather than a filter.
+        run: "cargo test --locked --lib packs::"
+
   # Single summary status that aggregates every job above. THIS is the context to
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.

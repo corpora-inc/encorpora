@@ -20,7 +20,13 @@
 //!    before a single byte is extracted.
 //! 4. **A pack that is removed is gone.** `packs_remove` is registered — the
 //!    frontend invoking a command the backend never registered is how Corpán's
-//!    uninstalled packs came to live on disk forever.
+//!    uninstalled packs came to live on disk forever. And a pack the *company*
+//!    removed is gone too: `retired-packs.json` names the ids this build must
+//!    uninstall, and [`remove_retired`] runs down that list at every launch.
+//!    Dropping a game from `games/` only stops shipping it; without the ledger
+//!    it stays installed and playable on every device that ever had it, which
+//!    is how a retired game turned up in a catalogue a release after it was
+//!    scrapped.
 //!
 //! The scheme name `dynawalla-pack` is baked into the built JavaScript of every
 //! pack ever published. It is a public API from the first release and it can
@@ -1021,16 +1027,45 @@ pub fn sync_bundled<R: Runtime>(app: &AppHandle<R>) {
     let root = match pack_root(app) {
         Ok(root) => root,
         Err(problem) => {
-            eprintln!("[packs] no pack root ({problem}); bundled packs were NOT installed");
+            eprintln!(
+                "[packs] no pack root ({problem}); bundled packs were NOT installed and retired \
+                 packs were NOT removed"
+            );
             return;
         }
     };
 
-    match bundled_source(app) {
-        Some(Bundled::Directory(source)) => sync_from_directory(&source, &root),
+    sync_into(&root, || bundled_source(app));
+}
+
+/// The launch sequence, with only the platform-specific hunt for the bundle
+/// left to the caller.
+///
+/// A seam rather than an inlined body: locating the bundle needs an `AppHandle`
+/// and a real installation, and everything that matters happens after it. The
+/// tests drive *this* function, so what they exercise is the order the app
+/// runs in rather than an approximation of it.
+///
+/// **Retirement goes first, and outside the match.** Two reasons, both
+/// load-bearing:
+///
+/// * It does not depend on the bundle. `bundled_source` returns `None` on a
+///   build that cannot find its own packs, and a retirement that only happens
+///   when the bundle is readable is a retirement that does not happen.
+/// * Going first means an id that was somehow both retired and bundled would
+///   end the launch *installed*. That is the safe direction for a
+///   contradiction — a child keeps a playable game rather than losing one —
+///   and the contradiction cannot be shipped anyway, because
+///   `retired-packs.json` is checked against `games/` by both test suites and
+///   `packs/build.mjs` refuses to build a retired id.
+fn sync_into(root: &Path, locate: impl FnOnce() -> Option<Bundled>) {
+    remove_retired(root, &retired_ids());
+
+    match locate() {
+        Some(Bundled::Directory(source)) => sync_from_directory(&source, root),
         Some(Bundled::Apk(apk)) => match fs::File::open(&apk) {
             Ok(file) => match zip::ZipArchive::new(std::io::BufReader::new(file)) {
-                Ok(mut archive) => sync_from_zip(&mut archive, &root),
+                Ok(mut archive) => sync_from_zip(&mut archive, root),
                 Err(problem) => eprintln!(
                     "[packs] {} is not readable as an archive: {problem}",
                     apk.display()
@@ -1201,6 +1236,107 @@ fn unpack_into<S: Read + Seek>(
         fs::write(&target, &body).map_err(|e| format!("cannot write {target:?}: {e}"))?;
     }
     Ok(())
+}
+
+// ─── Packs this build has retired ────────────────────────────────────────────
+
+/// The ledger of pack ids this build must uninstall, verbatim.
+///
+/// **Compiled in, not read from the bundle.** It has to be true on a device
+/// whose bundle cannot be located at all — `bundled_source` returns `None` on a
+/// broken build and on a platform whose resource directory has moved, and a
+/// retirement conditional on finding the bundle is a retirement that does not
+/// happen on exactly the devices least able to recover.
+///
+/// The file sits beside `Cargo.toml` rather than in `packs/` so that editing it
+/// changes something under a `src-tauri/` path, which is what CI path-gates the
+/// native and app jobs on. A ledger whose edits ran no gate would be a ledger
+/// nothing checks.
+const RETIRED_LEDGER: &str = include_str!("../../retired-packs.json");
+
+#[derive(Debug, Deserialize)]
+struct RetiredLedger {
+    retired: Vec<RetiredEntry>,
+}
+
+/// One retirement. Only the id is read here; `name`, `retiredIn` and `why` are
+/// there for the human deciding whether a line may be deleted.
+#[derive(Debug, Deserialize)]
+struct RetiredEntry {
+    id: String,
+}
+
+/// The ids named by a ledger, or none and a loud complaint.
+///
+/// A ledger that will not parse retires nothing. That is the wrong answer and
+/// it is the least wrong one available: the alternative — guessing, or
+/// panicking at setup — either deletes a directory nobody named or stops the
+/// app from opening. Both test suites parse this file, so a malformed ledger
+/// fails a gate long before a device sees it.
+fn retired_ids_in(ledger: &str) -> Vec<String> {
+    match serde_json::from_str::<RetiredLedger>(ledger) {
+        Ok(ledger) => ledger.retired.into_iter().map(|entry| entry.id).collect(),
+        Err(problem) => {
+            eprintln!(
+                "[packs] retired-packs.json is unreadable ({problem}); NO retired pack was \
+                 removed, and every device keeps every game this build meant to pull"
+            );
+            Vec::new()
+        }
+    }
+}
+
+fn retired_ids() -> Vec<String> {
+    retired_ids_in(RETIRED_LEDGER)
+}
+
+/// Uninstall the packs this build has retired, wherever they came from.
+///
+/// **By name, one lookup per retired id — it never reads the directory.** A
+/// pack that is not on the list is not merely spared here, it is unreachable
+/// from here, and that is the whole design.
+///
+/// The obvious rule — "delete anything the bundle does not carry" — is wrong
+/// and destructive. The pack root is not a mirror of the bundle: it is also
+/// where `packs_install` puts everything downloaded from the catalogue, so that
+/// rule would uninstall every downloaded pack at every launch, silently, on
+/// every device. `sync_from_directory` stays additive for that reason and a
+/// test pins it there. A retirement is a decision about *named* packs, so it is
+/// expressed as a list of names.
+///
+/// Cheap and idempotent: three `is_dir` calls on a launch where nothing is
+/// retired, and nothing at all to do on the launch after the first.
+///
+/// Returns the ids actually removed, which is what the tests assert on and what
+/// keeps "it removed something" from being confused with "it looked".
+fn remove_retired(root: &Path, retired: &[String]) -> Vec<String> {
+    let mut removed = Vec::new();
+    for id in retired {
+        // The ledger is data, and this is the step that turns it into a path.
+        // `..`, an absolute path, and anything else that is not a pack id names
+        // no pack and is refused before `join` sees it.
+        if !valid_pack_id(id) {
+            eprintln!(
+                "[packs] the retirement ledger names {id:?}, which is not a pack id; ignored"
+            );
+            continue;
+        }
+        let directory = root.join(id);
+        if !directory.is_dir() {
+            continue;
+        }
+        match fs::remove_dir_all(&directory) {
+            Ok(()) => {
+                eprintln!("[packs] {id} has been retired; it is no longer installed");
+                removed.push(id.clone());
+            }
+            // Logged rather than propagated: a pack that will not delete is not
+            // a reason for the app not to open, and the next launch tries
+            // again.
+            Err(problem) => eprintln!("[packs] could not remove retired {id}: {problem}"),
+        }
+    }
+    removed
 }
 
 #[cfg(test)]

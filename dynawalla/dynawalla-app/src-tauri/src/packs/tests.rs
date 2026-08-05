@@ -661,6 +661,18 @@ fn a_pack_that_is_no_longer_bundled_stays_installed_and_playable() {
     // `street` (FOUNDRY STREET) after them — so the fixture carries two at once:
     // a retirement is not a one-off migration to be special-cased, it is a thing
     // that keeps happening, and each one has to be as uneventful as the last.
+    //
+    // **What "uneventful" cost, and what changed.** Uneventful here meant that a
+    // retired game went on being installed and playable forever, which is how
+    // FOUNDRY STREET turned up in the founder's catalogue a release after it was
+    // scrapped. Uninstalling it is now the job of `remove_retired`, which works
+    // from the named list in `retired-packs.json` and never reads the pack root.
+    // That leaves this function's contract exactly where it was and exactly
+    // where it must stay — *this* is the one that would take a downloaded pack
+    // with it — so every assertion below is unchanged. The fixture ids here are
+    // deliberately bare (`gavel`, not `dynawalla.gavel`): they stand for "a pack
+    // this build does not carry", which is a larger set than "a pack this build
+    // retired", and it is the larger set that this function must not touch.
     let root = scratch("retired-root");
     let source = scratch("retired-source");
 
@@ -699,4 +711,275 @@ fn a_pack_that_is_no_longer_bundled_stays_installed_and_playable() {
 
     let _ = fs::remove_dir_all(&root);
     let _ = fs::remove_dir_all(&source);
+}
+
+// ─── Retirement ──────────────────────────────────────────────────────────────
+
+#[test]
+fn a_retired_pack_is_uninstalled_at_the_next_launch_and_a_downloaded_one_is_not() {
+    // **The bug this exists for.** FOUNDRY STREET was scrapped in PR 760 and
+    // was still in the founder's catalogue a release later, because dropping a
+    // game from `games/` drops it from the next bundle and reaches no device.
+    //
+    // And the trap next to it, in the same directory. `packs_install` writes
+    // downloaded packs into this same root, so a sync that deleted whatever the
+    // bundle lacked would uninstall every one of them at every launch. Both
+    // halves are asserted here against one root, because a fix that only
+    // satisfies the first half is worse than the bug.
+    let root = scratch("retire-launch-root");
+    let source = scratch("retire-launch-source");
+
+    // On the device: the game that was pulled, ...
+    let street = root.join("dynawalla.street");
+    pack_dir(&root, "dynawalla.street", "0.1.0", &"5".repeat(64));
+    // ... a game this build still ships, ...
+    pack_dir(&root, "dynawalla.arena", "0.1.0", &"a".repeat(64));
+    // ... and one that came off the catalogue and was never in any bundle.
+    let downloaded = pack_dir(&root, "someone.tower", "0.1.0", &"d".repeat(64));
+
+    // In the new build: only the survivor, upgraded.
+    pack_dir(&source, "dynawalla.arena", "0.2.0", &"b".repeat(64));
+
+    let bundle = source.clone();
+    sync_into(&root, move || Some(Bundled::Directory(bundle)));
+
+    assert!(
+        !street.exists(),
+        "FOUNDRY STREET is still installed, so it is still in the catalogue and still playable",
+    );
+
+    // The half that must never regress.
+    assert!(
+        downloaded.join("manifest.json").exists(),
+        "a downloaded pack was uninstalled by a sync that had no business knowing about it",
+    );
+    assert!(
+        downloaded.join("pack.html").exists(),
+        "a downloaded pack lost the document it launches",
+    );
+    assert_eq!(
+        fs::read_to_string(downloaded.join("manifest.json")).expect("manifest"),
+        manifest_json("someone.tower", "0.1.0", Some(&"d".repeat(64))),
+        "a downloaded pack's manifest was rewritten",
+    );
+
+    // And the survivor was still refreshed in the same pass, which is what
+    // proves the launch actually ran and the assertions above are not passing
+    // on a sync that did nothing at all.
+    assert_eq!(
+        fs::read_to_string(root.join("dynawalla.arena").join("manifest.json")).expect("manifest"),
+        manifest_json("dynawalla.arena", "0.2.0", Some(&"b".repeat(64))),
+        "the bundled pack was not refreshed, so this launch did nothing",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&source);
+}
+
+#[test]
+fn retirement_needs_no_bundle_and_is_the_same_on_every_launch() {
+    // A build that cannot find its own packs still has to honour a retirement:
+    // `bundled_source` returns `None` on a broken build, and those are the
+    // devices least able to recover by other means. And this runs at every
+    // launch forever, so the second and the hundredth must cost nothing and
+    // change nothing.
+    let root = scratch("retire-no-bundle");
+    pack_dir(&root, "dynawalla.gavel", "0.1.0", &"b".repeat(64));
+    let kept = pack_dir(&root, "someone.tower", "0.1.0", &"d".repeat(64));
+
+    sync_into(&root, || None);
+    assert!(
+        !root.join("dynawalla.gavel").exists(),
+        "a build with no locatable bundle skipped the retirement",
+    );
+
+    for _ in 0..3 {
+        sync_into(&root, || None);
+    }
+    assert!(
+        !root.join("dynawalla.gavel").exists(),
+        "a later launch put a retired pack back",
+    );
+    assert!(
+        kept.join("pack.html").exists(),
+        "a repeated launch eventually took a downloaded pack with it",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn the_retirement_ledger_names_every_pack_that_has_been_pulled() {
+    let ids = retired_ids();
+    // Named one by one rather than by count: a count goes green the day
+    // someone deletes a line, and a deleted line is a game coming back.
+    for id in ["dynawalla.foundry", "dynawalla.gavel", "dynawalla.street"] {
+        assert!(
+            ids.iter().any(|listed| listed == id),
+            "{id} is not in retired-packs.json, so every device that has it keeps it",
+        );
+    }
+    for id in &ids {
+        assert!(
+            valid_pack_id(id),
+            "{id} is not a pack id, so no directory can ever match it and the line does nothing",
+        );
+    }
+    let mut unique = ids.clone();
+    unique.sort();
+    unique.dedup();
+    assert_eq!(
+        unique.len(),
+        ids.len(),
+        "retired-packs.json lists a duplicate"
+    );
+}
+
+#[test]
+fn a_retired_pack_is_not_also_a_game_in_this_repository() {
+    // The one contradiction the ledger can express: an id that is both retired
+    // and built. Un-retiring a game means deleting its line here as well as
+    // restoring its directory, and this is what says so out loud.
+    let games = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("..")
+        .join("..")
+        .join("games");
+    let entries = fs::read_dir(&games)
+        .unwrap_or_else(|problem| panic!("cannot read {}: {problem}", games.display()));
+
+    let mut shipped = vec![];
+    for entry in entries.flatten() {
+        let meta = entry.path().join("pack.json");
+        let Ok(body) = fs::read_to_string(&meta) else {
+            continue;
+        };
+        let identity = manifest_identity(&body)
+            .unwrap_or_else(|| panic!("{} has no readable id", meta.display()));
+        shipped.push(identity.id);
+    }
+    // Proof this walked the games directory rather than an empty one. Without
+    // it the loop below asserts nothing at all, which is exactly how three
+    // vacuous sweeps got through this repository in a fortnight.
+    assert!(
+        shipped.len() >= 20,
+        "found only {} pack.json files under {} — this test is looking in the wrong place",
+        shipped.len(),
+        games.display(),
+    );
+
+    for id in retired_ids() {
+        assert!(
+            !shipped.contains(&id),
+            "{id} is retired AND built from games/ — every device would delete it at the launch \
+             after the one that installed it",
+        );
+    }
+}
+
+#[test]
+fn a_ledger_entry_that_is_not_a_pack_id_removes_nothing() {
+    // The ledger is data and `remove_retired` turns it into a path, so it is
+    // the place a traversal would land. Nothing here names a pack, and nothing
+    // here may delete one.
+    let root = scratch("retire-hostile");
+    let victim = pack_dir(&root, "someone.tower", "0.1.0", &"d".repeat(64));
+    let sibling = root
+        .parent()
+        .expect("temp dir")
+        .join("dynawalla-retire-bystander");
+    fs::create_dir_all(&sibling).expect("bystander");
+
+    let removed = remove_retired(
+        &root,
+        &[
+            "..".to_string(),
+            "../dynawalla-retire-bystander".to_string(),
+            "/etc".to_string(),
+            "someone.tower/../someone.tower".to_string(),
+            "SOMEONE.TOWER".to_string(),
+            String::new(),
+        ],
+    );
+
+    assert!(
+        removed.is_empty(),
+        "a ledger entry that is not a pack id removed {removed:?}"
+    );
+    assert!(
+        victim.join("pack.html").exists(),
+        "a hostile ledger entry reached a real pack"
+    );
+    assert!(
+        sibling.is_dir(),
+        "a hostile ledger entry escaped the pack root"
+    );
+    assert!(
+        root.is_dir(),
+        "a hostile ledger entry deleted the pack root itself"
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&sibling);
+}
+
+#[test]
+fn an_unreadable_ledger_retires_nothing_rather_than_guessing() {
+    assert!(
+        retired_ids_in("{ not json").is_empty(),
+        "a malformed ledger produced ids from somewhere",
+    );
+    assert!(
+        retired_ids_in(r#"{"schema":1,"retired":[]}"#).is_empty(),
+        "an empty ledger produced ids from somewhere",
+    );
+    // And the shape that is read is the shape the file is written in, so the
+    // two assertions above are about parsing and not about a field name that
+    // never matches anything.
+    assert_eq!(
+        retired_ids_in(r#"{"schema":1,"retired":[{"id":"a.b","name":"A","retiredIn":1}]}"#),
+        vec!["a.b".to_string()],
+    );
+}
+
+#[test]
+fn a_retired_pack_that_is_not_installed_is_not_an_error() {
+    // The overwhelmingly common launch: nothing to do. It must not create the
+    // directory it is looking for, and it must not report having removed one.
+    let root = scratch("retire-absent");
+    let removed = remove_retired(&root, &["dynawalla.street".to_string()]);
+    assert!(
+        removed.is_empty(),
+        "reported removing a pack that was never there"
+    );
+    assert!(
+        !root.join("dynawalla.street").exists(),
+        "the lookup created the directory"
+    );
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[cfg(unix)]
+#[test]
+fn a_retired_id_that_is_a_symlink_does_not_reach_what_it_points_at() {
+    // A pack directory cannot become a symlink by any route in this module —
+    // `copy_tree` skips links and both extractors write regular files only — so
+    // this is the belt for a device whose pack root someone else has been in.
+    // `fs::remove_dir_all` does not follow a symlink at the path it is given, and
+    // this pins that rather than trusting it: the consequence of being wrong is
+    // a delete outside the pack root.
+    let root = scratch("retire-symlink");
+    let elsewhere = root.parent().expect("temp").join("dynawalla-retire-target");
+    fs::create_dir_all(&elsewhere).expect("target");
+    fs::write(elsewhere.join("keep.txt"), b"keep").expect("keep");
+    std::os::unix::fs::symlink(&elsewhere, root.join("dynawalla.street")).expect("symlink");
+
+    remove_retired(&root, &["dynawalla.street".to_string()]);
+
+    assert!(
+        elsewhere.join("keep.txt").exists(),
+        "a symlinked pack id reached outside the pack root",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&elsewhere);
 }
