@@ -37,9 +37,29 @@ export const CELESTIAL_DIM = "#4b7d90"
 /** Oxide. Slag, and the buried head of a choked coil. */
 export const SLAG = "#3a4038"
 export const SLAG_EDGE = "#5c665a"
+/**
+ * Oxide, as TYPE.
+ *
+ * `SLAG_EDGE` is the rim of a lump lying on stone and it is exactly right there.
+ * Set as a numeral on the lane's groove it measures **2.85:1**, which is not a
+ * label, it is a smudge — and the label it was carrying is `n buried`, the one
+ * that explains why the head of the coil has stopped responding. Same hue, lifted
+ * until it is readable: 8.63:1 on the same groove.
+ */
+export const SLAG_TEXT = "#a9b7a6"
 
 export const EMBER = "#ff7a2c"
 export const EMBER_HOT = "#ffd0a0"
+/**
+ * Ember, as TYPE.
+ *
+ * The furnace panel is a gradient that runs to hot orange at the bottom, and both
+ * of its labels sit in the hot half. `EMBER` on it is orange on orange —
+ * **1.92:1** — and the idle `n slag` reading was `BONE_DIM` at 0.6, which is
+ * **1.15:1**: a line of type that is, measurably, not there. The heat is the
+ * effect and it stays; the ink is what moves.
+ */
+export const EMBER_TEXT = "#fff3e6"
 
 export const BONE = "#f3e7cf"
 export const BONE_DIM = "#8b8272"

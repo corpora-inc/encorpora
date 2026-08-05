@@ -10,27 +10,28 @@
 // exactly one cold light — the recess. Nothing glows for encouragement.
 
 import type { Brick } from "../game/session.ts"
+import type { HintState } from "../game/hint.ts"
 import type { Round } from "../game/round.ts"
 import { coilOf, linkValue } from "../game/place.ts"
 import { COURSE } from "../game/session.ts"
 import { SLAG_CELLS } from "../game/board.ts"
 import { safeInsets } from "../../../../packs/shared/game-chrome/index.ts"
-import { type Layout, type Lane, cellAt, viewLayout } from "./layout.ts"
+import { type Layout, type Lane, cellAt, labelX, viewLayout } from "./layout.ts"
 import { KIND_DUST, KIND_FILING, KIND_SPARK, Particles } from "./particles.ts"
 import {
   BONE,
-  BONE_DIM,
   BRASS,
   BRASS_DARK,
   BRASS_HOT,
   CELESTIAL,
   CELESTIAL_DIM,
   EMBER,
-  EMBER_HOT,
+  EMBER_TEXT,
   GROOVE,
   INK,
   SLAG as SLAG_COLOUR,
   SLAG_EDGE,
+  SLAG_TEXT,
   STONE,
   STONE_DEEP,
   STONE_EDGE,
@@ -73,8 +74,10 @@ export type SceneState = {
   furnaceGlow: number
   shearPress: number
   whip: number
-  /** 0..1 — the ghost of the demand, offered after a long hesitation. */
+  /** 0..1 fade on the hint, decayed by the caller. Never a countdown. */
   hint: number
+  /** What the hint is currently saying, or `null` when it is saying nothing. */
+  hintState: HintState | null
   flight: Flight | null
 }
 
@@ -385,7 +388,7 @@ export class Scene {
     ctx.save()
     ctx.textBaseline = "middle"
     if (!round) {
-      ctx.fillStyle = BONE_DIM
+      ctx.fillStyle = withAlpha(BONE, 0.8)
       ctx.font = font(Math.min(20, h * 0.3))
       ctx.textAlign = "center"
       ctx.fillText("the alley is quiet", x + w / 2, y + h / 2)
@@ -436,7 +439,11 @@ export class Scene {
     // that stays is the answer, in a fill it flies to the cradle and joins the
     // ingot, and a child learns which is which by watching it happen once.
     ctx.font = font(Math.max(10, size * 0.24), 600)
-    ctx.fillStyle = withAlpha(BONE_DIM, 0.85)
+    // The one line that is the whole rule of the game, and it was the least
+    // legible type on the screen: `BONE_DIM` at 0.85 on the lit recess measures
+    // 2.45:1. A child who cannot read the rule has, in the founder's words, "no
+    // idea what I'm doing". Same size, same place, an ink that is actually there.
+    ctx.fillStyle = withAlpha(BONE, 0.85)
     ctx.textAlign = "left"
     ctx.fillText("SHEAR OFF THE LIT NUMBER", startX, y + h * 0.86)
     ctx.restore()
@@ -465,7 +472,7 @@ export class Scene {
         px += unit * 1.25
       }
       if (g.n > shown) {
-        ctx.fillStyle = BONE_DIM
+        ctx.fillStyle = withAlpha(BONE, 0.8)
         ctx.font = numerals(unit * 1.1, 600)
         ctx.textAlign = "left"
         ctx.textBaseline = "middle"
@@ -518,7 +525,7 @@ export class Scene {
     }
     const brick: Brick | undefined = s.wall[s.wall.length - 1]
     if (brick) {
-      ctx.fillStyle = withAlpha(BONE_DIM, 0.7)
+      ctx.fillStyle = withAlpha(BONE, 0.7)
       ctx.font = numerals(Math.max(9, bh * 0.8), 600)
       ctx.textAlign = "right"
       ctx.textBaseline = "middle"
@@ -560,6 +567,7 @@ export class Scene {
     this.drawBuried(s, lane)
     this.drawCoil(s, lane)
     this.drawShear(s, lane)
+    this.drawHint(s, lane)
 
     // A miss stains the lane with oxide for a quarter of a second. It is the
     // whole of the negative feedback: no flash, no shake, no sound of refusal —
@@ -603,7 +611,7 @@ export class Scene {
       drawLink(ctx, c.x - lane.pitch * 0.7 + i * 2.6, c.y - lane.rowPitch * 0.62, lane.unit * 0.7, p, 0.7)
     }
     ctx.globalAlpha = 1
-    ctx.fillStyle = withAlpha(SLAG_EDGE, 0.95)
+    ctx.fillStyle = SLAG_TEXT
     ctx.font = numerals(Math.max(10, lane.unit * 0.9), 700)
     ctx.textAlign = "left"
     ctx.textBaseline = "middle"
@@ -656,6 +664,103 @@ export class Scene {
         }
       }
     }
+  }
+
+  /**
+   * The hint, on the lane, in the machine's own vocabulary.
+   *
+   * It is drawn HERE and not in the gauge, and that is the fix for *"hints don't
+   * fit on mobile."* The shipped hint was a line of text — `2×10  5×1` — laid
+   * into an 82px panel with no measurement at all; on the founder's handset it
+   * ran out of the gauge, across the SHEAR lever and off the glass. The lane is
+   * a grid this game already fits to every viewport it supports, so a hint drawn
+   * on it cannot overflow: it occupies cells, and the cells are the layout.
+   *
+   * It is also the better picture. Ghost links hovering over the tail of the
+   * child's own chain say *these are the links that have to come off* and let
+   * them be compared one against one — which is exactly the moment the borrow
+   * becomes visible, because the ghosts do not line up.
+   */
+  private drawHint(s: SceneState, lane: Lane): void {
+    const hint = s.hintState
+    if (!hint || hint.stage < 1 || s.hint <= 0.01 || s.links.length === 0) return
+    const { ctx } = this
+    const tail = this.cellForLink(s, s.links.length - 1)
+    if (tail < 0) return
+
+    ctx.save()
+    ctx.globalAlpha = s.hint
+    const unit = lane.unit * 0.74
+
+    // 1. THE SHAPE. The demand, as a chain of its own, laid in the empty cells
+    //    that follow the child's tail.
+    //
+    //    In the cells AFTER the tail and not hovering over it, which was the
+    //    first thing tried: a ghost lifted off the lane needs about 1.2 units of
+    //    clearance to sit clear of a tower, and the row pitch can be as little
+    //    as 2.6 — so on a short lane the ghost either overlapped the links it was
+    //    meant to be compared with or climbed out of the lane rectangle
+    //    altogether. The grid already fits every viewport this game supports;
+    //    borrowing cells from it is the one placement that cannot overflow.
+    const want = coilOf(hint.demand)
+    for (let k = 0; k < want.length; k++) {
+      const cell = tail + 1 + k
+      if (cell >= lane.capacity) break
+      const c = cellAt(lane, cell)
+      drawLink(ctx, c.x, c.y, unit, want[k] as number, 0.5)
+    }
+
+    // 2. THE CHANGE. The link that has to be opened, ringed, with the ten-for-one
+    //    it yields written under it. Numerals and a multiplication sign: the
+    //    whole subject of the game is that ten of one place is one of the next,
+    //    and no sentence says it better than `10×1` under a drum.
+    if (hint.stage >= 2 && hint.plan.breakIndex >= 0) {
+      const cell = this.cellForLink(s, hint.plan.breakIndex)
+      if (cell >= 0 && cell < lane.capacity) {
+        const c = cellAt(lane, cell)
+        ctx.strokeStyle = withAlpha(CELESTIAL, 0.8)
+        ctx.lineWidth = 1.6
+        ctx.setLineDash([3, 3])
+        ctx.beginPath()
+        ctx.arc(c.x, c.y, lane.unit * 0.92, 0, TAU)
+        ctx.stroke()
+        ctx.setLineDash([])
+
+        const place = s.links[hint.plan.breakIndex] as number
+        const label = `10×${String(linkValue(place - 1))}`
+        const size = Math.max(9, lane.unit * 0.78)
+        ctx.font = numerals(size, 700)
+        ctx.textAlign = "left"
+        ctx.textBaseline = "middle"
+        // Measured and clamped into the lane. A label at the far column would
+        // otherwise hang off the same edge the old hint hung off.
+        ctx.fillStyle = CELESTIAL
+        ctx.fillText(label, labelX(lane, c.x, ctx.measureText(label).width), c.y + lane.rowPitch * 0.36)
+      }
+    }
+
+    // 3. THE PLACE. A ghost of the jaws on the joint to put them on next — the
+    //    link to open while there is one, and the joint to cut at once there is
+    //    not. Live: it moves the instant a link is cracked.
+    if (hint.stage >= 3) {
+      const cell = this.cellForLink(s, hint.plan.aim)
+      if (cell >= 0 && cell < lane.capacity) {
+        const here = cellAt(lane, cell)
+        const prev = cellAt(lane, Math.max(0, cell - 1))
+        const jx = cell === 0 ? here.x - lane.pitch * 0.5 : (here.x + prev.x) / 2
+        const jy = cell === 0 ? here.y : (here.y + prev.y) / 2
+        ctx.globalAlpha = s.hint * 0.55
+        ctx.strokeStyle = CELESTIAL
+        ctx.lineWidth = 2
+        ctx.setLineDash([4, 4])
+        ctx.beginPath()
+        ctx.moveTo(jx, jy - lane.rowPitch * 0.46)
+        ctx.lineTo(jx, jy + lane.rowPitch * 0.46)
+        ctx.stroke()
+        ctx.setLineDash([])
+      }
+    }
+    ctx.restore()
   }
 
   /** The jaws, parked in the joint ahead of the cut. */
@@ -737,13 +842,16 @@ export class Scene {
     ctx.strokeStyle = withAlpha(EMBER, 0.45 + s.furnaceGlow * 0.5)
     ctx.lineWidth = 1.6
     ctx.stroke()
-    ctx.fillStyle = s.slag > 0 ? EMBER_HOT : withAlpha(EMBER_HOT, 0.4)
+    // Brightness, not hue, carries "there is something to melt" — because the
+    // ground under both of these labels is the panel's own ember gradient, and
+    // orange type on it measured 1.92:1 while the idle reading measured 1.15:1.
+    ctx.fillStyle = withAlpha(EMBER_TEXT, s.slag > 0 ? 1 : 0.72)
     ctx.font = font(Math.min(15, f.h * 0.26), 700)
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
     ctx.fillText("FURNACE", f.x + f.w / 2, f.y + f.h * 0.36)
     ctx.font = numerals(Math.min(19, f.h * 0.3), 700)
-    ctx.fillStyle = s.slag > 0 ? EMBER : withAlpha(BONE_DIM, 0.6)
+    ctx.fillStyle = withAlpha(EMBER_TEXT, s.slag > 0 ? 1 : 0.8)
     ctx.fillText(`${String(s.slag)} slag`, f.x + f.w / 2, f.y + f.h * 0.7)
     ctx.restore()
 
@@ -783,18 +891,23 @@ export class Scene {
   private drawGauge(s: SceneState): void {
     const { ctx } = this
     const L = this.layout
-    const x = L.furnace.x + L.furnace.w + 12
-    const w = L.shear.x - x - 12
-    if (w < 60) return
-    const y = L.levers.y
-    const h = L.levers.h
+    // The rect comes from the layout now. It used to be worked out here, as
+    // `shear.x − (furnace.x + furnace.w) − 24`, and given up on below 60px —
+    // which on a narrow safe rectangle silently deleted the only panel that
+    // answers "what am I holding". `layout.ts` shares the lever row between the
+    // three panels instead, and `chrome.test.ts` puts a floor under this one.
+    const { x, y, w, h } = L.gauge
+    if (w <= 0) return
 
     ctx.save()
     ctx.fillStyle = withAlpha(STONE_DEEP, 0.72)
     roundRect(ctx, x, y, w, h, 8)
     ctx.fill()
-    ctx.strokeStyle = withAlpha(CELESTIAL_DIM, 0.45)
-    ctx.lineWidth = 1.2
+    // The affordance, and the only one this needs: when there is more hint to be
+    // had, the panel that gives it brightens. No button, no word, no badge.
+    const more = s.hintState?.more ?? false
+    ctx.strokeStyle = withAlpha(CELESTIAL_DIM, more ? 0.45 + s.hint * 0.5 : 0.45)
+    ctx.lineWidth = more ? 1.2 + s.hint * 1.1 : 1.2
     ctx.stroke()
 
     const piece = s.links.slice(s.cut)
@@ -824,18 +937,33 @@ export class Scene {
       px += unit * 0.9
     }
 
-    // The hint: the demand's own shape, ghosted, offered only after the child
-    // has been still for a while. It never costs anything and never hurries.
-    if (s.hint > 0 && s.round) {
-      ctx.globalAlpha = s.hint * 0.5
-      ctx.fillStyle = CELESTIAL
-      ctx.font = font(Math.max(10, h * 0.17), 600)
-      ctx.textAlign = "left"
+    // 4. THE NUMBER — the last picture, and the only one that is a numeral.
+    //
+    // The doc comment above is right that the gauge must never print this during
+    // play, and it is exactly wrong for a child who has been stuck for a minute
+    // and asked for help twice with their thumb. So it arrives here and only
+    // here: what the jaws are holding, over what the wall wants. The rule the
+    // gauge protects — that reading the places is the child's job — is protected
+    // by this being the FOURTH thing the hint says, not by never saying it.
+    //
+    // Fitted to the panel, because that is the defect this whole change is
+    // about: the shipped hint was type laid into this rect without measuring it.
+    const hint = s.hintState
+    if (hint && hint.stage >= 4 && s.hint > 0.01) {
+      const line = `${String(hint.holding)} / ${String(hint.demand)}`
+      let size = Math.min(h * 0.3, 20)
+      ctx.font = numerals(size, 700)
+      const room = w - 12
+      const wide = ctx.measureText(line).width
+      if (wide > room && wide > 0) {
+        size = Math.max(9, size * (room / wide))
+        ctx.font = numerals(size, 700)
+      }
+      ctx.globalAlpha = s.hint
+      ctx.fillStyle = hint.holding === hint.demand ? CELESTIAL : BONE
+      ctx.textAlign = "center"
       ctx.textBaseline = "middle"
-      const want = tally(coilOf(s.round.demand))
-        .map((g) => `${String(g.n)}×${String(linkValue(g.place))}`)
-        .join("  ")
-      ctx.fillText(want, x + unit * 1.4, y + h * 0.82)
+      ctx.fillText(line, x + w / 2, y + h * 0.82)
       ctx.globalAlpha = 1
     }
     ctx.restore()

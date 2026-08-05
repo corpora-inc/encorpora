@@ -18,6 +18,7 @@ import { SHIP_Y } from "../core/config.ts";
 import { C, rgba } from "../core/palette.ts";
 import { drawGlow, drawGlyph, getGlyph } from "../render/bake.ts";
 import { clamp, ease } from "../render/draw.ts";
+import { gameOverLayout, type CardLine } from "./hudLayout.ts";
 import type { World } from "./world.ts";
 
 const UI_FONT = `700 %SIZE%px system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif`;
@@ -66,9 +67,13 @@ export function drawEquation(world: World): void {
   // A hair of chromatic split while it lands — two cheap blits of one sprite.
   if (age < 0.3 && !world.reduced) {
     const k = (1 - age / 0.3) * size * 0.07;
+    // Explicitly ADDED, not inherited: `drawGlyph` now forces `source-over` by
+    // default so the counter-ink rim it bakes can never be silently turned into
+    // a no-op the way POLARITY's was. These two ghosts are the one place in the
+    // game that wants the sprite to bloom rather than to read.
     ctx.globalAlpha = 0.32;
-    drawGlyph(ctx, getGlyph(q.prompt, C.hostile, 800), p.x - k, p.y, size);
-    drawGlyph(ctx, getGlyph(q.prompt, C.plankton, 800), p.x + k, p.y, size);
+    drawGlyph(ctx, getGlyph(q.prompt, C.hostile, 800), p.x - k, p.y, size, 1, "lighter");
+    drawGlyph(ctx, getGlyph(q.prompt, C.plankton, 800), p.x + k, p.y, size, 1, "lighter");
     ctx.globalAlpha = 1;
   }
   ctx.globalCompositeOperation = "source-over";
@@ -300,37 +305,60 @@ export function drawTitle(world: World): void {
 
 export function drawGameOver(world: World): void {
   const { ctx, hud } = world;
-  const { w, h } = hud.safe;
   const t = clamp(world.phaseT / 0.8, 0, 1);
   // The dim covers the whole GLASS — a scrim that stopped at the safe area
   // would draw a bright band across the notch.
   ctx.fillStyle = rgba("#02060c", 0.55 * t);
   ctx.fillRect(0, 0, world.w, world.h);
-  const size = Math.min(w * 0.16, h * 0.1);
-  const y = hud.safe.y + h * 0.38;
+
+  // Measured, not assumed. Every line here used to be sized from the viewport
+  // and drawn without being measured, so the headline and the ledger both ran
+  // off a phone. `gameOverLayout` fits them against the context's own metrics,
+  // which is the same measurement the device makes.
+  const card = gameOverLayout(
+    hud,
+    {
+      headline: "THE TRENCH TAKES YOU",
+      score: String(world.score),
+      ledger: [`BEST ${world.best}`, `WAVE ${world.wave}`, `BEST RUN ×${world.bestCombo}`],
+      prompt: world.touch ? "TAP TO DIVE AGAIN" : "PRESS ANY KEY",
+    },
+    (text, size) => {
+      ctx.font = font(size);
+      return ctx.measureText(text).width;
+    },
+  );
+  // The card is headline, score, one to three ledger rows, prompt — the ledger
+  // wraps on a narrow safe rectangle rather than shrinking past legibility.
+  const headline = card.lines[0] as CardLine;
+  const score = card.lines[1] as CardLine;
+  const prompt = card.lines[card.lines.length - 1] as CardLine;
+  const ledger = card.lines.slice(2, -1);
+
   ctx.globalCompositeOperation = "lighter";
-  drawGlow(ctx, C.hostile, hud.cx, y, size * 2.4, 0.12 * t);
+  drawGlow(ctx, C.hostile, hud.cx, headline.y, card.size * 2.4, 0.12 * t);
   ctx.globalCompositeOperation = "source-over";
-  ctx.font = font(size * 0.62);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.globalAlpha = t;
-  ctx.fillStyle = rgba(C.hostile, 0.9);
-  ctx.fillText("THE TRENCH TAKES YOU", hud.cx, y);
 
-  ctx.font = font(size * 1.1);
+  ctx.font = font(headline.size);
+  ctx.fillStyle = rgba(C.hostile, 0.9);
+  ctx.fillText(headline.text, hud.cx, headline.y);
+
+  ctx.font = font(score.size);
   ctx.fillStyle = C.amber;
-  ctx.fillText(String(world.score), hud.cx, y + size * 1.05);
-  ctx.font = font(size * 0.3);
+  ctx.fillText(score.text, hud.cx, score.y);
+
   ctx.fillStyle = rgba(C.cyan, 0.6);
-  ctx.fillText(
-    `BEST ${world.best}   ·   WAVE ${world.wave}   ·   BEST RUN ×${world.bestCombo}`,
-    hud.cx,
-    y + size * 1.75,
-  );
+  for (const row of ledger) {
+    ctx.font = font(row.size);
+    ctx.fillText(row.text, hud.cx, row.y);
+  }
+
+  ctx.font = font(prompt.size);
   ctx.fillStyle = rgba(C.white, 0.35 + Math.sin(world.time * 3) * 0.25);
-  ctx.font = font(size * 0.32);
-  ctx.fillText(world.touch ? "TAP TO DIVE AGAIN" : "PRESS ANY KEY", hud.cx, y + size * 2.5);
+  ctx.fillText(prompt.text, hud.cx, prompt.y);
   ctx.globalAlpha = 1;
 }
 

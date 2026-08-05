@@ -8,6 +8,7 @@
  */
 
 import { mix, rgba } from "../core/palette.ts";
+import { CORE_MIX, INK_RIM, RIM_WIDTH } from "./ink.ts";
 
 export type Glyph = {
   canvas: HTMLCanvasElement;
@@ -16,6 +17,15 @@ export type Glyph = {
   h: number;
   /** Advance width of the glyph itself, for layout. */
   inkW: number;
+  /**
+   * How far the counter-ink rim reaches beyond that advance, each side.
+   *
+   * The rim is stroked centred on the letterform, so it adds half its width
+   * outside the glyph. It is reported rather than folded into `inkW` because
+   * `inkW` is what a caller lays *type* out with; this is what a caller checks
+   * the sprite's padding against.
+   */
+  rimW: number;
 };
 
 const BAKE_PX = 92;
@@ -33,8 +43,13 @@ function makeCanvas(w: number, h: number): HTMLCanvasElement {
 
 /**
  * A numeral (or a whole equation) with its bloom baked in: two wide coloured
- * passes for the halo, one tight pass for the edge, and a near-white core so it
- * reads at any size against the black water.
+ * passes for the halo, one tight pass for the edge, an opaque counter-ink rim,
+ * and a near-white core.
+ *
+ * The rim is the whole point and it is new. Without it the core stands in a
+ * cloud the sprite painted itself, and measured against that cloud the digit is
+ * 1.65:1 at rest and 1.04:1 in the frames after a strike — see `ink.ts` for why
+ * no single ink can escape that, and `legibility.test.ts` for the table.
  */
 export function getGlyph(text: string, color: string, weight = 800, px = BAKE_PX): Glyph {
   const key = `${text}|${color}|${weight}|${px}`;
@@ -61,7 +76,7 @@ export function getGlyph(text: string, color: string, weight = 800, px = BAKE_PX
   const cx = w / 2;
   const cy = h / 2;
 
-  // Halo, edge, body. The body is a *tint* of the colour rather than white:
+  // Halo, edge, RIM, body. The body is a *tint* of the colour rather than white:
   // a white core blooms out to a shapeless blob the moment two glows overlap,
   // and legibility of the numeral is the entire game.
   ctx.shadowColor = color;
@@ -72,15 +87,40 @@ export function getGlyph(text: string, color: string, weight = 800, px = BAKE_PX
   ctx.fillStyle = rgba(color, 0.8);
   ctx.fillText(text, cx, cy);
   ctx.shadowBlur = 0;
-  ctx.fillStyle = mix(color, "#ffffff", 0.62);
+
+  // The counter-ink. Opaque, and stroked BETWEEN the bloom and the core, so it
+  // punches a ring of trench-dark through the glow the two passes above just
+  // laid down. That ring — not the water, not the membrane, not the bloom — is
+  // what the letterform is read against, and it is the only surface in this
+  // sprite whose contrast against the core does not depend on what the husk is
+  // doing. `lineJoin`/`lineCap` are round so a numeral's corners keep an even
+  // ring instead of growing mitre spikes at small sizes.
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  ctx.lineWidth = px * RIM_WIDTH;
+  ctx.strokeStyle = INK_RIM;
+  ctx.strokeText(text, cx, cy);
+
+  ctx.fillStyle = mix(color, "#ffffff", CORE_MIX);
   ctx.fillText(text, cx, cy);
 
-  const glyph: Glyph = { canvas, w, h, inkW };
+  const glyph: Glyph = { canvas, w, h, inkW, rimW: (px * RIM_WIDTH) / 2 };
   glyphs.set(key, glyph);
   return glyph;
 }
 
-/** Blits a baked glyph centred on (x, y), scaled so its cap height is `size`. */
+/**
+ * Blits a baked glyph centred on (x, y), scaled so its cap height is `size`.
+ *
+ * **The composite is set here, and it defaults to `source-over`.** POLARITY
+ * shipped numerals with a dark contrast rim that never darkened a single pixel,
+ * because the sprite was blitted additively and `vec3(0.0)` adds nothing — the
+ * best ink it could reach was 1.007:1. The rim `getGlyph` bakes is opaque and
+ * only means anything under `source-over`, so this function no longer inherits
+ * whatever the caller left in the context. A caller that genuinely wants the
+ * sprite ADDED has to say so, and exactly one does: the chromatic split on a
+ * landing equation, which is decoration at alpha 0.32.
+ */
 export function drawGlyph(
   ctx: CanvasRenderingContext2D,
   glyph: Glyph,
@@ -88,15 +128,19 @@ export function drawGlyph(
   y: number,
   size: number,
   alpha = 1,
+  composite: GlobalCompositeOperation = "source-over",
 ): void {
   if (alpha <= 0.004) return;
   const k = size / BAKE_PX;
   const w = glyph.w * k;
   const h = glyph.h * k;
-  const prev = ctx.globalAlpha;
-  ctx.globalAlpha = prev * alpha;
+  const prevA = ctx.globalAlpha;
+  const prevOp = ctx.globalCompositeOperation;
+  ctx.globalAlpha = prevA * alpha;
+  ctx.globalCompositeOperation = composite;
   ctx.drawImage(glyph.canvas, x - w / 2, y - h / 2, w, h);
-  ctx.globalAlpha = prev;
+  ctx.globalCompositeOperation = prevOp;
+  ctx.globalAlpha = prevA;
 }
 
 /**
