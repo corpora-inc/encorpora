@@ -4,7 +4,7 @@
 // `mount` delegates to `./mount.ts`. That module imports `Host` from here
 // type-only, and a type-only import is erased, so there is no runtime cycle.
 
-import { mountBeam } from "./mount.ts"
+import { mountBeam, type Snapshot } from "./mount.ts"
 
 export type Question = {
   id: string
@@ -81,6 +81,14 @@ export type Handle = {
    * sheet's.
    */
   setPaused(paused: boolean): void
+  /**
+   * What is on the lattice right now. Observation only — see `mount.Snapshot`.
+   *
+   * On the handle rather than on a side channel because the thing being measured
+   * is what a child is looking at, and the only object that knows that is the
+   * mounted game. The host never calls it and no rule reads it.
+   */
+  snapshot(): Snapshot
 }
 
 export function mount(el: HTMLElement, host: Host): Handle {

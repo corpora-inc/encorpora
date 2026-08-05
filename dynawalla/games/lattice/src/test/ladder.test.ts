@@ -49,11 +49,20 @@ test("a session opens on the floor, and the floor is not the bottom of the ladde
 test("the floor is where the host's answers can first carry a factor tree", () => {
   // The request is only worth making if the other end honours it, and the point
   // of the floor is the *answers* it produces rather than the number itself.
+  //
+  // Every field the game actually sends, including `minDifficulty` — because on
+  // the shipped wire that is the only one of the three the host is obliged to
+  // honour. See `Request.minDifficulty`.
   const host = createStubHost({ seed: 0x51ee, reducedMotion: true })
   let big = 0
   const n = 300
   for (let i = 0; i < n; i++) {
-    const q = host.next({ domain: "add", difficulty: FLOOR, maxDifficulty: CEILING })
+    const q = host.next({
+      domain: "add",
+      difficulty: FLOOR,
+      maxDifficulty: CEILING,
+      minDifficulty: FLOOR,
+    })
     if (Number(q.answer) >= MIN_TARGET) big += 1
   }
   assert.ok(big / n > 0.75, `only ${big}/${n} floor answers reached ${MIN_TARGET}`)

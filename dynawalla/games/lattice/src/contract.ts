@@ -29,12 +29,25 @@ export type Host = {
   /**
    * The next question.
    *
-   * `difficulty` is a 0..1 position on the host's whole ladder and
-   * `maxDifficulty` a ceiling on the same scale. THE LATTICE names both on every
-   * single draw — see `game/ladder.ts` for why a game that names neither is a
-   * game that ends up asking a child to find a 2.
+   * `difficulty` is a 0..1 position on the host's whole ladder,
+   * `maxDifficulty` a ceiling on the same scale and `minDifficulty` a floor.
+   * THE LATTICE names all three on every single draw — see `game/ladder.ts` for
+   * why a game that names none is a game that ends up asking a child to find a
+   * 2, and why one that names only the first two is a game with no ring in it.
+   *
+   * **`difficulty` is a hint and the other two are capabilities**, and the
+   * difference is the whole of PR 771. A `difficulty` is honoured within one
+   * rung of where the host's own evidence stands (`HINT_BAND`); a ceiling and a
+   * floor are honoured absolutely, because they are the pack stating what it can
+   * physically put on the screen rather than what it thinks the child is ready
+   * for.
    */
-  next(opts?: { domain?: string; difficulty?: number; maxDifficulty?: number }): Question
+  next(opts?: {
+    domain?: string
+    difficulty?: number
+    maxDifficulty?: number
+    minDifficulty?: number
+  }): Question
   report(r: { questionId: string; correct: boolean; ms: number; answered: string }): void
   /**
    * The child was never shown this one. Close it and record nothing.

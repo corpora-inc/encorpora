@@ -1,4 +1,4 @@
-// LATTICE RUNNER, as a Dynawalla pack.
+// THE TUNING HALL, as a Dynawalla pack.
 //
 // The seam and nothing else. `mount` is handed the real host in place of the
 // stub, because the adapter presents the same synchronous surface `Host` in
@@ -54,5 +54,5 @@ async function start(el: HTMLElement): Promise<void> {
 
 void start(root).catch((error: unknown) => {
   console.error("[beam] could not start", error)
-  renderNoHost(root, "LATTICE RUNNER")
+  renderNoHost(root, "THE TUNING HALL")
 })

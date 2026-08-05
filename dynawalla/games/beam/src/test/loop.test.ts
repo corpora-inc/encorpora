@@ -16,6 +16,8 @@ import assert from "node:assert/strict"
 
 import { mount } from "../contract.ts"
 import { Rng } from "../core/rng.ts"
+import { noteRead, resetReadForTest } from "../sim/learned.ts"
+import { CALM_CORES } from "../sim/opening.ts"
 import { createStubHost } from "../stubHost.ts"
 
 type Handler = (e: unknown) => void
@@ -32,7 +34,7 @@ function stubSurface(
   cores: number,
 ): {
   el: HTMLElement
-  install(): () => void
+  install(step?: number): () => void
   pump(): (ms: number) => void
   keys: Map<string, Handler>
 } {
@@ -94,7 +96,17 @@ function stubSurface(
     nav: Object.getOwnPropertyDescriptor(globalThis, "navigator"),
   }
 
-  const install = (): (() => void) => {
+  /**
+   * @param step where on the ramp this child is; the steady state by default,
+   *   because every case in this file was written about the shipped game. See
+   *   the same parameter in `comprehension.test.ts`, and `opening.test.ts` for
+   *   the file that asks for a first sitting.
+   */
+  const install = (step: number = CALM_CORES): (() => void) => {
+    // The ramp's memory is module state, node has no `localStorage`, and two
+    // `play()` calls in one process would otherwise be two different games.
+    resetReadForTest()
+    for (let i = 0; i < step; i++) noteRead()
     globalThis.requestAnimationFrame = ((cb: (t: number) => void): number => {
       pending = cb
       return 1

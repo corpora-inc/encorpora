@@ -12,6 +12,7 @@
 //     run rather than the ceiling alone.
 
 import { isFieldValue, MAX_BEAM, resonates, validBeamCount } from "./lattice.ts"
+import { type Opening, STEADY_OPENING } from "./opening.ts"
 
 export type Pressure = {
   /** 0..1 — the single scalar every other number below is derived from. */
@@ -37,6 +38,16 @@ export class Director {
   private sinceCore = 0
   private coresRun = 0
 
+  /**
+   * Where this child is on the ramp. See `sim/opening.ts`.
+   *
+   * The steady state by default, so every test written before the ramp existed
+   * keeps asking about the game a child who has played before actually gets, and
+   * so a `new Director()` anywhere is the shipped game and not a special case.
+   * `mount` sets it from `sim/learned.ts` at mount and after every wave.
+   */
+  opening: Opening = STEADY_OPENING
+
   /** Seconds of play, for the pressure curve. Advanced by the frame loop. */
   advance(dt: number): void {
     this.elapsed += dt
@@ -61,17 +72,33 @@ export class Director {
     // a child who is good at this gets there sooner than one who is grinding.
     const byTime = Math.min(1, this.elapsed / 90)
     const byKills = Math.min(1, this.kills / 60)
-    const level = Math.min(1, byTime * 0.65 + byKills * 0.45)
+    // **And then the ramp caps it.** The curve above is a clock — two thirds of
+    // it is `elapsed / 90` — and a clock decides how fast a board gets in front
+    // of a child who has demonstrated nothing. So what the curve computes is
+    // what a child at the top of the ramp is handed, unchanged, and every step
+    // below that is handed at most `opening.ceiling` of it. The cap is the whole
+    // of the change: nothing here is retuned and the ceiling is 1 at the top.
+    //
+    // It reaches the ARITHMETIC and not only the motion. `mount.drawWave` asks
+    // the host for `2 + round(level × 7)`, so an uncapped clock was raising the
+    // item difficulty from 2 to 7 against a child who had not answered one.
+    const level = Math.min(1, byTime * 0.65 + byKills * 0.45, this.opening.ceiling)
     return {
       level,
       // The floor was 13 and that was wrong. A run opens at pressure zero, and
       // at 13 seconds a crossing the first minute of play contained about two
       // curriculum problems — a child's first thirty seconds with this game is
       // exactly when it has to prove it is about arithmetic.
-      descentSeconds: lerp(10, 5.8, level),
+      // Scaled by the ramp, which is 1 at the top step. This is motion and not
+      // thinking time: a candidate's fall is computed from the ITEM's
+      // `windowSeconds` at fracture time and nothing here touches it.
+      descentSeconds: lerp(10, 5.8, level) * this.opening.descentScale,
       stepSeconds: lerp(1.15, 0.62, level),
       spawnGap: lerp(2.0, 0.95, level),
-      floorCount: Math.round(lerp(2, 5, level)),
+      // The ramp says how many hulls a child at this step may be asked to track
+      // BESIDE the sum. `0` is the founder's one number: the only thing on the
+      // lattice is the problem.
+      floorCount: Math.min(Math.round(lerp(2, 5, level)), this.opening.ordinaries),
       tightness: lerp(0.15, 0.8, level),
     }
   }
@@ -91,6 +118,12 @@ export class Director {
    *   test suite over it because the test only ever called the pure function.
    */
   wantsSpawn(live: number, p: Pressure = this.pressure()): boolean {
+    // **The ramp's cap is a ceiling and not a target**, and that is the whole
+    // difference between "one number calmly coming down the lattice" and one
+    // number plus whatever the spawn gap has produced since. `floorCount` alone
+    // could not express it: at zero it stops PULLING hulls onto the lattice and
+    // the `sinceSpawn` clause below still pushes one every two seconds.
+    if (live >= this.opening.ordinaries) return false
     if (live < p.floorCount) return true
     return this.sinceSpawn >= p.spawnGap
   }
@@ -123,7 +156,11 @@ export class Director {
    */
   wantsCore(coreLive: boolean): boolean {
     if (coreLive) return false
-    return this.sinceCore >= 2
+    // The ramp lengthens the quiet between problems for a child who has not
+    // read many, and it is two seconds — the constant this shipped with — at the
+    // top step. This is DEAD time, which may escalate; the answering window,
+    // which may not, is `sim/window.ts` and is not in this file.
+    return this.sinceCore >= this.opening.coreGapSeconds
   }
 
   noteCore(): void {

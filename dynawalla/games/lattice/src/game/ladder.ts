@@ -164,6 +164,40 @@ export type Request = {
   readonly domain: string
   readonly difficulty: number
   readonly maxDifficulty: number
+  /**
+   * `FLOOR`, on every single request, forever.
+   *
+   * **This is the ring the founder could not find.** From host 0.3.7 a
+   * `difficulty` is a *hint*: it is honoured within `HINT_BAND` — one rung — of
+   * where the host's own evidence stands, and clamped there otherwise. That
+   * evidence is `progress`, and `progress` opens at rung 0 on every fresh
+   * profile. So THE LATTICE asked for rung 16 and was served rung 1: answers of
+   * two to six, none of them twelve or more, none of them carrying a factor
+   * tree. Every one of the six draws an arming makes missed, `arm` set
+   * `stalled`, and the screen read `NO RESONATOR — SWEEP ON`.
+   *
+   * And it could not clear. The only thing that moves the host's `progress` is a
+   * report, the only thing that produces a report is a resonator opening, and
+   * there was no resonator — so the rearm two and a half seconds later drew from
+   * rung 1 again, and so did the one after that, for as long as the child sat
+   * there. A whole game reduced to a grid with some twos drifting on it.
+   *
+   * `minDifficulty` is the other channel and it is a different kind of claim: a
+   * *capability*, honoured absolutely above the host's band as well as below it,
+   * because a question the pack cannot render is not a question. THE LATTICE's
+   * floor is exactly that kind of claim and it always was — `MIN_TARGET` is 12
+   * because a smaller answer has no factor tree in it, so a resonator cannot be
+   * a game about one. It is stated here rather than assumed, which is the whole
+   * difference between a floor and a wish.
+   *
+   * It is constant. It is what the pack can draw, not where the child is, so it
+   * never moves with `position` — and the host never moves the child's ladder
+   * for it, so stating it cannot promote anybody.
+   *
+   * TREBUCHET had the identical defect for three releases (0.3.7–0.3.9) and this
+   * is its fix, in the shape this pack's wire takes it.
+   */
+  readonly minDifficulty: number
 }
 
 export function clampToBand(position: number): number {
@@ -241,7 +275,7 @@ export class Ladder {
       const rung = rungOf(difficulty)
       if (seen.has(rung)) continue
       seen.add(rung)
-      const request = { domain, difficulty, maxDifficulty: CEILING }
+      const request = { domain, difficulty, maxDifficulty: CEILING, minDifficulty: FLOOR }
       if (this.yieldOf(rung) < BARREN) barren.push(request)
       else live.push(request)
     }

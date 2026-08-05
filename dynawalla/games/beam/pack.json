@@ -1,8 +1,8 @@
 {
   "id": "dynawalla.beam",
   "version": "0.1.0",
-  "name": "LATTICE RUNNER",
-  "description": "A lattice of numbered beams. Ride one and fire, and a pulse destroys an automaton only when the beam divides the number it carries — while the beam sings the remainder against it, and goes pure when it hits zero.",
+  "name": "THE TUNING HALL",
+  "description": "Five numbered beams of light run down a hall. Ride one and fire, and a pulse destroys an automaton only when the beam divides the number it carries — while the beam sings the remainder against it, and goes pure when it hits zero.",
   "sdk": "1.0.0",
   "host": { "min": "0.1.0", "max": "1.0.0" },
   "entry": "pack.html",

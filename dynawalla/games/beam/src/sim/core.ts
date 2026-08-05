@@ -69,8 +69,8 @@ function parseValue(s: string): number | null {
 }
 
 /** Fewer than this and the choice is not a choice. */
-const MIN_CANDIDATES = 2
-const MAX_CANDIDATES = 4
+export const MIN_CANDIDATES = 2
+export const MAX_CANDIDATES = 4
 
 export type CoreSource = {
   id: string
@@ -91,14 +91,23 @@ export function buildCore(
   source: CoreSource,
   beamCount: number,
   rand: () => number,
+  /**
+   * The most candidates this wave may carry, from `sim/opening.ts`.
+   *
+   * Clamped into `MIN_CANDIDATES..MAX_CANDIDATES` here rather than trusted: two
+   * is a choice and one is a formality, and a caller that asked for one would
+   * silently turn the question into "hit the only thing on the screen".
+   */
+  cap: number = MAX_CANDIDATES,
 ): CoreWave | null {
+  const most = Math.max(MIN_CANDIDATES, Math.min(MAX_CANDIDATES, Math.floor(cap)))
   const answer = parseValue(source.answer)
   if (answer === null || !usableCoreValue(answer)) return null
 
   const seen = new Set<number>([answer])
   const values: number[] = [answer]
   for (const raw of source.distractors) {
-    if (values.length >= MAX_CANDIDATES) break
+    if (values.length >= most) break
     const v = parseValue(raw)
     // A distractor is held to the same standard as the answer. A small prime —
     // 5, 7, 11 — can only be killed from its own beam, and a beam labelled 5
@@ -120,7 +129,7 @@ export function buildCore(
     // wave where the only thing on screen is the answer.
     const extra: number[] = []
     for (const v of columnMalRules(answer)) {
-      if (extra.length + kept.length >= MIN_CANDIDATES + 1) break
+      if (extra.length + kept.length >= Math.min(most, MIN_CANDIDATES + 1)) break
       if (seen.has(v) || !usableCoreValue(v)) continue
       if (!beamDivisors(v).some((d) => beams.includes(d))) continue
       seen.add(v)
@@ -136,6 +145,16 @@ export function buildCore(
   if (!beams.some((b) => resonates(b, answer))) return null
   kept = kept.filter((v) => v === answer || beams.some((b) => resonates(b, v)))
   if (kept.length < MIN_CANDIDATES) return null
+
+  // **Trimmed to the cap here and nowhere earlier.** The re-tune above can only
+  // remove values, so trimming before it would leave a wave the ramp asked to
+  // hold two of carrying three whenever the mal-rule top-up fired. The answer is
+  // never the one dropped — a wave without its own answer on it is not a
+  // question, it is four wrong numbers.
+  if (kept.length > most) {
+    const rest = kept.filter((v) => v !== answer).slice(0, most - 1)
+    kept = [answer, ...rest]
+  }
 
   // Shuffle by rejection so the answer is not always the leftmost candidate.
   const order = [...kept]

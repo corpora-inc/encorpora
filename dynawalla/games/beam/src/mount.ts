@@ -1,4 +1,4 @@
-// LATTICE RUNNER — the game.
+// THE TUNING HALL — the game. Directory and pack id are still `beam`.
 //
 // You ride the foot of a lattice of numbered beams. Automata walk down it
 // carrying numbers. A pulse fired up beam `b` destroys an automaton carrying
@@ -54,8 +54,10 @@ import {
   withAlpha,
 } from "./render/palette.ts"
 import { KIND_MOTE, KIND_SHARD, Particles } from "./render/particles.ts"
+import { REVEAL_SETTLE_MS } from "../../../packs/shared/game-pacing/index.ts"
 import { buildCore, type CoreWave } from "./sim/core.ts"
-import { revealSeconds } from "./sim/window.ts"
+import { coresRead as coresReadEver, noteMissed, noteRead } from "./sim/learned.ts"
+import { openingAt } from "./sim/opening.ts"
 import { Director, fieldValue, killScore, readingRelief } from "./sim/director.ts"
 import { A_CANDIDATE, A_CORE, A_ORDINARY, type Automaton, Field } from "./sim/field.ts"
 import { phaseOffset, resonates, tuneLattice, validBeamCount } from "./sim/lattice.ts"
@@ -77,9 +79,36 @@ type Pulse = { alive: boolean; col: number; t: number; prevT: number; hits: numb
 type Pop = { alive: boolean; x: number; y: number; life: number; max: number; text: string; size: number; color: string }
 type Banner = { text: string; sub: string; life: number; max: number; color: string }
 
+/**
+ * What is on the lattice right now, for the tests that measure the opening.
+ *
+ * An observation seam and nothing else: the shell never reads it, no rule
+ * branches on it, and removing it would change no behaviour. It exists because
+ * "how many numbered hulls is a child looking at" is the founder's whole report
+ * and it cannot be answered from the pure functions — the ramp only reaches the
+ * screen through the director, the field, the spawn cadence and the fracture,
+ * and every one of those is in this module. `opening.test.ts` drives the real
+ * loop and the real input handlers and reads this.
+ */
+export type Snapshot = {
+  /** Numbered hulls a child can see: ordinary automata, candidates, and a core. */
+  readonly onLattice: number
+  readonly ordinaries: number
+  readonly candidates: number
+  /** The problem currently on the wall, or `null` when there is none. */
+  readonly prompt: string | null
+  /** Items drawn from the host since this mount. */
+  readonly asked: number
+  /** The ramp step this child is on. See `sim/opening.ts`. */
+  readonly step: number
+  /** Whether the finished sum is up and the hall is held. */
+  readonly revealed: boolean
+}
+
 export function mountBeam(el: HTMLElement, host: Host): {
   unmount(): void
   setPaused(paused: boolean): void
+  snapshot(): Snapshot
 } {
   // ── surface ──────────────────────────────────────────────────────────────
   const root = document.createElement("div")
@@ -104,9 +133,9 @@ export function mountBeam(el: HTMLElement, host: Host): {
   // the game is broken when most shots bounce. The manual stays reachable during
   // play, because the moment a child needs the rule is never the title screen.
   const guide = createInstructions(root, {
-    title: "LATTICE RUNNER",
+    title: "THE TUNING HALL",
     summary: [
-      "Five beams of light run down the hall, and together they are the lattice. Each beam has a number at the bottom.",
+      "Five beams of light run down the hall. Each beam has a number at the bottom.",
       "Robots walk down carrying numbers. Ride a beam and shoot — but a shot only works if the beam's number divides the robot's number.",
     ],
     sections: [
@@ -156,7 +185,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
         lines: [
           "Three lights sit at the top of the screen. The game calls each one an anchor.",
           "A robot that reaches the floor puts one out.",
-          "When all three are out the run is over and the screen says THE LATTICE GOES DARK. Tap to start again.",
+          "When all three are out the run is over and the screen says THE HALL GOES DARK. Tap to start again.",
           "Read two cores right and one anchor lights up again.",
         ],
       },
@@ -187,6 +216,20 @@ export function mountBeam(el: HTMLElement, host: Host): {
   const parts = new Particles()
   const field = new Field()
   const director = new Director()
+
+  /**
+   * Put this child's step on the director, and keep it there.
+   *
+   * Called at mount and after every wave — a step is a fact about the child, not
+   * about the run, so it survives a game over and a remount and the next
+   * sitting. `sim/learned.ts` is what remembers it and `sim/opening.ts` is the
+   * table it indexes.
+   */
+  function fitOpening(): void {
+    director.opening = openingAt(coresReadEver())
+  }
+  fitOpening()
+
   // Two streams, deliberately separated.
   //
   // `rng` is the RUN: the numbers on the hulls, how the lattice tunes, which
@@ -240,15 +283,29 @@ export function mountBeam(el: HTMLElement, host: Host): {
   /**
    * THE FINISHED STATEMENT, after a miss or a wave that ran out.
    *
-   * `left` runs the text down; `hold` freezes the lattice for exactly as long,
-   * which is the part of STACK's reveal that makes it work — its sweep is HELD
-   * so the child never reads one thing while aiming at another. A frozen hall
-   * costs the child nothing: no wave is live, so no answering window is
-   * running, and every automaton that was descending is exactly where it was
-   * when the hold lifts.
+   * The lattice is HELD while it is up, which is the part of STACK's reveal that
+   * makes it work — its sweep is held so the child never reads one thing while
+   * aiming at another. A frozen hall costs the child nothing: no wave is live,
+   * so no answering window is running, and every automaton that was descending
+   * is exactly where it was when the hold lifts.
+   *
+   * **And it does not expire.** It used to run down `revealSeconds` — one and a
+   * half to three seconds — and then take the sum away whether or not anybody
+   * had finished reading it. `packs/shared/game-pacing`'s `revealPlan` is the
+   * fleet's answer to exactly that, and it is `holdMs: Infinity`:
+   *
+   * > "you should be able to study the answers and then go on, not just have the
+   * > answers flashed for a second and then go on"
+   *
+   * A child who has just missed is the slowest reader in the session, and a
+   * timer sized for a fluent one removes the evidence exactly when it was about
+   * to be useful. So the hall stays held until the child's own hand ends it, and
+   * `settleLeft` is the only thing that delays that: `REVEAL_SETTLE_MS` of
+   * lockout, so the second tap of an impatient double-tap does not dismiss a
+   * reveal the first tap only just put up.
    */
-  let reveal: { text: string; answer: string; left: number } | null = null
-  let hold = 0
+  let reveal: { text: string; answer: string; settleLeft: number } | null = null
+  let hold = false
 
   const pulses: Pulse[] = []
   for (let i = 0; i < 4; i++) pulses.push({ alive: false, col: 0, t: 0, prevT: 0, hits: 0 })
@@ -409,6 +466,10 @@ export function mountBeam(el: HTMLElement, host: Host): {
         { id: q.id, prompt: q.prompt, answer: q.answer, distractors: q.distractors },
         N_BEAMS,
         () => rng.next(),
+        // Two answers to choose between on a child's first core, four once they
+        // have read a few. The window is unchanged either way — this is how much
+        // there is to READ, not how long there is to read it.
+        director.opening.candidates,
       )
       if (built) return built
     }
@@ -522,12 +583,32 @@ export function mountBeam(el: HTMLElement, host: Host): {
    * plate lighting up — and none of the parts a scolding is. There is no word
    * for what happened, no red, no shake and no lamp going out: a wrong
    * submission has never cost an anchor in this game and it does not start now.
+   *
+   * It stays up until the child ends it. See the note on `reveal`.
    */
   function completeSum(w: CoreWave): void {
-    const seconds = revealSeconds({ prompt: w.prompt, answer: w.answer })
-    reveal = { text: w.prompt, answer: String(w.answer), left: seconds }
-    hold = seconds
+    reveal = { text: w.prompt, answer: String(w.answer), settleLeft: REVEAL_SETTLE_MS / 1000 }
+    hold = true
     audio.riser()
+  }
+
+  /**
+   * The child's own hand, ending the reveal.
+   *
+   * Called from every input path — a key, a tap, a slide — and it is the ONLY
+   * thing that ends one. Refused for `REVEAL_SETTLE_MS`, which is latency and
+   * not patience: the gesture that ended the wave is routinely still arriving.
+   *
+   * @returns true when the input was spent on the reveal and must not also be
+   *   read as a move or a shot. A child dismissing a sum they were reading has
+   *   not aimed at anything.
+   */
+  function dismissReveal(): boolean {
+    if (!reveal) return false
+    if (reveal.settleLeft > 0) return true
+    reveal = null
+    hold = false
+    return true
   }
 
   function expireWave(): void {
@@ -548,6 +629,12 @@ export function mountBeam(el: HTMLElement, host: Host): {
     // nothing. It is feature-detected: a host without it hears silence, which
     // is what an unmeasured item should sound like.
     host.skip?.(w.questionId)
+    // The host hears nothing — the child demonstrated nothing about arithmetic —
+    // and the RAMP hears a step down, because a wave that reached the floor
+    // unanswered is this game's only direct evidence that the board was faster
+    // than the child. Two different questions; see `sim/learned.ts`.
+    noteMissed()
+    fitOpening()
     // Not a buzzer and not a life ticking down: the sum finishes on the wall,
     // in the same place it has been legible all along.
     completeSum(w)
@@ -660,6 +747,11 @@ export function mountBeam(el: HTMLElement, host: Host): {
     if (body.correct) {
       right++
       coresRead++
+      // The ramp's only input, and it is what the child demonstrated. Never
+      // shown, never scored, and it is the reason the board is allowed to get
+      // busier at all — see `sim/learned.ts`.
+      noteRead()
+      fitOpening()
       if (anchors < ANCHORS) credit = Math.min(READ_PER_ANCHOR, credit + 1)
       resonance = Math.min(RESONANCE_MAX, resonance + 1)
       resonanceLeft = RESONANCE_SECONDS
@@ -708,6 +800,12 @@ export function mountBeam(el: HTMLElement, host: Host): {
       // without scolding, and the sum completing on the wall. A wrong
       // submission still costs the multiplier, which is the whole economy and
       // is the reason a guess is not free; it has never cost an anchor.
+      // A step back down the ramp: the next board this child meets is calmer.
+      // Not a punishment and not a judgement — the number is never shown and the
+      // host is told nothing extra. It is the game noticing that this one was
+      // hard and getting out of the way. See `sim/learned.ts`.
+      noteMissed()
+      fitOpening()
       audio.settleWrong()
       feel.kick(0, 1, 3)
       host.haptic("light")
@@ -747,7 +845,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
     wave = null
     coreBody = null
     reveal = null
-    hold = 0
+    hold = false
     if (score > best) {
       best = score
       writeBest(best)
@@ -755,7 +853,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
     audio.collapse()
     feel.addTrauma(0.6)
     feel.slowmo(0.25, 900)
-    showBanner("THE LATTICE GOES DARK", "tap to tune it again", RESONANT, 3)
+    showBanner("THE HALL GOES DARK", "tap to tune it again", RESONANT, 3)
   }
 
   function restart(): void {
@@ -776,7 +874,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
     coreBody = null
     banner = null
     reveal = null
-    hold = 0
+    hold = false
     field.clear()
     parts.clear()
     feel.reset()
@@ -810,7 +908,11 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function onDown(e: PointerEvent): void {
-    if (paused || hold > 0) return
+    if (paused) return
+    // A tap on a held hall is the child saying they have finished reading. It is
+    // spent there and is not also a shot: the runner has not moved and nothing
+    // was aimed at.
+    if (dismissReveal()) return
     void audio.start()
     if (over) {
       if (performance.now() - overAt > 550) restart()
@@ -827,7 +929,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function onMove(e: PointerEvent): void {
-    if (paused || hold > 0 || !pointerDown) return
+    if (paused || hold || !pointerDown) return
     if (!dragged && Math.hypot(e.clientX - downX, e.clientY - downY) > 14) dragged = true
     if (!dragged) return
     // A drag is the *listening* verb: it rides the lattice without firing, so a
@@ -843,10 +945,14 @@ export function mountBeam(el: HTMLElement, host: Host): {
   }
 
   function onKey(e: KeyboardEvent): void {
-    // Refused, not queued. The runner cannot move while the hall is held, so a
-    // tap that set `fireOnArrive` would sit there looking like a dead control
-    // and then go off on its own two seconds later.
-    if (paused || hold > 0) return
+    // Spent on the reveal, not queued. The runner cannot move while the hall is
+    // held, so a key that set `fireOnArrive` would sit there looking like a dead
+    // control and then go off on its own once the hall let go.
+    if (paused) return
+    if (dismissReveal()) {
+      e.preventDefault()
+      return
+    }
     if (e.key === "ArrowLeft") rideTo(runnerCol - 1, false)
     else if (e.key === "ArrowRight") rideTo(runnerCol + 1, false)
     else if (e.key === " " || e.key === "Enter") {
@@ -868,17 +974,16 @@ export function mountBeam(el: HTMLElement, host: Host): {
   let raf = 0
 
   function step(dt: number): void {
-    if (reveal) {
-      reveal.left -= dt
-      if (reveal.left <= 0) reveal = null
-    }
-    if (hold > 0) {
+    if (reveal) reveal.settleLeft = Math.max(0, reveal.settleLeft - dt)
+    if (hold) {
       // THE HOLD. The lattice is still while the sum finishes: nothing
       // descends, nothing spawns, no pulse travels and the clock the director
-      // escalates on does not advance, and input is refused. Only the
-      // decoration keeps moving — the sparks and the resonance traces — so a
-      // held hall reads as held rather than as crashed.
-      hold -= dt
+      // escalates on does not advance, and input is spent on the reveal rather
+      // than on the lattice. Only the decoration keeps moving — the sparks and
+      // the resonance traces — so a held hall reads as held rather than as
+      // crashed.
+      //
+      // It ends when the child ends it. See `dismissReveal`.
       if (!reduced) traceScroll += dt * 0.42
       parts.update(dt)
       for (const q of pops) {
@@ -1144,6 +1249,21 @@ export function mountBeam(el: HTMLElement, host: Host): {
 
   return {
     setPaused,
+
+    snapshot(): Snapshot {
+      const ordinaries = field.liveCount(A_ORDINARY)
+      const candidates = field.liveCount(A_CANDIDATE)
+      const core = field.liveCount(A_CORE)
+      return {
+        onLattice: ordinaries + candidates + core,
+        ordinaries,
+        candidates,
+        prompt: wave ? wave.prompt : null,
+        asked,
+        step: director.opening.step,
+        revealed: reveal !== null,
+      }
+    },
 
     unmount(): void {
       running = false
