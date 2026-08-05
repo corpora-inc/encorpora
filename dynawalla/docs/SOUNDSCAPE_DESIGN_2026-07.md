@@ -1,10 +1,16 @@
 # The Dynawalla soundscape
 
-**Status:** live. `packs/shared/game-soundscape/` exists and has 57 tests; the host
+**Status:** live. `packs/shared/game-soundscape/` exists and has 79 tests; the host
 now chooses a soundscape and publishes it, so THE STEELYARD plays through it in
-production. Stage 2 (games talking back) and stage 3 (the host's ambient bed) are
-still proposed. The founder's answers to the open questions are recorded at the
-end.
+production. **Stage 2 is now partly built** — games talk back through
+`session.transition`, and correctness shapes the beat (see *The groove evolves*,
+below). Stage 3 (the host's ambient bed) is still proposed. The founder's answers
+to the open questions are recorded at the end.
+
+**The groove is no longer a fixed shape.** `evolve.ts` is an eighth file: a slow,
+tethered random walk over the bar that right and wrong answers steer in opposite
+directions, and a rotation policy that lets a LEVEL TRANSITION turn the app's key
+over. See *The groove evolves* below.
 
 **Second pack wired, and the module grew a seventh file.** PULSE reads the same
 soundscape as TIME rather than as pitch. The founder's brief for it — *"some
@@ -23,6 +29,221 @@ the whole app and `packSettings` puts it on the wire, where `game-host`'s
 `publish()` was already forwarding it. THE STEELYARD's own ship gate — "nothing
 in the shipped pack turns the soundscape on" — still passes unchanged, because
 turning it on was the host's job and never the pack's.
+
+---
+
+## The groove evolves
+
+> *"steelyard sounds is cool, pulse is somewhat improved but it needs to
+> gradually evolve more — the main rhythm is static. I think slowly things
+> should evolve and change stochastically. so there is sort of the seed but it
+> should be able to go almost anywhere. Maybe being 'right' or 'wrong' should
+> affect the beat in different ways. We don't have to just use random but random
+> is a good friend. Add and remove different beats with probability .. slowly
+> evolve."*
+
+### What was static, and where
+
+`grooveMatrix` is a pure function of the soundscape and the stage, so PULSE got
+the same probabilities back every phrase for as long as a run lasted. The *draw*
+differed; the bias never did.
+
+But that was **not** what the founder was hearing, and finding that out changed
+the shape of this work. PULSE's chart already varies a great deal per phrase —
+it draws a backbeat figure from a vocabulary and re-leans the matrix around it —
+so making the chart drift moved a measured strike-rate profile by **0.0005**,
+which nobody could hear. What was static was the layer *underneath* it:
+
+| | before |
+|---|---|
+| Bass | `BASS_PATTERNS[tier]`, a written array of beat offsets. **One** pattern, every bar, forever |
+| Shaker | every offbeat eighth, every bar, forever |
+| Arp | `(k + bar) % 3` — a three-bar loop |
+
+That is "the main rhythm", and it was a loop in the literal sense.
+
+### The mechanism
+
+One number per instant of the bar, `-1..1`, on top of what the mode said. Every
+`BARS_PER_MUTATION` bars — one phrase — a few of them move. `groove.ts` gained a
+`GrooveBias` seam and `leanAffinity`, which moves an instant *inside the range
+the mode already allowed it*, so `+1` is exactly `1` and `-1` is exactly
+`MIN_AFFINITY` and a drifted bar passes every invariant an undrifted one does
+with no clamp anywhere.
+
+Three constraints keep it a groove rather than noise, and each was tested by
+being removed:
+
+1. **The metre is not in the walk.** The drift moves the mode's affinity and
+   never the metric weight, so a downbeat outranks a halfway point outranks a
+   sixteenth however far the walk has got. The downbeat is not in the walk at
+   all.
+2. **The walk is tethered.** Every mutation decays every lean toward zero
+   (`SEED_HALF_LIFE_BARS = 144`). Mean-reverting, not Brownian: *"there is sort
+   of the seed but it should be able to go almost anywhere"* is exactly an
+   Ornstein–Uhlenbeck shape.
+3. **Nothing lands mid-phrase.** `matrix()` is frozen between `advance()` calls,
+   always. Gestures are queued; a bar a child is two beats into cannot become a
+   different bar.
+
+**The rate is measured in BARS**, not seconds — the module still has no tempo
+primitive and this did not add one. A caller with a bar clock passes bars; a
+caller without one does not need a groove.
+
+### Right and wrong, which are not a reward and a punishment
+
+The fleet's rule is that a miss is the teaching moment. So the asymmetry is the
+founder's own pair of verbs pointed in two **directions**, not at two volumes:
+
+* **Right → the groove ADDS.** `agree()` lights up an instant it had been
+  ignoring — the one with the most room the metre would most like to hear. The
+  bar keeps finding new places to sit. **It adds no notes**: the density budget
+  is renormalised, so the expected count is bit-identical to what the stage
+  asked for and what changed is *where*. Rewarding correctness with a busier bar
+  would be rewarding it with a harder game.
+* **Wrong → the groove REMOVES.** `makeRoom()` takes the busiest *decoration*
+  down — never a beat, never the downbeat — and leaves a little space for a few
+  phrases. A band backing off while somebody thinks. It expires on the clock
+  (`ROOM_HALF_LIFE_BARS = 8`) and not on merit, so nothing has to be earned
+  back, and it is capped at `MAX_OPENNESS` = a quarter of the budget so playing
+  badly on purpose never buys an easier game.
+
+Nothing here is red, nothing is a buzzer, and nothing anywhere changes the
+tempo.
+
+**Two designs were built, measured and rejected first**, both trying to make
+"right" mean *the groove commits to what it is already doing*:
+
+| attempt | result |
+|---|---|
+| push the instant with the highest `p` | beat an untouched groove **38 of 60** — a coin. `leanAffinity` is range-relative, so the strongest instant is by definition the one with the least room to get stronger |
+| draw the target in proportion to `p³` | **30 of 60**. Six pushes landed on five different instants and cancelled |
+
+Adding an instant has headroom by construction, and it is what the brief
+actually asked for.
+
+### The numbers
+
+Measured with the shipped code. `evolve.test.ts` holds each of these.
+
+**The drift, over time** (60 seeds, eighths grid, mean change in a slot's strike
+probability against the seed matrix):
+
+| | 1 phrase | 1 min | 2 min | 9 min | 35 min | 70 min |
+|---|---|---|---|---|---|---|
+| mean \|Δp\| | 0.012 | 0.036 | 0.050 | 0.068 | 0.073 | 0.065 |
+
+It goes somewhere over minutes and then stays inside its spread for an hour —
+the worst-affected instant in a bar moves its strike rate by **0.20 to 0.34**,
+which is an instant that fired in 40% of bars now firing in 10% or 70%.
+
+**The tether.** Twenty right answers push the groove's total lean to **+4.11**;
+two hundred bars later, with the child answering nothing at all, **15%** of it is
+left. With the decay deleted, 37% survives — which is how that assertion is
+known not to be vacuous.
+
+**Right against wrong** (200 seeds per grid, 8 answers, net instants opened
+minus closed):
+
+| grid | right | wrong | right > wrong |
+|---|---|---|---|
+| quarters `[1]` | +1.54 | −1.31 | 196/200 |
+| eighths `[1,2]` | +2.12 | −2.63 | 200/200 |
+| triplets `[1,3]` | +2.35 | −3.66 | 200/200 |
+| everything `[1,2,3,4]` | +1.61 | −3.93 | 200/200 |
+
+Right leaves the expected note count **bit-identical** in 60 of 60 seeds on
+every grid.
+
+**Reproducible.** The same seed replays a whole session exactly; 60 of 60 pairs
+of different seeds diverge.
+
+**In PULSE**, where the founder heard the problem:
+
+| | before | after |
+|---|---|---|
+| Distinct bass bars in 64 | **1** | **36.1** |
+| Strike-rate shift between two 200-bar windows, walk **off** | — | 0.031 |
+| Strike-rate shift between two 200-bar windows, walk **on** | — | **0.053** |
+
+The A/B is the same generator with `advance` stubbed out, so the only difference
+is the walk. The window has to be 200 bars: sampling noise in a strike rate falls
+as `1/√N` and the drift does not, so at 96 bars the two are the same size and the
+first version of that test asserted a ratio of 1.16 and failed honestly.
+
+### The rotation policy — when the mode changes
+
+> *"When does the musical mode get changed in general? Maybe it should switch
+> more often like when a level transitions on some games."*
+
+**Answer: a level transition rotates the key, and the gesture already existed.**
+
+The old rule — *never rotate while a pack owns it* — was protecting a reason, not
+a possession. Its reason, verbatim from the code, is that *"a key change
+underneath a child — mid-question, because a timer went off — is the jarring
+thing"*. A level transition is not that. It is the pack itself saying **the child
+finished something and nothing is in front of them**, which is precisely the
+condition a doorway satisfies and a moment the game already marks as "put that
+down". So the rule is restated rather than broken:
+
+> **The key never moves unbidden.** Doorways are the host's boundary;
+> transitions are the pack's.
+
+**The gesture is `session.transition`** — the SDK's existing, ungated session
+method, whose documented contract is already exactly the guarantee needed: *"a
+transition is a thing the child finished, never a thing that beat them."* No new
+wire field, no new capability, no new method, no `SDK_VERSION` bump. A pack that
+has no levels sends nothing and rotates at doorways alone, which is the policy
+that was already there — **nothing in the fleet is obliged to change.**
+
+The policy, in full:
+
+| | |
+|---|---|
+| A fresh key every launch | unchanged |
+| A new key every `ROTATION_MS` (8 min), landing at a doorway | unchanged — **kept as the backstop**, see below |
+| The key never moves under a playing child on a clock alone | unchanged, and still an invariant of the module rather than a caller's convention |
+| **A `transition` may turn the key over, after `TRANSITION_ROTATION_MS` (90 s)** | **new** |
+| Never the same mode twice running | unchanged, and now enforced on the transition path too |
+
+**Why the transition floor is shorter than the doorway floor, and not longer.** A
+doorway happens whenever a child browses, so it needs a long floor or the bazaar
+changes key at every threshold. A transition is a real boundary a game declared,
+which is a stronger signal, so it justifies a change on less accumulated time.
+Ninety seconds is long enough that a key gets to be a key even in a game whose
+levels are forty seconds long.
+
+**The eight-minute timer stays, and becomes the backstop rather than the driver.**
+Most of the fleet has no levels and sends no transitions; without it a
+forty-minute session at THE STEELYARD would sit in one key for forty minutes,
+which is the "stale and repetitive" the brief opened with.
+
+**Two guards, both tested.** A transition from a pack that is *not* on the stage
+is ignored — React renders the incoming pack before it runs the outgoing one's
+cleanup, so a message from a torn-down session is a real frame and honouring it
+would rotate the key under whoever is actually playing. And a clock that has gone
+backwards rotates once and settles, exactly as the doorway path does; refusing
+would disable level rotation until the wall clock caught up.
+
+**What a rotation sounds like in a pack.** `Groove.retune` queues the new key to
+the next phrase boundary and **keeps the drift across it**, exactly as
+`Melody.retune` keeps the walker's degree — a lean is a statement about an
+instant of the bar and an instant means the same thing in the new mode. So a
+shape a child earned in one key is still their shape in the next one, and a
+rotation lands as a modulation of the groove that was playing rather than as one
+groove stopping and a different one starting.
+
+### Seams left for FORGE and TREBUCHET
+
+* `Groove` is optional. A game with no bar clock does not need one; `Melody` is
+  unchanged and every existing gesture behaves exactly as before.
+* `grooveMatrix(scape, spec)` with no bias is byte-for-byte the pure function it
+  always was, so nothing that reads it today changes.
+* `bandBeats` in PULSE is the pattern for "a backing layer drawn from the groove
+  rather than written down", and it is thirteen lines.
+* The walk's universe is the **union** of every grid it is shown, so two layers
+  in one game may ask about different subdivisions in either order without
+  changing the music.
 
 ---
 
@@ -484,8 +705,10 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
      *nothing*, which is the path a host too old to know about soundscapes
      already takes, and it means "keep your own sounds".
 
-   Still open: `levelComplete` moving the key, which needs the stage 2 feedback
-   channel.
+   **`levelComplete` moving the key: ANSWERED and built.** See *The rotation
+   policy* above. It did not need a new feedback channel after all —
+   `session.transition` already carried exactly the right meaning, and the
+   host's `onTransition` handler was already wired for the day pass.
 3. **Chord progressions.** The brief asks for "many chord progressions to choose
    from" and beatlounge has ~994 generated ones. This design deliberately has
    **none** — a moving progression means the melody's home note moves, and a
@@ -512,6 +735,10 @@ Cost: about six oscillators and two filters, permanently. Cheaper than one of th
 | Mode + root + seed + tension, and the wire guard | `packs/shared/game-soundscape/soundscape.ts` |
 | The walker, the gestures, the voices | `packs/shared/game-soundscape/melody.ts` |
 | The bar as a probability matrix, by mode and density | `packs/shared/game-soundscape/groove.ts` |
+| The walk that makes it evolve, and right/wrong | `packs/shared/game-soundscape/evolve.ts` |
+| The level-transition rotation | `dynawalla-app/src/app/soundscape.ts` → `rotateOnTransition` |
+| Where a pack's level turnover is heard | `dynawalla-app/src/packs/Stage.tsx` → `onTransition` |
+| PULSE's band, drawn from the groove | `games/pulse/src/game/chart.ts` → `bandBeats` |
 | The soundscape the app is in | `packs/shared/game-soundscape/host.ts` |
 | The wire field | `packs/sdk/src/protocol.ts` → `Settings.soundscape` |
 | Where it is published to a pack | `packs/shared/game-host/index.ts` → `publish()` |

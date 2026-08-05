@@ -33,7 +33,9 @@ import {
   PENTATONIC,
   type LayerId,
 } from "../audio/music.ts";
+import { onSoundscape } from "../../../../packs/shared/game-soundscape/index.ts";
 import {
+  bandBeats,
   barNotes,
   BEATS_PER_BAR,
   chartContext,
@@ -197,6 +199,8 @@ export class Run {
   private readonly onCalibrationChange: ((ms: number) => void) | undefined;
   private strayTimes: number[] = [];
   private lastReapTime = 0;
+  /** Drops the app-key subscription. Set in `start`, spent in `dispose`. */
+  private unfollowKey: (() => void) | undefined;
 
   constructor(o: RunOptions) {
     this.host = o.host;
@@ -276,6 +280,27 @@ export class Run {
    * transport is still correctly anchored whenever the audio does come up.
    */
   start(): void {
+    /**
+     * Follow the app's key, which can now move mid-run.
+     *
+     * Before the rotation policy landed, a pack's key was fixed for as long as
+     * it was on stage and this subscription would have been dead code. It now
+     * changes when a LEVEL TURNS OVER — the host rotates on the `transition`
+     * this file sends from `setStage` — so the chart has to be able to hear
+     * about it. `Groove.retune` queues the new key to the next phrase boundary
+     * and keeps the drift across it, so a rotation lands as a modulation of the
+     * groove that was playing rather than as a different groove starting.
+     *
+     * Subscribed in `start` rather than in the constructor so a Run that is
+     * built and never started leaves nothing behind, and unsubscribed in
+     * `dispose` so a child who opens eight games does not leave eight charts
+     * listening.
+     */
+    this.unfollowKey?.();
+    this.unfollowKey = onSoundscape((scape) => {
+      if (scape === null) return;
+      this.chart.groove.retune(scape);
+    });
     void this.engine.resume();
     const t0 = this.engine.now() + 0.35;
     this.timeline.setTempoAtBeat(0, this.stage.bpm);
@@ -300,6 +325,8 @@ export class Run {
 
   dispose(): void {
     this.stop();
+    this.unfollowKey?.();
+    this.unfollowKey = undefined;
     this.engine.dispose();
   }
 
@@ -314,6 +341,21 @@ export class Run {
   private fillBar(bar: number, t: number): void {
     this.bar = bar;
     const beat0 = this.timeline.beatOfBar(bar);
+
+    /**
+     * The groove ages, one phrase at a time, and ONLY here.
+     *
+     * A phrase boundary is the only instant it is safe to move at: `barNotes`
+     * builds all four bars of a phrase at its first bar and memoises them, so a
+     * mutation landing anywhere else would either be invisible until the next
+     * phrase or — after a cache eviction — rewrite a bar the child is halfway
+     * through. `Groove` holds the other end of this by banking bars and only
+     * spending them in whole `BARS_PER_MUTATION` lots.
+     *
+     * Not at bar 0: the first phrase a child ever hears is the seed, which is
+     * the bar the key actually chose. Everything after it is where the key went.
+     */
+    if (bar > 0 && bar % 4 === 0) this.chart.groove.advance(4);
 
     // --- Stage advance lands on the bar line, tempo and all — but only once
     // the child has actually cleared the stage. Bars are how a stage is paced;
@@ -372,12 +414,35 @@ export class Run {
     }
   }
 
+  /**
+   * The band, drawn from the living groove instead of from a written loop.
+   *
+   * **This is the layer the founder was actually hearing** when he said *"the
+   * main rhythm is static"*, and `bandBeats` is where the argument for that is
+   * written down.
+   *
+   * So the tier now says HOW BUSY the bass is and the groove says WHERE it
+   * sits — see `bandBeats`. `BASS_PATTERNS` survives as the escalation ladder
+   * it always was, the same number of bass hits per tier, with the positions
+   * drawn rather than typed.
+   *
+   * **The shaker is deliberately left alone**, and that is the same argument
+   * this whole module rests on: something has to be the frame. A hat that is
+   * dead steady is what makes a bass that moves read as the bass moving rather
+   * than as the tempo wobbling. One layer holds the metre, the rest are free.
+   *
+   * Nothing here is judged, nothing here is struck by a child, and nothing here
+   * changes the tempo — so unlike the chart, the band can be moved as far as
+   * the groove wants to move it without ever making the game harder.
+   */
   private scheduleBacking(bar: number, t: number, spb: number, overdrive: boolean): void {
     const chord = chordAt(bar);
     const root = hz(chord.root + 24);
     const tier = Math.min(BASS_PATTERNS.length - 1, Math.floor(this.stageIndex / 2));
     if (this.layers.has("bass")) {
-      for (const b of BASS_PATTERNS[tier]!) {
+      // The tier's own hit count over the eighth-note grid, as a density.
+      const density = BASS_PATTERNS[tier]!.length / (BEATS_PER_BAR * 2);
+      for (const b of bandBeats(this.chart, bar, "bass", density)) {
         this.voices.bass(t + b * spb, root / 2, spb * 0.62, overdrive ? 1.15 : 1);
       }
     }
@@ -389,13 +454,14 @@ export class Run {
     }
     if (this.layers.has("arp")) {
       const seq = PENTATONIC;
-      for (let k = 0; k < BEATS_PER_BAR * 2; k++) {
-        if ((k + bar) % 3 !== 0) continue;
+      for (const b of bandBeats(this.chart, bar, "arp", 1 / 3)) {
+        const k = Math.round(b * 2);
         const semi = chord.root + seq[(k + bar) % seq.length]! + 36;
-        this.voices.pluck(t + (k / 2) * spb, hz(semi), 0.3, 1.4);
+        this.voices.pluck(t + b * spb, hz(semi), 0.3, 1.4);
       }
     }
   }
+
 
   private scheduleGateBar(bar: number, t: number, spb: number): void {
     // The band takes over so the groove never thins while the player thinks.
@@ -491,6 +557,7 @@ export class Run {
   }
 
   private setStage(index: number, atBeat: number): void {
+    const climbed = index > this.stageIndex;
     this.stageIndex = Math.max(0, index);
     this.stage = stageAt(this.stageIndex);
     this.stageStartBar = this.timeline.barOfBeat(atBeat);
@@ -499,6 +566,19 @@ export class Run {
     const anyHost = this.host as Host & { setFloor?: (d: number) => void };
     anyHost.setFloor?.(this.stage.gateFloor);
     this.fx.stageChanged(this.stage, this.stageIndex);
+    /**
+     * A stage turned over, and the host is told so it may change the app's key.
+     *
+     * **Only upward.** `checkStumble` also calls this method, to step a stage
+     * back when the mix has fallen apart, and the SDK's rule about this message
+     * is absolute: *"a transition is a thing the child finished, never a thing
+     * that beat them"* — it is what the day pass is counted in, and a purchase
+     * surface must never sit next to a failure (ADR-0013). Climbing a stage is
+     * a thing they finished; sliding back down one is not.
+     *
+     * Optional on the contract because the dev harness has no host to tell.
+     */
+    if (climbed) this.host.transition?.("level", this.stage.title);
   }
 
   // -------------------------------------------------------------------- input
@@ -617,6 +697,26 @@ export class Run {
       ms,
       answered: info.label,
     });
+
+    /**
+     * The arithmetic feeds the groove.
+     *
+     * A GATE and not a note, which is the whole judgement in this file about
+     * what "right" means here. A gate is the sum; a note is the rhythm. Thinning
+     * a groove because a child dropped a hat would be the music commenting on
+     * their hands, which is a running critique rather than a conversation — and
+     * the fleet's rule is that it must never read as one. The maths is what the
+     * music answers.
+     *
+     * Neither call makes a sound and neither changes the tempo. `agree` opens
+     * an instant the bar had been ignoring at exactly the same note count;
+     * `makeRoom` takes the busiest ornament down and leaves a little space for
+     * a few phrases, which expires on the clock whether or not the next answer
+     * is right. See `evolve.ts` for why it is those two and not a fanfare and a
+     * buzzer.
+     */
+    if (info.correct) this.chart.groove.agree();
+    else this.chart.groove.makeRoom();
 
     if (info.correct) {
       this.gatesCorrect++;
