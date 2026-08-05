@@ -22,7 +22,7 @@
 // you at the phase `(v mod b) / b`. At zero the two waveforms fuse. Division,
 // audible.
 
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 import type { Host, Question } from "./contract.ts"
 import { Audio } from "./audio.ts"
 import { Feel } from "./core/feel.ts"
@@ -362,6 +362,14 @@ export function mountBeam(el: HTMLElement, host: Host): {
   const ro = new ResizeObserver(() => resize())
   ro.observe(root)
   resize()
+
+  // A ResizeObserver is not enough on its own. The insets arrive from the HOST,
+  // over the settings channel, AFTER the first layout — and iPadOS changes them
+  // in Split View without the element's box moving at all, so the observer never
+  // fires. A game that reads the safe rectangle once at mount therefore lays
+  // itself out against the probe's zeros and stays there. MERGE shipped exactly
+  // that; every pack in this fleet now subscribes.
+  const stopInsets = onInsetsChange(() => resize())
 
   // ── helpers ──────────────────────────────────────────────────────────────
   function pop(text: string, x: number, y: number, size: number, color: string): void {
@@ -1270,6 +1278,7 @@ export function mountBeam(el: HTMLElement, host: Host): {
       guide.destroy()
       cancelAnimationFrame(raf)
       ro.disconnect()
+      stopInsets()
       canvas.removeEventListener("pointerdown", onDown)
       canvas.removeEventListener("pointermove", onMove)
       canvas.removeEventListener("pointerup", onUp)

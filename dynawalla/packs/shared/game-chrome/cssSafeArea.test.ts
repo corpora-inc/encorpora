@@ -12,6 +12,9 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import {
+  SHAPES,
+  auditStylesheet,
+  type Shape,
   envReadDirectly,
   evalLength,
   expandBox,
@@ -145,4 +148,165 @@ test("envReadDirectly names every env() that is not a var() fallback", () => {
   assert.match(bad[0] as string, /read directly/)
   // A comment discussing env() is not a rule.
   assert.deepEqual(envReadDirectly(`/* env(safe-area-inset-top) */ .a { top: 0 }`, "--mn-safe-"), [])
+})
+
+/* ── auditStylesheet: the fleet gate's engine ────────────────────────────── */
+
+/** One shape, so a failure names one screen and not ten. */
+const NAV: Shape = {
+  name: "the founder's phone, portrait",
+  w: 393,
+  h: 851,
+  insets: { top: 24, right: 0, bottom: 48, left: 0 },
+}
+
+const audit = (css: string): string[] =>
+  auditStylesheet(css, [NAV]).map((v) => `${v.rule}: ${v.message}`)
+
+test("a clean stylesheet audits clean", () => {
+  assert.deepEqual(
+    audit(`.hud {
+      position: absolute;
+      bottom: calc(6px + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+      left: 50%;
+    }`),
+    [],
+  )
+})
+
+test("a bare env() is reported wherever it appears", () => {
+  const bad = audit(`.hud { position: absolute; bottom: max(6px, env(safe-area-inset-bottom)); }`)
+  // TWO reports, and both are wanted: the rule reaches for env() at all, AND the
+  // number it actually resolves to puts the element inside the navigation bar.
+  // The first says what to change; the second says what it costs a child.
+  assert.equal(bad.length, 2, bad.join(" | "))
+  assert.match(bad[0] as string, /read directly/)
+  assert.match(bad[1] as string, /resolves to 6px, inside the 48px bottom inset/)
+})
+
+test("an element hugging ONE edge without paying is reported — the ABYSSAL BLOOM defect", () => {
+  // This is the shape of the bug that had no `env()` in it to search for.
+  const bad = audit(`.badge { position: absolute; left: 50%; bottom: 6px; }`)
+  assert.equal(bad.length, 1, bad.join(" | "))
+  assert.match(bad[0] as string, /bottom: 6px resolves to 6px, inside the 48px bottom inset/)
+})
+
+test("an element pinned to BOTH ends of an axis is full-bleed and is left alone", () => {
+  // Full-bleed is the entire reason `viewport-fit=cover` is set. The water, the
+  // light shafts and the particles should run under the rounded corners.
+  assert.deepEqual(audit(`.layer { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }`), [])
+})
+
+test("a centred element is not accused, because a percentage is declined not guessed", () => {
+  // `left: 50%` is centring. Calling it 0px would flag every centred element in
+  // the fleet, which is how the first version of this check produced 139 reports
+  // for one pack.
+  assert.deepEqual(audit(`.mid { position: absolute; left: 50%; top: 50%; }`), [])
+})
+
+test("a shorthand in a media query that throws the safe area away is caught", () => {
+  // MONUMENT's defect: `padding: 8px` is a SHORTHAND and resets all four
+  // longhands, including the three declared above it.
+  const css = `
+    .tools {
+      padding-bottom: max(12px, var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+      padding-left: max(12px, var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+    }
+    @media (max-width: 420px) { .tools { padding: 8px; } }`
+  const bad = audit(css)
+  assert.ok(bad.length >= 1, "the shorthand reset was not noticed")
+  assert.match(bad.join("\n"), /padding-bottom resolves to 8px .* the bottom inset there is 48px/)
+  // …and the same stylesheet WITHOUT the media query is clean, so the report is
+  // about the reset and not about the rule above it.
+  assert.deepEqual(audit(css.slice(0, css.indexOf("@media"))), [])
+})
+
+test("a full-bleed box whose padding starts the text inside the inset is caught", () => {
+  // CLAIM's `.cl-card`: `inset: 0` with a flat `padding: 20px`, so the words
+  // start 20px in — under a 24px status bar.
+  const bad = audit(`.card { position: fixed; top: 0; right: 0; bottom: 0; left: 0; padding: 20px; }`)
+  assert.match(bad.join("\n"), /contents start 20px in — inside the 24px top inset/)
+  assert.match(bad.join("\n"), /contents start 20px in — inside the 48px bottom inset/)
+})
+
+test("an exemption silences a rule, and an empty one does not", () => {
+  assert.deepEqual(
+    audit(`.badge { --dw-safe-exempt: "inside .card, which is position:relative"; position: absolute; bottom: 6px; }`),
+    [],
+  )
+  for (const excuse of ['""', '"ok"', '"fine"', '"n/a"', '"see above"']) {
+    // An empty reason and a two-letter one are the same evasion. The reason IS
+    // the mechanism — nobody types "this sits inside the navigation bar" — so a
+    // token that could not possibly be an argument does not buy the exemption.
+    const bad = audit(`.badge { --dw-safe-exempt: ${excuse}; position: absolute; bottom: 6px; }`)
+    assert.equal(bad.length, 1, `${excuse} bought an exemption: ${bad.join(" | ")}`)
+    assert.match(bad[0] as string, /reason is empty or too short/)
+  }
+})
+
+test("a custom property the GAME publishes is a lower bound, not an error", () => {
+  // HORDE publishes `--hz-chrome-top` from JavaScript. The audit cannot know it,
+  // and treating it as zero is the LOWER BOUND of a length: a rule that clears
+  // the inset with the term at zero clears it whatever the term turns out to be.
+  assert.deepEqual(
+    audit(`.top { position: absolute; left: 0; right: 0;
+      top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top)); }`),
+    [],
+  )
+  // …and the lower bound still catches a rule that is short.
+  const bad = audit(`.top { position: absolute; left: 0; right: 0;
+    top: calc(4px + var(--hz-chrome-top) + 0 * var(--dw-safe-top, env(safe-area-inset-top, 0px))); }`)
+  assert.match(bad.join("\n"), /the top inset there is 24px/)
+})
+
+test("a font-relative length is a lower bound too, so a correct rule is not accused", () => {
+  // MONUMENT's `.mn-combo` is `calc(max(18%, …) + 2.9em)`, and the first version
+  // of the tokeniser read `2.9em` as `2.9` followed by an identifier and threw.
+  assert.deepEqual(
+    audit(`.combo { position: absolute; left: 0; right: 0;
+      top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + 2.9em); }`),
+    [],
+  )
+})
+
+test("a rule that SUBTRACTS the safe area is not read as a promise to exceed it", () => {
+  // SPLITBEAT caps its settings panel with
+  // `max-height: calc(100% - safe-top - 113px - safe-bottom)`. That is correct,
+  // and an earlier version of this check reported the resulting HEIGHT as an
+  // inset violation — a gate that cries wolf about a correct rule is a gate
+  // somebody switches off.
+  assert.deepEqual(
+    audit(`.panel { position: absolute; right: 8px;
+      top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + 40px);
+      max-height: calc(100% - var(--dw-safe-top, env(safe-area-inset-top, 0px))
+        - 113px - var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px))); }`),
+    [],
+  )
+})
+
+test("one wrong declaration is reported ONCE, by the shape that proves it", () => {
+  const many = auditStylesheet(`.badge { position: absolute; left: 50%; bottom: 6px; }`, SHAPES)
+  assert.equal(
+    many.length,
+    1,
+    `ten shapes produced ${many.length} copies of one defect: ${many.map((v) => v.message).join(" | ")}`,
+  )
+  assert.match(many[0]?.message ?? "", /founder's phone/)
+})
+
+test("a static-only rule with no position is not the safe area's business", () => {
+  assert.deepEqual(audit(`.row { padding: 2px 7px; margin-top: 3px; }`), [])
+})
+
+test("the media parser understands the queries this fleet actually writes", () => {
+  // HORDE's tall-screen breakpoint is `(max-aspect-ratio: 4/5)`, and
+  // Number.parseFloat("4/5") is 4 — so a ratio has to be handled before the
+  // length path, not after it.
+  const css = `.a { top: 0px } @media (max-aspect-ratio: 4/5) { .a { top: 9px } }`
+  const rules = parseCss(css)
+  assert.equal(lengthOf(rules, ".a", "top", { w: 393, h: 851 }, new Map()), 9)
+  assert.equal(lengthOf(rules, ".a", "top", { w: 851, h: 393 }, new Map()), 0)
+  const orient = parseCss(`.b { left: 1px } @media (orientation: landscape) { .b { left: 2px } }`)
+  assert.equal(lengthOf(orient, ".b", "left", { w: 851, h: 393 }, new Map()), 2)
+  assert.equal(lengthOf(orient, ".b", "left", { w: 393, h: 851 }, new Map()), 1)
 })

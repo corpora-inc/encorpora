@@ -1,4 +1,4 @@
-import { createInstructions, safeRect } from "../../../packs/shared/game-chrome/index.ts";
+import { createInstructions, onInsetsChange, safeRect } from "../../../packs/shared/game-chrome/index.ts";
 import type { Host, FocusableHost } from "./contract.ts";
 import { Game } from "./game.ts";
 import { Renderer } from "./render.ts";
@@ -157,6 +157,15 @@ export function mount(el: HTMLElement, host: Host, opts: MountOptions = {}): { u
 
   const ro = typeof ResizeObserver === "function" ? new ResizeObserver(resize) : null;
   ro?.observe(el);
+
+  // A ResizeObserver is not enough on its own. The host's real insets arrive
+  // over the settings channel AFTER the first layout, and iPadOS changes them
+  // in Split View without the element's box moving at all — so the observer
+  // never fires and a game that read the safe rectangle once at mount stays
+  // laid out against the probe's zeros for ever. MERGE shipped exactly that.
+  // This pack is where the rule came from: MERGE was the one found never to
+  // subscribe at all.
+  const stopInsets = onInsetsChange(resize);
   window.addEventListener("resize", resize);
   window.addEventListener("orientationchange", resize);
 
@@ -230,6 +239,7 @@ export function mount(el: HTMLElement, host: Host, opts: MountOptions = {}): { u
       cancelAnimationFrame(raf);
       input.dispose();
       ro?.disconnect();
+      stopInsets();
       window.removeEventListener("resize", resize);
       window.removeEventListener("orientationchange", resize);
       document.removeEventListener("visibilitychange", onVis);

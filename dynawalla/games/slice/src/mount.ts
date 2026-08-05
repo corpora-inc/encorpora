@@ -32,7 +32,7 @@
 //
 // Nothing here has a clock on it. Nothing ends. It escalates on evidence.
 
-import { createInstructions, safeRect } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange, safeRect } from "../../../packs/shared/game-chrome/index.ts"
 import { SECOND_GRADE_FLOW, observe, seedSuccess, settle } from "../../../packs/shared/game-pacing/index.ts"
 import type { Host, Question } from "./contract.ts"
 import { Audio } from "./audio.ts"
@@ -514,6 +514,14 @@ export function mountSlice(
 
   const ro = new ResizeObserver(() => resize())
   ro.observe(root)
+
+  // A ResizeObserver is not enough on its own. The host's real insets arrive
+  // over the settings channel AFTER the first layout, and iPadOS changes them
+  // in Split View without the element's box moving at all — so the observer
+  // never fires and a game that read the safe rectangle once at mount stays
+  // laid out against the probe's zeros for ever. MERGE shipped exactly that.
+  const stopInsets = onInsetsChange(() => resize())
+
   resize()
 
   // ── colour ids for the particle field ────────────────────────────────────
@@ -2283,6 +2291,7 @@ export function mountSlice(
       guide.destroy()
       cancelAnimationFrame(raf)
       ro.disconnect()
+      stopInsets()
       canvas.removeEventListener("pointerdown", onDown)
       canvas.removeEventListener("pointermove", onMove)
       canvas.removeEventListener("pointerup", onUp)

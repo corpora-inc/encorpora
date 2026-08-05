@@ -106,6 +106,80 @@ one.
 
 ---
 
+## The safe area — one call, one name, one gate
+
+Every pack's `pack.html` declares `viewport-fit=cover`. That is not a neutral
+setting: it opts the document **into** the notch, the home indicator and the
+rounded corners. Something then has to claw those pixels back for anything a
+child must read or touch.
+
+The obvious way to do that is `env(safe-area-inset-*)`, and **it does not work
+here**. A pack runs in an iframe sandboxed `allow-scripts` with deliberately no
+`allow-same-origin`; `env()` belongs to the top-level browsing context, so a
+cross-origin child resolves all four to **zero**. Every rule that reaches for one
+silently collapses to its fallback. It is perfect in a browser tab and it ships a
+HUD under the status bar.
+
+That defect was found five times — SIEGE, MONUMENT, POLARITY, CLAIM and ABYSSAL
+BLOOM — each time by the founder, on a device, with a green suite behind it. So
+there is now exactly one mechanism and it is not optional.
+
+```ts
+import {
+  installSafeArea,
+  SAFE_VARS,
+  type SafeArea,
+} from "../../../packs/shared/game-chrome/index.ts"
+
+// At mount, once. Publishes --dw-safe-top/right/bottom/left onto `root` for the
+// stylesheet, subscribes for rotation and iPadOS Split View, and calls back with
+// the SAME numbers for the canvas — synchronously at mount and again on every
+// change.
+const safeArea = installSafeArea(root, (insets) => layout(insets))
+
+// In unmount:
+safeArea.dispose()
+```
+
+The stylesheet reads the published property, never the `env()` behind it:
+
+```css
+padding-top: max(12px, var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+```
+
+In CSS-in-TS, interpolate `${SAFE_VARS.top}` rather than typing that string.
+The `env()` at the end is not a second answer — it is the answer in a dev browser
+tab opened straight at `index.html`, which **is** the top-level context and where
+`env()` is right.
+
+**Three rules, and `packs/sdk/src/safearea.test.ts` enforces all three on every
+pull request, over every pack:**
+
+1. `env(safe-area-inset-` may appear only as the fallback of `--dw-safe-<side>`.
+2. Every shipped stylesheet is parsed, cascaded at ten real viewports — including
+   the founder's 393×851 phone with its 24px status bar and 48px three-button
+   navigation bar — and every edge offset resolved to a **number**, with `env()`
+   defined as zero. It fails a value short of the inset, a `padding:` shorthand
+   in a media query that resets a longhand, and anything pinned within 64px of a
+   single edge that never pays for it. (`.ab-badge { bottom: 6px }` was that last
+   one, and it never mentioned the safe area at all, so no text search could have
+   found it.)
+3. A pack that holds CSS in a TypeScript template literal must **export** it, so
+   the gate can import the module and evaluate the same string the browser sees.
+
+The one escape hatch, for a rule that really is positioned inside a container
+that already paid:
+
+```css
+.cl-fill { --dw-safe-exempt: "inside .cl-meter, which is position:relative" }
+```
+
+A declaration rather than a comment, because a CSS parser throws comments away
+and an exemption a gate cannot see quietly becomes universal. The reason is the
+mechanism: nobody types "this sits inside the navigation bar".
+
+---
+
 ## Writing an arcade pack
 
 A game that wants questions mounts `shared/game-host`:

@@ -40,8 +40,8 @@
  *
  * The host measures the real values and publishes them; `safeInsets()` returns
  * those when they are there and falls back to the probe. `applyChromeVars`
- * writes them onto the root as `--hz-safe-*` and every rule in `style.css` reads
- * `var(--hz-safe-top, env(safe-area-inset-top))` — the `env()` staying on as the
+ * writes them onto the root as `--dw-safe-*` and every rule in `style.css` reads
+ * `var(--dw-safe-top, env(safe-area-inset-top))` — the `env()` staying on as the
  * fallback for `npm run dev`, where the game is top-level and `env()` is real.
  * `watchChromeVars` keeps them current across a rotation.
  */
@@ -50,8 +50,9 @@ import {
   HOST_CONTROL,
   HOST_MARGIN,
   HOST_PROGRESS_H,
-  NO_INSETS,
+  SAFE_PREFIX,
   onInsetsChange,
+  publishSafeVars,
   safeInsets,
   type Insets,
   type Rect,
@@ -169,16 +170,12 @@ export function applyChromeVars(root: HTMLElement, insets: Insets = safeInsets()
 /**
  * The safe area, as four custom properties `style.css` can do arithmetic with.
  *
- * Zeros are written explicitly rather than left unset: `var(--hz-safe-top, …)`
+ * Zeros are written explicitly rather than left unset: `var(--dw-safe-top, …)`
  * falls back to `env()` only when the property is ABSENT, and inside the app
  * `env()` is the wrong answer even when the real inset is 0.
  */
 export function applySafeVars(root: HTMLElement, insets: Insets = safeInsets()): void {
-  const i = insets ?? NO_INSETS
-  root.style.setProperty("--hz-safe-top", `${Math.max(0, i.top)}px`)
-  root.style.setProperty("--hz-safe-right", `${Math.max(0, i.right)}px`)
-  root.style.setProperty("--hz-safe-bottom", `${Math.max(0, i.bottom)}px`)
-  root.style.setProperty("--hz-safe-left", `${Math.max(0, i.left)}px`)
+  publishSafeVars(root, SAFE_PREFIX, insets)
 }
 
 /**

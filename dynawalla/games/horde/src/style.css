@@ -53,7 +53,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  padding: max(10px, var(--hz-safe-top, env(safe-area-inset-top))) max(10px, var(--hz-safe-right, env(safe-area-inset-right))) max(10px, var(--hz-safe-bottom, env(safe-area-inset-bottom))) max(10px, var(--hz-safe-left, env(safe-area-inset-left)));
+  padding: max(10px, var(--dw-safe-top, env(safe-area-inset-top, 0px))) max(10px, var(--dw-safe-right, env(safe-area-inset-right, 0px))) max(10px, var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px))) max(10px, var(--dw-safe-left, env(safe-area-inset-left, 0px)));
 }
 
 /* The XP bar had no `env()` at all: flush to y=0 and edge to edge, so on a
@@ -62,9 +62,9 @@
    now starts under the host's own 3px hairline rather than beneath it. */
 .hz-xpbar {
   position: absolute;
-  top: calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-xp-top));
-  left: var(--hz-safe-left, env(safe-area-inset-left));
-  right: var(--hz-safe-right, env(safe-area-inset-right));
+  top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-xp-top));
+  left: var(--dw-safe-left, env(safe-area-inset-left, 0px));
+  right: var(--dw-safe-right, env(safe-area-inset-right, 0px));
   height: 7px;
   background: rgba(120, 190, 255, 0.10);
 }
@@ -83,8 +83,8 @@
    them. */
 .hz-top {
   position: absolute;
-  top: calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-chrome-top));
-  left: var(--hz-safe-left, env(safe-area-inset-left)); right: var(--hz-safe-right, env(safe-area-inset-right));
+  top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top));
+  left: var(--dw-safe-left, env(safe-area-inset-left, 0px)); right: var(--dw-safe-right, env(safe-area-inset-right, 0px));
   display: flex;
   justify-content: center;
   gap: clamp(10px, 3vw, 26px);
@@ -129,7 +129,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(var(--hz-life-bottom, 18px) + var(--hz-safe-bottom, env(safe-area-inset-bottom)));
+  bottom: calc(var(--hz-life-bottom, 18px) + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
   width: min(380px, 62vw);
   height: var(--hz-life-h, 22px);
   background: rgba(70, 12, 26, 0.62);
@@ -169,8 +169,8 @@
 
 .hz-weps {
   position: absolute;
-  left: calc(12px + var(--hz-safe-left, env(safe-area-inset-left)));
-  bottom: calc(40px + var(--hz-safe-bottom, env(safe-area-inset-bottom)));
+  left: calc(12px + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  bottom: calc(40px + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -235,10 +235,10 @@
 
      */
   padding:
-    max(12px, var(--hz-safe-top, env(safe-area-inset-top)))
-    max(12px, var(--hz-safe-right, env(safe-area-inset-right)))
-    max(12px, var(--hz-safe-bottom, env(safe-area-inset-bottom)))
-    max(12px, var(--hz-safe-left, env(safe-area-inset-left)));
+    max(12px, var(--dw-safe-top, env(safe-area-inset-top, 0px)))
+    max(12px, var(--dw-safe-right, env(safe-area-inset-right, 0px)))
+    max(12px, var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)))
+    max(12px, var(--dw-safe-left, env(safe-area-inset-left, 0px)));
   background:
     radial-gradient(120% 90% at 50% 40%, rgba(8, 14, 34, 0.62), rgba(2, 4, 12, 0.93));
   backdrop-filter: blur(9px) saturate(0.85);
@@ -256,7 +256,7 @@
    top padding on a phone held sideways pushed DIVE AGAIN toward the bottom edge
    for nothing. */
 .hz-picks {
-  padding-top: max(12px, calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-chrome-top)));
+  padding-top: max(12px, calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top)));
 }
 
 .hz-modal.hz-open { display: flex; animation: hz-fade 170ms ease-out; }
@@ -356,7 +356,13 @@
 }
 .hz-card:active { transform: translateY(-2px) scale(0.99); }
 
+/* The corner flag on a draft card. `.hz-card` twenty lines up is
+   `position: relative`, so `top: 0; right: 0` is the top-right of a card inside
+   `.hz-picks`, which pays the safe area itself — not the corner of the glass.
+   Stated as a declaration because the fleet gate parses the CSS and throws
+   comments away. */
 .hz-card-rarity {
+  --dw-safe-exempt: "corner of .hz-card, which is position:relative — not the glass";
   position: absolute;
   top: 0; right: 0;
   padding: 3px 7px;
@@ -656,8 +662,8 @@
    and the host paints nothing down there. */
 .hz-corner {
   position: absolute;
-  bottom: calc(var(--hz-icon-bottom) + var(--hz-safe-bottom, env(safe-area-inset-bottom)));
-  right: calc(var(--hz-icon-edge) + var(--hz-safe-right, env(safe-area-inset-right)));
+  bottom: calc(var(--hz-icon-bottom) + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  right: calc(var(--hz-icon-edge) + var(--dw-safe-right, env(safe-area-inset-right, 0px)));
   display: flex;
   gap: var(--hz-icon-gap);
   pointer-events: auto;
@@ -681,8 +687,8 @@
 /* Behind `?debug`, but it sat under the back chevron too. */
 .hz-fps {
   position: absolute;
-  left: calc(var(--hz-fps-edge) + var(--hz-safe-left, env(safe-area-inset-left)));
-  top: calc(var(--hz-safe-top, env(safe-area-inset-top)) + var(--hz-chrome-top));
+  left: calc(var(--hz-fps-edge) + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top));
   font-size: 10px;
   letter-spacing: 0.1em;
   color: #4f7ea0;

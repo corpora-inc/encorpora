@@ -14,10 +14,10 @@
    a cross-origin child resolves all four to ZERO. Every rule below that once
    read `env()` directly resolved to its 10px/20px fallback on every device, and
    `layout.ts`'s numbers, which the tests assert, described a HUD that was never
-   drawn. `--pol-safe-*` is the host's real measurement, published by
+   drawn. `--dw-safe-*` is the host's real measurement, published by
    `applySafeVars`; the `env()` behind each one is the dev-browser fallback,
    where there is no host and where it happens to be right. Never read an
-   `env(safe-area-inset-*)` here except as the fallback of its `--pol-safe-*`. */
+   `env(safe-area-inset-*)` here except as the fallback of its `--dw-safe-*`. */
 .pol-root {
   --pol-chrome-top: 63px;
   --pol-mini-right: 64px;
@@ -70,10 +70,10 @@
      it and the pads stay put.
 
      Four longhands, deliberately not a shorthand. See --pol-hud-edge above. */
-  padding-top: calc(var(--pol-safe-top, env(safe-area-inset-top, 0px)) + var(--pol-chrome-top));
-  padding-right: max(var(--pol-hud-edge), var(--pol-safe-right, env(safe-area-inset-right, 0px)));
-  padding-bottom: max(var(--pol-hud-edge), var(--pol-safe-bottom, env(safe-area-inset-bottom, 0px)));
-  padding-left: max(var(--pol-hud-edge), var(--pol-safe-left, env(safe-area-inset-left, 0px)));
+  padding-top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--pol-chrome-top));
+  padding-right: max(var(--pol-hud-edge), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: max(var(--pol-hud-edge), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--pol-hud-edge), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
@@ -218,9 +218,9 @@
 
 .pol-keyhint {
   position: absolute;
-  bottom: max(var(--pol-hud-edge), var(--pol-safe-bottom, env(safe-area-inset-bottom, 0px)));
-  left: max(var(--pol-hud-edge), var(--pol-safe-left, env(safe-area-inset-left, 0px)));
-  right: max(var(--pol-hud-edge), var(--pol-safe-right, env(safe-area-inset-right, 0px)));
+  bottom: max(var(--pol-hud-edge), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  left: max(var(--pol-hud-edge), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  right: max(var(--pol-hud-edge), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
   text-align: center;
   font-size: clamp(9px, 1.9vw, 12px);
   letter-spacing: 0.2em;
@@ -241,10 +241,10 @@
      REPOLARIZE answer orbs, which a child taps, so in landscape on a notched
      phone the outermost orb ran under the sensor housing. Its contents are
      centred, so the corners are clear by construction. */
-  padding-top: max(var(--pol-veil-pad), var(--pol-safe-top, env(safe-area-inset-top, 0px)));
-  padding-right: max(var(--pol-veil-pad), var(--pol-safe-right, env(safe-area-inset-right, 0px)));
-  padding-bottom: max(var(--pol-veil-pad), var(--pol-safe-bottom, env(safe-area-inset-bottom, 0px)));
-  padding-left: max(var(--pol-veil-pad), var(--pol-safe-left, env(safe-area-inset-left, 0px)));
+  padding-top: max(var(--pol-veil-pad), var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+  padding-right: max(var(--pol-veil-pad), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: max(var(--pol-veil-pad), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--pol-veil-pad), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
   text-align: center;
 }
 .pol-veil[hidden] { display: none; }
@@ -331,9 +331,9 @@
    game's chrome and the host's at every inset. */
 .pol-mini {
   position: absolute;
-  top: max(var(--pol-hud-edge), var(--pol-safe-top, env(safe-area-inset-top, 0px)));
+  top: max(var(--pol-hud-edge), var(--dw-safe-top, env(safe-area-inset-top, 0px)));
   right: calc(
-    max(var(--pol-hud-edge), var(--pol-safe-right, env(safe-area-inset-right, 0px))) +
+    max(var(--pol-hud-edge), var(--dw-safe-right, env(safe-area-inset-right, 0px))) +
       var(--pol-mini-right)
   );
   display: flex;

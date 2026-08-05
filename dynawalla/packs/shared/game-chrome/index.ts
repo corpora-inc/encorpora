@@ -14,8 +14,15 @@ export {
   onInsetsChange,
   safeRect,
   publishSafeVars,
+  installSafeArea,
+  safeVar,
+  SAFE_PREFIX,
+  SAFE_VARS,
+  SIDES,
   NO_INSETS,
   type Insets,
+  type SafeArea,
+  type SideName,
   type StyleTarget,
 } from "./insets.ts"
 export {

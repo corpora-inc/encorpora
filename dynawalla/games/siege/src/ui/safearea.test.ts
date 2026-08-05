@@ -22,7 +22,7 @@
  * That is not a simplification, it is the environment the game actually runs
  * in. Any rule that still reaches for `env()` for its answer resolves to its
  * fallback here and the assertion below it fails, which is exactly what should
- * happen. The only way to pass is for the number to come from `--sg-safe-*`,
+ * happen. The only way to pass is for the number to come from `--dw-safe-*`,
  * which is to say from the host.
  */
 
@@ -42,6 +42,7 @@ import {
   type Insets,
   type Rect,
 } from "../../../../packs/shared/game-chrome/index.ts";
+import { envReadDirectly } from "../../../../packs/shared/game-chrome/cssSafeArea.ts";
 import { CHROME_BOTTOM, TOP_BAR_MIN, applySafeVars, chromeVars } from "./chrome.ts";
 
 const read = (rel: string): string =>
@@ -663,17 +664,13 @@ test("the defeat card clears the safe area and the host's controls", () => {
 /* -------------------------------------------------------------------------- */
 
 test("no rule takes its answer from env() — it is zero where this game runs", () => {
-  const css = read("./styles.css").replace(/\/\*[\s\S]*?\*\//g, "");
-  const found = [...css.matchAll(/env\(safe-area-inset-(top|right|bottom|left)/g)];
-  assert.ok(found.length > 0, "the dev-harness fallbacks are gone entirely");
-  for (const m of found) {
-    const before = css.slice(Math.max(0, m.index - 32), m.index);
-    assert.ok(
-      before.endsWith(`var(--sg-safe-${m[1]}, `),
-      `env(safe-area-inset-${m[1]}) at ${m.index} is read directly, not as the fallback of ` +
-        `--sg-safe-${m[1]} — inside a pack frame that is the number zero`,
-    );
-  }
+  // The rule, from the one place that owns it. This file used to spell it out
+  // against SIEGE's own `--sg-safe-*` namespace; there is one namespace for
+  // the whole fleet now, and one implementation of the check —
+  // `packs/sdk/src/safearea.test.ts` runs this exact function over every pack.
+  const css = read("./styles.css");
+  assert.ok(/env\(safe-area-inset/.test(css), "the dev-harness fallbacks are gone entirely");
+  assert.deepEqual(envReadDirectly(css), []);
 });
 
 test("the safe area is published as four properties, zeros written out", () => {
@@ -683,15 +680,15 @@ test("the safe area is published as four properties, zeros written out", () => {
   assert.deepEqual(
     [...seen.entries()].sort(),
     [
-      ["--sg-safe-bottom", "48px"],
-      ["--sg-safe-left", "0px"],
-      ["--sg-safe-right", "0px"],
-      ["--sg-safe-top", "24px"],
+      ["--dw-safe-bottom", "48px"],
+      ["--dw-safe-left", "0px"],
+      ["--dw-safe-right", "0px"],
+      ["--dw-safe-top", "24px"],
     ],
   );
   // A zero must be WRITTEN, not left unset: an absent property falls through to
   // the `env()` fallback, which is the bug this whole file is about.
-  assert.equal(seen.get("--sg-safe-right"), "0px", "a zero inset was left for env() to answer");
+  assert.equal(seen.get("--dw-safe-right"), "0px", "a zero inset was left for env() to answer");
 });
 
 test("republishing an unchanged safe area writes nothing", () => {

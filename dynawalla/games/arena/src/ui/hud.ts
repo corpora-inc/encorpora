@@ -2,8 +2,11 @@ import {
   HOST_CONTROL,
   HOST_MARGIN,
   HOST_PROGRESS_H,
+  SAFE_VARS,
+  installSafeArea,
   type Insets,
   type Rect,
+  type SafeArea,
 } from "../../../../packs/shared/game-chrome/index.ts"
 import { RIVAL_NAMES, type World } from "../sim/world.ts"
 import { DEPTHS } from "../sim/depths.ts"
@@ -129,11 +132,26 @@ export function soundRect(h: number, insets: Insets = { top: 0, right: 0, bottom
   return { x: Math.max(12, insets.left), y: h - bottom - 44, w: 44, h: 44 }
 }
 
-const CSS = `
+/**
+ * The stylesheet.
+ *
+ * **`SAFE_VARS` rather than `env()`.** Every edge offset below used to read
+ * `env(safe-area-inset-*)` directly, and inside a pack frame that is the number
+ * ZERO — the frame is sandboxed `allow-scripts` with no `allow-same-origin`
+ * and `env()` belongs to the top-level browsing context. So `.arena-depth`
+ * started 63px down instead of 87 on the founder's phone, and `.arena-btns`
+ * sat 12px from the bottom of the glass, 36px inside a three-button navigation
+ * bar. `hudRects()` above had the arithmetic right the whole time and
+ * `layout.test.ts` asserted it — of a HUD that was never drawn.
+ *
+ * The numbers now arrive as `--dw-safe-*`, published by `installSafeArea` in
+ * the constructor below from the same measurement `hudRects` is given.
+ */
+export const CSS = `
 .arena-hud{position:absolute;inset:0;pointer-events:none;font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#cfefff;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden}
 .arena-hud *{box-sizing:border-box}
-.arena-depth{position:absolute;top:calc(env(safe-area-inset-top) + ${HUD_TOP}px);left:max(${HUD_EDGE}px,env(safe-area-inset-left));
+.arena-depth{position:absolute;top:calc(${SAFE_VARS.top} + ${HUD_TOP}px);left:max(${HUD_EDGE}px,${SAFE_VARS.left});
   max-width:${DEPTH_W}px;
   font-size:clamp(11px,2.4vw,15px);letter-spacing:.30em;font-weight:800;opacity:.82;
   text-shadow:0 0 18px rgba(80,220,255,.55),0 2px 6px rgba(0,0,0,.9)}
@@ -141,7 +159,7 @@ const CSS = `
 .arena-pips{display:flex;gap:3px;margin-top:6px}
 .arena-pip{width:9px;height:3px;border-radius:2px;background:rgba(160,225,255,.20);transition:background .5s,box-shadow .5s}
 .arena-pip.on{background:#ffd479;box-shadow:0 0 9px rgba(255,200,110,.85)}
-.arena-board{position:absolute;top:calc(env(safe-area-inset-top) + ${HUD_TOP}px);right:max(${HUD_EDGE}px,env(safe-area-inset-right));
+.arena-board{position:absolute;top:calc(${SAFE_VARS.top} + ${HUD_TOP}px);right:max(${HUD_EDGE}px,${SAFE_VARS.right});
   min-width:${BOARD_W}px;display:flex;flex-direction:column;gap:2px;align-items:stretch}
 .arena-row{display:flex;justify-content:space-between;gap:10px;font-size:clamp(10px,2.1vw,13px);
   letter-spacing:.12em;font-weight:700;opacity:.5;font-variant-numeric:tabular-nums;
@@ -155,8 +173,8 @@ const CSS = `
    legitimately be a white bloom-out and a maths product may not have the one
    line of arithmetic on screen be the thing that disappears. Tabular numerals,
    so a replacing line does not jitter its own digits sideways. */
-.arena-eq{position:absolute;left:max(${RIBBON_EDGE}px,env(safe-area-inset-left));right:max(${RIBBON_EDGE}px,env(safe-area-inset-right));
-  bottom:calc(max(${RIBBON_EDGE}px,env(safe-area-inset-bottom)) + ${RIBBON_LIFT}px);
+.arena-eq{position:absolute;left:max(${RIBBON_EDGE}px,${SAFE_VARS.left});right:max(${RIBBON_EDGE}px,${SAFE_VARS.right});
+  bottom:calc(max(${RIBBON_EDGE}px,${SAFE_VARS.bottom}) + ${RIBBON_LIFT}px);
   max-width:${RIBBON_MAX_W}px;margin-inline:auto;height:${RIBBON_H}px;
   display:grid;place-items:center;pointer-events:none}
 .arena-eq>span{display:inline-block;padding:6px 16px;border-radius:8px;
@@ -178,7 +196,7 @@ const CSS = `
 .arena-eq.reveal>span{background:rgba(4,18,32,.80);color:#eafcff;
   box-shadow:inset 0 0 0 1px rgba(150,220,255,.45),0 0 22px rgba(110,190,255,.28),0 2px 14px rgba(0,0,0,.6);
   font-size:clamp(17px,5vw,30px)}
-.arena-combo{position:absolute;left:50%;bottom:calc(max(16px,env(safe-area-inset-bottom)) + ${RIBBON_LIFT + RIBBON_H + 8}px);transform:translate(-50%,0);
+.arena-combo{position:absolute;left:50%;bottom:calc(max(16px,${SAFE_VARS.bottom}) + ${RIBBON_LIFT + RIBBON_H + 8}px);transform:translate(-50%,0);
   font-size:clamp(14px,4vw,26px);font-weight:900;letter-spacing:.10em;opacity:0;transition:opacity .18s;
   text-shadow:0 0 26px rgba(120,255,220,.7),0 2px 8px rgba(0,0,0,.9);font-variant-numeric:tabular-nums}
 .arena-combo.on{opacity:.95}
@@ -187,8 +205,8 @@ const CSS = `
    SAFE left and right edges and centred inside them — 94vw was centred on the
    glass, which in landscape put a sixty-pixel numeral half under the sensor
    housing on the notched side. */
-.arena-q{position:absolute;left:max(${Q_EDGE}px,env(safe-area-inset-left));right:max(${Q_EDGE}px,env(safe-area-inset-right));
-  top:calc(env(safe-area-inset-top) + ${HUD_TOP}px);max-width:760px;margin-inline:auto;transform:translateY(-14px);
+.arena-q{position:absolute;left:max(${Q_EDGE}px,${SAFE_VARS.left});right:max(${Q_EDGE}px,${SAFE_VARS.right});
+  top:calc(${SAFE_VARS.top} + ${HUD_TOP}px);max-width:760px;margin-inline:auto;transform:translateY(-14px);
   opacity:0;transition:opacity .22s cubic-bezier(.2,.9,.2,1),transform .34s cubic-bezier(.2,.9,.2,1);
   text-align:center;text-wrap:balance}
 .arena-q.on{opacity:1;transform:none}
@@ -203,7 +221,7 @@ const CSS = `
   font-size:clamp(22px,7vw,52px);font-weight:900;letter-spacing:.16em;
   transition:opacity .2s,transform .35s cubic-bezier(.16,1.2,.3,1);text-shadow:0 0 40px currentColor,0 2px 10px rgba(0,0,0,.9)}
 .arena-verdict.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.arena-btns{position:absolute;left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));
+.arena-btns{position:absolute;left:max(12px,${SAFE_VARS.left});bottom:max(12px,${SAFE_VARS.bottom});
   display:flex;gap:8px;pointer-events:auto}
 /* 44×44 of hit area around a 34×34 face. The only interactive control in the
    game may not be smaller than a child's fingertip; the plate stays small so
@@ -221,7 +239,7 @@ const CSS = `
    carried by nothing a child can name, and this product does not do that. */
 .arena-btn.off{opacity:.32}
 .arena-btn.off>i{text-decoration:line-through;text-decoration-thickness:2px}
-.arena-perf{position:absolute;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));
+.arena-perf{position:absolute;right:max(12px,${SAFE_VARS.right});bottom:max(12px,${SAFE_VARS.bottom});
   font-size:10px;letter-spacing:.14em;opacity:.28;font-variant-numeric:tabular-nums;font-weight:700}
 @media (max-width:360px){.arena-board{min-width:92px}}
 @media (prefers-reduced-motion:reduce){.arena-q,.arena-verdict,.arena-combo,.arena-btn,.arena-eq>span{transition-duration:.01ms}}
@@ -311,6 +329,16 @@ export class Hud {
    */
   private eqHold = 0
 
+  /**
+   * The safe area, published onto `this.root` so the stylesheet can read it.
+   *
+   * Held so `dispose` can drop the subscription — the insets change on every
+   * rotation, and iPadOS changes them again when a pack is resized in Split
+   * View, so a HUD that reads them once at mount is correct until the child
+   * turns the phone over.
+   */
+  private safeArea: SafeArea | null = null
+
   constructor(container: HTMLElement, onToggleSound: (on: boolean) => boolean) {
     const style = document.createElement("style")
     style.textContent = CSS
@@ -397,6 +425,11 @@ export class Hud {
 
     this.root.append(this.depthEl, board, this.comboEl, this.eqEl, this.qEl, this.verdictEl, btns, this.perfEl)
     container.appendChild(this.root)
+
+    // The four lengths every rule above reads. Published here, before the first
+    // frame, and again on every change — an unpublished property falls through
+    // to the `env()` behind it, which is zero inside this frame.
+    this.safeArea = installSafeArea(this.root)
   }
 
   private setRungs(band: number): void {
@@ -545,6 +578,8 @@ export class Hud {
   }
 
   dispose(): void {
+    this.safeArea?.dispose()
+    this.safeArea = null
     this.root.remove()
   }
 }

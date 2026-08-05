@@ -10,6 +10,7 @@
 import {
   createInstructions,
   onInsetsChange,
+  SAFE_PREFIX,
   publishSafeVars,
   safeInsets,
   type Instructions,
@@ -322,7 +323,7 @@ class Claim {
     // everything else in this game is: `env()` resolves to zero inside a pack
     // frame, because a pack is a cross-origin child and `env()` belongs to the
     // top-level document.
-    publishSafeVars(this.root, "--cl-safe-", insets)
+    publishSafeVars(this.root, SAFE_PREFIX, insets)
     this.r.resize(w, h, arenaRect(w, h, insets))
     const fw = this.root.clientWidth || w
     const fh = this.root.clientHeight || h

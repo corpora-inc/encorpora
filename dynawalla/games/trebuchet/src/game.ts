@@ -27,7 +27,7 @@ import {
 import { Rings } from './fx/rings.ts'
 import { Trail } from './fx/trail.ts'
 import { Backdrop } from './render/backdrop.ts'
-import { safeRect } from '../../../packs/shared/game-chrome/index.ts'
+import { onInsetsChange, safeRect } from '../../../packs/shared/game-chrome/index.ts'
 import { revealPlan, SECOND_GRADE_FLOW } from '../../../packs/shared/game-pacing/index.ts'
 import { completedSum } from './reveal.ts'
 import {
@@ -389,6 +389,13 @@ export class TrebuchetGame {
       this.ro.observe(el)
     }
 
+    // A ResizeObserver is not enough on its own. The host's real insets arrive
+    // over the settings channel AFTER the first layout, and iPadOS changes them
+    // in Split View without the element's box moving at all — so the observer
+    // never fires and a game that read the safe rectangle once at mount stays
+    // laid out against the probe's zeros for ever. MERGE shipped exactly that.
+    this.stopInsets = onInsetsChange(() => this.resize())
+
     this.resize()
     this.startWave(1)
     this.cam.snap()
@@ -416,6 +423,9 @@ export class TrebuchetGame {
     this.questionShownAt = performance.now()
   }
 
+  /** Drops the inset subscription. A listener that outlives the frame keeps the closure alive. */
+  private stopInsets: (() => void) | null = null
+
   unmount(): void {
     this.running = false
     cancelAnimationFrame(this.raf)
@@ -427,6 +437,8 @@ export class TrebuchetGame {
     window.removeEventListener('keyup', this.onKeyUp)
     window.removeEventListener('resize', this.onResize)
     this.ro?.disconnect()
+    this.stopInsets?.()
+    this.stopInsets = null
     this.audio.dispose()
     this.canvas.remove()
   }

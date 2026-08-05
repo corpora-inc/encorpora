@@ -23,6 +23,22 @@ first — it tells you what exists.
 - **Never a fourth required status check.** Dynawalla jobs join `ci-gate.needs`. A
   path-gated required context never reports on PRs that miss its paths and blocks the
   merge queue forever.
+- **A pack never reads `env(safe-area-inset-*)`.** It is the number ZERO inside a pack
+  frame — the frame is sandboxed `allow-scripts` with no `allow-same-origin`, and `env()`
+  belongs to the top-level browsing context. It looks perfect in a browser tab and ships a
+  HUD under the status bar; five packs have shipped that way, each found by the founder on
+  a device with a green suite behind it. Call `installSafeArea(root, onChange)` from
+  `packs/shared/game-chrome` — one call publishes `--dw-safe-*` for the stylesheet,
+  subscribes for rotation and Split View, and hands the same numbers to the canvas, so the
+  two halves of one game cannot disagree about where the screen is. The only permitted
+  spelling in CSS is `var(--dw-safe-<side>, env(safe-area-inset-<side>, 0px))`, and in
+  CSS-in-TS you interpolate `SAFE_VARS.<side>` rather than typing it.
+  `packs/sdk/src/safearea.test.ts` parses every pack's shipped stylesheet, runs the cascade
+  at ten real viewports and resolves each edge offset to a number; it fails the build for a
+  bare `env()`, for a `padding:` shorthand in a media query that throws a longhand away,
+  and for anything pinned within 64px of one edge that does not pay the inset. If a rule is
+  genuinely not anchored to the glass, say so in a `--dw-safe-exempt` declaration with a
+  reason you were willing to write down.
 - **No floats in `curriculum/` or `engine/`.** Exact integer/rational arithmetic only.
   `0.1 + 0.2 !== 0.3` marks correct decimal work wrong *deterministically*, so no flaky
   test ever fires. A lint suppression in those two directories is a review blocker.

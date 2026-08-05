@@ -7,7 +7,7 @@
 // guard, the strain bleed and the beam all run on it, and a rAF that keeps
 // ticking behind a sheet racks a lot the child never saw.
 
-import { createInstructions } from "../../../packs/shared/game-chrome/index.ts"
+import { createInstructions, onInsetsChange } from "../../../packs/shared/game-chrome/index.ts"
 import type { Handle, Host } from "./contract.ts"
 import { Audio } from "./audio.ts"
 import { Bout, type BoutEvent, TIMING, TIMING_REDUCED } from "./game/bout.ts"
@@ -405,6 +405,13 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
       : null
   observer?.observe(el)
 
+  // A ResizeObserver is not enough on its own. The host's real insets arrive
+  // over the settings channel AFTER the first layout, and iPadOS changes them
+  // in Split View without the element's box moving at all — so the observer
+  // never fires and a game that read the safe rectangle once at mount stays
+  // laid out against the probe's zeros for ever. MERGE shipped exactly that.
+  const stopInsets = onInsetsChange(() => scene.resize())
+
   // A hidden tab is the same situation as a sheet, and it arrives far more
   // often. `MAX_STEP_MS` alone would still spend 120 ms a frame on a throttled
   // timer; this stops the world outright.
@@ -467,6 +474,7 @@ export function mountCounterweight(el: HTMLElement, host: Host): Handle {
       globalThis.removeEventListener("resize", resize)
       globalThis.document?.removeEventListener("visibilitychange", visibility)
       observer?.disconnect()
+      stopInsets()
       guide.destroy()
       audio.dispose()
       canvas.remove()
