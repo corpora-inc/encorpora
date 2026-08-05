@@ -32,9 +32,9 @@
  */
 
 import {
+  Groove,
   currentSoundscape,
   divOfBeat,
-  grooveMatrix,
   grooveSlotBeats,
   pickSoundscape,
   type GrooveSlot,
@@ -60,17 +60,27 @@ export const BEATS_PER_BAR = 4;
 /**
  * Everything a chart is generated from, other than the stage and the bar.
  *
- * The soundscape is resolved ONCE, when a run is constructed, and carried here.
- * Re-reading it per bar would let the app's key change under a child mid-phrase
- * — which `SOUNDSCAPE_DESIGN_2026-07.md` forbids for exactly the same reason
- * here as there: the groove they are two bars into is not allowed to become a
- * different groove because a rotation timer went off.
+ * **The groove is the thing that has changed here, and it is a live object
+ * rather than a soundscape.** It used to be four fixed numbers, and
+ * `grooveMatrix` is a pure function of them, so a run got the same twenty-four
+ * probabilities back every phrase for as long as it lasted. The draw differed;
+ * the bias never did; the founder heard that as *"the main rhythm is static"*
+ * and he was right. `Groove` is the same matrix with a slow tethered walk on
+ * top of it — see `packs/shared/game-soundscape/evolve.ts`.
+ *
+ * The rule the old comment stated is UNCHANGED and is now enforced by the
+ * shared module rather than by this file's restraint: nothing about the groove
+ * moves except inside `advance()`, which `Run` calls at a phrase boundary. A
+ * bar a child is two beats into cannot become a different bar, and a key that
+ * arrives on a settings push waits for the same boundary.
  */
 export type ChartContext = {
   /** The run's seed. Same seed, same chart, forever. */
   readonly seed: string;
-  /** The app's key, as a rhythm generator. Never used to make a sound. */
+  /** The app's key as it was at the doorway. `groove.soundscape` is the live one. */
   readonly scape: Soundscape;
+  /** The living probability matrix. Never used to make a sound. */
+  readonly groove: Groove;
 };
 
 /**
@@ -83,9 +93,17 @@ export type ChartContext = {
  * own seed. That is not a pack choosing a key: nothing here reaches an
  * oscillator. It is a pack needing a probability matrix and taking the only
  * honest source of one it has.
+ *
+ * The WALK is seeded from the run's own seed and not from the soundscape's,
+ * which matters for the thing the founder complained about: two runs opened a
+ * minute apart are in the same key — that is the whole point of a key — and if
+ * the drift were seeded from the key as well they would also drift along
+ * exactly the same path. Seeding it from the run makes every sitting its own
+ * piece of music in the same key, and still replays exactly from the seed.
  */
-export function chartContext(seed: string): ChartContext {
-  return { seed, scape: currentSoundscape() ?? pickSoundscape(hashSeed(seed)) };
+export function chartContext(seed: string, scape?: Soundscape): ChartContext {
+  const key = scape ?? currentSoundscape() ?? pickSoundscape(hashSeed(seed));
+  return { seed, scape: key, groove: new Groove(key, hashSeed(`${seed}|groove`)) };
 }
 
 /**
@@ -257,7 +275,7 @@ function buildPhrase(stage: StageSpec, ctx: ChartContext, phrase: number): Chart
   const downbeatLane = stage.lanes - 1;
   const polyLane = stage.poly ? Math.min(stage.poly.lane, stage.lanes - 1) : -1;
 
-  const matrix = grooveMatrix(ctx.scape, {
+  const matrix = ctx.groove.matrix({
     beatsPerBar: BEATS_PER_BAR,
     divs: stage.divs,
     density: stage.density,
@@ -429,9 +447,27 @@ function nearestSlot(want: number, matrix: readonly GrooveSlot[]): number | null
 type PhraseKey = string;
 const phraseCache = new Map<PhraseKey, ChartNote[][]>();
 
+/**
+ * The four bars of a phrase, memoised.
+ *
+ * **What keeps a bar from changing under a child is NOT this key**, and saying
+ * so plainly is worth a paragraph because the first version of this comment
+ * claimed it was and a mutation test proved otherwise. The guarantee is held at
+ * the other end: `Groove` banks bars and spends them only in whole phrases, and
+ * `Run` calls `advance` at a phrase boundary, so the groove simply cannot move
+ * between bar 0 and bar 3 of a phrase — an eviction in the middle rebuilds from
+ * an unchanged groove and gets the same four bars back. Delete `revision` from
+ * this key and nothing breaks today; queue-then-apply is what is load-bearing,
+ * and `chart.test.ts` fails the moment `agree()` starts landing immediately.
+ *
+ * `revision` stays anyway, for a cost of one string concatenation per phrase:
+ * it makes the cache correct for ANY caller rather than for the one PULSE
+ * happens to be, and a memo whose key does not mention every input it read is
+ * a trap laid for whoever writes the next rhythm game.
+ */
 export function barNotes(stage: StageSpec, ctx: ChartContext, bar: number): ChartNote[] {
   const phrase = Math.floor(bar / 4);
-  const key = `${ctx.seed}|${ctx.scape.modeId}|${stage.id}|${phrase}`;
+  const key = `${ctx.seed}|${ctx.groove.soundscape.modeId}|${ctx.groove.revision}|${stage.id}|${phrase}`;
   let bars = phraseCache.get(key);
   if (!bars) {
     bars = buildPhrase(stage, ctx, phrase);
@@ -439,6 +475,72 @@ export function barNotes(stage: StageSpec, ctx: ChartContext, bar: number): Char
     phraseCache.set(key, bars);
   }
   return bars[bar % 4] ?? [];
+}
+
+/**
+ * Where one BACKING layer plays this bar — the band, not the child.
+ *
+ * **This is the layer the founder was actually hearing.** *"The main rhythm is
+ * static"* — and it was, literally: the bass was `BASS_PATTERNS[tier]`, a
+ * hand-written array of beat offsets identical in every bar of every run at a
+ * tier, and the arp was `(k + bar) % 3`, a three-bar loop. The chart already
+ * varied a great deal per phrase, so making IT drift moved a strike-rate
+ * measurement by 0.0005 and could never have been audible; the variety was
+ * already there and the thing underneath it never moved at all.
+ *
+ * So the tier says HOW BUSY the bass is and the groove says WHERE it sits,
+ * exactly as a stage's `density` and the matrix already divide that work for
+ * the player's notes. Nothing here is judged and nothing here is struck by a
+ * child, so unlike the chart the band can be moved as far as the groove likes
+ * without ever making the game harder — which is why this is where the drift
+ * gets to be heard.
+ *
+ * The stream is seeded on the bar so two adjacent bars are not the same bar,
+ * and on `groove.revision` so a bar re-scheduled after a mutation cannot come
+ * back different from the one already heard — the same reason the revision is
+ * in the phrase cache key.
+ *
+ * Eighths and quarters only. A bass that could land on a triplet against a
+ * sixteenth chart would be a band fighting the child, and the subdivisions the
+ * game TEACHES belong to the chart.
+ *
+ * `downbeat` is which of the two kinds of layer this is, and getting it wrong
+ * was a real regression rather than a hypothetical. The matrix forces beat 0 to
+ * a certainty — it is not negotiable, which is right for a bass — so a layer
+ * that simply reads the matrix plays the bar line in EVERY bar. The arp used to
+ * land on it in one bar of three, and reading the matrix straight put it on all
+ * of them: measured, 300 of 300 bars against 100 of 300, stacking a pluck onto
+ * the bass and the chart's own downbeat and stiffening the exact bar line this
+ * work set out to loosen. `"leave"` hands the bar line to the layers that own
+ * it — and hands beat 0's share of the budget back to the rest of the bar, so
+ * the layer keeps the note count it was asked for instead of quietly losing one
+ * a bar.
+ */
+export function bandBeats(
+  ctx: ChartContext,
+  bar: number,
+  layer: string,
+  density: number,
+  downbeat: "keep" | "leave" = "keep",
+): number[] {
+  const rng = makeRng(hashSeed(`${ctx.seed}|band-${layer}|${bar}|${ctx.groove.revision}`));
+  const slots = ctx.groove.matrix({ beatsPerBar: BEATS_PER_BAR, divs: [1, 2], density });
+  const out: number[] = [];
+  if (downbeat === "leave") {
+    const rest = slots.slice(1);
+    let total = 0;
+    for (const s of rest) total += s.p;
+    // The downbeat was worth exactly 1 of the budget. Share it out in
+    // proportion, and keep the per-slot ceiling so no instant becomes a
+    // certainty — a decorative layer that is certain anywhere is a loop again.
+    const scale = total > 0 ? (total + 1) / total : 1;
+    for (const s of rest) if (rng.bool(Math.min(0.95, s.p * scale))) out.push(s.beat);
+    return out;
+  }
+  for (const slot of slots) {
+    if (rng.bool(slot.p)) out.push(slot.beat);
+  }
+  return out;
 }
 
 /** Test seam — drop memoised phrases so a determinism test starts clean. */

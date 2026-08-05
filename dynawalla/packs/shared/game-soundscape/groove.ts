@@ -68,6 +68,49 @@ export type GrooveSpec = {
   readonly density: number
 }
 
+/**
+ * A lean on the bar that is not the mode's and not the metre's.
+ *
+ * This is the seam `evolve.ts` drifts through, and it is a separate argument
+ * rather than a field of `GrooveSpec` because it is a different KIND of thing:
+ * a spec is what a stage wants and is written down in the game, while a bias is
+ * where a living groove has wandered to and is written down nowhere. Keeping
+ * them apart is also what keeps `grooveMatrix` honest — pass no bias and you
+ * get the seed matrix, byte for byte, forever, which is the property every test
+ * written before drift existed still rests on.
+ *
+ * **It cannot break either of the matrix's two invariants**, and that is by
+ * construction rather than by clamping afterwards. `at` moves an instant's
+ * affinity along the interval it was always allowed to occupy — `+1` takes it
+ * to exactly 1 and `-1` to exactly `MIN_AFFINITY` — so a drifted bar still
+ * colours every instant and still deletes none of them. `openness` may only
+ * ever REMOVE expected notes, never add them, so a groove that has wandered can
+ * never hand a child a fuller bar than the stage asked for.
+ */
+export type GrooveBias = {
+  /**
+   * Beat offset -> lean, `-1..1`. `0`, or a beat that is not in the map, is the
+   * mode's own opinion untouched.
+   *
+   * Keyed by BEAT and not by slot index on purpose. A game changes its
+   * subdivisions between stages — PULSE walks `[1]` to `[1,2,3,4]` — so an
+   * array indexed by slot would silently re-point every lean at a different
+   * instant the moment the grid grew. Beat 1.5 is beat 1.5 in every grid that
+   * contains it, and in the grids that do not it is simply not read.
+   */
+  readonly at: ReadonlyMap<number, number>
+  /**
+   * How much room to leave in the bar, `0..1`. `0` is the density asked for.
+   *
+   * Spends down to `MAX_OPENNESS` of the budget and no further, and never up:
+   * this exists so a groove can make SPACE, which is a thing music does when a
+   * player needs a moment. It is not a difficulty knob and it cannot become
+   * one, because the only direction it moves is toward the empty bar the
+   * downbeat still anchors.
+   */
+  readonly openness: number
+}
+
 /** One instant in the bar, and how likely this soundscape is to strike it. */
 export type GrooveSlot = {
   /** Offset from the bar line, in beats. `0` is the downbeat. */
@@ -97,6 +140,32 @@ export const MIN_AFFINITY = 0.35
 
 /** No single slot is ever a certainty except the downbeat. */
 const MAX_P = 0.95
+
+/**
+ * The most of the density budget a fully-open groove may hand back.
+ *
+ * A quarter. Enough that a child hears the bar breathe out; far too little for
+ * the emptier bar to be worth playing for. A game whose gates get easier the
+ * more you miss is a game that teaches missing, so the ceiling is the whole of
+ * why this is safe — see `evolve.ts`, which is the only thing that sets it.
+ */
+export const MAX_OPENNESS = 0.25
+
+/**
+ * A mode's opinion about an instant, leaned on by a drift.
+ *
+ * The mapping is chosen so the bounds hold with no clamp anywhere: at `b = +1`
+ * the instant is a full `1`, at `b = -1` it is exactly `MIN_AFFINITY`, and at
+ * `b = 0` it is whatever the mode said. That is why a drifted matrix passes the
+ * same "a mode colours the bar but can never delete a slot" assertion the
+ * undrifted one does, rather than passing it because something clipped.
+ */
+export function leanAffinity(affinity: number, bias: number): number {
+  if (!Number.isFinite(affinity)) return MIN_AFFINITY
+  const a = Math.min(1, Math.max(MIN_AFFINITY, affinity))
+  const b = Number.isFinite(bias) ? Math.min(1, Math.max(-1, bias)) : 0
+  return b >= 0 ? a + b * (1 - a) : a + b * (a - MIN_AFFINITY)
+}
 
 const CENTS_PER_OCTAVE = 1200
 
@@ -192,8 +261,17 @@ export function modeAffinity(scape: Soundscape, beat: number, beatsPerBar: numbe
  * The downbeat is forced to `1`. A bar with no downbeat is not a sparser bar,
  * it is a bar a child cannot find, and the whole point of starting sparse is
  * that what is left is unmistakable.
+ *
+ * `bias` is where a live groove has drifted to (`evolve.ts`). Omit it and this
+ * is the same pure function it has always been; pass it and the mode still
+ * chooses the colours and the metre still chooses the skeleton — the drift only
+ * moves an instant inside the range the mode already allowed it.
  */
-export function grooveMatrix(scape: Soundscape, spec: GrooveSpec): GrooveSlot[] {
+export function grooveMatrix(
+  scape: Soundscape,
+  spec: GrooveSpec,
+  bias?: GrooveBias,
+): GrooveSlot[] {
   const beatsPerBar = Math.max(1, Math.floor(spec.beatsPerBar))
   const divs = spec.divs.length > 0 ? spec.divs : [1]
   const density = clamp01(spec.density)
@@ -201,8 +279,19 @@ export function grooveMatrix(scape: Soundscape, spec: GrooveSpec): GrooveSlot[] 
 
   const raw = beats.map((beat) => {
     const div = divOfBeat(beat, divs)
+    // METRE IS NEVER DRIFTED, and that is the constraint that keeps a wandering
+    // groove a groove. A bar's skeleton — downbeat, then halfway, then the
+    // beats, then decoration — is a property of the bar and not of the music
+    // in it, so however far the drift travels the pulse a child is counting is
+    // still where it was. What moves is which instants the key currently
+    // FAVOURS, which is colour; what never moves is the frame that colour sits
+    // in. Take this constraint away and the walk becomes noise within a few
+    // minutes: every slot equal, every bar a coin toss.
     const metre = metreWeight(beat, beatsPerBar, div)
-    const affinity = modeAffinity(scape, beat, beatsPerBar)
+    const affinity = leanAffinity(
+      modeAffinity(scape, beat, beatsPerBar),
+      bias?.at.get(beat) ?? 0,
+    )
     return { beat, div, metre, affinity, want: metre * affinity }
   })
 
@@ -210,7 +299,7 @@ export function grooveMatrix(scape: Soundscape, spec: GrooveSpec): GrooveSlot[] 
   // `density × slots`. The downbeat is spent first and the rest of the budget
   // is shared out in proportion to `want`, re-spreading whatever the per-slot
   // ceiling refuses so the total is preserved rather than quietly lost.
-  const budget = density * raw.length
+  const budget = density * raw.length * (1 - MAX_OPENNESS * clamp01(bias?.openness ?? 0))
   const out = raw.map((s) => ({ ...s, p: s.beat === 0 ? 1 : 0 }))
   let remaining = Math.max(0, budget - 1)
   const open = out.filter((s) => s.beat !== 0)

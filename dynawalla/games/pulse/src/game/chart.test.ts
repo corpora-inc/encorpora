@@ -7,6 +7,7 @@ import {
 } from "../../../../packs/shared/game-soundscape/index.ts";
 import { hashSeed } from "../rng.ts";
 import {
+  bandBeats,
   barNotes,
   BEATS_PER_BAR,
   chartContext,
@@ -21,9 +22,17 @@ import { LANE_UP_ACCURACY, readyForMoreLanes, STAGES, stageAt } from "./stages.t
 
 const KINDS: readonly NoteKind[] = ["kick", "snare", "hat", "tom"];
 
-/** A run's context, as `Run` builds one: a seed plus whatever key the app is in. */
+/**
+ * A run's context, as `Run` builds one: a seed, whatever key the app is in, and
+ * the living groove that walks away from it.
+ *
+ * Built through `chartContext` rather than by hand so that a test cannot get a
+ * context the game could never produce — which is what happened to the version
+ * of this helper that spelled the object out and then had to be taught about a
+ * new field.
+ */
 function ctx(seed: string, scape?: Soundscape): ChartContext {
-  return { seed, scape: scape ?? pickSoundscape(hashSeed(seed)) };
+  return chartContext(seed, scape ?? pickSoundscape(hashSeed(seed)));
 }
 
 /** What a child would hear from one bar: the instants and the hands. */
@@ -430,4 +439,250 @@ test("escalation is monotone where it should be and bounded where it must be", (
     assert.ok(s.lanes <= 3 && s.bars > 0);
   }
   assert.ok(stageAt(40).bpm > STAGES[STAGES.length - 1]!.bpm, "endless mode must keep climbing");
+});
+
+// ── The band, which is what "the main rhythm" meant ──────────────────────────
+//
+// The founder: *"the main rhythm is static."* It was, literally — the bass was
+// a hand-written array of beat offsets, the arp a three-bar modulo. The chart a
+// child PLAYS was already varied; the thing underneath it never moved. These
+// assertions are about the layer he was hearing.
+
+/** One bar of a backing layer, as a string. */
+function bandSig(c: ChartContext, bar: number, density: number): string {
+  return bandBeats(c, bar, "bass", density).join(",");
+}
+
+/** How often each instant of the bar was struck, over a window. */
+function bandProfile(c: ChartContext, from: number, n: number, density: number): Map<number, number> {
+  const out = new Map<number, number>();
+  for (let bar = from; bar < from + n; bar++) {
+    if (bar > 0 && bar % 4 === 0) c.groove.advance(4);
+    for (const b of bandBeats(c, bar, "bass", density)) out.set(b, (out.get(b) ?? 0) + 1);
+  }
+  for (const [k, v] of out) out.set(k, v / n);
+  return out;
+}
+
+test("the band's pattern is drawn from the groove, not written down", () => {
+  // `BASS_PATTERNS[2]` was `[0, 1.5, 2]` in every bar of every run at that
+  // tier, forever. Three distinct patterns in 64 bars would already beat it;
+  // this is far past that, and the number that used to be right here is ONE.
+  const c = ctx("band-variety");
+  const seen = new Set<string>();
+  for (let bar = 0; bar < 64; bar++) seen.add(bandSig(c, bar, 3 / 8));
+  assert.ok(seen.size >= 12, `only ${seen.size} distinct bass bars in 64 — the band is still a loop`);
+  // The downbeat is not negotiable in the band either: it is the thing the rest
+  // of the bar is heard against.
+  for (let bar = 0; bar < 64; bar++) {
+    assert.ok(bandSig(c, bar, 3 / 8).startsWith("0"), `bar ${bar} lost its downbeat`);
+  }
+});
+
+test("only the layers that OWN the bar line play on it", () => {
+  /**
+   * A regression that shipped in the first draft of this work and was caught by
+   * measuring rather than by listening.
+   *
+   * `grooveMatrix` forces beat 0 to a certainty, so a layer that reads the
+   * matrix straight plays the bar line in every single bar. That is right for
+   * the bass, which IS the pulse. It is wrong for the arp, which used to land
+   * there in one bar of three and started landing there in 300 of 300 —
+   * stacking a pluck onto the bass and onto the chart's own always-present
+   * downbeat, which is a thicker transient and a stiffer bar line, the exact
+   * opposite of what this change is for.
+   *
+   * And the layer must not PAY for standing back: beat 0 was worth 1 of the
+   * budget, so it is shared out rather than lost.
+   */
+  let arpOnDownbeat = 0;
+  let arpNotes = 0;
+  let bassOnDownbeat = 0;
+  let bassNotes = 0;
+  let bars = 0;
+  for (let r = 0; r < 10; r++) {
+    _clearChartCache();
+    const c = ctx(`downbeat-${r}`);
+    for (let bar = 0; bar < 300; bar++) {
+      if (bar > 0 && bar % 4 === 0) c.groove.advance(4);
+      const arp = bandBeats(c, bar, "arp", 1 / 3, "leave");
+      const bass = bandBeats(c, bar, "bass", 3 / 8);
+      if (arp.includes(0)) arpOnDownbeat++;
+      if (bass.includes(0)) bassOnDownbeat++;
+      arpNotes += arp.length;
+      bassNotes += bass.length;
+      bars++;
+    }
+  }
+  assert.equal(arpOnDownbeat, 0, `the arp doubled the bar line in ${arpOnDownbeat} of ${bars} bars`);
+  assert.equal(bassOnDownbeat, bars, "the bass lost the bar line it is supposed to carry");
+  // The hand-written arp averaged 8/3 notes a bar and the hand-written bass 3.
+  assert.ok(
+    Math.abs(arpNotes / bars - 8 / 3) < 0.15,
+    `the arp plays ${(arpNotes / bars).toFixed(3)} notes a bar against the 2.667 it replaced`,
+  );
+  assert.ok(
+    Math.abs(bassNotes / bars - 3) < 0.15,
+    `the bass plays ${(bassNotes / bars).toFixed(3)} notes a bar against the 3 it replaced`,
+  );
+});
+
+test("the band changes its MIND over minutes, not merely its notes", () => {
+  /**
+   * The distinction that matters, and the one the first version of this work
+   * got wrong. A per-bar draw already gives different bars; what "static" meant
+   * is that the ODDS never changed, so the same instants won forever. So this
+   * measures the odds — how often each instant is actually struck — early in a
+   * session against later in it, with the walk on and with it off.
+   *
+   * **The window has to be 200 bars and the reason is arithmetic.** A strike
+   * rate measured over N bars carries sampling noise of about
+   * `sqrt(p(1-p)/N)`, which at 96 bars is 0.05 per instant — the same size as
+   * the drift, so the two are indistinguishable and the first version of this
+   * test asserted a ratio of 1.16 and failed. Noise falls as `1/sqrt(N)` and
+   * the drift does not, so a longer window separates them: measured, 0.029
+   * against 0.059 at 200 bars, a clean factor of two.
+   */
+  const WINDOW = 200;
+  const shift = (drift: boolean): number => {
+    let total = 0;
+    for (let r = 0; r < 24; r++) {
+      _clearChartCache();
+      const c = ctx(`band-drift-${r}`);
+      if (!drift) {
+        // The A/B: the same generator with the walk switched off. Everything
+        // else — the seed, the matrix, the per-bar draw — is identical.
+        (c.groove as unknown as { advance: (n: number) => void }).advance = () => {};
+      }
+      const early = bandProfile(c, 0, WINDOW, 3 / 8);
+      const late = bandProfile(c, WINDOW + 56, WINDOW, 3 / 8);
+      let d = 0;
+      for (const b of new Set([...early.keys(), ...late.keys()])) {
+        d += Math.abs((early.get(b) ?? 0) - (late.get(b) ?? 0));
+      }
+      total += d / 8;
+    }
+    return total / 24;
+  };
+  const frozen = shift(false);
+  const alive = shift(true);
+  assert.ok(
+    alive > frozen * 1.6,
+    `the band shifted ${alive.toFixed(4)} with the walk on and ${frozen.toFixed(4)} with it off`,
+  );
+});
+
+test("the band and the chart read ONE groove, in either order", () => {
+  /**
+   * Both layers call `matrix` with different grids in the same bar — the chart
+   * with the stage's subdivisions, the band with eighths — and `Groove` keeps
+   * the union of every grid it is shown precisely so that which of them happens
+   * to be called first cannot change the music. That is a real hazard and not a
+   * theory: `scheduleBacking` runs before the player notes are laid, and moving
+   * one line would swap them.
+   *
+   * The two orders run INTERLEAVED, bar by bar, with the phrase cache dropped
+   * between them — because `barNotes` memoises on the run's seed, so two
+   * contexts sharing a seed would otherwise hand each other bars and the test
+   * would compare a cache with itself.
+   */
+  const a = ctx("order");
+  const b = ctx("order");
+  const stage = STAGES[5]!;
+  for (let bar = 0; bar < 40; bar++) {
+    if (bar > 0 && bar % 4 === 0) {
+      a.groove.advance(4);
+      b.groove.advance(4);
+    }
+    _clearChartCache();
+    const chartFirst = [barSig(5, a, bar), bandSig(a, bar, 3 / 8)];
+    _clearChartCache();
+    const bandFirst = [bandSig(b, bar, 3 / 8), barSig(5, b, bar)];
+    assert.ok(chartFirst[0]!.length > 0, "an empty chart would make every order look alike");
+    assert.equal(chartFirst[0], bandFirst[1], `bar ${bar}: asking the band first changed the chart`);
+    assert.equal(chartFirst[1], bandFirst[0], `bar ${bar}: asking the chart first changed the band`);
+  }
+  void stage;
+});
+
+// ── The chart's own drift, and the cache that must not lie about it ──────────
+
+test("a phrase cannot change under a child, even when the cache is evicted", () => {
+  /**
+   * The guarantee: what a child is two beats into cannot become something else.
+   *
+   * `barNotes` memoises all four bars at the phrase's first bar and the cache is
+   * cleared wholesale at 64 entries, so an eviction mid-phrase is a real event
+   * and the rebuild has to agree with what was already played. What makes that
+   * true is that `agree()` and `makeRoom()` are QUEUED to the next `advance` —
+   * this test fails within a millisecond if either of them starts landing
+   * immediately, which is the mutation it was written against.
+   */
+  const c = ctx("evict");
+  const stage = STAGES[3]!;
+  for (let phrase = 0; phrase < 12; phrase++) {
+    const bars = [0, 1, 2, 3].map((k) => barNotes(stage, c, phrase * 4 + k));
+    // Everything a gate could do, mid-phrase, plus the cache falling over.
+    c.groove.agree();
+    c.groove.makeRoom();
+    _clearChartCache();
+    for (let k = 0; k < 4; k++) {
+      assert.deepEqual(
+        barNotes(stage, c, phrase * 4 + k),
+        bars[k],
+        `phrase ${phrase} bar ${k} changed under the child`,
+      );
+    }
+    c.groove.advance(4);
+  }
+});
+
+test("right and wrong shape the chart, and right never makes it busier", () => {
+  const stage = STAGES[2]!;
+  const notesIn = (c: ChartContext, from: number, n: number): number => {
+    let total = 0;
+    for (let bar = from; bar < from + n; bar++) total += barNotes(stage, c, bar).length;
+    return total;
+  };
+  let thinner = 0;
+  let rightTotal = 0;
+  let quietTotal = 0;
+  const runs = 40;
+  for (let r = 0; r < runs; r++) {
+    const right = ctx(`ab-${r}`);
+    const wrong = ctx(`ab-${r}`);
+    const quiet = ctx(`ab-${r}`);
+    for (let i = 0; i < 10; i++) {
+      right.groove.agree();
+      right.groove.advance(4);
+      wrong.groove.makeRoom();
+      wrong.groove.advance(4);
+      quiet.groove.advance(4);
+    }
+    _clearChartCache();
+    const withRight = notesIn(right, 100, 40);
+    _clearChartCache();
+    const withWrong = notesIn(wrong, 100, 40);
+    _clearChartCache();
+    const withNothing = notesIn(quiet, 100, 40);
+    if (withWrong < withRight) thinner++;
+    rightTotal += withRight;
+    quietTotal += withNothing;
+  }
+  assert.ok(thinner >= runs * 0.7, `a run of misses left more room in only ${thinner} of ${runs}`);
+  /**
+   * Being right must never hand a child MORE to hit.
+   *
+   * Against a run that answered NOTHING, not against the same run earlier: a
+   * per-bar draw over forty bars carries several notes of sampling noise, so a
+   * per-run bound with slack tight enough to mean anything fails six times in
+   * forty on noise alone — which is what the first version of this did. The
+   * aggregate over 1600 bars has the noise averaged out of it, and the exact
+   * claim — that the EXPECTED count is bit-identical — is asserted where it can
+   * be, on the matrix, in `game-soundscape/evolve.test.ts`.
+   */
+  assert.ok(
+    rightTotal <= quietTotal * 1.02,
+    `ten right answers bought ${rightTotal} notes against ${quietTotal} for answering nothing`,
+  );
 });

@@ -21,10 +21,12 @@ import assert from "node:assert/strict"
 
 import {
   ROTATION_MS,
+  TRANSITION_ROTATION_MS,
   claimSoundscape,
   epochSeed,
   releaseSoundscape,
   resetAppSoundscape,
+  rotateOnTransition,
   soundscapeForPack,
   type Soundscape,
 } from "./soundscape.ts"
@@ -306,4 +308,127 @@ test("sound off publishes no key at all", () => {
   const settings = packSettings(input({ sound: false }, chosen))
   assert.equal(settings.sound, false)
   assert.equal("soundscape" in settings, false, "a silent tablet was still told a key")
+})
+
+// ── A level turning over ─────────────────────────────────────────────────────
+//
+// The founder: *"When does the musical mode get changed in general? Maybe it
+// should switch more often like when a level transitions on some games."*
+//
+// The rule these tests hold is not "the pack owns the key" — it is "the key
+// never moves unbidden". A transition is a pack SAYING the child finished
+// something and nothing is in front of them, so it is bidden. Every assertion
+// below is about the difference between those two readings.
+
+/** A pack that mounted and is still on the stage. */
+function playing(at: number, packId: string): Soundscape {
+  const scape = soundscapeForPack(packId, at)
+  claimSoundscape(packId)
+  return scape
+}
+
+test("a level turning over changes the key, once the floor has passed", () => {
+  resetAppSoundscape(101)
+  const opening = playing(T0, "dw.pulse")
+
+  // Too soon: a game whose levels are twenty seconds long must not change the
+  // key of the whole bazaar three times a minute.
+  assert.deepEqual(rotateOnTransition("dw.pulse", T0 + 20_000), opening)
+  assert.deepEqual(rotateOnTransition("dw.pulse", T0 + TRANSITION_ROTATION_MS - 1), opening)
+
+  // And then it does, WITHOUT the child having left the game — which is the
+  // whole of what changed, and what rule 3 used to forbid.
+  const next = rotateOnTransition("dw.pulse", T0 + TRANSITION_ROTATION_MS)
+  assert.notDeepEqual(next, opening, "a level turned over and the key did not")
+
+  // The floor restarts from the change, not from the mount.
+  assert.deepEqual(rotateOnTransition("dw.pulse", T0 + TRANSITION_ROTATION_MS + 5_000), next)
+})
+
+test("a level never lands on the mode the app is already in", () => {
+  /**
+   * Launch seed 171 is the fixture and it is not arbitrary: it is the smallest
+   * launch seed whose epoch-0 and epoch-1 draws BOTH land on `maqam.hijazkar`.
+   * A uniform draw from 38 modes repeats about one time in 38, so an
+   * unremarkable seed asserts nothing here — the first version of this used one
+   * and passed with the re-draw deleted. On this seed the guard is the only
+   * thing standing between a child and the same mode twice running, and the
+   * re-draw takes it to `thaat.kalyan`.
+   */
+  resetAppSoundscape(171)
+  const opening = playing(T0, "dw.pulse")
+  assert.equal(opening.modeId, "maqam.hijazkar", "the fixture seed has drifted; re-derive it")
+  const next = rotateOnTransition("dw.pulse", T0 + TRANSITION_ROTATION_MS)
+  assert.notEqual(next.modeId, opening.modeId, "a level handed back the mode the app was in")
+  assert.equal(next.modeId, "thaat.kalyan")
+})
+
+test("a transition is the ONLY thing that moves a key under a playing child", () => {
+  // The invariant rule 3 was protecting, restated for the world where rule 4
+  // exists: everything that is not a transition still has no effect at all,
+  // however long the clock has run. `packSettings` re-runs on every settings
+  // change — a parent moving the text size slider — and that path leads here.
+  resetAppSoundscape(102)
+  const held = playing(T0, "dw.pulse")
+  for (const t of [T0 + 1, T0 + ROTATION_MS, T0 + 10 * ROTATION_MS, T0 + 400 * ROTATION_MS]) {
+    assert.deepEqual(soundscapeForPack("dw.pulse", t), held, `the key moved by itself at ${t - T0}ms`)
+  }
+})
+
+test("a transition from a pack that is not on the stage is ignored", () => {
+  // A message from a torn-down session. Honouring it would rotate the key under
+  // whoever IS playing — rule 3's exact failure, arriving through the door
+  // built to respect it. React renders the incoming pack before it runs the
+  // outgoing one's cleanup, so this overlap is a real frame and not a theory.
+  resetAppSoundscape(103)
+  playing(T0, "dw.pulse")
+  const live = playing(T0 + 5_000, "dw.lattice")
+  const after = rotateOnTransition("dw.pulse", T0 + 10 * TRANSITION_ROTATION_MS)
+  assert.deepEqual(after, live, "a dead session changed the key under a live one")
+  assert.deepEqual(soundscapeForPack("dw.lattice", T0 + 10 * TRANSITION_ROTATION_MS), live)
+})
+
+test("the eight-minute floor still holds for a pack with no levels", () => {
+  // Most of the fleet has no levels and sends no transitions. Without the
+  // doorway clock a forty-minute session at THE STEELYARD would sit in one key
+  // for forty minutes, which is the "stale and repetitive" the brief opened
+  // with. The two floors are a backstop and a driver, not a duplicate.
+  resetAppSoundscape(104)
+  const first = visit(T0, "dw.counterweight")
+  assert.deepEqual(visit(T0 + ROTATION_MS - 1, "dw.counterweight"), first)
+  assert.notDeepEqual(visit(T0 + ROTATION_MS, "dw.counterweight"), first)
+})
+
+test("a transition floor is shorter than a doorway floor, and that is the design", () => {
+  // A doorway happens whenever a child browses, so it needs a long floor. A
+  // transition is a boundary a game declared, which is a stronger signal, so it
+  // justifies a change on less accumulated time. If these ever invert, the
+  // reasoning in `soundscape.ts` has come apart.
+  assert.ok(
+    TRANSITION_ROTATION_MS < ROTATION_MS,
+    `a level (${TRANSITION_ROTATION_MS}ms) needs longer than a doorway (${ROTATION_MS}ms)`,
+  )
+  assert.ok(TRANSITION_ROTATION_MS >= 60_000, "a key that lasts under a minute is not a key")
+})
+
+test("a key rotated by a level reaches the pack, through the same wire", () => {
+  // The rotation is worth nothing if it stops at the host. This asserts on what
+  // a pack would actually receive, through the validator the pack side runs.
+  resetAppSoundscape(105)
+  playing(T0, "dw.pulse")
+  const rotated = rotateOnTransition("dw.pulse", T0 + TRANSITION_ROTATION_MS)
+  assert.deepEqual(parseSoundscape(packSettings(input({}, rotated)).soundscape), rotated)
+})
+
+test("a backwards clock rotates once on a level and then settles", () => {
+  // Same behaviour as the doorway path, and the same reasoning: refusing to
+  // rotate on a negative elapsed would look safer and would disable level
+  // rotation until the wall clock caught up — which, for a device corrected by
+  // ninety days, is the rest of the year.
+  resetAppSoundscape(106)
+  const held = playing(T0, "dw.pulse")
+  const back = T0 - 90 * 24 * 60 * 60 * 1000
+  const after = rotateOnTransition("dw.pulse", back)
+  assert.notDeepEqual(after, held, "a corrected clock pinned the key")
+  assert.deepEqual(rotateOnTransition("dw.pulse", back + 1000), after, "it kept rotating after settling")
 })

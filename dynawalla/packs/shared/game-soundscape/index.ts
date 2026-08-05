@@ -17,6 +17,9 @@
  *   `melody`     the walker: gestures in, in-tune voices out.
  *   `groove`     the same soundscape read as TIME: a probability matrix over
  *                the bar, whose two inputs are the mode and the density.
+ *   `evolve`     that matrix, alive: a slow tethered walk over the bar, steered
+ *                by whether the child was right, so the groove drifts somewhere
+ *                new over minutes instead of repeating a fixed shape.
  *   `host`       the soundscape the app is in, published by the host.
  *
  * Usage, in a game:
@@ -34,13 +37,22 @@
  */
 export { CENTS_PER_OCTAVE, centsBetween, centsToRatio, foldIntoRange, hz } from "./pitch.ts"
 export {
+  BARS_PER_MUTATION,
+  Groove,
+  ROOM_HALF_LIFE_BARS,
+  SEED_HALF_LIFE_BARS,
+} from "./evolve.ts"
+export {
+  MAX_OPENNESS,
   MIN_AFFINITY,
   divOfBeat,
   expectedNotes,
   grooveMatrix,
   grooveSlotBeats,
+  leanAffinity,
   metreWeight,
   modeAffinity,
+  type GrooveBias,
   type GrooveSlot,
   type GrooveSpec,
 } from "./groove.ts"

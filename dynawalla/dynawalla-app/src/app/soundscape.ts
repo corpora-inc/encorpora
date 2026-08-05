@@ -25,15 +25,11 @@
 //   2. **A new key every `ROTATION_MS` after that.** Eight minutes. Long enough
 //      that a whole run at one game sits inside one key; short enough that a
 //      long afternoon hears five or six of them.
-//   3. **The key cannot move while a pack owns it.** A key change *underneath* a
-//      child — mid-question, because a timer went off — is the jarring thing,
-//      and it is worse than repetition: the drone would slide and the plate a
-//      child is holding would answer in a different mode than it did a second
-//      ago. So the app changes key while a child is walking between games, and
-//      never while they are in one. A forty-minute session at a single pack
-//      therefore stays in one key on purpose; the walker is what keeps that
-//      from being the same ding twice, and stage 2's `levelComplete` feedback
-//      is the designed place for a mid-session change.
+//   3. **The key never moves unbidden.** A key change *underneath* a child —
+//      mid-question, because a timer went off — is the jarring thing, and it is
+//      worse than repetition: the drone would slide and the plate a child is
+//      holding would answer in a different mode than it did a second ago. So a
+//      clock alone may never move the key while a pack is on the stage.
 //
 //      This is an invariant of THIS module and not a convention the caller has
 //      to keep, which matters: `packSettings` re-runs on every settings change
@@ -42,9 +38,37 @@
 //      playing child, and nothing would fail. `soundscapeForPack` takes the id
 //      of the pack asking and hands the *same* key back to the pack that
 //      already has it, whatever the clock says and however often it is called.
-//      Rotation is what happens when a DIFFERENT pack asks, or when the one
-//      that owned it has left.
-//   4. **Never the same mode twice running.** A uniform draw from 38 modes
+//   4. **A pack MAY ask for the key to turn over, by finishing something.**
+//      The founder: *"When does the musical mode get changed in general? Maybe
+//      it should switch more often like when a level transitions on some
+//      games."*
+//
+//      Rule 3 forbade a key change nobody asked for. A level transition is not
+//      that: it is the pack itself saying *the child finished something and
+//      there is nothing in front of them right now*, which is the same
+//      condition a doorway satisfies and is the moment the game already marks
+//      as "put that down". So rotating there upholds rule 3's reasoning rather
+//      than contradicting it — the rule was never "the pack owns the key", it
+//      was "no unbidden change mid-question". Doorways are the host's boundary;
+//      transitions are the pack's.
+//
+//      The gesture already exists and no new one was invented: `session.
+//      transition`, the SDK's ungated session method, whose documented contract
+//      is already exactly the guarantee needed — *"a transition is a thing the
+//      child finished, never a thing that beat them"*. A pack that has no
+//      levels simply never sends one and rotates at doorways alone, which is
+//      the policy that was already there.
+//
+//      A transition carries its own floor, `TRANSITION_ROTATION_MS`, and it is
+//      SHORTER than the doorway floor rather than longer. That is deliberate
+//      and it is the whole reason there are two numbers: a doorway happens
+//      whenever a child browses, so it needs a long floor to stop the bazaar
+//      changing key at every threshold; a transition is a real boundary a game
+//      declared, which is a stronger signal, so it needs less accumulated time
+//      to justify a change. Ninety seconds — long enough that a key gets to be
+//      a key even in a game whose levels are forty seconds long, short enough
+//      that the founder's "switch more often" is honoured.
+//   5. **Never the same mode twice running.** A uniform draw from 38 modes
 //      repeats about one doorway in 38, and a repeat is exactly the "stale and
 //      repetitive" the brief names. Re-drawing costs one comparison.
 //
@@ -84,6 +108,24 @@ export type { Soundscape }
  * whenever the child next walks between games".
  */
 export const ROTATION_MS = 8 * 60 * 1000
+
+/**
+ * How long a key must have been held before a LEVEL TRANSITION may turn it over.
+ *
+ * Ninety seconds, and it stays a floor for the same reason `ROTATION_MS` is
+ * one: a game whose levels are twenty seconds long must not change the key of
+ * the whole bazaar three times a minute, which is the twenty-eight-ringtones
+ * failure with a faster rhythm.
+ *
+ * **`ROTATION_MS` stays and does NOT become redundant.** It is now the
+ * backstop rather than the main driver: most packs in the fleet have no levels
+ * and send no transitions, so without it a forty-minute session at THE
+ * STEELYARD would sit in one key for forty minutes — which is the "stale and
+ * repetitive" the brief opened with. With both, a game with levels rotates on
+ * its own boundaries and a game without one rotates on the clock at the next
+ * doorway, and neither ever rotates under a child mid-question.
+ */
+export const TRANSITION_ROTATION_MS = 90 * 1000
 
 /**
  * How many times a draw may be rejected for repeating the previous mode.
@@ -193,6 +235,67 @@ export function soundscapeForPack(packId: string, now: number): Soundscape {
   held = { scape, since: at, epoch }
   owner = packId
   return scape
+}
+
+/**
+ * A pack has finished something — a level, a run, a boss — and the key may turn
+ * over on it.
+ *
+ * The founder's answer, made a function. The rules, and each is load-bearing:
+ *
+ *   * **Only the pack that owns the key may do this.** A transition arriving
+ *     from a pack that is not on the stage is a message from a torn-down
+ *     session, and honouring it would rotate the key under whoever IS on the
+ *     stage — which is the exact thing rule 3 exists to prevent, arriving
+ *     through the door built to respect it.
+ *   * **The floor still applies**, at `TRANSITION_ROTATION_MS` rather than at
+ *     `ROTATION_MS`. See the note on both.
+ *   * **Ownership does not change.** The pack keeps the key it just changed;
+ *     the next thing it asks gets the new one.
+ *
+ * Returns the key to play in either way, so a caller can push it and does not
+ * have to know whether anything moved.
+ */
+export function rotateOnTransition(packId: string, now: number): Soundscape {
+  const previous = held
+  if (previous === null || owner !== packId) return previous?.scape ?? soundscapeForPack(packId, now)
+  const at = Number.isFinite(now) ? now : previous.since
+  const elapsed = at - previous.since
+  // A clock that went backwards rotates ONCE and then settles, exactly as the
+  // doorway path does — and the alternative was tried and is worse. Treating a
+  // negative elapsed as "not yet" looks safer and would disable level rotation
+  // until the wall clock caught up, which for a device whose time was corrected
+  // by ninety days is the rest of the year. Rotating resets `since` to the
+  // corrected instant, so the very next level is inside the floor again.
+  if (elapsed >= 0 && elapsed < TRANSITION_ROTATION_MS) return previous.scape
+  const epoch = previous.epoch + 1
+  const scape = draw(epoch, previous.scape.modeId)
+  held = { scape, since: at, epoch }
+  return scape
+}
+
+/**
+ * `rotateOnTransition` at the wall clock.
+ *
+ * The clock read lives HERE and not at the call site, and that is a rule the
+ * React compiler enforces rather than a preference. `Stage`'s transition
+ * handler is defined inside the `useMemo` that builds the pack's services, and
+ * the compiler cannot see that `createServices` only stores the callback — so a
+ * `Date.now()` in it is a clock read the compiler must assume happens during
+ * render, and `react-hooks/purity` rejects it, correctly, because a render that
+ * reads a clock is a render that is not idempotent. `useEffectEvent` is the
+ * slot React provides for a function defined in render and called only outside
+ * it, but it may not be passed to anything, which is exactly what this callback
+ * has to be.
+ *
+ * So the component stops knowing about time at all, which is the better shape
+ * anyway: this module already owns every clock the music has — `ROTATION_MS`,
+ * `TRANSITION_ROTATION_MS`, and the `since` they are measured from. The pure
+ * function keeps taking `now`, so the whole policy stays assertable against a
+ * fixed instant; this is one line on top of it and has no logic to test.
+ */
+export function rotateOnTransitionNow(packId: string): Soundscape {
+  return rotateOnTransition(packId, Date.now())
 }
 
 /**

@@ -25,7 +25,12 @@ import {
   orientationPorts,
   primeOrientationPermission,
 } from "../app/platform.ts"
-import { claimSoundscape, releaseSoundscape, soundscapeForPack } from "../app/soundscape.ts"
+import {
+  claimSoundscape,
+  releaseSoundscape,
+  rotateOnTransitionNow,
+  soundscapeForPack,
+} from "../app/soundscape.ts"
 import { strings } from "../app/strings.ts"
 import { useThemeStore } from "../app/theme.ts"
 import { documentLock } from "../app/zoom.ts"
@@ -137,7 +142,7 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
   // a parent touches a setting cannot put the game into a new key mid-question
   // even if somebody later inlines this call into the memo below. The claim and
   // the release are what let the NEXT pack rotate.
-  const [soundscape] = useState(() => soundscapeForPack(packId, Date.now()))
+  const [soundscape, setSoundscape] = useState(() => soundscapeForPack(packId, Date.now()))
   useEffect(() => {
     claimSoundscape(packId)
     return () => releaseSoundscape(packId)
@@ -168,6 +173,25 @@ function Stage({ packId, onLeave }: { packId: string; onLeave: () => void }) {
         onMilestone: (name) => console.info(`[packs] ${packId} reached ${name}`),
         onTransition: (kind, label) => {
           console.info(`[packs] ${packId} reached a ${kind}${label ? ` (${label})` : ""}`)
+          /**
+           * The one moment a pack may turn the app's key over.
+           *
+           * A transition is the game saying "the child finished something and
+           * nothing is in front of them", which is the same condition a doorway
+           * satisfies — see `app/soundscape.ts` for why that upholds the
+           * never-under-a-child rule rather than breaking it. That module owns
+           * the floor, the ownership check AND the clock: this component reads
+           * no time, because a `Date.now()` here is a clock read the React
+           * compiler must assume happens during render. See
+           * `rotateOnTransitionNow`.
+           *
+           * Unconditional `setSoundscape`: the rotation is refused far more
+           * often than it is granted — a level inside the floor gets the same
+           * key back — and React bails out of a re-render when the state is
+           * identical, so the common case costs nothing and there is no second
+           * condition to keep in step with the policy.
+           */
+          setSoundscape(rotateOnTransitionNow(packId))
           // The store decides and records in one call, so two transitions
           // arriving in the same frame cannot both be "the first one today".
           if (reachTransition(packId) === "rest") setOffering(true)

@@ -62,20 +62,31 @@ type Rig = {
   outcomes: string[];
   /** How many candidates each gate carried, in order, with its stage. */
   gateShapes: Array<{ stage: number; candidates: number; wrong: number }>;
+  /** Every `session.transition` the run sent the host, in order. */
+  transitions: Array<{ kind: string; label: string | undefined }>;
   play(seconds: number): void;
   dispose(): void;
 };
 
 /**
- * @param answer what the bot does at every gate: strike the right candidate,
- *               strike a wrong one, or nothing at all.
+ * @param answer what the bot does: strike the right candidate at every gate,
+ *               strike a wrong one, ignore gates but drum everything else, or —
+ *               `"silent"` — put its hands in its pockets and touch nothing.
+ *
+ * `"silent"` exists because the other three cannot reach the stumble. A bot
+ * that drums every ordinary note dead on earns back more health than a wrong
+ * gate costs, so `rig("wrong", 4)` played for five minutes and never once fell
+ * a stage — which made an assertion about what happens when a stage IS lost
+ * vacuous, and it passed with the guard it was testing deleted. Missing
+ * everything drains health at 0.05 a note and stumbles inside a stage.
  */
-function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
+function rig(answer: "right" | "wrong" | "never" | "silent", startStage = 0): Rig {
   const reports: Report[] = [];
   const stages: number[] = [];
   const readingWindows: number[] = [];
   const outcomes: string[] = [];
   const gateShapes: Array<{ stage: number; candidates: number; wrong: number }> = [];
+  const transitions: Array<{ kind: string; label: string | undefined }> = [];
   let n = 0;
 
   const host: Host = {
@@ -89,6 +100,9 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
     haptic() {},
     prefersReducedMotion() {
       return true;
+    },
+    transition(kind, label) {
+      transitions.push({ kind, label });
     },
   };
 
@@ -147,6 +161,7 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
    * prove nothing about the stages above it.
    */
   const botTick = (): void => {
+    if (answer === "silent") return;
     const heard = run.heard();
     for (const note of run.notes.all()) {
       if (note.judged !== null || planned.has(note.id)) continue;
@@ -172,6 +187,7 @@ function rig(answer: "right" | "wrong" | "never", startStage = 0): Rig {
 
   return {
     run,
+    transitions,
     reports,
     stages,
     readingWindows,
@@ -438,4 +454,123 @@ test("the viewport can hold the count down, but never below a real choice", () =
     "with room to spare the stage decides",
   );
   r.dispose();
+});
+
+// ── The groove, in a real run ────────────────────────────────────────────────
+//
+// The founder: *"pulse is somewhat improved but it needs to gradually evolve
+// more — the main rhythm is static … Maybe being 'right' or 'wrong' should
+// affect the beat in different ways."* These are the assertions that the
+// machinery in `packs/shared/game-soundscape/evolve.ts` is actually reached by
+// a thumb, rather than merely existing and being unit-tested next door.
+
+/**
+ * Play a rig and always tear it down, even when an assertion throws.
+ *
+ * A `Run` that is not disposed leaves its lookahead running, so a FAILING
+ * assertion held the whole test file open until Node's own timeout — sixty
+ * seconds of nothing where one line of red belonged. Found while
+ * mutation-testing these very tests, which is what mutation-testing is for.
+ */
+function played(answer: "right" | "wrong" | "never" | "silent", seconds: number, startStage = 0) {
+  const r = rig(answer, startStage);
+  try {
+    r.play(seconds);
+    return { r, done: () => r.dispose() };
+  } catch (error) {
+    r.dispose();
+    throw error;
+  }
+}
+
+test("a run ages its groove, one phrase at a time and never faster", () => {
+  const { r, done } = played("right", 180);
+  try {
+    const g = r.run.chart.groove;
+    // 180 s at 80-96 BPM is roughly 60 bars, so about 15 phrases. The exact
+    // count depends on how far the bot climbed; the claim is that it aged, in
+    // phrases, and that it neither stood still nor raced.
+    assert.ok(g.revision >= 8, `three minutes of play only aged the groove ${g.revision} times`);
+    assert.ok(g.revision <= 40, `the groove aged ${g.revision} times in three minutes — that is not "slowly"`);
+    assert.ok(g.bars >= g.revision * 4, "bars and mutations came apart");
+  } finally {
+    done();
+  }
+});
+
+test("right and wrong steer the same run's groove in opposite directions", () => {
+  // Two bots, one seed, one difference: what they do at a gate. Nothing else
+  // about the run differs, so a difference in the groove is caused by the
+  // arithmetic and by nothing else.
+  const spec = { beatsPerBar: 4, divs: [1, 2], density: 0.34 };
+  const net = (g: Rig["run"]["chart"]["groove"]): number => {
+    const now = g.matrix(spec);
+    const seed = g.seedMatrix(spec);
+    let out = 0;
+    for (let i = 1; i < now.length; i++) {
+      const d = (now[i]?.affinity ?? 0) - (seed[i]?.affinity ?? 0);
+      if (d >= 0.12) out++;
+      else if (d <= -0.12) out--;
+    }
+    return out;
+  };
+
+  const right = played("right", 240);
+  const wrong = played("wrong", 240);
+  try {
+    assert.ok(right.r.outcomes.includes("correct"), "the right bot never answered anything");
+    assert.ok(wrong.r.outcomes.includes("wrong"), "the wrong bot never answered anything");
+    assert.ok(
+      net(right.r.run.chart.groove) > net(wrong.r.run.chart.groove),
+      `right netted ${net(right.r.run.chart.groove)} and wrong netted ${net(wrong.r.run.chart.groove)} — the beat did not hear the difference`,
+    );
+    // And the miss left ROOM rather than a hole: the openness dial is up on the
+    // bot that got everything wrong and down on the one that got it right.
+    assert.ok(
+      wrong.r.run.chart.groove.openness > right.r.run.chart.groove.openness,
+      "a run of wrong answers left no more room than a run of right ones",
+    );
+  } finally {
+    right.done();
+    wrong.done();
+  }
+});
+
+test("a stage climbed is a transition; a stage LOST is not", () => {
+  // The host reads a transition as a licence to change the app's key, and the
+  // SDK's rule is absolute: *"a transition is a thing the child finished, never
+  // a thing that beat them"*. `checkStumble` steps a stage BACK through the
+  // same method, so the two paths have to be told apart.
+  const climbing = played("right", 300);
+  try {
+    assert.ok(climbing.r.run.stageIndex > 0, "the fixture never climbed, so this proves nothing");
+    assert.ok(climbing.r.transitions.length > 0, "a stage was climbed and the host was never told");
+    for (const t of climbing.r.transitions) assert.equal(t.kind, "level");
+    assert.equal(
+      climbing.r.transitions.length,
+      climbing.r.run.stageIndex,
+      "one transition per stage climbed, no more and no fewer",
+    );
+  } finally {
+    climbing.done();
+  }
+
+  // A bot that touches nothing misses every note, drains its health, stumbles
+  // and is stepped back down a stage. Not one of those is a transition. It has
+  // to be `"silent"`: a bot that drums perfectly and only fumbles the sums
+  // earns back more health than it loses and never falls at all — see `rig`.
+  const falling = played("silent", 300, 4);
+  try {
+    assert.ok(
+      falling.r.run.stageIndex < 4,
+      `the fixture never lost a stage (ended at ${falling.r.run.stageIndex}), so this proves nothing`,
+    );
+    assert.equal(
+      falling.r.transitions.length,
+      0,
+      "a failure was reported to the host as something the child finished",
+    );
+  } finally {
+    falling.done();
+  }
 });
