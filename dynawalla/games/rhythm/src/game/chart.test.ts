@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { grooveBar, polyBar, subdivisionFor, MUSICAL_CELLS, type ChartNote } from "./chart.ts";
+import { showcaseBar, polyBar, subdivisionFor, MUSICAL_CELLS, type ChartNote } from "./chart.ts";
+import { grooveBar, laneOf, newGroove } from "./groove.ts";
 import { windowsFor, verdictFor, BASE_WINDOWS } from "./judge.ts";
 import { createStubHost, parseRat, fmt, rat } from "../stubHost.ts";
 
@@ -31,8 +32,10 @@ test("an answer that is not a rhythm returns null rather than being forced", () 
 
 test("every generated note lands exactly on a cell boundary", () => {
   for (const cells of MUSICAL_CELLS) {
+    const g = newGroove(cells * 31 + 7);
+    g.cells = cells;
     for (let bar = 0; bar < 40; bar++) {
-      grooveBar({ bar, cells, accentEvery: 2, density: 0.7, difficulty: 4, showcase: false }, out);
+      grooveBar(g, 0.55, out);
       for (const n of out) {
         const expected = (n.cell * 4) / n.cells;
         assert.ok(
@@ -47,8 +50,10 @@ test("every generated note lands exactly on a cell boundary", () => {
 
 test("a bar always announces itself on beat one", () => {
   for (const cells of MUSICAL_CELLS) {
+    const g = newGroove(cells * 17 + 3);
+    g.cells = cells;
     for (let bar = 0; bar < 30; bar++) {
-      grooveBar({ bar, cells, accentEvery: 2, density: 0.2, difficulty: 1, showcase: false }, out);
+      grooveBar(g, 0, out);
       assert.ok(out.some((n) => n.beat === 0), `bar ${bar} cells ${cells} lost its downbeat`);
     }
   }
@@ -56,8 +61,11 @@ test("a bar always announces itself on beat one", () => {
 
 test("notes never collide within a lane", () => {
   for (const cells of MUSICAL_CELLS) {
+    const g = newGroove(cells * 101 + 11);
+    g.cells = cells;
+    g.accentEvery = 3;
     for (let bar = 0; bar < 60; bar++) {
-      grooveBar({ bar, cells, accentEvery: 3, density: 1, difficulty: 8, showcase: false }, out);
+      grooveBar(g, 1, out);
       const seen = new Set<string>();
       for (const n of out) {
         const k = `${n.lane}@${n.beat.toFixed(6)}`;
@@ -70,8 +78,11 @@ test("notes never collide within a lane", () => {
 
 test("the showcase plays the answer in full — every slice is struck", () => {
   for (const cells of MUSICAL_CELLS) {
-    grooveBar({ bar: 3, cells, accentEvery: 2, density: 1, difficulty: 3, showcase: true }, out);
+    showcaseBar(cells, 2, out);
     assert.equal(out.length, cells, `showcase at ${cells} cells produced ${out.length} notes`);
+    for (const n of out) {
+      assert.equal(n.lane, laneOf(n.cell, cells), "the payoff must lane a slice the way the groove does");
+    }
   }
 });
 

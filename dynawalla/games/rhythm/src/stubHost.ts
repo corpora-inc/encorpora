@@ -310,8 +310,17 @@ export function createStubHost(opts: StubHostOptions = {}): Host & { log: readon
   return {
     log,
     next(o): Question {
-      const difficulty = Math.max(1, Math.min(10, Math.round(o?.difficulty ?? 1)));
-      let b = build(difficulty);
+      // `next({ difficulty })` speaks SPLITBEAT's 1..10 ladder — the scale
+      // `packs/shared/game-host` documents this game as sending — but the
+      // `Question.difficulty` handed BACK is a 0..1 position on the ladder,
+      // which is what the real host emits (`difficulty: Math.max(0,
+      // Math.min(1, ladder))`). This stub used to hand back the ladder index,
+      // so every question it served looked maximally hard to anything that read
+      // the field, and `answerPlan` — which sizes a child's reading time from
+      // exactly that field — could only ever be exercised at its ceiling here.
+      const rung = Math.max(1, Math.min(10, Math.round(o?.difficulty ?? 1)));
+      const difficulty = (rung - 1) / 9;
+      let b = build(rung);
       // Never offer a distractor equal to the answer, and never two identical
       // tiles — a duplicate tile is an unwinnable question.
       let guard = 0;
@@ -321,7 +330,7 @@ export function createStubHost(opts: StubHostOptions = {}): Host & { log: readon
           b = { ...b, wrong: uniq };
           break;
         }
-        b = build(difficulty);
+        b = build(rung);
       }
       counter += 1;
       return {
