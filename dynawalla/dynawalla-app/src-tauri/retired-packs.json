@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "note": "Pack ids this build removes from every device at launch. Dropping a game from games/ drops it from the next bundle and from the catalogue, and does nothing at all to the devices that already have it: the pack root outlives an app update and the sync is additive on purpose, because it is also where downloaded packs live. This file is the other half of a retirement. Read by src/packs/mod.rs (remove_retired) and by packs/build.mjs, which refuses to build an id listed here. An id in this list must NOT exist under dynawalla/games/ — see the tests in src/packs/tests.rs and src/packs/retired.test.ts.",
+  "retired": [
+    {
+      "id": "dynawalla.foundry",
+      "name": "THE GRAPPLE FOUNDRY",
+      "retiredIn": 749,
+      "why": "Retired from the shipping fleet."
+    },
+    {
+      "id": "dynawalla.gavel",
+      "name": "THE GAVEL",
+      "retiredIn": 749,
+      "why": "Retired from the shipping fleet."
+    },
+    {
+      "id": "dynawalla.street",
+      "name": "FOUNDRY STREET",
+      "retiredIn": 760,
+      "why": "Shelved: the concept survives, the execution does not."
+    }
+  ]
+}

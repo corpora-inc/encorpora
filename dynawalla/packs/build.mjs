@@ -45,8 +45,24 @@ const GAMES = path.join(root, "games")
 const STAGE = path.join(root, "dynawalla-app", "src-tauri", "packs")
 const DIST = path.join(root, "dist-packs")
 const CHECK = path.join(here, "sdk", "bin", "dw-pack.mjs")
+const RETIRED = path.join(root, "dynawalla-app", "src-tauri", "retired-packs.json")
 
 const filters = process.argv.slice(2)
+
+/**
+ * The ids the app uninstalls from every device at launch.
+ *
+ * Discovery here is a glob and never a list — see the header — but a
+ * retirement is the one thing a glob cannot express, because nothing in
+ * `games/` remembers what used to be there. The ledger is that memory, and it
+ * is read here so the two can never disagree: an id in it is a directory the
+ * shipped app deletes, so building that pack would stage something every device
+ * removes at the launch after the one that installed it.
+ */
+function retiredIds() {
+  const ledger = JSON.parse(fs.readFileSync(RETIRED, "utf8"))
+  return new Set(ledger.retired.map((entry) => entry.id))
+}
 
 /** Every file under `dir`, relative and sorted. Sorted so a digest is stable. */
 function walk(dir, base = dir, out = []) {
@@ -163,6 +179,21 @@ fs.mkdirSync(STAGE, { recursive: true })
 const packs = discover()
 if (packs.length === 0) {
   console.error("no packs found — a pack is a directory under games/ with a pack.json")
+  process.exit(1)
+}
+
+// Refused before a single pack is built, so the answer is one message rather
+// than a build that succeeds and ships a game the app then deletes.
+const retired = retiredIds()
+const contradictions = packs.filter((pack) => retired.has(pack.source.id))
+if (contradictions.length > 0) {
+  for (const pack of contradictions) {
+    console.error(
+      `${pack.source.id} (games/${pack.name}) is listed in dynawalla-app/src-tauri/retired-packs.json.\n` +
+        "  Every device uninstalls it at launch, so building it stages a pack that cannot survive a\n" +
+        "  restart. To bring it back, delete its entry from that file in the same change.",
+    )
+  }
   process.exit(1)
 }
 
