@@ -166,7 +166,7 @@ Conventional commit, imperative, honest. No emoji.
 
 ```bash
 git -C "$WT" add -A
-git -C "$WT" status --porcelain     # confirm exactly what you intend
+git -C "$WT" status --porcelain --untracked-files=all # confirm exactly what you intend
 git -C "$WT" commit -m "fix(catalog): dedupe entries by id before install"
 git -C "$WT" push -u origin "$BR"
 ```
@@ -215,14 +215,130 @@ git -C "$WT" merge origin/main       # or rebase; keep it small and current
 git -C "$WT" push
 ```
 
-## 11. Fast-forward local main, then clean up
+## 11. Prove the work is safe, then clean up immediately
+
+After GitHub confirms the PR was squash-merged, verify the worktree before
+deleting anything. Only the worktree's owning agent may run this, after every
+build, dev server, emulator, and other process using it has exited. Run the
+block from anywhere inside the worktree being removed:
 
 ```bash
+set -euo pipefail
+WT="$(git rev-parse --show-toplevel)"
+COMMON_DIR_RAW="$(git -C "$WT" rev-parse --git-common-dir)"
+COMMON_DIR="$(cd "$WT" && cd "$COMMON_DIR_RAW" && pwd -P)"
+REPO="$(dirname "$COMMON_DIR")"
+BR="$(git -C "$WT" branch --show-current)"
+test "$WT" != "$REPO"
+test -n "$BR"
+ORIGIN_URL="$(git -C "$REPO" remote get-url origin)"
+PUSH_URL="$(git -C "$REPO" remote get-url --push origin)"
+case "$ORIGIN_URL" in
+  https://github.com/corpora-inc/encorpora|https://github.com/corpora-inc/encorpora.git|\
+  git@github.com:corpora-inc/encorpora|git@github.com:corpora-inc/encorpora.git) ;;
+  *) printf 'unexpected origin URL; refusing cleanup\n' >&2; exit 1 ;;
+esac
+case "$PUSH_URL" in
+  https://github.com/corpora-inc/encorpora|https://github.com/corpora-inc/encorpora.git|\
+  git@github.com:corpora-inc/encorpora|git@github.com:corpora-inc/encorpora.git) ;;
+  *) printf 'unexpected push URL; refusing cleanup\n' >&2; exit 1 ;;
+esac
 git -C "$REPO" fetch origin
-git -C "$REPO" merge --ff-only origin/main
+PRIMARY_BRANCH="$(git -C "$REPO" branch --show-current)"
+PRIMARY_STATUS="$(git -C "$REPO" status --porcelain --untracked-files=all)"
+PRIMARY_OID="$(git -C "$REPO" rev-parse HEAD)"
+ORIGIN_MAIN_OID="$(git -C "$REPO" rev-parse origin/main)"
+WT_BRANCH="$(git -C "$WT" branch --show-current)"
+BRANCH_OID="$(git -C "$WT" rev-parse "refs/heads/$BR")"
+HEAD_OID="$(git -C "$WT" rev-parse HEAD)"
+WT_STATUS="$(git -C "$WT" status --porcelain --untracked-files=all)"
+NESTED_WTS="$(git -C "$REPO" worktree list --porcelain | \
+  awk -v prefix="$WT/" '/^worktree / { path=substr($0, 10); \
+    if (index(path, prefix) == 1) print path }')"
+IGNORED_ROOTS="$(git -C "$WT" status --short --ignored=matching \
+  --untracked-files=normal)"
+printf '%s\n' "$IGNORED_ROOTS"
+PR_JSON="$(gh pr view "$BR" --repo corpora-inc/encorpora \
+  --json state,mergedAt,baseRefName,headRefName,headRefOid)"
+PR_STATE="$(jq -er .state <<<"$PR_JSON")"
+PR_MERGED_AT="$(jq -er .mergedAt <<<"$PR_JSON")"
+PR_BASE="$(jq -er .baseRefName <<<"$PR_JSON")"
+PR_HEAD="$(jq -er .headRefName <<<"$PR_JSON")"
+PR_HEAD_OID="$(jq -er .headRefOid <<<"$PR_JSON")"
+REMOTE_OID="$(git -C "$REPO" ls-remote --heads origin "refs/heads/$BR" | \
+  awk 'NR == 1 { print $1 }')"
+test "$PRIMARY_BRANCH" = main
+test -z "$PRIMARY_STATUS"
+git -C "$REPO" merge-base --is-ancestor "$PRIMARY_OID" "$ORIGIN_MAIN_OID"
+test "$WT_BRANCH" = "$BR"
+test "$BRANCH_OID" = "$HEAD_OID"
+test -z "$WT_STATUS"
+test -z "$NESTED_WTS"
+test "$PR_STATE" = MERGED
+test -n "$PR_MERGED_AT"
+test "$PR_BASE" = main
+test "$PR_HEAD" = "$BR"
+test "$PR_HEAD_OID" = "$HEAD_OID"
+test -z "$REMOTE_OID" || test "$REMOTE_OID" = "$HEAD_OID"
+if test -n "$IGNORED_ROOTS"; then
+  printf 'Preserve local state, explicitly remove only verified regenerable !! roots, then rerun.\n' >&2
+  exit 1
+fi
+git -C "$REPO" merge --ff-only --no-overwrite-ignore "$ORIGIN_MAIN_OID"
+FINAL_PRIMARY_BRANCH="$(git -C "$REPO" branch --show-current)"
+FINAL_PRIMARY_STATUS="$(git -C "$REPO" status --porcelain --untracked-files=all)"
+FINAL_PRIMARY_OID="$(git -C "$REPO" rev-parse HEAD)"
+FINAL_WT_BRANCH="$(git -C "$WT" branch --show-current)"
+FINAL_BRANCH_OID="$(git -C "$WT" rev-parse "refs/heads/$BR")"
+FINAL_HEAD_OID="$(git -C "$WT" rev-parse HEAD)"
+FINAL_WT_STATUS="$(git -C "$WT" status --porcelain --untracked-files=all)"
+FINAL_NESTED_WTS="$(git -C "$REPO" worktree list --porcelain | \
+  awk -v prefix="$WT/" '/^worktree / { path=substr($0, 10); \
+    if (index(path, prefix) == 1) print path }')"
+test "$FINAL_WT_BRANCH" = "$BR"
+test "$FINAL_PRIMARY_BRANCH" = main
+test -z "$FINAL_PRIMARY_STATUS"
+test "$FINAL_PRIMARY_OID" = "$ORIGIN_MAIN_OID"
+test "$FINAL_BRANCH_OID" = "$HEAD_OID"
+test "$FINAL_HEAD_OID" = "$HEAD_OID"
+test -z "$FINAL_WT_STATUS"
+test -z "$FINAL_NESTED_WTS"
+FINAL_IGNORED_ROOTS="$(git -C "$WT" status --short --ignored=matching \
+  --untracked-files=normal)"
+test -z "$FINAL_IGNORED_ROOTS"
 git -C "$REPO" worktree remove "$WT"
+git -C "$REPO" update-ref -d "refs/heads/$BR" "$HEAD_OID"
+if test -n "$REMOTE_OID"; then
+  git -C "$REPO" push --force-with-lease="refs/heads/$BR:$HEAD_OID" \
+    "$PUSH_URL" ":refs/heads/$BR"
+fi
 git -C "$REPO" worktree prune
+git -C "$REPO" fetch --prune origin
 ```
 
-`--ff-only` is deliberate: if it refuses, the primary checkout has commits of
-its own, which means rule 0 was broken. Investigate; do not force it.
+Run that block as one shell invocation; do not split it across tool calls. The
+tests fail closed unless the primary is a clean `main`, the worktree is a clean
+checkout of exactly `$BR` with no nested registered worktrees, that exact head
+was merged into `main` in the canonical GitHub repository, and the remote branch
+is absent or still names that head. Explicit `--untracked-files=all` (or the
+bounded ignored-root listing's explicit `normal`) overrides local status
+configuration. The expected-OID local deletion and remote lease preserve a ref
+if another agent advances it during cleanup.
+The bounded ignored-root listing avoids walking millions of build artifacts,
+but cleanup refuses to remove a worktree while any ignored state remains. Stop
+all writers, recursively inspect every `!!` root, preserve non-regenerable local
+config, credentials, databases, signing material, or nested work elsewhere,
+then explicitly remove only verified regenerable output and rerun the block.
+Ordinary `git status` hides ignored state. If any command or test fails, stop
+and inspect the diff, log, and files; commit and push useful work on the existing
+branch or a recovery branch. Never force-remove it.
+
+The ancestry check rejects a primary `main` that is ahead or divergent;
+`--ff-only --no-overwrite-ignore` then advances a behind primary to the exact
+fetched `origin/main` OID without replacing ignored primary files. If either
+refuses, investigate; do not force it.
+Remote deletion uses the validated literal push URL and an explicit lease, so
+extra configured push URLs cannot receive the deletion and a concurrent push
+stops cleanup instead of deleting new work. Cleanup is part of Done; never leave
+a merged worktree holding a Rust `target/`, `node_modules/`, app bundle, or
+other regenerable build output. Only remove your own worktree.

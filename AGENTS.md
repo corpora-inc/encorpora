@@ -47,8 +47,17 @@ and `needs-human` (the rare item parked for the device/CDP sweep). That's it.
 6. **Auto-merge.** Enable it (`gh pr merge --squash --auto`). When every required
    check is green, the **merge queue** integrates the latest `main`, re-runs checks,
    and merges with **no human in the path**. The issue moves to Done.
-7. **Fast-forward your local `main`** (`git fetch origin && git merge --ff-only`),
-   delete the branch and its worktree, and pull the next issue.
+7. **Clean up immediately after merge.** Cleanup is part of Done: never leave a
+   merged worktree holding `target/`, `node_modules/`, app bundles, or other
+   regenerable build output. Follow the exact deletion preflight and cleanup in
+   [the trunk PR procedure](.claude/skills/trunk-pr/SKILL.md#11-prove-the-work-is-safe-then-clean-up-immediately).
+   It proves the current head was merged, checks tracked, untracked, ignored,
+   unpushed, and divergent work, fast-forwards the clean primary `main`, then
+   removes the worktree and prunes its branches and metadata.
+
+   Only clean up your own worktree, and never force-remove one. If the PR is
+   unmerged or a preflight check fails, inspect and preserve useful work on its
+   branch or a clearly named recovery branch, or ask the owner.
 
 ## The gates (what green means)
 
