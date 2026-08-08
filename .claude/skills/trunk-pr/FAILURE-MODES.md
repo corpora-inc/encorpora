@@ -34,15 +34,14 @@ version is narrower than the scary one:
 | Action | Result |
 | --- | --- |
 | `git worktree remove <path>` | **Refuses.** `fatal: '<path>' contains modified or untracked files, use --force to delete it` |
+| `git worktree remove <path>` with only ignored files | **Destroys the ignored files.** Ordinary status does not show them |
 | `git worktree remove --force <path>` | **Destroys it.** No reflog, no dangling object |
 | Claude Code's periodic worktree sweep | **Skips it.** The sweep "skips a worktree that still holds work: changed or untracked files, or unpushed commits", and never touches worktrees you made with `--worktree` |
 
-So git and the sweep both defend you, and the loss vector is narrower than
-"pruning deletes your work". What remains is still real: `--force` is precisely
-what someone reaches for *when the plain remove fails*, and the work has no
-backup anywhere — not in a ref, not in a stash, not in the object store. Any
-`git clean -fdx`, disk loss, or impatient `--force` ends it, and nothing warns
-you first because as far as git is concerned there is nothing there.
+Git and the sweep defend visible untracked work, but ignored files remain at
+risk and `--force` bypasses the visible-file guard. This work has no backup
+anywhere — not in a ref, stash, or the object store. Any `git clean -fdx`, disk
+loss, ordinary removal of ignored-only state, or impatient `--force` ends it.
 
 **Why invisible.** `git log --all`, `git branch -a`, `git stash list` and
 `git fsck --lost-found` all search *objects*. Untracked files are not objects.
@@ -52,13 +51,17 @@ Every one of those commands answers "nothing here" and is correct.
 
 ```bash
 git worktree list --porcelain | grep '^worktree' | cut -d' ' -f2 | while read -r d; do
-  n=$(git -C "$d" status --porcelain | wc -l)
+  n=$(git -C "$d" status --porcelain --ignored=matching --untracked-files=normal | wc -l)
   [ "$n" -gt 0 ] && printf '%-60s %s dirty/untracked\n' "$d" "$n"
 done
 ```
 
-**Never** `git worktree remove` a worktree whose `git status --porcelain` is
-non-empty without reading what is in it first.
+**Never** `git worktree remove` a worktree whose
+`git status --porcelain --ignored=matching --untracked-files=normal` is non-empty
+without recursively reading the reported roots first and distinguishing
+regenerable build output from local state. `matching` avoids enumerating every
+file in enormous ignored `target/` and `node_modules/` trees; explicit `normal`
+keeps the result independent of `status.showUntrackedFiles`.
 
 ### A2. A stalled agent leaves finished work uncommitted, or committed and unpushed
 
@@ -75,7 +78,7 @@ newer commit existed.
 **Guard.** When an agent dies, **inspect its worktree before believing its PR**:
 
 ```bash
-git -C "$WT" status --porcelain                       # uncommitted?
+git -C "$WT" status --porcelain --untracked-files=all # uncommitted?
 git -C "$WT" rev-list --count @{u}..HEAD               # committed, unpushed?
 git -C "$WT" rev-list --count HEAD..@{u}               # diverged from what you pushed?
 git -C "$WT" diff origin/main HEAD -- <its paths>      # what does it have that main lacks?
@@ -332,14 +335,10 @@ cd "$WT" && gitleaks detect --no-banner --redact --log-opts="origin/main..HEAD"
 
 ## Postflight
 
-After the merge:
-
-```bash
-git -C "$REPO" fetch origin
-git -C "$REPO" merge --ff-only origin/main     # refuses ⇒ investigate, never force
-git -C "$REPO" status --porcelain              # must be empty
-git -C "$REPO" worktree remove "$WT"           # only after checking it is clean (A1)
-```
+After the merge, follow the deletion preflight and explicit-path cleanup in
+[`SKILL.md` §11](SKILL.md#11-prove-the-work-is-safe-then-clean-up-immediately).
+It checks tracked, untracked, ignored, unpushed, divergent, and post-merge work
+before removing the worktree.
 
 `--ff-only` is the invariant, expressed as a command. If it refuses, something
 wrote to the primary checkout, and that is the incident — not the refusal.

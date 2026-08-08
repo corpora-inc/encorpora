@@ -244,10 +244,11 @@ common=$(git -C "$cwd" rev-parse --git-common-dir 2>/dev/null) || exit 0
 findings=""
 while read -r d; do
   [ -d "$d" ] || continue
-  dirty=$(git -C "$d" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+  dirty=$(git -C "$d" status --porcelain --ignored=matching \
+    --untracked-files=normal 2>/dev/null | wc -l | tr -d ' ')
   unpushed=$(git -C "$d" rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
   [ "$dirty" = "0" ] && [ "${unpushed:-0}" = "0" ] && continue
-  findings="${findings}  ${d}: ${dirty} uncommitted, ${unpushed} unpushed\n"
+  findings="${findings}  ${d}: ${dirty} local paths/ignored roots, ${unpushed} unpushed\n"
 done < <(git -C "$cwd" worktree list --porcelain 2>/dev/null | awk '/^worktree /{print $2}')
 [ -n "$findings" ] && printf 'WORK NOT ON THE REMOTE:\n%b' "$findings" >&2
 exit 0

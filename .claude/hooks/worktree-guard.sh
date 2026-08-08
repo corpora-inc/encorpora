@@ -58,7 +58,8 @@ wt_count="$(git worktree list 2>/dev/null | wc -l | tr -d ' ')"
 nested="$(git worktree list 2>/dev/null | awk '{print $1}' | grep -c "^${primary}/")"
 if [ "${wt_count:-0}" -gt 12 ]; then
   printf '  ! %s registered worktrees (%s nested inside the repo).\n' "${wt_count}" "${nested}"
-  printf '    Prune yours when the PR merges: git worktree remove <path> && git worktree prune\n'
+  printf '    Prune yours when its PR merges, after the trunk-pr skill section 11 preflight.\n'
+  printf '    Never force-remove a worktree; ignored local state can look clean.\n'
 fi
 printf '  new worktrees go OUTSIDE the repo: %s/<branch>\n' "${wt_root}"
 
