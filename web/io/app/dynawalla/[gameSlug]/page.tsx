@@ -12,6 +12,7 @@ import {
   domainOfSkill,
   gameCountWord,
   getGame,
+  ogImageFor,
   shotFor,
   skillLabel,
   type DomainId,
@@ -38,6 +39,9 @@ export async function generateMetadata({
     openGraph: {
       title: `${game.name} — Dynawalla`,
       description: game.description,
+      // Required explicitly: Next replaces the parent's `openGraph` rather
+      // than merging it, so omitting this leaves the page with no og:image.
+      images: [{ url: ogImageFor(game.slug), alt: `${game.name} — Dynawalla` }],
     },
   };
 }
