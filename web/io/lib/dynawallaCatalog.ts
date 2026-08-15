@@ -100,15 +100,6 @@ export function domainsOf(skills: readonly string[]): readonly DomainId[] {
   return DOMAIN_IDS.filter((d) => found.has(d));
 }
 
-/** Every subject any game in the catalogue touches, in teaching order. */
-export function allDomains(): readonly DomainId[] {
-  const found = new Set<DomainId>();
-  for (const game of DYNAWALLA_GAMES) {
-    for (const d of domainsOf(game.skills)) found.add(d);
-  }
-  return DOMAIN_IDS.filter((d) => found.has(d));
-}
-
 /* ------------------------------------------------------------------ *
  * Skill names
  *
@@ -198,6 +189,19 @@ const SHOT_SLUGS = new Set([
 
 export function shotFor(slug: string): string | null {
   return SHOT_SLUGS.has(slug) ? `/dynawalla/shots/${slug}.webp` : null;
+}
+
+/**
+ * The absolute image to show when a page is shared.
+ *
+ * Next replaces a parent's `openGraph` wholesale rather than merging it, so a
+ * page that sets `openGraph` without `images` ends up with NO og:image — which
+ * is what every game page shipped with. This always resolves: the game's own
+ * screenshot where one was captured, and the catalogue otherwise.
+ */
+export function ogImageFor(slug: string): string {
+  const shot = shotFor(slug);
+  return `https://encorpora.io${shot ?? "/dynawalla/shots/catalog.webp"}`;
 }
 
 /* ------------------------------------------------------------------ *
