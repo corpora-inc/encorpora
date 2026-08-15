@@ -9,6 +9,11 @@ on:
       - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
+      # The Dynawalla pages are generated from these manifests at build time
+      # (web/scripts/generate-dynawalla-games.js). Without this path the site
+      # would keep serving the previous game list after a game is added,
+      # renamed or retired.
+      - "dynawalla/games/*/pack.json"
       - "books/**/pack/manifest.json"
       - "books/**/pack/segments.json"
       - "books/**/pack/narration.yaml"
