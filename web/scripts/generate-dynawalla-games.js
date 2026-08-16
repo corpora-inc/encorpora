@@ -27,6 +27,14 @@ const OUT_FILE = path.join(
   "data",
   "dynawalla-games.json",
 );
+const SHOTS_DIR = path.join(
+  REPO_ROOT,
+  "web",
+  "io",
+  "public",
+  "dynawalla",
+  "shots",
+);
 
 function slugify(name) {
   return name
@@ -50,14 +58,19 @@ function main() {
     if (!fs.existsSync(manifestPath)) continue;
 
     const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+    const slug = slugify(manifest.name);
     games.push({
       id: manifest.id,
-      slug: slugify(manifest.name),
+      slug,
       name: manifest.name,
       description: manifest.description,
       version: manifest.version,
       minAge: manifest.minAge ?? null,
       skills: (manifest.covers && manifest.covers.skills) || [],
+      // Detected, not declared. A hand-kept list of which games have a
+      // screenshot drifts the moment one is added or deleted, and the failure
+      // is a silent 404 on the page rather than anything that fails a build.
+      hasShot: fs.existsSync(path.join(SHOTS_DIR, `${slug}.webp`)),
     });
   }
 

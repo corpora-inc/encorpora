@@ -20,6 +20,8 @@ export interface DynawallaGame {
   readonly version: string;
   readonly minAge: number | null;
   readonly skills: readonly string[];
+  /** Whether `public/dynawalla/shots/<slug>.webp` exists. Detected at build. */
+  readonly hasShot: boolean;
 }
 
 export const DYNAWALLA_GAMES = games as unknown as DynawallaGame[];
@@ -173,22 +175,15 @@ export function skillLabel(skill: string): string {
 /* ------------------------------------------------------------------ *
  * Screenshots
  *
- * Captured from the real build, so only the games actually photographed are
- * listed. A game absent from this set shows its key art alone rather than a
- * placeholder or another game's picture.
+ * Captured from the real build in the iOS Simulator. `hasShot` is DETECTED by
+ * the generator from the presence of `public/dynawalla/shots/<slug>.webp`, not
+ * declared, so adding or deleting a file is the whole change. A game without
+ * one shows its key art alone rather than a placeholder or another game\'s
+ * picture.
  * ------------------------------------------------------------------ */
-const SHOT_SLUGS = new Set([
-  "abyssal-bloom",
-  "arena",
-  "forge",
-  "monument",
-  "serpent",
-  "siege",
-  "volta",
-]);
-
 export function shotFor(slug: string): string | null {
-  return SHOT_SLUGS.has(slug) ? `/dynawalla/shots/${slug}.webp` : null;
+  const game = DYNAWALLA_GAMES.find((g) => g.slug === slug);
+  return game?.hasShot ? `/dynawalla/shots/${slug}.webp` : null;
 }
 
 /**
