@@ -157,7 +157,14 @@ def resolve_build(
 
 def review_items(review_id: str, bearer: Bearer) -> list[dict[str, Any]]:
     return request(
-        "GET", f"reviewSubmissions/{review_id}/items", bearer, params={"limit": "50"}
+        "GET",
+        f"reviewSubmissions/{review_id}/items",
+        bearer,
+        params={
+            "fields[reviewSubmissionItems]": "state,appStoreVersion",
+            "include": "appStoreVersion",
+            "limit": "50",
+        },
     ).get("data", []) or []
 
 
@@ -171,8 +178,10 @@ def resolve_review(
         params={"filter[app]": app_id, "filter[platform]": "IOS", "limit": "200"},
     )
     matches: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    observed_states: list[str] = []
     for review in payload.get("data", []) or []:
         state = str(attributes(review).get("state") or "")
+        observed_states.append(state or "<missing>")
         if state not in OPEN_REVIEW_STATES | SUBMITTED_REVIEW_STATES:
             continue
         all_items = review_items(str(review["id"]), bearer)
@@ -193,7 +202,8 @@ def resolve_review(
     if len(matches) != 1:
         fail(
             "Expected exactly one current review submission for the App Store version; "
-            f"App Store Connect returned {len(matches)}."
+            f"App Store Connect returned {len(matches)}. Observed review states: "
+            f"{', '.join(sorted(observed_states)) or '<none>'}."
         )
     return matches[0]
 
