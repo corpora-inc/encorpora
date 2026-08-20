@@ -5,7 +5,6 @@
 // time and plays whatever clicks it plans. Musical time is derived only from the
 // audio context clock passed in as `now`; never from Date.now or performance.now.
 
-import type { Unit } from "../core"
 import { pulseMarks } from "../core"
 import type { Cycle } from "../core"
 import type { ClickDensity, ClickRole } from "./clock"
@@ -22,10 +21,12 @@ export type Anchor = {
   secondsPerPulse: number
 }
 
-// Duration of one pulse (a note of value `unit`) at a quarter-note tempo.
-// A quarter lasts 60/bpm seconds; a `unit` note is 4/unit quarters long.
-export const secondsPerPulse = (bpm: number, unit: Unit): number =>
-  (60 / bpm) * (4 / unit)
+// Duration of one pulse. Tempo is the pulse rate: bpm pulses per minute, the
+// same felt tempo whichever notated unit a cycle uses. The unit is a notational
+// choice (it sets the time-signature denominator and, later, the staff values)
+// and does not change playback speed, so stepping through presets keeps a steady
+// pulse rather than jumping to double time when the notated unit changes.
+export const secondsPerPulse = (bpm: number): number => 60 / bpm
 
 // Continuous position in pulses at audio time `now`.
 export const positionAt = (a: Anchor, now: number): number =>

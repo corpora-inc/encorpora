@@ -29,8 +29,17 @@ All notable changes to Kronopán are documented here. The format follows
 
 ### Changed
 
+- Tempo is now the pulse rate (pulses per minute) rather than a quarter-note
+  tempo, so stepping through presets keeps a steady felt pulse instead of
+  jumping to double time when the notated unit changes. The unit still sets the
+  time-signature denominator and the staff values.
 - Editing a cycle now detaches it from its preset: the header shows "Custom" and
   the preset picker follows suit.
+
+### Fixed
+
+- Dots no longer clip at the left and right edges: the row is inset by one dot
+  radius so the first and last dots sit fully on screen.
 
 ## [0.1.0] - 2026-08-20
 

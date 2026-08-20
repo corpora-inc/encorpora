@@ -43,7 +43,9 @@ export interface Clock {
   // Wrap it onto one cycle with core.activeAt or core.wrapPulses for display.
   positionPulses(): number
 
-  // Quarter-note BPM. Changing tempo must not move the current position.
+  // Tempo as the pulse rate (pulses per minute), so the felt tempo is the same
+  // whichever notated unit a cycle uses. Changing tempo must not move the
+  // current position.
   setTempo(bpm: number): void
   getTempo(): number
 

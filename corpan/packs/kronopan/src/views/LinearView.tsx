@@ -200,11 +200,14 @@ function drawDots(
   const { padX, usableW, bandTop, bandH } = geom
   const model = dotsModel(c)
   const cy = bandTop + bandH / 2
-  const x = (pos: number) =>
-    model.span > 0 ? padX + (pos / model.span) * usableW : padX + usableW / 2
-  const pxPerUnit = model.span > 0 ? usableW / model.span : usableW
   // Keep dots clear of each other: the within-cluster step is one unit wide.
+  const pxPerUnit = model.span > 0 ? usableW / model.span : usableW
   const r = Math.max(4, Math.min(bandH * 0.3, pxPerUnit * 0.36))
+  // Inset the row by one radius on each side so the first and last dots do not
+  // spill past the edges of the canvas.
+  const drawW = Math.max(0, usableW - 2 * r)
+  const x = (pos: number) =>
+    model.span > 0 ? padX + r + (pos / model.span) * drawW : padX + usableW / 2
 
   for (const d of model.dots) {
     const dx = x(d.pos)

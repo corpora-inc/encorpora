@@ -44,7 +44,9 @@ export class InternalClock implements Clock {
   private master: GainNode
   private metro: Metronome
 
-  private cycle: Cycle
+  // The clock keeps only what scheduling needs: the per-pulse roles and the
+  // pulse count. Tempo no longer depends on the cycle's unit, so the cycle
+  // itself does not need to be held.
   private roles = [] as ReturnType<typeof rolesForCycle>
   private total = 0
 
@@ -67,18 +69,16 @@ export class InternalClock implements Clock {
     comp.connect(this.ctx.destination)
     this.metro = new Metronome(this.ctx, this.master)
 
-    this.cycle = cycle
     this.bpm = bpm
     this.applyCycle(cycle)
     this.anchor = {
       anchorPulse: 0,
       anchorTime: 0,
-      secondsPerPulse: secondsPerPulse(bpm, cycle.unit),
+      secondsPerPulse: secondsPerPulse(bpm),
     }
   }
 
   private applyCycle(cycle: Cycle): void {
-    this.cycle = cycle
     this.roles = rolesForCycle(cycle)
     this.total = totalPulses(cycle)
   }
@@ -90,7 +90,7 @@ export class InternalClock implements Clock {
     this.anchor = {
       anchorPulse: 0,
       anchorTime: now + START_LEAD_SEC,
-      secondsPerPulse: secondsPerPulse(this.bpm, this.cycle.unit),
+      secondsPerPulse: secondsPerPulse(this.bpm),
     }
     this.nextPulse = 0
     this.running = true
@@ -119,7 +119,7 @@ export class InternalClock implements Clock {
 
   setTempo(bpm: number): void {
     this.bpm = bpm
-    const spp = secondsPerPulse(bpm, this.cycle.unit)
+    const spp = secondsPerPulse(bpm)
     // Re-anchor at the current position so the playhead does not jump. Keep
     // nextPulse untouched so no pulse is scheduled twice.
     this.anchor = this.running
@@ -134,7 +134,7 @@ export class InternalClock implements Clock {
   setCycle(cycle: Cycle): void {
     this.applyCycle(cycle)
     // A new cycle restarts the phase at the downbeat, by design.
-    const spp = secondsPerPulse(this.bpm, cycle.unit)
+    const spp = secondsPerPulse(this.bpm)
     const base = this.running ? this.ctx.currentTime + CYCLE_SWAP_LEAD_SEC : 0
     this.anchor = { anchorPulse: 0, anchorTime: base, secondsPerPulse: spp }
     this.nextPulse = 0

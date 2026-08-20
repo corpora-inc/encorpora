@@ -20,11 +20,10 @@ const cycle = (groups: number[], unit: Cycle["unit"] = 8): Cycle => ({
 })
 
 describe("secondsPerPulse", () => {
-  it("reads the pulse value against a quarter-note tempo", () => {
-    expect(secondsPerPulse(120, 4)).toBeCloseTo(0.5, 12) // quarter at 120
-    expect(secondsPerPulse(120, 8)).toBeCloseTo(0.25, 12) // eighth at 120
-    expect(secondsPerPulse(120, 16)).toBeCloseTo(0.125, 12) // sixteenth at 120
-    expect(secondsPerPulse(60, 8)).toBeCloseTo(0.5, 12)
+  it("treats tempo as the pulse rate, independent of the notated unit", () => {
+    expect(secondsPerPulse(120)).toBeCloseTo(0.5, 12) // 120 pulses per minute
+    expect(secondsPerPulse(60)).toBeCloseTo(1, 12)
+    expect(secondsPerPulse(240)).toBeCloseTo(0.25, 12)
   })
 })
 
@@ -50,7 +49,7 @@ describe("reanchorTempo (phase preserving)", () => {
     const a: Anchor = { anchorPulse: 0, anchorTime: 0, secondsPerPulse: 0.25 }
     const now = 1.1 // mid-pulse
     const before = positionAt(a, now)
-    const b = reanchorTempo(a, now, secondsPerPulse(90, 8))
+    const b = reanchorTempo(a, now, secondsPerPulse(90))
     expect(positionAt(b, now)).toBeCloseTo(before, 12)
     // but the rate has actually changed going forward
     expect(b.secondsPerPulse).not.toBeCloseTo(a.secondsPerPulse, 6)
