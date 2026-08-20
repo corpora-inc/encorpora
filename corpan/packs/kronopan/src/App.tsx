@@ -3,7 +3,7 @@ import type { HostApi } from "./sdk/types"
 import type { Cycle } from "./core"
 import { PRESETS, presetById, additiveSignature, collapsedSignature } from "./core"
 import { InternalClock, type Clock, type ClickDensity } from "./audio"
-import { LinearView, type LabelMode } from "./views/LinearView"
+import { LinearView, type LabelMode, type NotationMode } from "./views/LinearView"
 import { TransportBar, MIN_BPM, MAX_BPM } from "./ui/TransportBar"
 import { GroupEditor } from "./ui/GroupEditor"
 
@@ -21,6 +21,7 @@ export function App(_props: Props) {
   const [volume, setVolume] = useState(0.9)
   const [playing, setPlaying] = useState(false)
   const [labelMode, setLabelMode] = useState<LabelMode>("number")
+  const [notationMode, setNotationMode] = useState<NotationMode>("bars")
 
   // One clock for the life of the shell. Created lazily so its AudioContext is
   // built on mount (suspended until the first gesture resumes it).
@@ -121,7 +122,12 @@ export function App(_props: Props) {
       </header>
 
       <main className="kp-stage">
-        <LinearView cycle={cycle} clock={clock} labelMode={labelMode} />
+        <LinearView
+          cycle={cycle}
+          clock={clock}
+          labelMode={labelMode}
+          notationMode={notationMode}
+        />
       </main>
 
       <section className="kp-controls">
@@ -136,6 +142,8 @@ export function App(_props: Props) {
           onVolume={changeVolume}
           labelMode={labelMode}
           onLabelMode={setLabelMode}
+          notationMode={notationMode}
+          onNotationMode={setNotationMode}
         />
         <GroupEditor cycle={cycle} onChange={changeCycle} />
       </section>

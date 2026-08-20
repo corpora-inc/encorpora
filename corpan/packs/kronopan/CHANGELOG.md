@@ -9,6 +9,11 @@ All notable changes to Kronopán are documented here. The format follows
 
 ### Added
 
+- Dots notation mode, switchable live in the linear view without disturbing the
+  clock. Each group is a cluster of circles, one per pulse, colored by group
+  length, with constant dot size and spacing so a three-cluster is naturally
+  wider than a two-cluster and clusters are separated by a larger gap. The active
+  dot fills on its hit.
 - Preset library of around three dozen cycles spanning many traditions
   (Bulgarian, Macedonian, Greek, Turkish, Arabic, Romanian, Irish, Afro-Cuban,
   and Indian tala) plus the plain meters that round out the low end (Polka 2/4,
