@@ -1,5 +1,5 @@
 import type { Cycle, Unit } from "../core"
-import { PRESETS } from "../core"
+import { PRESETS, totalPulses } from "../core"
 import { roleColor } from "../theme"
 import { colorRoleForLength } from "../notation"
 
@@ -12,6 +12,10 @@ type Props = {
 }
 
 const isPresetCycle = (cycle: Cycle): boolean => PRESETS.some((p) => p.id === cycle.id)
+
+// Presets listed chronologically by length, so the picker reads 3, 4, 5, 6, 7
+// and upward.
+const PRESETS_BY_LENGTH = [...PRESETS].sort((a, b) => totalPulses(a) - totalPulses(b))
 
 // Editing the cycle restarts it from the top; the shell says so next to this
 // editor. Any edit also detaches it from its preset (id becomes "custom") so the
@@ -48,9 +52,9 @@ export function GroupEditor({ cycle, onChange }: Props) {
             onChange={(e) => applyPreset(e.target.value)}
           >
             {!isPresetCycle(cycle) && <option value="custom">Custom</option>}
-            {PRESETS.map((p) => (
+            {PRESETS_BY_LENGTH.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.name}
+                {totalPulses(p)} · {p.name}
               </option>
             ))}
           </select>

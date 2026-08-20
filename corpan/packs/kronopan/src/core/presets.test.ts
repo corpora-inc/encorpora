@@ -28,6 +28,9 @@ describe("PRESETS", () => {
     expect(totalPulses(presetById("sedi-donka")!)).toBe(25)
     expect(totalPulses(presetById("buchimis")!)).toBe(15)
     expect(totalPulses(presetById("yove-male-mome")!)).toBe(18)
+    expect(totalPulses(presetById("jhaptal")!)).toBe(10)
+    expect(totalPulses(presetById("deepchandi")!)).toBe(14)
+    expect(totalPulses(presetById("nevesto")!)).toBe(9)
   })
 
   it("keep the author-specified groupings verbatim", () => {

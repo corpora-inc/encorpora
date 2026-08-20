@@ -95,8 +95,14 @@ export function App(_props: Props) {
 
   const isEmpty = cycle.groups.length === 0
   const activePreset = PRESETS.find((p) => p.id === cycle.id)
-  const danceName =
-    activePreset && activePreset.name !== additiveSignature(cycle) ? activePreset.name : null
+  // Show the dance name for a named preset, nothing extra for a preset whose
+  // name is just its figure (the figure already shows above), and "Custom" once
+  // the cycle has been edited away from any preset.
+  const nameLabel = !activePreset
+    ? "Custom"
+    : activePreset.name === additiveSignature(cycle)
+      ? null
+      : activePreset.name
 
   return (
     <div className="kp-root" data-theme="dark">
@@ -109,7 +115,7 @@ export function App(_props: Props) {
           </div>
           <div className="kp-sig-side">
             {!isEmpty && <span className="kp-sig-frac">{collapsedSignature(cycle)}</span>}
-            {!isEmpty && <span className="kp-sig-name">{danceName ?? "Custom"}</span>}
+            {!isEmpty && nameLabel && <span className="kp-sig-name">{nameLabel}</span>}
           </div>
         </div>
       </header>

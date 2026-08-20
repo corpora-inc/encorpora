@@ -9,10 +9,14 @@ All notable changes to Kronopán are documented here. The format follows
 
 ### Added
 
-- Preset library expanded to a couple of dozen named cycles across traditions
-  (Bulgarian, Macedonian, Greek, Turkish, Romanian, Irish, and an Indian tala),
-  ordered by length. Author-specified groupings are kept verbatim; debated
-  internal orderings carry a note.
+- Preset library of around three dozen cycles spanning many traditions
+  (Bulgarian, Macedonian, Greek, Turkish, Arabic, Romanian, Irish, Afro-Cuban,
+  and Indian tala) plus the plain meters that round out the low end (Polka 2/4,
+  Waltz 3/4, March 4/4, Jig 6/8). Author-specified groupings are kept verbatim;
+  where a source could not be confirmed the entry uses an honest figure name
+  rather than a claimed dance, and debated internal orderings carry a note.
+- Preset picker lists cycles chronologically by length with the pulse count
+  shown, so it reads 2, 3, 4, 5 and upward.
 - Label toggle in the linear view: show group lengths as numbers, or as
   short-long letters (S for a 2, L for a 3) so the shape reads without digits.
 - Header now shows the collapsed time signature (for example 7/8) beside the
