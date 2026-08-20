@@ -21,12 +21,13 @@ export type Anchor = {
   secondsPerPulse: number
 }
 
-// Duration of one pulse. Tempo is the pulse rate: bpm pulses per minute, the
-// same felt tempo whichever notated unit a cycle uses. The unit is a notational
-// choice (it sets the time-signature denominator and, later, the staff values)
-// and does not change playback speed, so stepping through presets keeps a steady
-// pulse rather than jumping to double time when the notated unit changes.
-export const secondsPerPulse = (bpm: number): number => 60 / bpm
+// Duration of one pulse. Tempo (bpm) is read the way a DJ or metronome reads it:
+// the musical beat, a quarter note. The pulse is an eighth note, so there are
+// two pulses to a beat and the pulse rate is 2 * bpm. This is independent of a
+// cycle's notated unit, so stepping through presets keeps a steady, sensible
+// tempo: 120 bpm is a moderate 120, not a frantic number. The unit is a purely
+// notational choice (the time-signature denominator and, later, the staff).
+export const secondsPerPulse = (bpm: number): number => 60 / (2 * bpm)
 
 // Continuous position in pulses at audio time `now`.
 export const positionAt = (a: Anchor, now: number): number =>

@@ -20,10 +20,11 @@ const cycle = (groups: number[], unit: Cycle["unit"] = 8): Cycle => ({
 })
 
 describe("secondsPerPulse", () => {
-  it("treats tempo as the pulse rate, independent of the notated unit", () => {
-    expect(secondsPerPulse(120)).toBeCloseTo(0.5, 12) // 120 pulses per minute
-    expect(secondsPerPulse(60)).toBeCloseTo(1, 12)
-    expect(secondsPerPulse(240)).toBeCloseTo(0.25, 12)
+  it("reads bpm as the beat with two pulses per beat, independent of the unit", () => {
+    // 120 bpm beat, an eighth-note pulse, so 240 pulses per minute.
+    expect(secondsPerPulse(120)).toBeCloseTo(0.25, 12)
+    expect(secondsPerPulse(60)).toBeCloseTo(0.5, 12)
+    expect(secondsPerPulse(240)).toBeCloseTo(0.125, 12)
   })
 })
 

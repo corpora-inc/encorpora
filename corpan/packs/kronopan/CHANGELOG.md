@@ -29,10 +29,11 @@ All notable changes to Kronopán are documented here. The format follows
 
 ### Changed
 
-- Tempo is now the pulse rate (pulses per minute) rather than a quarter-note
-  tempo, so stepping through presets keeps a steady felt pulse instead of
-  jumping to double time when the notated unit changes. The unit still sets the
-  time-signature denominator and the staff values.
+- Tempo now reads like a metronome or DJ deck: bpm is the musical beat and the
+  pulse is an eighth (two pulses per beat), independent of a cycle's notated
+  unit. Stepping through presets keeps a steady, sensible tempo, so a normal
+  dance speed sits at a normal number instead of needing a frantic bpm, and the
+  unit (1/4, 1/8, 1/16) only sets the notation, not the speed.
 - Editing a cycle now detaches it from its preset: the header shows "Custom" and
   the preset picker follows suit.
 
