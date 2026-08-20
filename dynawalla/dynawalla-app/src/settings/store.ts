@@ -45,8 +45,6 @@ export interface Settings {
   readonly reduceMotion: boolean
   readonly textSize: TextSize
   readonly quality: Quality
-  /** Unlocks the diagnostics rows in the parent area. Off on a child's tablet. */
-  readonly developer: boolean
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -56,7 +54,6 @@ export const DEFAULT_SETTINGS: Settings = {
   reduceMotion: false,
   textSize: "normal",
   quality: "full",
-  developer: false,
 }
 
 export interface SettingsState extends Settings {
@@ -76,14 +73,13 @@ export const useSettings = create<SettingsState>()(
       name: deviceKey("settings"),
       version: 1,
       storage: durable,
-      partialize: ({ sound, music, haptics, reduceMotion, textSize, quality, developer }) => ({
+      partialize: ({ sound, music, haptics, reduceMotion, textSize, quality }) => ({
         sound,
         music,
         haptics,
         reduceMotion,
         textSize,
         quality,
-        developer,
       }),
       // An unknown `textSize` from a future build selects no scale at all and
       // the type stays at 100% with the control showing nothing chosen — a
@@ -101,7 +97,6 @@ export const useSettings = create<SettingsState>()(
           music: flag(stored?.music, DEFAULT_SETTINGS.music),
           haptics: flag(stored?.haptics, DEFAULT_SETTINGS.haptics),
           reduceMotion: flag(stored?.reduceMotion, DEFAULT_SETTINGS.reduceMotion),
-          developer: flag(stored?.developer, DEFAULT_SETTINGS.developer),
           textSize: TEXT_SIZES.find((size) => size === stored?.textSize) ?? "normal",
           quality: QUALITIES.find((tier) => tier === stored?.quality) ?? "full",
         }

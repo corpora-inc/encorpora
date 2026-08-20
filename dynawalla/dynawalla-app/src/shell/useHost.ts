@@ -8,8 +8,8 @@
 
 import { useEffect, useMemo, useState } from "react"
 
-import { appVersion, BUILD_VERSION, isNative } from "../app/platform.ts"
-import { storageBreakdown, storageBytes } from "../app/profile.ts"
+import { appVersion, BUILD_VERSION } from "../app/platform.ts"
+import { storageBytes } from "../app/profile.ts"
 import { recordFor, worldFor } from "../app/stores.ts"
 import { eraseEverything } from "../app/erase.ts"
 import { useThemeStore } from "../app/theme.ts"
@@ -17,8 +17,8 @@ import { cardFacts } from "../packs/library.ts"
 import { useLibrary } from "../packs/libraryStore.ts"
 import { usePacks, type InstalledPack } from "../packs/registry.ts"
 import { useLaunch } from "../packs/Stage.tsx"
-import { billing, grantingBilling, productFor } from "../pass/billing.ts"
-import { dayKey, passIsOpen, EMPTY_LEDGER } from "../pass/model.ts"
+import { billing } from "../pass/billing.ts"
+import { dayKey, passIsOpen } from "../pass/model.ts"
 import { usePass } from "../pass/store.ts"
 import { useProfiles } from "../profiles/store.ts"
 import { useSettings } from "../settings/store.ts"
@@ -164,11 +164,8 @@ export function useHostView(armed: boolean): HostView {
     // something else in this snapshot changed, so the render that shows the
     // new number is the render that recounts the bytes.
     storageBytes: storageBytes(),
-    storage: storageBreakdown(),
     version,
-    native: isNative,
     armed,
-    pass: pass === null ? "none" : pass.kind,
     resting,
   }
 }
@@ -198,18 +195,5 @@ export function useHostActions(arm: (armed: boolean) => void): HostActions {
       arm(false)
     },
     launchPack: play,
-
-    // Developer mode only. `grantingBilling` produces exactly the record a
-    // confirmed store purchase would, so what these exercise is the
-    // entitlement path rather than a shortcut around it.
-    grantTestPass: (kind) => {
-      void grantingBilling()
-        .buy(productFor(kind).productId)
-        .then((outcome) => {
-          if (outcome.status === "granted") usePass.getState().grant(outcome.pass)
-        })
-    },
-    clearTestPass: () => usePass.getState().forget(),
-    clearRestLedger: () => usePass.setState({ ledger: EMPTY_LEDGER }),
   }
 }

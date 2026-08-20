@@ -17,9 +17,8 @@
 // The view is a snapshot and the actions are separate: the model is then pure,
 // so the test drives it with no DOM, no React and no router.
 
-import { NATIVE_CALLS, callId, grantOf } from "../app/permissions.ts"
 import type { Destination } from "../app/routes.ts"
-import { strings, dev, fill } from "../app/strings.ts"
+import { strings, fill } from "../app/strings.ts"
 import { formatBytes, packBytes, type InstalledPack } from "../packs/registry.ts"
 import type { Profile } from "../profiles/store.ts"
 import type { LearnerRecord } from "../learner/record.ts"
@@ -143,13 +142,9 @@ export interface HostView {
   readonly placed: number
   readonly record: LearnerRecord
   readonly storageBytes: number
-  readonly storage: readonly { readonly key: string; readonly bytes: number }[]
   readonly version: string
-  readonly native: boolean
   /** Has the parent already pressed "erase everything" once? */
   readonly armed: boolean
-  /** The pass this device holds, described in one word. Never a price. */
-  readonly pass: string
   /** Pack ids that reached their stopping point today. Usually empty. */
   readonly resting: readonly string[]
 }
@@ -165,17 +160,6 @@ export interface HostActions {
   readonly erase: () => void
   /** Put a pack on the stage. The one action the front door exists for. */
   readonly launchPack: (packId: string) => void
-  /**
-   * Developer mode only, and off on every child's tablet.
-   *
-   * Verifying "a purchase unlocks everything" and "midnight gives the day
-   * back" needs a way to hold a pass and a way to give one back, and a
-   * developer with no way to do that will invent a worse one — usually by
-   * editing `localStorage` by hand and getting the shape subtly wrong.
-   */
-  readonly grantTestPass: (kind: "day" | "lifetime") => void
-  readonly clearTestPass: () => void
-  readonly clearRestLedger: () => void
 }
 
 // The option sets, written once. `satisfies` is what keeps a label and a value
@@ -404,7 +388,7 @@ function settingsSurface(view: HostView, act: HostActions): readonly Section[] {
 }
 
 function parentsSurface(view: HostView, act: HostActions): readonly Section[] {
-  const sections: Section[] = [
+  return [
     {
       key: "device",
       rows: [
@@ -416,9 +400,6 @@ function parentsSurface(view: HostView, act: HostActions): readonly Section[] {
     {
       key: "controls",
       rows: [
-        switchRow("developer", strings.parents.developer, view.settings.developer, (on) =>
-          act.setSettings({ developer: on }),
-        ),
         {
           kind: "action",
           key: "erase",
@@ -433,68 +414,6 @@ function parentsSurface(view: HostView, act: HostActions): readonly Section[] {
       ],
     },
   ]
-
-  if (view.settings.developer) {
-    sections.push({
-      key: "diagnostics",
-      rows: [
-        fact("platform", dev.platform, view.native ? dev.native : dev.browser),
-        // The capability grants, read from the same table `capabilities.test.ts`
-        // holds against `src-tauri/capabilities/default.json`. What the app may
-        // ask the operating system for is a thing a parent is entitled to see,
-        // and a thing a developer needs on a device where it is failing.
-        // Named by `grantOf`, not by `permission`: a command this app registers
-        // itself has no ACL permission to show — it has a command — and reading
-        // the field directly drew a row called `null` with a `null` key.
-        ...NATIVE_CALLS.map(
-          (call): Row => fact(callId(call), grantOf(call), `${call.module}.${call.fn}`),
-        ),
-        ...view.storage.map((entry): Row => fact(entry.key, entry.key, formatBytes(entry.bytes))),
-      ],
-    })
-
-    // The day pass, and the four levers that make a full day simulable in one
-    // sitting. No price is shown and no store is called: `grantingBilling`
-    // writes the same record a confirmed purchase would, so what is being
-    // exercised is the entitlement, not a payment.
-    sections.push({
-      key: "pass",
-      rows: [
-        fact("pass", dev.pass, view.pass),
-        fact("resting", dev.resting, view.resting.length === 0 ? "—" : view.resting.join(", ")),
-        {
-          kind: "action",
-          key: "grant-day",
-          name: dev.grantDayPass,
-          tone: "plain",
-          run: () => act.grantTestPass("day"),
-        },
-        {
-          kind: "action",
-          key: "grant-lifetime",
-          name: dev.grantLifetime,
-          tone: "plain",
-          run: () => act.grantTestPass("lifetime"),
-        },
-        {
-          kind: "action",
-          key: "clear-pass",
-          name: dev.clearPass,
-          tone: "plain",
-          run: act.clearTestPass,
-        },
-        {
-          kind: "action",
-          key: "clear-ledger",
-          name: dev.clearLedger,
-          tone: "plain",
-          run: act.clearRestLedger,
-        },
-      ],
-    })
-  }
-
-  return sections
 }
 
 /**

@@ -27,7 +27,7 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 
 import { DESTINATIONS, type Destination } from "../app/routes.ts"
-import { DEFAULT_PROFILE_ID, deviceKey, storageKey } from "../app/profile.ts"
+import { DEFAULT_PROFILE_ID } from "../app/profile.ts"
 import { EMPTY_RECORD } from "../learner/record.ts"
 import type { InstalledPack } from "../packs/registry.ts"
 import { DEFAULT_SETTINGS } from "../settings/store.ts"
@@ -43,15 +43,12 @@ const coldHost: HostView = {
   placed: 0,
   record: EMPTY_RECORD,
   storageBytes: 0,
-  storage: [],
   // `platform.ts` reads a constant Vite defines at build time and Node does
   // not, so the version arrives as a value rather than as an import here.
   version: "0.1.0",
-  native: false,
   armed: false,
   // Nothing has been bought and nothing has been played, which is the state
   // that matters most: on a cold device **every game is open**.
-  pass: "none",
   resting: [],
 }
 
@@ -68,9 +65,6 @@ function recorder() {
     armErase: () => calls.push("armErase"),
     erase: () => calls.push("erase"),
     launchPack: () => calls.push("launchPack"),
-    grantTestPass: () => calls.push("grantTestPass"),
-    clearTestPass: () => calls.push("clearTestPass"),
-    clearRestLedger: () => calls.push("clearRestLedger"),
   }
   return { calls, actions }
 }
@@ -140,13 +134,10 @@ test("no destination is empty on a device nobody has used yet", () => {
 })
 
 /**
- * A device a family has used: two learners, a pack installed, work behind them,
- * and developer mode on.
+ * A device a family has used: two learners, a pack installed, and work behind them.
  *
  * The cold device is the case that hides an empty screen; a used one is the case
- * that hides a row built from something that is only sometimes there — which is
- * exactly what `developer: true` exposes, since the diagnostics section is the
- * only one built by mapping over a table the host does not own.
+ * that hides a row built from something that is only sometimes there.
  */
 const usedHost: HostView = {
   ...coldHost,
@@ -168,10 +159,7 @@ const usedHost: HostView = {
   placed: 37,
   record: { answered: 120, correct: 91 },
   storageBytes: 8_192,
-  storage: [{ key: storageKey("p1", "record"), bytes: 64 }],
-  settings: { ...DEFAULT_SETTINGS, developer: true },
   armed: true,
-  native: true,
 }
 
 test("every destination is still whole with a family's worth of state on it", () => {
@@ -308,17 +296,19 @@ test("erasing everything takes two presses, and the row says which one it is on"
   assert.deepEqual(armed.calls, ["erase"])
 })
 
-test("diagnostics are off until a parent turns them on", () => {
-  const off = rowsOf("parents", coldHost)
-  const on = rowsOf("parents", {
-    ...coldHost,
-    settings: { ...DEFAULT_SETTINGS, developer: true },
-    storage: [{ key: deviceKey("theme"), bytes: 42 }],
-  })
-  assert.ok(on.length > off.length, "developer mode adds nothing")
-  assert.ok(
-    on.some((row) => row.kind === "fact" && row.name === deviceKey("theme")),
-    "the storage breakdown is the point of the mode",
+test("the production parent area ignores a legacy developer-mode setting", () => {
+  // Version 0.3.11 persisted this bit and used it to expose four test-entitlement
+  // controls in the shipping app. An update must remove the surface even on a
+  // device where the old build left the bit on.
+  const legacySettings = { ...DEFAULT_SETTINGS, developer: true } as typeof DEFAULT_SETTINGS
+  const rows = rowsOf("parents", { ...coldHost, settings: legacySettings })
+  assert.deepEqual(
+    rows.map((row) => row.key),
+    ["version", "storage", "learners", "erase"],
+  )
+  assert.equal(
+    rows.some((row) => "name" in row && /developer|test/i.test(row.name)),
+    false,
   )
 })
 
