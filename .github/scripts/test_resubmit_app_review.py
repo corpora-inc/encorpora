@@ -303,6 +303,28 @@ def test_review_with_additional_items_is_refused(monkeypatch, capsys):
     assert "additional items" in capsys.readouterr().out
 
 
+def test_review_items_explicitly_includes_app_store_version_relationship(monkeypatch):
+    seen = {}
+
+    def fake_request(method, path, bearer, **kwargs):
+        seen["method"] = method
+        seen["path"] = path
+        seen["params"] = kwargs["params"]
+        return {"data": []}
+
+    monkeypatch.setattr(review, "request", fake_request)
+    assert review.review_items("review-id", object()) == []
+    assert seen == {
+        "method": "GET",
+        "path": "reviewSubmissions/review-id/items",
+        "params": {
+            "fields[reviewSubmissionItems]": "state,appStoreVersion",
+            "include": "appStoreVersion",
+            "limit": "50",
+        },
+    }
+
+
 def test_workflow_cannot_select_branch_code():
     workflow = (Path(__file__).parents[1] / "workflows/resubmit-dynawalla-review.yml").read_text()
     assert "repository_dispatch:" in workflow
