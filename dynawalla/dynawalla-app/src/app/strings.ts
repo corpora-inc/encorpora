@@ -175,41 +175,17 @@ export const strings = {
     storeUnavailable: "The store could not be reached.",
     /** A pass is held. Shown where a price would otherwise be. */
     held: "This device has a pass.",
-    /** Developer mode only, and not translated for that reason — see `dev`. */
   },
 
   parents: {
     version: "Version",
     storage: "On this device",
     learners: "Learners",
-    developer: "Developer mode",
     /** Erases every learner, everything they built, and every installed pack. */
     erase: "Erase everything",
     /** The same row, armed. One more press does it; leaving the screen disarms. */
     eraseConfirm: "Erase everything — press again",
   },
-} as const
-
-/**
- * Developer-mode copy. **Not translated, deliberately**: it is read by whoever
- * is building the app, it names things that have no name in any other language
- * (a Tauri command, a storage key), and translating it would cost five
- * translations a line for an audience of one.
- */
-export const dev = {
-  platform: "Platform",
-  native: "Native (Tauri)",
-  browser: "Browser",
-  grant: "Grant",
-  key: "Key",
-  /** The pass, from the parent area, with developer mode on. */
-  pass: "Pass",
-  passNone: "None",
-  grantDayPass: "Grant a day pass (test)",
-  grantLifetime: "Grant a lifetime pass (test)",
-  clearPass: "Clear the pass (test)",
-  clearLedger: "Clear today's rest ledger (test)",
-  resting: "Resting today",
 } as const
 
 /**
