@@ -69,6 +69,31 @@ def test_resolve_build_requires_exact_marketing_version(monkeypatch, capsys):
     assert "returned 0" in capsys.readouterr().out
 
 
+def test_resolve_version_uses_the_app_scoped_relationship_endpoint(monkeypatch):
+    seen = {}
+    version = _resource(
+        "appStoreVersions",
+        "version",
+        {"versionString": "0.3.11", "platform": "IOS", "appStoreState": "REJECTED"},
+    )
+
+    def fake_request(method, path, bearer, **kwargs):
+        seen["method"] = method
+        seen["path"] = path
+        seen["params"] = kwargs["params"]
+        return {"data": [version]}
+
+    monkeypatch.setattr(review, "request", fake_request)
+    assert review.resolve_version("app-id", "0.3.11", object()) == version
+    assert seen["method"] == "GET"
+    assert seen["path"] == "apps/app-id/appStoreVersions"
+    assert seen["params"] == {
+        "filter[platform]": "IOS",
+        "filter[versionString]": "0.3.11",
+        "limit": "200",
+    }
+
+
 def test_resolve_build_requires_valid_processing_state(monkeypatch, capsys):
     payload = {
         "data": [
