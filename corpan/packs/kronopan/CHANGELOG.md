@@ -7,6 +7,22 @@ All notable changes to Kronopán are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Preset library expanded to a couple of dozen named cycles across traditions
+  (Bulgarian, Macedonian, Greek, Turkish, Romanian, Irish, and an Indian tala),
+  ordered by length. Author-specified groupings are kept verbatim; debated
+  internal orderings carry a note.
+- Label toggle in the linear view: show group lengths as numbers, or as
+  short-long letters (S for a 2, L for a 3) so the shape reads without digits.
+- Header now shows the collapsed time signature (for example 7/8) beside the
+  additive figure and the dance name.
+
+### Changed
+
+- Editing a cycle now detaches it from its preset: the header shows "Custom" and
+  the preset picker follows suit.
+
 ## [0.1.0] - 2026-08-20
 
 ### Added

@@ -53,8 +53,13 @@
 }
 .kp-sig {
   display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.kp-sig-main {
+  display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
 }
 .kp-sig-add {
   font-family: var(--kp-display);
@@ -66,6 +71,26 @@
 .kp-sig-over {
   color: var(--kp-text-dim);
   font-size: 15px;
+}
+.kp-sig-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.15;
+  border-left: 1px solid var(--kp-panel-edge);
+  padding-left: 18px;
+}
+.kp-sig-frac {
+  font-family: var(--kp-display);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--kp-text);
+}
+.kp-sig-name {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--kp-text-dim);
 }
 
 /* Stage / canvas */

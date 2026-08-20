@@ -1,4 +1,5 @@
 import type { ClickDensity } from "../audio"
+import type { LabelMode } from "../views/LinearView"
 
 export const MIN_BPM = 30
 export const MAX_BPM = 300
@@ -19,6 +20,8 @@ type Props = {
   onDensity: (d: ClickDensity) => void
   volume: number
   onVolume: (v: number) => void
+  labelMode: LabelMode
+  onLabelMode: (m: LabelMode) => void
 }
 
 export function TransportBar({
@@ -30,6 +33,8 @@ export function TransportBar({
   onDensity,
   volume,
   onVolume,
+  labelMode,
+  onLabelMode,
 }: Props) {
   const clampBpm = (n: number) => Math.max(MIN_BPM, Math.min(MAX_BPM, Math.round(n)))
 
@@ -93,6 +98,24 @@ export function TransportBar({
           onChange={(e) => onVolume(Number(e.target.value))}
           aria-label="Click level"
         />
+      </div>
+
+      <div className="kp-labels">
+        <span className="kp-label">Show</span>
+        <div className="kp-seg" role="group" aria-label="Bar labels">
+          <button
+            className={`kp-seg-btn ${labelMode === "number" ? "is-on" : ""}`}
+            onClick={() => onLabelMode("number")}
+          >
+            1 2 3
+          </button>
+          <button
+            className={`kp-seg-btn ${labelMode === "shortlong" ? "is-on" : ""}`}
+            onClick={() => onLabelMode("shortlong")}
+          >
+            S L
+          </button>
+        </div>
       </div>
     </div>
   )

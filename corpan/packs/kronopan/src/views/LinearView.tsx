@@ -14,18 +14,33 @@ import { barsModel } from "../notation"
 import { THEME, roleColor } from "../theme"
 import type { Clock } from "../audio"
 
+// How a bar is labeled. "number" shows the group length; "shortlong" shows the
+// long-short shape as letters (a 2 is short, a 3 is long), so the geometry reads
+// physically without digits. Lengths other than 2 or 3 keep their number.
+export type LabelMode = "number" | "shortlong"
+
+const barLabel = (length: number, mode: LabelMode): string => {
+  if (mode === "number") return String(length)
+  if (length === 2) return "S"
+  if (length === 3) return "L"
+  return String(length)
+}
+
 type Props = {
   cycle: Cycle
   clock: Clock
+  labelMode: LabelMode
 }
 
 const PAD_X = 28
 const BAND_RATIO = 0.62 // band height as a fraction of canvas height
 
-export function LinearView({ cycle, clock }: Props) {
+export function LinearView({ cycle, clock, labelMode }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const cycleRef = useRef(cycle)
   cycleRef.current = cycle
+  const labelRef = useRef(labelMode)
+  labelRef.current = labelMode
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -93,12 +108,17 @@ export function LinearView({ cycle, clock }: Props) {
         ctx.strokeStyle = withAlpha(color, isActive ? 1 : 0.85)
         ctx.stroke()
 
-        // Group length digit, large enough to read across a room.
+        // Group label, large enough to read across a room. Either the length
+        // digit or the short-long letter, per the current label mode.
         ctx.fillStyle = color
         ctx.font = `600 ${Math.round(bandH * 0.44)}px "Fraunces", Georgia, serif`
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        ctx.fillText(String(g.length), gx + Math.max(0, gw) / 2, bandTop + bandH / 2)
+        ctx.fillText(
+          barLabel(g.length, labelRef.current),
+          gx + Math.max(0, gw) / 2,
+          bandTop + bandH / 2,
+        )
       }
 
       // Interior pulse hairlines.

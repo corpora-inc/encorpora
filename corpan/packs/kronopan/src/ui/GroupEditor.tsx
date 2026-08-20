@@ -11,10 +11,18 @@ type Props = {
   onChange: (cycle: Cycle) => void
 }
 
+const isPresetCycle = (cycle: Cycle): boolean => PRESETS.some((p) => p.id === cycle.id)
+
 // Editing the cycle restarts it from the top; the shell says so next to this
-// editor. Groups are positive integers, held to a sane 1..16 in the stepper.
+// editor. Any edit also detaches it from its preset (id becomes "custom") so the
+// header stops claiming a dance name it no longer matches. Groups are positive
+// integers, held to a sane 1..16 in the stepper.
 export function GroupEditor({ cycle, onChange }: Props) {
-  const setGroups = (groups: number[]) => onChange({ ...cycle, groups })
+  // Merge a change and mark the result custom, since it no longer is the preset.
+  const edit = (patch: Partial<Cycle>) =>
+    onChange({ ...cycle, ...patch, id: "custom", name: "Custom" })
+
+  const setGroups = (groups: number[]) => edit({ groups })
 
   const bump = (index: number, delta: number) => {
     const next = cycle.groups.slice()
@@ -36,12 +44,10 @@ export function GroupEditor({ cycle, onChange }: Props) {
           <span className="kp-label">Preset</span>
           <select
             className="kp-select"
-            value={PRESETS.find((p) => p.id === cycle.id)?.id ?? ""}
+            value={isPresetCycle(cycle) ? cycle.id : "custom"}
             onChange={(e) => applyPreset(e.target.value)}
           >
-            <option value="" disabled>
-              Choose
-            </option>
+            {!isPresetCycle(cycle) && <option value="custom">Custom</option>}
             {PRESETS.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.name}
@@ -57,7 +63,7 @@ export function GroupEditor({ cycle, onChange }: Props) {
               <button
                 key={u}
                 className={`kp-seg-btn ${cycle.unit === u ? "is-on" : ""}`}
-                onClick={() => onChange({ ...cycle, unit: u })}
+                onClick={() => edit({ unit: u })}
               >
                 1/{u}
               </button>
