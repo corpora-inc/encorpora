@@ -63,7 +63,7 @@ def request(
             fail("App Store Connect returned 401 — the API key is not valid for this team.")
         if exc.code == 403:
             fail(
-                f"{method} {path} -> 403. The key needs App Manager or Admin access. "
+                f"{method} {path} -> 403. The operation or API-key role is not allowed. "
                 f"Response: {detail}"
             )
         fail(f"{method} {path} -> HTTP {exc.code}: {detail}")
@@ -103,10 +103,9 @@ class Selection:
 def resolve_version(app_id: str, app_version: str, bearer: Bearer) -> dict[str, Any]:
     payload = request(
         "GET",
-        "appStoreVersions",
+        f"apps/{app_id}/appStoreVersions",
         bearer,
         params={
-            "filter[app]": app_id,
             "filter[platform]": "IOS",
             "filter[versionString]": app_version,
             "limit": "200",
