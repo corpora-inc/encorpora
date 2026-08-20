@@ -137,7 +137,9 @@ def test_submit_attaches_exact_build_before_submitting(monkeypatch):
     calls = []
     monkeypatch.setattr(review, "attach_build", lambda *args: calls.append("attach"))
     monkeypatch.setattr(review, "resolve_review_item", lambda *args: calls.append("resolve"))
-    monkeypatch.setattr(review, "wait_until_review_is_ready", lambda *args: calls.append("ready"))
+    monkeypatch.setattr(
+        review, "verify_review_is_resubmittable", lambda *args: calls.append("ready")
+    )
     monkeypatch.setattr(review, "submit_review", lambda *args: calls.append("submit") or "WAITING_FOR_REVIEW")
     review.main(["--submit"])
     assert calls == ["attach", "resolve", "ready", "submit"]
@@ -267,19 +269,56 @@ def test_rejected_item_is_marked_resolved(monkeypatch):
     ]
 
 
-def test_parent_review_must_be_ready_before_submission(monkeypatch):
-    states = iter(["UNRESOLVED_ISSUES", "READY_FOR_REVIEW"])
+def test_unresolved_parent_is_resubmittable_after_its_item_is_resolved(monkeypatch):
     monkeypatch.setattr(
         review,
         "request",
         lambda *args, **kwargs: {
-            "data": _resource("reviewSubmissions", "review", {"state": next(states)})
+            "data": _resource(
+                "reviewSubmissions", "review", {"state": "UNRESOLVED_ISSUES"}
+            )
         },
     )
-    sleeps = []
-    monkeypatch.setattr(review.time, "sleep", lambda seconds: sleeps.append(seconds))
-    review.wait_until_review_is_ready("review", object())
-    assert sleeps == [5]
+    review.verify_review_is_resubmittable("review", object())
+
+
+def test_resubmission_refuses_an_unexpected_parent_state(monkeypatch, capsys):
+    monkeypatch.setattr(
+        review,
+        "request",
+        lambda *args, **kwargs: {
+            "data": _resource("reviewSubmissions", "review", {"state": "COMPLETE"})
+        },
+    )
+    with pytest.raises(SystemExit):
+        review.verify_review_is_resubmittable("review", object())
+    assert "unexpected state 'COMPLETE'" in capsys.readouterr().out
+
+
+def test_inspection_resumes_after_rejected_item_was_already_resolved(monkeypatch):
+    version = _resource(
+        "appStoreVersions",
+        "version",
+        {"versionString": "0.3.11", "platform": "IOS", "appStoreState": "REJECTED"},
+    )
+    build = _resource("builds", "build", {"processingState": "VALID"})
+    parent = _resource(
+        "reviewSubmissions",
+        "review",
+        {"state": "UNRESOLVED_ISSUES", "submittedDate": "2026-08-01T00:00:00Z"},
+    )
+    item = _resource("reviewSubmissionItems", "item", {"state": "READY_FOR_REVIEW"})
+    monkeypatch.setattr(review, "resolve_app_id", lambda *args: "app")
+    monkeypatch.setattr(review, "resolve_version", lambda *args: version)
+    monkeypatch.setattr(review, "resolve_build", lambda *args: build)
+    monkeypatch.setattr(review, "resolve_review", lambda *args: (parent, item))
+
+    selection = review.inspect_selection(
+        review.BUNDLE_ID, "0.3.11", "0.3.11.29787564", object()
+    )
+
+    assert selection.review_state == "UNRESOLVED_ISSUES"
+    assert selection.review_item_state == "READY_FOR_REVIEW"
 
 
 def test_review_with_additional_items_is_refused(monkeypatch, capsys):

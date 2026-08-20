@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -222,10 +221,13 @@ def inspect_selection(
     review, review_item = resolve_review(app_id, str(version["id"]), bearer)
     review_state = str(attributes(review).get("state") or "")
     item_state = str(attributes(review_item).get("state") or "")
-    if review_state == "UNRESOLVED_ISSUES" and item_state != "REJECTED":
+    if review_state == "UNRESOLVED_ISSUES" and item_state not in {
+        "REJECTED",
+        "READY_FOR_REVIEW",
+    }:
         fail(
             f"Review is UNRESOLVED_ISSUES but its App Store version item is {item_state!r}, "
-            "not REJECTED."
+            "not REJECTED or READY_FOR_REVIEW."
         )
     if review_state == "READY_FOR_REVIEW" and item_state != "READY_FOR_REVIEW":
         fail(
@@ -288,17 +290,13 @@ def resolve_review_item(selection: Selection, bearer: Bearer) -> None:
         fail(f"Resolved review item did not become READY_FOR_REVIEW; state is {state!r}.")
 
 
-def wait_until_review_is_ready(review_id: str, bearer: Bearer) -> None:
-    for attempt in range(13):
-        response = request("GET", f"reviewSubmissions/{review_id}", bearer)
-        state = str(attributes(response.get("data") or {}).get("state") or "")
-        if state == "READY_FOR_REVIEW":
-            return
-        if state != "UNRESOLVED_ISSUES":
-            fail(f"Review entered unexpected state {state!r} after resolving its item.")
-        if attempt < 12:
-            time.sleep(5)
-    fail("Review item was resolved, but the parent review did not become READY_FOR_REVIEW.")
+def verify_review_is_resubmittable(review_id: str, bearer: Bearer) -> None:
+    response = request("GET", f"reviewSubmissions/{review_id}", bearer)
+    state = str(attributes(response.get("data") or {}).get("state") or "")
+    # Apple keeps the parent UNRESOLVED_ISSUES while its now-ready item waits
+    # for the explicit resubmit action.
+    if state not in {"UNRESOLVED_ISSUES", "READY_FOR_REVIEW"}:
+        fail(f"Review entered unexpected state {state!r} after resolving its item.")
 
 
 def submit_review(selection: Selection, bearer: Bearer) -> str:
@@ -360,7 +358,7 @@ def main(argv: list[str] | None = None) -> None:
 
     attach_build(selection, bearer)
     resolve_review_item(selection, bearer)
-    wait_until_review_is_ready(selection.review_id, bearer)
+    verify_review_is_resubmittable(selection.review_id, bearer)
     state = submit_review(selection, bearer)
     print(
         f"Submitted {bundle_id} {app_version} build {build_version} for App Review; "
