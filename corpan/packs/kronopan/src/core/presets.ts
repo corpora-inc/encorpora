@@ -167,6 +167,18 @@ export const PRESETS: Cycle[] = [
     notes: "A nine joined to a thirteen. The internal ordering is debated.",
   },
 
+  // 17
+  {
+    id: "heptadecagonal",
+    name: "Heptadecagonal",
+    groups: [5, 3, 4, 5],
+    unit: 8,
+    tradition: "Umanistan",
+    notes:
+      "A seventeen, from the song Heptadecagonal by Umanistan. " +
+      "Also felt 3+5+3+3+3, 3+2+3+2+2+2+3, or 2+3+3+3+3+3.",
+  },
+
   // 25
   {
     id: "sedi-donka",

@@ -1,5 +1,6 @@
+import { useEffect, useRef, useState } from "react"
 import type { Cycle, Unit } from "../core"
-import { PRESETS, totalPulses } from "../core"
+import { PRESETS, totalPulses, subdivide } from "../core"
 import { roleColor } from "../theme"
 import { colorRoleForLength } from "../notation"
 
@@ -36,10 +37,60 @@ export function GroupEditor({ cycle, onChange }: Props) {
   const remove = (index: number) => setGroups(cycle.groups.filter((_, i) => i !== index))
   const add = () => setGroups([...cycle.groups, 2])
 
+  // Break a group of four or more into 2s and 3s in place.
+  const split = (index: number) => {
+    const next = cycle.groups.slice()
+    next.splice(index, 1, ...subdivide(cycle.groups[index]))
+    setGroups(next)
+  }
+
   const applyPreset = (id: string) => {
     const p = PRESETS.find((x) => x.id === id)
     if (p) onChange({ ...p })
   }
+
+  // Drag to reorder groups, with mouse or finger. The dragged group is tracked
+  // by index; as the pointer moves over another group the order updates live.
+  const pillRefs = useRef<(HTMLDivElement | null)[]>([])
+  const groupsRef = useRef(cycle.groups)
+  groupsRef.current = cycle.groups
+  const [dragging, setDragging] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (dragging === null) return
+    const onMove = (e: PointerEvent) => {
+      const from = dragging
+      const groups = groupsRef.current
+      let target = from
+      for (let j = 0; j < groups.length; j++) {
+        if (j === from) continue
+        const el = pillRefs.current[j]
+        if (!el) continue
+        const rect = el.getBoundingClientRect()
+        if (e.clientX >= rect.left && e.clientX <= rect.right) {
+          target = j
+          break
+        }
+      }
+      if (target !== from) {
+        const next = groups.slice()
+        const [moved] = next.splice(from, 1)
+        next.splice(target, 0, moved)
+        setGroups(next)
+        setDragging(target)
+      }
+    }
+    const onUp = () => setDragging(null)
+    window.addEventListener("pointermove", onMove)
+    window.addEventListener("pointerup", onUp)
+    window.addEventListener("pointercancel", onUp)
+    return () => {
+      window.removeEventListener("pointermove", onMove)
+      window.removeEventListener("pointerup", onUp)
+      window.removeEventListener("pointercancel", onUp)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dragging])
 
   return (
     <div className="kp-editor">
@@ -77,28 +128,59 @@ export function GroupEditor({ cycle, onChange }: Props) {
       </div>
 
       <div className="kp-groups">
-        {cycle.groups.map((g, i) => (
-          <div className="kp-group" key={i} style={{ borderColor: roleColor(colorRoleForLength(g)) }}>
-            <button className="kp-group-btn" onClick={() => bump(i, +1)} aria-label="Longer">
-              +
-            </button>
-            <span className="kp-group-n" style={{ color: roleColor(colorRoleForLength(g)) }}>
-              {g}
-            </span>
-            <button className="kp-group-btn" onClick={() => bump(i, -1)} aria-label="Shorter">
-              &minus;
-            </button>
-            <button className="kp-group-x" onClick={() => remove(i)} aria-label="Remove group">
-              &times;
-            </button>
-          </div>
-        ))}
+        {cycle.groups.map((g, i) => {
+          const color = roleColor(colorRoleForLength(g))
+          return (
+            <div
+              className={`kp-group ${dragging === i ? "is-dragging" : ""}`}
+              key={i}
+              ref={(el) => {
+                pillRefs.current[i] = el
+              }}
+              style={{ borderColor: color }}
+            >
+              <span
+                className="kp-grip"
+                onPointerDown={(e) => {
+                  e.preventDefault()
+                  setDragging(i)
+                }}
+                aria-label="Drag to reorder"
+                title="Drag to reorder"
+              >
+                ⠿
+              </span>
+              <button className="kp-group-btn" onClick={() => bump(i, +1)} aria-label="Longer">
+                +
+              </button>
+              <span className="kp-group-n" style={{ color }}>
+                {g}
+              </span>
+              <button className="kp-group-btn" onClick={() => bump(i, -1)} aria-label="Shorter">
+                &minus;
+              </button>
+              {g >= 4 && (
+                <button
+                  className="kp-group-x"
+                  onClick={() => split(i)}
+                  aria-label="Subdivide into 2s and 3s"
+                  title="Subdivide into 2s and 3s"
+                >
+                  &divide;
+                </button>
+              )}
+              <button className="kp-group-x" onClick={() => remove(i)} aria-label="Remove group">
+                &times;
+              </button>
+            </div>
+          )
+        })}
         <button className="kp-add" onClick={add} aria-label="Add group">
           + group
         </button>
       </div>
 
-      <p className="kp-hint">Editing the cycle restarts it from the top.</p>
+      <p className="kp-hint">Drag a group by its handle to reorder. Editing restarts the cycle.</p>
     </div>
   )
 }

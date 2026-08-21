@@ -1,5 +1,7 @@
-import type { ClickDensity } from "../audio"
-import type { LabelMode, NotationMode } from "../views/LinearView"
+import type { ClickDensity, VoiceKitId } from "../audio"
+import { VOICE_KITS } from "../audio"
+import type { LabelMode, NotationMode, ViewMode } from "../views"
+import { SKINS, type SkinId } from "../theme"
 
 export const MIN_BPM = 30
 export const MAX_BPM = 300
@@ -18,13 +20,26 @@ type Props = {
   onBpm: (bpm: number) => void
   density: ClickDensity
   onDensity: (d: ClickDensity) => void
+  voiceKit: VoiceKitId
+  onVoiceKit: (k: VoiceKitId) => void
   volume: number
   onVolume: (v: number) => void
   labelMode: LabelMode
   onLabelMode: (m: LabelMode) => void
   notationMode: NotationMode
   onNotationMode: (m: NotationMode) => void
+  view: ViewMode
+  onView: (v: ViewMode) => void
+  skin: SkinId
+  onSkin: (s: SkinId) => void
 }
+
+const VIEWS: { value: ViewMode; label: string }[] = [
+  { value: "linear", label: "Linear" },
+  { value: "ring", label: "Ring" },
+  { value: "spiral", label: "Spiral" },
+  { value: "spin", label: "Spin" },
+]
 
 export function TransportBar({
   playing,
@@ -33,12 +48,18 @@ export function TransportBar({
   onBpm,
   density,
   onDensity,
+  voiceKit,
+  onVoiceKit,
   volume,
   onVolume,
   labelMode,
   onLabelMode,
   notationMode,
   onNotationMode,
+  view,
+  onView,
+  skin,
+  onSkin,
 }: Props) {
   const clampBpm = (n: number) => Math.max(MIN_BPM, Math.min(MAX_BPM, Math.round(n)))
 
@@ -90,6 +111,22 @@ export function TransportBar({
         </div>
       </div>
 
+      <div className="kp-voice">
+        <span className="kp-label">Voice</span>
+        <select
+          className="kp-select"
+          value={voiceKit}
+          onChange={(e) => onVoiceKit(e.target.value as VoiceKitId)}
+          aria-label="Metronome voice"
+        >
+          {VOICE_KITS.map((k) => (
+            <option key={k.id} value={k.id}>
+              {k.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="kp-volume">
         <span className="kp-label">Level</span>
         <input
@@ -102,6 +139,36 @@ export function TransportBar({
           onChange={(e) => onVolume(Number(e.target.value))}
           aria-label="Click level"
         />
+      </div>
+
+      <div className="kp-labels">
+        <span className="kp-label">View</span>
+        <div className="kp-seg" role="group" aria-label="View">
+          {VIEWS.map((v) => (
+            <button
+              key={v.value}
+              className={`kp-seg-btn ${view === v.value ? "is-on" : ""}`}
+              onClick={() => onView(v.value)}
+            >
+              {v.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="kp-labels">
+        <span className="kp-label">Skin</span>
+        <div className="kp-seg" role="group" aria-label="Skin">
+          {SKINS.map((s) => (
+            <button
+              key={s.id}
+              className={`kp-seg-btn ${skin === s.id ? "is-on" : ""}`}
+              onClick={() => onSkin(s.id)}
+            >
+              {s.name}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="kp-labels">

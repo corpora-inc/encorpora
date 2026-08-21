@@ -7,8 +7,37 @@ All notable changes to Kronopán are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-21
+
 ### Added
 
+- Pickable metronome voices, all synthesized: Tonal, Dumbek (a low DUM on the
+  downbeat and group heads with a bright KA/tek on the interior pulses, so the
+  additive grouping is audible), Woodblock, Rim, Cowbell, and a soft Shaker.
+  Picking a voice auditions a short pattern so you hear it right away. The
+  click-density control (cycle, group heads, every pulse, subdivision) still
+  chooses whether you hear only the tops of the groups or fill them in.
+- Heptadecagonal, a seventeen from the song by Umanistan, added to the preset
+  library. Groups of four or more can be subdivided into 2s and 3s from the
+  editor.
+- Groups can be reordered by dragging them by their handle, with a mouse or a
+  finger.
+- Three skins, selectable in the controls, reusing palettes from sibling packs:
+  Astral (stargate-reader near-black and cyan, with a faint starfield), Tropical
+  (juice-squeeze light with juice red and fruit colors), and Earthy
+  (earthgate-reader cream, brown, and orange). Skins are purely cosmetic (a
+  palette swap plus the starfield on Astral); layout, timing, and readability are
+  unchanged, the three group colors stay distinct in every skin, and bar digits
+  stay dark on the light skins.
+- Ring, spiral, and spin views, switchable live alongside the linear view (keys
+  1 to 4). The ring wraps the cycle into an annulus with a needle fixed at twelve
+  o'clock and the disc rotating under it (turntable posture); under reduced
+  motion the disc holds still and a marker sweeps instead. The spiral is a vinyl
+  groove that starts as a small circle near the center and winds outward in a few
+  wide turns, lighting up as it plays and resetting to the center at the rim.
+  Spin is the same groove turning like a record under a fixed top playhead that
+  climbs outward from the center. The ring honors the active bars or dots
+  notation; all views light the playing pulse.
 - Dots notation mode, switchable live in the linear view without disturbing the
   clock. Each group is a cluster of circles, one per pulse, colored by group
   length, with constant dot size and spacing so a three-cluster is naturally

@@ -7,6 +7,7 @@ import {
   groupCount,
   additiveSignature,
   collapsedSignature,
+  subdivide,
   type Cycle,
 } from "./cycle"
 
@@ -78,5 +79,28 @@ describe("derived quantities", () => {
   it("collapsedSignature reads total over unit", () => {
     expect(collapsedSignature(cycle([3, 2, 2], 8))).toBe("7/8")
     expect(collapsedSignature(cycle([2, 2, 3, 2, 2], 16))).toBe("11/16")
+  })
+})
+
+describe("subdivide", () => {
+  it("leaves twos, threes, and lone pulses unchanged", () => {
+    expect(subdivide(1)).toEqual([1])
+    expect(subdivide(2)).toEqual([2])
+    expect(subdivide(3)).toEqual([3])
+  })
+
+  it("breaks an even group into all twos", () => {
+    expect(subdivide(4)).toEqual([2, 2])
+    expect(subdivide(6)).toEqual([2, 2, 2])
+    expect(subdivide(8)).toEqual([2, 2, 2, 2])
+  })
+
+  it("breaks an odd group into a three and the rest twos, preserving the total", () => {
+    expect(subdivide(5)).toEqual([3, 2])
+    expect(subdivide(7)).toEqual([3, 2, 2])
+    expect(subdivide(9)).toEqual([3, 2, 2, 2])
+    for (const n of [4, 5, 6, 7, 9, 11]) {
+      expect(subdivide(n).reduce((a, b) => a + b, 0)).toBe(n)
+    }
   })
 })
