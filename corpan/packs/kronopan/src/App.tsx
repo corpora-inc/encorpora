@@ -23,6 +23,11 @@ export function App(_props: Props) {
   const [labelMode, setLabelMode] = useState<LabelMode>("number")
   const [notationMode, setNotationMode] = useState<NotationMode>("bars")
 
+  // Mirrors bpm for the keyboard handler, so rapid arrow repeats read the
+  // current tempo instead of a stale closure value.
+  const bpmRef = useRef(bpm)
+  bpmRef.current = bpm
+
   // One clock for the life of the shell. Created lazily so its AudioContext is
   // built on mount (suspended until the first gesture resumes it).
   const clockRef = useRef<Clock | null>(null)
@@ -83,16 +88,18 @@ export function App(_props: Props) {
       const step = e.shiftKey ? 5 : 1
       if (e.key === "ArrowUp" || e.key === "ArrowRight") {
         e.preventDefault()
-        changeBpm(bpm + step)
+        changeBpm(bpmRef.current + step)
       } else if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
         e.preventDefault()
-        changeBpm(bpm - step)
+        changeBpm(bpmRef.current - step)
       }
     }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
+    // togglePlay reads `playing`, so resubscribe when it changes; bpm is read
+    // through bpmRef to avoid a stale closure on rapid key repeats.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bpm, playing])
+  }, [playing])
 
   const isEmpty = cycle.groups.length === 0
   const activePreset = PRESETS.find((p) => p.id === cycle.id)

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Package kronopan.zip — code only. Kronopán synthesizes its own metronome, so
+ * Package kronopan.zip, code only. Kronopán synthesizes its own metronome, so
  * it has no bundled audio kit. The zip holds manifest.json, dist/, and the
  * avatar png when one is present.
  *

@@ -100,12 +100,15 @@ export class InternalClock implements Clock {
 
   stop(): void {
     if (!this.running) return
-    this.frozenPosition = positionAt(this.anchor, this.ctx.currentTime)
+    this.frozenPosition = Math.max(0, positionAt(this.anchor, this.ctx.currentTime))
     this.running = false
     if (this.timer !== null) {
       clearInterval(this.timer)
       this.timer = null
     }
+    // Silence any clicks already scheduled in the lookahead window so nothing
+    // rings out after Stop.
+    this.metro.cancelAll()
   }
 
   state(): ClockState {
@@ -114,7 +117,11 @@ export class InternalClock implements Clock {
 
   positionPulses(): number {
     if (!this.running) return this.frozenPosition
-    return positionAt(this.anchor, this.ctx.currentTime)
+    // Clamp the visual read to zero during the start lead, when the raw position
+    // is still negative, so the playhead waits on the downbeat rather than
+    // wrapping to the end of the cycle. Audio scheduling uses the unclamped
+    // anchor, so this affects only what is drawn.
+    return Math.max(0, positionAt(this.anchor, this.ctx.currentTime))
   }
 
   setTempo(bpm: number): void {
@@ -132,6 +139,9 @@ export class InternalClock implements Clock {
   }
 
   setCycle(cycle: Cycle): void {
+    // Silence the outgoing cycle's scheduled clicks so they do not flam into the
+    // new one.
+    this.metro.cancelAll()
     this.applyCycle(cycle)
     // A new cycle restarts the phase at the downbeat, by design.
     const spp = secondsPerPulse(this.bpm)
@@ -156,7 +166,11 @@ export class InternalClock implements Clock {
 
   dispose(): void {
     this.stop()
-    void this.ctx.close()
+    // Guard against closing an already-closed context (a double dispose would
+    // otherwise reject).
+    if (this.ctx.state !== "closed") {
+      void this.ctx.close()
+    }
   }
 
   private tick(): void {

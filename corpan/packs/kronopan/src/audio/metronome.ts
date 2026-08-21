@@ -23,9 +23,15 @@ const VOICES: Record<ClickRole, VoiceSpec> = {
   subdivision: { freq: 880, gain: 0.14, duration: 0.03, type: "sine" },
 }
 
+type LiveVoice = { osc: OscillatorNode; env: GainNode }
+
 export class Metronome {
   private ctx: AudioContext
   private out: AudioNode
+  // Clicks scheduled into the audio graph but not yet finished. Tracked so a
+  // stop or a cycle swap can silence the ones still in the lookahead window
+  // instead of letting them ring out.
+  private live = new Set<LiveVoice>()
 
   constructor(ctx: AudioContext, out: AudioNode) {
     this.ctx = ctx
@@ -54,10 +60,31 @@ export class Metronome {
     env.connect(this.out)
     osc.start(time)
     osc.stop(time + v.duration + 0.02)
+
+    const node: LiveVoice = { osc, env }
+    this.live.add(node)
     // Let the nodes free themselves once they have played.
     osc.onended = () => {
       osc.disconnect()
       env.disconnect()
+      this.live.delete(node)
+    }
+  }
+
+  // Silence every scheduled click still in flight. Clicks already sounding fade
+  // out over a few milliseconds to avoid a pop; clicks not yet started never
+  // sound. Used on stop and on a cycle swap so the old click track does not bleed
+  // into the new one.
+  cancelAll(): void {
+    const now = this.ctx.currentTime
+    for (const { osc, env } of this.live) {
+      try {
+        env.gain.cancelScheduledValues(now)
+        env.gain.setTargetAtTime(0, now, 0.005)
+        osc.stop(now + 0.03)
+      } catch {
+        // The node may already have stopped; nothing to cancel.
+      }
     }
   }
 }

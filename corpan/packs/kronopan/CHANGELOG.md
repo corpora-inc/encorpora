@@ -41,6 +41,12 @@ All notable changes to Kronopán are documented here. The format follows
 
 - Dots no longer clip at the left and right edges: the row is inset by one dot
   radius so the first and last dots sit fully on screen.
+- The playhead no longer flashes at the end of the cycle for a moment when you
+  press Start or swap the cycle; it now waits on the downbeat during the short
+  audio pre-roll.
+- Stopping, or switching the cycle while playing, no longer lets the previous
+  click track ring out: scheduled clicks still in the lookahead window are
+  faded out cleanly.
 
 ## [0.1.0] - 2026-08-20
 
