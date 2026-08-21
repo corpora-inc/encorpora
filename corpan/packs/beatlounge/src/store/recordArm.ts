@@ -1,16 +1,24 @@
 /**
  * beatlounge — the PER-TRACK RECORD-ARM slice: ONE source of truth for which
  * tracks are armed to record, shared across every surface that can record (the
- * Instruments page header, the Ribbon widget/immersive) and PERSISTED so the
- * arm is sticky — it survives switching voices, leaving the page, and a reload.
+ * Instruments page header, the Shell DockRail button, the Ribbon widget /
+ * immersive). Arm is keyed by trackId and lives in ONE module-scoped vanilla
+ * zustand store (mirrors selectedGroove.ts / selectedInstrument.ts), so each
+ * voice remembers its OWN arm; default is OFF; turning it off sticks for that
+ * track only.
  *
- * The bug this fixes: record-arm was transient `useState` — a single shared flag
- * on the Instruments page (so arming one synth bled onto every other voice) plus
- * a second local flag inside the ribbon. Turning it "off" never reliably stuck,
- * and switching synths showed the wrong arm. Now arm is keyed by trackId, lives
- * in one module-scoped vanilla zustand store (mirrors selectedGroove.ts /
- * selectedInstrument.ts), and is persisted to localStorage. Each voice remembers
- * its OWN arm; default is OFF; turning it off sticks for that track only.
+ * SESSION-SCOPED (fixes #391): arm is sticky WITHIN a running session — it
+ * survives switching voices and leaving/returning to a surface (the module
+ * store outlives component unmount) — but it is held in memory only and is NOT
+ * persisted. A full app reload/restart re-initialises the store to empty, so
+ * you can never come back to a voice that is SILENTLY armed and quietly
+ * overwriting your track. A record arm is (mildly) destructive; the safe
+ * default is to start OFF every session.
+ *
+ * The bug this originally fixed: record-arm was transient `useState` — a single
+ * shared flag on the Instruments page (so arming one synth bled onto every other
+ * voice) plus a second local flag inside the ribbon. Turning it "off" never
+ * reliably stuck, and switching synths showed the wrong arm.
  */
 
 import { createStore } from "zustand/vanilla"
@@ -22,36 +30,14 @@ interface RecordArmState {
   armed: Record<Id, true>
 }
 
-const LS_KEY = "beatlounge:recordArm"
+/**
+ * The initial armed set for a fresh session: ALWAYS empty. Session-scoped by
+ * design — nothing is read from storage, so a reload never rehydrates an arm.
+ * Kept as a named seam so a fresh load and the test reset share one definition.
+ */
+const initialArmed = (): Record<Id, true> => ({})
 
-/** Read the persisted armed-id set (graceful in SSR / private mode). */
-const readPersisted = (): Record<Id, true> => {
-  try {
-    if (typeof localStorage === "undefined") return {}
-    const raw = localStorage.getItem(LS_KEY)
-    if (!raw) return {}
-    const ids = JSON.parse(raw) as unknown
-    if (!Array.isArray(ids)) return {}
-    const out: Record<Id, true> = {}
-    for (const id of ids) if (typeof id === "string") out[id] = true
-    return out
-  } catch {
-    return {}
-  }
-}
-
-/** Persist the armed-id set (best-effort). */
-const writePersisted = (armed: Record<Id, true>): void => {
-  try {
-    if (typeof localStorage !== "undefined") {
-      localStorage.setItem(LS_KEY, JSON.stringify(Object.keys(armed)))
-    }
-  } catch {
-    /* private mode / quota — in-memory store still works */
-  }
-}
-
-const armStore = createStore<RecordArmState>(() => ({ armed: readPersisted() }))
+const armStore = createStore<RecordArmState>(() => ({ armed: initialArmed() }))
 
 /** Is this track armed to record? (false for an unknown/undefined id) */
 export const isRecordArmed = (trackId: Id | undefined): boolean =>
@@ -66,23 +52,30 @@ export const setRecordArmed = (trackId: Id | undefined, on: boolean): void => {
   if (on) next[trackId] = true
   else delete next[trackId]
   armStore.setState({ armed: next })
-  writePersisted(next)
 }
 
 /** Disarm every track (used when the whole song is replaced). */
 export const disarmAllRecord = (): void => {
   if (Object.keys(armStore.getState().armed).length === 0) return
   armStore.setState({ armed: {} })
-  writePersisted({})
 }
 
 /**
  * The hook every record surface uses. Subscribes to THIS track's arm (selective
- * re-render) and returns a setter scoped to it. Default OFF; sticky + persisted.
+ * re-render) and returns a setter scoped to it. Default OFF; sticky within the
+ * session, per track.
  */
 export const useRecordArm = (
   trackId: Id | undefined
 ): { armed: boolean; setArmed: (on: boolean) => void } => {
   const armed = useStore(armStore, (s) => (trackId ? s.armed[trackId] === true : false))
   return { armed, setArmed: (on: boolean) => setRecordArmed(trackId, on) }
+}
+
+/**
+ * Test seam: re-initialise the singleton to a fresh-session state (empty).
+ * Simulates a full app reload so a test can prove arm never silently rehydrates.
+ */
+export const __resetRecordArmForTest = (): void => {
+  armStore.setState({ armed: initialArmed() })
 }

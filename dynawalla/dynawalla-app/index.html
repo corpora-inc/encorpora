@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover is what makes env(safe-area-inset-*) report real
+         values on notched iPhones; the --safe-* tokens are dead without it. -->
+    <!-- user-scalable=no and maximum-scale=1 are the FIRST line against iOS
+         double-tap-to-zoom, not the whole of it: WKWebView respects them by
+         default (Safari has ignored them since iOS 10), and they have still
+         been reported not to hold on a real iPhone. What a double tap inside a
+         game actually scales is this document — an iframe has no viewport of
+         its own — and what makes that visible is the page being scrollable
+         behind the stage. See src/app/zoom.ts; nothing there depends on this
+         line, and `resetViewportScale` restores this exact string, which a
+         test pins. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no"
+    />
+    <!-- Tells the WebView to paint its own chrome (scrollbars, form controls)
+         in whichever scheme is active, so a dark app has no white flash. -->
+    <meta name="color-scheme" content="light dark" />
+    <title>Dynawalla</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

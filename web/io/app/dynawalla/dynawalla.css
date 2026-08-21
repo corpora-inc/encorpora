@@ -1,0 +1,193 @@
+/* Dynawalla's corner of the site.
+ *
+ * The rest of encorpora.io is white. Dynawalla is a night-sky product — the
+ * app itself is basalt and lit arc colour — so its pages carry the product's
+ * own palette rather than being flattened into the site's. Everything is
+ * scoped under `.dw-page` so nothing here can leak into another page.
+ *
+ * The colours are copied from `dynawalla/dynawalla-app/src/design/tokens.css`,
+ * which is the only file in the app allowed to name one. Keep them in step:
+ * if a token moves there, move it here.
+ */
+
+.dw-page {
+  /* Ground */
+  --dw-basalt-500: #261a52;
+  --dw-basalt-600: #1e1440;
+  --dw-basalt-700: #150c2e;
+  --dw-basalt-800: #0b0618;
+  --dw-basalt-900: #1a1033;
+  --dw-basalt-950: #060310;
+
+  /* Warm point and pale ink */
+  --dw-brass-300: #ffe7b0;
+  --dw-brass-500: #e0b15a;
+  --dw-celestial-100: #e8deff;
+  --dw-celestial-300: #c9b4ff;
+
+  /* The arc: twelve lit hues */
+  --dw-art-1: #6acdf0;
+  --dw-art-2: #6aadf0;
+  --dw-art-3: #6a8ef0;
+  --dw-art-4: #6a6ff0;
+  --dw-art-5: #856af0;
+  --dw-art-6: #a46af0;
+  --dw-art-7: #c46af0;
+  --dw-art-8: #e36af0;
+  --dw-art-9: #f06ad6;
+  --dw-art-10: #f06aad;
+  --dw-art-11: #f06a85;
+  --dw-art-12: #f0c46a;
+
+  --dw-art-void: var(--dw-basalt-800);
+  --dw-art-warm: var(--dw-brass-300);
+  --dw-art-pale: var(--dw-celestial-100);
+
+  background-color: var(--dw-basalt-950);
+  color: var(--dw-celestial-100);
+}
+
+/* The niche border that runs through the app's chrome. */
+.dw-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--dw-celestial-300),
+    transparent
+  );
+  opacity: 0.28;
+}
+
+/* ---------------------------------------------------------------- *
+ * Generated key art
+ *
+ * A card's hue is a CLASS that sets one custom property, and every shape is
+ * painted from that property. Mirrors the app's `catalog.css`.
+ * ---------------------------------------------------------------- */
+
+.dw-art {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  background-color: var(--dw-art-void);
+}
+
+.dw-art-h1 {
+  --dw-art-lit: var(--dw-art-1);
+}
+.dw-art-h2 {
+  --dw-art-lit: var(--dw-art-2);
+}
+.dw-art-h3 {
+  --dw-art-lit: var(--dw-art-3);
+}
+.dw-art-h4 {
+  --dw-art-lit: var(--dw-art-4);
+}
+.dw-art-h5 {
+  --dw-art-lit: var(--dw-art-5);
+}
+.dw-art-h6 {
+  --dw-art-lit: var(--dw-art-6);
+}
+.dw-art-h7 {
+  --dw-art-lit: var(--dw-art-7);
+}
+.dw-art-h8 {
+  --dw-art-lit: var(--dw-art-8);
+}
+.dw-art-h9 {
+  --dw-art-lit: var(--dw-art-9);
+}
+.dw-art-h10 {
+  --dw-art-lit: var(--dw-art-10);
+}
+.dw-art-h11 {
+  --dw-art-lit: var(--dw-art-11);
+}
+.dw-art-h12 {
+  --dw-art-lit: var(--dw-art-12);
+}
+
+/* Monoline, from the brand rules: the mark is a single stroke weight and the
+   generated art inherits that discipline. */
+.dw-art-line,
+.dw-art-thin,
+.dw-art-bold,
+.dw-art-glow,
+.dw-art-veil,
+.dw-art-warm,
+.dw-art-pale {
+  fill: none;
+  stroke: var(--dw-art-lit);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.dw-art-ground {
+  fill: var(--dw-art-void);
+  stroke: none;
+}
+
+.dw-art-thin {
+  stroke-width: 1;
+  stroke-opacity: 0.8;
+}
+
+.dw-art-line {
+  stroke-width: 2;
+}
+
+.dw-art-bold {
+  stroke-width: 3.2;
+}
+
+/* Bloom is light, not paint: a wide, very faint stroke under the line it
+   belongs to — never a filled shape in the bloom colour. */
+.dw-art-glow {
+  stroke-width: 7.5;
+  stroke-opacity: 0.16;
+}
+
+.dw-art-veil {
+  stroke-width: 1.2;
+  stroke-opacity: 0.34;
+}
+
+.dw-art-fill {
+  fill: var(--dw-art-lit);
+  stroke: none;
+}
+
+/* One warm point. Gold appears sparingly, at the thing the game is about. */
+.dw-art-warm {
+  stroke: var(--dw-art-warm);
+  stroke-width: 2;
+}
+
+.dw-art-pale {
+  stroke: var(--dw-art-pale);
+  stroke-width: 1.4;
+  stroke-opacity: 0.8;
+}
+
+/* A card lifts its art slightly on hover — the only motion on the grid, and
+   it is suppressed for anyone who has asked for less of it. */
+.dw-card-art {
+  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.dw-card:hover .dw-card-art {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dw-card-art {
+    transition: none;
+  }
+  .dw-card:hover .dw-card-art {
+    transform: none;
+  }
+}

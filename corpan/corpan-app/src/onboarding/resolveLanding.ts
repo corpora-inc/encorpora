@@ -21,7 +21,7 @@
 import type { LandingIntent } from "@/store/landing"
 import { PHRASE_PACK_ID } from "./bestFit"
 
-export type WhatToStart = "read" | "study" | "playMusic" | "playGames" | "surprise"
+export type WhatToStart = "read" | "study" | "playMusic" | "playGames" | "surprise" | "journey"
 
 /** Reader pack ids (share the reader app shell). */
 export const READER_PACK_IDS = ["earthgate_reader", "stargate_reader"]
@@ -45,6 +45,7 @@ export const WHAT_TO_START_INTEREST: Record<WhatToStart, string | null> = {
   playMusic: "wild",
   playGames: "games",
   surprise: null,
+  journey: "study",
 }
 
 export type ResolveLandingInput = {
@@ -132,6 +133,16 @@ export function resolveLanding(input: ResolveLandingInput): LandingResolution {
   const chinese = hasChinese(languages)
 
   switch (choice) {
+    case "journey":
+      // The guided feed is app-native (no pack install needed up front — the
+      // overlay installs the course pack JIT) and skips the razzle collage:
+      // its own placement/first-session flow is the arrival moment.
+      return {
+        intent: { kind: "journey" },
+        chosenId: "journey",
+        installPackId: null,
+      }
+
     case "read":
       // Land in a reader (Earthgate, then Stargate); fall back to Phrase Flip.
       if (canPack("earthgate_reader")) return packResolution("earthgate_reader", installedIds)

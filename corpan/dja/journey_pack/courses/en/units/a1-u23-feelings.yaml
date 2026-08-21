@@ -1,0 +1,80 @@
+id: en.a1.u23
+arc: en.arc1
+theme: "Feeling good, feeling bad"
+cando:
+  - key: feelings
+    text: "Can say how they feel and describe simple health problems."
+vocab_band: { lo: 1, hi: 3900 }
+phrase_domains: [health]
+skills:
+  - id: en.skill.health
+    kind: vocab
+    title: "Feelings & health"
+    b: -2.4
+    prereqs: [en.skill.plans]
+items:
+  - ref: "phrase:base:15997"  # I feel fine now.
+    skills: [en.skill.health]
+    importance: 3
+    probe: true
+    b: -2.4
+  - ref: "phrase:base:22584"  # I feel sad today.
+    skills: [en.skill.health]
+    importance: 3
+    probe: true
+    b: -2.4
+  - ref: "phrase:base:461"  # Are you feeling all right today?
+    skills: [en.skill.health]
+    importance: 3
+    probe: true
+    b: -2.4
+  - ref: "phrase:base:2500"  # My stomach hurts.
+    skills: [en.skill.health]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13745"  # Hi, I need a doctor.
+    skills: [en.skill.health]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21917"  # Go to the doctor.
+    skills: [en.skill.health]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22582"  # Lie down and rest.
+    skills: [en.skill.health]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11316"  # Yes, I’m feeling much better today.
+    skills: [en.skill.health]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:sick"
+    skills: [en.skill.health]
+    importance: 2
+  - ref: "word:en:tired"
+    skills: [en.skill.health]
+    importance: 2
+  - ref: "word:en:head"
+    skills: [en.skill.health]
+    importance: 2
+  - ref: "word:en:pain"
+    skills: [en.skill.health]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [health]
+      level: A1
+      count: 12
+      skills: [en.skill.health]
+      importance: 2
+      substitutable: true
+lessons: [core, core, phonology, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-pronounce
+  config: { itemset: unit }

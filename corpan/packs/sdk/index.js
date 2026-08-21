@@ -46,8 +46,44 @@ const speakWithBrowserTts = (uiCode, text, rate) => {
   window.speechSynthesis.speak(utterance);
 };
 
+// Journey mock seam: lets standalone pack dev assert emissions without a host.
+// Everything reported is logged AND stashed on
+// `window.__corpanMockJourney = { items: [], results: [] }`.
+const mockJourneyStash = () => {
+  if (typeof window === "undefined") {
+    return { items: [], results: [] };
+  }
+  const stash = window.__corpanMockJourney || { items: [], results: [] };
+  window.__corpanMockJourney = stash;
+  return stash;
+};
+
+const createMockJourney = (spec) => ({
+  isActive: () => !!spec,
+  getSpec: () => spec || null,
+  reportItem: (item) => {
+    console.log("[Mock journey] reportItem", item);
+    mockJourneyStash().items.push(item);
+  },
+  reportResult: (result) => {
+    console.log("[Mock journey] reportResult", result);
+    mockJourneyStash().results.push(result);
+  },
+  abandon: (reason = "user_exit") => {
+    console.log("[Mock journey] abandon", reason);
+    mockJourneyStash().results.push({
+      specId: spec ? spec.specId : "",
+      score: 0,
+      perItem: [],
+      durationMs: 0,
+      abandoned: true,
+      __mockAbandonReason: reason,
+    });
+  },
+});
+
 export const createMockHostApi = (options = {}) => {
-  const { stackConfig: stackOverrides, ...overrides } = options;
+  const { stackConfig: stackOverrides, activity, ...overrides } = options;
   const stackConfig = {
     ...defaultStackConfig,
     ...(stackOverrides || {}),
@@ -59,6 +95,7 @@ export const createMockHostApi = (options = {}) => {
 
   return {
     isMock: true,
+    journey: createMockJourney(activity),
     speak: async (uiCode, text) => {
       speakWithBrowserTts(uiCode, text, stackConfig.rate);
     },
@@ -166,6 +203,8 @@ export const mountStandalone = (game, options = {}) => {
 
   const instance = game.mount(container, hostApi, {
     stackConfig: hostApi.getStackConfig(),
+    // Simulated Journey launch (dev): mirrors the host's initialState spread.
+    ...(options.activity ? { activity: options.activity } : {}),
     ...(options.initialState || {}),
   });
 

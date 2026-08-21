@@ -1,5 +1,4 @@
 import { useSettingsStore, ALL_LEVELS } from "@/store/settings";
-import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
 export function LevelsPicker() {
@@ -27,36 +26,42 @@ export function LevelsPicker() {
     }
 
     return (
-        <div className="w-full mt-3">
-            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("settings.levels")}</div>
-            <div className="flex gap-2 mb-3" dir={dir}>
-                <Button
-                    size="sm"
-                    variant={allActive ? "default" : "outline"}
+        <div className="w-full mt-1">
+            <div className="mb-2 flex items-center justify-between gap-2" dir={dir}>
+                <span className="font-semibold text-sm">{t("settings.levels")}</span>
+                <button
+                    type="button"
                     onClick={handleSelectAll}
+                    aria-pressed={allActive}
+                    className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors cursor-pointer ${
+                        allActive
+                            ? "bg-accent text-accent-foreground"
+                            : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                    }`}
                 >
                     {t("settings.selectAll")}
-                </Button>
+                </button>
             </div>
-            <div className="flex flex-wrap gap-2" dir={dir}>
+            {/* One non-wrapping, horizontally-scrolling track of CEFR chips —
+                never a second row. Multi-select toggles (not a radio group), so
+                these stay chips rather than a SegmentedControl. */}
+            <div className="no-scrollbar flex gap-1 overflow-x-auto rounded-md border border-border bg-muted/40 p-1" dir={dir}>
                 {ALL_LEVELS.map((code) => {
                     const selected = allActive || levels.includes(code);
                     return (
-                        <Button
+                        <button
                             key={code}
                             type="button"
-                            variant={selected ? "default" : "outline"}
-                            size="sm"
-                            className={`
-                                rounded-md text-xs p-3
-                                transition
-                                ${selected ? "shadow-sm" : ""}
-                            `}
                             aria-pressed={selected}
                             onClick={() => toggleLevel(code)}
+                            className={`flex-1 min-w-[44px] rounded-[6px] px-3 py-2 md:py-2.5 text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
+                                selected
+                                    ? "bg-background text-foreground shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground"
+                            }`}
                         >
                             {code}
-                        </Button>
+                        </button>
                     );
                 })}
             </div>

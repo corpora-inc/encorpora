@@ -22,6 +22,7 @@ import { useInstallContext } from "@/contentPacks/InstallContext"
 import { rankHomeExperiences } from "@/components/home/recommend"
 import { OnboardingShell } from "@/onboarding/OnboardingShell"
 import { Button } from "@/components/ui/button"
+import { OfflineImage } from "@/components/ui/OfflineImage"
 import { trackPackRecommended, trackPackKept, trackPackDiscarded } from "@/util/analytics"
 
 const EXP_ICON: Record<string, LucideIcon> = {
@@ -151,11 +152,13 @@ export function OnboardingTour({
         {t("tour.progress", { defaultValue: "{{n}} of {{total}}", n: idx + 1, total: cards.length })}
       </div>
       <span className="mb-5 flex h-20 w-20 items-center justify-center overflow-hidden rounded-3xl bg-purple-500/12">
-        {card.imageUrl ? (
-          <img src={card.imageUrl} alt="" aria-hidden="true" draggable={false} className="h-full w-full object-cover" />
-        ) : (
-          <Icon className="h-9 w-9 text-purple-400" />
-        )}
+        <OfflineImage
+          src={card.imageUrl}
+          aria-hidden="true"
+          draggable={false}
+          className="h-full w-full object-cover"
+          fallback={<Icon className="h-9 w-9 text-purple-400" />}
+        />
       </span>
       <h1 className="text-center text-2xl font-bold text-foreground">{card.name}</h1>
       {card.blurb ? (

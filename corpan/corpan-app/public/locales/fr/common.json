@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Choisis tes sujets",
+      "availableSummary": "{{count}} packs de phrases disponibles · ~{{size}} Mo",
+      "installAll": "Tout installer",
+      "chooseIndividually": "Choisir individuellement",
+      "installing": "Installation de {{current}} sur {{total}}…",
+      "someFailed": "{{count}} pack(s) n'ont pas pu être installés. Vous pouvez réessayer depuis l'onglet Packs.",
+      "allInstalled": "Vous avez déjà les packs de phrases de départ.",
+      "installed": "Installé",
       "loading": "Chargement…",
       "selectAll": "Tout sélectionner ({{count}})",
       "clearAll": "Effacer",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Surprends-moi !",
         "desc": "Emmène-moi quelque part d'amusant."
+      },
+      "journey": {
+        "label": "Suivre le Journey",
+        "desc": "Un cours guidé — l'appli choisit chaque étape"
+      }
+    },
+    "journey": {
+      "title": "Comment voulez-vous apprendre {{lang}} ?",
+      "subtitle": "Le Journey propose chaque jour un mélange de nouveautés et de révisions en {{lang}} — carte après carte.",
+      "guided": {
+        "label": "Parcours quotidien guidé",
+        "desc": "Une courte session quotidienne, planifiée pour vous.",
+        "unavailable": "Le parcours guidé n'est pas encore disponible pour {{lang}}."
+      },
+      "explore": {
+        "label": "À votre rythme",
+        "desc": "Parcourez vous-même les histoires, exercices et jeux."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclus avec Plus",
     "installFailedTitle": "Échec de l'installation",
+    "updateUnavailableTitle": "Mise à jour indisponible",
+    "updateUnavailableDetail": "Ce téléchargement ne correspondait pas à ce que nous attendions. Veuillez réessayer plus tard.",
     "installStuckDetail": "Aucun progrès depuis un certain temps. Vérifiez votre connexion et réessayez.",
     "installStuckTitle": "Téléchargement bloqué",
     "openPack": "Ouvrir {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Samplez la langue que vous apprenez. Scratchez-la jusqu’à ce qu’elle reste."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Votre parcours guidé, carte après carte"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Installer ({{size}})",
     "installing": "Installation…",
     "installed": "Installé",
-    "retry": "Réessayer"
+    "retry": "Réessayer",
+    "explains": "Mots en {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Votre parcours guidé, carte après carte",
+    "heroCard": {
+      "title": "Votre Journey",
+      "progress": "{{unit}} · {{count}} avant le prochain jalon"
+    },
+    "heroCta": {
+      "start": "Commencer votre Journey",
+      "continue": "Continuer"
+    },
+    "chrome": {
+      "home": "Accueil",
+      "menu": "Options du Journey",
+      "unit": "Unité {{n}} : {{name}}"
+    },
+    "exercise": {
+      "check": "Vérifier",
+      "continue": "Continuer",
+      "skipHint": "Balayez encore pour passer",
+      "retry": "Réessayer",
+      "showAnswer": "Voir la réponse",
+      "answerWas": "La réponse était",
+      "comeBackNote": "Nous y reviendrons.",
+      "whyThisCard": "Pourquoi cette carte ?",
+      "whyNew": "Un nouvel élément de votre unité actuelle.",
+      "whyReview": "Une révision — l'espacement la garde solide.",
+      "whyRepair": "Un second regard sur un point difficile.",
+      "whyGuided": "Une étape de votre parcours guidé.",
+      "typeWhatYouHear": "Écrivez ce que vous entendez",
+      "typeHere": "Écrivez ici…",
+      "tapToOrder": "Touchez les mots dans l'ordre",
+      "matchPairs": "Associez les paires",
+      "flipToReveal": "Touchez pour révéler",
+      "knewIt": "Je le savais",
+      "didntKnow": "Pas encore",
+      "speakNow": "Parlez maintenant",
+      "listen": "Écouter",
+      "listenSlow": "Plus lent",
+      "hint": "Indice",
+      "correct": "Correct",
+      "incorrect": "Pas tout à fait",
+      "pickTranslation": "Choisissez la traduction",
+      "pickWhatYouHear": "Choisissez ce que vous avez entendu",
+      "fillTheBlank": "Complétez le blanc",
+      "newItem": "Nouveau",
+      "reviewedEarlier": "Vu plus tôt"
+    },
+    "intro": {
+      "listenAndEcho": "Écoutez, puis répétez à voix haute",
+      "newWord": "Nouveau mot",
+      "newPhrase": "Nouvelle phrase"
+    },
+    "interlude": {
+      "gameCue": "Petit jeu · une phrase",
+      "readerCue": "Petite lecture · un passage"
+    },
+    "grammar": {
+      "noteLabel": "Note de grammaire",
+      "tryIt": "Essayez",
+      "contrastLabel": "Comparé à votre langue"
+    },
+    "word": {
+      "inContext": "En contexte",
+      "meaningShow": "Signification",
+      "meaningHide": "Masquer"
+    },
+    "wordPack": {
+      "title": "Significations des mots",
+      "body": "Lisez ce que les mots signifient en {{language}} au fil de votre progression.",
+      "add": "Ajouter ({{size}})",
+      "dismiss": "Pas maintenant",
+      "downloading": "Ajout en cours… {{percent}} %",
+      "failed": "Impossible d'ajouter",
+      "retry": "Réessayer"
+    },
+    "checkpoint": {
+      "title": "Point d'étape",
+      "summaryNew": "{{count}} nouvelles",
+      "summaryReviews": "{{count}} révisions",
+      "done": "C'est bon pour aujourd'hui",
+      "keepGoing": "Continuer",
+      "dailyRing": "{{count}} cette séance",
+      "deepSession": "Belle séance en profondeur — vos révisions sont planifiées quoi qu'il arrive.",
+      "streakTicked": "{{count}} d'affilée ✓",
+      "boss": "Défi d'unité",
+      "arcGate": "Porte d'arc"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Parfait",
+        "nice": "Bien joué",
+        "brilliant": "Brillant",
+        "boom": "Boum",
+        "nailed": "Dans le mille",
+        "unstoppable": "Inarrêtable",
+        "onFire": "En feu",
+        "yes": "Oui !",
+        "clean": "Impeccable",
+        "sharp": "Affûté",
+        "wow": "Waouh",
+        "magic": "Magique"
+      },
+      "combo": "{{count}} d'affilée",
+      "perfect": "Parfait",
+      "wordsLearned": "{{count}} mots appris",
+      "unitComplete": "Unité terminée : {{name}}",
+      "streakDay": "{{count}} d'affilée",
+      "placementDone": "Niveau trouvé"
+    },
+    "rare": {
+      "reveal": "Quelque chose de spécial…",
+      "etymologyGem": "Histoire du mot",
+      "timeCapsule": {
+        "title": "Capsule temporelle",
+        "body": "Vous avez beaucoup travaillé là-dessus {{when}} — regardez-vous maintenant."
+      },
+      "delight": {
+        "newVoice": "Une voix différente",
+        "didYouNotice": "L'avez-vous remarqué ?"
+      },
+      "miniGame": {
+        "title": "Manche bonus",
+        "play": "Jouer"
+      },
+      "story": {
+        "unlocked": "Vous avez mérité le prochain chapitre",
+        "read": "Le lire"
+      }
+    },
+    "placement": {
+      "offerTitle": "Par où commencer ?",
+      "offerBody": "Quelques questions rapides trouvent votre point de départ. Environ cinq minutes.",
+      "startNew": "Je débute en {{lang}}",
+      "placeMe": "Je connais un peu le {{lang}}",
+      "skipItem": "Passez si vous hésitez",
+      "doneTitle": "Point de départ trouvé",
+      "doneBody": "Départ à {{unit}}.",
+      "prelit": "Vous commencez avec {{count}} éléments déjà connus.",
+      "redo": "Revérifier mon niveau",
+      "aboveTitle": "Vous dépassez ce cours",
+      "aboveBody": "Ce cours couvre pour l'instant le niveau débutant, et vous êtes au-delà. Vous pouvez tout de même l'explorer — de nouveaux niveaux arrivent.",
+      "aboveFrontier": "Vous devancez la plupart de ce cours — départ à {{unit}}."
+    },
+    "path": {
+      "title": "Votre parcours",
+      "arc": "Arc {{name}}",
+      "unit": "Unité {{n}}",
+      "locked": "Plus loin",
+      "current": "Vous êtes ici",
+      "review": "Touchez pour réviser",
+      "mastered": "Solide"
+    },
+    "streak": {
+      "pactTitle": "On garde une série ?",
+      "pactBody": "Garde ton élan. Un jour de repos comble un manque — tu en gagnes un chaque semaine.",
+      "pactAccept": "Je suis partant",
+      "pactDecline": "Non merci",
+      "days": "{{count}} d'affilée",
+      "restDayEarned": "Jour de repos gagné",
+      "restDayUsed": "{{day}} était un jour de repos",
+      "repairTitle": "Reprenez votre série",
+      "repairBody": "Terminez deux séances dans les {{days}} prochains jours pour restaurer votre série de {{count}} jours.",
+      "repairCta": "Commencer"
+    },
+    "block": {
+      "speakingIntro": "Pratique orale — {{count}} cartes",
+      "ready": "Prêt",
+      "loadingModel": "Préparation du micro…",
+      "micPrompt": "Corpán utilise le micro pour noter votre prononciation sur cet appareil.",
+      "sttUnavailable": "La notation vocale n'est pas disponible pour l'instant — passage en pratique d'écoute."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} cartes restantes aujourd'hui",
+      "plusBody": "Corpán Plus supprime la limite quotidienne de cartes."
+    },
+    "welcomeBack": {
+      "title": "Bon retour",
+      "body": "Vos révisions ont gardé {{pct}} % de leur force. Échauffons-nous."
+    },
+    "tease": {
+      "next": "La prochaine fois : {{title}}"
+    },
+    "jump": {
+      "title": "Trop facile pour vous ?",
+      "body": "Tentez un petit défi pour avancer plus vite. En cas d'échec, rien n'est perdu — vous restez exactement où vous êtes.",
+      "accept": "Tenter le défi",
+      "decline": "Rester ici"
+    },
+    "feed": {
+      "caughtUp": "Vous êtes à jour pour le moment",
+      "loading": "Préparation de vos cartes…",
+      "loadError": "Le Journey n'a pas pu se charger. Réessayez depuis l'accueil.",
+      "retry": "Réessayer"
+    },
+    "popin": {
+      "pronounceTitle": "Prononcez-le",
+      "close": "Fermer"
+    },
+    "settings": {
+      "title": "Options du Journey",
+      "advanceMode": "Avancement",
+      "advanceSwipe": "Balayer pour continuer",
+      "advanceAuto": "Continuer automatiquement",
+      "celebration": "Célébrations",
+      "celebrationFull": "Complètes",
+      "celebrationReduced": "Réduites",
+      "celebrationMinimal": "Minimales",
+      "sounds": "Sons",
+      "soundsOn": "Activés",
+      "soundsOff": "Coupés",
+      "listeningMode": "Écoute mains libres",
+      "viewPath": "Voir le parcours",
+      "redoPlacement": "Revérifier mon niveau"
+    },
+    "imagePack": {
+      "title": "Ajouter des images",
+      "body": "Apprenez des mots avec des images plutôt qu'avec du texte.",
+      "dismiss": "Pas maintenant",
+      "add": "Ajouter ({{size}})",
+      "downloading": "Ajout en cours… {{percent}} %",
+      "retry": "Réessayer",
+      "failed": "Échec de l'ajout"
+    }
   }
 }

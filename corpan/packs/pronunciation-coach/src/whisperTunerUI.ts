@@ -11,7 +11,7 @@ import {
   resetLang,
   setLangOverride,
   type WhisperParams,
-} from "./whisperTuning"
+} from "@shared/capabilities/pronounce/src/whisperTuning"
 
 type NumericKey =
   | "temperature"

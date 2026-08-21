@@ -1,4 +1,7 @@
 import "./styles.css"
+// Base styles for the moved word-sync paragraph renderer (cap-segment-player).
+// The pack's styles.css layers earthgate shell overrides on the capSeg- classes.
+import "@shared/capabilities/segment-player/styles.css"
 import type { GameModule, HostApi } from "@shared/sdk"
 import { createMockHostApi } from "@shared/sdk"
 import { createEarthgateReader } from "./game"

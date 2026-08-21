@@ -1,4 +1,9 @@
 import type { EntryOut, HostApi, TranslationOut } from "./sdk/types"
+// The round guts (tuning tables, model registry, text comparison, session
+// ids, push-to-talk recorder, per-word result view) MOVED to the
+// cap-pronounce capability (docs/journey/specs/capability-modules.md §4.1);
+// this pack is their first consumer. Pack-specific chrome (deck/swipe,
+// streak/quota, model-setup UI, multiplayer) stays here.
 import {
   MODELS,
   modelById,
@@ -7,15 +12,48 @@ import {
   visibleDefaultModel,
   setDeviceMemoryBudget,
   variantExceedsBudget,
-} from "./modelRegistry"
-import { mergeForLang } from "./whisperTuning"
-import { mergeScoringForLangModel } from "./scoringTuning"
+} from "@shared/capabilities/pronounce/src/modelRegistry"
 import {
   isWhisperSupported,
   stackHasScorableLang,
-  toWhisperLang,
-} from "./whisperLangs"
+} from "@shared/capabilities/pronounce/src/whisperLangs"
+import { whisperLang } from "@shared/capabilities/pronounce/src/session"
+import {
+  bindPushToTalk,
+  createPushToTalkRecorder,
+  ensureLoaded as ensureModelLoaded,
+  prepareWithMemoryRetry,
+  SwitchCancelledError,
+  tryPrepareOnce,
+  type PushToTalkRecorder,
+} from "@shared/capabilities/pronounce/src/recorder"
+import {
+  clearResultSlots,
+  renderPronounceResult,
+  resultSlotsAboveHtml,
+  resultSlotsBelowHtml,
+} from "@shared/capabilities/pronounce/src/resultView"
+import { stimulusBodyHtml } from "@shared/capabilities/pronounce/src/roundView"
+import {
+  formatErr,
+  sttErrCode as errCode,
+  type CapabilitySttApi as SttApi,
+  type SttErrorCode,
+  type SttTranscriptionResult,
+} from "@shared/capabilities/core"
 import { openTuner } from "./whisperTunerUI"
+
+// Re-exports for pack files that historically imported these from game.ts
+// (multiplayer/round.ts, silenceWatcher.ts). One implementation, in the
+// capability — never copied.
+export {
+  charSimilarity,
+  isRTL,
+  mergeApostropheWords,
+  normalizeForCompare,
+  tokenizeForPills,
+} from "@shared/capabilities/pronounce/src/text"
+export type { SttWordTiming, SttAudioLevelEvent } from "@shared/capabilities/core"
 import { paywallGate } from "./paywall"
 import { t as i18n, type I18nKey } from "./i18n"
 // Direct file import (not the @shared/ui barrel) so we don't pull in
@@ -34,204 +72,10 @@ import {
 // future re-wiring (e.g., behind a real VAD model). See pack
 // CHANGELOG 0.6.1 for the removal rationale.
 
-// Local STT API contract — host owns the canonical type, we only declare
-// what we need to call. Codes mirror the host's SttErrorCode union.
-type SttErrorCode =
-  | "MODEL_NOT_INSTALLED"
-  | "MODEL_NOT_LOADED"
-  | "NETWORK"
-  | "LOAD_FAILED"
-  | "IO_FAILED"
-  | "BUSY"
-  | "CANCELLED"
-  | "MIC_PERMISSION_DENIED"
-  | "NO_ACTIVE_SESSION"
-  | "AUDIO_FAILED"
-  | "INSUFFICIENT_MEMORY"
-  // Plugin reports this when the underlying native lib failed to load
-  // on this device — e.g. x86_64 Chromebook running Android via ARC
-  // where libhoudini can't translate the armv8.2-a SIMD intrinsics
-  // whisper.cpp is compiled with. Different from MODEL_NOT_INSTALLED
-  // (which means "download the model and you're good"): here, no
-  // model would ever load. Route to a "Speech recognition not
-  // supported on this device" screen instead of offering download.
-  | "STT_UNAVAILABLE"
-  // Native guard rejected the language: whisper can't score it. Should be
-  // unreachable from normal flow (we gate unscorable targets before
-  // recording — see whisperLangs.ts), but kept so the backstop renders the
-  // calm "not available yet" message instead of a raw red error.
-  | "UNSUPPORTED_LANGUAGE"
-  | "UNKNOWN"
-type SttPrepareResult = {
-  ready: boolean
-  model: string
-  message?: string
-  code?: SttErrorCode
-}
-type SttStartResult = { started: boolean; sessionId: string }
-type SttInstalledModel = {
-  model: string
-  valid: boolean
-  problems: string[]
-  sizeBytes: number
-  isLoaded: boolean
-}
-type SttListInstalledResult = { models: SttInstalledModel[] }
-type SttStatus = {
-  available: boolean
-  prepared: boolean
-  model: string | null
-  recording: boolean
-  message: string | null
-  /** Per-app jetsam budget in MB. iOS 13+; null on older. */
-  availableMemoryMB?: number | null
-  /** Total physical RAM on the device in MB. */
-  physicalMemoryMB?: number | null
-  /** One-shot native-init crash breadcrumb from the previous process. */
-  priorInitCrash?: string | null
-}
-export type SttWordTiming = {
-  word: string
-  startMs: number
-  endMs: number
-  probability: number
-}
-type SttTranscriptionResult = {
-  sessionId: string
-  text: string
-  expectedText: string
-  language: string
-  whisperLanguage: string
-  durationMs: number
-  overallScore: number
-  transcriptScore: number
-  likelihoodScore: number
-  acousticScore: number
-  avgLogprob: number
-  noSpeechProb: number
-  compressionRatio: number
-  temperature: number
-  minTokenLogprob: number
-  tokenLogprobStdev: number
-  freeVsConstrainedSimilarity: number
-  freeText: string
-  words: SttWordTiming[]
-}
-
-type SttApi = {
-  isAvailable(): Promise<boolean>
-  getStatus(): Promise<SttStatus>
-  prepare(opts?: { model?: string }): Promise<SttPrepareResult>
-  startSession(opts: {
-    sessionId: string
-    language: string
-    expectedText: string
-    /** Per-call overrides applied on top of `whisper_full_default_params`
-     *  in the iOS plugin. Built from `mergeForLang(lang)`; see
-     *  `whisperTuning.ts`. Optional — empty/missing = library defaults. */
-    whisperParams?: import("./whisperTuning").WhisperParams
-    /** Per-call scoring overrides applied on top of the native plugin's
-     *  acoustic ramp + textFloor + compression threshold. Built from
-     *  `mergeScoringForLangModel(lang, modelFolder)`; see
-     *  `scoringTuning.ts`. Optional — empty/missing = native defaults. */
-    scoringParams?: import("./scoringTuning").ScoringParams
-  }): Promise<SttStartResult>
-  stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
-  cancelSession(opts: { sessionId: string }): Promise<void>
-  wipeModel?(opts?: { model?: string }): Promise<{ wiped: boolean; message?: string }>
-  validateModel?(opts?: { model?: string }): Promise<{
-    model: string
-    valid: boolean
-    problems: string[]
-  }>
-  installModel?(
-    opts: {
-      model: string
-      /** Optional override of the source URL. Used for models we
-       *  host ourselves on our own CDN (e.g. self-quantized
-       *  variants ggerganov doesn't publish). When omitted the
-       *  native plugin defaults to its hardcoded HuggingFace base. */
-      downloadUrl?: string
-    },
-    onProgress?: (event: SttInstallProgress) => void
-  ): Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
-  listInstalled?(opts: { models: string[] }): Promise<SttListInstalledResult>
-  unload?(): Promise<{ unloaded: boolean }>
-  /** Tear down the audio engine + audio session. Call this from the
-   *  pack's unmount path — without it, the iOS mic indicator stays
-   *  on and audio is `.duckOthers`-ed until the next process kill. */
-  releaseAudio?(): Promise<void>
-  /** Subscribe to per-buffer RMS events while a session is recording.
-   *  Fires at the platform's natural buffer cadence (~11 Hz iOS,
-   *  ~8 Hz Android). Used by `silenceWatcher.ts` for auto-stop.
-   *  Optional — older host builds don't ship it. */
-  subscribeAudioLevel?(
-    callback: (event: SttAudioLevelEvent) => void,
-  ): Promise<() => void>
-}
-
-export type SttAudioLevelEvent = {
-  /** RMS amplitude of the latest captured buffer, 0..1. */
-  rms: number
-  /** Milliseconds since the current session started. */
-  t: number
-}
-
-type SttInstallProgress = {
-  model: string
-  phase: "downloading" | "verifying" | "verified" | "failed"
-  fraction?: number
-  completed?: number
-  total?: number
-  error?: string
-  code?: SttErrorCode
-}
-
-// Read a code attached by hostApi.ts (`sttRejectionToError`) onto thrown
-// errors. Plain string/Error fallback returns undefined so callers can
-// route only when the code is genuinely available.
-const errCode = (err: unknown): SttErrorCode | undefined => {
-  if (err && typeof err === "object") {
-    const c = (err as { code?: unknown }).code
-    if (typeof c === "string") return c as SttErrorCode
-  }
-  return undefined
-}
+// The STT API contract types + error helpers moved to
+// @shared/capabilities/core (hostSlice.ts) — the fleet's one copy.
 
 type UiState = "idle" | "recording" | "scoring"
-
-// Robust error → string. Tauri plugin errors come across the JS bridge
-// as plain objects (e.g. `{ message: "...", code: ..., domain: "STT" }`),
-// not `Error` instances, so the common `err instanceof Error ? msg :
-// String(err)` pattern collapses them to `"[object Object]"` — useless
-// for diagnosis. Walk the common shapes (Error, plugin shape, string,
-// object with description fields) and only fall back to JSON.stringify
-// + final `[object Object]` if everything else failed.
-const formatErr = (err: unknown): string => {
-  if (err == null) return "(unknown error)"
-  if (typeof err === "string") return err
-  if (err instanceof Error) return err.message || err.name || String(err)
-  if (typeof err === "object") {
-    const o = err as Record<string, unknown>
-    const candidates = [
-      o.message,
-      o.localizedDescription,
-      o.error,
-      o.description,
-      o.detail,
-    ]
-    for (const c of candidates) {
-      if (typeof c === "string" && c.length > 0) return c
-    }
-    try {
-      const json = JSON.stringify(err)
-      if (json && json !== "{}") return json
-    } catch {
-      // fall through
-    }
-  }
-  return String(err)
-}
 
 type LoadedPhrase = {
   entry: EntryOut
@@ -281,7 +125,6 @@ const prepareTimeoutMs = (mode: ModelMode): number => {
   if (m && m.approxSizeMB >= 1000) return 180_000
   return 60_000
 }
-const TRANSCRIBE_TIMEOUT_MS = 90_000
 const delay = (ms: number): Promise<void> =>
   new Promise((resolve) => window.setTimeout(resolve, ms))
 
@@ -292,24 +135,6 @@ const postInstallSettleMs = (mode: ModelMode): number => {
   if (size >= 500) return 2500
   if (size >= 250) return 1250
   return 400
-}
-
-const withTimeout = async <T>(
-  p: Promise<T>,
-  ms: number,
-  label: string
-): Promise<T> => {
-  let timer: ReturnType<typeof setTimeout> | null = null
-  const timeout = new Promise<never>((_, reject) => {
-    timer = setTimeout(() => {
-      reject(new Error(`${label} timed out after ${Math.round(ms / 1000)}s`))
-    }, ms)
-  })
-  try {
-    return await Promise.race([p, timeout])
-  } finally {
-    if (timer) clearTimeout(timer)
-  }
 }
 
 type SavedPhrase = {
@@ -365,215 +190,11 @@ const savedToPhrase = (s: SavedPhrase): LoadedPhrase => ({
   targetLang: s.targetLang,
 })
 
-// Whisper's word output is split on its tokenizer, which often breaks
-// elided contractions like "j'ai", "qu'il", "don't", "I'll", "l'eau"
-// into two separate "words". Merge those back together so the pills
-// match how the language actually reads.
-const APOSTROPHES_RE = /[''']/
-
-// Per-language number-word → digit map. Mirrors the Swift table in
-// the STT plugin so per-pill similarity in the pack agrees with the
-// transcript-score similarity computed in the plugin: Whisper
-// transcribes spoken numbers as digits ("90") regardless of how the
-// speaker said them, so we map the EXPECTED word ("novanta") to its
-// digit form before comparing.
-const NUMBER_WORD_TO_DIGIT: Record<string, Record<string, string>> = {
-  en: {
-    zero: "0", one: "1", two: "2", three: "3", four: "4", five: "5",
-    six: "6", seven: "7", eight: "8", nine: "9", ten: "10", eleven: "11",
-    twelve: "12", thirteen: "13", fourteen: "14", fifteen: "15",
-    sixteen: "16", seventeen: "17", eighteen: "18", nineteen: "19",
-    twenty: "20", thirty: "30", forty: "40", fifty: "50", sixty: "60",
-    seventy: "70", eighty: "80", ninety: "90", hundred: "100",
-    thousand: "1000",
-  },
-  es: {
-    cero: "0", uno: "1", una: "1", dos: "2", tres: "3", cuatro: "4",
-    cinco: "5", seis: "6", siete: "7", ocho: "8", nueve: "9", diez: "10",
-    once: "11", doce: "12", trece: "13", catorce: "14", quince: "15",
-    dieciséis: "16", dieciseis: "16", diecisiete: "17", dieciocho: "18",
-    diecinueve: "19", veinte: "20", treinta: "30", cuarenta: "40",
-    cincuenta: "50", sesenta: "60", setenta: "70", ochenta: "80",
-    noventa: "90", cien: "100", ciento: "100", mil: "1000",
-  },
-  fr: {
-    zéro: "0", zero: "0", un: "1", une: "1", deux: "2", trois: "3",
-    quatre: "4", cinq: "5", six: "6", sept: "7", huit: "8", neuf: "9",
-    dix: "10", onze: "11", douze: "12", treize: "13", quatorze: "14",
-    quinze: "15", seize: "16", vingt: "20", trente: "30", quarante: "40",
-    cinquante: "50", soixante: "60", cent: "100", mille: "1000",
-  },
-  it: {
-    zero: "0", uno: "1", una: "1", due: "2", tre: "3", quattro: "4",
-    cinque: "5", sei: "6", sette: "7", otto: "8", nove: "9", dieci: "10",
-    undici: "11", dodici: "12", tredici: "13", quattordici: "14",
-    quindici: "15", sedici: "16", diciassette: "17", diciotto: "18",
-    diciannove: "19", venti: "20", trenta: "30", quaranta: "40",
-    cinquanta: "50", sessanta: "60", settanta: "70", ottanta: "80",
-    novanta: "90", cento: "100", mille: "1000",
-  },
-  de: {
-    null: "0", eins: "1", ein: "1", eine: "1", zwei: "2", drei: "3",
-    vier: "4", fünf: "5", funf: "5", sechs: "6", sieben: "7", acht: "8",
-    neun: "9", zehn: "10", elf: "11", zwölf: "12", zwolf: "12",
-    dreizehn: "13", vierzehn: "14", fünfzehn: "15", funfzehn: "15",
-    sechzehn: "16", siebzehn: "17", achtzehn: "18", neunzehn: "19",
-    zwanzig: "20", dreißig: "30", dreissig: "30", vierzig: "40",
-    fünfzig: "50", funfzig: "50", sechzig: "60", siebzig: "70",
-    achtzig: "80", neunzig: "90", hundert: "100", tausend: "1000",
-  },
-  pt: {
-    zero: "0", um: "1", uma: "1", dois: "2", duas: "2", três: "3",
-    tres: "3", quatro: "4", cinco: "5", seis: "6", sete: "7", oito: "8",
-    nove: "9", dez: "10", onze: "11", doze: "12", treze: "13",
-    catorze: "14", quatorze: "14", quinze: "15", dezesseis: "16",
-    dezasseis: "16", dezessete: "17", dezassete: "17", dezoito: "18",
-    dezenove: "19", dezanove: "19", vinte: "20", trinta: "30",
-    quarenta: "40", cinquenta: "50", sessenta: "60", setenta: "70",
-    oitenta: "80", noventa: "90", cem: "100", cento: "100", mil: "1000",
-  },
-}
-
-// Indic / Persian / Urdu BPE tokenizes phonemes into 2–4 sub-tokens, so
-// even clean speech in these languages can legitimately push Whisper's
-// `compressionRatio` past 2.4 — the default gibberish threshold. Mirrors
-// the Swift `lowResourceLangs` set; used to suppress the "Sounded a bit
-// garbled" chip on those langs.
-const LOW_RESOURCE_LANGS = new Set([
-  "te", "ta", "bn", "ml", "mr", "gu", "pa", "ur", "fa", "si", "ne", "or", "as",
-])
-
-// RTL detection. Mirrors `RTL_LANGUAGES` in `corpan-app/src/store/constants.ts`
-// — kept local so the pack doesn't reach into the host. Full code wins
-// (so `pa-Arab` is RTL but `pa-Guru` / `pa` are LTR); otherwise we fall
-// back to the base language.
-const RTL_BASE_LANGS = new Set(["ar", "he", "fa", "ur"])
-const RTL_FULL_LANGS = new Set(["pa-arab"])
-export const isRTL = (langCode: string): boolean => {
-  if (!langCode) return false
-  const c = langCode.toLowerCase()
-  if (RTL_FULL_LANGS.has(c)) return true
-  return RTL_BASE_LANGS.has(c.split("-")[0])
-}
-
-// Normalize for character-level word comparison: NFC, lowercase,
-// strip punctuation / symbols / control / format characters, then
-// (when a base language is known) map number-words to their digit
-// form. Keeps every letter and combining mark (essential for Indic
-// scripts).
-export const normalizeForCompare = (s: string, lang?: string): string => {
-  const base = s
-    .normalize("NFC")
-    .toLowerCase()
-    .replace(/[\p{P}\p{S}\p{C}]/gu, "")
-    .replace(/\s+/g, " ")
-    .trim()
-  if (!base) return base
-  const baseLang = (lang ?? "")
-    .toLowerCase()
-    .split("-")[0]
-  const dict = NUMBER_WORD_TO_DIGIT[baseLang]
-  if (!dict) return base
-  return base
-    .split(" ")
-    .map((w) => dict[w] ?? w)
-    .join(" ")
-}
-
-// Per-grapheme splitting for scripts that don't use whitespace word
-// boundaries. CJK (Chinese, Japanese kana / kanji, Korean Hangul
-// syllable blocks) — every grapheme is a meaningful unit (a hanzi
-// character, a kana, a Hangul block) so we render one pill per
-// grapheme instead of one pill for the whole phrase. Tap-to-speak
-// then works at the character level, which is what users want for
-// drilling Mandarin / Cantonese.
-//
-// We deliberately don't extend this to Thai / Lao / Tibetan / Burmese:
-// those use complex grapheme clusters where individual codepoints
-// aren't independently meaningful, and a per-cluster split would need
-// language-aware segmentation we don't have.
-const CJK_RE =
-  /[぀-ゟ゠-ヿ㐀-䶿一-鿿豈-﫿가-힯]/
-export const tokenizeForPills = (text: string): string[] => {
-  const trimmed = text.trim()
-  if (!trimmed) return []
-  if (/\s/.test(trimmed)) return trimmed.split(/\s+/).filter(Boolean)
-  if (CJK_RE.test(trimmed)) {
-    // Intl.Segmenter handles Hangul syllable composition and surrogate
-    // pairs correctly; Array.from is a tolerable fallback if it's not
-    // available (it isn't pre-iOS 16 / older WebViews — but iOS 17+
-    // has it).
-    type SegLike = { segment: string }
-    const Seg = (
-      Intl as unknown as {
-        Segmenter?: new (l?: string, o?: { granularity: "grapheme" }) => {
-          segment: (s: string) => Iterable<SegLike>
-        }
-      }
-    ).Segmenter
-    if (typeof Seg === "function") {
-      const seg = new Seg(undefined, { granularity: "grapheme" })
-      return Array.from(seg.segment(trimmed), (s) => s.segment).filter(
-        (g) => g.trim().length > 0
-      )
-    }
-    return Array.from(trimmed).filter((c) => c.trim().length > 0)
-  }
-  // Non-CJK without whitespace (single Latin word, etc.) — keep whole.
-  return [trimmed]
-}
-
-// Codepoint-aware Levenshtein similarity in [0, 1].
-export const charSimilarity = (a: string, b: string): number => {
-  const an = Array.from(a)
-  const bn = Array.from(b)
-  const m = an.length
-  const n = bn.length
-  if (m === 0 && n === 0) return 1
-  if (m === 0 || n === 0) return 0
-  let prev = new Array<number>(n + 1)
-  let curr = new Array<number>(n + 1)
-  for (let j = 0; j <= n; j++) prev[j] = j
-  for (let i = 1; i <= m; i++) {
-    curr[0] = i
-    for (let j = 1; j <= n; j++) {
-      curr[j] =
-        an[i - 1] === bn[j - 1]
-          ? prev[j - 1]
-          : 1 + Math.min(prev[j], curr[j - 1], prev[j - 1])
-    }
-    const tmp = prev
-    prev = curr
-    curr = tmp
-  }
-  return 1 - prev[n] / Math.max(m, n)
-}
-
-export const mergeApostropheWords = (
-  words: SttWordTiming[]
-): SttWordTiming[] => {
-  if (!words || words.length === 0) return []
-  const out: SttWordTiming[] = []
-  for (const w of words) {
-    const last = out[out.length - 1]
-    if (last) {
-      const lastChar = last.word.replace(/\s+$/, "").slice(-1)
-      const firstChar = w.word.replace(/^\s+/, "").charAt(0)
-      const prevEndsApos = APOSTROPHES_RE.test(lastChar)
-      const curStartsApos = APOSTROPHES_RE.test(firstChar)
-      if (prevEndsApos || curStartsApos) {
-        last.word = last.word + w.word.replace(/^\s+/, "")
-        last.endMs = Math.max(last.endMs, w.endMs)
-        // Worst-token-wins: a contraction is only as confident as its
-        // weakest tokenized fragment.
-        last.probability = Math.min(last.probability, w.probability)
-        continue
-      }
-    }
-    out.push({ ...w })
-  }
-  return out
-}
+// Script-aware comparison + pill tokenization (isRTL, normalizeForCompare,
+// tokenizeForPills, charSimilarity, mergeApostropheWords, the number-word
+// maps and low-resource-language sets) moved to
+// @shared/capabilities/pronounce/src/text.ts — re-exported above for the
+// pack files that import them from here.
 
 const safeStorage = (): Storage | null => {
   try {
@@ -641,23 +262,8 @@ const loadSavedState = (storage: Storage | null): SavedState | null => {
   return migrated
 }
 
-const newSessionId = (): string => {
-  try {
-    const c = (globalThis as { crypto?: Crypto }).crypto
-    if (c && typeof c.randomUUID === "function") {
-      return c.randomUUID()
-    }
-  } catch (err) {
-    console.error("[pronunciation-coach] randomUUID failed:", err)
-  }
-  return `pc-${Date.now()}-${Math.floor(Math.random() * 1e9)}`
-}
-
-// Corpán code → the whisper code that scores it (e.g. Javanese `jv` → `jw`,
-// `pt-BR` → `pt`). Callers only reach this for languages already filtered to
-// `isWhisperSupported`; the `"en"` fallback is a degenerate guard for an empty
-// code and never scores a real unsupported language (those are gated upstream).
-const whisperLang = (lang: string): string => toWhisperLang(lang) ?? "en"
+// newSessionId + whisperLang moved to
+// @shared/capabilities/pronounce/src/session.ts (whisperLang imported above).
 
 const shuffle = <T>(items: T[]): T[] => {
   const arr = [...items]
@@ -793,7 +399,6 @@ export const mountGame = (
     i18n(key, uiLang, params)
 
   let disposed = false
-  let activeSessionId: string | null = null
 
   // ---- Zoom block — disable pinch-zoom for the duration of the
   // pack's mount via viewport-meta override. The host's viewport
@@ -889,29 +494,23 @@ export const mountGame = (
       <div class="pc-swipe-area" id="pc-swipe-area">
         <div class="pc-deck" id="pc-deck">
           <div class="pc-card" id="pc-card">
-            <div class="pc-card-above">
-              <div class="pc-result-banner" data-pc-result-banner hidden></div>
-              <div class="pc-result-transcript-up" data-pc-result-transcript-up hidden></div>
-              <div class="pc-result-bars-up" data-pc-result-bars-up hidden></div>
-            </div>
+            <div class="pc-card-above">${resultSlotsAboveHtml()}</div>
             <div class="pc-card-center">
-              <h1 class="pc-target" id="pc-target">${escapeHtml(tt("bootLoading"))}</h1>
-              <p class="pc-romanization" id="pc-romanization" hidden></p>
-              <p class="pc-native" id="pc-native"></p>
+              <h1 class="capPron-target" id="pc-target">${escapeHtml(tt("bootLoading"))}</h1>
+              <p class="capPron-romanization" id="pc-romanization" hidden></p>
+              <p class="capPron-native" id="pc-native"></p>
             </div>
-            <div class="pc-card-below">
-              <div class="pc-result-detail" data-pc-result-detail hidden></div>
-            </div>
+            <div class="pc-card-below">${resultSlotsBelowHtml()}</div>
           </div>
         </div>
       </div>
 
       <div class="pc-stage">
         <div class="pc-mic-wrap">
-          <button class="pc-mic" id="pc-mic" type="button" disabled>
+          <button class="capPron-mic" id="pc-mic" type="button" disabled>
             <span id="pc-mic-icon">●</span>
           </button>
-          <div class="pc-mic-label" id="pc-mic-label">Loading model…</div>
+          <div class="capPron-mic-label" id="pc-mic-label">Loading model…</div>
           <div class="pc-swipe-hint">${escapeHtml(tt("swipeHint"))}</div>
         </div>
         <div class="pc-error" id="pc-error" hidden></div>
@@ -938,19 +537,9 @@ export const mountGame = (
   const micBtn = container.querySelector<HTMLButtonElement>("#pc-mic")!
   const micIcon = container.querySelector<HTMLSpanElement>("#pc-mic-icon")!
   const micLabel = container.querySelector<HTMLDivElement>("#pc-mic-label")!
-  // Result decorations live INSIDE the card (selector via the
-  // current `cardEl` so a card-swap mid-result targets the live
-  // card, never a stale one). Selectors via `data-` attribute
-  // because the same id can't repeat across multiple cards in the
-  // deck during a slide animation transition.
-  const resultBannerOf = (card: HTMLElement) =>
-    card.querySelector<HTMLDivElement>("[data-pc-result-banner]")
-  const resultTranscriptUpOf = (card: HTMLElement) =>
-    card.querySelector<HTMLDivElement>("[data-pc-result-transcript-up]")
-  const resultBarsUpOf = (card: HTMLElement) =>
-    card.querySelector<HTMLDivElement>("[data-pc-result-bars-up]")
-  const resultDetailOf = (card: HTMLElement) =>
-    card.querySelector<HTMLDivElement>("[data-pc-result-detail]")
+  // Result decorations live INSIDE the card; the slot markup + queries +
+  // clear animation moved to cap-pronounce's resultView (renderers target
+  // the LIVE card, never a stale one, via data-cappron-* attributes).
   const errorEl = container.querySelector<HTMLDivElement>("#pc-error")!
 
   // ---- Loading overlay ----
@@ -970,7 +559,7 @@ export const mountGame = (
       overlay = document.createElement("div")
       overlay.className = "pc-overlay"
       overlay.innerHTML = `
-        <div class="pc-spinner"></div>
+        <div class="capPron-spinner"></div>
         <div id="pc-overlay-msg"></div>
         <button id="pc-overlay-cancel" type="button" hidden></button>`
       document.body.appendChild(overlay)
@@ -1109,7 +698,7 @@ export const mountGame = (
       micLabel.textContent = tt("listeningReleaseToStop")
     } else if (next === "scoring") {
       micBtn.classList.add("scoring")
-      micIcon.innerHTML = `<div class="pc-spinner"></div>`
+      micIcon.innerHTML = `<div class="capPron-spinner"></div>`
       micLabel.textContent = tt("scoring")
       micBtn.disabled = true
     }
@@ -1121,24 +710,13 @@ export const mountGame = (
   // renderResult INTO the same card (rather than into a separate
   // overlay), so the slide animation takes the card and its
   // decorations off as one unit on swipe.
-  const cardSkeleton = (
-    targetHtml: string,
-    romanHtml: string,
-    nativeHtml: string
-  ): string => `
-    <div class="pc-card-above">
-      <div class="pc-result-banner" data-pc-result-banner hidden></div>
-      <div class="pc-result-transcript-up" data-pc-result-transcript-up hidden></div>
-      <div class="pc-result-bars-up" data-pc-result-bars-up hidden></div>
-    </div>
-    <div class="pc-card-center">
-      ${targetHtml}
-      ${romanHtml}
-      ${nativeHtml}
-    </div>
-    <div class="pc-card-below">
-      <div class="pc-result-detail" data-pc-result-detail hidden></div>
-    </div>
+  // Each card uses a 3-row grid so the phrase sits at a fixed vertical
+  // slot. Result slots above/below come from the capability's resultView;
+  // the stimulus body comes from its roundView — the deck chrome stays here.
+  const cardSkeleton = (centerHtml: string): string => `
+    <div class="pc-card-above">${resultSlotsAboveHtml()}</div>
+    <div class="pc-card-center">${centerHtml}</div>
+    <div class="pc-card-below">${resultSlotsBelowHtml()}</div>
   `
 
   // The target-language badge lives in the header (`#pc-lang-badge`),
@@ -1165,19 +743,13 @@ export const mountGame = (
 
   const fillCard = (card: HTMLDivElement, phrase: LoadedPhrase) => {
     const cfg = hostApi.getStackConfig()
-    const showRoman = !!cfg.showRomanization
-    const roman = phrase.target.romanization || ""
-    const romanHtml =
-      showRoman && roman
-        ? `<p class="pc-romanization">${escapeHtml(roman)}</p>`
-        : ""
-    const nativeHtml = phrase.native?.text
-      ? `<p class="pc-native">${escapeHtml(phrase.native.text)}</p>`
-      : ""
     card.innerHTML = cardSkeleton(
-      `<h1 class="pc-target">${escapeHtml(phrase.target.text || "—")}</h1>`,
-      romanHtml,
-      nativeHtml
+      stimulusBodyHtml({
+        targetText: phrase.target.text || "—",
+        romanization: phrase.target.romanization || "",
+        nativeText: phrase.native?.text || undefined,
+        showRomanization: !!cfg.showRomanization,
+      })
     )
     updateLangBadge(phrase.targetLang)
   }
@@ -1188,9 +760,7 @@ export const mountGame = (
     sub?: string
   ) => {
     card.innerHTML = cardSkeleton(
-      `<h1 class="pc-target">${escapeHtml(headline)}</h1>`,
-      "",
-      sub ? `<p class="pc-native">${escapeHtml(sub)}</p>` : ""
+      stimulusBodyHtml({ targetText: headline, nativeText: sub })
     )
     updateLangBadge(null)
   }
@@ -1363,674 +933,95 @@ export const mountGame = (
   }
 
   // ---- Result rendering ----
-  // Clear result decorations from a specific card. We pass the card
-  // explicitly so callers can clear the LIVE card during a same-card
-  // retry (mic tap) without accidentally clearing a sibling card
-  // mid-slide. Navigation paths (swipe / skip / mode change) don't
-  // call this — they slide the whole card off, which carries the
-  // decorations with it as one motion.
-  //
-  // Decorations animate out (leaving class triggers a 220ms fade)
-  // before the DOM nodes are emptied. Without the leaving class,
-  // re-recording on the same card would snap the colored word
-  // pills off instantly, which felt abrupt — gentle fade-out
-  // matches the gentle fade-in.
-  const clearResultOnCard = (card: HTMLDivElement) => {
-    const banner = resultBannerOf(card)
-    const transUp = resultTranscriptUpOf(card)
-    const barsUp = resultBarsUpOf(card)
-    const detail = resultDetailOf(card)
-    const finalize = () => {
-      if (banner) {
-        banner.innerHTML = ""
-        banner.hidden = true
-        banner.className = "pc-result-banner"
-      }
-      if (transUp) {
-        transUp.innerHTML = ""
-        transUp.hidden = true
-        transUp.className = "pc-result-transcript-up"
-      }
-      if (barsUp) {
-        barsUp.innerHTML = ""
-        barsUp.hidden = true
-        barsUp.className = "pc-result-bars-up"
-      }
-      if (detail) {
-        detail.innerHTML = ""
-        detail.hidden = true
-        detail.className = "pc-result-detail"
-      }
-    }
-    const wasShowing =
-      (banner && !banner.hidden) ||
-      (transUp && !transUp.hidden) ||
-      (barsUp && !barsUp.hidden) ||
-      (detail && !detail.hidden)
-    if (!wasShowing) {
-      finalize()
-      return
-    }
-    if (banner && !banner.hidden) banner.classList.add("leaving")
-    if (transUp && !transUp.hidden) transUp.classList.add("leaving")
-    if (barsUp && !barsUp.hidden) barsUp.classList.add("leaving")
-    if (detail && !detail.hidden) detail.classList.add("leaving")
-    // Match the 220ms `pc-banner-out` / `pc-detail-out` keyframes.
-    window.setTimeout(finalize, 220)
-  }
-  const clearResult = () => clearResultOnCard(cardEl)
+  // The per-word feedback UI (renderResult) and the clear-with-fade logic
+  // moved to cap-pronounce's resultView. Navigation paths don't clear —
+  // they slide the whole card off, decorations included, as one motion.
+  const clearResult = () => clearResultSlots(cardEl)
 
-  const renderResult = (result: SttTranscriptionResult) => {
-    const overall = Math.max(0, Math.min(1, result.overallScore))
-    const noSpeech = Math.max(0, Math.min(1, result.noSpeechProb ?? 0))
-    const compression = result.compressionRatio ?? 0
-
-    // Phase 2 calibration telemetry. One concise line per attempt to
-    // /tmp/pc-console.log via the dev console-server forwarder. Pair
-    // with Swift's `Whisper |` os_log lines in /tmp/whisper-trace-live.txt
-    // to read the full picture of how each attempt scored.
-    console.info("[PRON:score]", {
-      lang: result.whisperLanguage || result.language,
-      model: folderForMode(modelMode),
-      expected: currentPhrase?.target.text ?? "",
-      heard: result.text,
-      free: result.freeText,
-      overall: result.overallScore,
-      transcript: result.transcriptScore,
-      acoustic: result.acousticScore,
-      likelihood: result.likelihoodScore,
-      noSpeechProb: result.noSpeechProb,
-      compressionRatio: result.compressionRatio,
-      avgLogprob: result.avgLogprob,
-      minTokenLogprob: result.minTokenLogprob,
-      tokenLogprobStdev: result.tokenLogprobStdev,
-      temperature: result.temperature,
+  const handleScore = (result: SttTranscriptionResult) => {
+    const verdict = renderPronounceResult(cardEl, result, {
+      expectedText: currentPhrase?.target.text || "",
+      compareLang: currentPhrase?.targetLang || result.language || "",
+      uiLang,
+      modelFolder: folderForMode(modelMode),
+      speak: (lang, text) => {
+        try {
+          const r = hostApi.speak(lang, text)
+          if (r && typeof (r as Promise<void>).catch === "function") {
+            ;(r as Promise<void>).catch((err) => {
+              console.error("[pronunciation-coach] speak failed:", err)
+            })
+          }
+        } catch (err) {
+          console.error("[pronunciation-coach] speak threw:", err)
+        }
+      },
     })
-
-    const freeVsConstrained = Math.max(
-      0,
-      Math.min(1, result.freeVsConstrainedSimilarity ?? 1)
-    )
-    const pct = (n: number) => `${Math.round(n * 100)}%`
-
-    // Hard-gate UI: if Whisper's noSpeechProb says the audio was
-    // effectively silent, render a specific message rather than a
-    // numeric score breakdown.
-    const silent = noSpeech > 0.5
-    // Verdict tiers — wider spectrum so the headline tracks the score.
-    // 75% used to read "Nailed it"; that's reserved for genuinely
-    // strong attempts now. Confetti and streak only count above 0.85
-    // (real "nailed it"), the upper tiers below are for nuance.
-    let headlineClass = "bad"
-    let headlineText = tt("resultTryAgain")
-    if (silent) {
-      headlineClass = "bad"
-      headlineText = tt("resultCouldntHear")
-    } else if (overall >= 0.95) {
-      headlineClass = "good"
-      headlineText = tt("resultPerfect")
-    } else if (overall >= 0.85) {
-      headlineClass = "good"
-      headlineText = tt("resultNailedIt")
-    } else if (overall >= 0.75) {
-      headlineClass = "good"
-      headlineText = tt("resultGreat")
-    } else if (overall >= 0.60) {
-      headlineClass = "okay"
-      headlineText = tt("resultPrettyGood")
-    } else if (overall >= 0.45) {
-      headlineClass = "okay"
-      headlineText = tt("resultCloseKeepGoing")
-    } else if (overall >= 0.25) {
-      headlineClass = "bad"
-      headlineText = tt("resultKeepPracticing")
-    }
-
-    if (silent) {
-      // Mic-was-silent failure shouldn't break the user's streak —
-      // they didn't actually attempt the phrase.
-    } else if (overall >= 0.85) {
+    // Streak + confetti are PACK reactions to the verdict (celebration is
+    // the host's job — capability-modules.md §2.3.5). Bands mirror the
+    // shipped tiers: top ≥ 0.85 celebrates, mid ≥ 0.60 keeps the streak
+    // alive, low resets; a silent mic never breaks the streak (the user
+    // didn't actually attempt the phrase).
+    if (verdict.silent) {
+      // no-op
+    } else if (verdict.band === "top") {
       streak += 1
       launchConfetti(document.body)
-    } else if (overall >= 0.60) {
-      // "Pretty good / Great" — keeps the streak alive (no reset)
-      // but no confetti reward.
+    } else if (verdict.band === "mid") {
+      // keeps the streak alive, no confetti
     } else {
       streak = 0
     }
     updateStreak()
     persist()
-
-    // Word pills represent the EXPECTED phrase (not what was heard).
-    // Tapping speaks that word in the target language so the user can
-    // study individual words.
-    //
-    // Pill color combines two signals:
-    //   - heardProb: the constrained-decode per-word probability.
-    //     Inflated by `prefixTokens` (the model is just confirming
-    //     forced tokens), so on its own it gives green pills even
-    //     when pronunciation was poor.
-    //   - freeSim: character-level similarity between the expected
-    //     word and the free-decode word at that position (or to the
-    //     full free transcript when positional alignment isn't
-    //     possible). The free decode is uncoerced, so this is the
-    //     honest signal. Low freeSim = the model heard something
-    //     different at that spot — a real pronunciation problem.
-    // The pill takes the *worst* tier of the two so we never show a
-    // green pill when the free decode disagrees.
-    const heardWords = mergeApostropheWords(result.words || [])
-    const expectedText = (currentPhrase?.target.text || "").trim()
-    // CJK phrases ("你好嗎") have no whitespace — tokenize per
-    // grapheme so each character becomes its own tappable pill.
-    // Latin / spaced scripts continue to split on whitespace.
-    const expectedTokens = tokenizeForPills(expectedText)
-    const freeText = (result.freeText || "").trim()
-    const freeTokens = tokenizeForPills(freeText)
-    const useHeardProbs =
-      expectedTokens.length > 0 &&
-      expectedTokens.length === heardWords.length
-    const useFreePositional =
-      expectedTokens.length > 0 &&
-      expectedTokens.length === freeTokens.length
-    // Fallback when free word count doesn't align: apply the global
-    // free-vs-expected character similarity to every pill so the
-    // honest signal still shows up.
-    //
-    // Free decode is supposed to run on every transcribe. Empty free
-    // text with a real expected phrase = a genuine failure — the
-    // plugin already drives the overall score to 0 in this case, but
-    // we also need to color the pills honestly so we don't show
-    // green pills on top of a 0% score (the contradiction the user
-    // flagged). Treat empty-free as 0 similarity at the pill level
-    // too.
-    const freeDecodeFailed = expectedText.length > 0 && freeText.length === 0
-    const compareLang = currentPhrase?.targetLang || result.language || ""
-    const overallFreeSim =
-      freeText.length && expectedText.length
-        ? charSimilarity(
-            normalizeForCompare(freeText, compareLang),
-            normalizeForCompare(expectedText, compareLang)
-          )
-        : freeDecodeFailed
-          ? 0
-          : null
-    type WordPill = {
-      word: string
-      heardProb: number | null
-      freeSim: number | null
-    }
-    const pills: WordPill[] = expectedTokens.length
-      ? expectedTokens.map((tok, i) => ({
-          word: tok,
-          heardProb: useHeardProbs ? heardWords[i].probability : null,
-          freeSim: useFreePositional
-            ? charSimilarity(
-                normalizeForCompare(tok, compareLang),
-                normalizeForCompare(freeTokens[i], compareLang)
-              )
-            : overallFreeSim,
-        }))
-      : expectedText
-        ? [
-            {
-              word: expectedText,
-              heardProb: null,
-              freeSim: overallFreeSim,
-            },
-          ]
-        : []
-    const heardTier = (p: number | null): "good" | "okay" | "bad" | null => {
-      if (p === null) return null
-      if (p >= 0.9) return "good"
-      if (p >= 0.6) return "okay"
-      return "bad"
-    }
-    const freeTier = (s: number | null): "good" | "okay" | "bad" | null => {
-      if (s === null) return null
-      if (s >= 0.85) return "good"
-      if (s >= 0.6) return "okay"
-      return "bad"
-    }
-    const tierRank: Record<"bad" | "okay" | "good", number> = {
-      bad: 0,
-      okay: 1,
-      good: 2,
-    }
-    const pillClass = (w: WordPill): string => {
-      const h = heardTier(w.heardProb)
-      const f = freeTier(w.freeSim)
-      if (h === null && f === null) return ""
-      if (h === null) return f as string
-      if (f === null) return h
-      return tierRank[h] <= tierRank[f] ? h : f
-    }
-    const wordsHtml = pills
-      .map((w, idx) => {
-        const cls = pillClass(w)
-        return `<button class="pc-word ${cls}" type="button" data-pc-word-idx="${idx}" aria-label="${escapeHtml(
-          tt("ariaSpeakWord", { word: w.word })
-        )}">${escapeHtml(w.word)}</button>`
-      })
-      .join("")
-
-    // "Heard you say" — the FREE decode (honest signal, no prefix
-    // bias). Stacked, centered block: small muted label on its own
-    // line, then ▶ + transcript inline below. The whole block is
-    // the tap target (the ▶ is a visual affordance, not the hit
-    // area). Empty branch keeps the same shape so the layout
-    // doesn't shift between success and failure.
-    //
-    // RTL target langs: flip play affordance to the right side and
-    // point the glyph leftward (◀), since reading flows right→left.
-    const rtl = isRTL(compareLang)
-    const lineCls = rtl ? "pc-transcript-line pc-transcript-line-rtl" : "pc-transcript-line"
-    const playGlyph = rtl ? "◀" : "▶"
-    const heardRow = freeText.length
-      ? `<div class="pc-transcript-row heard" role="button" tabindex="0"
-             data-pc-speak="heard" data-no-swipe
-             aria-label="${escapeHtml(tt("ariaPlayHeard"))}">
-           <span class="pc-transcript-label">${escapeHtml(tt("heardYouSay"))}</span>
-           <span class="${lineCls}">
-             <span class="pc-transcript-play" aria-hidden="true">${playGlyph}</span>
-             <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
-           </span>
-         </div>`
-      : freeDecodeFailed
-        ? `<div class="pc-transcript-row heard empty">
-             <span class="pc-transcript-label">${escapeHtml(tt("heardYouSay"))}</span>
-             <span class="pc-transcript-line">
-               <span class="pc-transcript-text empty">${escapeHtml(tt("couldntMakeOutWords"))}</span>
-             </span>
-           </div>`
-        : ""
-    const transcriptsHtml = heardRow
-      ? `<div class="pc-transcripts">${heardRow}</div>`
-      : ""
-
-    // Friendly diagnostic chips — surface only when something
-    // genuinely went off, in plain language a kid (or a parent on
-    // their first try) can act on. Truly technical signals
-    // (`temperature`, `whisperLanguage`, `compressionRatio` numeric
-    // value) stay in OSLog but never reach the UI.
-    //
-    // Script-mismatch traps (Whisper outputs Gurmukhi for `pa`,
-    // picks one CJK script for `zh`, etc.) get a neutral note since
-    // the user can't fix it — it's a signal that the score may not
-    // mean what they expect.
-    const knownScriptMismatch: Record<string, string> = {
-      "pa-arab": tt("chipDifferentScript"),
-      "yue-hant-hk": tt("chipDifferentScript"),
-      "zh-hans": tt("chipDifferentScript"),
-      "zh-hant": tt("chipDifferentScript"),
-    }
-    const lcLang = (result.language ?? "").toLowerCase()
-    const scriptMismatchNote = knownScriptMismatch[lcLang]
-    const diagChips: string[] = []
-    if (noSpeech > 0.2)
-      diagChips.push(
-        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipSoundedFaint"))}</div>`
-      )
-    // Compression ratio is calibrated for Latin-script languages.
-    // Indic / Persian / Urdu BPE legitimately runs higher (2.5–3.5)
-    // even on clean speech, so suppress the chip there to avoid
-    // false-positive "garbled" warnings on perfect Tamil / Telugu
-    // attempts. Mirrors the per-lang threshold in the plugin.
-    const compareBaseLang = compareLang.toLowerCase().split("-")[0]
-    const compressionThreshold = LOW_RESOURCE_LANGS.has(compareBaseLang)
-      ? 3.5
-      : 2.4
-    if (compression > compressionThreshold)
-      diagChips.push(
-        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipSoundedGarbled"))}</div>`
-      )
-    if (freeDecodeFailed)
-      diagChips.push(
-        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipCouldntMakeOut"))}</div>`
-      )
-    else if (freeVsConstrained < 0.6)
-      diagChips.push(
-        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipWordsDidntMatch"))}</div>`
-      )
-    if (scriptMismatchNote)
-      diagChips.push(
-        `<div class="pc-chip">${escapeHtml(scriptMismatchNote)}</div>`
-      )
-    const diagHtml = diagChips.length
-      ? `<div class="pc-chips pc-diagnostics">${diagChips.join("")}</div>`
-      : ""
-
-    // Render banner + detail INTO the live card's slots. The phrase
-    // stays where it is (visual hero); the banner appears just above
-    // it as a compact pill, the detail appears below.
-    //
-    // Per-word pills go FIRST in the detail (directly below the
-    // phrase) because that's where the user's eye is anchored —
-    // immediate visual connection between phrase and per-word
-    // feedback. Transcripts, bars, diagnostics, and Hear-it follow.
-    const bannerEl = resultBannerOf(cardEl)
-    const transUpEl = resultTranscriptUpOf(cardEl)
-    const barsUpEl = resultBarsUpOf(cardEl)
-    const detailEl = resultDetailOf(cardEl)
-    if (!bannerEl || !detailEl) {
-      // The current card lacks the result slots (shouldn't happen
-      // with the cardSkeleton template but guard so we don't throw).
-      console.error(
-        "[pronunciation-coach] renderResult: card missing result slots"
-      )
-      return
-    }
-    if (silent) {
-      // Quiet failure path — score is "—", show a friendly chip and
-      // a Hear-it. Banner uses the okay tint (warning, not failure).
-      bannerEl.className = `pc-result-banner ${headlineClass}`
-      bannerEl.innerHTML = `
-        <span class="pc-result-banner-score">—</span>
-        <span class="pc-result-banner-sep">·</span>
-        <span class="pc-result-banner-text">${headlineText}</span>
-      `
-      bannerEl.hidden = false
-      detailEl.innerHTML = `
-        <div class="pc-chips">
-          <div class="pc-chip">${escapeHtml(tt("hintMoveCloser"))}</div>
-        </div>
-      `
-      detailEl.hidden = false
-    } else {
-      bannerEl.className = `pc-result-banner ${headlineClass}`
-      bannerEl.innerHTML = `
-        <span class="pc-result-banner-score">${pct(overall)}</span>
-        <span class="pc-result-banner-sep">·</span>
-        <span class="pc-result-banner-text">${headlineText}</span>
-      `
-      bannerEl.hidden = false
-      // Composition above the phrase: banner (% + headline) →
-      // "Heard you say". Composition below: per-word pills →
-      // diagnostics. The bars-up slot is intentionally left empty
-      // — the headline number and per-word pills together carry
-      // the score story without redundant 0–100% bars.
-      if (transUpEl) {
-        transUpEl.innerHTML = transcriptsHtml
-        transUpEl.hidden = !transcriptsHtml
-      }
-      if (barsUpEl) {
-        barsUpEl.innerHTML = ""
-        barsUpEl.hidden = true
-      }
-      // No "Hear it" button — the per-word pills are already
-      // tap-to-hear, which covers re-listening more usefully (you
-      // can hear an individual word, not just the whole phrase).
-      // The phrase header itself is also tap-to-hear (existing
-      // .pc-target click binding).
-      const wordsCls = rtl ? "pc-words pc-words-rtl" : "pc-words"
-      detailEl.innerHTML = `
-        ${wordsHtml ? `<div class="${wordsCls}">${wordsHtml}</div>` : ""}
-        ${diagHtml}
-      `
-      detailEl.hidden = false
-    }
-
-    const speakInTarget = (text: string, label: string) => {
-      const lang = currentPhrase?.targetLang || result.language || "en"
-      try {
-        const r = hostApi.speak(lang, text)
-        if (r && typeof (r as Promise<void>).catch === "function") {
-          ;(r as Promise<void>).catch((err) => {
-            console.error(
-              `[pronunciation-coach] ${label} speak failed:`,
-              err
-            )
-          })
-        }
-      } catch (err) {
-        console.error(`[pronunciation-coach] ${label} speak threw:`, err)
-      }
-    }
-
-    // Per-word TTS: tap a pill to hear that word in the target
-    // language. Scope all button queries to the live card so a
-    // mid-render slide can never bind handlers to a stale card.
-    const wordPills = detailEl.querySelectorAll<HTMLButtonElement>(
-      "button.pc-word[data-pc-word-idx]"
-    )
-    wordPills.forEach((pill) => {
-      pill.addEventListener("click", () => {
-        const idxStr = pill.getAttribute("data-pc-word-idx")
-        if (idxStr === null) return
-        const idx = Number(idxStr)
-        const word = pills[idx]
-        if (!word) return
-        speakInTarget(word.word.trim(), "word")
-      })
-    })
-
-    // Tap anywhere on the "Heard you say" row → speak the free
-    // transcript in the target-language voice. The whole row is
-    // the tap target, not just the small ▶ icon (better hit area
-    // for thumbs). Scope to the whole card because the row now
-    // lives ABOVE the phrase (in the transcript-up slot), not
-    // inside detailEl.
-    const transcriptRows = cardEl.querySelectorAll<HTMLElement>(
-      ".pc-transcript-row[data-pc-speak]"
-    )
-    transcriptRows.forEach((row) => {
-      const speak = () => {
-        if (!freeText) return
-        speakInTarget(freeText, "heard")
-      }
-      row.addEventListener("click", speak)
-      row.addEventListener("keydown", (e: Event) => {
-        const k = (e as KeyboardEvent).key
-        if (k === "Enter" || k === " ") {
-          e.preventDefault()
-          speak()
-        }
-      })
-    })
-
-    // (No #pc-hear button — per-word pills cover re-listen, and
-    //  tapping the .pc-target header still speaks the whole phrase.)
   }
 
   // ---- Mic flow ----
-  const cancelActiveSession = () => {
-    const sessionId = activeSessionId
-    activeSessionId = null
-    if (sessionId) {
-      stt.cancelSession({ sessionId }).catch((err) => {
-        console.error("[pronunciation-coach] cancelSession failed:", err)
-      })
-    }
-  }
-
-  const startRecording = async () => {
-    if (!currentPhrase || !modelReady) return
-    // Recording/scoring is ALWAYS free — like phrase-flip, only acquiring a NEW
-    // phrase is metered (see goNext / loadFirstPhrase). A free user can re-drill
-    // any phrase already in their history on the on-device model as much as they
-    // want; the daily cap only bites when they reach for a fresh phrase.
-    clearError()
-    clearResult()
-    const sessionId = newSessionId()
-    activeSessionId = sessionId
-    try {
-      setUiState("recording")
-      const lang = whisperLang(currentPhrase.targetLang)
-      const res = await stt.startSession({
-        sessionId,
-        language: lang,
-        expectedText: currentPhrase.target.text,
-        whisperParams: mergeForLang(lang),
-        scoringParams: mergeScoringForLangModel(lang, folderForMode(modelMode)),
-      })
+  // The push-to-talk state machine moved to cap-pronounce's recorder; the
+  // pack keeps its UI state + error ROUTING here (LOAD_FAILED → setup,
+  // NETWORK → calm banner, UNSUPPORTED_LANGUAGE → dead-end card).
+  const recorder: PushToTalkRecorder = createPushToTalkRecorder(stt, {
+    model: () => folderForMode(modelMode),
+    onState: (s) => {
+      if (!disposed) setUiState(s)
+    },
+    onResult: (result) => {
       if (disposed) return
-      if (!res.started) {
-        throw new Error("STT plugin reported started=false")
-      }
-    } catch (err) {
-      console.error("[pronunciation-coach] startSession failed:", err)
-      activeSessionId = null
-      showError(
-        tt("errStartRecording", { error: formatErr(err) })
-      )
-      setUiState("idle")
-    }
-  }
-
-  const tryPrepareOnce = async (mode: ModelMode): Promise<SttPrepareResult> => {
-    if (!stt) throw new Error("STT unavailable")
-    const model = folderForMode(mode)
-    const r = await withTimeout(
-      stt.prepare({ model }),
-      prepareTimeoutMs(mode),
-      `Loading ${labelForMode(mode)} model`
-    )
-    if (!r.ready) {
-      // Throw with `code` attached so callers can route on err.code
-      // instead of substring-matching the message.
-      const e = new Error(r.message || "Model not ready") as Error & {
-        code?: SttErrorCode
-      }
-      e.code = r.code
-      throw e
-    }
-    return r
-  }
-
-  // prepare() is local-only — never downloads. On failure we route on
-  // the structured code; we NEVER auto-wipe model files. The "model on
-  // disk is bad" case opens a banner with a Reinstall action; the user
-  // — not a substring heuristic — decides whether to delete files.
-  const prepareWithRecovery = tryPrepareOnce
-
-  /// Sentinel thrown when the user taps Cancel on the
-  /// INSUFFICIENT_MEMORY retry overlay. Distinct from a real error
-  /// so the catch block can do "switch cancelled" instead of "load
-  /// failed" messaging.
-  class SwitchCancelledError extends Error {
-    constructor() {
-      super("Switch cancelled by user")
-      this.name = "SwitchCancelledError"
-    }
-  }
-
-  /// Wraps `prepareWithRecovery` with a memory-wait retry loop. The
-  /// native plugin's headroom gate returns `INSUFFICIENT_MEMORY`
-  /// when the OS still has the previous model parked on the C heap
-  /// freelist and a new allocation would push peak resident past
-  /// the jetsam ceiling. Empirically (May-17 device traces) waiting
-  /// 5-10 seconds is enough for iOS to reclaim those pages, so
-  /// rather than bouncing the user to a scary "restart Corpán"
-  /// error we absorb the failure, show a "Freeing memory..." overlay
-  /// with a Cancel button, and retry up to MEMORY_WAIT_MAX_ATTEMPTS.
-  ///
-  /// Returns the successful `SttPrepareResult` on the first attempt
-  /// that lands. Throws `SwitchCancelledError` if the user cancels,
-  /// or re-throws the underlying error if it's not
-  /// INSUFFICIENT_MEMORY (or if we exhaust attempts — at which
-  /// point the catch block can show the standard "couldn't load"
-  /// fallback).
-  const MEMORY_WAIT_INTERVAL_MS = 1500
-  const MEMORY_WAIT_MAX_ATTEMPTS = 10
-  const prepareWithMemoryRetry = async (
-    mode: ModelMode
-  ): Promise<SttPrepareResult> => {
-    const targetLabel = labelForMode(mode)
-    let lastError: unknown = null
-    let cancelled = false
-    const cancel = () => {
-      cancelled = true
-    }
-    for (let attempt = 1; attempt <= MEMORY_WAIT_MAX_ATTEMPTS; attempt++) {
-      if (cancelled) throw new SwitchCancelledError()
-      try {
-        return await prepareWithRecovery(mode)
-      } catch (err) {
-        const code = errCode(err)
-        if (code !== "INSUFFICIENT_MEMORY") {
-          // Different failure mode — bubble up to the regular catch
-          // (MODEL_NOT_INSTALLED, NETWORK, LOAD_FAILED, etc.).
-          throw err
-        }
-        lastError = err
-        if (attempt === MEMORY_WAIT_MAX_ATTEMPTS) break
-        // Show the retry overlay with cancel. Update the message
-        // each attempt so the user has a sense of progress.
-        const remaining = MEMORY_WAIT_MAX_ATTEMPTS - attempt
-        showOverlay(
-          `Freeing memory for ${targetLabel}…\nThis usually takes a few seconds.`,
-          { cancelLabel: "Cancel", onCancel: cancel }
-        )
-        console.log(
-          `[pronunciation-coach] INSUFFICIENT_MEMORY on attempt ${attempt}; ` +
-            `waiting ${MEMORY_WAIT_INTERVAL_MS}ms, ${remaining} retries left`
-        )
-        await new Promise<void>((resolve) =>
-          setTimeout(resolve, MEMORY_WAIT_INTERVAL_MS)
-        )
-      }
-    }
-    // Exhausted retries with INSUFFICIENT_MEMORY still firing — the
-    // device really is out of headroom right now. Re-throw the last
-    // error so the catch block routes to the "restart Corpán" path.
-    throw lastError ?? new Error("INSUFFICIENT_MEMORY")
-  }
-
-  const stopRecording = async () => {
-    const sessionId = activeSessionId
-    if (!sessionId) {
-      setUiState("idle")
-      return
-    }
-    activeSessionId = null
-    try {
-      setUiState("scoring")
-      const result = await withTimeout(
-        stt.stopSession({ sessionId }),
-        TRANSCRIBE_TIMEOUT_MS,
-        "Scoring"
-      )
+      handleScore(result)
+      // Scoring is free + unlimited (metering moved to NEW-phrase
+      // acquisition in goNext). Re-recording never touches the daily gate.
+    },
+    onError: (err, code, phase) => {
       if (disposed) return
-      renderResult(result)
-      // Scoring is free + unlimited (metering moved to NEW-phrase acquisition in
-      // goNext). Re-recording the same phrase never touches the daily gate.
-      setUiState("idle")
-    } catch (err) {
       const msg = formatErr(err)
-      const code = errCode(err)
-      console.error(
-        `[pronunciation-coach] stopSession failed (code=${code ?? "—"}):`,
-        msg
-      )
-      setUiState("idle")
+      if (phase === "start") {
+        showError(tt("errStartRecording", { error: msg }))
+        return
+      }
       if (code === "LOAD_FAILED") {
         // The on-disk model bytes failed at runtime. We do NOT wipe —
         // the user decides via the setup overlay whether to reinstall.
-        // No silent destructive action; that was the bug class we just
-        // ripped out.
         modelReady = false
         micBtn.disabled = true
         micLabel.textContent = "Model needs reinstall"
         showError(
           `${labelForMode(modelMode)} model failed to load — opening setup so you can reinstall.`
         )
-        openModelSetup().catch((err) => {
+        openModelSetup().catch((err2) => {
           console.error(
             "[pronunciation-coach] openModelSetup after LOAD_FAILED:",
-            err
+            err2
           )
         })
         return
       }
       if (code === "NETWORK") {
-        showError(
-          tt("errNetworkBlip")
-        )
+        showError(tt("errNetworkBlip"))
         return
       }
       // Backstop: the native guard rejected the language. We gate unscorable
       // targets before recording, so this should be unreachable — but if it
-      // fires (iOS sends numeric code 60; Android the string code), show the
-      // calm dead-end card instead of a raw red error.
+      // fires, show the calm dead-end card instead of a raw red error.
       if (code === "UNSUPPORTED_LANGUAGE" || /support language/i.test(msg)) {
         renderUnavailableCard(
           tt("scoringUnavailableTitle"),
@@ -2039,45 +1030,42 @@ export const mountGame = (
         return
       }
       showError(tt("errScoringFailed", { error: msg }))
-    }
-  }
+    },
+  })
 
-  // Hold-to-speak: press and hold the mic to record, release to stop +
-  // score. Pointer events (not click) so it works for touch and mouse;
-  // setPointerCapture keeps pointerup landing here even if the finger
-  // slides off the button, and pointercancel covers an interrupted
-  // gesture (call, system gesture) so we can never get stuck recording.
-  let micHoldActive = false
-  const beginMicHold = (e: PointerEvent) => {
-    if (uiState !== "idle" || !modelReady || !currentPhrase) return
-    e.preventDefault()
-    micHoldActive = true
-    try {
-      micBtn.setPointerCapture(e.pointerId)
-    } catch {
-      /* capture is best-effort; pointercancel still ends the hold */
-    }
-    startRecording().catch((err) => {
-      console.error("[pronunciation-coach] hold-start threw:", err)
+  const cancelActiveSession = () => recorder.cancel()
+
+  const startRecording = async () => {
+    if (!currentPhrase || !modelReady) return
+    // Recording/scoring is ALWAYS free — like phrase-flip, only acquiring a
+    // NEW phrase is metered (see goNext / loadFirstPhrase).
+    clearError()
+    clearResult()
+    await recorder.start({
+      text: currentPhrase.target.text,
+      lang: currentPhrase.targetLang,
     })
   }
-  const endMicHold = (e: PointerEvent) => {
-    if (!micHoldActive) return
-    micHoldActive = false
-    try {
-      micBtn.releasePointerCapture(e.pointerId)
-    } catch {
-      /* no-op if capture was never granted */
-    }
-    if (uiState === "recording") {
-      stopRecording().catch((err) => {
-        console.error("[pronunciation-coach] hold-stop threw:", err)
+
+  const stopRecording = () => recorder.stop()
+
+  // Hold-to-speak binding moved to the capability (pointer capture +
+  // pointercancel discipline lives there, once).
+  const unbindMicHold = bindPushToTalk(micBtn, {
+    canStart: () => uiState === "idle" && modelReady && !!currentPhrase,
+    onStart: () => {
+      startRecording().catch((err) => {
+        console.error("[pronunciation-coach] hold-start threw:", err)
       })
-    }
-  }
-  micBtn.addEventListener("pointerdown", beginMicHold)
-  micBtn.addEventListener("pointerup", endMicHold)
-  micBtn.addEventListener("pointercancel", endMicHold)
+    },
+    onStop: () => {
+      if (uiState === "recording") {
+        stopRecording().catch((err) => {
+          console.error("[pronunciation-coach] hold-stop threw:", err)
+        })
+      }
+    },
+  })
   // (No cap guard on the mic — re-practicing any phrase already in history is
   // free even when capped. The cap is enforced only at NEW-phrase acquisition
   // in goNext, which re-pops the shared green-check lock.)
@@ -2097,26 +1085,10 @@ export const mountGame = (
     else dispatchExit()
   })
 
-  // Re-prepare the saved-mode native context if it isn't currently
-  // loaded. Idempotent: if prepare hits its in-memory cache, returns
-  // immediately. Install and unload paths can drop the previous native
-  // context while leaving its files and marker on disk; calling this
-  // after setup restores the working state without a JS-side guess
-  // about what the plugin did internally.
-  const ensureLoaded = async (mode: ModelMode): Promise<boolean> => {
-    if (!stt?.prepare) return false
-    try {
-      const r = await stt.prepare({ model: folderForMode(mode) })
-      if (r.ready) return true
-      console.error(
-        `[pronunciation-coach] ensureLoaded(${mode}) failed: code=${r.code ?? "—"} msg=${r.message ?? ""}`
-      )
-      return false
-    } catch (err) {
-      console.error(`[pronunciation-coach] ensureLoaded(${mode}) threw:`, err)
-      return false
-    }
-  }
+  // Re-prepare the saved-mode native context if it isn't currently loaded
+  // — the flow logic moved to the capability recorder (ensureModelLoaded).
+  const ensureLoaded = (mode: ModelMode): Promise<boolean> =>
+    ensureModelLoaded(stt, folderForMode(mode))
 
   // Mode button reopens the setup screen so the user explicitly picks a
   // model and watches the install — no more silent inline downloads.
@@ -2263,7 +1235,16 @@ export const mountGame = (
       // reclaim freelist pages after a Large-model unload; waiting
       // for that is almost always faster (and lower-friction) than
       // forcing a process relaunch.
-      const r = await prepareWithMemoryRetry(targetMode)
+      const r = await prepareWithMemoryRetry(stt, folderForMode(targetMode), {
+        timeoutMs: prepareTimeoutMs(targetMode),
+        label: `Loading ${targetLabel} model`,
+        onWait: (_attempt, _remaining, cancel) => {
+          showOverlay(
+            `Freeing memory for ${targetLabel}…\nThis usually takes a few seconds.`,
+            { cancelLabel: "Cancel", onCancel: cancel }
+          )
+        },
+      })
       modelReady = true
       // Prepare succeeded — NOW commit the choice to persistent state.
       modelMode = targetMode
@@ -2294,7 +1275,10 @@ export const mountGame = (
       // to a model they didn't ask to remove.
       if (previous && previous !== targetMode) {
         try {
-          const r = await prepareWithRecovery(previous)
+          const r = await tryPrepareOnce(stt, folderForMode(previous), {
+            timeoutMs: prepareTimeoutMs(previous),
+            label: `Loading ${labelForMode(previous)} model`,
+          })
           modelReady = true
           modelMode = previous
           renderModeButton()
@@ -3331,7 +2315,10 @@ export const mountGame = (
     let prepareCode: SttErrorCode | undefined
     try {
       await Promise.all([
-        prepareWithRecovery(bootTargetMode).then((r) => {
+        tryPrepareOnce(stt, folderForMode(bootTargetMode), {
+          timeoutMs: prepareTimeoutMs(bootTargetMode),
+          label: `Loading ${labelForMode(bootTargetMode)} model`,
+        }).then((r) => {
           modelReady = true
           console.log(
             `[pronunciation-coach] Whisper prepared: ${r.model} (${labelForMode(bootTargetMode)})`
@@ -3430,7 +2417,10 @@ export const mountGame = (
   return {
     unmount: () => {
       disposed = true
-      cancelActiveSession()
+      unbindMicHold()
+      // Cancels any active session AND releases the audio engine when a
+      // session was ever opened (iOS mic-indicator rule, hostApi contract).
+      recorder.dispose()
       window.removeEventListener("keydown", onKeyDown)
       window.removeEventListener("keyup", onKeyUp)
       container.removeEventListener("pointerdown", onLpPointerDown)

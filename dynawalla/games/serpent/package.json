@@ -1,0 +1,23 @@
+{
+  "name": "@dynawalla/game-serpent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Serpent — a bioluminescent deep-sea snake. Eat only the values that satisfy the live condition.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:pack": "vite build --config vite.pack.config.ts",
+    "preview": "vite preview --port 5291",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}

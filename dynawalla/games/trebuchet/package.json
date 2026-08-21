@@ -1,0 +1,21 @@
+{
+  "name": "@dynawalla/game-trebuchet",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Trebuchet — a siege where the range dial is the answer.",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:pack": "vite build --config vite.pack.config.ts",
+    "preview": "vite preview --port 4183",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'src/**/*.test.ts'"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}

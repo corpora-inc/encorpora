@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>SDK Example</title>
+    <link rel="stylesheet" href="pack.css" />
+  </head>
+  <body>
+    <!-- No inline script anywhere. The policy the host serves this document
+         under has no `'unsafe-inline'` in `script-src`, so an inline handler or
+         an inline <script> is silently dropped — which looks exactly like a
+         pack that does nothing. Everything is in pack.js. -->
+    <main class="slate">
+      <p class="problem" id="problem" aria-live="polite"></p>
+      <p class="entry" id="entry" aria-live="polite"></p>
+      <div class="keys" id="keys"></div>
+    </main>
+    <script src="pack.js"></script>
+  </body>
+</html>

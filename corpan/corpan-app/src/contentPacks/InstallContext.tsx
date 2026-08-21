@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { installPack, isTauriRuntime } from "./install"
+import { installPack, isTauriRuntime, PackVersionMismatchError } from "./install"
 import { useInstallProgress } from "./installProgress"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { InstallProgressDialog } from "@/components/packs/InstallProgressDialog"
@@ -8,6 +8,7 @@ import type { CatalogGame } from "./catalog"
 import type { PhrasePackCatalogEntry } from "./phrasePackCatalog"
 import { resolveLocalized } from "./localized"
 import type { InstallSource } from "./install"
+import { buildCatalogInstallArgs } from "./installArgs"
 
 export type BatchInstallProgress = {
   /** 1-based index of the pack currently installing. */
@@ -141,9 +142,22 @@ export function InstallProvider({
         }
         // For zip installs, the Rust backend emits "complete" event
       } catch (err) {
-        const message = err instanceof Error ? err.message : String(err)
         console.error("[InstallContext] install failed", err)
-        setError(message || "Install failed")
+        if (err instanceof PackVersionMismatchError) {
+          // Sentinel recognized by InstallProgressDialog (same pattern as the
+          // "offline" / "stuck" sentinels) so the dialog shows a real
+          // localized "update unavailable" state instead of a raw error
+          // string. Log expected-vs-got here too since this is the boundary
+          // the user-facing (non-silent) install/update flows go through.
+          console.error(
+            `[InstallContext] version mismatch for ${err.packId}: ` +
+              `expected ${err.expectedVersion}, got ${err.actualVersion}`
+          )
+          setError("version_mismatch")
+        } else {
+          const message = err instanceof Error ? err.message : String(err)
+          setError(message || "Install failed")
+        }
       } finally {
         setInstalling(false)
       }
@@ -230,17 +244,19 @@ export function InstallProvider({
               lang,
             ),
           })
-          const downloadUrl = pack.zipUrl
-          if (!downloadUrl) {
+          const installArgs = buildCatalogInstallArgs(pack)
+          if (!installArgs) {
             failed.push({ id: pack.id, error: "missing zipUrl" })
             continue
           }
           try {
-            await installPack({
-              manifestUrl: downloadUrl,
-              source: "catalog",
-              expectedVersion: pack.version,
-            })
+            // `buildCatalogInstallArgs` is what forwards `pack.sha256` as
+            // `expectedHash` (mirrors journey packs' hand-rolled
+            // `entry.sha256` passthrough in runtimeWiring.ts) — without it,
+            // a batch/"Install all" phrase-pack install skipped the native
+            // sha256 hard-fail-on-mismatch check that a single-pack install
+            // already got.
+            await installPack({ ...installArgs, source: "catalog" })
             installed.push(pack.id)
           } catch (err) {
             const message = err instanceof Error ? err.message : String(err)

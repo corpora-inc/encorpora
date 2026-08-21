@@ -69,7 +69,21 @@ function DrawerContent({
         )}
         {...props}
       >
-        <div className="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-md group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        {/* Global grab zone. The owner's standing note: "every drawer's grab
+            area is too small — make it EASILY dismissable on mobile." So this
+            is one big, full-width, ≥44px-tall drag target (not just the thin
+            pill) — swiping down anywhere across it dismisses. The visible pill
+            is only the affordance; the whole padded band around it is the hit
+            area. Fixed here in the shared component so EVERY bottom drawer
+            inherits it. */}
+        <div
+          aria-hidden="true"
+          className="group-data-[vaul-drawer-direction=bottom]/drawer-content:flex hidden w-full shrink-0 cursor-grab touch-none select-none items-center justify-center pt-3 pb-2 active:cursor-grabbing"
+        >
+          <div className="flex h-8 w-32 items-center justify-center">
+            <span className="block h-1.5 w-12 rounded-full bg-muted-foreground/40 transition-colors group-active/drawer-content:bg-muted-foreground/60" />
+          </div>
+        </div>
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>

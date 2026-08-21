@@ -1,0 +1,120 @@
+name: TestFlight · manage internal testers
+
+# Adds an email to Dynawalla's INTERNAL TestFlight group, by API.
+#
+# It lives here, and not in a developer's shell, because the App Store Connect
+# credentials exist ONLY as repository secrets — there are none on any machine.
+# That is also why the script it runs cannot be rehearsed against the live API
+# before this workflow's first dispatch: everything in it that does not need
+# the network is covered by `.github/scripts/test_manage_testflight_testers.py`,
+# which the `ci-scripts` job runs on every change under `.github/scripts/`.
+#
+# workflow_dispatch ONLY. Nothing about adding a tester should happen because a
+# commit landed.
+#
+# WHAT THIS CAN DO TO THE ACCOUNT:
+#   * create an internal beta group for the app, if none exists
+#   * add an existing App Store Connect user to that group
+#   * with `invite: true` ONLY — send an App Store Connect TEAM INVITATION,
+#     which is a real permission grant on the Corpora Inc. developer account.
+#     Apple allows only existing App Store Connect users in an internal group,
+#     so an outside email cannot be added without one. It is opt-in for that
+#     reason and is never a side effect of "add a tester".
+#
+# Run it with `invite: false, dry_run: true` first if you want to see the
+# account's current state without changing anything.
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: "Apple Account email of the tester"
+        required: true
+        type: string
+      invite:
+        description: "If not already on the App Store Connect team, INVITE them (grants team access)"
+        required: false
+        type: boolean
+        default: false
+      dry_run:
+        description: "Read everything, change nothing"
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  # Two dispatches racing on the same beta group would interleave a membership
+  # read with another run's write. Never cancel: a cancelled run may already
+  # have sent an invitation.
+  group: testflight-testers
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  manage:
+    name: Add internal tester
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Fail HARD and name the secret. `release-mobile.yml` emits a warning and
+      # skips, which reports SUCCESS — a green run that did nothing is exactly
+      # the failure this repository has already been bitten by. Only presence
+      # is tested; no value is printed, ever.
+      - name: Require App Store Connect credentials
+        env:
+          HAVE_KEY_ID: ${{ secrets.ASC_KEY_ID != '' }}
+          HAVE_ISSUER: ${{ secrets.ASC_ISSUER_ID != '' }}
+          HAVE_KEY: ${{ secrets.ASC_API_KEY_P8 != '' }}
+        run: |
+          set -euo pipefail
+          missing=0
+          check() {
+            if [ "$2" != "true" ]; then
+              echo "::error::secret $1 is not set"
+              missing=1
+            fi
+          }
+          check ASC_KEY_ID "$HAVE_KEY_ID"
+          check ASC_ISSUER_ID "$HAVE_ISSUER"
+          check ASC_API_KEY_P8 "$HAVE_KEY"
+          if [ "$missing" -ne 0 ]; then
+            echo "See dynawalla/docs/STORE.md for how each one is produced."
+            exit 1
+          fi
+
+      - name: Manage the internal tester
+        # Every secret AND every dispatch input arrives through `env:`, never
+        # interpolated into the script TEXT. `${{ ... }}` inside `run:` is
+        # substituted before bash sees it: for a secret that puts the value on
+        # the command line, and for `inputs.email` — a string a human types —
+        # it is a shell-injection hole.
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          ASC_BUNDLE_ID: inc.corpora.dynawalla
+          TESTER_EMAIL: ${{ inputs.email }}
+          INVITE: ${{ inputs.invite }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          # Built as an array, not a string: `[ x = y ] && ARGS+=(...)` as a
+          # bare statement returns 1 when the condition is false and aborts the
+          # step under `set -e`.
+          ARGS=(--email "$TESTER_EMAIL")
+          if [ "$INVITE" = "true" ]; then
+            ARGS+=(--invite)
+          fi
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          python3 .github/scripts/manage_testflight_testers.py "${ARGS[@]}"

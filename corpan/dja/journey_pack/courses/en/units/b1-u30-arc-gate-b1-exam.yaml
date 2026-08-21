@@ -1,0 +1,56 @@
+id: en.b1.u30
+arc: en.arc3
+theme: "The B1 checkpoint"
+cando:
+  - key: show
+    text: "Can put the whole of Arc 3 together in one review session."
+vocab_band: { lo: 1, hi: 6000 }
+phrase_domains: [everyday, social, culture]
+skills:
+  - id: en.skill.b1-review
+    kind: function
+    title: "B1 in action"
+    b: -0.2
+    prereqs: [en.skill.b1-consolidate]
+items:
+  - ref: "phrase:base:9610"  # He said he would buy dinner for everyone tonight.
+    skills: [en.skill.b1-review]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:16381"  # My brother told me he got a new job.
+    skills: [en.skill.b1-review]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:10421"  # No one came to the meeting yesterday.
+    skills: [en.skill.b1-review]
+    importance: 3
+    probe: true
+    b: -0.2
+  - ref: "phrase:base:11510"  # I wish I had studied more before the test.
+    skills: [en.skill.b1-review]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9203"  # He is the one who helped me with my project.
+    skills: [en.skill.b1-review]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:unless"
+    skills: [en.skill.b1-review]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, social, culture]
+      level: B1
+      count: 10
+      skills: [en.skill.b1-review]
+      importance: 2
+      substitutable: true
+lessons: [review, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

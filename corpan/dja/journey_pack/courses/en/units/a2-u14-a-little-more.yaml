@@ -1,0 +1,78 @@
+id: en.a2.u14
+arc: en.arc2
+theme: "A little more"
+cando:
+  - key: amounts
+    text: "Can say when something is too much, not quite enough, or just right, and ask for a small amount using a few or a little."
+vocab_band: { lo: 1, hi: 4198 }
+phrase_domains: [everyday, health]
+skills:
+  - id: en.skill.quantity-fine
+    kind: grammar
+    title: "Fine quantities"
+    b: -1.2
+    prereqs: [en.skill.quantity]
+grammar_nodes: [en.gn.few-little, en.gn.too-enough]
+items:
+  - ref: "phrase:base:13197"  # This hat is too small for me.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:2303"  # I don’t have enough money for this.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:9518"  # I have a few books to read this weekend.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:1694"  # I’m a little tired today.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9524"  # A few people were waiting outside the store.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20498"  # This coat is too big for me.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16695"  # Having enough rest is important for your health.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-cooking-basics:42"  # The pan is too hot already.
+    skills: [en.skill.quantity-fine]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:little"
+    skills: [en.skill.quantity-fine]
+    importance: 2
+  - ref: "word:en:too"
+    skills: [en.skill.quantity-fine]
+    importance: 2
+  - ref: "word:en:extra"
+    skills: [en.skill.quantity-fine]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, health]
+      level: A2
+      count: 10
+      skills: [en.skill.quantity-fine]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit, activityType: match_pairs }

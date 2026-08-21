@@ -1,8 +1,0 @@
-[package]
-name = "ndk-context"
-version = "0.1.1"
-authors = ["The Rust Windowing contributors"]
-edition = "2021"
-description = "Handles for accessing Android APIs (Corpan vendored fork: removes the abort-on-reinit assert that crashes Tauri apps when the Android Activity is recreated; see lib.rs)"
-license = "MIT OR Apache-2.0"
-repository = "https://github.com/rust-windowing/android-ndk-rs"

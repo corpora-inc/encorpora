@@ -7,6 +7,12 @@
  */
 import "./styles.css"
 import { startGame, type GameHandle } from "./game"
+import {
+  mountJourneyChallenge,
+  synthesizeFallbackActivitySpec,
+  type JourneyCapableHostApi,
+} from "./journey/adapter"
+import type { ActivitySpec } from "./sdk/activityContract"
 
 const GAME_ID = "corpan_city"
 
@@ -45,11 +51,48 @@ function disposePriorGame(): void {
 
 registry[GAME_ID] = {
   id: GAME_ID,
-  mount(container, hostApi) {
+  mount(container, hostApi, initialState) {
     // Real Corpán HostApi (TTS + on-device Qwen3 LLM) when running as a pack;
     // undefined in standalone dev → the game falls back to a mock host.
     disposePriorGame()
     container.replaceChildren() // clear any leftover DOM from a prior instance
+    // Journey activity launch (activity-contract §6.3): run ONE challenge from
+    // the library and report — the Babylon world NEVER boots on this path.
+    const journeyApi = (hostApi as JourneyCapableHostApi | undefined)?.journey
+    const declaredActivity = (
+      initialState as { activity?: ActivitySpec } | undefined
+    )?.activity
+    // DEFENSE IN DEPTH (WS-D repro: journey entry showing the welcome +
+    // language chooser and booting the on-device LLM instead of the
+    // micro-challenge). `hostApi.journey.isActive()` is the HOST's own
+    // authoritative marker for "this mount was launched by the Journey feed
+    // with a spec" (JourneyHostApi doc, activity-contract.ts) — it flips true
+    // synchronously in the host BEFORE this pack is ever mounted
+    // (activitySchemas.ts beginActivitySession), independent of whatever
+    // `initialState.activity` carries. So if it reads true we are ALWAYS a
+    // Journey launch and must NEVER fall through to the full 3D world + LLM
+    // boot below, even if `initialState.activity` was somehow lost upstream
+    // of this pack (a bug elsewhere in the host chain). Recover the real spec
+    // straight from the rail; `getSpec()` is guaranteed non-null whenever
+    // `isActive()` is true, so the synthesized fallback below should be
+    // unreachable in practice — it exists only for a malformed/legacy host.
+    let activity = declaredActivity
+    if (!activity && journeyApi?.isActive?.()) {
+      activity = journeyApi.getSpec?.() ?? undefined
+    }
+    if (activity) {
+      return mountJourneyChallenge(container, hostApi, activity)
+    }
+    if (journeyApi?.isActive?.()) {
+      console.warn(
+        "[corpan-city] journey session active with no recoverable ActivitySpec (initialState.activity and hostApi.journey.getSpec() both empty) — synthesizing a fallback micro-challenge instead of booting the full world/LLM",
+      )
+      return mountJourneyChallenge(
+        container,
+        hostApi,
+        synthesizeFallbackActivitySpec(hostApi),
+      )
+    }
     const game: GameHandle = startGame(container, hostApi)
     slot.game = game
     return {

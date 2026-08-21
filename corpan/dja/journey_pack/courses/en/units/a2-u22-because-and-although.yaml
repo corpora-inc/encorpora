@@ -1,0 +1,80 @@
+id: en.a2.u22
+arc: en.arc2
+theme: "Because and although"
+cando:
+  - key: opinions
+    text: "Can give an opinion with a reason, add a result, and make a contrast, using because, so, and although."
+vocab_band: { lo: 1, hi: 4254 }
+phrase_domains: [social, culture]
+skills:
+  - id: en.skill.connectors-adv
+    kind: grammar
+    title: "Connectors: because, so & although"
+    b: -1.2
+    prereqs: [en.skill.connectors]
+grammar_nodes: [en.gn.so-because-although]
+items:
+  - ref: "phrase:base:17654"  # I can't meet you on Saturday because I'm busy.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:12102"  # The price was too high, so I didn't buy it.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    substitutable: true
+    b: -1.2
+  - ref: "phrase:base:10726"  # I was tired earlier, but I feel better now.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:19306"  # She isn't coming to the event because she's sick.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:5417"  # This apple is red, but the other is green.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20153"  # I'm allergic to milk, so I avoid it.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16933"  # She is happy because she passed her exam.
+    skills: [en.skill.connectors-adv]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:because"
+    skills: [en.skill.connectors-adv]
+    importance: 2
+  - ref: "word:en:although"
+    skills: [en.skill.connectors-adv]
+    importance: 2
+  - ref: "word:en:opinion"
+    skills: [en.skill.connectors-adv]
+    importance: 2
+  - ref: "word:en:agree"
+    skills: [en.skill.connectors-adv]
+    importance: 2
+  - ref: "word:en:reason"
+    skills: [en.skill.connectors-adv]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social, culture]
+      level: A2
+      count: 10
+      skills: [en.skill.connectors-adv]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: earthgate
+  config: { itemset: unit }

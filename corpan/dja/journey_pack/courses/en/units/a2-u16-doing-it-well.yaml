@@ -1,0 +1,80 @@
+id: en.a2.u16
+arc: en.arc2
+theme: "Doing it well"
+cando:
+  - key: feedback
+    text: "Can describe how something was done and how well or badly it was done, using adverbs of manner and degree."
+vocab_band: { lo: 1, hi: 4212 }
+phrase_domains: [everyday, education]
+skills:
+  - id: en.skill.adverbs
+    kind: grammar
+    title: "Adverbs of manner & degree"
+    b: -1.3
+    prereqs: [en.skill.routines]
+grammar_nodes: [en.gn.adv-manner, en.gn.adv-degree]
+items:
+  - ref: "phrase:base:19474"  # Listen to the teacher carefully.
+    skills: [en.skill.adverbs]
+    importance: 3
+    probe: true
+    b: -1.3
+  - ref: "phrase:base:11604"  # The weather changed quickly this morning.
+    skills: [en.skill.adverbs]
+    importance: 3
+    probe: true
+    b: -1.3
+  - ref: "phrase:base:13556"  # He is very tall.
+    skills: [en.skill.adverbs]
+    importance: 3
+    probe: true
+    b: -1.3
+  - ref: "phrase:base:905"  # This black tea is really strong.
+    skills: [en.skill.adverbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13564"  # Can you speak very slowly, please?
+    skills: [en.skill.adverbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11605"  # I quickly wrote a note to remind myself.
+    skills: [en.skill.adverbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:17174"  # You play tennis really well!
+    skills: [en.skill.adverbs]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:quickly"
+    skills: [en.skill.adverbs]
+    importance: 2
+  - ref: "word:en:slowly"
+    skills: [en.skill.adverbs]
+    importance: 2
+  - ref: "word:en:carefully"
+    skills: [en.skill.adverbs]
+    importance: 2
+  - ref: "word:en:really"
+    skills: [en.skill.adverbs]
+    importance: 2
+  - ref: "word:en:well"
+    skills: [en.skill.adverbs]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, education]
+      level: A2
+      count: 10
+      skills: [en.skill.adverbs]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-pronounce
+  config: { itemset: unit }

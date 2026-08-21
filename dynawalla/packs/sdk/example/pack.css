@@ -1,0 +1,79 @@
+/* The example's whole appearance. It is austere on purpose: this file exists to
+   be read by a pack author, not admired. A real pack owns its look entirely —
+   the host styles nothing inside the frame and could not if it wanted to. */
+
+:root {
+  color-scheme: light dark;
+  --ink: #ece2d2;
+  --stone: #16130f;
+  --brass: #c9a227;
+  --recess: #221d17;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--stone);
+  color: var(--ink);
+  font-family: ui-serif, Georgia, serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.slate {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  align-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.problem {
+  margin: 0;
+  align-self: end;
+  text-align: center;
+  font-size: clamp(2rem, 12vw, 4rem);
+  letter-spacing: 0.04em;
+}
+
+.entry {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.5rem, 8vw, 3rem);
+  min-height: 1.2em;
+  color: var(--brass);
+  border-bottom: 2px solid var(--recess);
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+button {
+  /* 48px is the floor for a child's finger, and it does not move with the
+     type scale. */
+  min-height: 3rem;
+  font: inherit;
+  font-size: 1.25rem;
+  color: var(--ink);
+  background: var(--recess);
+  border: 1px solid #3b332a;
+  border-radius: 8px;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button { transition: background-color 120ms ease-out; }
+}
+
+button:active { background: #2e281f; }

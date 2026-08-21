@@ -1,0 +1,985 @@
+//! The path and archive rules, exercised against a real filesystem.
+//!
+//! Every one of these is a hole that a string check would leave open. They run
+//! under `cargo test` in seconds and none of them needs a WebView, which is the
+//! point: the parts of the pack runtime that can be tested without a device are
+//! exactly the parts that are dangerous.
+
+use super::*;
+use std::io::Write;
+
+fn scratch(name: &str) -> PathBuf {
+    let dir = std::env::temp_dir().join(format!("dynawalla-packs-test-{name}-{}", now_millis()));
+    let _ = fs::remove_dir_all(&dir);
+    fs::create_dir_all(&dir).expect("scratch");
+    dir
+}
+
+#[test]
+fn pack_ids_are_directory_names_and_are_treated_as_such() {
+    for id in ["abacus", "abacus.tower", "abacus-tower", "a1.b2-c3"] {
+        assert!(valid_pack_id(id), "{id} should be valid");
+    }
+    for id in [
+        "",
+        ".",
+        "..",
+        "../etc",
+        "Abacus",
+        "abacus/tower",
+        "abacus tower",
+        "abacus.",
+        "-abacus",
+        "9lives",
+        "abacus..tower",
+        "abacus\\tower",
+        "abacus\0",
+    ] {
+        assert!(!valid_pack_id(id), "{id:?} should be refused");
+    }
+    assert!(!valid_pack_id(&"a".repeat(65)));
+}
+
+#[test]
+fn an_asset_path_cannot_leave_the_pack_directory() {
+    let root = scratch("resolve");
+    let pack = root.join("abacus");
+    fs::create_dir_all(pack.join("dist")).unwrap();
+    fs::write(pack.join("dist/app.js"), b"ok").unwrap();
+    fs::write(root.join("secret.txt"), b"no").unwrap();
+
+    assert!(resolve_asset(&pack, "dist/app.js").is_some());
+    for bad in [
+        "../secret.txt",
+        "dist/../../secret.txt",
+        "./dist/app.js",
+        "",
+        "dist",
+        "dist\\app.js",
+        "/dist/app.js",
+        "dist/app.js\0",
+    ] {
+        assert!(resolve_asset(&pack, bad).is_none(), "{bad:?} resolved");
+    }
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[cfg(unix)]
+#[test]
+fn a_symlink_out_of_the_pack_is_refused_although_its_path_looks_innocent() {
+    // The case the `..`-in-the-string check cannot see, and the reason
+    // `resolve_asset` canonicalises. `escape.txt` contains no traversal at all.
+    let root = scratch("symlink");
+    let pack = root.join("abacus");
+    fs::create_dir_all(&pack).unwrap();
+    fs::write(root.join("secret.txt"), b"no").unwrap();
+    std::os::unix::fs::symlink(root.join("secret.txt"), pack.join("escape.txt")).unwrap();
+
+    assert!(!pack.join("escape.txt").to_string_lossy().contains(".."));
+    assert!(
+        resolve_asset(&pack, "escape.txt").is_none(),
+        "symlink escaped"
+    );
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn zip_entry_names_that_escape_are_rejected_before_anything_is_created() {
+    for name in [
+        "../evil.js",
+        "a/../../evil.js",
+        "/etc/passwd",
+        "..\\evil.js",
+        "C:\\Windows\\evil.js",
+        "",
+        "\0",
+        "..",
+    ] {
+        assert!(safe_entry_path(name).is_none(), "{name:?} was accepted");
+    }
+    assert_eq!(
+        safe_entry_path("index.html"),
+        Some(PathBuf::from("index.html"))
+    );
+    assert_eq!(
+        safe_entry_path("dist/app.js"),
+        Some(PathBuf::from("dist/app.js"))
+    );
+    assert_eq!(
+        safe_entry_path("./dist/app.js"),
+        Some(PathBuf::from("dist/app.js"))
+    );
+}
+
+fn zip_of(entries: &[(&str, &[u8])]) -> Vec<u8> {
+    let mut buffer = std::io::Cursor::new(Vec::new());
+    {
+        let mut writer = zip::ZipWriter::new(&mut buffer);
+        let options: zip::write::FileOptions<'_, ()> =
+            zip::write::FileOptions::default().compression_method(zip::CompressionMethod::Deflated);
+        for (name, body) in entries {
+            writer.start_file(*name, options).unwrap();
+            writer.write_all(body).unwrap();
+        }
+        writer.finish().unwrap();
+    }
+    buffer.into_inner()
+}
+
+#[test]
+fn a_normal_archive_extracts() {
+    let dir = scratch("extract");
+    let archive = zip_of(&[
+        ("manifest.json", br#"{"id":"abacus","version":"1.0.0"}"#),
+        ("dist/app.js", b"console.log(1)"),
+    ]);
+    extract(&archive, &dir).expect("extract");
+    assert_eq!(
+        fs::read_to_string(dir.join("dist/app.js")).unwrap(),
+        "console.log(1)"
+    );
+    let installed = read_installed(&dir).expect("manifest");
+    assert_eq!(installed.id, "abacus");
+    assert_eq!(installed.version, "1.0.0");
+    assert!(installed.bytes > 0);
+    let _ = fs::remove_dir_all(&dir);
+}
+
+#[test]
+fn a_zip_slip_archive_is_refused_and_writes_nothing_outside() {
+    let root = scratch("slip");
+    let dir = root.join("into");
+    fs::create_dir_all(&dir).unwrap();
+    let archive = zip_of(&[("../owned.js", b"pwn")]);
+
+    let problem = extract(&archive, &dir).expect_err("zip slip extracted");
+    assert!(problem.contains("escapes"), "{problem}");
+    assert!(
+        !root.join("owned.js").exists(),
+        "a file was written outside the destination"
+    );
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn an_archive_that_expands_past_the_ceiling_is_refused() {
+    // A zip bomb in miniature: 64 KB of zeroes compresses to a few hundred
+    // bytes, and the ceiling is applied to what comes OUT, so the compressed
+    // size the archive advertises is not consulted and cannot lie.
+    let dir = scratch("bomb");
+    let archive = zip_of(&[("big.bin", &vec![0u8; 64 * 1024])]);
+    assert!(
+        archive.len() < 4096,
+        "the fixture is not actually compressed"
+    );
+
+    let problem = extract_within(&archive, &dir, MAX_FILES, 4096).expect_err("the bomb extracted");
+    assert!(problem.contains("installed-size limit"), "{problem}");
+
+    // And the same archive is fine under the real ceiling.
+    extract(&archive, &dir).expect("64 KB is not a bomb at 512 MB");
+    let _ = fs::remove_dir_all(&dir);
+}
+
+#[test]
+fn an_archive_with_too_many_entries_is_refused_before_any_of_them_is_read() {
+    let dir = scratch("many");
+    let bodies: Vec<(String, Vec<u8>)> = (0..5)
+        .map(|i| (format!("f{i}.txt"), b"x".to_vec()))
+        .collect();
+    let borrowed: Vec<(&str, &[u8])> = bodies
+        .iter()
+        .map(|(n, b)| (n.as_str(), b.as_slice()))
+        .collect();
+    let archive = zip_of(&borrowed);
+
+    let problem = extract_within(&archive, &dir, 4, MAX_INSTALLED_BYTES).expect_err("accepted");
+    assert!(problem.contains("more than 4 entries"), "{problem}");
+    assert!(
+        !dir.join("f0.txt").exists(),
+        "an entry was written before the count was checked"
+    );
+    let _ = fs::remove_dir_all(&dir);
+}
+
+#[test]
+fn an_empty_archive_is_not_a_pack() {
+    let dir = scratch("empty");
+    let problem = extract(&zip_of(&[]), &dir).expect_err("empty archive accepted");
+    assert!(problem.contains("empty"), "{problem}");
+    let _ = fs::remove_dir_all(&dir);
+}
+
+#[test]
+fn an_archive_without_a_manifest_has_no_identity() {
+    let dir = scratch("noman");
+    extract(&zip_of(&[("index.html", b"<!doctype html>")]), &dir).unwrap();
+    assert!(read_installed(&dir).is_none());
+    let _ = fs::remove_dir_all(&dir);
+}
+
+#[test]
+fn the_pack_policy_admits_no_remote_origin_and_never_says_self() {
+    let policy = pack_csp();
+    assert!(policy.starts_with("default-src 'none'"));
+    for directive in [
+        "script-src",
+        "style-src",
+        "img-src",
+        "media-src",
+        "font-src",
+        "connect-src",
+        "worker-src",
+    ] {
+        assert!(policy.contains(directive), "missing {directive}");
+    }
+    // `'self'` is an opaque origin inside the sandbox: it would match nothing.
+    assert!(
+        !policy.contains("'self'"),
+        "'self' is meaningless in an opaque-origin frame"
+    );
+    // No network. This is the property, stated as an assertion.
+    assert!(!policy.contains("https://"));
+    assert!(!policy.contains("http://") || policy.contains("http://dynawalla-pack.localhost"));
+    for remote in [
+        "*",
+        "data: script-src",
+        "'unsafe-eval'",
+        "'unsafe-inline' ; script",
+    ] {
+        assert!(!policy.contains(remote), "policy admits {remote}");
+    }
+    assert!(
+        policy.contains("frame-src 'none'"),
+        "a pack may not frame anything"
+    );
+    assert!(policy.contains("form-action 'none'"));
+    assert!(policy.contains("base-uri 'none'"));
+}
+
+#[test]
+fn a_pack_cannot_open_a_socket_either() {
+    // The test above checks for `https://` and for a stray `http://`, and would
+    // have watched `wss://` go straight past — `"wss://"` does not contain
+    // `"http"` and does not contain `"ws://"`.
+    //
+    // That is not a hypothetical gap. `connect-src` is the directive that governs
+    // `WebSocket`, and the first network capability this product is likely to
+    // want is a leaderboard socket for ARENA. The obvious wrong way to build one
+    // is to add its origin here, which hands every installed pack arbitrary
+    // network reach in order to serve one of them — and the pack boundary is
+    // exactly this string. See `docs/NATIVE_CAPABILITIES.md`.
+    //
+    // Pinned to equality rather than to a list of things it must not contain, so
+    // that any added source fails rather than only the ones somebody thought of.
+    let policy = pack_csp();
+    let connect = policy
+        .split(';')
+        .map(str::trim)
+        .find(|d| d.starts_with("connect-src"))
+        .expect("connect-src");
+    assert_eq!(
+        connect,
+        format!("connect-src {SCHEME_SOURCES}"),
+        "a source was added to the directive that governs fetch, XHR and WebSocket"
+    );
+}
+
+#[test]
+fn scripts_are_external_only_and_wasm_is_allowed() {
+    let policy = pack_csp();
+    let script = policy
+        .split(';')
+        .map(str::trim)
+        .find(|d| d.starts_with("script-src"))
+        .expect("script-src");
+    assert!(
+        !script.contains("'unsafe-inline'"),
+        "inline script in a pack"
+    );
+    assert!(
+        script.contains("'wasm-unsafe-eval'"),
+        "3D packs need WebAssembly"
+    );
+}
+
+#[test]
+fn content_types_are_declared_rather_than_sniffed() {
+    assert_eq!(
+        content_type_for(Path::new("a/index.html")),
+        "text/html; charset=utf-8"
+    );
+    assert_eq!(
+        content_type_for(Path::new("a/app.JS")),
+        "text/javascript; charset=utf-8"
+    );
+    assert_eq!(
+        content_type_for(Path::new("a/model.glb")),
+        "model/gltf-binary"
+    );
+    assert_eq!(content_type_for(Path::new("a/x.wasm")), "application/wasm");
+    assert_eq!(
+        content_type_for(Path::new("a/unknown")),
+        "application/octet-stream"
+    );
+}
+
+#[test]
+fn an_entry_url_names_the_pack_scheme_and_refuses_a_traversal() {
+    let url = packs_entry_url("abacus".into(), "index.html".into()).unwrap();
+    assert!(url.contains("abacus/index.html"), "{url}");
+    assert!(url.contains(PACK_SCHEME), "{url}");
+    assert!(packs_entry_url("../etc".into(), "index.html".into()).is_err());
+    assert!(packs_entry_url("abacus".into(), "../../etc/passwd".into()).is_err());
+    assert!(packs_entry_url("abacus".into(), "".into()).is_err());
+}
+
+#[test]
+fn the_download_origin_is_pinned_to_one_https_prefix() {
+    assert!(PACK_ORIGIN.starts_with("https://"));
+    assert!(
+        PACK_ORIGIN.ends_with('/'),
+        "a prefix without a trailing slash matches a sibling host"
+    );
+}
+
+// ─── Bundled packs ───────────────────────────────────────────────────────────
+
+fn manifest_json(id: &str, version: &str, digest: Option<&str>) -> String {
+    match digest {
+        Some(digest) => format!(
+            r#"{{"schema":1,"id":"{id}","version":"{version}","download":{{"bytes":10,"sha256":"{digest}"}}}}"#
+        ),
+        None => format!(r#"{{"schema":1,"id":"{id}","version":"{version}"}}"#),
+    }
+}
+
+#[test]
+fn a_content_fix_that_keeps_the_version_still_reaches_the_device() {
+    // The defect this replaced: `0.1.0` on both sides, different bytes, and the
+    // corrected pack never left the binary because the two versions matched.
+    let installed = manifest_json("abacus", "0.1.0", Some(&"a".repeat(64)));
+    let fixed = manifest_json("abacus", "0.1.0", Some(&"b".repeat(64)));
+    assert!(
+        bundled_pack_differs("abacus", Some(&installed), &fixed),
+        "a same-version content fix was skipped"
+    );
+}
+
+#[test]
+fn a_pack_that_has_not_changed_is_left_where_it_is() {
+    let digest = "c".repeat(64);
+    let installed = manifest_json("abacus", "0.1.0", Some(&digest));
+    let bundled = manifest_json("abacus", "0.9.9", Some(&digest));
+    assert!(
+        !bundled_pack_differs("abacus", Some(&installed), &bundled),
+        "identical content was rewritten on a cold start"
+    );
+    // And the digest is compared case-insensitively, because hex is.
+    let shouting = manifest_json("abacus", "0.1.0", Some(&digest.to_ascii_uppercase()));
+    assert!(!bundled_pack_differs(
+        "abacus",
+        Some(&shouting),
+        &manifest_json("abacus", "0.1.0", Some(&digest))
+    ));
+}
+
+#[test]
+fn nothing_installed_means_install() {
+    let bundled = manifest_json("abacus", "0.1.0", Some(&"d".repeat(64)));
+    assert!(bundled_pack_differs("abacus", None, &bundled));
+    assert!(bundled_pack_differs("abacus", Some("not json"), &bundled));
+    assert!(bundled_pack_differs("abacus", Some(&bundled), "not json"));
+}
+
+#[test]
+fn a_manifest_with_no_digest_falls_back_to_the_version() {
+    let old = manifest_json("abacus", "0.1.0", None);
+    let new = manifest_json("abacus", "0.2.0", None);
+    assert!(bundled_pack_differs("abacus", Some(&old), &new));
+    assert!(!bundled_pack_differs("abacus", Some(&old), &old));
+    // One side missing it is enough to lose the digest comparison.
+    let digested = manifest_json("abacus", "0.1.0", Some(&"e".repeat(64)));
+    assert!(!bundled_pack_differs("abacus", Some(&old), &digested));
+}
+
+/// A plausible `/proc/self/maps` for this app on Android, installed from an app
+/// bundle. The library is in the ABI split; the assets are in `base.apk` beside
+/// it; and the system WebView — another application's APK entirely — is mapped
+/// into the process too, as it always is.
+const ANDROID_MAPS: &str = concat!(
+    "6f2a000000-6f2a1f4000 r--p 00000000 fd:03 1234 /apex/com.android.runtime/lib64/bionic/libc.so\n",
+    "7000000000-7000010000 rw-p 00000000 00:00 0 [anon:.bss]\n",
+    "7100000000-71ff000000 r--p 00000000 fd:03 4242 /data/app/~~Web==/com.google.android.trichromelibrary_1-a==/base.apk\n",
+    "7a00000000-7a00123000 r--p 00000000 fd:03 5678 /data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/split_config.arm64_v8a.apk\n",
+    "7b00000000-7b00123000 r-xp 00100000 fd:03 5678 /data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/split_config.arm64_v8a.apk\n",
+);
+
+/// An address inside the executable segment of the split above.
+const OWN_CODE: usize = 0x007b_0000_0100;
+
+#[test]
+fn the_apk_beside_a_split_is_preferred_over_the_split_itself() {
+    // A Play install of an app bundle: the native library is mapped out of the
+    // ABI split, and every asset — the packs among them — is in `base.apk`
+    // beside it. Reading the split would find nothing.
+    let candidates = apk_candidates(ANDROID_MAPS, OWN_CODE);
+    assert_eq!(
+        candidates.first().map(|p| p.to_string_lossy().to_string()),
+        Some("/data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/base.apk".to_string()),
+        "{candidates:?}"
+    );
+    assert!(
+        candidates.contains(&PathBuf::from(
+            "/data/app/~~AbC==/inc.corpora.dynawalla-XyZ==/split_config.arm64_v8a.apk"
+        )),
+        "the split itself is still worth trying: {candidates:?}"
+    );
+    // Each candidate appears once however many segments were mapped.
+    let mut unique = candidates.clone();
+    unique.dedup();
+    assert_eq!(unique.len(), candidates.len(), "{candidates:?}");
+}
+
+#[test]
+fn another_applications_apk_is_never_opened_first() {
+    // The system WebView's APK is mapped into every Android app process and is
+    // hundreds of megabytes. Opening it before our own would read a central
+    // directory to match, before the first window, on every single launch.
+    let candidates = apk_candidates(ANDROID_MAPS, OWN_CODE);
+    let webview = candidates
+        .iter()
+        .position(|c| c.to_string_lossy().contains("trichromelibrary"))
+        .expect("the WebView is still a candidate of last resort");
+    assert!(webview > 0, "{candidates:?}");
+    assert!(
+        candidates[..webview]
+            .iter()
+            .all(|c| c.to_string_lossy().contains("inc.corpora.dynawalla")),
+        "{candidates:?}"
+    );
+}
+
+#[test]
+fn an_extracted_library_and_a_library_inside_the_apk_both_name_the_install() {
+    let extracted = apk_candidates(
+        "7a00000000-7a00123000 r-xp 00000000 fd:03 1 \
+         /data/app/~~q==/inc.corpora.dynawalla-w==/lib/arm64/libdynawalla_lib.so\n",
+        0x007a_0000_0100,
+    );
+    assert_eq!(
+        extracted,
+        vec![PathBuf::from(
+            "/data/app/~~q==/inc.corpora.dynawalla-w==/base.apk"
+        )]
+    );
+
+    // `extractNativeLibs=false`: the library is mapped from inside the archive,
+    // and everything after the `!` is a path within it.
+    let inside = apk_candidates(
+        "7a00000000-7a00123000 r-xp 00000000 fd:03 1 \
+         /data/app/~~q==/inc.corpora.dynawalla-w==/base.apk!/lib/arm64-v8a/libdynawalla_lib.so\n",
+        0x007a_0000_0100,
+    );
+    assert_eq!(
+        inside,
+        vec![PathBuf::from(
+            "/data/app/~~q==/inc.corpora.dynawalla-w==/base.apk"
+        )]
+    );
+}
+
+#[test]
+fn an_ordinary_desktop_maps_file_proposes_no_apk() {
+    // The Android path is compiled on every target, so it has to be inert on
+    // the ones that are full of shared objects and have no APK anywhere.
+    let maps = concat!(
+        "5600000000-5600100000 r-xp 00000000 08:01 1 /usr/bin/dynawalla\n",
+        "7f0000000000-7f0000100000 r-xp 00000000 08:01 2 /usr/lib/x86_64-linux-gnu/libssl.so.3\n",
+        "7f1000000000-7f1000100000 r-xp 00000000 08:01 3 /home/kid/build/target/debug/deps/libfoo.so\n",
+        "7ffd00000000-7ffd00021000 rw-p 00000000 00:00 0 [stack]\n",
+    );
+    assert!(
+        apk_candidates(maps, 0x7f00_0000_0100).is_empty(),
+        "{:?}",
+        apk_candidates(maps, 0x7f00_0000_0100)
+    );
+}
+
+#[test]
+fn the_real_address_of_this_code_selects_the_mapping_that_holds_it() {
+    // `own_code_address` is a genuine code address here, not a fixture, so this
+    // exercises the one link that a hand-written maps file cannot: that the
+    // number the cast produces is the kind of number the parser compares
+    // against. Only the mapping is fabricated, and it is fabricated AROUND the
+    // real address.
+    let own = own_code_address();
+    assert!(own > 0);
+    let maps = format!(
+        "{:x}-{:x} r--p 00000000 fd:03 1 /data/app/~~w==/other.app-x==/base.apk\n\
+         {:x}-{:x} r-xp 00000000 fd:03 2 /data/app/~~y==/inc.corpora.dynawalla-z==/split_config.arm64_v8a.apk\n",
+        own.saturating_sub(0x4000),
+        own.saturating_sub(0x2000),
+        own.saturating_sub(0x1000),
+        own + 0x1000,
+    );
+    assert_eq!(
+        apk_candidates(&maps, own).first(),
+        Some(&PathBuf::from(
+            "/data/app/~~y==/inc.corpora.dynawalla-z==/base.apk"
+        )),
+        "the mapping holding this very function did not win"
+    );
+}
+
+#[test]
+fn our_own_code_is_inside_a_mapping_this_parser_can_find() {
+    // And on the one platform where `/proc/self/maps` exists at all, the real
+    // file really does contain the real address. Skipped elsewhere rather than
+    // faked: a macOS run has nothing to say about this.
+    let Ok(maps) = fs::read_to_string(PROC_SELF_MAPS) else {
+        return;
+    };
+    let own = own_code_address();
+    assert!(
+        maps.lines()
+            .filter_map(|line| mapped_range(line.split_whitespace().next().unwrap_or("")))
+            .any(|(low, high)| own >= low && own < high),
+        "no mapping contains {own:#x}"
+    );
+}
+
+#[test]
+fn packs_are_installed_out_of_an_apk_because_android_has_no_resource_directory() {
+    // The blocker, end to end without a device: `resource_dir()` on Android is
+    // the string `asset://localhost/`, so the packs are read out of the APK,
+    // which is a ZIP with the packs under `assets/packs/`.
+    let root = scratch("apk");
+    let manifest = manifest_json("dynawalla.fuse", "0.1.0", Some(&"f".repeat(64)));
+    let archive = zip_of(&[
+        ("AndroidManifest.xml", b"binary xml"),
+        ("classes.dex", b"dex"),
+        ("assets/tauri.conf.json", b"{}"),
+        (
+            "assets/packs/dynawalla.fuse/manifest.json",
+            manifest.as_bytes(),
+        ),
+        ("assets/packs/dynawalla.fuse/pack.html", b"<!doctype html>"),
+        ("assets/packs/dynawalla.fuse/dist/app.js", b"console.log(1)"),
+        // Not a pack id, so not a directory this host will ever serve.
+        ("assets/packs/NotAPack/x.js", b"no"),
+        ("lib/arm64-v8a/libdynawalla_lib.so", b"elf"),
+    ]);
+
+    let mut zip = zip::ZipArchive::new(std::io::Cursor::new(archive)).expect("apk");
+    sync_from_zip(&mut zip, &root);
+
+    let installed = root.join("dynawalla.fuse");
+    assert_eq!(
+        fs::read_to_string(installed.join("dist/app.js")).unwrap(),
+        "console.log(1)"
+    );
+    assert_eq!(
+        fs::read_to_string(installed.join("pack.html")).unwrap(),
+        "<!doctype html>"
+    );
+    let identity = read_installed(&installed).expect("manifest");
+    assert_eq!(identity.id, "dynawalla.fuse");
+    assert_eq!(identity.version, "0.1.0");
+    assert!(
+        !root.join("NotAPack").exists(),
+        "an invalid id was installed"
+    );
+    assert!(!root.join("tauri.conf.json").exists());
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn an_apk_entry_that_escapes_its_pack_installs_nothing_at_all() {
+    let root = scratch("apkslip");
+    fs::create_dir_all(&root).unwrap();
+    let manifest = manifest_json("abacus", "0.1.0", Some(&"0".repeat(64)));
+    let archive = zip_of(&[
+        ("assets/packs/abacus/manifest.json", manifest.as_bytes()),
+        ("assets/packs/abacus/../../owned.js", b"pwn"),
+    ]);
+
+    let mut zip = zip::ZipArchive::new(std::io::Cursor::new(archive)).expect("apk");
+    sync_from_zip(&mut zip, &root);
+
+    assert!(!root.join("owned.js").exists(), "a file escaped the pack");
+    assert!(
+        !root.join("abacus").exists(),
+        "a half-installed pack was left behind"
+    );
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn an_apk_without_bundled_packs_installs_nothing() {
+    let root = scratch("apkempty");
+    let archive = zip_of(&[("classes.dex", b"dex"), ("assets/tauri.conf.json", b"{}")]);
+    let mut zip = zip::ZipArchive::new(std::io::Cursor::new(archive)).expect("apk");
+    sync_from_zip(&mut zip, &root);
+    assert_eq!(fs::read_dir(&root).unwrap().count(), 0);
+    let _ = fs::remove_dir_all(&root);
+}
+
+/// Writes a pack directory: a manifest, and one asset so a wipe is visible.
+fn pack_dir(root: &Path, id: &str, version: &str, digest: &str) -> PathBuf {
+    let dir = root.join(id);
+    fs::create_dir_all(&dir).expect("pack dir");
+    fs::write(
+        dir.join("manifest.json"),
+        manifest_json(id, version, Some(digest)),
+    )
+    .expect("manifest");
+    fs::write(dir.join("pack.html"), b"<!doctype html>").expect("entry");
+    dir
+}
+
+#[test]
+fn a_pack_that_is_no_longer_bundled_stays_installed_and_playable() {
+    // **This is what happens to a child's device when a game is retired.**
+    //
+    // A build that drops a pack drops it from `src-tauri/packs/`, so the next
+    // launch runs this sync against a source directory that no longer mentions
+    // it. The pack is already unpacked in the pack root, complete — manifest,
+    // entry document, assets — and nothing here walks the root looking for
+    // strangers. So it is left exactly where it is: `packs_list` still finds
+    // it, `readLibrary` still gates it, and the card still launches from disk.
+    // Retiring a game does not reach through a store listing and break the copy
+    // a child already has.
+    //
+    // **And it must not.** The pack root is not a mirror of the bundle — it is
+    // also where `packs_install` puts everything downloaded from the
+    // catalogue. A sync that deleted whatever it did not ship would uninstall
+    // every downloaded pack on every launch. The absence of a prune is the
+    // design, not an omission, which is why it is pinned here.
+    //
+    // Three packs have been retired this way — `foundry` and `gavel` in PR 749,
+    // `street` (FOUNDRY STREET) after them — so the fixture carries two at once:
+    // a retirement is not a one-off migration to be special-cased, it is a thing
+    // that keeps happening, and each one has to be as uneventful as the last.
+    //
+    // **What "uneventful" cost, and what changed.** Uneventful here meant that a
+    // retired game went on being installed and playable forever, which is how
+    // FOUNDRY STREET turned up in the founder's catalogue a release after it was
+    // scrapped. Uninstalling it is now the job of `remove_retired`, which works
+    // from the named list in `retired-packs.json` and never reads the pack root.
+    // That leaves this function's contract exactly where it was and exactly
+    // where it must stay — *this* is the one that would take a downloaded pack
+    // with it — so every assertion below is unchanged. The fixture ids here are
+    // deliberately bare (`gavel`, not `dynawalla.gavel`): they stand for "a pack
+    // this build does not carry", which is a larger set than "a pack this build
+    // retired", and it is the larger set that this function must not touch.
+    let root = scratch("retired-root");
+    let source = scratch("retired-source");
+
+    // On the device already: one pack this build still ships, and two it does not.
+    pack_dir(&root, "abacus", "0.1.0", &"a".repeat(64));
+    let retired = pack_dir(&root, "gavel", "0.1.0", &"b".repeat(64));
+    let shelved = pack_dir(&root, "street", "0.1.0", &"d".repeat(64));
+
+    // In the new build: only the survivor.
+    pack_dir(&source, "abacus", "0.2.0", &"c".repeat(64));
+
+    sync_from_directory(&source, &root);
+
+    for (dir, id, digest) in [(&retired, "gavel", "b"), (&shelved, "street", "d")] {
+        assert!(
+            dir.join("manifest.json").exists(),
+            "{id} was uninstalled from under a child"
+        );
+        assert!(
+            dir.join("pack.html").exists(),
+            "{id} lost the document it launches"
+        );
+        assert_eq!(
+            fs::read_to_string(dir.join("manifest.json")).expect("manifest"),
+            manifest_json(id, "0.1.0", Some(&digest.repeat(64))),
+            "{id}'s manifest was rewritten",
+        );
+    }
+    // The survivor is still upgraded in the same pass — proving the sync ran at
+    // all, so the assertions above are not passing on a no-op.
+    assert_eq!(
+        fs::read_to_string(root.join("abacus").join("manifest.json")).expect("manifest"),
+        manifest_json("abacus", "0.2.0", Some(&"c".repeat(64))),
+        "the bundled pack was not refreshed",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&source);
+}
+
+// ─── Retirement ──────────────────────────────────────────────────────────────
+
+#[test]
+fn a_retired_pack_is_uninstalled_at_the_next_launch_and_a_downloaded_one_is_not() {
+    // **The bug this exists for.** FOUNDRY STREET was scrapped in PR 760 and
+    // was still in the founder's catalogue a release later, because dropping a
+    // game from `games/` drops it from the next bundle and reaches no device.
+    //
+    // And the trap next to it, in the same directory. `packs_install` writes
+    // downloaded packs into this same root, so a sync that deleted whatever the
+    // bundle lacked would uninstall every one of them at every launch. Both
+    // halves are asserted here against one root, because a fix that only
+    // satisfies the first half is worse than the bug.
+    let root = scratch("retire-launch-root");
+    let source = scratch("retire-launch-source");
+
+    // On the device: the game that was pulled, ...
+    let street = root.join("dynawalla.street");
+    pack_dir(&root, "dynawalla.street", "0.1.0", &"5".repeat(64));
+    // ... a game this build still ships, ...
+    pack_dir(&root, "dynawalla.arena", "0.1.0", &"a".repeat(64));
+    // ... and one that came off the catalogue and was never in any bundle.
+    let downloaded = pack_dir(&root, "someone.tower", "0.1.0", &"d".repeat(64));
+
+    // In the new build: only the survivor, upgraded.
+    pack_dir(&source, "dynawalla.arena", "0.2.0", &"b".repeat(64));
+
+    let bundle = source.clone();
+    sync_into(&root, move || Some(Bundled::Directory(bundle)));
+
+    assert!(
+        !street.exists(),
+        "FOUNDRY STREET is still installed, so it is still in the catalogue and still playable",
+    );
+
+    // The half that must never regress.
+    assert!(
+        downloaded.join("manifest.json").exists(),
+        "a downloaded pack was uninstalled by a sync that had no business knowing about it",
+    );
+    assert!(
+        downloaded.join("pack.html").exists(),
+        "a downloaded pack lost the document it launches",
+    );
+    assert_eq!(
+        fs::read_to_string(downloaded.join("manifest.json")).expect("manifest"),
+        manifest_json("someone.tower", "0.1.0", Some(&"d".repeat(64))),
+        "a downloaded pack's manifest was rewritten",
+    );
+
+    // And the survivor was still refreshed in the same pass, which is what
+    // proves the launch actually ran and the assertions above are not passing
+    // on a sync that did nothing at all.
+    assert_eq!(
+        fs::read_to_string(root.join("dynawalla.arena").join("manifest.json")).expect("manifest"),
+        manifest_json("dynawalla.arena", "0.2.0", Some(&"b".repeat(64))),
+        "the bundled pack was not refreshed, so this launch did nothing",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&source);
+}
+
+#[test]
+fn retirement_needs_no_bundle_and_is_the_same_on_every_launch() {
+    // A build that cannot find its own packs still has to honour a retirement:
+    // `bundled_source` returns `None` on a broken build, and those are the
+    // devices least able to recover by other means. And this runs at every
+    // launch forever, so the second and the hundredth must cost nothing and
+    // change nothing.
+    let root = scratch("retire-no-bundle");
+    pack_dir(&root, "dynawalla.gavel", "0.1.0", &"b".repeat(64));
+    let kept = pack_dir(&root, "someone.tower", "0.1.0", &"d".repeat(64));
+
+    sync_into(&root, || None);
+    assert!(
+        !root.join("dynawalla.gavel").exists(),
+        "a build with no locatable bundle skipped the retirement",
+    );
+
+    for _ in 0..3 {
+        sync_into(&root, || None);
+    }
+    assert!(
+        !root.join("dynawalla.gavel").exists(),
+        "a later launch put a retired pack back",
+    );
+    assert!(
+        kept.join("pack.html").exists(),
+        "a repeated launch eventually took a downloaded pack with it",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[test]
+fn the_retirement_ledger_names_every_pack_that_has_been_pulled() {
+    let ids = retired_ids();
+    // Named one by one rather than by count: a count goes green the day
+    // someone deletes a line, and a deleted line is a game coming back.
+    for id in ["dynawalla.foundry", "dynawalla.gavel", "dynawalla.street"] {
+        assert!(
+            ids.iter().any(|listed| listed == id),
+            "{id} is not in retired-packs.json, so every device that has it keeps it",
+        );
+    }
+    for id in &ids {
+        assert!(
+            valid_pack_id(id),
+            "{id} is not a pack id, so no directory can ever match it and the line does nothing",
+        );
+    }
+    let mut unique = ids.clone();
+    unique.sort();
+    unique.dedup();
+    assert_eq!(
+        unique.len(),
+        ids.len(),
+        "retired-packs.json lists a duplicate"
+    );
+}
+
+#[test]
+fn a_retired_pack_is_not_also_a_game_in_this_repository() {
+    // The one contradiction the ledger can express: an id that is both retired
+    // and built. Un-retiring a game means deleting its line here as well as
+    // restoring its directory, and this is what says so out loud.
+    let games = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("..")
+        .join("..")
+        .join("games");
+    let entries = fs::read_dir(&games)
+        .unwrap_or_else(|problem| panic!("cannot read {}: {problem}", games.display()));
+
+    let mut shipped = vec![];
+    for entry in entries.flatten() {
+        let meta = entry.path().join("pack.json");
+        let Ok(body) = fs::read_to_string(&meta) else {
+            continue;
+        };
+        let identity = manifest_identity(&body)
+            .unwrap_or_else(|| panic!("{} has no readable id", meta.display()));
+        shipped.push(identity.id);
+    }
+    // Proof this walked the games directory rather than an empty one. Without
+    // it the loop below asserts nothing at all, which is exactly how three
+    // vacuous sweeps got through this repository in a fortnight.
+    assert!(
+        shipped.len() >= 20,
+        "found only {} pack.json files under {} — this test is looking in the wrong place",
+        shipped.len(),
+        games.display(),
+    );
+
+    for id in retired_ids() {
+        assert!(
+            !shipped.contains(&id),
+            "{id} is retired AND built from games/ — every device would delete it at the launch \
+             after the one that installed it",
+        );
+    }
+}
+
+#[test]
+fn a_ledger_entry_that_is_not_a_pack_id_removes_nothing() {
+    // The ledger is data and `remove_retired` turns it into a path, so it is
+    // the place a traversal would land. Nothing here names a pack, and nothing
+    // here may delete one.
+    let root = scratch("retire-hostile");
+    let victim = pack_dir(&root, "someone.tower", "0.1.0", &"d".repeat(64));
+    let sibling = root
+        .parent()
+        .expect("temp dir")
+        .join("dynawalla-retire-bystander");
+    fs::create_dir_all(&sibling).expect("bystander");
+
+    let removed = remove_retired(
+        &root,
+        &[
+            "..".to_string(),
+            "../dynawalla-retire-bystander".to_string(),
+            "/etc".to_string(),
+            "someone.tower/../someone.tower".to_string(),
+            "SOMEONE.TOWER".to_string(),
+            String::new(),
+        ],
+    );
+
+    assert!(
+        removed.is_empty(),
+        "a ledger entry that is not a pack id removed {removed:?}"
+    );
+    assert!(
+        victim.join("pack.html").exists(),
+        "a hostile ledger entry reached a real pack"
+    );
+    assert!(
+        sibling.is_dir(),
+        "a hostile ledger entry escaped the pack root"
+    );
+    assert!(
+        root.is_dir(),
+        "a hostile ledger entry deleted the pack root itself"
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&sibling);
+}
+
+#[test]
+fn an_unreadable_ledger_retires_nothing_rather_than_guessing() {
+    assert!(
+        retired_ids_in("{ not json").is_empty(),
+        "a malformed ledger produced ids from somewhere",
+    );
+    assert!(
+        retired_ids_in(r#"{"schema":1,"retired":[]}"#).is_empty(),
+        "an empty ledger produced ids from somewhere",
+    );
+    // And the shape that is read is the shape the file is written in, so the
+    // two assertions above are about parsing and not about a field name that
+    // never matches anything.
+    assert_eq!(
+        retired_ids_in(r#"{"schema":1,"retired":[{"id":"a.b","name":"A","retiredIn":1}]}"#),
+        vec!["a.b".to_string()],
+    );
+}
+
+#[test]
+fn a_retired_pack_that_is_not_installed_is_not_an_error() {
+    // The overwhelmingly common launch: nothing to do. It must not create the
+    // directory it is looking for, and it must not report having removed one.
+    let root = scratch("retire-absent");
+    let removed = remove_retired(&root, &["dynawalla.street".to_string()]);
+    assert!(
+        removed.is_empty(),
+        "reported removing a pack that was never there"
+    );
+    assert!(
+        !root.join("dynawalla.street").exists(),
+        "the lookup created the directory"
+    );
+    let _ = fs::remove_dir_all(&root);
+}
+
+#[cfg(unix)]
+#[test]
+fn a_retired_id_that_is_a_symlink_does_not_reach_what_it_points_at() {
+    // A pack directory cannot become a symlink by any route in this module —
+    // `copy_tree` skips links and both extractors write regular files only — so
+    // this is the belt for a device whose pack root someone else has been in.
+    // `fs::remove_dir_all` does not follow a symlink at the path it is given, and
+    // this pins that rather than trusting it: the consequence of being wrong is
+    // a delete outside the pack root.
+    let root = scratch("retire-symlink");
+    let elsewhere = root.parent().expect("temp").join("dynawalla-retire-target");
+    fs::create_dir_all(&elsewhere).expect("target");
+    fs::write(elsewhere.join("keep.txt"), b"keep").expect("keep");
+    std::os::unix::fs::symlink(&elsewhere, root.join("dynawalla.street")).expect("symlink");
+
+    remove_retired(&root, &["dynawalla.street".to_string()]);
+
+    assert!(
+        elsewhere.join("keep.txt").exists(),
+        "a symlinked pack id reached outside the pack root",
+    );
+
+    let _ = fs::remove_dir_all(&root);
+    let _ = fs::remove_dir_all(&elsewhere);
+}

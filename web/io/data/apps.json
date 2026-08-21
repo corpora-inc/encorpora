@@ -1,5 +1,18 @@
 [
   {
+    "id": "dynawalla",
+    "title": "Dynawalla",
+    "description": "Twenty-five arcade games in which the mathematics is the mechanic, not a gate in front of the fun. Every game adapts to the player. No ads, no tracking, no account.",
+    "icon": "/logos/dynawalla-logo.webp",
+    "featured": true,
+    "status": "iOS coming soon",
+    "platforms": [
+      { "name": "Android", "link": "https://play.google.com/store/apps/details?id=inc.corpora.dynawalla", "iconKey": "googlePlay" }
+    ],
+    "landingUrl": "/dynawalla/",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/dynawalla"
+  },
+  {
     "id": "corpan",
     "title": "Corpan",
     "description": "Learn from 50+ languages from any language - fully localized, practical sentences, instant audio, and easy switching. Real-world phrases. No ads - just pure learning.",

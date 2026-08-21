@@ -17,6 +17,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   effect
   instead of the render body, so restoring a saved chain no longer constructs Tone
   nodes synchronously during render.
+- **Recorded held notes played back as zero-length dots** (#397). The ribbon
+  captured only the note-ON (a fixed one-step note) and never measured the hold,
+  so sustained playing collapsed to instant blips. Each finger now remembers the
+  note it laid and, on the next crossing or the release, **extends its duration**
+  to how long it was held (`heldNoteDuration` → an `editNote` patch). Free-timing
+  records the raw held length; quantized recording rounds it to whole steps; a
+  tap still stays one step (no undo churn). Sustains through glides (legato).
+- **Record could get stuck ON after switching instruments** (#391). Two causes:
+  the immersive Ribbon armed a *different* track (the first melodic voice) than
+  the Instruments page / DockRail / home widget (the *selected* voice), so
+  turning Record off on one surface left it armed on another; and the arm was
+  persisted to `localStorage`, so a reload came back silently armed. Now every
+  surface arms the **selected voice**, and arm is **session-scoped** — sticky per
+  voice within a session, but a full app reload always starts OFF (a record arm
+  is mildly destructive; you should never come back quietly recording).
 
 ## [0.7.0] - 2026-06-25
 

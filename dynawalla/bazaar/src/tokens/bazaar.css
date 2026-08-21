@@ -1,0 +1,404 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   The bazaar — tokens and the thin DOM layer that sits over the canvas.
+
+   Three layers, and the layering is load bearing:
+
+     1. MATERIALS   the palette. The only place a literal colour may appear.
+                    Mirrors `palette.ts` exactly; `tokens.test.ts` fails the
+                    build if the two drift.
+     2. SEMANTIC    roles, never materials. Light is the default; `.bz-night`
+                    re-cuts every one of the same roles in night materials.
+     3. UTILITY     the handful of classes the DOM layer needs. Everything
+                    else in the bazaar is drawn on canvas.
+
+   Two standing rules this file obeys and a lint test enforces (BZ-02):
+     · no `rgba(0, 0, 0, …)` anywhere — shadow is transmitted skylight,
+       composited from `--bz-shadow`, never black;
+     · no `box-shadow` blur over 2px — depth is haze and occlusion, not blur.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ═══ LAYER 1 — MATERIALS ═════════════════════════════════════════════════ */
+:root {
+  /* Sandstone, plaster, mud-brick */
+  --color-sandstone-50: #f7edd8;
+  --color-sandstone-100: #efe0c0;
+  --color-sandstone-200: #e0cca4;
+  --color-sandstone-400: #b99c6e;
+  --color-sandstone-600: #8a7048;
+  --color-mudbrick-500: #b08a5e;
+  --color-terracotta-600: #96422c;
+
+  /* Glazed tile */
+  --color-tile-white: #f1ead9;
+  --color-lapis-700: #1c3f8f;
+  --color-lapis-500: #2e58b0;
+  --color-lapis-300: #5c8fe8;
+  --color-indigo-800: #23356b;
+  --color-turquoise-700: #0f6167;
+  --color-turquoise-500: #17868c;
+  --color-turquoise-300: #2fa6a8;
+  --color-ochre-500: #d19a24;
+  --color-saffron-400: #e8b93f;
+  --color-madder-600: #a33a2c;
+  --color-madder-400: #e08a6a;
+  --color-sabz-700: #24603e;
+  --color-aubergine-800: #4a2b52;
+  --color-aubergine-400: #bc8fc8;
+  --color-manganese-900: #33261c;
+
+  /* Brass, copper, verdigris */
+  --color-brass-200: #e8ce79;
+  --color-brass-300: #e8c36a;
+  --color-brass-400: #c9a227;
+  --color-brass-500: #d6a93c;
+  --color-brass-600: #8f6e1e;
+  --color-brass-800: #5a421e;
+  --color-copper-400: #c97a4c;
+  --color-copper-600: #b06e42;
+  --color-verdigris-500: #3e8f79;
+  --color-verdigris-300: #59a88f;
+  --color-bronze-700: #6b4a2b;
+
+  /* Cloth, wood, ink */
+  --color-walnut-600: #4a3220;
+  --color-walnut-800: #33241a;
+  --color-bone-100: #e6dcc4;
+  --color-cream-50: #f4e8d0;
+  --color-ink-900: #2a2015;
+  --color-ink-600: #6b5940;
+
+  /* Light, shadow, atmosphere */
+  --color-sun: #ffe9bc;
+  --color-sky-shadow: #2c3a63;
+  --color-haze: #e8c89a;
+  --color-haze-night: #1a2140;
+  --color-lantern: #f5b94a;
+  --color-nightsky-900: #0d1330;
+  --color-nightsky-700: #1b2454;
+  --color-nightground: #241c13;
+  --color-nightraised: #2f251a;
+  --color-nightdeep: #1a140d;
+  --color-nightcut: #120e08;
+  --color-nightshadow: #05070f;
+  --color-nightink-100: #f0e2c6;
+  --color-nightink-400: #a99070;
+  --color-sky-high: #9ec4e8;
+  --color-sky-low: #dcd2b4;
+  --color-lit-edge: #fff3d6;
+  --color-water-day: #4e8fa0;
+  --color-water-night: #17324a;
+
+  /* Lantern glass — emissive, never a text ground */
+  --color-glass-amber: #f0a93b;
+  --color-glass-ruby: #c4402f;
+  --color-glass-emerald: #2e8b5a;
+  --color-glass-cobalt: #2a56a8;
+  --color-glass-clear: #f6ebcf;
+}
+
+/* ═══ LAYER 2 — SEMANTIC ══════════════════════════════════════════════════ */
+:root {
+  --bz-ground: var(--color-sandstone-100);
+  --bz-ground-lit: var(--color-sandstone-50);
+  --bz-ground-shade: var(--color-sandstone-400);
+  --bz-sky-high: var(--color-sky-high);
+  --bz-sky-low: var(--color-sky-low);
+  --bz-haze: var(--color-haze);
+  --bz-ink: var(--color-ink-900);
+  --bz-ink-muted: var(--color-ink-600);
+  --bz-sign-board: var(--color-walnut-600);
+  --bz-sign-ink: var(--color-cream-50);
+  --bz-metal: var(--color-brass-400);
+  --bz-metal-shade: var(--color-brass-600);
+  --bz-metal-lit: var(--color-brass-200);
+  --bz-cut: var(--color-sandstone-600);
+  --bz-lit-edge: var(--color-lit-edge);
+  --bz-shadow: var(--color-sky-shadow);
+  --bz-focus: var(--color-lapis-700);
+  --bz-water: var(--color-water-day);
+  --bz-cloth: var(--color-bone-100);
+  --bz-timber: var(--color-bronze-700);
+}
+
+.bz-night {
+  --bz-ground: var(--color-nightground);
+  --bz-ground-lit: var(--color-nightraised);
+  --bz-ground-shade: var(--color-nightdeep);
+  --bz-sky-high: var(--color-nightsky-900);
+  --bz-sky-low: var(--color-nightsky-700);
+  --bz-haze: var(--color-haze-night);
+  --bz-ink: var(--color-nightink-100);
+  --bz-ink-muted: var(--color-nightink-400);
+  --bz-sign-board: var(--color-walnut-800);
+  --bz-sign-ink: var(--color-cream-50);
+  --bz-metal: var(--color-brass-200);
+  --bz-metal-shade: var(--color-brass-400);
+  --bz-metal-lit: var(--color-lantern);
+  --bz-cut: var(--color-nightcut);
+  --bz-lit-edge: var(--color-lantern);
+  --bz-shadow: var(--color-nightshadow);
+  --bz-focus: var(--color-brass-200);
+  --bz-water: var(--color-water-night);
+  --bz-cloth: var(--color-bone-100);
+  --bz-timber: var(--color-walnut-800);
+}
+
+/* Non-material tokens. These carry no colour and so do not re-cut in night. */
+:root {
+  --bz-font-sign: "Iowan Old Style", "Palatino Linotype", Palatino, "Hoefler Text",
+    "Times New Roman", serif;
+  --bz-font-numeral: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --bz-cut-sm: 2px;
+  --bz-cut-md: 4px;
+  --bz-motion-quick: 120ms;
+  --bz-motion-detent: 200ms;
+  --bz-motion-settle: 420ms;
+  --bz-ease-detent: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ═══ LAYER 3 — UTILITY ═══════════════════════════════════════════════════ */
+
+.bz-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bz-ground);
+  color: var(--bz-ink);
+  font-family: var(--bz-font-numeral);
+  touch-action: pan-x;
+  -webkit-tap-highlight-color: transparent;
+  contain: strict;
+}
+
+.bz-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bz-canvas--fore {
+  pointer-events: none; /* BZ-LAW-9 — a cat never eats a touch */
+  z-index: 3;
+}
+
+/* The street is a real scroller: native flick momentum on touch, a real
+   scrollLeft to restore on exit (BZ-08), and a real listbox for the keyboard. */
+.bz-street {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  outline: none;
+}
+.bz-street::-webkit-scrollbar {
+  display: none;
+}
+
+.bz-track {
+  position: relative;
+  height: 100%;
+}
+
+.bz-stall {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  scroll-snap-align: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform;
+}
+
+.bz-stall-chrome,
+.bz-stall-preview {
+  position: absolute;
+  display: block;
+}
+
+/* A <button> centres its content box, which becomes the static position of an
+   absolutely positioned child — so an unpositioned canvas lands half the
+   button's height down. Pin it. */
+.bz-stall-chrome {
+  left: 0;
+  top: 0;
+}
+
+.bz-stall-preview {
+  /* BZ-LAW-1 — the frame never colonises the preview. No radius, no filter,
+     no blend mode, no overlay. The aperture clips; nothing else touches it. */
+  border-radius: 0;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.bz-sign {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: center;
+  pointer-events: none;
+  text-wrap: balance;
+  overflow: hidden;
+}
+
+.bz-sign-name {
+  flex: 0 0 34%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bz-sign-spec {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bz-sign-name {
+  font-family: var(--bz-font-sign);
+  color: var(--bz-sign-ink);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.bz-sign-spec {
+  font-family: var(--bz-font-numeral);
+  font-variant-numeric: tabular-nums lining-nums slashed-zero;
+  font-feature-settings: "tnum" 1, "lnum" 1, "zero" 1;
+  font-weight: 600;
+  line-height: 1;
+  /* Cut into brass: one lit offset up-left, one cut offset down-right.
+     Two offsets, no blur — this is engraving, not a glow. */
+  color: var(--bz-ink);
+  text-shadow:
+    -1px -1px 0 var(--bz-metal-lit),
+    1px 1px 0 var(--bz-metal-shade);
+}
+
+/* Focus is a real object: a brass index bar that slides across the sill. */
+.bz-stall:focus-visible .bz-focusbar,
+.bz-stall.is-focus .bz-focusbar {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.bz-focusbar {
+  position: absolute;
+  height: 4px;
+  background: var(--bz-focus);
+  border-top: 1px solid var(--bz-lit-edge);
+  opacity: 0;
+  transform: translateX(-14px);
+  transition:
+    opacity var(--bz-motion-quick) var(--bz-ease-detent),
+    transform var(--bz-motion-detent) var(--bz-ease-detent);
+  pointer-events: none;
+}
+
+/* The lamp. A world object that happens to behave like an indicator. */
+.bz-lamp {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.bz-lamp canvas {
+  display: block;
+}
+
+.bz-lamplighter {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+  outline: none;
+}
+.bz-lamplighter:focus-visible {
+  outline: 3px solid var(--bz-focus);
+  outline-offset: 2px;
+}
+
+.bz-astrolabe {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: grab;
+  display: block;
+  outline: none;
+  touch-action: none;
+}
+.bz-astrolabe:focus-visible {
+  outline: 3px solid var(--bz-focus);
+  outline-offset: 2px;
+}
+
+.bz-valve {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+  outline: none;
+}
+.bz-valve:focus-visible {
+  outline: 3px solid var(--bz-focus);
+  outline-offset: 2px;
+}
+
+/* Screen-reader-only, for the accessible names the canvas cannot carry. */
+.bz-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The dolly into an aperture. One composited layer, no layout. */
+.bz-street.is-entering {
+  transition:
+    transform var(--bz-motion-settle) var(--bz-ease-detent),
+    opacity var(--bz-motion-settle) linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bz-street.is-entering {
+    transition:
+      opacity var(--bz-motion-detent) linear;
+    transform: none !important;
+  }
+  .bz-focusbar {
+    transition: opacity var(--bz-motion-detent) linear;
+    transform: none;
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@dynawalla/game-audio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The output ceiling, the minimum attack, and the polyphony cap every dynawalla game shares. Exists because a nine-year-old said one of them almost made his ears explode, and because 27 games each guessing at a safe level is how that happened.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"*.test.ts\"",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0"
+  }
+}

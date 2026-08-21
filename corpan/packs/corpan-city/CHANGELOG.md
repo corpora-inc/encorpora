@@ -7,6 +7,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-13
+
+### Added
+- **Journey activity adapter (`corpan_city:<toolId>`, activity-contract §6.3 /
+  R9).** A journey launch (`initialState.activity`) mounts ONE challenge from
+  the library and reports — the Babylon world never boots; no Colyseus, no
+  Track state, no economy on that path. `ActivitySpec` maps onto the frozen
+  `ChallengeSpec` (specId→challengeId round-trip, targetLang→language,
+  phrase refs→entryIds with non-base sources threaded through
+  `params.entrySources`), and `ChallengeResultPlus` maps back
+  (score, detail→`detail.numbers`, `outcome:"aborted"`→`abandoned: true`;
+  xp/rewards/sig dropped — Journey's celebration + FSRS replace the city
+  economy for journey launches). Terminal results ride `hostApi.journey` with
+  the `corpan:activity-result` event rail as fallback; unsupported tool ids
+  abandon("unsupported") + exit.
+- **R9 evidence rule enforced:** `perItem` prefers genuine per-entry verdicts
+  (the reserved `detail["item:<entryId>"]` convention). When a tool emits none
+  AND the spec scheduled exactly ONE item — the Journey interlude "drill one
+  phrase" case — the round's aggregate score is binned into that single item's
+  outcome with the reserved `aggregateBinned` flag (the engine clamps the
+  derived FSRS grade to [Hard, Good]), so the one phrase a feed interlude teaches
+  gets real per-item evidence instead of being lost as score-only. Multi-item
+  rounds with no per-entry verdicts still report score-only; an aggregate over
+  several items is never fanned out into fabricated per-item rows. Aborted rounds
+  stay score-only + `abandoned`.
+- Manifest `activities`: the implemented challenge tools declared for the
+  Journey scheduler (STT tools carry `modelNeeds: ["stt"]`).
+- Vendored contract copy `src/sdk/activityContract.ts` (generated — synced by
+  `node packs/sdk/sync-contract.mjs`).
+- `src/journey/adapter.test.ts`: fixture journey mounts (abort path, event
+  rail, unmount race) + field-mapping tests, validated against the app's
+  contract Zod schemas.
+
+### Fixed
+- **Journey entry could fall through to the full 3D world (welcome screen +
+  language chooser) and boot the on-device LLM instead of the micro-challenge**
+  when `initialState.activity` went missing upstream of the pack. `main.ts`'s
+  mount now also checks `hostApi.journey.isActive()` — the host's own
+  authoritative "this mount is a Journey launch" marker — and recovers the
+  real spec from `hostApi.journey.getSpec()` when `initialState.activity` is
+  absent; a Journey mount can never reach `startGame()` (the world/LLM path)
+  anymore. Added `journey/adapter.ts#synthesizeFallbackActivitySpec` as a
+  last-resort, UI-free micro-challenge (no welcome/chooser) for the
+  (practically unreachable) case where even the host rail has no spec.
+
+### Removed
+- **"Which one doesn't belong?" (odd-one-out) disabled** pending a solvable
+  rebuild. It grouped corpus entries by their opaque DOMAIN tag
+  (travel/food/business) and asked the player to tap the intruder, but the
+  category was never shown and the phrases don't visibly cluster — so it was
+  unsolvable by reasoning. Removed from the Journey manifest `activities`, from
+  the runnable `choiceToolList`, and filtered out of all NPC/quest tool
+  selection (`DISABLED_TOOL_IDS` in `challenges/registry`); it can no longer be
+  scheduled. The implementation is kept for a future rebuild with a
+  visible/obvious semantic or concept-image category.
+
+### Changed
+- `runChallenge` partial-spec merge additionally honors `challengeId`
+  (additive; NPC tool-calls never set it) so journey results correlate to the
+  issuing spec. City standalone behavior is unchanged.
+
 ## [0.1.8] - 2026-06-16 — Catalog localization (jv/su/tl) unblocks Pages deploy
 
 - Catalog listing: add the Javanese (jv), Sundanese (su) and Tagalog (tl)

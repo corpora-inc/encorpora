@@ -1,0 +1,21 @@
+{
+  "name": "@dynawalla/game-host",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The adapter every arcade pack mounts against: a synchronous game-facing Host over the asynchronous pack SDK, including the difficulty request wire and the prefetch pool behind it.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"*.test.ts\"",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0"
+  }
+}

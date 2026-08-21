@@ -2,12 +2,50 @@ name: adversarial-review
 
 # The machine gatekeeper that replaces the human. Three adversarial lenses
 # (correctness / security / pack-compat) read the PR diff and emit ONE pass/fail
-# status. Pass = no unresolved high-severity finding. Single job named
-# `adversarial-review` so it always reports — safe as a required check on `main`.
+# status. Pass = no blocking-severity finding AND every lens actually reviewed
+# 100% of the diff. Single job named `adversarial-review` so it always reports —
+# safe as a required check on `main`.
 #
-# Cost: one model call per lens per PR/queue-entry. Tune ADVERSARIAL_MODEL and
-# MAX_DIFF_BYTES to manage spend; a false positive that blocks the queue is a
-# detrimental process — fix the prompt fast rather than routing around the gate.
+# The script FAILS CLOSED: a lens error, an unparseable model reply, a git
+# failure, or an uncovered diff all exit non-zero. Do not "fix" a red gate by
+# relaxing that; fix the cause.
+#
+# Cost: one model call per lens PER CHUNK. Large diffs are chunked rather than
+# truncated, so a 4x-budget PR costs 4x the calls.
+#
+# MAX_CHUNK_CHARS RAISES COST AS IT GOES DOWN — it is a chunk SIZE, not a spend
+# cap. Lowering it makes more, smaller chunks and multiplies both the bill and
+# the wall clock. Measured over PR #521's diff (804,610 chars, `git diff
+# 1115c6135..1028ccf2c`), at 3 lenses per chunk:
+#
+#   budget=200000    5 chunks     15 calls
+#   budget= 50000   18 chunks     54 calls
+#   budget=  4000  319 chunks    957 calls   <- can outlive the 20-minute budget
+#
+# To cut spend, RAISE it. Lower it only to fit a model's context window, and
+# never below the script's MIN_CHUNK_CHARS floor of 4000, which it rejects.
+#
+# ADVERSARIAL_MODEL IS NOT A SPEND KNOB — do not reach for it. The script pins
+# the review model to ALLOWED_MODELS in `.github/scripts/adversarial_review.py`,
+# which holds only ids this gate has actually been run with (today: exactly the
+# default, per provider). Any other value — including a cheaper model — is a
+# HARD ERROR, not a fallback: the script exits non-zero and this REQUIRED check
+# goes red on every open PR and every merge-queue entry until the variable is
+# deleted again. Widening the set is a code change that must itself pass this
+# gate. If a run does go red this way, the job log carries an `::error::` line
+# naming the rejected value, and every successful run prints the resolved
+# provider and model id in its audit line.
+#
+# The mid-incident levers are MAX_CHUNK_CHARS and ADVERSARIAL_WORKERS, which the
+# script accepts as given. ADVERSARIAL_WORKERS is the throttle for a rate-limit
+# incident: it lowers concurrency without changing the number of calls. That is
+# the knob to reach for mid-incident, not MAX_CHUNK_CHARS.
+#
+# A false positive that blocks the queue is a detrimental process — fix the
+# prompt fast rather than routing around the gate.
+#
+# The script's own unit tests run in `ci.yml` (job `ci-scripts`), which is
+# aggregated by the required `ci-gate` context.
 
 on:
   pull_request:
@@ -29,6 +67,13 @@ jobs:
   adversarial-review:
     name: adversarial-review
     runs-on: ubuntu-latest
+    # The merge queue's check_response_timeout_minutes is 60. Without an explicit
+    # limit this job inherits the 360-minute default, so a hung run would burn
+    # the queue's entire budget before reporting. Bounded well under 60, and the
+    # script carries its OWN 20-minute wall-clock budget (REVIEW_BUDGET_S) so an
+    # overloaded provider produces a legible failure inside the job rather than
+    # a runner kill. Keep this comfortably above that budget.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,7 +89,20 @@ jobs:
           # Claude automatically if ANTHROPIC_API_KEY is ever added to secrets.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          # Selects FROM the script's ALLOWED_MODELS; it cannot introduce a new
+          # value. An unrecognized id is a hard error that reds this required
+          # check repo-wide, so leave it unset unless you mean to pick another
+          # allow-listed model. Not a cost lever — see the header comment.
           ADVERSARIAL_MODEL: ${{ vars.ADVERSARIAL_MODEL }}
+          MAX_CHUNK_CHARS: ${{ vars.MAX_CHUNK_CHARS }}
+          # The throttle you reach for mid-incident. Every worker holds a full
+          # chunk (~50k tokens) in flight, and that concurrent token volume is
+          # what provokes a token-rate 429 — which, under fail-closed, blocks
+          # every merge in the repo. Set the `ADVERSARIAL_WORKERS` repo variable
+          # to dial concurrency down WITHOUT a code change (a code change would
+          # have to merge through the very gate that is wedged). Unset → the
+          # script's default of 3.
+          ADVERSARIAL_WORKERS: ${{ vars.ADVERSARIAL_WORKERS }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}

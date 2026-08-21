@@ -1,0 +1,26 @@
+{
+  "name": "@dynawalla/game-beam",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "THE TUNING HALL — ride a divisor beam. A pulse fired up beam b destroys an automaton carrying v if and only if b divides v, and the beam sings the remainder while you decide.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4321",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "build:pack": "vite build --config vite.pack.config.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.1.5"
+  }
+}

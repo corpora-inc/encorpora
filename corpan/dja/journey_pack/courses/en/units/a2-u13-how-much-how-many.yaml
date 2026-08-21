@@ -1,0 +1,76 @@
+id: en.a2.u13
+arc: en.arc2
+theme: "How much? How many?"
+cando:
+  - key: quantity-questions
+    text: "Can ask how much something costs or how many there are, using how much and how many correctly."
+  - key: quantity-words
+    text: "Can use many, much, and a lot of correctly with countable and uncountable nouns, and request simple quantities when shopping."
+vocab_band: { lo: 1, hi: 4191 }
+phrase_domains: [everyday, travel]
+skills:
+  - id: en.skill.quantity
+    kind: grammar
+    title: "How much & how many"
+    b: -1.5
+    prereqs: [en.skill.shopping]
+grammar_nodes: [en.gn.count-uncount, en.gn.much-many-alot]
+items:
+  - ref: "phrase:base:15867"  # How much does it cost?
+    skills: [en.skill.quantity]
+    importance: 3
+    probe: true
+    b: -1.5
+  - ref: "phrase:base:17906"  # How many books do you read each month?
+    skills: [en.skill.quantity]
+    importance: 3
+    probe: true
+    b: -1.5
+  - ref: "phrase:base:9600"  # Can you buy some milk on your way home?
+    skills: [en.skill.quantity]
+    importance: 3
+    probe: true
+    b: -1.5
+  - ref: "phrase:base:17587"  # How much sugar do you want in your tea?
+    skills: [en.skill.quantity]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13540"  # A lot of people are waiting for the bus.
+    skills: [en.skill.quantity]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:840"  # He drinks a lot of water every day.
+    skills: [en.skill.quantity]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11499"  # I need to buy some food before the store closes.
+    skills: [en.skill.quantity]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:rice"
+    skills: [en.skill.quantity]
+    importance: 2
+  - ref: "word:en:few"
+    skills: [en.skill.quantity]
+    importance: 2
+  - ref: "word:en:enough"
+    skills: [en.skill.quantity]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, travel]
+      level: A2
+      count: 10
+      skills: [en.skill.quantity]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

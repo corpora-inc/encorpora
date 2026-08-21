@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Välj dina ämnen",
+      "availableSummary": "{{count}} frispaket tillgängliga · ~{{size}} MB",
+      "installAll": "Installera alla",
+      "chooseIndividually": "Välj individuellt",
+      "installing": "Installerar {{current}} av {{total}}…",
+      "someFailed": "{{count}} paket kunde inte installeras. Du kan försöka igen från fliken Paket.",
+      "allInstalled": "Du har redan startpaketen med fraser.",
+      "installed": "Installerat",
       "loading": "Laddar…",
       "selectAll": "Välj alla ({{count}})",
       "clearAll": "Rensa",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Överraska mig!",
         "desc": "Ta mig någonstans kul."
+      },
+      "journey": {
+        "label": "Följ Journey",
+        "desc": "En guidad kurs — appen väljer varje nästa steg"
+      }
+    },
+    "journey": {
+      "title": "Hur vill du lära dig {{lang}}?",
+      "subtitle": "Journey serverar en daglig mix av nytt material och repetition på {{lang}} — ett kort i taget.",
+      "guided": {
+        "label": "Guidad daglig väg",
+        "desc": "Ett kort dagligt pass, planerat åt dig.",
+        "unavailable": "Den guidade vägen är inte tillgänglig för {{lang}} ännu."
+      },
+      "explore": {
+        "label": "I egen takt",
+        "desc": "Utforska berättelser, övningar och spel på egen hand."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Ingår med Plus",
     "installFailedTitle": "Installationen misslyckades",
+    "updateUnavailableTitle": "Uppdatering ej tillgänglig",
+    "updateUnavailableDetail": "Den här nedladdningen matchade inte det vi förväntade oss. Försök igen senare.",
     "installStuckDetail": "Inga framsteg på ett tag. Kontrollera din anslutning och försök igen.",
     "installStuckTitle": "Nedladdning pausad",
     "openPack": "Öppna {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sampla språket du lär dig. Scratcha tills det sitter."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Din guidade väg, kort för kort"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Installera ({{size}})",
     "installing": "Installerar…",
     "installed": "Installerat",
-    "retry": "Försök igen"
+    "retry": "Försök igen",
+    "explains": "Ord på {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Din guidade väg, kort för kort",
+    "heroCard": {
+      "title": "Din Journey",
+      "progress": "{{unit}} · {{count}} till nästa milstolpe"
+    },
+    "heroCta": {
+      "start": "Börja din Journey",
+      "continue": "Fortsätt"
+    },
+    "chrome": {
+      "home": "Hem",
+      "menu": "Journey-alternativ",
+      "unit": "Enhet {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Kontrollera",
+      "continue": "Fortsätt",
+      "skipHint": "Svep igen för att hoppa över",
+      "retry": "Försök igen",
+      "showAnswer": "Visa svaret",
+      "answerWas": "Svaret var",
+      "comeBackNote": "Vi återkommer till det här.",
+      "whyThisCard": "Varför det här kortet?",
+      "whyNew": "Något nytt från din nuvarande enhet.",
+      "whyReview": "En repetition — spridningen håller den stark.",
+      "whyRepair": "En andra titt på något klurigt.",
+      "whyGuided": "En del av din guidade väg.",
+      "typeWhatYouHear": "Skriv det du hör",
+      "typeHere": "Skriv här…",
+      "tapToOrder": "Tryck på orden i rätt ordning",
+      "matchPairs": "Para ihop paren",
+      "flipToReveal": "Tryck för att visa",
+      "knewIt": "Jag kunde det",
+      "didntKnow": "Inte än",
+      "speakNow": "Tala nu",
+      "listen": "Lyssna",
+      "listenSlow": "Långsammare",
+      "hint": "Ledtråd",
+      "correct": "Rätt",
+      "incorrect": "Inte riktigt",
+      "pickTranslation": "Välj översättningen",
+      "pickWhatYouHear": "Välj det du hörde",
+      "fillTheBlank": "Fyll i luckan",
+      "newItem": "Ny",
+      "reviewedEarlier": "Sedd tidigare"
+    },
+    "intro": {
+      "listenAndEcho": "Lyssna och säg det högt",
+      "newWord": "Nytt ord",
+      "newPhrase": "Ny fras"
+    },
+    "grammar": {
+      "noteLabel": "Grammatikanteckning",
+      "tryIt": "Prova",
+      "contrastLabel": "Jämfört med ditt språk"
+    },
+    "word": {
+      "inContext": "I sammanhang",
+      "meaningShow": "Betydelse",
+      "meaningHide": "Dölj"
+    },
+    "checkpoint": {
+      "title": "Kontrollpunkt",
+      "summaryNew": "{{count}} nya",
+      "summaryReviews": "{{count}} repetitioner",
+      "done": "Klart för i dag",
+      "keepGoing": "Fortsätt",
+      "dailyRing": "{{count}} den här sessionen",
+      "deepSession": "Vilket djupt pass — dina repetitioner är schemalagda oavsett.",
+      "streakTicked": "{{count}} i rad ✓",
+      "boss": "Enhetsutmaning",
+      "arcGate": "Bågport"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Perfekt",
+        "nice": "Bra",
+        "brilliant": "Briljant",
+        "boom": "Bom",
+        "nailed": "Prick",
+        "unstoppable": "Ostoppbar",
+        "onFire": "I elden",
+        "yes": "Ja!",
+        "clean": "Rent",
+        "sharp": "Skarpt",
+        "wow": "Wow",
+        "magic": "Magi"
+      },
+      "combo": "{{count}} i rad",
+      "perfect": "Perfekt",
+      "wordsLearned": "{{count}} ord inlärda",
+      "unitComplete": "Enhet klar: {{name}}",
+      "streakDay": "{{count}} i rad",
+      "placementDone": "Nivå hittad"
+    },
+    "rare": {
+      "reveal": "Något speciellt…",
+      "etymologyGem": "Ordhistoria",
+      "timeCapsule": {
+        "title": "Tidskapsel",
+        "body": "Du kämpade med det här {{when}} — se på dig nu."
+      },
+      "delight": {
+        "newVoice": "En annan röst",
+        "didYouNotice": "Märkte du det?"
+      },
+      "miniGame": {
+        "title": "Bonusrunda",
+        "play": "Spela"
+      },
+      "story": {
+        "unlocked": "Du har förtjänat nästa kapitel",
+        "read": "Läs det"
+      }
+    },
+    "placement": {
+      "offerTitle": "Var ska vi börja?",
+      "offerBody": "Några snabba frågor hittar din startpunkt. Ungefär fem minuter.",
+      "startNew": "Jag är ny på {{lang}}",
+      "placeMe": "Jag kan lite {{lang}}",
+      "skipItem": "Hoppa över om du är osäker",
+      "doneTitle": "Startpunkt hittad",
+      "doneBody": "Startar vid {{unit}}.",
+      "prelit": "Du börjar med {{count}} saker du redan kan.",
+      "redo": "Kolla min nivå igen",
+      "aboveTitle": "Du är förbi den här kursen",
+      "aboveBody": "Kursen täcker för närvarande nybörjarmaterial, och du ligger över det. Du kan ändå utforska den — nya nivåer är på väg.",
+      "aboveFrontier": "Du ligger före det mesta av den här kursen — du börjar vid {{unit}}."
+    },
+    "path": {
+      "title": "Din väg",
+      "arc": "Båge {{name}}",
+      "unit": "Enhet {{n}}",
+      "locked": "Längre fram",
+      "current": "Du är här",
+      "review": "Tryck för att repetera",
+      "mastered": "Stark"
+    },
+    "streak": {
+      "pactTitle": "Hålla en svit?",
+      "pactBody": "Håll farten uppe. En vilodag täcker en lucka — du tjänar en varje vecka.",
+      "pactAccept": "Jag är med",
+      "pactDecline": "Nej tack",
+      "days": "{{count}} i rad",
+      "restDayEarned": "Vilodag intjänad",
+      "restDayUsed": "{{day}} var en vilodag",
+      "repairTitle": "Ta upp din svit igen",
+      "repairBody": "Slutför två pass inom de närmaste {{days}} dagarna för att återställa din svit på {{count}} dagar.",
+      "repairCta": "Starta"
+    },
+    "block": {
+      "speakingIntro": "Talövning — {{count}} kort",
+      "ready": "Redo",
+      "loadingModel": "Värmer upp mikrofonen…",
+      "micPrompt": "Corpán använder mikrofonen för att bedöma ditt uttal på den här enheten.",
+      "sttUnavailable": "Röstbedömning är inte tillgänglig just nu — byter till lyssningsövningar."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} kort kvar i dag",
+      "plusBody": "Corpán Plus tar bort den dagliga kortgränsen."
+    },
+    "welcomeBack": {
+      "title": "Välkommen tillbaka",
+      "body": "Dina repetitioner behöll {{pct}} % av sin styrka. Vi värmer upp."
+    },
+    "tease": {
+      "next": "Nästa gång: {{title}}"
+    },
+    "jump": {
+      "title": "Känns det för lätt?",
+      "body": "Ta en kort utmaning för att hoppa framåt. Misslyckas du förlorar du inget — du stannar precis där du är.",
+      "accept": "Prova utmaningen",
+      "decline": "Stanna här"
+    },
+    "feed": {
+      "caughtUp": "Du är i fas för tillfället",
+      "loading": "Förbereder dina kort…",
+      "loadError": "Journey kunde inte laddas. Försök igen från Hem.",
+      "retry": "Försök igen"
+    },
+    "popin": {
+      "pronounceTitle": "Uttala det",
+      "close": "Stäng"
+    },
+    "settings": {
+      "title": "Journey-alternativ",
+      "advanceMode": "Framsteg",
+      "advanceSwipe": "Svep för att fortsätta",
+      "advanceAuto": "Fortsätt automatiskt",
+      "celebration": "Firanden",
+      "celebrationFull": "Fullt",
+      "celebrationReduced": "Reducerat",
+      "celebrationMinimal": "Minimalt",
+      "sounds": "Ljud",
+      "soundsOn": "På",
+      "soundsOff": "Av",
+      "listeningMode": "Handsfree-lyssning",
+      "viewPath": "Visa vägen",
+      "redoPlacement": "Kolla min nivå igen"
+    },
+    "wordPack": {
+      "title": "Ordbetydelser",
+      "body": "Läs vad orden betyder på {{language}} medan du går vidare.",
+      "add": "Lägg till ({{size}})",
+      "dismiss": "Inte nu",
+      "downloading": "Lägger till… {{percent}}%",
+      "failed": "Kunde inte lägga till",
+      "retry": "Försök igen"
+    },
+    "imagePack": {
+      "title": "Lägg till bilder",
+      "body": "Lär dig ord med bilder istället för text.",
+      "dismiss": "Inte nu",
+      "add": "Lägg till ({{size}})",
+      "downloading": "Lägger till… {{percent}}%",
+      "retry": "Försök igen",
+      "failed": "Det gick inte att lägga till"
+    },
+    "interlude": {
+      "gameCue": "Snabbt spel · en fras",
+      "readerCue": "Snabb läsning · ett avsnitt"
+    }
   }
 }

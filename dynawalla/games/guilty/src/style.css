@@ -1,0 +1,20 @@
+/* Dev-harness chrome only. The game itself paints one <canvas> and nothing else,
+   so it drops into any host container without dragging styles along. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #03060c;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+}

@@ -1,0 +1,21 @@
+{
+  "id": "dynawalla.trebuchet",
+  "version": "0.1.0",
+  "name": "TREBUCHET",
+  "description": "A siege where the range dial is the answer. Work the sum, wind the arm to that many metres and the keep standing at your number comes down — miss and the boulder lands on the keep your mistake named, out on the field where you can see how far off it was.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit"
+    ]
+  },
+  "minAge": 6,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "اپنے موضوع چنو",
+      "availableSummary": "{{count}} جملیاں دے پیکج دستیاب · ~{{size}} MB",
+      "installAll": "سارے انسٹال کرو",
+      "chooseIndividually": "اک اک کر کے چنو",
+      "installing": "{{total}} وچّوں {{current}} انسٹال ہو رہیا اے…",
+      "someFailed": "{{count}} پیکج انسٹال نہیں ہو سکے۔ تُسیں پیکج ٹیب توں دوبارہ کوشش کر سکدے او۔",
+      "allInstalled": "تہاڈے کول پہلاں توں شروعاتی جملیاں دے پیکج موجود نيں۔",
+      "installed": "انسٹال شدہ",
       "loading": "لوڈ ہو ریا اے…",
       "selectAll": "ساریاں چنو ({{count}})",
       "clearAll": "صاف کرو",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "مینوں حیران کرو!",
         "desc": "مینوں کسے مزیدار تھاں لے چلو۔"
+      },
+      "journey": {
+        "label": "Journey دے مگر چلو",
+        "desc": "اک رہنمائی والا کورس — ایپ ہر اگلا قدم چُندی اے"
+      }
+    },
+    "journey": {
+      "title": "تُسیں {{lang}} کیویں سِکھنا چاہندے او؟",
+      "subtitle": "Journey ہر روز {{lang}} وچ نویں مواد تے دہرائی دا مکس پیش کردا اے — اک ویلے اک کارڈ۔",
+      "guided": {
+        "label": "رہنمائی والا روزانہ راہ",
+        "desc": "تہاڈے لئی بنایا گیا اک مختصر روزانہ سیشن۔",
+        "unavailable": "{{lang}} لئی گائیڈڈ راہ ہلے دستیاب نئیں۔"
+      },
+      "explore": {
+        "label": "آپݨی رفتار نال",
+        "desc": "کہانیاں، مشقاں تے کھیڈاں آپے ویکھو۔"
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "پلس نال شامل",
     "installFailedTitle": "انسٹالیشن ناکام ہو گئی",
+    "updateUnavailableTitle": "اپڈیٹ دستیاب نہیں ہے",
+    "updateUnavailableDetail": "ایہہ ڈاؤن لوڈ اوہدے نال میل نہیں کھاندا جس دی سانوں توقع سی۔ کِرپا کر کے بعد وچ دوبارہ کوشش کرو۔",
     "installStuckDetail": "کُجھ دیر توں کوئی ترقی نہیں ہوئی۔ اپنا کنکشن چیک کرو تے دوبارہ کوشش کرو۔",
     "installStuckTitle": "ڈاؤن لوڈ رُک گیا",
     "openPack": "{{name}} کھولو",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "جیہڑی زبان تسی سکھ رہے او، اوہنوں سیمپل کرو۔ سکریچ کرو جد تک دل دماغ وچ نہ بیٹھ جائے۔"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "تُہاڈا رہنمائی والا راہ، کارڈ توں کارڈ"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "انسٹال کرو ({{size}})",
     "installing": "انسٹال ہو ریہا اے…",
     "installed": "انسٹال ہو گیا",
-    "retry": "فیر کوشش کرو"
+    "retry": "فیر کوشش کرو",
+    "explains": "{{language}} دے لفظ"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "تُہاڈا رہنمائی والا راہ، کارڈ توں کارڈ",
+    "heroCard": {
+      "title": "تُہاڈا Journey",
+      "progress": "{{unit}} · اگلے سنگِ میل تک {{count}}"
+    },
+    "heroCta": {
+      "start": "اپنا Journey شروع کرو",
+      "continue": "جاری رکھو"
+    },
+    "chrome": {
+      "home": "گھر",
+      "menu": "Journey دے اختیار",
+      "unit": "یونٹ {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "جانچو",
+      "continue": "جاری رکھو",
+      "skipHint": "چھڈن لئی فیر سوائپ کرو",
+      "retry": "فیر کوشش کرو",
+      "showAnswer": "جواب وکھاؤ",
+      "answerWas": "جواب ایہ سی",
+      "comeBackNote": "اسیں ایس تے واپس آواں گے۔",
+      "whyThisCard": "ایہ کارڈ کیوں؟",
+      "whyNew": "تُہاڈے موجودہ یونٹ دی اک نویں شے۔",
+      "whyReview": "دہرائی — وقفے ایہنوں پکا رکھدے نیں۔",
+      "whyRepair": "کسے اوکھی شے تے دوجی نظر۔",
+      "whyGuided": "تُہاڈے رہنمائی والے راہ دا حصہ۔",
+      "typeWhatYouHear": "جو سُنو اوہ لکھو",
+      "typeHere": "ایتھے لکھو…",
+      "tapToOrder": "لفظاں نوں ترتیب نال چھوہو",
+      "matchPairs": "جوڑے ملاؤ",
+      "flipToReveal": "ویکھن لئی چھوہو",
+      "knewIt": "مینوں پتہ سی",
+      "didntKnow": "حالے نہیں",
+      "speakNow": "ہُن بولو",
+      "listen": "سُنو",
+      "listenSlow": "ہولی",
+      "hint": "اشارہ",
+      "correct": "ٹھیک",
+      "incorrect": "پورا نہیں",
+      "pickTranslation": "ترجمہ چنو",
+      "pickWhatYouHear": "جو سُنیا اوہ چنو",
+      "fillTheBlank": "خالی تھاں بھرو",
+      "newItem": "نواں",
+      "reviewedEarlier": "پہلاں ویکھیا"
+    },
+    "intro": {
+      "listenAndEcho": "سُنو، فیر اُچی آواز وچ آکھو",
+      "newWord": "نواں لفظ",
+      "newPhrase": "نواں فقرہ"
+    },
+    "grammar": {
+      "noteLabel": "گرامر نوٹ",
+      "tryIt": "آزماؤ",
+      "contrastLabel": "تہاڈی زبان دے مقابلے وچ"
+    },
+    "checkpoint": {
+      "title": "چیک پوائنٹ",
+      "summaryNew": "{{count}} نویں",
+      "summaryReviews": "{{count}} دُہرائیاں",
+      "done": "اَج لئی بس",
+      "keepGoing": "اگے ودھو",
+      "dailyRing": "{{count}} اس سیشن وچ",
+      "deepSession": "کنا ڈونگا سیشن — تُہاڈیاں دہرائیاں ہر حال وچ طے نیں۔",
+      "streakTicked": "لگاتار {{count}} ✓",
+      "boss": "یونٹ چیلنج",
+      "arcGate": "قوس دا دروازہ"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "کامل",
+        "nice": "سوہنا",
+        "brilliant": "شاندار",
+        "boom": "دھماکہ",
+        "nailed": "نشانے تے",
+        "unstoppable": "ناقابلِ روک",
+        "onFire": "اگ لگی",
+        "yes": "ہاں!",
+        "clean": "صاف",
+        "sharp": "تِکھا",
+        "wow": "واہ",
+        "magic": "جادو"
+      },
+      "combo": "لگاتار {{count}}",
+      "perfect": "کمال",
+      "wordsLearned": "{{count}} لفظ سکھے",
+      "unitComplete": "یونٹ مکمل: {{name}}",
+      "streakDay": "لگاتار {{count}}",
+      "placementDone": "پدھر طے ہو گیا"
+    },
+    "rare": {
+      "reveal": "کجھ خاص…",
+      "etymologyGem": "لفظ دی کہانی",
+      "timeCapsule": {
+        "title": "ٹائم کیپسول",
+        "body": "تُسیں ایس تے {{when}} بڑی محنت کیتی — ہُن اپنے آپ نوں ویکھو۔"
+      },
+      "delight": {
+        "newVoice": "اک وکھری آواز",
+        "didYouNotice": "کی تُسیں نوٹ کیتا؟"
+      },
+      "miniGame": {
+        "title": "بونس راؤنڈ",
+        "play": "کھیڈو"
+      },
+      "story": {
+        "unlocked": "تُسیں اگلا باب کما لیا",
+        "read": "پڑھو"
+      }
+    },
+    "placement": {
+      "offerTitle": "کتھوں شروع کریے؟",
+      "offerBody": "کجھ چھیتی سوال تُہاڈا شروعاتی نقطہ لبھ لیندے نیں۔ تقریباً پنج منٹ۔",
+      "startNew": "میں {{lang}} وچ نواں آں",
+      "placeMe": "مینوں تھوڑی {{lang}} آندی اے",
+      "skipItem": "یقین نہ ہووے تے چھڈ دیو",
+      "doneTitle": "شروعاتی نقطہ لبھ گیا",
+      "doneBody": "{{unit}} توں شروع کر رہے آں۔",
+      "prelit": "تُسیں {{count}} پہلاں توں جانی پچھانی شیواں نال شروع کردے او۔",
+      "redo": "میرا پدھر فیر جانچو",
+      "aboveTitle": "تُسیں ایس کورس توں اگے او",
+      "aboveBody": "ایہ کورس فی الحال شروعاتی مواد تک اے تے تُسیں ایس توں اُتے او۔ فیر وی ویکھ سکدے او — نویں پدھر آ رہے نیں۔",
+      "aboveFrontier": "تُسیں ایس کورس دے بہتیرے حصے توں اگے او — {{unit}} توں شروع ہو رہے آں۔"
+    },
+    "path": {
+      "title": "تُہاڈا راہ",
+      "arc": "قوس {{name}}",
+      "unit": "یونٹ {{n}}",
+      "locked": "اگے",
+      "current": "تُسیں ایتھے او",
+      "review": "دہرائی لئی چھوہو",
+      "mastered": "پکا"
+    },
+    "streak": {
+      "pactTitle": "لڑی رکھیے؟",
+      "pactBody": "اپݨی رفتار قائم رکھو۔ اک آرام دا دن خلا پُر کردا اے — ہر ہفتے اک ملدا اے۔",
+      "pactAccept": "میں تیار آں",
+      "pactDecline": "نہیں، شکریہ",
+      "days": "لگاتار {{count}}",
+      "restDayEarned": "آرام دا دن کمایا",
+      "restDayUsed": "{{day}} آرام دا دن سی",
+      "repairTitle": "اپنی لڑی واپس لوو",
+      "repairBody": "اگلے {{days}} دناں وچ دو سیشن مکمل کرو تاں جو تُہاڈی {{count}} دناں دی لڑی بحال ہووے۔",
+      "repairCta": "شروع کرو"
+    },
+    "block": {
+      "speakingIntro": "بولن دی مشق — {{count}} کارڈ",
+      "ready": "تیار",
+      "loadingModel": "مائیک تیار ہو رہیا اے…",
+      "micPrompt": "Corpán ایس ڈیوائس تے تُہاڈی بولی جانچن لئی مائیک ورتدا اے۔",
+      "sttUnavailable": "بولن دی جانچ ہُن دستیاب نہیں — سُنن دی مشق ول جا رہے آں۔"
+    },
+    "quota": {
+      "cardsLeft": "اَج {{count}} کارڈ باقی",
+      "plusBody": "Corpán Plus روزانہ کارڈاں دی حد ہٹا دیندا اے۔"
+    },
+    "welcomeBack": {
+      "title": "جی آیاں نوں",
+      "body": "تُہاڈیاں دہرائیاں نے اپنی طاقت دا {{pct}}٪ رکھیا۔ آؤ وارم اپ کریے۔"
+    },
+    "tease": {
+      "next": "اگلی واری: {{title}}"
+    },
+    "jump": {
+      "title": "کی ایہ بہت سوکھا لگدا اے؟",
+      "body": "اگے ٹپن لئی اک چھوٹا چیلنج لوو۔ جے ناکام ہو جاوو تے کجھ نہیں گواندے — اوتھے ای رہندے او جتھے او۔",
+      "accept": "چیلنج آزماؤ",
+      "decline": "ایتھے ای رہواں گا"
+    },
+    "feed": {
+      "caughtUp": "فی الحال سب کجھ ہو گیا",
+      "loading": "تُہاڈے کارڈ تیار ہو رہے نیں…",
+      "loadError": "Journey لوڈ نہیں ہو سکیا۔ گھر توں فیر کوشش کرو۔",
+      "retry": "دوبارہ کوشش کرو"
+    },
+    "popin": {
+      "pronounceTitle": "ایہدا تلفظ کرو",
+      "close": "بند کرو"
+    },
+    "settings": {
+      "title": "Journey دے اختیار",
+      "advanceMode": "اگے ودھنا",
+      "advanceSwipe": "جاری رکھن لئی سوائپ",
+      "advanceAuto": "آپے جاری رکھو",
+      "celebration": "جشن",
+      "celebrationFull": "پورے",
+      "celebrationReduced": "گھٹ",
+      "celebrationMinimal": "گھٹ توں گھٹ",
+      "sounds": "آوازاں",
+      "soundsOn": "چالو",
+      "soundsOff": "بند",
+      "listeningMode": "ہینڈز فری سُننا",
+      "viewPath": "راہ ویکھو",
+      "redoPlacement": "میرا پدھر فیر جانچو"
+    },
+    "word": {
+      "inContext": "سیاق و سباق وچ",
+      "meaningShow": "معنی",
+      "meaningHide": "لکاؤ"
+    },
+    "wordPack": {
+      "title": "لفظاں دے معنے",
+      "body": "چلدے چلدے لفظاں دے معنے {{language}} وچ پڑھو۔",
+      "add": "شامل کرو ({{size}})",
+      "dismiss": "ہُن نئیں",
+      "downloading": "شامل ہو ریہا اے… {{percent}}%",
+      "failed": "شامل نئیں ہو سکیا",
+      "retry": "فیر کوشش کرو"
+    },
+    "imagePack": {
+      "title": "تصویراں شامل کرو",
+      "body": "متن دی بجائے تصویراں نال کجھ لفظ سِکھو۔",
+      "dismiss": "ہُݨ نئیں",
+      "add": "شامل کرو ({{size}})",
+      "downloading": "شامل ہو رہیا اے… {{percent}}%",
+      "retry": "مُڑ کوشش کرو",
+      "failed": "شامل نئیں ہو سکیا"
+    },
+    "interlude": {
+      "gameCue": "چھیتی کھیڈ · اک فقرہ",
+      "readerCue": "چھیتی پڑھائی · اک حصہ"
+    }
   }
 }

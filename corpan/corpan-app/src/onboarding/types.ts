@@ -34,10 +34,26 @@ export type Draft = {
   /** The single-choice final question ("Where should we begin?") — makes the
    *  DETERMINISTIC landing call (see resolveLanding). Interests still feed the
    *  broader Home "For you" recommendations. */
-  whatToStart?: "read" | "study" | "playMusic" | "playGames" | "surprise"
+  whatToStart?: "read" | "study" | "playMusic" | "playGames" | "surprise" | "journey"
   /** Set by the finish screen's "Explore on my own" escape — suppresses the
    *  best-fit auto-launch so the user lands on Home / the guided tour instead. */
   skipAutoLaunch?: boolean
+  /** Journey opt-in (W10): the learner path's guided-daily-path question.
+   *  True ⇒ commit lands the user in the Journey feed. */
+  journeyOptIn?: boolean
+  /** The onboarding placement-offer answer: "zero-beginner" pre-declines the
+   *  in-surface probe offer (start at unit 1); "probe" leaves it to the
+   *  surface's PlacementFlow (real probe cards need the live engine). */
+  journeyPlacement?: "zero-beginner" | "probe"
+  /** Set once `pickPhrasePacks` silently auto-advances because the starter
+   *  catalog was already fully installed (CTO feedback: that case should
+   *  skip the step, not show a "you already have these" message). The draft
+   *  survives Back (see `journeyOptIn`'s note above), so this flag is what
+   *  stops the step from re-skipping itself the instant Back lands on it —
+   *  without it, Back → pickPhrasePacks → auto-advance → tts would trap the
+   *  user in a forward-bounce loop. On a guarded re-entry the step renders
+   *  its normal (pre-existing) "already installed" fallback instead. */
+  phrasePacksAutoSkipped?: boolean
 }
 
 /** Context handed to every node callback. */
@@ -73,6 +89,15 @@ export type QuestionOption = {
   /** Side effect on choose — write to the draft. */
   apply?: (ctx: NodeCtx) => void
   next: NextSpec
+  /** Optional async availability gate. When present and it resolves `false`,
+   *  the option renders disabled (with `unavailableKey` as a sub-note) instead
+   *  of a dead-end tap. Optimistic: the option stays enabled while the check is
+   *  in flight and if the check throws — the flow is never blocked on a slow
+   *  network. Used by `journeyOptIn`'s guided path to avoid offering a Journey
+   *  with no course pack for the target language. */
+  available?: (ctx: NodeCtx) => Promise<boolean>
+  /** Localized note shown under the option when `available` resolves false. */
+  unavailableKey?: string
 }
 
 export type QuestionNode = {
@@ -141,6 +166,14 @@ export type OnboardingStepProps = {
   /** Finish-screen only: advance to commit but suppress the best-fit
    *  auto-launch (the "Explore on my own" escape → land on Home/tour). */
   onAdvanceExplore?: () => void
+  /** pickPhrasePacks only: mirrors `Draft.phrasePacksAutoSkipped` — read by
+   *  the step to decide whether it's already silently skipped itself once
+   *  (survives its own unmount/remount across Back, since the draft isn't
+   *  reset by Back; see the field's doc in `Draft`). */
+  phrasePacksAutoSkipped?: boolean
+  /** pickPhrasePacks only: record that the silent auto-skip happened, so a
+   *  Back re-entry renders the fallback UI instead of bouncing forward again. */
+  markPhrasePacksAutoSkipped?: () => void
 }
 
 export function resolveNext(spec: NextSpec, ctx: NodeCtx): NodeId {

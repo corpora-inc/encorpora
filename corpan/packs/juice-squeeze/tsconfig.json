@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
@@ -14,7 +18,41 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@shared/capabilities/core": [
+        "../shared/capabilities/core/index.ts"
+      ],
+      "@shared/capabilities/squeeze": [
+        "../shared/capabilities/squeeze/index.ts"
+      ],
+      "@shared/capabilities/*": [
+        "../shared/capabilities/*"
+      ],
+      "react": [
+        "./node_modules/@types/react"
+      ],
+      "react/jsx-runtime": [
+        "./node_modules/@types/react/jsx-runtime.d.ts"
+      ],
+      "react-dom": [
+        "./node_modules/@types/react-dom"
+      ],
+      "react-dom/client": [
+        "./node_modules/@types/react-dom/client.d.ts"
+      ],
+      "@dnd-kit/core": [
+        "./node_modules/@dnd-kit/core/dist/index.d.ts"
+      ],
+      "zustand": [
+        "./node_modules/zustand/index.d.ts"
+      ],
+      "zustand/*": [
+        "./node_modules/zustand/*"
+      ]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

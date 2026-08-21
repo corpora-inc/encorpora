@@ -70,6 +70,12 @@ describe("QUOTAS registry", () => {
       softNagEvery: 0,
       unitLabel: "phrases",
     })
+    expect(QUOTAS.journey_daily).toMatchObject({
+      packId: "corpan_app",
+      dailyLimit: 60, // provisional default pending the operator's free-tier N call (R12)
+      softNagEvery: 0,
+      unitLabel: "cards",
+    })
     expect(QUOTAS.hover_phrases).toMatchObject({ packId: "hover-runner", dailyLimit: 20 })
     expect(QUOTAS.juice_phrases).toMatchObject({ packId: "juice_squeeze", dailyLimit: 20 })
     expect(QUOTAS.hanzipan_chars).toMatchObject({

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Dynawalla",
+  "version": "0.3.11",
+  "identifier": "inc.corpora.dynawalla",
+  "build": {
+    "beforeDevCommand": "npm run packs && npm run dev",
+    "devUrl": "http://127.0.0.1:1423",
+    "beforeBuildCommand": "npm run packs && npm run tsc && npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Dynawalla",
+        "width": 1000,
+        "height": 760,
+        "minWidth": 360,
+        "minHeight": 480
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' ipc: http://ipc.localhost; media-src 'none'; object-src 'none'; frame-src dynawalla-pack: http://dynawalla-pack.localhost; worker-src 'none'; base-uri 'none'; form-action 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png"
+    ],
+    "iOS": {
+      "minimumSystemVersion": "16.0",
+      "developmentTeam": "F9AV5HKF6N",
+      "template": "src-tauri/ios/project.yml"
+    },
+    "android": {
+      "minSdkVersion": 26
+    },
+    "resources": [
+      "packs"
+    ]
+  }
+}

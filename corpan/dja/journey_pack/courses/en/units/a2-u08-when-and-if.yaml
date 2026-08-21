@@ -1,0 +1,76 @@
+id: en.a2.u08
+arc: en.arc2
+theme: "When and if"
+cando:
+  - key: conditions
+    text: "Can say what happens or will happen if a condition is met, using if with the present or with will."
+  - key: timing
+    text: "Can link one future action to another with when or as soon as."
+vocab_band: { lo: 1, hi: 4156 }
+phrase_domains: [everyday, environment, travel]
+skills:
+  - id: en.skill.conditions
+    kind: grammar
+    title: "If and when"
+    b: -1.4
+    prereqs: [en.skill.arrangements]
+grammar_nodes: [en.gn.time-clauses, en.gn.cond-zero, en.gn.cond-first]
+items:
+  - ref: "phrase:base:12382"  # He will call you as soon as he arrives.
+    skills: [en.skill.conditions]
+    importance: 3
+    substitutable: true
+    b: -1.4
+  - ref: "phrase:base:15879"  # The trip costs less if you book early.
+    skills: [en.skill.conditions]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:14390"  # If you’re late, you’ll miss the bus.
+    skills: [en.skill.conditions]
+    importance: 3
+    probe: true
+    b: -1.4
+  - ref: "phrase:base:18667"  # If it rains, wear your raincoat.
+    skills: [en.skill.conditions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16962"  # When will the rain stop?
+    skills: [en.skill.conditions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20531"  # If the weather is nice, let’s go for a walk.
+    skills: [en.skill.conditions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:18488"  # If the weather is nice, we’ll go hiking.
+    skills: [en.skill.conditions]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:if"
+    skills: [en.skill.conditions]
+    importance: 2
+  - ref: "word:en:when"
+    skills: [en.skill.conditions]
+    importance: 2
+  - ref: "word:en:sunny"
+    skills: [en.skill.conditions]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, environment, travel]
+      level: A2
+      count: 10
+      skills: [en.skill.conditions]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

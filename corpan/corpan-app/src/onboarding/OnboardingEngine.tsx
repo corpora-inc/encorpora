@@ -33,6 +33,7 @@ export function OnboardingEngine() {
   switch (node.kind) {
     case "adapter": {
       const Comp = ONBOARDING_COMPONENTS[node.component]
+      const ctx = g.makeCtx()
       return (
         <Comp
           key={node.id}
@@ -41,9 +42,14 @@ export function OnboardingEngine() {
           // Finish screen's "Explore on my own" escape: flag the draft so
           // commitDraft skips the best-fit auto-launch, then advance to commit.
           onAdvanceExplore={() => {
-            g.makeCtx().patch({ skipAutoLaunch: true })
+            ctx.patch({ skipAutoLaunch: true })
             g.advance()
           }}
+          // pickPhrasePacks' silent-skip guard — see Draft.phrasePacksAutoSkipped.
+          // `ctx.patch` writes through the graph's persistent draft ref (not
+          // React state), so this survives the step's own unmount on Back.
+          phrasePacksAutoSkipped={ctx.draft.phrasePacksAutoSkipped}
+          markPhrasePacksAutoSkipped={() => ctx.patch({ phrasePacksAutoSkipped: true })}
         />
       )
     }

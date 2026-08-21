@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.truedraw",
+  "version": "0.1.0",
+  "name": "THE TRUE DRAW",
+  "description": "A statement is cut into a slate across the dust. Swipe DOWN to keep it, swipe UP to throw it away. Keep the sums that are right; throw away the ones that are wrong. Right calls fill your bag, a wrong call either way empties it faster, and running out of time costs nothing.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ]
+  },
+  "minAge": 6,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

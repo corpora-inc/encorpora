@@ -1,0 +1,21 @@
+node_modules/
+dist/
+
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/
+
+# Playtest capture output: multi-MB PNGs, regenerated on demand.
+qa/shots
+qa/tmp
+
+# Not tracked. `packs/build.mjs` and the `dynawalla-packs` CI job both branch on
+# this file — `npm ci` when it is committed, `npm install` when it is not — so
+# either choice builds.
+#
+# Worth knowing, though: the five packs that shipped before this one all commit
+# theirs, and this pack is installed on a child's tablet rather than merely run
+# from a checkout. `three` is pinned at `^0.185.1`, so an unlocked install is
+# free to resolve a different minor and change the shipped bundle with nothing
+# in the diff to show for it. If pack builds are ever required to be
+# byte-reproducible, committing this file is the first thing to change.
+package-lock.json

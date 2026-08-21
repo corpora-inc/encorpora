@@ -1,0 +1,25 @@
+{
+  "name": "@dynawalla/game-polarity",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "POLARITY — a neon vector shmup where your ship's sign IS the arithmetic: match a bullet's polarity to absorb it into a running signed sum, flip to phase through the wrong answers.",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:pack": "vite build --config vite.pack.config.ts",
+    "preview": "vite preview --port 4211 --strictPort",
+    "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'src/**/*.test.ts'"
+  },
+  "dependencies": {
+    "three": "^0.181.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/three": "^0.181.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}

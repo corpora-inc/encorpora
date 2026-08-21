@@ -1,0 +1,24 @@
+{
+  "name": "@dynawalla/game-guilty",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shoot the Guilty Number — a fixed-position arithmetic shooter in a bioluminescent trench.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4179",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "check": "npm run tsc && npm test",
+    "build:pack": "vite build --config vite.pack.config.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7"
+  }
+}

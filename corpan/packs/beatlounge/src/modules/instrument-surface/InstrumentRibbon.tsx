@@ -35,8 +35,9 @@ import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade, LiveVoiceHandle } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
 import { useRecordArm, isRecordArmed } from "../../store/recordArm"
-import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
-import { stepForTick } from "../../model/timing"
+import { findTrack, isInstrumentTrack, type Id, type Tick } from "../../model/document"
+import { gridTicks, stepForTick } from "../../model/timing"
+import { heldNoteDuration } from "./recordSustain"
 import {
   KEY_NAMES,
   midiToX,
@@ -94,6 +95,11 @@ interface Touch {
   lastRecordedStep: number
   /** The finger's current x (0..1) — drives its own lit marker. */
   x: number
+  /** The recorded note this finger is currently holding — so a later crossing
+   *  or the release can extend its DURATION to how long it was held (#397). */
+  recNoteId?: Id
+  /** The held note's start tick (its own coordinate for the duration math). */
+  recNoteTick?: Tick
 }
 
 /** How many simultaneous lit markers the surface can show (one per finger). A
@@ -183,7 +189,12 @@ export const InstrumentRibbon = ({
   useEffect(() => {
     const map = touches.current
     return () => {
-      for (const t of map.values()) t.handle?.release()
+      // Switching voice / unmounting mid-hold: seal each finger's sustain, then
+      // release its live voice so nothing dangles and no note stays a dot (#397).
+      for (const t of map.values()) {
+        closeRecordedNote(t)
+        t.handle?.release()
+      }
       map.clear()
       for (const node of markerRefs.current) if (node) node.style.opacity = "0"
       for (const label of markerLabelRefs.current) if (label) label.textContent = ""
@@ -310,7 +321,44 @@ export const InstrumentRibbon = ({
       midi,
     })
     t.lastRecordedStep = result.lastRecordedStep
-    if (result.command) store.dispatch(result.command)
+    if (!result.command || result.command.t !== "addNote") return
+    // A NEW note begins here → the finger's previous held note ends now: extend
+    // it to the current playhead before laying the next one (#397 legato hold).
+    closeRecordedNote(t)
+    store.dispatch(result.command)
+    // Remember the note we just laid (unique tick+pitch at this instant — the
+    // placement guard rejects a duplicate cell) so a later crossing / the
+    // release can sustain it. Its id is assigned by the reducer, so read it back.
+    const laid = result.command.note
+    const after = findTrack(store.vanilla.getState().doc, trackId)
+    const added =
+      after && isInstrumentTrack(after)
+        ? after.notes.find((n) => n.tick === laid.tick && n.pitch === laid.pitch)
+        : undefined
+    t.recNoteId = added?.id
+    t.recNoteTick = added?.tick
+  }
+
+  /** Sustain the note this finger has been holding: patch its duration to how
+   *  long it was held (note-on → now). No-op for a tap — the one-step note that
+   *  placeRecordedNote already laid is left alone, so there's no undo churn. */
+  const closeRecordedNote = (t: Touch) => {
+    const noteId = t.recNoteId
+    if (!noteId || t.recNoteTick == null) return
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (cur && isInstrumentTrack(cur)) {
+      const dur = heldNoteDuration(
+        t.recNoteTick,
+        playTickRef.current,
+        cur.grid,
+        live.current.quantizeRecord
+      )
+      if (dur > gridTicks(cur.grid)) {
+        store.dispatch({ t: "editNote", trackId, noteId, patch: { duration: dur } })
+      }
+    }
+    t.recNoteId = undefined
+    t.recNoteTick = undefined
   }
 
   const onDown = (e: React.PointerEvent) => {
@@ -369,6 +417,8 @@ export const InstrumentRibbon = ({
   const endPointer = (e: React.PointerEvent) => {
     const t = touches.current.get(e.pointerId)
     if (!t) return
+    // Seal the held note's sustain at the release before the voice goes silent.
+    closeRecordedNote(t)
     t.handle?.release()
     touches.current.delete(e.pointerId)
     paintMarkers()

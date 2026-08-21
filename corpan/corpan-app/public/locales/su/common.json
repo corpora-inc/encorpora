@@ -208,6 +208,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Coba basa anu anjeun pelajari. Garuk dugi ka nempel."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Jalan dipandu anjeun, kartu demi kartu"
     }
   },
   "onboarding": {
@@ -366,6 +370,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik anjeun",
+      "availableSummary": "{{count}} pakét frasa sayaga · ~{{size}} MB",
+      "installAll": "Pasang sadaya",
+      "chooseIndividually": "Pilih hiji-hiji",
+      "installing": "Masang {{current}} tina {{total}}…",
+      "someFailed": "{{count}} pakét teu tiasa dipasang. Anjeun tiasa nyobian deui tina tab Pakét.",
+      "allInstalled": "Anjeun parantos gaduh pakét frasa awal.",
+      "installed": "Kapasang",
       "loading": "Ngamuat paket…",
       "selectAll": "Pilih sadayana ({{count}})",
       "clearAll": "Hapus pilihan",
@@ -408,6 +419,23 @@
       "surprise": {
         "label": "Kageteun kuring!",
         "desc": "Bawa kuring ka tempat anu pikaresepeun."
+      },
+      "journey": {
+        "label": "Tuturkeun Journey",
+        "desc": "Kursus dipandu — aplikasi milih unggal léngkah saterusna"
+      }
+    },
+    "journey": {
+      "title": "Kumaha anjeun hoyong diajar {{lang}}?",
+      "subtitle": "Journey nyayogikeun campuran matéri anyar sareng pangulangan unggal dinten dina {{lang}} — kartu demi kartu.",
+      "guided": {
+        "label": "Jalur harian dipandu",
+        "desc": "Sesi harian anu singget, dirarancang pikeun anjeun.",
+        "unavailable": "Jalur nu dipandu tacan sayagi pikeun {{lang}}."
+      },
+      "explore": {
+        "label": "Lampah sorangan",
+        "desc": "Jelajah carita, latihan, sareng kaulinan ku sorangan."
       }
     }
   },
@@ -639,6 +667,8 @@
     "installStuckTitle": "Unduh terhenti",
     "installStuckDetail": "Teu aya kamajuan pikeun sababaraha waktos. Periksa sambungan anjeun sareng cobian deui.",
     "installFailedTitle": "Pasang gagal",
+    "updateUnavailableTitle": "Apdet teu sayaga",
+    "updateUnavailableDetail": "Undeuran ieu teu cocog jeung nu diarepkeun. Mangga cobian deui engke.",
     "devUnlockTitle": "Paket Pamekar",
     "devUnlockHint": "Ketok 7 kali pikeun ngaleupaskeun pasang manifest.",
     "devUnlockToast": "Paket Pamekar dibuka.",
@@ -851,6 +881,232 @@
     "install": "Pasang ({{size}})",
     "installing": "Masang…",
     "installed": "Dipasang",
-    "retry": "Cobian deui"
+    "retry": "Cobian deui",
+    "explains": "Kecap {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Jalan dipandu anjeun, kartu demi kartu",
+    "heroCard": {
+      "title": "Journey anjeun",
+      "progress": "{{unit}} · {{count}} deui ka tonggak salajengna"
+    },
+    "heroCta": {
+      "start": "Mimitian Journey anjeun",
+      "continue": "Teruskeun"
+    },
+    "chrome": {
+      "home": "Imah",
+      "menu": "Pilihan Journey",
+      "unit": "Unit {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Parios",
+      "continue": "Teruskeun",
+      "skipHint": "Gesek deui pikeun ngaliwat",
+      "retry": "Cobian deui",
+      "showAnswer": "Témbongkeun jawaban",
+      "answerWas": "Jawabanana nyaéta",
+      "comeBackNote": "Urang bakal balik deui ka ieu.",
+      "whyThisCard": "Naha kartu ieu?",
+      "whyNew": "Hal anyar tina unit anjeun ayeuna.",
+      "whyReview": "Pangulangan — jarak waktu ngajaga tetep kuat.",
+      "whyRepair": "Ningali deui hal nu hésé.",
+      "whyGuided": "Bagian tina jalan dipandu anjeun.",
+      "typeWhatYouHear": "Ketik nu kadéngé",
+      "typeHere": "Ketik di dieu…",
+      "tapToOrder": "Toél kecap sacara berurutan",
+      "matchPairs": "Pasangkeun pasanganana",
+      "flipToReveal": "Toél pikeun muka",
+      "knewIt": "Kuring apal",
+      "didntKnow": "Can",
+      "speakNow": "Ayeuna nyarita",
+      "listen": "Dangukeun",
+      "listenSlow": "Langkung laun",
+      "hint": "Pituduh",
+      "correct": "Leres",
+      "incorrect": "Can pas",
+      "pickTranslation": "Pilih tarjamahanana",
+      "pickWhatYouHear": "Pilih nu kadéngé",
+      "fillTheBlank": "Eusian nu kosong",
+      "newItem": "Anyar",
+      "reviewedEarlier": "Geus katingal"
+    },
+    "intro": {
+      "listenAndEcho": "Dangukeun, teras ucapkeun tarik",
+      "newWord": "Kecap anyar",
+      "newPhrase": "Frasa anyar"
+    },
+    "grammar": {
+      "noteLabel": "Catetan tata basa",
+      "tryIt": "Cobian",
+      "contrastLabel": "Dibandingkeun jeung basa anjeun"
+    },
+    "word": {
+      "inContext": "Dina konteks",
+      "meaningShow": "Harti",
+      "meaningHide": "Sumputkeun"
+    },
+    "checkpoint": {
+      "title": "Pos pamariksaan",
+      "summaryNew": "{{count}} anyar",
+      "summaryReviews": "{{count}} ngulang",
+      "done": "Cekap kanggo poé ieu",
+      "keepGoing": "Teruskeun",
+      "dailyRing": "{{count}} sési ieu",
+      "deepSession": "Sesi nu jero pisan — pangulangan anjeun tetep dijadwalkeun.",
+      "streakTicked": "{{count}} berturut ✓",
+      "boss": "Tangtangan unit",
+      "arcGate": "Gapura busur"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Sampurna",
+        "nice": "Sae",
+        "brilliant": "Hébat",
+        "boom": "Dor",
+        "nailed": "Pas pisan",
+        "unstoppable": "Teu kaeureunan",
+        "onFire": "Keur panas",
+        "yes": "Enya!",
+        "clean": "Beresih",
+        "sharp": "Seukeut",
+        "wow": "Wah",
+        "magic": "Sihir"
+      },
+      "combo": "{{count}} nyambung",
+      "perfect": "Sampurna",
+      "wordsLearned": "{{count}} kecap diajar",
+      "unitComplete": "Unit réngsé: {{name}}",
+      "streakDay": "{{count}} berturut",
+      "placementDone": "Tingkat ditangtukeun"
+    },
+    "rare": {
+      "reveal": "Aya nu istimewa…",
+      "etymologyGem": "Carita kecap",
+      "timeCapsule": {
+        "title": "Kapsul waktu",
+        "body": "Anjeun digawé teuas kana ieu {{when}} — tingali diri anjeun ayeuna."
+      },
+      "delight": {
+        "newVoice": "Sora nu béda",
+        "didYouNotice": "Naha anjeun perhatikeun?"
+      },
+      "miniGame": {
+        "title": "Babak bonus",
+        "play": "Ulin"
+      },
+      "story": {
+        "unlocked": "Anjeun pantes kana bab saterusna",
+        "read": "Baca"
+      }
+    },
+    "placement": {
+      "offerTitle": "Ti mana urang mimitian?",
+      "offerBody": "Sababaraha patarosan gancang manggihan titik awal anjeun. Kira-kira lima menit.",
+      "startNew": "Kuring anyar kana {{lang}}",
+      "placeMe": "Kuring apal saeutik {{lang}}",
+      "skipItem": "Liwat upami teu yakin",
+      "doneTitle": "Titik awal kapanggih",
+      "doneBody": "Dimimitian di {{unit}}.",
+      "prelit": "Anjeun ngamimitian ku {{count}} item nu geus dipikanyaho.",
+      "redo": "Parios deui tingkat kuring",
+      "aboveTitle": "Anjeun ngaliwatan kursus ieu",
+      "aboveBody": "Kursus ieu ayeuna ngawengku bahan pemula, sarta anjeun aya di luhurna. Tetep bisa dijelajah — tingkat anyar keur datang.",
+      "aboveFrontier": "Anjeun geus ngaliwatan lolobana kursus ieu — mimitian ti {{unit}}."
+    },
+    "path": {
+      "title": "Jalan anjeun",
+      "arc": "Busur {{name}}",
+      "unit": "Unit {{n}}",
+      "locked": "Payun",
+      "current": "Anjeun di dieu",
+      "review": "Toél pikeun ngulang",
+      "mastered": "Kuat"
+    },
+    "streak": {
+      "pactTitle": "Ngajaga runtuyan?",
+      "pactBody": "Jaga sumanget anjeun. Poé istirahat nutupan celah — anjeun kéngingkeun hiji unggal minggu.",
+      "pactAccept": "Kuring milu",
+      "pactDecline": "Henteu, nuhun",
+      "days": "{{count}} berturut",
+      "restDayEarned": "Poé reureuh kapimilik",
+      "restDayUsed": "{{day}} téh poé reureuh",
+      "repairTitle": "Pulangkeun runtuyan anjeun",
+      "repairBody": "Réngsékeun dua sesi dina {{days}} poé ka hareup pikeun mulangkeun runtuyan {{count}} poé anjeun.",
+      "repairCta": "Mimitian"
+    },
+    "block": {
+      "speakingIntro": "Latihan nyarita — {{count}} kartu",
+      "ready": "Siap",
+      "loadingModel": "Nyiapkeun mikropon…",
+      "micPrompt": "Corpán maké mikropon pikeun meunteun ucapan anjeun dina alat ieu.",
+      "sttUnavailable": "Peunteun ucapan ayeuna teu sadia — pindah ka latihan ngadangukeun."
+    },
+    "quota": {
+      "cardsLeft": "Kantun {{count}} kartu poé ieu",
+      "plusBody": "Corpán Plus ngaleungitkeun wates kartu poéan."
+    },
+    "welcomeBack": {
+      "title": "Wilujeng sumping deui",
+      "body": "Pangulangan anjeun nahan {{pct}}% kakuatanana. Hayu pemanasan."
+    },
+    "tease": {
+      "next": "Engké deui: {{title}}"
+    },
+    "jump": {
+      "title": "Karasa gampang teuing?",
+      "body": "Cokot tangtangan pondok pikeun luncat ka hareup. Upami gagal moal leungit nanaon — anjeun tetep di tempat anjeun.",
+      "accept": "Cobian tangtanganana",
+      "decline": "Tetep di dieu"
+    },
+    "feed": {
+      "caughtUp": "Ayeuna mah geus bérés kabéh",
+      "loading": "Nyiapkeun kartu anjeun…",
+      "loadError": "Journey teu bisa dimuat. Cobian deui ti Imah.",
+      "retry": "Cobian deui"
+    },
+    "popin": {
+      "pronounceTitle": "Ucapkeun",
+      "close": "Tutup"
+    },
+    "settings": {
+      "title": "Pilihan Journey",
+      "advanceMode": "Pindah",
+      "advanceSwipe": "Gesek pikeun neruskeun",
+      "advanceAuto": "Terus otomatis",
+      "celebration": "Perayaan",
+      "celebrationFull": "Pinuh",
+      "celebrationReduced": "Dikurangan",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Sora",
+      "soundsOn": "Hurung",
+      "soundsOff": "Pareum",
+      "listeningMode": "Ngadangukeun bébas leungeun",
+      "viewPath": "Tingali jalan",
+      "redoPlacement": "Parios deui tingkat kuring"
+    },
+    "wordPack": {
+      "title": "Harti kecap",
+      "body": "Baca harti kecap dina basa {{language}} bari diajar.",
+      "add": "Tambahkeun ({{size}})",
+      "dismiss": "Ulah heula",
+      "downloading": "Nambahkeun… {{percent}}%",
+      "failed": "Teu bisa ditambahkeun",
+      "retry": "Cobian deui"
+    },
+    "imagePack": {
+      "title": "Tambahkeun gambar",
+      "body": "Diajar kecap ku gambar tinimbang téks.",
+      "dismiss": "Ulah ayeuna",
+      "add": "Tambahkeun ({{size}})",
+      "downloading": "Nambahkeun… {{percent}}%",
+      "retry": "Cobian deui",
+      "failed": "Gagal nambahkeun"
+    },
+    "interlude": {
+      "gameCue": "Kaulinan gancang · hiji frasa",
+      "readerCue": "Maca gancang · hiji bagian"
+    }
   }
 }

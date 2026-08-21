@@ -25,7 +25,6 @@ import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { useWordPackCatalogStore } from "@/store/wordPackCatalog";
-import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
@@ -44,8 +43,11 @@ import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster"
 import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
 import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLanding";
 import type { PackLaunchEntry } from "@/contentPacks/types";
-
-const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
+import { installTriggers } from "@/lib/offlineCache/triggers";
+import { registerCoreResources } from "@/lib/offlineCache/resources";
+import { JourneyOverlay } from "@/journey/JourneyOverlay";
+import { JOURNEY_EXIT_EVENT } from "@/journey/JourneySurface";
+import type { ActivitySpec } from "@/contentPacks/activityContract";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -162,6 +164,11 @@ export default function App() {
   // instance, host-rendered, driven by the `corpan:daily-locked` event the
   // shared monetization gate dispatches when a pack hits its hard daily cap.
   const [dailyLock, setDailyLock] = useState<DailyLockContext | null>(null);
+  // The Journey feed — a full-screen overlay SIBLING of HomeHub in the same
+  // state-machine pattern as activeGame (readers/phrase_main over Home). It
+  // stays mounted UNDER the pack overlay (z-1050 < z-1100) when a pack-anchor
+  // card launches, so returning from the pack lands back on the feed.
+  const [journeyOpen, setJourneyOpen] = useState(false);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
@@ -191,6 +198,18 @@ export default function App() {
     (s) => s.fetchCatalog,
   );
   const fetchWordPackCatalog = useWordPackCatalogStore((s) => s.fetchCatalog);
+
+  // Offline-cache boot (offline-cache.md §3.2/§3.3): register the
+  // per-resource policy table once and install the revalidation triggers
+  // (startup / foreground / online / jittered interval) + the cover
+  // pre-warm. Since the phase-2 store migration (W12) this OWNS the whole
+  // refresh cadence — the catalog stores delegate to cachedFetch and pick
+  // up background revalidations via subscribeJson, so the old inline
+  // interval/focus/visibility refresh loop is retired.
+  useEffect(() => {
+    registerCoreResources();
+    return installTriggers();
+  }, []);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
@@ -227,50 +246,6 @@ export default function App() {
         console.warn("[App] phrase-pack rehydrate failed:", err);
       }
     })();
-  }, [fetchCatalog, fetchPhrasePackCatalog, fetchWordPackCatalog]);
-
-  // Keep the Home/discovery catalogs fresh while the app stays open. The
-  // stores enforce their own TTL + online checks and now revalidate with a
-  // cheap conditional GET (a 0-byte 304 when nothing changed), so this is
-  // almost always free and a real download happens only when the catalog
-  // actually changed. We also poll on focus / foreground and skip while
-  // hidden or offline.
-  //
-  // The interval is JITTERED per device (recursive setTimeout, not a fixed
-  // setInterval) so a fleet of millions never hits the catalog hosts in a
-  // synchronized wave when an update lands.
-  useEffect(() => {
-    const refreshStaleCatalogs = () => {
-      if (document.visibilityState === "hidden") return;
-      if (!navigator.onLine) return;
-      void fetchCatalog();
-      void fetchPhrasePackCatalog();
-      void fetchWordPackCatalog();
-    };
-
-    let timer = 0;
-    const scheduleNext = () => {
-      timer = window.setTimeout(() => {
-        refreshStaleCatalogs();
-        scheduleNext();
-      }, jitter(CATALOG_REFRESH_CHECK_INTERVAL_MS));
-    };
-    scheduleNext();
-
-    const onVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        refreshStaleCatalogs();
-      }
-    };
-
-    window.addEventListener("focus", refreshStaleCatalogs);
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener("focus", refreshStaleCatalogs);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
-    };
   }, [fetchCatalog, fetchPhrasePackCatalog, fetchWordPackCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without
@@ -571,6 +546,14 @@ export default function App() {
   }, [updateGameParam]);
 
   useEffect(() => {
+    // The Journey surface dispatches this on its Home/exit affordances
+    // (JourneySurface.tsx header contract) — the App owns the close.
+    const onJourneyExit = () => setJourneyOpen(false);
+    window.addEventListener(JOURNEY_EXIT_EVENT, onJourneyExit);
+    return () => window.removeEventListener(JOURNEY_EXIT_EVENT, onJourneyExit);
+  }, []);
+
+  useEffect(() => {
     // Quick Settings' "Full settings" opens the full modal OVER a running pack
     // (the pack stays mounted underneath — we never tear it down here).
     const onOpenSettings = () => setShowSettings(true);
@@ -731,6 +714,12 @@ export default function App() {
       return;
     }
 
+    if (intent.kind === "journey") {
+      // Onboarding journey opt-in → land straight in the Journey feed.
+      setJourneyOpen(true);
+      return;
+    }
+
     if (intent.kind === "experience") {
       if (intent.packId === "phrase_main") {
         openPhrase();
@@ -769,6 +758,7 @@ export default function App() {
         onSettings={() => setShowSettings(true)}
         onLaunchPhrase={openPhrase}
         onLaunchGame={handleLaunchGame}
+        onLaunchJourney={() => setJourneyOpen(true)}
       />
 
       <SettingsModal
@@ -789,6 +779,26 @@ export default function App() {
         <DailyLockOverlay context={dailyLock} onClose={() => setDailyLock(null)} />
       ) : null}
       <SystemPackInstaller />
+
+      {/* Journey feed overlay — full-screen SIBLING of the experience
+          overlay below (z-1050 vs the pack overlay's z-1100), so a
+          pack-anchor card's pack stacks over the still-mounted feed and
+          `corpan:exit` returns to it. Exit rides `corpan:journey-exit`. A
+          crash inside the feed drops back to Home, never a dead overlay. */}
+      {journeyOpen ? (
+        <ErrorBoundary onError={() => setJourneyOpen(false)}>
+          <JourneyOverlay
+            onLaunchPack={(packId: string, spec: ActivitySpec) => {
+              const g = useGamesStore.getState().getGame(packId);
+              if (g) {
+                handleLaunchGame(g, { activity: spec });
+              } else {
+                console.warn("[journey] pack-anchor launch: pack not installed:", packId);
+              }
+            }}
+          />
+        </ErrorBoundary>
+      ) : null}
 
       {/* Experience overlay. A pack (has manifestUrl) → ContentPackHost;
           the native phrase experience (no manifestUrl) → MainExperience.

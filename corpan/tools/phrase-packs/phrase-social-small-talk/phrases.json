@@ -1,0 +1,702 @@
+[
+  {
+    "english": "It's cold today, isn't it?",
+    "text": "It's cold today, isn't it?",
+    "level": "A2"
+  },
+  {
+    "english": "You're from Spain, aren't you?",
+    "text": "You're from Spain, aren't you?",
+    "level": "A2"
+  },
+  {
+    "english": "She's really nice, isn't she?",
+    "text": "She's really nice, isn't she?",
+    "level": "A2"
+  },
+  {
+    "english": "This is your bag, isn't it?",
+    "text": "This is your bag, isn't it?",
+    "level": "A2"
+  },
+  {
+    "english": "You like coffee, don't you?",
+    "text": "You like coffee, don't you?",
+    "level": "A2"
+  },
+  {
+    "english": "They live nearby, don't they?",
+    "text": "They live nearby, don't they?",
+    "level": "A2"
+  },
+  {
+    "english": "He can drive, can't he?",
+    "text": "He can drive, can't he?",
+    "level": "A2"
+  },
+  {
+    "english": "You don't mind, do you?",
+    "text": "You don't mind, do you?",
+    "level": "A2"
+  },
+  {
+    "english": "We've met before, haven't we?",
+    "text": "We've met before, haven't we?",
+    "level": "A2"
+  },
+  {
+    "english": "It's a lovely day, isn't it?",
+    "text": "It's a lovely day, isn't it?",
+    "level": "B1"
+  },
+  {
+    "english": "You didn't forget the keys, did you?",
+    "text": "You didn't forget the keys, did you?",
+    "level": "B1"
+  },
+  {
+    "english": "She's coming to the party, isn't she?",
+    "text": "She's coming to the party, isn't she?",
+    "level": "B1"
+  },
+  {
+    "english": "You've been here before, haven't you?",
+    "text": "You've been here before, haven't you?",
+    "level": "B1"
+  },
+  {
+    "english": "That wasn't so hard, was it?",
+    "text": "That wasn't so hard, was it?",
+    "level": "B1"
+  },
+  {
+    "english": "You couldn't help me for a second, could you?",
+    "text": "You couldn't help me for a second, could you?",
+    "level": "B1"
+  },
+  {
+    "english": "We should leave soon, shouldn't we?",
+    "text": "We should leave soon, shouldn't we?",
+    "level": "B1"
+  },
+  {
+    "english": "He hasn't called yet, has he?",
+    "text": "He hasn't called yet, has he?",
+    "level": "B1"
+  },
+  {
+    "english": "You wouldn't mind closing the window, would you?",
+    "text": "You wouldn't mind closing the window, would you?",
+    "level": "B1"
+  },
+  {
+    "english": "They're not coming, are they?",
+    "text": "They're not coming, are they?",
+    "level": "B1"
+  },
+  {
+    "english": "You'll be there tonight, won't you?",
+    "text": "You'll be there tonight, won't you?",
+    "level": "B1"
+  },
+  {
+    "english": "It doesn't rain much here, does it?",
+    "text": "It doesn't rain much here, does it?",
+    "level": "B1"
+  },
+  {
+    "english": "You've got a minute, haven't you?",
+    "text": "You've got a minute, haven't you?",
+    "level": "B1"
+  },
+  {
+    "english": "We're almost there, aren't we?",
+    "text": "We're almost there, aren't we?",
+    "level": "B1"
+  },
+  {
+    "english": "She used to work here, didn't she?",
+    "text": "She used to work here, didn't she?",
+    "level": "B1"
+  },
+  {
+    "english": "You can keep a secret, can't you?",
+    "text": "You can keep a secret, can't you?",
+    "level": "B1"
+  },
+  {
+    "english": "This bus goes downtown, doesn't it?",
+    "text": "This bus goes downtown, doesn't it?",
+    "level": "B1"
+  },
+  {
+    "english": "You weren't asleep, were you?",
+    "text": "You weren't asleep, were you?",
+    "level": "B1"
+  },
+  {
+    "english": "Let's take a break, shall we?",
+    "text": "Let's take a break, shall we?",
+    "level": "B1"
+  },
+  {
+    "english": "You couldn't possibly lend me a hand, could you?",
+    "text": "You couldn't possibly lend me a hand, could you?",
+    "level": "B2"
+  },
+  {
+    "english": "I suppose there's no point arguing, is there?",
+    "text": "I suppose there's no point arguing, is there?",
+    "level": "B2"
+  },
+  {
+    "english": "You haven't seen my glasses anywhere, have you?",
+    "text": "You haven't seen my glasses anywhere, have you?",
+    "level": "B2"
+  },
+  {
+    "english": "It's not exactly what we agreed on, is it?",
+    "text": "It's not exactly what we agreed on, is it?",
+    "level": "B2"
+  },
+  {
+    "english": "There's hardly any time left, is there?",
+    "text": "There's hardly any time left, is there?",
+    "level": "B2"
+  },
+  {
+    "english": "You wouldn't happen to know the way, would you?",
+    "text": "You wouldn't happen to know the way, would you?",
+    "level": "B2"
+  },
+  {
+    "english": "We've rather overdone it this time, haven't we?",
+    "text": "We've rather overdone it this time, haven't we?",
+    "level": "B2"
+  },
+  {
+    "english": "So do I.",
+    "text": "So do I.",
+    "level": "A2"
+  },
+  {
+    "english": "Neither can I.",
+    "text": "Neither can I.",
+    "level": "A2"
+  },
+  {
+    "english": "So am I.",
+    "text": "So am I.",
+    "level": "A2"
+  },
+  {
+    "english": "Me too.",
+    "text": "Me too.",
+    "level": "A2"
+  },
+  {
+    "english": "Neither do I.",
+    "text": "Neither do I.",
+    "level": "A2"
+  },
+  {
+    "english": "So did we.",
+    "text": "So did we.",
+    "level": "A2"
+  },
+  {
+    "english": "Neither am I.",
+    "text": "Neither am I.",
+    "level": "A2"
+  },
+  {
+    "english": "So can she.",
+    "text": "So can she.",
+    "level": "A2"
+  },
+  {
+    "english": "Neither did he.",
+    "text": "Neither did he.",
+    "level": "A2"
+  },
+  {
+    "english": "\"I love this song.\" \"So do I.\"",
+    "text": "\"I love this song.\" \"So do I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I can't swim.\" \"Neither can I.\"",
+    "text": "\"I can't swim.\" \"Neither can I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I'm really tired.\" \"So am I.\"",
+    "text": "\"I'm really tired.\" \"So am I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I don't eat meat.\" \"Neither do I.\"",
+    "text": "\"I don't eat meat.\" \"Neither do I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I've never been to Rome.\" \"Neither have I.\"",
+    "text": "\"I've never been to Rome.\" \"Neither have I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I'd love a coffee.\" \"So would I.\"",
+    "text": "\"I'd love a coffee.\" \"So would I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I was born in July.\" \"So was my sister.\"",
+    "text": "\"I was born in July.\" \"So was my sister.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I didn't sleep well.\" \"Neither did I.\"",
+    "text": "\"I didn't sleep well.\" \"Neither did I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I'm looking forward to the weekend.\" \"So am I.\"",
+    "text": "\"I'm looking forward to the weekend.\" \"So am I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I can't stand the heat.\" \"Neither can she.\"",
+    "text": "\"I can't stand the heat.\" \"Neither can she.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I've already eaten.\" \"So have we.\"",
+    "text": "\"I've already eaten.\" \"So have we.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I really enjoyed the film.\" \"So did everyone else.\"",
+    "text": "\"I really enjoyed the film.\" \"So did everyone else.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I'll have the fish.\" \"So will I.\"",
+    "text": "\"I'll have the fish.\" \"So will I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I hate waiting in line.\" \"So do I.\"",
+    "text": "\"I hate waiting in line.\" \"So do I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I wasn't invited either.\" \"Neither was I.\"",
+    "text": "\"I wasn't invited either.\" \"Neither was I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I'm not ready yet.\" \"Neither am I.\"",
+    "text": "\"I'm not ready yet.\" \"Neither am I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I'd rather stay home.\" \"So would I, honestly.\"",
+    "text": "\"I'd rather stay home.\" \"So would I, honestly.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I can never remember names.\" \"Neither can I.\"",
+    "text": "\"I can never remember names.\" \"Neither can I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I've got so much to do.\" \"So have I.\"",
+    "text": "\"I've got so much to do.\" \"So have I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I don't understand this at all.\" \"Neither do I.\"",
+    "text": "\"I don't understand this at all.\" \"Neither do I.\"",
+    "level": "B1"
+  },
+  {
+    "english": "\"I could really use a holiday.\" \"So could I.\"",
+    "text": "\"I could really use a holiday.\" \"So could I.\"",
+    "level": "B2"
+  },
+  {
+    "english": "\"I hadn't realized how late it was.\" \"Neither had I.\"",
+    "text": "\"I hadn't realized how late it was.\" \"Neither had I.\"",
+    "level": "B2"
+  },
+  {
+    "english": "\"I'd never have guessed.\" \"Neither would I.\"",
+    "text": "\"I'd never have guessed.\" \"Neither would I.\"",
+    "level": "B2"
+  },
+  {
+    "english": "\"I'm not entirely convinced.\" \"Neither am I, frankly.\"",
+    "text": "\"I'm not entirely convinced.\" \"Neither am I, frankly.\"",
+    "level": "B2"
+  },
+  {
+    "english": "\"I can't quite put my finger on it.\" \"Neither can I.\"",
+    "text": "\"I can't quite put my finger on it.\" \"Neither can I.\"",
+    "level": "B2"
+  },
+  {
+    "english": "\"I would have done the same.\" \"So would most people.\"",
+    "text": "\"I would have done the same.\" \"So would most people.\"",
+    "level": "B2"
+  },
+  {
+    "english": "It must be broken.",
+    "text": "It must be broken.",
+    "level": "A2"
+  },
+  {
+    "english": "She can't be home yet.",
+    "text": "She can't be home yet.",
+    "level": "A2"
+  },
+  {
+    "english": "You must be tired.",
+    "text": "You must be tired.",
+    "level": "A2"
+  },
+  {
+    "english": "That can't be right.",
+    "text": "That can't be right.",
+    "level": "A2"
+  },
+  {
+    "english": "He must be busy.",
+    "text": "He must be busy.",
+    "level": "A2"
+  },
+  {
+    "english": "This must be the place.",
+    "text": "This must be the place.",
+    "level": "A2"
+  },
+  {
+    "english": "You must be joking.",
+    "text": "You must be joking.",
+    "level": "B1"
+  },
+  {
+    "english": "They must be stuck in traffic.",
+    "text": "They must be stuck in traffic.",
+    "level": "B1"
+  },
+  {
+    "english": "She can't be serious.",
+    "text": "She can't be serious.",
+    "level": "B1"
+  },
+  {
+    "english": "That must be his brother.",
+    "text": "That must be his brother.",
+    "level": "B1"
+  },
+  {
+    "english": "It must be around here somewhere.",
+    "text": "It must be around here somewhere.",
+    "level": "B1"
+  },
+  {
+    "english": "He can't be more than twenty.",
+    "text": "He can't be more than twenty.",
+    "level": "B1"
+  },
+  {
+    "english": "You must be really proud of her.",
+    "text": "You must be really proud of her.",
+    "level": "B1"
+  },
+  {
+    "english": "This can't be the right address.",
+    "text": "This can't be the right address.",
+    "level": "B1"
+  },
+  {
+    "english": "They must have a lot of money.",
+    "text": "They must have a lot of money.",
+    "level": "B1"
+  },
+  {
+    "english": "She must know him from somewhere.",
+    "text": "She must know him from somewhere.",
+    "level": "B1"
+  },
+  {
+    "english": "It can't be that difficult.",
+    "text": "It can't be that difficult.",
+    "level": "B1"
+  },
+  {
+    "english": "You must be freezing in that jacket.",
+    "text": "You must be freezing in that jacket.",
+    "level": "B1"
+  },
+  {
+    "english": "He must work out a lot.",
+    "text": "He must work out a lot.",
+    "level": "B1"
+  },
+  {
+    "english": "That noise can't be normal.",
+    "text": "That noise can't be normal.",
+    "level": "B1"
+  },
+  {
+    "english": "They must be exhausted after the trip.",
+    "text": "They must be exhausted after the trip.",
+    "level": "B1"
+  },
+  {
+    "english": "She can't be lost; she knows this area.",
+    "text": "She can't be lost; she knows this area.",
+    "level": "B1"
+  },
+  {
+    "english": "It must be nice to live by the sea.",
+    "text": "It must be nice to live by the sea.",
+    "level": "B1"
+  },
+  {
+    "english": "You must be hungry after all that walking.",
+    "text": "You must be hungry after all that walking.",
+    "level": "B1"
+  },
+  {
+    "english": "He can't be telling the truth.",
+    "text": "He can't be telling the truth.",
+    "level": "B1"
+  },
+  {
+    "english": "There must be a simple explanation.",
+    "text": "There must be a simple explanation.",
+    "level": "B1"
+  },
+  {
+    "english": "That must have cost a fortune.",
+    "text": "That must have cost a fortune.",
+    "level": "B1"
+  },
+  {
+    "english": "There must be some kind of misunderstanding.",
+    "text": "There must be some kind of misunderstanding.",
+    "level": "B2"
+  },
+  {
+    "english": "She can't possibly have finished already.",
+    "text": "She can't possibly have finished already.",
+    "level": "B2"
+  },
+  {
+    "english": "He must have missed the last train.",
+    "text": "He must have missed the last train.",
+    "level": "B2"
+  },
+  {
+    "english": "You must have thought I was ignoring you.",
+    "text": "You must have thought I was ignoring you.",
+    "level": "B2"
+  },
+  {
+    "english": "It can't be a coincidence that they both left.",
+    "text": "It can't be a coincidence that they both left.",
+    "level": "B2"
+  },
+  {
+    "english": "They must be wondering where we are.",
+    "text": "They must be wondering where we are.",
+    "level": "B2"
+  },
+  {
+    "english": "She must have known all along.",
+    "text": "She must have known all along.",
+    "level": "B2"
+  },
+  {
+    "english": "That can't be the whole story.",
+    "text": "That can't be the whole story.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you tell me the time, please?",
+    "text": "Could you tell me the time, please?",
+    "level": "A2"
+  },
+  {
+    "english": "Do you know where the station is?",
+    "text": "Do you know where the station is?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you help me, please?",
+    "text": "Could you help me, please?",
+    "level": "A2"
+  },
+  {
+    "english": "Can you tell me your name?",
+    "text": "Can you tell me your name?",
+    "level": "A2"
+  },
+  {
+    "english": "Do you know what time it opens?",
+    "text": "Do you know what time it opens?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you pass me the menu, please?",
+    "text": "Could you pass me the menu, please?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you tell me where the station is?",
+    "text": "Could you tell me where the station is?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know if the museum is open today?",
+    "text": "Do you know if the museum is open today?",
+    "level": "B1"
+  },
+  {
+    "english": "Would you mind telling me how to get there?",
+    "text": "Would you mind telling me how to get there?",
+    "level": "B1"
+  },
+  {
+    "english": "Could you let me know when you're free?",
+    "text": "Could you let me know when you're free?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you happen to know where the toilets are?",
+    "text": "Do you happen to know where the toilets are?",
+    "level": "B1"
+  },
+  {
+    "english": "I was wondering if you could help me.",
+    "text": "I was wondering if you could help me.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me how much this costs?",
+    "text": "Could you tell me how much this costs?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know whether the shop takes cards?",
+    "text": "Do you know whether the shop takes cards?",
+    "level": "B1"
+  },
+  {
+    "english": "Would you mind showing me the way?",
+    "text": "Would you mind showing me the way?",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me when the next bus leaves?",
+    "text": "Could you tell me when the next bus leaves?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know if there's a pharmacy nearby?",
+    "text": "Do you know if there's a pharmacy nearby?",
+    "level": "B1"
+  },
+  {
+    "english": "I wonder if you could tell me the time.",
+    "text": "I wonder if you could tell me the time.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me which platform I need?",
+    "text": "Could you tell me which platform I need?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know how long the flight takes?",
+    "text": "Do you know how long the flight takes?",
+    "level": "B1"
+  },
+  {
+    "english": "Would you mind repeating that, please?",
+    "text": "Would you mind repeating that, please?",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me where I can buy tickets?",
+    "text": "Could you tell me where I can buy tickets?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know what time the film starts?",
+    "text": "Do you know what time the film starts?",
+    "level": "B1"
+  },
+  {
+    "english": "I was wondering whether you had a table free.",
+    "text": "I was wondering whether you had a table free.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me if this seat is taken?",
+    "text": "Could you tell me if this seat is taken?",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know who I should speak to about this?",
+    "text": "Do you know who I should speak to about this?",
+    "level": "B1"
+  },
+  {
+    "english": "I don't suppose you could tell me where the exit is?",
+    "text": "I don't suppose you could tell me where the exit is?",
+    "level": "B2"
+  },
+  {
+    "english": "Would you be so kind as to point me in the right direction?",
+    "text": "Would you be so kind as to point me in the right direction?",
+    "level": "B2"
+  },
+  {
+    "english": "I was wondering if you might know a good place to eat.",
+    "text": "I was wondering if you might know a good place to eat.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you possibly tell me whether the manager is in?",
+    "text": "Could you possibly tell me whether the manager is in?",
+    "level": "B2"
+  },
+  {
+    "english": "Do you have any idea when they'll be back?",
+    "text": "Do you have any idea when they'll be back?",
+    "level": "B2"
+  },
+  {
+    "english": "I'd be grateful if you could let me know either way.",
+    "text": "I'd be grateful if you could let me know either way.",
+    "level": "B2"
+  },
+  {
+    "english": "Might I ask how you came to hear about us?",
+    "text": "Might I ask how you came to hear about us?",
+    "level": "B2"
+  },
+  {
+    "english": "Would it be possible to find out what went wrong?",
+    "text": "Would it be possible to find out what went wrong?",
+    "level": "B2"
+  },
+  {
+    "english": "I don't suppose you know whether tickets are still available?",
+    "text": "I don't suppose you know whether tickets are still available?",
+    "level": "B2"
+  }
+]

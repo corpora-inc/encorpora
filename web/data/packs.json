@@ -193,6 +193,38 @@
     "tagline": "Catch the translation, word by word."
   },
   {
+    "id": "wordfall",
+    "name": "Wordfall",
+    "description": "Words rain down; catch the one that means what's shown up top before it hits the floor. A fast, juicy catch-the-meaning spike built as a Journey scroll interlude.",
+    "status": "prototype",
+    "listed": true,
+    "webListed": false,
+    "systemPack": true,
+    "manifestUrl": "/corpan/packs/wordfall/manifest.json",
+    "zipUrl": "/corpan/packs/wordfall.zip",
+    "landingUrl": "/corpan/packs/wordfall/",
+    "avatarSource": "corpan/packs/wordfall/wordfall-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/wordfall",
+    "minAppVersion": "0.20.3",
+    "v1Listed": false,
+    "channel": "preview",
+    "packType": "game",
+    "purchase": {
+      "type": "free"
+    },
+    "categories": [
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "enjoyer",
+      "kid_native"
+    ],
+    "recommendOrder": 8,
+    "kidFriendly": true,
+    "tagline": "Catch the meaning before it falls."
+  },
+  {
     "id": "teletron",
     "name": "Teletron",
     "description": "A private-by-default waiting room for real conversations with other learners, softened and translated by local AI on both devices.",
@@ -406,6 +438,40 @@
     ],
     "recommendOrder": 2,
     "tagline": "The same audiobooks in immersive 3D — words stream through space as they're read."
+  },
+  {
+    "id": "drift",
+    "name": "Drift",
+    "description": "Catch the words before they drift away: a calm night-water game where story beats narrate with the translation standing beneath, then word-lanterns drift across the current and you catch the one you heard. Tap any word for its phrase translation, meaning, and origin.",
+    "status": "prototype",
+    "listed": true,
+    "webListed": false,
+    "systemPack": true,
+    "manifestUrl": "/corpan/packs/drift/manifest.json",
+    "zipUrl": "/corpan/packs/drift.zip",
+    "landingUrl": "/corpan/packs/drift/",
+    "avatarSource": "corpan/packs/drift/drift-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/drift",
+    "minAppVersion": "0.20.3",
+    "v1Listed": false,
+    "channel": "stable",
+    "packType": "game",
+    "purchase": {
+      "type": "free"
+    },
+    "categories": [
+      "read",
+      "audio"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "learner",
+      "polyglot",
+      "kid_native"
+    ],
+    "recommendOrder": 3,
+    "kidFriendly": true,
+    "tagline": "Catch the words before they drift away."
   },
   {
     "id": "world_radio",
