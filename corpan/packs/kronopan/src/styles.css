@@ -187,6 +187,13 @@
 
 /* Compact controls on phones so the animation keeps most of the screen. */
 @media (max-width: 640px) {
+  /* Stack the signature and the Full button so the button drops below the
+     signature instead of being pushed off the right edge in portrait. */
+  .kp-header-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
   .kp-controls {
     max-height: 46vh;
     gap: 12px;
