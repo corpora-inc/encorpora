@@ -1,5 +1,5 @@
 import type { Cycle, Unit } from "../core"
-import { PRESETS, totalPulses } from "../core"
+import { PRESETS, totalPulses, subdivide } from "../core"
 import { roleColor } from "../theme"
 import { colorRoleForLength } from "../notation"
 
@@ -35,6 +35,13 @@ export function GroupEditor({ cycle, onChange }: Props) {
   }
   const remove = (index: number) => setGroups(cycle.groups.filter((_, i) => i !== index))
   const add = () => setGroups([...cycle.groups, 2])
+
+  // Break a group of four or more into 2s and 3s in place.
+  const split = (index: number) => {
+    const next = cycle.groups.slice()
+    next.splice(index, 1, ...subdivide(cycle.groups[index]))
+    setGroups(next)
+  }
 
   const applyPreset = (id: string) => {
     const p = PRESETS.find((x) => x.id === id)
@@ -88,6 +95,16 @@ export function GroupEditor({ cycle, onChange }: Props) {
             <button className="kp-group-btn" onClick={() => bump(i, -1)} aria-label="Shorter">
               &minus;
             </button>
+            {g >= 4 && (
+              <button
+                className="kp-group-x"
+                onClick={() => split(i)}
+                aria-label="Subdivide into 2s and 3s"
+                title="Subdivide into 2s and 3s"
+              >
+                &divide;
+              </button>
+            )}
             <button className="kp-group-x" onClick={() => remove(i)} aria-label="Remove group">
               &times;
             </button>

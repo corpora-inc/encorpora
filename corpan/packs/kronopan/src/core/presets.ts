@@ -173,9 +173,9 @@ export const PRESETS: Cycle[] = [
     name: "Heptadecagonal",
     groups: [5, 3, 4, 5],
     unit: 8,
-    tradition: "Umanistan Forward Learning",
+    tradition: "Umanistan",
     notes:
-      "A seventeen, from the song Heptadecagonal by Umanistan Forward Learning. " +
+      "A seventeen, from the song Heptadecagonal by Umanistan. " +
       "Also felt 3+5+3+3+3, 3+2+3+2+2+2+3, or 2+3+3+3+3+3.",
   },
 

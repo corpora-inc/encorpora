@@ -70,3 +70,13 @@ export const additiveSignature = (cycle: Cycle): string => cycle.groups.join("+"
 // the primary one.
 export const collapsedSignature = (cycle: Cycle): string =>
   `${totalPulses(cycle)}/${cycle.unit}`
+
+// Decompose a group length into a sequence of 2s and 3s, for optionally
+// subdividing a large group. An even length becomes all twos; an odd length
+// takes a single three and the rest twos. Lengths under 4 are already a 2 or a 3
+// (or a lone pulse) and are returned unchanged.
+export const subdivide = (n: number): number[] => {
+  if (!isValidGroup(n) || n < 4) return [n]
+  if (n % 2 === 0) return Array(n / 2).fill(2)
+  return [3, ...Array((n - 3) / 2).fill(2)]
+}
