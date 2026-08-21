@@ -1,14 +1,15 @@
 # Corpán 0.16.0 — release readiness
 
-_Prepared overnight. Theme: Home-as-everything hub, retention + monetization,
-region-aware voice setup, full localization. PR #260 (moonshot-15-plus-v2)._
+_Historical record — 0.16.0 shipped. Theme: Home-as-everything hub, retention +
+monetization, region-aware voice setup, full localization. Landed as PR #260._
 
 ## Status: app-code complete; remaining items are content/infra + the merge
 
 Version bumped to **0.16.0** (`package.json`, `tauri.conf.json`, `Cargo.toml`);
 CHANGELOG `[Unreleased]` promoted to `[0.16.0] - 2026-05-30`. `npm run tsc` +
 `npm run build` green. PR #260 CI green (tsc+build, terraform, web/io).
-**Per your git workflow I did NOT commit — version bump + dist rebuild only.**
+(At the time the agent left the version bump + dist rebuild uncommitted for the
+owner. That is no longer how we work — see the root `AGENTS.md`.)
 
 ## Verified on-device (this machine, live dev build)
 

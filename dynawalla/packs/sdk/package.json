@@ -1,0 +1,23 @@
+{
+  "name": "@dynawalla/pack-sdk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Dynawalla host↔pack contract: manifest schema, capability table, wire protocol and the guest client. No DOM assumptions beyond MessagePort, no Tauri, no app imports.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "tsc": "tsc --noEmit",
+    "check": "node bin/dw-pack.mjs check",
+    "serve": "node bin/dw-pack.mjs serve"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "typescript": "^6.0.0"
+  }
+}

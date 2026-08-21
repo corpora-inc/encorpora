@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Dynawalla — procedural audio foundation</title>
+    <link rel="stylesheet" href="./demo.css" />
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+
+    <main id="app">
+      <header class="head">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="titles">
+          <h1>The sound of the bazaar</h1>
+          <p>Every sound below is synthesized on the spot. No audio files exist in this project.</p>
+        </div>
+        <div class="meters">
+          <div class="meter"><span class="mlabel">out</span><div class="mbar"><i id="mpeak"></i></div></div>
+          <dl class="readout">
+            <div><dt>tier</dt><dd id="rTier">—</dd></div>
+            <div><dt>voices</dt><dd id="rVoices">0</dd></div>
+            <div><dt>latency</dt><dd id="rLat">—</dd></div>
+            <div><dt>frame</dt><dd id="rFrame">—</dd></div>
+          </dl>
+        </div>
+      </header>
+
+      <section class="gate" id="gate">
+        <button id="start" class="start">Touch to wake the bazaar</button>
+        <p class="gatenote">Browsers keep audio silent until you ask for it. So do we.</p>
+      </section>
+
+      <div id="stage" hidden>
+        <section class="panel">
+          <h2>Struck things</h2>
+          <p class="hint">Modal synthesis — real inharmonic partials, real decay times. Drag across them.</p>
+          <div class="pads" id="padsImpact"></div>
+        </section>
+
+        <section class="panel">
+          <h2>The loop</h2>
+          <p class="hint">What a prototype actually calls, in the order a child hears it.</p>
+          <div class="pads wide" id="padsLoop"></div>
+        </section>
+
+        <section class="panel combo">
+          <h2>Combo ladder</h2>
+          <p class="hint">One call. The kit owns the musicality: up the Hijaz scale, gaining weight as it climbs.</p>
+          <div class="comborow">
+            <button class="big" id="comboHit">Hit</button>
+            <button class="ghost" id="comboReset">Reset</button>
+            <div class="streak"><span id="streakN">0</span><em>streak</em></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>The place</h2>
+          <p class="hint">A bed you stop hearing, plus events you never stop noticing.</p>
+          <div class="pads" id="padsAmb"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Score</h2>
+          <p class="hint">Procedural. Never loops. Responds to intensity on the bar line.</p>
+          <div class="musicrow">
+            <button class="big" id="musicToggle">Start score</button>
+            <label class="slider">
+              <span>intensity</span>
+              <input type="range" id="intensity" min="0" max="100" value="35" />
+              <b id="intensityV">0.35</b>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Proof</h2>
+          <p class="hint">Stress it. The voice budget and the master chain are doing the work.</p>
+          <div class="pads" id="padsStress"></div>
+        </section>
+
+        <footer class="foot">
+          <label class="check"><input type="checkbox" id="enabled" checked /> <span>audio enabled</span></label>
+          <span class="footnote">Turn it off: the cues keep firing and the visuals keep working. Sound never carries information alone.</span>
+        </footer>
+      </div>
+    </main>
+
+    <script type="module" src="./demo.ts"></script>
+  </body>
+</html>

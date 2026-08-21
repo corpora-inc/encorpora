@@ -1,6 +1,7 @@
 // src/store/history.ts
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { createLocalStorageShim } from "@/lib/storage";
 import { useSettingsStore } from "./settings";
 
 /**
@@ -51,6 +52,11 @@ type HistoryState = {
     clear: () => void;
 };
 
+/** M4 cap (storage-analytics.md §2.2): phrase-nav history was unbounded.
+ *  500 per stack keeps the Rust sampler's anti-repeat window deep while
+ *  bounding growth. */
+const MAX_HISTORY_PER_STACK = 500;
+
 // ---- one-time migration from legacy single-history store ----
 function importLegacyHistory(): Record<string, StackHistory> | null {
     try {
@@ -73,6 +79,14 @@ function importLegacyHistory(): Record<string, StackHistory> | null {
         const settings = useSettingsStore.getState();
         const activeStackId =
             settings.activeStackId || Object.keys(settings.stacks || {})[0] || "default";
+
+        // M6 hygiene: the legacy blob is dead once imported — free the
+        // shared localStorage budget.
+        try {
+            localStorage.removeItem("corpan-history");
+        } catch {
+            /* best-effort */
+        }
 
         return {
             [activeStackId]: {
@@ -122,8 +136,12 @@ export const useHistoryStore = create<HistoryState>()(
                     set((state) => {
                         const curr =
                             state.byStack[aId] ?? { ids: [], sources: [], index: -1 };
-                        const ids = [...curr.ids, entryId];
-                        const sources = [...curr.sources, source];
+                        // M4 cap: history was unbounded. Keep the most recent
+                        // MAX_HISTORY_PER_STACK entries per stack.
+                        const ids = [...curr.ids, entryId].slice(-MAX_HISTORY_PER_STACK);
+                        const sources = [...curr.sources, source].slice(
+                            -MAX_HISTORY_PER_STACK,
+                        );
                         return {
                             byStack: {
                                 ...state.byStack,
@@ -232,6 +250,16 @@ export const useHistoryStore = create<HistoryState>()(
         {
             name: "corpan-history-v2",
             version: 3,
+            // M4: unbounded per-stack growth belongs in the IndexedDB tier.
+            // volatile: false — durable state, not a cache. Known trade-off:
+            // hydration is async, so the first sample of a session may miss
+            // the anti-repeat exclude list (acceptable, spec §2.2).
+            storage: createJSONStorage(() =>
+                createLocalStorageShim("history", {
+                    tier: "large",
+                    volatile: false,
+                }),
+            ),
             migrate: (state: any, version) => {
                 // v2 → v3: backfill `sources` for legacy entries. Treat
                 // every legacy id as base — the user explicitly said they

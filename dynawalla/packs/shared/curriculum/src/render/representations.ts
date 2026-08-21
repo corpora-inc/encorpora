@@ -1,0 +1,189 @@
+/**
+ * The representation ids, and what each one is allowed to be handed.
+ *
+ * CURRICULUM.md fixes four for V1 — counting board, balance scale, gear train,
+ * number line — and each carries one idea. Ids live here rather than beside
+ * whichever module needed one first: a `RepId` is a string, and a typo is a
+ * `RepSpec` no renderer matches and a blank space on a child's screen.
+ *
+ * `RepSpec.params` is `Record<string, number>`, and the rule this module adds is
+ * that **every param is a safe integer**. A representation is drawing rather
+ * than arithmetic, but the numbers it draws are the numbers the answer is made
+ * of, and a `0.30000000000000004` tick label is ADR-0006's float bug wearing a
+ * hat. Thirds are `{ from: 0, to: 1, denominator: 3, mark: 2 }` — exact — and the
+ * renderer builds the `Rational` itself.
+ *
+ * `repSpecDefect` is the precondition. `families.property.test.ts` runs it over
+ * every representation every family emits, across the whole seed sweep, so a
+ * malformed spec is a red test here rather than a mis-drawn number on a screen —
+ * and whoever draws one calls it before drawing.
+ */
+
+import type { Rational } from "../math/rational.ts";
+import { add, rational } from "../math/rational.ts";
+import type { RepId } from "../types/ids.ts";
+
+/** Place value and regrouping. The LOCATE representation for borrow-across-zero. */
+export const REP_COUNTING_BOARD: RepId = "counting-board";
+/** Magnitude, fractions, comparison. */
+export const REP_NUMBER_LINE: RepId = "number-line";
+/** The equals sign as a relation, not an operator. */
+export const REP_BALANCE_SCALE: RepId = "balance-scale";
+/** Multiples, factors, LCM. Not built — see the renderer registry. */
+export const REP_GEAR_TRAIN: RepId = "gear-train";
+/**
+ * Cardinality. A frame of cells with counters in it, for the bottom of the ladder.
+ *
+ * The fifth representation, and the one CURRICULUM.md's four do not cover. The
+ * other four all answer a question about a number a child can already read: where
+ * it sits, what it is worth, what it balances. A five-year-old at `0 + 1` cannot
+ * yet read `1` fluently as a symbol, so the question has to be a quantity before
+ * it is a numeral, and none of the four draws a quantity.
+ *
+ * It is added rather than borrowed because the near miss is worse than a gap: the
+ * counting board is a **place-value** board, columns of units and tens, drawn to
+ * show what regrouping moves. Handing it `2 + 3` would draw two rows of a
+ * place-value structure that the item is not about, on the screen of the child
+ * least able to tell the difference.
+ */
+export const REP_TEN_FRAME: RepId = "ten-frame";
+
+export const V1_REPRESENTATIONS: readonly RepId[] = [
+  REP_COUNTING_BOARD,
+  REP_NUMBER_LINE,
+  REP_BALANCE_SCALE,
+  REP_GEAR_TRAIN,
+  REP_TEN_FRAME,
+];
+
+/**
+ * Params each representation requires.
+ *
+ * `number-line`: the line runs `from`..`to` in whole units, each cut into
+ * `denominator` parts, with the index `mark` parts from the left end.
+ * `balance-scale`: what sits in each pan, in whole units — equal pans balance,
+ * which is the idea. `counting-board` takes none: it is built from the item's
+ * own digits by `contrast.ts`, which needs the exercise rather than a spec.
+ *
+ * ## Two things a renderer of these gets wrong, written down because both were
+ *
+ * A previous attempt at these two shipped both, and neither was caught by reading
+ * the code. They are properties of the *spec*, so they belong here rather than in
+ * whichever renderer is next.
+ *
+ * **The marked point is `from + mark/denominator`, and it is one number.** It is
+ * not the whole part `from` written beside the fraction `mark/denominator`. That
+ * reading is indistinguishable from the right one on every non-negative line,
+ * which is why it survives review, and wrong on every negative one: `{ from: -3,
+ * mark: 1, denominator: 4 }` is −3 + 1/4 = −11/4, which is written **−2 3/4**.
+ * Writing "−3 1/4" reads back as −13/4 — a different point, on a line drawn to
+ * teach where points are.
+ *
+ * **The heavier pan hangs lower.** In screen space `y` grows downward, so CSS
+ * `rotate(a)` with a positive `a` lifts the *left* end of a beam, not lowers it.
+ * A beam whose angle is signed the intuitive way tips toward the lighter pan, and
+ * a balance that rises under weight teaches the opposite of the equals sign it
+ * exists to teach. Two mirror-image angles are not evidence of anything here —
+ * the inverted pair are mirror images too. Measure which drawn pan is lower.
+ */
+export const REQUIRED_REP_PARAMS: Readonly<Record<string, readonly string[]>> = {
+  [REP_NUMBER_LINE]: ["from", "to", "denominator", "mark"],
+  [REP_BALANCE_SCALE]: ["left", "right"],
+  [REP_COUNTING_BOARD]: [],
+  [REP_TEN_FRAME]: ["capacity", "first", "second", "removed"],
+};
+
+/**
+ * Frames a child can read at a glance. Five for the earliest counting, ten for
+ * the standard frame, twenty for a double one. Not an arbitrary bound: a frame
+ * of seven has no structure to subitise against, which is the only thing a frame
+ * is for.
+ */
+export const TEN_FRAME_CAPACITIES: readonly number[] = [5, 10, 20];
+
+/** Why this spec cannot be drawn, or `null`. */
+export function repSpecDefect(rep: RepId, params: Readonly<Record<string, number>>): string | null {
+  const required = REQUIRED_REP_PARAMS[rep];
+  if (required === undefined) return `no representation "${rep}"`;
+
+  for (const [name, value] of Object.entries(params)) {
+    if (!Number.isSafeInteger(value)) return `${rep}.${name} is not a safe integer: ${String(value)}`;
+  }
+  for (const name of required) {
+    if (params[name] === undefined) return `${rep} is missing ${name}`;
+  }
+
+  if (rep === REP_NUMBER_LINE) {
+    const from = params["from"] ?? 0;
+    const to = params["to"] ?? 0;
+    const denominator = params["denominator"] ?? 0;
+    const mark = params["mark"] ?? 0;
+    if (to <= from) return "number-line runs backwards or has no length";
+    if (denominator < 1) return "number-line has no subdivision";
+    if (mark < 0 || mark > (to - from) * denominator) return "number-line mark is off the line";
+    // A line a child can read. Twelve ticks is a fraction wall; sixty is a hairbrush.
+    if ((to - from) * denominator > 24) return "number-line has more than 24 intervals";
+  }
+
+  if (rep === REP_BALANCE_SCALE) {
+    const left = params["left"] ?? 0;
+    const right = params["right"] ?? 0;
+    if (left < 0 || right < 0) return "balance-scale pans cannot hold a negative amount";
+  }
+
+  if (rep === REP_TEN_FRAME) {
+    const capacity = params["capacity"] ?? 0;
+    const first = params["first"] ?? 0;
+    const second = params["second"] ?? 0;
+    const removed = params["removed"] ?? 0;
+    if (!TEN_FRAME_CAPACITIES.includes(capacity)) {
+      return `ten-frame capacity must be one of ${TEN_FRAME_CAPACITIES.join(", ")}`;
+    }
+    if (first < 0 || second < 0 || removed < 0) return "ten-frame counts cannot be negative";
+    if (first + second > capacity) return "ten-frame holds more counters than it has cells";
+    if (removed > first) return "ten-frame takes away more counters than it holds";
+    // A frame that both groups and crosses out is telling two stories at once, and
+    // the child has to decide which of them the answer is. `a + b` puts `b` in the
+    // second group; `m − s` crosses `s` out of the first. Never both.
+    if (second > 0 && removed > 0) return "ten-frame groups and takes away in the same picture";
+    // The counters that are left *are* the answer to a subtraction, so a picture
+    // that shows nothing at all is a picture of the whole question missing.
+    if (first + second === 0) return "ten-frame is empty";
+  }
+
+  return null;
+}
+
+/**
+ * The exact value of the marked point on a number line.
+ *
+ * `from + mark/denominator`, as a `Rational`, so a renderer never composes it out
+ * of a whole part and a fraction — the composition that produced "−3 1/4" for the
+ * point −11/4, a label that reads back as −13/4. Whatever a renderer writes on
+ * the tick must parse back to *this*, and `representations.test.ts` fixes the
+ * negative cases the composition gets wrong.
+ *
+ * Callers pass a spec `repSpecDefect` has already accepted; a denominator of zero
+ * throws, which is `rational`'s contract and not something to swallow here.
+ */
+export function numberLinePoint(from: number, mark: number, denominator: number): Rational {
+  return add(rational(BigInt(from)), rational(BigInt(mark), BigInt(denominator)));
+}
+
+/**
+ * Which pan of a balance hangs lower: `-1` left, `1` right, `0` level.
+ *
+ * The direction is a fact about weight, and it is stated here in those terms
+ * rather than as an angle, because an angle is where it goes wrong. In screen
+ * space `y` grows downward, so a positive CSS rotation *lifts* the left end of a
+ * beam; a renderer that signs its transform the intuitive way draws the heavier
+ * pan higher, and a balance that rises under weight teaches the reverse of the
+ * equals sign it exists to teach. Two mirror-image angles do not distinguish the
+ * two — the inverted pair are mirror images as well. A renderer maps this to its
+ * own transform and asserts the drawn geometry against it.
+ */
+export function balanceLowerPan(left: number, right: number): -1 | 0 | 1 {
+  if (left > right) return -1;
+  if (right > left) return 1;
+  return 0;
+}

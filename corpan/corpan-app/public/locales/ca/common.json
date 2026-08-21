@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Tria els teus temes",
+      "availableSummary": "{{count}} paquets de frases disponibles · ~{{size}} MB",
+      "installAll": "Instal·la-ho tot",
+      "chooseIndividually": "Tria individualment",
+      "installing": "S'està instal·lant {{current}} de {{total}}…",
+      "someFailed": "No s'han pogut instal·lar {{count}} paquet(s). Pots tornar-ho a provar des de la pestanya Paquets.",
+      "allInstalled": "Ja tens els paquets de frases inicials.",
+      "installed": "Instal·lat",
       "loading": "Carregant…",
       "selectAll": "Selecciona-ho tot ({{count}})",
       "clearAll": "Esborra",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Sorprèn-me!",
         "desc": "Porta'm a un lloc divertit."
+      },
+      "journey": {
+        "label": "Segueix el Journey",
+        "desc": "Un curs guiat: l'app tria cada pas"
+      }
+    },
+    "journey": {
+      "title": "Com vols aprendre {{lang}}?",
+      "subtitle": "El Journey et serveix cada dia una barreja de material nou i repàs en {{lang}} — targeta a targeta.",
+      "guided": {
+        "label": "Camí diari guiat",
+        "desc": "Una sessió diària curta, pensada per a tu.",
+        "unavailable": "El camí guiat encara no està disponible per a {{lang}}."
+      },
+      "explore": {
+        "label": "Al teu ritme",
+        "desc": "Explora històries, exercicis i jocs pel teu compte."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclòs amb Plus",
     "installFailedTitle": "Instal·lació fallida",
+    "updateUnavailableTitle": "Actualització no disponible",
+    "updateUnavailableDetail": "Aquesta baixada no coincidia amb el que esperàvem. Torneu-ho a provar més tard.",
     "installStuckDetail": "Sense progrés des de fa una estona. Comprova la teva connexió i torna a intentar-ho.",
     "installStuckTitle": "Descàrrega encallada",
     "openPack": "Obre {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sampleja la llengua que aprens. Fes-li scratch fins que se’t quedi."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "El teu camí guiat, targeta a targeta"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Instal·la ({{size}})",
     "installing": "Instal·lant…",
     "installed": "Instal·lat",
-    "retry": "Torna-ho a provar"
+    "retry": "Torna-ho a provar",
+    "explains": "Paraules en {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "El teu camí guiat, targeta a targeta",
+    "heroCard": {
+      "title": "El teu Journey",
+      "progress": "{{unit}} · {{count}} per a la propera fita"
+    },
+    "heroCta": {
+      "start": "Comença el teu Journey",
+      "continue": "Continua"
+    },
+    "chrome": {
+      "home": "Inici",
+      "menu": "Opcions del Journey",
+      "unit": "Unitat {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Comprova",
+      "continue": "Continua",
+      "skipHint": "Llisca de nou per saltar",
+      "retry": "Torna-ho a provar",
+      "showAnswer": "Mostra la resposta",
+      "answerWas": "La resposta era",
+      "comeBackNote": "Hi tornarem.",
+      "whyThisCard": "Per què aquesta targeta?",
+      "whyNew": "Un element nou de la teva unitat actual.",
+      "whyReview": "Un repàs: l'espaiat el manté fort.",
+      "whyRepair": "Una segona mirada a una cosa difícil.",
+      "whyGuided": "Part del teu camí guiat.",
+      "typeWhatYouHear": "Escriu el que sents",
+      "typeHere": "Escriu aquí…",
+      "tapToOrder": "Toca les paraules en ordre",
+      "matchPairs": "Aparella les parelles",
+      "flipToReveal": "Toca per revelar",
+      "knewIt": "La sabia",
+      "didntKnow": "Encara no",
+      "speakNow": "Parla ara",
+      "listen": "Escolta",
+      "listenSlow": "Més lent",
+      "hint": "Pista",
+      "correct": "Correcte",
+      "incorrect": "No ben bé",
+      "pickTranslation": "Tria la traducció",
+      "pickWhatYouHear": "Tria el que has sentit",
+      "fillTheBlank": "Omple el buit",
+      "newItem": "Nou",
+      "reviewedEarlier": "Vist abans"
+    },
+    "intro": {
+      "listenAndEcho": "Escolta i digues-ho en veu alta",
+      "newWord": "Paraula nova",
+      "newPhrase": "Frase nova"
+    },
+    "grammar": {
+      "noteLabel": "Nota de gramàtica",
+      "tryIt": "Prova-ho",
+      "contrastLabel": "Comparat amb la teva llengua"
+    },
+    "word": {
+      "inContext": "En context",
+      "meaningShow": "Significat",
+      "meaningHide": "Amaga"
+    },
+    "checkpoint": {
+      "title": "Punt de control",
+      "summaryNew": "{{count}} noves",
+      "summaryReviews": "{{count}} repassos",
+      "done": "Prou per avui",
+      "keepGoing": "Continua",
+      "dailyRing": "{{count}} en aquesta sessió",
+      "deepSession": "Quina sessió tan profunda — els teus repassos queden programats igualment.",
+      "streakTicked": "{{count}} seguits ✓",
+      "boss": "Repte d'unitat",
+      "arcGate": "Porta d'arc"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Perfecte",
+        "nice": "Bé",
+        "brilliant": "Brillant",
+        "boom": "Bum",
+        "nailed": "Encertat",
+        "unstoppable": "Imparable",
+        "onFire": "En ratxa",
+        "yes": "Sí!",
+        "clean": "Impecable",
+        "sharp": "Agut",
+        "wow": "Uau",
+        "magic": "Màgic"
+      },
+      "combo": "{{count}} seguides",
+      "perfect": "Perfecte",
+      "wordsLearned": "{{count}} paraules apreses",
+      "unitComplete": "Unitat completada: {{name}}",
+      "streakDay": "{{count}} seguits",
+      "placementDone": "Nivell trobat"
+    },
+    "rare": {
+      "reveal": "Una cosa especial…",
+      "etymologyGem": "Història de la paraula",
+      "timeCapsule": {
+        "title": "Càpsula del temps",
+        "body": "T'hi vas esforçar {{when}} — mira't ara."
+      },
+      "delight": {
+        "newVoice": "Una veu diferent",
+        "didYouNotice": "Te n'has adonat?"
+      },
+      "miniGame": {
+        "title": "Ronda extra",
+        "play": "Juga"
+      },
+      "story": {
+        "unlocked": "T'has guanyat el proper capítol",
+        "read": "Llegeix-lo"
+      }
+    },
+    "placement": {
+      "offerTitle": "Per on comencem?",
+      "offerBody": "Unes preguntes ràpides troben el teu punt de partida. Uns cinc minuts.",
+      "startNew": "Soc nou en {{lang}}",
+      "placeMe": "Sé una mica de {{lang}}",
+      "skipItem": "Salta si dubtes",
+      "doneTitle": "Punt de partida trobat",
+      "doneBody": "Comencem a {{unit}}.",
+      "prelit": "Comences amb {{count}} elements ja coneguts.",
+      "redo": "Torna a comprovar el meu nivell",
+      "aboveTitle": "Vas més enllà d'aquest curs",
+      "aboveBody": "Aquest curs cobreix de moment material de nivell inicial i tu estàs per sobre. Pots explorar-lo igualment — hi ha nous nivells en camí.",
+      "aboveFrontier": "Vas per davant de la major part d'aquest curs — comences a {{unit}}."
+    },
+    "path": {
+      "title": "El teu camí",
+      "arc": "Arc {{name}}",
+      "unit": "Unitat {{n}}",
+      "locked": "Més endavant",
+      "current": "Ets aquí",
+      "review": "Toca per repassar",
+      "mastered": "Sòlid"
+    },
+    "streak": {
+      "pactTitle": "Mantenim una ratxa?",
+      "pactBody": "Mantén l'impuls. Un dia de descans cobreix un buit: en guanyes un cada setmana.",
+      "pactAccept": "Compta amb mi",
+      "pactDecline": "No, gràcies",
+      "days": "{{count}} seguits",
+      "restDayEarned": "Dia de descans guanyat",
+      "restDayUsed": "{{day}} va ser un dia de descans",
+      "repairTitle": "Recupera la teva ratxa",
+      "repairBody": "Acaba dues sessions en els propers {{days}} dies per restaurar la teva ratxa de {{count}} dies.",
+      "repairCta": "Comença"
+    },
+    "block": {
+      "speakingIntro": "Pràctica de parla — {{count}} targetes",
+      "ready": "A punt",
+      "loadingModel": "Preparant el micròfon…",
+      "micPrompt": "Corpán fa servir el micròfon per puntuar la teva parla en aquest dispositiu.",
+      "sttUnavailable": "La puntuació de veu no està disponible ara — canviem a pràctica d'escolta."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} targetes restants avui",
+      "plusBody": "Corpán Plus elimina el límit diari de targetes."
+    },
+    "welcomeBack": {
+      "title": "Benvingut de nou",
+      "body": "Els teus repassos han conservat el {{pct}}% de la força. Escalfem."
+    },
+    "tease": {
+      "next": "La propera vegada: {{title}}"
+    },
+    "jump": {
+      "title": "Et queda curt?",
+      "body": "Fes un repte curt per avançar. Si falles no perds res: et quedes exactament on ets.",
+      "accept": "Provar el repte",
+      "decline": "Em quedo aquí"
+    },
+    "feed": {
+      "caughtUp": "Estàs al dia de moment",
+      "loading": "Preparant les teves targetes…",
+      "loadError": "El Journey no s'ha pogut carregar. Torna-ho a provar des de l'Inici.",
+      "retry": "Torna-ho a provar"
+    },
+    "popin": {
+      "pronounceTitle": "Pronuncia-ho",
+      "close": "Tanca"
+    },
+    "settings": {
+      "title": "Opcions del Journey",
+      "advanceMode": "Avanç",
+      "advanceSwipe": "Llisca per continuar",
+      "advanceAuto": "Continua automàticament",
+      "celebration": "Celebracions",
+      "celebrationFull": "Completes",
+      "celebrationReduced": "Reduïdes",
+      "celebrationMinimal": "Mínimes",
+      "sounds": "Sons",
+      "soundsOn": "Sí",
+      "soundsOff": "No",
+      "listeningMode": "Escolta mans lliures",
+      "viewPath": "Mostra el camí",
+      "redoPlacement": "Torna a comprovar el meu nivell"
+    },
+    "wordPack": {
+      "title": "Significats de les paraules",
+      "body": "Llegeix què signifiquen les paraules en {{language}} a mesura que avances.",
+      "add": "Afegeix ({{size}})",
+      "dismiss": "Ara no",
+      "downloading": "Afegint… {{percent}}%",
+      "failed": "No s'ha pogut afegir",
+      "retry": "Torna-ho a provar"
+    },
+    "imagePack": {
+      "title": "Afegeix imatges",
+      "body": "Aprèn algunes paraules amb imatges en lloc de text.",
+      "dismiss": "Ara no",
+      "add": "Afegeix ({{size}})",
+      "downloading": "Afegint… {{percent}}%",
+      "retry": "Torna-ho a provar",
+      "failed": "No s'ha pogut afegir"
+    },
+    "interlude": {
+      "gameCue": "Joc ràpid · una frase",
+      "readerCue": "Lectura ràpida · un fragment"
+    }
   }
 }

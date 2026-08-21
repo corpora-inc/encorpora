@@ -1,0 +1,138 @@
+# dynawalla-app
+
+The Tauri 2 shell for **Dynawalla** — bundle
+`inc.corpora.dynawalla`.
+
+Program docs live in [`../docs/`](../docs/README.md); the architecture this tree
+implements is [ARCHITECTURE.md](../docs/ARCHITECTURE.md) and the routing and
+capability decisions are [ADR-0005](../docs/DECISIONS/ADR-0005-shell-and-routing.md).
+
+## Commands
+
+Node 24 (`.nvmrc`).
+
+| | |
+|---|---|
+| `npm run dev` | Vite dev server on `127.0.0.1:1423` (Corpán holds 1421) |
+| **`npm run tauri dev`** | **the app, with every pack built and installed** |
+| `npm run packs` | build, validate and stage every pack (`../packs/build.mjs`) |
+| `npm test` | `node --experimental-strip-types --test` — no vitest |
+| `npm run tsc` | typecheck: the app, the tests, and the build's own config |
+| `npm run lint` | eslint |
+| `npm run build` | production bundle |
+
+Three tsconfigs, because they need different globals. `tsconfig.json` is browser
+source with **no Node types** — with them in scope a component can write
+`process.env.X`, typecheck, and then throw in the WebView, since Vite shims no
+`process` in a production build. `tsconfig.test.json` adds them back for the
+tests, which read files. `tsconfig.node.json` covers `vite.config.ts` and
+`eslint.config.js`; `npm run tsc` runs all three, because `tsc --noEmit` does
+not build project references and a `references` entry would check nothing.
+
+CI runs lint, test, tsc and build in the `dynawalla-app` job, which reports into
+`ci-gate`. There is **no cargo job for either app in `ci.yml`** — the Rust below
+is not compiled by any required check yet.
+
+## Running it, with the games in it
+
+```
+npm run tauri dev
+```
+
+That is the whole loop. `tauri.conf.json` runs `npm run packs` first, which
+builds every pack under `../games/`, validates each against the manifest schema
+with `dw-pack check`, and stages it into `src-tauri/packs/`. The Rust side
+installs those into the pack root before the first window exists, so the front
+door opens with FUSE and SIEGE on it — no network, no catalogue, no install
+step. A debug build re-installs them on every launch, so editing a game and
+restarting is the entire iteration.
+
+`src-tauri/packs/` and `../dist-packs/` are build output and are git-ignored.
+
+To open straight into a game while working on one:
+
+```
+VITE_DW_AUTOPLAY=dynawalla.fuse npm run tauri dev
+```
+
+which also prints a frame-rate line every two seconds. It is compiled out of any
+build where the variable is unset — see `src/packs/devPlay.ts`.
+
+## Layout
+
+```
+src/
+  app/        shell, router, theme, the native boundary
+  design/     tokens and the primitives built directly on them
+  screens/    one module per route
+src-tauri/    its own Cargo workspace root, its own Cargo.lock
+```
+
+`src/app/routes.ts` is the single route table. `src/app/strings.ts` is every
+user-visible string in one place, ahead of the i18n gate in PR-1.6.
+
+## Design tokens
+
+[`src/design/tokens.css`](src/design/tokens.css) is three layers: a palette of
+materials, a semantic layer that names roles and resolves them to materials
+(re-cut under `.dw-dark`), and a Tailwind `@theme inline` block that republishes
+the semantic layer as utilities. Colour literals are legal only in the palette;
+`tokens.test.ts` fails the build on one anywhere else, on a semantic token with
+no dark counterpart, on a motion duration that `prefers-reduced-motion` does not
+collapse, and on a component that names a material instead of a role —
+`bg-parchment-50` compiles, contains no hex, and does not re-cut in dark, which
+is the same silent failure by a different route.
+
+The theme is applied at module load by a store subscription toggling one class
+on `<html>` (ADR-0005) — importing `src/app/theme.ts` is what applies it, which
+is why `main.tsx` imports it first.
+
+## Capabilities
+
+The permission surface is deliberately minimal, because a shipped app cannot
+narrow it later without breaking installed clients.
+
+| Grant | Command | Why |
+|---|---|---|
+| `core:app:allow-version` | `getVersion()` | The settings screen shows the installed build — the first thing a parent reporting a problem is asked for. |
+| `haptics:allow-impact` | `invoke("plugin:haptics\|impact")` | Real haptics. `navigator.vibrate` is `undefined` in iOS WKWebView, so the WebView-only implementation this app shipped first was a silent no-op on every iPhone and iPad. |
+
+That is the whole list. One plugin is registered — `tauri-plugin-haptics`,
+shared with Corpán — and no `<plugin>:default` grant exists (ADR-0005 point 4,
+acceptance item `X-07`). The CSP is non-null, has no
+wildcard, admits no remote origin, and admits no inline style — which is why no
+component may set a `style` attribute; a test holds those two together.
+
+Every native call is declared in [`src/app/permissions.ts`](src/app/permissions.ts).
+`src/app/capabilities.test.ts` asserts the declared calls and the granted
+permissions are the same set **in both directions**, so a new native import
+without a grant fails, and a grant nothing uses fails too. The scan covers the
+whole `@tauri-apps` scope — plugins are `@tauri-apps/plugin-*`, not
+`@tauri-apps/api` — and every import form, including `await import(...)`; a
+guard that quietly misses the case it was written for is worse than none, so
+the scanner itself is tested against each form.
+
+## Native
+
+`src-tauri/Cargo.toml` has no `[workspace]` section and must never gain one.
+It is its own implicit workspace root, exactly like Corpán's. Read
+[ADR-0011](../docs/DECISIONS/ADR-0011-native-workspace-and-patch-placement.md)
+before touching any Cargo manifest here — a `[patch.crates-io]` moved to a
+shared root is ignored silently and reverts Corpán to an `ndk-context` that
+aborts on Android Activity recreation, compiling and testing clean all the way
+to the Play Console.
+
+`src-tauri/icons/icon.png` is a geometric placeholder pending the art pass,
+regenerated by `tools/make-icon.py` rather than committed as an opaque blob.
+Two constraints on it, both asserted by `capabilities.test.ts` because both
+otherwise surface minutes into a Rust build:
+
+- It must be PNG **colour type 6 (RGBA)**. `tauri::generate_context!` decodes it
+  and panics `icon ... is not RGBA` on anything else. The alpha channel is
+  entirely opaque and carries nothing, but it must be there. Downstream the iOS
+  AppIcon asset must *not* carry one (App Store validation rejects it,
+  ITMS-90717) and `tauri icon` emits RGBA for that set too — flattening it
+  belongs with the iOS target.
+- `*.png` is **Git LFS** repo-wide, so a checkout without the object leaves a
+  pointer file that `generate_context!` will happily try to decode. Any job that
+  compiles the Rust needs the LFS object — `ci.yml` fetches that one path.

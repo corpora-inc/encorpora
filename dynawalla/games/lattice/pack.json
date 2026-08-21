@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.lattice",
+  "version": "0.1.0",
+  "name": "THE LATTICE",
+  "description": "A twin-stick arena strung on a mass-spring grid. Shoot a composite husk and it splits along a factor pair; primes cannot be split, so primes are what is left to sweep. Fly into the resonator holding the primes that multiply to what it is asking.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ]
+  },
+  "minAge": 8,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

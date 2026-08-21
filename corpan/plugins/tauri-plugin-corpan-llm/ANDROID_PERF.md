@@ -70,13 +70,13 @@ freq), which is why classifying by capacity + the all-big special-case matters.
 `CORPAN_LLM_THREADS=N`), then re-open the tutor. Try 4 / 6 / 7 / 8 and compare the PERF
 tok/s lines. `setprop debug.corpan.llm_threads 0` (or unset) returns to auto-detect.
 
-**Live system-prompt A/B without rebuild:** `adb shell setprop debug.corpan.sysprompt none`
-drops all system messages (bare model); `... debug.corpan.sysprompt "You are a Spanish
-tutor."` replaces every system message with that text; `... debug.corpan.sysprompt ""`
-restores the real ~850-token grounded prompt. Read per turn (no relaunch needed), and the
-build prints `[corpan-llm] sysprompt override: …` when active — if that line is ABSENT, the
-running APK predates this knob (commit fd0e5e31); rebuild. Measured: the full prompt is
-~850 prefill tokens ≈ 40s on the 8 Elite; `none` drops prefill to just the user message.
+**System-prompt A/B: the knob is GONE.** A live override (`CORPAN_LLM_SYSPROMPT` env /
+`adb shell setprop debug.corpan.sysprompt`) existed briefly and was **removed in commit
+`1d38ffc2c`** once KV-cache prefix reuse landed and made the measurement moot. There is no
+runtime system-prompt override in `state.rs` today — do not go looking for one, and do not
+blame it when a tutor answers in the wrong language. What the knob measured, for the record:
+the full grounded prompt is ~850 prefill tokens ≈ 40s on the 8 Elite; dropping system
+messages entirely cut prefill to just the user message.
 
 **Measured on the 8 Elite (threads=7):** prefill ~850 tok @ ~20 tok/s ≈ **40-44s**; decode
 ~9-13 tok/s (healthy). So Android is **100% prefill-bound**, not decode-bound.

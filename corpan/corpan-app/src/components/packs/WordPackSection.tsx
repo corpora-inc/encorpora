@@ -18,6 +18,7 @@ import { BookText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useWordPackCatalog } from "@/hooks/useWordPackCatalog";
+import { LANGUAGE_NAMES } from "@/store/constants";
 import { installWordPack, isWordPackInstalled } from "@/util/wordPack";
 
 type RowState =
@@ -31,17 +32,32 @@ function WordPackRow({
     id,
     name,
     description,
+    targetLang,
     sizeMb,
     zipUrl,
 }: {
     id: string;
     name: string;
     description?: string;
+    targetLang: string;
     sizeMb: number;
     zipUrl: string;
 }) {
     const { t } = useTranslation();
     const [state, setState] = useState<RowState>({ kind: "checking" });
+
+    // The catalog entry is explicit about which language's WORDS this pack
+    // explains (`targetLang`) vs. which language the explanations are
+    // WRITTEN IN (`nativeLang`, already reflected in `name`/`description`).
+    // Today every shipped pack targets English, but that's a catalog fact,
+    // not something to assume here — read it from metadata so a future DE
+    // (or other) explanation pack labels itself correctly with no code
+    // change. Prefer the fully-localized language name (translated into the
+    // active UI language) and fall back to `LANGUAGE_NAMES`'s English name
+    // if a translation is ever missing.
+    const explainedLanguage = t(`languages.${targetLang}`, {
+        defaultValue: LANGUAGE_NAMES[targetLang] ?? targetLang,
+    });
 
     useEffect(() => {
         let alive = true;
@@ -72,6 +88,12 @@ function WordPackRow({
             <BookText className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
             <div className="min-w-0 flex-1">
                 <div className="truncate text-sm font-medium">{name}</div>
+                <div className="truncate text-xs text-muted-foreground">
+                    {t("wordPacks.explains", {
+                        defaultValue: "{{language}} words",
+                        language: explainedLanguage,
+                    })}
+                </div>
                 {description ? (
                     <div className="truncate text-xs text-muted-foreground">
                         {description}
@@ -134,6 +156,7 @@ export function WordPackSection() {
                         id={p.id}
                         name={p.name}
                         description={p.description}
+                        targetLang={p.targetLang}
                         sizeMb={p.sizeMb}
                         zipUrl={p.zipUrl}
                     />

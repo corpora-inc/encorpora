@@ -1,0 +1,705 @@
+/* DEEPSWARM — bioluminescent abyss.
+   Near-black indigo, luminous edges, heavy geometric numerals. No serif on
+   anything a child has to read in under half a second. */
+
+/* The host's chrome floats over this game: a back chevron top-LEFT, a
+   how-to-play button top-RIGHT, 44px each. `ui/layout.ts` owns these numbers
+   and writes them onto the root at mount; the values here are the fallbacks,
+   and they are the same numbers. Nothing a child reads or touches may land in
+   those two squares — the swarm and the light still bleed to every edge. */
+.hz-root {
+  --hz-chrome-top: 63px;
+  --hz-xp-top: 3px;
+  --hz-icon: 40px;
+  --hz-icon-gap: 6px;
+  --hz-icon-edge: 10px;
+  --hz-icon-bottom: 40px;
+  --hz-fps-edge: 10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #04060f;
+  color: #e8f2ff;
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  contain: layout paint style;
+}
+
+.hz-root * { box-sizing: border-box; }
+
+.hz-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  touch-action: none;
+}
+
+.hz-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------------------------------------------- HUD */
+
+.hz-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: max(10px, var(--dw-safe-top, env(safe-area-inset-top, 0px))) max(10px, var(--dw-safe-right, env(safe-area-inset-right, 0px))) max(10px, var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px))) max(10px, var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+}
+
+/* The XP bar had no `env()` at all: flush to y=0 and edge to edge, so on a
+   notched phone held sideways the first forty-seven pixels of fill — the part
+   that tells a child a level is coming — were behind the sensor housing. It
+   now starts under the host's own 3px hairline rather than beneath it. */
+.hz-xpbar {
+  position: absolute;
+  top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-xp-top));
+  left: var(--dw-safe-left, env(safe-area-inset-left, 0px));
+  right: var(--dw-safe-right, env(safe-area-inset-right, 0px));
+  height: 7px;
+  background: rgba(120, 190, 255, 0.10);
+}
+.hz-xpfill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #35ffd6, #6ff0ff 55%, #d8fbff);
+  box-shadow: 0 0 14px #35ffd6, 0 0 34px rgba(53, 255, 214, 0.55);
+  transition: width 90ms linear;
+}
+
+/* The clock, the level and the kill count. A centred row spanning the full
+   width, so on a 320px phone its two ends reached into both host corners — and
+   it only ever grows, because "0:00" becomes "12:04" and "0 SLAIN" becomes
+   "1,204 SLAIN". It drops below the corners instead of being squeezed between
+   them. */
+.hz-top {
+  position: absolute;
+  top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top));
+  left: var(--dw-safe-left, env(safe-area-inset-left, 0px)); right: var(--dw-safe-right, env(safe-area-inset-right, 0px));
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 26px);
+  align-items: baseline;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.hz-clock {
+  font-size: clamp(22px, 5.2vw, 38px);
+  font-weight: 900;
+  text-shadow: 0 0 18px rgba(120, 220, 255, 0.55);
+  letter-spacing: 0.02em;
+}
+
+.hz-chip {
+  font-size: clamp(11px, 2.6vw, 15px);
+  color: #8fb6d8;
+  letter-spacing: 0.13em;
+}
+.hz-chip b {
+  color: #dff3ff;
+  font-weight: 900;
+  font-size: clamp(13px, 3vw, 19px);
+}
+
+.hz-lvl {
+  color: #ffe08a;
+  text-shadow: 0 0 16px rgba(255, 200, 80, 0.6);
+}
+
+/* Life. A founder playtest asked "should it show the health somewhere?", which
+   is what you ask about a readout you did not find. There was one: a 12px
+   hairline with 10px near-black lettering that vanished the moment the fill
+   dropped away from underneath it — so the harder you were being hit, the
+   harder your health was to read. It is the same bar in the same place, tall
+   enough to be a readout, with lettering that survives an empty bar and a
+   colour that changes when the run is nearly over. Its offset is now measured
+   from the host's real bottom inset, not from `env()`, which is 0 in a pack —
+   it used to sit under the home indicator. See `ui/layout.ts`. */
+.hz-life {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--hz-life-bottom, 18px) + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  width: min(380px, 62vw);
+  height: var(--hz-life-h, 22px);
+  background: rgba(70, 12, 26, 0.62);
+  border: 1px solid rgba(255, 130, 150, 0.34);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hz-lifefill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff5f7a, #ff9c6a 70%, #ffd2a0);
+  box-shadow: 0 0 16px rgba(255, 100, 120, 0.8);
+  transition: width 110ms ease-out, background 200ms linear;
+}
+/* Under a quarter: the bar goes white-hot rather than quietly getting shorter. */
+.hz-life.hz-low .hz-lifefill {
+  background: linear-gradient(90deg, #fff0f3, #ff8fa6);
+  animation: hz-lifepulse 620ms ease-in-out infinite alternate;
+}
+@keyframes hz-lifepulse { from { opacity: 0.72; } to { opacity: 1; } }
+.hz-lifetext {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(11px, 2.6vw, 13px);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  /* Readable over the fill AND over the empty track, which the old near-black
+     lettering was not: at low health it sat on a dark background, invisible. */
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(40, 0, 8, 0.95), 0 0 10px rgba(60, 0, 12, 0.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz-life.hz-low .hz-lifefill { animation: none; }
+}
+
+.hz-weps {
+  position: absolute;
+  left: calc(12px + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  bottom: calc(40px + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: clamp(9px, 2.2vw, 12px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #9dc4e4;
+}
+.hz-wep b { color: #eaf7ff; }
+
+.hz-banner {
+  position: absolute;
+  left: 0; right: 0;
+  top: 26%;
+  text-align: center;
+  font-size: clamp(28px, 9vw, 74px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  color: #fff;
+  text-shadow: 0 0 30px currentColor, 0 0 70px currentColor;
+}
+.hz-banner.hz-on { animation: hz-banner 1500ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes hz-banner {
+  0% { opacity: 0; transform: scale(0.62) translateY(14px); letter-spacing: -0.05em; }
+  12% { opacity: 1; transform: scale(1.09); letter-spacing: 0.1em; }
+  26% { transform: scale(1); }
+  74% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.03) translateY(-16px); }
+}
+
+.hz-sub {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(26% + clamp(34px, 10vw, 84px));
+  text-align: center;
+  font-size: clamp(11px, 2.8vw, 16px);
+  letter-spacing: 0.22em;
+  font-weight: 800;
+  opacity: 0;
+  color: #bcd8ee;
+}
+.hz-sub.hz-on { animation: hz-sub 1500ms ease-out forwards; }
+@keyframes hz-sub {
+  0% { opacity: 0; } 16% { opacity: 0.95; } 70% { opacity: 0.9; } 100% { opacity: 0; }
+}
+
+/* --------------------------------------------------------------- modals */
+
+.hz-modal {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  /* All four edges. The top and bottom were padded and the SIDES were a bare
+     12px, so in landscape on a notched phone the outermost rift answer and the
+     outermost upgrade card — both things a child taps — ran under the sensor
+     housing and the rounded corner.
+
+     */
+  padding:
+    max(12px, var(--dw-safe-top, env(safe-area-inset-top, 0px)))
+    max(12px, var(--dw-safe-right, env(safe-area-inset-right, 0px)))
+    max(12px, var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)))
+    max(12px, var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  background:
+    radial-gradient(120% 90% at 50% 40%, rgba(8, 14, 34, 0.62), rgba(2, 4, 12, 0.93));
+  backdrop-filter: blur(9px) saturate(0.85);
+  -webkit-backdrop-filter: blur(9px) saturate(0.85);
+}
+/* The level-up panel, and ONLY it, clears the host's chrome as well as the safe
+   edge. The host floats a back chevron and a how-to-play button over the game
+   rather than reserving a band for them, so a full-width row of cards centred in
+   the whole frame puts something a child taps under both. `--hz-chrome-top` is
+   where those two squares end and it is the host's own published geometry — see
+   `ui/layout.ts`; `ui/cards.ts` measures its band from the same number.
+
+   The rift, the title and the game-over panels keep the plain safe-area padding:
+   they are narrow and short, they never reached the corners, and 63px of extra
+   top padding on a phone held sideways pushed DIVE AGAIN toward the bottom edge
+   for nothing. */
+.hz-picks {
+  padding-top: max(12px, calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top)));
+}
+
+.hz-modal.hz-open { display: flex; animation: hz-fade 170ms ease-out; }
+@keyframes hz-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* `LEVEL 7` over the cards is sized with them — it shares their band, so when
+   they shrink to fit a small screen it has to. Every other panel's heading is
+   sized by the design: `--hz-c-heading` is the CARDS' number and means nothing
+   to a rift that has the whole frame to itself. */
+.hz-picks .hz-title {
+  font-size: var(--hz-c-heading, clamp(13px, 3.4vw, 19px));
+  line-height: var(--hz-c-line, 1.3);
+  margin-bottom: var(--hz-c-heading-gap, clamp(8px, 2vw, 18px));
+}
+.hz-title {
+  font-size: clamp(13px, 3.4vw, 19px);
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  color: #7fe6ff;
+  text-shadow: 0 0 22px rgba(80, 220, 255, 0.7);
+  margin-bottom: clamp(8px, 2vw, 18px);
+  text-align: center;
+}
+
+/* cards
+
+   EVERY size below comes from `ui/cards.ts` through a custom property. The
+   clamps that remain are `var()` fallbacks for a stylesheet loaded without a
+   mounted root; the mounted game always overwrites them, and the tests assert
+   the numbers the game computes, not these. Sizing anything here on its own
+   again would make those assertions a fiction — `cards.test.ts` parses this
+   file and fails if a rule stops reading its variable. */
+.hz-cards {
+  display: flex;
+  gap: var(--hz-c-gap, clamp(7px, 1.6vw, 16px));
+  width: min(1080px, 96vw);
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+@media (max-aspect-ratio: 4/5) {
+  .hz-cards { flex-direction: column; width: min(520px, 96vw); }
+}
+
+.hz-card {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+  border: 1px solid rgba(140, 200, 255, 0.22);
+  background: linear-gradient(170deg, rgba(16, 26, 52, 0.94), rgba(6, 10, 24, 0.96));
+  border-radius: 5px;
+  padding: var(--hz-c-pad, clamp(9px, 1.8vw, 20px)) var(--hz-c-padx, clamp(8px, 1.6vw, 18px));
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hz-c-inner, clamp(3px, 0.8vw, 8px));
+  overflow: hidden;
+  transition: transform 110ms cubic-bezier(0.16, 1, 0.3, 1), border-color 110ms, box-shadow 140ms;
+  animation: hz-card-in 260ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+}
+/* Portrait puts the main axis in the BLOCK direction, and `flex: 1 1 0` up
+   there means a base HEIGHT of zero, to be grown out of free space that a
+   content-sized container does not have. Every card came out 20px tall — one
+   border, two paddings, no content — and `overflow: hidden` then cut the labels
+   through the middle of their capitals. Down this axis a card is as tall as
+   what it holds, and `cards.ts` has already cut what it holds to fit the
+   screen. This rule must stay AFTER `.hz-card` above: a media query adds no
+   specificity, so source order is the whole of its authority. */
+@media (max-aspect-ratio: 4/5) {
+  .hz-card { flex: 0 0 auto; }
+}
+
+.hz-card:nth-child(1) { animation-delay: 0ms; }
+.hz-card:nth-child(2) { animation-delay: 55ms; }
+.hz-card:nth-child(3) { animation-delay: 110ms; }
+.hz-card:nth-child(4) { animation-delay: 165ms; }
+@keyframes hz-card-in {
+  from { opacity: 0; transform: translateY(26px) scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+.hz-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--hue, #7fe6ff);
+  box-shadow: 0 0 18px var(--hue, #7fe6ff);
+}
+.hz-card:hover, .hz-card:focus-visible {
+  transform: translateY(-6px) scale(1.025);
+  border-color: var(--hue, #7fe6ff);
+  box-shadow: 0 0 0 1px var(--hue), 0 18px 60px -18px var(--hue);
+  outline: none;
+}
+.hz-card:active { transform: translateY(-2px) scale(0.99); }
+
+/* The corner flag on a draft card. `.hz-card` twenty lines up is
+   `position: relative`, so `top: 0; right: 0` is the top-right of a card inside
+   `.hz-picks`, which pays the safe area itself — not the corner of the glass.
+   Stated as a declaration because the fleet gate parses the CSS and throws
+   comments away. */
+.hz-card-rarity {
+  --dw-safe-exempt: "corner of .hz-card, which is position:relative — not the glass";
+  position: absolute;
+  top: 0; right: 0;
+  padding: 3px 7px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: #04060f;
+  background: var(--hue, #7fe6ff);
+}
+.hz-card-r0 .hz-card-rarity { display: none; }
+
+/* Every label states its own line height. A card's height is then arithmetic
+   `cards.ts` can do, instead of a property of whichever system font the device
+   turned out to have — SF Pro Rounded on an iPad, Roboto on a Pixel, and 8%
+   between them in ascender-plus-descender. `--hz-c-line` is over both. */
+.hz-card-title {
+  font-size: var(--hz-c-title, clamp(13px, 2.6vw, 20px));
+  line-height: var(--hz-c-line, 1.3);
+  white-space: nowrap;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  color: var(--hue, #cfe9ff);
+  padding-left: 8px;
+}
+.hz-card-tag {
+  font-size: var(--hz-c-tag, clamp(10px, 2vw, 13px));
+  line-height: var(--hz-c-line, 1.3);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #e9f5ff;
+  padding-left: 8px;
+}
+.hz-card-math {
+  padding-left: 8px;
+  margin-top: auto;
+  font-size: var(--hz-c-math, clamp(10px, 1.9vw, 13px));
+  color: #7fa0c0;
+  letter-spacing: 0.02em;
+  line-height: var(--hz-c-line, 1.3);
+}
+.hz-card-math .hz-was { text-decoration: line-through; opacity: 0.65; }
+.hz-card-math .hz-now { color: #eaf7ff; font-weight: 800; }
+.hz-card-head {
+  padding-left: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  /* The row is given the full reserve even though the numeral's own line box is
+     tighter, so the height `cards.ts` budgeted is the height it gets. */
+  font-size: var(--hz-c-head, clamp(26px, 6vw, 46px));
+  line-height: var(--hz-c-head-line, 1.15);
+  min-height: calc(var(--hz-c-head, 26px) * var(--hz-c-head-row, 1.4));
+}
+.hz-card-head b {
+  font-size: 1em;
+  font-weight: 900;
+  line-height: var(--hz-c-head-line, 1.15);
+  color: #fff;
+  text-shadow: 0 0 22px var(--hue, #7fe6ff);
+}
+.hz-card-head span {
+  font-size: var(--hz-c-sub, clamp(8px, 1.7vw, 11px));
+  letter-spacing: 0.2em;
+  color: #85a8c8;
+  font-weight: 800;
+}
+
+/* sealed card */
+.hz-sealed {
+  --hue: #ffd166;
+  border-color: rgba(255, 209, 102, 0.5);
+  background: linear-gradient(170deg, rgba(46, 34, 10, 0.92), rgba(12, 8, 4, 0.96));
+  cursor: default;
+}
+.hz-sealed:hover { transform: none; box-shadow: none; border-color: rgba(255, 209, 102, 0.5); }
+.hz-seal-prompt {
+  font-size: var(--hz-c-seal, clamp(20px, 5vw, 38px));
+  line-height: var(--hz-c-line, 1.3);
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 26px rgba(255, 209, 102, 0.8);
+  padding: 0;
+}
+/* The answers wrap when three of them will not fit across the card, and
+   `cards.ts` budgets the rows they take. `--hz-c-orbmin` is the width one of
+   them needs for the widest number the curriculum asks — it is what makes the
+   wrap happen where the metrics say it happens rather than wherever the text
+   ran out of room. */
+.hz-seal-orbs { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.hz-orb {
+  flex: 1 1 0;
+  min-width: var(--hz-c-orbmin, 52px);
+  padding: var(--hz-c-orbpad, clamp(7px, 1.6vw, 13px)) 2px;
+  font-size: var(--hz-c-orb, clamp(15px, 3.4vw, 24px));
+  line-height: var(--hz-c-line, 1.3);
+  font-weight: 900;
+  color: #ffe9b8;
+  background: rgba(255, 209, 102, 0.09);
+  border: 1px solid rgba(255, 209, 102, 0.42);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 90ms, background 90ms;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+.hz-orb:hover { background: rgba(255, 209, 102, 0.22); transform: translateY(-2px); }
+.hz-orb:active { transform: scale(0.96); }
+.hz-orb.hz-ok { background: #ffd166; color: #241800; animation: hz-pop 380ms ease-out; }
+.hz-orb.hz-no { background: rgba(120, 40, 60, 0.55); border-color: #ff7d9c; color: #ffd9e2; }
+@keyframes hz-pop { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
+.hz-seal-note {
+  text-align: center;
+  font-size: var(--hz-c-note, clamp(8px, 1.7vw, 11px));
+  line-height: var(--hz-c-line, 1.3);
+  letter-spacing: 0.18em;
+  color: #c8a95e;
+  font-weight: 800;
+}
+
+/* ----------------------------------------------------------------- rift */
+
+.hz-rift .hz-title { color: #ff9ab6; text-shadow: 0 0 26px rgba(255, 120, 160, 0.7); }
+.hz-riftbox {
+  width: min(620px, 94vw);
+  border: 1px solid rgba(255, 140, 175, 0.34);
+  background: linear-gradient(170deg, rgba(34, 10, 24, 0.95), rgba(8, 3, 12, 0.97));
+  border-radius: 6px;
+  padding: clamp(14px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 2vw, 16px);
+  box-shadow: 0 0 90px -20px rgba(255, 90, 140, 0.55);
+}
+.hz-charges { display: flex; gap: 8px; justify-content: center; }
+.hz-charge {
+  width: clamp(26px, 7vw, 42px);
+  height: clamp(26px, 7vw, 42px);
+  border: 2px solid rgba(255, 160, 190, 0.4);
+  border-radius: 50%;
+  transition: background 200ms, box-shadow 200ms, transform 200ms;
+}
+.hz-charge.hz-lit {
+  background: #ffd166;
+  border-color: #fff2c8;
+  box-shadow: 0 0 26px #ffb03a, 0 0 60px rgba(255, 176, 58, 0.6);
+  transform: scale(1.12);
+}
+.hz-prompt {
+  font-size: clamp(30px, 9vw, 66px);
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 34px rgba(150, 220, 255, 0.7);
+  line-height: 1.05;
+}
+.hz-answers { display: flex; gap: clamp(6px, 1.6vw, 12px); }
+@media (max-width: 420px) { .hz-answers { flex-wrap: wrap; } .hz-answers .hz-answer { flex: 1 1 44%; } }
+.hz-answer {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: clamp(12px, 3vw, 22px) 4px;
+  font-size: clamp(20px, 5.4vw, 34px);
+  font-weight: 900;
+  color: #eaf7ff;
+  background: rgba(120, 190, 255, 0.08);
+  border: 1px solid rgba(140, 200, 255, 0.32);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  transition: transform 90ms, background 110ms, border-color 110ms;
+}
+.hz-answer:hover { background: rgba(120, 190, 255, 0.2); transform: translateY(-3px); }
+.hz-answer:active { transform: scale(0.97); }
+/* Every candidate looks the same until it is struck.
+   `showRift` used to focus the first button as the panel opened, and the UA
+   paints a ring on a focused button — so the LEFTMOST answer arrived already
+   highlighted, every time, whether or not it was the right one. The focus is
+   gone; this makes sure nothing else can put a ring there either. A keyboard
+   player who Tabs in still gets one, because `:focus-visible` is exactly the
+   "arrived by keyboard" case and programmatic focus is not. */
+.hz-answer:focus { outline: none; }
+.hz-answer:focus-visible {
+  outline: 2px solid #eaf7ff;
+  outline-offset: 2px;
+}
+.hz-orb:focus { outline: none; }
+.hz-orb:focus-visible { outline: 2px solid #ffe9b8; outline-offset: 2px; }
+/* The panel itself takes the focus instead. It must never look focused. */
+.hz-riftbox:focus, .hz-riftbox:focus-visible { outline: none; }
+.hz-answer.hz-ok { background: #7dffd0; border-color: #d8fff2; color: #00281c; animation: hz-pop 380ms ease-out; }
+.hz-answer.hz-no { background: rgba(120, 40, 60, 0.5); border-color: #ff7d9c; color: #ffd9e2; }
+.hz-riftclock {
+  height: 5px;
+  background: rgba(255, 140, 175, 0.16);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hz-riftclock i { display: block; height: 100%; background: #ff7da0; box-shadow: 0 0 14px #ff5f8a; }
+.hz-riftnote {
+  text-align: center;
+  font-size: clamp(9px, 2vw, 12px);
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  color: #d69fb4;
+}
+
+/* ------------------------------------------------------ title / gameover */
+
+.hz-big {
+  font-size: clamp(38px, 13vw, 118px);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: #eaf9ff;
+  text-shadow: 0 0 40px rgba(90, 220, 255, 0.75), 0 0 120px rgba(60, 140, 255, 0.45);
+  text-align: center;
+  line-height: 0.94;
+}
+.hz-tagline {
+  font-size: clamp(10px, 2.6vw, 15px);
+  letter-spacing: 0.34em;
+  color: #86b6d6;
+  font-weight: 800;
+  margin-top: 10px;
+  text-align: center;
+}
+.hz-btn {
+  margin-top: clamp(16px, 4vw, 34px);
+  padding: clamp(13px, 3vw, 20px) clamp(28px, 7vw, 60px);
+  font-size: clamp(14px, 3.4vw, 21px);
+  font-weight: 900;
+  letter-spacing: 0.26em;
+  color: #04141c;
+  background: linear-gradient(180deg, #9dffe4, #37e0c0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 0 40px -6px rgba(60, 240, 200, 0.85);
+  transition: transform 100ms, box-shadow 140ms;
+}
+.hz-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 60px -4px rgba(60, 240, 200, 1); }
+.hz-btn:active { transform: scale(0.97); }
+.hz-btn.hz-ghost {
+  background: none;
+  color: #9dc4e4;
+  border: 1px solid rgba(140, 200, 255, 0.3);
+  box-shadow: none;
+  letter-spacing: 0.2em;
+  padding: 10px 22px;
+  font-size: clamp(10px, 2.4vw, 13px);
+  margin-top: 14px;
+}
+
+.hz-stats {
+  display: flex;
+  gap: clamp(14px, 5vw, 46px);
+  margin-top: clamp(14px, 3vw, 28px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hz-stat { text-align: center; }
+.hz-stat b {
+  display: block;
+  font-size: clamp(24px, 7vw, 46px);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 24px rgba(120, 220, 255, 0.6);
+  line-height: 1;
+}
+.hz-stat span {
+  font-size: clamp(8px, 2vw, 11px);
+  letter-spacing: 0.2em;
+  color: #7fa4c4;
+  font-weight: 800;
+}
+
+.hz-hint {
+  margin-top: 18px;
+  font-size: clamp(9px, 2.2vw, 13px);
+  color: #6d90ae;
+  letter-spacing: 0.14em;
+  text-align: center;
+  line-height: 1.8;
+  font-weight: 700;
+  max-width: 46ch;
+}
+.hz-hint b { color: #a9d8f4; }
+
+/* Sound and pause. These were top-right, in the 44px square the host paints
+   its how-to-play button into — two buttons and a third button stacked on the
+   same pixels. Bottom-right is the one corner of this HUD that holds nothing:
+   the weapon list is bottom-left, the life bar is bottom-centre and 12px tall,
+   and the host paints nothing down there. */
+.hz-corner {
+  position: absolute;
+  bottom: calc(var(--hz-icon-bottom) + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  right: calc(var(--hz-icon-edge) + var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  display: flex;
+  gap: var(--hz-icon-gap);
+  pointer-events: auto;
+}
+.hz-icon {
+  width: var(--hz-icon); height: var(--hz-icon);
+  display: grid; place-items: center;
+  background: rgba(10, 20, 40, 0.55);
+  border: 1px solid rgba(140, 200, 255, 0.22);
+  border-radius: 4px;
+  color: #b6d8f2;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 900;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+.hz-icon:hover { background: rgba(30, 60, 110, 0.7); color: #fff; }
+.hz-icon[aria-pressed="false"] { opacity: 0.42; }
+
+/* Behind `?debug`, but it sat under the back chevron too. */
+.hz-fps {
+  position: absolute;
+  left: calc(var(--hz-fps-edge) + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--hz-chrome-top));
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #4f7ea0;
+  font-weight: 800;
+  pointer-events: none;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hz-card, .hz-banner, .hz-sub, .hz-modal { animation: none !important; }
+  .hz-card:hover { transform: none; }
+  .hz-btn:hover { transform: none; }
+}

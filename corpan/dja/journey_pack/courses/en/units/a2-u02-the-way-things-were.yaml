@@ -1,0 +1,78 @@
+id: en.a2.u02
+arc: en.arc2
+theme: "The way things were"
+cando:
+  - key: habits
+    text: "Can describe past habits and states that are no longer true."
+  - key: then-now
+    text: "Can compare what things used to be like with how they are now."
+vocab_band: { lo: 1, hi: 4114 }
+phrase_domains: [everyday, environment, social]
+skills:
+  - id: en.skill.used-to
+    kind: grammar
+    title: "Used to"
+    b: -1.9
+    prereqs: [en.skill.past-narration]
+grammar_nodes: [en.gn.used-to]
+items:
+  - ref: "phrase:phrase-life-then-and-now:0"  # I used to live near the sea.
+    skills: [en.skill.used-to]
+    importance: 3
+    probe: true
+    b: -1.9
+  - ref: "phrase:phrase-life-then-and-now:4"  # I used to be afraid of the dark.
+    skills: [en.skill.used-to]
+    importance: 3
+    probe: true
+    b: -1.9
+  - ref: "phrase:phrase-life-then-and-now:6"  # We used to play outside all day.
+    skills: [en.skill.used-to]
+    importance: 3
+    probe: true
+    b: -1.9
+  - ref: "phrase:phrase-life-then-and-now:2"  # She used to have really long hair.
+    skills: [en.skill.used-to]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20622"  # My father used to be a teacher.
+    skills: [en.skill.used-to]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-then-and-now:105"  # My life is very different now.
+    skills: [en.skill.used-to]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:child"
+    skills: [en.skill.used-to]
+    importance: 2
+  - ref: "word:en:before"
+    skills: [en.skill.used-to]
+    importance: 2
+  - ref: "word:en:change"
+    skills: [en.skill.used-to]
+    importance: 2
+  - ref: "word:en:past"
+    skills: [en.skill.used-to]
+    importance: 2
+  - ref: "word:en:ago"
+    skills: [en.skill.used-to]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, environment, social]
+      level: A2
+      count: 10
+      skills: [en.skill.used-to]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

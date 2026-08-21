@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**How work lands: read the root `AGENTS.md` first.** Development is trunk-based —
+short-lived branch off `main`, PR, automated adversarial review, green checks,
+squash-merge. No integration branches, no batching, no leaving work uncommitted for
+someone else. This file covers the Corpán app itself; `AGENTS.md` covers the process.
+
 ## Release notes — read this before shipping
 
 We track release notes per shippable unit. Conventions are in
@@ -56,8 +61,18 @@ packs/               # Standalone pack packages
 ├── sdk/             # Corpan Pack SDK for pack development
 └── hover-runner/    # Reference pack
 
-plugins/
-└── tauri-plugin-game-packs/  # Legacy plugin; MVP uses app-managed content pack installs
+plugins/             # 11 Rust crates (10 Tauri plugins + the corpan-asr-contract lib)
+├── tauri-plugin-game-packs/   # LIVE: registers the corpan-pack:// URI scheme
+├── tauri-plugin-corpan-llm/   # on-device LLM (vendored llama.cpp)
+├── tauri-plugin-tts/          # text to speech
+├── tauri-plugin-stt/          # speech to text (whisper)
+├── tauri-plugin-asr-native/   # OS-native dictation
+├── tauri-plugin-iap/          # in-app purchase (vendored, see VENDORING.md)
+├── tauri-plugin-subscriptions/
+├── tauri-plugin-haptics/
+├── tauri-plugin-audio-keepalive/
+├── tauri-plugin-radio-stream/
+└── corpan-asr-contract/       # shared ASR types (not a Tauri plugin)
 ```
 
 ## Common Commands
@@ -224,8 +239,13 @@ Native delivery:
 
 ## Dependencies
 
-- **tauri-plugin-tts**: Local dev dependency at `/Users/skyl/Code/github/tauri-plugin-tts`
-- **tauri-plugin-game-packs**: Legacy plugin in `plugins/tauri-plugin-game-packs/`
+- **tauri-plugin-tts**: in-repo at `plugins/tauri-plugin-tts/`, wired as a path
+  dependency (`corpan-app/src-tauri/Cargo.toml:37`). Not an external checkout.
+- **tauri-plugin-game-packs**: `plugins/tauri-plugin-game-packs/`. **Not legacy — it is
+  on the hot path for every installed pack.** Besides the `list_game_packs` /
+  `get_game_pack_manifest_url` commands, it registers the `corpan-pack://` custom URI
+  scheme protocol handler (`src/lib.rs:45`) that serves every asset out of an installed
+  pack's directory to the WebView. Remove it and no pack loads.
 - **shadcn/ui**: UI components from Radix UI primitives
 - **zustand**: State management
 - **i18next**: Internationalization

@@ -22,6 +22,7 @@ import {
   isPreviewing,
   type VoicePreviewState,
 } from "./voicePreview"
+import { applyImageBackground } from "./narratorImage"
 
 const SVG_BACK = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`
 const SVG_PLAY = `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg>`
@@ -40,6 +41,15 @@ export type NarratorDetailOptions = {
    * Default `[]` disables prioritization (no stack configured / dev mock).
    */
   stackLanguages?: string[]
+  /**
+   * Optional offline-cache image resolver (the D12 seam —
+   * `hostApi.offlineCache?.imageSrc`). Given a remote URL it resolves to a
+   * local cached copy when available, the remote URL when online, or
+   * undefined when offline with no cached copy. When absent, images
+   * preload-verify against the network as before. Feature-detected by the
+   * shell; older hosts simply don't pass it.
+   */
+  resolveImageUrl?: (url: string) => Promise<string | undefined>
 }
 
 export type NarratorDetail = {
@@ -115,25 +125,27 @@ export function createNarratorDetail(
     hero.className = "catalog-narrator-detail-hero"
 
     const banner = document.createElement("div")
-    if (character.bannerUrl) {
-      banner.className = "catalog-narrator-detail-banner"
-      banner.style.backgroundImage = `url(${cssUrl(character.bannerUrl)})`
-    } else {
-      banner.className = "catalog-narrator-detail-banner catalog-narrator-detail-banner--placeholder"
-    }
+    void applyImageBackground(banner, {
+      url: character.bannerUrl,
+      imageClass: "catalog-narrator-detail-banner",
+      placeholderClass:
+        "catalog-narrator-detail-banner catalog-narrator-detail-banner--placeholder",
+      resolveImageUrl: opts.resolveImageUrl,
+    })
     if (character.accentColor) {
       hero.style.setProperty("--catalog-accent", character.accentColor)
     }
     hero.appendChild(banner)
 
     const avatar = document.createElement("div")
-    if (character.avatarUrl) {
-      avatar.className = "catalog-narrator-detail-avatar"
-      avatar.style.backgroundImage = `url(${cssUrl(character.avatarUrl)})`
-    } else {
-      avatar.className = "catalog-narrator-detail-avatar catalog-narrator-detail-avatar--placeholder"
-      avatar.textContent = initials(character.displayName)
-    }
+    void applyImageBackground(avatar, {
+      url: character.avatarUrl,
+      imageClass: "catalog-narrator-detail-avatar",
+      placeholderClass:
+        "catalog-narrator-detail-avatar catalog-narrator-detail-avatar--placeholder",
+      placeholderText: initials(character.displayName),
+      resolveImageUrl: opts.resolveImageUrl,
+    })
     hero.appendChild(avatar)
 
     return hero
@@ -450,13 +462,13 @@ export function createNarratorDetail(
     }
 
     const cover = document.createElement("div")
-    if (book.coverImageUrl) {
-      cover.className = "catalog-cover-thumb"
-      cover.style.backgroundImage = `url(${cssUrl(book.coverImageUrl)})`
-    } else {
-      cover.className = "catalog-cover-thumb catalog-cover-thumb--placeholder"
-      cover.textContent = initials(book.title)
-    }
+    void applyImageBackground(cover, {
+      url: book.coverImageUrl,
+      imageClass: "catalog-cover-thumb",
+      placeholderClass: "catalog-cover-thumb catalog-cover-thumb--placeholder",
+      placeholderText: initials(book.title),
+      resolveImageUrl: opts.resolveImageUrl,
+    })
     card.appendChild(cover)
 
     const titleEl = document.createElement("div")
@@ -642,7 +654,3 @@ function initials(name: string): string {
   return parts.map((p) => p.charAt(0).toUpperCase()).join("")
 }
 
-function cssUrl(raw: string): string {
-  // Escape parens/quotes in url() — defensive against weird CDN paths.
-  return `"${raw.replace(/"/g, '\\"')}"`
-}

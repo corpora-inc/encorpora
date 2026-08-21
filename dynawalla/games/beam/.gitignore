@@ -1,0 +1,12 @@
+node_modules/
+dist/
+
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/
+
+# QA captures. The committed screenshot set lives elsewhere; these are scratch.
+qa/shots
+qa/tmp
+
+# Each game resolves its own devDependencies; the lockfile is not shared.
+package-lock.json

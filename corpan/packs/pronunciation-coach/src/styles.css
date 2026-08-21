@@ -87,6 +87,30 @@ body,
   display: none;
 }
 
+
+/* Map the pack theme onto the cap-pronounce custom properties so the moved
+   round/result UI keeps the purple accent + dark mode. Scoped to the pack's
+   surfaces (practice root, overlays, multiplayer) — never :root, so a host
+   co-resident capability mount isn't retinted. */
+.pc-root,
+.pc-overlay,
+.pc-setup-root,
+.pc-pm-root {
+  --capPron-bg: var(--pc-bg);
+  --capPron-fg: var(--pc-fg);
+  --capPron-muted: var(--pc-muted);
+  --capPron-card: var(--pc-card);
+  --capPron-border: var(--pc-border);
+  --capPron-accent: var(--pc-accent);
+  --capPron-accent-hover: var(--pc-accent-hover);
+  --capPron-accent-soft: var(--pc-accent-soft);
+  --capPron-good: var(--pc-good);
+  --capPron-okay: var(--pc-okay);
+  --capPron-bad: var(--pc-bad);
+  --capPron-shadow: var(--pc-shadow);
+  --capPron-result-col: var(--pc-result-col);
+}
+
 .pc-root {
   position: fixed;
   top: 0;
@@ -128,435 +152,21 @@ body,
 /* Responsive overrides moved to the bottom of this file — placing
    them above the base rules made every override lose the cascade
    tie to the later, equally-specific base rules (the unconditional
-   `.pc-mic { width: 124px }` was beating `@media (max-width: 480px)
-   .pc-mic { width: 60px }` because it appeared later). */
-
-/* ---- Header — streak (left) · mode + close (right). Three
-   chiclets sized as a single visual rhythm: 36px height, equal
-   border treatment, equal hover behavior. The header reserves
-   the chiclet height so the deck below has a stable y-offset
-   whether or not the streak is visible. ---- */
-.pc-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex: 0 0 auto;
-  min-height: 36px;
-}
-.pc-header-left,
-.pc-header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 36px;
-  /* Equal-weight side slots so the centered .pc-lang-badge sits at
-     true horizontal center regardless of streak/mode-button width
-     differences. flex: 1 1 0 makes the two slots take equal share
-     of the row's remaining width; the badge in the middle is then
-     mathematically centered by `justify-content: space-between`
-     on .pc-header. */
-  flex: 1 1 0;
-  min-width: 0;
-}
-.pc-header-left  { justify-content: flex-start; }
-.pc-header-right { justify-content: flex-end; }
-
-/* The "Pronunciation Coach" subtitle is gone from the header (the
-   user's screen is the brand — no need to label it twice). The
-   .pc-subtitle class survives because the setup overlay still uses
-   it as a section label ("Speech Models"). */
-.pc-subtitle {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--pc-fg);
-  opacity: 0.72;
-}
-
-/* Close X / Back ‹ — both match the mode chip dimensions (36×36)
-   for visual rhythm so left/center/right header items align on a
-   single baseline. `.pc-close` is kept for the renderUnavailable
-   error screen; `.pc-back` is the normal practice header. */
-.pc-close,
-.pc-back {
-  appearance: none;
-  border: 1px solid var(--pc-border);
-  background: var(--pc-card);
-  color: var(--pc-fg);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  /* Optical-center the chevron glyph — the `‹` character has its
-     visible bounds biased to the right because of its kerning. */
-  padding-right: 2px;
-  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease, color 120ms ease;
-}
-.pc-close { font-size: 20px; padding-right: 0; }
-.pc-close:hover,
-.pc-back:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
-.pc-close:active,
-.pc-back:active { transform: scale(0.92); }
-
-/* ---- Mode chip — icon-only, communicates state via fill ----
-   Standard: outlined neutral (the default speech model is the
-     baseline — no fanfare).
-   Advanced: filled-accent with a glowing ✦ (you've turned on the
-     fancy one — feel it). */
-.pc-mode {
-  appearance: none;
-  border: 1px solid var(--pc-border);
-  background: var(--pc-card);
-  color: var(--pc-fg);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 160ms ease, border-color 160ms ease,
-              transform 120ms ease, box-shadow 200ms ease,
-              color 160ms ease;
-  /* Standard glyph: faint sparkle, just enough to signal "model
-     selector" without claiming visual weight. */
-  color: var(--pc-fg);
-  opacity: 0.78;
-}
-.pc-mode:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); opacity: 1; }
-.pc-mode:active { transform: scale(0.94); }
-.pc-mode[disabled] { opacity: 0.4; cursor: not-allowed; }
-.pc-mode-glyph {
-  font-size: 14px;
-  line-height: 1;
-}
-.pc-mode.advanced {
-  background: var(--pc-accent);
-  border-color: var(--pc-accent);
-  color: #fff;
-  opacity: 1;
-  box-shadow:
-    0 0 0 4px var(--pc-accent-soft),
-    0 4px 14px rgba(124, 58, 237, 0.45);
-}
-.pc-mode.advanced:hover { background: var(--pc-accent-hover); border-color: var(--pc-accent-hover); }
-.pc-mode.advanced .pc-mode-glyph {
-  font-size: 16px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* ---- Streak indicator — 36px tall pill, rhythmically matches
-   the .pc-mode and .pc-close chiclets to the right. The fire
-   emoji and number sit on a single visual baseline with the
-   icons in the right cluster. ---- */
-.pc-streak {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 36px;
-  padding: 0 14px;
-  border-radius: 999px;
-  background: var(--pc-accent-soft);
-  border: 1px solid transparent;
-  color: var(--pc-fg);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-}
-.pc-streak[hidden] { display: none; }
-
-/* ---- Swipe area: wraps deck + result so the whole middle of the
-   screen is a swipe target. Touch-action: none so iOS doesn't capture
-   horizontal drags as page scroll. The result overlay is a child of
-   this container (`position: absolute`) so it never pushes the mic
-   stage downward — small phones keep the mic anchored, big iPads see
-   the result floating elegantly over the (faded) phrase. ---- */
-.pc-swipe-area {
-  position: relative;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-height: 0;
-  touch-action: none;
-  /* Break out of .pc-root's L/R chrome so the deck reaches the
-     actual screen edges. Cards can then slide cleanly off-screen
-     without visible "padding strip" lingering at the trailing
-     edge of the swipe-out animation. The header (above) and mic
-     stage (below) stay inside the chrome — they're separate flex
-     children of .pc-root and aren't affected by this margin. */
-  margin-left: calc(-1 * (var(--pc-root-pad-x) + var(--pc-safe-left)));
-  margin-right: calc(-1 * (var(--pc-root-pad-x) + var(--pc-safe-right)));
-}
-
-/* ---- Phrase deck (sized for the card) ---- */
-.pc-deck {
-  position: relative;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  overflow: hidden;
-  min-height: 240px;
-}
-
-/* The card uses a 3-row grid so the phrase sits at a FIXED vertical
-   slot, no matter what decorations live above or below it. Without
-   this, adding the banner row pushed the phrase up and adding
-   detail rows pushed it again — the user observed the phrase
-   "moving abruptly" between idle and scored states. With grid:
-   - row 1 (1fr): banner sits at its bottom, gravity toward phrase
-   - row 2 (auto): phrase + romanization + native. Always centered
-                   vertically because the two 1fr rows split the
-                   remaining space evenly.
-   - row 3 (1fr): detail sits at its top, gravity toward phrase
-   The phrase never moves. Decorations grow into the surrounding
-   slack. */
-.pc-card {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  justify-items: center;
-  /* L/R padding matches the chrome inset (--pc-root-pad-x) so
-     content sits at the same visual position it would inside
-     .pc-root's normal padding. The card itself spans full screen
-     width (because .pc-swipe-area breaks out of .pc-root's
-     L/R chrome via negative margin), so the card slides cleanly
-     off-screen on swipe — but content stays inset from the
-     screen edge by --pc-root-pad-x for visual breathing room. */
-  padding: 16px var(--pc-root-pad-x);
-  text-align: center;
-  will-change: transform, opacity;
-  transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
-              opacity 220ms ease;
-  touch-action: pan-y;
-  /* Safety net: if a long phrase + heavy result decorations
-     genuinely overflow the deck on a tiny phone, scroll the card
-     internally rather than pushing the mic off-screen. */
-  overflow-y: auto;
-  /* Hard horizontal clamp: NOTHING in the card may protrude past
-     the deck's right/left edge. A long Whisper transcript, a long
-     romanization, a wide pill row — all clipped to the card width. */
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  /* Soft edge fade so the card content doesn't visibly hard-clip
-     against the deck boundary (especially the mic stage below).
-     Content gracefully dissolves into adjacent regions for a more
-     premium feel. */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 18px,
-    #000 calc(100% - 28px),
-    transparent 100%
-  );
-          mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 18px,
-    #000 calc(100% - 28px),
-    transparent 100%
-  );
-}
-.pc-card-above {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;        /* gravity DOWN, toward phrase */
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  padding-bottom: 14px;
-  min-height: 0;
-}
-.pc-card-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
-.pc-card-below {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;      /* gravity UP, toward phrase */
-  gap: 10px;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  padding-top: 14px;
-  min-height: 0;
-}
-/* The phrase is the visual hero throughout. Result decorations
-   appear around it (banner above, detail below) but the phrase
-   itself never fades or moves — content stability is the whole
-   point of the elite-design pass. The previous `.behind-result`
-   class faded the phrase to 18% to make a result OVERLAY feel like
-   foreground; we removed the overlay, so we removed the fade. */
-.pc-card.dragging {
-  transition: none;
-}
-.pc-card.entering {
-  opacity: 0;
-}
-.pc-card.entered {
-  opacity: 1;
-}
-
-.pc-target {
-  font-size: clamp(30px, 6.5vw, 56px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--pc-fg);
-  margin: 0;
-  word-break: break-word;
-  max-width: 880px;
-  cursor: pointer;
-  transition: color 120ms ease;
-}
-.pc-target:hover { color: var(--pc-accent); }
-.pc-target:active { transform: scale(0.99); }
-
-.pc-romanization {
-  font-size: clamp(14px, 2.4vw, 20px);
-  font-weight: 500;
-  color: var(--pc-muted);
-  margin: 0;
-  font-style: italic;
-  max-width: 720px;
-  cursor: pointer;
-}
-.pc-romanization:hover { color: var(--pc-fg); }
-
-.pc-native {
-  font-size: clamp(15px, 2.4vw, 20px);
-  font-weight: 500;
-  color: var(--pc-muted);
-  margin: 0;
-  max-width: 720px;
-}
-
-/* ---- Mic stage (anchored to bottom, never moves) ----
-   Anchored to the bottom of the pack root via `margin-top: auto` so
-   the mic stays put regardless of whether the inline result reveal
-   below the phrase card is empty or populated. */
-.pc-stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  flex: 0 0 auto;
-  margin-top: auto;
-  justify-content: flex-start;
-}
-
-.pc-mic-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.pc-mic {
-  appearance: none;
-  border: none;
-  /* Fluid mic: scales smoothly with the SHORTER viewport edge so
-     it tracks both phone width and reduced iPad window height.
-     Small screen → small button, big screen → big button, no
-     stepwise jumps. Bounded so it never gets absurd at extremes. */
+   `/* Mic/spinner/label rules MOVED to cap-pronounce (.capPron-mic etc.).
+   Pack overrides: the fluid vmin sizing that tracks phone width AND
+   reduced iPad window height (viewport units stay pack-side — the
+   capability itself is container-relative). */
+.pc-root .capPron-mic {
   width: clamp(48px, 14vmin, 124px);
   height: clamp(48px, 14vmin, 124px);
-  border-radius: 50%;
-  background: color-mix(in oklab, var(--pc-accent) 88%, transparent);
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
-  color: white;
   font-size: clamp(20px, 6vmin, 52px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: var(--pc-shadow);
-  transition: background 120ms ease, transform 120ms ease;
-  font-family: inherit;
-  /* Hold-to-speak: stop the WebView turning a press-and-hold into a
-     scroll, text selection, or long-press callout — any of which would
-     steal the pointer mid-hold and abort recording. */
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
-.pc-mic:hover { background: color-mix(in oklab, var(--pc-accent-hover) 92%, transparent); }
-.pc-mic:active { transform: scale(0.96); }
-.pc-mic[disabled] {
-  background: color-mix(in oklab, var(--pc-muted) 80%, transparent);
-  opacity: 0.55;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-.pc-mic[disabled]:hover { background: color-mix(in oklab, var(--pc-muted) 80%, transparent); }
-
-.pc-mic.recording {
-  background: var(--pc-bad);
-  animation: pc-pulse 1.1s ease-in-out infinite;
-}
-@keyframes pc-pulse {
-  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(220, 38, 38, 0.45); }
-  50%      { transform: scale(1.05); box-shadow: 0 0 0 18px rgba(220, 38, 38, 0); }
-}
-
-.pc-mic.scoring {
-  background: var(--pc-muted);
-  cursor: progress;
-}
-
-.pc-spinner {
+.pc-root .capPron-spinner,
+.pc-overlay .capPron-spinner {
   width: clamp(20px, 5vmin, 44px);
   height: clamp(20px, 5vmin, 44px);
-  border: 3px solid rgba(255, 255, 255, 0.35);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: pc-spin 0.9s linear infinite;
 }
-@keyframes pc-spin {
-  to { transform: rotate(360deg); }
-}
-
-.pc-mic-label {
-  font-size: 13px;
-  color: var(--pc-muted);
-  font-weight: 500;
-  /* Lock the label to a single line so changing the text (Loading…,
-     Tap to speak, Recording…, Scoring…, Network needed…) can never
-     wrap and push the mic up the screen. The user explicitly
-     called this out: the mic must not move regardless of label
-     content or surrounding state. */
-  min-height: 18px;
-  line-height: 18px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: min(420px, 90vw);
-  text-align: center;
-}
+.pc-root .capPron-mic-label { max-width: min(420px, 90vw); }
 
 /* ---- Swipe hint ---- */
 .pc-swipe-hint {
@@ -568,116 +178,10 @@ body,
   opacity: 0.7;
 }
 
-/* ---- Result decorations — live INSIDE .pc-card, not as a separate
-   overlay. Banner above the phrase, detail below. The phrase is
-   never fragmented from its decorations, so the slide animation
-   carries everything off as one unit on swipe.
-
-   No card chrome on the decorations: no border, no shadow, no
-   separate background. Same surface as the phrase. The decorations
-   are part of the same composition as the phrase, not a popover. ---- */
-
-.pc-result-banner {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 16px;
-  border-radius: 999px;
-  background: var(--pc-accent-soft);
-  color: var(--pc-fg);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  /* Compact and subordinate to the phrase. The phrase is the verb
-     of this screen; the banner is the adverb. */
-  max-width: 80%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  animation: pc-banner-in 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.pc-result-banner[hidden] { display: none; }
-.pc-result-banner.good {
-  background: rgba(22, 163, 74, 0.16);
-  color: var(--pc-good);
-}
-.pc-result-banner.okay {
-  background: rgba(217, 119, 6, 0.16);
-  color: var(--pc-okay);
-}
-.pc-result-banner.bad {
-  background: rgba(220, 38, 38, 0.16);
-  color: var(--pc-bad);
-}
-.pc-result-banner-score {
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  font-variant-numeric: tabular-nums;
-  font-size: 15px;
-}
-.pc-result-banner-sep {
-  opacity: 0.5;
-}
-.pc-result-banner-text {
-  font-weight: 600;
-}
-@keyframes pc-banner-in {
-  from { transform: translateY(-6px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
-}
-.pc-result-banner.leaving {
-  animation: pc-banner-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
-  pointer-events: none;
-}
-@keyframes pc-banner-out {
-  to { transform: translateY(-4px); opacity: 0; }
-}
-
-.pc-result-detail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  max-width: var(--pc-result-col);
-  margin: 0 auto;
-  animation: pc-detail-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
-}
-.pc-result-detail[hidden] { display: none; }
-@keyframes pc-detail-in {
-  from { transform: translateY(6px); opacity: 0; }
-  to   { transform: translateY(0);   opacity: 1; }
-}
-.pc-result-detail.leaving {
-  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
-  pointer-events: none;
-}
-@keyframes pc-detail-out {
-  to { transform: translateY(4px); opacity: 0; }
-}
-
-/* "Heard you say" slot — sits between the score banner and the
-   phrase. Hosts a single .pc-transcript-row, scoped to the same
-   width as the row's normal container. Reveals in concert with
-   the banner so the above-phrase composition feels like one
-   gesture, not three separate elements. */
-.pc-result-transcript-up {
-  width: 100%;
-  max-width: var(--pc-result-col);
-  margin: 8px auto 0;
-  animation: pc-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 40ms backwards;
-}
-.pc-result-transcript-up[hidden] { display: none; }
-.pc-result-transcript-up.leaving {
-  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
-}
-
-/* Bars-above slot — kept as an empty slot in the card grid for
-   layout stability; renderResult() leaves it hidden. The Words /
-   Sounds bars that used to live here were removed in 0.3.5: the
-   headline already shows the overall percentage and the per-word
-   pills carry richer per-word truth than the bars ever did. */
-.pc-result-bars-up { display: none; }
+/* Result decorations MOVED to cap-pronounce (.capPron-banner /
+   .capPron-detail / .capPron-transcript-up / .capPron-bars-up) — still
+   rendered INSIDE .pc-card so the slide animation carries everything
+   off as one unit on swipe. */
 
 .pc-headline {
   font-size: clamp(20px, 3.6vw, 30px);
@@ -707,178 +211,8 @@ body,
   letter-spacing: -0.02em;
 }
 
-.pc-chips {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  max-width: var(--pc-result-col);
-  margin: 0 auto;
-}
-.pc-chip {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--pc-accent-soft);
-  color: var(--pc-fg);
-  font-weight: 500;
-}
-.pc-chip-warn {
-  background: rgba(217, 119, 6, 0.18);
-  color: var(--pc-okay);
-}
-.pc-diagnostics {
-  margin-top: 4px;
-  opacity: 0.85;
-}
-
-/* "Heard you say" — stacked, centered block. Small muted label
-   on its own line, then ▶ + transcript inline below. The whole
-   block is the tap target; the ▶ is a visual affordance. Both
-   the success and empty branches share this shape so layout
-   stays steady between attempts. */
-.pc-transcripts {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-  max-width: var(--pc-result-col);
-  margin: 4px auto 0;
-}
-.pc-transcript-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  /* Tappable height comfortable for thumbs (Apple ≥44pt). The whole
-     block is tap-to-play, not just the ▶ button. */
-  min-height: 56px;
-  padding: 10px 16px;
-  border-radius: 14px;
-  background: var(--pc-card);
-  border: 1px solid var(--pc-border);
-  text-align: center;
-  cursor: pointer;
-  transition: background 120ms ease, border-color 120ms ease;
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-.pc-transcript-row:hover { background: var(--pc-accent-soft); }
-.pc-transcript-row:active { transform: scale(0.99); }
-.pc-transcript-row.empty {
-  /* Failure branch keeps the same shape; just non-interactive. */
-  cursor: default;
-}
-.pc-transcript-row.empty:hover { background: var(--pc-card); }
-.pc-transcript-row.empty:active { transform: none; }
-.pc-transcript-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.6;
-  font-weight: 600;
-}
-.pc-transcript-line {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  /* Cap the inline row to the column so a long transcript
-     ellipsizes within the block instead of pushing it wider. */
-  max-width: 100%;
-  min-width: 0;
-}
-.pc-transcript-play {
-  appearance: none;
-  border: none;
-  background: var(--pc-accent-soft);
-  color: var(--pc-fg);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  font-family: inherit;
-  transition: background 120ms ease, transform 120ms ease;
-}
-.pc-transcript-row:hover .pc-transcript-play { background: var(--pc-accent); color: var(--pc-card); }
-.pc-transcript-play:active { transform: scale(0.92); }
-.pc-transcript-text {
-  /* min-width:0 lets ellipsis kick in inside the flex line. */
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-style: italic;
-  font-size: 15px;
-}
-.pc-transcript-text.empty {
-  opacity: 0.6;
-  font-style: normal;
-  font-size: 14px;
-}
-
-.pc-words {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  /* No inner cap; parent .pc-result-detail already constrains
-     to var(--pc-result-col). */
-}
-/* RTL target languages (Arabic, Hebrew, Persian, Urdu, pa-Arab):
-   reverse pill order so the first expected word is on the right.
-   `row-reverse` flips only the container's main-axis order — pill
-   internals are flipped separately below so the ▸ affordance moves
-   to the LEFT of the text and points leftward (◂) to match reading
-   direction. */
-.pc-words-rtl { flex-direction: row-reverse; }
-.pc-words-rtl .pc-word::after {
-  content: "◂";
-  order: -1;
-  margin-left: 0;
-  margin-right: 6px;
-}
-/* RTL "Heard you say" row: play affordance moves to the right side
-   of the transcript and the ▶ flips to ◀. */
-.pc-transcript-line-rtl { flex-direction: row-reverse; }
-/* Per-word pills double as TTS buttons — tap one to hear it
-   spoken. The bars used to share the score story; now the pills
-   carry it alone, so they get a bit more weight and breathing
-   room than before. */
-.pc-word {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  background: var(--pc-card);
-  border: 1px solid var(--pc-border);
-  color: inherit;
-  cursor: pointer;
-  font-family: inherit;
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
-}
-.pc-word:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18); }
-.pc-word:active { transform: scale(0.96); }
-.pc-word::after {
-  content: "▸";
-  margin-left: 6px;
-  font-size: 11px;
-  opacity: 0.7;
-}
-.pc-word.good { background: rgba(22, 163, 74, 0.15); color: var(--pc-good); border-color: rgba(22, 163, 74, 0.30); }
-.pc-word.okay { background: rgba(217, 119, 6, 0.15); color: var(--pc-okay); border-color: rgba(217, 119, 6, 0.30); }
-.pc-word.bad  { background: rgba(220, 38, 38, 0.15); color: var(--pc-bad);  border-color: rgba(220, 38, 38, 0.30); }
+/* Chip / transcript / per-word-pill rules MOVED to cap-pronounce
+   (.capPron-chips / .capPron-transcripts / .capPron-words / .capPron-word). */
 
 .pc-hear {
   appearance: none;
@@ -994,7 +328,7 @@ body,
     calc(24px + var(--pc-safe-left));
   line-height: 1.4;
 }
-.pc-overlay .pc-spinner {
+.pc-overlay .capPron-spinner {
   width: 64px;
   height: 64px;
   border-width: 6px;
@@ -1374,8 +708,8 @@ body,
       calc(var(--pc-root-pad-x) + var(--pc-safe-left));
     gap: 10px;
   }
-  .pc-mic.recording { transform: none; }
-  .pc-mic-label { font-size: 11px; }
+  .pc-root .capPron-mic.recording { transform: none; }
+  .pc-root .capPron-mic-label { font-size: 11px; }
   .pc-swipe-hint { display: none; }
   .pc-footer { display: none; }
 
@@ -1392,30 +726,30 @@ body,
   .pc-close { width: 32px; height: 32px; font-size: 18px; }
   .pc-streak { height: 32px; padding: 0 12px; font-size: 13px; gap: 5px; }
 
-  .pc-target { font-size: clamp(24px, 7vw, 38px); }
-  .pc-romanization { font-size: 14px; }
-  .pc-native { font-size: 14px; }
+  .pc-root .capPron-target { font-size: clamp(24px, 7vw, 38px); }
+  .pc-root .capPron-romanization { font-size: 14px; }
+  .pc-root .capPron-native { font-size: 14px; }
 
-  .pc-result-banner { font-size: 12px; padding: 5px 12px; gap: 8px; }
-  .pc-result-banner-score { font-size: 14px; }
-  .pc-result-detail { gap: 8px; }
-  .pc-words { gap: 6px; }
-  .pc-word { font-size: 13px; padding: 6px 12px; }
-  .pc-transcript-row { min-height: 50px; padding: 8px 14px; }
-  .pc-transcript-play { width: 30px; height: 30px; font-size: 11px; }
-  .pc-transcript-text { font-size: 14px; }
+  .pc-root .capPron-banner { font-size: 12px; padding: 5px 12px; gap: 8px; }
+  .pc-root .capPron-banner-score { font-size: 14px; }
+  .pc-root .capPron-detail { gap: 8px; }
+  .pc-root .capPron-words { gap: 6px; }
+  .pc-root .capPron-word { font-size: 13px; padding: 6px 12px; }
+  .pc-root .capPron-transcript-row { min-height: 50px; padding: 8px 14px; }
+  .pc-root .capPron-transcript-play { width: 30px; height: 30px; font-size: 11px; }
+  .pc-root .capPron-transcript-text { font-size: 14px; }
   .pc-card-above { padding-bottom: 10px; }
   .pc-card-below { padding-top: 10px; }
 }
 
 /* Tiny phones — iPhone SE 3rd gen and earlier (<=667pt tall). */
 @media (max-height: 680px) {
-  .pc-target { font-size: clamp(22px, 6.5vw, 34px); }
-  .pc-result-banner { font-size: 11px; padding: 4px 10px; }
-  .pc-result-banner-score { font-size: 13px; }
-  .pc-result-detail { gap: 6px; }
-  .pc-transcript-row { min-height: 44px; padding: 6px 12px; gap: 2px; }
-  .pc-transcript-text { font-size: 13px; }
+  .pc-root .capPron-target { font-size: clamp(22px, 6.5vw, 34px); }
+  .pc-root .capPron-banner { font-size: 11px; padding: 4px 10px; }
+  .pc-root .capPron-banner-score { font-size: 13px; }
+  .pc-root .capPron-detail { gap: 6px; }
+  .pc-root .capPron-transcript-row { min-height: 44px; padding: 6px 12px; gap: 2px; }
+  .pc-root .capPron-transcript-text { font-size: 13px; }
   .pc-card-above { padding-bottom: 8px; }
   .pc-card-below { padding-top: 8px; }
 }

@@ -1,0 +1,55 @@
+id: en.b1.u28
+arc: en.arc3
+theme: "The story so far"
+cando:
+  - key: review
+    text: "Can bring together stories, hypothetical situations, what other people said, and their own opinions in one account."
+vocab_band: { lo: 1, hi: 5860 }
+phrase_domains: [everyday, social, culture]
+skills:
+  - id: en.skill.b1-consolidate
+    kind: function
+    title: "Bringing it together"
+    b: -0.1
+    prereqs: [en.skill.big-questions]
+items:
+  - ref: "phrase:base:14403"  # He told me he would be late.
+    skills: [en.skill.b1-consolidate]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:12811"  # If I were rich, I would travel the world.
+    skills: [en.skill.b1-consolidate]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:phrase-social-small-talk:0"  # It's cold today, isn't it?
+    skills: [en.skill.b1-consolidate]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:16300"  # I remember being a shy child.
+    skills: [en.skill.b1-consolidate]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:said"
+    skills: [en.skill.b1-consolidate]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, social, culture]
+      level: B1
+      count: 10
+      skills: [en.skill.b1-consolidate]
+      importance: 2
+      substitutable: true
+lessons: [review, review, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit, activityType: match_pairs }

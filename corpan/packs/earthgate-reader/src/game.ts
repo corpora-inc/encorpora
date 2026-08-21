@@ -16,7 +16,19 @@ import {
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "@shared/audio"
-import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
+// The word-sync paragraph renderer + segment-range session were MOVED to the
+// cap-segment-player capability (docs/journey/specs/capability-modules.md
+// §4.3); this pack is their first consumer. The shell keeps its viewport
+// clean-zone math and injects it into the view.
+import {
+  createParagraphView,
+  type ParagraphView,
+} from "@shared/capabilities/segment-player/src/paragraphView"
+import {
+  createSegmentSession,
+  type SegmentSession,
+} from "@shared/capabilities/segment-player/src/segmentSession"
+import type { JourneyHostApi, ActivityItemResult } from "@shared/capabilities/core"
 
 const bookmarks = createBookmarkStore("earthgate-reader")
 const bookMeta = createBookMetaStore("earthgate-reader")
@@ -41,7 +53,7 @@ declare global {
  */
 export function createEarthgateReader(
   container: HTMLElement,
-  _hostApi: HostApi,
+  hostApi: HostApi,
   initialState?: Record<string, unknown>
 ) {
   const hasNativeBridge = Boolean((window as TauriBridgeWindow).__TAURI_INTERNALS__)
@@ -517,28 +529,109 @@ export function createEarthgateReader(
   // transport button, wake lock, media session, native keep-alive) stays
   // in the paused state so language switches, scroll, scrubs, etc. all see
   // a paused reader. Any interruption ends the preview without side effects.
+  //
+  // The range mechanics (seek → play → stop at segment end → snap back) now
+  // live in the shared segment session (cap-segment-player); this shell keeps
+  // only the preview-vs-transport state discipline. The same session drives
+  // Journey `segmentRange` playback (activity-contract §6.2).
   let previewActive = false
-  let oneShotTargetSegment: number | null = null
-  let oneShotSegmentEndMs: number | null = null
-  function endPreview(snapBack: boolean) {
-    if (!previewActive) {
-      oneShotTargetSegment = null
-      oneShotSegmentEndMs = null
-      return
-    }
-    const target = oneShotTargetSegment
-    previewActive = false
-    oneShotTargetSegment = null
-    oneShotSegmentEndMs = null
-    if (!audioEngine) return
-    audioEngine.pause()
-    if (snapBack && target !== null) {
-      audioEngine.seekToSegment(target)
+  let segmentSession: SegmentSession | null = null
+
+  // --- Journey (activity-contract §6.2) ---
+  const journey = (hostApi as unknown as { journey?: JourneyHostApi }).journey
+  const journeySpec = journey?.isActive?.() ? journey.getSpec() : null
+  const rawSegmentRange = initialState?.segmentRange as
+    | { from: number; to: number }
+    | undefined
+  let journeyRange: { from: number; to: number } | null = null
+  let journeyReported = false
+  const journeyItemsReported = new Set<number>()
+  const mountedAt = performance.now()
+
+  function rearmJourneyRange() {
+    if (!segmentSession || !journeyRange || journeyReported) return
+    if (!segmentSession.isActive()) {
+      segmentSession.armRange(journeyRange.from, journeyRange.to)
     }
   }
 
-  // Paragraph view
-  const paragraphView: ParagraphView = createParagraphView(ui)
+  function endPreview(snapBack: boolean) {
+    if (!previewActive) {
+      rearmJourneyRange()
+      return
+    }
+    previewActive = false
+    segmentSession?.cancel(snapBack)
+    rearmJourneyRange()
+  }
+
+  /** Journey terminal report + Continue affordance (activity-contract §6.2):
+   *  fires once, after segment `to` of the launch range completes. Readers
+   *  have no correctness signal — exposure grades as "pass"; the engine caps
+   *  the derived grade. Partial listening is covered by the buffered
+   *  reportItem evidence + host synthesis on exit. */
+  function finishJourneyRange() {
+    doPause()
+    if (journeyReported || !journeyRange) return
+    journeyReported = true
+    const perItem: ActivityItemResult[] = segments
+      .slice(journeyRange.from, journeyRange.to + 1)
+      .map((seg) => ({
+        itemRef: { kind: "segment" as const, source: bookId, id: seg.id },
+        outcome: "pass" as const,
+      }))
+    journey?.reportResult({
+      specId: journeySpec?.specId ?? "",
+      score: 1,
+      perItem,
+      durationMs: Math.round(performance.now() - mountedAt),
+      detail: {
+        numbers: { segments: journeyRange.to - journeyRange.from + 1 },
+      },
+    })
+    showJourneyContinue()
+  }
+
+  function showJourneyContinue() {
+    if (ui.querySelector(".earthgate-journey-continue")) return
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "earthgate-journey-continue"
+    btn.textContent = "Continue"
+    btn.addEventListener("click", () => {
+      try {
+        window.dispatchEvent(new CustomEvent("corpan:exit"))
+      } catch (err) {
+        console.warn("[EarthgateReader] journey continue exit failed:", err)
+      }
+    })
+    ui.appendChild(btn)
+  }
+
+  // Paragraph view (moved to cap-segment-player). The shell owns the
+  // viewport clean-zone math — the reading band between the top fade
+  // (safe-top + --eg-top-clearance) and the transport fade at the bottom,
+  // +20px buffer so words land clearly outside each fade — and injects it.
+  const paragraphCleanTop = () => {
+    const el = ui.querySelector<HTMLElement>(".capSeg-paragraph")
+    const safeTop = el ? parseFloat(getComputedStyle(el).paddingTop) || 0 : 0
+    const topClearance =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--eg-top-clearance"),
+      ) || 80
+    return safeTop + topClearance + 20
+  }
+  const paragraphCleanBottom = () => {
+    const transportClearance =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--eg-transport-clearance"),
+      ) || 130
+    return window.innerHeight - transportClearance - 20
+  }
+  const paragraphView: ParagraphView = createParagraphView(ui, {
+    getCleanTop: paragraphCleanTop,
+    getCleanBottom: paragraphCleanBottom,
+  })
 
   // Chapter overlay
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "earthgate")
@@ -582,7 +675,7 @@ export function createEarthgateReader(
   // its start and snaps back so the listener can repeat it (or switch
   // language/narration and replay in the new voice).
   paragraphView.onTap(() => {
-    if (!audioEngine || !manifest) return
+    if (!audioEngine || !manifest || !segmentSession) return
     if (isPlaying) return
     // Restart preview if one is already running
     endPreview(false)
@@ -592,17 +685,14 @@ export function createEarthgateReader(
     const mseg = manifest.segments[seg.id]
     if (!mseg) return
     analytics.track("segment_play_one", { segment_index: segIdx })
-    const starts = audioEngine.getSegmentAbsoluteStartMs()
-    const endMs = starts[segIdx] + mseg.duration_ms
-    // Position at segment start without touching external state.
-    audioEngine.seekToSegment(segIdx)
-    oneShotTargetSegment = segIdx
-    oneShotSegmentEndMs = endMs
     previewActive = true
-    // Drive the audio engine directly — no transport/wake-lock/media-session
-    // side effects. Language switches, scrubs, etc. still see isPlaying=false.
-    audioEngine.unlock()
-    audioEngine.play()
+    // playRange drives the audio engine directly — no transport/wake-lock/
+    // media-session side effects. Language switches, scrubs, etc. still see
+    // isPlaying=false. Snap back to the segment start when it finishes.
+    segmentSession.playRange(segIdx, segIdx, {
+      snapBackOnEnd: true,
+      countReplay: false,
+    })
   })
 
   // --- Transport callbacks ---
@@ -1025,6 +1115,48 @@ export function createEarthgateReader(
         }
       )
 
+      // Shared segment-range session (cap-segment-player) over the fresh
+      // engine: drives tap-to-replay previews AND Journey range playback.
+      segmentSession = createSegmentSession(
+        audioEngine,
+        (i) => {
+          const seg = segments[i]
+          return seg ? manifest?.segments[seg.id]?.duration_ms ?? null : null
+        },
+        {
+          onSegmentComplete: (i) => {
+            // Journey per-segment evidence (§6.2) — alongside the existing
+            // corpan:segment-progress dispatch (kept; it feeds the Library
+            // "Continue" shelf + streaks). Each segment reports once.
+            if (previewActive || !journeyRange || journeyReported) return
+            if (i < journeyRange.from || i > journeyRange.to) return
+            if (journeyItemsReported.has(i)) return
+            journeyItemsReported.add(i)
+            const seg = segments[i]
+            if (seg) {
+              journey?.reportItem({
+                itemRef: { kind: "segment", source: bookId, id: seg.id },
+                outcome: "pass",
+              })
+            }
+          },
+          onRangeEnd: (range) => {
+            if (previewActive) {
+              previewActive = false
+              rearmJourneyRange()
+              return
+            }
+            if (
+              journeyRange &&
+              range.from === journeyRange.from &&
+              range.to === journeyRange.to
+            ) {
+              finishJourneyRange()
+            }
+          },
+        },
+      )
+
       // Empty string for chapterless books — the `:empty { display: none }`
       // rule on `.earthgate-chapter-title` collapses the row, keeping the
       // book title vertically centered against the time on the right.
@@ -1053,6 +1185,37 @@ export function createEarthgateReader(
         audioEngine.seekToSegment(bookmark.segmentIndex)
       } else if (bookmark && audioEngine) {
         audioEngine.seekToMs(bookmark.timeMs)
+      }
+
+      // Journey launch (activity-contract §6.2): the launch params are
+      // authoritative — start at `from` (clamped to the installed pack),
+      // stop after `to` finishes. Overrides any bookmark restore above.
+      if (rawSegmentRange && audioEngine && segments.length > 0) {
+        const from = Math.max(
+          0,
+          Math.min(segments.length - 1, Math.floor(rawSegmentRange.from)),
+        )
+        const to = Math.max(
+          from,
+          Math.min(segments.length - 1, Math.floor(rawSegmentRange.to)),
+        )
+        journeyRange = { from, to }
+        audioEngine.seekToSegment(from)
+        updateParagraphForSegment(from)
+        segmentSession?.armRange(from, to)
+      } else if (
+        typeof initialState?.startAtSegmentIndex === "number" &&
+        audioEngine
+      ) {
+        const idx = Math.max(
+          0,
+          Math.min(
+            segments.length - 1,
+            Math.floor(initialState.startAtSegmentIndex as number),
+          ),
+        )
+        audioEngine.seekToSegment(idx)
+        updateParagraphForSegment(idx)
       }
 
       setupMediaSession()
@@ -1149,14 +1312,9 @@ export function createEarthgateReader(
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
-    // Tap-to-replay auto-pause: segment's audio just ended → snap back to start.
-    if (
-      previewActive &&
-      oneShotSegmentEndMs !== null &&
-      currentMs >= oneShotSegmentEndMs
-    ) {
-      endPreview(true)
-    }
+    // Segment-range session driver: tap-to-replay auto-pause + snap-back,
+    // and Journey range end-stop (activity-contract §6.2) both live here.
+    segmentSession?.tick()
 
     transport.setTime(currentMs, totalMs)
     if (totalMs > 0) {

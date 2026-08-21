@@ -1,0 +1,22 @@
+{
+  "id": "dynawalla.polarity",
+  "version": "0.1.0",
+  "name": "POLARITY",
+  "description": "A neon vector shmup where the ship's sign is the arithmetic. A Seal Bearer holds a problem on its hull and drops four orbs; an orb whose sign is not yours is a ghost you fly through, one of your own sign is solid and commits you. Read, pick a polarity, thread the mines.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.alg.equality.missing-addend",
+      "dw.alg.equality.missing-subtrahend",
+      "dw.alg.equality.unknown-minuend",
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup"
+    ]
+  },
+  "minAge": 9,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

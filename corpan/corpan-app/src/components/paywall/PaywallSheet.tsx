@@ -38,11 +38,19 @@ type ThemeStyle = CSSProperties & Record<`--${string}`, string>
 
 const PAYWALL_PALETTE: ThemeStyle = {
   color: "#ECEAF6",
+  // Force the dark scheme so native form-control chrome (caret, text, autofill)
+  // renders for THIS surface, not the OS/app light theme — otherwise the code
+  // field's native rendering leaks light-mode styling onto the dark paywall.
+  colorScheme: "dark",
   "--foreground": "#ECEAF6",
   "--primary": "#A879F7",
   "--primary-foreground": "#0C0A14",
   "--border": "rgba(236,234,246,0.16)",
   "--input": "rgba(236,234,246,0.20)",
+  // The offer's code field fills with `bg-background`; without this override it
+  // inherits the app theme's `--background` (white in light mode), so the field
+  // read light on the dark surface. Scope a faint translucent plate instead.
+  "--background": "rgba(236,234,246,0.06)",
   "--muted-foreground": "rgba(236,234,246,0.62)",
   // Subtle plate the offer's selected-plan / trial panel tint against, so its
   // `bg-primary/10` etc. lands as a faint purple glow rather than washing out.

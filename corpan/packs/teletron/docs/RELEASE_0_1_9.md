@@ -61,7 +61,7 @@ and deploy it"). I am orchestrator + integrator. The loop:
    - Then **G** (Corpan City rebuild against shared moderation + transport) →
      **H** (version bumps Teletron 0.1.9 / Corpan City 0.1.7 + promote changelogs +
      rebuild dist) → **I** (whole-bundle tsc+tests+build green) →
-     **deploy** (commit on `towards-17-final`, push, PR, squash-merge to `main` →
+     **deploy** (commit on a short-lived branch, push, PR, squash-merge to `main` →
      GH Pages Action) → **verify** catalog shows teletron 0.1.9 + corpan-city 0.1.7.
 4. **Definition of done** (owner's words): great connection handling, great server,
    **the outbox storage actually works and async-delivers**, copy all correct

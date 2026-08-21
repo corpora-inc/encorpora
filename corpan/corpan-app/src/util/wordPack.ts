@@ -8,13 +8,41 @@
  * (see `corpan/packs/hanzipan/src/main.js`). The install/lookup plumbing is the
  * same `content_packs_*` surface used everywhere else (`contentPacks/native.ts`).
  *
- * For the first ship only the es→en pair exists. `packIdForNative` centralizes
- * the id scheme so adding more native languages later is a one-liner.
+ * All 53 published (native→en) pairs share one id scheme; `packIdForNative`
+ * centralizes it so every discovery surface (Phrase Flip popover, Settings,
+ * Journey auto-provision) resolves the same canonical id.
  */
 import { invoke } from "@tauri-apps/api/core"
 
-/** Languages the shipped word pack covers (native side + the always-present en). */
-export const WORD_PACK_NATIVE_LANGS = new Set(["es"])
+/**
+ * The 53 native languages with a PUBLISHED (native→en) word-explanation pair
+ * (verified against the live index.json, 2026-07). English natives have no
+ * pack (they'd be explaining en words in en); everyone else has exactly one.
+ *
+ * Codes are the corpus's own BCP-47-ish forms and are kept verbatim — the
+ * region/script/variant subtags are load-bearing (`pt-BR` ≠ `pt-PT`,
+ * `zh-Hans` ≠ `zh-Hant`, `pa-Arab` ≠ `pa-Guru`, `ko-polite`, `yue-Hant-HK`).
+ */
+export const WORD_PACK_NATIVE_LANGS = new Set<string>([
+  "ar", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "fa", "fi", "fr",
+  "gu", "he", "hi", "hr", "hu", "id", "it", "ja", "jv", "kn", "ko-polite",
+  "lt", "mr", "ms", "ne", "nl", "no", "pa-Arab", "pa-Guru", "pl", "pt-BR",
+  "pt-PT", "ro", "ru", "sk", "sl", "sr", "su", "sv", "sw", "ta", "te", "th",
+  "tl", "tr", "uk", "ur", "vi", "yue-Hant-HK", "zh-Hans", "zh-Hant",
+])
+
+/**
+ * Bases that have NO bare pack because they publish only region/script/variant
+ * flavors. A learner whose native code is just the base (`pt`, `zh`, `pa`,
+ * `ko`, `yue`) still deserves a pack — pick the most widely useful variant.
+ */
+const WORD_PACK_BASE_DEFAULT: Record<string, string> = {
+  pt: "pt-BR",
+  zh: "zh-Hans",
+  pa: "pa-Guru",
+  ko: "ko-polite",
+  yue: "yue-Hant-HK",
+}
 
 export type WordExplanation = {
   paragraph: string
@@ -22,19 +50,102 @@ export type WordExplanation = {
   languageCode: string
 }
 
+/** Canonical id for a published native code: hyphens→underscores, `_en` suffix.
+ *  `pt-BR` → `wordpan_pt_BR_en`, `zh-Hans` → `wordpan_zh_Hans_en`. Subtag CASE
+ *  is preserved to match the live index ids exactly. */
+function toWordPackId(nativeCode: string): string {
+  return `wordpan_${nativeCode.replace(/-/g, "_")}_en`
+}
+
 /**
- * Resolve the data-pack id for a given native language. es → "wordpan_es_en".
+ * Resolve the data-pack id for a given native language, across all 53 published
+ * pairs. Resolution order:
+ *   1. EXACT published code       — `pt-BR` → `wordpan_pt_BR_en`
+ *   2. EXACT published BASE subtag — `es-MX` → `es` → `wordpan_es_en`
+ *   3. Region-only base default    — `pt`    → `pt-BR` → `wordpan_pt_BR_en`
+ * Returns null when no pair is published for the native (e.g. `en`), so the
+ * feature is a clean no-op for that reader.
  *
  * The id uses UNDERSCORES because the generic content-pack installer derives a
  * pack id from its ZIP filename and maps hyphens→underscores for non-`phrase-`
  * packs (see `contentPacks/install.ts` + `.github/scripts/pack_catalog_check.js`).
  * Keeping the id in that canonical form means the pack installs correctly via
- * BOTH the explicit-packId path (this popover) and the generic catalog path.
+ * BOTH the explicit-packId path and the generic catalog path.
  */
 export function packIdForNative(nativeLang: string): string | null {
-  const base = (nativeLang || "").split("-")[0]
-  if (WORD_PACK_NATIVE_LANGS.has(base)) return `wordpan_${base}_en`
+  const code = (nativeLang || "").trim()
+  if (!code) return null
+  // 1. Exact published code (handles region/script/variant packs directly).
+  if (WORD_PACK_NATIVE_LANGS.has(code)) return toWordPackId(code)
+  // 2. Base subtag when the base itself is published (es-MX → es).
+  const base = code.split("-")[0]
+  if (WORD_PACK_NATIVE_LANGS.has(base)) return toWordPackId(base)
+  // 3. A base whose only packs are regional flavors (pt → pt-BR).
+  const fallback = WORD_PACK_BASE_DEFAULT[base]
+  if (fallback) return toWordPackId(fallback)
   return null
+}
+
+/** Base subtag of a BCP-47-ish code: "pt-BR" → "pt". */
+function baseOf(code: string): string {
+  return (code || "").split("-")[0]
+}
+
+/** Ordered id-fragment forms for one language code, most-specific first: the
+ *  exact code, then its base subtag, then a region-only base default
+ *  (`pt` → `pt-BR`). Case is preserved so ids match the index verbatim. */
+function langForms(code: string): string[] {
+  const c = (code || "").trim()
+  if (!c) return []
+  const forms = [c]
+  const base = baseOf(c)
+  if (base && base !== c) forms.push(base)
+  const def = WORD_PACK_BASE_DEFAULT[base]
+  if (def && !forms.includes(def)) forms.push(def)
+  return forms
+}
+
+/**
+ * GENERIC (native→target) pair pack id. The pair mechanism is built for
+ * ARBITRARY pairs — the fleet ultimately wants 54×53. Today only `*_en`
+ * targets are PUBLISHED, but nothing here assumes that: this is pure id
+ * derivation; AVAILABILITY is a separate index lookup (see
+ * `findWordPackForPair` / `matchWordPackOffer`). Returns
+ * `wordpan_<native>_<target>` (hyphens→underscores, case preserved), or null
+ * for an empty or degenerate (same-language) pair.
+ */
+export function wordPackIdForPair(
+  nativeLang: string,
+  targetLang: string,
+): string | null {
+  const n = (nativeLang || "").trim()
+  const t = (targetLang || "").trim()
+  if (!n || !t) return null
+  if (baseOf(n) === baseOf(t)) return null
+  return `wordpan_${n.replace(/-/g, "_")}_${t.replace(/-/g, "_")}`
+}
+
+/**
+ * Every plausible on-disk id for a (native→target) pair, most-specific first —
+ * the exact pair, then base-subtag fallbacks on either side, then region-only
+ * base defaults. Lets a caller probe disk truth WITHOUT the catalog (offline
+ * seed): the first installed id is the pair's pack. Fully generic over target.
+ */
+export function wordPackIdCandidates(
+  nativeLang: string,
+  targetLang: string,
+): string[] {
+  const natives = langForms(nativeLang)
+  const targets = langForms(targetLang)
+  const ids: string[] = []
+  for (const nf of natives) {
+    for (const tf of targets) {
+      if (baseOf(nf) === baseOf(tf)) continue
+      const id = `wordpan_${nf.replace(/-/g, "_")}_${tf.replace(/-/g, "_")}`
+      if (!ids.includes(id)) ids.push(id)
+    }
+  }
+  return ids
 }
 
 /**

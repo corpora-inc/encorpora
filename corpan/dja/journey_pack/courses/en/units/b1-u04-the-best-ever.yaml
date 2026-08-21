@@ -1,0 +1,86 @@
+id: en.b1.u04
+arc: en.arc3
+theme: "The best ever"
+cando:
+  - key: best-ever
+    text: "Can rank an experience as the best or worst using a superlative with the present perfect and ever."
+  - key: articles
+    text: "Can apply the finer article rules — the with a superlative or a one-of-a-kind thing, no article for meals and languages, a/an for jobs and rates."
+vocab_band: { lo: 1, hi: 4480 }
+phrase_domains: [culture, social]
+skills:
+  - id: en.skill.life-highlights
+    kind: function
+    title: "Life highlights"
+    b: -0.7
+    prereqs: [en.skill.duration, en.skill.comparison-adv]
+grammar_nodes: [en.gn.superl-perf-ever, en.gn.articles-deep]
+items:
+  - ref: "phrase:base:20005"  # That has to be the best movie ever!
+    skills: [en.skill.life-highlights]
+    importance: 3
+    probe: true
+    b: -0.7
+  - ref: "phrase:base:18588"  # That was the worst mistake I've ever made.
+    skills: [en.skill.life-highlights]
+    importance: 3
+    probe: true
+    b: -0.7
+  - ref: "phrase:base:18578"  # This is the best movie I have ever watched.
+    skills: [en.skill.life-highlights]
+    importance: 3
+    probe: true
+    b: -0.7
+  - ref: "phrase:base:13011"  # This is the best cake I've ever tasted!
+    skills: [en.skill.life-highlights]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:15151"  # What was the biggest mistake you ever made?
+    skills: [en.skill.life-highlights]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:17081"  # What is the most important thing in your life?
+    skills: [en.skill.life-highlights]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:19453"  # What kind of festival do you like the most?
+    skills: [en.skill.life-highlights]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:favorite"
+    skills: [en.skill.life-highlights]
+    importance: 2
+  - ref: "word:en:incredible"
+    skills: [en.skill.life-highlights]
+    importance: 2
+  - ref: "word:en:review"
+    skills: [en.skill.life-highlights]
+    importance: 2
+  - ref: "word:en:scene"
+    skills: [en.skill.life-highlights]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [culture, social]
+      level: B1
+      count: 10
+      skills: [en.skill.life-highlights]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.life-highlights]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

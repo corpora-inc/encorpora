@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "विषय निवडा",
+      "availableSummary": "{{count}} वाक्प्रचार पॅक उपलब्ध · ~{{size}} MB",
+      "installAll": "सर्व इंस्टॉल करा",
+      "chooseIndividually": "स्वतंत्रपणे निवडा",
+      "installing": "{{total}} पैकी {{current}} इंस्टॉल होत आहे…",
+      "someFailed": "{{count}} पॅक इंस्टॉल करता आले नाहीत. तुम्ही Packs टॅबमधून पुन्हा प्रयत्न करू शकता.",
+      "allInstalled": "तुमच्याकडे आधीच स्टार्टर वाक्प्रचार पॅक आहेत.",
+      "installed": "इंस्टॉल केले",
       "loading": "लोड होत आहे…",
       "selectAll": "सर्व निवडा ({{count}})",
       "clearAll": "साफ करा",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "मला आश्चर्यचकित करा!",
         "desc": "मला कुठेतरी मजेदार ठिकाणी न्या."
+      },
+      "journey": {
+        "label": "Journey चे अनुसरण करा",
+        "desc": "मार्गदर्शित कोर्स — अ‍ॅप प्रत्येक पुढचे पाऊल निवडते"
+      }
+    },
+    "journey": {
+      "title": "तुम्हाला {{lang}} कशी शिकायची आहे?",
+      "subtitle": "Journey दररोज {{lang}} मध्ये नवीन सामग्री आणि उजळणी यांचे मिश्रण देतो — एका वेळी एक कार्ड.",
+      "guided": {
+        "label": "मार्गदर्शित दैनंदिन वाट",
+        "desc": "तुमच्यासाठी आखलेले एक छोटे दैनंदिन सत्र.",
+        "unavailable": "{{lang}} साठी मार्गदर्शित मार्ग अद्याप उपलब्ध नाही."
+      },
+      "explore": {
+        "label": "स्वतःच्या गतीने",
+        "desc": "कथा, सराव आणि खेळ स्वतः पाहा."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Plus सह समाविष्ट",
     "installFailedTitle": "स्थापित करण्यात अयशस्वी",
+    "updateUnavailableTitle": "अद्यतन उपलब्ध नाही",
+    "updateUnavailableDetail": "हे डाउनलोड आम्ही अपेक्षित केलेल्याशी जुळले नाही. कृपया नंतर पुन्हा प्रयत्न करा.",
     "installStuckDetail": "काही काळापासून कोणतीही प्रगती नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
     "installStuckTitle": "डाउनलोड थांबले",
     "openPack": "{{name}} उघडा",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "जी भाषा शिकताय, तिचंच सॅम्पल घ्या. स्क्रॅच करत राहा, तोवर ती पक्की बसते."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "तुमची मार्गदर्शित वाट, कार्डामागून कार्ड"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "इंस्टॉल करा ({{size}})",
     "installing": "इंस्टॉल होत आहे…",
     "installed": "इंस्टॉल केले",
-    "retry": "पुन्हा प्रयत्न करा"
+    "retry": "पुन्हा प्रयत्न करा",
+    "explains": "{{language}} शब्द"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "तुमची मार्गदर्शित वाट, कार्डामागून कार्ड",
+    "heroCard": {
+      "title": "तुमचा Journey",
+      "progress": "{{unit}} · पुढच्या टप्प्यापर्यंत {{count}}"
+    },
+    "heroCta": {
+      "start": "तुमचा Journey सुरू करा",
+      "continue": "पुढे चला"
+    },
+    "chrome": {
+      "home": "मुख्यपृष्ठ",
+      "menu": "Journey पर्याय",
+      "unit": "घटक {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "तपासा",
+      "continue": "पुढे चला",
+      "skipHint": "वगळण्यासाठी पुन्हा स्वाइप करा",
+      "retry": "पुन्हा प्रयत्न करा",
+      "showAnswer": "उत्तर दाखवा",
+      "answerWas": "उत्तर होते",
+      "comeBackNote": "आपण याकडे परत येऊ.",
+      "whyThisCard": "हे कार्ड का?",
+      "whyNew": "तुमच्या सध्याच्या घटकातील नवीन गोष्ट.",
+      "whyReview": "उजळणी — अंतरामुळे ती पक्की राहते.",
+      "whyRepair": "अवघड गोष्टीकडे दुसरी नजर.",
+      "whyGuided": "तुमच्या मार्गदर्शित वाटेचा भाग.",
+      "typeWhatYouHear": "जे ऐकता ते लिहा",
+      "typeHere": "येथे लिहा…",
+      "tapToOrder": "शब्दांना क्रमाने स्पर्श करा",
+      "matchPairs": "जोड्या जुळवा",
+      "flipToReveal": "पाहण्यासाठी स्पर्श करा",
+      "knewIt": "मला माहीत होते",
+      "didntKnow": "अजून नाही",
+      "speakNow": "आता बोला",
+      "listen": "ऐका",
+      "listenSlow": "हळू",
+      "hint": "इशारा",
+      "correct": "बरोबर",
+      "incorrect": "पूर्ण नाही",
+      "pickTranslation": "भाषांतर निवडा",
+      "pickWhatYouHear": "जे ऐकले ते निवडा",
+      "fillTheBlank": "रिकामी जागा भरा",
+      "newItem": "नवीन",
+      "reviewedEarlier": "आधी पाहिलेले"
+    },
+    "intro": {
+      "listenAndEcho": "ऐका, मग मोठ्याने म्हणा",
+      "newWord": "नवीन शब्द",
+      "newPhrase": "नवीन वाक्य"
+    },
+    "grammar": {
+      "noteLabel": "व्याकरण टीप",
+      "tryIt": "करून पाहा",
+      "contrastLabel": "तुमच्या भाषेशी तुलना"
+    },
+    "word": {
+      "inContext": "संदर्भात",
+      "meaningShow": "अर्थ",
+      "meaningHide": "लपवा"
+    },
+    "wordPack": {
+      "title": "शब्दांचे अर्थ",
+      "body": "पुढे जाताना {{language}} मध्ये शब्दांचे अर्थ वाचा.",
+      "add": "जोडा ({{size}})",
+      "dismiss": "आत्ता नको",
+      "downloading": "जोडत आहे… {{percent}}%",
+      "failed": "जोडता आले नाही",
+      "retry": "पुन्हा प्रयत्न करा"
+    },
+    "checkpoint": {
+      "title": "चेकपॉइंट",
+      "summaryNew": "{{count}} नवीन",
+      "summaryReviews": "{{count}} उजळणी",
+      "done": "आजपुरते पुरे",
+      "keepGoing": "पुढे चला",
+      "dailyRing": "या सत्रात {{count}}",
+      "deepSession": "किती सखोल सत्र — तुमच्या उजळण्या कशाही झाल्या तरी ठरलेल्या आहेत.",
+      "streakTicked": "सलग {{count}} ✓",
+      "boss": "घटक आव्हान",
+      "arcGate": "कमान द्वार"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "परफेक्ट",
+        "nice": "छान",
+        "brilliant": "अप्रतिम",
+        "boom": "धमाका",
+        "nailed": "अगदी बरोबर",
+        "unstoppable": "अजिंक्य",
+        "onFire": "आगीत",
+        "yes": "हो!",
+        "clean": "स्वच्छ",
+        "sharp": "धारदार",
+        "wow": "वाह",
+        "magic": "जादू"
+      },
+      "combo": "सलग {{count}}",
+      "perfect": "उत्तम",
+      "wordsLearned": "{{count}} शब्द शिकलात",
+      "unitComplete": "घटक पूर्ण: {{name}}",
+      "streakDay": "सलग {{count}}",
+      "placementDone": "पातळी ठरली"
+    },
+    "rare": {
+      "reveal": "काहीतरी खास…",
+      "etymologyGem": "शब्दाची गोष्ट",
+      "timeCapsule": {
+        "title": "टाइम कॅप्सूल",
+        "body": "यावर तुम्ही {{when}} खूप मेहनत घेतली — आता स्वतःकडे पाहा."
+      },
+      "delight": {
+        "newVoice": "वेगळा आवाज",
+        "didYouNotice": "लक्षात आले का?"
+      },
+      "miniGame": {
+        "title": "बोनस फेरी",
+        "play": "खेळा"
+      },
+      "story": {
+        "unlocked": "तुम्ही पुढचा अध्याय कमावला",
+        "read": "वाचा"
+      }
+    },
+    "placement": {
+      "offerTitle": "कुठून सुरुवात करूया?",
+      "offerBody": "काही झटपट प्रश्न तुमचा प्रारंभबिंदू शोधतात. सुमारे पाच मिनिटे.",
+      "startNew": "मी {{lang}} मध्ये नवीन आहे",
+      "placeMe": "मला थोडे {{lang}} येते",
+      "skipItem": "खात्री नसेल तर वगळा",
+      "doneTitle": "प्रारंभबिंदू सापडला",
+      "doneBody": "{{unit}} पासून सुरुवात.",
+      "prelit": "तुम्ही {{count}} आधीच माहीत असलेल्या गोष्टींसह सुरुवात करता.",
+      "redo": "माझी पातळी पुन्हा तपासा",
+      "aboveTitle": "तुम्ही या कोर्सच्या पुढे आहात",
+      "aboveBody": "हा कोर्स सध्या नवशिक्यांसाठीचा मजकूर समाविष्ट करतो आणि तुम्ही त्याहून वर आहात. तरीही तो पाहू शकता — नवीन पातळ्या येत आहेत.",
+      "aboveFrontier": "तुम्ही या कोर्सच्या बहुतांश भागाच्या पुढे आहात — {{unit}} पासून सुरुवात."
+    },
+    "path": {
+      "title": "तुमची वाट",
+      "arc": "कमान {{name}}",
+      "unit": "घटक {{n}}",
+      "locked": "पुढे",
+      "current": "तुम्ही येथे आहात",
+      "review": "उजळणीसाठी स्पर्श करा",
+      "mastered": "पक्के"
+    },
+    "streak": {
+      "pactTitle": "मालिका ठेवूया?",
+      "pactBody": "तुमचा वेग टिकवा. विश्रांतीचा दिवस खंड भरून काढतो — दर आठवड्याला एक मिळतो.",
+      "pactAccept": "मी तयार आहे",
+      "pactDecline": "नको, धन्यवाद",
+      "days": "सलग {{count}}",
+      "restDayEarned": "विश्रांतीचा दिवस कमावला",
+      "restDayUsed": "{{day}} हा विश्रांतीचा दिवस होता",
+      "repairTitle": "तुमची मालिका परत मिळवा",
+      "repairBody": "पुढील {{days}} दिवसांत दोन सत्रे पूर्ण करा आणि तुमची {{count}} दिवसांची मालिका पुन्हा मिळवा.",
+      "repairCta": "सुरू करा"
+    },
+    "block": {
+      "speakingIntro": "बोलण्याचा सराव — {{count}} कार्डे",
+      "ready": "तयार",
+      "loadingModel": "मायक्रोफोन तयार होत आहे…",
+      "micPrompt": "Corpán या डिव्हाइसवर तुमचे बोलणे तपासण्यासाठी मायक्रोफोन वापरते.",
+      "sttUnavailable": "बोलण्याचे मूल्यमापन सध्या उपलब्ध नाही — ऐकण्याच्या सरावाकडे जात आहोत."
+    },
+    "quota": {
+      "cardsLeft": "आज {{count}} कार्डे शिल्लक",
+      "plusBody": "Corpán Plus दैनंदिन कार्ड मर्यादा काढून टाकते."
+    },
+    "welcomeBack": {
+      "title": "पुन्हा स्वागत",
+      "body": "तुमच्या उजळण्यांनी {{pct}}% ताकद टिकवली. चला सराव करूया."
+    },
+    "tease": {
+      "next": "पुढच्या वेळी: {{title}}"
+    },
+    "jump": {
+      "title": "खूप सोपे वाटते का?",
+      "body": "पुढे उडी मारण्यासाठी छोटे आव्हान घ्या. अपयश आले तरी काही गमावत नाही — जिथे आहात तिथेच राहता.",
+      "accept": "आव्हान घेतो",
+      "decline": "इथेच थांबतो"
+    },
+    "feed": {
+      "caughtUp": "सध्या सर्व झाले आहे",
+      "loading": "तुमची कार्डे तयार होत आहेत…",
+      "loadError": "Journey लोड होऊ शकला नाही. मुख्यपृष्ठावरून पुन्हा प्रयत्न करा.",
+      "retry": "पुन्हा प्रयत्न करा"
+    },
+    "popin": {
+      "pronounceTitle": "याचा उच्चार करा",
+      "close": "बंद करा"
+    },
+    "settings": {
+      "title": "Journey पर्याय",
+      "advanceMode": "पुढे जाणे",
+      "advanceSwipe": "पुढे जाण्यासाठी स्वाइप",
+      "advanceAuto": "आपोआप पुढे चला",
+      "celebration": "उत्सव",
+      "celebrationFull": "पूर्ण",
+      "celebrationReduced": "कमी",
+      "celebrationMinimal": "किमान",
+      "sounds": "आवाज",
+      "soundsOn": "चालू",
+      "soundsOff": "बंद",
+      "listeningMode": "हँड्स-फ्री ऐकणे",
+      "viewPath": "वाट पाहा",
+      "redoPlacement": "माझी पातळी पुन्हा तपासा"
+    },
+    "imagePack": {
+      "title": "चित्रे जोडा",
+      "body": "मजकुराऐवजी चित्रांसह काही शब्द शिका.",
+      "dismiss": "आत्ता नको",
+      "add": "जोडा ({{size}})",
+      "downloading": "जोडत आहे… {{percent}}%",
+      "retry": "पुन्हा प्रयत्न करा",
+      "failed": "जोडता आले नाही"
+    },
+    "interlude": {
+      "gameCue": "झटपट खेळ · एक वाक्यांश",
+      "readerCue": "झटपट वाचन · एक उतारा"
+    }
   }
 }

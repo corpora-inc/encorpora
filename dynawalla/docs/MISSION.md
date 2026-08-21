@@ -1,0 +1,180 @@
+# Dynawalla — Mission
+
+Status: a host shell exists and ships no content. See [STATUS.md](STATUS.md).
+Index: [README.md](README.md).
+
+## What it is
+
+A mathematics practice product for children, shipping as `inc.corpora.dynawalla` on iOS,
+Android and desktop from `dynawalla/` in this monorepo. Tauri 2 + React 19 + Vite,
+sharing the native/Rust layer with Corpán and nothing else.
+
+**The app is its packs.** The core app contains no exercise, no game, no world
+and no piece of curriculum. It installs packs, keeps a learner's record across
+them, mounts them, and gets out of the way. Everything a child does happens
+inside a pack, and building those is the whole of the work
+([ADR-0022](DECISIONS/ADR-0022-host-ships-no-content.md),
+[ADR-0020](DECISIONS/ADR-0020-content-packs-are-the-product.md)).
+
+That is a founder ruling, given on 2026-07-26 after the first bundled practice
+loop was built and rejected:
+
+> "THE CORE APP SHOULD HAVE ZERO FUCKING CONTENT. […] BUILDING THE FUN GAMES AND
+> CURRICULUM IS EVERYTHING. […] I WANT FUCKING FUN. 3D COOL SHIT. JUICY SHIT.
+> HAPTICS, ANIMATIONS, DIFFERENT KINDS OF EXERCISES. UNIQUE WAYS TO LEARN."
+
+It reversed two ADRs the program had adopted without him — no downloadable packs
+(ADR-0003) and no microphone, LLM or 3D (ADR-0004) — and the reasoning that
+produced them is recorded in their replacements so it is not re-derived.
+
+**V1 is proposed at grades 1–5, number and arithmetic**: place value, addition and
+subtraction, multiplication, division, fractions, and the equals sign as a relation.
+Geometry, measurement, data, ratio, integers, grade 6 and formal pre-algebra are proposed
+**out** of V1 because their answer schemas do not exist and "adding geometry" without
+them is adding worksheets. That narrows a founder-stated scope, so it is a founder
+decision, not the plan's: [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) is
+`Proposed — awaiting founder` and everything below is written against the cut as
+proposed. No public scope or marketing statement goes out before it is decided.
+
+## The core promise
+
+**When a child gets a problem wrong, the app can often tell them *which step* broke
+— and show it, rather than say it.**
+
+That is the whole differentiator. Drill apps with spaced retrieval already exist and
+some are good; XtraMath has ESSA Tier IV evidence and its fair criticism is that it
+"does not teach mathematical concepts or problem-solving." Dynawalla is aimed at
+exactly that gap.
+
+The mechanism is executable mal-rules. A mal-rule is a pure function
+`(exercise) => AnswerValue | null` that reproduces a documented buggy procedure. When
+a child's wrong answer *equals* a mal-rule's output, we know which procedure they ran.
+`5,001 − 2,798 = 3,203` is not a random error; it is `mis.add.borrow-across-zero` — the
+child regrouped all the way down and never gave up the thousand — and the response is a
+contrast pair on the counting board, where the borrowed thousand is still visibly sitting
+in the answer. The child sees the contradiction instead of being told about it. (The
+answer `3,797` on the same problem is a *different* rule,
+`mis.add.smaller-from-larger`, and gets a different representation. The mapping from rule
+to representation is the product, so it has to be exact — see
+[CURRICULUM.md](CURRICULUM.md).)
+
+This is scoped honestly. There is no generic "make the contradiction self-evident"
+function — fraction addition needs a bar contradiction, magnitude comparison needs a
+number line. Roughly 8–12 mal-rules get a genuine contrast representation in V1; every
+other one degrades to a faded worked example. Gate CG-22 exists so the count is always
+checkable against anything we claim publicly. See [GATES.md](GATES.md).
+
+## Engagement ethics
+
+These are product constraints, not aspirations. Each has an enforcement mechanism.
+
+**We will not:**
+
+- Put a countdown timer on any problem, ever.
+- Fail a child for slowness. "Fast" is an internal multiplier only, and a parent
+  switch disables every latency-derived reward path (asserted in the harness).
+- Escalate celebration on streak or run length. The reaction picker's weight function
+  takes no run-length argument — a unit test asserts its signature. Escalation keys on
+  `(b_item − θ_s)` (harder problems earn more) and on repairing a misconception you
+  used to fire.
+- Make being wrong more interesting than being right. `energy(SLIP) < energy(SEAT)` is
+  unit-tested, and it is also playtested, because it is a proxy a determined designer
+  can satisfy while still making failure the fun part.
+- Ship a streak counter, a loss state, play-by-appointment, grinding gates, purchased
+  absolution, or social comparison.
+- Name a child's defect in learner-facing copy. Mal-rule labels are internal; feedback
+  names the correct idea. A lint enforces it.
+- Send behavioural data anywhere. All instrumentation is on-device. No third-party
+  analytics SDK, no advertising SDK, no attribution SDK — and **no third-party crash
+  reporter**, which Guideline 1.3 forbids by naming device information explicitly and
+  which is the one people add without noticing ([RISKS.md](RISKS.md) R-47). Enforced by a
+  CI dependency audit cross-checked against the submitted Play Data safety declaration.
+  Because both stores define "collect" as transmitting off-device, this earns Apple's
+  **"Data Not Collected"** and Play's **"nothing collected, nothing shared"** outright.
+
+**We will:**
+
+- Make progress a building, not a number. Every correct answer places something real,
+  and construction **never regresses**. This is the host's, not a pack's: a pack
+  reports the answer, the host cuts the aperture, so a child's construction is
+  everything they have done rather than one pack's score. The pull to return is "my observatory is
+  unfinished," not "my streak is at risk."
+- Give the child a real choice with real consequences: which chamber to build next,
+  which biases the scheduler's skill pool toward that instrument's mathematics. The
+  child picks their own interleaving and the choice is legible.
+- Design stopping points with **equal-weight** "Done" and "Keep going."
+- Keep the character rare. It speaks 3–5 times per session, at genuine milestones,
+  and says the specific true thing. Silence is the personality.
+- Cap the juice. In the largest study to date (N=3,018) both *no* juiciness and
+  *extreme* juiciness reduced play time, player experience, intrinsic motivation and
+  performance relative to medium/high. Feedback must be contingent, not loud.
+
+The compliance regime makes this partly structural rather than voluntary: Apple's Kids
+Category (1.3 / 5.1.4) says apps **should not** include third-party analytics or
+behavioural advertising and permits neither except in limited, conditioned cases — our
+posture of *none, ever* is stricter than the rule — and the
+UK Children's Code restricts nudge techniques and using children's data to keep them
+on a platform. **The practical consequence is that the feel cannot be A/B tested
+remotely.** Direct observation is therefore the binding instrument, not a nicety — see
+[PLAYTEST-PROTOCOL.md](PLAYTEST-PROTOCOL.md). That instrument is one child, the founder's
+10-year-old son, and the honest account of what it can and cannot support is
+[ADR-0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md).
+
+## Locked founder decisions
+
+| # | Decision |
+|---|---|
+| 1 | Trunk-based development. Worktree → PR → adversarial review → green → squash-merge to `main`. Merges happen constantly. The long-lived integration branch methodology is **deprecated and expunged**; never restore or cite it. |
+| 2 | Path-gate every workflow. That is what makes constant merging safe in a monorepo. Dynawalla adds jobs to the existing `ci-gate` aggregate and **never** a fourth required context. |
+| 3 | Monorepo, not a separate repo. Dynawalla is a top-level sibling of `corpan/`. |
+| 4 | Share the native/Rust/Tauri-plugin layer with Corpán; the frontend may diverge. |
+| 5 | The repo is public and open source. No credential, keystore, `.p8`, service-account JSON, issuer id, key id or token is ever committed. |
+| 6 | Bundle id `inc.corpora.dynawalla` (note: `inc.` — Corpán is `com.corpora.corpan`, and both conventions now coexist permanently). |
+| 8 | The core app ships zero content. Packs are the product. Make the app as small as possible (2026-07-26). |
+| 7 | Ancient-futurist setting: Byzantine / Persian / Fertile Crescent; astrolabes, gears, automata, mechanical computers. Sourced from al-Jazari's 1206 *Book of Knowledge of Ingenious Mechanical Devices* and the Banū Mūsā's 9th-century *Book of Ingenious Devices*. No steampunk goggles, no gears-as-decoration. |
+
+## Founder decisions, recorded 2026-07-25
+
+Four of the eight ADR-level open decisions were answered by the founder and are recorded
+in their ADRs from his own words: human evaluation resourcing
+([0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) — one child evaluator, his
+10-year-old son; the founder is the art director), developer-account topology
+([0015](DECISIONS/ADR-0015-developer-account-topology.md) — same accounts as Corpán),
+monetization ([0024](DECISIONS/ADR-0024-day-pass-not-subscription.md) — a **day pass**,
+not a subscription; every game free to play, gated at a natural transition, priced
+$0.99 / $7.99 / $79.99-lifetime; supersedes [0013](DECISIONS/ADR-0013-monetization-model.md)),
+and the Kids Category engineering
+posture ([0001](DECISIONS/ADR-0001-kids-category-posture.md) — no third-party ads,
+analytics or SDKs, ever; a parental gate on every link-out; the category election itself
+deferred to submission).
+
+**Several remain open, and this file deliberately does not list them.** Three documents
+previously carried three different counts, which is how a founder ends up not knowing a
+decision is waiting on him. **[STATUS.md](STATUS.md) is the single source of truth for
+which founder decisions are open and when each one bites** — including the ones that live
+*inside* an otherwise-decided ADR, such as the Kids Category election and age band
+(`G-01`). [DECISIONS.md](DECISIONS.md) indexes the
+ADRs; STATUS.md says what is outstanding.
+
+## How this product is graded
+
+[ACCEPTANCE_CRITERIA.md](ACCEPTANCE_CRITERIA.md) is the definition of done. Every item
+is objectively verifiable and every item is currently UNMET. The two standing rules
+that shape it:
+
+1. **Merged is not done.** This repo has the counterexample: Journey merged
+   2026-07-04, released in 0.20.1 on 07-07, and was unreachable by production users
+   until 0.20.6 on 07-14 — five releases in seven days to unblock a feature that was
+   green and merged. Every product milestone therefore requires a **named person to
+   reach the capability from a cold launch on a TestFlight or Play-internal build**.
+   "A test asserts it" does not satisfy that criterion.
+2. **Playtest gates have kill/revise authority.** They are at M2, M6 and M8. Waiving
+   one voids the evidence for everything downstream of it.
+
+## Brand voice
+
+Understated, elegant. Direct, concise, honest. No marketing hype, no AI slop, no
+emoji-studded headers, in this repo or in the product. The *proposed* marketing claim is
+**"grades 1–5 number and arithmetic"** — not "grades 1–6 mathematics" — and it is
+proposed rather than settled because [ADR-0002](DECISIONS/ADR-0002-v1-scope-cut.md) is
+the founder's. Whatever sentence is chosen, the code has to be able to back it.

@@ -1,0 +1,24 @@
+{
+  "name": "@dynawalla/game-forge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "FORGE \u2014 an incremental smelting chain where the numbers going up is the reward and the arithmetic is the throttle.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "main": "src/mount.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4183 --strictPort",
+    "tsc": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'src/**/*.test.ts'",
+    "build:pack": "vite build --config vite.pack.config.ts"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5",
+    "@types/node": "^26.1.1"
+  }
+}

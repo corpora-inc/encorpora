@@ -14,6 +14,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- The practice round's guts moved to the shared `cap-pronounce` capability
+  module (`packs/shared/capabilities/pronounce` — Journey workstream W8,
+  capability-modules.md §4.1): whisper-language gate, per-language whisper/
+  scoring tuning tables, the model registry, script-aware text comparison +
+  pill tokenization, the push-to-talk recorder state machine, and the
+  per-word result view. This pack is the first consumer of the moved code —
+  same behavior, one implementation. Result/stimulus CSS classes are now
+  `capPron-*` (pack keeps its theme via `--capPron-*` variable mapping and
+  its viewport-scaled sizing overrides).
+- Unmount now releases the STT audio engine whenever a recording session was
+  opened (`stt.releaseAudio` — iOS mic-indicator rule), via the shared
+  recorder's dispose path.
+
+
 ## [0.8.0] - 2026-06-16 — Whisper-language gate, new-phrase metering, quota readout
 
 ### Added

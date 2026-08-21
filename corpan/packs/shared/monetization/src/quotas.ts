@@ -81,6 +81,22 @@ export const QUOTAS = {
     softNagEvery: 10,
     unitLabel: "characters",
   },
+  // Journey feed (corpan-app src/journey — feed-ux §7, R12). NEW-INTAKE-ONLY
+  // debits: the runtime note()s the gate ONLY for completed DEBUT cards (the
+  // first-ever presentation of an item) and pack-anchor launches. Due-review,
+  // replay, and repair cards are NEVER metered — pay-to-not-forget is dead
+  // (parlometron dignity precedent). runtime.ts is the single debit site.
+  // dailyLimit 60 is a PROVISIONAL default pending the operator's free-tier N
+  // decision (R12: "Free-tier N stays the operator's call") — remote-config
+  // overridable via `getQuota` like every row here. No soft nag (0): just the
+  // daily accomplishment lock at the cap (gate dispatches corpan:daily-locked).
+  journey_daily: {
+    packId: "corpan_app",
+    surface: "journey_daily",
+    dailyLimit: 60,
+    softNagEvery: 0,
+    unitLabel: "cards",
+  },
   // tutomaton — converted by the tutomaton agent (see QUOTA_STANDARD.md). Its
   // pre-gate builds wrote a `tutomaton.quota` { day, count } key; declare it
   // here so the one-time legacy import preserves the count on upgrade.

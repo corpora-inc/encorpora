@@ -1,0 +1,16 @@
+/* The capture harness's stylesheet.
+ *
+ * It is the app's own stylesheet, plus two `@source` directives.
+ *
+ * Tailwind v4 discovers the classes it must emit by scanning outward from the
+ * CSS file it is invoked on. This build's root is `tools/harness/`, not the app
+ * root, so automatic detection would scan the harness directory and emit almost
+ * nothing — the sheet would look right in review and render an unstyled dialog.
+ * The two directives below name the two trees whose class names have to survive
+ * into this bundle, explicitly, so the harness cannot silently lose them.
+ */
+
+@import "../../src/index.css";
+
+@source "../../src/**/*.{ts,tsx}";
+@source "./**/*.{tsx,html}";

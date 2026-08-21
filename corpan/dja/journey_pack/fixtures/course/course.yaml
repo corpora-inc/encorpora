@@ -1,0 +1,34 @@
+# FIXTURE course — exercises the full builder/validator/loader chain.
+# 3 units (1 Launchpad + 2 A1), ~40 items over base-corpus entryIds.
+# NOT shippable content; W7 owns the real courses/en tree.
+target_lang: en
+version: 0.0.1
+launchpad_units: 1
+script_track: false
+l1_full_support: [es]   # exercises gates V-21 (word glosses) + V-22 (phrase L1)
+min_app_version: "0.9.0"
+name: "Journey: English (fixture)"
+description: "Tiny fixture course used by the pack-pipeline tests."
+name_localized:
+  es: "Journey: inglés (fixture)"
+description_localized:
+  es: "Curso de prueba mínimo para los tests del pipeline."
+arcs:
+  - id: en.arc0
+    index: 0
+    cefr: preA1
+    title: "Launchpad"
+    gate:
+      pass_score: 0.8
+      params:
+        spacedSampleShare: 0.3
+        require: [produce.speak, input.listen]
+  - id: en.arc1
+    index: 1
+    cefr: A1
+    title: "Foundations"
+    gate:
+      pass_score: 0.8
+      params:
+        spacedSampleShare: 0.3
+        require: [produce.speak, input.listen]

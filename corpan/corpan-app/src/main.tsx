@@ -9,14 +9,23 @@ import { initAnalytics } from "@/util/analytics";
 import { installDevKeepAwake } from "@/util/devKeepAwake";
 import { installDevDebug } from "@/util/devDebug";
 import { initRemoteQuotaConfig } from "@/util/remoteQuotaConfig";
+import { configureLocalAnalytics } from "@/lib/localAnalytics";
+import { useSettingsStore } from "@/store/settings";
 
 // Advertise host capabilities to the paywall gate APP-WIDE (not just inside
 // ContentPackHost, which only mounts for content packs). `dailyLock` tells the
 // gate this host (>=0.18.1) can render the DailyLockOverlay, so the daily HARD
 // cap may engage — including for the core phrase-flip experience. Older hosts
 // never set this, so OTA packs degrade to the soft nag there.
-;(globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } }).__CORPAN_HOST_CAPS = {
+;(globalThis as {
+  __CORPAN_HOST_CAPS?: { dailyLock?: boolean; offlineCache?: boolean }
+}).__CORPAN_HOST_CAPS = {
   dailyLock: true,
+  // This host wires the pack-facing offline-first cache seam
+  // (`hostApi.offlineCache` — imageSrc/fetchJson, offline-cache.md §6 / D12).
+  // Advertised app-wide (not just under ContentPackHost) so shared shells can
+  // feature-detect before any pack mounts.
+  offlineCache: true,
 }
 
 // Remote-config layer for the daily-quota caps. Runs EARLY (before packs mount)
@@ -29,6 +38,15 @@ import { initRemoteQuotaConfig } from "@/util/remoteQuotaConfig";
 // time, so a mid-session config change takes effect next gate construction /
 // next launch (documented + intentional).
 initRemoteQuotaConfig();
+
+// On-device (never uploaded) local-analytics recorder: stamp every event's
+// envelope with the LIVE active stack id (storage-analytics.md §4.3). Wired
+// EARLY — before any surface can record — so the very first events of a
+// session carry the right stack. The provider reads the store lazily per
+// event, so stack switches take effect immediately.
+configureLocalAnalytics({
+  getStackId: () => useSettingsStore.getState().activeStackId || "default",
+});
 
 // DEV-only: hold a screen wake lock so the iPad debug loop survives the idle
 // timer. No-op in production builds.
@@ -76,6 +94,19 @@ if (import.meta.env.DEV) installDevDebug();
   },
 };
 
+// DEV-only visual layout harness (src/dev/LayoutHarness.tsx): renders one
+// journey feed card through the EXACT production wrapper chain for phone-size
+// layout screenshots. `?layoutHarness=<variant>` on the dev server only; the
+// DEV guard + dynamic import keep it out of production bundles entirely.
+const layoutHarnessVariant = import.meta.env.DEV
+  ? new URLSearchParams(window.location.search).get("layoutHarness")
+  : null;
+const LayoutHarness = layoutHarnessVariant
+  ? React.lazy(() =>
+      import("./dev/LayoutHarness").then((m) => ({ default: m.LayoutHarness })),
+    )
+  : null;
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     {/* App-wide motion baseline: one tasteful easing/duration is the DEFAULT for
@@ -84,7 +115,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         smoothness lever — so we never ship ad-hoc half-baked tweens. */}
     <MotionConfig reducedMotion="user" transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}>
       <LanguageSynchronizer>
-        <App />
+        {LayoutHarness && layoutHarnessVariant ? (
+          <React.Suspense fallback={null}>
+            <LayoutHarness variant={layoutHarnessVariant} />
+          </React.Suspense>
+        ) : (
+          <App />
+        )}
       </LanguageSynchronizer>
     </MotionConfig>
   </React.StrictMode>

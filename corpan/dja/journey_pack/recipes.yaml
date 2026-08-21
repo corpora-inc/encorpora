@@ -1,0 +1,135 @@
+# Course-agnostic lesson recipes + slots (course-pack.md §5 / §2 lesson_recipes).
+# Shared by every Journey course; per-course strings files translate the
+# `recipe.<id>.title` keys. Slot activity_types values must be keys of the
+# vendored ACTIVITY_TYPES registry (gate V-8) or `<packId>:<name>` pack types.
+#
+# NOTE (R11): the `story` recipe is SCHEMA-ONLY in v0.1 — no v0.1 unit may
+# schedule it; it returns with the v0.2 graded-narration coverage workstream.
+
+recipes:
+  - id: core
+    title: "Core lesson"
+    est_minutes: 4.0
+    slots:
+      - slot_type: review.retrieve
+        activity_types: [flip_recall, choice_pick]
+        item_selector: due
+        params: { count: 4 }
+      - slot_type: input.listen
+        activity_types: [listen_pick, intro_echo]
+        item_selector: new
+        params: { count: 2 }
+      - slot_type: practice.pick
+        activity_types: [choice_pick, match_pairs]
+        item_selector: unit
+        params: { count: 4 }
+      - slot_type: produce.speak
+        activity_types: [speak_echo]
+        item_selector: unit
+        params: { count: 2 }
+        optional: true
+      - slot_type: practice.order
+        activity_types: [word_order]
+        item_selector: unit
+        params: { count: 2 }
+
+  - id: grammar-focus
+    title: "Grammar focus"
+    est_minutes: 3.5
+    slots:
+      - slot_type: grammar.note
+        activity_types: [grammar_note]
+        item_selector: grammar-node
+        params: { count: 1 }
+      - slot_type: practice.cloze
+        activity_types: [cloze]
+        item_selector: unit
+        params: { count: 4 }
+      - slot_type: practice.order
+        activity_types: [word_order]
+        item_selector: unit
+        params: { count: 2 }
+
+  - id: phonology
+    title: "Sound work"
+    est_minutes: 3.0
+    slots:
+      - slot_type: practice.minimal-pair
+        activity_types: [listen_pick]
+        item_selector: l1-phoneme
+        params: { count: 4 }
+      - slot_type: produce.speak
+        activity_types: [speak_echo]
+        item_selector: l1-phoneme
+        params: { count: 2 }
+        optional: true
+
+  - id: dialog
+    title: "Dialogue"
+    est_minutes: 4.0
+    slots:
+      - slot_type: input.listen
+        activity_types: [listen_pick]
+        item_selector: unit
+        params: { count: 3 }
+      - slot_type: practice.cloze
+        activity_types: [cloze, listen_type]
+        item_selector: unit
+        params: { count: 3 }
+
+  - id: review
+    title: "Review round"
+    est_minutes: 3.0
+    slots:
+      - slot_type: review.retrieve
+        activity_types: [flip_recall, choice_pick, cloze]
+        item_selector: due
+        params: { count: 8 }
+      - slot_type: fluency.timed-review
+        activity_types: [choice_pick]
+        item_selector: known
+        params: { count: 6, timebox: 60 }
+        optional: true
+
+  - id: story
+    title: "Story time"
+    est_minutes: 5.0
+    slots:
+      - slot_type: input.read
+        activity_types: [intro_echo]
+        item_selector: unit
+        params: { count: 3 }
+      - slot_type: review.retrieve
+        activity_types: [choice_pick]
+        item_selector: unit
+        params: { count: 3 }
+
+  - id: boss
+    title: "Unit gauntlet"
+    est_minutes: 5.0
+    slots:
+      - slot_type: review.retrieve
+        activity_types: [flip_recall, cloze]
+        item_selector: unit
+        params: { count: 4, spacedSampleShare: 0.3 }
+      - slot_type: input.listen
+        activity_types: [listen_pick, listen_type]
+        item_selector: unit
+        params: { count: 3 }
+      - slot_type: produce.speak
+        activity_types: [speak_echo]
+        item_selector: unit
+        params: { count: 2 }
+      - slot_type: practice.order
+        activity_types: [word_order]
+        item_selector: unit
+        params: { count: 2 }
+
+  - id: gem
+    title: "Rare find"
+    est_minutes: 1.0
+    slots:
+      - slot_type: meta.recap
+        activity_types: [intro_echo]
+        item_selector: rare
+        params: { count: 1 }

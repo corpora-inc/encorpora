@@ -6,6 +6,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Journey activity provider (`lingo_hero:round`, activity-contract §6.1).**
+  When launched with `initialState.activity`, the pack runs as a Journey
+  provider: the spec's `itemRefs` resolve to a pinned ContentManager pool
+  served as round targets in spec order (random top-up keeps distractors
+  populated — the answer-dedup contract is untouched), a journey `WordSelector`
+  rides the existing `setDefaultWordSelector` seam, per-item verdicts flow from
+  `wave-resolved` through `hostApi.journey.reportItem`, and after
+  `params.rounds` charts (default 3) the run ends on a compact "Round complete"
+  card whose single CTA fires `reportResult` + `corpan:exit`
+  (`corpan:activity-result` event rail when the typed seam is absent).
+  `params.mode` picks Practice/Blitz; `params.intensity` seeds the existing
+  streak→beat-gap curve. Manifest now declares the activity for the scheduler.
+- Vendored contract copy `src/sdk/activityContract.ts` (generated — synced by
+  `node packs/sdk/sync-contract.mjs`), plus `journey?` / `getEntryById(id,
+  source)` widenings on the vendored SDK types.
+- `test/journey/instrumentation.spec.mjs` (`npm run test:journey`): headless
+  fixture mount proving pinned ordering, per-item mapping, terminal-result
+  shape (validated against the app's contract Zod schemas), event-rail
+  fallback, and Leitner retirement.
+
+### Changed
+- **Manifest declares `lingo_hero:round` as a ~40s one-phrase interlude.**
+  `typicalDurationSec` lowered 90→40 so the Journey feed slots and renders it as
+  a compact "sip"-sized interlude (drop in for one phrase, then scroll on)
+  rather than a full-height game launch. No gameplay change — a journey launch
+  can still pass `params.rounds`; the default one-phrase drill is the interlude
+  case the feed schedules.
+- **Leitner store retired under journey launches (D11).** In journey mode
+  `initLearning` wires the journey reporter instead of the SRS selector and
+  never writes `WordStatsStore` — FSRS (the host engine) is the one scheduler.
+  Standalone launches keep the Leitner layer exactly as before; core gameplay
+  (delta-timed chart, `NOTE_TRAVEL_SECONDS`, canvas-measured input, raw-TTS
+  speak) is untouched.
+
 ## [0.4.12] - 2026-06-24
 
 Hardening + chrome polish (#485, #490). A structural type fix that closes the

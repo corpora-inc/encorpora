@@ -7,6 +7,1177 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Security
+- **The dev server no longer hands out signing material.** `vite.config.ts` had
+  no `server.fs` block, so Vite's defaults applied: the allowed root is
+  `corpan-app/` — which contains `src-tauri/` — and the default deny list
+  covers `.env` and `*.{crt,pem}` but not `.jks`, `.keystore`, `.p8`,
+  `.mobileprovision`, `.cer` or `.certSigningRequest`. `TAURI_DEV_HOST`, which
+  on-device Android/iOS testing requires, takes the server off loopback and
+  onto the LAN, so while `npm run tauri android dev` was running,
+  `http://<lan-ip>:1421/src-tauri/upload-keystore.jks` returned the Android
+  upload keystore to anyone on the same network. Confirmed with planted
+  throwaway probe files (200 with body before, 403 after) — the real keystore
+  was never read or moved, and it has never been committed. `server.fs.deny`
+  now restates Vite's own defaults (the array is **replaced**, not merged) and
+  adds signing and credential material; `fs.allow` is untouched, because it is
+  a list of roots rather than a subtractive filter and could never have
+  excluded `src-tauri/`. The `/packs` middleware streams from disk and never
+  passes through `server.fs`, so it repeats the check, and its containment test
+  now includes the path separator (a bare `startsWith` also accepted a sibling
+  directory whose name merely prefixed `packs/`). Dev-only: `npm run build`,
+  `vite preview` and the shipped app have no fs guard to weaken and are
+  unaffected. `src/dev/devServer.test.ts` locks all of it in, checking the
+  "defaults preserved" half against the *installed* Vite so a version bump that
+  adds a default cannot slip past. (#536)
+
+### Changed
+- Retired the vendored `ndk-context` fork (`[patch.crates-io]` +
+  `src-tauri/vendor/ndk-context/`). It had been inert since 0.16.0, when
+  `tao 0.35.3` dropped the dependency carrying the `assert!` it patched out —
+  no shipped build has compiled it since, so there is no behavior change. The
+  crash history, and why the Android `configChanges` list must stay long, are
+  recorded in the comment in `gen/android/app/src/main/AndroidManifest.xml`.
+  (#528)
+
+### Fixed
+- **The pack updater no longer lies about success and loops forever when a
+  catalog entry drifts from what its origin actually serves.** Reproduced
+  live: the catalog advertised `drift` 0.3.0 but its `manifestUrl`/`zipUrl`
+  pointed at a stale origin still serving 0.1.0. `installPack()` recorded
+  whatever version the DOWNLOADED manifest declared — `expectedVersion` was
+  used only as a fallback, never validated — so the install "succeeded" (a
+  green checkmark in the progress dialog) while the installed version stayed
+  0.1.0, and `SystemPackInstaller` (which auto-installs system packs like
+  `drift`/`wordfall` silently, no UI) re-attempted the same doomed install on
+  every catalog refresh, forever, with no visible signal. `installPack()` now
+  throws `PackVersionMismatchError` (logging expected-vs-got) whenever a
+  catalog-driven install/update's downloaded manifest version disagrees with
+  the catalog's `expectedVersion`, for both the manifest.json and .zip/native
+  install paths — no success is recorded and nothing on disk/in the store is
+  replaced. `SystemPackInstaller` gained a per-session loop guard (a version
+  that already failed isn't re-attempted until the catalog advertises a NEW
+  version) plus a defensive downgrade guard before `addGame`. The
+  user-facing Update button (`PackActions` → `InstallContext` →
+  `InstallProgressDialog`) now surfaces a real localized "Update unavailable"
+  error state instead of a raw error string or a false success (new
+  `packs.updateUnavailableTitle`/`packs.updateUnavailableDetail` keys, all 54
+  locales). Also fixed a related gap while in this code: the phrase-pack
+  batch/"Install all" path (`InstallContext.installPackBatch`) forwarded
+  `expectedVersion` but silently dropped `sha256`, so a batch-installed
+  phrase pack skipped the native sha256 hard-fail-on-mismatch check a
+  single-pack install already got — extracted `buildCatalogInstallArgs()`
+  (`contentPacks/installArgs.ts`) so every catalog-driven install call site
+  forwards sha256 the same way. Note: catalog-v3 (game/reader packs) has no
+  `sha256` field in its schema or publisher (`web/pages/build.js`) today, so
+  those packs still get no on-device hash enforcement — a real pipeline gap,
+  not something fixable from the app side alone.
+  (`contentPacks/install.ts`, `contentPacks/systemPackInstallPlan.ts`,
+  `contentPacks/installArgs.ts`, `contentPacks/InstallContext.tsx`,
+  `components/SystemPackInstaller.tsx`,
+  `components/packs/InstallProgressDialog.tsx`)
+- **Item retirement (R-A) is no longer a one-way door, and its end-of-content
+  safety net is no longer dead code in production.** After two consecutive
+  perfect completions an item RETIRES and stops being served from the normal
+  feed (breadth-first: mastered words yield their slot to fresh material). Two
+  gaps made the documented un-retire-on-lapse path unreachable in prod: (1) a
+  retired item was excluded from EVERY serving path, so it could never be shown,
+  never lapse, and never un-retire — the un-retire code only ran under test
+  force-issue; (2) the end-of-content retired-revisit fallback was collected only
+  when the pack shipped `funWeight` activity templates, but the production native
+  loader emits none, so the fallback pool was permanently empty and a binger who
+  mastered all reachable content could dead-end the "infinite" feed. Fixed both:
+  the retired-item collection is hoisted out of the `funWeight` gate (retired
+  items are served through the FULL activity menu, not fun templates, so they no
+  longer depend on a fun template existing); and a new rare long-interval
+  retired-review trickle serves a retired item ONE confirmatory review per
+  session once its FSRS retrievability decays below 0.7 (well past due) — a
+  failed review lapses and un-retires it, a passed one re-confirms retirement and
+  pushes the next check far out. Rarity comes from the decay gate plus the tight
+  per-session cap (the CTO's aggressive 2-perfect retirement rule is unchanged),
+  and the trickle composes with the fallback (scheduled trickle vs. pool of last
+  resort). New tests reach un-retire through the real mixer serve path, not a
+  harness force-issue. (`journey/engine/pools.ts`, `journey/engine/mixer.ts`,
+  `journey/engine/constants.ts`, `journey/engine/types.ts`, `journey/engine/engine.ts`)
+
+## [0.20.6] - 2026-07-14
+
+### Fixed
+- **The "Toca para revelar" (flip-to-reveal) card no longer speaks the target
+  word a second time over the NEXT card.** `FlipRecall.reveal()` already
+  speaks the revealed word the instant the card is flipped; `ActivityCardHost.
+  settle()`'s reward-speak (on every scored pass, "tune the ears" reinforcement)
+  spoke it again on the Continue press — and since `flip_recall` is an
+  explicit-advance type (Continue requests the feed advance immediately, no
+  wait for the utterance to finish, by design for turbo-scroll), that second
+  utterance played out audibly over the following card instead. `settle()` now
+  skips its reward re-speak for `flip_recall` the same way it already does for
+  `speak_echo`; the card's own `AudioButton` still offers an explicit replay.
+  Audited every other exercise type for the same "spoken during interaction +
+  again on settle" shape — `intro_echo`'s reveal-tap speaks too, but debut
+  intros are always `unscored` so the reward re-speak was already skipped for
+  it; every other type only speaks on arrival (the prompt) or mid-interaction
+  on a non-completing action, never on the action that produces the outcome —
+  so no other card doubles up (`journey/feed/ActivityCardHost.tsx`).
+- **The "Frase nueva" / "Palabra nueva" debut card no longer sits high on tall
+  phones with a big dead zone below its Continue button.** `IntroEcho`'s
+  content and its Continue button rendered as one content-hugging block that
+  `FeedCardFrame` centers as a whole, so the button floated mid-air with a
+  large dead zone under it on tall viewports (e.g. Galaxy S25 Ultra). A first
+  attempt gave the card a `50dvh` height floor to center content above a
+  bottom-pinned Continue — verified ineffective on-device and in phone-size
+  screenshots: the tile mode's natural content already exceeds 50dvh, so the
+  floor was a no-op and the inner flex centering had zero slack to distribute.
+  The debut card now absorbs the REAL height the feed frame offers instead of
+  guessing with a viewport unit: `ActivityCardHost` lets an `intro_echo` card
+  grow to the full `FeedCardFrame` column (flex-grow with `flex-basis:auto`,
+  so it stays inert inside auto-height parents like the placement flow), and
+  both `IntroEcho` branches (interactive tiles and the passive show-and-tell —
+  `newWord` and `newPhrase` alike) grow with it, centering the content cluster
+  in the space above a Continue anchored near the bottom with modest breathing
+  room. Verified by screenshot at 412x915 and 360x640 through the production
+  wrapper chain (dev-only `?layoutHarness=` entry, `src/dev/LayoutHarness.tsx`):
+  balanced on tall screens, unchanged plain stack on short ones, and other card
+  types (choice/flip) pixel-identical (`journey/exercises/IntroEcho.tsx`,
+  `journey/feed/ActivityCardHost.tsx`).
+- **A placed (e.g. B1) learner is no longer drilled on A0 pronunciation
+  minimal-pairs before communicative vocab.** The feed served the "sounds"
+  unit's contrast words — jam/ship/sheep/very/berry/yet — and phoneme drills
+  heavily, ahead of high-frequency phrases like "please"/"thank you". Two engine
+  gaps: (1) the phonics anti-domination guard only recognized `kind:"phoneme"`
+  items, so the minimal-pair WORDS (`kind:"word"` in a phonology skill) slipped
+  through, and (2) the guard covered only the NEW pool while a placed learner's
+  intake flows through the placed-backlog TRICKLE pool, which had no guard.
+  Pronunciation drills are now identified structurally (phoneme items PLUS
+  minimal-pair words in any phonology skill), suppressed entirely from a PLACED
+  learner's intake (they resurface only on a genuine failure), and hard-capped
+  per session for everyone (`journey/engine/{graph,pools,mixer,constants}.ts`).
+- **The first Journey load after onboarding no longer flashes an error screen
+  for transient/corruption reasons.** On a fresh install the course-pack install
+  could be triggered twice at once (Home-hero prefetch + the journey mount, or a
+  StrictMode double-invoke / rapid Retry), and the Rust installer uses fixed
+  per-pack staging/download paths with no lock — so the two installs clobbered
+  each other's staging dir (surfacing `Manifest not found in pack`) and download
+  zip (surfacing `database disk image is malformed` when the loader opened a
+  half-written `course.sqlite3`). Installs are now single-flighted per pack id,
+  integrity-verified (manifest resolves AND `pack_meta` reads back) after
+  download, and internally retried with jittered backoff before the error screen
+  is ever shown; the Retry button stays as the final fallback
+  (`util/journeyPack.ts`, `journey/runtimeWiring.ts`).
+- **Catalog offline-cache revalidation no longer hammers the network (~2×/second)
+  when a catalog is persistently failing.** Each revalidation trigger (interval /
+  foreground / a flapping `online` event storm) used to re-enter a fresh fetch
+  burst with no memory of prior failures. A per-resource consecutive-failure
+  cooldown (exponential, capped at 5 min, jittered) now bounds the retry rate and
+  resets on any successful response; cache-serving semantics are unchanged — a
+  cooldown skip serves the last-good record exactly like a failed revalidation
+  (`lib/offlineCache/jsonCache.ts`).
+- **A correct answer's celebration chime could go silently missing** on any
+  audio-first card (`choice_pick` toNative/audio-fallback, `listen_pick`,
+  image/glyph modes) if the learner answered while the card's own
+  mount-autoplay prompt was still inside its estimated speaking window. The
+  wave-1 audio manager's `ttsSpeaking()` gate (`journey/celebration/sounds.ts`)
+  now also reads `isUtteranceActive()`, an ESTIMATE (word-count based; native
+  TTS has no true "finished" signal) that can read "active" for seconds after
+  the real audio has actually stopped — silently dropping the chime while the
+  visual splash still fired, which reads as "no celebration" on a device. Live
+  device verification (choice_pick "Elige la traducción" in both directions)
+  found the celebration mechanism itself intact — this was the one confirmed
+  gap. `ActivityCardHost.settle()` now clears stale utterance tracking right
+  before a celebration fires, so a decaying prompt-audio estimate can never
+  swallow the fresh correct-answer chime (`journey/feed/ActivityCardHost.tsx`).
+
+### Changed
+- **Onboarding is shorter and no longer asks about prior knowledge twice.** The
+  learner path used to ask "Have you studied {{lang}} before?" (calibrateLearn)
+  and then a second "Where should we start? — I'm new / I know some"
+  (journeyPlacementOffer) screen. The second screen is removed: the guided
+  Journey's placement is now derived from the calibration answer
+  (`onboarding/placement.ts` — total beginner → start at unit 1, any prior
+  exposure → let the Journey's own PlacementFlow probe). One fewer tap on the
+  primary growth path; every remaining question drives real behavior.
+- **Phrase-pack onboarding step is a one-tap consent-to-download.** The default
+  view is now a single summary line ("N phrase packs available · ~X MB") plus a
+  prominent **Install all** button, with progress ("Installing N of M…") and a
+  partial-failure notice. The à-la-carte per-pack grid is still one tap away via
+  **Choose individually** (for low-bandwidth users and future paid packs). A
+  pack that fails to download is dropped from the active set so the main loop
+  never samples a pack that isn't on disk (`contentPacks/phrasePackInstall.ts`).
+- **Phrase-pack onboarding step now skips itself silently when every starter
+  pack is already installed**, instead of showing a "you already have the
+  starter phrase packs" message with a lone Continue button (CTO feedback: the
+  user should never see that screen). The catalog/installed-registry check is
+  async, so the skip is decided in the step itself once that state actually
+  lands (`shouldAutoSkipPhrasePacks` in `contentPacks/phrasePackInstall.ts`),
+  not in the onboarding graph; a draft-persisted guard
+  (`Draft.phrasePacksAutoSkipped`) stops Back navigation into the step from
+  re-triggering the skip and bouncing the user forward again — a guarded
+  re-entry still shows the original message + Continue as a fallback.
+
+### Added
+- A small audio manager (`util/audioManager.ts`) now tracks the single active
+  spoken utterance app-wide (estimate-based, upgraded to a real completion
+  signal on the browser Web Speech backend). Journey's feed routes through it
+  so an APP-initiated advance (auto-advance timer, or settle → request-advance
+  on an answer-tap card) waits — capped, ~2s max — for a just-fired reward
+  utterance to actually finish before stopping speech and moving on, instead
+  of cutting it mid-word to rush along. A USER-initiated advance (swipe/tap,
+  and the explicit-completion Continue press on intro_echo / flip_recall /
+  speak_echo) stays fully instant and may still cut audio — turbo-scroll never
+  gets friction added to it.
+
+### Fixed
+- **Catalog revalidation (game packs, phrase packs, word packs) no longer opens
+  every background refresh with a guaranteed-to-fail CORS preflight.** Once a
+  catalog resource holds a stored ETag, `offlineCache/jsonCache.ts` sent
+  `If-None-Match` on every revalidation — a non-safelisted header that forces
+  the browser to preflight with `OPTIONS` first. Verified against production:
+  CloudFront/S3 (phrase-packs, word-packs) answers `OPTIONS` with 403, and
+  GitHub Pages/Fastly (`catalog-v3.json`) answers with 405 — both still send
+  `access-control-allow-origin: *`, but the non-2xx status fails the preflight
+  regardless, so the browser never sends the real request. `fetchJsonFresh`
+  already recovered on retry (a plain GET has no custom headers, so it isn't
+  preflighted), which is why installs kept working in production — but every
+  single revalidation paid for one doomed OPTIONS round trip + a backoff sleep
+  first, and the intended 304 fast path never actually fired (the retry that
+  succeeds carries no conditional headers, so it's always a full re-download).
+  Added an opt-in `skipConditionalGet` policy flag (`offlineCache/types.ts`)
+  and set it on the catalog/journey-index policies (`offlineCache/resources.ts`)
+  so these known-non-preflighting origins are never sent conditional headers in
+  the first place — same bytes on the wire, one fewer guaranteed-failing
+  request and console error on every poll. `contentPacks/catalogFetch.ts`'s
+  generic conditional-GET support is untouched for origins that do support it.
+- **Guided onboarding no longer dead-ends on Home when the only course pack for
+  the target language is preview-channel.** Three changes: (1) a shared journey
+  course-pack selection seam (`resolveJourneyPackForTarget` in
+  `contentPacks/journeyPackCatalog.ts`) now prefers a stable-channel pack but
+  falls back to a compatible preview-channel one when no stable pack exists for
+  the target — course packs are content, not experiments (compat gates
+  `minAppVersion`/`schemaVersion` still hold for both channels; the fallback is
+  logged, not surfaced). Every journey entry point (runtime install, Home hero
+  gating, onboarding) routes through it. (2) The onboarding guided opt-in now
+  checks course-pack availability for the chosen language (optimistic, never
+  blocks the flow) and renders the guided option disabled with a localized note
+  when none is published, instead of offering a path that dies at the feed.
+  (3) The Journey load-error screen gains a **Try again** action that re-attempts
+  the deps build, alongside the existing Home exit.
+- **Pack Play buttons (wordfall, drift, corpán-city, …) no longer permanently
+  stop responding after a crash or an odd exit from a long journey session.**
+  A pack launch was gated by an internal "one pack at a time" flag that was
+  only ever cleared by a terminal result arriving from the pack — so a pack
+  that exited without one (a crash/reload, `corpan:exit` with no matching
+  `corpan:activity-result`, or a `corpan-city` vs `corpan_city` id-format
+  mismatch the host was wrongly rejecting as "wrong pack") left EVERY future
+  pack card's Play button silently dead until the whole session ended. Fixed
+  three ways: the host now finalizes an orphaned pack session (as abandoned,
+  keeping any partial progress already reported) on every `corpan:exit`, not
+  just on full journey teardown; a relaunch attempt for a different pack card
+  self-heals a wedged one instead of refusing forever, and skipping past a
+  stuck pack card now clears its session immediately; and pack id comparisons
+  are normalized (hyphen/underscore) so a genuine result is never dropped for
+  a formatting mismatch in the first place.
+- Celebration chimes (`journey/celebration/sounds.ts`) now also drop while
+  NATIVE TTS is speaking, not just browser Web Speech — the chime-vs-speech
+  guard used to check only `speechSynthesis.speaking`, which native playback
+  (macOS/iOS/Android) never touches, so a chime could talk over native speech.
+- **The Journey feed no longer serves the same mastered words forever.** Items
+  you nail perfectly twice in a row (score ≥ 0.95, no hints) are now RETIRED:
+  they stop coming back through reviews, the strong-known "fun" variety pool, and
+  the continuation stream, so brand-new and less-practised material leads instead
+  of a handful of words ("sheep / ship / berry / jam") repeating dozens of times.
+  Retired items no longer count toward the review-debt backlog either, so freed
+  capacity pulls fresh vocab forward. A genuine forget or lapse un-retires a word
+  so it can return to normal spacing. The infinite feed still never dead-ends: on
+  a fully-mastered finite pack the feed round-robins retired words as a spaced,
+  varied last resort (least-recently-seen first) — only ever when there is
+  genuinely nothing new left.
+- **Journey pronunciation now uses your installed Whisper model and never
+  offers a redundant download.** A new single-source-of-truth store
+  (`store/stt.ts`) owns the installed models, the preferred/active model, and
+  the mic state. Journey's early model warm-up used to call the STT plugin with
+  NO model, which the native default resolved to the tiny model — unloading the
+  bigger model you'd installed (e.g. via Parlometron) and then reporting it
+  "not installed", walling the speak card behind a fresh download. Warm-up now
+  always resolves a concrete installed folder first (preferred → loaded →
+  largest installed) and never issues a bare prepare; the pronounce capability
+  reuses that same resolution through a host seam. An installed model that
+  transiently fails to load now retries through the memory-settle window instead
+  of falling back to a tiny-model install offer.
+- **The "Corpán uses the microphone…" priming card now shows at most once,
+  ever.** It's persisted, marked shown on first impression, and pre-seeded for
+  existing pronunciation users so they never see it again. The model warm-up
+  still runs at every speaking run — it no longer depends on the card.
+- **Speaking cards no longer rush you.** After a scored attempt the feedback
+  now DWELLS — a great score no longer app-advances instantly; you read your
+  per-word feedback and continue on your own tap (a generous attempt cap still
+  backstops a runaway). A recording interrupted by scrolling away surfaces a
+  gentle "recording stopped — hold to try again" notice instead of silently
+  producing nothing, and a lost scoring callback can no longer leave the spinner
+  stuck. The speak card also no longer clips long phrases / per-word pill rows.
+- **Android internal-test launcher icon was cropped/zoomed.** Android release
+  builds now ship the curated launcher icon set instead of the CI-regenerated
+  full-bleed icons: the release workflow overlays the curated, git-tracked
+  mipmap set (`src-tauri/icons/android/`) over the freshly generated
+  `res/mipmap-*` after `tauri icon` runs, so Play internal-test builds ship
+  the vetted icons. No change to iOS icon generation.
+- **`Cargo.toml` had drifted to 0.20.1** while `package.json`/`tauri.conf.json`
+  were already at 0.20.5 — `bump-app-version.mjs` matched the *exact* current
+  version string across all three files, so once one file drifted the script
+  silently stopped updating it. Set `Cargo.toml`/`Cargo.lock` back in lockstep
+  at 0.20.5 and made the bump script match each file's version line
+  structurally (not against a shared `current` string) and fail loudly
+  (nonzero exit, no partial writes) if any of the three can't be found/updated.
+- **Android 16 KB page-size compatibility: `libcorpan_lib.so` (the Rust
+  cdylib) is now actually 16 KB-aligned.** `src-tauri/.cargo/config.toml`
+  already carried `-Wl,-z,max-page-size=16384` rustflags for every Android
+  target, but they were being silently dropped: tauri-cli's Android build
+  path (`cargo_mobile2`) sets its own `CARGO_TARGET_<TRIPLE>_RUSTFLAGS`
+  environment variable to inject `-landroid`/`-lOpenSLES`, and a
+  `CARGO_TARGET_*_RUSTFLAGS` env var *replaces* config.toml's `rustflags`
+  array wholesale rather than merging with it — so the max-page-size flags
+  never reached the linker, and the shipped `.so` came out 4 KB-aligned
+  (`p_align = 0x1000`), tripping Play Console's "This app isn't 16 KB
+  compatible" check on 16 KB-page hardware (Galaxy S25 Ultra, Pixel 9+).
+  `src-tauri/build.rs` now emits the page-size linker flags via
+  `cargo:rustc-link-arg` when targeting Android, which Cargo always appends
+  to the link line regardless of what RUSTFLAGS resolves to — immune to
+  being clobbered. Verified: `libcorpan_lib.so`'s LOAD segments now report
+  `p_align = 0x4000` (was `0x1000`). `libwhisper-jni.so` (STT plugin,
+  whisper.cpp) and the packaged `libc++_shared.so` were already correctly
+  16 KB-aligned (explicit `target_link_options` in the STT plugin's
+  CMakeLists.txt, and NDK 28.2+'s prebuilt libc++_shared respectively) —
+  Play's on-device warning for those two was stale/from an older build.
+- **`Cargo.lock` had drifted to `corpan` 0.20.5 while `package.json`/
+  `tauri.conf.json`/`Cargo.toml` were already at 0.20.6** — the 0.20.5 fix for
+  the sibling `Cargo.toml`-drift bug made `bump-app-version.mjs` match each
+  of those three files' version line structurally, but never touched
+  `Cargo.lock`'s own `[[package]] name = "corpan"` entry, which Cargo doesn't
+  auto-sync on a manual edit. Ran `cargo update -p corpan` to bring the lock
+  back in sync, and extended `bump-app-version.mjs` to also rewrite
+  `Cargo.lock`'s app-package version line (anchored to the
+  `[[package]]` / `name = "corpan"` / `version = "..."` shape so it can't
+  touch a same-named dependency), with the same fail-loudly-with-zero-
+  side-effects behavior as the other three files
+  (`scripts/bump-app-version.mjs`).
+- **`stopSpeech()` could wipe the tracking for a card's audio that hadn't
+  even started playing yet.** Its `finally` called `audioManager`'s
+  `endUtterance()` with no id, unconditionally clearing whatever utterance
+  was CURRENTLY active — but between the (awaited) native stop call starting
+  and resolving, a user-advance's `void stopSpeech()` could race the next
+  card's autoplay `beginUtterance()`, which registers synchronously and thus
+  can land before the native stop resolves. The stale `finally` then wiped
+  the NEW utterance's tracking, so a subsequent `waitForActiveUtterance()`
+  returned instantly instead of riding out the new card's audio.
+  `stopSpeech()` now captures the active utterance id (`audioManager`'s new
+  `getActiveUtteranceId()`) at entry, before the async native stop call, and
+  ends only that id — a later-registered utterance survives. New
+  `audioManager.test.ts` cases cover the exact interleaving, plus the
+  companion case where nothing was active at entry (`util/speak.ts`,
+  `util/audioManager.ts`, `util/audioManager.test.ts`).
+- **A second mic-priming ("blockIntro") card could be queued while the
+  first was still unseen, even though it's meant to show at most once
+  ever.** `micIntroSeen()` is stamped on the card's MOUNT, not on synthesis —
+  so `fillQueue()` could discover a later stt-run boundary and synthesize
+  another blockIntro while the first one was still sitting, un-mounted, in
+  `prepared`. `fillQueue()` now also treats "a blockIntro is already present
+  in `prepared`" as seen when deciding whether to synthesize a new one, so at
+  most one is ever queued at a time; the block-warm-up bookkeeping and model
+  prewarm still run on every boundary regardless. A fresh user still sees the
+  card once (`journey/runtime.ts`).
+- **Android `hdpi` launcher icons (`ic_launcher.png`/`ic_launcher_round.png`)
+  were 49×49 instead of the required 72×72**, alongside correctly-sized
+  mdpi/xhdpi/xxhdpi/xxxhdpi (48/96/144/192). Regenerated both from the
+  curated xxxhdpi (192px) source via high-quality (Lanczos) downscale;
+  verified all five densities are now correctly sized
+  (`src-tauri/icons/android/mipmap-hdpi/`).
+
+## [0.20.5] - 2026-07-12
+
+### Changed
+- **Journey reframed from a daily drip to an intensive, mastery-driven program.**
+  Calendar / "day N" framing is gone from the copy: the hero progress line points
+  to your next milestone, the checkpoint ring and streak read as momentum
+  ("{{count}} this session", "{{count}} in a row") rather than a day number, and
+  the streak pact drops the "one card a day / miss a day" language. The
+  checkpoint ring no longer overflows (a single momentum number, not "229/20"),
+  and the recap hides the all-zeros "0 new · 0 reviews" line. The artificial
+  new-word ceiling is lifted for grinders (`NEW_PER_DAY_MAX` 30 → 100; intensive
+  learners seed a high daily intake) — but the FSRS spacing + debt-brake still
+  guard against cramming unseen words on top of a review backlog.
+- **New-word first exposure is now interactive.** The debut card was a passive
+  see-hear-Continue; it's now a hear → tap-the-meaning comprehension beat (a
+  concept-picture grid, a numeral glyph grid for numbers, or native-gloss tiles),
+  audio-first and unscored (a wrong tap only reveals — no penalty).
+
+### Added
+- **The new-word debut is now an interactive comprehension beat.** First exposure
+  used to be a passive show-and-tell (see word + picture + meaning, hear it,
+  Continue). It now invites you to *prove* the link: HEAR the target, then TAP its
+  meaning — a concept **picture** grid when the word has sibling images, a
+  universal **numeral** for a number word, or **native-gloss text tiles**
+  otherwise. It stays gentle and unscored: a wrong tap simply reveals the answer
+  (the right tile lights up, the word + meaning appear) with no red "wrong" and no
+  penalty — the memory card is still created at your first *scored* rep. When
+  there's nothing tappable to offer, it degrades to today's passive debut. Audio
+  still auto-plays on arrival; nothing reflows on reveal.
+- **Every correct answer now earns a juicy, escalating celebration.** The tier-1
+  correct moment was a tiny "Perfect" pill that rendered *behind* the card. It is
+  now a big, springy **praise-word splash** drawn above everything — a polished
+  combo callout in a display-tight, ExtraBold, top-lit gradient with layered
+  legibility shadows + a colored bloom (crisp on the dark feed, legible over any
+  card), sized in `vw` so it never wraps or clips — pulling from a pool of ~12
+  fresh exclamations (localized in all ~54 languages) with a non-repeating
+  sampler — so you keep playing to see the next word. Behind it, a pluggable
+  **effect registry** (`journey/celebration/effects/`) rotates through distinct
+  CSS-3D flourishes — upgraded colorful confetti, tumbling 3D shards, a
+  perspective badge punch, a shockwave-ring starburst, and a neon word-pop — with
+  no per-answer 3D engine. The rotation is **combo-weighted**: calm at combo 1,
+  building through 3D spins and a confetti finale + screen-punch by combo 8-10+.
+  A clean fast first-try adds a **gold** bonus sparkle. Sound builds too (a gentle
+  chime early, blooming into the ascending flourish as the streak climbs). Honors
+  `juiceIntensity` (minimal = quiet text only, reduced/reduced-motion = gentle
+  no-3D fallback) and never reflows the card.
+
+### Fixed
+- **The paywall's offer-code field renders dark on the dark paywall in light
+  mode.** The "Offer or affiliate code" input filled with `bg-background` — a
+  token the paywall's scoped palette never overrode — so in light mode it drew a
+  white field on the near-black surface. The paywall now owns its own
+  `--background` and sets `color-scheme: dark`, so the field and native control
+  chrome render for the dark surface regardless of the app/OS theme.
+- **"Punto de control" no longer appears several times in a row.** The Journey
+  cadence checkpoint had no back-to-back floor and a fragile catch-up tally: a
+  boss batch or a large content batch could leave the emit position leading the
+  emitted-cadence count by more than one cadence, after which every short batch
+  drained one owed checkpoint at its tail. The milestone now snaps its tally to
+  the actual stream position and honours a minimum-gap floor, spanning the
+  boss-after-cadence seam, so checkpoints stay spaced milestones.
+- **The turtle (slow-audio) button actually slows the audio down.** The Android
+  TTS plugin was reshaping the caller's rate with an opinionated curve, so a
+  0.7× "slow" request came out ~0.87× — imperceptible. The plugin now plays
+  faithfully at whatever rate it's handed (clamped only to a safe range); rate
+  is the UI's decision. Measured against the real engine (which compresses its
+  own slow side), the turtle now asks 0.3× to land a clear ~1.6× slow-down —
+  plainly slower than both normal replay and the default auto-play. This fixes
+  slow-replay everywhere it's used, not just Journey.
+- **Play works on a scrolled-back pack interlude.** After you played a mini-game
+  interlude (e.g. Corpan City) the feed advanced past its poster, so scrolling
+  back up and tapping **Play** did nothing — the graded-launch guard rejects a
+  card the feed has already consumed. A scrolled-back poster (reviewed or
+  skipped) now **replays** the pack for free practice (no re-grade, no re-advance,
+  no quota debit), so Play is never a dead button.
+- **Dictation no longer shows its answer twice.** On a correct *type-what-you-hear*
+  solve the target phrase printed in both the big reveal line **and** the
+  now-disabled input (which already holds exactly what you typed). The reveal
+  line now fills only in review mode (where the remounted input is empty); on a
+  live solve the input is the single answer surface. No layout shifts (the
+  reserved slot is unchanged).
+- **Flashcard flip is a real flip, with one result check.** The recall card is
+  now a single tappable 3D card — tap the card face itself (not a small "tap to
+  reveal" phrase) and it spring-flips to the meaning (concept image + target word
+  + audio). And a correct answer shows **one** check ("Correcto") underneath, not
+  a second one in the top-right — the redundant settled ✓ on the card frame is
+  gone (it only ever appeared live, never on review, which was inconsistent).
+- **Word explanations no longer shove the exercise around — and speak the
+  learner's language.** The word depth (in-context example + wordpan
+  meaning/etymology) used to auto-render *inline below the exercise* the moment
+  you answered, reflowing the whole card (on a compact glyph-number card it
+  clipped the audio button at the top) — and its etymology paragraph could come
+  out in the *target* language (an English "…from Old English an…" shown to a
+  Spanish speaker). Now the exercise never moves: a small **(?)** rides the
+  already-reserved feedback row (before AND after answering — a hint is most
+  useful during the exercise), and tapping it opens the explanation in the shared
+  **Drawer** (big grab band, swipe-down, tap-scrim to close). The text is
+  **native-safe and region-tolerant** (`es-419` matches `es`): a non-English
+  native is shown the native paragraph, or their native gloss + the in-context
+  example — and *never* the target-language etymology (no native paragraph ⇒ no
+  paragraph, rather than an English wall). The etymology-gem rare card obeys the
+  same rule.
+- **Journey's SPEAK card is now parlometron-grade.** The card mounts the same
+  cap-pronounce surface the standalone pronunciation coach uses, but Journey
+  never themed it — so on the dark feed the target phrase rendered near-black
+  ("Where are you from?" was barely visible), the per-word pronunciation pills
+  and the overall %-score banner came out light-theme-on-dark, and the card read
+  as a blank box with a plain mic. Fixed by mapping the whole `--capPron-*`
+  surface onto Journey's design tokens (dark-mode aware for free): the phrase is
+  now a high-contrast hero, each word is coloured by how well it was said, and
+  the overall score shows prominently — the same feedback as the coach, by
+  construction (single source of truth, not a stripped custom UI).
+- **Speaking no longer bricks you.** A low score used to leave the card in an
+  un-settled limbo whose only exit was a double-swipe "swipe again to skip"
+  (≈5 flicks). The card now shows an unmistakable **Continue** the moment you've
+  had a go, and the mic stays live so **Try again** is simply speaking again —
+  unlimited re-records, and a low score never traps you. speak_echo is now a
+  clean button-advance card (one press settles + moves on).
+- Removed the redundant Journey-side "Speak now" mic cue that sat above the
+  capability's own mic stage (the capability renders the full mic + live
+  waveform itself).
+- **Pack offers no longer wall the Journey.** The word-pack and picture-pack
+  offers were `position: fixed` banners pinned to the viewport bottom, so they
+  floated over the placement "Continue", the streak-pact buttons, and the live
+  exercise card (covering a card's own "Not now"), and overlapped each other.
+  They now ride a normal-flow row below the feed — only in the feed (never over
+  placement/loading), only one offer visible at a time, clear of every CTA and
+  the safe-area inset. Consent-first behavior is unchanged.
+- **Journey shows the unit's real name, not its internal id.** The feed header
+  and placement result displayed the raw unit id (`en.a0.u01`); they now show the
+  localized unit theme (e.g. "Kit de supervivencia" / "Survival kit") in the
+  learner's language, sourced from the course pack's `unit.<id>.theme` strings
+  (region-tolerant, falling back to English then the raw id only if a pack ships
+  no theme). The path view's arc headers likewise show the CEFR band instead of
+  the internal arc id.
+
+### Changed
+- **Settings selectors are sleek now, not stacks of fat wrapping pills.** Text
+  size, speech rate and theme were chunky buttons that wrapped to two rows once
+  labels were localized ("Pequeño / Mediano / Semi Grande / Grande / Muy
+  Grande"). They're now a shared slim **segmented control** (`SegmentedControl`)
+  that lives on one row and scrolls horizontally rather than ever wrapping.
+  Text size dropped its long words entirely for a visual **A-ramp** (five "A"s
+  at increasing sizes — language-agnostic, the size name rides along only as the
+  a11y label). CEFR levels became one non-wrapping scroll track too. Squared-off
+  8px corners; compact on phone, roomier on iPad. No new strings.
+- **Every bottom drawer is much easier to grab and swipe away on mobile.** The
+  drag handle was a thin 100×8px pill; the shared drawer now renders a
+  full-width, ≥44px-tall grab band around it, so swiping down anywhere across
+  the top dismisses. Fixed once in the shared `DrawerContent`, so every drawer
+  (voice tuning, phrase packs, quick settings, …) inherits it.
+
+### Added
+- **Journey exercises show pictures where we have them.** When the imagepan pack
+  is installed and a word maps to a concept picture, the flip card reveals that
+  picture as the meaning (image = meaning, revealed on flip), a new-word intro
+  leads with the picture, and a "pick what you hear" card reveals it with the
+  answer. The word and its audio stay; grading is unchanged (the picture is
+  presentation only). No pack, or a word with no picture, falls back to today's
+  text — nothing ever shows a broken image. The image sits in a reserved box so
+  the card never jumps when it appears.
+- **Picture-choice, picture match-pairs, and picture cloze.** Beyond the reveals
+  above, whole exercises are now driven by the image (imagepan): *hear → pick the
+  picture* (a listening card's options become a 2×2 picture grid), *picture →
+  pick the word* and *word → pick the picture* on first exposures, *picture
+  match-pairs*, and a *picture cloze* whose blanked word is cued by its picture.
+  Audio-first and pair-agnostic; each slots into today's scheduling with no
+  engine change, falls back to text where a word has no art, and rides reserved,
+  aspect-locked boxes so an async or missing picture never reflows a card. No new
+  UI copy.
+### Changed
+- **The Journey card holds perfectly still when you answer.** Global no-reflow
+  invariant across every exercise: the prompt and the tiles/input never move the
+  instant you commit an answer. Feedback that used to shove the card — a "what
+  you heard" reveal, the answer line, a Continue button, the hint offer — now
+  fills space reserved up-front (so it appears in place) or floats as an overlay
+  (the fail "answer was…" note). Success still fires the full celebration
+  (particles/haptics/chime); a miss stays a gentle in-place cue. Codified as a
+  shared `ReservedSlot` contract so future cards inherit it.
+
+## [0.20.4] — 2026-07-11
+
+### Fixed
+- **Removed the "Why this card?" popover that could trap you.** Its long-press
+  gesture collided with hold-to-speak (a speak card *is* a press-and-hold), so
+  holding the mic summoned the explainer, it covered the mic, and every retry
+  re-summoned it. It was also read-back status copy the design avoids. Gone.
+- **No more phantom scrollbar over the Journey feed.** The CSS that freezes
+  Home's scroller behind a full-screen experience only matched
+  `data-experience-active="true"`, but the Journey surface tags it `"journey"` —
+  so Home stayed scrollable and Android painted its overlay scrollbar through the
+  opaque overlay. The selector now matches any active experience.
+- **A meaning/etymology you can actually read.** A settled word card showing a
+  wordpan meaning/etymology paragraph no longer auto-advances after 2.2s — it
+  waits for a swipe, so a 40–60 word etymology is readable. Cards with no meaning
+  still auto-advance fast.
+
+## [0.20.3] — 2026-07-10
+
+### Added
+- **Game interludes in the scroll — drop into a game for one phrase, then keep
+  scrolling.** A lightweight pack activity (e.g. Lingo Hero) that drills the
+  phrase you're on now shows as a compact "sip" card — a small squared-off
+  poster with a Play affordance reading "Quick game · one phrase" — instead of a
+  full-height game launch. Tap it, play one round for the injected phrase, and
+  the feed grades your result and scrolls straight on. Heavy 3D drop-ins stay a
+  full poster + cold mount. A repeated lightweight interlude now warm-mounts
+  (its code stays resident between launches) so it opens instantly with no
+  loading gap; a pack error can't break the scroll around it. (`InterludePoster`,
+  `PackActivityCard` interlude branch, runtime `interlude` flag on packActivity
+  cards, `ContentPackHost` warm-mount LRU seam.) New i18n keys
+  `journey.interlude.gameCue` / `journey.interlude.readerCue`.
+- **Wordfall (game) and Drift (reader) now appear as scheduled interludes in the
+  Journey scroll.** The scroll drops in a Wordfall catch-the-meaning spike every
+  ~12–18 cards and a Drift micro-story breath every ~20–30 — both drilling the
+  phrase you're on now, then scrolling on. The mixer's interlude selection is no
+  longer hardcoded to one pack: it picks among whatever interlude-capable packs
+  are installed, classified as a game spike or a reader breath by their catalog
+  `packType` and keyed by their declared `activities` (a hot combo pulls a
+  reader comedown, a cold stretch a game re-ignite; never two interludes
+  back-to-back). Both packs auto-install as tiny system packs (no nagging
+  prompt). (`journey/interludeRegistry.ts`, mixer `chooseInterlude` +
+  `FeedConstraints.interludes`/`combo`, `runtimeWiring` interlude registry,
+  `packType` on `CatalogGame`, `web/pages/build.js` forwards manifest
+  `activities` + `systemPack` into catalog-v3, `web/data/packs.json` entries.)
+  No new i18n keys (reuses the interlude cues above).
+- **The Journey feed now feels like a premium object in the hand.** A tactile
+  juice pass across the whole scroll: correct answers land with a soft haptic
+  and a warmer, felt-mallet chime whose pitch rises as your streak climbs; the
+  card-to-card advance gets a hair snappier at high combo and exhales back to
+  calm when the streak breaks. A small ambient momentum gauge in the corner
+  fills and warms with your run — no shouting number, you read your streak off
+  the feel. Celebration bursts are now sparse and refined rather than confetti
+  spam. The live-speaking card is elevated: a breathing mic cue, a framed
+  waveform surface, and the pronunciation confidence read now resolves in a beat
+  after the ✓/✗ and fills with the accent colour on a strong score. Every part
+  is reduced-motion and sound-off first-class — the feed is fully understandable
+  silent and still, and haptics honour the same setting as sound.
+- **Journey is an infinite feed — doom-scroll to fluency.** The lesson feed no
+  longer winds down to a "caught up" screen. Once you hit the day's goal, an
+  eager learner who keeps going gets fresh, varied cards indefinitely: the next
+  units' new words are pulled forward (respecting prerequisites), difficulty
+  escalates as you master material, and activities and items rotate so you never
+  see the same word or the same exercise twice in a row. Your daily target is now
+  a milestone you can blow past, not a wall. The only time the feed ends is when
+  there is genuinely no material left to serve. (Spaced repetition is unchanged:
+  reviews still come due on schedule and the review-debt brake still protects you
+  — only new-word exploration and variety are uncapped for a continuing learner.)
+- **Journey is speak-first when Whisper is available.** When on-device speech
+  recognition is usable, production and echo moments become live, Whisper-graded
+  speaking instead of tap/type: the new-word "listen & echo" debut and a strong
+  share of "type what you hear" cards now ask you to say it aloud and are scored
+  by Whisper. Installing a Whisper model also visibly increases how often live
+  speaking appears in the mix. Fully graceful — if you can't speak right now,
+  declining the mic reverts the whole session back to typing, and no card ever
+  forces speech with no way out. Some typing practice is always kept for variety.
+- **A live mic waveform while you speak.** The pronunciation card now shows a
+  small animated waveform driven by your real microphone level, so it reads
+  unmistakably as "I'm listening to you now." Hosts without a level signal fall
+  back to a gentle breathing animation; respects reduced-motion.
+- **A confidence read on spoken answers.** After a graded speaking card, a small
+  accuracy percentage appears beside the ✓/✗ — a quick, satisfying read of how
+  close your pronunciation was, not just pass/fail.
+
+### Fixed
+- **Checkpoints no longer loop forever once you're caught up.** When the day's
+  goal was met and nothing was due, the session could serve the same known-item
+  practice endlessly and re-show a checkpoint every few cards — tapping
+  "Continue" appeared to reload the same screen with no way to finish. A
+  checkpoint is now a genuine milestone that never repeats identically and never
+  appears twice with no real content between; tapping "Continue" always advances
+  into fresh, varied cards (see the infinite-feed change above).
+- **The next-card hint no longer looks like a blank drawer.** After a correct
+  answer the "swipe up to continue" affordance was a card-coloured sliver pinned
+  to the bottom and nudged down 24px, so on gesture-nav phones it read as an
+  empty card clipped by the home indicator. It is now a gently bouncing upward
+  chevron sitting fully above the safe-area inset — an unmistakable "swipe up"
+  cue, never a blank box — and it hides while a card is auto-advancing.
+- **A word's meaning shows inline when it is the only extra.** For a word with a
+  meaning but no in-context example (e.g. a number like "one"), the enrichment
+  card used to be just a lone collapsed "meaning" toggle in an empty-looking box;
+  the meaning now expands by default so the card carries real content. Words that
+  also have an in-context example keep the tap-to-expand meaning as before.
+
+## [0.20.2] — 2026-07-08
+
+### Added
+- **Journey offers the `imagepan` picture pack with one-tap consent (no silent
+  download).** When a compatible concept-picture pack is available in the index
+  but not yet installed, an understated in-feed offer appears ("Add pictures")
+  showing the download size read **dynamically** from the catalog entry
+  (`sizeMb`) — ready for the pack to grow to thousands of images. **Install**
+  downloads with a progress bar, registers in the installed-data-pack registry,
+  and picture exercises begin mid-session (the resolver is invalidated, no
+  restart). **Not now** is remembered persistently so the offer never nags. Its
+  WebP images serve over the existing `corpan-pack://` scheme. Fully graceful:
+  an already-installed pack lights up from the first card with no re-consent,
+  and when the index is unreachable / the pack is absent there is no offer and
+  no image cards — normal text cards exactly as before.
+
+### Changed
+- **imagepan is no longer auto-installed on first Journey open.** The prior
+  silent ~1 MB download is replaced by the consent offer above; Journey only
+  *recognizes* an imagepan that is already on disk at session start.
+
+### Fixed
+- **Journey no longer serves degenerate exercises.** Single-token items (e.g.
+  "jam", "ship") could be dealt as a fill-the-gap with no gap or a
+  tap-in-order with a single tile. The activity mixer now never assigns
+  `cloze`/`word_order` to single-token item kinds, and a runtime safety net
+  reroutes any that slip through to a coherent activity instead of rendering a
+  broken card.
+- **Match-the-pairs never shows the same tile twice.** Two items sharing a
+  target surface or a native gloss could produce duplicate tiles that the
+  independent column shuffles let sit side by side; columns are now de-duplicated
+  before the pair cap.
+- **Cloze/word-order render gracefully when context is thin** instead of a bare
+  "____" or a one-tile "reorder": they fall back to a reveal-and-continue card.
+- **No more blank card after a correct answer, and nothing is clipped by the
+  device safe area.** The feed's next-card peek is now a thin affordance sliver
+  (never an empty content card) and the feed respects `safe-area-inset`.
+- **You can redo a completed exercise.** Scrolling back to a finished card now
+  clears its answer so you can try it again; the retry re-grades as an extra rep
+  without re-charging quota, streak, or stats.
+- **Journey reuses an already-installed Whisper model** instead of offering a
+  redundant download. Speech scoring now discovers a usable model already on the
+  device (shared with pronunciation-coach) and prepares it, only offering an
+  install when nothing usable exists anywhere.
+- **STT install progress now shows on Android.** `hostApi.stt.installModel` now
+  passes a Tauri `Channel` (`onEvent`) alongside the existing `install_progress`
+  plugin listener. Android delivers download progress only through that channel,
+  so without it the "Install" button ran the download silently and looked dead.
+  iOS keeps using the plugin-event path (the extra arg is ignored there).
+- **Declining speech ("Not now") no longer strands you** on a dead speak card —
+  the card settles and advances immediately (and remaining speak cards swap to
+  the typed fallback for the session).
+- **Swipe-to-skip is reliable.** The confirm window was widened and a clear
+  "swipe again to skip" hint added, so one confirmed double-swipe advances
+  instead of requiring many swipes.
+- **Word-explanation packs say which language they explain.** Settings now shows,
+  under "Explicaciones en español", a second line naming the explained language
+  (e.g. "English words"), read from the pack's `targetLang` metadata — so a
+  learner of several languages can tell EN from a future DE pack. No language is
+  hardcoded.
+
+### Changed
+- **A brand-new learner starts with useful language, not pronunciation drills.**
+  The Journey EN launchpad is reordered communicative-first: greetings and
+  courtesy (hello, please, thank you, yes, no, how are you…) come first;
+  minimal-pair sound contrasts (ship/sheep, jam/yam…) move to a later phonology
+  unit. The engine also keeps pronunciation-contrast items from dominating the
+  opening feed.
+- **Onboarding: the guided Journey now reads as the primary way to learn.** The
+  learner-path fork is reframed from "Want a guided path?" (an opt-in) to "How
+  do you want to learn {{lang}}?", with **Guided daily path** listed first and
+  **Self-paced** second, each with a one-line subtitle.
+
+### Removed
+- **Onboarding: dead-code landing presets.** The comfort/level calibration
+  screens (enjoy/learn/child) and the polyglot fork option wrote a `landing`
+  intent into the draft that nothing read — the final "Where should we begin?"
+  question and Journey opt-in always determine the landing. Removed for a single
+  source of truth. No behavior change.
+
+## [0.20.1] — 2026-07-07
+
+### Added
+- **Journey words in context.** After a word exercise settles, a compact card
+  shows that word inside a real corpus phrase (with its translation) plus a
+  tap-to-expand meaning/etymology snippet — killing the "see the same word
+  translated over and over" feel. For a share of repeats, a met word is
+  practiced as fill-the-word-in-a-real-sentence rather than in isolation
+  (grading still tracks the word itself).
+- **Journey etymology gems gained a usage line.** The rare word-story card now
+  shows the word used in a real sentence beneath its origin paragraph.
+- **Journey grammar cards show a contrast with your language.** When the course
+  carries an L1 contrastive note (e.g. how English adverb placement differs from
+  Spanish), it renders beneath the rule for that learner's language.
+- **On-device tutor-moment design + prompt foundation.** A tested, framework-free
+  prompt builder for an end-of-lesson Qwen3 recap in the target language; the
+  live streaming card is specified and deferred (see
+  `docs/journey/specs/llm-cards.md`) pending an LLM runtime seam and on-device
+  verification.
+
+### Changed
+- **Journey speak cards now reach real pronunciation scoring.** When on-device
+  speech scoring is supported but the model isn't installed yet, the speak card
+  shows an inline install offer (what it is, download size, one-tap install with
+  progress) instead of silently swapping to typing. Declining stops speak cards
+  for the rest of the session; installing flows straight into hold-to-record
+  whisper scoring with per-word feedback.
+- **Journey word cards show the learner's own language.** Word exercises now
+  resolve a native-language gloss from the course pack (e.g. an ES learner sees
+  "ship" paired with "el barco", and choose-the-translation distractors are
+  other words' Spanish glosses), instead of an English word matched to itself.
+  When a gloss is absent, the card reroutes rather than showing a same-language
+  pair.
+- **Match-the-pairs cards show several pairs.** A pairs card now presents a set
+  of 4–6 items to match (drawn from the unit and neighbouring material), not a
+  single trivial pair; each pair is scored on its own.
+- **Journey cards flow hands-free.** Answered cards now advance on their own
+  after a brief countdown (with a tap-to-pause ring), and Continue on an intro
+  or flashcard advances the instant you press it — no more settling on a card
+  with nothing happening until you discover the swipe. Swipe still works as a
+  manual override and to look back.
+- **Flashcard (flip) cards drop the self-rating.** Reveal the answer, hear it,
+  and continue — no "did you know it?" buttons.
+- **Journey clears the notch and gesture bar.** The top ribbon sits below the
+  status bar and content clears the home indicator on edge-to-edge phones; the
+  page behind the Journey no longer scrolls under it.
+- **Placement result names where you landed.** It shows the concrete unit and
+  its level; when you place past the current content it says so honestly and
+  starts you at the deepest unit rather than an empty screen.
+
+### Fixed
+- **No more fake "correct" on intro cards.** Listen-and-echo intros settle
+  neutrally — they never stamp a green check or celebrate a card that was never
+  graded.
+- **Choose-the-translation and match-pairs never show one language on both
+  sides.** If a needed translation face is missing the card falls back to a
+  listening form instead of a same-language card, and match-pairs always pairs
+  the target with your language.
+
+## [0.20.0] - 2026-07-06
+
+### Added
+- **Automated mobile release pipeline — proven end-to-end.**
+  `.github/workflows/release-mobile.yml` builds signed iOS + Android on a version
+  bump to `main` and ships to TestFlight internal + Play internal testing (no
+  manual MacBook/Transporter step). Version bumping via
+  `scripts/bump-app-version.mjs`; one-time credential setup in `RELEASE_SETUP.md`.
+  0.20.0 is the first release cut this way — both platforms uploaded green.
+  Hardened for a real repo checkout: Git-LFS fetch (icons + DB), whisper.cpp
+  vendored/built in CI for the STT plugin (iOS XCFramework + Android JNI), CI
+  rewrite of the machine-specific `.cargo/config.toml` NDK paths, `buildSrc`
+  regeneration, manual iOS signing with an ASC-API-minted profile, a
+  profile-pinned `xcodebuild -exportArchive`, jarsigner AAB signing, monotonic
+  version codes, `macos-26`/Xcode 26 (iOS 26 SDK), and build/toolchain caching.
+- **Journey browser demo harness (dev-only)** — `journey-demo.html` mounts the
+  REAL JourneySurface + engine + resolver over the real `journey_en` pack
+  content in a plain browser (no Tauri): `scripts/journey-demo/precompute.ts`
+  emits `public/journey-demo/course.json` (gitignored), `src/journey/demo/`
+  wires JSON-backed ResolverDeps ports, `scripts/journey-demo/verify.ts`
+  proves ≥10 cards headless over the JSON.
+
+### Changed
+- **Journey W11 round 2 — engine calibration: the §3 mechanism bundle was
+  validated and rejected; the tuning surface shipped instead.** The
+  CALIBRATION.md round-1 bundle (`DESIRED_RETENTION` 0.85, throttle
+  down-target 1.0×capacity, leech 4-lapse/2.5-ratio) was implemented and
+  swept against the P-gates: every red gate moves the right way (P1 median
+  due 2.10→1.66, P3 review:new 35→14:1, P4 struggle 52.8→48.6%, lapser
+  drain 11/12) but none reaches its bound, while P7 strand convergence
+  collapses (noise-limited at thinner daily volume) and P10 leech
+  containment blows to ~7% vs 3% — so per the no-regression rule the
+  behavioral values stay at 0.90 / 1.5 / 6-2. What ships: throttle ratios
+  and the strand control law extracted to `constants.ts`
+  (`THROTTLE_HARD/DOWN/UP_RATIO`, `STRAND_CONTROL_EXPONENT/MIN/MAX` —
+  engine.md §1.1, behavior-preserving), the never-wired
+  `STRAND_OVER_WEIGHT` deleted, the sim runner's leech mirror reading the
+  real constants, leech/scheduler tests parameterized, and
+  `scripts/journey-sim/CALIBRATION.md` §6–§10: full before/after 3-seed
+  gate matrix, the sweep table, evidence-backed spec-amendment
+  recommendations for P1/P3/P4 (root cause: the §7.1 fixed-ability learner
+  makes them unsatisfiable — recommend amending the learner model), P7's
+  max-over-days metric, P8's ±0.6 tolerance, and a NEW P11 baseline
+  failure (relaxation rate ~0.3 vs 0.2, pre-existing from the W10
+  integration era, needs its own workstream).
+
+### Fixed
+- **Offline image cache: deflaked the cross-test background-write leak.** A
+  prior test's fire-and-forget LRU touch / fill / budget sweep could land in
+  the next test's freshly-reset singletons under CPU load and flip a cache hit
+  into a miss (a ~1/300 CI flake in the corpan-app test suite). Background work
+  is now tracked and drained between cases via `__settleImageCacheForTests()`;
+  the production path is unchanged (the tracker is a transparent pass-through).
+- **Journey W11 — R10 placement ladder respects the pack's actual b range**
+  (the W10 P8 bug). Phase-1 rungs are now the global CEFR ladder span
+  clamped to the installed pack's `[minB, maxB]` and re-subdivided evenly (a
+  full-span pack reproduces the spec ladder exactly); the "above-content"
+  early exit additionally requires a supported estimate (se ≤ 0.7), so
+  mid-band learners on a narrow-band pack no longer get routed out of the
+  course off two ladder passes with θ̂ pinned above the ceiling. Above-content
+  finalize now pins θ̂ to `maxB + margin` (no discriminating items exist
+  beyond the ceiling) and returns the last unit's skills as a usable in-pack
+  frontier (R10 "end of shipped content") instead of an empty list. Final
+  placement θ̂ is a 1PL MAP refit over the full probe transcript (the running
+  Elo iterate still drives item selection per engine.md §4.3); golden
+  placed-intermediate transcript regenerated under §8.3 with this
+  justification. `journey-sim --p8` also instruments the wrong-placement
+  self-heal cohort (10% injected over-placements; heal = week-one rewind or
+  placement-seeded skill demotion ≤14d). P8 vs the real journey_en pack,
+  40 learners × seeds 1/2/3: self-heal 4/4 on every seed, above-ceiling
+  2/2·1/1·2/2, in-band ±0.6 accuracy 74%/88%/91% vs the ≥90% bar — at the
+  information floor of ≤25 guessable probes (σ ≈ 0.40, unbiased); the
+  evidence-backed P8 spec-amendment recommendation is in
+  `scripts/journey-sim/CALIBRATION.md`.
+- **Journey W12 — catalogs are offline-cache native (D12 phase 2).** The
+  three catalog stores (game/reader v3 catalog, phrase-pack catalog,
+  word-pack index) now delegate their fetch bodies to the shared
+  offline-cache layer (`cachedFetch` + `subscribeJson`): one place owns
+  TTLs, ETag/Last-Modified 304 revalidation, IndexedDB persistence,
+  singleflight and the never-clobber-on-failure contract. The v3 catalog
+  caches the RAW body and filters at read time, so toggling dev-packs
+  mode or upgrading the app re-filters instantly with zero network (the
+  old force-refetch on devMode change is gone). Store public APIs are
+  unchanged. A zustand version-2 migration seeds the offline-cache
+  records from the legacy persisted catalogs, so upgraded devices render
+  offline cold-start without a refetch (phrase/word seeds keep their
+  validators for a 0-byte 304 first poll). The legacy inline
+  catalog-refresh loop in App.tsx is retired — the offline-cache triggers
+  (startup / foreground / online / jittered interval) own the refresh
+  cadence now.
+- **Journey W12 — rung-3 distractor top-up is wired.** The resolver's
+  random top-up (phrase-kind pathological starvation only) now draws from
+  the host's filtered random-entries surface (levels + languageCodes
+  scoped to the learner's stack) instead of an empty stub; a missing seam
+  or host error degrades to a shortfall report, never a crashed card.
+  Top-ups only feed the sampler pool — selection stays on the card PRNG.
+
+### Added
+- **Journey W10 — real-pack P8 placement gate** (`journey-sim --p8`). The
+  simulation CLI can now run the R10 placement-quality gate against the
+  REAL built `journey_en` pack (w6Smoke loader precedent): a cohort scoped
+  to the shipped arcs (ability drawn around the pack's content band) is
+  placed via the live probe controller; graded on |θ̂ − a| ≤ 0.6 within
+  ≤25 items (≥90%) + above-ceiling learners terminating "above-content"
+  within the Phase-2 budget. First run (seed 1, 40 learners): **FAIL —
+  29/39 in-band (74%)**; dominant mechanism: on this single-band
+  (preA1/A0, b ∈ [−3.5, −1.5]) pack the ladder's second rung IS the
+  content ceiling, so mid-band learners who pass both low rungs exit
+  "above-content" after 2 items with θ̂ pinned at −0.72. Not tuned —
+  calibration is W11's lane. The wrong-placement self-heal sub-criterion is
+  not instrumented in this mode (reported in the gate detail).
+- **Journey W10 — the Journey is live in the app.** `App.tsx` mounts the
+  guided feed as a full-screen sibling overlay of HomeHub (the activeGame
+  state-machine pattern; the pack overlay stacks above the still-mounted
+  feed, exit rides `corpan:journey-exit`). `buildJourneyDeps`
+  (runtimeWiring.ts) assembles the production runtime: JIT course-pack
+  install from the journey index, the normative CourseGraph loader
+  (targetLang from `pack_meta.target_lang`), the real engine over the shared
+  local-analytics persistence, resolver over a live HostApi, the
+  `journey_daily` gate, `localAnalyticsRecord` (the one `activity_result`
+  writer), the single-owner activity session, STT probes off the whisper
+  plugin (`stt.isAvailable`/`prepare`, fail-closed — speak_echo degrades to
+  listen_type as before), and streak-v2 book-day providers (progress.ts
+  `lastOpenedAt` → journey `YYYY-MM-DD` days; the two date formats are
+  reconciled in the provider). HomeHub gains the flagship Journey hero card
+  (existing `journey.*` locale keys; shown only when a course pack is
+  installed or published for the user's target). Onboarding gains the
+  journey opt-in + placement-offer nodes (data-driven; "I'm new" pre-declines
+  the in-surface probe offer) and a "Follow the Journey" option on the final
+  landing question; `LandingIntent` gains `{ kind: "journey" }`. New
+  `onboarding.journey.*` copy ships in all 54 locales.
+- **Journey W10 — `journey_daily` quota row** (feed-ux §7, R12). The shared
+  monetization registry (`packs/shared/monetization/src/quotas.ts`) gains the
+  journey gate: packId `corpan_app`, dailyLimit 60 (a provisional default
+  pending the operator's free-tier N decision — remote-config overridable
+  like every row), softNagEvery 0, unitLabel "cards". NEW-INTAKE-ONLY
+  debits: only completed debut cards + pack-anchor launches meter;
+  due-review / replay / repair are never metered. `journey_daily` joins the
+  `PaywallSurface` union; `createJourneyQuota` now resolves the real
+  `createDailyQuota` gate (which owns the `corpan:daily-locked` dispatch)
+  and reports the live registry limit.
+
+### Fixed
+- **Journey W10 — engine fixes (W4's observations).** (a) `EngineCard.meta`
+  now carries `unscored` for presentation-only cards (debut intros, cadence
+  faces, offers) — the surface reads the engine flag instead of inferring by
+  activityType: unscored cards no longer bump combo/new-count or earn
+  "perfect" celebrations. (b) The §5.4 same-type-adjacency invariant now
+  covers the BATCH SEAM: the mixer remembers the previous batch's tail type
+  and both the type chooser and the adjacency repair avoid it for the next
+  batch's head — this was the mechanism behind two adjacent `intro_echo`
+  cards. Goldens regenerated (spec-cited: engine.md §5.4 adjacency
+  invariant; only card-type/order picks drift, grades/θ untouched). (c) New
+  `engine.requestUnitReview(unitId)` (≈25 lines): enqueues a practiced
+  unit's seen items as session replays (unmetered, once-per-session,
+  existing gap discipline); PathViz's tap-to-review affordance is wired to
+  it through the runtime.
+- **Journey W10 — seam fixes.** The journey pack-poster card
+  (`PackActivityCard`) renders its art through `<OfflineImage>` (cached →
+  remote → glyph, R15) and enriches the poster name/artwork from the
+  installed-games registry + (localized) catalog entry instead of showing
+  the raw provider id. The shared reader shell (`packs/shared/catalog`
+  `appShell.ts`) now passes the feature-detected `hostApi.offlineCache?.
+  imageSrc` resolver into `createNarratorDetail`, so narrator art resolves
+  from the offline cache too.
+- **Journey W10 — authoritative targetLang** (item 15, flagged by W3 + W6).
+  The CourseGraph loader (`util/journeyPack.ts`) now carries
+  `pack_meta.target_lang` on the graph, and the engine's GraphIndex prefers
+  it over the courseId derivation — which lowercases BCP-47 region tags
+  (`journey_pt_br` → `"pt-br"`, wrong for `pt-BR`). Fixture graphs without
+  the field keep the derivation fallback.
+
+### Changed
+- **Journey W10 — file re-homes** (1:1, no logic change): the journey meta
+  store moved `src/journey/store.ts` → `src/store/journey.ts` (house
+  convention keeps stores in `src/store/`), and the capability pop-in trio
+  (`CapabilityPopIn.tsx`, `usePhrasePopIn.ts`, `popinBus.ts`) moved
+  `src/journey/popin/` → `src/components/capability/` (their spec home,
+  capability-modules.md §5). All imports updated.
+
+### Added
+- **Journey W10 — boot wiring** (integration). `main.tsx` configures the
+  on-device local-analytics recorder with the live active-stack id
+  (`configureLocalAnalytics({ getStackId })`, early, before any surface
+  records); `App.tsx` registers the offline-cache resource table + installs
+  the revalidation triggers once at mount (`registerCoreResources()` +
+  `installTriggers()` — coexisting with the legacy inline catalog-refresh
+  loop until the phase-2 store migration); dev builds gain the storage
+  doctor on `__corpanDebug.storage.*` (`installStorageDoctorDebug()` via
+  `util/devDebug.ts`, tree-shaken from production).
+- **Journey W10 — pack-facing host seams wired** (integration). `hostApi`
+  now carries the three reserved shared seams: `storage`
+  (`buildPackStorageApi` — pack-scoped durable KV, storage-analytics.md
+  §5.1), `localAnalytics` (`buildPackLocalAnalyticsApi` — namespaced writes +
+  own-aggregate reads, §5.2), and `offlineCache`
+  (`createOfflineCacheHostApi` — cached image URLs + cache-first JSON, D12).
+  Advertised via `__CORPAN_HOST_CAPS.storageKv: 1`, `localAnalytics: 1`, and
+  `offlineCache: true` (app-wide in `main.tsx` + the ContentPackHost merge);
+  mirrored in the pack SDK typings. The on-device `activity_result` event
+  keeps ONE writer: the journey runtime's `submitResult`, the terminal
+  handler of `hostApi.journey.reportResult`'s ingest path (documented at the
+  seam).
+- **Journey W2 — offline-first cache layer + Home covers offline**
+  (`docs/journey/specs/offline-cache.md`, D12). Catalog cover art now renders
+  offline (cached on device after first sight) — airplane-mode cold start
+  shows Home with covers instead of broken/empty images. One shared cache
+  module at `src/lib/offlineCache/`: `cachedFetch(resource)` (cache-first
+  JSON with policy TTLs, stale-while-revalidate, subscriber notify,
+  single-flight coalescing; network failures never clobber the last-good
+  record) wrapping the proven `fetchJsonFresh`; an immutable-by-URL image
+  cache (fs blobs under `corpan-packs/.offline-cache/img/`, downloaded by
+  the new Rust `offline_cache_put` command — reqwest so no CORS, atomic
+  tmp+rename, 8 MiB ceiling — served by the existing `corpan-pack://`
+  protocol, LRU-evicted at 64 MiB / 512 entries, persisted index + in-memory
+  mirror for flash-free warm renders, throttled orphan sweep + `repairImage`
+  self-healing); `<OfflineImage>` (cached → remote → glyph fallback, never a
+  broken image) now backing HomeHub tiles, pack screenshots, the launch-
+  transition collage, and the onboarding tour; `prefetchImages` pre-warms
+  covers on every catalog update; `installTriggers()`
+  (startup/foreground/online/interval, jittered) ready for the W10 App.tsx
+  wiring; the §3.2 per-resource policy table (catalog-v3 RAW-body caching
+  with read-time `filterCatalogForApp`, phrase-pack, word-pack, journey
+  index — TTL 300 s); `createOfflineCacheHostApi` defines the additive
+  `hostApi.offlineCache` seam (W10 wires it into types.ts/hostApi.ts).
+  Rust: `offline_cache_{put,delete,list}` registered in `lib.rs`.
+- **Journey W4 — the feed surface** (`docs/journey/specs/feed-ux.md`,
+  R5/R8/R12/R14/R15 applied). `src/journey/`: `JourneySurface` (z-1050
+  overlay sibling, dark/light + RTL, placement-first mount, PathViz overlay,
+  `corpan:journey-exit`), `FeedScroller` (3-slot window, framer-motion drag,
+  read-only scroll-back over a 20-card ring, double-swipe skip semantics,
+  listening-run hands-free pill, per-card-type advance rules), the TEN native
+  renderers (registry-driven off `ACTIVITY_TYPES`; params/distractors from
+  the W5 resolver's typed builders; one-tokenizer rule; `speak_echo` mounts
+  `@shared/capabilities/pronounce` with `startPaused` + the R3 stt envelope
+  incl. `flags.sttUnavailable` listen_type degradation), host-owned
+  `CelebrationLayer` (4 juice tiers, intensity setting, reduced-motion-aware
+  canvas particles, pentatonic chimes that never talk over TTS),
+  `CheckpointCard` (equal-weight stop/continue, daily ring, deep-session
+  line, quota counter) + boss/arc-gate banners + `WelcomeBackCard` +
+  `BlockIntroCard` (the ONLY runtime-synthesized card, R5), `RareCard`
+  shimmer wrapper with delight/etymology-gem/time-capsule/pack-poster faces,
+  `PlacementFlow` (≤3 framing screens, probe mode, honest R10 above-content
+  copy, streak pact card), PathViz P0 arc→unit ribbon, streak v2 (rest-day
+  tokens, repair-by-learning, milestones; `corpan-journey-v1` store),
+  `runtime.ts` (engine+resolver+activitySession wiring, EngineCard→FeedCard
+  1:1 mapping, THE one R12 quota-debit site: completed debuts + pack-anchor
+  launches only), capability registry + `CapabilityPopIn`/`usePhrasePopIn`,
+  and local-analytics session/card-impression/activity-result events.
+  All ~124 journey UI keys shipped in all 54 locales. Tests: runtime/streak/
+  advance-rule units + a headless jsdom smoke test driving a full
+  JourneySurface session (>= 10 cards) over the W6 fixture pack through the
+  real engine + resolver.
+- **Journey W11 — engine calibration study, round 1**
+  (`scripts/journey-sim/CALIBRATION.md`). Reproduced W3's P1/P3/P4/P7 gate
+  failures verbatim (seed 1); landed the constants-matrix sweep driver
+  (`scripts/journey-sim/sweep.ts` + `sweeps/`), saturation diagnostics in the
+  sim `cli.ts` metrics (`dueCurve`/`finalCapacity`/`modeTotals`) and a
+  per-strand signed-deviation readout in the P7 gate line.
+  `request_retention` extracted to `engine/constants.ts:DESIRED_RETENTION`
+  (engine.md §1.1; value unchanged at 0.90 — no behavior change, golden
+  transcripts untouched). A five-point desired-retention sweep shows the flat
+  pace knob alone cannot satisfy P1/P3/P4/P7; the mechanism bundle for round 2
+  and the spec-amendment fallback are documented in the study.
+- **Journey W3 — adaptive engine + simulation harness**
+  (`docs/journey/specs/engine.md`). Pure-TS adaptive core at
+  `src/journey/engine/`: ts-fsrs 5.4.1 (FSRS-6, config verbatim, deterministic
+  fuzz seeded from `fnv1a32(itemId)`), the §4.5 grade-derivation table with
+  the R3 typed-detail envelope and R9 aggregate clamps, `applyResult` joining
+  grades by `itemRefKey` (R6 — shuffled/subset-safe, un-issued refs dropped),
+  derived skill mastery with dirty-seq + day-key memoization, the θ Elo
+  scalar, 3-phase adaptive placement with the R10 content ceiling
+  (`above-content` early termination) and a transcript-equivalent
+  `placeUser()`, the feed mixer (DUE/REPLAY/NEW/REPAIR/TRICKLE/FUN pools,
+  flow-mode + debt-brake + strand-balance quota adjustments, R5 lesson-recipe
+  slots, unit-boss/arc-gate checkpoint batches with `pass_score` gating and
+  REPAIR routing, cadence checkpoints, welcomeBack, seeded rare-card rolls,
+  model-residency batching, constraint repair), leech
+  flag/suspend/substitute handling, `newPerDay` throttling with the two-stage
+  debt brake, jump/legendary gauntlets, an engine-level corruption-recovery
+  ladder over the shared local-analytics log, and the `EnginePersistence`
+  consumption seam (type-only import; in-memory fakes for tests/sim).
+  Simulation harness at `scripts/journey-sim/` runs the §7 P-gates over 7
+  synthetic personas against a generated 24-unit fixture course and
+  smoke-loads the W6 fixture pack through the in-tree `loadCourseGraph`
+  loader (P8 deferred to the real `journey_en` pack per R10).
+- **Journey W1 — storage platform + local analytics substrate**
+  (`docs/journey/specs/storage-analytics.md`). The quota-safe storage service
+  re-homed to `src/lib/storage/` (old `src/util/storage/` paths keep working
+  via one-release re-export shims), upgraded to IndexedDB schema v2 (additive
+  `docs`/`log` stores) with typed adapters on top: `DocStore<T>` (versioned
+  codecs, lazy migrate, corrupt records dropped + counted — never thrown),
+  `AppendLog<T>` (O(1) appends, ring caps with hysteresis), `BlobStore`
+  (Tauri-fs tier under `corpan-packs/.offline-cache/blob/`, servable via the
+  `corpan-pack://` protocol; IndexedDB fallback in web dev), a shared
+  `WriteBatcher` (one transaction per flush window; evict-retry then
+  memory-mirror degrade), a central namespace registry with budgets, a
+  three-level corruption-recovery ladder (record → namespace → database), and
+  the Journey engine persistence adapter (`EnginePersistence`).
+- **On-device local analytics** (`src/lib/localAnalytics/`): an append-only,
+  never-uploaded event log (activity results, sessions, placement, streaks;
+  100k-record / 48MB ring) with daily rollups and the aggregation queries the
+  Journey engine and personal-records surfaces read (calibration report,
+  strand balance, engagement snapshot, personal bests). This is the learner's
+  own history — separate from (and invisible to) cloud telemetry. Includes
+  host-side builders for pack-scoped storage (2MB / 1,000 keys per pack) and
+  pack event recording (5,000/day rate limit), plus a dev-only storage
+  doctor (`storageDoctor.report()` + `__corpanDebug.storage` wiring hook).
+- New Rust `blob_store_*` commands (read/write/delete/has/stats/prune/
+  served_url) backing the FS-BLOB tier; `validate_pack_id` now rejects the
+  reserved `.offline-cache` directory so no pack id can ever claim the cache
+  subtree.
+- **Journey content resolver (`src/journey/content/`, Journey W5).** The seam
+  between the engine's scheduled `ItemRef`s and renderable content, per
+  `docs/journey/specs/content-resolver.md` (R14). `resolve.ts` resolves all
+  seven item kinds against installed sources through a dependency-injected
+  `ResolverDeps` port (phrase base+packs, wordpan pair DBs, hanzipan,
+  narration-pack segment/audio files, course-pack grammar nodes / phoneme
+  overlays / localized strings) into a typed `ResolvedItem` (display `text` vs
+  spoken `ttsText`, display-aligned audio word timestamps). Missing content is
+  never a blank card: unresolvable refs come back as typed `missing` reasons
+  (incl. `preview_truncated` — no paywall surprises inside feed cards) and
+  `contentMissingResult()` builds the §3.3 drop envelope
+  (`abandoned + flags.contentMissing`). Per-session LRU caches are entry- and
+  byte-bounded (shared ~4 MB pool; lazy hanzi stroke JSON kept out of it) with
+  `invalidate()` for mid-session pack installs. `distractors.ts` is the ONE
+  distractor source for every tappable wrong option: same-skill → near-b →
+  random-top-up ladder, validity exclusions (answer/near-answer collisions
+  after aggressive normalization, same-translation collisions,
+  answer-language-only surfaces, recent-window dedup), deterministic under a
+  per-card seeded PRNG, plus `seededShuffle` for match_pairs and the §4.7
+  per-renderer needs table as typed param builders. Every SQL string carries
+  an explicit LIMIT with a full-page truncation warning (R7 silent Rust cap).
+  Test-only golden fixtures (`__fixtures__/`, in-memory `node:sqlite`) cover
+  all kinds, all missing reasons, 1,000-case distractor validity properties,
+  and determinism. Not yet user-visible: the feed runtime (W4) wires it up.
+- **Journey course-pack catalog + install plumbing + CourseGraph loader
+  (Journey W6, `docs/journey/specs/course-pack.md`).** Journey course packs
+  are data-only SQLite packs (one per target language) on their own
+  CloudFront index (`corpan/journey-packs/index.json`) — never in the main
+  catalog, never on Home. New `contentPacks/journeyPackCatalog.ts` (typed
+  parse, channel/minAppVersion gating, and a `schemaVersion` compatibility
+  gate so an old app filters out unreadable course DBs BEFORE download),
+  `util/journeyPack.ts` (explicit-packId install, pack_meta post-install
+  verification, and the normative PackReader → CourseGraph loader: keyset
+  pagination under the Rust 2,000-row silent-truncation cap + a row-count
+  hard assertion against `pack_meta` counts — the engine never boots on a
+  partial graph), and `store/journeyPacks.ts` (installed-pack registry,
+  phrasePacks pattern). `CatalogV3Entry`/`CatalogGame` gain the optional
+  `activities` declarations field, forwarded verbatim by
+  `filterCatalogForApp` (activity-contract.md §4.3) so the Journey scheduler
+  can plan anchor cards for not-yet-installed packs OTA. No UI wiring yet —
+  the Journey surface consumes these modules in a later slice.
+
+### Changed
+- **Storage migrations M2–M4:** per-book reading progress
+  (`corpan-progress-v1`), the word-pack catalog index
+  (`corpan-word-pack-catalog-v1`), and per-stack phrase history
+  (`corpan-history-v2`, now capped at 500 entries per stack) persist to the
+  IndexedDB tier instead of the shared ~5MB localStorage budget. Existing
+  data is moved by the idempotent boot migration (sentinel bumped to
+  `corpan-storage-migration-v2`); legacy single-stack settings/history blobs
+  are deleted after their one-time import, and the analytics
+  last-language-by-book map is capped at 100 books.
+
 ### Changed
 - **Word-explanation packs ship from a dedicated S3 index, not the main
   catalog (#477, #478, #479; supersedes #498's catalog registration).** Word
@@ -39,6 +1210,27 @@ Conventions: `corpan/CHANGELOGS.md`.
   reverted); the pack ships from S3.
 
 ### Added
+- **Journey activity contract (W0, contract layer).** The host↔pack seam every
+  Journey feed card rides on: new authoritative
+  `contentPacks/activityContract.ts` (ItemRef + the one `itemRefKey`/
+  `parseItemRef` serialization helper, ActivitySpec/ActivityResult with the
+  typed `detail` evidence envelope, the `ACTIVITY_TYPES` native-renderer
+  registry, `PackActivityDeclaration`, `JourneyHostApi`) and host-only
+  `contentPacks/activitySchemas.ts` (Zod validation at the pack boundary +
+  the single-owner activity session: both rails funnel into one ingest,
+  per-item dedup by itemRefKey, first-terminal-wins, teardown synthesis from
+  buffered per-item evidence — every begun session yields exactly one
+  result). `hostApi.journey` typed rail (isActive/getSpec/reportItem/
+  reportResult/abandon) plus the `corpan:activity-result` window-event
+  fallback rail, both Zod-validated. `PackLaunchEntry.activity` launches a
+  pack as an activity provider (spread into `mount(..., initialState)`;
+  remount keyed on `specId` identity, not object identity);
+  `__CORPAN_HOST_CAPS.journey = 1` advertises the contract version; manifest
+  `activities` declares pack-provided activity types. All additive-optional —
+  existing packs and standalone launches are unchanged. New dependency:
+  `zod` ^4.4.3 (host-boundary validation only; never in the pack-facing SDK
+  copy). Contract copies are generated by `node packs/sdk/sync-contract.mjs`
+  (`--check` for CI drift).
 - **Long-press word explanations in Phrase Flip (#477, #478, #479).** Long-press
   (touch) or right-click / long mouse-press (desktop) any English word in a
   phrase to open a popover explaining what it means, in your native language,

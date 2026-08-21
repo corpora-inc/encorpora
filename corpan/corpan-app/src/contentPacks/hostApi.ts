@@ -1,4 +1,4 @@
-import { addPluginListener, invoke } from "@tauri-apps/api/core"
+import { addPluginListener, invoke, Channel } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
 import {
@@ -12,6 +12,7 @@ import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useEntitlementStore } from "@/store/entitlements"
+import { useSttStore } from "@/store/stt"
 import { usePaywallStore } from "@/store/paywall"
 import type { PaywallSurface } from "@/store/paywall"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
@@ -19,6 +20,18 @@ import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import { rankProviders } from "@shared/asr"
 import { getPackStreak } from "@shared/streak"
+import { buildPackStorageApi } from "@/lib/storage"
+import { buildPackLocalAnalyticsApi } from "@/lib/localAnalytics"
+import { createOfflineCacheHostApi } from "@/lib/offlineCache"
+import {
+  isActiveFor,
+  activeSpecFor,
+  ingestItem,
+  ingestResult,
+  finalizeAbandoned,
+  installActivityResultEventRail,
+  setActivityRejectionListener,
+} from "./activitySchemas"
 import type { StackConfigPatch } from "./types"
 import type {
   AsrApi,
@@ -42,6 +55,19 @@ import type {
   SttStatus,
   SttTranscriptionResult,
 } from "./types"
+
+// Journey event rail (`corpan:activity-result`) — the fallback twin of the
+// typed `hostApi.journey` seam. Registered once for the app's lifetime; Zod
+// validation + session scoping happen inside the single-owner session module
+// (activitySchemas.ts), so a stray event on a host with no active journey
+// session is dropped with a warn, never thrown. Rejections also feed
+// on-device analytics, fire-and-forget (activity-contract.md §3.4).
+if (typeof window !== "undefined") {
+  installActivityResultEventRail()
+  setActivityRejectionListener((packId, why) =>
+    trackEvent("journey_result_rejected", { pack_id: packId, why })
+  )
+}
 
 const STT_ERROR_CODES: ReadonlySet<SttErrorCode> = new Set<SttErrorCode>([
   "MODEL_NOT_INSTALLED",
@@ -544,12 +570,31 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     startSession: async (opts) => {
       try {
-        return await invoke<SttStartSessionResult>(
+        const res = await invoke<SttStartSessionResult>(
           "plugin:stt|start_session",
           { args: opts },
         )
+        // A started session means the mic permission was granted (R2 — this is
+        // the one place both journey AND packs open a mic, so it's the single
+        // truthful signal for "mic primed"). Best-effort; never block the round.
+        if (res?.started) {
+          try {
+            useSttStore.getState().noteMicGranted()
+          } catch (e) {
+            console.error("[stt] noteMicGranted failed:", e)
+          }
+        }
+        return res
       } catch (error) {
-        throw sttRejectionToError(error)
+        const e = sttRejectionToError(error)
+        if (e.code === "MIC_PERMISSION_DENIED") {
+          try {
+            useSttStore.getState().noteMicDenied()
+          } catch (err) {
+            console.error("[stt] noteMicDenied failed:", err)
+          }
+        }
+        throw e
       }
     },
     stopSession: async (opts) => {
@@ -605,25 +650,42 @@ export const createHostApi = (packId?: string): HostApi => {
       }
     },
     installModel: async (opts, onProgress) => {
+      // Progress is delivered by TWO different native mechanisms and we wire
+      // BOTH so the caller sees a live download on every platform:
+      //   • iOS  — `STTPlugin.installModel` calls `trigger("install_progress")`,
+      //            picked up by `addPluginListener`.
+      //   • Android — `SttPlugin.installModel` sends into the `onEvent` Tauri
+      //            `Channel` passed IN the invoke args; it never triggers a
+      //            plugin event. Without a channel the Android install ran but
+      //            emitted no progress, so the button sat there looking dead
+      //            ("Instalar does nothing"). We now always pass a channel.
+      // The two paths report the same phases; a caller only ever receives one
+      // of them, so no dedup is needed.
       let unlisten: (() => void) | null = null
+      const emit = (event: SttInstallProgress) => {
+        if (!onProgress) return
+        try {
+          onProgress(event)
+        } catch (error) {
+          console.error("[stt] install progress handler threw:", error)
+        }
+      }
       if (onProgress) {
         try {
           const handle = await addPluginListener<SttInstallProgress>(
             "stt",
             "install_progress",
-            (event) => {
-              try {
-                onProgress(event)
-              } catch (error) {
-                console.error("[stt] install_progress handler threw:", error)
-              }
-            },
+            emit,
           )
           unlisten = () => handle.unregister()
         } catch (error) {
           console.error("[stt] addPluginListener install_progress failed:", error)
         }
       }
+      // Android progress channel. Harmless on iOS (the arg is simply unused by
+      // the @objc handler, which reads only `model`/`downloadUrl`).
+      const onEvent = new Channel<SttInstallProgress>()
+      onEvent.onmessage = emit
       try {
         return await invoke<{
           installed: boolean
@@ -632,6 +694,7 @@ export const createHostApi = (packId?: string): HostApi => {
         }>("plugin:stt|install_model", {
           model: opts.model,
           downloadUrl: opts.downloadUrl,
+          onEvent,
         })
       } catch (error) {
         throw sttRejectionToError(error)
@@ -1148,6 +1211,39 @@ export const createHostApi = (packId?: string): HostApi => {
         })
       },
     },
+    // Journey activity seam (typed rail, activity-contract.md §3.3). Thin
+    // delegation into the single-owner session module — validation, dedup,
+    // and first-terminal-wins all live there (both rails share one ingest).
+    // A host created without a pack id (legacy callers) gets inert no-ops:
+    // the seam is always shaped, never throwing, matching the `asr` precedent.
+    //
+    // ONE-WRITER RULE (storage-analytics.md §5.3, W1): the on-device
+    // `activity_result` event is written exactly once per result, by the
+    // journey runtime's submitResult — the terminal handler of THIS ingest
+    // path (reportResult → ingestResult → session onResult → runtime
+    // submitResult → recordLocal via localAnalyticsRecord). Only the runtime
+    // has the mixer's slot/strand stamps + engine-derived grades the event
+    // shape requires, so nothing here (and no pack, per §5.2) may write
+    // `activity_result` directly.
+    journey: {
+      isActive: () => !!packId && isActiveFor(packId),
+      getSpec: () => (packId ? activeSpecFor(packId) : null),
+      reportItem: (item) => { if (packId) ingestItem(packId, item) },
+      reportResult: (result) => { if (packId) ingestResult(packId, result) },
+      abandon: (reason) => {
+        if (packId && isActiveFor(packId)) finalizeAbandoned(reason ?? "user_exit")
+      },
+    },
+    // Pack-scoped durable KV (storage-analytics.md §5.1). Host-stamped
+    // namespace; budget-enforced; never throws. Absent on hosts created
+    // without a pack id — packs feature-detect via HOST_CAPS.storageKv.
+    ...(packId ? { storage: buildPackStorageApi(packId) } : {}),
+    // Pack-scoped on-device analytics (storage-analytics.md §5.2): namespaced
+    // writes + own-aggregate reads only. Never uploaded.
+    ...(packId ? { localAnalytics: buildPackLocalAnalyticsApi(packId) } : {}),
+    // Offline-first cache seam (offline-cache.md §6 phase 4, D12). Images are
+    // shared across packs (immutable-by-URL); JSON keys are pack-namespaced.
+    offlineCache: createOfflineCacheHostApi(packId),
     requestPaywall: async (context) => {
       // Reuses the paywall store's own guards (subscribed / IAP unavailable /
       // frequency-cap) and returns whether the sheet ACTUALLY opened — the

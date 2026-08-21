@@ -1,0 +1,80 @@
+id: en.b1.u21
+arc: en.arc3
+theme: "Somebody, somewhere"
+cando:
+  - key: indefinites
+    text: "Can talk about unspecified people, things, and places, using some-, any-, no-, and every- words correctly together."
+vocab_band: { lo: 1, hi: 5500 }
+phrase_domains: [emergency, everyday]
+skills:
+  - id: en.skill.indefinites
+    kind: grammar
+    title: "Indefinite pronouns"
+    b: -0.2
+    prereqs: [en.skill.quantity-fine]
+grammar_nodes: [en.gn.indef-pronouns]
+items:
+  - ref: "phrase:base:15474"  # If you see anything strange, let me know.
+    skills: [en.skill.indefinites]
+    importance: 3
+    probe: true
+    b: -0.2
+  - ref: "phrase:base:10124"  # Someone called me during the meeting.
+    skills: [en.skill.indefinites]
+    importance: 3
+    probe: true
+    b: -0.2
+  - ref: "phrase:base:20577"  # No one knows what will happen tomorrow.
+    skills: [en.skill.indefinites]
+    importance: 3
+    probe: true
+    b: -0.2
+  - ref: "phrase:base:19003"  # Please call the police if you see anything suspicious.
+    skills: [en.skill.indefinites]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:3190"  # The suspect denied everything.
+    skills: [en.skill.indefinites]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:5547"  # The officer instructed everyone to leave the area.
+    skills: [en.skill.indefinites]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13440"  # There was nothing we could do to help.
+    skills: [en.skill.indefinites]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:somebody"
+    skills: [en.skill.indefinites]
+    importance: 2
+  - ref: "word:en:anybody"
+    skills: [en.skill.indefinites]
+    importance: 2
+  - ref: "word:en:nothing"
+    skills: [en.skill.indefinites]
+    importance: 2
+  - ref: "word:en:everywhere"
+    skills: [en.skill.indefinites]
+    importance: 2
+  - ref: "word:en:missing"
+    skills: [en.skill.indefinites]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [emergency, everyday]
+      level: B1
+      count: 10
+      skills: [en.skill.indefinites]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

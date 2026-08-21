@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Escolhe os teus tópicos",
+      "availableSummary": "{{count}} pacotes de frases disponíveis · ~{{size}} MB",
+      "installAll": "Instalar tudo",
+      "chooseIndividually": "Escolher individualmente",
+      "installing": "A instalar {{current}} de {{total}}…",
+      "someFailed": "Não foi possível instalar {{count}} pacote(s). Pode tentar novamente no separador Pacotes.",
+      "allInstalled": "Já tem os pacotes de frases iniciais.",
+      "installed": "Instalado",
       "loading": "A carregar…",
       "selectAll": "Selecionar tudo ({{count}})",
       "clearAll": "Limpar",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Surpreende-me!",
         "desc": "Leva-me para um sítio divertido."
+      },
+      "journey": {
+        "label": "Seguir o Journey",
+        "desc": "Um curso guiado — a app escolhe cada próximo passo"
+      }
+    },
+    "journey": {
+      "title": "Como queres aprender {{lang}}?",
+      "subtitle": "O Journey serve todos os dias uma mistura de material novo e revisão em {{lang}} — um cartão de cada vez.",
+      "guided": {
+        "label": "Percurso diário guiado",
+        "desc": "Uma sessão diária curta, planeada para ti.",
+        "unavailable": "O percurso guiado ainda não está disponível para {{lang}}."
+      },
+      "explore": {
+        "label": "Ao teu ritmo",
+        "desc": "Explora histórias, exercícios e jogos por tua conta."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Incluído com Plus",
     "installFailedTitle": "Instalação falhou",
+    "updateUnavailableTitle": "Atualização indisponível",
+    "updateUnavailableDetail": "Esta transferência não correspondeu ao que esperávamos. Tente novamente mais tarde.",
     "installStuckDetail": "Sem progresso há algum tempo. Verifique a sua ligação e tente novamente.",
     "installStuckTitle": "Descarregamento parado",
     "openPack": "Abrir {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Faz sampling da língua que estás a aprender. Faz scratch até ficar na cabeça."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "O teu caminho guiado, um cartão de cada vez"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Instalar ({{size}})",
     "installing": "A instalar…",
     "installed": "Instalado",
-    "retry": "Tentar novamente"
+    "retry": "Tentar novamente",
+    "explains": "Palavras em {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "O teu caminho guiado, um cartão de cada vez",
+    "heroCard": {
+      "title": "O teu Journey",
+      "progress": "{{unit}} · {{count}} até ao próximo marco"
+    },
+    "heroCta": {
+      "start": "Começa o teu Journey",
+      "continue": "Continuar"
+    },
+    "chrome": {
+      "home": "Início",
+      "menu": "Opções do Journey",
+      "unit": "Unidade {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Verificar",
+      "continue": "Continuar",
+      "skipHint": "Desliza outra vez para saltar",
+      "retry": "Tenta de novo",
+      "showAnswer": "Mostrar resposta",
+      "answerWas": "A resposta era",
+      "comeBackNote": "Voltaremos a isto.",
+      "whyThisCard": "Porquê este cartão?",
+      "whyNew": "Um item novo da tua unidade atual.",
+      "whyReview": "Uma revisão — o espaçamento mantém-na forte.",
+      "whyRepair": "Uma segunda vista de olhos a algo difícil.",
+      "whyGuided": "Parte do teu caminho guiado.",
+      "typeWhatYouHear": "Escreve o que ouves",
+      "typeHere": "Escreve aqui…",
+      "tapToOrder": "Toca nas palavras por ordem",
+      "matchPairs": "Liga os pares",
+      "flipToReveal": "Toca para revelar",
+      "knewIt": "Sabia",
+      "didntKnow": "Ainda não",
+      "speakNow": "Fala agora",
+      "listen": "Ouvir",
+      "listenSlow": "Mais devagar",
+      "hint": "Pista",
+      "correct": "Correto",
+      "incorrect": "Não exatamente",
+      "pickTranslation": "Escolhe a tradução",
+      "pickWhatYouHear": "Escolhe o que ouviste",
+      "fillTheBlank": "Preenche o espaço",
+      "newItem": "Novo",
+      "reviewedEarlier": "Visto antes"
+    },
+    "intro": {
+      "listenAndEcho": "Ouve e di-lo em voz alta",
+      "newWord": "Palavra nova",
+      "newPhrase": "Frase nova"
+    },
+    "grammar": {
+      "noteLabel": "Nota de gramática",
+      "tryIt": "Experimenta",
+      "contrastLabel": "Em comparação com a tua língua"
+    },
+    "word": {
+      "inContext": "Em contexto",
+      "meaningShow": "Significado",
+      "meaningHide": "Ocultar"
+    },
+    "wordPack": {
+      "title": "Significados das palavras",
+      "body": "Lê o que as palavras significam em {{language}} à medida que avanças.",
+      "add": "Adicionar ({{size}})",
+      "dismiss": "Agora não",
+      "downloading": "A adicionar… {{percent}}%",
+      "failed": "Não foi possível adicionar",
+      "retry": "Tentar novamente"
+    },
+    "checkpoint": {
+      "title": "Checkpoint",
+      "summaryNew": "{{count}} novas",
+      "summaryReviews": "{{count}} revisões",
+      "done": "Por hoje chega",
+      "keepGoing": "Continuar",
+      "dailyRing": "{{count}} nesta sessão",
+      "deepSession": "Que sessão profunda — as tuas revisões ficam agendadas de qualquer forma.",
+      "streakTicked": "{{count}} seguidas ✓",
+      "boss": "Desafio da unidade",
+      "arcGate": "Portão do arco"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Perfeito",
+        "nice": "Boa",
+        "brilliant": "Brilhante",
+        "boom": "Bum",
+        "nailed": "Acertaste",
+        "unstoppable": "Imparável",
+        "onFire": "Em chamas",
+        "yes": "Sim!",
+        "clean": "Impecável",
+        "sharp": "Afiado",
+        "wow": "Uau",
+        "magic": "Mágico"
+      },
+      "combo": "{{count}} seguidas",
+      "perfect": "Perfeito",
+      "wordsLearned": "{{count}} palavras aprendidas",
+      "unitComplete": "Unidade concluída: {{name}}",
+      "streakDay": "{{count}} seguidas",
+      "placementDone": "Nível definido"
+    },
+    "rare": {
+      "reveal": "Algo especial…",
+      "etymologyGem": "História da palavra",
+      "timeCapsule": {
+        "title": "Cápsula do tempo",
+        "body": "Esforçaste-te nisto {{when}} — olha para ti agora."
+      },
+      "delight": {
+        "newVoice": "Uma voz diferente",
+        "didYouNotice": "Reparaste?"
+      },
+      "miniGame": {
+        "title": "Ronda bónus",
+        "play": "Jogar"
+      },
+      "story": {
+        "unlocked": "Ganhaste o próximo capítulo",
+        "read": "Ler"
+      }
+    },
+    "placement": {
+      "offerTitle": "Por onde começamos?",
+      "offerBody": "Umas perguntas rápidas encontram o teu ponto de partida. Cerca de cinco minutos.",
+      "startNew": "Sou novo em {{lang}}",
+      "placeMe": "Sei alguma coisa de {{lang}}",
+      "skipItem": "Salta se tiveres dúvidas",
+      "doneTitle": "Ponto de partida encontrado",
+      "doneBody": "A começar em {{unit}}.",
+      "prelit": "Começas com {{count}} itens já conhecidos.",
+      "redo": "Voltar a verificar o meu nível",
+      "aboveTitle": "Estás além deste curso",
+      "aboveBody": "Este curso cobre por agora material de iniciação, e tu estás acima disso. Podes explorá-lo na mesma — vêm aí novos níveis.",
+      "aboveFrontier": "Estás à frente da maior parte deste curso — a começar em {{unit}}."
+    },
+    "path": {
+      "title": "O teu caminho",
+      "arc": "Arco {{name}}",
+      "unit": "Unidade {{n}}",
+      "locked": "Mais à frente",
+      "current": "Estás aqui",
+      "review": "Toca para rever",
+      "mastered": "Sólido"
+    },
+    "streak": {
+      "pactTitle": "Manter uma série?",
+      "pactBody": "Mantém o teu ritmo. Um dia de descanso cobre uma falha — ganhas um por semana.",
+      "pactAccept": "Conta comigo",
+      "pactDecline": "Não, obrigado",
+      "days": "{{count}} seguidas",
+      "restDayEarned": "Dia de descanso ganho",
+      "restDayUsed": "{{day}} foi um dia de descanso",
+      "repairTitle": "Recupera a tua série",
+      "repairBody": "Termina duas sessões nos próximos {{days}} dias para repor a tua série de {{count}} dias.",
+      "repairCta": "Começar"
+    },
+    "block": {
+      "speakingIntro": "Prática de fala — {{count}} cartões",
+      "ready": "Pronto",
+      "loadingModel": "A preparar o microfone…",
+      "micPrompt": "O Corpán usa o microfone para avaliar a tua fala neste dispositivo.",
+      "sttUnavailable": "A avaliação de voz não está disponível agora — a mudar para prática de escuta."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} cartões restantes hoje",
+      "plusBody": "O Corpán Plus remove o limite diário de cartões."
+    },
+    "welcomeBack": {
+      "title": "Bem-vindo de volta",
+      "body": "As tuas revisões mantiveram {{pct}}% da força. Vamos aquecer."
+    },
+    "tease": {
+      "next": "Da próxima vez: {{title}}"
+    },
+    "jump": {
+      "title": "Está a ser fácil demais?",
+      "body": "Faz um desafio curto para avançar. Se falhares, nada se perde — ficas exatamente onde estás.",
+      "accept": "Tentar o desafio",
+      "decline": "Ficar aqui"
+    },
+    "feed": {
+      "caughtUp": "Estás em dia por agora",
+      "loading": "A preparar os teus cartões…",
+      "loadError": "O Journey não carregou. Tenta de novo a partir do Início.",
+      "retry": "Tentar novamente"
+    },
+    "popin": {
+      "pronounceTitle": "Pronuncia-o",
+      "close": "Fechar"
+    },
+    "settings": {
+      "title": "Opções do Journey",
+      "advanceMode": "Avanço",
+      "advanceSwipe": "Deslizar para continuar",
+      "advanceAuto": "Continuar automaticamente",
+      "celebration": "Celebrações",
+      "celebrationFull": "Completas",
+      "celebrationReduced": "Reduzidas",
+      "celebrationMinimal": "Mínimas",
+      "sounds": "Sons",
+      "soundsOn": "Ligados",
+      "soundsOff": "Desligados",
+      "listeningMode": "Escuta mãos-livres",
+      "viewPath": "Ver caminho",
+      "redoPlacement": "Voltar a verificar o meu nível"
+    },
+    "imagePack": {
+      "title": "Adicionar imagens",
+      "body": "Aprenda palavras com imagens em vez de texto.",
+      "dismiss": "Agora não",
+      "add": "Adicionar ({{size}})",
+      "downloading": "A adicionar… {{percent}}%",
+      "retry": "Tentar novamente",
+      "failed": "Não foi possível adicionar"
+    },
+    "interlude": {
+      "gameCue": "Jogo rápido · uma frase",
+      "readerCue": "Leitura rápida · uma passagem"
+    }
   }
 }

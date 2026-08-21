@@ -44,6 +44,12 @@ use crate::models::{DoneEvent, ErrorEvent, TokenEvent};
 
 const DEFAULT_CTX: u32 = 4096;
 const BATCH_CAP: usize = 512;
+/// Minimum headroom (MB) the load guard insists survives ON TOP OF the
+/// estimated footprint, when an available-memory probe exists (WS-D). Zero
+/// headroom still invites jetsam mid-generation (KV cache grows with context
+/// length after load) — this cushion is deliberately modest since it stacks
+/// on top of the footprint estimate's own ~15%+400MB slack.
+const MIN_LOAD_HEADROOM_MB: u64 = 256;
 
 // ============================================================
 // Public state handle (held by Tauri as managed state)
@@ -160,15 +166,35 @@ impl LlmState {
         // a warning. But a pack could call load directly, and a failed ggml
         // allocation is an uncatchable native SIGSEGV, so we refuse the
         // *catastrophic* case here too. Footprint ≈ weights (the GGUF, faulted in
-        // via mmap) + ~15% activation/buffers + ~400 MB KV+runtime. We compare
-        // against ~70% of total RAM (the OS + other apps hold the rest on Android
-        // — nominal capacity is never all usable), which refuses e.g. the 4B on a
-        // 4 GB phone while still allowing the host's legitimate try-anyway picks
-        // (4B on 6 GB, 1.7B on 3 GB). `physical_total_mb()` is `None` where we
-        // can't measure → don't block.
+        // via mmap) + ~15% activation/buffers + ~400 MB KV+runtime.
         let size_mb = size / 1_048_576;
         let est_footprint_mb = (size_mb as f64 * 1.15) as u64 + 400;
-        if let Some(total) = physical_total_mb() {
+
+        // AVAILABLE-memory guard (WS-D, primary where measurable): compares the
+        // footprint against memory ACTUALLY free right now —
+        // `os_proc_available_memory` on iOS (the exact jetsam budget) / kernel
+        // `MemAvailable` on Android — rather than a fixed fraction of TOTAL RAM.
+        // Total-RAM-only was blind to what else is CURRENTLY resident: a loaded
+        // Whisper model (or any other app pressure) shrinks `device_memory_mb()`
+        // in real time, so this naturally blocks/defers the LLM load instead of
+        // racing it into a jetsam kill (the iPhone 14 whisper+LLM crash this
+        // guards against). `MIN_LOAD_HEADROOM_MB` leaves a cushion so we don't
+        // load right up to the edge (the KV cache still grows during
+        // generation). `None` where we can't measure (desktop) → falls through
+        // to the total-RAM backstop below instead of blocking.
+        if let Some(avail) = device_memory_mb() {
+            if est_footprint_mb + MIN_LOAD_HEADROOM_MB > avail {
+                return Err(Error::InsufficientMemory);
+            }
+        } else if let Some(total) = physical_total_mb() {
+            // TOTAL-RAM guard (fallback device-class backstop, unchanged
+            // threshold): only reached when no available-memory probe exists for
+            // this platform. Compares against ~70% of total RAM (the OS + other
+            // apps hold the rest — nominal capacity is never all usable), which
+            // refuses e.g. the 4B on a 4 GB phone while still allowing the
+            // host's legitimate try-anyway picks (4B on 6 GB, 1.7B on 3 GB).
+            // `physical_total_mb()` is `None` where we can't measure → don't
+            // block.
             if est_footprint_mb * 10 > total * 7 {
                 return Err(Error::InsufficientMemory);
             }

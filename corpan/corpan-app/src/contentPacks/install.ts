@@ -25,6 +25,67 @@ export type InstallResult = {
   source: InstallSource
 }
 
+/**
+ * Thrown when a catalog-driven install/update is bitten by drift between the
+ * catalog's advertised version and what the manifest at `manifestUrl`/`zipUrl`
+ * actually serves (e.g. a stale CDN origin, an unpublished bump). Surfaced
+ * this way — rather than being silently absorbed into a "successful" install
+ * that records whatever version showed up — because a mismatch here means the
+ * download is NOT the update the user was promised: recording it as installed
+ * would both lie about success and leave the update banner re-offering
+ * forever (the pack's version would never converge on the catalog's).
+ *
+ * Callers MUST NOT treat a thrown `PackVersionMismatchError` as a completed
+ * install: don't persist the result (no `addGame`) and don't touch whatever
+ * copy is already on disk/in the store.
+ */
+export class PackVersionMismatchError extends Error {
+  readonly code = "version_mismatch" as const
+  readonly packId: string
+  readonly expectedVersion: string
+  readonly actualVersion: string
+
+  constructor(packId: string, expectedVersion: string, actualVersion: string) {
+    super(
+      `Pack version mismatch for ${packId}: catalog expected ${expectedVersion}, ` +
+        `downloaded manifest reports ${actualVersion}`
+    )
+    this.name = "PackVersionMismatchError"
+    this.packId = packId
+    this.expectedVersion = expectedVersion
+    this.actualVersion = actualVersion
+  }
+}
+
+/**
+ * When the install/update was driven by a catalog entry carrying an expected
+ * version, fail loudly on any drift instead of silently recording whatever
+ * version the download declares. Logs expected-vs-got before throwing so a
+ * stale-origin incident (catalog says 0.3.0, origin still serves 0.1.0) shows
+ * up in logs instead of masquerading as a green checkmark.
+ *
+ * No-ops when there's nothing to compare (no expectedVersion requested, or
+ * the downloaded artifact didn't declare a version at all) — existing callers
+ * that don't drive installs from a versioned catalog entry are unaffected.
+ *
+ * Exported (in addition to being wired into both `installPack` branches
+ * below) so it's directly unit-testable without the `window`/`fetch`/Tauri
+ * dependencies the rest of this module carries.
+ */
+export const assertVersionMatches = (
+  packId: string,
+  expectedVersion: string | undefined,
+  actualVersion: string | undefined
+) => {
+  if (!expectedVersion || !actualVersion) return
+  if (actualVersion === expectedVersion) return
+  console.error(
+    `[install] version mismatch for ${packId}: catalog expected ${expectedVersion}, ` +
+      `downloaded manifest reports ${actualVersion}`
+  )
+  throw new PackVersionMismatchError(packId, expectedVersion, actualVersion)
+}
+
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
     const resolved = new URL(rawUrl, window.location.href)
@@ -141,6 +202,11 @@ export const installPack = async (
       expectedSha256: request.expectedHash,
       source: request.source,
     })
+    // Fail (don't record success) if the catalog promised a specific version
+    // and the artifact we just downloaded/extracted declares a different one.
+    // Checked BEFORE phrase-pack registration so a mismatched pack is never
+    // registered as active either.
+    assertVersionMatches(result.packId, request.expectedVersion, result.version)
     // If this was a phrase pack, register it now. Other pack types are
     // ignored by the helper.
     try {
@@ -180,6 +246,10 @@ export const installPack = async (
   if (!manifest.id) {
     throw new Error("Manifest missing id")
   }
+  // Fail (don't record success) if the catalog promised a specific version
+  // and the fetched manifest declares a different one — the mechanism behind
+  // the "stale origin serves an old version forever" bug.
+  assertVersionMatches(manifest.id, request.expectedVersion, manifest.version)
   return {
     packId: manifest.id,
     name: manifest.name,
