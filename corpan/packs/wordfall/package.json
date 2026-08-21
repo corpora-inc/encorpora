@@ -1,0 +1,19 @@
+{
+  "name": "corpan-wordfall",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test:journey": "node test/journey/instrumentation.spec.mjs",
+    "test:tileLayout": "node test/tileLayout.spec.mjs",
+    "test:speechTiming": "node test/speechTiming.spec.mjs",
+    "test": "npm run test:journey && npm run test:tileLayout && npm run test:speechTiming",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0"
+  }
+}

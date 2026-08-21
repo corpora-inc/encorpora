@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "选择你的主题",
+      "availableSummary": "{{count}} 个短语包可用 · ~{{size}} MB",
+      "installAll": "全部安装",
+      "chooseIndividually": "逐个选择",
+      "installing": "正在安装第 {{current}}/{{total}} 个…",
+      "someFailed": "有 {{count}} 个短语包无法安装。你可以在「包」标签页中重试。",
+      "allInstalled": "你已经拥有入门短语包。",
+      "installed": "已安装",
       "loading": "加载中…",
       "selectAll": "全选 ({{count}})",
       "clearAll": "清除",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "给我惊喜！",
         "desc": "带我去个好玩的地方。"
+      },
+      "journey": {
+        "label": "跟随 Journey",
+        "desc": "一门引导式课程——每一步都由应用为你挑选"
+      }
+    },
+    "journey": {
+      "title": "你想怎样学习{{lang}}？",
+      "subtitle": "Journey 每天以 {{lang}} 提供新内容与复习的组合 — 一次一张卡。",
+      "guided": {
+        "label": "引导式每日路径",
+        "desc": "为你规划好的简短每日学习。",
+        "unavailable": "{{lang}} 的引导式路径尚未推出。"
+      },
+      "explore": {
+        "label": "自主节奏",
+        "desc": "自行浏览故事、练习和游戏。"
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Corpán Plus 包含",
     "installFailedTitle": "安装失败",
+    "updateUnavailableTitle": "更新暂不可用",
+    "updateUnavailableDetail": "此下载内容与预期不符。请稍后重试。",
     "installStuckDetail": "一段时间内没有进展。请检查您的连接并重试。",
     "installStuckTitle": "下载停滞",
     "openPack": "打开{{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "采样你正在学的语言。Scratch 到它刻进脑子里。"
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "你的引导之路，一卡一步"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "安装（{{size}}）",
     "installing": "安装中…",
     "installed": "已安装",
-    "retry": "重试"
+    "retry": "重试",
+    "explains": "{{language}}单词"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "你的引导之路，一卡一步",
+    "heroCard": {
+      "title": "你的 Journey",
+      "progress": "{{unit}} · 距下一个里程碑还差 {{count}}"
+    },
+    "heroCta": {
+      "start": "开始你的 Journey",
+      "continue": "继续"
+    },
+    "chrome": {
+      "home": "主页",
+      "menu": "Journey 选项",
+      "unit": "第 {{n}} 单元：{{name}}"
+    },
+    "exercise": {
+      "check": "检查",
+      "continue": "继续",
+      "skipHint": "再滑一次即可跳过",
+      "retry": "再试一次",
+      "showAnswer": "显示答案",
+      "answerWas": "答案是",
+      "comeBackNote": "我们稍后会回到这里。",
+      "whyThisCard": "为什么是这张卡？",
+      "whyNew": "来自当前单元的新内容。",
+      "whyReview": "一次复习——间隔让记忆更牢固。",
+      "whyRepair": "再看一眼曾经的难点。",
+      "whyGuided": "你的引导之路的一部分。",
+      "typeWhatYouHear": "输入你听到的内容",
+      "typeHere": "在此输入…",
+      "tapToOrder": "按顺序点击单词",
+      "matchPairs": "配对连线",
+      "flipToReveal": "点击翻开",
+      "knewIt": "我知道",
+      "didntKnow": "还不会",
+      "speakNow": "现在开口说",
+      "listen": "听",
+      "listenSlow": "慢速",
+      "hint": "提示",
+      "correct": "正确",
+      "incorrect": "还差一点",
+      "pickTranslation": "选出译文",
+      "pickWhatYouHear": "选出你听到的",
+      "fillTheBlank": "填空",
+      "newItem": "新",
+      "reviewedEarlier": "之前看过"
+    },
+    "intro": {
+      "listenAndEcho": "先听，再大声跟读",
+      "newWord": "新单词",
+      "newPhrase": "新短语"
+    },
+    "grammar": {
+      "noteLabel": "语法笔记",
+      "tryIt": "试一试",
+      "contrastLabel": "与你的语言对比"
+    },
+    "word": {
+      "inContext": "语境例句",
+      "meaningShow": "含义",
+      "meaningHide": "隐藏"
+    },
+    "wordPack": {
+      "title": "词义包",
+      "body": "边学边看看这些单词在{{language}}里是什么意思。",
+      "add": "添加 ({{size}})",
+      "dismiss": "暂不",
+      "downloading": "添加中… {{percent}}%",
+      "failed": "添加失败",
+      "retry": "重试"
+    },
+    "checkpoint": {
+      "title": "检查点",
+      "summaryNew": "新 {{count}}",
+      "summaryReviews": "复习 {{count}}",
+      "done": "今天到此为止",
+      "keepGoing": "继续学",
+      "dailyRing": "本次 {{count}}",
+      "deepSession": "真是一次深度学习——你的复习无论如何都已排好。",
+      "streakTicked": "连续 {{count}} 次 ✓",
+      "boss": "单元挑战",
+      "arcGate": "篇章之门"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "完美",
+        "nice": "不错",
+        "brilliant": "精彩",
+        "boom": "砰",
+        "nailed": "命中",
+        "unstoppable": "势不可挡",
+        "onFire": "火力全开",
+        "yes": "对了！",
+        "clean": "干净利落",
+        "sharp": "犀利",
+        "wow": "哇",
+        "magic": "神了"
+      },
+      "combo": "连续 {{count}} 个",
+      "perfect": "完美",
+      "wordsLearned": "已学会 {{count}} 个单词",
+      "unitComplete": "单元完成：{{name}}",
+      "streakDay": "连续 {{count}} 次",
+      "placementDone": "定级完成"
+    },
+    "rare": {
+      "reveal": "有点特别的东西…",
+      "etymologyGem": "词语故事",
+      "timeCapsule": {
+        "title": "时间胶囊",
+        "body": "{{when}}你曾为它苦练——看看现在的你。"
+      },
+      "delight": {
+        "newVoice": "不一样的声音",
+        "didYouNotice": "你注意到了吗？"
+      },
+      "miniGame": {
+        "title": "奖励关卡",
+        "play": "开玩"
+      },
+      "story": {
+        "unlocked": "你赢得了下一章",
+        "read": "去阅读"
+      }
+    },
+    "placement": {
+      "offerTitle": "从哪里开始？",
+      "offerBody": "几道快速小题就能找到你的起点。大约五分钟。",
+      "startNew": "我是{{lang}}零基础",
+      "placeMe": "我会一些{{lang}}",
+      "skipItem": "不确定就跳过",
+      "doneTitle": "找到你的起点了",
+      "doneBody": "从 {{unit}} 开始。",
+      "prelit": "你已带着 {{count}} 个已掌握的内容起步。",
+      "redo": "重新测一次水平",
+      "aboveTitle": "你已经超出了这门课",
+      "aboveBody": "这门课目前涵盖入门内容，而你的水平在它之上。你仍可以浏览它——新的级别正在路上。",
+      "aboveFrontier": "你已经超过了这门课程的大部分内容——将从 {{unit}} 开始。"
+    },
+    "path": {
+      "title": "你的路",
+      "arc": "篇章 {{name}}",
+      "unit": "第 {{n}} 单元",
+      "locked": "前方",
+      "current": "你在这里",
+      "review": "点按可复习",
+      "mastered": "扎实"
+    },
+    "streak": {
+      "pactTitle": "要保持连续记录吗？",
+      "pactBody": "保持你的势头。休息日能填补空档 — 每周可获得一个。",
+      "pactAccept": "算我一个",
+      "pactDecline": "不用了",
+      "days": "连续 {{count}} 次",
+      "restDayEarned": "获得休息日",
+      "restDayUsed": "{{day}} 是休息日",
+      "repairTitle": "找回你的连续记录",
+      "repairBody": "在接下来 {{days}} 天内完成两次学习，即可恢复你 {{count}} 天的连续记录。",
+      "repairCta": "开始"
+    },
+    "block": {
+      "speakingIntro": "口语练习 — {{count}} 张卡片",
+      "ready": "准备好了",
+      "loadingModel": "正在预热麦克风…",
+      "micPrompt": "Corpán 使用麦克风在本设备上为你的发音打分。",
+      "sttUnavailable": "语音评分暂不可用——切换到听力练习。"
+    },
+    "quota": {
+      "cardsLeft": "今天还剩 {{count}} 张卡片",
+      "plusBody": "Corpán Plus 可解除每日卡片上限。"
+    },
+    "welcomeBack": {
+      "title": "欢迎回来",
+      "body": "你的复习保住了 {{pct}}% 的记忆强度。先热热身。"
+    },
+    "tease": {
+      "next": "下次见：{{title}}"
+    },
+    "jump": {
+      "title": "觉得太简单了？",
+      "body": "来一个小挑战，跳到更前面。失败也没有损失——你会留在原地。",
+      "accept": "试试挑战",
+      "decline": "留在这里"
+    },
+    "feed": {
+      "caughtUp": "目前你都学完了",
+      "loading": "正在准备你的卡片…",
+      "loadError": "Journey 加载失败。请从主页重试。",
+      "retry": "重试"
+    },
+    "popin": {
+      "pronounceTitle": "读一读",
+      "close": "关闭"
+    },
+    "settings": {
+      "title": "Journey 选项",
+      "advanceMode": "翻页方式",
+      "advanceSwipe": "滑动继续",
+      "advanceAuto": "自动继续",
+      "celebration": "庆祝效果",
+      "celebrationFull": "完整",
+      "celebrationReduced": "简化",
+      "celebrationMinimal": "极简",
+      "sounds": "音效",
+      "soundsOn": "开",
+      "soundsOff": "关",
+      "listeningMode": "免提听力模式",
+      "viewPath": "查看路径",
+      "redoPlacement": "重新测一次水平"
+    },
+    "imagePack": {
+      "title": "添加图片",
+      "body": "用图片学习一些单词，而不是文字。",
+      "dismiss": "暂不",
+      "add": "添加（{{size}}）",
+      "downloading": "正在添加…{{percent}}%",
+      "retry": "重试",
+      "failed": "添加失败"
+    },
+    "interlude": {
+      "gameCue": "快速游戏 · 一个短语",
+      "readerCue": "快速阅读 · 一段文字"
+    }
   }
 }

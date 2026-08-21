@@ -1,0 +1,11 @@
+node_modules/
+dist/
+
+# The pack build. `packs/build.mjs` regenerates it and stages it into the app.
+dist-pack/
+
+# Capture scratch.
+qa/shots
+qa/tmp
+
+package-lock.json

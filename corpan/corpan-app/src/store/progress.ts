@@ -1,12 +1,16 @@
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
+import { createLocalStorageShim } from "@/lib/storage"
 
 /**
  * Per-book reading progress — the on-device substrate for the Library
  * "Continue" shelf, streaks, and "X segments to your Plus moment" hints.
  *
- * Privacy: localStorage only. Never sent to a server. Readers report progress
- * via the `corpan:segment-progress` window event; App.tsx writes it here.
+ * Privacy: on-device only (IndexedDB LARGE tier — durable, never evicted as
+ * a cache). Not uploaded. Readers report progress via the
+ * `corpan:segment-progress` window event; App.tsx writes it here. (M2:
+ * migrated off localStorage — it grows per book×lang; the legacy blob is
+ * moved by lib/storage/migrate.ts.)
  */
 export type BookProgress = {
   /** Deepest segment index reached (0-based). */
@@ -130,7 +134,11 @@ export const useProgressStore = create<ProgressState>()(
     }),
     {
       name: "corpan-progress-v1",
-      storage: createJSONStorage(() => localStorage),
+      // M2 (storage-analytics.md §2.2): unbounded per-book growth belongs in
+      // the IndexedDB tier. volatile: false — durable state, not a cache.
+      storage: createJSONStorage(() =>
+        createLocalStorageShim("progress", { tier: "large", volatile: false })
+      ),
       partialize: (state) => ({ byKey: state.byKey }),
     }
   )

@@ -1,0 +1,69 @@
+[package]
+name = "dynawalla"
+version = "0.1.0"
+description = "Mathematics practice for children"
+authors = ["Corpora Inc"]
+edition = "2024"
+
+[lib]
+# The `_lib` suffix keeps the lib name distinct from the bin name, which
+# otherwise collides on Windows (rust-lang/cargo#8519).
+name = "dynawalla_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["wry"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# The pack runtime's three jobs: fetch the archive, prove it is the archive the
+# catalogue promised, unpack it. All three are native rather than in the
+# WebView, which is what lets `tauri.conf.json` keep `connect-src` closed: the
+# app's own document never talks to the network at all.
+#
+# `rustls-tls` rather than the platform TLS stack so the trust anchors are the
+# same on every target and an Android build does not depend on an OS cert store.
+# `https_only` is set on the client as well; the origin is pinned in `packs`.
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
+sha2 = "0.10"
+# Read AND write: the write half is used only by `packs::tests`, which builds a
+# zip-slip archive and a compression bomb rather than committing binary fixtures
+# to a public repository.
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+# Haptics. A path dependency on Corpán's plugin rather than a copy: the Swift
+# and Kotlin in it are the only thing that makes a haptic real on iOS, where
+# `navigator.vibrate` does not exist at all (it is `undefined` in WKWebView, so
+# a WebView-only implementation is a silent no-op on the entire platform and
+# looks perfectly fine in a desktop browser).
+#
+# Shared, so it is shared carefully: Dynawalla added two style values to it and
+# changed none. See `corpan/plugins/tauri-plugin-haptics/CHANGELOG.md`.
+tauri-plugin-haptics = { path = "../../../corpan/plugins/tauri-plugin-haptics" }
+
+[profile.release]
+opt-level = "z"   # Size, not speed: this is a mobile binary.
+lto = true
+codegen-units = 1
+debug = 1         # Line tables only — Gradle uploads these to Play as symbols.
+strip = false     # Gradle strips the .so for the APK and bundles symbols in the AAB.
+panic = "abort"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# READ ADR-0011 BEFORE ADDING A `[workspace]` OR MOVING A `[patch]` HERE.
+#
+# There is no `[workspace]` section in this file, and there must not be one:
+# this manifest is its own implicit workspace root, exactly like Corpán's at
+# corpan/corpan-app/src-tauri/Cargo.toml. Cargo honours `[patch]` only from the
+# workspace root OF THE PACKAGE BEING BUILT, so hoisting either app's patches
+# into a shared root silently drops them — Corpán reverts to an `ndk-context`
+# that aborts the process on Android Activity recreation, and it compiles,
+# tests and clippies clean on the way to production.
+#
+# When Dynawalla gains Android and needs the same vendored forks, its own
+# `[patch.crates-io]` goes HERE, pointing at ../../../native/vendor/*. Not in a
+# workspace manifest. Not shared with Corpán's.
+# ─────────────────────────────────────────────────────────────────────────────

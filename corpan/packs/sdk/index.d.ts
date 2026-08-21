@@ -1,3 +1,10 @@
+// Journey activity contract (D2/D3): re-export the GENERATED copy so packs
+// import ActivitySpec/ActivityResult/ItemRef/JourneyHostApi/ACTIVITY_TYPES/etc.
+// from the SDK. The copy is synced from
+// corpan-app/src/contentPacks/activityContract.ts by `node packs/sdk/sync-contract.mjs`.
+export * from "./activityContract"
+import type { ActivitySpec, JourneyHostApi, PackActivityDeclaration } from "./activityContract"
+
 export type StackConfig = {
   activeStackId: string
   languages: string[]
@@ -47,6 +54,61 @@ export type HostPhrasePacksApi = {
   getInstalled: () => Record<string, HostInstalledPhrasePack>
   setEnabled: (id: string, on: boolean) => void
   subscribe: (listener: () => void) => () => void
+}
+
+/**
+ * Durable, pack-scoped KV storage (storage-analytics.md §5.1). The host stamps
+ * a `pack:<packId>` namespace — a pack can never read or write another pack's
+ * data. Budget-enforced (2MB / 1,000 keys per pack); over-budget writes are
+ * dropped + logged, never thrown. Present when
+ * `__CORPAN_HOST_CAPS.storageKv >= 1`; packs feature-detect
+ * (`hostApi.storage?.kv`).
+ */
+export type PackStorageApi = {
+  kv: {
+    get(key: string): Promise<string | null>
+    set(key: string, value: string): Promise<void>
+    remove(key: string): Promise<void>
+    keys(): Promise<string[]>
+  }
+}
+
+/**
+ * Narrow on-device analytics seam (storage-analytics.md §5.2): packs WRITE
+ * namespaced progression events and READ only aggregates derived from their
+ * own events (+ the journey activity_results whose providerId is theirs).
+ * Never uploaded. Journey-launched activities do NOT need `record` for
+ * results — those flow through `hostApi.journey.reportResult` and the HOST
+ * writes the `activity_result` event (one writer, one shape). Present when
+ * `__CORPAN_HOST_CAPS.localAnalytics >= 1`.
+ */
+export type PackLocalAnalyticsApi = {
+  /** Append a pack event. The host namespaces `type` to `pack:<packId>:<type>`;
+   *  payload values are string | number | boolean only. Rate-limited
+   *  (5,000 events/pack/day; excess dropped). */
+  record(type: string, payload?: Record<string, string | number | boolean>): void
+  getDailyCounts(opts: {
+    type?: string
+    windowDays?: number
+  }): Promise<Array<{ day: string; count: number }>>
+  getOwnActivityStats(opts?: {
+    windowDays?: number
+  }): Promise<{ cards: number; passRate: number; avgLatencyMs?: number }>
+}
+
+/**
+ * Offline-first cache seam (offline-cache.md §6, D12). Present when
+ * `__CORPAN_HOST_CAPS.offlineCache === true`; packs feature-detect
+ * (`hostApi.offlineCache?.imageSrc(url)`).
+ */
+export type HostOfflineCacheApi = {
+  /** Resolve a display URL for a remote image: local cached copy when
+   *  available, the remote URL when online-and-uncached (caching kicks off in
+   *  the background), undefined when offline with no cached copy. */
+  imageSrc: (url: string) => Promise<string | undefined>
+  /** Cache-first JSON GET for pack-owned remote indexes. Keys are namespaced
+   *  `pack:<packId>:<key>` by the host. Returns undefined on a true miss. */
+  fetchJson: (url: string, opts?: { key?: string; ttlMs?: number }) => Promise<unknown>
 }
 
 export type TranslationOut = {
@@ -317,6 +379,21 @@ export type HostApi = {
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   setStackConfig?: (patch: StackConfigPatch) => void
+  /**
+   * Journey activity seam (typed rail). Present when
+   * `__CORPAN_HOST_CAPS.journey >= 1`. Packs feature-detect
+   * (`hostApi.journey?.isActive()`); the `corpan:activity-result` window
+   * event is the fallback rail on hosts where this is absent.
+   */
+  journey?: JourneyHostApi
+  /** Pack-scoped durable KV. Present when `__CORPAN_HOST_CAPS.storageKv >= 1`. */
+  storage?: PackStorageApi
+  /** Pack-scoped on-device analytics. Present when
+   *  `__CORPAN_HOST_CAPS.localAnalytics >= 1`. */
+  localAnalytics?: PackLocalAnalyticsApi
+  /** Offline-first cache. Present when
+   *  `__CORPAN_HOST_CAPS.offlineCache === true`. */
+  offlineCache?: HostOfflineCacheApi
   history?: HostHistoryApi
   notifyUtterance?: () => void
   phrasePacks?: HostPhrasePacksApi
@@ -371,6 +448,8 @@ export type ContentPackManifest = {
   sdkVersion?: string
   permissions?: string[]
   databases?: Record<string, string>
+  /** Journey activity types this pack provides (activity-contract.md §4.2). */
+  activities?: PackActivityDeclaration[]
 }
 
 export function registerGame(game: GameModule): GameModule
@@ -378,6 +457,10 @@ export function registerGame(game: GameModule): GameModule
 export function createMockHostApi(options?:
   Partial<HostApi> & {
     stackConfig?: Partial<StackConfig>
+    /** Simulate a Journey launch: `journey.isActive()` turns true, `getSpec()`
+     *  returns this, and reportItem/reportResult/abandon log + stash on
+     *  `window.__corpanMockJourney = { items: [], results: [] }`. */
+    activity?: ActivitySpec
   }
 ): HostApi
 
@@ -387,5 +470,8 @@ export function mountStandalone(
     container?: HTMLElement
     hostApi?: HostApi
     initialState?: Record<string, unknown>
+    /** Simulate a Journey launch: threaded into `initialState.activity` AND
+     *  the mock host's `journey` seam. */
+    activity?: ActivitySpec
   }
 ): { unmount?: () => void }

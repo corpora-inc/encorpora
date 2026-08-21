@@ -73,6 +73,26 @@ import "../track-studio/track-studio.css"
 
 const LOG = "[beatlounge/phrase-scratch]"
 
+/** Yield a macrotask so the audio render quantum (and paint) can run between two
+ *  CPU-heavy steps. Used to break up snippet-load work — decode → pad+build deck
+ *  → word-span analysis — so no single block starves the audio thread on the
+ *  scratch page (#396). */
+const yieldToMain = (): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, 0))
+
+/** Wait until the main thread is IDLE before running a heavy, non-urgent pass, so
+ *  it can't contend with audio scheduling (the two-pass word-span scan). Falls
+ *  back to a macrotask where requestIdleCallback is unavailable; the timeout
+ *  guarantees the pass still runs promptly on a busy thread (#396). */
+const onIdle = (): Promise<void> =>
+  new Promise((resolve) => {
+    if (typeof requestIdleCallback === "function") {
+      requestIdleCallback(() => resolve(), { timeout: 400 })
+    } else {
+      setTimeout(resolve, 0)
+    }
+  })
+
 interface Props {
   host: BeatloungeHost
   store: BeatloungeStore
@@ -127,9 +147,19 @@ interface DeckView {
   rate: number
   playheadSec: number
   wordIdx: number
+  /** The playhead is in the padded SILENT tail (past the real phrase) — the loop
+   *  is rev-quantized to whole revolutions, so a longer phrase has a trailing
+   *  silent pass. The word/START indicators fade during it (#421). */
+  silent: boolean
 }
 
-const freshView = (): DeckView => ({ rotation: 0, rate: 0, playheadSec: 0, wordIdx: -1 })
+const freshView = (): DeckView => ({
+  rotation: 0,
+  rate: 0,
+  playheadSec: 0,
+  wordIdx: -1,
+  silent: false,
+})
 
 export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
@@ -208,21 +238,24 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   rtB.current.spinDir = dirB
 
   // ---- master FX bus: decks feed this; it inserts the chain → destination -----
-  // Built once; the decks connect into bus.input (their destination) so the chain
-  // colours BOTH decks. The chain is pushed whenever the config changes.
-  if (!fxBusRef.current) {
-    // Build the bus + wire the initial (bypassed) chain. Idempotent via the ref
-    // guard; recreated after a StrictMode dispose/remount. Toggles + param moves
-    // go through updateInsert/liveParam (no rebuild).
-    const bus = createScratchFxBus(host.audioContext())
-    bus.setInserts(fxChain)
-    fxBusRef.current = bus
-  }
+  // Built once on MOUNT (in an effect, OFF the render/commit path — so restoring
+  // a saved chain never constructs Tone effect nodes synchronously during render,
+  // which contended with the audio callback on first load, #396). The decks
+  // connect into bus.input so the chain colours BOTH decks; later toggles + param
+  // moves go through setInserts/updateInsert/liveParam (no rebuild).
   useEffect(() => {
+    if (!fxBusRef.current) {
+      const bus = createScratchFxBus(host.audioContext())
+      bus.setInserts(fxChain)
+      fxBusRef.current = bus
+    }
     return () => {
       fxBusRef.current?.dispose()
       fxBusRef.current = null
     }
+    // Mount-only: `fxChain` here is the RESTORED chain; live edits reach the bus
+    // directly (setInserts/updateInsert), never a rebuild.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Warm the scratch AudioWorklet module the instant you enter the pane, so its
@@ -304,14 +337,13 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           setLoading(false)
           return
         }
-        // Word spans live on the REAL phrase timeline (before padding).
-        const channel = decoded.getChannelData(0)
-        const { spans, labels } = resolveWordSpans(
-          channel,
-          decoded.sampleRate,
-          decoded.duration,
-          splitWords(text)
-        )
+        // Build + hold the deck FIRST so the platter is playable as soon as
+        // possible, and so neither the buffer-padding nor the (heavier) word-span
+        // analysis shares the audio render quantum on load (#396). A yield lets
+        // the audio callback breathe after decodeAudioData resolves, before the
+        // CPU-heavy pad + deck build.
+        await yieldToMain()
+        if (stale()) return
         // LOOP-ANGLE FIX: pad the wave with trailing silence to a WHOLE number of
         // revolutions (+ boundary fades) so the loop wraps at an integer disc turn —
         // the phrase START returns under the needle at the SAME angle every loop. The
@@ -326,16 +358,40 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           return
         }
         rt.current.deck = deck
-        rt.current.spans = spans
-        rt.current.words = labels.length > 0 ? labels : [text]
         rt.current.durationSec = padded.duration
         rt.current.phraseSec = decoded.duration
+        // Provisional readout until the spans resolve below — the whole phrase as
+        // one label. Playback does not depend on the spans.
+        rt.current.spans = []
+        rt.current.words = [text]
         // Lock the needle to the audio: the engine reports its true playhead.
         rt.current.unsubPos = deck.onPos((p) => {
           rt.current.audioSec = p.seconds
         })
         deck.hold()
         setLoading(false)
+
+        // Word spans (two full-waveform passes) live on the REAL phrase timeline
+        // (before padding). They're NOT needed to play, so run them when the main
+        // thread is IDLE — off the load's critical path, never contending with the
+        // running transport's audio scheduling — and swap them in when ready. A
+        // span failure must never tank the already-playable deck.
+        await onIdle()
+        if (stale()) return
+        try {
+          const channel = decoded.getChannelData(0)
+          const { spans, labels } = resolveWordSpans(
+            channel,
+            decoded.sampleRate,
+            decoded.duration,
+            splitWords(text)
+          )
+          if (stale()) return
+          rt.current.spans = spans
+          rt.current.words = labels.length > 0 ? labels : [text]
+        } catch (err) {
+          console.warn(`${LOG} word-span analysis failed (playback unaffected):`, err)
+        }
       } catch (err) {
         console.warn(`${LOG} load failed:`, err)
         if (!stale()) {
@@ -406,7 +462,11 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       const playheadSec = rotationToPlayhead(rt.discRot, dur)
       const rate = angularVelocityToRate(rt.angVel)
       const wordIdx = wordIndexAt(rt.spans, playheadSec)
-      return { rotation: rt.discRot, rate, playheadSec, wordIdx }
+      // In the padded silent tail (past the real phrase, before the loop wraps)
+      // there's no audio — flag it so the indicators fade (#421). Only meaningful
+      // when the phrase is actually shorter than the rev-quantized loop.
+      const silent = rt.phraseSec > 0 && dur > rt.phraseSec && playheadSec >= rt.phraseSec
+      return { rotation: rt.discRot, rate, playheadSec, wordIdx, silent }
     }
 
     // Write the disc rotation straight to the DOM (no React). Reduced motion → 0
@@ -421,6 +481,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     const READOUT_MS = 120
     const shouldEmit = (p: DeckView, v: DeckView, lastEmit: number, ts: number): boolean => {
       if (p.wordIdx !== v.wordIdx) return true
+      if (p.silent !== v.silent) return true
       if (Math.abs(p.rate - v.rate) > 0.02) return true
       return ts - lastEmit > READOUT_MS && Math.abs(p.playheadSec - v.playheadSec) > 0.02
     }
@@ -712,6 +773,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             spans={rt.current.spans}
             words={rt.current.words}
             currentWord={view.wordIdx}
+            silent={view.silent}
             langTag={langTag}
             active={active}
             onGrab={onGrab(rt)}

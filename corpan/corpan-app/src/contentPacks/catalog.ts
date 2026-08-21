@@ -6,6 +6,7 @@ import {
   fetchJsonFresh,
   type Validators,
 } from "./catalogFetch"
+import { type PackActivityDeclaration } from "./activityContract"
 
 export type PurchaseInfo = {
   type: "free" | "iap" | "code"
@@ -42,6 +43,10 @@ export type CatalogGame = {
    * Lets us ship Library/reader UX updates without an app-store release. */
   systemPack?: boolean
 
+  /** Pack shape: "game" | "reader" | "narration" | "data" | … Used by the
+   *  Journey interlude registry to classify a game spike vs a reader breath. */
+  packType?: string
+
   // ── Recommendation metadata (catalog-driven so new packs can be added,
   //    prioritized, and surfaced WITHOUT an app release). All optional; the
   //    app falls back to `@/experiences/registry` for built-ins / older
@@ -71,6 +76,11 @@ export type CatalogGame = {
   /** Per-language overrides for `tagline`. Same fallback chain as the
    *  `nameLocalized` / `descriptionLocalized` fields above. */
   taglineLocalized?: LocalizedString
+  /** Journey activity declarations, copied VERBATIM from the pack's
+   *  manifest.json `activities` at publish time (activity-contract.md §4.3).
+   *  Forwarded untouched by `filterCatalogForApp`; validated lazily with
+   *  `PackActivityDeclarationSchema` when the Journey scheduler reads them. */
+  activities?: PackActivityDeclaration[]
 }
 
 /** Corpán Plus two-ZIP artifact (preview public, full Plus-gated). */
@@ -174,6 +184,13 @@ export type CatalogV3Entry = {
    *  same chain as nameLocalized / descriptionLocalized. */
   tagline?: string
   taglineLocalized?: LocalizedString
+  /** Journey activity declarations, copied VERBATIM from the pack's
+   *  manifest.json `activities` at publish time. Lets the Journey scheduler
+   *  plan anchor/rare cards for packs the user hasn't installed yet
+   *  (install-on-first-schedule), and re-plan OTA without an app release —
+   *  the same pattern as categories/goodForClass/recommendOrder. Validated
+   *  lazily when read; invalid entries are individually skipped. */
+  activities?: PackActivityDeclaration[]
 }
 
 // Phrase packs are NOT on the v3 catalog. They ship through a dedicated
@@ -587,7 +604,23 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     languages: parseStringArray(r.languages),
     tagline: toOptionalString(r.tagline),
     taglineLocalized: parseLocalizedString(r.taglineLocalized),
+    activities: parseActivities(r.activities),
   }
+}
+
+/** Forward `activities` VERBATIM (activity-contract.md §4.3): keep the
+ *  object entries, drop non-objects. Full validation happens lazily with
+ *  `PackActivityDeclarationSchema` at scheduler read time — invalid
+ *  declarations are skipped individually there, never here. */
+const parseActivities = (
+  v: unknown,
+): PackActivityDeclaration[] | undefined => {
+  if (!Array.isArray(v)) return undefined
+  const entries = v.filter(
+    (item): item is PackActivityDeclaration =>
+      !!item && typeof item === "object" && !Array.isArray(item),
+  )
+  return entries.length > 0 ? entries : undefined
 }
 
 export const parseCatalogV3 = (data: unknown): CatalogV3 | null => {
@@ -697,6 +730,7 @@ export const filterCatalogForApp = (
       imageUrl: entry.imageUrl,
       purchase: entry.purchase,
       systemPack: entry.systemPack,
+      packType: entry.packType,
       categories: entry.categories,
       goodForClass: entry.goodForClass,
       recommendOrder: entry.recommendOrder,
@@ -705,6 +739,7 @@ export const filterCatalogForApp = (
       languages: entry.languages,
       tagline: entry.tagline,
       taglineLocalized: entry.taglineLocalized,
+      activities: entry.activities,
     }))
 }
 

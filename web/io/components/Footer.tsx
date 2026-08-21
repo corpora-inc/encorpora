@@ -22,6 +22,7 @@ const Footer: FC = () => {
   const quickLinks: FooterLink[] = [
     { label: "Books", href: "/books", internal: true },
     { label: "Corpán", href: "/corpan/", internal: true },
+    { label: "Dynawalla", href: "/dynawalla/", internal: true },
     { label: "GitHub", href: "https://github.com/corpora-inc" },
     { label: "YouTube", href: "https://www.youtube.com/@corp%C3%A1n1" },
     { label: "Blog", href: "https://free2z.cash/corpora" },

@@ -99,7 +99,7 @@ cp -R corpan/packs/hover-runner/dist web/io/out/corpan/packs/hover-runner/
 
 ### 6. GitHub Actions Workflow
 
-The `.github/workflows/hover-runner-pages.yml` workflow automates this:
+The `.github/workflows/deploy-pages.yml` workflow automates this:
 
 1. Builds `web/io/` site (Next.js) → `web/io/out/`
 2. Builds Corpan pages into `web/io/out/corpan/`
@@ -138,7 +138,7 @@ Point `avatarSource` at the canonical asset in the repo. The build copies it int
 
 ### Step 4: Update GitHub Actions workflow
 
-Edit `.github/workflows/hover-runner-pages.yml`:
+Edit `.github/workflows/deploy-pages.yml`:
 
 ```yaml
 - name: Install My Pack Dependencies
@@ -193,7 +193,7 @@ fs.writeFileSync(path.join(outputDir, 'my-app', 'index.html'), myAppTemplate);
 
 ### Step 3: Update workflow
 
-Add build steps to `.github/workflows/hover-runner-pages.yml` to compose your app into `web/io/out/`.
+Add build steps to `.github/workflows/deploy-pages.yml` to compose your app into `web/io/out/`.
 
 ### Step 4: (Optional) Link from web/io/ site
 
@@ -207,7 +207,7 @@ The workflow runs when:
   - `web/io/**` (root site changes)
   - `corpan/packs/**` (any pack changes)
   - `web/pages/**` (Corpan page changes)
-  - `.github/workflows/hover-runner-pages.yml` (workflow changes)
+  - `.github/workflows/deploy-pages.yml` (workflow changes)
 - Manually triggered via `workflow_dispatch`
 
 ## Local Development

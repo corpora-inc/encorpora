@@ -1,0 +1,15 @@
+{
+  "id": "kronopan",
+  "channel": "preview",
+  "name": "Kronopán",
+  "version": "0.2.0",
+  "description": "Feel odd meters. Build a cycle from groups like 3+2+2, hear it as a metronome, and watch the long-short shape as geometry.",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "minAppVersion": "0.18.0",
+  "devRevision": "2026-08-20T23:46:13.883Z"
+}

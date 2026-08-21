@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.forge",
+  "version": "0.1.0",
+  "name": "FORGE",
+  "description": "An incremental smelting chain. Every problem struck on the anvil pays sparks, sparks buy stations, and the stations run themselves — the arithmetic is the throttle on a number that only goes up.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics", "storage"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ]
+  },
+  "minAge": 5,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

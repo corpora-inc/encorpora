@@ -16,6 +16,7 @@ import { Hud } from "./ui/Hud";
 import { initEffects, type EffectsHandle } from "./effects";
 import { initAudioHaptics, type AudioHandle } from "./audio";
 import { initProgression, type ProgressionApi } from "./progression";
+import { getJourneyRun } from "./journey/state";
 
 const RTL_LANGS = new Set(["ar", "he", "fa", "ur"]);
 
@@ -454,7 +455,10 @@ export class Game {
     this.caughtCount = 0;
     this.assembled = [];
     this.nextSpawnTime = 0;
-    this.chartStreak = 0;
+    // Journey launches may seed the difficulty streak from params.intensity
+    // (activity-contract §6.1) — it maps onto the existing streak→gap curve.
+    // Standalone starts stay at the relaxed 0.
+    this.chartStreak = getJourneyRun()?.initialStreak ?? 0;
     this.chartClean = true;
     this.lingering = false;
     this.clearContinueTap();
@@ -803,6 +807,16 @@ export class Game {
     this.lingering = false;
     this.clearContinueTap();
     this.hud.hideFeedback();
+    // JOURNEY STOP CONDITION (activity-contract §6.1 — the one gameplay-flow
+    // edit): after the result linger of the run's final chart, end the run and
+    // hold a compact "Round complete" card whose single CTA fires
+    // reportResult + corpan:exit. Standalone runs stay endless as today.
+    const journeyRun = getJourneyRun();
+    if (journeyRun && journeyRun.isComplete()) {
+      this.gameOver();
+      journeyRun.showCompletionCard();
+      return;
+    }
     // Let the loop load the next round on its next tick (board may still be
     // clearing); make the gap immediate now that the player has read it.
     this.nextSpawnTime = performance.now();

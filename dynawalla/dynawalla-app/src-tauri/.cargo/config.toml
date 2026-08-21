@@ -1,0 +1,20 @@
+# Pin the LINKER to Apple's clang for macOS desktop builds.
+#
+# The Android NDK's toolchain directory sits early on the developer shell's
+# $PATH in this repo. rustc's default link driver for the Apple targets is a
+# bare `cc` lookup, which can resolve to the NDK's clang — and the NDK clang
+# segfaults linking a macOS binary ("clang: Segmentation fault: 11"). Corpán
+# hit this three separate ways before pinning it; ADR-0011 records that these
+# pins must survive any future templating of this file.
+#
+# Deliberately NOT copied from Corpán: its Android linker paths, `[env]` NDK
+# roots and per-target CC/CXX/AR pins. Those are absolute paths on one
+# developer's machine, and they exist for llama.cpp's cc-rs build scripts.
+# Dynawalla compiles no C, so it needs none of it. The Android entries arrive
+# with the Android target itself (PR-1.3), machine-independent or not at all.
+
+[target.x86_64-apple-darwin]
+linker = "/usr/bin/cc"
+
+[target.aarch64-apple-darwin]
+linker = "/usr/bin/cc"

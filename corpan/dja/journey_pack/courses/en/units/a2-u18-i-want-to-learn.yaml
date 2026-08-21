@@ -1,0 +1,82 @@
+id: en.a2.u18
+arc: en.arc2
+theme: "I want to learn"
+cando:
+  - key: goals
+    text: "Can say what they want, need, hope, or have decided to do, using verb + to-infinitive."
+  - key: purpose
+    text: "Can say why they did or are doing something, using to + verb for purpose."
+vocab_band: { lo: 1, hi: 4226 }
+phrase_domains: [education, everyday]
+skills:
+  - id: en.skill.infinitives
+    kind: grammar
+    title: "Goals & purpose"
+    b: -1.2
+    prereqs: [en.skill.gerunds]
+grammar_nodes: [en.gn.infinitive-after-verbs, en.gn.infinitive-purpose]
+items:
+  - ref: "phrase:base:5765"  # I want to eat now.
+    skills: [en.skill.infinitives]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:2809"  # Do you want to play?
+    skills: [en.skill.infinitives]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:4729"  # I’m here to help if you need me.
+    skills: [en.skill.infinitives]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:7143"  # I need to book a hotel.
+    skills: [en.skill.infinitives]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:11025"  # She decided to join the club at school.
+    skills: [en.skill.infinitives]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21134"  # I hope to get a good grade on this test.
+    skills: [en.skill.infinitives]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10425"  # I have no money to buy a new phone.
+    skills: [en.skill.infinitives]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:want"
+    skills: [en.skill.infinitives]
+    importance: 2
+  - ref: "word:en:need"
+    skills: [en.skill.infinitives]
+    importance: 2
+  - ref: "word:en:learn"
+    skills: [en.skill.infinitives]
+    importance: 2
+  - ref: "word:en:decide"
+    skills: [en.skill.infinitives]
+    importance: 2
+  - ref: "word:en:goal"
+    skills: [en.skill.infinitives]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [education, everyday]
+      level: A2
+      count: 10
+      skills: [en.skill.infinitives]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit }

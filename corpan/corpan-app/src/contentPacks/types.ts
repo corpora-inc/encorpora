@@ -1,3 +1,12 @@
+// Journey activity contract (D2/D3): the authoritative, import-free contract
+// file. Re-exported here so existing `from "./types"` import sites pick up
+// ActivitySpec/ActivityResult/ItemRef/JourneyHostApi/etc. without drift.
+export * from "./activityContract"
+import type { ActivitySpec, JourneyHostApi, PackActivityDeclaration } from "./activityContract"
+import type { PackStorageApi } from "@/lib/storage"
+import type { PackLocalAnalyticsApi } from "@/lib/localAnalytics"
+import type { HostOfflineCacheApi } from "@/lib/offlineCache"
+
 export type StackConfig = {
   activeStackId: string
   languages: string[]
@@ -49,6 +58,13 @@ export interface PackLaunchEntry {
    * acts on this only when its library is empty.
    */
   seedBookId?: string
+  /**
+   * Journey activity launch (D2). When present the pack is being run AS AN
+   * ACTIVITY PROVIDER: it should honor the spec and report via
+   * hostApi.journey / corpan:activity-result. Packs that don't understand it
+   * ignore it (additive-optional, like every other field here).
+   */
+  activity?: ActivitySpec
 }
 
 /** A (entryId, source) pair the sampler uses for anti-repetition. */
@@ -638,6 +654,33 @@ export type HostApi = {
    */
   entitlement?: HostEntitlementApi
   /**
+   * Journey activity seam (typed rail). Present when HOST_CAPS.journey ≥ 1.
+   * Packs feature-detect; the `corpan:activity-result` window event is the
+   * fallback rail on hosts where this is absent.
+   */
+  journey?: JourneyHostApi
+  /**
+   * Durable, pack-scoped KV on the IndexedDB DOC tier (storage-analytics.md
+   * §5.1). Host-stamped `pack:<packId>` namespace — a pack can never touch
+   * another pack's data. Budget-enforced (2MB / 1,000 keys), never throws.
+   * Present when `__CORPAN_HOST_CAPS.storageKv >= 1`; packs feature-detect.
+   */
+  storage?: PackStorageApi
+  /**
+   * Narrow on-device analytics seam (storage-analytics.md §5.2): packs WRITE
+   * namespaced progression events and READ only aggregates derived from their
+   * own events. Never uploaded. Present when
+   * `__CORPAN_HOST_CAPS.localAnalytics >= 1`; packs feature-detect.
+   */
+  localAnalytics?: PackLocalAnalyticsApi
+  /**
+   * Offline-first cache seam (offline-cache.md §6, D12): cached image URLs +
+   * cache-first JSON GETs for pack-owned remote indexes. Present when
+   * `__CORPAN_HOST_CAPS.offlineCache === true`; packs feature-detect
+   * (`hostApi.offlineCache?.imageSrc(url)`).
+   */
+  offlineCache?: HostOfflineCacheApi
+  /**
    * The CURRENT pack's visit streak (consecutive local days it was opened). A
    * retention signal a pack can surface (e.g. "{{n}}-day streak") — read-only and
    * never a gate. The host records the visit itself at the pack-enter boundary;
@@ -749,6 +792,8 @@ export type ContentPackManifest = {
   permissions?: string[]
   databases?: Record<string, string>
   devRevision?: string
+  /** Journey activity types this pack provides (activity-contract.md §4.2). */
+  activities?: PackActivityDeclaration[]
 }
 
 export type ContentPackModule = {

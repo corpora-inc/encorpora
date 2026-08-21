@@ -24,10 +24,22 @@ jobs:
     name: changes
     runs-on: ubuntu-latest
     outputs:
+      ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
       dja: ${{ steps.filter.outputs.dja }}
+      # `shared_ts` is declared ahead of the job that will consume it.
+      # Nothing reads it yet, so it cannot affect any gate; declaring it here
+      # keeps the follow-up PR a one-line `if:`. Every other output below is
+      # consumed by a job in this file.
+      dynawalla_android_gen: ${{ steps.filter.outputs.dynawalla_android_gen }}
+      dynawalla_app: ${{ steps.filter.outputs.dynawalla_app }}
+      dynawalla_curriculum: ${{ steps.filter.outputs.dynawalla_curriculum }}
+      dynawalla_engine: ${{ steps.filter.outputs.dynawalla_engine }}
+      dynawalla_packs: ${{ steps.filter.outputs.dynawalla_packs }}
       lambda: ${{ steps.filter.outputs.lambda }}
+      native: ${{ steps.filter.outputs.native }}
       packs: ${{ steps.filter.outputs.packs }}
+      shared_ts: ${{ steps.filter.outputs.shared_ts }}
       terraform: ${{ steps.filter.outputs.terraform }}
       web: ${{ steps.filter.outputs.web }}
     steps:
@@ -74,12 +86,223 @@ jobs:
             fi
           }
 
-          set_output corpan_app '^(corpan/corpan-app/|\.github/workflows/ci\.yml$)'
+          # The gate's own code. `.github/scripts/**` holds the adversarial
+          # reviewer, whose failure mode when it regresses is to PASS wrongly —
+          # so its tests must run on any change to it (or to this workflow, or
+          # to the workflow that invokes it).
+          set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
+          # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
+          # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
+          # `../packs/shared/*` and `include`s `../packs/shared/analytics`, vite
+          # aliases the same tree, twenty source files import it, the job runs
+          # `npm ci` in `packs/shared/capabilities`, and its contract-sync step
+          # diffs the generated copies under `packs/sdk/` and
+          # `packs/shared/capabilities/`.
+          #
+          # The `packs` filter does NOT stand in for this. `changed-packs` derives
+          # a pack name from the path and skips any directory with no
+          # `package.json`: `corpan/packs/shared` has none, so it is skipped
+          # outright, and `corpan/packs/sdk`'s declares no test/tsc/build script.
+          # Before this line a shared-only change ran nothing that compiled it.
+          set_output corpan_app '^(corpan/(corpan-app|packs/(shared|sdk))/|\.github/workflows/ci\.yml$)'
           set_output dja '^(corpan/dja/|\.github/workflows/ci\.yml$)'
           set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
-          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          # `pack_catalog_check.js` is the entire body of the `pack-catalog` job.
+          # It lives under `.github/scripts/`, but `ci-scripts` runs pytest there
+          # and collects no JavaScript — so without this alternation the checker
+          # could be edited and never executed, and a break in it would surface on
+          # some later, unrelated packs/web PR. Same treatment the `native` filter
+          # below gives its two Python helpers.
+          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$|\.github/scripts/pack_catalog_check\.js$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
           set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+
+          # Dynawalla areas. Every one of them is consumed by a job below.
+          #
+          # `dynawalla/curriculum/` AND `dynawalla/engine/` are in the app filter
+          # because the app compiles both: the practice loop imports each
+          # package's TypeScript source directly (they are private, have no build
+          # step and no resolvable name — see `src/work/curriculum.ts` and the
+          # `../../../engine/src/index.ts` imports across `src/work/`). A change to
+          # either can turn the app's tsc, tests or build red, and without this the
+          # app job would not run on the PR that did it.
+          #
+          # `dynawalla/packs/shared/curriculum/` is in here for exactly the same
+          # reason and was MISSING, which is a different path from the dev
+          # workspace at `dynawalla/curriculum/` above. The app imports the
+          # library directly (`src/packs/curriculum.ts`), and its ladder tests
+          # assert against the shipped graph — so widening a curriculum level can
+          # and did turn `dynawalla-app` red. That break was caught only by
+          # accident: the PR's diff base carried other already-merged work, so the
+          # file list tripped this filter anyway. A cleanly-rebased
+          # curriculum-only PR would have skipped the app job and reported green
+          # with the app broken.
+          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum|engine|packs/shared/curriculum)/|\.github/workflows/ci\.yml$)'
+          # The committed slice of gen/android and the recorded template it was
+          # curated from. `tauri android init` never overwrites an existing
+          # file, which is what makes the allowlist survive a CI re-init — and
+          # is also why a @tauri-apps/cli bump that adds a required manifest
+          # entry would be dropped SILENTLY, at runtime, with nothing in CI
+          # compiling Android for either app. So: any move of the CLI pin, of
+          # the tracked files, or of the baseline re-runs the drift job.
+          set_output dynawalla_android_gen '^(dynawalla/dynawalla-app/(package(-lock)?\.json$|android-template-baseline/|src-tauri/gen/android/)|\.github/workflows/ci\.yml$)'
+          # `dynawalla/engine/` is in the curriculum filter because the curriculum
+          # gates SCAN engine source: `validate/cli.ts` passes
+          # `[curriculum/src, engine/src]` as the lint roots, so `npm run check`
+          # (M-05, CG-19, CG-16) and `validate/gates.test.ts` under `npm test` both
+          # read it. The engine's own `boundary.test.ts` deliberately duplicates
+          # EG-1 and M-05, but there is no CG-19 equivalent in it — so a
+          # bare-string prompt added under `engine/src` failed the curriculum job
+          # while the engine job stayed green, on a PR that ran neither.
+          #
+          # `dynawalla/packs/shared/curriculum/` is where the library ITSELF lives.
+          # It moved there so packs could import it without reaching into the host
+          # app's tree, and this filter did not move with it: `dynawalla/curriculum/`
+          # kept only the devDependencies, the commands and the CLI, so every line
+          # of generator, mal-rule and gate source sat outside the pattern that
+          # decides whether the gates run at all. A pull request that rewrote the
+          # whole library would have skipped its own job and reported green.
+          set_output dynawalla_curriculum '^(dynawalla/(curriculum|engine|packs/shared/curriculum)/|\.github/workflows/ci\.yml$)'
+          # Not the mirror image: the engine imports nothing at all (EG-1 asserts
+          # exactly that), so a curriculum change cannot break the engine job.
+          # `boundary.test.ts` duplicates the float scan for this reason — "the two
+          # packages have independent CI filters, and an engine-only pull request
+          # must be able to fail this on its own."
+          set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
+          # The games and the pack pipeline, deliberately ONE area rather than
+          # two, because there is no change to either half that the other half
+          # cannot break: `packs/build.mjs` runs each game's `build:pack`, every
+          # game's `src/pack.ts` imports `packs/shared/game-host/index.ts` by
+          # relative path, and `packs/sdk/bin/dw-pack.mjs` is the checker the
+          # build runs as its gate on every pack, every time. Splitting them
+          # would let an SDK-only PR skip the five builds that consume it.
+          #
+          # Before this filter existed, `dynawalla/games/**` and
+          # `dynawalla/packs/**` matched NO area and were exercised by NO job:
+          # 201 game tests and 52 SDK tests ran nowhere, and `npm run packs`
+          # first executed inside a release. See the job below for why that is
+          # the expensive place to discover a broken pack.
+          #
+          # `dynawalla-app/package.json` is in here because it is where the
+          # `packs` script is defined (`node ../packs/build.mjs`) and this job
+          # invokes it by name. The app's own filter covers that file too, but
+          # no job under it runs the pack build, so a rename would otherwise
+          # land green and break only the release.
+          set_output dynawalla_packs '^(dynawalla/(games|packs)/|dynawalla/dynawalla-app/package\.json$|\.github/workflows/ci\.yml$)'
+          # Cross-product area. Deliberately no `ci.yml` self-trigger: it exists
+          # to answer "did shared code move", and a workflow edit is not a
+          # change to it. No job consumes it yet.
+          set_output shared_ts '^(shared/|corpan/packs/shared/)'
+          # The Rust/native layer: both apps' `src-tauri` trees and every Tauri
+          # plugin crate. Consumed by the `native` job below, so — unlike
+          # `shared_ts` above and unlike this filter before that job existed —
+          # it DOES self-trigger on `ci.yml`, exactly like every other filter
+          # that drives a job. A workflow edit that breaks the native gate has
+          # to be caught by the native gate.
+          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)'
+
+      # Coverage warning. WARN-ONLY, and permanently scoped to `pull_request`.
+      #
+      # Do NOT extend this to merge_group. The `changes` job resolves its range
+      # as merge_group.base_sha..head_sha, which spans the WHOLE batch the queue
+      # assembled — so a fail-closed hygiene check here would attribute one PR's
+      # uncovered path to every PR batched with it and eject them all at once.
+      # On a pull_request the range is exactly that PR's own change, which is
+      # the only range where "this path has no CI area" is a true statement
+      # about the author's diff.
+      #
+      # Belt and braces so this can never flip a gate: an explicit `set +e`, an
+      # explicit `exit 0`, and `continue-on-error: true`. The `set +e` is load
+      # bearing — Actions runs a `run:` block as `bash -e {0}` on Linux, so
+      # errexit is ON by default and `set -uo pipefail` does not turn it off.
+      - id: uncovered
+        name: Warn on paths with no CI area
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -uo pipefail
+          set +e   # Actions invokes this as `bash -e {0}`; drop errexit.
+
+          base="${BASE_SHA}"
+          head="${HEAD_SHA}"
+          if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          fi
+          if [ -z "${base}" ]; then
+            echo "No base commit resolved; skipping coverage warning."
+            exit 0
+          fi
+
+          # Areas a job actually consumes today, minus the `ci.yml` self-triggers
+          # (a workflow edit is exempt below anyway). NOT the union of every
+          # filter above: `shared_ts` is declared ahead of its job, so paths it
+          # matches are genuinely ungated and must keep warning until that job
+          # lands. `dynawalla/dynawalla-app/`, `dynawalla/curriculum/`,
+          # `dynawalla/engine/`, `native` and now `dynawalla/games/` +
+          # `dynawalla/packs/` have each graduated, as the jobs below consume
+          # their filters.
+          #
+          # The games and the packs are added here in the SAME change that adds
+          # the job consuming them, which is the only order that keeps this
+          # list honest. Listing a path as covered before a job runs it is
+          # strictly worse than not listing it: the warning is the only thing
+          # standing between an unexercised tree and a release-time discovery,
+          # and a premature entry silences it while changing nothing else.
+          #
+          # The terraform member is copied verbatim from the `terraform` filter —
+          # extension-scoped, not the bare directory. A bare `corpan/infra/
+          # terraform/` would mark helper scripts under it as covered when no job
+          # runs them.
+          #
+          # `corpan/plugins/` is now compiled by the `native` job below, which
+          # reports into the required `ci-gate` (every plugin is a path
+          # dependency of Corpán's src-tauri, so a host `cargo clippy` of the
+          # app compiles all of them). `.github/workflows/ios-native.yml`
+          # additionally compiles their Swift, but it is advisory and does not
+          # count here.
+          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/)'
+
+          # Carve-outs checked BEFORE `covered`, because a broader area prefix
+          # would otherwise swallow them. grep -E has no negative lookahead,
+          # hence a separate pattern rather than an exclusion inside `covered`.
+          #
+          # The `native` job compiles exactly two src-tauri trees: Corpán's and
+          # Dynawalla's. The four listed below are NOT compiled by any job.
+          # `corpus-reader` and `panko` are dormant (last touched by a repo-wide
+          # sweep in June); `panko` also resolves a plugin from a git BRANCH and
+          # `homeschool-offline` tracks no Cargo.lock at all; the iap example is
+          # a demo, not shipped.
+          #
+          # The rustfmt ratchet in `native` WALKS all four, but walking is not
+          # gating: `corpus-reader/src-tauri` and both `homeschool-offline`
+          # crates are on its DEBT list, so their diffs are reported as
+          # warnings and cannot fail the job. `panko/pako/src-tauri` and the
+          # iap example are off the list and therefore enforced. This warning
+          # is about COMPILE coverage specifically.
+          ungated='^(corpus-reader/src-tauri/|panko/pako/src-tauri/|homeschool-offline/app/src-tauri/|corpan/plugins/tauri-plugin-iap/examples/)'
+
+          # Gate-free by design: CI config, agent control plane, docs, dotfiles.
+          exempt='(^\.github/|^\.claude/|^\.gitignore$|^\.gitattributes$|^LICENSE$|\.md$)'
+
+          n=0
+          while IFS= read -r p; do
+            [ -n "${p}" ] || continue
+            if printf '%s\n' "${p}" | grep -Eq "${ungated}"; then
+              echo "::warning::path ${p} has no CI area"
+              n=$((n + 1))
+              continue
+            fi
+            printf '%s\n' "${p}" | grep -Eq "${covered}" && continue
+            printf '%s\n' "${p}" | grep -Eq "${exempt}" && continue
+            echo "::warning::path ${p} has no CI area"
+            n=$((n + 1))
+          done <<< "$(git diff --name-only "${base}" "${head}" || true)"
+
+          echo "${n} changed path(s) with no CI area."
+          exit 0
 
   corpan-app:
     name: corpan-app · tsc + build
@@ -96,6 +319,17 @@ jobs:
       - name: Install
         working-directory: corpan/corpan-app
         run: npm ci
+      # The corpan-app test/build graph imports @shared/capabilities (the
+      # journey capability modules), which is its own npm workspace — without
+      # its node_modules the app's tests fail on unresolved imports (the
+      # integration two-failure lesson).
+      - name: Install capabilities workspace
+        working-directory: corpan/packs/shared/capabilities
+        run: npm ci
+      # Journey activity-contract drift gate: every generated copy of
+      # activityContract.ts must match the authoritative corpan-app source.
+      - name: Contract sync check
+        run: node corpan/packs/sdk/sync-contract.mjs --check
       - name: Test
         working-directory: corpan/corpan-app
         run: npm test
@@ -135,6 +369,174 @@ jobs:
         # placeholder that would need a full Django install + DB) — keeping the
         # gate fast and unable to jam the queue.
         run: python -m pytest cor/utils -q
+
+  # Unit tests for the adversarial-review gate (.github/scripts). That script is
+  # a required status check whose regression mode is to pass wrongly, which no
+  # other job can detect — these assertions are the only signal. stdlib + pytest
+  # only (the script itself has no third-party deps), so it is fast and cannot
+  # jam the merge queue. Needs fetch-depth: 0 — the range tests build a real
+  # throwaway repo, but `git` must be usable from the checkout.
+  ci-scripts:
+    name: ci-scripts · tests
+    needs: changes
+    if: needs.changes.outputs.ci_scripts == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test deps (pinned)
+        run: python -m pip install --disable-pip-version-check "pytest==8.3.4"
+      - name: Run CI script tests
+        run: python -m pytest .github/scripts -q
+
+  # Dynawalla's app shell. Node-only, exactly like `corpan-app`: lint, the
+  # native test runner, tsc and a production vite build. It does NOT compile
+  # the Rust under dynawalla/dynawalla-app/src-tauri — the `native` job below
+  # does, with `cargo clippy --locked --all-targets`, so `src-tauri/` paths no
+  # longer fall through to the `uncovered` warning above. Keep this job npm-only.
+  #
+  # Path-gated, and therefore NOT a required status context: it reports into
+  # `ci-gate` below. A required context that never reports on unrelated PRs
+  # blocks the merge queue forever.
+  dynawalla-app:
+    name: dynawalla-app · lint + tsc + test + build
+    needs: changes
+    if: needs.changes.outputs.dynawalla_app == 'true'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the app icon (Git LFS)
+        # `*.png` is Git LFS repo-wide, so a plain checkout leaves a pointer
+        # file where the icon should be. `lfs: true` would pull every sqlite3,
+        # epub and pdf in the monorepo for the sake of 10 kB, so this fetches
+        # the one path that is read twice: `capabilities.test.ts` asserts the
+        # icon's PNG colour type, and the `native` job's tauri-codegen build
+        # decodes the same file. tauri-codegen panics on anything but RGBA,
+        # minutes into the cargo build — this test catches it in seconds.
+        run: git lfs pull --include="dynawalla/dynawalla-app/src-tauri/icons/*"
+      - uses: actions/setup-node@v4
+        with:
+          # Matches dynawalla/dynawalla-app/.nvmrc and the `engines` floor.
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/dynawalla-app/package-lock.json
+      - name: Install
+        working-directory: dynawalla/dynawalla-app
+        run: npm ci
+      - name: Lint
+        working-directory: dynawalla/dynawalla-app
+        run: npm run lint
+      - name: Test
+        working-directory: dynawalla/dynawalla-app
+        run: npm test
+      - name: Typecheck
+        working-directory: dynawalla/dynawalla-app
+        run: npm run tsc
+      - name: Build
+        working-directory: dynawalla/dynawalla-app
+        run: npm run build
+
+  # Drift gate for the committed slice of `src-tauri/gen/android`.
+  #
+  # Three generated files are tracked (Tauri gives Android no
+  # `bundle.android.template` hook, so a build decision has nowhere else to
+  # live), and `tauri android init` does NOT overwrite an existing file. That
+  # is exactly what makes the allowlist survive a CI re-init — and exactly why
+  # a `@tauri-apps/cli` bump that adds a required manifest entry or a required
+  # Gradle block would be dropped SILENTLY and only surface at runtime on a
+  # device. Nothing else in this workflow compiles Android for either app.
+  #
+  # So: regenerate the template into a scratch tree with no committed files
+  # present, and diff it against the baseline recorded at the CLI version the
+  # tracked files were curated from. The job is deliberately cheap — see the
+  # NDK note in the regenerate step; local wall clock for `tauri android init`
+  # this way is ~1.5 s.
+  dynawalla-android-gen:
+    name: dynawalla · gen/android template drift
+    needs: changes
+    if: needs.changes.outputs.dynawalla_android_gen == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/dynawalla-app/package-lock.json
+      - name: Install
+        working-directory: dynawalla/dynawalla-app
+        run: npm ci
+      - name: Regenerate the Android project from the Tauri template
+        working-directory: dynawalla/dynawalla-app
+        run: |
+          set -euo pipefail
+          # `tauri android init` refuses to run without an SDK root and an NDK,
+          # but for `init` it only READS the NDK's source.properties to learn a
+          # version string — it compiles nothing. Verified locally: a directory
+          # containing source.properties alone is accepted, and the three files
+          # it generates are byte-identical to those produced against the real
+          # NDK 28.2.13676358. That keeps this gate at a few seconds and off
+          # the 700 MB sdkmanager download. If a future CLI genuinely needs a
+          # real NDK it will fail loudly here, which is the correct outcome.
+          export ANDROID_HOME="$RUNNER_TEMP/android-sdk"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
+          export NDK_HOME="$RUNNER_TEMP/android-ndk"
+          mkdir -p "$ANDROID_HOME/platforms" "$NDK_HOME"
+          printf 'Pkg.Desc = Android NDK\nPkg.Revision = 28.2.13676358\n' \
+            > "$NDK_HOME/source.properties"
+          rm -rf src-tauri/gen/android
+          npx tauri android init --ci
+      - name: Diff the template against the recorded baseline
+        working-directory: dynawalla/dynawalla-app
+        run: |
+          set -euo pipefail
+          BASE=android-template-baseline
+          GEN=src-tauri/gen/android/app
+
+          RECORDED=$(cat "$BASE/tauri-cli-version.txt")
+          ACTUAL=$(node -p "require('@tauri-apps/cli/package.json').version")
+          echo "@tauri-apps/cli recorded=$RECORDED installed=$ACTUAL"
+
+          drift=0
+          check() {
+            if diff -u "$BASE/$1" "$GEN/$2"; then
+              echo "  $1: unchanged"
+            else
+              echo "::error::the Tauri Android template moved for $1"
+              drift=1
+            fi
+          }
+          check build.gradle.kts build.gradle.kts
+          check AndroidManifest.xml src/main/AndroidManifest.xml
+          check MainActivity.kt src/main/java/inc/corpora/dynawalla/MainActivity.kt
+
+          if [ "$drift" -ne 0 ]; then
+            {
+              echo "The generated Android project no longer matches"
+              echo "$BASE, which was recorded at @tauri-apps/cli $RECORDED"
+              echo "(installed here: $ACTUAL)."
+              echo
+              echo "This is NOT automatically a bug — it is the one moment the"
+              echo "silently-stale committed files can be caught. Re-curate:"
+              echo "  1. read the diff above; decide what the new template adds"
+              echo "  2. fold the additions into the tracked files under"
+              echo "     dynawalla/dynawalla-app/src-tauri/gen/android/"
+              echo "  3. copy the newly generated files over $BASE/"
+              echo "  4. write the new CLI version into $BASE/tauri-cli-version.txt"
+            } >&2
+            exit 1
+          fi
+          [ "$RECORDED" = "$ACTUAL" ] || {
+            echo "::error::@tauri-apps/cli moved $RECORDED -> $ACTUAL but the template did not."
+            echo "Re-record it: printf '%s\\n' \"$ACTUAL\" > $BASE/tauri-cli-version.txt" >&2
+            exit 1
+          }
+          echo "gen/android is in sync with the @tauri-apps/cli $ACTUAL template."
 
   lambda:
     name: lambda · tests
@@ -281,13 +683,618 @@ jobs:
       - name: Validate pack ids + artwork against the catalog
         run: node .github/scripts/pack_catalog_check.js
 
+  # Dynawalla curriculum: the skill graph, the generator families, the mal-rules
+  # and `dw-curriculum check`. Pure TypeScript with no DOM and no Tauri, so this is
+  # npm ci plus Node's own test runner — no vitest, matching corpan-app. Node 24 is
+  # what dynawalla's `engines` pins and what its `--experimental-strip-types` tests
+  # are written against.
+  #
+  # Two runners, because CG-16 is a claim about two operating systems: generators
+  # run in a WebView on iOS, Android and desktop, and output that is not
+  # platform-stable makes every committed golden transcript and every bug report
+  # irreproducible. Verifying the committed hashes on one runner would only prove
+  # they match whichever machine happened to write them. `fail-fast: false` so a
+  # divergence shows which side diverged. ci-gate takes the combined result of the
+  # matrix, so this is still one entry in its `needs` and no new required context.
+  dynawalla-curriculum:
+    name: dynawalla-curriculum · tests + gates (${{ matrix.os }})
+    needs: changes
+    if: needs.changes.outputs.dynawalla_curriculum == 'true'
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/curriculum/package-lock.json
+      - name: Install
+        working-directory: dynawalla/curriculum
+        run: npm ci
+      - name: Test
+        working-directory: dynawalla/curriculum
+        run: npm test
+      - name: Typecheck
+        working-directory: dynawalla/curriculum
+        run: npm run tsc
+      - name: Curriculum gates
+        working-directory: dynawalla/curriculum
+        run: npm run check
+
+  # Dynawalla learner model. Independent of the curriculum job on purpose: the two
+  # packages do not import each other, so a curriculum edit must not rebuild the
+  # engine or vice versa. The engine carries its own copy of the float and purity
+  # scan (`src/boundary.test.ts`, gate EG-1) so an engine-only PR is fully covered
+  # by this job alone.
+  dynawalla-engine:
+    name: dynawalla-engine · tests
+    needs: changes
+    if: needs.changes.outputs.dynawalla_engine == 'true'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: dynawalla/engine/package-lock.json
+      - name: Install
+        working-directory: dynawalla/engine
+        run: npm ci
+      - name: Test
+        working-directory: dynawalla/engine
+        run: npm test
+      - name: Typecheck
+        working-directory: dynawalla/engine
+        run: npm run tsc
+
+  # Dynawalla's games and the pack pipeline that ships them.
+  #
+  # Before this job, `dynawalla/games/**` and `dynawalla/packs/**` matched no
+  # area filter and were exercised by no job at all. Two consequences, both
+  # measured on this branch:
+  #
+  #   * 201 tests across the five games and 52 in the pack SDK ran nowhere. A
+  #     game could be merged with a red test suite and nothing would say so.
+  #   * `npm run packs` — the build that produces every shipped pack — first
+  #     ran during a RELEASE. `src-tauri/tauri.conf.json` sets
+  #     "beforeBuildCommand": "npm run packs && npm run tsc && npm run build",
+  #     so the pipeline's first execution on any change was inside the iOS
+  #     archive step: about 45 minutes in, on a macOS runner, after signing.
+  #     `packs/build.mjs` runs `dw-pack check` on every pack and treats a
+  #     failure as a failed build ("a pack that does not pass is a failed
+  #     build, not a warning"), so a malformed pack.json written on a Tuesday
+  #     surfaced as a dead release on a Friday.
+  #
+  # Path-gated like every sibling, and therefore NOT a required status context:
+  # it reports into `ci-gate` below, which always runs and treats a skip as a
+  # pass. Adding a `needs` entry there adds coverage without adding a context
+  # branch protection waits on, so the merge queue cannot deadlock on it.
+  #
+  # No `git lfs pull` step, unlike `dynawalla-app` and `native`: `git ls-files
+  # dynawalla/games dynawalla/packs | git check-attr --stdin filter` reports
+  # nothing under LFS, so there is no pointer file for a build to embed. Add
+  # one the moment a game commits its first PNG.
+  dynawalla-packs:
+    name: dynawalla-packs · games + pack build
+    needs: changes
+    if: needs.changes.outputs.dynawalla_packs == 'true'
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # Node 24 is not a preference here: `packs/sdk` and `games/slice`
+          # both pin `engines.node >= 24`, and every test script in this tree
+          # runs TypeScript directly under `--experimental-strip-types`.
+          node-version: "24"
+          cache: "npm"
+          # A cache KEY, not an install manifest. Not every game commits a
+          # lockfile (`packs/build.mjs` falls back to `npm install` when one is
+          # absent, and the install loop below makes the same choice), so this
+          # glob deliberately matches a subset. It only has to change when a
+          # dependency changes; a game with no lock simply contributes nothing
+          # to the key.
+          cache-dependency-path: dynawalla/games/*/package-lock.json
+      # The SDK first, because it is the contract the rest of this job checks
+      # against: the manifest schema, the capability table, the wire protocol,
+      # and `bin/dw-pack.mjs` — the checker the pack build runs as its gate.
+      # Its own tests are the only thing that can catch a checker that stopped
+      # checking, which is the failure mode that passes wrongly.
+      - name: Install, test and typecheck the pack SDK
+        working-directory: dynawalla/packs/sdk
+        # `npm install`, not `npm ci`: the SDK commits no lockfile. Its only
+        # dependencies are typescript and @types/node, both devDependencies.
+        run: |
+          set -euo pipefail
+          npm install
+          npm test
+          npm run tsc
+      # The shared UI contract, which until now was tested by NOTHING.
+      #
+      # `packs/shared/game-chrome/` is imported by all 27 games for safe-area
+      # insets, the two host-chrome corners and the how-to-play sheet. It had
+      # one test file, `insets.test.ts`, and no job ran it: the `shared_ts`
+      # filter above is `^(shared/|corpan/packs/shared/)`, which does not match
+      # `dynawalla/packs/shared/`, and no game's test glob reaches outside its
+      # own directory. So the module shipped four production defects — the sheet
+      # covering every game at launch, insets reading zero inside the pack
+      # frame, a manual that could not be scrolled, and Escape leaking into the
+      # game — and every one was found by a game adopting it rather than here.
+      #
+      # A directory glob, not a list, for the same reason the game loop below
+      # uses one: the next shared module should be covered by existing in it,
+      # not by somebody remembering to edit this file. `curriculum/` is skipped
+      # because it has its own gated job (`dynawalla-curriculum`) that runs a
+      # superset of this.
+      - name: Install, test and typecheck the shared pack modules
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          manifests=(dynawalla/packs/shared/*/package.json)
+          # Counted BEFORE the loop, exactly like the game loop below. Under
+          # `set -u` an empty array expansion is itself an error on some bash
+          # builds, so a guard placed after the loop reports "unbound variable"
+          # instead of saying what is actually wrong.
+          if [ "${#manifests[@]}" -eq 0 ]; then
+            echo "::error::no package.json under dynawalla/packs/shared/ — this glob has gone stale and the job is passing on nothing."
+            exit 1
+          fi
+          ran=0
+          for manifest in "${manifests[@]}"; do
+            dir="$(dirname "${manifest}")"
+            case "${dir}" in */curriculum) continue ;; esac
+            echo "::group::${dir}"
+            if [ -f "${dir}/package-lock.json" ]; then
+              npm ci --prefix "${dir}"
+            else
+              npm install --prefix "${dir}"
+            fi
+            npm run --prefix "${dir}" test
+            npm run --prefix "${dir}" tsc
+            ran=$((ran + 1))
+            echo "::endgroup::"
+          done
+          if [ "${ran}" -eq 0 ]; then
+            echo "::error::every shared module was skipped — the curriculum exclusion has swallowed the whole glob."
+            exit 1
+          fi
+          echo "${ran} shared module(s) tested."
+      - name: Install, test and typecheck every game
+        run: |
+          set -euo pipefail
+
+          # Discovery is a glob, matching `packs/build.mjs`: "adding the
+          # thousandth pack is adding a directory; there is no register to
+          # forget to edit". A hand-written list of games here would be exactly
+          # that register, and the failure mode of forgetting it is silence.
+          shopt -s nullglob
+          manifests=(dynawalla/games/*/package.json)
+          if [ "${#manifests[@]}" -eq 0 ]; then
+            echo "::error::no games found under dynawalla/games/ — this job's glob has gone stale and it has been passing on nothing."
+            exit 1
+          fi
+          echo "${#manifests[@]} game(s) found."
+
+          for manifest in "${manifests[@]}"; do
+            dir="$(dirname "${manifest}")"
+            echo "::group::${dir}"
+
+            # Read the manifest with fs.readFileSync, never `require()`. A bare
+            # `require("dynawalla/games/forge/package.json")` has no leading
+            # `./`, so Node resolves it as a PACKAGE name, throws, and — with
+            # stderr discarded, which is how this idiom is usually written —
+            # reports "no such script" for every pack forever. That is a live
+            # bug in the `changed-packs` job above; do not copy it down here.
+            node -e '
+              const fs = require("node:fs");
+              const pkg = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+              const missing = ["test", "tsc"].filter((s) => !pkg.scripts?.[s]);
+              if (missing.length > 0) {
+                console.error(`::error::${process.argv[1]} defines no ${missing.join(" and no ")} script. Every game gates on both — add them rather than removing the game from CI.`);
+                process.exit(1);
+              }
+            ' "${manifest}"
+
+            # `npm ci` where a lock is committed, `npm install` where one is
+            # not — the same branch `packs/build.mjs` takes, so CI installs
+            # what the pack build would install rather than a second opinion
+            # that could resolve differently.
+            if [ -f "${dir}/package-lock.json" ]; then
+              npm ci --prefix "${dir}"
+            else
+              npm install --prefix "${dir}"
+            fi
+
+            npm run --prefix "${dir}" test
+            npm run --prefix "${dir}" tsc
+            echo "::endgroup::"
+          done
+      - name: Build, check and stage every pack
+        working-directory: dynawalla/dynawalla-app
+        # Invoked by name, from the app directory, because that is verbatim
+        # what the release runs through tauri's `beforeBuildCommand`. Calling
+        # `node ../packs/build.mjs` directly here would test the script but not
+        # the wiring, and the wiring is half of what broke.
+        #
+        # No `npm ci` in this directory first, deliberately: the script is
+        # `node ../packs/build.mjs` and needs nothing from the app's
+        # node_modules. Each game's dependencies were installed by the step
+        # above, which is also why build.mjs's own install branch is a no-op by
+        # the time it runs — it installs only when node_modules is missing.
+        run: npm run packs
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # The Rust / native gate.
+  #
+  # Before this job, NOTHING required ran cargo, rustfmt, clippy or rustup —
+  # every Rust change in both shipping apps merged uncompiled, and the first
+  # signal was a release build at store-submission time. `ios-native.yml`
+  # compiles plugin Swift but is advisory, has no `merge_group` trigger and
+  # carries a top-level `paths:` filter (which is why it can never BE required:
+  # it would not report on unrelated PRs and would deadlock the queue forever).
+  #
+  # This job is path-gated, so it is NOT a required status context either. It
+  # reports into `ci-gate`, which is already required and always reports. That
+  # is what makes this safe by construction: adding a `needs` entry to an
+  # always-reporting aggregate adds coverage without adding a context branch
+  # protection is waiting on, so the merge queue cannot deadlock on it.
+  #
+  # SCOPE — deliberately the host target only:
+  #   * `cargo clippy` (not `cargo check`) because clippy IS a check plus lints:
+  #     one compile, both signals. A compile error fails it; lint warnings are
+  #     counted and reported but do NOT fail, so the first PR to touch Rust is
+  #     not blocked by pre-existing debt. See the enforcement note below.
+  #   * Corpán's src-tauri depends on all eleven plugin crates by path, so
+  #     compiling it compiles every plugin. Clippy LINTS only the app crate
+  #     (path deps outside the workspace dir do not get the clippy wrapper);
+  #     the plugins are compile-checked, not linted.
+  #   * `#[cfg(mobile)]` code (each plugin's `mobile.rs`, the Android JNI and
+  #     crash-breadcrumb blocks in Corpán's lib.rs) is NOT compiled here — a
+  #     linux host build takes the `desktop` cfg. iOS Rust+Swift is covered
+  #     advisory-only by ios-native.yml; the Android Rust glue is covered by
+  #     nothing. Closing that needs an NDK on the runner and is its own PR.
+  native:
+    name: native · fmt + compile + clippy
+    needs: changes
+    if: needs.changes.outputs.native == 'true'
+    # Measured on ubuntu-latest: 7m18s stone cold, 4m09s on a full cache match.
+    # 30 is headroom over the cold number on a slow runner while still catching
+    # a hang, rather than burning 45 minutes of queue time before anyone
+    # notices. See the cache step for where the warm time actually goes.
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the app icons (Git LFS)
+        # `*.png` is Git LFS repo-wide (.gitattributes:2), and Tauri's
+        # `generate_context!` decodes the icon during compilation — a pointer
+        # file panics tauri-codegen minutes into the build. Same targeted pull
+        # as the dynawalla-app job; `lfs: true` on checkout would drag every
+        # sqlite3/epub/pdf in the monorepo along for ~20 kB of PNG.
+        run: |
+          git lfs pull \
+            --include="corpan/corpan-app/src-tauri/icons/*,dynawalla/dynawalla-app/src-tauri/icons/*"
+      - name: Toolchain
+        # The runner image ships rustup + stable with rustfmt and clippy. No
+        # third-party toolchain action, no extra download on the happy path;
+        # `component add` is a no-op when they are already present.
+        run: |
+          set -euo pipefail
+          rustup component add rustfmt clippy
+          rustc --version
+          cargo --version
+          cargo fmt --version
+          cargo clippy --version
+      - name: System libraries (Tauri + llama.cpp)
+        # Tauri v2 on Linux links webkit2gtk/soup; llama-cpp-sys-2's build
+        # script drives cmake and bindgen (libclang). `cargo clippy` runs build
+        # scripts, so these are needed for a check-only build too.
+        #
+        # Retried because this job reports into the REQUIRED `ci-gate`, and in
+        # the merge queue a red `ci-gate` ejects the entry under ALLGREEN. A
+        # flaky apt mirror should cost 20 s, not a re-queue. Still fails closed:
+        # `until` is exempt from errexit, and the function returns 1 after the
+        # third attempt.
+        run: |
+          set -euo pipefail
+
+          retry() {
+            local n=0
+            until "$@"; do
+              n=$((n + 1))
+              if [ "${n}" -ge 3 ]; then
+                echo "::error::failed after ${n} attempts: $*"
+                return 1
+              fi
+              echo "attempt ${n} failed, retrying in $((n * 5))s: $*"
+              sleep "$((n * 5))"
+            done
+          }
+
+          retry sudo apt-get update
+          retry sudo apt-get install -y --no-install-recommends \
+            libwebkit2gtk-4.1-dev \
+            libjavascriptcoregtk-4.1-dev \
+            libsoup-3.0-dev \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            libxdo-dev \
+            libssl-dev \
+            cmake \
+            libclang-dev
+      - name: Cache cargo registry + target dirs
+        # SHA-pinned to the commit tag v2.9.1 dereferences to. Keyed
+        # per-workspace; the two src-tauri trees are separate implicit
+        # workspaces with separate lockfiles.
+        uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4
+        with:
+          workspaces: |
+            corpan/corpan-app/src-tauri
+            dynawalla/dynawalla-app/src-tauri
+          cache-all-crates: "true"
+          #
+          # MEASURED CEILING — read this before trying to speed the job up.
+          #
+          # Warm (full cache match) is ~4m15s of which ~156s is Corpán's
+          # compile; stone cold is ~7m. The residual is NOT registry deps: on a
+          # full match cargo still rebuilds every PATH-sourced crate — the
+          # vendored llama-cpp-sys-2 fork (cmake + bindgen over llama.cpp,
+          # the single biggest item), all eleven plugins, and the app crate.
+          # rust-cache strips those from the target dir before saving.
+          #
+          # `cache-workspace-crates: true` was tried and measured: 156s against
+          # 165s, inside the noise, because the plugins live OUTSIDE the
+          # workspace root and are not "workspace crates" by that flag's
+          # definition. It is deliberately not set. The real lever is a
+          # compiler cache (sccache, which also fronts the C++ via
+          # CMAKE_C_COMPILER_LAUNCHER); that is a separate PR with its own
+          # correctness argument.
+          #
+          # Trap for whoever tries: rust-cache does NOT re-save on a full key
+          # match, so a caching change alone appears to do nothing against an
+          # existing cache. Bump `prefix-key` to force a rebuild while
+          # measuring, and note that a PR-event cache is scoped to that PR —
+          # only the `push: main` run populates a cache every PR can read.
+
+      # ── rustfmt, as a ratchet ────────────────────────────────────────────
+      #
+      # Fourteen of the eighteen tracked crates carry pre-existing formatting
+      # debt (see DEBT below), so a blanket `cargo fmt --check` would fail on
+      # day one and get deleted. Instead: every crate NOT on the list is
+      # enforced — including every crate added from here on, since the default
+      # is "enforced" — and the listed ones are reported.
+      #
+      # The list is bidirectional on purpose. Formatting a debt crate without
+      # removing it here FAILS, with the exact line to delete. That is what
+      # keeps the ratchet from rusting open.
+      - name: rustfmt (enforced outside the debt list)
+        run: |
+          set -euo pipefail
+
+          # Pre-existing rustfmt debt. Measured identically under rustfmt 1.8.0
+          # (Rust 1.93, a local checkout) and rustfmt 1.9.0-stable (rustc
+          # 1.97.1, what the runner image shipped for this PR) — the toolchain
+          # is deliberately unpinned, so the bar is "whatever stable rustfmt
+          # ships". rustfmt guarantees output stability within a style edition
+          # and `style_edition` defaults to the crate's `edition`, so the only
+          # thing that can move this list without a code change is bumping a
+          # crate's edition (these span 2021 and 2024). Remove a line the moment
+          # its crate is formatted — CI tells you to.
+          DEBT='corpan/corpan-app/src-tauri
+          corpan/plugins/corpan-asr-contract
+          corpan/plugins/tauri-plugin-asr-native
+          corpan/plugins/tauri-plugin-audio-keepalive
+          corpan/plugins/tauri-plugin-corpan-llm
+          corpan/plugins/tauri-plugin-game-packs
+          corpan/plugins/tauri-plugin-iap
+          corpan/plugins/tauri-plugin-radio-stream
+          corpan/plugins/tauri-plugin-stt
+          corpan/plugins/tauri-plugin-subscriptions
+          corpan/plugins/tauri-plugin-tts
+          corpus-reader/src-tauri
+          homeschool-offline/app/src-tauri
+          homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share'
+
+          # Membership is tested with a here-string, never `printf | grep -q`:
+          # `grep -q` exits on the first match, the producer takes SIGPIPE and
+          # `pipefail` turns a successful lookup into status 141. That has
+          # silently inverted a compliance check in this repo before.
+          seen="$(mktemp)"
+          trap 'rm -f "${seen}"' EXIT
+          fail=0
+          while IFS= read -r manifest; do
+            # `vendor/` is a third-party fork carried verbatim; reformatting it
+            # would fight every rebase against upstream.
+            case "${manifest}" in */vendor/*) continue ;; esac
+            crate="$(dirname "${manifest}")"
+
+            if grep -Fxq -- "${crate}" <<< "${DEBT}"; then
+              listed=true
+              printf '%s\n' "${crate}" >> "${seen}"
+            else
+              listed=false
+            fi
+
+            if cargo fmt --manifest-path "${manifest}" --check > /dev/null 2>&1; then
+              if [ "${listed}" = true ]; then
+                echo "::error::${crate} is now rustfmt-clean — delete it from the DEBT list in .github/workflows/ci.yml so it stays that way."
+                fail=1
+              else
+                echo "  ok    ${crate}"
+              fi
+              continue
+            fi
+
+            # `cargo fmt --check` exits 1 when it finds diffs, so the `|| true`
+            # is load bearing: without it `errexit` kills this step on the
+            # first debt crate, before a single line is printed.
+            hunks="$(
+              { cargo fmt --manifest-path "${manifest}" --check 2>/dev/null || true; } \
+                | sed -n 's/^Diff in .*/x/p' | wc -l | tr -d ' '
+            )"
+            if [ "${listed}" = true ]; then
+              echo "::warning::${crate} has ${hunks} rustfmt diff(s) (known debt)"
+              echo "  debt  ${crate} (${hunks} diffs)"
+            else
+              echo "::error::${crate} is not rustfmt-clean. Run: cargo fmt --manifest-path ${manifest}"
+              fail=1
+            fi
+          done < <(git ls-files '*Cargo.toml')
+
+          # A DEBT entry for a crate that no longer exists rots silently.
+          while IFS= read -r entry; do
+            [ -n "${entry}" ] || continue
+            if ! grep -Fxq -- "${entry}" "${seen}"; then
+              echo "::error::DEBT lists ${entry}, which is not a tracked crate. Delete the line."
+              fail=1
+            fi
+          done <<< "${DEBT}"
+
+          exit "${fail}"
+
+      # ── [patch.crates-io] integrity ──────────────────────────────────────
+      #
+      # A Cargo patch that stops matching can be SILENT: when the lock already
+      # carries the `[[patch.unused]]` stanza, `cargo metadata --locked` exits
+      # 0 and the stderr warning is the only signal, and the build compiles,
+      # tests and clippies clean against the upstream crate. This repo has
+      # already lost a vendored fix that way. (Against a CLEAN lock the same
+      # patch exits 101 instead — the script treats both as failures.)
+      # Cheap (~1 s measured, resolution only, no compilation), so it runs
+      # before the long build and fails fast.
+      - name: Cargo [patch] integrity
+        run: python3 .github/scripts/patch_integrity.py
+
+      # ── compile + lint ───────────────────────────────────────────────────
+      #
+      # `--locked` is load-bearing: it fails if the committed lock would have to
+      # move, so CI compiles the versions that ship. It is possible for all four
+      # tracked locks (`git ls-files '*Cargo.lock'` — corpan, corpus-reader,
+      # dynawalla, panko). The two trees compiled here are the two that ship;
+      # `corpus-reader` and `panko` are dormant and `homeschool-offline` tracks
+      # no Cargo.lock at all. See the `ungated` list in the `changes` job.
+      #
+      # `--all-targets` also compiles test and bin targets. On a check-only
+      # build nothing links, so the marginal cost is small and it is what
+      # catches a broken `#[cfg(test)]` module before someone runs the tests.
+      #
+      # Clippy is a BUDGET, not warn-only: CLIPPY_BUDGET below is bidirectional
+      # in the same shape as the rustfmt DEBT list. Over it fails, under it
+      # fails and tells you to lower the number. A count that is printed and
+      # discarded is a log line, not a gate — 16 would drift to 60 unnoticed.
+      - name: Compile + clippy (host target)
+        run: |
+          set -euo pipefail
+
+          # Neither app has a `dist/` in a fresh checkout — the frontends are
+          # built by their own npm jobs, not here. tauri-codegen embeds
+          # whatever is at `frontendDist`; an empty dir keeps this a pure Rust
+          # gate instead of dragging two full npm builds into a compile check.
+          mkdir -p corpan/corpan-app/dist dynawalla/dynawalla-app/dist
+
+          echo "disk before: $(df -h / | sed -n '2p')"
+
+          counts="${RUNNER_TEMP}/clippy-counts.txt"
+          : > "${counts}"
+
+          for app in corpan/corpan-app/src-tauri dynawalla/dynawalla-app/src-tauri; do
+            echo "::group::${app} · cargo clippy --locked --all-targets"
+            started="${SECONDS}"
+            # stdout is the JSON diagnostic stream (rendered + de-duplicated by
+            # the reporter); stderr stays on the job log for cargo's progress
+            # and its final "could not compile" summary. `pipefail` carries
+            # cargo's exit code, so a COMPILE ERROR fails this step while lint
+            # warnings do not — the reporter always exits 0.
+            cargo clippy --locked --all-targets \
+              --manifest-path "${app}/Cargo.toml" \
+              --message-format=json \
+              | python3 .github/scripts/clippy_report.py \
+                  --label "${app}" --count-file "${counts}"
+            echo "${app}: compiled + linted in $(( SECONDS - started ))s"
+            echo "::endgroup::"
+          done
+
+          echo "disk after: $(df -h / | sed -n '2p')"
+
+          # Pre-existing clippy debt across both shipping apps, measured on this
+          # branch: 16 in corpan/corpan-app/src-tauri, 0 in dynawalla's. Every
+          # warning is rendered in the groups above, so a rise names itself.
+          #
+          # Bidirectional, like the rustfmt DEBT list: fixing warnings without
+          # lowering this FAILS, with the number to write. That is what turns
+          # the eventual `-- -D warnings` into a countdown rather than one
+          # heroic PR, and what stops the ratchet rusting open.
+          CLIPPY_BUDGET=16
+
+          total="$(awk '{ s += $1 } END { print s + 0 }' "${counts}")"
+          {
+            echo "### native gate"
+            echo
+            echo "Unique clippy warnings: **${total}** (budget ${CLIPPY_BUDGET})"
+          } >> "${GITHUB_STEP_SUMMARY}"
+          echo "TOTAL unique clippy warnings: ${total} (budget ${CLIPPY_BUDGET})"
+
+          if [ "${total}" -gt "${CLIPPY_BUDGET}" ]; then
+            echo "::error::clippy warnings rose to ${total}, over the budget of ${CLIPPY_BUDGET}. Fix the new warning(s) listed above, or justify raising CLIPPY_BUDGET in .github/workflows/ci.yml."
+            exit 1
+          fi
+          if [ "${total}" -lt "${CLIPPY_BUDGET}" ]; then
+            echo "::error::clippy warnings dropped to ${total}. Lower CLIPPY_BUDGET to ${total} in .github/workflows/ci.yml so the gain is held."
+            exit 1
+          fi
+
+      # ── the pack runtime's own tests ─────────────────────────────────────
+      #
+      # No workflow in this repository ran `cargo test`, at all, until this
+      # step. That is not a theoretical gap: PR 749 added a regression test
+      # asserting the bundled-pack sync stays additive — the thing standing
+      # between a bad refactor and every downloaded pack being uninstalled from
+      # every device at launch — and it had never executed on a pull request.
+      # A test that never runs is a comment.
+      #
+      # Scoped to `packs::` and to the one crate whose pack runtime this is.
+      # `--all-targets` above already compiled these; this links and runs them,
+      # measured at a few seconds after that. Widening it to the whole test
+      # suite of both apps is a separate, larger decision about job time.
+      - name: cargo test (dynawalla pack runtime)
+        working-directory: dynawalla/dynawalla-app/src-tauri
+        # Quoted: a plain YAML scalar ending in a colon is a mapping key, and
+        # `packs::` unquoted is a parse error rather than a filter.
+        run: "cargo test --locked --lib packs::"
+
   # Single summary status that aggregates every job above. THIS is the context to
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
   # Skipped needs are fine; any failure or cancellation fails the gate.
   ci-gate:
     name: ci-gate
-    needs: [changes, corpan-app, dja, lambda, web-io, changed-packs, terraform, pack-catalog]
+    needs:
+      [
+        changes,
+        ci-scripts,
+        corpan-app,
+        dja,
+        dynawalla-app,
+        dynawalla-android-gen,
+        lambda,
+        native,
+        web-io,
+        changed-packs,
+        terraform,
+        pack-catalog,
+        dynawalla-curriculum,
+        dynawalla-engine,
+        dynawalla-packs,
+      ]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:

@@ -1,0 +1,90 @@
+id: en.b1.u25
+arc: en.arc3
+theme: "Both or neither"
+cando:
+  - key: pairs
+    text: "Can say whether something is true of two people or things together, only one of them, or neither, using both, either, and neither."
+  - key: preferences
+    text: "Can say which of two things they prefer, and ask others which they would rather have."
+vocab_band: { lo: 1, hi: 5740 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.pairs-and-choices
+    kind: grammar
+    title: "Pairs & choices"
+    b: -0.1
+    prereqs: [en.skill.quantity]
+grammar_nodes: []
+items:
+  - ref: "phrase:base:26891"  # Both are good.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:12020"  # Do you prefer a bath or a shower?
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:12418"  # I prefer a shower to a bath.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    probe: true
+    b: -0.1
+  - ref: "phrase:base:24155"  # We both agree.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:26892"  # I want both.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:7569"  # The app works on both phones and tablets.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10969"  # My brother and I both enjoy fishing as a hobby.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12371"  # Let’s ask if he prefers tea or coffee.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12351"  # I prefer tea over coffee in the morning.
+    skills: [en.skill.pairs-and-choices]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:both"
+    skills: [en.skill.pairs-and-choices]
+    importance: 2
+  - ref: "word:en:neither"
+    skills: [en.skill.pairs-and-choices]
+    importance: 2
+  - ref: "word:en:either"
+    skills: [en.skill.pairs-and-choices]
+    importance: 2
+  - ref: "word:en:none"
+    skills: [en.skill.pairs-and-choices]
+    importance: 2
+  - ref: "word:en:prefer"
+    skills: [en.skill.pairs-and-choices]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: B1
+      count: 10
+      skills: [en.skill.pairs-and-choices]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit, activityType: match_pairs }

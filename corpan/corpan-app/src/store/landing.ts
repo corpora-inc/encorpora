@@ -16,6 +16,8 @@ export type LandingIntent =
   | { kind: "experience"; packId: string; razzle?: boolean }
   | { kind: "discover" }
   | { kind: "tour" }
+  /** Land directly in the Journey feed (onboarding journey opt-in, W10). */
+  | { kind: "journey" }
 
 /**
  * `razzle` (on `home`/`experience` intents) asks the post-onboarding shell to

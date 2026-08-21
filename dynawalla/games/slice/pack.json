@@ -1,0 +1,41 @@
+{
+  "id": "dynawalla.slice",
+  "version": "0.1.0",
+  "name": "MATH NINJA",
+  "description": "Fruit Ninja with an order to fill. The plate reads 10 + 15 + □ = 33 and the market throws fruit; helpful and decoy gourds look identical, so telling them apart is arithmetic. Nothing is timed, and a dead end is impossible.",
+  "sdk": "1.0.0",
+  "host": {
+    "min": "0.1.0",
+    "max": "1.0.0"
+  },
+  "entry": "pack.html",
+  "capabilities": [
+    "items",
+    "items.reveal",
+    "haptics"
+  ],
+  "covers": {
+    "skills": [
+      "dw.alg.equality.missing-addend",
+      "dw.add.facts.add-within-ten",
+      "dw.add.facts.add-across-ten",
+      "dw.add.facts.subtract-within-ten",
+      "dw.add.facts.subtract-across-ten",
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ]
+  },
+  "minAge": 7,
+  "locales": [
+    "en"
+  ],
+  "build": {
+    "config": "vite.pack.config.ts",
+    "out": "dist-pack"
+  }
+}

@@ -11,6 +11,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   phrases; it now shows every contiguous sub-phrase. Deeper bands stay collapsed
   by default so a long phrase is browsable rather than overwhelming. (Also
   resolves the n-gram-cap half of #465.)
+- **Scratch: the word + START indicators now fade on a silent round** (#421). The
+  loop is rev-quantized to whole revolutions, so a phrase shorter than the loop
+  has a trailing silent pass; the indicators used to keep showing through it,
+  implying audio that wasn't there. They now fade out while the playhead is in
+  the padded tail and return on the sounding round.
+
+### Fixed
+- **Scratch page first-load stalled the main thread → brief audio glitch** (#396),
+  even on high-end devices. Loading a snippet ran one uninterrupted synchronous
+  block — two full-waveform word-span passes + buffer-padding + deck build — right
+  as `decodeAudioData` resolved, contending with the running audio callback. Load
+  now **builds and holds the deck first** (so the platter is playable immediately)
+  and **defers the word-span analysis to main-thread idle** (`requestIdleCallback`
+  with a timeout fallback), so the two-pass scan never shares the audio render
+  quantum with the running transport. The master FX bus is also built in a mount
+  effect
+  instead of the render body, so restoring a saved chain no longer constructs Tone
+  nodes synchronously during render.
+- **Recorded held notes played back as zero-length dots** (#397). The ribbon
+  captured only the note-ON (a fixed one-step note) and never measured the hold,
+  so sustained playing collapsed to instant blips. Each finger now remembers the
+  note it laid and, on the next crossing or the release, **extends its duration**
+  to how long it was held (`heldNoteDuration` → an `editNote` patch). Free-timing
+  records the raw held length; quantized recording rounds it to whole steps; a
+  tap still stays one step (no undo churn). Sustains through glides (legato).
+- **Record could get stuck ON after switching instruments** (#391). Two causes:
+  the immersive Ribbon armed a *different* track (the first melodic voice) than
+  the Instruments page / DockRail / home widget (the *selected* voice), so
+  turning Record off on one surface left it armed on another; and the arm was
+  persisted to `localStorage`, so a reload came back silently armed. Now every
+  surface arms the **selected voice**, and arm is **session-scoped** — sticky per
+  voice within a session, but a full app reload always starts OFF (a record arm
+  is mildly destructive; you should never come back quietly recording).
 
 ## [0.7.0] - 2026-06-25
 

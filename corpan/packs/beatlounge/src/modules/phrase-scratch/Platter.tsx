@@ -43,6 +43,9 @@ interface Props {
   words: string[]
   /** Index of the current word (under the needle); −1 if none. */
   currentWord: number
+  /** The playhead is in the padded SILENT round (no audio) — fade the word +
+   *  START indicators so they don't imply sound that isn't there (#421). */
+  silent?: boolean
   /** Language tag for the word labels. */
   langTag?: string
   /** True while a finger is scratching (rim glows). */
@@ -64,6 +67,7 @@ export const Platter = ({
   spans,
   words,
   currentWord,
+  silent = false,
   langTag,
   active,
   onGrab,
@@ -170,7 +174,7 @@ export const Platter = ({
         <div className="bl-scr-grooves" />
         {/* The single START marker — fixed on the disc at the phrase start (t=0). */}
         <span
-          className="bl-scr-start"
+          className={`bl-scr-start${silent ? " is-silent" : ""}`}
           style={{
             ["--bl-scr-sx" as string]: `${startX}%`,
             ["--bl-scr-sy" as string]: `${startY}%`,
@@ -179,7 +183,7 @@ export const Platter = ({
         {wordDots.map((w) => (
           <span
             key={w.i}
-            className={`bl-scr-word${w.i === currentWord ? " is-cur" : ""}`}
+            className={`bl-scr-word${w.i === currentWord ? " is-cur" : ""}${silent ? " is-silent" : ""}`}
             lang={langTag}
             style={{
               ["--bl-scr-wx" as string]: `${w.x}%`,

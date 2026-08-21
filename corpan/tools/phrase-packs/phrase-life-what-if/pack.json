@@ -1,0 +1,39 @@
+{
+  "id": "phrase-life-what-if",
+  "version": "0.1.0",
+  "name": "What If",
+  "description": "Imagining and wishing — what you would do in different situations, wishes and regrets, friendly advice, and dreamed-up futures.",
+  "category": "life",
+  "topic": "What If",
+  "icon": "sparkles",
+  "accent_color": "#80cbc4",
+  "channel": "preview",
+  "tags": [
+    "journey",
+    "new"
+  ],
+  "name_localized": {
+    "en": "What If",
+    "es": "¿Y si...?",
+    "fr": "Et si...?",
+    "de": "Was wäre wenn",
+    "pt-BR": "E se...?",
+    "ja": "もしも",
+    "zh-Hans": "如果……会怎样"
+  },
+  "description_localized": {
+    "en": "Imagining and wishing — what you would do in different situations, wishes and regrets, friendly advice, and dreamed-up futures.",
+    "es": "Imaginar y desear: qué harías en distintas situaciones, deseos y arrepentimientos, consejos entre amigos y futuros imaginados.",
+    "fr": "Imaginer et souhaiter : ce que tu ferais dans différentes situations, des souhaits et des regrets, des conseils entre amis et des avenirs rêvés.",
+    "de": "Sich Dinge vorstellen und wünschen — was du in verschiedenen Situationen tun würdest, Wünsche und Bedauern, freundliche Ratschläge und erträumte Zukünfte.",
+    "pt-BR": "Imaginar e desejar: o que você faria em diferentes situações, desejos e arrependimentos, conselhos entre amigos e futuros imaginados.",
+    "ja": "想像して願う — さまざまな状況で自分ならどうするか、願いや後悔、友だちへの助言、そして思い描く未来。",
+    "zh-Hans": "想象与愿望——在不同情境下你会怎么做、心愿与遗憾、朋友间的建议，以及畅想的未来。"
+  },
+  "topic_localized": {
+    "en": "What If",
+    "es": "¿Y si...?",
+    "fr": "Et si...?",
+    "de": "Was wäre wenn"
+  }
+}

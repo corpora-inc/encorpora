@@ -1,0 +1,99 @@
+id: en.b1.u03
+arc: en.arc3
+theme: "How long?"
+cando:
+  - key: duration
+    text: "Can say how long something has been going on, using for and since."
+  - key: result-or-activity
+    text: "Can tell a finished result apart from an activity that might still be going on."
+vocab_band: { lo: 1, hi: 4420 }
+phrase_domains: [health, everyday]
+skills:
+  - id: en.skill.duration
+    kind: grammar
+    title: "Duration"
+    b: -0.7
+    prereqs: [en.skill.before-that]
+grammar_nodes: [en.gn.pres-perf-cont, en.gn.perf-cont-vs-simple]
+items:
+  - ref: "phrase:base:9933"  # I've been waiting here for an hour!
+    skills: [en.skill.duration]
+    importance: 3
+    probe: true
+    b: -0.7
+  - ref: "phrase:base:16480"  # I have been working late every Thursday.
+    skills: [en.skill.duration]
+    importance: 3
+    probe: true
+    b: -0.7
+  - ref: "phrase:base:18296"  # The baby has been sleeping for two hours.
+    skills: [en.skill.duration]
+    importance: 3
+    probe: true
+    b: -0.7
+  - ref: "phrase:base:16117"  # I've been working all day on this project.
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9584"  # We've been waiting all morning for the bus.
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20286"  # I have been reading this book for two weeks.
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:9977"  # She has been cooking all morning for the event.
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-then-and-now:82"  # How long have you been feeling like this?
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-then-and-now:95"  # You look tired — have you been sleeping badly?
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-then-and-now:89"  # She's been feeling much better since the operation.
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-life-then-and-now:79"  # I've been waiting for the bus for twenty minutes.
+    skills: [en.skill.duration]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:lately"
+    skills: [en.skill.duration]
+    importance: 2
+  - ref: "word:en:ache"
+    skills: [en.skill.duration]
+    importance: 2
+  - ref: "word:en:stress"
+    skills: [en.skill.duration]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [health, everyday]
+      level: B1
+      count: 10
+      skills: [en.skill.duration]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.duration]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-pronounce
+  config: { itemset: unit }

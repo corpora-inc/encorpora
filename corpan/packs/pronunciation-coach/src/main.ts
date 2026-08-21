@@ -1,4 +1,7 @@
 import "./styles.css"
+// Base styles for the moved round/result UI (cap-pronounce). The pack's
+// styles.css layers its theme + viewport sizing overrides on capPron- classes.
+import "@shared/capabilities/pronounce/styles.css"
 import type { GameModule, HostApi, StackConfig } from "./sdk/types"
 import { mountParlometron } from "./parlometron"
 // Canonical devConsole lives in `packs/sdk/devConsole.ts` so any pack

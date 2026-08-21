@@ -1,0 +1,26 @@
+# Capture output.
+#
+# The PNGs are ~9 MB per run and every one of them is regenerated in about
+# seventy seconds by `node tools/capture.mjs`. `*.png` is Git LFS repo-wide, so
+# committing them would push ten megabytes of LFS objects on every design pass
+# to preserve something that is derived, not authored.
+#
+# What IS committed is the tool, the harness it builds, `shots/AUDIT.md` and
+# `shots/measurements.json` — the findings and the numbers behind them, which
+# are the parts a reviewer needs without a machine to run Chrome on.
+shots/**/*.png
+
+# The per-agent write-ups and the raw measurement dump are working notes from one
+# design pass, not a record the next reader needs: together they are 1.3 MB, which
+# alone pushes a PR past the point where `adversarial-review` truncates the diff
+# and reviews nothing. `AUDIT.md` is kept — it is the findings in prose. The
+# numbers behind it are one `node tools/capture.mjs` away.
+shots/measurements.json
+shots/CRAFT-*.md
+shots/VERIFY-*.md
+shots/REPAIR.md
+shots/FOUNDATION.md
+.harness-dist/
+
+# Scratch output of `--probe=`: a question somebody asked once, not a record.
+shots/probe.json

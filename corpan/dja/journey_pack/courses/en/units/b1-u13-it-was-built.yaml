@@ -1,0 +1,96 @@
+id: en.b1.u13
+arc: en.arc3
+theme: "It was built"
+cando:
+  - key: built
+    text: "Can describe when and how something was built, made, written, or discovered, using the past passive."
+  - key: passive-by
+    text: "Can add the doer to a past passive sentence with by, only when that detail is the news."
+vocab_band: { lo: 1, hi: 5020 }
+phrase_domains: [culture, travel]
+skills:
+  - id: en.skill.history-passive
+    kind: grammar
+    title: "The history passive"
+    b: -0.4
+    prereqs: [en.skill.processes]
+grammar_nodes: [en.gn.passive-past, en.gn.passive-by]
+items:
+  - ref: "phrase:base:15259"  # The station was built over 100 years ago.
+    skills: [en.skill.history-passive]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:18557"  # The wall was built hundreds of years ago.
+    skills: [en.skill.history-passive]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:21287"  # The song was written by a famous artist.
+    skills: [en.skill.history-passive]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:17224"  # The club was founded in 1995 by a group of students.
+    skills: [en.skill.history-passive]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:15321"  # The film was made with a very low budget.
+    skills: [en.skill.history-passive]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16875"  # The university was founded over 100 years ago.
+    skills: [en.skill.history-passive]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16418"  # This product was made in Japan.
+    skills: [en.skill.history-passive]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:century"
+    skills: [en.skill.history-passive]
+    importance: 2
+  - ref: "word:en:ancient"
+    skills: [en.skill.history-passive]
+    importance: 2
+  - ref: "word:en:monument"
+    skills: [en.skill.history-passive]
+    importance: 2
+  - ref: "word:en:discover"
+    skills: [en.skill.history-passive]
+    importance: 2
+  - ref: "word:en:founded"
+    skills: [en.skill.history-passive]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [culture, travel]
+      level: B1
+      count: 10
+      skills: [en.skill.history-passive]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.history-passive]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      level: B1
+      count: 8
+      skills: [en.skill.history-passive]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: earthgate
+  config: { itemset: unit }

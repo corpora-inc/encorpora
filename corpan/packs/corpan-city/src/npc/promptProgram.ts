@@ -28,7 +28,7 @@ import {
 import { segueChipLabel, resolveSegue } from "./challengeSegues"
 import { targetLanguageDirective } from "./promptLocale"
 import { roleTermFor } from "./personaGen"
-import { isCrossLanguageTool } from "../challenges/registry"
+import { isCrossLanguageTool, isDisabledTool } from "../challenges/registry"
 
 /**
  * The optional persona-enrichment a `GeneratedPersona` (from personaGen) carries
@@ -170,10 +170,16 @@ export function resolveToolWhitelist(
   personaTools: readonly ChallengeToolId[] | undefined,
   questTools: readonly ChallengeToolId[],
 ): ChallengeToolId[] {
-  const persona = personaTools ?? []
-  if (persona.length === 0) return [...questTools]
-  if (questTools.length === 0) return [...persona]
-  const inter = persona.filter((t) => questTools.includes(t))
+  // DISABLED tools (see DISABLED_TOOL_IDS in ../challenges/registry — e.g.
+  // odd-one-out, unsolvable pending a rebuild) are dropped from BOTH sides here,
+  // the single chokepoint every NPC/quest selection path routes through, so a
+  // disabled tool can never be sprung or listed in the LLM tool-protocol prompt —
+  // even if a persona still names it. Re-enable by removing it from that set.
+  const persona = (personaTools ?? []).filter((t) => !isDisabledTool(t))
+  const quest = questTools.filter((t) => !isDisabledTool(t))
+  if (persona.length === 0) return [...quest]
+  if (quest.length === 0) return [...persona]
+  const inter = persona.filter((t) => quest.includes(t))
   return inter.length ? inter : [...persona]
 }
 

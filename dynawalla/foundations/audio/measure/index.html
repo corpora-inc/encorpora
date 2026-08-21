@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dynawalla audio — measurement harness</title>
+    <style>
+      body {
+        background: #0d0b12;
+        color: #e8dcc8;
+        font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+        margin: 0;
+        padding: 24px;
+      }
+      h1 { font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: #c9a227; }
+      button {
+        background: #1b1725; color: #e8dcc8; border: 1px solid #3a3050;
+        padding: 8px 14px; margin: 0 6px 6px 0; cursor: pointer; font: inherit;
+      }
+      button:hover { border-color: #c9a227; }
+      pre { white-space: pre-wrap; word-break: break-word; background: #120f19; padding: 12px; border: 1px solid #2a2338; }
+    </style>
+  </head>
+  <body>
+    <h1>Dynawalla audio — measurement harness</h1>
+    <div id="controls"></div>
+    <pre id="out">ready</pre>
+    <script type="module">
+      import { install } from "./harness.ts"
+      install()
+      const out = document.getElementById("out")
+      const log = (o) => { out.textContent = typeof o === "string" ? o : JSON.stringify(o, null, 2) }
+      window.log = log
+      const controls = document.getElementById("controls")
+      const add = (name, fn) => {
+        const b = document.createElement("button")
+        b.textContent = name
+        b.onclick = async () => { log("running " + name + " ...") ; try { log(await fn()) } catch (e) { log(String(e && e.stack || e)) } }
+        controls.appendChild(b)
+      }
+      add("live kit", async () => {
+        const kit = new window.DW.AudioKit()
+        await kit.init()
+        window.kit = kit
+        await kit.resume()
+        return { tier: kit.tier, stats: kit.stats, latency: await window.DW.measureLiveLatency(kit) }
+      })
+      add("modal T60", () => window.DW.measureModalT60())
+      add("string tuning", () => window.DW.measureStringTuning())
+      add("native KS ceiling", () => window.DW.measureNativeKarplusCeiling())
+      add("load: busy", () => window.DW.measureLoad("busy"))
+      add("load: chaos", () => window.DW.measureLoad("chaos"))
+      add("limiter", () => window.DW.measureLimiter())
+      add("library", () => window.DW.measureLibrary())
+    </script>
+  </body>
+</html>

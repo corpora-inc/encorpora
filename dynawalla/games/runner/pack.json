@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.runner",
+  "version": "0.1.0",
+  "name": "VOLTA",
+  "description": "An endless night run along a black glass causeway. Every few seconds a gate array spans the track with a number over each lane and exactly one of them is right — so the lane you are in when you cross is the answer you gave. There is no keypad and no menu: steering is answering.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ]
+  },
+  "minAge": 7,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

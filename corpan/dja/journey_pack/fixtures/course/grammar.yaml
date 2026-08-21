@@ -1,0 +1,28 @@
+# FIXTURE grammar-node graph (A1 micro-slice).
+nodes:
+  - id: en.gn.be-statements
+    skill: en.skill.be-statements
+    order: 1
+    cefr: A1
+    title: "Statements with 'be'"
+    note: >-
+      Use am, is, and are to say who or what something is: I am ready, the
+      shop is open, we are here. 'Be' changes with the subject — I am, he or
+      she is, you and we and they are.
+  - id: en.gn.present-simple-12p
+    skill: en.skill.present-simple
+    order: 2
+    cefr: A1
+    title: "Present simple: I / you / we / they"
+    note: >-
+      For habits and facts, use the base verb with I, you, we, and they:
+      I smile, you want, we drink. No ending is added for these subjects —
+      the verb stays in its plain form.
+  - id: en.gn.plural-nouns
+    skill: en.skill.present-simple
+    order: 3
+    cefr: A1
+    title: "Plural nouns with -s"
+    note: >-
+      Most English nouns add -s for more than one: cup and cups, name and
+      names. A few common nouns change instead, like person and people.

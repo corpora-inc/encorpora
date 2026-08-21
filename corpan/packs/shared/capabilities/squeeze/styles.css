@@ -1,0 +1,400 @@
+/* cap-squeeze — every selector starts with .capSqz- (§2.4). MOVED from
+   packs/juice-squeeze/src/game.css (jsf-target / jsf-sentence / jsf-row /
+   jsf-bank / jsf-block rule sets, renamed at move time); juice-squeeze
+   layers its viewport-scaled sizing + layout-band overrides in game.css.
+   Container-relative only: no fixed positioning, no viewport units, no
+   safe-area env(). Defensive baseline on the root: identical under
+   Tailwind preflight and bare UA styles. */
+
+.capSqz-root {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  isolation: isolate;
+  font-family:
+    "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Helvetica Neue", "Hiragino Sans", "Noto Sans", Roboto,
+    system-ui, sans-serif;
+  line-height: 1.4;
+  color: #33302b;
+}
+.capSqz-root *,
+.capSqz-root *::before,
+.capSqz-root *::after {
+  box-sizing: border-box;
+}
+
+/* The self-contained round layout (capability mounts). The juice-squeeze pack
+   does NOT use .capSqz-round — it composes the pieces inside its own
+   GameLayout bands. */
+.capSqz-round {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  min-height: 0;
+  overflow: hidden;
+}
+.capSqz-round--paused {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* ---- Target phrase ---- */
+.capSqz-target {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+  /* The phrase size is governed by useFitText, NOT flex-shrink — so it doesn't
+     steal shrink from the bank. The bank is the sole region that gives way (and
+     scrolls) when space is tight, so it can never clip its last rows. */
+  flex: 0 0 auto;
+  min-height: 0;
+}
+.capSqz-target__text {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.006em;
+  /* Tighter leading reclaims a lot of vertical real estate on multi-line
+     phrases while staying comfortable on short ones. The auto-fit hook pulls
+     this in further (down to ~1.05) for very long ones. */
+  line-height: 1.14;
+  text-wrap: balance;
+  /* ONE BIG JUICE BLOCK: the same glossy pill language as the word-blocks
+     below, filled with the accent gradient (--jc-1 light → --jc-3 dark, set
+     inline from the consumer's accent). White ink with a tight dark emboss
+     reads cleanly + punchy on the saturated color. */
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--jc-1, #ffb84d) 86%, white) 0%,
+    var(--jc-2, #ff9800) 48%,
+    var(--jc-3, #e65100) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--jc-3, #e65100) 70%, black);
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px 22px;
+  box-shadow:
+    0 7px 18px color-mix(in srgb, var(--jc-2, #ff9800) 45%, transparent),
+    0 2px 4px rgba(0, 0, 0, 0.16),
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -4px 9px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.42),
+    0 1px 6px rgba(0, 0, 0, 0.22);
+  /* Very long target phrases wrap instead of overflowing. */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 92%;
+  /* No fixed height cap: useFitText shrinks the font + leading exactly enough
+     for the full word bank to fit, ONLY on the large phrases that need it. */
+  align-self: center;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  transition: transform 0.12s cubic-bezier(0.34, 1.5, 0.5, 1), box-shadow 0.15s;
+}
+/* Glossy white top sheen across the block — the word-block ::before gloss. */
+.capSqz-target__text::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 2px;
+  height: 42%;
+  border-radius: 16px 16px 28px 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.capSqz-target__text:active {
+  transform: scale(0.975) translateY(0.5px);
+  box-shadow:
+    0 3px 9px color-mix(in srgb, var(--jc-2, #ff9800) 40%, transparent),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -3px 7px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
+}
+.capSqz-target__build {
+  /* A quiet, refined caption: the target language's own native name. Widely
+     letterspaced small-caps-feel, hushed warm-bronze, gentle white lift — it
+     supports the headline without competing with it. */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5f6675; /* neutral slate — harmonizes under any juice color */
+  opacity: 0.92;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+/* RTL / CJK native names don't take uppercase or wide Latin tracking well —
+ * relax both so e.g. "العربية" and "日本語" read naturally. */
+.capSqz-target__build[dir="rtl"] {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .capSqz-target__text { transition: none; }
+}
+
+/* ---- Sentence build area ---- */
+/* Wraps to multiple chip rows; capped so a very long built sentence scrolls
+ * instead of pushing the bank off-screen. */
+.capSqz-sentence {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* Natural height — the completion zone grows to show ALL placed blocks, with
+     NO internal scroll and NO clip (it's your answer, it must be fully
+     visible). The tight line spacing (.capSqz-row row-gap) keeps it compact;
+     the WORD BANK is the only region that gives way + scrolls as a last resort
+     when space is tight. */
+  flex: 0 0 auto;
+}
+.capSqz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* Keep the horizontal spacing between blocks, but pull the WRAPPED LINES
+     close together (row-gap) so a full completion zone (e.g. ~55 Chinese
+     chars) stays compact and doesn't squeeze the word bank's last rows off
+     the bottom. Blocks are unchanged in size. */
+  column-gap: 8px;
+  row-gap: 3px;
+  min-height: 50px;
+  padding: 6px 9px;
+  border-radius: 16px;
+  border: 2px dashed rgba(192, 57, 43, 0.38);
+  background: rgba(255, 255, 255, 0.38);
+  transition: background 0.15s, border-color 0.15s;
+}
+.capSqz-row--rtl { flex-direction: row-reverse; }
+.capSqz-row--over {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #c0392b;
+}
+.capSqz-row__placeholder {
+  flex: 1;
+  min-height: 40px;
+}
+
+/* ---- Word bank ---- */
+.capSqz-bank {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Size to CONTENT, not the column: a short (e.g. A0, 4-word) phrase leaves a
+     compact bank, and the freed vertical space becomes visible background
+     instead of an oversized empty bank. */
+  flex: 0 1 auto;
+  /* min-height:0 lets the bank SHRINK below its content height when space is
+     tight (the classic flex-overflow fix) so it scrolls internally instead of
+     pushing its last rows off the bottom. No fixed max-height: the bank simply
+     takes whatever vertical room the (auto-fit) phrase + sentence leave. */
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 11px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.32);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: background 0.15s;
+}
+/* Dense phrases (≥16 words): pull the gap BETWEEN the chips + the bank's own
+   padding in, so more rows fit before we ever resort to shrinking the chips. */
+.capSqz-bank--dense {
+  gap: 4px;
+  padding: 7px;
+}
+/* Empty bank (all words placed): collapse to a thin drop strip — no void, no
+   chrome, no label — so the completion zone reclaims the space. Still a drop
+   target so a word can be returned (tapping a placed block also returns it). */
+.capSqz-bank--empty {
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.capSqz-bank--empty .capSqz-bank__lang {
+  display: none;
+}
+.capSqz-bank--empty .capSqz-bank__empty {
+  min-height: 12px;
+}
+.capSqz-bank--over { background: rgba(255, 255, 255, 0.58); }
+.capSqz-bank__empty { min-height: 40px; width: 100%; }
+/* Build-language tag at the top of the bank — full-width so it sits as a
+   header above the wrapped blocks. Subtle, matching the target label tone. */
+.capSqz-bank__lang {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #b5793c;
+  opacity: 0.85;
+}
+
+/* ---- Word block ---- */
+/*
+ * Glossy fruit pill. Each block sets --capSqz-blk (its palette color) via inline
+ * style; the pill builds depth from it: lightened top → base → darkened
+ * bottom, a subtle white top highlight, a slightly darker border, and a soft
+ * drop shadow. Text is white with a dark shadow so it stays legible even on
+ * the golden-yellow (#FFCE00) block.
+ */
+.capSqz-block {
+  --capSqz-blk: #ff6b35; /* fallback if no inline --capSqz-blk */
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  /* Default font (overridden inline by the auto-fit size from blockSizing). */
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--capSqz-blk) 62%, white) 0%,
+      color-mix(in srgb, var(--capSqz-blk) 92%, white) 32%,
+      var(--capSqz-blk) 58%,
+      color-mix(in srgb, var(--capSqz-blk) 72%, black) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--capSqz-blk) 66%, black);
+  border-radius: 16px;
+  /* Content-sized: padding in `em` scales with the chip's font, so the pill
+     grows to fit its text at any shared font size (no forced width/height). */
+  padding: 0.5em 0.9em;
+  min-height: 2.25em;
+  cursor: grab;
+  /* Crisp but light drop shadow tinted in the block's OWN color (premium,
+     tactile), a soft white top gloss, and an inner bottom shadow for depth. */
+  box-shadow:
+    0 4px 10px color-mix(in srgb, var(--capSqz-blk) 45%, transparent),
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px color-mix(in srgb, var(--capSqz-blk) 60%, black);
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.5),
+    0 0 3px rgba(0, 0, 0, 0.25);
+  /* Keep each chip on one line; NEVER clip — the chip grows to fit its text.
+     Only a giant single word shrinks (via fontForWord) and is capped here. */
+  white-space: nowrap;
+  max-width: 100%;
+  touch-action: none;
+  line-height: 1.1;
+  position: relative;
+}
+/* Glossy white top highlight — a crisp curved sheen across the upper third. */
+.capSqz-block::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 2px;
+  height: 42%;
+  border-radius: 12px 12px 16px 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.18) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.capSqz-block:active { cursor: grabbing; }
+.capSqz-block--over {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.capSqz-block--ghost {
+  opacity: 0.95;
+  transform: scale(1.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  cursor: grabbing;
+}
+
+/* ---- Capability-round chrome (assists / reveal / verdict) ----
+   These exist only in the self-contained round; the pack composes its own
+   controls bar. Verdict is INFORMATION, not celebration (§2.3.5). */
+.capSqz-assists {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex: 0 0 auto;
+}
+.capSqz-assist {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.capSqz-assist:active { transform: scale(0.95); }
+
+.capSqz-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 24, 18, 0.45);
+  cursor: pointer;
+}
+.capSqz-reveal__text {
+  max-width: 88%;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
+  padding: 16px 22px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #33302b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.capSqz-verdict {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #7cb518;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

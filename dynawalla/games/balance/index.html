@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="dark" />
+    <title>Counterpoise</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #07090e;
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #stage {
+        position: fixed;
+        inset: 0;
+        touch-action: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

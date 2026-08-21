@@ -1,6 +1,6 @@
 {
   "name": "encorpora",
-  "version": "1.0.0",
+  "version": "0.20.1",
   "private": true,
   "scripts": {
     "dev": "concurrently -n io,pages,packs,watch,serve \"npm:dev:io\" \"npm:dev:pages\" \"npm:dev:packs\" \"npm:dev:watch-packs\" \"npm:dev:serve\"",

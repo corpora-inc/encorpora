@@ -1,5 +1,6 @@
 import { Sun, Monitor, Moon } from "lucide-react";
 import { useSettingsStore, type Theme } from "@/store/settings";
+import { SegmentedControl } from "@/components/ui/segmented-control";
 import { useTranslation } from "react-i18next";
 
 const OPTIONS: { value: Theme; Icon: typeof Sun; labelKey: string }[] = [
@@ -11,32 +12,25 @@ const OPTIONS: { value: Theme; Icon: typeof Sun; labelKey: string }[] = [
 export function ThemeToggle() {
   const theme = useSettingsStore((s) => s.theme);
   const setTheme = useSettingsStore((s) => s.setTheme);
+  const dir = useSettingsStore((s) => s.dir);
   const { t } = useTranslation();
 
   return (
-    <div className="w-full flex justify-start">
-      <div className="inline-flex rounded-md border border-border p-1 gap-1">
-        {OPTIONS.map(({ value, Icon, labelKey }) => {
-          const active = theme === value;
-          return (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setTheme(value)}
-              className={[
-                "inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition cursor-pointer",
-                active
-                  ? "bg-accent text-accent-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent/50",
-              ].join(" ")}
-              aria-pressed={active}
-            >
-              <Icon size={14} />
-              <span>{t(labelKey, { defaultValue: value })}</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
+    <SegmentedControl<Theme>
+      value={theme}
+      onChange={(v) => setTheme(v)}
+      ariaLabel={t("settings.theme", { defaultValue: "Theme" })}
+      dir={dir()}
+      options={OPTIONS.map(({ value, Icon, labelKey }) => ({
+        value,
+        ariaLabel: t(labelKey, { defaultValue: value }),
+        label: (
+          <>
+            <Icon size={14} className="shrink-0" />
+            <span className="truncate">{t(labelKey, { defaultValue: value })}</span>
+          </>
+        ),
+      }))}
+    />
   );
 }

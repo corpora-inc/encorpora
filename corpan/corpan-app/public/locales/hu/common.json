@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Válassz témákat",
+      "availableSummary": "{{count}} kifejezéscsomag érhető el · ~{{size}} MB",
+      "installAll": "Összes telepítése",
+      "chooseIndividually": "Egyenkénti kiválasztás",
+      "installing": "Telepítés: {{current}}/{{total}}…",
+      "someFailed": "{{count}} csomagot nem sikerült telepíteni. Újrapróbálhatod a Csomagok lapon.",
+      "allInstalled": "A kezdő kifejezéscsomagok már megvannak.",
+      "installed": "Telepítve",
       "loading": "Betöltés…",
       "selectAll": "Mindet kijelölni ({{count}})",
       "clearAll": "Törlés",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Lepj meg!",
         "desc": "Vigyél valami jó helyre."
+      },
+      "journey": {
+        "label": "Kövesd a Journey-t",
+        "desc": "Vezetett kurzus — az app választja minden következő lépést"
+      }
+    },
+    "journey": {
+      "title": "Hogyan szeretnéd tanulni a(z) {{lang}} nyelvet?",
+      "subtitle": "A Journey minden nap új anyagok és ismétlés keverékét kínálja {{lang}} nyelven — kártyáról kártyára.",
+      "guided": {
+        "label": "Vezetett napi útvonal",
+        "desc": "Rövid napi foglalkozás, neked megtervezve.",
+        "unavailable": "A vezetett útvonal még nem érhető el ehhez: {{lang}}."
+      },
+      "explore": {
+        "label": "Saját tempóban",
+        "desc": "Böngéssz magad a történetek, gyakorlatok és játékok között."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "A Plusz tartalmazza",
     "installFailedTitle": "Telepítés sikertelen",
+    "updateUnavailableTitle": "A frissítés nem érhető el",
+    "updateUnavailableDetail": "Ez a letöltés nem egyezett azzal, amit vártunk. Kérjük, próbáld újra később.",
     "installStuckDetail": "Egy ideje nincs előrelépés. Ellenőrizd a kapcsolatodat, és próbáld újra.",
     "installStuckTitle": "Letöltés megakadt",
     "openPack": "{{name}} megnyitása",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample-özd a nyelvet, amit tanulsz. Scratcheld addig, míg beragad."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "A vezetett utad, kártyáról kártyára"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Telepítés ({{size}})",
     "installing": "Telepítés…",
     "installed": "Telepítve",
-    "retry": "Újra"
+    "retry": "Újra",
+    "explains": "{{language}} szavak"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "A vezetett utad, kártyáról kártyára",
+    "heroCard": {
+      "title": "A te Journey-d",
+      "progress": "{{unit}} · még {{count}} a következő mérföldkőig"
+    },
+    "heroCta": {
+      "start": "Kezdd el a Journey-d",
+      "continue": "Folytatás"
+    },
+    "chrome": {
+      "home": "Kezdőlap",
+      "menu": "Journey-beállítások",
+      "unit": "{{n}}. egység: {{name}}"
+    },
+    "exercise": {
+      "check": "Ellenőrzés",
+      "continue": "Folytatás",
+      "skipHint": "Húzd újra a kihagyáshoz",
+      "retry": "Próbáld újra",
+      "showAnswer": "Válasz mutatása",
+      "answerWas": "A válasz ez volt",
+      "comeBackNote": "Erre még visszatérünk.",
+      "whyThisCard": "Miért ez a kártya?",
+      "whyNew": "Új elem a jelenlegi egységedből.",
+      "whyReview": "Ismétlés — a ritmus tartja erősen.",
+      "whyRepair": "Második pillantás valami nehézre.",
+      "whyGuided": "A vezetett utad része.",
+      "typeWhatYouHear": "Írd le, amit hallasz",
+      "typeHere": "Írj ide…",
+      "tapToOrder": "Érintsd a szavakat sorrendben",
+      "matchPairs": "Párosítsd a párokat",
+      "flipToReveal": "Érintsd meg a felfedéshez",
+      "knewIt": "Tudtam",
+      "didntKnow": "Még nem",
+      "speakNow": "Beszélj most",
+      "listen": "Hallgasd meg",
+      "listenSlow": "Lassabban",
+      "hint": "Tipp",
+      "correct": "Helyes",
+      "incorrect": "Nem egészen",
+      "pickTranslation": "Válaszd ki a fordítást",
+      "pickWhatYouHear": "Válaszd ki, amit hallottál",
+      "fillTheBlank": "Töltsd ki a hiányt",
+      "newItem": "Új",
+      "reviewedEarlier": "Korábban látott"
+    },
+    "intro": {
+      "listenAndEcho": "Hallgasd meg, majd mondd ki hangosan",
+      "newWord": "Új szó",
+      "newPhrase": "Új mondat"
+    },
+    "interlude": {
+      "gameCue": "Gyors játék · egy mondat",
+      "readerCue": "Gyors olvasás · egy szövegrész"
+    },
+    "grammar": {
+      "noteLabel": "Nyelvtani jegyzet",
+      "tryIt": "Próbáld ki",
+      "contrastLabel": "Összevetve az anyanyelveddel"
+    },
+    "word": {
+      "inContext": "Szövegkörnyezetben",
+      "meaningShow": "Jelentés",
+      "meaningHide": "Elrejtés"
+    },
+    "checkpoint": {
+      "title": "Ellenőrzőpont",
+      "summaryNew": "{{count}} új",
+      "summaryReviews": "{{count}} ismétlés",
+      "done": "Mára ennyi",
+      "keepGoing": "Tovább",
+      "dailyRing": "{{count}} ebben a munkamenetben",
+      "deepSession": "Micsoda elmélyült gyakorlás — az ismétléseid így is, úgy is be vannak ütemezve.",
+      "streakTicked": "{{count}} egymás után ✓",
+      "boss": "Egységpróba",
+      "arcGate": "Ívkapu"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Tökéletes",
+        "nice": "Szép",
+        "brilliant": "Zseniális",
+        "boom": "Bumm",
+        "nailed": "Telitalálat",
+        "unstoppable": "Megállíthatatlan",
+        "onFire": "Lángolsz",
+        "yes": "Igen!",
+        "clean": "Tiszta",
+        "sharp": "Éles",
+        "wow": "Hűha",
+        "magic": "Varázslat"
+      },
+      "combo": "{{count}} egymás után",
+      "perfect": "Tökéletes",
+      "wordsLearned": "{{count}} szó megtanulva",
+      "unitComplete": "Egység kész: {{name}}",
+      "streakDay": "{{count}} egymás után",
+      "placementDone": "Szint megállapítva"
+    },
+    "rare": {
+      "reveal": "Valami különleges…",
+      "etymologyGem": "A szó története",
+      "timeCapsule": {
+        "title": "Időkapszula",
+        "body": "Ezen keményen dolgoztál {{when}} — nézd meg magad most."
+      },
+      "delight": {
+        "newVoice": "Egy másik hang",
+        "didYouNotice": "Észrevetted?"
+      },
+      "miniGame": {
+        "title": "Bónuszkör",
+        "play": "Játék"
+      },
+      "story": {
+        "unlocked": "Kiérdemelted a következő fejezetet",
+        "read": "Olvasd el"
+      }
+    },
+    "placement": {
+      "offerTitle": "Hol kezdjük?",
+      "offerBody": "Néhány gyors kérdés megtalálja a kiindulópontodat. Körülbelül öt perc.",
+      "startNew": "Új vagyok a(z) {{lang}} nyelvben",
+      "placeMe": "Tudok valamennyit {{lang}} nyelven",
+      "skipItem": "Hagyd ki, ha bizonytalan vagy",
+      "doneTitle": "Kiindulópont megtalálva",
+      "doneBody": "Kezdés itt: {{unit}}.",
+      "prelit": "{{count}} már ismert elemmel indulsz.",
+      "redo": "Szintem újraellenőrzése",
+      "aboveTitle": "Túl vagy ezen a kurzuson",
+      "aboveBody": "Ez a kurzus egyelőre kezdő anyagot fed le, te pedig felette jársz. Attól még felfedezheted — új szintek érkeznek.",
+      "aboveFrontier": "A kurzus nagy részén már túl vagy — kezdés itt: {{unit}}."
+    },
+    "path": {
+      "title": "Az utad",
+      "arc": "Ív: {{name}}",
+      "unit": "{{n}}. egység",
+      "locked": "Előrébb",
+      "current": "Itt tartasz",
+      "review": "Érintsd meg az ismétléshez",
+      "mastered": "Erős"
+    },
+    "streak": {
+      "pactTitle": "Vezessünk sorozatot?",
+      "pactBody": "Tartsd a lendületet. Egy pihenőnap kitölti a kihagyást — hetente egyet szerzel.",
+      "pactAccept": "Benne vagyok",
+      "pactDecline": "Köszönöm, nem",
+      "days": "{{count}} egymás után",
+      "restDayEarned": "Pihenőnap megszerezve",
+      "restDayUsed": "{{day}} pihenőnap volt",
+      "repairTitle": "Vedd fel újra a sorozatod",
+      "repairBody": "Fejezz be két gyakorlást a következő {{days}} napban, hogy visszaállítsd a {{count}} napos sorozatodat.",
+      "repairCta": "Kezdés"
+    },
+    "block": {
+      "speakingIntro": "Beszédgyakorlat — {{count}} kártya",
+      "ready": "Kész",
+      "loadingModel": "Mikrofon bemelegítése…",
+      "micPrompt": "A Corpán a mikrofont a kiejtésed értékelésére használja ezen az eszközön.",
+      "sttUnavailable": "A beszédértékelés most nem elérhető — átváltunk hallgatási gyakorlatra."
+    },
+    "quota": {
+      "cardsLeft": "Ma még {{count}} kártya",
+      "plusBody": "A Corpán Plus megszünteti a napi kártyakorlátot."
+    },
+    "welcomeBack": {
+      "title": "Üdv újra",
+      "body": "Az ismétléseid megőrizték erejük {{pct}}%-át. Melegítsünk be."
+    },
+    "tease": {
+      "next": "Legközelebb: {{title}}"
+    },
+    "jump": {
+      "title": "Túl könnyűnek érzed?",
+      "body": "Vállalj egy rövid próbát, hogy előreugorj. Ha nem sikerül, nem veszítesz semmit — pontosan ott maradsz, ahol vagy.",
+      "accept": "Kipróbálom",
+      "decline": "Itt maradok"
+    },
+    "feed": {
+      "caughtUp": "Egyelőre naprakész vagy",
+      "loading": "Kártyáid előkészítése…",
+      "loadError": "A Journey nem töltődött be. Próbáld újra a Kezdőlapról.",
+      "retry": "Próbáld újra"
+    },
+    "popin": {
+      "pronounceTitle": "Ejtsd ki",
+      "close": "Bezárás"
+    },
+    "settings": {
+      "title": "Journey-beállítások",
+      "advanceMode": "Továbblépés",
+      "advanceSwipe": "Húzás a folytatáshoz",
+      "advanceAuto": "Automatikus folytatás",
+      "celebration": "Ünneplések",
+      "celebrationFull": "Teljes",
+      "celebrationReduced": "Visszafogott",
+      "celebrationMinimal": "Minimális",
+      "sounds": "Hangok",
+      "soundsOn": "Be",
+      "soundsOff": "Ki",
+      "listeningMode": "Kihangosított hallgatás",
+      "viewPath": "Út megtekintése",
+      "redoPlacement": "Szintem újraellenőrzése"
+    },
+    "wordPack": {
+      "title": "Szójelentések",
+      "body": "Olvasd el, mit jelentenek a szavak {{language}} nyelven, útközben.",
+      "add": "Hozzáadás ({{size}})",
+      "dismiss": "Most nem",
+      "downloading": "Hozzáadás… {{percent}}%",
+      "failed": "Nem sikerült hozzáadni",
+      "retry": "Próbáld újra"
+    },
+    "imagePack": {
+      "title": "Képek hozzáadása",
+      "body": "Tanulj néhány szót szöveg helyett képekkel.",
+      "dismiss": "Most nem",
+      "add": "Hozzáadás ({{size}})",
+      "downloading": "Hozzáadás… {{percent}}%",
+      "retry": "Próbáld újra",
+      "failed": "Sikertelen hozzáadás"
+    }
   }
 }

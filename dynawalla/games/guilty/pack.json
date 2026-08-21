@@ -1,0 +1,36 @@
+{
+  "id": "dynawalla.guilty",
+  "version": "0.1.0",
+  "name": "GUILTY",
+  "description": "Shoot the Guilty Number. A fixed-position shooter in a bioluminescent trench: the sum descends on four husks, three of them carrying a mistake children actually make, and the bolt has to land on the one that is right.",
+  "sdk": "1.0.0",
+  "host": {
+    "min": "0.1.0",
+    "max": "1.0.0"
+  },
+  "entry": "pack.html",
+  "capabilities": [
+    "items",
+    "items.reveal",
+    "haptics"
+  ],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.mul.multidigit.times-one-digit",
+      "dw.div.whole.divide-exact"
+    ]
+  },
+  "minAge": 8,
+  "locales": [
+    "en"
+  ],
+  "build": {
+    "config": "vite.pack.config.ts",
+    "out": "dist-pack"
+  }
+}

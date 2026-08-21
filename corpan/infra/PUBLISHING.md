@@ -79,7 +79,7 @@ Each narration ZIP contains audio and book data only — **not** the reader code
 
 > **Reader code is deployed separately.** The Stargate Reader JS/CSS bundle
 > (`dist/app.js`, `dist/app.css`) is deployed to GitHub Pages via the
-> `hover-runner-pages.yml` workflow, triggered automatically on push to `main`
+> `deploy-pages.yml` workflow, triggered automatically on push to `main`
 > when files under `corpan/packs/**` change. Narration ZIPs do NOT need to be
 > re-published when the reader code changes — only when audio or book data changes.
 
