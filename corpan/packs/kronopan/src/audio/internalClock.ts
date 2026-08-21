@@ -169,8 +169,11 @@ export class InternalClock implements Clock {
   }
 
   // Play a short pattern (a downbeat, a couple of pulses, a group head) so the
-  // musician can hear the picked voice right away without starting the transport.
+  // musician can hear the picked voice right away. Only when stopped: while the
+  // transport runs, the new voice is already audible on the next click, so a
+  // preview here would just throw extra clicks over the running beat.
   async previewVoice(): Promise<void> {
+    if (this.running) return
     await this.resume()
     const t = this.ctx.currentTime + 0.05
     const gap = 0.17
