@@ -1,10 +1,14 @@
 import { useSettingsStore, ALL_LEVELS } from "@/store/settings"
 import { useLandingStore } from "@/store/landing"
+import { useJourneyStore, courseKeyOf } from "@/store/journey"
+import { packIdForTarget } from "@/util/journeyPack"
 import { useGamesStore } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
 import { trackOnboardingCompleted, trackOnboardingLaunch } from "@/util/analytics"
 import { bestFitExperience } from "./bestFit"
 import { resolveLanding, WHAT_TO_START_INTEREST, type WhatToStart } from "./resolveLanding"
+import { derivePlacement } from "./placement"
+import { isJourneyPackAvailableForTarget } from "@/journey/journeyAvailability"
 import type { OnboardingGraph, NodeCtx } from "./types"
 
 /** The phrase experience pack id (Phase 3). Until it exists as a pack, the
@@ -72,6 +76,24 @@ function commitDraft(ctx: NodeCtx) {
   if (d.skipAutoLaunch) {
     useLandingStore.getState().setLanding({ kind: "tour" })
     trackOnboardingLaunch("home")
+  } else if (d.journeyOptIn) {
+    // Journey opt-in (W10): land straight in the guided feed. An onboarding
+    // "I'm new to {{lang}}" answer pre-declines the in-surface probe offer so
+    // the feed starts at unit 1 without re-asking; "I know some" leaves the
+    // real placement probe to the surface's PlacementFlow.
+    if (d.journeyPlacement === "zero-beginner") {
+      const st = useSettingsStore.getState()
+      const target = st.languages[1] ?? st.languages[0]
+      if (target) {
+        useJourneyStore
+          .getState()
+          .updateCourse(courseKeyOf(st.activeStackId, packIdForTarget(target)), {
+            placementDeclined: true,
+          })
+      }
+    }
+    useLandingStore.getState().setLanding({ kind: "journey" })
+    trackOnboardingLaunch("journey")
   } else if (d.whatToStart) {
     const res = resolveLanding({
       choice: d.whatToStart as WhatToStart,
@@ -160,7 +182,6 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
             goalIntensity: "intensive",
             levels: ALL,
             rate: 0.9,
-            landing: { kind: "experience", packId: PHRASE_PACK_ID },
             preloadPacks: PRELOAD_READERS,
           }),
         next: "pickLearning",
@@ -185,19 +206,19 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       {
         id: "native",
         labelKey: "onboarding.calibrate.enjoyNative",
-        apply: (c) => c.patch({ levels: ALL, rate: 1.0, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ALL, rate: 1.0, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
         id: "comfortable",
         labelKey: "onboarding.calibrate.enjoyComfortable",
-        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
         id: "improving",
         labelKey: "onboarding.calibrate.enjoyImproving",
-        apply: (c) => c.patch({ levels: ["A0", "A1", "A2", "B1"], rate: 0.8, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ["A0", "A1", "A2", "B1"], rate: 0.8, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
@@ -205,7 +226,7 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         // doesn't read yet, or a young child). Gentlest: A0 + slowest speech.
         id: "just_starting",
         labelKey: "onboarding.calibrate.enjoyJustStarting",
-        apply: (c) => c.patch({ levels: ["A0"], rate: 0.5, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ levels: ["A0"], rate: 0.5, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
     ],
@@ -228,19 +249,68 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       {
         id: "never",
         labelKey: "onboarding.calibrate.learnNever",
-        apply: (c) => c.patch({ levels: ["A0"], rate: 0.6, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
-        next: "pickPhrasePacks",
+        apply: (c) => c.patch({ levels: ["A0"], rate: 0.6 }),
+        next: "journeyOptIn",
       },
       {
         id: "a_little",
         labelKey: "onboarding.calibrate.learnLittle",
-        apply: (c) => c.patch({ levels: ["A0", "A1", "A2"], rate: 0.7, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
-        next: "pickPhrasePacks",
+        apply: (c) => c.patch({ levels: ["A0", "A1", "A2"], rate: 0.7 }),
+        next: "journeyOptIn",
       },
       {
         id: "advanced",
         labelKey: "onboarding.calibrate.learnAdvanced",
-        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9, landing: { kind: "experience", packId: PHRASE_PACK_ID } }),
+        apply: (c) => c.patch({ levels: ["A1", "A2", "B1", "B2"], rate: 0.9 }),
+        next: "journeyOptIn",
+      },
+    ],
+  },
+
+  // ── How to learn (W10): the learner path's fork between the guided Journey
+  //    (the primary, planned-for-you happy path) and self-paced browsing. Pure
+  //    data nodes (no engine change); commit honors `journeyOptIn` with a
+  //    `{ kind: "journey" }` landing intent. Guided is listed first on
+  //    purpose — it reads as the default way to learn.
+  //
+  //    Placement is DERIVED from the `calibrateLearn` answer we already have
+  //    (see `derivePlacement`) instead of asking a redundant second "are you
+  //    new / do you know some?" screen — CTO feedback: onboarding asked twice
+  //    whether the user knows the language. A total beginner (A0-only) starts
+  //    at unit 1; any prior exposure is probed by the live PlacementFlow. ──
+  journeyOptIn: {
+    kind: "question",
+    id: "journeyOptIn",
+    titleKey: "onboarding.journey.title",
+    subtitleKey: "onboarding.journey.subtitle",
+    interpolate: (c) => ({ lang: targetLabel(c) }),
+    options: [
+      {
+        id: "guided",
+        labelKey: "onboarding.journey.guided.label",
+        descKey: "onboarding.journey.guided.desc",
+        // Don't offer a dead-end: the guided path needs a course pack (stable or
+        // a preview fallback) for the target language. Optimistic — enabled
+        // while the index check is in flight; if none is published the option
+        // renders disabled with `unavailableKey`. Uses the raw language CODE
+        // from settings (targets() yields display names) — same target the
+        // Journey overlay builds against (languages[1] ?? languages[0]).
+        available: () => isJourneyPackAvailableForTarget(journeyTargetCode()),
+        unavailableKey: "onboarding.journey.guided.unavailable",
+        apply: (c) =>
+          c.patch({ journeyOptIn: true, journeyPlacement: derivePlacement(c.draft.levels) }),
+        next: "pickPhrasePacks",
+      },
+      {
+        id: "explore",
+        labelKey: "onboarding.journey.explore.label",
+        descKey: "onboarding.journey.explore.desc",
+        // Explicitly clear the opt-in: without this, guided → Back → explore
+        // leaves a stale `journeyOptIn: true` in the draft (Back never rolls
+        // the draft back), which would skip `whatToStart` and land the
+        // explorer in the journey feed. (Stale `journeyPlacement` is harmless:
+        // commit only reads it when `journeyOptIn` is truthy.)
+        apply: (c) => c.patch({ journeyOptIn: false }),
         next: "pickPhrasePacks",
       },
     ],
@@ -257,13 +327,13 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       {
         id: "under_13",
         labelKey: "onboarding.calibrate.childUnder13",
-        apply: (c) => c.patch({ ageBand: "under_13", levels: ["A0"], rate: 0.5, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ ageBand: "under_13", levels: ["A0"], rate: 0.5, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
       {
         id: "teen",
         labelKey: "onboarding.calibrate.childTeen",
-        apply: (c) => c.patch({ ageBand: "teen", levels: ["A0", "A1"], rate: 0.6, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        apply: (c) => c.patch({ ageBand: "teen", levels: ["A0", "A1"], rate: 0.6, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
     ],
@@ -290,7 +360,9 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       { id: "wild", labelKey: "onboarding.interests.wild", descKey: "onboarding.interests.wildDesc", icon: "Sparkles" },
     ],
     apply: (c, ids) => c.patch({ interests: ids }),
-    next: "whatToStart",
+    // Journey opt-ins already made their landing call — skip the "where
+    // should we begin?" question and commit straight into the feed.
+    next: (c) => (c.draft.journeyOptIn ? "commit" : "whatToStart"),
   },
 
   // The DETERMINISTIC final question — one tap tells us exactly where to drop
@@ -302,6 +374,13 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
     titleKey: "onboarding.whatToStart.title",
     subtitleKey: "onboarding.whatToStart.subtitle",
     options: [
+      {
+        id: "journey",
+        labelKey: "onboarding.whatToStart.journey.label",
+        descKey: "onboarding.whatToStart.journey.desc",
+        apply: (c) => { c.patch({ whatToStart: "journey" }); preinstallForChoice("journey") },
+        next: "commit",
+      },
       {
         id: "read",
         labelKey: "onboarding.whatToStart.read.label",
@@ -351,4 +430,12 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
 function targetLabel(c: NodeCtx): string {
   const targets = c.targets()
   return targets[0] ?? c.primary()
+}
+
+/** The Journey target language CODE (not display name) — languages[1] after the
+ *  primary, else the single studied language. Mirrors `journeyTargetLang` in
+ *  JourneyOverlay so the availability check gates on the same course pack. */
+function journeyTargetCode(): string {
+  const langs = useSettingsStore.getState().languages
+  return langs[1] ?? langs[0] ?? "en"
 }

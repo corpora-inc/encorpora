@@ -1,0 +1,84 @@
+id: en.b1.u14
+arc: en.arc3
+theme: "He said that…"
+cando:
+  - key: report-speech
+    text: "Can report what someone said, stepping the tense back appropriately."
+  - key: say-or-tell
+    text: "Can choose correctly between say and tell when reporting speech."
+vocab_band: { lo: 1, hi: 5080 }
+phrase_domains: [social, everyday]
+skills:
+  - id: en.skill.reporting
+    kind: grammar
+    title: "Reporting"
+    b: -0.4
+    prereqs: [en.skill.questions-adv, en.skill.before-that]
+grammar_nodes: [en.gn.reported-statements, en.gn.say-vs-tell]
+items:
+  - ref: "phrase:base:9193"  # He told me that he was sick.
+    skills: [en.skill.reporting]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:1727"  # She told me a little secret.
+    skills: [en.skill.reporting]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:7371"  # She told me about her latest adventure.
+    skills: [en.skill.reporting]
+    importance: 3
+    probe: true
+    b: -0.4
+  - ref: "phrase:base:14828"  # He said he couldn't sleep last night.
+    skills: [en.skill.reporting]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10271"  # She told us about her trip to Paris.
+    skills: [en.skill.reporting]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13207"  # She said she lost her favorite hat.
+    skills: [en.skill.reporting]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:message"
+    skills: [en.skill.reporting]
+    importance: 2
+  - ref: "word:en:mention"
+    skills: [en.skill.reporting]
+    importance: 2
+  - ref: "word:en:secret"
+    skills: [en.skill.reporting]
+    importance: 2
+  - ref: "word:en:truth"
+    skills: [en.skill.reporting]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social]
+      level: B1
+      count: 10
+      skills: [en.skill.reporting]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: B1
+      count: 10
+      skills: [en.skill.reporting]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

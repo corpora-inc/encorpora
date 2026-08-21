@@ -1,0 +1,73 @@
+id: en.a2.u27
+arc: en.arc2
+theme: "My year"
+cando:
+  - key: my-year
+    text: "Can give a short spoken and written account of their year: what happened, what has changed, and what comes next."
+vocab_band: { lo: 1, hi: 4289 }
+phrase_domains: [everyday, social, culture]
+items:
+  - ref: "phrase:base:15402"  # I got married last year.
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+    b: -1.4
+  - ref: "phrase:base:19531"  # I will start college next year.
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+    b: -1.4
+  - ref: "phrase:base:10670"  # I want to learn a new language this year.
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+    b: -1.4
+  - ref: "phrase:base:15404"  # They have been married for ten years.
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12172"  # Winter came early this year!
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:19571"  # He was upset because his team lost.
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:17392"  # What do you plan to do next week?
+    skills: [en.skill.past-vs-perfect]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:achieve"
+    skills: [en.skill.past-vs-perfect]
+    importance: 2
+  - ref: "word:en:memory"
+    skills: [en.skill.past-vs-perfect]
+    importance: 2
+  - ref: "word:en:proud"
+    skills: [en.skill.past-vs-perfect]
+    importance: 2
+  - ref: "word:en:progress"
+    skills: [en.skill.past-vs-perfect]
+    importance: 2
+  - ref: "word:en:reflect"
+    skills: [en.skill.past-vs-perfect]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, social, culture]
+      level: A2
+      count: 10
+      skills: [en.skill.past-vs-perfect]
+      importance: 2
+      substitutable: true
+lessons: [core, dialog, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-pronounce
+  config: { itemset: unit }

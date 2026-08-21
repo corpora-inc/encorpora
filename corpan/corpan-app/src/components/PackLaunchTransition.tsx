@@ -20,6 +20,7 @@ import {
   type LucideIcon,
 } from "lucide-react"
 import { triggerHaptic } from "@/util/haptics"
+import { OfflineImage } from "@/components/ui/OfflineImage"
 
 /**
  * The first-launch "razzle-dazzle" — a ~5s premium, full-screen collage that
@@ -143,19 +144,20 @@ function CardFace({
           boxShadow: `0 8px 30px rgba(0,0,0,0.35), 0 0 0 1px ${tint}40`,
         }}
       >
-        {card.imageUrl ? (
-          <img
-            src={card.imageUrl}
-            alt=""
-            aria-hidden="true"
-            draggable={false}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <Icon style={{ height: size * 0.42, width: size * 0.42, color: tint }} />
-          </div>
-        )}
+        <OfflineImage
+          src={card.imageUrl}
+          aria-hidden="true"
+          draggable={false}
+          className="h-full w-full object-cover"
+          fallback={
+            <div
+              className="flex h-full w-full items-center justify-center"
+              style={{ backgroundColor: `${tint}26` }}
+            >
+              <Icon style={{ height: size * 0.42, width: size * 0.42, color: tint }} />
+            </div>
+          }
+        />
       </div>
       {show !== "none" && card.name ? (
         <div

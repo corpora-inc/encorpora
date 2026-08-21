@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    /* Tests run under `node --experimental-strip-types`, so they need Node's
+       globals. The game source deliberately does not: with `process` in scope a
+       module can typecheck and then throw ReferenceError in a WebView. */
+    "types": ["node"]
+  },
+  "include": ["src/**/*.test.ts"],
+  "exclude": []
+}

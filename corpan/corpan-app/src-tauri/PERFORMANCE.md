@@ -14,8 +14,7 @@ here so future work doesn't re-litigate the known-good parts.
   remove. Android 16 KB page-size link args on all 4 ABIs, NDK 28.2 toolchain
   pins, bindgen SDK args. All intentional.
 - **llama-cpp-sys-2 vendored fork**: Android CPU arch raised to
-  `armv8.2-a+dotprod+fp16` (large speedup on Snapdragon) + the `ndk-context`
-  reinit-assert fork. Keep.
+  `armv8.2-a+dotprod+fp16` (large speedup on Snapdragon). Keep.
 
 ## Fixed in 0.17.3
 

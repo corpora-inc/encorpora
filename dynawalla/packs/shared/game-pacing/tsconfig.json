@@ -1,0 +1,30 @@
+{
+  /* The same strictness the app, the SDK and game-chrome are held to, so a type
+     that passes here cannot fail when a game imports the identical file by
+     relative path — which is how every game consumes this module.
+     `erasableSyntaxOnly` keeps every file runnable under
+     `node --experimental-strip-types`.
+
+     No "DOM" in `lib`, unlike game-chrome: this module is pure arithmetic and
+     the absence of the DOM types is the compiler enforcing that promise. */
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "types": ["node"]
+  },
+  "include": ["."]
+}

@@ -1,0 +1,68 @@
+id: en.a1.u02
+arc: en.arc1
+theme: "This is me"
+cando:
+  - key: introduce
+    text: "Can give their name and say simple things about themselves."
+  - key: everyday-objects
+    text: "Can name common everyday objects and ask for them."
+vocab_band: { lo: 1, hi: 400 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.be-statements
+    kind: grammar
+    title: "Statements with 'be'"
+    b: -3.0
+    prereqs: [en.skill.core-sounds]
+  - id: en.skill.everyday-words
+    kind: vocab
+    title: "Everyday words"
+    b: -3.0
+    prereqs: [en.skill.core-sounds]
+grammar_nodes: [en.gn.be-statements]
+items:
+  - ref: "phrase:base:3113"       # My name is John.
+    skills: [en.skill.be-statements]
+    importance: 3
+    probe: true
+  - ref: "phrase:base:5774"       # The shop is open now.
+    skills: [en.skill.be-statements]
+    importance: 3
+    probe: true
+    substitutable: true
+  - ref: "phrase:base:8210"       # Can I have some water?
+    skills: [en.skill.everyday-words]
+    importance: 3
+    probe: true
+  - ref: "phrase:base:1739"       # There is a cup on the counter.
+    skills: [en.skill.everyday-words]
+    importance: 2
+    probe: true
+    substitutable: true
+  - ref: "word:en:water"
+    skills: [en.skill.everyday-words]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A1
+      count: 12
+      skills: [en.skill.everyday-words]
+      importance: 2
+      substitutable: true
+  - auto:
+      kind: word
+      rank_band: [1, 400]
+      count: 6
+      skills: [en.skill.everyday-words]
+      importance: 2
+lessons: [core, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

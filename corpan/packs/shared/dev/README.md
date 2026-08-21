@@ -98,7 +98,8 @@ run with the pack's env var.
 | 8991 | tutomaton | `TUTOMATON_DEV_PORT` |
 | 8992 | melopan | `MELOPAN_DEV_PORT` |
 | 8993 | beatlounge | `BEATLOUNGE_DEV_PORT` |
-| 8994+ | _next pack_ | `<PACK>_DEV_PORT` |
+| 8994 | kronopan | `KRONOPAN_DEV_PORT` |
+| 8995+ | _next pack_ | `<PACK>_DEV_PORT` |
 
 `serve-pack.mjs` exits with a clear message on `EADDRINUSE` — if you see it,
 either a stale `dev:corpan` is still running on that port (an orphaned server

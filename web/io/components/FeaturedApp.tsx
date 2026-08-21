@@ -144,9 +144,21 @@ const FeaturedApps = () => {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {app.description}
                   </p>
+
+                  {/* A platform that is on the way but not yet listed. Said
+                      here rather than as a dead entry in the Install menu,
+                      which would offer a link that goes nowhere.
+
+                      Not `uppercase`: that renders "iOS coming soon" as
+                      "IOS COMING SOON". */}
+                  {app.status && (
+                    <p className="mb-4 text-xs tracking-widest text-gray-400">
+                      {app.status}
+                    </p>
+                  )}
 
                   {app.platforms.length === 0 ? (
                     <Button

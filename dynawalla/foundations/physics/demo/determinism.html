@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><title>determinism probe</title></head>
+  <body style="font:14px ui-monospace,monospace;background:#140d18;color:#efe3cf;padding:16px">
+    <pre id="out">running…</pre>
+    <script type="module">
+      import { createWorld } from "../src/index.ts"
+      const q = new URLSearchParams(location.search)
+      const seed = Number(q.get("seed") ?? 20260726)
+      const steps = Number(q.get("steps") ?? 900)
+      const w = await createWorld({ seed, tier: "mid" })
+      // Kept byte-identical with bench/determinism.mjs `buildScene`.
+      w.ground(20)
+      w.stack({ at: [0, 0], rows: 8, size: 0.28 })
+      w.chain({ from: [-7, 9], links: 18, load: 40 })
+      w.liquid({ at: [3, 12], count: 120, drop: 0.11 })
+      const gun = w.launcher({ at: [-9, 6] })
+      gun.fire({ angle: 0.18, speed: 15 })
+      w.stepExact(steps)
+      const n = w.count
+      const probe = [0, n >> 1, n - 1].map(
+        (i) => [w.transforms[i * 4], w.transforms[i * 4 + 1]].map((v) => v.toExponential(9)).join(","),
+      )
+      globalThis.__det = { hash: w.hash(), probe, bodies: n }
+      document.getElementById("out").textContent = JSON.stringify(globalThis.__det, null, 2)
+    </script>
+  </body>
+</html>

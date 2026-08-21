@@ -97,7 +97,7 @@ From `stargate-reader/` to `books/`: **THREE levels up** (`../../../books/fascin
 **Reader code and narration audio are deployed independently.**
 
 - **Reader code** (`dist/app.js`, `dist/app.css`) deploys to **GitHub Pages** via the
-  `hover-runner-pages.yml` workflow. Push to `main` with changes under `corpan/packs/**`
+  `deploy-pages.yml` workflow. Push to `main` with changes under `corpan/packs/**`
   triggers build + deploy automatically. No narration re-publishing needed.
 
 - **Narration audio** (ZIPs with segments, timestamps, M4A files) deploys to **S3/CloudFront**

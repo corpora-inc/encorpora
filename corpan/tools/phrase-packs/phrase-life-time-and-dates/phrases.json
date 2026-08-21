@@ -1,0 +1,802 @@
+[
+  {
+    "english": "What time is it?",
+    "text": "What time is it?",
+    "level": "A0"
+  },
+  {
+    "english": "It's three o'clock.",
+    "text": "It's three o'clock.",
+    "level": "A0"
+  },
+  {
+    "english": "It's ten o'clock.",
+    "text": "It's ten o'clock.",
+    "level": "A0"
+  },
+  {
+    "english": "It is one o'clock.",
+    "text": "It is one o'clock.",
+    "level": "A0"
+  },
+  {
+    "english": "It's late.",
+    "text": "It's late.",
+    "level": "A0"
+  },
+  {
+    "english": "It's early.",
+    "text": "It's early.",
+    "level": "A0"
+  },
+  {
+    "english": "What day is it today?",
+    "text": "What day is it today?",
+    "level": "A0"
+  },
+  {
+    "english": "Today is Monday.",
+    "text": "Today is Monday.",
+    "level": "A0"
+  },
+  {
+    "english": "Today is Friday.",
+    "text": "Today is Friday.",
+    "level": "A0"
+  },
+  {
+    "english": "Tomorrow is Saturday.",
+    "text": "Tomorrow is Saturday.",
+    "level": "A0"
+  },
+  {
+    "english": "Yesterday was Sunday.",
+    "text": "Yesterday was Sunday.",
+    "level": "A0"
+  },
+  {
+    "english": "See you on Monday.",
+    "text": "See you on Monday.",
+    "level": "A0"
+  },
+  {
+    "english": "See you tomorrow.",
+    "text": "See you tomorrow.",
+    "level": "A0"
+  },
+  {
+    "english": "See you next week.",
+    "text": "See you next week.",
+    "level": "A0"
+  },
+  {
+    "english": "The class is at nine.",
+    "text": "The class is at nine.",
+    "level": "A0"
+  },
+  {
+    "english": "Lunch is at noon.",
+    "text": "Lunch is at noon.",
+    "level": "A0"
+  },
+  {
+    "english": "Dinner is at seven.",
+    "text": "Dinner is at seven.",
+    "level": "A0"
+  },
+  {
+    "english": "I get up at six.",
+    "text": "I get up at six.",
+    "level": "A0"
+  },
+  {
+    "english": "I sleep at ten.",
+    "text": "I sleep at ten.",
+    "level": "A0"
+  },
+  {
+    "english": "It's time to go.",
+    "text": "It's time to go.",
+    "level": "A0"
+  },
+  {
+    "english": "It's time for bed.",
+    "text": "It's time for bed.",
+    "level": "A0"
+  },
+  {
+    "english": "One minute, please.",
+    "text": "One minute, please.",
+    "level": "A0"
+  },
+  {
+    "english": "Wait a moment.",
+    "text": "Wait a moment.",
+    "level": "A0"
+  },
+  {
+    "english": "I'm coming now.",
+    "text": "I'm coming now.",
+    "level": "A0"
+  },
+  {
+    "english": "Not now, later.",
+    "text": "Not now, later.",
+    "level": "A0"
+  },
+  {
+    "english": "When is the party?",
+    "text": "When is the party?",
+    "level": "A0"
+  },
+  {
+    "english": "The party is on Saturday.",
+    "text": "The party is on Saturday.",
+    "level": "A0"
+  },
+  {
+    "english": "My birthday is in May.",
+    "text": "My birthday is in May.",
+    "level": "A0"
+  },
+  {
+    "english": "Happy birthday!",
+    "text": "Happy birthday!",
+    "level": "A0"
+  },
+  {
+    "english": "Happy new year!",
+    "text": "Happy new year!",
+    "level": "A0"
+  },
+  {
+    "english": "It's half past two.",
+    "text": "It's half past two.",
+    "level": "A1"
+  },
+  {
+    "english": "It's a quarter past six.",
+    "text": "It's a quarter past six.",
+    "level": "A1"
+  },
+  {
+    "english": "It's a quarter to nine.",
+    "text": "It's a quarter to nine.",
+    "level": "A1"
+  },
+  {
+    "english": "It's five past ten.",
+    "text": "It's five past ten.",
+    "level": "A1"
+  },
+  {
+    "english": "It's twenty to eight.",
+    "text": "It's twenty to eight.",
+    "level": "A1"
+  },
+  {
+    "english": "It's seven fifteen.",
+    "text": "It's seven fifteen.",
+    "level": "A1"
+  },
+  {
+    "english": "It's nine thirty in the morning.",
+    "text": "It's nine thirty in the morning.",
+    "level": "A1"
+  },
+  {
+    "english": "It's eight in the evening.",
+    "text": "It's eight in the evening.",
+    "level": "A1"
+  },
+  {
+    "english": "Excuse me, do you have the time?",
+    "text": "Excuse me, do you have the time?",
+    "level": "A1"
+  },
+  {
+    "english": "Sorry, I don't have a watch.",
+    "text": "Sorry, I don't have a watch.",
+    "level": "A1"
+  },
+  {
+    "english": "My watch is five minutes fast.",
+    "text": "My watch is five minutes fast.",
+    "level": "A1"
+  },
+  {
+    "english": "That clock is slow.",
+    "text": "That clock is slow.",
+    "level": "A1"
+  },
+  {
+    "english": "What time does the shop open?",
+    "text": "What time does the shop open?",
+    "level": "A1"
+  },
+  {
+    "english": "It opens at half past eight.",
+    "text": "It opens at half past eight.",
+    "level": "A1"
+  },
+  {
+    "english": "What time does the film start?",
+    "text": "What time does the film start?",
+    "level": "A1"
+  },
+  {
+    "english": "The film starts at a quarter to eight.",
+    "text": "The film starts at a quarter to eight.",
+    "level": "A1"
+  },
+  {
+    "english": "The train leaves at six forty.",
+    "text": "The train leaves at six forty.",
+    "level": "A1"
+  },
+  {
+    "english": "The bus comes every ten minutes.",
+    "text": "The bus comes every ten minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "We are ten minutes late.",
+    "text": "We are ten minutes late.",
+    "level": "A1"
+  },
+  {
+    "english": "You are early! The meeting is at three.",
+    "text": "You are early! The meeting is at three.",
+    "level": "A1"
+  },
+  {
+    "english": "The meeting starts in five minutes.",
+    "text": "The meeting starts in five minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "How long is the lesson?",
+    "text": "How long is the lesson?",
+    "level": "A1"
+  },
+  {
+    "english": "It's about an hour.",
+    "text": "It's about an hour.",
+    "level": "A1"
+  },
+  {
+    "english": "The break is fifteen minutes.",
+    "text": "The break is fifteen minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "I work from nine to five.",
+    "text": "I work from nine to five.",
+    "level": "A1"
+  },
+  {
+    "english": "She works at night.",
+    "text": "She works at night.",
+    "level": "A1"
+  },
+  {
+    "english": "He starts work very early in the morning.",
+    "text": "He starts work very early in the morning.",
+    "level": "A1"
+  },
+  {
+    "english": "I have English class on Tuesdays and Thursdays.",
+    "text": "I have English class on Tuesdays and Thursdays.",
+    "level": "A1"
+  },
+  {
+    "english": "What do you do on the weekend?",
+    "text": "What do you do on the weekend?",
+    "level": "A1"
+  },
+  {
+    "english": "On Sundays we visit my grandmother.",
+    "text": "On Sundays we visit my grandmother.",
+    "level": "A1"
+  },
+  {
+    "english": "On Wednesday I play football after school.",
+    "text": "On Wednesday I play football after school.",
+    "level": "A1"
+  },
+  {
+    "english": "There are seven days in a week.",
+    "text": "There are seven days in a week.",
+    "level": "A1"
+  },
+  {
+    "english": "There are twelve months in a year.",
+    "text": "There are twelve months in a year.",
+    "level": "A1"
+  },
+  {
+    "english": "January is the first month of the year.",
+    "text": "January is the first month of the year.",
+    "level": "A1"
+  },
+  {
+    "english": "December is the last month.",
+    "text": "December is the last month.",
+    "level": "A1"
+  },
+  {
+    "english": "My birthday is on the third of July.",
+    "text": "My birthday is on the third of July.",
+    "level": "A1"
+  },
+  {
+    "english": "Her birthday is in October.",
+    "text": "Her birthday is in October.",
+    "level": "A1"
+  },
+  {
+    "english": "When is your birthday?",
+    "text": "When is your birthday?",
+    "level": "A1"
+  },
+  {
+    "english": "What is the date today?",
+    "text": "What is the date today?",
+    "level": "A1"
+  },
+  {
+    "english": "Today is the second of March.",
+    "text": "Today is the second of March.",
+    "level": "A1"
+  },
+  {
+    "english": "It's the twenty-first of June.",
+    "text": "It's the twenty-first of June.",
+    "level": "A1"
+  },
+  {
+    "english": "The exam is on the tenth of April.",
+    "text": "The exam is on the tenth of April.",
+    "level": "A1"
+  },
+  {
+    "english": "School starts in September.",
+    "text": "School starts in September.",
+    "level": "A1"
+  },
+  {
+    "english": "The holidays start next Friday.",
+    "text": "The holidays start next Friday.",
+    "level": "A1"
+  },
+  {
+    "english": "We have a holiday on Thursday.",
+    "text": "We have a holiday on Thursday.",
+    "level": "A1"
+  },
+  {
+    "english": "What are you doing tonight?",
+    "text": "What are you doing tonight?",
+    "level": "A1"
+  },
+  {
+    "english": "Are you free on Saturday afternoon?",
+    "text": "Are you free on Saturday afternoon?",
+    "level": "A1"
+  },
+  {
+    "english": "Yes, I'm free after four.",
+    "text": "Yes, I'm free after four.",
+    "level": "A1"
+  },
+  {
+    "english": "No, sorry, I'm busy on Saturday.",
+    "text": "No, sorry, I'm busy on Saturday.",
+    "level": "A1"
+  },
+  {
+    "english": "Can we meet at half past twelve?",
+    "text": "Can we meet at half past twelve?",
+    "level": "A1"
+  },
+  {
+    "english": "Let's meet in the morning.",
+    "text": "Let's meet in the morning.",
+    "level": "A1"
+  },
+  {
+    "english": "Is ten too early for you?",
+    "text": "Is ten too early for you?",
+    "level": "A1"
+  },
+  {
+    "english": "Ten is perfect. See you then.",
+    "text": "Ten is perfect. See you then.",
+    "level": "A1"
+  },
+  {
+    "english": "Call me in the evening.",
+    "text": "Call me in the evening.",
+    "level": "A1"
+  },
+  {
+    "english": "I go swimming twice a week.",
+    "text": "I go swimming twice a week.",
+    "level": "A1"
+  },
+  {
+    "english": "We see each other once a month.",
+    "text": "We see each other once a month.",
+    "level": "A1"
+  },
+  {
+    "english": "I brush my teeth every morning and every night.",
+    "text": "I brush my teeth every morning and every night.",
+    "level": "A1"
+  },
+  {
+    "english": "He is late for school again.",
+    "text": "He is late for school again.",
+    "level": "A1"
+  },
+  {
+    "english": "Hurry up! We don't have much time.",
+    "text": "Hurry up! We don't have much time.",
+    "level": "A1"
+  },
+  {
+    "english": "Take your time. We have an hour.",
+    "text": "Take your time. We have an hour.",
+    "level": "A1"
+  },
+  {
+    "english": "Last week I was sick.",
+    "text": "Last week I was sick.",
+    "level": "A1"
+  },
+  {
+    "english": "Next month we are moving to a new house.",
+    "text": "Next month we are moving to a new house.",
+    "level": "A1"
+  },
+  {
+    "english": "This year I want to learn English.",
+    "text": "This year I want to learn English.",
+    "level": "A1"
+  },
+  {
+    "english": "In summer the days are long.",
+    "text": "In summer the days are long.",
+    "level": "A1"
+  },
+  {
+    "english": "In winter it gets dark early.",
+    "text": "In winter it gets dark early.",
+    "level": "A1"
+  },
+  {
+    "english": "Spring starts in March here.",
+    "text": "Spring starts in March here.",
+    "level": "A1"
+  },
+  {
+    "english": "My favorite season is autumn.",
+    "text": "My favorite season is autumn.",
+    "level": "A1"
+  },
+  {
+    "english": "The baby sleeps in the afternoon.",
+    "text": "The baby sleeps in the afternoon.",
+    "level": "A1"
+  },
+  {
+    "english": "I read for half an hour before bed.",
+    "text": "I read for half an hour before bed.",
+    "level": "A1"
+  },
+  {
+    "english": "The supermarket is open until nine.",
+    "text": "The supermarket is open until nine.",
+    "level": "A1"
+  },
+  {
+    "english": "The train was delayed by twenty minutes.",
+    "text": "The train was delayed by twenty minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "My appointment is at a quarter past eleven.",
+    "text": "My appointment is at a quarter past eleven.",
+    "level": "A2"
+  },
+  {
+    "english": "I have a doctor's appointment on Friday morning.",
+    "text": "I have a doctor's appointment on Friday morning.",
+    "level": "A2"
+  },
+  {
+    "english": "Can we move the meeting to another day?",
+    "text": "Can we move the meeting to another day?",
+    "level": "A2"
+  },
+  {
+    "english": "Let's put it off until next week.",
+    "text": "Let's put it off until next week.",
+    "level": "A2"
+  },
+  {
+    "english": "The deadline is the end of the month.",
+    "text": "The deadline is the end of the month.",
+    "level": "A2"
+  },
+  {
+    "english": "I finished the report just in time.",
+    "text": "I finished the report just in time.",
+    "level": "A2"
+  },
+  {
+    "english": "She arrived right on time.",
+    "text": "She arrived right on time.",
+    "level": "A2"
+  },
+  {
+    "english": "He turned up an hour late without an excuse.",
+    "text": "He turned up an hour late without an excuse.",
+    "level": "A2"
+  },
+  {
+    "english": "I set my alarm for half past five.",
+    "text": "I set my alarm for half past five.",
+    "level": "A2"
+  },
+  {
+    "english": "I overslept and missed the bus.",
+    "text": "I overslept and missed the bus.",
+    "level": "A2"
+  },
+  {
+    "english": "The bakery opens at dawn.",
+    "text": "The bakery opens at dawn.",
+    "level": "A2"
+  },
+  {
+    "english": "We stayed up past midnight talking.",
+    "text": "We stayed up past midnight talking.",
+    "level": "A2"
+  },
+  {
+    "english": "The store is open twenty-four hours.",
+    "text": "The store is open twenty-four hours.",
+    "level": "A2"
+  },
+  {
+    "english": "The museum is closed on Mondays.",
+    "text": "The museum is closed on Mondays.",
+    "level": "A2"
+  },
+  {
+    "english": "Check the timetable before you leave.",
+    "text": "Check the timetable before you leave.",
+    "level": "A2"
+  },
+  {
+    "english": "The flight lands at ten to six local time.",
+    "text": "The flight lands at ten to six local time.",
+    "level": "A2"
+  },
+  {
+    "english": "What's the time difference between here and Japan?",
+    "text": "What's the time difference between here and Japan?",
+    "level": "A2"
+  },
+  {
+    "english": "Remember to change your clocks this weekend.",
+    "text": "Remember to change your clocks this weekend.",
+    "level": "A2"
+  },
+  {
+    "english": "The days are getting shorter.",
+    "text": "The days are getting shorter.",
+    "level": "A2"
+  },
+  {
+    "english": "How often do you check your phone?",
+    "text": "How often do you check your phone?",
+    "level": "A2"
+  },
+  {
+    "english": "I check it every few minutes, sadly.",
+    "text": "I check it every few minutes, sadly.",
+    "level": "A2"
+  },
+  {
+    "english": "We meet every other Tuesday.",
+    "text": "We meet every other Tuesday.",
+    "level": "A2"
+  },
+  {
+    "english": "The rent is due on the first of each month.",
+    "text": "The rent is due on the first of each month.",
+    "level": "A2"
+  },
+  {
+    "english": "I get paid at the end of the month.",
+    "text": "I get paid at the end of the month.",
+    "level": "A2"
+  },
+  {
+    "english": "My driving lesson lasts ninety minutes.",
+    "text": "My driving lesson lasts ninety minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "The concert went on for three hours.",
+    "text": "The concert went on for three hours.",
+    "level": "A2"
+  },
+  {
+    "english": "It took me two weeks to read that book.",
+    "text": "It took me two weeks to read that book.",
+    "level": "A2"
+  },
+  {
+    "english": "How long does it take to get downtown?",
+    "text": "How long does it take to get downtown?",
+    "level": "A2"
+  },
+  {
+    "english": "It takes about forty minutes by bus.",
+    "text": "It takes about forty minutes by bus.",
+    "level": "A2"
+  },
+  {
+    "english": "I'll be ready in a couple of minutes.",
+    "text": "I'll be ready in a couple of minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "Give me a second to find my keys.",
+    "text": "Give me a second to find my keys.",
+    "level": "A2"
+  },
+  {
+    "english": "At the earliest, I can come on Thursday.",
+    "text": "At the earliest, I can come on Thursday.",
+    "level": "A2"
+  },
+  {
+    "english": "At the latest, be here by eight.",
+    "text": "At the latest, be here by eight.",
+    "level": "A2"
+  },
+  {
+    "english": "We celebrated our anniversary in June.",
+    "text": "We celebrated our anniversary in June.",
+    "level": "A2"
+  },
+  {
+    "english": "My grandparents were born in the same year.",
+    "text": "My grandparents were born in the same year.",
+    "level": "A2"
+  },
+  {
+    "english": "The wedding is planned for early spring.",
+    "text": "The wedding is planned for early spring.",
+    "level": "A2"
+  },
+  {
+    "english": "The course runs from January to April.",
+    "text": "The course runs from January to April.",
+    "level": "A2"
+  },
+  {
+    "english": "I haven't seen her since last summer.",
+    "text": "I haven't seen her since last summer.",
+    "level": "A2"
+  },
+  {
+    "english": "By this time next year, I'll speak English well.",
+    "text": "By this time next year, I'll speak English well.",
+    "level": "A2"
+  },
+  {
+    "english": "I'd rather start early and finish early.",
+    "text": "I'd rather start early and finish early.",
+    "level": "B1"
+  },
+  {
+    "english": "The schedule keeps changing, which makes planning difficult.",
+    "text": "The schedule keeps changing, which makes planning difficult.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you let me know your availability for next week?",
+    "text": "Could you let me know your availability for next week?",
+    "level": "B1"
+  },
+  {
+    "english": "The meeting ran over, so I missed my train.",
+    "text": "The meeting ran over, so I missed my train.",
+    "level": "B1"
+  },
+  {
+    "english": "We're running behind schedule on this project.",
+    "text": "We're running behind schedule on this project.",
+    "level": "B1"
+  },
+  {
+    "english": "I blocked out two hours for studying tonight.",
+    "text": "I blocked out two hours for studying tonight.",
+    "level": "B1"
+  },
+  {
+    "english": "Time seems to pass faster as you get older.",
+    "text": "Time seems to pass faster as you get older.",
+    "level": "B1"
+  },
+  {
+    "english": "In the long run, a little practice each day beats cramming.",
+    "text": "In the long run, a little practice each day beats cramming.",
+    "level": "B1"
+  },
+  {
+    "english": "She juggles work, classes, and family within a tight schedule.",
+    "text": "She juggles work, classes, and family within a tight schedule.",
+    "level": "B1"
+  },
+  {
+    "english": "The trains here run like clockwork.",
+    "text": "The trains here run like clockwork.",
+    "level": "B1"
+  },
+  {
+    "english": "There's no point arriving before the doors open.",
+    "text": "There's no point arriving before the doors open.",
+    "level": "B1"
+  },
+  {
+    "english": "He has a habit of leaving everything until the last minute.",
+    "text": "He has a habit of leaving everything until the last minute.",
+    "level": "B1"
+  },
+  {
+    "english": "Looking back, those summers felt endless.",
+    "text": "Looking back, those summers felt endless.",
+    "level": "B1"
+  },
+  {
+    "english": "Let's schedule a follow-up call for the middle of the month.",
+    "text": "Let's schedule a follow-up call for the middle of the month.",
+    "level": "B1"
+  },
+  {
+    "english": "The offer expires at midnight on the thirty-first.",
+    "text": "The offer expires at midnight on the thirty-first.",
+    "level": "B1"
+  },
+  {
+    "english": "Please allow three to five working days for delivery.",
+    "text": "Please allow three to five working days for delivery.",
+    "level": "B1"
+  },
+  {
+    "english": "The clocks go back an hour in autumn here.",
+    "text": "The clocks go back an hour in autumn here.",
+    "level": "B1"
+  },
+  {
+    "english": "I nearly missed the deadline because of the time difference.",
+    "text": "I nearly missed the deadline because of the time difference.",
+    "level": "B1"
+  },
+  {
+    "english": "We watched the sunrise after staying awake the whole night.",
+    "text": "We watched the sunrise after staying awake the whole night.",
+    "level": "B1"
+  },
+  {
+    "english": "Make the most of your mornings; they set the tone for the day.",
+    "text": "Make the most of your mornings; they set the tone for the day.",
+    "level": "B1"
+  }
+]

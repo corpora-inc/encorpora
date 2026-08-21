@@ -10,3 +10,8 @@ pykakasi==2.3.0
 pypinyin==0.54.0
 transliterate==1.10.2
 unidic-lite==1.0.8
+# journey_pack pipeline (course-pack.md §6.3)
+PyYAML>=6.0
+wordfreq>=3.0
+# boto3 is only needed by dja/journey_pack/publish_journey_pack.py
+

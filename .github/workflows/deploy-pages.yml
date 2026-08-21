@@ -9,6 +9,11 @@ on:
       - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
+      # The Dynawalla pages are generated from these manifests at build time
+      # (web/scripts/generate-dynawalla-games.js). Without this path the site
+      # would keep serving the previous game list after a game is added,
+      # renamed or retired.
+      - "dynawalla/games/*/pack.json"
       - "books/**/pack/manifest.json"
       - "books/**/pack/segments.json"
       - "books/**/pack/narration.yaml"
@@ -242,6 +247,32 @@ jobs:
           zip -r lingo-hero.zip $ZIP_PATHS
           cd ../../..
 
+      - name: Install Wordfall Dependencies
+        working-directory: corpan/packs/wordfall
+        run: npm install --legacy-peer-deps
+
+      - name: Build Wordfall
+        working-directory: corpan/packs/wordfall
+        run: npm run build
+
+      - name: Package Wordfall as ZIP
+        run: |
+          cd corpan/packs/wordfall
+          zip -r wordfall.zip manifest.json dist/
+          cd ../../..
+
+      - name: Install Drift Dependencies
+        working-directory: corpan/packs/drift
+        run: npm install --legacy-peer-deps
+
+      - name: Build Drift
+        working-directory: corpan/packs/drift
+        run: npm run build
+
+      - name: Package Drift
+        working-directory: corpan/packs/drift
+        run: node scripts/pack.mjs
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -364,6 +395,20 @@ jobs:
           cp corpan/packs/pronunciation-coach-0.3.5/manifest.json "web/io/out/corpan/packs/pronunciation-coach-0.3.5/"
           cp -R corpan/packs/pronunciation-coach-0.3.5/dist "web/io/out/corpan/packs/pronunciation-coach-0.3.5/"
           cp corpan/packs/pronunciation-coach-0.3.5/pronunciation-coach-0.3.5.zip "web/io/out/corpan/packs/pronunciation-coach-0.3.5.zip"
+
+      - name: Copy Wordfall into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/wordfall"
+          cp corpan/packs/wordfall/manifest.json "web/io/out/corpan/packs/wordfall/"
+          cp -R corpan/packs/wordfall/dist "web/io/out/corpan/packs/wordfall/"
+          cp corpan/packs/wordfall/wordfall.zip "web/io/out/corpan/packs/wordfall.zip"
+
+      - name: Copy Drift into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/drift"
+          cp corpan/packs/drift/manifest.json "web/io/out/corpan/packs/drift/"
+          cp -R corpan/packs/drift/dist "web/io/out/corpan/packs/drift/"
+          cp corpan/packs/drift/drift.zip "web/io/out/corpan/packs/drift.zip"
 
       - name: Show Final Structure
         run: |

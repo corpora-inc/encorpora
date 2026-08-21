@@ -38,6 +38,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
+      "@shared/capabilities": path.resolve(__dirname, "../shared/capabilities"),
     },
   },
   build: {

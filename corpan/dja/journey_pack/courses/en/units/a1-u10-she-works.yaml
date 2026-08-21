@@ -1,0 +1,80 @@
+id: en.a1.u10
+arc: en.arc1
+theme: "She works"
+cando:
+  - key: jobs
+    text: "Can say what they do for work and ask others about their job."
+vocab_band: { lo: 1, hi: 3200 }
+phrase_domains: [business]
+skills:
+  - id: en.skill.jobs
+    kind: grammar
+    title: "Jobs & work"
+    b: -2.9
+    prereqs: [en.skill.routines]
+grammar_nodes: [en.gn.pres-simple-3sg, en.gn.do-quest, en.gn.do-neg]
+items:
+  - ref: "phrase:base:21864"  # She works at the hospital.
+    skills: [en.skill.jobs]
+    importance: 3
+    probe: true
+    b: -2.9
+  - ref: "phrase:base:21903"  # What is your job?
+    skills: [en.skill.jobs]
+    importance: 3
+    probe: true
+    b: -2.9
+  - ref: "phrase:base:26629"  # She works at the bank.
+    skills: [en.skill.jobs]
+    importance: 3
+    probe: true
+    b: -2.9
+  - ref: "phrase:base:21905"  # I like my job.
+    skills: [en.skill.jobs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22127"  # He doesn't eat much.
+    skills: [en.skill.jobs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21898"  # He doesn't like rain.
+    skills: [en.skill.jobs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:2908"  # The office is on the third floor.
+    skills: [en.skill.jobs]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:job"
+    skills: [en.skill.jobs]
+    importance: 2
+  - ref: "word:en:doctor"
+    skills: [en.skill.jobs]
+    importance: 2
+  - ref: "word:en:teacher"
+    skills: [en.skill.jobs]
+    importance: 2
+  - ref: "word:en:office"
+    skills: [en.skill.jobs]
+    importance: 2
+  - ref: "word:en:work"
+    skills: [en.skill.jobs]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [business]
+      level: A1
+      count: 10
+      skills: [en.skill.jobs]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: lingo_hero
+  config: { itemset: unit }

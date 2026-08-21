@@ -1,0 +1,24 @@
+{
+  "name": "@dynawalla/game-claim",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CLAIM — cut the plane, take exactly the fraction you were asked for.",
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "src/game/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4197 --strictPort",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'test/*.test.ts'",
+    "build:pack": "vite build --config vite.pack.config.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.5"
+  }
+}

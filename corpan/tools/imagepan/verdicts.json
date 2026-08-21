@@ -1,0 +1,489 @@
+{
+  "airport": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "apple": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "bag": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "bank": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "bed": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "beer": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "berry": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "bird": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "black": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "blue": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "book": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "bread": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "breakfast": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "bus": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "cake": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "cat": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "chair": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "child": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "chocolate": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "clock": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "coat": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "coffee": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "concert": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "cook": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "cup": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "dance": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "desk": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "doctor": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "dog": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "dollar": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "door": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "dress": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "eyes": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "family": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "father": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "five": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "flower": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "four": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "fruit": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "garden": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "glass": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "green": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "guitar": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "gym": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "hair": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "hand": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "hat": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "head": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "honey": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "hospital": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "house": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "ice": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "jacket": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "jam": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "key": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "kitchen": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "magazine": {
+    "note": "",
+    "verdict": "reject"
+  },
+  "market": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "milk": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "money": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "mother": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "mountain": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "office": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "one": {
+    "note": "",
+    "verdict": "reject"
+  },
+  "park": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "phone": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "pizza": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "plane": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "plant": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "pool": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "rain": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "red": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "restaurant": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "school": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "sheep": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "ship": {
+    "note": "",
+    "verdict": "reject"
+  },
+  "shirt": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "shoe": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "shop": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "shower": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "sing": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "sky": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "snow": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "station": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "store": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "street": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "sun": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "table": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "tea": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "teacher": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "three": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "ticket": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "train": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "two": {
+    "candidate": 3,
+    "note": "",
+    "verdict": "pick"
+  },
+  "water": {
+    "candidate": 0,
+    "note": "",
+    "verdict": "pick"
+  },
+  "white": {
+    "candidate": 1,
+    "note": "",
+    "verdict": "pick"
+  },
+  "window": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  },
+  "yellow": {
+    "candidate": 2,
+    "note": "",
+    "verdict": "pick"
+  }
+}

@@ -30,7 +30,7 @@ const DOWNLOAD_STALL_TIMEOUT_SECS: u64 = 120;
 /// full-pack and module download paths get the same watchdog and we don't have
 /// a bare `reqwest::Client::new()` (no timeouts → hangs forever on a dead CDN
 /// socket) anywhere in the install path.
-fn download_client() -> Result<reqwest::Client, String> {
+pub(crate) fn download_client() -> Result<reqwest::Client, String> {
     reqwest::Client::builder()
         .connect_timeout(std::time::Duration::from_secs(
             DOWNLOAD_CONNECT_TIMEOUT_SECS,
@@ -111,7 +111,7 @@ fn save_index(root: &Path, index: &ContentPackIndex) -> Result<(), String> {
 /// UNREGISTERED scheme and silently fails to load; the served form is
 /// `http://corpan-pack.localhost/...`. Emitting the platform-correct base here
 /// lets the registered protocol handler serve every pack file natively.
-fn pack_url_base() -> &'static str {
+pub(crate) fn pack_url_base() -> &'static str {
     if cfg!(any(target_os = "android", target_os = "windows")) {
         "http://corpan-pack.localhost/"
     } else {
@@ -752,13 +752,22 @@ pub fn get_manifest_url<R: Runtime>(app: &AppHandle<R>, pack_id: String) -> Resu
 /// deliberately tighter than `sanitize_rel` (which permits nested rel paths)
 /// because a pack id is a single, flat directory name.
 ///
-/// Allowed: non-empty, `[A-Za-z0-9._-]` only, and not exactly `.` or `..`.
+/// Allowed: non-empty, `[A-Za-z0-9._-]` only, not exactly `.` or `..`, and
+/// not a RESERVED top-level dir under corpan-packs/ (the offline cache /
+/// blob-store subtree — see blob_store.rs and specs/offline-cache.md §5: a
+/// catalog entry must never be able to claim `.offline-cache` as its pack id
+/// and write into the cache dir).
 /// Returns the id unchanged on success, a non-leaky error otherwise.
+const RESERVED_PACK_DIRS: &[&str] = &[".offline-cache"];
+
 fn validate_pack_id(pack_id: &str) -> Result<&str, String> {
     if pack_id.is_empty() {
         return Err("Invalid pack id".to_string());
     }
     if pack_id == "." || pack_id == ".." {
+        return Err("Invalid pack id".to_string());
+    }
+    if RESERVED_PACK_DIRS.contains(&pack_id) {
         return Err("Invalid pack id".to_string());
     }
     if !pack_id
@@ -1010,11 +1019,21 @@ mod tests {
             "book_biomes_tropical_savanna",
             "llm-base-qwen3-4b-v1",
             "corpan_city",
+            "journey_en",
             "a",
             "A1.b2_c-3",
         ] {
             assert!(validate_pack_id(id).is_ok(), "should accept {id:?}");
         }
+    }
+
+    #[test]
+    fn validate_pack_id_rejects_reserved_dirs() {
+        // The offline-cache / blob-store subtree can never be a pack id
+        // (specs/offline-cache.md §1.3/§5; absorbed into W1).
+        assert!(validate_pack_id(".offline-cache").is_err());
+        // Dotted-but-unreserved ids keep working.
+        assert!(validate_pack_id("v1.2.3-pack").is_ok());
     }
 
     #[test]

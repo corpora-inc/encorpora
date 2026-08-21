@@ -1,0 +1,36 @@
+{
+  "id": "phrase-people-nationalities",
+  "version": "0.1.0",
+  "name": "People & Nationalities",
+  "description": "Where people are from — countries, nationalities, languages spoken, and getting-to-know-you questions.",
+  "category": "life",
+  "topic": "Nationalities",
+  "icon": "globe",
+  "accent_color": "#90caf9",
+  "channel": "preview",
+  "tags": ["journey", "new"],
+  "name_localized": {
+    "en": "People & Nationalities",
+    "es": "Gente y nacionalidades",
+    "fr": "Gens et nationalités",
+    "de": "Menschen und Nationalitäten",
+    "pt-BR": "Pessoas e nacionalidades",
+    "ja": "人と国籍",
+    "zh-Hans": "人与国籍"
+  },
+  "description_localized": {
+    "en": "Where people are from — countries, nationalities, languages spoken, and getting-to-know-you questions.",
+    "es": "De dónde es la gente: países, nacionalidades, idiomas y preguntas para conocerse.",
+    "fr": "D'où viennent les gens — pays, nationalités, langues parlées et questions pour faire connaissance.",
+    "de": "Woher Menschen kommen — Länder, Nationalitäten, Sprachen und Kennenlernfragen.",
+    "pt-BR": "De onde as pessoas são — países, nacionalidades, idiomas e perguntas para se conhecer.",
+    "ja": "出身地について — 国、国籍、話す言語、知り合うための質問。",
+    "zh-Hans": "人们来自哪里——国家、国籍、语言以及初识时的问题。"
+  },
+  "topic_localized": {
+    "en": "Nationalities",
+    "es": "Nacionalidades",
+    "fr": "Nationalités",
+    "de": "Nationalitäten"
+  }
+}

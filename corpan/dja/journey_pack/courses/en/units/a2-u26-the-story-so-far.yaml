@@ -1,0 +1,60 @@
+id: en.a2.u26
+arc: en.arc2
+theme: "The story so far"
+cando:
+  - key: review
+    text: "Can bring together what's happened, what's required, and what they enjoy doing in one account."
+vocab_band: { lo: 1, hi: 4282 }
+phrase_domains: [everyday, business, culture]
+skills:
+  - id: en.skill.a2-consolidate
+    kind: function
+    title: "Bringing it together"
+    b: -1.0
+    prereqs: [en.skill.celebrations]
+items:
+  - ref: "phrase:base:8251"  # Have you got any plans for the weekend?
+    skills: [en.skill.a2-consolidate]
+    importance: 3
+    probe: true
+    b: -1.0
+  - ref: "phrase:base:23277"  # You must listen.
+    skills: [en.skill.a2-consolidate]
+    importance: 3
+    probe: true
+    b: -1.0
+  - ref: "phrase:base:22682"  # We enjoy walking.
+    skills: [en.skill.a2-consolidate]
+    importance: 3
+    probe: true
+    b: -1.0
+  - ref: "phrase:base:12687"  # I have been sick since last week.
+    skills: [en.skill.a2-consolidate]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22906"  # I have to go.
+    skills: [en.skill.a2-consolidate]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:10424"  # No smoking is allowed in this area.
+    skills: [en.skill.a2-consolidate]
+    importance: 3
+    substitutable: true
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday, business, culture]
+      level: A2
+      count: 10
+      skills: [en.skill.a2-consolidate]
+      importance: 2
+      substitutable: true
+lessons: [review, review, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-squeeze
+  config: { itemset: unit, activityType: match_pairs }

@@ -1,0 +1,65 @@
+# journey_en v0.2 — English course spine (Launchpad + A1 + A2 + B1 arcs).
+# Authored source of truth; compiled by build_journey_pack.py per course-pack.md.
+target_lang: en
+version: 1.0.0
+launchpad_units: 2
+script_track: false
+# L1s with FULL native-face coverage: every word item has a wg.<word> gloss and
+# every base phrase item has a cor_translation row in these languages (gates
+# V-21/V-22). Other L1s are sparse (deliberate V-5 exception — the ES learner is
+# the v0.1 preview audience; the ×54 fan-out lands in a later i18n wave).
+l1_full_support: [es]
+min_app_version: "0.20.1"
+name: "Journey: English"
+description: "A guided path into English — first sounds, survival phrases, and the everyday foundations of the A1 arc."
+name_localized:
+  es: "Journey: inglés"
+  fr: "Journey : anglais"
+  de: "Journey: Englisch"
+  pt-BR: "Journey: inglês"
+  ja: "Journey: 英語"
+  zh-Hans: "Journey：英语"
+description_localized:
+  es: "Un camino guiado hacia el inglés: los primeros sonidos, frases de supervivencia y las bases cotidianas del arco A1."
+  fr: "Un parcours guidé vers l'anglais — premiers sons, phrases de survie et les bases quotidiennes de l'arc A1."
+  de: "Ein geführter Weg ins Englische — erste Laute, Überlebensphrasen und die Alltagsgrundlagen des A1-Bogens."
+  pt-BR: "Um caminho guiado para o inglês — primeiros sons, frases de sobrevivência e as bases do dia a dia do arco A1."
+  ja: "英語への道しるべ — 最初の音、サバイバルフレーズ、そしてA1アークの日常の基礎。"
+  zh-Hans: "英语学习的引导之路——从最初的发音、应急短语，到 A1 阶段的日常基础。"
+arcs:
+  - id: en.arc0
+    index: 0
+    cefr: preA1
+    title: "Launchpad"
+    gate:
+      pass_score: 0.8
+      params:
+        spacedSampleShare: 0.3
+        require: [produce.speak, input.listen]
+  - id: en.arc1
+    index: 1
+    cefr: A1
+    title: "Foundations"
+    gate:
+      pass_score: 0.8
+      params:
+        spacedSampleShare: 0.3
+        require: [produce.speak, input.listen]
+  - id: en.arc2
+    index: 2
+    cefr: A2
+    title: "Everyday"
+    gate:
+      pass_score: 0.8
+      params:
+        spacedSampleShare: 0.3
+        require: [produce.speak, input.listen]
+  - id: en.arc3
+    index: 3
+    cefr: B1
+    title: "Independence"
+    gate:
+      pass_score: 0.8
+      params:
+        spacedSampleShare: 0.3
+        require: [produce.speak, input.listen]

@@ -1,0 +1,24 @@
+# FIXTURE es overlay — exercises contrastive notes, cognate credit, phoneme pairs.
+l1: es
+contrastive_notes:
+  - ref_kind: grammarNode
+    ref: en.gn.be-statements
+    note: >-
+      Spanish splits 'to be' into ser and estar; English uses one verb for
+      both. Say the shop is open (estar sense) and the shop is small (ser
+      sense) with the same 'is'.
+cognate_credits:
+  - ref_kind: course
+    items: ["phrase:base:3113", "phrase:base:8210"]
+    seed_form: 0
+    stability_boost: 0.3
+phoneme_pairs:
+  - contrast: "iː-ɪ"
+    minimal_pairs: [["ship", "sheep"], ["live", "leave"]]
+    unit: en.a0.u01
+  - contrast: "b-v"
+    minimal_pairs: [["berry", "very"], ["ban", "van"]]
+    unit: en.a0.u01
+  - contrast: "dʒ-j"
+    minimal_pairs: [["jam", "yam"], ["jet", "yet"]]
+    unit: en.a0.u01

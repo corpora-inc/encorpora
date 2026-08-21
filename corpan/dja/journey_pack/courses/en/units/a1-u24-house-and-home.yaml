@@ -1,0 +1,77 @@
+id: en.a1.u24
+arc: en.arc1
+theme: "House & home"
+cando:
+  - key: home
+    text: "Can describe their home and the rooms and things in it."
+vocab_band: { lo: 1, hi: 3900 }
+phrase_domains: [housing]
+skills:
+  - id: en.skill.home
+    kind: vocab
+    title: "House & home"
+    b: -2.3
+    prereqs: [en.skill.health]
+items:
+  - ref: "phrase:base:10387"  # Please close the window.
+    skills: [en.skill.home]
+    importance: 3
+    probe: true
+    b: -2.3
+  - ref: "phrase:base:18085"  # The plant is in the room.
+    skills: [en.skill.home]
+    importance: 3
+    probe: true
+    b: -2.3
+  - ref: "phrase:base:9077"  # Can you put my hat on the chair?
+    skills: [en.skill.home]
+    importance: 3
+    probe: true
+    b: -2.3
+  - ref: "phrase:base:10298"  # I hope to go to bed early tonight.
+    skills: [en.skill.home]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:22613"  # Stand by the door.
+    skills: [en.skill.home]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:house"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:room"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:kitchen"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:door"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:window"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:bed"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:garden"
+    skills: [en.skill.home]
+    importance: 2
+  - ref: "word:en:home"
+    skills: [en.skill.home]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [housing]
+      level: A1
+      count: 12
+      skills: [en.skill.home]
+      importance: 2
+      substitutable: true
+lessons: [core, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

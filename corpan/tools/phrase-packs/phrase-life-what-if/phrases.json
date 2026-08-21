@@ -1,0 +1,702 @@
+[
+  {
+    "english": "What would you do if you won the lottery?",
+    "text": "What would you do if you won the lottery?",
+    "level": "A2"
+  },
+  {
+    "english": "If I had more time, I would travel more.",
+    "text": "If I had more time, I would travel more.",
+    "level": "A2"
+  },
+  {
+    "english": "I would help you if I could.",
+    "text": "I would help you if I could.",
+    "level": "A2"
+  },
+  {
+    "english": "If I were rich, I would buy a house by the sea.",
+    "text": "If I were rich, I would buy a house by the sea.",
+    "level": "A2"
+  },
+  {
+    "english": "What would you say if she asked you?",
+    "text": "What would you say if she asked you?",
+    "level": "A2"
+  },
+  {
+    "english": "If I had more time, I would learn to play the piano.",
+    "text": "If I had more time, I would learn to play the piano.",
+    "level": "B1"
+  },
+  {
+    "english": "What would you do if you lost your job tomorrow?",
+    "text": "What would you do if you lost your job tomorrow?",
+    "level": "B1"
+  },
+  {
+    "english": "If I spoke better French, I would move to Paris.",
+    "text": "If I spoke better French, I would move to Paris.",
+    "level": "B1"
+  },
+  {
+    "english": "If I won the lottery, I would give half of it away.",
+    "text": "If I won the lottery, I would give half of it away.",
+    "level": "B1"
+  },
+  {
+    "english": "What would you do if you found a wallet on the street?",
+    "text": "What would you do if you found a wallet on the street?",
+    "level": "B1"
+  },
+  {
+    "english": "If I knew her number, I would call her right now.",
+    "text": "If I knew her number, I would call her right now.",
+    "level": "B1"
+  },
+  {
+    "english": "If we left now, we would get there before dark.",
+    "text": "If we left now, we would get there before dark.",
+    "level": "B1"
+  },
+  {
+    "english": "I would tell him the truth if I were in your position.",
+    "text": "I would tell him the truth if I were in your position.",
+    "level": "B1"
+  },
+  {
+    "english": "If you studied a little more, you would pass easily.",
+    "text": "If you studied a little more, you would pass easily.",
+    "level": "B1"
+  },
+  {
+    "english": "What would happen if we just didn't show up?",
+    "text": "What would happen if we just didn't show up?",
+    "level": "B1"
+  },
+  {
+    "english": "If I didn't have to work, I would sleep until noon.",
+    "text": "If I didn't have to work, I would sleep until noon.",
+    "level": "B1"
+  },
+  {
+    "english": "If she trained harder, she would win the race.",
+    "text": "If she trained harder, she would win the race.",
+    "level": "B1"
+  },
+  {
+    "english": "What would you cook if you had guests coming over?",
+    "text": "What would you cook if you had guests coming over?",
+    "level": "B1"
+  },
+  {
+    "english": "If I had a garden, I would grow my own vegetables.",
+    "text": "If I had a garden, I would grow my own vegetables.",
+    "level": "B1"
+  },
+  {
+    "english": "If they offered you the job, would you take it?",
+    "text": "If they offered you the job, would you take it?",
+    "level": "B1"
+  },
+  {
+    "english": "I wouldn't say that if I didn't mean it.",
+    "text": "I wouldn't say that if I didn't mean it.",
+    "level": "B1"
+  },
+  {
+    "english": "If it were up to me, we would leave right away.",
+    "text": "If it were up to me, we would leave right away.",
+    "level": "B1"
+  },
+  {
+    "english": "What would you change if you could start again?",
+    "text": "What would you change if you could start again?",
+    "level": "B1"
+  },
+  {
+    "english": "If I lived closer, I would visit you more often.",
+    "text": "If I lived closer, I would visit you more often.",
+    "level": "B1"
+  },
+  {
+    "english": "If we had a bigger kitchen, we would host dinners.",
+    "text": "If we had a bigger kitchen, we would host dinners.",
+    "level": "B1"
+  },
+  {
+    "english": "How would you feel if someone did that to you?",
+    "text": "How would you feel if someone did that to you?",
+    "level": "B1"
+  },
+  {
+    "english": "If I had the courage, I would tell her how I feel.",
+    "text": "If I had the courage, I would tell her how I feel.",
+    "level": "B1"
+  },
+  {
+    "english": "If I understood the instructions, I would help you.",
+    "text": "If I understood the instructions, I would help you.",
+    "level": "B1"
+  },
+  {
+    "english": "If money were no object, where would you live?",
+    "text": "If money were no object, where would you live?",
+    "level": "B2"
+  },
+  {
+    "english": "If I had the chance, I would do it all over again.",
+    "text": "If I had the chance, I would do it all over again.",
+    "level": "B2"
+  },
+  {
+    "english": "What would you sacrifice if it meant reaching your dream?",
+    "text": "What would you sacrifice if it meant reaching your dream?",
+    "level": "B2"
+  },
+  {
+    "english": "If people were a little kinder, the world would feel different.",
+    "text": "If people were a little kinder, the world would feel different.",
+    "level": "B2"
+  },
+  {
+    "english": "If I weren't so busy, I would take up painting again.",
+    "text": "If I weren't so busy, I would take up painting again.",
+    "level": "B2"
+  },
+  {
+    "english": "How would your life look if you followed your instincts?",
+    "text": "How would your life look if you followed your instincts?",
+    "level": "B2"
+  },
+  {
+    "english": "If I trusted him completely, I would lend him the money.",
+    "text": "If I trusted him completely, I would lend him the money.",
+    "level": "B2"
+  },
+  {
+    "english": "I wish I had a garden.",
+    "text": "I wish I had a garden.",
+    "level": "A2"
+  },
+  {
+    "english": "If only it were warmer.",
+    "text": "If only it were warmer.",
+    "level": "A2"
+  },
+  {
+    "english": "I wish I could swim.",
+    "text": "I wish I could swim.",
+    "level": "A2"
+  },
+  {
+    "english": "I wish I had more money.",
+    "text": "I wish I had more money.",
+    "level": "A2"
+  },
+  {
+    "english": "If only I knew the answer.",
+    "text": "If only I knew the answer.",
+    "level": "A2"
+  },
+  {
+    "english": "I wish I lived closer to my family.",
+    "text": "I wish I lived closer to my family.",
+    "level": "B1"
+  },
+  {
+    "english": "If only I had more time to read.",
+    "text": "If only I had more time to read.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I spoke Spanish fluently.",
+    "text": "I wish I spoke Spanish fluently.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish it weren't so cold today.",
+    "text": "I wish it weren't so cold today.",
+    "level": "B1"
+  },
+  {
+    "english": "If only we could stay a little longer.",
+    "text": "If only we could stay a little longer.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I knew how to fix this.",
+    "text": "I wish I knew how to fix this.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish my flat had a balcony.",
+    "text": "I wish my flat had a balcony.",
+    "level": "B1"
+  },
+  {
+    "english": "If only the weather were nicer this weekend.",
+    "text": "If only the weather were nicer this weekend.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I could take the day off.",
+    "text": "I wish I could take the day off.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I were better at maths.",
+    "text": "I wish I were better at maths.",
+    "level": "B1"
+  },
+  {
+    "english": "If only I had a bit more space at home.",
+    "text": "If only I had a bit more space at home.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish we didn't have to leave so soon.",
+    "text": "I wish we didn't have to leave so soon.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I had a job I actually enjoyed.",
+    "text": "I wish I had a job I actually enjoyed.",
+    "level": "B1"
+  },
+  {
+    "english": "If only I could remember her name.",
+    "text": "If only I could remember her name.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I lived by the sea.",
+    "text": "I wish I lived by the sea.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I felt more confident in interviews.",
+    "text": "I wish I felt more confident in interviews.",
+    "level": "B1"
+  },
+  {
+    "english": "If only there were more hours in the day.",
+    "text": "If only there were more hours in the day.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish my neighbours were a little quieter.",
+    "text": "I wish my neighbours were a little quieter.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I understood how this works.",
+    "text": "I wish I understood how this works.",
+    "level": "B1"
+  },
+  {
+    "english": "If only I had the patience for gardening.",
+    "text": "If only I had the patience for gardening.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I could sing like you.",
+    "text": "I wish I could sing like you.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish the summer lasted longer.",
+    "text": "I wish the summer lasted longer.",
+    "level": "B1"
+  },
+  {
+    "english": "I wish I had the confidence to speak my mind.",
+    "text": "I wish I had the confidence to speak my mind.",
+    "level": "B2"
+  },
+  {
+    "english": "If only life came with an instruction manual.",
+    "text": "If only life came with an instruction manual.",
+    "level": "B2"
+  },
+  {
+    "english": "I wish I weren't so hard on myself all the time.",
+    "text": "I wish I weren't so hard on myself all the time.",
+    "level": "B2"
+  },
+  {
+    "english": "If only I could switch off my mind at night.",
+    "text": "If only I could switch off my mind at night.",
+    "level": "B2"
+  },
+  {
+    "english": "I wish I had the discipline to stick to a routine.",
+    "text": "I wish I had the discipline to stick to a routine.",
+    "level": "B2"
+  },
+  {
+    "english": "If only things were as simple as they seem.",
+    "text": "If only things were as simple as they seem.",
+    "level": "B2"
+  },
+  {
+    "english": "I wish I understood people a little better.",
+    "text": "I wish I understood people a little better.",
+    "level": "B2"
+  },
+  {
+    "english": "I wish I could see myself the way my friends do.",
+    "text": "I wish I could see myself the way my friends do.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I would take the job.",
+    "text": "If I were you, I would take the job.",
+    "level": "A2"
+  },
+  {
+    "english": "If I were you, I would call her.",
+    "text": "If I were you, I would call her.",
+    "level": "A2"
+  },
+  {
+    "english": "If I were you, I would say sorry.",
+    "text": "If I were you, I would say sorry.",
+    "level": "A2"
+  },
+  {
+    "english": "If I were you, I would go home and rest.",
+    "text": "If I were you, I would go home and rest.",
+    "level": "A2"
+  },
+  {
+    "english": "If I were you, I would ask for help.",
+    "text": "If I were you, I would ask for help.",
+    "level": "A2"
+  },
+  {
+    "english": "If I were you, I would talk to your boss about it.",
+    "text": "If I were you, I would talk to your boss about it.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I wouldn't worry too much.",
+    "text": "If I were you, I wouldn't worry too much.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were in your shoes, I would take the offer.",
+    "text": "If I were in your shoes, I would take the offer.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would get a second opinion.",
+    "text": "If I were you, I would get a second opinion.",
+    "level": "B1"
+  },
+  {
+    "english": "Honestly, if I were you, I would just apologize.",
+    "text": "Honestly, if I were you, I would just apologize.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would save that money for now.",
+    "text": "If I were you, I would save that money for now.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would book the tickets early.",
+    "text": "If I were you, I would book the tickets early.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would think twice before signing.",
+    "text": "If I were you, I would think twice before signing.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would give her another chance.",
+    "text": "If I were you, I would give her another chance.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would start looking for a new place.",
+    "text": "If I were you, I would start looking for a new place.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I wouldn't take it personally.",
+    "text": "If I were you, I wouldn't take it personally.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would see a doctor about that.",
+    "text": "If I were you, I would see a doctor about that.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would take a break for a while.",
+    "text": "If I were you, I would take a break for a while.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would tell them how you feel.",
+    "text": "If I were you, I would tell them how you feel.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would keep the receipt just in case.",
+    "text": "If I were you, I would keep the receipt just in case.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would leave a little earlier.",
+    "text": "If I were you, I would leave a little earlier.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were in your situation, I would do the same.",
+    "text": "If I were in your situation, I would do the same.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would learn the basics first.",
+    "text": "If I were you, I would learn the basics first.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would trust your gut on this one.",
+    "text": "If I were you, I would trust your gut on this one.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would sort it out before it's too late.",
+    "text": "If I were you, I would sort it out before it's too late.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would ask for a bit more time.",
+    "text": "If I were you, I would ask for a bit more time.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I wouldn't lend him any money.",
+    "text": "If I were you, I wouldn't lend him any money.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were you, I would focus on one thing at a time.",
+    "text": "If I were you, I would focus on one thing at a time.",
+    "level": "B1"
+  },
+  {
+    "english": "If I were in your position, I would weigh the options carefully.",
+    "text": "If I were in your position, I would weigh the options carefully.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I would set some clear boundaries.",
+    "text": "If I were you, I would set some clear boundaries.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I wouldn't let a single setback stop you.",
+    "text": "If I were you, I wouldn't let a single setback stop you.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I would deal with it directly rather than avoid it.",
+    "text": "If I were you, I would deal with it directly rather than avoid it.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I would trust the process and be patient.",
+    "text": "If I were you, I would trust the process and be patient.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I would stand my ground on this.",
+    "text": "If I were you, I would stand my ground on this.",
+    "level": "B2"
+  },
+  {
+    "english": "If I were you, I would take the leap while you still can.",
+    "text": "If I were you, I would take the leap while you still can.",
+    "level": "B2"
+  },
+  {
+    "english": "Imagine if we lived on the beach.",
+    "text": "Imagine if we lived on the beach.",
+    "level": "A2"
+  },
+  {
+    "english": "What if we moved to another country?",
+    "text": "What if we moved to another country?",
+    "level": "A2"
+  },
+  {
+    "english": "It would be nice to have a big garden.",
+    "text": "It would be nice to have a big garden.",
+    "level": "A2"
+  },
+  {
+    "english": "Imagine if we had a boat.",
+    "text": "Imagine if we had a boat.",
+    "level": "A2"
+  },
+  {
+    "english": "It would be great to work from home.",
+    "text": "It would be great to work from home.",
+    "level": "A2"
+  },
+  {
+    "english": "Imagine if we could travel anywhere for free.",
+    "text": "Imagine if we could travel anywhere for free.",
+    "level": "B1"
+  },
+  {
+    "english": "What if we started our own little business?",
+    "text": "What if we started our own little business?",
+    "level": "B1"
+  },
+  {
+    "english": "If we saved enough, we could buy a house one day.",
+    "text": "If we saved enough, we could buy a house one day.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine if machines did all the housework.",
+    "text": "Imagine if machines did all the housework.",
+    "level": "B1"
+  },
+  {
+    "english": "What if you could speak every language in the world?",
+    "text": "What if you could speak every language in the world?",
+    "level": "B1"
+  },
+  {
+    "english": "If I ever had a farm, I would keep chickens and goats.",
+    "text": "If I ever had a farm, I would keep chickens and goats.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine how peaceful life would be in the mountains.",
+    "text": "Imagine how peaceful life would be in the mountains.",
+    "level": "B1"
+  },
+  {
+    "english": "What if we just packed up and left tomorrow?",
+    "text": "What if we just packed up and left tomorrow?",
+    "level": "B1"
+  },
+  {
+    "english": "If we won the prize, we could finally redo the kitchen.",
+    "text": "If we won the prize, we could finally redo the kitchen.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine if everyone worked a four-day week.",
+    "text": "Imagine if everyone worked a four-day week.",
+    "level": "B1"
+  },
+  {
+    "english": "What would our lives be like without phones?",
+    "text": "What would our lives be like without phones?",
+    "level": "B1"
+  },
+  {
+    "english": "If I had my own studio, I would paint every day.",
+    "text": "If I had my own studio, I would paint every day.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine if we could breathe underwater.",
+    "text": "Imagine if we could breathe underwater.",
+    "level": "B1"
+  },
+  {
+    "english": "What if this little idea actually took off?",
+    "text": "What if this little idea actually took off?",
+    "level": "B1"
+  },
+  {
+    "english": "If the weather were always like this, I would never leave.",
+    "text": "If the weather were always like this, I would never leave.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine waking up to that view every morning.",
+    "text": "Imagine waking up to that view every morning.",
+    "level": "B1"
+  },
+  {
+    "english": "What if we adopted a dog next year?",
+    "text": "What if we adopted a dog next year?",
+    "level": "B1"
+  },
+  {
+    "english": "If we lived in the future, cars would probably fly.",
+    "text": "If we lived in the future, cars would probably fly.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine if we never had to worry about money again.",
+    "text": "Imagine if we never had to worry about money again.",
+    "level": "B1"
+  },
+  {
+    "english": "What if we turned the spare room into a library?",
+    "text": "What if we turned the spare room into a library?",
+    "level": "B1"
+  },
+  {
+    "english": "If I could work anywhere, I would choose a cabin in the woods.",
+    "text": "If I could work anywhere, I would choose a cabin in the woods.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine how different things would be with a little more courage.",
+    "text": "Imagine how different things would be with a little more courage.",
+    "level": "B1"
+  },
+  {
+    "english": "Imagine if we could pause time whenever we wanted.",
+    "text": "Imagine if we could pause time whenever we wanted.",
+    "level": "B2"
+  },
+  {
+    "english": "What if the choices we make today shape everything ahead?",
+    "text": "What if the choices we make today shape everything ahead?",
+    "level": "B2"
+  },
+  {
+    "english": "If we ever reached the stars, what would we find out there?",
+    "text": "If we ever reached the stars, what would we find out there?",
+    "level": "B2"
+  },
+  {
+    "english": "Imagine a world where nobody went hungry.",
+    "text": "Imagine a world where nobody went hungry.",
+    "level": "B2"
+  },
+  {
+    "english": "What if the life you're dreaming of is closer than you think?",
+    "text": "What if the life you're dreaming of is closer than you think?",
+    "level": "B2"
+  },
+  {
+    "english": "If I could relive one year, I would savour every ordinary day.",
+    "text": "If I could relive one year, I would savour every ordinary day.",
+    "level": "B2"
+  },
+  {
+    "english": "Imagine how much we could achieve if fear didn't hold us back.",
+    "text": "Imagine how much we could achieve if fear didn't hold us back.",
+    "level": "B2"
+  },
+  {
+    "english": "What if the best chapter of your life hasn't been written yet?",
+    "text": "What if the best chapter of your life hasn't been written yet?",
+    "level": "B2"
+  }
+]

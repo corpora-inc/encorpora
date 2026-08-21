@@ -1,0 +1,78 @@
+id: en.b1.u15
+arc: en.arc3
+theme: "She asked me…"
+cando:
+  - key: reported-questions
+    text: "Can report what someone asked, keeping yes/no questions with if or whether and wh-questions in flat statement order."
+  - key: reported-requests
+    text: "Can report what someone told or asked them to do, using tell or ask plus an object and a to-infinitive."
+vocab_band: { lo: 1, hi: 5140 }
+phrase_domains: [business, civic, social]
+skills:
+  - id: en.skill.reporting-questions
+    kind: grammar
+    title: "Reported questions & requests"
+    b: -0.3
+    prereqs: [en.skill.reporting]
+grammar_nodes: [en.gn.reported-questions, en.gn.reported-commands]
+items:
+  - ref: "phrase:base:11297"  # She asked if I wanted some tea.
+    skills: [en.skill.reporting-questions]
+    importance: 3
+    probe: true
+    b: -0.3
+  - ref: "phrase:base:15214"  # She asked me where I got my bag.
+    skills: [en.skill.reporting-questions]
+    importance: 3
+    probe: true
+    b: -0.3
+  - ref: "phrase:base:15605"  # She told me to come on Tuesday.
+    skills: [en.skill.reporting-questions]
+    importance: 3
+    probe: true
+    b: -0.3
+  - ref: "phrase:base:16156"  # She asked me to repeat the instructions.
+    skills: [en.skill.reporting-questions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:13317"  # He asked if I had my passport ready.
+    skills: [en.skill.reporting-questions]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:12294"  # He asked me how I was feeling today.
+    skills: [en.skill.reporting-questions]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:interview"
+    skills: [en.skill.reporting-questions]
+    importance: 2
+  - ref: "word:en:apply"
+    skills: [en.skill.reporting-questions]
+    importance: 2
+  - ref: "word:en:form"
+    skills: [en.skill.reporting-questions]
+    importance: 2
+  - ref: "word:en:request"
+    skills: [en.skill.reporting-questions]
+    importance: 2
+  - ref: "word:en:instructions"
+    skills: [en.skill.reporting-questions]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [business, civic, social]
+      level: B1
+      count: 10
+      skills: [en.skill.reporting-questions]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

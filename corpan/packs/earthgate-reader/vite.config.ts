@@ -189,6 +189,7 @@ export default defineConfig({
       "@shared/state": path.resolve(__dirname, "../shared/state"),
       "@shared/ui": path.resolve(__dirname, "../shared/ui"),
       "@shared/analytics": path.resolve(__dirname, "../shared/analytics"),
+      "@shared/capabilities": path.resolve(__dirname, "../shared/capabilities"),
       "zustand/vanilla": path.resolve(__dirname, "node_modules/zustand/esm/vanilla.mjs"),
       "zustand/middleware": path.resolve(__dirname, "node_modules/zustand/esm/middleware.mjs"),
     },

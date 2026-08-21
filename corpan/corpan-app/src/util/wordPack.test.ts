@@ -18,6 +18,8 @@ let selectPreferred: (
   preferred: string[],
 ) => WordExplanation | null
 let packIdForNative: (nativeLang: string) => string | null
+let wordPackIdForPair: (nativeLang: string, targetLang: string) => string | null
+let wordPackIdCandidates: (nativeLang: string, targetLang: string) => string[]
 let devDownloadUrlForPack: (packId: string) => string
 
 before(async () => {
@@ -38,6 +40,8 @@ before(async () => {
   )
   selectPreferred = mod.selectPreferred
   packIdForNative = mod.packIdForNative
+  wordPackIdForPair = mod.wordPackIdForPair
+  wordPackIdCandidates = mod.wordPackIdCandidates
   devDownloadUrlForPack = mod.devDownloadUrlForPack
 })
 
@@ -71,11 +75,82 @@ test("selectPreferred respects stack order before the en fallback", () => {
   assert.equal(got?.languageCode, "fr")
 })
 
-test("packIdForNative maps es → wordpan_es_en and is null otherwise", () => {
-  assert.equal(packIdForNative("es"), "wordpan_es_en")
+// The 53 published (native→en) pairs, verified against the live index.json.
+const PUBLISHED_NATIVES = [
+  "ar", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "fa", "fi", "fr",
+  "gu", "he", "hi", "hr", "hu", "id", "it", "ja", "jv", "kn", "ko-polite",
+  "lt", "mr", "ms", "ne", "nl", "no", "pa-Arab", "pa-Guru", "pl", "pt-BR",
+  "pt-PT", "ro", "ru", "sk", "sl", "sr", "su", "sv", "sw", "ta", "te", "th",
+  "tl", "tr", "uk", "ur", "vi", "yue-Hant-HK", "zh-Hans", "zh-Hant",
+] as const
+
+test("packIdForNative maps every published native to its exact index id", () => {
+  assert.equal(PUBLISHED_NATIVES.length, 53)
+  for (const code of PUBLISHED_NATIVES) {
+    const expected = `wordpan_${code.replace(/-/g, "_")}_en`
+    assert.equal(packIdForNative(code), expected, `native ${code}`)
+  }
+  // Spot-check the tricky region/script/variant codes explicitly.
+  assert.equal(packIdForNative("ko-polite"), "wordpan_ko_polite_en")
+  assert.equal(packIdForNative("pt-BR"), "wordpan_pt_BR_en")
+  assert.equal(packIdForNative("pt-PT"), "wordpan_pt_PT_en")
+  assert.equal(packIdForNative("pa-Arab"), "wordpan_pa_Arab_en")
+  assert.equal(packIdForNative("pa-Guru"), "wordpan_pa_Guru_en")
+  assert.equal(packIdForNative("yue-Hant-HK"), "wordpan_yue_Hant_HK_en")
+  assert.equal(packIdForNative("zh-Hans"), "wordpan_zh_Hans_en")
+  assert.equal(packIdForNative("zh-Hant"), "wordpan_zh_Hant_en")
+})
+
+test("packIdForNative resolves base subtags and region-only bases", () => {
+  // Base subtag of a published base language (es-MX → es).
   assert.equal(packIdForNative("es-MX"), "wordpan_es_en")
+  assert.equal(packIdForNative("fr-CA"), "wordpan_fr_en")
+  // Region-only bases whose only packs are flavors default to a variant.
+  assert.equal(packIdForNative("pt"), "wordpan_pt_BR_en")
+  assert.equal(packIdForNative("zh"), "wordpan_zh_Hans_en")
+  assert.equal(packIdForNative("pa"), "wordpan_pa_Guru_en")
+  assert.equal(packIdForNative("ko"), "wordpan_ko_polite_en")
+  assert.equal(packIdForNative("yue"), "wordpan_yue_Hant_HK_en")
+})
+
+test("packIdForNative is null for unpublished natives (incl. en)", () => {
   assert.equal(packIdForNative("en"), null)
-  assert.equal(packIdForNative("fr"), null)
+  assert.equal(packIdForNative("en-US"), null)
+  assert.equal(packIdForNative(""), null)
+  assert.equal(packIdForNative("xx"), null)
+})
+
+test("wordPackIdForPair is GENERIC over target — no en/es assumption", () => {
+  // Published-today shape (target en).
+  assert.equal(wordPackIdForPair("es", "en"), "wordpan_es_en")
+  assert.equal(wordPackIdForPair("pt-BR", "en"), "wordpan_pt_BR_en")
+  // Future non-en targets derive cleanly (54×53 fleet goal): en→fr, fr→de.
+  assert.equal(wordPackIdForPair("en", "fr"), "wordpan_en_fr")
+  assert.equal(wordPackIdForPair("fr", "de"), "wordpan_fr_de")
+  assert.equal(wordPackIdForPair("zh-Hant", "ja"), "wordpan_zh_Hant_ja")
+  // Degenerate / empty pairs → null (a language doesn't explain itself).
+  assert.equal(wordPackIdForPair("es", "es"), null)
+  assert.equal(wordPackIdForPair("es-MX", "es"), null)
+  assert.equal(wordPackIdForPair("", "en"), null)
+  assert.equal(wordPackIdForPair("es", ""), null)
+})
+
+test("wordPackIdCandidates walks specific→general on both sides", () => {
+  // Exact pair only when both sides are already specific.
+  assert.deepEqual(wordPackIdCandidates("es", "en"), ["wordpan_es_en"])
+  // Base-subtag fallback on the native side (es-MX → es).
+  assert.deepEqual(wordPackIdCandidates("es-MX", "en"), [
+    "wordpan_es_MX_en",
+    "wordpan_es_en",
+  ])
+  // Region-only base default (pt → pt-BR) is appended after the bare base.
+  assert.deepEqual(wordPackIdCandidates("pt", "en"), [
+    "wordpan_pt_en",
+    "wordpan_pt_BR_en",
+  ])
+  // Non-en target stays generic; same-language combos are skipped.
+  assert.deepEqual(wordPackIdCandidates("en", "fr"), ["wordpan_en_fr"])
+  assert.deepEqual(wordPackIdCandidates("es", "es"), [])
 })
 
 test("devDownloadUrlForPack maps the underscore id to the hyphenated dev zip", () => {

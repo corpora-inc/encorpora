@@ -77,7 +77,6 @@ export function useWordPackCatalog(): WordPackCatalogView {
     // so we borrow them rather than duplicate state (same pattern as
     // `usePhrasePackCatalog`).
     const appVersion = useCatalogStore((s) => s.appVersion);
-    const devMode = useCatalogStore((s) => s.devMode);
     const { i18n } = useTranslation();
     const lang = i18n.language;
     // languages[0] (store order) is the user's native / primary language.
@@ -86,8 +85,13 @@ export function useWordPackCatalog(): WordPackCatalogView {
     return useMemo<WordPackCatalogView>(() => {
         if (!catalog) return EMPTY_VIEW;
 
+        // The word packs ship as channel:"preview" but are PUBLISHED FOR USE —
+        // the Journey inline offer and the Phrase Flip long-press both install
+        // them for ordinary (non-dev) users, and Settings must list them as the
+        // "manage / re-add" surface. So bypass the preview CHANNEL gate here
+        // (pass `true`) while still honoring the minAppVersion gate.
         const rawVisible = appVersion
-            ? visibleWordPacks(catalog, appVersion, devMode)
+            ? visibleWordPacks(catalog, appVersion, true)
             : // No app version yet (rare; pre-getAppVersion) — show everything.
               catalog.packs;
 
@@ -108,5 +112,5 @@ export function useWordPackCatalog(): WordPackCatalogView {
                 findWordPackForPair(allWordPacks, nat, tgt),
             byId: (id) => indexById.get(id),
         };
-    }, [catalog, appVersion, devMode, lang, nativeLang]);
+    }, [catalog, appVersion, lang, nativeLang]);
 }

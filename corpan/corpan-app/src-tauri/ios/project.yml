@@ -42,6 +42,11 @@ targets:
       path: corpan_iOS/Info.plist
       properties:
         LSRequiresIPhoneOS: true
+        # Only exempt encryption (HTTPS, Apple IAP, on-device ML) — declaring this
+        # lets TestFlight/App Store skip the export-compliance prompt so uploaded
+        # builds become available to testers immediately instead of sitting in
+        # "Missing Compliance".
+        ITSAppUsesNonExemptEncryption: false
         UILaunchStoryboardName: LaunchScreen
         UIRequiredDeviceCapabilities: [arm64, metal]
         UISupportedInterfaceOrientations:

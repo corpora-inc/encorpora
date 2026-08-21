@@ -1,0 +1,63 @@
+id: en.a1.u14
+arc: en.arc1
+theme: "Right now"
+cando:
+  - key: now
+    text: "Can describe what is happening around them at this moment."
+vocab_band: { lo: 1, hi: 3400 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.right-now
+    kind: grammar
+    title: "Happening right now"
+    b: -2.7
+    prereqs: [en.skill.can]
+grammar_nodes: [en.gn.pres-cont, en.gn.simple-vs-cont]
+items:
+  - ref: "phrase:base:22463"  # The cat is sleeping.
+    skills: [en.skill.right-now]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:27035"  # The child is sleeping
+    skills: [en.skill.right-now]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:27051"  # Not right now
+    skills: [en.skill.right-now]
+    importance: 3
+    probe: true
+    b: -2.7
+  - ref: "phrase:base:12756"  # The animal is sleeping.
+    skills: [en.skill.right-now]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:23266"  # Their cat is sleeping.
+    skills: [en.skill.right-now]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:busy"
+    skills: [en.skill.right-now]
+    importance: 2
+  - ref: "word:en:ready"
+    skills: [en.skill.right-now]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A1
+      count: 10
+      skills: [en.skill.right-now]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: cap-segment-player
+  config: { itemset: unit }

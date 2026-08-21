@@ -6,6 +6,7 @@ import { createVoiceTTS, createVoiceTTSConcurrent } from "@/util/speak";
 import { useSettingsStore } from "@/store/settings";
 import { getVoicesCached } from "@/util/tts-voices";
 import { incrementSegmentCounter } from "@/util/analytics";
+import { beginUtterance } from "@/util/audioManager";
 
 /**
  * Helper to get the voice ID to use based on stack preferences.
@@ -44,6 +45,17 @@ export async function getPreferredVoiceId(uiCode: string): Promise<string | unde
 }
 
 export async function speakWithStackPrefs(uiCode: string, text: string, rate: number) {
+    // Register with the audio manager SYNCHRONOUSLY, before this function's
+    // own `await getPreferredVoiceId(...)` below. This is the actual SpeakFn
+    // entry point the journey feed wires up as `props.speak` (see
+    // JourneyOverlay.tsx), so a fire-and-forget `void props.speak(...)`
+    // followed synchronously by waitForActiveUtterance() (ActivityCardHost
+    // settle(), FeedScroller doAdvance()) must already see it — otherwise
+    // that wait silently no-ops (nothing "active" yet) and the reward speech
+    // can get cut or bleed into the next card. createVoiceTTS() below
+    // re-registers once fallback shims are resolved — a harmless, more
+    // accurate refresh of the same slot, not a second gate.
+    beginUtterance(text, rate);
     incrementSegmentCounter(uiCode);
     const chosenId = await getPreferredVoiceId(uiCode);
     await createVoiceTTS(uiCode)(text, rate, chosenId);

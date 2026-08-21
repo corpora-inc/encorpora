@@ -1,0 +1,295 @@
+/*
+ * Kronopán shell styles.
+ *
+ * House palette: near-black ground, orange accent, cream text. Type is Fraunces
+ * for display and Spline Sans for UI. Those fonts are not bundled yet, so the
+ * stacks fall back to a serif and a sans; bundling the exact faces as woff2
+ * under public/ is a later polish pass. Everything is sized for a viewer five
+ * metres away: large hit targets, no hairline weights, no low-contrast greys.
+ */
+
+:root {
+  --kp-ground: #0b0b0d;
+  --kp-panel: #16161a;
+  --kp-panel-edge: #26262c;
+  --kp-text: #f3ead6;
+  --kp-text-dim: #a49c88;
+  --kp-accent: #ff7a1a;
+  --kp-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --kp-ui: "Spline Sans", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.kp-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--kp-ground);
+  color: var(--kp-text);
+  font-family: var(--kp-ui);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Header */
+.kp-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 16px 24px 8px;
+  gap: 16px;
+}
+.kp-brand {
+  font-family: var(--kp-display);
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  color: var(--kp-text);
+}
+.kp-sig {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.kp-sig-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.kp-sig-add {
+  font-family: var(--kp-display);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--kp-accent);
+  letter-spacing: 0.04em;
+}
+.kp-sig-over {
+  color: var(--kp-text-dim);
+  font-size: 15px;
+}
+.kp-sig-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.15;
+  border-left: 1px solid var(--kp-panel-edge);
+  padding-left: 18px;
+}
+.kp-sig-frac {
+  font-family: var(--kp-display);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--kp-text);
+}
+.kp-sig-name {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--kp-text-dim);
+}
+
+/* Stage / canvas */
+.kp-stage {
+  flex: 1 1 auto;
+  min-height: 160px;
+  padding: 8px 16px;
+}
+.kp-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Controls */
+.kp-controls {
+  flex: 0 0 auto;
+  background: var(--kp-panel);
+  border-top: 1px solid var(--kp-panel-edge);
+  padding: 14px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kp-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--kp-text-dim);
+  margin-bottom: 6px;
+}
+
+.kp-transport {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.kp-play {
+  font-family: var(--kp-ui);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--kp-ground);
+  background: var(--kp-accent);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  min-width: 108px;
+  cursor: pointer;
+}
+.kp-play.is-playing {
+  background: var(--kp-text);
+}
+.kp-play:active {
+  transform: translateY(1px);
+}
+
+.kp-tempo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.kp-bpm {
+  font-family: var(--kp-display);
+  font-size: 30px;
+  font-weight: 600;
+  min-width: 62px;
+  text-align: center;
+}
+.kp-bpm-unit {
+  color: var(--kp-text-dim);
+  font-size: 13px;
+}
+
+.kp-step,
+.kp-group-btn {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--kp-text);
+  background: var(--kp-ground);
+  border: 1px solid var(--kp-panel-edge);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.kp-step:active,
+.kp-group-btn:active {
+  border-color: var(--kp-accent);
+}
+
+.kp-slider {
+  width: 220px;
+  max-width: 46vw;
+  accent-color: var(--kp-accent);
+  margin-top: 6px;
+}
+
+/* Segmented controls (density, unit) */
+.kp-seg {
+  display: inline-flex;
+  border: 1px solid var(--kp-panel-edge);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.kp-seg-btn {
+  font-family: var(--kp-ui);
+  font-size: 14px;
+  color: var(--kp-text-dim);
+  background: transparent;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.kp-seg-btn.is-on {
+  color: var(--kp-ground);
+  background: var(--kp-accent);
+  font-weight: 600;
+}
+
+/* Editor */
+.kp-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kp-editor-top {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.kp-field {
+  display: block;
+}
+.kp-select {
+  font-family: var(--kp-ui);
+  font-size: 15px;
+  color: var(--kp-text);
+  background: var(--kp-ground);
+  border: 1px solid var(--kp-panel-edge);
+  border-radius: 10px;
+  padding: 10px 12px;
+  min-width: 140px;
+}
+
+.kp-groups {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.kp-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid var(--kp-panel-edge);
+  border-radius: 12px;
+  padding: 6px 8px;
+  background: var(--kp-ground);
+}
+.kp-group-n {
+  font-family: var(--kp-display);
+  font-weight: 600;
+  font-size: 24px;
+  min-width: 26px;
+  text-align: center;
+}
+.kp-group-x {
+  font-size: 16px;
+  color: var(--kp-text-dim);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+.kp-group-x:hover {
+  color: var(--kp-accent);
+}
+.kp-add {
+  font-family: var(--kp-ui);
+  font-size: 15px;
+  color: var(--kp-text);
+  background: transparent;
+  border: 1px dashed var(--kp-panel-edge);
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+.kp-add:hover {
+  border-color: var(--kp-accent);
+  color: var(--kp-accent);
+}
+
+.kp-hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--kp-text-dim);
+}

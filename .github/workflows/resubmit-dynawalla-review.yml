@@ -1,0 +1,63 @@
+name: Operations · resubmit Dynawalla App Review
+
+# Uploading a replacement IPA only makes it available in App Store Connect.
+# This manual-only operation selects one exact processed build for the existing
+# App Store version and resubmits its unresolved review item. It never runs on
+# push, so an ordinary TestFlight upload cannot accidentally enter production
+# review.
+# `repository_dispatch` deliberately has no selectable ref: GitHub runs it from
+# the default branch. A `workflow_dispatch` ref can point at a branch whose
+# copy of this workflow or Python client has been replaced, which would feed
+# the live ASC key to untrusted branch code.
+on:
+  repository_dispatch:
+    types: [resubmit_dynawalla_review]
+
+concurrency:
+  group: resubmit-dynawalla-review
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  resubmit:
+    name: App Store Connect · ${{ github.event.client_payload.action }}
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Require App Store Connect credentials
+        env:
+          HAVE_ASC_KEY: ${{ secrets.ASC_API_KEY_P8 != '' }}
+          HAVE_ASC_KEY_ID: ${{ secrets.ASC_KEY_ID != '' }}
+          HAVE_ASC_ISSUER: ${{ secrets.ASC_ISSUER_ID != '' }}
+        run: |
+          set -euo pipefail
+          [ "$HAVE_ASC_KEY" = true ] || { echo "::error::ASC_API_KEY_P8 is not set"; exit 1; }
+          [ "$HAVE_ASC_KEY_ID" = true ] || { echo "::error::ASC_KEY_ID is not set"; exit 1; }
+          [ "$HAVE_ASC_ISSUER" = true ] || { echo "::error::ASC_ISSUER_ID is not set"; exit 1; }
+      - name: Inspect and optionally resubmit
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          ASC_BUNDLE_ID: inc.corpora.dynawalla
+          ASC_APP_VERSION: ${{ github.event.client_payload.app_version }}
+          ASC_BUILD_VERSION: ${{ github.event.client_payload.build_version }}
+          ACTION: ${{ github.event.client_payload.action }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          args=()
+          if [ "$ACTION" = submit ]; then
+            args+=(--submit)
+          elif [ "$ACTION" != inspect-only ]; then
+            echo "::error::unsupported action '$ACTION'"
+            exit 1
+          fi
+          python3 .github/scripts/resubmit_app_review.py "${args[@]}"

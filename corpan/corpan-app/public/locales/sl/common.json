@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Izberi svoje teme",
+      "availableSummary": "Na voljo je paketov fraz: {{count}} · ~{{size}} MB",
+      "installAll": "Namesti vse",
+      "chooseIndividually": "Izberi posamično",
+      "installing": "Nameščanje {{current}} od {{total}}…",
+      "someFailed": "Paketov ni bilo mogoče namestiti: {{count}}. Poskusite znova na zavihku Paketi.",
+      "allInstalled": "Začetne pakete fraz že imate.",
+      "installed": "Nameščeno",
       "loading": "Nalaganje…",
       "selectAll": "Izberi vse ({{count}})",
       "clearAll": "Počisti",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Preseneti me!",
         "desc": "Popelji me nekam zabavnega."
+      },
+      "journey": {
+        "label": "Sledi Journeyju",
+        "desc": "Voden tečaj — aplikacija izbere vsak naslednji korak"
+      }
+    },
+    "journey": {
+      "title": "Kako se želite učiti {{lang}}?",
+      "subtitle": "Journey vam vsak dan postreže mešanico novega gradiva in ponavljanja v {{lang}} — kartico za kartico.",
+      "guided": {
+        "label": "Vodena dnevna pot",
+        "desc": "Kratka dnevna seja, načrtovana za vas.",
+        "unavailable": "Vodena pot za {{lang}} še ni na voljo."
+      },
+      "explore": {
+        "label": "Lastno tempo",
+        "desc": "Sami brskajte po zgodbah, vajah in igrah."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Vključeno s Plus",
     "installFailedTitle": "Namestitev ni uspela",
+    "updateUnavailableTitle": "Posodobitev ni na voljo",
+    "updateUnavailableDetail": "Ta prenos se ni ujemal s tem, kar smo pričakovali. Poskusite znova pozneje.",
     "installStuckDetail": "Že nekaj časa ni napredka. Preverite povezavo in poskusite znova.",
     "installStuckTitle": "Prenos se je zataknil",
     "openPack": "Odpri {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sempli jezik, ki se ga učiš. Scratchaj ga, dokler ne ostane."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Tvoja vodena pot, kartico za kartico"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Namesti ({{size}})",
     "installing": "Nameščanje…",
     "installed": "Nameščeno",
-    "retry": "Poskusi znova"
+    "retry": "Poskusi znova",
+    "explains": "Besede v {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Tvoja vodena pot, kartico za kartico",
+    "heroCard": {
+      "title": "Tvoj Journey",
+      "progress": "{{unit}} · še {{count}} do naslednjega mejnika"
+    },
+    "heroCta": {
+      "start": "Začni svoj Journey",
+      "continue": "Nadaljuj"
+    },
+    "chrome": {
+      "home": "Domov",
+      "menu": "Možnosti Journeyja",
+      "unit": "Enota {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Preveri",
+      "continue": "Nadaljuj",
+      "skipHint": "Podrsaj še enkrat za preskok",
+      "retry": "Poskusi znova",
+      "showAnswer": "Pokaži odgovor",
+      "answerWas": "Odgovor je bil",
+      "comeBackNote": "K temu se še vrnemo.",
+      "whyThisCard": "Zakaj ta kartica?",
+      "whyNew": "Nekaj novega iz tvoje trenutne enote.",
+      "whyReview": "Ponovitev — razmiki jo ohranjajo močno.",
+      "whyRepair": "Drugi pogled na nekaj težkega.",
+      "whyGuided": "Del tvoje vodene poti.",
+      "typeWhatYouHear": "Zapiši, kar slišiš",
+      "typeHere": "Piši sem…",
+      "tapToOrder": "Tapni besede po vrstnem redu",
+      "matchPairs": "Poveži pare",
+      "flipToReveal": "Tapni za razkritje",
+      "knewIt": "Vedel sem",
+      "didntKnow": "Še ne",
+      "speakNow": "Govori zdaj",
+      "listen": "Poslušaj",
+      "listenSlow": "Počasneje",
+      "hint": "Namig",
+      "correct": "Pravilno",
+      "incorrect": "Ne čisto",
+      "pickTranslation": "Izberi prevod",
+      "pickWhatYouHear": "Izberi, kar si slišal",
+      "fillTheBlank": "Zapolni vrzel",
+      "newItem": "Novo",
+      "reviewedEarlier": "Videno prej"
+    },
+    "intro": {
+      "listenAndEcho": "Poslušaj in povej na glas",
+      "newWord": "Nova beseda",
+      "newPhrase": "Nova fraza"
+    },
+    "grammar": {
+      "noteLabel": "Slovnična opomba",
+      "tryIt": "Poskusi",
+      "contrastLabel": "V primerjavi s tvojim jezikom"
+    },
+    "word": {
+      "inContext": "V kontekstu",
+      "meaningShow": "Pomen",
+      "meaningHide": "Skrij"
+    },
+    "checkpoint": {
+      "title": "Kontrolna točka",
+      "summaryNew": "{{count}} novih",
+      "summaryReviews": "{{count}} ponovitev",
+      "done": "Za danes dovolj",
+      "keepGoing": "Nadaljuj",
+      "dailyRing": "{{count}} v tej seji",
+      "deepSession": "Kakšna poglobljena seja — tvoje ponovitve so tako ali tako načrtovane.",
+      "streakTicked": "{{count}} zapored ✓",
+      "boss": "Izziv enote",
+      "arcGate": "Vrata loka"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Popolno",
+        "nice": "Dobro",
+        "brilliant": "Odlično",
+        "boom": "Bum",
+        "nailed": "Zadeto",
+        "unstoppable": "Neustavljiv",
+        "onFire": "V ognju",
+        "yes": "Ja!",
+        "clean": "Čisto",
+        "sharp": "Ostro",
+        "wow": "Vau",
+        "magic": "Čarobno"
+      },
+      "combo": "{{count}} zapored",
+      "perfect": "Odlično",
+      "wordsLearned": "{{count}} naučenih besed",
+      "unitComplete": "Enota končana: {{name}}",
+      "streakDay": "{{count}} zapored",
+      "placementDone": "Raven določena"
+    },
+    "rare": {
+      "reveal": "Nekaj posebnega…",
+      "etymologyGem": "Zgodba besede",
+      "timeCapsule": {
+        "title": "Časovna kapsula",
+        "body": "S tem si se {{when}} zelo trudil — poglej se zdaj."
+      },
+      "delight": {
+        "newVoice": "Drugačen glas",
+        "didYouNotice": "Si opazil?"
+      },
+      "miniGame": {
+        "title": "Bonus krog",
+        "play": "Igraj"
+      },
+      "story": {
+        "unlocked": "Prislužil si si naslednje poglavje",
+        "read": "Preberi"
+      }
+    },
+    "placement": {
+      "offerTitle": "Kje začneva?",
+      "offerBody": "Nekaj hitrih vprašanj najde tvojo izhodiščno točko. Približno pet minut.",
+      "startNew": "V jeziku {{lang}} sem začetnik",
+      "placeMe": "Nekaj {{lang}} že znam",
+      "skipItem": "Če nisi prepričan, preskoči",
+      "doneTitle": "Izhodišče najdeno",
+      "doneBody": "Začneva pri {{unit}}.",
+      "prelit": "Začneš s {{count}} že znanimi elementi.",
+      "redo": "Znova preveri mojo raven",
+      "aboveTitle": "Ta tečaj si že prerasel",
+      "aboveBody": "Ta tečaj zaenkrat pokriva začetniško snov, ti pa si nad njo. Vseeno ga lahko raziščeš — nove ravni prihajajo.",
+      "aboveFrontier": "Pred večino tega tečaja si — začenjaš pri {{unit}}."
+    },
+    "wordPack": {
+      "title": "Pomeni besed",
+      "body": "Med potjo beri pomene besed v jeziku {{language}}.",
+      "add": "Dodaj ({{size}})",
+      "dismiss": "Ne zdaj",
+      "downloading": "Dodajanje… {{percent}} %",
+      "failed": "Dodajanje ni uspelo",
+      "retry": "Poskusi znova"
+    },
+    "path": {
+      "title": "Tvoja pot",
+      "arc": "Lok {{name}}",
+      "unit": "Enota {{n}}",
+      "locked": "Naprej",
+      "current": "Tukaj si",
+      "review": "Tapni za ponovitev",
+      "mastered": "Trdno"
+    },
+    "streak": {
+      "pactTitle": "Držimo niz?",
+      "pactBody": "Ohrani zagon. Dan počitka pokrije vrzel — enega prislužiš vsak teden.",
+      "pactAccept": "Zraven sem",
+      "pactDecline": "Ne, hvala",
+      "days": "{{count}} zapored",
+      "restDayEarned": "Dan počitka prislužen",
+      "restDayUsed": "{{day}} je bil dan počitka",
+      "repairTitle": "Obnovi svoj niz",
+      "repairBody": "V naslednjih {{days}} dneh zaključi dve seji, da obnoviš svoj {{count}}-dnevni niz.",
+      "repairCta": "Začni"
+    },
+    "block": {
+      "speakingIntro": "Govorna vaja — {{count}} kartic",
+      "ready": "Pripravljen",
+      "loadingModel": "Ogrevam mikrofon…",
+      "micPrompt": "Corpán uporablja mikrofon za ocenjevanje tvoje izgovorjave na tej napravi.",
+      "sttUnavailable": "Ocenjevanje govora trenutno ni na voljo — preklapljamo na poslušanje."
+    },
+    "quota": {
+      "cardsLeft": "Danes še {{count}} kartic",
+      "plusBody": "Corpán Plus odpravi dnevno omejitev kartic."
+    },
+    "welcomeBack": {
+      "title": "Dobrodošel nazaj",
+      "body": "Tvoje ponovitve so ohranile {{pct}} % moči. Ogrejva se."
+    },
+    "tease": {
+      "next": "Naslednjič: {{title}}"
+    },
+    "jump": {
+      "title": "Se ti zdi prelahko?",
+      "body": "Sprejmi kratek izziv in preskoči naprej. Če ne uspe, ne izgubiš ničesar — ostaneš točno tam, kjer si.",
+      "accept": "Poskusi izziv",
+      "decline": "Ostanem tukaj"
+    },
+    "feed": {
+      "caughtUp": "Zaenkrat si na tekočem",
+      "loading": "Pripravljam tvoje kartice…",
+      "loadError": "Journeyja ni bilo mogoče naložiti. Poskusi znova z Domov.",
+      "retry": "Poskusi znova"
+    },
+    "popin": {
+      "pronounceTitle": "Izgovori",
+      "close": "Zapri"
+    },
+    "settings": {
+      "title": "Možnosti Journeyja",
+      "advanceMode": "Napredovanje",
+      "advanceSwipe": "Podrsaj za nadaljevanje",
+      "advanceAuto": "Samodejno nadaljuj",
+      "celebration": "Praznovanja",
+      "celebrationFull": "Polna",
+      "celebrationReduced": "Zmanjšana",
+      "celebrationMinimal": "Minimalna",
+      "sounds": "Zvoki",
+      "soundsOn": "Vklop",
+      "soundsOff": "Izklop",
+      "listeningMode": "Prostoročno poslušanje",
+      "viewPath": "Pokaži pot",
+      "redoPlacement": "Znova preveri mojo raven"
+    },
+    "imagePack": {
+      "title": "Dodaj slike",
+      "body": "Besede se učite s slikami namesto z besedilom.",
+      "dismiss": "Ne zdaj",
+      "add": "Dodaj ({{size}})",
+      "downloading": "Dodajanje… {{percent}}%",
+      "retry": "Poskusi znova",
+      "failed": "Dodajanje ni uspelo"
+    },
+    "interlude": {
+      "gameCue": "Hitra igra · ena fraza",
+      "readerCue": "Hitro branje · en odlomek"
+    }
   }
 }

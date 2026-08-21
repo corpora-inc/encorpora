@@ -26,8 +26,6 @@ import java.io.File
 import java.util.Locale
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicLong
-import kotlin.math.abs
-import kotlin.math.ln
 
 private const val TAG = "CorpanTts"
 private const val INIT_TIMEOUT_MS = 5_000L
@@ -43,39 +41,20 @@ private val WELL_KNOWN_TTS_PACKAGES = listOf(
 internal enum class InitState { PENDING, READY, FAILED }
 
 /* -------------------------------------------------------------------------- */
-/*                           Rate mapping (web → Android)                     */
+/*                                 Speech rate                                */
 /* -------------------------------------------------------------------------- */
 
-private fun mapWebRateToAndroid(
-  webRate: Float,
-  targetMax: Float = 1.45f // default: keeps fast side compressed unless you override
-): Float {
-  val W_MIN = 0.10f
-  val W_DEF = 1.00f
-  val W_MAX = 1.50f
+// Rate is the CALLER'S decision. A turtle button, a rate slider, a per-pack
+// speed — the UI owns what "slow" or "fast" means; the plugin just plays at the
+// rate it's handed. Web `SpeechSynthesisUtterance.rate` and Android
+// `setSpeechRate` share the same convention (1.0 = normal, a linear multiplier),
+// so this is a FAITHFUL pass-through, not a reshaping curve. We only clamp to a
+// platform-safe range: Android ignores rate <= 0, and extreme values can garble
+// or hang some engines. Everything in between is honored exactly as requested.
+private const val RATE_MIN = 0.1f
+private const val RATE_MAX = 4.0f
 
-  val A_MIN = 0.10f
-  val A_DEF = 1.00f
-  val A_MAX = targetMax
-
-  val pad = 0.02f * (A_MAX - A_MIN)
-  val lo = A_MIN + pad
-  val hi = A_MAX - pad
-
-  val w = webRate.coerceIn(W_MIN, W_MAX)
-  if (abs(w - W_DEF) < 1e-6f) return A_DEF
-
-  return if (w < W_DEF) {
-    // keep the "slow" curve gentle
-    val t = (ln((w / W_MIN).toDouble()) / ln((W_DEF / W_MIN).toDouble())).toFloat()
-    lo + t * (A_DEF - lo)
-  } else {
-    // compress fast side harder
-    var t = (ln((w / W_DEF).toDouble()) / ln((W_MAX / W_DEF).toDouble())).toFloat()
-    t *= t * t // cubic
-    A_DEF + t * (hi - A_DEF)
-  }
-}
+private fun safeRate(webRate: Float): Float = webRate.coerceIn(RATE_MIN, RATE_MAX)
 
 /* -------------------------------------------------------------------------- */
 /*                                   Args                                     */
@@ -87,7 +66,7 @@ private const val GOOGLE_TTS_PACKAGE = "com.google.android.tts"
 internal class SpeakArgs {
   lateinit var text: String
   var language: String? = null    // BCP-47, e.g. "fa-IR"
-  var rate: Float? = null         // 0.1–1.5
+  var rate: Float? = null         // caller-decided; clamped to [0.1, 4.0]
   var voiceId: String? = null     // Voice.name (camel)
   var voice_id: String? = null    // Voice.name (snake)
 }
@@ -119,7 +98,7 @@ internal class InstallVoiceDataArgs {
 internal class SpeakConcurrentArgs {
   lateinit var text: String
   var language: String? = null    // BCP-47, e.g. "fa-IR"
-  var rate: Float? = null         // 0.1–1.5
+  var rate: Float? = null         // caller-decided; clamped to [0.1, 4.0]
   var voiceId: String? = null     // Voice.name (camel)
   var voice_id: String? = null    // Voice.name (snake)
 }
@@ -128,7 +107,7 @@ internal class SpeakConcurrentArgs {
 internal class SynthesizeArgs {
   lateinit var text: String
   var language: String? = null    // BCP-47, e.g. "fa-IR"
-  var rate: Float? = null         // 0.1–1.5
+  var rate: Float? = null         // caller-decided; clamped to [0.1, 4.0]
   var voiceId: String? = null     // Voice.name (camel)
   var voice_id: String? = null    // Voice.name (snake)
 }
@@ -382,8 +361,7 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
           }
         }
 
-        // You can override targetMax to 3.0f at call site if you want
-        val androidRate = mapWebRateToAndroid(args.rate ?: 1.0f, targetMax = 3.0f)
+                val androidRate = safeRate(args.rate ?: 1.0f)
         t.setSpeechRate(androidRate)
 
         val utteranceId = UUID.randomUUID().toString()
@@ -471,7 +449,7 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
           t.setLanguage(Locale.forLanguageTag(args.language))
         }
 
-        val androidRate = mapWebRateToAndroid(args.rate ?: 1.0f, targetMax = 3.0f)
+        val androidRate = safeRate(args.rate ?: 1.0f)
         t.setSpeechRate(androidRate)
 
         val utteranceId = "utt_${utteranceIdCounter.incrementAndGet()}"
@@ -571,7 +549,7 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
           }
         }
 
-        val androidRate = mapWebRateToAndroid(args.rate ?: 1.0f, targetMax = 3.0f)
+        val androidRate = safeRate(args.rate ?: 1.0f)
         t.setSpeechRate(androidRate)
 
         val effectiveVoiceId = chosenVoice?.name ?: resolvedVoiceId ?: ""

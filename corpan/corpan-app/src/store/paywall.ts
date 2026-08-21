@@ -33,6 +33,7 @@ export type PaywallSurface =
   // helper; the 48h engagement cap below is only a GLOBAL BACKSTOP and does
   // NOT apply to these (they are not in ENGAGEMENT_SURFACES).
   | "beatlounge_session"
+  | "journey_daily"
   | "tutomaton_daily"
   | "parlometron_daily"
   | "hanzipan_chars"

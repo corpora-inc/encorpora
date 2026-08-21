@@ -1,0 +1,7 @@
+{
+  "name": "@corpan/cap-pronounce",
+  "version": "0.1.0",
+  "description": "Capability module: record → whisper-score → per-word feedback round (extracted from pronunciation-coach / Parlometron). Consumed via the @shared source alias, not npm.",
+  "private": true,
+  "type": "module"
+}
