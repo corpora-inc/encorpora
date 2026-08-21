@@ -1,4 +1,5 @@
-import type { ClickDensity } from "../audio"
+import type { ClickDensity, VoiceKitId } from "../audio"
+import { VOICE_KITS } from "../audio"
 import type { LabelMode, NotationMode, ViewMode } from "../views"
 
 export const MIN_BPM = 30
@@ -18,6 +19,8 @@ type Props = {
   onBpm: (bpm: number) => void
   density: ClickDensity
   onDensity: (d: ClickDensity) => void
+  voiceKit: VoiceKitId
+  onVoiceKit: (k: VoiceKitId) => void
   volume: number
   onVolume: (v: number) => void
   labelMode: LabelMode
@@ -42,6 +45,8 @@ export function TransportBar({
   onBpm,
   density,
   onDensity,
+  voiceKit,
+  onVoiceKit,
   volume,
   onVolume,
   labelMode,
@@ -99,6 +104,22 @@ export function TransportBar({
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="kp-voice">
+        <span className="kp-label">Voice</span>
+        <select
+          className="kp-select"
+          value={voiceKit}
+          onChange={(e) => onVoiceKit(e.target.value as VoiceKitId)}
+          aria-label="Metronome voice"
+        >
+          {VOICE_KITS.map((k) => (
+            <option key={k.id} value={k.id}>
+              {k.name}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="kp-volume">

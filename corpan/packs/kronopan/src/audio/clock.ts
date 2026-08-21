@@ -16,6 +16,7 @@
 // Only the internal backend is built now.
 
 import type { Cycle } from "../core"
+import type { VoiceKitId } from "./voices"
 
 // How dense the click track is. Each level is a superset of the one before.
 //   cycle:        only the cycle downbeat sounds
@@ -55,6 +56,12 @@ export interface Clock {
 
   setClickDensity(density: ClickDensity): void
   getClickDensity(): ClickDensity
+
+  // The synthesized voice the metronome uses.
+  setVoiceKit(kit: VoiceKitId): void
+  getVoiceKit(): VoiceKitId
+  // Play a short taste of the current voice, for auditioning after a pick.
+  previewVoice(): Promise<void>
 
   // Click track level, 0 to 1.
   setVolume(v: number): void

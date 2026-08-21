@@ -13,6 +13,7 @@
 import type { Cycle } from "../core"
 import { totalPulses } from "../core"
 import type { Clock, ClickDensity, ClockState } from "./clock"
+import type { VoiceKitId } from "./voices"
 import {
   type Anchor,
   secondsPerPulse,
@@ -157,6 +158,35 @@ export class InternalClock implements Clock {
 
   getClickDensity(): ClickDensity {
     return this.density
+  }
+
+  setVoiceKit(kit: VoiceKitId): void {
+    this.metro.setKit(kit)
+  }
+
+  getVoiceKit(): VoiceKitId {
+    return this.metro.getKit()
+  }
+
+  // Play a short pattern (a downbeat, a couple of pulses, a group head) so the
+  // musician can hear the picked voice right away without starting the transport.
+  async previewVoice(): Promise<void> {
+    await this.resume()
+    const t = this.ctx.currentTime + 0.05
+    const gap = 0.17
+    const pattern: Array<Parameters<Metronome["trigger"]>[0]> = [
+      "downbeat",
+      "pulse",
+      "group-head",
+      "pulse",
+    ]
+    pattern.forEach((role, i) => {
+      try {
+        this.metro.trigger(role, t + i * gap)
+      } catch {
+        // Ignore a failed preview trigger.
+      }
+    })
   }
 
   setVolume(v: number): void {

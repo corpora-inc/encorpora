@@ -9,6 +9,14 @@ All notable changes to Kronopán are documented here. The format follows
 
 ### Added
 
+- Pickable metronome voices, all synthesized: Tonal, Dumbek (a low DUM on the
+  downbeat and group heads with a bright KA/tek on the interior pulses, so the
+  additive grouping is audible), Woodblock, Rim, Cowbell, and a soft Shaker.
+  Picking a voice auditions a short pattern so you hear it right away. The
+  click-density control (cycle, group heads, every pulse, subdivision) still
+  chooses whether you hear only the tops of the groups or fill them in.
+- Heptadecagonal, a seventeen from the song by Umanistan Forward Learning, added
+  to the preset library.
 - Ring, spiral, and spin views, switchable live alongside the linear view (keys
   1 to 4). The ring wraps the cycle into an annulus with a needle fixed at twelve
   o'clock and the disc rotating under it (turntable posture); under reduced

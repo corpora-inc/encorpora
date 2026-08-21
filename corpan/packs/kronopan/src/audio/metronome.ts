@@ -1,89 +1,64 @@
-// Synthesized metronome voices. No samples, so the pack has no audio-asset
-// dependency for its own click track.
-//
-// Three roles must stay distinguishable through a workshop PA, so they differ in
-// both pitch and loudness: the cycle downbeat is highest and loudest, the group
-// head sits in the middle, the plain pulse is soft, and the subdivision tick is
-// softest of all. Each click is a short enveloped oscillator: a fast attack and
-// an exponential decay give a crisp tick with no click-pop.
+// Synthesized metronome. Renders whichever voice kit is selected; kits live in
+// voices.ts. Tracks the nodes it schedules so a stop or a cycle swap can silence
+// the clicks still in the lookahead window instead of letting them ring out.
 
 import type { ClickRole } from "./clock"
-
-type VoiceSpec = {
-  freq: number
-  gain: number
-  duration: number
-  type: OscillatorType
-}
-
-const VOICES: Record<ClickRole, VoiceSpec> = {
-  downbeat: { freq: 1760, gain: 1.0, duration: 0.055, type: "triangle" },
-  "group-head": { freq: 1174.66, gain: 0.62, duration: 0.048, type: "triangle" },
-  pulse: { freq: 880, gain: 0.34, duration: 0.038, type: "sine" },
-  subdivision: { freq: 880, gain: 0.14, duration: 0.03, type: "sine" },
-}
-
-type LiveVoice = { osc: OscillatorNode; env: GainNode }
+import { renderStroke, type VoiceKitId, type StrokeResult } from "./voices"
 
 export class Metronome {
   private ctx: AudioContext
   private out: AudioNode
-  // Clicks scheduled into the audio graph but not yet finished. Tracked so a
-  // stop or a cycle swap can silence the ones still in the lookahead window
-  // instead of letting them ring out.
-  private live = new Set<LiveVoice>()
+  private kit: VoiceKitId = "tonal"
+  private live = new Set<StrokeResult>()
 
   constructor(ctx: AudioContext, out: AudioNode) {
     this.ctx = ctx
     this.out = out
   }
 
+  setKit(kit: VoiceKitId): void {
+    this.kit = kit
+  }
+
+  getKit(): VoiceKitId {
+    return this.kit
+  }
+
   // Schedule one click at absolute audio time `time`. Times come from the pure
   // planner, so they are always in the near future relative to the context
   // clock.
   trigger(role: ClickRole, time: number): void {
-    const v = VOICES[role]
-    const osc = this.ctx.createOscillator()
-    const env = this.ctx.createGain()
-    osc.type = v.type
-    osc.frequency.setValueAtTime(v.freq, time)
-
-    // Attack fast, then exponential decay toward a floor (exponential ramps
-    // cannot reach exactly 0), then hard-stop.
-    const peak = v.gain
-    const floor = 0.0008
-    env.gain.setValueAtTime(floor, time)
-    env.gain.exponentialRampToValueAtTime(peak, time + 0.004)
-    env.gain.exponentialRampToValueAtTime(floor, time + v.duration)
-
-    osc.connect(env)
-    env.connect(this.out)
-    osc.start(time)
-    osc.stop(time + v.duration + 0.02)
-
-    const node: LiveVoice = { osc, env }
-    this.live.add(node)
-    // Let the nodes free themselves once they have played.
-    osc.onended = () => {
-      osc.disconnect()
-      env.disconnect()
-      this.live.delete(node)
+    const stroke = renderStroke(this.ctx, this.out, this.kit, role, time)
+    this.live.add(stroke)
+    const primary = stroke.sources[0]
+    if (primary) {
+      primary.onended = () => {
+        stroke.bus.disconnect()
+        this.live.delete(stroke)
+      }
+    } else {
+      this.live.delete(stroke)
     }
   }
 
-  // Silence every scheduled click still in flight. Clicks already sounding fade
-  // out over a few milliseconds to avoid a pop; clicks not yet started never
-  // sound. Used on stop and on a cycle swap so the old click track does not bleed
-  // into the new one.
+  // Silence every scheduled click still in flight. Anything sounding fades out
+  // over a few milliseconds to avoid a pop; anything not yet started never
+  // sounds.
   cancelAll(): void {
     const now = this.ctx.currentTime
-    for (const { osc, env } of this.live) {
+    for (const stroke of this.live) {
       try {
-        env.gain.cancelScheduledValues(now)
-        env.gain.setTargetAtTime(0, now, 0.005)
-        osc.stop(now + 0.03)
+        stroke.bus.gain.cancelScheduledValues(now)
+        stroke.bus.gain.setTargetAtTime(0, now, 0.005)
+        for (const s of stroke.sources) {
+          try {
+            s.stop(now + 0.03)
+          } catch {
+            // Already stopped.
+          }
+        }
       } catch {
-        // The node may already have stopped; nothing to cancel.
+        // Node already torn down.
       }
     }
   }

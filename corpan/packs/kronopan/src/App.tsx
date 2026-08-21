@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import type { HostApi } from "./sdk/types"
 import type { Cycle } from "./core"
 import { PRESETS, presetById, additiveSignature, collapsedSignature } from "./core"
-import { InternalClock, type Clock, type ClickDensity } from "./audio"
+import { InternalClock, type Clock, type ClickDensity, type VoiceKitId } from "./audio"
 import {
   LinearView,
   RingView,
@@ -25,6 +25,7 @@ export function App(_props: Props) {
   const [cycle, setCycle] = useState<Cycle>(DEFAULT_CYCLE)
   const [bpm, setBpm] = useState(DEFAULT_BPM)
   const [density, setDensity] = useState<ClickDensity>("pulse")
+  const [voiceKit, setVoiceKit] = useState<VoiceKitId>("tonal")
   const [volume, setVolume] = useState(0.9)
   const [playing, setPlaying] = useState(false)
   const [labelMode, setLabelMode] = useState<LabelMode>("number")
@@ -77,6 +78,13 @@ export function App(_props: Props) {
   const changeVolume = (v: number) => {
     setVolume(v)
     clock.setVolume(v)
+  }
+
+  const changeVoiceKit = (kit: VoiceKitId) => {
+    setVoiceKit(kit)
+    clock.setVoiceKit(kit)
+    // Let the musician hear the new voice right away.
+    void clock.previewVoice()
   }
 
   // Keyboard: space starts and stops, arrows nudge the tempo (shift for a jump
@@ -173,6 +181,8 @@ export function App(_props: Props) {
           onBpm={changeBpm}
           density={density}
           onDensity={changeDensity}
+          voiceKit={voiceKit}
+          onVoiceKit={changeVoiceKit}
           volume={volume}
           onVolume={changeVolume}
           labelMode={labelMode}

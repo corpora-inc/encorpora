@@ -30,6 +30,7 @@ describe("PRESETS", () => {
     expect(totalPulses(presetById("yove-male-mome")!)).toBe(18)
     expect(totalPulses(presetById("jhaptal")!)).toBe(10)
     expect(totalPulses(presetById("deepchandi")!)).toBe(14)
+    expect(totalPulses(presetById("heptadecagonal")!)).toBe(17)
     expect(totalPulses(presetById("nevesto")!)).toBe(9)
   })
 
