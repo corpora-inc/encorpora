@@ -43,8 +43,6 @@ const SEARCH_DEBOUNCE_MS = 220
 const PAGE = 80
 const ROW_HEIGHT = 88
 const OVERSCAN = 4
-/** Cap the longest n-gram band for long phrases; what's hidden is surfaced. */
-const COMBO_MAX_N = 6
 
 const LOG = "[beatlounge/phrase-discovery]"
 
@@ -556,7 +554,9 @@ interface ComboViewProps {
 
 const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved }: ComboViewProps) => {
   const [voiceId, setVoiceId] = useState<string | undefined>(undefined)
-  const breakdown = useMemo(() => comboBreakdown(row.text, row.code, COMBO_MAX_N), [row])
+  // Offer ALL n-grams of the phrase (#420) — no cap; the deeper bands stay
+  // collapsed by default so a long phrase is browsable, not overwhelming.
+  const breakdown = useMemo(() => comboBreakdown(row.text, row.code), [row])
   // Which N bands are expanded. N=1 and N=2 open by default; deeper bands collapse.
   const [openBands, setOpenBands] = useState<Set<number>>(new Set([1, 2]))
   useEffect(() => setOpenBands(new Set([1, 2])), [row.code, row.text])
