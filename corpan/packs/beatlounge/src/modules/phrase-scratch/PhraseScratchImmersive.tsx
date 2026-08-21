@@ -36,6 +36,7 @@ import { createScratchDeck, ensureWorkletModule, type ScratchDeck } from "./scra
 import { padBufferToRevolution } from "./scratchPad"
 import { resolveWordSpans } from "./wordTiming"
 import { createLoadToken } from "./loadToken"
+import { splitWords } from "./grooveWords"
 import {
   advanceRotationByVel,
   angularVelocityToRate,
@@ -101,10 +102,6 @@ interface Props {
 
 /** A snippet's stable identity for picker selection + dedup. */
 const refKey = (r: FragmentRef): string => `${r.language ?? ""}:${r.text ?? ""}:${r.voiceId ?? ""}`
-
-/** Split a phrase into word tokens for per-word labels (best-effort). */
-const splitWords = (text: string): string[] =>
-  text.split(/\s+/).map((w) => w.trim()).filter(Boolean)
 
 /** Per-deck live state held in refs (no per-frame React churn). */
 interface DeckRuntime {
@@ -384,7 +381,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             channel,
             decoded.sampleRate,
             decoded.duration,
-            splitWords(text)
+            splitWords(text, language)
           )
           if (stale()) return
           rt.current.spans = spans
