@@ -7,6 +7,8 @@ All notable changes to Kronopán are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-21
+
 ### Added
 
 - Pickable metronome voices, all synthesized: Tonal, Dumbek (a low DUM on the
