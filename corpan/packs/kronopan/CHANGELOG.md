@@ -7,6 +7,18 @@ All notable changes to Kronopán are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-08-21
+
+### Fixed
+
+- Audio and visual are now tightly synced on device. The visual position is read
+  at the moment the sound is actually heard by compensating for the audio output
+  latency (large on iOS, especially over Bluetooth), so the playhead no longer
+  runs ahead of the clicks. Scheduling is unchanged; only the drawn position
+  shifts. Desktop was already in sync because its latency is negligible.
+- The full-screen button no longer clips at the right edge in portrait: it now
+  sits below the time signature on narrow screens.
+
 ## [0.2.1] - 2026-08-21
 
 ### Fixed

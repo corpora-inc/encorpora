@@ -118,11 +118,37 @@ export class InternalClock implements Clock {
 
   positionPulses(): number {
     if (!this.running) return this.frozenPosition
-    // Clamp the visual read to zero during the start lead, when the raw position
-    // is still negative, so the playhead waits on the downbeat rather than
-    // wrapping to the end of the cycle. Audio scheduling uses the unclamped
-    // anchor, so this affects only what is drawn.
-    return Math.max(0, positionAt(this.anchor, this.ctx.currentTime))
+    // Read the visual position at the moment the sound is actually HEARD, not the
+    // moment it is scheduled: subtract the output latency between the context
+    // clock and the speaker. On desktop this is a few ms (invisible); on iOS it
+    // is tens of ms wired and ~150-300 ms over Bluetooth, which is what made the
+    // playhead lead the clicks in the app. Scheduling still uses the raw clock;
+    // only the drawn position shifts, so the playhead lines up with what is heard.
+    // Also clamp to zero during the start lead, when the raw position is still
+    // negative, so the playhead waits on the downbeat.
+    const heardTime = this.ctx.currentTime - this.outputLatencySec()
+    return Math.max(0, positionAt(this.anchor, heardTime))
+  }
+
+  // Seconds between the audio context clock and the sound reaching the output.
+  // Prefer the precise output timestamp; fall back to base plus output latency.
+  private outputLatencySec(): number {
+    const ctx = this.ctx as AudioContext & {
+      getOutputTimestamp?: () => AudioTimestamp
+      baseLatency?: number
+      outputLatency?: number
+    }
+    try {
+      const ts = ctx.getOutputTimestamp?.()
+      if (ts && typeof ts.contextTime === "number") {
+        const latency = this.ctx.currentTime - ts.contextTime
+        // Guard against nonsense readings; a real latency is small and positive.
+        if (latency >= 0 && latency < 1) return latency
+      }
+    } catch {
+      // Fall through to the static estimate.
+    }
+    return (ctx.baseLatency ?? 0) + (ctx.outputLatency ?? 0)
   }
 
   setTempo(bpm: number): void {
