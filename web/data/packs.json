@@ -663,5 +663,39 @@
     ],
     "recommendOrder": 4,
     "tagline": "Quick, focused phrase practice — built into Corpán."
+  },
+  {
+    "id": "kronopan",
+    "name": "Kronopán",
+    "description": "Feel odd meters. Build a cycle from groups like 3+2+2, hear it as a metronome in voices from tonal to dumbek, and watch the long-short shape as bars, dots, a spinning ring, or a vinyl spiral. A tool for teaching and internalizing additive rhythms.",
+    "status": "prototype",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/kronopan/manifest.json",
+    "zipUrl": "/corpan/packs/kronopan.zip",
+    "landingUrl": "/corpan/packs/kronopan/",
+    "avatarSource": "corpan/packs/kronopan/kronopan-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/kronopan",
+    "minAppVersion": "0.18.0",
+    "v1Listed": false,
+    "channel": "preview",
+    "packType": "game",
+    "purchase": {
+      "type": "free"
+    },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "games",
+      "wild"
+    ],
+    "goodForClass": [
+      "learner",
+      "enjoyer"
+    ],
+    "recommendOrder": 8,
+    "featuredFor": [],
+    "tagline": "Build a rhythm cycle. Hear it, see it, feel it."
   }
 ]
