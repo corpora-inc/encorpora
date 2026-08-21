@@ -247,6 +247,20 @@ jobs:
           zip -r lingo-hero.zip $ZIP_PATHS
           cd ../../..
 
+      - name: Install Kronopán Dependencies
+        working-directory: corpan/packs/kronopan
+        run: npm install --legacy-peer-deps
+
+      - name: Build Kronopán
+        working-directory: corpan/packs/kronopan
+        run: npm run build
+
+      - name: Package Kronopán as ZIP
+        run: |
+          cd corpan/packs/kronopan
+          zip -r kronopan.zip manifest.json dist/ kronopan-avatar.png
+          cd ../../..
+
       - name: Install Wordfall Dependencies
         working-directory: corpan/packs/wordfall
         run: npm install --legacy-peer-deps
@@ -353,6 +367,14 @@ jobs:
           cp -R corpan/packs/lingo-hero/dist "web/io/out/corpan/packs/lingo-hero/"
           if [ -d corpan/packs/lingo-hero/assets ]; then cp -R corpan/packs/lingo-hero/assets "web/io/out/corpan/packs/lingo-hero/"; fi
           cp corpan/packs/lingo-hero/lingo-hero.zip "web/io/out/corpan/packs/lingo-hero.zip"
+
+      - name: Copy Kronopán into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/kronopan"
+          cp corpan/packs/kronopan/manifest.json "web/io/out/corpan/packs/kronopan/"
+          cp corpan/packs/kronopan/kronopan-avatar.png "web/io/out/corpan/packs/kronopan/"
+          cp -R corpan/packs/kronopan/dist "web/io/out/corpan/packs/kronopan/"
+          cp corpan/packs/kronopan/kronopan.zip "web/io/out/corpan/packs/kronopan.zip"
 
       - name: Copy Tutomaton into io/out
         # Shell only; per-language sqlites stream from the CloudFront catalog
