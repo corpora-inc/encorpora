@@ -6,6 +6,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- **Scratch page first-load stalled the main thread → brief audio glitch** (#396),
+  even on high-end devices. Loading a snippet ran one uninterrupted synchronous
+  block — two full-waveform word-span passes + buffer-padding + deck build — right
+  as `decodeAudioData` resolved, contending with the running audio callback. Load
+  now **builds and holds the deck first** (so the platter is playable immediately)
+  and **defers the word-span analysis to main-thread idle** (`requestIdleCallback`
+  with a timeout fallback), so the two-pass scan never shares the audio render
+  quantum with the running transport. The master FX bus is also built in a mount
+  effect
+  instead of the render body, so restoring a saved chain no longer constructs Tone
+  nodes synchronously during render.
 - **Recorded held notes played back as zero-length dots** (#397). The ribbon
   captured only the note-ON (a fixed one-step note) and never measured the hold,
   so sustained playing collapsed to instant blips. Each finger now remembers the
