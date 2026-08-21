@@ -147,9 +147,19 @@ interface DeckView {
   rate: number
   playheadSec: number
   wordIdx: number
+  /** The playhead is in the padded SILENT tail (past the real phrase) — the loop
+   *  is rev-quantized to whole revolutions, so a longer phrase has a trailing
+   *  silent pass. The word/START indicators fade during it (#421). */
+  silent: boolean
 }
 
-const freshView = (): DeckView => ({ rotation: 0, rate: 0, playheadSec: 0, wordIdx: -1 })
+const freshView = (): DeckView => ({
+  rotation: 0,
+  rate: 0,
+  playheadSec: 0,
+  wordIdx: -1,
+  silent: false,
+})
 
 export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
@@ -452,7 +462,11 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       const playheadSec = rotationToPlayhead(rt.discRot, dur)
       const rate = angularVelocityToRate(rt.angVel)
       const wordIdx = wordIndexAt(rt.spans, playheadSec)
-      return { rotation: rt.discRot, rate, playheadSec, wordIdx }
+      // In the padded silent tail (past the real phrase, before the loop wraps)
+      // there's no audio — flag it so the indicators fade (#421). Only meaningful
+      // when the phrase is actually shorter than the rev-quantized loop.
+      const silent = rt.phraseSec > 0 && dur > rt.phraseSec && playheadSec >= rt.phraseSec
+      return { rotation: rt.discRot, rate, playheadSec, wordIdx, silent }
     }
 
     // Write the disc rotation straight to the DOM (no React). Reduced motion → 0
@@ -467,6 +481,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     const READOUT_MS = 120
     const shouldEmit = (p: DeckView, v: DeckView, lastEmit: number, ts: number): boolean => {
       if (p.wordIdx !== v.wordIdx) return true
+      if (p.silent !== v.silent) return true
       if (Math.abs(p.rate - v.rate) > 0.02) return true
       return ts - lastEmit > READOUT_MS && Math.abs(p.playheadSec - v.playheadSec) > 0.02
     }
@@ -758,6 +773,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             spans={rt.current.spans}
             words={rt.current.words}
             currentWord={view.wordIdx}
+            silent={view.silent}
             langTag={langTag}
             active={active}
             onGrab={onGrab(rt)}
