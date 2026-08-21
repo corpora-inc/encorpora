@@ -7,6 +7,21 @@ All notable changes to Kronopán are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-08-21
+
+### Fixed
+
+- Mobile layout, especially on iOS. The whole app now respects the safe-area
+  insets (notch and home indicator) so nothing runs off the edges. The animation
+  stage is the dominant area and the controls are capped and scroll instead of
+  pushing the stage off screen or getting cut off at the bottom in landscape.
+  Controls are more compact on phones.
+
+### Added
+
+- Full-screen mode for the animation: a Full button in the header expands it to
+  fill the screen; swipe down, tap Exit, or press Escape to leave.
+
 ## [0.2.0] - 2026-08-21
 
 ### Added
