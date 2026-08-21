@@ -62,10 +62,15 @@ class HapticsPlugin(private val activity: Activity) : Plugin(activity) {
             // reveal haptic goes unfelt. A duration + amplitude one-shot is
             // reliably felt across devices.
             when (args.style) {
+                // Android has no selection generator; the nearest honest
+                // equivalent is the shortest one-shot that is still felt.
+                "selection" -> strongOneShot(vib, ms = 12L, amplitude = 90)
                 "light" -> strongOneShot(vib, ms = 18L, amplitude = 110)
                 "heavy" -> strongOneShot(vib, ms = 55L, amplitude = 255)
                 "success" -> waveform(vib, longArrayOf(0, 35, 60, 55))
                 "warning" -> waveform(vib, longArrayOf(0, 45, 80, 70))
+                // Heavier and slower than "warning": a refusal, not a caution.
+                "error" -> waveform(vib, longArrayOf(0, 55, 45, 90))
                 // "medium" and any unknown value
                 else -> strongOneShot(vib, ms = 32L, amplitude = 190)
             }

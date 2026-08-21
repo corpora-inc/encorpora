@@ -11,6 +11,7 @@ import { invoke } from "@tauri-apps/api/core";
 
 import { getVoicesCached } from "@/util/tts-voices";
 import { maybeApplySerbianFallback } from "@/util/serbianFallback";
+import { beginUtterance, endUtterance, getActiveUtteranceId } from "@/util/audioManager";
 
 type UAOS = "macos" | "ios" | "android" | "other";
 
@@ -116,7 +117,13 @@ async function speakNativeConcurrent(text: string, langPrefix: string, rate: num
     return result.utteranceId;
 }
 
-async function speakBrowser(text: string, langPrefix: string, rate: number, voiceId?: string) {
+async function speakBrowser(
+    text: string,
+    langPrefix: string,
+    rate: number,
+    voiceId?: string,
+    utteranceId?: number,
+) {
     if (!BROWSER_TTS) throw new Error("Web Speech API not available");
 
     const voices = await awaitVoices();
@@ -144,6 +151,14 @@ async function speakBrowser(text: string, langPrefix: string, rate: number, voic
     }
     utter.rate = rate;
 
+    // Browser is the one backend that gives us a REAL completion signal —
+    // wire it to the audio manager so waitForActiveUtterance() can return as
+    // soon as playback actually ends, rather than riding out the estimate.
+    if (utteranceId !== undefined) {
+        utter.onend = () => endUtterance(utteranceId);
+        utter.onerror = () => endUtterance(utteranceId);
+    }
+
     window.speechSynthesis.speak(utter);
 }
 
@@ -163,6 +178,18 @@ export function createVoiceTTS(langPrefix: string) {
     return async function speak(text: string, rate: number = 0.7, voiceId?: string) {
         let nativeErr: unknown = null;
         let browserErr: unknown = null;
+
+        // Register with the audio manager SYNCHRONOUSLY, before ANY await —
+        // per audioManager.ts's beginUtterance() contract. This must be the
+        // first statement in the function: a fire-and-forget `void
+        // speak(...)` caller (e.g. a reward TTS followed synchronously by an
+        // advance decision — settle() → waitForActiveUtterance()) needs the
+        // utterance already visible the instant this call returns control,
+        // not after an `await`. Estimate from the raw text/rate; native has
+        // no true completion event (see audioManager.ts) so this drives an
+        // estimate regardless, and browser upgrades it to a real one via
+        // utter.onend below.
+        const handle = beginUtterance(text, rate);
 
         // Apply per-language fallback shims (currently: Serbian Cyrillic →
         // Croatian voice on platforms without a Serbian voice). Self-disables
@@ -184,7 +211,7 @@ export function createVoiceTTS(langPrefix: string) {
 
         // 2) Otherwise, try browser Web Speech.
         try {
-            await speakBrowser(outText, outLang, rate, voiceId);
+            await speakBrowser(outText, outLang, rate, voiceId, handle.id);
             return;
         } catch (err) {
             browserErr = err;
@@ -192,7 +219,11 @@ export function createVoiceTTS(langPrefix: string) {
             console.warn(`[TTS:${outLang}] Browser Web Speech failed`, err);
         }
 
-        // Both paths failed — surface a noisy signal so the UI layer can react.
+        // Both paths failed — nothing is actually playing, so stop tracking it
+        // rather than making an app-initiated advance wait out the estimate.
+        endUtterance(handle.id);
+
+        // Surface a noisy signal so the UI layer can react.
         // eslint-disable-next-line no-console
         console.error(
             `[TTS:${langPrefix}] All speech paths failed`,
@@ -227,6 +258,14 @@ export function createVoiceTTS(langPrefix: string) {
  */
 export function createVoiceTTSConcurrent(langPrefix: string) {
     return async function speakConcurrent(text: string, rate: number = 0.7, voiceId?: string): Promise<string> {
+        // Register SYNCHRONOUSLY, before any await — see the matching comment
+        // in createVoiceTTS() above. Concurrent playback can overlap with
+        // other utterances by design, so it doesn't take over "the"
+        // active-utterance slot the same way the sequential speak() does —
+        // but it still counts as audible speech for waitForActiveUtterance()
+        // callers, so track it the same way, estimated from the raw text.
+        const handle = beginUtterance(text, rate);
+
         const { text: outText, langPrefix: outLang } =
             await applyFallbackShims(text, langPrefix, voiceId);
 
@@ -242,11 +281,12 @@ export function createVoiceTTSConcurrent(langPrefix: string) {
 
         // 2) Fallback to browser (sequential - browser doesn't support concurrent easily).
         try {
-            await speakBrowser(outText, outLang, rate, voiceId);
+            await speakBrowser(outText, outLang, rate, voiceId, handle.id);
             return `browser_${Date.now()}`;
         } catch (err) {
             // eslint-disable-next-line no-console
             console.warn(`[TTS:${outLang}] Browser TTS failed`, err);
+            endUtterance(handle.id);
             return `error_${Date.now()}`;
         }
     };
@@ -287,4 +327,41 @@ async function applyFallbackShims(
     if (sr.applied) return { text: sr.text, langPrefix: sr.langPrefix };
 
     return { text, langPrefix };
+}
+
+/**
+ * Stop any in-flight speech immediately (browser + native). Called when the
+ * Journey feed advances so a card's audio never bleeds into the next card
+ * ("hearing the last exercise on the next one"). Safe/no-op when nothing plays.
+ */
+export async function stopSpeech(): Promise<void> {
+    // Capture which utterance we're stopping BEFORE the async native `stop`
+    // call below, and end only that id once it resolves. A user-advance
+    // fires `void stopSpeech()` and the next card's autoplay can call
+    // beginUtterance() for a NEW utterance before the native stop resolves;
+    // an unscoped endUtterance() in `finally` would then wipe the new
+    // utterance's tracking instead of the one we actually just cut. Scoping
+    // by id lets a later-registered utterance survive this race.
+    const idToEnd = getActiveUtteranceId();
+
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+    try {
+        await invoke("plugin:tts|stop");
+    } catch {
+        // native stop unavailable on some builds; ignore
+    } finally {
+        // Whatever was tracked as "active" at entry just got cut — clear
+        // it (and only it) so a subsequent waitForActiveUtterance() doesn't
+        // ride out a now-silent estimate, without touching a newer
+        // utterance that may have started registering while we awaited.
+        // If nothing was active at entry, there's nothing to end here —
+        // in particular, do NOT call the no-id endUtterance(), which would
+        // unconditionally clear whatever is active NOW (e.g. a new
+        // utterance that began mid-await), reintroducing the same race.
+        if (idToEnd !== undefined) {
+            endUtterance(idToEnd);
+        }
+    }
 }

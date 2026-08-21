@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { OfflineImage } from "@/components/ui/OfflineImage"
 
 /**
  * Component to display pack screenshots or video embeds
@@ -12,8 +12,6 @@ export function PackScreenshot({
   alt: string
   type?: "image" | "video"
 }) {
-  const [imageError, setImageError] = useState(false)
-
   if (!src) {
     return null
   }
@@ -39,19 +37,16 @@ export function PackScreenshot({
     }
   }
 
-  // If image failed to load, don't render anything (graceful fallback)
-  if (imageError) {
-    return null
-  }
-
-  // Default to image with error handling
+  // Default to an offline-cached image. Screenshots are optional content, so
+  // the fallback stays null (render nothing) — but a once-seen screenshot now
+  // renders from the on-device cache when offline (D12).
   return (
-    <img
+    <OfflineImage
       src={src}
       alt={alt}
+      fallback={null}
       className="aspect-video w-full rounded-md object-cover"
       loading="lazy"
-      onError={() => setImageError(true)}
     />
   )
 }

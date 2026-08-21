@@ -10,6 +10,40 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Narrator detail resolves art through the host offline cache** (shared
+  `packs/shared/catalog` appShell — Journey W10 wiring of W2's seam). The
+  reader shell now passes the feature-detected `hostApi.offlineCache?.
+  imageSrc` resolver into `createNarratorDetail`, so narrator avatars/
+  banners resolve to on-device cached copies when offline. Older hosts
+  without the seam keep the preload-verify behavior.
+- **Narrator-profile artwork no longer paints empty boxes offline** (shared
+  `packs/shared/catalog` narrator detail — Journey W2, offline-cache.md
+  §1.1 row 9). Book covers, banners, and avatars rendered as CSS
+  `background-image` had no error path: offline, they silently painted
+  nothing. They now render their placeholder (initials/tint) first,
+  preload-verify the pixels before swapping the image in, and — when the
+  host exposes the D12 `offlineCache` seam via the new optional
+  `resolveImageUrl` hook — resolve to the on-device cached copy.
+
+### Changed
+- The word-sync paragraph renderer and the segment-range playback primitive
+  moved to the shared `cap-segment-player` capability module
+  (`packs/shared/capabilities/segment-player` — Journey workstream W8,
+  capability-modules.md §4.3). The reader is the first consumer: tap-to-
+  replay previews now ride the shared segment session; paragraph classes
+  are `capSeg-*` with the earthgate shell keeping its safe-area/fade-band
+  overrides. Main playback path (background audio, media session,
+  keep-alive) unchanged.
+
+### Added
+- Journey launch support (activity-contract §6.2): `segmentRange`/
+  `startAtSegmentIndex`/`autoPlay` initialState params; per-segment
+  `journey.reportItem` evidence + terminal `journey.reportResult` after the
+  range completes, with a Continue affordance. The existing
+  `corpan:segment-progress` dispatch is kept unchanged.
+
+
 ## [0.7.4] - 2026-06-24
 
 ### Fixed

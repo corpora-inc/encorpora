@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#01040c" />
+    <title>ARENA</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #01040c;
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        user-select: none;
+        touch-action: none;
+      }
+      #app {
+        position: fixed;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The pack entry. No inline script: `script-src` carries no
+         'unsafe-inline' and the document is framed on an opaque origin, so
+         every URL here is relative and resolves against the pack scheme.
+         The dev harness's `?seed`/`?perf`/`?dev` switches are not read here —
+         they belong to `index.html`, which the pack build does not include. -->
+    <div id="app"></div>
+    <script type="module" src="/src/pack.ts"></script>
+  </body>
+</html>

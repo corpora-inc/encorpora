@@ -14,21 +14,11 @@
 // Native does the bare minimum — capture, RMS, emit.
 
 import type { SttAudioLevelEvent } from "./game"
+// The policy TYPE moved next to the per-language tuning tables in
+// cap-pronounce (whisperTuning.ts) — one copy, re-exported for callers.
+import type { SilencePolicy } from "@shared/capabilities/pronounce/src/whisperTuning"
 
-export type SilencePolicy = {
-  /** 0..1 RMS threshold below which we count a sample as silence.
-   *  Default tuned for `voice` AudioSource on Android + standard iOS
-   *  input gain. */
-  rmsThreshold?: number
-  /** RMS above threshold must persist this long before we consider
-   *  the user "speaking". Filters out room thumps and pop noises. */
-  speechStartMs?: number
-  /** After speech starts, this much continuous quiet fires the stop. */
-  silenceMs?: number
-  /** Drop the first N ms of events. Avoids triggering on the mic-tap
-   *  artifact that can precede the first real audio buffer. */
-  leadInMs?: number
-}
+export type { SilencePolicy }
 
 export type ResolvedSilencePolicy = Required<SilencePolicy>
 

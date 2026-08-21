@@ -1,0 +1,25 @@
+{
+  "name": "@dynawalla/game-merge-idle",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "ABYSSAL BLOOM — a bioluminescent merge reef. One target at the top; build it out of polyps.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:pack": "vite build --config vite.pack.config.ts",
+    "preview": "vite preview --port 5192",
+    "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test 'src/**/*.test.ts'",
+    "shots": "node qa/shotserver.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.5"
+  }
+}

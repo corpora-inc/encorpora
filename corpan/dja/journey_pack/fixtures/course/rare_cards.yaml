@@ -1,0 +1,11 @@
+# FIXTURE rare-card economy (D7). No story rows — R11 schema-only in v0.1.
+cards:
+  - id: en.rare.delight.confetti
+    card_type: delight
+    rarity_weight: 8
+    min_unit: en.a1.u02
+  - id: en.rare.gem.water
+    card_type: etymology
+    rarity_weight: 50
+    min_unit: en.a1.u02
+    item: "word:en:water"

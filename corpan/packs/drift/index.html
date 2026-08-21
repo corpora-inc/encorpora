@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a1420" />
+    <title>Drift</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0a1420; }
+      #corpan-game-root { position: fixed; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <!-- Standalone dev mount target. In the app, the host mounts Drift into
+         its own container via CorpanGames.drift.mount(). Append ?journey=1 to
+         simulate a Journey interlude launch. -->
+    <div id="corpan-game-root"></div>
+    <noscript>Drift needs JavaScript enabled.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

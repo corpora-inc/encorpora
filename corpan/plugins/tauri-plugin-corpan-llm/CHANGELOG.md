@@ -5,6 +5,21 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **`load_model`'s memory backstop was blind to CURRENTLY available memory**
+  (it only compared the estimated footprint against ~70% of *total* physical
+  RAM), so a resident Whisper model plus the ~2.5 GB Qwen3 LLM could pass the
+  guard on a device with plenty of total RAM but too little free RAM right
+  now — jetsam kill on iPhone 14. The guard now checks `device_memory_mb()`
+  (iOS `os_proc_available_memory`, Android kernel `MemAvailable`) first when
+  it's measurable, requiring a `MIN_LOAD_HEADROOM_MB` (256 MB) cushion above
+  the estimated footprint — a resident Whisper model shrinks that number in
+  real time, so the guard naturally refuses/defers the LLM load with a clean
+  `InsufficientMemory` error instead of racing into a native OOM. The
+  total-RAM percentage check is kept as the fallback for platforms where no
+  available-memory probe exists (desktop). The existing jetsam preflight
+  warnings are unchanged.
+
 ## [0.1.0] - 2026-06-16
 
 ### Fixed
@@ -148,6 +163,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   and `llama.cpp` returned null from both the GPU and CPU paths
   (`LLAMA_CPP_ERROR: load failed (gpu: null …; cpu: null …)`). Drop-then-load
   makes the second load self-healing regardless of pack lifecycle.
+
+### Removed
+- **Live system-prompt override** (the `### Added` entry above) — removed in
+  `1d38ffc2c` (2026-05-31), before 0.1.0 shipped, so it was never present in a
+  released build. KV-cache prefix reuse replaced what it measured. Nothing in the
+  plugin reads `CORPAN_LLM_SYSPROMPT` or `debug.corpan.sysprompt` today.
 
 ### Verified
 - Real on-device inference confirmed on iPad (M-class, Metal): "How do you say

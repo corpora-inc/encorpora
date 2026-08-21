@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Vyber si témata",
+      "availableSummary": "Dostupné balíčky frází: {{count}} · ~{{size}} MB",
+      "installAll": "Nainstalovat vše",
+      "chooseIndividually": "Vybrat jednotlivě",
+      "installing": "Instaluje se {{current}} z {{total}}…",
+      "someFailed": "Nepodařilo se nainstalovat balíčky: {{count}}. Můžete to zkusit znovu na kartě Balíčky.",
+      "allInstalled": "Základní balíčky frází už máte.",
+      "installed": "Nainstalováno",
       "loading": "Načítání…",
       "selectAll": "Vybrat vše ({{count}})",
       "clearAll": "Vymazat",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Překvap mě!",
         "desc": "Vezmi mě někam zábavného."
+      },
+      "journey": {
+        "label": "Následuj Journey",
+        "desc": "Vedený kurz — aplikace volí každý další krok"
+      }
+    },
+    "journey": {
+      "title": "Jak se chcete učit {{lang}}?",
+      "subtitle": "Journey vám každý den nabídne mix nového materiálu a opakování v {{lang}} — kartu po kartě.",
+      "guided": {
+        "label": "Vedená denní cesta",
+        "desc": "Krátká denní lekce naplánovaná právě pro vás.",
+        "unavailable": "Vedená cesta zatím není pro {{lang}} k dispozici."
+      },
+      "explore": {
+        "label": "Vlastním tempem",
+        "desc": "Procházejte příběhy, cvičení a hry sami."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Součástí Plus",
     "installFailedTitle": "Instalace selhala",
+    "updateUnavailableTitle": "Aktualizace není k dispozici",
+    "updateUnavailableDetail": "Toto stažení neodpovídalo tomu, co jsme očekávali. Zkuste to prosím znovu později.",
     "installStuckDetail": "Po nějakou dobu žádný pokrok. Zkontrolujte připojení a zkuste to znovu.",
     "installStuckTitle": "Stahování se zastavilo",
     "openPack": "Otevřít {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sampluj jazyk, který se učíš. Scratchuj ho, dokud se nechytí."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Tvá vedená cesta, kartu po kartě"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Nainstalovat ({{size}})",
     "installing": "Instalace…",
     "installed": "Nainstalováno",
-    "retry": "Zkusit znovu"
+    "retry": "Zkusit znovu",
+    "explains": "Slova v jazyce {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Tvá vedená cesta, kartu po kartě",
+    "heroCard": {
+      "title": "Tvoje Journey",
+      "progress": "{{unit}} · ještě {{count}} do dalšího milníku"
+    },
+    "heroCta": {
+      "start": "Začni svou Journey",
+      "continue": "Pokračovat"
+    },
+    "chrome": {
+      "home": "Domů",
+      "menu": "Možnosti Journey",
+      "unit": "Lekce {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Zkontrolovat",
+      "continue": "Pokračovat",
+      "skipHint": "Přejeď znovu pro přeskočení",
+      "retry": "Zkus to znovu",
+      "showAnswer": "Ukázat odpověď",
+      "answerWas": "Odpověď byla",
+      "comeBackNote": "K tomu se vrátíme.",
+      "whyThisCard": "Proč tato karta?",
+      "whyNew": "Nová položka z tvé aktuální lekce.",
+      "whyReview": "Opakování — rozestupy ho drží silné.",
+      "whyRepair": "Druhý pohled na něco záludného.",
+      "whyGuided": "Součást tvé vedené cesty.",
+      "typeWhatYouHear": "Napiš, co slyšíš",
+      "typeHere": "Piš sem…",
+      "tapToOrder": "Klepej na slova ve správném pořadí",
+      "matchPairs": "Spoj dvojice",
+      "flipToReveal": "Klepni pro odhalení",
+      "knewIt": "Věděl jsem to",
+      "didntKnow": "Ještě ne",
+      "speakNow": "Teď mluv",
+      "listen": "Poslechnout",
+      "listenSlow": "Pomaleji",
+      "hint": "Nápověda",
+      "correct": "Správně",
+      "incorrect": "Ne tak docela",
+      "pickTranslation": "Vyber překlad",
+      "pickWhatYouHear": "Vyber, co jsi slyšel",
+      "fillTheBlank": "Doplň mezeru",
+      "newItem": "Nové",
+      "reviewedEarlier": "Už viděno"
+    },
+    "intro": {
+      "listenAndEcho": "Poslechni si a řekni to nahlas",
+      "newWord": "Nové slovo",
+      "newPhrase": "Nová věta"
+    },
+    "grammar": {
+      "noteLabel": "Gramatická poznámka",
+      "tryIt": "Vyzkoušej",
+      "contrastLabel": "Porovnání s tvým jazykem"
+    },
+    "word": {
+      "inContext": "V kontextu",
+      "meaningShow": "Význam",
+      "meaningHide": "Skrýt"
+    },
+    "wordPack": {
+      "title": "Významy slov",
+      "body": "Čti si za chodu, co slova znamenají v jazyce {{language}}.",
+      "add": "Přidat ({{size}})",
+      "dismiss": "Teď ne",
+      "downloading": "Přidávání… {{percent}} %",
+      "failed": "Nepodařilo se přidat",
+      "retry": "Zkusit znovu"
+    },
+    "checkpoint": {
+      "title": "Kontrolní bod",
+      "summaryNew": "{{count}} nových",
+      "summaryReviews": "{{count}} opakování",
+      "done": "Pro dnešek stačí",
+      "keepGoing": "Pokračovat",
+      "dailyRing": "{{count}} v této relaci",
+      "deepSession": "To byla pořádná porce — tvá opakování jsou tak jako tak naplánovaná.",
+      "streakTicked": "{{count}} v řadě ✓",
+      "boss": "Výzva lekce",
+      "arcGate": "Brána oblouku"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Perfektní",
+        "nice": "Dobré",
+        "brilliant": "Skvělé",
+        "boom": "Bum",
+        "nailed": "Trefa",
+        "unstoppable": "Nezastavitelný",
+        "onFire": "V ohni",
+        "yes": "Ano!",
+        "clean": "Čisté",
+        "sharp": "Ostré",
+        "wow": "Wow",
+        "magic": "Kouzelné"
+      },
+      "combo": "{{count}} v řadě",
+      "perfect": "Perfektní",
+      "wordsLearned": "{{count}} slov naučeno",
+      "unitComplete": "Lekce dokončena: {{name}}",
+      "streakDay": "{{count}} v řadě",
+      "placementDone": "Úroveň určena"
+    },
+    "rare": {
+      "reveal": "Něco výjimečného…",
+      "etymologyGem": "Příběh slova",
+      "timeCapsule": {
+        "title": "Časová schránka",
+        "body": "S tímhle ses {{when}} nadřel — podívej se na sebe teď."
+      },
+      "delight": {
+        "newVoice": "Jiný hlas",
+        "didYouNotice": "Všiml sis?"
+      },
+      "miniGame": {
+        "title": "Bonusové kolo",
+        "play": "Hrát"
+      },
+      "story": {
+        "unlocked": "Zasloužil sis další kapitolu",
+        "read": "Přečíst"
+      }
+    },
+    "placement": {
+      "offerTitle": "Kde začneme?",
+      "offerBody": "Pár rychlých otázek najde tvůj výchozí bod. Asi pět minut.",
+      "startNew": "S jazykem {{lang}} začínám",
+      "placeMe": "Trochu {{lang}} už umím",
+      "skipItem": "Když si nejsi jistý, přeskoč",
+      "doneTitle": "Výchozí bod nalezen",
+      "doneBody": "Začínáme na {{unit}}.",
+      "prelit": "Začínáš s {{count}} položkami, které už znáš.",
+      "redo": "Znovu ověřit mou úroveň",
+      "aboveTitle": "Jsi nad tímto kurzem",
+      "aboveBody": "Tento kurz zatím pokrývá látku pro začátečníky a ty jsi dál. I tak si ho můžeš projít — nové úrovně jsou na cestě.",
+      "aboveFrontier": "Jsi před většinou tohoto kurzu — začínáš na {{unit}}."
+    },
+    "path": {
+      "title": "Tvá cesta",
+      "arc": "Oblouk {{name}}",
+      "unit": "Lekce {{n}}",
+      "locked": "Dál",
+      "current": "Jsi tady",
+      "review": "Klepni pro opakování",
+      "mastered": "Pevné"
+    },
+    "streak": {
+      "pactTitle": "Držet sérii?",
+      "pactBody": "Udrž si tempo. Den volna pokryje výpadek — jeden získáš každý týden.",
+      "pactAccept": "Jdu do toho",
+      "pactDecline": "Ne, díky",
+      "days": "{{count}} v řadě",
+      "restDayEarned": "Den odpočinku získán",
+      "restDayUsed": "{{day}} byl den odpočinku",
+      "repairTitle": "Obnov svou sérii",
+      "repairBody": "Dokonči dvě lekce během příštích {{days}} dní a obnovíš svou sérii {{count}} dní.",
+      "repairCta": "Začít"
+    },
+    "block": {
+      "speakingIntro": "Mluvení — {{count}} karet",
+      "ready": "Připraven",
+      "loadingModel": "Zahřívám mikrofon…",
+      "micPrompt": "Corpán používá mikrofon k hodnocení tvé výslovnosti na tomto zařízení.",
+      "sttUnavailable": "Hodnocení řeči teď není dostupné — přepínáme na poslechová cvičení."
+    },
+    "quota": {
+      "cardsLeft": "Dnes zbývá {{count}} karet",
+      "plusBody": "Corpán Plus ruší denní limit karet."
+    },
+    "welcomeBack": {
+      "title": "Vítej zpátky",
+      "body": "Tvá opakování si udržela {{pct}} % síly. Pojďme se rozehřát."
+    },
+    "tease": {
+      "next": "Příště: {{title}}"
+    },
+    "jump": {
+      "title": "Přijde ti to moc snadné?",
+      "body": "Zkus krátkou výzvu a přeskoč dopředu. Když se nepovede, nic neztrácíš — zůstaneš přesně tam, kde jsi.",
+      "accept": "Zkusit výzvu",
+      "decline": "Zůstanu tady"
+    },
+    "feed": {
+      "caughtUp": "Prozatím máš hotovo",
+      "loading": "Připravuji tvé karty…",
+      "loadError": "Journey se nepodařilo načíst. Zkus to znovu z Domů.",
+      "retry": "Zkusit znovu"
+    },
+    "popin": {
+      "pronounceTitle": "Vyslov to",
+      "close": "Zavřít"
+    },
+    "settings": {
+      "title": "Možnosti Journey",
+      "advanceMode": "Posouvání",
+      "advanceSwipe": "Přejetím pokračovat",
+      "advanceAuto": "Pokračovat automaticky",
+      "celebration": "Oslavy",
+      "celebrationFull": "Plné",
+      "celebrationReduced": "Omezené",
+      "celebrationMinimal": "Minimální",
+      "sounds": "Zvuky",
+      "soundsOn": "Zap.",
+      "soundsOff": "Vyp.",
+      "listeningMode": "Poslech bez rukou",
+      "viewPath": "Zobrazit cestu",
+      "redoPlacement": "Znovu ověřit mou úroveň"
+    },
+    "imagePack": {
+      "title": "Přidat obrázky",
+      "body": "Uč se některá slova pomocí obrázků místo textu.",
+      "dismiss": "Teď ne",
+      "add": "Přidat ({{size}})",
+      "downloading": "Přidávání… {{percent}} %",
+      "retry": "Zkusit znovu",
+      "failed": "Nepodařilo se přidat"
+    },
+    "interlude": {
+      "gameCue": "Rychlá hra · jedna fráze",
+      "readerCue": "Rychlé čtení · jeden úryvek"
+    }
   }
 }

@@ -2,17 +2,29 @@
 
 ![Corpán](corpan/corpan-app/src-tauri/icons/512x512.png)
 
-**encorpora** (“on corpora”) is Corpora Inc’s experimental lab.
-The core software lives at `https://github.com/corpora-inc/corpora`.
+**encorpora** (“on corpora”) is Corpora Inc’s monorepo. Products, packs, content,
+infrastructure and the marketing site all live here and ship from one trunk.
 
-This repo houses experiments that depend on Corpora. When something becomes stable and broadly useful, it graduates to the main `corpora` monorepo.
+Development is trunk-based: short-lived branch → PR → automated adversarial review →
+squash-merge to `main`. See [AGENTS.md](AGENTS.md) for the worker loop and the gates.
 
-## Current focus
+## What's in here
 
-- **Corpán app**: the main product experience.
-- **Corpán Packs**: SDK experiments + new interactive learning formats.
-- **Hover Runner**: 3D fun that locks in correct translations with the All-Hearing Ear.
-- **Books & publishing**
+- **Corpán** (`corpan/`) — the language-learning app. Tauri (Rust) + React,
+  shipping on iOS, Android and desktop. 54 interface locales
+  (`corpan/corpan-app/public/locales/`) over a corpus of narrated, translated content.
+- **Corpán Packs** (`corpan/packs/`) — the pack system and the packs themselves:
+  games, readers, an on-device LLM tutor, a multiplayer city. Packs deploy
+  over-the-air on merge to `main` and are versioned against app floors.
+- **Dynawalla: Apprentice of Numbers** (`dynawalla/`, planned — not yet on `main`)
+  — the newest product: children's mathematics, grades 1–6 plus an introduction
+  to pre-algebra, set in an ancient-futurist world of astrolabes, gears and
+  mechanical computers.
+- **Books & publishing** (`books/`) — the authored source for narration packs.
+- **Site** (`web/`) — encorpora.io, built and deployed to GitHub Pages.
+
+Corpán and Dynawalla share `main`, and Dynawalla will share the native/Tauri plugin
+layer under `corpan/plugins/`. Path filters decide what CI runs for a given change.
 
 ## Live Demos
 
@@ -50,10 +62,13 @@ npm run serve  # Test locally
 
 See [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md) for deployment architecture.
 
-## What's next
+## Contributing
 
-We're actively exploring audio, video, ASR/STT, and richer media learning flows.
-Stay tuned and jump in.
+Read [AGENTS.md](AGENTS.md) first — it is the runbook, and it applies to humans and
+agents alike.
+
+This repository carries no license file yet — see
+[LICENSING-TODO.md](LICENSING-TODO.md) for the open question.
 
 ## Community
 

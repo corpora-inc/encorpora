@@ -1,0 +1,22 @@
+{
+  "id": "dynawalla.mosaic",
+  "version": "0.1.0",
+  "name": "MOSAIC",
+  "description": "A stained-glass ball-and-paddle game whose wall is a times table. Eight shattered tiles charge the paddle; press it and four runes rise carrying the answers to one problem — and one power-up each, so knowing the table means seeing which power you are about to get.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.mul.multidigit.times-one-digit",
+      "dw.mul.multidigit.times-two-digit",
+      "dw.div.whole.divide-exact",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit"
+    ]
+  },
+  "minAge": 7,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

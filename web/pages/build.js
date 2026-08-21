@@ -29,6 +29,12 @@ const CORPAN_LOGO_SOURCE = path.join(
 
 const basePathWithSlash = '/';
 
+// Absolute origin the catalog's install URLs (manifestUrl/zipUrl/imageUrl) are
+// pinned to. Defaults to production so committed/CI output is unchanged; set
+// SITE_ORIGIN (e.g. http://10.0.0.49:8000) to stage a LOCAL catalog whose URLs
+// point at the local pack server for on-device dev installs.
+const SITE_ORIGIN = (process.env.SITE_ORIGIN || 'https://encorpora.io').replace(/\/$/, '');
+
 function readTemplate(name) {
   const templatePath = path.join(TEMPLATES_DIR, `${name}.html`);
   return fs.readFileSync(templatePath, 'utf-8');
@@ -217,6 +223,24 @@ function readManifestLocalized(pack) {
     out.descriptionLocalized = dl;
   }
   return out;
+}
+
+// Pull the pack's `activities` (Journey activity declarations) off its
+// manifest.json and forward them VERBATIM into the catalog entry
+// (activity-contract.md §4.3). This is how the Journey scheduler discovers
+// which installed packs can serve as interludes and what item kinds each
+// consumes (e.g. wordfall:catch, drift:read, lingo_hero:round). Returns `{}`
+// when the manifest is missing or declares no activities.
+function readManifestActivities(pack) {
+  const manifest = readManifest(pack);
+  if (
+    manifest &&
+    Array.isArray(manifest.activities) &&
+    manifest.activities.length > 0
+  ) {
+    return { activities: manifest.activities };
+  }
+  return {};
 }
 
 // Single source of truth for experience names + blurbs: the existing
@@ -438,6 +462,7 @@ function buildPages(outputDir) {
     ...pack,
     version: readManifestVersion(pack),
     ...readManifestLocalized(pack),
+    ...readManifestActivities(pack),
   }));
   packsData.forEach(assertCatalogHostCompatibility);
   assertVersionedCompatibilityRoutes(packsData);
@@ -519,16 +544,16 @@ function buildPages(outputDir) {
   const catalogData = packsData.filter(isV1Pack).map(pack => {
     // Use zipUrl if available, otherwise fallback to manifest
     const manifestUrl = pack.zipUrl
-      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
+      ? (pack.zipUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.zipUrl}` : pack.zipUrl)
       : (pack.manifestUrl
-        ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
-        : `https://encorpora.io/corpan/packs/${pack.id}.zip`);
+        ? (pack.manifestUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.manifestUrl}` : pack.manifestUrl)
+        : `${SITE_ORIGIN}/corpan/packs/${pack.id}.zip`);
 
     // Get the avatar URL from the processed pack (matches what's copied to assets/)
     const packWithAssets = packsWithAssets.find(p => p.id === pack.id);
     const imageUrl = packWithAssets?.avatarUrl
-      ? (packWithAssets.avatarUrl.startsWith('/') ? `https://encorpora.io${packWithAssets.avatarUrl}` : packWithAssets.avatarUrl)
-      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+      ? (packWithAssets.avatarUrl.startsWith('/') ? `${SITE_ORIGIN}${packWithAssets.avatarUrl}` : packWithAssets.avatarUrl)
+      : `${SITE_ORIGIN}/assets/${pack.id}-avatar.png`;
 
     return {
       id: pack.id,
@@ -565,14 +590,14 @@ function buildPages(outputDir) {
     .filter((pack) => pack.builtin !== true && pack.packType !== 'data')
     .map(pack => {
     const zipUrl = pack.zipUrl
-      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
-      : `https://encorpora.io/corpan/packs/${pack.id}.zip`;
+      ? (pack.zipUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.zipUrl}` : pack.zipUrl)
+      : `${SITE_ORIGIN}/corpan/packs/${pack.id}.zip`;
     const manifestUrl = pack.manifestUrl
-      ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
+      ? (pack.manifestUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.manifestUrl}` : pack.manifestUrl)
       : undefined;
     const imageUrl = pack.avatarUrl
-      ? (pack.avatarUrl.startsWith('/') ? `https://encorpora.io${pack.avatarUrl}` : pack.avatarUrl)
-      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+      ? (pack.avatarUrl.startsWith('/') ? `${SITE_ORIGIN}${pack.avatarUrl}` : pack.avatarUrl)
+      : `${SITE_ORIGIN}/assets/${pack.id}-avatar.png`;
 
     // Merge `experiences.<id>.{name, blurb}` translations from every locale's
     // common.json into the catalog so the Home picker can render localized
@@ -617,6 +642,14 @@ function buildPages(outputDir) {
       ...(pack.maxAppVersion ? { maxAppVersion: pack.maxAppVersion } : {}),
       channel: pack.channel || "stable",
       packType: pack.packType || "game",
+      // System packs auto-install on launch (SystemPackInstaller) — no user
+      // action. Tiny core interludes (wordfall, drift) ride this path so they
+      // are present the moment the Journey scroll wants to schedule one.
+      ...(pack.systemPack === true ? { systemPack: true } : {}),
+      // Journey activity declarations (forwarded verbatim from the manifest by
+      // readManifestActivities) — lets the Journey scheduler discover which
+      // installed packs can serve as game/reader interludes.
+      ...(pack.activities ? { activities: pack.activities } : {}),
       ...(Array.isArray(pack.platforms) && pack.platforms.length > 0
         ? { platforms: pack.platforms }
         : {}),

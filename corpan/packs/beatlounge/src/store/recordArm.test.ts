@@ -1,5 +1,10 @@
 import { describe, expect, it, beforeEach } from "vitest"
-import { isRecordArmed, setRecordArmed, disarmAllRecord } from "./recordArm"
+import {
+  isRecordArmed,
+  setRecordArmed,
+  disarmAllRecord,
+  __resetRecordArmForTest,
+} from "./recordArm"
 
 describe("recordArm — per-track, sticky, default OFF", () => {
   beforeEach(() => disarmAllRecord())
@@ -38,5 +43,23 @@ describe("recordArm — per-track, sticky, default OFF", () => {
     disarmAllRecord()
     expect(isRecordArmed("trk-a")).toBe(false)
     expect(isRecordArmed("trk-b")).toBe(false)
+  })
+
+  it("session-scoped: a reload never comes up silently armed (#391)", () => {
+    // A prior session armed a track, and (to prove it can't leak back) we also
+    // stash a matching entry in localStorage — what a persisted store WOULD
+    // rehydrate on load.
+    setRecordArmed("trk-a", true)
+    try {
+      if (typeof localStorage !== "undefined") {
+        localStorage.setItem("beatlounge:recordArm", JSON.stringify(["trk-a"]))
+      }
+    } catch {
+      /* no localStorage in this env — the in-memory guarantee still holds */
+    }
+    // A full app reload re-initialises the store: arm is in-memory only, so it
+    // must come back OFF — never silently re-armed, never quietly recording.
+    __resetRecordArmForTest()
+    expect(isRecordArmed("trk-a")).toBe(false)
   })
 })

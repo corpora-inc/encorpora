@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Alege-ți subiectele",
+      "availableSummary": "{{count}} pachete de fraze disponibile · ~{{size}} MB",
+      "installAll": "Instalează tot",
+      "chooseIndividually": "Alege individual",
+      "installing": "Se instalează {{current}} din {{total}}…",
+      "someFailed": "{{count}} pachet(e) nu au putut fi instalate. Poți reîncerca din fila Pachete.",
+      "allInstalled": "Ai deja pachetele de fraze de start.",
+      "installed": "Instalat",
       "loading": "Se încarcă…",
       "selectAll": "Selectează tot ({{count}})",
       "clearAll": "Șterge",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Surprinde-mă!",
         "desc": "Du-mă undeva distractiv."
+      },
+      "journey": {
+        "label": "Urmează Journey-ul",
+        "desc": "Un curs ghidat — aplicația alege fiecare pas"
+      }
+    },
+    "journey": {
+      "title": "Cum vrei să înveți {{lang}}?",
+      "subtitle": "Journey-ul îți oferă zilnic un mix de material nou și recapitulare în {{lang}} — card cu card.",
+      "guided": {
+        "label": "Traseu zilnic ghidat",
+        "desc": "O sesiune zilnică scurtă, planificată pentru tine.",
+        "unavailable": "Traseul ghidat nu este încă disponibil pentru {{lang}}."
+      },
+      "explore": {
+        "label": "În ritm propriu",
+        "desc": "Explorează singur povești, exerciții și jocuri."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inclus cu Plus",
     "installFailedTitle": "Instalare eșuată",
+    "updateUnavailableTitle": "Actualizare indisponibilă",
+    "updateUnavailableDetail": "Această descărcare nu a corespuns cu ce așteptam. Încearcă din nou mai târziu.",
     "installStuckDetail": "Fără progres de ceva timp. Verifică-ți conexiunea și încearcă din nou.",
     "installStuckTitle": "Descărcare blocată",
     "openPack": "Deschide {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Samplează limba pe care o înveți. Fă scratch până îți intră în cap."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Drumul tău ghidat, card cu card"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Instalează ({{size}})",
     "installing": "Se instalează…",
     "installed": "Instalat",
-    "retry": "Încearcă din nou"
+    "retry": "Încearcă din nou",
+    "explains": "Cuvinte în {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Drumul tău ghidat, card cu card",
+    "heroCard": {
+      "title": "Journey-ul tău",
+      "progress": "{{unit}} · încă {{count}} până la următoarea etapă"
+    },
+    "heroCta": {
+      "start": "Începe Journey-ul tău",
+      "continue": "Continuă"
+    },
+    "chrome": {
+      "home": "Acasă",
+      "menu": "Opțiuni Journey",
+      "unit": "Unitatea {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Verifică",
+      "continue": "Continuă",
+      "skipHint": "Glisează din nou pentru a sări",
+      "retry": "Încearcă din nou",
+      "showAnswer": "Arată răspunsul",
+      "answerWas": "Răspunsul era",
+      "comeBackNote": "Vom reveni la asta.",
+      "whyThisCard": "De ce acest card?",
+      "whyNew": "Un element nou din unitatea ta curentă.",
+      "whyReview": "O recapitulare — spațierea o ține puternică.",
+      "whyRepair": "O a doua privire la ceva dificil.",
+      "whyGuided": "Parte din drumul tău ghidat.",
+      "typeWhatYouHear": "Scrie ce auzi",
+      "typeHere": "Scrie aici…",
+      "tapToOrder": "Atinge cuvintele în ordine",
+      "matchPairs": "Potrivește perechile",
+      "flipToReveal": "Atinge pentru a dezvălui",
+      "knewIt": "Știam",
+      "didntKnow": "Încă nu",
+      "speakNow": "Vorbește acum",
+      "listen": "Ascultă",
+      "listenSlow": "Mai lent",
+      "hint": "Indiciu",
+      "correct": "Corect",
+      "incorrect": "Nu chiar",
+      "pickTranslation": "Alege traducerea",
+      "pickWhatYouHear": "Alege ce ai auzit",
+      "fillTheBlank": "Completează spațiul",
+      "newItem": "Nou",
+      "reviewedEarlier": "Văzut mai devreme"
+    },
+    "intro": {
+      "listenAndEcho": "Ascultă, apoi spune cu voce tare",
+      "newWord": "Cuvânt nou",
+      "newPhrase": "Frază nouă"
+    },
+    "grammar": {
+      "noteLabel": "Notă de gramatică",
+      "tryIt": "Încearcă",
+      "contrastLabel": "Comparativ cu limba ta"
+    },
+    "word": {
+      "inContext": "În context",
+      "meaningShow": "Sens",
+      "meaningHide": "Ascunde"
+    },
+    "checkpoint": {
+      "title": "Punct de control",
+      "summaryNew": "{{count}} noi",
+      "summaryReviews": "{{count}} recapitulări",
+      "done": "Gata pentru azi",
+      "keepGoing": "Mergi mai departe",
+      "dailyRing": "{{count}} în această sesiune",
+      "deepSession": "Ce sesiune intensă — recapitulările tale sunt oricum programate.",
+      "streakTicked": "{{count}} la rând ✓",
+      "boss": "Provocarea unității",
+      "arcGate": "Poarta arcului"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Perfect",
+        "nice": "Bravo",
+        "brilliant": "Genial",
+        "boom": "Bum",
+        "nailed": "Fix la țintă",
+        "unstoppable": "De neoprit",
+        "onFire": "În flăcări",
+        "yes": "Da!",
+        "clean": "Impecabil",
+        "sharp": "Ascuțit",
+        "wow": "Uau",
+        "magic": "Magic"
+      },
+      "combo": "{{count}} la rând",
+      "perfect": "Perfect",
+      "wordsLearned": "{{count}} cuvinte învățate",
+      "unitComplete": "Unitate finalizată: {{name}}",
+      "streakDay": "{{count}} la rând",
+      "placementDone": "Nivel stabilit"
+    },
+    "rare": {
+      "reveal": "Ceva special…",
+      "etymologyGem": "Povestea cuvântului",
+      "timeCapsule": {
+        "title": "Capsula timpului",
+        "body": "Ai muncit din greu la asta {{when}} — uită-te la tine acum."
+      },
+      "delight": {
+        "newVoice": "O voce diferită",
+        "didYouNotice": "Ai observat?"
+      },
+      "miniGame": {
+        "title": "Rundă bonus",
+        "play": "Joacă"
+      },
+      "story": {
+        "unlocked": "Ți-ai câștigat următorul capitol",
+        "read": "Citește-l"
+      }
+    },
+    "placement": {
+      "offerTitle": "De unde începem?",
+      "offerBody": "Câteva întrebări rapide îți găsesc punctul de plecare. Cam cinci minute.",
+      "startNew": "Sunt nou în {{lang}}",
+      "placeMe": "Știu ceva {{lang}}",
+      "skipItem": "Sari dacă nu ești sigur",
+      "doneTitle": "Punct de plecare găsit",
+      "doneBody": "Începem la {{unit}}.",
+      "prelit": "Începi cu {{count}} elemente deja cunoscute.",
+      "redo": "Verifică-mi din nou nivelul",
+      "aboveTitle": "Ești dincolo de acest curs",
+      "aboveBody": "Acest curs acoperă deocamdată material pentru începători, iar tu ești peste el. Îl poți explora oricum — vin niveluri noi.",
+      "aboveFrontier": "Ești înaintea majorității acestui curs — începi la {{unit}}."
+    },
+    "path": {
+      "title": "Drumul tău",
+      "arc": "Arcul {{name}}",
+      "unit": "Unitatea {{n}}",
+      "locked": "Mai departe",
+      "current": "Ești aici",
+      "review": "Atinge pentru recapitulare",
+      "mastered": "Solid"
+    },
+    "streak": {
+      "pactTitle": "Ținem o serie?",
+      "pactBody": "Păstrează-ți avântul. O zi de odihnă acoperă o pauză — câștigi una în fiecare săptămână.",
+      "pactAccept": "Contați pe mine",
+      "pactDecline": "Nu, mulțumesc",
+      "days": "{{count}} la rând",
+      "restDayEarned": "Zi de odihnă câștigată",
+      "restDayUsed": "{{day}} a fost zi de odihnă",
+      "repairTitle": "Reia-ți seria",
+      "repairBody": "Termină două sesiuni în următoarele {{days}} zile ca să-ți refaci seria de {{count}} zile.",
+      "repairCta": "Începe"
+    },
+    "block": {
+      "speakingIntro": "Exercițiu de vorbire — {{count}} carduri",
+      "ready": "Gata",
+      "loadingModel": "Pregătim microfonul…",
+      "micPrompt": "Corpán folosește microfonul pentru a-ți evalua vorbirea pe acest dispozitiv.",
+      "sttUnavailable": "Evaluarea vorbirii nu este disponibilă acum — trecem la exerciții de ascultare."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} carduri rămase azi",
+      "plusBody": "Corpán Plus elimină limita zilnică de carduri."
+    },
+    "welcomeBack": {
+      "title": "Bine ai revenit",
+      "body": "Recapitulările tale și-au păstrat {{pct}}% din putere. Hai să ne încălzim."
+    },
+    "tease": {
+      "next": "Data viitoare: {{title}}"
+    },
+    "jump": {
+      "title": "Ți se pare prea ușor?",
+      "body": "Încearcă o provocare scurtă ca să sari înainte. Dacă nu reușești, nu pierzi nimic — rămâi exact unde ești.",
+      "accept": "Încearcă provocarea",
+      "decline": "Rămân aici"
+    },
+    "feed": {
+      "caughtUp": "Ești la zi deocamdată",
+      "loading": "Îți pregătim cardurile…",
+      "loadError": "Journey nu s-a putut încărca. Încearcă din nou de pe Acasă.",
+      "retry": "Încearcă din nou"
+    },
+    "popin": {
+      "pronounceTitle": "Pronunță",
+      "close": "Închide"
+    },
+    "settings": {
+      "title": "Opțiuni Journey",
+      "advanceMode": "Avansare",
+      "advanceSwipe": "Glisează pentru a continua",
+      "advanceAuto": "Continuă automat",
+      "celebration": "Celebrări",
+      "celebrationFull": "Complete",
+      "celebrationReduced": "Reduse",
+      "celebrationMinimal": "Minime",
+      "sounds": "Sunete",
+      "soundsOn": "Pornite",
+      "soundsOff": "Oprite",
+      "listeningMode": "Ascultare hands-free",
+      "viewPath": "Vezi drumul",
+      "redoPlacement": "Verifică-mi din nou nivelul"
+    },
+    "wordPack": {
+      "title": "Sensuri de cuvinte",
+      "body": "Citește ce înseamnă cuvintele în {{language}} pe măsură ce înaintezi.",
+      "add": "Adaugă ({{size}})",
+      "dismiss": "Nu acum",
+      "downloading": "Se adaugă… {{percent}}%",
+      "failed": "Nu s-a putut adăuga",
+      "retry": "Încearcă din nou"
+    },
+    "imagePack": {
+      "title": "Adaugă imagini",
+      "body": "Învață cuvinte cu imagini în loc de text.",
+      "dismiss": "Nu acum",
+      "add": "Adaugă ({{size}})",
+      "downloading": "Se adaugă… {{percent}}%",
+      "retry": "Încearcă din nou",
+      "failed": "Nu s-a putut adăuga"
+    },
+    "interlude": {
+      "gameCue": "Joc rapid · o frază",
+      "readerCue": "Citire rapidă · un pasaj"
+    }
   }
 }

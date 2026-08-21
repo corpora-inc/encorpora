@@ -1,174 +1,121 @@
-# TestFlight & Play Store Setup - Quick Start
+# Homeschool Offline — TestFlight & Play Store setup
 
-## ✅ What's Already Done
+Status: **not wired into CI.** Nothing under `homeschool-offline/` is built by
+`.github/workflows/release-mobile.yml` — that pipeline ships Corpán only. Everything
+below is the manual, local path. If this app ever ships regularly, wire it into the
+existing workflow rather than repeating this by hand.
 
-- ✅ iOS project initialized
-- ✅ Android project initialized
-- ✅ iOS signing configuration files created (project.yml, ExportOptions.plist)
-- ✅ tauri.conf.json updated with signing settings
-- ✅ .gitignore updated to exclude sensitive files
-- ✅ Android keystore generation script ready
+Bundle id: **`com.corpora.homeschool`** (`tauri.conf.json` → `identifier`).
 
-## 🚀 Next Steps
+## iOS signing — you need a dedicated App ID
 
-### 1. iOS Signing Setup (Required for TestFlight)
+**Do not reuse Corpán's provisioning profile.** A provisioning profile is bound to the
+App ID it was issued for; signing a different bundle id with it fails, and if it did
+succeed App Store Connect would reject the upload because the binary's bundle id does
+not match the app record.
 
-You need to fill in your Apple Developer credentials:
+**Do not use a wildcard App ID either.** A wildcard App ID (`com.corpora.*`) cannot
+carry the capabilities a shipping app needs — In-App Purchase, Push Notifications,
+App Groups and Sign in with Apple all require an **explicit** App ID. A wildcard
+profile gets you a build that installs locally and then dies at the first purchase
+call.
 
-**a) Get your Team ID from Apple Developer Portal:**
-   - Visit: https://developer.apple.com/account
-   - Copy your Team ID (format: 10 characters like `F9AV5HKF6N`)
+The real procedure, once:
 
-**b) Option 1: Use Wildcard Provisioning (Like corpan-app)**
-   - If you have wildcard provisioning (`com.corpora.*`), you can reuse it
-   - Use the same Team ID: `F9AV5HKF6N`
-   - Use the same profile UUID: `4d5c5e29-f71e-4053-a7b6-fc1d5874d97a`
-   - Bundle ID is already set to `com.homeschool.offline` (matches wildcard)
+1. **Register an explicit App ID** at
+   <https://developer.apple.com/account/resources/identifiers> for
+   `com.corpora.homeschool`. Enable exactly the capabilities the app uses.
+2. **Create the App Store Connect app record** for that same bundle id at
+   <https://appstoreconnect.apple.com>.
+3. **Create an App Store distribution provisioning profile** for that App ID at
+   <https://developer.apple.com/account/resources/profiles> (type: *App Store*), tied
+   to your Apple Distribution certificate. Download it and note its UUID.
+4. **Fill in the config files** with your own Team ID and the UUID from step 3.
+   Neither value belongs in a committed doc — read them from the developer portal.
 
-**b) Option 2: Create New App-Specific Provisioning**
-   - Visit: https://developer.apple.com/account/resources/profiles
-   - Create "App Store" provisioning profile for `com.homeschool.offline`
-   - Download and note the UUID
+   `src-tauri/ios/project.yml`:
+   ```yaml
+   DEVELOPMENT_TEAM: <YOUR_TEAM_ID>
+   CODE_SIGN_IDENTITY: "Apple Distribution"
+   PROVISIONING_PROFILE_SPECIFIER: <YOUR_PROFILE_UUID>
+   PRODUCT_BUNDLE_IDENTIFIER: com.corpora.homeschool
+   ```
 
-**c) Update these files with your credentials:**
+   `src-tauri/ios/ExportOptions.plist` — under `provisioningProfiles`, map the bundle
+   id to the profile:
+   ```xml
+   <key>com.corpora.homeschool</key>
+   <string>YOUR_PROFILE_UUID</string>
+   ```
 
-Edit `src-tauri/ios/project.yml`:
-```yaml
-DEVELOPMENT_TEAM: F9AV5HKF6N  # Replace YOUR_TEAM_ID_HERE
-CODE_SIGN_IDENTITY: "iPhone Distribution"
-PROVISIONING_PROFILE_SPECIFIER: "4d5c5e29-f71e-4053-a7b6-fc1d5874d97a"  # Replace YOUR_PROVISIONING_PROFILE_UUID_HERE
-```
+   `src-tauri/tauri.conf.json`:
+   ```json
+   "developmentTeam": "<YOUR_TEAM_ID>"
+   ```
+   `signingIdentity` there is the **macOS** identity and is irrelevant to an iOS
+   TestFlight build; leave it alone unless you are shipping the Mac target.
 
-Edit `src-tauri/ios/ExportOptions.plist`:
-```xml
-<key>teamID</key>
-<string>F9AV5HKF6N</string>  <!-- Replace YOUR_TEAM_ID_HERE -->
+5. Confirm the certificate is actually in your keychain:
+   ```bash
+   security find-identity -v -p codesigning
+   ```
 
-<key>com.homeschool.offline</key>
-<string>4d5c5e29-f71e-4053-a7b6-fc1d5874d97a</string>  <!-- Replace YOUR_PROVISIONING_PROFILE_UUID_HERE -->
-```
+## Android signing
 
-Edit `src-tauri/tauri.conf.json`:
-```json
-"developmentTeam": "F9AV5HKF6N",  // Replace YOUR_TEAM_ID_HERE
-"signingIdentity": "3rd Party Mac Developer Application: Corpora Inc (F9AV5HKF6N)"  // Replace YOUR_TEAM_ID_HERE
-```
+Generate this app's **own** upload keystore. Do not copy Corpán's — Play ties the
+upload key to the app listing, and sharing one key across two listings means one
+compromise burns both.
 
-### 2. Android Keystore Setup (Required for Play Store)
-
-**Option A: Generate New Keystore (Recommended)**
 ```bash
 cd src-tauri
-./generate-android-keystore.sh
+./generate-android-keystore.sh   # writes upload-keystore.jks, alias `homeschool-offline`
 ```
-Follow the prompts and **save the password securely in 1Password**.
 
-**Option B: Copy from corpan-app (If shared signing is OK)**
+Store the passwords in a password manager. The keystore is gitignored; losing it means
+you cannot update the listing without a Play key-reset request.
+
+## Build
+
+iOS:
 ```bash
-cd src-tauri
-cp ../../corpan/corpan-app/src-tauri/upload-keystore.jks ./
-```
-You'll need the existing keystore password.
-
-### 3. Build for TestFlight (iOS)
-
-```bash
-# From the app directory
 npm run tauri ios build --release
+# → src-tauri/gen/apple/build/arm64/Homeschool Offline.ipa
 ```
+Upload with Transporter, or `xcrun altool` / `notarytool` from the command line.
 
-Output will be at:
-```
-src-tauri/gen/apple/build/arm64/Homeschool Offline.ipa
-```
-
-**Upload to TestFlight:**
-1. Open Transporter app (or use Xcode)
-2. Drag the `.ipa` file into Transporter
-3. Sign in with your Apple ID
-4. Click "Deliver"
-
-### 4. Build for Play Store Internal Testing (Android)
-
+Android:
 ```bash
-# Set keystore credentials (use your actual password)
-export ANDROID_KEYSTORE_PASSWORD='your_password_here'
-export ANDROID_KEY_PASSWORD='your_password_here'
+export ANDROID_KEYSTORE_PASSWORD='…'
+export ANDROID_KEY_PASSWORD='…'
 export ANDROID_KEY_ALIAS='homeschool-offline'
-
-# Build
 npm run tauri android build --release
+# → src-tauri/gen/android/app/build/outputs/bundle/release/app-release.aab
 ```
+Upload the `.aab` to Play Console → Testing → Internal testing.
 
-Output will be at:
-```
-src-tauri/gen/android/app/build/outputs/bundle/release/app-release.aab
-```
+Build numbers must increase monotonically on both stores. Corpán derives them from
+`$(date +%s)/60` in `release-mobile.yml`; do the same here rather than hand-incrementing.
 
-**Upload to Play Console:**
-1. Visit: https://play.google.com/console
-2. Create new app or select existing
-3. Go to "Testing" → "Internal testing"
-4. Create new release
-5. Upload the `.aab` file
-6. Add testers by email
-7. Publish to internal testing
+## Before committing
 
-## 🔒 Security Checklist
+- `upload-keystore.jks` is gitignored — confirm it is not staged.
+- No passwords, `.p8` keys, key ids, issuer ids, profile UUIDs or `.mobileprovision`
+  files in any tracked file. **This repository is public.**
 
-Before committing:
-- [ ] `upload-keystore.jks` is in `.gitignore` (already done)
-- [ ] Passwords are saved in 1Password
-- [ ] No passwords in any committed files
-- [ ] `.mobileprovision` files not committed (if any)
+## Troubleshooting
 
-## 🐛 Troubleshooting
+**"Signing identity not found"** — the Apple Distribution certificate is not in the
+keychain, or the profile UUID does not match a profile in
+`~/Library/MobileDevice/Provisioning Profiles/`.
 
-**iOS Build Fails with "Signing Identity not found":**
-- Verify your Apple Developer certificate is installed in Keychain
-- Check that Team ID and Provisioning Profile UUID are correct
-- Run `security find-identity -v -p codesigning` to see available signing identities
+**Upload rejected for bundle-id mismatch** — you signed with a profile issued for a
+different App ID. Go back to step 1.
 
-**Android Build Fails with "Keystore not found":**
-- Make sure `upload-keystore.jks` exists in `src-tauri/`
-- Verify environment variables are set
-- Check that keystore alias is `homeschool-offline`
+**"Keystore not found"** — `upload-keystore.jks` is missing from `src-tauri/`, or the
+alias is not `homeschool-offline`.
 
-**"This app requires a newer iOS version":**
-- Current minimum: iOS 14.0 (covers 99%+ of devices)
-- Can be lowered in `src-tauri/ios/project.yml` if needed
+## See also
 
-## 📚 Full Documentation
-
-See `SIGNING_SETUP.md` for complete details on:
-- Detailed signing configuration
-- CI/CD setup (future)
-- Signature verification
-- Security best practices
-
-## ⏭️ After First Successful Build
-
-1. **iOS**: Set up automatic version bumping
-2. **Android**: Configure internal testing track
-3. **Both**: Set up crash reporting (Sentry, Firebase, etc.)
-4. **Both**: Configure analytics if needed
-5. **CI/CD**: Automate builds with GitHub Actions
-
-## 🎉 Success Criteria
-
-You're ready for TestFlight/Play Store when:
-- [x] iOS project builds successfully
-- [x] Android project builds successfully
-- [x] .ipa file generated and signed correctly
-- [x] .aab file generated and signed correctly
-- [x] You can upload to TestFlight without errors
-- [x] You can upload to Play Console without errors
-- [x] TestFlight build appears in App Store Connect
-- [x] Internal testing track created in Play Console
-
-## 🔗 Quick Links
-
-- Apple Developer: https://developer.apple.com/account
-- App Store Connect: https://appstoreconnect.apple.com
-- Play Console: https://play.google.com/console
-- Transporter (iOS uploads): https://apps.apple.com/app/transporter/id1450874784
+`SIGNING_SETUP.md` (detail), `BUILD_COMMANDS.md`, and
+`corpan/corpan-app/RELEASE_SETUP.md` for how the automated Corpán pipeline does all of
+this in GitHub Actions.

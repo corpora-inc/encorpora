@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Dynawalla · physics foundation</title>
+    <style>
+      :root {
+        --bg: #140d18;
+        --ink: #efe3cf;
+        --brass: #d9a441;
+        --dim: #8b7a86;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; }
+      body {
+        font: 500 13px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+        touch-action: none;
+      }
+      canvas { display: block; }
+      #hud {
+        position: fixed; top: 0; left: 0; right: 0;
+        padding: max(10px, env(safe-area-inset-top)) 12px 10px;
+        display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+        background: linear-gradient(#140d18ee, #140d1800);
+        pointer-events: none;
+      }
+      #hud > * { pointer-events: auto; }
+      .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+      button {
+        font: inherit; color: var(--ink); cursor: pointer;
+        background: #241a29; border: 1px solid #3a2b40; border-radius: 8px;
+        padding: 7px 11px; letter-spacing: 0.01em;
+      }
+      button:hover { background: #2f2235; }
+      button[aria-pressed="true"] {
+        background: var(--brass); border-color: var(--brass); color: #241305; font-weight: 700;
+      }
+      #stats {
+        margin-left: auto; display: flex; gap: 14px;
+        font-variant-numeric: tabular-nums; color: var(--dim);
+        background: #1c1420cc; border: 1px solid #33253a; border-radius: 8px; padding: 7px 12px;
+      }
+      #stats b { color: var(--ink); font-weight: 600; }
+      #caption {
+        position: fixed; left: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+        max-width: min(46ch, calc(100vw - 24px));
+        background: #1c1420cc; border: 1px solid #33253a; border-radius: 10px;
+        padding: 10px 13px; color: var(--dim);
+      }
+      #caption b { color: var(--brass); display: block; margin-bottom: 3px; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+      @media (max-width: 560px) { #stats { width: 100%; margin-left: 0; justify-content: space-between; } }
+    </style>
+  </head>
+  <body>
+    <div id="hud">
+      <div class="tabs" id="tabs"></div>
+      <div id="stats">
+        <span>fps <b id="fps">—</b></span>
+        <span>step p99 <b id="p99">—</b>ms</span>
+        <span>awake <b id="awake">—</b></span>
+        <span>tier <b id="tier">—</b></span>
+      </div>
+    </div>
+    <div id="caption"><b>loading</b><span id="cap-text"></span></div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+id: en.a1.u17
+arc: en.arc1
+theme: "Shopping & money"
+cando:
+  - key: prices
+    text: "Can ask how much things cost and handle simple purchases."
+vocab_band: { lo: 1, hi: 3600 }
+phrase_domains: [everyday]
+skills:
+  - id: en.skill.shopping
+    kind: function
+    title: "Shopping & money"
+    b: -2.6
+    prereqs: [en.skill.directions]
+grammar_nodes: [en.gn.how-much-many]
+items:
+  - ref: "phrase:base:21980"  # What is the price?
+    skills: [en.skill.shopping]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:21780"  # I have enough money.
+    skills: [en.skill.shopping]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:5774"  # The shop is open now.
+    skills: [en.skill.shopping]
+    importance: 3
+    probe: true
+    b: -2.6
+  - ref: "phrase:base:21861"  # That's half the price.
+    skills: [en.skill.shopping]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21925"  # That's a lot of money.
+    skills: [en.skill.shopping]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:21982"  # Check the price now.
+    skills: [en.skill.shopping]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:money"
+    skills: [en.skill.shopping]
+    importance: 2
+  - ref: "word:en:price"
+    skills: [en.skill.shopping]
+    importance: 2
+  - ref: "word:en:shop"
+    skills: [en.skill.shopping]
+    importance: 2
+  - ref: "word:en:store"
+    skills: [en.skill.shopping]
+    importance: 2
+  - ref: "word:en:buy"
+    skills: [en.skill.shopping]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [everyday]
+      level: A1
+      count: 10
+      skills: [en.skill.shopping]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, dialog, dialog, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

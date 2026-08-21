@@ -1,0 +1,85 @@
+id: en.a2.u19
+arc: en.arc2
+theme: "Turn it on"
+cando:
+  - key: devices
+    text: "Can explain how to use an everyday device, using phrasal verbs like turn on/off and get up, and verb + preposition pairs like listen to, wait for, and look for."
+vocab_band: { lo: 1, hi: 4233 }
+phrase_domains: [technology, everyday]
+skills:
+  - id: en.skill.phrasal-verbs
+    kind: grammar
+    title: "Phrasal verbs & prepositions"
+    b: -1.2
+    prereqs: [en.skill.routines, en.skill.places]
+grammar_nodes: [en.gn.phrasal-verbs-1, en.gn.verb-prep-collocations]
+items:
+  - ref: "phrase:base:5792"  # I’m waiting for you now.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:10035"  # Can you turn on the lights?
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:21113"  # I get up early every morning.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    probe: true
+    b: -1.2
+  - ref: "phrase:base:17460"  # Please turn off the lights before leaving.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:5798"  # He’s looking for his keys now.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:7759"  # Turn on airplane mode before the flight.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-tech-computers-basics:67"  # Turn off auto-play.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-tech-computers-basics:134"  # Turn the monitor off, and wait ten seconds.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:phrase-tech-computers-basics:94"  # Right-click to see more options.
+    skills: [en.skill.phrasal-verbs]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:screen"
+    skills: [en.skill.phrasal-verbs]
+    importance: 2
+  - ref: "word:en:button"
+    skills: [en.skill.phrasal-verbs]
+    importance: 2
+  - ref: "word:en:turn"
+    skills: [en.skill.phrasal-verbs]
+    importance: 2
+  - ref: "word:en:switch"
+    skills: [en.skill.phrasal-verbs]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [technology, everyday]
+      level: A2
+      count: 10
+      skills: [en.skill.phrasal-verbs]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]
+anchor:
+  provider: corpan_city
+  config: { itemset: unit }

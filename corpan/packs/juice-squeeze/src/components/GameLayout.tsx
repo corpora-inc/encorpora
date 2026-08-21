@@ -46,7 +46,9 @@ export function GameLayout({
       {hero}
       {exit}
       <div className="jsf-header">{header}</div>
-      <div className="jsf-main" ref={mainRef}>
+      {/* data-capsqz-fit-scope: the moved useFitText hook (cap-squeeze) finds
+          its phrase/bank fit scope through this marker. */}
+      <div className="jsf-main" ref={mainRef} data-capsqz-fit-scope>
         {target}
         {sentence}
         {nav}

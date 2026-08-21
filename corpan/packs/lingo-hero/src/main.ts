@@ -2,6 +2,7 @@ import "./styles.css"
 import type { GameModule, HostApi } from "./sdk/types"
 import { createMockHostApi } from "./sdk/mockHostApi"
 import { Game } from "./Game"
+import { mountJourney } from "./journey/mount"
 import type { Note, ActiveLanguage, GameMode } from "./types"
 import type { LaneSystem } from "./LaneSystem"
 import type { Round } from "./ContentManager"
@@ -85,7 +86,18 @@ const registerGame = () => {
         scope.__lingoHero.dispose()
         scope.__lingoHero = undefined
       }
-      
+
+      // Journey activity launch (activity-contract §6.1). Belt: the spec in
+      // initialState; suspenders: the typed-rail seam knows the active spec.
+      const spec =
+        initialState?.activity ??
+        (hostApi.journey?.isActive() ? hostApi.journey.getSpec() : null)
+      if (spec) {
+        return mountJourney(container, hostApi, spec, initialState, (game) => {
+          scope.__lingoHero = game ? asDebug(game) : undefined
+        })
+      }
+
       const instance = new Game(container, hostApi, initialState)
 
       scope.__lingoHero = asDebug(instance)

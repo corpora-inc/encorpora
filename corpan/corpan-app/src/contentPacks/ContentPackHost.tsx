@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
+import { JOURNEY_CONTRACT_VERSION } from "./activitySchemas"
 import type {
   ContentPackManifest,
   ContentPackModule,
@@ -183,6 +184,64 @@ const lookupGameModule = (primaryId: string, fallbackId: string) => {
   return registry?.[primaryId] ?? registry?.[fallbackId] ?? null
 }
 
+// ---------------------------------------------------------------- warm-mount
+//
+// PREMIUM_SCROLL §1.3/§4.4 "zero dead air": a lightweight interlude (e.g.
+// lingo-hero) is dropped into repeatedly across a scroll session. Cold-starting
+// it every time — fetch manifest, inject <script>/<style>, wait for
+// registration — reintroduces the loading gap the feed promises away. The warm
+// cache keeps such a pack's injected assets RESIDENT after unmount so its module
+// stays registered in `globalThis.CorpanGames`; the next launch reuses the
+// already-registered module and mounts instantly (no fetch, no inject, no wait).
+//
+// Scope is deliberately narrow + safe:
+//   - ONLY packs on WARM_PACK_IDS are kept resident. Heavy 3D tent-poles
+//     (world-plaza, corpan-city) are NEVER warmed — a resident Babylon scene
+//     would hold GPU/RAM and defeat the point; they cold-mount as before.
+//   - An LRU cap (WARM_LRU_MAX) evicts the least-recently-used warm pack's
+//     assets so at most N lightweight packs stay resident.
+//   - CRASH ISOLATION: warm bookkeeping is best-effort and never throws into the
+//     host. A pack whose module failed to register is not warmed (nothing to
+//     reuse), and a warm reuse that turns out stale falls straight back to the
+//     cold path — a pack error can never break the scroll around it.
+const WARM_PACK_IDS = new Set(["lingo_hero", "lingo-hero"])
+const WARM_LRU_MAX = 3
+// LRU of pack ids (manifest.id form) whose injected assets we intentionally kept.
+const warmResident: string[] = []
+
+const isWarmEligible = (packId: string) => WARM_PACK_IDS.has(packId)
+
+/** Mark a pack resident (MRU) and evict the LRU tail past the cap. Returns the
+ *  evicted ids so the caller can drop their assets. Never throws. */
+const noteWarmResident = (packId: string): string[] => {
+  const evicted: string[] = []
+  try {
+    const at = warmResident.indexOf(packId)
+    if (at >= 0) warmResident.splice(at, 1)
+    warmResident.push(packId)
+    while (warmResident.length > WARM_LRU_MAX) {
+      const dropped = warmResident.shift()
+      if (dropped) evicted.push(dropped)
+    }
+  } catch {
+    // Bookkeeping only — a failure here just means we cold-start next time.
+  }
+  return evicted
+}
+
+/** Remove a pack's injected <script>/<style>/<link> so it fully cold-starts
+ *  next time. Used on LRU eviction. Best-effort. */
+const dropWarmAssets = (packId: string) => {
+  try {
+    injectedAssetNodes(packId).forEach((node) => node.remove())
+    const registry = (globalThis as { CorpanGames?: Record<string, ContentPackModule> })
+      .CorpanGames
+    if (registry) delete registry[packId]
+  } catch {
+    // If we can't drop assets, the worst case is stale bytes lingering — safe.
+  }
+}
+
 const waitForGameModule = async (
   primaryId: string,
   fallbackId: string,
@@ -242,7 +301,13 @@ export default function ContentPackHost({
     const scope = globalThis as typeof globalThis & {
       __CORPAN_PLUS?: boolean
       __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
-      __CORPAN_HOST_CAPS?: { dailyLock?: boolean }
+      __CORPAN_HOST_CAPS?: {
+        dailyLock?: boolean
+        journey?: number
+        storageKv?: number
+        localAnalytics?: number
+        offlineCache?: boolean
+      }
     }
     scope.__CORPAN_PLUS = entitlementSnapshot.plus
     scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
@@ -250,7 +315,22 @@ export default function ContentPackHost({
     // `dailyLock` = this host renders the gate-v2 DailyLockOverlay, so packs may
     // hard-block at the daily cap. Absent in pre-0.18.1 hosts → packs degrade to
     // the soft nag instead of freezing behind an overlay that won't appear.
-    scope.__CORPAN_HOST_CAPS = { ...scope.__CORPAN_HOST_CAPS, dailyLock: true }
+    // `journey` = the Journey activity contract version this host implements
+    // (`hostApi.journey` + the `corpan:activity-result` rail). Absent on
+    // pre-journey hosts → packs run standalone-only. Integer so a future
+    // revision can gate on `>= 2` instead of minting a new flag.
+    scope.__CORPAN_HOST_CAPS = {
+      ...scope.__CORPAN_HOST_CAPS,
+      dailyLock: true,
+      journey: JOURNEY_CONTRACT_VERSION,
+      // `storageKv` = hostApi.storage (pack-scoped durable KV, §5.1) and
+      // `localAnalytics` = hostApi.localAnalytics (§5.2) are wired on this
+      // host. Integers so a future revision can gate on `>= 2`.
+      storageKv: 1,
+      localAnalytics: 1,
+      // `offlineCache` = hostApi.offlineCache (imageSrc/fetchJson, D12).
+      offlineCache: true,
+    }
     window.dispatchEvent(
       new CustomEvent("corpan:entitlement-changed", {
         detail: entitlementSnapshot,
@@ -266,6 +346,14 @@ export default function ContentPackHost({
     let retryTimer: number | null = null
     let lastManifestSignature = ""
     let isLoading = false
+    // manifest.id of the currently-loaded pack, once known — the key its
+    // injected assets are tagged with (may differ from the prop `id`).
+    let loadedPackId: string | null = null
+    // True when the last successful load reused warm-resident assets (no fetch/
+    // inject) OR the pack is warm-eligible; its assets are kept on unmount so a
+    // repeat launch mounts instantly. Never true in dev-reload (assets are
+    // cache-busted per revision) — warm reuse would serve stale bytes.
+    let keptWarm = false
 
     const manifestRequestUrl =
       manifestUrl ?? `/packs/${id}/manifest.json`
@@ -403,11 +491,18 @@ export default function ContentPackHost({
       //      still-mounted tree (flash/half-rendered teardown). The pack root is
       //      detached together with the host container by React, so the unmount
       //      itself is the safe moment to drop the orphaned <script>/<style>.
+      // WARM-MOUNT (§4.4): for a warm-eligible pack that loaded cleanly, KEEP its
+      // injected assets after unmount so its module stays registered and a repeat
+      // interlude launch mounts instantly. We still unmount the React root (the
+      // DOM/instance is torn down); only the <script>/<style> stay resident. The
+      // LRU eviction (in load()) is the sole path that ever drops warm assets.
+      const warmThisPack = keptWarm && !!loadedPackId && isWarmEligible(loadedPackId)
+      if (warmThisPack && loadedPackId) noteWarmResident(loadedPackId)
       // Snapshot the CURRENT injected nodes now, so the deferred clear removes
       // exactly THIS pack instance's assets and never the fresh ones a
       // subsequent load() (which runs concurrently after this synchronous
       // cleanup) may have injected by the time the frame fires.
-      const staleAssets = injectedAssetNodes(id)
+      const staleAssets = warmThisPack ? [] : injectedAssetNodes(id)
       const finishTeardown = () => {
         try {
           instanceToUnmount?.unmount?.()
@@ -480,6 +575,56 @@ export default function ContentPackHost({
       if (shouldDevReload) {
         ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
       }
+
+      // Mount an already-loaded module into the (pristine) container with the
+      // standard init payload. Shared by the warm fast-path and the cold path so
+      // there is exactly one mount call shape.
+      const mountModule = (mod: ContentPackModule) => {
+        if (!containerRef.current) {
+          throw new Error("Content pack container missing")
+        }
+        if (containerRef.current.firstChild) {
+          containerRef.current.replaceChildren()
+        }
+        return mod.mount(containerRef.current, hostApi, {
+          stackConfig: hostApi.getStackConfig(),
+          isPlus: entitlementSnapshotRef.current.plus,
+          entitlement: entitlementSnapshotRef.current,
+          ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
+          ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
+          ...(entry?.activity ? { activity: entry.activity } : {}),
+        })
+      }
+
+      // WARM FAST-PATH (§4.4): a warm-eligible pack whose module is still
+      // registered (its assets were kept resident on the last unmount) mounts
+      // WITHOUT re-fetching the manifest or re-injecting scripts — the "zero dead
+      // air" promise for repeat interludes. Skipped in dev-reload (assets are
+      // cache-busted per revision; a warm reuse would serve stale bytes). Wrapped
+      // so any failure falls straight through to the cold path — a warm miss can
+      // never break the launch.
+      if (!shouldDevReload && isWarmEligible(id)) {
+        try {
+          const warm = lookupGameModule(id, id)
+          if (warm && typeof warm.mount === "function") {
+            activeModule = warm
+            activeInstance = mountModule(warm)
+            loadedPackId = id
+            keptWarm = true
+            noteWarmResident(id)
+            if (!cancelled) {
+              setLoadState("ready")
+              hasLoadedRef.current = true
+            }
+            isLoading = false
+            return
+          }
+        } catch (err) {
+          console.warn(`[ContentPackHost] warm mount of ${id} failed, cold-starting:`, err)
+          // Fall through to the cold path below.
+        }
+      }
+
       try {
         console.log(`[ContentPackHost] Loading pack ${id}, manifestUrl=${manifestUrl}`)
         const { manifest, sourceUrl } = await fetchManifest(
@@ -530,32 +675,26 @@ export default function ContentPackHost({
           throw new Error(`Content pack did not register: ${id}`)
         }
 
-        if (!containerRef.current) {
-          throw new Error("Content pack container missing")
-        }
-
         // Belt-and-suspenders: the awaited cleanup() above has already unmounted
         // any prior pack root, but if a previous teardown left DOM behind (a
         // pack whose unmount threw, an async chunk that committed late) the new
         // pack's `createRoot(container)` would hit React's "container already
-        // passed to createRoot" warning + a detached-node NotFoundError. Start
-        // every fresh mount from an empty container so createRoot always sees a
-        // pristine node. Safe because we only reach here once the prior instance
-        // is fully torn down (or there was none).
-        if (containerRef.current.firstChild) {
-          containerRef.current.replaceChildren()
+        // passed to createRoot" warning + a detached-node NotFoundError.
+        // mountModule() starts every fresh mount from an empty container so
+        // createRoot always sees a pristine node. Safe because we only reach here
+        // once the prior instance is fully torn down (or there was none).
+        activeInstance = mountModule(activeModule)
+        loadedPackId = manifest.id
+        // Assets tagged with the prop `id`; a warm pack must be reachable by both
+        // its manifest.id (the CorpanGames key) and `id` (the tag) — they match
+        // for our warm packs. Mark warm-resident only when this cold load is a
+        // warm-eligible, non-dev pack, and evict the LRU tail's assets.
+        keptWarm = !shouldDevReload && isWarmEligible(manifest.id)
+        if (keptWarm) {
+          for (const evictedId of noteWarmResident(manifest.id)) {
+            if (evictedId !== manifest.id) dropWarmAssets(evictedId)
+          }
         }
-
-        activeInstance = activeModule.mount(containerRef.current, hostApi, {
-          stackConfig: hostApi.getStackConfig(),
-          isPlus: entitlementSnapshotRef.current.plus,
-          entitlement: entitlementSnapshotRef.current,
-          // Addressability groundwork: a deep-linked entry/route, when present.
-          ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
-          // First-run reader seed: auto-download a default book's preview
-          // narrations for the user's stack (the instant "wow").
-          ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
-        })
 
         if (!cancelled) {
           setLoadState("ready")
@@ -599,7 +738,11 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId])
+    // `entry.activity` is an object; depending on it verbatim would remount on
+    // every parent render. Depend on the spec's IDENTITY (`specId`) instead: a
+    // new specId ⇒ full remount with the new spec — the correct semantic (one
+    // mount = one spec; there is deliberately no mid-session re-tasking in v1).
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId, entry?.activity?.specId])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

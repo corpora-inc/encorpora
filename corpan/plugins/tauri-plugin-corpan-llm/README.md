@@ -2,50 +2,40 @@
 
 On-device LLM runtime for Corpán. Vendored llama.cpp with Metal (iOS) / Vulkan (Android) / CPU fallback. Streaming inference. Designed for cross-pack consumption — the Spanish tutor is the first consumer; future language tutors and other LLM-using packs all tap in.
 
-## What's complete (this scaffold)
+## Architecture — pure Rust, on every platform
 
-- **Rust plugin structure** mirroring `tauri-plugin-stt`:
-  - `Cargo.toml` (declares the crate, links target)
-  - `build.rs` (registers Android/iOS paths + commands)
-  - `src/lib.rs` (plugin init, command handler registration)
-  - `src/commands.rs` (IPC command signatures: status/load/chat/stop/unload/query_pack_db)
-  - `src/models.rs` (serde request/response types — the public IPC surface)
-  - `src/state.rs` (plugin state + session tracking + desktop stub via llama-cpp-2)
-  - `src/error.rs` (typed errors with serializable codes)
-  - `permissions/schemas/schema.json` (Tauri permission identifiers)
-- **iOS scaffold** at `ios/`:
-  - `Sources/CorpanLlmPlugin.swift` — Plugin class with all commands signatured; TODO markers where llama.cpp FFI calls go
-  - `Package.swift` — skeleton with `.binaryTarget` commented; polish machine drops `llama.xcframework` and uncomments
-- **Android scaffold** at `android/`:
-  - `build.gradle.kts` — CMake config with `-DGGML_VULKAN=ON`
-  - `src/main/cpp/CMakeLists.txt` — bridge build; vendored llama.cpp `add_subdirectory` commented
-  - `src/main/cpp/bridge.cpp` — JNI bridge stub
-  - `src/main/java/com/corpan/llm/LlmPlugin.kt` — Kotlin Plugin class with all commands wired (stub generation for now)
-  - `src/main/AndroidManifest.xml` — empty (no permissions required for inference itself)
+This is a **pure-Rust plugin**. Every command *and* the llama.cpp inference runtime live
+in Rust and run on all platforms including iOS and Android, on a dedicated actor thread
+(`src/state.rs`). Inference goes through the `llama-cpp-2` crate over a vendored
+llama.cpp, with Metal on iOS, Vulkan/CPU on Android, and CPU/Metal on desktop.
 
-## What's needed to ship (polish machine work)
+There is **no Swift and no Kotlin in the build**. `build.rs` deliberately calls
+`tauri_plugin::Builder::new(COMMANDS).build()` with **no `.ios_path()` and no
+`.android_path()`** (see the comment at `build.rs:10-18`), so there is no
+`run_mobile_plugin` bridge and nothing to keep in sync across three languages.
 
-### iOS
+> The `ios/` and `android/` directories are **inert reference scaffolding from the
+> original design**. They are not compiled and not registered. Do **not** follow the old
+> instructions to build an `llama.xcframework`, uncomment a `.binaryTarget`, or fill in
+> the JNI bridge in `bridge.cpp` — that work is intentionally dead. If you touch native
+> code here, you are on the wrong path; the Rust actor is the implementation.
 
-1. Vendor llama.cpp under `vendor/llama.cpp/` (pin a commit). Build the XCFramework with Metal enabled:
-   ```bash
-   cd vendor/llama.cpp
-   GGML_METAL=ON ./build-xcframework.sh  # or whatever the current invocation is
-   ```
-2. Drop the resulting `llama.xcframework` into `ios/llama.xcframework/`.
-3. Uncomment the `.binaryTarget` in `ios/Package.swift` and add `"llama"` to the target dependencies.
-4. In `ios/Sources/CorpanLlmPlugin.swift`, replace the TODO blocks with real `llama_model_default_params` / `llama_load_model_from_file` / sampling loop calls. The structure (where to emit events, where cancellation checks go) is already in place.
-5. Real device test: iPad Pro M2 should hit 25–40 t/s with Metal; iPhone 15 Pro similar.
+Layout:
 
-### Android
+- `Cargo.toml` — crate + link target
+- `build.rs` — registers the command list only (no native paths, on purpose)
+- `src/lib.rs` — plugin init and command registration
+- `src/commands.rs` — IPC command signatures
+- `src/models.rs` — serde request/response types (the public IPC surface)
+- `src/state.rs` — actor thread, session tracking, llama.cpp inference, KV-cache reuse
+- `src/error.rs` — typed errors with serializable codes
+- `permissions/schemas/schema.json` — Tauri permission identifiers
+- `ios/`, `android/` — reference scaffolding, **not built**
 
-1. Vendor llama.cpp under `android/src/main/cpp/llama.cpp/` (pin a commit).
-2. Uncomment the `add_subdirectory(llama.cpp)` in `android/src/main/cpp/CMakeLists.txt` and add `llama vulkan` to the linker.
-3. In `bridge.cpp`, replace the stubs with real `llama_*` calls.
-4. In `LlmPlugin.kt`, replace the `LlmNative.chatStub` echo with the real JNI-driven token streaming.
-5. Real device test: Pixel 8 Pro should hit 10+ t/s with Vulkan; Pixel 6a (CPU fallback) ~3–5 t/s.
+Android performance work (thread selection, prefill cost, KV-cache prefix reuse) is
+documented in `ANDROID_PERF.md`.
 
-### Tauri host app integration
+## Host app integration
 
 In `corpan-app/src-tauri/Cargo.toml`:
 
@@ -65,7 +55,7 @@ tauri::Builder::default()
 
 | Command | Args | Returns |
 |---|---|---|
-| `plugin:corpan-llm\|llm_status` | — | `{ loaded, modelId, backend, availableMemoryMb }` |
+| `plugin:corpan-llm\|llm_status` | — | `{ loaded, modelId, backend, availableMemoryMb, totalMemoryMb }` |
 | `plugin:corpan-llm\|llm_load` | `{ modelPackId, gpuLayers?, contextSize? }` | `()` |
 | `plugin:corpan-llm\|llm_chat` | `{ messages: [{role, content}], options }` | `sessionId: string` (then events) |
 | `plugin:corpan-llm\|llm_stop` | `{ sessionId }` | `()` |
@@ -80,13 +70,24 @@ tauri::Builder::default()
 | `llm-done:{sessionId}` | `{ sessionId, totalTokens, elapsedMs }` |
 | `llm-error:{sessionId}` | `{ sessionId, code, error }` — codes: `MODEL_NOT_LOADED`, `INSUFFICIENT_MEMORY`, `LLAMA_CPP_ERROR`, `INTERNAL_ERROR` |
 
+`totalMemoryMb` is the stable device-class signal the host uses to pick a model size;
+`availableMemoryMb` fluctuates and is diagnostic only.
+
 ## How a pack consumes this
 
-See `corpan/packs/llm-tutor-es/src/chat.ts` for the canonical consumer pattern.
+Packs do not invoke the plugin directly — they go through the host wrapper,
+`corpan-app/src/contentPacks/hostApi.ts` (`llm.chat` / `llm.unload`). The canonical
+consumer is Tutomaton: `corpan/packs/tutomaton/src/chat.ts`, with model/RAM tiering in
+`src/modelTiering.ts` and `src/modelManager.ts`.
 
-## Open questions for the polish pass
+## Known gaps
 
-1. **Should `llm_query_pack_db` actually replace `HostApi.queryPackDb`?** I left it as a no-op stub because the existing host API already covers it. If we keep both, packs choose; if we deprecate `queryPackDb`, this becomes the single path. Probably fine to keep both for now.
-2. **Vulkan device probing** — on Android, some devices report Vulkan support but the actual runtime kernels are slow. Worth a per-device benchmark on first load with auto-fallback to CPU if results are bad.
-3. **Cold-start time** — first `llm_load` on a flagship device is ~3–5 sec for a 2.5 GB GGUF (mmap + Metal pipeline state cache). UI needs a loading state.
-4. **Multi-LoRA loading** — not in v1 since we have no persona layer. When personas arrive, `llama_lora_adapter_init` + `llama_lora_adapter_set` is the API (llama-cpp-2 has bindings for these per docs.rs).
+- **`llm_query_pack_db` is a no-op stub.** Packs use `hostApi.queryPackDb` instead. Keep
+  both or delete this command; it has never been wired.
+- **No Vulkan device probing.** Some Android devices report Vulkan support while the
+  runtime kernels are slow. A per-device benchmark on first load with auto-fallback to
+  CPU would fix it.
+- **Cold start.** First `llm_load` on a flagship is ~3–5 s for a 2.5 GB GGUF (mmap +
+  Metal pipeline state cache). The UI must show a loading state.
+- **No LoRA support.** When personas arrive, `llama_lora_adapter_init` /
+  `llama_lora_adapter_set` are the APIs (llama-cpp-2 has bindings).

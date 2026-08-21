@@ -1,0 +1,6 @@
+node_modules/
+dist/
+# The BZ-19 screenshot set and its measurement report. Regenerated in one
+# command (`npm run shots`) and reviewed as images; 8 MB of PNGs do not belong
+# in a public repository's history.
+shots/

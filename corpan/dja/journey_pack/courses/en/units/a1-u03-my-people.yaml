@@ -1,0 +1,73 @@
+id: en.a1.u03
+arc: en.arc1
+theme: "My people"
+cando:
+  - key: family
+    text: "Can name close family members and say simple things about them."
+vocab_band: { lo: 1, hi: 2600 }
+phrase_domains: [social]
+skills:
+  - id: en.skill.family-possession
+    kind: grammar
+    title: "Family & possession"
+    b: -3.3
+    prereqs: [en.skill.be-questions]
+grammar_nodes: [en.gn.poss-adj, en.gn.poss-s, en.gn.dem-sg]
+items:
+  - ref: "phrase:base:22333"  # I have a sister.
+    skills: [en.skill.family-possession]
+    importance: 3
+    probe: true
+    b: -3.3
+  - ref: "phrase:base:12478"  # Her daughter is six years old.
+    skills: [en.skill.family-possession]
+    importance: 3
+    probe: true
+    b: -3.3
+  - ref: "phrase:base:22646"  # My husband is here.
+    skills: [en.skill.family-possession]
+    importance: 3
+    probe: true
+    b: -3.3
+  - ref: "phrase:base:22332"  # My sister plays guitar.
+    skills: [en.skill.family-possession]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:16360"  # My brother loves to draw.
+    skills: [en.skill.family-possession]
+    importance: 3
+    substitutable: true
+  - ref: "phrase:base:20607"  # My father is reading a magazine.
+    skills: [en.skill.family-possession]
+    importance: 3
+    substitutable: true
+  - ref: "word:en:family"
+    skills: [en.skill.family-possession]
+    importance: 2
+  - ref: "word:en:mother"
+    skills: [en.skill.family-possession]
+    importance: 2
+  - ref: "word:en:father"
+    skills: [en.skill.family-possession]
+    importance: 2
+  - ref: "word:en:sister"
+    skills: [en.skill.family-possession]
+    importance: 2
+  - ref: "word:en:brother"
+    skills: [en.skill.family-possession]
+    importance: 2
+  - auto:
+      kind: phrase
+      source: base
+      domains: [social]
+      level: A1
+      count: 10
+      skills: [en.skill.family-possession]
+      importance: 2
+      substitutable: true
+lessons: [core, grammar-focus, core, review]
+boss:
+  pass_score: 0.8
+  params:
+    spacedSampleShare: 0.3
+    require: [produce.speak, input.listen]

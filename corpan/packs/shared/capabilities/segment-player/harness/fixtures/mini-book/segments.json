@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "book_id": "mini_book",
+  "total_segments": 3,
+  "segments": [
+    { "id": "ch01-001", "part": 1, "chapter": 1, "title": "Mini Book", "text": "Hello little world", "tts": { "text": "Hello little world", "pause_after_ms": 40 } },
+    { "id": "ch01-002", "part": 1, "chapter": 1, "title": "Mini Book", "text": "Three short tones", "tts": { "text": "Three short tones", "pause_after_ms": 40 } },
+    { "id": "ch01-003", "part": 1, "chapter": 1, "title": "Mini Book", "text": "And we are done", "tts": { "text": "And we are done", "pause_after_ms": 40 } }
+  ]
+}

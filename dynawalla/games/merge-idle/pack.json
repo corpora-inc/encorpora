@@ -1,0 +1,38 @@
+{
+  "id": "dynawalla.merge-idle",
+  "version": "0.1.0",
+  "name": "ABYSSAL BLOOM",
+  "description": "One number glows at the top and the reef is how you make it. Two polyps with the same number join into one worth double; a long press splits one back into halves. Put one to three of them in the mouth to answer it: 23 is 16 and 7. Later the target brings blanks, like 15 = ▢ ÷ ▢.",
+  "sdk": "1.0.0",
+  "host": {
+    "min": "0.1.0",
+    "max": "1.0.0"
+  },
+  "entry": "pack.html",
+  "capabilities": [
+    "items",
+    "items.reveal",
+    "haptics",
+    "storage"
+  ],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.mul.multidigit.times-one-digit",
+      "dw.div.whole.divide-exact"
+    ]
+  },
+  "minAge": 5,
+  "locales": [
+    "en"
+  ],
+  "build": {
+    "config": "vite.pack.config.ts",
+    "out": "dist-pack"
+  }
+}

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Pilih topik kamu",
+      "availableSummary": "{{count}} paket frasa tersedia · ~{{size}} MB",
+      "installAll": "Instal semua",
+      "chooseIndividually": "Pilih satu per satu",
+      "installing": "Menginstal {{current}} dari {{total}}…",
+      "someFailed": "{{count}} paket tidak dapat diinstal. Anda dapat mencoba lagi dari tab Paket.",
+      "allInstalled": "Anda sudah memiliki paket frasa awal.",
+      "installed": "Terpasang",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Hapus",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Kejutkan aku!",
         "desc": "Bawa aku ke tempat yang seru."
+      },
+      "journey": {
+        "label": "Ikuti Journey",
+        "desc": "Kursus terpandu — aplikasi memilih tiap langkah berikutnya"
+      }
+    },
+    "journey": {
+      "title": "Bagaimana Anda ingin belajar {{lang}}?",
+      "subtitle": "Journey menyajikan campuran harian materi baru dan pengulangan dalam {{lang}} — kartu demi kartu.",
+      "guided": {
+        "label": "Jalur harian terpandu",
+        "desc": "Sesi harian singkat, direncanakan khusus untuk Anda.",
+        "unavailable": "Jalur terpandu belum tersedia untuk {{lang}}."
+      },
+      "explore": {
+        "label": "Sesuai kecepatan Anda",
+        "desc": "Jelajahi cerita, latihan, dan permainan sendiri."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Termasuk dalam Plus",
     "installFailedTitle": "Instalasi gagal",
+    "updateUnavailableTitle": "Pembaruan tidak tersedia",
+    "updateUnavailableDetail": "Unduhan ini tidak sesuai dengan yang kami harapkan. Silakan coba lagi nanti.",
     "installStuckDetail": "Tidak ada kemajuan selama beberapa waktu. Periksa koneksi Anda dan coba lagi.",
     "installStuckTitle": "Unduhan terhenti",
     "openPack": "Buka {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample bahasa yang sedang kamu pelajari. Scratch sampai nempel."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Jalur terpandu milikmu, kartu demi kartu"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Pasang ({{size}})",
     "installing": "Memasang…",
     "installed": "Terpasang",
-    "retry": "Coba lagi"
+    "retry": "Coba lagi",
+    "explains": "Kata dalam {{language}}"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Jalur terpandu milikmu, kartu demi kartu",
+    "heroCard": {
+      "title": "Journey-mu",
+      "progress": "{{unit}} · {{count}} lagi menuju tonggak berikutnya"
+    },
+    "heroCta": {
+      "start": "Mulai Journey-mu",
+      "continue": "Lanjutkan"
+    },
+    "chrome": {
+      "home": "Beranda",
+      "menu": "Opsi Journey",
+      "unit": "Unit {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Periksa",
+      "continue": "Lanjutkan",
+      "skipHint": "Geser lagi untuk melewati",
+      "retry": "Coba lagi",
+      "showAnswer": "Tampilkan jawaban",
+      "answerWas": "Jawabannya adalah",
+      "comeBackNote": "Kita akan kembali ke sini.",
+      "whyThisCard": "Kenapa kartu ini?",
+      "whyNew": "Hal baru dari unitmu saat ini.",
+      "whyReview": "Pengulangan — jarak waktu membuatnya kuat.",
+      "whyRepair": "Melihat lagi sesuatu yang sulit.",
+      "whyGuided": "Bagian dari jalur terpandumu.",
+      "typeWhatYouHear": "Ketik yang kamu dengar",
+      "typeHere": "Ketik di sini…",
+      "tapToOrder": "Ketuk kata sesuai urutan",
+      "matchPairs": "Cocokkan pasangannya",
+      "flipToReveal": "Ketuk untuk membuka",
+      "knewIt": "Aku tahu",
+      "didntKnow": "Belum",
+      "speakNow": "Bicara sekarang",
+      "listen": "Dengarkan",
+      "listenSlow": "Lebih lambat",
+      "hint": "Petunjuk",
+      "correct": "Benar",
+      "incorrect": "Kurang tepat",
+      "pickTranslation": "Pilih terjemahannya",
+      "pickWhatYouHear": "Pilih yang kamu dengar",
+      "fillTheBlank": "Isi bagian kosong",
+      "newItem": "Baru",
+      "reviewedEarlier": "Sudah dilihat"
+    },
+    "intro": {
+      "listenAndEcho": "Dengarkan, lalu ucapkan dengan lantang",
+      "newWord": "Kata baru",
+      "newPhrase": "Frasa baru"
+    },
+    "interlude": {
+      "gameCue": "Game kilat · satu frasa",
+      "readerCue": "Bacaan singkat · satu bagian"
+    },
+    "grammar": {
+      "noteLabel": "Catatan tata bahasa",
+      "tryIt": "Coba",
+      "contrastLabel": "Dibandingkan dengan bahasamu"
+    },
+    "word": {
+      "inContext": "Dalam konteks",
+      "meaningShow": "Arti",
+      "meaningHide": "Sembunyikan"
+    },
+    "checkpoint": {
+      "title": "Pos pemeriksaan",
+      "summaryNew": "{{count}} baru",
+      "summaryReviews": "{{count}} ulasan",
+      "done": "Cukup untuk hari ini",
+      "keepGoing": "Lanjut terus",
+      "dailyRing": "{{count}} sesi ini",
+      "deepSession": "Sesi yang dalam — pengulanganmu tetap terjadwal apa pun yang terjadi.",
+      "streakTicked": "{{count}} beruntun ✓",
+      "boss": "Tantangan unit",
+      "arcGate": "Gerbang busur"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Sempurna",
+        "nice": "Bagus",
+        "brilliant": "Cemerlang",
+        "boom": "Dor",
+        "nailed": "Tepat sasaran",
+        "unstoppable": "Tak terbendung",
+        "onFire": "Membara",
+        "yes": "Ya!",
+        "clean": "Bersih",
+        "sharp": "Tajam",
+        "wow": "Wah",
+        "magic": "Ajaib"
+      },
+      "combo": "{{count}} beruntun",
+      "perfect": "Sempurna",
+      "wordsLearned": "{{count}} kata dipelajari",
+      "unitComplete": "Unit selesai: {{name}}",
+      "streakDay": "{{count}} beruntun",
+      "placementDone": "Level ditentukan"
+    },
+    "rare": {
+      "reveal": "Sesuatu yang istimewa…",
+      "etymologyGem": "Kisah kata",
+      "timeCapsule": {
+        "title": "Kapsul waktu",
+        "body": "Kamu bekerja keras untuk ini {{when}} — lihat dirimu sekarang."
+      },
+      "delight": {
+        "newVoice": "Suara yang berbeda",
+        "didYouNotice": "Apa kamu sadar?"
+      },
+      "miniGame": {
+        "title": "Ronde bonus",
+        "play": "Main"
+      },
+      "story": {
+        "unlocked": "Kamu berhak atas bab berikutnya",
+        "read": "Baca"
+      }
+    },
+    "placement": {
+      "offerTitle": "Mulai dari mana?",
+      "offerBody": "Beberapa pertanyaan singkat menemukan titik awalmu. Sekitar lima menit.",
+      "startNew": "Aku baru belajar {{lang}}",
+      "placeMe": "Aku tahu sedikit {{lang}}",
+      "skipItem": "Lewati jika ragu",
+      "doneTitle": "Titik awal ditemukan",
+      "doneBody": "Mulai dari {{unit}}.",
+      "prelit": "Kamu mulai dengan {{count}} item yang sudah dikenal.",
+      "redo": "Periksa ulang levelku",
+      "aboveTitle": "Kamu melampaui kursus ini",
+      "aboveBody": "Kursus ini untuk saat ini mencakup materi pemula, dan kamu berada di atasnya. Kamu tetap bisa menjelajahinya — level baru sedang disiapkan.",
+      "aboveFrontier": "Kamu sudah melampaui sebagian besar kursus ini — mulai dari {{unit}}."
+    },
+    "path": {
+      "title": "Jalurmu",
+      "arc": "Busur {{name}}",
+      "unit": "Unit {{n}}",
+      "locked": "Di depan",
+      "current": "Kamu di sini",
+      "review": "Ketuk untuk mengulang",
+      "mastered": "Kuat"
+    },
+    "streak": {
+      "pactTitle": "Jaga rentetan?",
+      "pactBody": "Jaga momentummu. Hari istirahat menutup jeda — kamu dapat satu setiap minggu.",
+      "pactAccept": "Aku ikut",
+      "pactDecline": "Tidak, terima kasih",
+      "days": "{{count}} beruntun",
+      "restDayEarned": "Hari istirahat didapat",
+      "restDayUsed": "{{day}} adalah hari istirahat",
+      "repairTitle": "Ambil kembali rentetanmu",
+      "repairBody": "Selesaikan dua sesi dalam {{days}} hari ke depan untuk memulihkan rentetan {{count}} harimu.",
+      "repairCta": "Mulai"
+    },
+    "block": {
+      "speakingIntro": "Latihan bicara — {{count}} kartu",
+      "ready": "Siap",
+      "loadingModel": "Menyiapkan mikrofon…",
+      "micPrompt": "Corpán memakai mikrofon untuk menilai ucapanmu di perangkat ini.",
+      "sttUnavailable": "Penilaian bicara sedang tidak tersedia — beralih ke latihan mendengarkan."
+    },
+    "quota": {
+      "cardsLeft": "Tersisa {{count}} kartu hari ini",
+      "plusBody": "Corpán Plus menghapus batas kartu harian."
+    },
+    "welcomeBack": {
+      "title": "Selamat datang kembali",
+      "body": "Pengulanganmu mempertahankan {{pct}}% kekuatannya. Ayo pemanasan."
+    },
+    "tease": {
+      "next": "Lain kali: {{title}}"
+    },
+    "jump": {
+      "title": "Terasa terlalu mudah?",
+      "body": "Ambil tantangan singkat untuk melompat maju. Kalau gagal tidak kehilangan apa pun — kamu tetap di tempatmu.",
+      "accept": "Coba tantangannya",
+      "decline": "Tetap di sini"
+    },
+    "feed": {
+      "caughtUp": "Untuk saat ini kamu sudah selesai",
+      "loading": "Menyiapkan kartumu…",
+      "loadError": "Journey gagal dimuat. Coba lagi dari Beranda.",
+      "retry": "Coba lagi"
+    },
+    "popin": {
+      "pronounceTitle": "Ucapkan",
+      "close": "Tutup"
+    },
+    "settings": {
+      "title": "Opsi Journey",
+      "advanceMode": "Perpindahan",
+      "advanceSwipe": "Geser untuk lanjut",
+      "advanceAuto": "Lanjut otomatis",
+      "celebration": "Perayaan",
+      "celebrationFull": "Penuh",
+      "celebrationReduced": "Dikurangi",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Suara",
+      "soundsOn": "Nyala",
+      "soundsOff": "Mati",
+      "listeningMode": "Mendengarkan bebas-genggam",
+      "viewPath": "Lihat jalur",
+      "redoPlacement": "Periksa ulang levelku"
+    },
+    "wordPack": {
+      "title": "Arti kata",
+      "body": "Baca arti kata dalam bahasa {{language}} sambil belajar.",
+      "add": "Tambahkan ({{size}})",
+      "dismiss": "Nanti saja",
+      "downloading": "Menambahkan… {{percent}}%",
+      "failed": "Gagal menambahkan",
+      "retry": "Coba lagi"
+    },
+    "imagePack": {
+      "title": "Tambahkan gambar",
+      "body": "Pelajari beberapa kata dengan gambar, bukan teks.",
+      "dismiss": "Nanti saja",
+      "add": "Tambahkan ({{size}})",
+      "downloading": "Menambahkan… {{percent}}%",
+      "retry": "Coba lagi",
+      "failed": "Gagal menambahkan"
+    }
   }
 }

@@ -222,6 +222,13 @@
     },
     "phrasePacks": {
       "hero": "Velg temaer",
+      "availableSummary": "{{count}} frasepakker tilgjengelige · ~{{size}} MB",
+      "installAll": "Installer alle",
+      "chooseIndividually": "Velg enkeltvis",
+      "installing": "Installerer {{current}} av {{total}}…",
+      "someFailed": "{{count}} pakke(r) kunne ikke installeres. Du kan prøve igjen fra Pakker-fanen.",
+      "allInstalled": "Du har allerede startpakkene med fraser.",
+      "installed": "Installert",
       "loading": "Laster…",
       "selectAll": "Velg alle ({{count}})",
       "clearAll": "Tøm",
@@ -335,6 +342,23 @@
       "surprise": {
         "label": "Overrask meg!",
         "desc": "Ta meg et morsomt sted."
+      },
+      "journey": {
+        "label": "Følg Journey",
+        "desc": "Et guidet kurs — appen velger hvert neste steg"
+      }
+    },
+    "journey": {
+      "title": "Hvordan vil du lære {{lang}}?",
+      "subtitle": "Journey serverer en daglig blanding av nytt stoff og repetisjon på {{lang}} – ett kort om gangen.",
+      "guided": {
+        "label": "Guidet daglig vei",
+        "desc": "En kort daglig økt, planlagt for deg.",
+        "unavailable": "Den veiledede banen er ennå ikke tilgjengelig for {{lang}}."
+      },
+      "explore": {
+        "label": "I eget tempo",
+        "desc": "Bla selv gjennom historier, øvelser og spill."
       }
     }
   },
@@ -607,6 +631,8 @@
     "plus": "Corpán Plus",
     "includedWithPlus": "Inkludert med Plus",
     "installFailedTitle": "Installasjon mislyktes",
+    "updateUnavailableTitle": "Oppdatering utilgjengelig",
+    "updateUnavailableDetail": "Denne nedlastingen samsvarte ikke med det vi forventet. Prøv igjen senere.",
     "installStuckDetail": "Ingen fremgang på en stund. Sjekk tilkoblingen din og prøv igjen.",
     "installStuckTitle": "Nedlasting stoppet",
     "openPack": "Åpne {{name}}",
@@ -748,6 +774,10 @@
     "beatlounge": {
       "name": "beatlounge",
       "blurb": "Sample språket du lærer. Scratch det til det sitter."
+    },
+    "journey_main": {
+      "name": "Journey",
+      "blurb": "Din guidede vei, kort for kort"
     }
   },
   "home": {
@@ -851,6 +881,232 @@
     "install": "Installer ({{size}})",
     "installing": "Installerer…",
     "installed": "Installert",
-    "retry": "Prøv igjen"
+    "retry": "Prøv igjen",
+    "explains": "{{language}}-ord"
+  },
+  "journey": {
+    "name": "Journey",
+    "tagline": "Din guidede vei, kort for kort",
+    "heroCard": {
+      "title": "Din Journey",
+      "progress": "{{unit}} · {{count}} til neste milepæl"
+    },
+    "heroCta": {
+      "start": "Start din Journey",
+      "continue": "Fortsett"
+    },
+    "chrome": {
+      "home": "Hjem",
+      "menu": "Journey-valg",
+      "unit": "Enhet {{n}}: {{name}}"
+    },
+    "exercise": {
+      "check": "Sjekk",
+      "continue": "Fortsett",
+      "skipHint": "Sveip igjen for å hoppe over",
+      "retry": "Prøv igjen",
+      "showAnswer": "Vis svaret",
+      "answerWas": "Svaret var",
+      "comeBackNote": "Vi kommer tilbake til dette.",
+      "whyThisCard": "Hvorfor dette kortet?",
+      "whyNew": "Noe nytt fra din nåværende enhet.",
+      "whyReview": "En repetisjon — avstand holder den sterk.",
+      "whyRepair": "Et nytt blikk på noe vanskelig.",
+      "whyGuided": "En del av din guidede vei.",
+      "typeWhatYouHear": "Skriv det du hører",
+      "typeHere": "Skriv her…",
+      "tapToOrder": "Trykk på ordene i riktig rekkefølge",
+      "matchPairs": "Finn parene",
+      "flipToReveal": "Trykk for å avsløre",
+      "knewIt": "Det kunne jeg",
+      "didntKnow": "Ikke ennå",
+      "speakNow": "Snakk nå",
+      "listen": "Lytt",
+      "listenSlow": "Saktere",
+      "hint": "Hint",
+      "correct": "Riktig",
+      "incorrect": "Ikke helt",
+      "pickTranslation": "Velg oversettelsen",
+      "pickWhatYouHear": "Velg det du hørte",
+      "fillTheBlank": "Fyll ut det tomme feltet",
+      "newItem": "Ny",
+      "reviewedEarlier": "Sett tidligere"
+    },
+    "intro": {
+      "listenAndEcho": "Lytt, og si det høyt",
+      "newWord": "Nytt ord",
+      "newPhrase": "Ny frase"
+    },
+    "grammar": {
+      "noteLabel": "Grammatikknotat",
+      "tryIt": "Prøv",
+      "contrastLabel": "Sammenlignet med ditt eget språk"
+    },
+    "word": {
+      "inContext": "I sammenheng",
+      "meaningShow": "Betydning",
+      "meaningHide": "Skjul"
+    },
+    "wordPack": {
+      "title": "Ordbetydninger",
+      "body": "Les hva ordene betyr på {{language}} mens du går videre.",
+      "add": "Legg til ({{size}})",
+      "dismiss": "Ikke nå",
+      "downloading": "Legger til … {{percent}}%",
+      "failed": "Kunne ikke legge til",
+      "retry": "Prøv igjen"
+    },
+    "checkpoint": {
+      "title": "Sjekkpunkt",
+      "summaryNew": "{{count}} nye",
+      "summaryReviews": "{{count}} repetisjoner",
+      "done": "Nok for i dag",
+      "keepGoing": "Fortsett",
+      "dailyRing": "{{count}} denne økten",
+      "deepSession": "For en grundig økt — repetisjonene dine er uansett planlagt.",
+      "streakTicked": "{{count}} på rad ✓",
+      "boss": "Enhetsutfordring",
+      "arcGate": "Bueport"
+    },
+    "celebrate": {
+      "praise": {
+        "perfect": "Perfekt",
+        "nice": "Flott",
+        "brilliant": "Briljant",
+        "boom": "Bom",
+        "nailed": "Blink",
+        "unstoppable": "Ustoppelig",
+        "onFire": "I brann",
+        "yes": "Ja!",
+        "clean": "Rent",
+        "sharp": "Skarpt",
+        "wow": "Wow",
+        "magic": "Magi"
+      },
+      "combo": "{{count}} på rad",
+      "perfect": "Perfekt",
+      "wordsLearned": "{{count}} ord lært",
+      "unitComplete": "Enhet fullført: {{name}}",
+      "streakDay": "{{count}} på rad",
+      "placementDone": "Nivå funnet"
+    },
+    "rare": {
+      "reveal": "Noe spesielt…",
+      "etymologyGem": "Ordhistorie",
+      "timeCapsule": {
+        "title": "Tidskapsel",
+        "body": "Du jobbet hardt med dette {{when}} — se på deg nå."
+      },
+      "delight": {
+        "newVoice": "En annen stemme",
+        "didYouNotice": "La du merke til det?"
+      },
+      "miniGame": {
+        "title": "Bonusrunde",
+        "play": "Spill"
+      },
+      "story": {
+        "unlocked": "Du har gjort deg fortjent til neste kapittel",
+        "read": "Les det"
+      }
+    },
+    "placement": {
+      "offerTitle": "Hvor skal vi begynne?",
+      "offerBody": "Noen raske spørsmål finner startpunktet ditt. Cirka fem minutter.",
+      "startNew": "Jeg er ny i {{lang}}",
+      "placeMe": "Jeg kan litt {{lang}}",
+      "skipItem": "Hopp over hvis du er usikker",
+      "doneTitle": "Startpunkt funnet",
+      "doneBody": "Starter på {{unit}}.",
+      "prelit": "Du starter med {{count}} elementer du allerede kan.",
+      "redo": "Sjekk nivået mitt på nytt",
+      "aboveTitle": "Du er forbi dette kurset",
+      "aboveBody": "Dette kurset dekker foreløpig nybegynnerstoff, og du ligger over det. Du kan likevel utforske det — nye nivåer er på vei.",
+      "aboveFrontier": "Du ligger foran det meste av dette kurset — du starter på {{unit}}."
+    },
+    "path": {
+      "title": "Din vei",
+      "arc": "Bue {{name}}",
+      "unit": "Enhet {{n}}",
+      "locked": "Lenger fremme",
+      "current": "Du er her",
+      "review": "Trykk for å repetere",
+      "mastered": "Sterk"
+    },
+    "streak": {
+      "pactTitle": "Holde en rekke?",
+      "pactBody": "Hold på farten. En hviledag dekker et hull — du tjener én hver uke.",
+      "pactAccept": "Jeg er med",
+      "pactDecline": "Nei takk",
+      "days": "{{count}} på rad",
+      "restDayEarned": "Hviledag opptjent",
+      "restDayUsed": "{{day}} var en hviledag",
+      "repairTitle": "Ta opp rekken din igjen",
+      "repairBody": "Fullfør to økter i løpet av de neste {{days}} dagene for å gjenopprette rekken din på {{count}} dager.",
+      "repairCta": "Start"
+    },
+    "block": {
+      "speakingIntro": "Taletrening — {{count}} kort",
+      "ready": "Klar",
+      "loadingModel": "Varmer opp mikrofonen…",
+      "micPrompt": "Corpán bruker mikrofonen til å vurdere uttalen din på denne enheten.",
+      "sttUnavailable": "Talevurdering er ikke tilgjengelig akkurat nå — bytter til lytteøvelser."
+    },
+    "quota": {
+      "cardsLeft": "{{count}} kort igjen i dag",
+      "plusBody": "Corpán Plus fjerner den daglige kortgrensen."
+    },
+    "welcomeBack": {
+      "title": "Velkommen tilbake",
+      "body": "Repetisjonene dine beholdt {{pct}} % av styrken. La oss varme opp."
+    },
+    "tease": {
+      "next": "Neste gang: {{title}}"
+    },
+    "jump": {
+      "title": "Føles dette for lett?",
+      "body": "Ta en kort utfordring for å hoppe fremover. Mislykkes du, taper du ingenting — du blir akkurat der du er.",
+      "accept": "Prøv utfordringen",
+      "decline": "Bli her"
+    },
+    "feed": {
+      "caughtUp": "Du er à jour for nå",
+      "loading": "Gjør klar kortene dine…",
+      "loadError": "Journey kunne ikke lastes. Prøv igjen fra Hjem.",
+      "retry": "Prøv igjen"
+    },
+    "popin": {
+      "pronounceTitle": "Uttal det",
+      "close": "Lukk"
+    },
+    "settings": {
+      "title": "Journey-valg",
+      "advanceMode": "Fremdrift",
+      "advanceSwipe": "Sveip for å fortsette",
+      "advanceAuto": "Fortsett automatisk",
+      "celebration": "Feiringer",
+      "celebrationFull": "Full",
+      "celebrationReduced": "Redusert",
+      "celebrationMinimal": "Minimal",
+      "sounds": "Lyder",
+      "soundsOn": "På",
+      "soundsOff": "Av",
+      "listeningMode": "Håndfri lytting",
+      "viewPath": "Se veien",
+      "redoPlacement": "Sjekk nivået mitt på nytt"
+    },
+    "imagePack": {
+      "title": "Legg til bilder",
+      "body": "Lær noen ord med bilder i stedet for tekst.",
+      "dismiss": "Ikke nå",
+      "add": "Legg til ({{size}})",
+      "downloading": "Legger til… {{percent}} %",
+      "retry": "Prøv igjen",
+      "failed": "Kunne ikke legge til"
+    },
+    "interlude": {
+      "gameCue": "Raskt spill · én frase",
+      "readerCue": "Rask lesing · ett avsnitt"
+    }
   }
 }

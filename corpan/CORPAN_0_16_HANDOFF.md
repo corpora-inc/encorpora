@@ -1,8 +1,9 @@
 # Corpán 0.16.0 — Directed Experience Refactor (overnight progress)
 
-Branch: `moonshot-15-plus-v2`. Plan: `~/.claude/plans/quizzical-conjuring-comet.md`.
-This logs what an overnight autonomous session built. tsc is green throughout.
-No commits made (user handles git). No production catalog/CDN mutated.
+Status: **historical record** — 0.16.0 shipped long ago. Owner: founder.
+This logs what an overnight autonomous session built; keep it for the design notes,
+not as a procedure. Nothing here reflects current process: work now lands on `main`
+through short-lived branches and PRs (see the root `AGENTS.md`).
 
 ## ✅ Phase 0 — HostApi write surface (DONE, verified by tsc)
 - `contentPacks/types.ts`: `StackConfig` += `phrasePackIds`/`baseCorpusEnabled`/

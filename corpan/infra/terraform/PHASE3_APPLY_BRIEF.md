@@ -6,7 +6,8 @@ source). This adds the `/code/resolve` + `/entitlement-token` routes, the
 `corpan-iap` DynamoDB table, and the codes Lambda — **nothing else should change.**
 
 ## Where
-- Branch: **`app-store-prep`** (pull latest — it carries the terraform + lambda).
+- Branch: work from the latest `main` in your own worktree (root `AGENTS.md`).
+  The terraform + lambda this brief applies are on `main`.
 - Dir: `corpan/infra/terraform/`.
 - State: wired in `backend.tf` → S3 `corpan-tf-state`, key
   `corpan-prod/terraform.tfstate`, region `us-east-2`. Just `terraform init`.

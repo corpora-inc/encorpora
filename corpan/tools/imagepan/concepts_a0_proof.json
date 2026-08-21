@@ -1,0 +1,14 @@
+[
+  { "id": "water",  "en_lemma": "water",  "subject": "clear glass of drinking water", "pos": "noun", "seed": 101 },
+  { "id": "house",  "en_lemma": "house",  "subject": "small friendly house with a pitched roof", "pos": "noun", "seed": 102 },
+  { "id": "dog",    "en_lemma": "dog",    "subject": "happy sitting dog", "pos": "noun", "seed": 103 },
+  { "id": "bread",  "en_lemma": "bread",  "subject": "loaf of bread", "pos": "noun", "seed": 104 },
+  { "id": "milk",   "en_lemma": "milk",   "subject": "glass bottle of milk", "pos": "noun", "seed": 105 },
+  { "id": "apple",  "en_lemma": "apple",  "subject": "single red apple", "pos": "noun", "seed": 106 },
+  { "id": "coffee", "en_lemma": "coffee", "subject": "cup of hot coffee on a saucer", "pos": "noun", "seed": 107 },
+  { "id": "tea",    "en_lemma": "tea",    "subject": "cup of hot tea on a saucer", "pos": "noun", "seed": 108 },
+  { "id": "book",   "en_lemma": "book",   "subject": "single closed book", "pos": "noun", "seed": 109 },
+  { "id": "door",   "en_lemma": "door",   "subject": "single closed wooden door with a handle", "pos": "noun", "seed": 110 },
+  { "id": "bus",    "en_lemma": "bus",    "subject": "city bus seen from the side", "pos": "noun", "seed": 111 },
+  { "id": "bed",    "en_lemma": "bed",    "subject": "single neatly made bed with pillow", "pos": "noun", "seed": 112 }
+]

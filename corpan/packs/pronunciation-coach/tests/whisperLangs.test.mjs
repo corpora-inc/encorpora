@@ -6,7 +6,7 @@ import {
   isWhisperSupported,
   stackHasScorableLang,
   toWhisperLang,
-} from "../src/whisperLangs.ts"
+} from "../../shared/capabilities/pronounce/src/whisperLangs.ts"
 
 // The full Corpán target set the app can put in a learning stack. Keep in sync
 // with corpan-app/src/store/constants.ts. The test pins exactly which of these

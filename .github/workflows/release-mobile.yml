@@ -1,0 +1,415 @@
+name: Release · mobile (TestFlight + Play internal)
+
+# Builds signed iOS + Android from `main` and ships them to the INTERNAL
+# testing tracks (TestFlight internal, Play internal) — never to public
+# release. Triggered when the app version changes (a real release intent),
+# or manually. See corpan/corpan-app/RELEASE_SETUP.md for the one-time
+# credential setup; until the secrets exist, the build jobs skip cleanly so
+# this workflow is safe to merge.
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "corpan/corpan-app/src-tauri/tauri.conf.json" # version bump lives here
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: "Which platforms to build"
+        type: choice
+        default: both
+        options: [both, ios, android]
+
+concurrency:
+  group: release-mobile-${{ github.ref }}
+  cancel-in-progress: false # never cancel an in-flight upload
+
+jobs:
+  # ---- decide whether this push is actually a release ---------------------
+  gate:
+    name: Gate · version-change detect
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.decide.outputs.release }}
+      version: ${{ steps.decide.outputs.version }}
+      do_ios: ${{ steps.decide.outputs.do_ios }}
+      do_android: ${{ steps.decide.outputs.do_android }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # need HEAD^ to diff the version
+      - id: decide
+        working-directory: corpan/corpan-app
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./src-tauri/tauri.conf.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          RELEASE=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            RELEASE=true
+          else
+            PREV=$(git show HEAD^:corpan/corpan-app/src-tauri/tauri.conf.json 2>/dev/null \
+                     | node -p "JSON.parse(require('fs').readFileSync(0)).version" 2>/dev/null || echo "")
+            if [ "$PREV" != "$VERSION" ]; then RELEASE=true; fi
+          fi
+          PLAT="${{ github.event.inputs.platforms || 'both' }}"
+          echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
+          echo "do_ios=$([ "$RELEASE" = true ] && { [ "$PLAT" = both ] || [ "$PLAT" = ios ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "do_android=$([ "$RELEASE" = true ] && { [ "$PLAT" = both ] || [ "$PLAT" = android ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "Version $VERSION · release=$RELEASE · platforms=$PLAT"
+
+  # ---- iOS -> TestFlight internal -----------------------------------------
+  ios:
+    name: iOS · build + TestFlight
+    needs: gate
+    if: needs.gate.outputs.do_ios == 'true'
+    # macos-26 ships Xcode 26 + the iOS 26 SDK, which App Store Connect now
+    # requires ("All iOS apps must be built with the iOS 26 SDK or later").
+    # macos-14 tops out at Xcode 16.2 (iOS 18.2 SDK) and uploads are rejected.
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true # icons/*.png + bundled *.sqlite3 are Git LFS
+
+      # Fail-soft: if the Apple secrets aren't configured yet, skip with a
+      # clear message instead of a red X (keeps the pipeline mergeable).
+      - id: secrets
+        env:
+          HAVE: ${{ secrets.APPLE_DIST_CERT_P12 != '' && secrets.ASC_API_KEY_P8 != '' }}
+        run: |
+          echo "have=$HAVE" >> "$GITHUB_OUTPUT"
+          [ "$HAVE" = "true" ] || echo "::warning::Apple release secrets not set — see RELEASE_SETUP.md. Skipping iOS."
+
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/corpan-app/package-lock.json
+
+      - name: Select newest Xcode
+        if: steps.secrets.outputs.have == 'true'
+        # Use the newest installed Xcode (26.x on macos-26) so the app is built
+        # with the iOS 26 SDK App Store Connect requires, and so xcodegen's
+        # project format is understood.
+        run: |
+          XC=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$XC" ] || XC=/Applications/Xcode.app
+          echo "Using $XC"
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+
+      - name: Rust + iOS targets
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup target add aarch64-apple-ios aarch64-apple-ios-sim
+      - uses: Swatinem/rust-cache@v2
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          workspaces: corpan/corpan-app/src-tauri
+
+      - name: Import signing certificate
+        if: steps.secrets.outputs.have == 'true'
+        uses: apple-actions/import-codesign-certs@v3
+        with:
+          p12-file-base64: ${{ secrets.APPLE_DIST_CERT_P12 }}
+          p12-password: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
+
+      - name: Install provisioning profile
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ secrets.APPLE_PROVISIONING_PROFILE }}" | base64 --decode \
+            > ~/Library/MobileDevice/Provisioning\ Profiles/corpan.mobileprovision
+
+      - name: Install deps
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          npm ci
+          npm ci --prefix ../packs/shared/capabilities
+
+      # The Xcode "Build Rust Code" phase (project.yml preBuildScript) runs
+      # `cargo tauri ios xcode-script`, which needs the tauri CLI installed as a
+      # cargo subcommand — CI otherwise only has the npm `npx tauri`. Cache the
+      # compiled binary so we don't rebuild it (~3-4 min) every run.
+      - name: Cache cargo-tauri
+        if: steps.secrets.outputs.have == 'true'
+        id: cargo_tauri_cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/cargo-tauri
+          key: cargo-tauri-2.11.2-${{ runner.os }}-${{ runner.arch }}
+      - name: Install cargo-tauri CLI
+        if: steps.secrets.outputs.have == 'true' && steps.cargo_tauri_cache.outputs.cache-hit != 'true'
+        run: cargo install tauri-cli --version 2.11.2 --locked
+
+      # tauri-plugin-stt links a prebuilt whisper.cpp static XCFramework that is
+      # gitignored (~150 MB) and built locally per its ios/.gitignore. Reproduce
+      # it in CI, cached on the pinned whisper version so it builds only once.
+      - name: Cache whisper.xcframework
+        if: steps.secrets.outputs.have == 'true'
+        id: whisper_cache
+        uses: actions/cache@v4
+        with:
+          path: corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework
+          key: whisper-xcframework-v1.8.4-${{ runner.os }}
+      - name: Build whisper.xcframework
+        if: steps.secrets.outputs.have == 'true' && steps.whisper_cache.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$RUNNER_TEMP/whisper.cpp"
+          cd "$RUNNER_TEMP/whisper.cpp"
+          BUILD_STATIC_XCFRAMEWORK=ON ./build-xcframework.sh
+          DEST="$GITHUB_WORKSPACE/corpan/plugins/tauri-plugin-stt/ios"
+          rm -rf "$DEST/whisper.xcframework"
+          mv build-apple/whisper.xcframework "$DEST/"
+          test -f "$DEST/whisper.xcframework/ios-arm64/whisper.framework/whisper"
+
+      - name: Tauri iOS build (app-store-connect)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        # Minutes-since-epoch build number: unique + increasing across runs, so
+        # TestFlight accepts each upload even when the version string is unchanged.
+        run: |
+          BUILD_NUMBER=$(( $(date +%s) / 60 ))
+          # The project template uses automatic signing, which needs a logged-in
+          # Xcode account (fine locally, impossible headless: "No Accounts / No
+          # profiles found"). Force MANUAL signing in the CI working copy only —
+          # the committed template stays automatic for local dev. Uses the App
+          # Store profile minted via the ASC API + the imported distribution cert.
+          sed -i \
+            -e 's|^        CODE_SIGN_STYLE: Automatic|        CODE_SIGN_STYLE: Manual\n        PROVISIONING_PROFILE_SPECIFIER: "corpan appstore ci"\n        CODE_SIGN_IDENTITY: "Apple Distribution"|' \
+            src-tauri/ios/project.yml
+          # tauri-plugin-stt/build.rs emits `cargo:rustc-link-lib=framework=whisper`,
+          # but that cargo directive does not reach Xcode's final Ld in CI (locally
+          # the static whisper folds into libapp.a; here it doesn't), so the app
+          # link fails with undefined _whisper_* symbols. Force the device-slice
+          # framework onto the Xcode linker via OTHER_LDFLAGS.
+          WHISPER_SLICE="$GITHUB_WORKSPACE/corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework/ios-arm64"
+          sed -i \
+            -e 's#^        ENABLE_BITCODE: false#        ENABLE_BITCODE: false\n        OTHER_LDFLAGS: "$(inherited) -F'"$WHISPER_SLICE"' -framework whisper -framework Accelerate -framework CoreML"#' \
+            src-tauri/ios/project.yml
+          # Tauri's ios init does NOT copy the StoreKit test config from the
+          # ios/ template into gen/apple, so xcodegen fails on a fresh checkout
+          # ("missing source directory .../Corpan.storekit"). Locally it only
+          # works because the file already persists in gen/apple. First init
+          # writes project.yml (then fails at xcodegen); we supply the file and
+          # re-init (init does not wipe gen/apple), which then succeeds.
+          npx tauri ios init --ci || true
+          cp -f src-tauri/ios/Corpan.storekit src-tauri/gen/apple/Corpan.storekit
+          npx tauri ios init --ci
+          # gen/apple/Assets.xcassets/AppIcon.appiconset is gitignored (generated),
+          # so a fresh checkout ships no app icon. Regenerate from the alpha-free
+          # white-background source (the RGBA icons/512x512.png can't be the iOS
+          # marketing icon — Apple rejects alpha).
+          npx tauri icon src-tauri/icons/512x512_white.png
+          # Archive only. Tauri's own export writes a minimal ExportOptions (method
+          # only) which fails app-store export under manual signing ("requires a
+          # provisioning profile"). We export ourselves below with a manual
+          # ExportOptions that pins the profile + distribution cert.
+          npx tauri ios build --ci --archive-only \
+            --export-method app-store-connect \
+            --build-number "$BUILD_NUMBER"
+
+      - name: Export signed IPA (manual ExportOptions)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          ARCHIVE=$(ls -d src-tauri/gen/apple/build/*.xcarchive | head -1)
+          echo "Archive: $ARCHIVE"
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>teamID</key><string>F9AV5HKF6N</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>provisioningProfiles</key><dict>
+              <key>com.corpora.corpan</key><string>corpan appstore ci</string>
+            </dict>
+            <key>uploadSymbols</key><true/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath "$ARCHIVE" \
+            -exportPath src-tauri/gen/apple/build/export \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+          ls -la src-tauri/gen/apple/build/export
+
+      - name: Upload to TestFlight
+        if: steps.secrets.outputs.have == 'true'
+        uses: apple-actions/upload-testflight-build@v3
+        with:
+          app-path: corpan/corpan-app/src-tauri/gen/apple/build/export/corpan.ipa
+          issuer-id: ${{ secrets.ASC_ISSUER_ID }}
+          api-key-id: ${{ secrets.ASC_KEY_ID }}
+          api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
+
+  # ---- Android -> Play internal -------------------------------------------
+  android:
+    name: Android · build + Play internal
+    needs: gate
+    if: needs.gate.outputs.do_android == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true # icons/*.png + bundled *.sqlite3 are Git LFS
+
+      - id: secrets
+        env:
+          HAVE: ${{ secrets.ANDROID_KEYSTORE_B64 != '' && secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+        run: |
+          echo "have=$HAVE" >> "$GITHUB_OUTPUT"
+          [ "$HAVE" = "true" ] || echo "::warning::Android release secrets not set — see RELEASE_SETUP.md. Skipping Android."
+
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/corpan-app/package-lock.json
+      - uses: actions/setup-java@v4
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+        if: steps.secrets.outputs.have == 'true'
+      - name: Rust + Android targets
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        if: steps.secrets.outputs.have == 'true'
+        with:
+          workspaces: corpan/corpan-app/src-tauri
+
+      - name: Cache Gradle
+        if: steps.secrets.outputs.have == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('corpan/corpan-app/src-tauri/gen/android/**/*.gradle*', 'corpan/corpan-app/src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: gradle-${{ runner.os }}-
+      - name: Cache whisper Android native build (.cxx)
+        if: steps.secrets.outputs.have == 'true'
+        # The STT plugin's externalNativeBuild compiles whisper.cpp via CMake/ninja
+        # (~15 min). ninja does incremental builds, so caching its object dir lets
+        # subsequent runs skip recompilation. Keyed on the pinned whisper version.
+        uses: actions/cache@v4
+        with:
+          path: corpan/plugins/tauri-plugin-stt/android/.cxx
+          key: whisper-android-cxx-v1.8.4-${{ runner.os }}
+
+      - name: Install NDK + retarget cargo toolchain paths for CI
+        if: steps.secrets.outputs.have == 'true'
+        # gen/android/app/build.gradle.kts pins ndkVersion 28.2.13676358, so we
+        # install exactly that. src-tauri/.cargo/config.toml hardcodes this dev's
+        # LOCAL macOS NDK toolchain paths (linker/CC/CXX/AR + ANDROID_NDK_ROOT) —
+        # `/Users/skyl/Android/ndk/28.2.13676358/.../darwin-x86_64/...`. cargo's
+        # [env] uses dash-named vars (CC_aarch64-linux-android) which $GITHUB_ENV
+        # cannot set, so we can't override them from env. Instead we rewrite just
+        # the host-specific path prefix in the checked-out config (CI working copy
+        # only, never committed): base dir -> the runner's NDK, darwin -> linux.
+        # This preserves every intent of the file (same NDK 28.2, same API-24
+        # clang, 16 KB page linker flags) and touches nothing Apple.
+        run: |
+          NDK_VER=28.2.13676358
+          yes | sdkmanager "ndk;$NDK_VER" "platforms;android-36" "build-tools;36.0.0" >/dev/null
+          NDK="$ANDROID_SDK_ROOT/ndk/$NDK_VER"
+          echo "NDK_HOME=$NDK" >> "$GITHUB_ENV"
+          CFG=corpan/corpan-app/src-tauri/.cargo/config.toml
+          sed -i \
+            -e "s#/Users/skyl/Android/ndk/$NDK_VER#$NDK#g" \
+            -e "s#prebuilt/darwin-x86_64#prebuilt/linux-x86_64#g" \
+            "$CFG"
+          echo "--- rewritten Android toolchain paths ---"
+          grep -nE "linux-android|ANDROID_NDK" "$CFG" | grep -iE "ndk|linux-android24|androideabi24" | head
+          test -x "$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang" \
+            || { echo "CI NDK clang not found"; exit 1; }
+
+      - name: Decode upload keystore
+        if: steps.secrets.outputs.have == 'true'
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_B64 }}" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
+
+      - name: Install deps
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        run: |
+          npm ci
+          npm ci --prefix ../packs/shared/capabilities
+
+      - name: Version code (unique, monotonic)
+        if: steps.secrets.outputs.have == 'true'
+        # Minutes-since-epoch: always increasing across runs and safely above the
+        # semver-derived default (0.19.2 -> 19002, already live on Play). Once we
+        # go timestamp-based we stay timestamp-based (never revert to derived).
+        run: echo "VERSION_CODE=$(( $(date +%s) / 60 ))" >> "$GITHUB_ENV"
+
+      - name: Vendor whisper.cpp source (tauri-plugin-stt JNI)
+        if: steps.secrets.outputs.have == 'true'
+        # The STT plugin's Android externalNativeBuild add_subdirectory(whisper.cpp)
+        # compiles a vendored, gitignored whisper.cpp checkout. Clone the pinned
+        # version per android/.gitignore so CMake can find it.
+        run: |
+          DST=corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp
+          if [ ! -f "$DST/CMakeLists.txt" ]; then
+            git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$DST"
+          fi
+
+      - name: Tauri Android build (unsigned AAB)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app
+        # Tauri's generated Gradle project has no release signingConfig, so the
+        # release AAB comes out unsigned — we sign it with jarsigner below (the
+        # correct signing scheme for AABs / Play upload keys).
+        run: |
+          # gen/android/buildSrc (which defines the custom `rust` Gradle plugin
+          # applied by app/build.gradle.kts) is gitignored, so a fresh checkout
+          # is missing it -> "Plugin [id: 'rust'] was not found". init regenerates
+          # buildSrc without touching the committed, customized gradle files.
+          npx tauri android init --ci
+          # res/mipmap-* launcher icons are gitignored (generated) — regenerate
+          # them so the installed app isn't iconless.
+          npx tauri icon src-tauri/icons/512x512_white.png
+          # CI-regenerated icons (from the full-bleed 512x512_white.png source)
+          # have produced wrong-looking launcher icons. Overlay the curated,
+          # known-good mipmap set that's checked into git at
+          # src-tauri/icons/android/ over the freshly generated ones, so
+          # release builds ship the vetted icons instead of the raw regen.
+          for density in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
+            mkdir -p "src-tauri/gen/android/app/src/main/res/mipmap-$density"
+            cp src-tauri/icons/android/mipmap-$density/*.png \
+              "src-tauri/gen/android/app/src/main/res/mipmap-$density/"
+          done
+          npx tauri android build --ci --aab \
+            -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
+
+      - name: Sign AAB with upload key (jarsigner)
+        if: steps.secrets.outputs.have == 'true'
+        working-directory: corpan/corpan-app/src-tauri
+        run: |
+          AAB=gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
+          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
+            -keystore "$RUNNER_TEMP/upload-keystore.jks" \
+            -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
+            "$AAB" "${{ secrets.ANDROID_KEY_ALIAS }}"
+          jarsigner -verify "$AAB" && echo "AAB signature verified"
+
+      - name: Upload to Play internal
+        if: steps.secrets.outputs.have == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.corpora.corpan
+          releaseFiles: corpan/corpan-app/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
+          track: internal
+          status: completed

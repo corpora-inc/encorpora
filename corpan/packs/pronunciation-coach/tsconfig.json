@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -14,8 +18,23 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "@shared/monetization": ["../shared/monetization/index.ts"]
+      "@shared/monetization": [
+        "../shared/monetization/index.ts"
+      ],
+      "@shared/capabilities/core": [
+        "../shared/capabilities/core/index.ts"
+      ],
+      "@shared/capabilities/pronounce": [
+        "../shared/capabilities/pronounce/index.ts"
+      ],
+      "@shared/capabilities/*": [
+        "../shared/capabilities/*"
+      ]
     }
   },
-  "include": ["src", "../shared/ui/offlineNotice.ts", "../shared/monetization/index.ts"]
+  "include": [
+    "src",
+    "../shared/ui/offlineNotice.ts",
+    "../shared/monetization/index.ts"
+  ]
 }

@@ -1,5 +1,13 @@
 # Corpan City — CI/CD, Web Deploy & Cloud Infra to Production
 
+> **Status (2026-07): partly superseded.** This was written before the repo had a
+> `.github/` tree. It now does: `.github/workflows/` carries `ci.yml`,
+> `deploy-pages.yml`, `adversarial-review.yml`, `hygiene.yml`, `release-mobile.yml`
+> and more, and the three required status checks on `main` are **`ci-gate`,
+> `adversarial-review`, `hygiene`** — not the per-pack contexts sketched below.
+> Read this doc for the AWS/realtime design, which still stands; ignore its CI
+> bootstrapping, which has been overtaken. The trunk rules are in the root `AGENTS.md`.
+>
 > **Scope.** This is the P4/P5 deliverable of `docs/PRODUCTION_ROADMAP.md`: the
 > GitHub Actions pipelines, the GitHub Pages standalone demo, the Terraform/AWS
 > realtime + API + CDN + observability stack for the Colyseus server, the
@@ -41,7 +49,7 @@ Companion docs:
 | Realtime | **none in prod** — `server/` runs locally on `:2567`, proven two-window | **NEW: Colyseus on Fargate + ElastiCache Redis** |
 | Durable economy | localStorage-only on device (`store/progress.ts`); no server economy yet | **optional** RDS Postgres, deferred until E2-E4 needs server authority |
 | Observability | analytics data-lake (`analytics.tf`: CloudFront→Lambda→Firehose→S3/Athena), CloudWatch 7d | CloudWatch + (optional) Sentry for the server; reuse the privacy-safe analytics lake |
-| CI/CD | **none committed** in `corpan/` (PUBLISHING.md *references* a `hover-runner-pages.yml` Pages deploy, but no `.github/` exists at repo root yet) | **NEW: a `.github/workflows/` tree** — this doc bootstraps it |
+| CI/CD | *(as of writing: nothing committed)* — **now exists**: `.github/workflows/` with `ci.yml` + `deploy-pages.yml` and required checks `ci-gate` / `adversarial-review` / `hygiene` | add jobs to the existing tree; do **not** bootstrap a parallel one |
 | Terraform state | S3 remote backend `corpan-tf-state` (`backend.tf`), single-operator, no lock table | add a DynamoDB lock once CI runs `apply` |
 
 **Key takeaway:** the static/CDN/Plus-gating story is *already built and in
@@ -137,8 +145,12 @@ jobs:
 ```
 
 Notes that matter:
-- **Required status checks** on the protected branch: `pack`,
-  `contracts-conformance`, `server`. A PR can't merge red.
+- **Required status checks** on `main` are `ci-gate`, `adversarial-review` and
+  `hygiene` — those three, repo-wide. The `pack` / `contracts-conformance` /
+  `server` jobs sketched here are **not** their own required contexts and must
+  never become them: a path-gated required context that does not report blocks the
+  merge queue forever for every PR that misses its path. Add them as jobs feeding
+  the existing `ci-gate` aggregate instead. A PR can't merge red.
 - **Caching.** The composite `setup-node-cache` keys the npm cache on
   `package-lock.json` hashes for both `packs/corpan-city` and
   `packs/corpan-city/server` (two lockfiles). Babylon + Playwright dev-deps make
@@ -574,12 +586,10 @@ scalable, cheap at idle. This unblocks P1's load/anti-cheat/rate-limit work.
   rate-limit / anti-cheat / Redis-driver code. This doc deploys whatever that
   doc produces; the only coupling is the `REDIS_URL`/`PORT`/`/healthz` envs and
   the custom CCU metric the autoscaler reads.
-- **Repo-root `.github/` is new** — confirm with the owner before adding the
-  first workflow tree (it affects every pack, not just WP). The PUBLISHING.md
-  reference to `hover-runner-pages.yml` suggests a Pages workflow was intended
-  but isn't committed here; align with whatever exists in the deploy repo before
-  duplicating it.
+- **Repo-root `.github/` now exists** — extend `ci.yml` / `deploy-pages.yml`
+  rather than adding a parallel workflow tree, and path-gate whatever you add.
 - **State locking:** adding the DynamoDB lock table is a prerequisite before CI
   ever runs `terraform apply` (currently human-only, single-operator).
-- Commit/push + iOS builds stay the owner's by default (memory:
-  `feedback_git_workflow`); this doc is design-only and stages nothing.
+- This doc is design-only and stages nothing. Shipping any of it follows the normal
+  trunk loop in the root `AGENTS.md`: short-lived branch, PR, green gates,
+  squash-merge.

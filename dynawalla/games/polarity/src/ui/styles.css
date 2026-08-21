@@ -1,0 +1,384 @@
+/* POLARITY — vector-monitor register. Hard edges, hairline rules, additive
+   neon. No cards, no gradients-as-decoration, no rounded SaaS chrome. */
+
+/* The host's chrome floats over this game: a 44px back chevron top-LEFT and a
+   44px how-to-play button top-RIGHT. `ui/layout.ts` owns the numbers that keep
+   this HUD out of those two squares and writes them onto the root at mount;
+   the values here are the same numbers, as fallbacks. Nothing a child reads or
+   touches may land in the corners — the field itself still bleeds to the
+   edges, which is what `viewport-fit=cover` is for.
+
+   THE SAFE AREA ARRIVES THE SAME WAY, and this is not a style choice. A pack
+   runs in an iframe sandboxed `allow-scripts` with no `allow-same-origin`, and
+   `env(safe-area-inset-*)` is a property of the TOP-LEVEL browsing context — so
+   a cross-origin child resolves all four to ZERO. Every rule below that once
+   read `env()` directly resolved to its 10px/20px fallback on every device, and
+   `layout.ts`'s numbers, which the tests assert, described a HUD that was never
+   drawn. `--dw-safe-*` is the host's real measurement, published by
+   `applySafeVars`; the `env()` behind each one is the dev-browser fallback,
+   where there is no host and where it happens to be right. Never read an
+   `env(safe-area-inset-*)` here except as the fallback of its `--dw-safe-*`. */
+.pol-root {
+  --pol-chrome-top: 63px;
+  --pol-mini-right: 64px;
+  /* The HUD's gap from every safe edge, and the veil's. Kept as custom
+     properties so a breakpoint can change a gutter WITHOUT restating a
+     `padding:` shorthand — a shorthand resets all four longhands and would take
+     the safe area with it, which is how SIEGE lost its bottom inset on every
+     landscape phone. */
+  --pol-hud-edge: 10px;
+  --pol-veil-pad: 20px;
+  --pos: #ffcd52;
+  --pos-dim: #7a5a1c;
+  --neg: #38dcff;
+  --neg-dim: #1a5e73;
+  --bad: #ff3d52;
+  --gold: #ffe08a;
+  --ink: #eef3ff;
+  --void: #03040b;
+  --face: 900 1em/1 ui-rounded, "SF Pro Rounded", "Segoe UI Variable Display", "Nimbus Sans",
+    Inter, system-ui, sans-serif;
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--void);
+  color: var(--ink);
+  font: var(--face);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  contain: strict;
+}
+
+.pol-root[data-pol="1"] { --now: var(--pos); --now-dim: var(--pos-dim); }
+.pol-root[data-pol="-1"] { --now: var(--neg); --now-dim: var(--neg-dim); }
+
+.pol-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.pol-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* The top clears the host's two 44px corners as well as the notch: the score
+     and the chain sat in the chevron's square and the shield pips and STRATUM
+     sat under the question mark, and no inset can help with that — the chrome
+     floats INSIDE the safe area. Only the top row moves; the middle row absorbs
+     it and the pads stay put.
+
+     Four longhands, deliberately not a shorthand. See --pol-hud-edge above. */
+  padding-top: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--pol-chrome-top));
+  padding-right: max(var(--pol-hud-edge), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: max(var(--pol-hud-edge), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--pol-hud-edge), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* ---------------------------------------------------------------- top row */
+.pol-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 8px; }
+
+.pol-score { font-size: clamp(15px, 3.6vw, 26px); text-shadow: 0 0 14px #6cf8; }
+.pol-score b { font-weight: 900; }
+.pol-best { display: block; font-size: 0.52em; opacity: 0.45; letter-spacing: 0.16em; margin-top: 3px; }
+
+.pol-chain {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(13px, 3vw, 20px);
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s;
+}
+.pol-chain[data-on="1"] { opacity: 1; }
+.pol-chain[data-hot="1"] { animation: polBeat 0.45s ease-out; }
+
+.pol-right { justify-self: end; text-align: right; }
+.pol-shields { display: flex; gap: 5px; justify-content: flex-end; }
+.pol-pip {
+  width: clamp(11px, 2.6vw, 17px);
+  height: clamp(11px, 2.6vw, 17px);
+  border: 2px solid var(--now);
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--now) 60%, transparent);
+  transition: opacity 0.2s, background 0.2s;
+  background: color-mix(in srgb, var(--now) 55%, transparent);
+}
+.pol-pip[data-off="1"] { opacity: 0.22; background: none; box-shadow: none; }
+.pol-stratum {
+  margin-top: 7px;
+  font-size: clamp(10px, 2.2vw, 13px);
+  letter-spacing: 0.22em;
+  opacity: 0.55;
+}
+
+/* ------------------------------------------------------------- core gauge */
+.pol-core { justify-self: center; text-align: center; width: min(62vw, 340px); }
+
+.pol-corenum {
+  font-size: clamp(30px, 8.4vw, 62px);
+  line-height: 0.94;
+  color: var(--now);
+  text-shadow: 0 0 26px color-mix(in srgb, var(--now) 70%, transparent);
+  transition: color 0.12s;
+}
+.pol-corenum[data-warn="1"] { color: var(--bad); text-shadow: 0 0 30px #ff3d5288; animation: polBeat 0.36s infinite; }
+.pol-corenum[data-zero="1"] { color: #8a93ad; text-shadow: none; }
+
+.pol-bar {
+  position: relative;
+  height: clamp(9px, 2.1vw, 14px);
+  margin-top: 5px;
+  border: 1px solid #ffffff26;
+  background: #ffffff0a;
+}
+.pol-bar::before { /* the zero axis */
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: #ffffffb0;
+  transform: translateX(-1px);
+}
+.pol-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  background: var(--now);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--now) 75%, transparent);
+  transform-origin: left center;
+}
+.pol-fill[data-neg="1"] { left: auto; right: 50%; }
+.pol-bar[data-warn="1"] { border-color: var(--bad); }
+.pol-bar[data-warn="1"] .pol-fill { background: var(--bad); box-shadow: 0 0 20px #ff3d5299; }
+.pol-caps {
+  display: flex;
+  justify-content: space-between;
+  font-size: clamp(9px, 2vw, 12px);
+  opacity: 0.4;
+  margin-top: 3px;
+  letter-spacing: 0.1em;
+}
+
+/* ------------------------------------------------------------------- cues */
+.pol-mid { display: grid; place-items: center; pointer-events: none; }
+.pol-cue {
+  font-size: clamp(20px, 6.4vw, 46px);
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-shadow: 0 0 30px #ffe08a66;
+  opacity: 0;
+  transform: translateY(10px) scale(0.94);
+}
+.pol-cue[data-on="1"] { animation: polCue 2.2s ease-out forwards; }
+
+.pol-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34%;
+  text-align: center;
+  font-size: clamp(17px, 5vw, 34px);
+  letter-spacing: 0.3em;
+  color: var(--ink);
+  opacity: 0;
+}
+.pol-banner[data-on="1"] { animation: polCue 1.5s ease-out forwards; }
+
+/* ------------------------------------------------------------------- pads */
+.pol-pads { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
+.pol-pad {
+  pointer-events: auto;
+  width: clamp(64px, 19vw, 108px);
+  height: clamp(64px, 19vw, 108px);
+  border: 2px solid currentColor;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  color: var(--now);
+  display: grid;
+  place-items: center;
+  font-size: clamp(11px, 2.6vw, 15px);
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(16% 0, 100% 0, 100% 84%, 84% 100%, 0 100%, 0 16%);
+  transition: transform 0.07s, background 0.12s, opacity 0.2s;
+  touch-action: none;
+}
+.pol-pad:active { transform: scale(0.93); background: color-mix(in srgb, currentColor 28%, transparent); }
+.pol-pad[data-vent="1"] { color: var(--gold); }
+.pol-pad[data-ready="1"] { animation: polReady 1.05s ease-in-out infinite; }
+.pol-pad[data-hide="1"] { opacity: 0; pointer-events: none; }
+
+.pol-keyhint {
+  position: absolute;
+  bottom: max(var(--pol-hud-edge), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  left: max(var(--pol-hud-edge), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  right: max(var(--pol-hud-edge), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  text-align: center;
+  font-size: clamp(9px, 1.9vw, 12px);
+  letter-spacing: 0.2em;
+  opacity: 0.35;
+}
+
+/* --------------------------------------------------------------- overlays */
+.pol-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(120% 90% at 50% 40%, #03040bd0, #03040bfa);
+  backdrop-filter: blur(3px);
+  /* Was a flat `20px`, on all four sides, with no `env()` anywhere — the one
+     surface in this game that ignored the insets entirely. It carries the
+     REPOLARIZE answer orbs, which a child taps, so in landscape on a notched
+     phone the outermost orb ran under the sensor housing. Its contents are
+     centred, so the corners are clear by construction. */
+  padding-top: max(var(--pol-veil-pad), var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+  padding-right: max(var(--pol-veil-pad), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: max(var(--pol-veil-pad), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--pol-veil-pad), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  text-align: center;
+}
+.pol-veil[hidden] { display: none; }
+
+.pol-title { font-size: clamp(40px, 13vw, 112px); letter-spacing: 0.06em; line-height: 0.9; }
+.pol-title i { font-style: normal; color: var(--pos); }
+.pol-title u { text-decoration: none; color: var(--neg); }
+.pol-sub {
+  margin-top: 14px;
+  font-size: clamp(11px, 2.7vw, 15px);
+  letter-spacing: 0.18em;
+  opacity: 0.6;
+  max-width: 30ch;
+  line-height: 1.7;
+}
+
+.pol-btn {
+  margin-top: 26px;
+  pointer-events: auto;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  background: #ffe08a14;
+  padding: 15px 40px;
+  font: var(--face);
+  font-size: clamp(16px, 4.2vw, 24px);
+  letter-spacing: 0.24em;
+  cursor: pointer;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: transform 0.08s, background 0.15s;
+}
+.pol-btn:active { transform: scale(0.96); }
+.pol-btn:hover { background: #ffe08a2a; }
+
+.pol-prompt {
+  font-size: clamp(30px, 9vw, 62px);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.pol-ask { font-size: clamp(10px, 2.4vw, 13px); letter-spacing: 0.3em; opacity: 0.5; }
+
+.pol-orbs { display: flex; gap: clamp(10px, 3.4vw, 26px); margin-top: 26px; justify-content: center; }
+.pol-orb {
+  pointer-events: auto;
+  width: clamp(74px, 22vw, 118px);
+  height: clamp(74px, 22vw, 118px);
+  display: grid;
+  place-items: center;
+  font: var(--face);
+  font-size: clamp(24px, 7vw, 40px);
+  color: var(--pos);
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, color-mix(in srgb, currentColor 26%, transparent), transparent 68%);
+  box-shadow: 0 0 30px color-mix(in srgb, currentColor 45%, transparent), inset 0 0 22px color-mix(in srgb, currentColor 25%, transparent);
+  cursor: pointer;
+  transition: transform 0.09s;
+}
+.pol-orb[data-neg="1"] { color: var(--neg); border-radius: 50%; }
+.pol-orb[data-neg="0"] { border-radius: 12%; transform: rotate(45deg); }
+.pol-orb[data-neg="0"] span { transform: rotate(-45deg); }
+.pol-orb:active { transform: scale(0.93); }
+.pol-orb[data-neg="0"]:active { transform: rotate(45deg) scale(0.93); }
+.pol-orb[data-dead="1"] { opacity: 0.2; pointer-events: none; }
+
+.pol-stats {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 6px 26px;
+  font-size: clamp(11px, 2.7vw, 15px);
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+}
+.pol-stats span:nth-child(odd) { opacity: 0.5; text-align: right; }
+.pol-stats span:nth-child(even) { text-align: left; color: var(--gold); }
+
+.pol-final { font-size: clamp(34px, 11vw, 78px); color: var(--gold); line-height: 1; }
+.pol-over { font-size: clamp(12px, 3vw, 17px); letter-spacing: 0.34em; opacity: 0.55; }
+
+/* Sound and pause. These were `top: max(10px, env())`, `right: max(10px,
+   env())` — the how-to-play button's coordinates, exactly, so the host's `?`
+   printed straight through them. They now sit BESIDE it rather than under it,
+   which is where a player already looks, with at least 10px of air between the
+   game's chrome and the host's at every inset. */
+.pol-mini {
+  position: absolute;
+  top: max(var(--pol-hud-edge), var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+  right: calc(
+    max(var(--pol-hud-edge), var(--dw-safe-right, env(safe-area-inset-right, 0px))) +
+      var(--pol-mini-right)
+  );
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+.pol-mini button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ffffff33;
+  background: #ffffff0d;
+  color: var(--ink);
+  font: var(--face);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.pol-mini button[data-off="1"] { opacity: 0.24; }
+
+/* ----------------------------------------------------------------- motion */
+@keyframes polBeat {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+@keyframes polCue {
+  0% { opacity: 0; transform: translateY(14px) scale(0.9); }
+  14% { opacity: 1; transform: translateY(0) scale(1.04); }
+  24% { transform: translateY(0) scale(1); }
+  76% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px) scale(1); }
+}
+@keyframes polReady {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 55%, transparent); }
+  50% { box-shadow: 0 0 0 10px transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pol-chain[data-hot="1"], .pol-corenum[data-warn="1"], .pol-pad[data-ready="1"] { animation: none; }
+  .pol-cue[data-on="1"], .pol-banner[data-on="1"] { animation: polFade 2.2s linear forwards; }
+  @keyframes polFade { 0%, 88% { opacity: 1; } 100% { opacity: 0; } }
+}
+
+@media (max-width: 360px) {
+  .pol-core { width: 74vw; }
+  .pol-stats { grid-template-columns: auto auto; gap: 4px 14px; }
+}

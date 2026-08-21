@@ -1,0 +1,24 @@
+{
+  "id": "dynawalla.beam",
+  "version": "0.1.0",
+  "name": "THE TUNING HALL",
+  "description": "Five numbered beams of light run down a hall. Ride one and fire, and a pulse destroys an automaton only when the beam divides the number it carries — while the beam sings the remainder against it, and goes pure when it hits zero.",
+  "sdk": "1.0.0",
+  "host": { "min": "0.1.0", "max": "1.0.0" },
+  "entry": "pack.html",
+  "capabilities": ["items", "items.reveal", "haptics"],
+  "covers": {
+    "skills": [
+      "dw.add.column.add-no-regroup",
+      "dw.add.column.subtract-no-regroup",
+      "dw.add.regroup.add-multidigit",
+      "dw.add.regroup.subtract-multidigit",
+      "dw.add.regroup.add-short-addend",
+      "dw.add.regroup.subtract-short-subtrahend",
+      "dw.add.regroup.subtract-across-zero"
+    ]
+  },
+  "minAge": 8,
+  "locales": ["en"],
+  "build": { "config": "vite.pack.config.ts", "out": "dist-pack" }
+}

@@ -298,8 +298,12 @@ body {
    container. Home is `position:fixed; overflow-y:auto` (its own scroll
    context), so on Android WebView its scrollbar otherwise paints THROUGH
    the opaque pack overlay on top. Locking it removes the bleed-through and
-   stops a hidden second scroller from eating momentum. iOS is unaffected. */
-body[data-experience-active="true"] [data-home-scroll] {
+   stops a hidden second scroller from eating momentum. iOS is unaffected.
+
+   Match ANY attribute value (App sets "true"; JourneySurface sets "journey").
+   The earlier `="true"` selector missed Journey → phantom scrollbar over the
+   Journey feed. Attribute-present is the documented contract (PERFORMANCE.md). */
+body[data-experience-active] [data-home-scroll] {
     overflow: hidden !important;
 }
 

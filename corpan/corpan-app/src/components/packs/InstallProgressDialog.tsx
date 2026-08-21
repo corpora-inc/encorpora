@@ -148,15 +148,25 @@ export function InstallProgressDialog({
   // is a Rust-side message we surface verbatim.
   const isOfflineError = state.stage === "error" && state.error === "offline"
   const isStuckError = state.stage === "error" && state.error === "stuck"
+  // Set by InstallContext when `installPack` throws a PackVersionMismatchError
+  // — the catalog promised a version the download didn't actually contain
+  // (stale origin). Surfaced as its own state rather than the pack's raw
+  // error message so every locale gets a real "update unavailable" string.
+  const isVersionMismatchError =
+    state.stage === "error" && state.error === "version_mismatch"
   const errorHeading = isOfflineError
     ? t("offline.title", { defaultValue: "No internet" })
     : isStuckError
       ? t("packs.installStuckTitle", {
           defaultValue: "Download stalled",
         })
-      : t("packs.installFailedTitle", {
-          defaultValue: "Install failed",
-        })
+      : isVersionMismatchError
+        ? t("packs.updateUnavailableTitle", {
+            defaultValue: "Update unavailable",
+          })
+        : t("packs.installFailedTitle", {
+            defaultValue: "Install failed",
+          })
   const errorDetail = isOfflineError
     ? t("offline.installNeedsInternet", {
         defaultValue: "Reconnect to download.",
@@ -166,7 +176,12 @@ export function InstallProgressDialog({
           defaultValue:
             "No progress for a while. Check your connection and try again.",
         })
-      : state.error || ""
+      : isVersionMismatchError
+        ? t("packs.updateUnavailableDetail", {
+            defaultValue:
+              "This download didn't match what we expected. Please try again later.",
+          })
+        : state.error || ""
 
   return (
     <Dialog open={state.active} onOpenChange={(open) => !open && isTerminal && onClose()}>

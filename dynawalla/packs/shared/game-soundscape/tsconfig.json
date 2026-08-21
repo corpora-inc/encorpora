@@ -1,0 +1,26 @@
+{
+  /* The same strictness the app and the SDK are held to, so a type that passes
+     here cannot fail when a game imports the identical file by relative path —
+     which is how all 27 of them consume this module. `erasableSyntaxOnly` keeps
+     every file runnable under `node --experimental-strip-types`. */
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "types": ["node"]
+  },
+  "include": ["."]
+}

@@ -1,0 +1,862 @@
+/* SIEGE — hot forge on cold stone. Squared-off metal, tabular numerals, no cards. */
+
+.sg {
+  --hot: #ff8a2b;
+  --hotter: #ffcf5c;
+  --white-hot: #fff2d2;
+  --cold: #8fb4d8;
+  --ward: #6fe3ff;
+  --danger: #ff3d2e;
+  --ink: #f6e9d8;
+  --dim: #9b8878;
+  --panel: #140e11;
+  --panel-2: #1d1418;
+  --seam: rgba(255, 138, 43, 0.28);
+
+  position: absolute;
+  inset: 0;
+  display: grid;
+  /* minmax(0, …) everywhere: a long prompt or a wide top bar must clip, never
+     push the canvas out of the viewport. That bug cropped the whole board. */
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
+  background: #0a0608;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.sg * {
+  box-sizing: border-box;
+}
+
+.sg button {
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* ------------------------------------------------------------------ top bar */
+
+/* The host paints an exit control over the top-LEFT 44px corner and a
+   how-to-play control over the top-RIGHT one, ON TOP of this bar. So the bar's
+   CONTENTS start after the first and stop before the second — `--sg-corner`
+   comes from the shared host constants, via `chrome.ts`, so the pack follows if
+   the host ever moves them.
+
+   The bar keeps its height and its background still runs the full width. This
+   is a promise about two squares, not a reserved band: reserving the whole top
+   strip cost a sibling game 12% of a small phone's height and broke its layout
+   outright.
+
+   All four edges honour the safe area, not just the top. `viewport-fit=cover`
+   opts this document into the rounded corners on every side, and in landscape
+   the cutout is a SIDE inset — which is where the ember count lives.
+
+   The safe area arrives as `--dw-safe-*`, written onto `.sg` by `applySafeVars`
+   from the host's own measurement. The `env()` inside each `var()` is the DEV
+   fallback and nothing else: a pack frame is cross-origin, so `env()` resolves
+   to zero there, and reading it directly is how this bar came to be painted
+   under an Android status bar. */
+.sg-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 8px 10px calc(8px) 10px;
+  padding-top: max(8px, var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+  padding-left: calc(var(--dw-safe-left, env(safe-area-inset-left, 0px)) + var(--sg-corner, 54px));
+  padding-right: calc(var(--dw-safe-right, env(safe-area-inset-right, 0px)) + var(--sg-corner, 54px));
+  background: linear-gradient(#170f12, #100a0d);
+  border-bottom: 1px solid var(--seam);
+}
+
+.sg-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+/* The bar gave up 108px to the host's two corners, so what is left has to be
+   able to compress. Before this the children were all `flex: 0 0 auto` under
+   `overflow: hidden`, which does not degrade — it simply cuts the last child
+   off the right-hand edge, and the last children were the sound and speed
+   switches. On a 320px phone they were already invisible. */
+.sg-spacer { min-width: 0; }
+
+.sg-stat-k {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--dim);
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sg-stat-v {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.sg-embers .sg-stat-v {
+  color: var(--hotter);
+  text-shadow: 0 0 18px rgba(255, 176, 60, 0.55);
+}
+
+.sg-embers { padding-right: 6px; }
+
+.sg-embers .sg-stat-v {
+  transform-origin: left center;
+}
+
+.sg-embers.bump .sg-stat-v {
+  animation: sg-bump 0.34s cubic-bezier(0.16, 1.4, 0.4, 1);
+}
+
+@keyframes sg-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.17); color: #fff; }
+  100% { transform: scale(1); }
+}
+
+.sg-spacer { flex: 1 1 0; min-width: 4px; }
+
+/* core health: pips, so damage is countable and never colour alone */
+.sg-core {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex: 0 1 auto;
+  min-width: 44px;
+  max-width: 180px;
+  overflow: hidden;
+}
+
+.sg-pip {
+  /* Shrinks before anything else does: twenty narrower pips still count, a
+     clipped ember figure does not read at all. */
+  flex: 1 1 auto;
+  min-width: 2px;
+  width: clamp(3px, 0.7vw, 7px);
+  height: 18px;
+  background: linear-gradient(#ffb04a, #ff5a12);
+  box-shadow: 0 0 8px rgba(255, 130, 40, 0.6);
+}
+
+.sg-pip.out {
+  background: #2a1d20;
+  box-shadow: none;
+}
+
+.sg-core.hurt {
+  animation: sg-corehurt 0.4s;
+}
+
+@keyframes sg-corehurt {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  55% { transform: translateX(4px); }
+}
+
+.sg-chip {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 7px 10px;
+  min-height: 34px;
+  background: var(--panel-2);
+  border: 1px solid rgba(255, 138, 43, 0.22);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.sg-chip.on {
+  color: #0a0608;
+  background: var(--hotter);
+  border-color: var(--hotter);
+}
+
+.sg-chip svg { display: block; }
+.sg-chip.on svg path,
+.sg-chip.on svg line { stroke: #0a0608; }
+
+/* narrow: the fight keeps every pixel it can get */
+@media (max-width: 700px) {
+  .sg-top { gap: 9px; }
+  .sg-stat-v { font-size: 19px; }
+  .sg-stat-k { font-size: 8px; letter-spacing: 0.1em; }
+  .sg-core { gap: 1px; }
+  .sg-pip { width: 3px; height: 14px; }
+  .sg-chip { padding: 6px 8px; font-size: 11px; min-height: 30px; }
+}
+
+/* A small phone, after the host's two corners are paid for. Every figure still
+   fits; the pips give up the difference. */
+@media (max-width: 520px) {
+  .sg-top { gap: 6px; }
+  .sg-stat-v { font-size: 17px; }
+  .sg-stat-k { font-size: 7px; letter-spacing: 0.08em; }
+  .sg-core { gap: 1px; min-width: 40px; }
+}
+
+/* -------------------------------------------------------------------- board */
+
+/* The board's background bleeds to the glass on purpose — that is what
+   `viewport-fit=cover` is for. The square playfield inside it is fitted to the
+   SAFE box by `computeView`, because a socket under a rounded corner is a tower
+   a child cannot build. */
+.sg-board {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.sg-board canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ------------------------------------------------------------- floating menu */
+
+.sg-pop {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(14, 9, 11, 0.94);
+  border: 1px solid var(--seam);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 190, 120, 0.14);
+  transform-origin: 50% 100%;
+  animation: sg-pop-in 0.19s cubic-bezier(0.16, 1.3, 0.4, 1);
+}
+
+@keyframes sg-pop-in {
+  from { transform: scale(0.7) translateY(8px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.sg-buy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 74px;
+  padding: 8px 4px 7px;
+  background: linear-gradient(#241a1e, #171013);
+  border: 1px solid rgba(255, 190, 120, 0.18);
+}
+
+.sg-buy:active { transform: scale(0.94); }
+
+.sg-buy[disabled] {
+  opacity: 0.34;
+  cursor: default;
+}
+
+.sg-buy .n {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.sg-buy .c {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--hotter);
+}
+
+.sg-buy .d {
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+
+.sg-buy svg { display: block; }
+
+.sg-sell {
+  width: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--dim);
+  background: #171013;
+  border: 1px solid rgba(255, 190, 120, 0.14);
+}
+
+/* -------------------------------------------------------------------- anvil */
+
+/* Portrait is the default shape: a full-width console under a square board.
+   A phone screen is tall, the board can only be as wide as the screen, so the
+   space left over belongs to the maths. */
+/* `--sg-pad` exists so the two layout media queries can change the console's
+   padding WITHOUT re-stating it as a shorthand. They used to: `padding: 8px` in
+   the short-viewport block reset all four longhands, and the three safe-area
+   rules below it were silently thrown away on exactly the shapes — a landscape
+   phone, a small window — where the home indicator is closest to the answer
+   buttons. A breakpoint that has to remember to re-apply the safe area is a
+   breakpoint that will forget. */
+.sg-anvil {
+  --sg-pad: 10px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: var(--sg-pad);
+  padding-bottom: max(var(--sg-pad), var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: max(var(--sg-pad), var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  padding-right: max(var(--sg-pad), var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  background: linear-gradient(#150e11, #0d0709);
+  border-top: 1px solid var(--seam);
+}
+
+.sg-anvil::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hot), transparent);
+  opacity: 0.7;
+}
+
+.sg-pal {
+  display: none;
+  grid-auto-flow: row;
+  gap: 6px;
+  align-content: start;
+}
+
+.sg-card {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  background: linear-gradient(#1f1519, #140e11);
+  border: 1px solid rgba(255, 138, 43, 0.16);
+  transition: transform 0.08s, border-color 0.14s;
+}
+
+.sg-card:active { transform: scale(0.985); }
+
+.sg-card .n {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.sg-card .d {
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+
+.sg-card .nums { text-align: right; }
+
+.sg-card .cost {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--hotter);
+  line-height: 1;
+}
+
+.sg-card .dps {
+  font-size: 10px;
+  color: var(--dim);
+}
+
+.sg-card.armed {
+  border-color: var(--hotter);
+  background: linear-gradient(#43220f, #1e1114);
+  box-shadow: inset 0 0 24px rgba(255, 160, 60, 0.25);
+}
+
+.sg-card.poor { opacity: 0.38; }
+
+.sg-work {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* The three switches — call wave, speed, sound — used to sit at the right-hand
+   end of the status bar, which is the corner the host paints its how-to-play
+   control over, and which on a 320px phone was already clipping them off the
+   screen entirely. They live here now, where the console has room. */
+.sg-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  color: var(--dim);
+}
+
+.sg-switches {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.sg-head .pay {
+  letter-spacing: 0;
+  font-size: 15px;
+  color: var(--hotter);
+  text-shadow: 0 0 14px rgba(255, 176, 60, 0.5);
+}
+
+.sg-prompt {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: clamp(28px, 7vw, 46px);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--white-hot);
+  text-shadow: 0 0 26px rgba(255, 170, 70, 0.4);
+  white-space: nowrap;
+}
+
+.sg-prompt .eq {
+  color: var(--hot);
+  opacity: 0.7;
+}
+
+.sg-prompt.dark {
+  color: #5c4a44;
+  text-shadow: none;
+}
+
+.sg-slugs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.sg-slug {
+  position: relative;
+  /* The board is a square fit to the narrower axis, so on a tall screen the
+     leftover height is exactly (100vh - 100vw). Spend it on touch targets. */
+  height: clamp(54px, calc((100vh - 100vw) * 0.19), 100px);
+  font-size: clamp(24px, 6vw, 38px);
+  font-weight: 800;
+  color: #fffaf0;
+  text-shadow: 0 1px 0 rgba(90, 26, 0, 0.8), 0 0 18px rgba(255, 170, 70, 0.5);
+  background: linear-gradient(#75371a, #46200f 46%, #2a1209);
+  border: 1px solid rgba(255, 176, 80, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 226, 170, 0.4),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.45),
+    0 6px 0 #180c07,
+    0 9px 22px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  transition: transform 0.07s;
+}
+
+.sg-slug::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(130% 80% at 50% -10%, rgba(255, 216, 150, 0.42), transparent 62%),
+    linear-gradient(90deg, rgba(255, 120, 30, 0.14), transparent 40%, rgba(255, 120, 30, 0.14));
+  pointer-events: none;
+}
+
+.sg-slug:active,
+.sg-slug.press {
+  transform: translateY(5px);
+  box-shadow: inset 0 1px 0 rgba(255, 200, 140, 0.2), 0 1px 0 #150b09;
+}
+
+.sg-slug.right {
+  animation: sg-right 0.42s ease-out;
+}
+
+@keyframes sg-right {
+  0% { background: #fffaf0; color: #2a1409; transform: scale(1.12); box-shadow: 0 0 44px rgba(255, 210, 130, 0.9); }
+  100% { background: linear-gradient(#75371a, #46200f 46%, #2a1209); color: #fffaf0; transform: scale(1); }
+}
+
+.sg-slug.wrong {
+  animation: sg-wrong 0.4s ease-out;
+}
+
+@keyframes sg-wrong {
+  0% { transform: translateX(0); filter: brightness(0.4); }
+  25% { transform: translateX(-7px) rotate(-2deg); }
+  55% { transform: translateX(6px) rotate(2deg); }
+  100% { transform: translateX(0); filter: brightness(0.4); }
+}
+
+.sg-slug.reveal {
+  outline: 3px solid var(--hotter);
+  outline-offset: -3px;
+}
+
+.sg-anvil.cold .sg-slug {
+  filter: grayscale(0.8) brightness(0.45);
+  pointer-events: none;
+}
+
+.sg-anvil.cold::before { opacity: 0.15; }
+
+/* the overcharge lever */
+
+.sg-over {
+  position: relative;
+  width: 100%;
+  min-height: 56px;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  gap: 2px;
+  background: linear-gradient(#1d1216, #120b0e);
+  border: 1px solid rgba(255, 138, 43, 0.24);
+  overflow: hidden;
+}
+
+.sg-over .fill {
+  position: absolute;
+  inset: auto 0 0 0;
+  background: linear-gradient(#ff5a12, #7a1c05);
+  opacity: 0.45;
+  transition: height 0.24s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.sg-over .lab {
+  position: relative;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+  color: var(--dim);
+}
+
+.sg-over .pct {
+  position: relative;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.sg-over.ready {
+  border-color: var(--hotter);
+  animation: sg-ready 1.2s ease-in-out infinite;
+}
+
+.sg-over.ready .lab,
+.sg-over.ready .pct { color: var(--white-hot); }
+
+.sg-over.ready .fill { opacity: 0.85; }
+
+@keyframes sg-ready {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 160, 60, 0); }
+  50% { box-shadow: 0 0 30px rgba(255, 160, 60, 0.7), inset 0 0 30px rgba(255, 160, 60, 0.35); }
+}
+
+.sg-over[disabled] { cursor: default; }
+
+/* ------------------------------------------------------------------ banners */
+
+.sg-banner {
+  position: absolute;
+  left: var(--dw-safe-left, env(safe-area-inset-left, 0px));
+  right: var(--dw-safe-right, env(safe-area-inset-right, 0px));
+  /* Below the host's controls even on a short landscape phone, where 16% of the
+     height is less than a 44px button. `--sg-chrome-bottom` is the host's own
+     geometry — hairline, margin, control — not a number typed in here.
+     No top inset in this sum: the banner is a child of `.sg-board`, and the
+     board already begins below a status bar that has paid the top inset in
+     full. Adding it again here would push the wave call a second inset down
+     the screen for a notch it has already cleared. */
+  top: max(16%, calc(var(--sg-chrome-bottom, 57px) + 11px));
+  z-index: 8;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.sg-banner .big {
+  font-size: clamp(38px, 11vw, 84px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  color: var(--white-hot);
+  text-shadow: 0 0 40px rgba(255, 130, 40, 0.75), 0 6px 0 rgba(0, 0, 0, 0.55);
+}
+
+.sg-banner .sub {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--hot);
+}
+
+.sg-banner.in {
+  animation: sg-slam 2.1s cubic-bezier(0.16, 1.5, 0.3, 1) forwards;
+}
+
+@keyframes sg-slam {
+  0% { transform: scale(2.4) translateY(-14px); opacity: 0; filter: blur(6px); }
+  12% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); }
+  76% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.86) translateY(-24px); opacity: 0; }
+}
+
+/* -------------------------------------------------------- overcharge overlay */
+
+.sg-oc {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  padding: calc(20px + var(--dw-safe-top, env(safe-area-inset-top, 0px)))
+    calc(20px + var(--dw-safe-right, env(safe-area-inset-right, 0px)))
+    calc(20px + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)))
+    calc(20px + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  background: radial-gradient(circle at 50% 46%, rgba(60, 12, 4, 0.72), rgba(6, 3, 4, 0.94));
+  backdrop-filter: blur(3px);
+  animation: sg-oc-in 0.24s ease-out;
+}
+
+@keyframes sg-oc-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sg-oc .tag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.34em;
+  color: var(--hotter);
+}
+
+.sg-oc .q {
+  font-size: clamp(46px, 13vw, 104px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--white-hot);
+  text-shadow: 0 0 60px rgba(255, 150, 50, 0.8);
+  animation: sg-oc-q 0.5s cubic-bezier(0.16, 1.4, 0.4, 1);
+}
+
+@keyframes sg-oc-q {
+  from { transform: scale(0.5) rotate(-4deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.sg-oc .grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+  width: min(560px, 92vw);
+}
+
+.sg-oc .sg-slug {
+  height: clamp(72px, 13vh, 104px);
+  font-size: clamp(28px, 7vw, 44px);
+}
+
+.sg-oc .timer {
+  width: min(560px, 92vw);
+  height: 8px;
+  background: #2a1512;
+  overflow: hidden;
+}
+
+.sg-oc .timer i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--hotter), var(--danger));
+  transform-origin: left;
+}
+
+/* ------------------------------------------------------------------- defeat */
+
+.sg-end {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  /* The top is the host's chrome plus air, not a bare 68: the defeat card is a
+     child of `.sg` and its heading DOES have to clear the exit and how-to-play
+     controls, which the banner does not. */
+  padding: calc(var(--dw-safe-top, env(safe-area-inset-top, 0px)) + var(--sg-chrome-bottom, 57px) + 11px)
+    calc(var(--dw-safe-right, env(safe-area-inset-right, 0px)) + 12px)
+    calc(var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)) + 12px)
+    calc(var(--dw-safe-left, env(safe-area-inset-left, 0px)) + 12px);
+  background: rgba(5, 3, 4, 0.9);
+  animation: sg-oc-in 0.6s ease-out;
+}
+
+.sg-end .t {
+  font-size: clamp(32px, 8vw, 62px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #6f5a52;
+}
+
+.sg-end .w {
+  font-size: clamp(60px, 18vw, 140px);
+  font-weight: 800;
+  line-height: 0.9;
+  color: var(--hotter);
+  text-shadow: 0 0 50px rgba(255, 160, 60, 0.5);
+}
+
+.sg-end .s {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--dim);
+  text-align: center;
+}
+
+.sg-end .again {
+  margin-top: 14px;
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #1a0d08;
+  background: linear-gradient(var(--hotter), var(--hot));
+  box-shadow: 0 6px 0 #7a3a10;
+}
+
+.sg-end .again:active { transform: translateY(4px); box-shadow: 0 2px 0 #7a3a10; }
+
+/* A short viewport — landscape phone, small desktop window — cannot afford a
+   stacked console. Height is the real constraint, so key off it, not on
+   `orientation`, which does not answer the question being asked. */
+@media (max-height: 619px) {
+  .sg-anvil {
+    /* `--sg-pad`, never `padding: 8px` — the shorthand would take the safe-area
+       longhands with it and put the answer buttons under a home indicator. */
+    --sg-pad: 8px;
+    grid-template-columns: minmax(0, 1fr) 116px;
+    grid-template-rows: auto;
+    gap: 8px;
+  }
+  .sg-slugs { grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .sg-slug { height: clamp(42px, 13vh, 68px); font-size: clamp(18px, 3.2vw, 26px); }
+  .sg-prompt { font-size: clamp(22px, 4.4vw, 36px); }
+  .sg-head { font-size: 9px; }
+  .sg-over {
+    grid-auto-flow: row;
+    justify-content: center;
+    place-items: center;
+    padding: 6px;
+    min-height: 0;
+    height: 100%;
+  }
+  .sg-over .lab { font-size: 9px; letter-spacing: 0.1em; }
+  .sg-over .pct { font-size: 22px; }
+  /* A short viewport also makes the console's left column narrow — 180px on a
+     320x568 phone. The switch row fits there normally and wraps to a second
+     line for the few seconds the "call the wave in early" chip is showing,
+     which is the right way round: it wraps rather than spilling. */
+  .sg-head { gap: 6px; }
+  .sg-switches { gap: 4px; }
+  .sg-chip { padding: 5px 7px; font-size: 10px; min-height: 28px; }
+}
+
+/* --------------------------------------------------------------- wide layout */
+
+@media (min-width: 900px) and (min-height: 620px) {
+  .sg {
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+  .sg-top { grid-column: 1 / -1; }
+  .sg-anvil {
+    grid-row: 2;
+    grid-column: 2;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    align-content: stretch;
+    border-top: 0;
+    border-left: 1px solid var(--seam);
+    gap: 14px;
+    --sg-pad: 14px;
+  }
+  .sg-pal { display: grid; }
+  .sg-anvil::before {
+    inset: 0 auto 0 0;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, transparent, var(--hot), transparent);
+  }
+  .sg-work { align-content: center; }
+  .sg-slug { height: 84px; font-size: clamp(24px, 2.6vw, 34px); }
+  .sg-over { min-height: 92px; }
+  .sg-over .lab { font-size: 12px; }
+  .sg-over .pct { font-size: 34px; }
+}
+
+/* ------------------------------------------------------------ reduced motion */
+
+.sg.rm *,
+.sg.rm *::before,
+.sg.rm *::after {
+  animation-duration: 0.001s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.06s !important;
+}
+
+.sg.rm .sg-banner.in { animation: sg-fade 2s linear forwards; }
+
+@keyframes sg-fade {
+  0%, 80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg *,
+  .sg *::before,
+  .sg *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

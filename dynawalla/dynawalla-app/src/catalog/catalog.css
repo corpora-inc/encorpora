@@ -1,0 +1,134 @@
+/* The inks of the generated key art.
+ *
+ * **This file exists because of the content security policy, not because of
+ * taste.** The shipped app runs under `style-src 'self'`, which throws away a
+ * `style` attribute and a `<style>` element alike — silently, and only in the
+ * build, so a per-card colour set from a React `style` prop looks perfect in
+ * `vite dev` and is simply absent on a device. Two mechanisms survive it, and
+ * both are used here:
+ *
+ *   1. a stylesheet the bundler emits and the document `<link>`s, which is
+ *      "self" and is therefore allowed — that is this file, and it is where
+ *      the twelve hue classes live;
+ *   2. SVG presentation attributes (`opacity`, `stroke-dasharray`, `d`, `r`),
+ *      which are attributes rather than CSS and are not subject to `style-src`
+ *      at all — that is how a shape carries its own alpha.
+ *
+ * So a card's hue is a CLASS (`dw-art-h7`) that sets one custom property, and
+ * every shape in the drawing is painted from that property. Nothing about the
+ * art is inline, and nothing about it can be dropped by the policy.
+ *
+ * The colours themselves are not here: every value below is a token from
+ * `design/tokens.css`, which is the only file in this app allowed to name one.
+ */
+
+.dw-art {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  background-color: var(--dw-art-void);
+}
+
+/* The arc. One class per lit hue, and the only thing that varies per card. */
+.dw-art-h1 {
+  --dw-art-lit: var(--dw-art-1);
+}
+.dw-art-h2 {
+  --dw-art-lit: var(--dw-art-2);
+}
+.dw-art-h3 {
+  --dw-art-lit: var(--dw-art-3);
+}
+.dw-art-h4 {
+  --dw-art-lit: var(--dw-art-4);
+}
+.dw-art-h5 {
+  --dw-art-lit: var(--dw-art-5);
+}
+.dw-art-h6 {
+  --dw-art-lit: var(--dw-art-6);
+}
+.dw-art-h7 {
+  --dw-art-lit: var(--dw-art-7);
+}
+.dw-art-h8 {
+  --dw-art-lit: var(--dw-art-8);
+}
+.dw-art-h9 {
+  --dw-art-lit: var(--dw-art-9);
+}
+.dw-art-h10 {
+  --dw-art-lit: var(--dw-art-10);
+}
+.dw-art-h11 {
+  --dw-art-lit: var(--dw-art-11);
+}
+.dw-art-h12 {
+  --dw-art-lit: var(--dw-art-12);
+}
+
+/* Monoline, from the brand rules: the mark is a single stroke weight and the
+   generated art inherits that discipline. The weights below are the only
+   variation, and they are steps of one family rather than free choices. */
+.dw-art-line,
+.dw-art-thin,
+.dw-art-bold,
+.dw-art-glow,
+.dw-art-veil,
+.dw-art-warm,
+.dw-art-pale {
+  fill: none;
+  stroke: var(--dw-art-lit);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.dw-art-ground {
+  fill: var(--dw-art-void);
+  stroke: none;
+}
+
+.dw-art-thin {
+  stroke-width: 1;
+  stroke-opacity: 0.8;
+}
+
+.dw-art-line {
+  stroke-width: 2;
+}
+
+.dw-art-bold {
+  stroke-width: 3.2;
+}
+
+/* Bloom is light, not paint (brand rule). It is a wide, very faint stroke
+   under the line it belongs to — never a filled shape in the bloom colour,
+   which is the named failure mode for this brand. */
+.dw-art-glow {
+  stroke-width: 7.5;
+  stroke-opacity: 0.16;
+}
+
+.dw-art-veil {
+  stroke-width: 1.2;
+  stroke-opacity: 0.34;
+}
+
+.dw-art-fill {
+  fill: var(--dw-art-lit);
+  stroke: none;
+}
+
+/* One warm point. Gold appears sparingly inside a drawing, at the thing the
+   game is actually about. */
+.dw-art-warm {
+  stroke: var(--dw-art-warm);
+  stroke-width: 2;
+}
+
+.dw-art-pale {
+  stroke: var(--dw-art-pale);
+  stroke-width: 1.4;
+  stroke-opacity: 0.8;
+}

@@ -53,11 +53,11 @@
   z-index: 1;
 }
 /* Interactive rows float ABOVE the liquid background (z-index 0); lifted clear. */
-.jsf-main > .jsf-target,
-.jsf-main > .jsf-sentence,
+.jsf-main > .capSqz-target,
+.jsf-main > .capSqz-sentence,
 .jsf-main > .jsf-nav,
 .jsf-main > .jsf-controls-bar,
-.jsf-main > .jsf-bank {
+.jsf-main > .capSqz-bank {
   position: relative;
   z-index: 1;
 }
@@ -531,7 +531,7 @@
  * distribute), so nothing is ever pushed off-screen and the bank still owns all
  * remaining room. The cushions are unequal (smaller on top, larger toward the
  * bottom group) so the layout reads as a settled lower-third, not dead-centered. */
-.jsf-main > .jsf-target {
+.jsf-main > .capSqz-target {
   margin-top: auto;
 }
 .jsf-main > .jsf-controls-bar {
@@ -540,298 +540,21 @@
   margin-top: auto;
 }
 
-/* ---- Target phrase ---- */
-/* The display title — the phrase the player must translate. Treated as a
- * high-end glossy headline to match the glass chrome around it: a frosted glass
- * plaque, a refined display type stack, considered weight/tracking/leading, and
- * layered DEPTH (a soft emboss/lift below + a faint top sheen above) so it reads
- * embossed and lifted. The depth is built from TEXT-SHADOWS only (cheap, no
- * filters) and stays subtle enough to keep every script crisply legible. */
-.jsf-target {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  align-items: center;
-  /* The phrase size is governed by useFitText, NOT flex-shrink — so it doesn't
-     steal shrink from the bank. The bank is the sole region that gives way (and
-     scrolls) when space is tight, so it can never clip its last rows. */
-  flex: 0 0 auto;
-  min-height: 0;
-}
-.jsf-target__text {
-  font-family:
-    "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Helvetica Neue", "Hiragino Sans", "Noto Sans", Roboto,
-    system-ui, sans-serif;
+/* ---- Target phrase / sentence / bank / word blocks ----
+ * MOVED to the cap-squeeze capability stylesheet
+ * (@shared/capabilities/squeeze/styles.css, imported in JuiceSqueezeApp) as
+ * capSqz- classes. Only the pack's viewport-scaled sizing overrides live
+ * here — the capability itself is container-relative (no vw units). */
+
+.capSqz-target__text {
   font-size: clamp(21px, 6.2vw, 32px);
-  font-weight: 800;
-  letter-spacing: -0.006em;
-  /* Tighter leading reclaims a lot of vertical real estate on multi-line phrases
-     (pulling the icons + word bank up) while staying comfortable on short ones.
-     The auto-fit hook pulls this in further (down to ~1.05) for very long ones. */
-  line-height: 1.14;
-  text-wrap: balance;
-  /* ONE BIG JUICE BLOCK: the same glossy pill language as the word-blocks below,
-     filled with the CURRENT juice gradient (--jc-1 light → --jc-3 dark, set
-     inline from the active fruit). White ink with a tight dark emboss reads
-     cleanly + punchy on the saturated color. */
-  color: #fff;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--jc-1, #ffb84d) 86%, white) 0%,
-    var(--jc-2, #ff9800) 48%,
-    var(--jc-3, #e65100) 100%
-  );
-  border: 1px solid color-mix(in srgb, var(--jc-3, #e65100) 70%, black);
-  border-radius: 20px;
-  cursor: pointer;
-  padding: 10px 22px;
-  box-shadow:
-    0 7px 18px color-mix(in srgb, var(--jc-2, #ff9800) 45%, transparent),
-    0 2px 4px rgba(0, 0, 0, 0.16),
-    inset 0 2px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -4px 9px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
-  text-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.42),
-    0 1px 6px rgba(0, 0, 0, 0.22);
-  /* Very long target phrases wrap instead of overflowing. */
-  overflow-wrap: break-word;
-  word-break: break-word;
   max-width: 92vw;
-  /* No fixed height cap: useFitText shrinks the font + leading exactly enough for
-     the full word bank to fit, ONLY on the large phrases that need it. */
-  align-self: center;
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-  transition: transform 0.12s cubic-bezier(0.34, 1.5, 0.5, 1), box-shadow 0.15s;
-}
-/* Glossy white top sheen across the block — the word-block ::before gloss. */
-.jsf-target__text::before {
-  content: "";
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  top: 2px;
-  height: 42%;
-  border-radius: 16px 16px 28px 28px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
-}
-.jsf-target__text:active {
-  transform: scale(0.975) translateY(0.5px);
-  box-shadow:
-    0 3px 9px color-mix(in srgb, var(--jc-2, #ff9800) 40%, transparent),
-    inset 0 2px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -3px 7px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
-}
-.jsf-target__build {
-  /* A quiet, refined caption: the target language's own native name. Widely
-     letterspaced small-caps-feel, hushed warm-bronze, gentle white lift — it
-     supports the headline without competing with it. */
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #5f6675; /* neutral slate — harmonizes under any juice color */
-  opacity: 0.92;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-/* RTL / CJK native names don't take uppercase or wide Latin tracking well —
- * relax both so e.g. "العربية" and "日本語" read naturally. */
-.jsf-target__build[dir="rtl"] {
-  letter-spacing: 0.04em;
-  text-transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .jsf-target__text { transition: none; }
 }
 
-/* ---- Sentence build area ---- */
-/* Wraps to multiple chip rows; capped so a very long built sentence scrolls
- * instead of pushing the bank off-screen. */
-.jsf-sentence {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  /* Natural height — the completion zone grows to show ALL placed blocks, with NO
-     internal scroll and NO clip (it's your answer, it must be fully visible). The
-     tight line spacing (.jsf-row row-gap) keeps it compact; the WORD BANK is the
-     only region that gives way + scrolls as a last resort when space is tight. */
-  flex: 0 0 auto;
-}
-.jsf-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  /* Keep the horizontal spacing between blocks, but pull the WRAPPED LINES close
-     together (row-gap) so a full completion zone (e.g. ~55 Chinese chars) stays
-     compact and doesn't squeeze the word bank's last rows off the bottom. Blocks
-     are unchanged in size. */
-  column-gap: 8px;
-  row-gap: 3px;
-  min-height: 50px;
-  padding: 6px 9px;
-  border-radius: 16px;
-  border: 2px dashed rgba(192, 57, 43, 0.38);
-  background: rgba(255, 255, 255, 0.38);
-  transition: background 0.15s, border-color 0.15s;
-}
-.jsf-row--rtl { flex-direction: row-reverse; }
-.jsf-row--over {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: #c0392b;
-}
-.jsf-row__placeholder {
-  flex: 1;
-  min-height: 40px;
-}
-
-/* ---- Word bank ---- */
-.jsf-bank {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  /* Size to CONTENT, not the column: a short (e.g. A0, 4-word) phrase leaves a
-     compact bank, and the freed vertical space becomes visible background juice
-     instead of an oversized empty bank. */
-  flex: 0 1 auto;
-  /* min-height:0 lets the bank SHRINK below its content height when space is
-     tight (the classic flex-overflow fix) so it scrolls internally instead of
-     pushing its last rows off the bottom. No fixed max-height: the bank simply
-     takes whatever vertical room the (auto-fit) phrase + sentence leave. */
-  min-height: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 11px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.32);
-  border: 1.5px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  transition: background 0.15s;
-}
-/* Dense phrases (≥16 words): pull the gap BETWEEN the chips + the bank's own
-   padding in, so more rows fit before we ever resort to shrinking the chips. */
-.jsf-bank--dense {
-  gap: 4px;
-  padding: 7px;
-}
-/* Empty bank (all words placed): collapse to a thin drop strip — no void, no
-   chrome, no label — so the completion zone reclaims the space. Still a drop
-   target so a word can be returned (tapping a placed block also returns it). */
-.jsf-bank--empty {
-  padding: 0;
-  min-height: 0;
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-}
-.jsf-bank--empty .jsf-bank__lang {
-  display: none;
-}
-.jsf-bank--empty .jsf-bank__empty {
-  min-height: 12px;
-}
-.jsf-bank--over { background: rgba(255, 255, 255, 0.58); }
-.jsf-bank__empty { min-height: 40px; width: 100%; }
-/* Build-language tag at the top of the bank — full-width so it sits as a header
-   above the wrapped blocks. Subtle, matching the target label tone. */
-.jsf-bank__lang {
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #b5793c;
-  opacity: 0.85;
-}
-
-/* ---- Word block ---- */
-/*
- * Glossy fruit pill. Each block sets --blk (its palette color) via inline
- * style; the pill builds depth from it: lightened top → base → darkened bottom,
- * a subtle white top highlight, a slightly darker border, and a soft drop
- * shadow. Text is white with a dark shadow so it stays legible even on the
- * golden-yellow (#FFCE00) block.
- */
-.jsf-block {
-  --blk: #ff6b35; /* fallback if no inline --blk */
+.capSqz-block {
   /* Default font (overridden inline by the auto-fit size from blockSizing). */
   font-size: clamp(16px, 4.6vw, 20px);
-  font-weight: 800;
-  color: #fff;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--blk) 62%, white) 0%,
-      color-mix(in srgb, var(--blk) 92%, white) 32%,
-      var(--blk) 58%,
-      color-mix(in srgb, var(--blk) 72%, black) 100%
-    );
-  border: 1px solid color-mix(in srgb, var(--blk) 66%, black);
-  border-radius: 16px;
-  /* Content-sized: padding in `em` scales with the chip's font, so the pill
-     grows to fit its text at any shared font size (no forced width/height). */
-  padding: 0.5em 0.9em;
-  min-height: 2.25em;
-  cursor: grab;
-  /* Crisp but light drop shadow tinted in the block's OWN color (premium,
-     tactile), a soft white top gloss, and an inner bottom shadow for depth. */
-  box-shadow:
-    0 4px 10px color-mix(in srgb, var(--blk) 45%, transparent),
-    0 1px 2px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -3px 6px color-mix(in srgb, var(--blk) 60%, black);
-  text-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.5),
-    0 0 3px rgba(0, 0, 0, 0.25);
-  /* Keep each chip on one line; NEVER clip — the chip grows to fit its text.
-     Only a giant single word shrinks (via fontForWord) and is capped here. */
-  white-space: nowrap;
   max-width: 80vw;
-  touch-action: none;
-  line-height: 1.1;
-  position: relative;
-}
-/* Glossy white top highlight — a crisp curved sheen across the upper third. */
-.jsf-block::before {
-  content: "";
-  position: absolute;
-  left: 5px;
-  right: 5px;
-  top: 2px;
-  height: 42%;
-  border-radius: 12px 12px 16px 16px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.18) 55%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
-}
-.jsf-block:active { cursor: grabbing; }
-.jsf-block--over {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-.jsf-block--ghost {
-  opacity: 0.95;
-  transform: scale(1.06);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-  cursor: grabbing;
 }
 
 /* ---- History nav ---- */

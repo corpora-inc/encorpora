@@ -23,7 +23,7 @@ Corpán now supports **two installation methods** for packs, each serving differ
 ## Changes Made
 
 ### 1. Build System ✅
-**Files:** `package.json`, `.github/workflows/hover-runner-pages.yml`
+**Files:** `package.json`, `.github/workflows/deploy-pages.yml`
 
 - Added ZIP packaging step to build process
 - ZIP deployed alongside web files
@@ -161,7 +161,7 @@ open web/io/out/corpan/packs/hover-runner/index.html  # Landing page ✅
 ## Files Modified
 
 ```
-.github/workflows/hover-runner-pages.yml  # Add ZIP build
+.github/workflows/deploy-pages.yml         # Add ZIP build
 package.json                               # Add package:packs script
 corpan/corpan-app/src/components/GamesPanel.tsx  # Update UI
 web/pages/templates/game-landing.html     # Add install section

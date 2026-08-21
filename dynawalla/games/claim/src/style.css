@@ -1,0 +1,546 @@
+/* CLAIM — risograph screenprint on near-black paper.
+   Flat inks, hard edges, one heavy condensed voice. */
+
+.cl-root {
+  --paper: #0d0d12;
+  --bone: #f4f1e8;
+  --pink: #ff48b0;
+  --yellow: #ffe800;
+  --red: #f15060;
+  --ink: #5ec8e5;
+  --ink2: #2f7dd1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--bone);
+  font-family: "Avenir Next Condensed", "Futura", "Helvetica Neue", ui-sans-serif, system-ui,
+    sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  contain: layout paint style;
+}
+
+.cl-shake {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.cl-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.cl-stage > canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Vignette + a faint scanline. Free — one composited layer, never repainted. */
+.cl-vig {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.16) 0px,
+      rgba(0, 0, 0, 0.16) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(130% 100% at 50% 45%, transparent 52%, rgba(0, 0, 0, 0.55) 100%);
+  mix-blend-mode: multiply;
+  transition: opacity 0.25s linear;
+}
+.cl-root.cl-tense .cl-vig {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.16) 0px,
+      rgba(0, 0, 0, 0.16) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(100% 78% at 50% 45%, transparent 30%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+/* ---- HUD ---------------------------------------------------------------- */
+
+.cl-hud {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  /* Published by `Hud.layout` from `layout.ts`, which is the version under
+     test. The fallbacks are what a HUD that never gets laid out falls back to:
+     the safe edge plus a gutter, blind to the host's controls but never blind
+     to the notch. They used to read `env(safe-area-inset-*)` directly, which
+     inside a pack frame is the number ZERO — so the fallback path put the
+     score 8px from the top of the glass, under an Android clock. */
+  padding: var(--cl-pt, calc(8px + var(--dw-safe-top, env(safe-area-inset-top, 0px))))
+    var(--cl-pr, calc(12px + var(--dw-safe-right, env(safe-area-inset-right, 0px)))) 0
+    var(--cl-pl, calc(12px + var(--dw-safe-left, env(safe-area-inset-left, 0px))));
+  will-change: transform;
+}
+.cl-hud.cl-punch {
+  animation: clPunch 260ms cubic-bezier(0.16, 1.4, 0.3, 1);
+}
+@keyframes clPunch {
+  0% {
+    transform: scale(1.055);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cl-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  /* The host floats a 44px exit control top-left and the how-to-play control
+     top-right, over every pack. The two clusters step INBOARD of them rather
+     than downward, which costs the arena nothing. The min-height is what puts
+     the fraction bar below the corners — it spans the full width and so cannot
+     dodge them sideways. */
+  padding-left: var(--cl-gl, 52px);
+  padding-right: var(--cl-gr, 52px);
+  min-height: var(--cl-toph, 49px);
+}
+.cl-lvl,
+.cl-right {
+  /* Enforced, not estimated: the test asserts a box this wide, so the content
+     is not allowed to grow out of it. */
+  max-width: var(--cl-cluster, 33%);
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.cl-goal {
+  min-width: 0;
+}
+
+.cl-lvl,
+.cl-score {
+  font-size: clamp(13px, 2.6vw, 19px);
+  letter-spacing: 0.14em;
+  color: rgba(244, 241, 232, 0.62);
+  font-variant-numeric: tabular-nums;
+}
+.cl-lvl {
+  padding-top: 6px;
+}
+.cl-right {
+  text-align: right;
+}
+.cl-score {
+  color: var(--bone);
+  font-size: clamp(17px, 3.4vw, 26px);
+  padding-top: 3px;
+}
+
+.cl-lives {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  margin-top: 6px;
+  min-height: 11px;
+}
+.cl-lives i {
+  width: 11px;
+  height: 11px;
+  background: var(--pink);
+  box-shadow: 0 0 10px rgba(255, 72, 176, 0.75);
+}
+
+/* The goal, as a real stacked fraction. This is the loudest thing on screen
+   and it should be — it is the whole instruction set. */
+.cl-goal {
+  text-align: center;
+  flex: 0 0 auto;
+  margin-top: -2px;
+}
+.cl-frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.96;
+  font-size: clamp(24px, 5.2vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  text-shadow: 0 0 26px color-mix(in srgb, var(--ink) 60%, transparent);
+}
+.cl-frac i {
+  display: block;
+  width: 100%;
+  min-width: 1.1em;
+  height: 4px;
+  margin: 3px 0;
+  background: var(--ink);
+}
+.cl-cells {
+  margin-top: 2px;
+  font-size: clamp(10px, 2vw, 12px);
+  letter-spacing: 0.22em;
+  color: rgba(244, 241, 232, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- The fraction bar --------------------------------------------------- */
+
+.cl-meter {
+  position: relative;
+  height: 20px;
+  margin-top: 7px;
+  background: #05050a;
+  border: 2px solid rgba(244, 241, 232, 0.16);
+  overflow: hidden;
+}
+/* The five layers of the fraction bar. Every one of them is positioned inside
+   `.cl-meter`, which is `position: relative` twenty lines up — so `left: 0`
+   here is the left end of a 20px-tall bar in the middle of the HUD, not the
+   left edge of the glass, and the safe area is `.cl-hud`'s padding to pay.
+   Said in a declaration rather than in this comment because the fleet gate
+   parses CSS and throws comments away, and an exemption it cannot see is an
+   exemption that quietly becomes universal. */
+.cl-ticks,
+.cl-fill,
+.cl-band,
+.cl-danger,
+.cl-marker {
+  --dw-safe-exempt: "inside .cl-meter, which is position:relative — these offsets are bar-relative";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.cl-ticks {
+  left: 0;
+  right: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.cl-danger {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(241, 80, 96, 0.2) 0 7px,
+    rgba(241, 80, 96, 0.05) 7px 14px
+  );
+  z-index: 1;
+}
+.cl-band {
+  background: var(--yellow);
+  opacity: 0.55;
+  box-shadow:
+    inset 3px 0 0 #fff,
+    inset -3px 0 0 #fff,
+    0 0 16px rgba(255, 232, 0, 0.7);
+  z-index: 2;
+}
+.cl-fill {
+  left: 0;
+  width: 0;
+  background: linear-gradient(90deg, var(--ink2), var(--ink));
+  z-index: 3;
+  transition: width 90ms linear;
+}
+.cl-marker {
+  width: 3px;
+  margin-left: -1px;
+  background: var(--bone);
+  box-shadow: 0 0 12px var(--bone);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+.cl-readout {
+  margin-top: 4px;
+  height: 14px;
+  font-size: clamp(10px, 2vw, 13px);
+  letter-spacing: 0.16em;
+  color: rgba(244, 241, 232, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Short viewports (a tablet in landscape) give the arena the room instead. */
+@media (max-height: 760px) {
+  .cl-frac {
+    font-size: clamp(22px, 4.4vw, 36px);
+  }
+  .cl-frac i {
+    height: 3px;
+    margin: 2px 0;
+  }
+  .cl-hud {
+    padding-top: var(--cl-pt, calc(6px + var(--dw-safe-top, env(safe-area-inset-top, 0px))));
+  }
+}
+
+/* ---- Toasts ------------------------------------------------------------- */
+
+.cl-toasts {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+.cl-toast {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  animation: clToast 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.cl-toast.cl-at {
+  animation: clToastAt 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.cl-good {
+  font-size: clamp(22px, 5vw, 40px);
+  color: var(--bone);
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.4);
+}
+.cl-clean {
+  font-size: clamp(20px, 4.4vw, 34px);
+  color: var(--yellow);
+  text-shadow: 0 0 26px rgba(255, 232, 0, 0.55);
+}
+.cl-big {
+  font-size: clamp(34px, 9vw, 84px);
+  color: var(--yellow);
+  text-shadow: 0 0 40px rgba(255, 232, 0, 0.6);
+}
+.cl-bad {
+  font-size: clamp(26px, 6vw, 52px);
+  color: var(--red);
+  text-shadow: 0 0 30px rgba(241, 80, 96, 0.6);
+}
+@keyframes clToast {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%) scale(0.6);
+  }
+  22% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+  36% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -110%) scale(0.94);
+  }
+}
+@keyframes clToastAt {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%) scale(0.5);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -170%) scale(0.9);
+  }
+}
+
+/* ---- Cards -------------------------------------------------------------- */
+
+.cl-card {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  /* The card is full-bleed and centres its children, so this padding is what
+     decides where a centred stack ends up. A flat 20px ignored the insets
+     entirely — on a 393x851 Android phone held sideways, with a 24px status
+     bar, the big goal fraction started at y=21 and the top of it was under the
+     clock. The insets are published by `Claim.layout` from the same
+     `safeInsets()` everything else here uses; the `env()`s are the dev-tab
+     fallback, where there is no host to publish anything.
+
+     Four longhands, not a shorthand: a shorthand resets all four sides, so a
+     breakpoint that only wanted a tighter card would take the safe area with
+     it. Change --cl-card-pad instead. */
+  --cl-card-pad: 20px;
+  padding-top: calc(var(--cl-card-pad) + var(--dw-safe-top, env(safe-area-inset-top, 0px)));
+  padding-right: calc(var(--cl-card-pad) + var(--dw-safe-right, env(safe-area-inset-right, 0px)));
+  padding-bottom: calc(var(--cl-card-pad) + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-left: calc(var(--cl-card-pad) + var(--dw-safe-left, env(safe-area-inset-left, 0px)));
+  pointer-events: none;
+}
+.cl-card.cl-on {
+  display: flex;
+}
+.cl-card.cl-dim {
+  background: rgba(6, 6, 10, 0.7);
+}
+.cl-card h1 {
+  font-size: clamp(40px, 12vw, 112px);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  margin: 0;
+  animation: clSlam 460ms cubic-bezier(0.16, 1.5, 0.3, 1) both;
+}
+.cl-card h2 {
+  font-size: clamp(18px, 4.4vw, 34px);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: var(--ink);
+  animation: clSlam 460ms 60ms cubic-bezier(0.16, 1.5, 0.3, 1) both;
+}
+/* The revive gate reads over a live arena, so its question needs its own
+   ground. The level card already has the dim behind it and does not. */
+.cl-card:not(.cl-dim) h2 {
+  padding: 10px 22px;
+  background: rgba(6, 6, 10, 0.9);
+  box-shadow: 0 0 0 3px var(--yellow);
+  color: var(--bone);
+}
+.cl-card p {
+  margin: 0;
+  font-size: clamp(11px, 2.4vw, 15px);
+  letter-spacing: 0.24em;
+  color: rgba(244, 241, 232, 0.5);
+  animation: clFade 500ms 200ms both;
+}
+.cl-card .cl-bigfrac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.82;
+  font-size: clamp(64px, 21vw, 190px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  animation: clSlam 520ms cubic-bezier(0.16, 1.55, 0.3, 1) both;
+}
+.cl-card .cl-bigfrac i {
+  display: block;
+  width: 100%;
+  height: 10px;
+  margin: 10px 0;
+  background: var(--ink);
+  box-shadow: 0 0 40px var(--ink);
+}
+@keyframes clSlam {
+  0% {
+    opacity: 0;
+    transform: scale(2.1) rotate(-4deg);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+@keyframes clFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---- Sound toggle ------------------------------------------------------- */
+
+.cl-mute {
+  position: absolute;
+  z-index: 8;
+  /* Was `right: 10px; bottom: 10px`, which on a phone is inside the home
+     indicator: a control a child cannot press without the system taking the
+     gesture. 44px is the platform touch floor, and the box was 34.
+     Published by `Claim.layout` from `muteRect`, which is the version under
+     test; the `env()` fallbacks cover a layout that never runs. */
+  right: var(--cl-mute-r, calc(10px + var(--dw-safe-right, env(safe-area-inset-right, 0px))));
+  bottom: var(--cl-mute-b, calc(10px + var(--dw-safe-bottom, env(safe-area-inset-bottom, 0px))));
+  width: var(--cl-mute-s, 44px);
+  height: var(--cl-mute-s, 44px);
+  border: 2px solid rgba(244, 241, 232, 0.22);
+  background: rgba(8, 8, 14, 0.7);
+  color: rgba(244, 241, 232, 0.66);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.cl-mute:hover {
+  border-color: rgba(244, 241, 232, 0.5);
+  color: var(--bone);
+}
+
+/* ---- Reduced motion ----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-hud.cl-punch,
+  .cl-card h1,
+  .cl-card h2,
+  .cl-card .cl-bigfrac {
+    animation: clFade 180ms both;
+  }
+  .cl-toast,
+  .cl-toast.cl-at {
+    animation: clToastStill 900ms linear forwards;
+  }
+  @keyframes clToastStill {
+    0% {
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .cl-fill {
+    transition: none;
+  }
+}
+
+/* ---- Standalone page shell (dev entry only) ----------------------------- */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #08080c;
+  overscroll-behavior: none;
+}
+#stage {
+  position: fixed;
+  inset: 0;
+}
