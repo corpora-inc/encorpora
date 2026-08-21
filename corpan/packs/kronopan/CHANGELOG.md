@@ -18,6 +18,8 @@ All notable changes to Kronopán are documented here. The format follows
 - Heptadecagonal, a seventeen from the song by Umanistan, added to the preset
   library. Groups of four or more can be subdivided into 2s and 3s from the
   editor.
+- Groups can be reordered by dragging them by their handle, with a mouse or a
+  finger.
 - Ring, spiral, and spin views, switchable live alongside the linear view (keys
   1 to 4). The ring wraps the cycle into an annulus with a needle fixed at twelve
   o'clock and the disc rotating under it (turntable posture); under reduced

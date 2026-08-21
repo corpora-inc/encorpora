@@ -255,6 +255,24 @@
   padding: 6px 8px;
   background: var(--kp-ground);
 }
+.kp-group.is-dragging {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.kp-grip {
+  cursor: grab;
+  touch-action: none;
+  color: var(--kp-text-dim);
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 2px;
+  user-select: none;
+}
+.kp-grip:active {
+  cursor: grabbing;
+  color: var(--kp-accent);
+}
 .kp-group-n {
   font-family: var(--kp-display);
   font-weight: 600;
