@@ -49,6 +49,10 @@
   inset: 0;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  /* Keep everything inside the notch and home-indicator on iOS. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
   background: var(--kp-ground);
   color: var(--kp-text);
   font-family: var(--kp-ui);
@@ -60,10 +64,16 @@
 /* Header */
 .kp-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  padding: 16px 24px 8px;
-  gap: 16px;
+  padding: 12px 18px 6px;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+.kp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 .kp-brand {
   font-family: var(--kp-display);
@@ -114,11 +124,11 @@
   color: var(--kp-text-dim);
 }
 
-/* Stage / canvas */
+/* Stage / canvas: the dominant area. */
 .kp-stage {
   flex: 1 1 auto;
-  min-height: 160px;
-  padding: 8px 16px;
+  min-height: 0;
+  padding: 6px 10px;
 }
 .kp-canvas {
   display: block;
@@ -126,15 +136,80 @@
   height: 100%;
 }
 
-/* Controls */
+/* Controls: capped and scrollable so they never push the stage off screen. */
 .kp-controls {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  max-height: 42vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   background: var(--kp-panel);
   border-top: 1px solid var(--kp-panel-edge);
-  padding: 14px 20px 20px;
+  padding: 14px 20px 18px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* Full-screen: the animation fills everything; chrome hides. */
+.kp-root.is-fullscreen .kp-header,
+.kp-root.is-fullscreen .kp-controls {
+  display: none;
+}
+.kp-root.is-fullscreen .kp-stage {
+  padding: 0;
+}
+.kp-fs-btn {
+  font-family: var(--kp-ui);
+  font-size: 13px;
+  color: var(--kp-text);
+  background: transparent;
+  border: 1px solid var(--kp-panel-edge);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.kp-fs-exit {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 10px);
+  right: calc(env(safe-area-inset-right) + 12px);
+  z-index: 10;
+  font-family: var(--kp-ui);
+  font-size: 14px;
+  color: var(--kp-text);
+  background: color-mix(in srgb, var(--kp-panel) 80%, transparent);
+  border: 1px solid var(--kp-panel-edge);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+/* Compact controls on phones so the animation keeps most of the screen. */
+@media (max-width: 640px) {
+  .kp-controls {
+    max-height: 46vh;
+    gap: 12px;
+    padding: 10px 14px 14px;
+  }
+  .kp-transport {
+    gap: 14px;
+  }
+  .kp-play {
+    font-size: 16px;
+    padding: 11px 20px;
+    min-width: 88px;
+  }
+  .kp-bpm {
+    font-size: 24px;
+  }
+  .kp-slider {
+    width: 150px;
+  }
+  .kp-seg-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
 }
 
 .kp-label {

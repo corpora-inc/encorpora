@@ -33,6 +33,10 @@ export function App(_props: Props) {
   const [notationMode, setNotationMode] = useState<NotationMode>("bars")
   const [view, setView] = useState<ViewMode>("linear")
   const [skin, setSkinState] = useState<SkinId>(DEFAULT_SKIN)
+  const [fullscreen, setFullscreen] = useState(false)
+  const fullscreenRef = useRef(fullscreen)
+  fullscreenRef.current = fullscreen
+  const swipeStartY = useRef<number | null>(null)
 
   // Mirrors bpm for the keyboard handler, so rapid arrow repeats read the
   // current tempo instead of a stale closure value.
@@ -101,6 +105,10 @@ export function App(_props: Props) {
   // hijacked.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && fullscreenRef.current) {
+        setFullscreen(false)
+        return
+      }
       const el = e.target as HTMLElement | null
       const tag = el?.tagName
       if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return
@@ -146,22 +154,48 @@ export function App(_props: Props) {
       : activePreset.name
 
   return (
-    <div className="kp-root" data-theme="dark" data-skin={skin}>
+    <div
+      className={`kp-root ${fullscreen ? "is-fullscreen" : ""}`}
+      data-theme="dark"
+      data-skin={skin}
+    >
       <header className="kp-header">
         <div className="kp-brand">Kronopán</div>
-        <div className="kp-sig">
-          <div className="kp-sig-main">
-            <span className="kp-sig-add">{isEmpty ? "empty" : additiveSignature(cycle)}</span>
-            <span className="kp-sig-over">over {cycle.unit}</span>
+        <div className="kp-header-right">
+          <div className="kp-sig">
+            <div className="kp-sig-main">
+              <span className="kp-sig-add">{isEmpty ? "empty" : additiveSignature(cycle)}</span>
+              <span className="kp-sig-over">over {cycle.unit}</span>
+            </div>
+            <div className="kp-sig-side">
+              {!isEmpty && <span className="kp-sig-frac">{collapsedSignature(cycle)}</span>}
+              {!isEmpty && nameLabel && <span className="kp-sig-name">{nameLabel}</span>}
+            </div>
           </div>
-          <div className="kp-sig-side">
-            {!isEmpty && <span className="kp-sig-frac">{collapsedSignature(cycle)}</span>}
-            {!isEmpty && nameLabel && <span className="kp-sig-name">{nameLabel}</span>}
-          </div>
+          <button className="kp-fs-btn" onClick={() => setFullscreen(true)} aria-label="Full screen">
+            ⤢ Full
+          </button>
         </div>
       </header>
 
-      <main className="kp-stage">
+      {fullscreen && (
+        <button className="kp-fs-exit" onClick={() => setFullscreen(false)} aria-label="Exit full screen">
+          Exit ✕
+        </button>
+      )}
+
+      <main
+        className="kp-stage"
+        onPointerDown={(e) => {
+          if (fullscreen) swipeStartY.current = e.clientY
+        }}
+        onPointerUp={(e) => {
+          if (fullscreen && swipeStartY.current !== null && e.clientY - swipeStartY.current > 90) {
+            setFullscreen(false)
+          }
+          swipeStartY.current = null
+        }}
+      >
         {view === "linear" && (
           <LinearView
             cycle={cycle}
