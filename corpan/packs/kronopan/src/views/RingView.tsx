@@ -9,7 +9,7 @@ import { barsModel, dotsModel, CLUSTER_STEP } from "../notation"
 import { THEME, roleColor } from "../theme"
 import type { Clock } from "../audio"
 import { useCanvasScene } from "./useCanvasScene"
-import { polar, withAlpha, prefersReducedMotion, drawStars, TOP } from "./paint"
+import { polar, withAlpha, prefersReducedMotion, drawStars, fillAlpha, TOP } from "./paint"
 import { barLabel, type LabelMode, type NotationMode } from "./types"
 
 const TAU = Math.PI * 2
@@ -116,16 +116,16 @@ function drawRingBars(
     ctx.arc(cx, cy, outerR, a0, a1)
     ctx.arc(cx, cy, innerR, a1, a0, true)
     ctx.closePath()
-    ctx.fillStyle = withAlpha(color, isActive ? 0.34 : 0.16)
+    ctx.fillStyle = withAlpha(color, fillAlpha(isActive))
     ctx.fill()
     ctx.lineWidth = isActive ? 3 : 2
     ctx.strokeStyle = withAlpha(color, isActive ? 1 : 0.85)
     ctx.stroke()
 
-    // Upright label at the arc middle.
+    // Upright label at the arc middle; dark on the light skins so it stays clear.
     const mid = wa(g.startFraction + g.widthFraction / 2)
     const lp = polar(cx, cy, midR, mid)
-    ctx.fillStyle = color
+    ctx.fillStyle = THEME.isLight ? THEME.text : color
     ctx.font = `600 ${Math.round((outerR - innerR) * 0.5)}px "Fraunces", Georgia, serif`
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"

@@ -1,6 +1,15 @@
 // Small canvas paint helpers shared by every view.
 
+import { THEME } from "../theme"
+
 export type Pt = { x: number; y: number }
+
+// Fill opacity for a group shape. Bumped on the light skins so a pale tint over
+// a light ground stays visible.
+export const fillAlpha = (active: boolean): number => {
+  const base = active ? 0.32 : 0.16
+  return THEME.isLight ? base * 1.5 : base
+}
 
 // 12 o'clock in canvas angle terms (canvas 0 is 3 o'clock, positive is
 // clockwise because y grows downward).

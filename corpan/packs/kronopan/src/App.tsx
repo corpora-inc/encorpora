@@ -13,7 +13,7 @@ import {
 } from "./views"
 import { TransportBar, MIN_BPM, MAX_BPM } from "./ui/TransportBar"
 import { GroupEditor } from "./ui/GroupEditor"
-import { setSkin, type SkinId } from "./theme"
+import { setSkin, DEFAULT_SKIN, type SkinId } from "./theme"
 
 const DEFAULT_CYCLE: Cycle = presetById("lesnoto") ?? PRESETS[0]
 const DEFAULT_BPM = 100
@@ -32,7 +32,7 @@ export function App(_props: Props) {
   const [labelMode, setLabelMode] = useState<LabelMode>("number")
   const [notationMode, setNotationMode] = useState<NotationMode>("bars")
   const [view, setView] = useState<ViewMode>("linear")
-  const [skin, setSkinState] = useState<SkinId>("neon")
+  const [skin, setSkinState] = useState<SkinId>(DEFAULT_SKIN)
 
   // Mirrors bpm for the keyboard handler, so rapid arrow repeats read the
   // current tempo instead of a stale closure value.

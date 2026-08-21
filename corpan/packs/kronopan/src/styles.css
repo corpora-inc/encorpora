@@ -9,33 +9,35 @@
  */
 
 :root {
-  --kp-ground: #0b0b0d;
-  --kp-panel: #16161a;
-  --kp-panel-edge: #26262c;
-  --kp-text: #f3ead6;
-  --kp-text-dim: #a49c88;
-  --kp-accent: #ff7a1a;
+  /* Default skin: Astral (stargate-reader dark/cyan). */
+  --kp-ground: #020409;
+  --kp-panel: #0f192d;
+  --kp-panel-edge: rgba(127, 214, 255, 0.16);
+  --kp-text: #c0d0e8;
+  --kp-text-dim: #6080a0;
+  --kp-accent: #7fd6ff;
   --kp-display: "Fraunces", Georgia, "Times New Roman", serif;
   --kp-ui: "Spline Sans", system-ui, -apple-system, sans-serif;
 }
 
 /* Skins override only the chrome palette; the canvas reads its own live theme.
-   Layout, sizes, and contrast are unchanged, so functionality is untouched. */
-.kp-root[data-skin="aurora"] {
-  --kp-ground: #0a0b1e;
-  --kp-panel: #191b3d;
-  --kp-panel-edge: #2e3168;
-  --kp-text: #eae6ff;
-  --kp-text-dim: #9d9ad0;
-  --kp-accent: #ff5db1;
+   Layout, sizes, and contrast are unchanged, so functionality is untouched.
+   Palettes are reused from sibling packs: juice-squeeze and earthgate-reader. */
+.kp-root[data-skin="tropical"] {
+  --kp-ground: #f6f7fb;
+  --kp-panel: #ffffff;
+  --kp-panel-edge: rgba(58, 36, 16, 0.16);
+  --kp-text: #3a2410;
+  --kp-text-dim: #6b4423;
+  --kp-accent: #c0392b;
 }
-.kp-root[data-skin="cosmic"] {
-  --kp-ground: #060714;
-  --kp-panel: #10142e;
-  --kp-panel-edge: #232a55;
-  --kp-text: #edf6ff;
-  --kp-text-dim: #93a0c8;
-  --kp-accent: #3ab4ff;
+.kp-root[data-skin="earthy"] {
+  --kp-ground: #f5f0e8;
+  --kp-panel: #ebe1d2;
+  --kp-panel-edge: rgba(107, 76, 42, 0.2);
+  --kp-text: #3d2b1f;
+  --kp-text-dim: #8b7355;
+  --kp-accent: #8b6914;
 }
 
 * {

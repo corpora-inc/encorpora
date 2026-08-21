@@ -7,7 +7,7 @@ import { barsModel, dotsModel } from "../notation"
 import { THEME, roleColor } from "../theme"
 import type { Clock } from "../audio"
 import { useCanvasScene } from "./useCanvasScene"
-import { roundedRect, withAlpha, drawStars } from "./paint"
+import { roundedRect, withAlpha, drawStars, fillAlpha } from "./paint"
 import { barLabel, type LabelMode, type NotationMode } from "./types"
 
 type Geom = {
@@ -82,13 +82,15 @@ function drawBars(
     const isActive = active !== null && active.groupIndex === g.index
 
     roundedRect(ctx, gx, bandTop, Math.max(0, gw), bandH, radius)
-    ctx.fillStyle = withAlpha(color, isActive ? 0.32 : 0.16)
+    ctx.fillStyle = withAlpha(color, fillAlpha(isActive))
     ctx.fill()
     ctx.lineWidth = isActive ? 3 : 2
     ctx.strokeStyle = withAlpha(color, isActive ? 1 : 0.85)
     ctx.stroke()
 
-    ctx.fillStyle = color
+    // On the light skins a colored digit washes out, so keep it dark; on the
+    // dark skins the group color reads well.
+    ctx.fillStyle = THEME.isLight ? THEME.text : color
     ctx.font = `600 ${Math.round(bandH * 0.44)}px "Fraunces", Georgia, serif`
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
