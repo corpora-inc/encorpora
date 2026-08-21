@@ -1,6 +1,7 @@
 import type { ClickDensity, VoiceKitId } from "../audio"
 import { VOICE_KITS } from "../audio"
 import type { LabelMode, NotationMode, ViewMode } from "../views"
+import { SKINS, type SkinId } from "../theme"
 
 export const MIN_BPM = 30
 export const MAX_BPM = 300
@@ -29,6 +30,8 @@ type Props = {
   onNotationMode: (m: NotationMode) => void
   view: ViewMode
   onView: (v: ViewMode) => void
+  skin: SkinId
+  onSkin: (s: SkinId) => void
 }
 
 const VIEWS: { value: ViewMode; label: string }[] = [
@@ -55,6 +58,8 @@ export function TransportBar({
   onNotationMode,
   view,
   onView,
+  skin,
+  onSkin,
 }: Props) {
   const clampBpm = (n: number) => Math.max(MIN_BPM, Math.min(MAX_BPM, Math.round(n)))
 
@@ -146,6 +151,21 @@ export function TransportBar({
               onClick={() => onView(v.value)}
             >
               {v.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="kp-labels">
+        <span className="kp-label">Skin</span>
+        <div className="kp-seg" role="group" aria-label="Skin">
+          {SKINS.map((s) => (
+            <button
+              key={s.id}
+              className={`kp-seg-btn ${skin === s.id ? "is-on" : ""}`}
+              onClick={() => onSkin(s.id)}
+            >
+              {s.name}
             </button>
           ))}
         </div>

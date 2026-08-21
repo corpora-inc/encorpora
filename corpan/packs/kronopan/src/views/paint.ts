@@ -21,6 +21,28 @@ export const prefersReducedMotion = (): boolean => {
   return reducedMQL.matches
 }
 
+// A fixed, faint starfield for the sparkly skins. Positions are generated once
+// so the stars do not flicker between frames, and they are drawn behind the
+// pattern at low alpha so they never touch readability.
+const STARS = Array.from({ length: 70 }, () => ({
+  fx: Math.random(),
+  fy: Math.random(),
+  r: Math.random() * 1.2 + 0.3,
+  a: Math.random() * 0.4 + 0.12,
+}))
+
+export function drawStars(ctx: CanvasRenderingContext2D, width: number, height: number, color: string) {
+  ctx.save()
+  ctx.fillStyle = color
+  for (const s of STARS) {
+    ctx.globalAlpha = s.a
+    ctx.beginPath()
+    ctx.arc(s.fx * width, s.fy * height, s.r, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  ctx.restore()
+}
+
 export function roundedRect(
   ctx: CanvasRenderingContext2D,
   x: number,

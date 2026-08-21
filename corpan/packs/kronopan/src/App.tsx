@@ -13,6 +13,7 @@ import {
 } from "./views"
 import { TransportBar, MIN_BPM, MAX_BPM } from "./ui/TransportBar"
 import { GroupEditor } from "./ui/GroupEditor"
+import { setSkin, type SkinId } from "./theme"
 
 const DEFAULT_CYCLE: Cycle = presetById("lesnoto") ?? PRESETS[0]
 const DEFAULT_BPM = 100
@@ -31,6 +32,7 @@ export function App(_props: Props) {
   const [labelMode, setLabelMode] = useState<LabelMode>("number")
   const [notationMode, setNotationMode] = useState<NotationMode>("bars")
   const [view, setView] = useState<ViewMode>("linear")
+  const [skin, setSkinState] = useState<SkinId>("neon")
 
   // Mirrors bpm for the keyboard handler, so rapid arrow repeats read the
   // current tempo instead of a stale closure value.
@@ -87,6 +89,13 @@ export function App(_props: Props) {
     void clock.previewVoice()
   }
 
+  // Skins are purely cosmetic: a palette swap (canvas plus CSS chrome) and a
+  // faint starfield on the sparkly ones. Nothing about timing or layout changes.
+  const changeSkin = (s: SkinId) => {
+    setSkin(s)
+    setSkinState(s)
+  }
+
   // Keyboard: space starts and stops, arrows nudge the tempo (shift for a jump
   // of five). Ignore keys while a control has focus so typing in a field is not
   // hijacked.
@@ -137,7 +146,7 @@ export function App(_props: Props) {
       : activePreset.name
 
   return (
-    <div className="kp-root" data-theme="dark">
+    <div className="kp-root" data-theme="dark" data-skin={skin}>
       <header className="kp-header">
         <div className="kp-brand">Kronopán</div>
         <div className="kp-sig">
@@ -191,6 +200,8 @@ export function App(_props: Props) {
           onNotationMode={setNotationMode}
           view={view}
           onView={setView}
+          skin={skin}
+          onSkin={changeSkin}
         />
         <GroupEditor cycle={cycle} onChange={changeCycle} />
       </section>

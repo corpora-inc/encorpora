@@ -20,6 +20,11 @@ All notable changes to Kronopán are documented here. The format follows
   editor.
 - Groups can be reordered by dragging them by their handle, with a mouse or a
   finger.
+- Three skins, selectable in the controls: Neon (the house palette), and two
+  colorful, sparkly skins, Aurora and Cosmic, that add a faint starfield behind
+  the pattern. Skins are purely cosmetic (a palette swap and the starfield);
+  layout, timing, and readability are unchanged, and the three group colors stay
+  distinct in every skin.
 - Ring, spiral, and spin views, switchable live alongside the linear view (keys
   1 to 4). The ring wraps the cycle into an annulus with a needle fixed at twelve
   o'clock and the disc rotating under it (turntable posture); under reduced

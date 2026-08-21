@@ -9,7 +9,7 @@ import { barsModel, dotsModel, CLUSTER_STEP } from "../notation"
 import { THEME, roleColor } from "../theme"
 import type { Clock } from "../audio"
 import { useCanvasScene } from "./useCanvasScene"
-import { polar, withAlpha, prefersReducedMotion, TOP } from "./paint"
+import { polar, withAlpha, prefersReducedMotion, drawStars, TOP } from "./paint"
 import { barLabel, type LabelMode, type NotationMode } from "./types"
 
 const TAU = Math.PI * 2
@@ -26,6 +26,7 @@ export function RingView({ cycle, clock, labelMode, notationMode }: Props) {
     ctx.clearRect(0, 0, W, H)
     ctx.fillStyle = THEME.ground
     ctx.fillRect(0, 0, W, H)
+    if (THEME.sparkle) drawStars(ctx, W, H, THEME.text)
 
     const cx = W / 2
     const cy = H / 2

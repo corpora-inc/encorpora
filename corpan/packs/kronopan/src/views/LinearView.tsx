@@ -7,7 +7,7 @@ import { barsModel, dotsModel } from "../notation"
 import { THEME, roleColor } from "../theme"
 import type { Clock } from "../audio"
 import { useCanvasScene } from "./useCanvasScene"
-import { roundedRect, withAlpha } from "./paint"
+import { roundedRect, withAlpha, drawStars } from "./paint"
 import { barLabel, type LabelMode, type NotationMode } from "./types"
 
 type Geom = {
@@ -40,6 +40,7 @@ export function LinearView({ cycle, clock, labelMode, notationMode }: Props) {
     ctx.clearRect(0, 0, W, H)
     ctx.fillStyle = THEME.ground
     ctx.fillRect(0, 0, W, H)
+    if (THEME.sparkle) drawStars(ctx, W, H, THEME.text)
 
     if (cycle.groups.length === 0) {
       ctx.fillStyle = THEME.textDim

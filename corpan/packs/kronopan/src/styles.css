@@ -19,6 +19,25 @@
   --kp-ui: "Spline Sans", system-ui, -apple-system, sans-serif;
 }
 
+/* Skins override only the chrome palette; the canvas reads its own live theme.
+   Layout, sizes, and contrast are unchanged, so functionality is untouched. */
+.kp-root[data-skin="aurora"] {
+  --kp-ground: #0a0b1e;
+  --kp-panel: #191b3d;
+  --kp-panel-edge: #2e3168;
+  --kp-text: #eae6ff;
+  --kp-text-dim: #9d9ad0;
+  --kp-accent: #ff5db1;
+}
+.kp-root[data-skin="cosmic"] {
+  --kp-ground: #060714;
+  --kp-panel: #10142e;
+  --kp-panel-edge: #232a55;
+  --kp-text: #edf6ff;
+  --kp-text-dim: #93a0c8;
+  --kp-accent: #3ab4ff;
+}
+
 * {
   box-sizing: border-box;
 }
