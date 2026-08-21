@@ -7,9 +7,9 @@ export type LabelMode = "number" | "shortlong"
 // Which notation a view draws with. Both read the same geometry.
 export type NotationMode = "bars" | "dots"
 
-// Which view is on screen. Linear is the default; ring and spiral are the cyclic
-// views.
-export type ViewMode = "linear" | "ring" | "spiral"
+// Which view is on screen. Linear is the default; ring, spiral, and spin are the
+// cyclic views (spin is the spiral turning like a record).
+export type ViewMode = "linear" | "ring" | "spiral" | "spin"
 
 export const barLabel = (length: number, mode: LabelMode): string => {
   if (mode === "number") return String(length)

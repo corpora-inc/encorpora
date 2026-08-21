@@ -106,6 +106,8 @@ export function App(_props: Props) {
         setView("ring")
       } else if (e.key === "3") {
         setView("spiral")
+      } else if (e.key === "4") {
+        setView("spin")
       }
     }
     window.addEventListener("keydown", onKey)
@@ -160,6 +162,7 @@ export function App(_props: Props) {
           />
         )}
         {view === "spiral" && <SpiralView cycle={cycle} clock={clock} />}
+        {view === "spin" && <SpiralView cycle={cycle} clock={clock} spin />}
       </main>
 
       <section className="kp-controls">

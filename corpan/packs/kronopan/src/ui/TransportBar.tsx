@@ -32,6 +32,7 @@ const VIEWS: { value: ViewMode; label: string }[] = [
   { value: "linear", label: "Linear" },
   { value: "ring", label: "Ring" },
   { value: "spiral", label: "Spiral" },
+  { value: "spin", label: "Spin" },
 ]
 
 export function TransportBar({
