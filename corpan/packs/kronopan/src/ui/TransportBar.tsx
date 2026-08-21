@@ -1,5 +1,5 @@
 import type { ClickDensity } from "../audio"
-import type { LabelMode, NotationMode } from "../views/LinearView"
+import type { LabelMode, NotationMode, ViewMode } from "../views"
 
 export const MIN_BPM = 30
 export const MAX_BPM = 300
@@ -24,7 +24,15 @@ type Props = {
   onLabelMode: (m: LabelMode) => void
   notationMode: NotationMode
   onNotationMode: (m: NotationMode) => void
+  view: ViewMode
+  onView: (v: ViewMode) => void
 }
+
+const VIEWS: { value: ViewMode; label: string }[] = [
+  { value: "linear", label: "Linear" },
+  { value: "ring", label: "Ring" },
+  { value: "spiral", label: "Spiral" },
+]
 
 export function TransportBar({
   playing,
@@ -39,6 +47,8 @@ export function TransportBar({
   onLabelMode,
   notationMode,
   onNotationMode,
+  view,
+  onView,
 }: Props) {
   const clampBpm = (n: number) => Math.max(MIN_BPM, Math.min(MAX_BPM, Math.round(n)))
 
@@ -102,6 +112,21 @@ export function TransportBar({
           onChange={(e) => onVolume(Number(e.target.value))}
           aria-label="Click level"
         />
+      </div>
+
+      <div className="kp-labels">
+        <span className="kp-label">View</span>
+        <div className="kp-seg" role="group" aria-label="View">
+          {VIEWS.map((v) => (
+            <button
+              key={v.value}
+              className={`kp-seg-btn ${view === v.value ? "is-on" : ""}`}
+              onClick={() => onView(v.value)}
+            >
+              {v.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="kp-labels">

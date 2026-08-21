@@ -9,6 +9,14 @@ All notable changes to Kronopán are documented here. The format follows
 
 ### Added
 
+- Ring view and spiral view, switchable live alongside the linear view (keys 1,
+  2, 3). The ring wraps the cycle into an annulus with a needle fixed at twelve
+  o'clock and the disc rotating under it (turntable posture); under reduced
+  motion the disc holds still and a marker sweeps instead. The spiral is a vinyl
+  groove: the cycle starts as a small circle near the center and winds outward,
+  one turn per cycle, lighting up as it plays, and resets to the center when it
+  reaches the rim. Both honor the active bars or dots notation and light the
+  playing pulse.
 - Dots notation mode, switchable live in the linear view without disturbing the
   clock. Each group is a cluster of circles, one per pulse, colored by group
   length, with constant dot size and spacing so a three-cluster is naturally

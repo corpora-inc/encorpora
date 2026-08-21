@@ -3,7 +3,14 @@ import type { HostApi } from "./sdk/types"
 import type { Cycle } from "./core"
 import { PRESETS, presetById, additiveSignature, collapsedSignature } from "./core"
 import { InternalClock, type Clock, type ClickDensity } from "./audio"
-import { LinearView, type LabelMode, type NotationMode } from "./views/LinearView"
+import {
+  LinearView,
+  RingView,
+  SpiralView,
+  type LabelMode,
+  type NotationMode,
+  type ViewMode,
+} from "./views"
 import { TransportBar, MIN_BPM, MAX_BPM } from "./ui/TransportBar"
 import { GroupEditor } from "./ui/GroupEditor"
 
@@ -22,6 +29,7 @@ export function App(_props: Props) {
   const [playing, setPlaying] = useState(false)
   const [labelMode, setLabelMode] = useState<LabelMode>("number")
   const [notationMode, setNotationMode] = useState<NotationMode>("bars")
+  const [view, setView] = useState<ViewMode>("linear")
 
   // Mirrors bpm for the keyboard handler, so rapid arrow repeats read the
   // current tempo instead of a stale closure value.
@@ -92,6 +100,12 @@ export function App(_props: Props) {
       } else if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
         e.preventDefault()
         changeBpm(bpmRef.current - step)
+      } else if (e.key === "1") {
+        setView("linear")
+      } else if (e.key === "2") {
+        setView("ring")
+      } else if (e.key === "3") {
+        setView("spiral")
       }
     }
     window.addEventListener("keydown", onKey)
@@ -129,12 +143,23 @@ export function App(_props: Props) {
       </header>
 
       <main className="kp-stage">
-        <LinearView
-          cycle={cycle}
-          clock={clock}
-          labelMode={labelMode}
-          notationMode={notationMode}
-        />
+        {view === "linear" && (
+          <LinearView
+            cycle={cycle}
+            clock={clock}
+            labelMode={labelMode}
+            notationMode={notationMode}
+          />
+        )}
+        {view === "ring" && (
+          <RingView
+            cycle={cycle}
+            clock={clock}
+            labelMode={labelMode}
+            notationMode={notationMode}
+          />
+        )}
+        {view === "spiral" && <SpiralView cycle={cycle} clock={clock} />}
       </main>
 
       <section className="kp-controls">
@@ -151,6 +176,8 @@ export function App(_props: Props) {
           onLabelMode={setLabelMode}
           notationMode={notationMode}
           onNotationMode={setNotationMode}
+          view={view}
+          onView={setView}
         />
         <GroupEditor cycle={cycle} onChange={changeCycle} />
       </section>
