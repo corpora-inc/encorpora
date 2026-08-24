@@ -359,18 +359,24 @@
   background: var(--kp-ground);
 }
 .kp-group.is-dragging {
-  transform: scale(1.08);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  position: relative;
+  z-index: 3;
+}
+.kp-group.is-drop-target {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--kp-accent) 14%, var(--kp-ground));
 }
 .kp-grip {
   cursor: grab;
   touch-action: none;
   color: var(--kp-text-dim);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
-  padding: 4px 2px;
+  padding: 8px 6px;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .kp-grip:active {
   cursor: grabbing;
