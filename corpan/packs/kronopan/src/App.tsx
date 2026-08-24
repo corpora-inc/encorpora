@@ -36,7 +36,7 @@ export function App(_props: Props) {
   const [fullscreen, setFullscreen] = useState(false)
   const fullscreenRef = useRef(fullscreen)
   fullscreenRef.current = fullscreen
-  const swipeStartY = useRef<number | null>(null)
+  const swipeStart = useRef<{ x: number; y: number } | null>(null)
 
   // Mirrors bpm for the keyboard handler, so rapid arrow repeats read the
   // current tempo instead of a stale closure value.
@@ -187,13 +187,20 @@ export function App(_props: Props) {
       <main
         className="kp-stage"
         onPointerDown={(e) => {
-          if (fullscreen) swipeStartY.current = e.clientY
+          if (fullscreen) swipeStart.current = { x: e.clientX, y: e.clientY }
         }}
         onPointerUp={(e) => {
-          if (fullscreen && swipeStartY.current !== null && e.clientY - swipeStartY.current > 90) {
-            setFullscreen(false)
+          if (fullscreen && swipeStart.current) {
+            const dy = e.clientY - swipeStart.current.y
+            const dx = e.clientX - swipeStart.current.x
+            // A downward swipe exits; a tap (little movement) toggles play.
+            if (dy > 90) {
+              setFullscreen(false)
+            } else if (Math.hypot(dx, dy) < 12) {
+              void togglePlay()
+            }
           }
-          swipeStartY.current = null
+          swipeStart.current = null
         }}
       >
         {view === "linear" && (

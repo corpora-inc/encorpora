@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react"
 import type { Cycle, Unit } from "../core"
 import { PRESETS, totalPulses, subdivide } from "../core"
 import { roleColor } from "../theme"
@@ -49,48 +49,52 @@ export function GroupEditor({ cycle, onChange }: Props) {
     if (p) onChange({ ...p })
   }
 
-  // Drag to reorder groups, with mouse or finger. The dragged group is tracked
-  // by index; as the pointer moves over another group the order updates live.
+  // Drag to reorder groups, with mouse or finger. Pointer capture routes the
+  // move/up to the grip so a touch-drag does not scroll the controls instead,
+  // and the dragged pill just translates under the pointer; the order is
+  // committed once on drop, so nothing is fragile mid-drag.
   const pillRefs = useRef<(HTMLDivElement | null)[]>([])
   const groupsRef = useRef(cycle.groups)
   groupsRef.current = cycle.groups
-  const [dragging, setDragging] = useState<number | null>(null)
+  const [drag, setDrag] = useState<{ index: number; dx: number; target: number } | null>(null)
+  const dragRef = useRef(drag)
+  dragRef.current = drag
+  const startX = useRef(0)
 
-  useEffect(() => {
-    if (dragging === null) return
-    const onMove = (e: PointerEvent) => {
-      const from = dragging
-      const groups = groupsRef.current
-      let target = from
-      for (let j = 0; j < groups.length; j++) {
-        if (j === from) continue
-        const el = pillRefs.current[j]
-        if (!el) continue
-        const rect = el.getBoundingClientRect()
-        if (e.clientX >= rect.left && e.clientX <= rect.right) {
-          target = j
-          break
-        }
-      }
-      if (target !== from) {
-        const next = groups.slice()
-        const [moved] = next.splice(from, 1)
-        next.splice(target, 0, moved)
-        setGroups(next)
-        setDragging(target)
+  const onGripDown = (i: number, e: ReactPointerEvent) => {
+    e.preventDefault()
+    e.currentTarget.setPointerCapture(e.pointerId)
+    startX.current = e.clientX
+    setDrag({ index: i, dx: 0, target: i })
+  }
+  const onGripMove = (e: ReactPointerEvent) => {
+    const d = dragRef.current
+    if (!d) return
+    const cx = e.clientX
+    let target = d.index
+    for (let j = 0; j < groupsRef.current.length; j++) {
+      if (j === d.index) continue
+      const el = pillRefs.current[j]
+      if (!el) continue
+      const r = el.getBoundingClientRect()
+      if (cx >= r.left && cx <= r.right) {
+        target = j
+        break
       }
     }
-    const onUp = () => setDragging(null)
-    window.addEventListener("pointermove", onMove)
-    window.addEventListener("pointerup", onUp)
-    window.addEventListener("pointercancel", onUp)
-    return () => {
-      window.removeEventListener("pointermove", onMove)
-      window.removeEventListener("pointerup", onUp)
-      window.removeEventListener("pointercancel", onUp)
+    setDrag({ index: d.index, dx: cx - startX.current, target })
+  }
+  const onGripUp = (e: ReactPointerEvent) => {
+    e.currentTarget.releasePointerCapture?.(e.pointerId)
+    const d = dragRef.current
+    if (d && d.target !== d.index) {
+      const next = groupsRef.current.slice()
+      const [moved] = next.splice(d.index, 1)
+      next.splice(d.target, 0, moved)
+      setGroups(next)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dragging])
+    setDrag(null)
+  }
 
   return (
     <div className="kp-editor">
@@ -132,19 +136,25 @@ export function GroupEditor({ cycle, onChange }: Props) {
           const color = roleColor(colorRoleForLength(g))
           return (
             <div
-              className={`kp-group ${dragging === i ? "is-dragging" : ""}`}
+              className={`kp-group ${drag?.index === i ? "is-dragging" : ""} ${
+                drag && drag.index !== i && drag.target === i ? "is-drop-target" : ""
+              }`}
               key={i}
               ref={(el) => {
                 pillRefs.current[i] = el
               }}
-              style={{ borderColor: color }}
+              style={{
+                borderColor: color,
+                transform:
+                  drag?.index === i ? `translateX(${drag.dx}px) scale(1.06)` : undefined,
+              }}
             >
               <span
                 className="kp-grip"
-                onPointerDown={(e) => {
-                  e.preventDefault()
-                  setDragging(i)
-                }}
+                onPointerDown={(e) => onGripDown(i, e)}
+                onPointerMove={onGripMove}
+                onPointerUp={onGripUp}
+                onPointerCancel={onGripUp}
                 aria-label="Drag to reorder"
                 title="Drag to reorder"
               >

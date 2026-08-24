@@ -7,6 +7,19 @@ All notable changes to Kronopán are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-08-24
+
+### Added
+
+- Tap the screen to start and stop while in full-screen (swipe down still exits).
+
+### Fixed
+
+- Drag to reorder groups now works reliably with a mouse or a finger. It uses
+  pointer capture so a touch-drag reorders instead of scrolling the controls, the
+  dragged group lifts and follows the pointer with the drop target highlighted,
+  and the order is committed once on release. The grip is a larger touch target.
+
 ## [0.2.2] - 2026-08-21
 
 ### Fixed
