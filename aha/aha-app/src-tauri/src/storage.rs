@@ -688,6 +688,21 @@ mod tests {
             execute(&mut c, request("a", Operation::ListAttempts, Value::Null)).unwrap(),
             json!([])
         );
+        assert!(
+            execute(
+                &mut c,
+                request(
+                    "a",
+                    Operation::RecordDispute,
+                    json!({"id":"dispute","activityId":"activity","reason":"incorrect key"})
+                )
+            )
+            .is_err()
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListDisputes, Value::Null)).unwrap(),
+            json!([])
+        );
     }
     #[test]
     fn journals_remain_account_scoped_and_outside_backup() {
