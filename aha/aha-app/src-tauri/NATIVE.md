@@ -1,6 +1,8 @@
 # Native build conventions
 
 Use Rust 1.97.1 (`rust-toolchain.toml`) and the app's pinned Tauri CLI 2.11.4.
+For npm-driven native commands, export `RUSTUP_TOOLCHAIN=1.97.1` as well:
+Gradle calls npm from the frontend directory, above the native toolchain file.
 Each app is its own Cargo root: do not add a shared workspace. Run the app's
 frontend build before native distribution builds.
 
