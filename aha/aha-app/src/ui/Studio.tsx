@@ -66,7 +66,19 @@ export function Studio(props: StudioProps) {
   };
   const completed = Math.max(0, props.session.completed);
   const target = Math.max(1, props.session.target);
-  const readyNext = props.feedback?.kind === "correct";
+  const readyNext =
+    props.activityAnswered || props.feedback?.kind === "correct";
+  const learningVisible =
+    tab === "learn" &&
+    !settings &&
+    !asking &&
+    !props.curiosity &&
+    !!a &&
+    !readyNext;
+  useEffect(() => {
+    props.onLearningVisibleChange?.(learningVisible);
+    return () => props.onLearningVisibleChange?.(false);
+  }, [learningVisible, props.onLearningVisibleChange]);
   return (
     <div className="aha-studio">
       <a className="skip-link" href="#activity">
@@ -290,7 +302,10 @@ export function Studio(props: StudioProps) {
                             disabled={props.busy}
                             onClick={props.onContinue}
                           >
-                            Next discovery <ArrowRight size={19} />
+                            {props.feedback?.kind === "retry"
+                              ? "Try a fresh one"
+                              : "Next discovery"}{" "}
+                            <ArrowRight size={19} />
                           </button>
                         ) : (
                           <button
@@ -307,7 +322,9 @@ export function Studio(props: StudioProps) {
                         <button
                           className="hint-button"
                           type="button"
-                          disabled={props.busy || readyNext}
+                          disabled={
+                            props.busy || props.feedback?.kind === "correct"
+                          }
                           onClick={() => props.onSupport("hint")}
                         >
                           <Lightbulb size={17} /> A little hint

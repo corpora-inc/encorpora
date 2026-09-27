@@ -64,4 +64,36 @@ describe("untrusted lesson rendering", () => {
     assert.ok(html.includes('aria-label="3 of 8 equal parts shaded"'));
     assert.equal((html.match(/class="filled"/g) ?? []).length, 3);
   });
+  it("renders six-digit place values and wider validated coordinates without unbounded work", () => {
+    const place = renderToStaticMarkup(
+      <Visual spec={{ type: "place-value", value: 123456 }} />,
+    );
+    assert.ok(place.includes("hundred-thousands"));
+    assert.ok(place.includes("ten-thousands"));
+    assert.ok(
+      isSafeVisual({ type: "coordinates", points: [{ x: -20, y: 20 }] }),
+    );
+    const line = renderToStaticMarkup(
+      <Visual
+        spec={{
+          type: "number-line",
+          min: -20,
+          max: 20,
+          step: 1,
+          marks: [-19, 18],
+        }}
+      />,
+    );
+    assert.ok(!line.includes("could not be displayed"));
+    assert.ok((line.match(/<text/g) ?? []).length <= 13);
+    assert.equal(
+      isSafeVisual({
+        type: "number-line",
+        min: 0,
+        max: 100,
+        step: Number.MIN_VALUE,
+      }),
+      false,
+    );
+  });
 });

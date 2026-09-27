@@ -1445,3 +1445,13 @@ h1 {
 .desktop-nav button {
   min-height: 55px;
 }
+.place-values span {
+  display: block;
+  overflow-wrap: anywhere;
+  padding: 0 3px;
+  line-height: 1.4;
+}
+.place-values {
+  max-width: 100%;
+  gap: 2px;
+}

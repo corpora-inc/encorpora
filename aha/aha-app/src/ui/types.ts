@@ -39,6 +39,9 @@ export interface StudioProps {
   learnerName: string;
   activity?: StudioActivity;
   busy?: boolean;
+  /** First attempt already persisted; show a fresh task instead of rescoring retries. */
+  activityAnswered?: boolean;
+  onLearningVisibleChange?: (visible: boolean) => void;
   error?: string;
   feedback?: {
     kind: "correct" | "retry" | "info";

@@ -23,13 +23,15 @@ export function isSafeVisual(v: StudioVisual): boolean {
         finite(v.min) &&
         finite(v.max) &&
         v.max > v.min &&
+        Math.abs(v.min) <= 1000000 &&
+        Math.abs(v.max) <= 1000000 &&
         (v.step === undefined ||
-          (finite(v.step) && v.step > 0 && (v.max - v.min) / v.step <= 24)) &&
+          (finite(v.step) && v.step > 0 && finite((v.max - v.min) / v.step))) &&
         (v.marks ?? []).length <= 24 &&
         (v.marks ?? []).every((n) => finite(n) && n >= v.min && n <= v.max)
       );
     case "place-value":
-      return Number.isInteger(v.value) && v.value >= 0 && v.value <= 9999;
+      return Number.isInteger(v.value) && v.value >= 0 && v.value <= 999999;
     case "coordinates":
       return (
         v.points.length <= 20 &&
@@ -39,15 +41,17 @@ export function isSafeVisual(v: StudioVisual): boolean {
           (p) =>
             finite(p.x) &&
             finite(p.y) &&
-            Math.abs(p.x) <= (v.extent ?? 6) &&
-            Math.abs(p.y) <= (v.extent ?? 6),
+            Math.abs(p.x) <= (v.extent ?? 20) &&
+            Math.abs(p.y) <= (v.extent ?? 20),
         )
       );
     case "rectangle":
-      return [v.width, v.height].every((n) => finite(n) && n > 0 && n <= 1000);
+      return [v.width, v.height].every(
+        (n) => finite(n) && n > 0 && n <= 1000000,
+      );
     case "cuboid":
       return [v.width, v.height, v.depth].every(
-        (n) => finite(n) && n > 0 && n <= 1000,
+        (n) => finite(n) && n > 0 && n <= 1000000,
       );
     default:
       return false;
@@ -95,22 +99,35 @@ export function Visual({ spec }: { spec: StudioVisual }) {
     );
   } else if (spec.type === "place-value") {
     description = `${spec.value} represented in place values`;
+    const digits = String(spec.value).padStart(3, "0");
+    const places = [
+      "hundred-thousands",
+      "ten-thousands",
+      "thousands",
+      "hundreds",
+      "tens",
+      "ones",
+    ].slice(-digits.length);
     content = (
-      <div className="place-values">
-        {String(spec.value)
-          .padStart(4, "0")
-          .split("")
-          .map((digit, i) => (
-            <div key={i}>
-              <strong>{digit}</strong>
-              <span>{["thousands", "hundreds", "tens", "ones"][i]}</span>
-            </div>
-          ))}
+      <div
+        className="place-values"
+        style={{
+          gridTemplateColumns: `repeat(${digits.length}, minmax(0, 1fr))`,
+        }}
+      >
+        {digits.split("").map((digit, i) => (
+          <div key={i}>
+            <strong>{digit}</strong>
+            <span>{places[i]}</span>
+          </div>
+        ))}
       </div>
     );
   } else if (spec.type === "number-line") {
     description = `Number line from ${spec.min} to ${spec.max}. Marked: ${(spec.marks ?? []).join(", ") || "none"}`;
-    const step = spec.step ?? (spec.max - spec.min) / 8;
+    const requestedStep = spec.step ?? (spec.max - spec.min) / 8;
+    const intervalCount = (spec.max - spec.min) / requestedStep;
+    const step = requestedStep * Math.max(1, Math.ceil(intervalCount / 12));
     const ticks = Array.from(
       { length: Math.min(25, Math.floor((spec.max - spec.min) / step) + 1) },
       (_, i) => spec.min + i * step,
@@ -139,7 +156,13 @@ export function Visual({ spec }: { spec: StudioVisual }) {
       </svg>
     );
   } else if (spec.type === "coordinates") {
-    const extent = spec.extent ?? 6;
+    const extent = Math.ceil(
+      spec.extent ??
+        Math.max(
+          6,
+          ...spec.points.flatMap((p) => [Math.abs(p.x), Math.abs(p.y)]),
+        ),
+    );
     const scale = 105 / extent;
     description = `Coordinate plane. Points: ${spec.points.map((p) => `${p.label ?? ""} (${p.x}, ${p.y})`).join("; ")}`;
     content = (
