@@ -8,11 +8,11 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 |---|---|---|---|
 | Foundation | #806 | Merged #813 | Frontend shell, reproducible checks, CI |
 | Native storage | #807 | Merged #820 | SQLite, recovery; Android debug build and iOS cross-check verified |
-| Free2Z | #808 | PR #824 + native SDK host PR #827 | Real SDK packaged; paid/live acceptance remains blocked |
+| Free2Z | #808 | PR #824 + merged native SDK host #827 | Real SDK packaged; paid/live acceptance remains blocked |
 | Standards and learning | #809 | Merged #815 | Original K–8 graph; 90 verified numerical facets, 139 guided-only standards |
 | Experience | #810 | Merged #814; controller integration in progress | Accessible guided journey and bounded visual renderers |
-| Integrated verification | #811 | 65 tests + controller browser regressions pass; emulator verification in progress | Browser fixtures are not native/live acceptance |
-| Internal delivery | #812 | Release tooling merged #821 | Both store records exist; Apple internal tester preflight verified; no processed tester-available build yet |
+| Integrated verification | #811 | 65 tests + controller browser regressions pass; native Android emulator and upgrade verified | See ACCEPTANCE.md; live/iOS device acceptance remains |
+| Internal delivery | #812 | Release tooling merged #821, #826, #828 | Both store records exist; Apple internal tester preflight verified; no processed tester-available build yet |
 
 ## Active constraints
 - GitHub issue creation works; Project API returns missing `read:project` scope. Issues exist but board movement is not verified. Do not claim Doing/Done transitions.
