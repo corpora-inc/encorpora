@@ -63,7 +63,9 @@ mod tests {
         assert_eq!(capability["windows"], serde_json::json!(["main"]));
         assert!(capability.get("remote").is_none());
         for permission in capability["permissions"].as_array().unwrap() {
-            assert!(permission.as_str().unwrap().starts_with("f2z:allow-"));
+            let permission = permission.as_str().unwrap();
+            assert!(permission.starts_with("f2z:allow-"));
+            assert!(!permission.contains("purchase") && !permission.contains("checkout"));
         }
     }
 }

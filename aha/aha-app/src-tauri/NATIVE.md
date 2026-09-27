@@ -44,6 +44,8 @@ client. Configure the public registration through the build environment variable
 `AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
 No credentials, endpoint overrides or callback injection commands are exposed to
 JavaScript. The local `main` window receives only the named Free2Z guest permissions.
+Purchase and checkout commands are not granted in this beta, matching its disabled
+external-checkout UI; enabling a payment flow requires a reviewed capability change.
 
 The mobile redirect is `inc.corpora.aha:/oauth/callback`. The tracked iOS template
 registers the scheme, and `build.rs` uses Tauri's manifest updater to insert the
