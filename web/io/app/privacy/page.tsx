@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
     title: "Privacy Promise – Corpora Inc",
     description:
-        "One privacy policy for every Corpora app, including Corpán and Dynawalla. No accounts, no ads, no third-party trackers, and offline-first learning.",
+        "Privacy information for Corpora offline learning products, with a separate policy for the AHA online tutor beta.",
 };
 
 export default function PrivacyPage() {
@@ -12,15 +12,19 @@ export default function PrivacyPage() {
         <main className="min-h-screen bg-white text-gray-800 px-6 py-16">
             <div className="max-w-3xl mx-auto">
                 <h1 className="text-5xl font-extrabold mb-6">Privacy Promise</h1>
-                <p className="text-sm text-gray-500 mb-8">Last updated 27 July 2026</p>
+                <p className="text-sm text-gray-500 mb-8">Last updated 27 September 2026</p>
 
                 <p className="text-lg mb-6">
-                    This policy covers every app and book published by Corpora
-                    Inc, including <strong>Corpán</strong>, our language
+                    This policy covers Corpora’s offline learning products, including <strong>Corpán</strong>, our language
                     learning app, and <strong>Dynawalla</strong>, our
                     mathematics app for grades 1–6. They are built to work
                     fully offline, with no accounts, no ads, no third-party
                     trackers, and the bare minimum of permissions.
+                </p>
+                <p className="text-lg mb-8">
+                    The <Link href="/aha/privacy" className="underline">¡AHA! tutor beta has a separate privacy explanation</Link>.
+                    Its optional online tutor uses Free2Z authentication and sends selected learning context to AI services;
+                    the offline-product promises below do not describe those online features.
                 </p>
                 <p className="text-lg mb-12">
                     The apps differ in one respect, and it is worth stating
@@ -58,7 +62,7 @@ export default function PrivacyPage() {
 
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-3">
-                        What we promise in every app
+                        What we promise in the products covered here
                     </h2>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
                         <li>No accounts, no email, no name, no phone number.</li>

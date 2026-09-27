@@ -1,0 +1,333 @@
+name: Release · AHA internal beta
+
+# App-specific tags/manual intent only. No unrelated product merge triggers this.
+on:
+  push:
+    tags: ['aha-v*']
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: Platforms to deliver to existing internal testers
+        type: choice
+        options: [both, ios, android]
+        default: both
+
+permissions:
+  contents: read
+concurrency:
+  group: release-aha
+  cancel-in-progress: false
+
+env:
+  APP_DIR: aha/aha-app
+  BUNDLE_ID: inc.corpora.aha
+  RUSTUP_TOOLCHAIN: '1.97.1'
+  AHA_FREE2Z_CLIENT_ID: ${{ vars.AHA_FREE2Z_CLIENT_ID }}
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      number: ${{ steps.release.outputs.number }}
+      started: ${{ steps.release.outputs.started }}
+      ios: ${{ steps.release.outputs.ios }}
+      android: ${{ steps.release.outputs.android }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: release
+        env:
+          PLATFORMS: ${{ inputs.platforms || 'both' }}
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor HEAD origin/main
+          VERSION=$(node -p "require('./${APP_DIR}/src-tauri/tauri.conf.json').version")
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            test "$GITHUB_REF" = refs/heads/main
+          else
+            test "$GITHUB_REF" = "refs/tags/aha-v$VERSION"
+          fi
+          NUMBER=$(( $(date +%s) / 60 ))
+          test "$NUMBER" -gt 29000000 && test "$NUMBER" -lt 2100000000
+          {
+            echo "number=$NUMBER"
+            echo "started=$(date +%s)"
+            echo "ios=$([ "$PLATFORMS" != android ] && echo true || echo false)"
+            echo "android=$([ "$PLATFORMS" != ios ] && echo true || echo false)"
+          } >> "$GITHUB_OUTPUT"
+          echo "AHA $VERSION internal beta; build $NUMBER" >> "$GITHUB_STEP_SUMMARY"
+
+  ios:
+    needs: gate
+    if: needs.gate.outputs.ios == 'true'
+    runs-on: macos-26
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require app record and an existing internal tester group
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          AHA_TESTFLIGHT_GROUP_ID: ${{ vars.AHA_TESTFLIGHT_GROUP_ID }}
+        run: |
+          python -m pip install --quiet 'pyjwt[crypto]' requests
+          python aha/scripts/release_verify.py preflight --platform ios
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: aha/aha-app/package-lock.json
+      - name: Prepare pinned toolchain and icons
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.97.1 --profile minimal
+          rustup target add --toolchain 1.97.1 aarch64-apple-ios
+          git lfs pull --include='aha/aha-app/src-tauri/icons/**'
+          XC=$(python - <<'PYCODE'
+          import pathlib,re
+          apps=list(pathlib.Path('/Applications').glob('Xcode_*.app'))
+          apps.sort(key=lambda p: tuple(int(n) for n in re.findall(r'\d+',p.name)))
+          print(apps[-1] if apps else '/Applications/Xcode.app')
+          PYCODE
+          )
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: aha/aha-app/src-tauri
+      - name: Import distribution certificate
+        uses: apple-actions/import-codesign-certs@63fff01cd422d4b7b855d40ca1e9d34d2de9427d # v3
+        with:
+          p12-file-base64: ${{ secrets.APPLE_DIST_CERT_P12 }}
+          p12-password: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
+      - name: Install app-specific provisioning without logging account metadata
+        env:
+          PROFILE_B64: ${{ secrets.AHA_APPLE_PROVISIONING_PROFILE }}
+        run: |
+          set -euo pipefail
+          test -n "$PROFILE_B64"
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          printf '%s' "$PROFILE_B64" | base64 --decode > "$HOME/Library/MobileDevice/Provisioning Profiles/aha.mobileprovision"
+          security cms -D -i "$HOME/Library/MobileDevice/Provisioning Profiles/aha.mobileprovision" > "$RUNNER_TEMP/aha-profile.plist"
+          python - <<'PY'
+          import datetime, os, pathlib, plistlib
+          profile=plistlib.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'aha-profile.plist').read_bytes())
+          team=profile['TeamIdentifier'][0]; name=profile['Name']
+          assert profile['Entitlements']['application-identifier']==team+'.'+os.environ['BUNDLE_ID']
+          assert profile['ExpirationDate'] > datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+          assert not profile['Entitlements'].get('get-task-allow',False)
+          assert not profile.get('ProvisionedDevices') and not profile.get('ProvisionsAllDevices')
+          for value in (team,name):
+              assert '\n' not in value and '\r' not in value
+              print('::add-mask::'+value)
+          with open(os.environ['GITHUB_ENV'],'a') as out:
+              out.write(f'IOS_TEAM_ID={team}\nIOS_PROFILE_NAME={name}\n')
+          PY
+          rm "$RUNNER_TEMP/aha-profile.plist"
+      - name: Install and verify frontend
+        working-directory: aha/aha-app
+        run: npm ci && npm test && npm run build
+      - name: Archive with app-specific manual signing
+        working-directory: aha/aha-app
+        env:
+          BUILD_NUMBER: ${{ needs.gate.outputs.number }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, pathlib
+          path=pathlib.Path('src-tauri/ios/project.yml'); text=path.read_text()
+          old='        CODE_SIGN_STYLE: Automatic'
+          assert old in text
+          import json
+          text=text.replace(old, '        CODE_SIGN_STYLE: Manual\n        CODE_SIGN_IDENTITY: "Apple Distribution"\n        PROVISIONING_PROFILE_SPECIFIER: '+json.dumps(os.environ['IOS_PROFILE_NAME']))
+          path.write_text(text)
+          PY
+          npx tauri ios init --ci
+          cp src-tauri/icons/ios/*.png src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset/
+          cmp src-tauri/icons/ios/AppIcon-512@2x.png src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png
+          npx tauri ios build --ci --archive-only --export-method app-store-connect --build-number "$BUILD_NUMBER"
+      - name: Export and inspect IPA
+        id: ipa
+        working-directory: aha/aha-app
+        env:
+          BUILD_NUMBER: ${{ needs.gate.outputs.number }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, pathlib, plistlib
+          options={'method':'app-store-connect','teamID':os.environ['IOS_TEAM_ID'],'signingStyle':'manual','signingCertificate':'Apple Distribution','provisioningProfiles':{os.environ['BUNDLE_ID']:os.environ['IOS_PROFILE_NAME']},'uploadSymbols':True}
+          pathlib.Path(os.environ['RUNNER_TEMP'],'aha-export.plist').write_bytes(plistlib.dumps(options))
+          PY
+          shopt -s nullglob
+          ARCHIVES=(src-tauri/gen/apple/build/*.xcarchive)
+          test "${#ARCHIVES[@]}" -eq 1
+          xcodebuild -exportArchive -archivePath "${ARCHIVES[0]}" -exportPath src-tauri/gen/apple/build/export -exportOptionsPlist "$RUNNER_TEMP/aha-export.plist"
+          python - <<'PY'
+          import json,os,pathlib,plistlib,zipfile
+          ipas=list(pathlib.Path('src-tauri/gen/apple/build/export').glob('*.ipa')); assert len(ipas)==1
+          with zipfile.ZipFile(ipas[0]) as z:
+              names=[n for n in z.namelist() if n.startswith('Payload/') and n.count('/')==2 and n.endswith('.app/Info.plist')]
+              assert len(names)==1
+              info=plistlib.loads(z.read(names[0]))
+              assert info['CFBundleIdentifier']==os.environ['BUNDLE_ID']
+              assert info['CFBundleShortVersionString']==json.loads(pathlib.Path('src-tauri/tauri.conf.json').read_text())['version']
+              version=info['CFBundleVersion']
+              assert version==os.environ['BUILD_NUMBER'] or version.endswith('.'+os.environ['BUILD_NUMBER'])
+              assert tuple(map(int,info['MinimumOSVersion'].split('.')[:2])) >= (16,0)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f'path={ipas[0].resolve()}\nversion={version}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.ipa.outputs.path != ''
+        with:
+          name: aha-ios-${{ needs.gate.outputs.number }}
+          path: ${{ steps.ipa.outputs.path }}
+          retention-days: 14
+      - name: Upload to TestFlight
+        uses: apple-actions/upload-testflight-build@9fd28d4e690396e43caca69cef54cccccce77034 # v3
+        with:
+          app-path: ${{ steps.ipa.outputs.path }}
+          issuer-id: ${{ secrets.ASC_ISSUER_ID }}
+          api-key-id: ${{ secrets.ASC_KEY_ID }}
+          api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
+      - name: Verify processing and existing internal tester availability
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          AHA_TESTFLIGHT_GROUP_ID: ${{ vars.AHA_TESTFLIGHT_GROUP_ID }}
+          BUILD: ${{ steps.ipa.outputs.version }}
+          STARTED: ${{ needs.gate.outputs.started }}
+          PYTHONUNBUFFERED: '1'
+        run: python aha/scripts/release_verify.py verify --platform ios --build "$BUILD" --since "$STARTED"
+
+  android:
+    needs: gate
+    if: needs.gate.outputs.android == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require app record and existing internal audience
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          python -m pip install --quiet 'pyjwt[crypto]' requests
+          python aha/scripts/release_verify.py preflight --platform android
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: aha/aha-app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Install pinned native tools
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.97.1 --profile minimal
+          rustup target add --toolchain 1.97.1 aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+          sdkmanager --install 'ndk;28.2.13676358' 'platforms;android-36' 'build-tools;36.0.0' </dev/null >/dev/null
+          echo "NDK_HOME=$ANDROID_HOME/ndk/28.2.13676358" >> "$GITHUB_ENV"
+          git lfs pull --include='aha/aha-app/src-tauri/icons/**'
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: aha/aha-app/src-tauri
+      - name: Install and verify frontend
+        working-directory: aha/aha-app
+        run: npm ci && npm test && npm run build
+      - name: Build AAB
+        working-directory: aha/aha-app
+        env:
+          BUILD_NUMBER: ${{ needs.gate.outputs.number }}
+        run: |
+          set -euo pipefail
+          npx tauri android init --ci
+          cp -R src-tauri/icons/android/. src-tauri/gen/android/app/src/main/res/
+          cmp src-tauri/icons/android/mipmap-xxhdpi/ic_launcher.png src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+          npx tauri android build --ci --aab -c '{"bundle":{"android":{"versionCode":'"$BUILD_NUMBER"'}}}'
+      - name: Verify bundle identity and every shared library
+        id: aab
+        env:
+          BUILD_NUMBER: ${{ needs.gate.outputs.number }}
+        run: |
+          set -euo pipefail
+          AAB="$APP_DIR/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab"
+          test -f "$AAB"
+          python aha/scripts/release_verify.py elf "$AAB"
+          curl --fail -sSL https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar -o "$RUNNER_TEMP/bundletool.jar"
+          echo "a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29  $RUNNER_TEMP/bundletool.jar" | sha256sum -c -
+          java -jar "$RUNNER_TEMP/bundletool.jar" dump manifest --bundle "$AAB" > "$RUNNER_TEMP/aha-manifest.xml"
+          java -jar "$RUNNER_TEMP/bundletool.jar" dump config --bundle "$AAB" > "$RUNNER_TEMP/aha-bundle-config.json"
+          python - <<'PY'
+          import os,pathlib,xml.etree.ElementTree as E
+          root=E.parse(pathlib.Path(os.environ['RUNNER_TEMP'],'aha-manifest.xml')).getroot()
+          ns='{http://schemas.android.com/apk/res/android}'
+          assert root.attrib['package']==os.environ['BUNDLE_ID']
+          assert root.attrib[ns+'versionCode']==os.environ['BUILD_NUMBER']
+          sdk=root.find('uses-sdk'); assert sdk is not None
+          assert sdk.attrib[ns+'minSdkVersion']=='29' and int(sdk.attrib[ns+'targetSdkVersion'])>=36
+          forbidden={'android.permission.READ_CONTACTS','android.permission.RECORD_AUDIO','android.permission.CAMERA','android.permission.ACCESS_FINE_LOCATION','android.permission.ACCESS_COARSE_LOCATION','com.google.android.gms.permission.AD_ID'}
+          assert not forbidden.intersection(p.attrib[ns+'name'] for p in root.findall('uses-permission'))
+          config=pathlib.Path(os.environ['RUNNER_TEMP'],'aha-bundle-config.json').read_text()
+          assert 'PAGE_ALIGNMENT_16K' in config, 'AAB does not request 16 KiB APK packaging'
+          PY
+          echo "path=$AAB" >> "$GITHUB_OUTPUT"
+      - name: Sign app-specific upload bundle
+        env:
+          AAB: ${{ steps.aab.outputs.path }}
+          KEYSTORE: ${{ secrets.AHA_ANDROID_KEYSTORE_B64 }}
+          STORE_PASSWORD: ${{ secrets.AHA_ANDROID_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.AHA_ANDROID_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.AHA_ANDROID_KEY_ALIAS }}
+        run: |
+          set -euo pipefail
+          test -n "$KEYSTORE" && test -n "$STORE_PASSWORD" && test -n "$KEY_PASSWORD" && test -n "$KEY_ALIAS"
+          trap 'rm -f "$RUNNER_TEMP/aha-upload.jks"' EXIT
+          printf '%s' "$KEYSTORE" | base64 --decode > "$RUNNER_TEMP/aha-upload.jks"
+          jarsigner -keystore "$RUNNER_TEMP/aha-upload.jks" -storepass:env STORE_PASSWORD -keypass:env KEY_PASSWORD -sigalg SHA256withRSA -digestalg SHA-256 "$AAB" "$KEY_ALIAS"
+          VERIFY=$(jarsigner -verify "$AAB" 2>&1)
+          printf '%s' "$VERIFY" | grep 'jar verified' >/dev/null
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.aab.outputs.path != ''
+        with:
+          name: aha-android-${{ needs.gate.outputs.number }}
+          path: ${{ steps.aab.outputs.path }}
+          retention-days: 14
+      - name: Snapshot internal track before upload
+        id: before
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: inc.corpora.aha
+          PLAY_TRACK: internal
+        run: python .github/scripts/verify_play_upload.py --snapshot
+      - name: Upload completed internal release
+        uses: r0adkll/upload-google-play@e738b9dd8f2476ea806d921b64aacd24f34515a5 # v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: inc.corpora.aha
+          releaseFiles: ${{ steps.aab.outputs.path }}
+          track: internal
+          status: completed
+      - name: Verify new completed release and configured audience
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: inc.corpora.aha
+          PLAY_TRACK: internal
+          PLAY_VERSION_CODE: ${{ needs.gate.outputs.number }}
+          PLAY_PRE_UPLOAD_CODES: ${{ steps.before.outputs.version_codes }}
+          STARTED: ${{ needs.gate.outputs.started }}
+        run: |
+          python .github/scripts/verify_play_upload.py
+          python aha/scripts/release_verify.py verify --platform android --build "$PLAY_VERSION_CODE" --since "$STARTED"
