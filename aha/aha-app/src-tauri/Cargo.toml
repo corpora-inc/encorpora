@@ -1,0 +1,31 @@
+[package]
+name = "aha"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97"
+description = "AHA local-first AI mathematics tutor"
+
+[lib]
+name = "aha_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.38", features = ["bundled"] }
+sha2 = "0.10"
+tauri-plugin-dialog = "=2.7.3"
+tauri-plugin-fs = "=2.5.2"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[target.'cfg(target_os = "ios")'.dependencies]
+tauri-plugin-ios-share = { path = "../../../homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share" }
