@@ -231,7 +231,19 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
             match operation {
                 LoadSession => read(conn, a, p, "session", "current"),
                 SaveSession => {
-                    put(conn, a, p, "session", "current", &r.data)?;
+                    let id = r
+                        .data
+                        .get("id")
+                        .and_then(Value::as_str)
+                        .ok_or("Session requires id")?;
+                    identifier(id)?;
+                    if id == "current" {
+                        return Err("Reserved session identifier".into());
+                    }
+                    let tx = conn.transaction().map_err(err)?;
+                    put(&tx, a, p, "session", id, &r.data)?;
+                    put(&tx, a, p, "session", "current", &r.data)?;
+                    tx.commit().map_err(err)?;
                     Ok(Value::Null)
                 }
                 LoadSnapshot => read(conn, a, p, "snapshot", "current"),
@@ -367,8 +379,10 @@ fn restore(conn: &mut Connection, account: &str, text: &str) -> Result<()> {
         }
         if ["activity", "attempt"].contains(&kind.as_str()) {
             validate_record(data, id)?;
-        } else if id != "current" {
+        } else if kind == "snapshot" && id != "current" {
             return Err("Invalid singleton key".into());
+        } else if kind == "session" && id != "current" {
+            validate_record(data, id)?;
         }
         tx.execute(
             "INSERT INTO records VALUES(?,?,?,?,?)",
@@ -424,7 +438,7 @@ mod tests {
         profile(&mut c, "b");
         execute(
             &mut c,
-            request("a", Operation::SaveSession, json!({"session":1})),
+            request("a", Operation::SaveSession, json!({"id":"session1"})),
         )
         .unwrap();
         assert_eq!(
@@ -513,6 +527,58 @@ mod tests {
         assert!(migrate(&c).is_err());
         assert!(encoded(&json!("x".repeat(MAX_JSON))).is_err());
         assert!(execute(&mut c, request("", Operation::ListProfiles, Value::Null)).is_err());
+    }
+    #[test]
+    fn snapshot_write_failure_rolls_back_attempt() {
+        let mut c = db();
+        profile(&mut c, "a");
+        execute(
+            &mut c,
+            request("a", Operation::SaveActivity, json!({"id":"activity"})),
+        )
+        .unwrap();
+        c.execute_batch("CREATE TRIGGER reject_snapshot BEFORE INSERT ON records WHEN NEW.kind='snapshot' BEGIN SELECT RAISE(ABORT,'simulated disk write failure'); END;").unwrap();
+        assert!(
+            execute(
+                &mut c,
+                request(
+                    "a",
+                    Operation::RecordAttempt,
+                    json!({"id":"attempt","activityId":"activity"})
+                )
+            )
+            .is_err()
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListAttempts, Value::Null)).unwrap(),
+            json!([])
+        );
+    }
+    #[test]
+    fn journals_remain_account_scoped_and_outside_backup() {
+        let mut c = db();
+        profile(&mut c, "a");
+        execute(
+            &mut c,
+            request("a", Operation::PutJournal, json!({"operation":"pending"})),
+        )
+        .unwrap();
+        assert_eq!(
+            execute(&mut c, request("b", Operation::GetJournal, Value::Null)).unwrap(),
+            Value::Null
+        );
+        let backup = export(&mut c, "a").unwrap();
+        assert!(!backup.contains("pending"));
+        restore(&mut c, "a", &backup).unwrap();
+        assert_eq!(
+            execute(&mut c, request("a", Operation::GetJournal, Value::Null)).unwrap()["operation"],
+            "pending"
+        );
+        execute(&mut c, request("a", Operation::DeleteAccount, Value::Null)).unwrap();
+        assert_eq!(
+            execute(&mut c, request("a", Operation::GetJournal, Value::Null)).unwrap(),
+            Value::Null
+        );
     }
     #[test]
     fn durable_restart() {
