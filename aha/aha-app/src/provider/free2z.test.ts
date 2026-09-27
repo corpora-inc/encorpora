@@ -6,7 +6,7 @@ const session: Session = {signedIn:true,subject:'adult',generation:'one',granted
 function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}]) {
   let value: unknown; const calls: {request:ChatRequest; options:any}[] = []; let activeSession = session;
   let cap: bigint | null = 500000n; let cancelled = 0;
-  const journal: Journal = {getJournal:async()=>structuredClone(value),putJournal:async(_key,v)=>{value=structuredClone(v);}};
+  const journal: Journal = {getJournal:async()=>structuredClone(value),putJournal:async(key,v)=>{if(key==='aha-billing-v1')value=structuredClone(v);}};
   const client: SdkClient = {
     session:async()=>activeSession, signIn:async()=>session, signOut:async()=>({revoked:true,generation:'two'}),
     balance:async()=>({available_milli_2z:500000n,held_milli_2z:0n,balance_milli_2z:500000n,debt_milli_2z:0n,as_of:new Date().toISOString()}),
@@ -20,7 +20,7 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
       return Object.assign(iterator,{operationId:options.operationId,idempotencyKey:options.idempotencyKey,callId:'call',cancel:async()=>{cancelled++;}}) as ChatStream;
     }
   };
-  return {client,journal,tutor:new Free2zTutor(client,journal,'adult'),calls,authorization:{subject:'adult',maximum2z:500n},setCap:(v:bigint|null)=>{cap=v;},setSession:(v:Session)=>{activeSession=v;},getValue:()=>value as any,cancelled:()=>cancelled};
+  return {client,journal,tutor:new Free2zTutor(client,journal,'adult'),calls,authorization:{subject:'adult',maximum2z:500n,verifiedGrant:{subject:'adult',period:'total' as const,limit2z:500n}},setCap:(v:bigint|null)=>{cap=v;},setSession:(v:Session)=>{activeSession=v;},getValue:()=>value as any,cancelled:()=>cancelled};
 }
 test('formats balances without losing integer precision',()=>{assert.equal(format2z(9007199254740993123n),'9007199254740993.123 2Z');assert.equal(format2z(-1500n),'-1.5 2Z');});
 test('journals before invocation and persists finalized output and exact receipt',async()=>{const f=fixture();const r=await f.tutor.reply('verified-model','policy','context',f.authorization);assert.equal(r.text,'{"activity":true}');assert.equal(f.getValue().operations[0].charge.charged2z,'2');assert.equal(f.getValue().operations[0].state,'finalized');});
@@ -31,3 +31,8 @@ test('account mismatch prevents billable work',async()=>{const f=fixture();f.set
 test('same-operation recovery preserves request and key; never starts a fresh operation',async()=>{const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));const op=f.getValue().operations[0];await assert.rejects(f.tutor.recover(op.id));assert.deepEqual(f.calls[0],f.calls[1]);});
 test('concurrent generation cannot double charge on duplicate taps',async()=>{const f=fixture();const first=f.tutor.reply('verified-model','p','c',f.authorization);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'busy'});await first;assert.equal(f.calls.length,1);});
 test('remaining authorization includes finalized charges, not only current call estimate',async()=>{const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_cap_required'});assert.equal(f.calls.length,1);f.setCap(498000n);await f.tutor.reply('verified-model','p','c',f.authorization);assert.equal(f.calls.length,2);});
+
+test('unverified or periodic grant metadata cannot authorize paid tests',async()=>{const f=fixture();await assert.rejects(f.tutor.reply('verified-model','p','c',{subject:'adult',maximum2z:500n} as any),{code:'grant_verification_required'});assert.equal(f.calls.length,0);});
+test('cancel during opening journal write prevents invocation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')await f.tutor.cancel();};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});assert.equal(f.calls.length,0);});
+test('account change during opening journal write prevents invocation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')f.setSession({...session,generation:'new'});};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});assert.equal(f.calls.length,0);});
+test('disk full while streaming cannot skip native cancellation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{if(['streaming','interrupted'].includes(v.operations?.at(-1)?.state))throw new Error('disk full');await original(k,v);};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'journal_write_failed'});assert.ok(f.cancelled()>0);assert.equal(f.getValue().operations[0].state,'opening');});

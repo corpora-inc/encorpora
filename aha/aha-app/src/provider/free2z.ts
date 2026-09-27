@@ -3,7 +3,7 @@ import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
 export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'models' | 'estimate' | 'chat' | 'call'>;
-export interface TestAuthorization { subject: string; maximum2z: bigint }
+export interface TestAuthorization { subject: string; maximum2z: bigint; verifiedGrant: { subject: string; period: 'total'; limit2z: bigint } }
 interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string }
 interface Operation {
   id: string; key: string; subject: string; generation: string; createdAt: string;
@@ -12,7 +12,8 @@ interface Operation {
 }
 interface Ledger { version: 1; operations: Operation[] }
 const SLOT = 'aha-billing-v1';
-const MAX_TEXT = 64_000;
+const MAX_TEXT = 24_000;
+const MAX_JOURNAL_BYTES = 480_000;
 export class TutorServiceError extends Error {
   constructor(public readonly code: string, message: string) { super(message); this.name = 'TutorServiceError'; }
 }
@@ -47,7 +48,19 @@ export class Free2zTutor {
   private active?: ChatStream;
   constructor(readonly client: SdkClient, private readonly journal: Journal, private readonly subject: string) {}
   private async ledger(): Promise<Ledger> { return readLedger(await this.journal.getJournal(SLOT)); }
-  private async persist(ledger: Ledger): Promise<void> { await this.journal.putJournal(SLOT, ledger); }
+  private async persist(ledger: Ledger): Promise<void> {
+    if (new TextEncoder().encode(JSON.stringify(ledger)).length > MAX_JOURNAL_BYTES)
+      throw new TutorServiceError('journal_capacity', 'The usage journal needs archival before more AI requests.');
+    await this.journal.putJournal(SLOT, ledger);
+  }
+  private async archiveFinalized(ledger: Ledger): Promise<void> {
+    for (const op of ledger.operations) {
+      if (op.state !== 'finalized' || (!op.text && !op.request.messages.length)) continue;
+      await this.journal.putJournal(`aha-call-${op.id}`, op);
+      op.text = ''; op.request = {...op.request, messages: []};
+    }
+    await this.persist(ledger);
+  }
   private async current(): Promise<Session> {
     const session = await this.client.session();
     if (!session.signedIn || session.subject !== this.subject) throw new TutorServiceError('account_changed', 'Sign in to the account that started this session.');
@@ -79,10 +92,14 @@ export class Free2zTutor {
       const session = await this.current();
       if (authorization.subject !== session.subject || authorization.maximum2z <= 0n || authorization.maximum2z > 500n)
         throw new TutorServiceError('authorization_required', 'Identify the approved test account and its budget before using paid AI.');
-      if (system.length + context.length > 40_000) throw new TutorServiceError('context_limit', 'The learning context is too large.');
+      const grant = authorization.verifiedGrant;
+      if (!grant || grant.subject !== session.subject || grant.period !== 'total' || grant.limit2z <= 0n || grant.limit2z > authorization.maximum2z)
+        throw new TutorServiceError('grant_verification_required', 'Live testing requires verified total-period Free2Z grant metadata for this account. An estimate does not establish the grant period.');
+      if (system.length + context.length > 16_000) throw new TutorServiceError('context_limit', 'The learning context is too large.');
       const ledger = await this.ledger();
       if (ledger.operations.some(o => o.subject !== this.subject)) throw new TutorServiceError('account_mismatch', 'Usage records belong to another account.');
       if (ledger.operations.some(o => o.state !== 'finalized')) throw new TutorServiceError('settlement_pending', 'An earlier AI request still needs receipt recovery. No new paid request was sent.');
+      await this.archiveFinalized(ledger);
       const spent = ledger.operations.reduce((n, o) => n + BigInt(o.charge?.charged2z ?? '0'), 0n);
       const remaining = authorization.maximum2z - spent;
       if (remaining <= 0n) throw new TutorServiceError('budget_exhausted', 'The authorized test budget has been used.');
@@ -98,7 +115,10 @@ export class Free2zTutor {
       const after = await this.current();
       if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
       const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages:request.messages,maxOutputTokens:'1800'},state:'opening',text:'' };
-      ledger.operations.push(op); await this.persist(ledger);
+      ledger.operations.push(op);
+      if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
+        throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
+      await this.persist(ledger);
       return await this.run(ledger, op, request);
     } finally { this.active = undefined; this.busy = false; }
   }
@@ -120,6 +140,10 @@ export class Free2zTutor {
   private async run(ledger: Ledger, op: Operation, request: ChatRequest): Promise<{text: string; operationId: string}> {
     let completed = false;
     try {
+      // Persistence may have yielded for a long time. Fence again at the send boundary.
+      const beforeSend = await this.current();
+      if (beforeSend.generation !== op.generation || this.cancelled)
+        throw new TutorServiceError('cancelled', 'Account changed or request cancelled before sending.');
       const stream = await this.client.chat(request,{operationId:op.id,idempotencyKey:op.key}); this.active = stream;
       if (this.cancelled) { await stream.cancel(); throw new TutorServiceError('cancelled', 'Delivery stopped; billing may still settle.'); }
       const session = await this.current();
@@ -153,8 +177,11 @@ export class Free2zTutor {
     } catch (error) {
       op.callId ??= this.active?.callId;
       if (op.state !== 'finalized' && op.state !== 'settling') op.state = 'interrupted';
-      await this.persist(ledger);
-      try { await this.active?.cancel(); } catch { /* uncertain billing stays journaled */ }
+      // Cancellation must happen even when disk-full prevents a journal update.
+      try { await this.active?.cancel(); } catch { /* original opening record remains uncertain */ }
+      try { await this.persist(ledger); } catch {
+        throw new TutorServiceError('journal_write_failed', 'Local storage failed. Delivery was stopped; the saved opening request still requires receipt recovery.');
+      }
       if (error instanceof TutorServiceError) throw error;
       throw new TutorServiceError('service_unavailable','Free2Z could not finish this request. Its identity is saved for recovery.');
     }
