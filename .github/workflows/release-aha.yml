@@ -37,6 +37,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Verify release checks
+        run: python3 -m unittest discover -s aha/scripts -p 'test_*.py'
       - id: release
         env:
           PLATFORMS: ${{ inputs.platforms || 'both' }}
