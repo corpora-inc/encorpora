@@ -11,11 +11,11 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 | Free2Z | #808 | Merged #824 + native SDK host #827 | Real SDK packaged; paid/live acceptance remains blocked |
 | Standards and learning | #809 | Merged #815 | Original K–8 graph; 90 verified numerical facets, 139 guided-only standards |
 | Experience | #810 | Merged #814 and #824 | Accessible guided journey and bounded visual renderers |
-| Integrated verification | #811 | 65 tests + controller browser regressions pass; native Android emulator and upgrade verified | See ACCEPTANCE.md; live/iOS device acceptance remains |
+| Integrated verification | #811 | 65 tests + controller browser regressions pass; native Android emulator/upgrade and iOS simulator verified | See ACCEPTANCE.md; live, physical-device and signed-release acceptance remains |
 | Internal delivery | #812 | Release tooling merged #821, #826, #828 | Both store records exist; Apple internal tester preflight verified; no processed tester-available build yet |
 
 ## Active constraints
-- iOS startup requires ASCII native executable identifiers (issue #830); the visible brand remains ¡AHA!. Controlled simulator rebuild launches; full iOS native acceptance continues.
+- iOS startup requires ASCII native executable identifiers (issue #830); the visible brand remains ¡AHA!. Native simulator learning, restart, quarantine and backup acceptance passed with the tracked fix and proper simulator Keychain entitlements. Physical-device and signed-release acceptance remain required.
 - GitHub issue creation works; Project API returns missing `read:project` scope. Issues exist but board movement is not verified. Do not claim Doing/Done transitions.
 - Existing primary checkout has unrelated untracked Dynawalla files. Preserve them; all AHA changes use isolated worktrees.
 - SDK source preview is usable; live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
