@@ -80,13 +80,18 @@ export function Studio(props: StudioProps) {
     return () => props.onLearningVisibleChange?.(false);
   }, [learningVisible, props.onLearningVisibleChange]);
   return (
-    <div className="aha-studio">
+    <div className={`aha-studio${a && tab === "learn" ? " has-activity" : ""}`}>
       <a className="skip-link" href="#activity">
         Skip to learning
       </a>
       {props.mode === "preview" && (
         <div className="preview-banner">
           Browser preview · sample practice · progress stays in this preview
+        </div>
+      )}
+      {props.practiceStatus && (
+        <div className="preview-banner" role="status">
+          {props.practiceStatus}
         </div>
       )}
       <header className="studio-header">
@@ -184,6 +189,11 @@ export function Studio(props: StudioProps) {
                   }}
                 />
               </div>
+              {props.busy && props.onCancel && (
+                <button className="secondary-button" onClick={props.onCancel}>
+                  Stop AI request
+                </button>
+              )}
               <article className="activity-card" aria-busy={props.busy}>
                 <div className="activity-topline">
                   <span className="lesson-tag">
@@ -680,6 +690,11 @@ export function Studio(props: StudioProps) {
                 <p className="account-status">{props.account.status}</p>
               )}
               <div className="settings-buttons">
+                {props.busy && props.onCancel && (
+                  <button className="secondary-button" onClick={props.onCancel}>
+                    Stop AI request
+                  </button>
+                )}
                 {props.account.connected ? (
                   <>
                     <button
@@ -688,6 +703,41 @@ export function Studio(props: StudioProps) {
                     >
                       <LogOut size={16} /> Sign out
                     </button>
+                    {props.onRecoverUsage && (
+                      <button
+                        className="secondary-button"
+                        disabled={props.busy}
+                        onClick={props.onRecoverUsage}
+                      >
+                        Check pending AI usage
+                      </button>
+                    )}
+                    {props.pendingUsage?.map((op) => (
+                      <div key={op.operationId}>
+                        <p>
+                          Interrupted request from{" "}
+                          {new Date(op.createdAt).toLocaleString()}. Recovery
+                          can complete the original paid request; it does not
+                          create a replacement.
+                        </p>
+                        {op.canRecover && props.onRecoverRequest ? (
+                          <button
+                            className="secondary-button"
+                            disabled={props.busy}
+                            onClick={() =>
+                              props.onRecoverRequest?.(op.operationId)
+                            }
+                          >
+                            Recover original request
+                          </button>
+                        ) : (
+                          <p>
+                            Recovery window expired. Keep this usage record for
+                            support.
+                          </p>
+                        )}
+                      </div>
+                    ))}
                     {props.account.purchaseAvailable && props.onTopUp && (
                       <button
                         className="primary-button"
