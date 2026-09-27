@@ -10,7 +10,7 @@ As of September 27, 2026:
 | Target | Verified distribution evidence | Remaining blocker |
 |---|---|---|
 | TestFlight internal | No uploaded, processed AHA build or tester availability verified | App record and an existing authorized internal tester are verified; signed build upload, processing, and installation remain unverified |
-| Google Play internal | No AHA internal release or tester availability verified | The authenticated Console account’s Create app button is disabled; an authorized account with app-creation permission is needed |
+| Google Play internal | No AHA internal release or tester availability verified | App-creation access is available; the owner must review the required policy/export declarations and complete app setup |
 
 These are observed access/setup blockers. Neither an unsigned native build nor a
 browser preview satisfies either delivery target. Operational details and signing
