@@ -1,5 +1,6 @@
 /** Explicit TEST-ONLY browser IPC fixture. Not native SQLite/device/service acceptance. */
 import assert from 'node:assert/strict';
+import { stripVTControlCharacters } from 'node:util';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -46,7 +47,7 @@ try{
   let ready=false;
   for(let i=0;i<100;i++){
     if(vite.exitCode!==null)throw new Error(`Vite exited: ${output}`);
-    try{if(output.includes('http://127.0.0.1:1435')&&(await fetch('http://127.0.0.1:1435')).ok){ready=true;break;}}catch{}
+    try{if(stripVTControlCharacters(output).includes('http://127.0.0.1:1435')&&(await fetch('http://127.0.0.1:1435')).ok){ready=true;break;}}catch{}
     await new Promise(r=>setTimeout(r,100));
   }
   assert.ok(ready,`Vite startup: ${output}`);
