@@ -20,6 +20,8 @@ least `0x4000`, alongside APK ZIP alignment. No developer-specific NDK path is
 committed to Cargo configuration.
 
 Icons are generated from `icons/source.svg`, with persisted iOS/Android sizes.
+iOS app icons are stored as opaque RGB PNGs without an alpha channel; preserve
+that encoding when regenerating to avoid App Store icon validation failures.
 The app uses the existing homeschool iOS share plugin as an iOS-only dependency;
 changes to that shared plugin must exercise AHA's iOS build as well. Filesystem and
 dialog plugins are called from Rust only. The WebView has no generic filesystem,
