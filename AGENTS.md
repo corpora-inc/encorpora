@@ -14,6 +14,26 @@ that says otherwise is stale — fix it or delete it.
 > The CEO is no longer the gate. Machine-enforced checks are. Green = it ships to
 > production. **Prune this doc as it ages — delete what you don't need.**
 
+## Public repository: protect operational information
+
+This repository, its issues, PRs, review comments, CI logs, screenshots, and
+artifacts are public. Treat every published surface accordingly.
+
+- Never publish passwords, tokens, cookies, signing/private keys, credential
+  exports, recovery codes, or actual credential key/issuer identifiers.
+- Keep personal login usernames, account-specific access portals, login recovery
+  reminders, and operational access runbooks in the private
+  [infrastructure repository](https://github.com/corpora-inc/infra-private).
+  Public documentation and examples use placeholders and non-sensitive pointers.
+- Actual secrets stay in the approved password manager, Secrets Manager, or
+  platform secret storage. **Private Git is not a secret store.** Verify a
+  destination is private before writing operational information there.
+- Inspect/redact logs and screenshots before publishing. Confirm credentials by
+  presence or a safe identity/permission check, never by printing their values.
+  Report access blockers publicly without personal/account-specific details.
+- A later deletion does not erase Git history. Report an exposure privately and
+  handle rotation or history changes with the appropriate authorization.
+
 ## The board: Inbox → Doing → Done
 
 One Project board. Three columns. It is a fast-draining queue, **not an archive**.
