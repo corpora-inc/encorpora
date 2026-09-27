@@ -80,7 +80,7 @@ export function Studio(props: StudioProps) {
     return () => props.onLearningVisibleChange?.(false);
   }, [learningVisible, props.onLearningVisibleChange]);
   return (
-    <div className="aha-studio">
+    <div className={`aha-studio${a && tab === "learn" ? " has-activity" : ""}`}>
       <a className="skip-link" href="#activity">
         Skip to learning
       </a>

@@ -689,7 +689,9 @@ export default function Controller() {
                   ? "text"
                   : gradeAnswer(activity, "0").expected.includes("/")
                     ? "fraction"
-                    : "number",
+                    : typeof skill?.grade === "number" && skill.grade >= 6
+                      ? "text"
+                      : "number",
               choices: activity.choices?.map((x) => ({ id: x, label: x })),
               visual: visual(activity.visual),
             }
