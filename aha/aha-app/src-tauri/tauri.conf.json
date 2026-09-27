@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "\u00a1AHA!",
+  "version": "0.1.0",
+  "identifier": "inc.corpora.aha",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "\u00a1AHA!",
+        "width": 1100,
+        "height": 800,
+        "minWidth": 360,
+        "minHeight": 600
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' ipc: http://ipc.localhost; object-src 'none'; base-uri 'none'; frame-src 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "iOS": {
+      "minimumSystemVersion": "16.0",
+      "template": "src-tauri/ios/project.yml",
+      "developmentTeam": "F9AV5HKF6N"
+    },
+    "android": {
+      "minSdkVersion": 29
+    }
+  }
+}
