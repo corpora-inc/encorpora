@@ -13,6 +13,9 @@ They own session, activity, attempt and snapshot records through composite
 account/profile keys. Activities are immutable, attempts append-only, and duplicate
 attempt IDs must match their original payload. Recording an attempt and replacing
 its derived snapshot is one transaction; retry returns the current durable snapshot.
+`recordDispute` atomically appends an idempotent audit record and replaces the
+authoritative snapshot with the controller-rebuilt quarantined state. Retry never
+reapplies stale state. Disputes survive restart and backup/restore.
 Persist the activity before submitting its first answer. Persist a paused session
 before backgrounding; storage rejects failures instead of pretending they succeeded.
 
@@ -35,7 +38,7 @@ so `getRecoveryBackup()` can recover from importing a valid but older backup.
 The recovery snapshot is excluded from normal export to prevent recursive backups.
 
 An app update whose database schema is newer than this binary is refused, never
-reset. `PRAGMA user_version` 1 is the initial schema; version 2 adds the recovery snapshot table. Add future migrations in
+reset. `PRAGMA user_version` 1 is the initial schema; version 2 adds the recovery snapshot table; version 3 adds append-only disputes. Add future migrations in
 transactions and extend reopen/import compatibility tests.
 
 

@@ -5,7 +5,8 @@ export interface Profile { id: string; name: string; grade: number; createdAt: s
 export interface StoredSession { id: string; updatedAt: string; data: Json }
 export interface ActivityRecord { id: string; sessionId: string; createdAt: string; data: Json }
 export interface AttemptRecord { id: string; activityId: string; sessionId: string; createdAt: string; data: Json }
-export interface BackupPreview { backup: string; profileCount: number; activityCount: number; attemptCount: number }
+export interface DisputeRecord { id: string; activityId: string; createdAt: string; reason: string }
+export interface BackupPreview { backup: string; profileCount: number; activityCount: number; attemptCount: number; disputeCount: number }
 export interface AttemptResult { inserted: boolean; snapshot: Json }
 export interface LocalRepository {
   listProfiles(): Promise<Profile[]>
@@ -17,6 +18,8 @@ export interface LocalRepository {
   listActivities(profileId: string): Promise<ActivityRecord[]>
   recordAttempt(profileId: string, attempt: AttemptRecord, snapshot: Json): Promise<AttemptResult>
   listAttempts(profileId: string): Promise<AttemptRecord[]>
+  recordDispute(profileId: string, dispute: DisputeRecord, snapshot: Json): Promise<void>
+  listDisputes(profileId: string): Promise<DisputeRecord[]>
   loadSnapshot(profileId: string): Promise<Json>
   getJournal(key: string): Promise<Json>
   putJournal(key: string, data: Json): Promise<void>
@@ -53,6 +56,8 @@ export class NativeRepository implements LocalRepository {
   listActivities(profileId: string): Promise<ActivityRecord[]> { return this.call('listActivities', { profileId }) }
   recordAttempt(profileId: string, attempt: AttemptRecord, snapshot: Json): Promise<AttemptResult> { return this.call('recordAttempt', { profileId, key: attempt.id, data: attempt, snapshot }) }
   listAttempts(profileId: string): Promise<AttemptRecord[]> { return this.call('listAttempts', { profileId }) }
+  recordDispute(profileId: string, dispute: DisputeRecord, snapshot: Json): Promise<void> { return this.call('recordDispute', { profileId, key: dispute.id, data: dispute, snapshot }) }
+  listDisputes(profileId: string): Promise<DisputeRecord[]> { return this.call('listDisputes', { profileId }) }
   loadSnapshot(profileId: string): Promise<Json> { return this.call('loadSnapshot', { profileId }) }
   getJournal(key: string): Promise<Json> { return this.call('getJournal', { key }) }
   putJournal(key: string, data: Json): Promise<void> { return this.call('putJournal', { key, data }) }

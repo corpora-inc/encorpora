@@ -49,6 +49,8 @@ pub enum Operation {
     SaveActivity,
     ListActivities,
     RecordAttempt,
+    RecordDispute,
+    ListDisputes,
     ListAttempts,
     LoadSnapshot,
     GetJournal,
@@ -86,7 +88,7 @@ fn migrate(conn: &Connection) -> Result<()> {
     let version: u32 = conn
         .query_row("PRAGMA user_version", [], |r| r.get(0))
         .map_err(err)?;
-    if version > 2 {
+    if version > 3 {
         return Err("Database requires a newer version of AHA".into());
     }
     if version == 0 {
@@ -98,6 +100,13 @@ fn migrate(conn: &Connection) -> Result<()> {
     }
     if version < 2 {
         conn.execute_batch("BEGIN IMMEDIATE; CREATE TABLE recovery(account TEXT PRIMARY KEY NOT NULL, data TEXT NOT NULL CHECK(json_valid(data))); PRAGMA user_version=2; COMMIT;").map_err(err)?;
+    }
+    if version < 3 {
+        conn.execute_batch("BEGIN IMMEDIATE;
+          CREATE TABLE records_v3(account TEXT NOT NULL, profile TEXT NOT NULL, kind TEXT NOT NULL CHECK(kind IN ('session','activity','attempt','snapshot','dispute')), id TEXT NOT NULL, data TEXT NOT NULL CHECK(json_valid(data)), PRIMARY KEY(account,profile,kind,id), FOREIGN KEY(account,profile) REFERENCES profiles(account,id) ON DELETE CASCADE);
+          INSERT INTO records_v3 SELECT account,profile,kind,id,data FROM records ORDER BY rowid;
+          DROP TABLE records; ALTER TABLE records_v3 RENAME TO records;
+          PRAGMA user_version=3; COMMIT;").map_err(err)?;
     }
     Ok(())
 }
@@ -264,6 +273,40 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
                 LoadSnapshot => read(conn, a, p, "snapshot", "current"),
                 ListActivities => list(conn, a, p, "activity"),
                 ListAttempts => list(conn, a, p, "attempt"),
+                ListDisputes => list(conn, a, p, "dispute"),
+                RecordDispute => {
+                    identifier(k)?;
+                    validate_record(&r.data, k)?;
+                    encoded(&r.snapshot)?;
+                    let activity = r
+                        .data
+                        .get("activityId")
+                        .and_then(Value::as_str)
+                        .ok_or("Dispute requires activityId")?;
+                    let reason = r
+                        .data
+                        .get("reason")
+                        .and_then(Value::as_str)
+                        .ok_or("Dispute requires reason")?;
+                    if reason.trim().is_empty() || reason.len() > 2000 {
+                        return Err("Dispute reason must be 1..2000 bytes".into());
+                    }
+                    let tx = conn.transaction().map_err(err)?;
+                    let existing = read(&tx, a, p, "dispute", k)?;
+                    if !existing.is_null() {
+                        if existing != r.data {
+                            return Err("Dispute id collision".into());
+                        }
+                        return Ok(Value::Null);
+                    }
+                    if read(&tx, a, p, "activity", activity)?.is_null() {
+                        return Err("Disputed activity not found".into());
+                    }
+                    put(&tx, a, p, "dispute", k, &r.data)?;
+                    put(&tx, a, p, "snapshot", "current", &r.snapshot)?;
+                    tx.commit().map_err(err)?;
+                    Ok(Value::Null)
+                }
                 SaveActivity => {
                     identifier(k)?;
                     validate_record(&r.data, k)?;
@@ -392,10 +435,10 @@ fn restore(conn: &mut Connection, account: &str, text: &str) -> Result<()> {
     for (profile, kind, id, data) in &b.payload.records {
         identifier(id)?;
         identifier(profile)?;
-        if !["session", "activity", "attempt", "snapshot"].contains(&kind.as_str()) {
+        if !["session", "activity", "attempt", "snapshot", "dispute"].contains(&kind.as_str()) {
             return Err("Invalid record kind".into());
         }
-        if ["activity", "attempt"].contains(&kind.as_str()) {
+        if ["activity", "attempt", "dispute"].contains(&kind.as_str()) {
             validate_record(data, id)?;
         } else if kind == "snapshot" && id != "current" {
             return Err("Invalid singleton key".into());
@@ -408,9 +451,9 @@ fn restore(conn: &mut Connection, account: &str, text: &str) -> Result<()> {
         )
         .map_err(err)?;
     }
-    let orphan:bool=tx.query_row("SELECT EXISTS(SELECT 1 FROM records a WHERE a.account=? AND a.kind='attempt' AND NOT EXISTS(SELECT 1 FROM records b WHERE b.account=a.account AND b.profile=a.profile AND b.kind='activity' AND b.id=json_extract(a.data,'$.activityId')))",[account],|r|r.get(0)).map_err(err)?;
+    let orphan:bool=tx.query_row("SELECT EXISTS(SELECT 1 FROM records a WHERE a.account=? AND a.kind IN ('attempt','dispute') AND NOT EXISTS(SELECT 1 FROM records b WHERE b.account=a.account AND b.profile=a.profile AND b.kind='activity' AND b.id=json_extract(a.data,'$.activityId')))",[account],|r|r.get(0)).map_err(err)?;
     if orphan {
-        return Err("Backup contains an orphan attempt".into());
+        return Err("Backup contains an orphan attempt or dispute".into());
     }
     // Billing/auth journals are intentionally not exported or restored: an old
     // payment operation must never be replayed by importing a learning backup.
@@ -430,7 +473,8 @@ pub fn preview(account: &str, text: &str) -> Result<Value> {
         "backup": text,
         "profileCount": backup.payload.profiles.len(),
         "activityCount": backup.payload.records.iter().filter(|r|r.1=="activity").count(),
-        "attemptCount": backup.payload.records.iter().filter(|r|r.1=="attempt").count()
+        "attemptCount": backup.payload.records.iter().filter(|r|r.1=="attempt").count(),
+        "disputeCount": backup.payload.records.iter().filter(|r|r.1=="dispute").count()
     }))
 }
 
@@ -557,7 +601,7 @@ mod tests {
     #[test]
     fn migrations_refuse_future_and_bound_records() {
         let mut c = db();
-        c.pragma_update(None, "user_version", 3).unwrap();
+        c.pragma_update(None, "user_version", 4).unwrap();
         assert!(migrate(&c).is_err());
         assert!(encoded(&json!("x".repeat(MAX_JSON))).is_err());
         assert!(execute(&mut c, request("", Operation::ListProfiles, Value::Null)).is_err());
@@ -681,7 +725,7 @@ mod tests {
         assert_eq!(
             c.query_row("PRAGMA user_version", [], |r| r.get::<_, u32>(0))
                 .unwrap(),
-            2
+            3
         );
         assert_eq!(
             execute(&mut c, request("a", Operation::ListProfiles, Value::Null))
@@ -699,6 +743,80 @@ mod tests {
             .unwrap(),
             Value::Null
         );
+    }
+    #[test]
+    fn disputes_quarantine_atomically_and_deduplicate() {
+        let path = std::env::temp_dir().join(format!(
+            "aha-dispute-{}-{}.sqlite",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        let mut c = open(&path).unwrap();
+        profile(&mut c, "a");
+        execute(
+            &mut c,
+            request("a", Operation::SaveActivity, json!({"id":"activity"})),
+        )
+        .unwrap();
+        let mut attempt = request(
+            "a",
+            Operation::RecordAttempt,
+            json!({"id":"answer","activityId":"activity"}),
+        );
+        attempt.snapshot = json!({"mastered":true});
+        execute(&mut c, attempt).unwrap();
+        let dispute = json!({"id":"dispute","activityId":"activity","reason":"incorrect answer key","createdAt":"2026-09-27"});
+        let mut req = request("a", Operation::RecordDispute, dispute.clone());
+        req.snapshot = json!({"mastered":false,"quarantined":["activity"]});
+        execute(&mut c, req).unwrap();
+        let mut replay = request("a", Operation::RecordDispute, dispute);
+        replay.snapshot = json!({"mastered":true});
+        execute(&mut c, replay).unwrap();
+        assert_eq!(
+            execute(&mut c, request("a", Operation::LoadSnapshot, Value::Null)).unwrap()["mastered"],
+            false
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListDisputes, Value::Null))
+                .unwrap()
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        drop(c);
+        let mut c = open(&path).unwrap();
+        assert_eq!(
+            execute(&mut c, request("a", Operation::LoadSnapshot, Value::Null)).unwrap()["mastered"],
+            false
+        );
+        let backup = export(&mut c, "a").unwrap();
+        let mut reopened = db();
+        restore(&mut reopened, "a", &backup).unwrap();
+        assert_eq!(
+            execute(
+                &mut reopened,
+                request("a", Operation::LoadSnapshot, Value::Null)
+            )
+            .unwrap()["quarantined"],
+            json!(["activity"])
+        );
+        assert!(
+            execute(
+                &mut c,
+                request(
+                    "a",
+                    Operation::RecordDispute,
+                    json!({"id":"dispute","activityId":"activity","reason":"different"})
+                )
+            )
+            .is_err()
+        );
+        drop(c);
+        std::fs::remove_file(path).unwrap();
     }
     #[test]
     fn durable_restart() {
