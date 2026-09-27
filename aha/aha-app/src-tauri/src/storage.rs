@@ -88,7 +88,7 @@ fn migrate(conn: &Connection) -> Result<()> {
     let version: u32 = conn
         .query_row("PRAGMA user_version", [], |r| r.get(0))
         .map_err(err)?;
-    if version > 3 {
+    if version > 4 {
         return Err("Database requires a newer version of AHA".into());
     }
     if version == 0 {
@@ -107,6 +107,9 @@ fn migrate(conn: &Connection) -> Result<()> {
           INSERT INTO records_v3 SELECT account,profile,kind,id,data FROM records ORDER BY rowid;
           DROP TABLE records; ALTER TABLE records_v3 RENAME TO records;
           PRAGMA user_version=3; COMMIT;").map_err(err)?;
+    }
+    if version < 4 {
+        conn.execute_batch("BEGIN IMMEDIATE; CREATE UNIQUE INDEX one_attempt_per_activity ON records(account,profile,json_extract(data,'$.activityId')) WHERE kind='attempt'; PRAGMA user_version=4; COMMIT;").map_err(err)?;
     }
     Ok(())
 }
@@ -342,6 +345,10 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
                     let disputed: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM records WHERE account=? AND profile=? AND kind='dispute' AND json_extract(data,'$.activityId')=?)", params![a,p,activity], |row|row.get(0)).map_err(err)?;
                     if disputed {
                         return Err("This activity is quarantined and cannot earn credit".into());
+                    }
+                    let answered: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM records WHERE account=? AND profile=? AND kind='attempt' AND json_extract(data,'$.activityId')=?)", params![a,p,activity], |row|row.get(0)).map_err(err)?;
+                    if answered {
+                        return Err("This activity has already been answered".into());
                     }
                     put(&tx, a, p, "attempt", k, &r.data)?;
                     put(&tx, a, p, "snapshot", "current", &r.snapshot)?;
@@ -605,7 +612,7 @@ mod tests {
     #[test]
     fn migrations_refuse_future_and_bound_records() {
         let mut c = db();
-        c.pragma_update(None, "user_version", 4).unwrap();
+        c.pragma_update(None, "user_version", 5).unwrap();
         assert!(migrate(&c).is_err());
         assert!(encoded(&json!("x".repeat(MAX_JSON))).is_err());
         assert!(execute(&mut c, request("", Operation::ListProfiles, Value::Null)).is_err());
@@ -744,7 +751,7 @@ mod tests {
         assert_eq!(
             c.query_row("PRAGMA user_version", [], |r| r.get::<_, u32>(0))
                 .unwrap(),
-            3
+            4
         );
         assert_eq!(
             execute(&mut c, request("a", Operation::ListProfiles, Value::Null))
@@ -883,6 +890,59 @@ mod tests {
         );
         drop(c);
         std::fs::remove_file(path).unwrap();
+    }
+    #[test]
+    fn different_attempt_ids_cannot_replace_first_evidence() {
+        let mut c = db();
+        profile(&mut c, "a");
+        execute(
+            &mut c,
+            request("a", Operation::SaveActivity, json!({"id":"activity"})),
+        )
+        .unwrap();
+        let mut first = request(
+            "a",
+            Operation::RecordAttempt,
+            json!({"id":"first","activityId":"activity"}),
+        );
+        first.snapshot = json!({"mastered":true});
+        execute(&mut c, first).unwrap();
+        let mut retry = request(
+            "a",
+            Operation::RecordAttempt,
+            json!({"id":"different-id","activityId":"activity"}),
+        );
+        retry.snapshot = json!({"mastered":false});
+        assert!(
+            execute(&mut c, retry)
+                .unwrap_err()
+                .contains("already been answered")
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListAttempts, Value::Null))
+                .unwrap()
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::LoadSnapshot, Value::Null)).unwrap()["mastered"],
+            true
+        );
+        let mut backup: Backup = serde_json::from_str(&export(&mut c, "a").unwrap()).unwrap();
+        backup.payload.records.push((
+            "learner".into(),
+            "attempt".into(),
+            "another".into(),
+            json!({"id":"another","activityId":"activity"}),
+        ));
+        backup.sha256 = digest(&backup.payload).unwrap();
+        assert!(restore(&mut c, "a", &serde_json::to_string(&backup).unwrap()).is_err());
+        assert_eq!(
+            execute(&mut c, request("a", Operation::LoadSnapshot, Value::Null)).unwrap()["mastered"],
+            true
+        );
     }
     #[test]
     fn durable_restart() {

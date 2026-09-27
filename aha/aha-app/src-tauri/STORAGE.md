@@ -11,7 +11,9 @@ No raw SQL or arbitrary file paths cross the bridge. No silent web-storage fallb
 Profiles retain historical sessions plus a resumable current-session copy.
 They own session, activity, attempt and snapshot records through composite
 account/profile keys. Activities are immutable, attempts append-only, and duplicate
-attempt IDs must match their original payload. Recording an attempt and replacing
+attempt IDs must match their original payload. A different attempt ID for an already
+answered activity is rejected, and a partial unique SQLite index enforces the same
+invariant during backup restore. Only the first attempt can add evidence. Recording an attempt and replacing
 its derived snapshot is one transaction; retry returns the current durable snapshot.
 `recordDispute` atomically appends an idempotent audit record and replaces the
 authoritative snapshot with the controller-rebuilt quarantined state. Retry never
@@ -38,7 +40,7 @@ so `getRecoveryBackup()` can recover from importing a valid but older backup.
 The recovery snapshot is excluded from normal export to prevent recursive backups.
 
 An app update whose database schema is newer than this binary is refused, never
-reset. `PRAGMA user_version` 1 is the initial schema; version 2 adds the recovery snapshot table; version 3 adds append-only disputes. Add future migrations in
+reset. `PRAGMA user_version` 1 is the initial schema; version 2 adds the recovery snapshot table; version 3 adds append-only disputes; version 4 enforces one attempt per activity. Add future migrations in
 transactions and extend reopen/import compatibility tests.
 
 
