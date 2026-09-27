@@ -212,6 +212,8 @@ jobs:
               assert len(names)==1
               info=plistlib.loads(z.read(names[0]))
               assert info['CFBundleIdentifier']==os.environ['BUNDLE_ID']
+              assert info['CFBundleExecutable']=='aha'
+              assert info['CFBundleDisplayName']=='¡AHA!'
               assert info['CFBundleShortVersionString']==json.loads(pathlib.Path('src-tauri/tauri.conf.json').read_text())['version']
               version=info['CFBundleVersion']
               assert version==os.environ['BUILD_NUMBER'] or version.endswith('.'+os.environ['BUILD_NUMBER'])
