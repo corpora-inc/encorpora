@@ -1,8 +1,7 @@
 # Native build conventions
 
 Use Rust 1.97.1 (`rust-toolchain.toml`) and the app's pinned Tauri CLI 2.11.4.
-For npm-driven native commands, export `RUSTUP_TOOLCHAIN=1.97.1` as well:
-Gradle calls npm from the frontend directory, above the native toolchain file.
+The app-root toolchain file also covers Gradle's npm-driven Cargo invocation.
 Each app is its own Cargo root: do not add a shared workspace. Run the app's
 frontend build before native distribution builds.
 
@@ -10,6 +9,8 @@ Initialize from `aha/aha-app` with `npm run tauri -- ios init --ci` or
 `npm run tauri -- android init --ci`. The iOS source template is `ios/project.yml`,
 not the ignored generated Xcode project. CLI 2.11.4 generates Android compile/target
 SDK 36; the app config sets minimum API 29. The iOS minimum is 16.
+Supply `APPLE_DEVELOPMENT_TEAM` for signed iOS initialization/builds; no account's
+team identifier is baked into the app configuration or template.
 
 Pin Android NDK **28.2.13676358** by exporting
 `NDK_HOME="$ANDROID_HOME/ndk/28.2.13676358"` for both initialization and builds.
@@ -34,3 +35,27 @@ and `cargo check --target aarch64-apple-ios`. A complete Android debug APK and i
 archive still need the Tauri CLI/Gradle/Xcode pipeline; a Rust cross-check is not a
 signed or installable distribution artifact. Actual document picking/sharing and
 background/kill/resume behavior need device tests before release claims.
+
+## Free2Z native host
+
+The official plugin is pinned to the public source preview
+`39ec2720c3aff5384c46f6f53fe655657c79c40e`; its transitive core is the sole native
+client. Configure the public registration through the build environment variable
+`AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
+No credentials, endpoint overrides or callback injection commands are exposed to
+JavaScript. The local `main` window receives only the named Free2Z guest permissions.
+
+The mobile redirect is `inc.corpora.aha:/oauth/callback`. The tracked iOS template
+registers the scheme, and `build.rs` uses Tauri's manifest updater to insert the
+Android intent filter on native builds. The SDK checks callback path, attempt state
+and issuer; Android retains the generated `singleTask` activity configuration.
+Desktop uses `http://127.0.0.1:0/callback` registration with an ephemeral actual port.
+The purchase-return configuration is `https://encorpora.io/aha/purchase-return`.
+This version does not claim a verified HTTPS app link.
+
+`app_readiness` reports registration separately from paid testing. Paid testing and
+external checkout remain disabled until service availability, total-period consent,
+and store distribution rules are validated. Compiling the SDK does not establish
+successful login, persistent credentials, live metering or settlement. Those require
+registered-account testing on each shipping platform, without publishing account
+details or authentication logs.

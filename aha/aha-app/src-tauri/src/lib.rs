@@ -1,4 +1,5 @@
 mod documents;
+mod f2z;
 mod storage;
 use std::sync::{Arc, Mutex};
 use tauri::Manager;
@@ -24,7 +25,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init());
     #[cfg(target_os = "ios")]
     let builder = builder.plugin(tauri_plugin_ios_share::init());
-    builder
+    f2z::configure(builder)
         .setup(|app| {
             #[cfg(target_os = "ios")]
             {
@@ -43,7 +44,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             local_repository,
             documents::pick_backup,
-            documents::share_backup
+            documents::share_backup,
+            f2z::app_readiness
         ])
         .run(tauri::generate_context!())
         .expect("AHA could not open its native application");

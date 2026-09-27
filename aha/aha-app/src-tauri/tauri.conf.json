@@ -29,8 +29,7 @@
     "targets": "all",
     "iOS": {
       "minimumSystemVersion": "16.0",
-      "template": "src-tauri/ios/project.yml",
-      "developmentTeam": "F9AV5HKF6N"
+      "template": "src-tauri/ios/project.yml"
     },
     "android": {
       "minSdkVersion": 29

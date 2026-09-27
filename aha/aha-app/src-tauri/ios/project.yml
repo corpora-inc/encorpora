@@ -14,7 +14,6 @@ settingGroups:
     base:
       PRODUCT_NAME: ¡AHA!
       PRODUCT_BUNDLE_IDENTIFIER: inc.corpora.aha
-      DEVELOPMENT_TEAM: F9AV5HKF6N
 targetTemplates:
   app:
     type: application
@@ -44,6 +43,9 @@ targets:
       properties:
         LSRequiresIPhoneOS: true
         ITSAppUsesNonExemptEncryption: false
+        CFBundleURLTypes:
+          - CFBundleURLName: inc.corpora.aha
+            CFBundleURLSchemes: [inc.corpora.aha]
         UILaunchStoryboardName: LaunchScreen
         UIRequiredDeviceCapabilities: [arm64, metal]
         UISupportedInterfaceOrientations:
@@ -72,7 +74,6 @@ targets:
         EXCLUDED_ARCHS[sdk=iphoneos*]: x86_64 arm64-sim
         EXCLUDED_ARCHS[sdk=iphonesimulator*]: x86_64
         CODE_SIGN_STYLE: Automatic
-        DEVELOPMENT_TEAM: F9AV5HKF6N
       groups: [app]
     dependencies:
       - framework: libapp.a
