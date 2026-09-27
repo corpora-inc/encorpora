@@ -42,7 +42,7 @@ def ios_replies():
         ('GET','betaGroups/group/betaTesters'): {'data':[{'id':'existing'}]},
         ('GET','builds'): {'data':[{'id':'build','attributes':{'uploadedDate':'2026-09-27T15:00:00Z','processingState':'VALID','expired':False}}]},
         ('POST','betaGroups/group/relationships/builds'): {},
-        ('GET','builds/build/betaGroups'): {'data':[{'id':'group'}]},
+        ('GET','betaGroups/group/builds'): {'data':[{'id':'build'}]},
         ('GET','builds/build/buildBetaDetail'): {'data':{'attributes':{'internalBuildState':'IN_BETA_TESTING'}}},
     }
 
@@ -86,15 +86,35 @@ class ReleaseTests(unittest.TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_ios_attaches_only_existing_authorized_group(self, _output):
         replies=ios_replies()
-        replies[('GET','builds/build/betaGroups')]={'data':[]}
+        replies[('GET','betaGroups/group/builds')]={'data':[]}
         def attach():
-            replies[('GET','builds/build/betaGroups')]={'data':[{'id':'group'}]}
+            replies[('GET','betaGroups/group/builds')]={'data':[{'id':'build'}]}
             return {}
         replies[('POST','betaGroups/group/relationships/builds')]=attach
         store=FakeStore(replies)
         release.ios_verify(store,'42',0)
         writes=[call for call in store.calls if call[0]=='POST']
         self.assertEqual(writes,[('POST','betaGroups/group/relationships/builds')])
+
+    def test_ios_group_membership_reads_supported_paginated_relationship(self):
+        endpoint='betaGroups/group/builds'
+        store=FakeStore({
+            ('GET',endpoint): {'data':[{'id':'other'}], 'links':{'next':
+                'https://api.appstoreconnect.apple.com/v1/'+endpoint+'?cursor=next'}},
+            ('GET',endpoint+'?cursor=next'): {'data':[{'id':'build'}]},
+        })
+        self.assertTrue(release.ios_group_has_build(store,'group','build'))
+        self.assertFalse(release.ios_group_has_build(store,'group','missing'))
+        self.assertNotIn(('GET','builds/build/betaGroups'),store.calls)
+
+    def test_ios_group_pagination_rejects_foreign_resources_and_cycles(self):
+        endpoint='betaGroups/group/builds'
+        for url in ['https://other.example/v1/'+endpoint,
+                    'https://api.appstoreconnect.apple.com/v1/betaGroups/other/builds',
+                    'https://api.appstoreconnect.apple.com/v1/'+endpoint]:
+            store=FakeStore({('GET',endpoint): {'data':[], 'links':{'next':url}}})
+            with self.assertRaises(ValueError):
+                release.ios_group_has_build(store,'group','build')
 
     @patch.dict(os.environ,{'AHA_TESTFLIGHT_GROUP_ID':'group'})
     def test_ios_rejects_stale_upload(self):
