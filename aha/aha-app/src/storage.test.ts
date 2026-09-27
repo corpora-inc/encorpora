@@ -31,3 +31,16 @@ test('backup dialogs expose only account identity and leave restore explicit', a
     { command: 'share_backup', args: { accountId: 'owner' } },
   ])
 })
+
+test('native shell registers every command used by the repository bridge', async () => {
+  const { readFileSync } = await import('node:fs')
+  const called = new Set<string>()
+  const invoke: NativeInvoke = async <T>(command: string) => { called.add(command); return null as T }
+  const repository = new NativeRepository('owner', invoke)
+  await repository.listProfiles()
+  await repository.pickBackup()
+  await repository.shareBackup()
+  const rust = readFileSync(new URL('../src-tauri/src/lib.rs', import.meta.url), 'utf8')
+  const registered = rust.match(/generate_handler!\[([\s\S]*?)\]/)?.[1]?.split(',').map(name => name.trim().split('::').at(-1)) ?? []
+  for (const command of called) assert.ok(registered.includes(command), `Native handler is missing ${command}`)
+})
