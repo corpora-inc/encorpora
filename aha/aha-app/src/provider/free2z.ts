@@ -112,6 +112,13 @@ export class Free2zTutor {
     if (!session.grantedScopes.includes('ai:invoke')) throw new TutorServiceError('scope_denied', 'Free2Z has not granted AI access to this app.');
     return session;
   }
+  private verifyAuthorization(session: Session, authorization: TestAuthorization): void {
+      if (!authorization || typeof authorization.maximum2z !== 'bigint' || authorization.subject !== session.subject || authorization.maximum2z <= 0n || authorization.maximum2z > 500n)
+        throw new TutorServiceError('authorization_required', 'Identify the approved test account and its budget before using paid AI.');
+      const grant = authorization.verifiedGrant;
+      if (!grant || typeof grant.limit2z !== 'bigint' || grant.subject !== session.subject || grant.period !== 'total' || grant.limit2z <= 0n || grant.limit2z > authorization.maximum2z)
+        throw new TutorServiceError('grant_verification_required', 'Live testing requires verified total-period Free2Z grant metadata for this account. An estimate does not establish the grant period.');
+  }
   async cancel(): Promise<void> { this.cancelled = true; await this.active?.cancel(); }
   async inspectPending(): Promise<PendingOperation[]> {
     const before = await this.current();
@@ -147,11 +154,7 @@ export class Free2zTutor {
     this.busy = true; this.cancelled = false;
     try {
       const session = await this.current();
-      if (authorization.subject !== session.subject || authorization.maximum2z <= 0n || authorization.maximum2z > 500n)
-        throw new TutorServiceError('authorization_required', 'Identify the approved test account and its budget before using paid AI.');
-      const grant = authorization.verifiedGrant;
-      if (!grant || grant.subject !== session.subject || grant.period !== 'total' || grant.limit2z <= 0n || grant.limit2z > authorization.maximum2z)
-        throw new TutorServiceError('grant_verification_required', 'Live testing requires verified total-period Free2Z grant metadata for this account. An estimate does not establish the grant period.');
+      this.verifyAuthorization(session, authorization);
       if (system.length + context.length > 16_000) throw new TutorServiceError('context_limit', 'The learning context is too large.');
       const ledger = await this.ledger();
       if (ledger.operations.some(o => o.subject !== this.subject)) throw new TutorServiceError('account_mismatch', 'Usage records belong to another account.');
@@ -180,7 +183,7 @@ export class Free2zTutor {
     } finally { this.active = undefined; this.busy = false; }
   }
   /** Explicit same-key recovery only; the gateway may replay just a receipt, not content. */
-  async recover(operationId: string): Promise<{text: string; operationId: string}> {
+  async recover(operationId: string, authorization: TestAuthorization): Promise<{text: string; operationId: string}> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
     this.busy = true; this.cancelled = false;
     try {
@@ -190,8 +193,22 @@ export class Free2zTutor {
       if (op.state === 'finalized') throw new TutorServiceError('already_finalized', 'This request is already settled; use its saved content.');
       const age = Date.now() - Date.parse(op.createdAt);
       if (!Number.isFinite(age) || age < 0 || age >= 24 * 60 * 60 * 1000) throw new TutorServiceError('recovery_expired', 'The same-key recovery window has expired. No replacement paid request was sent.');
-      const session = await this.current(); op.generation = session.generation;
+      const session = await this.current();
+      this.verifyAuthorization(session, authorization);
       const request: ChatRequest = {model:op.request.model,messages:op.request.messages,max_output_tokens:BigInt(op.request.maxOutputTokens)};
+      // An opening journal entry may never have reached the gateway. A same-key
+      // call is potentially billable, so re-prove the cap under today's grant.
+      const spent = ledger.operations.reduce((n, item) => n + BigInt(item.charge?.charged2z ?? '0'), 0n);
+      const remaining = authorization.maximum2z - spent;
+      if (remaining <= 0n) throw new TutorServiceError('budget_exhausted', 'The authorized test budget has been used.');
+      const estimate = await this.client.estimate(request);
+      const cap = estimate.cap_remaining_milli_2z;
+      if (typeof cap !== 'bigint' || cap <= 0n || cap > remaining * 1000n)
+        throw new TutorServiceError('grant_cap_required', 'Same-key recovery requires a verified total grant cap within the remaining test budget. Receipt reconciliation remains available.');
+      const after = await this.current();
+      if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'Recovery was cancelled before sending.');
+      op.generation = session.generation;
+      await this.persist(ledger);
       return await this.run(ledger,op,request);
     } finally { this.active = undefined; this.busy = false; }
   }

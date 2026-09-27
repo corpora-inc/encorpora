@@ -28,7 +28,7 @@ test('estimate is not a cap; absent or excessive grant caps block any paid call'
 test('a partial stream remains uncertain and blocks another paid call',async()=>{const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'interrupted'});assert.equal(f.getValue().operations[0].state,'interrupted');await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'settlement_pending'});assert.equal(f.calls.length,1);const summary=await f.tutor.reconcile();assert.equal(summary.pending,0);assert.equal(summary.spent2z,2n);});
 test('charged failures retain receipts and never automatically retry',async()=>{const f=fixture([{type:'error',code:'provider_error',partial:true,settlement:'settled',charge:{state:'charged',charged2z:3n,receiptId:'r'}}]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'provider_error'});assert.equal(f.calls.length,1);assert.equal(f.getValue().operations[0].charge.charged2z,'3');});
 test('account mismatch prevents billable work',async()=>{const f=fixture();f.setSession({...session,subject:'another'});await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'account_changed'});assert.equal(f.calls.length,0);});
-test('same-operation recovery preserves request and key; never starts a fresh operation',async()=>{const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));const op=f.getValue().operations[0];await assert.rejects(f.tutor.recover(op.id));assert.deepEqual(f.calls[0],f.calls[1]);});
+test('same-operation recovery preserves request and key; never starts a fresh operation',async()=>{const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));const op=f.getValue().operations[0];await assert.rejects(f.tutor.recover(op.id,f.authorization));assert.deepEqual(f.calls[0],f.calls[1]);});
 test('concurrent generation cannot double charge on duplicate taps',async()=>{const f=fixture();const first=f.tutor.reply('verified-model','p','c',f.authorization);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'busy'});await first;assert.equal(f.calls.length,1);});
 test('remaining authorization includes finalized charges, not only current call estimate',async()=>{const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_cap_required'});assert.equal(f.calls.length,1);f.setCap(498000n);await f.tutor.reply('verified-model','p','c',f.authorization);assert.equal(f.calls.length,2);});
 
@@ -71,19 +71,19 @@ test('pending inspection exposes metadata without changing or retrying usage',as
   assert.deepEqual(f.getValue(),before);assert.equal(f.calls.length,1);
   f.getValue().operations[0].createdAt=new Date(Date.now()-25*60*60*1000).toISOString();
   assert.equal((await f.tutor.inspectPending())[0].canRecover,false);
-  await assert.rejects(f.tutor.recover(pending[0].operationId),{code:'recovery_expired'});assert.equal(f.calls.length,1);
+  await assert.rejects(f.tutor.recover(pending[0].operationId,f.authorization),{code:'recovery_expired'});assert.equal(f.calls.length,1);
   await f.tutor.reconcile();assert.deepEqual(await f.tutor.inspectPending(),[]);
 });
 test('empty archived requests are valid only for settled operations',async()=>{
   const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
   f.getValue().operations[0].request.messages=[];f.getValue().operations[0].text='';
-  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id),{code:'journal_invalid'});
+  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id,f.authorization),{code:'journal_invalid'});
 });
 test('inspection fences account transitions and rejects foreign journals',async()=>{
   const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
   f.getValue().operations[0].subject='foreign';
   await assert.rejects(f.tutor.inspectPending(),{code:'account_mismatch'});
-  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id),{code:'account_mismatch'});
+  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id,f.authorization),{code:'account_mismatch'});
   f.getValue().operations[0].subject='adult';
   const read=f.journal.getJournal;f.journal.getJournal=async key=>{const value=await read(key);f.setSession({...session,generation:'changed'});return value;};
   await assert.rejects(f.tutor.inspectPending(),{code:'account_changed'});
@@ -92,6 +92,36 @@ test('pending settlement can be explicitly recovered with the original identity'
   const f=fixture([{type:'done',finish_reason:'stop',settlement:'pending',charge:{state:'pending'}} as any]);
   await f.tutor.reply('verified-model','p','c',f.authorization);
   const op=f.getValue().operations[0];assert.equal(op.state,'settling');
-  await f.tutor.recover(op.id);assert.deepEqual(f.calls[0],f.calls[1]);
+  await f.tutor.recover(op.id,f.authorization);assert.deepEqual(f.calls[0],f.calls[1]);
   assert.equal(f.getValue().operations[0].state,'settling');
+});
+test('recovery rechecks current grant proof even when opening never reached the gateway',async()=>{
+  const f=fixture([]);const write=f.journal.putJournal;
+  f.journal.putJournal=async(k,v)=>{await write(k,v);if(v.operations?.at(-1)?.state==='opening')await f.tutor.cancel();};
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});
+  f.journal.putJournal=write;assert.equal(f.calls.length,0);
+  const op=f.getValue().operations[0];
+  await assert.rejects(f.tutor.recover(op.id,undefined as any),{code:'authorization_required'});
+  await assert.rejects(f.tutor.recover(op.id,{...f.authorization,verifiedGrant:{...f.authorization.verifiedGrant,period:'day'} as any}),{code:'grant_verification_required'});
+  for(const cap of [null,501000n,0n]) {
+    f.setCap(cap);await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'grant_cap_required'});
+  }
+  assert.equal(f.calls.length,0);f.setCap(500000n);
+  await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'interrupted'});
+  assert.equal(f.calls.length,1);assert.equal(f.calls[0].options.idempotencyKey,op.key);
+  assert.equal(f.calls[0].options.operationId,op.id);
+});
+test('recovery includes previous finalized spend in its cap bound',async()=>{
+  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
+  const op=f.getValue().operations[0];
+  f.getValue().operations.push({...structuredClone(op),id:crypto.randomUUID(),key:crypto.randomUUID(),state:'finalized',charge:{state:'charged',charged2z:'499',receiptId:'old-receipt'}});
+  f.setCap(2000n);await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'grant_cap_required'});
+  assert.equal(f.calls.length,1);f.setCap(1000n);
+  await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'interrupted'});assert.equal(f.calls.length,2);
+});
+test('account changes while estimating recovery prevent its invocation',async()=>{
+  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
+  const op=f.getValue().operations[0], estimate=f.client.estimate;
+  f.client.estimate=async(...args)=>{const result=await estimate(...args);f.setSession({...session,generation:'new'});return result;};
+  await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'cancelled'});assert.equal(f.calls.length,1);
 });
