@@ -12,8 +12,9 @@ SDK 36; the app config sets minimum API 29. The iOS minimum is 16.
 Pin Android NDK **28.2.13676358** by exporting
 `NDK_HOME="$ANDROID_HOME/ndk/28.2.13676358"` for both initialization and builds.
 Do not rely on CLI auto-detection: it selected an installed NDK 26 in this workspace,
-which produced 4 KiB ELF LOAD alignment. NDK 28 supplies the 16 KiB page-compatible
-linker defaults required for modern Play delivery. Release validation must inspect
+which produced 4 KiB ELF LOAD alignment. Even selecting NDK 28 did not change the
+observed Rust ELF alignment, so `build.rs` explicitly sets 16 KiB maximum/common
+page sizes for Android. Release validation must inspect
 every packaged native `.so` with `llvm-readelf -l` and require LOAD alignment of at
 least `0x4000`, alongside APK ZIP alignment. No developer-specific NDK path is
 committed to Cargo configuration.
