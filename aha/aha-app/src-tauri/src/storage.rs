@@ -839,7 +839,15 @@ mod tests {
     }
     #[test]
     fn pre_answer_dispute_permanently_prevents_credit() {
-        let mut c = db();
+        let path = std::env::temp_dir().join(format!(
+            "aha-predispute-{}-{}.sqlite",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        let mut c = open(&path).unwrap();
         profile(&mut c, "a");
         execute(
             &mut c,
@@ -853,6 +861,8 @@ mod tests {
         );
         dispute.snapshot = json!({"mastered":false});
         execute(&mut c, dispute).unwrap();
+        drop(c);
+        let mut c = open(&path).unwrap();
         let attempt = request(
             "a",
             Operation::RecordAttempt,
@@ -871,6 +881,8 @@ mod tests {
             execute(&mut c, request("a", Operation::LoadSnapshot, Value::Null)).unwrap()["mastered"],
             false
         );
+        drop(c);
+        std::fs::remove_file(path).unwrap();
     }
     #[test]
     fn durable_restart() {
