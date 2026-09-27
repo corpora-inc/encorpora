@@ -104,7 +104,7 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
-          AHA_TESTFLIGHT_GROUP_ID: ${{ vars.AHA_TESTFLIGHT_GROUP_ID }}
+          AHA_TESTFLIGHT_GROUP_ID: ${{ secrets.AHA_TESTFLIGHT_GROUP_ID }}
         run: |
           python -m pip install --quiet 'pyjwt[crypto]' requests
           python aha/scripts/release_verify.py preflight --platform ios
@@ -153,7 +153,7 @@ jobs:
           assert profile['ExpirationDate'] > datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
           assert not profile['Entitlements'].get('get-task-allow',False)
           assert not profile.get('ProvisionedDevices') and not profile.get('ProvisionsAllDevices')
-          for value in (team,name):
+          for value in (team,name,profile['UUID']):
               assert '\n' not in value and '\r' not in value
               print('::add-mask::'+value)
           with open(os.environ['GITHUB_ENV'],'a') as out:
@@ -239,7 +239,7 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
-          AHA_TESTFLIGHT_GROUP_ID: ${{ vars.AHA_TESTFLIGHT_GROUP_ID }}
+          AHA_TESTFLIGHT_GROUP_ID: ${{ secrets.AHA_TESTFLIGHT_GROUP_ID }}
           BUILD: ${{ steps.ipa.outputs.version }}
           STARTED: ${{ needs.gate.outputs.started }}
           PYTHONUNBUFFERED: '1'
@@ -279,6 +279,10 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          accept-android-sdk-licenses: false
+          log-accepted-android-sdk-licenses: false
       - name: Install pinned native tools
         run: |
           set -euo pipefail
