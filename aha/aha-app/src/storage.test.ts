@@ -17,3 +17,17 @@ test('native failures propagate without a silent in-memory success', async () =>
   await assert.rejects(new NativeRepository('a', invoke).saveSession('p', { id: 's', updatedAt: 'now', data: null }), /disk full/)
   assert.throws(() => new NativeRepository(''), /account ID/)
 })
+
+test('backup dialogs expose only account identity and leave restore explicit', async () => {
+  const calls: Array<{ command: string; args: Record<string, unknown> }> = []
+  const invoke: NativeInvoke = async <T>(command: string, args: Record<string, unknown>) => {
+    calls.push({ command, args }); return null as T
+  }
+  const repository = new NativeRepository('owner', invoke)
+  await repository.pickBackup()
+  await repository.shareBackup()
+  assert.deepEqual(calls, [
+    { command: 'pick_backup', args: { accountId: 'owner' } },
+    { command: 'share_backup', args: { accountId: 'owner' } },
+  ])
+})
