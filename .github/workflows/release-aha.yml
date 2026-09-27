@@ -153,7 +153,7 @@ jobs:
           assert profile['ExpirationDate'] > datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
           assert not profile['Entitlements'].get('get-task-allow',False)
           assert not profile.get('ProvisionedDevices') and not profile.get('ProvisionsAllDevices')
-          for value in (team,name):
+          for value in (team,name,profile['UUID']):
               assert '\n' not in value and '\r' not in value
               print('::add-mask::'+value)
           with open(os.environ['GITHUB_ENV'],'a') as out:
