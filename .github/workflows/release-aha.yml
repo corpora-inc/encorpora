@@ -7,10 +7,18 @@ on:
   workflow_dispatch:
     inputs:
       platforms:
-        description: Platforms to deliver to existing internal testers
+        description: Internal delivery, or Android signed artifact only for initial Console setup
         type: choice
-        options: [both, ios, android]
+        options: [both, ios, android, android-artifact]
         default: both
+      build_number:
+        description: Optional reserved build number for one Console-attested Android release
+        type: string
+        default: ''
+      play_email_audience_attestation:
+        description: Optional build-scoped Console evidence JSON (no tester identities)
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -33,6 +41,7 @@ jobs:
       started: ${{ steps.release.outputs.started }}
       ios: ${{ steps.release.outputs.ios }}
       android: ${{ steps.release.outputs.android }}
+      android_upload: ${{ steps.release.outputs.android_upload }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,8 +51,11 @@ jobs:
       - id: release
         env:
           PLATFORMS: ${{ inputs.platforms || 'both' }}
+          RESERVED_BUILD: ${{ inputs.build_number }}
+          PLAY_EMAIL_AUDIENCE_ATTESTATION: ${{ inputs.play_email_audience_attestation }}
         run: |
           set -euo pipefail
+          case "$PLATFORMS" in both|ios|android|android-artifact) ;; *) exit 1 ;; esac
           git merge-base --is-ancestor HEAD origin/main
           VERSION=$(node -p "require('./${APP_DIR}/src-tauri/tauri.conf.json').version")
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
@@ -51,15 +63,31 @@ jobs:
           else
             test "$GITHUB_REF" = "refs/tags/aha-v$VERSION"
           fi
-          NUMBER=$(( $(date +%s) / 60 ))
+          STARTED=$(date +%s)
+          NUMBER=$(( STARTED / 60 ))
+          if [ -n "$PLAY_EMAIL_AUDIENCE_ATTESTATION" ] || [ -n "$RESERVED_BUILD" ]; then
+            test "$GITHUB_EVENT_NAME" = workflow_dispatch
+            test "$PLATFORMS" != ios
+            test "$PLATFORMS" != android-artifact
+            [[ "$RESERVED_BUILD" =~ ^[1-9][0-9]{0,9}$ ]]
+            test "$RESERVED_BUILD" -ge $(( NUMBER - 60 ))
+            test "$RESERVED_BUILD" -le $(( NUMBER + 5 ))
+            NUMBER=$RESERVED_BUILD
+            python3 aha/scripts/release_verify.py audience --build "$NUMBER" --since "$STARTED"
+          fi
           test "$NUMBER" -gt 29000000 && test "$NUMBER" -lt 2100000000
           {
             echo "number=$NUMBER"
-            echo "started=$(date +%s)"
-            echo "ios=$([ "$PLATFORMS" != android ] && echo true || echo false)"
+            echo "started=$STARTED"
+            echo "ios=$([[ "$PLATFORMS" = both || "$PLATFORMS" = ios ]] && echo true || echo false)"
             echo "android=$([ "$PLATFORMS" != ios ] && echo true || echo false)"
+            echo "android_upload=$([ "$PLATFORMS" != android-artifact ] && echo true || echo false)"
           } >> "$GITHUB_OUTPUT"
-          echo "AHA $VERSION internal beta; build $NUMBER" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$PLATFORMS" = android-artifact ]; then
+            echo "AHA $VERSION Android artifact-only build requested; build $NUMBER. Signing/build pending; no store upload or tester delivery attempted." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "AHA $VERSION internal beta; build $NUMBER" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
   ios:
     needs: gate
@@ -225,12 +253,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Require app record and existing internal audience
+      - name: Require app access and audience for delivery
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_EMAIL_AUDIENCE_ATTESTATION: ${{ inputs.play_email_audience_attestation }}
+          BUILD: ${{ needs.gate.outputs.number }}
+          STARTED: ${{ needs.gate.outputs.started }}
+          UPLOAD: ${{ needs.gate.outputs.android_upload }}
         run: |
           python -m pip install --quiet 'pyjwt[crypto]' requests
-          python aha/scripts/release_verify.py preflight --platform android
+          if [ "$UPLOAD" = true ]; then
+            python aha/scripts/release_verify.py preflight --platform android --build "$BUILD" --since "$STARTED"
+          else
+            python aha/scripts/release_verify.py android-app
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -314,6 +350,7 @@ jobs:
           path: ${{ steps.aab.outputs.path }}
           retention-days: 14
       - name: Snapshot internal track before upload
+        if: needs.gate.outputs.android_upload == 'true'
         id: before
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
@@ -321,6 +358,7 @@ jobs:
           PLAY_TRACK: internal
         run: python .github/scripts/verify_play_upload.py --snapshot
       - name: Upload completed internal release
+        if: needs.gate.outputs.android_upload == 'true'
         uses: r0adkll/upload-google-play@e738b9dd8f2476ea806d921b64aacd24f34515a5 # v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
@@ -329,13 +367,18 @@ jobs:
           track: internal
           status: completed
       - name: Verify new completed release and configured audience
+        if: needs.gate.outputs.android_upload == 'true'
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           PLAY_PACKAGE_NAME: inc.corpora.aha
           PLAY_TRACK: internal
           PLAY_VERSION_CODE: ${{ needs.gate.outputs.number }}
           PLAY_PRE_UPLOAD_CODES: ${{ steps.before.outputs.version_codes }}
+          PLAY_EMAIL_AUDIENCE_ATTESTATION: ${{ inputs.play_email_audience_attestation }}
           STARTED: ${{ needs.gate.outputs.started }}
         run: |
           python .github/scripts/verify_play_upload.py
           python aha/scripts/release_verify.py verify --platform android --build "$PLAY_VERSION_CODE" --since "$STARTED"
+      - name: Record artifact-only outcome
+        if: needs.gate.outputs.android_upload != 'true'
+        run: echo 'Signed AHA AAB retained for initial Console setup. No upload, completed release, audience availability, or tester installation is claimed.' >> "$GITHUB_STEP_SUMMARY"
