@@ -1,0 +1,79 @@
+export type StudioVisual =
+  | { type: "fraction"; numerator: number; denominator: number; label?: string }
+  | { type: "array"; rows: number; columns: number; label?: string }
+  | {
+      type: "number-line";
+      min: number;
+      max: number;
+      step?: number;
+      marks?: number[];
+      label?: string;
+    }
+  | { type: "place-value"; value: number; label?: string }
+  | {
+      type: "coordinates";
+      points: { x: number; y: number; label?: string }[];
+      extent?: number;
+      label?: string;
+    }
+  | { type: "rectangle"; width: number; height: number; label?: string }
+  | {
+      type: "cuboid";
+      width: number;
+      height: number;
+      depth: number;
+      label?: string;
+    };
+export interface StudioActivity {
+  id: string;
+  title: string;
+  prompt: string;
+  skill: string;
+  standard?: string;
+  answerKind?: "number" | "fraction" | "text" | "choice";
+  choices?: { id: string; label: string }[];
+  visual?: StudioVisual;
+}
+export interface StudioProps {
+  mode: "preview" | "native";
+  learnerName: string;
+  activity?: StudioActivity;
+  busy?: boolean;
+  error?: string;
+  feedback?: {
+    kind: "correct" | "retry" | "info";
+    title: string;
+    message: string;
+  };
+  hint?: string;
+  curiosity?: { question: string; answer?: string };
+  session: { completed: number; target: number; minutes?: number };
+  progress: {
+    label: string;
+    detail: string;
+    status: "growing" | "review" | "confident";
+  }[];
+  account: {
+    connected: boolean;
+    label?: string;
+    balance?: string;
+    status?: string;
+    purchaseAvailable?: boolean;
+  };
+  learners?: { id: string; name: string }[];
+  onSubmit: (answer: string) => void;
+  onContinue: () => void;
+  onSupport: (
+    action: "hint" | "explain" | "stuck" | "harder" | "dispute",
+  ) => void;
+  onCuriosity: (question: string) => void;
+  onCloseCuriosity: () => void;
+  onSignIn: () => void;
+  onSignOut: () => void;
+  onTopUp?: () => void;
+  onSelectLearner?: (id: string) => void;
+  onCreateLearner?: (name: string, startGrade: number) => void;
+  onExport: () => void;
+  onImport: () => void;
+  onDeleteLearner: () => void;
+}
