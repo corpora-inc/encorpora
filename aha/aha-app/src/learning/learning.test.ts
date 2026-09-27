@@ -159,6 +159,10 @@ test('fluency requires recall-only diverse fast successes across dates',()=>{
  assert.equal(recall.progress['3.OA.C.7'].fluency,'fluent');
  assert.equal(choice.progress['3.OA.C.7'].fluency,'developing');
  assert.equal(interrupted.progress['3.OA.C.7'].fluency,'developing');
+ recall=success(recall,make(13,'concept'),'later-concept',2,8000);
+ assert.equal(recall.progress['3.OA.C.7'].fluency,'fluent','Untimed successful teaching must not erase established recall evidence.');
+ recall=recordAttempt(recall,make(14,'concept'),{id:'later-wrong',answer:'-100',at:date(2)});
+ assert.equal(recall.progress['3.OA.C.7'].fluency,'developing','New error requires fresh recall evidence.');
 });
 
 test('every admitted task has an answer representable by the bounded student grammar',()=>{

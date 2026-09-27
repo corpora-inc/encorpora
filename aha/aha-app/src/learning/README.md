@@ -51,7 +51,7 @@ Progress policy is intentionally transparent and provisional:
 
 - Three distinct independently correct tasks since the last assisted/wrong answer
   establish provisional numerical understanding. Slow correct answers still count.
-- Fluency requires the last twelve attempts to be explicit recall-mode tasks,
+- Fluency requires the last twelve recall-mode attempts since assistance or error,
   independently correct, without answer choices or interrupted timing, within the
   skill's target, across at least eight distinct tasks and two UTC dates. The
   thresholds are product defaults, not validated population norms or diagnoses.

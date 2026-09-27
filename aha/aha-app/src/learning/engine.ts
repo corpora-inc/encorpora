@@ -38,7 +38,7 @@ export function recordAttempt(state:LearnerState,activity:Activity,input:Attempt
  const distinctVariants=[...new Set(sinceError.map(a=>a.variant))];
  const provisional=distinctVariants.length>=3;
  // Fluency is optional and evidence-based: diverse facts, two dates, no hidden/background time.
- const recent=history.slice(-12);
+ const recent=sinceError.filter(a=>a.mode==='fluency'&&!a.choices).slice(-12);
  const timed=recent.length===12&&recent.every(a=>a.mode==='fluency'&&!a.choices&&a.independent&&!a.interrupted&&a.activeMs!==null&&a.activeMs>=250&&a.activeMs<=skill.fluencyTargetMs!);
  const fluent=!!skill.fluencyTargetMs&&timed&&new Set(recent.map(a=>a.variant)).size>=8&&new Set(recent.map(a=>a.at.slice(0,10))).size>=2;
  let reviewStage=previous?.reviewStage??0;
