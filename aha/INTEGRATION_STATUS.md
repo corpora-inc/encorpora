@@ -10,7 +10,7 @@ Snapshot: 2026-09-27. This file separates code from deployment and device accept
 | OIDC discovery | GET https://free2z.cash/.well-known/openid-configuration returned HTTP200 | Reachable, not proof of login |
 | Registration console | AHA native public client registered, zero markup; repository build variable configured | Login and metered inference not yet verified end-to-end |
 | AI gateway | https://ai.free2z.cash/v1/models failed DNS resolution from build Mac | Live inference blocked |
-| Store APIs | Authorized access restored; Apple app record created and visible through API | Google Play app creation still permission-blocked |
+| Store APIs | Both app records created; Apple existing internal tester preflight passes | Play app-level automation access and internal audience setup in progress |
 | Paid acceptance | User identifies account at sign-in, maximum $5 existing balance; no credit purchases | No paid calls made |
 
 ## Public registration configuration
@@ -28,7 +28,7 @@ Calls persist identity/body before invocation. Unknown or pending settlement blo
 ## Next live acceptance steps
 
 1. Verify the registration console and deployed catalogue/estimate/chat/call endpoints are ready (upstream epic free2z/zuu#1047).
-2. Register the native client; configure native redirects and actual public policy/return pages.
+2. Native client registration and public policy/return pages are now present. Verify the configured OS redirect round trip and native credential persistence.
 3. User identifies and authenticates the funded test account. Verify total-period cap and provider conditions for supervised child-directed use.
 4. Implement/read authoritative grant verification through the released SDK contract before enabling paid readiness; no private-auth bypass.
 5. Perform native login/balance/lesson/receipt/restart on each platform within the authorized cap. Record call IDs and balance evidence without tokens or learner identifiers.

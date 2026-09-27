@@ -30,6 +30,7 @@ import {
 } from "../provider/free2z";
 import { previewRepository } from "./preview";
 import { restoreLearning } from "./recovery";
+import { learningCheckpoint } from "./checkpoint";
 
 interface Readiness {
   free2zConfigured: boolean;
@@ -43,8 +44,6 @@ interface SavedLearning {
   hintsUsed: number;
   completed: number;
   sessionId: string;
-  learnerState?: LearnerState;
-  interrupted?: boolean;
 }
 const json = (value: unknown): Json =>
   JSON.parse(JSON.stringify(value)) as Json;
@@ -152,7 +151,6 @@ export default function Controller() {
       hintsUsed: hintsUsed.current,
       completed: count.current,
       sessionId: sessionId.current,
-      learnerState: learning.current,
     };
     await repository.current.saveSession(p.id, {
       id: sessionId.current,
@@ -175,7 +173,6 @@ export default function Controller() {
       hintsUsed: 0,
       completed: count.current,
       sessionId: sessionId.current,
-      learnerState: learning.current,
     };
     await repository.current.saveSession(p.id, {
       id: sessionId.current,
@@ -483,7 +480,7 @@ export default function Controller() {
           createdAt: evidence.at,
           data: json(evidence),
         },
-        json(updated),
+        json(learningCheckpoint(updated)),
       );
     } catch {
       await loadProfile(p);
@@ -495,7 +492,7 @@ export default function Controller() {
       await loadProfile(p);
       return;
     }
-    displayState(result.snapshot as unknown as LearnerState);
+    displayState(updated);
     count.current++;
     setCompleted(count.current);
     // This write is presentation state; the transaction above already durably recorded the answer.
@@ -534,7 +531,7 @@ export default function Controller() {
           createdAt: new Date().toISOString(),
           reason: "Learner reported a problem",
         },
-        json(updated),
+        json(learningCheckpoint(updated)),
       );
       displayState(updated);
       currentActivity.current = undefined;
