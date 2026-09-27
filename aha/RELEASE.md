@@ -10,7 +10,7 @@ As of September 27, 2026:
 | Target | Verified distribution evidence | Remaining blocker |
 |---|---|---|
 | TestFlight internal | No uploaded, processed AHA build or tester availability verified | App record and an existing authorized internal tester are verified; signed build upload, processing, and installation remain unverified |
-| Google Play internal | No AHA internal release or tester availability verified | App-creation access is available; the owner must review the required policy/export declarations and complete app setup |
+| Google Play internal | No AHA internal release or tester availability verified | App record and scoped API access are verified; Console audience setup and the initial signed release remain incomplete |
 
 These are observed access/setup blockers. Neither an unsigned native build nor a
 browser preview satisfies either delivery target. Operational details and signing
@@ -30,7 +30,7 @@ After app records and existing authorized testing audiences are configured:
 gh workflow run release-aha.yml --repo corpora-inc/encorpora --ref main -f platforms=both
 ```
 
-The workflow checks app/audience access before expensive builds. Android requires
+Normal delivery checks app/audience access before expensive builds. Android requires
 a completed internal release; it will not silently substitute a draft on a new
 app. If Play requires the initial release to be completed in Console, finish that
 normal setup action and rerun verification. No workflow step invites new people,
@@ -59,9 +59,9 @@ release must be dispatched again if still needed.
   The upload uses the app-specific upload key, then verifies a newly added,
   completed internal release and a configured existing group audience.
 - The Play API does not expose every Console email-list configuration. If it
-  cannot verify an existing group audience, the check fails explicitly; an
-  operator must verify the Console audience and actual tester access. An API
-  group reference by itself does not prove membership or installation.
+  cannot verify an existing group audience, release requires the one-build
+  Console evidence described below. Neither an API group reference nor an
+  operator attestation proves installation.
 - Both platforms still require an authorized tester’s real installation and the
   native learning/authentication/recovery journey. Record the actual device,
   version/build, processing state, audience availability, and install outcome.
@@ -71,6 +71,56 @@ Artifacts are named `aha-ios-<build>` and `aha-android-<build>` and retained for
 days. Inspect the completed run for its actual artifact path; do not assume an
 artifact exists after a failed preflight. AAB checks precede signing, so a preserved
 artifact from a failed signing step is not a signed deliverable.
+
+## Initial Android Console setup
+
+A newly created app can need a first signed bundle in Console before track setup
+works. Dispatch `platforms=android-artifact` to produce that concrete bundle. This
+mode checks access to the exact app, builds and signs the AAB, and keeps the same
+package/version/SDK/permission/16 KiB checks. It runs no iOS job and skips all store
+upload, audience, and release-verification steps. Its summary explicitly reports
+an **artifact-only** outcome, never tester delivery.
+
+Use the signed artifact for the normal initial Console flow. After the owner has
+completed any required declarations and an existing audience is configured,
+verify the exact uploaded version and completed internal track. Do not upload the
+same version again just to make an automated workflow green. Retain a pre-upload
+track snapshot when performing a manual first upload, so later verification can
+prove it is a newly added release. An artifact-only run cannot satisfy delivery
+acceptance on its own.
+
+## Console email-list audiences
+
+Play's public tester API returns Google Group references, not Console email-list
+membership. For an existing authorized email audience, verify the exact AHA
+internal track in Console and retain evidence privately. Do not create a Google
+Group merely to satisfy the API or add new people to an audience.
+
+A manual Android dispatch may supply `build_number` and
+`play_email_audience_attestation` together. Reserve a unique build number using
+minutes since the Unix epoch; the gate accepts only the preceding hour through
+five minutes ahead of its clock. The JSON attestation has exactly these fields:
+
+- `version`: integer `1`.
+- `bundleId`: `inc.corpora.aha`; `track`: `internal`.
+- `versionCode`: the exact reserved build number as a string.
+- `verifiedAt`: UTC Unix seconds of the actual Console observation.
+- `existingTesterCount`: integer from 1 to 100, all already authorized.
+- `evidenceSha256`: lowercase SHA-256 of the retained private evidence.
+
+Keep names, email addresses, screenshots, account identifiers, and access details
+out of workflow inputs and logs. Include a random evidence identifier in the
+private evidence before hashing, so its digest cannot be guessed from a tester's
+identity. The digest references operator-reviewed evidence; it is not proof from
+the Play API. Do not produce an attestation until the selected audience has
+actually been saved and re-read in Console.
+
+The attestation must be no more than one hour old at preflight and must predate
+the run. After native building, the same exact build and run may use it for up to
+four hours. Expired evidence requires fresh Console verification; do not reupload
+or generate another release automatically. The output explicitly says
+**Console-attested**, and still requires a newly added completed internal release.
+An authorized tester's installation remains separate acceptance evidence.
 
 ## Local verification
 

@@ -5,6 +5,7 @@ import argparse
 import datetime
 import json
 import os
+import re
 from pathlib import Path
 import struct
 import time
@@ -168,18 +169,64 @@ def ios_verify(store: Store, build: str, since: int):
     raise ReleaseCheckError('Apple processing did not complete within the verification window')
 
 
-def play_check(store: Store, build: str | None):
+def validate_play_attestation(build: str | None, since: int | None, *, final=False, now=None):
+    """Validate one dispatch's private-Console evidence reference, never tester identities."""
+    now = int(time.time()) if now is None else now
+    raw = required('PLAY_EMAIL_AUDIENCE_ATTESTATION')
+    if len(raw) > 2048:
+        raise ReleaseCheckError('Console audience attestation is too large')
+    try:
+        evidence = json.loads(raw)
+    except (TypeError, ValueError):
+        raise ReleaseCheckError('Console audience attestation is not valid JSON') from None
+    fields = {'version', 'bundleId', 'track', 'versionCode', 'verifiedAt', 'existingTesterCount', 'evidenceSha256'}
+    if not isinstance(evidence, dict) or set(evidence) != fields:
+        raise ReleaseCheckError('Console audience attestation has an invalid schema; do not include identities')
+    if (type(evidence['version']) is not int or evidence['version'] != 1
+        or evidence['bundleId'] != BUNDLE or evidence['track'] != 'internal'
+        or not isinstance(build, str) or not re.fullmatch(r'[1-9][0-9]{0,9}', build)
+        or evidence['versionCode'] != build):
+        raise ReleaseCheckError('Console audience attestation does not match this app, track, and build')
+    verified = evidence['verifiedAt']
+    count = evidence['existingTesterCount']
+    if type(count) is not int or not 1 <= count <= 100:
+        raise ReleaseCheckError('Console audience attestation needs an existing authorized tester count')
+    if not isinstance(evidence['evidenceSha256'], str) or not re.fullmatch(r'[0-9a-f]{64}', evidence['evidenceSha256']):
+        raise ReleaseCheckError('Console audience attestation needs a private evidence SHA-256 reference')
+    if (type(verified) is not int or type(since) is not int
+        or not verified <= since <= now or since - verified > 3600
+        or now - verified > (14400 if final else 3600)):
+        raise ReleaseCheckError('Console audience evidence is stale or future-dated; verify it again without reuploading')
+    return evidence
+
+
+def play_app_access(store: Store):
+    edit = store.request('POST', f'{BUNDLE}/edits', json={})['id']
+    try:
+        store.request('GET', f'{BUNDLE}/edits/{edit}/tracks/internal')
+    finally:
+        store.request('DELETE', f'{BUNDLE}/edits/{edit}')
+    print('Android app access verified for artifact-only build; no audience, upload, or delivery verified.')
+
+
+def play_check(store: Store, build: str | None, *, audience_build=None, since=None):
     edit = store.request('POST', f'{BUNDLE}/edits', json={})['id']
     try:
         track = store.request('GET', f'{BUNDLE}/edits/{edit}/tracks/internal')
         testers = store.request('GET', f'{BUNDLE}/edits/{edit}/testers/internal')
+        audience = 'a configured existing group audience'
         if not testers.get('googleGroups'):
-            raise ReleaseCheckError('Play API cannot verify a configured existing tester audience; verify Console email-list access privately')
+            if not os.environ.get('PLAY_EMAIL_AUDIENCE_ATTESTATION'):
+                raise ReleaseCheckError('Play API cannot verify an email-list audience; supply fresh build-scoped Console evidence')
+            validate_play_attestation(build or audience_build, since, final=build is not None)
+            audience = 'a Console-attested existing email-list audience (not API-verified membership)'
+            if build is None:
+                print('Console-attested email audience accepted for this build; membership is not verified by the Play API.')
         if build is not None:
             releases = [r for r in track.get('releases', []) if build in [str(v) for v in r.get('versionCodes', [])]]
             if len(releases) != 1 or releases[0].get('status') != 'completed':
                 raise ReleaseCheckError('AHA build is not a completed release on the internal track; drafts do not count')
-            print(f'Android {BUNDLE} versionCode {build}: internal track completed with a configured existing group audience. Verify an authorized tester can install.')
+            print(f'Android {BUNDLE} versionCode {build}: internal track completed with {audience}. Verify an authorized tester can install.')
     finally:
         store.request('DELETE', f'{BUNDLE}/edits/{edit}')
 
@@ -188,18 +235,29 @@ def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest='command', required=True)
     elf = sub.add_parser('elf'); elf.add_argument('bundle', type=Path)
+    sub.add_parser('android-app')
+    audience = sub.add_parser('audience')
+    audience.add_argument('--build', required=True)
+    audience.add_argument('--since', type=int, required=True)
     for name in ('preflight', 'verify'):
         cmd = sub.add_parser(name); cmd.add_argument('--platform', choices=['ios', 'android'], required=True)
-        if name == 'verify':
-            cmd.add_argument('--build', required=True); cmd.add_argument('--since', type=int, required=True)
+        cmd.add_argument('--build', required=name == 'verify')
+        cmd.add_argument('--since', type=int, required=name == 'verify')
     args = parser.parse_args()
     if args.command == 'elf':
         verify_bundle(args.bundle); return
+    if args.command == 'android-app':
+        play_app_access(Store('android'))
+        return
+    if args.command == 'audience':
+        validate_play_attestation(args.build, args.since)
+        print('Build-scoped Console audience attestation is current; actual tester installation remains unverified.')
+        return
     store = Store(args.platform)
     if args.platform == 'ios':
         if args.command == 'preflight': ios_app_and_group(store)
         else: ios_verify(store, args.build, args.since)
-    else: play_check(store, args.build if args.command == 'verify' else None)
+    else: play_check(store, args.build if args.command == 'verify' else None, audience_build=args.build, since=args.since)
     if args.command == 'preflight': print('App record and existing internal audience preflight passed.')
 
 
