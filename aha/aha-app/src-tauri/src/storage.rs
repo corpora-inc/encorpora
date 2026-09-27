@@ -339,6 +339,10 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
                     if read(&tx, a, p, "activity", activity)?.is_null() {
                         return Err("Attempt activity not found".into());
                     }
+                    let disputed: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM records WHERE account=? AND profile=? AND kind='dispute' AND json_extract(data,'$.activityId')=?)", params![a,p,activity], |row|row.get(0)).map_err(err)?;
+                    if disputed {
+                        return Err("This activity is quarantined and cannot earn credit".into());
+                    }
                     put(&tx, a, p, "attempt", k, &r.data)?;
                     put(&tx, a, p, "snapshot", "current", &r.snapshot)?;
                     tx.commit().map_err(err)?;
@@ -832,6 +836,41 @@ mod tests {
         );
         drop(c);
         std::fs::remove_file(path).unwrap();
+    }
+    #[test]
+    fn pre_answer_dispute_permanently_prevents_credit() {
+        let mut c = db();
+        profile(&mut c, "a");
+        execute(
+            &mut c,
+            request("a", Operation::SaveActivity, json!({"id":"activity"})),
+        )
+        .unwrap();
+        let mut dispute = request(
+            "a",
+            Operation::RecordDispute,
+            json!({"id":"dispute","activityId":"activity","reason":"wrong prompt"}),
+        );
+        dispute.snapshot = json!({"mastered":false});
+        execute(&mut c, dispute).unwrap();
+        let attempt = request(
+            "a",
+            Operation::RecordAttempt,
+            json!({"id":"late-answer","activityId":"activity"}),
+        );
+        assert!(
+            execute(&mut c, attempt)
+                .unwrap_err()
+                .contains("quarantined")
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListAttempts, Value::Null)).unwrap(),
+            json!([])
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::LoadSnapshot, Value::Null)).unwrap()["mastered"],
+            false
+        );
     }
     #[test]
     fn durable_restart() {
