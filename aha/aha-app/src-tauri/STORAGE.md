@@ -3,11 +3,13 @@
 `NativeRepository(accountId)` calls the single `local_repository` native command
 with a closed operation enum. The caller gets `accountId` from the authenticated
 Free2Z session; it is an ownership partition, not a replacement for OS device security.
-A single native mutex serializes all commands. SQLite uses WAL, FULL synchronous
+A single native mutex serializes commands on the blocking worker pool, keeping
+database and backup work off the UI thread. SQLite uses WAL, FULL synchronous
 writes, foreign keys and transactional migrations in app-local `learning.sqlite3`.
 No raw SQL or arbitrary file paths cross the bridge. No silent web-storage fallback.
 
-Profiles own session, activity, attempt and snapshot records through composite
+Profiles retain historical sessions plus a resumable current-session copy.
+They own session, activity, attempt and snapshot records through composite
 account/profile keys. Activities are immutable, attempts append-only, and duplicate
 attempt IDs must match their original payload. Recording an attempt and replacing
 its derived snapshot is one transaction; retry returns the current durable snapshot.
