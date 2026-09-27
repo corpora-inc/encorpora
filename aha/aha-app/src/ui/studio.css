@@ -86,6 +86,9 @@ button svg {
 }
 .aha-studio {
   min-height: 100dvh;
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 .preview-banner {
   background: #e8eddf;
@@ -1134,7 +1137,8 @@ h1 {
   border-radius: 5px;
 }
 .skip-link:focus {
-  top: 12px;
+  top: calc(12px + env(safe-area-inset-top));
+  left: calc(12px + env(safe-area-inset-left));
 }
 @media (min-width: 1500px) {
   .studio-main {
@@ -1216,7 +1220,6 @@ h1 {
   .studio-header {
     height: 74px;
     padding: 0 22px;
-    padding-top: env(safe-area-inset-top);
   }
   .wordmark {
     font-size: 2.05rem;
@@ -1449,9 +1452,9 @@ h1 {
   min-width: 44px;
 }
 .studio-header {
-  min-height: calc(74px + env(safe-area-inset-top));
+  min-height: 74px;
   height: auto;
-  padding-top: max(22px, env(safe-area-inset-top));
+  padding-top: 22px;
   padding-bottom: 22px;
 }
 .desktop-nav button {
