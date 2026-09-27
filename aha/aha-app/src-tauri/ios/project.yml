@@ -12,7 +12,10 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: ¡AHA!
+      # Keep native image paths ASCII: branded executable names can crash
+      # CoreFoundation during WebKit initialization, before application setup.
+      PRODUCT_NAME: aha
+      EXECUTABLE_NAME: aha
       PRODUCT_BUNDLE_IDENTIFIER: inc.corpora.aha
 targetTemplates:
   app:
@@ -41,6 +44,7 @@ targets:
     info:
       path: aha_iOS/Info.plist
       properties:
+        CFBundleDisplayName: ¡AHA!
         LSRequiresIPhoneOS: true
         ITSAppUsesNonExemptEncryption: false
         CFBundleURLTypes:
