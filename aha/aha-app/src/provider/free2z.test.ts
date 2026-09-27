@@ -36,3 +36,62 @@ test('unverified or periodic grant metadata cannot authorize paid tests',async()
 test('cancel during opening journal write prevents invocation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')await f.tutor.cancel();};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});assert.equal(f.calls.length,0);});
 test('account change during opening journal write prevents invocation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')f.setSession({...session,generation:'new'});};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});assert.equal(f.calls.length,0);});
 test('disk full while streaming cannot skip native cancellation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{if(['streaming','interrupted'].includes(v.operations?.at(-1)?.state))throw new Error('disk full');await original(k,v);};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'journal_write_failed'});assert.ok(f.cancelled()>0);assert.equal(f.getValue().operations[0].state,'opening');});
+
+test('corrupt journals cannot erase spending or permit another invocation',async()=>{
+  const mutations = [
+    (op:any)=>{delete op.charge;}, (op:any)=>{op.charge={state:'pending'};},
+    (op:any)=>{op.charge.charged2z='-2';}, (op:any)=>{op.charge.charged2z='02';},
+    (op:any)=>{op.charge.charged2z=2;}, (op:any)=>{op.charge.state='unknown';},
+    (op:any)=>{delete op.charge.receiptId;}, (op:any)=>{op.charge={state:'released',charged2z:'2'};},
+    (op:any)=>{op.generation='';}, (op:any)=>{op.subject='';}, (op:any)=>{op.key='';},
+    (op:any)=>{op.createdAt='yesterday';}, (op:any)=>{op.createdAt='9999-01-01T00:00:00.000Z';},
+    (op:any)=>{op.request.model='';}, (op:any)=>{op.request.maxOutputTokens='999999999';},
+    (op:any)=>{op.request.messages[0].role='assistant';},
+    (op:any)=>{op.request.messages[1].content[0]={type:'image',url:'unsafe'};},
+    (op:any)=>{op.request.tools=[];}, (op:any)=>{op.callId='';},
+  ];
+  for (const mutate of mutations) {
+    const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization);
+    mutate(f.getValue().operations[0]);f.setCap(498000n);
+    await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'journal_invalid'});
+    await assert.rejects(f.tutor.inspectPending(),{code:'journal_invalid'});
+    assert.equal(f.calls.length,1);
+  }
+});
+test('duplicate operation identities fail closed',async()=>{
+  const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization);
+  f.getValue().operations.push(structuredClone(f.getValue().operations[0]));
+  await assert.rejects(f.tutor.reconcile(),{code:'journal_invalid'});
+});
+test('pending inspection exposes metadata without changing or retrying usage',async()=>{
+  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','secret policy','private context',f.authorization));
+  const before=structuredClone(f.getValue());const pending=await f.tutor.inspectPending();
+  assert.equal(pending.length,1);assert.equal(pending[0].canReconcile,true);assert.equal(pending[0].canRecover,true);
+  assert.deepEqual(Object.keys(pending[0]).sort(),['operationId','createdAt','state','canReconcile','canRecover'].sort());
+  assert.deepEqual(f.getValue(),before);assert.equal(f.calls.length,1);
+  f.getValue().operations[0].createdAt=new Date(Date.now()-25*60*60*1000).toISOString();
+  assert.equal((await f.tutor.inspectPending())[0].canRecover,false);
+  await assert.rejects(f.tutor.recover(pending[0].operationId),{code:'recovery_expired'});assert.equal(f.calls.length,1);
+  await f.tutor.reconcile();assert.deepEqual(await f.tutor.inspectPending(),[]);
+});
+test('empty archived requests are valid only for settled operations',async()=>{
+  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
+  f.getValue().operations[0].request.messages=[];f.getValue().operations[0].text='';
+  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id),{code:'journal_invalid'});
+});
+test('inspection fences account transitions and rejects foreign journals',async()=>{
+  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
+  f.getValue().operations[0].subject='foreign';
+  await assert.rejects(f.tutor.inspectPending(),{code:'account_mismatch'});
+  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id),{code:'account_mismatch'});
+  f.getValue().operations[0].subject='adult';
+  const read=f.journal.getJournal;f.journal.getJournal=async key=>{const value=await read(key);f.setSession({...session,generation:'changed'});return value;};
+  await assert.rejects(f.tutor.inspectPending(),{code:'account_changed'});
+});
+test('pending settlement can be explicitly recovered with the original identity',async()=>{
+  const f=fixture([{type:'done',finish_reason:'stop',settlement:'pending',charge:{state:'pending'}} as any]);
+  await f.tutor.reply('verified-model','p','c',f.authorization);
+  const op=f.getValue().operations[0];assert.equal(op.state,'settling');
+  await f.tutor.recover(op.id);assert.deepEqual(f.calls[0],f.calls[1]);
+  assert.equal(f.getValue().operations[0].state,'settling');
+});

@@ -27,19 +27,63 @@ function savedCharge(charge: Charge): Operation['charge'] {
   if (charge.state === 'released') return { state: 'released', charged2z: '0' };
   return { state: 'charged', charged2z: charge.charged2z.toString(), receiptId: charge.receiptId };
 }
+const opaque = (value: unknown): value is string => typeof value === 'string' && value.length > 0 && value.length <= 256 && !/[\s\u0000-\u001f\u007f]/.test(value);
+const natural = (value: unknown): value is string => typeof value === 'string' && /^(0|[1-9]\d{0,38})$/.test(value);
+const object = (value: unknown): value is Record<string, any> => !!value && typeof value === 'object' && !Array.isArray(value);
+const keys = (value: Record<string, any>, allowed: string[]) => Object.keys(value).every(k => allowed.includes(k));
+function invalidJournal(): never {
+  throw new TutorServiceError('journal_invalid', 'The usage journal is incomplete; paid requests are paused for recovery.');
+}
 function readLedger(input: unknown): Ledger {
   if (input == null) return { version: 1, operations: [] };
-  if (typeof input !== 'object' || (input as Ledger).version !== 1 || !Array.isArray((input as Ledger).operations))
-    throw new TutorServiceError('journal_invalid', 'The usage journal needs recovery before another paid request.');
-  const ledger = input as Ledger;
-  for (const op of ledger.operations) {
-    if (!op || typeof op.id !== 'string' || typeof op.subject !== 'string' || typeof op.key !== 'string' ||
-      !['opening', 'streaming', 'interrupted', 'settling', 'finalized'].includes(op.state) ||
-      typeof op.text !== 'string' || !op.request || !Array.isArray(op.request.messages) ||
-      (op.charge?.state === 'charged' && !/^\d+$/.test(op.charge.charged2z ?? '')))
-      throw new TutorServiceError('journal_invalid', 'The usage journal is incomplete; paid requests are paused.');
+  if (!object(input) || input.version !== 1 || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
+  try { if (new TextEncoder().encode(JSON.stringify(input)).length > MAX_JOURNAL_BYTES) invalidJournal(); }
+  catch { invalidJournal(); }
+  const ids = new Set<string>(), operationKeys = new Set<string>();
+  for (const op of input.operations) {
+    if (!object(op) || !keys(op, ['id','key','subject','generation','createdAt','request','state','callId','text','charge']) ||
+      !opaque(op.id) || !opaque(op.key) || !opaque(op.subject) || !opaque(op.generation) ||
+      ids.has(op.id) || operationKeys.has(op.key) ||
+      typeof op.createdAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(op.createdAt) ||
+      !Number.isFinite(Date.parse(op.createdAt)) || new Date(op.createdAt).toISOString() !== op.createdAt ||
+      Date.parse(op.createdAt) > Date.now() ||
+      !['opening','streaming','interrupted','settling','finalized'].includes(op.state) ||
+      (op.callId !== undefined && !opaque(op.callId)) || typeof op.text !== 'string' || op.text.length > MAX_TEXT) invalidJournal();
+    ids.add(op.id); operationKeys.add(op.key);
+    const request = op.request;
+    if (!object(request) || !keys(request, ['model','messages','maxOutputTokens']) || !opaque(request.model) ||
+      request.maxOutputTokens !== '1800' || !Array.isArray(request.messages)) invalidJournal();
+    const archived = op.state === 'finalized' && request.messages.length === 0 && op.text === '';
+    if (!archived) {
+      if (request.messages.length !== 2) invalidJournal();
+      let length = 0;
+      for (const [index, message] of request.messages.entries()) {
+        if (!object(message) || !keys(message, ['role','content']) || message.role !== (index === 0 ? 'system' : 'user') ||
+          !Array.isArray(message.content) || message.content.length !== 1) invalidJournal();
+        const part = message.content[0];
+        if (!object(part) || !keys(part, ['type','text']) || part.type !== 'text' || typeof part.text !== 'string') invalidJournal();
+        length += part.text.length;
+      }
+      if (length > 16_000) invalidJournal();
+    }
+    const charge = op.charge;
+    if (charge !== undefined) {
+      if (!object(charge) || !keys(charge, ['state','charged2z','receiptId'])) invalidJournal();
+      if (charge.state === 'charged') {
+        if (!natural(charge.charged2z) || !opaque(charge.receiptId)) invalidJournal();
+      } else if (charge.state === 'released') {
+        if (charge.charged2z !== '0' || charge.receiptId !== undefined) invalidJournal();
+      } else if (charge.state !== 'pending' || charge.charged2z !== undefined || charge.receiptId !== undefined) invalidJournal();
+    }
+    if (op.state === 'finalized' ? !charge || !['charged','released'].includes(charge.state)
+      : op.state === 'settling' ? charge?.state !== 'pending' : charge !== undefined && charge.state !== 'pending') invalidJournal();
   }
-  return ledger;
+  return structuredClone(input) as Ledger;
+}
+/** Safe UI metadata only: never expose saved prompts, idempotency keys, or account identifiers. */
+export interface PendingOperation {
+  operationId: string; createdAt: string; state: Exclude<Operation['state'], 'finalized'>;
+  canReconcile: boolean; canRecover: boolean;
 }
 /** One instance per authenticated account. All paid operations serialize through this object. */
 export class Free2zTutor {
@@ -51,6 +95,7 @@ export class Free2zTutor {
   private async persist(ledger: Ledger): Promise<void> {
     if (new TextEncoder().encode(JSON.stringify(ledger)).length > MAX_JOURNAL_BYTES)
       throw new TutorServiceError('journal_capacity', 'The usage journal needs archival before more AI requests.');
+    readLedger(ledger);
     await this.journal.putJournal(SLOT, ledger);
   }
   private async archiveFinalized(ledger: Ledger): Promise<void> {
@@ -68,6 +113,18 @@ export class Free2zTutor {
     return session;
   }
   async cancel(): Promise<void> { this.cancelled = true; await this.active?.cancel(); }
+  async inspectPending(): Promise<PendingOperation[]> {
+    const before = await this.current();
+    const ledger = await this.ledger();
+    const after = await this.current();
+    if (before.generation !== after.generation) throw new TutorServiceError('account_changed', 'Account session changed during recovery.');
+    if (ledger.operations.some(op => op.subject !== this.subject)) throw new TutorServiceError('account_mismatch', 'Usage records belong to another account.');
+    return ledger.operations.filter(op => op.state !== 'finalized').map(op => ({
+      operationId: op.id, createdAt: op.createdAt, state: op.state as PendingOperation['state'],
+      canReconcile: !!op.callId, canRecover: Date.now() - Date.parse(op.createdAt) < 24 * 60 * 60 * 1000,
+    }));
+  }
+
   async reconcile(): Promise<{ pending: number; spent2z: bigint }> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
     this.busy = true;
@@ -128,6 +185,7 @@ export class Free2zTutor {
     this.busy = true; this.cancelled = false;
     try {
       await this.current(); const ledger = await this.ledger(); const op = ledger.operations.find(o => o.id === operationId);
+      if (ledger.operations.some(item => item.subject !== this.subject)) throw new TutorServiceError('account_mismatch', 'Usage records belong to another account.');
       if (!op || op.subject !== this.subject) throw new TutorServiceError('operation_missing', 'That request does not belong to this account.');
       if (op.state === 'finalized') throw new TutorServiceError('already_finalized', 'This request is already settled; use its saved content.');
       const age = Date.now() - Date.parse(op.createdAt);
