@@ -74,6 +74,15 @@ export interface StudioProps {
   onSignIn: () => void;
   onSignOut: () => void;
   onTopUp?: () => void;
+  onRecoverUsage?: () => void;
+  onCancel?: () => void;
+  pendingUsage?: {
+    operationId: string;
+    createdAt: string;
+    canRecover: boolean;
+  }[];
+  onRecoverRequest?: (id: string) => void;
+  practiceStatus?: string;
   onSelectLearner?: (id: string) => void;
   onCreateLearner?: (name: string, startGrade: number) => void;
   onExport: () => void;

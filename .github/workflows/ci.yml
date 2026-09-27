@@ -91,7 +91,7 @@ jobs:
           # reviewer, whose failure mode when it regresses is to PASS wrongly —
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
-          set_output aha_app '^(aha/|\.github/workflows/ci\.yml$)'
+          set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
           # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
@@ -1292,6 +1292,40 @@ jobs:
       - run: npm test
       - run: npm run tsc
       - run: npm run build
+      - name: Install browser for controller regressions
+        run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
+      - name: Release verifier tests
+        working-directory: .
+        run: |
+          if [ -d aha/scripts ]; then
+            python3 -m unittest discover -s aha/scripts -p 'test_*.py'
+          fi
+
+  aha-native:
+    name: aha-native
+    needs: changes
+    if: needs.changes.outputs.aha_app == 'true'
+    runs-on: macos-14
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: aha/aha-app/src-tauri
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch native icons
+        run: git lfs pull --include="aha/aha-app/src-tauri/icons/*"
+      - name: Pinned Rust toolchain
+        run: rustup toolchain install 1.97.1 --profile minimal --component rustfmt --component clippy --target aarch64-apple-ios
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: aha/aha-app/src-tauri
+      - name: Frontend placeholder for native-only checks
+        run: mkdir -p ../dist
+      - run: cargo fmt --check
+      - run: cargo test --locked --lib
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo check --locked --lib --target aarch64-apple-ios
 
   # Single summary status that aggregates every job above. THIS is the context to
   # mark as a required check on `main` — it always runs (if: always()) and always
@@ -1303,6 +1337,7 @@ jobs:
       [
         changes,
         aha-app,
+        aha-native,
         ci-scripts,
         corpan-app,
         dja,

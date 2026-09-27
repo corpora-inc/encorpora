@@ -8,9 +8,9 @@ Snapshot: 2026-09-27. This file separates code from deployment and device accept
 | TypeScript facade | Public reviewed source `550c3ff29705620d53da25a1ae5da8f889778789`; exact tarball built with npm ci/pack | Packaged |
 | App provider | Real Client/NativeTransport, durable request identity, exact money, bounded output, same-key recovery | Contract-tested with fake transport; not live |
 | OIDC discovery | GET https://free2z.cash/.well-known/openid-configuration returned HTTP200 | Reachable, not proof of login |
-| Registration console | GET https://free2z.cash/developers/apps returned HTTP404 | Client registration blocked |
+| Registration console | AHA native public client registered, zero markup; repository build variable configured | Login and metered inference not yet verified end-to-end |
 | AI gateway | https://ai.free2z.cash/v1/models failed DNS resolution from build Mac | Live inference blocked |
-| Store APIs | AWS default credentials missing; corpan-prod cached SSO returned TokenRetrievalError | Awaiting refreshed SSO |
+| Store APIs | Authorized access restored; Apple app record created and visible through API | Google Play app creation still permission-blocked |
 | Paid acceptance | User identifies account at sign-in, maximum $5 existing balance; no credit purchases | No paid calls made |
 
 ## Public registration configuration

@@ -11,7 +11,8 @@
     "build": "tsc --noEmit && vite build",
     "tsc": "tsc --noEmit",
     "test": "node scripts/test.mjs",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "test:ui": "node --import tsx scripts/verify-ui.mjs"
   },
   "dependencies": {
     "@free2z/sdk": "file:vendor/free2z-sdk-0.1.0.tgz",
@@ -31,6 +32,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
+    "playwright": "1.63.0",
     "tsx": "^4.20.0",
     "typescript": "~6.0.3",
     "vite": "^8.1.5"

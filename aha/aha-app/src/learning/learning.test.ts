@@ -172,3 +172,12 @@ test('every admitted task has an answer representable by the bounded student gra
   {kind:'power',base:'1/999983',exponent:6},
  ])assert.throws(()=>validateTask(task));
 });
+
+ test('prompt context stays compact when varied practice history grows',()=>{
+ let state=createLearner('private-local-profile',5);
+ state=success(state,fractionPractice(1),'long-history');
+ state.progress['5.NF.A.1'].distinctVariants=Array.from({length:20000},(_,i)=>`private-variant-${i}`);
+ const context=buildTutorContext(state,date(2)).context;
+ assert.ok(context.length<16000);assert.ok(!context.includes('private-variant'));
+ assert.ok(buildTeachingContext(state,'5.NF.A.1').length<4000);
+ });
