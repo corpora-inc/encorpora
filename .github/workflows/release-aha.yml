@@ -277,6 +277,10 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          accept-android-sdk-licenses: false
+          log-accepted-android-sdk-licenses: false
       - name: Install pinned native tools
         run: |
           set -euo pipefail
