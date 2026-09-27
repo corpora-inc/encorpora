@@ -29,8 +29,31 @@ untouched. SHA-256 detects accidental corruption, not malicious rewriting. Backu
 JSON is plaintext and the export UI must make that clear. Auth/billing journals are
 excluded and remain unchanged on restore, so restoring learning progress cannot
 replay an old payment operation. Profile deletion cascades learning records;
-account deletion removes profiles and its journals atomically.
+account deletion removes profiles, its journals and its recovery snapshot atomically.
+A successful import atomically saves the prior account learning data in `recovery`,
+so `getRecoveryBackup()` can recover from importing a valid but older backup.
+The recovery snapshot is excluded from normal export to prevent recursive backups.
 
 An app update whose database schema is newer than this binary is refused, never
-reset. `PRAGMA user_version` 1 is the initial schema. Add future migrations in
+reset. `PRAGMA user_version` 1 is the initial schema; version 2 adds the recovery snapshot table. Add future migrations in
 transactions and extend reopen/import compatibility tests.
+
+
+## Native document flow
+
+`shareBackup()` exports through the iOS share sheet, or the system save dialog
+(Android `ACTION_CREATE_DOCUMENT`, native desktop picker). No WebView filesystem
+paths are accepted. On iOS, `true` means the sheet was presented, not that the user
+finished exporting. The private share file remains until next launch because share
+extensions read lazily; app startup removes these app-generated temporary files.
+On Android/desktop, `false` means the picker was cancelled.
+
+`pickBackup()` reads at most 32 MiB plus one sentinel byte from a system-selected
+file via the native filesystem plugin, including Android `content://` URIs. It
+validates a full restore against an isolated database and returns a preview with
+counts and the backup text; it never changes live progress. The UI confirms the
+replacement before `restoreBackup(preview.backup)`. No filesystem, dialog or share
+plugin permissions are granted to JavaScript; only these account-based native
+commands are exposed. Use `getRecoveryBackup()` then preview/confirm/restore to
+undo an import. Dialog presentation and external provider behavior still require
+physical-device testing.

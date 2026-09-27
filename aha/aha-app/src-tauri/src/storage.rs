@@ -6,7 +6,7 @@ use sha2::{Digest, Sha256};
 use std::{path::Path, time::Duration};
 
 const MAX_JSON: usize = 512 * 1024;
-const MAX_BACKUP: usize = 32 * 1024 * 1024;
+pub const MAX_BACKUP: usize = 32 * 1024 * 1024;
 type Result<T> = std::result::Result<T, String>;
 fn err(e: impl std::fmt::Display) -> String {
     e.to_string()
@@ -55,6 +55,7 @@ pub enum Operation {
     PutJournal,
     DeleteJournal,
     ExportBackup,
+    GetRecoveryBackup,
     RestoreBackup,
     DeleteAccount,
 }
@@ -85,7 +86,7 @@ fn migrate(conn: &Connection) -> Result<()> {
     let version: u32 = conn
         .query_row("PRAGMA user_version", [], |r| r.get(0))
         .map_err(err)?;
-    if version > 1 {
+    if version > 2 {
         return Err("Database requires a newer version of AHA".into());
     }
     if version == 0 {
@@ -94,6 +95,9 @@ fn migrate(conn: &Connection) -> Result<()> {
           CREATE TABLE records(account TEXT NOT NULL, profile TEXT NOT NULL, kind TEXT NOT NULL CHECK(kind IN ('session','activity','attempt','snapshot')), id TEXT NOT NULL, data TEXT NOT NULL CHECK(json_valid(data)), PRIMARY KEY(account,profile,kind,id), FOREIGN KEY(account,profile) REFERENCES profiles(account,id) ON DELETE CASCADE);
           CREATE TABLE journal(account TEXT NOT NULL, id TEXT NOT NULL, data TEXT NOT NULL CHECK(json_valid(data)), PRIMARY KEY(account,id));
           PRAGMA user_version=1; COMMIT;").map_err(err)?;
+    }
+    if version < 2 {
+        conn.execute_batch("BEGIN IMMEDIATE; CREATE TABLE recovery(account TEXT PRIMARY KEY NOT NULL, data TEXT NOT NULL CHECK(json_valid(data))); PRAGMA user_version=2; COMMIT;").map_err(err)?;
     }
     Ok(())
 }
@@ -180,6 +184,8 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
                 .map_err(err)?;
             tx.execute("DELETE FROM journal WHERE account=?", [a])
                 .map_err(err)?;
+            tx.execute("DELETE FROM recovery WHERE account=?", [a])
+                .map_err(err)?;
             tx.commit().map_err(err)?;
             Ok(Value::Null)
         }
@@ -212,6 +218,15 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
             Ok(Value::Null)
         }
         ExportBackup => export(conn, a).map(Value::String),
+        GetRecoveryBackup => {
+            let text: Option<String> = conn
+                .query_row("SELECT data FROM recovery WHERE account=?", [a], |r| {
+                    r.get(0)
+                })
+                .optional()
+                .map_err(err)?;
+            Ok(text.map(Value::String).unwrap_or(Value::Null))
+        }
         RestoreBackup => {
             restore(conn, a, r.data.as_str().ok_or("Backup must be a string")?)?;
             Ok(Value::Null)
@@ -297,7 +312,8 @@ fn digest(payload: &BackupPayload) -> Result<String> {
         Sha256::digest(serde_json::to_vec(payload).map_err(err)?)
     ))
 }
-fn export(conn: &mut Connection, account: &str) -> Result<String> {
+pub fn export(conn: &mut Connection, account: &str) -> Result<String> {
+    identifier(account)?;
     let tx = conn.transaction().map_err(err)?;
     let profiles = {
         let mut s = tx
@@ -359,7 +375,9 @@ fn restore(conn: &mut Connection, account: &str, text: &str) -> Result<()> {
     if b.version != 1 || b.account_id != account || digest(&b.payload)? != b.sha256 {
         return Err("Backup version, owner, or integrity mismatch".into());
     }
+    let prior = export(conn, account)?;
     let tx = conn.transaction().map_err(err)?;
+    tx.execute("INSERT INTO recovery(account,data) VALUES(?,?) ON CONFLICT(account) DO UPDATE SET data=excluded.data", params![account,prior]).map_err(err)?;
     tx.execute("DELETE FROM profiles WHERE account=?", [account])
         .map_err(err)?;
     for (id, data) in &b.payload.profiles {
@@ -398,6 +416,22 @@ fn restore(conn: &mut Connection, account: &str, text: &str) -> Result<()> {
     // payment operation must never be replayed by importing a learning backup.
     tx.commit().map_err(err)?;
     Ok(())
+}
+
+/// Validate the entire import without touching the live database.
+/// Running the same restore validator in an isolated database prevents preview
+/// and commit from accidentally using different integrity/reference rules.
+pub fn preview(account: &str, text: &str) -> Result<Value> {
+    identifier(account)?;
+    let mut isolated = open(Path::new(":memory:"))?;
+    restore(&mut isolated, account, text)?;
+    let backup: Backup = serde_json::from_str(text).map_err(err)?;
+    Ok(json!({
+        "backup": text,
+        "profileCount": backup.payload.profiles.len(),
+        "activityCount": backup.payload.records.iter().filter(|r|r.1=="activity").count(),
+        "attemptCount": backup.payload.records.iter().filter(|r|r.1=="attempt").count()
+    }))
 }
 
 #[cfg(test)]
@@ -523,10 +557,67 @@ mod tests {
     #[test]
     fn migrations_refuse_future_and_bound_records() {
         let mut c = db();
-        c.pragma_update(None, "user_version", 2).unwrap();
+        c.pragma_update(None, "user_version", 3).unwrap();
         assert!(migrate(&c).is_err());
         assert!(encoded(&json!("x".repeat(MAX_JSON))).is_err());
         assert!(execute(&mut c, request("", Operation::ListProfiles, Value::Null)).is_err());
+    }
+    #[test]
+    fn restore_retains_prior_account_snapshot_and_preview_is_read_only() {
+        let mut c = db();
+        profile(&mut c, "a");
+        let old = export(&mut c, "a").unwrap();
+        execute(
+            &mut c,
+            request(
+                "a",
+                Operation::SaveProfile,
+                json!({"id":"learner","name":"New name"}),
+            ),
+        )
+        .unwrap();
+        assert_eq!(preview("a", &old).unwrap()["profileCount"], 1);
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListProfiles, Value::Null)).unwrap()[0]["name"],
+            "New name"
+        );
+        restore(&mut c, "a", &old).unwrap();
+        let recovery = execute(
+            &mut c,
+            request("a", Operation::GetRecoveryBackup, Value::Null),
+        )
+        .unwrap();
+        assert!(recovery.as_str().unwrap().contains("New name"));
+        assert_eq!(
+            execute(
+                &mut c,
+                request("b", Operation::GetRecoveryBackup, Value::Null)
+            )
+            .unwrap(),
+            Value::Null
+        );
+    }
+    #[test]
+    fn session_history_survives_resume_and_backup() {
+        let mut c = db();
+        profile(&mut c, "a");
+        for id in ["first", "second"] {
+            execute(
+                &mut c,
+                request("a", Operation::SaveSession, json!({"id":id,"data":{}})),
+            )
+            .unwrap();
+        }
+        assert_eq!(
+            execute(&mut c, request("a", Operation::LoadSession, Value::Null)).unwrap()["id"],
+            "second"
+        );
+        let backup = export(&mut c, "a").unwrap();
+        restore(&mut c, "a", &backup).unwrap();
+        assert_eq!(
+            read(&c, "a", "learner", "session", "first").unwrap()["id"],
+            "first"
+        );
     }
     #[test]
     fn snapshot_write_failure_rolls_back_attempt() {
@@ -577,6 +668,35 @@ mod tests {
         execute(&mut c, request("a", Operation::DeleteAccount, Value::Null)).unwrap();
         assert_eq!(
             execute(&mut c, request("a", Operation::GetJournal, Value::Null)).unwrap(),
+            Value::Null
+        );
+    }
+    #[test]
+    fn version_one_upgrades_without_losing_progress() {
+        let mut c = db();
+        profile(&mut c, "a");
+        c.execute_batch("DROP TABLE recovery; PRAGMA user_version=1;")
+            .unwrap();
+        migrate(&c).unwrap();
+        assert_eq!(
+            c.query_row("PRAGMA user_version", [], |r| r.get::<_, u32>(0))
+                .unwrap(),
+            2
+        );
+        assert_eq!(
+            execute(&mut c, request("a", Operation::ListProfiles, Value::Null))
+                .unwrap()
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert_eq!(
+            execute(
+                &mut c,
+                request("a", Operation::GetRecoveryBackup, Value::Null)
+            )
+            .unwrap(),
             Value::Null
         );
     }

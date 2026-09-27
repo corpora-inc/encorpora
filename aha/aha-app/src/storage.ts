@@ -5,6 +5,7 @@ export interface Profile { id: string; name: string; grade: number; createdAt: s
 export interface StoredSession { id: string; updatedAt: string; data: Json }
 export interface ActivityRecord { id: string; sessionId: string; createdAt: string; data: Json }
 export interface AttemptRecord { id: string; activityId: string; sessionId: string; createdAt: string; data: Json }
+export interface BackupPreview { backup: string; profileCount: number; activityCount: number; attemptCount: number }
 export interface AttemptResult { inserted: boolean; snapshot: Json }
 export interface LocalRepository {
   listProfiles(): Promise<Profile[]>
@@ -21,6 +22,9 @@ export interface LocalRepository {
   putJournal(key: string, data: Json): Promise<void>
   deleteJournal(key: string): Promise<void>
   exportBackup(): Promise<string>
+  getRecoveryBackup(): Promise<string | null>
+  shareBackup(): Promise<boolean>
+  pickBackup(): Promise<BackupPreview | null>
   restoreBackup(backup: string): Promise<void>
   deleteAccount(): Promise<void>
 }
@@ -54,6 +58,12 @@ export class NativeRepository implements LocalRepository {
   putJournal(key: string, data: Json): Promise<void> { return this.call('putJournal', { key, data }) }
   deleteJournal(key: string): Promise<void> { return this.call('deleteJournal', { key }) }
   exportBackup(): Promise<string> { return this.call('exportBackup') }
+  getRecoveryBackup(): Promise<string | null> { return this.call('getRecoveryBackup') }
+  shareBackup(): Promise<boolean> { return this.invoke('share_backup', { accountId: this.accountId }) }
+  pickBackup(): Promise<BackupPreview | null> { return this.invoke('pick_backup', { accountId: this.accountId }) }
   restoreBackup(backup: string): Promise<void> { return this.call('restoreBackup', { data: backup }) }
   deleteAccount(): Promise<void> { return this.call('deleteAccount') }
 }
+
+export function shareBackup(accountId: string): Promise<boolean> { return new NativeRepository(accountId).shareBackup() }
+export function pickBackup(accountId: string): Promise<BackupPreview | null> { return new NativeRepository(accountId).pickBackup() }

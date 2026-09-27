@@ -1,3 +1,4 @@
+mod documents;
 mod storage;
 use std::sync::{Arc, Mutex};
 use tauri::Manager;
@@ -18,8 +19,20 @@ async fn local_repository(
 }
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    tauri::Builder::default()
+    let builder = tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_dialog::init());
+    #[cfg(target_os = "ios")]
+    let builder = builder.plugin(tauri_plugin_ios_share::init());
+    builder
         .setup(|app| {
+            #[cfg(target_os = "ios")]
+            {
+                let shares = app.path().app_cache_dir()?.join("backup-shares");
+                if shares.exists() {
+                    std::fs::remove_dir_all(shares)?;
+                }
+            }
             let directory = app.path().app_local_data_dir()?;
             std::fs::create_dir_all(&directory)?;
             let connection = storage::open(&directory.join("learning.sqlite3"))
@@ -27,7 +40,11 @@ pub fn run() {
             app.manage(Database(Arc::new(Mutex::new(connection))));
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![local_repository])
+        .invoke_handler(tauri::generate_handler![
+            local_repository,
+            documents::pick_backup,
+            documents::share_backup
+        ])
         .run(tauri::generate_context!())
         .expect("AHA could not open its native application");
 }
