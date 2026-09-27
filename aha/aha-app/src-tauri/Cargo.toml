@@ -11,6 +11,7 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
+tauri-plugin = { version = "2", features = ["build"] }
 
 [dependencies]
 tauri = { version = "2", features = [] }
@@ -20,6 +21,7 @@ rusqlite = { version = "0.38", features = ["bundled"] }
 sha2 = "0.10"
 tauri-plugin-dialog = "=2.7.3"
 tauri-plugin-fs = "=2.5.2"
+tauri-plugin-f2z = { git = "https://github.com/free2z/zuu", rev = "39ec2720c3aff5384c46f6f53fe655657c79c40e" }
 
 [profile.release]
 opt-level = "z"
