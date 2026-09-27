@@ -129,7 +129,7 @@ jobs:
               assert '\n' not in value and '\r' not in value
               print('::add-mask::'+value)
           with open(os.environ['GITHUB_ENV'],'a') as out:
-              out.write(f'IOS_TEAM_ID={team}\nIOS_PROFILE_NAME={name}\n')
+              out.write(f'IOS_TEAM_ID={team}\nAPPLE_DEVELOPMENT_TEAM={team}\nIOS_PROFILE_NAME={name}\n')
           PY
           rm "$RUNNER_TEMP/aha-profile.plist"
       - name: Install and verify frontend
@@ -144,11 +144,17 @@ jobs:
           python - <<'PY'
           import os, pathlib
           path=pathlib.Path('src-tauri/ios/project.yml'); text=path.read_text()
+          import re
+          text=re.sub(r'^\s*DEVELOPMENT_TEAM:.*\n', '', text, flags=re.MULTILINE)
           old='        CODE_SIGN_STYLE: Automatic'
           assert old in text
           import json
-          text=text.replace(old, '        CODE_SIGN_STYLE: Manual\n        CODE_SIGN_IDENTITY: "Apple Distribution"\n        PROVISIONING_PROFILE_SPECIFIER: '+json.dumps(os.environ['IOS_PROFILE_NAME']))
+          text=text.replace(old, '        CODE_SIGN_STYLE: Manual\n        DEVELOPMENT_TEAM: '+json.dumps(os.environ['IOS_TEAM_ID'])+'\n        CODE_SIGN_IDENTITY: "Apple Distribution"\n        PROVISIONING_PROFILE_SPECIFIER: '+json.dumps(os.environ['IOS_PROFILE_NAME']))
           path.write_text(text)
+          config_path=pathlib.Path('src-tauri/tauri.conf.json')
+          config=json.loads(config_path.read_text())
+          config['bundle']['iOS']['developmentTeam']=os.environ['IOS_TEAM_ID']
+          config_path.write_text(json.dumps(config))
           PY
           npx tauri ios init --ci
           cp src-tauri/icons/ios/*.png src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset/
