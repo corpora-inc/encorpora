@@ -39,7 +39,7 @@ background/kill/resume behavior need device tests before release claims.
 ## Free2Z native host
 
 The official plugin is pinned to the public source preview
-`39ec2720c3aff5384c46f6f53fe655657c79c40e`; its transitive core is the sole native
+`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; its transitive core is the sole native
 client. Configure the public registration through the build environment variable
 `AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
 No credentials, endpoint overrides or callback injection commands are exposed to
@@ -55,9 +55,11 @@ Desktop uses `http://127.0.0.1:0/callback` registration with an ephemeral actual
 The purchase-return configuration is `https://encorpora.io/aha/purchase-return`.
 This version does not claim a verified HTTPS app link.
 
-`app_readiness` reports registration separately from paid testing. Paid testing and
-external checkout remain disabled until service availability, total-period consent,
-and store distribution rules are validated. Compiling the SDK does not establish
+`app_readiness` reports public registration configuration. The controller verifies
+a current enforced total-period grant through the SDK before admitting paid work;
+there is no compile-time paid-readiness override. Purchase/checkout permissions
+remain disabled. A fixed native command opens the Free2Z account-management page
+for grown-ups; it accepts no URL from the webview. Compiling the SDK does not establish
 successful login, persistent credentials, live metering or settlement. Those require
 registered-account testing on each shipping platform, without publishing account
 details or authentication logs.
