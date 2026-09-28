@@ -10,7 +10,7 @@ Snapshot: 2026-09-27. This file separates code from deployment and device accept
 | OIDC discovery | GET https://free2z.cash/.well-known/openid-configuration returned HTTP200 | Reachable, not proof of login |
 | Registration console | AHA native public client registered, zero markup; repository build variable configured | Login and metered inference not yet verified end-to-end |
 | AI gateway | https://ai.free2z.cash/v1/models failed DNS resolution from build Mac | Live inference blocked |
-| Store APIs | Both app records created; Apple existing internal tester preflight passes | Play app-level automation access verified; internal audience setup remains |
+| Store APIs | TestFlight build `0.1.0.29842540` is processed and available to the existing internal group; Play build `29842522` is completed internally | Play tester audience and physical installation on both platforms remain unverified; see [RELEASE.md](RELEASE.md) |
 | Paid acceptance | User identifies account at sign-in, maximum $5 existing balance; no credit purchases | No paid calls made |
 
 ## Public registration configuration
