@@ -1,7 +1,8 @@
-import type { Activity, AttemptEvidence, AttemptInput, Candidate, Grade, LearnerState, SkillProgress } from './types';
+import type { Activity, AttemptEvidence, AttemptInput, Candidate, Grade, LearnerState, Skill, SkillProgress } from './types';
 import { getSkill, skills } from './curriculum';
 import { gradeAnswer, validateActivity } from './tasks';
 export const REVIEW_DAYS = [1,3,7,14,30] as const;
+export const DAILY_FLUENCY_LIMIT = 6;
 const DAY=86400000;
 function timestamp(value:string):number {const n=Date.parse(value);if(!Number.isFinite(n))throw new Error('Use a valid timestamp.');return n;}
 export function createLearner(learnerId:string,startGrade:Grade=4):LearnerState {
@@ -68,10 +69,11 @@ export function selectCandidates(state:LearnerState,now:string=new Date().toISOS
  const validAttempts=state.attempts.filter(a=>!a.excluded);
  const last=validAttempts.at(-1);
  if(last) {
-  if(!last.independent)getSkill(last.skillId)?.prerequisites.forEach(id=>add(id,'support'));
+  // A demonstrated prerequisite does not need re-teaching after one slip on a harder skill.
+  if(!last.independent)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
   const p=state.progress[last.skillId];
-  if(p?.concept!=='provisional'||p.fluency==='developing')add(last.skillId,'continue');
-  skills.filter(s=>s.prerequisites.includes(last.skillId)&&s.prerequisites.every(id=>state.progress[id]?.concept==='provisional')).forEach(s=>add(s.id,'frontier'));
+  if(p?.concept!=='provisional')add(last.skillId,'continue');
+  skills.filter(s=>state.progress[s.id]?.concept!=='provisional'&&s.prerequisites.includes(last.skillId)&&s.prerequisites.every(id=>state.progress[id]?.concept==='provisional')).forEach(s=>add(s.id,'frontier'));
  }
  progress.filter(p=>p.concept==='developing').forEach(p=>add(p.skillId,'continue'));
  const grade=state.startGrade==='K'?0:state.startGrade;
@@ -85,12 +87,40 @@ export function selectCandidates(state:LearnerState,now:string=new Date().toISOS
  if(validAttempts.length<12) {
   // During the short placement sample, sample new domains before simply drilling a correct skill.
   const previousMenu=candidates.splice(0);added.clear();
-  previousMenu.filter(c=>c.reason==='due-review'||c.reason==='support').forEach(c=>add(c.skill.id,c.reason));
+  previousMenu.filter(c=>c.reason==='due-review'||c.reason==='support'||!last?.independent&&c.skill.id===last?.skillId).forEach(c=>add(c.skill.id,c.reason));
   placement.forEach(s=>add(s.id,'placement'));
   previousMenu.forEach(c=>add(c.skill.id,c.reason));
  } else placement.forEach(s=>add(s.id,'placement'));
+ // Fluency needs evidence across dates. Keep it available without making endless
+ // same-day recall the only next step, even when another frontier prerequisite is unseen.
+ if(last&&state.progress[last.skillId]?.concept==='provisional'&&state.progress[last.skillId]?.fluency==='developing')add(last.skillId,'continue');
  untried.forEach(s=>add(s.id,'placement'));
  return candidates.slice(0,limit);
+}
+
+/** Interleave brief recall from the whole learned frontier, not just the last question.
+ * UTC dates match the evidence reducer's multi-day fluency rule. Every timed attempt
+ * counts toward the daily practice limit, including errors and interrupted answers.
+ */
+export function selectFluencySkill(state:LearnerState,now:string=new Date().toISOString()):Skill|undefined {
+ // A fresh error or assisted answer needs focused support before unrelated recall.
+ if(state.attempts.filter(a=>!a.excluded).at(-1)?.independent===false)return undefined;
+ const today=new Date(timestamp(now)).toISOString().slice(0,10);
+ const practice=new Map<string,{today:number;last:number}>();
+ for(const attempt of state.attempts) {
+  if(attempt.excluded||attempt.mode!=='fluency')continue;
+  const previous=practice.get(attempt.skillId)??{today:0,last:0};
+  const at=timestamp(attempt.at);
+  if(new Date(at).toISOString().slice(0,10)===today)previous.today++;
+  previous.last=Math.max(previous.last,at);
+  practice.set(attempt.skillId,previous);
+ }
+ return Object.values(state.progress)
+  .filter(p=>p.concept==='provisional'&&p.fluency==='developing')
+  .map(p=>getSkill(p.skillId))
+  .filter((skill):skill is Skill=>!!skill&&skill.coverage==='verified-practice'&&!!skill.fluencyTargetMs&&(practice.get(skill.id)?.today??0)<DAILY_FLUENCY_LIMIT)
+  .sort((a,b)=>(practice.get(a.id)?.today??0)-(practice.get(b.id)?.today??0)||
+   (practice.get(a.id)?.last??0)-(practice.get(b.id)?.last??0)||a.id.localeCompare(b.id))[0];
 }
 /** Native/UI calls this only for time accumulated while the task is visible and app foregrounded. */
 export class ActiveTimer {

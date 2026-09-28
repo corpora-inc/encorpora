@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ActiveTimer, buildTeachingContext, buildTutorContext, coverageAudit, createLearner, expectedAnswer, formatRational, generatePractice, getSkill, gradeAnswer, parseRational, quarantineActivity, recordAttempt, renderTask, selectCandidates, skills, standards, validateActivity, validateTask } from './index';
+import { ActiveTimer, buildTeachingContext, buildTutorContext, coverageAudit, createLearner, expectedAnswer, formatRational, generatePractice, generateFreshPractice, teachTask, getSkill, gradeAnswer, parseRational, quarantineActivity, recordAttempt, renderTask, selectCandidates, selectFluencySkill, skills, standards, validateActivity, validateTask } from './index';
 import type { Activity, CanonicalTask, LearnerState } from './types';
 const date=(day:number)=>new Date(Date.UTC(2026,8,day,12)).toISOString();
 const activity=(task:CanonicalTask,skillId='5.NF.A.1',id='test',mode:Activity['mode']='concept'):Activity=>{
@@ -143,6 +143,113 @@ test('foreground timer excludes background time and marks interrupted timing',()
  const timer=new ActiveTimer();timer.resume(0);timer.pause(1000);timer.resume(301000);assert.deepEqual(timer.snapshot(302000),{activeMs:2000,interrupted:true});
 });
 
+test('a failed early placement gets support or a fresh retry before a new domain',()=>{
+ const task=generatePractice('K.CC.A.2',6);
+ const learner=recordAttempt(createLearner('a'),task,{id:'wrong',answer:'-999',at:date(1)});
+ assert.equal(selectCandidates(learner,date(1))[0].skill.id,task.skillId);
+ assert.equal(selectCandidates(learner,date(1))[0].reason,'continue');
+});
+
+test('conceptual frontier advances without waiting days for arithmetic fluency',()=>{
+ let learner=createLearner('a');
+ for(let i=1;i<=12;i++)learner=success(learner,generateFreshPractice('K.OA.A.5',learner,i),`fact-${i}`);
+ assert.equal(learner.progress['K.OA.A.5'].concept,'provisional');
+ assert.equal(learner.progress['K.OA.A.5'].fluency,'developing');
+ const menu=selectCandidates(learner,date(1));
+ assert.equal(menu[0].reason,'frontier');
+ assert.ok(menu.find(c=>c.skill.id==='K.OA.A.5'&&c.reason==='continue'));
+});
+
+test('interleaved fluency revisits learned facts after unrelated concepts, pauses daily, and completes across days',()=>{
+ let learner=createLearner('a',3);
+ for(let i=0;i<3;i++)learner=success(learner,generateFreshPractice('3.OA.C.7',learner,i+10),`concept-${i}`);
+ learner=success(learner,generatePractice('4.NF.B.3',80),'unrelated');
+ assert.equal(selectFluencySkill(learner,date(1))?.id,'3.OA.C.7');
+ for(let day=1;day<=2;day++) {
+  for(let i=0;i<6;i++) {
+   const skill=selectFluencySkill(learner,date(day));assert.equal(skill?.id,'3.OA.C.7');
+   const task=generateFreshPractice(skill!.id,learner,day*100+i,'fluency');
+   learner=success(learner,{...task,id:`recall-${day}-${i}`},`recall-${day}-${i}`,day);
+  }
+  assert.equal(selectFluencySkill(learner,date(day)),undefined,'Six timed answers end that day’s short practice');
+  if(day===1)assert.equal(learner.progress['3.OA.C.7'].fluency,'developing');
+ }
+ assert.equal(learner.progress['3.OA.C.7'].fluency,'fluent');
+ assert.equal(selectFluencySkill(learner,date(3)),undefined,'Established fluency does not keep drilling');
+ assert.equal(learner.attempts.filter(a=>a.mode==='fluency').length,12);
+ assert.ok(new Set(learner.attempts.filter(a=>a.mode==='fluency').map(a=>a.variant)).size>=8);
+});
+
+test('fluency rotates among eligible skills instead of repeatedly selecting one fact family',()=>{
+ let learner=createLearner('a');
+ for(const skillId of ['1.OA.C.6','3.OA.C.7'])for(let i=0;i<3;i++){
+  const task=generateFreshPractice(skillId,learner,i+20);
+  learner=success(learner,{...task,id:`${skillId}-${i}`},`${skillId}-${i}`);
+ }
+ const first=selectFluencySkill(learner,date(1))!;
+ learner=success(learner,generateFreshPractice(first.id,learner,50,'fluency'),'timed');
+ const next=selectFluencySkill(learner,date(1))!;
+ assert.notEqual(next.id,first.id);
+ // With no practice today, prefer the skill least recently timed rather than lexical order.
+ assert.equal(selectFluencySkill(learner,date(2))?.id,next.id);
+});
+
+test('a mistake does not send a learner back to an already demonstrated prerequisite',()=>{
+ let learner=createLearner('a');
+ for(let i=1;i<=12;i++)learner=success(learner,generateFreshPractice('K.OA.A.5',learner,i),`fact-${i}`);
+ const task=generatePractice('1.OA.B.4',1);
+ learner=recordAttempt(learner,task,{id:'missing-error',answer:'-999',at:date(1)});
+ const menu=selectCandidates(learner,date(1));
+ assert.equal(menu[0].skill.id,'1.OA.B.4');
+ assert.ok(!menu.some(c=>c.skill.id==='K.OA.A.5'&&c.reason==='support'));
+});
+
+test('fresh practice avoids recent facts without changing the skill or mode',()=>{
+ let learner=createLearner('a');const variants=new Set<string>();
+ for(let i=0;i<12;i++){
+  // Even a repeated random seed must not repeat recent content when variety exists.
+  const task=generateFreshPractice('3.OA.C.7',learner,7,'fluency');
+  assert.ok(!variants.has(task.variant));variants.add(task.variant);
+  assert.equal(task.skillId,'3.OA.C.7');assert.equal(task.mode,'fluency');
+  learner=success(learner,{...task,id:`fresh-${i}`},`answer-${i}`);
+ }
+});
+
+test('small practice sets remain usable after every variant has been seen',()=>{
+ let learner=createLearner('a');
+ for(let i=0;i<20;i++){
+  const task=generateFreshPractice('1.G.A.3',learner,9);
+  assert.equal(validateActivity(task).ok,true);
+  learner=success(learner,{...task,id:`small-${i}`},`small-answer-${i}`);
+ }
+ assert.equal(learner.attempts.length,20);
+});
+
+test('an already demonstrated successor is not offered as a new conceptual frontier',()=>{
+ let learner=createLearner('a');
+ for(const skillId of ['K.OA.A.5','1.OA.B.4'])for(let i=1;i<=6;i++){
+  const task=generateFreshPractice(skillId,learner,i);
+  learner=success(learner,{...task,id:`${skillId}-${i}`},`${skillId}-${i}`);
+ }
+ learner=success(learner,{...generatePractice('K.OA.A.5',99),id:'revisit'},'revisit');
+ assert.equal(learner.progress['1.OA.B.4'].concept,'provisional');
+ assert.ok(!selectCandidates(learner,date(1)).some(c=>c.skill.id==='1.OA.B.4'&&c.reason==='frontier'));
+});
+
+test('every local task has concise specific teaching that survives activity validation',()=>{
+ for(const skill of skills.filter(s=>s.coverage==='verified-practice'))for(let seed=1;seed<=10;seed++){
+  const task=generatePractice(skill.id,seed);
+  assert.ok(task.hint&&task.hint.length<=300,skill.id);
+  assert.ok(task.explanation&&task.explanation.length<=600,skill.id);
+  const validation=validateActivity(task);assert.equal(validation.ok,true);
+  if(validation.ok){assert.equal(validation.activity.hint,task.hint);assert.equal(validation.activity.explanation,task.explanation);}
+ }
+ assert.equal(teachTask({kind:'arithmetic',operation:'add',left:'1/3',right:'1/2'}).explanation,'2/6 + 3/6 = 5/6. Simplify the fraction if you can.');
+ assert.equal(teachTask({kind:'arithmetic',operation:'divide',left:'2/3',right:'4/5'}).explanation,'2/3 × 5/4 = 5/6.');
+ assert.ok(!teachTask({kind:'arithmetic',operation:'multiply',left:'6',right:'0'}).explanation.includes('÷ 0'));
+ assert.equal(teachTask({kind:'linear',a:'3',b:'2',c:'14'}).explanation,'Subtract 2 from both sides: 3 × x = 12. Divide by 3: x = 4.');
+});
+
 test('whole-number exercises cannot earn fraction evidence',()=>{
  for(const skillId of ['4.NF.B.3','4.NF.C.5'])assert.equal(validateActivity({version:1,id:'bad-fraction',skillId,mode:'concept',task:{kind:'arithmetic',operation:'add',left:'2',right:'3'}}).ok,false);
 });
@@ -181,3 +288,14 @@ test('every admitted task has an answer representable by the bounded student gra
  assert.ok(context.length<16000);assert.ok(!context.includes('private-variant'));
  assert.ok(buildTeachingContext(state,'5.NF.A.1').length<4000);
  });
+
+test('fact interleaving cannot displace focused support after a fifth-answer mistake',()=>{
+ let state=createLearner('a',3);
+ for(let i=0;i<3;i++)state=success(state,activity({kind:'arithmetic',operation:'multiply',left:'7',right:String(3+i)},'3.OA.C.7',`multiply-${i}`),`multiply-${i}`,1);
+ const extra=generateFreshPractice('1.G.A.3',state,17);state=success(state,extra,'extra',1);
+ const miss=generateFreshPractice('K.CC.A.2',state,18);
+ state=recordAttempt(state,miss,{id:'miss',answer:'-1',at:date(1)});
+ assert.equal(state.attempts.length,5);
+ assert.equal(selectCandidates(state,date(1))[0].skill.id,'K.CC.A.2');
+ assert.equal(selectFluencySkill(state,date(1)),undefined);
+});
