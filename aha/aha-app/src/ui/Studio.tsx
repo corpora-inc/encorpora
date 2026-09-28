@@ -44,6 +44,8 @@ export function Studio(props: StudioProps) {
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
   const input = useRef<HTMLInputElement>(null);
+  const taskHeading = useRef<HTMLHeadingElement>(null);
+  const feedbackRegion = useRef<HTMLDivElement>(null);
   const settingsButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const answerId = useId();
@@ -53,6 +55,12 @@ export function Studio(props: StudioProps) {
     setAnswer("");
     setAsking(false);
   }, [a?.id]);
+  useEffect(() => {
+    if (a?.id) taskHeading.current?.focus({ preventScroll: true });
+  }, [a?.id]);
+  useEffect(() => {
+    if (props.feedback) feedbackRegion.current?.focus({ preventScroll: true });
+  }, [props.feedback?.kind, props.feedback?.title, props.feedback?.message]);
   useEffect(() => {
     if (settings) dialog.current?.showModal();
     else dialog.current?.close();
@@ -79,6 +87,18 @@ export function Studio(props: StudioProps) {
     props.onLearningVisibleChange?.(learningVisible);
     return () => props.onLearningVisibleChange?.(false);
   }, [learningVisible, props.onLearningVisibleChange]);
+  const feedbackContent = props.feedback && (
+    <div className={`feedback ${props.feedback.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
+      <span aria-hidden="true">{props.feedback.kind === "correct" ? <Check size={21} /> : <Lightbulb size={21} />}</span>
+      <div><strong>{props.feedback.title}</strong><SafeMarkdown>{props.feedback.message}</SafeMarkdown></div>
+    </div>
+  );
+  const hintContent = props.hint && (
+    <div className="hint-box" role="status">
+      <Lightbulb size={20} aria-hidden="true" />
+      <div><strong>{props.feedback?.kind === "correct" ? "A closer look" : "A little nudge"}</strong><SafeMarkdown>{props.hint}</SafeMarkdown></div>
+    </div>
+  );
   return (
     <div className={`aha-studio${a && tab === "learn" ? " has-activity" : ""}`}>
       <a className="skip-link" href="#activity">
@@ -158,7 +178,7 @@ export function Studio(props: StudioProps) {
             <span>
               <strong>Your daily exploration</strong>
               <small>
-                {props.session.minutes ?? 12} minutes · at your pace
+                {props.session.minutes ? `${props.session.minutes} minutes · ` : ""}At your pace
               </small>
             </span>
           </div>
@@ -205,7 +225,7 @@ export function Studio(props: StudioProps) {
                 </div>
                 {a ? (
                   <>
-                    <h2>{a.title}</h2>
+                    <h2 ref={taskHeading} tabIndex={-1}>{a.title}</h2>
                     <div className="activity-prompt">
                       <SafeMarkdown>{a.prompt}</SafeMarkdown>
                     </div>
@@ -267,42 +287,31 @@ export function Studio(props: StudioProps) {
                               />
                               <span aria-hidden="true">↵</span>
                             </div>
+                            {(a.answerKind === "comparison" || a.answerKind === "number") && (
+                              <div className="answer-symbols" role="group" aria-label="Answer symbols">
+                                {(a.answerKind === "comparison" ? ["<", "=", ">"] : ["−"]).map(symbol => (
+                                  <button key={symbol} type="button" disabled={props.busy || readyNext}
+                                    aria-label={symbol === "<" ? "Less than" : symbol === ">" ? "Greater than" : symbol === "=" ? "Equal to" : "Change positive or negative sign"}
+                                    aria-pressed={symbol === "−" ? answer.startsWith("-") : answer === symbol}
+                                    onClick={() => setAnswer(symbol === "−" ? answer.startsWith("-") ? answer.slice(1) : `-${answer}` : symbol)}>{symbol}</button>
+                                ))}
+                              </div>
+                            )}
                             <small id={`${answerId}-help`}>
-                              {a.answerKind === "fraction"
+                              {a.answerKind === "comparison" ? "Choose less than (<), equal to (=), or greater than (>)." : a.answerKind === "fraction"
                                 ? "You can write a fraction like 3/4."
                                 : "Take your time. This is a place to figure things out."}
                             </small>
                           </>
                         )}
                       </div>
-                      {props.feedback && (
-                        <div
-                          className={`feedback ${props.feedback.kind}`}
-                          role="status"
-                        >
-                          <span>
-                            {props.feedback.kind === "correct" ? (
-                              <Check size={21} />
-                            ) : (
-                              <Lightbulb size={21} />
-                            )}
-                          </span>
-                          <div>
-                            <strong>{props.feedback.title}</strong>
-                            <SafeMarkdown>
-                              {props.feedback.message}
-                            </SafeMarkdown>
-                          </div>
-                        </div>
-                      )}
-                      {props.hint && (
-                        <div className="hint-box" role="status">
-                          <Lightbulb size={20} />
-                          <div>
-                            <strong>A little nudge</strong>
-                            <SafeMarkdown>{props.hint}</SafeMarkdown>
-                          </div>
-                        </div>
+                      {feedbackContent}
+                      {hintContent}
+                      {props.session.complete && readyNext && (
+                        <section className="session-finish" aria-label="Exploration complete">
+                          <Sprout size={24} aria-hidden="true" />
+                          <div><h3>A good place to pause.</h3><p>{props.session.summary ?? "You’ve made time for your thinking today. Take a break, or keep exploring when you’re ready."}</p></div>
+                        </section>
                       )}
                       <div className="activity-actions">
                         {readyNext ? (
@@ -312,7 +321,9 @@ export function Studio(props: StudioProps) {
                             disabled={props.busy}
                             onClick={props.onContinue}
                           >
-                            {props.feedback?.kind === "retry"
+                            {props.session.complete
+                              ? "Keep exploring"
+                              : props.feedback?.kind === "retry"
                               ? "Try a fresh one"
                               : "Next discovery"}{" "}
                             <ArrowRight size={19} />
@@ -324,7 +335,7 @@ export function Studio(props: StudioProps) {
                             disabled={props.busy || !answer.trim()}
                           >
                             {props.busy
-                              ? "Thinking with you…"
+                              ? (props.busyLabel ?? "Working on it…")
                               : "Check my answer"}{" "}
                             <ArrowRight size={19} />
                           </button>
@@ -333,7 +344,7 @@ export function Studio(props: StudioProps) {
                           className="hint-button"
                           type="button"
                           disabled={
-                            props.busy || props.feedback?.kind === "correct"
+                            props.busy || readyNext
                           }
                           onClick={() => props.onSupport("hint")}
                         >
@@ -349,24 +360,28 @@ export function Studio(props: StudioProps) {
                       <span>+</span>
                       <span>?</span>
                     </div>
-                    <h2>Your next “aha” is waiting.</h2>
+                    {feedbackContent}
+                    {hintContent}
+                    <h2>{props.session.complete ? "A little stronger, every time." : props.feedback ? "Let’s try a different discovery." : "Your next “aha” is waiting."}</h2>
                     <p>
-                      We’ll start with a few questions to find a good place for
-                      you. No grades. No pressure.
+                      {props.session.complete
+                        ? (props.session.summary ?? "You’ve made time for your thinking. It’s okay to pause here, or keep exploring.")
+                        : props.feedback ? "We’ll leave that one behind and find a fresh example."
+                        : "We’ll start with a few questions to find a good place for you. No grades. No pressure."}
                     </p>
                     <button
                       className="primary-button"
                       disabled={props.busy}
                       onClick={props.onContinue}
                     >
-                      {props.busy ? "Getting ready…" : "Let’s begin"}
+                      {props.busy ? (props.busyLabel ?? "Getting ready…") : props.session.complete ? "Keep exploring" : props.feedback ? "Try another example" : "Let’s begin"}
                       <ArrowRight size={19} />
                     </button>
                   </div>
                 )}
               </article>
               {props.error && (
-                <div className="error-banner" role="alert">
+                <div className="error-banner" role={settings ? undefined : "alert"}>
                   <CircleHelp size={20} />
                   <span>{props.error}</span>
                 </div>
@@ -377,11 +392,11 @@ export function Studio(props: StudioProps) {
                     disabled={props.busy}
                     onClick={() => props.onSupport("explain")}
                   >
-                    Explain another way
+                    {readyNext ? "Show me how it works" : "Explain another way"}
                   </button>
                   <span>·</span>
                   <button
-                    disabled={props.busy}
+                    disabled={props.busy || readyNext}
                     onClick={() => props.onSupport("stuck")}
                   >
                     I’m stuck
@@ -408,10 +423,12 @@ export function Studio(props: StudioProps) {
                 </div>
                 <div>
                   <strong>Wondering about something?</strong>
-                  <p>There’s room for a little rabbit hole.</p>
+                  <p>{a ? "There’s room for a little rabbit hole." : "Start a discovery, then bring your questions."}</p>
                 </div>
                 <button
                   aria-label="Ask a curiosity question"
+                  disabled={!a || props.busy}
+                  aria-expanded={asking || !!props.curiosity}
                   onClick={() => setAsking(!asking)}
                 >
                   <Plus size={22} />
@@ -673,23 +690,32 @@ export function Studio(props: StudioProps) {
               <h3>
                 {props.account.connected
                   ? (props.account.label ?? "Connected to Free2Z")
-                  : "Frontier AI, paid as you go."}
+                  : "Your Free2Z connection"}
               </h3>
               <p>
                 An adult account supplies AI access. Learner progress stays in
                 this app. Selected mathematical learning context is sent to
                 Free2Z and its model provider; learner names aren’t needed.
               </p>
-              {props.account.balance && (
+              <span className={`connection-pill ${props.account.connected && props.account.aiReady ? "ready" : "local"}`}>
+                {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · local practice available" : "Local practice"}
+              </span>
+              {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
+              {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
+              {(props.account.connected || props.account.balance !== undefined) && (
                 <div className="balance-row">
                   <span>Available balance</span>
-                  <strong>{props.account.balance}</strong>
+                  <strong>{props.account.balance ?? "Not checked yet"}</strong>
                 </div>
               )}
               {props.account.status && (
                 <p className="account-status">{props.account.status}</p>
               )}
+              {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (
+                <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
+              )}
               <div className="settings-buttons">
+                {props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
                 {props.busy && props.onCancel && (
                   <button className="secondary-button" onClick={props.onCancel}>
                     Stop AI request
@@ -699,6 +725,7 @@ export function Studio(props: StudioProps) {
                   <>
                     <button
                       className="secondary-button"
+                      disabled={props.busy}
                       onClick={props.onSignOut}
                     >
                       <LogOut size={16} /> Sign out
@@ -741,6 +768,7 @@ export function Studio(props: StudioProps) {
                     {props.account.purchaseAvailable && props.onTopUp && (
                       <button
                         className="primary-button"
+                        disabled={props.busy}
                         onClick={props.onTopUp}
                       >
                         Add 2Z <ArrowUpRight size={16} />
@@ -748,11 +776,14 @@ export function Studio(props: StudioProps) {
                     )}
                   </>
                 ) : (
-                  <button className="primary-button" onClick={props.onSignIn}>
+                  <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false} onClick={props.onSignIn}>
                     Connect Free2Z <ArrowUpRight size={17} />
                   </button>
                 )}
               </div>
+              <button className="text-button" onClick={() => { closeSettings(); setTab("learn"); }}>
+                <ChevronLeft size={16} /> Back to learning
+              </button>
             </section>
             <section>
               <div className="eyebrow">LOCAL LEARNERS</div>
@@ -761,6 +792,7 @@ export function Studio(props: StudioProps) {
                 <button
                   className="learner-choice"
                   key={l.id}
+                  disabled={props.busy || !props.onSelectLearner}
                   onClick={() => {
                     props.onSelectLearner?.(l.id);
                     closeSettings();
@@ -778,7 +810,7 @@ export function Studio(props: StudioProps) {
                   className="new-learner"
                   onSubmit={(e) => {
                     e.preventDefault();
-                    if (newName.trim()) {
+                    if (newName.trim() && !props.busy) {
                       props.onCreateLearner?.(newName.trim(), startGrade);
                       setNewName("");
                     }
@@ -789,6 +821,7 @@ export function Studio(props: StudioProps) {
                   </label>
                   <select
                     id="start-grade"
+                    disabled={props.busy}
                     value={startGrade}
                     onChange={(e) => setStartGrade(Number(e.target.value))}
                   >
@@ -804,6 +837,7 @@ export function Studio(props: StudioProps) {
                   <div className="curiosity-input">
                     <input
                       id="new-learner-name"
+                      disabled={props.busy}
                       value={newName}
                       maxLength={40}
                       onChange={(e) => setNewName(e.target.value)}
@@ -811,7 +845,7 @@ export function Studio(props: StudioProps) {
                     />
                     <button
                       className="icon-button"
-                      disabled={!newName.trim()}
+                      disabled={props.busy || !newName.trim()}
                       aria-label="Create learner"
                     >
                       <Plus size={22} />
@@ -829,15 +863,16 @@ export function Studio(props: StudioProps) {
                 Export a backup to keep a separate copy.
               </p>
               <div className="settings-buttons">
-                <button className="secondary-button" onClick={props.onExport}>
+                <button className="secondary-button" disabled={props.busy} onClick={props.onExport}>
                   <Download size={16} /> Export backup
                 </button>
-                <button className="secondary-button" onClick={props.onImport}>
+                <button className="secondary-button" disabled={props.busy} onClick={props.onImport}>
                   <Upload size={16} /> Restore backup
                 </button>
               </div>
               <button
                 className="danger-link"
+                disabled={props.busy}
                 onClick={() => setDeleting(!deleting)}
               >
                 Delete this learner’s local progress
@@ -851,6 +886,7 @@ export function Studio(props: StudioProps) {
                   </p>
                   <button
                     className="danger-button"
+                    disabled={props.busy}
                     onClick={() => {
                       props.onDeleteLearner();
                       setDeleting(false);

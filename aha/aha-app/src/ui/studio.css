@@ -1470,3 +1470,81 @@ h1 {
   max-width: 100%;
   gap: 2px;
 }
+
+/* Keep feedback readable and interactive controls usable with a mobile keyboard. */
+.activity-card h2:focus-visible,
+.feedback:focus-visible {
+  outline: 3px solid var(--teal, #27796a);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+.answer-symbols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+.answer-symbols button {
+  min-width: 48px;
+  min-height: 44px;
+  border: 1px solid #cdd6cb;
+  background: var(--white, #fffef9);
+  border-radius: 10px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.2rem;
+}
+.answer-symbols button[aria-pressed="true"] {
+  background: #e2eee6;
+  border-color: #267466;
+}
+.session-finish {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  margin-top: 20px;
+  border: 1px solid #c9dace;
+  background: #f1f6eb;
+  border-radius: 14px;
+}
+.session-finish > svg {
+  flex-shrink: 0;
+  color: #286c58;
+}
+.session-finish h3 {
+  margin: 0 0 7px;
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+}
+.session-finish p {
+  margin: 0;
+  line-height: 1.6;
+}
+.connection-pill {
+  display: inline-flex;
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.connection-pill.local {
+  background: #f1eee2;
+  color: #595445;
+}
+.connection-pill.ready {
+  background: #e1eee4;
+  color: #205e4c;
+}
+.settings-body .error-banner {
+  margin: 16px 0;
+}
+.welcome-state > .feedback,
+.welcome-state > .hint-box {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.settings-buttons > div {
+  width: 100%;
+}

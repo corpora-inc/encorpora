@@ -18,6 +18,7 @@ function fixture(){
   window.__ahaFixture={failNextSession:false,read};window.isTauri=true;
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:false,paidTestingReady:false,externalCheckoutEnabled:false,reason:'Test fixture: no AI service'};
+    if(command==='share_backup')throw new Error('TEST backup destination unavailable');
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(r.accountId!=='local-device')throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;
@@ -91,6 +92,7 @@ try{
   const expected=expectedAnswer(final.task);const wrong=['<','>','='].includes(expected)?(expected==='<'?'>':'<'):(expected==='0'?'1':'0');
   await answer(wrong);await page.getByRole('button',{name:'Try a fresh one',exact:true}).waitFor();
   assert.equal(await page.getByLabel('Your answer',{exact:true}).isDisabled(),true,'wrong first answer also locks evidence');
+  assert.equal(await page.locator('.feedback').evaluate(el=>document.activeElement===el),true,'answer feedback receives keyboard focus');
   attempts=await records();assert.equal(attempts.length,3);assert.equal(attempts[2].data.correct,false);
   // A validated next activity is cached across presentation write failures.
   await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
@@ -100,8 +102,28 @@ try{
   await page.getByRole('button',{name:'Try a fresh one',exact:true}).click();
   await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
   assert.equal((await active()).id,pendingId,'retry saves the same generated activity without regenerating');
+  // Quarantine removes the task, but its reassurance and next action must remain visible.
+  await page.getByRole('button',{name:'Something seems off',exact:true}).click();
+  await page.getByRole('button',{name:'Try another example',exact:true}).waitFor();
+  assert.match(await page.locator('.welcome-state .feedback').innerText(),/different example/);
+  assert.match(await page.locator('.welcome-state .hint-box').innerText(),/won’t count/);
+  assert.equal(await page.locator('.activity-prompt').count(),0);
+  await page.getByRole('button',{name:'Try another example',exact:true}).click();
+  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  assert.equal(await page.locator('.activity-card h2').evaluate(el=>document.activeElement===el),true,'new task heading receives keyboard focus');
+  // Account/storage errors must be readable inside the modal that initiated them.
+  await page.getByRole('button',{name:'Open learner and grown-up settings',exact:true}).click();
+  await page.getByLabel('Type grown-up to continue',{exact:true}).fill('grown-up');
+  await page.getByRole('button',{name:'Open grown-up settings',exact:true}).click();
+  await page.getByRole('button',{name:'Export backup',exact:true}).click();
+  await page.getByRole('dialog').getByRole('alert').waitFor();
+  assert.equal(await page.getByRole('dialog').getByRole('alert').isVisible(),true,'settings error is not hidden behind modal');
+  await page.getByRole('button',{name:'Back to learning',exact:true}).click();
+  assert.equal(await page.getByRole('dialog').count(),0);
+  await page.setViewportSize({width:320,height:740});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'compact layout has no horizontal overflow');
   assert.deepEqual(errors,[],'browser errors');
-  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, dispute quarantine. Explicit test IPC fixture; not native acceptance.');
+  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
 }finally{
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
