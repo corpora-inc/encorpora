@@ -1,6 +1,7 @@
-import type { Activity, CanonicalTask } from './types';
+import type { Activity, CanonicalTask, LearnerState } from './types';
 import { getSkill } from './curriculum';
 import { validateActivity } from './tasks';
+import { teachTask } from './teaching';
 /** Reproducible varied practice, not a substitute for live AI explanations. */
 export function generatePractice(skillId:string,seed:number=Date.now(),mode:Activity['mode']='concept'):Activity {
  const skill=getSkill(skillId); if(!skill||!skill.taskKinds.length) throw new Error(`No verified practice generator for ${skillId}.`);
@@ -72,5 +73,21 @@ export function generatePractice(skillId:string,seed:number=Date.now(),mode:Acti
  }
  const checked=validateActivity({version:1,id:`practice-${skillId}-${seed}`,skillId,mode,task});
  if(!checked.ok) throw new Error(`Invalid generated practice ${skillId}: ${checked.errors.join(' ')}`);
- return {...checked.activity,source:'local'};
+ return {...checked.activity,source:'local',...teachTask(checked.activity.task)};
+}
+
+/** Prefer a new representation of the skill, with bounded work even for tiny fact sets. */
+export function generateFreshPractice(skillId:string,learner:LearnerState,seed:number=Date.now(),mode:Activity['mode']='concept'):Activity {
+ const recent=learner.attempts.filter(a=>a.skillId===skillId).slice(-12).map(a=>a.variant);
+ let fallback=generatePractice(skillId,seed,mode);
+ let oldest=recent.lastIndexOf(fallback.variant);
+ if(oldest<0)return fallback;
+ for(let i=1;i<=48;i++) {
+  const candidate=generatePractice(skillId,((seed>>>0)+i)>>>0,mode);
+  const index=recent.lastIndexOf(candidate.variant);
+  if(index<0)return candidate;
+  if(index<oldest){fallback=candidate;oldest=index;}
+ }
+ // Some valid skills have fewer than twelve distinct tasks. Revisit the least recent one.
+ return fallback;
 }

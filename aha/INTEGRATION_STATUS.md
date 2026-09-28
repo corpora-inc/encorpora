@@ -1,36 +1,72 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-27. This file separates code from deployment and device acceptance.
+Snapshot: 2026-09-28. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK | Public reviewed source `39ec2720c3aff5384c46f6f53fe655657c79c40e` | Prerelease source, not a registry release |
-| TypeScript facade | Public reviewed source `550c3ff29705620d53da25a1ae5da8f889778789`; exact tarball built with npm ci/pack | Packaged |
-| App provider | Real Client/NativeTransport, durable request identity, exact money, bounded output, same-key recovery | Contract-tested with fake transport; not live |
-| OIDC discovery | GET https://free2z.cash/.well-known/openid-configuration returned HTTP200 | Reachable, not proof of login |
-| Registration console | AHA native public client registered, zero markup; repository build variable configured | Login and metered inference not yet verified end-to-end |
-| AI gateway | https://ai.free2z.cash/v1/models failed DNS resolution from build Mac | Live inference blocked |
-| Store APIs | TestFlight build `0.1.0.29842540` is processed and available to the existing internal group; Play build `29842522` is completed internally | Play tester audience and physical installation on both platforms remain unverified; see [RELEASE.md](RELEASE.md) |
-| Paid acceptance | User identifies account at sign-in, maximum $5 existing balance; no credit purchases | No paid calls made |
+| Native SDK and TypeScript facade | Unified public source `534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release |
+| Current grant | Supported `client.grant()` through native IPC; account/client/scope/enforcement/total-period cap/freshness verification before paid admission | Implemented and fixture-tested; AHA live acceptance pending |
+| App provider | Durable request identity, exact money, same-key recovery, completed-answer acknowledgement, conservative pending settlement | Tested with explicit fake transport and real SDK over synthetic native IPC |
+| Discovery and verification keys | Public discovery and advertised JWKS both returned HTTP 200 | Reachable; not proof of AHA mobile sign-in |
+| AI gateway | Public HTTPS `/v1/models` returned HTTP 502 during the check | Upstream paid activation and receipt acceptance remain pending |
+| Registration | Native public client configured through build-time public configuration | Native login/balance/lesson/receipt journey remains to be verified live |
+| Stores | Existing TestFlight and Play internal builds are recorded in [RELEASE.md](RELEASE.md) | Source changes are not automatically delivered builds |
 
-## Public registration configuration
+## Runtime integration
 
-Intended public client: ¡AHA!, zero developer markup, inc.corpora.aha native app. Register `inc.corpora.aha:/oauth/callback` and desktop ephemeral `http://127.0.0.1:<port>/callback` per SDK rules; purchase return `https://encorpora.io/aha/purchase-return` must exist before purchase flows. A configured client ID is supplied to Rust at build time as AHA_FREE2Z_CLIENT_ID, never as a credential or webview override. No invented client ID is built in.
+The native host exposes the registered public client ID, not a client secret or a
+webview-configurable endpoint. The controller uses the real SDK to verify the
+current grant; an obsolete compile-time disabled flag no longer decides AI
+availability. `enforced=false`, missing scope, wrong account/client, expired
+proof, non-total or excessive allowance all stop paid admission. Compilation,
+registration, or successful balance reads cannot override these checks.
 
-Android custom-scheme intent and iOS URL types must match the registration. Upgrade to claimed HTTPS only after valid AASA/assetlinks and platform verification. Until configured, the app exposes local practice clearly and sign-in explains the exact missing service setup.
+Each new operation refreshes the grant and allowance after saving its durable
+identity and before invoking the model. The SDK contract supplies a live
+snapshot, not an immutable per-operation policy version. Server revocation stamps
+must not be treated as cap-policy versions. Internal acceptance still needs the
+explicit account and aggregate spending authorization recorded privately.
 
-## Spending correctness
+Only currently advertised model IDs are selected. AI context contains bounded
+candidate skills, recent answer evidence, and optional short fluency practice;
+local code independently validates and grades the mathematical task. No model
+response or fixture can award whole-standard mastery.
 
-The estimate is not a maximum charge. Paid tests require separately verified total-period grant metadata for the selected account, a cap <=500 whole2Z (reverify USD conversion at live test), and sufficient remaining service cap and local authorization. Estimate responses do not expose cap period; do not infer total-period consent from a small remainder. Native readiness keeps paid testing disabled pending actual service/grant evidence. Do not set a ready flag merely to make a demo work.
+## Recovery and parent controls
 
-Calls persist identity/body before invocation. Unknown or pending settlement blocks new calls. Cancellation does not imply zero charge. Finalized transcripts are archived separately from the compact usage ledger; pending output is bounded and journal capacity is reserved before any billable call. Recovery older than24h never silently creates a new charge.
+Completed answer text and its learner/task context stay in the billing journal
+until the activity/session is durably saved. A restart before that acknowledgement
+restores the same answer without a new model call; replaying a displayed activity
+preserves its assistance and timing. Curiosity answers are also saved before
+acknowledgement. Grown-up settings can restore saved answers for their original
+learner or explicitly set them aside while retaining usage records.
 
-## Next live acceptance steps
+Unknown settlement blocks fresh paid calls. Explicit recovery uses the original
+body and key within the service's recovery window. Receipt-only replay does not
+pretend to regenerate text. Learner deletion and backup replacement cannot strand
+unsettled requests. Stop during grant/model preparation prevents paid dispatch.
+Capacity Retry-After delays survive the provider adapter and prevent immediate
+manual re-dispatch; no automatic new paid retry or top-up occurs.
 
-1. Verify the registration console and deployed catalogue/estimate/chat/call endpoints are ready (upstream epic free2z/zuu#1047).
-2. Native client registration and public policy/return pages are now present. Verify the configured OS redirect round trip and native credential persistence.
-3. User identifies and authenticates the funded test account. Verify total-period cap and provider conditions for supervised child-directed use.
-4. Implement/read authoritative grant verification through the released SDK contract before enabling paid readiness; no private-auth bypass.
-5. Perform native login/balance/lesson/receipt/restart on each platform within the authorized cap. Record call IDs and balance evidence without tokens or learner identifiers.
+App-cap exhaustion and insufficient balance have distinct explanations. A fixed
+native command opens `https://free2z.cash/account/apps` in the system browser for
+parent-managed consent and its Billing link. No learner content can supply that
+URL. Purchase/checkout SDK commands remain outside the app's capabilities.
 
-Browser fixtures, mocked receipts and successful native compilation do not satisfy these steps.
+## Remaining live acceptance
+
+1. Obtain the platform's paid-readiness and first-receipt checkpoint through the
+   private coordination runbook; reconcile the shared test allowance before any
+   AHA paid call. No AHA paid call or purchase has been made.
+2. Verify native browser redirects, sign-in persistence, authoritative balance,
+   fresh enforced grant and advertised models on each mobile platform.
+3. Exercise a generated lesson, correct/incorrect answers, hint assistance,
+   curiosity, receipt reconciliation, cancellation and restart within the
+   remaining authorized allowance. Keep call/account evidence private.
+4. Confirm both updated store builds are installed by existing authorized
+   testers. Android audience setup and physical installation remain separate
+   from source tests or signed uploads.
+
+Canonical contracts: [integration guide](https://github.com/free2z/zuu/blob/main/docs/free2z/sdk/INTEGRATION.md),
+[source preview](https://github.com/free2z/zuu/blob/main/docs/free2z/sdk/SOURCE-PREVIEW.md),
+[current grant](https://github.com/free2z/zuu/blob/main/docs/free2z/sdk/spec/grant.md).

@@ -10,6 +10,7 @@ export interface RecoveredLearning {
   hintsUsed: number;
   sessionId: string;
   completed: number;
+  curiosity?: {question: string; answer: string};
   /** Resumed answers always lose timed-recall eligibility. */
   interrupted: true;
 }
@@ -123,6 +124,7 @@ export function restoreLearning(
   let sessionId = crypto.randomUUID() as string;
   let hintsUsed = 0;
   let resumed: Activity | undefined;
+  let curiosity: RecoveredLearning['curiosity'];
   if (session !== null && session !== undefined) {
     const envelope = object(session, 'Saved session');
     const data = object(envelope.data, 'Saved session data');
@@ -132,6 +134,13 @@ export function restoreLearning(
     hintsUsed = integer(data.hintsUsed, 'Saved hint count', 100);
     integer(data.completed, 'Saved completion count');
     inspectProjection(data.learnerState, 'Saved session projection');
+    if (data.curiosity !== undefined) {
+      const saved = object(data.curiosity, 'Saved curiosity answer');
+      if (Object.keys(saved).some(k=>!['question','answer'].includes(k)) || typeof saved.question !== 'string' ||
+          !saved.question.trim() || saved.question.length > 600 || typeof saved.answer !== 'string' || saved.answer.length > 24_000)
+        fail('Saved curiosity answer is invalid.');
+      curiosity = {question:saved.question, answer:saved.answer};
+    }
     if (data.activity !== null) {
       const checked = validateActivity(data.activity);
       if (!checked.ok) fail('The saved activity is malformed or no longer supported.');
@@ -156,6 +165,6 @@ export function restoreLearning(
     if (error instanceof LearningRecoveryError) throw error;
     fail(error instanceof Error ? error.message : 'Attempt evidence cannot be replayed.');
   }
-  return { learner, activity: resumed, hintsUsed: resumed ? hintsUsed : 0, sessionId,
+  return { learner, activity: resumed, ...(curiosity ? {curiosity} : {}), hintsUsed: resumed ? hintsUsed : 0, sessionId,
     completed: observed.filter(a => a.sessionId === sessionId).length, interrupted: true };
 }

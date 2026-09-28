@@ -59,6 +59,22 @@ Progress policy is intentionally transparent and provisional:
   Two successful due reviews establish retained numerical evidence; later failure
   clears retention and starts a next-day review. The longest interval repeats.
 - `selectCandidates()` supplies due/support/continuation/frontier/placement choices.
+- An early missed placement question gets prerequisite support or a fresh retry
+  before another domain. Already demonstrated prerequisites are not automatically
+  re-taught after a slip. Conceptual advancement does not wait for multi-day fluency.
+- `selectFluencySkill(learner, now?)` chooses among all provisionally learned fact
+  skills still developing fluency, regardless of the latest question's topic. It
+  prefers fewer timed attempts today, then least recent recall practice, and stops
+  after six timed attempts per skill per UTC date. The controller interleaves these
+  short checks without displacing immediate support or due reviews. This limit does
+  not award fluency: the existing twelve fast independent answers, eight variants,
+  and two-date evidence requirements still apply.
+- `generateFreshPractice(skillId, learner, seed?, mode?)` avoids the previous twelve
+  variants for that skill using a bounded search. For small exhausted fact sets it
+  prefers the least recent candidate. The controller still assigns a new activity ID.
+- Local generated tasks include concise hints and exact task-derived explanations
+  from `teachTask()`, including fraction arithmetic, regrouping, geometry and algebra.
+  Revealing teaching remains assisted practice; it does not award independent credit.
   The first twelve attempts favor breadth across domains. Starting grade is only a
   placement hint; existing success does not permanently fence the learner in.
 - `quarantineActivity()` marks disputed evidence and rebuilds projections from the
