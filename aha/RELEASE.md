@@ -9,8 +9,14 @@ As of September 28, 2026:
 
 | Target | Verified distribution evidence | Remaining blocker |
 |---|---|---|
-| TestFlight internal | Version `0.1.0`, build `0.1.0.29842540`: signed upload, Apple `VALID` processing, assignment to the existing nonempty internal group, and `IN_BETA_TESTING` verified | Actual tester installation and restart confirmation remain unverified |
+| TestFlight internal | Version `0.1.0`, build `0.1.0.29843614`: signed upload, Apple `VALID` processing, assignment to the existing nonempty internal group, and `IN_BETA_TESTING` verified | Actual tester installation and restart confirmation remain unverified |
 | Google Play internal | Version `0.1.0`, build `29843596`: signed AAB, exact newly completed internal release verified through the official API, and saved existing audience verified through Console attestation | Physical store installation remains unverified |
+
+The [updated iOS release](https://github.com/corpora-inc/encorpora/actions/runs/36458896328)
+verified the signed upload, Apple `VALID` processing, and `IN_BETA_TESTING` for the
+existing nonempty internal group. The retained IPA's bundle, visible name, ASCII
+executable and version were independently checked. Its SHA-256 is
+`2967596c6b90fbe7aff8d5a6deb3b87ca8d7b33ee18bde7343dae5a02bf99065`.
 
 The [updated Android release](https://github.com/corpora-inc/encorpora/actions/runs/36456923121)
 passed bundle identity, signing, 16 KiB compatibility, completed-track and audience
