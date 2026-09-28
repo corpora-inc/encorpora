@@ -8,11 +8,11 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 |---|---|---|---|
 | Foundation | #806 | Merged #813 | Frontend shell, reproducible checks, CI |
 | Native storage | #807 | Merged #820 | SQLite, recovery; Android debug build and iOS cross-check verified |
-| Free2Z | #808 | Merged #824 + native SDK host #827 | Unified SDK + current-grant integration; paid/live acceptance remains pending |
-| Standards and learning | #809 | Merged #815 | Original K–8 graph; 90 verified numerical facets, 139 guided-only standards |
-| Experience | #810 | Merged #814 and #824 | Accessible guided journey and bounded visual renderers |
+| Free2Z | #808 | Merged #824/#827/#843 | Unified SDK + current-grant integration; paid/live acceptance remains pending |
+| Standards and learning | #809 | Merged #815/#840 | Original K–8 graph; 90 verified numerical facets, 139 guided-only standards |
+| Experience | #810 | Merged #814/#824/#842/#843 | Accessible guided journey and bounded visual renderers |
 | Integrated verification | #811 | 99 tests + controller/SDK browser regressions pass; native Android emulator/upgrade and iOS simulator verified | See ACCEPTANCE.md; live and physical-device acceptance remains |
-| Internal delivery | #812 | Signed builds uploaded; see [RELEASE.md](RELEASE.md) | TestFlight build `0.1.0.29842540` is `IN_BETA_TESTING` in the existing internal group. Play build `29842522` is completed internally; its tester audience remains unconfigured. Physical installs remain unverified. |
+| Internal delivery | #812 | Signed builds uploaded; see [RELEASE.md](RELEASE.md) | TestFlight build `0.1.0.29843614` is `IN_BETA_TESTING` in the existing internal group. Play build `29843596` is completed internally with a Console-attested existing audience. Physical installs remain unverified. |
 
 ## Active constraints
 - iOS startup uses ASCII native executable identifiers (fixed in #831); the visible brand remains ¡AHA!. Native simulator learning, restart, quarantine and backup acceptance passed with proper simulator Keychain entitlements. Signed TestFlight processing and existing-group availability are verified; physical-device acceptance remains required.
@@ -20,7 +20,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 - Existing primary checkout has unrelated untracked Dynawalla files. Preserve them; all AHA changes use isolated worktrees.
 - SDK source preview is usable; live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
 - Paid acceptance requires an explicitly authorized account and shared spending limit, a fresh service-enforced grant, and verified service readiness. Keep account-specific testing instructions in the private runbook.
-- Existing authorized internal testers only. No new invitations or company roles. Play Console email-list setup needs the existing AHA tester page visibly foregrounded; the hidden-tab session opens an empty modal. Save/reload the owner-only list before claiming audience availability. See [RELEASE.md](RELEASE.md).
+- Existing authorized internal testers only. No new invitations or company roles. The existing Play owner list is verified saved and selected after Console reload. No invitations or audience selections were changed by the worker. See [RELEASE.md](RELEASE.md).
 
 ## Current implementation boundaries
 - Task-specific local teaching and bounded fresh variants support continued practice. Conceptual advancement and optional all-skill fact practice remain separate, and recent errors take priority over unrelated fluency.
