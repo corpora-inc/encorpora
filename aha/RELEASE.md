@@ -5,14 +5,21 @@ Package / bundle identifier: `inc.corpora.aha`. Read the release version from
 
 ## Delivery status
 
-As of September 27, 2026:
+As of September 28, 2026:
 
 | Target | Verified distribution evidence | Remaining blocker |
 |---|---|---|
 | TestFlight internal | Version `0.1.0`, build `0.1.0.29842540`: signed upload, Apple `VALID` processing, assignment to the existing nonempty internal group, and `IN_BETA_TESTING` verified | Actual tester installation and restart confirmation remain unverified |
-| Google Play internal | Version `0.1.0`, build `29842522`: signed AAB, initial upload, and exact newly completed internal release verified through the official API | No saved tester audience or installation verified; Console email-list setup remains blocked |
+| Google Play internal | Version `0.1.0`, build `29843596`: signed AAB, exact newly completed internal release verified through the official API, and saved existing audience verified through Console attestation | Physical store installation remains unverified |
 
-The [Android artifact run](https://github.com/corpora-inc/encorpora/actions/runs/36358416568)
+The [updated Android release](https://github.com/corpora-inc/encorpora/actions/runs/36456923121)
+passed bundle identity, signing, 16 KiB compatibility, completed-track and audience
+verification. Its signed AAB SHA-256 is
+`3dab167e1e04a82c41ce432281a31902b300fd8d49e9db67370c05bfbcd6e927`.
+That combined run stopped on iOS before native compilation due to the test-clock
+race fixed in #845; it must not be described as a successful whole workflow.
+
+The earlier [Android artifact run](https://github.com/corpora-inc/encorpora/actions/runs/36358416568)
 passed package, signing, and 16 KiB checks. Its initial Console upload was completed
 through the official publishing API, with retained pre/post track evidence and no
 duplicate upload. The [iOS run](https://github.com/corpora-inc/encorpora/actions/runs/36359478967)
@@ -20,14 +27,13 @@ built and uploaded successfully but failed its final check on an unsupported App
 relationship-read endpoint. A reviewed corrected helper subsequently verified that
 same existing build and group; the original workflow is still a failed run.
 
-The remaining Play operator action is to visibly foreground the existing AHA
-Internal testing > Testers page and open **Create email list**. Save only the
-already-authorized owner audience, then reload and verify it before recording a
-build-scoped attestation. Browser automation currently observes a hidden tab and an
-empty modal; no saved audience is inferred from the completed release.
+On September 28, the existing authorized owner email list was confirmed saved and
+selected for AHA's internal track after reloading Play Console. Existing audience
+selections were left unchanged. Private screenshot and Console-observation evidence
+support the build-scoped audience attestation; this does not prove installation.
 
-An authorized tester must also install through each store and confirm the native
-learning/restart journey. Paid AI remains disabled pending service acceptance.
+An authorized tester must still install through each store and confirm the native
+learning/restart journey. Live paid AI acceptance awaits production activation.
 Operational details, retained evidence, and signing configuration belong in the [private infrastructure runbooks](https://github.com/corpora-inc/infra-private), never public logs or screenshots.
 
 ## Reproducible release path

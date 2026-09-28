@@ -1,5 +1,28 @@
 # Native acceptance evidence
 
+## September 28 SDK upgrade acceptance
+
+The app source merged in [#843](https://github.com/corpora-inc/encorpora/pull/843)
+(commit `fddee28b093ef881ec6f872acaef20465e45e679`) passed 99 application tests,
+both controller browser suites, 16 native tests, strict Clippy, and iOS cross-checks.
+The browser suites use explicit synthetic native IPC; they do not establish live
+Free2Z authentication or billing acceptance.
+
+Both updated native applications were then built and installed over their existing
+isolated test installations. The iOS simulator reopened the current lesson and
+preserved all 12 existing local records across terminate/relaunch. The Android
+emulator upgrade preserved all 17 existing local records and relaunched the
+native interface. Both screens were visually inspected. These were upgrade and
+startup checks; the broader learning/backup journeys below were not repeated.
+The iOS simulator build used the same explicit Rust archive and ad hoc signing
+approach described below. No tracked build template was overridden.
+
+Neither check signed in, sent paid AI requests, purchased credits, or wiped data.
+Private evidence is retained outside the public repository. Store delivery and
+physical installations are tracked separately in [RELEASE.md](RELEASE.md).
+
+## Earlier full native learning journeys
+
 Android 36 arm64 emulator acceptance used the actual Tauri host and app-private SQLite database, not the browser IPC fixture.
 
 - Correct and incorrect first answers, assisted hints, and immutable attempts survived force-stop/relaunch.
@@ -26,4 +49,28 @@ The simulator artifact used debug native code with bundled `tauri/custom-protoco
 
 The original Unicode executable crashed during Wry framework discovery before app initialization. Disabling debug dylibs did not resolve it. Keeping the executable `aha` and visible display name `¡AHA!` resolved startup with debug dylibs enabled, as encoded in #831.
 
-No sign-in, paid requests, purchases, device data wipes, or other-app interactions were performed. Live Free2Z authentication, authoritative grant verification, metered inference and settlement remain unverified. Physical-device acceptance, signed release-workflow verification, processed TestFlight availability and Google Play internal-track availability remain required. See [INTEGRATION_STATUS.md](INTEGRATION_STATUS.md) for service prerequisites.
+No sign-in, paid requests, purchases, device data wipes, or other-app interactions were performed. Live Free2Z authentication, authoritative grant verification, metered inference and settlement remain unverified. Physical-device and live-service acceptance remain required. Store processing and tester availability are recorded separately in [RELEASE.md](RELEASE.md). See [INTEGRATION_STATUS.md](INTEGRATION_STATUS.md) for service prerequisites.
+
+## Physical-device follow-through
+
+Record the actual store build and device before testing; an upload or selected
+beta audience is not an installation result. Keep account, authentication and
+receipt identifiers in the private runbook.
+
+1. Install/update through the existing TestFlight or Play internal audience.
+   Open local practice, submit a wrong answer and a correct answer, use a hint,
+   then terminate/relaunch. Confirm progress survives and assisted work does not
+   earn independent fluency credit. Background time must not count as active work.
+2. After the backend's paid-readiness checkpoint and reconciliation of the shared
+   authorized test allowance, connect Free2Z through the native system browser.
+   Confirm the callback, reported persistence mode, current balance, enforced
+   allowance and model availability. Restart and check the session again.
+3. Generate one lesson and verify its learning record and settled charge. Test
+   recovery within the remaining allowance using the original request identity;
+   a recovered completed answer must not trigger another paid model invocation.
+   Preserve unresolved settlement rather than reporting it as free usage.
+4. Verify a saved curiosity answer survives restart and sign-out reports the
+   native result accurately. Do not infer these live outcomes from fixture tests.
+
+Record observed pass/fail results separately for Android and iOS. This procedure
+is pending execution on physical devices; it is not additional acceptance evidence.

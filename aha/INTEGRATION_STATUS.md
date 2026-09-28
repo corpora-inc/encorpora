@@ -64,7 +64,7 @@ URL. Purchase/checkout SDK commands remain outside the app's capabilities.
    curiosity, receipt reconciliation, cancellation and restart within the
    remaining authorized allowance. Keep call/account evidence private.
 4. Confirm both updated store builds are installed by existing authorized
-   testers. Android audience setup and physical installation remain separate
+   testers. Android audience selection is now verified; physical installation remains separate
    from source tests or signed uploads.
 
 Canonical contracts: [integration guide](https://github.com/free2z/zuu/blob/main/docs/free2z/sdk/INTEGRATION.md),
