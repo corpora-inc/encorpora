@@ -131,6 +131,30 @@ def ios_app_and_group(store: Store):
     return apps[0]['id'], group_id
 
 
+def ios_group_has_build(store: Store, group: str, build: str) -> bool:
+    # Apple permits reading this direction, not GET builds/{id}/betaGroups.
+    from urllib.parse import urlsplit
+    endpoint = f'betaGroups/{group}/builds'
+    path = endpoint
+    seen = set()
+    for _ in range(100):
+        if path in seen:
+            raise ReleaseCheckError('Apple returned a repeated group-build page')
+        seen.add(path)
+        page = store.request('GET', path, **({'params': {'limit': 200}} if path == endpoint else {}))
+        if any(item['id'] == build for item in page['data']):
+            return True
+        next_url = (page.get('links') or {}).get('next')
+        if not next_url:
+            return False
+        parsed = urlsplit(next_url)
+        if (parsed.scheme != 'https' or parsed.netloc != 'api.appstoreconnect.apple.com'
+                or parsed.path != '/v1/'+endpoint or parsed.fragment):
+            raise ReleaseCheckError('Apple returned an unexpected group-build pagination URL')
+        path = endpoint + ('?'+parsed.query if parsed.query else '')
+    raise ReleaseCheckError('Apple group-build pagination exceeded the verification bound')
+
+
 def ios_verify(store: Store, build: str, since: int):
     app, group = ios_app_and_group(store)
     deadline = time.monotonic()+2700
@@ -151,11 +175,9 @@ def ios_verify(store: Store, build: str, since: int):
                 if attrs.get('expired'):
                     raise ReleaseCheckError('The uploaded build has expired')
                 build_id = candidate['id']
-                attached = store.request('GET', f'builds/{build_id}/betaGroups', params={'limit': 200})['data']
-                if not any(g['id'] == group for g in attached):
+                if not ios_group_has_build(store, group, build_id):
                     store.request('POST', f'betaGroups/{group}/relationships/builds', json={'data': [{'type': 'builds', 'id': build_id}]})
-                    attached = store.request('GET', f'builds/{build_id}/betaGroups', params={'limit': 200})['data']
-                if not any(g['id'] == group for g in attached):
+                if not ios_group_has_build(store, group, build_id):
                     raise ReleaseCheckError('Processed build is not assigned to the authorized internal group')
                 detail = store.request('GET', f'builds/{build_id}/buildBetaDetail')['data']['attributes']
                 beta = detail.get('internalBuildState')
