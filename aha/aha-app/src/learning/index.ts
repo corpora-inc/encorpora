@@ -5,3 +5,4 @@ export * from './tasks';
 export * from './practice';
 export * from './engine';
 export * from './prompt';
+export * from './teaching';

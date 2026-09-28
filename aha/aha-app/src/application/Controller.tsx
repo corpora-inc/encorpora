@@ -8,11 +8,12 @@ import {
   type Profile,
 } from "../storage";
 import {
-  generatePractice,
+  generateFreshPractice,
   getSkill,
   gradeAnswer,
   recordAttempt,
   selectCandidates,
+  selectFluencySkill,
   validateActivity,
   buildTutorContext,
   ActiveTimer,
@@ -422,12 +423,12 @@ export default function Controller() {
               (c) => c.reason === "frontier" || c.reason === "placement",
             )
           : undefined) ?? candidates[0];
-      const last = state.attempts.at(-1);
-      const skill = getSkill(last?.skillId ?? "");
-      const fluency =
-        count.current > 0 && count.current % 5 === 0 && skill?.fluencyTargetMs;
-      next = generatePractice(
-        fluency ? skill.id : chosen.skill.id,
+      const fluencySkill = !stretch && count.current > 0 && count.current % 5 === 0 &&
+        !["support", "due-review"].includes(chosen.reason) ? selectFluencySkill(state) : undefined;
+      const fluency = !!fluencySkill;
+      next = generateFreshPractice(
+        fluencySkill?.id ?? chosen.skill.id,
+        state,
         crypto.getRandomValues(new Uint32Array(1))[0],
         fluency
           ? "fluency"
