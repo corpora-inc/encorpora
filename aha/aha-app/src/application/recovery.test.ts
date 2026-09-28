@@ -76,3 +76,13 @@ test('contradictory envelopes and duplicate immutable IDs fail closed', () => {
   assert.throws(() => restoreLearning(profile, null, null, [{ ...f.attempts[0], createdAt: 'bad' }], []), LearningRecoveryError);
   assert.throws(() => restoreLearning(profile, null, null, [{ ...f.attempts[0], data: { ...f.attempts[0].data, hintsUsed: undefined } }], []), LearningRecoveryError);
 });
+
+test('paid curiosity answers survive presentation recovery without creating mastery', () => {
+ const f=fixture();
+ const curiosity={question:'Where is this useful?',answer:'Fractions help you share a recipe fairly.'};
+ const session={...f.session,data:{...f.session.data,curiosity}};
+ const restored=restoreLearning(profile,f.state,session,f.attempts,[]);
+ assert.deepEqual(restored.curiosity,curiosity);
+ assert.deepEqual(restored.learner.progress,f.state.progress);
+ assert.throws(()=>restoreLearning(profile,f.state,{...session,data:{...session.data,curiosity:{...curiosity,answer:'x'.repeat(24001)}}},f.attempts,[]),LearningRecoveryError);
+});

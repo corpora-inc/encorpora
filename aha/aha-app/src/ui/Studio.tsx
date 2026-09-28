@@ -446,7 +446,7 @@ export function Studio(props: StudioProps) {
                       {props.curiosity.answer ? (
                         <SafeMarkdown>{props.curiosity.answer}</SafeMarkdown>
                       ) : (
-                        <p role="status">Thinking about that…</p>
+                        <p role="status">{props.busy ? "Thinking about that…" : "That answer could not finish. You can return to your discovery; no new paid request will start automatically."}</p>
                       )}
                       <button
                         className="text-button"
@@ -698,8 +698,9 @@ export function Studio(props: StudioProps) {
                 Free2Z and its model provider; learner names aren’t needed.
               </p>
               <span className={`connection-pill ${props.account.connected && props.account.aiReady ? "ready" : "local"}`}>
-                {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · local practice available" : "Local practice"}
+                {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · AI not ready" : "Local practice"}
               </span>
+              {props.account.connected && !props.account.aiReady && <p className="account-status">Sign out to use this device’s local-practice profile.</p>}
               {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
               {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
               {(props.account.connected || props.account.balance !== undefined) && (
@@ -715,6 +716,7 @@ export function Studio(props: StudioProps) {
                 <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
               )}
               <div className="settings-buttons">
+                {props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
                 {props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
                 {props.busy && props.onCancel && (
                   <button className="secondary-button" onClick={props.onCancel}>
@@ -781,6 +783,15 @@ export function Studio(props: StudioProps) {
                   </button>
                 )}
               </div>
+              {!!props.savedAnswers?.length && <div className="pending-usage" role="status">
+                <strong>Saved AI answers</strong>
+                <p>These answers are already saved. Restoring them does not start a new paid request.</p>
+                {props.savedAnswers.map(saved => <div key={saved.operationId}>
+                  <p>{saved.learnerName}</p>
+                  <button className="secondary-button" disabled={props.busy || !saved.canRestore} onClick={() => props.onRestoreAnswer?.(saved.operationId)}>Restore saved answer</button>
+                  <button className="text-button" disabled={props.busy} onClick={() => props.onDiscardAnswer?.(saved.operationId)}>Set this answer aside</button>
+                </div>)}
+              </div>}
               <button className="text-button" onClick={() => { closeSettings(); setTab("learn"); }}>
                 <ChevronLeft size={16} /> Back to learning
               </button>

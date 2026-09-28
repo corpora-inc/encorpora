@@ -22,6 +22,7 @@ async fn local_repository(
 pub fn run() {
     let builder = tauri::Builder::default()
         .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init());
     #[cfg(target_os = "ios")]
     let builder = builder.plugin(tauri_plugin_ios_share::init());
@@ -45,7 +46,8 @@ pub fn run() {
             local_repository,
             documents::pick_backup,
             documents::share_backup,
-            f2z::app_readiness
+            f2z::app_readiness,
+            f2z::open_free2z_account
         ])
         .run(tauri::generate_context!())
         .expect("AHA could not open its native application");

@@ -75,12 +75,16 @@ export interface StudioProps {
   ) => void;
   onCuriosity: (question: string) => void;
   onCloseCuriosity: () => void;
+  onManageAccount?: () => void;
   onSignIn: () => void;
   onSignOut: () => void;
   onRefreshAccount?: () => void;
   onTopUp?: () => void;
   onRecoverUsage?: () => void;
   onCancel?: () => void;
+  savedAnswers?: { operationId: string; learnerName: string; canRestore: boolean }[];
+  onRestoreAnswer?: (id: string) => void;
+  onDiscardAnswer?: (id: string) => void;
   pendingUsage?: {
     operationId: string;
     createdAt: string;

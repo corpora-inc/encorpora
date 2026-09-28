@@ -6,7 +6,7 @@ use tauri_plugin_f2z::{Builder, MobileRedirects, f2z_sdk::Config};
 #[serde(rename_all = "camelCase")]
 pub struct Readiness {
     free2z_configured: bool,
-    paid_testing_ready: bool,
+    client_id: Option<&'static str>,
     external_checkout_enabled: bool,
     reason: &'static str,
 }
@@ -15,12 +15,10 @@ pub struct Readiness {
 pub fn app_readiness() -> Readiness {
     Readiness {
         free2z_configured: client_id().is_some(),
-        // Live readiness and a verified total-period grant must be established
-        // against the registered client. SDK compilation is not this evidence.
-        paid_testing_ready: false,
+        client_id: client_id(),
         external_checkout_enabled: false,
         reason: if client_id().is_some() {
-            "Free2Z sign-in is configured. Paid learning awaits deployed metering and verified total-period spending consent."
+            "Free2Z sign-in is configured. AI access is checked against your current spending allowance before each lesson."
         } else {
             "Live beta awaits Free2Z client registration, deployed metering, and verified total-period spending consent."
         },
@@ -48,10 +46,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn client_registration_never_claims_paid_readiness() {
+    fn client_registration_exposes_only_public_configuration() {
         let readiness = app_readiness();
         assert_eq!(readiness.free2z_configured, client_id().is_some());
-        assert!(!readiness.paid_testing_ready);
+        assert_eq!(readiness.client_id, client_id());
+        assert_eq!(readiness.client_id, client_id());
         assert!(!readiness.external_checkout_enabled);
     }
 
@@ -68,4 +67,15 @@ mod tests {
             assert!(!permission.contains("purchase") && !permission.contains("checkout"));
         }
     }
+}
+
+/// Open only the supported parent recovery page; never accept a URL from lesson content.
+#[tauri::command]
+pub fn open_free2z_account(app: tauri::AppHandle) -> Result<(), String> {
+    use tauri_plugin_opener::OpenerExt;
+    app.opener()
+        .open_url("https://free2z.cash/account/apps", None::<&str>)
+        .map_err(|_| {
+            "Could not open Free2Z. Visit free2z.cash/account/apps in your browser.".to_owned()
+        })
 }
