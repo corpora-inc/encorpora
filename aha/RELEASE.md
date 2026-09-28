@@ -42,6 +42,21 @@ An authorized tester must still install through each store and confirm the nativ
 learning/restart journey. Live paid AI acceptance awaits production activation.
 Operational details, retained evidence, and signing configuration belong in the [private infrastructure runbooks](https://github.com/corpora-inc/infra-private), never public logs or screenshots.
 
+## External TestFlight follow-through
+
+On September 28 the owner authorized an additional AHA-only external tester.
+The external group and tester membership were created, build `0.1.0.29843614`
+was assigned, and Apple accepted the beta review submission. Latest readback:
+`WAITING_FOR_BETA_REVIEW`; automatic notification is enabled. EMAIL invitation
+type does not establish actual delivery, acceptance or installation.
+
+Existing internal TestFlight access remains active without external beta review.
+The owner accepted the external route; do not add App Store Connect roles to
+avoid review. Review metadata accurately describes local practice and the pending
+paid-AI activation. Follow approval, invitation and actual installation in
+[#848](https://github.com/corpora-inc/encorpora/issues/848). Audience and contact
+details stay in the private infrastructure runbook.
+
 ## Reproducible release path
 
 `.github/workflows/release-aha.yml` handles AHA tags (`aha-v<version>`) and manual

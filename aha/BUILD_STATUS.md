@@ -1,5 +1,7 @@
 # ¡AHA! build status
 
+Start a fresh session with [HANDOFF.md](HANDOFF.md).
+
 ## Goal
 Family beta on TestFlight internal + Google Play internal. Warm math-studio design. K–8 scope with deep grades 2–6; no Dynawalla adaptive-engine reuse. No public release or new Corpora infrastructure.
 
@@ -20,7 +22,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 - Existing primary checkout has unrelated untracked Dynawalla files. Preserve them; all AHA changes use isolated worktrees.
 - SDK source preview is usable; live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
 - Paid acceptance requires an explicitly authorized account and shared spending limit, a fresh service-enforced grant, and verified service readiness. Keep account-specific testing instructions in the private runbook.
-- Existing authorized internal testers only. No new invitations or company roles. The existing Play owner list is verified saved and selected after Console reload. No invitations or audience selections were changed by the worker. See [RELEASE.md](RELEASE.md).
+- Existing internal audiences remain unchanged. The owner additionally authorized one AHA external TestFlight tester and accepted the external-review route. Group membership and build assignment are verified; Apple beta review is pending (#848). No company roles or public links were added. The Play owner list remains verified saved and selected. Identities remain private. See [RELEASE.md](RELEASE.md).
 
 ## Current implementation boundaries
 - Task-specific local teaching and bounded fresh variants support continued practice. Conceptual advancement and optional all-skill fact practice remain separate, and recent errors take priority over unrelated fluency.

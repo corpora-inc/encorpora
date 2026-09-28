@@ -2,6 +2,9 @@
 
 An independent, local-first adaptive math tutor. Free2Z owns authentication, balance and metered inference; Corpora operates no app backend. Learner evidence stays in native SQLite; minimized learning context goes to Free2Z for teaching.
 
+Start a continuation session with [HANDOFF.md](HANDOFF.md): delivered builds,
+remaining acceptance, follow-up issues and the private operational boundary.
+
 ## Development
 
 Use Node 24 and Rust 1.97.1. From `aha/aha-app`:
