@@ -30,7 +30,7 @@ export interface StudioActivity {
   prompt: string;
   skill: string;
   standard?: string;
-  answerKind?: "number" | "fraction" | "text" | "choice";
+  answerKind?: "number" | "fraction" | "text" | "choice" | "comparison";
   choices?: { id: string; label: string }[];
   visual?: StudioVisual;
 }
@@ -39,6 +39,7 @@ export interface StudioProps {
   learnerName: string;
   activity?: StudioActivity;
   busy?: boolean;
+  busyLabel?: string;
   /** First attempt already persisted; show a fresh task instead of rescoring retries. */
   activityAnswered?: boolean;
   onLearningVisibleChange?: (visible: boolean) => void;
@@ -50,7 +51,7 @@ export interface StudioProps {
   };
   hint?: string;
   curiosity?: { question: string; answer?: string };
-  session: { completed: number; target: number; minutes?: number };
+  session: { completed: number; target: number; minutes?: number; complete?: boolean; summary?: string };
   progress: {
     label: string;
     detail: string;
@@ -58,6 +59,9 @@ export interface StudioProps {
   }[];
   account: {
     connected: boolean;
+    signInAvailable?: boolean;
+    /** Only true after runtime service and spending authorization checks. */
+    aiReady?: boolean;
     label?: string;
     balance?: string;
     status?: string;
@@ -73,6 +77,7 @@ export interface StudioProps {
   onCloseCuriosity: () => void;
   onSignIn: () => void;
   onSignOut: () => void;
+  onRefreshAccount?: () => void;
   onTopUp?: () => void;
   onRecoverUsage?: () => void;
   onCancel?: () => void;
