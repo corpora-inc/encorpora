@@ -176,15 +176,14 @@ test('grant UTC timestamps accept SDK-supported fractional precision and explici
  f.client.grant=async()=>({...grant,as_of:asOf});assert.equal((await verifyTestGrant(f.client,f.authorization)).asOf,asOf);
 });
 
-test('proof snapshot cannot age out while a slow estimate completes',async()=>{
- const f=fixture();const grant=f.client.grant;let clock=Date.now();const realNow=Date.now;
- Date.now=()=>clock;
- try {
-  f.client.grant=async()=>({...await grant(),as_of:new Date(clock-59_000).toISOString()});
-  const estimate=f.client.estimate;let count=0;
-  f.client.estimate=async request=>{if(++count===2)clock+=2_000;return estimate(request);};
-  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_verification_required'});assert.equal(f.calls.length,0);
- } finally {Date.now=realNow;}
+test('proof snapshot cannot age out while a slow estimate completes',async(t)=>{
+ // Journal timestamps and freshness checks must share the same controlled clock.
+ t.mock.timers.enable({apis:['Date'],now:Date.now()});
+ const f=fixture();const grant=f.client.grant;
+ f.client.grant=async()=>({...await grant(),as_of:new Date(Date.now()-59_000).toISOString()});
+ const estimate=f.client.estimate;let count=0;
+ f.client.estimate=async request=>{if(++count===2)t.mock.timers.tick(2_000);return estimate(request);};
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_verification_required'});assert.equal(f.calls.length,0);
 });
 
 test('validated recovery context survives durable journal and a new provider instance',async()=>{
