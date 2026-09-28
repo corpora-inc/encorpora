@@ -9,19 +9,34 @@ As of September 27, 2026:
 
 | Target | Verified distribution evidence | Remaining blocker |
 |---|---|---|
-| TestFlight internal | No uploaded, processed AHA build or tester availability verified | App record and an existing authorized internal tester are verified; signed build upload, processing, and installation remain unverified |
-| Google Play internal | No AHA internal release or tester availability verified | App record and scoped API access are verified; Console audience setup and the initial signed release remain incomplete |
+| TestFlight internal | Version `0.1.0`, build `0.1.0.29842540`: signed upload, Apple `VALID` processing, assignment to the existing nonempty internal group, and `IN_BETA_TESTING` verified | Actual tester installation and restart confirmation remain unverified |
+| Google Play internal | Version `0.1.0`, build `29842522`: signed AAB, initial upload, and exact newly completed internal release verified through the official API | No saved tester audience or installation verified; Console email-list setup remains blocked |
 
-These are observed access/setup blockers. Neither an unsigned native build nor a
-browser preview satisfies either delivery target. Operational details and signing
-configuration belong in the [private infrastructure runbooks](https://github.com/corpora-inc/infra-private), never public logs or screenshots.
+The [Android artifact run](https://github.com/corpora-inc/encorpora/actions/runs/36358416568)
+passed package, signing, and 16 KiB checks. Its initial Console upload was completed
+through the official publishing API, with retained pre/post track evidence and no
+duplicate upload. The [iOS run](https://github.com/corpora-inc/encorpora/actions/runs/36359478967)
+built and uploaded successfully but failed its final check on an unsupported Apple
+relationship-read endpoint. A reviewed corrected helper subsequently verified that
+same existing build and group; the original workflow is still a failed run.
+
+The remaining Play operator action is to visibly foreground the existing AHA
+Internal testing > Testers page and open **Create email list**. Save only the
+already-authorized owner audience, then reload and verify it before recording a
+build-scoped attestation. Browser automation currently observes a hidden tab and an
+empty modal; no saved audience is inferred from the completed release.
+
+An authorized tester must also install through each store and confirm the native
+learning/restart journey. Paid AI remains disabled pending service acceptance.
+Operational details, retained evidence, and signing configuration belong in the [private infrastructure runbooks](https://github.com/corpora-inc/infra-private), never public logs or screenshots.
 
 ## Reproducible release path
 
 `.github/workflows/release-aha.yml` handles AHA tags (`aha-v<version>`) and manual
 runs on `main`. It does not react to other products’ changes. Tag versions must
 match Tauri configuration, and the selected commit must be on trunk. The workflow
-uses Node 24, Rust 1.97.1, Android SDK 36 / NDK 28.2.13676358, and Xcode 26 runners.
+uses Node 24, Rust 1.97.1, Android SDK 36 / NDK 28.2.13676358, and a macOS 26
+runner with its installed Xcode selected by the workflow.
 The npm lockfile and source-pinned Rust dependencies belong to the app’s build.
 
 After app records and existing authorized testing audiences are configured:
