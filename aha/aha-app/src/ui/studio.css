@@ -1590,6 +1590,8 @@ h1 {
   grid-template-columns: minmax(0, 1fr);
   align-content: center;
   min-height: 72px;
+}
+
 .report-problem label {
   display: block;
   font-size: 0.78rem;
