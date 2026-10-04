@@ -67,7 +67,7 @@ This version does not claim a verified HTTPS app link.
 a current enforced total-period grant through the SDK before admitting paid work;
 there is no compile-time paid-readiness override. Purchase/checkout permissions
 remain disabled. A fixed native command opens the Free2Z account-management page
-for grown-ups; it accepts no URL from the webview. Compiling the SDK does not establish
+from Settings; it accepts no URL from the webview. Compiling the SDK does not establish
 successful login, persistent credentials, live metering or settlement. Those require
 registered-account testing on each shipping platform, without publishing account
 details or authentication logs.

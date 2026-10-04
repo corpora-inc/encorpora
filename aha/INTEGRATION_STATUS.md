@@ -49,13 +49,13 @@ contradicts `enforced` makes `grant()` fail closed (`invalid_response`).
 
 Strict output (`max_output_tokens_strict`) is not adopted: it waits on the gateway image that accepts the field (the deployed gateway rejects unknown fields with 400).
 
-## Recovery and parent controls
+## Recovery and account controls
 
 Completed answer text and its learner/task context stay in the billing journal
 until the activity/session is durably saved. A restart before that acknowledgement
 restores the same answer without a new model call; replaying a displayed activity
 preserves its assistance and timing. Curiosity answers are also saved before
-acknowledgement. Grown-up settings can restore saved answers for their original
+acknowledgement. Settings can restore saved answers for their original
 learner or explicitly set them aside while retaining usage records.
 
 Unknown settlement blocks fresh paid calls. Explicit recovery uses the original

@@ -13,7 +13,7 @@ export function NumericInput({ response: r, value, onChange, disabled, onEnter }
   const id = useId();
   return (
     <div className="ax-field">
-      <label htmlFor={id}>{r.label ? <RichText text={r.label} /> : 'Your answer'}</label>
+      <label htmlFor={id} className={r.label ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer'}</label>
       <div className="ax-number-wrap">
         <input id={id} type="text" inputMode="decimal" autoComplete="off" autoCorrect="off" spellCheck={false} maxLength={40}
           value={value} disabled={disabled} placeholder="Type a number" onChange={e => onChange(e.target.value)}
@@ -33,7 +33,7 @@ export function FractionInput({ response: r, value, onChange, disabled }: { resp
   );
   return (
     <fieldset className="ax-field ax-fraction-field">
-      <legend id={id}>{r.label ? <RichText text={r.label} /> : 'Your answer as a fraction'}</legend>
+      <legend id={id} className={r.label ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer as a fraction'}</legend>
       <div className="ax-fraction-input">
         {r.mixed && field('whole', 'Whole number (leave empty if none)')}
         <div className="ax-frac-stack">
@@ -81,7 +81,7 @@ export function ExpressionInput({ response: r, value, onChange, disabled, onEnte
   };
   return (
     <div className="ax-field">
-      <label htmlFor={id}>{r.label ? <RichText text={r.label} /> : 'Your expression'}</label>
+      <label htmlFor={id} className={r.label ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your expression'}</label>
       <input id={id} ref={input} className="ax-expression" type="text" inputMode="text" autoCapitalize="off" autoComplete="off" autoCorrect="off" spellCheck={false}
         maxLength={120} value={value} disabled={disabled} placeholder={`Use ${r.variables.join(', ')}`} onChange={e => onChange(e.target.value)}
         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); onEnter?.(); } }} aria-describedby={`${id}-preview`} />
@@ -100,7 +100,7 @@ export function ChoiceInput({ response: r, order, value, onChange, disabled }: {
   const multi = r.type === 'multi_select';
   return (
     <fieldset className="ax-field ax-choices" role={multi ? 'group' : 'radiogroup'}>
-      <legend>{multi ? 'Choose all that apply' : 'Choose one'}</legend>
+      <legend className={multi ? undefined : 'ax-default-label'}>{multi ? 'Choose all that apply' : 'Choose one'}</legend>
       <div className="ax-choice-grid">
         {order.map((original, shown) => {
           const checked = value.includes(original);
@@ -130,7 +130,7 @@ export function OrderingInput({ response: r, order, onChange, disabled }: { resp
   };
   return (
     <fieldset className="ax-field ax-ordering">
-      <legend>Put these in order</legend>
+      <legend className="ax-default-label">Put these in order</legend>
       {r.firstLabel && <div className="ax-order-end">{r.firstLabel}</div>}
       <ol>
         {order.map((item, i) => (
@@ -172,7 +172,7 @@ export function PlotControls({ point, snap, bounds, onChange, disabled }: { poin
 export function RegionChips({ regions, selected, onSelect, disabled }: { regions: { id: string; label: string }[]; selected?: string; onSelect: (id: string) => void; disabled?: boolean }) {
   return (
     <fieldset className="ax-field ax-region-chips">
-      <legend>Tap the picture, or choose here</legend>
+      <legend className="ax-default-label">Tap the picture, or choose here</legend>
       <div>
         {regions.map(r => <button key={r.id} type="button" disabled={disabled} aria-pressed={selected === r.id} className={selected === r.id ? 'is-selected' : ''} onClick={() => onSelect(r.id)}>{r.label}</button>)}
       </div>

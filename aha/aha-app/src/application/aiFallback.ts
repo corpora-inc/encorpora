@@ -38,7 +38,7 @@ export class AiBackoff {
   recordSuccess(): void { this.failures = 0; this.failedAt = 0; this.localTasks = 0; this.notBefore = 0; }
 }
 
-/** Grown-up settings status for a fallback: the classified cause, then that learning continues here. */
+/** Settings status for a fallback: the classified cause, then that learning continues here. */
 export function aiFallbackStatus(error: unknown): string {
   return `${learningError(error)} Local practice continues in this account; AI tutoring will be tried again on a later task.`;
 }
