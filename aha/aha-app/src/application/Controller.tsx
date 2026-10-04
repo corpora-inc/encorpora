@@ -36,6 +36,7 @@ import { previewRepository } from "./preview";
 import { restoreLearning } from "./recovery";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline } from "./connection";
+import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
 
 interface Readiness {
   free2zConfigured: boolean;
@@ -109,6 +110,7 @@ export default function Controller() {
   const subject = useRef<string | undefined>(undefined);
   const selectedModel = useRef<string | undefined>(undefined);
   const retryAfter = useRef(0);
+  const aiBackoff = useRef(new AiBackoff());
   const actionCancelled = useRef(false);
   const learning = useRef<LearnerState | undefined>(undefined);
   const currentProfile = useRef<Profile | undefined>(undefined);
@@ -266,6 +268,18 @@ export default function Controller() {
     retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
     setError(learningError(e));
   }
+  /** Signed-in AI could not produce an activity: log, back off, and keep learning locally in this account. */
+  function aiUnavailable(stage: string, e: unknown) {
+    logAiFallback(stage, e);
+    const retryAt = retryDeadline(e);
+    retryAfter.current = Math.max(retryAfter.current, retryAt ?? 0);
+    aiBackoff.current.recordFailure(Date.now(), retryAt);
+    setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
+  }
+  function aiAttemptDue() {
+    const now = Date.now();
+    return now >= retryAfter.current && aiBackoff.current.shouldTryAi(now);
+  }
   function checkRetryDelay() {
     if (Date.now() < retryAfter.current)
       throw new Error(`Free2Z asked us to wait. Try again in ${Math.ceil((retryAfter.current - Date.now()) / 1000)} seconds. No request was sent.`);
@@ -354,6 +368,7 @@ export default function Controller() {
       await paidAuthorization();
       selectedModel.current = chooseTutorModel(await client.models());
       setPendingUsage(await provider.current.inspectPending());
+      aiBackoff.current.recordSuccess();
       setAccount(a => ({...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance." + (session.persistence === "memory_only" ? " Sign-in could not be saved on this device; reconnect after restarting." : "")}));
     } catch (e) {
       setAccount(a => ({...a, aiReady: false, status: learningError(e)}));
@@ -464,7 +479,18 @@ export default function Controller() {
     };
   }, []);
   async function continueLearning(stretch = false) {
-    if (await restorePaidAnswer()) return;
+    let saved: TutorReply | undefined;
+    let journalReadable = true;
+    if (provider.current && currentProfile.current) {
+      try {
+        saved = (await provider.current.pendingReplies()).find(r => r.context?.profileId === currentProfile.current?.id);
+      } catch (e) {
+        // Paid calls stay blocked by the same check inside the provider; local practice may continue.
+        aiUnavailable("saved-answer check", e);
+        journalReadable = false;
+      }
+    }
+    if (saved) { await deliverReply(saved); return; }
     if (pendingActivity.current) {await showActivity(pendingActivity.current);pendingActivity.current=undefined;return;}
     const state = learning.current;
     if (!state) return;
@@ -475,26 +501,13 @@ export default function Controller() {
       await saveSession();
     }
     let next: Activity;
-    if (subject.current && provider.current) {
-      const authorization = await paidAuthorization();
+    const reply = subject.current && provider.current && journalReadable && aiAttemptDue()
+      ? await requestAiActivity(state, stretch) : undefined;
+    if (reply) {
       const client = getNativeClient();
-      // Refresh advertised availability for each new paid activity; never silently fall back on a failed call.
-      selectedModel.current = chooseTutorModel(await client.models());
-      const prompt = buildTutorContext(state);
-      const reply = await paidReply(
-        selectedModel.current,
-        prompt.system,
-        stretch
-          ? JSON.stringify({
-              preference:
-                "Offer a small stretch within the validated candidate skills; preserve review needs.",
-              evidence: JSON.parse(prompt.context),
-            })
-          : prompt.context,
-        authorization,
-        {kind: "activity", profileId: currentProfile.current!.id, candidateSkillIds: prompt.candidates.map(c => c.skill.id)},
-      );
       await deliverReply(reply);
+      aiBackoff.current.recordSuccess();
+      setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance."});
       try {
         const balance = await client.balance();
         setAccount(a => ({...a, balance: format2z(balance.available_milli_2z)}));
@@ -528,10 +541,39 @@ export default function Controller() {
             : "concept",
       );
       next = { ...next, id: crypto.randomUUID(), source: "local" };
+      if (subject.current) aiBackoff.current.recordLocalTask();
     }
     pendingActivity.current=next;
     await showActivity(next);
     pendingActivity.current=undefined;
+  }
+  /** One paid activity request. When AI cannot produce it, logs, backs off and returns undefined for local practice. */
+  async function requestAiActivity(state: LearnerState, stretch: boolean): Promise<TutorReply | undefined> {
+    try {
+      const authorization = await paidAuthorization();
+      // Refresh advertised availability for each new paid activity. A failed call is never replaced by
+      // another paid call: this task is served as labeled local practice and AI is retried after a backoff.
+      selectedModel.current = chooseTutorModel(await getNativeClient().models());
+      const prompt = buildTutorContext(state);
+      return await paidReply(
+        selectedModel.current,
+        prompt.system,
+        stretch
+          ? JSON.stringify({
+              preference:
+                "Offer a small stretch within the validated candidate skills; preserve review needs.",
+              evidence: JSON.parse(prompt.context),
+            })
+          : prompt.context,
+        authorization,
+        {kind: "activity", profileId: currentProfile.current!.id, candidateSkillIds: prompt.candidates.map(c => c.skill.id)},
+      );
+    } catch (e) {
+      // A learner's Stop is honoured as a stop, never silently replaced.
+      if (actionCancelled.current) throw e;
+      aiUnavailable("next activity", e);
+      return undefined;
+    }
   }
   async function submit(
     answer: string,
@@ -705,6 +747,7 @@ export default function Controller() {
     subject.current = s.subject;
     const repo = new NativeRepository(s.subject);
     provider.current = new Free2zTutor(client, repo, s.subject);
+    aiBackoff.current = new AiBackoff();
     setAccount({
       connected: true,
       label: "Free2Z account",
@@ -731,6 +774,7 @@ export default function Controller() {
     subject.current = undefined;
     provider.current = undefined;
     selectedModel.current = undefined;
+    aiBackoff.current = new AiBackoff();
     setAccount({connected: false, status: "Local practice · AI is not connected"});
     await loadAccount(new NativeRepository("local-device"));
     if (failure) throw failure;
@@ -753,7 +797,8 @@ export default function Controller() {
       practiceStatus={native ? activity?.source === "ai"
         ? "AI tutoring · progress saved on this device"
         : activity?.source === "local" || !account.connected
-          ? "Local practice · AI tutoring is not connected"
+          ? !account.connected ? "Local practice · AI tutoring is not connected"
+            : account.aiReady ? "Local practice · progress saved on this device" : "Local practice · AI tutoring is unavailable right now"
           : account.aiReady ? "AI tutoring · progress saved on this device" : "Free2Z connected · AI readiness still needs verification"
         : undefined}
       mode={native ? "native" : "preview"}
@@ -812,7 +857,7 @@ export default function Controller() {
         const timing = timer.current.snapshot(performance.now());
         void action(() => submit(answer, timing));
       }}
-      onContinue={() => void action(continueLearning, account.connected ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
+      onContinue={() => void action(continueLearning, account.connected && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
       onSupport={(kind) => void action(() => support(kind))}
       onCuriosity={(q) => void action(() => curiosityQuestion(q), "Thinking about your question…")}
       onCloseCuriosity={() => void action(async () => {
@@ -856,6 +901,7 @@ export default function Controller() {
           assertActionActive();
           const reply = await provider.current!.recover(id, authorization);
           await deliverReply(reply);
+          aiBackoff.current.recordSuccess();
           setPendingUsage(await provider.current!.inspectPending());
           setAccount(a => ({...a, status: "Recovered lesson is ready. The original request identity and recorded usage were preserved."}));
         })
