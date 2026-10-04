@@ -166,7 +166,7 @@ export function restoreLearning(
   try {
     // Stable chronological order is required for deterministic review projections.
     const ordered = observed.slice().sort((a, b) => a.at.localeCompare(b.at));
-    for (const item of ordered) learner = recordAttempt(learner, item.activity, item.input);
+    for (const item of ordered) learner = recordAttempt(learner, item.activity, item.input, { replay: true });
     if (excluded.size) {
       const evidenceWithDisputes: AttemptEvidence[] = learner.attempts.map(e => {
         const dispute = excluded.get(e.activityId);

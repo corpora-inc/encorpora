@@ -96,7 +96,8 @@ test('a forgiving retry restores as one assisted attempt and a pending retry res
   assert.equal(restored.learner.attempts.length, 1);
   assert.equal(restored.learner.attempts[0].independent, false);
   assert.equal(restored.learner.attempts[0].firstAnswer, '7/8');
-  // A ledger record cannot drop its first miss without contradicting the snapshot.
+  // A projection that carries evidence cannot disagree with the ledger about the first miss.
+  // (Production checkpoints carry no attempts; the bumped hint count keeps such a record assisted.)
   const { firstAnswer: _dropped, ...laundered } = attempts[0].data;
   assert.throws(() => restoreLearning(profile, state, null, [{ ...attempts[0], data: laundered }], []), LearningRecoveryError);
   for (const bad of [5, '', 'x'.repeat(81)]) assert.throws(() => restoreLearning(profile, null, null, [{ ...attempts[0], data: { ...attempts[0].data, firstAnswer: bad } }], []), LearningRecoveryError);

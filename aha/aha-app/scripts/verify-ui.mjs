@@ -178,6 +178,16 @@ try{
     assert.equal(ledger[0].data.firstAnswer,missFor(expected));assert.equal(ledger[0].data.hintsUsed,1);
     if(failSave){await learner.getByRole('button',{name:'Next discovery',exact:true}).click();await learner.getByRole('button',{name:'Check my answer',exact:true}).waitFor();}
   }
+  // Leaving a pending retry (Try something harder) commits the first miss; it never disappears.
+  await learner.getByRole('button',{name:'Next discovery',exact:true}).click();await learner.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  const left=await shownTask();
+  await respond(missFor(expectedAnswer(left.task)));await learner.locator('.feedback').filter({hasText:'Not quite yet'}).waitFor();
+  await learner.getByRole('button',{name:'Try something harder',exact:true}).click();
+  await learner.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0]?.data.activity?.id!==id,left.id);
+  const abandoned=Object.values((await learnerDb()).attempts).flat().filter(r=>r.activityId===left.id);
+  assert.equal(abandoned.length,1,'a pending miss is recorded before the activity changes');
+  assert.equal(abandoned[0].data.correct,false);assert.equal(abandoned[0].data.independent,false);assert.equal(abandoned[0].data.firstAnswer,missFor(expectedAnswer(left.task)));
+  assert.equal((await learnerDb()).sessions[Object.keys((await learnerDb()).sessions)[0]].data.firstAnswer,undefined,'the next activity starts fresh');
   await retryContext.close();
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);

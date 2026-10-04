@@ -184,6 +184,7 @@ export default function Controller() {
   async function showActivity(next: Activity, worked = false) {
     const p = currentProfile.current;
     if (!p) throw new Error("Choose a learner first.");
+    await settlePendingRetry();
     await repository.current.saveActivity(p.id, {
       id: next.id,
       sessionId: sessionId.current,
@@ -248,7 +249,8 @@ export default function Controller() {
     timer.current = new ActiveTimer();
     timer.current.resume(0);
     timer.current.pause(0);
-    if (restored.activity && restored.hintsUsed)
+    // The retry nudge accounts for one assistance; show the hint only when the learner had more.
+    if (restored.activity && restored.hintsUsed > (restored.firstAnswer !== undefined ? 1 : 0))
       setHint(
         restored.activity.hint ?? "Use a drawing to represent each quantity.",
       );
@@ -626,13 +628,45 @@ export default function Controller() {
     }
     if (!grading.correct && firstAnswer.current === undefined) {
       // One forgiving retry. The miss is saved as assistance before the nudge appears, so a
-      // restart resumes this retry instead of offering a fresh first try.
+      // restart resumes this retry instead of offering a fresh first try. If that save fails the
+      // miss stays assisted in memory (never a fresh first try) and the nudge still shows.
       firstAnswer.current = answer;
       hintsUsed.current = Math.min(100, hintsUsed.current + 1);
-      await saveSession();
-      setFeedback(retryNudge());
+      try { await saveSession(); }
+      finally { setFeedback(retryNudge()); }
       return;
     }
+    if (!(await commitAttempt(a, answer, timing))) return;
+    setFeedback({
+      kind: grading.correct ? "correct" : "retry",
+      title: grading.correct
+        ? hintsUsed.current
+          ? "You worked it through."
+          : "You’ve got it."
+        : "Let’s look at it another way.",
+      message: grading.correct
+        ? a.mode === "fluency"
+          ? "A little recall practice, then back to exploring."
+          : "We’ll revisit this later to see what sticks."
+        : (a.explanation ??
+          `The result is ${grading.expected}. Try a drawing or break the calculation into smaller parts.`),
+    });
+  }
+  /** A pending retry is never discarded: leaving the activity records the first miss as its one attempt. */
+  async function settlePendingRetry() {
+    const a = currentActivity.current, miss = firstAnswer.current;
+    if (!a || miss === undefined || learning.current?.attempts.some((e) => e.activityId === a.id)) return;
+    await commitAttempt(a, miss, timer.current.snapshot(performance.now()));
+  }
+  /** Durably records the activity's single attempt. Returns false when it was already recorded. */
+  async function commitAttempt(
+    a: Activity,
+    answer: string,
+    timing: { activeMs: number; interrupted: boolean },
+  ): Promise<boolean> {
+    const p = currentProfile.current;
+    const state = learning.current;
+    if (!p || !state) return false;
     const updated = recordAttempt(state, a, {
       id: crypto.randomUUID(),
       answer,
@@ -662,27 +696,14 @@ export default function Controller() {
     }
     if (!result.inserted) {
       await loadProfile(p);
-      return;
+      return false;
     }
     displayState(updated);
     count.current++;
     setCompleted(count.current);
     // This write is presentation state; the transaction above already durably recorded the answer.
     await saveSession();
-    setFeedback({
-      kind: grading.correct ? "correct" : "retry",
-      title: grading.correct
-        ? hintsUsed.current
-          ? "You worked it through."
-          : "You’ve got it."
-        : "Let’s look at it another way.",
-      message: grading.correct
-        ? a.mode === "fluency"
-          ? "A little recall practice, then back to exploring."
-          : "We’ll revisit this later to see what sticks."
-        : (a.explanation ??
-          `The result is ${grading.expected}. Try a drawing or break the calculation into smaller parts.`),
-    });
+    return true;
   }
   async function support(kind: Parameters<StudioProps["onSupport"]>[0]) {
     const a = currentActivity.current;

@@ -452,3 +452,25 @@ test('assisted successes do not loop one skill either',()=>{
   assert.ok(run<=4,`grade ${grade}: ${ids.join(' ')}`);
  }
 });
+
+test('a miss rescued by the forgiving retry still counts toward changing the approach',()=>{
+ let state=createLearner('rescued',3);const trace:{id:string;approach?:string}[]=[];
+ for(let i=0;i<12;i++){
+  const at=new Date(Date.UTC(2026,8,1,12,0,i)).toISOString();
+  const chosen=selectCandidates(state,at)[0];
+  const task={...generateFreshPractice(chosen.skill.id,state,3000+i),id:`rescued-${i}`},expected=expectedAnswer(task.task);
+  // Always wrong first, then right after the nudge (a two-choice guesser always is).
+  state=recordAttempt(state,task,{id:`rescued-answer-${i}`,answer:expected,firstAnswer:wrongAnswer(expected),at,hintsUsed:1+(chosen.approach?1:0)});
+  trace.push({id:chosen.skill.id,...(chosen.approach?{approach:chosen.approach}:{})});
+ }
+ assert.deepEqual(recentStreak(state.attempts,trace.at(-1)!.id).successes,0);
+ assert.equal(trace[1].id,trace[0].id);assert.equal(trace[2].approach,'worked-example','Two rescued misses change the approach');
+ assert.ok(longestRun(trace.map(t=>({skillId:t.id})) as Step[])<=3);
+});
+test('replaying stored evidence never throws on a first answer that a later grader accepts',()=>{
+ const a=generatePractice('3.OA.C.7',4),expected=expectedAnswer(a.task);
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:expected}),/first answer/i);
+ const replayed=recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:expected,at:date(1)},{replay:true});
+ assert.equal(replayed.attempts[0].independent,false,'Still assisted, never laundered');
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:'1'.repeat(81)},{replay:true}));
+});
