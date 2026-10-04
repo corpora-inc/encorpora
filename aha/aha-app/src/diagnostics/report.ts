@@ -1,4 +1,4 @@
-/** Plain-text problem report for grown-ups to share. Connection state is
+/** Plain-text problem report to share. Connection state is
  * yes/no only; identities never enter the report. */
 import { scrub, type LogEntry } from './log.ts'
 

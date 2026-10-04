@@ -1,3 +1,5 @@
+import type { ActivitySpec } from "../activity/spec";
+import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 export type StudioVisual =
   | { type: "fraction"; numerator: number; denominator: number; label?: string }
   | { type: "array"; rows: number; columns: number; label?: string }
@@ -31,11 +33,26 @@ export interface StudioActivity {
   skill: string;
   standard?: string;
   answerKind?: "number" | "fraction" | "text" | "choice" | "comparison";
+  /** The answer domain can be negative, so offer a sign key (never derived from this answer). */
+  signed?: boolean;
   choices?: { id: string; label: string }[];
   visual?: StudioVisual;
 }
+/** An AI-authored Activity Spec rendered in the same focus stage as local practice. */
+export interface StudioSpecActivity {
+  spec: ActivitySpec;
+  /** Supply after grading (gradeActivity); the stage then shows compact feedback and Next. */
+  result?: GradeOutcome;
+  onSubmit: (response: LearnerResponse) => void;
+  initialResponse?: LearnerResponse;
+}
 export interface StudioProps {
   mode: "preview" | "native";
+  /** Where the current practice comes from, shown as the focus bar's status dot. */
+  practiceMode?: "ai" | "local";
+  /** Takes precedence over `activity` in the focus stage. Hints and explanations still arrive
+   * through `onSupport` and `hint`, exactly as for local practice. */
+  spec?: StudioSpecActivity;
   learnerName: string;
   activity?: StudioActivity;
   busy?: boolean;
@@ -45,7 +62,8 @@ export interface StudioProps {
   onLearningVisibleChange?: (visible: boolean) => void;
   error?: string;
   feedback?: {
-    kind: "correct" | "retry" | "info";
+    /** nudge: first miss of a forgiving retry; the input stays open and nothing is revealed. */
+    kind: "correct" | "retry" | "nudge" | "info";
     title: string;
     message: string;
   };

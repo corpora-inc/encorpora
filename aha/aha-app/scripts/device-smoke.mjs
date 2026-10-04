@@ -84,7 +84,16 @@ async function metrics(page) {
     const clipped = [...document.querySelectorAll('body *')]
       .filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && (r.right > vw + 1 || r.left < -1); })
       .slice(0, 10).map(el => el.className || el.tagName);
-    return { viewport: `${vw}x${vh}`, dpr: devicePixelRatio, overflowX, smallTapTargets: small.slice(0, 20), clipped };
+    // #869 focus mode: the loop fits one screen, and chrome text outside the problem stays minimal.
+    const words = document.body.innerText.trim().split(/\s+/).filter(Boolean).length;
+    const chrome = [];
+    const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let n; (n = walk.nextNode());) {
+      const el = n.parentElement;
+      if (!el || el.closest('[data-stage-content],dialog:not([open]),.sr-only,.ax-visually-hidden,.katex-mathml') || !el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) continue;
+      chrome.push(...n.textContent.trim().split(/\s+/).filter(Boolean));
+    }
+    return { viewport: `${vw}x${vh}`, dpr: devicePixelRatio, scrollHeight: document.documentElement.scrollHeight, pageScrolls: document.documentElement.scrollHeight > vh, words, chromeWords: chrome.length, overflowX, smallTapTargets: small.slice(0, 20), clipped };
   });
 }
 
@@ -104,25 +113,28 @@ try {
   await screenshot('launch');
   report.launchMetrics = await metrics(page);
 
-  const begin = page.getByRole('button', { name: 'Let’s begin', exact: true });
-  if (await begin.count()) { await begin.click(); }
+  // The studio home opens first; one tap enters the focus loop.
+  await page.getByRole('button', { name: /^(Let’s begin|Continue|Keep exploring)$/ }).click();
   const answerBox = page.getByLabel('Your answer', { exact: true });
-  await answerBox.waitFor({ timeout: 15000 });
+  await page.getByRole('button', { name: 'Check', exact: true }).waitFor({ timeout: 15000 });
   await sleep(500);
   await screenshot('first-activity');
   report.activityMetrics = await metrics(page);
-  const prompt1 = (await page.locator('.activity-prompt').innerText()).trim();
+  const prompt1 = (await page.locator('.stage-prompt').innerText()).trim();
   report.firstPrompt = prompt1;
 
-  await page.getByRole('button', { name: 'A little hint', exact: true }).click();
-  await page.locator('.hint-box').waitFor();
+  await page.getByRole('button', { name: 'Hint', exact: true }).click();
+  await page.locator('.help-panel').waitFor();
+  report.hintMetrics = await metrics(page);
   await sleep(300);
   await screenshot('hint');
 
-  await answerBox.fill('987654');
-  await page.getByRole('button', { name: 'Check my answer', exact: true }).click();
+  if (await page.locator('.answer-symbols').count()) await page.getByRole('button', { name: 'Less than', exact: true }).click();
+  else await answerBox.fill('987654');
+  await page.getByRole('button', { name: 'Check', exact: true }).click();
   await sleep(800);
   await screenshot('wrong-answer-feedback');
+  report.feedbackMetrics = await metrics(page);
   report.feedbackText = (await page.locator('main').innerText()).slice(0, 600);
 
   await browser.close().catch(() => {});
@@ -132,17 +144,20 @@ try {
   ({ browser, page } = await attach(pid));
   await sleep(2000);
   await screenshot('relaunch');
-  const resumeBegin = page.getByRole('button', { name: 'Let’s begin', exact: true });
-  if (await resumeBegin.count()) await resumeBegin.click();
-  await page.locator('.activity-prompt').waitFor({ timeout: 15000 });
-  const prompt2 = (await page.locator('.activity-prompt').innerText()).trim();
+  await page.getByRole('button', { name: /^(Let’s begin|Continue|Keep exploring)$/ }).click();
+  await page.locator('.stage-prompt').waitFor({ timeout: 15000 });
+  const prompt2 = (await page.locator('.stage-prompt').innerText()).trim();
   report.resumedPrompt = prompt2;
   report.resumedSameActivity = prompt1 === prompt2;
   await screenshot('resumed');
 
-  await page.getByRole('button', { name: 'Open learner and grown-up settings' }).click().catch(e => report.errors.push(`settings: ${e.message}`));
+  await page.getByRole('button', { name: 'Home', exact: true }).click().catch(e => report.errors.push(`home: ${e.message}`));
+  await sleep(400);
+  await screenshot('home');
+  report.homeMetrics = await metrics(page);
+  await page.getByRole('button', { name: 'Settings', exact: true }).click().catch(e => report.errors.push(`settings: ${e.message}`));
   await sleep(600);
-  await screenshot('settings-gate');
+  await screenshot('settings');
   await browser.close().catch(() => {});
   report.ok = report.errors.length === 0;
 } catch (e) {
@@ -152,6 +167,6 @@ try {
   try { writeFileSync(path.join(out, 'logcat.txt'), adb('logcat', '-d', '-t', '400')); } catch {}
   report.finishedAt = new Date().toISOString();
   writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2));
-  console.log(JSON.stringify({ ok: report.ok, resumedSameActivity: report.resumedSameActivity, errors: report.errors, out }, null, 2));
+  console.log(JSON.stringify({ ok: report.ok, resumedSameActivity: report.resumedSameActivity, activity: report.activityMetrics, errors: report.errors, out }, null, 2));
   process.exitCode = report.ok ? 0 : 1;
 }
