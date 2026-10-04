@@ -563,8 +563,9 @@ export function Studio(props: StudioProps) {
               <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
             )}
             <div className="settings-buttons">
-              {props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
-              {props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
+              {/* Account-only actions exist only once connected; disconnected shows Connect alone. */}
+              {props.account.connected && props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
+              {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
               {props.account.connected ? (
                 <>

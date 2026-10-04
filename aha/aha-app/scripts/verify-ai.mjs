@@ -43,7 +43,7 @@ function fixture(specs){
   const session=()=>({signedIn:ai.signedIn,subject:ai.signedIn?'test-subject':null,grantedScopes:['ai:invoke','balance:read'],persistence:'persistent',generation:'1'});
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:true,clientId:'test-client',paidTestingReady:false,externalCheckoutEnabled:false,reason:'Explicit TEST SDK fixture'};
-    if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);ai.signedIn=true;return session();}
+    if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);if(ai.failSignIn){const e=ai.failSignIn;ai.failSignIn=null;throw e;}ai.signedIn=true;return session();}
     if(command==='plugin:f2z|session')return session();
     if(command==='plugin:f2z|sign_out'){if(ai.failSignOut)throw {code:'storage_error'};ai.signedIn=false;return {revoked:true,generation:'2'};}
     if(command==='plugin:f2z|balance')return {available_milli_2z:'100000',held_milli_2z:'0',balance_milli_2z:'100000',debt_milli_2z:'0',as_of:new Date().toISOString()};
@@ -112,7 +112,7 @@ try {
   browser=await chromium.launch({headless:true});
   const context=await browser.newContext({viewport:{width:1000,height:900}});await context.addInitScript(fixture,batchFixtures);
   const page=await context.newPage();
-  const errors=[],consoleErrors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});
+  const errors=[],consoleErrors=[],consoleWarnings=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());if(m.type()==='warning')consoleWarnings.push(m.text());});
   const session=()=>page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
   const localBanner=page.getByRole('button',{name:'Local practice · AI tutoring is unavailable right now',exact:true});
   const aiBanner=page.getByRole('button',{name:'AI tutoring · progress saved on this device',exact:true});
@@ -359,11 +359,47 @@ try {
   // Reconnecting suggests the beta's 500 2Z total cap through the real SDK and guest API.
   await page.evaluate(()=>{window.__ahaAI.failSignOut=false;});
   await page.getByRole('button',{name:'Sign out',exact:true}).click();
-  await page.getByRole('button',{name:'Connect Free2Z',exact:false}).click();
+  // Disconnected settings offer Connect only; account-only actions stay hidden (#862).
+  const connect=page.getByRole('button',{name:'Connect Free2Z',exact:false});
+  await connect.waitFor();
+  const accountOnly=async()=>({
+    manage:await page.getByRole('button',{name:'Manage allowance or balance',exact:false}).count(),
+    refresh:await page.getByRole('button',{name:'Refresh connection',exact:true}).count(),
+    signOut:await page.getByRole('button',{name:'Sign out',exact:true}).count(),
+  });
+  const disconnected=async why=>{
+    await page.locator('.connection-pill').filter({hasText:/^Local practice$/}).waitFor();
+    assert.deepEqual(await accountOnly(),{manage:0,refresh:0,signOut:0},why);
+    // The sign-out/sign-in action may still be finishing (busy) when the pill updates.
+    await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>/Connect Free2Z/.test(b.textContent)&&!b.disabled),undefined,{timeout:10_000}).catch(()=>{});
+    assert.ok(await connect.isEnabled(),`${why}: Connect stays available`);
+  };
+  await disconnected('signed-out settings hide account-only actions');
+  // Backing out of the Android Custom Tab (or cancelling iOS ASWebAuthenticationSession)
+  // rejects authorize; tauri-plugin-f2z reports it as browser_error.
+  const alertsBeforeCancel=await page.getByRole('alert').count();
+  await page.evaluate(()=>{window.__ahaAI.failSignIn={code:'browser_error',retryable:false};});
+  await connect.click();
+  await page.getByText('Free2Z sign-in closed; you can connect any time.',{exact:true}).waitFor();
+  assert.equal(await page.locator('.error-banner').count(),0,'cancelling sign-in shows no error banner');
+  assert.equal(await page.getByRole('alert').count(),alertsBeforeCancel,'cancelling sign-in raises no alert');
+  assert.ok(consoleWarnings.some(m=>/sign-in/.test(m)&&/browser_error/.test(m)),'a closed sign-in browser is still visible in the console (it may also be a launch failure)');
+  await disconnected('a cancelled sign-in returns to the disconnected state');
+  // An unrecognized native code is logged with its code and shown a kind, generic message.
+  const warningsBeforeUnknown=consoleWarnings.length;
+  await page.evaluate(()=>{window.__ahaAI.failSignIn={code:'brand_new_code',retryable:false};});
+  await connect.click();
+  await page.getByRole('alert').filter({hasText:'The Free2Z sign-in did not finish'}).waitFor();
+  assert.ok(consoleWarnings.slice(warningsBeforeUnknown).some(m=>/sign-in/.test(m)&&/brand_new_code/.test(m)),'unknown sign-in code is logged visibly');
+  assert.equal(await page.getByText('brand_new_code',{exact:false}).count(),0,'codes stay out of the UI');
+  await disconnected('a failed sign-in stays disconnected');
+  // Reconnecting suggests the beta's 500 2Z total cap through the real SDK and guest API.
+  await connect.click();
   await page.getByRole('button',{name:'Sign out',exact:true}).waitFor();
-  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),[{spendCap:'500',spendPeriod:'total'}],'sign-in carries only the spend-cap hint, as decimal strings');
+  assert.equal(await page.locator('.error-banner').count(),0,'a successful sign-in clears the earlier message');
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),Array(3).fill({spendCap:'500',spendPeriod:'total'}),'every sign-in carries only the spend-cap hint, as decimal strings');
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, and the sign-in spend-cap hint. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, and the sign-in spend-cap hint. No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
