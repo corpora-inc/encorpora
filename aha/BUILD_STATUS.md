@@ -32,6 +32,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 - The native app labels local practice when AI is disconnected. It never represents local generation or mocked receipts as paid AI.
 - Controller restoration rebuilds progress from validated attempt records and excludes disputed items. Native checkpoints and presentation sessions do not duplicate the growing evidence ledger. Failed presentation saves cannot switch the grading task behind the displayed question.
 - Usage records persist before sending. Pending settlement blocks fresh paid calls; explicit recovery reuses the original request identity and rechecks the spending authorization.
+- When a signed-in learner's AI activity cannot be produced (outage, no model, grant check, pending receipt), the same account continues with labeled local practice and retries AI after a task/time backoff; paid calls still require fresh grant verification and settled receipts.
 - Supported current-grant verification is implemented. Live Free2Z inference, native authentication, and receipt acceptance remain external/device prerequisites. Registration alone does not establish service readiness. See [INTEGRATION_STATUS.md](INTEGRATION_STATUS.md).
 - Operational identities, login instructions and signing details belong in the private infrastructure repository, never this public status file.
 
