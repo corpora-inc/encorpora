@@ -16,6 +16,8 @@ use tauri_plugin_fs::{FsExt, OpenOptions};
 pub const MAX_REPORT: usize = 64 * 1024;
 
 struct ExportKind {
+    // The iOS share sheet has no file-type filter.
+    #[cfg_attr(target_os = "ios", allow(dead_code))]
     filter: &'static str,
     extension: &'static str,
     stem: &'static str,
