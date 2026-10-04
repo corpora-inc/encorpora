@@ -19,6 +19,8 @@ export interface RecoveredLearning {
   aiQueue: QueuedActivity[];
   /** Saved AI activities that no longer validate and were set aside (logged by the caller). */
   droppedAi: number;
+  /** First incorrect answer on the resumed activity: its one forgiving retry is still pending. */
+  firstAnswer?: string;
   /** Resumed answers always lose timed-recall eligibility. */
   interrupted: true;
 }
@@ -57,11 +59,14 @@ function array(value: unknown, label: string): unknown[] {
   if (!Array.isArray(value) || value.length > 50_000) fail(`${label} must be a bounded list.`);
   return value;
 }
+function answerText(value: unknown): value is string {
+  return typeof value === 'string' && value.length > 0 && value.length <= 80;
+}
 function grade(value: unknown): Grade {
   if (!['K', 1, 2, 3, 4, 5, 6, 7, 8].includes(value as Grade)) fail('The starting grade is invalid.');
   return value as Grade;
 }
-interface AttemptInputs { id: string; answer: string; at: string; hintsUsed: number; activeMs: number | null; interrupted: boolean }
+interface AttemptInputs { id: string; answer: string; at: string; hintsUsed: number; activeMs: number | null; interrupted: boolean; firstAnswer?: string }
 type ValidatedAttempt =
   | { kind: 'task'; id: string; activityId: string; sessionId: string; at: string; activity: Activity; input: AttemptInputs }
   | { kind: 'spec'; id: string; activityId: string; sessionId: string; at: string; input: SpecAttemptInput };
@@ -85,13 +90,15 @@ function evidence(raw: unknown, specs?: SpecRestorer): Unsessioned {
       interrupted: e.interrupted, correct: verified.correct, answer: verified.answer, spec: verified.spec } };
   }
   if (e.source !== undefined) fail(`Attempt ${attemptId} has an unknown evidence source.`);
+  if (e.firstAnswer !== undefined && !answerText(e.firstAnswer)) fail(`Attempt ${attemptId} has an invalid first answer.`);
   const validated = validateActivity({ version: 1, id: activityId, skillId: e.skillId, mode: e.mode, task: e.task,
     ...(e.choices === undefined ? {} : { choices: e.choices }) });
   if (!validated.ok) fail(`Attempt ${attemptId} contains an invalid activity.`);
   // Derived correct/expected/independent/variant values are deliberately ignored.
   // recordAttempt recomputes them using the canonical task and observed answer.
   return { kind: 'task', id: attemptId, activityId, at, activity: validated.activity,
-    input: { id: attemptId, answer: e.answer, at, hintsUsed, activeMs: e.activeMs as number | null, interrupted: e.interrupted } };
+    input: { id: attemptId, answer: e.answer, at, hintsUsed, activeMs: e.activeMs as number | null, interrupted: e.interrupted,
+      ...(e.firstAnswer === undefined ? {} : { firstAnswer: e.firstAnswer as string }) } };
 }
 function signature(e: Unsessioned): string {
   if (e.kind === 'spec') return JSON.stringify({ kind: e.kind, ...e.input });
@@ -155,6 +162,7 @@ export function restoreLearning(
   let aiActivity: QueuedActivity | undefined;
   let aiQueue: QueuedActivity[] = [];
   let droppedAi = 0;
+  let firstAnswer: string | undefined;
   if (session !== null && session !== undefined) {
     const envelope = object(session, 'Saved session');
     const data = object(envelope.data, 'Saved session data');
@@ -170,6 +178,11 @@ export function restoreLearning(
           !saved.question.trim() || saved.question.length > 600 || typeof saved.answer !== 'string' || saved.answer.length > 24_000)
         fail('Saved curiosity answer is invalid.');
       curiosity = {question:saved.question, answer:saved.answer};
+    }
+    if (data.firstAnswer !== undefined) {
+      // A pending retry was saved together with its assistance; never resume it as a fresh first try.
+      if (!answerText(data.firstAnswer) || hintsUsed < 1) fail('Saved retry state is invalid.');
+      firstAnswer = data.firstAnswer;
     }
     if (data.activity !== null) {
       if (data.aiActivity !== undefined) fail('The saved session shows two activities at once.');
@@ -212,7 +225,7 @@ export function restoreLearning(
   try {
     // Stable chronological order is required for deterministic review projections.
     const ordered = observed.slice().sort((a, b) => a.at.localeCompare(b.at));
-    for (const item of ordered) learner = item.kind === 'spec' ? recordSpecAttempt(learner, item.input) : recordAttempt(learner, item.activity, item.input);
+    for (const item of ordered) learner = item.kind === 'spec' ? recordSpecAttempt(learner, item.input) : recordAttempt(learner, item.activity, item.input, { replay: true });
     if (excluded.size) {
       const evidenceWithDisputes: AttemptEvidence[] = learner.attempts.map(e => {
         const dispute = excluded.get(e.activityId);
@@ -224,7 +237,8 @@ export function restoreLearning(
     if (error instanceof LearningRecoveryError) throw error;
     fail(error instanceof Error ? error.message : 'Attempt evidence cannot be replayed.');
   }
-  return { learner, activity: resumed, ...(curiosity ? {curiosity} : {}), ...(aiActivity ? {aiActivity} : {}), aiQueue, droppedAi,
+  return { learner, activity: resumed, ...(curiosity ? {curiosity} : {}), ...(resumed && firstAnswer !== undefined ? {firstAnswer} : {}),
+    ...(aiActivity ? {aiActivity} : {}), aiQueue, droppedAi,
     hintsUsed: resumed || aiActivity ? hintsUsed : 0, sessionId,
     completed: observed.filter(a => a.sessionId === sessionId).length, interrupted: true };
 }

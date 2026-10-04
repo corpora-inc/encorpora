@@ -2,7 +2,7 @@ import type { Activity, AttemptEvidence, AttemptInput, Candidate, Grade, Learner
 import { evidenceSkillIds } from './types';
 import { getSkill, skills } from './curriculum';
 import { gradeAnswer, validateActivity } from './tasks';
-import { recentStreak, struggleFocus } from './struggle';
+import { missed, recentStreak, struggleFocus } from './struggle';
 export const REVIEW_DAYS = [1,3,7,14,30] as const;
 export const DAILY_FLUENCY_LIMIT = 6;
 const DAY=86400000;
@@ -12,7 +12,8 @@ export function createLearner(learnerId:string,startGrade:Grade=4):LearnerState 
  return {version:1,learnerId,startGrade,progress:{},attempts:[]};
 }
 /** Immutable reducer. Persist returned state plus evidence in one native transaction. */
-export function recordAttempt(state:LearnerState,activity:Activity,input:AttemptInput):LearnerState {
+/** replay: rebuilding stored evidence. A later grader fix must never lock a profile out, so live-only checks are skipped. */
+export function recordAttempt(state:LearnerState,activity:Activity,input:AttemptInput,options:{replay?:boolean}={}):LearnerState {
  if(!input.id||input.id.length>100)throw new Error('Attempt requires a stable ID.');
  if(state.attempts.some(a=>a.id===input.id))return state;
  // A displayed activity is submitted once. Retries need a new activity, not duplicate evidence.
@@ -23,9 +24,20 @@ export function recordAttempt(state:LearnerState,activity:Activity,input:Attempt
  if(result.error)throw new Error(result.error); // An input parse error is not mathematical failure.
  const {at,hintsUsed,activeMs,interrupted}=attemptCommon(input);
  if(typeof input.answer!=='string'||input.answer.length>80)throw new Error('Answer is too long.');
+ // One forgiving retry: the first answer must be a gradable miss, and the attempt is then assisted.
+ const firstAnswer=input.firstAnswer;
+ if(firstAnswer!==undefined) {
+  if(typeof firstAnswer!=='string'||firstAnswer.length>80)throw new Error('First answer is too long.');
+  if(!options.replay) {
+   const first=gradeAnswer(checked,firstAnswer);
+   if(first.error)throw new Error(first.error);
+   if(first.correct)throw new Error('A correct first answer is final; it cannot be recorded as a retry.');
+  }
+ }
+ const independent=result.correct&&hintsUsed===0&&firstAnswer===undefined;
  const evidence:TaskEvidence={id:input.id,activityId:checked.id,skillId:skill.id,at,correct:result.correct,
   answer:input.answer,expected:result.expected,task:checked.task,variant:checked.variant,mode:checked.mode,...(checked.choices?{choices:checked.choices}:{}),
-  hintsUsed,activeMs,interrupted,independent:result.correct&&hintsUsed===0};
+  hintsUsed,activeMs,interrupted,independent,...(firstAnswer!==undefined?{firstAnswer}:{})};
  return applyEvidence(state,evidence);
 }
 function attemptCommon(input:{at?:string;hintsUsed?:number;activeMs?:number|null;interrupted?:boolean}) {
@@ -119,7 +131,7 @@ export function selectCandidates(state:LearnerState,now:string=new Date().toISOS
  if(last) {
   // A demonstrated prerequisite does not need re-teaching after one slip on a harder skill, and
   // one miss is retried before any step down: support is offered once the difficulty is confirmed.
-  if(!last.correct&&recentStreak(validAttempts,last.skillId).misses>=2)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
+  if(missed(last)&&recentStreak(validAttempts,last.skillId).misses>=2)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
   const p=state.progress[last.skillId];
   if(p?.concept!=='provisional')add(last.skillId,'continue');
   skills.filter(s=>state.progress[s.id]?.concept!=='provisional'&&s.prerequisites.includes(last.skillId)&&s.prerequisites.every(id=>state.progress[id]?.concept==='provisional')).forEach(s=>add(s.id,'frontier'));
@@ -190,7 +202,7 @@ export function rebuildProgress(state:LearnerState):LearnerState {
   }
   const checked=validateActivity({version:1,id:e.activityId,skillId:e.skillId,mode:e.mode,task:e.task,...(e.choices?{choices:e.choices}:{})});
   if(!checked.ok)throw new Error(`Cannot rebuild invalid evidence ${e.id}.`);
-  rebuilt=recordAttempt(rebuilt,checked.activity,{id:e.id,answer:e.answer,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted});
+  rebuilt=recordAttempt(rebuilt,checked.activity,{id:e.id,answer:e.answer,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted,...(e.firstAnswer!==undefined?{firstAnswer:e.firstAnswer}:{})},{replay:true});
  }
  return {...state,progress:rebuilt.progress};
 }

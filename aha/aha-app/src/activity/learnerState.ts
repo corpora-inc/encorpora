@@ -45,10 +45,12 @@ export interface LearnerSummary {
   recent: { attempts: number; accuracy: number | null; independentRate: number | null; hintRate: number | null; medianActiveSec: number | null; streak: number };
   misconceptions: { tag: string; count: number; lastSeenDaysAgo: number }[];
   dueReviews: string[];
-  recentActivities: { skills: string[]; difficulty: number | null; type: string; correct: boolean; hints: number }[];
+  /** correct = right on the first try; retryCorrect = right only after the forgiving retry. */
+  recentActivities: { skills: string[]; difficulty: number | null; type: string; correct: boolean; hints: number; retryCorrect?: true }[];
 }
 
-interface NormalizedAttempt { skillIds: string[]; correct: boolean; hints: number; activeMs: number | null; at: number; difficulty: number | null; type: string; tag?: string }
+/** `correct` is first-try correctness: an answer that was right only after the forgiving retry (#872) is a miss, and assisted. */
+interface NormalizedAttempt { skillIds: string[]; correct: boolean; hints: number; activeMs: number | null; at: number; difficulty: number | null; type: string; tag?: string; retryCorrect?: true }
 
 const DAY = 86400000;
 const DEFAULT_DIFFICULTY = 3;
@@ -60,8 +62,9 @@ function normalize(ledger: LearnerState | undefined, records: readonly ActivityA
     skillIds: a.spec.skillIds, correct: a.correct, hints: a.hintsUsed, activeMs: a.interrupted ? null : a.activeMs,
     at: Date.parse(a.at), difficulty: a.spec.difficulty, type: a.spec.responseType, ...(a.spec.misconceptionTag ? { tag: a.spec.misconceptionTag } : {}),
   } : {
-    skillIds: [a.skillId], correct: a.correct, hints: a.hintsUsed, activeMs: a.interrupted ? null : a.activeMs,
-    at: Date.parse(a.at), difficulty: null, type: `task:${a.task.kind}`,
+    skillIds: [a.skillId], correct: a.correct && a.firstAnswer === undefined,
+    hints: a.firstAnswer === undefined ? a.hintsUsed : Math.max(1, a.hintsUsed), activeMs: a.interrupted ? null : a.activeMs,
+    at: Date.parse(a.at), difficulty: null, type: `task:${a.task.kind}`, ...(a.correct && a.firstAnswer !== undefined ? { retryCorrect: true as const } : {}),
   });
   const fromSpecs = records.map(r => ({
     skillIds: r.skillIds, correct: r.correct, hints: r.hintsUsed, activeMs: r.activeMs, at: Date.parse(r.at),
@@ -171,7 +174,7 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     misconceptions: [...tagCounts].sort((a, b) => b[1].count - a[1].count || b[1].last - a[1].last).slice(0, 6)
       .map(([tag, t]) => ({ tag, count: t.count, lastSeenDaysAgo: Math.max(0, Math.floor((time - t.last) / DAY)) })),
     dueReviews: [...due].slice(0, 6),
-    recentActivities: attempts.slice(-6).map(a => ({ skills: a.skillIds, difficulty: a.difficulty, type: a.type, correct: a.correct, hints: a.hints })),
+    recentActivities: attempts.slice(-6).map(a => ({ skills: a.skillIds, difficulty: a.difficulty, type: a.type, correct: a.correct, hints: a.hints, ...(a.retryCorrect ? { retryCorrect: true as const } : {}) })),
   };
 }
 

@@ -64,7 +64,8 @@ export interface StudioProps {
   onLearningVisibleChange?: (visible: boolean) => void;
   error?: string;
   feedback?: {
-    kind: "correct" | "retry" | "info";
+    /** nudge: first miss of a forgiving retry; the input stays open and nothing is revealed. */
+    kind: "correct" | "retry" | "nudge" | "info";
     title: string;
     message: string;
   };
