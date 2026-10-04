@@ -141,6 +141,8 @@ export default function Controller() {
   /** An AI activity whose presentation save failed, with its exact activity record for an idempotent retry. */
   const pendingAi = useRef<{item: QueuedActivity; record: {id: string; sessionId: string; createdAt: string; data: Json}} | undefined>(undefined);
   const prefetching = useRef<Promise<void> | undefined>(undefined);
+  /** Spec hints revealed for the AI activity on screen (separate from the assistance count). */
+  const aiHintsShown = useRef(0);
   const sessionWrites = useRef<Promise<unknown>>(Promise.resolve());
   const pendingWorked = useRef(false);
   const sessionId = useRef<string>(crypto.randomUUID());
@@ -279,6 +281,7 @@ export default function Controller() {
       currentActivity.current = undefined;
       savedCuriosity.current = undefined;
       hintsUsed.current = 0;
+      aiHintsShown.current = 0;
     }));
     pendingAi.current = undefined;
     setActivity(undefined);
@@ -336,7 +339,8 @@ export default function Controller() {
     timer.current.pause(0);
     if (restored.aiActivity && restored.hintsUsed) {
       const hints = restored.aiActivity.spec.hints ?? [];
-      setHint(hints.length ? hints[Math.min(restored.hintsUsed, hints.length) - 1] : restored.aiActivity.spec.explanation);
+      aiHintsShown.current = hints.length ? Math.min(restored.hintsUsed, hints.length) : 0;
+      setHint(hints.length ? hints[aiHintsShown.current - 1] : restored.aiActivity.spec.explanation);
     }
     if (restored.activity && restored.hintsUsed)
       setHint(
@@ -426,8 +430,6 @@ export default function Controller() {
       });
       // A learner or account switch mid-delivery leaves the reply saved for its own learner.
       if (outcome === "stale") return;
-      if (!parsed.items.length)
-        throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       return;
     }
     if (origin.kind === "activity") {
@@ -481,14 +483,14 @@ export default function Controller() {
     await deliverReply(reply);
     return true;
   }
-  async function paidAuthorization(): Promise<TestAuthorization> {
+  async function paidAuthorization(foreground = true): Promise<TestAuthorization> {
     checkRetryDelay();
     const clientId = readiness.current?.clientId;
     if (!native || !clientId || !subject.current || !provider.current)
       throw new Error("Connect Free2Z in Settings before using AI tutoring.");
     const policy = {subject: subject.current, clientId, maximum2z: 500n};
     const verifiedGrant = await verifyTestGrant(getNativeClient(), policy);
-    assertActionActive();
+    if (foreground) assertActionActive();
     return {...policy, verifiedGrant};
   }
   async function refreshConnection() {
@@ -712,7 +714,7 @@ export default function Controller() {
     const epoch = accountEpoch.current;
     const stillCurrent = () => epoch === accountEpoch.current && tutor === provider.current && currentProfile.current?.id === p.id;
     try {
-      const authorization = await paidAuthorization();
+      const authorization = await paidAuthorization(foreground);
       // Refresh advertised availability for each new paid batch. A failed call is never replaced by
       // another paid call: local practice serves the learner and AI is retried after a backoff.
       selectedModel.current = chooseTutorModel(await getNativeClient().models());
@@ -724,8 +726,11 @@ export default function Controller() {
         {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(request.maxOutputTokens) as "2600");
       // A learner or account switch leaves the completed batch saved for its own learner.
       if (!stillCurrent()) return false;
+      const queuedBefore = aiQueue.current.length;
       await deliverReply(reply);
       if (!stillCurrent()) return false;
+      if (aiQueue.current.length <= queuedBefore)
+        throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       aiBackoff.current.recordSuccess();
       setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance."});
       void getNativeClient().balance()
@@ -924,9 +929,8 @@ export default function Controller() {
       const answered = !!learning.current?.attempts.some(e => e.activityId === ai.activityId);
       if (!answered) { hintsUsed.current = Math.min(100, hintsUsed.current + 1); await saveSession(); }
       const hints = ai.spec.hints ?? [];
-      setHint(kind === "hint" && hints.length && !answered
-        ? hints[Math.min(hintsUsed.current, hints.length) - 1]
-        : ai.spec.explanation);
+      if (kind === "hint" && hints.length && !answered) aiHintsShown.current = Math.min(hints.length, aiHintsShown.current + 1);
+      setHint(kind === "hint" && hints.length && !answered ? hints[aiHintsShown.current - 1] : ai.spec.explanation);
       return;
     }
     if (!a) return;
@@ -1193,7 +1197,9 @@ export default function Controller() {
         busy && provider.current
           ? () => {
               actionCancelled.current = true;
-              void provider.current?.cancel().catch(fail);
+              // A background prefetch is not the learner's request: Stop never cuts off its paid stream
+              // (that would strand its receipt). A foreground wait for it is still stopped.
+              if (!prefetching.current) void provider.current?.cancel().catch(fail);
             }
           : undefined
       }
@@ -1211,6 +1217,7 @@ export default function Controller() {
       }
       onCreateLearner={(name, startGrade) =>
         void action(async () => {
+          await settlePrefetch();
           const p = {
             id: crypto.randomUUID(),
             name: name.trim().slice(0, 40),
