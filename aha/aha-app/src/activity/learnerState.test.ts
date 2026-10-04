@@ -20,6 +20,10 @@ describe('learner summary', () => {
     assert.equal(suggestDifficulty([{ correct: false, hints: 0, difficulty: 1 }]), 1);
     assert.equal(suggestDifficulty([{ correct: true, hints: 0, difficulty: 10 }, { correct: true, hints: 0, difficulty: 10 }]), 10);
   });
+  it('flags wantsHarder only when the learner asked for it (#877)', () => {
+    assert.equal('wantsHarder' in buildLearnerSummary({ gradeHint: 3, now: '2026-10-04T00:00:00Z' }), false);
+    assert.equal(buildLearnerSummary({ gradeHint: 3, now: '2026-10-04T00:00:00Z', wantsHarder: true }).wantsHarder, true);
+  });
   it('cold-starts with one skill per domain of the hinted grade', () => {
     const s = buildLearnerSummary({ gradeHint: 3, now: '2026-10-04T00:00:00Z' });
     assert.ok(s.frontier.length >= 5);

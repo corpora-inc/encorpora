@@ -15,6 +15,13 @@ export interface QueuedActivity {
   /** The billing operation that paid for it. */
   operationId: string;
   spec: ActivitySpec;
+  /**
+   * Assistance already spent on this activity before the learner skipped ahead to something harder
+   * (#877). Restored when it is shown again, so a skipped, hinted activity never counts as independent.
+   */
+  hintsUsed?: number;
+  /** It was shown before, so its immutable activity record is already saved. */
+  shown?: true;
 }
 
 /** Request the next batch when this many or fewer activities remain queued. */
@@ -63,12 +70,17 @@ export function mergeBatch(queue: readonly QueuedActivity[], items: readonly Que
   return { queue: next, added };
 }
 
-/** Next activity in model order; a stretch request takes the most challenging queued activity instead. */
-export function takeNext(queue: readonly QueuedActivity[], stretch = false): { next?: QueuedActivity; rest: QueuedActivity[] } {
-  if (!queue.length) return { rest: [] };
-  let index = 0;
-  if (stretch) queue.forEach((q, i) => { if (q.spec.difficulty > queue[index]!.spec.difficulty) index = i; });
-  return { next: queue[index], rest: queue.filter((_, i) => i !== index) };
+/**
+ * Next activity in model order; a stretch request takes the most challenging queued activity instead.
+ * With `above`, a stretch takes only an activity harder than that difficulty (the one on screen), and
+ * returns nothing when the queue holds none, so an easier one is never offered as "harder".
+ */
+export function takeNext(queue: readonly QueuedActivity[], stretch = false, above?: number): { next?: QueuedActivity; rest: QueuedActivity[] } {
+  const eligible = stretch && above !== undefined ? queue.filter(q => q.spec.difficulty > above) : queue;
+  if (!eligible.length) return { rest: [...queue] };
+  let pick = eligible[0]!;
+  if (stretch) for (const q of eligible) if (q.spec.difficulty > pick.spec.difficulty) pick = q;
+  return { next: pick, rest: queue.filter(q => q !== pick) };
 }
 
 /** Drop queued activities that already have evidence or a dispute (for example after a backup restore). */
@@ -95,6 +107,8 @@ export class AiQueueBox {
     this.queue = mergeBatch(this.queue, items, known).queue;
     return this.queue.filter(q => !before.has(q.activityId)).map(q => q.activityId);
   }
+  /** Put an unanswered activity back at the front of the queue (no duplicate if it is already queued). */
+  requeueFront(item: QueuedActivity): void { this.queue = [item, ...this.queue.filter(q => q.activityId !== item.activityId)]; }
   remove(activityId: string): void { this.queue = this.queue.filter(q => q.activityId !== activityId); }
   /** Undo one delivery's additions without disturbing anything that happened meanwhile. */
   unmerge(activityIds: readonly string[]): void { const ids = new Set(activityIds); this.queue = this.queue.filter(q => !ids.has(q.activityId)); }

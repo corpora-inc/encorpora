@@ -50,6 +50,26 @@ test('pruning drops answered and disputed activities after a backup restore', ()
   assert.deepEqual(pruned.map(q => q.activityId), [queue[1]!.activityId]);
 });
 
+test('harder-than: a stretch above the shown difficulty takes the hardest harder one, or nothing (#877)', () => {
+  const at = (id: string, difficulty: number): QueuedActivity => ({ ...item('op', 0), activityId: `op:${id}`, spec: { ...fixtures[0]!, difficulty } });
+  const queue = [at('1', 3), at('2', 6), at('3', 8), at('4', 2)];
+  assert.equal(takeNext(queue, true, 5).next?.activityId, 'op:3');
+  assert.deepEqual(takeNext(queue, true, 5).rest.map(q => q.activityId), ['op:1', 'op:2', 'op:4']);
+  const none = takeNext(queue, true, 8);
+  assert.equal(none.next, undefined, 'an equal or easier activity is never offered as harder');
+  assert.equal(none.rest.length, 4, 'nothing is dropped when nothing is taken');
+  assert.equal(takeNext(queue, false, 8).next?.activityId, 'op:1', 'only a stretch filters');
+});
+
+test('requeueFront keeps a skipped activity first in line, once, with its spent assistance (#877)', () => {
+  const box = new AiQueueBox([item('b', 1), item('b', 2)]);
+  const skipped = { ...item('a', 0), hintsUsed: 2 };
+  box.requeueFront(skipped);
+  box.requeueFront(skipped);
+  assert.deepEqual(box.items.map(q => q.activityId), ['a:0', 'b:1', 'b:2']);
+  assert.equal(box.items[0]!.hintsUsed, 2);
+});
+
 // ---- Interleavings between a background batch delivery and the foreground (adversarial review) ----
 import { AiQueueBox, deliverBatch, presentFromQueue } from './aiQueue';
 function deferred<T = void>() { let resolve!: (v: T) => void, reject!: (e: unknown) => void; const promise = new Promise<T>((a, b) => { resolve = a; reject = b; }); return { promise, resolve, reject }; }

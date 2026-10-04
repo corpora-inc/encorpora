@@ -178,6 +178,16 @@ test('restore resumes the shown AI activity and its paid queue, dropping answere
   assert.throws(() => restoreLearning({ id: 'learner', grade: 3 }, null, session, records, disputes), LearningRecoveryError);
 });
 
+test('a skipped activity keeps its spent assistance across a restart; a bad count is dropped (#877)', () => {
+  const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree')];
+  const q = (i: number, extra: object = {}) => ({ activityId: `op-1:${i}`, operationId: 'op-1', spec: specs[i], ...extra });
+  const session = { id: 'session', updatedAt: at(0, 5), data: { sessionId: 'session', activity: null, hintsUsed: 0, completed: 0,
+    aiActivity: q(0), aiQueue: [q(1, { hintsUsed: 2 }), q(2, { hintsUsed: -1 })] } };
+  const restored = restoreLearning({ id: 'learner', grade: 3 }, null, session, [], [], specRestorer);
+  assert.deepEqual(restored.aiQueue.map(i => [i.activityId, i.hintsUsed]), [['op-1:1', 2]]);
+  assert.equal(restored.droppedAi, 1);
+});
+
 test('activity ids follow the original batch position, so a stricter validator cannot shift them onto other activities', () => {
   const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-3-pictograph')];
   const text = JSON.stringify({ rationale: 'r', activities: specs });

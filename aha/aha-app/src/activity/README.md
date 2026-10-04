@@ -153,6 +153,13 @@ the fallback, and signed-out practice is unchanged.
    fetches the next batch while the learner works. It is skipped during the fallback backoff or
    a Retry-After window. A Continue with an empty queue waits for an in-flight prefetch. If
    that fails too, it makes one foreground request, and if that fails, it serves local practice.
+   **Try something harder** never discards a paid, unanswered activity. If a queued activity is
+   harder than the one on screen, the hardest one is shown with no new paid call, and the skipped
+   one returns to the front of the queue with any hints it already used (`hintsUsed`, so it can
+   never later count as independent). Skipping is not an attempt and records no evidence. If
+   nothing queued is harder, the current activity stays on screen, the learner summary carries
+   `wantsHarder: true`, and the next batch (requested by the normal prefetch rule, or at once
+   if the learner has already answered and the queue is empty) tells the model to aim higher.
 5. **Record.** `gradeSpecAttempt` grades the answer locally. Unreadable input (`invalid`) asks
    again and records nothing. Otherwise `recordSpecAttempt` appends `source:'ai-spec'` evidence
    containing the spec hash, skillIds, difficulty, response type, the learner's structured

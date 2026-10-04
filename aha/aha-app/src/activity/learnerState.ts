@@ -46,6 +46,8 @@ export interface LearnerSummary {
   misconceptions: { tag: string; count: number; lastSeenDaysAgo: number }[];
   dueReviews: string[];
   /** correct = right on the first try; retryCorrect = right only after the forgiving retry. */
+  /** The learner tapped "Try something harder" and no queued activity was harder (#877): aim higher. */
+  wantsHarder?: true;
   recentActivities: { skills: string[]; difficulty: number | null; type: string; correct: boolean; hints: number; retryCorrect?: true }[];
 }
 
@@ -100,9 +102,10 @@ export interface SummaryInput {
   activityAttempts?: readonly ActivityAttemptRecord[];
   now?: string;
   frontierLimit?: number;
+  wantsHarder?: boolean;
 }
 
-export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10 }: SummaryInput): LearnerSummary {
+export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10, wantsHarder = false }: SummaryInput): LearnerSummary {
   const time = Date.parse(now);
   if (!Number.isFinite(time)) throw new Error('Use a valid timestamp.');
   const attempts = normalize(ledger, activityAttempts);
@@ -174,6 +177,7 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     misconceptions: [...tagCounts].sort((a, b) => b[1].count - a[1].count || b[1].last - a[1].last).slice(0, 6)
       .map(([tag, t]) => ({ tag, count: t.count, lastSeenDaysAgo: Math.max(0, Math.floor((time - t.last) / DAY)) })),
     dueReviews: [...due].slice(0, 6),
+    ...(wantsHarder ? { wantsHarder: true as const } : {}),
     recentActivities: attempts.slice(-6).map(a => ({ skills: a.skillIds, difficulty: a.difficulty, type: a.type, correct: a.correct, hints: a.hints, ...(a.retryCorrect ? { retryCorrect: true as const } : {}) })),
   };
 }
