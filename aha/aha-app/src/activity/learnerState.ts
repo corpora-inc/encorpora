@@ -32,6 +32,8 @@ export interface SkillSummary {
   attempts: number;
   correct: number;
   independent: number;
+  /** Consecutive misses at the end of this skill's history: 2+ means change the approach (#860). */
+  missStreak: number;
   /** Difficulty (1–10) the model should aim for next on this skill. */
   suggestedDifficulty: number;
 }
@@ -54,10 +56,13 @@ const clampDifficulty = (d: number) => Math.max(1, Math.min(10, Math.round(d)));
 const ratio = (n: number, d: number) => d ? Math.round((n / d) * 100) / 100 : null;
 
 function normalize(ledger: LearnerState | undefined, records: readonly ActivityAttemptRecord[]): NormalizedAttempt[] {
-  const fromLedger = (ledger?.attempts ?? []).filter((a: AttemptEvidence) => !a.excluded).map(a => ({
+  const fromLedger = (ledger?.attempts ?? []).filter((a: AttemptEvidence) => !a.excluded).map((a): NormalizedAttempt => a.source === 'ai-spec' ? {
+    skillIds: a.spec.skillIds, correct: a.correct, hints: a.hintsUsed, activeMs: a.interrupted ? null : a.activeMs,
+    at: Date.parse(a.at), difficulty: a.spec.difficulty, type: a.spec.responseType, ...(a.spec.misconceptionTag ? { tag: a.spec.misconceptionTag } : {}),
+  } : {
     skillIds: [a.skillId], correct: a.correct, hints: a.hintsUsed, activeMs: a.interrupted ? null : a.activeMs,
     at: Date.parse(a.at), difficulty: null, type: `task:${a.task.kind}`,
-  }));
+  });
   const fromSpecs = records.map(r => ({
     skillIds: r.skillIds, correct: r.correct, hints: r.hintsUsed, activeMs: r.activeMs, at: Date.parse(r.at),
     difficulty: r.difficulty, type: r.responseType, ...(r.misconceptionTag ? { tag: r.misconceptionTag } : {}),
@@ -106,15 +111,16 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     const skill = getSkill(id)!;
     const history = bySkill.get(id) ?? [];
     const progress = ledger?.progress[id];
-    let independentStreak = 0;
+    let independentStreak = 0, missStreak = 0;
     for (let i = history.length - 1; i >= 0 && history[i]!.correct && history[i]!.hints === 0; i--) independentStreak++;
+    for (let i = history.length - 1; i >= 0 && !history[i]!.correct; i--) missStreak++;
     let state: SkillState = !history.length ? 'new' : independentStreak >= 3 ? 'secure' : 'developing';
     if (progress?.concept === 'provisional') state = progress.retention === 'retained' ? 'retained' : 'secure';
     if (progress?.concept === 'developing') state = 'developing';
     if (due.has(id)) state = 'review_due';
     return {
       id, title: skill.title, grade: skill.grade, state, attempts: history.length,
-      correct: history.filter(h => h.correct).length, independent: history.filter(h => h.correct && h.hints === 0).length,
+      correct: history.filter(h => h.correct).length, independent: history.filter(h => h.correct && h.hints === 0).length, missStreak,
       suggestedDifficulty: suggestDifficulty(history),
     };
   };

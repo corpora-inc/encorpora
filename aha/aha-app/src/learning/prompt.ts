@@ -27,7 +27,7 @@ export function buildTutorContext(state:LearnerState,now=new Date().toISOString(
   ? {skillId:fluency.id,mode:'fluency' as const}:undefined;
  const ids=new Set(candidates.map(c=>c.skill.id));
  const recent=state.attempts.filter(a=>!a.excluded).slice(-8).map(a=>({skillId:a.skillId,correct:a.correct,hintsUsed:a.hintsUsed,
-  activeMs:a.interrupted?null:a.activeMs,mode:a.mode,at:a.at,task:a.task,answer:a.answer}));
+  activeMs:a.interrupted?null:a.activeMs,mode:a.mode,at:a.at,...(a.source==='ai-spec'?{skillIds:a.spec.skillIds,difficulty:a.spec.difficulty,responseType:a.spec.responseType}:{task:a.task}),answer:a.answer}));
  const neighborhood=candidates.map(c=>({id:c.skill.id,title:c.skill.title,grade:c.skill.grade,reason:c.reason,
   prerequisites:c.skill.prerequisites,prerequisiteBasis:c.skill.prerequisiteBasis,
   allowedTaskKinds:c.skill.taskKinds,fluencyTargetMs:c.skill.fluencyTargetMs,

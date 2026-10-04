@@ -1,0 +1,13 @@
+/* AI tutor slot inside the studio card: the spec renderer sits flush in the existing card. */
+.ai-activity-slot { outline: none; }
+.ai-activity-slot .aha-activity {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  max-width: none;
+}
+.ai-activity-loading { color: #5f6a5c; padding: 18px 0; }
+.topline-tags { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.source-label { font-size: 0.75rem; letter-spacing: 0.03em; color: #5f6a5c; }

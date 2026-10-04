@@ -30,6 +30,7 @@ import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
 import "katex/dist/katex.min.css";
 import "./studio.css";
+import "./aiActivity.css";
 export type { StudioProps, StudioActivity, StudioVisual } from "./types";
 
 type Tab = "learn" | "progress";
@@ -46,6 +47,7 @@ export function Studio(props: StudioProps) {
   const [deleting, setDeleting] = useState(false);
   const input = useRef<HTMLInputElement>(null);
   const taskHeading = useRef<HTMLHeadingElement>(null);
+  const contentSlot = useRef<HTMLDivElement>(null);
   const feedbackRegion = useRef<HTMLDivElement>(null);
   const settingsButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -57,7 +59,7 @@ export function Studio(props: StudioProps) {
     setAsking(false);
   }, [a?.id]);
   useEffect(() => {
-    if (a?.id) taskHeading.current?.focus({ preventScroll: true });
+    if (a?.id) (taskHeading.current ?? contentSlot.current)?.focus({ preventScroll: true });
   }, [a?.id]);
   useEffect(() => {
     if (props.feedback) feedbackRegion.current?.focus({ preventScroll: true });
@@ -217,14 +219,38 @@ export function Studio(props: StudioProps) {
               )}
               <article className="activity-card" aria-busy={props.busy}>
                 <div className="activity-topline">
-                  <span className="lesson-tag">
-                    <Sparkles size={13} /> LET’S EXPLORE
+                  <span className="topline-tags">
+                    <span className="lesson-tag">
+                      <Sparkles size={13} /> LET’S EXPLORE
+                    </span>
+                    {a?.sourceLabel && <span className="source-label">{a.sourceLabel}</span>}
                   </span>
                   <span className="activity-count">
                     {String(completed + 1).padStart(2, "0")}
                   </span>
                 </div>
-                {a ? (
+                {a?.content ? (
+                  <>
+                    <div className="ai-activity-slot" ref={contentSlot} tabIndex={-1} aria-label={a.title}>
+                      {a.content}
+                    </div>
+                    {feedbackContent}
+                    {hintContent}
+                    {props.session.complete && readyNext && (
+                      <section className="session-finish" aria-label="Exploration complete">
+                        <Sprout size={24} aria-hidden="true" />
+                        <div><h3>A good place to pause.</h3><p>{props.session.summary ?? "You’ve made time for your thinking today. Take a break, or keep exploring when you’re ready."}</p></div>
+                      </section>
+                    )}
+                    {readyNext && (
+                      <div className="activity-actions">
+                        <button className="primary-button" type="button" disabled={props.busy} onClick={props.onContinue}>
+                          {props.session.complete ? "Keep exploring" : "Next discovery"} <ArrowRight size={19} />
+                        </button>
+                      </div>
+                    )}
+                  </>
+                ) : a ? (
                   <>
                     <h2 ref={taskHeading} tabIndex={-1}>{a.title}</h2>
                     <div className="activity-prompt">
@@ -387,7 +413,18 @@ export function Studio(props: StudioProps) {
                   <span>{props.error}</span>
                 </div>
               )}
-              {a && (
+              {a?.content && (
+                <div className="support-row">
+                  <button
+                    className="dispute-button"
+                    disabled={props.busy}
+                    onClick={() => props.onSupport("dispute")}
+                  >
+                    Something seems off
+                  </button>
+                </div>
+              )}
+              {a && !a.content && (
                 <div className="support-row">
                   <button
                     disabled={props.busy}

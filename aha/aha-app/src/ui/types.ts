@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 export type StudioVisual =
   | { type: "fraction"; numerator: number; denominator: number; label?: string }
   | { type: "array"; rows: number; columns: number; label?: string }
@@ -33,6 +34,13 @@ export interface StudioActivity {
   answerKind?: "number" | "fraction" | "text" | "choice" | "comparison";
   choices?: { id: string; label: string }[];
   visual?: StudioVisual;
+  /** Calm provenance label: "AI tutor" or "Local practice". */
+  sourceLabel?: string;
+  /**
+   * A self-contained activity (the AI Activity Spec renderer) with its own answer input, hints,
+   * feedback and worked explanation. The studio keeps the card, Continue, dispute and curiosity.
+   */
+  content?: ReactNode;
 }
 export interface StudioProps {
   mode: "preview" | "native";
