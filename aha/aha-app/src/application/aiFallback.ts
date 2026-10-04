@@ -1,6 +1,7 @@
 import { SdkError } from '@free2z/sdk';
 import { TutorServiceError } from '../provider/free2z';
 import { learningError } from './connection';
+import { describeError, diagnostics } from '../diagnostics/log';
 
 export interface BackoffPolicy { baseTasks: number; baseMs: number; maxTasks: number; maxMs: number }
 const DEFAULT_POLICY: BackoffPolicy = {baseTasks: 3, baseMs: 60_000, maxTasks: 12, maxMs: 10 * 60_000};
@@ -48,4 +49,5 @@ export function logAiFallback(stage: string, error: unknown): void {
   const name = error instanceof Error ? error.name : typeof error;
   const message = error instanceof Error ? error.message : String(error);
   console.error(`[aha] AI unavailable for ${stage}; serving local practice in this account.`, JSON.stringify({code, name, message}));
+  diagnostics.add('warn', 'ai-fallback', `${stage}: ${describeError(error)}`);
 }
