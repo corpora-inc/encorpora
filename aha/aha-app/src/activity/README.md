@@ -18,6 +18,7 @@ It grades the answer on the device and records the result. Nothing here is wired
 | `render/` | `<ActivityView>` plus pure-SVG/HTML figure renderers and response widgets. Import `render/index.ts` to load the CSS |
 | `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output |
 | `gallery/` + `scripts/gallery.mjs` | Dev-only visual gallery: `npm run gallery [-- ids…] [--states]` → `.gallery/index.html` |
+| `scripts/spec-eval/` | Dev-only prompt evaluation against a local stand-in model: `npm run spec-eval` → `.spec-eval/<run>/` (see [Prompt evaluation](#prompt-evaluation-dev-only)) |
 
 ## Grammar (summary; `ACTIVITY_GRAMMAR` in `prompt.ts` is the model-facing version)
 
@@ -112,6 +113,72 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
   - Transitions are reduced or off under reduced motion.
 - **No hover tooltips on charts, on purpose.** Reading values off the graph is usually the
   task itself.
+
+## Prompt evaluation (dev only)
+
+`npm run spec-eval` is a **development tool for tuning `prompt.ts` before any Free2Z spend**. It
+never calls Free2Z, and nothing it produces ships in the app. Its activities are written by a
+local stand-in model on synthetic learners, so they must never be presented as Free2Z or product
+AI output. Outputs and the reply cache live in `.spec-eval/` (gitignored); never commit them.
+
+```
+npm run spec-eval -- [--n 45] [--provider codex|claude] [--model gpt-6-astra] [--effort low]
+                     [--judge-provider codex] [--judge-model gpt-6.1-sol] [--judge-effort medium]
+                     [--no-judge] [--no-render] [--only g3-] [--concurrency 6] [--run name] [--dry]
+```
+
+1. **States.** `states.mjs` builds 45 synthetic learners (grades K–8 × cold start, strong,
+   struggling with a misconception, review due, guided-only skill practised through AI activities)
+   through `learnerState.ts` and the learning engine. `--n` above 45 adds fresh samples.
+2. **Author.** Each real `buildActivityPrompt` prompt goes to `codex exec` (read-only sandbox, empty
+   directory), or `claude -p` with tools disabled. At most 6 run at once. Replies are cached by a
+   hash of the prompt, model and sample, so re-runs are free.
+3. **Validate.** `validateActivityBatch` is the same parser and validator production uses.
+   Per item the harness records validity and reasons, keyCheck status, skill ids against the
+   offered window and the graph, difficulty against `suggestedDifficulty`, response and figure
+   types, and size (chars/4).
+4. **Render.** Every valid spec is screenshotted through `ActivityView` at phone size (light) into a
+   contact sheet `.spec-eval/<run>/index.html`, grouped by learner state.
+5. **Judge.** One `codex exec` call per batch returns BINARY verdicts: correct key, level and next
+   step, variety within the batch, figure helps, and child-appropriate. Read the contact sheet
+   yourself too; the judge is lenient about redundant figures and near-repeats.
+6. **Summary.** `summary.json` + `summary.md`: schema pass rate, keyCheck pass, judge pass rates,
+   diversity, and reply size against the ~2.5k-token batch budget (gpt-4o ≈ 3 2Z per call).
+
+The codex models available on a ChatGPT login (`gpt-6-astra`, `gpt-6.1-sol`) are far stronger than
+gpt-4o, so they flatter the prompt. `--provider claude --model haiku` is a weaker stress test.
+
+### Status (work in progress, 2026-10-04)
+
+Baseline, unmodified prompt:
+
+- **gpt-6-astra, low effort, 45 batches:** schema 96.7%, keyCheck 100%, judge key 98.9%,
+  level 98.3%, varied 100%, figure 96%, kind 99.4%. Mean reply about 800 tokens, max 1346.
+- **haiku, partial (34 of 45 batches):** schema 80%.
+
+Failures seen so far:
+
+- Missing figure `alt`.
+- `keyCheck` added to multiple-choice answers.
+- Unbalanced `$` in option text, or words inside math.
+- `place_value_blocks` without `hundreds`.
+- Invented geometry kinds.
+- `snap:true`.
+- `\phantom` used for a blank.
+- `\begin{array}` column arithmetic; the validator rejects the environment name as words.
+- An empty table header cell.
+- Brace errors in minified JSON that lose the whole batch.
+
+Next prompt changes to try:
+
+- Make `alt` mandatory and keep it from giving away the answer.
+- Allow `keyCheck` only on numeric, fraction and plot_point answers.
+- Use `\square` for a blank, and no `\begin` environments.
+- Every table cell must be non-empty.
+- Never refer to options by letter or position, because options are shuffled.
+- Add a figure only when the learner reads or measures it. A table must not restate the text.
+- Use at least three response types per batch, and use `plot_point`/`tap_region` where they fit.
+- `snap` takes a number, never a boolean.
 
 ## Wiring plan
 
