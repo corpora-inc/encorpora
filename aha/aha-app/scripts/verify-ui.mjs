@@ -122,8 +122,31 @@ try{
   assert.equal(await page.getByRole('dialog').count(),0);
   await page.setViewportSize({width:320,height:740});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'compact layout has no horizontal overflow');
+  // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
+  const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
+  const learner=await fresh.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const saved=async()=>Object.values((await learner.evaluate(()=>window.__ahaFixture.read())).sessions)[0]?.data;
+  const miss=async()=>{
+    const a=(await saved()).activity,e=expectedAnswer(a.task);
+    await learner.getByLabel('Your answer',{exact:true}).fill(['<','>','='].includes(e)?(e==='<'?'>':'<'):(e==='0'?'1':'0'));
+    await learner.getByRole('button',{name:'Check my answer',exact:true}).click();
+    await learner.getByRole('button',{name:'Try a fresh one',exact:true}).waitFor();return a;
+  };
+  const freshTask=async()=>{await learner.getByRole('button',{name:'Try a fresh one',exact:true}).click();await learner.getByRole('button',{name:'Check my answer',exact:true}).waitFor();};
+  await learner.goto('http://127.0.0.1:1435');await learner.getByRole('button',{name:'Let’s begin',exact:true}).click();await learner.getByLabel('Your answer',{exact:true}).waitFor();
+  const missed=await miss();await freshTask();
+  assert.equal((await miss()).skillId,missed.skillId,'one miss is retried, not stepped down');await freshTask();
+  const taught=await saved();
+  assert.equal(taught.activity.skillId,missed.skillId);assert.equal(taught.hintsUsed,1,'worked example saved as assistance before display');
+  const example=await learner.locator('.hint-box').innerText();
+  assert.match(example,/worked out/);assert.ok(!example.includes(taught.activity.prompt),'worked example solves a different task');
+  await miss();await freshTask();
+  const ledger=Object.values((await learner.evaluate(()=>window.__ahaFixture.read())).attempts).flat();
+  assert.equal(ledger.length,3);assert.equal(ledger[2].data.hintsUsed,1);assert.equal(ledger[2].data.independent,false);
+  assert.notEqual((await saved()).activity.skillId,missed.skillId,'a third miss switches away from the skill');
+  await fresh.close();
   assert.deepEqual(errors,[],'browser errors');
-  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
+  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
 }finally{
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

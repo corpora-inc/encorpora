@@ -14,6 +14,7 @@ import {
   recordAttempt,
   selectCandidates,
   selectFluencySkill,
+  workedExampleHint,
   validateActivity,
   buildTutorContext,
   ActiveTimer,
@@ -501,6 +502,7 @@ export default function Controller() {
       await saveSession();
     }
     let next: Activity;
+    let worked = false;
     const reply = subject.current && provider.current && journalReadable && aiAttemptDue()
       ? await requestAiActivity(state, stretch) : undefined;
     if (reply) {
@@ -528,7 +530,7 @@ export default function Controller() {
             )
           : undefined) ?? candidates[0];
       const fluencySkill = !stretch && count.current > 0 && count.current % 5 === 0 &&
-        !["support", "due-review"].includes(chosen.reason) ? selectFluencySkill(state) : undefined;
+        !["support", "due-review"].includes(chosen.reason) && !chosen.approach ? selectFluencySkill(state) : undefined;
       const fluency = !!fluencySkill;
       next = generateFreshPractice(
         fluencySkill?.id ?? chosen.skill.id,
@@ -540,12 +542,20 @@ export default function Controller() {
             ? "review"
             : "concept",
       );
+      // After two misses, teach a solved sibling task first. Showing it counts as assistance.
+      worked = !stretch && !fluency && chosen.approach === "worked-example";
+      if (worked) next = { ...next, hint: workedExampleHint(next.skillId, state, crypto.getRandomValues(new Uint32Array(1))[0], next.variant) };
       next = { ...next, id: crypto.randomUUID(), source: "local" };
       if (subject.current) aiBackoff.current.recordLocalTask();
     }
     pendingActivity.current=next;
     await showActivity(next);
     pendingActivity.current=undefined;
+    if (worked) {
+      hintsUsed.current = 1;
+      await saveSession();
+      setHint(next.hint);
+    }
   }
   /** One paid activity request. When AI cannot produce it, logs, backs off and returns undefined for local practice. */
   async function requestAiActivity(state: LearnerState, stretch: boolean): Promise<TutorReply | undefined> {

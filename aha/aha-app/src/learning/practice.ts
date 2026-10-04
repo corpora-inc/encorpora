@@ -91,3 +91,15 @@ export function generateFreshPractice(skillId:string,learner:LearnerState,seed:n
  // Some valid skills have fewer than twelve distinct tasks. Revisit the least recent one.
  return fallback;
 }
+
+/**
+ * A solved example of the same skill on a different task, shown before the learner tries again
+ * after repeated misses. It never solves the displayed task. Showing it is assistance: the caller
+ * records the attempt as hinted, so independent evidence keeps its meaning.
+ */
+export function workedExampleHint(skillId:string,learner:LearnerState,seed:number,avoidVariant:string):string {
+ let example=generateFreshPractice(skillId,learner,((seed>>>0)+7919)>>>0);
+ for(let i=1;i<=24&&example.variant===avoidVariant;i++)example=generatePractice(skillId,((seed>>>0)+7919+i)>>>0);
+ if(example.variant===avoidVariant)return example.hint??'Break the problem into smaller steps.';
+ return `Here’s one worked out first: ${example.prompt}\n\n${example.explanation}\n\nNow try yours the same way.`.slice(0,1200);
+}

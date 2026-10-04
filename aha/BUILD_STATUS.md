@@ -26,6 +26,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 
 ## Current implementation boundaries
 - Task-specific local teaching and bounded fresh variants support continued practice. Conceptual advancement and optional all-skill fact practice remain separate, and recent errors take priority over unrelated fluency.
+- Local practice after errors (#860): one miss is retried, a second miss shows a worked example of a different task (recorded as assisted), and a skill is never repeated more than three times while failing; confidence items and bracketed step-downs replace the old one-level-per-miss cascade. Evidence rules are unchanged.
 - Completed AI answers remain recoverable until their presentation is saved. Parent controls expose saved answers, account recovery, and distinct allowance/balance failures. A fixed system-browser route opens Free2Z account management.
 
 - Learning evidence separates conceptual successes, arithmetic recall and delayed retention. Standards coverage is explicit; numerical practice does not certify every requirement of a whole standard.
