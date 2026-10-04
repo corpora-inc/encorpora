@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ActiveTimer, answerCanBeNegative, buildTeachingContext, buildTutorContext, coverageAudit, createLearner, expectedAnswer, formatRational, generatePractice, generateFreshPractice, teachTask, getSkill, gradeAnswer, parseRational, quarantineActivity, recordAttempt, renderTask, selectCandidates, selectFluencySkill, skills, standards, validateActivity, validateTask } from './index';
+import { ActiveTimer, answerCanBeNegative, buildTeachingContext, buildTutorContext, coverageAudit, createLearner, expectedAnswer, formatRational, generatePractice, generateFreshPractice, recentStreak, workedExampleHint, teachTask, getSkill, gradeAnswer, parseRational, quarantineActivity, recordAttempt, renderTask, selectCandidates, selectFluencySkill, skills, standards, validateActivity, validateTask } from './index';
 import type { Activity, CanonicalTask, LearnerState } from './types';
 const date=(day:number)=>new Date(Date.UTC(2026,8,day,12)).toISOString();
 const activity=(task:CanonicalTask,skillId='5.NF.A.1',id='test',mode:Activity['mode']='concept'):Activity=>{
@@ -313,5 +313,131 @@ test('sign key appears only where the answer domain can be negative',()=>{
   const a=generatePractice(s.id,seed),expected=expectedAnswer(a.task),negative=a.task.kind!=='compare'&&parseRational(expected).n<0n;
   if(negative)assert.equal(answerCanBeNegative(a.task,s),true,`${s.id} ${expected}`);
   if(s.grade==='K'||s.grade<=5){assert.equal(answerCanBeNegative(a.task,s),false,s.id);assert.ok(!['statistics','evaluate'].includes(a.task.kind),`${s.id}: K–5 nonnegativity check skips array fields`);}
+ }
+});
+
+// ---- Error loops (#860): selection policy only; evidence rules above stay unchanged. ----
+type Step={skillId:string;grade:number;reason:string;approach?:string;correct:boolean};
+const gradeOf=(id:string)=>{const g=getSkill(id)!.grade;return g==='K'?0:g;};
+const wrongAnswer=(expected:string)=>['<','>','='].includes(expected)?(expected==='<'?'>':'<'):'-999';
+/** Mirrors the controller's local path: candidates[0], worked examples recorded as assisted. */
+function simulate(startGrade:LearnerState['startGrade'],answersCorrectly:(i:number)=>boolean,items=24):Step[] {
+ let state=createLearner('sim',startGrade);const trace:Step[]=[];
+ for(let i=0;i<items;i++){
+  const at=new Date(Date.UTC(2026,8,1,12,0,i)).toISOString();
+  const chosen=selectCandidates(state,at)[0];
+  const task={...generateFreshPractice(chosen.skill.id,state,1000+i,chosen.reason==='due-review'?'review':'concept'),id:`sim-${i}`};
+  const correct=answersCorrectly(i),expected=expectedAnswer(task.task);
+  state=recordAttempt(state,task,{id:`sim-answer-${i}`,answer:correct?expected:wrongAnswer(expected),at,hintsUsed:chosen.approach==='worked-example'?1:0});
+  trace.push({skillId:chosen.skill.id,grade:gradeOf(chosen.skill.id),reason:chosen.reason,...(chosen.approach?{approach:chosen.approach}:{}),correct});
+ }
+ return trace;
+}
+const longestRun=(trace:Step[])=>trace.reduce((r,s,i)=>{const run=i&&trace[i-1].skillId===s.skillId?r.run+1:1;return {run,max:Math.max(r.max,run)};},{run:0,max:0}).max;
+
+test('recentStreak reports trailing misses, successes and same-skill presentations',()=>{
+ let state=createLearner('a');
+ const miss=(id:string,seed:number)=>{const t={...generatePractice(id,seed),id:`m-${id}-${seed}`};state=recordAttempt(state,t,{id:`am-${id}-${seed}`,answer:wrongAnswer(expectedAnswer(t.task)),at:date(1)});};
+ miss('3.OA.A.1',1);miss('3.OA.A.1',2);
+ assert.deepEqual(recentStreak(state.attempts,'3.OA.A.1'),{misses:2,successes:0,presentedWithoutSuccess:2});
+ state=success(state,{...generatePractice('1.G.A.3',3),id:'other'},'other');
+ assert.deepEqual(recentStreak(state.attempts,'3.OA.A.1'),{misses:2,successes:0,presentedWithoutSuccess:0},'An interleaved item ends the run but not the miss streak');
+ state=success(state,{...generatePractice('3.OA.A.1',4),id:'win'},'win');
+ assert.deepEqual(recentStreak(state.attempts,'3.OA.A.1'),{misses:0,successes:1,presentedWithoutSuccess:0});
+ assert.deepEqual(recentStreak(state.attempts,'K.CC.A.2'),{misses:0,successes:0,presentedWithoutSuccess:0});
+});
+
+test('a learner who keeps missing gets a changed approach and variety, never a long same-skill loop',()=>{
+ for(const grade of ['K',3,4] as const){
+  const trace=simulate(grade,()=>false);
+  assert.ok(longestRun(trace)<=3,`grade ${grade}: ${trace.map(s=>s.skillId).join(' ')}`);
+  // Only four Kindergarten skills are verified; older starts also have easier grades to visit.
+  assert.ok(new Set(trace.map(s=>s.skillId)).size>=(grade==='K'?4:6),`grade ${grade} variety`);
+  assert.equal(trace[1].skillId,trace[0].skillId,'One miss is retried once with a fresh task');
+  assert.equal(trace[2].skillId,trace[0].skillId);assert.equal(trace[2].approach,'worked-example','Two misses change the approach');
+  assert.notEqual(trace[3].skillId,trace[0].skillId,'A third miss switches to something easier or already successful');
+  assert.ok(trace.filter(s=>s.approach==='worked-example').length>=4);
+ }
+});
+
+test('support descent needs a confirmed miss, steps gradually and brackets placement grades',()=>{
+ for(const grade of [3,4,6] as const){
+  const trace=simulate(grade,()=>false);
+  assert.ok(trace.slice(0,3).every(s=>s.grade===trace[0].grade),'No descent before the second miss and worked example');
+  const drops=trace.filter((s,i)=>i>0&&s.grade<trace[i-1].grade);
+  assert.ok(drops.length<=Math.ceil(trace.length/3),`grade ${grade}: ${drops.length} drops`);
+  for(let i=1;i<trace.length;i++)assert.ok(trace[i-1].grade-trace[i].grade<=Math.ceil(trace[i-1].grade/2),`grade ${grade}: bracketed step at ${i}`);
+  assert.ok(trace.slice(0,6).every(s=>s.grade>0),`grade ${grade}: K is not reached within six items`);
+ }
+});
+
+test('one slip followed by success does not cascade to easier skills',()=>{
+ for(const grade of [3,4] as const){
+  const trace=simulate(grade,i=>i!==0,16);
+  assert.equal(trace[1].skillId,trace[0].skillId,'Retry the missed skill rather than stepping down');
+  assert.ok(trace.every(s=>s.reason!=='support'),`grade ${grade}: ${trace.map(s=>`${s.skillId}:${s.reason}`).join(' ')}`);
+  assert.ok(trace.every(s=>s.grade>=Math.min(...trace.slice(0,1).map(t=>t.grade))-2));
+ }
+});
+
+test('after repeated misses a demonstrated skill is interleaved before returning one bracket lower',()=>{
+ let state=createLearner('a',3);
+ for(let i=0;i<3;i++)state=success(state,{...generateFreshPractice('K.OA.A.5',state,40+i),id:`known-${i}`},`known-${i}`);
+ for(let i=0;i<3;i++){
+  const t={...generateFreshPractice('3.OA.A.1',state,60+i),id:`hard-${i}`};
+  state=recordAttempt(state,t,{id:`hard-answer-${i}`,answer:'-999',at:date(1),hintsUsed:i===2?1:0});
+ }
+ const pause=selectCandidates(state,date(1))[0];
+ assert.equal(pause.skill.id,'K.OA.A.5');assert.equal(pause.reason,'confidence');
+ state=success(state,{...generateFreshPractice('K.OA.A.5',state,70),id:'confidence'},'confidence');
+ const back=selectCandidates(state,date(1))[0];
+ assert.equal(back.reason,'support');assert.equal(back.skill.id,'2.OA.C.4','Return between the demonstrated grade and the missed grade');
+ assert.equal(state.progress['3.OA.A.1'].concept,'developing','Selection does not alter evidence');
+});
+
+test('placement probes back up after succeeding below a confirmed miss',()=>{
+ let state=createLearner('a',4);
+ for(let i=0;i<3;i++){const t={...generateFreshPractice('4.OA.C.5',state,80+i),id:`seq-${i}`};state=recordAttempt(state,t,{id:`seq-answer-${i}`,answer:'-999',at:date(1)});}
+ const down=selectCandidates(state,date(1))[0];
+ assert.equal(down.reason,'support');assert.equal(down.skill.grade,2,'Halve the grade gap instead of walking every prerequisite');
+ state=success(state,{...generateFreshPractice(down.skill.id,state,90),id:'probe'},'probe');
+ const up=selectCandidates(state,date(1))[0];
+ assert.ok(['support','placement'].includes(up.reason));assert.equal(up.skill.grade,3,'Probe the middle of the remaining gap');
+ // After a demonstrated-skill interlude, the same bracket still closes upward.
+ state=success(state,{...generateFreshPractice(up.skill.id,state,91),id:'probe-up'},'probe-up');
+ assert.ok(selectCandidates(state,date(1))[0].skill.grade!==2,'A bracketed success does not fall back below it');
+});
+
+test('a worked example never solves the displayed task, even reordered or inverted',()=>{
+ const learner=createLearner('a');
+ const numbers=(a:Activity)=>[...Object.values(a.task).flat().filter(v=>typeof v==='string'||typeof v==='number').map(String).filter(v=>/^-?\d/.test(v)),expectedAnswer(a.task)].sort().join(',');
+ for(const skillId of ['K.CC.A.2','K.OA.A.5','1.OA.B.4','1.OA.C.6','2.OA.C.4','3.OA.A.1','3.OA.A.2','3.OA.C.7','5.NF.A.1'])for(let seed=1;seed<=300;seed++){
+  const item=generateFreshPractice(skillId,learner,seed);
+  const example=workedExampleHint(item,learner,seed);
+  assert.ok(example.length<=1200);
+  assert.ok(!example.includes(item.prompt),`${skillId}: must not restate the displayed task`);
+  const match=/worked out first: (.*)\n\n/.exec(example);
+  if(!match)continue; // A generic hint when no safe sibling task exists.
+  const shown=generateFreshPractice(skillId,learner,seed);
+  const sibling=[...Array(400).keys()].map(i=>generatePractice(skillId,i)).find(a=>a.prompt===match[1]);
+  if(!sibling)continue;
+  assert.notEqual(expectedAnswer(sibling.task),expectedAnswer(shown.task),`${skillId} seed ${seed}: same result`);
+  assert.notEqual(numbers(sibling),numbers(shown),`${skillId} seed ${seed}: same quantities`);
+ }
+ assert.match(workedExampleHint(generatePractice('3.OA.C.7',5),learner,5),/worked/i);
+});
+
+test('assisted successes do not loop one skill either',()=>{
+ for(const grade of [3,4] as const){
+  let state=createLearner('hinted',grade);const ids:string[]=[];
+  for(let i=0;i<16;i++){
+   const at=new Date(Date.UTC(2026,8,1,12,0,i)).toISOString();
+   const chosen=selectCandidates(state,at)[0];
+   const task={...generateFreshPractice(chosen.skill.id,state,2000+i),id:`hinted-${i}`};
+   // Taps a hint every time and then answers correctly.
+   state=recordAttempt(state,task,{id:`hinted-answer-${i}`,answer:expectedAnswer(task.task),at,hintsUsed:1});ids.push(chosen.skill.id);
+  }
+  const run=ids.reduce((r,id,i)=>{const n=i&&ids[i-1]===id?r.n+1:1;return {n,max:Math.max(r.max,n)};},{n:0,max:0}).max;
+  assert.ok(run<=4,`grade ${grade}: ${ids.join(' ')}`);
  }
 });
