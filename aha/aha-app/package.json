@@ -16,8 +16,8 @@
     "test:ai": "node --import tsx scripts/verify-ai.mjs"
   },
   "dependencies": {
-    "@free2z/sdk": "file:vendor/free2z/sdk/534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860/free2z-sdk-0.1.0.tgz",
-    "@free2z/tauri-plugin-f2z-api": "file:vendor/free2z/sdk/534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860/free2z-tauri-plugin-f2z-api-0.1.0.tgz",
+    "@free2z/sdk": "file:vendor/free2z/sdk/e95becd6517bada55ca933e4072ebf13bbbb3bff/free2z-sdk-0.1.0.tgz",
+    "@free2z/tauri-plugin-f2z-api": "file:vendor/free2z/sdk/e95becd6517bada55ca933e4072ebf13bbbb3bff/free2z-tauri-plugin-f2z-api-0.1.0.tgz",
     "@tauri-apps/api": "^2.11.1",
     "katex": "^0.16.22",
     "lucide-react": "^0.468.0",

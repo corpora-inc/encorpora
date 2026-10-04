@@ -29,6 +29,7 @@ import {
   type TestAuthorization,
   type PendingOperation,
   verifyTestGrant,
+  SIGN_IN_OPTIONS,
   type ResumeContext,
   type TutorReply,
 } from "../provider/free2z";
@@ -741,7 +742,8 @@ export default function Controller() {
       );
     checkRetryDelay();
     const client = getNativeClient();
-    const s = await client.signIn();
+    // Suggest the beta's 500 2Z total cap; paidAuthorization still verifies the confirmed grant.
+    const s = await client.signIn(SIGN_IN_OPTIONS);
     if (!s.signedIn || !s.subject)
       throw new Error("Sign-in was not completed.");
     subject.current = s.subject;
