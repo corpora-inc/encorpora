@@ -86,7 +86,7 @@ function fixture(specs){
       case 'saveProfile':db.profiles=db.profiles.filter(p=>p.id!==id);db.profiles.push(r.data);break;
       case 'loadSession':return db.sessions[id]??null;
       case 'saveSession':if(window.__ahaFixture.failNextSession){window.__ahaFixture.failNextSession=false;throw new Error('TEST disk full: session write rejected');}db.sessions[id]=r.data;break;
-      case 'saveActivity':ai.activityAccounts.push(r.accountId);(db.activities[id]??=[]).push(r.data);break;
+      case 'saveActivity':{const prior=(db.activities[id]??[]).find(a=>a.id===r.data.id);if(prior&&JSON.stringify(prior)!==JSON.stringify(r.data))throw new Error('Activity ids are immutable');}ai.activityAccounts.push(r.accountId);(db.activities[id]??=[]).push(r.data);break;
       case 'listActivities':return db.activities[id]??[];
       case 'loadSnapshot':return db.snapshots[id]??null;
       case 'listAttempts':return db.attempts[id]??[];
@@ -449,6 +449,7 @@ try {
     assert.match(user,/"wantsHarder":true/,'the next batch request tells the model the learner wants harder');
     const attempts=await hAttempts();
     assert.deepEqual(attempts.map(a=>a.data.activityId),[hard],'only the answered activity has evidence');
+    assert.equal((await hs()).aiActivity.spec.difficulty,5,'the skipped activity shows again with its original record');
     assert.deepEqual(hErrors,[]);
     await ctx.close();
   }

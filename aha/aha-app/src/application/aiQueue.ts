@@ -20,6 +20,8 @@ export interface QueuedActivity {
    * (#877). Restored when it is shown again, so a skipped, hinted activity never counts as independent.
    */
   hintsUsed?: number;
+  /** It was shown before, so its immutable activity record is already saved. */
+  shown?: true;
 }
 
 /** Request the next batch when this many or fewer activities remain queued. */

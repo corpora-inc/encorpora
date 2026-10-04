@@ -276,8 +276,9 @@ export default function Controller() {
       data: json({id: item.activityId, source: "ai-spec", operationId: item.operationId, spec: item.spec}),
     };
     pendingAi.current = {item, record};
-    // The stored spec lets disputes and rebuilds refer to the exact content that was shown.
-    await repository.current.saveActivity(p.id, record);
+    // The stored spec lets disputes and rebuilds refer to the exact content that was shown. An
+    // activity shown before (skipped for something harder) already has its immutable record.
+    if (!item.shown) await repository.current.saveActivity(p.id, record);
     // The remaining queue is read when the write runs and the dequeue commits inside the write chain,
     // so a batch delivered meanwhile is neither overwritten in memory nor dropped from storage.
     await presentFromQueue(aiQueue.current, item, (rest, commit) => writeSession(p.id, () => ({
@@ -296,12 +297,18 @@ export default function Controller() {
       aiHintsShown.current = 0;
       firstAnswer.current = undefined;
     }));
+    if (item.hintsUsed) {
+      // Re-shown after a skip: show the last hint it had already used, as a restart does.
+      const hints = item.spec.hints ?? [];
+      aiHintsShown.current = hints.length ? Math.min(item.hintsUsed, hints.length) : 0;
+      setHint(hints.length ? hints[aiHintsShown.current - 1] : item.spec.explanation);
+    }
     pendingAi.current = undefined;
     setActivity(undefined);
     setAiItem(item);
     setAiResult(undefined);
     setFeedback(undefined);
-    setHint(undefined);
+    setHint(item.hintsUsed ? (item.spec.hints?.length ? item.spec.hints[aiHintsShown.current - 1] : item.spec.explanation) : undefined);
     setCuriosity(undefined);
     timer.current = new ActiveTimer();
   }
@@ -701,11 +708,12 @@ export default function Controller() {
       if (!item && aiAttemptDue() && await requestBatch("next activity", true))
         item = takeNext(aiQueue.current.items, stretch, above).next;
       if (item) {
-        if (skipping) aiQueue.current.requeueFront(hintsUsed.current > 0 ? {...skipping, hintsUsed: hintsUsed.current} : skipping);
+        if (skipping) aiQueue.current.requeueFront({...skipping, shown: true, ...(hintsUsed.current > 0 ? {hintsUsed: hintsUsed.current} : {})});
         try { await showSpec(item); }
         catch (e) {
-          // The skipped activity is still the one on screen: it must not also wait in the queue.
-          if (skipping && currentAi.current?.activityId === skipping.activityId) aiQueue.current.remove(skipping.activityId);
+          // The skipped activity is still the one on screen: it must not also wait in the queue, unless
+          // the harder one is now pending (the next Continue shows it and the skipped one must stay).
+          if (skipping && currentAi.current?.activityId === skipping.activityId && !pendingAi.current) aiQueue.current.remove(skipping.activityId);
           throw e;
         }
         maybePrefetch();
