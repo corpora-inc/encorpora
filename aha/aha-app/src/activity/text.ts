@@ -57,7 +57,8 @@ export function renderTex(tex: string, displayMode = false): string {
   catch { return katex.renderToString('\\text{?}', { ...KATEX_OPTIONS, displayMode }); }
 }
 
-const MARKUP = /<\s*\/?\s*[a-z!?][^>]*>?|&(#\d+|#x[0-9a-f]+|[a-z]+);/i;
+// A real tag shape (<b>, </div>, <img src=…, <!--) or an HTML entity used as markup (&lt; &#60;).
+const MARKUP = /<\s*\/?\s*[a-z][a-z0-9-]*(?=[\s>/]|$)|<!|&(#\d+|#x[0-9a-f]+|lt|gt|amp|quot|apos|nbsp);/i;
 const URL_LIKE = /\b(https?|ftp|javascript|vbscript|tauri|ipc):|\bwww\.|\b[a-z0-9-]+\.(com|net|org|io|app|cash|dev|ly|co)\b/i;
 // Bidi overrides/isolates and other invisible format controls can disguise content.
 const CONTROL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f‪-‮⁦-⁩‎‏؜﻿]/;

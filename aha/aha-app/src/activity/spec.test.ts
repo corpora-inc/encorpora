@@ -116,6 +116,27 @@ describe('Activity Spec v1 validator', () => {
     expr.response.answer = '3m+2';
     assert.match(String((validateActivitySpec(expr, { skillIds }) as any).errors), /Use only n/);
   });
+  it('requires plot answers to be reachable on the per-axis snap grid', () => {
+    const plot = (): any => clone(fixtures.find(f => f.id === 'fx-5-plant-the-tree')!);
+    const half = plot(); half.response.x = 2.5; half.keyCheck = { x: '5/2', y: '4' };
+    assert.match(String((validateActivitySpec(half, { skillIds }) as any).errors), /not reachable on the plotting grid/);
+    half.response.snap = 0.5;
+    assert.equal(validateActivitySpec(half, { skillIds }).ok, true, 'explicit snap makes it reachable');
+    const tolerant = plot(); tolerant.response.x = 2.5; tolerant.response.tolerance = 0.5; tolerant.keyCheck = { x: '5/2', y: '4' };
+    assert.equal(validateActivitySpec(tolerant, { skillIds }).ok, true, 'tolerance covers the nearest grid point');
+    const axes = plot(); axes.figures[0].x = { min: 0, max: 100, step: 10 }; axes.figures[0].points[0].x = 20;
+    axes.response.x = 20; axes.response.y = 3; axes.keyCheck = { x: '20', y: '3' };
+    assert.equal(validateActivitySpec(axes, { skillIds }).ok, true, 'y snaps to its own step, not x');
+    axes.response.x = 25; axes.keyCheck = { x: '25', y: '3' };
+    assert.match(String((validateActivitySpec(axes, { skillIds }) as any).errors), /not reachable/);
+  });
+  it('accepts harmless ampersands and comparisons in plain text', () => {
+    for (const text of ['Q&A time: rock & roll', 'Is 7 < 9?', 'Use the data: 3, 5, 7']) {
+      const spec: any = base(); spec.prompt[0].text = text;
+      const r = validateActivitySpec(spec, { skillIds });
+      assert.ok(r.ok, `${text}: ${r.ok ? '' : r.errors.join('; ')}`);
+    }
+  });
   it('treats null members as absent (strict-mode output)', () => {
     const spec: any = base();
     spec.title = null; spec.misconceptions = null; spec.figures[0].orientation = null;
@@ -132,6 +153,8 @@ describe('batch parsing and validation', () => {
     const r = validateActivityBatch(text, { skillIds });
     assert.equal(r.accepted.length, 2);
     assert.deepEqual(r.errors, []);
+    const chatty = validateActivityBatch('Sure {here} is the batch: ' + JSON.stringify(two()), { skillIds });
+    assert.equal(chatty.accepted.length, 2, 'skips a stray brace before the payload');
     const braces = extractJsonObject('{"a":"} { \\" }","b":{"c":1}} trailing }');
     assert.ok(braces.ok && (braces.value as any).b.c === 1);
   });

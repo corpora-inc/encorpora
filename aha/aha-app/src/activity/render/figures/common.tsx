@@ -85,5 +85,5 @@ export function regionProps(label: string, selected: boolean, onSelect?: () => v
 }
 
 export interface TapInteraction { kind: 'tap'; selected?: string; onSelect: (region: string) => void }
-export interface PlotInteraction { kind: 'plot'; point?: { x: number; y: number }; snap: number; onPlot: (p: { x: number; y: number }) => void }
+export interface PlotInteraction { kind: 'plot'; point?: { x: number; y: number }; snap: { x: number; y: number }; onPlot: (p: { x: number; y: number }) => void }
 export type FigureInteraction = TapInteraction | PlotInteraction;

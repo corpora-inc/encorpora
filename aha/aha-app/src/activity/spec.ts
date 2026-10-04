@@ -276,8 +276,17 @@ export function validateActivitySpec(raw: unknown, options: ValidateOptions): Sp
 export function extractJsonObject(text: string): { ok: true; value: unknown } | { ok: false; error: string } {
   if (typeof text !== 'string') return { ok: false, error: 'Response is not text.' };
   if (text.length > 150000) return { ok: false, error: 'Response is too large.' };
-  const start = text.indexOf('{');
-  if (start < 0) return { ok: false, error: 'Response contains no JSON object.' };
+  if (text.indexOf('{') < 0) return { ok: false, error: 'Response contains no JSON object.' };
+  // Try each opening brace in turn so chatter like "Sure {here}" before the payload is skipped.
+  let sawIncomplete = false;
+  for (let start = text.indexOf('{'), tries = 0; start >= 0 && tries < 50; start = text.indexOf('{', start + 1), tries++) {
+    const r = balancedObjectAt(text, start);
+    if (r === 'incomplete') { sawIncomplete = true; break; }
+    try { const value = JSON.parse(r); if (value && typeof value === 'object' && !Array.isArray(value)) return { ok: true, value }; } catch { /* try the next brace */ }
+  }
+  return { ok: false, error: sawIncomplete ? 'Response JSON is incomplete (truncated?).' : 'Response is not valid JSON.' };
+}
+function balancedObjectAt(text: string, start: number): string | 'incomplete' {
   let depth = 0, inString = false, escaped = false, end = -1;
   for (let i = start; i < text.length; i++) {
     const c = text[i];
@@ -286,9 +295,7 @@ export function extractJsonObject(text: string): { ok: true; value: unknown } | 
     else if (c === '{') depth++;
     else if (c === '}' && --depth === 0) { end = i; break; }
   }
-  if (end < 0) return { ok: false, error: 'Response JSON is incomplete (truncated?).' };
-  try { return { ok: true, value: JSON.parse(text.slice(start, end + 1)) }; }
-  catch { return { ok: false, error: 'Response is not valid JSON.' }; }
+  return end < 0 ? 'incomplete' : text.slice(start, end + 1);
 }
 
 /**
@@ -551,6 +558,9 @@ export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck =
       if (!inAxis(r.x, f.x) || !inAxis(r.y, f.y)) errors.push('response: the answer point lies outside the plane.');
       const tol = Math.max(r.tolerance ?? 0, 1e-9);
       if ((f.points ?? []).some(p => Math.abs(p.x - r.x) <= tol && Math.abs(p.y - r.y) <= tol)) errors.push('response: the figure already shows the answer point.');
+      const snap = plotSnap(r, f);
+      const gx = snapToGrid(r.x, snap.x, f.x.min, f.x.max), gy = snapToGrid(r.y, snap.y, f.y.min, f.y.max);
+      if (gx === null || gy === null || Math.abs(gx - r.x) > tol || Math.abs(gy - r.y) > tol) errors.push(`response: the answer point is not reachable on the plotting grid (snap x ${snap.x}, y ${snap.y}); set snap or the axis step.`);
       if (spec.keyCheck) {
         if (!('x' in spec.keyCheck)) errors.push('keyCheck: plot_point answers use { x, y }.');
         else {
@@ -571,5 +581,18 @@ export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck =
     }
   }
   return errors;
+}
+/**
+ * The plotting grid: multiples of `snap` (counted from 0) inside [lo, hi]. Taps, arrow keys and
+ * steppers all land on this grid, so the validator requires plot answers to be reachable on it.
+ */
+export function snapToGrid(v: number, snap: number, lo: number, hi: number): number | null {
+  const kMin = Math.ceil(lo / snap - 1e-9), kMax = Math.floor(hi / snap + 1e-9);
+  if (kMin > kMax) return null;
+  return +(Math.min(kMax, Math.max(kMin, Math.round(v / snap))) * snap).toPrecision(12);
+}
+/** Per-axis snap for a plot_point response: an explicit snap, else each axis's own grid step. */
+export function plotSnap(r: { snap?: number }, plane: { x: { step?: number }; y: { step?: number } }) {
+  return { x: r.snap ?? plane.x.step ?? 1, y: r.snap ?? plane.y.step ?? 1 };
 }
 export const gcd = (a: number, b: number): number => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a; };

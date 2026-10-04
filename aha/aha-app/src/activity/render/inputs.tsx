@@ -4,6 +4,7 @@ import type { ResponseOf } from '../spec';
 import type { LearnerResponse } from '../grade';
 import { ExprError, parseExpr, type Expr } from '../expr';
 import { renderTex } from '../text';
+import { snapToGrid } from '../spec';
 import { RichText } from './RichText';
 import { fmt } from './figures/common';
 
@@ -149,12 +150,10 @@ export function OrderingInput({ response: r, order, onChange, disabled }: { resp
   );
 }
 
-export function PlotControls({ point, snap, bounds, onChange, disabled }: { point?: { x: number; y: number }; snap: number; bounds: { x: [number, number]; y: [number, number] }; onChange: (p: { x: number; y: number }) => void; disabled?: boolean }) {
-  const p = point ?? { x: Math.min(Math.max(0, bounds.x[0]), bounds.x[1]), y: Math.min(Math.max(0, bounds.y[0]), bounds.y[1]) };
-  const step = (axis: 'x' | 'y', d: number) => {
-    const [lo, hi] = bounds[axis];
-    onChange({ ...p, [axis]: +Math.min(hi, Math.max(lo, p[axis] + d * snap)).toPrecision(10) });
-  };
+export function PlotControls({ point, snap, bounds, onChange, disabled }: { point?: { x: number; y: number }; snap: { x: number; y: number }; bounds: { x: [number, number]; y: [number, number] }; onChange: (p: { x: number; y: number }) => void; disabled?: boolean }) {
+  const at = (axis: 'x' | 'y', v: number) => snapToGrid(v, snap[axis], bounds[axis][0], bounds[axis][1]) ?? bounds[axis][0];
+  const p = point ?? { x: at('x', 0), y: at('y', 0) };
+  const step = (axis: 'x' | 'y', d: number) => onChange({ ...p, [axis]: at(axis, p[axis] + d * snap[axis]) });
   const stepper = (axis: 'x' | 'y') => (
     <div className="ax-stepper" role="group" aria-label={`${axis} coordinate`}>
       <button type="button" disabled={disabled} onClick={() => step(axis, -1)} aria-label={`Decrease ${axis}`}><Minus size={18} aria-hidden="true" /></button>

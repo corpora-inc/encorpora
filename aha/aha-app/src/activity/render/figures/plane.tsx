@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import type { FigureOf } from '../../spec';
 import { evaluate, parseExpr } from '../../expr';
+import { snapToGrid } from '../../spec';
 import { A11ySvg, clamp, fmt, regionProps, series, useMeasuredWidth, type PlotInteraction, type TapInteraction } from './common';
 
 let clipSeq = 0;
@@ -51,19 +52,20 @@ export function CoordinatePlaneFigure({ figure: f, tap, plot }: { figure: Figure
 
   const toData = (clientX: number, clientY: number, rect: DOMRect) => {
     const sx = (clientX - rect.left) * (W / rect.width), sy = (clientY - rect.top) * (H / rect.height);
-    const snap = plot!.snap;
-    const x = clamp(Math.round((f.x.min + (sx - ox) / ux) / snap) * snap, f.x.min, f.x.max);
-    const y = clamp(Math.round((f.y.max - (sy - pad.t) / uy) / snap) * snap, f.y.min, f.y.max);
-    return { x: +x.toPrecision(10), y: +y.toPrecision(10) };
+    const { snap } = plot!;
+    const x = snapToGrid(f.x.min + (sx - ox) / ux, snap.x, f.x.min, f.x.max) ?? f.x.min;
+    const y = snapToGrid(f.y.max - (sy - pad.t) / uy, snap.y, f.y.min, f.y.max) ?? f.y.min;
+    return { x, y };
   };
   const onPointer = plot ? (e: React.PointerEvent<SVGSVGElement>) => plot.onPlot(toData(e.clientX, e.clientY, e.currentTarget.getBoundingClientRect())) : undefined;
   const onKey = plot ? (e: React.KeyboardEvent<SVGSVGElement>) => {
-    const p = plot.point ?? { x: clamp(0, f.x.min, f.x.max), y: clamp(0, f.y.min, f.y.max) };
+    const { snap } = plot;
+    const p = plot.point ?? { x: snapToGrid(0, snap.x, f.x.min, f.x.max) ?? f.x.min, y: snapToGrid(0, snap.y, f.y.min, f.y.max) ?? f.y.min };
     const d: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
     const step = d[e.key];
     if (!step) return;
     e.preventDefault();
-    plot.onPlot({ x: +clamp(p.x + step[0] * plot.snap, f.x.min, f.x.max).toPrecision(10), y: +clamp(p.y + step[1] * plot.snap, f.y.min, f.y.max).toPrecision(10) });
+    plot.onPlot({ x: snapToGrid(p.x + step[0] * snap.x, snap.x, f.x.min, f.x.max) ?? p.x, y: snapToGrid(p.y + step[1] * snap.y, snap.y, f.y.min, f.y.max) ?? p.y });
   } : undefined;
 
   return (

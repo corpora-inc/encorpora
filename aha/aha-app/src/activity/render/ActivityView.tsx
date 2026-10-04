@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Lightbulb, Sparkles, Check } from 'lucide-react';
 import type { ActivitySpec, Figure } from '../spec';
-import { regionIds } from '../spec';
+import { plotSnap, regionIds } from '../spec';
 import type { GradeOutcome, LearnerResponse } from '../grade';
 import { seededRandom } from '../expr';
 import { DisplayMath, RichText } from './RichText';
@@ -96,7 +96,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
 
   const interactionFor = (figure: Figure): FigureInteraction | undefined => {
     if (r.type === 'tap_region' && r.figureId === figure.id) return { kind: 'tap', selected: draft.region, onSelect: id => !locked && setDraft(d => ({ ...d, region: id })) };
-    if (r.type === 'plot_point' && r.figureId === figure.id) return { kind: 'plot', point: draft.point, snap: r.snap ?? (figure.type === 'coordinate_plane' ? figure.x.step ?? 1 : 1), onPlot: p => !locked && setDraft(d => ({ ...d, point: p })) };
+    if (r.type === 'plot_point' && r.figureId === figure.id) return { kind: 'plot', point: draft.point, snap: figure.type === 'coordinate_plane' ? plotSnap(r, figure) : { x: 1, y: 1 }, onPlot: p => !locked && setDraft(d => ({ ...d, point: p })) };
     return undefined;
   };
 
@@ -109,7 +109,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
     case 'ordering': input = <OrderingInput response={r} order={draft.order} disabled={locked} onChange={order => setDraft(d => ({ ...d, order }))} />; break;
     case 'plot_point': {
       const f = figures.get(r.figureId);
-      if (f?.type === 'coordinate_plane') input = <PlotControls point={draft.point} snap={r.snap ?? f.x.step ?? 1} bounds={{ x: [f.x.min, f.x.max], y: [f.y.min, f.y.max] }} disabled={locked} onChange={point => setDraft(d => ({ ...d, point }))} />;
+      if (f?.type === 'coordinate_plane') input = <PlotControls point={draft.point} snap={plotSnap(r, f)} bounds={{ x: [f.x.min, f.x.max], y: [f.y.min, f.y.max] }} disabled={locked} onChange={point => setDraft(d => ({ ...d, point }))} />;
       break;
     }
     case 'tap_region': {
