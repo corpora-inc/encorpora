@@ -3,8 +3,9 @@
 The model writes the activity; the app checks it, draws it, and grades it. A live LLM (gpt-4o
 through the Free2Z gateway) writes complete activities: the question text, figures, the answer
 key, hints and a worked explanation. The app validates every field and renders the activity.
-It grades the answer on the device and records the result. Nothing here is wired into
-`Controller.tsx` yet; see [Wiring plan](#wiring-plan).
+It grades the answer on the device and records the result. The controller uses it when a
+learner is signed in to Free2Z and AI is ready; see [Wiring](#wiring). The wiring is tested
+with TEST fixtures only and has not been verified against the live service.
 
 | File | Role |
 |---|---|
@@ -113,29 +114,66 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
 - **No hover tooltips on charts, on purpose.** Reading values off the graph is usually the
   task itself.
 
-## Wiring plan
+## Wiring
 
-These steps are for a later PR; this one changes no live flow.
+When the learner is signed in and AI is ready, this module drives learning. Local practice is
+the fallback, and signed-out practice is unchanged.
 
-1. **Call.** `buildActivityPrompt(buildLearnerSummary({gradeHint, ledger, activityAttempts}))`
-   returns the system and user messages. Send them through `Free2zTutor.reply` with a larger
-   `max_output_tokens` (`prompt.maxOutputTokens` = 2600). The provider journal currently pins
-   1800, so the journal shape needs a versioned bump. Do not use `max_output_tokens_strict`
-   yet.
-2. **Structured output, later.** When the gateway accepts it, pass
-   `response_format: prompt.responseFormat`, which is `json_schema` + strict and uses
-   `activityBatchStrictJsonSchema`. Keep the prompt grammar; it still steers the content.
-3. **Validate.** Call `validateActivityBatch(replyText, {skillIds: prompt.allowedSkillIds})`.
-   Log the rejected activities as model-quality telemetry and show only the accepted ones.
-4. **Prefetch queue.** Keep 1–2 validated activities ready. Request the next batch while the
-   learner works on the second-to-last activity, so there is never a spinner between
-   questions. Persist the queue together with the presentation session; the journal already
-   recovers completed answers.
-5. **Record.** When the learner submits, run `gradeActivity(spec, response)`. If the result is
-   `invalid`, ask again and record nothing. Otherwise append an `ActivityAttemptRecord`
-   (`specHash`, `skillIds`, `difficulty`, `responseType`, `correct`, `hintsUsed`,
-   `activeMs`, `misconceptionTag`) to the native evidence ledger. Store the spec JSON next to
-   it so disputes and rebuilds can re-grade exact content.
-6. **Mastery.** The current mastery engine scores only the verified `CanonicalTask` kinds. AI
-   activities should count as practice evidence feeding `buildLearnerSummary`, but they must
-   not certify whole-standard mastery. That policy decision is for the learning-engine owner.
+| File | Role |
+|---|---|
+| `application/aiQueue.ts` | Prefetch policy (no dependencies, in the startup bundle): `shouldPrefetch`, `mergeBatch` (deduplicates by activity id), `takeNext`, `pruneQueue` |
+| `application/aiActivities.ts` | Lazy runtime: `buildBatchRequest` (ledger → learner summary → prompt), `parseBatch`, `gradeSpecAttempt`, and the restore verifier `specRestorer` |
+| `ui/ActivityStage.tsx` | Lazy slot that renders `<ActivityView>` with no surrounding chrome. The studio card owns Continue, the dispute button and curiosity |
+
+1. **Call.** One paid call asks for a batch of 4 activities (`BATCH_SIZE`; the prompt allows
+   3–5). It goes through `Free2zTutor.reply` with the resume context
+   `{kind:'activities', profileId, allowedSkillIds}` and an output budget of `'2600'`. The usage
+   journal is version 2: each operation records its budget (`'1800'` or `'2600'`). Version 1
+   journals, which pin 1800, stay readable and recoverable, and are rewritten as version 2 on
+   their first write. The estimate and cap check still run before every send.
+   `max_output_tokens_strict` and `response_format` are not sent yet.
+2. **Validate.** A fresh reply and a same-key recovered reply both go through
+   `parseBatch(text, allowedSkillIds, operationId)`, which calls `validateActivityBatch`.
+   Rejected activities are logged as model-quality telemetry (`ai-batch` in diagnostics). A
+   reply cut off by the output budget (`finish_reason` of `length`) is still delivered for this
+   context only, and its complete activities are kept. If a reply yields no valid activity, it
+   counts as an AI failure: the backoff applies and local practice continues. A receipt-only
+   replay is never treated as content.
+3. **Queue.** Activity ids are `${operationId}:${index}`. Accepted activities are added to the
+   queue, the queue is saved in the presentation session (`aiQueue`; the activity on screen is
+   saved as `aiActivity`), and only then is the reply acknowledged. A restart between those steps
+   delivers the same batch again; `mergeBatch` drops the duplicates, so nothing is bought or
+   queued twice. If the acknowledgement fails, the reply stays saved and new paid calls stay
+   blocked until a later delivery acknowledges it.
+4. **Prefetch.** When at most `PREFETCH_AT` (1) activity remains, a single background request
+   fetches the next batch while the learner works. It is skipped during the fallback backoff or
+   a Retry-After window. A Continue with an empty queue waits for an in-flight prefetch. If
+   that fails too, it makes one foreground request, and if that fails, it serves local practice.
+5. **Record.** `gradeSpecAttempt` grades the answer locally. Unreadable input (`invalid`) asks
+   again and records nothing. Otherwise `recordSpecAttempt` appends `source:'ai-spec'` evidence
+   containing the spec hash, skillIds, difficulty, response type, the learner's structured
+   response, the misconception tag, hints used, active time, and the exact spec content. The
+   displayed spec is also stored as the activity record, so disputes can refer to it.
+6. **Mastery (decided).** Validated AI activities are real evidence for every skill they tag,
+   under the same rules as local tasks. An answer is independent when it is correct and no hint
+   was used. Three distinct independent successes since the last error make a skill provisional.
+   An independent success after the review date counts as the delayed review, and two delayed
+   reviews make it retained. This makes guided-only standards reachable. Optional timed fluency
+   still requires local recall items, which continue as a short interleave every fifth task
+   when a skill qualifies. Restore re-validates each stored spec against the curriculum graph,
+   checks its hash, and re-grades the stored response; stored correctness is never trusted.
+   Disputes quarantine the activity, as for local tasks.
+7. **Feedback loop.** `buildLearnerSummary` reads the evidence ledger (local and `ai-spec`
+   evidence). It reports the recent streak, the misconception tags, per-skill `missStreak` (for
+   #860) and suggested difficulty. It includes no names, ids or timestamps finer than a day.
+
+### Known limits (v1)
+
+- **Expression equivalence is numeric.** `expression` answers are checked by evaluating both
+  expressions at seeded sample points within the domain. Algebraic identities that differ only
+  outside the sampled domain, or at removable singularities, can be graded as equivalent. Form
+  rules (`expanded` and `simplified`) are structural checks on monomials, not a CAS. Only
+  single-letter variables and the fixed function set are supported.
+- **Money is US currency only.** Other currencies need new figure kinds.
+- **Evidence size.** Each `ai-spec` attempt stores the full spec (usually 1–3 kB, at most 24k
+  characters), well within the native 512 kB record limit.
