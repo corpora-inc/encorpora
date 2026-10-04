@@ -1348,6 +1348,114 @@ def test_oversized_context_is_not_confirmed_against_a_truncated_view(gate, monke
     assert not any(ar.CONFIRM_MARKER in p for p in prompts)
 
 
+# ------------------------------------------- deleted / renamed / unreadable files
+
+
+@pytest.fixture()
+def del_repo(tmp_path, monkeypatch):
+    """base has gone.txt + old.txt; the branch deletes one and renames the other."""
+    def git(*args):
+        subprocess.run(["git", "-C", str(tmp_path), *args], check=True,
+                       capture_output=True)
+
+    def rev(ref):
+        return subprocess.run(["git", "-C", str(tmp_path), "rev-parse", ref],
+                              check=True, capture_output=True, text=True).stdout.strip()
+
+    git("init", "-q", "-b", "main")
+    git("config", "user.email", "t@example.com")
+    git("config", "user.name", "t")
+    (tmp_path / "gone.txt").write_text("DELETED_FILE_SENTINEL\n" * 5)
+    (tmp_path / "old.txt").write_text("renamed content line\n" * 20)
+    git("add", "-A")
+    git("commit", "-qm", "base")
+    root = rev("HEAD")
+    git("checkout", "-q", "-b", "feature")
+    git("rm", "-q", "gone.txt")
+    git("mv", "old.txt", "new.txt")
+    git("commit", "-qam", "delete + rename")
+    monkeypatch.chdir(tmp_path)
+    return ar.DiffRange(root, rev("HEAD"), root)
+
+
+def _finding(path):
+    return {"severity": "high", "file": path, "line": "1", "title": "t",
+            "detail": "d", "lens": "correctness"}
+
+
+def _run_confirm(monkeypatch, rng, path, verdict=False):
+    prompts = []
+
+    def fake(provider, key, model, system, user, schema=None):
+        prompts.append(user)
+        return json.dumps({"confirmed": verdict, "reason": "r"})
+
+    monkeypatch.setattr(ar, "call_model", fake)
+    f = _finding(path)
+    ar.confirm_findings("openai", "k", "m", [f], rng, ar.changed_files(rng.spec), 1,
+                        ar.deleted_files(rng.spec))
+    return f, prompts
+
+
+def test_deleted_files_excludes_renames(del_repo):
+    assert ar.deleted_files(del_repo.spec) == {"gone.txt"}
+
+
+def test_finding_on_deleted_file_is_confirmed_against_base(del_repo, monkeypatch):
+    f, prompts = _run_confirm(monkeypatch, del_repo, "gone.txt", verdict=False)
+    assert len(prompts) == 1
+    assert "DELETED_FILE_SENTINEL" in prompts[0]  # the BASE contents
+    assert "DELETES `gone.txt`" in prompts[0]
+    assert "-DELETED_FILE_SENTINEL" in prompts[0]  # the deletion diff
+    assert f["confirmation"] == ar.CONFIRM_CLEARED
+    assert ar.is_blocking(f) is False
+
+
+def test_deleted_file_finding_is_not_auto_passed(del_repo, monkeypatch):
+    """Upheld by the model: it must keep blocking. Deletion is not a waiver."""
+    f, _ = _run_confirm(monkeypatch, del_repo, "gone.txt", verdict=True)
+    assert f["confirmation"] == ar.CONFIRM_UPHELD
+    assert ar.is_blocking(f) is True
+
+
+def test_diff_prefixed_deleted_path_resolves(del_repo, monkeypatch):
+    f, prompts = _run_confirm(monkeypatch, del_repo, "a/gone.txt")
+    assert len(prompts) == 1 and f["confirmation"] == ar.CONFIRM_CLEARED
+
+
+def test_renamed_old_path_is_still_skipped_and_blocking(del_repo, monkeypatch):
+    """The old name lives on at the new one; it is not a deletion."""
+    f, prompts = _run_confirm(monkeypatch, del_repo, "old.txt")
+    assert prompts == []
+    assert f["confirmation"] == ar.CONFIRM_SKIPPED
+    assert ar.is_blocking(f) is True
+
+
+def test_renamed_new_path_is_confirmed_at_head(del_repo, monkeypatch):
+    f, prompts = _run_confirm(monkeypatch, del_repo, "new.txt")
+    assert len(prompts) == 1
+    assert "DELETES" not in prompts[0]
+    assert "AT THE HEAD OF THIS BRANCH" in prompts[0]
+    assert f["confirmation"] == ar.CONFIRM_CLEARED
+
+
+@pytest.mark.parametrize("path", ["no/such/file.txt", "", "?"])
+def test_unreadable_file_is_still_skipped_and_blocking(del_repo, monkeypatch, path):
+    f, prompts = _run_confirm(monkeypatch, del_repo, path)
+    assert prompts == []
+    assert f["confirmation"] == ar.CONFIRM_SKIPPED
+    assert ar.is_blocking(f) is True
+
+
+def test_deleted_path_missing_from_deleted_set_is_skipped(del_repo, monkeypatch):
+    """Readable at base but not positively a deletion: never confirmed."""
+    monkeypatch.setattr(ar, "call_model", lambda *a, **k: pytest.fail("called"))
+    f = _finding("gone.txt")
+    ar.confirm_findings("openai", "k", "m", [f], del_repo,
+                        ar.changed_files(del_repo.spec), 1, frozenset())
+    assert f["confirmation"] == ar.CONFIRM_SKIPPED
+
+
 # -------------------------------------------------------------- no waivers
 
 
