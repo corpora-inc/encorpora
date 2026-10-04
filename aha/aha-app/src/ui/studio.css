@@ -1778,10 +1778,10 @@ body {
   flex: none;
   display: grid;
   gap: 8px;
-  padding: 4px 16px max(14px, env(safe-area-inset-bottom));
+  padding: 4px 16px max(20px, calc(env(safe-area-inset-bottom) + 18px));
 }
 .focus-stage.is-spec {
-  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  padding-bottom: max(20px, calc(env(safe-area-inset-bottom) + 18px));
 }
 .focus-stage.is-spec .ax-dock {
   padding-left: 16px;
@@ -1946,6 +1946,7 @@ body {
   outline: none;
 }
 .feedback-line.correct > .celebrate {
+  position: relative;
   display: inline-grid;
   place-items: center;
   width: 30px;
@@ -1972,8 +1973,7 @@ body {
   .feedback-line.correct > .celebrate::after {
     content: "";
     position: absolute;
-    width: 30px;
-    height: 30px;
+    inset: 0;
     border-radius: 50%;
     border: 2px solid var(--teal);
     animation: aha-ring 0.8s ease-out 0.1s both;
@@ -2081,7 +2081,7 @@ body {
   position: relative;
   display: grid;
   gap: 14px;
-  padding: 22px 20px max(22px, env(safe-area-inset-bottom));
+  padding: 22px 20px max(22px, calc(env(safe-area-inset-bottom) + 12px));
 }
 .sheet-close {
   position: absolute;
@@ -2356,6 +2356,6 @@ body {
 @media (min-width: 700px) {
   .focus-dock,
   .focus-stage.is-spec {
-    padding-bottom: max(28px, env(safe-area-inset-bottom));
+    padding-bottom: max(32px, calc(env(safe-area-inset-bottom) + 18px));
   }
 }

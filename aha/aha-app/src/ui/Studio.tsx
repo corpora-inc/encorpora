@@ -131,7 +131,10 @@ export function Studio(props: StudioProps) {
     if (taskId && view === "focus") promptRef.current?.focus({ preventScroll: true });
   }, [taskId, view]);
   useEffect(() => {
-    if (props.feedback) feedbackRegion.current?.focus({ preventScroll: true });
+    if (!props.feedback) return;
+    // The answer's feedback takes the learner's attention; an open nudge folds away (the icon reopens it).
+    if (props.feedback.kind !== "info") setPanel(null);
+    feedbackRegion.current?.focus({ preventScroll: true });
   }, [props.feedback?.kind, props.feedback?.title, props.feedback?.message]);
   // A new nudge, explanation or worked example opens the help panel once; dismissing it keeps it closed.
   useEffect(() => {
