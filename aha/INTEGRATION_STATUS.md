@@ -1,10 +1,11 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6` on 2026-10-04. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Unified public source `534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release |
+| Native SDK and TypeScript facade | Unified public source `e95becd6517bada55ca933e4072ebf13bbbb3bff` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Sign-in spend-cap hint | `signIn()` suggests `spendCap: 500 2Z`, `spendPeriod: total` | Pre-selection only, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. The grant is still verified before paid admission |
 | Current grant | Supported `client.grant()` through native IPC; account/client/scope/enforcement/total-period cap/freshness verification before paid admission | Implemented and fixture-tested; AHA live acceptance pending |
 | App provider | Durable request identity, exact money, same-key recovery, completed-answer acknowledgement, conservative pending settlement | Tested with explicit fake transport and real SDK over synthetic native IPC |
 | Discovery and verification keys | Public discovery and advertised JWKS both returned HTTP 200 | Reachable; not proof of AHA mobile sign-in |
@@ -31,6 +32,22 @@ Only currently advertised model IDs are selected. AI context contains bounded
 candidate skills, recent answer evidence, and optional short fluency practice;
 local code independently validates and grades the mathematical task. No model
 response or fixture can award whole-standard mastery.
+
+## Sign-in spend-cap hint
+
+Sign-in passes `SIGN_IN_OPTIONS` (`src/provider/free2z.ts`): a suggested cap of
+`TEST_SPEND_CAP_2Z` = 500 whole 2Z with period `total`. That is exactly the
+policy `verifyTestGrant` admits (enforced, `total`, 1–500 2Z), so a parent who
+accepts the pre-selection gets a grant the app can use. The hint grants nothing.
+Per the spec (deployed IdP behavior not yet observed), Free2Z only lowers its amount to the registration's default cap and the user's
+existing grant, ignores it when either of those is capped with a different
+period, and the parent may edit or remove it on the consent screen. A sign-in
+without a consent screen ignores it. Paid admission still reads the policy back
+from `grant()` and refuses anything other than an enforced total cap ≤ 500 2Z.
+This pin also decodes the grant's optional `enforcement_reason`; a reason that
+contradicts `enforced` makes `grant()` fail closed (`invalid_response`).
+
+Strict output (`max_output_tokens_strict`) is not adopted: it waits on the gateway image that accepts the field (the deployed gateway rejects unknown fields with 400).
 
 ## Recovery and parent controls
 

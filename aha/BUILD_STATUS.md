@@ -21,7 +21,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 - iOS startup uses ASCII native executable identifiers (fixed in #831); the visible brand remains ¡AHA!. Native simulator learning, restart, quarantine and backup acceptance passed with proper simulator Keychain entitlements. Signed TestFlight processing and existing-group availability are verified; physical-device acceptance remains required.
 - GitHub issue creation works; Project API returns missing `read:project` scope. Issues exist but board movement is not verified. Do not claim Doing/Done transitions.
 - Existing primary checkout has unrelated untracked Dynawalla files. Preserve them; all AHA changes use isolated worktrees.
-- SDK source preview is usable; live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
+- SDK source preview `e95becd6` is usable; sign-in suggests the 500 2Z total cap that grant verification requires. Live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
 - Paid acceptance requires an explicitly authorized account and shared spending limit, a fresh service-enforced grant, and verified service readiness. Keep account-specific testing instructions in the private runbook.
 - Existing internal audiences remain unchanged. The owner additionally authorized one AHA external TestFlight tester and accepted the external-review route. Group membership and build assignment are verified; Apple beta review is pending (#848). No company roles or public links were added. The Play owner list remains verified saved and selected. Identities remain private. See [RELEASE.md](RELEASE.md).
 

@@ -22,7 +22,8 @@ function fixture(){
   const session=()=>({signedIn:ai.signedIn,subject:ai.signedIn?'test-subject':null,grantedScopes:['ai:invoke','balance:read'],persistence:'persistent',generation:'1'});
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:true,clientId:'test-client',paidTestingReady:false,externalCheckoutEnabled:false,reason:'Explicit TEST SDK fixture'};
-    if(command==='plugin:f2z|session'||command==='plugin:f2z|sign_in')return session();
+    if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);ai.signedIn=true;return session();}
+    if(command==='plugin:f2z|session')return session();
     if(command==='plugin:f2z|sign_out'){if(ai.failSignOut)throw {code:'storage_error'};ai.signedIn=false;return {revoked:true,generation:'2'};}
     if(command==='plugin:f2z|balance')return {available_milli_2z:'100000',held_milli_2z:'0',balance_milli_2z:'100000',debt_milli_2z:'0',as_of:new Date().toISOString()};
     if(command==='plugin:f2z|grant'){ai.grants++;return {sub:'test-subject',client_id:'test-client',account_epoch:'0',grant_generation:'1',scopes:['ai:invoke'],spend_cap_2z:'100',cap_period:'total',enforced:ai.enforced,as_of:new Date().toISOString()};}
@@ -31,6 +32,8 @@ function fixture(){
       if(ai.models502)throw {code:'unavailable'};
       return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096'}]};
     }
+    // The deployed gateway rejects unknown fields; strict output must not be sent until its image accepts it.
+    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&'max_output_tokens_strict' in args.request)throw new Error('TEST gateway rejects max_output_tokens_strict');
     if(command==='plugin:f2z|estimate'){
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
       return {model:'fixture-model',input_tokens:'500',max_output_tokens:'1800',hold_2z:'1',cap_remaining_milli_2z:'99000'};
@@ -249,8 +252,14 @@ try {
   await settings();await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByRole('alert').waitFor();
   assert.equal(await page.getByRole('button',{name:'Sign out',exact:true}).count(),1,'failed native deletion retains connected account UI');
+  // Reconnecting suggests the beta's 500 2Z total cap through the real SDK and guest API.
+  await page.evaluate(()=>{window.__ahaAI.failSignOut=false;});
+  await page.getByRole('button',{name:'Sign out',exact:true}).click();
+  await page.getByRole('button',{name:'Connect Free2Z',exact:false}).click();
+  await page.getByRole('button',{name:'Sign out',exact:true}).waitFor();
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),[{spendCap:'500',spendPeriod:'total'}],'sign-in carries only the spend-cap hint, as decimal strings');
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, original-key lesson and post-fallback curiosity recovery, and crash-safe completed-answer delivery. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, original-key lesson and post-fallback curiosity recovery, crash-safe completed-answer delivery, and the sign-in spend-cap hint. No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
