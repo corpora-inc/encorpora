@@ -1549,6 +1549,49 @@ h1 {
   width: 100%;
 }
 
+/* Edge-to-edge status bar (#855). The studio's top padding keeps the first paint clear of the
+   system bar, but it scrolls away with the page; this fixed backdrop stays behind the bar so
+   scrolled content never renders under the clock. env() is 0 where there is no inset. */
+.aha-studio::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background: var(--paper);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* 44×44 CSS px hit areas on phones (#856); padding grows the target, not the visual. */
+.wordmark {
+  padding: 6px 0;
+}
+.wordmark-dot {
+  top: 15px;
+}
+.profile-button {
+  min-height: 44px;
+  min-width: 44px;
+}
+.support-row .dispute-button {
+  min-height: 44px;
+}
+.text-button,
+.danger-link {
+  min-height: 44px;
+}
+
+/* Figures size to their content (#856): a 1×5 array is one row of dots, not a tall empty panel.
+   The small minimum keeps a steady rhythm; short content is centred within it. */
+.math-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  min-height: 72px;
+}
+
 .report-problem label {
   display: block;
   font-size: 0.78rem;

@@ -135,7 +135,7 @@ export function Visual({ spec }: { spec: StudioVisual }) {
     const x = (n: number) =>
       35 + ((n - spec.min) / (spec.max - spec.min)) * 450;
     content = (
-      <svg viewBox="0 0 520 140" aria-hidden="true">
+      <svg viewBox="0 45 520 65" aria-hidden="true">
         <path
           d="M25 65 H495 M485 59 L495 65 L485 71"
           fill="none"

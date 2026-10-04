@@ -8,7 +8,8 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 const ownRoot=fileURLToPath(new URL('..',import.meta.url));
 const root=path.resolve(process.env.AHA_UI_APP_ROOT||ownRoot);
-const {expectedAnswer}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
+const {expectedAnswer,answerCanBeNegative}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
+const {getSkill}=await import(pathToFileURL(path.join(root,'src/learning/curriculum.ts')).href);
 const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','1435','--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(){
@@ -144,6 +145,47 @@ try{
   assert.equal(await page.getByRole('dialog').count(),0);
   await page.setViewportSize({width:320,height:740});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'compact layout has no horizontal overflow');
+  // Phone layout at the S26's CSS viewport (#856): every visible control keeps a 44×44 hit area,
+  // and the sign key appears only where the task's answer domain can be negative.
+  const phone=await browser.newContext({viewport:{width:384,height:832},deviceScaleFactor:2.8125,isMobile:true,hasTouch:true});await phone.addInitScript(fixture);
+  const mobile=await phone.newPage();mobile.on('pageerror',e=>errors.push(e.message));
+  const smallTargets=()=>mobile.evaluate(()=>[...document.querySelectorAll('button, a[href], input:not([type=radio]), select, textarea, [role=button], label:has(> input[type=radio])')]
+    .filter(el=>{const r=el.getBoundingClientRect();return el.checkVisibility()&&r.width>1&&r.height>1&&r.bottom+scrollY>0;})
+    .filter(el=>{const r=el.getBoundingClientRect();return r.width<44||r.height<44;})
+    .map(el=>`${(el.getAttribute('aria-label')||el.textContent||el.tagName).trim().slice(0,40)} ${Math.round(el.getBoundingClientRect().width)}×${Math.round(el.getBoundingClientRect().height)}`));
+  await mobile.goto('http://127.0.0.1:1435');await mobile.getByRole('button',{name:'Let’s begin',exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone welcome tap targets are at least 44×44');
+  await mobile.getByRole('button',{name:'Let’s begin',exact:true}).click();await mobile.getByLabel('Your answer',{exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone activity tap targets are at least 44×44');
+  const phoneActive=name=>mobile.evaluate(name=>{const db=window.__ahaFixture.read();const id=name?db.profiles.find(p=>p.name===name)?.id:Object.keys(db.sessions)[0];return db.sessions[id]?.data?.activity;},name);
+  const signKeyMatches=async name=>{const t=await phoneActive(name);const signed=answerCanBeNegative(t.task,getSkill(t.skillId));
+    assert.equal(await mobile.getByRole('button',{name:'Change positive or negative sign',exact:true}).count(),signed?1:0,`sign key follows the answer domain (${t.skillId})`);return signed;};
+  const phoneTask=await phoneActive();
+  assert.equal(await signKeyMatches(),false,'a fresh grade-3 start never offers a sign key');
+  await mobile.getByRole('button',{name:'A little hint',exact:true}).click();await mobile.locator('.hint-box').waitFor();
+  await mobile.getByLabel('Your answer',{exact:true}).fill(expectedAnswer(phoneTask.task));await mobile.getByRole('button',{name:'Check my answer',exact:true}).click();
+  await mobile.getByRole('button',{name:'Next discovery',exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone hint and feedback tap targets are at least 44×44');
+  await mobile.getByRole('button',{name:'Open learner and grown-up settings',exact:true}).click();await mobile.getByRole('dialog').waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone settings tap targets are at least 44×44');
+  await mobile.getByLabel('Type grown-up to continue',{exact:true}).fill('grown-up');await mobile.getByRole('button',{name:'Open grown-up settings',exact:true}).click();
+  await mobile.getByRole('button',{name:'Export backup',exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone grown-up settings tap targets are at least 44×44');
+  assert.equal(await mobile.evaluate(()=>[...document.styleSheets].flatMap(s=>[...s.cssRules]).some(r=>r.selectorText==='.aha-studio::before'&&r.style.position==='fixed'&&r.style.top==='0px'&&/env\(safe-area-inset-top\)/.test(r.style.height))),true,'status-bar backdrop is fixed and sized by the top safe-area inset');
+  // A grade-8 learner reaches tasks whose answers can be negative; the key must appear there.
+  await mobile.getByLabel('Starting point (we’ll adjust from here)',{exact:true}).selectOption('8');
+  await mobile.getByLabel('Nickname for a new learner',{exact:true}).fill('Eight');await mobile.getByLabel('Nickname for a new learner',{exact:true}).press('Enter');
+  await mobile.getByRole('dialog').waitFor({state:'detached',timeout:2000}).catch(()=>{});
+  if(await mobile.getByRole('dialog').count())await mobile.getByRole('button',{name:'Back to learning',exact:true}).click();
+  const start=mobile.getByRole('button',{name:'Let’s begin',exact:true});if(await start.count())await start.click();
+  let sawSigned=false;
+  for(let i=0;i<10&&!sawSigned;i++){
+    await mobile.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+    sawSigned=await signKeyMatches('Eight');
+    if(!sawSigned){const before=(await phoneActive('Eight')).id;await mobile.getByRole('button',{name:'Try something harder',exact:true}).click();await mobile.waitForFunction(id=>{const db=window.__ahaFixture.read(),a=db.sessions[db.profiles.find(p=>p.name==='Eight').id]?.data?.activity;return a&&a.id!==id;},before);}
+  }
+  assert.equal(sawSigned,true,'a grade-8 learner sees the sign key on a task that can be negative');
+  await phone.close();
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
   const learner=await fresh.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
@@ -168,7 +210,7 @@ try{
   assert.notEqual((await saved()).activity.skillId,missed.skillId,'a third miss switches away from the skill');
   await fresh.close();
   assert.deepEqual(errors,[],'browser errors');
-  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, problem report, compact layout. Explicit test IPC fixture; not native acceptance.');
+  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, problem report, compact layout, phone 44px targets, domain-gated sign key and status-bar backdrop. Explicit test IPC fixture; not native acceptance.');
 }finally{
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

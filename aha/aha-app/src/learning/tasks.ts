@@ -115,6 +115,18 @@ export function taskVisual(t:CanonicalTask):VisualSpec|undefined {
  if(t.kind==='measure'&&t.shape==='cuboid') return {kind:'cuboid',width:n(t.width),height:n(t.height),depth:n(t.depth)};
  return undefined;
 }
+/** Kinds whose canonical answer can be negative once negative inputs are allowed. The rest are
+ * nonnegative by construction (counts, lengths, probabilities, digits) or are graded as symbols. */
+const signedKinds:ReadonlySet<CanonicalTask['kind']>=new Set(['arithmetic','round','sequence','linear','power','statistics','percent','slope','evaluate']);
+/** Whether a task's answer DOMAIN admits negatives, so the UI offers a sign key. It depends on the kind
+ * and skill only, never on this task's answer, so the key never hints at the answer's sign.
+ * taskFitsSkill keeps K–5 values and answers nonnegative; linear/slope/evaluate start at grade 6+.
+ * K–5 skills use no array-valued kinds (statistics/evaluate), whose entries that check does not inspect. */
+export function answerCanBeNegative(t:CanonicalTask,s?:Skill):boolean {
+ if(!signedKinds.has(t.kind)) return false;
+ if(s?.grade===6&&s.domain==='NS'&&t.kind==='arithmetic') return false; // taskFitsSkill keeps 6.NS operands nonnegative
+ return !s||s.grade!=='K'&&s.grade>=6;
+}
 /** Topic constraints stop a model laundering an unrelated easy task into advanced evidence. */
 export function taskFitsSkill(t:CanonicalTask,s:Skill):boolean {
  if(!s.taskKinds.includes(t.kind)) return false;

@@ -288,7 +288,7 @@ export function Studio(props: StudioProps) {
                               />
                               <span aria-hidden="true">↵</span>
                             </div>
-                            {(a.answerKind === "comparison" || a.answerKind === "number") && (
+                            {(a.answerKind === "comparison" || a.signed) && (
                               <div className="answer-symbols" role="group" aria-label="Answer symbols">
                                 {(a.answerKind === "comparison" ? ["<", "=", ">"] : ["−"]).map(symbol => (
                                   <button key={symbol} type="button" disabled={props.busy || readyNext}

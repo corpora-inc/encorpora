@@ -18,6 +18,7 @@ import {
   validateActivity,
   buildTutorContext,
   ActiveTimer,
+  answerCanBeNegative,
   quarantineActivity,
   type Activity,
   type LearnerState,
@@ -840,6 +841,7 @@ export default function Controller() {
                     : typeof skill?.grade === "number" && skill.grade >= 6
                       ? "text"
                       : "number",
+              signed: answerCanBeNegative(activity.task, skill),
               choices: activity.choices?.map((x) => ({ id: x, label: x })),
               visual: visual(activity.visual),
             }
