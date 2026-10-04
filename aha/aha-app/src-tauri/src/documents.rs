@@ -12,6 +12,25 @@ use std::{
 use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_fs::{FsExt, OpenOptions};
 
+/// Upper bound for a WebView-built problem report (matches the WebView's limit).
+pub const MAX_REPORT: usize = 64 * 1024;
+
+struct ExportKind {
+    filter: &'static str,
+    extension: &'static str,
+    stem: &'static str,
+}
+const BACKUP: ExportKind = ExportKind {
+    filter: "AHA learning backup",
+    extension: "json",
+    stem: "aha-learning-backup",
+};
+const REPORT: ExportKind = ExportKind {
+    filter: "AHA problem report",
+    extension: "txt",
+    stem: "aha-problem-report",
+};
+
 static DOCUMENT_OPEN: AtomicBool = AtomicBool::new(false);
 struct DocumentGuard;
 impl DocumentGuard {
@@ -70,19 +89,39 @@ pub async fn share_backup(
             let mut conn = database.lock().map_err(|_| "Local database unavailable")?;
             storage::export(&mut conn, &account_id)?
         };
-        export_document(&app, &text)
+        export_document(&app, &text, &BACKUP)
     })
     .await
     .map_err(|e| e.to_string())?
 }
 
+/// Share a plain-text problem report the WebView built. Only text crosses the
+/// bridge; the destination is always chosen by the person in a system dialog.
+#[tauri::command]
+pub async fn share_report(app: tauri::AppHandle, report: String) -> Result<bool, String> {
+    check_report(&report)?;
+    tauri::async_runtime::spawn_blocking(move || {
+        let _guard = DocumentGuard::acquire()?;
+        export_document(&app, &report, &REPORT)
+    })
+    .await
+    .map_err(|e| e.to_string())?
+}
+
+fn check_report(report: &str) -> Result<(), String> {
+    if report.len() > MAX_REPORT {
+        return Err("The report is too large to share.".into());
+    }
+    Ok(())
+}
+
 #[cfg(not(target_os = "ios"))]
-fn export_document(app: &tauri::AppHandle, text: &str) -> Result<bool, String> {
+fn export_document(app: &tauri::AppHandle, text: &str, kind: &ExportKind) -> Result<bool, String> {
     let Some(path) = app
         .dialog()
         .file()
-        .add_filter("AHA learning backup", &["json"])
-        .set_file_name("aha-learning-backup.json")
+        .add_filter(kind.filter, &[kind.extension])
+        .set_file_name(format!("{}.{}", kind.stem, kind.extension))
         .blocking_save_file()
     else {
         return Ok(false);
@@ -106,7 +145,7 @@ fn export_document(app: &tauri::AppHandle, text: &str) -> Result<bool, String> {
 }
 
 #[cfg(target_os = "ios")]
-fn export_document(app: &tauri::AppHandle, text: &str) -> Result<bool, String> {
+fn export_document(app: &tauri::AppHandle, text: &str, kind: &ExportKind) -> Result<bool, String> {
     use tauri::Manager;
     use tauri_plugin_ios_share::IOSShareExt;
     let folder = app
@@ -119,7 +158,8 @@ fn export_document(app: &tauri::AppHandle, text: &str) -> Result<bool, String> {
         .duration_since(std::time::UNIX_EPOCH)
         .map_err(|e| e.to_string())?
         .as_nanos();
-    let path = folder.join(format!("aha-learning-backup-{stamp}.json"));
+    // Reports share this folder so the launch-time cleanup removes them too.
+    let path = folder.join(format!("{}-{stamp}.{}", kind.stem, kind.extension));
     std::fs::write(&path, text).map_err(|e| e.to_string())?;
     // The sheet reads lazily, so retain this temporary file until next launch.
     // true means the sheet was presented, not that a user completed export.
@@ -138,5 +178,12 @@ mod tests {
         assert!(DocumentGuard::acquire().is_err());
         drop(guard);
         assert!(DocumentGuard::acquire().is_ok());
+    }
+    #[test]
+    fn reports_are_bounded_text_files() {
+        assert!(check_report(&"x".repeat(MAX_REPORT)).is_ok());
+        assert!(check_report(&"x".repeat(MAX_REPORT + 1)).is_err());
+        assert_eq!(REPORT.extension, "txt");
+        assert_ne!(REPORT.stem, BACKUP.stem);
     }
 }

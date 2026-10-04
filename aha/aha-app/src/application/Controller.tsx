@@ -36,6 +36,7 @@ import { previewRepository } from "./preview";
 import { restoreLearning } from "./recovery";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline } from "./connection";
+import { logError } from "../diagnostics/log";
 
 interface Readiness {
   free2zConfigured: boolean;
@@ -263,6 +264,7 @@ export default function Controller() {
     await loadProfile(list[0]);
   }
   function fail(e: unknown) {
+    logError("action", e);
     retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
     setError(learningError(e));
   }
@@ -451,7 +453,7 @@ export default function Controller() {
                 balance: format2z(b.available_milli_2z),
               }));
           })
-          .catch(() => {});
+          .catch((e) => logError("balance", e));
       }
     };
     document.addEventListener("visibilitychange", visibility);

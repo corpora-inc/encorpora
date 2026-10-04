@@ -33,6 +33,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 - Controller restoration rebuilds progress from validated attempt records and excludes disputed items. Native checkpoints and presentation sessions do not duplicate the growing evidence ledger. Failed presentation saves cannot switch the grading task behind the displayed question.
 - Usage records persist before sending. Pending settlement blocks fresh paid calls; explicit recovery reuses the original request identity and rechecks the spending authorization.
 - Supported current-grant verification is implemented. Live Free2Z inference, native authentication, and receipt acceptance remain external/device prerequisites. Registration alone does not establish service readiness. See [INTEGRATION_STATUS.md](INTEGRATION_STATUS.md).
+- Grown-up settings offer Report a problem (#852): a scrubbed 200-entry diagnostics log (WebView storage, never learning data) plus version/build, platform and yes/no connection state, shared as .txt through the native share/save path or copied. Browser-fixture verified; on-device share remains unverified.
 - Operational identities, login instructions and signing details belong in the private infrastructure repository, never this public status file.
 
 ## Handoff rule

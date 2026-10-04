@@ -1548,3 +1548,33 @@ h1 {
 .settings-buttons > div {
   width: 100%;
 }
+
+.report-problem label {
+  display: block;
+  font-size: 0.78rem;
+  margin: 14px 0 6px;
+}
+.report-problem textarea {
+  font: inherit;
+  font-size: 0.82rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid #ccd3c2;
+  border-radius: 7px;
+  resize: vertical;
+}
+.report-problem .report-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--muted);
+  white-space: pre;
+  overflow: auto;
+}
+.report-problem .report-error {
+  color: #a5523d;
+  margin-top: 10px;
+}
