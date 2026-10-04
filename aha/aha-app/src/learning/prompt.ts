@@ -26,8 +26,9 @@ export function buildTutorContext(state:LearnerState,now=new Date().toISOString(
  const fluencyOpportunity=fluency&&candidates.some(c=>c.skill.id===fluency.id&&c.reason!=='due-review'&&c.reason!=='support')
   ? {skillId:fluency.id,mode:'fluency' as const}:undefined;
  const ids=new Set(candidates.map(c=>c.skill.id));
- const recent=state.attempts.filter(a=>!a.excluded).slice(-8).map(a=>({skillId:a.skillId,correct:a.correct,hintsUsed:a.hintsUsed,
-  activeMs:a.interrupted?null:a.activeMs,mode:a.mode,at:a.at,task:a.task,answer:a.answer}));
+ // correct is first-try correctness: a right answer after the forgiving retry is assisted (#872).
+ const recent=state.attempts.filter(a=>!a.excluded).slice(-8).map(a=>({skillId:a.skillId,correct:a.correct&&a.firstAnswer===undefined,...(a.correct&&a.firstAnswer!==undefined?{retryCorrect:true}:{}),hintsUsed:a.hintsUsed,
+  activeMs:a.interrupted?null:a.activeMs,mode:a.mode,at:a.at,...(a.source==='ai-spec'?{skillIds:a.spec.skillIds,difficulty:a.spec.difficulty,responseType:a.spec.responseType}:{task:a.task}),answer:a.answer}));
  const neighborhood=candidates.map(c=>({id:c.skill.id,title:c.skill.title,grade:c.skill.grade,reason:c.reason,...(c.approach?{approach:c.approach}:{}),
   prerequisites:c.skill.prerequisites,prerequisiteBasis:c.skill.prerequisiteBasis,
   allowedTaskKinds:c.skill.taskKinds,fluencyTargetMs:c.skill.fluencyTargetMs,

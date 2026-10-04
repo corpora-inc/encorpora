@@ -46,7 +46,15 @@ export async function verifyTestGrant(
 }
 export type ResumeContext =
   | {kind: 'activity'; profileId: string; candidateSkillIds: string[]}
+  /** A batch of AI-authored Activity Specs; the reply is validated against the standards window it was shown. */
+  | {kind: 'activities'; profileId: string; allowedSkillIds: string[]}
   | {kind: 'curiosity'; profileId: string; activityId: string; question: string};
+/**
+ * Output-token budgets a journaled request may carry. 1800 is the original single-activity and
+ * curiosity budget (journal v1 pinned it). 2600 is the Activity Spec batch prompt's budget (v2).
+ */
+export const OUTPUT_BUDGETS = ['1800', '2600'] as const;
+export type OutputBudget = typeof OUTPUT_BUDGETS[number];
 export interface TutorReply { text: string; operationId: string; context?: ResumeContext }
 interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string }
 interface Operation {
@@ -55,10 +63,18 @@ interface Operation {
   context?: ResumeContext; answerComplete?: true; consumed?: true;
   callId?: string; text: string; charge?: { state: 'pending' | 'released' | 'charged'; charged2z?: string; receiptId?: string };
 }
-interface Ledger { version: 1; operations: Operation[] }
+/**
+ * v1 (original): every request pins maxOutputTokens '1800'; contexts are activity/curiosity only.
+ * v2: maxOutputTokens is one of OUTPUT_BUDGETS and the 'activities' batch context is allowed.
+ * A v1 journal stays readable and recoverable; its first write stores it as v2. Unknown versions fail closed.
+ */
+interface Ledger { version: 1 | 2; operations: Operation[] }
+export const JOURNAL_VERSION = 2;
 const SLOT = 'aha-billing-v1';
 const MAX_TEXT = 24_000;
 const MAX_JOURNAL_BYTES = 480_000;
+/** System + user prompt characters per request (the batch prompt is ~12k). */
+const MAX_CONTEXT_CHARS = 20_000;
 export class TutorServiceError extends Error {
   constructor(public readonly code: string, message: string, public readonly retryAfterSeconds?: number) { super(message); this.name = 'TutorServiceError'; }
 }
@@ -76,8 +92,12 @@ const opaque = (value: unknown): value is string => typeof value === 'string' &&
 const natural = (value: unknown): value is string => typeof value === 'string' && /^(0|[1-9]\d{0,38})$/.test(value);
 const object = (value: unknown): value is Record<string, any> => !!value && typeof value === 'object' && !Array.isArray(value);
 const keys = (value: Record<string, any>, allowed: string[]) => Object.keys(value).every(k => allowed.includes(k));
-function validResumeContext(value: unknown): value is ResumeContext {
+function validResumeContext(value: unknown, version: Ledger['version'] = 2): value is ResumeContext {
   if (!object(value) || !opaque(value.profileId) || value.profileId.length > 100) return false;
+  if (value.kind === 'activities') return version >= 2 && keys(value, ['kind','profileId','allowedSkillIds']) &&
+    Array.isArray(value.allowedSkillIds) && value.allowedSkillIds.length > 0 && value.allowedSkillIds.length <= 80 &&
+    value.allowedSkillIds.every((id: unknown) => opaque(id) && id.length <= 40) &&
+    new Set(value.allowedSkillIds).size === value.allowedSkillIds.length;
   if (value.kind === 'activity') return keys(value, ['kind','profileId','candidateSkillIds']) &&
     Array.isArray(value.candidateSkillIds) && value.candidateSkillIds.length > 0 && value.candidateSkillIds.length <= 12 &&
     value.candidateSkillIds.every((id: unknown) => opaque(id) && id.length <= 100) &&
@@ -90,8 +110,9 @@ function invalidJournal(): never {
   throw new TutorServiceError('journal_invalid', 'The usage journal is incomplete; paid requests are paused for recovery.');
 }
 function readLedger(input: unknown): Ledger {
-  if (input == null) return { version: 1, operations: [] };
-  if (!object(input) || input.version !== 1 || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
+  if (input == null) return { version: JOURNAL_VERSION, operations: [] };
+  if (!object(input) || (input.version !== 1 && input.version !== 2) || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
+  const version: Ledger['version'] = input.version;
   try { if (new TextEncoder().encode(JSON.stringify(input)).length > MAX_JOURNAL_BYTES) invalidJournal(); }
   catch { invalidJournal(); }
   const ids = new Set<string>(), operationKeys = new Set<string>();
@@ -104,13 +125,14 @@ function readLedger(input: unknown): Ledger {
       Date.parse(op.createdAt) > Date.now() ||
       !['opening','streaming','interrupted','settling','finalized'].includes(op.state) ||
       (op.callId !== undefined && !opaque(op.callId)) || typeof op.text !== 'string' || op.text.length > MAX_TEXT) invalidJournal();
-    if (op.context !== undefined && !validResumeContext(op.context)) invalidJournal();
+    if (op.context !== undefined && !validResumeContext(op.context, version)) invalidJournal();
     if (op.answerComplete !== undefined && (op.answerComplete !== true || !['settling','finalized'].includes(op.state))) invalidJournal();
     if (op.consumed !== undefined && (op.consumed !== true || op.answerComplete !== true || !op.context)) invalidJournal();
     ids.add(op.id); operationKeys.add(op.key);
     const request = op.request;
     if (!object(request) || !keys(request, ['model','messages','maxOutputTokens']) || !opaque(request.model) ||
-      request.maxOutputTokens !== '1800' || !Array.isArray(request.messages)) invalidJournal();
+      (version === 1 ? request.maxOutputTokens !== '1800' : !(OUTPUT_BUDGETS as readonly unknown[]).includes(request.maxOutputTokens)) ||
+      !Array.isArray(request.messages)) invalidJournal();
     const archived = op.state === 'finalized' && request.messages.length === 0 && op.text === '';
     if (archived && op.answerComplete && op.context && !op.consumed) invalidJournal();
     if (!archived) {
@@ -123,7 +145,7 @@ function readLedger(input: unknown): Ledger {
         if (!object(part) || !keys(part, ['type','text']) || part.type !== 'text' || typeof part.text !== 'string') invalidJournal();
         length += part.text.length;
       }
-      if (length > 16_000) invalidJournal();
+      if (length > MAX_CONTEXT_CHARS) invalidJournal();
     }
     const charge = op.charge;
     if (charge !== undefined) {
@@ -153,6 +175,7 @@ export class Free2zTutor {
   constructor(readonly client: SdkClient, private readonly journal: Journal, private readonly subject: string) {}
   private async ledger(): Promise<Ledger> { return readLedger(await this.journal.getJournal(SLOT)); }
   private async persist(ledger: Ledger): Promise<void> {
+    ledger.version = JOURNAL_VERSION;
     if (new TextEncoder().encode(JSON.stringify(ledger)).length > MAX_JOURNAL_BYTES)
       throw new TutorServiceError('journal_capacity', 'The usage journal needs archival before more AI requests.');
     readLedger(ledger);
@@ -236,8 +259,9 @@ export class Free2zTutor {
       return { pending: ledger.operations.filter(o => o.state !== 'finalized').length, spent2z: ledger.operations.reduce((n, o) => n + BigInt(o.charge?.charged2z ?? '0'), 0n) };
     } finally { this.busy = false; }
   }
-  async reply(model: string, system: string, context: string, authorization: TestAuthorization, resumeContext?: ResumeContext): Promise<TutorReply> {
+  async reply(model: string, system: string, context: string, authorization: TestAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800'): Promise<TutorReply> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
+    if (!OUTPUT_BUDGETS.includes(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
     if (resumeContext !== undefined && !validResumeContext(resumeContext))
       throw new TutorServiceError('resume_context_invalid', 'The learning context cannot be safely restored. No paid request was sent.');
     const savedContext = resumeContext === undefined ? undefined : structuredClone(resumeContext);
@@ -245,7 +269,7 @@ export class Free2zTutor {
     try {
       const session = await this.current();
       this.verifyAuthorization(session, authorization);
-      if (system.length + context.length > 16_000) throw new TutorServiceError('context_limit', 'The learning context is too large.');
+      if (system.length + context.length > MAX_CONTEXT_CHARS) throw new TutorServiceError('context_limit', 'The learning context is too large.');
       const ledger = await this.ledger();
       if (ledger.operations.some(o => o.subject !== this.subject)) throw new TutorServiceError('account_mismatch', 'Usage records belong to another account.');
       if (ledger.operations.some(op => this.deliverable(op))) throw new TutorServiceError('answer_pending', 'A completed AI reply is waiting to be restored. No new paid request was sent.');
@@ -256,7 +280,7 @@ export class Free2zTutor {
       if (remaining <= 0n) throw new TutorServiceError('budget_exhausted', 'The authorized test budget has been used.');
       const catalog = await this.client.models();
       if (!catalog.models.some(m => m.id === model)) throw new TutorServiceError('model_unavailable', 'Choose a currently available Free2Z model.');
-      const request: ChatRequest = { model, messages: [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}], max_output_tokens: 1800n };
+      const request: ChatRequest = { model, messages: [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}], max_output_tokens: BigInt(maxOutputTokens) };
       const estimate = await this.client.estimate(request);
       // A hold is NOT a spending cap. Require the service-enforced grant remainder
       // itself to fit the entire remaining authorization, even if the call overruns its hold.
@@ -265,7 +289,7 @@ export class Free2zTutor {
         throw new TutorServiceError('grant_cap_required', `Set the Free2Z grant's total cap to at most ${remaining} 2Z before this test. An estimate alone cannot enforce the budget.`);
       const after = await this.current();
       if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
-      const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages:request.messages,maxOutputTokens:'1800'},state:'opening',text:'',...(savedContext ? {context:savedContext} : {}) };
+      const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages:request.messages,maxOutputTokens},state:'opening',text:'',...(savedContext ? {context:savedContext} : {}) };
       ledger.operations.push(op);
       if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
         throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
@@ -340,11 +364,14 @@ export class Free2zTutor {
           const charge = event.type === 'replay' ? event.record.charge : event.charge;
           op.charge = savedCharge(charge); op.state = charge.state === 'pending' ? 'settling' : 'finalized';
           if (event.type === 'replay') op.callId = event.record.call_id;
-          if (event.type === 'done' && ['stop','end_turn'].includes(event.finish_reason)) op.answerComplete = true;
+          // A batch cut off by its output budget still carries whole activities; the batch parser keeps them.
+          const deliverable = event.type === 'done' && (['stop','end_turn'].includes(event.finish_reason) ||
+            (op.context?.kind === 'activities' && ['length','max_tokens','max_output_tokens'].includes(event.finish_reason)));
+          if (deliverable) op.answerComplete = true;
           await this.persist(ledger);
           if (event.type === 'error') throw new TutorServiceError(event.code,'The AI request ended with an error. Its charge remains recorded.');
           if (event.type === 'replay') throw new TutorServiceError('receipt_only','The receipt was recovered. The service does not replay the original answer; no new paid request was sent.');
-          if (event.finish_reason !== 'stop' && event.finish_reason !== 'end_turn') throw new TutorServiceError('incomplete_output','The generated activity did not finish normally.');
+          if (!deliverable) throw new TutorServiceError('incomplete_output','The generated activity did not finish normally.');
           completed = true;
         }
         // Persist output incrementally; force-kill never turns an uncertain charge into zero.

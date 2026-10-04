@@ -294,3 +294,54 @@ test('the vendored SDK sends the spend-cap hint to the native plugin as decimal 
  assert.equal(signedIn.subject,'adult');
  assert.deepEqual(sent,[{spendCap:'500',spendPeriod:'total'}]);
 });
+
+// ---- Journal v2: Activity Spec batches (2600-token budget) beside readable, recoverable v1 records ----
+const batchContext = {kind:'activities' as const,profileId:'learner',allowedSkillIds:['3.NF.A.1','2.MD.C.8']};
+test('a batch request journals and sends the 2600-token budget as journal v2, after the estimate/cap check',async()=>{
+ const f=fixture();let estimated:bigint|undefined;const estimate=f.client.estimate;f.client.estimate=async(r)=>{estimated=r.max_output_tokens;return estimate(r);};
+ const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+ assert.equal(reply.context?.kind,'activities');
+ assert.equal(f.calls[0].request.max_output_tokens,2600n);
+ assert.equal(estimated,2600n,'the hold estimate and cap check use the same budget before send');
+ assert.equal('max_output_tokens_strict' in f.calls[0].request,false,'strict output is not sent yet');
+ assert.equal(f.getValue().version,2);
+ assert.equal(f.getValue().operations[0].request.maxOutputTokens,'2600');
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'9999' as any),{code:'output_budget_invalid'});
+ assert.equal(f.calls.length,1);
+});
+test('a version 1 journal stays readable and recoverable with its original 1800 budget, then is stored as v2',async()=>{
+ const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,{kind:'activity',profileId:'learner',candidateSkillIds:['skill']}),{code:'interrupted'});
+ const v1=f.getValue();v1.version=1;assert.equal(v1.operations[0].request.maxOutputTokens,'1800');
+ const pending=await f.tutor.inspectPending();assert.equal(pending.length,1);assert.equal(pending[0].canRecover,true);
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code:'settlement_pending'},'an unsettled v1 receipt still blocks new paid calls');
+ await assert.rejects(f.tutor.recover(pending[0].operationId,f.authorization),{code:'interrupted'});
+ assert.equal(f.calls[1].request.max_output_tokens,1800n,'same-key recovery replays the exact original budget');
+ assert.deepEqual(f.calls[1].options,f.calls[0].options);
+ assert.equal(f.getValue().version,2,'the first write upgrades the container, not the record');
+});
+test('v1 journals cannot carry v2-only budgets or batch contexts, and unknown versions fail closed',async()=>{
+ const mutations=[(l:any)=>{l.version=1;l.operations[0].request.maxOutputTokens='2600';},(l:any)=>{l.version=1;},(l:any)=>{l.version=3;},(l:any)=>{l.version='2';},(l:any)=>{l.operations[0].context.allowedSkillIds=[];},(l:any)=>{l.operations[0].context.extra=true;}];
+ for(const mutate of mutations){
+  const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+  mutate(f.getValue());
+  await assert.rejects(f.tutor.pendingReplies(),{code:'journal_invalid'});
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'journal_invalid'});
+  assert.equal(f.calls.length,1);
+ }
+});
+test('a batch cut off by its output budget is still deliverable; other replies are not',async()=>{
+ const charged={state:'charged' as const,charged2z:3n,receiptId:'r'};
+ const f=fixture([{type:'done',finish_reason:'length',settlement:'settled',charge:charged}]);
+ const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+ assert.equal(reply.text,'{"activity":true}');
+ assert.equal((await f.tutor.pendingReplies()).length,1,'saved until the queue is durably stored');
+ const g=fixture([{type:'done',finish_reason:'length',settlement:'settled',charge:charged}]);
+ await assert.rejects(g.tutor.reply('verified-model','p','c',g.authorization,{kind:'curiosity',profileId:'learner',activityId:'a',question:'why?'}),{code:'incomplete_output'});
+ assert.equal((await g.tutor.pendingReplies()).length,0);
+});
+test('a receipt-only replay of a batch is never treated as activity content',async()=>{
+ const f=fixture([{type:'replay',record:{call_id:'call',status:'settled',charge:{state:'charged',charged2z:3n,receiptId:'r'}}} as ChatEvent]);
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code:'receipt_only'});
+ assert.equal((await f.tutor.pendingReplies()).length,0,'no deliverable text from a receipt');
+ assert.equal(f.getValue().operations[0].charge.charged2z,'3');
+});

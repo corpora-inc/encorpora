@@ -68,3 +68,19 @@ describe('learner summary', () => {
     assert.match(specHash(f), /^[0-9a-f]{16}$/);
   });
 });
+
+describe('forgiving retry (#872) in the learner summary', () => {
+  it('reports first-try correctness: a correct answer after the nudge is assisted, not a clean correct', () => {
+    let state = createLearner('learner', 2);
+    const activity = generatePractice('2.OA.B.2', 7);
+    const right = expectedAnswer(activity.task);
+    const wrong = String(Number(right) + 1);
+    state = recordAttempt(state, activity, { id: 'r1', answer: right, firstAnswer: wrong, at: '2026-10-01T10:00:00Z', hintsUsed: 1, activeMs: 3000 });
+    const s = buildLearnerSummary({ gradeHint: 2, ledger: state, now: '2026-10-01T12:00:00Z' });
+    assert.equal(s.recent.accuracy, 0, 'first-try accuracy');
+    assert.equal(s.recent.streak, -1);
+    assert.equal(s.recent.independentRate, 0);
+    assert.deepEqual(s.recentActivities[0], { skills: ['2.OA.B.2'], difficulty: null, type: 'task:arithmetic', correct: false, hints: 1, retryCorrect: true });
+    assert.equal(s.frontier.find(f => f.id === '2.OA.B.2')!.missStreak, 1);
+  });
+});

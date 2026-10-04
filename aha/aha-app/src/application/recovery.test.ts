@@ -35,7 +35,7 @@ test('derived grading flags are recomputed from the observed answer', () => {
   const f = fixture(); const attempts = f.attempts.map(a => ({ ...a, data: { ...a.data, answer: '999', expected: '999', correct: true, independent: true, variant: 'fabricated' } }));
   const restored = restoreLearning(profile, null, null, attempts, []);
   assert.equal(restored.learner.attempts.every(a => !a.correct && !a.independent), true);
-  assert.equal(restored.learner.progress['5.NF.A.1'].independentSuccesses, 0); assert.notEqual(restored.learner.attempts[0].expected, '999');
+  assert.equal(restored.learner.progress['5.NF.A.1'].independentSuccesses, 0); assert.notEqual((restored.learner.attempts[0] as { expected?: string }).expected, '999');
 });
 test('invalid snapshot shapes and unknown versions fail closed instead of resetting', () => {
   const f = fixture();

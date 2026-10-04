@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useId, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useId, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -23,7 +23,9 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import { ActivityView } from "../activity/render";
+// Lazy: the Activity Spec renderer (and zod, through its validator helpers) loads only when an AI
+// activity is shown, so local-practice startup does not pay for it.
+const ActivityView = lazy(() => import("../activity/render").then(m => ({ default: m.ActivityView })));
 import { ReportProblem } from "./ReportProblem";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
@@ -119,7 +121,7 @@ export function Studio(props: StudioProps) {
   const titleId = useId();
   const a = props.spec ? undefined : props.activity;
   const spec = props.spec;
-  const taskId = spec?.spec.id ?? a?.id;
+  const taskId = spec ? (spec.id ?? spec.spec.id) : a?.id;
   const hasTask = !!taskId;
   useEffect(() => {
     setAnswer("");
@@ -268,8 +270,9 @@ export function Studio(props: StudioProps) {
   const focusStage = spec ? (
     <div className="focus-stage is-spec" aria-busy={props.busy}>
       <div className="stage-focus-target" ref={promptRef} tabIndex={-1} role="group" aria-label="Problem" />
+      <Suspense fallback={<p className="stage-loading">Getting your activity ready…</p>}>
       <ActivityView
-        key={spec.spec.id}
+        key={taskId}
         spec={spec.spec}
         compact
         result={spec.result}
@@ -279,6 +282,7 @@ export function Studio(props: StudioProps) {
         dockTop={<>{errorLine}{helpPanel}{tools}</>}
         next={nextButton}
       />
+      </Suspense>
       {stopButton}
     </div>
   ) : a ? (

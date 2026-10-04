@@ -7,6 +7,7 @@ Snapshot: 2026-09-28; SDK pin moved to `e95becd6` on 2026-10-04. Source integrat
 | Native SDK and TypeScript facade | Unified public source `e95becd6517bada55ca933e4072ebf13bbbb3bff` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 500 2Z`, `spendPeriod: total` | Pre-selection only, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. The grant is still verified before paid admission |
 | Current grant | Supported `client.grant()` through native IPC; account/client/scope/enforcement/total-period cap/freshness verification before paid admission | Implemented and fixture-tested; AHA live acceptance pending |
+| AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
 | App provider | Durable request identity, exact money, same-key recovery, completed-answer acknowledgement, conservative pending settlement | Tested with explicit fake transport and real SDK over synthetic native IPC |
 | Discovery and verification keys | Public discovery and advertised JWKS both returned HTTP 200 | Reachable; not proof of AHA mobile sign-in |
 | AI gateway | Public HTTPS `/v1/models` returned HTTP 502 during the check | Upstream paid activation and receipt acceptance remain pending |
@@ -113,6 +114,23 @@ native command opens `https://free2z.cash/account/apps` in the system browser fo
 parent-managed consent and its Billing link. No learner content can supply that
 URL. Purchase/checkout SDK commands remain outside the app's capabilities.
 
+## AI activity batches
+
+Each paid call asks gpt-4o for a batch of four Activity Specs. The output is prompt-only JSON
+with client validation, because the gateway has no `response_format` yet, and
+`max_output_tokens_strict` is not sent. Estimated cost per call:
+
+- Input: about 3.0–3.5k tokens. The system prompt is about 1.9k tokens and the learner summary
+  plus standards window about 1.0–1.5k. The provider bounds the prompt at 20k characters.
+- Output: about 0.9–2k tokens, capped at 2600. The four-fixture batch is about 0.9k tokens.
+- Price: the whole-2Z minimum applies, so about 3 2Z per call, or roughly 0.75 2Z per
+  activity. A reply that fails to parse is still charged.
+
+The 500 2Z test allowance therefore covers about 150 calls, or about 600 activities. The next
+batch is prefetched only when one activity remains, and only one request is in flight at a time.
+The fallback backoff and Retry-After gate prefetches as well. Restarts and recovered replies
+reuse queued activities and never buy them again.
+
 ## Remaining live acceptance
 
 1. Obtain the platform's paid-readiness and first-receipt checkpoint through the
@@ -120,10 +138,13 @@ URL. Purchase/checkout SDK commands remain outside the app's capabilities.
    AHA paid call. No AHA paid call or purchase has been made.
 2. Verify native browser redirects, sign-in persistence, authoritative balance,
    fresh enforced grant and advertised models on each mobile platform.
-3. Exercise a generated lesson, correct/incorrect answers, hint assistance,
+3. Exercise live AI activity batches: measure parse/acceptance rate, real token use and 2Z per
+   call, rendering of model-authored figures on phone and tablet, prefetch latency, and restart
+   mid-queue. Confirm `finish_reason` values for cut-off batches match `length`.
+4. Exercise a generated lesson, correct/incorrect answers, hint assistance,
    curiosity, receipt reconciliation, cancellation and restart within the
    remaining authorized allowance. Keep call/account evidence private.
-4. Confirm both updated store builds are installed by existing authorized
+5. Confirm both updated store builds are installed by existing authorized
    testers. Android audience selection is now verified; physical installation remains separate
    from source tests or signed uploads.
 
