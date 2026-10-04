@@ -31,6 +31,8 @@ export interface StudioActivity {
   skill: string;
   standard?: string;
   answerKind?: "number" | "fraction" | "text" | "choice" | "comparison";
+  /** The answer domain can be negative, so offer a sign key (never derived from this answer). */
+  signed?: boolean;
   choices?: { id: string; label: string }[];
   visual?: StudioVisual;
 }
