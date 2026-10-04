@@ -49,7 +49,12 @@ test('fluency injection never evicts a due review or immediate prerequisite supp
  const reviewPrompt=buildTutorContext(state,tomorrow,2);
  assert.deepEqual(reviewPrompt.candidates,reviews);
  assert.equal(JSON.parse(reviewPrompt.context).fluencyOpportunity,undefined);
- const struggling=practice(state,'4.NBT.B.5',200,'concept','-999');
+ // One miss is retried; support follows a confirmed difficulty and a brief success elsewhere.
+ let struggling=state;
+ for(let i=0;i<3;i++)struggling=practice(struggling,'4.NBT.B.5',200+i,'concept','-999');
+ const pause=selectCandidates(struggling,now,1)[0];
+ assert.equal(pause.reason,'confidence');
+ struggling=practice(struggling,pause.skill.id,210);
  const support=selectCandidates(struggling,now,1);
  assert.equal(support[0].reason,'support');
  const supportPrompt=buildTutorContext(struggling,now,1);

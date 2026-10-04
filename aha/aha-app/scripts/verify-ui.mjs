@@ -179,8 +179,34 @@ try{
     if(failSave){await learner.getByRole('button',{name:'Next discovery',exact:true}).click();await learner.getByRole('button',{name:'Check my answer',exact:true}).waitFor();}
   }
   await retryContext.close();
+  // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
+  const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
+  const struggler=await fresh.newPage();struggler.on('pageerror',e=>errors.push(e.message));struggler.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const saved=async()=>Object.values((await struggler.evaluate(()=>window.__ahaFixture.read())).sessions)[0]?.data;
+  const miss=async()=>{
+    const a=(await saved()).activity,e=expectedAnswer(a.task);
+    await struggler.getByLabel('Your answer',{exact:true}).fill(['<','>','='].includes(e)?(e==='<'?'>':'<'):(e==='0'?'1':'0'));
+    // With the forgiving retry, a recorded miss is a wrong first answer and a wrong retry.
+    await struggler.getByRole('button',{name:'Check my answer',exact:true}).click();
+    await struggler.locator('.feedback').filter({hasText:'Not quite yet'}).waitFor();
+    await struggler.getByRole('button',{name:'Check my answer',exact:true}).click();
+    await struggler.getByRole('button',{name:'Try a fresh one',exact:true}).waitFor();return a;
+  };
+  const freshTask=async()=>{await struggler.getByRole('button',{name:'Try a fresh one',exact:true}).click();await struggler.getByRole('button',{name:'Check my answer',exact:true}).waitFor();};
+  await struggler.goto('http://127.0.0.1:1435');await struggler.getByRole('button',{name:'Let’s begin',exact:true}).click();await struggler.getByLabel('Your answer',{exact:true}).waitFor();
+  const missed=await miss();await freshTask();
+  assert.equal((await miss()).skillId,missed.skillId,'one miss is retried, not stepped down');await freshTask();
+  const taught=await saved();
+  assert.equal(taught.activity.skillId,missed.skillId);assert.equal(taught.hintsUsed,1,'worked example saved as assistance before display');
+  const example=await struggler.locator('.hint-box').innerText();
+  assert.match(example,/worked out/);assert.ok(!example.includes(taught.activity.prompt),'worked example solves a different task');
+  await miss();await freshTask();
+  const ledger=Object.values((await struggler.evaluate(()=>window.__ahaFixture.read())).attempts).flat();
+  assert.equal(ledger.length,3,'one attempt per activity');assert.equal(ledger[2].data.hintsUsed,2,'worked example plus retry nudge');assert.equal(ledger[2].data.independent,false);
+  assert.notEqual((await saved()).activity.skillId,missed.skillId,'a third miss switches away from the skill');
+  await fresh.close();
   assert.deepEqual(errors,[],'browser errors');
-  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (restart, save failure, one ledger attempt), evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, problem report, compact layout. Explicit test IPC fixture; not native acceptance.');
+  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (restart, save failure, one ledger attempt), evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, problem report, compact layout. Explicit test IPC fixture; not native acceptance.');
 }finally{
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
