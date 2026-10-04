@@ -50,8 +50,13 @@ export interface ParsedBatch {
 export function parseBatch(text: string, allowedSkillIds: readonly string[], operationId: string): ParsedBatch {
   const allowed = new Set(allowedSkillIds.filter(id => GRAPH_SKILL_IDS.has(id)));
   const result = validateActivityBatch(text, { skillIds: allowed });
+  // Ids follow each activity's position in the model's batch, not its position among accepted
+  // ones, so a redelivered reply maps to the same ids even if validation rules change in between.
+  const rejected = new Set(result.rejected.map(r => r.index));
+  const positions: number[] = [];
+  for (let i = 0; positions.length < result.accepted.length; i++) if (!rejected.has(i)) positions.push(i);
   return {
-    items: result.accepted.map((spec, index) => ({ activityId: activityIdFor(operationId, index), operationId, spec })),
+    items: result.accepted.map((spec, n) => ({ activityId: activityIdFor(operationId, positions[n]!), operationId, spec })),
     rejected: result.rejected.map(r => ({ index: r.index, errors: r.errors.slice(0, 5) })),
     errors: result.errors.slice(0, 5),
   };

@@ -75,3 +75,77 @@ export function takeNext(queue: readonly QueuedActivity[], stretch = false): { n
 export function pruneQueue(queue: readonly QueuedActivity[], known: KnownActivities): QueuedActivity[] {
   return queue.filter(q => !known.attempted.has(q.activityId) && !known.disputed.has(q.activityId) && q.activityId !== known.current);
 }
+
+/**
+ * The single owner of the in-memory queue. A background batch delivery and the foreground
+ * (showing the next activity) interleave across awaits, so every change is a functional update
+ * of the *current* queue: nothing assigns a copy captured before an await.
+ */
+export class AiQueueBox {
+  private queue: QueuedActivity[];
+  /** In-flight durable saves per billing operation, so a duplicate delivery waits for the first. */
+  readonly deliveries = new Map<string, Promise<void>>();
+  constructor(items: readonly QueuedActivity[] = []) { this.queue = [...items]; }
+  get items(): readonly QueuedActivity[] { return this.queue; }
+  get length(): number { return this.queue.length; }
+  replace(items: readonly QueuedActivity[]): void { this.queue = [...items]; this.deliveries.clear(); }
+  /** Returns the ids actually added (duplicates, answered, disputed and current items are skipped). */
+  merge(items: readonly QueuedActivity[], known: KnownActivities): string[] {
+    const before = new Set(this.queue.map(q => q.activityId));
+    this.queue = mergeBatch(this.queue, items, known).queue;
+    return this.queue.filter(q => !before.has(q.activityId)).map(q => q.activityId);
+  }
+  remove(activityId: string): void { this.queue = this.queue.filter(q => q.activityId !== activityId); }
+  /** Undo one delivery's additions without disturbing anything that happened meanwhile. */
+  unmerge(activityIds: readonly string[]): void { const ids = new Set(activityIds); this.queue = this.queue.filter(q => !ids.has(q.activityId)); }
+  without(activityId: string): QueuedActivity[] { return this.queue.filter(q => q.activityId !== activityId); }
+}
+
+/**
+ * Show `item`: `write` persists the presentation, reading the remaining queue *when it runs*
+ * (`rest()`); only after it succeeds is the item removed from the live queue.
+ */
+export async function presentFromQueue(box: AiQueueBox, item: QueuedActivity,
+  write: (rest: () => QueuedActivity[], commit: () => void) => Promise<void>): Promise<void> {
+  // `commit` lets the writer dequeue inside its serialized write chain, before any later write builds.
+  let committed = false;
+  await write(() => box.without(item.activityId), () => { box.remove(item.activityId); committed = true; });
+  if (!committed) box.remove(item.activityId);
+}
+
+export interface BatchDelivery {
+  operationId: string;
+  /** Validated activities from the reply (fresh or recovered, parsed identically). */
+  items: readonly QueuedActivity[];
+  /** Evidence and disputes for the reply's learner. */
+  known: () => Promise<KnownActivities>;
+  /** Still the same account, provider and learner that the reply belongs to. */
+  isCurrent: () => boolean;
+  /** Durably save the presentation session (queue included). */
+  save: () => Promise<void>;
+  /** Mark the billing reply consumed. Called only after the queue is durable. */
+  acknowledge: () => Promise<void>;
+}
+/**
+ * Queue a batch durably, then acknowledge it. A stale delivery (learner or account changed during
+ * an await) touches nothing and leaves the reply saved for its own learner. A failed save removes
+ * only this delivery's additions. A duplicate delivery of the same operation waits for the first
+ * one's save, so the reply is never acknowledged before its activities are durable.
+ */
+export async function deliverBatch(box: AiQueueBox, d: BatchDelivery): Promise<'delivered' | 'stale'> {
+  const known = await d.known();
+  const inflight = box.deliveries.get(d.operationId);
+  if (inflight) await inflight;
+  if (!d.isCurrent()) return 'stale';
+  const added = box.merge(d.items, known);
+  if (added.length) {
+    const saving = d.save();
+    box.deliveries.set(d.operationId, saving);
+    try { await saving; }
+    catch (error) { box.unmerge(added); throw error; }
+    finally { if (box.deliveries.get(d.operationId) === saving) box.deliveries.delete(d.operationId); }
+  }
+  if (!d.isCurrent()) return 'stale';
+  await d.acknowledge();
+  return 'delivered';
+}

@@ -39,7 +39,7 @@ import {
 } from "../provider/free2z";
 import { previewRepository } from "./preview";
 import { needsSpecRestorer, restoreLearning } from "./recovery";
-import { mergeBatch, shouldPrefetch, takeNext, type QueuedActivity } from "./aiQueue";
+import { AiQueueBox, deliverBatch, presentFromQueue, shouldPrefetch, takeNext, type QueuedActivity } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline } from "./connection";
@@ -136,7 +136,8 @@ export default function Controller() {
   const [aiItem, setAiItem] = useState<QueuedActivity>();
   const [aiResult, setAiResult] = useState<GradeOutcome>();
   const currentAi = useRef<QueuedActivity | undefined>(undefined);
-  const aiQueue = useRef<QueuedActivity[]>([]);
+  /** Single owner of the queue: functional updates only, safe across a background delivery's awaits. */
+  const aiQueue = useRef(new AiQueueBox());
   /** An AI activity whose presentation save failed, with its exact activity record for an idempotent retry. */
   const pendingAi = useRef<{item: QueuedActivity; record: {id: string; sessionId: string; createdAt: string; data: Json}} | undefined>(undefined);
   const prefetching = useRef<Promise<void> | undefined>(undefined);
@@ -153,7 +154,7 @@ export default function Controller() {
   const accountEpoch = useRef(0);
   function clearAi() {
     currentAi.current = undefined;
-    aiQueue.current = [];
+    aiQueue.current.replace([]);
     pendingAi.current = undefined;
     setAiItem(undefined);
     setAiResult(undefined);
@@ -194,18 +195,18 @@ export default function Controller() {
    * Session writes are serialized, and each one snapshots the refs when it runs, so a background
    * batch delivery and a foreground answer can never land an older queue over a newer one.
    */
-  function writeSession(profileId: string, build: () => SavedLearning): Promise<void> {
+  function writeSession(profileId: string, build: () => SavedLearning, onSaved?: () => void): Promise<void> {
     const repo = repository.current;
     const run = sessionWrites.current.catch(() => undefined).then(() => repo.saveSession(profileId, {
       id: sessionId.current,
       updatedAt: new Date().toISOString(),
       data: json(build()),
-    }));
+    })).then(() => onSaved?.());
     sessionWrites.current = run;
     return run;
   }
-  function aiSessionFields(queue = aiQueue.current): Pick<SavedLearning, "aiQueue"> {
-    return queue.length ? {aiQueue: queue} : {};
+  function aiSessionFields(queue: readonly QueuedActivity[] = aiQueue.current.items): Pick<SavedLearning, "aiQueue"> {
+    return queue.length ? {aiQueue: [...queue]} : {};
   }
   async function saveSession() {
     const p = currentProfile.current;
@@ -263,21 +264,23 @@ export default function Controller() {
     pendingAi.current = {item, record};
     // The stored spec lets disputes and rebuilds refer to the exact content that was shown.
     await repository.current.saveActivity(p.id, record);
-    const rest = aiQueue.current.filter(q => q.activityId !== item.activityId);
-    await writeSession(p.id, () => ({
+    // The remaining queue is read when the write runs and the dequeue commits inside the write chain,
+    // so a batch delivered meanwhile is neither overwritten in memory nor dropped from storage.
+    await presentFromQueue(aiQueue.current, item, (rest, commit) => writeSession(p.id, () => ({
       activity: null,
       hintsUsed: 0,
       completed: count.current,
       sessionId: sessionId.current,
       aiActivity: item,
-      ...aiSessionFields(rest),
+      ...aiSessionFields(rest()),
+    }), () => {
+      commit();
+      currentAi.current = item;
+      currentActivity.current = undefined;
+      savedCuriosity.current = undefined;
+      hintsUsed.current = 0;
     }));
     pendingAi.current = undefined;
-    aiQueue.current = rest;
-    currentAi.current = item;
-    currentActivity.current = undefined;
-    savedCuriosity.current = undefined;
-    hintsUsed.current = 0;
     setActivity(undefined);
     setAiItem(item);
     setAiResult(undefined);
@@ -323,7 +326,7 @@ export default function Controller() {
     hintsUsed.current = restored.hintsUsed;
     setActivity(restored.activity);
     currentAi.current = restored.aiActivity;
-    aiQueue.current = restored.aiQueue;
+    aiQueue.current.replace(restored.aiQueue);
     setAiItem(restored.aiActivity);
     setAiResult(undefined);
     savedCuriosity.current = restored.curiosity;
@@ -397,28 +400,32 @@ export default function Controller() {
       throw new Error("The recovered answer belongs to another learner or an older app version. Its usage is saved; select the original learner before restoring it.");
     if (origin.kind === "activities") {
       // A fresh and a recovered batch take exactly this path: parse, validate, queue durably, then acknowledge.
-      const state = learning.current;
-      if (!state) throw new Error("Choose a learner first.");
+      const epoch = accountEpoch.current, tutor = provider.current, repo = repository.current;
+      const isCurrent = () => epoch === accountEpoch.current && tutor === provider.current && repo === repository.current &&
+        currentProfile.current?.id === origin.profileId && !!learning.current;
+      if (!tutor || !isCurrent()) throw new Error("Choose a learner first.");
       const runtime = await loadAiActivities();
       const parsed = runtime.parseBatch(reply.text, origin.allowedSkillIds, reply.operationId);
       if (parsed.rejected.length || parsed.errors.length)
         logEvent("warn", "ai-batch", `kept ${parsed.items.length}, rejected ${parsed.rejected.length}: ${[...parsed.errors, ...parsed.rejected.flatMap(r => r.errors.slice(0, 2))].slice(0, 6).join(" | ")}`);
-      const disputes = await repository.current.listDisputes(origin.profileId);
-      const merged = mergeBatch(aiQueue.current, parsed.items, {
-        attempted: new Set(state.attempts.map(a => a.activityId)),
-        disputed: new Set(disputes.map(d => d.activityId)),
-        current: displayedId(),
+      const outcome = await deliverBatch(aiQueue.current, {
+        operationId: reply.operationId,
+        items: parsed.items,
+        known: async () => {
+          const disputes = await repo.listDisputes(origin.profileId);
+          return {attempted: new Set(learning.current?.attempts.map(a => a.activityId) ?? []), disputed: new Set(disputes.map(d => d.activityId)), current: displayedId()};
+        },
+        isCurrent,
+        save: saveSession,
+        // The queue is durable now. A failed acknowledgement only keeps the reply saved: the next
+        // delivery deduplicates it, and the provider keeps new paid calls blocked until it succeeds.
+        acknowledge: async () => {
+          try { await tutor.acknowledgeReply(reply.operationId); }
+          catch (error) { logError("ai-batch acknowledgement", error); }
+        },
       });
-      if (merged.added) {
-        const previous = aiQueue.current;
-        aiQueue.current = merged.queue;
-        try { await saveSession(); }
-        catch (error) { aiQueue.current = previous; throw error; }
-      }
-      // The queue is durable now. A failed acknowledgement only keeps the reply saved: the next
-      // delivery deduplicates it, and the provider keeps new paid calls blocked until it succeeds.
-      try { await provider.current!.acknowledgeReply(reply.operationId); }
-      catch (error) { logError("ai-batch acknowledgement", error); }
+      // A learner or account switch mid-delivery leaves the reply saved for its own learner.
+      if (outcome === "stale") return;
       if (!parsed.items.length)
         throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       return;
@@ -642,14 +649,14 @@ export default function Controller() {
     // Optional timed recall stays a short local interleave: AI activities are conceptual evidence.
     const recall = aiPath && !stretch && count.current > 0 && count.current % 5 === 0 ? selectFluencySkill(state) : undefined;
     if (aiPath && !recall) {
-      let item = takeNext(aiQueue.current, stretch).next;
+      let item = takeNext(aiQueue.current.items, stretch).next;
       if (!item && prefetching.current) {
         await prefetching.current.catch(() => undefined);
         assertActionActive();
-        item = takeNext(aiQueue.current, stretch).next;
+        item = takeNext(aiQueue.current.items, stretch).next;
       }
       if (!item && aiAttemptDue() && await requestBatch("next activity", true))
-        item = takeNext(aiQueue.current, stretch).next;
+        item = takeNext(aiQueue.current.items, stretch).next;
       if (item) {
         await showSpec(item);
         maybePrefetch();
@@ -718,6 +725,7 @@ export default function Controller() {
       // A learner or account switch leaves the completed batch saved for its own learner.
       if (!stillCurrent()) return false;
       await deliverReply(reply);
+      if (!stillCurrent()) return false;
       aiBackoff.current.recordSuccess();
       setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance."});
       void getNativeClient().balance()
@@ -999,6 +1007,8 @@ export default function Controller() {
   }
   async function signOut() {
     await provider.current?.cancel();
+    // A cancelled prefetch may still be mid-delivery; let it settle before switching accounts.
+    await settlePrefetch();
     let revoked = false;
     let failure: unknown;
     const client = getNativeClient();
@@ -1193,6 +1203,7 @@ export default function Controller() {
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
         void action(async () => {
+          await settlePrefetch();
           await saveSession();
           const p = profiles.find((p) => p.id === id);
           if (p) await loadProfile(p);

@@ -30,7 +30,7 @@ test('a batch with fences, chatter, an invalid activity and an out-of-window ski
   const window = allIds([...good, broken]);
   const parsed = parseBatch(text, window, 'op-1');
   assert.deepEqual(parsed.items.map(i => i.spec.id), good.map(g => g.id));
-  assert.deepEqual(parsed.items.map(i => i.activityId), ['op-1:0', 'op-1:1', 'op-1:2'], 'stable ids: a recovered batch maps to the same activities');
+  assert.deepEqual(parsed.items.map(i => i.activityId), ['op-1:0', 'op-1:2', 'op-1:4'], 'stable ids from batch positions: a recovered batch maps to the same activities');
   assert.equal(parsed.rejected.length, 2);
   assert.ok(parsed.rejected.some(r => r.errors.some(e => e.includes('keyCheck'))));
   assert.ok(parsed.rejected.some(r => r.errors.some(e => e.includes('unknown skill'))));
@@ -176,4 +176,13 @@ test('restore resumes the shown AI activity and its paid queue, dropping answere
   assert.equal(restored.droppedAi, 2);
   assert.equal(restored.activity, undefined);
   assert.throws(() => restoreLearning({ id: 'learner', grade: 3 }, null, session, records, disputes), LearningRecoveryError);
+});
+
+test('activity ids follow the original batch position, so a stricter validator cannot shift them onto other activities', () => {
+  const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-3-pictograph')];
+  const text = JSON.stringify({ rationale: 'r', activities: specs });
+  const lenient = parseBatch(text, allIds(specs), 'op');
+  const strict = parseBatch(text, allIds(specs.slice(1)), 'op'); // the first activity is now rejected
+  assert.deepEqual(lenient.items.map(i => i.activityId), ['op:0', 'op:1', 'op:2']);
+  assert.deepEqual(strict.items.map(i => [i.activityId, i.spec.id]), [['op:1', specs[1]!.id], ['op:2', specs[2]!.id]]);
 });

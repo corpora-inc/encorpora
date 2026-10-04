@@ -121,9 +121,9 @@ the fallback, and signed-out practice is unchanged.
 
 | File | Role |
 |---|---|
-| `application/aiQueue.ts` | Prefetch policy (no dependencies, in the startup bundle): `shouldPrefetch`, `mergeBatch` (deduplicates by activity id), `takeNext`, `pruneQueue` |
+| `application/aiQueue.ts` | Prefetch policy and queue ownership (no dependencies, in the startup bundle): `shouldPrefetch`, `mergeBatch`, `takeNext`, `pruneQueue`, plus `AiQueueBox`, `presentFromQueue` and `deliverBatch`, which keep a background batch delivery and the foreground consistent across awaits |
 | `application/aiActivities.ts` | Lazy runtime: `buildBatchRequest` (ledger → learner summary → prompt), `parseBatch`, `gradeSpecAttempt`, and the restore verifier `specRestorer` |
-| `ui/ActivityStage.tsx` | Lazy slot that renders `<ActivityView>` with no surrounding chrome. The studio card owns Continue, the dispute button and curiosity |
+| `ui/Studio.tsx` (`spec` prop) | The focus stage renders the spec with a lazily loaded `<ActivityView compact>`. Hints and the worked explanation come from the spec through `onSupport` (each one counts as assistance before the answer). The dispute flag and curiosity work as for local tasks |
 
 1. **Call.** One paid call asks for a batch of 4 activities (`BATCH_SIZE`; the prompt allows
    3–5). It goes through `Free2zTutor.reply` with the resume context
@@ -144,7 +144,11 @@ the fallback, and signed-out practice is unchanged.
    saved as `aiActivity`), and only then is the reply acknowledged. A restart between those steps
    delivers the same batch again; `mergeBatch` drops the duplicates, so nothing is bought or
    queued twice. If the acknowledgement fails, the reply stays saved and new paid calls stay
-   blocked until a later delivery acknowledges it.
+   blocked until a later delivery acknowledges it. A delivery re-checks the account, provider and
+   learner after every await. If any of them changed, it touches nothing and leaves the reply
+   saved for its own learner. A failed queue save removes only that delivery's additions. A
+   duplicate delivery waits for the first one's save. Ids use each activity's position in the
+   model's batch, so a stricter validator cannot shift them.
 4. **Prefetch.** When at most `PREFETCH_AT` (1) activity remains, a single background request
    fetches the next batch while the learner works. It is skipped during the fallback backoff or
    a Retry-After window. A Continue with an empty queue waits for an in-flight prefetch. If

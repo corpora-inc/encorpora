@@ -49,3 +49,71 @@ test('pruning drops answered and disputed activities after a backup restore', ()
   const pruned = pruneQueue(queue, { attempted: new Set([queue[0]!.activityId]), disputed: new Set([queue[2]!.activityId]) });
   assert.deepEqual(pruned.map(q => q.activityId), [queue[1]!.activityId]);
 });
+
+// ---- Interleavings between a background batch delivery and the foreground (adversarial review) ----
+import { AiQueueBox, deliverBatch, presentFromQueue } from './aiQueue';
+function deferred<T = void>() { let resolve!: (v: T) => void, reject!: (e: unknown) => void; const promise = new Promise<T>((a, b) => { resolve = a; reject = b; }); return { promise, resolve, reject }; }
+const tick = () => new Promise(r => setTimeout(r, 0));
+
+test('HIGH: a batch delivered while the next activity is being saved is kept, not overwritten', async () => {
+  const box = new AiQueueBox([item('a', 0)]);
+  const write = deferred();
+  const saved: string[][] = [];
+  const showing = presentFromQueue(box, box.items[0]!, async rest => { saved.push(rest().map(q => q.activityId)); await write.promise; });
+  await tick();
+  box.merge([item('b', 1), item('b', 2)], none); // background delivery lands during the session write
+  write.resolve();
+  await showing;
+  assert.deepEqual(box.items.map(q => q.activityId), ['b:1', 'b:2'], 'the paid batch stays queued');
+  assert.deepEqual(saved, [[]]);
+});
+
+test('MED: a delivery that becomes stale during its awaits merges nothing and never acknowledges', async () => {
+  const box = new AiQueueBox([]);
+  const disputes = deferred<string[]>();
+  let current = true; let acked = 0; let saves = 0;
+  const delivering = deliverBatch(box, {
+    operationId: 'op', items: [item('op', 0)],
+    known: async () => ({ attempted: new Set<string>(), disputed: new Set(await disputes.promise) }),
+    isCurrent: () => current,
+    save: async () => { saves++; },
+    acknowledge: async () => { acked++; },
+  });
+  current = false; // learner switch or sign-out while the disputes are loading
+  disputes.resolve([]);
+  assert.equal(await delivering, 'stale');
+  assert.deepEqual(box.items, []);
+  assert.equal(saves, 0); assert.equal(acked, 0, 'the completed reply stays saved for its own learner');
+});
+
+test('LOW: a failed queue save removes only what this delivery added and never acknowledges first', async () => {
+  const box = new AiQueueBox([item('x', 0)]);
+  const save = deferred();
+  const order: string[] = [];
+  const deps = {
+    operationId: 'op', items: [item('op', 0), item('op', 1)],
+    known: async () => none, isCurrent: () => true,
+    save: async () => { order.push('save'); await save.promise; },
+    acknowledge: async () => { order.push('ack'); },
+  };
+  const first = deliverBatch(box, deps);
+  await tick();
+  const second = deliverBatch(box, deps); // the same reply seen again by a foreground Continue
+  box.remove('x:0'); // the learner moves on meanwhile
+  save.reject(new Error('disk full'));
+  await assert.rejects(first, /disk full/);
+  await assert.rejects(second, /disk full/, 'the duplicate waits for the first save instead of acknowledging early');
+  assert.deepEqual(box.items, [], 'rollback keeps the concurrent dequeue and removes only the undelivered batch');
+  assert.deepEqual(order, ['save']);
+});
+
+test('a successful delivery saves once, then acknowledges; a duplicate only acknowledges', async () => {
+  const box = new AiQueueBox([]);
+  const order: string[] = [];
+  const deps = { operationId: 'op', items: [item('op', 0)], known: async () => none, isCurrent: () => true,
+    save: async () => { order.push('save'); }, acknowledge: async () => { order.push('ack'); } };
+  assert.equal(await deliverBatch(box, deps), 'delivered');
+  assert.equal(await deliverBatch(box, deps), 'delivered');
+  assert.deepEqual(order, ['save', 'ack', 'ack']);
+  assert.equal(box.items.length, 1);
+});
