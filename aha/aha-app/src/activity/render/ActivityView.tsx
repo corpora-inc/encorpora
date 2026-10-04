@@ -23,6 +23,13 @@ export interface ActivityViewProps {
   /** Start revealed (gallery/tests). */
   initialHintsShown?: number;
   initialResponse?: LearnerResponse;
+  /** Focus-mode stage: prompt first, no title or level chrome, the answer and Check docked in the
+   * thumb zone. Hints and the explanation are shown by the host (the studio's help panel). */
+  compact?: boolean;
+  /** compact: host content docked above the answer (help panel, errors, tool icons). */
+  dockTop?: React.ReactNode;
+  /** compact: host action shown in the Check position once the answer is graded (e.g. Next). */
+  next?: React.ReactNode;
 }
 
 /** Deterministic display order so a re-render or restore never reshuffles under the learner. */
@@ -69,7 +76,7 @@ const initialDraft = (spec: ActivitySpec, initial?: LearnerResponse) => {
   };
 };
 
-export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme = 'light', initialHintsShown = 0, initialResponse }: ActivityViewProps) {
+export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme = 'light', initialHintsShown = 0, initialResponse, compact, dockTop, next }: ActivityViewProps) {
   const r = spec.response;
   const [draft, setDraft] = useState(() => initialDraft(spec, initialResponse));
   const [hintsShown, setHintsShown] = useState(Math.min(initialHintsShown, spec.hints?.length ?? 0));
@@ -120,6 +127,41 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
   }
 
   const hints = spec.hints ?? [];
+  if (compact) {
+    // Inputs that open the keyboard (or step a point) dock with Check; larger widgets stay with the prompt.
+    const docked = r.type === 'numeric' || r.type === 'expression' || r.type === 'fraction' || r.type === 'plot_point';
+    return (
+      <article className="aha-activity is-compact" data-theme={theme === 'auto' ? undefined : theme} data-theme-auto={theme === 'auto' ? '' : undefined} aria-labelledby={`${spec.id}-title`}>
+        <h2 id={`${spec.id}-title`} className="ax-visually-hidden">{spec.title ?? 'Activity'}</h2>
+        <form className="ax-stage" onSubmit={e => { e.preventDefault(); submit(); }}>
+          <div className="ax-stage-scroll" data-stage-content="">
+            <div className="ax-prompt">
+              {spec.prompt.map((block, i) => {
+                if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
+                if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
+                const figure = figures.get(block.figureId);
+                return figure ? <FigureView key={i} figure={figure} interaction={interactionFor(figure)} /> : null;
+              })}
+            </div>
+            {!docked && <div className="ax-response">{input}</div>}
+          </div>
+          <div className="ax-dock">
+            {dockTop}
+            {result && (
+              <div className={`ax-feedback-line ${result.invalid ? 'is-info' : result.correct ? 'is-correct' : 'is-retry'}`} role="status">
+                {result.correct ? <Check size={20} aria-hidden="true" /> : <Sparkles size={20} aria-hidden="true" />}
+                <strong>{result.invalid ?? (result.correct ? 'Yes, that’s it.' : 'Not quite yet.')}</strong>
+              </div>
+            )}
+            <div className="ax-dock-row">
+              {docked && <div className="ax-response" data-stage-content="">{input}</div>}
+              {graded ? next : <button type="submit" className="ax-primary" disabled={!response || locked}>Check</button>}
+            </div>
+          </div>
+        </form>
+      </article>
+    );
+  }
   return (
     <article className="aha-activity" data-theme={theme === 'auto' ? undefined : theme} data-theme-auto={theme === 'auto' ? '' : undefined} aria-labelledby={`${spec.id}-title`}>
       <header className="ax-head">
