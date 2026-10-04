@@ -22,7 +22,8 @@ function fixture(){
   const session=()=>({signedIn:ai.signedIn,subject:ai.signedIn?'test-subject':null,grantedScopes:['ai:invoke','balance:read'],persistence:'persistent',generation:'1'});
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:true,clientId:'test-client',paidTestingReady:false,externalCheckoutEnabled:false,reason:'Explicit TEST SDK fixture'};
-    if(command==='plugin:f2z|session'||command==='plugin:f2z|sign_in')return session();
+    if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);ai.signedIn=true;return session();}
+    if(command==='plugin:f2z|session')return session();
     if(command==='plugin:f2z|sign_out'){if(ai.failSignOut)throw {code:'storage_error'};ai.signedIn=false;return {revoked:true,generation:'2'};}
     if(command==='plugin:f2z|balance')return {available_milli_2z:'100000',held_milli_2z:'0',balance_milli_2z:'100000',debt_milli_2z:'0',as_of:new Date().toISOString()};
     if(command==='plugin:f2z|grant'){ai.grants++;return {sub:'test-subject',client_id:'test-client',account_epoch:'0',grant_generation:'1',scopes:['ai:invoke'],spend_cap_2z:'100',cap_period:'total',enforced:ai.enforced,as_of:new Date().toISOString()};}
@@ -31,6 +32,8 @@ function fixture(){
       if(ai.models502)throw {code:'unavailable'};
       return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096'}]};
     }
+    // The deployed gateway rejects unknown fields; strict output must not be sent until its image accepts it.
+    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&'max_output_tokens_strict' in args.request)throw new Error('TEST gateway rejects max_output_tokens_strict');
     if(command==='plugin:f2z|estimate'){
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
       return {model:'fixture-model',input_tokens:'500',max_output_tokens:'1800',hold_2z:'1',cap_remaining_milli_2z:'99000'};
@@ -91,14 +94,18 @@ try {
   const page=await context.newPage();
   const errors=[],consoleErrors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});
   const session=()=>page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
-  const localBanner=page.getByRole('status').filter({hasText:'Local practice · AI tutoring is unavailable right now'});
-  const answerCurrent=async()=>{const task=(await session()).activity.task;await page.getByLabel('Your answer',{exact:true}).fill(expectedAnswer(task));await page.getByRole('button',{name:'Check my answer',exact:true}).click();await page.getByRole('button',{name:'Next discovery',exact:true}).waitFor();};
-  const settings=async()=>{await page.getByRole('button',{name:'Open learner and grown-up settings'}).click();await page.getByLabel('Type grown-up to continue').fill('grown-up');await page.getByRole('button',{name:'Open grown-up settings',exact:true}).click();};
+  const localBanner=page.getByRole('button',{name:'Local practice · AI tutoring is unavailable right now',exact:true});
+  const answerCurrent=async()=>{const task=(await session()).activity.task;await enter(expectedAnswer(task));await page.getByRole('button',{name:'Check',exact:true}).click();await page.getByRole('button',{name:'Next',exact:true}).waitFor();};
+  const enter=async value=>{const name={'<':'Less than','>':'Greater than','=':'Equal to'}[value];if(name)await page.getByRole('button',{name,exact:true}).click();else await page.getByLabel('Your answer',{exact:true}).fill(value);};
+  // Settings open from the focus bar's status dot (closing returns to the problem) or from home. No gate (#870).
+  const settings=async()=>{if(await page.locator('.status-dot').count()){await page.locator('.status-dot').click();await page.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();}else await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
+  // A relaunch opens the studio home; one tap re-enters the loop.
+  const resume=async()=>{await page.getByRole('button',{name:'Continue',exact:true}).click();};
   await page.goto('http://127.0.0.1:1436');
   await page.getByRole('alert').filter({hasText:'enforced total spending limit'}).waitFor();
   await page.getByRole('button',{name:'Let’s begin',exact:true}).click();
   // Signed in but AI unavailable: local practice in the SAME account partition, labeled local, no alert.
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'unenforced grant never starts chat');
   assert.equal((await session()).activity.source,'local','fallback activity is recorded as local, never AI');
   assert.deepEqual(await page.evaluate(()=>window.__ahaAI.activityAccounts),['test-subject'],'fallback practice stays in the signed-in account partition');
@@ -112,8 +119,8 @@ try {
   // Backoff: the very next task stays local without re-checking the grant.
   const grantsAfterFailure=await page.evaluate(()=>window.__ahaAI.grants);
   await answerCurrent();
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.grants),grantsAfterFailure,'backoff does not hammer Free2Z on the next task');
   assert.equal((await session()).activity.source,'local');
   await answerCurrent();
@@ -123,8 +130,8 @@ try {
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
   // Current production condition: models endpoint 502 while signed in.
   await page.evaluate(()=>{window.__ahaAI.models502=true;});
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal((await session()).activity.source,'local','models 502 falls back to local practice');
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'models 502 never starts chat');
   await localBanner.waitFor();
@@ -135,7 +142,7 @@ try {
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
   await page.evaluate(()=>{window.__ahaAI.delayModels=true;});
   const beforeStop=(await session()).activity.id;
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
   await page.waitForFunction(()=>window.__ahaAI.releaseModels!==null);
   await page.getByRole('button',{name:'Stop AI request',exact:true}).click();
   await page.evaluate(()=>{window.__ahaAI.delayModels=false;window.__ahaAI.releaseModels();});
@@ -143,24 +150,24 @@ try {
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'Stop during preparation never starts a paid call');
   assert.equal((await session()).activity.id,beforeStop,'a learner Stop is not silently replaced by local practice');
   await page.evaluate(()=>{window.__ahaAI.failAck=true;});
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),1,'real SDK native transport consumed synthetic stream');
   assert.equal(await page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity.source),'ai');
   await page.getByRole('alert').filter({hasText:'TEST acknowledgement write failed'}).waitFor();
-  await page.getByRole('button',{name:'A little hint',exact:true}).click();await page.locator('.hint-box').waitFor();
-  await page.reload();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Hint',exact:true}).click();await page.locator('.help-panel').waitFor();
+  await page.reload();await resume();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.hintsUsed),1,'restoring an already displayed unacknowledged task keeps its assistance');
   await page.evaluate(()=>{window.__ahaAI.enforced=true;});
   const active=await page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity);
-  await page.getByLabel('Your answer',{exact:true}).fill(expectedAnswer(active.task));
-  await page.getByRole('button',{name:'Check my answer',exact:true}).click();await page.getByRole('button',{name:'Next discovery',exact:true}).waitFor();
+  await enter(expectedAnswer(active.task));
+  await page.getByRole('button',{name:'Check',exact:true}).click();await page.getByRole('button',{name:'Next',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat().at(-1).data.independent),false,'restored hinted answer never earns independent evidence');
   await page.evaluate(()=>{window.__ahaAI.failOpening=true;});
   const startsBeforeOutage=await page.evaluate(()=>window.__ahaAI.starts.length);
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),startsBeforeOutage+1);
   assert.equal((await session()).activity.source,'local','failed opening falls back to local practice');
   await localBanner.waitFor();
@@ -182,8 +189,8 @@ try {
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
   const grantsBeforePending=await page.evaluate(()=>window.__ahaAI.grants),consoleBeforePending=consoleErrors.length;
   await answerCurrent();
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.ok(await page.evaluate(()=>window.__ahaAI.grants)>grantsBeforePending,'AI was retried after the backoff reset');
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),starts.length,'pending receipt blocks a new paid call');
   assert.equal((await session()).activity.source,'local','pending receipt does not block local practice');
@@ -192,44 +199,44 @@ try {
   await page.getByRole('button',{name:'Recover original request',exact:true}).click();
   await page.getByText('Recovered lesson is ready.',{exact:false}).waitFor();
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   const after=await page.evaluate(()=>window.__ahaAI.starts);
   assert.deepEqual(after.at(-1),starts.at(-1),'recovery keeps both original request identifiers');
   // A completed paid response must survive a crash before its presentation save.
   const recovered=await page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity);
-  await page.getByLabel('Your answer',{exact:true}).fill(expectedAnswer(recovered.task));
-  await page.getByRole('button',{name:'Check my answer',exact:true}).click();
-  await page.getByRole('button',{name:'Next discovery',exact:true}).waitFor();
+  await enter(expectedAnswer(recovered.task));
+  await page.getByRole('button',{name:'Check',exact:true}).click();
+  await page.getByRole('button',{name:'Next',exact:true}).waitFor();
   await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
   await page.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();
   const undelivered=await page.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.find(o=>o.answerComplete&&!o.consumed));
   assert.ok(undelivered,'paid completion remains durable before UI acknowledgement');
-  await page.reload();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.reload();await resume();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'restart delivers saved answer without another model invocation');
   assert.equal(await page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity.id),undelivered.id);
   await page.waitForFunction(id=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.find(o=>o.id===id).consumed===true,undelivered.id);
   await page.evaluate(()=>{window.__ahaAI.enforced=true;});
-  await page.getByRole('button',{name:'Ask a curiosity question',exact:true}).click();
+  await page.getByRole('button',{name:'Ask a question',exact:true}).click();
   await page.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
   await page.waitForFunction(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.curiosity?.answer);
-  await page.reload();
+  await page.reload();await resume();
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'paid curiosity restores without a new call');
-  await page.getByRole('button',{name:'Back to our discovery',exact:true}).click();
+  await page.getByRole('button',{name:'Back to the problem',exact:true}).click();
   // An interrupted curiosity request stays recoverable after local practice moves the learner on.
   await page.evaluate(()=>{window.__ahaAI.enforced=true;window.__ahaAI.failOpening=true;});
   const curiosityStarts=await page.evaluate(()=>window.__ahaAI.starts.length);
-  await page.getByRole('button',{name:'Ask a curiosity question',exact:true}).click();
+  await page.getByRole('button',{name:'Ask a question',exact:true}).click();
   await page.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
   await page.getByRole('alert').filter({hasText:'Wait at least 5 seconds'}).waitFor();
   const interrupted=await page.evaluate(()=>window.__ahaAI.starts.at(-1));
-  await page.getByRole('button',{name:'Back to our discovery',exact:true}).click();
+  await page.getByRole('button',{name:'Back to the problem',exact:true}).click();
   await answerCurrent();
-  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
-  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Next',exact:true}).click();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal((await session()).activity.source,'local','unsettled curiosity request does not block local practice');
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),curiosityStarts+1,'no new paid call while the curiosity receipt is unsettled');
   const localTask=(await session()).activity.id;
@@ -244,13 +251,19 @@ try {
   assert.equal(afterRecovery.hintsUsed,1,'recovered answer counts as assistance on the unanswered task');
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
-  await page.getByRole('button',{name:'Back to our discovery',exact:true}).click();
+  await page.getByRole('button',{name:'Back to the problem',exact:true}).click();
   await page.evaluate(()=>{window.__ahaAI.failSignOut=true;});
   await settings();await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByRole('alert').waitFor();
   assert.equal(await page.getByRole('button',{name:'Sign out',exact:true}).count(),1,'failed native deletion retains connected account UI');
+  // Reconnecting suggests the beta's 500 2Z total cap through the real SDK and guest API.
+  await page.evaluate(()=>{window.__ahaAI.failSignOut=false;});
+  await page.getByRole('button',{name:'Sign out',exact:true}).click();
+  await page.getByRole('button',{name:'Connect Free2Z',exact:false}).click();
+  await page.getByRole('button',{name:'Sign out',exact:true}).waitFor();
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),[{spendCap:'500',spendPeriod:'total'}],'sign-in carries only the spend-cap hint, as decimal strings');
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, original-key lesson and post-fallback curiosity recovery, and crash-safe completed-answer delivery. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, original-key lesson and post-fallback curiosity recovery, crash-safe completed-answer delivery, and the sign-in spend-cap hint. No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

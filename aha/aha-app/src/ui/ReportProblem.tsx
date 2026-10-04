@@ -5,7 +5,7 @@ import { diagnostics, logError } from "../diagnostics/log";
 import { buildReport, collectEnvironment, MAX_NOTE, type ReportEnvironment } from "../diagnostics/report";
 import { copyReport, shareReport } from "../diagnostics/share";
 
-/** Grown-up-only problem report. Shows exactly what will leave the device. */
+/** Problem report from Settings. Shows exactly what will leave the device. */
 export function ReportProblem({ signedIn, aiReady }: { signedIn: boolean; aiReady: boolean }) {
   const [open, setOpen] = useState(false);
   const [note, setNote] = useState("");

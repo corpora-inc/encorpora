@@ -51,7 +51,9 @@ name `¡AHA!`. Do not restore a Unicode executable name.
 ## Free2Z activation boundary
 
 Both delivered builds use supported SDK source revision
-`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`, the registered native client, runtime
+`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; source now pins `e95becd6517bada55ca933e4072ebf13bbbb3bff`
+(additive sign-in spend-cap hint, 500 2Z total; it also decodes `enforcement_reason`, and a reason contradicting
+`enforced` fails `grant()` closed) for the next build. Builds use the registered native client, runtime
 grant verification and advertised model discovery. There is no compile-time
 AI-disable switch left to change. Backend activation is intended to work with
 these binaries if the published contract and client configuration stay stable;

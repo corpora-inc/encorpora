@@ -5,583 +5,442 @@ import {
   ArrowUpRight,
   BookOpen,
   Check,
-  ChevronDown,
   ChevronLeft,
   CircleHelp,
   Compass,
   Download,
-  Leaf,
+  Flag,
+  House,
   Lightbulb,
-  LockKeyhole,
   LogOut,
   MessageCircle,
   Plus,
-  Settings2,
+  Settings,
   ShieldCheck,
   Sparkles,
   Sprout,
-  Sun,
+  TrendingUp,
   Upload,
   X,
 } from "lucide-react";
+import { ActivityView } from "../activity/render";
 import { ReportProblem } from "./ReportProblem";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
 import "katex/dist/katex.min.css";
 import "./studio.css";
-export type { StudioProps, StudioActivity, StudioVisual } from "./types";
+export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
 
-type Tab = "learn" | "progress";
+type View = "home" | "focus" | "growth";
+type Panel = "help" | "feedback" | null;
+type Sheet = "ask" | "status" | "flag" | null;
+
+/** Icon-only control with an accessible name and a visible label on hover, focus or long-press. */
+function IconButton({ label, icon, onClick, disabled, active, badge, expanded }: {
+  label: string; icon: React.ReactNode; onClick: () => void; disabled?: boolean; active?: boolean; badge?: boolean; expanded?: boolean;
+}) {
+  const [tip, setTip] = useState(false);
+  const timer = useRef<number | undefined>(undefined);
+  const pressed = useRef(false);
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+  return (
+    <button
+      type="button"
+      className={`icon-tool${active ? " is-active" : ""}${tip ? " show-tip" : ""}`}
+      aria-label={label}
+      aria-expanded={expanded}
+      data-tip={label}
+      disabled={disabled}
+      onPointerDown={(e) => {
+        if (e.pointerType !== "touch") return;
+        pressed.current = false;
+        window.clearTimeout(timer.current);
+        timer.current = window.setTimeout(() => {
+          pressed.current = true;
+          setTip(true);
+          timer.current = window.setTimeout(() => setTip(false), 1600);
+        }, 450);
+      }}
+      onPointerUp={() => { if (!pressed.current) window.clearTimeout(timer.current); }}
+      onPointerCancel={() => window.clearTimeout(timer.current)}
+      onContextMenu={(e) => e.preventDefault()}
+      onClick={() => {
+        // A long-press reveals the label; it does not also trigger the action.
+        if (pressed.current) { pressed.current = false; return; }
+        onClick();
+      }}
+    >
+      {icon}
+      {badge && <span className="tool-badge" aria-hidden="true" />}
+    </button>
+  );
+}
+
+/** Modal bottom sheet (phone) / centered card (wider screens). */
+function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () => void; label: string; children: React.ReactNode }) {
+  const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const d = ref.current;
+    if (!d) return;
+    if (open && !d.open) d.showModal();
+    if (!open && d.open) d.close();
+  }, [open]);
+  return (
+    <dialog ref={ref} className="sheet" aria-label={label} onCancel={(e) => { e.preventDefault(); onClose(); }}
+      onClick={(e) => { if (e.target === ref.current) onClose(); }}>
+      {open && (
+        <div className="sheet-body">
+          <button type="button" className="icon-button sheet-close" aria-label="Close" onClick={onClose}><X size={22} /></button>
+          {children}
+        </div>
+      )}
+    </dialog>
+  );
+}
+
 export function Studio(props: StudioProps) {
-  const [tab, setTab] = useState<Tab>("learn");
+  const [view, setView] = useState<View>("home");
   const [settings, setSettings] = useState(false);
-  const [adult, setAdult] = useState(false);
-  const [gate, setGate] = useState("");
+  const [panel, setPanel] = useState<Panel>(null);
+  const [sheet, setSheet] = useState<Sheet>(null);
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState("");
-  const [asking, setAsking] = useState(false);
   const [newName, setNewName] = useState("");
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
-  const input = useRef<HTMLInputElement>(null);
-  const taskHeading = useRef<HTMLHeadingElement>(null);
+  const promptRef = useRef<HTMLDivElement>(null);
   const feedbackRegion = useRef<HTMLDivElement>(null);
-  const settingsButton = useRef<HTMLButtonElement>(null);
+  const settingsReturn = useRef<HTMLElement | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
+  const seenHint = useRef<string | undefined>(undefined);
+  const hintAsks = useRef(0);
   const answerId = useId();
   const titleId = useId();
-  const a = props.activity;
+  const a = props.spec ? undefined : props.activity;
+  const spec = props.spec;
+  const taskId = spec?.spec.id ?? a?.id;
+  const hasTask = !!taskId;
   useEffect(() => {
     setAnswer("");
-    setAsking(false);
-  }, [a?.id]);
+    setPanel(null);
+    hintAsks.current = 0;
+    if (sheet === "flag") setSheet(null);
+  }, [taskId]);
   useEffect(() => {
-    if (a?.id) taskHeading.current?.focus({ preventScroll: true });
-  }, [a?.id]);
+    if (taskId && view === "focus") promptRef.current?.focus({ preventScroll: true });
+  }, [taskId, view]);
   useEffect(() => {
-    if (props.feedback) feedbackRegion.current?.focus({ preventScroll: true });
+    if (!props.feedback) return;
+    // The answer's feedback takes the learner's attention; an open nudge folds away (the icon reopens it).
+    if (props.feedback.kind !== "info") setPanel(null);
+    feedbackRegion.current?.focus({ preventScroll: true });
   }, [props.feedback?.kind, props.feedback?.title, props.feedback?.message]);
+  // A new nudge, explanation or worked example opens the help panel once; dismissing it keeps it closed.
+  useEffect(() => {
+    const key = props.hint ? `${taskId}|${props.hint}` : undefined;
+    if (!key) { setPanel(p => p === "help" ? null : p); seenHint.current = undefined; return; }
+    if (view === "focus" && hasTask && key !== seenHint.current) { seenHint.current = key; setPanel("help"); }
+  }, [props.hint, taskId, view, hasTask]);
+  useEffect(() => {
+    if (props.curiosity && view === "focus") setSheet("ask");
+  }, [!!props.curiosity, props.curiosity?.answer, view]);
   useEffect(() => {
     if (settings) dialog.current?.showModal();
     else dialog.current?.close();
   }, [settings]);
+  // Size the focus view to the visible viewport so the answer dock stays above a soft keyboard,
+  // whether or not the WebView resizes its layout viewport.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const update = () => document.documentElement.style.setProperty("--aha-vvh", `${Math.round(vv.height)}px`);
+    update();
+    vv.addEventListener("resize", update);
+    return () => vv.removeEventListener("resize", update);
+  }, []);
+  const openSettings = () => {
+    const opener = document.activeElement as HTMLElement | null;
+    settingsReturn.current = opener?.closest(".sheet") ? document.querySelector<HTMLElement>(".status-dot") : opener;
+    setSheet(null);
+    setSettings(true);
+  };
   const closeSettings = () => {
     setSettings(false);
-    setAdult(false);
-    setGate("");
     setDeleting(false);
-    settingsButton.current?.focus();
+    settingsReturn.current?.focus?.();
+  };
+  const closeAsk = () => {
+    // An answer still in flight stays visible; closing then would hide a paid reply.
+    if (props.curiosity && !props.curiosity.answer && props.busy) return;
+    if (props.curiosity) props.onCloseCuriosity();
+    setSheet(null);
   };
   const completed = Math.max(0, props.session.completed);
   const target = Math.max(1, props.session.target);
-  const readyNext =
-    props.activityAnswered || props.feedback?.kind === "correct";
-  const learningVisible =
-    tab === "learn" &&
-    !settings &&
-    !asking &&
-    !props.curiosity &&
-    !!a &&
-    !readyNext;
+  const specGraded = !!spec?.result && !spec.result.invalid;
+  const readyNext = props.activityAnswered || props.feedback?.kind === "correct" || specGraded;
+  const learningVisible = view === "focus" && !settings && !sheet && !props.curiosity && hasTask && !readyNext;
   useEffect(() => {
     props.onLearningVisibleChange?.(learningVisible);
     return () => props.onLearningVisibleChange?.(false);
   }, [learningVisible, props.onLearningVisibleChange]);
-  const feedbackContent = props.feedback && (
-    <div className={`feedback ${props.feedback.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
-      <span aria-hidden="true">{props.feedback.kind === "correct" ? <Check size={21} /> : <Lightbulb size={21} />}</span>
-      <div><strong>{props.feedback.title}</strong><SafeMarkdown>{props.feedback.message}</SafeMarkdown></div>
+
+  const enterFocus = () => {
+    setView("focus");
+    if (!hasTask && !props.busy) props.onContinue();
+  };
+  const statusText = props.mode === "preview"
+    ? "Browser preview · sample practice · progress stays in this preview"
+    : props.practiceStatus ?? (props.account.aiReady ? "AI tutoring" : "Local practice");
+  const ai = props.practiceMode === "ai";
+  const progress = Math.min(100, (completed / target) * 100);
+
+  // ---------- focus mode pieces ----------
+  const help = (panel === "help" && props.hint) || (panel === "feedback" && props.feedback?.message);
+  const helpPanel = help ? (
+    <section className={`help-panel${panel === "feedback" ? " is-feedback" : ""}`} aria-label={panel === "feedback" ? "How it works" : "Help"} role="region">
+      <button type="button" className="icon-button help-close" aria-label="Close help" onClick={() => setPanel(null)}><X size={20} /></button>
+      <div className="help-text" aria-live="polite"><SafeMarkdown>{panel === "feedback" ? props.feedback!.message : props.hint!}</SafeMarkdown></div>
+    </section>
+  ) : null;
+  const errorLine = props.error && !settings ? (
+    <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>
+  ) : null;
+  // Local tasks have one hint, so the icon toggles its panel. A spec may hold several: while the
+  // panel is open, each tap asks for the next one until they run out.
+  const hintTap = () => {
+    const more = !!spec && hintAsks.current < (spec.spec.hints?.length ?? 0);
+    if (panel === "help" && !more) return setPanel(null);
+    if (props.hint && panel !== "help") return setPanel("help");
+    hintAsks.current++;
+    props.onSupport("hint");
+  };
+  const tools = hasTask ? (
+    <div className="focus-tools" role="toolbar" aria-label="Help options">
+      <IconButton label="Hint" icon={<Lightbulb size={22} />} disabled={props.busy || readyNext}
+        active={panel === "help"} expanded={panel === "help"}
+        onClick={hintTap} />
+      <IconButton label="Show me how" icon={<BookOpen size={22} />} disabled={props.busy}
+        badge={props.feedback?.kind === "retry" && panel !== "feedback"}
+        onClick={() => props.feedback?.kind === "retry" && props.feedback.message ? setPanel("feedback") : props.onSupport("explain")} />
+      <IconButton label="Try something harder" icon={<TrendingUp size={22} />} disabled={props.busy} onClick={() => props.onSupport("harder")} />
+      <IconButton label="Something seems off" icon={<Flag size={21} />} disabled={props.busy} onClick={() => setSheet("flag")} />
+      <IconButton label="Ask a question" icon={<MessageCircle size={22} />} disabled={props.busy}
+        expanded={sheet === "ask"} onClick={() => setSheet("ask")} />
     </div>
+  ) : null;
+  const nextButton = (
+    <button className="primary-button dock-primary" type="button" disabled={props.busy} onClick={props.onContinue}>
+      {props.busy ? (props.busyLabel ?? "Working on it…") : "Next"} <ArrowRight size={20} aria-hidden="true" />
+    </button>
   );
-  const hintContent = props.hint && (
-    <div className="hint-box" role="status">
-      <Lightbulb size={20} aria-hidden="true" />
-      <div><strong>{props.feedback?.kind === "correct" ? "A closer look" : "A little nudge"}</strong><SafeMarkdown>{props.hint}</SafeMarkdown></div>
+  const stopButton = props.busy && props.onCancel ? (
+    <button type="button" className="text-button stop-button" onClick={props.onCancel}>Stop AI request</button>
+  ) : null;
+  const feedbackLine = props.feedback && hasTask && !spec ? (
+    <div className={`feedback-line ${props.feedback.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
+      {props.session.complete && readyNext
+        ? <><Sprout size={22} aria-hidden="true" /><strong>A good place to pause.</strong></>
+        : <>{props.feedback.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
+          <strong>{props.feedback.title}</strong></>}
+      {props.feedback.kind === "retry" && props.feedback.message && panel !== "feedback" && (
+        <button type="button" className="text-button see-how" onClick={() => setPanel("feedback")}>See how</button>
+      )}
     </div>
-  );
-  return (
-    <div className={`aha-studio${a && tab === "learn" ? " has-activity" : ""}`}>
-      <a className="skip-link" href="#activity">
-        Skip to learning
-      </a>
-      {props.mode === "preview" && (
-        <div className="preview-banner">
-          Browser preview · sample practice · progress stays in this preview
+  ) : null;
+  const promptSize = a ? (a.prompt.length <= 22 ? "xl" : a.prompt.length <= 70 ? "l" : "m") : "m";
+  const symbols = a?.answerKind === "comparison" ? ["<", "=", ">"] : [];
+  const symbolName = (s: string) => s === "<" ? "Less than" : s === ">" ? "Greater than" : "Equal to";
+  const submitLocal = () => { if (!props.busy && answer.trim() && !readyNext) props.onSubmit(answer.trim()); };
+
+  const focusStage = spec ? (
+    <div className="focus-stage is-spec" aria-busy={props.busy}>
+      <div className="stage-focus-target" ref={promptRef} tabIndex={-1} role="group" aria-label="Problem" />
+      <ActivityView
+        key={spec.spec.id}
+        spec={spec.spec}
+        compact
+        result={spec.result}
+        initialResponse={spec.initialResponse}
+        disabled={props.busy}
+        onSubmit={spec.onSubmit}
+        dockTop={<>{errorLine}{helpPanel}{tools}</>}
+        next={nextButton}
+      />
+      {stopButton}
+    </div>
+  ) : a ? (
+    <form className="focus-stage" aria-busy={props.busy} onSubmit={(e) => { e.preventDefault(); submitLocal(); }}>
+      <div className="stage-scroll" data-stage-content="">
+        <div className={`stage-prompt prompt-${promptSize}`} ref={promptRef} tabIndex={-1}>
+          <SafeMarkdown>{a.prompt}</SafeMarkdown>
         </div>
-      )}
-      {props.practiceStatus && (
-        <div className="preview-banner" role="status">
-          {props.practiceStatus}
-        </div>
-      )}
-      <header className="studio-header">
-        <a
-          className="wordmark"
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            setTab("learn");
-          }}
-          aria-label="AHA home"
-        >
-          ¡AHA!
-          <span className="wordmark-dot" />
-        </a>
-        <nav className="desktop-nav" aria-label="Main">
-          <button
-            className={tab === "learn" ? "active" : ""}
-            onClick={() => setTab("learn")}
-          >
-            <Compass size={17} /> Your studio
-          </button>
-          <button
-            className={tab === "progress" ? "active" : ""}
-            onClick={() => setTab("progress")}
-          >
-            <Sprout size={17} /> Your growth
-          </button>
-        </nav>
-        <button
-          ref={settingsButton}
-          className="profile-button"
-          onClick={() => setSettings(true)}
-          aria-label="Open learner and grown-up settings"
-        >
-          <span className="avatar">
-            {props.learnerName.slice(0, 1).toUpperCase() || "A"}
-          </span>
-          <span>{props.learnerName || "Your studio"}</span>
-          <ChevronDown size={15} />
-        </button>
-      </header>
-      <main id="activity" className="studio-main">
-        <div className="page-intro">
-          <div>
-            <div className="eyebrow">
-              <Sun size={15} /> A LITTLE CURIOSITY. A BIG DISCOVERY.
-            </div>
-            <h1>
-              {tab === "learn"
-                ? "Let’s make it click."
-                : "Look how you’re growing."}
-            </h1>
-            <p>
-              {tab === "learn"
-                ? "One good question can take you somewhere new."
-                : "Small discoveries become things you know."}
-            </p>
-          </div>
-          <div className="session-badge">
-            <span className="session-icon">
-              <Leaf size={22} />
-            </span>
-            <span>
-              <strong>Your daily exploration</strong>
-              <small>
-                {props.session.minutes ? `${props.session.minutes} minutes · ` : ""}At your pace
-              </small>
-            </span>
-          </div>
-        </div>
-        {tab === "learn" ? (
-          <div className="learning-layout">
-            <section className="lesson-column" aria-label="Learning activity">
-              <div className="session-track">
-                <span>
-                  <span className="live-dot" />{" "}
-                  {a?.skill ?? "Your next discovery"}
-                </span>
-                <span>
-                  {completed} of {target} discoveries
-                </span>
+        {a.visual && <Visual key={a.id} spec={a.visual} />}
+        {a.answerKind === "choice" && a.choices?.length ? (
+          <fieldset className="choices">
+            <legend className="sr-only">Your answer</legend>
+            {a.choices.map((choice, i) => (
+              <label key={choice.id} className={answer === choice.id ? "chosen" : ""}>
+                <input type="radio" name={answerId} value={choice.id} checked={answer === choice.id}
+                  disabled={props.busy || readyNext} onChange={() => setAnswer(choice.id)} />
+                <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
+                <SafeMarkdown>{choice.label}</SafeMarkdown>
+              </label>
+            ))}
+          </fieldset>
+        ) : null}
+      </div>
+      <div className="focus-dock">
+        {errorLine}
+        {helpPanel}
+        {tools}
+        {feedbackLine}
+        <div className="dock-row">
+          {a.answerKind !== "choice" && (
+            symbols.length ? (
+              <div className="answer-symbols" role="group" aria-label="Your answer" data-stage-content="">
+                {symbols.map(s => (
+                  <button key={s} type="button" disabled={props.busy || readyNext} aria-label={symbolName(s)}
+                    aria-pressed={answer === s} onClick={() => setAnswer(s)}>{s}</button>
+                ))}
               </div>
-              <div
-                className="session-meter"
-                role="progressbar"
-                aria-label="Session discoveries"
-                aria-valuemin={0}
-                aria-valuemax={target}
-                aria-valuenow={Math.min(completed, target)}
-              >
-                <span
-                  style={{
-                    width: `${Math.min(100, (completed / target) * 100)}%`,
-                  }}
+            ) : (
+              <div className="answer-input-wrap" data-stage-content="">
+                {a.signed && (
+                  <button type="button" className="sign-key" disabled={props.busy || readyNext}
+                    aria-label="Change positive or negative sign" aria-pressed={answer.startsWith("-")}
+                    onClick={() => setAnswer(answer.startsWith("-") ? answer.slice(1) : `-${answer}`)}>−</button>
+                )}
+                <input
+                  id={answerId}
+                  aria-label="Your answer"
+                  value={answer}
+                  onChange={(e) => setAnswer(e.target.value)}
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  enterKeyHint="done"
+                  inputMode={a.answerKind === "number" ? "decimal" : "text"}
+                  placeholder={a.answerKind === "fraction" ? "Like 3/4" : "Your answer"}
+                  disabled={props.busy || readyNext}
+                  maxLength={160}
                 />
               </div>
-              {props.busy && props.onCancel && (
-                <button className="secondary-button" onClick={props.onCancel}>
-                  Stop AI request
-                </button>
-              )}
-              <article className="activity-card" aria-busy={props.busy}>
-                <div className="activity-topline">
-                  <span className="lesson-tag">
-                    <Sparkles size={13} /> LET’S EXPLORE
-                  </span>
-                  <span className="activity-count">
-                    {String(completed + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                {a ? (
-                  <>
-                    <h2 ref={taskHeading} tabIndex={-1}>{a.title}</h2>
-                    <div className="activity-prompt">
-                      <SafeMarkdown>{a.prompt}</SafeMarkdown>
-                    </div>
-                    {a.visual && <Visual key={a.id} spec={a.visual} />}
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        if (!props.busy && answer.trim() && !readyNext)
-                          props.onSubmit(answer.trim());
-                      }}
-                    >
-                      <div className="answer-area">
-                        {a.answerKind === "choice" && a.choices?.length ? (
-                          <fieldset className="choices">
-                            <legend>Your answer</legend>
-                            {a.choices.map((choice, i) => (
-                              <label
-                                key={choice.id}
-                                className={answer === choice.id ? "chosen" : ""}
-                              >
-                                <input
-                                  type="radio"
-                                  name={answerId}
-                                  value={choice.id}
-                                  checked={answer === choice.id}
-                                  disabled={props.busy || readyNext}
-                                  onChange={() => setAnswer(choice.id)}
-                                />
-                                <span className="choice-letter">
-                                  {String.fromCharCode(65 + i)}
-                                </span>
-                                <SafeMarkdown>{choice.label}</SafeMarkdown>
-                              </label>
-                            ))}
-                          </fieldset>
-                        ) : (
-                          <>
-                            <label htmlFor={answerId}>Your answer</label>
-                            <div className="answer-input-wrap">
-                              <input
-                                ref={input}
-                                id={answerId}
-                                value={answer}
-                                onChange={(e) => setAnswer(e.target.value)}
-                                autoComplete="off"
-                                autoCapitalize="off"
-                                spellCheck={false}
-                                inputMode={
-                                  a.answerKind === "number" ? "decimal" : "text"
-                                }
-                                placeholder={
-                                  a.answerKind === "fraction"
-                                    ? "e.g. 3/4"
-                                    : "Think it through…"
-                                }
-                                disabled={props.busy || readyNext}
-                                maxLength={160}
-                                aria-describedby={`${answerId}-help`}
-                              />
-                              <span aria-hidden="true">↵</span>
-                            </div>
-                            {(a.answerKind === "comparison" || a.answerKind === "number") && (
-                              <div className="answer-symbols" role="group" aria-label="Answer symbols">
-                                {(a.answerKind === "comparison" ? ["<", "=", ">"] : ["−"]).map(symbol => (
-                                  <button key={symbol} type="button" disabled={props.busy || readyNext}
-                                    aria-label={symbol === "<" ? "Less than" : symbol === ">" ? "Greater than" : symbol === "=" ? "Equal to" : "Change positive or negative sign"}
-                                    aria-pressed={symbol === "−" ? answer.startsWith("-") : answer === symbol}
-                                    onClick={() => setAnswer(symbol === "−" ? answer.startsWith("-") ? answer.slice(1) : `-${answer}` : symbol)}>{symbol}</button>
-                                ))}
-                              </div>
-                            )}
-                            <small id={`${answerId}-help`}>
-                              {a.answerKind === "comparison" ? "Choose less than (<), equal to (=), or greater than (>)." : a.answerKind === "fraction"
-                                ? "You can write a fraction like 3/4."
-                                : "Take your time. This is a place to figure things out."}
-                            </small>
-                          </>
-                        )}
-                      </div>
-                      {feedbackContent}
-                      {hintContent}
-                      {props.session.complete && readyNext && (
-                        <section className="session-finish" aria-label="Exploration complete">
-                          <Sprout size={24} aria-hidden="true" />
-                          <div><h3>A good place to pause.</h3><p>{props.session.summary ?? "You’ve made time for your thinking today. Take a break, or keep exploring when you’re ready."}</p></div>
-                        </section>
-                      )}
-                      <div className="activity-actions">
-                        {readyNext ? (
-                          <button
-                            className="primary-button"
-                            type="button"
-                            disabled={props.busy}
-                            onClick={props.onContinue}
-                          >
-                            {props.session.complete
-                              ? "Keep exploring"
-                              : props.feedback?.kind === "retry"
-                              ? "Try a fresh one"
-                              : "Next discovery"}{" "}
-                            <ArrowRight size={19} />
-                          </button>
-                        ) : (
-                          <button
-                            className="primary-button"
-                            type="submit"
-                            disabled={props.busy || !answer.trim()}
-                          >
-                            {props.busy
-                              ? (props.busyLabel ?? "Working on it…")
-                              : "Check my answer"}{" "}
-                            <ArrowRight size={19} />
-                          </button>
-                        )}
-                        <button
-                          className="hint-button"
-                          type="button"
-                          disabled={
-                            props.busy || readyNext
-                          }
-                          onClick={() => props.onSupport("hint")}
-                        >
-                          <Lightbulb size={17} /> A little hint
-                        </button>
-                      </div>
-                    </form>
-                  </>
-                ) : (
-                  <div className="welcome-state">
-                    <div className="welcome-art">
-                      <span>✳</span>
-                      <span>+</span>
-                      <span>?</span>
-                    </div>
-                    {feedbackContent}
-                    {hintContent}
-                    <h2>{props.session.complete ? "A little stronger, every time." : props.feedback ? "Let’s try a different discovery." : "Your next “aha” is waiting."}</h2>
-                    <p>
-                      {props.session.complete
-                        ? (props.session.summary ?? "You’ve made time for your thinking. It’s okay to pause here, or keep exploring.")
-                        : props.feedback ? "We’ll leave that one behind and find a fresh example."
-                        : "We’ll start with a few questions to find a good place for you. No grades. No pressure."}
-                    </p>
-                    <button
-                      className="primary-button"
-                      disabled={props.busy}
-                      onClick={props.onContinue}
-                    >
-                      {props.busy ? (props.busyLabel ?? "Getting ready…") : props.session.complete ? "Keep exploring" : props.feedback ? "Try another example" : "Let’s begin"}
-                      <ArrowRight size={19} />
-                    </button>
-                  </div>
-                )}
-              </article>
-              {props.error && (
-                <div className="error-banner" role={settings ? undefined : "alert"}>
-                  <CircleHelp size={20} />
-                  <span>{props.error}</span>
-                </div>
-              )}
-              {a && (
-                <div className="support-row">
-                  <button
-                    disabled={props.busy}
-                    onClick={() => props.onSupport("explain")}
-                  >
-                    {readyNext ? "Show me how it works" : "Explain another way"}
-                  </button>
-                  <span>·</span>
-                  <button
-                    disabled={props.busy || readyNext}
-                    onClick={() => props.onSupport("stuck")}
-                  >
-                    I’m stuck
-                  </button>
-                  <span>·</span>
-                  <button
-                    disabled={props.busy}
-                    onClick={() => props.onSupport("harder")}
-                  >
-                    Try something harder
-                  </button>
-                  <button
-                    className="dispute-button"
-                    disabled={props.busy}
-                    onClick={() => props.onSupport("dispute")}
-                  >
-                    Something seems off
-                  </button>
-                </div>
-              )}
-              <div className="curiosity-card">
-                <div className="curiosity-icon">
-                  <MessageCircle size={21} />
-                </div>
-                <div>
-                  <strong>Wondering about something?</strong>
-                  <p>{a ? "There’s room for a little rabbit hole." : "Start a discovery, then bring your questions."}</p>
-                </div>
-                <button
-                  aria-label="Ask a curiosity question"
-                  disabled={!a || props.busy}
-                  aria-expanded={asking || !!props.curiosity}
-                  onClick={() => setAsking(!asking)}
-                >
-                  <Plus size={22} />
-                </button>
+            )
+          )}
+          {readyNext ? nextButton : (
+            <button className="primary-button dock-primary" type="submit" disabled={props.busy || !answer.trim()}>
+              {props.busy ? (props.busyLabel ?? "Working on it…") : "Check"}
+            </button>
+          )}
+        </div>
+        {stopButton}
+      </div>
+    </form>
+  ) : (
+    <div className="focus-stage is-empty" aria-busy={props.busy}>
+      <div className="stage-scroll">
+        {props.busy ? (
+          <div className="stage-wait" role="status"><span className="wait-dots" aria-hidden="true"><i /><i /><i /></span>
+            <span className="sr-only">{props.busyLabel ?? "Getting ready…"}</span></div>
+        ) : (
+          <div className="stage-message">
+            {props.feedback ? (
+              <div className={`feedback-line ${props.feedback.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
+                <Lightbulb size={20} aria-hidden="true" /><strong>{props.feedback.title}</strong>
               </div>
-              {(asking || props.curiosity) && (
-                <section
-                  className="curiosity-conversation"
-                  aria-label="Curiosity conversation"
-                >
-                  {props.curiosity ? (
-                    <>
-                      <div className="eyebrow">YOUR QUESTION</div>
-                      <p>{props.curiosity.question}</p>
-                      {props.curiosity.answer ? (
-                        <SafeMarkdown>{props.curiosity.answer}</SafeMarkdown>
-                      ) : (
-                        <p role="status">{props.busy ? "Thinking about that…" : "That answer could not finish. You can return to your discovery; no new paid request will start automatically."}</p>
-                      )}
-                      <button
-                        className="text-button"
-                        onClick={() => {
-                          props.onCloseCuriosity();
-                          setAsking(false);
-                        }}
-                      >
-                        <ChevronLeft size={16} /> Back to our discovery
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          if (question.trim() && !props.busy) {
-                            props.onCuriosity(question.trim());
-                            setQuestion("");
-                          }
-                        }}
-                      >
-                        <label htmlFor="curiosity-question">
-                          What are you wondering?
-                        </label>
-                        <div className="curiosity-input">
-                          <input
-                            id="curiosity-question"
-                            value={question}
-                            maxLength={400}
-                            onChange={(e) => setQuestion(e.target.value)}
-                            placeholder="What could I use this for?"
-                          />
-                          <button
-                            className="icon-button"
-                            disabled={!question.trim() || props.busy}
-                            aria-label="Ask question"
-                          >
-                            <ArrowUpRight size={22} />
-                          </button>
-                        </div>
-                      </form>
-                      <button
-                        className="suggestion"
-                        disabled={props.busy}
-                        onClick={() =>
-                          props.onCuriosity(
-                            "Where would I use this in real life?",
-                          )
-                        }
-                      >
-                        Where would I use this in real life? ↗
-                      </button>
-                    </>
-                  )}
-                </section>
-              )}
-            </section>
-            <aside className="studio-sidebar">
-              <div className="discovery-note">
-                <div className="orbit-art" aria-hidden="true">
-                  <div className="orbit-ring" />
-                  <div className="orbit-center">
-                    a<span>ha!</span>
-                  </div>
-                  <span className="orbit-plus">+</span>
-                  <span className="orbit-star">✳</span>
-                  <span className="orbit-dot" />
-                </div>
-                <div className="eyebrow">THINK. TRY. DISCOVER.</div>
-                <h3>
-                  Good things start
-                  <br />
-                  with “I wonder…”
-                </h3>
-                <p>
-                  You don’t have to know it yet.
-                  <br />
-                  That’s what we’re here for.
-                </p>
-              </div>
-              <div className="growth-preview">
-                <div className="aside-heading">
-                  <Sprout size={18} />
-                  <h3>Taking root</h3>
-                </div>
-                {props.progress.length ? (
-                  props.progress.slice(0, 3).map((p, i) => (
-                    <div className="growth-item" key={i}>
-                      <span className={`growth-dot ${p.status}`} />
-                      <div>
-                        <strong>{p.label}</strong>
-                        <small>{p.detail}</small>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p>
-                    Your discoveries will grow here as we learn what you know.
-                  </p>
-                )}
-                <button
-                  className="text-button"
-                  onClick={() => setTab("progress")}
-                >
-                  See your growth <ArrowUpRight size={16} />
-                </button>
-              </div>
-              <div className="quiet-note">
-                <ShieldCheck size={16} />
-                <span>Your learning, saved on this device.</span>
-              </div>
-            </aside>
+            ) : (
+              <p className="stage-invite">{props.session.complete ? "A good place to pause." : "Your next “aha” is waiting."}</p>
+            )}
+            {props.hint && <div className="hint-note"><SafeMarkdown>{props.hint}</SafeMarkdown></div>}
           </div>
+        )}
+      </div>
+      <div className="focus-dock">
+        {errorLine}
+        {!props.busy && <div className="dock-row">{nextButton}</div>}
+        {stopButton}
+      </div>
+    </div>
+  );
+
+  const focus = (
+    <div className="focus-view">
+      <header className="focus-bar">
+        <div className="focus-bar-inner">
+          <IconButton label="Home" icon={<House size={22} />} onClick={() => { setPanel(null); setView("home"); }} />
+          <div className="focus-progress" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target}
+            aria-valuenow={Math.min(completed, target)}>
+            <span style={{ width: `${progress}%` }} />
+          </div>
+          <button type="button" className={`status-dot ${ai ? "is-ai" : "is-local"}`} aria-label={statusText}
+            aria-haspopup="dialog" onClick={() => setSheet("status")}>
+            {ai ? <Sparkles size={16} aria-hidden="true" /> : <span aria-hidden="true" />}
+          </button>
+        </div>
+      </header>
+      <main id="activity" className="focus-main">{focusStage}</main>
+    </div>
+  );
+
+  // ---------- home / growth ----------
+  const nav = (
+    <nav className="home-nav" aria-label="Main">
+      <button type="button" className={view === "home" ? "active" : ""} aria-current={view === "home" ? "page" : undefined} onClick={() => setView("home")}>
+        <Compass size={21} aria-hidden="true" /> Studio
+      </button>
+      <button type="button" className={view === "growth" ? "active" : ""} aria-current={view === "growth" ? "page" : undefined} onClick={() => setView("growth")}>
+        <Sprout size={21} aria-hidden="true" /> Growth
+      </button>
+      <button type="button" onClick={openSettings}>
+        <Settings size={21} aria-hidden="true" /> Settings
+      </button>
+    </nav>
+  );
+  const home = (
+    <div className="home-view">
+      <header className="home-header">
+        <a className="wordmark" href="#" aria-label="AHA home" onClick={(e) => { e.preventDefault(); setView("home"); }}>
+          ¡AHA!<span className="wordmark-dot" />
+        </a>
+        <button type="button" className="profile-button" onClick={openSettings} aria-label={`${props.learnerName || "Learner"}: open settings`}>
+          <span className="avatar">{props.learnerName.slice(0, 1).toUpperCase() || "A"}</span>
+          <span className="profile-name">{props.learnerName}</span>
+        </button>
+      </header>
+      {nav}
+      <main id="activity" className="home-main">
+        {view === "home" ? (
+          <section className="home-hero" aria-labelledby={`${titleId}-home`}>
+            <h1 id={`${titleId}-home`}>Big ideas.<br />Little discoveries.</h1>
+            <p className="home-lede">A little curiosity goes a long way.</p>
+            <div className="home-session">
+              <div className="home-meter" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target} aria-valuenow={Math.min(completed, target)}>
+                <span style={{ width: `${progress}%` }} />
+              </div>
+              <span className="home-count">{completed} / {target}</span>
+            </div>
+            {props.session.complete && <p className="home-summary">{props.session.summary}</p>}
+            {props.error && <div className="error-banner" role={settings ? undefined : "alert"}><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
+            <button type="button" className="primary-button home-start" disabled={props.busy && !hasTask} onClick={enterFocus}>
+              {props.busy && !hasTask ? (props.busyLabel ?? "Getting ready…") : hasTask ? "Continue" : props.session.complete ? "Keep exploring" : "Let’s begin"}
+              <ArrowRight size={20} aria-hidden="true" />
+            </button>
+            {props.mode === "preview" && <p className="home-note">{statusText}</p>}
+          </section>
         ) : (
           <section className="progress-page">
             <div className="progress-heading">
-              <Sprout size={29} />
-              <h2>A little stronger, every time.</h2>
-              <p>
-                Understanding, fluency, and remembering are different kinds of
-                growth. We keep room for all three.
-              </p>
+              <h1>Look how you’re growing.</h1>
+              <p>Understanding, fluency and remembering are different kinds of growth. There’s room for all three.</p>
             </div>
             {props.progress.length ? (
               <div className="progress-grid">
                 {props.progress.map((p, i) => (
                   <article key={i}>
                     <span className={`status-pill ${p.status}`}>
-                      {p.status === "confident"
-                        ? "Showing confidence"
-                        : p.status === "review"
-                          ? "Ready to revisit"
-                          : "Taking root"}
+                      {p.status === "confident" ? "Showing confidence" : p.status === "review" ? "Ready to revisit" : "Taking root"}
                     </span>
                     <h3>{p.label}</h3>
                     <p>{p.detail}</p>
@@ -589,343 +448,209 @@ export function Studio(props: StudioProps) {
                 ))}
               </div>
             ) : (
-              <p className="empty-progress">
-                Your first discovery is a great place to start. There’s no
-                whole-grade percentage to chase.
-              </p>
+              <p className="empty-progress">Your first discovery is a great place to start. There’s no whole-grade percentage to chase.</p>
             )}
-            <button className="primary-button" onClick={() => setTab("learn")}>
-              Back to exploring <ArrowRight size={18} />
+            <button type="button" className="primary-button" onClick={enterFocus}>
+              Back to exploring <ArrowRight size={18} aria-hidden="true" />
             </button>
           </section>
         )}
-        <footer className="studio-footer">
-          <span className="footer-mark">¡AHA!</span>
-          <span>Big ideas. Little discoveries.</span>
-          <span className="footer-local">
-            <BookOpen size={13} /> A math studio for curious minds
-          </span>
-        </footer>
+        <p className="quiet-note"><ShieldCheck size={16} aria-hidden="true" /> Your learning, saved on this device.</p>
       </main>
-      <nav className="mobile-nav" aria-label="Main">
-        <button
-          className={tab === "learn" ? "active" : ""}
-          onClick={() => setTab("learn")}
-        >
-          <Compass size={21} />
-          Studio
-        </button>
-        <button
-          className={tab === "progress" ? "active" : ""}
-          onClick={() => setTab("progress")}
-        >
-          <Sprout size={21} />
-          Growth
-        </button>
-        <button onClick={() => setSettings(true)}>
-          <Settings2 size={21} />
-          Grown-ups
-        </button>
-      </nav>
+    </div>
+  );
+
+  return (
+    <div className={`aha-studio view-${view}`}>
+      {view === "focus" ? focus : home}
+      <Sheet open={sheet === "status"} onClose={() => setSheet(null)} label="Practice status">
+        <div className={`status-sheet ${ai ? "is-ai" : "is-local"}`}>
+          <span className="status-sheet-icon" aria-hidden="true">{ai ? <Sparkles size={22} /> : <ShieldCheck size={22} />}</span>
+          <p>{statusText}</p>
+        </div>
+        <button type="button" className="secondary-button" onClick={openSettings}><Settings size={17} aria-hidden="true" /> Settings</button>
+      </Sheet>
+      <Sheet open={sheet === "flag"} onClose={() => setSheet(null)} label="Something seems off">
+        <p className="sheet-title">Something seems off?</p>
+        <p className="sheet-text">We’ll set this problem aside. It won’t count.</p>
+        <div className="sheet-actions">
+          <button type="button" className="primary-button" disabled={props.busy} onClick={() => { setSheet(null); props.onSupport("dispute"); }}>Set it aside</button>
+          <button type="button" className="secondary-button" onClick={() => setSheet(null)}>Keep going</button>
+        </div>
+      </Sheet>
+      <Sheet open={sheet === "ask" && view === "focus" && !settings} onClose={closeAsk} label="Ask a question">
+        {props.curiosity ? (
+          <section className="curiosity-conversation" aria-label="Curiosity conversation">
+            <p className="curiosity-question">{props.curiosity.question}</p>
+            {props.curiosity.answer ? (
+              <SafeMarkdown>{props.curiosity.answer}</SafeMarkdown>
+            ) : (
+              <p role="status">{props.busy ? "Thinking about that…" : "That answer could not finish. No new paid request will start automatically."}</p>
+            )}
+            <button type="button" className="text-button" onClick={closeAsk}>
+              <ChevronLeft size={16} aria-hidden="true" /> Back to the problem
+            </button>
+          </section>
+        ) : (
+          <section className="curiosity-conversation">
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              if (question.trim() && !props.busy) { props.onCuriosity(question.trim()); setQuestion(""); }
+            }}>
+              <label htmlFor="curiosity-question" className="sheet-title">What are you wondering?</label>
+              <div className="curiosity-input">
+                <input id="curiosity-question" value={question} maxLength={400} onChange={(e) => setQuestion(e.target.value)}
+                  placeholder="What could I use this for?" />
+                <button className="icon-button" disabled={!question.trim() || props.busy} aria-label="Ask question">
+                  <ArrowUpRight size={22} />
+                </button>
+              </div>
+            </form>
+            <button type="button" className="suggestion" disabled={props.busy}
+              onClick={() => props.onCuriosity("Where would I use this in real life?")}>
+              Where would I use this in real life? ↗
+            </button>
+          </section>
+        )}
+      </Sheet>
       <dialog
         ref={dialog}
         className="settings-dialog"
         aria-labelledby={titleId}
         onCancel={closeSettings}
-        onClick={(e) => {
-          if (e.target === dialog.current) closeSettings();
-        }}
+        onClick={(e) => { if (e.target === dialog.current) closeSettings(); }}
       >
         <div className="dialog-header">
-          <h2 id={titleId}>
-            {adult ? "Your family’s studio" : "For the grown-ups"}
-          </h2>
-          <button
-            className="icon-button"
-            aria-label="Close settings"
-            onClick={closeSettings}
-          >
-            <X size={23} />
-          </button>
+          <h2 id={titleId}>Settings</h2>
+          <button className="icon-button" aria-label="Close settings" onClick={closeSettings}><X size={23} /></button>
         </div>
-        {!adult ? (
-          <div className="adult-gate">
-            <div className="gate-icon">
-              <LockKeyhole size={28} />
-            </div>
+        <div className="settings-body">
+          <section>
+            <h3>{props.account.connected ? (props.account.label ?? "Connected to Free2Z") : "AI tutoring with Free2Z"}</h3>
             <p>
-              Account and progress settings are for a grown-up. Please ask yours
-              to join you.
+              A Free2Z account supplies AI access. Progress stays in this app. Selected mathematical
+              learning context is sent to Free2Z and its model provider; names aren’t needed.
             </p>
-            <form
-              onSubmit={(e) => {
+            <span className={`connection-pill ${props.account.connected && props.account.aiReady ? "ready" : "local"}`}>
+              {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · AI not ready" : "Local practice"}
+            </span>
+            {props.account.connected && !props.account.aiReady && <p className="account-status">Local practice continues in this account while AI tutoring is unavailable.</p>}
+            {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
+            {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
+            {(props.account.connected || props.account.balance !== undefined) && (
+              <div className="balance-row">
+                <span>Available balance</span>
+                <strong>{props.account.balance ?? "Not checked yet"}</strong>
+              </div>
+            )}
+            {props.account.status && <p className="account-status">{props.account.status}</p>}
+            {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (
+              <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
+            )}
+            <div className="settings-buttons">
+              {props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
+              {props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
+              {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
+              {props.account.connected ? (
+                <>
+                  <button className="secondary-button" disabled={props.busy} onClick={props.onSignOut}><LogOut size={16} /> Sign out</button>
+                  {props.onRecoverUsage && <button className="secondary-button" disabled={props.busy} onClick={props.onRecoverUsage}>Check pending AI usage</button>}
+                  {props.pendingUsage?.map((op) => (
+                    <div key={op.operationId}>
+                      <p>
+                        Interrupted request from {new Date(op.createdAt).toLocaleString()}. Recovery can complete the
+                        original paid request; it does not create a replacement.
+                      </p>
+                      {op.canRecover && props.onRecoverRequest ? (
+                        <button className="secondary-button" disabled={props.busy} onClick={() => props.onRecoverRequest?.(op.operationId)}>Recover original request</button>
+                      ) : (
+                        <p>Recovery window expired. Keep this usage record for support.</p>
+                      )}
+                    </div>
+                  ))}
+                  {props.account.purchaseAvailable && props.onTopUp && (
+                    <button className="primary-button" disabled={props.busy} onClick={props.onTopUp}>Add 2Z <ArrowUpRight size={16} /></button>
+                  )}
+                </>
+              ) : (
+                <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false} onClick={props.onSignIn}>
+                  Connect Free2Z <ArrowUpRight size={17} />
+                </button>
+              )}
+            </div>
+            {!!props.savedAnswers?.length && <div className="pending-usage" role="status">
+              <strong>Saved AI answers</strong>
+              <p>These answers are already saved. Restoring them does not start a new paid request.</p>
+              {props.savedAnswers.map(saved => <div key={saved.operationId}>
+                <p>{saved.learnerName}</p>
+                <button className="secondary-button" disabled={props.busy || !saved.canRestore} onClick={() => props.onRestoreAnswer?.(saved.operationId)}>Restore saved answer</button>
+                <button className="text-button" disabled={props.busy} onClick={() => props.onDiscardAnswer?.(saved.operationId)}>Set this answer aside</button>
+              </div>)}
+            </div>}
+            <button className="text-button" onClick={closeSettings}>
+              <ChevronLeft size={16} /> Back to learning
+            </button>
+          </section>
+          <section>
+            <h3>Learners</h3>
+            {props.learners?.map((l) => (
+              <button className="learner-choice" key={l.id} disabled={props.busy || !props.onSelectLearner}
+                onClick={() => { props.onSelectLearner?.(l.id); closeSettings(); setView("home"); }}>
+                <span className="avatar">{l.name.slice(0, 1).toUpperCase()}</span>
+                {l.name}
+                <ArrowRight size={16} />
+              </button>
+            ))}
+            {props.onCreateLearner && (
+              <form className="new-learner" onSubmit={(e) => {
                 e.preventDefault();
-                if (gate.trim() === "grown-up") setAdult(true);
-              }}
-            >
-              <label htmlFor="adult-gate">
-                Type <strong>grown-up</strong> to continue
-              </label>
-              <input
-                id="adult-gate"
-                value={gate}
-                onChange={(e) => setGate(e.target.value)}
-                autoCapitalize="off"
-                autoComplete="off"
-              />
-              <button
-                className="primary-button"
-                disabled={gate.trim() !== "grown-up"}
-              >
-                Open grown-up settings <ArrowRight size={18} />
-              </button>
-            </form>
-            <small>
-              This is a pause for adult involvement, not a security lock.
-            </small>
-          </div>
-        ) : (
-          <div className="settings-body">
-            <section>
-              <div className="eyebrow">FREE2Z ACCOUNT</div>
-              <h3>
-                {props.account.connected
-                  ? (props.account.label ?? "Connected to Free2Z")
-                  : "Your Free2Z connection"}
-              </h3>
-              <p>
-                An adult account supplies AI access. Learner progress stays in
-                this app. Selected mathematical learning context is sent to
-                Free2Z and its model provider; learner names aren’t needed.
-              </p>
-              <span className={`connection-pill ${props.account.connected && props.account.aiReady ? "ready" : "local"}`}>
-                {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · AI not ready" : "Local practice"}
-              </span>
-              {props.account.connected && !props.account.aiReady && <p className="account-status">Local practice continues in this account while AI tutoring is unavailable.</p>}
-              {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
-              {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
-              {(props.account.connected || props.account.balance !== undefined) && (
-                <div className="balance-row">
-                  <span>Available balance</span>
-                  <strong>{props.account.balance ?? "Not checked yet"}</strong>
+                if (newName.trim() && !props.busy) { props.onCreateLearner?.(newName.trim(), startGrade); setNewName(""); setView("home"); }
+              }}>
+                <label htmlFor="start-grade">Starting point (we’ll adjust from here)</label>
+                <select id="start-grade" disabled={props.busy} value={startGrade} onChange={(e) => setStartGrade(Number(e.target.value))}>
+                  {Array.from({ length: 9 }, (_, grade) => (
+                    <option key={grade} value={grade}>{grade === 0 ? "Kindergarten" : `Grade ${grade}`}</option>
+                  ))}
+                </select>
+                <label htmlFor="new-learner-name">Name for a new learner</label>
+                <div className="curiosity-input">
+                  <input id="new-learner-name" disabled={props.busy} value={newName} maxLength={40}
+                    onChange={(e) => setNewName(e.target.value)} placeholder="A nickname is enough" />
+                  <button className="icon-button" disabled={props.busy || !newName.trim()} aria-label="Create learner"><Plus size={22} /></button>
                 </div>
-              )}
-              {props.account.status && (
-                <p className="account-status">{props.account.status}</p>
-              )}
-              {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (
-                <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
-              )}
-              <div className="settings-buttons">
-                {props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
-                {props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
-                {props.busy && props.onCancel && (
-                  <button className="secondary-button" onClick={props.onCancel}>
-                    Stop AI request
-                  </button>
-                )}
-                {props.account.connected ? (
-                  <>
-                    <button
-                      className="secondary-button"
-                      disabled={props.busy}
-                      onClick={props.onSignOut}
-                    >
-                      <LogOut size={16} /> Sign out
-                    </button>
-                    {props.onRecoverUsage && (
-                      <button
-                        className="secondary-button"
-                        disabled={props.busy}
-                        onClick={props.onRecoverUsage}
-                      >
-                        Check pending AI usage
-                      </button>
-                    )}
-                    {props.pendingUsage?.map((op) => (
-                      <div key={op.operationId}>
-                        <p>
-                          Interrupted request from{" "}
-                          {new Date(op.createdAt).toLocaleString()}. Recovery
-                          can complete the original paid request; it does not
-                          create a replacement.
-                        </p>
-                        {op.canRecover && props.onRecoverRequest ? (
-                          <button
-                            className="secondary-button"
-                            disabled={props.busy}
-                            onClick={() =>
-                              props.onRecoverRequest?.(op.operationId)
-                            }
-                          >
-                            Recover original request
-                          </button>
-                        ) : (
-                          <p>
-                            Recovery window expired. Keep this usage record for
-                            support.
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                    {props.account.purchaseAvailable && props.onTopUp && (
-                      <button
-                        className="primary-button"
-                        disabled={props.busy}
-                        onClick={props.onTopUp}
-                      >
-                        Add 2Z <ArrowUpRight size={16} />
-                      </button>
-                    )}
-                  </>
-                ) : (
-                  <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false} onClick={props.onSignIn}>
-                    Connect Free2Z <ArrowUpRight size={17} />
-                  </button>
-                )}
+              </form>
+            )}
+          </section>
+          <section>
+            <h3>Your data stays on this device</h3>
+            <p>
+              There’s no automatic Corpora sync. Removing this app may remove progress. Your device’s
+              system backup settings may also apply. Export a backup to keep a separate copy.
+            </p>
+            <div className="settings-buttons">
+              <button className="secondary-button" disabled={props.busy} onClick={props.onExport}><Download size={16} /> Export backup</button>
+              <button className="secondary-button" disabled={props.busy} onClick={props.onImport}><Upload size={16} /> Restore backup</button>
+            </div>
+            <button className="danger-link" disabled={props.busy} onClick={() => setDeleting(!deleting)}>
+              Delete this learner’s local progress
+            </button>
+            {deleting && (
+              <div className="delete-confirm">
+                <p>
+                  Permanently delete <strong>{props.learnerName}’s</strong> progress on this device? This does not
+                  delete Free2Z records. Export a backup first to keep a copy.
+                </p>
+                <button className="danger-button" disabled={props.busy} onClick={() => { props.onDeleteLearner(); setDeleting(false); }}>Delete local learner</button>
+                <button className="text-button" onClick={() => setDeleting(false)}>Keep learner</button>
               </div>
-              {!!props.savedAnswers?.length && <div className="pending-usage" role="status">
-                <strong>Saved AI answers</strong>
-                <p>These answers are already saved. Restoring them does not start a new paid request.</p>
-                {props.savedAnswers.map(saved => <div key={saved.operationId}>
-                  <p>{saved.learnerName}</p>
-                  <button className="secondary-button" disabled={props.busy || !saved.canRestore} onClick={() => props.onRestoreAnswer?.(saved.operationId)}>Restore saved answer</button>
-                  <button className="text-button" disabled={props.busy} onClick={() => props.onDiscardAnswer?.(saved.operationId)}>Set this answer aside</button>
-                </div>)}
-              </div>}
-              <button className="text-button" onClick={() => { closeSettings(); setTab("learn"); }}>
-                <ChevronLeft size={16} /> Back to learning
-              </button>
-            </section>
-            <section>
-              <div className="eyebrow">LOCAL LEARNERS</div>
-              <h3>A space for each curious mind.</h3>
-              {props.learners?.map((l) => (
-                <button
-                  className="learner-choice"
-                  key={l.id}
-                  disabled={props.busy || !props.onSelectLearner}
-                  onClick={() => {
-                    props.onSelectLearner?.(l.id);
-                    closeSettings();
-                  }}
-                >
-                  <span className="avatar">
-                    {l.name.slice(0, 1).toUpperCase()}
-                  </span>
-                  {l.name}
-                  <ArrowRight size={16} />
-                </button>
-              ))}
-              {props.onCreateLearner && (
-                <form
-                  className="new-learner"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    if (newName.trim() && !props.busy) {
-                      props.onCreateLearner?.(newName.trim(), startGrade);
-                      setNewName("");
-                    }
-                  }}
-                >
-                  <label htmlFor="start-grade">
-                    Starting point (we’ll adjust from here)
-                  </label>
-                  <select
-                    id="start-grade"
-                    disabled={props.busy}
-                    value={startGrade}
-                    onChange={(e) => setStartGrade(Number(e.target.value))}
-                  >
-                    {Array.from({ length: 9 }, (_, grade) => (
-                      <option key={grade} value={grade}>
-                        {grade === 0 ? "Kindergarten" : `Grade ${grade}`}
-                      </option>
-                    ))}
-                  </select>
-                  <label htmlFor="new-learner-name">
-                    Nickname for a new learner
-                  </label>
-                  <div className="curiosity-input">
-                    <input
-                      id="new-learner-name"
-                      disabled={props.busy}
-                      value={newName}
-                      maxLength={40}
-                      onChange={(e) => setNewName(e.target.value)}
-                      placeholder="A nickname is enough"
-                    />
-                    <button
-                      className="icon-button"
-                      disabled={props.busy || !newName.trim()}
-                      aria-label="Create learner"
-                    >
-                      <Plus size={22} />
-                    </button>
-                  </div>
-                </form>
-              )}
-            </section>
-            <section>
-              <div className="eyebrow">YOUR DATA, YOUR DEVICE</div>
-              <h3>Keep your discoveries safe.</h3>
-              <p>
-                There’s no automatic Corpora sync. Removing this app may remove
-                progress. Your device’s system backup settings may also apply.
-                Export a backup to keep a separate copy.
-              </p>
-              <div className="settings-buttons">
-                <button className="secondary-button" disabled={props.busy} onClick={props.onExport}>
-                  <Download size={16} /> Export backup
-                </button>
-                <button className="secondary-button" disabled={props.busy} onClick={props.onImport}>
-                  <Upload size={16} /> Restore backup
-                </button>
-              </div>
-              <button
-                className="danger-link"
-                disabled={props.busy}
-                onClick={() => setDeleting(!deleting)}
-              >
-                Delete this learner’s local progress
-              </button>
-              {deleting && (
-                <div className="delete-confirm">
-                  <p>
-                    Permanently delete <strong>{props.learnerName}’s</strong>{" "}
-                    progress on this device? This does not delete Free2Z
-                    records. Export a backup first if you want to keep it.
-                  </p>
-                  <button
-                    className="danger-button"
-                    disabled={props.busy}
-                    onClick={() => {
-                      props.onDeleteLearner();
-                      setDeleting(false);
-                    }}
-                  >
-                    Delete local learner
-                  </button>
-                  <button
-                    className="text-button"
-                    onClick={() => setDeleting(false)}
-                  >
-                    Keep learner
-                  </button>
-                </div>
-              )}
-            </section>
-            <section>
-              <div className="eyebrow">HELP</div>
-              <h3>Something not working?</h3>
-              <p>
-                A report lists the app version, device type, and recent errors.
-                It doesn’t include names, answers, or account details.
-              </p>
-              <ReportProblem signedIn={props.account.connected} aiReady={!!props.account.aiReady} />
-            </section>
-          </div>
-        )}
+            )}
+          </section>
+          <section>
+            <h3>Something not working?</h3>
+            <p>A report lists the app version, device type, and recent errors. It doesn’t include names, answers, or account details.</p>
+            <ReportProblem signedIn={props.account.connected} aiReady={!!props.account.aiReady} />
+          </section>
+        </div>
       </dialog>
     </div>
   );

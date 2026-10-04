@@ -9,6 +9,14 @@ Initialize from `aha/aha-app` with `npm run tauri -- ios init --ci` or
 `npm run tauri -- android init --ci`. The iOS source template is `ios/project.yml`,
 not the ignored generated Xcode project. CLI 2.11.4 generates Android compile/target
 SDK 36; the app config sets minimum API 29. The iOS minimum is 16.
+The generated Android project is never committed, so `build.rs` patches it during
+`tauri android build`: the OAuth intent filter, and dark status-bar icons on the
+edge-to-edge activity (the studio is always light; the template's bare
+`enableEdgeToEdge()` turns the icons white in system dark mode). Android WebView
+reports `env(safe-area-inset-*)`; the studio paints a fixed backdrop behind the top
+inset so scrolled content never sits under the clock. If a reused `CARGO_TARGET_DIR`
+skips build scripts after a fresh `android init`, `gen/android/.../generated/` stays
+empty and Kotlin fails on `TauriActivity`; force a rebuild of the app crate.
 Supply `APPLE_DEVELOPMENT_TEAM` for signed iOS initialization/builds; no account's
 team identifier is baked into the app configuration or template.
 
@@ -39,7 +47,7 @@ background/kill/resume behavior need device tests before release claims.
 ## Free2Z native host
 
 The official plugin is pinned to the public source preview
-`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; its transitive core is the sole native
+`e95becd6517bada55ca933e4072ebf13bbbb3bff`; its transitive core is the sole native
 client. Configure the public registration through the build environment variable
 `AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
 No credentials, endpoint overrides or callback injection commands are exposed to
@@ -59,7 +67,7 @@ This version does not claim a verified HTTPS app link.
 a current enforced total-period grant through the SDK before admitting paid work;
 there is no compile-time paid-readiness override. Purchase/checkout permissions
 remain disabled. A fixed native command opens the Free2Z account-management page
-for grown-ups; it accepts no URL from the webview. Compiling the SDK does not establish
+from Settings; it accepts no URL from the webview. Compiling the SDK does not establish
 successful login, persistent credentials, live metering or settlement. Those require
 registered-account testing on each shipping platform, without publishing account
 details or authentication logs.
