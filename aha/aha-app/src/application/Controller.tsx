@@ -244,7 +244,10 @@ export default function Controller() {
     setCompleted(restored.completed);
     currentActivity.current = restored.activity;
     hintsUsed.current = restored.hintsUsed;
-    firstAnswer.current = restored.firstAnswer;
+    // A grader change between versions could make a saved miss correct or unreadable; then drop
+    // the pending retry but keep its assistance, so the item can still be answered and recorded.
+    const pendingMiss = restored.activity && restored.firstAnswer !== undefined ? gradeAnswer(restored.activity, restored.firstAnswer) : undefined;
+    firstAnswer.current = pendingMiss && !pendingMiss.error && !pendingMiss.correct ? restored.firstAnswer : undefined;
     setActivity(restored.activity);
     savedCuriosity.current = restored.curiosity;
     setCuriosity(restored.curiosity);
@@ -256,7 +259,7 @@ export default function Controller() {
       setHint(
         restored.activity.hint ?? "Use a drawing to represent each quantity.",
       );
-    if (restored.activity && restored.firstAnswer !== undefined) setFeedback(retryNudge());
+    if (restored.activity && firstAnswer.current !== undefined) setFeedback(retryNudge());
   }
 
   async function loadAccount(repo: LocalRepository) {
@@ -519,6 +522,8 @@ export default function Controller() {
     }
     if (saved) { await deliverReply(saved); return; }
     if (pendingActivity.current) {await showActivity(pendingActivity.current, pendingWorked.current);pendingActivity.current=undefined;return;}
+    // Record a pending retry's miss before choosing what comes next (showActivity keeps a backstop).
+    await settlePendingRetry();
     const state = learning.current;
     if (!state) return;
     if (count.current >= 10) {
@@ -712,6 +717,8 @@ export default function Controller() {
     if (!a) return;
     if (kind === "dispute") {
       // Keep an append-only dispute journal; projection is rebuilt without this item's evidence.
+      // A pending retry's miss is recorded first so the disputed item stays auditable.
+      await settlePendingRetry();
       const state = learning.current!;
       const updated = quarantineActivity(
         state,

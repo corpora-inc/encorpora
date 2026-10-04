@@ -322,6 +322,13 @@ try{
   const abandoned=Object.values((await retryDb()).attempts).flat().filter(r=>r.activityId===left.id);
   assert.equal(abandoned.length,1,'a pending miss is recorded before the activity changes');
   assert.equal(abandoned[0].data.correct,false);assert.equal(abandoned[0].data.independent,false);assert.equal(abandoned[0].data.firstAnswer,missFor(expectedAnswer(left.task)));
+  // Flagging a problem mid-retry keeps the miss auditable (recorded, then excluded by the dispute).
+  await retrier.getByRole('button',{name:'Check',exact:true}).waitFor();
+  const flagged=await shownTask();
+  await respond(missFor(expectedAnswer(flagged.task)));await retrier.locator('.feedback-line.nudge').waitFor();
+  await retrier.getByRole('button',{name:'Something seems off',exact:true}).click();await retrier.getByRole('button',{name:'Set it aside',exact:true}).click();
+  await retrier.waitForFunction(id=>(Object.values(window.__ahaFixture.read().disputes).flat()).some(d=>d.activityId===id),flagged.id);
+  assert.equal(Object.values((await retryDb()).attempts).flat().filter(r=>r.activityId===flagged.id).length,1,'a flagged pending retry still records its miss');
   await retryContext.close();
   assert.deepEqual(errors,[],'browser errors');
   console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (nudge line, restart, See how, save failure, leaving mid-retry, one ledger attempt), evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, problem report, compact layout, #869 focus-mode pass bar (no page scroll, keyboard-safe dock, ≤12 chrome words, 44px targets) for local tasks and every Activity Spec fixture, domain-gated sign key, gate-free Settings (#870). Explicit test IPC fixture; not native acceptance.');
