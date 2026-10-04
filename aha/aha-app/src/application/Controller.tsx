@@ -143,6 +143,8 @@ export default function Controller() {
   /** An AI activity whose presentation save failed, with its exact activity record for an idempotent retry. */
   const pendingAi = useRef<{item: QueuedActivity; record: {id: string; sessionId: string; createdAt: string; data: Json}} | undefined>(undefined);
   const prefetching = useRef<Promise<void> | undefined>(undefined);
+  /** The learner asked for harder and no queued activity was; the next paid batch carries the signal. */
+  const wantsHarder = useRef(false);
   /** Spec hints revealed for the AI activity on screen (separate from the assistance count). */
   const aiHintsShown = useRef(0);
   const sessionWrites = useRef<Promise<unknown>>(Promise.resolve());
@@ -160,6 +162,7 @@ export default function Controller() {
   function clearAi() {
     currentAi.current = undefined;
     aiQueue.current.replace([]);
+    wantsHarder.current = false;
     pendingAi.current = undefined;
     setAiItem(undefined);
     setAiResult(undefined);
@@ -279,7 +282,7 @@ export default function Controller() {
     // so a batch delivered meanwhile is neither overwritten in memory nor dropped from storage.
     await presentFromQueue(aiQueue.current, item, (rest, commit) => writeSession(p.id, () => ({
       activity: null,
-      hintsUsed: 0,
+      hintsUsed: item.hintsUsed ?? 0,
       completed: count.current,
       sessionId: sessionId.current,
       aiActivity: item,
@@ -289,7 +292,7 @@ export default function Controller() {
       currentAi.current = item;
       currentActivity.current = undefined;
       savedCuriosity.current = undefined;
-      hintsUsed.current = 0;
+      hintsUsed.current = item.hintsUsed ?? 0;
       aiHintsShown.current = 0;
       firstAnswer.current = undefined;
     }));
@@ -677,16 +680,34 @@ export default function Controller() {
     // Optional timed recall stays a short local interleave: AI activities are conceptual evidence.
     const recall = aiPath && !stretch && count.current > 0 && count.current % 5 === 0 ? selectFluencySkill(state) : undefined;
     if (aiPath && !recall) {
-      let item = takeNext(aiQueue.current.items, stretch).next;
+      // "Try something harder" on an unanswered AI activity must not waste it (#877): it is only left
+      // for a queued activity that is harder, and then it goes back to the front of the queue.
+      const onScreen = stretch ? currentAi.current : undefined;
+      const skipping = onScreen && !state.attempts.some(e => e.activityId === onScreen.activityId) ? onScreen : undefined;
+      const above = skipping?.spec.difficulty;
+      let item = takeNext(aiQueue.current.items, stretch, above).next;
       if (!item && prefetching.current) {
         await prefetching.current.catch(() => undefined);
         assertActionActive();
-        item = takeNext(aiQueue.current.items, stretch).next;
+        item = takeNext(aiQueue.current.items, stretch, above).next;
+      }
+      if (!item && stretch) wantsHarder.current = true;
+      if (!item && skipping) {
+        // Nothing harder is queued: keep the paid activity on screen and let the next batch (requested
+        // by the normal prefetch policy, never an extra call for this tap) carry the signal.
+        maybePrefetch();
+        return;
       }
       if (!item && aiAttemptDue() && await requestBatch("next activity", true))
-        item = takeNext(aiQueue.current.items, stretch).next;
+        item = takeNext(aiQueue.current.items, stretch, above).next;
       if (item) {
-        await showSpec(item);
+        if (skipping) aiQueue.current.requeueFront(hintsUsed.current > 0 ? {...skipping, hintsUsed: hintsUsed.current} : skipping);
+        try { await showSpec(item); }
+        catch (e) {
+          // The skipped activity is still the one on screen: it must not also wait in the queue.
+          if (skipping && currentAi.current?.activityId === skipping.activityId) aiQueue.current.remove(skipping.activityId);
+          throw e;
+        }
         maybePrefetch();
         return;
       }
@@ -745,7 +766,8 @@ export default function Controller() {
       // another paid call: local practice serves the learner and AI is retried after a backoff.
       selectedModel.current = chooseTutorModel(await getNativeClient().models());
       const runtime = await loadAiActivities();
-      const request = runtime.buildBatchRequest(state, gradeHint(p));
+      const harder = wantsHarder.current;
+      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder);
       if (foreground) assertActionActive();
       if (!stillCurrent()) return false;
       const reply = await tutor.reply(selectedModel.current, request.system, request.user, authorization,
@@ -758,6 +780,7 @@ export default function Controller() {
       if (aiQueue.current.length <= queuedBefore)
         throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       aiBackoff.current.recordSuccess();
+      if (harder) wantsHarder.current = false;
       setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance."});
       void getNativeClient().balance()
         .then(b => { if (stillCurrent()) setAccount(a => ({...a, balance: format2z(b.available_milli_2z)})); })

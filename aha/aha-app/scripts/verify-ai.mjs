@@ -31,7 +31,9 @@ function fixture(specs){
     const usable=specs.filter(f=>f.skillIds.every(id=>allowed.has(id)));
     const pool=usable.length>=3?usable:specs;
     const start=(ai.batches++*3)%pool.length;
-    const chosen=[0,1,2].map(i=>pool[(start+i)%pool.length]);
+    let chosen=[0,1,2].map(i=>pool[(start+i)%pool.length]);
+    // TEST-ONLY: pin each activity's difficulty so a scenario can queue a harder or an easier one.
+    if(ai.difficulties)chosen=chosen.map((c,i)=>({...c,difficulty:ai.difficulties[i]??c.difficulty}));
     if(ai.malformedNext){
       ai.malformedNext=false;
       // Fenced, with chatter, and one activity whose key disagrees with its own keyCheck.
@@ -398,8 +400,60 @@ try {
   await page.getByRole('button',{name:'Sign out',exact:true}).waitFor();
   assert.equal(await page.locator('.error-banner').count(),0,'a successful sign-in clears the earlier message');
   assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),Array(3).fill({spendCap:'500',spendPeriod:'total'}),'every sign-in carries only the spend-cap hint, as decimal strings');
+  // ---- "Try something harder" never discards a paid, unanswered AI activity (#877; TEST fixture specs) ----
+  {
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];});
+    const h=await ctx.newPage();
+    const hErrors=[];h.on('pageerror',e=>hErrors.push(e.message));
+    const hs=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
+    const hAttempts=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat());
+    const hStarts=()=>h.evaluate(()=>window.__ahaAI.starts.length);
+    const harder=h.getByRole('button',{name:'Try something harder',exact:true});
+    const shown=async()=>(await hs()).aiActivity?.activityId;
+    const waitShown=async id=>{await h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId===i,id);};
+    await h.goto('http://127.0.0.1:1436');
+    const begin=h.getByRole('button',{name:'Let’s begin',exact:true});
+    await begin.click();
+    await h.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    const first=await shown();
+    let st=await hs();
+    assert.equal(st.aiActivity.spec.difficulty,5);
+    assert.deepEqual(st.aiQueue.map(q=>q.spec.difficulty),[8,3]);
+    const [hard,easy]=st.aiQueue.map(q=>q.activityId);
+    assert.equal(await hStarts(),1);
+    // A harder activity is queued: it is shown with no new paid call, and the skipped one waits at the front.
+    await harder.click();
+    await waitShown(hard);
+    st=await hs();
+    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[first,easy],'the skipped paid activity is kept at the front of the queue');
+    assert.equal(await hStarts(),1,'harder with a harder activity queued made no paid call');
+    assert.equal((await hAttempts()).length,0,'skipping is not an attempt');
+    // Nothing harder than 8 is queued: the current activity stays, nothing is lost, no extra paid call.
+    await harder.click();
+    await h.waitForTimeout(500);
+    st=await hs();
+    assert.equal(st.aiActivity.activityId,hard,'with nothing harder the current activity is not replaced');
+    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[first,easy],'and the queue is untouched');
+    assert.equal(await hStarts(),1,'no paid call solely because of the button while content is queued');
+    assert.equal((await hAttempts()).length,0);
+    // Answer it; the next batch (requested by the normal prefetch when the queue runs low) carries the signal.
+    const key=st.aiActivity.spec.response.answer;
+    await h.locator('.aha-activity input[inputmode="decimal"]').fill(String(key));
+    await h.getByRole('button',{name:'Check',exact:true}).click();
+    await h.getByRole('button',{name:'Next',exact:true}).click();
+    await waitShown(first);
+    await h.waitForFunction(()=>window.__ahaAI.starts.length===2);
+    const user=await h.evaluate(()=>window.__ahaAI.requests.at(-1).messages[1].content[0].text);
+    assert.match(user,/"wantsHarder":true/,'the next batch request tells the model the learner wants harder');
+    const attempts=await hAttempts();
+    assert.deepEqual(attempts.map(a=>a.data.activityId),[hard],'only the answered activity has evidence');
+    assert.deepEqual(hErrors,[]);
+    await ctx.close();
+  }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, and the sign-in spend-cap hint. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the sign-in spend-cap hint, and Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

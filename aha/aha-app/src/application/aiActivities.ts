@@ -32,8 +32,8 @@ export interface BatchRequest {
 }
 
 /** The learner summary comes from the evidence ledger only: levels and results, never names or ids. */
-export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString()): BatchRequest {
-  const summary = buildLearnerSummary({ gradeHint, ledger: state, now });
+export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false): BatchRequest {
+  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder });
   const prompt = buildActivityPrompt(summary, { count: BATCH_SIZE });
   return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], maxOutputTokens: BATCH_MAX_OUTPUT_TOKENS, summary };
 }
