@@ -700,7 +700,7 @@ export function Studio(props: StudioProps) {
               <span className={`connection-pill ${props.account.connected && props.account.aiReady ? "ready" : "local"}`}>
                 {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · AI not ready" : "Local practice"}
               </span>
-              {props.account.connected && !props.account.aiReady && <p className="account-status">Sign out to use this device’s local-practice profile.</p>}
+              {props.account.connected && !props.account.aiReady && <p className="account-status">Local practice continues in this account while AI tutoring is unavailable.</p>}
               {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
               {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
               {(props.account.connected || props.account.balance !== undefined) && (
