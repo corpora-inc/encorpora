@@ -8,11 +8,16 @@ import os
 import re
 from pathlib import Path
 import struct
+import subprocess
 import time
+import unicodedata
 import zipfile
 
 BUNDLE = 'inc.corpora.aha'
 PAGE = 16384
+TESTFLIGHT_NOTES_LIMIT = 4000  # betaBuildLocalizations.whatsNew
+PLAY_NOTES_LIMIT = 500  # Play release notes, per language
+NOTES_LOCALE = 'en-US'
 
 
 class ReleaseCheckError(ValueError):
@@ -253,6 +258,125 @@ def play_check(store: Store, build: str | None, *, audience_build=None, since=No
         store.request('DELETE', f'{BUNDLE}/edits/{edit}')
 
 
+REDACTED = '[redacted]'
+# Ordered: the broad opaque-token pattern runs after the specific ones.
+_SECRET_PATTERNS = [
+    re.compile(r'-----BEGIN[A-Z ]*-----.*?(?:-----END[A-Z ]*-----|\Z)', re.S),
+    re.compile(r'\b[a-z][a-z0-9+.-]*://[^\s/@]+@\S+', re.I),
+    re.compile(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}'),
+    re.compile(r'\beyJ[A-Za-z0-9_-]{4,}\.[A-Za-z0-9_-]{4,}(?:\.[A-Za-z0-9_-]*)?'),
+    re.compile(r'\b(?:gh[pousr]_[A-Za-z0-9]{16,}|github_pat_[A-Za-z0-9_]{16,}|AKIA[0-9A-Z]{16}|ASIA[0-9A-Z]{16}'
+               r'|AIza[0-9A-Za-z_-]{20,}|xox[abposr]-[A-Za-z0-9-]{8,}|sk-[A-Za-z0-9_-]{12,}|glpat-[A-Za-z0-9_-]{12,})'),
+    re.compile(r'(?i)\b(?:password|passwd|secret|token|api[_-]?key|private[_-]?key|client[_-]?secret|authorization)'
+               r'\s*[:=]\s*\S+'),
+    re.compile(r'(?i)\bbearer\s+\S+'),
+    re.compile(r'[A-Za-z0-9+/_=-]{32,}'),
+    re.compile(r'(?<![\w@])@[A-Za-z0-9][A-Za-z0-9-]{0,38}\b'),
+]
+
+
+def sanitize_notes(text: str) -> str:
+    """Plain, single-language release notes with secrets and identities removed."""
+    if not isinstance(text, str):
+        raise ReleaseCheckError('Release notes must be text')
+    text = text[:20000].replace('\r\n', '\n').replace('\r', '\n').replace('\t', ' ')
+    # Drop control and format characters (including bidi overrides), keeping newlines.
+    text = ''.join(c for c in text if c == '\n' or unicodedata.category(c) not in ('Cc', 'Cf', 'Cs', 'Co'))
+    for pattern in _SECRET_PATTERNS:
+        text = pattern.sub(REDACTED, text)
+    lines = [line.rstrip() for line in text.split('\n')]
+    text = re.sub(r'\n{3,}', '\n\n', '\n'.join(lines))
+    return text.strip()
+
+
+def truncate_notes(text: str, limit: int) -> str:
+    if len(text) <= limit:
+        return text
+    cut = text[:limit-1]
+    newline = cut.rfind('\n')
+    if newline > limit // 2:
+        cut = cut[:newline]
+    return cut.rstrip() + '\u2026'
+
+
+def aha_commit_subjects(head: str, previous: str = '', *, run=subprocess.run) -> tuple[list[str], bool]:
+    """Subjects of commits touching aha/ since a previous release commit (or recent ones)."""
+    def git(*args):
+        return run(['git', *args], text=True, capture_output=True, check=False)
+    since = bool(previous and re.fullmatch(r'[0-9a-f]{40}', previous)
+                 and git('merge-base', '--is-ancestor', previous, head).returncode == 0)
+    span = [f'{previous}..{head}', '-n', '30'] if since else [head, '-n', '10']
+    result = git('log', '--no-merges', '--format=%s', *span, '--', 'aha/')
+    if result.returncode != 0:
+        return [], since
+    return [line.strip() for line in result.stdout.splitlines() if line.strip()], since
+
+
+def release_notes(build: str, sha: str, raw: str = '', previous: str = '', *, run=subprocess.run) -> str:
+    if not re.fullmatch(r'[1-9][0-9]{0,9}', build or '') or not re.fullmatch(r'[0-9a-f]{40}', sha or ''):
+        raise ReleaseCheckError('Release notes need a numeric build and a full commit SHA')
+    custom = sanitize_notes(raw or '')
+    if custom:
+        return truncate_notes(custom, TESTFLIGHT_NOTES_LIMIT)
+    text = f'Build {build} from {sha[:9]}.'
+    subjects, since = aha_commit_subjects(sha, previous, run=run)
+    if subjects:
+        heading = 'Changes since the previous release:' if since else 'Recent changes:'
+        text += '\n\n' + heading + '\n' + '\n'.join('- '+subject for subject in subjects)
+    return truncate_notes(sanitize_notes(text), TESTFLIGHT_NOTES_LIMIT)
+
+
+def notes_from_env(build: str) -> str:
+    """Gate-composed notes; a missing or unusable value falls back to the build number."""
+    try:
+        text = sanitize_notes(json.loads(os.environ.get('RELEASE_NOTES_JSON', '')))
+    except (ValueError, ReleaseCheckError):
+        text = ''
+    if text:
+        return text
+    if not re.fullmatch(r'[0-9][0-9.]{0,30}', build or ''):
+        raise ReleaseCheckError('Release notes are unavailable and the build number is invalid')
+    print('::warning::Composed release notes were unavailable; using the build number only.')
+    return f'Build {build}.'
+
+
+def ios_set_whats_new(store: Store, build: str, text: str):
+    """Create or update the en-US TestFlight "What to Test" text of one processed build."""
+    text = truncate_notes(sanitize_notes(text), TESTFLIGHT_NOTES_LIMIT)
+    if not text:
+        raise ReleaseCheckError('Release notes are empty')
+    apps = store.request('GET', 'apps', params={'filter[bundleId]': BUNDLE})['data']
+    if len(apps) != 1:
+        raise ReleaseCheckError('AHA App Store Connect app record is not available')
+    builds = store.request('GET', 'builds', params={'filter[app]': apps[0]['id'], 'filter[version]': build, 'limit': 20})['data']
+    if len(builds) != 1:
+        raise ReleaseCheckError('Expected exactly one build with this build number')
+    if builds[0]['attributes'].get('processingState') != 'VALID':
+        raise ReleaseCheckError('Build is not processed; What to Test is set only on a VALID build')
+    build_id = builds[0]['id']
+    existing = store.request('GET', f'builds/{build_id}/betaBuildLocalizations', params={'limit': 50})['data']
+    matches = [item for item in existing if item.get('attributes', {}).get('locale') == NOTES_LOCALE]
+    if matches:
+        store.request('PATCH', f'betaBuildLocalizations/{matches[0]["id"]}', json={'data': {
+            'type': 'betaBuildLocalizations', 'id': matches[0]['id'], 'attributes': {'whatsNew': text}}})
+    else:
+        store.request('POST', 'betaBuildLocalizations', json={'data': {
+            'type': 'betaBuildLocalizations', 'attributes': {'locale': NOTES_LOCALE, 'whatsNew': text},
+            'relationships': {'build': {'data': {'type': 'builds', 'id': build_id}}}}})
+    print(f'TestFlight What to Test set for build {build} ({NOTES_LOCALE}, {len(text)} characters).')
+
+
+def write_play_notes(directory: Path, text: str) -> Path:
+    text = truncate_notes(sanitize_notes(text), PLAY_NOTES_LIMIT)
+    if not text:
+        raise ReleaseCheckError('Release notes are empty')
+    directory.mkdir(parents=True, exist_ok=True)
+    path = directory/f'whatsnew-{NOTES_LOCALE}'
+    path.write_text(text, encoding='utf-8')
+    print(f'Play release notes written ({NOTES_LOCALE}, {len(text)} characters).')
+    return path
+
+
 def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest='command', required=True)
@@ -265,7 +389,29 @@ def main():
         cmd = sub.add_parser(name); cmd.add_argument('--platform', choices=['ios', 'android'], required=True)
         cmd.add_argument('--build', required=name == 'verify')
         cmd.add_argument('--since', type=int, required=name == 'verify')
+    notes = sub.add_parser('notes')
+    notes.add_argument('--build', required=True)
+    notes.add_argument('--sha', required=True)
+    notes.add_argument('--previous', default='')
+    whats_new = sub.add_parser('whats-new')
+    whats_new.add_argument('--platform', choices=['ios', 'android'], required=True)
+    whats_new.add_argument('--build')
+    whats_new.add_argument('--dir', type=Path)
     args = parser.parse_args()
+    if args.command == 'notes':
+        # One ASCII line, safe to write to GITHUB_OUTPUT.
+        print(json.dumps(release_notes(args.build, args.sha, os.environ.get('RELEASE_NOTES', ''), args.previous)))
+        return
+    if args.command == 'whats-new':
+        if not args.build:
+            raise ReleaseCheckError('whats-new needs --build')
+        if args.platform == 'ios':
+            ios_set_whats_new(Store('ios'), args.build, notes_from_env(args.build))
+        else:
+            if not args.dir:
+                raise ReleaseCheckError('whats-new for Android needs --dir')
+            write_play_notes(args.dir, notes_from_env(args.build))
+        return
     if args.command == 'elf':
         verify_bundle(args.bundle); return
     if args.command == 'android-app':

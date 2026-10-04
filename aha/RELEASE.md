@@ -72,6 +72,14 @@ After app records and existing authorized testing audiences are configured:
 gh workflow run release-aha.yml --repo corpora-inc/encorpora --ref main -f platforms=both
 ```
 
+Tester notes: add `-f release_notes='…'` to set TestFlight “What to Test” and the
+Play internal release notes (en-US). Without it, the run writes “Build N from
+<sha>” plus the subjects of `aha/` commits since the previous `aha-v*` tag or
+successful release run. Notes are sanitized (emails, handles, tokens and keys are
+redacted) and truncated to 4000 characters for TestFlight and 500 for Play. The
+TestFlight text is set after the build is verified; a failure there is reported
+without failing delivery.
+
 Normal delivery checks app/audience access before expensive builds. Android requires
 a completed internal release; it will not silently substitute a draft on a new
 app. If Play requires the initial release to be completed in Console, finish that

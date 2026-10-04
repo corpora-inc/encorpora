@@ -204,5 +204,116 @@ class ReleaseTests(unittest.TestCase):
                                   text=True,capture_output=True,check=True)
             self.assertEqual(dict(line.split('=',1) for line in result.stdout.splitlines()),values)
 
+    def test_release_notes_redact_secrets_identities_and_control_characters(self):
+        raw=('Fix sums\r\nContact tester@example.com or @someone\u202e\x07\n'
+             'token=abc123 Bearer abc.def eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.sig '
+             'ghp_'+'a'*36+' AKIA'+'B'*16+' https://user:pass@host/x '
+             # PEM armour is split so the repository secret scan does not flag this fixture.
+             '-----BEGIN '+'PRIVATE KEY-----\nMIIE\n-----END '+'PRIVATE KEY----- '+'f'*40+'\n\n\n\nDone')
+        text=release.sanitize_notes(raw)
+        for leaked in ('tester@example.com','@someone','abc123','abc.def','eyJ','ghp_','AKIA','user:pass',
+                       'MIIE','f'*40,'\u202e','\x07','\r'):
+            self.assertNotIn(leaked,text)
+        self.assertIn('Fix sums',text); self.assertIn('Done',text)
+        self.assertNotIn('\n\n\n',text)
+        self.assertEqual(release.sanitize_notes(text),text)
+
+    def test_release_notes_truncate_to_store_limits(self):
+        long='\n'.join(f'- change number {i}' for i in range(1000))
+        for limit in (release.TESTFLIGHT_NOTES_LIMIT,release.PLAY_NOTES_LIMIT):
+            cut=release.truncate_notes(long,limit)
+            self.assertLessEqual(len(cut),limit); self.assertTrue(cut.endswith('\u2026'))
+        self.assertEqual(release.truncate_notes('short',500),'short')
+        self.assertLessEqual(len(release.truncate_notes('x'*9000,500)),500)
+
+    def test_default_notes_use_aha_commits_since_previous_release(self):
+        sha='a'*40; prev='b'*40; calls=[]
+        def run(args,**_):
+            calls.append(args)
+            out='fix(aha): calm feedback\nfeat(aha): add review\n' if args[1]=='log' else ''
+            return subprocess.CompletedProcess(args,0,out,'')
+        text=release.release_notes('29000123',sha,'',prev,run=run)
+        self.assertTrue(text.startswith('Build 29000123 from aaaaaaaaa.'))
+        self.assertIn('Changes since the previous release:\n- fix(aha): calm feedback\n- feat(aha): add review',text)
+        log=[c for c in calls if c[1]=='log'][0]
+        self.assertIn(f'{prev}..{sha}',log); self.assertEqual(log[-2:],['--','aha/'])
+
+    def test_default_notes_fall_back_without_a_valid_previous_release(self):
+        def run(args,**_):
+            if args[1]=='merge-base': return subprocess.CompletedProcess(args,1,'','')
+            return subprocess.CompletedProcess(args,0,'docs(aha): handoff\n','')
+        for prev in ('', 'c'*40, '$(touch x)'):
+            text=release.release_notes('29000123','a'*40,'',prev,run=run)
+            self.assertIn('Recent changes:\n- docs(aha): handoff',text)
+        failing=lambda args,**_: subprocess.CompletedProcess(args,128,'','')
+        self.assertEqual(release.release_notes('29000123','a'*40,run=failing),'Build 29000123 from aaaaaaaaa.')
+
+    def test_custom_notes_win_and_inputs_are_validated(self):
+        never=lambda *a,**k: self.fail('custom notes must not read git')
+        self.assertEqual(release.release_notes('29000123','a'*40,'  Try fractions.  ',run=never),'Try fractions.')
+        self.assertLessEqual(len(release.release_notes('29000123','a'*40,'y '*5000,run=never)),4000)
+        for build,sha in (('0','a'*40),('42x','a'*40),('42','abc'),('42','A'*40)):
+            with self.assertRaises(ValueError): release.release_notes(build,sha,'x',run=never)
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_ios_whats_new_patches_existing_en_us_localization(self, _output):
+        replies=ios_replies()
+        replies[('GET','builds/build/betaBuildLocalizations')]={'data':[
+            {'id':'fr','attributes':{'locale':'fr-FR'}},{'id':'loc','attributes':{'locale':'en-US'}}]}
+        sent=[]
+        def patch_loc(): sent.append('patch'); return {}
+        replies[('PATCH','betaBuildLocalizations/loc')]=patch_loc
+        store=FakeStore(replies)
+        release.ios_set_whats_new(store,'42','Try fractions. me@example.com')
+        self.assertEqual(sent,['patch'])
+        self.assertNotIn(('POST','betaBuildLocalizations'),store.calls)
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_ios_whats_new_creates_localization_with_truncated_text(self, _output):
+        captured={}
+        class Capturing(FakeStore):
+            def request(self, method, path, **kwargs):
+                if method=='POST': captured.update(kwargs['json'])
+                return super().request(method,path,**kwargs)
+        replies=ios_replies()
+        replies[('GET','builds/build/betaBuildLocalizations')]={'data':[]}
+        replies[('POST','betaBuildLocalizations')]={'data':{'id':'new'}}
+        release.ios_set_whats_new(Capturing(replies),'42','z'*5000+' secret=hunter2')
+        data=captured['data']
+        self.assertEqual(data['attributes']['locale'],'en-US')
+        self.assertLessEqual(len(data['attributes']['whatsNew']),4000)
+        self.assertEqual(data['relationships']['build']['data'],{'type':'builds','id':'build'})
+
+    def test_ios_whats_new_requires_one_processed_build(self):
+        for builds in ([], [{'id':'b','attributes':{'processingState':'PROCESSING'}}],
+                       [{'id':'b','attributes':{'processingState':'VALID'}}]*2):
+            replies=ios_replies(); replies[('GET','builds')]={'data':builds}
+            store=FakeStore(replies)
+            with self.assertRaises(ValueError): release.ios_set_whats_new(store,'42','notes')
+            self.assertFalse([c for c in store.calls if c[0] in ('POST','PATCH')])
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_play_notes_file_is_en_us_and_within_limit(self, _output):
+        with tempfile.TemporaryDirectory() as d:
+            path=release.write_play_notes(Path(d)/'whatsnew','w '*400)
+            self.assertEqual(path.name,'whatsnew-en-US')
+            self.assertLessEqual(len(path.read_text(encoding='utf-8')),500)
+            with self.assertRaises(ValueError): release.write_play_notes(Path(d)/'empty','\x00 ')
+        with patch.dict(os.environ,{'RELEASE_NOTES_JSON':json.dumps('Build 1 from abc.')}):
+            self.assertEqual(release.notes_from_env('1'),'Build 1 from abc.')
+        # A dropped or malformed job output must not block delivery.
+        for raw in ('','not json','42','""'):
+            with patch.dict(os.environ,{'RELEASE_NOTES_JSON':raw}):
+                self.assertEqual(release.notes_from_env('29000123'),'Build 29000123.')
+                with self.assertRaises(ValueError): release.notes_from_env('$(id)')
+
+    def test_workflow_passes_release_notes_only_through_env(self):
+        workflow=(Path(__file__).resolve().parents[2]/'.github/workflows/release-aha.yml').read_text()
+        lines=[line.strip() for line in workflow.splitlines() if 'release_notes' in line and '${{' in line]
+        self.assertTrue(lines)
+        for line in lines:
+            self.assertRegex(line,r'^(RELEASE_NOTES(_JSON)?|release_notes): \$\{\{ [a-z_.]+ \}\}$')
+        self.assertIn('whatsNewDirectory:',workflow)
+
 
 if __name__ == '__main__': unittest.main()
