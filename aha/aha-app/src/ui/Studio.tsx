@@ -392,7 +392,7 @@ export function Studio(props: StudioProps) {
                     disabled={props.busy}
                     onClick={() => props.onSupport("explain")}
                   >
-                    {readyNext ? "Show me how it works" : "Explain another way"}
+                    {readyNext || props.feedback?.kind === "retry" ? "Show me how it works" : "Explain another way"}
                   </button>
                   <span>·</span>
                   <button

@@ -28,10 +28,18 @@ export function recordAttempt(state:LearnerState,activity:Activity,input:Attempt
  if(activeMs!==null&&(!Number.isFinite(activeMs)||activeMs<0||activeMs>3600000))throw new Error('Invalid active response time.');
  if(typeof input.answer!=='string'||input.answer.length>80)throw new Error('Answer is too long.');
  const interrupted=input.interrupted??false;
- const independent=result.correct&&hintsUsed===0;
+ // One forgiving retry: the first answer must be a gradable miss, and the attempt is then assisted.
+ const firstAnswer=input.firstAnswer;
+ if(firstAnswer!==undefined) {
+  if(typeof firstAnswer!=='string'||firstAnswer.length>80)throw new Error('First answer is too long.');
+  const first=gradeAnswer(checked,firstAnswer);
+  if(first.error)throw new Error(first.error);
+  if(first.correct)throw new Error('A correct first answer is final; it cannot be recorded as a retry.');
+ }
+ const independent=result.correct&&hintsUsed===0&&firstAnswer===undefined;
  const evidence:AttemptEvidence={id:input.id,activityId:checked.id,skillId:skill.id,at,correct:result.correct,
   answer:input.answer,expected:result.expected,task:checked.task,variant:checked.variant,mode:checked.mode,...(checked.choices?{choices:checked.choices}:{}),
-  hintsUsed,activeMs,interrupted,independent};
+  hintsUsed,activeMs,interrupted,independent,...(firstAnswer!==undefined?{firstAnswer}:{})};
  const attempts=[...state.attempts,evidence];
  const history=attempts.filter(a=>a.skillId===skill.id&&!a.excluded);
  const sinceError=history.slice(history.map(a=>!a.independent).lastIndexOf(true)+1);
@@ -136,7 +144,7 @@ export function rebuildProgress(state:LearnerState):LearnerState {
  for(const e of state.attempts.filter(a=>!a.excluded).slice().sort((a,b)=>timestamp(a.at)-timestamp(b.at))) {
   const checked=validateActivity({version:1,id:e.activityId,skillId:e.skillId,mode:e.mode,task:e.task,...(e.choices?{choices:e.choices}:{})});
   if(!checked.ok)throw new Error(`Cannot rebuild invalid evidence ${e.id}.`);
-  rebuilt=recordAttempt(rebuilt,checked.activity,{id:e.id,answer:e.answer,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted});
+  rebuilt=recordAttempt(rebuilt,checked.activity,{id:e.id,answer:e.answer,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted,...(e.firstAnswer!==undefined?{firstAnswer:e.firstAnswer}:{})});
  }
  return {...state,progress:rebuilt.progress};
 }

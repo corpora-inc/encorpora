@@ -90,10 +90,22 @@ try{
   assert.equal(await page.locator('.activity-prompt').count(),0,'disputed unanswered item never resumes');assert.equal((await records()).length,2);
   const final=await begin();assert.notEqual(final.id,disputed.id);
   const expected=expectedAnswer(final.task);const wrong=['<','>','='].includes(expected)?(expected==='<'?'>':'<'):(expected==='0'?'1':'0');
-  await answer(wrong);await page.getByRole('button',{name:'Try a fresh one',exact:true}).waitFor();
-  assert.equal(await page.getByLabel('Your answer',{exact:true}).isDisabled(),true,'wrong first answer also locks evidence');
+  // #857: a first miss gets one retry with a nudge; nothing is revealed or recorded yet.
+  await answer(wrong);await page.locator('.feedback').filter({hasText:'Not quite yet'}).waitFor();
+  assert.equal(await page.getByLabel('Your answer',{exact:true}).isDisabled(),false,'first miss leaves one retry open');
   assert.equal(await page.locator('.feedback').evaluate(el=>document.activeElement===el),true,'answer feedback receives keyboard focus');
-  attempts=await records();assert.equal(attempts.length,3);assert.equal(attempts[2].data.correct,false);
+  assert.equal((await records()).length,2,'a pending retry adds no ledger evidence');
+  let retrySession=Object.values((await db()).sessions)[0].data;
+  assert.equal(retrySession.firstAnswer,wrong);assert.equal(retrySession.hintsUsed,1,'the miss is saved as assistance before the nudge');
+  assert.ok(final.explanation&&!(await page.locator('.feedback').innerText()).includes(final.explanation),'nudge never shows the worked answer');
+  await page.getByRole('button',{name:'Show me how it works',exact:true}).waitFor();
+  // A restart resumes the same retry; it never becomes a fresh first try.
+  await page.reload();await page.locator('.feedback').filter({hasText:'Not quite yet'}).waitFor();
+  assert.equal((await active()).id,final.id);
+  await answer(wrong);await page.getByRole('button',{name:'Try a fresh one',exact:true}).waitFor();
+  assert.equal(await page.getByLabel('Your answer',{exact:true}).isDisabled(),true,'second miss locks evidence');
+  attempts=await records();assert.equal(attempts.length,3,'one attempt per activity');assert.equal(attempts[2].activityId,final.id);
+  assert.equal(attempts[2].data.correct,false);assert.equal(attempts[2].data.firstAnswer,wrong);assert.equal(attempts[2].data.independent,false);
   // A validated next activity is cached across presentation write failures.
   await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
   await page.getByRole('button',{name:'Try a fresh one',exact:true}).click();
@@ -122,8 +134,31 @@ try{
   assert.equal(await page.getByRole('dialog').count(),0);
   await page.setViewportSize({width:320,height:740});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'compact layout has no horizontal overflow');
+  // #857: a correct retry is one assisted attempt, even when saving the retry state failed.
+  const retryContext=await browser.newContext({viewport:{width:390,height:844}});await retryContext.addInitScript(fixture);
+  const learner=await retryContext.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const learnerDb=()=>learner.evaluate(()=>window.__ahaFixture.read());
+  const shownTask=async()=>Object.values((await learnerDb()).sessions)[0].data.activity;
+  const respond=async value=>{await learner.getByLabel('Your answer',{exact:true}).fill(value);await learner.getByRole('button',{name:'Check my answer',exact:true}).click();};
+  const missFor=e=>['<','>','='].includes(e)?(e==='<'?'>':'<'):(e==='0'?'1':'0');
+  await learner.goto('http://127.0.0.1:1435');await learner.getByRole('button',{name:'Let’s begin',exact:true}).click();await learner.getByLabel('Your answer',{exact:true}).waitFor();
+  for(const failSave of [true,false]){
+    const task=await shownTask(),expected=expectedAnswer(task.task);
+    if(failSave)await learner.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
+    await respond(missFor(expected));
+    if(failSave)await learner.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();
+    else await learner.locator('.feedback').filter({hasText:'Not quite yet'}).waitFor();
+    await respond(expected);await learner.getByRole('button',{name:'Next discovery',exact:true}).waitFor();
+    assert.match(await learner.locator('.feedback').innerText(),/worked it through/);
+    const ledger=Object.values((await learnerDb()).attempts).flat().filter(r=>r.activityId===task.id);
+    assert.equal(ledger.length,1,'one attempt per activity');
+    assert.equal(ledger[0].data.correct,true);assert.equal(ledger[0].data.independent,false,'a correct retry is assisted');
+    assert.equal(ledger[0].data.firstAnswer,missFor(expected));assert.equal(ledger[0].data.hintsUsed,1);
+    if(failSave){await learner.getByRole('button',{name:'Next discovery',exact:true}).click();await learner.getByRole('button',{name:'Check my answer',exact:true}).waitFor();}
+  }
+  await retryContext.close();
   assert.deepEqual(errors,[],'browser errors');
-  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
+  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (restart, save failure, one ledger attempt), evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
 }finally{
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

@@ -79,6 +79,8 @@ export interface AttemptEvidence {
   activeMs: number | null;
   interrupted: boolean;
   independent: boolean;
+  /** The first, incorrect answer when the learner used the one forgiving retry. Its presence makes the attempt assisted. */
+  firstAnswer?: string;
   /** Disputed evidence remains auditable but never contributes to progress. */
   excluded?: { reason: string; at: string };
 }
@@ -108,6 +110,8 @@ export interface AttemptInput {
   hintsUsed?: number;
   activeMs?: number | null;
   interrupted?: boolean;
+  /** Set when this is the single retry after an incorrect first answer on the same activity. */
+  firstAnswer?: string;
 }
 export interface GradeResult { correct: boolean; expected: string; normalizedAnswer?: string; error?: string }
 export type ValidationResult = { ok: true; activity: Activity } | { ok: false; errors: string[] };

@@ -299,3 +299,30 @@ test('fact interleaving cannot displace focused support after a fifth-answer mis
  assert.equal(selectCandidates(state,date(1))[0].skill.id,'K.CC.A.2');
  assert.equal(selectFluencySkill(state,date(1)),undefined);
 });
+
+// ---- Forgiving retry (#857): one ledger attempt per activity; first-try correctness stays the evidence. ----
+test('a correct retry after one miss is one assisted attempt that keeps the first answer',()=>{
+ let state=createLearner('a');
+ for(let i=1;i<=2;i++)state=success(state,fractionPractice(i),String(i));
+ const a=fractionPractice(3),expected=expectedAnswer(a.task);
+ state=recordAttempt(state,a,{id:'retry',answer:expected,firstAnswer:'9/9',at:date(1),hintsUsed:1});
+ const e=state.attempts.at(-1)!;
+ assert.equal(state.attempts.length,3);assert.equal(e.correct,true);assert.equal(e.independent,false);assert.equal(e.firstAnswer,'9/9');
+ assert.equal(state.progress['5.NF.A.1'].concept,'developing','A retry never completes provisional evidence');
+ assert.equal(state.progress['5.NF.A.1'].independentSuccesses,0);
+ // Engine owns the meaning: a first miss makes the attempt assisted even without a hint count.
+ const b=generatePractice('3.OA.C.7',3);
+ assert.equal(recordAttempt(createLearner('b'),b,{id:'x',answer:expectedAnswer(b.task),firstAnswer:'-1',at:date(1)}).attempts[0].independent,false);
+ assert.equal(recordAttempt(state,a,{id:'again',answer:expected,at:date(1)}),state,'Still one attempt per activity');
+});
+test('the first answer must be a gradable miss and survives rebuilds',()=>{
+ const a=generatePractice('3.OA.C.7',4),expected=expectedAnswer(a.task);
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:expected}),/first answer/i);
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:'hello'}));
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:'1'.repeat(81)}));
+ let state=recordAttempt(createLearner('a'),a,{id:'x',answer:'-1',firstAnswer:'-2',at:date(1),hintsUsed:1});
+ assert.equal(state.attempts[0].correct,false);
+ state=success(state,{...generatePractice('3.OA.C.7',5),id:'other'},'other');
+ const rebuilt=quarantineActivity(state,'other','test',date(2));
+ assert.equal(rebuilt.attempts[0].firstAnswer,'-2');assert.deepEqual(rebuilt.progress,recordAttempt(createLearner('a'),a,{id:'x',answer:'-1',firstAnswer:'-2',at:date(1),hintsUsed:1}).progress);
+});

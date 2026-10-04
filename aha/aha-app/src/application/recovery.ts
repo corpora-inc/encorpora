@@ -11,6 +11,8 @@ export interface RecoveredLearning {
   sessionId: string;
   completed: number;
   curiosity?: {question: string; answer: string};
+  /** First incorrect answer on the resumed activity: its one forgiving retry is still pending. */
+  firstAnswer?: string;
   /** Resumed answers always lose timed-recall eligibility. */
   interrupted: true;
 }
@@ -43,13 +45,16 @@ function array(value: unknown, label: string): unknown[] {
   if (!Array.isArray(value) || value.length > 50_000) fail(`${label} must be a bounded list.`);
   return value;
 }
+function answerText(value: unknown): value is string {
+  return typeof value === 'string' && value.length > 0 && value.length <= 80;
+}
 function grade(value: unknown): Grade {
   if (!['K', 1, 2, 3, 4, 5, 6, 7, 8].includes(value as Grade)) fail('The starting grade is invalid.');
   return value as Grade;
 }
 interface ValidatedAttempt {
   id: string; activityId: string; sessionId: string; at: string;
-  activity: Activity; input: { id: string; answer: string; at: string; hintsUsed: number; activeMs: number | null; interrupted: boolean };
+  activity: Activity; input: { id: string; answer: string; at: string; hintsUsed: number; activeMs: number | null; interrupted: boolean; firstAnswer?: string };
 }
 function evidence(raw: unknown): Omit<ValidatedAttempt, 'sessionId'> {
   const e = object(raw, 'Attempt evidence');
@@ -63,10 +68,12 @@ function evidence(raw: unknown): Omit<ValidatedAttempt, 'sessionId'> {
   const hintsUsed = integer(e.hintsUsed, 'Hint count', 100);
   if (e.activeMs !== null && (typeof e.activeMs !== 'number' || !Number.isFinite(e.activeMs) || e.activeMs < 0 || e.activeMs > 3_600_000)) fail('Active response time is invalid.');
   if (typeof e.interrupted !== 'boolean') fail('The timing interruption flag is invalid.');
+  if (e.firstAnswer !== undefined && !answerText(e.firstAnswer)) fail(`Attempt ${attemptId} has an invalid first answer.`);
   // Derived correct/expected/independent/variant values are deliberately ignored.
   // recordAttempt recomputes them using the canonical task and observed answer.
   return { id: attemptId, activityId, at, activity: validated.activity,
-    input: { id: attemptId, answer: e.answer, at, hintsUsed, activeMs: e.activeMs as number | null, interrupted: e.interrupted } };
+    input: { id: attemptId, answer: e.answer, at, hintsUsed, activeMs: e.activeMs as number | null, interrupted: e.interrupted,
+      ...(e.firstAnswer === undefined ? {} : { firstAnswer: e.firstAnswer as string }) } };
 }
 function signature(e: Omit<ValidatedAttempt, 'sessionId'>): string {
   return JSON.stringify({ activityId: e.activityId, skillId: e.activity.skillId, mode: e.activity.mode,
@@ -125,6 +132,7 @@ export function restoreLearning(
   let hintsUsed = 0;
   let resumed: Activity | undefined;
   let curiosity: RecoveredLearning['curiosity'];
+  let firstAnswer: string | undefined;
   if (session !== null && session !== undefined) {
     const envelope = object(session, 'Saved session');
     const data = object(envelope.data, 'Saved session data');
@@ -140,6 +148,11 @@ export function restoreLearning(
           !saved.question.trim() || saved.question.length > 600 || typeof saved.answer !== 'string' || saved.answer.length > 24_000)
         fail('Saved curiosity answer is invalid.');
       curiosity = {question:saved.question, answer:saved.answer};
+    }
+    if (data.firstAnswer !== undefined) {
+      // A pending retry was saved together with its assistance; never resume it as a fresh first try.
+      if (!answerText(data.firstAnswer) || hintsUsed < 1) fail('Saved retry state is invalid.');
+      firstAnswer = data.firstAnswer;
     }
     if (data.activity !== null) {
       const checked = validateActivity(data.activity);
@@ -165,6 +178,7 @@ export function restoreLearning(
     if (error instanceof LearningRecoveryError) throw error;
     fail(error instanceof Error ? error.message : 'Attempt evidence cannot be replayed.');
   }
-  return { learner, activity: resumed, ...(curiosity ? {curiosity} : {}), hintsUsed: resumed ? hintsUsed : 0, sessionId,
+  return { learner, activity: resumed, ...(curiosity ? {curiosity} : {}), ...(resumed && firstAnswer !== undefined ? {firstAnswer} : {}),
+    hintsUsed: resumed ? hintsUsed : 0, sessionId,
     completed: observed.filter(a => a.sessionId === sessionId).length, interrupted: true };
 }

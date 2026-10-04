@@ -50,6 +50,8 @@ interface SavedLearning {
   completed: number;
   sessionId: string;
   curiosity?: {question: string; answer: string};
+  /** First incorrect answer; the activity's one forgiving retry is pending. */
+  firstAnswer?: string;
 }
 const json = (value: unknown): Json =>
   JSON.parse(JSON.stringify(value)) as Json;
@@ -118,6 +120,7 @@ export default function Controller() {
   const pendingActivity = useRef<Activity | undefined>(undefined);
   const sessionId = useRef<string>(crypto.randomUUID());
   const hintsUsed = useRef(0);
+  const firstAnswer = useRef<string | undefined>(undefined);
   const count = useRef(0);
   const timer = useRef(new ActiveTimer());
   const lessonVisible = useRef(true);
@@ -139,6 +142,7 @@ export default function Controller() {
     setCuriosity(undefined);
     savedCuriosity.current = undefined;
     hintsUsed.current = 0;
+    firstAnswer.current = undefined;
     count.current = 0;
     setCompleted(0);
     timer.current = new ActiveTimer();
@@ -165,6 +169,7 @@ export default function Controller() {
       completed: count.current,
       sessionId: sessionId.current,
       ...(savedCuriosity.current ? {curiosity:savedCuriosity.current} : {}),
+      ...(firstAnswer.current !== undefined ? {firstAnswer: firstAnswer.current} : {}),
     };
     await repository.current.saveSession(p.id, {
       id: sessionId.current,
@@ -196,6 +201,7 @@ export default function Controller() {
     currentActivity.current = next;
     savedCuriosity.current = undefined;
     hintsUsed.current = 0;
+    firstAnswer.current = undefined;
     setActivity(next);
     setFeedback(undefined);
     setHint(undefined);
@@ -231,6 +237,7 @@ export default function Controller() {
     setCompleted(restored.completed);
     currentActivity.current = restored.activity;
     hintsUsed.current = restored.hintsUsed;
+    firstAnswer.current = restored.firstAnswer;
     setActivity(restored.activity);
     savedCuriosity.current = restored.curiosity;
     setCuriosity(restored.curiosity);
@@ -241,6 +248,7 @@ export default function Controller() {
       setHint(
         restored.activity.hint ?? "Use a drawing to represent each quantity.",
       );
+    if (restored.activity && restored.firstAnswer !== undefined) setFeedback(retryNudge());
   }
 
   async function loadAccount(repo: LocalRepository) {
@@ -263,6 +271,14 @@ export default function Controller() {
     if (epoch !== accountEpoch.current) return;
     setProfiles(list);
     await loadProfile(list[0]);
+  }
+  /** Shown after a first miss. It never states the result: the worked answer waits for a second miss or a request. */
+  function retryNudge(): StudioProps["feedback"] {
+    return {
+      kind: "retry",
+      title: "Not quite yet. Take another look.",
+      message: "Check each step, or fix a typo, then try once more. You can also ask to see how it works.",
+    };
   }
   function fail(e: unknown) {
     retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
@@ -596,10 +612,20 @@ export default function Controller() {
       });
       return;
     }
+    if (!grading.correct && firstAnswer.current === undefined) {
+      // One forgiving retry. The miss is saved as assistance before the nudge appears, so a
+      // restart resumes this retry instead of offering a fresh first try.
+      firstAnswer.current = answer;
+      hintsUsed.current = Math.min(100, hintsUsed.current + 1);
+      await saveSession();
+      setFeedback(retryNudge());
+      return;
+    }
     const updated = recordAttempt(state, a, {
       id: crypto.randomUUID(),
       answer,
       hintsUsed: hintsUsed.current,
+      ...(firstAnswer.current !== undefined ? {firstAnswer: firstAnswer.current} : {}),
       ...timing,
     });
     const evidence = updated.attempts.at(-1)!;
@@ -671,6 +697,7 @@ export default function Controller() {
       currentActivity.current = undefined;
       setActivity(undefined);
       hintsUsed.current = 0;
+      firstAnswer.current = undefined;
       await saveSession();
       setHint(
         "Thanks for flagging it. This item is set aside; it won’t count toward your progress.",
