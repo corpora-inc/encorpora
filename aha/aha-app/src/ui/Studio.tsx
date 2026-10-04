@@ -114,6 +114,7 @@ export function Studio(props: StudioProps) {
   const settingsReturn = useRef<HTMLElement | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const seenHint = useRef<string | undefined>(undefined);
+  const hintAsks = useRef(0);
   const answerId = useId();
   const titleId = useId();
   const a = props.spec ? undefined : props.activity;
@@ -123,6 +124,7 @@ export function Studio(props: StudioProps) {
   useEffect(() => {
     setAnswer("");
     setPanel(null);
+    hintAsks.current = 0;
     if (sheet === "flag") setSheet(null);
   }, [taskId]);
   useEffect(() => {
@@ -139,7 +141,7 @@ export function Studio(props: StudioProps) {
   }, [props.hint, taskId, view, hasTask]);
   useEffect(() => {
     if (props.curiosity && view === "focus") setSheet("ask");
-  }, [!!props.curiosity, view]);
+  }, [!!props.curiosity, props.curiosity?.answer, view]);
   useEffect(() => {
     if (settings) dialog.current?.showModal();
     else dialog.current?.close();
@@ -155,7 +157,8 @@ export function Studio(props: StudioProps) {
     return () => vv.removeEventListener("resize", update);
   }, []);
   const openSettings = () => {
-    settingsReturn.current = document.activeElement as HTMLElement | null;
+    const opener = document.activeElement as HTMLElement | null;
+    settingsReturn.current = opener?.closest(".sheet") ? document.querySelector<HTMLElement>(".status-dot") : opener;
     setSheet(null);
     setSettings(true);
   };
@@ -165,6 +168,8 @@ export function Studio(props: StudioProps) {
     settingsReturn.current?.focus?.();
   };
   const closeAsk = () => {
+    // An answer still in flight stays visible; closing then would hide a paid reply.
+    if (props.curiosity && !props.curiosity.answer && props.busy) return;
     if (props.curiosity) props.onCloseCuriosity();
     setSheet(null);
   };
@@ -199,10 +204,20 @@ export function Studio(props: StudioProps) {
   const errorLine = props.error && !settings ? (
     <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>
   ) : null;
+  // Local tasks have one hint, so the icon toggles its panel. A spec may hold several: while the
+  // panel is open, each tap asks for the next one until they run out.
+  const hintTap = () => {
+    const more = !!spec && hintAsks.current < (spec.spec.hints?.length ?? 0);
+    if (panel === "help" && !more) return setPanel(null);
+    if (props.hint && panel !== "help") return setPanel("help");
+    hintAsks.current++;
+    props.onSupport("hint");
+  };
   const tools = hasTask ? (
     <div className="focus-tools" role="toolbar" aria-label="Help options">
       <IconButton label="Hint" icon={<Lightbulb size={22} />} disabled={props.busy || readyNext}
-        active={panel === "help"} onClick={() => props.hint && panel !== "help" && !readyNext ? setPanel("help") : props.onSupport("hint")} />
+        active={panel === "help"} expanded={panel === "help"}
+        onClick={hintTap} />
       <IconButton label="Show me how" icon={<BookOpen size={22} />} disabled={props.busy}
         badge={props.feedback?.kind === "retry" && panel !== "feedback"}
         onClick={() => props.feedback?.kind === "retry" && props.feedback.message ? setPanel("feedback") : props.onSupport("explain")} />
@@ -238,7 +253,7 @@ export function Studio(props: StudioProps) {
 
   const focusStage = spec ? (
     <div className="focus-stage is-spec" aria-busy={props.busy}>
-      <div className="stage-focus-target" ref={promptRef} tabIndex={-1} aria-label="Problem" />
+      <div className="stage-focus-target" ref={promptRef} tabIndex={-1} role="group" aria-label="Problem" />
       <ActivityView
         key={spec.spec.id}
         spec={spec.spec}
