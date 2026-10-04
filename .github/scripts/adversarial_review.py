@@ -658,6 +658,24 @@ def changed_files(spec):
     return {name for name in out.split("\0") if name}
 
 
+def deleted_files(spec):
+    """The set of paths `spec` DELETES outright, spelled as git spells them.
+
+    `-M` is explicit so a rename is reported as `R` (old path NOT listed here)
+    rather than as a delete plus an add: the old name of a renamed file lives
+    on at the new name, so calling it "deleted" would mislead the confirmer.
+    Raises ReviewError on git failure, like `changed_files`.
+    """
+    rc, out, err = run(
+        ["git", "diff", "--name-only", "-z", "-M", "--diff-filter=D", spec]
+    )
+    if rc != 0:
+        raise ReviewError(
+            f"git diff --diff-filter=D {spec} failed (exit {rc}): {err.strip()}"
+        )
+    return {name for name in out.split("\0") if name}
+
+
 def file_diff(spec, path):
     """The unified diff this branch applied to one path, or "" if git failed.
 
@@ -1329,11 +1347,13 @@ class FileAtHead(NamedTuple):
 
 
 def file_at(head, path):
-    """`FileAtHead` for `path` at `head`, or None when it cannot be read.
+    """`FileAtHead` for `path` at revision `head`, or None when unreadable.
+
+    Also used with the merge-base to read a file the branch deleted.
 
     None is a legitimate answer — a deleted file, a path the model invented,
     or a binary blob — and the caller treats it as "cannot confirm", which
-    blocks. This never falls back to the diff chunk: confirming against the
+    blocks (a deleted file is then retried against the base by the caller). This never falls back to the diff chunk: confirming against the
     same partial view that produced the finding would make the second pass
     ceremonial.
     """
@@ -1362,7 +1382,7 @@ def file_at(head, path):
     return None
 
 
-def build_confirm_prompt(finding, lenses, source, diff):
+def build_confirm_prompt(finding, lenses, source, diff, deleted=False):
     """The single-finding question put to the second pass.
 
     Carries BOTH halves of the context the first pass lacked: the change this
@@ -1376,6 +1396,10 @@ def build_confirm_prompt(finding, lenses, source, diff):
 
     `lenses` is every lens that reported this finding: one defect all three
     noticed is confirmed once, so the confirmer gets all three framings.
+
+    `deleted=True` means the branch DELETES the file: `source` is then the file
+    as it stood at the BASE, and the prompt says so, because nothing exists at
+    head to read.
     """
     path = str(finding.get("file", "?"))
     location = path
@@ -1383,8 +1407,29 @@ def build_confirm_prompt(finding, lenses, source, diff):
         location += f":{finding['line']}"
     instructions = "\n\n".join(LENSES[name] for name in lenses if name in LENSES)
     change = diff.strip() or "(git produced no diff for this path)"
+    if deleted:
+        note = (
+            f"NOTE: this branch DELETES `{path}`. The file does not exist at "
+            "head, so the contents below are its LAST VERSION AT THE BASE. "
+            "This overrides any statement above about reading the file at "
+            "head. You can see ONLY this file and its deletion, NOT the rest "
+            "of the tree. Answer false only when the finding is purely about "
+            "the removed code itself and the deletion plainly leaves nothing "
+            "behind that matters. If the finding claims remaining code "
+            "depends on this file, or that its logic moved elsewhere without "
+            "some property (a check, a guard, a compat path), you cannot "
+            "verify that from here: it is undecidable, so answer true. Never "
+            "clear a finding merely because the file is gone.\n\n"
+        )
+        contents = (
+            f"COMPLETE CONTENTS OF `{path}` AT THE BASE (deleted by this "
+            f"branch):\n"
+        )
+    else:
+        note = ""
+        contents = f"COMPLETE CONTENTS OF `{path}` AT THE HEAD OF THIS BRANCH:\n"
     return (
-        f"{instructions}\n\n{SEVERITY_LADDER}\n\n{CONFIRM_HINT}\n\n"
+        f"{instructions}\n\n{SEVERITY_LADDER}\n\n{CONFIRM_HINT}\n\n{note}"
         f"FINDING (reported at blocking severity by: "
         f"{', '.join(lenses) or 'unknown'})\n"
         f"location: {location}\n"
@@ -1392,12 +1437,12 @@ def build_confirm_prompt(finding, lenses, source, diff):
         f"detail: {str(finding.get('detail', '')).strip()}\n\n"
         f"THE CHANGE UNDER REVIEW — what this branch did to `{path}`:\n"
         f"```diff\n{change}\n```\n\n"
-        f"COMPLETE CONTENTS OF `{path}` AT THE HEAD OF THIS BRANCH:\n"
+        f"{contents}"
         f"```\n{source}\n```"
     )
 
 
-def _confirm_one(provider, key, model, finding, lenses, source, diff):
+def _confirm_one(provider, key, model, finding, lenses, source, diff, deleted=False):
     """Second-pass verdict on one finding. Returns (state, reason)."""
     label = f"confirmation of {'/'.join(lenses)} finding in {finding.get('file')}"
     try:
@@ -1406,7 +1451,7 @@ def _confirm_one(provider, key, model, finding, lenses, source, diff):
             key,
             model,
             CONFIRM_SYSTEM,
-            build_confirm_prompt(finding, lenses, source, diff),
+            build_confirm_prompt(finding, lenses, source, diff, deleted),
             schema=CONFIRM_SCHEMA,
         )
     except Exception as e:  # noqa: BLE001
@@ -1430,13 +1475,21 @@ def _mark(group, state, reason):
         f["confirmation_reason"] = reason
 
 
-def confirm_findings(provider, key, model, findings, rng, changed, workers):
+def confirm_findings(
+    provider, key, model, findings, rng, changed, workers, deleted=frozenset()
+):
     """Re-check every blocking-severity finding against its file AND its diff.
 
     This targets the gate's measured failure mode: ONE low-precision call that
     saw a diff chunk and nothing else. It runs only on HIGH findings, so a
     clean diff costs nothing and a normal diff costs at most a handful of
     calls.
+
+    A path the branch DELETES cannot resolve at head, so it is confirmed
+    against the BASE version plus the deletion diff instead (`deleted` is the
+    set of outright-deleted paths). It is not auto-cleared: the model still
+    has to say it is not a real problem. A path that is unreadable at head AND
+    not a deletion (invented, binary, a rename's old name) still skips.
 
     THREE things must hold before a HIGH is re-asked at all; each failure is a
     SKIP, which keeps the finding blocking:
@@ -1493,10 +1546,18 @@ def confirm_findings(provider, key, model, findings, rng, changed, workers):
 
     jobs = []
     for group in ordered[:MAX_CONFIRMATIONS]:
-        at_head = file_at(rng.head, str(group[0].get("file") or ""))
+        name = str(group[0].get("file") or "")
+        is_deleted = False
+        at_head = file_at(rng.head, name)
         if at_head is None:
-            _mark(group, CONFIRM_SKIPPED, "could not read the full file at head")
-            continue
+            # Absent at head. Only a path this branch positively DELETES may be
+            # confirmed against its base version; anything else stays skipped.
+            at_head = file_at(rng.base, name)
+            if at_head is not None and at_head.path in deleted:
+                is_deleted = True
+            else:
+                _mark(group, CONFIRM_SKIPPED, "could not read the full file at head")
+                continue
         if at_head.path not in changed:
             _mark(
                 group,
@@ -1514,7 +1575,7 @@ def confirm_findings(provider, key, model, findings, rng, changed, workers):
             )
             continue
         lenses = list(dict.fromkeys(str(f.get("lens") or "") for f in group))
-        jobs.append((group, lenses, at_head.text, diff))
+        jobs.append((group, lenses, at_head.text, diff, is_deleted))
 
     # The lens pass has already spent from the same wall clock. Say so rather
     # than letting every remaining call fail one at a time and reporting it as
@@ -1533,7 +1594,7 @@ def confirm_findings(provider, key, model, findings, rng, changed, workers):
             results = list(
                 pool.map(
                     lambda job: _confirm_one(
-                        provider, key, model, job[0][0], job[1], job[2], job[3]
+                        provider, key, model, job[0][0], job[1], job[2], job[3], job[4]
                     ),
                     jobs,
                 )
@@ -1771,6 +1832,8 @@ def main():
         # Resolved once, up front, and used by the confirmation pass to reject
         # a finding whose file this branch never touched.
         changed = changed_files(rng.spec)
+        # Paths deleted outright: unreadable at head, so confirmed against base.
+        deleted = deleted_files(rng.spec)
         chunks, oversized, hard_split = chunk_diff(diff, budget)
         # Coverage is the whole point of chunking. Assert it before spending a
         # single API call, and fail closed if the split ever loses a character.
@@ -1847,7 +1910,7 @@ def main():
     # stops one blocking; every other outcome, including an API error, an
     # off-diff file, and an exhausted budget, leaves it blocking.
     findings = confirm_findings(
-        provider, key, model, findings, rng, changed, workers
+        provider, key, model, findings, rng, changed, workers, deleted
     )
     body, blocking = render_markdown(audit, findings)
     publish(body)
