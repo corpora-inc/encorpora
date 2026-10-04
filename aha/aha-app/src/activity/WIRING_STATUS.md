@@ -16,7 +16,11 @@ Branch `add-aha-ai-activities`. Issue #867. No PR has been opened yet, and auto-
 - Docs: the activity README wiring section, BUILD_STATUS and INTEGRATION_STATUS are updated (wired and fixture-tested, not live-verified).
 
 ## In progress / next steps
-1. Review the findings from the adversarial-reviewer run, fix any HIGH ones, and re-run all gates.
+1. Fix the adversarial-review findings, then re-run all gates.
+   - HIGH: in `Controller.showSpec`, `rest` is computed before `await writeSession` and assigned after it, so a prefetch batch delivered during that write is wiped out (paid, acknowledged, then bought again). Fix: after the write, set `aiQueue.current = aiQueue.current.filter(q => q.activityId !== item.activityId)`, and build the session payload from live refs inside the callback.
+   - MED: the `activities` branch of `deliverReply` does not re-check learner, account or provider after its awaits (`loadAiActivities`, `listDisputes`), so a learner switch or sign-out mid-delivery can lose the batch or deliver it to the wrong learner. Fix: re-check after each await, before merging and before acknowledging. Add `settlePrefetch()` to `onSelectLearner` and `signOut`.
+   - LOW: rolling back after a failed queue save can overwrite newer state, and a concurrent duplicate delivery can acknowledge before the save. Use a functional update (remove only the ids this delivery added).
+   - LOW: `parseBatch` ids use the position among accepted specs. Use the original batch index (`activityIdFor(op, originalIndex)`) so a stricter validator cannot shift the ids.
 2. Merge origin/main again. Watch for the focus-mode shell (#869) in Studio.tsx and studio.css, and keep `<ActivityStage>` free of chrome.
 3. Open the PR (What / Why / Blast radius / Proof), enable `gh pr merge --squash --auto`, then run `gh pr checks --watch`.
 4. Optional: device smoke on R3GL80264RZ (local mode should be unchanged).
