@@ -1407,6 +1407,7 @@ def test_finding_on_deleted_file_is_confirmed_against_base(del_repo, monkeypatch
     assert "DELETED_FILE_SENTINEL" in prompts[0]  # the BASE contents
     assert "DELETES `gone.txt`" in prompts[0]
     assert "-DELETED_FILE_SENTINEL" in prompts[0]  # the deletion diff
+    assert "undecidable, so answer true" in prompts[0]  # unseen-evidence guard
     assert f["confirmation"] == ar.CONFIRM_CLEARED
     assert ar.is_blocking(f) is False
 

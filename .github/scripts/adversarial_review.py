@@ -1411,12 +1411,15 @@ def build_confirm_prompt(finding, lenses, source, diff, deleted=False):
         note = (
             f"NOTE: this branch DELETES `{path}`. The file does not exist at "
             "head, so the contents below are its LAST VERSION AT THE BASE. "
-            "Judge the finding against the deletion: a concern about code in "
-            "a file that is being removed is not a defect in the resulting "
-            "tree unless the deletion itself breaks something that remains "
-            "(a dangling reference, a dropped back-compat path). Decide "
-            "whether this is real and blocking; do not clear it merely "
-            "because the file is gone.\n\n"
+            "This overrides any statement above about reading the file at "
+            "head. You can see ONLY this file and its deletion, NOT the rest "
+            "of the tree. Answer false only when the finding is purely about "
+            "the removed code itself and the deletion plainly leaves nothing "
+            "behind that matters. If the finding claims remaining code "
+            "depends on this file, or that its logic moved elsewhere without "
+            "some property (a check, a guard, a compat path), you cannot "
+            "verify that from here: it is undecidable, so answer true. Never "
+            "clear a finding merely because the file is gone.\n\n"
         )
         contents = (
             f"COMPLETE CONTENTS OF `{path}` AT THE BASE (deleted by this "
