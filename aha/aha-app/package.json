@@ -13,7 +13,8 @@
     "test": "node scripts/test.mjs",
     "tauri": "tauri",
     "test:ui": "node --import tsx scripts/verify-ui.mjs && node --import tsx scripts/verify-ai.mjs",
-    "test:ai": "node --import tsx scripts/verify-ai.mjs"
+    "test:ai": "node --import tsx scripts/verify-ai.mjs",
+    "gallery": "node --import tsx scripts/gallery.mjs"
   },
   "dependencies": {
     "@free2z/sdk": "file:vendor/free2z/sdk/534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860/free2z-sdk-0.1.0.tgz",
@@ -25,7 +26,8 @@
     "react-dom": "^19.2.8",
     "react-markdown": "^10.1.0",
     "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@tauri-apps/cli": "2.11.4",
