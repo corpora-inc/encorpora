@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ActiveTimer, buildTeachingContext, buildTutorContext, coverageAudit, createLearner, expectedAnswer, formatRational, generatePractice, generateFreshPractice, teachTask, getSkill, gradeAnswer, parseRational, quarantineActivity, recordAttempt, renderTask, selectCandidates, selectFluencySkill, skills, standards, validateActivity, validateTask } from './index';
+import { ActiveTimer, answerCanBeNegative, buildTeachingContext, buildTutorContext, coverageAudit, createLearner, expectedAnswer, formatRational, generatePractice, generateFreshPractice, teachTask, getSkill, gradeAnswer, parseRational, quarantineActivity, recordAttempt, renderTask, selectCandidates, selectFluencySkill, skills, standards, validateActivity, validateTask } from './index';
 import type { Activity, CanonicalTask, LearnerState } from './types';
 const date=(day:number)=>new Date(Date.UTC(2026,8,day,12)).toISOString();
 const activity=(task:CanonicalTask,skillId='5.NF.A.1',id='test',mode:Activity['mode']='concept'):Activity=>{
@@ -298,4 +298,19 @@ test('fact interleaving cannot displace focused support after a fifth-answer mis
  assert.equal(state.attempts.length,5);
  assert.equal(selectCandidates(state,date(1))[0].skill.id,'K.CC.A.2');
  assert.equal(selectFluencySkill(state,date(1)),undefined);
+});
+test('sign key appears only where the answer domain can be negative',()=>{
+ const sign=(task:CanonicalTask,skillId:string)=>answerCanBeNegative(activity(task,skillId).task,getSkill(skillId));
+ assert.equal(sign({kind:'arithmetic',operation:'multiply',left:'3',right:'4'},'3.OA.C.7'),false,'K–3 multiplication never needs a sign');
+ assert.equal(sign({kind:'arithmetic',operation:'subtract',left:'15',right:'8'},'1.OA.C.6'),false);
+ assert.equal(sign({kind:'arithmetic',operation:'add',left:'-3',right:'5'},'7.NS.A.1'),true);
+ assert.equal(sign({kind:'arithmetic',operation:'add',left:'3',right:'5'},'7.NS.A.1'),true,'domain, not this answer: positive answers must not hide the key');
+ assert.equal(sign({kind:'pythagorean',a:3,b:4},'8.G.B.7'),false);
+ assert.equal(answerCanBeNegative({kind:'arithmetic',operation:'subtract',left:'1',right:'2'}),true,'unknown skill stays permissive');
+ // Every generated task with a negative answer must offer the key; K–5 never does.
+ for(const s of skills.filter(s=>s.coverage==='verified-practice'))for(let seed=1;seed<=60;seed++){
+  const a=generatePractice(s.id,seed),expected=expectedAnswer(a.task),negative=a.task.kind!=='compare'&&parseRational(expected).n<0n;
+  if(negative)assert.equal(answerCanBeNegative(a.task,s),true,`${s.id} ${expected}`);
+  if(s.grade==='K'||s.grade<=5)assert.equal(answerCanBeNegative(a.task,s),false,s.id);
+ }
 });

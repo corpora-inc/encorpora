@@ -8,7 +8,8 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 const ownRoot=fileURLToPath(new URL('..',import.meta.url));
 const root=path.resolve(process.env.AHA_UI_APP_ROOT||ownRoot);
-const {expectedAnswer}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
+const {expectedAnswer,answerCanBeNegative}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
+const {getSkill}=await import(pathToFileURL(path.join(root,'src/learning/curriculum.ts')).href);
 const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','1435','--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(){
@@ -122,6 +123,31 @@ try{
   assert.equal(await page.getByRole('dialog').count(),0);
   await page.setViewportSize({width:320,height:740});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'compact layout has no horizontal overflow');
+  // Phone layout at the S26's CSS viewport (#856): every visible control keeps a 44×44 hit area,
+  // and the sign key appears only where the task's answer domain can be negative.
+  const phone=await browser.newContext({viewport:{width:384,height:832},deviceScaleFactor:2.8125,isMobile:true,hasTouch:true});await phone.addInitScript(fixture);
+  const mobile=await phone.newPage();mobile.on('pageerror',e=>errors.push(e.message));
+  const smallTargets=()=>mobile.evaluate(()=>[...document.querySelectorAll('button, a[href], input:not([type=radio]), select, textarea, [role=button], label:has(> input[type=radio])')]
+    .filter(el=>{const r=el.getBoundingClientRect();return el.checkVisibility()&&r.width>1&&r.height>1&&r.bottom+scrollY>0;})
+    .filter(el=>{const r=el.getBoundingClientRect();return r.width<44||r.height<44;})
+    .map(el=>`${(el.getAttribute('aria-label')||el.textContent||el.tagName).trim().slice(0,40)} ${Math.round(el.getBoundingClientRect().width)}×${Math.round(el.getBoundingClientRect().height)}`));
+  await mobile.goto('http://127.0.0.1:1435');await mobile.getByRole('button',{name:'Let’s begin',exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone welcome tap targets are at least 44×44');
+  await mobile.getByRole('button',{name:'Let’s begin',exact:true}).click();await mobile.getByLabel('Your answer',{exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone activity tap targets are at least 44×44');
+  const phoneTask=Object.values(await mobile.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity;
+  assert.equal(await mobile.getByRole('button',{name:'Change positive or negative sign',exact:true}).count(),answerCanBeNegative(phoneTask.task,getSkill(phoneTask.skillId))?1:0,'sign key follows the answer domain');
+  await mobile.getByRole('button',{name:'A little hint',exact:true}).click();await mobile.locator('.hint-box').waitFor();
+  await mobile.getByLabel('Your answer',{exact:true}).fill(expectedAnswer(phoneTask.task));await mobile.getByRole('button',{name:'Check my answer',exact:true}).click();
+  await mobile.getByRole('button',{name:'Next discovery',exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone hint and feedback tap targets are at least 44×44');
+  await mobile.getByRole('button',{name:'Open learner and grown-up settings',exact:true}).click();await mobile.getByRole('dialog').waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone settings tap targets are at least 44×44');
+  await mobile.getByLabel('Type grown-up to continue',{exact:true}).fill('grown-up');await mobile.getByRole('button',{name:'Open grown-up settings',exact:true}).click();
+  await mobile.getByRole('button',{name:'Export backup',exact:true}).waitFor();
+  assert.deepEqual(await smallTargets(),[],'phone grown-up settings tap targets are at least 44×44');
+  assert.equal(await mobile.evaluate(()=>{const s=getComputedStyle(document.querySelector('.aha-studio'),'::before');return s.position==='fixed'&&s.top==='0px'&&s.backgroundColor!=='rgba(0, 0, 0, 0)';}),true,'status-bar scrim stays fixed behind the top safe area');
+  await phone.close();
   assert.deepEqual(errors,[],'browser errors');
   console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
 }finally{
