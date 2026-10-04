@@ -26,7 +26,18 @@ if (result.ok) {
 The module is pure apart from optional default clock values. Supply explicit times
 and seeds for tests. Errors in numeric entry are input errors, not wrong answers.
 A submitted activity and attempt ID are idempotent; a second try needs a newly
-identified activity and cannot rewrite the first answer. `generatePractice()`
+identified activity and cannot rewrite the first answer. The one exception is the
+forgiving retry: after a first miss the controller saves the miss (as assistance)
+in the presentation session, shows a nudge without the result, and allows one more
+answer. The ledger still holds one attempt per activity, recorded with
+`firstAnswer` (the gradable miss). `recordAttempt` rejects a correct `firstAnswer`
+and treats any attempt carrying one as assisted, so a correct retry never counts as
+independent evidence. Leaving an activity while its retry is pending (a stretch,
+a recovered AI lesson) first records the miss as that activity's attempt. Replays
+(`{replay:true}`) keep `firstAnswer` but never re-grade it, so a later grader fix
+cannot lock a profile out. The controller also counts the nudge in `hintsUsed`,
+so older builds still read a retry as assisted. For the struggle policy a rescued
+retry is still a miss (`missed()`). `generatePractice()`
 creates a validated local task for an assessed skill; it throws for guided-only
 skills. Always label local practice honestly, particularly after network failure.
 

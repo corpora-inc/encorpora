@@ -54,6 +54,8 @@ interface SavedLearning {
   completed: number;
   sessionId: string;
   curiosity?: {question: string; answer: string};
+  /** First incorrect answer; the activity's one forgiving retry is pending. */
+  firstAnswer?: string;
 }
 const json = (value: unknown): Json =>
   JSON.parse(JSON.stringify(value)) as Json;
@@ -123,6 +125,7 @@ export default function Controller() {
   const pendingWorked = useRef(false);
   const sessionId = useRef<string>(crypto.randomUUID());
   const hintsUsed = useRef(0);
+  const firstAnswer = useRef<string | undefined>(undefined);
   const count = useRef(0);
   const timer = useRef(new ActiveTimer());
   const lessonVisible = useRef(true);
@@ -144,6 +147,7 @@ export default function Controller() {
     setCuriosity(undefined);
     savedCuriosity.current = undefined;
     hintsUsed.current = 0;
+    firstAnswer.current = undefined;
     count.current = 0;
     setCompleted(0);
     timer.current = new ActiveTimer();
@@ -170,6 +174,7 @@ export default function Controller() {
       completed: count.current,
       sessionId: sessionId.current,
       ...(savedCuriosity.current ? {curiosity:savedCuriosity.current} : {}),
+      ...(firstAnswer.current !== undefined ? {firstAnswer: firstAnswer.current} : {}),
     };
     await repository.current.saveSession(p.id, {
       id: sessionId.current,
@@ -181,6 +186,7 @@ export default function Controller() {
   async function showActivity(next: Activity, worked = false) {
     const p = currentProfile.current;
     if (!p) throw new Error("Choose a learner first.");
+    await settlePendingRetry();
     await repository.current.saveActivity(p.id, {
       id: next.id,
       sessionId: sessionId.current,
@@ -202,6 +208,7 @@ export default function Controller() {
     currentActivity.current = next;
     savedCuriosity.current = undefined;
     hintsUsed.current = worked ? 1 : 0;
+    firstAnswer.current = undefined;
     setActivity(next);
     setFeedback(undefined);
     setHint(worked ? next.hint : undefined);
@@ -237,16 +244,22 @@ export default function Controller() {
     setCompleted(restored.completed);
     currentActivity.current = restored.activity;
     hintsUsed.current = restored.hintsUsed;
+    // A grader change between versions could make a saved miss correct or unreadable; then drop
+    // the pending retry but keep its assistance, so the item can still be answered and recorded.
+    const pendingMiss = restored.activity && restored.firstAnswer !== undefined ? gradeAnswer(restored.activity, restored.firstAnswer) : undefined;
+    firstAnswer.current = pendingMiss && !pendingMiss.error && !pendingMiss.correct ? restored.firstAnswer : undefined;
     setActivity(restored.activity);
     savedCuriosity.current = restored.curiosity;
     setCuriosity(restored.curiosity);
     timer.current = new ActiveTimer();
     timer.current.resume(0);
     timer.current.pause(0);
-    if (restored.activity && restored.hintsUsed)
+    // The retry nudge accounts for one assistance; show the hint only when the learner had more.
+    if (restored.activity && restored.hintsUsed > (restored.firstAnswer !== undefined ? 1 : 0))
       setHint(
         restored.activity.hint ?? "Use a drawing to represent each quantity.",
       );
+    if (restored.activity && firstAnswer.current !== undefined) setFeedback(retryNudge());
   }
 
   async function loadAccount(repo: LocalRepository) {
@@ -269,6 +282,14 @@ export default function Controller() {
     if (epoch !== accountEpoch.current) return;
     setProfiles(list);
     await loadProfile(list[0]);
+  }
+  /** Shown after a first miss. It never states the result: the worked answer waits for a second miss or a request. */
+  function retryNudge(): StudioProps["feedback"] {
+    return {
+      kind: "nudge",
+      title: "Not quite yet. Try once more.",
+      message: "",
+    };
   }
   function fail(e: unknown) {
     // Diagnostics keep error text; error messages must never carry learner or account data.
@@ -501,6 +522,8 @@ export default function Controller() {
     }
     if (saved) { await deliverReply(saved); return; }
     if (pendingActivity.current) {await showActivity(pendingActivity.current, pendingWorked.current);pendingActivity.current=undefined;return;}
+    // Record a pending retry's miss before choosing what comes next (showActivity keeps a backstop).
+    await settlePendingRetry();
     const state = learning.current;
     if (!state) return;
     if (count.current >= 10) {
@@ -610,10 +633,52 @@ export default function Controller() {
       });
       return;
     }
+    if (!grading.correct && firstAnswer.current === undefined) {
+      // One forgiving retry. The miss is saved as assistance before the nudge appears, so a
+      // restart resumes this retry instead of offering a fresh first try. If that save fails the
+      // miss stays assisted in memory (never a fresh first try) and the nudge still shows.
+      firstAnswer.current = answer;
+      hintsUsed.current = Math.min(100, hintsUsed.current + 1);
+      try { await saveSession(); }
+      finally { setFeedback(retryNudge()); }
+      return;
+    }
+    if (!(await commitAttempt(a, answer, timing))) return;
+    setFeedback({
+      kind: grading.correct ? "correct" : "retry",
+      title: grading.correct
+        ? hintsUsed.current
+          ? "You worked it through."
+          : "You’ve got it."
+        : "Let’s look at it another way.",
+      message: grading.correct
+        ? a.mode === "fluency"
+          ? "A little recall practice, then back to exploring."
+          : "We’ll revisit this later to see what sticks."
+        : (a.explanation ??
+          `The result is ${grading.expected}. Try a drawing or break the calculation into smaller parts.`),
+    });
+  }
+  /** A pending retry is never discarded: leaving the activity records the first miss as its one attempt. */
+  async function settlePendingRetry() {
+    const a = currentActivity.current, miss = firstAnswer.current;
+    if (!a || miss === undefined || learning.current?.attempts.some((e) => e.activityId === a.id)) return;
+    await commitAttempt(a, miss, timer.current.snapshot(performance.now()));
+  }
+  /** Durably records the activity's single attempt. Returns false when it was already recorded. */
+  async function commitAttempt(
+    a: Activity,
+    answer: string,
+    timing: { activeMs: number; interrupted: boolean },
+  ): Promise<boolean> {
+    const p = currentProfile.current;
+    const state = learning.current;
+    if (!p || !state) return false;
     const updated = recordAttempt(state, a, {
       id: crypto.randomUUID(),
       answer,
       hintsUsed: hintsUsed.current,
+      ...(firstAnswer.current !== undefined ? {firstAnswer: firstAnswer.current} : {}),
       ...timing,
     });
     const evidence = updated.attempts.at(-1)!;
@@ -638,33 +703,22 @@ export default function Controller() {
     }
     if (!result.inserted) {
       await loadProfile(p);
-      return;
+      return false;
     }
     displayState(updated);
     count.current++;
     setCompleted(count.current);
     // This write is presentation state; the transaction above already durably recorded the answer.
     await saveSession();
-    setFeedback({
-      kind: grading.correct ? "correct" : "retry",
-      title: grading.correct
-        ? hintsUsed.current
-          ? "You worked it through."
-          : "You’ve got it."
-        : "Let’s look at it another way.",
-      message: grading.correct
-        ? a.mode === "fluency"
-          ? "A little recall practice, then back to exploring."
-          : "We’ll revisit this later to see what sticks."
-        : (a.explanation ??
-          `The result is ${grading.expected}. Try a drawing or break the calculation into smaller parts.`),
-    });
+    return true;
   }
   async function support(kind: Parameters<StudioProps["onSupport"]>[0]) {
     const a = currentActivity.current;
     if (!a) return;
     if (kind === "dispute") {
       // Keep an append-only dispute journal; projection is rebuilt without this item's evidence.
+      // A pending retry's miss is recorded first so the disputed item stays auditable.
+      await settlePendingRetry();
       const state = learning.current!;
       const updated = quarantineActivity(
         state,
@@ -685,6 +739,7 @@ export default function Controller() {
       currentActivity.current = undefined;
       setActivity(undefined);
       hintsUsed.current = 0;
+      firstAnswer.current = undefined;
       await saveSession();
       setHint(
         "Thanks for flagging it. This item is set aside; it won’t count toward your progress.",

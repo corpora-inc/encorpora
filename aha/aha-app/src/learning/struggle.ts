@@ -13,12 +13,17 @@ export interface SkillStreak {
   presentedWithoutSuccess: number;
 }
 
+/** A wrong answer, including one rescued by the forgiving retry: the learner still needed a nudge. */
+export function missed(a: AttemptEvidence): boolean {
+  return !a.correct || a.firstAnswer !== undefined;
+}
+
 /** Pure trailing-outcome summary for one skill. Disputed (excluded) evidence is ignored. */
 export function recentStreak(attempts: readonly AttemptEvidence[], skillId: string): SkillStreak {
   const valid = attempts.filter(a => !a.excluded);
   const own = valid.filter(a => a.skillId === skillId);
   let misses = 0, successes = 0, presentedWithoutSuccess = 0;
-  for (let i = own.length - 1; i >= 0 && !own[i].correct; i--) misses++;
+  for (let i = own.length - 1; i >= 0 && missed(own[i]); i--) misses++;
   for (let i = own.length - 1; i >= 0 && own[i].independent; i--) successes++;
   for (let i = valid.length - 1; i >= 0 && valid[i].skillId === skillId && !valid[i].independent; i--) presentedWithoutSuccess++;
   return { misses, successes, presentedWithoutSuccess };
@@ -116,7 +121,7 @@ function bracketUp({ state, valid, streak }: Context, succeededId: string): Skil
   if (!below) return undefined;
   for (let i = valid.length - 2; i >= 0; i--) {
     const above = getSkill(valid[i].skillId);
-    if (!above || valid[i].correct || streak(above.id).misses < 2) continue;
+    if (!above || !missed(valid[i]) || streak(above.id).misses < 2) continue;
     const chain = ancestors(above.id);
     if (!chain.some(c => c.skill.id === below.id)) continue;
     const options = chain.filter(c => practicable(state, c.skill) && c.skill.id !== below.id &&
@@ -138,7 +143,7 @@ export function struggleFocus(state: LearnerState, placing: boolean): Candidate 
   const streak = (id: string) => { let s = memo.get(id); if (!s) memo.set(id, s = recentStreak(valid, id)); return s; };
   const ctx: Context = { state, valid, placing, streak };
   const run = streak(last.skillId).presentedWithoutSuccess;
-  if (!last.correct) {
+  if (missed(last)) {
     if (run >= STRUGGLE_RUN_LIMIT) return confidenceItem(ctx, last.skillId) ?? nextForMissed(ctx, last.skillId);
     return nextForMissed(ctx, last.skillId);
   }
@@ -146,7 +151,7 @@ export function struggleFocus(state: LearnerState, placing: boolean): Candidate 
   if (!last.independent && run > STRUGGLE_RUN_LIMIT) return confidenceItem(ctx, last.skillId);
   // A success on something else (confidence item, review, stretch) returns to the unresolved miss.
   const previous = valid.at(-2);
-  if (previous && !previous.correct && previous.skillId !== last.skillId) return nextForMissed(ctx, previous.skillId);
+  if (previous && missed(previous) && previous.skillId !== last.skillId) return nextForMissed(ctx, previous.skillId);
   if (placing && last.independent) {
     const probe = bracketUp(ctx, last.skillId);
     if (probe) return { skill: probe, reason: 'placement' };

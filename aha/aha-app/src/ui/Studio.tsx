@@ -134,8 +134,16 @@ export function Studio(props: StudioProps) {
     if (!props.feedback) return;
     // The answer's feedback takes the learner's attention; an open nudge folds away (the icon reopens it).
     if (props.feedback.kind !== "info") setPanel(null);
-    feedbackRegion.current?.focus({ preventScroll: true });
+    if (props.feedback.kind !== "nudge") feedbackRegion.current?.focus({ preventScroll: true });
   }, [props.feedback?.kind, props.feedback?.title, props.feedback?.message]);
+  // A nudge hands the answer straight back for a quick fix once the controls are enabled again;
+  // the line itself is a live status. Choice and symbol answers focus their current or first option.
+  useEffect(() => {
+    if (props.feedback?.kind !== "nudge" || props.busy) return;
+    const field = document.getElementById(answerId) as HTMLElement | null;
+    const option = document.querySelector<HTMLElement>(`input[name="${answerId}"]:checked, input[name="${answerId}"], .focus-dock .answer-symbols button[aria-pressed="true"], .focus-dock .answer-symbols button`);
+    (field ?? option ?? feedbackRegion.current)?.focus({ preventScroll: true });
+  }, [props.feedback?.kind, props.feedback?.title, props.busy]);
   // A new nudge, explanation or worked example opens the help panel once; dismissing it keeps it closed.
   useEffect(() => {
     const key = props.hint ? `${taskId}|${props.hint}` : undefined;
@@ -246,6 +254,9 @@ export function Studio(props: StudioProps) {
           <strong>{props.feedback.title}</strong></>}
       {props.feedback.kind === "retry" && props.feedback.message && panel !== "feedback" && (
         <button type="button" className="text-button see-how" onClick={() => setPanel("feedback")}>See how</button>
+      )}
+      {props.feedback.kind === "nudge" && panel !== "help" && (
+        <button type="button" className="text-button see-how" disabled={props.busy} onClick={() => { setPanel("help"); props.onSupport("explain"); }}>See how</button>
       )}
     </div>
   ) : null;

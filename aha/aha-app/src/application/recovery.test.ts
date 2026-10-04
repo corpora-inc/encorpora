@@ -86,3 +86,26 @@ test('paid curiosity answers survive presentation recovery without creating mast
  assert.deepEqual(restored.learner.progress,f.state.progress);
  assert.throws(()=>restoreLearning(profile,f.state,{...session,data:{...session.data,curiosity:{...curiosity,answer:'x'.repeat(24001)}}},f.attempts,[]),LearningRecoveryError);
 });
+
+test('a forgiving retry restores as one assisted attempt and a pending retry resumes with its first answer', () => {
+  let state = createLearner(profile.id, 4);
+  const q = question(20);
+  state = recordAttempt(state, q, { id: 'retried', answer: expectedAnswer(q.task), firstAnswer: '7/8', at: at(1), hintsUsed: 1, activeMs: 1000, interrupted: false });
+  const attempts = state.attempts.map(e => ({ id: e.id, activityId: e.activityId, sessionId: 'session', createdAt: e.at, data: e }));
+  const restored = restoreLearning(profile, state, null, attempts, []);
+  assert.equal(restored.learner.attempts.length, 1);
+  assert.equal(restored.learner.attempts[0].independent, false);
+  assert.equal(restored.learner.attempts[0].firstAnswer, '7/8');
+  // A projection that carries evidence cannot disagree with the ledger about the first miss.
+  // (Production checkpoints carry no attempts; the bumped hint count keeps such a record assisted.)
+  const { firstAnswer: _dropped, ...laundered } = attempts[0].data;
+  assert.throws(() => restoreLearning(profile, state, null, [{ ...attempts[0], data: laundered }], []), LearningRecoveryError);
+  for (const bad of [5, '', 'x'.repeat(81)]) assert.throws(() => restoreLearning(profile, null, null, [{ ...attempts[0], data: { ...attempts[0].data, firstAnswer: bad } }], []), LearningRecoveryError);
+  const pending = question(21);
+  const session = { id: 'session', updatedAt: at(2), data: { sessionId: 'session', activity: pending, hintsUsed: 1, completed: 1, firstAnswer: '1/9' } };
+  const resumed = restoreLearning(profile, state, session, attempts, []);
+  assert.equal(resumed.activity?.id, pending.id); assert.equal(resumed.firstAnswer, '1/9'); assert.equal(resumed.hintsUsed, 1);
+  assert.equal(restoreLearning(profile, state, { ...session, data: { ...session.data, activity: q } }, attempts, []).firstAnswer, undefined, 'An answered activity has no pending retry');
+  for (const bad of [{ firstAnswer: 3 }, { firstAnswer: 'x'.repeat(81) }, { firstAnswer: '1/9', hintsUsed: 0 }])
+    assert.throws(() => restoreLearning(profile, state, { ...session, data: { ...session.data, ...bad } }, attempts, []), LearningRecoveryError);
+});
