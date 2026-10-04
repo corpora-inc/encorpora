@@ -15,7 +15,7 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 | Experience | #810 | Merged #814/#824/#842/#843 | Accessible guided journey and bounded visual renderers |
 | Integrated verification | #811 | 99 tests + controller/SDK browser regressions pass; native Android emulator/upgrade and iOS simulator verified | See ACCEPTANCE.md; live and physical-device acceptance remains |
 | Activity Spec v1 | #863 | `add-aha-activity-spec` | `src/activity/`: AI-authored spec, strict validator, local grader, SVG renderer, 43 test fixtures, batch prompt. Merged #866 |
-| AI-authored activities drive learning | #867 | `add-aha-ai-activities` | Signed-in + AI ready: batch of 4 specs per paid call (journal v2, 2600-token budget), durable prefetch queue, `<ActivityStage>` rendering, local grading, `ai-spec` mastery evidence (guided-only standards reachable), empty-queue local fallback. Wired and fixture-tested (unit + `test:ai` with TEST fixture specs); NOT live-verified |
+| AI-authored activities drive learning | #867 | `add-aha-ai-activities` | Signed-in + AI ready: batch of 4 specs per paid call (journal v2, 2600-token budget), durable prefetch queue, focus-stage spec rendering (lazy `ActivityView`), local grading, `ai-spec` mastery evidence (guided-only standards reachable), empty-queue local fallback. Wired and fixture-tested (unit + `test:ai` with TEST fixture specs); NOT live-verified |
 | Internal delivery | #812 | Signed builds uploaded; see [RELEASE.md](RELEASE.md) | TestFlight build `0.1.0.29843614` is `IN_BETA_TESTING` in the existing internal group. Play build `29843596` is completed internally with a Console-attested existing audience. Physical installs remain unverified. |
 
 ## Active constraints
