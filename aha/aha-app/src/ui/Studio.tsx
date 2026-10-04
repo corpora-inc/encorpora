@@ -24,6 +24,7 @@ import {
   Upload,
   X,
 } from "lucide-react";
+import { ReportProblem } from "./ReportProblem";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
@@ -913,6 +914,15 @@ export function Studio(props: StudioProps) {
                   </button>
                 </div>
               )}
+            </section>
+            <section>
+              <div className="eyebrow">HELP</div>
+              <h3>Something not working?</h3>
+              <p>
+                A report lists the app version, device type, and recent errors.
+                It doesn’t include names, answers, or account details.
+              </p>
+              <ReportProblem signedIn={props.account.connected} aiReady={!!props.account.aiReady} />
             </section>
           </div>
         )}

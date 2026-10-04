@@ -46,6 +46,7 @@ pub fn run() {
             local_repository,
             documents::pick_backup,
             documents::share_backup,
+            documents::share_report,
             f2z::app_readiness,
             f2z::open_free2z_account
         ])
