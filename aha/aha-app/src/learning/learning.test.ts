@@ -306,11 +306,12 @@ test('sign key appears only where the answer domain can be negative',()=>{
  assert.equal(sign({kind:'arithmetic',operation:'add',left:'-3',right:'5'},'7.NS.A.1'),true);
  assert.equal(sign({kind:'arithmetic',operation:'add',left:'3',right:'5'},'7.NS.A.1'),true,'domain, not this answer: positive answers must not hide the key');
  assert.equal(sign({kind:'pythagorean',a:3,b:4},'8.G.B.7'),false);
+ assert.equal(sign({kind:'arithmetic',operation:'divide',left:'3/4',right:'1/2'},'6.NS.A.1'),false,'6.NS operands stay nonnegative');
  assert.equal(answerCanBeNegative({kind:'arithmetic',operation:'subtract',left:'1',right:'2'}),true,'unknown skill stays permissive');
  // Every generated task with a negative answer must offer the key; K–5 never does.
  for(const s of skills.filter(s=>s.coverage==='verified-practice'))for(let seed=1;seed<=60;seed++){
   const a=generatePractice(s.id,seed),expected=expectedAnswer(a.task),negative=a.task.kind!=='compare'&&parseRational(expected).n<0n;
   if(negative)assert.equal(answerCanBeNegative(a.task,s),true,`${s.id} ${expected}`);
-  if(s.grade==='K'||s.grade<=5)assert.equal(answerCanBeNegative(a.task,s),false,s.id);
+  if(s.grade==='K'||s.grade<=5){assert.equal(answerCanBeNegative(a.task,s),false,s.id);assert.ok(!['statistics','evaluate'].includes(a.task.kind),`${s.id}: K–5 nonnegativity check skips array fields`);}
  }
 });

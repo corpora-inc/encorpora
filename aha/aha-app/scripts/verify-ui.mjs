@@ -135,8 +135,11 @@ try{
   assert.deepEqual(await smallTargets(),[],'phone welcome tap targets are at least 44×44');
   await mobile.getByRole('button',{name:'Let’s begin',exact:true}).click();await mobile.getByLabel('Your answer',{exact:true}).waitFor();
   assert.deepEqual(await smallTargets(),[],'phone activity tap targets are at least 44×44');
-  const phoneTask=Object.values(await mobile.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity;
-  assert.equal(await mobile.getByRole('button',{name:'Change positive or negative sign',exact:true}).count(),answerCanBeNegative(phoneTask.task,getSkill(phoneTask.skillId))?1:0,'sign key follows the answer domain');
+  const phoneActive=name=>mobile.evaluate(name=>{const db=window.__ahaFixture.read();const id=name?db.profiles.find(p=>p.name===name)?.id:Object.keys(db.sessions)[0];return db.sessions[id]?.data?.activity;},name);
+  const signKeyMatches=async name=>{const t=await phoneActive(name);const signed=answerCanBeNegative(t.task,getSkill(t.skillId));
+    assert.equal(await mobile.getByRole('button',{name:'Change positive or negative sign',exact:true}).count(),signed?1:0,`sign key follows the answer domain (${t.skillId})`);return signed;};
+  const phoneTask=await phoneActive();
+  assert.equal(await signKeyMatches(),false,'a fresh grade-3 start never offers a sign key');
   await mobile.getByRole('button',{name:'A little hint',exact:true}).click();await mobile.locator('.hint-box').waitFor();
   await mobile.getByLabel('Your answer',{exact:true}).fill(expectedAnswer(phoneTask.task));await mobile.getByRole('button',{name:'Check my answer',exact:true}).click();
   await mobile.getByRole('button',{name:'Next discovery',exact:true}).waitFor();
@@ -146,7 +149,20 @@ try{
   await mobile.getByLabel('Type grown-up to continue',{exact:true}).fill('grown-up');await mobile.getByRole('button',{name:'Open grown-up settings',exact:true}).click();
   await mobile.getByRole('button',{name:'Export backup',exact:true}).waitFor();
   assert.deepEqual(await smallTargets(),[],'phone grown-up settings tap targets are at least 44×44');
-  assert.equal(await mobile.evaluate(()=>{const s=getComputedStyle(document.querySelector('.aha-studio'),'::before');return s.position==='fixed'&&s.top==='0px'&&s.backgroundColor!=='rgba(0, 0, 0, 0)';}),true,'status-bar scrim stays fixed behind the top safe area');
+  assert.equal(await mobile.evaluate(()=>[...document.styleSheets].flatMap(s=>[...s.cssRules]).some(r=>r.selectorText==='.aha-studio::before'&&r.style.position==='fixed'&&r.style.top==='0px'&&/env\(safe-area-inset-top\)/.test(r.style.height))),true,'status-bar backdrop is fixed and sized by the top safe-area inset');
+  // A grade-8 learner reaches tasks whose answers can be negative; the key must appear there.
+  await mobile.getByLabel('Starting point (we’ll adjust from here)',{exact:true}).selectOption('8');
+  await mobile.getByLabel('Nickname for a new learner',{exact:true}).fill('Eight');await mobile.getByLabel('Nickname for a new learner',{exact:true}).press('Enter');
+  await mobile.getByRole('dialog').waitFor({state:'detached'}).catch(()=>{});
+  if(await mobile.getByRole('dialog').count())await mobile.getByRole('button',{name:'Back to learning',exact:true}).click();
+  const start=mobile.getByRole('button',{name:'Let’s begin',exact:true});if(await start.count())await start.click();
+  let sawSigned=false;
+  for(let i=0;i<10&&!sawSigned;i++){
+    await mobile.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+    sawSigned=await signKeyMatches('Eight');
+    if(!sawSigned){const before=(await phoneActive('Eight')).id;await mobile.getByRole('button',{name:'Try something harder',exact:true}).click();await mobile.waitForFunction(id=>{const db=window.__ahaFixture.read(),a=db.sessions[db.profiles.find(p=>p.name==='Eight').id]?.data?.activity;return a&&a.id!==id;},before);}
+  }
+  assert.equal(sawSigned,true,'a grade-8 learner sees the sign key on a task that can be negative');
   await phone.close();
   assert.deepEqual(errors,[],'browser errors');
   console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
