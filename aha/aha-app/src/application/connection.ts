@@ -1,5 +1,6 @@
 import { SdkError, type Models } from '@free2z/sdk';
 import { TutorServiceError } from '../provider/free2z';
+import { diagnostics, type DiagnosticsLog } from '../diagnostics/log';
 
 /** Only select IDs actually advertised to this account. Catalogue order is the service preference. */
 export function chooseTutorModel(catalog: Models): string {
@@ -42,4 +43,54 @@ export function retryDeadline(error: unknown, now = Date.now()): number | undefi
   const seconds = error instanceof SdkError || error instanceof TutorServiceError ? error.retryAfterSeconds : undefined;
   return typeof seconds === 'number' && Number.isFinite(seconds) && seconds > 0
     ? now + Math.ceil(seconds * 1000) : undefined;
+}
+
+/** Shown, at most, after the person closes the Free2Z sign-in themselves. */
+export const SIGN_IN_NOT_COMPLETED = 'Free2Z sign-in closed; you can connect any time.';
+
+/**
+ * Codes that mean the person closed or declined sign-in, not that anything broke.
+ * `browser_error` is what tauri-plugin-f2z (e95becd6) reports when the Android Custom
+ * Tab is backed out of or closed, the iOS ASWebAuthenticationSession is cancelled, or
+ * either expires: the native side rejects `authorize` and the Rust mobile session maps
+ * every rejection to Error::Browser. `access_denied` is the IdP's answer when consent is
+ * declined; `cancelled` is a sign-in the plugin itself stopped (sign-out, window closed).
+ */
+const SIGN_IN_CLOSED = new Set(['browser_error', 'access_denied', 'cancelled']);
+const SIGN_IN_MESSAGES: Record<string, string> = {
+  authentication_busy: 'A Free2Z sign-in is already open. Finish or close it, then try again.',
+  timeout: 'The Free2Z sign-in took too long and was closed. Tap Connect Free2Z to try again.',
+  transport_error: 'AHA could not reach Free2Z. Check the internet connection, then try again.',
+  storage_unavailable: 'This device could not keep the Free2Z sign-in safely, so AHA did not connect. Please try again.',
+  invalid_authentication_response: 'Free2Z’s sign-in reply could not be verified, so AHA did not connect. Please try again.',
+  protocol_error: 'Free2Z’s sign-in reply could not be verified, so AHA did not connect. Please try again.',
+  login_required: 'Free2Z needs you to finish signing in. Tap Connect Free2Z to try again.',
+  consent_required: 'Free2Z needs you to finish signing in. Tap Connect Free2Z to try again.',
+  interaction_required: 'Free2Z needs you to finish signing in. Tap Connect Free2Z to try again.',
+  server_error: 'Free2Z is temporarily unavailable. Please try connecting again later.',
+  temporarily_unavailable: 'Free2Z is temporarily unavailable. Please try connecting again later.',
+  unavailable: 'Free2Z is temporarily unavailable. Please try connecting again later.',
+  configuration_error: 'Free2Z sign-in is not set up correctly in this version of AHA. Your progress is safe; please report this problem.',
+  invalid_scope: 'Free2Z sign-in is not set up correctly in this version of AHA. Your progress is safe; please report this problem.',
+  invalid_request: 'Free2Z sign-in is not set up correctly in this version of AHA. Your progress is safe; please report this problem.',
+  unauthorized_client: 'Free2Z sign-in is not set up correctly in this version of AHA. Your progress is safe; please report this problem.',
+};
+const SIGN_IN_GENERIC = 'The Free2Z sign-in did not finish. Your progress is safe; please try again.';
+
+export type SignInOutcome = { quiet: true; note: string } | { quiet: false; message: string };
+
+/**
+ * Classify a rejected native sign-in. A person closing the sign-in is recorded as
+ * an info event and returns quietly; every other failure, known or not, is logged
+ * as an error with its code before a kind, code-free message is shown.
+ */
+export function signInFailure(error: unknown, log: Pick<DiagnosticsLog, 'add' | 'error'> = diagnostics): SignInOutcome {
+  const code = error instanceof SdkError ? error.code : undefined;
+  if (code !== undefined && SIGN_IN_CLOSED.has(code)) {
+    log.add('info', 'sign-in', `Sign-in closed by the person or browser [${code}]`);
+    return { quiet: true, note: SIGN_IN_NOT_COMPLETED };
+  }
+  log.error('sign-in', error);
+  const message = code !== undefined ? SIGN_IN_MESSAGES[code] : undefined;
+  return { quiet: false, message: message ?? SIGN_IN_GENERIC };
 }

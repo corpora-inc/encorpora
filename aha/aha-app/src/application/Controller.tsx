@@ -38,7 +38,7 @@ import {
 import { previewRepository } from "./preview";
 import { restoreLearning } from "./recovery";
 import { learningCheckpoint } from "./checkpoint";
-import { chooseTutorModel, learningError, retryDeadline } from "./connection";
+import { chooseTutorModel, learningError, retryDeadline, signInFailure } from "./connection";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
 import { logError } from "../diagnostics/log";
 
@@ -753,7 +753,16 @@ export default function Controller() {
     checkRetryDelay();
     const client = getNativeClient();
     // Suggest the beta's 500 2Z total cap; paidAuthorization still verifies the confirmed grant.
-    const s = await client.signIn(SIGN_IN_OPTIONS);
+    let s;
+    try {
+      s = await client.signIn(SIGN_IN_OPTIONS);
+    } catch (e) {
+      // Closing the sign-in is a choice, not an error: stay disconnected, at most a one-line note.
+      const outcome = signInFailure(e); // logs everything else, with its code
+      setAccount(a => a.connected ? a : {...a, status: outcome.quiet ? outcome.note : a.status});
+      if (!outcome.quiet) setError(outcome.message);
+      return;
+    }
     if (!s.signedIn || !s.subject)
       throw new Error("Sign-in was not completed.");
     subject.current = s.subject;

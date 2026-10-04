@@ -25,19 +25,29 @@ pub fn app_readiness() -> Readiness {
     }
 }
 
+/// The minimum Free2Z scopes AHA uses: the account subject, a refresh token,
+/// the balance and AI. The SDK's `Config::new` default also asks for `profile`
+/// (name and picture, which AHA never shows) and `purchase:create`, which the
+/// consent screen lists as "Start 2Z credit purchases". AHA never creates
+/// purchases (its capability excludes them), so it must not ask for either.
+pub const SCOPES: &[&str] = &["openid", "offline_access", "balance:read", "ai:invoke"];
+
 fn client_id() -> Option<&'static str> {
     option_env!("AHA_FREE2Z_CLIENT_ID").filter(|value| !value.trim().is_empty())
 }
 pub fn configure<R: tauri::Runtime>(app: tauri::Builder<R>) -> tauri::Builder<R> {
     let Some(id) = client_id() else { return app };
     app.plugin(
-        Builder::new(Config::new(id), "https://encorpora.io/aha/purchase-return")
-            .windows(["main".to_owned()])
-            .mobile_redirects(MobileRedirects {
-                https: None,
-                private_scheme: Some("inc.corpora.aha:/oauth/callback".to_owned()),
-            })
-            .build(),
+        Builder::new(
+            Config::new(id).with_scopes(SCOPES.iter().copied()),
+            "https://encorpora.io/aha/purchase-return",
+        )
+        .windows(["main".to_owned()])
+        .mobile_redirects(MobileRedirects {
+            https: None,
+            private_scheme: Some("inc.corpora.aha:/oauth/callback".to_owned()),
+        })
+        .build(),
     )
 }
 
@@ -52,6 +62,22 @@ mod tests {
         assert_eq!(readiness.client_id, client_id());
         assert_eq!(readiness.client_id, client_id());
         assert!(!readiness.external_checkout_enabled);
+    }
+
+    #[test]
+    fn sign_in_requests_only_the_scopes_aha_uses() {
+        let config = Config::new("test-client").with_scopes(SCOPES.iter().copied());
+        assert_eq!(
+            config.scopes,
+            ["openid", "offline_access", "balance:read", "ai:invoke"]
+        );
+        // The SDK default would add the purchase permission to the consent screen.
+        assert!(
+            Config::new("test-client")
+                .scopes
+                .iter()
+                .any(|scope| scope == "purchase:create")
+        );
     }
 
     #[test]
