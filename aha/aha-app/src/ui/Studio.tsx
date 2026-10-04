@@ -460,7 +460,7 @@ export function Studio(props: StudioProps) {
           <button type="button" className="secondary-button" onClick={() => setSheet(null)}>Keep going</button>
         </div>
       </Sheet>
-      <Sheet open={sheet === "ask" && view === "focus"} onClose={closeAsk} label="Ask a question">
+      <Sheet open={sheet === "ask" && view === "focus" && !settings} onClose={closeAsk} label="Ask a question">
         {props.curiosity ? (
           <section className="curiosity-conversation" aria-label="Curiosity conversation">
             <p className="curiosity-question">{props.curiosity.question}</p>

@@ -253,7 +253,7 @@ input[type="checkbox"] + .ax-choice-badge { border-radius: 8px; }
 .ax-stepper output { min-width: 64px; text-align: center; font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .ax-stepper output span { font-family: Georgia, serif; font-style: italic; font-weight: 400; color: var(--ax-muted); margin-right: 6px; }
 .ax-region-chips > div { display: flex; flex-wrap: wrap; gap: 8px; }
-.ax-region-chips button { min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--ax-line); background: var(--ax-card); cursor: pointer; font-weight: 700; font-size: 0.92rem; }
+.ax-region-chips button { min-height: 44px; min-width: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--ax-line); background: var(--ax-card); cursor: pointer; font-weight: 700; font-size: 0.92rem; }
 .ax-region-chips button.is-selected { border-color: var(--ax-coral); background: var(--ax-coral-tint); }
 
 .ax-hints { display: grid; gap: 8px; margin-top: 18px; }

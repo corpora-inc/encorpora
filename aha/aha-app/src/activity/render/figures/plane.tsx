@@ -103,7 +103,7 @@ export function CoordinatePlaneFigure({ figure: f, tap, plot }: { figure: Figure
           const right = X(p.x) < ox + pw - 40;
           return (
             <g key={i} {...region}>
-              {p.id && tap && <circle cx={X(p.x)} cy={Y(p.y)} r={20} className="ax-hit" />}
+              {p.id && tap && <circle cx={X(p.x)} cy={Y(p.y)} r={25} className="ax-hit" />}
               <circle cx={X(p.x)} cy={Y(p.y)} r={selected ? 8 : 6} fill={p.open ? 'var(--ax-card)' : selected ? 'var(--ax-teal)' : 'var(--ax-coral)'} stroke={p.open ? 'var(--ax-coral)' : 'var(--ax-card)'} strokeWidth={p.open ? 2.5 : 2} />
               {p.label && <text x={X(p.x) + (right ? 10 : -10)} y={Y(p.y) - 9} textAnchor={right ? 'start' : 'end'} className="ax-point-label">{p.label}</text>}
             </g>

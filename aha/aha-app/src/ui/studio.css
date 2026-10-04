@@ -2311,20 +2311,24 @@ body {
   margin-bottom: 10px;
 }
 @media (min-width: 900px) {
+  .home-view {
+    position: relative;
+    padding: 0 40px;
+  }
   .home-nav {
-    position: static;
-    order: -1;
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translateX(-50%);
     background: none;
     backdrop-filter: none;
     border: 0;
-    justify-content: center;
     gap: 8px;
     padding: 0;
-    margin-top: -60px;
-    pointer-events: none;
   }
   .home-nav button {
-    pointer-events: auto;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -2333,9 +2337,6 @@ body {
     flex: none;
     padding: 0 16px;
     font-size: 0.9rem;
-  }
-  .home-view {
-    padding: 0 40px;
   }
   .home-main {
     padding-bottom: 24px;
