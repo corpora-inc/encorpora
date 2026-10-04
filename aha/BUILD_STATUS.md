@@ -21,12 +21,13 @@ Family beta on TestFlight internal + Google Play internal. Warm math-studio desi
 - iOS startup uses ASCII native executable identifiers (fixed in #831); the visible brand remains ¡AHA!. Native simulator learning, restart, quarantine and backup acceptance passed with proper simulator Keychain entitlements. Signed TestFlight processing and existing-group availability are verified; physical-device acceptance remains required.
 - GitHub issue creation works; Project API returns missing `read:project` scope. Issues exist but board movement is not verified. Do not claim Doing/Done transitions.
 - Existing primary checkout has unrelated untracked Dynawalla files. Preserve them; all AHA changes use isolated worktrees.
-- SDK source preview is usable; live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
+- SDK source preview `e95becd6` is usable; sign-in suggests the 500 2Z total cap that grant verification requires. Live service readiness remains unverified. See canonical `docs/free2z/sdk` in free2z/zuu.
 - Paid acceptance requires an explicitly authorized account and shared spending limit, a fresh service-enforced grant, and verified service readiness. Keep account-specific testing instructions in the private runbook.
 - Existing internal audiences remain unchanged. The owner additionally authorized one AHA external TestFlight tester and accepted the external-review route. Group membership and build assignment are verified; Apple beta review is pending (#848). No company roles or public links were added. The Play owner list remains verified saved and selected. Identities remain private. See [RELEASE.md](RELEASE.md).
 
 ## Current implementation boundaries
 - Task-specific local teaching and bounded fresh variants support continued practice. Conceptual advancement and optional all-skill fact practice remain separate, and recent errors take priority over unrelated fluency.
+- Local practice after errors (#860): one miss is retried, a second miss shows a worked example of a different task (recorded as assisted), and a skill is never repeated more than three times while failing; confidence items and bracketed step-downs replace the old one-level-per-miss cascade. Evidence rules are unchanged.
 - Completed AI answers remain recoverable until their presentation is saved. Parent controls expose saved answers, account recovery, and distinct allowance/balance failures. A fixed system-browser route opens Free2Z account management.
 
 - Learning evidence separates conceptual successes, arithmetic recall and delayed retention. Standards coverage is explicit; numerical practice does not certify every requirement of a whole standard.

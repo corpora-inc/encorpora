@@ -2,6 +2,7 @@ import type { Activity, AttemptEvidence, AttemptInput, Candidate, Grade, Learner
 import { evidenceSkillIds } from './types';
 import { getSkill, skills } from './curriculum';
 import { gradeAnswer, validateActivity } from './tasks';
+import { recentStreak, struggleFocus } from './struggle';
 export const REVIEW_DAYS = [1,3,7,14,30] as const;
 export const DAILY_FLUENCY_LIMIT = 6;
 const DAY=86400000;
@@ -106,14 +107,19 @@ function skillProgress(skill:Skill,attempts:AttemptEvidence[],previous:SkillProg
 export function selectCandidates(state:LearnerState,now:string=new Date().toISOString(),limit=12):Candidate[] {
  const time=timestamp(now); if(!Number.isInteger(limit)||limit<1||limit>40)throw new Error('Candidate limit must be 1–40.');
  const candidates:Candidate[]=[]; const added=new Set<string>();
- const add=(id:string,reason:Candidate['reason'])=>{const skill=getSkill(id);if(skill?.coverage==='verified-practice'&&!added.has(id)){added.add(id);candidates.push({skill,reason});}};
+ const add=(id:string,reason:Candidate['reason'],approach?:Candidate['approach'])=>{const skill=getSkill(id);if(skill?.coverage==='verified-practice'&&!added.has(id)){added.add(id);candidates.push({skill,reason,...(approach?{approach}:{})});}};
  const progress=Object.values(state.progress);
  progress.filter(p=>p.nextReviewAt&&timestamp(p.nextReviewAt)<=time).sort((a,b)=>timestamp(a.nextReviewAt!)-timestamp(b.nextReviewAt!)).forEach(p=>add(p.skillId,'due-review'));
  const validAttempts=state.attempts.filter(a=>!a.excluded);
  const last=validAttempts.at(-1);
+ // After errors: retry once, then a worked example, then a confidence item and a gentle step down.
+ const focus=struggleFocus(state,validAttempts.length<12);
+ if(focus)add(focus.skill.id,focus.reason,focus.approach);
+ const focusId=focus&&candidates.find(c=>c.skill.id===focus.skill.id)?.skill.id;
  if(last) {
-  // A demonstrated prerequisite does not need re-teaching after one slip on a harder skill.
-  if(!last.independent)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
+  // A demonstrated prerequisite does not need re-teaching after one slip on a harder skill, and
+  // one miss is retried before any step down: support is offered once the difficulty is confirmed.
+  if(!last.correct&&recentStreak(validAttempts,last.skillId).misses>=2)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
   const p=state.progress[last.skillId];
   if(p?.concept!=='provisional')add(last.skillId,'continue');
   skills.filter(s=>state.progress[s.id]?.concept!=='provisional'&&s.prerequisites.includes(last.skillId)&&s.prerequisites.every(id=>state.progress[id]?.concept==='provisional')).forEach(s=>add(s.id,'frontier'));
@@ -130,9 +136,9 @@ export function selectCandidates(state:LearnerState,now:string=new Date().toISOS
  if(validAttempts.length<12) {
   // During the short placement sample, sample new domains before simply drilling a correct skill.
   const previousMenu=candidates.splice(0);added.clear();
-  previousMenu.filter(c=>c.reason==='due-review'||c.reason==='support'||!last?.independent&&c.skill.id===last?.skillId).forEach(c=>add(c.skill.id,c.reason));
+  previousMenu.filter(c=>c.reason==='due-review'||c.skill.id===focusId||c.reason==='support'||!last?.independent&&c.skill.id===last?.skillId).forEach(c=>add(c.skill.id,c.reason,c.approach));
   placement.forEach(s=>add(s.id,'placement'));
-  previousMenu.forEach(c=>add(c.skill.id,c.reason));
+  previousMenu.forEach(c=>add(c.skill.id,c.reason,c.approach));
  } else placement.forEach(s=>add(s.id,'placement'));
  // Fluency needs evidence across dates. Keep it available without making endless
  // same-day recall the only next step, even when another frontier prerequisite is unseen.

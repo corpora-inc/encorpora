@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { SdkError } from '@free2z/sdk';
+import { Client, NativeTransport, SdkError, type NativeBridge } from '@free2z/sdk';
 import type { ChatEvent, ChatRequest, ChatStream, Session } from '@free2z/sdk';
-import { Free2zTutor, format2z, verifyTestGrant, type Journal, type SdkClient } from './free2z.ts';
+import { Free2zTutor, SIGN_IN_OPTIONS, TEST_SPEND_CAP_2Z, format2z, verifyTestGrant, type Journal, type SdkClient } from './free2z.ts';
 const session: Session = {signedIn:true,subject:'adult',generation:'one',grantedScopes:['ai:invoke'],persistence:'persistent'};
 function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}]) {
   let value: unknown; const calls: {request:ChatRequest; options:any}[] = []; let activeSession = session;
@@ -274,6 +274,25 @@ test('an unconsumed completed lesson cannot masquerade as an archived empty reco
  const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization,{kind:'activity',profileId:'learner',candidateSkillIds:['skill']});
  const op=f.getValue().operations[0];op.text='';op.request.messages=[];
  await assert.rejects(f.tutor.pendingReplies(),{code:'journal_invalid'});
+});
+
+test('sign-in suggests exactly the total cap that paid admission verifies',async()=>{
+ assert.deepEqual(SIGN_IN_OPTIONS,{spendCap:{cap2z:500n,period:'total'}});
+ assert.equal(SIGN_IN_OPTIONS.spendCap?.cap2z,TEST_SPEND_CAP_2Z);
+ assert.ok(Object.isFrozen(SIGN_IN_OPTIONS)&&Object.isFrozen(SIGN_IN_OPTIONS.spendCap));
+ // A grant the user confirmed at the hinted policy is admitted; the hint itself grants nothing.
+ const f=fixture();
+ f.client.grant=async()=>({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:SIGN_IN_OPTIONS.spendCap!.cap2z,cap_period:SIGN_IN_OPTIONS.spendCap!.period!,enforced:true,as_of:new Date().toISOString()});
+ assert.equal((await verifyTestGrant(f.client,{subject:'adult',clientId:'aha-client',maximum2z:TEST_SPEND_CAP_2Z})).limit2z,TEST_SPEND_CAP_2Z);
+ await assert.rejects(verifyTestGrant(f.client,{subject:'adult',clientId:'aha-client',maximum2z:TEST_SPEND_CAP_2Z+1n}),{code:'authorization_required'});
+});
+
+test('the vendored SDK sends the spend-cap hint to the native plugin as decimal strings',async()=>{
+ const sent:unknown[]=[];
+ const bridge={signIn:async(options:unknown)=>{sent.push(options);return {signedIn:true,subject:'adult',grantedScopes:['ai:invoke'],persistence:'persistent',generation:'1'};}} as unknown as NativeBridge;
+ const signedIn=await new Client(new NativeTransport(bridge)).signIn(SIGN_IN_OPTIONS);
+ assert.equal(signedIn.subject,'adult');
+ assert.deepEqual(sent,[{spendCap:'500',spendPeriod:'total'}]);
 });
 
 // ---- Journal v2: Activity Spec batches (2600-token budget) beside readable, recoverable v1 records ----

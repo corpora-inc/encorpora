@@ -1,4 +1,4 @@
-import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Session } from '@free2z/sdk';
+import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
@@ -10,11 +10,22 @@ export interface VerifiedGrant {
 }
 export interface TestAuthorization extends GrantPolicy { verifiedGrant: VerifiedGrant }
 const GRANT_MAX_AGE_MS = 60_000;
+/** Beta test authorization ceiling: an enforced, non-resetting `total` app cap of at most 500 whole 2Z. */
+export const TEST_SPEND_CAP_2Z = 500n;
+/**
+ * Sign-in suggestion for exactly the policy `verifyTestGrant` admits: `TEST_SPEND_CAP_2Z` in `total`.
+ * Only a consent-screen pre-selection: Free2Z lowers the amount to the registration default and the
+ * user's existing grant (and ignores it when their capped period differs), and the user may edit it.
+ * Paid admission never trusts the hint; it re-reads the grant through `verifyTestGrant`.
+ */
+export const SIGN_IN_OPTIONS: Readonly<SignInOptions> = Object.freeze({
+  spendCap: Object.freeze({cap2z: TEST_SPEND_CAP_2Z, period: 'total' as const}),
+});
 /** Read-only live snapshot. Never persist this as spending authority or treat revocation stamps as policy versions. */
 export async function verifyTestGrant(
   client: Pick<SdkClient, 'session' | 'grant'>, policy: GrantPolicy, now: () => number = Date.now,
 ): Promise<VerifiedGrant> {
-  if (!policy || !opaque(policy.subject) || !opaque(policy.clientId) || typeof policy.maximum2z !== 'bigint' || policy.maximum2z <= 0n || policy.maximum2z > 500n)
+  if (!policy || !opaque(policy.subject) || !opaque(policy.clientId) || typeof policy.maximum2z !== 'bigint' || policy.maximum2z <= 0n || policy.maximum2z > TEST_SPEND_CAP_2Z)
     throw new TutorServiceError('authorization_required', 'Identify the approved account, registered app, and budget before using paid AI.');
   const before = await client.session();
   const selected = (session: Session) => session.signedIn && session.subject === policy.subject && session.grantedScopes.includes('ai:invoke') && opaque(session.generation);
@@ -185,7 +196,7 @@ export class Free2zTutor {
     return session;
   }
   private verifyAuthorization(session: Session, authorization: TestAuthorization): void {
-      if (!authorization || typeof authorization.maximum2z !== 'bigint' || authorization.subject !== session.subject || !opaque(authorization.clientId) || authorization.maximum2z <= 0n || authorization.maximum2z > 500n)
+      if (!authorization || typeof authorization.maximum2z !== 'bigint' || authorization.subject !== session.subject || !opaque(authorization.clientId) || authorization.maximum2z <= 0n || authorization.maximum2z > TEST_SPEND_CAP_2Z)
         throw new TutorServiceError('authorization_required', 'Identify the approved test account and its budget before using paid AI.');
       const grant = authorization.verifiedGrant;
       if (!grant || typeof grant.limit2z !== 'bigint' || grant.subject !== session.subject || grant.clientId !== authorization.clientId || grant.sessionGeneration !== session.generation || !Number.isFinite(grant.checkedAt) || !Number.isFinite(Date.parse(grant.asOf)) || Date.now() - Date.parse(grant.asOf) > GRANT_MAX_AGE_MS || Date.parse(grant.asOf) - Date.now() > 5_000 || Date.now() - grant.checkedAt > GRANT_MAX_AGE_MS || grant.checkedAt > Date.now() || grant.period !== 'total' || grant.limit2z <= 0n || grant.limit2z > authorization.maximum2z)

@@ -15,6 +15,7 @@ import {
   recordSpecAttempt,
   selectCandidates,
   selectFluencySkill,
+  workedExampleHint,
   validateActivity,
   ActiveTimer,
   quarantineActivity,
@@ -31,6 +32,7 @@ import {
   type TestAuthorization,
   type PendingOperation,
   verifyTestGrant,
+  SIGN_IN_OPTIONS,
   type ResumeContext,
   type TutorReply,
 } from "../provider/free2z";
@@ -138,6 +140,7 @@ export default function Controller() {
   const pendingAi = useRef<{item: QueuedActivity; record: {id: string; sessionId: string; createdAt: string; data: Json}} | undefined>(undefined);
   const prefetching = useRef<Promise<void> | undefined>(undefined);
   const sessionWrites = useRef<Promise<unknown>>(Promise.resolve());
+  const pendingWorked = useRef(false);
   const sessionId = useRef<string>(crypto.randomUUID());
   const hintsUsed = useRef(0);
   const count = useRef(0);
@@ -216,7 +219,8 @@ export default function Controller() {
       ...aiSessionFields(),
     }));
   }
-  async function showActivity(next: Activity) {
+  /** worked: the activity's hint is a worked example shown up front, saved as assistance in the same write. */
+  async function showActivity(next: Activity, worked = false) {
     const p = currentProfile.current;
     if (!p) throw new Error("Choose a learner first.");
     await repository.current.saveActivity(p.id, {
@@ -228,7 +232,7 @@ export default function Controller() {
     // Persist the new presentation before changing either the displayed task or grading reference.
     await writeSession(p.id, () => ({
       activity: next,
-      hintsUsed: 0,
+      hintsUsed: worked ? 1 : 0,
       completed: count.current,
       sessionId: sessionId.current,
       ...aiSessionFields(),
@@ -238,10 +242,10 @@ export default function Controller() {
     setAiItem(undefined);
     setAiResult(undefined);
     savedCuriosity.current = undefined;
-    hintsUsed.current = 0;
+    hintsUsed.current = worked ? 1 : 0;
     setActivity(next);
     setFeedback(undefined);
-    setHint(undefined);
+    setHint(worked ? next.hint : undefined);
     setCuriosity(undefined);
     timer.current = new ActiveTimer();
   }
@@ -440,6 +444,7 @@ export default function Controller() {
       }
       const next = {...result.activity, id: reply.operationId, source: "ai" as const};
       pendingActivity.current = next;
+      pendingWorked.current = false;
       await showActivity(next);
       pendingActivity.current = undefined;
     } else {
@@ -616,7 +621,7 @@ export default function Controller() {
       // A saved batch only fills the queue; a saved single activity or curiosity answer is shown as is.
       if (saved.context?.kind !== "activities") return;
     }
-    if (pendingActivity.current) {await showActivity(pendingActivity.current);pendingActivity.current=undefined;return;}
+    if (pendingActivity.current) {await showActivity(pendingActivity.current, pendingWorked.current);pendingActivity.current=undefined;return;}
     if (pendingAi.current) { await showSpec(pendingAi.current.item); maybePrefetch(); return; }
     const state = learning.current;
     if (!state) return;
@@ -627,6 +632,7 @@ export default function Controller() {
       await saveSession();
     }
     let next: Activity;
+    let worked = false;
     const aiPath = !!(subject.current && provider.current && journalReadable);
     // Optional timed recall stays a short local interleave: AI activities are conceptual evidence.
     const recall = aiPath && !stretch && count.current > 0 && count.current % 5 === 0 ? selectFluencySkill(state) : undefined;
@@ -660,7 +666,7 @@ export default function Controller() {
             )
           : undefined) ?? candidates[0];
       const fluencySkill = !stretch && count.current > 0 && count.current % 5 === 0 &&
-        !["support", "due-review"].includes(chosen.reason) ? selectFluencySkill(state) : undefined;
+        !["support", "due-review"].includes(chosen.reason) && !chosen.approach ? selectFluencySkill(state) : undefined;
       const fluency = !!fluencySkill;
       next = generateFreshPractice(
         fluencySkill?.id ?? chosen.skill.id,
@@ -672,11 +678,15 @@ export default function Controller() {
             ? "review"
             : "concept",
       );
+      // After two misses, teach a solved sibling task first. Showing it counts as assistance.
+      worked = !stretch && !fluency && chosen.approach === "worked-example";
+      if (worked) next = { ...next, hint: workedExampleHint(next, state, crypto.getRandomValues(new Uint32Array(1))[0]) };
       next = { ...next, id: crypto.randomUUID(), source: "local" };
       if (subject.current) aiBackoff.current.recordLocalTask();
     }
     pendingActivity.current=next;
-    await showActivity(next);
+    pendingWorked.current=worked;
+    await showActivity(next, worked);
     pendingActivity.current=undefined;
   }
   /**
@@ -956,7 +966,8 @@ export default function Controller() {
       );
     checkRetryDelay();
     const client = getNativeClient();
-    const s = await client.signIn();
+    // Suggest the beta's 500 2Z total cap; paidAuthorization still verifies the confirmed grant.
+    const s = await client.signIn(SIGN_IN_OPTIONS);
     if (!s.signedIn || !s.subject)
       throw new Error("Sign-in was not completed.");
     subject.current = s.subject;

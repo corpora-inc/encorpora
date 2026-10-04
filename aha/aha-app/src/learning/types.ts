@@ -139,4 +139,10 @@ export interface AttemptInput {
 }
 export interface GradeResult { correct: boolean; expected: string; normalizedAnswer?: string; error?: string }
 export type ValidationResult = { ok: true; activity: Activity } | { ok: false; errors: string[] };
-export interface Candidate { skill: Skill; reason: 'due-review' | 'support' | 'continue' | 'frontier' | 'placement'; }
+export interface Candidate {
+  skill: Skill;
+  /** confidence: a brief success-building item from demonstrated (or easier) work after repeated misses. */
+  reason: 'due-review' | 'support' | 'continue' | 'frontier' | 'placement' | 'confidence';
+  /** worked-example: after two misses, teach a similar solved task before the learner tries again. */
+  approach?: 'worked-example';
+}
