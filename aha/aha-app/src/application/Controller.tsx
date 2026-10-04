@@ -37,6 +37,7 @@ import { restoreLearning } from "./recovery";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline } from "./connection";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
+import { logError } from "../diagnostics/log";
 
 interface Readiness {
   free2zConfigured: boolean;
@@ -281,6 +282,8 @@ export default function Controller() {
     };
   }
   function fail(e: unknown) {
+    // Diagnostics keep error text; error messages must never carry learner or account data.
+    logError("action", e);
     retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
     setError(learningError(e));
   }
@@ -482,7 +485,7 @@ export default function Controller() {
                 balance: format2z(b.available_milli_2z),
               }));
           })
-          .catch(() => {});
+          .catch((e) => logError("balance", e));
       }
     };
     document.addEventListener("visibilitychange", visibility);

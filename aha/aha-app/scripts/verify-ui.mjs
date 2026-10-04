@@ -19,6 +19,8 @@ function fixture(){
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:false,paidTestingReady:false,externalCheckoutEnabled:false,reason:'Test fixture: no AI service'};
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
+    if(command==='plugin:app|version')return '0.1.0-test';
+    if(command==='share_report'){window.__ahaFixture.sharedReport=args.report;return true;}
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(r.accountId!=='local-device')throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;
@@ -53,7 +55,7 @@ try{
   }
   assert.ok(ready,`Vite startup: ${output}`);
   browser=await chromium.launch({headless:true});
-  const context=await browser.newContext({viewport:{width:1280,height:900}});await context.addInitScript(fixture);
+  const context=await browser.newContext({viewport:{width:1280,height:900}});await context.grantPermissions(['clipboard-read','clipboard-write'],{origin:'http://127.0.0.1:1435'});await context.addInitScript(fixture);
   const page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   const db=()=>page.evaluate(()=>window.__ahaFixture.read());
@@ -130,6 +132,26 @@ try{
   await page.getByRole('button',{name:'Export backup',exact:true}).click();
   await page.getByRole('dialog').getByRole('alert').waitFor();
   assert.equal(await page.getByRole('dialog').getByRole('alert').isVisible(),true,'settings error is not hidden behind modal');
+  // Problem report: version, connection state and scrubbed recent errors, shared as text only.
+  await page.getByRole('button',{name:'Report a problem',exact:true}).click();
+  const reportBox=page.getByLabel('This is what the report contains',{exact:true});
+  await page.waitForFunction(()=>[...document.querySelectorAll('textarea')].some(t=>t.value.includes('App version:')));
+  let report=await reportBox.inputValue();
+  assert.match(report,/App version: 0\.1\.0-test \(build not set\)/);
+  assert.match(report,/Signed in: no\nAI ready: no/);
+  assert.ok((report.match(/INFO \[app\] Started/g)||[]).length>=2,'diagnostics log survives reload');
+  assert.match(report,/ERROR \[action\] .*TEST disk full/);
+  assert.match(report,/ERROR \[action\] .*TEST backup destination unavailable/);
+  assert.ok(!report.includes('local-device'),'no account identity in report');
+  await page.getByLabel('What happened? (optional)',{exact:true}).fill('Export did nothing. Reach me at parent@example.com');
+  await page.getByRole('button',{name:'Share report',exact:true}).click();
+  await page.waitForFunction(()=>!!window.__ahaFixture.sharedReport);
+  report=await page.evaluate(()=>window.__ahaFixture.sharedReport);
+  assert.match(report,/Note:\nExport did nothing\. Reach me at \[email\]/);
+  assert.match(report,/TEST disk full/);
+  await page.getByRole('button',{name:'Copy report',exact:true}).click();
+  await page.getByRole('button',{name:'Copied',exact:true}).waitFor();
+  assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),report,'copied text matches the shared report');
   await page.getByRole('button',{name:'Back to learning',exact:true}).click();
   assert.equal(await page.getByRole('dialog').count(),0);
   await page.setViewportSize({width:320,height:740});
@@ -158,7 +180,7 @@ try{
   }
   await retryContext.close();
   assert.deepEqual(errors,[],'browser errors');
-  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (restart, save failure, one ledger attempt), evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, compact layout. Explicit test IPC fixture; not native acceptance.');
+  console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (restart, save failure, one ledger attempt), evidence reload, hint assistance, dispute quarantine/continuation, focus, modal errors, problem report, compact layout. Explicit test IPC fixture; not native acceptance.');
 }finally{
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
