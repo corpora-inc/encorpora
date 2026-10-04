@@ -137,11 +137,13 @@ export function struggleFocus(state: LearnerState, placing: boolean): Candidate 
   const memo = new Map<string, SkillStreak>();
   const streak = (id: string) => { let s = memo.get(id); if (!s) memo.set(id, s = recentStreak(valid, id)); return s; };
   const ctx: Context = { state, valid, placing, streak };
+  const run = streak(last.skillId).presentedWithoutSuccess;
   if (!last.correct) {
-    if (streak(last.skillId).presentedWithoutSuccess >= STRUGGLE_RUN_LIMIT)
-      return confidenceItem(ctx, last.skillId) ?? nextForMissed(ctx, last.skillId);
+    if (run >= STRUGGLE_RUN_LIMIT) return confidenceItem(ctx, last.skillId) ?? nextForMissed(ctx, last.skillId);
     return nextForMissed(ctx, last.skillId);
   }
+  // An assisted success earns one independent try (worked example, then yours), but not an endless hinted loop.
+  if (!last.independent && run > STRUGGLE_RUN_LIMIT) return confidenceItem(ctx, last.skillId);
   // A success on something else (confidence item, review, stretch) returns to the unresolved miss.
   const previous = valid.at(-2);
   if (previous && !previous.correct && previous.skillId !== last.skillId) return nextForMissed(ctx, previous.skillId);

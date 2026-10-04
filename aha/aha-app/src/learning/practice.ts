@@ -1,6 +1,6 @@
 import type { Activity, CanonicalTask, LearnerState } from './types';
 import { getSkill } from './curriculum';
-import { validateActivity } from './tasks';
+import { expectedAnswer, validateActivity } from './tasks';
 import { teachTask } from './teaching';
 /** Reproducible varied practice, not a substitute for live AI explanations. */
 export function generatePractice(skillId:string,seed:number=Date.now(),mode:Activity['mode']='concept'):Activity {
@@ -92,14 +92,24 @@ export function generateFreshPractice(skillId:string,learner:LearnerState,seed:n
  return fallback;
 }
 
+/** Every quantity a task shows plus its result, order-free: "7 × 2" and "14 ÷ 2" share them. */
+function quantities(a:Activity):string {
+ const values=Object.values(a.task).flat().filter(v=>typeof v==='string'||typeof v==='number').map(String).filter(v=>/^-?\d/.test(v));
+ return [...values,expectedAnswer(a.task)].sort().join(',');
+}
 /**
  * A solved example of the same skill on a different task, shown before the learner tries again
- * after repeated misses. It never solves the displayed task. Showing it is assistance: the caller
- * records the attempt as hinted, so independent evidence keeps its meaning.
+ * after repeated misses. It never shares the displayed task's result or quantities, so a
+ * reordered or inverted fact cannot give the answer away. Showing it is assistance: the caller
+ * records the attempt as hinted.
  */
-export function workedExampleHint(skillId:string,learner:LearnerState,seed:number,avoidVariant:string):string {
- let example=generateFreshPractice(skillId,learner,((seed>>>0)+7919)>>>0);
- for(let i=1;i<=24&&example.variant===avoidVariant;i++)example=generatePractice(skillId,((seed>>>0)+7919+i)>>>0);
- if(example.variant===avoidVariant)return example.hint??'Break the problem into smaller steps.';
- return `Here’s one worked out first: ${example.prompt}\n\n${example.explanation}\n\nNow try yours the same way.`.slice(0,1200);
+export function workedExampleHint(shown:Activity,learner:LearnerState,seed:number):string {
+ const answer=expectedAnswer(shown.task),same=quantities(shown);
+ for(let i=0;i<=48;i++) {
+  const s=((seed>>>0)+7919+i)>>>0;
+  const example=i===0?generateFreshPractice(shown.skillId,learner,s):generatePractice(shown.skillId,s);
+  if(example.variant===shown.variant||expectedAnswer(example.task)===answer||quantities(example)===same)continue;
+  return `Here’s one worked out first: ${example.prompt}\n\n${example.explanation}\n\nNow try yours the same way.`.slice(0,1200);
+ }
+ return shown.hint??'Break the problem into smaller steps, then try once more.';
 }

@@ -392,13 +392,36 @@ test('placement probes back up after succeeding below a confirmed miss',()=>{
  assert.ok(selectCandidates(state,date(1))[0].skill.grade!==2,'A bracketed success does not fall back below it');
 });
 
-test('a worked example teaches a different task of the same skill',()=>{
+test('a worked example never solves the displayed task, even reordered or inverted',()=>{
  const learner=createLearner('a');
- for(const skillId of ['K.CC.A.2','3.OA.C.7','5.NF.A.1']){
-  const item=generateFreshPractice(skillId,learner,5);
-  const example=workedExampleHint(skillId,learner,5,item.variant);
+ const numbers=(a:Activity)=>[...Object.values(a.task).flat().filter(v=>typeof v==='string'||typeof v==='number').map(String).filter(v=>/^-?\d/.test(v)),expectedAnswer(a.task)].sort().join(',');
+ for(const skillId of ['K.CC.A.2','K.OA.A.5','1.OA.B.4','1.OA.C.6','2.OA.C.4','3.OA.A.1','3.OA.A.2','3.OA.C.7','5.NF.A.1'])for(let seed=1;seed<=300;seed++){
+  const item=generateFreshPractice(skillId,learner,seed);
+  const example=workedExampleHint(item,learner,seed);
   assert.ok(example.length<=1200);
-  assert.ok(!example.includes(item.prompt),`${skillId}: must not solve the displayed task`);
-  assert.match(example,/worked/i);
+  assert.ok(!example.includes(item.prompt),`${skillId}: must not restate the displayed task`);
+  const match=/worked out first: (.*)\n\n/.exec(example);
+  if(!match)continue; // A generic hint when no safe sibling task exists.
+  const shown=generateFreshPractice(skillId,learner,seed);
+  const sibling=[...Array(400).keys()].map(i=>generatePractice(skillId,i)).find(a=>a.prompt===match[1]);
+  if(!sibling)continue;
+  assert.notEqual(expectedAnswer(sibling.task),expectedAnswer(shown.task),`${skillId} seed ${seed}: same result`);
+  assert.notEqual(numbers(sibling),numbers(shown),`${skillId} seed ${seed}: same quantities`);
+ }
+ assert.match(workedExampleHint(generatePractice('3.OA.C.7',5),learner,5),/worked/i);
+});
+
+test('assisted successes do not loop one skill either',()=>{
+ for(const grade of [3,4] as const){
+  let state=createLearner('hinted',grade);const ids:string[]=[];
+  for(let i=0;i<16;i++){
+   const at=new Date(Date.UTC(2026,8,1,12,0,i)).toISOString();
+   const chosen=selectCandidates(state,at)[0];
+   const task={...generateFreshPractice(chosen.skill.id,state,2000+i),id:`hinted-${i}`};
+   // Taps a hint every time and then answers correctly.
+   state=recordAttempt(state,task,{id:`hinted-answer-${i}`,answer:expectedAnswer(task.task),at,hintsUsed:1});ids.push(chosen.skill.id);
+  }
+  const run=ids.reduce((r,id,i)=>{const n=i&&ids[i-1]===id?r.n+1:1;return {n,max:Math.max(r.max,n)};},{n:0,max:0}).max;
+  assert.ok(run<=4,`grade ${grade}: ${ids.join(' ')}`);
  }
 });

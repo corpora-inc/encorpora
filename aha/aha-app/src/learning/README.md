@@ -62,15 +62,19 @@ Progress policy is intentionally transparent and provisional:
 - After errors (`struggleFocus()`, selection policy only): one miss gets a fresh
   retry of the same skill, never an immediate step down. A second miss offers a
   `worked-example` approach: the controller shows a solved task of the same skill
-  with different numbers (`workedExampleHint()`) and records that attempt as
-  assisted. A skill is never shown more than three times in a row without an
-  independent success: the learner gets a `confidence` item from demonstrated
+  with a different result and quantities (`workedExampleHint()`, so a reordered
+  or inverted fact cannot give the answer away) and records that attempt as
+  assisted. A skill is never shown more than three times in a row while missing,
+  or four when the last was an assisted success (one independent try after a
+  worked example): the learner then gets a `confidence` item from demonstrated
   work, else one confirmed step down, else a nearby easier topic, then returns.
   Outside placement a step down is one direct prerequisite; during the twelve
   placement attempts it halves the grade gap between the missed skill and the
   highest demonstrated prerequisite (or K), and probes back up after a success.
   A prerequisite that is itself confirmed difficult is not offered as easier.
-  `recentStreak(attempts, skillId)` exposes the trailing misses/successes signal.
+  A hinted correct answer no longer adds prerequisite support to the menu; only
+  confirmed misses do. `recentStreak(attempts, skillId)` exposes the trailing
+  misses/successes signal.
   Already demonstrated prerequisites are not automatically re-taught after a slip.
   Conceptual advancement does not wait for multi-day fluency.
 - `selectFluencySkill(learner, now?)` chooses among all provisionally learned fact
