@@ -43,7 +43,7 @@ test('a user cancel of the native sign-in returns quietly with a neutral note', 
     assert.ok(outcome.quiet && outcome.note === SIGN_IN_NOT_COMPLETED, code);
     assert.doesNotMatch(SIGN_IN_NOT_COMPLETED, /could not|error|fail/i);
     assert.ok(!/\n/.test(SIGN_IN_NOT_COMPLETED) && SIGN_IN_NOT_COMPLETED.length <= 80, 'at most one short line');
-    assert.deepEqual(log.entries().map(e => e.level), ['info'], `${code} is recorded, never as an error`);
+    assert.deepEqual(log.entries().map(e => e.level), [code === 'browser_error' ? 'warn' : 'info'], `${code} is recorded, never as an error`);
     assert.match(log.entries()[0].message, new RegExp(code));
   }
 });

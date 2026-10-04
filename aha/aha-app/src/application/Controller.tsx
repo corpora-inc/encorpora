@@ -759,6 +759,7 @@ export default function Controller() {
     } catch (e) {
       // Closing the sign-in is a choice, not an error: stay disconnected, at most a one-line note.
       const outcome = signInFailure(e); // logs everything else, with its code
+      retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
       setAccount(a => a.connected ? a : {...a, status: outcome.quiet ? outcome.note : a.status});
       if (!outcome.quiet) setError(outcome.message);
       return;
@@ -800,7 +801,7 @@ export default function Controller() {
     await loadAccount(new NativeRepository("local-device"));
     if (failure) throw failure;
     if (!revoked)
-      throw new Error("Signed out locally. Free2Z could not confirm remote revocation; manage the grant in your account.");
+      throw new Error("Signed out locally. Free2Z could not confirm remote revocation; manage the grant at free2z.cash/account/apps.");
   }
   const visibleChanged = useCallback((visible: boolean) => {
     lessonVisible.current = visible;

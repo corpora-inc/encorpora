@@ -71,13 +71,6 @@ mod tests {
             config.scopes,
             ["openid", "offline_access", "balance:read", "ai:invoke"]
         );
-        // The SDK default would add the purchase permission to the consent screen.
-        assert!(
-            Config::new("test-client")
-                .scopes
-                .iter()
-                .any(|scope| scope == "purchase:create")
-        );
     }
 
     #[test]

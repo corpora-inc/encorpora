@@ -281,6 +281,7 @@ try {
   await page.getByText('Free2Z sign-in closed; you can connect any time.',{exact:true}).waitFor();
   assert.equal(await page.locator('.error-banner').count(),0,'cancelling sign-in shows no error banner');
   assert.equal(await page.getByRole('alert').count(),alertsBeforeCancel,'cancelling sign-in raises no alert');
+  assert.ok(consoleWarnings.some(m=>/sign-in/.test(m)&&/browser_error/.test(m)),'a closed sign-in browser is still visible in the console (it may also be a launch failure)');
   await disconnected('a cancelled sign-in returns to the disconnected state');
   // An unrecognized native code is logged with its code and shown a kind, generic message.
   const warningsBeforeUnknown=consoleWarnings.length;

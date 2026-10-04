@@ -63,12 +63,13 @@ narrow it with `Config::with_scopes`.
 AHA now requests exactly `openid offline_access balance:read ai:invoke`
 (`SCOPES` in `f2z.rs`, pinned by a Rust unit test). `profile` was dropped too:
 AHA never shows the account's name or picture. `ai:invoke` alone gives the
-`f2z-api` audience that `grant()` needs (zuu `spec/oidc.md` §4, `spec/grant.md`).
+`f2z-api` audience that `grant()` needs (zuu `spec/oidc.md` §6 `aud`, `spec/grant.md`).
 Purchase and checkout commands were already outside the Tauri capability.
 
 For the Free2Z team, there's nothing to fix server-side. Two notes: (1) a grant
 made before this change may still carry `purchase:create` until the parent
-signs in again or revokes it at free2z.cash/account/apps. (2) If AHA's
+signs in again or revokes it at free2z.cash/account/apps (the in-app Manage
+button appears only while connected; the sign-out message names that URL). (2) If AHA's
 registration `allowed_scopes` includes `purchase:create`, it can be removed. The
 app no longer requests it, and a request outside `allowed_scopes` fails with
 `invalid_scope` (oidc.md §2), which AHA reports as a setup problem.
@@ -85,7 +86,8 @@ unaccepted callback). The Rust mobile session maps every such rejection to
 (`src/application/connection.ts`) treats `browser_error`, `access_denied` (the
 parent declined consent) and `cancelled` (the plugin stopped the attempt) as a
 person closing sign-in. Each of those leaves AHA disconnected, shows at most a
-one-line note, and records an info-level diagnostic. Every other code is logged
+one-line note, and records a diagnostic (`warn` for `browser_error`, which also covers a
+browser that could not open, so it still reaches the console; `info` otherwise). Every other code is logged
 as an error with its code and gets a specific message, or a generic one if the
 code is unknown. Disconnected Settings show only Connect Free2Z. Manage
 allowance and Refresh connection appear only once connected.

@@ -81,13 +81,15 @@ export type SignInOutcome = { quiet: true; note: string } | { quiet: false; mess
 
 /**
  * Classify a rejected native sign-in. A person closing the sign-in is recorded as
- * an info event and returns quietly; every other failure, known or not, is logged
+ * a warn/info event and returns quietly; every other failure, known or not, is logged
  * as an error with its code before a kind, code-free message is shown.
  */
 export function signInFailure(error: unknown, log: Pick<DiagnosticsLog, 'add' | 'error'> = diagnostics): SignInOutcome {
   const code = error instanceof SdkError ? error.code : undefined;
   if (code !== undefined && SIGN_IN_CLOSED.has(code)) {
-    log.add('info', 'sign-in', `Sign-in closed by the person or browser [${code}]`);
+    // browser_error also covers a browser that could not open at all, so it stays visible
+    // in the console (warn) even though the UI is quiet; a declined consent is just info.
+    log.add(code === 'browser_error' ? 'warn' : 'info', 'sign-in', `Sign-in closed by the person or browser [${code}]`);
     return { quiet: true, note: SIGN_IN_NOT_COMPLETED };
   }
   log.error('sign-in', error);
