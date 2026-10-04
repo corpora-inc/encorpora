@@ -895,8 +895,9 @@ export default function Controller() {
           const pending = (await provider.current!.inspectPending()).find(p => p.operationId === id);
           if (pending?.profileId && pending.profileId !== currentProfile.current?.id)
             throw new Error("Choose the learner who started this request before recovering its answer.");
-          if (pending?.activityId && pending.activityId !== currentActivity.current?.id)
-            throw new Error("This question belongs to an earlier activity. Check its recorded usage before starting another paid request.");
+          // A curiosity request may belong to an earlier activity: local practice continues while a receipt is
+          // unsettled. Same-key recovery is not a new paid request, and deliverReply records the recovered answer
+          // as assistance on any unanswered current task, so recovery must stay possible after moving on.
           const authorization = await paidAuthorization();
           assertActionActive();
           const reply = await provider.current!.recover(id, authorization);

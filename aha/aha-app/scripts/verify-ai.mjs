@@ -180,14 +180,14 @@ try {
   await page.getByRole('button',{name:'Refresh connection',exact:true}).click();
   await page.getByText('AI ready',{exact:true}).waitFor();
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
-  const grantsBeforePending=await page.evaluate(()=>window.__ahaAI.grants);
+  const grantsBeforePending=await page.evaluate(()=>window.__ahaAI.grants),consoleBeforePending=consoleErrors.length;
   await answerCurrent();
   await page.getByRole('button',{name:'Next discovery',exact:true}).click();
   await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
   assert.ok(await page.evaluate(()=>window.__ahaAI.grants)>grantsBeforePending,'AI was retried after the backoff reset');
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),starts.length,'pending receipt blocks a new paid call');
   assert.equal((await session()).activity.source,'local','pending receipt does not block local practice');
-  assert.ok(consoleErrors.some(m=>/settlement_pending/.test(m)),'pending-receipt fallback is logged');
+  assert.ok(consoleErrors.slice(consoleBeforePending).some(m=>/settlement_pending/.test(m)),'pending-receipt fallback is logged');
   await settings();
   await page.getByRole('button',{name:'Recover original request',exact:true}).click();
   await page.getByText('Recovered lesson is ready.',{exact:false}).waitFor();
@@ -219,12 +219,38 @@ try {
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'paid curiosity restores without a new call');
   await page.getByRole('button',{name:'Back to our discovery',exact:true}).click();
+  // An interrupted curiosity request stays recoverable after local practice moves the learner on.
+  await page.evaluate(()=>{window.__ahaAI.enforced=true;window.__ahaAI.failOpening=true;});
+  const curiosityStarts=await page.evaluate(()=>window.__ahaAI.starts.length);
+  await page.getByRole('button',{name:'Ask a curiosity question',exact:true}).click();
+  await page.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
+  await page.getByRole('alert').filter({hasText:'Wait at least 5 seconds'}).waitFor();
+  const interrupted=await page.evaluate(()=>window.__ahaAI.starts.at(-1));
+  await page.getByRole('button',{name:'Back to our discovery',exact:true}).click();
+  await answerCurrent();
+  await page.getByRole('button',{name:'Next discovery',exact:true}).click();
+  await page.getByRole('button',{name:'Check my answer',exact:true}).waitFor();
+  assert.equal((await session()).activity.source,'local','unsettled curiosity request does not block local practice');
+  assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),curiosityStarts+1,'no new paid call while the curiosity receipt is unsettled');
+  const localTask=(await session()).activity.id;
+  await page.waitForTimeout(5100);
+  await settings();
+  await page.getByRole('button',{name:'Recover original request',exact:true}).click();
+  await page.getByText('Recovered lesson is ready.',{exact:false}).waitFor();
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.starts.at(-1)),interrupted,'curiosity recovery reuses the original request identity');
+  assert.equal(await page.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.filter(o=>o.state!=='finalized').length),0,'receipt settled; paid AI is no longer blocked');
+  const afterRecovery=await session();
+  assert.equal(afterRecovery.activity.id,localTask,'recovered curiosity answer does not replace the current task');
+  assert.equal(afterRecovery.hintsUsed,1,'recovered answer counts as assistance on the unanswered task');
+  await page.getByRole('button',{name:'Close settings',exact:true}).click();
+  await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
+  await page.getByRole('button',{name:'Back to our discovery',exact:true}).click();
   await page.evaluate(()=>{window.__ahaAI.failSignOut=true;});
   await settings();await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByRole('alert').waitFor();
   assert.equal(await page.getByRole('button',{name:'Sign out',exact:true}).count(),1,'failed native deletion retains connected account UI');
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, original-key lesson recovery, and crash-safe completed-answer delivery. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, original-key lesson and post-fallback curiosity recovery, and crash-safe completed-answer delivery. No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
