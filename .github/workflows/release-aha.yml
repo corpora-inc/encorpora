@@ -117,9 +117,9 @@ jobs:
           echo "release_notes=$NOTES" >> "$GITHUB_OUTPUT"
           {
             echo 'Release notes:'
-            echo '```'
-            python3 -c 'import json,sys; print(json.loads(sys.argv[1]))' "$NOTES"
-            echo '```'
+            echo '~~~~~~~~'
+            python3 -c 'import json,sys; print(json.loads(sys.argv[1]).replace("~~~~~~~~", "~"))' "$NOTES"
+            echo '~~~~~~~~'
           } >> "$GITHUB_STEP_SUMMARY"
 
   ios:

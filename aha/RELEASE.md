@@ -74,8 +74,8 @@ gh workflow run release-aha.yml --repo corpora-inc/encorpora --ref main -f platf
 
 Tester notes: add `-f release_notes='…'` to set TestFlight “What to Test” and the
 Play internal release notes (en-US). Without it, the run writes “Build N from
-<sha>” plus the subjects of `aha/` commits since the previous `aha-v*` tag or
-successful release run. Notes are sanitized (emails, handles, tokens and keys are
+<sha>” plus the subjects of recent `aha/` commits (since the previous `aha-v*` tag
+or successful release run, at most 30). Notes are sanitized (emails, handles, tokens and keys are
 redacted) and truncated to 4000 characters for TestFlight and 500 for Play. The
 TestFlight text is set after the build is verified; a failure there is reported
 without failing delivery.

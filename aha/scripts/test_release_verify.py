@@ -234,19 +234,32 @@ class ReleaseTests(unittest.TestCase):
             return subprocess.CompletedProcess(args,0,out,'')
         text=release.release_notes('29000123',sha,'',prev,run=run)
         self.assertTrue(text.startswith('Build 29000123 from aaaaaaaaa.'))
-        self.assertIn('Changes since the previous release:\n- fix(aha): calm feedback\n- feat(aha): add review',text)
+        self.assertIn('Recent AHA changes:\n- fix(aha): calm feedback\n- feat(aha): add review',text)
         log=[c for c in calls if c[1]=='log'][0]
         self.assertIn(f'{prev}..{sha}',log); self.assertEqual(log[-2:],['--','aha/'])
 
     def test_default_notes_fall_back_without_a_valid_previous_release(self):
+        calls=[]
         def run(args,**_):
+            calls.append(args)
             if args[1]=='merge-base': return subprocess.CompletedProcess(args,1,'','')
             return subprocess.CompletedProcess(args,0,'docs(aha): handoff\n','')
         for prev in ('', 'c'*40, '$(touch x)'):
             text=release.release_notes('29000123','a'*40,'',prev,run=run)
-            self.assertIn('Recent changes:\n- docs(aha): handoff',text)
+            self.assertIn('Recent AHA changes:\n- docs(aha): handoff',text)
+            log=[a for a in calls if a[1]=='log'][-1]
+            self.assertNotIn('..',' '.join(log)); self.assertIn('10',log)
         failing=lambda args,**_: subprocess.CompletedProcess(args,128,'','')
         self.assertEqual(release.release_notes('29000123','a'*40,run=failing),'Build 29000123 from aaaaaaaaa.')
+
+    def test_default_notes_mark_a_capped_change_list(self):
+        many='\n'.join(f'fix(aha): change {i}' for i in range(31))
+        run=lambda args,**_: subprocess.CompletedProcess(args,0,many if args[1]=='log' else '','')
+        text=release.release_notes('29000123','a'*40,'','b'*40,run=run)
+        self.assertIn('- fix(aha): change 29\n- \u2026and more',text)
+        self.assertNotIn('change 30',text)
+        path='aha/aha-app/src-tauri/gen/android/app cleanup'
+        self.assertIn(path,release.sanitize_notes(path))
 
     def test_custom_notes_win_and_inputs_are_validated(self):
         never=lambda *a,**k: self.fail('custom notes must not read git')

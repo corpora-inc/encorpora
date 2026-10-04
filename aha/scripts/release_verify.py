@@ -270,7 +270,7 @@ _SECRET_PATTERNS = [
     re.compile(r'(?i)\b(?:password|passwd|secret|token|api[_-]?key|private[_-]?key|client[_-]?secret|authorization)'
                r'\s*[:=]\s*\S+'),
     re.compile(r'(?i)\bbearer\s+\S+'),
-    re.compile(r'[A-Za-z0-9+/_=-]{32,}'),
+    re.compile(r'[A-Za-z0-9+_=-]{32,}'),
     re.compile(r'(?<![\w@])@[A-Za-z0-9][A-Za-z0-9-]{0,38}\b'),
 ]
 
@@ -279,7 +279,7 @@ def sanitize_notes(text: str) -> str:
     """Plain, single-language release notes with secrets and identities removed."""
     if not isinstance(text, str):
         raise ReleaseCheckError('Release notes must be text')
-    text = text[:20000].replace('\r\n', '\n').replace('\r', '\n').replace('\t', ' ')
+    text = text[:8000].replace('\r\n', '\n').replace('\r', '\n').replace('\t', ' ')
     # Drop control and format characters (including bidi overrides), keeping newlines.
     text = ''.join(c for c in text if c == '\n' or unicodedata.category(c) not in ('Cc', 'Cf', 'Cs', 'Co'))
     for pattern in _SECRET_PATTERNS:
@@ -305,11 +305,14 @@ def aha_commit_subjects(head: str, previous: str = '', *, run=subprocess.run) ->
         return run(['git', *args], text=True, capture_output=True, check=False)
     since = bool(previous and re.fullmatch(r'[0-9a-f]{40}', previous)
                  and git('merge-base', '--is-ancestor', previous, head).returncode == 0)
-    span = [f'{previous}..{head}', '-n', '30'] if since else [head, '-n', '10']
+    span = [f'{previous}..{head}', '-n', '31'] if since else [head, '-n', '10']
     result = git('log', '--no-merges', '--format=%s', *span, '--', 'aha/')
     if result.returncode != 0:
         return [], since
-    return [line.strip() for line in result.stdout.splitlines() if line.strip()], since
+    subjects = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+    if len(subjects) > 30:
+        subjects = subjects[:30] + ['\u2026and more']
+    return subjects, since
 
 
 def release_notes(build: str, sha: str, raw: str = '', previous: str = '', *, run=subprocess.run) -> str:
@@ -319,10 +322,9 @@ def release_notes(build: str, sha: str, raw: str = '', previous: str = '', *, ru
     if custom:
         return truncate_notes(custom, TESTFLIGHT_NOTES_LIMIT)
     text = f'Build {build} from {sha[:9]}.'
-    subjects, since = aha_commit_subjects(sha, previous, run=run)
+    subjects, _ = aha_commit_subjects(sha, previous, run=run)
     if subjects:
-        heading = 'Changes since the previous release:' if since else 'Recent changes:'
-        text += '\n\n' + heading + '\n' + '\n'.join('- '+subject for subject in subjects)
+        text += '\n\nRecent AHA changes:\n' + '\n'.join('- '+subject for subject in subjects)
     return truncate_notes(sanitize_notes(text), TESTFLIGHT_NOTES_LIMIT)
 
 
