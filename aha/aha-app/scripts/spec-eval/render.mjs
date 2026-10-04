@@ -1,5 +1,5 @@
-/** DEV-ONLY spec-eval: screenshot every valid spec at phone size (light) through the app's own
- * ActivityView and write a contact sheet grouped by learner state. */
+/** DEV-ONLY spec-eval: screenshot every valid spec at phone size (light) inside the studio's focus
+ * stage (the surface learners see) and write a contact sheet grouped by learner state. */
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -24,7 +24,8 @@ export async function screenshotSpecs(root, outDir, batches, { port = 1438 } = {
       await new Promise(r => setTimeout(r, 100));
     }
     browser = await chromium.launch({ headless: true });
-    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, colorScheme: 'light' });
+    // The S26 CSS viewport verify-ui uses for the focus-stage pass bar.
+    const context = await browser.newContext({ viewport: { width: 384, height: 832 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, colorScheme: 'light' });
     for (const batch of batches) {
       for (const item of batch.items.filter(i => i.ok)) {
         const page = await context.newPage();
@@ -33,23 +34,23 @@ export async function screenshotSpecs(root, outDir, batches, { port = 1438 } = {
         page.on('console', m => { if (m.type() === 'error') problems.push(`${where}: ${m.text()}`); });
         await page.addInitScript(s => { window.__SPEC_EVAL__ = s; }, item.spec);
         await page.goto(base);
+        const resume = page.getByRole('button', { name: 'Continue', exact: true });
+        if (await resume.count()) await resume.click();
         await page.locator('.aha-activity').waitFor({ timeout: 15000 });
         await page.evaluate(() => document.fonts.ready);
-        await page.waitForTimeout(60);
-        item.overflow = await page.evaluate(() => {
-          const bad = [];
-          if (document.documentElement.scrollWidth > window.innerWidth + 1) bad.push(`page scrolls horizontally (${document.documentElement.scrollWidth}px)`);
-          const card = document.querySelector('.aha-activity').getBoundingClientRect();
-          for (const el of document.querySelectorAll('.aha-activity *')) {
-            const r = el.getBoundingClientRect();
-            if (!r.width || el.closest('.ax-table-wrap') || el.closest('.katex')) continue;
-            const over = Math.max(r.right - card.right, card.left - r.left);
-            if (over > 1.5) bad.push(`${el.tagName.toLowerCase()}.${String(el.className.baseVal ?? el.className).split(' ')[0]} overflows the card by ${Math.round(over)}px`);
-          }
-          return [...new Set(bad)].slice(0, 3);
-        });
+        await page.waitForTimeout(80);
+        // Same one-screen checks as verify-ui's focus-stage pass bar.
+        Object.assign(item, await page.evaluate(() => {
+          const scroll = document.querySelector('.stage-scroll, .ax-stage-scroll');
+          const check = [...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Check');
+          const overflow = [];
+          if (document.documentElement.scrollWidth > innerWidth + 1) overflow.push(`page scrolls horizontally (${document.documentElement.scrollWidth}px)`);
+          if (document.documentElement.scrollHeight > innerHeight + 1) overflow.push('page scrolls vertically');
+          if (!check || check.getBoundingClientRect().bottom > innerHeight) overflow.push('Check is off screen');
+          return { overflow, stageScrolls: !!scroll && scroll.scrollHeight > scroll.clientHeight + 1 };
+        }));
         item.shot = `shots/${batch.state}--${item.index}.png`;
-        await page.locator('section').screenshot({ path: path.join(outDir, item.shot) });
+        await page.screenshot({ path: path.join(outDir, item.shot) });
         await page.close();
       }
     }
@@ -71,7 +72,7 @@ export function contactSheet(outDir, { states, batches, summary, renderProblems 
   ${esc(item.responseType)}${item.figureTypes.length ? ` · ${esc(item.figureTypes.join(', '))}` : ''} · ~${item.approxTokens} tok · keyCheck ${esc(item.keyCheck)}<br>
   ${item.judge ? JUDGE_CRITERIA.map(c => chip(label[c], item.judge[c])).join('') : '<span class="chip">not judged</span>'}
   ${item.judge?.problems ? `<p class="why">${esc(item.judge.problems)}</p>` : ''}
-  ${item.overflow?.length ? `<p class="why">Layout: ${esc(item.overflow.join('; '))}</p>` : ''}</figcaption></figure>`
+  ${item.stageScrolls ? '<p class="why">Scrolls inside the stage (does not fit one screen)</p>' : ''}${item.overflow?.length ? `<p class="why">Layout: ${esc(item.overflow.join('; '))}</p>` : ''}</figcaption></figure>`
     : `<figure class="card invalid"><figcaption><b>INVALID ${esc(item.id)}</b> · ${esc(item.responseType)}${item.figureTypes.length ? ` · ${esc(item.figureTypes.join(', '))}` : ''} · keyCheck ${esc(item.keyCheck)}<ul>${item.errors.slice(0, 6).map(e => `<li>${esc(e)}</li>`).join('')}</ul></figcaption></figure>`;
   const group = b => {
     const s = stateById.get(b.state);

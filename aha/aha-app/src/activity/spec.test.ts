@@ -2,6 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { standards } from '../../../curriculum/standards';
 import { fixtures } from './fixtures';
+import { checkTex, renderTex } from './text';
 import { extractJsonObject, FigureSchema, ResponseSchema, validateActivityBatch, validateActivitySpec, type ActivitySpec } from './spec';
 import { activityBatchJsonSchema, activityBatchStrictJsonSchema, activitySpecJsonSchema } from './schema';
 
@@ -174,6 +175,35 @@ describe('batch parsing and validation', () => {
     assert.equal(r.accepted.length, 2);
     assert.equal(r.rationale, 'Mixed review.');
     assert.match(r.errors.join(' '), /truncated; kept 2/);
+  });
+  it('keeps the other activities when one has a JSON slip', () => {
+    const acts = [base(), clone(fixtures[0]!), clone(fixtures[5]!)].map(a => JSON.stringify(a));
+    // spec-eval saw this from a model: a missing } after one activity's response.
+    const missingBrace = acts[1]!.replace(/\},"keyCheck"/, ',"keyCheck"');
+    const missingQuote = acts[1]!.replace('"hints":', '"hints:');
+    for (const broken of [missingBrace, missingQuote]) {
+      assert.notEqual(broken, acts[1]);
+      const text = `{"rationale":"Mixed review.","activities":[${acts[0]},${broken},${acts[2]}]}`;
+      assert.throws(() => JSON.parse(text));
+      const r = validateActivityBatch(text, { skillIds });
+      assert.deepEqual(r.accepted.map(a => a.id), [JSON.parse(acts[0]!).id, JSON.parse(acts[2]!).id]);
+      assert.deepEqual(r.rejected.map(x => [x.index, x.errors[0]]), [[1, 'Activity JSON is malformed.']]);
+      assert.equal(r.rationale, 'Mixed review.');
+      assert.match(r.errors.join(' '), /malformed; kept 2/);
+    }
+    // An extra closing brace must not let an inner activity pass as the envelope.
+    const extra = `{"rationale":"x","activities":[${acts[0]}},${acts[2]}]}`;
+    const e = validateActivityBatch(extra, { skillIds });
+    assert.deepEqual(e.accepted.map(a => a.id), [JSON.parse(acts[0]!).id, JSON.parse(acts[2]!).id]);
+    // A reply with no recoverable activity still fails as a whole.
+    assert.match(validateActivityBatch('{"rationale":"x","activities":[{"version":1,"id":"a" ', { skillIds }).errors[0]!, /incomplete/);
+  });
+  it('accepts a blank answer box and column arithmetic in math, nothing broader', () => {
+    for (const ok of ['4=\\square+1', '3+\\boxed{\\phantom{0}}=5', '\\boxed{\\phantom{00}}-7=12', '\\begin{array}{r}245\\\\+\;37\\\\\\hline\\end{array}']) {
+      assert.equal(checkTex(ok), null, ok);
+      assert.doesNotMatch(renderTex(ok), /\?/, ok);
+    }
+    for (const bad of ['\\phantom{0}+2', '\\boxed{\\phantom{secret}}', '\\boxed{\\phantom{0}\\phantom{0}}', '\\fbox{\\phantom{0}}', '\\begin{array}{r}costs\\end{array}']) assert.notEqual(checkTex(bad), null, bad);
   });
   it('rejects malformed envelopes and duplicate ids', () => {
     assert.match(validateActivityBatch('no json here', { skillIds }).errors[0]!, /no JSON object/);

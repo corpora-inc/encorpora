@@ -321,6 +321,32 @@ export function salvageTruncatedBatch(text: string): { rationale?: string; activ
   return { ...(decoded ? { rationale: decoded } : {}), activities };
 }
 
+/**
+ * Per-item recovery for a reply that is not one valid JSON object: truncated by the token cap, or
+ * with a JSON slip (a missing brace or quote) inside one activity. Every activity object starts
+ * with a "version" key, which no nested object uses, so each activity start is found by pattern
+ * and parsed on its own, never reading past the next start. A malformed activity is reported as such and its
+ * neighbours are kept. Nothing is repaired: a candidate either parses as written or is dropped.
+ */
+export function recoverBatchItems(text: string): { rationale?: string; items: ({ ok: true; value: unknown } | { ok: false; error: string })[] } | null {
+  const key = text.search(/"activities"\s*:\s*\[/);
+  if (key < 0) return null;
+  // Not string-aware on purpose: a missing quote must not hide later activities. A false start
+  // inside a string can only make candidates fail validation, never pass.
+  const starts = [...text.slice(key).matchAll(/\{\s*"version"\s*:/g)].map(m => key + m.index);
+  const items = starts.slice(0, 10).map((start, k) => {
+    // A malformed activity can swallow its neighbours; never read past the next activity start.
+    const window = text.slice(start, starts[k + 1] ?? text.length);
+    const r = balancedObjectAt(window, 0);
+    if (r === 'incomplete') return { ok: false as const, error: k === starts.length - 1 ? 'Activity JSON is incomplete (truncated).' : 'Activity JSON is malformed.' };
+    try { return { ok: true as const, value: JSON.parse(r) as unknown }; } catch { return { ok: false as const, error: 'Activity JSON is malformed.' }; }
+  });
+  const rationale = /"rationale"\s*:\s*"((?:[^"\\]|\\.){0,600})"/.exec(text)?.[1];
+  let decoded: string | undefined;
+  try { decoded = rationale === undefined ? undefined : JSON.parse(`"${rationale}"`); } catch { decoded = undefined; }
+  return { ...(decoded ? { rationale: decoded } : {}), items };
+}
+
 export interface BatchValidation {
   rationale: string;
   accepted: ActivitySpec[];
@@ -332,13 +358,22 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
   const empty = (errors: string[]): BatchValidation => ({ rationale: '', accepted: [], rejected: [], errors });
   let value = input;
   if (typeof value === 'string') {
-    const extracted = extractJsonObject(value);
-    if (extracted.ok) value = extracted.value;
+    const text = value;
+    const extracted = extractJsonObject(text);
+    // A batch envelope that failed to parse can still yield an inner object (one activity); only
+    // accept an extracted object that is the envelope itself.
+    const envelope = extracted.ok && extracted.value && typeof extracted.value === 'object' && 'activities' in extracted.value;
+    if (extracted.ok && (envelope || !/"activities"\s*:\s*\[/.test(text))) value = extracted.value;
     else {
-      const salvaged = extracted.error.includes('incomplete') ? salvageTruncatedBatch(value) : null;
-      if (!salvaged?.activities.length) return empty([extracted.error]);
-      const kept = validateActivityBatch({ rationale: salvaged.rationale ?? 'Response was truncated.', activities: salvaged.activities.slice(0, 5) }, options);
-      return { ...kept, errors: [...kept.errors, `Response was truncated; kept ${kept.accepted.length} complete activit${kept.accepted.length === 1 ? 'y' : 'ies'}.`] };
+      const recovered = text.length <= 150000 ? recoverBatchItems(text) : null;
+      if (!recovered?.items.some(i => i.ok)) return empty([extracted.ok ? 'Response is not valid JSON.' : extracted.error]);
+      const items = recovered.items.slice(0, 5);
+      const kept = validateActivityBatch({ rationale: recovered.rationale ?? 'Response JSON was damaged.', activities: items.map(i => i.ok ? i.value : null) }, options);
+      // Malformed items stay in the rejected list at their own index, with the JSON reason.
+      items.forEach((item, index) => { if (!item.ok) { const r = kept.rejected.find(x => x.index === index); if (r) r.errors = [item.error]; } });
+      // Truncation leaves the LAST activity unfinished; a slip mid-batch is a malformed reply.
+      const truncated = recovered.items.at(-1)?.ok === false && !extracted.ok && extracted.error.includes('incomplete');
+      return { ...kept, errors: [...kept.errors, `Response JSON was ${truncated ? 'truncated' : 'malformed'}; kept ${kept.accepted.length} complete activit${kept.accepted.length === 1 ? 'y' : 'ies'}.`] };
     }
   }
   if (!value || typeof value !== 'object' || Array.isArray(value)) return empty(['Response must be a JSON object.']);

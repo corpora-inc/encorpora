@@ -7,7 +7,7 @@
  *
  *   npm run spec-eval -- [--n 45] [--model gpt-6-astra] [--effort low] [--provider codex|claude]
  *                        [--judge-provider codex|claude] [--judge-model gpt-6.1-sol] [--judge-effort medium] [--no-judge]
- *                        [--no-render] [--only g3-] [--concurrency 6] [--run name] [--dry]
+ *                        [--no-render] [--only g3-] [--concurrency 4] [--run name] [--port 1438] [--dry]
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -24,7 +24,7 @@ const { values: o } = parseArgs({
     n: { type: 'string', default: '45' }, model: { type: 'string' }, effort: { type: 'string', default: 'low' },
     provider: { type: 'string', default: 'auto' }, 'judge-provider': { type: 'string', default: 'auto' }, 'judge-model': { type: 'string' }, 'judge-effort': { type: 'string', default: 'medium' },
     'no-judge': { type: 'boolean', default: false }, 'no-render': { type: 'boolean', default: false }, only: { type: 'string' },
-    concurrency: { type: 'string', default: '6' }, run: { type: 'string' }, dry: { type: 'boolean', default: false },
+    concurrency: { type: 'string', default: '4' }, run: { type: 'string' }, port: { type: 'string', default: '1438' }, dry: { type: 'boolean', default: false },
   },
 });
 const provider = pickProvider(o.provider);
@@ -35,7 +35,7 @@ const effort = provider === 'codex' ? o.effort : undefined;
 // The judge prefers codex even when the author is claude, so verdicts stay comparable across authors.
 const judgeProvider = pickProvider(o['judge-provider']) ?? provider;
 const judgeModel = o['judge-model'] ?? (judgeProvider === 'codex' ? 'gpt-6.1-sol' : 'sonnet');
-const concurrency = Math.max(1, Math.min(6, Number(o.concurrency) || 6));
+const concurrency = Math.max(1, Math.min(4, Number(o.concurrency) || 4));
 
 const { buildActivityPrompt, approxTokens } = await import(pathToFileURL(path.join(root, 'src/activity/prompt.ts')).href);
 const matrix = await loadStateMatrix(root);
@@ -74,14 +74,16 @@ const batches = await pool(jobs, concurrency, async (state, k) => {
 let renderProblems = [], sheet = null;
 if (!o['no-render']) {
   const { screenshotSpecs, contactSheet } = await import('./render.mjs');
-  renderProblems = await screenshotSpecs(root, outDir, batches);
+  renderProblems = await screenshotSpecs(root, outDir, batches, { port: Number(o.port) || 1438 });
   sheet = contactSheet;
 }
 const summary = summarize(batches, { category, meta: { run, provider, model, effort, judgeModel: o['no-judge'] ? null : `${judgeProvider} ${judgeModel}`, generatedAt: new Date().toISOString(), promptTokens } });
 summary.renderProblems = renderProblems.length;
-summary.layoutOverflowItems = batches.flatMap(b => b.items).filter(i => i.overflow?.length).length;
+const rendered = batches.flatMap(b => b.items).filter(i => i.shot);
+summary.layoutOverflowItems = rendered.filter(i => i.overflow?.length).length;
+summary.stageFitRate = rendered.length ? Math.round(1000 * rendered.filter(i => !i.stageScrolls).length / rendered.length) / 10 : null;
 summary.judgeGaps = batches.filter(b => b.judgeGap).map(b => `${b.state}: ${b.judgeGap}`);
 writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(summary, null, 1));
-writeFileSync(path.join(outDir, 'summary.md'), `${summaryMarkdown(summary)}\nRender problems: ${renderProblems.length} · items with layout overflow: ${summary.layoutOverflowItems}\n\n**Judge gap notes:**\n${summary.judgeGaps.map(g => `- ${g}`).join('\n') || '- none'}\n`);
+writeFileSync(path.join(outDir, 'summary.md'), `${summaryMarkdown(summary)}\nRender problems: ${renderProblems.length} · items with layout overflow: ${summary.layoutOverflowItems} · fit the focus stage without inner scroll: ${summary.stageFitRate}%\n\n**Judge gap notes:**\n${summary.judgeGaps.map(g => `- ${g}`).join('\n') || '- none'}\n`);
 if (sheet) sheet(outDir, { states: jobs, batches, summary, renderProblems });
 console.log(`\n${summaryMarkdown(summary).split('\n').slice(5, 32).join('\n')}\n\nWrote ${path.relative(root, outDir)}/{summary.md,summary.json${sheet ? ',index.html' : ''}}`);

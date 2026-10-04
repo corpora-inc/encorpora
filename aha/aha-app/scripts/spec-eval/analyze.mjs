@@ -40,9 +40,10 @@ export async function loadAnalyzer(root) {
     .replace(/"[^"]*"/g, '"…"').slice(0, 140);
 
   function rawActivities(text) {
+    // Mirrors validateActivityBatch: the envelope when it parses, else per-item recovery.
     const ex = spec.extractJsonObject(text);
-    if (ex.ok) return Array.isArray(ex.value?.activities) ? ex.value.activities : [];
-    return spec.salvageTruncatedBatch(text)?.activities ?? [];
+    if (ex.ok && Array.isArray(ex.value?.activities)) return ex.value.activities;
+    return spec.recoverBatchItems(text)?.items.map(i => i.ok ? i.value : null) ?? [];
   }
 
   function analyzeBatch(state, prompt, text) {

@@ -8,7 +8,7 @@ It grades the answer on the device and records the result. Nothing here is wired
 
 | File | Role |
 |---|---|
-| `spec.ts` | zod schema → TS types + strict validator + semantic rules; batch parsing (`extractJsonObject`, `salvageTruncatedBatch`, `validateActivityBatch`) |
+| `spec.ts` | zod schema → TS types + strict validator + semantic rules; batch parsing (`extractJsonObject`, `recoverBatchItems`, `validateActivityBatch`) |
 | `schema.ts` | JSON Schema exports: standard draft 2020-12, plus an OpenAI strict-mode variant for a future `response_format` |
 | `text.ts` | Rich-text grammar (`plain text with $TeX$`), TeX/markup/link safety, KaTeX rendering |
 | `expr.ts` | Safe expression parser/evaluator. It never calls `eval` or `Function`, and its length, depth and value range are bounded |
@@ -69,8 +69,10 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
 3. **TeX.** KaTeX runs with `trust:false`, `strict:'error'`, `maxExpand:50` and `maxSize:8`.
    A denylist blocks `\href`, `\url`, `\html*`, `\def`, `\newcommand`, `\color` and others,
    and the TeX must parse. English words inside math are rejected; this catches the
-   unescaped-currency trap (`$3 and $5`). `renderTex` applies the same denylist again at
-   render time.
+   unescaped-currency trap (`$3 and $5`). Environment names in column arithmetic
+   (`\begin{array}{r}…\end{array}`) are not counted as words. `\phantom` is denied except in
+   the exact blank-box form `\boxed{\phantom{0}}` (1–3 digits); `\square` and `\boxed{}`
+   also work. `renderTex` applies the same denylist again at render time.
 4. **Expressions.** Function plots, `keyCheck` and expression answers go through `expr.ts`.
    It accepts a fixed grammar: numbers, the declared single-letter variables, `+ - * / ^`,
    and a fixed set of functions and constants. It never runs code. Function plots and answers
@@ -84,8 +86,12 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    behind the key (`"2*25+10+5+3"`). The app evaluates it locally and rejects the activity if
    the result disagrees with the key. This is required by default (`requireKeyCheck`).
 7. **Batch.** An invalid activity is dropped on its own, never repaired, and the rest of the
-   batch is kept. Code fences and surrounding chatter are tolerated. A truncated reply keeps
-   its complete activities.
+   batch is kept. Code fences and surrounding chatter are tolerated. If the reply is not one
+   valid JSON object, `recoverBatchItems` parses each activity on its own. This covers a reply
+   truncated by the token cap and a JSON slip, such as a missing brace or quote, inside one
+   activity. Each activity begins at its `"version"` key, and no read goes past the next one.
+   The damaged activity is rejected as malformed and its neighbours are kept. Nothing is ever
+   repaired.
 8. **Grading is local and deterministic.** Expression equivalence is checked by sampling the
    domain at points chosen by a seeded random generator (seeded with the activity id). Fraction
    form rules (`simplest`/`exact`) and polynomial form rules (`expanded`/`simplified`) produce
