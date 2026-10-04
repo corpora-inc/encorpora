@@ -43,6 +43,15 @@ test('logError records a scrubbed, bounded message, source tag and error code', 
   assert.equal(third.message, 'Unknown error')
 })
 
+test('huge error messages are bounded before scrubbing and stay fast', () => {
+  const log = new DiagnosticsLog({ storage: null, echo: false })
+  const started = performance.now()
+  log.add('error', 'big', 'a'.repeat(100_000))
+  log.add('error', 'big', 'https://' + 'a'.repeat(100_000))
+  assert.ok(performance.now() - started < 250, 'scrubbing a 100 KB message must not freeze the app')
+  assert.ok(log.entries().every(e => e.message.length <= 400))
+})
+
 test('persists across restart and validates what it reloads', () => {
   const storage = memoryStorage()
   const log = new DiagnosticsLog({ capacity: 2, storage, now: clock(), echo: false })

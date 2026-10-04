@@ -264,6 +264,7 @@ export default function Controller() {
     await loadProfile(list[0]);
   }
   function fail(e: unknown) {
+    // Diagnostics keep error text; error messages must never carry learner or account data.
     logError("action", e);
     retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
     setError(learningError(e));

@@ -28,7 +28,8 @@ export function scrub(text: string): string {
 }
 
 function clean(text: string, max: number): string {
-  const flat = scrub(text.replace(/[\u0000-\u001f\u007f]+/g, ' ').trim())
+  // Bound the input before scrubbing: the patterns are superlinear on huge strings.
+  const flat = scrub(text.slice(0, max * 4).replace(/[\u0000-\u001f\u007f]+/g, ' ').trim())
   return flat.length > max ? `${flat.slice(0, max - 1)}…` : flat
 }
 function tag(source: string): string {

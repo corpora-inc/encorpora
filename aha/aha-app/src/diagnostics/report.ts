@@ -17,7 +17,7 @@ interface NavigatorLike { userAgent?: string; platform?: string; userAgentData?:
 interface EnvironmentSources { getVersion: () => Promise<string>; build: string; navigator?: NavigatorLike }
 
 const line = (text: string, max: number) => {
-  const flat = scrub(text.replace(/[\u0000-\u001f\u007f]+/g, ' ').trim())
+  const flat = scrub(text.slice(0, max * 4).replace(/[\u0000-\u001f\u007f]+/g, ' ').trim())
   return flat.length > max ? `${flat.slice(0, max - 1)}…` : flat
 }
 /** A build number from the release pipeline: digits and dots only, never free text. */
