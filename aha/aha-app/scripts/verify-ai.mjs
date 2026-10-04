@@ -32,6 +32,8 @@ function fixture(){
       if(ai.models502)throw {code:'unavailable'};
       return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096'}]};
     }
+    // The deployed gateway rejects unknown fields; strict output must not be sent until its image accepts it.
+    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&'max_output_tokens_strict' in args.request)throw new Error('TEST gateway rejects max_output_tokens_strict');
     if(command==='plugin:f2z|estimate'){
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
       return {model:'fixture-model',input_tokens:'500',max_output_tokens:'1800',hold_2z:'1',cap_remaining_milli_2z:'99000'};
