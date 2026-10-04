@@ -56,5 +56,20 @@ fn dark_status_bar_icons() {
         &format!("import android.graphics.Color\nimport androidx.activity.SystemBarStyle\n{EDGE_TO_EDGE_IMPORT}"),
         1,
     );
+    let modified = fs::metadata(&path).and_then(|m| m.modified());
     fs::write(&path, patched).unwrap_or_else(|e| panic!("cannot write {}: {e}", path.display()));
+    // Keep the template's timestamp so the watch above does not rerun this script (and rebuild
+    // the crate) merely because the script itself rewrote the file.
+    let restored = modified.and_then(|modified| {
+        fs::File::options()
+            .write(true)
+            .open(&path)
+            .and_then(|f| f.set_modified(modified))
+    });
+    if let Err(e) = restored {
+        println!(
+            "cargo:warning=patched {} but could not restore its timestamp ({e}); the next build reruns build.rs once",
+            path.display()
+        );
+    }
 }

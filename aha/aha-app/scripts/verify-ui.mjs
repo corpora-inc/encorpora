@@ -153,7 +153,7 @@ try{
   // A grade-8 learner reaches tasks whose answers can be negative; the key must appear there.
   await mobile.getByLabel('Starting point (we’ll adjust from here)',{exact:true}).selectOption('8');
   await mobile.getByLabel('Nickname for a new learner',{exact:true}).fill('Eight');await mobile.getByLabel('Nickname for a new learner',{exact:true}).press('Enter');
-  await mobile.getByRole('dialog').waitFor({state:'detached'}).catch(()=>{});
+  await mobile.getByRole('dialog').waitFor({state:'detached',timeout:2000}).catch(()=>{});
   if(await mobile.getByRole('dialog').count())await mobile.getByRole('button',{name:'Back to learning',exact:true}).click();
   const start=mobile.getByRole('button',{name:'Let’s begin',exact:true});if(await start.count())await start.click();
   let sawSigned=false;
