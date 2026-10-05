@@ -30,7 +30,7 @@ Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
 
-## Learner-chosen model (#897)
+## Learner-chosen model (#899)
 
 Free2Z's `/v1/models` is no longer a gpt-4o-only allowlist. AHA never hardcodes a model id; `src/provider/models.ts` (pure,
 `models.test.ts`) reads the catalogue each batch:
