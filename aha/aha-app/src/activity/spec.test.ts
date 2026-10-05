@@ -195,6 +195,16 @@ describe('batch parsing and validation', () => {
     const extra = `{"rationale":"x","activities":[${acts[0]}},${acts[2]}]}`;
     const e = validateActivityBatch(extra, { skillIds });
     assert.deepEqual(e.accepted.map(a => a.id), [JSON.parse(acts[0]!).id, JSON.parse(acts[2]!).id]);
+    // Valid JSON of the wrong shape stays strict; recovery never widens the envelope rules.
+    assert.equal(validateActivityBatch(`{"batch":{"rationale":"r","activities":[${acts[0]},${acts[2]}]}}`, { skillIds }).accepted.length, 0);
+    const six = Array.from({ length: 6 }, (_, i) => acts[0]!.replace('"fx-2-fruit-graph"', `"a-${i}"`)).join(',');
+    assert.equal(validateActivityBatch(`{"rationale":"r","activities":[${six},]}`, { skillIds }).accepted.length, 0, 'more than 5 is rejected even when damaged');
+    assert.equal(validateActivityBatch(`{"rationale":5,"activities":[${acts[0]},${missingBrace}]}`, { skillIds }).accepted.length, 0, 'a damaged reply still needs a real rationale');
+    // An activity that cannot be located is reported, not silently dropped.
+    const reordered = JSON.stringify({ id: 'a-late', version: 1 });
+    const lost = validateActivityBatch(`{"rationale":"r","activities":[${acts[0]},${reordered.replace('}', ',"skillIds":["2.MD.D.10"]}')},${missingBrace}]}`, { skillIds });
+    assert.equal(lost.accepted.length, 1);
+    assert.ok(lost.rejected.some(r => /could not be located/.test(r.errors[0]!)), JSON.stringify(lost.rejected));
     // A reply with no recoverable activity still fails as a whole.
     assert.match(validateActivityBatch('{"rationale":"x","activities":[{"version":1,"id":"a" ', { skillIds }).errors[0]!, /incomplete/);
   });
@@ -203,7 +213,7 @@ describe('batch parsing and validation', () => {
       assert.equal(checkTex(ok), null, ok);
       assert.doesNotMatch(renderTex(ok), /\?/, ok);
     }
-    for (const bad of ['\\phantom{0}+2', '\\boxed{\\phantom{secret}}', '\\boxed{\\phantom{0}\\phantom{0}}', '\\fbox{\\phantom{0}}', '\\begin{array}{r}costs\\end{array}']) assert.notEqual(checkTex(bad), null, bad);
+    for (const bad of ['\\phantom{0}+2', '\\boxed{\\phantom{secret}}', '\\boxed{\\phantom{2}}', '\\\\boxed{\\phantom{0}}', '\\boxed{\\phantom{0}\\phantom{0}}', '\\fbox{\\phantom{0}}', '\\begin{array}{r}costs\\end{array}', '\\begin{array}{r}1\\end{array}{rcl}']) assert.notEqual(checkTex(bad), null, bad);
   });
   it('rejects malformed envelopes and duplicate ids', () => {
     assert.match(validateActivityBatch('no json here', { skillIds }).errors[0]!, /no JSON object/);

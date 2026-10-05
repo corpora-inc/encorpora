@@ -53,7 +53,9 @@ export async function complete({ provider, model, effort, system, user, schema, 
   if (existsSync(file)) return { text: readFileSync(file, 'utf8'), cached: true, key, ms: 0 };
   mkdirSync(cacheDir, { recursive: true });
   for (let attempt = 0; ; attempt++) {
-    // Run in an empty scratch directory with a read-only sandbox: the agent has nothing to read.
+    // Empty scratch cwd + read-only sandbox: codex cannot write, but it CAN read the host, and the
+    // framing tells it not to use tools. Prompts are synthetic (no learner data); claude runs with
+    // tools disabled outright.
     const cwd = mkdtempSync(path.join(os.tmpdir(), 'spec-eval-'));
     const started = Date.now();
     try {

@@ -71,7 +71,7 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    and the TeX must parse. English words inside math are rejected; this catches the
    unescaped-currency trap (`$3 and $5`). Environment names in column arithmetic
    (`\begin{array}{r}…\end{array}`) are not counted as words. `\phantom` is denied except in
-   the exact blank-box form `\boxed{\phantom{0}}` (1–3 digits); `\square` and `\boxed{}`
+   the exact blank-box form `\boxed{\phantom{0}}` (1–3 zeros); `\square` and `\boxed{}`
    also work. `renderTex` applies the same denylist again at render time.
 4. **Expressions.** Function plots, `keyCheck` and expression answers go through `expr.ts`.
    It accepts a fixed grammar: numbers, the declared single-letter variables, `+ - * / ^`,
@@ -128,16 +128,17 @@ local stand-in model on synthetic learners, so they must never be presented as F
 AI output. Outputs and the reply cache live in `.spec-eval/` (gitignored); never commit them.
 
 ```
-npm run spec-eval -- [--n 45] [--provider codex|claude] [--model gpt-6-astra] [--effort low]
+npm run spec-eval -- [--n 45] [--provider codex|claude] [--model haiku|gpt-6-astra] [--effort low]
                      [--judge-provider codex] [--judge-model gpt-6.1-sol] [--judge-effort medium]
-                     [--no-judge] [--no-render] [--only g3-] [--concurrency 6] [--run name] [--dry]
+                     [--no-judge] [--no-render] [--only g3-] [--concurrency 4] [--run name]
+                     [--port 1438] [--dry]
 ```
 
 1. **States.** `states.mjs` builds 45 synthetic learners (grades K–8 × cold start, strong,
    struggling with a misconception, review due, guided-only skill practised through AI activities)
    through `learnerState.ts` and the learning engine. `--n` above 45 adds fresh samples.
 2. **Author.** Each real `buildActivityPrompt` prompt goes to `codex exec` (read-only sandbox, empty
-   directory), or `claude -p` with tools disabled. At most 6 run at once. Replies are cached by a
+   directory), or `claude -p` with tools disabled. At most 4 run at once. Replies are cached by a
    hash of the prompt, model and sample, so re-runs are free.
 3. **Validate.** `validateActivityBatch` is the same parser and validator production uses.
    Per item the harness records validity and reasons, keyCheck status, skill ids against the
@@ -152,39 +153,77 @@ npm run spec-eval -- [--n 45] [--provider codex|claude] [--model gpt-6-astra] [-
    diversity, and reply size against the ~2.5k-token batch budget (gpt-4o ≈ 3 2Z per call).
 
 The codex models available on a ChatGPT login (`gpt-6-astra`, `gpt-6.1-sol`) are far stronger than
-gpt-4o, so they flatter the prompt. `--provider claude --model haiku` is a weaker stress test.
+gpt-4o, so they flatter the prompt; treat them as a ceiling. `--provider claude --model haiku` is the
+main gpt-4o stand-in. Expect about ±2 points of run-to-run noise in every rate (one sample per state).
 
-### Status (work in progress, 2026-10-04)
+### Results (2026-10-04, 45 batches, 3–5 activities each, judge = codex gpt-6.1-sol)
 
-Baseline, unmodified prompt:
+| | Haiku before | Haiku after | Ceiling before | Ceiling after |
+|---|---|---|---|---|
+| Schema valid | 80% | 92.2% | 96.7% | 99.4% |
+| keyCheck pass | 96.6% | 100% | 100% | 100% |
+| Judge: correct key | 89.8% | 84.3% | 98.9% | 99.4% |
+| Judge: level / next step | 83.3% | 86.7% | 98.3% | 98.3% |
+| Judge: varied | 95.4% | 97.6% | 100% | 100% |
+| Judge: figure helps | 71.4% | 69.5% | 96% | 100% |
+| Judge: child-appropriate | 100% | 98.2% | 99.4% | 100% |
+| Mean reply (chars/4) | 840 | 857 | 800 | 712 |
 
-- **gpt-6-astra, low effort, 45 batches:** schema 96.7%, keyCheck 100%, judge key 98.9%,
-  level 98.3%, varied 100%, figure 96%, kind 99.4%. Mean reply about 800 tokens, max 1346.
-- **haiku, partial (34 of 45 batches):** schema 80%.
+"Haiku before" is the first 34 batches; that run was interrupted. The ceiling author is
+gpt-6-astra at low effort. Across the last three Haiku iterations the rates stayed in narrow bands,
+within noise of each other:
 
-Failures seen so far:
+| Measure | Range |
+|---|---|
+| Schema valid | 90–93% |
+| keyCheck pass | 98–100% |
+| Judge: correct key | 84–92% |
+| Judge: level / next step | 83–87% |
+| Judge: figure helps | 69–76% |
 
-- Missing figure `alt`.
-- `keyCheck` added to multiple-choice answers.
-- Unbalanced `$` in option text, or words inside math.
-- `place_value_blocks` without `hundreds`.
-- Invented geometry kinds.
-- `snap:true`.
-- `\phantom` used for a blank.
-- `\begin{array}` column arithmetic; the validator rejects the environment name as words.
-- An empty table header cell.
-- Brace errors in minified JSON that lose the whole batch.
+What changed in the prompt:
 
-Next prompt changes to try:
+- **Grammar wording where models slipped.**
+  - Every figure needs `alt`. The alt gives the parts a blind learner needs, never the answer.
+  - Money is `\$`, words never go inside math, and a blank is `\square`.
+  - `keyCheck` is forbidden outside numeric, fraction and plot_point answers. A fraction's keyCheck
+    is `{value:"2/5+2/5"}`.
+  - Points are `{x,y}` objects, ids are lowercase, every geometry shape has a `kind`, and
+    `place_value_blocks` always lists hundreds, tens and ones.
+  - The prompt now states the label length limits.
+- **Skill fit.** Each activity makes the learner do what its first skill title says, read
+  literally. Difficulty starts within 1 of `suggestedDifficulty`.
+- **Figures.** Add a figure only when the learner uses it, never one that repeats the text. It
+  must match the text, and its labels and alt must not reveal the answer. Leave out a doubtful
+  figure.
+- **Variety.** At least three response types per batch, and no near-duplicates. Use hands-on
+  types (plot_point, tap_region, ordering, multi_select) only where finding the answer is the
+  math.
+- **Correctness.** Options are shuffled, so never refer to them by position, and misconception
+  answers differ from the key.
+- **Self-check.** A final check runs before answering (solve it, check every option and the
+  ordering, then the format checks), and a third format example shows `\$` and a fraction
+  keyCheck.
 
-- Make `alt` mandatory and keep it from giving away the answer.
-- Allow `keyCheck` only on numeric, fraction and plot_point answers.
-- Use `\square` for a blank, and no `\begin` environments.
-- Every table cell must be non-empty.
-- Never refer to options by letter or position, because options are shuffled.
-- Add a figure only when the learner reads or measures it. A table must not restate the text.
-- Use at least three response types per batch, and use `plot_point`/`tap_region` where they fit.
-- `snap` takes a number, never a boolean.
+The grammar and parser also changed:
+
+- `validateActivityBatch` recovers each activity on its own from a malformed or truncated reply.
+- `\boxed{\phantom{0}}` is accepted as a blank box.
+- `\begin{array}` column arithmetic is no longer rejected as words in math.
+
+Remaining gaps:
+
+- **Haiku's limits.** Haiku plateaus below the judge targets on level fit and figure helps. Its
+  figures contradict the text, and it puts answers in alt text even when told not to. The
+  strong model meets every target with the same prompt, so the rest looks like model capability,
+  not missing instructions.
+- **Terse standards titles.** The STANDARDS window gives one short title per skill, and most
+  level-fit misses come from reading it loosely. Richer skill descriptions in the user message
+  would help any model; that is a `learnerState`/standards change.
+- **Long units in the answer dock.** Units such as "square meters" overlap the placeholder in
+  the focus-stage answer dock. That is a UI issue, not a prompt issue.
+- **No vertical multi-digit layout figure.** Column arithmetic now typesets via `array`, but
+  there is still no dedicated figure for it.
 
 ## Wiring plan
 
