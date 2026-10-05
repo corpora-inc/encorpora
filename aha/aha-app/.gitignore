@@ -2,3 +2,5 @@
 .gallery/
 # Dev-only Activity Spec prompt eval output + model reply cache (npm run spec-eval)
 .spec-eval/
+# Dev-only flagged-activity review output (npm run flag-review)
+.flag-review/
