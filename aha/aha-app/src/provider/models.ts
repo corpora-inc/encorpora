@@ -59,13 +59,8 @@ export interface ModelPick { id: string; name: string; structured: boolean; batc
 const safeId = (value: unknown): value is string =>
   typeof value === 'string' && value.length > 0 && value.length <= 120 && /^[A-Za-z0-9._:/@+-]+$/.test(value);
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
-/** The SDK decodes catalogue amounts to bigint; a decimal string or safe integer is accepted too (defensive). */
-function amount(value: unknown): bigint | undefined {
-  if (typeof value === 'bigint') return value >= 0n ? value : undefined;
-  if (typeof value === 'number') return Number.isSafeInteger(value) && value >= 0 ? BigInt(value) : undefined;
-  if (typeof value === 'string' && /^(0|[1-9]\d{0,19})$/.test(value)) return BigInt(value);
-  return undefined;
-}
+/** The SDK types catalogue amounts as unsigned bigint (zuu #1137); absent means not reported. */
+const amount = (value: bigint | undefined): bigint | undefined => typeof value === 'bigint' && value >= 0n ? value : undefined;
 const ceilDiv = (n: bigint, d: bigint) => (n + d - 1n) / d;
 /** Free2Z's own client estimate (metering.md §2.5): `max(min_charge_2z, ceil(Σ tokens × rate / 10⁶ / 1000))`. */
 export function estimate2z(inputTokens: bigint, outputTokens: bigint, option: Pick<ModelOption, 'inputRate' | 'outputRate' | 'minCharge2z'>): bigint | undefined {
@@ -75,24 +70,24 @@ export function estimate2z(inputTokens: bigint, outputTokens: bigint, option: Pi
   return whole > option.minCharge2z ? whole : option.minCharge2z;
 }
 /**
- * Every catalogue entry with a usable id, read defensively: `capabilities` is untyped in this SDK pin (only an
- * explicit `structured_output: true` counts), and a malformed number is treated as absent.
+ * Every catalogue entry with a usable id. The SDK types the catalogue (zuu #1137): `capabilities` is always an object
+ * whose declared members are booleans (only `structured_output === true` counts), and limits and prices are bigint.
  */
 export function readCatalog(catalog: Models): ModelOption[] {
   const seen = new Set<string>();
   const out: ModelOption[] = [];
-  (Array.isArray(catalog?.models) ? catalog.models : []).forEach((entry: unknown, rank) => {
-    if (!record(entry) || !safeId(entry.id) || seen.has(entry.id)) return;
+  catalog.models.forEach((entry, rank) => {
+    if (!safeId(entry.id) || seen.has(entry.id)) return;
     seen.add(entry.id);
-    const capabilities = entry.capabilities, prices = entry.prices;
-    const name = typeof entry.display_name === 'string' && entry.display_name.trim() && entry.display_name.length <= 80
-      && !/[\u0000-\u001f\u007f]/.test(entry.display_name) ? entry.display_name.trim() : entry.id;
-    const inputRate = record(prices) ? amount(prices.input_milli_2z_per_mtok) : undefined;
-    const outputRate = record(prices) ? amount(prices.output_milli_2z_per_mtok) : undefined;
+    const display = entry.display_name;
+    const name = typeof display === 'string' && display.trim() && display.length <= 80
+      && !/[\u0000-\u001f\u007f]/.test(display) ? display.trim() : entry.id;
+    const inputRate = amount(entry.prices.input_milli_2z_per_mtok);
+    const outputRate = amount(entry.prices.output_milli_2z_per_mtok);
     const minCharge = amount(entry.min_charge_2z);
     const option: ModelOption = {
       id: entry.id, name, rank,
-      structured: record(capabilities) && capabilities.structured_output === true,
+      structured: entry.capabilities.structured_output === true,
       maxOutputTokens: amount(entry.max_output_tokens), contextWindow: amount(entry.context_window),
       ...(inputRate !== undefined && outputRate !== undefined ? {inputRate, outputRate} : {}),
       // Free2Z never charges below 1 2Z per call and refuses a catalogue that names a smaller minimum.

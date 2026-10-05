@@ -43,7 +43,7 @@ import { needsSpecRestorer, restoreLearning } from "./recovery";
 import { AiQueueBox, BATCH_WAIT_MS, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
-import { learningError, retryDeadline, signInFailure } from "./connection";
+import { learningError, refusalAction, retryDeadline, signInFailure } from "./connection";
 import { AUTO, MODEL_CHOICE_KEY, ModelUnavailableError, chooseModel, describePick, modelMenu, readCatalog, readModelChoice, storedModelChoice, type ModelChoice, type ModelMenu } from "../provider/models";
 import { BATCH_LOG_KEY, aggregateModelStats, appendBatch, modelStatsLines, readBatchLog, type BatchRecord, type SpecAnswer } from "./modelStats";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
@@ -451,7 +451,8 @@ export default function Controller() {
     const retryAt = retryDeadline(e);
     retryAfter.current = Math.max(retryAfter.current, retryAt ?? 0);
     aiBackoff.current.recordFailure(Date.now(), retryAt);
-    setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
+    // A budget refusal also offers the Free2Z account link; any other cause clears it.
+    setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e), refusal: refusalAction(e)}));
   }
   /** Why a signed-in AI attempt is not due now, or undefined when it is. */
   function aiBlockedReason(): string | undefined {
@@ -641,7 +642,7 @@ export default function Controller() {
   async function refreshConnection() {
     checkRetryDelay();
     if (!subject.current || !provider.current) return;
-    setAccount(a => ({...a, aiReady: false, status: "Checking Free2Z…"}));
+    setAccount(a => ({...a, aiReady: false, status: "Checking Free2Z…", refusal: undefined}));
     selectedModel.current = undefined;
     try {
       const client = getNativeClient();
@@ -654,7 +655,7 @@ export default function Controller() {
       aiBackoff.current.recordSuccess();
       setAccount(a => ({...a, aiReady: true, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance." + (session.persistence === "memory_only" ? " Sign-in could not be saved on this device; reconnect after restarting." : "")}));
     } catch (e) {
-      setAccount(a => ({...a, aiReady: false, status: learningError(e)}));
+      setAccount(a => ({...a, aiReady: false, status: learningError(e), refusal: refusalAction(e)}));
       throw e;
     }
   }
@@ -957,7 +958,7 @@ export default function Controller() {
       aiBackoff.current.recordSuccess();
       lastSkip.current = undefined;
       if (harder) wantsHarder.current = false;
-      setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance."});
+      setAccount(a => a.aiReady ? a : {...a, aiReady: true, refusal: undefined, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance."});
       void getNativeClient().balance()
         .then(b => { if (stillCurrent()) setAccount(a => ({...a, balance: format2z(b.available_milli_2z)})); })
         .catch(e => { logError("balance", e); if (stillCurrent()) setAccount(a => ({...a, status: "Balance refresh is temporarily unavailable. The request receipt remains recorded."})); });

@@ -1,10 +1,10 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d4d58ea3` on 2026-10-05. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Unified public source `42acc57feb4746bd93b1d3c7f4ed00f9690cc665` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Native SDK and TypeScript facade | Unified public source `d4d58ea32130af3d513cbe3914ec28b13576d1db` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
 | Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
@@ -30,12 +30,47 @@ Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
 
+## SDK `d4d58ea3` adoption (2026-10-05)
+
+zuu main at `d4d58ea3` is additive over `42acc57f`. Tarball recipe and sha256 values: [vendor/README.md](aha-app/vendor/README.md).
+What AHA adopts:
+
+- **Typed catalogue (#1137).** `models.ts` and `structuredCapability` read `model.capabilities.structured_output === true`
+  from the SDK's typed `Model`. Limits and prices are `bigint`. The model-choice policy (#905) is unchanged. The SDK decodes an
+  absent `capabilities` as `{}`, so the reason is logged as `structured_output_absent`; the `capabilities_absent` and
+  `structured_output_not_boolean` reasons are gone. A non-boolean capability now fails the whole `models()` read
+  (`invalid_response`) in the SDK. That means no catalogue, no estimate, no journal entry and no paid call (a test covers it);
+  the batch falls back to local practice.
+- **Preflight.** Every paid send (fresh, send boundary, same-key recovery) is admitted by `client.preflight(request)`, a strict
+  estimate. `ready` hands the estimate to the unchanged local check (`admitEstimate`: hold within balance and budget remainder,
+  full strict `max_output_tokens`). `needs_top_up` maps to `insufficient_balance`, `needs_budget` to `cap_exceeded`, and
+  `too_large` (context window, or the strict output ceiling) to `too_large`. All three are zero-cost. Before a journal write
+  nothing is journaled. At the send boundary, a fresh entry is released as `released`/0. Other errors are rethrown, so the
+  format-refusal fallback and the uncertain cases are unchanged.
+- **Refusal details (#1136).** The native transport now keeps the documented `details`, with amounts as `bigint`.
+  `insufficient_balance` (402) shows "Not enough 2Z: top up in Free2Z." and, when Free2Z reports `required_2z` (or the local check
+  knows the hold), "The next activities need N 2Z." `cap_exceeded` (403) shows "App budget reached: raise it in Free2Z." with a
+  **Raise app budget in Free2Z** button that opens the fixed `free2z.cash/account/apps` URL (the existing native command). Both
+  say the refusal cost nothing and continue with local practice. #882's invariants hold: only a fresh first send can release;
+  refusals during same-key recovery stay uncertain (tests cover estimate and chat). A bare 402/403 with the refusal code (an older
+  plugin) is still recognised. Known gap zuu#1145: `cap_exceeded` lacks `resets_at`/`cap_2z`/`cap_period`, so AHA reads none of
+  them.
+  Because `details` now arrive, the strict output-ceiling refusal (`invalid_request`, `reason: max_output_tokens_strict`) is
+  `too_large`, not a format refusal. This closes the LOW left open in #886.
+- **Sign-in codes (#1138).** `user_cancelled` (dismissed iOS sheet or Android Custom Tab) is quiet, logged as info.
+  `browser_unavailable` shows "AHA could not open a browser for the Free2Z sign-in…" and `timeout` shows "…took too long…",
+  both logged as errors. `browser_error` stays the quiet fallback, logged as a warning, for older plugins and unclassified failures.
+- Not adopted: `ChatRequest` builders (Rust-side; AHA's journaled body is rebuilt by `chatRequest()` so same-key recovery stays
+  byte-identical) and `formatMilli2z` (AHA's `format2z` trims trailing zeros for display).
+- Verified with fakes only: unit tests through the real SDK (`NativeTransport` over plugin-shaped TEST bridges) and `test:ai`
+  scenarios (402 with `required_2z`, 403 with the account link, `user_cancelled`, `browser_unavailable`). Not live-verified.
+
 ## Learner-chosen model (#899)
 
 Free2Z's `/v1/models` is no longer a gpt-4o-only allowlist. AHA never hardcodes a model id; `src/provider/models.ts` (pure,
 `models.test.ts`) reads the catalogue each batch:
 
-- **Eligible:** an explicit `capabilities.structured_output: true` (read defensively from the untyped object), a reported
+- **Eligible:** `capabilities.structured_output === true` (typed by the SDK since `d4d58ea3`), a reported
   `max_output_tokens` ≥ 2600 and a reported `context_window` ≥ 16k.
 - **Estimate:** Free2Z's client formula (metering.md §2.5) over a typical batch of 4000 input / 2000 output tokens (the top of
   the measured 3–4k / 0.6–2k ranges), `max(min_charge_2z, ceil(...))`. Shown in Settings as "≈ N 2Z per set".
@@ -112,7 +147,8 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   noise, and keyCheck pass went from 98.9% to 100%.
 - **Per-batch log.** Every batch logs one content-free `ai-structured` line, for example
   `batch send: structured=yes model=gpt-4o response_format.type=json_schema strict=true json_schema.name=aha_activity_batch transport=stream`,
-  or `structured=no reason=<capabilities_absent|structured_output_absent|structured_output_false|structured_output_not_boolean|refused_earlier_this_session|outside_limits|format_refused>`.
+  or `structured=no reason=<model_not_in_catalog|structured_output_absent|structured_output_false|refused_earlier_this_session|outside_limits|format_refused>`
+  (the `capabilities_absent` and `structured_output_not_boolean` reasons went away with the typed catalogue in `d4d58ea3`).
   A prompt-only batch is a warning. The `ai-batch` line now starts with `structured:` or `prompt-only:` and is
   logged for every batch. Unknown fields are named (`unknown field(s) tolerance`), because zod's own wording
   (`key: "…"`) was redacted by the diagnostics scrubber.
@@ -149,7 +185,7 @@ an older gateway rejects the unknown field. This is safe to ship before that ima
 because no paid call is sent until the grant reports `enforced: true`.
 
 - A strict refusal (HTTP 402/403 with `details.reason`, or the gateway code `insufficient_balance`
-  / `cap_exceeded`; the native transport drops `details`) costs 0 2Z. AHA settles the journal entry
+  / `cap_exceeded`; before `d4d58ea3` the native transport dropped `details`) costs 0 2Z. AHA settles the journal entry
   as `released`/`0`, leaves no pending receipt, keeps later calls unblocked, shows a calm
   message and continues with local practice (`aiFallback.ts`). Other 402/403 errors stay
   uncertain, as before.
@@ -178,7 +214,8 @@ any budget (any amount, `day`/`week`/`month`/`total`) and with none, when the us
 | Estimate above balance | `insufficient_balance` before any journal operation: calm message, local practice |
 | Estimate above remainder | `cap_exceeded` before any journal operation: calm message, local practice |
 | Estimate without `available_milli_2z` | The authoritative `balance()` decides |
-| Estimate or `/v1/chat` refused by Free2Z (402/403) | The same codes and messages; the gateway enforces regardless |
+| Estimate or `/v1/chat` refused by Free2Z (402/403) | The same codes and messages, with `required_2z` when reported; the gateway enforces regardless |
+| Preflight `too_large` (context window or strict output ceiling) | `too_large` before any journal operation: calm message, local practice |
 | Estimate returns fewer `max_output_tokens` than requested | Treated as a refusal (`not_enough_2z`); nothing is sent, even with strict |
 
 The check runs before the journal write and again at the send boundary (fresh grant,
@@ -258,6 +295,9 @@ app no longer requests it, and a request outside `allowed_scopes` fails with
 `invalid_scope` (oidc.md §2), which AHA reports as a setup problem.
 
 ## Sign-in cancel and failures (#862)
+
+Since `d4d58ea3` (zuu #1138) the plugin distinguishes `user_cancelled`, `browser_unavailable` and `timeout`; see
+"SDK `d4d58ea3` adoption". The text below describes the `browser_error` fallback, which older plugins send for all of them.
 
 On mobile, closing the sign-in browser rejects the plugin's native `authorize`.
 That covers the Android Custom Tab (back, close, the 300 s expiry, or a launch

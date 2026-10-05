@@ -51,8 +51,9 @@ name `¡AHA!`. Do not restore a Unicode executable name.
 ## Free2Z activation boundary
 
 Both delivered builds use supported SDK source revision
-`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; source now pins `42acc57feb4746bd93b1d3c7f4ed00f9690cc665` for the next build. That pin adds
-opt-in `response_format` and `capabilities.structured_output` (#884). It keeps everything `e95becd6`
+`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; source now pins `d4d58ea32130af3d513cbe3914ec28b13576d1db` for the next build. That pin adds
+typed catalogue capabilities, `preflight()`, native refusal details (`required_2z`) and distinct sign-in codes
+(`user_cancelled`, `browser_unavailable`, `timeout`) on top of `42acc57f`'s opt-in `response_format` (#884). It keeps everything `e95becd6`
 added: the sign-in spend-cap hint and `enforcement_reason` decoding, where a reason that contradicts
 `enforced` fails `grant()` closed. Source now applies the production
 "budget optional" policy (#879): any app budget the user sets in Free2Z, or none, with
