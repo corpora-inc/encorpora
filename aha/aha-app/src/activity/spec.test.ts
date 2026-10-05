@@ -117,6 +117,35 @@ describe('Activity Spec v1 validator', () => {
     expr.response.answer = '3m+2';
     assert.match(String((validateActivitySpec(expr, { skillIds }) as any).errors), /Use only n/);
   });
+  it('geometry graph paper: grid line budget and whole-unit unit squares', () => {
+    const grid = (): ActivitySpec => clone(fixtures.find(f => f.id === 'fx-3-area-graph-paper')!);
+    const check = (mutate: (s: any) => void) => { const s: any = grid(); mutate(s); return validateActivitySpec(s, { skillIds }); };
+    assert.ok(check(() => {}).ok);
+    assert.ok(check(s => { s.figures[0].grid = null; }).ok, 'unit squares work without graph paper (unit 1)');
+    assert.ok(check(s => { s.figures[0].grid = { unit: 0.5 }; s.figures[0].shapes[0].points[0].x = 1.5; }).ok, 'half-unit grid');
+    const no = (mutate: (s: any) => void, pattern: RegExp) => { const r = check(mutate); assert.equal(r.ok, false); if (!r.ok) assert.match(r.errors.join(' | '), pattern); };
+    no(s => { s.figures[0].width = 60; s.figures[0].grid = { unit: 1 }; s.figures[0].shapes[0].unitSquares = false; }, /more than 50 lines/);
+    no(s => { s.figures[0].shapes[0].points[0].x = 1.5; }, /whole number of grid units/);
+    no(s => { s.figures[0].grid = { unit: 0 }; }, /grid|Too small|>=/i);
+    no(s => { s.figures[0].grid = { unit: 1, color: 'red' }; }, /unknown field|Invalid input/);
+  });
+  it('pictures state equal groups structurally (repeat) and bound what they draw', () => {
+    const eq = (): any => clone(fixtures.find(f => f.id === 'fx-3-equal-groups')!);
+    const ok = (mutate: (s: any) => void) => { const s = eq(); mutate(s); return validateActivitySpec(s, { skillIds }); };
+    assert.ok(ok(() => {}).ok);
+    const no = (mutate: (s: any) => void, pattern: RegExp) => { const r = ok(mutate); assert.equal(r.ok, false); if (!r.ok) assert.match(r.errors.join(' | '), pattern); };
+    no(s => { s.figures[0].groups[0].count = 30; }, /at most 100 icons/);
+    no(s => { s.figures[0].groups = [{ icon: 'egg', count: 1, repeat: 7 }, { icon: 'nest', count: 1, repeat: 6 }]; }, /at most 12 groups/);
+    no(s => { s.figures[0].groups[0].crossedOut = 1; }, /repeated group/);
+    no(s => { s.figures[0].groups[0].id = 'nest'; }, /repeated group/);
+    no(s => { s.figures[0].groups[0].repeat = 0; }, /repeat|>=|Too small/i);
+  });
+  it('icons: any snake_case object name, nothing else', () => {
+    const pic = (): any => clone(fixtures.find(f => (f.figures ?? []).some(x => x.type === 'picture'))!);
+    const withIcon = (icon: string) => { const s = pic(); s.figures.find((x: any) => x.type === 'picture').groups[0].icon = icon; return validateActivitySpec(s, { skillIds }).ok; };
+    for (const ok of ['apple', 'sailboat', 'traffic_cone', 'pinecone', 'constructor']) assert.ok(withIcon(ok), ok);
+    for (const bad of ['Apple', '<svg>', 'https://x.io/a.png', 'a b', '', 'x'.repeat(33), 'café']) assert.equal(withIcon(bad), false, bad);
+  });
   it('requires plot answers to be reachable on the per-axis snap grid', () => {
     const plot = (): any => clone(fixtures.find(f => f.id === 'fx-5-plant-the-tree')!);
     const half = plot(); half.response.x = 2.5; half.keyCheck = { x: '5/2', y: '4' };

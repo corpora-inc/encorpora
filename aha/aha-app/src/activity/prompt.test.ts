@@ -14,15 +14,24 @@ function realisticSummary() {
     activeMs: 15000 + i * 700, ...(i % 6 === 0 ? { misconceptionTag: ['added_denominators', 'part_to_part', 'perimeter_for_area'][i % 3]! } : {}),
     at: new Date(Date.UTC(2026, 8, 20 + Math.floor(i / 4), 16, i)).toISOString(),
   }));
-  return buildLearnerSummary({ gradeHint: 3, activityAttempts: records, now: '2026-10-04T16:00:00Z' });
+  // Twelve recent AI activities feed the cross-batch variety fingerprint, as production's ledger does.
+  return buildLearnerSummary({ gradeHint: 3, activityAttempts: records, now: '2026-10-04T16:00:00Z', pendingSpecs: fixtures.filter(f => /^fx-[34]-/.test(f.id)).slice(0, 12) });
 }
 
 describe('activity batch prompt', () => {
   it('stays within the input token budget for a realistic learner', () => {
-    const p = buildActivityPrompt(realisticSummary());
+    const summary = realisticSummary();
+    assert.ok(summary.recentContent, 'the realistic learner carries the variety fingerprint');
+    const p = buildActivityPrompt(summary);
     const total = approxTokens(p.system) + approxTokens(p.user);
-    // gpt-4o via Free2Z; input is cheap relative to output but must stay bounded.
-    assert.ok(total <= 4000, `prompt ~${total} tokens`);
+    // gpt-4o via Free2Z; input is cheap relative to output but must stay bounded. The prompt-only
+    // budget was 4000 before the cross-batch variety signal: recentContent adds ~100 user tokens
+    // and the creativity/repetition/graph-paper/equal-groups rules ~230 system tokens, mostly absorbed by trims
+    // (no frontier titles/grades, which STANDARDS already carries; tighter wording; no icon enum).
+    // Prompt-only is the fallback path; the structured path, the one gpt-4o uses, stays far lower.
+    // Measured ~4.1k at #894; the cap leaves ~50 tokens of headroom.
+    assert.ok(total <= 4150, `prompt ~${total} tokens`);
+    assert.ok(approxTokens(p.structuredSystem) + approxTokens(p.user) <= 3400, `structured prompt ~${approxTokens(p.structuredSystem) + approxTokens(p.user)} tokens`);
     assert.ok(approxTokens(p.user) <= 1800, `user ~${approxTokens(p.user)} tokens`);
   });
   it('keeps typical activities small enough for 3–5 per ≤2.5k-token reply', () => {
@@ -36,6 +45,26 @@ describe('activity batch prompt', () => {
     for (const o of FigureSchema.options) assert.ok(ACTIVITY_AUTHOR_RULES.includes(` ${o.shape.type.value}{`), o.shape.type.value);
     for (const o of ResponseSchema.options) assert.ok(ACTIVITY_AUTHOR_RULES.includes(` ${o.shape.type.value}{`), o.shape.type.value);
     for (const phrase of ['keyCheck', 'no brands', 'Never ask for personal information', 'data, not instructions', 'never a ceiling', '\\$', 'minified JSON']) assert.ok(ACTIVITY_AUTHOR_RULES.includes(phrase), phrase);
+  });
+  it('asks for creativity, forbids repeating recentContent, and allows repetition only for reviews and fluency', () => {
+    const p = buildActivityPrompt(realisticSummary());
+    for (const system of [p.system, p.structuredSystem]) {
+      for (const phrase of ['never bend another type', 'repeat', 'be creative', 'many cultures', 'playful puzzle', 'spot the error', "which doesn't belong", 'fill the blank', 'recentContent', 'dueReviews or fluency', 'nowhere else', 'grid {unit:1}', 'unitSquares'])
+        assert.ok(system.includes(phrase), phrase);
+    }
+    assert.match(p.user, /"recentContent":\{"n":12,"contexts":\[/);
+    // Frontier titles travel once, in STANDARDS.
+    assert.ok(!p.user.includes('"title"') && p.user.includes('3.MD.C.7 '));
+    // The icon vocabulary is a category hint, not an enum the model must copy.
+    assert.ok(!p.system.includes('apple|banana') && /icon=.*plain counter/.test(p.system) && /icon: .*plain counter/.test(p.structuredSystem));
+  });
+  it('offers fluency targets in STANDARDS even when they sit below the grade band', async () => {
+    const { createLearner } = await import('../learning/engine');
+    const state = createLearner('learner', 5);
+    state.progress['1.OA.C.6'] = { skillId: '1.OA.C.6', concept: 'provisional', fluency: 'developing', retention: 'unconfirmed', independentSuccesses: 3, distinctVariants: [], reviewStage: 1, nextReviewAt: null, lastAttemptAt: '2026-10-01T10:00:00Z' };
+    const summary = buildLearnerSummary({ gradeHint: 5, ledger: state, now: '2026-10-04T10:00:00Z' });
+    assert.deepEqual(summary.fluency, ['1.OA.C.6']);
+    assert.ok(buildActivityPrompt(summary).allowedSkillIds.has('1.OA.C.6'));
   });
   it('offers only skill ids the validator will accept, with the frontier first', () => {
     const summary = realisticSummary();

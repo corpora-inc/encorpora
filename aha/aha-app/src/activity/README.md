@@ -15,9 +15,10 @@ with TEST fixtures only and has not been verified against the live service.
 | `expr.ts` | Safe expression parser/evaluator. It never calls `eval` or `Function`, and its length, depth and value range are bounded |
 | `grade.ts` | Pure deterministic grader → `{correct, normalized, misconceptionTag?, invalid?}` |
 | `learnerState.ts` | Builds the compact learner summary the model receives. Also defines `ActivityAttemptRecord` and `specHash` |
+| `variety.ts` | Cross-batch variety fingerprint (`recentContent`): contexts, figure types, question forms, response types and number ranges of the last 12 AI activities, in a closed vocabulary |
 | `prompt.ts` | Batch prompt: rules + compact grammar + 2 format examples + learner summary + standards window. `structuredSystem` replaces the grammar with `STRUCTURED_OUTPUT_RULES` for structured output |
 | `render/` | `<ActivityView>` plus pure-SVG/HTML figure renderers and response widgets. Import `render/index.ts` to load the CSS |
-| `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output |
+| `fixtures/` | 48 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output |
 | `gallery/` + `scripts/gallery.mjs` | Dev-only visual gallery: `npm run gallery [-- ids…] [--states]` → `.gallery/index.html` |
 | `scripts/spec-eval/` | Dev-only prompt evaluation against a local stand-in model: `npm run spec-eval` → `.spec-eval/<run>/` (see [Prompt evaluation](#prompt-evaluation-dev-only)) |
 
@@ -30,8 +31,8 @@ Activity  { version:1, id, title?, skillIds[1–3], difficulty 1–10, prompt: B
 Block     text{text:RT} | math{tex} | figure{figureId}
 RT        plain text with inline $TeX$; literal dollar = \$
 Figure    bar_chart | line_chart | scatter_plot | pie_chart | data_table | coordinate_plane |
-          geometry | number_line | fraction_model | array_grid | place_value_blocks | clock |
-          money | ruler | picture       (every figure has id + alt)
+          geometry (grid?, polygon unitSquares?) | number_line | fraction_model | array_grid | place_value_blocks | clock |
+          money | ruler | picture (groups may repeat)   (every figure has id + alt)
 Response  numeric | fraction | expression | multiple_choice | multi_select | ordering |
           plot_point | tap_region
 keyCheck  {value:"arithmetic"} for numeric/fraction, {x,y} for plot_point (strict wire schema: inside the response)
@@ -46,8 +47,20 @@ Design decisions:
   support `prefixItems`.
 - **Geometry uses its own coordinates with y pointing up** (`width × height`, at most 100
   units). The renderer scales them to pixels, so the model never writes SVG.
-- **Pictures come from 52 bundled lucide icons** (ISC licence), which the model refers to by
-  name. Raw SVG, HTML and URLs are never accepted.
+- **Pictures name objects, and the app draws them.** The model writes a singular snake_case noun
+  (`"sailboat"`, `"traffic_cone"`). `render/icons.tsx` maps about 300 names (with plurals and
+  same-kind synonyms such as duck → bird) onto bundled lucide icons (ISC licence); any other name
+  draws a neutral counter, which is still sound to count. The prompt gives a category hint, not an
+  enum. Raw SVG, HTML and URLs are never accepted.
+- **Equal groups are structural.** A picture group with `repeat: n` is drawn as n identical groups,
+  so "3 groups of 4" is `{count: 4, repeat: 3}` and cannot be miscounted by listing copies (a live
+  reply listed two groups for "3 groups of 4"). `pictureGroups(figure)` expands it for renderers and
+  quantity checks; a repeated group cannot carry `crossedOut` or a tap `id`.
+- **Geometry can sit on graph paper.** `grid: {unit}` draws light lines every unit from 0 (a
+  stronger line every 5 units on large sheets); a polygon's `unitSquares` tiles it with unit squares
+  so its area can be counted (its vertices must lie on whole units). The prompt prefers the grid for
+  area, perimeter and early geometry in grades 2–5. `array_grid` still covers a plain rows × columns
+  array; the grid covers composite shapes, perimeter and shapes placed on a plane.
 - **Ordering items are written in the correct order.** The app shuffles them with a seed, and
   never shows them already solved.
 - **Money is US currency only in v1.** CCSS 2.MD.C.8 is US-specific. Coins and bills are
@@ -139,8 +152,13 @@ AI output. Outputs and the reply cache live in `.spec-eval/` (gitignored); never
 npm run spec-eval -- [--n 45] [--provider codex|claude] [--model haiku|gpt-6-astra] [--effort low]
                      [--judge-provider codex] [--judge-model gpt-6.1-sol] [--judge-effort medium]
                      [--no-judge] [--no-render] [--only g3-] [--concurrency 4] [--run name]
-                     [--port 1438] [--dry]
+                     [--port 1438] [--dry] [--sequence 3 [--no-recent]]
 ```
+
+`--sequence 3` runs three consecutive batches per learner (9 learners by default) and feeds each
+batch's fingerprint into the next as `recentContent`, as production's ledger does; `--no-recent`
+is the memoryless baseline. The summary then adds a cross-batch variety table: distinct contexts,
+figure types and question forms per learner, and how often a later batch reused an earlier one's.
 
 1. **States.** `states.mjs` builds 45 synthetic learners (grades K–8 × cold start, strong,
    struggling with a misconception, review due, guided-only skill practised through AI activities)
@@ -306,7 +324,17 @@ the fallback, and signed-out practice is unchanged.
    Disputes quarantine the activity, as for local tasks.
 7. **Feedback loop.** `buildLearnerSummary` reads the evidence ledger (local and `ai-spec`
    evidence). It reports the recent streak, the misconception tags, per-skill `missStreak` (for
-   #860) and suggested difficulty. It includes no names, ids or timestamps finer than a day.
+   #860), suggested difficulty, due reviews and fluency targets. It includes no names, ids or
+   timestamps finer than a day.
+8. **Variety across batches (#894).** Each batch is a separate call with no memory, so the summary
+   carries `recentContent`: a fingerprint of the last 12 AI activities (the ledger's `ai-spec`
+   content plus any `pendingSpecs` passed to `buildBatchRequest`, such as queued activities). It
+   lists contexts, figure types, question forms, response types and number ranges per skill, about
+   100–150 tokens. Every word comes from a closed vocabulary in `variety.ts` (theme labels, type
+   names, form names, skill ids, number forms), so no model-written text, personal data or learner
+   answer reaches a later prompt. The prompt forbids reusing what it lists, except deliberate
+   practice for `dueReviews` and `fluency` skills, where the skill and question form stay
+   recognizable and only surface details change.
 
 ### Known limits (v1)
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FigureOf } from '../../spec';
-import { MONEY_KINDS } from '../../spec';
-import { ICONS } from '../icons';
+import { MONEY_KINDS, pictureGroups } from '../../spec';
+import { resolveIcon } from '../icons';
 import { A11ySvg, clamp, fmt, series, tint, useMeasuredWidth, type TapInteraction } from './common';
 import { seededRandom } from '../../expr';
 
@@ -133,7 +133,7 @@ export function ArrayGridFigure({ figure: f }: { figure: FigureOf<'array_grid'> 
   const w = f.cols * cell + lab + 6, h = f.rows * cell + lab + 6;
   const color = f.color;
   if (f.style === 'icons' && f.icon) {
-    const [Icon, tone] = ICONS[f.icon];
+    const [Icon, tone] = resolveIcon(f.icon);
     const c = color ?? tone;
     return (
       <div className="ax-icon-grid" role="img" aria-label={f.alt} style={{ gridTemplateColumns: `repeat(${f.cols}, ${cell}px)` }}>
@@ -291,12 +291,13 @@ export function RulerFigure({ figure: f }: { figure: FigureOf<'ruler'> }) {
 
 // ---------- picture (composable pictograph scene) ----------
 export function PictureFigure({ figure: f, tap }: { figure: FigureOf<'picture'>; tap?: TapInteraction }) {
-  const total = f.groups.reduce((n, g) => n + g.count, 0);
+  const groups = pictureGroups(f);
+  const total = groups.reduce((n, g) => n + g.count, 0);
   const size = total > 60 ? 24 : total > 30 ? 28 : 34;
   return (
     <div className={`ax-picture ax-picture-${f.layout ?? 'row'}`} role={tap ? 'group' : 'img'} aria-label={f.alt}>
-      {f.groups.map((g, gi) => {
-        const [Icon, tone] = ICONS[g.icon];
+      {groups.map((g, gi) => {
+        const [Icon, tone] = resolveIcon(g.icon);
         const c = g.color ?? tone;
         const crossed = g.crossedOut ?? 0;
         const icon = (k: number) => (
