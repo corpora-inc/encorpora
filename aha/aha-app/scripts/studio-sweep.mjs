@@ -2,7 +2,7 @@
  * (src/ui/gallery, TEST FIXTURE props) at five viewports, light and dark, motion on and reduced.
  * Writes PNGs, one contact sheet per scenario (sheets/<id>.png) and index.html to .sweep/<label>/
  * (gitignored). Also audits horizontal overflow, text clipped by its box, and console errors.
- * Usage: npm run sweep -- [--label before] [--only home-new,focus-ai] [--reduced] */
+ * Usage: npm run sweep -- [--label before] [--only home-new,focus-ai] [--vp 384x832,820x1180] [--reduced] */
 import { spawn } from 'node:child_process';
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -19,6 +19,7 @@ const out = path.join(root, '.sweep', label);
 const port = Number(process.env.AHA_SWEEP_PORT || 1439);
 const viewports = [['360x640', 360, 640, 2], ['384x832', 384, 832, 2], ['412x915', 412, 915, 2], ['820x1180', 820, 1180, 1], ['1280x800', 1280, 800, 1]];
 const schemes = ['light', 'dark'];
+const onlyVp = arg('vp')?.split(',');
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(path.join(out, 'sheets'), { recursive: true });
@@ -38,7 +39,7 @@ try {
   const ids = (await probe.evaluate(() => window.__scenarios)).filter(id => !only || only.includes(id));
   await probe.close();
   const problems = [], shots = [];
-  for (const [vp, width, height, scale] of viewports) for (const scheme of schemes) for (const motion of motions) {
+  for (const [vp, width, height, scale] of viewports.filter(([v]) => !onlyVp || onlyVp.includes(v))) for (const scheme of schemes) for (const motion of motions) {
     const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: scale, colorScheme: scheme, reducedMotion: motion === 'reduced' ? 'reduce' : 'no-preference', isMobile: width < 700, hasTouch: width < 900 });
     const page = await context.newPage();
     let current = '';

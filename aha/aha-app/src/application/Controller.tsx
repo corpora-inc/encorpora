@@ -1,3 +1,4 @@
+import { growthSummary } from "./growth";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Studio, type StudioProps, type StudioVisual } from "../ui/Studio";
@@ -1437,21 +1438,7 @@ export default function Controller() {
       loadModelStats={native ? loadModelStats : undefined}
       authoringModel={aiItem?.model ? (modelNames.current.get(aiItem.model) ?? aiItem.model) : undefined}
       learners={profiles.map((p) => ({ id: p.id, name: p.name }))}
-      progress={Object.values(learner?.progress ?? {}).map((p) => ({
-        label: getSkill(p.skillId)?.title ?? p.skillId,
-        detail:
-          p.retention === "retained"
-            ? "Remembered across delayed reviews"
-            : p.concept === "provisional"
-              ? "Independent successes · delayed review still ahead"
-              : `${p.independentSuccesses} recent independent successes · still exploring`,
-        status:
-          p.nextReviewAt && Date.parse(p.nextReviewAt) <= Date.now()
-            ? "review"
-            : p.retention === "retained"
-              ? "confident"
-              : "growing",
-      }))}
+      growth={growthSummary(learner)}
       onSubmit={(answer) => {
         const timing = timer.current.snapshot(performance.now());
         void action(() => submit(answer, timing));
