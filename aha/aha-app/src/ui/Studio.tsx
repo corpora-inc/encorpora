@@ -180,7 +180,8 @@ export function Studio(props: StudioProps) {
     const update = () => root.style.setProperty("--aha-nav-measured", `${Math.ceil(nav.getBoundingClientRect().height)}px`);
     update();
     const observer = new ResizeObserver(update);
-    observer.observe(nav);
+    // border-box: an inset-only change (gesture vs 3-button navigation) resizes padding, not content.
+    observer.observe(nav, { box: "border-box" });
     return () => { observer.disconnect(); root.style.removeProperty("--aha-nav-measured"); };
   }, [navShown]);
   const openSettings = () => {

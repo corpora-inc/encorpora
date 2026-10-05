@@ -398,6 +398,9 @@ try{
       if(shots)await p.screenshot({path:path.join(shots,`${screen.replace(/\W+/g,'-')}-${w}x${h}${v.inset?'-inset':''}${v.large?'-large':''}.png`)});};
     const navTo=async name=>{await p.evaluate(()=>{for(const s of [document.scrollingElement,...document.querySelectorAll('*')])s.scrollTop=0;});await p.locator('.home-nav').getByRole('button',{name,exact:true}).click();};
     await check('home');
+    if(v.large&&w===360){assert.ok(await p.locator('.home-main').evaluate(m=>{m.scrollTop=m.scrollHeight;return m.scrollTop;})>0,'large-text home scrolls inside main');
+      await p.locator('.home-nav').getByRole('button',{name:'Growth',exact:true}).click();await p.locator('.progress-page').waitFor();
+      assert.equal(await p.locator('.home-main').evaluate(m=>m.scrollTop),0,'switching views opens the new page at its top');}
     await navTo('Growth');await p.locator('.progress-page').waitFor();growthCards=await p.locator('.progress-grid article').count();await check('growth');
     await navTo('Settings');await p.getByRole('dialog').waitFor();await check('settings');
     await p.getByRole('button',{name:'Close settings',exact:true}).click();
