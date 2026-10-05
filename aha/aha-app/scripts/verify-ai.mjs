@@ -80,7 +80,8 @@ function fixture(specs){
     if(command==='plugin:f2z|start_chat'){
       ai.starts.push(args.operation);ai.requests.push(args.request);
       if(args.request.response_format&&ai.formatRefusal==='chat')throw {code:'invalid_request',status:400};
-      if(ai.strictRefusal){const reason=ai.strictRefusal;ai.strictRefusal=null;ai.refused=(ai.refused??0)+1;throw {code:reason,status:402};}
+      // Shaped as tauri-plugin-f2z d4d58ea3 delivers it: 402 balance / 403 budget, with `refusalDetails` as documented details (decimal strings).
+      if(ai.strictRefusal){const reason=ai.strictRefusal;ai.strictRefusal=null;ai.refused=(ai.refused??0)+1;throw {code:reason,status:reason==='cap_exceeded'?403:402,retryable:false,...(ai.refusalDetails?{details:ai.refusalDetails}:{})};}
       if(ai.failOpening){ai.failOpening=false;throw {code:'unavailable',retryAfterSeconds:'5'};}
       const user=args.request.messages[1].content[0].text;
       const text=user.startsWith('LEARNER ')?batchText(user):'You can use this idea to share ingredients fairly.';
@@ -96,6 +97,7 @@ function fixture(specs){
     if(command==='plugin:f2z|next_chat')return streams.get(args.operationId)?.shift()??null;
     if(command==='plugin:f2z|cancel_chat')return;
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
+    if(command==='open_free2z_account'){ai.accountOpened=(ai.accountOpened??0)+1;return;}
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(!['local-device','test-subject'].includes(r.accountId))throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;
@@ -416,6 +418,19 @@ try {
   assert.equal(await page.getByRole('alert').count(),alertsBeforeCancel,'cancelling sign-in raises no alert');
   assert.ok(consoleWarnings.some(m=>/sign-in/.test(m)&&/browser_error/.test(m)),'a closed sign-in browser is still visible in the console (it may also be a launch failure)');
   await disconnected('a cancelled sign-in returns to the disconnected state');
+  // zuu #1138: a dismissed sheet or Custom Tab is user_cancelled. Quiet, like the browser_error fallback.
+  await page.evaluate(()=>{window.__ahaAI.failSignIn={code:'user_cancelled',retryable:false};});
+  await connect.click();
+  await page.getByText('Free2Z sign-in closed; you can connect any time.',{exact:true}).waitFor();
+  assert.equal(await page.locator('.error-banner').count(),0,'user_cancelled shows no error banner');
+  assert.equal(await page.getByRole('alert').count(),alertsBeforeCancel,'user_cancelled raises no alert');
+  await disconnected('user_cancelled returns to the disconnected state');
+  // No browser or auth session could be shown: a specific, kind message (never the code).
+  await page.evaluate(()=>{window.__ahaAI.failSignIn={code:'browser_unavailable',retryable:false};});
+  await connect.click();
+  await page.getByRole('alert').filter({hasText:'AHA could not open a browser for the Free2Z sign-in.'}).waitFor();
+  assert.equal(await page.getByText('browser_unavailable',{exact:false}).count(),0,'codes stay out of the UI');
+  await disconnected('browser_unavailable stays disconnected');
   // An unrecognized native code is logged with its code and shown a kind, generic message.
   const warningsBeforeUnknown=consoleWarnings.length;
   await page.evaluate(()=>{window.__ahaAI.failSignIn={code:'brand_new_code',retryable:false};});
@@ -428,7 +443,7 @@ try {
   await connect.click();
   await page.getByRole('button',{name:'Sign out',exact:true}).waitFor();
   assert.equal(await page.locator('.error-banner').count(),0,'a successful sign-in clears the earlier message');
-  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),Array(3).fill({spendCap:'100',spendPeriod:'month'}),'every sign-in carries only the optional spend-cap suggestion, as decimal strings');
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),Array(5).fill({spendCap:'100',spendPeriod:'month'}),'every sign-in carries only the optional spend-cap suggestion, as decimal strings');
   // ---- "Try something harder" never discards a paid, unanswered AI activity (#877; TEST fixture specs) ----
   {
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
@@ -721,25 +736,48 @@ try {
     assert.equal(await s.p.getByRole('alert').count(),0,'insufficient balance: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('Your Free2Z balance is too low for the next AI activities.',{exact:false}).first().waitFor();
+    await s.p.getByText('Not enough 2Z: top up in Free2Z. The next activities need 1 2Z.',{exact:false}).first().waitFor();
     await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByRole('button',{name:'Raise app budget in Free2Z',exact:false}).count(),0,'a balance refusal offers no budget link');
     assert.equal(await s.figure('Available balance'),'0.5 2Z');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   {
     // Strict refusal at send (the balance fell after the estimate): zero charge, calm status, local practice, nothing pending.
-    const s=await scenario({enforced:true,strictRefusal:'insufficient_balance'});
+    const s=await scenario({enforced:true,strictRefusal:'insufficient_balance',refusalDetails:{reason:'insufficient_balance',required_2z:'3',available_milli_2z:'2500'}});
     await s.p.getByRole('button',{name:'Check',exact:true}).waitFor();
     assert.equal(await s.starts(),1,'the strict request reached the gateway once and was refused');
     assert.equal(await s.source(),'local','strict refusal: local fallback');
     assert.equal(await s.p.getByRole('alert').count(),0,'strict refusal: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('Your Free2Z balance is too low for the next AI activities.',{exact:false}).first().waitFor();
+    await s.p.getByText('Not enough 2Z: top up in Free2Z. The next activities need 3 2Z.',{exact:false}).first().waitFor();
     await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
     assert.equal(await s.p.getByRole('button',{name:'Recover original request',exact:true}).count(),0,'a refusal leaves no unsettled receipt to recover');
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // 403 cap_exceeded at send: zero charge, "App budget reached", and the Free2Z account link. zuu#1145: no resets_at/cap fields.
+    const s=await scenario({enforced:true,strictRefusal:'cap_exceeded',refusalDetails:{reason:'cap_exceeded',required_2z:'3',cap_remaining_milli_2z:'500'}});
+    await s.p.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.equal(await s.starts(),1,'the strict request reached the gateway once and was refused');
+    assert.equal(await s.source(),'local','budget refusal: local fallback');
+    assert.equal(await s.p.getByRole('alert').count(),0,'budget refusal: no alert');
+    assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/cap_exceeded/.test(m)),'logged visibly');
+    await s.openSettings();
+    await s.p.getByText('App budget reached: raise it in Free2Z.',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByText('top up',{exact:false}).count(),0,'a budget refusal never says topping up fixes it');
+    const link=s.p.getByRole('button',{name:'Raise app budget in Free2Z',exact:false});
+    await link.click();
+    await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===1);
+    const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
+    assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
+    // A successful refresh clears the refusal and its link.
+    await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await s.p.locator('.connection-pill').filter({hasText:/^AI ready$/}).waitFor();
+    assert.equal(await link.count(),0,'the budget link goes away once AI is ready again');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   // ---- Structured output (#884; TEST-ONLY fake SDK, no live service) ----
@@ -882,7 +920,7 @@ try {
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
