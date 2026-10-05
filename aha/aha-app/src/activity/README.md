@@ -11,13 +11,14 @@ with TEST fixtures only and has not been verified against the live service.
 |---|---|
 | `spec.ts` | zod schema → TS types + strict validator + semantic rules; batch parsing (`extractJsonObject`, `recoverBatchItems`, `validateActivityBatch`) |
 | `schema.ts` | JSON Schema exports: standard draft 2020-12, plus the OpenAI strict-mode wire schema sent as `response_format` when the model supports it. The wire schema carries `keyCheck` inside the numeric, fraction and plot_point responses, where it is required. `normalizeActivity` (spec.ts) maps wire instances back to the validator's shape, and `strictSchema.test.ts` property-tests that the two agree |
+| `semantics.ts` | Semantic consistency: one quantities adapter per figure type, a few type-agnostic relations against the text, keyCheck and key, and the app-authored figure descriptions (see [Semantic consistency](#semantic-consistency)) |
 | `text.ts` | Rich-text grammar (`plain text with $TeX$`), TeX/markup/link safety, KaTeX rendering |
 | `expr.ts` | Safe expression parser/evaluator. It never calls `eval` or `Function`, and its length, depth and value range are bounded |
 | `grade.ts` | Pure deterministic grader → `{correct, normalized, misconceptionTag?, invalid?}` |
 | `learnerState.ts` | Builds the compact learner summary the model receives. Also defines `ActivityAttemptRecord` and `specHash` |
 | `prompt.ts` | Batch prompt: rules + compact grammar + 2 format examples + learner summary + standards window. `structuredSystem` replaces the grammar with `STRUCTURED_OUTPUT_RULES` for structured output |
 | `render/` | `<ActivityView>` plus pure-SVG/HTML figure renderers and response widgets. Import `render/index.ts` to load the CSS |
-| `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output |
+| `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output. `fixtures/inconsistent.ts` holds activities the consistency lint must reject, including the live gpt-4o one from 2026-10-05 |
 | `gallery/` + `scripts/gallery.mjs` | Dev-only visual gallery: `npm run gallery [-- ids…] [--states]` → `.gallery/index.html` |
 | `scripts/spec-eval/` | Dev-only prompt evaluation against a local stand-in model: `npm run spec-eval` → `.spec-eval/<run>/` (see [Prompt evaluation](#prompt-evaluation-dev-only)) |
 
@@ -31,7 +32,7 @@ Block     text{text:RT} | math{tex} | figure{figureId}
 RT        plain text with inline $TeX$; literal dollar = \$
 Figure    bar_chart | line_chart | scatter_plot | pie_chart | data_table | coordinate_plane |
           geometry | number_line | fraction_model | array_grid | place_value_blocks | clock |
-          money | ruler | picture       (every figure has id + alt)
+          money | ruler | picture       (every figure has id + alt; alt is kept for compatibility, never shown)
 Response  numeric | fraction | expression | multiple_choice | multi_select | ordering |
           plot_point | tap_region
 keyCheck  {value:"arithmetic"} for numeric/fraction, {x,y} for plot_point (strict wire schema: inside the response)
@@ -100,7 +101,11 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    the `activities` array, and no read goes past the next one.
    The damaged activity is rejected as malformed and its neighbours are kept. Nothing is ever
    repaired.
-8. **Grading is local and deterministic.** Expression equivalence is checked by sampling the
+8. **Consistency.** On a fresh batch, every otherwise valid activity also goes through the
+   semantic lint (`semantics.ts`). An activity whose figure contradicts its text, keyCheck or key
+   is rejected with a `consistency:` reason, which the `ai-batch` log carries. Restore
+   (`verifySpec`) does not run the lint, so stored evidence keeps validating when the rules change.
+9. **Grading is local and deterministic.** Expression equivalence is checked by sampling the
    domain at points chosen by a seeded random generator (seeded with the activity id). Fraction
    form rules (`simplest`/`exact`) and polynomial form rules (`expanded`/`simplified`) produce
    tags such as `not_simplified`.
@@ -117,8 +122,9 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
 - **Theme.** `theme="light"` is the default, to match today's light-only studio. `"dark"`
   forces dark mode, and `"auto"` follows `prefers-color-scheme`.
 - **Accessibility.**
-  - SVGs have `role="img"` with `<title>`/`<desc>` taken from `alt`; interactive figures
-    become labelled groups.
+  - SVGs have `role="img"` with `<title>`/`<desc>` from the app's own description of the figure
+    (`figureAlt` in `semantics.ts`, written from the figure's data); interactive figures become
+    labelled groups. The model's `alt` is never shown.
   - Tap regions are focusable `role="button"` elements, and a row of chips offers the same
     choices.
   - The plane can be driven with arrow keys or the ±x/±y steppers.
@@ -127,6 +133,59 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
   - Transitions are reduced or off under reduced motion.
 - **No hover tooltips on charts, on purpose.** Reading values off the graph is usually the
   task itself.
+
+## Semantic consistency
+
+A strict schema guarantees an activity's shape, not its meaning. A live gpt-4o activity said "3 groups
+of 4 apples" with keyCheck `3*4` and drew 2 groups of 4; a learner counting the picture gets 8 and is
+marked wrong. `semantics.ts` catches that class of failure deterministically. It knows no nouns,
+phrasings or problem templates.
+
+**Quantities: one adapter per figure type.** `FIGURE_MODELS[type](figure)` returns `FigureQuantities`,
+derived from the figure's data only:
+
+| Field | What it holds | Examples |
+|---|---|---|
+| `structure` | Equal groups as drawn, or rows × columns | picture groups (enumerated, or one group with `repeat`); array_grid |
+| `named` | Values a question may ask for, keyed by the figure's **own** names | the icon (`apple`), group labels, a pictograph key's unit (`book`), field names (`area`, `cent`, `number`); `''` is the unnamed total |
+| `counts` | Counts the text may state as "N <name>" | `row`, `column`, `group`, `part` |
+| `numbers` | Every number the figure contains or implies | counts, values, totals, coin and place values |
+| `series` | Labelled data values | bars, slices (value and percent), table rows, line ticks, labelled groups |
+| `printed` | Text drawn on the figure as annotation | geometry and number-line labels, point labels, a digital time |
+| `conflicts` | Contradictions inside one figure | a graph-paper dimension label vs its drawn length |
+| `say` | Spoken description: `full`, and a value-free `brief` | "Picture: 3 groups of 4 apples." |
+
+Adding a figure type means adding one adapter; the mapped type makes a missing one a compile error.
+
+**Text: a generic reader.** Digits, number words (one–ninety), fractions (`a/b`, `\frac`), clock times
+and TeX products (`\times`) become tokens. Equal-groups structure comes from patterns, never nouns:
+"N ‹w› of M", "N ‹w› with M … each", "M … in each of N ‹w›", "each ‹w› has M" plus an earlier "N ‹w›s",
+and "N × M". Plurals are handled by spelling rules. A small set of function words ("more", "fewer",
+"than", "add", …) marks a number as a change or a comparison rather than a description.
+
+**Relations.** Each fires only on a contradiction it can name:
+
+| Rule | Rejects when |
+|---|---|
+| structure | A picture's or array's groups, rows or columns contradict the structure the text states, or a count named with the figure's own words ("8 equal parts"). With no numbers in the text, a keyCheck `a*b` that shares one factor with the figure but not the other. A fraction model that shares no denominator or equivalent partition with a fraction in the text |
+| total | The question asks for a quantity the figure names ("How many apples…", "What is the area", "What number…", "in all"), the text adds no number the figure lacks and tells no story of change, and the key is none of the figure's values for it |
+| chart | A value the text attributes to a chart label ("Maria read 7") is not that label's value; "which … had N" names no value in the chart; "N ‹unit›" (the value axis's own word) is neither a value nor the total |
+| leak | The numeric answer is printed on the figure as an annotation, or written in the prompt as a result ("= 12", "12 in all"), unless it is also a keyCheck input. A digital clock that shows the correct option |
+| figure | A contradiction inside one figure (`conflicts`) |
+
+The rules are tuned for precision. On the 43 fixtures, the 5 graph-paper fixtures on the variety branch,
+and 2,072 schema-valid activities from cached spec-eval replies (Haiku and the codex ceiling model),
+they flagged 0 fixtures and 1 cached activity, a real contradiction ("12 students" on a chart that
+totals 11). `semantics.test.ts` pins true positives for every rule and figure family, and true
+negatives for the legitimate cases that once tripped them (extra groups beside the stated ones,
+stories of change, questions about something the picture does not show, keyCheck inputs equal to
+the answer, chart scale statements, clock-time labels).
+
+**Accessible descriptions.** `figureAlt(figure, spec)` is the figure's `say.full`, unless that would
+state the answer (the numeric key not used as a keyCheck input, the fraction key, or a short numeric
+correct option); then it is `say.brief`, which names no value. A counting picture's brief lists its
+icons as countable words ("apple, apple, apple…"), and a number line places marks by counting ticks.
+The renderer uses it for every figure; the model's `alt` stays in the schema for compatibility only.
 
 ## Prompt evaluation (dev only)
 
@@ -152,6 +211,9 @@ npm run spec-eval -- [--n 45] [--provider codex|claude] [--model haiku|gpt-6-ast
    Per item the harness records validity and reasons, keyCheck status, skill ids against the
    offered window and the graph, difficulty against `suggestedDifficulty`, response and figure
    types, and size (chars/4).
+   The consistency lint (`semantics.ts`) runs separately on each schema-valid item, so the summary
+   reports "figure consistent" on its own, lists every rejection to read, and gives the share
+   production would accept.
 4. **Render.** Every valid spec is screenshotted inside the studio's focus stage (the surface learners
    see) at 384×832 (light) into a contact sheet `.spec-eval/<run>/index.html`, grouped by learner state.
    The sheet notes each spec that scrolls inside the stage, and the summary reports the share that

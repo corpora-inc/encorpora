@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url';
 export async function loadAnalyzer(root) {
   const imp = p => import(pathToFileURL(path.join(root, p)).href);
   const spec = await imp('src/activity/spec.ts');
+  const { consistencyIssues } = await imp('src/activity/semantics.ts');
   const { evaluateConstant, closeEnough } = await imp('src/activity/expr.ts');
   const { getSkill, skills } = await imp('src/learning/curriculum.ts');
   const graph = new Set(skills.map(s => s.id));
@@ -48,7 +49,8 @@ export async function loadAnalyzer(root) {
 
   function analyzeBatch(state, prompt, text) {
     const allowed = prompt.allowedSkillIds;
-    const validation = spec.validateActivityBatch(text, { skillIds: allowed });
+    // Schema and validator first, without the consistency lint, so "figure consistent" is measured on its own below.
+    const validation = spec.validateActivityBatch(text, { skillIds: allowed, consistency: false });
     const raw = rawActivities(text).slice(0, 5);
     const rejectedAt = new Map(validation.rejected.map(r => [r.index, r.errors]));
     const accepted = [...validation.accepted];
@@ -60,8 +62,11 @@ export async function loadAnalyzer(root) {
       const primary = skillIds[0];
       const target = frontier.get(primary)?.suggestedDifficulty ?? state.summary.suggestedDifficulty;
       const chars = JSON.stringify(a ?? null).length;
+      const validSpec = ok ? accepted.shift() : null;
+      // Deterministic "figure consistent" metric: the production lint (semantics.ts) on each schema-valid item.
+      const consistency = validSpec ? consistencyIssues(validSpec).map(i => ({ rule: i.rule, message: i.message })) : null;
       return {
-        index, id: typeof a?.id === 'string' ? a.id : `#${index}`, ok, errors: errors ?? [], spec: ok ? accepted.shift() : null,
+        index, id: typeof a?.id === 'string' ? a.id : `#${index}`, ok, errors: errors ?? [], spec: validSpec, consistency,
         responseType: a?.response?.type ?? '?', figureTypes: Array.isArray(a?.figures) ? a.figures.map(f => f?.type ?? '?') : [],
         skillIds, inWindow: skillIds.length > 0 && skillIds.every(s => allowed.has(s)), inGraph: skillIds.length > 0 && skillIds.every(s => graph.has(s)),
         onFrontier: frontier.has(primary), gradeOffset: primary && getSkill(primary) ? gradeNum(getSkill(primary).grade) - gradeNum(state.grade) : null,
@@ -104,6 +109,11 @@ export function summarize(batches, { category, meta }) {
     batches: batches.length, callFailures: batches.filter(b => b.callError).length,
     unparsedBatches: batches.filter(b => !b.returned).length,
     items: { requested: batches.reduce((n, b) => n + b.requested, 0), returned: items.length, valid: valid.length, schemaPassRate: pct(valid.length, denom) },
+    consistency: (() => {
+      const checked = valid.filter(i => i.consistency), bad = checked.filter(i => i.consistency.length);
+      return { checked: checked.length, rejected: bad.length, consistentRate: pct(checked.length - bad.length, checked.length), acceptedRate: pct(checked.length - bad.length, denom),
+        byRule: countBy(bad.flatMap(i => [...new Set(i.consistency.map(c => c.rule))])), examples: bad.slice(0, 12).map(i => `${i.id}: ${i.consistency.map(c => c.message).join(' | ')}`) };
+    })(),
     keyCheck: { keyed: keyed.length, pass: keyed.filter(i => i.keyCheck === 'pass').length, passRate: pct(keyed.filter(i => i.keyCheck === 'pass').length, keyed.length), statuses: countBy(keyed.map(i => i.keyCheck)) },
     skills: { inWindowRate: pct(items.filter(i => i.inWindow).length, items.length), inGraphRate: pct(items.filter(i => i.inGraph).length, items.length), onFrontierRate: pct(items.filter(i => i.onFrontier).length, items.length), gradeOffsets: countBy(items.map(i => String(i.gradeOffset))) },
     difficulty: { meanAbsDelta: mean(withDiff.map(i => Math.abs(i.difficulty - i.targetDifficulty))), within2Rate: pct(withDiff.filter(i => Math.abs(i.difficulty - i.targetDifficulty) <= 2).length, withDiff.length), meanDelta: mean(withDiff.map(i => i.difficulty - i.targetDifficulty)) },
@@ -137,6 +147,8 @@ Generated ${s.meta.generatedAt}. Prompt ~${s.meta.promptTokens.system} system + 
 | Batches (failed calls / unparsed) | ${s.batches} (${s.callFailures} / ${s.unparsedBatches}) |
 | Items requested / returned / valid | ${s.items.requested} / ${s.items.returned} / ${s.items.valid} |
 | **Schema pass rate** | **${s.items.schemaPassRate}%** |
+| **Figure consistent** (semantics.ts lint, of schema-valid) | **${s.consistency.consistentRate}%** (${s.consistency.rejected} rejected of ${s.consistency.checked}; ${table(s.consistency.byRule)}) |
+| Accepted after the lint (production acceptance) | ${s.consistency.acceptedRate}% |
 | **keyCheck pass** (numeric/fraction/plot) | **${s.keyCheck.passRate}%** (${s.keyCheck.pass}/${s.keyCheck.keyed}) |
 | skillIds in offered window / in graph / on frontier | ${s.skills.inWindowRate}% / ${s.skills.inGraphRate}% / ${s.skills.onFrontierRate}% |
 | Difficulty vs suggested: mean abs Δ / within ±2 / mean Δ | ${s.difficulty.meanAbsDelta} / ${s.difficulty.within2Rate}% / ${s.difficulty.meanDelta} |
@@ -158,6 +170,9 @@ Generated ${s.meta.generatedAt}. Prompt ~${s.meta.promptTokens.system} system + 
 **Skill grade offset vs grade hint:** ${table(s.skills.gradeOffsets)}
 
 **keyCheck statuses:** ${table(s.keyCheck.statuses)}
+
+**Consistency rejections (read them; each should be a real contradiction):**
+${s.consistency.examples.map(e => `- ${e}`).join('\n') || '- none'}
 
 **Validation error categories:**
 ${Object.entries(s.errorCategories).map(([k, v]) => `- ${v}× ${k}`).join('\n') || '- none'}

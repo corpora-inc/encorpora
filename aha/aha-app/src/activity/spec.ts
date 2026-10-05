@@ -12,6 +12,8 @@
 import * as z from 'zod';
 import { checkPlainText, checkRichText, checkTex } from './text';
 import { closeEnough, evaluate, evaluateConstant, ExprError, parseExpr, samplePoints, variablesUsed } from './expr';
+import { MONEY_KINDS } from './money';
+import { consistencyErrors } from './semantics';
 
 export const ACTIVITY_SPEC_VERSION = 1 as const;
 
@@ -134,7 +136,7 @@ const PlaceValueBlocks = z.strictObject({
 const Clock = z.strictObject({
   type: z.literal('clock'), ...figureBase, hour: int(1, 12), minute: int(0, 59), showDigital: z.boolean().optional(), showMinuteNumbers: z.boolean().optional(),
 });
-export const MONEY_KINDS = { penny: 1, nickel: 5, dime: 10, quarter: 25, half_dollar: 50, dollar_coin: 100, bill_1: 100, bill_5: 500, bill_10: 1000, bill_20: 2000 } as const;
+export { MONEY_KINDS };
 const Money = z.strictObject({
   type: z.literal('money'), ...figureBase,
   items: z.array(z.strictObject({ kind: z.enum(Object.keys(MONEY_KINDS) as [keyof typeof MONEY_KINDS, ...(keyof typeof MONEY_KINDS)[]]), count: int(1, 10) })).min(1).max(8),
@@ -239,6 +241,8 @@ export interface ValidateOptions {
   skillIds: ReadonlySet<string>;
   /** Numeric, fraction and plot_point keys must carry a matching keyCheck (default true). */
   requireKeyCheck?: boolean;
+  /** Batch validation also rejects activities whose figure contradicts the text or key (semantics.ts; default true). */
+  consistency?: boolean;
 }
 export type SpecValidation = { ok: true; spec: ActivitySpec } | { ok: false; errors: string[] };
 
@@ -477,7 +481,10 @@ function validateActivities(activities: unknown, options: ValidateOptions, ratio
   const result: BatchValidation = { rationale, accepted: [], rejected: [], errors: [] };
   const seen = new Set<string>();
   activities.forEach((candidate, index) => {
-    const checked = validateActivitySpec(candidate, options);
+    const validated = validateActivitySpec(candidate, options);
+    // Semantic consistency (semantics.ts) runs on fresh batches only, never on restore, so stored evidence keeps validating.
+    const lint = validated.ok && options.consistency !== false ? consistencyErrors(validated.spec) : [];
+    const checked: SpecValidation = lint.length ? { ok: false, errors: lint } : validated;
     if (!checked.ok) result.rejected.push({ index, id: typeof (candidate as { id?: unknown })?.id === 'string' ? String((candidate as { id: string }).id).slice(0, 48) : undefined, errors: checked.errors });
     else if (seen.has(checked.spec.id)) result.rejected.push({ index, id: checked.spec.id, errors: ['Duplicate activity id in batch.'] });
     else { seen.add(checked.spec.id); result.accepted.push(checked.spec); }

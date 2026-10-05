@@ -6,6 +6,7 @@ import { fixtures } from '../fixtures';
 import { ActivityView, displayOrder } from './ActivityView';
 import { RichText } from './RichText';
 import { correctResponse } from '../grade';
+import { figureAlt } from '../semantics';
 
 const render = (el: React.ReactElement) => renderToStaticMarkup(el);
 const noop = () => {};
@@ -20,8 +21,10 @@ describe('Activity renderer', () => {
       assert.doesNotMatch(html.replace(/xmlns="http:\/\/www\.w3\.org\/[^"]+"/g, ''), /(https?|javascript):/, spec.id);
       for (const f of spec.figures ?? []) {
         assert.ok(html.includes(`data-figure-id="${f.id}"`), `${spec.id}/${f.id} rendered`);
-        const alt = f.alt.replace(/&/g, '&amp;').replace(/'/g, '&#x27;').replace(/"/g, '&quot;');
-        assert.ok(html.includes(alt), `${spec.id}/${f.id} exposes alt text`);
+        const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/'/g, '&#x27;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        // The app writes every figure's description from its data; the model's alt is never shown.
+        assert.ok(html.includes(escape(figureAlt(f, spec))), `${spec.id}/${f.id} exposes the app's description`);
+        assert.ok(!html.includes(escape(f.alt)), `${spec.id}/${f.id} does not show the authored alt`);
       }
       assert.ok(html.includes('Check my answer'));
     }
@@ -29,7 +32,7 @@ describe('Activity renderer', () => {
   it('uses <title>/<desc> on SVG figures and labelled groups for interactive ones', () => {
     const chart = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-2-fruit-graph')!} onSubmit={noop} />);
     assert.match(chart, /<svg[^>]*role="img"[^>]*aria-labelledby="ax-t\d+"[^>]*aria-describedby="ax-d\d+"/);
-    assert.match(chart, /<title id="ax-t\d+">Favorite fruit<\/title><desc id="ax-d\d+">Bar graph of votes/);
+    assert.match(chart, /<title id="ax-t\d+">Favorite fruit<\/title><desc id="ax-d\d+">Bar chart \(Votes\): Favorite fruit\. Apples 9, Bananas 6, Pears 4, Grapes 7\./);
     const tap = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-6-pie-tap')!} onSubmit={noop} />);
     assert.match(tap, /role="group"/);
     assert.match(tap, /role="button" tabindex="0" aria-label="Blue" aria-pressed="false"/);

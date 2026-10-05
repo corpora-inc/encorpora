@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Lightbulb, Sparkles, Check } from 'lucide-react';
 import type { ActivitySpec, Figure } from '../spec';
 import { plotSnap, regionIds } from '../spec';
+import { figureAlt } from '../semantics';
 import type { GradeOutcome, LearnerResponse } from '../grade';
 import { seededRandom } from '../expr';
 import { DisplayMath, RichText } from './RichText';
@@ -81,7 +82,8 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
   const [draft, setDraft] = useState(() => initialDraft(spec, initialResponse));
   const [hintsShown, setHintsShown] = useState(Math.min(initialHintsShown, spec.hints?.length ?? 0));
   const [showExplanation, setShowExplanation] = useState(false);
-  const figures = useMemo(() => new Map((spec.figures ?? []).map(f => [f.id, f])), [spec]);
+  // Screen readers hear the app's own description of each figure (semantics.ts), never the model's alt text.
+  const figures = useMemo(() => new Map((spec.figures ?? []).map(f => [f.id, { ...f, alt: figureAlt(f, spec) }])), [spec]);
   // One graded submission per displayed activity (matches the evidence ledger); unreadable input may retry.
   const graded = !!result && !result.invalid;
   const locked = disabled || graded;
