@@ -10,6 +10,16 @@ its validator and grader stay forever so stored `ai-spec` evidence can be restor
 This document is the RFC as accepted, refined where mapping it onto the v1 code showed a sharper
 choice. Every departure from the draft is listed in [Changes from the RFC draft](#17-changes-from-the-rfc-draft).
 
+| File | Role |
+|---|---|
+| `quantity.ts` | Exact values with dimensions, the unit registry, the one expression grammar, Intl formatting |
+| `text.ts` | `{{placeholder}}` templates, the closed-list prose rules, rendering with answer masking |
+| `registry.ts`, `structures/` | One `StructureDef` per intent: roles, measures, invariants, views (reveals, regions, words, lowering) |
+| `wire.ts`, `schema.ts` | The zod wire schema per band, generated from the registry; the strict JSON schema |
+| `model.ts` | Binding: quantities valued exactly, typed roles, measures, references |
+| `validate.ts` | L0–L2: shape, model, prose and leaks, the reveal rule, lowering |
+| `../draw.ts` | The drawing IR: v1 `Figure` plus app-only fields |
+
 ---
 
 ## 1. Problem
@@ -84,13 +94,13 @@ interface Batch { activities: Activity[] }          // 1–5
 interface Activity {                                  // keys: alphabetical = authoring order
   aim: { skills: SkillId[]; theme: Theme; why: string };   // 1–3 skills; closed theme list; why ≤160
   level: Int;                                         // 1–10, relative to the first skill
-  model: { quantities: Quantity[]; structures: Structure[] };   // 1–8 quantities, 1–2 structures
+  model: { quantities: Quantity[]; structures: Structure[] };   // 1–10 quantities, 1–4 structures
   prompt: Block[];                                    // 1–8
   response: Response;
   support: { explanation: Templ; hints: Templ[] };    // 0–3 hints
 }
 interface Quantity {
-  id: Id;                                             // ^[a-z][a-z0-9]{0,7}$, shared namespace with structures
+  id: Id;                                             // ^[a-z][a-z0-9_]{0,15}$, shared namespace with structures
   kind: 'count' | 'number' | 'fraction' | 'length' | 'area';   // first slice; later money, time, …
   noun: { icon: string | null; one: string; other: string } | null;   // what a count counts; null for an
                                                       // abstract count (the parts of a shape). `icon` is an
@@ -125,6 +135,13 @@ interface Fraction    { id: Id; kind: 'fraction'; roles: { parts: Id; selected: 
 
 - **Values are exact rationals** (`learning/rational.ts`), converted to floats only at draw time.
   A literal keeps its written form for display (`2/4` stays `2/4`); arithmetic never depends on it.
+- **Every number is a declared quantity.** A given's value is a written number (`"12"`, `"2.5"`,
+  `"3/4"`), never arithmetic. A derived value combines references with operators and has no number
+  of its own: a hidden `+10` would be a number the learner is never told. A derived value is never a
+  bare alias of another reference (a second name, with its own noun, for something already named).
+- **The ask is one reference** (a measure, a role or a quantity). A computed answer is a derived
+  quantity the model declares and asks, so the answer always has a declared kind, noun and unit.
+  Candidates are references too.
 - **`value` is one field.** A literal is an expression with no references, so a given (`"3"`) and a
   derived quantity (`"t/g"`) share one grammar: numbers, ids, `id.member`, `+ - * /` (the
   tokenizer also accepts `− × ÷`), parentheses, implicit multiplication after a number (`2(w+h)`),
@@ -252,8 +269,10 @@ blocks, hints, the explanation and noun forms.
   covers ½, ² and Ⅻ).
 - **No number words** of two or more, from a per-locale list ("two", "dozen", "twice", "half",
   "quarter", "fourth", …). "one" and "a" stay legal as articles and pronouns.
-- **No view-kind words** ("rectangle", "circle", "number line", "bar graph", "pie", "array", …)
-  outside `{{s.view}}`. "square" stays legal because it is also a unit word.
+- **View words name shown views.** A figure word ("rectangle", "circle", "number line", "bar
+  graph", "pie", "array", …) is legal only when it names a view the prompt shows (each view declares
+  its words); `{{s.view}}` always is. "Rectangle" beside a circle is rejected (live 2). "square"
+  stays legal because it is also a unit word.
 - **The answer is never named** (answer forms: `number`, `fraction`, `choose`; README §7). In the
   prompt and hints, a value-bearing placeholder for the ask target (`{{s.total}}`, `.n`, `.word`)
   renders as the unknown, □, inside math, and is rejected in text. Its value-free members (`.one`,
@@ -287,6 +306,12 @@ measure from its inputs, a derived quantity from its expression).
   already mark the answer (a `shade` target over a fraction that already shows selected parts, a
   `place` target already marked).
 
+**Support and relevance.** The ask's *support* is everything its value is computed from (a derived
+quantity's references, a measure's bound roles, recursively). A view must be part of the math asked:
+a measure of its structure is in the support, or the structure binds the asked (or a candidate)
+quantity, or it hosts the act form. Sharing one input with the ask is not enough, so a decoy figure
+cannot pass.
+
 Live 4 fails this rule: a `rect_area` area ask needs `w` and `h`, the bare polygon of the live
 reply corresponds to no legal view, and with `show: null` and no dimensions in the prose neither
 input is knowable.
@@ -305,14 +330,22 @@ An answer-form ask must be **computed**: a measure, a derived quantity, or a rol
 view makes countable. A literal given that nothing determines would be a key asserted by the model,
 and is rejected.
 
-**Leaks are referential, not textual** (answer forms). The prompt may not state the ask, nor a quantity of the
-same kind, the same noun or unit, and the same exact value as the key ("12 apples" in the prose
-when the answer is 12 apples). A coincidentally equal number of another kind ("4 groups of 4") is
-not a leak.
+**Leaks are decided by computation, never by nouns** (answer forms; prompt, hints and every view):
+
+- the ask itself is masked (□ in math) or refused (in text);
+- a printed measure or derived value equal to the answer recomputes it, whatever its noun;
+- a printed given equal to the answer states it only when the answer *is* that given: the ask,
+  recomputed exactly with the given doubled and tripled, still equals it ("12 apples in 3 baskets:
+  how many in all?"). Otherwise it is a coincidence of inputs ("4 × □ = 16"; "eat 8, 4 are left"
+  beside baskets of 4), which is legitimate;
+- a story number outside the math asked is context, unless it equals the answer.
+
+In choose, select and order the prompt names every candidate or none, and hints name none.
 
 ### 8.2 Distractors are rules, not values
 
-`{expr: "g+n", tag: "added_instead"}`. The app evaluates each rule, drops any whose value equals
+`{expr: "g+n", tag: "added_instead"}`. A rule is arithmetic a learner wrongly does on the numbers
+they see (an area minus a side), so it evaluates without dimensions. The app evaluates each rule, drops any whose value equals
 the key (so 0.5 ≡ 1/2 by construction), dedupes by value, formats every option identically, and
 requires at least two options for `choose`. For typed answers the same rules map a learner's answer
 to a misconception tag. Tags come from a curated per-domain list so learner-state counts do not
@@ -365,7 +398,9 @@ from the lint branch, without reading any prose.
   order at every level: `aim < level < model < prompt < response < support`; `skills < theme < why`;
   `quantities < structures`; `id < kind < noun < unit < value` (the model types and names a
   quantity before it writes the number); `id < kind < roles < show` (it names a structure and picks
-  its intent before binding roles and choosing a view); `explanation < hints`. Single lowercase words sort the same
+  its intent before binding roles and choosing a view). Free2Z will preserve declared order
+  (zuu#1143); the declared order is the alphabetical order, so generation follows the authoring order
+  under both behaviors, and `wire.test.ts` pins both; `explanation < hints`. Single lowercase words sort the same
   under byte order and every collation, so the order is invariant whether or not, and however, the
   gateway sorts. A test pins it, including nested objects. The envelope is `{activities}`; v1's
   `rationale` is replaced by each activity's `aim.why`. `json_schema.name` is
@@ -569,9 +604,9 @@ the reveal rule: `r.area` needs `w` and `h`, and neither is knowable.
 
 | # | PR | Status |
 |---|---|---|
-| 1 | This document; the gold-spec format | this PR |
-| 2 | `quantity.ts` (exact literals and expressions on `rational.ts`, kinds, units with dimensions, Intl formatting) and `text.ts` (placeholders, plurals, numeral, number-word, view-word and masking rules) | |
-| 3 | Registry, `StructureDef`, strict schema per band (≤ 20 KiB test, key-order test); L0/L1 skeleton; `equal_groups`, `array`, `rect_area`, `fraction` with lowering (ports `repeat`, graph paper, `unitSquares`); the reveal rule | |
+| 1 | This document; the gold-spec format | #907 |
+| 2 | `quantity.ts` (exact literals and expressions on `rational.ts`, kinds, units with dimensions, Intl formatting) and `text.ts` (placeholders, plurals, numeral, number-word, view-word and masking rules) | #909 |
+| 3 | Registry, `StructureDef`, strict schema per band (≤ 20 KiB test, key-order test); L0/L1 skeleton; `equal_groups`, `array`, `rect_area`, `fraction` with lowering (ports `repeat`, graph paper, `unitSquares`); the reveal rule | this PR |
 | 4 | Responses: ask over measures, distractor rules, computed uniqueness, `shade` and `place`; compile to v1 `ResponseSpec`, reuse `grade.ts` | |
 | 5 | `describe()` alt and speech; resolved-spec adapter so `ActivityView` renders v2; gallery entries for every structure × view | |
 | 6 | Gold set (≥ 40, K–5) and the mutation corpus (≥ 99% rejection) | |
@@ -643,3 +678,12 @@ Made while mapping the draft onto the v1 code; none changes the approved directi
 14. **`tap` can choose among views** (`on: null`), valued by each structure's primary measure, so
     "tap the model that shows ¾" over two fraction models is expressible and its uniqueness
     computed.
+15. **Every number is a declared quantity; the ask is one reference** (§3). Three adversarial reviews
+    showed that hidden numbers, aliases and bare-expression asks each opened a path around the answer
+    checks; making them inexpressible closed the class instead of patching instances.
+16. **Leaks by computation or identity, never by nouns** (§8.1), and **support and relevance** for
+    views (§7): model-chosen kinds and nouns cannot be trusted to decide a leak.
+17. **View words name shown views** (§6) rather than being banned outright: the protection against
+    live 2 is kept, and prose may still say "the rectangle" beside a rectangle.
+18. **Up to four structures** (v1 allowed four figures): comparing several fraction models is a
+    standard 3.NF.A.3 activity. Ids allow snake_case up to 16 characters.
