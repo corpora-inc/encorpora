@@ -292,9 +292,15 @@ the fallback, and signed-out practice is unchanged.
    duplicate delivery waits for the first one's save. Ids use each activity's position in the
    model's batch, so a stricter validator cannot shift them.
 4. **Prefetch.** When at most `PREFETCH_AT` (1) activity remains, a single background request
-   fetches the next batch while the learner works. It is skipped during the fallback backoff or
-   a Retry-After window. A Continue with an empty queue waits for an in-flight prefetch. If
-   that fails too, it makes one foreground request, and if that fails, it serves local practice.
+   fetches the next batch while the learner works. A restored queue (from this build or an older
+   one) that is already this low is refilled at launch; with no saved AI activities, nothing is
+   bought until the learner taps. The learner's Stop belongs to the batch their tap started (its
+   own token), so it prevents that paid call even after the tap stops waiting. Prefetch is skipped during the fallback
+   backoff or a Retry-After window, and every such skip logs its reason (`ai-skip`). A Continue
+   with an empty queue starts a batch if none is on its way, then waits for it at most
+   `BATCH_WAIT_MS` (6 s). If it has not landed, one local task is served (logged) and the batch
+   fills the queue for the task after; a failed batch logs its own `ai-fallback`. Timed recall
+   (one local fluency task after every fifth) is logged too, so AI never stops without a reason.
    **Try something harder** never discards a paid, unanswered activity. If a queued activity is
    harder than the one on screen, the hardest one is shown with no new paid call, and the skipped
    one returns to the front of the queue with any hints it already used (`hintsUsed`, so it can

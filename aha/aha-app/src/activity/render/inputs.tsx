@@ -9,23 +9,33 @@ import { RichText } from './RichText';
 import { fmt } from './figures/common';
 
 
-export function NumericInput({ response: r, value, onChange, disabled, onEnter }: { response: ResponseOf<'numeric'>; value: string; onChange: (v: string) => void; disabled?: boolean; onEnter?: () => void }) {
+/** Rich-text label as plain words (for a placeholder): math delimiters dropped, escaped $ kept. */
+const plainLabel = (text: string) => text.replace(/\\\$/g, '\u0000').replace(/\$/g, '').replace(/\u0000/g, '$').trim();
+
+/** compact (focus stage): the label never takes its own row above the field. It stays the field's
+ * accessible name and shows as a quiet suffix inside the field (short label, no unit) or as the
+ * placeholder. */
+export function NumericInput({ response: r, value, onChange, disabled, onEnter, compact }: { response: ResponseOf<'numeric'>; value: string; onChange: (v: string) => void; disabled?: boolean; onEnter?: () => void; compact?: boolean }) {
   const id = useId();
+  const suffix = compact && r.label && !r.unit && plainLabel(r.label).length <= 18 ? r.label : undefined;
+  const placeholder = compact && r.label && !suffix ? plainLabel(r.label) : 'Type a number';
+  const tail = r.unit ?? (suffix ? plainLabel(suffix) : undefined);
   return (
     <div className="ax-field">
-      <label htmlFor={id} className={r.label ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer'}</label>
-      <div className="ax-number-wrap">
+      <label htmlFor={id} className={r.label && !compact ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer'}</label>
+      <div className="ax-number-wrap" style={tail ? { '--ax-tail': tail.length } as React.CSSProperties : undefined}>
         <input id={id} type="text" inputMode="decimal" autoComplete="off" autoCorrect="off" spellCheck={false} maxLength={40}
-          value={value} disabled={disabled} placeholder="Type a number" onChange={e => onChange(e.target.value)}
+          value={value} disabled={disabled} placeholder={placeholder} onChange={e => onChange(e.target.value)}
           onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); onEnter?.(); } }} />
-        {r.unit && <span className="ax-unit" aria-hidden="true">{r.unit}</span>}
+        {r.unit ? <span className="ax-unit" aria-hidden="true">{r.unit}</span>
+          : suffix && <span className="ax-unit ax-label-suffix" aria-hidden="true"><RichText text={suffix} /></span>}
       </div>
       {r.unit && <span className="ax-visually-hidden">Unit: {r.unit}</span>}
     </div>
   );
 }
 
-export function FractionInput({ response: r, value, onChange, disabled }: { response: ResponseOf<'fraction'>; value: { whole: string; numerator: string; denominator: string }; onChange: (v: { whole: string; numerator: string; denominator: string }) => void; disabled?: boolean }) {
+export function FractionInput({ response: r, value, onChange, disabled, compact }: { response: ResponseOf<'fraction'>; value: { whole: string; numerator: string; denominator: string }; onChange: (v: { whole: string; numerator: string; denominator: string }) => void; disabled?: boolean; compact?: boolean }) {
   const id = useId();
   const field = (key: 'whole' | 'numerator' | 'denominator', label: string) => (
     <input aria-label={label} type="text" inputMode="numeric" pattern="-?[0-9]*" autoComplete="off" maxLength={7} disabled={disabled}
@@ -33,7 +43,7 @@ export function FractionInput({ response: r, value, onChange, disabled }: { resp
   );
   return (
     <fieldset className="ax-field ax-fraction-field">
-      <legend id={id} className={r.label ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer as a fraction'}</legend>
+      <legend id={id} className={r.label && !compact ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer as a fraction'}</legend>
       <div className="ax-fraction-input">
         {r.mixed && field('whole', 'Whole number (leave empty if none)')}
         <div className="ax-frac-stack">
@@ -64,7 +74,7 @@ function texOf(e: Expr, parent = 0): string {
   }
 }
 
-export function ExpressionInput({ response: r, value, onChange, disabled, onEnter }: { response: ResponseOf<'expression'>; value: string; onChange: (v: string) => void; disabled?: boolean; onEnter?: () => void }) {
+export function ExpressionInput({ response: r, value, onChange, disabled, onEnter, compact }: { response: ResponseOf<'expression'>; value: string; onChange: (v: string) => void; disabled?: boolean; onEnter?: () => void; compact?: boolean }) {
   const id = useId();
   const input = useRef<HTMLInputElement>(null);
   let preview: string | null = null, problem: string | null = null;
@@ -81,7 +91,7 @@ export function ExpressionInput({ response: r, value, onChange, disabled, onEnte
   };
   return (
     <div className="ax-field">
-      <label htmlFor={id} className={r.label ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your expression'}</label>
+      <label htmlFor={id} className={r.label && !compact ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your expression'}</label>
       <input id={id} ref={input} className="ax-expression" type="text" inputMode="text" autoCapitalize="off" autoComplete="off" autoCorrect="off" spellCheck={false}
         maxLength={120} value={value} disabled={disabled} placeholder={`Use ${r.variables.join(', ')}`} onChange={e => onChange(e.target.value)}
         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); onEnter?.(); } }} aria-describedby={`${id}-preview`} />
