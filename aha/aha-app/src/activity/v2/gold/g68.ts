@@ -18,4 +18,19 @@ export const g68Gold: GoldSpec[] = [
     },
     expect: { key: '30', prompt: ['A patio is a rectangle.', 'What is its area?'], alt: 'A rectangle, labeled 7.5 meters wide and 4 meters tall.' },
   },
+  {
+    id: 'g6-rect-missing-side-decimal', note: 'missing side with a decimal answer, labeled view shows "?" (grade 6 area)',
+    activity: {
+      aim: { skills: ['6.G.A.1'], theme: 'building', why: 'Area relationships with non-whole numbers.' },
+      level: 5,
+      model: {
+        quantities: [q('a', 'area', '21', null, 'm'), q('h', 'length', '6', null, 'm'), q('w', 'length', 'a/h', null, 'm')],
+        structures: [{ id: 'r', kind: 'rect_area', roles: { h: 'h', w: 'w' }, show: 'labeled' }],
+      },
+      prompt: [{ text: 'This {{r.view}} has an area of {{a}}.', type: 'text' }, { of: 'r', type: 'view' }, { text: 'How wide is it?', type: 'text' }],
+      response: { ask: 'r.w', distractors: [{ expr: 'h', tag: 'used_one_side' }], form: 'number' },
+      support: { explanation: '{{a.n}} ÷ {{r.h.n}} = {{r.w.n}}.', hints: ['Divide the area by the known side.'] },
+    },
+    expect: { key: '3.5', prompt: ['This rectangle has an area of 21 square meters.', 'How wide is it?'], alt: 'A rectangle, labeled a question mark for its width and 6 meters tall.' },
+  },
 ];
