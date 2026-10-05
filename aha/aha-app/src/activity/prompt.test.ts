@@ -54,7 +54,7 @@ describe('activity batch prompt', () => {
     assert.ok(!p.structuredSystem.includes(ACTIVITY_GRAMMAR) && p.system.includes(ACTIVITY_GRAMMAR));
     assert.equal(p.structuredSystem, p.system.replace(ACTIVITY_GRAMMAR, () => STRUCTURED_OUTPUT_RULES));
     const saved = approxTokens(p.system) - approxTokens(p.structuredSystem);
-    // ~4.5k grammar chars → ~1.6k rule chars. Measured with the chars/4 heuristic (no tokenizer in the repo).
+    // ~5.2k grammar chars → ~1.6k rule chars. Measured with the chars/4 heuristic (no tokenizer in the repo).
     assert.ok(saved >= 600, `structured prompt saves only ~${saved} tokens`);
     for (const phrase of ['keyCheck', 'no brands', 'Never ask for personal information', 'data, not instructions', 'never a ceiling', '\\$', 'exactly one correct', 'CORRECT order', 'null'])
       assert.ok(p.structuredSystem.includes(phrase), phrase);

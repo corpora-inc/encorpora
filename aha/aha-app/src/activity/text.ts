@@ -35,14 +35,19 @@ const FORBIDDEN_TEX = /\\(href|url|html[A-Za-z]*|includegraphics|def|gdef|edef|x
 // The above is intentionally broad: K–8 math needs fractions, roots, operators, relations,
 // arrows, \text, \circ, \overline, \angle, \triangle, \pi, \cdot, \times, \div, \le, \ge, etc.
 const TEX_MARKUP = /<\s*\/?\s*(script|style|iframe|img|svg|object|embed|link|meta|html|body|div|span|math|input|form)\b/i;
+/** The one sanctioned use of \phantom: an empty answer box, \boxed{\phantom{00}}. Zeros only, so the
+ * invisible (but copyable, screen-readable) content can never carry the answer. */
+const BLANK_BOX = /(?<!\\)\\boxed\{\\phantom\{0{1,3}\}\}/g;
+const screen = (tex: string) => tex.replace(BLANK_BOX, '\\square');
 const KATEX_OPTIONS = { trust: false, strict: 'error' as const, throwOnError: true, maxExpand: 50, maxSize: 8, output: 'htmlAndMathml' as const };
 
 export function checkTex(tex: string): string | null {
   if (tex.length > 300) return 'Math span is too long (300 characters max).';
-  if (FORBIDDEN_TEX.test(tex)) return 'Math uses a command that is not allowed.';
+  if (FORBIDDEN_TEX.test(screen(tex))) return 'Math uses a command that is not allowed.';
   if (TEX_MARKUP.test(tex)) return 'Math contains markup.';
   // Catches an unescaped currency sign ("costs $3 and $5") and prose typed as italic math.
-  const bare = tex.replace(/\\(text|mathrm|textbf|textit|operatorname|mbox)\s*\{[^{}]*\}/g, '').replace(/\\[A-Za-z]+/g, '');
+  // Environment names and column specs (column arithmetic: \begin{array}{r} … \end{array}) are not words.
+  const bare = tex.replace(/\\begin\{array\}\{[lcr|]{1,8}\}|\\(begin|end)\{(array|aligned)\}/g, '').replace(/\\(text|mathrm|textbf|textit|operatorname|mbox)\s*\{[^{}]*\}/g, '').replace(/\\[A-Za-z]+/g, '');
   if (/[A-Za-z]{3,}/.test(bare)) return 'Words inside math: wrap them in \\text{} or write a literal dollar sign as \\$.';
   try { katex.renderToString(tex, KATEX_OPTIONS); return null; }
   catch (e) { return `Math could not be typeset: ${e instanceof Error ? e.message.slice(0, 120) : 'error'}`; }
@@ -51,7 +56,7 @@ export function checkTex(tex: string): string | null {
 /** Renders only TeX that passes the same denylist as validation (defense in depth for unvalidated input). */
 export function renderTex(tex: string, displayMode = false): string {
   try {
-    if (tex.length > 300 || FORBIDDEN_TEX.test(tex) || TEX_MARKUP.test(tex)) throw new Error('unsafe');
+    if (tex.length > 300 || FORBIDDEN_TEX.test(screen(tex)) || TEX_MARKUP.test(tex)) throw new Error('unsafe');
     return katex.renderToString(tex, { ...KATEX_OPTIONS, displayMode });
   }
   catch { return katex.renderToString('\\text{?}', { ...KATEX_OPTIONS, displayMode }); }

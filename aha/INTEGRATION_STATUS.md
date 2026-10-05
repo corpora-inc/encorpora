@@ -59,8 +59,8 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   schema's members sorted by name, so replies arrive with keys in alphabetical order (`activities`
   before `rationale`) and with `null` for unused optional fields. The validator reads by key, treats
   `null` as absent, and a test covers that reply shape.
-- **Input tokens (approximate, chars/4).** The structured system prompt is about 1.2k tokens instead
-  of about 2.0k, which saves about 0.8k per batch. The schema, however, is input too: Free2Z reserves
+- **Input tokens (approximate, chars/4).** The structured system prompt is about 1.7k tokens instead
+  of about 2.6k, which saves about 0.9k per batch. The schema, however, is input too: Free2Z reserves
   its 28 KB in the input hold, as it does for a tool definition, and the provider bills its own
   rendering of it. The net billed input change is therefore unknown until measured live, and may be an
   increase. The expected gain is the parse and acceptance rate, not cost.
