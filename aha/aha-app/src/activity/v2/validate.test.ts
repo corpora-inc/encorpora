@@ -258,12 +258,33 @@ describe('review regressions: no path around the answer checks', () => {
       a.response = { ask: 's.total', candidates: ['t', 'u'], distractors: [], form: 'choose' };
       a.support.hints = hints;
     });
-    rejects(choose('There are {{t.n}} in all. How many {{s.total.other}}?'), 'answer_singled_out');
+    rejects(choose('There are {{t.n}} in all. How many {{s.total.other}}?'), 'candidates_partial');
     assert.ok(check(choose('Is it {{t.n}} or {{u.n}} {{s.total.other}} in all?')).ok, JSON.stringify(codesOf(check(choose('Is it {{t.n}} or {{u.n}} {{s.total.other}} in all?')))));
-    rejects(choose('How many {{s.total.other}} are there?', ['It is {{t.n}}.']), 'answer_stated');
+    rejects(choose('How many {{s.total.other}} are there?', ['It is {{t.n}}.']), 'candidate_in_hint');
+    rejects(choose('How many {{s.total.other}} are there?', ['Is it {{u.n}}?']), 'candidate_in_hint');
+    rejects(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'How many {{s.total.other}}?', type: 'text' }; a.response = { ask: 's.total', candidates: ['s.total', '7'], distractors: [], form: 'choose' }; }), 'candidate_not_ref');
   });
-  it('checks every view for the answer, not only the ask\'s own structure', () => {
-    rejects(edit(equalGroupsActivity, a => { a.model.structures.push({ id: 't', kind: 'equal_groups', roles: { groups: 'g', size: 'n' }, show: 'jumps' }); a.prompt.push({ of: 't', type: 'view' }); }), 'answer_shown');
+  it('rejects a second view of the same quantities, and a decoy that shares an input', () => {
+    rejects(edit(equalGroupsActivity, a => { a.model.structures.push({ id: 't', kind: 'equal_groups', roles: { groups: 'g', size: 'n' }, show: 'jumps' }); a.prompt.push({ of: 't', type: 'view' }); }), 'view_unrelated');
+    const decoy = (show: 'jumps' | null, prompt?: string) => edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 'c', kind: 'count', noun: null, unit: null, value: '4' });
+      a.model.structures.push({ id: 'z', kind: 'equal_groups', roles: { groups: 'g', size: 'c' }, show });
+      if (show) a.prompt.push({ of: 'z', type: 'view' });
+      if (prompt) a.prompt[2] = { text: prompt, type: 'text' };
+    });
+    rejects(decoy('jumps'), 'view_unrelated');
+    rejects(decoy(null, 'Each has {{z.size.n}}. How many {{s.total.other}}?'), 'extraneous');
+  });
+  it('holds select to the candidate rules too', () => {
+    const sel = (hint: string) => edit(shadedFractionActivity, a => {
+      a.model.quantities = [{ id: 'p', kind: 'count', noun: null, unit: null, value: '4' }, { id: 'k', kind: 'count', noun: null, unit: null, value: '2' }, { id: 'pb', kind: 'count', noun: null, unit: null, value: '3' }, { id: 'kb', kind: 'count', noun: null, unit: null, value: '1' }, { id: 'u', kind: 'fraction', noun: null, unit: null, value: '1/2' }];
+      a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: null }, show: 'rect' }, { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: 'circle' }];
+      a.prompt = [{ text: 'Select each model that shows {{u}} shaded.', type: 'text' }, { of: 'f', type: 'view' }, { of: 'g', type: 'view' }];
+      a.response = { ask: 'u', candidates: ['f.fraction', 'g.fraction'], form: 'select' };
+      a.support = { explanation: 'Compare each with {{u}}.', hints: [hint] };
+    });
+    assert.ok(check(sel('Count the shaded parts.')).ok, JSON.stringify(codesOf(check(sel('Count the shaded parts.')))));
+    rejects(sel('Look for {{f.fraction}}.'), 'candidate_in_hint');
   });
   it('knows a fraction complement reads its wholes', () => {
     rejects(edit(shadedFractionActivity, a => {

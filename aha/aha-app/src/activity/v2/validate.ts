@@ -84,8 +84,6 @@ const VALUE_BEARING: ReadonlySet<ValueAttr> = new Set(['', 'n', 'word']);
 const STRENGTH = { unknown: 0, computable: 1, countable: 2, shown: 3 } as const;
 type Known = keyof typeof STRENGTH;
 const stronger = (a: Known, b: Known): Known => STRENGTH[a] >= STRENGTH[b] ? a : b;
-const describedEqual = (a: Described, b: Described) =>
-  sameValue(a.value, b.value) && a.value.power === b.value.power && a.value.unit === b.value.unit && a.kind === b.kind && (a.noun?.other ?? null) === (b.noun?.other ?? null);
 
 export function validateActivity(raw: unknown, options: ValidateOptions): Validation {
   const shaped = parseShape(raw, options.band);
@@ -142,7 +140,12 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       ask = { ...v, target, described: model.describe(target) };
     }
   }
-  const candidates = ('candidates' in r ? r.candidates ?? [] : []).flatMap((c, i) => { const v = valued(c, `response.candidates[${i}]`); return v ? [v] : []; });
+  // Candidates are references, like every number (README §3): what the options show is declared once.
+  const candidates = ('candidates' in r ? r.candidates ?? [] : []).flatMap((c, i) => {
+    const v = valued(c, `response.candidates[${i}]`);
+    if (v && v.expr.t !== 'ref') { p(`response.candidates[${i}]`, 'candidate_not_ref', 'A candidate names one quantity or measure; declare it and list its name.'); return []; }
+    return v ? [v] : [];
+  });
   const distractors = ('distractors' in r ? r.distractors : []).flatMap((d, i) => { const v = valued(d.expr, `response.distractors[${i}].expr`); return v ? [{ ...v, tag: d.tag }] : []; });
   if ('on' in r && r.on !== null) {
     const s = model.structures.get(r.on);
@@ -163,20 +166,22 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   };
   const reveals = new Map([...viewed].map(([sid, view]) => [sid, view.reveals(model.structures.get(sid)!.roles, askedIn(sid))]));
   const answerForm = isAnswerForm(r.form);
-  // The ask's support: everything its value is computed from, and the structures those belong to.
-  // Candidates belong to the question too. A figure or a number outside it is not part of the math asked.
-  const supportKeys = new Set<string>(), supportStructures = new Set<string>();
+  // The ask's support: everything its value is computed from (candidates belong to the question too).
+  // A structure is part of the math asked when one of its measures is in the support, or it binds the
+  // asked or a candidate quantity itself; sharing an input is not enough (a decoy figure). A figure or
+  // a number outside that is not part of the math asked.
+  const supportKeys = new Set<string>(), relevant = new Set<string>();
   const support = (t: Target) => {
     if (supportKeys.has(t.key)) return;
     supportKeys.add(t.key);
-    if (t.kind === 'measure') supportStructures.add(t.structure);
-    else for (const b of model.bindings.get(t.id) ?? []) supportStructures.add(b.structure);
+    if (t.kind === 'measure') relevant.add(t.structure);
     for (const src of model.sources(t)) support(src);
   };
-  const candidateTargets = candidates.flatMap(c => { if (c.expr.t !== 'ref') return []; const t = model.target(c.expr.path); return t.ok ? [t.value] : []; });
-  if (ask) support(ask.target);
-  candidateTargets.forEach(support);
-  const relevant = new Set<string>([...supportStructures, ...('on' in r && r.on ? [r.on] : []), ...(r.form === 'tap' && r.on === null ? viewed.keys() : [])]);
+  const anchor = (t: Target) => { if (t.kind === 'quantity') for (const b of model.bindings.get(t.id) ?? []) relevant.add(b.structure); };
+  const candidateTargets = candidates.map(c => (model.target((c.expr as Extract<Expr, { t: 'ref' }>).path) as { ok: true; value: Target }).value);
+  for (const t of [...(ask ? [ask.target] : []), ...candidateTargets]) { support(t); anchor(t); }
+  if ('on' in r && r.on) relevant.add(r.on);
+  if (r.form === 'tap' && r.on === null) for (const sid of viewed.keys()) relevant.add(sid);
   for (const sid of viewed.keys()) if (!relevant.has(sid)) p(`prompt`, 'view_unrelated', `The view of ${sid} is not part of the math asked: the ask is not computed from it.`);
   /** May the prompt or a hint print this value? Only what the math asked uses, or a label of a figure that is part of it. */
   const mayReveal = (t: Target) => supportKeys.has(t.key)
@@ -199,6 +204,8 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       return !!v && compare(v.q, moved) === 0;
     });
   };
+  // Candidate forms: the prompt prints every candidate or none, and a hint prints none, so prose can
+  // never single out the correct option (the options show them all anyway).
   const candidateKeys = new Set(candidateTargets.map(t => t.key));
   const revealedCandidates = new Set<string>();
 
@@ -234,10 +241,10 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       if (attr === 'noun' || attr === 'unit') return fail('answer_inflected', `{{${ph.path.join('.')}}} is inflected for the answer's value; use .one or .other.`);
     } else if (printed) {
       if (!mayReveal(t.value)) return fail('extraneous', `{{${ph.path.join('.')}}} prints a value the question does not use; every number shown must be part of the math asked.`);
-      // In the prompt a candidate may be named among the others (the options show them all anyway); never in a hint.
-      const listed = scope === 'prompt' && candidateKeys.has(key);
-      if (listed) revealedCandidates.add(key);
-      if (answerForm && !listed && statesAnswer(t.value, described)) return fail('answer_stated', `{{${ph.path.join('.')}}} states the answer: it is computed from the model and equals it, or it is the same named quantity with the same value.`);
+      const candidate = candidateKeys.has(key);
+      if (candidate && scope === 'hint') return fail('candidate_in_hint', `{{${ph.path.join('.')}}} is one of the options; a hint never names an option.`);
+      if (candidate) revealedCandidates.add(key);
+      else if (answerForm && statesAnswer(t.value, described)) return fail('answer_stated', `{{${ph.path.join('.')}}} states the answer: it is computed from the model and equals it, or the answer is exactly this given.`);
     }
     if (scope === 'prompt' && VALUE_BEARING.has(attr)) promptShown.add(key);
     // Grades K–2 name shares in words ("one half", "a third of"); fraction notation starts in grade 3 (CCSS).
@@ -297,10 +304,6 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
           if (shown && (shown.key === t.key || statesAnswer(shown, model.describe(shown)))) p('response.ask', 'answer_shown', `The ${s.wire.show} view of ${sid} prints ${sid}.${name}, which states the answer.`);
         }
       }
-      // The prompt may name the correct option only among all of them, never on its own.
-      const correct = candidates.filter(c => sameValue(c.value, ask.value)).flatMap(c => c.expr.t === 'ref' ? [c.expr.path.join('.')] : []);
-      const singled = candidateTargets.some(ct => revealedCandidates.has(ct.key) && sameValue(model.describe(ct).value, ask.value)) && candidateTargets.some(ct => !revealedCandidates.has(ct.key));
-      if (singled) p('response.candidates', 'answer_singled_out', `The prompt names the correct option (${correct.join(', ')}) without naming every option.`);
       const countable = t.kind === 'quantity' && (model.bindings.get(t.id) ?? []).some(b => reveals.get(b.structure)?.[b.role] === 'countable');
       if (t.kind === 'quantity' && model.isGiven(t.id) && !countable)
         p('response.ask', 'ask_asserted', `${t.key} is a value the model states outright and no view makes countable, so the key would be asserted, not computed; ask a measure or a derived quantity.`);
@@ -309,6 +312,9 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       p('response.ask', 'target_not_given', `${r.form} acts toward ${t.key}, but the prompt never states it; name it with a placeholder.`);
     }
   }
+
+  if (revealedCandidates.size && revealedCandidates.size !== candidateKeys.size)
+    p('response.candidates', 'candidates_partial', 'The prompt names some options but not all; name every option or none, so the prose cannot single one out.');
 
   // Everything declared is used somewhere.
   for (const [, q] of model.quantities) for (const path of refsOf(q.expr)) used.add(path[0]!);
