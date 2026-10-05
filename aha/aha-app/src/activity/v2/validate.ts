@@ -2,9 +2,8 @@
  * Activity Spec v2 validation (README §11): L0 shape, L1 model, L2 render feasibility. An invalid
  * activity is dropped, never repaired. Every rejection is a Problem with a stable code.
  *
- * L1 here covers the model, the prose, the views and the reveal rule. Response semantics that need
- * the key (the answer fits the form, distractor rules, computed uniqueness) are added by
- * response.ts.
+ * L1 covers the model, the prose, the views and the reveal rule, and ends by compiling the response
+ * (response.ts): the key fits the form, distractor rules evaluate, uniqueness is computed.
  */
 import { getSkill } from '../../learning/curriculum';
 import { extractJsonObject } from '../spec';
@@ -14,6 +13,7 @@ import { parseTempl, proseIssues, renderTempl, type Placeholder, type Templ } fr
 import { bindModel, problem, type Model, type Problem, type Target } from './model';
 import { BANDS, FORM_GRADES, gradeLabel, gradeNum, inRange, isAnswerForm, rangeLabel, type AskTarget, type Band, type Drawing, type Reveal, type ViewDef } from './registry';
 import { bandWire, type WireActivity, type WireBlock } from './wire';
+import { compileResponse, type CompiledResponse } from './response';
 
 export interface ValidateOptions {
   /** The band whose schema the request carried. */
@@ -25,7 +25,8 @@ export interface ValidateOptions {
 export type RenderedBlock = { type: 'text'; text: string } | { type: 'math'; tex: string } | { type: 'view'; of: string };
 /** The ask, parsed and valued; `target` is set when it is a single reference. */
 export interface Ask { expr: Expr; value: Value; target: Target | null; described: Described }
-export interface CheckedActivity {
+/** Everything validation establishes before the response is compiled. */
+export interface CheckedCore {
   wire: WireActivity;
   grade: number;
   band: Band;
@@ -38,6 +39,10 @@ export interface CheckedActivity {
   drawings: Map<string, Drawing>;
   /** What each viewed structure reveals (README §7). */
   reveals: Map<string, Readonly<Record<string, Reveal>>>;
+}
+export interface CheckedActivity extends CheckedCore {
+  /** The key, computed; the response compiled to the grading IR (response.ts). */
+  response: CompiledResponse;
 }
 export type Validation = { ok: true; activity: CheckedActivity } | { ok: false; problems: Problem[] };
 
@@ -156,6 +161,8 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   const answerForm = isAnswerForm(r.form);
 
   // Templates: parse, closed-list rules, placeholders under the policy, render.
+  // Candidates are printed as the options anyway, so naming one in the prose leaks nothing.
+  const candidateKeys = new Set(candidates.flatMap(c => { if (c.expr.t !== 'ref') return []; const t = model.target(c.expr.path); return t.ok ? [t.value.key] : []; }));
   const promptShown = new Set<string>();
   const used = new Set<string>();
   type Scope = 'prompt' | 'hint' | 'explanation';
@@ -184,7 +191,7 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     if (masked) {
       if (VALUE_BEARING.has(attr)) return { ok: true, value: 'mask' };
       if (attr === 'noun' || attr === 'unit') return fail('answer_inflected', `{{${ph.path.join('.')}}} is inflected for the answer's value; use .one or .other.`);
-    } else if (scope !== 'explanation' && answerForm && ask && VALUE_BEARING.has(attr) && describedEqual(described, ask.described)) {
+    } else if (scope !== 'explanation' && answerForm && ask && VALUE_BEARING.has(attr) && !candidateKeys.has(t.value.key) && describedEqual(described, ask.described)) {
       return fail('answer_stated', `{{${ph.path.join('.')}}} states a quantity equal to the answer (same kind, noun and value).`);
     }
     if (scope === 'prompt' && VALUE_BEARING.has(attr)) promptShown.add(t.value.key);
@@ -272,7 +279,11 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   }
   if (problems.length) return { ok: false, problems };
 
-  return { ok: true, activity: { wire: a, grade, band: options.band, model, ask, candidates, distractors, rendered: { prompt, hints, explanation }, drawings, reveals } };
+  const core: CheckedCore = { wire: a, grade, band: options.band, model, ask, candidates, distractors, rendered: { prompt, hints, explanation }, drawings, reveals };
+  // The key fits the form, distractor rules evaluate, uniqueness is computed (README §8).
+  const compiled = compileResponse(core, locale);
+  if (!compiled.ok) return { ok: false, problems: compiled.issues.map(i => ({ layer: 'L1' as const, path: i.path, code: i.code, message: i.message })) };
+  return { ok: true, activity: { ...core, response: compiled.value } };
 }
 
 export interface BatchValidation { accepted: CheckedActivity[]; rejected: { index: number; problems: Problem[] }[]; errors: string[] }

@@ -6,10 +6,10 @@
  * "rectangle" over a circle (live failure 2), and a tap over equal parts is computed to be
  * ill-posed.
  */
-import { rational } from '../../../learning/rational';
+import { multiply, rational } from '../../../learning/rational';
 import type { Roles, StructureDef, ViewDef } from '../registry';
 import { issue } from '../registry';
-import type { Value } from '../quantity';
+import { formatPlain, type Value } from '../quantity';
 import { n, req, within } from './common';
 
 type R = 'parts' | 'selected' | 'wholes';
@@ -26,10 +26,19 @@ const partRegions = (r: Roles<R>) => {
   const p = n(r.parts), unit = fractionValue(1n, BigInt(p));
   return Array.from({ length: p * wholesOf(r) }, (_, i) => ({ id: `part${i + 1}`, value: unit, label: `Part ${i + 1}` }));
 };
+/** The tick or part a target fraction lands on: target × parts must be a whole number within the drawing. */
+function landing(r: Roles<R>, target: Value, verb: string, lo: number): { total: number; at: number } | ReturnType<typeof issue> {
+  if (r.selected) return issue(verb === 'shade' ? 'shade_preshaded' : 'place_premarked', `To ${verb} ${formatPlain(target.q)}, the view must start empty: set selected to null.`);
+  const p = n(r.parts), total = p * wholesOf(r);
+  const at = multiply(target.q, rational(BigInt(p)));
+  if (at.d !== 1n || Number(at.n) < lo || Number(at.n) > total) return issue(verb === 'shade' ? 'shade_unreachable' : 'place_unreachable', `${formatPlain(target.q)} does not land on ${verb === 'shade' ? 'a whole number of the parts' : 'a tick'} of a view with ${p} parts per whole and ${wholesOf(r)} whole(s).`);
+  return { total, at: Number(at.n) };
+}
 function areaView(model: 'area' | 'circle' | 'bar', noun: string, grades: readonly [number, number], draws: string): ViewDef<R> {
   return {
     grades, accepts: ['shade', 'tap'], draws, noun: () => noun,
     reveals: partsReveal, regions: partRegions,
+    shade(r, target) { const l = landing(r, target, 'shade', 1); return 'code' in l ? l : { parts: l.total, target: l.at }; },
     lower: r => ({ type: 'fraction_model', model, parts: n(r.parts), shaded: n(r.selected), ...(wholesOf(r) > 1 ? { wholes: wholesOf(r) } : {}) }),
   };
 }
@@ -80,6 +89,7 @@ export const fraction: StructureDef<'fraction', R, V> = {
       grades: [3, 5], accepts: ['place'], draws: 'a number line from 0 to wholes with a tick at every part, whole numbers labeled; a point at selected/parts when selected is set',
       noun: () => 'number line',
       reveals: () => ({ parts: 'countable', selected: 'countable', wholes: 'shown', fraction: 'countable', complement: 'countable', unit: 'countable' }),
+      place(r, target) { const l = landing(r, target, 'place', 0); return 'code' in l ? l : { ticks: l.total, target: l.at }; },
       lower(r) {
         const p = n(r.parts), w = wholesOf(r);
         return { type: 'number_line', min: 0, max: w, step: 1 / p, labelEvery: p, ...(r.selected ? { marks: [{ value: n(r.selected) / p }] } : {}) };

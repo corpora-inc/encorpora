@@ -96,6 +96,10 @@ export interface ViewDef<R extends string> {
   reveals(roles: Roles<R>, ask: AskTarget): Readonly<Record<string, Reveal>>;
   /** Tappable regions and the value each stands for (README §8.3). */
   regions?(roles: Roles<R>): Region[];
+  /** For a view that hosts `shade`: how many equal parts it draws and how many make the target. */
+  shade?(roles: Roles<R>, target: Value): { parts: number; target: number } | Issue;
+  /** For a view that hosts `place`: its ticks (0…ticks) and the tick the target lands on. */
+  place?(roles: Roles<R>, target: Value): { ticks: number; target: number } | Issue;
   /** View-specific limits on the bound roles (unit squares need whole sides, a set has one whole). */
   fits?(roles: Roles<R>, grade: number): Issue[];
   lower(roles: Roles<R>, ctx: LowerCtx): Drawing;

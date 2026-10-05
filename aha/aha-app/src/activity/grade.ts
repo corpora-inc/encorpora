@@ -2,7 +2,7 @@
  * Deterministic local grading of Activity Spec v1 responses. Pure: same spec + response →
  * same result. The model never grades; it only authors a key the validator has checked.
  */
-import type { ActivitySpec, ResponseOf } from './spec';
+import type { ActivitySpec, ResponseOf, ResponseSpec } from './spec';
 import { gcd } from './spec';
 import { closeEnough, evaluate, ExprError, monomialSignatures, parseExpr, samplePoints } from './expr';
 
@@ -15,6 +15,23 @@ export type LearnerResponse =
   | { type: 'ordering'; order: number[] }
   | { type: 'plot_point'; x: number; y: number }
   | { type: 'tap_region'; region: string };
+
+/**
+ * App-internal response forms that Activity Spec v2 compiles to, beside v1's ResponseSpec. They are
+ * part of the grading IR only, never of the v1 wire schema (v2 README §8.1).
+ */
+/** Shade exactly `target` of the `parts` equal parts of a figure; any parts will do. */
+export interface ShadeSpec { type: 'shade'; figureId: string; parts: number; target: number }
+/** Put a point on tick `target` of a number line with ticks 0…`ticks`. */
+export interface PlaceSpec { type: 'place'; figureId: string; ticks: number; target: number }
+/** Tap the one figure, among several, that the question describes. */
+export interface TapViewSpec { type: 'tap_view'; figureIds: string[]; figureId: string }
+export type GradeSpec = ResponseSpec | ShadeSpec | PlaceSpec | TapViewSpec;
+export type AnyLearnerResponse =
+  | LearnerResponse
+  | { type: 'shade'; shaded: number[] }
+  | { type: 'place'; tick: number }
+  | { type: 'tap_view'; figureId: string };
 
 export interface GradeOutcome {
   correct: boolean;
@@ -108,7 +125,7 @@ export function expressionsEquivalent(key: string, learner: string, variables: r
   return compared >= 8;
 }
 
-function gradeExpression(spec: ActivitySpec, r: ResponseOf<'expression'>, response: LearnerResponse): GradeOutcome {
+function gradeExpression(seed: string, r: ResponseOf<'expression'>, response: LearnerResponse): GradeOutcome {
   if (response.type !== 'expression') return invalid('Expected an expression.');
   const text = response.value.trim();
   if (!text) return invalid('Type an expression.');
@@ -117,7 +134,7 @@ function gradeExpression(spec: ActivitySpec, r: ResponseOf<'expression'>, respon
   try { tree = parseExpr(text, r.variables); } catch (e) { return invalid(e instanceof ExprError ? e.message : 'Check the expression.', text); }
   const normalized = text.replace(/\s+/g, '');
   const domain: [number, number] = [r.domain?.min ?? -10, r.domain?.max ?? 10];
-  if (!expressionsEquivalent(r.answer, text, r.variables, domain, spec.id)) return { correct: false, normalized };
+  if (!expressionsEquivalent(r.answer, text, r.variables, domain, seed)) return { correct: false, normalized };
   if (r.form === 'expanded' || r.form === 'simplified') {
     const signatures = monomialSignatures(tree);
     if (!signatures) return { correct: false, normalized, misconceptionTag: 'not_expanded' };
@@ -131,12 +148,33 @@ function validIndices(values: unknown, length: number): values is number[] {
 }
 
 export function gradeActivity(spec: ActivitySpec, response: LearnerResponse): GradeOutcome {
-  const r = spec.response;
+  return gradeResponse(spec.response, response, spec.id);
+}
+
+/**
+ * Grade one response against a response spec of the grading IR. `seed` makes sampled expression
+ * equivalence deterministic (the activity id).
+ */
+export function gradeResponse(r: GradeSpec, response: AnyLearnerResponse, seed: string): GradeOutcome {
   if (!response || response.type !== r.type) return invalid('This answer does not match the question.');
   switch (r.type) {
-    case 'numeric': return gradeNumeric(r, response);
-    case 'fraction': return gradeFraction(r, response);
-    case 'expression': return gradeExpression(spec, r, response);
+    case 'shade': {
+      if (response.type !== 'shade' || !validIndices(response.shaded, r.parts)) return invalid('Tap the parts to shade them.');
+      const shaded = [...new Set(response.shaded)].sort((a, b) => a - b);
+      if (!shaded.length) return invalid('Tap the parts to shade them.');
+      const normalized = `shaded:${shaded.length}/${r.parts}`;
+      if (shaded.length === r.target) return { correct: true, normalized };
+      return { correct: false, normalized, ...(shaded.length === r.parts - r.target ? { misconceptionTag: 'counted_unshaded' } : {}) };
+    }
+    case 'place':
+      if (response.type !== 'place' || !Number.isInteger(response.tick) || response.tick < 0 || response.tick > r.ticks) return invalid('Put the point on the number line.');
+      return { correct: response.tick === r.target, normalized: `tick:${response.tick}/${r.ticks}` };
+    case 'tap_view':
+      if (response.type !== 'tap_view' || !r.figureIds.includes(response.figureId)) return invalid('Tap one of the pictures.');
+      return { correct: response.figureId === r.figureId, normalized: `figure:${response.figureId}` };
+    case 'numeric': return gradeNumeric(r, response as LearnerResponse);
+    case 'fraction': return gradeFraction(r, response as LearnerResponse);
+    case 'expression': return gradeExpression(seed, r, response as LearnerResponse);
     case 'multiple_choice': {
       if (response.type !== 'multiple_choice' || !validIndices([response.choice], r.options.length)) return invalid('Choose one option.');
       const option = r.options[response.choice]!;
@@ -169,8 +207,14 @@ export function gradeActivity(spec: ActivitySpec, response: LearnerResponse): Gr
 
 /** The correct response, for "show me" flows, tests and the gallery. */
 export function correctResponse(spec: ActivitySpec): LearnerResponse {
-  const r = spec.response;
+  return correctResponseFor(spec.response) as LearnerResponse;
+}
+/** The correct response for any response spec of the grading IR. */
+export function correctResponseFor(r: GradeSpec): AnyLearnerResponse {
   switch (r.type) {
+    case 'shade': return { type: 'shade', shaded: Array.from({ length: r.target }, (_, i) => i) };
+    case 'place': return { type: 'place', tick: r.target };
+    case 'tap_view': return { type: 'tap_view', figureId: r.figureId };
     case 'numeric': return { type: 'numeric', value: formatNumber(r.answer) };
     case 'fraction': return { type: 'fraction', numerator: String(r.numerator), denominator: String(r.denominator) };
     case 'expression': return { type: 'expression', value: r.answer };
