@@ -118,8 +118,31 @@ export const RESPONSE_FORMAT_UNSUPPORTED = 'response_format_unsupported';
 const FORMAT_REFUSAL_REASONS = [RESPONSE_FORMAT_UNSUPPORTED, 'unsupported', 'null'];
 /** Only an explicit `capabilities.structured_output: true` counts; absent (an older gateway) or anything else is false. */
 export function supportsStructuredOutput(catalog: Models, model: string): boolean {
-  const capabilities: unknown = catalog.models.find(m => m.id === model)?.capabilities;
-  return object(capabilities) && capabilities.structured_output === true;
+  return structuredCapability(catalog, model) === 'advertised';
+}
+/**
+ * Why the catalogue does or does not offer structured output for `model`, for the per-batch log. The native plugin
+ * passes `capabilities` through untyped, with snake_case keys and booleans unchanged (integers become decimal strings).
+ */
+export function structuredCapability(catalog: Models, model: string): 'advertised' | 'model_not_in_catalog' | 'capabilities_absent' | 'structured_output_absent' | 'structured_output_false' | 'structured_output_not_boolean' {
+  const entry = catalog.models.find(m => m.id === model);
+  if (!entry) return 'model_not_in_catalog';
+  const capabilities: unknown = entry.capabilities;
+  if (!object(capabilities)) return 'capabilities_absent';
+  if (!('structured_output' in capabilities)) return 'structured_output_absent';
+  if (capabilities.structured_output === true) return 'advertised';
+  return capabilities.structured_output === false ? 'structured_output_false' : 'structured_output_not_boolean';
+}
+/**
+ * One content-free line per activity batch: whether the request that goes out carries `response_format`, and if
+ * not, why. Never the schema, prompt or reply.
+ */
+export function describeBatchRequest(request: ChatRequest, why: string, phase: 'send' | 'recovery'): string {
+  const format = request.response_format;
+  const transport = 'stream'; // The native plugin offers only the streamed chat (start_chat/next_chat).
+  if (format?.type === 'json_schema')
+    return `batch ${phase}: structured=yes model=${request.model} response_format.type=json_schema strict=${format.json_schema.strict === true} json_schema.name=${format.json_schema.name} transport=${transport}`;
+  return `batch ${phase}: structured=no reason=${format ? `response_format.type_${format.type}` : why} model=${request.model} transport=${transport}`;
 }
 /**
  * A refusal of `response_format` itself, which Free2Z makes before any hold, charge or provider request:
@@ -169,7 +192,11 @@ export type ResumeContext =
  */
 export const OUTPUT_BUDGETS = ['1800', '2600'] as const;
 export type OutputBudget = typeof OUTPUT_BUDGETS[number];
-export interface TutorReply { text: string; operationId: string; context?: ResumeContext }
+export interface TutorReply {
+  text: string; operationId: string; context?: ResumeContext;
+  /** The request carried `response_format` (strict JSON Schema). Absent: the prompt-only request. */
+  structured?: true;
+}
 interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string; responseFormat?: SavedResponseFormat }
 interface Operation {
   id: string; key: string; subject: string; generation: string; createdAt: string;
@@ -293,7 +320,12 @@ export class Free2zTutor {
   /** Models whose gateway refused `response_format` despite advertising it; later batches skip straight to prompt-only. */
   private readonly formatRefused = new Set<string>();
   constructor(readonly client: SdkClient, private readonly journal: Journal, private readonly subject: string,
-    private readonly notice: (message: string) => void = message => diagnostics.add('warn', 'ai-structured', message)) {}
+    private readonly notice: (message: string) => void = message => diagnostics.add('warn', 'ai-structured', message),
+    /** The per-batch `structured=yes|no` line. A prompt-only batch is a warning: on a capable model it means lost validity. */
+    private readonly trace: (message: string, structured: boolean) => void = (message, structured) => {
+      diagnostics.add(structured ? 'info' : 'warn', 'ai-structured', message);
+      if (structured) console.info(`[aha:ai-structured] ${message}`);
+    }) {}
   private async ledger(): Promise<Ledger> { return readLedger(await this.journal.getJournal(SLOT)); }
   private async persist(ledger: Ledger): Promise<void> {
     ledger.version = JOURNAL_VERSION;
@@ -350,7 +382,7 @@ export class Free2zTutor {
   }
   private deliverable(op: Operation): boolean { return op.answerComplete === true && !!op.context && !op.consumed; }
   private replyValue(op: Operation): TutorReply {
-    return {text:op.text,operationId:op.id,...(op.context ? {context:structuredClone(op.context)} : {})};
+    return {text:op.text,operationId:op.id,...(op.context ? {context:structuredClone(op.context)} : {}),...(op.request.responseFormat ? {structured:true as const} : {})};
   }
   /** Completed content is retained until its lesson/session has durably accepted it. No service call. */
   async pendingReplies(): Promise<TutorReply[]> {
@@ -428,34 +460,39 @@ export class Free2zTutor {
       await this.archiveFinalized(ledger);
       const catalog = await this.client.models();
       if (!catalog.models.some(m => m.id === model)) throw new TutorServiceError('model_unavailable', 'Choose a currently available Free2Z model.');
-      const format = this.structuredFormat(catalog, model, context, structured);
+      const {format, why} = this.structuredFormat(catalog, model, context, structured);
       if (format && structured) {
-        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens); }
+        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens, why); }
         catch (error) {
           // Fall back only after a refusal of the format itself, which cost nothing, and only with nothing left unsettled.
           if (!isFormatRefusal(error) || ledger.operations.some(op => op.state !== 'finalized')) throw error;
           this.formatRefused.add(model);
           this.notice(`Free2Z refused response_format for ${model}; sent the prompt-only JSON request instead. The refusal cost nothing.`);
+          return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, 'format_refused');
         }
       }
-      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens);
+      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, why);
     } finally { this.active = undefined; this.busy = false; }
   }
-  /** The `response_format` to try first, or `undefined` for the prompt-only request. Never throws. */
-  private structuredFormat(catalog: Models, model: string, context: string, structured?: StructuredOutput): SavedResponseFormat | undefined {
-    if (!structured || !supportsStructuredOutput(catalog, model) || this.formatRefused.has(model)) return undefined;
+  /** The `response_format` to try first, or `undefined` for the prompt-only request, with the reason for the log. Never throws. */
+  private structuredFormat(catalog: Models, model: string, context: string, structured?: StructuredOutput): {format?: SavedResponseFormat; why: string} {
+    if (!structured) return {why: 'not_requested'};
+    const capability = structuredCapability(catalog, model);
+    if (capability !== 'advertised') return {why: capability};
+    if (this.formatRefused.has(model)) return {why: 'refused_earlier_this_session'};
     const format = {type: 'json_schema' as const, json_schema: {name: structured.name, schema: structured.schema, strict: true as const}};
     if (typeof structured.system !== 'string' || structured.system.length + context.length > MAX_CONTEXT_CHARS || !validResponseFormat(format)) {
       this.notice('The structured-output request is outside Free2Z limits; sent the prompt-only JSON request instead.');
-      return undefined;
+      return {why: 'outside_limits'};
     }
-    return structuredClone(format);
+    return {format: structuredClone(format), why: 'advertised'};
   }
   /** One fresh operation: estimate and admit, journal (with the exact format, if any), then send. */
   private async send(ledger: Ledger, session: Session, model: string, system: string, context: string, format: SavedResponseFormat | undefined,
-    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget): Promise<TutorReply> {
+    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget, why: string): Promise<TutorReply> {
     const messages: ChatRequest['messages'] = [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}];
     const request = chatRequest({model, messages, maxOutputTokens, ...(format ? {responseFormat: format} : {})});
+    if (savedContext?.kind === 'activities') this.trace(describeBatchRequest(request, why, 'send'), !!request.response_format);
     // No app-side ceiling: the user's own budget (if any) and balance bound the call, as Free2Z reports them.
     try { await this.admit(request, authorization.verifiedGrant.budget, {context: savedContext}); }
     catch (error) { throw format && formatRefusal(error) ? formatUnsupported() : error; }
@@ -485,6 +522,7 @@ export class Free2zTutor {
       this.verifyAuthorization(session, authorization);
       // The identical body, response_format included when the first send carried one: the key may be bound to it.
       const request = chatRequest(op.request);
+      if (op.context?.kind === 'activities') this.trace(describeBatchRequest(request, 'journaled_prompt_only', 'recovery'), !!request.response_format);
       // An opening journal entry may never have reached the gateway. A same-key call is potentially
       // billable, so re-prove affordability under today's grant, balance and budget remainder.
       await this.admit(request, authorization.verifiedGrant.budget, op);

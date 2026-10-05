@@ -200,9 +200,17 @@ export type ResponseType = ResponseSpec['type'];
 export type ResponseOf<T extends ResponseType> = Extract<ResponseSpec, { type: T }>;
 
 const KeyCheckSchema = z.union([
-  z.strictObject({ value: exprText(160).describe('Arithmetic that evaluates to the numeric/fraction answer, e.g. "3*4+2" or "3/4+1/8".') }),
+  z.strictObject({ value: exprText(160).describe('Arithmetic that evaluates to the numeric/fraction answer, e.g. "3*4+2" or "3/4+1/8". Numbers, + - * / ^ ( ), sqrt(), abs(), round(x) or round(x, decimals), min(a, b), max(a, b), pi.') }),
   z.strictObject({ x: exprText(80), y: exprText(80) }),
 ]);
+/**
+ * Which keyCheck each response type takes: `value` (arithmetic for the key), `point` ({x, y}), or none.
+ * The one table behind the semantic rule, the strict wire schema (schema.ts) and normalization.
+ */
+export const KEY_CHECK_FORM = {
+  numeric: 'value', fraction: 'value', plot_point: 'point',
+  expression: null, multiple_choice: null, multi_select: null, ordering: null, tap_region: null,
+} as const satisfies Record<ResponseType, 'value' | 'point' | null>;
 
 export const ActivitySpecSchema = z.strictObject({
   version: z.literal(1),
@@ -257,16 +265,50 @@ export function dropNullMembers(value: unknown): unknown {
   if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).filter(([, v]) => v !== null).map(([k, v]) => [k, dropNullMembers(v)]));
   return value;
 }
-
-export function validateActivitySpec(raw: unknown, options: ValidateOptions): SpecValidation {
+const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
+/**
+ * Maps the strict wire shape onto the validator's shape. It drops null members (absent optional fields)
+ * and moves `response.keyCheck` to the activity's `keyCheck`: the strict schema carries keyCheck inside the
+ * numeric, fraction and plot_point responses, so it is required exactly where the validator requires it
+ * (schema.ts). The move never overwrites: a keyCheck given in both places stays put, and the validator
+ * rejects the duplicate as an unknown response field. Nothing else changes.
+ */
+export function normalizeActivity(raw: unknown): unknown {
+  const value = dropNullMembers(raw);
+  if (!isRecord(value) || !isRecord(value.response) || !('keyCheck' in value.response) || 'keyCheck' in value) return value;
+  const { keyCheck, ...response } = value.response;
+  return { ...value, response, keyCheck };
+}
+/** zod's own wording for an unknown member reads "key: …", which the diagnostics scrubber redacts; name the fields instead. */
+function issueText(issue: z.core.$ZodIssue): string {
+  if (issue.code === 'unrecognized_keys') return `${formatPath(issue.path)}: unknown field(s) ${issue.keys.slice(0, 5).map(k => k.slice(0, 32)).join(', ')}`;
+  return `${formatPath(issue.path)}: ${issue.message}`;
+}
+/** Shape only: the size budget, normalization and the zod schema. No skill, figure-reference or arithmetic rules. */
+function parseShape(raw: unknown): { ok: true; spec: ActivitySpec } | { ok: false; errors: string[] } {
   const budget = withinShapeBudget(raw);
   if (budget) return { ok: false, errors: [budget] };
-  const input = dropNullMembers(raw);
+  const input = normalizeActivity(raw);
   if (JSON.stringify(input)?.length > MAX_JSON_CHARS) return { ok: false, errors: ['Activity is too large.'] };
   const parsed = ActivitySpecSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: parsed.error.issues.slice(0, 20).map(i => `${formatPath(i.path)}: ${i.message}`) };
-  const errors = semanticErrors(parsed.data, options);
-  return errors.length ? { ok: false, errors } : { ok: true, spec: parsed.data };
+  if (!parsed.success) return { ok: false, errors: parsed.error.issues.slice(0, 20).map(issueText) };
+  return { ok: true, spec: parsed.data };
+}
+/**
+ * The errors a strict JSON Schema could have prevented: the shape, plus where keyCheck is required, forbidden
+ * and in which form. Empty for any instance of the strict wire schema whose strings respect the length limits
+ * and text rules (the schema cannot express those); the property test in strictSchema.test.ts holds that.
+ */
+export function shapeErrors(raw: unknown, requireKeyCheck = true): string[] {
+  const shaped = parseShape(raw);
+  return shaped.ok ? keyCheckShapeErrors(shaped.spec, requireKeyCheck) : shaped.errors;
+}
+
+export function validateActivitySpec(raw: unknown, options: ValidateOptions): SpecValidation {
+  const shaped = parseShape(raw);
+  if (!shaped.ok) return shaped;
+  const errors = semanticErrors(shaped.spec, options);
+  return errors.length ? { ok: false, errors } : { ok: true, spec: shaped.spec };
 }
 
 /**
@@ -392,7 +434,8 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
     // Recovery runs only when the reply is not one parseable object, or when a damaged envelope
     // let extraction land on an inner activity. Valid JSON of the wrong shape stays strict.
     const looksLikeActivity = extracted.ok && !!extracted.value && typeof extracted.value === 'object' && 'version' in extracted.value && !('activities' in extracted.value);
-    if (extracted.ok && !looksLikeActivity) value = extracted.value;
+    // A bare activity is a batch of one, unless the text also names an "activities" array: then the envelope is damaged.
+    if (extracted.ok && (!looksLikeActivity || !/"activities"\s*:/.test(text))) value = extracted.value;
     else {
       const recovered = text.length <= 150000 ? recoverBatchItems(text) : null;
       if (!recovered?.items.some(i => i.ok)) return empty([extracted.ok ? 'Response is not valid JSON.' : extracted.error]);
@@ -417,6 +460,11 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
   }
   if (!value || typeof value !== 'object' || Array.isArray(value)) return empty(['Response must be a JSON object.']);
   const record = value as Record<string, unknown>;
+  // Prompt-only replies sometimes send one activity instead of the batch envelope: a batch of one, no rationale.
+  if (!('activities' in record) && !('rationale' in record) && 'version' in record) {
+    const single = validateActivities([record], options, '');
+    return { ...single, errors: [...single.errors, 'Reply was a single activity, not a batch; treated as a batch of one.'] };
+  }
   const extra = Object.keys(record).filter(k => k !== 'rationale' && k !== 'activities');
   if (extra.length) return empty([`Unknown field(s): ${extra.slice(0, 5).join(', ')}`]);
   const rationale = plain(600).safeParse(record.rationale);
@@ -584,27 +632,20 @@ export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck =
   if (spec.misconceptions && !unique(spec.misconceptions.map(m => m.tag))) errors.push('misconceptions: tags must be unique.');
 
   const r = spec.response;
-  const keyed = r.type === 'numeric' || r.type === 'fraction' || r.type === 'plot_point';
-  if (spec.keyCheck && !keyed) errors.push('keyCheck: only numeric, fraction and plot_point answers take a keyCheck.');
-  if (keyed && requireKeyCheck && !spec.keyCheck) errors.push('keyCheck: required for this answer type.');
+  errors.push(...keyCheckShapeErrors(spec, requireKeyCheck));
   switch (r.type) {
     case 'numeric': {
       const tol = (r.tolerance ?? 0) + 1e-9 * Math.max(1, Math.abs(r.answer));
       if ((r.misconceptionAnswers ?? []).some(m => Math.abs(m.answer - r.answer) <= tol)) errors.push('response: a misconception answer equals the correct answer.');
-      if (spec.keyCheck) {
-        if (!('value' in spec.keyCheck)) errors.push('keyCheck: numeric answers use { value }.');
-        else { const v = evalCheck(spec.keyCheck.value, 'keyCheck.value', errors); if (v !== null && Math.abs(v - r.answer) > tol) errors.push(`keyCheck: ${spec.keyCheck.value} = ${+v.toPrecision(12)}, but the answer key is ${r.answer}.`); }
-      }
+      // A keyCheck of the wrong form is reported by keyCheckShapeErrors.
+      if (spec.keyCheck && 'value' in spec.keyCheck) { const v = evalCheck(spec.keyCheck.value, 'keyCheck.value', errors); if (v !== null && Math.abs(v - r.answer) > tol) errors.push(`keyCheck: ${spec.keyCheck.value} = ${+v.toPrecision(12)}, but the answer key is ${r.answer}.`); }
       break;
     }
     case 'fraction': {
       const value = r.numerator / r.denominator;
       if ((r.misconceptionAnswers ?? []).some(m => m.numerator * r.denominator === r.numerator * m.denominator && (r.form !== 'exact' || (m.numerator === r.numerator && m.denominator === r.denominator)))) errors.push('response: a misconception answer equals the correct answer.');
       if (r.form === 'simplest' && gcd(Math.abs(r.numerator), r.denominator) !== 1) errors.push('response: a simplest-form key must be in lowest terms.');
-      if (spec.keyCheck) {
-        if (!('value' in spec.keyCheck)) errors.push('keyCheck: fraction answers use { value }.');
-        else { const v = evalCheck(spec.keyCheck.value, 'keyCheck.value', errors); if (v !== null && !closeEnough(v, value)) errors.push(`keyCheck: ${spec.keyCheck.value} ≠ ${r.numerator}/${r.denominator}.`); }
-      }
+      if (spec.keyCheck && 'value' in spec.keyCheck) { const v = evalCheck(spec.keyCheck.value, 'keyCheck.value', errors); if (v !== null && !closeEnough(v, value)) errors.push(`keyCheck: ${spec.keyCheck.value} ≠ ${r.numerator}/${r.denominator}.`); }
       break;
     }
     case 'expression': {
@@ -639,12 +680,9 @@ export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck =
       const snap = plotSnap(r, f);
       const gx = snapToGrid(r.x, snap.x, f.x.min, f.x.max), gy = snapToGrid(r.y, snap.y, f.y.min, f.y.max);
       if (gx === null || gy === null || Math.abs(gx - r.x) > tol || Math.abs(gy - r.y) > tol) errors.push(`response: the answer point is not reachable on the plotting grid (snap x ${snap.x}, y ${snap.y}); set snap or the axis step.`);
-      if (spec.keyCheck) {
-        if (!('x' in spec.keyCheck)) errors.push('keyCheck: plot_point answers use { x, y }.');
-        else {
-          const x = evalCheck(spec.keyCheck.x, 'keyCheck.x', errors), y = evalCheck(spec.keyCheck.y, 'keyCheck.y', errors);
-          if (x !== null && y !== null && (Math.abs(x - r.x) > tol || Math.abs(y - r.y) > tol)) errors.push(`keyCheck: (${spec.keyCheck.x}, ${spec.keyCheck.y}) ≠ (${r.x}, ${r.y}).`);
-        }
+      if (spec.keyCheck && 'x' in spec.keyCheck) {
+        const x = evalCheck(spec.keyCheck.x, 'keyCheck.x', errors), y = evalCheck(spec.keyCheck.y, 'keyCheck.y', errors);
+        if (x !== null && y !== null && (Math.abs(x - r.x) > tol || Math.abs(y - r.y) > tol)) errors.push(`keyCheck: (${spec.keyCheck.x}, ${spec.keyCheck.y}) ≠ (${r.x}, ${r.y}).`);
       }
       break;
     }
@@ -659,6 +697,15 @@ export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck =
     }
   }
   return errors;
+}
+/** Where keyCheck is required or forbidden, and its form, from KEY_CHECK_FORM. */
+function keyCheckShapeErrors(spec: ActivitySpec, requireKeyCheck: boolean): string[] {
+  const form = KEY_CHECK_FORM[spec.response.type];
+  if (!form) return spec.keyCheck ? ['keyCheck: only numeric, fraction and plot_point answers take a keyCheck.'] : [];
+  if (!spec.keyCheck) return requireKeyCheck ? ['keyCheck: required for this answer type.'] : [];
+  if (form === 'value' && !('value' in spec.keyCheck)) return [`keyCheck: ${spec.response.type} answers use { value }.`];
+  if (form === 'point' && !('x' in spec.keyCheck)) return ['keyCheck: plot_point answers use { x, y }.'];
+  return [];
 }
 /**
  * The plotting grid: multiples of `snap` (counted from 0) inside [lo, hi]. Taps, arrow keys and
