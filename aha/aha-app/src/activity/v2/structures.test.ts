@@ -67,8 +67,10 @@ describe('equal_groups', () => {
   it('draws jumps on a number line and hides their size when it is asked', () => {
     const line = drawn('equal_groups', 'jumps', r) as Extract<DrawFigure, { type: 'number_line' }>;
     assert.deepEqual(line.jumps, [{ from: 0, to: 4, label: '+4' }, { from: 4, to: 8, label: '+4' }, { from: 8, to: 12, label: '+4' }]);
+    assert.equal(line.labelEvery, 4, 'labels on the landing points');
     const asked = drawn('equal_groups', 'jumps', r, 3, ['size']) as Extract<DrawFigure, { type: 'number_line' }>;
     assert.ok(asked.jumps!.every(j => j.label === undefined));
+    assert.equal(asked.labelEvery, 12, 'only the ends are labeled when the size is asked');
     assert.equal(STRUCTURES.equal_groups.views.jumps.reveals(r, new Set(['size'])).size, 'countable');
     assert.equal(STRUCTURES.equal_groups.views.jumps.reveals(r, NOTHING_ASKED).total, 'shown');
   });
