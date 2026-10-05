@@ -74,6 +74,10 @@ test('capability advertised by the plugin (snake_case, boolean) -> the start_cha
   assert.equal(payload.response_format.json_schema.name, 'aha_activity_batch');
   assert.equal(payload.response_format.json_schema.strict, true);
   assert.deepEqual(payload.response_format.json_schema.schema, JSON.parse(JSON.stringify(prompt.responseFormat.json_schema.schema)), 'the real strict schema, unchanged');
+  // zuu#1132: member order is the order OpenAI emits reply keys in, so the SDK must hand the plugin the app's order
+  // (string equality, unlike deepEqual). The Rust test reads the same fixture bytes and checks the native side.
+  assert.equal(JSON.stringify(payload.response_format.json_schema.schema), JSON.stringify(prompt.responseFormat.json_schema.schema), 'schema member order unchanged through the SDK');
+  assert.deepEqual(Object.keys(payload.response_format.json_schema.schema.properties), ['rationale', 'activities'], 'not alphabetical, so a sorting layer would show');
   assert.equal(payload.max_output_tokens, '2600', 'decimal string, as the plugin expects');
   assert.equal(payload.messages[0].content[0].text, 'S', 'the structured system prompt');
   assert.ok(commands.filter(c => c.command === 'estimate').every(c => c.payload.response_format?.json_schema?.strict === true), 'estimates price the same body');
@@ -86,13 +90,14 @@ test('capability advertised by the plugin (snake_case, boolean) -> the start_cha
 });
 
 test('without the capability the payload has no response_format, and the log says why', async () => {
+  // The SDK types the catalogue (zuu #1137): an absent `capabilities` decodes as `{}`, so it reads as absent.
   const cases: [unknown[], string][] = [
-    [[pluginModel('gpt-4o')], 'capabilities_absent'],
+    [[pluginModel('gpt-4o')], 'structured_output_absent'],
     [[pluginModel('gpt-4o', { vision: false, tools: false, reasoning: false })], 'structured_output_absent'],
     [[pluginModel('gpt-4o', { structured_output: false })], 'structured_output_false'],
+    [[pluginModel('gpt-4o', { structured_output: null })], 'structured_output_absent'],
     [[pluginModel('gpt-4o', { structuredOutput: true })], 'structured_output_absent'],
-    [[pluginModel('gpt-4o', { structured_output: 'true' })], 'structured_output_not_boolean'],
-    [[pluginModel('gpt-4o'), pluginModel('gpt-4o-mini', { structured_output: true })], 'capabilities_absent'],
+    [[pluginModel('gpt-4o'), pluginModel('gpt-4o-mini', { structured_output: true })], 'structured_output_absent'],
   ];
   for (const [models, reason] of cases) {
     const { reply, commands, traces } = await runBatch(models);
@@ -102,4 +107,32 @@ test('without the capability the payload has no response_format, and the log say
     assert.equal(reply.structured, undefined);
     assert.deepEqual(traces, [{ structured: false, message: `batch send: structured=no reason=${reason} model=gpt-4o transport=stream` }]);
   }
+});
+
+test('a non-boolean capability fails the catalogue read in the SDK: no estimate, no journal, no paid call', async () => {
+  const { bridge, commands } = pluginBridge([pluginModel('gpt-4o', { structured_output: 'true' })]);
+  const client = new Client(new NativeTransport(bridge));
+  let saved: unknown;
+  const journal: Journal = { getJournal: async () => structuredClone(saved), putJournal: async (key, v) => { if (key === 'aha-billing-v1') saved = structuredClone(v); } };
+  const tutor = new Free2zTutor(client, journal, 'adult', () => {}, () => {});
+  const policy = { subject: 'adult', clientId: 'aha-client' };
+  await assert.rejects(tutor.reply('gpt-4o', 'full prompt', 'U', { ...policy, verifiedGrant: await verifyPaidGrant(client, policy) }, batch, '2600', structured), { code: 'invalid_response' });
+  assert.deepEqual(commands, []);
+  assert.equal((saved as { operations?: unknown[] } | undefined)?.operations?.length ?? 0, 0);
+});
+
+test('native refusal details reach the app: required 2Z on a top-up refusal at the estimate', async () => {
+  const { bridge, commands } = pluginBridge([pluginModel('gpt-4o', { structured_output: true })]);
+  // tauri-plugin-f2z d4d58ea3 passes the documented `details` with integers as decimal strings.
+  (bridge as unknown as Record<string, unknown>).estimate = async () => { throw { code: 'insufficient_balance', status: 402, retryable: false,
+    details: { reason: 'insufficient_balance', required_2z: '6', available_milli_2z: '1500' } }; };
+  const client = new Client(new NativeTransport(bridge));
+  let saved: unknown;
+  const journal: Journal = { getJournal: async () => structuredClone(saved), putJournal: async (key, v) => { if (key === 'aha-billing-v1') saved = structuredClone(v); } };
+  const tutor = new Free2zTutor(client, journal, 'adult', () => {}, () => {});
+  const policy = { subject: 'adult', clientId: 'aha-client' };
+  await assert.rejects(tutor.reply('gpt-4o', 'full prompt', 'U', { ...policy, verifiedGrant: await verifyPaidGrant(client, policy) }, batch, '2600', structured),
+    (e: any) => e.code === 'insufficient_balance' && e.required2z === 6n);
+  assert.equal(commands.filter(c => c.command === 'start_chat').length, 0);
+  assert.equal((saved as { operations?: unknown[] } | undefined)?.operations?.length ?? 0, 0);
 });

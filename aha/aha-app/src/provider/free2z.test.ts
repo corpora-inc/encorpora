@@ -11,19 +11,22 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
   let cap: bigint | null | undefined = 100000n; let available: bigint | undefined = 500000n; let hold = 1n; let cancelled = 0;
   let grantPatch: Partial<Grant> & Record<string, unknown> = {};
   let models: Record<string, unknown>[] = [{id:'verified-model'}];
-  const estimates: ChatRequest[] = []; let estimateTokens: bigint | undefined; let estimateError: unknown; let chatError: unknown;
+  const estimates: ChatRequest[] = []; let estimateTokens: bigint | undefined; let estimateError: unknown; let chatError: unknown; let preflights = 0;
   const journal: Journal = {getJournal:async()=>structuredClone(value),putJournal:async(key,v)=>{if(key==='aha-billing-v1')value=structuredClone(v);}};
   const client: SdkClient = {
     session:async()=>activeSession, signIn:async()=>session, signOut:async()=>({revoked:true,generation:'two'}),
     balance:async()=>({available_milli_2z:available ?? 500000n,held_milli_2z:0n,balance_milli_2z:available ?? 500000n,debt_milli_2z:0n,as_of:new Date().toISOString()}),
     grant:async()=>({...baseGrant(),...grantPatch}) as Grant,
-    models:async()=>({models:structuredClone(models),catalog_version:1n}) as any,
+    // As the typed SDK decodes the catalogue: `capabilities` and `prices` are always objects.
+    models:async()=>({models:structuredClone(models).map(m=>({capabilities:{},prices:{},...m})),catalog_version:1n}) as any,
     estimate:async(request)=>{
       estimates.push(request);
       if(estimateError)throw estimateError;
       return {model:'verified-model',input_tokens:10n,max_output_tokens:estimateTokens??request.max_output_tokens??0n,hold_2z:hold,
       ...(available === undefined ? {} : {available_milli_2z:available}),...(cap === undefined ? {} : {cap_remaining_milli_2z:cap})};
     },
+    // The real SDK's preflight over this fake estimate (zuu d4d58ea3): a test that patches `estimate` patches it too.
+    preflight(request){preflights++;return Client.prototype.preflight.call(this as unknown as Client,request);},
     call:async(id)=>({call_id:id,status:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}),
     chat:async(request,options)=>{
       assert.ok((value as any).operations.length, 'journal must precede potentially billable invocation');
@@ -38,7 +41,7 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
     setEstimateTokens:(v:bigint|undefined)=>{estimateTokens=v;},setEstimateError:(e:unknown)=>{estimateError=e;},setChatError:(e:unknown)=>{chatError=e;},
     setCap:(v:bigint|null|undefined)=>{cap=v;},setAvailable:(v:bigint|undefined)=>{available=v;},setHold:(v:bigint)=>{hold=v;},
     setGrant:(patch:Partial<Grant> & Record<string, unknown>)=>{grantPatch=patch;},
-    setModels:(v:Record<string, unknown>[])=>{models=v;},
+    setModels:(v:Record<string, unknown>[])=>{models=v;},preflights:()=>preflights,
     setSession:(v:Session)=>{activeSession=v;},setValue:(v:unknown)=>{value=structuredClone(v);},getValue:()=>value as any,cancelled:()=>cancelled};
 }
 /** A live authorization built the way the controller builds it: from the real grant adapter. */
@@ -565,6 +568,47 @@ test('a refusal at the send-boundary estimate releases the never-sent journal en
  assert.equal(f.calls.length,0);assert.deepEqual(f.getValue().operations[0].charge,{state:'released',charged2z:'0'});
  assert.deepEqual(await f.tutor.inspectPending(),[]);
 });
+test('admission goes through the SDK preflight at journal time and again at the send boundary',async()=>{
+ const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+ assert.equal(f.preflights(),2);assert.equal(f.estimates.length,2,'each preflight is one strict estimate');
+ const g=fixture([]);await assert.rejects(g.tutor.reply('verified-model','p','c',g.authorization),{code:'interrupted'});
+ const before=g.preflights();await g.tutor.recover(g.getValue().operations[0].id,g.authorization).catch(()=>{});
+ assert.ok(g.preflights()>before,'same-key recovery is preflighted too');
+});
+test('refusals carry the required 2Z when Free2Z reports it: estimate (preflight), chat, and the local hold check',async()=>{
+ // Preflight: needs_top_up with details.required_2z (native details reach the SDK as bigint, zuu #1136).
+ const a=fixture();a.setEstimateError(new SdkError('insufficient_balance',{status:402,details:{reason:'insufficient_balance',required_2z:5n,available_milli_2z:400n}}));
+ await assert.rejects(a.tutor.reply('verified-model','p','c',a.authorization,batchContext,'2600'),(e:any)=>e.code==='insufficient_balance'&&e.required2z===5n);
+ assert.equal(a.calls.length,0);assert.equal(a.getValue()?.operations?.length??0,0,'nothing journaled');
+ // Preflight: needs_budget. zuu#1145: cap_exceeded lacks resets_at/cap_2z/cap_period; nothing depends on them.
+ const b=fixture();b.setEstimateError(new SdkError('cap_exceeded',{status:403,details:{reason:'cap_exceeded',required_2z:5n,cap_remaining_milli_2z:100n}}));
+ await assert.rejects(b.tutor.reply('verified-model','p','c',b.authorization,batchContext,'2600'),{code:'cap_exceeded'});
+ assert.equal(b.calls.length,0);assert.equal(b.getValue()?.operations?.length??0,0);
+ // Chat refusal with details: released/0, amount kept.
+ const c=fixture();c.setChatError(new SdkError('insufficient_balance',{status:402,details:{reason:'insufficient_balance',required_2z:9n}}));
+ await assert.rejects(c.tutor.reply('verified-model','p','c',c.authorization,batchContext,'2600'),(e:any)=>e.code==='insufficient_balance'&&e.required2z===9n);
+ assert.deepEqual(c.getValue().operations[0].charge,{state:'released',charged2z:'0'});
+ const d=fixture();d.setChatError(new SdkError('cap_exceeded',{status:403,details:{reason:'cap_exceeded'}}));
+ await assert.rejects(d.tutor.reply('verified-model','p','c',d.authorization,batchContext,'2600'),{code:'cap_exceeded'});
+ assert.deepEqual(d.getValue().operations[0].charge,{state:'released',charged2z:'0'});
+ // The local check: the hold is what the next set needs.
+ const e=fixture();e.setHold(4n);e.setAvailable(3000n);
+ await assert.rejects(e.tutor.reply('verified-model','p','c',e.authorization,batchContext,'2600'),(x:any)=>x.code==='insufficient_balance'&&x.required2z===4n);
+ // An odd amount is dropped, never shown.
+ const g=fixture();g.setEstimateError(new SdkError('insufficient_balance',{status:402,details:{required_2z:'5'}}));
+ await assert.rejects(g.tutor.reply('verified-model','p','c',g.authorization),(x:any)=>x.code==='insufficient_balance'&&x.required2z===undefined);
+});
+test('a refusal during same-key recovery stays uncertain even with refusal details',async()=>{
+ const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'interrupted'});
+ const id=f.getValue().operations[0].id;
+ for(const where of ['estimate','chat']){
+  const err=new SdkError('cap_exceeded',{status:403,details:{reason:'cap_exceeded',required_2z:3n}});
+  if(where==='estimate')f.setEstimateError(err);else f.setChatError(err);
+  await assert.rejects(f.tutor.recover(id,f.authorization),{code:'cap_exceeded'});
+  assert.equal(f.getValue().operations[0].state,'interrupted',where);assert.notEqual(f.getValue().operations[0].charge?.state,'released',where);
+  f.setEstimateError(undefined);f.setChatError(undefined);
+ }
+});
 test('the native transport drops details: a bare 402/403 with the gateway refusal code is still a zero-charge release',async()=>{
  for(const [status,code] of [[402,'insufficient_balance'],[403,'cap_exceeded']] as const){
   const f=fixture();f.setChatError(new SdkError(code,{status}));
@@ -602,8 +646,9 @@ function structuredFixture(events?: ChatEvent[]) {
 test('capability detection: only an explicit capabilities.structured_output true for the chosen model',()=>{
   const catalog=(models:unknown[])=>({catalog_version:1n,models}) as any;
   assert.equal(supportsStructuredOutput(catalog(capable),'verified-model'),true);
-  for(const caps of [undefined,null,{},{structured_output:false},{structured_output:'true'},{structured_output:1},[true]])
-    assert.equal(supportsStructuredOutput(catalog([{id:'verified-model',...(caps===undefined?{}:{capabilities:caps})}]),'verified-model'),false,JSON.stringify(caps));
+  // Shapes the typed SDK catalogue can carry (zuu #1137): `capabilities` is always an object of booleans.
+  for(const caps of [{},{structured_output:false},{tools:true}])
+    assert.equal(supportsStructuredOutput(catalog([{id:'verified-model',capabilities:caps,prices:{}}]),'verified-model'),false,JSON.stringify(caps));
   assert.equal(supportsStructuredOutput(catalog(capable),'another-model'),false,'another model\'s flag never applies');
 });
 test('a format refusal is a 400 (or pre-send) invalid_request with no call: details dropped, or the unsupported reasons',()=>{
@@ -808,4 +853,13 @@ test('model choice: a reply names the model it was sent to; same-key recovery re
   await g.tutor.acknowledgeReply(reply.operationId);
   await g.tutor.reply('model-a','p','c',g.authorization);
   assert.deepEqual(await g.tutor.batchUsage(),[{operationId:reply.operationId,model:'model-b',charged2z:2n}],'only activity batches, with the settled charge');
+});
+test('a request too large for the model (preflight too_large) is refused before any journal write',async()=>{
+ for(const err of [new SdkError('context_length_exceeded',{status:400,details:{input_tokens_estimate:9000n,context_window:8192n}}),
+   new SdkError('invalid_request',{status:400,details:{field:'max_output_tokens',reason:'max_output_tokens_strict',model_max_output_tokens:2048n}})]){
+  const f=structuredFixture();f.setEstimateError(err);
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600',structured),{code:'too_large'});
+  assert.equal(f.calls.length,0);assert.equal(f.getValue()?.operations?.length??0,0,err.code);
+  assert.deepEqual(f.notices,[],'the strict-ceiling refusal is no longer mistaken for a format refusal now that details reach the app');
+ }
 });

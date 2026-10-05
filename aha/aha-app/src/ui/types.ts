@@ -91,6 +91,8 @@ export interface StudioProps {
     /** Approximate 2Z per batch of AI activities (last settled charge, else the last estimate's upper bound). */
     batchCost?: string;
     status?: string;
+    /** The last AI attempt was refused for this reason (zero cost): `raise_budget` also shows the Free2Z account link. */
+    refusal?: "top_up" | "raise_budget";
     purchaseAvailable?: boolean;
   };
   /** The AI model row in Settings (connected, once the catalogue has been read). Display only. */

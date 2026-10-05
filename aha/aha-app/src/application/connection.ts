@@ -6,8 +6,8 @@ import { diagnostics, type DiagnosticsLog } from '../diagnostics/log';
 export function learningError(error: unknown): string {
   if (error instanceof SdkError || error instanceof TutorServiceError) {
     const messages: Record<string, string> = {
-      insufficient_balance: 'Your Free2Z balance is too low for the next AI activities. You can add 2Z in Free2Z; nothing is added automatically.',
-      cap_exceeded: 'This app’s Free2Z budget is used up for now. You can change it in Free2Z; adding balance alone does not change it.',
+      insufficient_balance: `Not enough 2Z: top up in Free2Z.${needed(error)} The refusal cost nothing; nothing is added automatically.`,
+      cap_exceeded: 'App budget reached: raise it in Free2Z. Adding 2Z alone does not change it. The refusal cost nothing.',
       not_enough_2z: 'Not enough 2Z for the next set of activities. Nothing was charged.',
       ai_not_ready: 'Free2Z AI isn’t switched on for apps yet. Nothing was charged.',
       budget_pending: 'Free2Z is still setting up spending for this app. Nothing was charged.',
@@ -24,6 +24,7 @@ export function learningError(error: unknown): string {
       rate_limited: 'Free2Z is busy. Please wait before trying again. No replacement paid request is sent automatically.',
       concurrency_limit: 'Free2Z is already handling other requests for this account. Please wait before trying again.',
       cancelled: 'The request was stopped. Any recorded usage still needs to settle; check AI usage before starting another paid lesson.',
+      too_large: 'This set of activities is too large for the chosen AI model. Choose another model in Settings. Nothing was charged.',
     };
     const message = messages[error.code] ?? (error instanceof TutorServiceError ? error.message : 'Free2Z could not complete this action. Your recorded progress is safe; try Refresh connection in Settings.');
     const seconds = 'retryAfterSeconds' in error ? error.retryAfterSeconds : undefined;
@@ -31,6 +32,26 @@ export function learningError(error: unknown): string {
       ? `${message} Wait at least ${Math.ceil(seconds)} seconds.` : message;
   }
   return error instanceof Error ? error.message : 'The action could not finish. Your recorded progress remains on this device.';
+}
+
+/**
+ * " The next activities need N 2Z." when the refusal reported a positive whole-2Z amount: `required2z` on AHA's own
+ * error, or the SDK's decoded native `details.required_2z` (bigint, zuu #1136). Otherwise nothing.
+ */
+function needed(error: SdkError | TutorServiceError): string {
+  const details: unknown = error instanceof SdkError ? error.details : undefined;
+  const amount = error instanceof TutorServiceError ? error.required2z
+    : details && typeof details === 'object' && !Array.isArray(details) ? (details as Record<string, unknown>).required_2z : undefined;
+  return typeof amount === 'bigint' && amount > 0n ? ` The next activities need ${amount} 2Z.` : '';
+}
+
+/**
+ * The Free2Z action a refusal calls for: `top_up` (402 `insufficient_balance`) or `raise_budget` (403 `cap_exceeded`,
+ * shown with a link to free2z.cash/account/apps). Anything else has no action.
+ */
+export function refusalAction(error: unknown): 'top_up' | 'raise_budget' | undefined {
+  if (!(error instanceof SdkError || error instanceof TutorServiceError)) return undefined;
+  return error.code === 'insufficient_balance' ? 'top_up' : error.code === 'cap_exceeded' ? 'raise_budget' : undefined;
 }
 
 export function retryDeadline(error: unknown, now = Date.now()): number | undefined {
@@ -44,16 +65,18 @@ export const SIGN_IN_NOT_COMPLETED = 'Free2Z sign-in closed; you can connect any
 
 /**
  * Codes that mean the person closed or declined sign-in, not that anything broke.
- * `browser_error` is what tauri-plugin-f2z (e95becd6) reports when the Android Custom
- * Tab is backed out of or closed, the iOS ASWebAuthenticationSession is cancelled, or
- * either expires: the native side rejects `authorize` and the Rust mobile session maps
- * every rejection to Error::Browser. `access_denied` is the IdP's answer when consent is
- * declined; `cancelled` is a sign-in the plugin itself stopped (sign-out, window closed).
+ * Since tauri-plugin-f2z d4d58ea3 (zuu #1138) a dismissed iOS ASWebAuthenticationSession or
+ * Android Custom Tab rejects with `user_cancelled`. `browser_error` is the fallback for any
+ * other browser failure, and what every rejection was before #1138 (an older plugin); it stays
+ * quiet as before. `access_denied` is the IdP's answer when consent is declined; `cancelled` is a
+ * sign-in the plugin itself stopped (sign-out, window closed). `browser_unavailable` and `timeout`
+ * are failures with their own messages below.
  */
-const SIGN_IN_CLOSED = new Set(['browser_error', 'access_denied', 'cancelled']);
+const SIGN_IN_CLOSED = new Set(['user_cancelled', 'browser_error', 'access_denied', 'cancelled']);
 const SIGN_IN_MESSAGES: Record<string, string> = {
   authentication_busy: 'A Free2Z sign-in is already open. Finish or close it, then try again.',
   timeout: 'The Free2Z sign-in took too long and was closed. Tap Connect Free2Z to try again.',
+  browser_unavailable: 'AHA could not open a browser for the Free2Z sign-in. Check that a web browser is installed and enabled, then tap Connect Free2Z again.',
   transport_error: 'AHA could not reach Free2Z. Check the internet connection, then try again.',
   storage_unavailable: 'This device could not keep the Free2Z sign-in safely, so AHA did not connect. Please try again.',
   invalid_authentication_response: 'Free2Z’s sign-in reply could not be verified, so AHA did not connect. Please try again.',
@@ -81,8 +104,8 @@ export type SignInOutcome = { quiet: true; note: string } | { quiet: false; mess
 export function signInFailure(error: unknown, log: Pick<DiagnosticsLog, 'add' | 'error'> = diagnostics): SignInOutcome {
   const code = error instanceof SdkError ? error.code : undefined;
   if (code !== undefined && SIGN_IN_CLOSED.has(code)) {
-    // browser_error also covers a browser that could not open at all, so it stays visible
-    // in the console (warn) even though the UI is quiet; a declined consent is just info.
+    // browser_error is the unclassified fallback (it may be a browser that never opened), so it
+    // stays visible in the console (warn) though the UI is quiet; a cancel or decline is just info.
     log.add(code === 'browser_error' ? 'warn' : 'info', 'sign-in', `Sign-in closed by the person or browser [${code}]`);
     return { quiet: true, note: SIGN_IN_NOT_COMPLETED };
   }

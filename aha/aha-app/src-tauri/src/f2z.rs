@@ -117,11 +117,53 @@ mod tests {
         };
         assert_eq!(json_schema.name, "aha_activity_batch");
         assert_eq!(json_schema.strict, Some(true));
-        assert_eq!(json_schema.schema, schema);
+        assert_eq!(serde_json::to_value(&json_schema.schema).unwrap(), schema);
         // What the SDK then sends to the gateway still carries it.
         let wire = serde_json::to_value(&request).unwrap();
         assert_eq!(wire["response_format"]["type"], "json_schema");
         assert_eq!(wire["response_format"]["json_schema"]["strict"], true);
+    }
+
+    /// zuu#1132/#1143: the schema's member order is the order OpenAI emits the reply's keys in.
+    /// The webview's exact bytes (the fixture) cross IPC as a `serde_json::Value` (sorted unless
+    /// `preserve_order` is unified in, which tauri-plugin-f2z d63959f9 declares), then become the
+    /// pinned `ChatRequest` (`OrderedJson` schema), then the body the SDK sends. Every member must
+    /// come out in the order the app wrote it.
+    #[test]
+    fn structured_batch_schema_member_order_survives_ipc_and_the_native_chat_request() {
+        use tauri_plugin_f2z::f2z_sdk::proto::ChatRequest;
+        let text = include_str!("../fixtures/structured-batch-start-chat.json");
+        let between = |s: &str, start: &str, end: &str| {
+            let from = s.find(start).expect("start marker") + start.len();
+            let to = from + s[from..].find(end).expect("end marker");
+            s[from..to].to_owned()
+        };
+        let written = between(text, "\"schema\":", ",\"strict\":true}");
+        // The app's order is not alphabetical, so a sorting layer cannot pass by accident.
+        assert!(written.starts_with(r#"{"type":"object","properties":{"rationale":"#));
+        let mut ipc: serde_json::Value = serde_json::from_str(text).unwrap();
+        let mut sorted = ipc.clone();
+        for payload in [&mut ipc, &mut sorted] {
+            let tokens: u64 = payload["max_output_tokens"]
+                .as_str()
+                .unwrap()
+                .parse()
+                .unwrap();
+            payload["max_output_tokens"] = serde_json::json!(tokens);
+        }
+        let sent = |payload: serde_json::Value| {
+            let request: ChatRequest = serde_json::from_value(payload).unwrap();
+            let body = serde_json::to_string(&request).unwrap();
+            between(&body, "\"schema\":", ",\"strict\":true}")
+        };
+        assert_eq!(
+            sent(ipc),
+            written,
+            "schema member order changed on the native path"
+        );
+        // Negative control: the `Value` a build without `preserve_order` would hand the plugin.
+        sorted.sort_all_objects();
+        assert_ne!(sent(sorted), written);
     }
 }
 
