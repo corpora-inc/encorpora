@@ -46,7 +46,7 @@ Response (graded on-device; the key must be exactly right):
  plot_point{figureId(of a coordinate_plane),x,y,tolerance?} never pre-plot the answer
  tap_region{figureId,region,regionMisconceptions?:[{region,tag}]} region = an id on a bar, pie slice, picture group, plane point, or geometry polygon/circle; give >=2 elements ids
 KeyCheck: REQUIRED for numeric and fraction as {value:"arithmetic equal to the key"}, e.g. "2*25+10+3" or "2/5+2/5" (never {numerator,denominator}); for plot_point as {x:"...",y:"..."}. FORBIDDEN on every other response type.
-Expressions/keyCheck: + - * / ^ ( ), implicit multiplication (2x), sqrt(), abs(), pi. tag=snake_case misconception name.`;
+Expressions/keyCheck: + - * / ^ ( ), implicit multiplication (2x), sqrt(), abs(), round(x) or round(x, decimals), pi. tag=snake_case misconception name.`;
 
 const EXAMPLES = [
   { version: 1, id: 'ex-cookies', skillIds: ['1.OA.A.1'], difficulty: 3, prompt: [{ type: 'text', text: 'There were 9 cookies. Friends ate the crossed-out ones.' }, { type: 'figure', figureId: 'c' }, { type: 'text', text: 'How many are left?' }], figures: [{ type: 'picture', id: 'c', alt: 'Nine cookies; the last 4 are crossed out.', groups: [{ icon: 'cookie', count: 9, crossedOut: 4 }] }], response: { type: 'numeric', answer: 5, misconceptionAnswers: [{ answer: 13, tag: 'added_instead' }] }, keyCheck: { value: '9-4' }, hints: ['Count only cookies that are not crossed out.'], explanation: '$9-4=5$, so 5 cookies are left.' },
@@ -111,8 +111,8 @@ RT (text) = plain text with inline TeX in $...$ (KaTeX). Every $ opens or closes
 Lengths: title <=60, rationale <=300; axis labels, units and point labels <=16 chars; other labels <=24; table cells <=48.
 Show every figure exactly once via a figure block. Every figure's alt gives a blind learner the parts they need in plain text, never the answer. data_table: "?" marks a cell to find. geometry: scale the drawing to fit, y up; a segment has no label (add a label shape). line_chart x increasing. money: each kind once. picture <=100 icons. coordinate_plane and number_line <=40 grid steps.
 numeric tolerance only for estimates. expression: ask for an expression, not an equation; 1-3 single-letter variables, not e. multiple_choice: exactly one correct. multi_select: >=1 correct and >=1 incorrect. ordering: items in the CORRECT order (the app shuffles). plot_point: on a coordinate_plane; never pre-plot the answer. tap_region: region = an id on a bar, pie slice, picture group, plane point, or geometry polygon/circle; give >=2 elements ids.
-KeyCheck: REQUIRED for numeric and fraction as {value:"arithmetic equal to the key"}, e.g. "2*25+10+3" or "2/5+2/5"; for plot_point as {x:"...",y:"..."}; null on every other response type.
-Expressions/keyCheck: + - * / ^ ( ), implicit multiplication (2x), sqrt(), abs(), pi. tag=snake_case misconception name.`;
+keyCheck sits inside numeric, fraction and plot_point responses: {value:"arithmetic equal to the key"}, e.g. "2*25+10+3" or "2/5+2/5", or for plot_point {x:"...",y:"..."}.
+Expressions/keyCheck: + - * / ^ ( ), implicit multiplication (2x), sqrt(), abs(), round(x) or round(x, decimals), pi. tag=snake_case misconception name.`;
 
 export function buildActivityPrompt(summary: LearnerSummary, options: { count?: number; standardsLimit?: number } = {}): ActivityPrompt {
   const count = Math.min(5, Math.max(3, options.count ?? 4));

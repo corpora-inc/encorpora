@@ -35,8 +35,8 @@ recorded privately.
 SDK pin `42acc57f` (zuu #1129) adds opt-in `response_format`. When `/v1/models` reports
 `capabilities.structured_output: true` for the chosen model, an activity batch is sent with
 `response_format {type:'json_schema', json_schema:{name:'aha_activity_batch', schema, strict:true}}`.
-The schema is `activityBatchStrictJsonSchema`, 28.2 KB serialized against the gateway's 32 KiB limit,
-and a test enforces that limit. The system prompt drops the inline grammar for a short list of rules
+The schema is `activityBatchStrictJsonSchema`, 28.6 KB (28,650 bytes) serialized against the gateway's 32 KiB
+limit, and a test enforces that limit. The system prompt drops the inline grammar for a short list of rules
 the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
 
 - **Fallback.** The request is prompt-only, exactly as before, when the flag is absent or false, when
@@ -66,6 +66,36 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   not lead with `"version"`, and a reply cut off before its trailing `rationale` keeps its complete
   activities. A rationale that is present but invalid, or missing from a reply that was not cut off,
   still rejects the batch.
+- **One source of truth (#890).** The wire schema is derived from the zod validator. Strict mode makes every key
+  required, so an activity-level `keyCheck` could only be nullable everywhere, while the validator requires it for
+  numeric, fraction and plot_point answers and forbids it elsewhere. The wire schema therefore carries `keyCheck`
+  inside those three response variants, required and non-null, and leaves it out of the rest. Before validation,
+  `normalizeActivity` drops null members and moves `response.keyCheck` back to the activity. A property test
+  (`strictSchema.test.ts`, json-schema-faker, 400 batches / 1,217 activities) requires 99% of generated
+  strict-schema instances to pass the validator's shape rules after normalization. The new schema passes 100%. The
+  previous shape passed 35.2%, because generated instances could omit a required keyCheck or add a forbidden one.
+  String lengths and the text rules (safe text, TeX, expressions) stay validator-only: strict mode cannot express
+  them.
+- **Per-batch log.** Every batch logs one content-free `ai-structured` line, for example
+  `batch send: structured=yes model=gpt-4o response_format.type=json_schema strict=true json_schema.name=aha_activity_batch transport=stream`,
+  or `structured=no reason=<capabilities_absent|structured_output_absent|structured_output_false|structured_output_not_boolean|refused_earlier_this_session|outside_limits|format_refused>`.
+  A prompt-only batch is a warning. The `ai-batch` line now starts with `structured:` or `prompt-only:` and is
+  logged for every batch. Unknown fields are named (`unknown field(s) tolerance`), because zod's own wording
+  (`key: "…"`) was redacted by the diagnostics scrubber.
+- **Transport.** AHA batches use the streamed chat, the only chat the native plugin exposes (`start_chat` /
+  `next_chat`). Free2Z forwards `response_format` on its single upstream path, which is always streamed. The
+  non-streamed `ChatResponse` (which carries `cap_remaining_milli_2z`, zuu#1133) is not reachable from the
+  webview without a plugin change.
+- **Native boundary.** `nativeBoundary.test.ts` sends a batch through the real SDK `NativeTransport` to a
+  plugin-shaped TEST bridge and checks the `start_chat` payload. It saves that payload as
+  `src-tauri/fixtures/structured-batch-start-chat.json`. A native unit test reads the same bytes through the
+  pinned Rust `ChatRequest` and `ResponseFormat::check`, and `response_format` survives with `strict: true`.
+- **Live run of 2026-10-05 (S26).** Nine gpt-4o batches (13:13 to 13:23Z) were mostly rejected by the validator.
+  The device journal and logcat show that the installed APK did not contain structured output. The APK had been
+  built at 02:01Z, before #883 and #884, and it embeds bundle `index-CttBv_aH.js`. Its journal is version 2, and
+  every call's system prompt is byte-identical to the #882 prompt. No call carried `response_format`, and no
+  `ai-structured` fallback was logged. Gateway forwarding and AHA's capability detection were not at fault. That
+  run is therefore not structured-output evidence; a rebuilt APK is still needed.
 - **Input tokens (approximate, chars/4).** The structured system prompt is about 1.7k tokens instead
   of about 2.6k, which saves about 0.9k per batch. The schema, however, is input too: Free2Z reserves
   its 28 KB in the input hold, as it does for a tool definition, and the provider bills its own

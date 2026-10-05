@@ -25,6 +25,20 @@ describe('safe expression evaluator', () => {
     assert.equal(val('x²', { x: 3 }), 9);
     assert.equal(evaluateConstant('max(2, 9)'), 9);
   });
+  it('round takes one input, or two to round to decimal places (negative: tens, hundreds)', () => {
+    assert.equal(evaluateConstant('round(2.5)'), 3);
+    assert.equal(evaluateConstant('round(3.14159, 2)'), 3.14);
+    assert.equal(evaluateConstant('round(1.005, 2)'), 1.01, 'exponent shifting avoids the binary 1.00499… trap');
+    assert.equal(evaluateConstant('round(2.675, 2)'), 2.68);
+    assert.equal(evaluateConstant('round(12.5/4, 1)'), 3.1);
+    assert.equal(evaluateConstant('round(1234, -2)'), 1200);
+    assert.equal(evaluateConstant('round(7, 0)'), 7);
+    assert.equal(evaluateConstant('round(0.000001234, 8)'), 0.00000123, 'tiny values written in exponent form');
+    assert.ok(Number.isNaN(evaluateConstant('round(2.5, 0.5)')), 'digits must be a whole number');
+    assert.ok(Number.isNaN(evaluateConstant('round(2.5, 11)')), 'digits are bounded');
+    assert.throws(() => evaluateConstant('round(1, 2, 3)'), /round takes 1 or 2 input\(s\)/);
+    assert.throws(() => evaluateConstant('max(1)'), /max takes 2 input\(s\)/);
+  });
   it('returns NaN for undefined values instead of throwing', () => {
     assert.ok(Number.isNaN(evaluateConstant('1/0')));
     assert.ok(Number.isNaN(evaluateConstant('sqrt(-1)')));

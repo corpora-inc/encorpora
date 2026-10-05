@@ -32,10 +32,10 @@ describe('Activity Spec v1 validator', () => {
     for (const g of ['K', '1', '2', '3', '4', '5', '6', '7', '8']) assert.ok(grades.has(g), `grade ${g} covered`);
   });
   it('rejects unknown fields anywhere', () => {
-    rejects(s => { s.html = '<b>x</b>'; }, /Unrecognized key/);
-    rejects(s => { s.figures[0].onclick = 'alert(1)'; }, /Unrecognized key|Invalid input/);
-    rejects(s => { s.response.correctAnswer = 5; }, /Unrecognized key|Invalid input/);
-    rejects(s => { s.figures[0].bars[0].style = 'fill:red'; }, /Unrecognized key/);
+    rejects(s => { s.html = '<b>x</b>'; }, /unknown field\(s\) html/);
+    rejects(s => { s.figures[0].onclick = 'alert(1)'; }, /unknown field|Invalid input/);
+    rejects(s => { s.response.correctAnswer = 5; }, /unknown field|Invalid input/);
+    rejects(s => { s.figures[0].bars[0].style = 'fill:red'; }, /unknown field\(s\) style/);
   });
   it('rejects HTML, links and control characters in text', () => {
     rejects(s => { s.prompt[0].text = 'Click <img src=x onerror=alert(1)> now'; }, /HTML or markup/);

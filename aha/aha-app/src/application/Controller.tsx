@@ -448,8 +448,11 @@ export default function Controller() {
       if (!tutor || !isCurrent()) throw new Error("Choose a learner first.");
       const runtime = await loadAiActivities();
       const parsed = runtime.parseBatch(reply.text, origin.allowedSkillIds, reply.operationId);
+      // Every batch, so a device run shows which request format each reply answered and what it yielded.
+      const format = reply.structured ? "structured" : "prompt-only";
       if (parsed.rejected.length || parsed.errors.length)
-        logEvent("warn", "ai-batch", `kept ${parsed.items.length}, rejected ${parsed.rejected.length}: ${[...parsed.errors, ...parsed.rejected.flatMap(r => r.errors.slice(0, 2))].slice(0, 6).join(" | ")}`);
+        logEvent("warn", "ai-batch", `${format}: kept ${parsed.items.length}, rejected ${parsed.rejected.length}: ${[...parsed.errors, ...parsed.rejected.flatMap(r => r.errors.slice(0, 2))].slice(0, 6).join(" | ")}`);
+      else logEvent("info", "ai-batch", `${format}: kept ${parsed.items.length}, rejected 0`);
       const outcome = await deliverBatch(aiQueue.current, {
         operationId: reply.operationId,
         items: parsed.items,

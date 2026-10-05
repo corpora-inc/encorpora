@@ -19,9 +19,11 @@ export type Expr =
   | { t: 'bin'; op: '+' | '-' | '*' | '/' | '^'; a: Expr; b: Expr }
   | { t: 'call'; fn: FunctionName; args: Expr[] };
 
+/** Arity of each function: [fewest, most] inputs. `round(x, d)` rounds to d decimal places (negative d: tens, hundreds…). */
 export const FUNCTIONS = {
-  sqrt: 1, abs: 1, sin: 1, cos: 1, tan: 1, ln: 1, log: 1, exp: 1, floor: 1, ceil: 1, round: 1, min: 2, max: 2,
-} as const;
+  sqrt: [1, 1], abs: [1, 1], sin: [1, 1], cos: [1, 1], tan: [1, 1], ln: [1, 1], log: [1, 1], exp: [1, 1], floor: [1, 1], ceil: [1, 1],
+  round: [1, 2], min: [2, 2], max: [2, 2],
+} as const satisfies Record<string, readonly [number, number]>;
 export type FunctionName = keyof typeof FUNCTIONS;
 const CONSTANTS: Record<string, number> = { pi: Math.PI, 'π': Math.PI, e: Math.E };
 const FUNCTION_NAMES = (Object.keys(FUNCTIONS) as FunctionName[]).sort((a, b) => b.length - a.length);
@@ -129,7 +131,8 @@ export function parseExpr(source: string, variables: readonly string[] = []): Ex
       const args = [sum()];
       while (peek()?.k === ',') { pos++; args.push(sum()); }
       if (tokens[pos++]?.k !== ')') throw new ExprError('Missing closing parenthesis.');
-      if (args.length !== FUNCTIONS[t.v]) throw new ExprError(`${t.v} takes ${FUNCTIONS[t.v]} input(s).`);
+      const [fewest, most] = FUNCTIONS[t.v];
+      if (args.length < fewest || args.length > most) throw new ExprError(`${t.v} takes ${fewest === most ? fewest : `${fewest} or ${most}`} input(s).`);
       return { t: 'call', fn: t.v, args };
     }
     if (t.k === '(') {
@@ -167,13 +170,23 @@ export function evaluate(e: Expr, scope: Readonly<Record<string, number>> = {}):
       const fns: Record<FunctionName, () => number> = {
         sqrt: () => a < 0 ? NaN : Math.sqrt(a), abs: () => Math.abs(a), sin: () => Math.sin(a), cos: () => Math.cos(a),
         tan: () => Math.tan(a), ln: () => a <= 0 ? NaN : Math.log(a), log: () => a <= 0 ? NaN : Math.log10(a),
-        exp: () => Math.exp(a), floor: () => Math.floor(a), ceil: () => Math.ceil(a), round: () => Math.round(a),
+        exp: () => Math.exp(a), floor: () => Math.floor(a), ceil: () => Math.ceil(a), round: () => e.args.length === 2 ? roundTo(a, b) : Math.round(a),
         min: () => Math.min(a, b), max: () => Math.max(a, b),
       };
       const r = fns[e.fn]();
       return Number.isFinite(r) ? r : NaN;
     }
   }
+}
+
+/**
+ * `round(x, d)`: x rounded half up to d decimal places; a negative d rounds to tens, hundreds and so on.
+ * d must be a whole number from -6 to 10. Decimal shifting goes through the exponent so 1.005 rounds to 1.01.
+ */
+function roundTo(x: number, digits: number): number {
+  if (!Number.isInteger(digits) || digits < -6 || digits > 10 || !Number.isFinite(x)) return NaN;
+  const shift = (v: number, by: number) => { const [m, ex = '0'] = String(v).split('e'); return Number(`${m}e${Number(ex) + by}`); };
+  return shift(Math.round(shift(x, digits)), -digits);
 }
 
 /** Parse + evaluate a constant expression (no variables). Throws ExprError on syntax errors. */
