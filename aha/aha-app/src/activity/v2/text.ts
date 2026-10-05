@@ -35,7 +35,7 @@ export interface Templ { mode: TemplMode; segments: Segment[]; placeholders: Pla
 const ok = <T>(value: T): Result<T> => ({ ok: true, value });
 const fail = (code: string, message: string): { ok: false; error: Issue } => ({ ok: false, error: { code, message } });
 
-export const PLACEHOLDER_PATH = /^[a-z][a-z0-9]{0,7}(?:\.[a-z]{1,16}){0,2}$/;
+export const PLACEHOLDER_PATH = /^[a-z][a-z0-9_]{0,15}(?:\.[a-z]{1,16}){0,2}$/;
 const MAX_PLACEHOLDERS = 24;
 
 /** Split one segment's source into literal text and placeholders. */
