@@ -267,3 +267,20 @@ test('only a reply cut off before its rationale may lack one; a missing or inval
   // Cut off before any rationale: the complete activities are kept.
   assert.deepEqual(parseBatch(`{"activities":[${a},${b},${c!.slice(0, 40)}`, window, 'op').items.map(i => i.spec.id), [specs[0]!.id, specs[1]!.id]);
 });
+test('an id-first activity with a nested slip never costs its version-first neighbours (prompt-only recovery, #883 behaviour kept)', () => {
+  const good = [fx('fx-k-count-apples'), fx('fx-2-coins'), fx('fx-5-plant-the-tree')];
+  const { id, ...rest } = fx('fx-3-garden-perimeter');
+  const idFirst = JSON.stringify({ id, ...rest }).replace('"points":[{"x"', '"points":["x"');
+  const text = `{"rationale":"Mixed practice.","activities":[${good.map(g => JSON.stringify(g)).join(',')},${idFirst}]}`;
+  const parsed = parseBatch(text, allIds([...good, fx('fx-3-garden-perimeter')]), 'op');
+  assert.deepEqual(parsed.items.map(i => i.spec.id), good.map(g => g.id));
+});
+test('a structured reply cut off inside its trailing rationale keeps its complete activities; a complete invalid rationale still rejects', () => {
+  const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree')];
+  const window = allIds(specs);
+  const full = JSON.stringify(strictify({ rationale: 'Mixed practice.', activities: specs }, activityBatchStrictJsonSchema as Node));
+  for (const end of ['"rati', '"rationale":', '"rationale":"', '"rationale":"Mixed p'])
+    assert.equal(parseBatch(full.slice(0, full.indexOf('"rationale"')) + end, window, 'op').items.length, 3, end);
+  const activitiesOnly = full.slice(0, full.indexOf(',"rationale"'));
+  assert.equal(parseBatch(`${activitiesOnly},"rationale":"<b>x</b>"`, window, 'op').items.length, 0, 'a complete but invalid rationale rejects');
+});

@@ -134,7 +134,9 @@ export function formatRefusal(error: unknown): boolean {
   if (error.status !== undefined && error.status !== 400) return false;
   const details: unknown = error.details;
   if (details === undefined) return true;
-  return object(details) && typeof details.reason === 'string' && FORMAT_REFUSAL_REASONS.includes(details.reason);
+  return object(details) && typeof details.reason === 'string' && FORMAT_REFUSAL_REASONS.includes(details.reason) &&
+    // When the gateway names the field, it must be response_format itself (`null`/`unsupported` are generic words).
+    (details.field === undefined || (typeof details.field === 'string' && details.field.startsWith('response_format')));
 }
 /**
  * Marks the errors this module throws where it recognised a format refusal. The fallback tests for the private

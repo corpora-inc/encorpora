@@ -321,16 +321,6 @@ export function salvageTruncatedBatch(text: string): { rationale?: string; activ
   return { ...(decoded ? { rationale: decoded } : {}), activities };
 }
 
-/**
- * Per-item recovery for a reply that is not one valid JSON object: truncated by the token cap, or
- * with a JSON slip (a missing brace or quote) inside one activity. Activities are located by their
- * leading "version" key (the order the prompt and examples use; no nested object has one). When that
- * misses some, as for structured output whose keys arrive sorted by name (zuu#1132), they are located
- * as the elements of the "activities" array, which does not depend on key order. Each is parsed on
- * its own, never reading past the next start. Activities that cannot be located are
- * still counted and reported as rejected. A malformed activity is reported as such and its
- * neighbours are kept. Nothing is repaired: a candidate either parses as written or is dropped.
- */
 /** String-aware: the offsets of the objects directly inside the array opening at `open`, up to its end or the text's. */
 function arrayElementStarts(text: string, open: number): number[] {
   const starts: number[] = [];
@@ -344,6 +334,16 @@ function arrayElementStarts(text: string, open: number): number[] {
   }
   return starts;
 }
+/**
+ * Per-item recovery for a reply that is not one valid JSON object: truncated by the token cap, or
+ * with a JSON slip (a missing brace or quote) inside one activity. Activities are located by their
+ * leading "version" key (the order the prompt and examples use; no nested object has one). When that
+ * misses some, as for structured output whose keys arrive sorted by name (zuu#1132), they are located
+ * as the elements of the "activities" array, which does not depend on key order. Each is parsed on
+ * its own, never reading past the next start. Activities that cannot be located are
+ * still counted and reported as rejected. A malformed activity is reported as such and its
+ * neighbours are kept. Nothing is repaired: a candidate either parses as written or is dropped.
+ */
 export function recoverBatchItems(text: string): { rationale?: string; items: ({ ok: true; value: unknown } | { ok: false; error: string })[] } | null {
   const key = text.search(/"activities"\s*:\s*\[/);
   if (key < 0) return null;
@@ -354,7 +354,9 @@ export function recoverBatchItems(text: string): { rationale?: string; items: ({
   let starts = versionStarts;
   if (versionStarts.length < located) {
     const elements = arrayElementStarts(text, text.indexOf('[', key));
-    if (elements.length > versionStarts.length) starts = elements;
+    // Trust the scan only where it agrees with every "version" start and is plausibly sized: after a
+    // structural slip it can lose its place and report nested objects as activities.
+    if (elements.length > versionStarts.length && elements.length <= Math.min(5, located + 1) && versionStarts.every(v => elements.includes(v))) starts = elements;
   }
   const items: ({ ok: true; value: unknown } | { ok: false; error: string })[] = starts.slice(0, 10).map((start, k) => {
     // A malformed activity can swallow its neighbours; never read past the next activity start.
@@ -365,7 +367,7 @@ export function recoverBatchItems(text: string): { rationale?: string; items: ({
   });
   // An activity whose "version" key is not first cannot be located; count required keys so it is
   // reported as rejected instead of vanishing.
-  for (let n = items.length; n < Math.min(10, located); n++) items.push({ ok: false, error: 'Activity JSON could not be located (version must be its first key).' });
+  for (let n = items.length; n < Math.min(10, located); n++) items.push({ ok: false, error: 'Activity JSON could not be located.' });
   const rationale = /"rationale"\s*:\s*"((?:[^"\\]|\\.){0,600})"/.exec(text)?.[1];
   let decoded: string | undefined;
   try { decoded = rationale === undefined ? undefined : JSON.parse(`"${rationale}"`); } catch { decoded = undefined; }
@@ -397,9 +399,11 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
       if (recovered.items.length > 5) return empty(['activities must be a list of 1–5 activities.']);
       const incomplete = !extracted.ok && extracted.error.includes('incomplete');
       // Structured output sorts keys by name (zuu#1132), so "rationale" follows "activities" and a reply cut
-      // off by the output budget may never reach it. Only that case may lack one; a present but invalid
+      // off by the output budget may never reach it, or end inside it. Only that case may lack one; a present but invalid
       // rationale, or a missing one in a reply that was not cut off, still rejects the batch.
-      if (recovered.rationale === undefined && !(incomplete && !/"rationale"\s*:/.test(text))) return empty(['rationale: missing or invalid.']);
+      // Cut off before the rationale, or inside its still-open string (or before it starts): treated as absent.
+      const rationaleCut = !/"rationale"\s*:/.test(text) || /"rationale"\s*:\s*(?:"(?:[^"\\]|\\.)*\\?)?$/.test(text);
+      if (recovered.rationale === undefined && !(incomplete && rationaleCut)) return empty(['rationale: missing or invalid.']);
       const items = recovered.items;
       const activities = items.map(i => i.ok ? i.value : null);
       const kept = recovered.rationale === undefined
