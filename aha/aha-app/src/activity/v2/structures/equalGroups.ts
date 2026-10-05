@@ -31,7 +31,7 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
   views: {
     objects: {
       grades: [2, 4], accepts: ['tap'], draws: 'a picture: each group drawn with its objects (all countable)',
-      noun: () => 'picture',
+      noun: () => 'picture', words: ['picture'],
       reveals: () => ({ groups: 'countable', size: 'countable', total: 'countable' }),
       // Every group has the same size, so a tap on one group is always ill-posed; uniqueness rejects it.
       regions: r => Array.from({ length: n(r.groups) }, (_, i) => ({ id: `g${i + 1}`, value: req(r, 'size').value, label: `Group ${i + 1}` })),
@@ -49,7 +49,7 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
     },
     jumps: {
       grades: [2, 4], accepts: [], draws: 'a number line from 0 with one jump per group (the landing point is printed)',
-      noun: () => 'number line',
+      noun: () => 'number line', words: ['number line'],
       reveals: (_r, asked) => ({ groups: 'countable', size: asked.has('size') ? 'countable' : 'shown', total: 'shown' }),
       lower(r, { asked }) {
         const g = n(r.groups), s = n(r.size), total = g * s;
