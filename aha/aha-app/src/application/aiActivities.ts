@@ -12,7 +12,7 @@ import type { Grade, LearnerState, SpecAttemptData } from '../learning/types';
 import { skills } from '../learning/curriculum';
 import { buildActivityPrompt } from '../activity/prompt';
 import { buildLearnerSummary, specHash, type LearnerSummary } from '../activity/learnerState';
-import { validateActivityBatch, validateActivitySpec, type ActivitySpec } from '../activity/spec';
+import { extractJsonObject, recoverBatchItems, shapeErrors, validateActivityBatch, validateActivitySpec, type ActivitySpec } from '../activity/spec';
 import { gradeActivity, type GradeOutcome, type LearnerResponse } from '../activity/grade';
 import { activityIdFor, type QueuedActivity } from './aiQueue';
 import type { StructuredOutput } from '../provider/free2z';
@@ -47,12 +47,30 @@ export interface ParsedBatch {
   items: QueuedActivity[];
   rejected: { index: number; errors: string[] }[];
   errors: string[];
+  /** Rejections by kind, for the per-model stats: shape (incl. damaged JSON) vs the semantic rules. */
+  schemaRejected: number;
+  semanticRejected: number;
+}
+/** Valid model ids only (they come from the Free2Z catalogue via the journal); anything else is left unattributed. */
+export const attributableModel = (model: unknown): model is string =>
+  typeof model === 'string' && model.length > 0 && model.length <= 120 && /^[A-Za-z0-9._:/@+-]+$/.test(model);
+/** The reply's activities by position, as the validator saw them, to classify each rejection. */
+function rawActivities(text: string): unknown[] {
+  const extracted = extractJsonObject(text);
+  // The validator's own condition: an extracted bare activity counts only when the text names no "activities" array.
+  if (extracted.ok && extracted.value && typeof extracted.value === 'object') {
+    const value = extracted.value as Record<string, unknown>;
+    if (Array.isArray(value.activities)) return value.activities;
+    if ('version' in value && !/"activities"\s*:/.test(text)) return [value];
+  }
+  const recovered = text.length <= 150000 ? recoverBatchItems(text) : null;
+  return recovered?.items.map(i => i.ok ? i.value : undefined) ?? [];
 }
 /**
  * Parse the model's text exactly the same way for a fresh reply and for a recovered one. Invalid
  * activities are dropped, never repaired. Complete activities from a cut-off reply are kept.
  */
-export function parseBatch(text: string, allowedSkillIds: readonly string[], operationId: string): ParsedBatch {
+export function parseBatch(text: string, allowedSkillIds: readonly string[], operationId: string, model?: string): ParsedBatch {
   const allowed = new Set(allowedSkillIds.filter(id => GRAPH_SKILL_IDS.has(id)));
   const result = validateActivityBatch(text, { skillIds: allowed });
   // Ids follow each activity's position in the model's batch, not its position among accepted
@@ -60,10 +78,15 @@ export function parseBatch(text: string, allowedSkillIds: readonly string[], ope
   const rejected = new Set(result.rejected.map(r => r.index));
   const positions: number[] = [];
   for (let i = 0; positions.length < result.accepted.length; i++) if (!rejected.has(i)) positions.push(i);
+  const raw = result.rejected.length ? rawActivities(text) : [];
+  // Damaged JSON, or a shape a strict schema would have prevented, is a schema rejection; the rest are semantic.
+  const schemaRejected = result.rejected.filter(r => { const item = raw[r.index]; return item === undefined || shapeErrors(item).length > 0; }).length;
+  const by = attributableModel(model) ? { model } : {};
   return {
-    items: result.accepted.map((spec, n) => ({ activityId: activityIdFor(operationId, positions[n]!), operationId, spec })),
+    items: result.accepted.map((spec, n) => ({ activityId: activityIdFor(operationId, positions[n]!), operationId, spec, ...by })),
     rejected: result.rejected.map(r => ({ index: r.index, errors: r.errors.slice(0, 5) })),
     errors: result.errors.slice(0, 5),
+    schemaRejected, semanticRejected: result.rejected.length - schemaRejected,
   };
 }
 
@@ -79,7 +102,7 @@ export interface GradedSpecAttempt {
   attempt?: { correct: boolean; answer: string; spec: SpecAttemptData };
 }
 /** Grade locally and build the evidence payload that recordSpecAttempt stores. */
-export function gradeSpecAttempt(spec: ActivitySpec, response: LearnerResponse): GradedSpecAttempt {
+export function gradeSpecAttempt(spec: ActivitySpec, response: LearnerResponse, model?: string): GradedSpecAttempt {
   const outcome = gradeActivity(spec, response);
   if (outcome.invalid) return { outcome };
   return {
@@ -90,7 +113,7 @@ export function gradeSpecAttempt(spec: ActivitySpec, response: LearnerResponse):
       spec: {
         hash: specHash(spec), skillIds: [...spec.skillIds], difficulty: spec.difficulty, responseType: spec.response.type,
         response: structuredClone(response), ...(outcome.misconceptionTag ? { misconceptionTag: outcome.misconceptionTag.slice(0, 48) } : {}),
-        content: structuredClone(spec),
+        content: structuredClone(spec), ...(attributableModel(model) ? { model } : {}),
       },
     },
   };
@@ -112,7 +135,9 @@ export function verifySpecAttempt(stored: SpecAttemptData): { correct: boolean; 
   if (!spec) throw new Error('AI evidence contains an activity that no longer validates.');
   if (specHash(spec) !== stored.hash) throw new Error('AI evidence does not match its activity hash.');
   if (!readableResponse(stored.response)) throw new Error('AI evidence has an unreadable response.');
-  const graded = gradeSpecAttempt(spec, stored.response);
+  // The authoring model is attribution only (never trusted for grading); evidence written before it has none.
+  if (stored.model !== undefined && !attributableModel(stored.model)) throw new Error('AI evidence names an invalid model.');
+  const graded = gradeSpecAttempt(spec, stored.response, stored.model);
   if (!graded.attempt) throw new Error('AI evidence has a response the grader cannot read.');
   const fresh = graded.attempt.spec;
   if (JSON.stringify(fresh.skillIds) !== JSON.stringify(stored.skillIds) || fresh.difficulty !== stored.difficulty || fresh.responseType !== stored.responseType)

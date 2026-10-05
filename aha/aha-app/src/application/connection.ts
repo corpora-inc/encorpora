@@ -1,15 +1,6 @@
-import { SdkError, type Models } from '@free2z/sdk';
+import { SdkError } from '@free2z/sdk';
 import { TutorServiceError } from '../provider/free2z';
 import { diagnostics, type DiagnosticsLog } from '../diagnostics/log';
-
-/** Only select IDs actually advertised to this account. Catalogue order is the service preference. */
-export function chooseTutorModel(catalog: Models): string {
-  const model = catalog.models.find(m => typeof m.id === 'string' &&
-    m.id.length > 0 && m.id.length <= 256 && !/[\s\u0000-\u001f\u007f]/.test(m.id) &&
-    (m.max_output_tokens === undefined || typeof m.max_output_tokens === 'bigint' && m.max_output_tokens >= 1800n));
-  if (!model) throw new TutorServiceError('model_unavailable', 'No suitable math tutor model is available from Free2Z yet. Try Refresh connection in Settings.');
-  return model.id as string;
-}
 
 /** Translate stable classifications, never expose SDK details, IDs or raw response bodies. */
 export function learningError(error: unknown): string {

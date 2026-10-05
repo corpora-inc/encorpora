@@ -1632,6 +1632,52 @@ h1 {
   color: #a5523d;
   margin-top: 10px;
 }
+/* AI model choice and per-model stats (Settings). */
+.model-choice {
+  margin-top: 14px;
+}
+.model-choice label {
+  display: block;
+  font-size: 0.77rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.model-choice select {
+  font: inherit;
+  width: 100%;
+  padding: 12px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid #ccd3c2;
+  border-radius: 7px;
+  min-height: 44px;
+}
+.model-stats {
+  margin: 12px 0;
+  font-size: 0.82rem;
+}
+.model-stats summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+.model-stats ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.model-stats li + li {
+  margin-top: 6px;
+}
+.status-model {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
 
 /* ===================================================================================
    Focus mode (#869). The learning loop is one screen: a slim bar, the problem, and an

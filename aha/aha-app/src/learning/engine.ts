@@ -68,7 +68,8 @@ export function recordSpecAttempt(state:LearnerState,input:SpecAttemptInput):Lea
  if(!spec||!/^[0-9a-f]{16}$/.test(spec.hash)||!Array.isArray(spec.skillIds)||spec.skillIds.length<1||spec.skillIds.length>3||
   new Set(spec.skillIds).size!==spec.skillIds.length||spec.skillIds.some(id=>!getSkill(id))||
   !Number.isInteger(spec.difficulty)||spec.difficulty<1||spec.difficulty>10||typeof spec.responseType!=='string'||spec.responseType.length>20||
-  (spec.misconceptionTag!==undefined&&(typeof spec.misconceptionTag!=='string'||spec.misconceptionTag.length>48)))
+  (spec.misconceptionTag!==undefined&&(typeof spec.misconceptionTag!=='string'||spec.misconceptionTag.length>48))||
+  (spec.model!==undefined&&(typeof spec.model!=='string'||!/^[A-Za-z0-9._:/@+-]{1,120}$/.test(spec.model))))
   throw new Error('AI activity evidence is malformed.');
  if(typeof input.correct!=='boolean'||typeof input.answer!=='string'||input.answer.length>80)throw new Error('AI activity evidence is malformed.');
  const {at,hintsUsed,activeMs,interrupted}=attemptCommon(input);

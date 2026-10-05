@@ -3,14 +3,8 @@ import test from 'node:test';
 import { SdkError } from '@free2z/sdk';
 import { TutorServiceError } from '../provider/free2z';
 import { DiagnosticsLog } from '../diagnostics/log';
-import { chooseTutorModel, learningError, retryDeadline, SIGN_IN_NOT_COMPLETED, signInFailure } from './connection';
+import { learningError, retryDeadline, SIGN_IN_NOT_COMPLETED, signInFailure } from './connection';
 
-test('only advertised usable model IDs are selected, with sufficient output capacity', () => {
-  assert.equal(chooseTutorModel({catalog_version: 1n, models: [
-    {id: ''}, {id: 'tiny', max_output_tokens: 500n}, {id: 'current', max_output_tokens: 4096n},
-  ]}), 'current');
-  assert.throws(() => chooseTutorModel({catalog_version: 1n, models: []}), /No suitable/);
-});
 test('balance and app-budget exhaustion have distinct recovery instructions', () => {
   for (const cap of [learningError(new SdkError('cap_exceeded')), learningError(new TutorServiceError('cap_exceeded', 'x'))]) {
     assert.match(cap, /budget/);

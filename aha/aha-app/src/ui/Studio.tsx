@@ -33,6 +33,7 @@ let specRenderer: SpecRenderer | undefined;
 const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
 import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
+import { ModelChoice, ModelStats } from "./ModelSettings";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
@@ -714,6 +715,7 @@ export function Studio(props: StudioProps) {
           <span className="status-sheet-icon" aria-hidden="true">{ai ? <Sparkles size={22} /> : <ShieldCheck size={22} />}</span>
           <p>{statusText}</p>
         </div>
+        {ai && props.authoringModel && <p className="status-model">Written by {props.authoringModel}</p>}
         <button type="button" className="secondary-button" onClick={openSettings}><Settings size={17} aria-hidden="true" /> Settings</button>
       </Sheet>
       <Sheet open={sheet === "flag"} onClose={() => setSheet(null)} label="Something seems off">
@@ -794,6 +796,7 @@ export function Studio(props: StudioProps) {
                 {props.account.batchCost && <div><dt>Each batch of activities</dt><dd>{props.account.batchCost}</dd></div>}
               </dl>
             )}
+            {props.account.connected && props.modelMenu && <ModelChoice menu={props.modelMenu} busy={props.busy} onChoose={props.onChooseModel} />}
             {props.account.status && <p className="account-status">{props.account.status}</p>}
             {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (
               <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
@@ -906,8 +909,9 @@ export function Studio(props: StudioProps) {
           </section>
           <section>
             <h3>Something not working?</h3>
-            <p>A report lists the app version, device type, and recent errors. It doesn’t include names, answers, or account details.</p>
-            <ReportProblem signedIn={props.account.connected} aiReady={!!props.account.aiReady} />
+            <p>A report lists the app version, device type, recent errors, and AI model counts. It doesn’t include names, answers, or account details.</p>
+            {props.loadModelStats && <ModelStats load={props.loadModelStats} />}
+            <ReportProblem signedIn={props.account.connected} aiReady={!!props.account.aiReady} loadModelStats={props.loadModelStats} />
           </section>
         </div>
       </dialog>

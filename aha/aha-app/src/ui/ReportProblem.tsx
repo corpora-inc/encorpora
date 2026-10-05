@@ -6,10 +6,11 @@ import { buildReport, collectEnvironment, MAX_NOTE, type ReportEnvironment } fro
 import { copyReport, shareReport } from "../diagnostics/share";
 
 /** Problem report from Settings. Shows exactly what will leave the device. */
-export function ReportProblem({ signedIn, aiReady }: { signedIn: boolean; aiReady: boolean }) {
+export function ReportProblem({ signedIn, aiReady, loadModelStats }: { signedIn: boolean; aiReady: boolean; loadModelStats?: () => Promise<string[]> }) {
   const [open, setOpen] = useState(false);
   const [note, setNote] = useState("");
   const [env, setEnv] = useState<ReportEnvironment>();
+  const [stats, setStats] = useState<string[]>();
   const [entries, setEntries] = useState(() => diagnostics.entries());
   const [createdAt, setCreatedAt] = useState(() => new Date());
   const [done, setDone] = useState<"shared" | "copied">();
@@ -19,11 +20,14 @@ export function ReportProblem({ signedIn, aiReady }: { signedIn: boolean; aiRead
   useEffect(() => {
     if (!open) return;
     let live = true;
+    // Model stats join the report when they arrive; a slow or failed read never holds the report back.
+    setStats(undefined);
     void collectEnvironment({ signedIn, aiReady }).then((value) => { if (live) setEnv(value); });
+    loadModelStats?.().then((lines) => { if (live) setStats(lines); }, (error) => logError("model-stats", error));
     return () => { live = false; };
-  }, [open, signedIn, aiReady]);
+  }, [open, signedIn, aiReady, loadModelStats]);
   useEffect(() => { setDone(undefined); setFailed(undefined); }, [note]);
-  const report = env ? buildReport(env, entries, note, createdAt) : "";
+  const report = env ? buildReport(env, entries, note, createdAt, stats) : "";
   const canShare = isTauri();
   async function run(kind: "shared" | "copied") {
     setFailed(undefined);

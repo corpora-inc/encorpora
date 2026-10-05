@@ -14,6 +14,8 @@ export interface QueuedActivity {
   activityId: string;
   /** The billing operation that paid for it. */
   operationId: string;
+  /** The Free2Z model that wrote it (from the journaled request). Absent on activities queued before attribution. */
+  model?: string;
   spec: ActivitySpec;
   /**
    * Assistance already spent on this activity before the learner skipped ahead to something harder

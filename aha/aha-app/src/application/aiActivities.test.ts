@@ -294,3 +294,58 @@ test('a structured reply cut off inside its trailing rationale keeps its complet
   const activitiesOnly = full.slice(0, full.indexOf(',"rationale"'));
   assert.equal(parseBatch(`${activitiesOnly},"rationale":"<b>x</b>"`, window, 'op').items.length, 0, 'a complete but invalid rationale rejects');
 });
+
+test('model attribution: every parsed activity names its model; rejections are classified as schema or semantic', () => {
+  const good = [fx('fx-3-fraction-bar'), fx('fx-2-coins')];
+  const semantic = { ...fx('fx-3-area-tiles'), keyCheck: { value: '999' } }; // valid shape, key disagrees with its arithmetic
+  const shape = { ...fx('fx-5-plant-the-tree'), difficulty: 'hard' }; // wrong type: a strict schema would prevent it
+  const window = allIds([...good, semantic, fx('fx-5-plant-the-tree')]);
+  const parsed = parseBatch(JSON.stringify({ rationale: 'Mixed.', activities: [good[0], semantic, shape, good[1]] }), window, 'op-7', 'gpt-test-1');
+  assert.deepEqual(parsed.items.map(i => i.model), ['gpt-test-1', 'gpt-test-1']);
+  assert.deepEqual([parsed.schemaRejected, parsed.semanticRejected], [1, 1]);
+  // Damaged JSON inside one activity counts as a schema rejection.
+  const text = JSON.stringify({ rationale: 'x', activities: [good[0], good[1]] });
+  const damaged = text.replace('"fx-2-coins"', '"fx-2-coins');
+  const recovered = parseBatch(damaged, window, 'op-8', 'gpt-test-1');
+  assert.equal(recovered.items.length, 1);
+  assert.deepEqual([recovered.schemaRejected, recovered.semanticRejected], [1, 0]);
+  // Duplicates are semantic; an unattributable model id is simply left off.
+  const dup = parseBatch(JSON.stringify({ rationale: 'x', activities: [good[0], good[0]] }), window, 'op-9', 'bad model id');
+  assert.deepEqual([dup.schemaRejected, dup.semanticRejected], [0, 1]);
+  assert.equal(dup.items[0]!.model, undefined);
+});
+
+test('migration: ai-spec evidence and queued activities without a model still restore; a recorded model is kept, an invalid one fails closed', () => {
+  const specs = countingVariants();
+  // Evidence recorded before attribution (no model) and after it (with one) replay side by side.
+  let state = answer(createLearner('learner', 'K'), specs[0]!, 0, { at: at(0, 0) });
+  const graded = gradeSpecAttempt(specs[1]!, correctResponse(specs[1]!), 'gpt-test-1');
+  assert.equal(graded.attempt!.spec.model, 'gpt-test-1', 'the attempt records the authoring model');
+  state = recordSpecAttempt(state, { id: 'attempt-1', activityId: 'op:1', at: at(0, 1), hintsUsed: 0, activeMs: 9000, interrupted: false, ...graded.attempt! });
+  const records = stored(state);
+  assert.equal(records[0]!.data.spec.model, undefined);
+  const restored = restoreLearning({ id: 'learner', grade: 0 }, null, null, records, [], specRestorer);
+  assert.deepEqual(restored.learner, state);
+  assert.equal((restored.learner.attempts[1] as any).spec.model, 'gpt-test-1');
+  const forged = stored(state); forged[1]!.data.spec.model = 'has spaces';
+  assert.throws(() => restoreLearning({ id: 'learner', grade: 0 }, null, null, forged, [], specRestorer), LearningRecoveryError);
+  // A queued activity with a model keeps it; an old one without stays valid; a malformed model drops only that item.
+  const q = (i: number, extra: object = {}) => ({ activityId: `op-1:${i}`, operationId: 'op-1', spec: specs[i], ...extra });
+  const session = { id: 'session', updatedAt: at(0, 5), data: { sessionId: 'session', activity: null, hintsUsed: 0, completed: 0,
+    aiActivity: q(2, { model: 'gpt-test-1' }), aiQueue: [q(3), q(4, { model: 'gpt-test-1' }), q(5, { model: 7 })] } };
+  const resumed = restoreLearning({ id: 'learner', grade: 0 }, null, session, [], [], specRestorer);
+  assert.equal(resumed.aiActivity?.model, 'gpt-test-1');
+  assert.deepEqual(resumed.aiQueue.map(i => [i.activityId, i.model]), [['op-1:3', undefined], ['op-1:4', 'gpt-test-1']]);
+  assert.equal(resumed.droppedAi, 1);
+});
+
+test('a damaged envelope whose extraction lands on one activity classifies rejections by their real positions', () => {
+  const good = fx('fx-3-fraction-bar');
+  const semantic = { ...fx('fx-3-area-tiles'), keyCheck: { value: '999' } };
+  const window = allIds([good, semantic]);
+  // The envelope is cut off, so extraction can land on an inner activity; the text still names "activities".
+  const text = JSON.stringify({ rationale: 'x', activities: [good, semantic] }).slice(0, -2);
+  const parsed = parseBatch(text, window, 'op-d', 'gpt-test-1');
+  assert.equal(parsed.items.length, 1);
+  assert.deepEqual([parsed.schemaRejected, parsed.semanticRejected], [0, 1]);
+});

@@ -793,3 +793,19 @@ test('the per-call archive record omits the saved schema too',async()=>{
   assert.equal(archives.length,1);assert.ok(!('responseFormat' in archives[0].request));
   assert.equal(archives[0].text,'{"activity":true}','the archive still keeps the reply and prompt');assert.equal(archives[0].request.messages.length,2);
 });
+test('model choice: a reply names the model it was sent to; same-key recovery resends to the journaled model whatever is chosen now',async()=>{
+  const f=fixture([]);f.setModels([{id:'model-a'},{id:'model-b'}]);
+  await assert.rejects(f.tutor.reply('model-a','p','c',f.authorization,batchContext,'2600'),{code:'interrupted'});
+  const op=f.getValue().operations[0];assert.equal(op.request.model,'model-a','the chosen model is persisted in the journal operation');
+  // The learner switches to model-b, and model-a even leaves the catalogue: recovery still resends the identical body.
+  f.setModels([{id:'model-b'}]);
+  await assert.rejects(f.tutor.recover(op.id,f.authorization));
+  assert.equal(f.calls[1].request.model,'model-a');assert.deepEqual(f.calls[0],f.calls[1]);
+  const g=fixture();g.setModels([{id:'model-a'},{id:'model-b'}]);
+  const reply=await g.tutor.reply('model-b','p','c',g.authorization,batchContext,'2600');
+  assert.equal(reply.model,'model-b');
+  assert.equal((await g.tutor.pendingReplies())[0]!.model,'model-b','a restored reply keeps its attribution');
+  await g.tutor.acknowledgeReply(reply.operationId);
+  await g.tutor.reply('model-a','p','c',g.authorization);
+  assert.deepEqual(await g.tutor.batchUsage(),[{operationId:reply.operationId,model:'model-b',charged2z:2n}],'only activity batches, with the settled charge');
+});

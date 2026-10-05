@@ -197,13 +197,14 @@ export function restoreLearning(
       const restore = (raw: unknown): QueuedActivity | null => {
         if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
         const item = raw as ObjectValue;
-        if (Object.keys(item).some(k => !['activityId','operationId','spec','hintsUsed','shown'].includes(k))) return null;
+        if (Object.keys(item).some(k => !['activityId','operationId','spec','hintsUsed','shown','model'].includes(k))) return null;
+        if (item.model !== undefined && (typeof item.model !== 'string' || !/^[A-Za-z0-9._:/@+-]{1,120}$/.test(item.model))) return null;
         if (typeof item.activityId !== 'string' || typeof item.operationId !== 'string' || !/^[a-zA-Z0-9._:-]{1,100}$/.test(item.activityId) ||
             !/^[a-zA-Z0-9._-]{1,80}$/.test(item.operationId) || !item.activityId.startsWith(`${item.operationId}:`)) return null;
         if (item.shown !== undefined && item.shown !== true) return null;
         if (item.hintsUsed !== undefined && (!Number.isInteger(item.hintsUsed) || (item.hintsUsed as number) < 0 || (item.hintsUsed as number) > 100)) return null;
         const spec = specs.verifySpec(item.spec);
-        return spec ? { activityId: item.activityId, operationId: item.operationId, spec, ...(item.shown ? { shown: true as const } : {}), ...(item.hintsUsed ? { hintsUsed: item.hintsUsed as number } : {}) } : null;
+        return spec ? { activityId: item.activityId, operationId: item.operationId, spec, ...(item.model ? { model: item.model as string } : {}), ...(item.shown ? { shown: true as const } : {}), ...(item.hintsUsed ? { hintsUsed: item.hintsUsed as number } : {}) } : null;
       };
       if (data.aiActivity !== undefined) {
         const current = restore(data.aiActivity);

@@ -45,3 +45,14 @@ test('environment collection survives a failing version lookup', async () => {
     { getVersion: async () => '0.1.0', build: '7', navigator: { userAgent: 'UA', userAgentData: { platform: 'Android' } } })
   assert.equal(ok.version, '0.1.0'); assert.equal(ok.build, '7'); assert.equal(ok.platform, 'Android')
 })
+
+test('report includes the per-model stats lines when given, unscrubbed but bounded', () => {
+  const stats = ['claude-sonnet-4-5-20250929: 3 sets · kept 11, rejected 1 schema + 0 semantic · 0 flagged · ≈ 4 2Z per set · 80% correct first try (10)']
+  const report = buildReport(environment, [], '', new Date('2026-10-04T12:00:00Z'), stats)
+  assert.ok(report.includes(`Model stats (this device)\n${stats[0]}\n`), 'long catalogue ids survive (the log scrubber would redact them)')
+  assert.ok(!buildReport(environment, [], '').includes('Model stats'), 'absent when not supplied')
+  assert.ok(buildReport(environment, [], '', new Date(), []).includes('Model stats (this device)\n(none)'))
+  const bounded = buildReport(environment, [], '', new Date(), Array(50).fill('x\u0007'.repeat(400)))
+  assert.ok(!bounded.includes('\u0007'))
+  assert.equal(bounded.split('\n').filter(l => l.startsWith('x')).length, 20)
+})
