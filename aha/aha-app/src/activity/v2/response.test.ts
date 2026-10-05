@@ -95,46 +95,47 @@ describe('choose', () => {
     assert.equal(c.verification, 'derived');
     rejects(compare('6', '4'), 'choose_ambiguous');
   });
-  it('lets the prose name the candidates without counting it as a leak', () => {
+  it('lets the prose name every candidate without counting it as a leak', () => {
     const c = compiled(edit(shadedFractionActivity, a => {
       a.aim.skills = ['3.NF.A.3'];
-      a.model.quantities = [q('p', 'count', '8'), q('a', 'fraction', '2/3'), q('b', 'fraction', '3/4'), q('big', 'fraction', 'max(a, b)')];
-      a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: null, wholes: null }, show: null }];
-      a.prompt = [{ text: 'Which is greater, {{a}} or {{b}}? Think of a whole cut into {{f.parts.n}}.', type: 'text' }];
-      a.response = { ask: 'big', candidates: ['a', 'b'], distractors: [], form: 'choose' };
-      a.support = { explanation: 'Compare {{a}} and {{b}}.', hints: [] };
+      a.model.quantities = [q('p', 'count', '3'), q('k', 'count', '2'), q('pb', 'count', '4'), q('kb', 'count', '3'), q('big', 'fraction', 'max(f.fraction, g.fraction)')];
+      a.model.structures = [
+        { id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: null }, show: null },
+        { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: null },
+      ];
+      a.prompt = [{ text: 'Which is greater, {{f.fraction}} or {{g.fraction}}?', type: 'text' }];
+      a.response = { ask: 'big', candidates: ['f.fraction', 'g.fraction'], distractors: [], form: 'choose' };
+      a.support = { explanation: 'Compare {{f.fraction}} and {{g.fraction}}.', hints: [] };
     }));
     assert.equal(c.key, '3/4');
   });
 });
 
 describe('select and order', () => {
-  const equivalents = () => edit(shadedFractionActivity, a => {
+  /** Two fraction stories and one written fraction: which equal the target? */
+  const fractions = (form: 'select' | 'order', values: { ka: string; pa: string; kb: string; pb: string; x: string }, direction: 'ascending' | 'descending' = 'ascending') => edit(shadedFractionActivity, a => {
     a.aim.skills = ['3.NF.A.3'];
-    a.model.quantities = [q('h', 'fraction', '1/2'), q('a', 'fraction', '2/4'), q('b', 'fraction', '3/8'), q('c', 'fraction', '4/8')];
-    a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: null, wholes: null }, show: null }];
-    a.model.quantities.push(q('p', 'count', '8'));
-    a.prompt = [{ text: 'Select every fraction equal to {{h}}. The whole has {{f.parts}}.', type: 'text' }];
-    a.response = { ask: 'h', candidates: ['a', 'b', 'c'], form: 'select' };
-    a.support = { explanation: 'Each names the same amount as {{h}}.', hints: [] };
+    a.model.quantities = [q('pa', 'count', values.pa), q('ka', 'count', values.ka), q('pb', 'count', values.pb), q('kb', 'count', values.kb), q('x', 'fraction', values.x), ...(form === 'select' ? [q('h', 'fraction', '1/2')] : [])];
+    a.model.structures = [
+      { id: 'f', kind: 'fraction', roles: { parts: 'pa', selected: 'ka', wholes: null }, show: null },
+      { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: null },
+    ];
+    a.prompt = [{ text: form === 'select' ? 'Select every fraction equal to {{h}}.' : 'Put these fractions in order.', type: 'text' }];
+    a.response = form === 'select' ? { ask: 'h', candidates: ['f.fraction', 'g.fraction', 'x'], form: 'select' } : { candidates: ['f.fraction', 'g.fraction', 'x'], direction, form: 'order' };
+    a.support = { explanation: 'Compare {{f.fraction}}, {{g.fraction}} and {{x}}.', hints: [] };
   });
   it('selects by value, showing each candidate in its own form', () => {
-    const c = compiled(equivalents());
+    const c = compiled(fractions('select', { pa: '4', ka: '2', pb: '8', kb: '3', x: '4/8' }));
     assert.deepEqual(c.spec, { type: 'multi_select', shuffle: true, options: [{ text: '$\\frac{2}{4}$', correct: true }, { text: '$\\frac{3}{8}$', correct: false }, { text: '$\\frac{4}{8}$', correct: true }] });
     assert.equal(c.key, 'select:0,2');
-    rejects(edit(equivalents, a => { a.model.quantities[2]!.value = '3/6'; }), 'select_split');
+    rejects(fractions('select', { pa: '4', ka: '2', pb: '6', kb: '3', x: '4/8' }), 'select_split');
   });
   it('orders by value and rejects ties', () => {
-    const order = (direction: 'ascending' | 'descending', values: [string, string, string]) => edit(equivalents, a => {
-      values.forEach((v, i) => { a.model.quantities[i + 1]!.value = v; });
-      a.prompt = [{ text: 'Order {{a}}, {{b}} and {{c}}. Think of {{h}} and {{f.parts}}.', type: 'text' }];
-      a.response = { candidates: ['a', 'b', 'c'], direction, form: 'order' };
-    });
-    rejects(order('ascending', ['2/4', '3/8', '4/8']), 'order_tie');
-    const c = compiled(order('ascending', ['2/4', '1/8', '5/8']));
+    rejects(fractions('order', { pa: '4', ka: '2', pb: '8', kb: '3', x: '4/8' }), 'order_tie');
+    const c = compiled(fractions('order', { pa: '4', ka: '2', pb: '8', kb: '1', x: '5/8' }));
     assert.equal(c.key, 'order:1,0,2');
-    assert.deepEqual(compiled(order('descending', ['2/4', '1/8', '5/8'])).key, 'order:2,0,1');
     assert.deepEqual(c.spec, { type: 'ordering', items: ['$\\frac{1}{8}$', '$\\frac{2}{4}$', '$\\frac{5}{8}$'] });
+    assert.equal(compiled(fractions('order', { pa: '4', ka: '2', pb: '8', kb: '1', x: '5/8' }, 'descending')).key, 'order:2,0,1');
   });
 });
 
