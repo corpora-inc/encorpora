@@ -1,16 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import type { Models } from '@free2z/sdk';
+import { Client, NativeTransport, type Models, type NativeBridge } from '@free2z/sdk';
 import { AUTO, chooseModel, choosableModels, describePick, estimate2z, eligible, modelMenu, readCatalog, readModelChoice, storedModelChoice } from './models.ts';
 
-/** A catalogue entry shaped as the SDK decodes `/v1/models` (amounts are bigint). Prices are milli-2Z per Mtok. */
+/** A catalogue entry shaped as the typed SDK decodes `/v1/models` (zuu #1137; amounts are bigint). Prices are milli-2Z per Mtok. */
 const entry = (id: string, input: number | undefined, output: number | undefined, extra: Record<string, unknown> = {}) => ({
   id, provider: 'test', display_name: `Test ${id}`, context_window: 128000n, max_output_tokens: 16384n,
   capabilities: {vision: false, tools: true, structured_output: true},
-  ...(input !== undefined && output !== undefined ? {prices: {input_milli_2z_per_mtok: BigInt(input), output_milli_2z_per_mtok: BigInt(output)}} : {}),
+  // As the SDK decodes it: `prices` is always an object, `{}` when nothing is published.
+  prices: input !== undefined && output !== undefined ? {input_milli_2z_per_mtok: BigInt(input), output_milli_2z_per_mtok: BigInt(output)} : {},
   min_charge_2z: 1n, ttfb_timeout_ms: 30000n, ...extra,
 });
-const catalog = (...models: unknown[]): Models => ({catalog_version: 1n, models} as unknown as Models);
+/** Like the SDK decoder, an entry always has `capabilities` and `prices` objects (`{}` when none were sent). */
+const catalog = (...models: Record<string, unknown>[]): Models =>
+  ({catalog_version: 1n, models: models.map(m => ({capabilities: {}, prices: {}, ...m}))} as unknown as Models);
 // Typical batch 4000 in / 2000 out: pro ≈ 30 2Z, standard ≈ 5 2Z, mini ≈ 2 2Z (1.2 rounded up).
 const pro = entry('pro', 2_500_000, 10_000_000);
 const standard = entry('standard', 500_000, 1_500_000);
@@ -29,18 +32,48 @@ test('estimate follows Free2Z\'s client formula: one round-up at the total, neve
 test('eligibility: explicit structured_output true, a 2600-token output ceiling and a context that holds the request', () => {
   const options = readCatalog(catalog(
     standard,
-    entry('no-caps', 1, 1, {capabilities: undefined}),
+    // The SDK decodes an absent `capabilities` as `{}`: nothing declared, so nothing supported.
+    entry('no-caps', 1, 1, {capabilities: {}}),
     entry('caps-false', 1, 1, {capabilities: {structured_output: false}}),
-    entry('caps-string', 1, 1, {capabilities: {structured_output: 'true'}}),
     entry('short-output', 1, 1, {max_output_tokens: 2048n}),
     entry('no-output', 1, 1, {max_output_tokens: undefined}),
     entry('small-context', 1, 1, {context_window: 8192n}),
-    entry('string-amounts', 1, 1, {max_output_tokens: '4096', context_window: '200000'}),
-    {id: 'bad id with spaces', capabilities: {structured_output: true}},
-    'not an object',
+    {id: 'bad id with spaces', capabilities: {structured_output: true}, prices: {}},
   ));
-  assert.deepEqual(options.filter(eligible).map(o => o.id), ['standard', 'string-amounts']);
+  assert.deepEqual(options.filter(eligible).map(o => o.id), ['standard']);
   assert.deepEqual(options.map(o => o.id).includes('bad id with spaces'), false, 'unusable ids are dropped');
+});
+
+/** A plugin-shaped `/v1/models` answer (decimal strings, booleans unchanged), decoded by the real SDK. */
+async function decoded(models: unknown[]): Promise<Models> {
+  const bridge = {models: async () => ({catalog_version: '7', includes_markup_bps: '0', models})} as unknown as NativeBridge;
+  return new Client(new NativeTransport(bridge)).models();
+}
+const pluginEntry = (id: string, capabilities?: Record<string, unknown>) => ({id, provider: 'openai', display_name: id, context_window: '128000',
+  max_output_tokens: '16384', ...(capabilities === undefined ? {} : {capabilities}), prices: {input_milli_2z_per_mtok: '500000', output_milli_2z_per_mtok: '1500000'},
+  min_charge_2z: '1', ttfb_timeout_ms: '30000'});
+
+test('eligibility reads the SDK\'s typed capabilities: only structured_output === true counts', async () => {
+  const catalogue = await decoded([
+    pluginEntry('yes', {vision: false, tools: false, reasoning: false, structured_output: true}),
+    pluginEntry('no', {structured_output: false}),
+    pluginEntry('absent'),
+    pluginEntry('null', {structured_output: null}),
+    pluginEntry('camel', {structuredOutput: true}),
+  ]);
+  assert.equal(typeof catalogue.models[0]!.capabilities.structured_output, 'boolean', 'typed by the SDK');
+  assert.equal(typeof catalogue.models[0]!.max_output_tokens, 'bigint', 'limits decoded to bigint');
+  assert.deepEqual(choosableModels(catalogue).map(o => o.id), ['yes']);
+  assert.deepEqual(readCatalog(catalogue).find(o => o.id === 'yes'), {
+    id: 'yes', name: 'yes', rank: 0, structured: true, maxOutputTokens: 16384n, contextWindow: 128000n,
+    inputRate: 500000n, outputRate: 1500000n, minCharge2z: 1n, batch2z: 5n, hold2z: 6n,
+  });
+  // The model-choice policy (#905) is unchanged over a typed catalogue.
+  assert.deepEqual([chooseModel(catalogue).id, chooseModel(catalogue).reason], ['yes', 'auto']);
+});
+
+test('a non-boolean capability is refused by the SDK decoder, so no catalogue (and no paid batch) comes from it', async () => {
+  await assert.rejects(decoded([pluginEntry('weird', {structured_output: 'true'})]), {code: 'invalid_response'});
 });
 
 test('auto picks the highest-priced eligible model within the 10 2Z ceiling', () => {

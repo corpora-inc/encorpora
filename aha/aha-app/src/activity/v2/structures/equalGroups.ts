@@ -66,8 +66,10 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
       lower(r, { asked }) {
         const g = n(r.groups), s = n(r.size), total = g * s;
         const sizeAsked = asked.has('size');
+        // Labels sit on the landing points (every size); when the size is asked, only the two ends are
+        // labeled, so the size stays countable on the ticks but is never printed.
         return {
-          type: 'number_line', min: 0, max: total, step: 1,
+          type: 'number_line', min: 0, max: total, step: 1, labelEvery: sizeAsked ? total : s,
           jumps: Array.from({ length: g }, (_, k) => ({ from: k * s, to: (k + 1) * s, ...(sizeAsked ? {} : { label: `+${s}` }) })),
         };
       },

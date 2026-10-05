@@ -803,6 +803,10 @@ export function Studio(props: StudioProps) {
             )}
             <div className="settings-buttons">
               {/* Account-only actions exist only once connected; disconnected shows Connect alone. */}
+              {/* A 403 budget refusal links to the app's Free2Z budget (free2z.cash/account/apps). */}
+              {props.account.connected && !props.account.aiReady && props.account.refusal === "raise_budget" && props.onManageAccount && (
+                <button className="primary-button" disabled={props.busy} onClick={props.onManageAccount}>Raise app budget in Free2Z <ArrowUpRight size={16} /></button>
+              )}
               {props.account.connected && props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
               {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
