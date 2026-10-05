@@ -96,7 +96,9 @@ export async function loadStateMatrix(root, { plan = 'all' } = {}) {
   }
 
   // Stride permutation (7 is coprime with 45) so any prefix spreads over grades and profiles.
-  const combos = GRADES.flatMap(g => PROFILES.map(pr => [g, pr]));
+  // A cold learner's frontier is one skill per domain of the grade, mostly outside the slice, so the slice
+  // plan leaves it out: both versions would be judged off-level for skills neither may author.
+  const combos = GRADES.flatMap(g => PROFILES.filter(pr => plan !== 'slice' || pr !== 'cold').map(pr => [g, pr]));
   return combos.map((_, k) => combos[(k * 7) % combos.length]).map(([grade, profile], k) => {
     const { summary, note } = build(grade, profile);
     return { id: `g${grade}-${profile}`, grade, profile, note, count: 3 + (k % 3), summary };
