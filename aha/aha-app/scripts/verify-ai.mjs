@@ -15,7 +15,9 @@ const {expectedAnswer}=await import(pathToFileURL(path.join(root,'src/learning/t
 const {fixtures}=await import(pathToFileURL(path.join(root,'src/activity/fixtures/index.ts')).href);
 // Numeric-answer TEST FIXTURES stand in for model-authored activities (typed answers keep the driver simple).
 const batchFixtures=fixtures.filter(f=>f.response.type==='numeric');
-const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','1436','--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
+// Overridable so parallel worktrees can run the suite at the same time.
+const port=Number(process.env.AHA_AI_PORT||1436),base=`http://127.0.0.1:${port}`;
+const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(specs){
   // Only this test owns localStorage. Production has no browser persistence fallback.
@@ -116,7 +118,7 @@ try {
   let ready=false;
   for(let i=0;i<100;i++){
     if(vite.exitCode!==null)throw new Error(`Vite exited: ${output}`);
-    try{if(stripVTControlCharacters(output).includes('http://127.0.0.1:1436')&&(await fetch('http://127.0.0.1:1436')).ok){ready=true;break;}}catch{}
+    try{if(stripVTControlCharacters(output).includes(base)&&(await fetch(base)).ok){ready=true;break;}}catch{}
     await new Promise(r=>setTimeout(r,100));
   }
   assert.ok(ready,output);
@@ -147,7 +149,7 @@ try {
   const aiCard=page.locator('.focus-stage.is-spec .aha-activity');
   // Settings open from the focus bar's status dot (closing returns to the problem) or from home. No gate (#870).
   const settings=async()=>{if(await page.locator('.status-dot').count()){await page.locator('.status-dot').click();await page.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();}else await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
-  await page.goto('http://127.0.0.1:1436');
+  await page.goto(base);
   // platform_disabled (Free2Z's pre-activation state): AI is not ready yet. Calm at launch: no alert.
   await page.getByRole('button',{name:'Let’s begin',exact:true}).click();
   assert.equal(await page.getByRole('alert').count(),0,'a platform that is not enforcing yet is not an alert');
@@ -425,7 +427,7 @@ try {
     const harder=h.getByRole('button',{name:'Try something harder',exact:true});
     const shown=async()=>(await hs()).aiActivity?.activityId;
     const waitShown=async id=>{await h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId===i,id);};
-    await h.goto('http://127.0.0.1:1436');
+    await h.goto(base);
     const begin=h.getByRole('button',{name:'Let’s begin',exact:true});
     await begin.click();
     await h.locator('.focus-stage.is-spec .aha-activity').waitFor();
@@ -472,7 +474,7 @@ try {
     await ctx.addInitScript(k=>{Object.assign(window.__ahaAI,k);},knobs);
     const p=await ctx.newPage();const pageErrors=[],logged=[],warned=[];
     p.on('pageerror',e=>pageErrors.push(e.message));p.on('console',m=>{if(m.type()==='error')logged.push(m.text());if(m.type()==='warning')warned.push(m.text());});
-    await p.goto('http://127.0.0.1:1436');
+    await p.goto(base);
     await p.getByRole('button',{name:'Let’s begin',exact:true}).click();
     await p.getByRole('button',{name:'Check',exact:true}).waitFor();
     const openSettings=async()=>{await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();};

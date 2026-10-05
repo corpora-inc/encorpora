@@ -26,10 +26,16 @@ export interface ActivityViewProps {
   /** Focus-mode stage: prompt first, no title or level chrome, the answer and Check docked in the
    * thumb zone. Hints and the explanation are shown by the host (the studio's help panel). */
   compact?: boolean;
-  /** compact: host content docked above the answer (help panel, errors, tool icons). */
+  /** compact: host content docked above the answer in a constant-height row (the tool icons). */
   dockTop?: React.ReactNode;
-  /** compact: host action shown in the Check position once the answer is graded (e.g. Next). */
+  /** compact: host action shown in the Check position once the answer is graded (e.g. Next). It
+   * takes the same slot at the same size, so the dock never moves. */
   next?: React.ReactNode;
+  /** compact: host overlays that float above the dock without reflowing the stage (the answer's
+   * feedback, the help drawer). When supplied, the host owns the answer feedback. */
+  overlay?: React.ReactNode;
+  /** compact: host overlay drawn over the problem region (e.g. the loading veil). */
+  stageOverlay?: React.ReactNode;
 }
 
 /** Deterministic display order so a re-render or restore never reshuffles under the learner. */
@@ -76,7 +82,7 @@ const initialDraft = (spec: ActivitySpec, initial?: LearnerResponse) => {
   };
 };
 
-export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme = 'light', initialHintsShown = 0, initialResponse, compact, dockTop, next }: ActivityViewProps) {
+export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme = 'light', initialHintsShown = 0, initialResponse, compact, dockTop, next, overlay, stageOverlay }: ActivityViewProps) {
   const r = spec.response;
   const [draft, setDraft] = useState(() => initialDraft(spec, initialResponse));
   const [hintsShown, setHintsShown] = useState(Math.min(initialHintsShown, spec.hints?.length ?? 0));
@@ -134,25 +140,32 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
       <article className="aha-activity is-compact" data-theme={theme === 'auto' ? undefined : theme} data-theme-auto={theme === 'auto' ? '' : undefined} aria-labelledby={`${spec.id}-title`}>
         <h2 id={`${spec.id}-title`} className="ax-visually-hidden">{spec.title ?? 'Activity'}</h2>
         <form className="ax-stage" onSubmit={e => { e.preventDefault(); submit(); }}>
-          <div className="ax-stage-scroll" data-stage-content="">
-            <div className="ax-prompt">
-              {spec.prompt.map((block, i) => {
-                if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
-                if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
-                const figure = figures.get(block.figureId);
-                return figure ? <FigureView key={i} figure={figure} interaction={interactionFor(figure)} /> : null;
-              })}
+          {/* Stable stage: the problem region and the dock keep their geometry for the whole item.
+              Everything transient floats over them (overlay, stageOverlay) and never reflows them. */}
+          <div className="ax-stage-area">
+            <div className="ax-stage-scroll" data-stage-content="">
+              <div className="ax-prompt">
+                {spec.prompt.map((block, i) => {
+                  if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
+                  if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
+                  const figure = figures.get(block.figureId);
+                  return figure ? <FigureView key={i} figure={figure} interaction={interactionFor(figure)} /> : null;
+                })}
+              </div>
+              {!docked && <div className="ax-response">{input}</div>}
             </div>
-            {!docked && <div className="ax-response">{input}</div>}
+            {stageOverlay}
           </div>
           <div className="ax-dock">
+            <div className="ax-overlay">
+              {overlay ?? (result && (
+                <div className={`ax-feedback-line ${result.invalid ? 'is-info' : result.correct ? 'is-correct' : 'is-retry'}`} role="status">
+                  {result.correct ? <Check size={20} aria-hidden="true" /> : <Sparkles size={20} aria-hidden="true" />}
+                  <strong>{result.invalid ?? (result.correct ? 'Yes, that’s it.' : 'Not quite yet.')}</strong>
+                </div>
+              ))}
+            </div>
             {dockTop}
-            {result && (
-              <div className={`ax-feedback-line ${result.invalid ? 'is-info' : result.correct ? 'is-correct' : 'is-retry'}`} role="status">
-                {result.correct ? <Check size={20} aria-hidden="true" /> : <Sparkles size={20} aria-hidden="true" />}
-                <strong>{result.invalid ?? (result.correct ? 'Yes, that’s it.' : 'Not quite yet.')}</strong>
-              </div>
-            )}
             <div className="ax-dock-row">
               {docked && <div className="ax-response" data-stage-content="">{input}</div>}
               {graded ? next : <button type="submit" className="ax-primary" disabled={!response || locked}>Check</button>}

@@ -10,13 +10,15 @@ const ownRoot=fileURLToPath(new URL('..',import.meta.url));
 const root=path.resolve(process.env.AHA_UI_APP_ROOT||ownRoot);
 const {expectedAnswer,answerCanBeNegative}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
 const {getSkill}=await import(pathToFileURL(path.join(root,'src/learning/curriculum.ts')).href);
-const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','1435','--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
+// Overridable so parallel worktrees can run the suite at the same time.
+const port=Number(process.env.AHA_UI_PORT||1435),base=`http://127.0.0.1:${port}`;
+const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(){
   // Only this test owns localStorage. Production has no browser persistence fallback.
   const key='aha-controller-test-fixture';
   const read=()=>JSON.parse(localStorage.getItem(key)||'null')||{profiles:[],sessions:{},activities:{},attempts:{},disputes:{},snapshots:{}};
-  window.__ahaFixture={failNextSession:false,read};window.isTauri=true;
+  window.__ahaFixture={failNextSession:false,hold:null,read};window.isTauri=true;
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:false,paidTestingReady:false,externalCheckoutEnabled:false,reason:'Test fixture: no AI service'};
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
@@ -29,7 +31,7 @@ function fixture(){
       case 'listProfiles':return db.profiles;
       case 'saveProfile':db.profiles=db.profiles.filter(p=>p.id!==id);db.profiles.push(r.data);break;
       case 'loadSession':return db.sessions[id]??null;
-      case 'saveSession':if(window.__ahaFixture.failNextSession){window.__ahaFixture.failNextSession=false;throw new Error('TEST disk full: session write rejected');}db.sessions[id]=r.data;break;
+      case 'saveSession':if(window.__ahaFixture.hold)await window.__ahaFixture.hold;if(window.__ahaFixture.failNextSession){window.__ahaFixture.failNextSession=false;throw new Error('TEST disk full: session write rejected');}db.sessions[id]=r.data;break;
       case 'saveActivity':(db.activities[id]??=[]).push(r.data);break;
       case 'listActivities':return db.activities[id]??[];
       case 'loadSnapshot':return db.snapshots[id]??null;
@@ -58,12 +60,12 @@ try{
   let ready=false;
   for(let i=0;i<100;i++){
     if(vite.exitCode!==null)throw new Error(`Vite exited: ${output}`);
-    try{if(stripVTControlCharacters(output).includes('http://127.0.0.1:1435')&&(await fetch('http://127.0.0.1:1435')).ok){ready=true;break;}}catch{}
+    try{if(stripVTControlCharacters(output).includes(base)&&(await fetch(base)).ok){ready=true;break;}}catch{}
     await new Promise(r=>setTimeout(r,100));
   }
   assert.ok(ready,`Vite startup: ${output}`);
   browser=await chromium.launch({headless:true});
-  const context=await browser.newContext({viewport:{width:1280,height:900}});await context.grantPermissions(['clipboard-read','clipboard-write'],{origin:'http://127.0.0.1:1435'});await context.addInitScript(fixture);
+  const context=await browser.newContext({viewport:{width:1280,height:900}});await context.grantPermissions(['clipboard-read','clipboard-write'],{origin:base});await context.addInitScript(fixture);
   const page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   const db=()=>page.evaluate(()=>window.__ahaFixture.read());
@@ -71,7 +73,7 @@ try{
   const records=async()=>Object.values((await db()).attempts).flat();
   const begin=async()=>{await page.getByRole('button',{name:'Let’s begin',exact:true}).click();await page.getByLabel('Your answer',{exact:true}).waitFor();return active();};
   const answer=async value=>{await enter(page,value);await page.getByRole('button',{name:'Check',exact:true}).click();};
-  await page.goto('http://127.0.0.1:1435');const first=await begin();assert.ok(first);
+  await page.goto(base);const first=await begin();assert.ok(first);
   const shown=await page.locator('.stage-prompt').innerText();
   await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
   await page.getByRole('button',{name:'Try something harder',exact:true}).click();
@@ -189,6 +191,7 @@ try{
     const answer=document.querySelector('.focus-dock input, .answer-symbols, .ax-dock .ax-response input, .ax-dock .ax-response button, .ax-stage-scroll .ax-response');
     const check=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Check');
     return {pageScroll:document.documentElement.scrollHeight>vh,stageScrolls:!!scroll&&scroll.scrollHeight>scroll.clientHeight+1,prompt:visible(prompt),answer:visible(answer)||!!answer?.closest('.ax-stage-scroll'),check:!!check&&check.getBoundingClientRect().bottom<=vh};});
+  const helpText=p=>p.locator('.help-panel .help-text').innerText().then(t=>t.trim());
   const passBar=async(p,label)=>{
     const tall=await layout(p);assert.equal(tall.pageScroll,false,`${label}: no page scroll at 384×832`);
     const words=await chrome(p);assert.ok(words.length<=12,`${label}: chrome text ≤ 12 words (${words.join(' ')})`);
@@ -199,7 +202,7 @@ try{
     assert.deepEqual([kbd.prompt,kbd.answer,kbd.check],[true,true,true],`${label}: prompt, answer and Check visible at 384×500`);
     return {...tall,words:words.length};
   };
-  await mobile.goto('http://127.0.0.1:1435');await mobile.getByRole('button',{name:'Let’s begin',exact:true}).waitFor();
+  await mobile.goto(base);await mobile.getByRole('button',{name:'Let’s begin',exact:true}).waitFor();
   assert.deepEqual(await smallTargets(mobile),[],'phone home tap targets are at least 44×44');
   await mobile.getByRole('button',{name:'Let’s begin',exact:true}).click();await mobile.getByRole('button',{name:'Check',exact:true}).waitFor();
   const phoneActive=name=>mobile.evaluate(name=>{const db=window.__ahaFixture.read();const id=name?db.profiles.find(p=>p.name===name)?.id:Object.keys(db.sessions)[0];return db.sessions[id]?.data?.activity;},name);
@@ -249,17 +252,133 @@ try{
   const {fixtures}=await import(pathToFileURL(path.join(root,'src/activity/fixtures/index.ts')).href);
   const scrollsInside=[];
   for(const f of fixtures){
-    await stage.goto(`http://127.0.0.1:1435/src/activity/gallery/stage.html?fixture=${f.id}`);
+    await stage.goto(`${base}/src/activity/gallery/stage.html?fixture=${f.id}`);
     await stage.getByRole('button',{name:'Continue',exact:true}).click();await stage.locator('.aha-activity.is-compact').waitFor();
     assert.equal(await stage.locator('.ax-head, .ax-level').count(),0,`${f.id}: no title or level chrome in the loop`);
     const r=await passBar(stage,`spec ${f.id}`);if(r.stageScrolls)scrollsInside.push(f.id);
-    if(f.hints?.length){await stage.getByRole('button',{name:'Hint',exact:true}).click();await stage.locator('.help-panel').waitFor();
-      assert.equal((await layout(stage)).check,true,`${f.id}: hint panel keeps Check on screen`);}
+    // #892: a help icon shows real content or is disabled; never an empty panel, and a re-opened
+    // panel still has its content (it used to open empty after it had been closed once).
+    const hintButton=stage.getByRole('button',{name:'Hint',exact:true});
+    assert.equal(await hintButton.isDisabled(),!f.hints?.length,`${f.id}: Hint is enabled exactly when the spec has hints`);
+    if(f.hints?.length){await hintButton.click();await stage.locator('.help-panel').waitFor();
+      assert.equal((await layout(stage)).check,true,`${f.id}: hint panel keeps Check on screen`);
+      assert.ok((await helpText(stage)).length>0,`${f.id}: the hint drawer has content`);
+      const head=f.explanation.split('$')[0].trim().slice(0,24);
+      if(head.length>8)assert.equal((await stage.locator('.help-panel').innerText()).includes(head),false,`${f.id}: a hint is not the worked explanation`);}
+    for(let k=0;k<2;k++){
+      await stage.getByRole('button',{name:'Show me how',exact:true}).click();await stage.locator('.help-panel.is-explain').waitFor();
+      assert.ok((await helpText(stage)).length>0,`${f.id}: Show me how has content (open ${k+1})`);
+      await stage.getByRole('button',{name:'Show me how',exact:true}).click();await stage.locator('.help-panel').waitFor({state:'detached'});
+    }
   }
   const fit=1-scrollsInside.length/fixtures.length;
   console.log(`Focus stage: ${localRuns.length} local tasks and ${fixtures.length} spec fixtures; page scroll in none. ${Math.round(fit*100)}% fit without scrolling inside the stage; inside-stage scroll (tall figures/tables, never the page): ${scrollsInside.join(', ')||'none'}.`);
   assert.ok(fit>=0.9,`at least 90% of fixtures fit the stage without inner scroll (${scrollsInside.join(', ')})`);
   await stageCtx.close();
+  // #892 stable stage. At the S26's 384×832 and an 820×1180 tablet, the focus bar, the problem
+  // region, the answer field and the Check/Next slot keep their boxes (≤1px) through every state of
+  // an item: typing, hint, Show me how, nudge, a wrong answer, an error, the curiosity and flag
+  // sheets, a correct answer with its celebration, the next item loading and the AI preparing its
+  // next lesson. Transient things are overlays, and none covers the answer field while the learner
+  // types. Only a new item may change the problem region's content.
+  const regions=p=>p.evaluate(()=>{
+    const box=el=>{if(!el)return null;const r=el.getBoundingClientRect();return [r.left,r.top,r.width,r.height];};
+    return {bar:box(document.querySelector('.focus-bar')),problem:box(document.querySelector('.stage-scroll, .ax-stage-scroll')),
+      input:box(document.querySelector('.focus-dock .answer-input-wrap input, .focus-dock .answer-symbols, .ax-dock .ax-response input')),
+      button:box([...document.querySelectorAll('.focus-dock .dock-row > .dock-primary, .ax-dock-row > button')].at(-1))};});
+  /** Elements drawn over the answer field (sampled at its center and inset corners). */
+  const coveringInput=p=>p.evaluate(()=>{
+    const input=document.querySelector('.focus-dock .answer-input-wrap input, .ax-dock .ax-response input');if(!input)return ['no answer field'];
+    const own=input.closest('.answer-input-wrap, .ax-response'),r=input.getBoundingClientRect(),hits=[];
+    for(const [x,y] of [[0.5,0.5],[0.1,0.2],[0.9,0.2],[0.1,0.8],[0.9,0.8]]){const el=document.elementFromPoint(r.left+r.width*x,r.top+r.height*y);
+      if(el&&!own.contains(el))hits.push(`${el.tagName.toLowerCase()}.${[...el.classList].join('.')}`);}
+    return [...new Set(hits)];});
+  const jumpLog=[];const jumps=[];
+  const stableStage=(p,tag)=>{let base;
+    return {reset:()=>{base=undefined;},
+      snap:async(state,{typing=false}={})=>{await p.waitForTimeout(60);const b=await regions(p);base??=b;
+        const moved=Object.fromEntries(Object.keys(b).map(k=>[k,b[k]&&base[k]?Math.max(...b[k].map((v,i)=>Math.abs(v-base[k][i]))):b[k]===base[k]?0:Infinity]));
+        for(const [k,d] of Object.entries(moved))if(d>1)jumps.push(`${tag} ${state}: ${k} moved ${d===Infinity?'(appeared/disappeared)':`${Math.round(d)}px`}`);
+        jumpLog.push(`${tag} ${state}: max ${Math.round(Math.max(...Object.values(moved).filter(Number.isFinite))*10)/10}px`);
+        if(typing){const over=await coveringInput(p);if(over.length)jumps.push(`${tag} ${state}: ${over.join(', ')} covers the answer field while typing`);}
+        if(stageShots)await p.screenshot({path:path.join(stageShots,`stable-${tag.replace(/\W+/g,'-')}-${state.replace(/\W+/g,'-')}.png`)});}};};
+  const stageShots=process.env.AHA_UI_SHOTS;
+  for(const [w,h] of [[384,832],[820,1180]]){
+    // Local practice, through the real controller and its test IPC fixture.
+    const ctx=await browser.newContext({viewport:{width:w,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});await ctx.addInitScript(fixture);
+    const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error'&&!/TEST disk full/.test(m.text()))errors.push(m.text());});
+    const shownTask=async()=>Object.values(await p.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity;
+    await p.goto(base);await p.getByRole('button',{name:'Let’s begin',exact:true}).click();await p.getByRole('button',{name:'Check',exact:true}).waitFor();
+    for(let i=0;i<8&&!(await p.getByLabel('Your answer',{exact:true}).count());i++){const before=(await shownTask()).id;
+      await p.getByRole('button',{name:'Try something harder',exact:true}).click();await p.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0]?.data.activity?.id!==id,before);await p.getByRole('button',{name:'Check',exact:true}).waitFor();}
+    const field=p.getByLabel('Your answer',{exact:true});assert.equal(await field.count(),1,'a typed-answer task for the stable-stage run');
+    const t=stableStage(p,`local ${w}×${h}`),task=await shownTask(),key=expectedAnswer(task.task),wrong=key==='0'?'1':'0';
+    await t.snap('initial');
+    await field.fill('1');await t.snap('typing',{typing:true});
+    await p.getByRole('button',{name:'Hint',exact:true}).click();await p.locator('.help-panel.is-hint').waitFor();await t.snap('hint open',{typing:true});
+    await p.getByRole('button',{name:'Hint',exact:true}).click();await p.locator('.help-panel').waitFor({state:'detached'});
+    await p.getByRole('button',{name:'Show me how',exact:true}).click();await p.locator('.help-panel.is-explain').waitFor();await t.snap('show me how open',{typing:true});
+    await p.getByRole('button',{name:'Close how it works',exact:true}).click();
+    await p.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
+    await field.fill(wrong);await p.getByRole('button',{name:'Check',exact:true}).click();
+    await p.locator('.stage-toast.nudge').waitFor();await p.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();await t.snap('nudge with an error');
+    await field.fill('2');await t.snap('typing after a nudge',{typing:true});
+    await p.getByRole('button',{name:'Dismiss',exact:true}).click();await p.getByRole('alert').waitFor({state:'detached'});
+    await field.fill(wrong);await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:'Next',exact:true}).waitFor();await t.snap('wrong answer');
+    await p.locator('.stage-toast').getByRole('button',{name:'See how',exact:true}).click();await p.locator('.help-panel.is-feedback').waitFor();await t.snap('see how after a miss');
+    await p.getByRole('button',{name:'Ask a question',exact:true}).click();await p.getByRole('dialog',{name:'Ask a question'}).waitFor();await t.snap('curiosity open');
+    await p.getByRole('button',{name:'Close',exact:true}).click();
+    await p.getByRole('button',{name:'Something seems off',exact:true}).click();await p.getByRole('dialog',{name:'Something seems off'}).waitFor();await t.snap('flag confirm');
+    await p.getByRole('button',{name:'Keep going',exact:true}).click();
+    await p.evaluate(()=>{window.__ahaFixture.hold=new Promise(r=>{window.__ahaFixture.release=r;});});
+    await p.getByRole('button',{name:'Next',exact:true}).click();await p.locator('.stage-veil').waitFor();
+    assert.equal(await p.locator('.dock-primary.is-busy').count(),1,'Next waits in its own slot');await t.snap('next item loading');
+    assert.ok(!(await chrome(p)).some(w=>/^Preparing|^Saving/.test(w)),'no waiting text row appears');
+    await p.evaluate(()=>{window.__ahaFixture.hold=null;window.__ahaFixture.release();});
+    await p.getByRole('button',{name:'Check',exact:true}).waitFor();await p.locator('.stage-veil').waitFor({state:'detached'});t.reset();
+    const next=await shownTask();await t.snap('next item');
+    await enter(p,expectedAnswer(next.task));await p.getByRole('button',{name:'Check',exact:true}).click();
+    await p.locator('.stage-toast.correct').waitFor();await t.snap('correct with celebration');
+    await ctx.close();
+    // AI-authored activity (TEST fixture spec) in the same stage, through the stage harness.
+    const sctx=await browser.newContext({viewport:{width:w,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+    const sp=await sctx.newPage();sp.on('pageerror',e=>errors.push(e.message));sp.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+    const spec=fixtures.find(f=>f.id==='fx-k-count-apples');assert.equal(spec.hints.length,2);
+    const openStage=async id=>{await sp.goto(`${base}/src/activity/gallery/stage.html?fixture=${id}`);await sp.getByRole('button',{name:'Continue',exact:true}).click();await sp.locator('.aha-activity.is-compact').waitFor();};
+    await openStage(spec.id);
+    const s=stableStage(sp,`spec ${w}×${h}`),answer=sp.locator('.ax-dock .ax-response input');
+    await s.snap('initial');
+    await answer.fill('3');await s.snap('typing',{typing:true});
+    await sp.getByRole('button',{name:'Hint',exact:true}).click();await sp.locator('.help-panel.is-hint').waitFor();await s.snap('hint open',{typing:true});
+    assert.equal(await helpText(sp),'Touch each apple once as you say a number.');
+    await sp.getByRole('button',{name:'Another hint',exact:true}).click();await sp.locator('.help-step').nth(1).waitFor();await s.snap('second hint',{typing:true});
+    assert.equal(await sp.getByRole('button',{name:'Another hint',exact:true}).count(),0,'no more hints to ask for');
+    await sp.getByRole('button',{name:'Close hint',exact:true}).click();
+    await sp.getByRole('button',{name:'Show me how',exact:true}).click();await sp.locator('.help-panel.is-explain').waitFor();await s.snap('show me how open',{typing:true});
+    assert.equal(await helpText(sp),spec.explanation,'Show me how shows the spec’s worked explanation');
+    await sp.keyboard.press('Escape');await sp.locator('.help-panel').waitFor({state:'detached'});
+    await sp.evaluate(()=>window.__stage.fail('TEST the save could not be confirmed.'));await sp.getByRole('alert').waitFor();await s.snap('error',{typing:true});
+    await sp.getByRole('button',{name:'Dismiss',exact:true}).click();
+    await sp.getByRole('button',{name:'Ask a question',exact:true}).click();await sp.getByRole('dialog',{name:'Ask a question'}).waitFor();
+    await sp.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();await sp.getByText('TEST answer',{exact:false}).waitFor();await s.snap('curiosity answered');
+    await sp.getByRole('button',{name:'Close',exact:true}).click();
+    await sp.getByRole('button',{name:'Something seems off',exact:true}).click();await sp.getByRole('dialog',{name:'Something seems off'}).waitFor();await s.snap('flag confirm');
+    await sp.getByRole('button',{name:'Keep going',exact:true}).click();
+    await answer.fill(String(spec.response.answer+1));await sp.getByRole('button',{name:'Check',exact:true}).click();
+    await sp.locator('.stage-toast.retry').waitFor();await s.snap('wrong answer');
+    await sp.locator('.stage-toast').getByRole('button',{name:'See how',exact:true}).click();await sp.locator('.help-panel.is-explain').waitFor();await s.snap('see how after a miss');
+    await sp.evaluate(()=>window.__stage.hold());await sp.getByRole('button',{name:'Next',exact:true}).click();
+    await sp.locator('.stage-veil').getByRole('button',{name:'Stop AI request',exact:true}).waitFor();await s.snap('AI preparing the next lesson');
+    assert.equal(await sp.getByRole('status').filter({hasText:'Preparing your next AI lesson…'}).count(),1,'the wait is announced to screen readers');
+    assert.ok(!(await chrome(sp)).includes('Preparing'),'and never shown as a text row that pushes the answer');
+    await sp.evaluate(()=>window.__stage.release());await sp.locator('.stage-veil').waitFor({state:'detached'});s.reset();await s.snap('next item');
+    await openStage('fx-2-coins');s.reset();
+    await s.snap('coins initial');await answer.fill('68');await sp.getByRole('button',{name:'Check',exact:true}).click();
+    await sp.locator('.stage-toast.correct').filter({hasText:'Yes, that’s it.'}).waitFor();await s.snap('correct with celebration');
+    await sctx.close();
+  }
+  assert.deepEqual(jumps,[],'the stable stage never moves the bar, the problem, the answer field or Check/Next within an item');
+  console.log(`Stable stage: ${jumpLog.length} state checks (local practice and an AI spec, 384×832 and 820×1180); largest movement ${Math.max(...jumpLog.map(l=>Number(l.match(/max ([\d.]+)px/)[1])))}px.`);
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
   const learner=await fresh.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
@@ -274,7 +393,7 @@ try{
     await learner.getByRole('button',{name:'Next',exact:true}).waitFor();return a;
   };
   const freshTask=async()=>{await learner.getByRole('button',{name:'Next',exact:true}).click();await learner.getByRole('button',{name:'Check',exact:true}).waitFor();};
-  await learner.goto('http://127.0.0.1:1435');await learner.getByRole('button',{name:'Let’s begin',exact:true}).click();await learner.getByLabel('Your answer',{exact:true}).waitFor();
+  await learner.goto(base);await learner.getByRole('button',{name:'Let’s begin',exact:true}).click();await learner.getByLabel('Your answer',{exact:true}).waitFor();
   const missed=await miss();await freshTask();
   assert.equal((await miss()).skillId,missed.skillId,'one miss is retried, not stepped down');await freshTask();
   const taught=await saved();
@@ -295,7 +414,7 @@ try{
   const respond=async value=>{await enter(retrier,value);await retrier.getByRole('button',{name:'Check',exact:true}).click();};
   const missFor=e=>['<','>','='].includes(e)?(e==='<'?'>':'<'):(e==='0'?'1':'0');
   const nextTask=async()=>{await retrier.getByRole('button',{name:'Next',exact:true}).click();await retrier.getByRole('button',{name:'Check',exact:true}).waitFor();};
-  await retrier.goto('http://127.0.0.1:1435');await retrier.getByRole('button',{name:'Let’s begin',exact:true}).click();await retrier.getByLabel('Your answer',{exact:true}).waitFor();
+  await retrier.goto(base);await retrier.getByRole('button',{name:'Let’s begin',exact:true}).click();await retrier.getByLabel('Your answer',{exact:true}).waitFor();
   for(const mode of ['save-fails','see-how','plain']){
     const task=await shownTask(),expected=expectedAnswer(task.task);
     if(mode==='save-fails')await retrier.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
@@ -373,7 +492,7 @@ try{
   const seedCtx=await browser.newContext({viewport:{width:390,height:844}});await seedCtx.addInitScript(fixture);
   const seeder=await seedCtx.newPage();seeder.on('pageerror',e=>errors.push(e.message));
   const seededTask=async()=>Object.values(await seeder.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity;
-  await seeder.goto('http://127.0.0.1:1435');await seeder.getByRole('button',{name:'Let’s begin',exact:true}).click();
+  await seeder.goto(base);await seeder.getByRole('button',{name:'Let’s begin',exact:true}).click();
   for(let i=0;i<6;i++){
     await seeder.getByRole('button',{name:'Check',exact:true}).waitFor();
     if(i%2){const before=(await seededTask()).id;await seeder.getByRole('button',{name:'Try something harder',exact:true}).click();await seeder.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0]?.data.activity?.id!==id,before);}
@@ -389,7 +508,7 @@ try{
     await ctx.addInitScript(db=>{if(!sessionStorage.getItem('seeded')){localStorage.setItem('aha-controller-test-fixture',db);sessionStorage.setItem('seeded','1');}},seeded);
     const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
     if(v.inset)await (await ctx.newCDPSession(p)).send('Emulation.setSafeAreaInsetsOverride',{insets:{top:40,bottom:v.inset,left:0,right:0}});
-    await p.goto('http://127.0.0.1:1435');await p.getByRole('button',{name:'Continue',exact:true}).waitFor();
+    await p.goto(base);await p.getByRole('button',{name:'Continue',exact:true}).waitFor();
     if(v.large)await p.addStyleTag({content:':root{font-size:20.8px!important}'});
     const tag=`${w}×${h}${v.inset?` inset ${v.inset}`:''}${v.large?' large text':''}`;
     const check=async screen=>{const r=await navClearance(p);clearanceChecks++;
