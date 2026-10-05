@@ -778,3 +778,18 @@ test('the vendored SDK carries response_format to the native plugin as plain JSO
   await client.estimate({model:'gpt-4o',messages:[],max_output_tokens:2600n,max_output_tokens_strict:true});
   assert.ok(!('response_format' in sent[1]),'absent is not on the wire');
 });
+test('a service error event carrying the refusal code after a charge never triggers the fallback',async()=>{
+  const f=structuredFixture([{type:'error',code:'response_format_unsupported',partial:false,settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'r'}} as any]);
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600',structured),{code:'response_format_unsupported'});
+  assert.equal(f.calls.length,1,'no second paid request after a charged call');
+  assert.equal(f.getValue().operations.length,1);assert.equal(f.getValue().operations[0].charge.state,'charged');
+});
+test('the per-call archive record omits the saved schema too',async()=>{
+  const f=structuredFixture();const archives:any[]=[];const put=f.journal.putJournal;
+  f.journal.putJournal=async(k,v)=>{if(k.startsWith('aha-call-'))archives.push(structuredClone(v));return put(k,v);};
+  const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600',structured);
+  await f.tutor.acknowledgeReply(reply.operationId);
+  await f.tutor.reply('verified-model','p','c',f.authorization);
+  assert.equal(archives.length,1);assert.ok(!('responseFormat' in archives[0].request));
+  assert.equal(archives[0].text,'{"activity":true}','the archive still keeps the reply and prompt');assert.equal(archives[0].request.messages.length,2);
+});

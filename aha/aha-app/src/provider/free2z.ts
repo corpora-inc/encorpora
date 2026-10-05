@@ -134,7 +134,13 @@ export function formatRefusal(error: unknown): boolean {
   if (details === undefined) return true;
   return object(details) && typeof details.reason === 'string' && FORMAT_REFUSAL_REASONS.includes(details.reason);
 }
-const formatUnsupported = () => new TutorServiceError(RESPONSE_FORMAT_UNSUPPORTED, 'Free2Z did not accept structured output for this model.');
+/**
+ * Marks the errors this module throws where it recognised a format refusal. The fallback tests for the private
+ * marker, never for the code string, which a service error event could also carry after a charge.
+ */
+const FORMAT_REFUSAL = Symbol('format refusal');
+const formatUnsupported = () => Object.assign(new TutorServiceError(RESPONSE_FORMAT_UNSUPPORTED, 'Free2Z did not accept structured output for this model.'), {[FORMAT_REFUSAL]: true});
+const isFormatRefusal = (error: unknown) => error instanceof TutorServiceError && (error as unknown as Record<symbol, unknown>)[FORMAT_REFUSAL] === true;
 function validResponseFormat(value: unknown): value is SavedResponseFormat {
   if (!object(value) || !keys(value, ['type','json_schema']) || value.type !== 'json_schema') return false;
   const spec: unknown = value.json_schema;
@@ -295,7 +301,8 @@ export class Free2zTutor {
   private async archiveFinalized(ledger: Ledger): Promise<void> {
     for (const op of ledger.operations) {
       if (op.state !== 'finalized' || this.deliverable(op) || (!op.text && !op.request.messages.length)) continue;
-      await this.journal.putJournal(`aha-call-${op.id}`, op);
+      // The schema is the app's own constant (about 28 KB); the archive keeps the prompt, reply and receipt.
+      await this.journal.putJournal(`aha-call-${op.id}`, {...op, request: {model: op.request.model, messages: op.request.messages, maxOutputTokens: op.request.maxOutputTokens}});
       op.text = ''; op.request = {model: op.request.model, messages: [], maxOutputTokens: op.request.maxOutputTokens};
     }
     await this.persist(ledger);
@@ -422,7 +429,7 @@ export class Free2zTutor {
         try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens); }
         catch (error) {
           // Fall back only after a refusal of the format itself, which cost nothing, and only with nothing left unsettled.
-          if (!(error instanceof TutorServiceError) || error.code !== RESPONSE_FORMAT_UNSUPPORTED || ledger.operations.some(op => op.state !== 'finalized')) throw error;
+          if (!isFormatRefusal(error) || ledger.operations.some(op => op.state !== 'finalized')) throw error;
           this.formatRefused.add(model);
           this.notice(`Free2Z refused response_format for ${model}; sent the prompt-only JSON request instead. The refusal cost nothing.`);
         }

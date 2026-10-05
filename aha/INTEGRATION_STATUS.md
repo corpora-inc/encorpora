@@ -52,8 +52,10 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   - A refusal during same-key recovery stays uncertain, as in #881.
 - **Journal v3.** A request records the exact `responseFormat` it was sent with. Same-key recovery
   rebuilds the identical body from the journal, whatever today's catalogue says. v1 and v2 journals
-  stay readable (their requests never carry a format) and are stored as v3 on first write. Archiving a
-  settled entry drops its saved schema.
+  stay readable (their requests never carry a format) and are stored as v3 on first write; an older
+  app build then reads that journal as invalid and pauses paid AI, failing closed as the v1-to-v2
+  change did. Archiving a settled entry drops its saved schema from both the live journal and the
+  per-call archive record.
 - **Validation stays mandatory.** Strict mode constrains shape only. keyCheck, figure references,
   TeX safety and the other semantic rules are still checked locally. The gateway forwards the
   schema's members sorted by name, so replies arrive with keys in alphabetical order (`activities`
