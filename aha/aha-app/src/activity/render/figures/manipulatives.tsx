@@ -315,9 +315,13 @@ export function RulerFigure({ figure: f }: { figure: FigureOf<'ruler'> }) {
 export function PictureFigure({ figure: f, tap }: { figure: DrawFigureOf<'picture'>; tap?: TapInteraction }) {
   const groups = pictureGroups(f);
   const total = groups.reduce((n, g) => n + g.count, 0);
-  const size = total > 60 ? 24 : total > 30 ? 28 : 34;
+  // Three or more groups in a row layout (equal groups) sit in a grid of compact cards, two or three
+  // across, so the whole set fits the stage at a countable size.
+  const many = groups.length >= 3 && (f.layout ?? 'row') === 'row';
+  const size = many ? 22 : total > 60 ? 24 : total > 30 ? 28 : 34;
+  const cols = groups.length === 4 ? 2 : 3;
   return (
-    <div className={`ax-picture ax-picture-${f.layout ?? 'row'}`} role={tap ? 'group' : 'img'} aria-label={f.alt}>
+    <div className={`ax-picture ax-picture-${f.layout ?? 'row'}${many ? ' is-many' : ''}`} style={many ? { gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` } : undefined} role={tap ? 'group' : 'img'} aria-label={f.alt}>
       {groups.map((g, gi) => {
         const [Icon, tone] = resolveIcon(g.icon);
         const c = g.color ?? tone;
@@ -350,7 +354,8 @@ export function PictureFigure({ figure: f, tap }: { figure: DrawFigureOf<'pictur
         } else if (arrangement === 'row') {
           body = <div className="ax-pic-grid ax-pic-row">{Array.from({ length: g.count }, (_, k) => icon(k))}</div>;
         } else {
-          const perRow = arrangement === 'grid' ? (g.count % 5 === 0 || g.count > 12 ? 5 : Math.ceil(Math.sqrt(g.count))) : g.count;
+          const square = g.count % 5 === 0 || g.count > 12 ? 5 : Math.ceil(Math.sqrt(g.count));
+          const perRow = many ? (g.count <= 4 ? g.count : g.count <= 8 ? Math.ceil(g.count / 2) : Math.min(4, square)) : arrangement === 'grid' ? square : g.count;
           body = <div className="ax-pic-grid" style={{ gridTemplateColumns: `repeat(${Math.min(perRow, g.count)}, ${size}px)` }}>{Array.from({ length: g.count }, (_, k) => icon(k))}</div>;
         }
         const selected = !!g.id && tap?.selected === g.id;

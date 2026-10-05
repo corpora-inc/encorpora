@@ -6,7 +6,9 @@
  *
  * First slice: the skills the four slice intents can model. A strong model drafts the full map from
  * CCSS and the progressions (step 11); the pedagogy lead reviews it. `'none'` means the structure may
- * be told in words with no figure.
+ * be told in words with no figure; `bare` skills may also use no structure at all (written numbers).
+ * 6.G.A.1 (polygon area by decomposition) waits for a triangle or composite intent: rectangle area
+ * alone is grade 3–4 work.
  */
 import type { ResponseForm } from './registry';
 import type { StructureKind } from './structures';
@@ -17,6 +19,11 @@ export interface Representation {
   forms: readonly ResponseForm[];
   /** The view that best anchors the concept, for the prompt (e.g. 3.NF.A.2 → line). */
   anchor?: string;
+  /**
+   * The skill may be practised with written numbers alone, no structure (comparing or ordering written
+   * fractions, 4.NF.A.2). Otherwise every activity models its math with at least one structure.
+   */
+  bare?: true;
 }
 
 export const REPRESENTATIONS: Readonly<Record<string, Representation>> = {
@@ -35,13 +42,12 @@ export const REPRESENTATIONS: Readonly<Record<string, Representation>> = {
   '3.MD.D.8': { structures: { rect_area: ['unit_squares', 'labeled', 'none'] }, forms: ['number', 'choose'], anchor: 'rect_area labeled' },
   '3.NF.A.1': { structures: { fraction: ['rect', 'circle', 'strip', 'set', 'none'] }, forms: ['fraction', 'choose', 'shade', 'tap'], anchor: 'fraction strip' },
   '3.NF.A.2': { structures: { fraction: ['line'] }, forms: ['place', 'fraction', 'choose'], anchor: 'fraction line' },
-  '3.NF.A.3': { structures: { fraction: ['rect', 'circle', 'strip', 'line', 'none'] }, forms: ['choose', 'select', 'order', 'fraction', 'number', 'tap', 'shade', 'place'], anchor: 'fraction strip' },
+  '3.NF.A.3': { structures: { fraction: ['rect', 'circle', 'strip', 'line', 'none'] }, forms: ['choose', 'select', 'order', 'fraction', 'number', 'tap', 'shade', 'place'], anchor: 'fraction strip', bare: true },
   '3.G.A.2': { structures: { fraction: ['rect', 'strip'] }, forms: ['shade', 'fraction', 'choose'], anchor: 'fraction rect' },
   '4.MD.A.3': { structures: { rect_area: ['labeled', 'none'] }, forms: ['number', 'choose'], anchor: 'rect_area labeled' },
-  '4.NF.A.1': { structures: { fraction: ['rect', 'circle', 'strip', 'none'] }, forms: ['fraction', 'choose', 'select', 'shade', 'tap'], anchor: 'fraction strip' },
-  '4.NF.A.2': { structures: { fraction: ['rect', 'circle', 'strip', 'none'] }, forms: ['choose', 'order', 'select', 'tap'], anchor: 'fraction strip' },
+  '4.NF.A.1': { structures: { fraction: ['rect', 'circle', 'strip', 'line', 'none'] }, forms: ['fraction', 'choose', 'select', 'shade', 'tap', 'place'], anchor: 'fraction strip', bare: true },
+  '4.NF.A.2': { structures: { fraction: ['rect', 'circle', 'strip', 'line', 'none'] }, forms: ['choose', 'order', 'select', 'tap', 'place'], anchor: 'fraction strip', bare: true },
   '5.NF.B.4': { structures: { fraction: ['rect'], rect_area: ['labeled'] }, forms: ['shade', 'number', 'fraction', 'choose'], anchor: 'rect_area labeled' },
-  '6.G.A.1': { structures: { rect_area: ['labeled', 'none'] }, forms: ['number', 'choose'], anchor: 'rect_area labeled' },
 };
 export const isRepresented = (skillId: string) => Object.hasOwn(REPRESENTATIONS, skillId);
 
@@ -50,6 +56,7 @@ export function representationIssues(skillId: string, structures: readonly { kin
   if (!isRepresented(skillId)) return [{ code: 'skill_unrepresented', message: `${skillId} has no representation set in this slice.` }];
   const rep = REPRESENTATIONS[skillId]!;
   const out: { code: string; message: string }[] = [];
+  if (!structures.length && !rep.bare) out.push({ code: 'representation', message: `${skillId} is modelled with a structure: use ${Object.keys(rep.structures).join(' or ')}.` });
   for (const s of structures) {
     const views = rep.structures[s.kind as StructureKind];
     const view = s.show ?? 'none';

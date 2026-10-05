@@ -216,6 +216,25 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   if ('on' in r && r.on) relevant.add(r.on);
   if (r.form === 'tap' && r.on === null) for (const sid of viewed.keys()) relevant.add(sid);
   for (const sid of viewed.keys()) if (!relevant.has(sid)) p(`prompt`, 'view_unrelated', `The view of ${sid} is not part of the math asked: the ask is not computed from it.`);
+  // Fractions are compared only on the same whole (CCSS 3.NF.A.3): when the answer sets the amounts of
+  // two fraction figures against each other (the ask is computed from both, an order of them, or shading
+  // one to match another), they are drawn with one view, so half of a strip is never matched to half of
+  // a rectangle of another size. The renderer draws consecutive fraction models side by side at one size.
+  // Selecting each model that shows a given fraction compares each to the number, not to each other.
+  const compared = new Set<string>();
+  const fractionOf = (sid: string) => model.structures.get(sid)?.def.kind === 'fraction';
+  const askSupport = (t: Target, seen = new Set<string>()): void => {
+    if (seen.has(t.key)) return;
+    seen.add(t.key);
+    if (t.kind === 'measure' && fractionOf(t.structure)) compared.add(t.structure);
+    if (t.kind === 'quantity') for (const b of model.bindings.get(t.id) ?? []) if (fractionOf(b.structure)) compared.add(b.structure);
+    for (const src of model.sources(t)) askSupport(src, seen);
+  };
+  if (ask && r.form !== 'select') askSupport(ask.target);
+  if ('on' in r && r.on && fractionOf(r.on)) compared.add(r.on);
+  if (r.form === 'order') for (const t of candidateTargets) if (t.kind === 'measure' && fractionOf(t.structure)) compared.add(t.structure);
+  const comparedViews = new Set([...compared].filter(sid => viewed.has(sid)).map(sid => String(model.structures.get(sid)!.wire.show)));
+  if (comparedViews.size > 1) p('prompt', 'wholes_differ', `Fractions compared with each other share one whole: draw them with one view (${[...comparedViews].join(' and ')} differ).`);
   /** Is this value part of the math asked: in the ask's support, or a role or measure of a figure that is part of it? */
   const mayReveal = (t: Target) => supportKeys.has(t.key)
     || (t.kind === 'measure' ? relevant.has(t.structure) : (model.bindings.get(t.id) ?? []).some(b => relevant.has(b.structure)));
@@ -245,8 +264,6 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     if (!isValueAttr(attr)) return fail('placeholder_member', `"${attr}" is not a placeholder member (n, noun, one, other, word, unit).`);
     const t = model.target(refPath.filter(Boolean));
     if (!t.ok) return t;
-    const bindings = model.bindings.get(t.value.kind === 'quantity' ? t.value.id : '') ?? [];
-    if (isQuantity && bindings.length) return fail('role_by_id', `${head} is bound to ${bindings[0]!.structure}.${bindings[0]!.role}; name it through the role: {{${bindings[0]!.structure}.${bindings[0]!.role}${attr ? `.${attr}` : ''}}}.`);
     if (t.value.kind === 'quantity') used.add(t.value.id);
     const described = model.describe(t.value);
     const key = t.value.key;
@@ -273,7 +290,7 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     return formatValue(described, attr, locale);
   };
   // Figure words the prose may use: those of the views the prompt shows (a "rectangle" beside a circle is not one).
-  const allowedViewWords = new Set([...viewed.values()].flatMap(v => v.words));
+  const allowedViewWords = new Set([...viewed.values()].flatMap(v => v.words).concat([...model.structures.values()].flatMap(st => st.def.words ?? [])));
   const renderOne = (source: string, mode: 'text' | 'math', scope: Scope, path: string): string | null => {
     const t = parseTempl(source, mode);
     if (!t.ok) { p(path, t.error.code, t.error.message); return null; }
@@ -293,11 +310,14 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
 
   // The reveal rule (README §7).
   const memo = new Map<string, Known>();
+  const optionKeys = r.form === 'choose' || r.form === 'select' || r.form === 'order' ? candidateKeys : new Set<string>();
   const status = (t: Target): Known => {
     const cached = memo.get(t.key);
     if (cached !== undefined) return cached;
     memo.set(t.key, 'unknown');
-    let k: Known = promptShown.has(t.key) ? 'shown' : 'unknown';
+    // The options of choose, select and order are on screen, so a value computed from them is knowable
+    // (the ask itself still has to be identified by the prompt or a view, never only by being an option).
+    let k: Known = promptShown.has(t.key) || (optionKeys.has(t.key) && t.key !== ask?.target.key) ? 'shown' : 'unknown';
     if (t.kind === 'quantity') {
       for (const b of model.bindings.get(t.id) ?? []) { const rv = reveals.get(b.structure)?.[b.role]; if (rv && rv !== 'hidden') k = stronger(k, rv); }
       // A derived value is computable from knowable sources; a given (no references) is known only if shown or countable.
@@ -330,9 +350,12 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       const countable = t.kind === 'quantity' && (model.bindings.get(t.id) ?? []).some(b => reveals.get(b.structure)?.[b.role] === 'countable');
       if (t.kind === 'quantity' && model.isGiven(t.id) && !countable)
         p('response.ask', 'ask_asserted', `${t.key} is a value the model states outright and no view makes countable, so the key would be asserted, not computed; ask a measure or a derived quantity.`);
-    } else if (!promptShown.has(t.key)) {
-      // Act forms: the target is the instruction. Whether the hosting view already marks it is checked when the response compiles.
-      p('response.ask', 'target_not_given', `${r.form} acts toward ${t.key}, but the prompt never states it; name it with a placeholder.`);
+    } else if (status(t) === 'unknown') {
+      // Act forms: the target is the instruction, so the learner must be able to know it: stated, shown or
+      // countable in a view ("every fraction equal to the shaded part"), or computable from what is on
+      // screen ("every fraction equal to the greatest"). Whether the hosting view already marks it is
+      // checked when the response compiles.
+      p('response.ask', 'target_not_given', `${r.form} acts toward ${t.key}, but the learner cannot know it: state it with a placeholder, or show it in a view.`);
     }
   }
 

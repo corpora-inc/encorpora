@@ -103,7 +103,7 @@ export function wireSchemas(range: GradeRange): WireSchemas {
         noun: z.strictObject({ icon: z.string().regex(ICON).nullable(), one: text(LIMITS.noun), other: text(LIMITS.noun) }).nullable(),
         unit: z.enum(UNIT_IDS).nullable(), value: expr(),
       })).min(1).max(LIMITS.quantities),
-      structures: z.array(union('kind', structures)).min(1).max(LIMITS.structures),
+      structures: z.array(union('kind', structures)).max(LIMITS.structures),
     }),
     prompt: z.array(union('type', [
       z.strictObject({ text: text(LIMITS.text), type: lit('text') }),

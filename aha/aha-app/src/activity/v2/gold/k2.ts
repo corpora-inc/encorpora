@@ -91,6 +91,6 @@ export const k2Gold: GoldSpec[] = [
       response: { ask: 'f.fraction', candidates: null, distractors: [{ expr: 'f.complement', tag: 'counted_unshaded' }], form: 'choose' },
       support: { explanation: '{{f.selected.n}} of {{f.parts.n}} equal parts is {{f.fraction.word}}.', hints: ['Count all the equal parts.'] },
     },
-    expect: { key: '1/3', prompt: ['A cake is cut into equal parts.', 'What part of the circle is shaded?'], alt: 'A circle cut into 3 equal parts; 1 part is shaded.' },
+    expect: { key: '1/3', prompt: ['A cake is cut into equal parts.', 'What part of the circle is shaded?'], alt: 'A circle cut into equal parts (part, part, part); shaded parts: part.' },
   },
 ];

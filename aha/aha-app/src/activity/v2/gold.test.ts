@@ -6,6 +6,7 @@ import { gold } from './gold';
 import { checkGold, goldResolved } from './gold/resolved';
 import { STRUCTURES } from './structures';
 import { BAND_IDS, RESPONSE_FORMS, bandOf, gradeNum } from './registry';
+import { REPRESENTATIONS } from './representations';
 import { getSkill } from '../../learning/curriculum';
 
 describe('gold set', () => {
@@ -16,7 +17,8 @@ describe('gold set', () => {
     const forms = new Set(gold.map(g => g.activity.response.form));
     for (const f of RESPONSE_FORMS) assert.ok(forms.has(f), `no gold spec answers by ${f}`);
     const bands = new Set(gold.map(g => bandOf(gradeNum(getSkill(g.activity.aim.skills[0]!)!.grade))));
-    for (const b of BAND_IDS) assert.ok(bands.has(b), `no gold spec in band ${b}`);
+    // Every band some represented skill falls in (6–8 has none in the first slice; representations.ts).
+    for (const b of BAND_IDS) if (Object.keys(REPRESENTATIONS).some(id => bandOf(gradeNum(getSkill(id)!.grade)) === b)) assert.ok(bands.has(b), `no gold spec in band ${b}`);
     assert.deepEqual([...new Set(gold.flatMap(g => g.fixes ? [g.fixes] : []))].sort(), ['live-1', 'live-2', 'live-3', 'live-4']);
     // Every act form a view hosts, except a tap inside one view: in this slice every such view has
     // equal regions, so it is always ill-posed (the mutation corpus holds that it is rejected).

@@ -40,13 +40,20 @@ function landing(r: Roles<R>, target: Value, verb: string, lo: number): { total:
   return { total, at: Number(at.n) };
 }
 /** Wholes cut into equal parts, the shaded ones counted (or listed countably when they are asked). */
+/**
+ * Whether a description gives a role as countable items ("part, part, part") instead of a number: when
+ * the role is the answer, or when a measure read from it is (asking for the fraction shaded while the
+ * screen reader says "3 of 8 parts are shaded" states it). The figure shows the same, to be counted.
+ */
+const MEASURES = ['fraction', 'complement', 'unit'] as const;
+const counted = (asked: Asked, role: 'parts' | 'selected') => asked.has(role) || MEASURES.some(m => asked.has(m));
 function describeParts(r: Roles<R>, asked: Asked, whole: string): string {
   const p = n(r.parts), w = wholesOf(r);
-  const cut = asked.has('parts') ? `cut into equal parts (${countable('part', 'parts', p)})` : `cut into ${p} equal parts`;
+  const cut = counted(asked, 'parts') ? `cut into equal parts (${countable('part', 'parts', p)})` : `cut into ${p} equal parts`;
   const wholes = w > 1 ? `${plural(w, whole, `${whole}s`)}, each ${cut}` : `A ${whole} ${cut}`;
   if (!r.selected) return `${wholes}; none are shaded.`;
   const k = n(r.selected);
-  return asked.has('selected') ? `${wholes}; shaded parts: ${countable('part', 'parts', k)}.` : `${wholes}; ${plural(k, 'part is', 'parts are')} shaded.`;
+  return counted(asked, 'selected') ? `${wholes}; shaded parts: ${countable('part', 'parts', k)}.` : `${wholes}; ${plural(k, 'part is', 'parts are')} shaded.`;
 }
 function areaView(model: 'area' | 'circle' | 'bar', noun: string, words: readonly string[], grades: readonly [number, number], draws: string): ViewDef<R> {
   return {
@@ -100,10 +107,10 @@ export const fraction: StructureDef<'fraction', R, V> = {
       fits: r => wholesOf(r) > 1 ? [issue('view_fit', 'A set is one whole; set wholes to null.')] : [],
       describe(r, asked) {
         const p = n(r.parts), N = nounOf(r.parts, 'object', 'objects');
-        const group = asked.has('parts') ? `A group of ${N.other}: ${countable(N.one, N.other, p)}` : `A group of ${plural(p, N.one, N.other)}`;
+        const group = counted(asked, 'parts') ? `A group of ${N.other}: ${countable(N.one, N.other, p)}` : `A group of ${plural(p, N.one, N.other)}`;
         if (!r.selected) return `${group}.`;
         const k = n(r.selected);
-        return asked.has('selected') ? `${group}; shaded: ${countable(N.one, N.other, k)}.` : `${group}; ${k} ${k === 1 ? 'is' : 'are'} shaded.`;
+        return counted(asked, 'selected') ? `${group}; shaded: ${countable(N.one, N.other, k)}.` : `${group}; ${k} ${k === 1 ? 'is' : 'are'} shaded.`;
       },
       lower(r) {
         const noun = req(r, 'parts').decl.noun;
@@ -119,11 +126,11 @@ export const fraction: StructureDef<'fraction', R, V> = {
       reveals: () => ({ parts: 'countable', selected: 'countable', wholes: 'shown', fraction: 'countable', complement: 'countable', unit: 'countable' }),
       describe(r, asked) {
         const p = n(r.parts), w = wholesOf(r);
-        const cut = asked.has('parts') ? `each whole cut into equal parts (${countable('part', 'parts', p)})` : `each whole cut into ${p} equal parts`;
+        const cut = counted(asked, 'parts') ? `each whole cut into equal parts (${countable('part', 'parts', p)})` : `each whole cut into ${p} equal parts`;
         const line = `A number line from 0 to ${w}, ${cut}`;
         if (!r.selected) return `${line}; no point is marked.`;
         const k = n(r.selected);
-        return asked.has('selected') ? `${line}; a point is marked after ${countable('part', 'parts', k)}.` : `${line}; a point is marked ${plural(k, 'part', 'parts')} after 0.`;
+        return counted(asked, 'selected') ? `${line}; a point is marked after ${countable('part', 'parts', k)}.` : `${line}; a point is marked ${plural(k, 'part', 'parts')} after 0.`;
       },
       place(r, target) { const l = landing(r, target, 'place', 0); return 'code' in l ? l : { ticks: l.total, target: l.at }; },
       lower(r) {

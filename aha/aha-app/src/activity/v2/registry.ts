@@ -132,6 +132,12 @@ export interface StructureDef<K extends string = string, R extends string = stri
   views: Readonly<Record<V, ViewDef<R>>>;
   /** When to use this intent, for the catalog. */
   use: string;
+  /**
+   * Words naming the modelled thing itself ("rectangle" for rect_area), legal in prose whenever the
+   * structure is in the model, shown or told in words: "a rectangular garden" names the math, not a
+   * figure. Figure words for anything else still need a shown view that declares them.
+   */
+  words?: readonly string[];
 }
 
 export const issue = (code: string, message: string): Issue => ({ code, message });

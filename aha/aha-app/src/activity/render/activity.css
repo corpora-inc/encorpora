@@ -74,6 +74,8 @@
 
 /* figures */
 .ax-figure { background: var(--ax-panel); border-radius: 16px; padding: 18px 16px 16px; margin: 6px 0; min-width: 0; overflow: hidden; }
+.ax-figure-row { display: grid; grid-template-columns: repeat(var(--ax-row-n, 2), minmax(0, 1fr)); gap: 8px; margin: 6px 0; }
+.ax-figure-row > .ax-figure, .ax-figure-row > .ax-pick { margin: 0; padding: 10px 6px; }
 .ax-figure-title { font-weight: 700; font-size: 0.95rem; text-align: center; margin: 0 0 10px; letter-spacing: 0.01em; }
 .ax-figure-body { min-width: 0; display: flex; justify-content: center; }
 .ax-figure-body > * { min-width: 0; }
@@ -192,6 +194,9 @@
 @container (max-width: 480px) { .ax-picture-column .ax-pic-group { flex-wrap: wrap; row-gap: 4px; } .ax-picture-column .ax-pic-label { width: 100%; } }
 .ax-picture-column .ax-pic-grid { display: flex; flex-wrap: wrap; justify-content: flex-start; flex: 1 1 0; min-width: 0; }
 .ax-pic-group { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 14px; background: var(--ax-card); border: 1px solid var(--ax-line); border-radius: 14px; min-width: 0; max-width: 100%; }
+.ax-picture.is-many { display: grid; gap: 6px; }
+.ax-picture.is-many .ax-pic-group { padding: 8px 6px; gap: 4px; }
+.ax-picture.is-many .ax-pic-grid { gap: 3px; }
 .ax-pic-group.is-tappable { cursor: pointer; min-height: 44px; }
 .ax-pic-group.is-tappable:hover { border-color: var(--ax-axis); }
 .ax-pic-group.is-selected { border-color: var(--ax-coral); box-shadow: 0 0 0 2px var(--ax-coral); }

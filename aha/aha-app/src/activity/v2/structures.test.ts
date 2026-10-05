@@ -62,7 +62,7 @@ describe('equal_groups', () => {
     assert.deepEqual(STRUCTURES.equal_groups.measures.total.noun(r), apples);
   });
   it('draws one group repeated, so the group count is structural', () => {
-    assert.deepEqual(drawn('equal_groups', 'objects', r), { type: 'picture', layout: 'row', groups: [{ icon: 'apple', count: 4, repeat: 3, arrangement: 'row', label: 'basket' }], id: 'f', alt: 'drawing' });
+    assert.deepEqual(drawn('equal_groups', 'objects', r), { type: 'picture', layout: 'row', groups: [{ icon: 'apple', count: 4, repeat: 3, arrangement: 'grid', label: 'basket' }], id: 'f', alt: 'drawing' });
   });
   it('draws jumps on a number line and hides their size when it is asked', () => {
     const line = drawn('equal_groups', 'jumps', r) as Extract<DrawFigure, { type: 'number_line' }>;

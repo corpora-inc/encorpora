@@ -154,7 +154,7 @@ export const g35Gold: GoldSpec[] = [
       response: { ask: 'f.fraction', distractors: [{ expr: 'f.complement', tag: 'counted_unshaded' }, { expr: 'k/(p-k)', tag: 'part_to_part' }], exactness: 'any', form: 'fraction' },
       support: { explanation: '{{f.selected.n}} of {{f.parts.n}} equal parts are shaded: {{f.fraction}}.', hints: ['Count all the equal parts first.'] },
     },
-    expect: { key: '3/8', prompt: ['A pizza is cut into equal slices.', 'What fraction of the circle is shaded?'], alt: 'A circle cut into 8 equal parts; 3 parts are shaded.' },
+    expect: { key: '3/8', prompt: ['A pizza is cut into equal slices.', 'What fraction of the circle is shaded?'], alt: 'A circle cut into equal parts (part, part, part, part, part, part, part, part); shaded parts: part, part, part.' },
   },
   {
     id: 'g3-fraction-strip-compare', note: 'compare two fractions with the same denominator on strips; choose among the candidates (3.NF.A.3d)',
@@ -169,7 +169,7 @@ export const g35Gold: GoldSpec[] = [
       response: { ask: 'big', candidates: ['f.fraction', 'g.fraction'], distractors: [{ expr: 'min(f.fraction, g.fraction)', tag: 'whole_number_bias' }], form: 'choose' },
       support: { explanation: 'Each {{f.view}} has {{f.parts.n}} equal parts, so {{g.fraction}} is more than {{f.fraction}}.', hints: ['The parts are the same size; count the shaded ones.'] },
     },
-    expect: { key: '5/8', prompt: ['Mia and Ben each run part of a track.', 'Which fraction is greater?'], alt: 'A strip cut into 8 equal parts; 3 parts are shaded.' },
+    expect: { key: '5/8', prompt: ['Mia and Ben each run part of a track.', 'Which fraction is greater?'], alt: 'A strip cut into equal parts (part, part, part, part, part, part, part, part); shaded parts: part, part, part.' },
   },
   {
     id: 'g3-fraction-line-place', note: 'place a fraction on a number line (3.NF.A.2)',
@@ -199,7 +199,7 @@ export const g35Gold: GoldSpec[] = [
       response: { ask: 'f.fraction', distractors: [{ expr: 'f.complement', tag: 'counted_unshaded' }], exactness: 'any', form: 'fraction' },
       support: { explanation: 'The point is {{f.selected.n}} parts of size {{f.unit}} from the start of the line: {{f.fraction}}.', hints: ['How many equal parts make one whole?'] },
     },
-    expect: { key: '2/3', prompt: ['What fraction does the point show?'], alt: 'A number line from 0 to 1, each whole cut into 3 equal parts; a point is marked 2 parts after 0.' },
+    expect: { key: '2/3', prompt: ['What fraction does the point show?'], alt: 'A number line from 0 to 1, each whole cut into equal parts (part, part, part); a point is marked after part, part.' },
   },
   {
     id: 'g3-fraction-set-marbles', note: 'a fraction of a set (3.NF.A.1, set model)',
@@ -214,7 +214,7 @@ export const g35Gold: GoldSpec[] = [
       response: { ask: 'f.fraction', distractors: [{ expr: 'f.complement', tag: 'counted_unshaded' }, { expr: 'k/(p-k)', tag: 'part_to_part' }], exactness: 'any', form: 'fraction' },
       support: { explanation: '{{f.selected.n}} of {{f.parts.n}} marbles: {{f.fraction}}.', hints: ['How many marbles are there in all?'] },
     },
-    expect: { key: '1/3', prompt: ['Some of the marbles in the group are shaded.', 'What fraction of the marbles are shaded?'], alt: 'A group of 6 marbles; 2 are shaded.' },
+    expect: { key: '1/3', prompt: ['Some of the marbles in the group are shaded.', 'What fraction of the marbles are shaded?'], alt: 'A group of marbles: marble, marble, marble, marble, marble, marble; shaded: marble, marble.' },
   },
   {
     id: 'g3-fraction-tap-model', note: 'tap the model that shows a fraction: a tap among views, uniqueness computed (3.NF.A.1)',

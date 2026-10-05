@@ -31,10 +31,18 @@ const { values: o } = parseArgs({
     n: { type: 'string' }, model: { type: 'string' }, effort: { type: 'string', default: 'low' }, structured: { type: 'string', default: 'auto' },
     provider: { type: 'string', default: 'auto' }, 'judge-provider': { type: 'string', default: 'auto' }, 'judge-model': { type: 'string' }, 'judge-effort': { type: 'string', default: 'medium' },
     'judge-json': { type: 'boolean', default: false }, 'no-judge': { type: 'boolean', default: false }, 'no-render': { type: 'boolean', default: false }, only: { type: 'string' },
-    concurrency: { type: 'string', default: '4' }, run: { type: 'string' }, port: { type: 'string', default: '1438' }, dry: { type: 'boolean', default: false },
+    concurrency: { type: 'string', default: '4' }, tools: { type: 'string', default: 'none' }, rounds: { type: 'string', default: '2' }, run: { type: 'string' }, port: { type: 'string', default: '1438' }, dry: { type: 'boolean', default: false },
   },
 });
 const v2 = o.spec === 'v2';
+// Function-calling arms (README §12.4), measured offline through the spec-eval MCP server.
+const toolMode = o.tools;
+if (!['none', 'intent', 'check', 'intent+check'].includes(toolMode) || (toolMode !== 'none' && !v2)) { console.error('spec-eval: --tools is none|intent|check|intent+check, and v2 only.'); process.exit(2); }
+const TOOL_OUTPUT = {
+  intent: count => `OUTPUT: write each activity by calling the write_<intent>_activity tool for its intent (write_bare_activity for written numbers alone), one call per activity, slots 1 to ${count}; you may make the calls in parallel. The tool's schema is the activity's shape. When all ${count} are written, reply "done".`,
+  'intent+check': count => `OUTPUT: write each activity by calling the write_<intent>_activity tool for its intent (write_bare_activity for written numbers alone), one call per activity, slots 1 to ${count}; you may make the calls in parallel. Each call answers with the app's verdict: if it is rejected, fix exactly what it names and call again with the same slot (at most ${o.rounds} revisions per slot). When every slot is accepted or out of revisions, reply "done".`,
+  check: () => `Before answering, call check_activity on each activity (at most ${o.rounds} checks per activity) and fix exactly what it rejects; it returns the app's verdict and the computed key. Then`,
+};
 const provider = pickProvider(o.provider);
 if (!provider && !o.dry) { console.error('spec-eval: neither `codex` nor `claude` CLI is available.'); process.exit(2); }
 const model = o.model ?? (provider === 'codex' ? 'gpt-6-astra' : provider === 'claude' ? 'haiku' : undefined);
@@ -60,9 +68,14 @@ if (o.only) jobs = jobs.filter(s => s.id.includes(o.only));
 const v2Prompts = jobs.map(s => V2.buildPromptV2(s.summary, { count: s.count, seed: s.id }));
 const prompts = jobs.map((s, k) => v2 ? v2Prompts[k]
   : v1Prompt.buildActivityPrompt(s.summary, { count: s.count, ...(o.slice ? { only: v2Prompts[k].allowedSkillIds } : {}) }));
-const systemOf = p => structured ? p.structuredSystem : p.system;
-const promptTokens = { system: Math.round(prompts.reduce((t, p) => t + v1Prompt.approxTokens(systemOf(p)), 0) / prompts.length), meanUser: Math.round(prompts.reduce((t, p) => t + v1Prompt.approxTokens(p.user), 0) / prompts.length), maxUser: Math.max(...prompts.map(p => v1Prompt.approxTokens(p.user))) };
-console.log(`spec-eval ${o.spec}: ${jobs.length} batches · ${structured ? 'structured' : 'prompt-only'} · prompt ~${promptTokens.system} system + ~${promptTokens.meanUser} user tokens (max ${promptTokens.maxUser})`);
+const systemOf = (p, count) => {
+  const base = structured ? p.structuredSystem : p.system;
+  if (toolMode === 'none') return base;
+  if (toolMode === 'check') return base.replace('OUTPUT:', `${TOOL_OUTPUT.check()} OUTPUT:`);
+  return base.replace(/OUTPUT:[\s\S]*?\n\nEXAMPLES/, `${TOOL_OUTPUT[toolMode](count)}\n\nEXAMPLES`);
+};
+const promptTokens = { system: Math.round(prompts.reduce((t, p, k) => t + v1Prompt.approxTokens(systemOf(p, jobs[k].count)), 0) / prompts.length), meanUser: Math.round(prompts.reduce((t, p) => t + v1Prompt.approxTokens(p.user), 0) / prompts.length), maxUser: Math.max(...prompts.map(p => v1Prompt.approxTokens(p.user))) };
+console.log(`spec-eval ${o.spec}${toolMode !== 'none' ? ` tools=${toolMode}` : ''}: ${jobs.length} batches · ${structured ? 'structured' : 'prompt-only'} · prompt ~${promptTokens.system} system + ~${promptTokens.meanUser} user tokens (max ${promptTokens.maxUser})`);
 if (o.dry) process.exit(0);
 
 const run = o.run ?? `${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-')}-${o.spec}-${model ?? provider}`;
@@ -76,9 +89,19 @@ const analyze = v2 ? V2.analyzeBatch : analyzeV1;
 let done = 0;
 const batches = await pool(jobs, concurrency, async (state, k) => {
   const p = prompts[k];
-  const reply = await complete({ provider, model, effort, system: systemOf(p), user: p.user, schema: structured && provider === 'codex' ? p.responseFormat.json_schema.schema : undefined, cacheDir: path.join(evalRoot, 'cache', 'author'), cacheParts: { sample: state.sample } });
-  const batch = reply.error ? { state: state.id, requested: state.count, returned: 0, replyChars: 0, replyApproxTokens: 0, rationale: '', batchErrors: [], items: [], callError: reply.error } : analyze(state, p, reply.text);
-  batch.state = state.id; batch.reply = reply.text;
+  const intentTools = toolMode.startsWith('intent');
+  const mcp = toolMode === 'none' ? undefined : { env: { AHA_MODE: toolMode, AHA_BAND: p.band, AHA_SKILLS: [...p.allowedSkillIds].join(','), AHA_COUNT: String(state.count), AHA_ROUNDS: o.rounds } };
+  const reply = await complete({ provider, model, effort, system: systemOf(p, state.count), user: p.user, schema: structured && provider === 'codex' && !intentTools ? p.responseFormat.json_schema.schema : undefined, mcp, cacheDir: path.join(evalRoot, 'cache', 'author'), cacheParts: { sample: state.sample } });
+  // Intent tools: the batch is each slot's last written activity, in slot order.
+  let text = reply.text;
+  if (intentTools && !reply.error) {
+    const last = new Map();
+    for (const c of reply.calls ?? []) if (c.slot !== undefined) last.set(c.slot, c.activity);
+    text = JSON.stringify({ activities: [...last.entries()].sort((a, b) => a[0] - b[0]).map(([, a]) => a) });
+  }
+  const batch = reply.error ? { state: state.id, requested: state.count, returned: 0, replyChars: 0, replyApproxTokens: 0, rationale: '', batchErrors: [], items: [], callError: reply.error } : analyze(state, p, text);
+  batch.state = state.id; batch.reply = text; batch.usage = reply.usage ?? null;
+  if (mcp) batch.toolCalls = { total: reply.calls?.length ?? 0, rejected: (reply.calls ?? []).filter(c => c.ok === false).length, codes: (reply.calls ?? []).flatMap(c => c.codes ?? []) };
   console.log(`[${++done}/${jobs.length}] ${state.id}: ${batch.items.filter(i => i.ok).length}/${batch.requested} valid${reply.cached ? ' (cached)' : ` (${Math.round(reply.ms / 1000)}s)`}${batch.callError ? ` CALL FAILED ${batch.callError}` : ''}`);
   return batch;
 });
@@ -110,7 +133,7 @@ if (!o['no-judge']) {
 
 for (const [k, batch] of batches.entries()) {
   const p = prompts[k];
-  writeFileSync(path.join(outDir, 'batches', `${batch.state}.json`), JSON.stringify({ state: { id: jobs[k].id, note: jobs[k].note, summary: jobs[k].summary }, prompt: { system: systemOf(p), user: p.user }, reply: batch.reply, batch: { ...batch, reply: undefined } }, null, 1));
+  writeFileSync(path.join(outDir, 'batches', `${batch.state}.json`), JSON.stringify({ state: { id: jobs[k].id, note: jobs[k].note, summary: jobs[k].summary }, prompt: { system: systemOf(p, jobs[k].count), user: p.user }, reply: batch.reply, batch: { ...batch, reply: undefined } }, null, 1));
 }
 
 // 4. Summary.
@@ -138,6 +161,14 @@ summary.goNoGo = {
   computedKeyShare: v2 && valid.length ? Math.round(1000 * valid.filter(i => i.verification === 'computed').length / valid.length) / 10 : null,
   meanReplyTokensPerAccepted: valid.length ? Math.round(batches.reduce((t, b) => t + (b.replyApproxTokens ?? 0), 0) / valid.length) : null,
   promptTokensPerBatch: promptTokens.system + promptTokens.meanUser,
+  // Measured by the CLI (all turns, tool calls included); codex input includes its own harness prompt.
+  usage: (() => {
+    const u = batches.map(b => b.usage).filter(Boolean);
+    if (!u.length) return null;
+    const sum = f => u.reduce((t, x) => t + (x[f] ?? 0), 0);
+    return { batches: u.length, inputPerBatch: Math.round(sum('input') / u.length), outputPerBatch: Math.round(sum('output') / u.length), turnsPerBatch: Math.round(10 * sum('turns') / u.length) / 10, outputPerAccepted: valid.length ? Math.round(sum('output') / valid.length) : null, inputPerAccepted: valid.length ? Math.round(sum('input') / valid.length) : null };
+  })(),
+  toolCalls: toolMode === 'none' ? null : { perBatch: Math.round(10 * batches.reduce((t, b) => t + (b.toolCalls?.total ?? 0), 0) / batches.length) / 10, rejected: batches.reduce((t, b) => t + (b.toolCalls?.rejected ?? 0), 0), codes: Object.fromEntries(Object.entries(batches.flatMap(b => b.toolCalls?.codes ?? []).reduce((m, c) => (m[c] = (m[c] ?? 0) + 1, m), {})).sort((a, b) => b[1] - a[1])) },
   rejectionCodes: v2 ? Object.fromEntries(Object.entries(items.flatMap(i => i.codes ?? []).reduce((m, c) => (m[c] = (m[c] ?? 0) + 1, m), {})).sort((a, b) => b[1] - a[1])) : null,
   themes: v2 ? Object.fromEntries(Object.entries(items.map(i => i.theme).reduce((m, c) => (m[c] = (m[c] ?? 0) + 1, m), {})).sort((a, b) => b[1] - a[1])) : null,
 };
@@ -157,4 +188,4 @@ Render problems: ${renderProblems.length} · fit the focus stage without inner s
 ${summary.judgeGaps.map(x => `- ${x}`).join('\n') || '- none'}
 `);
 if (sheet) sheet(outDir, { states: jobs, batches, summary, renderProblems });
-console.log(`\n${summaryMarkdown(summary).split('\n').slice(5, 26).join('\n')}\nGo/no-go: ${JSON.stringify({ ...g, rejectionCodes: undefined, themes: undefined })}\n\nWrote ${path.relative(root, outDir)}/{summary.md,summary.json${sheet ? ',index.html' : ''}}`);
+console.log(`\n${summaryMarkdown(summary).split('\n').slice(5, 26).join('\n')}\nGo/no-go: ${JSON.stringify({ ...g, rejectionCodes: undefined, themes: undefined, toolCalls: g.toolCalls ? { ...g.toolCalls, codes: undefined } : null })}\n\nWrote ${path.relative(root, outDir)}/{summary.md,summary.json${sheet ? ',index.html' : ''}}`);

@@ -112,5 +112,6 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
       },
     },
   },
+  words: ['rectangle', 'rectangles', 'shape'],
   use: 'area (tiling or w × h) and perimeter of one rectangle; a missing side is a derived quantity (h = a/w)',
 };

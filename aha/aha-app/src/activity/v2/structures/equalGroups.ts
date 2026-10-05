@@ -45,10 +45,12 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
         const size = req(r, 'size'), groups = req(r, 'groups');
         const noun = size.decl.noun;
         return {
-          type: 'picture', layout: n(groups) > 4 ? 'column' : 'row',
+          // Group cards wrap side by side (a compact grid of groups fits the stage); a card's icons sit in
+          // a square-ish grid from 4 up, so two or three cards share a row.
+          type: 'picture', layout: 'row',
           groups: [{
             icon: noun?.icon ?? noun?.one.toLowerCase().replace(/[^a-z]+/g, '_') ?? 'counter', count: n(size), repeat: n(groups),
-            arrangement: n(size) > 5 ? 'grid' : 'row', ...(groups.decl.noun ? { label: groups.decl.noun.one } : {}),
+            arrangement: n(size) > 3 ? 'grid' : 'row', ...(groups.decl.noun ? { label: groups.decl.noun.one } : {}),
           }],
         };
       },

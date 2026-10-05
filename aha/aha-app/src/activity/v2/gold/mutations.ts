@@ -168,7 +168,8 @@ export const MUTATION_CLASSES: MutationClass[] = [
     id: 'view_word', expects: ['view_word'],
     mutate(a) {
       // A figure word for a figure the prompt does not show (live failure 2: "rectangle" over a circle).
-      const shown = new Set(a.model.structures.flatMap(s => s.show && a.prompt.some(b => b.type === 'view' && b.of === s.id) ? (STRUCTURES[s.kind].views[s.show as never] as { words: readonly string[] }).words : []));
+      // Words a structure in the model declares for itself ("rectangle" for rect_area) are legal shown or not.
+      const shown = new Set(a.model.structures.flatMap(s => [...(s.show && a.prompt.some(b => b.type === 'view' && b.of === s.id) ? (STRUCTURES[s.kind].views[s.show as never] as { words: readonly string[] }).words : []), ...((STRUCTURES[s.kind] as { words?: readonly string[] }).words ?? [])]));
       const word = ['rectangle', 'circle', 'number line', 'bar graph'].find(w => !shown.has(w))!;
       const out: Mutant[] = [];
       for (const i of textBlocks(a)) {

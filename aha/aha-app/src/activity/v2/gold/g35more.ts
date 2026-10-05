@@ -187,7 +187,7 @@ export const g35MoreGold: GoldSpec[] = [
       response: { ask: 'f.complement', distractors: [{ expr: 'f.fraction', tag: 'complement_for_fraction' }], exactness: 'any', form: 'fraction' },
       support: { explanation: '{{f.parts.n}} parts, {{f.selected.n}} shaded, so {{f.complement}} is not shaded.', hints: ['Count the parts that are not shaded.'] },
     },
-    expect: { key: '5/6', prompt: ['One slice of a cake is eaten.', 'What fraction of the circle is not shaded?'], alt: 'A circle cut into 6 equal parts; 1 part is shaded.' },
+    expect: { key: '5/6', prompt: ['One slice of a cake is eaten.', 'What fraction of the circle is not shaded?'], alt: 'A circle cut into equal parts (part, part, part, part, part, part); shaded parts: part.' },
   },
   {
     id: 'g3-fraction-line-improper', note: 'place a fraction greater than one on a number line to two (3.NF.A.2, 3.NF.A.3c)',
@@ -217,7 +217,7 @@ export const g35MoreGold: GoldSpec[] = [
       response: { ask: 'f.fraction', distractors: [{ expr: 'p', tag: 'whole_number_bias' }], form: 'number' },
       support: { explanation: '{{f.fraction}} is one whole.', hints: ['How many parts make one whole?'] },
     },
-    expect: { key: '1', prompt: ['Every part of the rectangle is shaded. How many wholes is that?'], alt: 'A rectangle cut into 4 equal parts; 4 parts are shaded.' },
+    expect: { key: '1', prompt: ['Every part of the rectangle is shaded. How many wholes is that?'], alt: 'A rectangle cut into equal parts (part, part, part, part); shaded parts: part, part, part, part.' },
   },
   {
     id: 'g4-fraction-hundredths', note: 'hundredths told in words; no figure (4.NF.C.5 groundwork)',

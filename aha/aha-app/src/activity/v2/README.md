@@ -77,9 +77,11 @@ pedagogy.
    description. This extends the single-source pattern of #891.
 6. **No natural-language understanding of prose.** v2 never reads meaning back out of English.
    Prose rules are closed lists only ("no numerals outside placeholders").
-7. **Each fact has one binding site.** A quantity bound to a structure role is named in prose
-   *through the role* (`{{s.groups}}`), so the prose and the figure cannot disagree about which
-   number is which.
+7. **Each fact has one binding site.** A number is declared once, as a quantity; a structure binds
+   it, the figure is drawn from it and the prose prints it, so the prose and the figure cannot
+   disagree. The prose may name a bound quantity by its id (`{{g}}`) or through its role
+   (`{{s.groups}}`): both are the same quantity. (An earlier draft required the role form; the
+   spec-eval showed models fumbling it while it protected nothing.)
 8. **Variety operates inside the skill's representation set.**
 9. **Field order is reasoning order.** Wire keys are single lowercase words whose alphabetical
    order *is* the authoring order; a test pins it at every level.
@@ -656,8 +658,8 @@ Made while mapping the draft onto the v1 code; none changes the approved directi
    references.
 4. **`Response` is a union per form**, so `candidates`, `on`, `exactness` and `direction` exist only
    where they mean something (inexpressible first), instead of one object of nullable fields.
-5. **Role placeholders** (`{{s.groups}}`): a quantity bound to a role is named through the role, so
-   the prose cannot restate the structure's binding independently.
+5. **Role placeholders** (`{{s.groups}}`): a quantity bound to a role may be named through the role
+   or by its id; either prints the one quantity the structure binds.
 6. **Answer forms and act forms** split the reveal and leak rules: for `shade`, `place`, `tap`,
    `select` and `order` the target is the instruction and must be shown.
 7. **Leaks are referential**: the prompt may not state the ask, nor a quantity of the same kind,

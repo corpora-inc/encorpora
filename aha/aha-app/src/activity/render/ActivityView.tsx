@@ -164,6 +164,26 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
     );
   };
 
+  // Consecutive fraction models (wholes compared side by side) share one row, the same size each, so
+  // the wholes read as equal and several fit the stage; any other figure keeps its own full-width card.
+  const promptNodes: React.ReactNode[] = [];
+  for (let i = 0; i < spec.prompt.length; i++) {
+    const block = spec.prompt[i]!;
+    if (block.type === 'text') { promptNodes.push(<RichText key={i} as="p" text={block.text} className="ax-paragraph" />); continue; }
+    if (block.type === 'math') { promptNodes.push(<DisplayMath key={i} tex={block.tex} />); continue; }
+    const figure = figures.get(block.figureId);
+    if (!figure) continue;
+    const run: [number, DrawFigure][] = [[i, figure]];
+    while (figure.type === 'fraction_model' && i + 1 < spec.prompt.length) {
+      const next = spec.prompt[i + 1]!;
+      const f = next.type === 'figure' ? figures.get(next.figureId) : undefined;
+      if (f?.type !== 'fraction_model') break;
+      run.push([++i, f]);
+    }
+    promptNodes.push(run.length === 1 ? figureBlock(i, figure)
+      : <div key={`row${i}`} className="ax-figure-row" style={{ '--ax-row-n': Math.min(run.length, 3) } as React.CSSProperties}>{run.map(([k, f]) => figureBlock(k, f))}</div>);
+  }
+
   const hints = spec.hints ?? [];
   if (compact) {
     // Inputs that open the keyboard (or step a point) dock with Check; larger widgets stay with the prompt.
@@ -177,12 +197,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
           <div className="ax-stage-area">
             <div className={`ax-stage-scroll${docked ? '' : ' has-response'}`} data-stage-content="">
               <div className="ax-prompt">
-                {spec.prompt.map((block, i) => {
-                  if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
-                  if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
-                  const figure = figures.get(block.figureId);
-                  return figure ? figureBlock(i, figure) : null;
-                })}
+                {promptNodes}
               </div>
               {!docked && <div className="ax-response">{input}</div>}
             </div>
@@ -217,12 +232,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
       </header>
       <form className="ax-body" onSubmit={e => { e.preventDefault(); submit(); }}>
         <div className="ax-prompt">
-          {spec.prompt.map((block, i) => {
-            if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
-            if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
-            const figure = figures.get(block.figureId);
-            return figure ? figureBlock(i, figure) : null;
-          })}
+          {promptNodes}
         </div>
         <div className="ax-response">{input}</div>
         {hintsShown > 0 && (

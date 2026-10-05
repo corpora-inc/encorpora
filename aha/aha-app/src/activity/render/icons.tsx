@@ -93,16 +93,18 @@ export const ICONS: Record<string, readonly [LucideIcon, ColorToken]> = {
   pyramid: T(Pyramid, 'gold'),
 };
 
-/** Synonyms whose drawing is still the same kind of thing (a duck is a bird); never a different object. */
+/** Synonyms whose drawing is still the same kind of thing (a duck is a bird); never a different object:
+ * a muffin drawn as a cake slice contradicts the text (spec-eval), so an unmatched noun gets the neutral
+ * counter, which never does. */
 const ALIASES: Record<string, string> = {
   puppy: 'dog', kitten: 'cat', hare: 'rabbit', ant: 'bug', bee: 'bug', butterfly: 'bug', caterpillar: 'worm', chick: 'bird', duck: 'bird',
-  hen: 'bird', chicken: 'bird', owl: 'bird', parrot: 'bird', penguin: 'bird', goldfish: 'fish', cupcake: 'cake', muffin: 'cake', biscuit: 'cookie', pea: 'bean', acorn: 'nut', soda: 'juice',
-  sweet: 'candy', chocolate: 'candy', bowl: 'soup', spoon: 'fork', knife: 'fork', automobile: 'car', taxi: 'car', van: 'truck', jet: 'plane',
+  hen: 'bird', chicken: 'bird', owl: 'bird', parrot: 'bird', penguin: 'bird', goldfish: 'fish', biscuit: 'cookie', acorn: 'nut',
+  sweet: 'candy', chocolate: 'candy', bowl: 'soup', automobile: 'car', taxi: 'car', van: 'truck', jet: 'plane',
   canoe: 'boat', kayak: 'boat', ferry: 'ship', scooter: 'bike', soccer_ball: 'ball', basketball: 'ball', football: 'ball', baseball: 'ball',
   tennis_ball: 'ball', marble: 'circle', bead: 'circle', counter: 'circle', dot: 'circle', token: 'circle', disc: 'circle',
   toy: 'block', crystal: 'gem', ring: 'gem', trumpet: 'music', flute: 'music',
   song: 'music', marker: 'pencil', pen: 'pencil', paper: 'notebook', page: 'notebook', chest: 'box',
-  crate: 'box', bag: 'backpack', jar: 'glass', bottle: 'glass', bucket: 'paint', lantern: 'lamp', candle: 'flame', sunflower: 'flower',
+  crate: 'box', bag: 'backpack', lantern: 'lamp', sunflower: 'flower',
   forest: 'tree', cookies: 'cookie',
 };
 

@@ -16,12 +16,14 @@ describe('the live failures in v2', () => {
     assert.deepEqual(c.rendered.prompt.flatMap(b => b.type === 'text' ? [b.text] : []), ['Ana fills 3 baskets with 4 apples each.', 'How many apples are there in all?']);
     assert.equal(formatPlain(c.ask!.value.q), '12');
     assert.equal(c.ask!.target?.key, 's.total');
-    assert.deepEqual(c.drawings.get('s'), { type: 'picture', layout: 'row', groups: [{ icon: 'apple', count: 4, repeat: 3, arrangement: 'row', label: 'basket' }] });
+    assert.deepEqual(c.drawings.get('s'), { type: 'picture', layout: 'row', groups: [{ icon: 'apple', count: 4, repeat: 3, arrangement: 'grid', label: 'basket' }] });
     assert.equal(c.rendered.explanation, '3 groups of 4 make 12 apples.');
     assert.deepEqual(c.rendered.hints, ['How many apples are in each basket?']);
   });
-  it('live 1: the prose cannot restate the binding by quantity id', () => {
-    rejects(edit(equalGroupsActivity, a => { a.prompt[0] = { text: 'Ana fills {{g}} with {{n}} each.', type: 'text' }; }), 'role_by_id');
+  it('live 1: the prose prints the very numbers the figure draws, by id or through the role alike', () => {
+    const byId = valid(edit(equalGroupsActivity, a => { a.prompt[0] = { text: 'Ana fills {{g}} with {{n}} each.', type: 'text' }; }));
+    const byRole = valid(edit(equalGroupsActivity, a => { a.prompt[0] = { text: 'Ana fills {{s.groups}} with {{s.size}} each.', type: 'text' }; }));
+    assert.deepEqual(byId.rendered.prompt[0], byRole.rendered.prompt[0]);
     rejects(edit(equalGroupsActivity, a => { a.prompt[0] = { text: 'Ana fills 3 baskets with 4 apples each.', type: 'text' }; }), 'numeral');
     rejects(edit(equalGroupsActivity, a => { a.prompt[0] = { text: 'Ana fills three baskets with {{s.size}} each.', type: 'text' }; }), 'number_word');
   });
@@ -74,8 +76,9 @@ describe('L0 and skills', () => {
   it('makes off-band intents and views inexpressible', () => {
     rejects(edit(areaActivity, a => { a.aim.skills = ['6.G.A.1']; a.model.structures[0]!.show = 'unit_squares'; }), 'schema', 'g68');
     rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['6.G.A.1']; }), 'schema', 'g68');
+    // The band's schema decodes it, but 6.G.A.1 has no representation set yet (a rectangle alone is grade 3–4 work).
     const sixth = edit(areaActivity, a => { a.aim.skills = ['6.G.A.1']; a.model.structures[0]!.show = 'labeled'; });
-    assert.ok(check(sixth, 'g68').ok, JSON.stringify(codesOf(check(sixth, 'g68'))));
+    rejects(sixth, 'skill_unrepresented', 'g68');
   });
   it('holds each structure and view to its grades and to the skill\'s representation set', () => {
     rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['5.NF.B.4']; a.model.quantities[1]!.value = '4'; }), 'representation');
@@ -305,6 +308,38 @@ describe('review regressions: no path around the answer checks', () => {
     });
     assert.ok(check(sel('Count the shaded parts.')).ok, JSON.stringify(codesOf(check(sel('Count the shaded parts.')))));
     rejects(sel('Look for {{f.fraction}}.'), 'candidate_in_hint');
+  });
+  it('compares fractions only on the same whole (one view), but lets select check each model against a number', () => {
+    const order = (fShow: string, gShow: string) => edit(shadedFractionActivity, a => {
+      a.aim.skills = ['3.NF.A.3'];
+      a.model.quantities = [{ id: 'p', kind: 'count', noun: null, unit: null, value: '4' }, { id: 'k', kind: 'count', noun: null, unit: null, value: '1' }, { id: 'pb', kind: 'count', noun: null, unit: null, value: '3' }, { id: 'kb', kind: 'count', noun: null, unit: null, value: '1' }];
+      a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: null }, show: fShow as never }, { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: gShow as never }];
+      a.prompt = [{ text: 'Order the shaded amounts from least to greatest.', type: 'text' }, { of: 'f', type: 'view' }, { of: 'g', type: 'view' }];
+      a.response = { candidates: ['f.fraction', 'g.fraction'], direction: 'ascending', form: 'order' };
+      a.support = { explanation: 'Smaller parts make a smaller amount.', hints: [] };
+    });
+    rejects(order('circle', 'strip'), 'wholes_differ');
+    assert.ok(check(order('circle', 'circle')).ok, JSON.stringify(codesOf(check(order('circle', 'circle')))));
+    // Choosing the larger amount compares them too (the ask is computed from both).
+    const larger = (gShow: string) => edit(() => order('circle', gShow), a => {
+      a.model.quantities.push({ id: 'big', kind: 'fraction', noun: null, unit: null, value: 'max(f.fraction, g.fraction)' });
+      a.prompt[0] = { text: 'Which shaded amount is greater?', type: 'text' };
+      a.response = { ask: 'big', candidates: ['f.fraction', 'g.fraction'], distractors: [], form: 'choose' };
+    });
+    rejects(larger('strip'), 'wholes_differ');
+    assert.ok(check(larger('circle')).ok, JSON.stringify(codesOf(check(larger('circle')))));
+  });
+  it('lets a bare skill use written numbers alone, and holds every other skill to a structure', () => {
+    const bare = (skill: string) => edit(shadedFractionActivity, a => {
+      a.aim.skills = [skill];
+      a.model.quantities = [{ id: 'a', kind: 'fraction', noun: null, unit: null, value: '2/3' }, { id: 'b', kind: 'fraction', noun: null, unit: null, value: '3/5' }, { id: 'c', kind: 'fraction', noun: null, unit: null, value: '1/4' }];
+      a.model.structures = [];
+      a.prompt = [{ text: 'Order {{a}}, {{b}} and {{c}} from least to greatest.', type: 'text' }];
+      a.response = { candidates: ['a', 'b', 'c'], direction: 'ascending', form: 'order' };
+      a.support = { explanation: 'Rewrite them with a common denominator, then compare.', hints: [] };
+    });
+    assert.ok(check(bare('3.NF.A.3')).ok, JSON.stringify(codesOf(check(bare('3.NF.A.3')))));
+    rejects(edit(equalGroupsActivity, a => { a.model.structures = []; a.prompt = [{ text: 'What is {{g}} times {{n}}?', type: 'text' }]; a.response = { ask: 'g', distractors: [], form: 'number' }; }), 'representation');
   });
   it('knows a fraction complement reads its wholes', () => {
     rejects(edit(shadedFractionActivity, a => {

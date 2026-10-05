@@ -76,6 +76,6 @@ export const k2MoreGold: GoldSpec[] = [
       response: { ask: 'f.fraction', candidates: null, distractors: [{ expr: 'f.complement', tag: 'counted_unshaded' }, { expr: 'f.unit', tag: 'denominator_as_count' }], form: 'choose' },
       support: { explanation: '{{f.selected.n}} of {{f.parts.n}} equal parts is {{f.fraction.word}}.', hints: ['How many equal parts in all?'] },
     },
-    expect: { key: '2/3', prompt: ['Kim eats part of a fruit bar.', 'What part of the strip is shaded?'], alt: 'A strip cut into 3 equal parts; 2 parts are shaded.' },
+    expect: { key: '2/3', prompt: ['Kim eats part of a fruit bar.', 'What part of the strip is shaded?'], alt: 'A strip cut into equal parts (part, part, part); shaded parts: part, part.' },
   },
 ];
