@@ -11,11 +11,19 @@ test('only advertised usable model IDs are selected, with sufficient output capa
   ]}), 'current');
   assert.throws(() => chooseTutorModel({catalog_version: 1n, models: []}), /No suitable/);
 });
-test('balance and consent exhaustion have distinct recovery instructions', () => {
-  const cap = learningError(new SdkError('cap_exceeded'));
-  assert.match(cap, /authorization/);
-  assert.match(cap, /adding balance alone does not/);
-  assert.match(learningError(new SdkError('insufficient_balance')), /balance cannot cover/);
+test('balance and app-budget exhaustion have distinct recovery instructions', () => {
+  for (const cap of [learningError(new SdkError('cap_exceeded')), learningError(new TutorServiceError('cap_exceeded', 'x'))]) {
+    assert.match(cap, /budget/);
+    assert.match(cap, /adding balance alone does not/);
+  }
+  for (const low of [learningError(new SdkError('insufficient_balance')), learningError(new TutorServiceError('insufficient_balance', 'x'))]) {
+    assert.match(low, /balance is too low/);
+    assert.match(low, /nothing is added automatically/);
+  }
+});
+test('a platform that is not enforcing grants reads as AI not ready yet, with nothing charged', () => {
+  assert.match(learningError(new TutorServiceError('ai_not_ready', 'x')), /isn’t switched on.*yet.*Nothing was charged/);
+  assert.match(learningError(new TutorServiceError('budget_pending', 'x')), /still setting up.*Nothing was charged/);
 });
 test('capacity responses preserve wait requirements without exposing response metadata', () => {
   const error = new SdkError('unavailable', {retryAfterSeconds: 3.5, details: {private: 'DO_NOT_RENDER'}});

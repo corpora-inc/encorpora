@@ -23,7 +23,9 @@ function fixture(specs){
   const read=()=>JSON.parse(localStorage.getItem(key)||'null')||{profiles:[],sessions:{},activities:{},attempts:{},disputes:{},snapshots:{}};
   window.__ahaFixture={failNextSession:false,read};window.isTauri=true;
   const streams=new Map();
-  window.__ahaAI={signedIn:true,enforced:false,starts:[],requests:[],batches:0,delayModels:false,releaseModels:null,blockEstimate:false,grants:0,activityAccounts:[],malformedNext:false};
+  // TEST-ONLY grant/estimate knobs. Default: Free2Z's pre-activation state (enforced:false, platform_disabled)
+  // with a 100 2Z total app budget once enforced; scenarios switch to no budget or a low balance.
+  window.__ahaAI={signedIn:true,enforced:false,reason:'platform_disabled',spendCap:'100',capPeriod:'total',capRemaining:'99000',available:'100000',hold:'1',starts:[],requests:[],batches:0,delayModels:false,releaseModels:null,blockEstimate:false,grants:0,activityAccounts:[],malformedNext:false};
   const ai=window.__ahaAI;
   /** TEST "model": answers the batch prompt with fixture specs whose skills are in the standards window it was shown. */
   const batchText=user=>{
@@ -48,8 +50,8 @@ function fixture(specs){
     if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);if(ai.failSignIn){const e=ai.failSignIn;ai.failSignIn=null;throw e;}ai.signedIn=true;return session();}
     if(command==='plugin:f2z|session')return session();
     if(command==='plugin:f2z|sign_out'){if(ai.failSignOut)throw {code:'storage_error'};ai.signedIn=false;return {revoked:true,generation:'2'};}
-    if(command==='plugin:f2z|balance')return {available_milli_2z:'100000',held_milli_2z:'0',balance_milli_2z:'100000',debt_milli_2z:'0',as_of:new Date().toISOString()};
-    if(command==='plugin:f2z|grant'){ai.grants++;return {sub:'test-subject',client_id:'test-client',account_epoch:'0',grant_generation:'1',scopes:['ai:invoke'],spend_cap_2z:'100',cap_period:'total',enforced:ai.enforced,as_of:new Date().toISOString()};}
+    if(command==='plugin:f2z|balance')return {available_milli_2z:ai.available,held_milli_2z:'0',balance_milli_2z:ai.available,debt_milli_2z:'0',as_of:new Date().toISOString()};
+    if(command==='plugin:f2z|grant'){ai.grants++;return {sub:'test-subject',client_id:'test-client',account_epoch:'0',grant_generation:'1',scopes:['ai:invoke'],spend_cap_2z:ai.spendCap,cap_period:ai.capPeriod,enforced:ai.enforced,enforcement_reason:ai.enforced?'ok':ai.reason,as_of:new Date().toISOString()};}
     if(command==='plugin:f2z|models'){
       if(ai.delayModels)await new Promise(resolve=>{ai.releaseModels=resolve;});
       if(ai.models502)throw {code:'unavailable'};
@@ -59,7 +61,7 @@ function fixture(specs){
     if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&'max_output_tokens_strict' in args.request)throw new Error('TEST gateway rejects max_output_tokens_strict');
     if(command==='plugin:f2z|estimate'){
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
-      return {model:'fixture-model',input_tokens:'500',max_output_tokens:'1800',hold_2z:'1',cap_remaining_milli_2z:'99000'};
+      return {model:'fixture-model',input_tokens:'500',max_output_tokens:'1800',hold_2z:ai.hold,available_milli_2z:ai.available,cap_remaining_milli_2z:ai.capRemaining};
     }
     if(command==='plugin:f2z|start_chat'){
       ai.starts.push(args.operation);ai.requests.push(args.request);
@@ -139,18 +141,21 @@ try {
   // Settings open from the focus bar's status dot (closing returns to the problem) or from home. No gate (#870).
   const settings=async()=>{if(await page.locator('.status-dot').count()){await page.locator('.status-dot').click();await page.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();}else await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
   await page.goto('http://127.0.0.1:1436');
-  await page.getByRole('alert').filter({hasText:'enforced total spending limit'}).waitFor();
+  // platform_disabled (Free2Z's pre-activation state): AI is not ready yet. Calm at launch: no alert.
   await page.getByRole('button',{name:'Let’s begin',exact:true}).click();
+  assert.equal(await page.getByRole('alert').count(),0,'a platform that is not enforcing yet is not an alert');
+  assert.ok(consoleErrors.some(m=>/AI unavailable for connect/.test(m)&&/ai_not_ready/.test(m)),'the not-ready state is still logged visibly');
   // Signed in but AI unavailable: local practice in the SAME account partition, labeled local, no alert.
   await page.getByRole('button',{name:'Check',exact:true}).waitFor();
-  assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'unenforced grant never starts chat');
+  assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'platform_disabled never starts chat');
   assert.equal((await session()).activity.source,'local','fallback activity is recorded as local, never AI');
   assert.deepEqual(await page.evaluate(()=>window.__ahaAI.activityAccounts),['test-subject'],'fallback practice stays in the signed-in account partition');
   await localBanner.waitFor();
   assert.equal(await page.getByRole('alert').count(),0,'fallback is calm and non-blocking');
-  assert.ok(consoleErrors.some(m=>/local practice/i.test(m)&&/grant_verification_required/.test(m)),'fallback cause is logged visibly');
+  assert.ok(consoleErrors.some(m=>/local practice/i.test(m)&&/ai_not_ready/.test(m)),'fallback cause is logged visibly');
   await settings();
   await page.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
+  await page.getByText('Free2Z AI isn’t switched on for apps yet. Nothing was charged.',{exact:false}).first().waitFor();
   assert.equal(await page.getByText('Sign out to use',{exact:false}).count(),0,'no sign-out dead end');
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
   // Backoff: the very next task stays local without re-checking the grant.
@@ -358,7 +363,6 @@ try {
   await settings();await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByRole('alert').waitFor();
   assert.equal(await page.getByRole('button',{name:'Sign out',exact:true}).count(),1,'failed native deletion retains connected account UI');
-  // Reconnecting suggests the beta's 500 2Z total cap through the real SDK and guest API.
   await page.evaluate(()=>{window.__ahaAI.failSignOut=false;});
   await page.getByRole('button',{name:'Sign out',exact:true}).click();
   // Disconnected settings offer Connect only; account-only actions stay hidden (#862).
@@ -395,11 +399,11 @@ try {
   assert.ok(consoleWarnings.slice(warningsBeforeUnknown).some(m=>/sign-in/.test(m)&&/brand_new_code/.test(m)),'unknown sign-in code is logged visibly');
   assert.equal(await page.getByText('brand_new_code',{exact:false}).count(),0,'codes stay out of the UI');
   await disconnected('a failed sign-in stays disconnected');
-  // Reconnecting suggests the beta's 500 2Z total cap through the real SDK and guest API.
+  // Reconnecting suggests a modest 100 2Z monthly budget through the real SDK and guest API (optional; the user decides).
   await connect.click();
   await page.getByRole('button',{name:'Sign out',exact:true}).waitFor();
   assert.equal(await page.locator('.error-banner').count(),0,'a successful sign-in clears the earlier message');
-  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),Array(3).fill({spendCap:'500',spendPeriod:'total'}),'every sign-in carries only the spend-cap hint, as decimal strings');
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.signIns),Array(3).fill({spendCap:'100',spendPeriod:'month'}),'every sign-in carries only the optional spend-cap suggestion, as decimal strings');
   // ---- "Try something harder" never discards a paid, unanswered AI activity (#877; TEST fixture specs) ----
   {
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
@@ -453,8 +457,71 @@ try {
     assert.deepEqual(hErrors,[]);
     await ctx.close();
   }
+  // ---- Production spending policy, budget optional (#879; TEST-ONLY fake SDK, no live service) ----
+  const scenario=async knobs=>{
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    await ctx.addInitScript(k=>{Object.assign(window.__ahaAI,k);},knobs);
+    const p=await ctx.newPage();const pageErrors=[],logged=[];
+    p.on('pageerror',e=>pageErrors.push(e.message));p.on('console',m=>{if(m.type()==='error')logged.push(m.text());});
+    await p.goto('http://127.0.0.1:1436');
+    await p.getByRole('button',{name:'Let’s begin',exact:true}).click();
+    await p.getByRole('button',{name:'Check',exact:true}).waitFor();
+    const openSettings=async()=>{await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
+    const figure=async label=>(await p.locator('.balance-row > div').filter({has:p.getByText(label,{exact:true})}).locator('dd').textContent());
+    return {ctx,p,pageErrors,logged,openSettings,figure,starts:()=>p.evaluate(()=>window.__ahaAI.starts.length),
+      source:()=>p.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity?.source)};
+  };
+  {
+    // No app budget: paid AI runs on balance and estimate alone.
+    const s=await scenario({enforced:true,spendCap:null,capPeriod:'month',capRemaining:null});
+    await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal(await s.starts(),1,'no app budget: one paid batch call');
+    await s.openSettings();
+    assert.equal(await s.figure('App budget'),'No app budget');
+    assert.equal(await s.p.getByText('Budget left',{exact:true}).count(),0,'no remainder row without a budget');
+    assert.equal(await s.figure('Each batch of activities'),'About 1 2Z','cost per batch from the settled charge');
+    assert.equal(await s.figure('Available balance'),'100 2Z');
+    await s.p.getByRole('button',{name:'Manage allowance or balance',exact:false}).waitFor();
+    assert.equal(await s.p.getByRole('button',{name:'Add 2Z',exact:false}).count(),0,'no in-app purchase');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // A monthly app budget the user chose in Free2Z: shown read-only with what is left.
+    const s=await scenario({enforced:true,spendCap:'250',capPeriod:'month',capRemaining:'97500'});
+    await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal(await s.starts(),1,'a per-period budget of any size admits paid AI');
+    await s.openSettings();
+    assert.equal(await s.figure('App budget'),'250 2Z per month');
+    assert.equal(await s.figure('Budget left'),'97.5 2Z');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // platform_disabled with no budget: never a paid call; calm local practice.
+    const s=await scenario({enforced:false,reason:'platform_disabled',spendCap:null,capRemaining:null});
+    assert.equal(await s.starts(),0,'platform_disabled: no paid call');
+    assert.equal(await s.source(),'local','platform_disabled: local fallback');
+    assert.equal(await s.p.getByRole('alert').count(),0,'platform_disabled: no alert');
+    await s.openSettings();
+    await s.p.getByText('isn’t switched on for apps yet',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByText('App budget',{exact:true}).count(),0,'no budget figure until Free2Z enforces the grant');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // Insufficient balance: the estimate's hold (1 2Z) exceeds 0.5 2Z available. Calm message, local practice.
+    const s=await scenario({enforced:true,available:'500'});
+    assert.equal(await s.starts(),0,'an estimate above the balance is never sent');
+    assert.equal(await s.source(),'local','insufficient balance: local fallback');
+    assert.equal(await s.p.getByRole('alert').count(),0,'insufficient balance: no alert');
+    assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
+    await s.openSettings();
+    await s.p.getByText('Your Free2Z balance is too low for the next AI activities.',{exact:false}).first().waitFor();
+    await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
+    assert.equal(await s.figure('Available balance'),'0.5 2Z');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the sign-in spend-cap hint, and Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), and Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

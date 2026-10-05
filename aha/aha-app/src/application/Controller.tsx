@@ -30,9 +30,10 @@ import {
   TutorServiceError,
   getNativeClient,
   format2z,
-  type TestAuthorization,
+  type AppBudget,
+  type PaidAuthorization,
   type PendingOperation,
-  verifyTestGrant,
+  verifyPaidGrant,
   SIGN_IN_OPTIONS,
   type ResumeContext,
   type TutorReply,
@@ -44,6 +45,7 @@ import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline, signInFailure } from "./connection";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
+import { spendingSummary } from "./spending";
 import { logError, logEvent } from "../diagnostics/log";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
@@ -128,6 +130,8 @@ export default function Controller() {
   const provider = useRef<Free2zTutor | undefined>(undefined);
   const subject = useRef<string | undefined>(undefined);
   const selectedModel = useRef<string | undefined>(undefined);
+  /** The user's own app budget as last read from Free2Z (undefined: not read yet). Display only. */
+  const appBudget = useRef<AppBudget | undefined>(undefined);
   const retryAfter = useRef(0);
   const aiBackoff = useRef(new AiBackoff());
   const actionCancelled = useRef(false);
@@ -428,7 +432,7 @@ export default function Controller() {
   function assertActionActive() {
     if (actionCancelled.current) throw new Error("Stopped before starting another paid request. Your recorded progress is safe.");
   }
-  async function paidReply(model: string, system: string, context: string, authorization: TestAuthorization, origin: ResumeContext) {
+  async function paidReply(model: string, system: string, context: string, authorization: PaidAuthorization, origin: ResumeContext) {
     assertActionActive();
     return provider.current!.reply(model, system, context, authorization, origin);
   }
@@ -517,13 +521,22 @@ export default function Controller() {
     await deliverReply(reply);
     return true;
   }
-  async function paidAuthorization(foreground = true): Promise<TestAuthorization> {
+  /** Settings figures: balance stays as read; budget, remainder and batch cost come from the grant and provider. */
+  function showSpending(tutor = provider.current) {
+    if (!tutor || tutor !== provider.current) return;
+    const summary = spendingSummary(appBudget.current, tutor.spending());
+    setAccount(a => ({...a, budget: summary.budget, budgetLeft: summary.budgetLeft, batchCost: summary.batchCost}));
+  }
+  async function paidAuthorization(foreground = true): Promise<PaidAuthorization> {
     checkRetryDelay();
     const clientId = readiness.current?.clientId;
     if (!native || !clientId || !subject.current || !provider.current)
       throw new Error("Connect Free2Z in Settings before using AI tutoring.");
-    const policy = {subject: subject.current, clientId, maximum2z: 500n};
-    const verifiedGrant = await verifyTestGrant(getNativeClient(), policy);
+    const tutor = provider.current;
+    const policy = {subject: subject.current, clientId};
+    // Any app budget or none is the user's choice in Free2Z; only enforcement, identity and freshness gate here.
+    const verifiedGrant = await verifyPaidGrant(getNativeClient(), policy);
+    if (tutor === provider.current) { appBudget.current = verifiedGrant.budget; showSpending(tutor); }
     if (foreground) assertActionActive();
     return {...policy, verifiedGrant};
   }
@@ -541,9 +554,21 @@ export default function Controller() {
       selectedModel.current = chooseTutorModel(await client.models());
       setPendingUsage(await provider.current.inspectPending());
       aiBackoff.current.recordSuccess();
-      setAccount(a => ({...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance." + (session.persistence === "memory_only" ? " Sign-in could not be saved on this device; reconnect after restarting." : "")}));
+      setAccount(a => ({...a, aiReady: true, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance." + (session.persistence === "memory_only" ? " Sign-in could not be saved on this device; reconnect after restarting." : "")}));
     } catch (e) {
       setAccount(a => ({...a, aiReady: false, status: learningError(e)}));
+      throw e;
+    }
+  }
+  /** Connect-time check. Free2Z not enforcing grants yet is its expected pre-activation state, not an alert. */
+  async function connectAccount() {
+    try { await refreshConnection(); }
+    catch (e) {
+      if (e instanceof TutorServiceError && (e.code === "ai_not_ready" || e.code === "budget_pending")) {
+        logAiFallback("connect", e);
+        setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
+        return;
+      }
       throw e;
     }
   }
@@ -569,6 +594,7 @@ export default function Controller() {
           if (currentProvider === provider.current && alive.current) {
             setPendingUsage(pending);
             setSavedAnswers(replies.map(r => ({operationId:r.operationId, profileId:r.context?.profileId})));
+            showSpending(currentProvider);
           }
         } catch { /* The action error remains visible; session recovery stays explicit. */ }
       }
@@ -603,7 +629,7 @@ export default function Controller() {
                 status: readiness.current.reason,
               });
               await restorePaidAnswer();
-              await refreshConnection();
+              await connectAccount();
             }
           }
         }
@@ -789,7 +815,7 @@ export default function Controller() {
         throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       aiBackoff.current.recordSuccess();
       if (harder) wantsHarder.current = false;
-      setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Each lesson uses your Free2Z allowance."});
+      setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance."});
       void getNativeClient().balance()
         .then(b => { if (stillCurrent()) setAccount(a => ({...a, balance: format2z(b.available_milli_2z)})); })
         .catch(e => { logError("balance", e); if (stillCurrent()) setAccount(a => ({...a, status: "Balance refresh is temporarily unavailable. The request receipt remains recorded."})); });
@@ -800,6 +826,9 @@ export default function Controller() {
       if (!stillCurrent()) { logError(stage, e); return false; }
       aiUnavailable(stage, e);
       return false;
+    } finally {
+      // The last estimate or settled charge updates the read-only Settings figures.
+      if (epoch === accountEpoch.current) showSpending(tutor);
     }
   }
   /** Request the next batch in the background while the learner works on the last queued activity. */
@@ -1082,7 +1111,7 @@ export default function Controller() {
       );
     checkRetryDelay();
     const client = getNativeClient();
-    // Suggest the beta's 500 2Z total cap; paidAuthorization still verifies the confirmed grant.
+    // Suggest a modest monthly budget. The user may change or remove it on the consent screen; any choice works.
     let s;
     try {
       s = await client.signIn(SIGN_IN_OPTIONS);
@@ -1099,6 +1128,7 @@ export default function Controller() {
     subject.current = s.subject;
     const repo = new NativeRepository(s.subject);
     provider.current = new Free2zTutor(client, repo, s.subject);
+    appBudget.current = undefined;
     aiBackoff.current = new AiBackoff();
     setAccount({
       connected: true,
@@ -1106,7 +1136,7 @@ export default function Controller() {
       status: readiness.current.reason,
     });
     await loadAccount(repo);
-    await refreshConnection();
+    await connectAccount();
   }
   async function signOut() {
     await provider.current?.cancel();
@@ -1128,6 +1158,7 @@ export default function Controller() {
     subject.current = undefined;
     provider.current = undefined;
     selectedModel.current = undefined;
+    appBudget.current = undefined;
     aiBackoff.current = new AiBackoff();
     setAccount({connected: false, status: "Local practice · AI is not connected"});
     await loadAccount(new NativeRepository("local-device"));

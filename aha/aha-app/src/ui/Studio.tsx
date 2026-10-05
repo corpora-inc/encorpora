@@ -553,10 +553,12 @@ export function Studio(props: StudioProps) {
             {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
             {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
             {(props.account.connected || props.account.balance !== undefined) && (
-              <div className="balance-row">
-                <span>Available balance</span>
-                <strong>{props.account.balance ?? "Not checked yet"}</strong>
-              </div>
+              <dl className="balance-row">
+                <div><dt>Available balance</dt><dd>{props.account.balance ?? "Not checked yet"}</dd></div>
+                {props.account.budget && <div><dt>App budget</dt><dd>{props.account.budget}</dd></div>}
+                {props.account.budgetLeft && <div><dt>Budget left</dt><dd>{props.account.budgetLeft}</dd></div>}
+                {props.account.batchCost && <div><dt>Each batch of activities</dt><dd>{props.account.batchCost}</dd></div>}
+              </dl>
             )}
             {props.account.status && <p className="account-status">{props.account.status}</p>}
             {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (

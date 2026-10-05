@@ -84,6 +84,12 @@ export interface StudioProps {
     aiReady?: boolean;
     label?: string;
     balance?: string;
+    /** Read-only: the user's app budget as set in Free2Z, e.g. "100 2Z per month" or "No app budget". */
+    budget?: string;
+    /** What is left of that budget, when one is set and Free2Z has reported it. */
+    budgetLeft?: string;
+    /** Approximate 2Z per batch of AI activities (last settled charge, else the last estimate's upper bound). */
+    batchCost?: string;
     status?: string;
     purchaseAvailable?: boolean;
   };

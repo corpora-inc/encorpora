@@ -1,19 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Client, NativeTransport, SdkError, type NativeBridge } from '@free2z/sdk';
-import type { ChatEvent, ChatRequest, ChatStream, Session } from '@free2z/sdk';
-import { Free2zTutor, SIGN_IN_OPTIONS, TEST_SPEND_CAP_2Z, format2z, verifyTestGrant, type Journal, type SdkClient } from './free2z.ts';
+import type { ChatEvent, ChatRequest, ChatStream, Grant, Session } from '@free2z/sdk';
+import { Free2zTutor, SIGN_IN_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
 const session: Session = {signedIn:true,subject:'adult',generation:'one',grantedScopes:['ai:invoke'],persistence:'persistent'};
+/** Default fixture: an enforced 100 2Z monthly app budget. Every policy branch patches the grant or estimate. */
+const baseGrant = (): Grant => ({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:100n,cap_period:'month',enforced:true,enforcement_reason:'ok',as_of:new Date().toISOString()});
 function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}]) {
   let value: unknown; const calls: {request:ChatRequest; options:any}[] = []; let activeSession = session;
-  let cap: bigint | null = 500000n; let cancelled = 0;
+  let cap: bigint | null | undefined = 100000n; let available: bigint | undefined = 500000n; let hold = 1n; let cancelled = 0;
+  let grantPatch: Partial<Grant> & Record<string, unknown> = {};
   const journal: Journal = {getJournal:async()=>structuredClone(value),putJournal:async(key,v)=>{if(key==='aha-billing-v1')value=structuredClone(v);}};
   const client: SdkClient = {
     session:async()=>activeSession, signIn:async()=>session, signOut:async()=>({revoked:true,generation:'two'}),
-    balance:async()=>({available_milli_2z:500000n,held_milli_2z:0n,balance_milli_2z:500000n,debt_milli_2z:0n,as_of:new Date().toISOString()}),
-    grant:async()=>({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:500n,cap_period:'total',enforced:true,as_of:new Date().toISOString()}),
+    balance:async()=>({available_milli_2z:available ?? 500000n,held_milli_2z:0n,balance_milli_2z:available ?? 500000n,debt_milli_2z:0n,as_of:new Date().toISOString()}),
+    grant:async()=>({...baseGrant(),...grantPatch}) as Grant,
     models:async()=>({models:[{id:'verified-model'}],catalog_version:1n}),
-    estimate:async()=>({model:'verified-model',input_tokens:10n,max_output_tokens:1800n,hold_2z:1n,cap_remaining_milli_2z:cap}),
+    estimate:async()=>({model:'verified-model',input_tokens:10n,max_output_tokens:1800n,hold_2z:hold,
+      ...(available === undefined ? {} : {available_milli_2z:available}),...(cap === undefined ? {} : {cap_remaining_milli_2z:cap})}),
     call:async(id)=>({call_id:id,status:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}),
     chat:async(request,options)=>{
       assert.ok((value as any).operations.length, 'journal must precede potentially billable invocation');
@@ -22,19 +26,28 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
       return Object.assign(iterator,{operationId:options.operationId,idempotencyKey:options.idempotencyKey,callId:'call',cancel:async()=>{cancelled++;}}) as ChatStream;
     }
   };
-  return {client,journal,tutor:new Free2zTutor(client,journal,'adult'),calls,authorization:{subject:'adult',clientId:'aha-client',maximum2z:500n,verifiedGrant:{subject:'adult',clientId:'aha-client',sessionGeneration:'one',asOf:new Date().toISOString(),checkedAt:Date.now(),period:'total' as const,limit2z:500n}},setCap:(v:bigint|null)=>{cap=v;},setSession:(v:Session)=>{activeSession=v;},getValue:()=>value as any,cancelled:()=>cancelled};
+  const authorization: PaidAuthorization = {subject:'adult',clientId:'aha-client',verifiedGrant:{subject:'adult',clientId:'aha-client',sessionGeneration:'one',asOf:new Date().toISOString(),checkedAt:Date.now(),budget:{period:'month',limit2z:100n}}};
+  return {client,journal,tutor:new Free2zTutor(client,journal,'adult'),calls,authorization,
+    setCap:(v:bigint|null|undefined)=>{cap=v;},setAvailable:(v:bigint|undefined)=>{available=v;},setHold:(v:bigint)=>{hold=v;},
+    setGrant:(patch:Partial<Grant> & Record<string, unknown>)=>{grantPatch=patch;},
+    setSession:(v:Session)=>{activeSession=v;},setValue:(v:unknown)=>{value=structuredClone(v);},getValue:()=>value as any,cancelled:()=>cancelled};
+}
+/** A live authorization built the way the controller builds it: from the real grant adapter. */
+async function liveAuthorization(f: ReturnType<typeof fixture>): Promise<PaidAuthorization> {
+  const policy = {subject:'adult',clientId:'aha-client'};
+  return {...policy, verifiedGrant: await verifyPaidGrant(f.client, policy)};
 }
 test('formats balances without losing integer precision',()=>{assert.equal(format2z(9007199254740993123n),'9007199254740993.123 2Z');assert.equal(format2z(-1500n),'-1.5 2Z');});
 test('journals before invocation and persists finalized output and exact receipt',async()=>{const f=fixture();const r=await f.tutor.reply('verified-model','policy','context',f.authorization);assert.equal(r.text,'{"activity":true}');assert.equal(f.getValue().operations[0].charge.charged2z,'2');assert.equal(f.getValue().operations[0].state,'finalized');});
-test('estimate is not a cap; absent or excessive grant caps block any paid call',async()=>{for(const cap of [null,501000n]){const f=fixture();f.setCap(cap);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_cap_required'});assert.equal(f.calls.length,0);}});
+test('a budgeted grant needs the estimate to report the budget remainder; absent or null blocks any paid call',async()=>{for(const cap of [null,undefined]){const f=fixture();f.setCap(cap);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_verification_required'});assert.equal(f.calls.length,0);assert.equal(f.getValue()?.operations?.length ?? 0,0,'refused before any operation is journaled');}});
 test('a partial stream remains uncertain and blocks another paid call',async()=>{const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'interrupted'});assert.equal(f.getValue().operations[0].state,'interrupted');await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'settlement_pending'});assert.equal(f.calls.length,1);const summary=await f.tutor.reconcile();assert.equal(summary.pending,0);assert.equal(summary.spent2z,2n);});
 test('charged failures retain receipts and never automatically retry',async()=>{const f=fixture([{type:'error',code:'provider_error',partial:true,settlement:'settled',charge:{state:'charged',charged2z:3n,receiptId:'r'}}]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'provider_error'});assert.equal(f.calls.length,1);assert.equal(f.getValue().operations[0].charge.charged2z,'3');});
 test('account mismatch prevents billable work',async()=>{const f=fixture();f.setSession({...session,subject:'another'});await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'account_changed'});assert.equal(f.calls.length,0);});
 test('same-operation recovery preserves request and key; never starts a fresh operation',async()=>{const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));const op=f.getValue().operations[0];await assert.rejects(f.tutor.recover(op.id,f.authorization));assert.deepEqual(f.calls[0],f.calls[1]);});
 test('concurrent generation cannot double charge on duplicate taps',async()=>{const f=fixture();const first=f.tutor.reply('verified-model','p','c',f.authorization);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'busy'});await first;assert.equal(f.calls.length,1);});
-test('remaining authorization includes finalized charges, not only current call estimate',async()=>{const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_cap_required'});assert.equal(f.calls.length,1);f.setCap(498000n);await f.tutor.reply('verified-model','p','c',f.authorization);assert.equal(f.calls.length,2);});
+test('the service budget remainder, not an app-side tally of past charges, bounds new calls',async()=>{const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization);await f.tutor.reply('verified-model','p','c',f.authorization);assert.equal(f.calls.length,2,'no app-side ceiling');f.setCap(999n);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cap_exceeded'});assert.equal(f.calls.length,2);});
 
-test('unverified or periodic grant metadata cannot authorize paid tests',async()=>{const f=fixture();await assert.rejects(f.tutor.reply('verified-model','p','c',{subject:'adult',clientId:'aha-client',maximum2z:500n} as any),{code:'grant_verification_required'});assert.equal(f.calls.length,0);});
+test('an authorization without a verified grant cannot start paid work',async()=>{const f=fixture();await assert.rejects(f.tutor.reply('verified-model','p','c',{subject:'adult',clientId:'aha-client'} as any),{code:'grant_verification_required'});assert.equal(f.calls.length,0);});
 test('cancel during opening journal write prevents invocation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')await f.tutor.cancel();};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});assert.equal(f.calls.length,0);});
 test('account change during opening journal write prevents invocation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')f.setSession({...session,generation:'new'});};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cancelled'});assert.equal(f.calls.length,0);});
 test('disk full while streaming cannot skip native cancellation',async()=>{const f=fixture();const original=f.journal.putJournal;f.journal.putJournal=async(k,v)=>{if(['streaming','interrupted'].includes(v.operations?.at(-1)?.state))throw new Error('disk full');await original(k,v);};await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'journal_write_failed'});assert.ok(f.cancelled()>0);assert.equal(f.getValue().operations[0].state,'opening');});
@@ -104,21 +117,23 @@ test('recovery rechecks current grant proof even when opening never reached the 
   f.journal.putJournal=write;assert.equal(f.calls.length,0);
   const op=f.getValue().operations[0];
   await assert.rejects(f.tutor.recover(op.id,undefined as any),{code:'authorization_required'});
-  await assert.rejects(f.tutor.recover(op.id,{...f.authorization,verifiedGrant:{...f.authorization.verifiedGrant,period:'day'} as any}),{code:'grant_verification_required'});
-  for(const cap of [null,501000n,0n]) {
-    f.setCap(cap);await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'grant_cap_required'});
+  await assert.rejects(f.tutor.recover(op.id,{...f.authorization,verifiedGrant:{...f.authorization.verifiedGrant,subject:'other'}}),{code:'grant_verification_required'});
+  for(const [cap,code] of [[null,'grant_verification_required'],[0n,'cap_exceeded'],[999n,'cap_exceeded']] as const) {
+    f.setCap(cap);await assert.rejects(f.tutor.recover(op.id,f.authorization),{code});
   }
-  assert.equal(f.calls.length,0);f.setCap(500000n);
+  f.setCap(100000n);f.setGrant({enforced:false,enforcement_reason:'platform_disabled'});
+  await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'ai_not_ready'});
+  assert.equal(f.calls.length,0);f.setGrant({});
   await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'interrupted'});
   assert.equal(f.calls.length,1);assert.equal(f.calls[0].options.idempotencyKey,op.key);
   assert.equal(f.calls[0].options.operationId,op.id);
 });
-test('recovery includes previous finalized spend in its cap bound',async()=>{
+test('recovery is bounded by the current balance and budget remainder, whatever was spent before',async()=>{
   const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
   const op=f.getValue().operations[0];
   f.getValue().operations.push({...structuredClone(op),id:crypto.randomUUID(),key:crypto.randomUUID(),state:'finalized',charge:{state:'charged',charged2z:'499',receiptId:'old-receipt'}});
-  f.setCap(2000n);await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'grant_cap_required'});
-  assert.equal(f.calls.length,1);f.setCap(1000n);
+  f.setAvailable(999n);await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'insufficient_balance'});
+  assert.equal(f.calls.length,1);f.setAvailable(500000n);
   await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'interrupted'});assert.equal(f.calls.length,2);
 });
 test('account changes while estimating recovery prevent its invocation',async()=>{
@@ -128,36 +143,39 @@ test('account changes while estimating recovery prevent its invocation',async()=
   await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'cancelled'});assert.equal(f.calls.length,1);
 });
 
-test('real grant adapter validates identity, enforcement, original total cap and freshness',async()=>{
+test('real grant adapter validates identity, scope, enforcement and freshness, never the budget size or period',async()=>{
  const f=fixture(); const valid=await f.client.grant();
- const result=await verifyTestGrant(f.client,f.authorization);
- assert.equal(result.limit2z,500n);assert.equal(result.clientId,'aha-client');assert.equal(result.sessionGeneration,'one');assert.ok(Object.isFrozen(result));
- for(const patch of [{sub:'other'},{client_id:'other'},{enforced:false},{spend_cap_2z:null},{spend_cap_2z:0n},{spend_cap_2z:501n},{spend_cap_2z:500},{cap_period:'month'},{scopes:[]},{account_epoch:-1n},{grant_generation:1},{grant_generation:0n},{as_of:new Date(Date.now()-61_000).toISOString()},{as_of:new Date(Date.now()+6_000).toISOString()},{as_of:'invalid'}]){
+ const result=await verifyPaidGrant(f.client,f.authorization);
+ assert.deepEqual(result.budget,{period:'month',limit2z:100n});assert.equal(result.clientId,'aha-client');assert.equal(result.sessionGeneration,'one');
+ assert.ok(Object.isFrozen(result)&&Object.isFrozen(result.budget));
+ for(const patch of [{sub:'other'},{client_id:'other'},{spend_cap_2z:500},{spend_cap_2z:-1n},{cap_period:'year'},{scopes:[]},{account_epoch:-1n},{grant_generation:1},{grant_generation:0n},{as_of:new Date(Date.now()-61_000).toISOString()},{as_of:new Date(Date.now()+6_000).toISOString()},{as_of:'invalid'},{enforcement_reason:'platform_disabled'}]){
   f.client.grant=async()=>({...valid,...patch}) as any;
-  await assert.rejects(verifyTestGrant(f.client,f.authorization),{code:'grant_verification_required'});
+  await assert.rejects(verifyPaidGrant(f.client,f.authorization),{code:'grant_verification_required'},JSON.stringify(patch,(_k,v)=>typeof v==='bigint'?String(v):v));
  }
  assert.equal(f.calls.length,0);
 });
 test('grant verification fences session changes and propagates service errors without fallback',async()=>{
  const f=fixture();const grant=f.client.grant;f.client.grant=async()=>{f.setSession({...session,generation:'changed'});return grant();};
- await assert.rejects(verifyTestGrant(f.client,f.authorization),{code:'account_changed'});
+ await assert.rejects(verifyPaidGrant(f.client,f.authorization),{code:'account_changed'});
  f.setSession(session);f.client.grant=async()=>{throw new Error('unavailable');};
- await assert.rejects(verifyTestGrant(f.client,f.authorization),/unavailable/);assert.equal(f.calls.length,0);
+ await assert.rejects(verifyPaidGrant(f.client,f.authorization),/unavailable/);assert.equal(f.calls.length,0);
 });
 test('a supplied valid-looking grant cannot bypass real consent recheck after journal persistence',async()=>{
  const f=fixture();const original=f.journal.putJournal;const grant=f.client.grant;
- f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')f.client.grant=async()=>({...await grant(),enforced:false});};
- await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_verification_required'});
+ f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')f.client.grant=async()=>({...await grant(),enforced:false,enforcement_reason:'platform_disabled'});};
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'ai_not_ready'});
  assert.equal(f.calls.length,0);assert.equal(f.getValue().operations[0].state,'interrupted');
 });
-test('grant remainder is refreshed after durable save before any potentially billable send',async()=>{
- const f=fixture();const original=f.journal.putJournal;
- f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')f.setCap(501000n);};
- await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_cap_required'});assert.equal(f.calls.length,0);
+test('budget remainder and balance are refreshed after durable save before any potentially billable send',async()=>{
+ for(const change of [(f:ReturnType<typeof fixture>)=>f.setCap(0n),(f:ReturnType<typeof fixture>)=>f.setAvailable(0n)]){
+  const f=fixture();const original=f.journal.putJournal;
+  f.journal.putJournal=async(k,v)=>{await original(k,v);if(v.operations?.at(-1)?.state==='opening')change(f);};
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),(e:any)=>['cap_exceeded','insufficient_balance'].includes(e.code));assert.equal(f.calls.length,0);
+ }
 });
 test('same-key recovery also rejects current unenforced grant even with previous valid proof',async()=>{
  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));const grant=f.client.grant;
- f.client.grant=async()=>({...await grant(),enforced:false});await assert.rejects(f.tutor.recover(f.getValue().operations[0].id,f.authorization),{code:'grant_verification_required'});assert.equal(f.calls.length,1);
+ f.client.grant=async()=>({...await grant(),enforced:false,enforcement_reason:'platform_disabled'});await assert.rejects(f.tutor.recover(f.getValue().operations[0].id,f.authorization),{code:'ai_not_ready'});assert.equal(f.calls.length,1);
 });
 
 test('SDK errors preserve code and Retry-After alongside durable same-key recovery',async()=>{
@@ -173,7 +191,7 @@ test('SDK errors preserve code and Retry-After alongside durable same-key recove
 
 test('grant UTC timestamps accept SDK-supported fractional precision and explicit UTC offset',async()=>{
  const f=fixture();const grant=await f.client.grant();const asOf=new Date().toISOString().replace('Z','123+00:00');
- f.client.grant=async()=>({...grant,as_of:asOf});assert.equal((await verifyTestGrant(f.client,f.authorization)).asOf,asOf);
+ f.client.grant=async()=>({...grant,as_of:asOf});assert.equal((await verifyPaidGrant(f.client,f.authorization)).asOf,asOf);
 });
 
 test('proof snapshot cannot age out while a slow estimate completes',async(t)=>{
@@ -276,15 +294,18 @@ test('an unconsumed completed lesson cannot masquerade as an archived empty reco
  await assert.rejects(f.tutor.pendingReplies(),{code:'journal_invalid'});
 });
 
-test('sign-in suggests exactly the total cap that paid admission verifies',async()=>{
- assert.deepEqual(SIGN_IN_OPTIONS,{spendCap:{cap2z:500n,period:'total'}});
- assert.equal(SIGN_IN_OPTIONS.spendCap?.cap2z,TEST_SPEND_CAP_2Z);
+test('sign-in only suggests a modest monthly budget; admission works the same with the suggestion, any other budget, or none',async()=>{
+ assert.deepEqual(SIGN_IN_OPTIONS,{spendCap:{cap2z:100n,period:'month'}});
+ assert.equal(SIGN_IN_OPTIONS.spendCap?.cap2z,SUGGESTED_SPEND_CAP_2Z);
  assert.ok(Object.isFrozen(SIGN_IN_OPTIONS)&&Object.isFrozen(SIGN_IN_OPTIONS.spendCap));
- // A grant the user confirmed at the hinted policy is admitted; the hint itself grants nothing.
- const f=fixture();
- f.client.grant=async()=>({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:SIGN_IN_OPTIONS.spendCap!.cap2z,cap_period:SIGN_IN_OPTIONS.spendCap!.period!,enforced:true,as_of:new Date().toISOString()});
- assert.equal((await verifyTestGrant(f.client,{subject:'adult',clientId:'aha-client',maximum2z:TEST_SPEND_CAP_2Z})).limit2z,TEST_SPEND_CAP_2Z);
- await assert.rejects(verifyTestGrant(f.client,{subject:'adult',clientId:'aha-client',maximum2z:TEST_SPEND_CAP_2Z+1n}),{code:'authorization_required'});
+ // The hint grants nothing and admission never compares a budget with it.
+ for(const patch of [{spend_cap_2z:SUGGESTED_SPEND_CAP_2Z,cap_period:'month' as const},{spend_cap_2z:5000n,cap_period:'total' as const},{spend_cap_2z:1n,cap_period:'day' as const},{spend_cap_2z:null,cap_period:'month' as const}]){
+  const f=fixture();f.setGrant(patch);f.setCap(patch.spend_cap_2z===null?null:100000n);
+  const authorization=await liveAuthorization(f);
+  assert.deepEqual(authorization.verifiedGrant.budget,patch.spend_cap_2z===null?null:{period:patch.cap_period,limit2z:patch.spend_cap_2z});
+  await f.tutor.reply('verified-model','p','c',authorization);assert.equal(f.calls.length,1);
+ }
+ await assert.rejects(verifyPaidGrant(fixture().client,{subject:'adult',clientId:''}),{code:'authorization_required'});
 });
 
 test('the vendored SDK sends the spend-cap hint to the native plugin as decimal strings',async()=>{
@@ -292,7 +313,7 @@ test('the vendored SDK sends the spend-cap hint to the native plugin as decimal 
  const bridge={signIn:async(options:unknown)=>{sent.push(options);return {signedIn:true,subject:'adult',grantedScopes:['ai:invoke'],persistence:'persistent',generation:'1'};}} as unknown as NativeBridge;
  const signedIn=await new Client(new NativeTransport(bridge)).signIn(SIGN_IN_OPTIONS);
  assert.equal(signedIn.subject,'adult');
- assert.deepEqual(sent,[{spendCap:'500',spendPeriod:'total'}]);
+ assert.deepEqual(sent,[{spendCap:'100',spendPeriod:'month'}]);
 });
 
 // ---- Journal v2: Activity Spec batches (2600-token budget) beside readable, recoverable v1 records ----
@@ -344,4 +365,147 @@ test('a receipt-only replay of a batch is never treated as activity content',asy
  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code:'receipt_only'});
  assert.equal((await f.tutor.pendingReplies()).length,0,'no deliverable text from a receipt');
  assert.equal(f.getValue().operations[0].charge.charged2z,'3');
+});
+
+// ---- Production spending policy, "budget optional" (#879): one test per grant/estimate state ----
+const iso = (offsetMs = 0) => new Date(Date.now() + offsetMs).toISOString();
+test('policy: an enforced total budget of any size admits a call within its remainder',async()=>{
+ for(const limit of [1n,500n,2000n,1_000_000n]){
+  const f=fixture();f.setGrant({spend_cap_2z:limit,cap_period:'total'});f.setCap(limit*1000n);
+  const authorization=await liveAuthorization(f);
+  assert.deepEqual(authorization.verifiedGrant.budget,{period:'total',limit2z:limit});
+  await f.tutor.reply('verified-model','p','c',authorization);assert.equal(f.calls.length,1);
+ }
+});
+test('policy: an enforced per-period budget (day, week, month) admits a call within its remainder',async()=>{
+ for(const period of ['day','week','month'] as const){
+  const f=fixture();f.setGrant({spend_cap_2z:250n,cap_period:period});f.setCap(1000n);
+  const authorization=await liveAuthorization(f);
+  assert.deepEqual(authorization.verifiedGrant.budget,{period,limit2z:250n});
+  await f.tutor.reply('verified-model','p','c',authorization);assert.equal(f.calls.length,1,period);
+ }
+});
+test('policy: no app budget proceeds on balance and estimate alone (cap remainder null or absent)',async()=>{
+ for(const cap of [null,undefined]){
+  const f=fixture();f.setGrant({spend_cap_2z:null,cap_period:'month'});f.setCap(cap);
+  const authorization=await liveAuthorization(f);
+  assert.equal(authorization.verifiedGrant.budget,null);
+  await f.tutor.reply('verified-model','p','c',authorization,batchContext,'2600');assert.equal(f.calls.length,1);
+  assert.equal(f.getValue().operations[0].state,'finalized');
+ }
+});
+test('policy: a budget added after the grant read is still respected (stricter estimate wins)',async()=>{
+ const f=fixture();f.setGrant({spend_cap_2z:null});f.setCap(null);const authorization=await liveAuthorization(f);
+ f.setCap(500n);
+ await assert.rejects(f.tutor.reply('verified-model','p','c',authorization),{code:'cap_exceeded'});assert.equal(f.calls.length,0);
+});
+test('policy: a platform that is not enforcing grants never gets a paid call (AI not ready yet)',async()=>{
+ for(const [reason,code] of [['platform_disabled','ai_not_ready'],['ledger_cutover_pending','ai_not_ready'],['unknown','ai_not_ready'],[undefined,'ai_not_ready'],['ledger_cap_pending','budget_pending']] as const){
+  for(const spend_cap_2z of [100n,null]){
+   // The supplied proof (taken while enforcing) passes the pre-journal estimate; the live re-read before send refuses.
+   const f=fixture();f.setGrant({enforced:false,enforcement_reason:reason,spend_cap_2z});
+   await assert.rejects(verifyPaidGrant(f.client,f.authorization),{code},`${reason}`);
+   // A proof taken while enforcing does not survive the platform switching off before send.
+   await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code});
+   assert.equal(f.calls.length,0);
+  }
+ }
+});
+test('policy: an estimate above the available balance is never sent',async()=>{
+ const f=fixture();f.setAvailable(999n);
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'insufficient_balance'});
+ assert.equal(f.calls.length,0);assert.equal(f.getValue()?.operations?.length ?? 0,0,'refused before any operation is journaled');
+ const g=fixture();g.setGrant({spend_cap_2z:null});g.setCap(null);g.setHold(3n);g.setAvailable(2999n);
+ await assert.rejects(g.tutor.reply('verified-model','p','c',await liveAuthorization(g)),{code:'insufficient_balance'});assert.equal(g.calls.length,0);
+ g.setAvailable(3000n);await g.tutor.reply('verified-model','p','c',await liveAuthorization(g));assert.equal(g.calls.length,1,'exactly affordable is sent');
+});
+test('policy: an estimate without a balance figure falls back to the authoritative balance',async()=>{
+ const f=fixture();f.setAvailable(undefined);let reads=0;const balance=f.client.balance;
+ f.client.balance=async()=>{reads++;return {...await balance(),available_milli_2z:500n};};
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'insufficient_balance'});
+ assert.ok(reads>0);assert.equal(f.calls.length,0);
+});
+test('policy: an estimate above the budget remainder is never sent',async()=>{
+ const f=fixture();f.setHold(2n);f.setCap(1999n);
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'cap_exceeded'});assert.equal(f.calls.length,0);
+ f.setCap(2000n);await f.tutor.reply('verified-model','p','c',f.authorization);assert.equal(f.calls.length,1);
+});
+test('policy: a different signed-in subject or a grant for another subject or client is refused',async()=>{
+ const f=fixture();f.setSession({...session,subject:'another'});
+ await assert.rejects(verifyPaidGrant(f.client,f.authorization),{code:'account_changed'});
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'account_changed'});
+ for(const patch of [{sub:'another'},{client_id:'another-app'}]){
+  const g=fixture();g.setGrant(patch);await assert.rejects(verifyPaidGrant(g.client,g.authorization),{code:'grant_verification_required'});
+ }
+ const h=fixture();await assert.rejects(h.tutor.reply('verified-model','p','c',{...h.authorization,subject:'another'}),{code:'authorization_required'});
+ assert.equal(f.calls.length+h.calls.length,0);
+});
+test('policy: a stale grant snapshot or stale proof is refused',async()=>{
+ const f=fixture();f.setGrant({as_of:iso(-61_000)});
+ await assert.rejects(verifyPaidGrant(f.client,f.authorization),{code:'grant_verification_required'});
+ const g=fixture();
+ await assert.rejects(g.tutor.reply('verified-model','p','c',{...g.authorization,verifiedGrant:{...g.authorization.verifiedGrant,asOf:iso(-61_000)}}),{code:'grant_verification_required'});
+ await assert.rejects(g.tutor.reply('verified-model','p','c',{...g.authorization,verifiedGrant:{...g.authorization.verifiedGrant,checkedAt:Date.now()-61_000}}),{code:'grant_verification_required'});
+ assert.equal(f.calls.length+g.calls.length,0);
+});
+test('policy: a missing ai:invoke scope is refused in the session and in the grant',async()=>{
+ const f=fixture();f.setSession({...session,grantedScopes:['balance:read']});
+ await assert.rejects(verifyPaidGrant(f.client,f.authorization),{code:'account_changed'});
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'scope_denied'});
+ const g=fixture();g.setGrant({scopes:['openid']});
+ await assert.rejects(verifyPaidGrant(g.client,g.authorization),{code:'grant_verification_required'});
+ assert.equal(f.calls.length+g.calls.length,0);
+});
+test('admitEstimate is the single affordability rule: hold within balance and, when present, within the remainder',()=>{
+ const budget={period:'month' as const,limit2z:100n};
+ const estimate=(extra:Record<string,unknown>)=>({model:'m',input_tokens:1n,max_output_tokens:1n,hold_2z:3n,...extra}) as any;
+ assert.deepEqual(admitEstimate(estimate({available_milli_2z:3000n,cap_remaining_milli_2z:3000n}),budget),{hold2z:3n,availableMilli2z:3000n,capRemainingMilli2z:3000n});
+ assert.deepEqual(admitEstimate(estimate({available_milli_2z:3000n,cap_remaining_milli_2z:null}),null),{hold2z:3n,availableMilli2z:3000n,capRemainingMilli2z:null});
+ assert.deepEqual(admitEstimate(estimate({available_milli_2z:3000n}),null),{hold2z:3n,availableMilli2z:3000n,capRemainingMilli2z:null});
+ assert.throws(()=>admitEstimate(estimate({available_milli_2z:2999n,cap_remaining_milli_2z:null}),null),{code:'insufficient_balance'});
+ assert.throws(()=>admitEstimate(estimate({available_milli_2z:9000n,cap_remaining_milli_2z:2999n}),budget),{code:'cap_exceeded'});
+ assert.throws(()=>admitEstimate(estimate({available_milli_2z:9000n,cap_remaining_milli_2z:2999n}),null),{code:'cap_exceeded'});
+ assert.throws(()=>admitEstimate(estimate({available_milli_2z:9000n}),budget),{code:'grant_verification_required'});
+ for(const bad of [{hold_2z:0n},{hold_2z:3},{available_milli_2z:'3000'},{cap_remaining_milli_2z:3000}])
+  assert.throws(()=>admitEstimate(estimate({available_milli_2z:9000n,cap_remaining_milli_2z:9000n,...bad}),budget),{code:'estimate_invalid'});
+});
+test('spending snapshot reports the last estimate, budget remainder and settled batch charge, never prompts or ids',async()=>{
+ const f=fixture([{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:3n,receiptId:'r'},cap_remaining_milli_2z:97000n} as any]);
+ assert.deepEqual(f.tutor.spending(),{});
+ f.setHold(4n);await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+ assert.deepEqual(f.tutor.spending(),{availableMilli2z:500000n,capRemainingMilli2z:97000n,batchEstimate2z:4n,batchCharge2z:3n});
+ const g=fixture();g.setGrant({spend_cap_2z:null});g.setCap(null);
+ await g.tutor.reply('verified-model','p','c',await liveAuthorization(g),{kind:'curiosity',profileId:'learner',activityId:'a',question:'Why?'});
+ assert.deepEqual(g.tutor.spending(),{availableMilli2z:500000n,capRemainingMilli2z:null},'a curiosity answer is not a batch cost');
+});
+
+// ---- Journal migration: operations written by the test-era (500 2Z total) build stay recoverable ----
+test('a journal written under the test-era policy is still read, blocks fresh spending while unsettled, and recovers with its original identity',async()=>{
+ for(const version of [1,2]){
+  const f=fixture([]);
+  // Literal wire format as the TestAuthorization build wrote it: an archived settled call that used the old
+  // 500 2Z allowance almost entirely, and an interrupted request with its saved body, key and resume context.
+  const body=[{role:'system',content:[{type:'text',text:'legacy system'}]},{role:'user',content:[{type:'text',text:'legacy context'}]}];
+  f.setValue({version,operations:[
+   {id:'legacy-settled',key:'legacy-key-1',subject:'adult',generation:'old-generation',createdAt:iso(-3*60*60*1000),request:{model:'verified-model',messages:[],maxOutputTokens:'1800'},state:'finalized',text:'',charge:{state:'charged',charged2z:'499',receiptId:'legacy-receipt'}},
+   {id:'legacy-open',key:'legacy-key-2',subject:'adult',generation:'old-generation',createdAt:iso(-60*60*1000),request:{model:'verified-model',messages:body,maxOutputTokens:'1800'},state:'interrupted',text:'',callId:'legacy-call',context:{kind:'activity',profileId:'learner',candidateSkillIds:['4.NF.B.3']}},
+  ]});
+  const pending=await f.tutor.inspectPending();
+  assert.deepEqual(pending.map(p=>[p.operationId,p.state,p.canRecover,p.profileId]),[['legacy-open','interrupted',true,'learner']]);
+  // The new policy keeps "an unsettled receipt blocks new paid calls", even with no app budget.
+  f.setGrant({spend_cap_2z:null});f.setCap(null);const authorization=await liveAuthorization(f);
+  await assert.rejects(f.tutor.reply('verified-model','p','c',authorization),{code:'settlement_pending'});
+  assert.equal(f.calls.length,0);
+  // Same-key recovery under a new-policy authorization replays the exact original body, budget and key.
+  await assert.rejects(f.tutor.recover('legacy-open',authorization),{code:'interrupted'});
+  assert.equal(f.calls.length,1);
+  assert.deepEqual(f.calls[0].options,{operationId:'legacy-open',idempotencyKey:'legacy-key-2'});
+  assert.deepEqual(f.calls[0].request.messages,body);assert.equal(f.calls[0].request.max_output_tokens,1800n);
+  assert.equal(f.getValue().version,2,'the container upgrades on its first write');
+  assert.equal(f.getValue().operations[0].charge.charged2z,'499','old charges are preserved exactly');
+  // Once settled, the old 499 2Z of test-era spending is not an app-side ceiling any more.
+  await f.tutor.reconcile();assert.deepEqual(await f.tutor.inspectPending(),[]);
+  const fresh=fixture();fresh.setValue(f.getValue());fresh.setGrant({spend_cap_2z:null});fresh.setCap(null);
+  await fresh.tutor.reply('verified-model','p','c',await liveAuthorization(fresh));assert.equal(fresh.calls.length,1,`v${version}`);
+ }
 });
