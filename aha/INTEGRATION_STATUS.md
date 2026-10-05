@@ -30,6 +30,35 @@ Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
 
+## Learner-chosen model (#897)
+
+Free2Z's `/v1/models` is no longer a gpt-4o-only allowlist. AHA never hardcodes a model id; `src/provider/models.ts` (pure,
+`models.test.ts`) reads the catalogue each batch:
+
+- **Eligible:** an explicit `capabilities.structured_output: true` (read defensively from the untyped object), a reported
+  `max_output_tokens` ≥ 2600 and a reported `context_window` ≥ 16k.
+- **Estimate:** Free2Z's client formula (metering.md §2.5) over a typical batch of 4000 input / 2000 output tokens (the top of
+  the measured 3–4k / 0.6–2k ranges), `max(min_charge_2z, ceil(...))`. Shown in Settings as "≈ N 2Z per set".
+- **Best (auto), the default:** the highest-priced eligible model (price as the quality proxy) whose estimate is ≤ 10 2Z. It
+  steps down when the worst case (4000 input + the 2600 output budget) exceeds the fresh balance or the app budget remainder.
+  If nothing fits, it sends the cheapest, which Free2Z refuses calmly at no cost. If every structured model is above the
+  ceiling, it picks the cheapest of them. If no eligible model has structured output, the prompt-only request goes to the
+  best-priced usable model, or the first one in catalogue order when none is priced (as before).
+- **Manual:** Settings → "AI model" lists "Best (auto)" and every eligible model by `display_name`, including models above
+  the ceiling. The choice is stored per account in the local journal (`aha-model-choice-v1`). A choice that leaves the
+  catalogue or loses structured output falls back to auto, is reset, and is logged (`ai-model` warning).
+- **Attribution:** the journal operation already records `request.model`, so same-key recovery resends to the same model
+  whatever is chosen now (a test covers this). Replies carry it as `TutorReply.model`, and queued activities, activity records
+  and `ai-spec` attempts store it (`spec.model`; older evidence without it still restores, with a migration test). The status
+  sheet names the model that wrote the activity on screen.
+- **Stats (local only, no PII):** Settings → "Something not working?" → "Model stats" shows one line per model: sets, activities
+  kept vs rejected (schema, meaning shape or damaged JSON, vs semantic), unreadable replies, learner flags, average settled 2Z
+  per set, and first-try correct rate. Sources are a bounded batch log (`aha-model-batches-v1`, 400 records, one per
+  operation), the billing journal's settled charges, `ai-spec` evidence and disputes. The same lines go into "Report a
+  problem".
+- Verified with fakes only (unit tests and a `test:ai` scenario with three TEST models). Not checked against the live
+  catalogue or prices.
+
 ## Structured output (#884)
 
 SDK pin `42acc57f` (zuu #1129) adds opt-in `response_format`. When `/v1/models` reports
@@ -269,7 +298,7 @@ URL. Purchase/checkout SDK commands remain outside the app's capabilities.
 
 ## AI activity batches
 
-Each paid call asks gpt-4o for a batch of four Activity Specs. It uses structured output when the
+Each paid call asks the chosen model (see "Learner-chosen model") for a batch of four Activity Specs. It uses structured output when the
 model advertises it, and prompt-only JSON otherwise (see "Structured output (#884)"). Either way the
 client validates every activity and sends `max_output_tokens_strict`. The estimates below are for the
 prompt-only request:

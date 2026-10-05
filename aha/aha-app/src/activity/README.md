@@ -256,6 +256,9 @@ the fallback, and signed-out practice is unchanged.
    `capabilities.structured_output`, the batch also carries `response_format` (the strict schema) with
    `structuredSystem`. Otherwise, or after a zero-cost refusal, it sends the prompt-only request (#884;
    journal v3 records the format for same-key recovery).
+   The model comes from `provider/models.ts`: the learner's Settings choice, or "Best (auto)" (the
+   highest-priced structured-output model estimated at ≤ 10 2Z per batch, stepping down to fit the balance and
+   budget). See INTEGRATION_STATUS.md, "Learner-chosen model".
 2. **Validate.** A fresh reply and a same-key recovered reply both go through
    `parseBatch(text, allowedSkillIds, operationId)`, which calls `validateActivityBatch`.
    Rejected activities are logged as model-quality telemetry (`ai-batch` in diagnostics). A

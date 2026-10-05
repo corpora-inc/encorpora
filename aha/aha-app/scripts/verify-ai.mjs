@@ -782,8 +782,18 @@ try {
     const lines=await statsList.allTextContents();
     const proLine=lines.find(l=>l.startsWith('fixture-pro:')),standardLine=lines.find(l=>l.startsWith('fixture-standard:'));
     assert.ok(proLine&&standardLine,`both models appear: ${lines.join(' / ')}`);
-    assert.match(standardLine,/^fixture-standard: 1 set · kept 3, rejected 0 schema \+ 0 semantic · 0 flagged · ≈ 1 2Z per set · 100% correct first try \(3\)$/);
-    assert.match(proLine,/^fixture-pro: 1 set · kept 3, rejected 0 schema \+ 0 semantic · 1 flagged · ≈ 1 2Z per set · 100% correct first try \(1\)$/);
+    // Prefetch timing decides how many sets and answers each model has by now: the expected line is derived from the
+    // stored journal and evidence, so the check is exact without depending on timing.
+    const stored=await data();
+    const expectLine=(model,flagged)=>{
+      const sets=stored.journals['aha-billing-v1'].operations.filter(o=>o.request.model===model&&o.charge?.state==='charged').length;
+      const answers=Object.values(stored.attempts).flat().filter(a=>a.data.source==='ai-spec'&&a.data.spec.model===model);
+      const right=answers.filter(a=>a.data.correct).length;
+      return `${model}: ${sets} ${sets===1?'set':'sets'} · kept ${sets*3}, rejected 0 schema + 0 semantic · ${flagged} flagged · ≈ 1 2Z per set · `+
+        (answers.length?`${Math.round(right/answers.length*100)}% correct first try (${answers.length})`:'no answers yet');
+    };
+    assert.equal(standardLine,expectLine('fixture-standard',0));
+    assert.equal(proLine,expectLine('fixture-pro',1));
     await p.getByRole('button',{name:'Report a problem',exact:true}).click();
     await p.waitForFunction(()=>document.querySelector('.report-text')?.value.includes('Model stats (this device)'));
     const report=await p.locator('.report-text').inputValue();
