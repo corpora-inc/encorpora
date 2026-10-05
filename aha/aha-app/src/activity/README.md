@@ -275,7 +275,9 @@ the fallback, and signed-out practice is unchanged.
    model's batch, so a stricter validator cannot shift them.
 4. **Prefetch.** When at most `PREFETCH_AT` (1) activity remains, a single background request
    fetches the next batch while the learner works. A restored queue (from this build or an older
-   one) that is already this low is refilled at launch. Prefetch is skipped during the fallback
+   one) that is already this low is refilled at launch; with no saved AI activities, nothing is
+   bought until the learner taps. The learner's Stop belongs to the batch their tap started (its
+   own token), so it prevents that paid call even after the tap stops waiting. Prefetch is skipped during the fallback
    backoff or a Retry-After window, and every such skip logs its reason (`ai-skip`). A Continue
    with an empty queue starts a batch if none is on its way, then waits for it at most
    `BATCH_WAIT_MS` (6 s). If it has not landed, one local task is served (logged) and the batch

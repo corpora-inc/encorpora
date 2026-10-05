@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixtures } from '../activity/fixtures';
-import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, takeNext, type QueuedActivity } from './aiQueue';
+import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeNext, type QueuedActivity } from './aiQueue';
 
 const item = (op: string, i: number): QueuedActivity => ({ activityId: activityIdFor(op, i), operationId: op, spec: fixtures[i % fixtures.length]! });
 const none = { attempted: new Set<string>(), disputed: new Set<string>() };
@@ -153,4 +153,13 @@ test('a successful delivery saves once, then acknowledges; a duplicate only ackn
   assert.equal(await deliverBatch(box, deps), 'delivered');
   assert.deepEqual(order, ['save', 'ack', 'ack']);
   assert.equal(box.items.length, 1);
+});
+
+test('a stop token stays stopped and releases a wait', async () => {
+  const token = stopToken();
+  assert.equal(token.stopped, false);
+  const waiting = settlesWithin(Promise.race([new Promise(() => undefined), token.signal]), 1000);
+  token.stop();
+  assert.equal(await waiting, true, 'Stop ends the wait at once');
+  assert.equal(token.stopped, true);
 });

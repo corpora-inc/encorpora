@@ -67,6 +67,8 @@ function fixture(specs){
     // TEST-ONLY format refusal, shaped as the native transport delivers it (status and code; details dropped).
     if(command==='plugin:f2z|estimate'&&args.request.response_format&&ai.formatRefusal==='estimate')throw {code:'invalid_request',status:400};
     if(command==='plugin:f2z|estimate'){
+      // TEST-ONLY: `holdEstimate` keeps the next estimate pending until the scenario calls releaseEstimate().
+      if(ai.holdEstimate){ai.holdEstimate=false;await new Promise(resolve=>{ai.releaseEstimate=resolve;});}
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
       return {model:'fixture-model',input_tokens:'500',max_output_tokens:args.request.max_output_tokens,hold_2z:ai.hold,available_milli_2z:ai.available,cap_remaining_milli_2z:ai.capRemaining};
     }
@@ -544,6 +546,28 @@ try {
     assert.deepEqual(oErrors,[]);
     await ctx.close();
   }
+  // ---- Stop during the provider's estimate for a batch the learner's own tap started: no paid call, ever ----
+  {
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    await ctx.addInitScript(()=>{Object.assign(window.__ahaAI,{enforced:true,holdEstimate:true});});
+    const q=await ctx.newPage();
+    const qErrors=[];q.on('pageerror',e=>qErrors.push(e.message));
+    await q.goto('http://127.0.0.1:1436');
+    await q.getByRole('button',{name:'Let’s begin',exact:true}).click();
+    await q.waitForFunction(()=>typeof window.__ahaAI.releaseEstimate==='function');
+    assert.equal(await q.evaluate(()=>window.__ahaAI.grants)>0,true,'the grant was verified; the provider is inside its estimate');
+    await q.getByRole('button',{name:'Stop AI request',exact:true}).click();
+    await q.getByRole('alert').filter({hasText:'Stopped before starting'}).waitFor();
+    await q.evaluate(()=>window.__ahaAI.releaseEstimate());
+    await q.waitForTimeout(1500);
+    assert.equal(await q.evaluate(()=>window.__ahaAI.starts.length),0,'Stop inside the estimate never starts the paid call');
+    const qDiag=await q.evaluate(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]'));
+    assert.ok(qDiag.some(e=>e.source==='ai-skip'&&/stopped by the learner/.test(e.message)),'the stop is logged as a stop');
+    assert.ok(!qDiag.some(e=>e.source==='ai-fallback'),'a Stop is not recorded as an AI failure');
+    assert.deepEqual(qErrors,[]);
+    await ctx.close();
+  }
   // ---- Production spending policy, budget optional (#879; TEST-ONLY fake SDK, no live service) ----
   const scenario=async knobs=>{
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
@@ -688,7 +712,7 @@ try {
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying. No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

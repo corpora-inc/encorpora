@@ -58,6 +58,16 @@ export function prefetchBlocked(s: PrefetchState, blockedBy?: string): string | 
  * learner gets the AI activity; past it, one local task is served and the batch fills the queue for the task after.
  */
 export const BATCH_WAIT_MS = 6000;
+/**
+ * The learner's Stop for one batch their own tap started. The batch outlives the tap (it may land after the bounded
+ * wait), so it carries its own token instead of reading whichever action is current: a later action can never re-arm it.
+ */
+export interface StopToken { readonly stopped: boolean; stop(): void; readonly signal: Promise<void> }
+export function stopToken(): StopToken {
+  let stopped = false, resolve!: () => void;
+  const signal = new Promise<void>(r => { resolve = r; });
+  return { get stopped() { return stopped; }, stop() { stopped = true; resolve(); }, signal };
+}
 /** True when `work` settles (either way) within `ms`; never rejects, and never cancels `work`. */
 export async function settlesWithin(work: Promise<unknown>, ms: number): Promise<boolean> {
   let timer: ReturnType<typeof setTimeout> | undefined;
