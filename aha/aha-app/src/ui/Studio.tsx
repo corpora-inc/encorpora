@@ -115,6 +115,8 @@ export function Studio(props: StudioProps) {
   const feedbackRegion = useRef<HTMLDivElement>(null);
   const settingsReturn = useRef<HTMLElement | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
+  const studioRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const seenHint = useRef<string | undefined>(undefined);
   const hintAsks = useRef(0);
   const answerId = useId();
@@ -169,6 +171,19 @@ export function Studio(props: StudioProps) {
     vv.addEventListener("resize", update);
     return () => vv.removeEventListener("resize", update);
   }, []);
+  // Settings must end above the docked bottom nav (#885). The nav's height follows its text (the
+  // Android WebView scales text with the system font size) plus the gesture-bar inset, so measure it.
+  const navShown = view !== "focus";
+  useEffect(() => {
+    const nav = navRef.current, root = studioRef.current;
+    if (!navShown || !nav || !root) return;
+    const update = () => root.style.setProperty("--aha-nav-measured", `${Math.ceil(nav.getBoundingClientRect().height)}px`);
+    update();
+    const observer = new ResizeObserver(update);
+    // border-box: an inset-only change (gesture vs 3-button navigation) resizes padding, not content.
+    observer.observe(nav, { box: "border-box" });
+    return () => { observer.disconnect(); root.style.removeProperty("--aha-nav-measured"); };
+  }, [navShown]);
   const openSettings = () => {
     const opener = document.activeElement as HTMLElement | null;
     settingsReturn.current = opener?.closest(".sheet") ? document.querySelector<HTMLElement>(".status-dot") : opener;
@@ -401,7 +416,7 @@ export function Studio(props: StudioProps) {
 
   // ---------- home / growth ----------
   const nav = (
-    <nav className="home-nav" aria-label="Main">
+    <nav className="home-nav" aria-label="Main" ref={navRef}>
       <button type="button" className={view === "home" ? "active" : ""} aria-current={view === "home" ? "page" : undefined} onClick={() => setView("home")}>
         <Compass size={21} aria-hidden="true" /> Studio
       </button>
@@ -425,7 +440,7 @@ export function Studio(props: StudioProps) {
         </button>
       </header>
       {nav}
-      <main id="activity" className="home-main">
+      <main id="activity" className="home-main" key={view}>
         {view === "home" ? (
           <section className="home-hero" aria-labelledby={`${titleId}-home`}>
             <h1 id={`${titleId}-home`}>Big ideas.<br />Little discoveries.</h1>
@@ -476,7 +491,7 @@ export function Studio(props: StudioProps) {
   );
 
   return (
-    <div className={`aha-studio view-${view}`}>
+    <div className={`aha-studio view-${view}`} ref={studioRef}>
       {view === "focus" ? focus : home}
       <Sheet open={sheet === "status"} onClose={() => setSheet(null)} label="Practice status">
         <div className={`status-sheet ${ai ? "is-ai" : "is-local"}`}>

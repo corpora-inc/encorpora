@@ -330,6 +330,93 @@ try{
   await retrier.waitForFunction(id=>(Object.values(window.__ahaFixture.read().disputes).flat()).some(d=>d.activityId===id),flagged.id);
   assert.equal(Object.values((await retryDb()).attempts).flat().filter(r=>r.activityId===flagged.id).length,1,'a flagged pending retry still records its miss');
   await retryContext.close();
+  // #885: no words under the bottom nav, on any screen that has it (Studio home, Growth, Settings)
+  // or any sheet, at five viewports. Each scrollable container is scrolled to its end; the last
+  // visible text and control must end at or above the nav's top (or, with no docked nav, above the
+  // gesture bar), no control's center may be covered by the nav, nav buttons clear the gesture bar,
+  // and content may pass behind the nav while scrolling only if the nav is opaque. The bottom
+  // inset is the real env(safe-area-inset-bottom): CDP Emulation.setSafeAreaInsetsOverride sets it
+  // in Chromium, so no CSS test hook is needed. Large text approximates Android's font scale, which
+  // the WebView applies as text zoom (a 130% root size makes the home and Growth pages scroll).
+  const navClearance=p=>p.evaluate(async()=>{
+    const vh=innerHeight,vw=innerWidth;
+    const probe=document.createElement('div');probe.style.cssText='position:fixed;bottom:0;width:1px;height:env(safe-area-inset-bottom,0px);pointer-events:none';
+    document.body.append(probe);const inset=probe.getBoundingClientRect().height;probe.remove();
+    const modal=[...document.querySelectorAll('dialog[open]')].at(-1);
+    const scope=modal??document.querySelector('.aha-studio');
+    const nav=document.querySelector('.home-nav');
+    const nr=nav?.checkVisibility()?nav.getBoundingClientRect():null;
+    const docked=!!nr&&nr.bottom>=vh-1&&nr.top>vh/2;
+    const floor=Math.min(docked?nr.top:vh,vh-inset);
+    const opaque=el=>{const c=getComputedStyle(el).backgroundColor,m=c.match(/[\d.]+/g)?.map(Number)??[];return c.startsWith('rgb(')||(c.startsWith('rgba(')&&m[3]>=1);};
+    const scrollers=[document.scrollingElement,...scope.querySelectorAll('*'),...(modal?[modal]:[])].filter(el=>el&&el.scrollHeight>el.clientHeight+1&&(el===document.scrollingElement||/(auto|scroll)/.test(getComputedStyle(el).overflowY)));
+    for(const s of scrollers)s.scrollTop=s.scrollHeight;
+    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    const clipBottom=el=>{let b=vh;for(let a=el.parentElement;a&&a!==document.body;a=a.parentElement)if(/(auto|scroll|hidden|clip)/.test(getComputedStyle(a).overflowY))b=Math.min(b,a.getBoundingClientRect().bottom);return b;};
+    const label=el=>(el.getAttribute('aria-label')||el.textContent||el.tagName).trim().replace(/\s+/g,' ').slice(0,40);
+    const items=[];const inScope=el=>!el.closest('.home-nav,.sr-only,dialog:not([open])')&&(!modal||modal.contains(el));
+    const walk=document.createTreeWalker(scope,NodeFilter.SHOW_TEXT);let n;
+    while((n=walk.nextNode())){const el=n.parentElement;if(!n.textContent.trim()||!el||!inScope(el)||!el.checkVisibility({opacityProperty:true,visibilityProperty:true}))continue;
+      const range=document.createRange();range.selectNodeContents(n);const r=range.getBoundingClientRect();if(r.height>0)items.push({el,r,kind:'text'});}
+    for(const el of scope.querySelectorAll('button, a[href], input, select, textarea, [role=button]')){if(!inScope(el)||!el.checkVisibility())continue;const r=el.getBoundingClientRect();if(r.width>1&&r.height>1)items.push({el,r,kind:'control'});}
+    const bad=[];
+    for(const {el,r,kind} of items){if(r.bottom<=0)continue;const limit=Math.min(floor,clipBottom(el));if(r.bottom>limit+0.5)bad.push(`${kind} "${label(el)}" ends at ${Math.round(r.bottom)} below ${Math.round(limit)}`);}
+    for(const {el,r,kind} of items){if(kind!=='control')continue;const x=r.left+r.width/2,y=r.top+r.height/2;if(x<0||y<0||x>vw||y>vh)continue;const hit=document.elementFromPoint(x,y);if(hit&&nav?.contains(hit)&&!nav.contains(el))bad.push(`nav covers "${label(el)}"`);}
+    if(docked&&!modal){
+      for(const b of nav.querySelectorAll('button'))if(b.getBoundingClientRect().bottom>vh-inset+0.5)bad.push(`nav button "${label(b)}" sits in the gesture bar`);
+      const behind=scrollers.filter(s=>(s===document.scrollingElement?vh:Math.min(vh,s.getBoundingClientRect().bottom))>nr.top+0.5);
+      if(behind.length&&!opaque(nav))bad.push(`content scrolls behind a see-through nav (${behind.map(s=>s.className||s.tagName).join(', ')})`);
+    }
+    return {inset,bad:[...new Set(bad)]};
+  });
+  // Seed several skills so Growth has real cards to scroll through.
+  const seedCtx=await browser.newContext({viewport:{width:390,height:844}});await seedCtx.addInitScript(fixture);
+  const seeder=await seedCtx.newPage();seeder.on('pageerror',e=>errors.push(e.message));
+  const seededTask=async()=>Object.values(await seeder.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity;
+  await seeder.goto('http://127.0.0.1:1435');await seeder.getByRole('button',{name:'Let’s begin',exact:true}).click();
+  for(let i=0;i<6;i++){
+    await seeder.getByRole('button',{name:'Check',exact:true}).waitFor();
+    if(i%2){const before=(await seededTask()).id;await seeder.getByRole('button',{name:'Try something harder',exact:true}).click();await seeder.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0]?.data.activity?.id!==id,before);}
+    await enter(seeder,expectedAnswer((await seededTask()).task));await seeder.getByRole('button',{name:'Check',exact:true}).click();
+    await seeder.getByRole('button',{name:'Next',exact:true}).click();
+  }
+  await seeder.getByRole('button',{name:'Check',exact:true}).waitFor();
+  const seeded=await seeder.evaluate(()=>localStorage.getItem('aha-controller-test-fixture'));await seedCtx.close();
+  const shots=process.env.AHA_UI_SHOTS;
+  const clearanceFailures=[];let clearanceChecks=0,growthCards=0;
+  for(const [w,h] of [[384,832],[360,640],[412,915],[820,1180],[1280,800]])for(const v of [{},{inset:48},{inset:48,large:true}]){
+    const ctx=await browser.newContext({viewport:{width:w,height:h},isMobile:w<1000,hasTouch:w<1000});await ctx.addInitScript(fixture);
+    await ctx.addInitScript(db=>{if(!sessionStorage.getItem('seeded')){localStorage.setItem('aha-controller-test-fixture',db);sessionStorage.setItem('seeded','1');}},seeded);
+    const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
+    if(v.inset)await (await ctx.newCDPSession(p)).send('Emulation.setSafeAreaInsetsOverride',{insets:{top:40,bottom:v.inset,left:0,right:0}});
+    await p.goto('http://127.0.0.1:1435');await p.getByRole('button',{name:'Continue',exact:true}).waitFor();
+    if(v.large)await p.addStyleTag({content:':root{font-size:20.8px!important}'});
+    const tag=`${w}×${h}${v.inset?` inset ${v.inset}`:''}${v.large?' large text':''}`;
+    const check=async screen=>{const r=await navClearance(p);clearanceChecks++;
+      if(v.inset)assert.equal(r.inset,v.inset,'the emulated safe-area inset reaches env()');
+      clearanceFailures.push(...r.bad.map(b=>`${screen} ${tag}: ${b}`));
+      if(shots)await p.screenshot({path:path.join(shots,`${screen.replace(/\W+/g,'-')}-${w}x${h}${v.inset?'-inset':''}${v.large?'-large':''}.png`)});};
+    const navTo=async name=>{await p.evaluate(()=>{for(const s of [document.scrollingElement,...document.querySelectorAll('*')])s.scrollTop=0;});await p.locator('.home-nav').getByRole('button',{name,exact:true}).click();};
+    await check('home');
+    if(v.large&&w===360){assert.ok(await p.locator('.home-main').evaluate(m=>{m.scrollTop=m.scrollHeight;return m.scrollTop;})>0,'large-text home scrolls inside main');
+      await p.locator('.home-nav').getByRole('button',{name:'Growth',exact:true}).click();await p.locator('.progress-page').waitFor();
+      assert.equal(await p.locator('.home-main').evaluate(m=>m.scrollTop),0,'switching views opens the new page at its top');}
+    await navTo('Growth');await p.locator('.progress-page').waitFor();growthCards=await p.locator('.progress-grid article').count();await check('growth');
+    await navTo('Settings');await p.getByRole('dialog').waitFor();await check('settings');
+    await p.getByRole('button',{name:'Close settings',exact:true}).click();
+    await p.locator('.home-nav').getByRole('button',{name:'Studio',exact:true}).click();
+    await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Check',exact:true}).waitFor();
+    await p.getByRole('button',{name:'Ask a question',exact:true}).click();await p.getByRole('dialog',{name:'Ask a question'}).waitFor();await check('ask sheet');
+    await p.getByRole('button',{name:'Close',exact:true}).click();
+    await p.getByRole('button',{name:'Something seems off',exact:true}).click();await p.getByRole('dialog',{name:'Something seems off'}).waitFor();await check('flag sheet');
+    await p.getByRole('button',{name:'Keep going',exact:true}).click();
+    await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).waitFor();await check('status sheet');
+    await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('button',{name:'Export backup',exact:true}).waitFor();await check('settings from focus');
+    await ctx.close();
+  }
+  assert.ok(growthCards>=3,`Growth is seeded with several skills (${growthCards})`);
+  assert.deepEqual(clearanceFailures,[],'nothing ends under the bottom nav or the gesture bar');
+  console.log(`Bottom-nav clearance: ${clearanceChecks} screen checks (home, Growth with ${growthCards} cards, Settings, sheets) at 5 viewports, with and without a 48px bottom inset and large text.`);
   assert.deepEqual(errors,[],'browser errors');
   console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (nudge line, restart, See how, save failure, leaving mid-retry, one ledger attempt), evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, problem report, compact layout, #869 focus-mode pass bar (no page scroll, keyboard-safe dock, ≤12 chrome words, 44px targets) for local tasks and every Activity Spec fixture, domain-gated sign key, gate-free Settings (#870). Explicit test IPC fixture; not native acceptance.');
 }finally{
