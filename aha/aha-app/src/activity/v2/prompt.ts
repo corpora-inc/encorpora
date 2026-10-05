@@ -127,7 +127,7 @@ PROMPT AND PROSE (text blocks, math blocks, hints, explanation)
 - This holds for hints and the explanation too: write {{s.size.n}}, never 4 or four.
 - Placeholders: {{q}} for a quantity no structure binds; {{s.role}} for a quantity bound to a structure role; {{s.measure}}; {{s.view}} for the figure's name. Members: .n (number only), .noun (noun for the value), .one / .other (singular / plural noun), .word (number in words), .unit (unit name).
 - A quantity bound to a role is ALWAYS written through its structure, everywhere: with roles {"groups":"g","size":"n"} on structure s, write {{s.groups}} and {{s.size.n}} — never {{g}} or {{n.n}} (rejected). Only a quantity no structure binds is written {{q}}.
-- Never name a figure in words (picture, rectangle, circle, shape, array, strip, grid, graph, chart, pie, number line, bar graph…): write {{s.view}}.
+- Name a figure with {{s.view}}, or with a word for a figure the prompt shows ("the rectangle" beside a rectangle); never name a figure that is not drawn.
 - Text blocks are plain text with inline TeX in $...$; a math block is TeX. Inside math, write {{a.n}} \\times {{b.n}}.
 - Grades K–2 write fractions in words: {{u.word}} ("one half").
 - Each structure with a view gets exactly one view block {"of":id,"type":"view"}; a structure with show null gets none.
