@@ -40,13 +40,13 @@ import {
 } from "../provider/free2z";
 import { previewRepository } from "./preview";
 import { needsSpecRestorer, restoreLearning } from "./recovery";
-import { AiQueueBox, deliverBatch, presentFromQueue, shouldPrefetch, takeNext, type QueuedActivity } from "./aiQueue";
+import { AiQueueBox, BATCH_WAIT_MS, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline, signInFailure } from "./connection";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
 import { spendingSummary } from "./spending";
-import { logError, logEvent } from "../diagnostics/log";
+import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
 const loadAiActivities = () => import("./aiActivities");
@@ -147,6 +147,14 @@ export default function Controller() {
   /** An AI activity whose presentation save failed, with its exact activity record for an idempotent retry. */
   const pendingAi = useRef<{item: QueuedActivity; record: {id: string; sessionId: string; createdAt: string; data: Json}} | undefined>(undefined);
   const prefetching = useRef<Promise<void> | undefined>(undefined);
+  /** The Stop for the batch in flight while the learner's own tap is still waiting for it (never for a background prefetch). */
+  const foregroundStop = useRef<StopToken | undefined>(undefined);
+  /** The Stop token of the batch in flight, if a tap started it (kept after the tap stops waiting). */
+  const batchStop = useRef<StopToken | undefined>(undefined);
+  /** The loaded learner had saved AI activities: a low restored queue is refilled once AI is connected. */
+  const restoredAi = useRef(false);
+  /** The last ai-skip reason logged (digits ignored), so a long local run logs each reason once. */
+  const lastSkip = useRef<string | undefined>(undefined);
   /** The learner asked for harder and no queued activity was; the next paid batch carries the signal. */
   const wantsHarder = useRef(false);
   /** Spec hints revealed for the AI activity on screen (separate from the assistance count). */
@@ -165,6 +173,7 @@ export default function Controller() {
   const accountEpoch = useRef(0);
   function clearAi() {
     currentAi.current = undefined;
+    lastSkip.current = undefined;
     aiQueue.current.replace([]);
     wantsHarder.current = false;
     pendingAi.current = undefined;
@@ -343,6 +352,10 @@ export default function Controller() {
     const restored = restoreLearning(p, snapshot, saved, recorded, disputes, specs);
     if (epoch !== accountEpoch.current || repo !== repository.current) return;
     if (restored.droppedAi) logEvent("warn", "ai-queue", `${restored.droppedAi} saved AI activities no longer validate and were set aside.`);
+    // Saved by this build or an older one: what survived re-validation, so a device log shows what the next batch follows.
+    restoredAi.current = !!(restored.aiQueue.length || restored.aiActivity);
+    if (restoredAi.current)
+      logEvent("info", "ai-queue", `restored ${restored.aiQueue.length} queued AI activities${restored.aiActivity ? " and the one on screen" : ""}`);
     currentProfile.current = p;
     setProfile(p);
     displayState(restored.learner);
@@ -421,9 +434,19 @@ export default function Controller() {
     aiBackoff.current.recordFailure(Date.now(), retryAt);
     setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
   }
-  function aiAttemptDue() {
+  /** Why a signed-in AI attempt is not due now, or undefined when it is. */
+  function aiBlockedReason(): string | undefined {
     const now = Date.now();
-    return now >= retryAfter.current && aiBackoff.current.shouldTryAi(now);
+    if (now < retryAfter.current) return `Free2Z asked us to wait ${Math.ceil((retryAfter.current - now) / 1000)} s`;
+    return aiBackoff.current.blockedReason(now);
+  }
+  function aiAttemptDue() { return aiBlockedReason() === undefined; }
+  /** Every decision not to use AI while signed in is logged with its reason: AI never stops silently. */
+  function aiSkipped(reason: string, level: LogLevel = "warn") {
+    const key = reason.replace(/\d+/g, "#");
+    if (key === lastSkip.current) return;
+    lastSkip.current = key;
+    logEvent(level, "ai-skip", reason);
   }
   function checkRetryDelay() {
     if (Date.now() < retryAfter.current)
@@ -574,10 +597,10 @@ export default function Controller() {
     setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
   }
   /** Connect, sign-in and Refresh connection: the not-ready state becomes a status line, never a red alert. */
-  async function connectAccount() {
-    try { await refreshConnection(); }
+  async function connectAccount(): Promise<boolean> {
+    try { await refreshConnection(); return true; }
     catch (e) {
-      if (aiNotReady(e)) { showNotReady("connect", e); return; }
+      if (aiNotReady(e)) { showNotReady("connect", e); return false; }
       throw e;
     }
   }
@@ -638,7 +661,9 @@ export default function Controller() {
                 status: readiness.current.reason,
               });
               await restorePaidAnswer();
-              await connectAccount();
+              // A restored queue (from this build or an older one) may already be low: refill it now, not on the
+              // next tap, so the learner is not left waiting for a batch the moment the queue runs out.
+              if (await connectAccount() && generation === lifecycle.current && restoredAi.current) maybePrefetch();
             }
           }
         }
@@ -719,8 +744,11 @@ export default function Controller() {
     let next: Activity;
     let worked = false;
     const aiPath = !!(subject.current && provider.current && journalReadable);
+    // An unreadable journal was already logged by aiUnavailable above.
+    if (subject.current && !provider.current) aiSkipped("signed in without a Free2Z provider for this account; local practice");
     // Optional timed recall stays a short local interleave: AI activities are conceptual evidence.
     const recall = aiPath && !stretch && count.current > 0 && count.current % 5 === 0 ? selectFluencySkill(state) : undefined;
+    if (recall) aiSkipped(`timed recall: one local fluency task after ${count.current} tasks; AI continues on the next task`, "info");
     if (aiPath && !recall) {
       // "Try something harder" on an unanswered AI activity must not waste it (#877): it is only left
       // for a queued activity that is harder, and then it goes back to the front of the queue.
@@ -728,10 +756,34 @@ export default function Controller() {
       const skipping = onScreen && !state.attempts.some(e => e.activityId === onScreen.activityId) ? onScreen : undefined;
       const above = skipping?.spec.difficulty;
       let item = takeNext(aiQueue.current.items, stretch, above).next;
-      if (!item && prefetching.current) {
-        await prefetching.current.catch(() => undefined);
+      // A batch the learner stopped never pays and ends at its next check; let it finish, then ask afresh.
+      if (!item && prefetching.current && batchStop.current?.stopped) {
+        // Bounded too: a stopped batch stuck on the network never holds the learner (no new batch until it settles).
+        if (!await settlesWithin(prefetching.current, BATCH_WAIT_MS)) aiSkipped("the stopped AI batch is still settling; one local task meanwhile", "info");
+        assertActionActive();
+      }
+      if (!item && !prefetching.current && !skipping) {
+        // The queue is empty and nothing is on its way: request a batch now (never an extra call for a skip).
+        const blocked = aiBlockedReason();
+        if (blocked) aiSkipped(`not requesting AI activities: ${blocked}; local practice meanwhile`);
+        else {
+          // Set before the batch starts, so the batch this tap starts carries the signal.
+          if (stretch) wantsHarder.current = true;
+          startBatch("next activity", true);
+        }
+      }
+      // A stopped batch that is still settling will deliver nothing: it was waited for above, never twice.
+      if (!item && prefetching.current && !batchStop.current?.stopped) {
+        // Wait briefly for the batch on its way, rather than flipping to local practice and back. Stop ends the wait.
+        const stop = foregroundStop.current;
+        const landed = await settlesWithin(stop ? Promise.race([prefetching.current, stop.signal]) : prefetching.current, BATCH_WAIT_MS);
+        // Past the wait the batch is a background one: a Stop on a later action never cuts off its paid stream.
+        if (foregroundStop.current === stop) foregroundStop.current = undefined;
         assertActionActive();
         item = takeNext(aiQueue.current.items, stretch, above).next;
+        if (!item && !landed && !skipping)
+          aiSkipped(`the next AI batch is still on its way after ${BATCH_WAIT_MS / 1000} s; one local task meanwhile, AI resumes when it lands`, "info");
+        // A batch that settled without a usable activity logged its own ai-fallback reason.
       }
       if (!item && stretch) wantsHarder.current = true;
       if (!item && skipping) {
@@ -740,8 +792,6 @@ export default function Controller() {
         maybePrefetch();
         return;
       }
-      if (!item && aiAttemptDue() && await requestBatch("next activity", true))
-        item = takeNext(aiQueue.current.items, stretch, above).next;
       if (item) {
         if (skipping) aiQueue.current.requeueFront({...skipping, shown: true, ...(hintsUsed.current > 0 ? {hintsUsed: hintsUsed.current} : {})});
         try { await showSpec(item); }
@@ -798,31 +848,38 @@ export default function Controller() {
    * Returns true when activities were queued. When AI cannot produce them it logs, backs off and
    * returns false so local practice continues. Background prefetches never surface an alert.
    */
-  async function requestBatch(stage: string, foreground: boolean): Promise<boolean> {
+  async function requestBatch(stage: string, stop?: StopToken): Promise<boolean> {
     const p = currentProfile.current, state = learning.current, tutor = provider.current;
-    if (!p || !state || !tutor || !subject.current) return false;
+    if (!p || !state || !tutor || !subject.current) {
+      aiSkipped(`${stage}: no batch requested; ${!tutor || !subject.current ? "no signed-in Free2Z provider" : "no learner loaded"}`);
+      return false;
+    }
     const epoch = accountEpoch.current;
     const stillCurrent = () => epoch === accountEpoch.current && tutor === provider.current && currentProfile.current?.id === p.id;
+    const stopped = () => !!stop?.stopped;
     try {
-      const authorization = await paidAuthorization(foreground);
+      // The batch carries the learner's Stop as its own token: an action that started later cannot re-arm it.
+      const authorization = await paidAuthorization(false);
       // Refresh advertised availability for each new paid batch. A failed call is never replaced by
       // another paid call: local practice serves the learner and AI is retried after a backoff.
       selectedModel.current = chooseTutorModel(await getNativeClient().models());
       const runtime = await loadAiActivities();
       const harder = wantsHarder.current;
       const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder);
-      if (foreground) assertActionActive();
-      if (!stillCurrent()) return false;
+      // Checked with no await before reply(): a Stop after this point reaches the provider through cancel().
+      if (stopped()) { logEvent("info", "ai-skip", `${stage}: stopped by the learner before sending; no paid request`); return false; }
+      if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed before sending; no batch requested`, "info"); return false; }
       const reply = await tutor.reply(selectedModel.current, request.system, request.user, authorization,
         {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(request.maxOutputTokens) as "2600", request.structured);
       // A learner or account switch leaves the completed batch saved for its own learner.
-      if (!stillCurrent()) return false;
+      if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed; the batch stays saved for its learner`, "info"); return false; }
       const queuedBefore = aiQueue.current.length;
       await deliverReply(reply);
-      if (!stillCurrent()) return false;
+      if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed during delivery`, "info"); return false; }
       if (aiQueue.current.length <= queuedBefore)
         throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       aiBackoff.current.recordSuccess();
+      lastSkip.current = undefined;
       if (harder) wantsHarder.current = false;
       setAccount(a => a.aiReady ? a : {...a, aiReady: true, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance."});
       void getNativeClient().balance()
@@ -830,8 +887,8 @@ export default function Controller() {
         .catch(e => { logError("balance", e); if (stillCurrent()) setAccount(a => ({...a, status: "Balance refresh is temporarily unavailable. The request receipt remains recorded."})); });
       return true;
     } catch (e) {
-      // A learner's Stop is honoured as a stop, never silently replaced.
-      if (foreground && actionCancelled.current) throw e;
+      // A learner's Stop is honoured as a stop, never recorded as an AI failure or backoff.
+      if (stopped()) { logEvent("info", "ai-skip", `${stage}: stopped by the learner (${describeError(e)})`); return false; }
       if (!stillCurrent()) { logError(stage, e); return false; }
       if (aiNotReady(e)) appBudget.current = undefined;
       aiUnavailable(stage, e);
@@ -843,15 +900,32 @@ export default function Controller() {
   }
   /** Request the next batch in the background while the learner works on the last queued activity. */
   function maybePrefetch() {
-    if (!shouldPrefetch({
+    const blockedBy = aiBlockedReason();
+    const state = {
       queueLength: aiQueue.current.length,
       inFlight: !!prefetching.current,
       signedIn: !!(subject.current && provider.current && currentProfile.current),
-      aiDue: aiAttemptDue(),
-    })) return;
-    const run: Promise<void> = requestBatch("prefetch", false).then(() => undefined, e => logError("prefetch", e))
-      .finally(() => { if (prefetching.current === run) prefetching.current = undefined; });
+      aiDue: blockedBy === undefined,
+    };
+    if (shouldPrefetch(state)) { startBatch("prefetch", false); return; }
+    const why = prefetchBlocked(state, blockedBy);
+    if (why) aiSkipped(`not prefetching AI activities: ${why}`);
+  }
+  /**
+   * The single in-flight batch. `foreground`: the learner's own tap started it, so their Stop still prevents its
+   * paid call while it is being prepared; the tap waits for it only briefly (BATCH_WAIT_MS) and it lands in the queue.
+   */
+  function startBatch(stage: string, foreground: boolean) {
+    const stop = foreground ? stopToken() : undefined;
+    const run: Promise<void> = requestBatch(stage, stop).then(() => undefined, e => logError(stage, e))
+      .finally(() => {
+        if (prefetching.current === run) prefetching.current = undefined;
+        if (stop && foregroundStop.current === stop) foregroundStop.current = undefined;
+        if (batchStop.current === stop) batchStop.current = undefined;
+      });
     prefetching.current = run;
+    foregroundStop.current = stop;
+    batchStop.current = stop;
   }
   /** Foreground provider work waits for a background prefetch instead of colliding with it. */
   async function settlePrefetch() { await prefetching.current?.catch(() => undefined); }
@@ -1157,7 +1231,7 @@ export default function Controller() {
       status: readiness.current.reason,
     });
     await loadAccount(repo);
-    await connectAccount();
+    if (await connectAccount() && restoredAi.current) maybePrefetch();
   }
   async function signOut() {
     await provider.current?.cancel();
@@ -1349,13 +1423,16 @@ export default function Controller() {
           ? () => {
               actionCancelled.current = true;
               // A background prefetch is not the learner's request: Stop never cuts off its paid stream
-              // (that would strand its receipt). A foreground wait for it is still stopped.
-              if (!prefetching.current) void provider.current?.cancel().catch(fail);
+              // (that would strand its receipt). A foreground wait for it is still stopped. A batch the learner's
+              // own tap started (and is still waiting for) is theirs to stop, before or during its paid call.
+              const own = foregroundStop.current;
+              if (own) own.stop();
+              if (own || !prefetching.current) void provider.current?.cancel().catch(fail);
             }
           : undefined
       }
       onManageAccount={native ? () => void action(() => invoke("open_free2z_account"), "Opening Free2Z in your browser…") : undefined}
-      onRefreshAccount={() => void action(connectAccount, "Checking Free2Z…")}
+      onRefreshAccount={() => void action(async () => { await connectAccount(); }, "Checking Free2Z…")}
       onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>

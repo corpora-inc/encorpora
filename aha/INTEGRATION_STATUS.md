@@ -285,6 +285,19 @@ batch is prefetched only when one activity remains, and only one request is in f
 The fallback backoff and Retry-After gate prefetches as well. Restarts and recovered replies
 reuse queued activities and never buy them again.
 
+### Queue refill after an in-place upgrade (2026-10-05, S26)
+
+The founder's S26 received main `f4964739` over a #882-era build that had queued a batch. Read-only
+device state showed the new build never served a local task: its session still held the old
+build's AI activity and three queued ones, and the journal was still v2. The local practice seen
+that morning came from the old build: three `invalid_batch` prompt-only replies (13:14–13:19Z) put
+it into the fallback backoff, which served two local tasks (each logged `ai-fallback`).
+When the restored queue reached one activity on `f4964739`, the prefetch fired as designed: one
+structured (`json_schema`, strict) call, settled at 4 2Z, kept 3 and rejected 1, and the journal
+became v3. The changes that followed: a restored queue that is already low is refilled at launch;
+a Continue with an empty queue waits at most 6 s for the batch on its way instead of until it
+lands (about 29 s on device); every decision not to use AI while signed in logs `ai-skip`.
+
 ## Remaining live acceptance
 
 1. Obtain the platform's paid-readiness and first-receipt checkpoint through the
