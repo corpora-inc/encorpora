@@ -131,7 +131,7 @@ the fallback, and signed-out practice is unchanged.
    journal is version 2: each operation records its budget (`'1800'` or `'2600'`). Version 1
    journals, which pin 1800, stay readable and recoverable, and are rewritten as version 2 on
    their first write. The estimate and cap check still run before every send.
-   `max_output_tokens_strict` and `response_format` are not sent yet.
+   `max_output_tokens_strict` is sent on every paid request (#881); `response_format` is not sent yet.
 2. **Validate.** A fresh reply and a same-key recovered reply both go through
    `parseBatch(text, allowedSkillIds, operationId)`, which calls `validateActivityBatch`.
    Rejected activities are logged as model-quality telemetry (`ai-batch` in diagnostics). A

@@ -10,24 +10,31 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
   let value: unknown; const calls: {request:ChatRequest; options:any}[] = []; let activeSession = session;
   let cap: bigint | null | undefined = 100000n; let available: bigint | undefined = 500000n; let hold = 1n; let cancelled = 0;
   let grantPatch: Partial<Grant> & Record<string, unknown> = {};
+  const estimates: ChatRequest[] = []; let estimateTokens: bigint | undefined; let estimateError: unknown; let chatError: unknown;
   const journal: Journal = {getJournal:async()=>structuredClone(value),putJournal:async(key,v)=>{if(key==='aha-billing-v1')value=structuredClone(v);}};
   const client: SdkClient = {
     session:async()=>activeSession, signIn:async()=>session, signOut:async()=>({revoked:true,generation:'two'}),
     balance:async()=>({available_milli_2z:available ?? 500000n,held_milli_2z:0n,balance_milli_2z:available ?? 500000n,debt_milli_2z:0n,as_of:new Date().toISOString()}),
     grant:async()=>({...baseGrant(),...grantPatch}) as Grant,
     models:async()=>({models:[{id:'verified-model'}],catalog_version:1n}),
-    estimate:async()=>({model:'verified-model',input_tokens:10n,max_output_tokens:1800n,hold_2z:hold,
-      ...(available === undefined ? {} : {available_milli_2z:available}),...(cap === undefined ? {} : {cap_remaining_milli_2z:cap})}),
+    estimate:async(request)=>{
+      estimates.push(request);
+      if(estimateError)throw estimateError;
+      return {model:'verified-model',input_tokens:10n,max_output_tokens:estimateTokens??request.max_output_tokens??0n,hold_2z:hold,
+      ...(available === undefined ? {} : {available_milli_2z:available}),...(cap === undefined ? {} : {cap_remaining_milli_2z:cap})};
+    },
     call:async(id)=>({call_id:id,status:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}),
     chat:async(request,options)=>{
       assert.ok((value as any).operations.length, 'journal must precede potentially billable invocation');
       calls.push({request,options});
+      if(chatError)throw chatError;
       const iterator=(async function*(){yield {type:'meta',call_id:'call',model:'verified-model',hold_2z:1n} as ChatEvent; yield {type:'delta',text:'{"activity":true}'} as ChatEvent;for(const e of events)yield e;})();
       return Object.assign(iterator,{operationId:options.operationId,idempotencyKey:options.idempotencyKey,callId:'call',cancel:async()=>{cancelled++;}}) as ChatStream;
     }
   };
   const authorization: PaidAuthorization = {subject:'adult',clientId:'aha-client',verifiedGrant:{subject:'adult',clientId:'aha-client',sessionGeneration:'one',asOf:new Date().toISOString(),checkedAt:Date.now(),budget:{period:'month',limit2z:100n}}};
-  return {client,journal,tutor:new Free2zTutor(client,journal,'adult'),calls,authorization,
+  return {client,journal,tutor:new Free2zTutor(client,journal,'adult'),calls,estimates,authorization,
+    setEstimateTokens:(v:bigint|undefined)=>{estimateTokens=v;},setEstimateError:(e:unknown)=>{estimateError=e;},setChatError:(e:unknown)=>{chatError=e;},
     setCap:(v:bigint|null|undefined)=>{cap=v;},setAvailable:(v:bigint|undefined)=>{available=v;},setHold:(v:bigint)=>{hold=v;},
     setGrant:(patch:Partial<Grant> & Record<string, unknown>)=>{grantPatch=patch;},
     setSession:(v:Session)=>{activeSession=v;},setValue:(v:unknown)=>{value=structuredClone(v);},getValue:()=>value as any,cancelled:()=>cancelled};
@@ -324,7 +331,7 @@ test('a batch request journals and sends the 2600-token budget as journal v2, af
  assert.equal(reply.context?.kind,'activities');
  assert.equal(f.calls[0].request.max_output_tokens,2600n);
  assert.equal(estimated,2600n,'the hold estimate and cap check use the same budget before send');
- assert.equal('max_output_tokens_strict' in f.calls[0].request,false,'strict output is not sent yet');
+ assert.equal(f.calls[0].request.max_output_tokens_strict,true,'strict output is sent on the chat request');
  assert.equal(f.getValue().version,2);
  assert.equal(f.getValue().operations[0].request.maxOutputTokens,'2600');
  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'9999' as any),{code:'output_budget_invalid'});
@@ -507,5 +514,68 @@ test('a journal written under the test-era policy is still read, blocks fresh sp
   await f.tutor.reconcile();assert.deepEqual(await f.tutor.inspectPending(),[]);
   const fresh=fixture();fresh.setValue(f.getValue());fresh.setGrant({spend_cap_2z:null});fresh.setCap(null);
   await fresh.tutor.reply('verified-model','p','c',await liveAuthorization(fresh));assert.equal(fresh.calls.length,1,`v${version}`);
+ }
+});
+
+// ---- max_output_tokens_strict: never truncated-but-charged ----
+const refusal=(status:number,reason:string,code='insufficient_balance')=>new SdkError(code,{status,details:{reason}});
+test('strict output is sent on the estimate and the chat request for batches, tutor replies and recovery',async()=>{
+ for(const [ctx,budget] of [[batchContext,'2600'],[undefined,'1800'],[{kind:'curiosity' as const,profileId:'p',activityId:'a',question:'Why?'},'1800']] as const){
+  const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization,ctx,budget as any);
+  assert.equal(f.estimates.length,2,'admission at journal time and again at the send boundary');
+  for(const e of f.estimates)assert.equal(e.max_output_tokens_strict,true);
+  assert.equal(f.calls[0].request.max_output_tokens_strict,true);
+ }
+ const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'interrupted'});
+ const before=f.estimates.length;await f.tutor.recover(f.getValue().operations[0].id,f.authorization).catch(()=>{});
+ assert.ok(f.estimates.length>before);for(const e of f.estimates)assert.equal(e.max_output_tokens_strict,true);
+ for(const c of f.calls)assert.equal(c.request.max_output_tokens_strict,true,'same-key recovery stays strict');
+});
+test('an estimate that returns fewer output tokens than requested is a refusal, even with strict',async()=>{
+ const f=fixture();f.setEstimateTokens(1000n);
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code:'not_enough_2z'});
+ assert.equal(f.calls.length,0,'nothing is sent');assert.equal(f.getValue()?.operations?.length??0,0,'nothing is journaled');
+});
+test('a strict estimate refusal (402/403 with details.reason) is a calm zero-charge refusal before any journal write',async()=>{
+ for(const [status,reason,code] of [[402,'insufficient_balance','insufficient_balance'],[403,'cap_exceeded','cap_exceeded'],[402,'something_new','not_enough_2z']] as const){
+  const f=fixture();f.setEstimateError(refusal(status,reason,reason==='something_new'?'payment_required':reason));
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code});
+  assert.equal(f.calls.length,0);assert.equal(f.getValue()?.operations?.length??0,0);
+ }
+});
+test('a strict chat refusal settles the journal entry as released, 0 charged, with no pending receipt, and later calls proceed',async()=>{
+ for(const [status,reason,code] of [[402,'insufficient_balance','insufficient_balance'],[403,'cap_exceeded','cap_exceeded'],[402,'balance_changed','not_enough_2z']] as const){
+  const f=fixture();f.setChatError(refusal(status,reason,reason==='balance_changed'?'payment_required':reason));
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code});
+  const [op]=f.getValue().operations;
+  assert.equal(op.state,'finalized');assert.deepEqual(op.charge,{state:'released',charged2z:'0'});
+  assert.deepEqual(await f.tutor.inspectPending(),[],'no unsettled receipt');
+  assert.deepEqual(await f.tutor.reconcile(),{pending:0,spent2z:0n});
+  f.setChatError(undefined);
+  const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+  assert.equal(reply.text,'{"activity":true}','future paid calls are not blocked');
+ }
+});
+test('a refusal at the send-boundary estimate releases the never-sent journal entry',async()=>{
+ const f=fixture();let n=0;const estimate=f.client.estimate;
+ f.client.estimate=async(r)=>{if(++n===2)throw refusal(402,'insufficient_balance');return estimate(r);};
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'insufficient_balance'});
+ assert.equal(f.calls.length,0);assert.deepEqual(f.getValue().operations[0].charge,{state:'released',charged2z:'0'});
+ assert.deepEqual(await f.tutor.inspectPending(),[]);
+});
+test('the native transport drops details: a bare 402/403 with the gateway refusal code is still a zero-charge release',async()=>{
+ for(const [status,code] of [[402,'insufficient_balance'],[403,'cap_exceeded']] as const){
+  const f=fixture();f.setChatError(new SdkError(code,{status}));
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600'),{code});
+  assert.deepEqual(f.getValue().operations[0].charge,{state:'released',charged2z:'0'});assert.deepEqual(await f.tutor.inspectPending(),[]);
+ }
+});
+test('non-refusal chat failures stay uncertain and block further calls',async()=>{
+ const f=fixture();f.setChatError(new SdkError('unavailable',{status:503}));
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
+ assert.equal(f.getValue().operations[0].state,'interrupted');
+ for(const e of [new SdkError('invalid_token',{status:403}),new SdkError('insufficient_scope',{status:403,details:{}}),new SdkError('payment_required',{status:402}),new SdkError('insufficient_balance',{status:500}),new SdkError('insufficient_balance',{status:402,callId:'c1'})]){
+  const g=fixture();g.setChatError(e);await assert.rejects(g.tutor.reply('verified-model','p','c',g.authorization));
+  assert.notEqual(g.getValue().operations[0].charge?.state,'released','only a strict refusal with details.reason is a zero-charge release');
  }
 });
