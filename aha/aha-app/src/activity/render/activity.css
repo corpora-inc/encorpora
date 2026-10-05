@@ -108,6 +108,15 @@
 .ax-dimension line { stroke: var(--ax-muted); stroke-width: 1.4; }
 .ax-pill { fill: var(--ax-card); stroke: var(--ax-line); }
 .ax-dimension-label { stroke: none; font-weight: 700; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+/* geometry graph paper (grid) and unit squares; light lines, a stronger line every 5 units */
+.aha-activity { --ax-graph-minor: #d3e2de; --ax-graph-major: #a6c4bd; }
+.aha-activity[data-theme="dark"] { --ax-graph-minor: #33463f; --ax-graph-major: #4a665f; }
+@media (prefers-color-scheme: dark) { .aha-activity[data-theme-auto] { --ax-graph-minor: #33463f; --ax-graph-major: #4a665f; } }
+.ax-graph-paper { pointer-events: none; }
+.ax-graph-sheet { fill: var(--ax-card); }
+.ax-graph-minor { stroke: var(--ax-graph-minor); stroke-width: 1; }
+.ax-graph-major { stroke: var(--ax-graph-major); stroke-width: 1.25; }
+.ax-unit-squares { pointer-events: none; stroke-width: 1.25; stroke-opacity: 0.6; }
 .ax-region { cursor: pointer; outline: none; }
 .ax-region:focus-visible :is(path, polygon, circle:not(.ax-hit), rect:not(.ax-hit)) { stroke: var(--ax-focus); stroke-width: 3.5; }
 .ax-slice { stroke: var(--ax-panel); stroke-width: 2.5; stroke-linejoin: round; }
@@ -178,7 +187,9 @@
 .ax-picture { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; width: 100%; }
 .ax-picture-column { flex-direction: column; align-items: stretch; }
 .ax-picture-column .ax-pic-group { flex-direction: row; justify-content: flex-start; align-items: center; }
-.ax-picture-column .ax-pic-label { order: -1; flex: 0 0 auto; width: clamp(3.5em, 22%, 7.5em); text-align: left; overflow-wrap: anywhere; }
+.ax-picture-column .ax-pic-label { order: -1; flex: 0 0 auto; width: clamp(3.5em, 22%, 7.5em); text-align: left; overflow-wrap: break-word; }
+/* Narrow cards: the row label sits above its icons, so words never split and every row still starts at the same x. */
+@container (max-width: 480px) { .ax-picture-column .ax-pic-group { flex-wrap: wrap; row-gap: 4px; } .ax-picture-column .ax-pic-label { width: 100%; } }
 .ax-picture-column .ax-pic-grid { display: flex; flex-wrap: wrap; justify-content: flex-start; flex: 1 1 0; min-width: 0; }
 .ax-pic-group { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 14px; background: var(--ax-card); border: 1px solid var(--ax-line); border-radius: 14px; min-width: 0; max-width: 100%; }
 .ax-pic-group.is-tappable { cursor: pointer; min-height: 44px; }

@@ -29,6 +29,58 @@ export const g35Fixtures: ActivitySpec[] = [
     explanation: 'There are 4 rows of 6 tiles. $4 \\times 6 = 24$, so the area is 24 square meters.',
   },
   {
+    version: 1, id: 'fx-3-equal-groups', title: 'Eggs in nests', skillIds: ['3.OA.A.1'], difficulty: 3,
+    prompt: [{ type: 'text', text: 'Each nest holds the same number of eggs.' }, { type: 'figure', figureId: 'nests' }, { type: 'text', text: 'How many eggs are there in all?' }],
+    figures: [{ type: 'picture', id: 'nests', alt: '4 equal groups of eggs, 3 eggs in each group.', groups: [{ icon: 'egg', count: 3, repeat: 4, label: 'Nest' }] }],
+    response: { type: 'numeric', answer: 12, misconceptionAnswers: [{ answer: 7, tag: 'added_instead' }] },
+    keyCheck: { value: '4 * 3' },
+    hints: ['How many groups are there? How many eggs are in each?'],
+    explanation: '4 groups of 3 is $4 \\times 3 = 12$ eggs.',
+  },
+  {
+    version: 1, id: 'fx-3-area-graph-paper', title: 'A quilt on graph paper', skillIds: ['3.MD.C.6'], difficulty: 3,
+    prompt: [{ type: 'text', text: 'Nia drew her quilt on graph paper. Each small square is 1 square unit.' }, { type: 'figure', figureId: 'quilt' }, { type: 'text', text: 'What is the area of the quilt?' }],
+    figures: [{
+      type: 'geometry', id: 'quilt', alt: 'Graph paper 8 squares wide and 6 tall. A shaded rectangle covers 5 columns and 3 rows of squares.', width: 8, height: 6, grid: { unit: 1 },
+      shapes: [{ kind: 'polygon', points: [{ x: 1, y: 2 }, { x: 6, y: 2 }, { x: 6, y: 5 }, { x: 1, y: 5 }], color: 'gold', unitSquares: true }],
+    }],
+    response: { type: 'numeric', answer: 15, unit: 'square units', misconceptionAnswers: [{ answer: 16, tag: 'perimeter_for_area' }, { answer: 8, tag: 'added_dimensions' }] },
+    keyCheck: { value: '5 * 3' },
+    hints: ['Count the squares in one row, then count the rows.'],
+    explanation: 'There are 3 rows of 5 squares: $3 \\times 5 = 15$ square units.',
+  },
+  {
+    version: 1, id: 'fx-3-composite-area-grid', title: 'An L-shaped garden', skillIds: ['3.MD.C.7'], difficulty: 6,
+    prompt: [{ type: 'text', text: 'Mateo plans an L-shaped garden on graph paper. Each square is 1 square meter.' }, { type: 'figure', figureId: 'plan' }, { type: 'text', text: 'Which is the area of the garden?' }],
+    figures: [{
+      type: 'geometry', id: 'plan', alt: 'Graph paper 14 squares wide and 9 tall. An L shape: a bottom part 12 squares long and 4 tall, with a part 6 squares wide and 3 tall on top of its left end.', width: 14, height: 9, grid: { unit: 1 },
+      shapes: [
+        { kind: 'polygon', points: [{ x: 1, y: 1 }, { x: 13, y: 1 }, { x: 13, y: 5 }, { x: 7, y: 5 }, { x: 7, y: 8 }, { x: 1, y: 8 }], color: 'teal' },
+        { kind: 'segment', from: { x: 1, y: 5 }, to: { x: 7, y: 5 }, dashed: true },
+      ],
+    }],
+    response: { type: 'multiple_choice', options: [
+      { text: '66 square meters', correct: true },
+      { text: '84 square meters', correct: false, misconception: 'used_bounding_rectangle' },
+      { text: '38 square meters', correct: false, misconception: 'perimeter_for_area' },
+      { text: '48 square meters', correct: false, misconception: 'missed_a_part' },
+    ] },
+    hints: ['The dashed line splits the garden into two rectangles.'],
+    explanation: 'Bottom: $12 \\times 4 = 48$. Top: $6 \\times 3 = 18$. Together $48 + 18 = 66$ square meters.',
+  },
+  {
+    version: 1, id: 'fx-3-perimeter-grid', title: 'Around the pond', skillIds: ['3.MD.D.8'], difficulty: 4,
+    prompt: [{ type: 'text', text: 'A path goes all the way around a pond drawn on graph paper. Each square side is 1 unit long.' }, { type: 'figure', figureId: 'pond' }, { type: 'text', text: 'How long is the path?' }],
+    figures: [{
+      type: 'geometry', id: 'pond', alt: 'Graph paper 9 squares wide and 6 tall. A rectangle outline 7 squares long and 3 squares tall.', width: 9, height: 6, grid: { unit: 1 },
+      shapes: [{ kind: 'polygon', points: [{ x: 1, y: 1 }, { x: 8, y: 1 }, { x: 8, y: 4 }, { x: 1, y: 4 }], color: 'blue' }],
+    }],
+    response: { type: 'numeric', answer: 20, unit: 'units', misconceptionAnswers: [{ answer: 21, tag: 'area_for_perimeter' }, { answer: 10, tag: 'two_sides_only' }] },
+    keyCheck: { value: '2 * (7 + 3)' },
+    hints: ['Count the unit lengths along each side, not the squares inside.'],
+    explanation: 'The sides are 7, 3, 7 and 3 units: $7 + 3 + 7 + 3 = 20$ units.',
+  },
+  {
     version: 1, id: 'fx-3-garden-perimeter', title: 'Fence around a garden', skillIds: ['3.MD.D.8'], difficulty: 5,
     prompt: [{ type: 'text', text: 'A rectangular garden needs a fence all the way around.' }, { type: 'figure', figureId: 'garden' }, { type: 'text', text: 'How many meters of fence are needed?' }],
     figures: [{

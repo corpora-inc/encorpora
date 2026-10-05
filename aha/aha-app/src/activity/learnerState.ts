@@ -6,6 +6,7 @@
 import type { AttemptEvidence, Grade, LearnerState } from '../learning/types';
 import { getSkill, skills } from '../learning/curriculum';
 import type { ActivitySpec, ResponseType } from './spec';
+import { isSpecLike, recentContentOf, RECENT_CONTENT_WINDOW, type RecentContent } from './variety';
 
 /** What a later PR appends to the evidence ledger for each graded Activity Spec. */
 export interface ActivityAttemptRecord {
@@ -45,6 +46,10 @@ export interface LearnerSummary {
   recent: { attempts: number; accuracy: number | null; independentRate: number | null; hintRate: number | null; medianActiveSec: number | null; streak: number };
   misconceptions: { tag: string; count: number; lastSeenDaysAgo: number }[];
   dueReviews: string[];
+  /** Secure skills still building timed fact fluency: deliberate repetition is the point for these. */
+  fluency?: string[];
+  /** Fingerprint of the last ~12 AI activities (closed vocabulary, no answers): what not to repeat. */
+  recentContent?: RecentContent;
   /** correct = right on the first try; retryCorrect = right only after the forgiving retry. */
   /** The learner tapped "Try something harder" and no queued activity was harder (#877): aim higher. */
   wantsHarder?: true;
@@ -103,9 +108,28 @@ export interface SummaryInput {
   now?: string;
   frontierLimit?: number;
   wantsHarder?: boolean;
+  /**
+   * Activities already fetched but not yet answered (queued or on screen), oldest first. They join the
+   * ledger's AI activities in `recentContent`, so the next batch does not repeat them either.
+   */
+  pendingSpecs?: readonly ActivitySpec[];
 }
 
-export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10, wantsHarder = false }: SummaryInput): LearnerSummary {
+/** The validated specs of the most recent AI attempts in the ledger, oldest first, one per spec. */
+function recentLedgerSpecs(ledger: LearnerState | undefined): ActivitySpec[] {
+  const out: ActivitySpec[] = [];
+  const seen = new Set<string>();
+  const attempts = ledger?.attempts ?? [];
+  for (let i = attempts.length - 1; i >= 0 && out.length < RECENT_CONTENT_WINDOW; i--) {
+    const a = attempts[i]!;
+    if (a.excluded || a.source !== 'ai-spec' || seen.has(a.spec.hash) || !isSpecLike(a.spec.content)) continue;
+    seen.add(a.spec.hash);
+    out.push(a.spec.content);
+  }
+  return out.reverse();
+}
+
+export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10, wantsHarder = false, pendingSpecs = [] }: SummaryInput): LearnerSummary {
   const time = Date.parse(now);
   if (!Number.isFinite(time)) throw new Error('Use a valid timestamp.');
   const attempts = normalize(ledger, activityAttempts);
@@ -161,6 +185,10 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     const t = tagCounts.get(a.tag) ?? { count: 0, last: 0 };
     tagCounts.set(a.tag, { count: t.count + 1, last: Math.max(t.last, a.at) });
   }
+  const fluency = Object.values(ledger?.progress ?? {}).filter(p => p.concept === 'provisional' && p.fluency === 'developing' && getSkill(p.skillId)).map(p => p.skillId).slice(0, 4);
+  const pending = pendingSpecs.filter(isSpecLike);
+  const pendingKeys = new Set(pending.map(s => specHash(s)));
+  const recentContent = recentContentOf([...recentLedgerSpecs(ledger).filter(s => !pendingKeys.has(specHash(s))), ...pending]);
   return {
     version: 1,
     gradeHint,
@@ -177,6 +205,8 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     misconceptions: [...tagCounts].sort((a, b) => b[1].count - a[1].count || b[1].last - a[1].last).slice(0, 6)
       .map(([tag, t]) => ({ tag, count: t.count, lastSeenDaysAgo: Math.max(0, Math.floor((time - t.last) / DAY)) })),
     dueReviews: [...due].slice(0, 6),
+    ...(fluency.length ? { fluency } : {}),
+    ...(recentContent ? { recentContent } : {}),
     ...(wantsHarder ? { wantsHarder: true as const } : {}),
     recentActivities: attempts.slice(-6).map(a => ({ skills: a.skillIds, difficulty: a.difficulty, type: a.type, correct: a.correct, hints: a.hints, ...(a.retryCorrect ? { retryCorrect: true as const } : {}) })),
   };

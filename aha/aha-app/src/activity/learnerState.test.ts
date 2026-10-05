@@ -64,6 +64,13 @@ describe('learner summary', () => {
     assert.ok(s.dueReviews.includes('2.OA.B.2'), 'an assisted answer schedules a next-day review');
     assert.equal(s.frontier.find(f => f.id === '2.OA.B.2')!.state, 'review_due');
   });
+  it('marks fluency targets: secure skills still building timed fact fluency', () => {
+    const state = createLearner('learner', 3);
+    state.progress['3.OA.C.7'] = { skillId: '3.OA.C.7', concept: 'provisional', fluency: 'developing', retention: 'unconfirmed', independentSuccesses: 3, distinctVariants: [], reviewStage: 1, nextReviewAt: null, lastAttemptAt: '2026-10-01T10:00:00Z' };
+    state.progress['3.NF.A.1'] = { ...state.progress['3.OA.C.7'], skillId: '3.NF.A.1', fluency: 'not-applicable' };
+    assert.deepEqual(buildLearnerSummary({ gradeHint: 3, ledger: state, now: '2026-10-04T10:00:00Z' }).fluency, ['3.OA.C.7']);
+    assert.equal('fluency' in buildLearnerSummary({ gradeHint: 3, now: '2026-10-04T10:00:00Z' }), false);
+  });
   it('hashes specs stably regardless of key order', () => {
     const f = fixtures[0]!;
     const reordered = Object.fromEntries(Object.entries(f).reverse()) as typeof f;

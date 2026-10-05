@@ -34,9 +34,13 @@ export interface BatchRequest {
   structured: StructuredOutput;
 }
 
-/** The learner summary comes from the evidence ledger only: levels and results, never names or ids. */
-export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false): BatchRequest {
-  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder });
+/**
+ * The learner summary comes from the evidence ledger only: levels and results, never names or ids.
+ * `pendingSpecs` (queued or on-screen activities, oldest first) widen the variety fingerprint so the
+ * next batch does not repeat what is already waiting.
+ */
+export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false, pendingSpecs: readonly ActivitySpec[] = []): BatchRequest {
+  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder, pendingSpecs });
   const prompt = buildActivityPrompt(summary, { count: BATCH_SIZE });
   const { name, schema } = prompt.responseFormat.json_schema;
   return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], maxOutputTokens: BATCH_MAX_OUTPUT_TOKENS, summary,

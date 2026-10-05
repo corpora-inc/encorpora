@@ -15,15 +15,12 @@ import { closeEnough, evaluate, evaluateConstant, ExprError, parseExpr, samplePo
 
 export const ACTIVITY_SPEC_VERSION = 1 as const;
 
-/** Curated, bundled pictograph icons. The model names an icon; it never supplies SVG or URLs. */
-export const ICON_NAMES = [
-  'apple', 'banana', 'cherry', 'grape', 'carrot', 'cookie', 'cake', 'pizza', 'ice_cream', 'egg', 'candy', 'sandwich',
-  'fish', 'bird', 'cat', 'dog', 'rabbit', 'turtle', 'snail', 'bug', 'squirrel', 'paw',
-  'star', 'heart', 'flower', 'leaf', 'tree', 'sprout', 'sun', 'moon', 'cloud', 'snowflake', 'shell', 'feather', 'clover',
-  'car', 'bus', 'bike', 'boat', 'rocket', 'train', 'plane',
-  'pencil', 'book', 'gift', 'crown', 'gem', 'trophy', 'puzzle', 'block', 'music', 'dice',
-] as const;
-export type IconName = typeof ICON_NAMES[number];
+/**
+ * Pictograph icons: the model names an everyday object in singular snake_case ("apple", "sailboat",
+ * "traffic_cone"). The renderer draws it from a broad bundled vocabulary (render/icons.tsx) and falls
+ * back to a neutral counter for any other name. Only the name travels; never SVG, markup or URLs.
+ */
+export const ICON_PATTERN = /^[a-z][a-z_]{0,31}$/;
 export const COLOR_TOKENS = ['teal', 'coral', 'blue', 'gold', 'plain'] as const;
 export type ColorToken = typeof COLOR_TOKENS[number];
 
@@ -41,7 +38,7 @@ const int = (min: number, max: number) => z.number().int().min(min).max(max);
 const id = () => z.string().regex(/^[a-z0-9][a-z0-9_-]{0,47}$/, 'Use a short lowercase ASCII id (a-z, 0-9, _ or -).');
 const tag = () => z.string().regex(/^[a-z][a-z0-9_]{0,47}$/, 'Use a snake_case misconception tag.');
 const color = () => z.enum(COLOR_TOKENS);
-const icon = () => z.enum(ICON_NAMES);
+const icon = () => z.string().regex(ICON_PATTERN, 'Name the object in lowercase snake_case, e.g. "sailboat".');
 const COORD = 1000;
 const point = () => z.strictObject({ x: num(-COORD, COORD), y: num(-COORD, COORD) });
 const axis = () => z.strictObject({ min: num(-COORD, COORD), max: num(-COORD, COORD), step: num(0.001, 1000).optional() });
@@ -92,7 +89,7 @@ const CoordinatePlane = z.strictObject({
   polygons: z.array(z.strictObject({ points: z.array(point()).min(3).max(12), label: plain(16).optional(), color: color().optional() })).max(4).optional(),
 });
 const GeometryShape = z.discriminatedUnion('kind', [
-  z.strictObject({ kind: z.literal('polygon'), points: z.array(point()).min(3).max(12), id: id().optional(), label: plain(24).optional(), color: color().optional(), dashed: z.boolean().optional() }),
+  z.strictObject({ kind: z.literal('polygon'), points: z.array(point()).min(3).max(12), id: id().optional(), label: plain(24).optional(), color: color().optional(), dashed: z.boolean().optional(), unitSquares: z.boolean().optional() }),
   z.strictObject({ kind: z.literal('circle'), center: point(), r: num(0.1, 100), id: id().optional(), label: plain(24).optional(), color: color().optional() }),
   z.strictObject({ kind: z.literal('segment'), from: point(), to: point(), dashed: z.boolean().optional(), arrows: z.enum(['none', 'end', 'both']).optional() }),
   z.strictObject({ kind: z.literal('angle'), vertex: point(), from: point(), to: point(), label: plain(12).optional(), right: z.boolean().optional() }),
@@ -106,6 +103,7 @@ const Geometry = z.strictObject({
   width: num(1, 100).describe('Drawing width in abstract units; y points up from 0 to height.'), height: num(1, 100),
   shapes: z.array(GeometryShape).min(1).max(24),
   notToScale: z.boolean().optional(),
+  grid: z.strictObject({ unit: num(0.1, 50) }).optional(),
 });
 const NumberLine = z.strictObject({
   type: z.literal('number_line'), ...figureBase,
@@ -149,6 +147,7 @@ const Picture = z.strictObject({
   groups: z.array(z.strictObject({
     icon: icon(), count: int(1, 30), label: plain(24).optional(), id: id().optional(), color: color().optional(),
     arrangement: z.enum(['row', 'grid', 'ten_frame', 'scattered']).optional(), crossedOut: int(0, 30).optional(),
+    repeat: int(1, 12).optional(),
   })).min(1).max(6),
   layout: z.enum(['row', 'column']).optional(),
   key: plain(48).optional().describe('Pictograph key, e.g. "Each star = 2 books".'),
@@ -494,6 +493,15 @@ function checkAxis(a: { min: number; max: number; step?: number }, where: string
 }
 const unique = (values: string[]) => new Set(values).size === values.length;
 
+/**
+ * The groups a picture draws, in order: a group with `repeat: n` stands for n identical groups
+ * ("3 groups of 4" is one group {count: 4, repeat: 3}), so equal groups are stated once and cannot be
+ * miscounted. Renderers and quantity checks read this, never `groups` directly.
+ */
+export function pictureGroups(figure: FigureOf<'picture'>): FigureOf<'picture'>['groups'] {
+  return figure.groups.flatMap(g => Array.from({ length: g.repeat ?? 1 }, () => g));
+}
+
 export function regionIds(figure: Figure): string[] {
   switch (figure.type) {
     case 'bar_chart': return figure.bars.flatMap(b => b.id ? [b.id] : []);
@@ -562,6 +570,15 @@ function figureErrors(f: Figure, where: string, errors: string[]) {
         }
       });
       if (pts.some(p => !inside(p))) errors.push(`${where}: shapes must fit inside width × height.`);
+      // Graph paper: lines every grid.unit from the origin; unit squares tile a polygon in the same unit (1 without a grid).
+      const u = f.grid?.unit ?? 1;
+      if (f.grid && (f.width / u > 50 || f.height / u > 50)) errors.push(`${where}: grid has more than 50 lines across; increase grid.unit.`);
+      const onLattice = (v: number) => Math.abs(v / u - Math.round(v / u)) < 1e-6;
+      f.shapes.forEach((s, i) => {
+        if (s.kind !== 'polygon' || !s.unitSquares) return;
+        if (f.width / u > 50 || f.height / u > 50) errors.push(`${where}.shapes[${i}]: too many unit squares; set grid.unit.`);
+        else if (s.points.some(p => !onLattice(p.x) || !onLattice(p.y))) errors.push(`${where}.shapes[${i}]: unitSquares needs every vertex on a whole number of grid units.`);
+      });
       f.shapes.forEach((s, i) => {
         if (s.kind === 'angle' && (dist(s.vertex, s.from) === 0 || dist(s.vertex, s.to) === 0)) errors.push(`${where}.shapes[${i}]: angle rays need length.`);
         if ((s.kind === 'segment' || s.kind === 'ticks' || s.kind === 'dimension') && dist(s.from, s.to) === 0) errors.push(`${where}.shapes[${i}]: zero-length segment.`);
@@ -597,7 +614,9 @@ function figureErrors(f: Figure, where: string, errors: string[]) {
       if (f.object && (f.object.to <= f.object.from || f.object.to > f.length)) errors.push(`${where}: object must lie on the ruler.`);
       break;
     case 'picture':
-      if (f.groups.reduce((n, g) => n + g.count, 0) > 100) errors.push(`${where}: at most 100 icons in total.`);
+      if (f.groups.reduce((n, g) => n + g.count * (g.repeat ?? 1), 0) > 100) errors.push(`${where}: at most 100 icons in total.`);
+      if (f.groups.reduce((n, g) => n + (g.repeat ?? 1), 0) > 12) errors.push(`${where}: at most 12 groups drawn in total.`);
+      if (f.groups.some(g => (g.repeat ?? 1) > 1 && (g.crossedOut || g.id))) errors.push(`${where}: a repeated group cannot carry crossedOut or an id; list those groups separately.`);
       if (f.groups.some(g => (g.crossedOut ?? 0) > g.count)) errors.push(`${where}: crossedOut exceeds count.`);
       if (f.groups.some(g => g.arrangement === 'ten_frame' && g.count > 20)) errors.push(`${where}: ten frames hold at most 20.`);
       break;

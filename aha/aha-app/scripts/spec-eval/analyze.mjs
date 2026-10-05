@@ -8,6 +8,7 @@ export async function loadAnalyzer(root) {
   const spec = await imp('src/activity/spec.ts');
   const { evaluateConstant, closeEnough } = await imp('src/activity/expr.ts');
   const { getSkill, skills } = await imp('src/learning/curriculum.ts');
+  const { contextsOf, questionForm } = await imp('src/activity/variety.ts');
   const graph = new Set(skills.map(s => s.id));
   const gradeNum = g => g === 'K' ? 0 : g;
 
@@ -56,6 +57,7 @@ export async function loadAnalyzer(root) {
     const items = raw.map((a, index) => {
       const errors = rejectedAt.get(index) ?? null;
       const ok = !errors;
+      const valid = ok ? accepted[0] : null;
       const skillIds = Array.isArray(a?.skillIds) ? a.skillIds.filter(s => typeof s === 'string') : [];
       const primary = skillIds[0];
       const target = frontier.get(primary)?.suggestedDifficulty ?? state.summary.suggestedDifficulty;
@@ -67,6 +69,8 @@ export async function loadAnalyzer(root) {
         onFrontier: frontier.has(primary), gradeOffset: primary && getSkill(primary) ? gradeNum(getSkill(primary).grade) - gradeNum(state.grade) : null,
         difficulty: Number.isFinite(a?.difficulty) ? a.difficulty : null, targetDifficulty: target,
         keyCheck: keyCheckStatus(a), chars, approxTokens: Math.ceil(chars / 4),
+        // The same closed-vocabulary fingerprint production sends as recentContent.
+        contexts: valid ? contextsOf(valid) : [], form: valid ? questionForm(valid) : null,
       };
     });
     return {
@@ -122,6 +126,56 @@ export function summarize(batches, { category, meta }) {
     errorCategories: countBy(items.flatMap(i => [...new Set(i.errors.map(category))])),
     batchErrors: countBy(batches.flatMap(b => b.batchErrors.map(category))),
   };
+}
+
+/**
+ * Cross-batch variety for --sequence runs: per learner, the distinct contexts, figure types and
+ * question forms across all of its consecutive batches, and how often a later batch reused a
+ * context, figure type or form from an earlier one. Valid items only.
+ */
+export function crossBatchVariety(groups, { recent }) {
+  const per = groups.map(g => {
+    const batches = g.batches.map(b => b.items.filter(i => i.ok));
+    const all = batches.flat();
+    const seen = { contexts: new Set(), figures: new Set(), forms: new Set() };
+    let later = 0, reusedContext = 0, reusedFigure = 0, reusedForm = 0;
+    batches.forEach((items, k) => {
+      const before = { contexts: new Set(seen.contexts), figures: new Set(seen.figures), forms: new Set(seen.forms) };
+      for (const i of items) {
+        if (k > 0) {
+          later++;
+          if (i.contexts.some(c => before.contexts.has(c))) reusedContext++;
+          if (i.figureTypes.some(f => before.figures.has(f))) reusedFigure++;
+          if (before.forms.has(i.form)) reusedForm++;
+        }
+        i.contexts.forEach(c => seen.contexts.add(c)); i.figureTypes.forEach(f => seen.figures.add(f)); seen.forms.add(i.form);
+      }
+    });
+    return { learner: g.learner, items: all.length, contexts: seen.contexts.size, figures: seen.figures.size, forms: seen.forms.size,
+      contextList: [...seen.contexts], figureList: [...seen.figures], formList: [...seen.forms], later, reusedContext, reusedFigure, reusedForm };
+  });
+  const sum = k => per.reduce((t, p) => t + p[k], 0);
+  return {
+    recentContent: recent, learners: per.length, batchesPerLearner: groups[0]?.batches.length ?? 0, validItems: sum('items'),
+    meanDistinct: { contexts: mean(per.map(p => p.contexts)), figures: mean(per.map(p => p.figures)), forms: mean(per.map(p => p.forms)) },
+    distinctPer10Items: { contexts: Math.round(100 * sum('contexts') / Math.max(1, sum('items'))) / 10, figures: Math.round(100 * sum('figures') / Math.max(1, sum('items'))) / 10, forms: Math.round(100 * sum('forms') / Math.max(1, sum('items'))) / 10 },
+    laterBatchReuse: { items: sum('later'), contextRate: pct(sum('reusedContext'), sum('later')), figureRate: pct(sum('reusedFigure'), sum('later')), formRate: pct(sum('reusedForm'), sum('later')) },
+    perLearner: per,
+  };
+}
+
+export function varietyMarkdown(v) {
+  return `## Cross-batch variety (${v.learners} learners × ${v.batchesPerLearner} consecutive batches, recentContent ${v.recentContent ? 'fed forward' : 'OFF (baseline)'})
+
+| Measure | Contexts | Figure types | Question forms |
+|---|---|---|---|
+| Mean distinct per learner | ${v.meanDistinct.contexts} | ${v.meanDistinct.figures} | ${v.meanDistinct.forms} |
+| Distinct per 10 valid items | ${v.distinctPer10Items.contexts} | ${v.distinctPer10Items.figures} | ${v.distinctPer10Items.forms} |
+| Batch 2+ items reusing an earlier batch's | ${v.laterBatchReuse.contextRate}% | ${v.laterBatchReuse.figureRate}% | ${v.laterBatchReuse.formRate}% |
+
+Valid items: ${v.validItems}. Per learner:
+${v.perLearner.map(p => `- ${p.learner} (${p.items} items): contexts ${p.contextList.join(', ') || '–'} · figures ${p.figureList.join(', ') || '–'} · forms ${p.formList.join(', ')}`).join('\n')}
+`;
 }
 
 export function summaryMarkdown(s) {

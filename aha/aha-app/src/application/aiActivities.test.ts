@@ -76,6 +76,23 @@ test('the batch request summarizes levels and results from the ledger with no na
   assert.ok(text.length < 20_000, 'fits the provider context bound');
 });
 
+test('the batch request carries a variety fingerprint of recent AI activities and queued ones, never answers', () => {
+  let state = createLearner('learner-Maya-secret', 3);
+  state = answer(state, fx('fx-3-area-tiles'), 1, { at: at(0, 1), response: { type: 'numeric', value: '777' } });
+  state = answer(state, fx('fx-3-fraction-bar'), 2, { at: at(0, 2) });
+  assert.equal(buildBatchRequest(createLearner('fresh', 3), 3, at(1)).summary.recentContent, undefined, 'nothing to report before any AI activity');
+  const request = buildBatchRequest(state, 3, at(1), false, [fx('fx-2-fruit-graph')]);
+  const recent = request.summary.recentContent!;
+  assert.equal(recent.n, 3, 'two answered from the ledger plus one queued');
+  assert.ok(recent.figures.includes('array_grid') && recent.figures.includes('fraction_model') && recent.figures.includes('bar_chart'));
+  assert.ok(recent.contexts.includes('tiles') && recent.contexts.includes('fruit'));
+  const text = JSON.stringify(recent);
+  assert.ok(!text.includes('777') && !text.includes('Maya'), 'no learner answers or identifiers');
+  assert.ok(request.user.includes('"recentContent"'), 'the fingerprint reaches the model');
+  // A queued spec that was also answered is counted once.
+  assert.equal(buildBatchRequest(state, 3, at(1), false, [fx('fx-3-fraction-bar')]).summary.recentContent!.n, 2);
+});
+
 test('AI activities are real evidence: a guided-only standard becomes provisional, then retained, under the same rules', () => {
   assert.equal(getSkill('K.CC.B.5')?.coverage, 'guided-only');
   const specs = countingVariants();
