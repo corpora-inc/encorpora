@@ -42,14 +42,16 @@ ${specs.map(s => JSON.stringify(s)).join('\n')}
 Return one verdict object per activity, in the same order, with its id.`;
 }
 
-/** Attach verdicts to the batch's valid items; returns the batch-level gap note. */
-export function applyVerdicts(batch, text) {
+/** Attach verdicts to the items the judge was shown (by id only: a positional guess could pin one
+ * activity's verdict on its neighbour); returns the batch-level gap note. */
+export function applyVerdicts(shown, text) {
   let parsed;
   try { parsed = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1)); } catch { return { error: 'judge reply was not JSON' }; }
-  const valid = batch.items.filter(i => i.ok);
   const byId = new Map((parsed.items ?? []).map(v => [v.id, v]));
-  valid.forEach((item, k) => {
-    const v = byId.get(item.id) ?? parsed.items?.[k];
+  const missing = shown.filter(i => !byId.has(i.id)).map(i => i.id);
+  if (missing.length) return { error: `judge gave no verdict for ${missing.join(', ')}` };
+  shown.forEach(item => {
+    const v = byId.get(item.id);
     if (!v) return;
     const hasFigure = (item.spec.figures ?? []).length > 0;
     item.judge = {

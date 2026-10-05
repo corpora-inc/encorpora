@@ -442,6 +442,18 @@ export interface Described { value: Value; noun: Noun | null; kind: QuantityKind
  * ("20 square units"); fractions are TeX. `noun`, `one` and `other` fall back to the unit name, so
  * "How many {{s.area.other}}?" reads "How many square units?".
  */
+/**
+ * The asked value's words, in the form a question uses: the plural (CLDR "other"), whatever the hidden
+ * value is ("How many {{s.total.noun}}?" → "How many apples?", "in {{r.area.unit}}" → "in square
+ * feet"). Inflecting them for the value would hint at it, and naming them is how a question reads.
+ */
+export function formatAsked(d: Described, attr: 'noun' | 'unit'): Result<Rich> {
+  const { value } = d;
+  if (attr === 'unit') return value.unit ? ok([{ kind: 'text', text: unitName(value.unit, value.power, 'other') }]) : fail('placeholder_no_unit', `This ${d.kind} has no unit.`);
+  const w = d.noun ? nounFor(d.noun, 'other') : value.unit ? unitName(value.unit, value.power, 'other') : null;
+  return w ? ok([{ kind: 'text', text: w }]) : fail('placeholder_no_noun', `This ${d.kind} has no noun or unit to name.`);
+}
+
 export function formatValue(d: Described, attr: ValueAttr, locale = DEFAULT_LOCALE): Result<Rich> {
   const { value } = d;
   const number = formatNumber(value, locale, d.kind === 'fraction');

@@ -9,7 +9,7 @@ import { getSkill } from '../../learning/curriculum';
 import { compare, rational } from '../../learning/rational';
 import { extractJsonObject } from '../spec';
 import { drawingProblems } from '../draw';
-import { evaluate, formatValue, isValueAttr, parseExpr, refsOf, sameValue, type Described, type Expr, type Result, type Rich, type Value, type ValueAttr } from './quantity';
+import { evaluate, formatAsked, formatValue, isValueAttr, parseExpr, refsOf, sameValue, type Described, type Expr, type Result, type Rich, type Value, type ValueAttr } from './quantity';
 import { parseTempl, proseIssues, renderTempl, type Placeholder, type Templ } from './text';
 import { bindModel, problem, type Model, type Problem, type Target } from './model';
 import { BANDS, FORM_GRADES, NOTHING_ASKED, gradeLabel, gradeNum, inRange, isAnswerForm, rangeLabel, type Asked, type Band, type Drawing, type Reveal, type ViewDef } from './registry';
@@ -253,7 +253,8 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     const printed = scope !== 'explanation' && VALUE_BEARING.has(attr);
     if (scope !== 'explanation' && answerForm && ask && key === ask.target.key) {
       if (VALUE_BEARING.has(attr)) return { ok: true, value: 'mask' };
-      if (attr === 'noun' || attr === 'unit') return fail('answer_inflected', `{{${ph.path.join('.')}}} is inflected for the answer's value; use .one or .other.`);
+      // Its noun and unit read in the question form (plural), never inflected for the hidden value.
+      if (attr === 'noun' || attr === 'unit') return formatAsked(described, attr);
     } else if (printed) {
       // A number outside the math asked is story context, unless it equals the answer: then it can only
       // be a restatement of it ("12 in all"), whatever its noun.

@@ -10,8 +10,8 @@
  *                        [--judge-provider codex] [--judge-model gpt-6.1-sol] [--judge-effort medium] [--judge-json] [--no-judge]
  *                        [--no-render] [--only g3-] [--concurrency 4] [--run name] [--port 1438] [--dry]
  *
- * --slice restricts the standards window to the skills Activity Spec v2's first slice can author (v2 is
- * always restricted to them), so v1 and v2 are compared on the same skills. The judge sees the resolved
+ * --slice gives v1 the same standards window v2 builds for each learner (v2's band, restricted to the
+ * skills its first slice can author), so v1 and v2 are compared on the same skills. The judge sees the resolved
  * render (a screenshot plus the learner-visible text and key) unless --judge-json asks for v1's JSON judge.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -28,7 +28,7 @@ const root = fileURLToPath(new URL('../..', import.meta.url));
 const { values: o } = parseArgs({
   options: {
     spec: { type: 'string', default: 'v1' }, plan: { type: 'string', default: 'all' }, grades: { type: 'string' }, slice: { type: 'boolean', default: false },
-    n: { type: 'string', default: '45' }, model: { type: 'string' }, effort: { type: 'string', default: 'low' }, structured: { type: 'string', default: 'auto' },
+    n: { type: 'string' }, model: { type: 'string' }, effort: { type: 'string', default: 'low' }, structured: { type: 'string', default: 'auto' },
     provider: { type: 'string', default: 'auto' }, 'judge-provider': { type: 'string', default: 'auto' }, 'judge-model': { type: 'string' }, 'judge-effort': { type: 'string', default: 'medium' },
     'judge-json': { type: 'boolean', default: false }, 'no-judge': { type: 'boolean', default: false }, 'no-render': { type: 'boolean', default: false }, only: { type: 'string' },
     concurrency: { type: 'string', default: '4' }, run: { type: 'string' }, port: { type: 'string', default: '1438' }, dry: { type: 'boolean', default: false },
@@ -49,15 +49,17 @@ const concurrency = Math.max(1, Math.min(4, Number(o.concurrency) || 4));
 
 const v1Prompt = await import(pathToFileURL(path.join(root, 'src/activity/prompt.ts')).href);
 const V2 = await loadV2(root);
-const slice = new Set(Object.keys(V2.REPRESENTATIONS));
 const [gLo, gHi] = (o.grades ?? '0-8').split('-').map(g => g === 'K' ? 0 : Number(g));
 const matrix = (await loadStateMatrix(root, { plan: o.plan })).filter(s => { const g = s.grade === 'K' ? 0 : s.grade; return g >= gLo && g <= (gHi ?? gLo); });
 const n = Math.max(1, Number(o.n) || matrix.length);
 let jobs = Array.from({ length: n }, (_, k) => ({ ...matrix[k % matrix.length], sample: Math.floor(k / matrix.length) }))
   .map(s => ({ ...s, id: s.sample ? `${s.id}-s${s.sample}` : s.id }));
 if (o.only) jobs = jobs.filter(s => s.id.includes(o.only));
-const prompts = jobs.map(s => v2 ? V2.buildPromptV2(s.summary, { count: s.count, seed: s.id })
-  : v1Prompt.buildActivityPrompt(s.summary, { count: s.count, ...(o.slice ? { only: slice } : {}) }));
+// --slice offers v1 exactly the skills v2 offers the same learner (v2's band and window), so level,
+// frontier and window measures compare like with like.
+const v2Prompts = jobs.map(s => V2.buildPromptV2(s.summary, { count: s.count, seed: s.id }));
+const prompts = jobs.map((s, k) => v2 ? v2Prompts[k]
+  : v1Prompt.buildActivityPrompt(s.summary, { count: s.count, ...(o.slice ? { only: v2Prompts[k].allowedSkillIds } : {}) }));
 const systemOf = p => structured ? p.structuredSystem : p.system;
 const promptTokens = { system: Math.round(prompts.reduce((t, p) => t + v1Prompt.approxTokens(systemOf(p)), 0) / prompts.length), meanUser: Math.round(prompts.reduce((t, p) => t + v1Prompt.approxTokens(p.user), 0) / prompts.length), maxUser: Math.max(...prompts.map(p => v1Prompt.approxTokens(p.user))) };
 console.log(`spec-eval ${o.spec}: ${jobs.length} batches · ${structured ? 'structured' : 'prompt-only'} · prompt ~${promptTokens.system} system + ~${promptTokens.meanUser} user tokens (max ${promptTokens.maxUser})`);
@@ -96,11 +98,12 @@ if (!o['no-judge']) {
     const state = jobs[k];
     const items = batch.items.filter(i => i.ok && (!judgeRendered || i.shot));
     if (batch.callError || !items.length) return;
+    batch.judgedIds = items.map(i => i.id);
     const verdict = judgeRendered
       ? await complete({ provider: judgeProvider, model: judgeModel, effort: o['judge-effort'], system: JUDGE_SYSTEM_RENDERED, user: judgeUserRendered(state, batch, visible), images: items.map(i => path.join(outDir, i.shot)), schema: JUDGE_SCHEMA, cacheDir: path.join(evalRoot, 'cache', 'judge'), cacheParts: { v: 2 } })
       : await complete({ provider: judgeProvider, model: judgeModel, effort: judgeProvider === 'codex' ? o['judge-effort'] : undefined, system: JUDGE_SYSTEM, user: judgeUser(state, batch), schema: judgeProvider === 'codex' ? JUDGE_SCHEMA : undefined, cacheDir: path.join(evalRoot, 'cache', 'judge'), cacheParts: { v: 1 } });
     if (verdict.error) batch.judgeError = verdict.error;
-    else { const r = applyVerdicts(batch, verdict.text); batch.judgeGap = r.gap ?? ''; if (r.error) batch.judgeError = r.error; }
+    else { const r = applyVerdicts(items, verdict.text); batch.judgeGap = r.gap ?? ''; if (r.error) batch.judgeError = r.error; }
     console.log(`judge [${++done}] ${batch.state}${batch.judgeError ? `: ${batch.judgeError}` : ''}`);
   });
 }
@@ -114,13 +117,24 @@ for (const [k, batch] of batches.entries()) {
 const summary = summarize(batches, { category, meta: { run, spec: o.spec, provider, model, effort, structured, judgeModel: o['no-judge'] ? null : `${judgeProvider} ${judgeModel}${judgeRendered ? ' (render)' : ' (json)'}`, generatedAt: new Date().toISOString(), promptTokens } });
 const items = batches.flatMap(b => b.items);
 const requested = summary.items.requested;
-const valid = items.filter(i => i.ok), judged = valid.filter(i => i.judge);
-const defect = i => i.judge && (i.judge.correctKey === false || i.judge.figureHelps === false || i.judge.childAppropriate === false);
-const good = i => i.judge && ['correctKey', 'levelFit', 'figureHelps', 'childAppropriate'].every(c => i.judge[c] !== false);
+const valid = items.filter(i => i.ok);
+// Judge accounting: a batch whose judge call failed is left out of BOTH judged measures (numerators and
+// denominators), and the coverage is reported, so judge flakiness never reads as quality either way.
+const judgedBatches = batches.filter(b => !b.callError && !b.judgeError);
+const judged = judgedBatches.flatMap(b => b.items.filter(i => i.ok && i.judge));
+const unjudgedValid = valid.filter(i => !i.judge).length;
+const defect = i => i.judge.correctKey === false || i.judge.figureHelps === false || i.judge.childAppropriate === false;
+const good = i => ['correctKey', 'levelFit', 'figureHelps', 'childAppropriate'].every(c => i.judge[c] !== false);
+const judgedRequested = judgedBatches.reduce((t, b) => t + b.requested, 0);
+// A batch scores at most what it was asked for, so over-producing is not rewarded.
+const goodCount = judgedBatches.reduce((t, b) => t + Math.min(b.requested, b.items.filter(i => i.ok && i.judge && good(i)).length), 0);
 summary.goNoGo = {
   acceptedRate: summary.items.schemaPassRate,
+  judgeCoverage: valid.length ? Math.round(1000 * judged.length / valid.length) / 10 : null,
+  unjudgedValid,
   defectsPer100Accepted: judged.length ? Math.round(1000 * judged.filter(defect).length / judged.length) / 10 : null,
-  goodPer100Requested: requested ? Math.round(1000 * judged.filter(good).length / requested) / 10 : null,
+  goodPer100Requested: judgedRequested ? Math.round(1000 * goodCount / judgedRequested) / 10 : null,
+  defectsByCriterion: Object.fromEntries(['correctKey', 'levelFit', 'figureHelps', 'childAppropriate', 'varied'].map(c => [c, judged.filter(i => i.judge[c] === false).length])),
   computedKeyShare: v2 && valid.length ? Math.round(1000 * valid.filter(i => i.verification === 'computed').length / valid.length) / 10 : null,
   meanReplyTokensPerAccepted: valid.length ? Math.round(batches.reduce((t, b) => t + (b.replyApproxTokens ?? 0), 0) / valid.length) : null,
   promptTokensPerBatch: promptTokens.system + promptTokens.meanUser,
@@ -135,7 +149,7 @@ writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(summary, null, 1
 const g = summary.goNoGo;
 writeFileSync(path.join(outDir, 'summary.md'), `${summaryMarkdown(summary)}
 ## Go/no-go measures
-Accepted ${g.acceptedRate}% · defects per 100 accepted ${g.defectsPer100Accepted} · good activities per 100 requested ${g.goodPer100Requested}${v2 ? ` · computed keys ${g.computedKeyShare}%` : ''} · reply tokens per accepted activity ${g.meanReplyTokensPerAccepted} · prompt tokens per batch ${g.promptTokensPerBatch}
+Accepted ${g.acceptedRate}% · judge coverage ${g.judgeCoverage}% · defects per 100 accepted ${g.defectsPer100Accepted} · good activities per 100 requested ${g.goodPer100Requested}${v2 ? ` · computed keys ${g.computedKeyShare}%` : ''} · reply tokens per accepted activity ${g.meanReplyTokensPerAccepted} · prompt tokens per batch ${g.promptTokensPerBatch}
 ${v2 ? `\n**Rejections by layer and code:** ${Object.entries(g.rejectionCodes).map(([k, v]) => `${k} ${v}`).join(' · ') || 'none'}\n` : ''}
 Render problems: ${renderProblems.length} · fit the focus stage without inner scroll: ${summary.stageFitRate}%
 

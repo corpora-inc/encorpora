@@ -248,10 +248,10 @@ member names.
 |---|---|
 | `{{q}}`, `{{s.groups}}`, `{{s.total}}` | the value with its noun or unit: "4 apples", "6 cm", "20 square units", a TeX fraction |
 | `….n` | the number only |
-| `….noun` | the noun inflected for the value ("apple" / "apples") |
+| `….noun` | the noun inflected for the value ("apple" / "apples"); for the ask, the plural |
 | `….one`, `….other` | the singular or plural noun regardless of value |
 | `….word` | the number in words (K–1) |
-| `….unit` | the unit name inflected for the value |
+| `….unit` | the unit name inflected for the value; for the ask, the plural |
 | `{{s.view}}` | the view's kind noun: "rectangle", "circle", "number line" |
 
 - `{{q}}` names a free or derived quantity. A quantity bound to a structure role is named through
@@ -276,8 +276,9 @@ blocks, hints, the explanation and noun forms.
 - **The answer is never named** (answer forms: `number`, `fraction`, `choose`; README §7). In the
   prompt and hints, a value-bearing placeholder for the ask target (`{{s.total}}`, `.n`, `.word`)
   renders as the unknown, □, inside math, and is rejected in text. Its value-free members (`.one`,
-  `.other`) stay legal ("How many {{s.total.other}} are there?"); `.noun` and `.unit` are inflected
-  for the value, so they are not. The explanation may name the answer. In act forms the target is
+  `.other`) stay legal ("How many {{s.total.other}} are there?"), and its `.noun` and `.unit` read in
+  the question form, the plural, whatever the value ("in {{r.area.unit}}" → "in square feet"), so
+  they never hint at it. The explanation may name the answer. In act forms the target is
   the instruction and is named on purpose ("Shade {{u}}").
 - **Safety runs on the result.** Placeholders are resolved first, and the resolved text and TeX
   then pass v1's text and TeX checks. Inside math, a value renders as TeX and its noun or unit as

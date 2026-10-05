@@ -68,7 +68,7 @@ export function visible(spec) {
     case 'expression': answer = 'type an expression'; key = r.answer; break;
     case 'multiple_choice': answer = `choose one of: ${r.options.map(o => plain(o.text)).join(' | ')}`; key = plain(r.options.find(o => o.correct)?.text ?? '?'); break;
     case 'multi_select': answer = `select all that apply: ${r.options.map(o => plain(o.text)).join(' | ')}`; key = r.options.filter(o => o.correct).map(o => plain(o.text)).join(' + '); break;
-    case 'ordering': answer = `put in order: ${r.items.map(plain).join(' | ')} (shown shuffled)`; key = r.items.map(plain).join(' < '); break;
+    case 'ordering': answer = `drag into order (shown shuffled): ${r.items.map(plain).join(' | ')}`; key = `this exact order, first to last: ${r.items.map(plain).join(', ')}`; break;
     case 'plot_point': answer = 'plot a point on the plane'; key = `(${r.x}, ${r.y})`; break;
     case 'tap_region': answer = 'tap one part of the figure'; key = `region ${r.region}`; break;
     case 'shade': answer = `tap parts of figure ${r.figureId} to shade them (${r.parts} parts)`; key = `any ${r.target} of the ${r.parts} parts shaded`; break;

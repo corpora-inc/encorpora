@@ -2,7 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { rational } from '../../learning/rational';
 import {
-  KIND_POWER, LENGTH_UNITS, QUANTITY_KINDS, UNIT_IDS, declaredDim, evaluate, exactDecimal, formatNumber, formatPlain, formatValue,
+  KIND_POWER, LENGTH_UNITS, QUANTITY_KINDS, UNIT_IDS, declaredDim, evaluate, exactDecimal, formatAsked, formatNumber, formatPlain, formatValue,
   isLiteral, isUnitId, kindTakesUnit, numberWords, parseExpr, pluralCategory, quantityValue, refsOf, unitName, unitSymbol,
   type Expr, type QuantityDecl, type Resolver, type Result, type Value,
 } from './quantity';
@@ -272,5 +272,15 @@ describe('formatValue', () => {
     assert.equal(out(formatValue({ value: { q: rational(1n, 2n), power: 0, unit: null, form: { kind: 'fraction', n: 2n, d: 4n } }, noun: null, kind: 'fraction' }, 'word')), 'two fourths', 'a written fraction keeps its terms');
     assert.equal(out(formatValue({ value: { q: rational(3n, 4n), power: 0, unit: null }, noun: null, kind: 'fraction' }, 'word')), 'three fourths');
     assert.equal(err(formatValue({ value: { q: rational(1n, 13n), power: 0, unit: null }, noun: null, kind: 'fraction' }, 'word')), 'placeholder_no_words');
+  });
+});
+
+describe('formatAsked', () => {
+  it('names the asked value in the question form (plural), whatever the value', () => {
+    const one: Value = { q: rational(1n, 1n), power: 2, unit: 'ft' };
+    const text = (r: Result<{ kind: string; text?: string }[]>) => (r.ok ? r.value.map(x => x.text).join('') : r.error.code);
+    assert.equal(text(formatAsked({ value: one, noun: null, kind: 'area' }, 'unit')), unitName('ft', 2, 'other'));
+    assert.equal(text(formatAsked({ value: { q: rational(1n, 1n), power: 0, unit: null }, noun: { icon: null, one: 'apple', other: 'apples' }, kind: 'count' }, 'noun')), 'apples');
+    assert.equal(text(formatAsked({ value: { q: rational(3n, 1n), power: 0, unit: null }, noun: null, kind: 'count' }, 'unit')), 'placeholder_no_unit');
   });
 });

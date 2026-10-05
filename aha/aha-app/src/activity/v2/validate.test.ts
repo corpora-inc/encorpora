@@ -149,7 +149,11 @@ describe('the answer is never named, and leaks are referential', () => {
     assert.deepEqual(masked.rendered.prompt.at(-1), { type: 'math', tex: '3 \\times 4 = \\square ' });
     rejects(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'There are {{s.total}} in all.', type: 'text' }; }), 'answer_in_text');
     rejects(edit(equalGroupsActivity, a => { a.support.hints = ['There are {{s.total.n}} in all.']; }), 'answer_in_text');
-    rejects(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'How many {{s.total.noun}} are there?', type: 'text' }; }), 'answer_inflected');
+    // The ask's noun reads in the question form (plural) whatever the hidden value, exactly as .other does.
+    const byNoun = check(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'How many {{s.total.noun}} are there?', type: 'text' }; }));
+    const byOther = check(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'How many {{s.total.other}} are there?', type: 'text' }; }));
+    assert.ok(byNoun.ok && byOther.ok);
+    assert.deepEqual(byNoun.activity.rendered.prompt[2], byOther.activity.rendered.prompt[2]);
     assert.ok(check(edit(equalGroupsActivity, a => { a.support.explanation = 'There are {{s.total}}.'; })).ok, 'the explanation may name the answer');
   });
   it('rejects a printed number the question does not use when it equals the answer, but allows story numbers', () => {
