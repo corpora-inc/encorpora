@@ -15,8 +15,10 @@ export function chooseTutorModel(catalog: Models): string {
 export function learningError(error: unknown): string {
   if (error instanceof SdkError || error instanceof TutorServiceError) {
     const messages: Record<string, string> = {
-      insufficient_balance: 'Your Free2Z balance cannot cover this lesson. You can review the balance in Free2Z. No top-up happens automatically.',
-      cap_exceeded: 'The spending allowance for this app is used up. You can review AHA’s authorization in Free2Z; adding balance alone does not change this allowance.',
+      insufficient_balance: 'Your Free2Z balance is too low for the next AI activities. You can add 2Z in Free2Z; nothing is added automatically.',
+      cap_exceeded: 'This app’s Free2Z budget is used up for now. You can change it in Free2Z; adding balance alone does not change it.',
+      ai_not_ready: 'Free2Z AI isn’t switched on for apps yet. Nothing was charged.',
+      budget_pending: 'Free2Z is still setting up spending for this app. Nothing was charged.',
       insufficient_scope: 'Free2Z has not granted the access needed for this action. Sign in again to review the requested permissions.',
       scope_denied: 'Free2Z has not granted AI access to AHA. Sign in again to review permissions.',
       invalid_token: 'Your Free2Z session needs a fresh sign-in. Your recorded learning progress is safe on this device.',

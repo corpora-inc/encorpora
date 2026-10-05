@@ -1,48 +1,93 @@
-import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Session, type SignInOptions } from '@free2z/sdk';
+import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type ObjectData, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
 export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'chat' | 'call'>;
-export interface GrantPolicy { subject: string; clientId: string; maximum2z: bigint }
+export interface GrantPolicy { subject: string; clientId: string }
+export type CapPeriod = Grant['cap_period'];
+const CAP_PERIODS: readonly CapPeriod[] = ['day', 'week', 'month', 'total'];
+/** The user's own optional app budget, read back from Free2Z. `null`: no app budget (bounded by the 2Z balance). */
+export type AppBudget = Readonly<{ period: CapPeriod; limit2z: bigint }> | null;
 export interface VerifiedGrant {
-  subject: string; clientId: string; period: 'total'; limit2z: bigint;
+  subject: string; clientId: string; budget: AppBudget;
   sessionGeneration: string; asOf: string; checkedAt: number;
 }
-export interface TestAuthorization extends GrantPolicy { verifiedGrant: VerifiedGrant }
+/** Live proof that this account and app may make paid calls now. Never persisted; never a spending ceiling. */
+export interface PaidAuthorization extends GrantPolicy { verifiedGrant: VerifiedGrant }
 const GRANT_MAX_AGE_MS = 60_000;
-/** Beta test authorization ceiling: an enforced, non-resetting `total` app cap of at most 500 whole 2Z. */
-export const TEST_SPEND_CAP_2Z = 500n;
 /**
- * Sign-in suggestion for exactly the policy `verifyTestGrant` admits: `TEST_SPEND_CAP_2Z` in `total`.
- * Only a consent-screen pre-selection: Free2Z lowers the amount to the registration default and the
- * user's existing grant (and ignores it when their capped period differs), and the user may edit it.
- * Paid admission never trusts the hint; it re-reads the grant through `verifyTestGrant`.
+ * A modest app budget AHA suggests at sign-in (100 2Z per month). Only a consent-screen pre-selection:
+ * Free2Z may lower or ignore it (registration default, an existing grant's period), and the user may
+ * change or remove it there or later at free2z.cash/account/apps. Admission never compares a grant with it.
  */
+export const SUGGESTED_SPEND_CAP_2Z = 100n;
 export const SIGN_IN_OPTIONS: Readonly<SignInOptions> = Object.freeze({
-  spendCap: Object.freeze({cap2z: TEST_SPEND_CAP_2Z, period: 'total' as const}),
+  spendCap: Object.freeze({cap2z: SUGGESTED_SPEND_CAP_2Z, period: 'month' as const}),
 });
-/** Read-only live snapshot. Never persist this as spending authority or treat revocation stamps as policy versions. */
-export async function verifyTestGrant(
+/**
+ * Production policy, "budget optional" (#879). Admits paid AI for this account and app when the grant is
+ * fresh, carries `ai:invoke`, and Free2Z enforces it. Any budget (amount, period) or none is the user's choice.
+ * `enforced: false` (e.g. `platform_disabled`) is Free2Z's pre-activation state: AI is not ready, no paid calls.
+ * Read-only live snapshot: never persist it as spending authority or treat revocation stamps as policy versions.
+ */
+export async function verifyPaidGrant(
   client: Pick<SdkClient, 'session' | 'grant'>, policy: GrantPolicy, now: () => number = Date.now,
 ): Promise<VerifiedGrant> {
-  if (!policy || !opaque(policy.subject) || !opaque(policy.clientId) || typeof policy.maximum2z !== 'bigint' || policy.maximum2z <= 0n || policy.maximum2z > TEST_SPEND_CAP_2Z)
-    throw new TutorServiceError('authorization_required', 'Identify the approved account, registered app, and budget before using paid AI.');
+  if (!policy || !opaque(policy.subject) || !opaque(policy.clientId))
+    throw new TutorServiceError('authorization_required', 'Identify the signed-in account and registered app before using paid AI.');
   const before = await client.session();
   const selected = (session: Session) => session.signedIn && session.subject === policy.subject && session.grantedScopes.includes('ai:invoke') && opaque(session.generation);
-  if (!selected(before)) throw new TutorServiceError('account_changed', 'The approved Free2Z account must remain signed in with AI access.');
+  if (!selected(before)) throw new TutorServiceError('account_changed', 'The Free2Z account must remain signed in with AI access.');
   const grant = await client.grant();
   const after = await client.session();
   if (!selected(after) || after.generation !== before.generation)
     throw new TutorServiceError('account_changed', 'The Free2Z account changed while verifying consent.');
   const checkedAt = now(); const asOf = Date.parse(grant?.as_of);
-  if (!grant || grant.sub !== policy.subject || grant.client_id !== policy.clientId || grant.enforced !== true ||
-      grant.cap_period !== 'total' || typeof grant.spend_cap_2z !== 'bigint' || grant.spend_cap_2z <= 0n || grant.spend_cap_2z > policy.maximum2z ||
+  const reason = grant?.enforcement_reason;
+  if (!grant || grant.sub !== policy.subject || grant.client_id !== policy.clientId || typeof grant.enforced !== 'boolean' ||
+      // A reason that contradicts `enforced` is a protocol error (zuu spec/grant.md); the SDK also refuses it.
+      (reason !== undefined && (reason === 'ok') !== grant.enforced) ||
+      !CAP_PERIODS.includes(grant.cap_period) || (grant.spend_cap_2z !== null && (typeof grant.spend_cap_2z !== 'bigint' || grant.spend_cap_2z < 0n)) ||
       typeof grant.account_epoch !== 'bigint' || grant.account_epoch < 0n || typeof grant.grant_generation !== 'bigint' || grant.grant_generation <= 0n ||
       !Array.isArray(grant.scopes) || !grant.scopes.includes('ai:invoke') || typeof grant.as_of !== 'string' ||
       !/^\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?(?:[Zz]|\+00:00)$/.test(grant.as_of) ||
       !Number.isFinite(asOf) || new Date(asOf).toISOString().slice(0,19) !== grant.as_of.slice(0,19).toUpperCase() || !Number.isFinite(checkedAt) || checkedAt - asOf > GRANT_MAX_AGE_MS || asOf - checkedAt > 5_000)
-    throw new TutorServiceError('grant_verification_required', 'Free2Z must freshly verify an enforced total spending limit within the approved budget for this account and app.');
-  return Object.freeze({subject: policy.subject, clientId: policy.clientId, period: 'total', limit2z: grant.spend_cap_2z, sessionGeneration: after.generation, asOf: grant.as_of, checkedAt});
+    throw new TutorServiceError('grant_verification_required', 'Free2Z must freshly confirm AI access for this account and app.');
+  if (grant.enforced !== true) {
+    // Gate on `enforced` alone; the reason only picks the explanation (INTEGRATION.md, "User-owned budgets").
+    if (reason === 'ledger_cap_pending')
+      throw new TutorServiceError('budget_pending', 'Free2Z is still setting up spending for this app. No paid request was sent.');
+    throw new TutorServiceError('ai_not_ready', 'Free2Z has not switched on paid AI for apps yet. No paid request was sent.');
+  }
+  const budget: AppBudget = grant.spend_cap_2z === null ? null : Object.freeze({period: grant.cap_period, limit2z: grant.spend_cap_2z});
+  return Object.freeze({subject: policy.subject, clientId: policy.clientId, budget, sessionGeneration: after.generation, asOf: grant.as_of, checkedAt});
+}
+/** What one affordable estimate showed. Amounts in whole 2Z (`hold2z`) and milli-2Z. */
+export interface AdmittedEstimate { hold2z: bigint; availableMilli2z: bigint; capRemainingMilli2z: bigint | null }
+/**
+ * The one affordability rule before any paid send: the estimate's hold (the most `/v1/chat` would reserve
+ * now) must fit the available balance and, whenever Free2Z reports one, the app budget's remainder.
+ * A budgeted grant must come with a remainder; a remainder appearing for an unbudgeted grant still binds.
+ */
+export function admitEstimate(estimate: Estimate, budget: AppBudget, availableFallback?: bigint): AdmittedEstimate {
+  const hold = estimate.hold_2z, reported = estimate.available_milli_2z, cap = estimate.cap_remaining_milli_2z;
+  const available = reported === undefined ? availableFallback : reported;
+  if (typeof hold !== 'bigint' || hold <= 0n || typeof available !== 'bigint' || available < 0n ||
+      (cap !== undefined && cap !== null && (typeof cap !== 'bigint' || cap < 0n)))
+    throw new TutorServiceError('estimate_invalid', 'Free2Z returned an incomplete estimate. No paid request was sent.');
+  if (budget !== null && typeof cap !== 'bigint')
+    throw new TutorServiceError('grant_verification_required', 'Free2Z did not report what is left of this app\u2019s budget. No paid request was sent.');
+  if (hold * 1000n > available)
+    throw new TutorServiceError('insufficient_balance', 'Your Free2Z balance cannot cover the next activities. No paid request was sent.');
+  if (typeof cap === 'bigint' && hold * 1000n > cap)
+    throw new TutorServiceError('cap_exceeded', 'This app\u2019s Free2Z budget cannot cover the next activities. No paid request was sent.');
+  return {hold2z: hold, availableMilli2z: available, capRemainingMilli2z: typeof cap === 'bigint' ? cap : null};
+}
+/** Safe, display-only spending figures from the last estimate and settlement. No prompts, keys or ids. */
+export interface SpendingSnapshot {
+  availableMilli2z?: bigint; capRemainingMilli2z?: bigint | null;
+  /** Hold of the last activity-batch estimate (an upper bound) and charge of the last settled batch. */
+  batchEstimate2z?: bigint; batchCharge2z?: bigint;
 }
 export type ResumeContext =
   | {kind: 'activity'; profileId: string; candidateSkillIds: string[]}
@@ -172,6 +217,7 @@ export class Free2zTutor {
   private busy = false;
   private cancelled = false;
   private active?: ChatStream;
+  private snapshot: SpendingSnapshot = {};
   constructor(readonly client: SdkClient, private readonly journal: Journal, private readonly subject: string) {}
   private async ledger(): Promise<Ledger> { return readLedger(await this.journal.getJournal(SLOT)); }
   private async persist(ledger: Ledger): Promise<void> {
@@ -195,12 +241,31 @@ export class Free2zTutor {
     if (!session.grantedScopes.includes('ai:invoke')) throw new TutorServiceError('scope_denied', 'Free2Z has not granted AI access to this app.');
     return session;
   }
-  private verifyAuthorization(session: Session, authorization: TestAuthorization): void {
-      if (!authorization || typeof authorization.maximum2z !== 'bigint' || authorization.subject !== session.subject || !opaque(authorization.clientId) || authorization.maximum2z <= 0n || authorization.maximum2z > TEST_SPEND_CAP_2Z)
-        throw new TutorServiceError('authorization_required', 'Identify the approved test account and its budget before using paid AI.');
-      const grant = authorization.verifiedGrant;
-      if (!grant || typeof grant.limit2z !== 'bigint' || grant.subject !== session.subject || grant.clientId !== authorization.clientId || grant.sessionGeneration !== session.generation || !Number.isFinite(grant.checkedAt) || !Number.isFinite(Date.parse(grant.asOf)) || Date.now() - Date.parse(grant.asOf) > GRANT_MAX_AGE_MS || Date.parse(grant.asOf) - Date.now() > 5_000 || Date.now() - grant.checkedAt > GRANT_MAX_AGE_MS || grant.checkedAt > Date.now() || grant.period !== 'total' || grant.limit2z <= 0n || grant.limit2z > authorization.maximum2z)
-        throw new TutorServiceError('grant_verification_required', 'Live testing requires verified total-period Free2Z grant metadata for this account. An estimate does not establish the grant period.');
+  private verifyAuthorization(session: Session, authorization: PaidAuthorization): void {
+      if (!authorization || authorization.subject !== session.subject || !opaque(authorization.clientId))
+        throw new TutorServiceError('authorization_required', 'Identify the signed-in account and registered app before using paid AI.');
+      const grant = authorization.verifiedGrant, budget = grant?.budget;
+      if (!grant || grant.subject !== session.subject || grant.clientId !== authorization.clientId || grant.sessionGeneration !== session.generation || !Number.isFinite(grant.checkedAt) || !Number.isFinite(Date.parse(grant.asOf)) || Date.now() - Date.parse(grant.asOf) > GRANT_MAX_AGE_MS || Date.parse(grant.asOf) - Date.now() > 5_000 || Date.now() - grant.checkedAt > GRANT_MAX_AGE_MS || grant.checkedAt > Date.now() ||
+          (budget !== null && (!budget || typeof budget !== 'object' || !CAP_PERIODS.includes(budget.period) || typeof budget.limit2z !== 'bigint' || budget.limit2z < 0n)))
+        throw new TutorServiceError('grant_verification_required', 'Free2Z must freshly confirm AI access for this account and app. An estimate alone does not.');
+  }
+  /** Estimate, then admit it against the balance and the budget remainder. Records display-only figures. */
+  private async admit(request: ChatRequest, budget: AppBudget, op?: Pick<Operation, 'context'>): Promise<AdmittedEstimate> {
+    const estimate = await this.client.estimate(request);
+    // An estimate may omit the balance figure; then the authoritative balance read decides.
+    const fallback = estimate.available_milli_2z === undefined ? (await this.client.balance()).available_milli_2z : undefined;
+    const admitted = admitEstimate(estimate, budget, fallback);
+    this.snapshot = {...this.snapshot, availableMilli2z: admitted.availableMilli2z, capRemainingMilli2z: admitted.capRemainingMilli2z,
+      ...(op?.context?.kind === 'activities' ? {batchEstimate2z: admitted.hold2z} : {})};
+    return admitted;
+  }
+  /** Last known balance, budget remainder and activity-batch cost, for Settings. No service call. */
+  spending(): SpendingSnapshot { return {...this.snapshot}; }
+  /** Display-only: the settled remainder and, for activity batches, the settled charge. */
+  private noteSettlement(op: Operation, done: ObjectData & {charge: Charge}): void {
+    const cap = done.cap_remaining_milli_2z;
+    if (typeof cap === 'bigint' || cap === null) this.snapshot = {...this.snapshot, capRemainingMilli2z: cap};
+    if (op.context?.kind === 'activities' && done.charge.state === 'charged') this.snapshot = {...this.snapshot, batchCharge2z: done.charge.charged2z};
   }
   private deliverable(op: Operation): boolean { return op.answerComplete === true && !!op.context && !op.consumed; }
   private replyValue(op: Operation): TutorReply {
@@ -259,7 +324,7 @@ export class Free2zTutor {
       return { pending: ledger.operations.filter(o => o.state !== 'finalized').length, spent2z: ledger.operations.reduce((n, o) => n + BigInt(o.charge?.charged2z ?? '0'), 0n) };
     } finally { this.busy = false; }
   }
-  async reply(model: string, system: string, context: string, authorization: TestAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800'): Promise<TutorReply> {
+  async reply(model: string, system: string, context: string, authorization: PaidAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800'): Promise<TutorReply> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
     if (!OUTPUT_BUDGETS.includes(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
     if (resumeContext !== undefined && !validResumeContext(resumeContext))
@@ -275,18 +340,11 @@ export class Free2zTutor {
       if (ledger.operations.some(op => this.deliverable(op))) throw new TutorServiceError('answer_pending', 'A completed AI reply is waiting to be restored. No new paid request was sent.');
       if (ledger.operations.some(o => o.state !== 'finalized')) throw new TutorServiceError('settlement_pending', 'An earlier AI request still needs receipt recovery. No new paid request was sent.');
       await this.archiveFinalized(ledger);
-      const spent = ledger.operations.reduce((n, o) => n + BigInt(o.charge?.charged2z ?? '0'), 0n);
-      const remaining = authorization.maximum2z - spent;
-      if (remaining <= 0n) throw new TutorServiceError('budget_exhausted', 'The authorized test budget has been used.');
       const catalog = await this.client.models();
       if (!catalog.models.some(m => m.id === model)) throw new TutorServiceError('model_unavailable', 'Choose a currently available Free2Z model.');
       const request: ChatRequest = { model, messages: [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}], max_output_tokens: BigInt(maxOutputTokens) };
-      const estimate = await this.client.estimate(request);
-      // A hold is NOT a spending cap. Require the service-enforced grant remainder
-      // itself to fit the entire remaining authorization, even if the call overruns its hold.
-      const cap = estimate.cap_remaining_milli_2z;
-      if (typeof cap !== 'bigint' || cap <= 0n || cap > remaining * 1000n)
-        throw new TutorServiceError('grant_cap_required', `Set the Free2Z grant's total cap to at most ${remaining} 2Z before this test. An estimate alone cannot enforce the budget.`);
+      // No app-side ceiling: the user's own budget (if any) and balance bound the call, as Free2Z reports them.
+      await this.admit(request, authorization.verifiedGrant.budget, {context: savedContext});
       const after = await this.current();
       if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
       const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages:request.messages,maxOutputTokens},state:'opening',text:'',...(savedContext ? {context:savedContext} : {}) };
@@ -294,11 +352,11 @@ export class Free2zTutor {
       if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
         throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
       await this.persist(ledger);
-      return await this.run(ledger, op, request, authorization, remaining);
+      return await this.run(ledger, op, request, authorization);
     } finally { this.active = undefined; this.busy = false; }
   }
   /** Explicit same-key recovery only; the gateway may replay just a receipt, not content. */
-  async recover(operationId: string, authorization: TestAuthorization): Promise<TutorReply> {
+  async recover(operationId: string, authorization: PaidAuthorization): Promise<TutorReply> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
     this.busy = true; this.cancelled = false;
     try {
@@ -313,31 +371,22 @@ export class Free2zTutor {
       const session = await this.current();
       this.verifyAuthorization(session, authorization);
       const request: ChatRequest = {model:op.request.model,messages:op.request.messages,max_output_tokens:BigInt(op.request.maxOutputTokens)};
-      // An opening journal entry may never have reached the gateway. A same-key
-      // call is potentially billable, so re-prove the cap under today's grant.
-      const spent = ledger.operations.reduce((n, item) => n + BigInt(item.charge?.charged2z ?? '0'), 0n);
-      const remaining = authorization.maximum2z - spent;
-      if (remaining <= 0n) throw new TutorServiceError('budget_exhausted', 'The authorized test budget has been used.');
-      const estimate = await this.client.estimate(request);
-      const cap = estimate.cap_remaining_milli_2z;
-      if (typeof cap !== 'bigint' || cap <= 0n || cap > remaining * 1000n)
-        throw new TutorServiceError('grant_cap_required', 'Same-key recovery requires a verified total grant cap within the remaining test budget. Receipt reconciliation remains available.');
+      // An opening journal entry may never have reached the gateway. A same-key call is potentially
+      // billable, so re-prove affordability under today's grant, balance and budget remainder.
+      await this.admit(request, authorization.verifiedGrant.budget, op);
       const after = await this.current();
       if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'Recovery was cancelled before sending.');
       op.generation = session.generation;
       await this.persist(ledger);
-      return await this.run(ledger,op,request,authorization,remaining);
+      return await this.run(ledger,op,request,authorization);
     } finally { this.active = undefined; this.busy = false; }
   }
-  private async run(ledger: Ledger, op: Operation, request: ChatRequest, authorization: TestAuthorization, remaining: bigint): Promise<TutorReply> {
+  private async run(ledger: Ledger, op: Operation, request: ChatRequest, authorization: PaidAuthorization): Promise<TutorReply> {
     let completed = false;
     try {
-      // Durable writes and recovery can yield: refresh real consent and remainder at the send boundary.
-      const verifiedGrant = await verifyTestGrant(this.client, authorization);
-      const estimate = await this.client.estimate(request);
-      const cap = estimate.cap_remaining_milli_2z;
-      if (typeof cap !== 'bigint' || cap <= 0n || cap > remaining * 1000n)
-        throw new TutorServiceError('grant_cap_required', 'The current grant remainder exceeds the remaining approved budget.');
+      // Durable writes and recovery can yield: refresh real consent, balance and remainder at the send boundary.
+      const verifiedGrant = await verifyPaidGrant(this.client, authorization);
+      await this.admit(request, verifiedGrant.budget, op);
       // The contract supplies a fresh snapshot, not an immutable per-operation spending guarantee.
       // The service independently enforces current consent; never infer policy identity from generation.
       // Persistence may have yielded for a long time. Fence again at the send boundary.
@@ -364,6 +413,7 @@ export class Free2zTutor {
           const charge = event.type === 'replay' ? event.record.charge : event.charge;
           op.charge = savedCharge(charge); op.state = charge.state === 'pending' ? 'settling' : 'finalized';
           if (event.type === 'replay') op.callId = event.record.call_id;
+          if (event.type === 'done') this.noteSettlement(op, event);
           // A batch cut off by its output budget still carries whole activities; the batch parser keeps them.
           const deliverable = event.type === 'done' && (['stop','end_turn'].includes(event.finish_reason) ||
             (op.context?.kind === 'activities' && ['length','max_tokens','max_output_tokens'].includes(event.finish_reason)));

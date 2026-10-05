@@ -5,8 +5,8 @@ Snapshot: 2026-09-28; SDK pin moved to `e95becd6` on 2026-10-04. Source integrat
 | Surface | Evidence | Status |
 |---|---|---|
 | Native SDK and TypeScript facade | Unified public source `e95becd6517bada55ca933e4072ebf13bbbb3bff` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
-| Sign-in spend-cap hint | `signIn()` suggests `spendCap: 500 2Z`, `spendPeriod: total` | Pre-selection only, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. The grant is still verified before paid admission |
-| Current grant | Supported `client.grant()` through native IPC; account/client/scope/enforcement/total-period cap/freshness verification before paid admission | Implemented and fixture-tested; AHA live acceptance pending |
+| Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
+| Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
 | App provider | Durable request identity, exact money, same-key recovery, completed-answer acknowledgement, conservative pending settlement | Tested with explicit fake transport and real SDK over synthetic native IPC |
 | Discovery and verification keys | Public discovery and advertised JWKS both returned HTTP 200 | Reachable; not proof of AHA mobile sign-in |
@@ -19,15 +19,69 @@ Snapshot: 2026-09-28; SDK pin moved to `e95becd6` on 2026-10-04. Source integrat
 The native host exposes the registered public client ID, not a client secret or a
 webview-configurable endpoint. The controller uses the real SDK to verify the
 current grant; an obsolete compile-time disabled flag no longer decides AI
-availability. `enforced=false`, missing scope, wrong account/client, expired
-proof, non-total or excessive allowance all stop paid admission. Compilation,
+availability. `enforced=false`, missing scope, wrong account/client or an expired
+proof stop paid admission. The budget's size and period never do. Compilation,
 registration, or successful balance reads cannot override these checks.
 
-Each new operation refreshes the grant and allowance after saving its durable
-identity and before invoking the model. The SDK contract supplies a live
-snapshot, not an immutable per-operation policy version. Server revocation stamps
-must not be treated as cap-policy versions. Internal acceptance still needs the
-explicit account and aggregate spending authorization recorded privately.
+Each new operation re-reads the grant, then re-estimates against balance and budget
+remainder, after saving its durable identity and before invoking the model. The SDK
+contract supplies a live snapshot, not an immutable per-operation policy version.
+Server revocation stamps must not be treated as cap-policy versions. Internal
+acceptance still needs the explicit account and aggregate spending authorization
+recorded privately.
+
+## Spending policy: budget optional (#879)
+
+The app budget belongs to the user. They set, change or remove it in Free2Z, on the
+consent screen or at free2z.cash/account/apps, never in AHA. AHA admits paid AI with
+any budget (any amount, `day`/`week`/`month`/`total`) and with none, when the user's
+2Z balance is the only bound. `verifyPaidGrant` and `admitEstimate` in
+`src/provider/free2z.ts` implement it:
+
+| Grant / estimate state | Behavior |
+|---|---|
+| Session subject or grant `sub`/`client_id` differs, or `ai:invoke` missing (session or grant) | Refused (`account_changed`, `scope_denied` or `grant_verification_required`); no paid call |
+| Grant older than 60 s, or the supplied proof is stale or for another session generation | Refused (`grant_verification_required`); re-read before retrying |
+| `enforced: false`, reason `platform_disabled`, `ledger_cutover_pending`, `unknown` or absent | **AI not ready yet** (`ai_not_ready`): no paid call, calm local practice, no alert at connect. With or without a budget |
+| `enforced: false`, reason `ledger_cap_pending` | `budget_pending`: same as above, with a grant-specific message |
+| `enforcement_reason` contradicts `enforced` | Protocol error, refused (the SDK also fails `grant()` closed) |
+| Enforced, `spend_cap_2z: N` with any period | Admitted if the estimate's `hold_2z × 1000 ≤ available_milli_2z` and `≤ cap_remaining_milli_2z`. A missing/`null` remainder is refused |
+| Enforced, `spend_cap_2z: null` (no app budget) | Admitted if `hold_2z × 1000 ≤ available_milli_2z`. A `null` or absent remainder is fine; a numeric remainder (a budget added meanwhile) still binds |
+| Estimate above balance | `insufficient_balance` before any journal operation: calm message, local practice |
+| Estimate above remainder | `cap_exceeded` before any journal operation: calm message, local practice |
+| Estimate without `available_milli_2z` | The authoritative `balance()` decides |
+| Estimate or `/v1/chat` refused by Free2Z (402/403) | The same codes and messages; the gateway enforces regardless |
+
+The check runs before the journal write and again at the send boundary (fresh grant,
+fresh estimate, session fence). The journal wire format, settlement, same-key
+recovery and "an unsettled receipt blocks new paid calls" are unchanged. The test-era
+app-side 500 2Z tally of past charges is gone: settled history no longer limits new
+calls. Operations written by the test-era build stay readable and recoverable with
+their original key and body; a migration test covers v1 and v2 containers.
+
+Settings show, read-only: the available balance, the app budget ("100 2Z per month",
+"No app budget") with what is left when Free2Z has reported it, and the cost of the
+last activity batch ("About N 2Z" from the settled charge, else "Up to N 2Z" from the
+estimate's hold). "Manage allowance or balance" opens the fixed Free2Z account URL.
+There is no in-app purchase.
+
+Contract questions for the Free2Z team (current spec text leaves these open):
+
+1. Does a grant with `spend_cap_2z: null` report `enforced: true` / `ok` once
+   enforcement is active? AHA assumes yes; if no-budget grants stay `enforced: false`,
+   those users never get paid AI.
+2. `platform_disabled` is described as "has not activated grant enforcement". Does the
+   gateway also refuse paid calls in that state, or would it accept and bill them
+   unenforced? AHA sends none either way.
+3. Is `cap_remaining_milli_2z` always present on `/v1/chat/estimate` (`null` when
+   uncapped)? It is optional on decode. AHA refuses a budgeted grant without it and
+   accepts an absent value for an unbudgeted one.
+4. Is `available_milli_2z` always present on the estimate? AHA falls back to
+   `balance()` when it is absent.
+5. A non-strict estimate clamps `max_output_tokens` to what is affordable, so
+   `hold_2z` always fits and a nearly exhausted budget yields a shortened, still-charged
+   batch. Should apps compare the clamp, or adopt `max_output_tokens_strict` once the
+   gateway accepts it?
 
 Only currently advertised model IDs are selected. AI context contains bounded
 candidate skills, recent answer evidence, and optional short fluency practice;
@@ -36,17 +90,16 @@ response or fixture can award whole-standard mastery.
 
 ## Sign-in spend-cap hint
 
-Sign-in passes `SIGN_IN_OPTIONS` (`src/provider/free2z.ts`): a suggested cap of
-`TEST_SPEND_CAP_2Z` = 500 whole 2Z with period `total`. That is exactly the
-policy `verifyTestGrant` admits (enforced, `total`, 1–500 2Z), so a parent who
-accepts the pre-selection gets a grant the app can use. The hint grants nothing.
-Per the spec (deployed IdP behavior not yet observed), Free2Z only lowers its amount to the registration's default cap and the user's
-existing grant, ignores it when either of those is capped with a different
-period, and the parent may edit or remove it on the consent screen. A sign-in
-without a consent screen ignores it. Paid admission still reads the policy back
-from `grant()` and refuses anything other than an enforced total cap ≤ 500 2Z.
-This pin also decodes the grant's optional `enforcement_reason`; a reason that
-contradicts `enforced` makes `grant()` fail closed (`invalid_response`).
+Sign-in passes `SIGN_IN_OPTIONS` (`src/provider/free2z.ts`): a suggested app budget
+of `SUGGESTED_SPEND_CAP_2Z` = 100 whole 2Z per `month`. It is only a suggestion. The
+user may edit or remove it on the consent screen, and the app works the same with any
+budget or none. The hint grants nothing. Per the spec (deployed IdP behavior not yet
+observed), Free2Z only lets it lower the pre-selection at the same period as a capped
+registration default and a capped existing grant, and otherwise ignores it. A
+sign-in without a consent screen ignores it. Paid admission reads the grant back
+from `grant()` and never compares it with the hint. This pin also decodes the grant's
+optional `enforcement_reason`; a reason that contradicts `enforced` makes `grant()`
+fail closed (`invalid_response`).
 
 Strict output (`max_output_tokens_strict`) is not adopted: it waits on the gateway image that accepts the field (the deployed gateway rejects unknown fields with 400).
 
@@ -126,7 +179,7 @@ with client validation, because the gateway has no `response_format` yet, and
 - Price: the whole-2Z minimum applies, so about 3 2Z per call, or roughly 0.75 2Z per
   activity. A reply that fails to parse is still charged.
 
-The 500 2Z test allowance therefore covers about 150 calls, or about 600 activities. The next
+So 100 2Z covers about 30 calls, or about 130 activities. The next
 batch is prefetched only when one activity remains, and only one request is in flight at a time.
 The fallback backoff and Retry-After gate prefetches as well. Restarts and recovered replies
 reuse queued activities and never buy them again.
