@@ -14,7 +14,8 @@
     "tauri": "tauri",
     "test:ui": "node --import tsx scripts/verify-ui.mjs && node --import tsx scripts/verify-ai.mjs",
     "test:ai": "node --import tsx scripts/verify-ai.mjs",
-    "gallery": "node --import tsx scripts/gallery.mjs"
+    "gallery": "node --import tsx scripts/gallery.mjs",
+    "spec-eval": "node --import tsx scripts/spec-eval/run.mjs"
   },
   "dependencies": {
     "@free2z/sdk": "file:vendor/free2z/sdk/e95becd6517bada55ca933e4072ebf13bbbb3bff/free2z-sdk-0.1.0.tgz",
