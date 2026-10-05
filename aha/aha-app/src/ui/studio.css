@@ -87,6 +87,7 @@ button svg {
 .aha-studio {
   min-height: 100dvh;
   padding-top: env(safe-area-inset-top);
+  --aha-nav-h: 0px;
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
@@ -2168,16 +2169,26 @@ body {
   }
 }
 
-/* ---------- Studio home (outside the loop) ---------- */
-.home-view {
-  min-height: 100dvh;
+/* ---------- Studio home (outside the loop) ----------
+   One viewport-tall column (#885): header, a scrolling main, and the nav in flow below it. The
+   scroll container ends at the nav's top, so words never slide under the nav, and the nav's own
+   padding clears the gesture bar (edge-to-edge Android reports env(safe-area-inset-bottom), 48px
+   on the S26). On desktop the nav moves to the top and main's padding clears the inset. */
+.aha-studio:not(.view-focus) {
+  height: 100dvh;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 20px;
+}
+.home-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 .home-header {
+  flex: none;
+  padding: 0 max(20px, calc((100% - 1040px) / 2));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2202,15 +2213,12 @@ body {
   white-space: nowrap;
 }
 .home-nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  order: 1;
+  flex: none;
   z-index: 10;
   display: flex;
   justify-content: space-around;
-  background: color-mix(in srgb, var(--paper) 94%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--paper);
   border-top: 1px solid var(--line);
   padding: 4px 8px max(6px, env(safe-area-inset-bottom));
 }
@@ -2235,9 +2243,12 @@ body {
 }
 .home-main {
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
-  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  padding: 0 20px 24px;
 }
 .home-hero {
   flex: 1;
@@ -2324,17 +2335,16 @@ body {
 @media (min-width: 900px) {
   .home-view {
     position: relative;
-    padding: 0 40px;
+  }
+  .home-header {
+    padding: 0 max(40px, calc((100% - 1000px) / 2));
   }
   .home-nav {
     position: absolute;
     top: 12px;
     left: 50%;
-    right: auto;
-    bottom: auto;
     transform: translateX(-50%);
     background: none;
-    backdrop-filter: none;
     border: 0;
     gap: 8px;
     padding: 0;
@@ -2350,7 +2360,7 @@ body {
     font-size: 0.9rem;
   }
   .home-main {
-    padding-bottom: 24px;
+    padding: 0 40px max(24px, calc(env(safe-area-inset-bottom) + 16px));
   }
 }
 
@@ -2369,4 +2379,21 @@ body {
   .focus-stage.is-spec {
     padding-bottom: max(32px, calc(env(safe-area-inset-bottom) + 18px));
   }
+}
+
+/* Settings fits between the status bar and whichever is taller, the docked bottom nav (#885:
+   measured into --aha-nav-measured by the studio) or the gesture bar, so its last line never ends
+   under either. Desktop's nav sits at the top, so only the inset counts there. */
+@media (max-width: 899px) {
+  .aha-studio:not(.view-focus) {
+    --aha-nav-h: var(--aha-nav-measured, 0px);
+  }
+}
+.settings-dialog {
+  inset-block: calc(env(safe-area-inset-top) + 14px)
+    calc(max(var(--aha-nav-h), env(safe-area-inset-bottom)) + 14px);
+  margin-block: auto;
+  max-height: calc(
+    100dvh - 28px - env(safe-area-inset-top) - max(var(--aha-nav-h), env(safe-area-inset-bottom))
+  );
 }
