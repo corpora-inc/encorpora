@@ -267,6 +267,9 @@ describe('formatValue', () => {
     assert.equal(out(formatValue(area, 'unit')), 'square centimeters');
     assert.equal(err(formatValue(count(3n), 'unit')), 'placeholder_no_unit');
     assert.equal(err(formatValue({ ...count(3n), noun: null }, 'noun')), 'placeholder_no_noun');
-    assert.equal(err(formatValue({ value: { q: rational(1n, 2n), power: 0, unit: null }, noun: null, kind: 'fraction' }, 'word')), 'placeholder_no_words');
+    assert.equal(out(formatValue({ value: { q: rational(1n, 2n), power: 0, unit: null }, noun: null, kind: 'fraction' }, 'word')), 'one half');
+    assert.equal(out(formatValue({ value: { q: rational(1n, 2n), power: 0, unit: null, form: { kind: 'fraction', n: 2n, d: 4n } }, noun: null, kind: 'fraction' }, 'word')), 'two fourths', 'a written fraction keeps its terms');
+    assert.equal(out(formatValue({ value: { q: rational(3n, 4n), power: 0, unit: null }, noun: null, kind: 'fraction' }, 'word')), 'three fourths');
+    assert.equal(err(formatValue({ value: { q: rational(1n, 13n), power: 0, unit: null }, noun: null, kind: 'fraction' }, 'word')), 'placeholder_no_words');
   });
 });
