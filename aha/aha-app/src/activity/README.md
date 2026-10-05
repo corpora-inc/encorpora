@@ -18,7 +18,7 @@ with TEST fixtures only and has not been verified against the live service.
 | `learnerState.ts` | Builds the compact learner summary the model receives. Also defines `ActivityAttemptRecord` and `specHash` |
 | `prompt.ts` | Batch prompt: rules + compact grammar + 2 format examples + learner summary + standards window. `structuredSystem` replaces the grammar with `STRUCTURED_OUTPUT_RULES` for structured output |
 | `render/` | `<ActivityView>` plus pure-SVG/HTML figure renderers and response widgets. Import `render/index.ts` to load the CSS |
-| `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output. `fixtures/inconsistent.ts` holds activities the consistency lint must reject, including the live gpt-4o one from 2026-10-05 |
+| `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output. `fixtures/inconsistent.ts` holds activities the consistency lint must reject, including three live gpt-4o failures from 2026-10-05 |
 | `gallery/` + `scripts/gallery.mjs` | Dev-only visual gallery: `npm run gallery [-- ids…] [--states]` → `.gallery/index.html` |
 | `scripts/spec-eval/` | Dev-only prompt evaluation against a local stand-in model: `npm run spec-eval` → `.spec-eval/<run>/` (see [Prompt evaluation](#prompt-evaluation-dev-only)) |
 
@@ -172,18 +172,33 @@ and "N × M". Plurals are handled by spelling rules. A small set of function wor
 | chart | A value the text attributes to a chart label ("Maria read 7") is not that label's value; "which … had N" names no value in the chart; "N ‹unit›" (the value axis's own word) is neither a value nor the total |
 | leak | The numeric answer is printed on the figure as an annotation, or written in the prompt as a result ("= 12", "12 in all"), unless it is also a keyCheck input. A digital clock that shows the correct option |
 | figure | A contradiction inside one figure (`conflicts`) |
+| ambiguous | A choice is ill-posed: a region keyed wrong has the same value as the keyed one (pie slices as fractions of the whole, bars, picture groups), unless the question names the region; or a multiple-choice option marked wrong equals a correct one in another form (0.5 vs 1/2, same unit words), unless the question is about written form |
+| kind | The prompt points at a kind of figure ("the rectangle", "the number line", "the table") that no figure in the activity is. One small word list per figure type (`figureKinds`) |
 
-The rules are tuned for precision. On the 43 fixtures, the 5 graph-paper fixtures on the variety branch,
-and 2,072 schema-valid activities from cached spec-eval replies (Haiku and the codex ceiling model),
-they flagged 0 fixtures and 1 cached activity, a real contradiction ("12 students" on a chart that
-totals 11). `semantics.test.ts` pins true positives for every rule and figure family, and true
-negatives for the legitimate cases that once tripped them (extra groups beside the stated ones,
-stories of change, questions about something the picture does not show, keyCheck inputs equal to
-the answer, chart scale statements, clock-time labels).
+The rules are tuned for precision. Measured on 2026-10-05:
+
+| Corpus | Flagged |
+|---|---|
+| 43 fixtures + the 5 graph-paper fixtures on the variety branch | 0 of 48 |
+| Strict-schema property corpus (`strictSchema.test.ts` generator, 400 batches) | 0 of 1,217 that the existing validator accepts. 14 shape-valid items with two identical options, one correct and one wrong, are flagged as ambiguous; the existing rules already reject all 14 |
+| Cached spec-eval replies (Haiku and the codex ceiling model) | 3 of 2,181. All three are real: "12 students" on a chart that totals 11; a "rectangle" drawn as a row of gems; 5/30 marked wrong beside the correct 1/6 |
+| Fresh spec-eval run (Haiku, 45 learner states, current prompt with the numbers-first rule) | 0 of 167 schema-valid activities (figure consistent 100%; 92.8% accepted overall) |
+| Synthetic contradiction corpus (`semantics.test.ts`: pictures in five phrasings, arrays, fraction models, money, place value, charts, pies, equal-value options) | 877 of 917 caught (95.6%). The misses are a single group drawn for "N groups of M", which is left alone on purpose (a picture of one group is a common, legitimate illustration) |
+
+`semantics.test.ts` also pins true negatives for the legitimate cases that once tripped a rule: extra
+groups beside the stated ones, stories of change, questions about something the picture does not show,
+"How many X and Y", "N parts are shaded", comparisons with 1/2, one row of an array, two candidate
+figures, yes/no structure questions, prices and totals beside a chart, a side read off the opposite
+side, premises ("If 7 + 5 = 12…"), keyCheck inputs equal to the answer, chart scale statements,
+clock-time labels, regions asked by name, and questions about written form. Labels or questions that
+name `Object.prototype` members ("constructor", "__proto__") never throw: every lookup keyed by text
+uses a null-prototype record and own-property checks.
 
 **Accessible descriptions.** `figureAlt(figure, spec)` is the figure's `say.full`, unless that would
 state the answer (the numeric key not used as a keyCheck input, the fraction key, or a short numeric
-correct option); then it is `say.brief`, which names no value. A counting picture's brief lists its
+correct option, including coordinate pairs and whole-number fractions such as 4/4); then it is
+`say.brief`, which names no value; if even that would state the answer, only the figure's kind ("A
+number line."). A counting picture's brief lists its
 icons as countable words ("apple, apple, apple…"), and a number line places marks by counting ticks.
 The renderer uses it for every figure; the model's `alt` stays in the schema for compatibility only.
 

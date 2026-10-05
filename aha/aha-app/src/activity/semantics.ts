@@ -17,8 +17,9 @@
  *    operands and the answer. See `consistencyErrors` for the rules.
  *
  * Every rule is precise rather than eager: it fires only on a contradiction it can name, and stays
- * silent when the text introduces a quantity the figure does not show. The hand-authored fixtures and
- * the cached spec-eval corpus pin both sides (semantics.test.ts).
+ * silent when the text introduces a quantity the figure does not show. semantics.test.ts pins both
+ * sides: every hand-authored fixture and many legitimate shapes must pass, and a synthetic contradiction
+ * corpus must be caught. The cached spec-eval replies were also run through it (see README).
  *
  * The same quantities write each figure's accessible description (`figureAlt`), so the model's `alt`
  * is no longer shown to anyone. A description that would state the answer falls back to a value-free
@@ -27,7 +28,7 @@
 import type { ActivitySpec, Figure, FigureOf, FigureType } from './spec';
 import { MONEY_KINDS } from './money';
 import { splitRichText } from './text';
-import { ExprError, parseExpr, type Expr } from './expr';
+import { evaluateConstant, ExprError, parseExpr, type Expr } from './expr';
 
 // ====================================================================================================
 // Text → tokens. Generic: digits, number words, fractions, words, marks. No vocabulary of nouns.
@@ -46,7 +47,7 @@ const TENS: Record<string, number> = { thirty: 30, forty: 40, fifty: 50, sixty: 
 function numberWord(w: string): number | null {
   const unit = UNITS.indexOf(w);
   if (unit >= 0) return unit;
-  if (w in TENS) return TENS[w]!;
+  if (Object.prototype.hasOwnProperty.call(TENS, w)) return TENS[w]!;
   const m = /^(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)-(one|two|three|four|five|six|seven|eight|nine)$/.exec(w);
   return m ? (m[1] === 'twenty' ? 20 : TENS[m[1]!]!) + UNITS.indexOf(m[2]!) : null;
 }
@@ -130,6 +131,8 @@ const numValue = (t: Token | undefined) => t?.k === 'num' || t?.k === 'frac' ? t
  */
 const CHANGE_WORDS = new Set(['more', 'fewer', 'less', 'than', 'extra', 'another', 'other', 'additional', 'times', 'twice', 'half', 'double', 'away', 'remove', 'removed', 'add', 'added', 'adds', 'takes', 'take', 'took', 'gives', 'give', 'gave', 'if', 'would', 'could', 'instead', 'new', 'each', 'per', 'every']);
 /** Question words that ask about a change, a part or a comparison, not the figure's own quantity. */
+/** Words that make a following number a benchmark the figure is compared with. */
+const COMPARE_WORDS = new Set(['than', 'to', 'equal', 'equals', 'near', 'nearer', 'closer', 'closest', 'compare', 'compared', 'as', 'like', 'about', 'benchmark']);
 /** Words anywhere in the prompt that mean the figure is not the whole story: something changes, arrives or happened earlier. */
 const STORY_CHANGE_WORDS = new Set([...[...CHANGE_WORDS].filter(w => w !== 'each' && w !== 'per' && w !== 'every'), 'gets', 'get', 'got', 'then', 'now', 'first', 'later', 'came', 'comes', 'joined', 'rest']);
 const NOT_TOTAL_WORDS = new Set([...CHANGE_WORDS, 'need', 'needs', 'needed', 'change', 'difference', 'without', 'not', 'share', 'shared', 'split', 'divide', 'divided', 'equal', 'equally', 'after', 'before', 'left', 'remain', 'remaining', 'eat', 'ate', 'eaten']);
@@ -165,8 +168,11 @@ export interface FigureQuantities {
 }
 type Adapter<T extends FigureType> = (f: FigureOf<T>) => FigureQuantities;
 
-const base = (): Omit<FigureQuantities, 'say'> => ({ named: {}, counts: {}, numbers: [], series: [], printed: [], conflicts: [] });
-const add = (rec: Record<string, number[]>, name: string, ...values: number[]) => { const k = singular(name.toLowerCase().trim()); (rec[k] ??= []).push(...values); };
+/** Records keyed by words from untrusted text: null-prototype, so "constructor" or "__proto__" is just a key. */
+const record = (): Record<string, number[]> => Object.create(null) as Record<string, number[]>;
+const has = (rec: Record<string, number[]>, k: string) => Object.prototype.hasOwnProperty.call(rec, k);
+const base = (): Omit<FigureQuantities, 'say'> => ({ named: record(), counts: record(), numbers: [], series: [], printed: [], conflicts: [] });
+const add = (rec: Record<string, number[]>, name: string, ...values: number[]) => { const k = singular(name.toLowerCase().trim()); if (!has(rec, k)) rec[k] = []; rec[k]!.push(...values); };
 const nameOf = (s: string) => s.toLowerCase().replace(/_/g, ' ').trim();
 const list = (xs: string[]) => xs.length <= 1 ? (xs[0] ?? '') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`;
 const labelText = (rt: string) => richToPlain(rt).replace(/\s+/g, ' ').trim();
@@ -227,7 +233,8 @@ const arrayGrid: Adapter<'array_grid'> = f => {
   add(q.counts, 'row', f.rows); add(q.counts, 'column', f.cols);
   const thing = f.style === 'icons' && f.icon ? f.icon : f.style === 'dots' ? 'dot' : 'square';
   const all = shaded && shaded < total ? [total, shaded, total - shaded] : [total];
-  add(q.named, nameOf(thing), ...all); add(q.named, '', ...all); add(q.named, 'area', total);
+  // "How many dots are in one row?" is a value of the array too.
+  add(q.named, nameOf(thing), ...all, f.cols, f.rows); add(q.named, '', ...all); add(q.named, 'area', total);
   add(q.named, 'row', f.rows); add(q.named, 'column', f.cols);
   q.numbers.push(f.rows, f.cols, total, shaded, total - shaded);
   const shade = shaded && shaded < total ? `, ${shaded} shaded` : '';
@@ -238,7 +245,7 @@ const fractionModel: Adapter<'fraction_model'> = f => {
   const q = base();
   const wholes = f.wholes ?? 1, all = f.parts * wholes;
   q.fraction = { shaded: f.shaded, parts: f.parts, wholes };
-  add(q.counts, 'part', f.parts, all);
+  add(q.counts, 'part', f.parts, all, f.shaded, all - f.shaded);
   add(q.named, '', f.shaded / f.parts, (all - f.shaded) / f.parts, f.shaded / all, (all - f.shaded) / all);
   add(q.named, 'part', f.parts, all, f.shaded, all - f.shaded);
   q.numbers.push(f.parts, f.shaded, wholes, all, all - f.shaded);
@@ -287,7 +294,10 @@ const numberLine: Adapter<'number_line'> = f => {
   const at = (v: number) => f.denominator && !Number.isInteger(v) && Number.isInteger(+(v * f.denominator).toFixed(6)) ? `${+(v * f.denominator).toFixed(6)}/${f.denominator}` : fmt(v);
   const mark = (m: NonNullable<typeof f.marks>[number], where: string) => `${m.label ? `mark ${labelText(m.label)}` : 'a mark'}${m.open ? ' (open circle)' : ''} ${where}`;
   // Brief places marks by counting ticks, never by value (a mark's value is often the answer).
-  const counted = (f.marks ?? []).map(m => mark(m, `${ticksFrom(m.value)} ticks right of ${fmt(f.min)}`));
+  const counted = [
+    ...(f.marks ?? []).map(m => mark(m, `${ticksFrom(m.value)} ticks right of ${fmt(f.min)}`)),
+    ...(f.jumps ?? []).map(j => `a jump of ${Math.abs(ticksFrom(j.to) - ticksFrom(j.from))} ticks ${j.to > j.from ? 'right' : 'left'}, starting ${ticksFrom(j.from)} ticks right of ${fmt(f.min)}`),
+  ];
   const marks = (f.marks ?? []).map(m => mark(m, `at ${at(m.value)}`));
   const jumps = (f.jumps ?? []).map(j => `a jump from ${fmt(j.from)}, ${j.to > j.from ? 'right' : 'left'} ${fmt(Math.abs(j.to - j.from))}${j.label ? ` (${j.label})` : ''}`);
   const ranges = (f.ranges ?? []).map(r => `shading from ${fmt(r.from)} (${r.includeFrom === false ? 'open' : 'closed'}) to ${fmt(r.to)}${r.extends && r.extends !== 'none' ? `, continuing ${r.extends}` : ''}`);
@@ -455,12 +465,14 @@ export function statesAnswer(text: string, spec: Pick<ActivitySpec, 'response' |
   if (r.type === 'numeric') return !keyInputs(spec).some(v => near(v, r.answer)) && toks.some(t => (t.k === 'num' || t.k === 'frac') && near(t.v, r.answer));
   if (r.type === 'fraction') {
     const v = r.numerator / r.denominator;
-    return toks.some(t => t.k === 'frac' && near(t.v, v)) || toks.some(t => t.k === 'num' && !t.int && near(t.v, v));
+    // A whole-number value (4/4 = 1) is stated by the whole number too.
+    return toks.some(t => t.k === 'frac' && near(t.v, v)) || toks.some(t => t.k === 'num' && (!t.int || Number.isInteger(v)) && near(t.v, v));
   }
   if (r.type === 'multiple_choice' || r.type === 'multi_select') {
     const flat = (s: string) => richToPlain(s).replace(/\s+/g, '').toLowerCase();
     const said = flat(text);
-    return r.options.some(o => o.correct && /^[\d.,:/%¢$-]+$/.test(flat(o.text)) && new RegExp(`(^|[^\\d.])${flat(o.text).replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}($|[^\\d])`).test(said));
+    // Numeric-looking options: numbers, times, money, percents, coordinate pairs.
+    return r.options.some(o => o.correct && /^[\d.,:/%¢$()-]+$/.test(flat(o.text)) && /\d/.test(flat(o.text)) && new RegExp(`(^|[^\\d.:,])${flat(o.text).replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}($|[^\\d.:,]|[.,](?!\\d))`).test(said));
   }
   return false;
 }
@@ -470,7 +482,10 @@ export function statesAnswer(text: string, spec: Pick<ActivitySpec, 'response' |
  */
 export function figureAlt(f: Figure, spec: Pick<ActivitySpec, 'response' | 'keyCheck'>): string {
   const { say } = figureQuantities(f);
-  return statesAnswer(say.full, spec) ? say.brief : say.full;
+  if (!statesAnswer(say.full, spec)) return say.full;
+  if (!statesAnswer(say.brief, spec)) return say.brief;
+  // Last resort: only what kind of figure it is.
+  return `A ${f.type.replace(/_/g, ' ')}.`;
 }
 
 // ====================================================================================================
@@ -603,6 +618,7 @@ function keyCheckShape(spec: ActivitySpec): { literals: number[]; product?: [num
   }
   return { literals };
 }
+const hasComputation = (spec: Pick<ActivitySpec, 'keyCheck'>) => { const k = spec.keyCheck; if (!k || !('value' in k)) return false; try { return parseExpr(k.value, []).t !== 'num'; } catch { return false; } };
 /** The keyCheck's literal inputs when it computes something (a bare "12" has none). */
 function keyInputs(spec: Pick<ActivitySpec, 'keyCheck'>): number[] {
   const k = spec.keyCheck;
@@ -638,7 +654,96 @@ function structureAgrees(s: NonNullable<FigureQuantities['structure']>, c: Struc
   return sameSet([s.rows, s.cols], [c.groups, c.size]);
 }
 
-export interface ConsistencyIssue { rule: 'structure' | 'total' | 'chart' | 'leak' | 'figure'; figure?: string; message: string }
+export interface ConsistencyIssue { rule: 'structure' | 'total' | 'chart' | 'leak' | 'figure' | 'ambiguous' | 'kind'; figure?: string; message: string }
+
+/**
+ * What a figure IS, in the words a prompt uses to point at one ("the rectangle", "the number line").
+ * One small mapping per figure type; a prompt that points at a kind no figure has is a contradiction.
+ */
+const KIND_WORDS: Record<string, string[]> = {
+  rectangle: ['rectangle', 'square'], circle: ['circle'], triangle: ['triangle'], 'number line': ['number line'], 'bar graph': ['bar graph', 'bar chart'],
+  'line graph': ['line graph', 'line plot'], 'circle graph': ['circle graph', 'pie chart', 'pie graph'], table: ['table'], clock: ['clock'], ruler: ['ruler'],
+  'scatter plot': ['scatter plot'], grid: ['grid', 'graph paper'], 'coordinate plane': ['coordinate plane', 'coordinate grid'], array: ['array'],
+};
+function figureKinds(f: Figure): Set<string> {
+  const k = (...xs: string[]) => new Set(xs);
+  switch (f.type) {
+    case 'picture': return k('array');
+    case 'array_grid': return k('array', 'grid', 'rectangle');
+    case 'fraction_model': return f.model === 'circle' ? k('circle') : f.model === 'area' ? k('rectangle', 'grid') : k('rectangle');
+    case 'place_value_blocks': case 'money': return k();
+    case 'clock': return k('clock', 'circle');
+    case 'number_line': return k('number line', 'circle');
+    case 'bar_chart': return k('bar graph', 'rectangle');
+    case 'line_chart': return k('line graph', 'grid');
+    case 'pie_chart': return k('circle graph', 'circle');
+    case 'scatter_plot': return k('scatter plot', 'grid', 'coordinate plane');
+    case 'data_table': return k('table', 'grid');
+    case 'coordinate_plane': return k('coordinate plane', 'grid', 'line graph', 'circle', ...((f.polygons ?? []).length ? ['rectangle', 'triangle'] : []));
+    case 'ruler': return k('ruler', 'number line');
+    case 'geometry': return k('rectangle', 'triangle', 'circle', 'grid', 'number line');
+  }
+}
+/** The kinds the prompt points at with a definite reference ("the rectangle", "this number line"). */
+function pointedKinds(tokens: Token[]): string[] {
+  const out: string[] = [];
+  tokens.forEach((t, i) => {
+    if (!isWord(t, 'the', 'this', 'that')) return;
+    for (const [kind, phrases] of Object.entries(KIND_WORDS)) for (const phrase of phrases) {
+      const ws = phrase.split(' ');
+      if (ws.every((w, j) => isWord(tokens[i + 1 + j]) && singular((tokens[i + 1 + j] as { v: string }).v) === w)) out.push(kind);
+    }
+  });
+  return [...new Set(out)];
+}
+
+/** Words in a question that make the written form the point ("simplest form", "as a decimal"). */
+const FORM_WORDS = new Set(['form', 'simplest', 'lowest', 'written', 'write', 'writes', 'expanded', 'standard', 'decimal', 'decimals', 'percent', 'notation', 'mixed', 'improper', 'equivalent', 'name', 'names', 'way', 'ways', 'same', 'equal', 'equals']);
+/** A numeric option's value and unit words ("66 square meters" → 66, "square meter"); null for anything else. */
+function optionValue(text: string): { v: number; unit: string } | null {
+  const toks = tokenize(richToPlain(text));
+  const nums = toks.filter(t => t.k === 'num' || t.k === 'frac');
+  if (nums.length !== 1 || toks.some(t => t.k === 'time' || (t.k === 'mark' && !['%', '$', '¢', '.', ','].includes(t.v)))) return null;
+  const unit = toks.flatMap(t => t.k === 'word' ? [singular(t.v)] : t.k === 'mark' && ['%', '$', '¢'].includes(t.v) ? [t.v] : []).join(' ');
+  return { v: (nums[0] as { v: number }).v, unit };
+}
+/** Tappable regions with a mathematical value: pie slices (their fraction of the whole), bars and picture groups. */
+function regionValues(f: Figure): { id: string; names: string[]; v: number }[] {
+  switch (f.type) {
+    case 'pie_chart': { const total = f.slices.reduce((n, x) => n + x.value, 0); return f.slices.flatMap(x => x.id ? [{ id: x.id, names: [x.label], v: x.value / total }] : []); }
+    case 'bar_chart': return f.bars.flatMap(b => b.id ? [{ id: b.id, names: [b.label], v: b.value }] : []);
+    case 'picture': return f.groups.flatMap(g => g.id ? [{ id: g.id, names: [...(g.label ? [g.label] : []), g.icon.replace(/_/g, ' ')], v: g.count - (g.crossedOut ?? 0) }] : []);
+    default: return [];
+  }
+}
+
+/**
+ * Ill-posed choices: an option or region marked wrong whose value equals the correct one's. A question that
+ * names the correct region ("Tap Blue") asks by name, and a question about written form ("simplest form")
+ * may list equal values on purpose; both are left alone.
+ */
+function ambiguityIssues(spec: ActivitySpec, text: PromptText): ConsistencyIssue[] {
+  const r = spec.response;
+  const asked = text.questions.flat();
+  if (r.type === 'tap_region') {
+    const f = (spec.figures ?? []).find(x => x.id === r.figureId);
+    if (!f) return [];
+    const regions = regionValues(f), target = regions.find(x => x.id === r.region);
+    // Asked by name ("Tap Blue", "Tap the birds"): equal values elsewhere are fine.
+    if (!target || target.names.some(n => mentions(text.tokens, n) || mentions(text.tokens, plural(n, 2)))) return [];
+    const twins = regions.filter(x => x.id !== r.region && near(x.v, target.v));
+    return twins.length ? [{ rule: 'ambiguous', figure: f.id, message: `figure ${f.id} (${f.type}): region ${target.id} is keyed correct, but ${twins.map(x => x.id).join(', ')} ${twins.length === 1 ? 'has' : 'have'} the same value (${fmt(target.v)}), so ${twins.length === 1 ? 'it is' : 'they are'} correct too.` }] : [];
+  }
+  if (r.type === 'multiple_choice' || r.type === 'multi_select') {
+    if (asked.some(t => t.k === 'word' && FORM_WORDS.has(t.v))) return [];
+    const values = r.options.map(o => ({ o, val: optionValue(o.text) }));
+    const right = values.filter(x => x.o.correct && x.val), wrong = values.filter(x => !x.o.correct && x.val);
+    const clash = wrong.find(w => right.some(c => near(c.val!.v, w.val!.v) && c.val!.unit === w.val!.unit));
+    return clash ? [{ rule: 'ambiguous', message: `response: the option "${labelText(clash.o.text)}" is marked wrong but equals a correct option (${fmt(clash.val!.v)}).` }] : [];
+  }
+  return [];
+}
+
 
 /**
  * The consistency rules. Each fires only on a contradiction it can name:
@@ -660,7 +765,6 @@ export interface ConsistencyIssue { rule: 'structure' | 'total' | 'chart' | 'lea
 export function consistencyIssues(spec: ActivitySpec): ConsistencyIssue[] {
   const issues: ConsistencyIssue[] = [];
   const figures = spec.figures ?? [];
-  if (!figures.length && spec.response.type !== 'numeric') return issues;
   const text = readPrompt(spec);
   const facts = figures.map(f => ({ f, q: figureQuantities(f) }));
   const key = keyCheckShape(spec);
@@ -669,13 +773,18 @@ export function consistencyIssues(spec: ActivitySpec): ConsistencyIssue[] {
 
   for (const { f, q } of facts) for (const c of q.conflicts) issues.push({ rule: 'figure', figure: f.id, message: `${tag(f)}: ${c}.` });
 
-  // (a) structure
+  // (a) structure. With two or more structured figures the text may describe only one ("Which array shows 3 rows
+  // of 5?"), and a choice question may state a structure to test ("Does this picture show 3 groups of 4?"),
+  // so claims come only from statements then, never from questions.
   const structural = facts.filter(x => x.q.structure || (x.f.type === 'picture' && x.f.groups.length === 1 && !x.f.key));
-  if (structural.length === 1) {
+  const counted = facts.filter(x => Object.keys(x.q.counts).length);
+  const choice = !['numeric', 'fraction', 'expression'].includes(spec.response.type);
+  const stated = choice ? text.sentences.filter(x => !x.some(t => isMark(t, '?'))).flat() : text.tokens;
+  if (structural.length === 1 && counted.length <= 1) {
     const { f, q } = structural[0]!;
     const countNames = Object.keys(q.counts);
     // "Each cherry has 2 seeds" describes the objects drawn, not groups of them.
-    const claims = structureClaims(text.tokens).filter(c => !c.along || countNames.includes(c.along) || !(c.along in q.named));
+    const claims = structureClaims(stated).filter(c => !c.along || countNames.includes(c.along) || !has(q.named, c.along));
     if (q.structure && !(q.structure.kind === 'groups' && q.structure.categories)) {
       if (claims.length && !claims.some(c => structureAgrees(q.structure!, c, countNames))) {
         issues.push({ rule: 'structure', figure: f.id, message: `${tag(f)}: the text says ${claims.map(c => c.groups === undefined ? `${c.size} in each ${c.along ?? 'group'}` : `${c.groups} ${c.along ? plural(c.along, c.groups) : 'groups'} of ${c.size}`).join(' / ')}, but the figure shows ${shows(q.structure)}.` });
@@ -694,16 +803,17 @@ export function consistencyIssues(spec: ActivitySpec): ConsistencyIssue[] {
       }
     }
   }
-  for (const { f, q } of facts) {
+  for (const { f, q } of counted.length === 1 ? counted : []) {
     const names = Object.keys(q.counts);
-    if (!names.length || (q.structure?.kind === 'groups' && q.structure.categories)) continue;
-    const stated = statedCounts(text.tokens, names);
+    if (q.structure?.kind === 'groups' && q.structure.categories) continue;
+    const countsSaid = statedCounts(stated, names);
     for (const name of names) {
-      const said = stated.filter(s => s.name === name);
+      const said = countsSaid.filter(s => s.name === name);
       if (said.length && !said.some(s => q.counts[name]!.includes(s.value))) issues.push({ rule: 'structure', figure: f.id, message: `${tag(f)}: the text says ${said.map(s => `${s.value} ${plural(name, s.value)}`).join(' / ')}, but the figure has ${q.counts[name]![0]}.` });
     }
     if (q.fraction) {
-      const fr = text.tokens.filter((t): t is Extract<Token, { k: 'frac' }> => t.k === 'frac' && t.d > 1);
+      // A fraction the shaded part is compared with ("more than 1/2", "equal to 3/6") is a benchmark, not the model's partition.
+      const fr = text.tokens.filter((t, i): t is Extract<Token, { k: 'frac' }> => t.k === 'frac' && t.d > 1 && !text.tokens.slice(Math.max(0, i - 3), i).some(x => isWord(x) && COMPARE_WORDS.has(x.v)));
       const { parts, shaded, wholes } = q.fraction;
       if (fr.length && !fr.some(t => t.d === parts || parts % t.d === 0 || near(t.v, shaded / parts) || near(t.v, shaded / (parts * wholes)))) {
         issues.push({ rule: 'structure', figure: f.id, message: `${tag(f)}: the text uses ${[...new Set(fr.map(t => `${t.n}/${t.d}`))].join(', ')}, but the model is cut into ${parts} parts.` });
@@ -719,7 +829,7 @@ export function consistencyIssues(spec: ActivitySpec): ConsistencyIssue[] {
     for (const question of addsNothing && !story ? text.questions : []) {
       const asked = askedQuantity(question);
       if (asked === null) continue;
-      const candidates = facts.filter(x => asked in x.q.named);
+      const candidates = facts.filter(x => has(x.q.named, asked));
       if (candidates.length !== 1) continue;
       const { f, q } = candidates[0]!;
       // A question that names one of the figure's labels ("How many books did Mina read?") asks for that label's value.
@@ -749,7 +859,8 @@ export function consistencyIssues(spec: ActivitySpec): ConsistencyIssue[] {
     if (!isInput) {
       for (const { f, q } of facts) {
         const printed = q.printed.find(p => tokenize(richToPlain(p)).some(t => ((t.k === 'num' && !t.word) || t.k === 'frac') && near(t.v, a)));
-        if (printed) issues.push({ rule: 'leak', figure: f.id, message: `${tag(f)}: the label "${labelText(printed).slice(0, 40)}" shows the answer ${fmt(a)}.` });
+        // A bare keyCheck ("8") says the answer is read off the figure; a computed one says it must be worked out.
+        if (printed && hasComputation(spec)) issues.push({ rule: 'leak', figure: f.id, message: `${tag(f)}: the label "${labelText(printed).slice(0, 40)}" shows the answer ${fmt(a)}.` });
         if (f.caption && resultCue(tokenize(richToPlain(f.caption)), a)) issues.push({ rule: 'leak', figure: f.id, message: `${tag(f)}: the caption states the answer ${fmt(a)}.` });
       }
       if (resultCue(text.tokens, a)) issues.push({ rule: 'leak', message: `prompt: the text states the answer ${fmt(a)} as a result.` });
@@ -759,6 +870,12 @@ export function consistencyIssues(spec: ActivitySpec): ConsistencyIssue[] {
     for (const { f, q } of facts) {
       if (q.printed.some(p => statesAnswer(p, spec)) && f.type === 'clock') issues.push({ rule: 'leak', figure: f.id, message: `${tag(f)}: the digital time shows the correct option.` });
     }
+  }
+  // Ill-posed choices, and a prompt that points at a kind of figure the activity does not have.
+  issues.push(...ambiguityIssues(spec, text));
+  if (figures.length) {
+    const kinds = new Set(figures.flatMap(f => [...figureKinds(f)]));
+    for (const kind of pointedKinds(text.tokens)) if (!kinds.has(kind)) issues.push({ rule: 'kind', message: `prompt: the text refers to the ${kind}, but the figure${figures.length > 1 ? 's are' : ' is a'} ${figures.map(f => f.type.replace(/_/g, ' ')).join(', ')}.` });
   }
   return issues;
 }
@@ -781,6 +898,8 @@ function askedQuantity(q: Token[]): string | null {
     const after = q.slice(i + 2).filter(t => t.k !== 'mark');
     const nouns: string[] = [];
     for (const t of after) { if (!isWord(t) || ['are', 'is', 'were', 'was', 'do', 'does', 'did', 'can', 'will', 'in', 'on', 'at', 'there', 'does', 'have', 'has', 'altogether', 'total', 'all'].includes(t.v)) break; nouns.push(singular(t.v)); if (nouns.length === 3) break; }
+    // "How many apples and bananas…" asks about several kinds at once; no single figure value answers it.
+    if (nouns.some(n => n === 'and' || n === 'or')) return null;
     return nouns.length ? nouns.at(-1)! : '';
   }
   const w = (k: number) => words[k];
@@ -793,9 +912,12 @@ function askedQuantity(q: Token[]): string | null {
 
 /** "= 12", "equals 12", "makes 12", "a total of 12", "12 in all", "12 altogether": the answer written as a result. */
 function resultCue(t: Token[], a: number): boolean {
-  for (let i = 0; i < t.length; i++) {
-    const n = t[i];
-    if (!(n?.k === 'num' || n?.k === 'frac') || !near(n.v, a)) continue;
+  for (const [i, n] of t.entries()) {
+    if (!(n.k === 'num' || n.k === 'frac') || !near(n.v, a)) continue;
+    // A premise ("If 7 + 5 = 12, what is 5 + 7?") gives a fact to reason from, not the answer.
+    const clause = t.slice(0, i).reverse();
+    const stop = clause.findIndex(x => isMark(x, '.', '?', '!', ';', ','));
+    if ((stop < 0 ? clause : clause.slice(0, stop)).some(x => isWord(x, 'if', 'given', 'since', 'because', 'know', 'knows', 'that'))) continue;
     const p1 = t[i - 1], p2 = t[i - 2];
     if (isMark(p1, '=') || isWord(p1, 'equals', 'makes', 'make') || (isWord(p2, 'total', 'answer', 'sum') && isWord(p1, 'of', 'is'))) return true;
     const n1 = t[i + 1], n2 = t[i + 2];
@@ -815,7 +937,12 @@ function chartReferences(ss: Token[][], series: FigureQuantities['series'], unit
   const all = series.flatMap(s => s.values);
   const eq = (a: Token, b: Token) => a.k === b.k && (a.k === 'word' ? singular(a.v) === (b as { v: string }).v : a.k === 'num' || a.k === 'frac' ? near(a.v, (b as { v: number }).v) : a.v === (b as { v: string }).v);
   const followsChange = (s: Token[], i: number) => { const n = s[i + 1]; return isWord(n) && (CHANGE_WORDS.has(n.v) || n.v === 'of') || isMark(n, '/'); };
+  // Rate statements ("Each apple costs 2 dollars", "2 dollars per apple") give a price or scale, not a chart value.
+  const rate = (s: Token[]) => s.some(t => isWord(t, 'each', 'per', 'every', 'represents', 'stands', 'apiece'));
+  // Words that point at the figure itself; an unrelated total ("The class has 28 students") is not a claim about it.
+  const aboutFigure = (s: Token[]) => s.some(t => isWord(t, 'chart', 'graph', 'plot', 'table', 'shows', 'show', 'showed', 'data', 'picture', 'pictograph'));
   for (const s of ss) {
+    if (rate(s)) continue;
     for (const l of labelled) {
       for (let i = 0; i + l.toks.length <= s.length; i++) {
         if (!l.toks.every((t, k) => eq(s[i + k]!, t))) continue;
@@ -837,7 +964,7 @@ function chartReferences(ss: Token[][], series: FigureQuantities['series'], unit
     }
     // "N <unit>" where <unit> is what the values count ("12 students" on a chart of Number of Students) must be a value or the total.
     // A scale statement ("Each square represents 2 books") is not a value.
-    if (unit && !s.some(t => isWord(t, 'each', 'per', 'every', 'represents', 'stands'))) {
+    if (unit && aboutFigure(s)) {
       const total = series.reduce((n, x) => n + x.values[0]!, 0);
       s.forEach((t, i) => {
         const w = s[i + 1];
