@@ -41,7 +41,8 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
 
 - **Fallback.** The request is prompt-only, exactly as before, when the flag is absent or false, when
   the request falls outside the gateway's limits, or after Free2Z refuses the format. Free2Z refuses
-  with `400 invalid_request` and `details.reason` of `response_format_unsupported` or `unsupported`.
+  with `400 invalid_request` and `details.reason` of `response_format_unsupported`, `unsupported`
+  (field `response_format.type`) or `null` (field `response_format`), all before any hold.
   The native transport drops `details`, so a bare 400 `invalid_request` on a structured request also
   counts as a refusal. Every `invalid_request` is refused before any hold.
   - A refusal at the estimate is free and journals nothing.
@@ -60,7 +61,11 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   TeX safety and the other semantic rules are still checked locally. The gateway forwards the
   schema's members sorted by name, so replies arrive with keys in alphabetical order (`activities`
   before `rationale`) and with `null` for unused optional fields. The validator reads by key, treats
-  `null` as absent, and a test covers that reply shape.
+  `null` as absent, and a test covers that reply shape. Recovery of a cut-off reply does not depend on
+  key order either (#888). It locates activities as elements of the `activities` array when they do
+  not lead with `"version"`, and a reply cut off before its trailing `rationale` keeps its complete
+  activities. A rationale that is present but invalid, or missing from a reply that was not cut off,
+  still rejects the batch.
 - **Input tokens (approximate, chars/4).** The structured system prompt is about 1.7k tokens instead
   of about 2.6k, which saves about 0.9k per batch. The schema, however, is input too: Free2Z reserves
   its 28 KB in the input hold, as it does for a tool definition, and the provider bills its own

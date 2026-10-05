@@ -7,6 +7,7 @@ import type { ActivitySpec } from '../activity/spec';
 import { createLearner, getSkill, quarantineActivity, recordSpecAttempt, type LearnerState } from '../learning';
 import { buildBatchRequest, gradeSpecAttempt, parseBatch, specRestorer, verifySpecAttempt } from './aiActivities';
 import { restoreLearning, needsSpecRestorer, LearningRecoveryError } from './recovery';
+import { activityBatchStrictJsonSchema } from '../activity/schema';
 
 const fx = (id: string) => structuredClone(fixtures.find(f => f.id === id)!);
 const allIds = (specs: ActivitySpec[]) => [...new Set(specs.flatMap(s => s.skillIds))];
@@ -197,6 +198,24 @@ test('activity ids follow the original batch position, so a stricter validator c
   assert.deepEqual(strict.items.map(i => [i.activityId, i.spec.id]), [['op:1', specs[1]!.id], ['op:2', specs[2]!.id]]);
 });
 
+type Node = Record<string, any>;
+/**
+ * Shape a value the way OpenAI strict mode does with the gateway's schema: every property present (null when unused)
+ * and, because the gateway forwards the schema with members sorted by name (zuu#1132), keys in alphabetical order.
+ * `order` reorders each object's keys to prove nothing depends on key order.
+ */
+function strictify(value: any, schema: Node, order: (keys: string[]) => string[] = keys => [...keys].sort()): any {
+  if (value === null || value === undefined) return null;
+  if (Array.isArray(schema.anyOf)) {
+    const branch = schema.anyOf.find((b: Node) => b.type !== 'null' && (!b.properties || (typeof value === 'object' && !Array.isArray(value) &&
+      Object.keys(value).every(k => k in b.properties) && (!b.properties.type?.enum || b.properties.type.enum.includes(value.type)))));
+    return strictify(value, branch, order);
+  }
+  if (Array.isArray(value)) return value.map(v => strictify(v, schema.items, order));
+  if (schema.properties) return Object.fromEntries(order(Object.keys(schema.properties)).map(k => [k, k in value ? strictify(value[k], schema.properties[k], order) : null]));
+  return value;
+}
+
 test('the batch request carries the strict schema and the grammar-free prompt for structured output (#884)', async () => {
   const { activityBatchStrictJsonSchema } = await import('../activity/schema');
   const { ACTIVITY_GRAMMAR, STRUCTURED_OUTPUT_RULES } = await import('../activity/prompt');
@@ -208,24 +227,9 @@ test('the batch request carries the strict schema and the grammar-free prompt fo
 });
 
 test('a strict structured-output reply (every key present, nulls, keys sorted by name) validates exactly like the prompt-only one', async () => {
-  const { activityBatchStrictJsonSchema } = await import('../activity/schema');
-  type Node = Record<string, any>;
-  // Shape a value the way OpenAI strict mode does with the gateway's schema: every property present (null when unused)
-  // and, because the gateway forwards the schema with members sorted by name, keys in alphabetical order.
-  const strictify = (value: any, schema: Node): any => {
-    if (value === null || value === undefined) return null;
-    if (Array.isArray(schema.anyOf)) {
-      const branch = schema.anyOf.find((b: Node) => b.type !== 'null' && (!b.properties || (typeof value === 'object' && !Array.isArray(value) &&
-        Object.keys(value).every(k => k in b.properties) && (!b.properties.type?.enum || b.properties.type.enum.includes(value.type)))));
-      return strictify(value, branch);
-    }
-    if (Array.isArray(value)) return value.map(v => strictify(v, schema.items));
-    if (schema.properties) return Object.fromEntries(Object.keys(schema.properties).sort().map(k => [k, k in value ? strictify(value[k], schema.properties[k]) : null]));
-    return value;
-  };
   const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree'), fx('fx-8-slope')];
   const promptOnly = JSON.stringify({ rationale: 'Mixed practice.', activities: specs });
-  const strict = JSON.stringify(strictify({ rationale: 'Mixed practice.', activities: specs }, activityBatchStrictJsonSchema));
+  const strict = JSON.stringify(strictify({ rationale: 'Mixed practice.', activities: specs }, activityBatchStrictJsonSchema as Node));
   assert.ok(strict.indexOf('"activities"') < strict.indexOf('"rationale"'), 'alphabetical: activities before rationale');
   assert.ok(strict.includes(':null'), 'unused optional fields arrive as null');
   const window = allIds(specs);
@@ -233,4 +237,33 @@ test('a strict structured-output reply (every key present, nulls, keys sorted by
   assert.deepEqual(b.rejected, [], JSON.stringify(b.rejected));
   assert.deepEqual(b.items.map(i => i.activityId), a.items.map(i => i.activityId));
   assert.deepEqual(b.items.map(i => i.spec.id), specs.map(s => s.id));
+});
+
+test('a truncated structured-output reply keeps its complete activities, whatever the key order (zuu#1132)', () => {
+  const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree')];
+  const window = allIds(specs);
+  const orders: [string, (keys: string[]) => string[]][] = [['alphabetical', k => [...k].sort()], ['reverse alphabetical', k => [...k].sort().reverse()], ['rotated', k => [...k.slice(3), ...k.slice(0, 3)]]];
+  for (const [name, order] of orders) {
+    const full = JSON.stringify(strictify({ rationale: 'Mixed practice.', activities: specs }, activityBatchStrictJsonSchema as Node, order));
+    // Cut inside the third activity, as a reply stopped by the output budget would be.
+    const third = full.indexOf(JSON.stringify(specs[2]!.id));
+    const parsed = parseBatch(full.slice(0, third + 5), window, 'op');
+    assert.deepEqual(parsed.items.map(i => i.spec.id), [specs[0]!.id, specs[1]!.id], name);
+    assert.deepEqual(parsed.items.map(i => i.activityId), ['op:0', 'op:1'], name);
+    assert.equal(parsed.rejected.length, 1, name);
+  }
+});
+test('only a reply cut off before its rationale may lack one; a missing or invalid rationale otherwise still rejects the batch', () => {
+  const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree')];
+  const window = allIds(specs);
+  const [a, b, c] = specs.map(s => JSON.stringify(s));
+  // Not cut off (braces balance): one activity has a JSON slip and there is no rationale at all.
+  // (An unbalanced slip cannot be told apart from a cut-off reply.)
+  const slipped = `{"activities":[${a},${b!.replace('"id":', '"id"')},${c}]}`;
+  assert.equal(parseBatch(slipped, window, 'op').items.length, 0);
+  assert.equal(parseBatch(`{"rationale":"Mixed.","activities":[${a},${b!.replace('"id":', '"id"')},${c}]}`, window, 'op').items.length, 2, 'control: with a rationale the neighbours are kept');
+  // Cut off, but the rationale that is present is not a string.
+  assert.equal(parseBatch(`{"rationale":5,"activities":[${a},${b},${c!.slice(0, 40)}`, window, 'op').items.length, 0);
+  // Cut off before any rationale: the complete activities are kept.
+  assert.deepEqual(parseBatch(`{"activities":[${a},${b},${c!.slice(0, 40)}`, window, 'op').items.map(i => i.spec.id), [specs[0]!.id, specs[1]!.id]);
 });

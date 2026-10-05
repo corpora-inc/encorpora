@@ -114,7 +114,8 @@ export interface SavedResponseFormat { type: 'json_schema'; json_schema: { name:
 /** Gateway limits on `response_format` (chat-api.md): the SDKs and the gateway refuse anything outside them. */
 const MAX_SCHEMA_BYTES = 32 * 1024;
 export const RESPONSE_FORMAT_UNSUPPORTED = 'response_format_unsupported';
-const FORMAT_REFUSAL_REASONS = [RESPONSE_FORMAT_UNSUPPORTED, 'unsupported'];
+/** The gateway's zero-cost refusals of the field (zuu 42acc57f): model unsupported, unknown `type`, or an explicit `null`. */
+const FORMAT_REFUSAL_REASONS = [RESPONSE_FORMAT_UNSUPPORTED, 'unsupported', 'null'];
 /** Only an explicit `capabilities.structured_output: true` counts; absent (an older gateway) or anything else is false. */
 export function supportsStructuredOutput(catalog: Models, model: string): boolean {
   const capabilities: unknown = catalog.models.find(m => m.id === model)?.capabilities;
@@ -122,7 +123,8 @@ export function supportsStructuredOutput(catalog: Models, model: string): boolea
 }
 /**
  * A refusal of `response_format` itself, which Free2Z makes before any hold, charge or provider request:
- * `400 invalid_request` with `details.reason` `response_format_unsupported` (or `unsupported` for the type).
+ * `400 invalid_request` with `details.reason` `response_format_unsupported`, `unsupported` (field `response_format.type`)
+ * or `null` (field `response_format`).
  * The native transport drops `details`, so a bare 400 `invalid_request` on a request that carried
  * `response_format` counts too; so does the SDK's own pre-send limit check (`invalid_request`, no status).
  * Every `invalid_request` is refused before a hold (spec/errors.md), so none of these cost anything.

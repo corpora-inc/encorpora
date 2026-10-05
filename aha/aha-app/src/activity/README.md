@@ -88,7 +88,8 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    the result disagrees with the key. This is required by default (`requireKeyCheck`).
 7. **Batch.** An invalid activity is dropped on its own, never repaired, and the rest of the
    batch is kept. Code fences and surrounding chatter are tolerated. If the reply is not one
-   valid JSON object, `recoverBatchItems` parses each activity on its own. This covers a reply
+   valid JSON object, `recoverBatchItems` parses each activity on its own, independent of key order
+   (structured output arrives with keys sorted by name, zuu#1132; #888). This covers a reply
    truncated by the token cap and a JSON slip, such as a missing brace or quote, inside one
    activity. Each activity begins at its `"version"` key, and no read goes past the next one.
    The damaged activity is rejected as malformed and its neighbours are kept. Nothing is ever
