@@ -252,8 +252,8 @@ export function evaluate(e: Expr, resolve: Resolver): Result<Value> {
       const a = evaluate(e.args[0], resolve); if (!a.ok) return a;
       const b = evaluate(e.args[1], resolve); if (!b.ok) return b;
       if (!sameDim(a.value, b.value)) return fail('dimension_mismatch', `${e.fn}() compares ${dimName(a.value)} with ${dimName(b.value)}.`);
-      const pick = (compare(a.value.q, b.value.q) <= 0) === (e.fn === 'min') ? a.value : b.value;
-      return ok({ q: pick.q, power: pick.power, unit: pick.unit });
+      // min and max return the operand they pick, written form included ("6/8" stays "6/8").
+      return ok((compare(a.value.q, b.value.q) <= 0) === (e.fn === 'min') ? a.value : b.value);
     }
     case 'op': {
       const a = evaluate(e.a, resolve); if (!a.ok) return a;
