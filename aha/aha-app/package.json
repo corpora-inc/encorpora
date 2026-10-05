@@ -15,6 +15,7 @@
     "test:ui": "node --import tsx scripts/verify-ui.mjs && node --import tsx scripts/verify-ai.mjs",
     "test:ai": "node --import tsx scripts/verify-ai.mjs",
     "gallery": "node --import tsx scripts/gallery.mjs",
+    "sweep": "node scripts/studio-sweep.mjs",
     "spec-eval": "node --import tsx scripts/spec-eval/run.mjs",
     "flag-review": "node scripts/flag-review.mjs"
   },

@@ -505,6 +505,7 @@ export function Studio(props: StudioProps) {
         key={taskId}
         spec={spec.spec}
         compact
+        theme="auto"
         result={spec.result}
         initialResponse={spec.initialResponse}
         disabled={props.busy}

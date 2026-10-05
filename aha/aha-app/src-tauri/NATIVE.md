@@ -10,9 +10,10 @@ Initialize from `aha/aha-app` with `npm run tauri -- ios init --ci` or
 not the ignored generated Xcode project. CLI 2.11.4 generates Android compile/target
 SDK 36; the app config sets minimum API 29. The iOS minimum is 16.
 The generated Android project is never committed, so `build.rs` patches it during
-`tauri android build`: the OAuth intent filter, and dark status-bar icons on the
-edge-to-edge activity (the studio is always light; the template's bare
-`enableEdgeToEdge()` turns the icons white in system dark mode). Android WebView
+`tauri android build` with the OAuth intent filter. The studio follows the system
+light/dark theme on both platforms, and so do the status-bar icons: the Android
+template's bare `enableEdgeToEdge()` and the iOS default status-bar style already
+switch with it (`build.rs` restores a project patched before that). Android WebView
 reports `env(safe-area-inset-*)`; the studio paints a fixed backdrop behind the top
 inset so scrolled content never sits under the clock. If a reused `CARGO_TARGET_DIR`
 skips build scripts after a fresh `android init`, `gen/android/.../generated/` stays
