@@ -528,7 +528,7 @@ test('strict output is sent on the estimate and the chat request for batches, tu
  }
  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'interrupted'});
  const before=f.estimates.length;await f.tutor.recover(f.getValue().operations[0].id,f.authorization).catch(()=>{});
- assert.ok(f.estimates.length>before);for(const e of f.estimates)assert.equal(e.max_output_tokens_strict,true);
+ assert.equal(f.calls.length,2,'recovery reached chat');assert.ok(f.estimates.length>before);for(const e of f.estimates)assert.equal(e.max_output_tokens_strict,true);
  for(const c of f.calls)assert.equal(c.request.max_output_tokens_strict,true,'same-key recovery stays strict');
 });
 test('an estimate that returns fewer output tokens than requested is a refusal, even with strict',async()=>{
@@ -570,12 +570,18 @@ test('the native transport drops details: a bare 402/403 with the gateway refusa
   assert.deepEqual(f.getValue().operations[0].charge,{state:'released',charged2z:'0'});assert.deepEqual(await f.tutor.inspectPending(),[]);
  }
 });
+test('a refusal during same-key recovery never releases: the first send may have been charged',async()=>{
+ const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'interrupted'});
+ const id=f.getValue().operations[0].id;f.setChatError(new SdkError('insufficient_balance',{status:402}));
+ await assert.rejects(f.tutor.recover(id,f.authorization),{code:'insufficient_balance'});
+ assert.equal(f.getValue().operations[0].state,'interrupted');assert.notEqual(f.getValue().operations[0].charge?.state,'released');
+});
 test('non-refusal chat failures stay uncertain and block further calls',async()=>{
  const f=fixture();f.setChatError(new SdkError('unavailable',{status:503}));
  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization));
  assert.equal(f.getValue().operations[0].state,'interrupted');
  for(const e of [new SdkError('invalid_token',{status:403}),new SdkError('insufficient_scope',{status:403,details:{}}),new SdkError('payment_required',{status:402}),new SdkError('insufficient_balance',{status:500}),new SdkError('insufficient_balance',{status:402,callId:'c1'})]){
   const g=fixture();g.setChatError(e);await assert.rejects(g.tutor.reply('verified-model','p','c',g.authorization));
-  assert.notEqual(g.getValue().operations[0].charge?.state,'released','only a strict refusal with details.reason is a zero-charge release');
+  assert.notEqual(g.getValue().operations[0].charge?.state,'released','only a strict refusal (details.reason or bare refusal code, no call id) is a zero-charge release');
  }
 });

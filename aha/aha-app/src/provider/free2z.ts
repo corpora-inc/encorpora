@@ -431,7 +431,7 @@ export class Free2zTutor {
       catch (error) {
         const refused = strictRefusal(error);
         if (!refused) throw error;
-        zeroCharge = true; throw refused;
+        zeroCharge = fresh; throw refused;
       }
       this.active = stream;
       if (this.cancelled) { await stream.cancel(); throw new TutorServiceError('cancelled', 'Delivery stopped; billing may still settle.'); }
