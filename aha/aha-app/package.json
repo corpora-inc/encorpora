@@ -21,6 +21,7 @@
     "@free2z/sdk": "file:vendor/free2z/sdk/42acc57feb4746bd93b1d3c7f4ed00f9690cc665/free2z-sdk-0.1.0.tgz",
     "@free2z/tauri-plugin-f2z-api": "file:vendor/free2z/sdk/42acc57feb4746bd93b1d3c7f4ed00f9690cc665/free2z-tauri-plugin-f2z-api-0.1.0.tgz",
     "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-haptics": "^2.4.1",
     "katex": "^0.16.22",
     "lucide-react": "^0.468.0",
     "react": "^19.2.8",

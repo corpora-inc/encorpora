@@ -2668,3 +2668,153 @@ body {
     100dvh - 28px - env(safe-area-inset-top) - max(var(--aha-nav-h), env(safe-area-inset-bottom))
   );
 }
+/* The answer's moment (celebrate.ts). Overlays and transforms only: the bar, the problem, the
+   answer field and the Check/Next slot never move. Under reduced motion it is a gentle fade. */
+.aha-burst {
+  position: fixed;
+  z-index: 40;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.aha-burst > i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.aha-burst-ring {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-radius: 50%;
+  border: 3px solid var(--teal);
+  box-shadow: 0 0 18px #357e7540;
+}
+.aha-burst-ring.is-gold {
+  border-color: #e0a526;
+  box-shadow: 0 0 22px #e0a52655;
+}
+.aha-burst-bit {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.aha-burst-bit.is-confetti {
+  width: 6px;
+  height: 11px;
+  border-radius: 2px;
+}
+.stage-toast .streak-note {
+  flex: none;
+  margin-left: 2px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #fff4d6;
+  color: #7a5a0c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.stage-toast.correct.streak-1 > .celebrate,
+.stage-toast.correct.streak-2 > .celebrate {
+  background: linear-gradient(140deg, var(--teal), #2f9a7f);
+}
+.stage-toast.correct.streak-2 > .celebrate {
+  box-shadow: 0 0 0 3px #f3c96980;
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* A springy check: it overshoots, settles, then draws its stroke. */
+  .stage-toast.correct > .celebrate {
+    animation: aha-spring 0.62s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  }
+  .stage-toast.correct > .celebrate svg > * {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: aha-draw 0.32s ease-out 0.16s forwards;
+  }
+  .stage-toast.correct.streak-1 > .celebrate::after,
+  .stage-toast.correct.streak-2 > .celebrate::after {
+    border-color: #e0a526;
+  }
+  /* Next arrives in Check's slot with a soft glow (no transform, so the slot's box holds still). */
+  .focus-stage .dock-primary:not(:disabled) .btn-label:has(> svg) {
+    animation: aha-next-label 0.36s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  }
+  .focus-stage .dock-primary:not(:disabled):has(.btn-label > svg) {
+    animation: aha-next-glow 0.7s ease-out both;
+  }
+  .stage-toast .streak-note {
+    animation: aha-fade-in 0.3s ease 0.2s both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage-toast {
+    animation: aha-fade-in 0.3s ease both;
+  }
+}
+@keyframes aha-spring {
+  0% { transform: scale(0.2) rotate(-30deg); opacity: 0; }
+  45% { transform: scale(1.24) rotate(6deg); opacity: 1; }
+  68% { transform: scale(0.9) rotate(-2deg); }
+  84% { transform: scale(1.06) rotate(0deg); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes aha-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes aha-next-label {
+  from { transform: translateX(-8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes aha-next-glow {
+  from { box-shadow: 0 0 0 0 #357e7566; }
+  to { box-shadow: 0 0 0 12px #357e7500; }
+}
+/* Settings: one switch per device preference. */
+.setting-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.setting-switch input {
+  appearance: none;
+  flex: none;
+  position: relative;
+  width: 52px;
+  height: 32px;
+  margin: 0;
+  border-radius: 999px;
+  background: #cdd3c6;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.setting-switch input::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 1px 3px #263d3540;
+  transition: transform 0.2s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+.setting-switch input:checked {
+  background: var(--teal);
+}
+.setting-switch input:checked::after {
+  transform: translateX(20px);
+}
+.setting-switch input:focus-visible {
+  outline: 3px solid #357e7566;
+  outline-offset: 2px;
+}
