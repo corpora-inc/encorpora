@@ -4,3 +4,5 @@
 .spec-eval/
 # Dev-only flagged-activity review output (npm run flag-review)
 .flag-review/
+# Dev-only studio visual sweep output (npm run sweep)
+.sweep/
