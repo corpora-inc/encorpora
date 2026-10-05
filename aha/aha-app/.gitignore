@@ -2,3 +2,5 @@
 .gallery/
 # Dev-only Activity Spec prompt eval output + model reply cache (npm run spec-eval)
 .spec-eval/
+# Dev-only LIVE paid Free2Z eval output, receipts ledger and judge cache (npm run live-eval); never commit
+.live-eval/
