@@ -15,6 +15,7 @@ import { buildLearnerSummary, specHash, type LearnerSummary } from '../activity/
 import { validateActivityBatch, validateActivitySpec, type ActivitySpec } from '../activity/spec';
 import { gradeActivity, type GradeOutcome, type LearnerResponse } from '../activity/grade';
 import { activityIdFor, type QueuedActivity } from './aiQueue';
+import type { StructuredOutput } from '../provider/free2z';
 
 /** Every skill in the bundled graph, including guided-only standards. */
 const GRAPH_SKILL_IDS: ReadonlySet<string> = new Set(skills.map(s => s.id));
@@ -29,13 +30,17 @@ export interface BatchRequest {
   allowedSkillIds: string[];
   maxOutputTokens: typeof BATCH_MAX_OUTPUT_TOKENS;
   summary: LearnerSummary;
+  /** Used instead of `system` when the model advertises structured output: the strict schema plus the grammar-free prompt. */
+  structured: StructuredOutput;
 }
 
 /** The learner summary comes from the evidence ledger only: levels and results, never names or ids. */
 export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false): BatchRequest {
   const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder });
   const prompt = buildActivityPrompt(summary, { count: BATCH_SIZE });
-  return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], maxOutputTokens: BATCH_MAX_OUTPUT_TOKENS, summary };
+  const { name, schema } = prompt.responseFormat.json_schema;
+  return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], maxOutputTokens: BATCH_MAX_OUTPUT_TOKENS, summary,
+    structured: { name, schema, system: prompt.structuredSystem } };
 }
 
 export interface ParsedBatch {

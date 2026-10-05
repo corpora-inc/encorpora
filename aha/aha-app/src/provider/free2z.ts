@@ -1,5 +1,6 @@
-import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type ObjectData, type Session, type SignInOptions } from '@free2z/sdk';
+import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
+import { diagnostics } from '../diagnostics/log';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
 export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'chat' | 'call'>;
@@ -103,6 +104,44 @@ export function strictRefusal(error: unknown): TutorServiceError | undefined {
   const code = typeof reason === 'string' && REFUSAL_CODES.includes(reason) ? reason : known ? error.code : 'not_enough_2z';
   return new TutorServiceError(code, NOT_ENOUGH_2Z);
 }
+/**
+ * Structured output (zuu 42acc57f): a JSON Schema `response_format` plus the system prompt to send with it
+ * (the prompt-only variant's inline grammar is dropped, since the schema carries the shape).
+ */
+export interface StructuredOutput { name: string; schema: Record<string, unknown>; system: string }
+/** The exact `response_format` sent, and journaled (v3) so same-key recovery resends an identical body. */
+export interface SavedResponseFormat { type: 'json_schema'; json_schema: { name: string; schema: Record<string, unknown>; strict: true } }
+/** Gateway limits on `response_format` (chat-api.md): the SDKs and the gateway refuse anything outside them. */
+const MAX_SCHEMA_BYTES = 32 * 1024;
+export const RESPONSE_FORMAT_UNSUPPORTED = 'response_format_unsupported';
+const FORMAT_REFUSAL_REASONS = [RESPONSE_FORMAT_UNSUPPORTED, 'unsupported'];
+/** Only an explicit `capabilities.structured_output: true` counts; absent (an older gateway) or anything else is false. */
+export function supportsStructuredOutput(catalog: Models, model: string): boolean {
+  const capabilities: unknown = catalog.models.find(m => m.id === model)?.capabilities;
+  return object(capabilities) && capabilities.structured_output === true;
+}
+/**
+ * A refusal of `response_format` itself, which Free2Z makes before any hold, charge or provider request:
+ * `400 invalid_request` with `details.reason` `response_format_unsupported` (or `unsupported` for the type).
+ * The native transport drops `details`, so a bare 400 `invalid_request` on a request that carried
+ * `response_format` counts too; so does the SDK's own pre-send limit check (`invalid_request`, no status).
+ * Every `invalid_request` is refused before a hold (spec/errors.md), so none of these cost anything.
+ */
+export function formatRefusal(error: unknown): boolean {
+  if (!(error instanceof SdkError) || error.code !== 'invalid_request' || error.callId || error.record) return false;
+  if (error.status !== undefined && error.status !== 400) return false;
+  const details: unknown = error.details;
+  if (details === undefined) return true;
+  return object(details) && typeof details.reason === 'string' && FORMAT_REFUSAL_REASONS.includes(details.reason);
+}
+const formatUnsupported = () => new TutorServiceError(RESPONSE_FORMAT_UNSUPPORTED, 'Free2Z did not accept structured output for this model.');
+function validResponseFormat(value: unknown): value is SavedResponseFormat {
+  if (!object(value) || !keys(value, ['type','json_schema']) || value.type !== 'json_schema') return false;
+  const spec: unknown = value.json_schema;
+  if (!object(spec) || !keys(spec, ['name','schema','strict']) || typeof spec.name !== 'string' || !/^[A-Za-z0-9_-]{1,64}$/.test(spec.name) ||
+      spec.strict !== true || !object(spec.schema)) return false;
+  try { return new TextEncoder().encode(JSON.stringify(spec.schema)).length <= MAX_SCHEMA_BYTES; } catch { return false; }
+}
 /** Safe, display-only spending figures from the last estimate and settlement. No prompts, keys or ids. */
 export interface SpendingSnapshot {
   availableMilli2z?: bigint; capRemainingMilli2z?: bigint | null;
@@ -121,7 +160,7 @@ export type ResumeContext =
 export const OUTPUT_BUDGETS = ['1800', '2600'] as const;
 export type OutputBudget = typeof OUTPUT_BUDGETS[number];
 export interface TutorReply { text: string; operationId: string; context?: ResumeContext }
-interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string }
+interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string; responseFormat?: SavedResponseFormat }
 interface Operation {
   id: string; key: string; subject: string; generation: string; createdAt: string;
   request: SavedRequest; state: 'opening' | 'streaming' | 'interrupted' | 'settling' | 'finalized';
@@ -131,10 +170,12 @@ interface Operation {
 /**
  * v1 (original): every request pins maxOutputTokens '1800'; contexts are activity/curiosity only.
  * v2: maxOutputTokens is one of OUTPUT_BUDGETS and the 'activities' batch context is allowed.
- * A v1 journal stays readable and recoverable; its first write stores it as v2. Unknown versions fail closed.
+ * v3: a request may carry the exact `responseFormat` it was sent with; absent means prompt-only.
+ * v1/v2 journals stay readable and recoverable (their requests never carry a format); the first write
+ * stores them as v3. Unknown versions fail closed.
  */
-interface Ledger { version: 1 | 2; operations: Operation[] }
-export const JOURNAL_VERSION = 2;
+interface Ledger { version: 1 | 2 | 3; operations: Operation[] }
+export const JOURNAL_VERSION = 3;
 const SLOT = 'aha-billing-v1';
 const MAX_TEXT = 24_000;
 const MAX_JOURNAL_BYTES = 480_000;
@@ -176,7 +217,7 @@ function invalidJournal(): never {
 }
 function readLedger(input: unknown): Ledger {
   if (input == null) return { version: JOURNAL_VERSION, operations: [] };
-  if (!object(input) || (input.version !== 1 && input.version !== 2) || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
+  if (!object(input) || ![1, 2, 3].includes(input.version) || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
   const version: Ledger['version'] = input.version;
   try { if (new TextEncoder().encode(JSON.stringify(input)).length > MAX_JOURNAL_BYTES) invalidJournal(); }
   catch { invalidJournal(); }
@@ -195,7 +236,8 @@ function readLedger(input: unknown): Ledger {
     if (op.consumed !== undefined && (op.consumed !== true || op.answerComplete !== true || !op.context)) invalidJournal();
     ids.add(op.id); operationKeys.add(op.key);
     const request = op.request;
-    if (!object(request) || !keys(request, ['model','messages','maxOutputTokens']) || !opaque(request.model) ||
+    if (!object(request) || !keys(request, version >= 3 ? ['model','messages','maxOutputTokens','responseFormat'] : ['model','messages','maxOutputTokens']) || !opaque(request.model) ||
+      (request.responseFormat !== undefined && !validResponseFormat(request.responseFormat)) ||
       (version === 1 ? request.maxOutputTokens !== '1800' : !(OUTPUT_BUDGETS as readonly unknown[]).includes(request.maxOutputTokens)) ||
       !Array.isArray(request.messages)) invalidJournal();
     const archived = op.state === 'finalized' && request.messages.length === 0 && op.text === '';
@@ -238,7 +280,10 @@ export class Free2zTutor {
   private cancelled = false;
   private active?: ChatStream;
   private snapshot: SpendingSnapshot = {};
-  constructor(readonly client: SdkClient, private readonly journal: Journal, private readonly subject: string) {}
+  /** Models whose gateway refused `response_format` despite advertising it; later batches skip straight to prompt-only. */
+  private readonly formatRefused = new Set<string>();
+  constructor(readonly client: SdkClient, private readonly journal: Journal, private readonly subject: string,
+    private readonly notice: (message: string) => void = message => diagnostics.add('warn', 'ai-structured', message)) {}
   private async ledger(): Promise<Ledger> { return readLedger(await this.journal.getJournal(SLOT)); }
   private async persist(ledger: Ledger): Promise<void> {
     ledger.version = JOURNAL_VERSION;
@@ -251,7 +296,7 @@ export class Free2zTutor {
     for (const op of ledger.operations) {
       if (op.state !== 'finalized' || this.deliverable(op) || (!op.text && !op.request.messages.length)) continue;
       await this.journal.putJournal(`aha-call-${op.id}`, op);
-      op.text = ''; op.request = {...op.request, messages: []};
+      op.text = ''; op.request = {model: op.request.model, messages: [], maxOutputTokens: op.request.maxOutputTokens};
     }
     await this.persist(ledger);
   }
@@ -349,7 +394,12 @@ export class Free2zTutor {
       return { pending: ledger.operations.filter(o => o.state !== 'finalized').length, spent2z: ledger.operations.reduce((n, o) => n + BigInt(o.charge?.charged2z ?? '0'), 0n) };
     } finally { this.busy = false; }
   }
-  async reply(model: string, system: string, context: string, authorization: PaidAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800'): Promise<TutorReply> {
+  /**
+   * With `structured`, and a model whose catalogue entry advertises `capabilities.structured_output`, the request
+   * carries `response_format` and `structured.system`; otherwise, or after Free2Z refuses the format at no cost, it is
+   * the prompt-only request with `system`. The reply text is untrusted either way: callers still validate it.
+   */
+  async reply(model: string, system: string, context: string, authorization: PaidAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800', structured?: StructuredOutput): Promise<TutorReply> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
     if (!OUTPUT_BUDGETS.includes(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
     if (resumeContext !== undefined && !validResumeContext(resumeContext))
@@ -367,18 +417,45 @@ export class Free2zTutor {
       await this.archiveFinalized(ledger);
       const catalog = await this.client.models();
       if (!catalog.models.some(m => m.id === model)) throw new TutorServiceError('model_unavailable', 'Choose a currently available Free2Z model.');
-      const request: ChatRequest = { model, messages: [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}], max_output_tokens: BigInt(maxOutputTokens), max_output_tokens_strict: true };
-      // No app-side ceiling: the user's own budget (if any) and balance bound the call, as Free2Z reports them.
-      await this.admit(request, authorization.verifiedGrant.budget, {context: savedContext});
-      const after = await this.current();
-      if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
-      const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages:request.messages,maxOutputTokens},state:'opening',text:'',...(savedContext ? {context:savedContext} : {}) };
-      ledger.operations.push(op);
-      if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
-        throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
-      await this.persist(ledger);
-      return await this.run(ledger, op, request, authorization, true);
+      const format = this.structuredFormat(catalog, model, context, structured);
+      if (format && structured) {
+        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens); }
+        catch (error) {
+          // Fall back only after a refusal of the format itself, which cost nothing, and only with nothing left unsettled.
+          if (!(error instanceof TutorServiceError) || error.code !== RESPONSE_FORMAT_UNSUPPORTED || ledger.operations.some(op => op.state !== 'finalized')) throw error;
+          this.formatRefused.add(model);
+          this.notice(`Free2Z refused response_format for ${model}; sent the prompt-only JSON request instead. The refusal cost nothing.`);
+        }
+      }
+      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens);
     } finally { this.active = undefined; this.busy = false; }
+  }
+  /** The `response_format` to try first, or `undefined` for the prompt-only request. Never throws. */
+  private structuredFormat(catalog: Models, model: string, context: string, structured?: StructuredOutput): SavedResponseFormat | undefined {
+    if (!structured || !supportsStructuredOutput(catalog, model) || this.formatRefused.has(model)) return undefined;
+    const format = {type: 'json_schema' as const, json_schema: {name: structured.name, schema: structured.schema, strict: true as const}};
+    if (typeof structured.system !== 'string' || structured.system.length + context.length > MAX_CONTEXT_CHARS || !validResponseFormat(format)) {
+      this.notice('The structured-output request is outside Free2Z limits; sent the prompt-only JSON request instead.');
+      return undefined;
+    }
+    return structuredClone(format);
+  }
+  /** One fresh operation: estimate and admit, journal (with the exact format, if any), then send. */
+  private async send(ledger: Ledger, session: Session, model: string, system: string, context: string, format: SavedResponseFormat | undefined,
+    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget): Promise<TutorReply> {
+    const messages: ChatRequest['messages'] = [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}];
+    const request = chatRequest({model, messages, maxOutputTokens, ...(format ? {responseFormat: format} : {})});
+    // No app-side ceiling: the user's own budget (if any) and balance bound the call, as Free2Z reports them.
+    try { await this.admit(request, authorization.verifiedGrant.budget, {context: savedContext}); }
+    catch (error) { throw format && formatRefusal(error) ? formatUnsupported() : error; }
+    const after = await this.current();
+    if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
+    const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages,maxOutputTokens,...(format ? {responseFormat:structuredClone(format)} : {})},state:'opening',text:'',...(savedContext ? {context:structuredClone(savedContext)} : {}) };
+    ledger.operations.push(op);
+    if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
+      throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
+    await this.persist(ledger);
+    return await this.run(ledger, op, request, authorization, true);
   }
   /** Explicit same-key recovery only; the gateway may replay just a receipt, not content. */
   async recover(operationId: string, authorization: PaidAuthorization): Promise<TutorReply> {
@@ -395,7 +472,8 @@ export class Free2zTutor {
       if (!Number.isFinite(age) || age < 0 || age >= 24 * 60 * 60 * 1000) throw new TutorServiceError('recovery_expired', 'The same-key recovery window has expired. No replacement paid request was sent.');
       const session = await this.current();
       this.verifyAuthorization(session, authorization);
-      const request: ChatRequest = {model:op.request.model,messages:op.request.messages,max_output_tokens:BigInt(op.request.maxOutputTokens),max_output_tokens_strict:true};
+      // The identical body, response_format included when the first send carried one: the key may be bound to it.
+      const request = chatRequest(op.request);
       // An opening journal entry may never have reached the gateway. A same-key call is potentially
       // billable, so re-prove affordability under today's grant, balance and budget remainder.
       await this.admit(request, authorization.verifiedGrant.budget, op);
@@ -416,6 +494,7 @@ export class Free2zTutor {
       const verifiedGrant = await verifyPaidGrant(this.client, authorization);
       try { await this.admit(request, verifiedGrant.budget, op); }
       catch (error) {
+        if (request.response_format && formatRefusal(error)) { zeroCharge = fresh; throw formatUnsupported(); }
         if (fresh && error instanceof TutorServiceError && (REFUSAL_CODES.includes(error.code) || error.code === 'not_enough_2z')) zeroCharge = true;
         throw error;
       }
@@ -429,6 +508,8 @@ export class Free2zTutor {
       let stream: ChatStream;
       try { stream = await this.client.chat(request,{operationId:op.id,idempotencyKey:op.key}); }
       catch (error) {
+        // Refused before any hold. On a fresh send it cost nothing; during recovery the first send may have been charged.
+        if (request.response_format && formatRefusal(error)) { zeroCharge = fresh; throw formatUnsupported(); }
         const refused = strictRefusal(error);
         if (!refused) throw error;
         zeroCharge = fresh; throw refused;
@@ -486,6 +567,11 @@ export class Free2zTutor {
       throw new TutorServiceError('service_unavailable', 'Free2Z could not finish this request. Its identity is saved for recovery.');
     }
   }
+}
+/** The wire request for a journaled body: strict output always, `response_format` exactly when it was saved. */
+function chatRequest(saved: SavedRequest): ChatRequest {
+  return {model: saved.model, messages: saved.messages, max_output_tokens: BigInt(saved.maxOutputTokens), max_output_tokens_strict: true,
+    ...(saved.responseFormat ? {response_format: structuredClone(saved.responseFormat) as ChatRequest['response_format']} : {})};
 }
 let nativeClient: Client | undefined;
 export function getNativeClient(): Client { return nativeClient ??= new Client(new NativeTransport(nativeBridge)); }

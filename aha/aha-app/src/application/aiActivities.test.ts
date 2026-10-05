@@ -196,3 +196,41 @@ test('activity ids follow the original batch position, so a stricter validator c
   assert.deepEqual(lenient.items.map(i => i.activityId), ['op:0', 'op:1', 'op:2']);
   assert.deepEqual(strict.items.map(i => [i.activityId, i.spec.id]), [['op:1', specs[1]!.id], ['op:2', specs[2]!.id]]);
 });
+
+test('the batch request carries the strict schema and the grammar-free prompt for structured output (#884)', async () => {
+  const { activityBatchStrictJsonSchema } = await import('../activity/schema');
+  const { ACTIVITY_GRAMMAR, STRUCTURED_OUTPUT_RULES } = await import('../activity/prompt');
+  const request = buildBatchRequest(createLearner('learner', 3), 3, at(0));
+  assert.equal(request.structured.name, 'aha_activity_batch');
+  assert.equal(request.structured.schema, activityBatchStrictJsonSchema);
+  assert.ok(request.system.includes(ACTIVITY_GRAMMAR));
+  assert.equal(request.structured.system, request.system.replace(ACTIVITY_GRAMMAR, () => STRUCTURED_OUTPUT_RULES));
+});
+
+test('a strict structured-output reply (every key present, nulls, keys sorted by name) validates exactly like the prompt-only one', async () => {
+  const { activityBatchStrictJsonSchema } = await import('../activity/schema');
+  type Node = Record<string, any>;
+  // Shape a value the way OpenAI strict mode does with the gateway's schema: every property present (null when unused)
+  // and, because the gateway forwards the schema with members sorted by name, keys in alphabetical order.
+  const strictify = (value: any, schema: Node): any => {
+    if (value === null || value === undefined) return null;
+    if (Array.isArray(schema.anyOf)) {
+      const branch = schema.anyOf.find((b: Node) => b.type !== 'null' && (!b.properties || (typeof value === 'object' && !Array.isArray(value) &&
+        Object.keys(value).every(k => k in b.properties) && (!b.properties.type?.enum || b.properties.type.enum.includes(value.type)))));
+      return strictify(value, branch);
+    }
+    if (Array.isArray(value)) return value.map(v => strictify(v, schema.items));
+    if (schema.properties) return Object.fromEntries(Object.keys(schema.properties).sort().map(k => [k, k in value ? strictify(value[k], schema.properties[k]) : null]));
+    return value;
+  };
+  const specs = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree'), fx('fx-8-slope')];
+  const promptOnly = JSON.stringify({ rationale: 'Mixed practice.', activities: specs });
+  const strict = JSON.stringify(strictify({ rationale: 'Mixed practice.', activities: specs }, activityBatchStrictJsonSchema));
+  assert.ok(strict.indexOf('"activities"') < strict.indexOf('"rationale"'), 'alphabetical: activities before rationale');
+  assert.ok(strict.includes(':null'), 'unused optional fields arrive as null');
+  const window = allIds(specs);
+  const a = parseBatch(promptOnly, window, 'op'), b = parseBatch(strict, window, 'op');
+  assert.deepEqual(b.rejected, [], JSON.stringify(b.rejected));
+  assert.deepEqual(b.items.map(i => i.activityId), a.items.map(i => i.activityId));
+  assert.deepEqual(b.items.map(i => i.spec.id), specs.map(s => s.id));
+});

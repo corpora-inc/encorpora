@@ -1,10 +1,10 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28; SDK pin moved to `e95becd6` on 2026-10-04. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Unified public source `e95becd6517bada55ca933e4072ebf13bbbb3bff` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Native SDK and TypeScript facade | Unified public source `42acc57feb4746bd93b1d3c7f4ed00f9690cc665` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
 | Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
@@ -29,6 +29,44 @@ contract supplies a live snapshot, not an immutable per-operation policy version
 Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
+
+## Structured output (#884)
+
+SDK pin `42acc57f` (zuu #1129) adds opt-in `response_format`. When `/v1/models` reports
+`capabilities.structured_output: true` for the chosen model, an activity batch is sent with
+`response_format {type:'json_schema', json_schema:{name:'aha_activity_batch', schema, strict:true}}`.
+The schema is `activityBatchStrictJsonSchema`, 28.2 KB serialized against the gateway's 32 KiB limit,
+and a test enforces that limit. The system prompt drops the inline grammar for a short list of rules
+the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
+
+- **Fallback.** The request is prompt-only, exactly as before, when the flag is absent or false, when
+  the request falls outside the gateway's limits, or after Free2Z refuses the format. Free2Z refuses
+  with `400 invalid_request` and `details.reason` of `response_format_unsupported` or `unsupported`.
+  The native transport drops `details`, so a bare 400 `invalid_request` on a structured request also
+  counts as a refusal. Every `invalid_request` is refused before any hold.
+  - A refusal at the estimate is free and journals nothing.
+  - A refusal of a fresh send settles that entry as `released`/0, like the strict refusal (#881).
+    The prompt-only request then goes out as a new operation with a new key, because the gateway
+    stores the refusal as the refused key's terminal answer.
+  - The tutor instance stops trying the format for that model and logs a warning (`ai-structured`).
+  - A refusal during same-key recovery stays uncertain, as in #881.
+- **Journal v3.** A request records the exact `responseFormat` it was sent with. Same-key recovery
+  rebuilds the identical body from the journal, whatever today's catalogue says. v1 and v2 journals
+  stay readable (their requests never carry a format) and are stored as v3 on first write. Archiving a
+  settled entry drops its saved schema.
+- **Validation stays mandatory.** Strict mode constrains shape only. keyCheck, figure references,
+  TeX safety and the other semantic rules are still checked locally. The gateway forwards the
+  schema's members sorted by name, so replies arrive with keys in alphabetical order (`activities`
+  before `rationale`) and with `null` for unused optional fields. The validator reads by key, treats
+  `null` as absent, and a test covers that reply shape.
+- **Input tokens (approximate, chars/4).** The structured system prompt is about 1.2k tokens instead
+  of about 2.0k, which saves about 0.8k per batch. The schema, however, is input too: Free2Z reserves
+  its 28 KB in the input hold, as it does for a tool definition, and the provider bills its own
+  rendering of it. The net billed input change is therefore unknown until measured live, and may be an
+  increase. The expected gain is the parse and acceptance rate, not cost.
+- Tests use fakes only (`free2z.test.ts`, `aiActivities.test.ts`, `prompt.test.ts`, and the
+  structured-output scenarios in `scripts/verify-ai.mjs`). This has not been verified against the
+  deployed gateway, which rolls out 42acc57 around 02:30 to 02:40Z.
 
 ## Strict output budget (#881)
 
@@ -189,9 +227,10 @@ URL. Purchase/checkout SDK commands remain outside the app's capabilities.
 
 ## AI activity batches
 
-Each paid call asks gpt-4o for a batch of four Activity Specs. The output is prompt-only JSON
-with client validation, because the gateway has no `response_format` yet, and
-`max_output_tokens_strict` is not sent. Estimated cost per call:
+Each paid call asks gpt-4o for a batch of four Activity Specs. It uses structured output when the
+model advertises it, and prompt-only JSON otherwise (see "Structured output (#884)"). Either way the
+client validates every activity and sends `max_output_tokens_strict`. The estimates below are for the
+prompt-only request:
 
 - Input: about 3.0–3.5k tokens. The system prompt is about 1.9k tokens and the learner summary
   plus standards window about 1.0–1.5k. The provider bounds the prompt at 20k characters.

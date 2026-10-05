@@ -811,7 +811,7 @@ export default function Controller() {
       if (foreground) assertActionActive();
       if (!stillCurrent()) return false;
       const reply = await tutor.reply(selectedModel.current, request.system, request.user, authorization,
-        {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(request.maxOutputTokens) as "2600");
+        {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(request.maxOutputTokens) as "2600", request.structured);
       // A learner or account switch leaves the completed batch saved for its own learner.
       if (!stillCurrent()) return false;
       const queuedBefore = aiQueue.current.length;

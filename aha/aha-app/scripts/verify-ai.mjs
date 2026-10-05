@@ -55,16 +55,22 @@ function fixture(specs){
     if(command==='plugin:f2z|models'){
       if(ai.delayModels)await new Promise(resolve=>{ai.releaseModels=resolve;});
       if(ai.models502)throw {code:'unavailable'};
-      return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096'}]};
+      // TEST-ONLY: `structured` advertises capabilities.structured_output (zuu 42acc57f); default: an entry without it.
+      return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096',...(ai.structured?{capabilities:{vision:false,tools:false,reasoning:false,structured_output:true}}:{})}]};
     }
     // Gateway image 70b74edd9 (da1862531): every paid request must carry strict output (never truncated-but-charged).
     if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&args.request.max_output_tokens_strict!==true)throw new Error('TEST gateway: max_output_tokens_strict:true is required on every paid request');
+    // A model that does not advertise structured output must never receive response_format.
+    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&args.request.response_format!==undefined&&!ai.structured)throw new Error('TEST gateway: response_format sent to a model without capabilities.structured_output');
+    // TEST-ONLY format refusal, shaped as the native transport delivers it (status and code; details dropped).
+    if(command==='plugin:f2z|estimate'&&args.request.response_format&&ai.formatRefusal==='estimate')throw {code:'invalid_request',status:400};
     if(command==='plugin:f2z|estimate'){
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
       return {model:'fixture-model',input_tokens:'500',max_output_tokens:args.request.max_output_tokens,hold_2z:ai.hold,available_milli_2z:ai.available,cap_remaining_milli_2z:ai.capRemaining};
     }
     if(command==='plugin:f2z|start_chat'){
       ai.starts.push(args.operation);ai.requests.push(args.request);
+      if(args.request.response_format&&ai.formatRefusal==='chat')throw {code:'invalid_request',status:400};
       if(ai.strictRefusal){const reason=ai.strictRefusal;ai.strictRefusal=null;ai.refused=(ai.refused??0)+1;throw {code:reason,status:402};}
       if(ai.failOpening){ai.failOpening=false;throw {code:'unavailable',retryAfterSeconds:'5'};}
       const user=args.request.messages[1].content[0].text;
@@ -211,7 +217,8 @@ try {
   const unacked=(await journal()).operations.find(o=>o.context?.kind==='activities');
   assert.ok(unacked.answerComplete&&!unacked.consumed,'acknowledgement failed: the completed batch stays saved');
   assert.equal(unacked.request.maxOutputTokens,'2600');
-  assert.equal((await journal()).version,2,'usage journal v2');
+  assert.equal((await journal()).version,3,'usage journal v3');
+  assert.ok(!('response_format' in batchRequest)&&!('responseFormat' in unacked.request),'a model without the capability gets the prompt-only request');
   // Assistance on an AI activity is recorded before the answer and survives a force-reload.
   await page.getByRole('button',{name:'Hint',exact:true}).click();
   await page.locator('.help-panel').waitFor();
@@ -463,14 +470,14 @@ try {
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
     await ctx.addInitScript(fixture,batchFixtures);
     await ctx.addInitScript(k=>{Object.assign(window.__ahaAI,k);},knobs);
-    const p=await ctx.newPage();const pageErrors=[],logged=[];
-    p.on('pageerror',e=>pageErrors.push(e.message));p.on('console',m=>{if(m.type()==='error')logged.push(m.text());});
+    const p=await ctx.newPage();const pageErrors=[],logged=[],warned=[];
+    p.on('pageerror',e=>pageErrors.push(e.message));p.on('console',m=>{if(m.type()==='error')logged.push(m.text());if(m.type()==='warning')warned.push(m.text());});
     await p.goto('http://127.0.0.1:1436');
     await p.getByRole('button',{name:'Let’s begin',exact:true}).click();
     await p.getByRole('button',{name:'Check',exact:true}).waitFor();
     const openSettings=async()=>{await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
     const figure=async label=>(await p.locator('.balance-row > div').filter({has:p.getByText(label,{exact:true})}).locator('dd').textContent());
-    return {ctx,p,pageErrors,logged,openSettings,figure,starts:()=>p.evaluate(()=>window.__ahaAI.starts.length),
+    return {ctx,p,pageErrors,logged,warned,openSettings,figure,starts:()=>p.evaluate(()=>window.__ahaAI.starts.length),
       source:()=>p.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity?.source)};
   };
   {
@@ -553,8 +560,56 @@ try {
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
+  // ---- Structured output (#884; TEST-ONLY fake SDK, no live service) ----
+  const journalOps=s=>s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
+  {
+    // The model advertises structured_output: the batch carries response_format and the grammar-free prompt.
+    const s=await scenario({enforced:true,structured:true});
+    await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal(await s.starts(),1,'structured: one paid batch call');
+    const request=await s.p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    assert.equal(request.response_format.type,'json_schema');
+    assert.equal(request.response_format.json_schema.name,'aha_activity_batch');
+    assert.equal(request.response_format.json_schema.strict,true);
+    assert.equal(request.response_format.json_schema.schema.additionalProperties,false,'the strict schema reaches the plugin');
+    assert.equal(request.max_output_tokens_strict,true,'strict output stays on with structured output');
+    const system=request.messages[0].content[0].text;
+    assert.ok(system.includes('activity author')&&system.includes('Every key is required'),'grammar-free structured prompt');
+    assert.ok(!system.includes('Response (graded on-device'),'the inline grammar is dropped');
+    const [op]=await journalOps(s);
+    assert.deepEqual(op.request.responseFormat,request.response_format,'the exact format is journaled for same-key recovery');
+    assert.equal(await s.p.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].version),3);
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // The gateway refuses the format at send (bare 400 invalid_request, as the native transport delivers it):
+    // zero-charge release, then the prompt-only request under a new key. No alert; a warning is logged.
+    const s=await scenario({enforced:true,structured:true,formatRefusal:'chat'});
+    await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal(await s.starts(),2,'the refused structured send, then the prompt-only send');
+    const [first,second]=await s.p.evaluate(()=>window.__ahaAI.requests);
+    assert.ok(first.response_format&&!('response_format' in second),'fallback drops response_format');
+    assert.ok(second.messages[0].content[0].text.includes('Response (graded on-device'),'fallback restores the inline grammar');
+    const keys=await s.p.evaluate(()=>window.__ahaAI.starts.map(o=>o.idempotencyKey));
+    assert.notEqual(keys[0],keys[1],'a new idempotency key for the fallback');
+    const [refused,sent]=await journalOps(s);
+    assert.equal(refused.state,'finalized');assert.deepEqual(refused.charge,{state:'released',charged2z:'0'});
+    assert.ok(!('responseFormat' in sent.request));
+    assert.equal(await s.p.getByRole('alert').count(),0,'format fallback: no alert');
+    assert.ok(s.warned.some(m=>/response_format/.test(m)),'the fallback is logged visibly');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // Refused at the estimate (free): nothing journaled for it; the prompt-only request is the only send.
+    const s=await scenario({enforced:true,structured:true,formatRefusal:'estimate'});
+    await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal(await s.starts(),1);
+    assert.ok(!('response_format' in await s.p.evaluate(()=>window.__ahaAI.requests[0])));
+    assert.equal((await journalOps(s)).length,1);
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), and Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), and structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
