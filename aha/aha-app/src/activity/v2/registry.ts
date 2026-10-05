@@ -96,6 +96,8 @@ export interface ViewDef<R extends string> {
   grades: GradeRange;
   /** What {{s.view}} says. */
   noun(roles: Roles<R>): string;
+  /** The figure words prose may use for this view when the prompt shows it (singular; plurals follow). Any other figure word is rejected. */
+  words: readonly string[];
   /** Act forms this view hosts with `on`. */
   accepts: readonly ViewForm[];
   /** What the learner can learn from the view, per role and measure (README §7). */

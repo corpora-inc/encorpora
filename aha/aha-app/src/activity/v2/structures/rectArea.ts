@@ -57,7 +57,7 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
   views: {
     unit_squares: {
       grades: [2, 5], accepts: [], draws: 'graph paper with the rectangle tiled in unit squares (sides, area and perimeter countable)',
-      noun: () => 'rectangle',
+      noun: () => 'rectangle', words: ['rectangle', 'grid', 'shape'],
       reveals: () => ({ w: 'countable', h: 'countable', area: 'countable', perimeter: 'countable' }),
       fits(r) {
         const w = r.w?.value, h = r.h?.value;
@@ -76,7 +76,7 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
     },
     labeled: {
       grades: [3, 7], accepts: [], draws: 'the rectangle with each side labeled; an asked side shows "?" (area and perimeter must be computed)',
-      noun: () => 'rectangle',
+      noun: () => 'rectangle', words: ['rectangle', 'shape'],
       reveals: (_r, asked) => ({ w: asked.has('w') ? 'hidden' : 'shown', h: asked.has('h') ? 'hidden' : 'shown', area: 'hidden', perimeter: 'hidden' }),
       lower(r, { asked }) {
         const w = req(r, 'w').value, h = req(r, 'h').value;

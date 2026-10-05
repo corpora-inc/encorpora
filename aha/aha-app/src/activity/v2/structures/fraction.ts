@@ -38,9 +38,9 @@ function landing(r: Roles<R>, target: Value, verb: string, lo: number): { total:
   if (at.d !== 1n || Number(at.n) < lo || Number(at.n) > total) return issue(verb === 'shade' ? 'shade_unreachable' : 'place_unreachable', `${formatPlain(target.q)} does not land on ${verb === 'shade' ? 'a whole number of the parts' : 'a tick'} of a view with ${p} parts per whole and ${wholesOf(r)} whole(s).`);
   return { total, at: Number(at.n) };
 }
-function areaView(model: 'area' | 'circle' | 'bar', noun: string, grades: readonly [number, number], draws: string): ViewDef<R> {
+function areaView(model: 'area' | 'circle' | 'bar', noun: string, words: readonly string[], grades: readonly [number, number], draws: string): ViewDef<R> {
   return {
-    grades, accepts: ['shade', 'tap'], draws, noun: () => noun,
+    grades, accepts: ['shade', 'tap'], draws, noun: () => noun, words,
     reveals: partsReveal, regions: partRegions,
     shade(r, target) {
       // Draw only the wholes the target needs, so which whole to shade is never a guess.
@@ -79,12 +79,12 @@ export const fraction: StructureDef<'fraction', R, V> = {
     return out;
   },
   views: {
-    rect: areaView('area', 'rectangle', [1, 5], 'a rectangle cut into equal parts, the selected ones shaded'),
-    circle: areaView('circle', 'circle', [1, 5], 'a circle cut into equal parts, the selected ones shaded'),
-    strip: areaView('bar', 'strip', [2, 5], 'a strip cut into equal parts, the selected ones shaded'),
+    rect: areaView('area', 'rectangle', ['rectangle', 'shape', 'area model', 'fraction model'], [1, 5], 'a rectangle cut into equal parts, the selected ones shaded'),
+    circle: areaView('circle', 'circle', ['circle', 'shape', 'pie', 'fraction model'], [1, 5], 'a circle cut into equal parts, the selected ones shaded'),
+    strip: areaView('bar', 'strip', ['strip', 'fraction bar'], [2, 5], 'a strip cut into equal parts, the selected ones shaded'),
     set: {
       grades: [3, 5], accepts: ['tap'], draws: 'a set of the objects, the selected ones highlighted (parts = how many objects)',
-      noun: () => 'group',
+      noun: () => 'group', words: ['picture'],
       reveals: partsReveal, regions: partRegions,
       fits: r => wholesOf(r) > 1 ? [issue('view_fit', 'A set is one whole; set wholes to null.')] : [],
       lower(r) {
@@ -97,7 +97,7 @@ export const fraction: StructureDef<'fraction', R, V> = {
     },
     line: {
       grades: [3, 5], accepts: ['place'], draws: 'a number line from 0 to wholes with a tick at every part, whole numbers labeled; a point at selected/parts when selected is set',
-      noun: () => 'number line',
+      noun: () => 'number line', words: ['number line'],
       reveals: () => ({ parts: 'countable', selected: 'countable', wholes: 'shown', fraction: 'countable', complement: 'countable', unit: 'countable' }),
       place(r, target) { const l = landing(r, target, 'place', 0); return 'code' in l ? l : { ticks: l.total, target: l.at }; },
       lower(r) {
