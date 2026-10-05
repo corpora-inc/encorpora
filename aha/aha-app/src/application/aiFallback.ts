@@ -20,13 +20,17 @@ export class AiBackoff {
   private notBefore = 0;
   constructor(private readonly policy: BackoffPolicy = DEFAULT_POLICY) {}
   get degraded(): boolean { return this.failures > 0; }
-  shouldTryAi(now: number): boolean {
-    if (now < this.notBefore) return false;
-    if (!this.failures) return true;
+  shouldTryAi(now: number): boolean { return this.blockedReason(now) === undefined; }
+  /** Why AI is not attempted now (for the diagnostics log), or `undefined` when an attempt is due. */
+  blockedReason(now: number): string | undefined {
+    if (now < this.notBefore) return `Free2Z asked to retry in ${Math.ceil((this.notBefore - now) / 1000)} s`;
+    if (!this.failures) return undefined;
     const factor = 2 ** Math.min(this.failures - 1, 30);
     const tasks = Math.min(this.policy.baseTasks * factor, this.policy.maxTasks);
     const ms = Math.min(this.policy.baseMs * factor, this.policy.maxMs);
-    return this.localTasks >= tasks || now - this.failedAt >= ms;
+    if (this.localTasks >= tasks || now - this.failedAt >= ms) return undefined;
+    const left = tasks - this.localTasks;
+    return `backing off after ${this.failures} failed AI attempt${this.failures === 1 ? '' : 's'}; retrying after ${left} more local task${left === 1 ? '' : 's'} or in ${Math.ceil((ms - (now - this.failedAt)) / 1000)} s`;
   }
   recordFailure(now: number, retryAt?: number): void {
     this.failures++;
