@@ -16,7 +16,8 @@ import { MAX_EXPR_CHARS, QUANTITY_KINDS, UNIT_IDS, type QuantityKind, type UnitI
 import { BANDS, FORM_GRADES, RESPONSE_FORMS, TAGS, THEMES, overlaps, type Band, type GradeRange, type ResponseForm, type Tag, type Theme } from './registry';
 import { STRUCTURES, STRUCTURE_KINDS, type StructureKind } from './structures';
 
-export const ID = /^[a-z][a-z0-9]{0,7}$/;
+/** Ids: a lowercase letter, then up to 15 lowercase letters, digits or underscores (models like snake_case). */
+export const ID = /^[a-z][a-z0-9_]{0,15}$/;
 /** Names reserved by the expression grammar. */
 export const RESERVED_IDS: ReadonlySet<string> = new Set(['min', 'max']);
 export const SKILL_ID = /^[K1-8]\.[A-Z]{1,3}\.[A-D]\.\d{1,2}$/;
@@ -55,7 +56,7 @@ export interface WireActivity {
 export interface WireBatch { activities: WireActivity[] }
 
 // ---------- zod, per band ----------
-const id = () => z.string().regex(ID, 'Use a short id: a lowercase letter, then up to 7 lowercase letters or digits.');
+const id = () => z.string().regex(ID, 'Use a short id: a lowercase letter, then up to 15 lowercase letters, digits or underscores.');
 const text = (max: number) => z.string().min(1).max(max);
 const expr = () => z.string().min(1).max(MAX_EXPR_CHARS);
 const lit = <T extends string>(v: T) => z.literal(v);
