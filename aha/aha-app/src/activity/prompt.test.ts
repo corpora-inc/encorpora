@@ -29,7 +29,8 @@ describe('activity batch prompt', () => {
     // and the creativity/repetition/graph-paper/equal-groups rules ~230 system tokens, mostly absorbed by trims
     // (no frontier titles/grades, which STANDARDS already carries; tighter wording; no icon enum).
     // Prompt-only is the fallback path; the structured path, the one gpt-4o uses, stays far lower.
-    assert.ok(total <= 4100, `prompt ~${total} tokens`);
+    // Measured ~4.1k at #894; the cap leaves ~50 tokens of headroom.
+    assert.ok(total <= 4150, `prompt ~${total} tokens`);
     assert.ok(approxTokens(p.structuredSystem) + approxTokens(p.user) <= 3400, `structured prompt ~${approxTokens(p.structuredSystem) + approxTokens(p.user)} tokens`);
     assert.ok(approxTokens(p.user) <= 1800, `user ~${approxTokens(p.user)} tokens`);
   });
@@ -56,6 +57,14 @@ describe('activity batch prompt', () => {
     assert.ok(!p.user.includes('"title"') && p.user.includes('3.MD.C.7 '));
     // The icon vocabulary is a category hint, not an enum the model must copy.
     assert.ok(!p.system.includes('apple|banana') && /icon=.*plain counter/.test(p.system) && /icon: .*plain counter/.test(p.structuredSystem));
+  });
+  it('offers fluency targets in STANDARDS even when they sit below the grade band', async () => {
+    const { createLearner } = await import('../learning/engine');
+    const state = createLearner('learner', 5);
+    state.progress['1.OA.C.6'] = { skillId: '1.OA.C.6', concept: 'provisional', fluency: 'developing', retention: 'unconfirmed', independentSuccesses: 3, distinctVariants: [], reviewStage: 1, nextReviewAt: null, lastAttemptAt: '2026-10-01T10:00:00Z' };
+    const summary = buildLearnerSummary({ gradeHint: 5, ledger: state, now: '2026-10-04T10:00:00Z' });
+    assert.deepEqual(summary.fluency, ['1.OA.C.6']);
+    assert.ok(buildActivityPrompt(summary).allowedSkillIds.has('1.OA.C.6'));
   });
   it('offers only skill ids the validator will accept, with the frontier first', () => {
     const summary = realisticSummary();

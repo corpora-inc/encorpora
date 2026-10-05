@@ -5,7 +5,7 @@ import {
   Caravan, Carrot, Castle, Cat, ChefHat, Cherry, Church, Circle, Citrus, Clapperboard, Clock, Cloud, CloudRain, CloudSnow, Clover, Coffee,
   Coins, Compass, Cone, Cookie, CookingPot, Croissant, Crown, Cuboid, CupSoda, Cylinder, Diamond, Dice5, Dog, Donut, DoorOpen, Drum,
   Drumstick, Droplet, Dumbbell, Egg, Eraser, Factory, Fan, Feather, Fence, FerrisWheel, Film, Fish, Flag, Flame, FlaskConical, Flower,
-  Flower2, Footprints, Gamepad2, Gem, Ghost, Gift, GlassWater, Glasses, Globe, Grape, GraduationCap, Guitar, Hammer, Hand, HardHat,
+  Flower2, Footprints, Gamepad2, Gem, Ghost, Gift, GlassWater, Globe, Grape, GraduationCap, Guitar, Hammer, Hand, HardHat,
   Headphones, Heart, Hexagon, Home, Hourglass, IceCreamCone, Key, Lamp, Laptop, Leaf, LeafyGreen, Library, Lightbulb, Lollipop, Luggage,
   Magnet, Mail, Map, Medal, Megaphone, Microscope, Milk, Moon, Mountain, MountainSnow, Mouse, Music, Notebook, Nut, Octagon,
   Origami, Package, PaintBucket, Paintbrush, Palette, Palmtree, PartyPopper, PawPrint, Pencil, Pentagon, Piano, PiggyBank, Pill, Pizza,
@@ -79,7 +79,7 @@ export const ICONS: Record<string, readonly [LucideIcon, ColorToken]> = {
   building: T(Building, 'blue'), castle: T(Castle, 'blue'), church: T(Church, 'blue'), factory: T(Factory, 'blue'), store: T(Store, 'coral'),
   shop: T(Store, 'coral'), door: T(DoorOpen, 'gold'), key: T(Key, 'gold'), lamp: T(Lamp, 'gold'), chair: T(Armchair, 'coral'),
   sofa: T(Sofa, 'coral'), bed: T(Bed, 'blue'), bath: T(Bath, 'blue'), fan: T(Fan, 'blue'), umbrella: T(Umbrella, 'coral'), shirt: T(Shirt, 'blue'),
-  glasses: T(Glasses, 'blue'), baby: T(Baby, 'gold'), hand: T(Hand, 'gold'), heart: T(Heart, 'coral'), phone: T(Smartphone, 'blue'),
+  baby: T(Baby, 'gold'), hand: T(Hand, 'gold'), heart: T(Heart, 'coral'), phone: T(Smartphone, 'blue'),
   laptop: T(Laptop, 'blue'), tv: T(Tv, 'blue'), pill: T(Pill, 'coral'), binoculars: T(Binoculars, 'blue'), briefcase: T(Briefcase, 'gold'),
   // tools and building
   hammer: T(Hammer, 'gold'), wrench: T(Wrench, 'blue'), axe: T(Axe, 'coral'), shovel: T(Shovel, 'gold'), hard_hat: T(HardHat, 'gold'),
@@ -112,7 +112,9 @@ export function resolveIcon(name: string): readonly [LucideIcon, ColorToken] {
   const n = name.toLowerCase();
   const candidates = [n, n.replace(/ies$/, 'y'), n.replace(/es$/, ''), n.replace(/s$/, '')];
   for (const c of candidates) {
-    const hit = ICONS[c] ?? (ALIASES[c] ? ICONS[ALIASES[c]!] : undefined);
+    // Own keys only: a name like "constructor" must never reach Object.prototype.
+    const alias = Object.hasOwn(ALIASES, c) ? ALIASES[c]! : undefined;
+    const hit = Object.hasOwn(ICONS, c) ? ICONS[c] : alias && Object.hasOwn(ICONS, alias) ? ICONS[alias] : undefined;
     if (hit) return hit;
   }
   return DISC;

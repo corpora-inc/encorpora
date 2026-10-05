@@ -53,11 +53,14 @@ describe('Activity renderer', () => {
     assert.ok(hasIcon('apples') && hasIcon('puppy') && hasIcon('umbrella') && hasIcon('traffic_cone'));
     assert.equal(hasIcon('pinecone'), false);
     assert.equal(resolveIcon('pinecone'), resolveIcon('zzz'), 'unknown names share the neutral counter');
+    for (const proto of ['constructor', 'constructors', 'tostring', 'hasownproperty', 'valueof', '__proto__']) assert.equal(resolveIcon(proto), resolveIcon('zzz'), proto);
     const spec = structuredClone(fixtures.find(f => (f.figures ?? []).some(x => x.type === 'picture'))!);
     const picture = spec.figures!.find(x => x.type === 'picture')! as any;
     picture.groups[0].icon = 'pinecone';
     const html = render(<ActivityView spec={spec} onSubmit={noop} />);
     assert.equal((html.match(/class="ax-pic-icon/g) ?? []).length >= picture.groups[0].count, true, 'every object is still drawn and countable');
+    picture.groups[0].icon = 'constructor';
+    assert.doesNotThrow(() => render(<ActivityView spec={spec} onSubmit={noop} />), 'prototype names draw the counter, never crash');
   });
   it('uses <title>/<desc> on SVG figures and labelled groups for interactive ones', () => {
     const chart = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-2-fruit-graph')!} onSubmit={noop} />);

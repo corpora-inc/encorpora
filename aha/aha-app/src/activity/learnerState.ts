@@ -185,7 +185,9 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     const t = tagCounts.get(a.tag) ?? { count: 0, last: 0 };
     tagCounts.set(a.tag, { count: t.count + 1, last: Math.max(t.last, a.at) });
   }
-  const fluency = Object.values(ledger?.progress ?? {}).filter(p => p.concept === 'provisional' && p.fluency === 'developing' && getSkill(p.skillId)).map(p => p.skillId).slice(0, 4);
+  // Most recently practised first; prompt.ts adds these ids to the STANDARDS window so the model may use them.
+  const fluency = Object.values(ledger?.progress ?? {}).filter(p => p.concept === 'provisional' && p.fluency === 'developing' && getSkill(p.skillId))
+    .sort((a, b) => b.lastAttemptAt.localeCompare(a.lastAttemptAt)).map(p => p.skillId).slice(0, 4);
   const pending = pendingSpecs.filter(isSpecLike);
   const pendingKeys = new Set(pending.map(s => specHash(s)));
   const recentContent = recentContentOf([...recentLedgerSpecs(ledger).filter(s => !pendingKeys.has(specHash(s))), ...pending]);

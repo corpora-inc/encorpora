@@ -143,7 +143,7 @@ describe('Activity Spec v1 validator', () => {
   it('icons: any snake_case object name, nothing else', () => {
     const pic = (): any => clone(fixtures.find(f => (f.figures ?? []).some(x => x.type === 'picture'))!);
     const withIcon = (icon: string) => { const s = pic(); s.figures.find((x: any) => x.type === 'picture').groups[0].icon = icon; return validateActivitySpec(s, { skillIds }).ok; };
-    for (const ok of ['apple', 'sailboat', 'traffic_cone', 'pinecone']) assert.ok(withIcon(ok), ok);
+    for (const ok of ['apple', 'sailboat', 'traffic_cone', 'pinecone', 'constructor']) assert.ok(withIcon(ok), ok);
     for (const bad of ['Apple', '<svg>', 'https://x.io/a.png', 'a b', '', 'x'.repeat(33), 'café']) assert.equal(withIcon(bad), false, bad);
   });
   it('requires plot answers to be reachable on the per-axis snap grid', () => {
