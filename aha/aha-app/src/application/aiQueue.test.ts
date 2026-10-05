@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixtures } from '../activity/fixtures';
-import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeNext, type QueuedActivity } from './aiQueue';
+import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity } from './aiQueue';
 
 const item = (op: string, i: number): QueuedActivity => ({ activityId: activityIdFor(op, i), operationId: op, spec: fixtures[i % fixtures.length]! });
 const none = { attempted: new Set<string>(), disputed: new Set<string>() };
@@ -162,4 +162,30 @@ test('a stop token stays stopped and releases a wait', async () => {
   token.stop();
   assert.equal(await waiting, true, 'Stop ends the wait at once');
   assert.equal(token.stopped, true);
+});
+
+test('a skip takes a harder queued activity, else the next queued one, else nothing (#899)', () => {
+  const at = (n: number, d: number): QueuedActivity => ({ ...item('op', n), spec: { ...item('op', n).spec, difficulty: d } });
+  const onScreen = at(0, 5);
+  const easy = at(1, 3), hard = at(2, 8), mid = at(3, 4);
+  assert.equal(takeForSkip([easy, hard, mid], onScreen).next?.activityId, hard.activityId);
+  assert.equal(takeForSkip([easy, mid], onScreen).next?.activityId, easy.activityId, 'no harder one: the next queued one');
+  assert.deepEqual(takeForSkip([], onScreen), { rest: [] });
+  assert.equal(takeForSkip([onScreen], onScreen).next, undefined, 'never returns the skipped activity itself');
+});
+
+test('a skipped activity requeues at the back, keeping its hints, without duplicates', () => {
+  const a = item('op', 0), b = item('op', 1), c = item('op', 2);
+  const box = new AiQueueBox([b, c]);
+  box.requeueBack({ ...a, shown: true, hintsUsed: 2 });
+  assert.deepEqual(box.items.map(q => q.activityId), [b.activityId, c.activityId, a.activityId]);
+  assert.equal(box.items.at(-1)!.hintsUsed, 2);
+  box.requeueBack({ ...a, shown: true, hintsUsed: 3 });
+  assert.equal(box.length, 3);
+  assert.equal(box.items.at(-1)!.hintsUsed, 3);
+});
+
+test('a set-aside activity is pruned from a restored queue', () => {
+  const a = item('op', 0), b = item('op', 1);
+  assert.deepEqual(pruneQueue([a, b], { attempted: new Set(), disputed: new Set([a.activityId]) }).map(q => q.activityId), [b.activityId]);
 });

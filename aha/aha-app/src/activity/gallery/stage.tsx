@@ -4,7 +4,7 @@
  *   hold()     the next Next / Try something harder waits ("Preparing your next AI lesson…")
  *   release()  finishes that wait and shows the next fixture
  *   fail(msg)  shows an error, as a failed action would
- * ?label=Apples gives the first activity's typed response that label. */
+ * ?label=Apples gives the first activity's typed response that label; ?unit=… gives a numeric one a unit. */
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Studio } from '../../ui/Studio';
@@ -16,10 +16,12 @@ const params = new URLSearchParams(location.search);
 const id = params.get('fixture');
 // ?label=… gives the first activity's typed response a label, as model-written specs often do.
 const label = params.get('label');
+const unit = params.get('unit');
 const start = Math.max(0, fixtures.findIndex(f => f.id === id));
 const withLabel = (spec: ActivitySpec, i: number): ActivitySpec =>
   label && i === start && ['numeric', 'expression', 'fraction'].includes(spec.response.type)
-    ? { ...spec, response: { ...spec.response, label } as ActivitySpec['response'] } : spec;
+    ? { ...spec, response: { ...spec.response, label } as ActivitySpec['response'] }
+    : unit && i === start && spec.response.type === 'numeric' ? { ...spec, response: { ...spec.response, unit } } : spec;
 const noop = () => {};
 type StageControl = { hold: () => void; release: () => void; fail: (message: string) => void };
 declare global { interface Window { __stage?: StageControl } }

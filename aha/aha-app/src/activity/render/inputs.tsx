@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState } from 'react';
+import React, { useId, useLayoutEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowUp, Minus, Plus } from 'lucide-react';
 import type { ResponseOf } from '../spec';
 import type { LearnerResponse } from '../grade';
@@ -14,21 +14,36 @@ const plainLabel = (text: string) => text.replace(/\\\$/g, '\u0000').replace(/\$
 
 /** compact (focus stage): the label never takes its own row above the field. It stays the field's
  * accessible name and shows as a quiet suffix inside the field (short label, no unit) or as the
- * placeholder. */
+ * placeholder. A unit is a calm chip at the field's right edge; the field reserves its measured
+ * width, so neither the placeholder nor typed digits ever run under it. */
 export function NumericInput({ response: r, value, onChange, disabled, onEnter, compact }: { response: ResponseOf<'numeric'>; value: string; onChange: (v: string) => void; disabled?: boolean; onEnter?: () => void; compact?: boolean }) {
   const id = useId();
   const suffix = compact && r.label && !r.unit && plainLabel(r.label).length <= 18 ? r.label : undefined;
-  const placeholder = compact && r.label && !suffix ? plainLabel(r.label) : 'Type a number';
+  // With a unit the chip names what to type, so the field keeps only a short "?" mark.
+  const placeholder = compact && r.unit ? '?' : compact && r.label && !suffix ? plainLabel(r.label) : 'Type a number';
   const tail = r.unit ?? (suffix ? plainLabel(suffix) : undefined);
+  const tailRef = useRef<HTMLSpanElement>(null);
+  const [tailWidth, setTailWidth] = useState<number>();
+  useLayoutEffect(() => {
+    const el = tailRef.current;
+    if (!compact || !el) return setTailWidth(undefined);
+    const measure = () => setTailWidth(Math.ceil(el.getBoundingClientRect().width));
+    measure();
+    if (typeof ResizeObserver === 'undefined') return;
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [compact, tail]);
+  const style = tail ? { '--ax-tail': tail.length, ...(tailWidth ? { '--ax-tail-px': `${tailWidth}px` } : {}) } as React.CSSProperties : undefined;
   return (
     <div className="ax-field">
       <label htmlFor={id} className={r.label && !compact ? undefined : 'ax-default-label'}>{r.label ? <RichText text={r.label} /> : 'Your answer'}</label>
-      <div className="ax-number-wrap" style={tail ? { '--ax-tail': tail.length } as React.CSSProperties : undefined}>
+      <div className={`ax-number-wrap${r.unit && r.unit.length > 8 ? ' has-long-unit' : ''}`} style={style}>
         <input id={id} type="text" inputMode="decimal" autoComplete="off" autoCorrect="off" spellCheck={false} maxLength={40}
           value={value} disabled={disabled} placeholder={placeholder} onChange={e => onChange(e.target.value)}
           onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); onEnter?.(); } }} />
-        {r.unit ? <span className="ax-unit" aria-hidden="true">{r.unit}</span>
-          : suffix && <span className="ax-unit ax-label-suffix" aria-hidden="true"><RichText text={suffix} /></span>}
+        {r.unit ? <span ref={tailRef} className="ax-unit" aria-hidden="true">{r.unit}</span>
+          : suffix && <span ref={tailRef} className="ax-unit ax-label-suffix" aria-hidden="true"><RichText text={suffix} /></span>}
       </div>
       {r.unit && <span className="ax-visually-hidden">Unit: {r.unit}</span>}
     </div>

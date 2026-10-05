@@ -318,7 +318,17 @@ input[type="checkbox"] + .ax-choice-badge { border-radius: 8px; }
 .is-compact .ax-dock-row:not(:has(> .ax-response)) > * { flex: 1; }
 .is-compact .ax-number-wrap { max-width: none; }
 .is-compact .ax-number-wrap input { min-height: 56px; padding-right: 16px; }
-.is-compact .ax-number-wrap:has(.ax-unit) input { padding-right: calc(var(--ax-tail, 2) * 0.62rem + 32px); }
+.is-compact .ax-number-wrap:has(.ax-unit) input { padding-right: calc(var(--ax-tail-px, calc(var(--ax-tail, 2) * 0.62rem)) + 26px); }
+/* A unit is a calm chip at the field's right edge: muted, never bold, up to half the field. Long
+   units ("square units") wrap between words onto two short lines instead of crowding the value. */
+.is-compact .ax-number-wrap .ax-unit:not(.ax-label-suffix) {
+  right: 8px; max-width: 50%; padding: 5px 10px; border-radius: 10px;
+  background: var(--ax-panel); box-shadow: inset 0 0 0 1px var(--ax-line);
+  font-size: 0.9rem; font-weight: 600; line-height: 1.1; letter-spacing: 0.01em; text-align: center;
+  white-space: normal; overflow-wrap: break-word; pointer-events: none;
+}
+.is-compact .ax-number-wrap.has-long-unit .ax-unit { font-size: 0.78rem; padding: 4px 9px; }
+.is-compact .ax-number-wrap:has(.ax-unit) input::placeholder { color: var(--ax-axis); }
 /* A response label sits inside the field as a quiet suffix, never as a heading row above it. */
 .is-compact .ax-label-suffix { font-weight: 400; white-space: nowrap; }
 /* Answers that live in the problem area (choices, ordering, tap chips) keep clear of the answer
