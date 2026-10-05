@@ -77,3 +77,17 @@ test('fallback is logged visibly with context, without SDK response details', ()
   assert.match(text, /unavailable/);
   assert.doesNotMatch(text, /DO_NOT_LOG/);
 });
+
+test('a blocked attempt explains itself for the diagnostics log', () => {
+  const backoff = new AiBackoff({baseTasks: 3, baseMs: 60_000, maxTasks: 12, maxMs: 600_000});
+  assert.equal(backoff.blockedReason(0), undefined, 'fresh: due, nothing to explain');
+  backoff.recordFailure(0);
+  backoff.recordLocalTask();
+  assert.equal(backoff.blockedReason(15_000), 'backing off after 1 failed AI attempt; retrying after 2 more local tasks or in 45 s');
+  assert.equal(backoff.shouldTryAi(15_000), false);
+  backoff.recordLocalTask(); backoff.recordLocalTask();
+  assert.equal(backoff.blockedReason(15_000), undefined, 'due again exactly when shouldTryAi says so');
+  const retry = new AiBackoff();
+  retry.recordFailure(0, 30_000);
+  assert.match(retry.blockedReason(10_000)!, /Free2Z asked to retry in 20 s/);
+});
