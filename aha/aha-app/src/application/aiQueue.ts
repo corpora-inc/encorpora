@@ -114,6 +114,18 @@ export function takeNext(queue: readonly QueuedActivity[], stretch = false, abov
   return { next: pick, rest: queue.filter(q => q !== pick) };
 }
 
+/**
+ * "Try something harder" on an unanswered AI activity always moves on (#899): a queued activity harder than the one
+ * on screen if there is one, otherwise the next queued activity of any difficulty. Nothing when the queue is empty
+ * (the caller then waits boundedly or serves a local task). Never returns the skipped activity itself.
+ */
+export function takeForSkip(queue: readonly QueuedActivity[], onScreen: QueuedActivity): { next?: QueuedActivity; rest: QueuedActivity[] } {
+  const others = queue.filter(q => q.activityId !== onScreen.activityId);
+  const harder = takeNext(others, true, onScreen.spec.difficulty);
+  if (harder.next) return harder;
+  return takeNext(others);
+}
+
 /** Drop queued activities that already have evidence or a dispute (for example after a backup restore). */
 export function pruneQueue(queue: readonly QueuedActivity[], known: KnownActivities): QueuedActivity[] {
   return queue.filter(q => !known.attempted.has(q.activityId) && !known.disputed.has(q.activityId) && q.activityId !== known.current);
@@ -140,6 +152,8 @@ export class AiQueueBox {
   }
   /** Put an unanswered activity back at the front of the queue (no duplicate if it is already queued). */
   requeueFront(item: QueuedActivity): void { this.queue = [item, ...this.queue.filter(q => q.activityId !== item.activityId)]; }
+  /** Put a skipped activity at the back (no duplicate); paid content waits its turn and is never discarded. */
+  requeueBack(item: QueuedActivity): void { this.queue = [...this.queue.filter(q => q.activityId !== item.activityId), item]; }
   remove(activityId: string): void { this.queue = this.queue.filter(q => q.activityId !== activityId); }
   /** Undo one delivery's additions without disturbing anything that happened meanwhile. */
   unmerge(activityIds: readonly string[]): void { const ids = new Set(activityIds); this.queue = this.queue.filter(q => !ids.has(q.activityId)); }

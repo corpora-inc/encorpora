@@ -453,15 +453,16 @@ try {
     await harder.click();
     await waitShown(hard);
     st=await hs();
-    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[first,easy],'the skipped paid activity is kept at the front of the queue');
+    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[easy,first],'the skipped paid activity is kept at the back of the queue');
     assert.equal(await hStarts(),1,'harder with a harder activity queued made no paid call');
     assert.equal((await hAttempts()).length,0,'skipping is not an attempt');
-    // Nothing harder than 8 is queued: the current activity stays, nothing is lost, no extra paid call.
+    // Nothing harder than 8 is queued (#899): the skip still moves on, to the next queued one, and the skipped
+    // activity goes to the BACK of the queue. No paid call solely because of the button while content is queued.
     await harder.click();
-    await h.waitForTimeout(500);
+    await waitShown(easy);
     st=await hs();
-    assert.equal(st.aiActivity.activityId,hard,'with nothing harder the current activity is not replaced');
-    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[first,easy],'and the queue is untouched');
+    assert.notEqual(st.aiActivity.activityId,hard,'a skip never leaves the same problem on screen');
+    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[first,hard],'the skipped activity waits at the back of the queue');
     assert.equal(await hStarts(),1,'no paid call solely because of the button while content is queued');
     assert.equal((await hAttempts()).length,0);
     // Answer it; the next batch (requested by the normal prefetch when the queue runs low) carries the signal.
@@ -474,8 +475,76 @@ try {
     const user=await h.evaluate(()=>window.__ahaAI.requests.at(-1).messages[1].content[0].text);
     assert.match(user,/"wantsHarder":true/,'the next batch request tells the model the learner wants harder');
     const attempts=await hAttempts();
-    assert.deepEqual(attempts.map(a=>a.data.activityId),[hard],'only the answered activity has evidence');
-    assert.equal((await hs()).aiActivity.spec.difficulty,5,'the skipped activity shows again with its original record');
+    assert.deepEqual(attempts.map(a=>a.data.activityId),[easy],'only the answered activity has evidence');
+    assert.deepEqual(hErrors,[]);
+    await ctx.close();
+  }
+  // ---- Skip with an empty queue, and flagging an AI spec, always change the problem (#899; TEST fixture specs) ----
+  {
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];});
+    const h=await ctx.newPage();
+    const hErrors=[];h.on('pageerror',e=>hErrors.push(e.message));
+    const hs=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
+    const hStarts=()=>h.evaluate(()=>window.__ahaAI.starts.length);
+    const hAttempts=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat());
+    await h.goto(base);
+    await h.getByRole('button',{name:'Let’s begin',exact:true}).click();
+    await h.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    const answer=async()=>{
+      const st=await hs();
+      await h.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));
+      await h.getByRole('button',{name:'Check',exact:true}).click();
+      await h.getByRole('button',{name:'Next',exact:true}).click();
+    };
+    // Drain the queue with no refill possible (the estimate is blocked), landing on the last paid activity.
+    await h.evaluate(()=>{window.__ahaAI.blockEstimate=true;});
+    const [b,c]=(await hs()).aiQueue.map(q=>q.activityId);
+    const onShown=id=>h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId===i,id);
+    await answer();await onShown(b);
+    await answer();await onShown(c);
+    let st=await hs();
+    assert.deepEqual(st.aiQueue??[],[],'the queue is empty with the last paid activity on screen');
+    const startsBefore=await hStarts();
+    // Skip with an empty queue: a local task replaces it, the paid one is kept (queued, not lost), no paid call.
+    await h.getByRole('button',{name:'Try something harder',exact:true}).click();
+    await h.waitForFunction(()=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.activity?.source==='local');
+    st=await hs();
+    assert.ok(!st.aiActivity,'the skipped paid activity is no longer on screen');
+    assert.deepEqual(st.aiQueue.map(q=>q.activityId),[c],'the skipped paid activity is kept in the queue');
+    assert.equal(await hStarts(),startsBefore,'the skip made no paid call');
+    assert.equal((await hAttempts()).filter(a=>a.data.activityId===c).length,0,'skipping is not an attempt');
+    assert.deepEqual(hErrors,[]);
+    await ctx.close();
+  }
+  {
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];});
+    const h=await ctx.newPage();
+    const hErrors=[];h.on('pageerror',e=>hErrors.push(e.message));
+    const hs=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
+    await h.goto(base);
+    await h.getByRole('button',{name:'Let’s begin',exact:true}).click();
+    await h.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    const flagged=(await hs()).aiActivity.activityId;
+    // Skip once so the flagged activity also travels through a requeue, then flag whatever is on screen.
+    await h.getByRole('button',{name:'Try something harder',exact:true}).click();
+    await h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId!==i,flagged);
+    const second=(await hs()).aiActivity.activityId;
+    await h.getByRole('button',{name:'Something seems off',exact:true}).click();
+    await h.getByRole('button',{name:'Set it aside',exact:true}).click();
+    await h.getByRole('button',{name:'Next',exact:true}).waitFor();
+    let st=await hs();
+    assert.ok(!st.aiActivity,'the flagged spec left the screen');
+    assert.ok(!st.aiQueue.some(q=>q.activityId===second),'the flagged spec is not queued');
+    assert.equal(await h.evaluate(id=>Object.values(window.__ahaFixture.read().disputes).flat().filter(d=>d.activityId===id).length,second),1,'the dispute is recorded');
+    await h.reload();
+    await h.waitForTimeout(500);
+    st=await hs();
+    assert.notEqual(st.aiActivity?.activityId,second,'a reload never restores the flagged spec');
+    assert.ok(!(st.aiQueue??[]).some(q=>q.activityId===second),'nor requeues it');
     assert.deepEqual(hErrors,[]);
     await ctx.close();
   }
@@ -719,7 +788,7 @@ try {
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying. No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
