@@ -18,7 +18,7 @@
  * Writes .live-eval/<run>/{plan.json,catalog.json,calls/*.json} and the cross-run ledger
  * .live-eval/ledger.json (gitignored; receipts stay local). No token is ever written.
  */
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -38,15 +38,26 @@ const CAP = /^\d+$/.test(o.cap ?? '') ? BigInt(o.cap) : 0n;
 if (CAP <= 0n) { console.error('live-eval: --cap <whole 2Z> is required (the authorized total).'); process.exit(2); }
 const BATCH_OUTPUT = 2600;
 const REASONING_OUTPUT = Number(o['reasoning-max-output']);
+/** `details` members that prove a refusal happened before any call ran (the SDK's PRE_CALL_DETAILS). */
+const PRE_CALL_DETAILS = new Set(['reason', 'max_age', 'acr_values', 'scope', 'debt_milli_2z', 'field', 'input_tokens_estimate', 'context_window',
+  'available_milli_2z', 'required_2z', 'min_charge_2z', 'cap_2z', 'cap_period', 'cap_remaining_milli_2z', 'resets_at', 'model', 'limit_bytes',
+  'limit', 'phase', 'min_2z', 'max_2z', 'max_output_tokens', 'model_max_output_tokens']);
+const preCall = details => details === undefined || details === null || (typeof details === 'object' && !Array.isArray(details) && Object.keys(details).every(k => PRE_CALL_DETAILS.has(k)));
+const textOf = message => (message?.content ?? []).filter(p => p.type === 'text').map(p => p.text).join('');
 const evalRoot = path.join(root, '.live-eval');
 const run = o.run ?? new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-');
 const outDir = path.join(evalRoot, run);
 mkdirSync(path.join(outDir, 'calls'), { recursive: true });
 
 // ---------- cross-run ledger: every charge this harness ever caused counts against --cap ----------
+// One run at a time (a second process would see the same committed total and could spend the cap again).
+const lockFile = path.join(evalRoot, 'ledger.lock');
+try { closeSync(openSync(lockFile, 'wx')); } catch { console.error(`live-eval: ${lockFile} exists: another run is active (or crashed; check, then delete it).`); process.exit(2); }
+process.on('exit', () => rmSync(lockFile, { force: true }));
 const ledgerFile = path.join(evalRoot, 'ledger.json');
 const ledger = existsSync(ledgerFile) ? JSON.parse(readFileSync(ledgerFile, 'utf8')) : { entries: {} };
-const saveLedger = () => writeFileSync(ledgerFile, JSON.stringify(ledger, null, 1));
+/** Atomic: a crash mid-write never leaves a corrupt ledger (deleting it would reset the cap). */
+const saveLedger = () => { writeFileSync(`${ledgerFile}.tmp`, JSON.stringify(ledger, null, 1)); renameSync(`${ledgerFile}.tmp`, ledgerFile); };
 /** Settled charges, plus the full hold of anything not known to be settled (conservative). */
 function committed2z() {
   let total = 0n;
@@ -61,7 +72,10 @@ const states = await loadLiveStates(root);
 
 const clientId = o['client-id'] ?? execFileSync('gh', ['variable', 'get', 'AHA_FREE2Z_CLIENT_ID', '--repo', 'corpora-inc/encorpora'], { encoding: 'utf8' }).trim();
 console.log(`live-eval ${run}: cap ${CAP} 2Z (already committed by earlier runs: ${committed2z()} 2Z)`);
-const session = await signIn({ clientId, spendCap: { cap2z: CAP, period: 'total' }, timeoutMs: Math.max(1, Number(o['signin-minutes']) || 60) * 60_000 })
+// Ask the grant itself for only what is left, so Free2Z enforces the cross-run cap too.
+const left = CAP - committed2z();
+if (left <= 0n) { console.error('live-eval: the cap is already committed; nothing to do.'); process.exit(3); }
+const session = await signIn({ clientId, spendCap: { cap2z: left, period: 'total' }, timeoutMs: Math.max(1, Number(o['signin-minutes']) || 60) * 60_000 })
   .catch(e => { console.error(`live-eval: sign-in did not complete (${e?.code ?? e}); nothing was sent.`); process.exit(5); });
 const { client } = session;
 let exitCode = 0;
@@ -138,7 +152,7 @@ async function main() {
 
   // Jobs interleave models so a stopped run stays balanced.
   const jobs = [];
-  for (const slot of slots(perModel)) for (const c of cells) jobs.push({ model: byId.get(c.model) ?? chosen.find(m => m.id === c.model), state: slot.state, sample: slot.sample, id: slot.id });
+  for (const slot of slots(perModel)) for (const c of cells) jobs.push({ model: chosen.find(m => m.id === c.model) ?? byId.get(c.model), state: slot.state, sample: slot.sample, id: slot.id });
   let inflight = 0n, stop = '', done = 0;
   const skipped = new Set();
   const conc = Math.max(1, Math.min(3, Number(o.concurrency) || 3));
@@ -146,12 +160,17 @@ async function main() {
   await Promise.all(Array.from({ length: conc }, async () => {
     while (!stop && next < jobs.length) {
       const job = jobs[next++];
+      try {
       const file = path.join(outDir, 'calls', `${job.model.id}--${job.id}.json`);
       if (existsSync(file) || skipped.has(job.model.id)) { done++; continue; }
       const req = buildRequest(job.model, job.state);
       let est;
-      try { est = await client.estimate(sdkRequest(req)); }
-      catch (e) {
+      // A rate or concurrency refusal is free and transient: wait and re-estimate (no call has been made yet).
+      for (let tries = 0; ; tries++) {
+        try { est = await client.estimate(sdkRequest(req)); break; }
+        catch (e) { if (tries >= 5 || !['concurrency_limit', 'rate_limited', 'unavailable'].includes(e?.code)) { est = e; break; } await new Promise(r => setTimeout(r, Math.min(60, Number(e?.retryAfterSeconds ?? 5)) * 1000)); }
+      }
+      if (est instanceof Error || typeof est?.hold_2z !== "bigint") { const e = est;
         if (['insufficient_balance', 'cap_exceeded'].includes(e?.code)) { stop = `estimate refused: ${e.code}`; break; }
         console.error(`  ${job.model.id}: estimate failed (${e?.code ?? e}); skipping this model`); skipped.add(job.model.id); done++; continue;
       }
@@ -176,6 +195,7 @@ async function main() {
       console.log(`[${done}/${jobs.length}] ${job.model.id} ${job.id}: ${result.status} ${result.charged2z ?? '?'} 2Z ${Math.round((result.latencyMs ?? 0) / 100) / 10}s out ${result.usage?.output_tokens ?? '?'} tok${result.finishReason ? ` (${result.finishReason})` : ''}${result.error ? ` ${result.error}` : ''} · total ${settled2z()} 2Z`);
       if (result.fatal) stop = result.fatal;
       if (result.skipModel) skipped.add(job.model.id);
+      } catch (e) { stop = `worker error: ${e?.message ?? e}`; }
     }
   }));
   const spent = settled2z();
@@ -205,16 +225,22 @@ function buildRequest(model, state) {
 }
 function sdkRequest(req) { return { ...req, max_output_tokens: BigInt(req.max_output_tokens) }; }
 
-/** One non-streamed /v1/chat. Retries only with the SAME key (receipt recovery), never a new paid attempt. */
+
+/**
+ * One non-streamed /v1/chat. Retries only with the SAME key (receipt recovery), never a new paid attempt.
+ * Money rule: a call is recorded as 0 charged ONLY when a JSON error envelope proves it was refused before
+ * any call ran. Everything else leaves `charged2z` undefined, so its hold stays counted against --cap.
+ */
 async function send(req, key) {
   const body = JSON.stringify({ ...req, stream: false });
-  const started = Date.now();
+  let started = Date.now(), lastCallId;
   for (let attempt = 0; attempt < 4; attempt++) {
     const bearer = session.bearer();
-    if (!bearer) return { status: 'not_sent', error: 'no access token observed', fatal: 'no access token' };
+    if (!bearer) return { status: 'not_sent', error: 'no access token observed', charged2z: attempt ? undefined : 0, fatal: 'no access token' };
+    started = Date.now(); // latency of the attempt that answered, not of earlier waits
     let res, text;
     try {
-      res = await fetch(`${AI_BASE}/chat`, { method: 'POST', body, signal: AbortSignal.timeout(330_000),
+      res = await fetch(`${AI_BASE}/chat`, { method: 'POST', body, redirect: 'error', signal: AbortSignal.timeout(330_000),
         headers: { authorization: bearer, 'content-type': 'application/json', accept: 'application/json', 'idempotency-key': key } });
       text = await res.text();
     } catch (e) {
@@ -224,47 +250,55 @@ async function send(req, key) {
     }
     const latencyMs = Date.now() - started;
     const callId = res.headers.get('x-f2z-call-id') ?? undefined;
+    lastCallId = callId ?? lastCallId;
     let json; try { json = JSON.parse(text); } catch { json = null; }
-    if (res.status === 401) { await client.estimate(sdkRequest(req)).catch(() => {}); continue; } // refresh through the SDK, same key
-    if (res.status === 429 || (res.status === 503 && !callId)) {
-      const wait = Math.min(60, Number(res.headers.get('retry-after') ?? 5));
-      console.error(`  ${res.status}; waiting ${wait}s, same key`); await new Promise(r => setTimeout(r, wait * 1000)); continue;
+    if (res.ok && json?.message) {
+      return { status: 'ok', text: textOf(json.message), finishReason: json.finish_reason, usage: json.usage, usageSource: json.usage_source, latencyMs,
+        callId: json.call_id ?? callId, model: json.model, ...await settle(json, json.call_id ?? callId) };
     }
-    if (res.ok && json && json.message) {
-      const reply = (json.message.content ?? []).filter(p => p.type === 'text').map(p => p.text).join('');
-      const charge = await settle(json, json.call_id ?? callId);
-      return { status: 'ok', text: reply, finishReason: json.finish_reason, usage: json.usage, usageSource: json.usage_source, latencyMs, callId: json.call_id ?? callId, model: json.model, ...charge };
+    if (res.ok && json && (json.charge || json.status)) { // an identical-key replay: the call record only, no text
+      return { status: 'receipt_only', text: '', latencyMs, callId: json.call_id ?? callId, finishReason: json.finish_reason, usage: json.usage,
+        ...await settle(json, json.call_id ?? callId), error: 'reply lost; receipt recovered' };
     }
-    if (res.ok && json && (json.charge || json.status)) { // an identical-key replay: the receipt only, no text
-      const charge = await settle(json, json.call_id ?? callId);
-      return { status: 'receipt_only', text: '', latencyMs, callId: json.call_id ?? callId, finishReason: json.finish_reason, usage: json.usage, ...charge, error: 'reply lost; receipt recovered' };
+    const err = (json && typeof json.error === 'object' && json.error) || {};
+    const code = typeof err.code === 'string' ? err.code : `http_${res.status}`, details = err.details;
+    const why = `${res.status} ${code}${details?.reason ? `/${details.reason}` : ''}`;
+    const provenPreCall = !res.ok && typeof err.code === 'string' && preCall(details) && !details?.call_id;
+    if (res.status === 401 && provenPreCall) { await client.estimate(sdkRequest(req)).catch(() => {}); continue; } // refresh via the SDK, same key
+    if ((res.status === 429 || res.status === 503) && provenPreCall) {
+      const ra = Number(res.headers.get('retry-after')); const wait = Number.isFinite(ra) && ra > 0 ? Math.min(60, ra) : 5;
+      console.error(`  ${why}; waiting ${wait}s, same key`); await new Promise(r => setTimeout(r, wait * 1000)); continue;
     }
-    const code = json?.code ?? `http_${res.status}`, details = json?.details ?? {};
-    if (res.status === 409 && details.call_id) { const rec = await client.waitForCall(details.call_id, { timeoutMs: 120_000 }); return { status: 'conflict_receipt', text: '', latencyMs, callId: details.call_id, ...chargeOf(rec), error: code }; }
-    if (res.status === 502 && details) { // failed after output began: charged for what was produced
-      const charge = details.settlement === 'pending' || details.charged_2z === undefined ? await settle({ settlement: 'pending' }, details.call_id ?? callId) : { charged2z: Number(details.charged_2z), receiptId: details.receipt_id };
-      const partial = (details.message?.content ?? []).filter(p => p.type === 'text').map(p => p.text).join('');
-      return { status: 'failed_after_output', text: partial, latencyMs, callId: details.call_id ?? callId, error: `${code}${details.reason ? `/${details.reason}` : ''}`, ...charge };
+    if (provenPreCall) {
+      // Refused before any hold or charge: nothing charged. 402/403 end the run; 400/404 end this model.
+      return { status: 'refused', text: '', latencyMs, charged2z: 0, error: why,
+        ...([402, 403].includes(res.status) ? { fatal: why } : {}), ...(res.status === 400 || res.status === 404 ? { skipModel: true } : {}) };
     }
-    // Refused before any hold or charge (4xx/5xx without a call): nothing charged.
-    const fatal = [402, 403].includes(res.status) ? `${code} ${details.reason ?? ''}`.trim() : undefined;
-    return { status: 'refused', text: '', latencyMs, callId, charged2z: callId ? undefined : 0, error: `${res.status} ${code}${details.reason ? `/${details.reason}` : ''}`,
-      ...(fatal ? { fatal } : {}), ...(res.status === 400 || res.status === 404 ? { skipModel: true } : {}) };
+    // The call may have run (409 in progress, 502 after output, a proxy 5xx, an unknown shape): find out what it cost.
+    const id = details?.call_id ?? json?.call_id ?? callId ?? lastCallId;
+    const partial = textOf(details?.message);
+    const charge = details && 'charged_2z' in details ? await settle(details, id) : id ? await settle({}, id) : {};
+    return { status: res.status === 502 ? 'failed_after_output' : 'uncertain', text: partial, latencyMs, callId: id, error: why, ...charge,
+      ...(charge.charged2z === undefined ? { fatal: `unsettled call (${why}); its hold stays counted` } : {}) };
   }
-  return { status: 'unknown', text: '', error: 'gave up after retries; the hold stays counted', latencyMs: Date.now() - started };
+  return { status: 'unknown', text: '', callId: lastCallId, error: 'gave up after retries; the hold stays counted', latencyMs: Date.now() - started,
+    ...(lastCallId ? await settle({}, lastCallId) : {}) };
 }
 
+/** A CallRecord's `charge` is the only field that says whether the amount is final. */
 function chargeOf(rec) {
   const c = rec?.charge;
   if (c?.state === 'charged') return { charged2z: Number(c.charged2z), receiptId: c.receiptId };
   if (c?.state === 'released') return { charged2z: 0 };
   return {};
 }
-/** The 2Z this call settled at; polls the call record while the ledger has not confirmed it. */
+/** What this call settled at; `{}` (unknown, hold stays counted) unless a settled amount is proven. */
 async function settle(json, callId) {
-  if ((json.settlement ?? 'settled') === 'settled' && json.charged_2z !== undefined) return { charged2z: Number(json.charged_2z), receiptId: json.receipt_id };
-  if (json.settlement === 'released') return { charged2z: 0 };
-  if (json.charge) { const c = chargeOf(json); if (c.charged2z !== undefined) return c; }
+  if (json?.charge) { const c = chargeOf(json); if (c.charged2z !== undefined) return c; }
+  const settlement = json?.settlement ?? (['settled', 'settled_partial'].includes(json?.status) ? 'settled' : json?.status === 'released' ? 'released' : undefined);
+  if (settlement === 'released') return { charged2z: 0 };
+  // A positive settled charge with its receipt is final; a 0 without a receipt is pending, never "released".
+  if (settlement === 'settled' && typeof json.charged_2z === 'number' && (json.charged_2z > 0 ? !!json.receipt_id : false)) return { charged2z: json.charged_2z, receiptId: json.receipt_id };
   if (!callId) return {};
   try { return chargeOf(await client.waitForCall(callId, { timeoutMs: 120_000 })); } catch { return {}; }
 }

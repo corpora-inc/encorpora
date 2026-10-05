@@ -9,7 +9,7 @@
  *   npm run live-eval:score -- --run <name> [--flags <flags.json>] [--judge-model gpt-6.1-sol] [--judge-effort medium]
  *                              [--concurrency 4] [--no-judge] [--port 1477]
  */
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -44,8 +44,9 @@ const batches = calls.map(c => {
 });
 
 // ---------- calibration: the founder's flagged live activities ----------
-const flagsPath = o.flags ?? '/Users/skyl/Code/corpora/wt/add-aha-flag-review/aha/aha-app/.flag-review/2026-10-05T21-53-38-300Z/flags.json';
-const flags = existsSync(flagsPath) ? JSON.parse(readFileSync(flagsPath, 'utf8')).entries.filter(e => e.spec) : [];
+// A flag-review export (.flag-review/<stamp>/flags.json from the flag-review tool): the judge must flag every one.
+const flags = o.flags ? JSON.parse(readFileSync(o.flags, 'utf8')).entries.filter(e => e.spec) : [];
+if (!o.flags) console.warn('score: no --flags <flags.json>; the calibration check is skipped.');
 const flagBatch = { key: 'flags', items: flags.map((f, i) => ({ ok: true, index: i, id: f.spec.id, spec: f.spec, flag: f })) };
 
 // ---------- render ----------
@@ -80,8 +81,13 @@ const rows = [...cells].map(([k, bs]) => {
   const items = bs.flatMap(b => b.items);
   const judged = items.filter(i => i.judge && !i.judge.error);
   const good = judged.filter(i => isGood(i.judge)).length;
-  const requested = bs.reduce((n, b) => n + b.requested, 0);
+  // Calls that never reached the model (refused, lost, unsettled) are harness/platform failures, not model output.
+  const answered = bs.filter(b => b.status === 'ok' || b.status === 'failed_after_output');
+  const requested = answered.reduce((n, b) => n + b.requested, 0);
+  const unsettled = bs.filter(b => b.charged2z === undefined || b.charged2z === null).length;
   const charged = bs.reduce((n, b) => n + (Number(b.charged2z) || 0), 0);
+  // Good among all accepted, extrapolated from the judged share when some judge calls failed.
+  const goodEst = judged.length ? good * (items.length / judged.length) : null;
   const ok = bs.filter(b => b.status === 'ok');
   const lat = ok.map(b => b.latencyMs / 1000);
   const out = ok.map(b => Number(b.usage?.output_tokens ?? NaN)).filter(Number.isFinite);
@@ -92,8 +98,8 @@ const rows = [...cells].map(([k, bs]) => {
     model, arm, calls: bs.length, failedCalls: bs.length - ok.length, truncated: bs.filter(b => b.finishReason === 'length').length, structured: bs[0]?.structured, reasoning: bs[0]?.reasoning,
     requested, accepted: items.length, acceptancePct: pct(items.length, requested), schemaRejected: bs.reduce((n, b) => n + b.schemaRejected, 0), semanticRejected: bs.reduce((n, b) => n + b.semanticRejected, 0),
     judged: judged.length, good, defectsPer100: Object.fromEntries(CHECKS.map(c => [c, pct(defects[c], judged.length)])), anyDefectPer100: pct(judged.length - good, judged.length),
-    goodPer100Requested: pct(good * (items.length / Math.max(1, judged.length)), requested),
-    charged2z: charged, per2zCall: Math.round(100 * charged / Math.max(1, bs.length)) / 100, per2zGood: good ? Math.round(100 * charged / good) / 100 : null,
+    goodPer100Requested: goodEst === null ? null : pct(goodEst, requested), notAnswered: bs.length - answered.length, unsettled,
+    charged2z: charged, per2zCall: Math.round(100 * charged / Math.max(1, bs.length)) / 100, per2zGood: goodEst ? Math.round(100 * charged / goodEst) / 100 : null,
     p50s: q(lat, 0.5), p95s: q(lat, 0.95), outTokMean: out.length ? Math.round(mean(out)) : null, reasoningTokMean: reasoningTok.length ? Math.round(mean(reasoningTok)) : null, inTokMean: inTok.length ? Math.round(mean(inTok)) : null,
     stageScrollsPct: pct(items.filter(i => i.stageScrolls).length, items.length),
     rejectReasons: Object.entries(bs.flatMap(b => b.rejected.flatMap(r => [...new Set(r.errors.map(e => e.replace(/\[\d+\]/g, '[]').replace(/"[^"]*"/g, '"…"').slice(0, 90)))])).reduce((m, e) => (m[e] = (m[e] ?? 0) + 1, m), {})).sort((a, b) => b[1] - a[1]).slice(0, 5),
@@ -101,6 +107,7 @@ const rows = [...cells].map(([k, bs]) => {
 }).sort((a, b) => (b.goodPer100Requested ?? -1) - (a.goodPer100Requested ?? -1));
 const flagResults = flagBatch.items.map(i => ({ id: i.id, prompt: i.flag.prompt, model: i.flag.model, caught: i.judge && !i.judge.error ? !isGood(i.judge) : null, classes: failing(i.judge), problems: i.judge?.problems ?? i.judge?.error ?? '' }));
 const totalCharged = calls.reduce((n, c) => n + (Number(c.charged2z) || 0), 0);
+const totalUnsettled = calls.filter(c => c.charged2z === undefined || c.charged2z === null).length;
 const summary = { run: o.run, generatedAt: new Date().toISOString(), judge: o['no-judge'] ? null : `codex ${o['judge-model']} (${o['judge-effort']})`, totalCharged2z: totalCharged, renderProblems, rows,
   calibration: { flags: flagResults.length, caught: flagResults.filter(f => f.caught).length, results: flagResults } };
 writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(summary, null, 1));
@@ -109,13 +116,15 @@ const f = v => v === null || v === undefined ? '–' : String(v);
 const md = `# AHA live eval — ${o.run}
 
 DEV-ONLY. Real Free2Z calls (non-streamed, structured output where advertised, v1 prompt/schema as on main), synthetic learners (grades 2–5),
-judged on rendered focus-stage screenshots (384×832) by ${summary.judge ?? 'no judge'}. Total charged in this run: **${totalCharged} 2Z**.
+judged on rendered focus-stage screenshots (384×832) by ${summary.judge ?? 'no judge'}. Total charged in this run: **${totalCharged} 2Z**${totalUnsettled ? ` (+${totalUnsettled} unsettled calls, not included)` : ''}.
 
 | Model | Arm | Calls (failed / truncated) | Accepted % | Key wrong | Figure ≠ text | Not answerable | Ill-posed / leak | Off level | Not child-OK | Any defect | Good / 100 requested | 2Z / call | 2Z / good | p50 s | p95 s | Out tok | Reasoning tok |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 ${rows.map(r => `| ${r.model}${r.reasoning ? ' (reasoning)' : ''} | ${r.arm} | ${r.calls} (${r.failedCalls} / ${r.truncated}) | ${f(r.acceptancePct)} | ${CHECKS.map(c => f(r.defectsPer100[c])).join(' | ')} | ${f(r.anyDefectPer100)} | **${f(r.goodPer100Requested)}** | ${r.per2zCall} | **${f(r.per2zGood)}** | ${f(r.p50s?.toFixed(1))} | ${f(r.p95s?.toFixed(1))} | ${f(r.outTokMean)} | ${f(r.reasoningTokMean)} |`).join('\n')}
 
 Defect columns are per 100 accepted (judged) activities; one activity can fail several checks. Good = accepted and every check passes.
+Accepted % and good / 100 are over activities requested from calls the model answered; calls not answered (refused, lost): ${rows.map(r => `${r.model} ${r.notAnswered}`).join('; ')}.
+Latency is wall time of the non-streamed call that answered (whole reply). With n ≤ 20 calls, p95 is close to the maximum.
 Rejections (validator) by model: ${rows.map(r => `${r.model} ${r.schemaRejected} schema / ${r.semanticRejected} semantic`).join('; ')}.
 Activities that scroll inside the stage: ${rows.map(r => `${r.model} ${f(r.stageScrollsPct)}%`).join('; ')}. Render problems: ${renderProblems.length}.
 
