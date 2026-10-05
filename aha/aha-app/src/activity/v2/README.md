@@ -92,7 +92,10 @@ interface Activity {                                  // keys: alphabetical = au
 interface Quantity {
   id: Id;                                             // ^[a-z][a-z0-9]{0,7}$, shared namespace with structures
   kind: 'count' | 'number' | 'fraction' | 'length' | 'area';   // first slice; later money, time, …
-  noun: { icon: string | null; one: string; other: string } | null;   // counts name what they count
+  noun: { icon: string | null; one: string; other: string } | null;   // what a count counts; null for an
+                                                      // abstract count (the parts of a shape). `icon` is an
+                                                      // object name the app draws from its bundled icon
+                                                      // vocabulary, or a neutral counter when it has none
   unit: Unit | null;                                  // closed registry; required for length/area
   value: string;                                      // exact literal ("12", "2.5", "3/4") or an
 }                                                     // exact expression over other ids ("t/g")
@@ -103,25 +106,29 @@ type Response =                                       // one variant per form; f
   | { ask: Expr; candidates: Expr[] | null; distractors: Distractor[]; form: 'choose' }
   | { ask: Expr; candidates: Expr[]; form: 'select' }
   | { candidates: Expr[]; direction: 'ascending' | 'descending'; form: 'order' }
-  | { ask: Expr; form: 'tap' | 'shade' | 'place'; on: Id };
+  | { ask: Expr; form: 'tap'; on: Id | null }        // a region of one view, or (null) one of the views
+  | { ask: Expr; form: 'shade' | 'place'; on: Id };
 interface Distractor { expr: Expr; tag: Tag }        // a misconception RULE, evaluated by the app
 ```
 
 The first-slice structures (each one registry entry, §5):
 
 ```ts
-interface EqualGroups { groups: Id; id: Id; kind: 'equal_groups'; show: 'objects' | 'jumps' | null; size: Id }
-interface ArrayS      { cols: Id; id: Id; kind: 'array'; rows: Id; show: 'dots' | 'objects' | null }
-interface RectArea    { id: Id; kind: 'rect_area'; rects: { h: Id; w: Id }[]; show: 'unit_squares' | 'labeled' | null }
-interface Fraction    { id: Id; kind: 'fraction'; parts: Id; selected: Id | null;
-                        show: 'rect' | 'circle' | 'strip' | 'set' | 'line' | null; wholes: Id | null }
+// Every structure is { id, kind, roles, show }: the model names it, picks the intent, binds the
+// roles to quantity ids, then chooses the view. `roles` and `show` differ per intent.
+interface EqualGroups { id: Id; kind: 'equal_groups'; roles: { groups: Id; size: Id }; show: 'objects' | 'jumps' | null }
+interface ArrayS      { id: Id; kind: 'array'; roles: { cols: Id; rows: Id }; show: 'dots' | 'objects' | null }
+interface RectArea    { id: Id; kind: 'rect_area'; roles: { h: Id; w: Id }; show: 'unit_squares' | 'labeled' | null }
+interface Fraction    { id: Id; kind: 'fraction'; roles: { parts: Id; selected: Id | null; wholes: Id | null };
+                        show: 'rect' | 'circle' | 'strip' | 'set' | 'line' | null }
 ```
 
 - **Values are exact rationals** (`learning/rational.ts`), converted to floats only at draw time.
   A literal keeps its written form for display (`2/4` stays `2/4`); arithmetic never depends on it.
 - **`value` is one field.** A literal is an expression with no references, so a given (`"3"`) and a
-  derived quantity (`"t/g"`) share one grammar: numbers, ids, `id.measure`, `+ − × ÷`, parentheses,
-  `min`, `max`. A quantity whose value references other ids is *derived*.
+  derived quantity (`"t/g"`) share one grammar: numbers, ids, `id.member`, `+ - * /` (the
+  tokenizer also accepts `− × ÷`), parentheses, implicit multiplication after a number (`2(w+h)`),
+  `min` and `max`. A quantity whose value references other ids is *derived*.
 - **Roles are typed.** Each structure role binds a quantity id with a kind signature: `groups`,
   `size`, `rows`, `cols`, `parts`, `selected` and `wholes` are counts; `rect_area` widths and heights
   are lengths in one unit. Expressions are dimension-checked: `area ÷ length` is a length,
@@ -149,7 +156,7 @@ lowers to, or NEW.
 | `compare` | a, b, mode (additive/times) | difference, factor, which | tape (two bars) NEW; matched objects → picture | 1–4 |
 | **`equal_groups`** | groups, size | total | objects → picture (`repeat`); jumps → number_line; tape NEW (later) | 2–4 |
 | **`array`** | rows, cols | total | dots → array_grid; objects → array_grid icons | 2–4 |
-| **`rect_area`** | rects[{w, h}] (rectilinear composite, bottom-aligned) | area, perimeter | unit_squares → geometry graph paper + `unitSquares`; labeled → geometry with dimension labels | 2–7 |
+| **`rect_area`** | w, h (one rectangle; composite rectilinear figures belong to `shape`) | area, perimeter | unit_squares → geometry graph paper + `unitSquares`; labeled → geometry with dimension labels | 2–7 |
 | **`fraction`** | parts, selected, wholes | fraction, complement, unit | rect/circle/strip → fraction_model; set → picture; line → number_line | 1–5 |
 | `number_line` | points[{value, label}], jumps | value at label, distance | number_line; vertical (thermometer) NEW | 2–7 |
 | `place_value` | number | digit value, rounded, expanded | blocks → place_value_blocks; chart NEW; disks NEW | 1–5 |
@@ -182,6 +189,7 @@ interface StructureDef<S> {
   grades: GradeRange;
   roles: Record<string, RoleType>;                    // kind signature (+ unit agreement) per role
   measures: Record<string, MeasureDef<S>>;            // askable derived quantities, with their inputs
+  primary: string;                                    // the measure a whole view is valued by (`tap` among views)
   invariants(s: Bound<S>, grade: Grade): Problem[];   // magnitudes, divisibility, render caps
   views: Record<Show, {
     grades: GradeRange;
@@ -208,7 +216,7 @@ union plus app-only fields that the v1 *wire* schema never gains:
 - `picture` groups take `repeat` (one group drawn n times, so equal groups are stated once) and
   `shaded` (the first n icons of a set highlighted).
 - Interactions add `shade` (tap parts of a fraction model) and `place` (put a point on a number
-  line) to v1's `tap` and `plot`.
+  line) to v1's `tap_region` and `plot_point`.
 
 Every lowered figure must still satisfy v1's figure invariants once the IR-only fields are
 removed; a test holds every gold spec to that.
@@ -246,8 +254,15 @@ blocks, hints, the explanation and noun forms.
   "quarter", "fourth", …). "one" and "a" stay legal as articles and pronouns.
 - **No view-kind words** ("rectangle", "circle", "number line", "bar graph", "pie", "array", …)
   outside `{{s.view}}`. "square" stays legal because it is also a unit word.
-- **The answer is never named.** In the prompt and hints, a placeholder for the ask target renders
-  as the unknown, □, inside math, and is rejected in text. The explanation may name it.
+- **The answer is never named** (answer forms: `number`, `fraction`, `choose`; README §7). In the
+  prompt and hints, a value-bearing placeholder for the ask target (`{{s.total}}`, `.n`, `.word`)
+  renders as the unknown, □, inside math, and is rejected in text. Its value-free members (`.one`,
+  `.other`) stay legal ("How many {{s.total.other}} are there?"); `.noun` and `.unit` are inflected
+  for the value, so they are not. The explanation may name the answer. In act forms the target is
+  the instruction and is named on purpose ("Shade {{u}}").
+- **Safety runs on the result.** Placeholders are resolved first, and the resolved text and TeX
+  then pass v1's text and TeX checks. Inside math, a value renders as TeX and its noun or unit as
+  `\text{…}`. Noun forms are letters, spaces, hyphens and apostrophes only.
 
 **Alt text and speech** come from `describe()`; the model writes none (§8.4).
 
@@ -290,7 +305,7 @@ An answer-form ask must be **computed**: a measure, a derived quantity, or a rol
 view makes countable. A literal given that nothing determines would be a key asserted by the model,
 and is rejected.
 
-**Leaks are referential, not textual.** The prompt may not state the ask, nor a quantity of the
+**Leaks are referential, not textual** (answer forms). The prompt may not state the ask, nor a quantity of the
 same kind, the same noun or unit, and the same exact value as the key ("12 apples" in the prose
 when the answer is 12 apples). A coincidentally equal number of another kind ("4 groups of 4") is
 not a leak.
@@ -310,7 +325,7 @@ fragment.
 | `choose` | options = candidates, or the key plus the surviving distractors; exactly one equals the key |
 | `select` | each candidate is correct iff its value equals the target; at least one correct and one not |
 | `order` | the app sorts the candidates by value; ties are rejected |
-| `tap` | regions come from the view's `regions()`; the correct set is the regions whose value equals the target; exactly one is required, ties are rejected |
+| `tap` | with `on`, the regions are that view's `regions()`; with `on: null`, they are the views in the prompt, each valued by its structure's primary measure (a fraction's fraction, a group's total, a rectangle's area). The correct set is the regions whose value equals the target; exactly one is required, ties are rejected |
 | `shade` | graded by the shaded value, so any 1 of 4 parts is ¼; the target times the parts must be whole and fit |
 | `place` | the target must land on a tick of the hosting view |
 
@@ -329,7 +344,7 @@ from the lint branch, without reading any prose.
 
 | Level | When |
 |---|---|
-| `computed` | the ask is a measure, or a role quantity a view makes countable |
+| `computed` | the ask is a measure, or a role quantity a view makes countable; and every act form, whose target is given and whose correctness predicate the app evaluates |
 | `derived` | the ask is a model-written expression or a derived quantity (the honest analogue of v1's `keyCheck`) |
 
 ## 9. Strict-mode JSON schema
@@ -349,7 +364,8 @@ from the lint branch, without reading any prose.
   that order. v2's keys are **single lowercase words** whose alphabetical order is the authoring
   order at every level: `aim < level < model < prompt < response < support`; `skills < theme < why`;
   `quantities < structures`; `id < kind < noun < unit < value` (the model types and names a
-  quantity before it writes the number); `explanation < hints`. Single lowercase words sort the same
+  quantity before it writes the number); `id < kind < roles < show` (it names a structure and picks
+  its intent before binding roles and choosing a view); `explanation < hints`. Single lowercase words sort the same
   under byte order and every collation, so the order is invariant whether or not, and however, the
   gateway sorts. A test pins it, including nested objects. The envelope is `{activities}`; v1's
   `rationale` is replaced by each activity's `aim.why`. `json_schema.name` is
@@ -418,7 +434,9 @@ export interface GoldSpec {
   /** Exactly the strict wire instance a model would emit: every key present, null where unused. */
   activity: WireActivity;
   expect: {
-    /** The hand-computed key: an exact literal ("12", "1/4"), "region:<id>" or "order:<i,j,…>". */
+    /** The hand-computed key: an exact literal ("12", "1/4") for number, fraction, choose, shade and
+     *  place; "region:<id>" for tap; "select:<i,j,…>" (candidate indices) for select; "order:<i,j,…>"
+     *  (candidate indices, first to last) for order. */
     key: string;
     /** Learner-visible text of each text block after rendering, in order. */
     prompt: string[];
@@ -485,7 +503,7 @@ picture draws 2, nor narrate the roles the other way round.
  "model":{"quantities":[
    {"id":"g","kind":"count","noun":{"icon":"basket","one":"basket","other":"baskets"},"unit":null,"value":"3"},
    {"id":"n","kind":"count","noun":{"icon":"apple","one":"apple","other":"apples"},"unit":null,"value":"4"}],
-  "structures":[{"groups":"g","id":"s","kind":"equal_groups","show":"objects","size":"n"}]},
+  "structures":[{"id":"s","kind":"equal_groups","roles":{"groups":"g","size":"n"},"show":"objects"}]},
  "prompt":[{"text":"Ana fills {{s.groups}} with {{s.size}} each.","type":"text"},{"of":"s","type":"view"},
            {"text":"How many {{s.total.other}} are there in all?","type":"text"}],
  "response":{"ask":"s.total","distractors":[{"expr":"g+n","tag":"added_instead"}],"form":"number"},
@@ -502,7 +520,7 @@ alt is "3 baskets with 4 apples in each", the key is 12 (computed) and the answe
 ```json
 "model":{"quantities":[{"id":"p","kind":"count","noun":null,"unit":null,"value":"4"},
                        {"id":"u","kind":"fraction","noun":null,"unit":null,"value":"1/4"}],
- "structures":[{"id":"f","kind":"fraction","parts":"p","selected":null,"show":"rect","wholes":null}]},
+ "structures":[{"id":"f","kind":"fraction","roles":{"parts":"p","selected":null,"wholes":null},"show":"rect"}]},
 "prompt":[{"text":"Shade {{u}} of the {{f.view}}.","type":"text"},{"of":"f","type":"view"}],
 "response":{"ask":"u","form":"shade","on":"f"}
 ```
@@ -517,7 +535,7 @@ activity as ill-posed.
 ```json
 "model":{"quantities":[{"id":"w","kind":"length","noun":null,"unit":"unit","value":"5"},
                        {"id":"h","kind":"length","noun":null,"unit":"unit","value":"5"}],
- "structures":[{"id":"r","kind":"rect_area","rects":[{"h":"h","w":"w"}],"show":"unit_squares"}]},
+ "structures":[{"id":"r","kind":"rect_area","roles":{"h":"h","w":"w"},"show":"unit_squares"}]},
 "prompt":[{"text":"How many square units cover this {{r.view}}?","type":"text"},{"of":"r","type":"view"}],
 "response":{"ask":"r.area","distractors":[{"expr":"2*(w+h)","tag":"perimeter_for_area"}],"form":"number"}
 ```
@@ -617,3 +635,11 @@ Made while mapping the draft onto the v1 code; none changes the approved directi
     `rect_area`.
 11. **First-slice grades**: `rect_area` starts at grade 2 for `unit_squares` (2.G.A.2 counts the
     squares of a tiled rectangle); `labeled` starts at grade 3.
+12. **Structures nest their roles** (`{id, kind, roles, show}`) so the key order reads name → intent
+    → bindings → view, instead of binding a role before naming the intent.
+13. **`rect_area` is one rectangle.** Role placeholders cannot address an element of a list of
+    rectangles, and a composite figure's decomposition deserves its own design; composite
+    rectilinear area moves to `shape` (step 9).
+14. **`tap` can choose among views** (`on: null`), valued by each structure's primary measure, so
+    "tap the model that shows ¾" over two fraction models is expressible and its uniqueness
+    computed.
