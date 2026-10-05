@@ -74,3 +74,12 @@ describe('drawing invariants', () => {
     assert.ok(drawingProblems({ type: 'number_line', id: 'n', alt: 'a', min: 0, max: 50, step: 1 }).some(p => /40 ticks/.test(p)), 'v1 rule');
   });
 });
+
+describe('fraction models draw equal wholes', () => {
+  it('draws every area-model whole the same size, whatever its parts', () => {
+    const size = (parts: number) => /<svg[^>]*width="(\d+)" height="(\d+)"/.exec(render({ type: 'fraction_model', id: 'f', alt: 'a', model: 'area', parts, shaded: 1 }))!.slice(1, 3).join('x');
+    assert.equal(size(2), size(4));
+    assert.equal(size(4), size(12));
+    assert.equal(size(3), size(8));
+  });
+});
