@@ -30,6 +30,25 @@ Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
 
+## Strict output budget (#881)
+
+Every paid request (activity batches, tutor and curiosity replies, same-key recovery) sets
+`max_output_tokens_strict: true` on both the estimate and `/v1/chat`, so a nearly exhausted
+balance or budget gets a refusal instead of a silently shortened, truncated batch that is
+still charged. **Relies on Free2Z gateway image `70b74edd9` (includes `da1862531`) or later**;
+an older gateway rejects the unknown field. This is safe to ship before that image is live
+because no paid call is sent until the grant reports `enforced: true`.
+
+- A strict refusal (HTTP 402/403 with `details.reason`, or the gateway code `insufficient_balance`
+  / `cap_exceeded`; the native transport drops `details`) costs 0 2Z. AHA settles the journal entry
+  as `released`/`0`, leaves no pending receipt, keeps later calls unblocked, shows a calm
+  message and continues with local practice (`aiFallback.ts`). Other 402/403 errors stay
+  uncertain, as before.
+- Journal entries written before strict stay recoverable; same-key recovery now resends them
+  strict.
+- The test fixtures (`free2z.test.ts`, `scripts/verify-ai.mjs`) now require strict on every
+  paid request. Still not live-verified against the deployed gateway.
+
 ## Spending policy: budget optional (#879)
 
 The app budget belongs to the user. They set, change or remove it in Free2Z, on the
@@ -51,6 +70,7 @@ any budget (any amount, `day`/`week`/`month`/`total`) and with none, when the us
 | Estimate above remainder | `cap_exceeded` before any journal operation: calm message, local practice |
 | Estimate without `available_milli_2z` | The authoritative `balance()` decides |
 | Estimate or `/v1/chat` refused by Free2Z (402/403) | The same codes and messages; the gateway enforces regardless |
+| Estimate returns fewer `max_output_tokens` than requested | Treated as a refusal (`not_enough_2z`); nothing is sent, even with strict |
 
 The check runs before the journal write and again at the send boundary (fresh grant,
 fresh estimate, session fence). The journal wire format, settlement, same-key

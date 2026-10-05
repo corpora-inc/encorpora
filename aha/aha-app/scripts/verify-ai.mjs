@@ -57,14 +57,15 @@ function fixture(specs){
       if(ai.models502)throw {code:'unavailable'};
       return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096'}]};
     }
-    // The deployed gateway rejects unknown fields; strict output must not be sent until its image accepts it.
-    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&'max_output_tokens_strict' in args.request)throw new Error('TEST gateway rejects max_output_tokens_strict');
+    // Gateway image 70b74edd9 (da1862531): every paid request must carry strict output (never truncated-but-charged).
+    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&args.request.max_output_tokens_strict!==true)throw new Error('TEST gateway: max_output_tokens_strict:true is required on every paid request');
     if(command==='plugin:f2z|estimate'){
       if(ai.blockEstimate)throw {code:'unavailable',retryAfterSeconds:'10'};
-      return {model:'fixture-model',input_tokens:'500',max_output_tokens:'1800',hold_2z:ai.hold,available_milli_2z:ai.available,cap_remaining_milli_2z:ai.capRemaining};
+      return {model:'fixture-model',input_tokens:'500',max_output_tokens:args.request.max_output_tokens,hold_2z:ai.hold,available_milli_2z:ai.available,cap_remaining_milli_2z:ai.capRemaining};
     }
     if(command==='plugin:f2z|start_chat'){
       ai.starts.push(args.operation);ai.requests.push(args.request);
+      if(ai.strictRefusal){const reason=ai.strictRefusal;ai.strictRefusal=null;ai.refused=(ai.refused??0)+1;throw {code:reason,status:402};}
       if(ai.failOpening){ai.failOpening=false;throw {code:'unavailable',retryAfterSeconds:'5'};}
       const user=args.request.messages[1].content[0].text;
       const text=user.startsWith('LEARNER ')?batchText(user):'You can use this idea to share ingredients fairly.';
@@ -198,7 +199,7 @@ try {
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),1,'one paid call for a whole batch, through the real SDK native transport');
   const batchRequest=await page.evaluate(()=>window.__ahaAI.requests.at(-1));
   assert.equal(batchRequest.max_output_tokens,'2600','batch budget is the spec prompt budget');
-  assert.equal('max_output_tokens_strict' in batchRequest,false,'strict output is not sent yet');
+  assert.equal(batchRequest.max_output_tokens_strict,true,'strict output is required on the paid batch request');
   assert.match(batchRequest.messages[0].content[0].text,/activity author/,'prompt-only JSON via the Activity Spec prompt');
   assert.ok(!batchRequest.messages[1].content[0].text.includes('Explorer'),'learner summary carries no names');
   let s1=await session();
@@ -534,6 +535,22 @@ try {
     await s.p.getByText('Your Free2Z balance is too low for the next AI activities.',{exact:false}).first().waitFor();
     await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
     assert.equal(await s.figure('Available balance'),'0.5 2Z');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // Strict refusal at send (the balance fell after the estimate): zero charge, calm status, local practice, nothing pending.
+    const s=await scenario({enforced:true,strictRefusal:'insufficient_balance'});
+    await s.p.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.equal(await s.starts(),1,'the strict request reached the gateway once and was refused');
+    assert.equal(await s.source(),'local','strict refusal: local fallback');
+    assert.equal(await s.p.getByRole('alert').count(),0,'strict refusal: no alert');
+    assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
+    await s.openSettings();
+    await s.p.getByText('Your Free2Z balance is too low for the next AI activities.',{exact:false}).first().waitFor();
+    await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByRole('button',{name:'Recover original request',exact:true}).count(),0,'a refusal leaves no unsettled receipt to recover');
+    const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
+    assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
