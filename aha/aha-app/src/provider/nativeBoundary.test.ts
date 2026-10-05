@@ -51,7 +51,7 @@ function pluginBridge(models: unknown[]) {
   } as unknown as NativeBridge;
   return { bridge, commands };
 }
-async function runBatch(models: unknown[]) {
+async function runBatch(models: unknown[], model = 'gpt-4o', budget = '2600') {
   const { bridge, commands } = pluginBridge(models);
   const client = new Client(new NativeTransport(bridge));
   let saved: unknown;
@@ -59,7 +59,7 @@ async function runBatch(models: unknown[]) {
   const traces: { message: string; structured: boolean }[] = [];
   const tutor = new Free2zTutor(client, journal, 'adult', () => {}, (message, isStructured) => traces.push({ message, structured: isStructured }));
   const policy = { subject: 'adult', clientId: 'aha-client' };
-  const reply = await tutor.reply('gpt-4o', 'full prompt', 'U', { ...policy, verifiedGrant: await verifyPaidGrant(client, policy) }, batch, '2600', structured);
+  const reply = await tutor.reply(model, 'full prompt', 'U', { ...policy, verifiedGrant: await verifyPaidGrant(client, policy) }, batch, budget, structured);
   return { reply, commands, traces, catalog: await client.models() };
 }
 
@@ -135,4 +135,16 @@ test('native refusal details reach the app: required 2Z on a top-up refusal at t
     (e: any) => e.code === 'insufficient_balance' && e.required2z === 6n);
   assert.equal(commands.filter(c => c.command === 'start_chat').length, 0);
   assert.equal((saved as { operations?: unknown[] } | undefined)?.operations?.length ?? 0, 0);
+});
+
+test('reasoning model: the 12k budget reaches the plugin; reasoning_effort only when the catalogue advertises it (zuu#1151)', async () => {
+  // Today's catalogue shape: reasoning, no reasoning_effort capability. The payload has no such key, so the pinned
+  // plugin (whose Rust ChatRequest denies unknown fields) accepts it.
+  const without = await runBatch([pluginModel('gpt-5', { reasoning: true, structured_output: true })], 'gpt-5', '12000');
+  const plain = without.commands.find(c => c.command === 'start_chat')!.payload;
+  assert.deepEqual(Object.keys(plain).sort(), ['max_output_tokens', 'max_output_tokens_strict', 'messages', 'model', 'response_format']);
+  assert.equal(plain.max_output_tokens, '12000');
+  // A future catalogue that advertises the capability: the SDK passes the field through to the plugin unchanged.
+  const withEffort = await runBatch([pluginModel('gpt-5', { reasoning: true, structured_output: true, reasoning_effort: true })], 'gpt-5', '12000');
+  for (const c of withEffort.commands) assert.equal(c.payload.reasoning_effort, 'low', c.command);
 });

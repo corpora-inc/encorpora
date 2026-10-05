@@ -2,15 +2,16 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Client, NativeTransport, SdkError, type NativeBridge } from '@free2z/sdk';
 import type { ChatEvent, ChatRequest, ChatStream, Grant, Session } from '@free2z/sdk';
-import { Free2zTutor, SIGN_IN_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, formatRefusal, supportsStructuredOutput, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
+import { Free2zTutor, REASONING_EFFORT_CAPABILITY, SIGN_IN_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, formatRefusal, supportsStructuredOutput, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
 const session: Session = {signedIn:true,subject:'adult',generation:'one',grantedScopes:['ai:invoke'],persistence:'persistent'};
 /** Default fixture: an enforced 100 2Z monthly app budget. Every policy branch patches the grant or estimate. */
 const baseGrant = (): Grant => ({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:100n,cap_period:'month',enforced:true,enforcement_reason:'ok',as_of:new Date().toISOString()});
-function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}]) {
+function fixture(events: (ChatEvent | Error)[] = [{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}]) {
   let value: unknown; const calls: {request:ChatRequest; options:any}[] = []; let activeSession = session;
   let cap: bigint | null | undefined = 100000n; let available: bigint | undefined = 500000n; let hold = 1n; let cancelled = 0;
   let grantPatch: Partial<Grant> & Record<string, unknown> = {};
   let models: Record<string, unknown>[] = [{id:'verified-model'}];
+  let prefix: ChatEvent[] = [{type:'meta',call_id:'call',model:'verified-model',hold_2z:1n} as ChatEvent,{type:'delta',text:'{"activity":true}'}];
   const estimates: ChatRequest[] = []; let estimateTokens: bigint | undefined; let estimateError: unknown; let chatError: unknown; let preflights = 0;
   const journal: Journal = {getJournal:async()=>structuredClone(value),putJournal:async(key,v)=>{if(key==='aha-billing-v1')value=structuredClone(v);}};
   const client: SdkClient = {
@@ -32,7 +33,7 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
       assert.ok((value as any).operations.length, 'journal must precede potentially billable invocation');
       calls.push({request,options});
       if(chatError)throw chatError;
-      const iterator=(async function*(){yield {type:'meta',call_id:'call',model:'verified-model',hold_2z:1n} as ChatEvent; yield {type:'delta',text:'{"activity":true}'} as ChatEvent;for(const e of events)yield e;})();
+      const iterator=(async function*(){for(const e of prefix)yield e;for(const e of events){if(e instanceof Error)throw e;yield e;}})();
       return Object.assign(iterator,{operationId:options.operationId,idempotencyKey:options.idempotencyKey,callId:'call',cancel:async()=>{cancelled++;}}) as ChatStream;
     }
   };
@@ -41,7 +42,7 @@ function fixture(events: ChatEvent[] = [{type:'done',finish_reason:'stop',settle
     setEstimateTokens:(v:bigint|undefined)=>{estimateTokens=v;},setEstimateError:(e:unknown)=>{estimateError=e;},setChatError:(e:unknown)=>{chatError=e;},
     setCap:(v:bigint|null|undefined)=>{cap=v;},setAvailable:(v:bigint|undefined)=>{available=v;},setHold:(v:bigint)=>{hold=v;},
     setGrant:(patch:Partial<Grant> & Record<string, unknown>)=>{grantPatch=patch;},
-    setModels:(v:Record<string, unknown>[])=>{models=v;},preflights:()=>preflights,
+    setModels:(v:Record<string, unknown>[])=>{models=v;},preflights:()=>preflights,setPrefix:(v:ChatEvent[])=>{prefix=v;},
     setSession:(v:Session)=>{activeSession=v;},setValue:(v:unknown)=>{value=structuredClone(v);},getValue:()=>value as any,cancelled:()=>cancelled};
 }
 /** A live authorization built the way the controller builds it: from the real grant adapter. */
@@ -330,19 +331,19 @@ test('the vendored SDK sends the spend-cap hint to the native plugin as decimal 
 
 // ---- Journal v2: Activity Spec batches (2600-token budget) beside readable, recoverable v1 records ----
 const batchContext = {kind:'activities' as const,profileId:'learner',allowedSkillIds:['3.NF.A.1','2.MD.C.8']};
-test('a batch request journals and sends the 2600-token budget (journal v3), after the estimate/cap check',async()=>{
+test('a batch request journals and sends the 2600-token budget (journal v4), after the estimate/cap check',async()=>{
  const f=fixture();let estimated:bigint|undefined;const estimate=f.client.estimate;f.client.estimate=async(r)=>{estimated=r.max_output_tokens;return estimate(r);};
  const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
  assert.equal(reply.context?.kind,'activities');
  assert.equal(f.calls[0].request.max_output_tokens,2600n);
  assert.equal(estimated,2600n,'the hold estimate and cap check use the same budget before send');
  assert.equal(f.calls[0].request.max_output_tokens_strict,true,'strict output is sent on the chat request');
- assert.equal(f.getValue().version,3);
+ assert.equal(f.getValue().version,4);
  assert.equal(f.getValue().operations[0].request.maxOutputTokens,'2600');
- await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'9999' as any),{code:'output_budget_invalid'});
+ await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'99999'),{code:'output_budget_invalid'});
  assert.equal(f.calls.length,1);
 });
-test('a version 1 journal stays readable and recoverable with its original 1800 budget, then is stored as v3',async()=>{
+test('a version 1 journal stays readable and recoverable with its original 1800 budget, then is stored as v4',async()=>{
  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,{kind:'activity',profileId:'learner',candidateSkillIds:['skill']}),{code:'interrupted'});
  const v1=f.getValue();v1.version=1;assert.equal(v1.operations[0].request.maxOutputTokens,'1800');
  const pending=await f.tutor.inspectPending();assert.equal(pending.length,1);assert.equal(pending[0].canRecover,true);
@@ -350,10 +351,10 @@ test('a version 1 journal stays readable and recoverable with its original 1800 
  await assert.rejects(f.tutor.recover(pending[0].operationId,f.authorization),{code:'interrupted'});
  assert.equal(f.calls[1].request.max_output_tokens,1800n,'same-key recovery replays the exact original budget');
  assert.deepEqual(f.calls[1].options,f.calls[0].options);
- assert.equal(f.getValue().version,3,'the first write upgrades the container, not the record');
+ assert.equal(f.getValue().version,4,'the first write upgrades the container, not the record');
 });
 test('v1 journals cannot carry v2-only budgets or batch contexts, and unknown versions fail closed',async()=>{
- const mutations=[(l:any)=>{l.version=1;l.operations[0].request.maxOutputTokens='2600';},(l:any)=>{l.version=1;},(l:any)=>{l.version=4;},(l:any)=>{l.version='2';},(l:any)=>{l.operations[0].context.allowedSkillIds=[];},(l:any)=>{l.operations[0].context.extra=true;}];
+ const mutations=[(l:any)=>{l.version=1;l.operations[0].request.maxOutputTokens='2600';},(l:any)=>{l.version=1;},(l:any)=>{l.version=5;},(l:any)=>{l.version='2';},(l:any)=>{l.operations[0].context.allowedSkillIds=[];},(l:any)=>{l.operations[0].context.extra=true;}];
  for(const mutate of mutations){
   const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
   mutate(f.getValue());
@@ -513,7 +514,7 @@ test('a journal written under the test-era policy is still read, blocks fresh sp
   assert.equal(f.calls.length,1);
   assert.deepEqual(f.calls[0].options,{operationId:'legacy-open',idempotencyKey:'legacy-key-2'});
   assert.deepEqual(f.calls[0].request.messages,body);assert.equal(f.calls[0].request.max_output_tokens,1800n);
-  assert.equal(f.getValue().version,3,'the container upgrades on its first write');
+  assert.equal(f.getValue().version,4,'the container upgrades on its first write');
   assert.equal(f.getValue().operations[0].charge.charged2z,'499','old charges are preserved exactly');
   // Once settled, the old 499 2Z of test-era spending is not an app-side ceiling any more.
   await f.tutor.reconcile();assert.deepEqual(await f.tutor.inspectPending(),[]);
@@ -669,7 +670,7 @@ test('with the capability, the batch estimate and chat carry response_format and
     assert.equal((r.messages[0].content as any)[0].text,'rules without grammar');
   }
   const op=f.getValue().operations[0];
-  assert.equal(f.getValue().version,3);
+  assert.equal(f.getValue().version,4);
   assert.deepEqual(op.request.responseFormat,wireFormat,'the exact format is journaled for same-key recovery');
   assert.deepEqual(f.notices,[]);
 });
@@ -767,7 +768,7 @@ test('journal v2 migration: a pending v2 request recovers without response_forma
   await assert.rejects(f.tutor.recover('v2-open',f.authorization),{code:'interrupted'});
   assert.equal(f.calls.length,1);assert.ok(!('response_format' in f.calls[0].request),'a capable catalogue never adds a format to an old body');
   assert.deepEqual(f.calls[0].request.messages,body);assert.equal(f.calls[0].options.idempotencyKey,'v2-key');
-  assert.equal(f.getValue().version,3);assert.ok(!('responseFormat' in f.getValue().operations[0].request));
+  assert.equal(f.getValue().version,4);assert.ok(!('responseFormat' in f.getValue().operations[0].request));
 });
 test('journal: responseFormat only in v3, and only an exact, in-limit json_schema format',async()=>{
   const big={type:'object',description:'x'.repeat(32*1024)};
@@ -861,5 +862,128 @@ test('a request too large for the model (preflight too_large) is refused before 
   await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600',structured),{code:'too_large'});
   assert.equal(f.calls.length,0);assert.equal(f.getValue()?.operations?.length??0,0,err.code);
   assert.deepEqual(f.notices,[],'the strict-ceiling refusal is no longer mistaken for a format refusal now that details reach the app');
+ }
+});
+
+// ---- Reasoning models: a per-model batch budget (journal v4), "ran out of room", and dropped-stream recovery ----
+const reasoningBudget = '12000';
+test('a reasoning batch journals and sends its per-model budget (journal v4); anything outside 2600..12000 is refused before any call',async()=>{
+ const f=fixture();
+ const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget);
+ assert.equal(f.estimates.at(-1)!.max_output_tokens,12000n,'the hold estimate uses the reasoning budget');
+ assert.equal(f.calls[0].request.max_output_tokens,12000n);assert.equal(f.calls[0].request.max_output_tokens_strict,true,'strict output kept');
+ assert.equal(f.getValue().version,4);assert.equal(f.getValue().operations[0].request.maxOutputTokens,'12000');
+ assert.equal(reply.outOfRoom,undefined,'a normal finish is not "ran out of room"');
+ await f.tutor.acknowledgeReply(reply.operationId);
+ // A model whose own ceiling is below 12k gets that ceiling (models.ts caps it): any whole number in range is valid.
+ await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'8192');
+ assert.equal(f.calls[1].request.max_output_tokens,8192n);
+ for(const bad of ['12001','2599','0','012000','12000.0','1e4','',' 12000'])
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,bad),{code:'output_budget_invalid'},bad);
+ assert.equal(f.calls.length,2);
+});
+test('journal v4 validation: a reasoning budget needs v4, and a corrupted budget fails closed',async()=>{
+ for(const mutate of [(l:any)=>{l.version=3;},(l:any)=>{l.operations[0].request.maxOutputTokens='12001';},(l:any)=>{l.operations[0].request.maxOutputTokens='2599';},(l:any)=>{l.operations[0].request.maxOutputTokens=12000;}]){
+  const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget),{code:'interrupted'});
+  mutate(f.getValue());
+  await assert.rejects(f.tutor.inspectPending(),{code:'journal_invalid'});
+  await assert.rejects(f.tutor.recover(f.getValue().operations[0].id,f.authorization),{code:'journal_invalid'});
+  assert.equal(f.calls.length,1);
+ }
+});
+const usage=(reasoning:bigint,output:bigint)=>({type:'usage',source:'provider',usage:{input_tokens:4000n,output_tokens:output,reasoning_tokens:reasoning}} as ChatEvent);
+const settled={settlement:'settled',charge:{state:'charged' as const,charged2z:9n,receiptId:'r'}};
+function budgetFixture(events: ChatEvent[], text = '{"activity":true}') {
+ const f=fixture(events);const logged:string[]=[];
+ f.setPrefix([{type:'meta',call_id:'call',model:'verified-model',hold_2z:30n} as ChatEvent,...(text?[{type:'delta',text} as ChatEvent]:[])]);
+ return {...f,logged,tutor:new Free2zTutor(f.client,f.journal,'adult',undefined,undefined,m=>logged.push(m))};
+}
+test('finish_reason length on a batch is "ran out of room": still deliverable and charged, flagged on the reply and logged per model',async()=>{
+ const f=budgetFixture([usage(11_400n,12_000n),{type:'done',finish_reason:'length',...settled}]);
+ const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget);
+ assert.equal(reply.outOfRoom,true);assert.equal(reply.text,'{"activity":true}','whole activities before the cut are kept by the parser');
+ assert.equal(f.getValue().operations[0].outOfRoom,true,'journaled, so a restored reply keeps it');
+ assert.equal(f.getValue().operations[0].charge.charged2z,'9');
+ assert.deepEqual(f.logged,['batch ran out of room: model=verified-model finish_reason=length max_output_tokens=12000 reasoning_tokens=11400 output_tokens=12000 text_chars=17']);
+ const restarted=new Free2zTutor(f.client,f.journal,'adult');
+ assert.equal((await restarted.pendingReplies())[0]!.outOfRoom,true);
+});
+test('an empty batch after reasoning is "ran out of room" too; an empty reply without reasoning, or a full one, is not',async()=>{
+ const empty=budgetFixture([usage(2_600n,2_600n),{type:'done',finish_reason:'stop',...settled}],'');
+ const reply=await empty.tutor.reply('verified-model','p','c',empty.authorization,batchContext,'2600');
+ assert.equal(reply.outOfRoom,true);assert.equal(reply.text,'');
+ assert.match(empty.logged[0]!,/^batch ran out of room: model=verified-model finish_reason=stop max_output_tokens=2600 reasoning_tokens=2600 output_tokens=2600 text_chars=0$/);
+ for(const [events,text] of [[[usage(0n,10n),{type:'done',finish_reason:'stop',...settled}],''],[[usage(900n,1500n),{type:'done',finish_reason:'stop',...settled}],'{"activity":true}'],[[{type:'done',finish_reason:'stop',...settled}],'']] as const){
+  const f=budgetFixture([...events] as ChatEvent[],text);
+  const r=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget);
+  assert.equal(r.outOfRoom,undefined);assert.equal(f.getValue().operations[0].outOfRoom,undefined);assert.deepEqual(f.logged,[]);
+ }
+});
+test('outOfRoom in the journal is only valid on a completed v4 activity batch',async()=>{
+ const f=budgetFixture([usage(11_400n,12_000n),{type:'done',finish_reason:'length',...settled}]);
+ await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget);
+ const good=structuredClone(f.getValue());
+ for(const mutate of [(l:any)=>{l.operations[0].outOfRoom=false;},(l:any)=>{l.operations[0].outOfRoom='yes';},(l:any)=>{delete l.operations[0].answerComplete;},
+   (l:any)=>{l.operations[0].context={kind:'curiosity',profileId:'learner',activityId:'a',question:'why?'};},(l:any)=>{l.version=3;l.operations[0].request.maxOutputTokens='2600';}]){
+  f.setValue(good);mutate(f.getValue());
+  await assert.rejects(f.tutor.pendingReplies(),{code:'journal_invalid'});
+ }
+});
+test('a dropped reasoning stream (idle timeout before the first token) is recovered with the SAME key and body, or read from /v1/calls; never a fresh key',async()=>{
+ const structured={name:'aha_activity_batch',schema:{type:'object',properties:{},additionalProperties:false},system:'grammar-free'};
+ const drop=new SdkError('network',{retryable:true});
+ const f=fixture([drop]);f.setModels([{id:'reasoner',capabilities:{reasoning:true,structured_output:true}}]);
+ f.setPrefix([{type:'meta',call_id:'call-r',model:'reasoner',hold_2z:30n} as ChatEvent]);
+ await assert.rejects(f.tutor.reply('reasoner','p','c',f.authorization,batchContext,reasoningBudget,structured),{code:'network'});
+ const op=f.getValue().operations[0];
+ assert.deepEqual([op.state,op.callId,op.request.model,op.request.maxOutputTokens,op.request.responseFormat?.type],['interrupted','call-r','reasoner','12000','json_schema']);
+ // The gateway may still finish and charge: no fresh paid call while it is unsettled.
+ await assert.rejects(f.tutor.reply('reasoner','p','c',f.authorization,batchContext,reasoningBudget,structured),{code:'settlement_pending'});
+ assert.equal(f.calls.length,1);
+ // Same-key recovery replays the identical body (model, 12k budget, strict, response_format) under the original key.
+ await assert.rejects(f.tutor.recover(op.id,f.authorization),{code:'network'});
+ assert.equal(f.calls.length,2);assert.deepEqual(f.calls[1],f.calls[0]);
+ assert.equal(f.calls[1].options.idempotencyKey,op.key);assert.equal(f.calls[1].request.max_output_tokens,12000n);
+ // Or the receipt: reconcile reads GET /v1/calls/{id} for the journaled call id and sends nothing billable.
+ const read:string[]=[];const call=f.client.call;f.client.call=async(id)=>{read.push(id);return call(id);};
+ const summary=await f.tutor.reconcile();
+ assert.deepEqual(read,['call-r']);assert.equal(f.calls.length,2);assert.equal(summary.pending,0);assert.equal(summary.spent2z,2n);
+});
+
+// ---- reasoning_effort (zuu#1151): sent only when the catalogue advertises it for the model; never otherwise ----
+test('reasoning_effort "low" goes on an activity batch only when /v1/models advertises the capability for that model',async()=>{
+ assert.equal(REASONING_EFFORT_CAPABILITY,'reasoning_effort');
+ const structured={name:'aha_activity_batch',schema:{type:'object',properties:{},additionalProperties:false},system:'grammar-free'};
+ const effortOf=(r:ChatRequest)=>(r as ChatRequest & {reasoning_effort?:string}).reasoning_effort;
+ // With the capability: the estimate, the chat, the journal and same-key recovery all carry it.
+ const f=fixture([]);f.setModels([{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:true}}]);
+ const traces:string[]=[];const tutor=new Free2zTutor(f.client,f.journal,'adult',undefined,m=>traces.push(m));
+ await assert.rejects(tutor.reply('reasoner','p','c',f.authorization,batchContext,'12000',structured),{code:'interrupted'});
+ assert.ok(f.estimates.length>0&&f.estimates.every(r=>effortOf(r)==='low'),'the hold estimate is for the same body');
+ assert.equal(effortOf(f.calls[0].request),'low');
+ const op=f.getValue().operations[0];assert.equal(op.request.reasoningEffort,'low','journaled (v4), so recovery replays the identical body');
+ assert.match(traces[0]!,/ reasoning_effort=low$/);
+ await assert.rejects(tutor.recover(op.id,f.authorization),{code:'interrupted'});
+ assert.deepEqual(f.calls[1],f.calls[0]);
+ // Without it (absent, false, or another model's flag), or for a non-batch reply: the field is omitted entirely.
+ for(const [models,model,ctx] of [
+   [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true}}],'reasoner',batchContext],
+   [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:false}}],'reasoner',batchContext],
+   [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true}},{id:'other',capabilities:{reasoning_effort:true}}],'reasoner',batchContext],
+   [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:true}}],'reasoner',{kind:'curiosity' as const,profileId:'p',activityId:'a',question:'Why?'}],
+ ] as const){
+  const g=fixture();g.setModels(models as any);
+  await g.tutor.reply(model,'p','c',g.authorization,ctx,'12000',ctx.kind==='activities'?structured:undefined);
+  assert.ok(g.estimates.every(r=>!('reasoning_effort' in r))&&!('reasoning_effort' in g.calls[0].request),JSON.stringify(models));
+  assert.ok(!('reasoningEffort' in g.getValue().operations[0].request));
+ }
+});
+test('journal: reasoningEffort only in v4 and only "low"',async()=>{
+ const f=fixture([]);f.setModels([{id:'reasoner',capabilities:{reasoning:true,reasoning_effort:true}}]);
+ await assert.rejects(f.tutor.reply('reasoner','p','c',f.authorization,batchContext,'12000'),{code:'interrupted'});
+ const good=structuredClone(f.getValue());assert.equal(good.operations[0].request.reasoningEffort,'low');
+ for(const mutate of [(l:any)=>{l.version=3;l.operations[0].request.maxOutputTokens='2600';},(l:any)=>{l.operations[0].request.reasoningEffort='high';},(l:any)=>{l.operations[0].request.reasoningEffort=null;}]){
+  f.setValue(good);mutate(f.getValue());
+  await assert.rejects(f.tutor.inspectPending(),{code:'journal_invalid'});
  }
 });

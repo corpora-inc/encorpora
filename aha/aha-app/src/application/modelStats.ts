@@ -18,6 +18,8 @@ export interface BatchRecord {
   semantic: number;
   /** The reply held no readable activity at all. */
   unreadable?: true;
+  /** Ran out of room: cut off by the output budget (`finish_reason: length`) or empty after hidden reasoning. Still charged. */
+  outOfRoom?: true;
 }
 export const BATCH_LOG_KEY = 'aha-model-batches-v1';
 /** Most recent batches kept; about 120 bytes each, far inside the native 512 KiB record limit. */
@@ -29,7 +31,8 @@ function validRecord(value: unknown): value is BatchRecord {
   const r = value as Record<string, unknown>;
   return safeId(r.op) && safeId(r.model) && typeof r.day === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(r.day) && typeof r.structured === 'boolean' &&
     count(r.kept) && count(r.schema) && count(r.semantic) && (r.unreadable === undefined || r.unreadable === true) &&
-    Object.keys(r).every(k => ['op', 'model', 'day', 'structured', 'kept', 'schema', 'semantic', 'unreadable'].includes(k));
+    (r.outOfRoom === undefined || r.outOfRoom === true) &&
+    Object.keys(r).every(k => ['op', 'model', 'day', 'structured', 'kept', 'schema', 'semantic', 'unreadable', 'outOfRoom'].includes(k));
 }
 /** Unreadable records are skipped, never fatal: these are statistics, not evidence. */
 export function readBatchLog(value: unknown): BatchRecord[] {
@@ -62,6 +65,8 @@ export interface ModelStats {
   rejectedSchema: number;
   rejectedSemantic: number;
   unreadable: number;
+  /** Sets that ran out of room (truncated, or empty after reasoning). */
+  outOfRoom: number;
   /** "Something seems off" on an activity this model wrote. */
   flags: number;
   /** Settled, charged batches and their total, for the average. */
@@ -78,7 +83,7 @@ export function aggregateModelStats(input: StatsInput): ModelStats[] {
   const byModel = new Map<string, ModelStats>();
   const stats = (model: string) => {
     let s = byModel.get(model);
-    if (!s) byModel.set(model, s = {model, batches: 0, kept: 0, rejectedSchema: 0, rejectedSemantic: 0, unreadable: 0, flags: 0, chargedBatches: 0, charged2z: 0n, answered: 0, firstTryCorrect: 0});
+    if (!s) byModel.set(model, s = {model, batches: 0, kept: 0, rejectedSchema: 0, rejectedSemantic: 0, unreadable: 0, outOfRoom: 0, flags: 0, chargedBatches: 0, charged2z: 0n, answered: 0, firstTryCorrect: 0});
     return s;
   };
   // Older activities carry no model of their own: their billing operation names it.
@@ -87,7 +92,7 @@ export function aggregateModelStats(input: StatsInput): ModelStats[] {
   for (const b of input.batches) modelOf.set(b.op, b.model);
   for (const b of input.batches) {
     const s = stats(b.model);
-    s.batches++; s.kept += b.kept; s.rejectedSchema += b.schema; s.rejectedSemantic += b.semantic; if (b.unreadable) s.unreadable++;
+    s.batches++; s.kept += b.kept; s.rejectedSchema += b.schema; s.rejectedSemantic += b.semantic; if (b.unreadable) s.unreadable++; if (b.outOfRoom) s.outOfRoom++;
   }
   for (const c of input.charges) {
     if (!safeId(c.model) || c.charged2z === undefined) continue;
@@ -121,7 +126,7 @@ function average(total: bigint, n: number): string {
 export function describeModelStats(s: ModelStats): string {
   const parts = [
     `${s.batches} ${s.batches === 1 ? 'set' : 'sets'}`,
-    `kept ${s.kept}, rejected ${s.rejectedSchema} schema + ${s.rejectedSemantic} semantic${s.unreadable ? `, ${s.unreadable} unreadable` : ''}`,
+    `kept ${s.kept}, rejected ${s.rejectedSchema} schema + ${s.rejectedSemantic} semantic${s.unreadable ? `, ${s.unreadable} unreadable` : ''}${s.outOfRoom ? `, ${s.outOfRoom} ran out of room` : ''}`,
     `${s.flags} flagged`,
     s.chargedBatches ? `≈ ${average(s.charged2z, s.chargedBatches)} 2Z per set` : 'no settled charge',
     s.answered ? `${Math.round((s.firstTryCorrect / s.answered) * 100)}% correct first try (${s.answered})` : 'no answers yet',

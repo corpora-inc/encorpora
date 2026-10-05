@@ -85,10 +85,13 @@ function fixture(specs){
       if(ai.failOpening){ai.failOpening=false;throw {code:'unavailable',retryAfterSeconds:'5'};}
       const user=args.request.messages[1].content[0].text;
       const text=user.startsWith('LEARNER ')?batchText(user):'You can use this idea to share ingredients fairly.';
+      // TEST-ONLY: `outOfRoomModel` makes that model's batches end at their budget after hidden reasoning (finish_reason length).
+      const outOfRoom=ai.outOfRoomModel===args.request.model;
       streams.set(args.operation.operationId,[
         {type:'meta',call_id:'fixture-call',model:'fixture-model',hold_2z:'1'},
         {type:'delta',text},
-        {type:'done',finish_reason:'stop',settlement:'settled',charged_2z:'1',receipt_id:'fixture-receipt'},
+        ...(outOfRoom?[{type:'usage',source:'provider',usage:{input_tokens:'500',cached_input_tokens:'0',cache_write_tokens:'0',output_tokens:args.request.max_output_tokens,reasoning_tokens:'11000',images:'0',tool_calls:'0'}}]:[]),
+        {type:'done',finish_reason:outOfRoom?'length':'stop',settlement:'settled',charged_2z:'1',receipt_id:'fixture-receipt'},
       ]);
       return {operationId:args.operation.operationId,callId:'fixture-call'};
     }
@@ -230,7 +233,7 @@ try {
   const unacked=(await journal()).operations.find(o=>o.context?.kind==='activities');
   assert.ok(unacked.answerComplete&&!unacked.consumed,'acknowledgement failed: the completed batch stays saved');
   assert.equal(unacked.request.maxOutputTokens,'2600');
-  assert.equal((await journal()).version,3,'usage journal v3');
+  assert.equal((await journal()).version,4,'usage journal v4');
   assert.ok(!('response_format' in batchRequest)&&!('responseFormat' in unacked.request),'a model without the capability gets the prompt-only request');
   // Assistance on an AI activity is recorded before the answer and survives a force-reload.
   await page.getByRole('button',{name:'Hint',exact:true}).click();
@@ -635,7 +638,7 @@ try {
     assert.notEqual((await os()).aiActivity.operationId,old,'AI resumes from the batch that landed');
     assert.equal(await oStarts(),1);
     const j=await o.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1']);
-    assert.equal(j.version,3,'the v2 journal is stored as v3 on its first write');
+    assert.equal(j.version,4,'the v2 journal is stored as v4 on its first write');
     assert.deepEqual(j.operations.slice(0,2).map(op=>op.id),[archived,old],'the older build’s settled operations are kept');
     assert.ok((await diag()).filter(e=>e.level==='error').length===0,'no errors');
     assert.deepEqual(oErrors,[]);
@@ -798,7 +801,7 @@ try {
     assert.ok(!system.includes('Response (graded on-device'),'the inline grammar is dropped');
     const [op]=await journalOps(s);
     assert.deepEqual(op.request.responseFormat,request.response_format,'the exact format is journaled for same-key recovery');
-    assert.equal(await s.p.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].version),3);
+    assert.equal(await s.p.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].version),4);
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   {
@@ -919,8 +922,54 @@ try {
     assert.ok(s.warned.some(m=>/fixture-pro is no longer offered/.test(m)),'the fallback to auto is logged visibly');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
+  {
+    // ---- Reasoning models (TEST-ONLY fake catalogue): never Best (auto); chosen by hand they get a 12k budget ----
+    const tier=(id,name,input,output,reasoning)=>({id,provider:'test',display_name:name,context_window:'200000',max_output_tokens:'100000',
+      capabilities:{vision:false,tools:false,reasoning,structured_output:true},prices:{input_milli_2z_per_mtok:String(input),output_milli_2z_per_mtok:String(output)},min_charge_2z:'1',ttfb_timeout_ms:'30000'});
+    // By a non-reasoning estimate the reasoner (≈ 7 2Z) would be the auto pick over Standard (≈ 5 2Z); with 4x reasoning output it is ≈ 19 2Z.
+    const reasoner=tier('fixture-reasoner','Fixture Reasoner',600000,2000000,true),standard=tier('fixture-standard','Fixture Standard',500000,1500000,false);
+    const s=await scenario({enforced:true,catalog:[reasoner,standard],outOfRoomModel:'fixture-reasoner'});
+    const p=s.p,card=p.locator('.focus-stage.is-spec .aha-activity');
+    const data=()=>p.evaluate(()=>window.__ahaFixture.read());
+    const sess=async()=>Object.values((await data()).sessions)[0].data;
+    await card.waitFor();
+    let request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    assert.equal(request.model,'fixture-standard','Best (auto) skips the reasoning model even though it would otherwise be the dearest within the ceiling');
+    assert.equal(request.max_output_tokens,'2600');
+    await s.openSettings();
+    const select=p.getByLabel('AI model',{exact:true});
+    assert.deepEqual(await select.locator('option').allTextContents(),
+      ['Best (auto) · ≈ 5 2Z per set','Fixture Reasoner · ≈ 19 2Z per set · thinks longer, costs more','Fixture Standard · ≈ 5 2Z per set'],
+      'the reasoning model is labelled and its estimate includes reasoning headroom');
+    await select.selectOption('fixture-reasoner');
+    await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-model-choice-v1']?.model==='fixture-reasoner');
+    await p.getByRole('button',{name:'Close settings',exact:true}).click();
+    const st=await sess();
+    await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));
+    await p.getByRole('button',{name:'Check',exact:true}).click();
+    await p.getByRole('button',{name:'Next',exact:true}).click();
+    await p.waitForFunction(()=>window.__ahaAI.starts.length===2);
+    await p.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-reasoner'));
+    request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    assert.deepEqual([request.model,request.max_output_tokens,request.max_output_tokens_strict,request.response_format?.type],['fixture-reasoner','12000',true,'json_schema'],
+      'the chosen reasoning model gets the 12k strict budget, structured output kept');
+    const j=(await data()).journals['aha-billing-v1'];
+    const op=j.operations.at(-1);
+    assert.deepEqual([j.version,op.request.model,op.request.maxOutputTokens,op.outOfRoom],[4,'fixture-reasoner','12000',true],
+      'the journal records the per-model budget (same-key recovery replays it) and that the set ran out of room');
+    // The cut-off set still yields its whole activities, and the per-model stats say it ran out of room.
+    await s.openSettings();
+    await p.getByText('Model stats',{exact:true}).click();
+    await p.locator('.model-stats li').first().waitFor();
+    const lines=await p.locator('.model-stats li').allTextContents();
+    assert.ok(lines.some(l=>l.startsWith('fixture-reasoner: 1 set · kept 3, rejected 0 schema + 0 semantic, 1 ran out of room')),lines.join(' / '));
+    assert.ok(lines.some(l=>l.startsWith('fixture-standard:')&&!l.includes('ran out of room')),lines.join(' / '));
+    assert.ok(s.warned.some(m=>/batch ran out of room: model=fixture-reasoner finish_reason=length max_output_tokens=12000 reasoning_tokens=11000/.test(m))||
+      (await p.evaluate(()=>localStorage.getItem('aha-diagnostics-log')??'')).includes('batch ran out of room: model=fixture-reasoner'),'logged explicitly per model');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
