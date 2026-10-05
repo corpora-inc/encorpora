@@ -607,9 +607,9 @@ test('capability detection: only an explicit capabilities.structured_output true
   assert.equal(supportsStructuredOutput(catalog(capable),'another-model'),false,'another model\'s flag never applies');
 });
 test('a format refusal is a 400 (or pre-send) invalid_request with no call: details dropped, or the unsupported reasons',()=>{
-  for(const e of [bareFormatRefusal(),new SdkError('invalid_request'),new SdkError('invalid_request',{status:400,details:{field:'response_format',reason:'response_format_unsupported'}}),new SdkError('invalid_request',{status:400,details:{field:'response_format.type',reason:'unsupported'}})])
+  for(const e of [bareFormatRefusal(),new SdkError('invalid_request'),new SdkError('invalid_request',{status:400,details:{field:'response_format',reason:'response_format_unsupported'}}),new SdkError('invalid_request',{status:400,details:{field:'response_format.type',reason:'unsupported'}}),new SdkError('invalid_request',{status:400,details:{field:'response_format',reason:'null'}})])
     assert.equal(formatRefusal(e),true,JSON.stringify(e));
-  for(const e of [new SdkError('invalid_request',{status:400,details:{field:'messages',reason:'too_long'}}),new SdkError('invalid_request',{status:400,details:{}}),new SdkError('invalid_request',{status:402}),new SdkError('invalid_request',{status:400,callId:'c'}),new SdkError('context_length_exceeded',{status:400}),new SdkError('insufficient_balance',{status:402}),new Error('invalid_request')])
+  for(const e of [new SdkError('invalid_request',{status:400,details:{field:'messages',reason:'too_long'}}),new SdkError('invalid_request',{status:400,details:{}}),new SdkError('invalid_request',{status:400,details:{field:'messages',reason:'null'}}),new SdkError('invalid_request',{status:400,details:{field:'messages',reason:'unsupported'}}),new SdkError('invalid_request',{status:402}),new SdkError('invalid_request',{status:400,callId:'c'}),new SdkError('context_length_exceeded',{status:400}),new SdkError('insufficient_balance',{status:402}),new Error('invalid_request')])
     assert.equal(formatRefusal(e),false,JSON.stringify(e));
 });
 test('with the capability, the batch estimate and chat carry response_format and the grammar-free prompt; the journal (v3) saves it',async()=>{

@@ -200,11 +200,12 @@ describe('batch parsing and validation', () => {
     const six = Array.from({ length: 6 }, (_, i) => acts[0]!.replace('"fx-2-fruit-graph"', `"a-${i}"`)).join(',');
     assert.equal(validateActivityBatch(`{"rationale":"r","activities":[${six},]}`, { skillIds }).accepted.length, 0, 'more than 5 is rejected even when damaged');
     assert.equal(validateActivityBatch(`{"rationale":5,"activities":[${acts[0]},${missingBrace}]}`, { skillIds }).accepted.length, 0, 'a damaged reply still needs a real rationale');
-    // An activity that cannot be located is reported, not silently dropped.
+    // An activity whose "version" key is not first is reported, not silently dropped: it is located
+    // as an array element (key order never decides; zuu#1132) and rejected for its own errors.
     const reordered = JSON.stringify({ id: 'a-late', version: 1 });
     const lost = validateActivityBatch(`{"rationale":"r","activities":[${acts[0]},${reordered.replace('}', ',"skillIds":["2.MD.D.10"]}')},${missingBrace}]}`, { skillIds });
     assert.equal(lost.accepted.length, 1);
-    assert.ok(lost.rejected.some(r => /could not be located/.test(r.errors[0]!)), JSON.stringify(lost.rejected));
+    assert.ok(lost.rejected.some(r => r.id === 'a-late'), JSON.stringify(lost.rejected));
     // A reply with no recoverable activity still fails as a whole.
     assert.match(validateActivityBatch('{"rationale":"x","activities":[{"version":1,"id":"a" ', { skillIds }).errors[0]!, /incomplete/);
   });

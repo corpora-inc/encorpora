@@ -321,11 +321,26 @@ export function salvageTruncatedBatch(text: string): { rationale?: string; activ
   return { ...(decoded ? { rationale: decoded } : {}), activities };
 }
 
+/** String-aware: the offsets of the objects directly inside the array opening at `open`, up to its end or the text's. */
+function arrayElementStarts(text: string, open: number): number[] {
+  const starts: number[] = [];
+  let depth = 0, inString = false, escaped = false;
+  for (let i = open + 1; i < text.length; i++) {
+    const c = text[i];
+    if (inString) { if (escaped) escaped = false; else if (c === '\\') escaped = true; else if (c === '"') inString = false; continue; }
+    if (c === '"') inString = true;
+    else if (c === '{' || c === '[') { if (depth === 0 && c === '{') starts.push(i); depth++; }
+    else if (c === '}' || c === ']') { if (depth === 0) break; depth--; }
+  }
+  return starts;
+}
 /**
  * Per-item recovery for a reply that is not one valid JSON object: truncated by the token cap, or
  * with a JSON slip (a missing brace or quote) inside one activity. Activities are located by their
- * leading "version" key (the order the prompt and examples use; no nested object has one) and
- * parsed on their own, never reading past the next start. Activities that cannot be located are
+ * leading "version" key (the order the prompt and examples use; no nested object has one). When that
+ * misses some, as for structured output whose keys arrive sorted by name (zuu#1132), they are located
+ * as the elements of the "activities" array, which does not depend on key order. Each is parsed on
+ * its own, never reading past the next start. Activities that cannot be located are
  * still counted and reported as rejected. A malformed activity is reported as such and its
  * neighbours are kept. Nothing is repaired: a candidate either parses as written or is dropped.
  */
@@ -334,7 +349,15 @@ export function recoverBatchItems(text: string): { rationale?: string; items: ({
   if (key < 0) return null;
   // Not string-aware on purpose: a missing quote must not hide later activities. A false start
   // inside a string can only make candidates fail validation, never pass.
-  const starts = [...text.slice(key).matchAll(/\{\s*"version"\s*:/g)].map(m => key + m.index);
+  const versionStarts = [...text.slice(key).matchAll(/\{\s*"version"\s*:/g)].map(m => key + m.index);
+  const located = (text.slice(key).match(/"skillIds"\s*:/g) ?? []).length;
+  let starts = versionStarts;
+  if (versionStarts.length < located) {
+    const elements = arrayElementStarts(text, text.indexOf('[', key));
+    // Trust the scan only where it agrees with every "version" start and is plausibly sized: after a
+    // structural slip it can lose its place and report nested objects as activities.
+    if (elements.length > versionStarts.length && elements.length <= Math.min(5, located + 1) && versionStarts.every(v => elements.includes(v))) starts = elements;
+  }
   const items: ({ ok: true; value: unknown } | { ok: false; error: string })[] = starts.slice(0, 10).map((start, k) => {
     // A malformed activity can swallow its neighbours; never read past the next activity start.
     const window = text.slice(start, starts[k + 1] ?? text.length);
@@ -344,8 +367,7 @@ export function recoverBatchItems(text: string): { rationale?: string; items: ({
   });
   // An activity whose "version" key is not first cannot be located; count required keys so it is
   // reported as rejected instead of vanishing.
-  const located = (text.slice(key).match(/"skillIds"\s*:/g) ?? []).length;
-  for (let n = items.length; n < Math.min(10, located); n++) items.push({ ok: false, error: 'Activity JSON could not be located (version must be its first key).' });
+  for (let n = items.length; n < Math.min(10, located); n++) items.push({ ok: false, error: 'Activity JSON could not be located.' });
   const rationale = /"rationale"\s*:\s*"((?:[^"\\]|\\.){0,600})"/.exec(text)?.[1];
   let decoded: string | undefined;
   try { decoded = rationale === undefined ? undefined : JSON.parse(`"${rationale}"`); } catch { decoded = undefined; }
@@ -375,12 +397,21 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
       const recovered = text.length <= 150000 ? recoverBatchItems(text) : null;
       if (!recovered?.items.some(i => i.ok)) return empty([extracted.ok ? 'Response is not valid JSON.' : extracted.error]);
       if (recovered.items.length > 5) return empty(['activities must be a list of 1–5 activities.']);
-      if (recovered.rationale === undefined) return empty(['rationale: missing or invalid.']);
+      const incomplete = !extracted.ok && extracted.error.includes('incomplete');
+      // Structured output sorts keys by name (zuu#1132), so "rationale" follows "activities" and a reply cut
+      // off by the output budget may never reach it, or end inside it. Only that case may lack one; a present but invalid
+      // rationale, or a missing one in a reply that was not cut off, still rejects the batch.
+      // Cut off before the rationale, or inside its still-open string (or before it starts): treated as absent.
+      const rationaleCut = !/"rationale"\s*:/.test(text) || /"rationale"\s*:\s*(?:"(?:[^"\\]|\\.)*\\?)?$/.test(text);
+      if (recovered.rationale === undefined && !(incomplete && rationaleCut)) return empty(['rationale: missing or invalid.']);
       const items = recovered.items;
-      const kept = validateActivityBatch({ rationale: recovered.rationale, activities: items.map(i => i.ok ? i.value : null) }, options);
+      const activities = items.map(i => i.ok ? i.value : null);
+      const kept = recovered.rationale === undefined
+        ? validateActivities(activities, options, '')
+        : validateActivityBatch({ rationale: recovered.rationale, activities }, options);
       // Malformed items stay in the rejected list at their own index, with the JSON reason.
       items.forEach((item, index) => { if (!item.ok) { const r = kept.rejected.find(x => x.index === index); if (r) r.errors = [item.error]; } });
-      const truncated = recovered.items.at(-1)?.ok === false && !extracted.ok && extracted.error.includes('incomplete');
+      const truncated = recovered.items.at(-1)?.ok === false && incomplete;
       return { ...kept, errors: [...kept.errors, `Response JSON was ${truncated ? 'truncated' : 'malformed'}; kept ${kept.accepted.length} complete activit${kept.accepted.length === 1 ? 'y' : 'ies'}.`] };
     }
   }
@@ -390,10 +421,14 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
   if (extra.length) return empty([`Unknown field(s): ${extra.slice(0, 5).join(', ')}`]);
   const rationale = plain(600).safeParse(record.rationale);
   if (!rationale.success) return empty([`rationale: ${rationale.error.issues[0]?.message ?? 'invalid'}`]);
-  if (!Array.isArray(record.activities) || record.activities.length < 1 || record.activities.length > 5) return empty(['activities must be a list of 1–5 activities.']);
-  const result: BatchValidation = { rationale: rationale.data, accepted: [], rejected: [], errors: [] };
+  return validateActivities(record.activities, options, rationale.data);
+}
+/** Per-activity validation behind a checked envelope: each invalid or duplicate activity is dropped on its own. */
+function validateActivities(activities: unknown, options: ValidateOptions, rationale: string): BatchValidation {
+  if (!Array.isArray(activities) || activities.length < 1 || activities.length > 5) return { rationale: '', accepted: [], rejected: [], errors: ['activities must be a list of 1–5 activities.'] };
+  const result: BatchValidation = { rationale, accepted: [], rejected: [], errors: [] };
   const seen = new Set<string>();
-  record.activities.forEach((candidate, index) => {
+  activities.forEach((candidate, index) => {
     const checked = validateActivitySpec(candidate, options);
     if (!checked.ok) result.rejected.push({ index, id: typeof (candidate as { id?: unknown })?.id === 'string' ? String((candidate as { id: string }).id).slice(0, 48) : undefined, errors: checked.errors });
     else if (seen.has(checked.spec.id)) result.rejected.push({ index, id: checked.spec.id, errors: ['Duplicate activity id in batch.'] });
