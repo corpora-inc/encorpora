@@ -35,7 +35,7 @@ export interface Templ { mode: TemplMode; segments: Segment[]; placeholders: Pla
 const ok = <T>(value: T): Result<T> => ({ ok: true, value });
 const fail = (code: string, message: string): { ok: false; error: Issue } => ({ ok: false, error: { code, message } });
 
-export const PLACEHOLDER_PATH = /^[a-z][a-z0-9]{0,7}(?:\.[a-z]{1,16}){0,2}$/;
+export const PLACEHOLDER_PATH = /^[a-z][a-z0-9_]{0,15}(?:\.[a-z]{1,16}){0,2}$/;
 const MAX_PLACEHOLDERS = 24;
 
 /** Split one segment's source into literal text and placeholders. */
@@ -146,10 +146,13 @@ const INVISIBLE = /[\p{Cf}\p{M}]/u;
 const ROMAN = /\b(?=[MDCLXVI]{2,}\b)M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b/u;
 
 /**
- * The closed-list rules over a template's literal prose (placeholders excluded). `viewWords: false`
- * skips the view-word rule, for strings that are not about the figure (noun forms).
+ * The closed-list rules over a template's literal prose (placeholders excluded). A figure word is
+ * legal only when it is in `allowedViewWords` (the words of the views the prompt shows), so prose can
+ * name the figure it sits beside but never one that is not drawn. `viewWords: false` skips the rule,
+ * for strings that are not about the figure (noun forms).
  */
-export function proseIssues(t: Templ, { locale = 'en', viewWords = true }: { locale?: string; viewWords?: boolean } = {}): Issue[] {
+export function proseIssues(t: Templ, { locale = 'en', viewWords = true, allowedViewWords = new Set<string>() }: { locale?: string; viewWords?: boolean; allowedViewWords?: ReadonlySet<string> } = {}): Issue[] {
+  const allowed = (w: string) => allowedViewWords.has(w) || allowedViewWords.has(w.replace(/e?s$/, '')) || allowedViewWords.has(w.replace(/s$/, ''));
   const lists = listsFor(locale);
   const issues: Issue[] = [];
   const seen = new Set<string>();
@@ -176,10 +179,10 @@ export function proseIssues(t: Templ, { locale = 'en', viewWords = true }: { loc
         for (let i = 0; i + phrase.length <= ws.length; i++) {
           if (!phrase.every((p, k) => ws[i + k] === p)) continue;
           phrase.forEach((_, k) => covered.add(i + k));
-          report('view_word', `Name the figure with {{<structure>.view}}, not "${phrase.join(' ')}".`);
+          if (!allowed(phrase.join(' '))) report('view_word', `"${phrase.join(' ')}" names a figure the prompt does not show; name the figure with {{<structure>.view}}.`);
         }
       }
-      ws.forEach((w, i) => { if (!covered.has(i) && lists.viewWords.has(w)) report('view_word', `Name the figure with {{<structure>.view}}, not "${w}".`); });
+      ws.forEach((w, i) => { if (!covered.has(i) && lists.viewWords.has(w) && !allowed(w)) report('view_word', `"${w}" names a figure the prompt does not show; name the figure with {{<structure>.view}}.`); });
     }
   }
   return issues;

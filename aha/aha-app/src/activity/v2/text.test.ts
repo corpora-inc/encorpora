@@ -44,7 +44,8 @@ describe('template parsing', () => {
     assert.equal(parseCode('{{G}}'), 'placeholder_syntax');
     assert.equal(parseCode('{{s.total.other.n}}'), 'placeholder_syntax');
     assert.equal(parseCode('{{s.t2}}'), 'placeholder_syntax');
-    assert.equal(parseCode('{{toolongid9}}'), 'placeholder_syntax');
+    assert.equal(parseCode('{{an_id_far_too_long9}}'), 'placeholder_syntax');
+    assert.deepEqual(paths(templ('{{target_frac}} and {{s_1.total}}')), ['target_frac', 's_1.total']);
     assert.equal(parseCode('{{a$}}'), 'templ_math');
     assert.equal(parseCode('An open $\\frac{a}{b} span'), 'templ_math');
     assert.equal(parseCode(Array.from({ length: 25 }, () => '{{a}}').join(' ')), 'templ_size');
@@ -79,13 +80,16 @@ describe('closed-list prose rules', () => {
   it('rejects view words and phrases outside {{s.view}}', () => {
     assert.deepEqual(codes('Which section of the rectangle is {{u}}?'), ['view_word']);
     assert.deepEqual(codes('Look at the Number Line.'), ['view_word']);
-    assert.deepEqual(proseIssues(templ('Read the bar graph.')).map(i => i.message), ['Name the figure with {{<structure>.view}}, not "bar graph".']);
+    assert.deepEqual(proseIssues(templ('Read the bar graph.')).map(i => i.message), ['"bar graph" names a figure the prompt does not show; name the figure with {{<structure>.view}}.']);
     assert.deepEqual(codes('Graphs, a bar chart and number lines.'), ['view_word', 'view_word', 'view_word']);
     assert.deepEqual(codes('Count the pie pieces.'), ['view_word']);
     assert.deepEqual(codes('Look at the pictures.'), ['view_word']);
     assert.deepEqual(codes('A barn and a line of ducks.'), [], 'only whole words and whole phrases');
     assert.deepEqual(codes('number {{x}} line'), [], 'a placeholder separates words');
     assert.deepEqual(codes('the rectangle', 'text', { viewWords: false }), []);
+    const shown = new Set(['rectangle', 'number line']);
+    assert.deepEqual(codes('Look at the rectangles and the number line.', 'text', { allowedViewWords: shown }), [], 'words for the figures shown are legal, plurals too');
+    assert.deepEqual(codes('Look at the circle.', 'text', { allowedViewWords: shown }), ['view_word'], 'a figure that is not shown is not');
   });
   it('cannot be fooled by invisible characters, look-alike letters, Roman numerals or split TeX words', () => {
     for (const s of ['There are t\u200Bwelve apples.', 'Look at the rec\u200Btangle.', 'tw\u00ADelve', 'tw\u2060o', 'a\u034Fb']) assert.ok(codes(s).includes('prose_invisible'), JSON.stringify(s));

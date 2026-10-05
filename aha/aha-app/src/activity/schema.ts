@@ -5,11 +5,11 @@
 import * as z from 'zod';
 import { ActivityBatchSchema, ActivitySpecSchema, KEY_CHECK_FORM, type ResponseType } from './spec';
 
-type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
-type JsonObject = { [k: string]: Json };
+export type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
+export type JsonObject = { [k: string]: Json };
 const isObj = (v: Json | undefined): v is JsonObject => !!v && typeof v === 'object' && !Array.isArray(v);
 /** Discriminants are disjoint, so oneOf ≡ anyOf; anyOf is the widely supported keyword for LLM structured output. */
-function portable(node: Json): Json {
+export function portable(node: Json): Json {
   if (Array.isArray(node)) return node.map(portable);
   if (isObj(node)) {
     const out: JsonObject = {};
@@ -32,7 +32,7 @@ function nullable(node: Json): Json {
  * (the local validator still enforces every bound). The validator accepts null for an
  * optional field and treats it exactly as absent.
  */
-function strictMode(node: Json): Json {
+export function strictMode(node: Json): Json {
   if (Array.isArray(node)) return node.map(strictMode);
   if (!isObj(node)) return node;
   const out: JsonObject = {};

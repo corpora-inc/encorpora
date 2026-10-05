@@ -605,6 +605,12 @@ function figureErrors(f: Figure, where: string, errors: string[]) {
       break;
   }
 }
+/** v1's semantic invariants for one figure (bounds, uniqueness, caps). Shared with the drawing IR (draw.ts). */
+export function figureProblems(f: Figure): string[] {
+  const errors: string[] = [];
+  figureErrors(f, f.type, errors);
+  return errors;
+}
 const dist = (a: P, b: P) => Math.hypot(a.x - b.x, a.y - b.y);
 const normalizeText = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
 
