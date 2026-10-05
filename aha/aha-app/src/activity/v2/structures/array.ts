@@ -41,7 +41,7 @@ export const array: StructureDef<'array', R, 'dots' | 'objects'> = {
   views: {
     dots: {
       grades: [2, 4], accepts: ['tap'], draws: 'rows of dots (rows, cols and total countable)',
-      noun: () => 'array',
+      noun: () => 'array', words: ['array'],
       reveals: () => ({ cols: 'countable', rows: 'countable', total: 'countable' }),
       // Every row holds the same number, so a tap on one row is always ill-posed; uniqueness rejects it.
       regions: r => Array.from({ length: n(r.rows) }, (_, i) => ({ id: `row${i + 1}`, value: req(r, 'cols').value, label: `Row ${i + 1}` })),
@@ -50,7 +50,7 @@ export const array: StructureDef<'array', R, 'dots' | 'objects'> = {
     },
     objects: {
       grades: [2, 4], accepts: ['tap'], draws: 'rows of the objects (rows, cols and total countable)',
-      noun: () => 'array',
+      noun: () => 'array', words: ['array', 'picture'],
       reveals: () => ({ cols: 'countable', rows: 'countable', total: 'countable' }),
       regions: r => Array.from({ length: n(r.rows) }, (_, i) => ({ id: `row${i + 1}`, value: req(r, 'cols').value, label: `Row ${i + 1}` })),
       describe: (r, asked) => describeArray(r, asked, nounOf(r.cols, 'dot', 'dots')),
