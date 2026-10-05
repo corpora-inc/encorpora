@@ -1,10 +1,10 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d4d58ea3` on 2026-10-05. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Unified public source `d4d58ea32130af3d513cbe3914ec28b13576d1db` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Native SDK and TypeScript facade | Unified public source `d63959f9c766258d7ce827e68f4ddd93d2797f99` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
 | Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
@@ -30,11 +30,21 @@ Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
 
-## SDK `d4d58ea3` adoption (2026-10-05)
+## SDK `d63959f9` adoption (2026-10-05)
 
-zuu main at `d4d58ea3` is additive over `42acc57f`. Tarball recipe and sha256 values: [vendor/README.md](aha-app/vendor/README.md).
+zuu main at `d63959f9` (#1143 on top of `d4d58ea3`) is additive over `42acc57f`. Tarball recipe and sha256 values: [vendor/README.md](aha-app/vendor/README.md).
 What AHA adopts:
 
+- **Schema member order (#1143).** Before this pin, nothing in AHA's native dependency graph enabled serde_json
+  `preserve_order` (this pin's `Cargo.lock` adds `indexmap` under `serde_json` for the first time). The Tauri IPC `Value`
+  therefore sorted the `response_format` schema before the gateway saw it, which is why replies arrived with `activities`
+  before `rationale`. `tauri-plugin-f2z` at `d63959f9` enables `preserve_order` itself, and the pinned `ChatRequest` holds the
+  schema as `OrderedJson`. Two tests read the same fixture bytes:
+  - `nativeBoundary.test.ts` checks the TS SDK hands the plugin the app's order (string equality; `rationale` first).
+  - The Rust test `structured_batch_schema_member_order_survives_ipc_and_the_native_chat_request` checks the bytes survive
+    IPC `Value` → `ChatRequest` → the body the SDK sends. It has a negative control that a sorted `Value` fails.
+  End to end, this also needs the gateway image with #1143; not live-verified. The validator still reads by key, so either
+  order is accepted.
 - **Typed catalogue (#1137).** `models.ts` and `structuredCapability` read `model.capabilities.structured_output === true`
   from the SDK's typed `Model`. Limits and prices are `bigint`. The model-choice policy (#905) is unchanged. The SDK decodes an
   absent `capabilities` as `{}`, so the reason is logged as `structured_output_absent`; the `capabilities_absent` and
@@ -123,7 +133,7 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   per-call archive record.
 - **Validation stays mandatory.** Strict mode constrains shape only. keyCheck, figure references,
   TeX safety and the other semantic rules are still checked locally. The gateway forwards the
-  schema's members sorted by name, so replies arrive with keys in alphabetical order (`activities`
+  schema's members sorted by name (until the `d63959f9` pin; see "SDK `d63959f9` adoption"), so replies arrived with keys in alphabetical order (`activities`
   before `rationale`) and with `null` for unused optional fields. The validator reads by key, treats
   `null` as absent, and a test covers that reply shape. Recovery of a cut-off reply does not depend on
   key order either (#888). It locates activities as elements of the `activities` array when they do
@@ -296,8 +306,8 @@ app no longer requests it, and a request outside `allowed_scopes` fails with
 
 ## Sign-in cancel and failures (#862)
 
-Since `d4d58ea3` (zuu #1138) the plugin distinguishes `user_cancelled`, `browser_unavailable` and `timeout`; see
-"SDK `d4d58ea3` adoption". The text below describes the `browser_error` fallback, which older plugins send for all of them.
+Since `d4d58ea3` (zuu #1138, included in the `d63959f9` pin) the plugin distinguishes `user_cancelled`, `browser_unavailable` and `timeout`; see
+"SDK `d63959f9` adoption". The text below describes the `browser_error` fallback, which older plugins send for all of them.
 
 On mobile, closing the sign-in browser rejects the plugin's native `authorize`.
 That covers the Android Custom Tab (back, close, the 300 s expiry, or a launch

@@ -74,6 +74,10 @@ test('capability advertised by the plugin (snake_case, boolean) -> the start_cha
   assert.equal(payload.response_format.json_schema.name, 'aha_activity_batch');
   assert.equal(payload.response_format.json_schema.strict, true);
   assert.deepEqual(payload.response_format.json_schema.schema, JSON.parse(JSON.stringify(prompt.responseFormat.json_schema.schema)), 'the real strict schema, unchanged');
+  // zuu#1132: member order is the order OpenAI emits reply keys in, so the SDK must hand the plugin the app's order
+  // (string equality, unlike deepEqual). The Rust test reads the same fixture bytes and checks the native side.
+  assert.equal(JSON.stringify(payload.response_format.json_schema.schema), JSON.stringify(prompt.responseFormat.json_schema.schema), 'schema member order unchanged through the SDK');
+  assert.deepEqual(Object.keys(payload.response_format.json_schema.schema.properties), ['rationale', 'activities'], 'not alphabetical, so a sorting layer would show');
   assert.equal(payload.max_output_tokens, '2600', 'decimal string, as the plugin expects');
   assert.equal(payload.messages[0].content[0].text, 'S', 'the structured system prompt');
   assert.ok(commands.filter(c => c.command === 'estimate').every(c => c.payload.response_format?.json_schema?.strict === true), 'estimates price the same body');

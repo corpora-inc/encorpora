@@ -47,7 +47,7 @@ background/kill/resume behavior need device tests before release claims.
 ## Free2Z native host
 
 The official plugin is pinned to the public source preview
-`d4d58ea32130af3d513cbe3914ec28b13576d1db`; its transitive core is the sole native
+`d63959f9c766258d7ce827e68f4ddd93d2797f99`; its transitive core is the sole native
 client. Configure the public registration through the build environment variable
 `AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
 No credentials, endpoint overrides or callback injection commands are exposed to
