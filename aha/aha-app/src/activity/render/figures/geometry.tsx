@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FigureOf } from '../../spec';
+import type { DrawFigureOf } from '../../draw';
 import { A11ySvg, clamp, regionProps, series, tint, useMeasuredWidth, type TapInteraction } from './common';
 
 type P = { x: number; y: number };
@@ -8,7 +8,7 @@ const len = (v: P) => Math.hypot(v.x, v.y) || 1;
 const unit = (v: P) => { const l = len(v); return { x: v.x / l, y: v.y / l }; };
 
 let markerSeq = 0;
-export function GeometryFigure({ figure: f, tap }: { figure: FigureOf<'geometry'>; tap?: TapInteraction }) {
+export function GeometryFigure({ figure: f, tap }: { figure: DrawFigureOf<'geometry'>; tap?: TapInteraction }) {
   const [ref, measured] = useMeasuredWidth<HTMLDivElement>();
   const W = clamp(measured, 260, 620);
   const pad = 34;
@@ -17,6 +17,27 @@ export function GeometryFigure({ figure: f, tap }: { figure: FigureOf<'geometry'
   const ox = (W - w) / 2 + pad;
   const S = (p: P): P => ({ x: ox + p.x * scale, y: pad + (f.height - p.y) * scale });
   const [mid] = React.useState(() => `ax-arrow${++markerSeq}`);
+  const clipBase = mid.replace('arrow', 'clip');
+  // Graph paper: light lines every grid.unit, a slightly stronger line every 5 units when there are many.
+  const unitLen = f.grid?.unit ?? 1;
+  const lattice = (extent: number) => Array.from({ length: Math.floor(extent / unitLen + 1e-6) + 1 }, (_, k) => k);
+  const majorEvery = f.grid && Math.max(f.width, f.height) / unitLen > 10 ? 5 : 0;
+  const paper = f.grid && (() => {
+    const o = S({ x: 0, y: 0 }), e = S({ x: f.width, y: f.height });
+    const line = (k: number, vertical: boolean) => {
+      const major = majorEvery > 0 && k % majorEvery === 0;
+      const v = k * unitLen;
+      const a = vertical ? S({ x: v, y: 0 }) : S({ x: 0, y: v }), b = vertical ? S({ x: v, y: f.height }) : S({ x: f.width, y: v });
+      return <line key={`${vertical ? 'v' : 'h'}${k}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={major ? 'ax-graph-major' : 'ax-graph-minor'} />;
+    };
+    return (
+      <g className="ax-graph-paper" aria-hidden="true">
+        <rect x={o.x} y={e.y} width={e.x - o.x} height={o.y - e.y} className="ax-graph-sheet" />
+        {lattice(f.width).map(k => line(k, true))}
+        {lattice(f.height).map(k => line(k, false))}
+      </g>
+    );
+  })();
   const polys = f.shapes.filter(s => s.kind === 'polygon');
   const centroid = polys.length ? (() => { const all = polys.flatMap(p => p.points); return S({ x: all.reduce((s, p) => s + p.x, 0) / all.length, y: all.reduce((s, p) => s + p.y, 0) / all.length }); })() : S({ x: f.width / 2, y: f.height / 2 });
 
@@ -27,10 +48,32 @@ export function GeometryFigure({ figure: f, tap }: { figure: FigureOf<'geometry'
         const selected = !!s.id && tap?.selected === s.id;
         const region = s.id && tap ? regionProps(s.label ?? `shape ${s.id}`, selected, () => tap.onSelect(s.id!)) : {};
         const c = { x: pts.reduce((a, p) => a + p.x, 0) / pts.length, y: pts.reduce((a, p) => a + p.y, 0) / pts.length };
+        const d = pts.map(p => `${p.x},${p.y}`).join(' ');
+        const clip = `${clipBase}-${i}`;
+        // Unit squares: grid lines in the shape's own colour, clipped to its outline, so its area can be counted.
+        const squares = s.unitSquares && (() => {
+          const xs = s.points.map(p => p.x), ys = s.points.map(p => p.y);
+          const steps = (lo: number, hi: number) => Array.from({ length: Math.max(0, Math.round((hi - lo) / unitLen) - 1) }, (_, k) => lo + (k + 1) * unitLen);
+          const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+          return (
+            <g clipPath={`url(#${clip})`} className="ax-unit-squares" stroke={selected ? 'var(--ax-coral)' : series(s.color, 0)} aria-hidden="true">
+              {steps(x0, x1).map(x => { const a = S({ x, y: y0 }), b = S({ x, y: y1 }); return <line key={`x${x}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />; })}
+              {steps(y0, y1).map(y => { const a = S({ x: x0, y }), b = S({ x: x1, y }); return <line key={`y${y}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />; })}
+            </g>
+          );
+        })();
+        const fill = selected ? 'var(--ax-coral-tint)' : s.color === 'plain' ? 'none' : tint(s.color, 0);
+        const stroke = { stroke: selected ? 'var(--ax-coral)' : series(s.color, 0), strokeWidth: selected ? 3 : 2.25, strokeLinejoin: 'round' as const, strokeDasharray: s.dashed ? '7 5' : undefined };
+        // On graph paper the fill is translucent so the paper's lines show through.
+        const fillOpacity = f.grid && !selected ? 0.5 : undefined;
         return (
           <g key={i} {...region}>
-            <polygon points={pts.map(p => `${p.x},${p.y}`).join(' ')} fill={selected ? 'var(--ax-coral-tint)' : s.color === 'plain' ? 'none' : tint(s.color, 0)}
-              stroke={selected ? 'var(--ax-coral)' : series(s.color, 0)} strokeWidth={selected ? 3 : 2.25} strokeLinejoin="round" strokeDasharray={s.dashed ? '7 5' : undefined} />
+            {squares ? <>
+              <clipPath id={clip}><polygon points={d} /></clipPath>
+              <polygon points={d} fill={fill} fillOpacity={fillOpacity} />
+              {squares}
+              <polygon points={d} fill="none" {...stroke} />
+            </> : <polygon points={d} fill={fill} fillOpacity={fillOpacity} {...stroke} />}
             {s.label && <text x={c.x} y={c.y + 5} textAnchor="middle" className="ax-shape-label">{s.label}</text>}
           </g>
         );
@@ -108,6 +151,7 @@ export function GeometryFigure({ figure: f, tap }: { figure: FigureOf<'geometry'
     <div ref={ref} className="ax-chart">
       <A11ySvg title="Geometry diagram" desc={f.alt} interactive={!!tap} width={W} height={H}>
         <defs><marker id={mid} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ax-ink)" /></marker></defs>
+        {paper}
         {shapes}
       </A11ySvg>
       {f.notToScale && <p className="ax-chart-note">Not drawn to scale</p>}

@@ -1,7 +1,8 @@
 import React from 'react';
 import type { FigureOf } from '../../spec';
 import { MONEY_KINDS } from '../../spec';
-import { ICONS } from '../icons';
+import { pictureGroups, type DrawFigureOf } from '../../draw';
+import { resolveIcon } from '../icons';
 import { A11ySvg, clamp, fmt, series, tint, useMeasuredWidth, type TapInteraction } from './common';
 import { seededRandom } from '../../expr';
 
@@ -127,13 +128,13 @@ export function FractionModelFigure({ figure: f }: { figure: FigureOf<'fraction_
 }
 
 // ---------- array grid ----------
-export function ArrayGridFigure({ figure: f }: { figure: FigureOf<'array_grid'> }) {
+export function ArrayGridFigure({ figure: f }: { figure: DrawFigureOf<'array_grid'> }) {
   const cell = clamp(Math.floor(300 / Math.max(f.rows, f.cols)), 20, 44);
   const lab = f.showDimensions ? 26 : 4;
   const w = f.cols * cell + lab + 6, h = f.rows * cell + lab + 6;
   const color = f.color;
   if (f.style === 'icons' && f.icon) {
-    const [Icon, tone] = ICONS[f.icon];
+    const [Icon, tone] = resolveIcon(f.icon);
     const c = color ?? tone;
     return (
       <div className="ax-icon-grid" role="img" aria-label={f.alt} style={{ gridTemplateColumns: `repeat(${f.cols}, ${cell}px)` }}>
@@ -290,20 +291,26 @@ export function RulerFigure({ figure: f }: { figure: FigureOf<'ruler'> }) {
 }
 
 // ---------- picture (composable pictograph scene) ----------
-export function PictureFigure({ figure: f, tap }: { figure: FigureOf<'picture'>; tap?: TapInteraction }) {
-  const total = f.groups.reduce((n, g) => n + g.count, 0);
+export function PictureFigure({ figure: f, tap }: { figure: DrawFigureOf<'picture'>; tap?: TapInteraction }) {
+  const groups = pictureGroups(f);
+  const total = groups.reduce((n, g) => n + g.count, 0);
   const size = total > 60 ? 24 : total > 30 ? 28 : 34;
   return (
     <div className={`ax-picture ax-picture-${f.layout ?? 'row'}`} role={tap ? 'group' : 'img'} aria-label={f.alt}>
-      {f.groups.map((g, gi) => {
-        const [Icon, tone] = ICONS[g.icon];
+      {groups.map((g, gi) => {
+        const [Icon, tone] = resolveIcon(g.icon);
         const c = g.color ?? tone;
         const crossed = g.crossedOut ?? 0;
-        const icon = (k: number) => (
-          <span key={k} className={`ax-pic-icon${k >= g.count - crossed ? ' is-crossed' : ''}`} style={{ width: size, height: size }}>
-            <Icon size={size - 4} color={series(c)} fill={tint(c)} strokeWidth={1.75} aria-hidden="true" />
-          </span>
-        );
+        // A set fraction highlights its first `shaded` icons; the rest are drawn as plain outlines.
+        const shaded = g.shaded;
+        const icon = (k: number) => {
+          const muted = shaded !== undefined && k >= shaded;
+          return (
+            <span key={k} className={`ax-pic-icon${k >= g.count - crossed ? ' is-crossed' : ''}${shaded === undefined ? '' : muted ? ' is-unshaded' : ' is-shaded'}`} style={{ width: size, height: size }}>
+              <Icon size={size - 4} color={muted ? 'var(--ax-muted)' : series(c)} fill={muted ? 'none' : shaded !== undefined ? series(c) : tint(c)} strokeWidth={1.75} aria-hidden="true" />
+            </span>
+          );
+        };
         const arrangement = g.arrangement ?? (g.count > 10 ? 'grid' : 'row');
         let body: React.ReactNode;
         if (arrangement === 'ten_frame') {

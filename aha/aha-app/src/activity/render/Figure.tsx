@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Figure } from '../spec';
+import type { DrawFigure } from '../draw';
 import { RichText } from './RichText';
 import { BarChartFigure, DataTableFigure, LineChartFigure, PieChartFigure, ScatterPlotFigure } from './figures/charts';
 import { CoordinatePlaneFigure } from './figures/plane';
@@ -8,7 +8,7 @@ import { ArrayGridFigure, ClockFigure, FractionModelFigure, MoneyFigure, NumberL
 import type { FigureInteraction } from './figures/common';
 
 /** Renders one validated figure. Unknown types cannot reach here (the validator rejects them). */
-export function FigureView({ figure, interaction }: { figure: Figure; interaction?: FigureInteraction }) {
+export function FigureView({ figure, interaction }: { figure: DrawFigure; interaction?: FigureInteraction }) {
   const tap = interaction?.kind === 'tap' ? interaction : undefined;
   const plot = interaction?.kind === 'plot' ? interaction : undefined;
   let body: React.ReactNode;
