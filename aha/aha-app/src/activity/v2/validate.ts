@@ -122,10 +122,13 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   // The response's expressions.
   const r = a.response;
   if (!inRange(grade, FORM_GRADES[r.form])) p('response.form', 'off_grade', `${r.form} is for grades ${rangeLabel(FORM_GRADES[r.form])}.`);
-  const valued = (source: string, path: string): { expr: Expr; value: Value } | null => {
+  /** Distractor rules are arithmetic a learner wrongly does on the numbers they see (an area minus a
+   * side), so they evaluate without dimensions; the options still read in the key's unit. */
+  const plainNumbers = (path: readonly string[]) => { const v = model.resolve(path); return v.ok ? { ok: true as const, value: { ...v.value, power: 0, unit: null } } : v; };
+  const valued = (source: string, path: string, misconception = false): { expr: Expr; value: Value } | null => {
     const e = parseExpr(source);
     if (!e.ok) { p(path, e.error.code, e.error.message); return null; }
-    const v = evaluate(e.value, model.resolve);
+    const v = evaluate(e.value, misconception ? plainNumbers : model.resolve);
     if (!v.ok) { p(path, v.error.code, v.error.message); return null; }
     return { expr: e.value, value: v.value };
   };
@@ -146,7 +149,7 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     if (v && v.expr.t !== 'ref') { p(`response.candidates[${i}]`, 'candidate_not_ref', 'A candidate names one quantity or measure; declare it and list its name.'); return []; }
     return v ? [v] : [];
   });
-  const distractors = ('distractors' in r ? r.distractors : []).flatMap((d, i) => { const v = valued(d.expr, `response.distractors[${i}].expr`); return v ? [{ ...v, tag: d.tag }] : []; });
+  const distractors = ('distractors' in r ? r.distractors : []).flatMap((d, i) => { const v = valued(d.expr, `response.distractors[${i}].expr`, true); return v ? [{ ...v, tag: d.tag }] : []; });
   if ('on' in r && r.on !== null) {
     const s = model.structures.get(r.on);
     const view = viewed.get(r.on);
@@ -210,7 +213,7 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   if ('on' in r && r.on) relevant.add(r.on);
   if (r.form === 'tap' && r.on === null) for (const sid of viewed.keys()) relevant.add(sid);
   for (const sid of viewed.keys()) if (!relevant.has(sid)) p(`prompt`, 'view_unrelated', `The view of ${sid} is not part of the math asked: the ask is not computed from it.`);
-  /** May the prompt or a hint print this value? Only what the math asked uses, or a label of a figure that is part of it. */
+  /** Is this value part of the math asked: in the ask's support, or a role or measure of a figure that is part of it? */
   const mayReveal = (t: Target) => supportKeys.has(t.key)
     || (t.kind === 'measure' ? relevant.has(t.structure) : (model.bindings.get(t.id) ?? []).some(b => relevant.has(b.structure)));
   // Candidate forms: the prompt prints every candidate or none, and a hint prints none, so prose can
@@ -249,7 +252,12 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       if (VALUE_BEARING.has(attr)) return { ok: true, value: 'mask' };
       if (attr === 'noun' || attr === 'unit') return fail('answer_inflected', `{{${ph.path.join('.')}}} is inflected for the answer's value; use .one or .other.`);
     } else if (printed) {
-      if (!mayReveal(t.value)) return fail('extraneous', `{{${ph.path.join('.')}}} prints a value the question does not use; every number shown must be part of the math asked.`);
+      // A number outside the math asked is story context, unless it equals the answer: then it can only
+      // be a restatement of it ("12 in all"), whatever its noun.
+      if (!mayReveal(t.value)) {
+        if (answerForm && ask && sameValue(described.value, ask.value) && described.value.power === ask.value.power && described.value.unit === ask.value.unit)
+          return fail('answer_stated', `{{${ph.path.join('.')}}} prints a number the question does not use, and it equals the answer.`);
+      }
       const candidate = candidateKeys.has(key);
       if (candidate && scope === 'hint') return fail('candidate_in_hint', `{{${ph.path.join('.')}}} is one of the options; a hint never names an option.`);
       if (candidate) revealedCandidates.add(key);
