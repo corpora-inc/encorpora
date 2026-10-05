@@ -22,7 +22,7 @@ export const RESERVED_IDS: ReadonlySet<string> = new Set(['min', 'max']);
 export const SKILL_ID = /^[K1-8]\.[A-Z]{1,3}\.[A-D]\.\d{1,2}$/;
 export const ICON = /^[a-z][a-z_]{0,31}$/;
 export const LIMITS = {
-  quantities: 8, structures: 2, blocks: 8, hints: 3, distractors: 4, candidates: 6, skills: 3, activities: 5,
+  quantities: 10, structures: 4, blocks: 8, hints: 3, distractors: 4, candidates: 6, skills: 3, activities: 5,
   text: 400, tex: 200, hint: 200, explanation: 400, why: 160, noun: 24,
 } as const;
 export const EXACTNESS = ['any', 'simplest', 'exact'] as const;

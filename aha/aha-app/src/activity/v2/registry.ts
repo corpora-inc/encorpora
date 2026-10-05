@@ -52,7 +52,7 @@ export type Theme = typeof THEMES[number];
 export const TAGS = [
   // operations
   'added_instead', 'subtracted_instead', 'multiplied_instead', 'divided_instead', 'counted_one_group', 'counted_groups_only',
-  'off_by_one', 'skip_count_error',
+  'off_by_one', 'skip_count_error', 'counted_all',
   // area and perimeter
   'perimeter_for_area', 'area_for_perimeter', 'added_two_sides', 'used_one_side', 'counted_edges_not_squares',
   // fractions

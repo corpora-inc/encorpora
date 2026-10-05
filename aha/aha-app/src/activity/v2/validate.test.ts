@@ -147,11 +147,15 @@ describe('the answer is never named, and leaks are referential', () => {
     rejects(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'How many {{s.total.noun}} are there?', type: 'text' }; }), 'answer_inflected');
     assert.ok(check(edit(equalGroupsActivity, a => { a.support.explanation = 'There are {{s.total}}.'; })).ok, 'the explanation may name the answer');
   });
-  it('rejects a printed number the question does not use, but not a coincidence of value', () => {
+  it('rejects a printed number the question does not use when it equals the answer, but allows story numbers', () => {
     rejects(edit(equalGroupsActivity, a => {
       a.model.quantities.push({ id: 't', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: '12' });
       a.prompt[0] = { text: 'Ana fills {{s.groups}} with {{s.size}} each, {{t}} in all.', type: 'text' };
-    }), 'extraneous');
+    }), 'answer_stated');
+    assert.ok(check(edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 'd', kind: 'count', noun: { icon: null, one: 'day', other: 'days' }, unit: null, value: '5' });
+      a.prompt[0] = { text: 'In {{d}} Ana fills {{s.groups}} with {{s.size}} each.', type: 'text' };
+    })).ok, 'a story number the question does not use is context');
     const missingFactor = edit(equalGroupsActivity, a => {
       a.aim.skills = ['3.OA.A.4'];
       a.model.quantities = [
@@ -203,8 +207,8 @@ describe('review regressions: no path around the answer checks', () => {
     rejects(add('3*4+1'), 'given_arithmetic');
   });
   it('rejects a printed value that recomputes the answer, whatever its noun or kind', () => {
-    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.groups*s.size' }); a.prompt[2] = { text: 'There are {{t.n}} in all. How many {{s.total.other}}?', type: 'text' }; }), 'extraneous');
-    rejects(edit(shadedFractionActivity, a => { a.model.quantities.push({ id: 'x', kind: 'number', noun: null, unit: null, value: 'f.selected/f.parts' }); a.prompt[1] = { text: 'It is {{x}}. What fraction of the {{f.view}} is shaded?', type: 'text' }; }), 'extraneous');
+    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.groups*s.size' }); a.prompt[2] = { text: 'There are {{t.n}} in all. How many {{s.total.other}}?', type: 'text' }; }), 'answer_stated');
+    rejects(edit(shadedFractionActivity, a => { a.model.quantities.push({ id: 'x', kind: 'number', noun: null, unit: null, value: 'f.selected/f.parts' }); a.prompt[1] = { text: 'It is {{x}}. What fraction of the {{f.view}} is shaded?', type: 'text' }; }), 'answer_stated');
     rejects(edit(equalGroupsActivity, a => {
       a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.groups*s.size' }, { id: 'e', kind: 'count', noun: null, unit: null, value: '0' }, { id: 'left', kind: 'count', noun: null, unit: null, value: 't-e' });
       a.prompt[2] = { text: 'That is {{t.n}}; none are eaten ({{e.n}}). How many are left?', type: 'text' };
@@ -221,7 +225,7 @@ describe('review regressions: no path around the answer checks', () => {
       a.prompt = [{ text: 'There are {{t.n}} in {{s.groups}}. How many {{s.total.other}} are there in all?', type: 'text' }];
       a.support = { explanation: '{{s.total}}.', hints: [] };
     }), 'answer_stated'); // the answer IS the given 12, whatever nouns it carries
-    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: '12' }); a.prompt[2] = { text: 'There are {{t.n}} in all. How many {{s.total.other}}?', type: 'text' }; }), 'extraneous');
+    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: '12' }); a.prompt[2] = { text: 'There are {{t.n}} in all. How many {{s.total.other}}?', type: 'text' }; }), 'answer_stated');
   });
   it('keeps legitimate equal values: a square fact, and a story whose answer equals a given', () => {
     const square = edit(equalGroupsActivity, a => {
@@ -273,7 +277,13 @@ describe('review regressions: no path around the answer checks', () => {
       if (prompt) a.prompt[2] = { text: prompt, type: 'text' };
     });
     rejects(decoy('jumps'), 'view_unrelated');
-    rejects(decoy(null, 'Each has {{z.size.n}}. How many {{s.total.other}}?'), 'extraneous');
+    // A decoy's number in the prose is rejected when it equals the answer (its total, 2 × 6, beside 3 × 4).
+    const equalDecoy = edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 'zr', kind: 'count', noun: null, unit: null, value: '2' }, { id: 'zc', kind: 'count', noun: null, unit: null, value: '6' });
+      a.model.structures.push({ id: 'z', kind: 'array', roles: { cols: 'zc', rows: 'zr' }, show: null });
+      a.prompt[2] = { text: 'A shelf holds {{z.total.n}}. How many {{s.total.other}}?', type: 'text' };
+    });
+    rejects(equalDecoy, 'answer_stated');
   });
   it('holds select to the candidate rules too', () => {
     const sel = (hint: string) => edit(shadedFractionActivity, a => {
