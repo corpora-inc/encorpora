@@ -5,7 +5,7 @@
  * Values are computed lazily, so a derived quantity may use a measure ("s.total - e") and a role may
  * bind a derived quantity ("size = t/g"); a cycle between them is reported, never looped.
  */
-import { parseExpr, quantityValue, type Described, type Expr, type Issue, type QuantityDecl, type Result, type Value } from './quantity';
+import { parseExpr, quantityValue, refsOf, type Described, type Expr, type Issue, type QuantityDecl, type Result, type Value } from './quantity';
 import { nounFormIssues } from './text';
 import type { BoundRole, MeasureDef, Roles, StructureDef } from './registry';
 import { inRange, isIssue, rangeLabel } from './registry';
@@ -36,7 +36,12 @@ export interface Model {
   resolve(path: readonly string[]): Result<Value>;
   /** The value with its noun and kind (placeholders). */
   describe(t: Target): Described;
-  /** The quantity behind a target, when it is one, and its own references. */
+  /** What a target is, through aliases: a quantity whose value is one reference is that reference. */
+  canonical(t: Target): Target;
+  /** A quantity the model states outright: its value refers to nothing (a literal, or arithmetic on literals). */
+  isGiven(id: string): boolean;
+  /** Whether a target's value is computed, at any depth, from the target with canonical key `key`. */
+  dependsOn(t: Target, key: string): boolean;
 }
 
 const ok = <T>(value: T): Result<T> => ({ ok: true, value });
@@ -188,5 +193,32 @@ export function bindModel(m: WireActivity['model'], grade: number): { ok: true; 
     const s = structures.get(t.structure)!, def = s.def.measures[t.measure]!;
     return { value, noun: def.noun(s.roles), kind: def.kind };
   };
-  return { ok: true, model: { quantities, structures, bindings, target, resolve, describe } };
+  const canonical = (t: Target): Target => {
+    for (let hops = 0; t.kind === 'quantity' && hops < 16; hops++) {
+      const e = quantities.get(t.id)!.expr;
+      if (e.t !== 'ref') break;
+      const next = target(e.path);
+      if (!next.ok) break;
+      t = next.value;
+    }
+    return t;
+  };
+  const isGiven = (id: string) => refsOf(quantities.get(id)!.expr).length === 0;
+  /** The targets a target's value is computed from, one level down. */
+  const sources = (t: Target): Target[] => {
+    if (t.kind === 'quantity') return refsOf(quantities.get(t.id)!.expr).flatMap(path => { const x = target(path); return x.ok ? [x.value] : []; });
+    const s = structures.get(t.structure)!, def = s.def.measures[t.measure]!;
+    return [...def.inputs, ...(def.reads ?? [])].flatMap(role => { const b = s.roles[role]; return b ? [{ kind: 'quantity' as const, key: b.id, id: b.id }] : []; });
+  };
+  const dependsOn = (t: Target, key: string): boolean => {
+    const seenKeys = new Set<string>();
+    const walk = (x: Target): boolean => {
+      const c = canonical(x);
+      if (seenKeys.has(c.key)) return false;
+      seenKeys.add(c.key);
+      return sources(c).some(src => canonical(src).key === key || walk(src));
+    };
+    return walk(t);
+  };
+  return { ok: true, model: { quantities, structures, bindings, target, resolve, describe, canonical, isGiven, dependsOn } };
 }

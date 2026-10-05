@@ -13,7 +13,7 @@
  * to drawings and never reaches the v1 wire schema.
  */
 import type { Figure, FigureOf, GeometryShapeSpec } from './spec';
-import { ICON_NAMES, figureProblems } from './spec';
+import { FigureSchema, ICON_NAMES, figureProblems } from './spec';
 
 type PolygonShape = Extract<GeometryShapeSpec, { kind: 'polygon' }>;
 export type DrawShape = Exclude<GeometryShapeSpec, { kind: 'polygon' }> | (PolygonShape & { unitSquares?: boolean });
@@ -36,13 +36,16 @@ export const MAX_GRID_LINES = 50;
 export const MAX_PICTURE_GROUPS = 12;
 
 /**
- * Problems with a drawing: v1's figure invariants on the drawing with its IR-only fields removed,
- * plus the IR-only fields' own rules. Lowering is app code, so a problem here is an app bug or a
+ * Problems with a drawing: v1's figure schema and invariants on the drawing with its IR-only fields
+ * removed, plus the IR-only fields' own rules. Lowering is app code, so a problem here is an app bug or a
  * model whose magnitudes do not fit a drawing (an L2 rejection), never something to repair.
  */
 export function drawingProblems(f: DrawFigure): string[] {
   const problems: string[] = [];
+  // `plain` is the drawing as a v1 figure for v1's semantic invariants; `shape` is what v1's zod schema
+  // sees (a repeated group counted once), for v1's structural limits: part, tick, label and list caps.
   let plain: Figure;
+  let shape: unknown;
   switch (f.type) {
     case 'geometry': {
       const u = f.grid?.unit ?? 1;
@@ -55,6 +58,7 @@ export function drawingProblems(f: DrawFigure): string[] {
       });
       const { grid: _grid, ...rest } = f;
       plain = { ...rest, shapes: f.shapes.map(s => { if (s.kind !== 'polygon') return s; const { unitSquares: _u, ...p } = s; return p; }) };
+      shape = plain;
       break;
     }
     case 'picture': {
@@ -64,15 +68,20 @@ export function drawingProblems(f: DrawFigure): string[] {
       if (f.groups.some(g => (g.shaded ?? 0) > g.count || (g.shaded ?? 0) < 0)) problems.push('shaded exceeds count.');
       // v1's invariants on the expanded groups; any icon name stands in for the model-named object.
       plain = { ...f, groups: groups.map(({ repeat: _r, shaded: _s, ...g }) => ({ ...g, icon: ICON_NAMES[0] })) };
+      shape = { ...f, groups: f.groups.map(({ repeat: _r, shaded: _s, ...g }) => ({ ...g, icon: ICON_NAMES[0] })) };
       break;
     }
     case 'array_grid': {
       const { icon, ...rest } = f;
       plain = { ...rest, ...(icon ? { icon: ICON_NAMES[0] } : {}) };
+      shape = plain;
       break;
     }
     default:
       plain = f;
+      shape = f;
   }
+  const parsed = FigureSchema.safeParse(shape);
+  if (!parsed.success) problems.push(...parsed.error.issues.slice(0, 5).map(i => `${i.path.join('.') || f.type}: ${i.message}`));
   return [...problems, ...figureProblems(plain)];
 }

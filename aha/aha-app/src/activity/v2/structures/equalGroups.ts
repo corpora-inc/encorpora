@@ -50,10 +50,10 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
     jumps: {
       grades: [2, 4], accepts: [], draws: 'a number line from 0 with one jump per group (the landing point is printed)',
       noun: () => 'number line',
-      reveals: (_r, ask) => ({ groups: 'countable', size: ask && 'role' in ask && ask.role === 'size' ? 'countable' : 'shown', total: 'shown' }),
-      lower(r, { ask }) {
+      reveals: (_r, asked) => ({ groups: 'countable', size: asked.has('size') ? 'countable' : 'shown', total: 'shown' }),
+      lower(r, { asked }) {
         const g = n(r.groups), s = n(r.size), total = g * s;
-        const sizeAsked = !!ask && 'role' in ask && ask.role === 'size';
+        const sizeAsked = asked.has('size');
         return {
           type: 'number_line', min: 0, max: total, step: 1,
           jumps: Array.from({ length: g }, (_, k) => ({ from: k * s, to: (k + 1) * s, ...(sizeAsked ? {} : { label: `+${s}` }) })),

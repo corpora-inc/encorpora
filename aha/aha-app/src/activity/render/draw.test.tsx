@@ -40,6 +40,10 @@ describe('drawing IR renderers', () => {
     assert.ok(Object.keys(ICONS).length >= 200);
     for (const name of ['apple', 'apples', 'cherries', 'buses', 'puppy', 'traffic_cone', 'umbrella', 'basket']) assert.ok(hasIcon(name), name);
     assert.equal(hasIcon('pinecone'), false);
+    assert.equal(resolveIcon('rates'), resolveIcon('zzz'), 'singular by spelling rules: "rates" is not a rat');
+    assert.equal(resolveIcon('cares'), resolveIcon('zzz'));
+    assert.equal(resolveIcon('boxes'), resolveIcon('box'));
+    assert.equal(resolveIcon('cherries'), resolveIcon('cherry'));
     assert.equal(resolveIcon('pinecone'), resolveIcon('zzz'), 'unknown names share the neutral counter');
     for (const proto of ['constructor', 'constructors', 'tostring', 'hasownproperty', 'valueof', '__proto__']) assert.equal(resolveIcon(proto), resolveIcon('zzz'), proto);
     const html = render({ type: 'picture', id: 'p', alt: 'a', groups: [{ icon: 'constructor', count: 3 }] });

@@ -68,13 +68,19 @@ export interface RoleSpec { kinds: readonly QuantityKind[]; nullable?: boolean }
 export interface BoundRole { id: string; decl: QuantityDecl; value: Value }
 /** A structure's roles bound to values; a nullable role left empty is null. */
 export type Roles<R extends string> = Readonly<Record<R, BoundRole | null>>;
-/** What an ask names, from one structure's point of view: one of its roles or measures, or nothing of it. */
-export type AskTarget = { role: string } | { measure: string } | null;
+/**
+ * What the ask names, from one structure's point of view: the names of its roles and measures that
+ * are the ask (every role bound to the asked quantity: a square binds w and h to one side), or none.
+ */
+export type Asked = ReadonlySet<string>;
+export const NOTHING_ASKED: Asked = new Set();
 
 export interface MeasureDef<R extends string> {
   kind: QuantityKind;
   /** Roles the measure is computed from; it exists only when all of them are bound. */
   inputs: readonly R[];
+  /** Nullable roles the value also reads when they are bound (a fraction's complement reads its wholes). */
+  reads?: readonly R[];
   value(roles: Roles<R>): Value | Issue;
   /** What the measure counts, for its placeholders ("12 apples"). */
   noun(roles: Roles<R>): Noun | null;
@@ -82,7 +88,7 @@ export interface MeasureDef<R extends string> {
   means: string;
 }
 export interface Region { id: string; value: Value; label: string }
-export interface LowerCtx { grade: number; ask: AskTarget }
+export interface LowerCtx { grade: number; asked: Asked }
 /** A drawing without the id and alt the resolver adds. */
 export type Drawing = DrawFigure extends infer F ? F extends DrawFigure ? Omit<F, 'id' | 'alt'> : never : never;
 
@@ -93,7 +99,7 @@ export interface ViewDef<R extends string> {
   /** Act forms this view hosts with `on`. */
   accepts: readonly ViewForm[];
   /** What the learner can learn from the view, per role and measure (README §7). */
-  reveals(roles: Roles<R>, ask: AskTarget): Readonly<Record<string, Reveal>>;
+  reveals(roles: Roles<R>, asked: Asked): Readonly<Record<string, Reveal>>;
   /** Tappable regions and the value each stands for (README §8.3). */
   regions?(roles: Roles<R>): Region[];
   /** View-specific limits on the bound roles (unit squares need whole sides, a set has one whole). */

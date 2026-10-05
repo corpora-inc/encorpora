@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { rational } from '../../learning/rational';
 import { drawingProblems, type DrawFigure } from '../draw';
 import { formatPlain, type QuantityKind, type UnitId, type Value } from './quantity';
-import { FORM_GRADES, RESPONSE_FORMS, isIssue, type BoundRole, type Roles } from './registry';
+import { FORM_GRADES, NOTHING_ASKED, RESPONSE_FORMS, isIssue, type BoundRole, type Roles } from './registry';
 import { STRUCTURES, STRUCTURE_KINDS, structureDef } from './structures';
 
 const role = (id: string, kind: QuantityKind, q: bigint | [bigint, bigint], unit: UnitId | null = null, noun: BoundRole['decl']['noun'] = null): BoundRole => {
@@ -15,8 +15,8 @@ const measure = (kind: keyof typeof STRUCTURES, name: string, roles: Roles<strin
   assert.ok(!isIssue(v));
   return v;
 };
-const drawn = (kind: keyof typeof STRUCTURES, view: string, roles: Roles<string>, grade = 3, ask: Parameters<ReturnType<typeof structureDef>['views'][string]['lower']>[1]['ask'] = null) => {
-  const d = structureDef(kind).views[view]!.lower(roles, { grade, ask });
+const drawn = (kind: keyof typeof STRUCTURES, view: string, roles: Roles<string>, grade = 3, asked: readonly string[] = []) => {
+  const d = structureDef(kind).views[view]!.lower(roles, { grade, asked: new Set(asked) });
   const fig = { ...d, id: 'f', alt: 'drawing' } as DrawFigure;
   assert.deepEqual(drawingProblems(fig), [], `${kind}/${view} lowers to a valid drawing`);
   return fig;
@@ -48,7 +48,7 @@ describe('registry', () => {
     for (const kind of STRUCTURE_KINDS) {
       const def = structureDef(kind);
       for (const [name, v] of Object.entries(def.views)) {
-        const rv = v.reveals(roles[kind as keyof typeof roles] as never, null);
+        const rv = v.reveals(roles[kind as keyof typeof roles] as never, NOTHING_ASKED);
         assert.deepEqual(Object.keys(rv).sort(), [...Object.keys(def.roles), ...Object.keys(def.measures)].sort(), `${kind}.${name}`);
       }
     }
@@ -67,10 +67,10 @@ describe('equal_groups', () => {
   it('draws jumps on a number line and hides their size when it is asked', () => {
     const line = drawn('equal_groups', 'jumps', r) as Extract<DrawFigure, { type: 'number_line' }>;
     assert.deepEqual(line.jumps, [{ from: 0, to: 4, label: '+4' }, { from: 4, to: 8, label: '+4' }, { from: 8, to: 12, label: '+4' }]);
-    const asked = drawn('equal_groups', 'jumps', r, 3, { role: 'size' }) as Extract<DrawFigure, { type: 'number_line' }>;
+    const asked = drawn('equal_groups', 'jumps', r, 3, ['size']) as Extract<DrawFigure, { type: 'number_line' }>;
     assert.ok(asked.jumps!.every(j => j.label === undefined));
-    assert.equal(STRUCTURES.equal_groups.views.jumps.reveals(r, { role: 'size' }).size, 'countable');
-    assert.equal(STRUCTURES.equal_groups.views.jumps.reveals(r, null).total, 'shown');
+    assert.equal(STRUCTURES.equal_groups.views.jumps.reveals(r, new Set(['size'])).size, 'countable');
+    assert.equal(STRUCTURES.equal_groups.views.jumps.reveals(r, NOTHING_ASKED).total, 'shown');
   });
   it('holds groups and size to the grade', () => {
     assert.deepEqual(STRUCTURES.equal_groups.invariants(r, 3), []);
@@ -114,9 +114,11 @@ describe('rect_area', () => {
   it('labels both sides, shows "?" for an asked side, and marks extreme shapes not to scale', () => {
     const g = drawn('rect_area', 'labeled', r) as Extract<DrawFigure, { type: 'geometry' }>;
     assert.deepEqual(g.shapes.filter(s => s.kind === 'dimension').map(s => (s as { label: string }).label), ['5 cm', '4 cm']);
-    const asked = drawn('rect_area', 'labeled', r, 3, { role: 'h' }) as Extract<DrawFigure, { type: 'geometry' }>;
+    const asked = drawn('rect_area', 'labeled', r, 3, ['h']) as Extract<DrawFigure, { type: 'geometry' }>;
     assert.deepEqual(asked.shapes.filter(s => s.kind === 'dimension').map(s => (s as { label: string }).label), ['5 cm', '?']);
-    assert.equal(STRUCTURES.rect_area.views.labeled.reveals(r, { role: 'h' }).h, 'hidden');
+    const square = drawn('rect_area', 'labeled', { h: role('s', 'length', 6n, 'm'), w: role('s', 'length', 6n, 'm') }, 4, ['h', 'w']) as Extract<DrawFigure, { type: 'geometry' }>;
+    assert.deepEqual(square.shapes.filter(s => s.kind === 'dimension').map(s => (s as { label: string }).label), ['?', '?'], 'a square asks both sides at once');
+    assert.equal(STRUCTURES.rect_area.views.labeled.reveals(r, new Set(['h'])).h, 'hidden');
     const long = drawn('rect_area', 'labeled', { h: role('h', 'length', 2n, 'm'), w: role('w', 'length', 30n, 'm') }, 5) as Extract<DrawFigure, { type: 'geometry' }>;
     assert.equal(long.notToScale, true);
     const decimal = drawn('rect_area', 'labeled', { h: role('h', 'length', [5n, 2n], 'm'), w: role('w', 'length', [3n, 4n], 'm') }, 5) as Extract<DrawFigure, { type: 'geometry' }>;

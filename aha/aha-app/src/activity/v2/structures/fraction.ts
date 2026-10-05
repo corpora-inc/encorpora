@@ -14,9 +14,13 @@ import { n, req, within } from './common';
 
 type R = 'parts' | 'selected' | 'wholes';
 type V = 'rect' | 'circle' | 'strip' | 'set' | 'line';
-/** Denominators each grade works with (CCSS: halves and fourths in grade 1; thirds join in grade 2; 2, 3, 4, 6, 8 in grade 3). */
+/**
+ * Denominators each grade works with (CCSS: halves and fourths in grade 1; thirds join in grade 2;
+ * 2, 3, 4, 6, 8 in grade 3; hundredths in grade 4). A view that cannot draw a denominator (a circle of
+ * a hundred slices) is rejected by the drawing limits (L2).
+ */
 const DENOMINATORS: Record<number, readonly number[]> = {
-  1: [2, 4], 2: [2, 3, 4], 3: [2, 3, 4, 6, 8], 4: [2, 3, 4, 5, 6, 8, 10, 12], 5: [2, 3, 4, 5, 6, 7, 8, 9, 10, 12],
+  1: [2, 4], 2: [2, 3, 4], 3: [2, 3, 4, 6, 8], 4: [2, 3, 4, 5, 6, 8, 10, 12, 100], 5: [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 100],
 };
 const wholesOf = (r: Roles<R>) => r.wholes ? n(r.wholes) : 1;
 const fractionValue = (num: bigint, den: bigint): Value => ({ q: rational(num, den), power: 0, unit: null, form: { kind: 'fraction', n: num, d: den } });
@@ -44,7 +48,7 @@ export const fraction: StructureDef<'fraction', R, V> = {
       value: r => fractionValue(req(r, 'selected').value.q.n, req(r, 'parts').value.q.n), noun: () => null,
     },
     complement: {
-      kind: 'fraction', inputs: ['parts', 'selected'], means: 'the unselected parts / parts',
+      kind: 'fraction', inputs: ['parts', 'selected'], reads: ['wholes'], means: 'the unselected parts / parts',
       value: r => { const p = req(r, 'parts').value.q.n; return fractionValue(p * BigInt(wholesOf(r)) - req(r, 'selected').value.q.n, p); }, noun: () => null,
     },
     unit: { kind: 'fraction', inputs: ['parts'], means: '1 / parts', value: r => fractionValue(1n, req(r, 'parts').value.q.n), noun: () => null },

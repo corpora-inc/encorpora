@@ -12,7 +12,7 @@ import { drawingProblems } from '../draw';
 import { evaluate, formatValue, isValueAttr, parseExpr, refsOf, sameValue, type Described, type Expr, type Result, type Rich, type Value, type ValueAttr } from './quantity';
 import { parseTempl, proseIssues, renderTempl, type Placeholder, type Templ } from './text';
 import { bindModel, problem, type Model, type Problem, type Target } from './model';
-import { BANDS, FORM_GRADES, gradeLabel, gradeNum, inRange, isAnswerForm, rangeLabel, type AskTarget, type Band, type Drawing, type Reveal, type ViewDef } from './registry';
+import { BANDS, FORM_GRADES, NOTHING_ASKED, gradeLabel, gradeNum, inRange, isAnswerForm, rangeLabel, type Asked, type Band, type Drawing, type Reveal, type ViewDef } from './registry';
 import { bandWire, type WireActivity, type WireBlock } from './wire';
 
 export interface ValidateOptions {
@@ -23,8 +23,8 @@ export interface ValidateOptions {
   locale?: string;
 }
 export type RenderedBlock = { type: 'text'; text: string } | { type: 'math'; tex: string } | { type: 'view'; of: string };
-/** The ask, parsed and valued; `target` is set when it is a single reference. */
-export interface Ask { expr: Expr; value: Value; target: Target | null; described: Described }
+/** The ask: one reference, valued; `target` is canonical (an alias resolves to what it names). */
+export interface Ask { expr: Expr; value: Value; target: Target; described: Described }
 export interface CheckedActivity {
   wire: WireActivity;
   grade: number;
@@ -126,10 +126,12 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   let ask: Ask | null = null;
   if ('ask' in r) {
     const v = valued(r.ask, 'response.ask');
-    if (v) {
-      const single = v.expr.t === 'ref' ? model.target(v.expr.path) : null;
-      const target = single?.ok ? single.value : null;
-      ask = { ...v, target, described: target ? model.describe(target) : { value: v.value, noun: null, kind: v.value.power === 2 ? 'area' : v.value.power === 1 ? 'length' : v.value.q.d === 1n ? 'number' : 'fraction' } };
+    // The ask is one reference, so the answer is always a named, typed thing: a computed answer is a
+    // derived quantity with its own kind, noun and unit (left = "s.total - e"), never a bare expression.
+    if (v && v.expr.t !== 'ref') p('response.ask', 'ask_not_ref', 'The ask names one quantity, role or measure. Declare anything computed as a derived quantity (e.g. left = "s.total - e") and ask that.');
+    else if (v) {
+      const target = model.canonical((model.target((v.expr as Extract<Expr, { t: 'ref' }>).path) as { ok: true; value: Target }).value);
+      ask = { ...v, target, described: model.describe(target) };
     }
   }
   const candidates = ('candidates' in r ? r.candidates ?? [] : []).flatMap((c, i) => { const v = valued(c, `response.candidates[${i}]`); return v ? [v] : []; });
@@ -144,22 +146,36 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   if (r.form === 'tap' && r.on === null && viewed.size < 2) p('response.on', 'tap_views', 'A tap among views needs at least two views in the prompt; or name the view to tap inside with on.');
   if (problems.length) return { ok: false, problems };
 
-  // Which structure role or measure the ask is, per structure.
-  const askTargetFor = (sid: string): AskTarget => {
+  // The names, per structure, of the roles and measure that are the ask (every role bound to it).
+  const askedIn = (sid: string): Asked => {
     const t = ask?.target;
-    if (!t) return null;
-    if (t.kind === 'measure') return t.structure === sid ? { measure: t.measure } : null;
-    const b = (model.bindings.get(t.id) ?? []).find(x => x.structure === sid);
-    return b ? { role: b.role } : null;
+    if (!t) return NOTHING_ASKED;
+    if (t.kind === 'measure') return t.structure === sid ? new Set([t.measure]) : NOTHING_ASKED;
+    return new Set((model.bindings.get(t.id) ?? []).filter(b => b.structure === sid).map(b => b.role));
   };
-  const reveals = new Map([...viewed].map(([sid, view]) => [sid, view.reveals(model.structures.get(sid)!.roles, askTargetFor(sid))]));
+  const reveals = new Map([...viewed].map(([sid, view]) => [sid, view.reveals(model.structures.get(sid)!.roles, askedIn(sid))]));
   const answerForm = isAnswerForm(r.form);
+  /**
+   * Whether a revealed value states the answer (answer forms, README §8.1): it is the ask (through
+   * aliases), or it has the answer's kind, noun or unit and value, or it is computed from the answer
+   * and equals it. A coincidentally equal number of another kind ("4 groups" when 4 apples are
+   * asked) states nothing.
+   */
+  const statesAnswer = (t: Target, d: Described): boolean => {
+    if (!ask) return false;
+    const c = model.canonical(t);
+    if (c.key === ask.target.key) return true;
+    if (describedEqual(d, ask.described)) return true;
+    return sameValue(d.value, ask.value) && d.value.power === ask.value.power && d.value.unit === ask.value.unit && model.dependsOn(c, ask.target.key);
+  };
 
   // Templates: parse, closed-list rules, placeholders under the policy, render.
+  // Candidates are printed as the options anyway, so naming one in the prose leaks nothing.
+  const candidateKeys = new Set(candidates.flatMap(c => { if (c.expr.t !== 'ref') return []; const t = model.target(c.expr.path); return t.ok ? [model.canonical(t.value).key] : []; }));
   const promptShown = new Set<string>();
   const used = new Set<string>();
   type Scope = 'prompt' | 'hint' | 'explanation';
-  const resolver = (scope: Scope, path: string) => (ph: Placeholder): Result<Rich | 'mask'> => {
+  const resolver = (scope: Scope) => (ph: Placeholder): Result<Rich | 'mask'> => {
     const [head, member, attrRaw] = ph.path;
     used.add(head!);
     const fail = (code: string, message: string) => ({ ok: false as const, error: { code, message } });
@@ -180,21 +196,22 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     if (isQuantity && bindings.length) return fail('role_by_id', `${head} is bound to ${bindings[0]!.structure}.${bindings[0]!.role}; name it through the role: {{${bindings[0]!.structure}.${bindings[0]!.role}${attr ? `.${attr}` : ''}}}.`);
     if (t.value.kind === 'quantity') used.add(t.value.id);
     const described = model.describe(t.value);
-    const masked = scope !== 'explanation' && answerForm && ask?.target?.key === t.value.key;
-    if (masked) {
+    const key = model.canonical(t.value).key;
+    const guarded = scope !== 'explanation' && answerForm && !!ask;
+    if (guarded && key === ask!.target.key) {
       if (VALUE_BEARING.has(attr)) return { ok: true, value: 'mask' };
       if (attr === 'noun' || attr === 'unit') return fail('answer_inflected', `{{${ph.path.join('.')}}} is inflected for the answer's value; use .one or .other.`);
-    } else if (scope !== 'explanation' && answerForm && ask && VALUE_BEARING.has(attr) && describedEqual(described, ask.described)) {
-      return fail('answer_stated', `{{${ph.path.join('.')}}} states a quantity equal to the answer (same kind, noun and value).`);
+    } else if (guarded && VALUE_BEARING.has(attr) && !candidateKeys.has(key) && statesAnswer(t.value, described)) {
+      return fail('answer_stated', `{{${ph.path.join('.')}}} states the answer: it equals the answer and is the same kind of quantity, or is computed from it.`);
     }
-    if (scope === 'prompt' && VALUE_BEARING.has(attr)) promptShown.add(t.value.key);
+    if (scope === 'prompt' && VALUE_BEARING.has(attr)) promptShown.add(key);
     return formatValue(described, attr, locale);
   };
   const renderOne = (source: string, mode: 'text' | 'math', scope: Scope, path: string): string | null => {
     const t = parseTempl(source, mode);
     if (!t.ok) { p(path, t.error.code, t.error.message); return null; }
     for (const i of proseIssues(t.value, { locale })) p(path, i.code, i.message);
-    const out = renderTempl(t.value as Templ, resolver(scope, path));
+    const out = renderTempl(t.value as Templ, resolver(scope));
     if (!out.ok) { p(path, out.error.code, out.error.message); return null; }
     return out.value;
   };
@@ -207,48 +224,49 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   const explanation = renderOne(a.support.explanation, 'text', 'explanation', 'support.explanation') ?? '';
   if (problems.length) return { ok: false, problems };
 
-  // The reveal rule (README §7).
+  // The reveal rule (README §7). Knowability is decided on canonical targets.
   const memo = new Map<string, Known>();
-  const status = (t: Target): Known => {
+  const status = (t0: Target): Known => {
+    const t = model.canonical(t0);
     const cached = memo.get(t.key);
     if (cached !== undefined) return cached;
     memo.set(t.key, 'unknown');
-    let k: Known = 'unknown';
-    if (promptShown.has(t.key)) k = 'shown';
+    let k: Known = promptShown.has(t.key) ? 'shown' : 'unknown';
     if (t.kind === 'quantity') {
       for (const b of model.bindings.get(t.id) ?? []) { const rv = reveals.get(b.structure)?.[b.role]; if (rv && rv !== 'hidden') k = stronger(k, rv); }
-      const q = model.quantities.get(t.id)!;
-      if (k === 'unknown' && q.derived && refsOf(q.expr).every(path => { const r2 = model.target(path); return r2.ok && status(r2.value) !== 'unknown'; })) k = 'computable';
+      // A derived value is computable from knowable sources; a given (no references) is known only if shown or countable.
+      if (k === 'unknown' && !model.isGiven(t.id) && refsOf(model.quantities.get(t.id)!.expr).every(path => { const r2 = model.target(path); return r2.ok && status(r2.value) !== 'unknown'; })) k = 'computable';
     } else {
       const rv = reveals.get(t.structure)?.[t.measure];
       if (rv && rv !== 'hidden') k = stronger(k, rv);
       if (k === 'unknown') {
-        const s = model.structures.get(t.structure)!;
-        const inputs = s.def.measures[t.measure]!.inputs.map(role => s.roles[role]);
-        if (inputs.every(b => b && status({ kind: 'quantity', key: b.id, id: b.id }) !== 'unknown')) k = 'computable';
+        const s = model.structures.get(t.structure)!, def = s.def.measures[t.measure]!;
+        const reads = [...def.inputs, ...(def.reads ?? [])].flatMap(role => { const b = s.roles[role]; return b ? [b] : []; });
+        if (reads.every(b => status({ kind: 'quantity', key: b.id, id: b.id }) !== 'unknown')) k = 'computable';
       }
     }
     memo.set(t.key, k);
     return k;
   };
-  const refTargets = (e: Expr) => refsOf(e).map(path => model.target(path)).flatMap(t => t.ok ? [t.value] : []);
   if (ask) {
-    const unknown = refTargets(ask.expr).filter(t => status(t) === 'unknown');
+    const t = ask.target;
     if (answerForm) {
-      if (unknown.length) p('response.ask', 'ask_unanswerable', `The learner cannot find ${unknown.map(t => t.key).join(', ')}: nothing in the prose or the views shows it, makes it countable or lets it be computed.`);
-      const t = ask.target;
-      if (t) {
-        const viewReveal = [...reveals].map(([sid, rv]) => {
-          const at = askTargetFor(sid);
-          return at ? rv['role' in at ? at.role : at.measure] : undefined;
-        });
-        if (viewReveal.includes('shown')) p('response.ask', 'answer_shown', `A view prints ${t.key}, which is the answer.`);
-        if (t.kind === 'quantity' && !model.quantities.get(t.id)!.derived && !viewReveal.includes('countable'))
-          p('response.ask', 'ask_asserted', `${t.key} is a given literal that no view makes countable, so the key would be asserted, not computed; ask a measure or a derived quantity.`);
+      if (status(t) === 'unknown') p('response.ask', 'ask_unanswerable', `The learner cannot find ${t.key}: nothing in the prose or the views shows it, makes it countable, or gives what it is computed from.`);
+      // Every view, not only the ask's own structure: another view may print the same quantity.
+      for (const [sid, rv] of reveals) {
+        const s = model.structures.get(sid)!;
+        for (const [name, reveal] of Object.entries(rv)) {
+          if (reveal !== 'shown') continue;
+          const shown = Object.hasOwn(s.def.roles, name) ? (s.roles[name] ? { kind: 'quantity' as const, key: s.roles[name]!.id, id: s.roles[name]!.id } : null) : { kind: 'measure' as const, key: `${sid}.${name}`, structure: sid, measure: name };
+          if (shown && statesAnswer(shown, model.describe(shown))) p('response.ask', 'answer_shown', `The ${s.wire.show} view of ${sid} prints ${sid}.${name}, which states the answer.`);
+        }
       }
-    } else {
-      if (ask.target && !promptShown.has(ask.target.key)) p('response.ask', 'target_not_given', `${r.form} acts toward ${ask.target.key}, but the prompt never states it; name it with a placeholder.`);
-      if (unknown.length && !ask.target) p('response.ask', 'ask_unanswerable', `The learner cannot find ${unknown.map(t => t.key).join(', ')}.`);
+      const countable = t.kind === 'quantity' && (model.bindings.get(t.id) ?? []).some(b => reveals.get(b.structure)?.[b.role] === 'countable');
+      if (t.kind === 'quantity' && model.isGiven(t.id) && !countable)
+        p('response.ask', 'ask_asserted', `${t.key} is a value the model states outright and no view makes countable, so the key would be asserted, not computed; ask a measure or a derived quantity.`);
+    } else if (!promptShown.has(t.key)) {
+      // Act forms: the target is the instruction. Whether the hosting view already marks it is checked when the response compiles.
+      p('response.ask', 'target_not_given', `${r.form} acts toward ${t.key}, but the prompt never states it; name it with a placeholder.`);
     }
   }
 
@@ -266,7 +284,7 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   const drawings = new Map<string, Drawing>();
   for (const [sid, view] of viewed) {
     const s = model.structures.get(sid)!;
-    const drawing = view.lower(s.roles, { grade, ask: askTargetFor(sid) });
+    const drawing = view.lower(s.roles, { grade, asked: askedIn(sid) });
     for (const msg of drawingProblems({ ...drawing, id: sid, alt: 'drawing' } as Parameters<typeof drawingProblems>[0])) problems.push(problem('L2', `model.structures[${s.index}].show`, { code: 'draw', message: msg }));
     drawings.set(sid, drawing);
   }
