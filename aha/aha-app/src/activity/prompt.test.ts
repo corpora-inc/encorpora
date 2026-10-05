@@ -49,7 +49,7 @@ describe('activity batch prompt', () => {
   it('asks for creativity, forbids repeating recentContent, and allows repetition only for reviews and fluency', () => {
     const p = buildActivityPrompt(realisticSummary());
     for (const system of [p.system, p.structuredSystem]) {
-      for (const phrase of ['repeat', 'be creative', 'many cultures', 'playful puzzle', 'spot the error', "which doesn't belong", 'fill the blank', 'recentContent', 'dueReviews or fluency', 'nowhere else', 'grid {unit:1}', 'unitSquares'])
+      for (const phrase of ['never bend another type', 'repeat', 'be creative', 'many cultures', 'playful puzzle', 'spot the error', "which doesn't belong", 'fill the blank', 'recentContent', 'dueReviews or fluency', 'nowhere else', 'grid {unit:1}', 'unitSquares'])
         assert.ok(system.includes(phrase), phrase);
     }
     assert.match(p.user, /"recentContent":\{"n":12,"contexts":\[/);

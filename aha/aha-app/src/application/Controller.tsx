@@ -865,7 +865,9 @@ export default function Controller() {
       selectedModel.current = chooseTutorModel(await getNativeClient().models());
       const runtime = await loadAiActivities();
       const harder = wantsHarder.current;
-      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder);
+      // Shown and queued AI activities join the variety fingerprint, so the next batch does not repeat them (#894).
+      const pendingSpecs = [...(currentAi.current ? [currentAi.current.spec] : []), ...aiQueue.current.items.map(i => i.spec)];
+      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder, pendingSpecs);
       // Checked with no await before reply(): a Stop after this point reaches the provider through cancel().
       if (stopped()) { logEvent("info", "ai-skip", `${stage}: stopped by the learner before sending; no paid request`); return false; }
       if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed before sending; no batch requested`, "info"); return false; }
