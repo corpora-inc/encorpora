@@ -45,6 +45,11 @@ What AHA adopts:
     IPC `Value` → `ChatRequest` → the body the SDK sends. It has a negative control that a sorted `Value` fails.
   End to end, this also needs the gateway image with #1143; not live-verified. The validator still reads by key, so either
   order is accepted.
+  `preserve_order` applies to the whole AHA binary. Backup integrity (`storage.rs` `digest`) therefore now hashes the
+  canonical member-sorted form, which is the bytes every earlier build hashes. Backups verify in both directions between
+  this build and older ones (`backup_digest_is_canonical_whatever_the_json_member_order`). Same-key recovery is unaffected:
+  an older journal entry was stored with its schema already sorted and is resent as stored. The gateway's idempotency
+  fingerprint also hashes the schema sorted (#1143 golden digests).
 - **Typed catalogue (#1137).** `models.ts` and `structuredCapability` read `model.capabilities.structured_output === true`
   from the SDK's typed `Model`. Limits and prices are `bigint`. The model-choice policy (#905) is unchanged. The SDK decodes an
   absent `capabilities` as `{}`, so the reason is logged as `structured_output_absent`; the `capabilities_absent` and
