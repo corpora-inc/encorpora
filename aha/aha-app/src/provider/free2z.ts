@@ -83,6 +83,26 @@ export function admitEstimate(estimate: Estimate, budget: AppBudget, availableFa
     throw new TutorServiceError('cap_exceeded', 'This app\u2019s Free2Z budget cannot cover the next activities. No paid request was sent.');
   return {hold2z: hold, availableMilli2z: available, capRemainingMilli2z: typeof cap === 'bigint' ? cap : null};
 }
+/**
+ * Every paid request sets `max_output_tokens_strict`: the output budget is required, not a ceiling. Free2Z refuses
+ * an unaffordable request (HTTP 402/403, `details.reason`) at zero cost instead of silently shrinking the budget and
+ * charging for a truncated batch. Relies on gateway image 70b74edd9 (da1862531) or later.
+ */
+const REFUSAL_CODES = ['insufficient_balance', 'cap_exceeded'];
+const NOT_ENOUGH_2Z = 'Not enough 2Z for the next set of activities. Nothing was charged.';
+/**
+ * A strict refusal from Free2Z, mapped to a calm zero-charge error; `undefined` for anything else (which stays uncertain).
+ * The native transport AHA uses keeps `status` and `code` but drops `details`, so the gateway's refusal code
+ * (`insufficient_balance`, `cap_exceeded`) counts the same as an HTTP 402/403 carrying `details.reason`.
+ */
+export function strictRefusal(error: unknown): TutorServiceError | undefined {
+  if (!(error instanceof SdkError) || (error.status !== 402 && error.status !== 403) || error.callId || error.record) return undefined;
+  const details: unknown = error.details, reason = object(details) ? details.reason : undefined;
+  const known = REFUSAL_CODES.includes(error.code);
+  if (!known && (typeof reason !== 'string' || !reason)) return undefined;
+  const code = typeof reason === 'string' && REFUSAL_CODES.includes(reason) ? reason : known ? error.code : 'not_enough_2z';
+  return new TutorServiceError(code, NOT_ENOUGH_2Z);
+}
 /** Safe, display-only spending figures from the last estimate and settlement. No prompts, keys or ids. */
 export interface SpendingSnapshot {
   availableMilli2z?: bigint; capRemainingMilli2z?: bigint | null;
@@ -251,7 +271,12 @@ export class Free2zTutor {
   }
   /** Estimate, then admit it against the balance and the budget remainder. Records display-only figures. */
   private async admit(request: ChatRequest, budget: AppBudget, op?: Pick<Operation, 'context'>): Promise<AdmittedEstimate> {
-    const estimate = await this.client.estimate(request);
+    let estimate: Estimate;
+    try { estimate = await this.client.estimate(request); }
+    catch (error) { throw strictRefusal(error) ?? error; }
+    // Strict means the full budget or a refusal. A smaller returned budget would be a truncated, charged batch.
+    if (typeof estimate.max_output_tokens !== 'bigint' || (request.max_output_tokens !== undefined && estimate.max_output_tokens < request.max_output_tokens))
+      throw new TutorServiceError('not_enough_2z', NOT_ENOUGH_2Z);
     // An estimate may omit the balance figure; then the authoritative balance read decides.
     const fallback = estimate.available_milli_2z === undefined ? (await this.client.balance()).available_milli_2z : undefined;
     const admitted = admitEstimate(estimate, budget, fallback);
@@ -342,7 +367,7 @@ export class Free2zTutor {
       await this.archiveFinalized(ledger);
       const catalog = await this.client.models();
       if (!catalog.models.some(m => m.id === model)) throw new TutorServiceError('model_unavailable', 'Choose a currently available Free2Z model.');
-      const request: ChatRequest = { model, messages: [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}], max_output_tokens: BigInt(maxOutputTokens) };
+      const request: ChatRequest = { model, messages: [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}], max_output_tokens: BigInt(maxOutputTokens), max_output_tokens_strict: true };
       // No app-side ceiling: the user's own budget (if any) and balance bound the call, as Free2Z reports them.
       await this.admit(request, authorization.verifiedGrant.budget, {context: savedContext});
       const after = await this.current();
@@ -352,7 +377,7 @@ export class Free2zTutor {
       if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
         throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
       await this.persist(ledger);
-      return await this.run(ledger, op, request, authorization);
+      return await this.run(ledger, op, request, authorization, true);
     } finally { this.active = undefined; this.busy = false; }
   }
   /** Explicit same-key recovery only; the gateway may replay just a receipt, not content. */
@@ -370,7 +395,7 @@ export class Free2zTutor {
       if (!Number.isFinite(age) || age < 0 || age >= 24 * 60 * 60 * 1000) throw new TutorServiceError('recovery_expired', 'The same-key recovery window has expired. No replacement paid request was sent.');
       const session = await this.current();
       this.verifyAuthorization(session, authorization);
-      const request: ChatRequest = {model:op.request.model,messages:op.request.messages,max_output_tokens:BigInt(op.request.maxOutputTokens)};
+      const request: ChatRequest = {model:op.request.model,messages:op.request.messages,max_output_tokens:BigInt(op.request.maxOutputTokens),max_output_tokens_strict:true};
       // An opening journal entry may never have reached the gateway. A same-key call is potentially
       // billable, so re-prove affordability under today's grant, balance and budget remainder.
       await this.admit(request, authorization.verifiedGrant.budget, op);
@@ -378,15 +403,22 @@ export class Free2zTutor {
       if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'Recovery was cancelled before sending.');
       op.generation = session.generation;
       await this.persist(ledger);
-      return await this.run(ledger,op,request,authorization);
+      return await this.run(ledger,op,request,authorization,false);
     } finally { this.active = undefined; this.busy = false; }
   }
-  private async run(ledger: Ledger, op: Operation, request: ChatRequest, authorization: PaidAuthorization): Promise<TutorReply> {
+  /** `fresh`: this is the operation's first send; nothing about it can have reached the gateway before. */
+  private async run(ledger: Ledger, op: Operation, request: ChatRequest, authorization: PaidAuthorization, fresh: boolean): Promise<TutorReply> {
     let completed = false;
+    // A refusal that provably cost nothing; settles the entry as released/0 so it cannot block later calls.
+    let zeroCharge = false;
     try {
       // Durable writes and recovery can yield: refresh real consent, balance and remainder at the send boundary.
       const verifiedGrant = await verifyPaidGrant(this.client, authorization);
-      await this.admit(request, verifiedGrant.budget, op);
+      try { await this.admit(request, verifiedGrant.budget, op); }
+      catch (error) {
+        if (fresh && error instanceof TutorServiceError && (REFUSAL_CODES.includes(error.code) || error.code === 'not_enough_2z')) zeroCharge = true;
+        throw error;
+      }
       // The contract supplies a fresh snapshot, not an immutable per-operation spending guarantee.
       // The service independently enforces current consent; never infer policy identity from generation.
       // Persistence may have yielded for a long time. Fence again at the send boundary.
@@ -394,7 +426,14 @@ export class Free2zTutor {
       this.verifyAuthorization(beforeSend, {...authorization, verifiedGrant});
       if (beforeSend.generation !== op.generation || this.cancelled)
         throw new TutorServiceError('cancelled', 'Account changed or request cancelled before sending.');
-      const stream = await this.client.chat(request,{operationId:op.id,idempotencyKey:op.key}); this.active = stream;
+      let stream: ChatStream;
+      try { stream = await this.client.chat(request,{operationId:op.id,idempotencyKey:op.key}); }
+      catch (error) {
+        const refused = strictRefusal(error);
+        if (!refused) throw error;
+        zeroCharge = fresh; throw refused;
+      }
+      this.active = stream;
       if (this.cancelled) { await stream.cancel(); throw new TutorServiceError('cancelled', 'Delivery stopped; billing may still settle.'); }
       const session = await this.current();
       if (session.generation !== op.generation) { await stream.cancel(); throw new TutorServiceError('account_changed','Account changed while opening the request.'); }
@@ -431,6 +470,7 @@ export class Free2zTutor {
       return this.replyValue(op);
     } catch (error) {
       op.callId ??= this.active?.callId;
+      if (zeroCharge && op.state === 'opening' && !op.callId) { op.charge = {state: 'released', charged2z: '0'}; op.state = 'finalized'; }
       if (op.state !== 'finalized' && op.state !== 'settling') op.state = 'interrupted';
       // Cancellation must happen even when disk-full prevents a journal update.
       try { await this.active?.cancel(); } catch { /* original opening record remains uncertain */ }

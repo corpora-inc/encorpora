@@ -17,6 +17,7 @@ export function learningError(error: unknown): string {
     const messages: Record<string, string> = {
       insufficient_balance: 'Your Free2Z balance is too low for the next AI activities. You can add 2Z in Free2Z; nothing is added automatically.',
       cap_exceeded: 'This app’s Free2Z budget is used up for now. You can change it in Free2Z; adding balance alone does not change it.',
+      not_enough_2z: 'Not enough 2Z for the next set of activities. Nothing was charged.',
       ai_not_ready: 'Free2Z AI isn’t switched on for apps yet. Nothing was charged.',
       budget_pending: 'Free2Z is still setting up spending for this app. Nothing was charged.',
       insufficient_scope: 'Free2Z has not granted the access needed for this action. Sign in again to review the requested permissions.',
