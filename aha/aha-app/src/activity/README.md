@@ -100,7 +100,15 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    the `activities` array, and no read goes past the next one.
    The damaged activity is rejected as malformed and its neighbours are kept. Nothing is ever
    repaired.
-8. **Grading is local and deterministic.** Expression equivalence is checked by sampling the
+8. **Consistency.** On a fresh batch, every otherwise valid activity also goes through the semantic
+   lint (`semantics.ts`: one quantities adapter per figure type, compared with numbers and figure words
+   read generically from the prompt). It rejects, with a `consistency:` reason in the `ai-batch` log, a
+   prompt that points at a kind of figure the activity does not have ("this rectangle" drawn as a pie
+   chart), a picture or array whose groups contradict the stated structure (3 groups of 4 drawn as 2),
+   and a choice with more than one correct answer (four equal slices, one keyed). Its other rules are
+   measured before they are enforced. Restore (`verifySpec`) does not lint. `fixtures/inconsistent.ts`
+   holds the three live gpt-4o failures of 2026-10-05; no fixture in `fixtures/` is flagged.
+9. **Grading is local and deterministic.** Expression equivalence is checked by sampling the
    domain at points chosen by a seeded random generator (seeded with the activity id). Fraction
    form rules (`simplest`/`exact`) and polynomial form rules (`expanded`/`simplified`) produce
    tags such as `not_simplified`.
