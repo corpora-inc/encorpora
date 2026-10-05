@@ -52,8 +52,13 @@ name `¡AHA!`. Do not restore a Unicode executable name.
 
 Both delivered builds use supported SDK source revision
 `534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; source now pins `e95becd6517bada55ca933e4072ebf13bbbb3bff`
-(additive sign-in spend-cap hint, 500 2Z total; it also decodes `enforcement_reason`, and a reason contradicting
-`enforced` fails `grant()` closed) for the next build. Builds use the registered native client, runtime
+(additive sign-in spend-cap hint; it also decodes `enforcement_reason`, and a reason contradicting
+`enforced` fails `grant()` closed) for the next build. Source now applies the production
+"budget optional" policy (#879): any app budget the user sets in Free2Z, or none, with
+`enforced: false` (e.g. `platform_disabled`) meaning no paid calls and local practice. Sign-in
+suggests an optional 100 2Z monthly budget. Delivered builds still carry the test-era 500 2Z
+total gate. The new policy is fixture-tested, not live-verified; see
+[INTEGRATION_STATUS.md](INTEGRATION_STATUS.md#spending-policy-budget-optional-879). Builds use the registered native client, runtime
 grant verification and advertised model discovery. There is no compile-time
 AI-disable switch left to change. Backend activation is intended to work with
 these binaries if the published contract and client configuration stay stable;
@@ -69,8 +74,8 @@ AHA mobile sign-in. No AHA paid call or purchase has occurred.
 
 Do not begin paid acceptance until that checkpoint and remaining shared budget
 are reconciled. No top-ups are authorized. The account-specific authorization
-and aggregate limits are in the private runbook. Fresh service-enforced grants,
-app consent/allowance and balance must pass the app's checks. Never bypass grant
+and aggregate limits are in the private runbook. Fresh service-enforced grants
+and an estimate within balance and any app budget remainder must pass the app's checks. Never bypass grant
 verification, fabricate receipts or substitute mocks to claim completion.
 
 ## Next worker: execution order

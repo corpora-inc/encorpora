@@ -40,6 +40,8 @@ export interface StudioActivity {
 }
 /** An AI-authored Activity Spec rendered in the same focus stage as local practice. */
 export interface StudioSpecActivity {
+  /** The app's activity id. Model-written spec ids are not unique across batches. */
+  id?: string;
   spec: ActivitySpec;
   /** Supply after grading (gradeActivity); the stage then shows compact feedback and Next. */
   result?: GradeOutcome;
@@ -62,7 +64,8 @@ export interface StudioProps {
   onLearningVisibleChange?: (visible: boolean) => void;
   error?: string;
   feedback?: {
-    kind: "correct" | "retry" | "info";
+    /** nudge: first miss of a forgiving retry; the input stays open and nothing is revealed. */
+    kind: "correct" | "retry" | "nudge" | "info";
     title: string;
     message: string;
   };
@@ -81,6 +84,12 @@ export interface StudioProps {
     aiReady?: boolean;
     label?: string;
     balance?: string;
+    /** Read-only: the user's app budget as set in Free2Z, e.g. "100 2Z per month" or "No app budget". */
+    budget?: string;
+    /** What is left of that budget, when one is set and Free2Z has reported it. */
+    budgetLeft?: string;
+    /** Approximate 2Z per batch of AI activities (last settled charge, else the last estimate's upper bound). */
+    batchCost?: string;
     status?: string;
     purchaseAvailable?: boolean;
   };

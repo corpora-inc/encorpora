@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useId, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useId, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -23,7 +23,9 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import { ActivityView } from "../activity/render";
+// Lazy: the Activity Spec renderer (and zod, through its validator helpers) loads only when an AI
+// activity is shown, so local-practice startup does not pay for it.
+const ActivityView = lazy(() => import("../activity/render").then(m => ({ default: m.ActivityView })));
 import { ReportProblem } from "./ReportProblem";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
@@ -119,7 +121,7 @@ export function Studio(props: StudioProps) {
   const titleId = useId();
   const a = props.spec ? undefined : props.activity;
   const spec = props.spec;
-  const taskId = spec?.spec.id ?? a?.id;
+  const taskId = spec ? (spec.id ?? spec.spec.id) : a?.id;
   const hasTask = !!taskId;
   useEffect(() => {
     setAnswer("");
@@ -134,8 +136,16 @@ export function Studio(props: StudioProps) {
     if (!props.feedback) return;
     // The answer's feedback takes the learner's attention; an open nudge folds away (the icon reopens it).
     if (props.feedback.kind !== "info") setPanel(null);
-    feedbackRegion.current?.focus({ preventScroll: true });
+    if (props.feedback.kind !== "nudge") feedbackRegion.current?.focus({ preventScroll: true });
   }, [props.feedback?.kind, props.feedback?.title, props.feedback?.message]);
+  // A nudge hands the answer straight back for a quick fix once the controls are enabled again;
+  // the line itself is a live status. Choice and symbol answers focus their current or first option.
+  useEffect(() => {
+    if (props.feedback?.kind !== "nudge" || props.busy) return;
+    const field = document.getElementById(answerId) as HTMLElement | null;
+    const option = document.querySelector<HTMLElement>(`input[name="${answerId}"]:checked, input[name="${answerId}"], .focus-dock .answer-symbols button[aria-pressed="true"], .focus-dock .answer-symbols button`);
+    (field ?? option ?? feedbackRegion.current)?.focus({ preventScroll: true });
+  }, [props.feedback?.kind, props.feedback?.title, props.busy]);
   // A new nudge, explanation or worked example opens the help panel once; dismissing it keeps it closed.
   useEffect(() => {
     const key = props.hint ? `${taskId}|${props.hint}` : undefined;
@@ -247,6 +257,9 @@ export function Studio(props: StudioProps) {
       {props.feedback.kind === "retry" && props.feedback.message && panel !== "feedback" && (
         <button type="button" className="text-button see-how" onClick={() => setPanel("feedback")}>See how</button>
       )}
+      {props.feedback.kind === "nudge" && panel !== "help" && (
+        <button type="button" className="text-button see-how" disabled={props.busy} onClick={() => { setPanel("help"); props.onSupport("explain"); }}>See how</button>
+      )}
     </div>
   ) : null;
   const promptSize = a ? (a.prompt.length <= 22 ? "xl" : a.prompt.length <= 70 ? "l" : "m") : "m";
@@ -257,8 +270,9 @@ export function Studio(props: StudioProps) {
   const focusStage = spec ? (
     <div className="focus-stage is-spec" aria-busy={props.busy}>
       <div className="stage-focus-target" ref={promptRef} tabIndex={-1} role="group" aria-label="Problem" />
+      <Suspense fallback={<p className="stage-loading">Getting your activity ready…</p>}>
       <ActivityView
-        key={spec.spec.id}
+        key={taskId}
         spec={spec.spec}
         compact
         result={spec.result}
@@ -268,6 +282,7 @@ export function Studio(props: StudioProps) {
         dockTop={<>{errorLine}{helpPanel}{tools}</>}
         next={nextButton}
       />
+      </Suspense>
       {stopButton}
     </div>
   ) : a ? (
@@ -538,18 +553,21 @@ export function Studio(props: StudioProps) {
             {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
             {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
             {(props.account.connected || props.account.balance !== undefined) && (
-              <div className="balance-row">
-                <span>Available balance</span>
-                <strong>{props.account.balance ?? "Not checked yet"}</strong>
-              </div>
+              <dl className="balance-row">
+                <div><dt>Available balance</dt><dd>{props.account.balance ?? "Not checked yet"}</dd></div>
+                {props.account.budget && <div><dt>App budget</dt><dd>{props.account.budget}</dd></div>}
+                {props.account.budgetLeft && <div><dt>Budget left</dt><dd>{props.account.budgetLeft}</dd></div>}
+                {props.account.batchCost && <div><dt>Each batch of activities</dt><dd>{props.account.batchCost}</dd></div>}
+              </dl>
             )}
             {props.account.status && <p className="account-status">{props.account.status}</p>}
             {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (
               <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
             )}
             <div className="settings-buttons">
-              {props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
-              {props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
+              {/* Account-only actions exist only once connected; disconnected shows Connect alone. */}
+              {props.account.connected && props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
+              {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
               {props.account.connected ? (
                 <>

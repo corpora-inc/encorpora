@@ -62,26 +62,56 @@ export interface Skill {
   coverage: 'verified-practice' | 'guided-only';
   fluencyTargetMs?: number;
 }
-export interface AttemptEvidence {
+interface EvidenceBase {
   id: string;
   activityId: string;
+  /** The primary skill. Spec evidence also lists every tagged skill in spec.skillIds. */
   skillId: string;
   at: string;
   correct: boolean;
   answer: string;
-  expected: string;
-  task: CanonicalTask;
   variant: string;
   mode: Activity['mode'];
-  choices?: string[];
   hintsUsed: number;
   /** Only foreground, visible, active time. null means no reliable timing. */
   activeMs: number | null;
   interrupted: boolean;
   independent: boolean;
+  /** The first, incorrect answer when the learner used the one forgiving retry. Its presence makes the attempt assisted. */
+  firstAnswer?: string;
   /** Disputed evidence remains auditable but never contributes to progress. */
   excluded?: { reason: string; at: string };
 }
+/** A verified canonical task (local practice or the legacy single-task AI format). */
+export interface TaskEvidence extends EvidenceBase {
+  source?: undefined;
+  expected: string;
+  task: CanonicalTask;
+  choices?: string[];
+}
+/**
+ * A graded, validated AI-authored Activity Spec. The exact spec content is stored so a
+ * restore can re-validate and re-grade it; `correct` is never trusted from storage.
+ */
+export interface SpecAttemptData {
+  hash: string;
+  skillIds: string[];
+  difficulty: number;
+  responseType: string;
+  /** The learner's structured response (LearnerResponse JSON). */
+  response: unknown;
+  misconceptionTag?: string;
+  /** The validated ActivitySpec JSON that was displayed. */
+  content: unknown;
+}
+export interface SpecEvidence extends EvidenceBase {
+  source: 'ai-spec';
+  mode: 'concept';
+  spec: SpecAttemptData;
+}
+export type AttemptEvidence = TaskEvidence | SpecEvidence;
+/** Every skill an attempt is evidence for. */
+export const evidenceSkillIds = (e: AttemptEvidence): string[] => e.source === 'ai-spec' ? e.spec.skillIds : [e.skillId];
 export interface SkillProgress {
   skillId: string;
   concept: 'unseen' | 'developing' | 'provisional';
@@ -108,6 +138,8 @@ export interface AttemptInput {
   hintsUsed?: number;
   activeMs?: number | null;
   interrupted?: boolean;
+  /** Set when this is the single retry after an incorrect first answer on the same activity. */
+  firstAnswer?: string;
 }
 export interface GradeResult { correct: boolean; expected: string; normalizedAnswer?: string; error?: string }
 export type ValidationResult = { ok: true; activity: Activity } | { ok: false; errors: string[] };

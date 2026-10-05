@@ -316,6 +316,33 @@ test('sign key appears only where the answer domain can be negative',()=>{
  }
 });
 
+// ---- Forgiving retry (#857): one ledger attempt per activity; first-try correctness stays the evidence. ----
+test('a correct retry after one miss is one assisted attempt that keeps the first answer',()=>{
+ let state=createLearner('a');
+ for(let i=1;i<=2;i++)state=success(state,fractionPractice(i),String(i));
+ const a=fractionPractice(3),expected=expectedAnswer(a.task);
+ state=recordAttempt(state,a,{id:'retry',answer:expected,firstAnswer:'9/9',at:date(1),hintsUsed:1});
+ const e=state.attempts.at(-1)!;
+ assert.equal(state.attempts.length,3);assert.equal(e.correct,true);assert.equal(e.independent,false);assert.equal(e.firstAnswer,'9/9');
+ assert.equal(state.progress['5.NF.A.1'].concept,'developing','A retry never completes provisional evidence');
+ assert.equal(state.progress['5.NF.A.1'].independentSuccesses,0);
+ // Engine owns the meaning: a first miss makes the attempt assisted even without a hint count.
+ const b=generatePractice('3.OA.C.7',3);
+ assert.equal(recordAttempt(createLearner('b'),b,{id:'x',answer:expectedAnswer(b.task),firstAnswer:'-1',at:date(1)}).attempts[0].independent,false);
+ assert.equal(recordAttempt(state,a,{id:'again',answer:expected,at:date(1)}),state,'Still one attempt per activity');
+});
+test('the first answer must be a gradable miss and survives rebuilds',()=>{
+ const a=generatePractice('3.OA.C.7',4),expected=expectedAnswer(a.task);
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:expected}),/first answer/i);
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:'hello'}));
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:'1'.repeat(81)}));
+ let state=recordAttempt(createLearner('a'),a,{id:'x',answer:'-1',firstAnswer:'-2',at:date(1),hintsUsed:1});
+ assert.equal(state.attempts[0].correct,false);
+ state=success(state,{...generatePractice('3.OA.C.7',5),id:'other'},'other');
+ const rebuilt=quarantineActivity(state,'other','test',date(2));
+ assert.equal(rebuilt.attempts[0].firstAnswer,'-2');assert.deepEqual(rebuilt.progress,recordAttempt(createLearner('a'),a,{id:'x',answer:'-1',firstAnswer:'-2',at:date(1),hintsUsed:1}).progress);
+});
+
 // ---- Error loops (#860): selection policy only; evidence rules above stay unchanged. ----
 type Step={skillId:string;grade:number;reason:string;approach?:string;correct:boolean};
 const gradeOf=(id:string)=>{const g=getSkill(id)!.grade;return g==='K'?0:g;};
@@ -440,4 +467,26 @@ test('assisted successes do not loop one skill either',()=>{
   const run=ids.reduce((r,id,i)=>{const n=i&&ids[i-1]===id?r.n+1:1;return {n,max:Math.max(r.max,n)};},{n:0,max:0}).max;
   assert.ok(run<=4,`grade ${grade}: ${ids.join(' ')}`);
  }
+});
+
+test('a miss rescued by the forgiving retry still counts toward changing the approach',()=>{
+ let state=createLearner('rescued',3);const trace:{id:string;approach?:string}[]=[];
+ for(let i=0;i<12;i++){
+  const at=new Date(Date.UTC(2026,8,1,12,0,i)).toISOString();
+  const chosen=selectCandidates(state,at)[0];
+  const task={...generateFreshPractice(chosen.skill.id,state,3000+i),id:`rescued-${i}`},expected=expectedAnswer(task.task);
+  // Always wrong first, then right after the nudge (a two-choice guesser always is).
+  state=recordAttempt(state,task,{id:`rescued-answer-${i}`,answer:expected,firstAnswer:wrongAnswer(expected),at,hintsUsed:1+(chosen.approach?1:0)});
+  trace.push({id:chosen.skill.id,...(chosen.approach?{approach:chosen.approach}:{})});
+ }
+ assert.deepEqual(recentStreak(state.attempts,trace.at(-1)!.id).successes,0);
+ assert.equal(trace[1].id,trace[0].id);assert.equal(trace[2].approach,'worked-example','Two rescued misses change the approach');
+ assert.ok(longestRun(trace.map(t=>({skillId:t.id})) as Step[])<=3);
+});
+test('replaying stored evidence never throws on a first answer that a later grader accepts',()=>{
+ const a=generatePractice('3.OA.C.7',4),expected=expectedAnswer(a.task);
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:expected}),/first answer/i);
+ const replayed=recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:expected,at:date(1)},{replay:true});
+ assert.equal(replayed.attempts[0].independent,false,'Still assisted, never laundered');
+ assert.throws(()=>recordAttempt(createLearner('a'),a,{id:'x',answer:expected,firstAnswer:'1'.repeat(81)},{replay:true}));
 });

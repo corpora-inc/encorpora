@@ -1,7 +1,8 @@
-import type { Activity, AttemptEvidence, AttemptInput, Candidate, Grade, LearnerState, Skill, SkillProgress } from './types';
+import type { Activity, AttemptEvidence, AttemptInput, Candidate, Grade, LearnerState, Skill, SkillProgress, SpecAttemptData, SpecEvidence, TaskEvidence } from './types';
+import { evidenceSkillIds } from './types';
 import { getSkill, skills } from './curriculum';
 import { gradeAnswer, validateActivity } from './tasks';
-import { recentStreak, struggleFocus } from './struggle';
+import { missed, recentStreak, struggleFocus } from './struggle';
 export const REVIEW_DAYS = [1,3,7,14,30] as const;
 export const DAILY_FLUENCY_LIMIT = 6;
 const DAY=86400000;
@@ -11,7 +12,8 @@ export function createLearner(learnerId:string,startGrade:Grade=4):LearnerState 
  return {version:1,learnerId,startGrade,progress:{},attempts:[]};
 }
 /** Immutable reducer. Persist returned state plus evidence in one native transaction. */
-export function recordAttempt(state:LearnerState,activity:Activity,input:AttemptInput):LearnerState {
+/** replay: rebuilding stored evidence. A later grader fix must never lock a profile out, so live-only checks are skipped. */
+export function recordAttempt(state:LearnerState,activity:Activity,input:AttemptInput,options:{replay?:boolean}={}):LearnerState {
  if(!input.id||input.id.length>100)throw new Error('Attempt requires a stable ID.');
  if(state.attempts.some(a=>a.id===input.id))return state;
  // A displayed activity is submitted once. Retries need a new activity, not duplicate evidence.
@@ -20,45 +22,98 @@ export function recordAttempt(state:LearnerState,activity:Activity,input:Attempt
  const checked=validation.activity, skill=getSkill(checked.skillId)!;
  const result=gradeAnswer(checked,input.answer);
  if(result.error)throw new Error(result.error); // An input parse error is not mathematical failure.
- const at=new Date(timestamp(input.at??new Date().toISOString())).toISOString(); const now=timestamp(at);
- const previous=state.progress[skill.id];
- if(previous&&now<timestamp(previous.lastAttemptAt))throw new Error('Attempt time predates existing evidence.');
+ const {at,hintsUsed,activeMs,interrupted}=attemptCommon(input);
+ if(typeof input.answer!=='string'||input.answer.length>80)throw new Error('Answer is too long.');
+ // One forgiving retry: the first answer must be a gradable miss, and the attempt is then assisted.
+ const firstAnswer=input.firstAnswer;
+ if(firstAnswer!==undefined) {
+  if(typeof firstAnswer!=='string'||firstAnswer.length>80)throw new Error('First answer is too long.');
+  if(!options.replay) {
+   const first=gradeAnswer(checked,firstAnswer);
+   if(first.error)throw new Error(first.error);
+   if(first.correct)throw new Error('A correct first answer is final; it cannot be recorded as a retry.');
+  }
+ }
+ const independent=result.correct&&hintsUsed===0&&firstAnswer===undefined;
+ const evidence:TaskEvidence={id:input.id,activityId:checked.id,skillId:skill.id,at,correct:result.correct,
+  answer:input.answer,expected:result.expected,task:checked.task,variant:checked.variant,mode:checked.mode,...(checked.choices?{choices:checked.choices}:{}),
+  hintsUsed,activeMs,interrupted,independent,...(firstAnswer!==undefined?{firstAnswer}:{})};
+ return applyEvidence(state,evidence);
+}
+function attemptCommon(input:{at?:string;hintsUsed?:number;activeMs?:number|null;interrupted?:boolean}) {
+ const at=new Date(timestamp(input.at??new Date().toISOString())).toISOString();
  const hintsUsed=input.hintsUsed??0;
  if(!Number.isInteger(hintsUsed)||hintsUsed<0||hintsUsed>100)throw new Error('Invalid hint count.');
  const activeMs=input.activeMs??null;
  if(activeMs!==null&&(!Number.isFinite(activeMs)||activeMs<0||activeMs>3600000))throw new Error('Invalid active response time.');
- if(typeof input.answer!=='string'||input.answer.length>80)throw new Error('Answer is too long.');
- const interrupted=input.interrupted??false;
- const independent=result.correct&&hintsUsed===0;
- const evidence:AttemptEvidence={id:input.id,activityId:checked.id,skillId:skill.id,at,correct:result.correct,
-  answer:input.answer,expected:result.expected,task:checked.task,variant:checked.variant,mode:checked.mode,...(checked.choices?{choices:checked.choices}:{}),
-  hintsUsed,activeMs,interrupted,independent};
+ return {at,hintsUsed,activeMs,interrupted:input.interrupted??false};
+}
+export interface SpecAttemptInput {
+ id:string; activityId:string; at?:string; hintsUsed?:number; activeMs?:number|null; interrupted?:boolean;
+ /** Produced by the local grader from the validated spec, never by the model. */
+ correct:boolean; answer:string; spec:SpecAttemptData;
+}
+/**
+ * Records a graded AI Activity Spec as real evidence for every skill it tags, under the same
+ * mastery rules as canonical tasks: independent = correct without hints, three distinct
+ * independent successes since the last error make a skill provisional, and an independent
+ * success after a due review date counts as the delayed review. The caller must have validated
+ * the spec (schema, skillIds in the graph, keyCheck) and graded the response locally.
+ */
+export function recordSpecAttempt(state:LearnerState,input:SpecAttemptInput):LearnerState {
+ if(!input.id||input.id.length>100||!input.activityId||input.activityId.length>100)throw new Error('Attempt requires stable IDs.');
+ if(state.attempts.some(a=>a.id===input.id))return state;
+ if(state.attempts.some(a=>a.activityId===input.activityId))return state;
+ const spec=input.spec;
+ if(!spec||!/^[0-9a-f]{16}$/.test(spec.hash)||!Array.isArray(spec.skillIds)||spec.skillIds.length<1||spec.skillIds.length>3||
+  new Set(spec.skillIds).size!==spec.skillIds.length||spec.skillIds.some(id=>!getSkill(id))||
+  !Number.isInteger(spec.difficulty)||spec.difficulty<1||spec.difficulty>10||typeof spec.responseType!=='string'||spec.responseType.length>20||
+  (spec.misconceptionTag!==undefined&&(typeof spec.misconceptionTag!=='string'||spec.misconceptionTag.length>48)))
+  throw new Error('AI activity evidence is malformed.');
+ if(typeof input.correct!=='boolean'||typeof input.answer!=='string'||input.answer.length>80)throw new Error('AI activity evidence is malformed.');
+ const {at,hintsUsed,activeMs,interrupted}=attemptCommon(input);
+ const evidence:SpecEvidence={id:input.id,activityId:input.activityId,skillId:spec.skillIds[0]!,at,correct:input.correct,answer:input.answer,
+  variant:`spec:${spec.hash}`,mode:'concept',hintsUsed,activeMs,interrupted,independent:input.correct&&hintsUsed===0,source:'ai-spec',spec};
+ return applyEvidence(state,evidence);
+}
+/** Shared mastery rules for one new piece of evidence, applied to every skill it is evidence for. */
+function applyEvidence(state:LearnerState,evidence:AttemptEvidence):LearnerState {
+ const now=timestamp(evidence.at);
+ const ids=evidenceSkillIds(evidence);
+ for(const id of ids){const previous=state.progress[id];if(previous&&now<timestamp(previous.lastAttemptAt))throw new Error('Attempt time predates existing evidence.');}
  const attempts=[...state.attempts,evidence];
- const history=attempts.filter(a=>a.skillId===skill.id&&!a.excluded);
+ const progress={...state.progress};
+ for(const id of ids)progress[id]=skillProgress(getSkill(id)!,attempts,state.progress[id],evidence);
+ return {...state,attempts,progress};
+}
+function skillProgress(skill:Skill,attempts:AttemptEvidence[],previous:SkillProgress|undefined,evidence:AttemptEvidence):SkillProgress {
+ const now=timestamp(evidence.at), independent=evidence.independent;
+ const history=attempts.filter(a=>!a.excluded&&evidenceSkillIds(a).includes(skill.id));
  const sinceError=history.slice(history.map(a=>!a.independent).lastIndexOf(true)+1);
  const independentSuccesses=sinceError.length;
  const distinctVariants=[...new Set(sinceError.map(a=>a.variant))];
  const provisional=distinctVariants.length>=3;
  // Fluency is optional and evidence-based: diverse facts, two dates, no hidden/background time.
- const recent=sinceError.filter(a=>a.mode==='fluency'&&!a.choices).slice(-12);
- const timed=recent.length===12&&recent.every(a=>a.mode==='fluency'&&!a.choices&&a.independent&&!a.interrupted&&a.activeMs!==null&&a.activeMs>=250&&a.activeMs<=skill.fluencyTargetMs!);
+ const recent=sinceError.filter(a=>a.mode==='fluency'&&a.source===undefined&&!a.choices).slice(-12);
+ const timed=recent.length===12&&recent.every(a=>a.mode==='fluency'&&a.independent&&!a.interrupted&&a.activeMs!==null&&a.activeMs>=250&&a.activeMs<=skill.fluencyTargetMs!);
  const fluent=!!skill.fluencyTargetMs&&timed&&new Set(recent.map(a=>a.variant)).size>=8&&new Set(recent.map(a=>a.at.slice(0,10))).size>=2;
+ // A local review task, or any AI activity tagging the skill once its review is due, is a delayed check.
+ const reviewing=evidence.mode==='review'||evidence.source==='ai-spec';
  let reviewStage=previous?.reviewStage??0;
  let retention=previous?.retention??'unconfirmed';
  let nextReviewAt=previous?.nextReviewAt??null;
  if(!independent) {reviewStage=0;retention='unconfirmed';nextReviewAt=new Date(now+DAY).toISOString();}
  else if(provisional) {
-  if(previous?.concept==='provisional'&&checked.mode==='review'&&previous.nextReviewAt&&now>=timestamp(previous.nextReviewAt)) {
+  if(previous?.concept==='provisional'&&reviewing&&previous.nextReviewAt&&now>=timestamp(previous.nextReviewAt)) {
    reviewStage=Math.min(reviewStage+1,REVIEW_DAYS.length);
    // A single next-day success is encouraging; require the later delayed check too.
    if(reviewStage>=2)retention='retained';
    nextReviewAt=new Date(now+REVIEW_DAYS[Math.min(reviewStage,REVIEW_DAYS.length-1)]*DAY).toISOString();
   } else if(!nextReviewAt||previous?.concept!=='provisional') nextReviewAt=new Date(now+DAY).toISOString();
  }
- const progress:SkillProgress={skillId:skill.id,concept:provisional?'provisional':'developing',
+ return {skillId:skill.id,concept:provisional?'provisional':'developing',
   fluency:skill.fluencyTargetMs?(fluent?'fluent':'developing'):'not-applicable',retention,
-  independentSuccesses,distinctVariants,reviewStage,nextReviewAt,lastAttemptAt:at};
- return {...state,attempts,progress:{...state.progress,[skill.id]:progress}};
+  independentSuccesses,distinctVariants,reviewStage,nextReviewAt,lastAttemptAt:evidence.at};
 }
 /** Transparent candidate menu for the LLM, not a hidden ability score or forced lesson sequence. */
 export function selectCandidates(state:LearnerState,now:string=new Date().toISOString(),limit=12):Candidate[] {
@@ -76,7 +131,7 @@ export function selectCandidates(state:LearnerState,now:string=new Date().toISOS
  if(last) {
   // A demonstrated prerequisite does not need re-teaching after one slip on a harder skill, and
   // one miss is retried before any step down: support is offered once the difficulty is confirmed.
-  if(!last.correct&&recentStreak(validAttempts,last.skillId).misses>=2)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
+  if(missed(last)&&recentStreak(validAttempts,last.skillId).misses>=2)getSkill(last.skillId)?.prerequisites.filter(id=>state.progress[id]?.concept!=='provisional').forEach(id=>add(id,'support'));
   const p=state.progress[last.skillId];
   if(p?.concept!=='provisional')add(last.skillId,'continue');
   skills.filter(s=>state.progress[s.id]?.concept!=='provisional'&&s.prerequisites.includes(last.skillId)&&s.prerequisites.every(id=>state.progress[id]?.concept==='provisional')).forEach(s=>add(s.id,'frontier'));
@@ -140,9 +195,14 @@ export class ActiveTimer {
 export function rebuildProgress(state:LearnerState):LearnerState {
  let rebuilt=createLearner(state.learnerId,state.startGrade);
  for(const e of state.attempts.filter(a=>!a.excluded).slice().sort((a,b)=>timestamp(a.at)-timestamp(b.at))) {
+  if(e.source==='ai-spec') {
+   // Spec evidence was validated and locally graded when recorded or restored (see application/recovery).
+   rebuilt=recordSpecAttempt(rebuilt,{id:e.id,activityId:e.activityId,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted,correct:e.correct,answer:e.answer,spec:e.spec});
+   continue;
+  }
   const checked=validateActivity({version:1,id:e.activityId,skillId:e.skillId,mode:e.mode,task:e.task,...(e.choices?{choices:e.choices}:{})});
   if(!checked.ok)throw new Error(`Cannot rebuild invalid evidence ${e.id}.`);
-  rebuilt=recordAttempt(rebuilt,checked.activity,{id:e.id,answer:e.answer,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted});
+  rebuilt=recordAttempt(rebuilt,checked.activity,{id:e.id,answer:e.answer,at:e.at,hintsUsed:e.hintsUsed,activeMs:e.activeMs,interrupted:e.interrupted,...(e.firstAnswer!==undefined?{firstAnswer:e.firstAnswer}:{})},{replay:true});
  }
  return {...state,progress:rebuilt.progress};
 }

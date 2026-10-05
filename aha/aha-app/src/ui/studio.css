@@ -1078,13 +1078,23 @@ h1 {
   background: #fffdf6;
 }
 .balance-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: 8px;
   padding: 16px;
   background: #e9edde;
   border-radius: 8px;
-  margin-top: 15px;
+  margin: 15px 0 0;
   font-size: 0.85rem;
+}
+.balance-row > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.balance-row dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
 }
 .account-status {
   margin-top: 10px;
@@ -1956,6 +1966,7 @@ body {
   color: #fffdf2;
 }
 .feedback-line.retry > svg,
+.feedback-line.nudge > svg,
 .feedback-line.info > svg {
   color: #b9862a;
 }

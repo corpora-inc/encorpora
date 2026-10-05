@@ -32,6 +32,8 @@ export interface SkillSummary {
   attempts: number;
   correct: number;
   independent: number;
+  /** Consecutive misses at the end of this skill's history: 2+ means change the approach (#860). */
+  missStreak: number;
   /** Difficulty (1–10) the model should aim for next on this skill. */
   suggestedDifficulty: number;
 }
@@ -43,10 +45,14 @@ export interface LearnerSummary {
   recent: { attempts: number; accuracy: number | null; independentRate: number | null; hintRate: number | null; medianActiveSec: number | null; streak: number };
   misconceptions: { tag: string; count: number; lastSeenDaysAgo: number }[];
   dueReviews: string[];
-  recentActivities: { skills: string[]; difficulty: number | null; type: string; correct: boolean; hints: number }[];
+  /** correct = right on the first try; retryCorrect = right only after the forgiving retry. */
+  /** The learner tapped "Try something harder" and no queued activity was harder (#877): aim higher. */
+  wantsHarder?: true;
+  recentActivities: { skills: string[]; difficulty: number | null; type: string; correct: boolean; hints: number; retryCorrect?: true }[];
 }
 
-interface NormalizedAttempt { skillIds: string[]; correct: boolean; hints: number; activeMs: number | null; at: number; difficulty: number | null; type: string; tag?: string }
+/** `correct` is first-try correctness: an answer that was right only after the forgiving retry (#872) is a miss, and assisted. */
+interface NormalizedAttempt { skillIds: string[]; correct: boolean; hints: number; activeMs: number | null; at: number; difficulty: number | null; type: string; tag?: string; retryCorrect?: true }
 
 const DAY = 86400000;
 const DEFAULT_DIFFICULTY = 3;
@@ -54,10 +60,14 @@ const clampDifficulty = (d: number) => Math.max(1, Math.min(10, Math.round(d)));
 const ratio = (n: number, d: number) => d ? Math.round((n / d) * 100) / 100 : null;
 
 function normalize(ledger: LearnerState | undefined, records: readonly ActivityAttemptRecord[]): NormalizedAttempt[] {
-  const fromLedger = (ledger?.attempts ?? []).filter((a: AttemptEvidence) => !a.excluded).map(a => ({
-    skillIds: [a.skillId], correct: a.correct, hints: a.hintsUsed, activeMs: a.interrupted ? null : a.activeMs,
-    at: Date.parse(a.at), difficulty: null, type: `task:${a.task.kind}`,
-  }));
+  const fromLedger = (ledger?.attempts ?? []).filter((a: AttemptEvidence) => !a.excluded).map((a): NormalizedAttempt => a.source === 'ai-spec' ? {
+    skillIds: a.spec.skillIds, correct: a.correct, hints: a.hintsUsed, activeMs: a.interrupted ? null : a.activeMs,
+    at: Date.parse(a.at), difficulty: a.spec.difficulty, type: a.spec.responseType, ...(a.spec.misconceptionTag ? { tag: a.spec.misconceptionTag } : {}),
+  } : {
+    skillIds: [a.skillId], correct: a.correct && a.firstAnswer === undefined,
+    hints: a.firstAnswer === undefined ? a.hintsUsed : Math.max(1, a.hintsUsed), activeMs: a.interrupted ? null : a.activeMs,
+    at: Date.parse(a.at), difficulty: null, type: `task:${a.task.kind}`, ...(a.correct && a.firstAnswer !== undefined ? { retryCorrect: true as const } : {}),
+  });
   const fromSpecs = records.map(r => ({
     skillIds: r.skillIds, correct: r.correct, hints: r.hintsUsed, activeMs: r.activeMs, at: Date.parse(r.at),
     difficulty: r.difficulty, type: r.responseType, ...(r.misconceptionTag ? { tag: r.misconceptionTag } : {}),
@@ -92,9 +102,10 @@ export interface SummaryInput {
   activityAttempts?: readonly ActivityAttemptRecord[];
   now?: string;
   frontierLimit?: number;
+  wantsHarder?: boolean;
 }
 
-export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10 }: SummaryInput): LearnerSummary {
+export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10, wantsHarder = false }: SummaryInput): LearnerSummary {
   const time = Date.parse(now);
   if (!Number.isFinite(time)) throw new Error('Use a valid timestamp.');
   const attempts = normalize(ledger, activityAttempts);
@@ -106,15 +117,16 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     const skill = getSkill(id)!;
     const history = bySkill.get(id) ?? [];
     const progress = ledger?.progress[id];
-    let independentStreak = 0;
+    let independentStreak = 0, missStreak = 0;
     for (let i = history.length - 1; i >= 0 && history[i]!.correct && history[i]!.hints === 0; i--) independentStreak++;
+    for (let i = history.length - 1; i >= 0 && !history[i]!.correct; i--) missStreak++;
     let state: SkillState = !history.length ? 'new' : independentStreak >= 3 ? 'secure' : 'developing';
     if (progress?.concept === 'provisional') state = progress.retention === 'retained' ? 'retained' : 'secure';
     if (progress?.concept === 'developing') state = 'developing';
     if (due.has(id)) state = 'review_due';
     return {
       id, title: skill.title, grade: skill.grade, state, attempts: history.length,
-      correct: history.filter(h => h.correct).length, independent: history.filter(h => h.correct && h.hints === 0).length,
+      correct: history.filter(h => h.correct).length, independent: history.filter(h => h.correct && h.hints === 0).length, missStreak,
       suggestedDifficulty: suggestDifficulty(history),
     };
   };
@@ -165,7 +177,8 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     misconceptions: [...tagCounts].sort((a, b) => b[1].count - a[1].count || b[1].last - a[1].last).slice(0, 6)
       .map(([tag, t]) => ({ tag, count: t.count, lastSeenDaysAgo: Math.max(0, Math.floor((time - t.last) / DAY)) })),
     dueReviews: [...due].slice(0, 6),
-    recentActivities: attempts.slice(-6).map(a => ({ skills: a.skillIds, difficulty: a.difficulty, type: a.type, correct: a.correct, hints: a.hints })),
+    ...(wantsHarder ? { wantsHarder: true as const } : {}),
+    recentActivities: attempts.slice(-6).map(a => ({ skills: a.skillIds, difficulty: a.difficulty, type: a.type, correct: a.correct, hints: a.hints, ...(a.retryCorrect ? { retryCorrect: true as const } : {}) })),
   };
 }
 
