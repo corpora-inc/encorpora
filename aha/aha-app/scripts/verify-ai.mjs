@@ -17,7 +17,9 @@ const {fixtures}=await import(pathToFileURL(path.join(root,'src/activity/fixture
 const batchFixtures=fixtures.filter(f=>f.response.type==='numeric');
 // The bounded wait for a batch on its way (BATCH_WAIT_MS, 6 s) plus margin.
 const BATCH_WAIT_TEST_MS=12_000;
-const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','1436','--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
+// Overridable so parallel worktrees can run the suite at the same time.
+const port=Number(process.env.AHA_AI_PORT||1436),base=`http://127.0.0.1:${port}`;
+const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(specs){
   // Only this test owns localStorage. Production has no browser persistence fallback.
@@ -122,7 +124,7 @@ try {
   let ready=false;
   for(let i=0;i<100;i++){
     if(vite.exitCode!==null)throw new Error(`Vite exited: ${output}`);
-    try{if(stripVTControlCharacters(output).includes('http://127.0.0.1:1436')&&(await fetch('http://127.0.0.1:1436')).ok){ready=true;break;}}catch{}
+    try{if(stripVTControlCharacters(output).includes(base)&&(await fetch(base)).ok){ready=true;break;}}catch{}
     await new Promise(r=>setTimeout(r,100));
   }
   assert.ok(ready,output);
@@ -153,7 +155,7 @@ try {
   const aiCard=page.locator('.focus-stage.is-spec .aha-activity');
   // Settings open from the focus bar's status dot (closing returns to the problem) or from home. No gate (#870).
   const settings=async()=>{if(await page.locator('.status-dot').count()){await page.locator('.status-dot').click();await page.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();}else await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
-  await page.goto('http://127.0.0.1:1436');
+  await page.goto(base);
   // platform_disabled (Free2Z's pre-activation state): AI is not ready yet. Calm at launch: no alert.
   await page.getByRole('button',{name:'Let’s begin',exact:true}).click();
   assert.equal(await page.getByRole('alert').count(),0,'a platform that is not enforcing yet is not an alert');
@@ -229,6 +231,12 @@ try {
   await page.getByRole('button',{name:'Hint',exact:true}).click();
   await page.locator('.help-panel').waitFor();
   await page.waitForFunction(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.hintsUsed===1);
+  // Help taps are idempotent (an S26 item once recorded hintsUsed=21): reopening help already shown
+  // never counts again.
+  for(let i=0;i<4;i++){await page.getByRole('button',{name:'Hint',exact:true}).click();await page.waitForTimeout(80);}
+  await page.waitForTimeout(200);
+  assert.equal((await session()).hintsUsed,1,'reopening a hint already shown never counts again');
+  if(!(await page.locator('.help-panel').count())){await page.getByRole('button',{name:'Hint',exact:true}).click();await page.locator('.help-panel').waitFor();}
   await page.reload();await resume();
   await aiCard.waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'force-reload mid-queue resumes without a new paid call');
@@ -431,7 +439,7 @@ try {
     const harder=h.getByRole('button',{name:'Try something harder',exact:true});
     const shown=async()=>(await hs()).aiActivity?.activityId;
     const waitShown=async id=>{await h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId===i,id);};
-    await h.goto('http://127.0.0.1:1436');
+    await h.goto(base);
     const begin=h.getByRole('button',{name:'Let’s begin',exact:true});
     await begin.click();
     await h.locator('.focus-stage.is-spec .aha-activity').waitFor();
@@ -510,7 +518,7 @@ try {
       await o.getByRole('button',{name:'Check',exact:true}).click();
       await oNext.waitFor();
     };
-    await o.goto('http://127.0.0.1:1436');
+    await o.goto(base);
     await o.getByRole('button',{name:'Continue',exact:true}).click();
     await o.locator('.focus-stage.is-spec .aha-activity').waitFor();
     assert.equal((await os()).aiActivity.activityId,`${old}:0`,'the older build’s AI activity is resumed');
@@ -553,7 +561,7 @@ try {
     await ctx.addInitScript(()=>{Object.assign(window.__ahaAI,{enforced:true,holdEstimate:true});});
     const q=await ctx.newPage();
     const qErrors=[];q.on('pageerror',e=>qErrors.push(e.message));
-    await q.goto('http://127.0.0.1:1436');
+    await q.goto(base);
     await q.getByRole('button',{name:'Let’s begin',exact:true}).click();
     await q.waitForFunction(()=>typeof window.__ahaAI.releaseEstimate==='function');
     assert.equal(await q.evaluate(()=>window.__ahaAI.grants)>0,true,'the grant was verified; the provider is inside its estimate');
@@ -574,7 +582,7 @@ try {
     await ctx.addInitScript(k=>{Object.assign(window.__ahaAI,k);},knobs);
     const p=await ctx.newPage();const pageErrors=[],logged=[],warned=[];
     p.on('pageerror',e=>pageErrors.push(e.message));p.on('console',m=>{if(m.type()==='error')logged.push(m.text());if(m.type()==='warning')warned.push(m.text());});
-    await p.goto('http://127.0.0.1:1436');
+    await p.goto(base);
     await p.getByRole('button',{name:'Let’s begin',exact:true}).click();
     await p.getByRole('button',{name:'Check',exact:true}).waitFor();
     const openSettings=async()=>{await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
