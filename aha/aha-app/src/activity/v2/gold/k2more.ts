@@ -27,11 +27,11 @@ export const k2MoreGold: GoldSpec[] = [
         quantities: [q('r', 'count', '4', noun('row', 'rows', null)), q('c', 'count', '3', noun('egg', 'eggs'))],
         structures: [{ id: 'a', kind: 'array', roles: { cols: 'c', rows: 'r' }, show: 'objects' }],
       },
-      prompt: [{ text: 'Eggs sit in rows of {{a.cols}}.', type: 'text' }, { of: 'a', type: 'view' }, { text: 'How many {{a.rows.other}} are there?', type: 'text' }],
+      prompt: [{ text: 'Eggs sit in rows of {{a.cols.n}}.', type: 'text' }, { of: 'a', type: 'view' }, { text: 'How many {{a.rows.other}} are there?', type: 'text' }],
       response: { ask: 'a.rows', distractors: [{ expr: 'c', tag: 'counted_one_group' }], form: 'number' },
       support: { explanation: 'There are {{a.rows}} of {{a.cols.n}}.', hints: ['Count down the side.'] },
     },
-    expect: { key: '4', prompt: ['Eggs sit in rows of 3 eggs.', 'How many rows are there?'], alt: 'Rows of 3 eggs: row, row, row, row.' },
+    expect: { key: '4', prompt: ['Eggs sit in rows of 3.', 'How many rows are there?'], alt: 'Rows of 3 eggs: row, row, row, row.' },
   },
   {
     id: 'g2-rect-unit-squares-count', note: 'count the squares that tile a rectangle (2.G.A.2)',
