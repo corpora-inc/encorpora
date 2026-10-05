@@ -160,15 +160,42 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   if (r.form === 'tap' && r.on === null && viewed.size < 2) p('response.on', 'tap_views', 'A tap among views needs at least two views in the prompt; or name the view to tap inside with on.');
   if (problems.length) return { ok: false, problems };
 
-  // The names, per structure, of the roles and measure that are the ask (every role bound to it).
+  /**
+   * Whether a printed value states the answer (answer forms, README §8.1), decided without nouns or
+   * prose. A value computed from the model (a measure or a derived quantity) that equals the answer
+   * recomputes it. A given that equals the answer states it only when the answer IS that given: the
+   * ask, recomputed exactly with the given doubled and tripled, still equals it ("12 apples in 3
+   * baskets: how many in all?"). Otherwise the equality is a coincidence of inputs ("eat 8, 4 are
+   * left" beside baskets of 4; "4 × □ = 16"), which is legitimate.
+   */
+  const statesAnswer = (t: Target, d: Described): boolean => {
+    if (!ask || !sameValue(d.value, ask.value) || d.value.power !== ask.value.power || d.value.unit !== ask.value.unit) return false;
+    if (t.kind === 'measure' || !model.isGiven(t.id)) return true;
+    const base = d.value.q;
+    return [2n, 3n].every(k => {
+      const moved = base.n === 0n ? rational(k) : rational(base.n * k, base.d);
+      const v = model.valueWith(ask.target, new Map([[t.id, moved]]));
+      return !!v && compare(v.q, moved) === 0;
+    });
+  };
+  const answerForm = isAnswerForm(r.form);
+  /**
+   * The names, per structure, of the roles and measures that are the answer: every role bound to the
+   * asked quantity, the asked measure, and (answer forms) any other role or measure that states the
+   * answer by the same test the prose obeys. Views hide or count them; descriptions never state them.
+   */
   const askedIn = (sid: string): Asked => {
     const t = ask?.target;
     if (!t) return NOTHING_ASKED;
-    if (t.kind === 'measure') return t.structure === sid ? new Set([t.measure]) : NOTHING_ASKED;
-    return new Set((model.bindings.get(t.id) ?? []).filter(b => b.structure === sid).map(b => b.role));
+    const s = model.structures.get(sid)!;
+    const names = new Set(t.kind === 'measure' ? (t.structure === sid ? [t.measure] : []) : (model.bindings.get(t.id) ?? []).filter(b => b.structure === sid).map(b => b.role));
+    if (answerForm) {
+      for (const role of Object.keys(s.def.roles)) { const b = s.roles[role]; if (b && statesAnswer({ kind: 'quantity', key: b.id, id: b.id }, model.describe({ kind: 'quantity', key: b.id, id: b.id }))) names.add(role); }
+      for (const m of Object.keys(s.def.measures)) { const mt: Target = { kind: 'measure', key: `${sid}.${m}`, structure: sid, measure: m }; const v = model.resolve([sid, m]); if (v.ok && statesAnswer(mt, model.describe(mt))) names.add(m); }
+    }
+    return names;
   };
   const reveals = new Map([...viewed].map(([sid, view]) => [sid, view.reveals(model.structures.get(sid)!.roles, askedIn(sid))]));
-  const answerForm = isAnswerForm(r.form);
   // The ask's support: everything its value is computed from (candidates belong to the question too).
   // A structure is part of the math asked when one of its measures is in the support, or it binds the
   // asked or a candidate quantity itself; sharing an input is not enough (a decoy figure). A figure or
@@ -189,24 +216,6 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   /** May the prompt or a hint print this value? Only what the math asked uses, or a label of a figure that is part of it. */
   const mayReveal = (t: Target) => supportKeys.has(t.key)
     || (t.kind === 'measure' ? relevant.has(t.structure) : (model.bindings.get(t.id) ?? []).some(b => relevant.has(b.structure)));
-  /**
-   * Whether a printed value states the answer (answer forms, README §8.1), decided without nouns or
-   * prose. A value computed from the model (a measure or a derived quantity) that equals the answer
-   * recomputes it. A given that equals the answer states it only when the answer IS that given: the
-   * ask, recomputed exactly with the given doubled and tripled, still equals it ("12 apples in 3
-   * baskets: how many in all?"). Otherwise the equality is a coincidence of inputs ("eat 8, 4 are
-   * left" beside baskets of 4; "4 × □ = 16"), which is legitimate.
-   */
-  const statesAnswer = (t: Target, d: Described): boolean => {
-    if (!ask || !sameValue(d.value, ask.value) || d.value.power !== ask.value.power || d.value.unit !== ask.value.unit) return false;
-    if (t.kind === 'measure' || !model.isGiven(t.id)) return true;
-    const base = d.value.q;
-    return [2n, 3n].every(k => {
-      const moved = base.n === 0n ? rational(k) : rational(base.n * k, base.d);
-      const v = model.valueWith(ask.target, new Map([[t.id, moved]]));
-      return !!v && compare(v.q, moved) === 0;
-    });
-  };
   // Candidate forms: the prompt prints every candidate or none, and a hint prints none, so prose can
   // never single out the correct option (the options show them all anyway).
   const candidateKeys = new Set(candidateTargets.map(t => t.key));

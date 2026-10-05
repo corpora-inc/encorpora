@@ -1392,8 +1392,8 @@ export default function Controller() {
         spec: aiItem.spec,
         result: aiResult,
         onSubmit: (response) => {
-          // A v1 spec only yields v1 responses; the guard states it instead of casting.
-          if (!isV1Response(response)) return;
+          // A v1 spec only yields v1 responses; the guard states it instead of casting, and is noisy if ever broken.
+          if (!isV1Response(response)) { console.error(`[aha] a v1 activity produced a ${response.type} response; ignored`); return; }
           const timing = timer.current.snapshot(performance.now());
           void action(() => submitSpec(response, timing));
         },

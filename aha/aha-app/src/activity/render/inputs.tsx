@@ -224,7 +224,8 @@ export function ShadeChips({ parts, shaded, onToggle, disabled }: { parts: numbe
  */
 export function PlaceControls({ tick, ticks, onChange, disabled }: { tick?: number; ticks: number; onChange: (tick: number) => void; disabled?: boolean }) {
   const at = tick ?? 0;
-  const move = (d: number) => onChange(Math.max(0, Math.min(ticks, (tick === undefined ? 0 : at) + d)));
+  // With no point yet, moving right puts it on the first tick; moving left does nothing.
+  const move = (d: number) => { if (tick === undefined && d < 0) return; onChange(Math.max(0, Math.min(ticks, (tick === undefined ? -1 : at) + d))); };
   return (
     <div className="ax-field ax-plot-controls">
       <span className="ax-field-label">{tick === undefined ? 'Tap the number line to place your point' : 'Your point'}</span>
