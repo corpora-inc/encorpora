@@ -89,6 +89,8 @@ export function NumberLineFigure({ figure: f, place }: { figure: FigureOf<'numbe
 }
 
 // ---------- fraction model ----------
+/** The size of one whole in an area model, in px: fixed, so every whole is equal. */
+const AREA_WHOLE = { w: 240, h: 160 };
 export function FractionModelFigure({ figure: f, shade }: { figure: FigureOf<'fraction_model'>; shade?: ShadeInteraction }) {
   const wholes = f.wholes ?? 1;
   const fill = series(f.color ?? 'teal'), soft = tint(f.color ?? 'teal');
@@ -117,13 +119,15 @@ export function FractionModelFigure({ figure: f, shade }: { figure: FigureOf<'fr
   }
   if (f.model === 'area') {
     const rows = f.rows ?? [...Array(f.parts).keys()].map(k => k + 1).filter(k => f.parts % k === 0 && k * k <= f.parts).at(-1)!;
-    const cols = f.parts / rows, cell = clamp(Math.floor(240 / Math.max(rows, cols)), 18, 54);
+    // Every whole is the same size whatever its parts, so wholes cut differently compare by area
+    // (a half and two quarters cover the same rectangle); the parts divide it.
+    const cols = f.parts / rows, cw = AREA_WHOLE.w / cols, ch = AREA_WHOLE.h / rows;
     return (
       <div className="ax-fraction-row">
         {Array.from({ length: wholes }, (_, w) => (
-          <A11ySvg key={w} title="Area model" desc={w === 0 ? f.alt : ''} width={cols * cell + 6} height={rows * cell + 6} className="ax-scale-svg" interactive={!!shade}>
-            {Array.from({ length: f.parts }, (_, i) => part(w, i, <rect x={3 + (i % cols) * cell} y={3 + Math.floor(i / cols) * cell} width={cell} height={cell} fill={isShaded(w, i) ? fill : 'var(--ax-card)'} stroke={isShaded(w, i) ? 'var(--ax-card)' : fill} strokeWidth={1.5} />))}
-            <rect x={3} y={3} width={cols * cell} height={rows * cell} fill="none" stroke={fill} strokeWidth={3} rx={2} />
+          <A11ySvg key={w} title="Area model" desc={w === 0 ? f.alt : ''} width={AREA_WHOLE.w + 6} height={AREA_WHOLE.h + 6} className="ax-scale-svg" interactive={!!shade}>
+            {Array.from({ length: f.parts }, (_, i) => part(w, i, <rect x={3 + (i % cols) * cw} y={3 + Math.floor(i / cols) * ch} width={cw} height={ch} fill={isShaded(w, i) ? fill : 'var(--ax-card)'} stroke={isShaded(w, i) ? 'var(--ax-card)' : fill} strokeWidth={1.5} />))}
+            <rect x={3} y={3} width={AREA_WHOLE.w} height={AREA_WHOLE.h} fill="none" stroke={fill} strokeWidth={3} rx={2} />
           </A11ySvg>
         ))}
       </div>
