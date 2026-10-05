@@ -147,11 +147,11 @@ describe('the answer is never named, and leaks are referential', () => {
     rejects(edit(equalGroupsActivity, a => { a.prompt[2] = { text: 'How many {{s.total.noun}} are there?', type: 'text' }; }), 'answer_inflected');
     assert.ok(check(edit(equalGroupsActivity, a => { a.support.explanation = 'There are {{s.total}}.'; })).ok, 'the explanation may name the answer');
   });
-  it('rejects a quantity of the same kind, noun and value as the key, but not a coincidence', () => {
+  it('rejects a printed number the question does not use, but not a coincidence of value', () => {
     rejects(edit(equalGroupsActivity, a => {
       a.model.quantities.push({ id: 't', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: '12' });
       a.prompt[0] = { text: 'Ana fills {{s.groups}} with {{s.size}} each, {{t}} in all.', type: 'text' };
-    }), 'answer_stated');
+    }), 'extraneous');
     const missingFactor = edit(equalGroupsActivity, a => {
       a.aim.skills = ['3.OA.A.4'];
       a.model.quantities = [
@@ -194,19 +194,76 @@ describe('review regressions: no path around the answer checks', () => {
     rejects(edit(equalGroupsActivity, a => { a.response = { ask: '13', distractors: [], form: 'number' }; }), 'ask_not_ref');
     rejects(edit(equalGroupsActivity, a => { a.response = { ask: 's.groups*s.size', distractors: [], form: 'number' }; }), 'ask_not_ref');
   });
-  it('treats an alias of the answer as the answer, and a value computed from it as stating it', () => {
-    const alias = edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.total' }); a.prompt[2] = { text: 'There are {{t.n}} in all.', type: 'text' }; });
-    rejects(alias, 'answer_in_text');
-    const scaled = edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.total*1' }); a.prompt[2] = { text: 'There are {{t.n}} in all.', type: 'text' }; });
-    rejects(scaled, 'answer_stated');
-    const viaAlias = edit(areaActivity, a => { a.aim.skills = ['4.MD.A.3']; a.model.structures[0]!.show = 'labeled'; a.model.quantities.push({ id: 'x', kind: 'length', noun: null, unit: 'unit', value: 'r.w' }); a.prompt = [{ text: 'How wide is the {{r.view}}?', type: 'text' }, { of: 'r', type: 'view' }]; a.response = { ask: 'x', distractors: [], form: 'number' }; a.support = { explanation: 'It is {{x}}.', hints: [] }; });
-    rejects(viaAlias, 'ask_asserted');
+  it('declares every number: a given is a written number, a derived value has no number of its own and is no alias', () => {
+    const add = (value: string) => edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value }); a.prompt[2] = { text: 'There are {{t.n}} in all.', type: 'text' }; });
+    rejects(add('s.total'), 'alias');
+    rejects(add('s.total*1'), 'derived_number');
+    rejects(add('s.total+10'), 'derived_number');
+    rejects(add('0*s.groups+13'), 'derived_number');
+    rejects(add('3*4+1'), 'given_arithmetic');
+  });
+  it('rejects a printed value that recomputes the answer, whatever its noun or kind', () => {
+    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.groups*s.size' }); a.prompt[2] = { text: 'There are {{t.n}} in all. How many {{s.total.other}}?', type: 'text' }; }), 'extraneous');
+    rejects(edit(shadedFractionActivity, a => { a.model.quantities.push({ id: 'x', kind: 'number', noun: null, unit: null, value: 'f.selected/f.parts' }); a.prompt[1] = { text: 'It is {{x}}. What fraction of the {{f.view}} is shaded?', type: 'text' }; }), 'extraneous');
+    rejects(edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.groups*s.size' }, { id: 'e', kind: 'count', noun: null, unit: null, value: '0' }, { id: 'left', kind: 'count', noun: null, unit: null, value: 't-e' });
+      a.prompt[2] = { text: 'That is {{t.n}}; none are eaten ({{e.n}}). How many are left?', type: 'text' };
+      a.response = { ask: 'left', distractors: [], form: 'number' }; a.support.hints = [];
+    }), 'answer_stated');
+    rejects(edit(equalGroupsActivity, a => {
+      a.aim.skills = ['3.OA.A.2'];
+      a.model.quantities = [
+        { id: 'g', kind: 'count', noun: { icon: 'basket', one: 'basket', other: 'baskets' }, unit: null, value: '3' },
+        { id: 't', kind: 'count', noun: null, unit: null, value: '12' },
+        { id: 'n', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: 't/g' },
+      ];
+      a.model.structures[0]!.show = null;
+      a.prompt = [{ text: 'There are {{t.n}} in {{s.groups}}. How many {{s.total.other}} are there in all?', type: 'text' }];
+      a.support = { explanation: '{{s.total}}.', hints: [] };
+    }), 'answer_stated'); // the answer IS the given 12, whatever nouns it carries
+    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: '12' }); a.prompt[2] = { text: 'There are {{t.n}} in all. How many {{s.total.other}}?', type: 'text' }; }), 'extraneous');
+  });
+  it('keeps legitimate equal values: a square fact, and a story whose answer equals a given', () => {
+    const square = edit(equalGroupsActivity, a => {
+      a.aim.skills = ['3.OA.A.4'];
+      a.model.quantities = [
+        { id: 'g', kind: 'count', noun: null, unit: null, value: '3' }, { id: 't', kind: 'count', noun: null, unit: null, value: '9' },
+        { id: 'n', kind: 'count', noun: null, unit: null, value: 't/g' },
+      ];
+      a.model.structures[0]!.show = null;
+      a.prompt = [{ tex: '{{s.groups.n}} \\times {{s.size.n}} = {{t.n}}', type: 'math' }, { text: 'Find the missing factor.', type: 'text' }];
+      a.response = { ask: 's.size', distractors: [], form: 'number' };
+      a.support = { explanation: 'It is {{s.size.n}}.', hints: [] };
+    });
+    assert.equal(key(square), '3', '3 × □ = 9 with no nouns');
+    const eaten = edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 'e', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: '8' }, { id: 'left', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: 's.total-e' });
+      a.prompt[2] = { text: 'Ana eats {{e}}. How many {{left.other}} are left?', type: 'text' };
+      a.response = { ask: 'left', distractors: [], form: 'number' };
+      a.support.hints = [];
+    });
+    assert.equal(key(eaten), '4', 'the answer equals the size of a basket, an input');
+  });
+  it('rejects a view that is not part of the math asked', () => {
+    rejects(edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 'a', kind: 'count', noun: null, unit: null, value: '2' }, { id: 'b', kind: 'count', noun: null, unit: null, value: '6' });
+      a.model.structures.push({ id: 'z', kind: 'equal_groups', roles: { groups: 'a', size: 'b' }, show: 'jumps' });
+      a.prompt.push({ of: 'z', type: 'view' });
+    }), 'view_unrelated');
+  });
+  it('lets the prompt name the correct option only among all of them, and never in a hint', () => {
+    const choose = (prompt: string, hints: string[] = []) => edit(equalGroupsActivity, a => {
+      a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.groups*s.size' }, { id: 'u', kind: 'count', noun: null, unit: null, value: 's.groups+s.size' });
+      a.prompt[2] = { text: prompt, type: 'text' };
+      a.response = { ask: 's.total', candidates: ['t', 'u'], distractors: [], form: 'choose' };
+      a.support.hints = hints;
+    });
+    rejects(choose('There are {{t.n}} in all. How many {{s.total.other}}?'), 'answer_singled_out');
+    assert.ok(check(choose('Is it {{t.n}} or {{u.n}} {{s.total.other}} in all?')).ok, JSON.stringify(codesOf(check(choose('Is it {{t.n}} or {{u.n}} {{s.total.other}} in all?')))));
+    rejects(choose('How many {{s.total.other}} are there?', ['It is {{t.n}}.']), 'answer_stated');
   });
   it('checks every view for the answer, not only the ask\'s own structure', () => {
     rejects(edit(equalGroupsActivity, a => { a.model.structures.push({ id: 't', kind: 'equal_groups', roles: { groups: 'g', size: 'n' }, show: 'jumps' }); a.prompt.push({ of: 't', type: 'view' }); }), 'answer_shown');
-  });
-  it('counts a derived value with no references as a given the model asserts', () => {
-    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 'x', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: '3*4+1' }); a.prompt[2] = { text: 'How many {{x.other}}?', type: 'text' }; a.response = { ask: 'x', distractors: [], form: 'number' }; }), 'ask_asserted');
   });
   it('knows a fraction complement reads its wholes', () => {
     rejects(edit(shadedFractionActivity, a => {
@@ -221,9 +278,9 @@ describe('review regressions: no path around the answer checks', () => {
   it('hides every side bound to the asked quantity (a square)', () => {
     const square = edit(areaActivity, a => {
       a.aim.skills = ['4.MD.A.3'];
-      a.model.quantities = [{ id: 'p', kind: 'length', noun: null, unit: 'm', value: '24' }, { id: 's', kind: 'length', noun: null, unit: 'm', value: 'p/4' }];
+      a.model.quantities = [{ id: 'p', kind: 'length', noun: null, unit: 'm', value: '24' }, { id: 'k', kind: 'count', noun: { icon: null, one: 'side', other: 'sides' }, unit: null, value: '4' }, { id: 's', kind: 'length', noun: null, unit: 'm', value: 'p/k' }];
       a.model.structures = [{ id: 'r', kind: 'rect_area', roles: { h: 's', w: 's' }, show: 'labeled' }];
-      a.prompt = [{ text: 'A square garden has a fence of {{p}} around it.', type: 'text' }, { of: 'r', type: 'view' }, { text: 'How long is each side?', type: 'text' }];
+      a.prompt = [{ text: 'A square garden has {{k}} equal sides and a fence of {{p}} around it.', type: 'text' }, { of: 'r', type: 'view' }, { text: 'How long is each side?', type: 'text' }];
       a.response = { ask: 'r.h', distractors: [], form: 'number' };
       a.support = { explanation: 'Each side is {{r.h}}.', hints: [] };
     });
