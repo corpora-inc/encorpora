@@ -1,5 +1,5 @@
 import React from "react";
-import { lazy, Suspense, useEffect, useId, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -26,6 +26,11 @@ import {
 // Lazy: the Activity Spec renderer (and zod, through its validator helpers) loads only when an AI
 // activity is shown, so local-practice startup does not pay for it.
 const ActivityView = lazy(() => import("../activity/render").then(m => ({ default: m.ActivityView })));
+// Activity Spec hints and explanations are Spec rich text (plain text + $TeX$), not Markdown. The
+// renderer module is loaded with the activity, so help never opens on an empty placeholder.
+type SpecRenderer = typeof import("../activity/render");
+let specRenderer: SpecRenderer | undefined;
+const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
 import { ReportProblem } from "./ReportProblem";
 import { ModelChoice, ModelStats } from "./ModelSettings";
 import { SafeMarkdown } from "./SafeMarkdown";
@@ -36,8 +41,78 @@ import "./studio.css";
 export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
 
 type View = "home" | "focus" | "growth";
-type Panel = "help" | "feedback" | null;
+/** What the help drawer shows: a hint (for local practice this includes an unrequested worked
+ * example, which is that task's hint), the worked explanation, or the explanation that comes with a
+ * recorded miss (local practice). */
+type Drawer = "hint" | "explain" | "feedback" | null;
+type HelpKind = "hint" | "explain";
 type Sheet = "ask" | "status" | "flag" | null;
+
+/** Swipe-down (or tap) to dismiss, for a drawer or sheet grab handle. The handle is a gesture
+ * affordance; every drawer and sheet also has a labeled close button and closes on Escape. */
+function useSwipeDown(onClose: () => void) {
+  const start = useRef<number | null>(null);
+  const [dy, setDy] = useState(0);
+  const end = (y: number | null) => {
+    if (start.current === null) return;
+    const d = y === null ? 0 : Math.max(0, y - start.current);
+    start.current = null;
+    setDy(0);
+    if (y !== null && (d > 48 || d < 6)) onClose();
+  };
+  return {
+    handle: {
+      "aria-hidden": true as const,
+      onPointerDown: (e: React.PointerEvent<HTMLElement>) => { start.current = e.clientY; e.currentTarget.setPointerCapture?.(e.pointerId); },
+      onPointerMove: (e: React.PointerEvent<HTMLElement>) => { if (start.current !== null) setDy(Math.max(0, e.clientY - start.current)); },
+      onPointerUp: (e: React.PointerEvent<HTMLElement>) => end(e.clientY),
+      onPointerCancel: () => end(null),
+    },
+    style: dy ? { transform: `translateY(${dy}px)`, transition: "none" } : undefined,
+  };
+}
+
+/** Help drawer: rises from the answer dock over the lower part of the problem. It never moves the
+ * problem, the answer field or Check, and it never covers the answer field. */
+function HelpDrawer({ kind, onClose, children, footer }: { kind: Exclude<Drawer, null>; onClose: () => void; children: React.ReactNode; footer?: React.ReactNode }) {
+  const swipe = useSwipeDown(onClose);
+  const label = kind === "hint" ? "Hint" : "How it works";
+  // The drawer grows upward from the dock; cap it below the focus bar (a soft keyboard can leave
+  // less room than the CSS cap of half the viewport).
+  const ref = useRef<HTMLElement>(null);
+  const [room, setRoom] = useState<number>();
+  useLayoutEffect(() => {
+    const fit = () => {
+      const el = ref.current, bar = document.querySelector(".focus-bar");
+      if (el && bar) setRoom(Math.max(120, Math.floor(el.getBoundingClientRect().bottom - bar.getBoundingClientRect().bottom - 8)));
+    };
+    fit();
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", fit);
+    window.addEventListener("resize", fit);
+    // A toast arriving under the drawer lifts its bottom edge.
+    const rail = ref.current?.parentElement, observer = rail ? new ResizeObserver(fit) : undefined;
+    if (rail) observer?.observe(rail);
+    return () => { vv?.removeEventListener("resize", fit); window.removeEventListener("resize", fit); observer?.disconnect(); };
+  }, []);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !document.querySelector("dialog[open]")) onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  return (
+    <section ref={ref} className={`help-drawer help-panel is-${kind}${kind === "feedback" ? " is-feedback" : ""}`} role="region" aria-label={label}
+      style={{ ...(room ? { maxHeight: `min(calc(var(--aha-vvh, 100dvh) * 0.5), 380px, ${room}px)` } : {}), ...swipe.style }}>
+      <div className="drawer-grab" {...swipe.handle}><span /></div>
+      <button type="button" className="icon-button help-close" aria-label={`Close ${label.toLowerCase()}`} onClick={onClose}><X size={20} /></button>
+      <div className="help-text" aria-live="polite">{children}</div>
+      {footer}
+    </section>
+  );
+}
+
+/** Three breathing dots, shown inside a fixed-size control while it waits. */
+const WaitDots = () => <span className="btn-wait" aria-hidden="true"><i /><i /><i /></span>;
 
 /** Icon-only control with an accessible name and a visible label on hover, focus or long-press. */
 function IconButton({ label, icon, onClick, disabled, active, badge, expanded }: {
@@ -83,6 +158,7 @@ function IconButton({ label, icon, onClick, disabled, active, badge, expanded }:
 /** Modal bottom sheet (phone) / centered card (wider screens). */
 function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () => void; label: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const swipe = useSwipeDown(onClose);
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
@@ -90,10 +166,11 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
     if (!open && d.open) d.close();
   }, [open]);
   return (
-    <dialog ref={ref} className="sheet" aria-label={label} onCancel={(e) => { e.preventDefault(); onClose(); }}
+    <dialog ref={ref} className="sheet" aria-label={label} style={swipe.style} onCancel={(e) => { e.preventDefault(); onClose(); }}
       onClick={(e) => { if (e.target === ref.current) onClose(); }}>
       {open && (
         <div className="sheet-body">
+          <div className="sheet-grab" {...swipe.handle}><span /></div>
           <button type="button" className="icon-button sheet-close" aria-label="Close" onClick={onClose}><X size={22} /></button>
           {children}
         </div>
@@ -105,7 +182,17 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
 export function Studio(props: StudioProps) {
   const [view, setView] = useState<View>("home");
   const [settings, setSettings] = useState(false);
-  const [panel, setPanel] = useState<Panel>(null);
+  const [drawer, setDrawer] = useState<Drawer>(null);
+  /** Help the learner asked for; it opens once the host has saved the assistance. */
+  const [pendingHelp, setPendingHelp] = useState<HelpKind | null>(null);
+  /** Local practice: help text received per kind for the current task. */
+  const [helpTexts, setHelpTexts] = useState<{ hint?: string; explain?: string }>({});
+  /** Activity Spec: how many of its hints the learner has revealed, and whether the explanation was. */
+  const [revealed, setRevealed] = useState(0);
+  const [explainSeen, setExplainSeen] = useState(false);
+  /** The learner asked for the next item (Next, Try something harder, Set it aside). */
+  const [advancing, setAdvancing] = useState(false);
+  const [dismissedError, setDismissedError] = useState<string>();
   const [sheet, setSheet] = useState<Sheet>(null);
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState("");
@@ -119,26 +206,42 @@ export function Studio(props: StudioProps) {
   const studioRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const seenHint = useRef<string | undefined>(undefined);
-  const hintAsks = useRef(0);
   const answerId = useId();
   const titleId = useId();
   const a = props.spec ? undefined : props.activity;
   const spec = props.spec;
   const taskId = spec ? (spec.id ?? spec.spec.id) : a?.id;
   const hasTask = !!taskId;
+  const specHints = spec?.spec.hints ?? [];
+  const specGraded = !!spec?.result && !spec.result.invalid;
+  const [renderer, setRenderer] = useState(specRenderer);
+  useEffect(() => { if (spec && !renderer) void loadSpecRenderer().then(setRenderer); }, [!!spec]);
   useEffect(() => {
     setAnswer("");
-    setPanel(null);
-    hintAsks.current = 0;
+    setDrawer(null);
+    setPendingHelp(null);
+    setHelpTexts({});
+    setRevealed(0);
+    setExplainSeen(false);
+    setAdvancing(false);
     if (sheet === "flag") setSheet(null);
   }, [taskId]);
+  useEffect(() => { if (!props.busy) setAdvancing(false); }, [props.busy]);
+  // Waiting shows only after a moment, so a quick save never flashes dots or a veil.
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    if (!props.busy) { setSlow(false); return; }
+    const t = window.setTimeout(() => setSlow(true), 400);
+    return () => window.clearTimeout(t);
+  }, [props.busy]);
+  useEffect(() => { if (!props.error) setDismissedError(undefined); }, [props.error]);
   useEffect(() => {
     if (taskId && view === "focus") promptRef.current?.focus({ preventScroll: true });
   }, [taskId, view]);
   useEffect(() => {
     if (!props.feedback) return;
-    // The answer's feedback takes the learner's attention; an open nudge folds away (the icon reopens it).
-    if (props.feedback.kind !== "info") setPanel(null);
+    // The answer's feedback takes the learner's attention; open help folds away (the icon reopens it).
+    if (props.feedback.kind !== "info") setDrawer(null);
     if (props.feedback.kind !== "nudge") feedbackRegion.current?.focus({ preventScroll: true });
   }, [props.feedback?.kind, props.feedback?.title, props.feedback?.message]);
   // A nudge hands the answer straight back for a quick fix once the controls are enabled again;
@@ -149,12 +252,45 @@ export function Studio(props: StudioProps) {
     const option = document.querySelector<HTMLElement>(`input[name="${answerId}"]:checked, input[name="${answerId}"], .focus-dock .answer-symbols button[aria-pressed="true"], .focus-dock .answer-symbols button`);
     (field ?? option ?? feedbackRegion.current)?.focus({ preventScroll: true });
   }, [props.feedback?.kind, props.feedback?.title, props.busy]);
-  // A new nudge, explanation or worked example opens the help panel once; dismissing it keeps it closed.
+  // Requested help opens once the host has finished saving it as assistance (busy is over), so
+  // the learner never sees help that the durable record does not count. Activity Spec help comes
+  // from the spec itself, so a repeated or re-opened request always has content; local practice
+  // help is the host's hint text.
   useEffect(() => {
-    const key = props.hint ? `${taskId}|${props.hint}` : undefined;
-    if (!key) { setPanel(p => p === "help" ? null : p); seenHint.current = undefined; return; }
-    if (view === "focus" && hasTask && key !== seenHint.current) { seenHint.current = key; setPanel("help"); }
-  }, [props.hint, taskId, view, hasTask]);
+    if (!pendingHelp || props.busy) return;
+    const kind = pendingHelp;
+    setPendingHelp(null);
+    if (props.error) return;
+    if (spec) {
+      if (kind === "hint") setRevealed(r => Math.min(specHints.length, r + 1));
+      else setExplainSeen(true);
+    } else {
+      if (!props.hint) return;
+      setHelpTexts(t => ({ ...t, [kind]: props.hint }));
+    }
+    setDrawer(kind);
+  }, [pendingHelp, props.busy, props.hint, props.error]);
+  // Help the learner did not ask for. Local practice: a worked example (or a restored hint) opens
+  // the drawer once; dismissing it keeps it closed. Activity Spec: a restored hint or explanation
+  // only marks what was already revealed.
+  useEffect(() => {
+    if (!props.hint || !hasTask) return;
+    if (spec) {
+      const i = specHints.indexOf(props.hint);
+      if (i >= 0) setRevealed(r => Math.max(r, i + 1));
+      else if (props.hint === spec.spec.explanation) setExplainSeen(true);
+      return;
+    }
+    if (props.busy || pendingHelp || view !== "focus") return;
+    if ([helpTexts.hint, helpTexts.explain].includes(props.hint)) return;
+    const key = `${taskId}|${props.hint}`;
+    if (key === seenHint.current) return;
+    seenHint.current = key;
+    // The host's unrequested text (a worked example or a restored hint) is this task's hint, so the
+    // Hint icon reopens it without asking, and counting, again.
+    setHelpTexts(t => ({ ...t, hint: props.hint }));
+    setDrawer("hint");
+  }, [props.hint, props.busy, pendingHelp, taskId, view, hasTask]);
   useEffect(() => {
     if (props.curiosity && view === "focus") setSheet("ask");
   }, [!!props.curiosity, props.curiosity?.answer, view]);
@@ -204,7 +340,6 @@ export function Studio(props: StudioProps) {
   };
   const completed = Math.max(0, props.session.completed);
   const target = Math.max(1, props.session.target);
-  const specGraded = !!spec?.result && !spec.result.invalid;
   const readyNext = props.activityAnswered || props.feedback?.kind === "correct" || specGraded;
   const learningVisible = view === "focus" && !settings && !sheet && !props.curiosity && hasTask && !readyNext;
   useEffect(() => {
@@ -223,61 +358,112 @@ export function Studio(props: StudioProps) {
   const progress = Math.min(100, (completed / target) * 100);
 
   // ---------- focus mode pieces ----------
-  const help = (panel === "help" && props.hint) || (panel === "feedback" && props.feedback?.message);
-  const helpPanel = help ? (
-    <section className={`help-panel${panel === "feedback" ? " is-feedback" : ""}`} aria-label={panel === "feedback" ? "How it works" : "Help"} role="region">
-      <button type="button" className="icon-button help-close" aria-label="Close help" onClick={() => setPanel(null)}><X size={20} /></button>
-      <div className="help-text" aria-live="polite"><SafeMarkdown>{panel === "feedback" ? props.feedback!.message : props.hint!}</SafeMarkdown></div>
-    </section>
-  ) : null;
-  const errorLine = props.error && !settings ? (
-    <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>
-  ) : null;
-  // Local tasks have one hint, so the icon toggles its panel. A spec may hold several: while the
-  // panel is open, each tap asks for the next one until they run out.
-  const hintTap = () => {
-    const more = !!spec && hintAsks.current < (spec.spec.hints?.length ?? 0);
-    if (panel === "help" && !more) return setPanel(null);
-    if (props.hint && panel !== "help") return setPanel("help");
-    hintAsks.current++;
-    props.onSupport("hint");
+  // Stable stage: the bar, the problem region and the answer dock (tools row, answer, Check) keep
+  // their geometry for the whole item. Feedback, help, loading and errors are overlays.
+  const closeDrawer = () => setDrawer(null);
+  const helpReady = (kind: HelpKind) =>
+    spec ? (kind === "hint" ? revealed > 0 : explainSeen || specGraded) : !!helpTexts[kind];
+  const askForHelp = (kind: HelpKind) => {
+    if (props.busy || pendingHelp) return;
+    setPendingHelp(kind);
+    props.onSupport(kind);
   };
+  /** A help icon toggles its drawer. Help already shown for this item reopens without a new request. */
+  const toggleHelp = (kind: HelpKind) => {
+    if (drawer === kind) return setDrawer(null);
+    if (helpReady(kind)) return setDrawer(kind);
+    askForHelp(kind);
+  };
+  const showHow = () => {
+    if (!spec && props.feedback?.kind === "retry" && props.feedback.message) return setDrawer(drawer === "feedback" ? null : "feedback");
+    toggleHelp("explain");
+  };
+  const advance = (go: () => void) => { setAdvancing(true); setDrawer(null); go(); };
+  const moreHints = spec && drawer === "hint" && !specGraded && revealed < specHints.length;
+  const drawerBody = (() => {
+    if (!drawer || !hasTask) return null;
+    if (drawer === "feedback") return props.feedback?.message ? <SafeMarkdown>{props.feedback.message}</SafeMarkdown> : null;
+    if (spec) {
+      const Rich = renderer?.RichText;
+      if (!Rich) return null;
+      if (drawer === "hint") return revealed ? specHints.slice(0, revealed).map((h, i) => <Rich key={i} as="p" text={h} className="help-step" />) : null;
+      if (drawer === "explain") return spec.spec.explanation.trim() ? <Rich as="p" text={spec.spec.explanation} className="help-step" /> : null;
+      return null;
+    }
+    const text = helpTexts[drawer];
+    return text ? <SafeMarkdown>{text}</SafeMarkdown> : null;
+  })();
+  const helpDrawer = drawer && drawerBody ? (
+    <HelpDrawer key={drawer} kind={drawer} onClose={closeDrawer}
+      footer={moreHints ? (
+        <button type="button" className="text-button another-hint" disabled={props.busy} onClick={() => askForHelp("hint")}>
+          <Lightbulb size={17} aria-hidden="true" /> Another hint
+        </button>
+      ) : undefined}>
+      {drawerBody}
+    </HelpDrawer>
+  ) : null;
+  // Errors float at the top of the stage until dismissed or the next action clears them.
+  const errorToast = props.error && !settings && props.error !== dismissedError ? (
+    <div className="stage-alert error-banner" role="alert">
+      <CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span>
+      <button type="button" className="icon-button alert-close" aria-label="Dismiss" onClick={() => setDismissedError(props.error)}><X size={18} /></button>
+    </div>
+  ) : null;
+  const hintDisabled = props.busy || readyNext || (!!spec && !specHints.length);
+  const explainDisabled = props.busy || (!!spec && !spec.spec.explanation.trim());
   const tools = hasTask ? (
     <div className="focus-tools" role="toolbar" aria-label="Help options">
-      <IconButton label="Hint" icon={<Lightbulb size={22} />} disabled={props.busy || readyNext}
-        active={panel === "help"} expanded={panel === "help"}
-        onClick={hintTap} />
-      <IconButton label="Show me how" icon={<BookOpen size={22} />} disabled={props.busy}
-        badge={props.feedback?.kind === "retry" && panel !== "feedback"}
-        onClick={() => props.feedback?.kind === "retry" && props.feedback.message ? setPanel("feedback") : props.onSupport("explain")} />
-      <IconButton label="Try something harder" icon={<TrendingUp size={22} />} disabled={props.busy} onClick={() => props.onSupport("harder")} />
+      <IconButton label="Hint" icon={<Lightbulb size={22} />} disabled={hintDisabled}
+        active={drawer === "hint"} expanded={drawer === "hint"}
+        onClick={() => toggleHelp("hint")} />
+      <IconButton label="Show me how" icon={<BookOpen size={22} />} disabled={explainDisabled}
+        active={drawer === "explain" || drawer === "feedback"} expanded={drawer === "explain" || drawer === "feedback"}
+        badge={(props.feedback?.kind === "retry" || (!!spec && !!spec.result && !spec.result.correct && !spec.result.invalid)) && drawer !== "feedback" && drawer !== "explain"}
+        onClick={showHow} />
+      <IconButton label="Try something harder" icon={<TrendingUp size={22} />} disabled={props.busy} onClick={() => advance(() => props.onSupport("harder"))} />
       <IconButton label="Something seems off" icon={<Flag size={21} />} disabled={props.busy} onClick={() => setSheet("flag")} />
       <IconButton label="Ask a question" icon={<MessageCircle size={22} />} disabled={props.busy}
         expanded={sheet === "ask"} onClick={() => setSheet("ask")} />
     </div>
   ) : null;
+  // Check and Next share one slot at one size; while waiting, the label gives way to dots.
   const nextButton = (
-    <button className="primary-button dock-primary" type="button" disabled={props.busy} onClick={props.onContinue}>
-      {props.busy ? (props.busyLabel ?? "Working on it…") : "Next"} <ArrowRight size={20} aria-hidden="true" />
+    <button className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}`} type="button" disabled={props.busy} onClick={() => advance(props.onContinue)}>
+      <span className="btn-label">Next <ArrowRight size={20} aria-hidden="true" /></span><WaitDots />
     </button>
   );
   const stopButton = props.busy && props.onCancel ? (
-    <button type="button" className="text-button stop-button" onClick={props.onCancel}>Stop AI request</button>
+    <button type="button" className="secondary-button veil-stop" onClick={props.onCancel}>Stop AI request</button>
   ) : null;
-  const feedbackLine = props.feedback && hasTask && !spec ? (
-    <div className={`feedback-line ${props.feedback.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
-      {props.session.complete && readyNext
-        ? <><Sprout size={22} aria-hidden="true" /><strong>A good place to pause.</strong></>
-        : <>{props.feedback.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
-          <strong>{props.feedback.title}</strong></>}
-      {props.feedback.kind === "retry" && props.feedback.message && panel !== "feedback" && (
-        <button type="button" className="text-button see-how" onClick={() => setPanel("feedback")}>See how</button>
-      )}
-      {props.feedback.kind === "nudge" && panel !== "help" && (
-        <button type="button" className="text-button see-how" disabled={props.busy} onClick={() => { setPanel("help"); props.onSupport("explain"); }}>See how</button>
-      )}
+  // Moving to the next item: a shimmer veils the finished problem. No status text row appears.
+  const veil = advancing && props.busy && slow && hasTask ? (
+    <div className="stage-veil">
+      <span className="veil-skeleton" aria-hidden="true"><i /><i /><i /></span>
+      {stopButton}
     </div>
   ) : null;
+  // The answer's feedback floats just above the dock, a toast that never moves the dock.
+  const outcome = !hasTask ? undefined : spec
+    ? spec.result && { kind: spec.result.invalid ? "info" : spec.result.correct ? "correct" : "retry", title: spec.result.invalid ?? (spec.result.correct ? "Yes, that’s it." : "Not quite yet.") }
+    : props.feedback && { kind: props.feedback.kind, title: props.feedback.title };
+  const seeHow = !outcome ? null
+    : spec ? (outcome.kind === "retry" && drawer !== "explain" ? () => setDrawer("explain") : null)
+    : props.feedback?.kind === "retry" && props.feedback.message && drawer !== "feedback" ? () => setDrawer("feedback")
+    : props.feedback?.kind === "nudge" && drawer !== "explain" ? () => toggleHelp("explain")
+    : null;
+  const pause = !!props.session.complete && readyNext;
+  // Moving on retires the finished item's toast at once; the veil takes over if the wait is long.
+  const toast = outcome && !advancing ? (
+    <div key={`${taskId}|${outcome.kind}|${outcome.title}`} className={`stage-toast feedback-line ${outcome.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
+      {pause
+        ? <><Sprout size={22} aria-hidden="true" /><strong>A good place to pause.</strong></>
+        : <>{outcome.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
+          <strong>{outcome.title}</strong></>}
+      {seeHow && <button type="button" className="text-button see-how" disabled={props.busy} onClick={seeHow}>See how</button>}
+    </div>
+  ) : null;
+  const busyStatus = <p className="sr-only" role="status">{props.busy ? (props.busyLabel ?? "Working on it…") : ""}</p>;
   const promptSize = a ? (a.prompt.length <= 22 ? "xl" : a.prompt.length <= 70 ? "l" : "m") : "m";
   const symbols = a?.answerKind === "comparison" ? ["<", "=", ">"] : [];
   const symbolName = (s: string) => s === "<" ? "Less than" : s === ">" ? "Greater than" : "Equal to";
@@ -286,7 +472,7 @@ export function Studio(props: StudioProps) {
   const focusStage = spec ? (
     <div className="focus-stage is-spec" aria-busy={props.busy}>
       <div className="stage-focus-target" ref={promptRef} tabIndex={-1} role="group" aria-label="Problem" />
-      <Suspense fallback={<p className="stage-loading">Getting your activity ready…</p>}>
+      <Suspense fallback={<div className="stage-wait"><span className="wait-dots" aria-hidden="true"><i /><i /><i /></span></div>}>
       <ActivityView
         key={taskId}
         spec={spec.spec}
@@ -295,38 +481,41 @@ export function Studio(props: StudioProps) {
         initialResponse={spec.initialResponse}
         disabled={props.busy}
         onSubmit={spec.onSubmit}
-        dockTop={<>{errorLine}{helpPanel}{tools}</>}
+        dockTop={tools}
+        overlay={<>{toast}{helpDrawer}</>}
+        stageOverlay={veil}
         next={nextButton}
       />
       </Suspense>
-      {stopButton}
+      {errorToast}
     </div>
   ) : a ? (
-    <form className="focus-stage" aria-busy={props.busy} onSubmit={(e) => { e.preventDefault(); submitLocal(); }}>
-      <div className="stage-scroll" data-stage-content="">
-        <div className={`stage-prompt prompt-${promptSize}`} ref={promptRef} tabIndex={-1}>
-          <SafeMarkdown>{a.prompt}</SafeMarkdown>
+    <form className={`focus-stage${a.answerKind === "choice" && a.choices?.length ? " has-choices" : ""}`} aria-busy={props.busy} onSubmit={(e) => { e.preventDefault(); submitLocal(); }}>
+      <div className="stage-area">
+        <div className="stage-scroll" data-stage-content="">
+          <div className={`stage-prompt prompt-${promptSize}`} ref={promptRef} tabIndex={-1}>
+            <SafeMarkdown>{a.prompt}</SafeMarkdown>
+          </div>
+          {a.visual && <Visual key={a.id} spec={a.visual} />}
+          {a.answerKind === "choice" && a.choices?.length ? (
+            <fieldset className="choices">
+              <legend className="sr-only">Your answer</legend>
+              {a.choices.map((choice, i) => (
+                <label key={choice.id} className={answer === choice.id ? "chosen" : ""}>
+                  <input type="radio" name={answerId} value={choice.id} checked={answer === choice.id}
+                    disabled={props.busy || readyNext} onChange={() => setAnswer(choice.id)} />
+                  <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
+                  <SafeMarkdown>{choice.label}</SafeMarkdown>
+                </label>
+              ))}
+            </fieldset>
+          ) : null}
         </div>
-        {a.visual && <Visual key={a.id} spec={a.visual} />}
-        {a.answerKind === "choice" && a.choices?.length ? (
-          <fieldset className="choices">
-            <legend className="sr-only">Your answer</legend>
-            {a.choices.map((choice, i) => (
-              <label key={choice.id} className={answer === choice.id ? "chosen" : ""}>
-                <input type="radio" name={answerId} value={choice.id} checked={answer === choice.id}
-                  disabled={props.busy || readyNext} onChange={() => setAnswer(choice.id)} />
-                <span className="choice-letter">{String.fromCharCode(65 + i)}</span>
-                <SafeMarkdown>{choice.label}</SafeMarkdown>
-              </label>
-            ))}
-          </fieldset>
-        ) : null}
+        {veil}
       </div>
       <div className="focus-dock">
-        {errorLine}
-        {helpPanel}
+        <div className="stage-overlay-rail">{toast}{helpDrawer}</div>
         {tools}
-        {feedbackLine}
         <div className="dock-row">
           {a.answerKind !== "choice" && (
             symbols.length ? (
@@ -361,20 +550,19 @@ export function Studio(props: StudioProps) {
             )
           )}
           {readyNext ? nextButton : (
-            <button className="primary-button dock-primary" type="submit" disabled={props.busy || !answer.trim()}>
-              {props.busy ? (props.busyLabel ?? "Working on it…") : "Check"}
+            <button className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}`} type="submit" disabled={props.busy || !answer.trim()}>
+              <span className="btn-label">Check</span><WaitDots />
             </button>
           )}
         </div>
-        {stopButton}
       </div>
+      {errorToast}
     </form>
   ) : (
     <div className="focus-stage is-empty" aria-busy={props.busy}>
       <div className="stage-scroll">
         {props.busy ? (
-          <div className="stage-wait" role="status"><span className="wait-dots" aria-hidden="true"><i /><i /><i /></span>
-            <span className="sr-only">{props.busyLabel ?? "Getting ready…"}</span></div>
+          <div className="stage-wait"><span className="wait-dots" aria-hidden="true"><i /><i /><i /></span>{stopButton}</div>
         ) : (
           <div className="stage-message">
             {props.feedback ? (
@@ -389,10 +577,9 @@ export function Studio(props: StudioProps) {
         )}
       </div>
       <div className="focus-dock">
-        {errorLine}
-        {!props.busy && <div className="dock-row">{nextButton}</div>}
-        {stopButton}
+        <div className="dock-row">{nextButton}</div>
       </div>
+      {errorToast}
     </div>
   );
 
@@ -400,7 +587,7 @@ export function Studio(props: StudioProps) {
     <div className="focus-view">
       <header className="focus-bar">
         <div className="focus-bar-inner">
-          <IconButton label="Home" icon={<House size={22} />} onClick={() => { setPanel(null); setView("home"); }} />
+          <IconButton label="Home" icon={<House size={22} />} onClick={() => { setDrawer(null); setView("home"); }} />
           <div className="focus-progress" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target}
             aria-valuenow={Math.min(completed, target)}>
             <span style={{ width: `${progress}%` }} />
@@ -412,6 +599,7 @@ export function Studio(props: StudioProps) {
         </div>
       </header>
       <main id="activity" className="focus-main">{focusStage}</main>
+      {busyStatus}
     </div>
   );
 
@@ -506,7 +694,7 @@ export function Studio(props: StudioProps) {
         <p className="sheet-title">Something seems off?</p>
         <p className="sheet-text">We’ll set this problem aside. It won’t count.</p>
         <div className="sheet-actions">
-          <button type="button" className="primary-button" disabled={props.busy} onClick={() => { setSheet(null); props.onSupport("dispute"); }}>Set it aside</button>
+          <button type="button" className="primary-button" disabled={props.busy} onClick={() => { setSheet(null); advance(() => props.onSupport("dispute")); }}>Set it aside</button>
           <button type="button" className="secondary-button" onClick={() => setSheet(null)}>Keep going</button>
         </div>
       </Sheet>
@@ -517,7 +705,10 @@ export function Studio(props: StudioProps) {
             {props.curiosity.answer ? (
               <SafeMarkdown>{props.curiosity.answer}</SafeMarkdown>
             ) : (
-              <p role="status">{props.busy ? "Thinking about that…" : "That answer could not finish. No new paid request will start automatically."}</p>
+              <>
+                <p role="status">{props.busy ? "Thinking about that…" : "That answer could not finish. No new paid request will start automatically."}</p>
+                {props.busy && props.onCancel && <button type="button" className="text-button" onClick={props.onCancel}>Stop AI request</button>}
+              </>
             )}
             <button type="button" className="text-button" onClick={closeAsk}>
               <ChevronLeft size={16} aria-hidden="true" /> Back to the problem
