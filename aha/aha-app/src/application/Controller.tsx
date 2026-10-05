@@ -40,7 +40,7 @@ import {
 } from "../provider/free2z";
 import { previewRepository } from "./preview";
 import { needsSpecRestorer, restoreLearning } from "./recovery";
-import { AiQueueBox, BATCH_WAIT_MS, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
+import { AiQueueBox, BATCH_WAIT_MS, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
 import { chooseTutorModel, learningError, retryDeadline, signInFailure } from "./connection";
@@ -743,6 +743,8 @@ export default function Controller() {
     }
     let next: Activity;
     let worked = false;
+    let undoSkip = () => {};
+    let skippedAi = false;
     const aiPath = !!(subject.current && provider.current && journalReadable);
     // An unreadable journal was already logged by aiUnavailable above.
     if (subject.current && !provider.current) aiSkipped("signed in without a Free2Z provider for this account; local practice");
@@ -750,12 +752,14 @@ export default function Controller() {
     const recall = aiPath && !stretch && count.current > 0 && count.current % 5 === 0 ? selectFluencySkill(state) : undefined;
     if (recall) aiSkipped(`timed recall: one local fluency task after ${count.current} tasks; AI continues on the next task`, "info");
     if (aiPath && !recall) {
-      // "Try something harder" on an unanswered AI activity must not waste it (#877): it is only left
-      // for a queued activity that is harder, and then it goes back to the front of the queue.
+      // "Try something harder" on an unanswered AI activity never wastes it (#877) and always moves on (#899): a
+      // harder queued activity, else the next queued one, else the bounded wait / local task. The skipped one
+      // goes to the back of the queue with its hints.
       const onScreen = stretch ? currentAi.current : undefined;
       const skipping = onScreen && !state.attempts.some(e => e.activityId === onScreen.activityId) ? onScreen : undefined;
-      const above = skipping?.spec.difficulty;
-      let item = takeNext(aiQueue.current.items, stretch, above).next;
+      const pick = () => skipping ? takeForSkip(aiQueue.current.items, skipping).next : takeNext(aiQueue.current.items, stretch).next;
+      const skippedRecord = (): QueuedActivity | undefined => skipping && {...skipping, shown: true, ...(hintsUsed.current > 0 ? {hintsUsed: hintsUsed.current} : {})};
+      let item = pick();
       // A batch the learner stopped never pays and ends at its next check; let it finish, then ask afresh.
       if (!item && prefetching.current && batchStop.current?.stopped) {
         // Bounded too: a stopped batch stuck on the network never holds the learner (no new batch until it settles).
@@ -780,30 +784,28 @@ export default function Controller() {
         // Past the wait the batch is a background one: a Stop on a later action never cuts off its paid stream.
         if (foregroundStop.current === stop) foregroundStop.current = undefined;
         assertActionActive();
-        item = takeNext(aiQueue.current.items, stretch, above).next;
+        item = pick();
         if (!item && !landed && !skipping)
           aiSkipped(`the next AI batch is still on its way after ${BATCH_WAIT_MS / 1000} s; one local task meanwhile, AI resumes when it lands`, "info");
         // A batch that settled without a usable activity logged its own ai-fallback reason.
       }
-      if (!item && stretch) wantsHarder.current = true;
-      if (!item && skipping) {
-        // Nothing harder is queued: keep the paid activity on screen and let the next batch (requested
-        // by the normal prefetch policy, never an extra call for this tap) carry the signal.
-        maybePrefetch();
-        return;
-      }
+      // The learner asked for harder and nothing harder was shown: the next batch carries the signal.
+      if (stretch && (!item || (skipping && item.spec.difficulty <= skipping.spec.difficulty))) wantsHarder.current = true;
+      // The skipped activity waits at the back (before anything new is shown, so the saved session holds it).
+      const skippedBack = skippedRecord();
+      if (skippedBack) { aiQueue.current.requeueBack(skippedBack); skippedAi = true; }
+      undoSkip = () => {
+        // The skipped activity is still the one on screen: it must not also wait in the queue, unless
+        // the next one is now pending (the next Continue shows it and the skipped one must stay).
+        if (skipping && currentAi.current?.activityId === skipping.activityId && !pendingAi.current) aiQueue.current.remove(skipping.activityId);
+      };
       if (item) {
-        if (skipping) aiQueue.current.requeueFront({...skipping, shown: true, ...(hintsUsed.current > 0 ? {hintsUsed: hintsUsed.current} : {})});
         try { await showSpec(item); }
-        catch (e) {
-          // The skipped activity is still the one on screen: it must not also wait in the queue, unless
-          // the harder one is now pending (the next Continue shows it and the skipped one must stay).
-          if (skipping && currentAi.current?.activityId === skipping.activityId && !pendingAi.current) aiQueue.current.remove(skipping.activityId);
-          throw e;
-        }
+        catch (e) { undoSkip(); throw e; }
         maybePrefetch();
         return;
       }
+      // Nothing else is queued after a skip: fall through to one local task.
     }
     if (recall) {
       next = { ...generateFreshPractice(recall.id, state, crypto.getRandomValues(new Uint32Array(1))[0], "fluency"), id: crypto.randomUUID(), source: "local" };
@@ -840,8 +842,10 @@ export default function Controller() {
     }
     pendingActivity.current=next;
     pendingWorked.current=worked;
-    await showActivity(next, worked);
+    try { await showActivity(next, worked); }
+    catch (e) { undoSkip(); throw e; }
     pendingActivity.current=undefined;
+    if (skippedAi) maybePrefetch();
   }
   /**
    * One paid batch request (3–5 activities) through the journal, grant and settlement fences.
@@ -1102,6 +1106,9 @@ export default function Controller() {
         json(learningCheckpoint(updated)),
       );
       displayState(updated);
+      // A set-aside AI spec can never come back from the queue, a skip's requeue or a restore (#899).
+      aiQueue.current.remove(shownId);
+      if (pendingAi.current?.item.activityId === shownId) pendingAi.current = undefined;
       currentActivity.current = undefined;
       setActivity(undefined);
       currentAi.current = undefined;
