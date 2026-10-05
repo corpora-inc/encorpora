@@ -79,7 +79,7 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
 4. **Expressions.** Function plots, `keyCheck` and expression answers go through `expr.ts`.
    It accepts a fixed grammar: numbers, the declared single-letter variables, `+ - * / ^`,
    and a fixed set of functions and constants. `round(x)` rounds to a whole number, and
-   `round(x, d)` rounds to d decimal places (d from -6 to 10). It never runs code. Function plots and answers
+   `round(x, d)` rounds to d decimal places (d from -6 to 10); halves round toward +infinity, as `Math.round` does. It never runs code. Function plots and answers
    must be defined on most of their domain.
 5. **Semantics.** `skillIds` must be in the standards set that was offered. Every figure must
    be shown exactly once, and every reference must point to a real figure. A multiple-choice

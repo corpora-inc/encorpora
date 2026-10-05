@@ -76,6 +76,11 @@ the schema cannot express (`STRUCTURED_OUTPUT_RULES`).
   previous shape passed 35.2%, because generated instances could omit a required keyCheck or add a forbidden one.
   String lengths and the text rules (safe text, TeX, expressions) stay validator-only: strict mode cannot express
   them.
+- **Prompt-only path (`npm run spec-eval`, Haiku, 45 batches, 180 activities, no Free2Z).** On identical Haiku
+  replies, main's validator and the new one both accept 89.4%. Haiku did not produce the gpt-4o shapes this change
+  now accepts: `round(x, d)` and a bare activity. Those shapes are covered by regression fixtures instead. With
+  `round(x, decimals)` added to the shared grammar line, a fresh run gave 88.3% schema-valid, within the ±2-point
+  noise, and keyCheck pass went from 98.9% to 100%.
 - **Per-batch log.** Every batch logs one content-free `ai-structured` line, for example
   `batch send: structured=yes model=gpt-4o response_format.type=json_schema strict=true json_schema.name=aha_activity_batch transport=stream`,
   or `structured=no reason=<capabilities_absent|structured_output_absent|structured_output_false|structured_output_not_boolean|refused_earlier_this_session|outside_limits|format_refused>`.

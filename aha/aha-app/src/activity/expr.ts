@@ -180,7 +180,7 @@ export function evaluate(e: Expr, scope: Readonly<Record<string, number>> = {}):
 }
 
 /**
- * `round(x, d)`: x rounded half up to d decimal places; a negative d rounds to tens, hundreds and so on.
+ * `round(x, d)`: x rounded to d decimal places, halves toward +infinity like `Math.round` (-2.5 → -2); a negative d rounds to tens, hundreds and so on.
  * d must be a whole number from -6 to 10. Decimal shifting goes through the exponent so 1.005 rounds to 1.01.
  */
 function roundTo(x: number, digits: number): number {

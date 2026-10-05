@@ -297,7 +297,7 @@ function parseShape(raw: unknown): { ok: true; spec: ActivitySpec } | { ok: fals
 /**
  * The errors a strict JSON Schema could have prevented: the shape, plus where keyCheck is required, forbidden
  * and in which form. Empty for any instance of the strict wire schema whose strings respect the length limits
- * and text rules (the schema cannot express those); the property test in schema.test.ts holds that.
+ * and text rules (the schema cannot express those); the property test in strictSchema.test.ts holds that.
  */
 export function shapeErrors(raw: unknown, requireKeyCheck = true): string[] {
   const shaped = parseShape(raw);
