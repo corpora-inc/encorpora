@@ -41,8 +41,6 @@ export interface Model {
   isGiven(id: string): boolean;
   /** The targets a target's value is computed from, one level down (a measure's bound roles, a derived quantity's references). */
   sources(t: Target): Target[];
-  /** Whether a target's value is computed, at any depth, from the target with key `key`. */
-  dependsOn(t: Target, key: string): boolean;
   /** A target's value recomputed exactly with some givens replaced (an identity test, README §8.1). */
   valueWith(t: Target, overrides: ReadonlyMap<string, Rational>): Value | null;
 }
@@ -211,15 +209,6 @@ export function bindModel(m: WireActivity['model'], grade: number): { ok: true; 
     const s = structures.get(t.structure)!, def = s.def.measures[t.measure]!;
     return [...def.inputs, ...(def.reads ?? [])].flatMap(role => { const b = s.roles[role]; return b ? [{ kind: 'quantity' as const, key: b.id, id: b.id }] : []; });
   };
-  const dependsOn = (t: Target, key: string): boolean => {
-    const seenKeys = new Set<string>();
-    const walk = (x: Target): boolean => {
-      if (seenKeys.has(x.key)) return false;
-      seenKeys.add(x.key);
-      return sources(x).some(src => src.key === key || walk(src));
-    };
-    return walk(t);
-  };
   const valueWith = (t: Target, overrides: ReadonlyMap<string, Rational>): Value | null => {
     const memoWith = new Map<string, Value | null>();
     const quantityWith = (id: string): Value | null => {
@@ -247,5 +236,5 @@ export function bindModel(m: WireActivity['model'], grade: number): { ok: true; 
     }
     return targetWith(t);
   };
-  return { ok: true, model: { quantities, structures, bindings, target, resolve, describe, isGiven, sources, dependsOn, valueWith } };
+  return { ok: true, model: { quantities, structures, bindings, target, resolve, describe, isGiven, sources, valueWith } };
 }

@@ -12,6 +12,8 @@ import { req } from './common';
 
 type R = 'h' | 'w';
 const MAX_UNIT_SQUARES = 12;
+/** Drawing units left around a labeled rectangle (its longer side is 10) for the dimension labels. */
+const LABEL_MARGIN = 2.5;
 /** A side as plain text for a dimension label: a written fraction keeps its terms, a decimal prints as one. */
 function plainNumber(v: Value): string {
   if (v.form?.kind === 'fraction') return `${v.form.n}/${v.form.d}`;
@@ -81,12 +83,14 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
         // Drawn to scale when the sides are within 1:4; otherwise squeezed and marked not to scale.
         const ratio = toNumber(w.q) / toNumber(h.q), clamped = Math.min(4, Math.max(1 / 4, ratio));
         const W = clamped >= 1 ? 10 : 10 * clamped, H = clamped >= 1 ? 10 / clamped : 10;
+        // A margin around the rectangle holds the dimension labels, which sit outside its edges.
+        const m = LABEL_MARGIN;
         return {
-          type: 'geometry', width: W, height: H, ...(clamped !== ratio ? { notToScale: true } : {}),
+          type: 'geometry', width: W + 2 * m, height: H + 2 * m, ...(clamped !== ratio ? { notToScale: true } : {}),
           shapes: [
-            { kind: 'polygon', points: [{ x: 0, y: 0 }, { x: W, y: 0 }, { x: W, y: H }, { x: 0, y: H }], color: 'teal' },
-            { kind: 'dimension', from: { x: 0, y: 0 }, to: { x: W, y: 0 }, label: asked.has('w') ? '?' : sideText(w) },
-            { kind: 'dimension', from: { x: 0, y: 0 }, to: { x: 0, y: H }, label: asked.has('h') ? '?' : sideText(h) },
+            { kind: 'polygon', points: [{ x: m, y: m }, { x: m + W, y: m }, { x: m + W, y: m + H }, { x: m, y: m + H }], color: 'teal' },
+            { kind: 'dimension', from: { x: m, y: m }, to: { x: m + W, y: m }, label: asked.has('w') ? '?' : sideText(w) },
+            { kind: 'dimension', from: { x: m, y: m }, to: { x: m, y: m + H }, label: asked.has('h') ? '?' : sideText(h) },
           ],
         };
       },
