@@ -10,12 +10,12 @@ with TEST fixtures only and has not been verified against the live service.
 | File | Role |
 |---|---|
 | `spec.ts` | zod schema → TS types + strict validator + semantic rules; batch parsing (`extractJsonObject`, `recoverBatchItems`, `validateActivityBatch`) |
-| `schema.ts` | JSON Schema exports: standard draft 2020-12, plus an OpenAI strict-mode variant for a future `response_format` |
+| `schema.ts` | JSON Schema exports: standard draft 2020-12, plus an OpenAI strict-mode variant sent as `response_format` when the model supports it |
 | `text.ts` | Rich-text grammar (`plain text with $TeX$`), TeX/markup/link safety, KaTeX rendering |
 | `expr.ts` | Safe expression parser/evaluator. It never calls `eval` or `Function`, and its length, depth and value range are bounded |
 | `grade.ts` | Pure deterministic grader → `{correct, normalized, misconceptionTag?, invalid?}` |
 | `learnerState.ts` | Builds the compact learner summary the model receives. Also defines `ActivityAttemptRecord` and `specHash` |
-| `prompt.ts` | Batch prompt: rules + compact grammar + 2 format examples + learner summary + standards window |
+| `prompt.ts` | Batch prompt: rules + compact grammar + 2 format examples + learner summary + standards window. `structuredSystem` replaces the grammar with `STRUCTURED_OUTPUT_RULES` for structured output |
 | `render/` | `<ActivityView>` plus pure-SVG/HTML figure renderers and response widgets. Import `render/index.ts` to load the CSS |
 | `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output |
 | `gallery/` + `scripts/gallery.mjs` | Dev-only visual gallery: `npm run gallery [-- ids…] [--states]` → `.gallery/index.html` |
@@ -245,7 +245,10 @@ the fallback, and signed-out practice is unchanged.
    journal is version 2: each operation records its budget (`'1800'` or `'2600'`). Version 1
    journals, which pin 1800, stay readable and recoverable, and are rewritten as version 2 on
    their first write. The estimate and cap check still run before every send.
-   `max_output_tokens_strict` is sent on every paid request (#881); `response_format` is not sent yet.
+   `max_output_tokens_strict` is sent on every paid request (#881). When the model advertises
+   `capabilities.structured_output`, the batch also carries `response_format` (the strict schema) with
+   `structuredSystem`. Otherwise, or after a zero-cost refusal, it sends the prompt-only request (#884;
+   journal v3 records the format for same-key recovery).
 2. **Validate.** A fresh reply and a same-key recovered reply both go through
    `parseBatch(text, allowedSkillIds, operationId)`, which calls `validateActivityBatch`.
    Rejected activities are logged as model-quality telemetry (`ai-batch` in diagnostics). A

@@ -1,8 +1,9 @@
 /**
- * Batch prompt for Activity Spec v1. Prompt-only JSON today (the gateway has no
- * response_format yet): the system prompt carries a compact grammar plus two short format
- * examples; the client extracts and strictly validates each activity (validateActivityBatch).
- * When the gateway accepts json_schema, pass `responseFormat` alongside the same prompt.
+ * Batch prompt for Activity Spec v1. Two variants of one prompt: `system` carries the compact
+ * grammar plus two short format examples (prompt-only JSON); `structuredSystem` swaps the grammar
+ * for the few rules a JSON Schema cannot express, for use with `responseFormat` when the model
+ * advertises structured output. Either way the client strictly validates each activity
+ * (validateActivityBatch).
  */
 import { skills, getSkill } from '../learning/curriculum';
 import type { Grade } from '../learning/types';
@@ -95,9 +96,23 @@ export interface ActivityPrompt {
   allowedSkillIds: Set<string>;
   /** Recommended output cap for a 3–5 activity batch (gpt-4o; ~2k expected, headroom for 5). */
   maxOutputTokens: number;
-  /** For a future gateway: response_format {type:'json_schema', json_schema:{name, schema, strict:true}}. */
+  /** Send with `responseFormat`: the same rules, with the grammar replaced by STRUCTURED_OUTPUT_RULES. */
+  structuredSystem: string;
+  /** response_format {type:'json_schema', json_schema:{name, schema, strict:true}} for a model with structured output. */
   responseFormat: { type: 'json_schema'; json_schema: { name: string; schema: Record<string, unknown>; strict: true } };
 }
+
+/**
+ * Replaces ACTIVITY_GRAMMAR when the strict schema travels as response_format: the schema enforces
+ * shape, types, enums and ranges, so only rules it cannot express stay in the prompt.
+ */
+export const STRUCTURED_OUTPUT_RULES = `OUTPUT: JSON matching the response schema. Every key is required; use null for an optional field you do not use.
+RT (text) = plain text with inline TeX in $...$ (KaTeX). Every $ opens or closes math, so money is \\$ (JSON "\\\\$4.50"). Words never go inside $...$. No HTML, Markdown or links. TeX: no \\href,\\url,\\html*,\\def,\\color,\\phantom; a missing number is \\square.
+Lengths: title <=60, rationale <=300; axis labels, units and point labels <=16 chars; other labels <=24; table cells <=48.
+Show every figure exactly once via a figure block. Every figure's alt gives a blind learner the parts they need in plain text, never the answer. data_table: "?" marks a cell to find. geometry: scale the drawing to fit, y up; a segment has no label (add a label shape). line_chart x increasing. money: each kind once. picture <=100 icons. coordinate_plane and number_line <=40 grid steps.
+numeric tolerance only for estimates. expression: ask for an expression, not an equation; 1-3 single-letter variables, not e. multiple_choice: exactly one correct. multi_select: >=1 correct and >=1 incorrect. ordering: items in the CORRECT order (the app shuffles). plot_point: on a coordinate_plane; never pre-plot the answer. tap_region: region = an id on a bar, pie slice, picture group, plane point, or geometry polygon/circle; give >=2 elements ids.
+KeyCheck: REQUIRED for numeric and fraction as {value:"arithmetic equal to the key"}, e.g. "2*25+10+3" or "2/5+2/5"; for plot_point as {x:"...",y:"..."}; null on every other response type.
+Expressions/keyCheck: + - * / ^ ( ), implicit multiplication (2x), sqrt(), abs(), pi. tag=snake_case misconception name.`;
 
 export function buildActivityPrompt(summary: LearnerSummary, options: { count?: number; standardsLimit?: number } = {}): ActivityPrompt {
   const count = Math.min(5, Math.max(3, options.count ?? 4));
@@ -105,6 +120,8 @@ export function buildActivityPrompt(summary: LearnerSummary, options: { count?: 
   const user = `LEARNER ${JSON.stringify(summary)}\nSTANDARDS\n${window.lines.join('\n')}\nWrite ${count} activities.`;
   return {
     system: ACTIVITY_AUTHOR_RULES,
+    // The one conditional between the variants: grammar included, or replaced by the schema-only rules.
+    structuredSystem: ACTIVITY_AUTHOR_RULES.replace(ACTIVITY_GRAMMAR, () => STRUCTURED_OUTPUT_RULES),
     user,
     allowedSkillIds: window.ids,
     maxOutputTokens: 2600,

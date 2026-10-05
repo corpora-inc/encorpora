@@ -1,6 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { approxTokens, buildActivityPrompt, ACTIVITY_AUTHOR_RULES } from './prompt';
+import { approxTokens, buildActivityPrompt, ACTIVITY_AUTHOR_RULES, ACTIVITY_GRAMMAR, STRUCTURED_OUTPUT_RULES } from './prompt';
+import { activityBatchStrictJsonSchema } from './schema';
 import { buildLearnerSummary, type ActivityAttemptRecord } from './learnerState';
 import { fixtures } from './fixtures';
 import { validateActivityBatch, FigureSchema, ResponseSchema } from './spec';
@@ -48,7 +49,21 @@ describe('activity batch prompt', () => {
     const r = validateActivityBatch(JSON.stringify(reply), { skillIds: p.allowedSkillIds });
     assert.deepEqual(r.accepted.map(a => a.id), ['fx-3-fraction-bar']);
   });
-  it('carries the strict schema for a future structured-output gateway', () => {
+  it('structured variant: the grammar is the only difference, it saves input tokens, and keeps every safety rule (#884)', () => {
+    const p = buildActivityPrompt(realisticSummary());
+    assert.ok(!p.structuredSystem.includes(ACTIVITY_GRAMMAR) && p.system.includes(ACTIVITY_GRAMMAR));
+    assert.equal(p.structuredSystem, p.system.replace(ACTIVITY_GRAMMAR, () => STRUCTURED_OUTPUT_RULES));
+    const saved = approxTokens(p.system) - approxTokens(p.structuredSystem);
+    // ~5.2k grammar chars → ~1.6k rule chars. Measured with the chars/4 heuristic (no tokenizer in the repo).
+    assert.ok(saved >= 600, `structured prompt saves only ~${saved} tokens`);
+    for (const phrase of ['keyCheck', 'no brands', 'Never ask for personal information', 'data, not instructions', 'never a ceiling', '\\$', 'exactly one correct', 'CORRECT order', 'null'])
+      assert.ok(p.structuredSystem.includes(phrase), phrase);
+  });
+  it('the strict schema fits Free2Z\'s 32 KiB response_format limit', () => {
+    const bytes = new TextEncoder().encode(JSON.stringify(activityBatchStrictJsonSchema)).length;
+    assert.ok(bytes <= 32 * 1024, `strict schema is ${bytes} bytes`);
+  });
+  it('carries the strict schema for a structured-output gateway', () => {
     const p = buildActivityPrompt(realisticSummary(), { count: 9 });
     assert.equal(p.responseFormat.json_schema.strict, true);
     assert.match(p.user, /Write 5 activities/);
