@@ -5,9 +5,10 @@
  * Values are computed lazily, so a derived quantity may use a measure ("s.total - e") and a role may
  * bind a derived quantity ("size = t/g"); a cycle between them is reported, never looped.
  */
-import { parseExpr, quantityValue, refsOf, type Described, type Expr, type Issue, type QuantityDecl, type Result, type Value } from './quantity';
+import { evaluate, parseExpr, quantityValue, refsOf, type Described, type Expr, type Issue, type QuantityDecl, type Result, type Value } from './quantity';
 import { nounFormIssues } from './text';
 import type { BoundRole, MeasureDef, Roles, StructureDef } from './registry';
+import type { Rational } from '../../learning/rational';
 import { inRange, isIssue, rangeLabel } from './registry';
 import { structureDef, type StructureKind } from './structures';
 import { RESERVED_IDS, type WireActivity, type WireStructure } from './wire';
@@ -36,15 +37,18 @@ export interface Model {
   resolve(path: readonly string[]): Result<Value>;
   /** The value with its noun and kind (placeholders). */
   describe(t: Target): Described;
-  /** What a target is, through aliases: a quantity whose value is one reference is that reference. */
-  canonical(t: Target): Target;
-  /** A quantity the model states outright: its value refers to nothing (a literal, or arithmetic on literals). */
+  /** A given: a quantity whose value is a written number. Every other quantity is derived from references. */
   isGiven(id: string): boolean;
-  /** Whether a target's value is computed, at any depth, from the target with canonical key `key`. */
+  /** The targets a target's value is computed from, one level down (a measure's bound roles, a derived quantity's references). */
+  sources(t: Target): Target[];
+  /** Whether a target's value is computed, at any depth, from the target with key `key`. */
   dependsOn(t: Target, key: string): boolean;
+  /** A target's value recomputed exactly with some givens replaced (an identity test, README §8.1). */
+  valueWith(t: Target, overrides: ReadonlyMap<string, Rational>): Value | null;
 }
 
 const ok = <T>(value: T): Result<T> => ({ ok: true, value });
+const hasNumber = (e: Expr): boolean => e.t === 'num' || (e.t === 'neg' && hasNumber(e.e)) || (e.t === 'op' && (hasNumber(e.a) || hasNumber(e.b))) || (e.t === 'fn' && (hasNumber(e.args[0]) || hasNumber(e.args[1])));
 const fail = (code: string, message: string): { ok: false; error: Issue } => ({ ok: false, error: { code, message } });
 
 /**
@@ -65,12 +69,19 @@ export function bindModel(m: WireActivity['model'], grade: number): { ok: true; 
   m.quantities.forEach((q, i) => claim(q.id, `model.quantities[${i}].id`));
   m.structures.forEach((s, i) => claim(s.id, `model.structures[${i}].id`));
 
-  // Quantities: parse values and check noun forms.
+  // Quantities: parse values and check noun forms. Every number is a declared quantity (README §3): a
+  // given is a written number, and a derived value combines references with operators, with no number
+  // of its own (a hidden "+10" would be a number the learner never sees) and no bare alias (a second
+  // name, with its own noun, for something the model already names).
   const exprs = new Map<string, { decl: QuantityDecl; expr: Expr; index: number }>();
   m.quantities.forEach((q, i) => {
     const path = `model.quantities[${i}]`;
     const e = parseExpr(q.value);
-    if (!e.ok) p(`${path}.value`, e.error.code, e.error.message);
+    if (!e.ok) { p(`${path}.value`, e.error.code, e.error.message); return; }
+    const refs = refsOf(e.value);
+    if (!refs.length && e.value.t !== 'num') p(`${path}.value`, 'given_arithmetic', `${q.id} is a given: write the number itself, not arithmetic.`);
+    else if (refs.length && e.value.t === 'ref') p(`${path}.value`, 'alias', `${q.id} only renames ${refs[0]!.join('.')}; use that name directly.`);
+    else if (refs.length && hasNumber(e.value)) p(`${path}.value`, 'derived_number', `${q.id} has a number inside its value; declare every number as its own quantity, so the learner can be told it.`);
     else exprs.set(q.id, { decl: q, expr: e.value, index: i });
     if (q.noun) for (const form of ['one', 'other'] as const) for (const issue of nounFormIssues(q.noun[form])) p(`${path}.noun.${form}`, issue.code, issue.message);
   });
@@ -193,17 +204,7 @@ export function bindModel(m: WireActivity['model'], grade: number): { ok: true; 
     const s = structures.get(t.structure)!, def = s.def.measures[t.measure]!;
     return { value, noun: def.noun(s.roles), kind: def.kind };
   };
-  const canonical = (t: Target): Target => {
-    for (let hops = 0; t.kind === 'quantity' && hops < 16; hops++) {
-      const e = quantities.get(t.id)!.expr;
-      if (e.t !== 'ref') break;
-      const next = target(e.path);
-      if (!next.ok) break;
-      t = next.value;
-    }
-    return t;
-  };
-  const isGiven = (id: string) => refsOf(quantities.get(id)!.expr).length === 0;
+  const isGiven = (id: string) => quantities.get(id)!.expr.t === 'num';
   /** The targets a target's value is computed from, one level down. */
   const sources = (t: Target): Target[] => {
     if (t.kind === 'quantity') return refsOf(quantities.get(t.id)!.expr).flatMap(path => { const x = target(path); return x.ok ? [x.value] : []; });
@@ -213,12 +214,38 @@ export function bindModel(m: WireActivity['model'], grade: number): { ok: true; 
   const dependsOn = (t: Target, key: string): boolean => {
     const seenKeys = new Set<string>();
     const walk = (x: Target): boolean => {
-      const c = canonical(x);
-      if (seenKeys.has(c.key)) return false;
-      seenKeys.add(c.key);
-      return sources(c).some(src => canonical(src).key === key || walk(src));
+      if (seenKeys.has(x.key)) return false;
+      seenKeys.add(x.key);
+      return sources(x).some(src => src.key === key || walk(src));
     };
     return walk(t);
   };
-  return { ok: true, model: { quantities, structures, bindings, target, resolve, describe, canonical, isGiven, dependsOn } };
+  const valueWith = (t: Target, overrides: ReadonlyMap<string, Rational>): Value | null => {
+    const memoWith = new Map<string, Value | null>();
+    const quantityWith = (id: string): Value | null => {
+      if (memoWith.has(id)) return memoWith.get(id)!;
+      memoWith.set(id, null);
+      const q = quantities.get(id)!;
+      const over = overrides.get(id);
+      const v = over ? { ...q.value, q: over } : q.expr.t === 'num' ? q.value : (() => { const r = evaluate(q.expr, resolveWith); return r.ok ? r.value : null; })();
+      memoWith.set(id, v);
+      return v;
+    };
+    const targetWith = (x: Target): Value | null => {
+      if (x.kind === 'quantity') return quantityWith(x.id);
+      const s = structures.get(x.structure)!, def = s.def.measures[x.measure]!;
+      const roles: Record<string, BoundRole | null> = {};
+      for (const [role, b] of Object.entries(s.roles)) { if (!b) { roles[role] = null; continue; } const v = quantityWith(b.id); if (!v) return null; roles[role] = { ...b, value: v }; }
+      const v = def.value(roles);
+      return isIssue(v) ? null : v;
+    };
+    function resolveWith(path: readonly string[]): Result<Value> {
+      const x = target(path);
+      if (!x.ok) return x;
+      const v = targetWith(x.value);
+      return v ? ok(v) : fail('value_unavailable', 'unavailable');
+    }
+    return targetWith(t);
+  };
+  return { ok: true, model: { quantities, structures, bindings, target, resolve, describe, isGiven, sources, dependsOn, valueWith } };
 }

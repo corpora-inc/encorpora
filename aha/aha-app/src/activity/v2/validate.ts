@@ -7,6 +7,7 @@
  * response.ts.
  */
 import { getSkill } from '../../learning/curriculum';
+import { compare, rational } from '../../learning/rational';
 import { extractJsonObject } from '../spec';
 import { drawingProblems } from '../draw';
 import { evaluate, formatValue, isValueAttr, parseExpr, refsOf, sameValue, type Described, type Expr, type Result, type Rich, type Value, type ValueAttr } from './quantity';
@@ -23,7 +24,7 @@ export interface ValidateOptions {
   locale?: string;
 }
 export type RenderedBlock = { type: 'text'; text: string } | { type: 'math'; tex: string } | { type: 'view'; of: string };
-/** The ask: one reference, valued; `target` is canonical (an alias resolves to what it names). */
+/** The ask: one reference, valued. */
 export interface Ask { expr: Expr; value: Value; target: Target; described: Described }
 export interface CheckedActivity {
   wire: WireActivity;
@@ -130,7 +131,7 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     // derived quantity with its own kind, noun and unit (left = "s.total - e"), never a bare expression.
     if (v && v.expr.t !== 'ref') p('response.ask', 'ask_not_ref', 'The ask names one quantity, role or measure. Declare anything computed as a derived quantity (e.g. left = "s.total - e") and ask that.');
     else if (v) {
-      const target = model.canonical((model.target((v.expr as Extract<Expr, { t: 'ref' }>).path) as { ok: true; value: Target }).value);
+      const target = (model.target((v.expr as Extract<Expr, { t: 'ref' }>).path) as { ok: true; value: Target }).value;
       ask = { ...v, target, described: model.describe(target) };
     }
   }
@@ -155,23 +156,46 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   };
   const reveals = new Map([...viewed].map(([sid, view]) => [sid, view.reveals(model.structures.get(sid)!.roles, askedIn(sid))]));
   const answerForm = isAnswerForm(r.form);
+  // The ask's support: everything its value is computed from, and the structures those belong to.
+  // Candidates belong to the question too. A figure or a number outside it is not part of the math asked.
+  const supportKeys = new Set<string>(), supportStructures = new Set<string>();
+  const support = (t: Target) => {
+    if (supportKeys.has(t.key)) return;
+    supportKeys.add(t.key);
+    if (t.kind === 'measure') supportStructures.add(t.structure);
+    else for (const b of model.bindings.get(t.id) ?? []) supportStructures.add(b.structure);
+    for (const src of model.sources(t)) support(src);
+  };
+  const candidateTargets = candidates.flatMap(c => { if (c.expr.t !== 'ref') return []; const t = model.target(c.expr.path); return t.ok ? [t.value] : []; });
+  if (ask) support(ask.target);
+  candidateTargets.forEach(support);
+  const relevant = new Set<string>([...supportStructures, ...('on' in r && r.on ? [r.on] : []), ...(r.form === 'tap' && r.on === null ? viewed.keys() : [])]);
+  for (const sid of viewed.keys()) if (!relevant.has(sid)) p(`prompt`, 'view_unrelated', `The view of ${sid} is not part of the math asked: the ask is not computed from it.`);
+  /** May the prompt or a hint print this value? Only what the math asked uses, or a label of a figure that is part of it. */
+  const mayReveal = (t: Target) => supportKeys.has(t.key)
+    || (t.kind === 'measure' ? relevant.has(t.structure) : (model.bindings.get(t.id) ?? []).some(b => relevant.has(b.structure)));
   /**
-   * Whether a revealed value states the answer (answer forms, README §8.1): it is the ask (through
-   * aliases), or it has the answer's kind, noun or unit and value, or it is computed from the answer
-   * and equals it. A coincidentally equal number of another kind ("4 groups" when 4 apples are
-   * asked) states nothing.
+   * Whether a printed value states the answer (answer forms, README §8.1), decided without nouns or
+   * prose. A value computed from the model (a measure or a derived quantity) that equals the answer
+   * recomputes it. A given that equals the answer states it only when the answer IS that given: the
+   * ask, recomputed exactly with the given doubled and tripled, still equals it ("12 apples in 3
+   * baskets: how many in all?"). Otherwise the equality is a coincidence of inputs ("eat 8, 4 are
+   * left" beside baskets of 4; "4 × □ = 16"), which is legitimate.
    */
   const statesAnswer = (t: Target, d: Described): boolean => {
-    if (!ask) return false;
-    const c = model.canonical(t);
-    if (c.key === ask.target.key) return true;
-    if (describedEqual(d, ask.described)) return true;
-    return sameValue(d.value, ask.value) && d.value.power === ask.value.power && d.value.unit === ask.value.unit && model.dependsOn(c, ask.target.key);
+    if (!ask || !sameValue(d.value, ask.value) || d.value.power !== ask.value.power || d.value.unit !== ask.value.unit) return false;
+    if (t.kind === 'measure' || !model.isGiven(t.id)) return true;
+    const base = d.value.q;
+    return [2n, 3n].every(k => {
+      const moved = base.n === 0n ? rational(k) : rational(base.n * k, base.d);
+      const v = model.valueWith(ask.target, new Map([[t.id, moved]]));
+      return !!v && compare(v.q, moved) === 0;
+    });
   };
+  const candidateKeys = new Set(candidateTargets.map(t => t.key));
+  const revealedCandidates = new Set<string>();
 
   // Templates: parse, closed-list rules, placeholders under the policy, render.
-  // Candidates are printed as the options anyway, so naming one in the prose leaks nothing.
-  const candidateKeys = new Set(candidates.flatMap(c => { if (c.expr.t !== 'ref') return []; const t = model.target(c.expr.path); return t.ok ? [model.canonical(t.value).key] : []; }));
   const promptShown = new Set<string>();
   const used = new Set<string>();
   type Scope = 'prompt' | 'hint' | 'explanation';
@@ -196,13 +220,17 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     if (isQuantity && bindings.length) return fail('role_by_id', `${head} is bound to ${bindings[0]!.structure}.${bindings[0]!.role}; name it through the role: {{${bindings[0]!.structure}.${bindings[0]!.role}${attr ? `.${attr}` : ''}}}.`);
     if (t.value.kind === 'quantity') used.add(t.value.id);
     const described = model.describe(t.value);
-    const key = model.canonical(t.value).key;
-    const guarded = scope !== 'explanation' && answerForm && !!ask;
-    if (guarded && key === ask!.target.key) {
+    const key = t.value.key;
+    const printed = scope !== 'explanation' && VALUE_BEARING.has(attr);
+    if (scope !== 'explanation' && answerForm && ask && key === ask.target.key) {
       if (VALUE_BEARING.has(attr)) return { ok: true, value: 'mask' };
       if (attr === 'noun' || attr === 'unit') return fail('answer_inflected', `{{${ph.path.join('.')}}} is inflected for the answer's value; use .one or .other.`);
-    } else if (guarded && VALUE_BEARING.has(attr) && !candidateKeys.has(key) && statesAnswer(t.value, described)) {
-      return fail('answer_stated', `{{${ph.path.join('.')}}} states the answer: it equals the answer and is the same kind of quantity, or is computed from it.`);
+    } else if (printed) {
+      if (!mayReveal(t.value)) return fail('extraneous', `{{${ph.path.join('.')}}} prints a value the question does not use; every number shown must be part of the math asked.`);
+      // In the prompt a candidate may be named among the others (the options show them all anyway); never in a hint.
+      const listed = scope === 'prompt' && candidateKeys.has(key);
+      if (listed) revealedCandidates.add(key);
+      if (answerForm && !listed && statesAnswer(t.value, described)) return fail('answer_stated', `{{${ph.path.join('.')}}} states the answer: it is computed from the model and equals it, or it is the same named quantity with the same value.`);
     }
     if (scope === 'prompt' && VALUE_BEARING.has(attr)) promptShown.add(key);
     return formatValue(described, attr, locale);
@@ -224,10 +252,9 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   const explanation = renderOne(a.support.explanation, 'text', 'explanation', 'support.explanation') ?? '';
   if (problems.length) return { ok: false, problems };
 
-  // The reveal rule (README §7). Knowability is decided on canonical targets.
+  // The reveal rule (README §7).
   const memo = new Map<string, Known>();
-  const status = (t0: Target): Known => {
-    const t = model.canonical(t0);
+  const status = (t: Target): Known => {
     const cached = memo.get(t.key);
     if (cached !== undefined) return cached;
     memo.set(t.key, 'unknown');
@@ -258,9 +285,13 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
         for (const [name, reveal] of Object.entries(rv)) {
           if (reveal !== 'shown') continue;
           const shown = Object.hasOwn(s.def.roles, name) ? (s.roles[name] ? { kind: 'quantity' as const, key: s.roles[name]!.id, id: s.roles[name]!.id } : null) : { kind: 'measure' as const, key: `${sid}.${name}`, structure: sid, measure: name };
-          if (shown && statesAnswer(shown, model.describe(shown))) p('response.ask', 'answer_shown', `The ${s.wire.show} view of ${sid} prints ${sid}.${name}, which states the answer.`);
+          if (shown && (shown.key === t.key || statesAnswer(shown, model.describe(shown)))) p('response.ask', 'answer_shown', `The ${s.wire.show} view of ${sid} prints ${sid}.${name}, which states the answer.`);
         }
       }
+      // The prompt may name the correct option only among all of them, never on its own.
+      const correct = candidates.filter(c => sameValue(c.value, ask.value)).flatMap(c => c.expr.t === 'ref' ? [c.expr.path.join('.')] : []);
+      const singled = candidateTargets.some(ct => revealedCandidates.has(ct.key) && sameValue(model.describe(ct).value, ask.value)) && candidateTargets.some(ct => !revealedCandidates.has(ct.key));
+      if (singled) p('response.candidates', 'answer_singled_out', `The prompt names the correct option (${correct.join(', ')}) without naming every option.`);
       const countable = t.kind === 'quantity' && (model.bindings.get(t.id) ?? []).some(b => reveals.get(b.structure)?.[b.role] === 'countable');
       if (t.kind === 'quantity' && model.isGiven(t.id) && !countable)
         p('response.ask', 'ask_asserted', `${t.key} is a value the model states outright and no view makes countable, so the key would be asserted, not computed; ask a measure or a derived quantity.`);
