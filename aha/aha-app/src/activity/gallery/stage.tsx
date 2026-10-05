@@ -4,7 +4,9 @@
  *   hold()     the next Next / Try something harder waits ("Preparing your next AI lesson…")
  *   release()  finishes that wait and shows the next fixture
  *   fail(msg)  shows an error, as a failed action would
- * ?label=Apples gives the first activity's typed response that label; ?unit=… gives a numeric one a unit. */
+ * ?label=Apples gives the first activity's typed response that label; ?unit=… gives a numeric one a unit.
+ * `window.__stageSpec` (dev-only, set by a Playwright init script such as scripts/flag-review.mjs) replaces
+ * the fixtures with that ONE stored spec, rendered exactly as given (no label/unit overrides). */
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Studio } from '../../ui/Studio';
@@ -12,23 +14,25 @@ import { fixtures } from '../fixtures';
 import { gradeActivity, type GradeOutcome } from '../grade';
 import type { ActivitySpec } from '../spec';
 
+declare global { interface Window { __stage?: StageControl; __stageSpec?: ActivitySpec } }
+const injected = window.__stageSpec;
+const specs: readonly ActivitySpec[] = injected ? [injected] : fixtures;
 const params = new URLSearchParams(location.search);
 const id = params.get('fixture');
 // ?label=… gives the first activity's typed response a label, as model-written specs often do.
-const label = params.get('label');
-const unit = params.get('unit');
-const start = Math.max(0, fixtures.findIndex(f => f.id === id));
+const label = injected ? null : params.get('label');
+const unit = injected ? null : params.get('unit');
+const start = Math.max(0, specs.findIndex(f => f.id === id));
 const withLabel = (spec: ActivitySpec, i: number): ActivitySpec =>
   label && i === start && ['numeric', 'expression', 'fraction'].includes(spec.response.type)
     ? { ...spec, response: { ...spec.response, label } as ActivitySpec['response'] }
     : unit && i === start && spec.response.type === 'numeric' ? { ...spec, response: { ...spec.response, unit } } : spec;
 const noop = () => {};
 type StageControl = { hold: () => void; release: () => void; fail: (message: string) => void };
-declare global { interface Window { __stage?: StageControl } }
 
 function Harness() {
   const [index, setIndex] = useState(start);
-  const spec = withLabel(fixtures[index % fixtures.length]!, index);
+  const spec = withLabel(specs[index % specs.length]!, index);
   const [result, setResult] = useState<GradeOutcome>();
   const [hint, setHint] = useState<string>();
   const [hints, setHints] = useState(0);
