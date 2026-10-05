@@ -1,5 +1,5 @@
 import React from "react";
-import { lazy, Suspense, useEffect, useId, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -40,9 +40,10 @@ import "./studio.css";
 export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
 
 type View = "home" | "focus" | "growth";
-/** What the help drawer shows: a hint, the worked explanation, an unrequested worked example
- * (local practice), or the explanation that comes with a recorded miss (local practice). */
-type Drawer = "hint" | "explain" | "example" | "feedback" | null;
+/** What the help drawer shows: a hint (for local practice this includes an unrequested worked
+ * example, which is that task's hint), the worked explanation, or the explanation that comes with a
+ * recorded miss (local practice). */
+type Drawer = "hint" | "explain" | "feedback" | null;
 type HelpKind = "hint" | "explain";
 type Sheet = "ask" | "status" | "flag" | null;
 
@@ -74,14 +75,33 @@ function useSwipeDown(onClose: () => void) {
  * problem, the answer field or Check, and it never covers the answer field. */
 function HelpDrawer({ kind, onClose, children, footer }: { kind: Exclude<Drawer, null>; onClose: () => void; children: React.ReactNode; footer?: React.ReactNode }) {
   const swipe = useSwipeDown(onClose);
-  const label = kind === "hint" ? "Hint" : kind === "example" ? "Worked example" : "How it works";
+  const label = kind === "hint" ? "Hint" : "How it works";
+  // The drawer grows upward from the dock; cap it below the focus bar (a soft keyboard can leave
+  // less room than the CSS cap of half the viewport).
+  const ref = useRef<HTMLElement>(null);
+  const [room, setRoom] = useState<number>();
+  useLayoutEffect(() => {
+    const fit = () => {
+      const el = ref.current, bar = document.querySelector(".focus-bar");
+      if (el && bar) setRoom(Math.max(120, Math.floor(el.getBoundingClientRect().bottom - bar.getBoundingClientRect().bottom - 8)));
+    };
+    fit();
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", fit);
+    window.addEventListener("resize", fit);
+    // A toast arriving under the drawer lifts its bottom edge.
+    const rail = ref.current?.parentElement, observer = rail ? new ResizeObserver(fit) : undefined;
+    if (rail) observer?.observe(rail);
+    return () => { vv?.removeEventListener("resize", fit); window.removeEventListener("resize", fit); observer?.disconnect(); };
+  }, []);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !document.querySelector("dialog[open]")) onClose(); };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose]);
   return (
-    <section className={`help-drawer help-panel is-${kind}${kind === "feedback" ? " is-feedback" : ""}`} role="region" aria-label={label} style={swipe.style}>
+    <section ref={ref} className={`help-drawer help-panel is-${kind}${kind === "feedback" ? " is-feedback" : ""}`} role="region" aria-label={label}
+      style={{ ...(room ? { maxHeight: `min(calc(var(--aha-vvh, 100dvh) * 0.5), 380px, ${room}px)` } : {}), ...swipe.style }}>
       <div className="drawer-grab" {...swipe.handle}><span /></div>
       <button type="button" className="icon-button help-close" aria-label={`Close ${label.toLowerCase()}`} onClick={onClose}><X size={20} /></button>
       <div className="help-text" aria-live="polite">{children}</div>
@@ -165,7 +185,7 @@ export function Studio(props: StudioProps) {
   /** Help the learner asked for; it opens once the host has saved the assistance. */
   const [pendingHelp, setPendingHelp] = useState<HelpKind | null>(null);
   /** Local practice: help text received per kind for the current task. */
-  const [helpTexts, setHelpTexts] = useState<{ hint?: string; explain?: string; example?: string }>({});
+  const [helpTexts, setHelpTexts] = useState<{ hint?: string; explain?: string }>({});
   /** Activity Spec: how many of its hints the learner has revealed, and whether the explanation was. */
   const [revealed, setRevealed] = useState(0);
   const [explainSeen, setExplainSeen] = useState(false);
@@ -261,12 +281,14 @@ export function Studio(props: StudioProps) {
       return;
     }
     if (props.busy || pendingHelp || view !== "focus") return;
-    if ([helpTexts.hint, helpTexts.explain, helpTexts.example].includes(props.hint)) return;
+    if ([helpTexts.hint, helpTexts.explain].includes(props.hint)) return;
     const key = `${taskId}|${props.hint}`;
     if (key === seenHint.current) return;
     seenHint.current = key;
-    setHelpTexts(t => ({ ...t, example: props.hint }));
-    setDrawer("example");
+    // The host's unrequested text (a worked example or a restored hint) is this task's hint, so the
+    // Hint icon reopens it without asking, and counting, again.
+    setHelpTexts(t => ({ ...t, hint: props.hint }));
+    setDrawer("hint");
   }, [props.hint, props.busy, pendingHelp, taskId, view, hasTask]);
   useEffect(() => {
     if (props.curiosity && view === "focus") setSheet("ask");
@@ -467,7 +489,7 @@ export function Studio(props: StudioProps) {
       {errorToast}
     </div>
   ) : a ? (
-    <form className="focus-stage" aria-busy={props.busy} onSubmit={(e) => { e.preventDefault(); submitLocal(); }}>
+    <form className={`focus-stage${a.answerKind === "choice" && a.choices?.length ? " has-choices" : ""}`} aria-busy={props.busy} onSubmit={(e) => { e.preventDefault(); submitLocal(); }}>
       <div className="stage-area">
         <div className="stage-scroll" data-stage-content="">
           <div className={`stage-prompt prompt-${promptSize}`} ref={promptRef} tabIndex={-1}>

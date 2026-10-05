@@ -375,6 +375,27 @@ try{
     await openStage('fx-2-coins');s.reset();
     await s.snap('coins initial');await answer.fill('68');await sp.getByRole('button',{name:'Check',exact:true}).click();
     await sp.locator('.stage-toast.correct').filter({hasText:'Yes, that’s it.'}).waitFor();await s.snap('correct with celebration');
+    // A response label ("Apples", as model-written specs often add) is the field's name and a quiet
+    // suffix inside it, never a heading row: the dock keeps the unlabeled geometry. A long label
+    // becomes the placeholder.
+    await openStage('fx-k-count-apples');const unlabeled=await regions(sp);
+    await sp.goto(`${base}/src/activity/gallery/stage.html?fixture=fx-k-count-apples&label=Apples`);await sp.getByRole('button',{name:'Continue',exact:true}).click();
+    await sp.getByLabel('Apples',{exact:true}).waitFor();
+    assert.deepEqual(await regions(sp),unlabeled,`${w}×${h}: a labeled answer field keeps the dock geometry`);
+    const suffix=await sp.evaluate(()=>{const s=document.querySelector('.ax-dock .ax-label-suffix'),i=document.querySelector('.ax-dock .ax-response input'),l=document.querySelector('.ax-dock .ax-field > label');
+      const sr=s.getBoundingClientRect(),ir=i.getBoundingClientRect();return {text:s.textContent,inside:sr.left>=ir.left&&sr.right<=ir.right&&sr.top>=ir.top&&sr.bottom<=ir.bottom,labelShown:l.getBoundingClientRect().height>1,
+        clear:i.scrollWidth<=i.clientWidth&&parseFloat(getComputedStyle(i).paddingRight)>=sr.width};});
+    assert.deepEqual(suffix,{text:'Apples',inside:true,labelShown:false,clear:true},`${w}×${h}: the label is a quiet suffix inside the field`);
+    if(w===384)await passBar(sp,'spec with a response label');
+    await sp.goto(`${base}/src/activity/gallery/stage.html?fixture=fx-k-count-apples&label=${encodeURIComponent('Apples that rolled out of the basket')}`);await sp.getByRole('button',{name:'Continue',exact:true}).click();
+    await sp.getByLabel('Apples that rolled out of the basket',{exact:true}).waitFor();
+    assert.equal(await sp.locator('.ax-dock .ax-response input').getAttribute('placeholder'),'Apples that rolled out of the basket','a long label is the placeholder');
+    assert.deepEqual(await regions(sp),unlabeled,`${w}×${h}: a long label keeps the dock geometry too`);
+    // Choices live in the problem area: the answer toast never sits on one, and taps pass through it.
+    await openStage('fx-k-make-ten');await sp.locator('.ax-choice').first().click();await sp.getByRole('button',{name:'Check',exact:true}).click();
+    await sp.locator('.stage-toast').waitFor();await sp.waitForTimeout(400);
+    const blocked=await sp.evaluate(()=>[...document.querySelectorAll('.ax-choice')].filter(c=>{const r=c.getBoundingClientRect(),el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return el&&!c.contains(el);}).map(c=>c.textContent.trim()));
+    assert.deepEqual(blocked,[],`${w}×${h}: the answer toast covers no choice`);
     await sctx.close();
   }
   assert.deepEqual(jumps,[],'the stable stage never moves the bar, the problem, the answer field or Check/Next within an item');

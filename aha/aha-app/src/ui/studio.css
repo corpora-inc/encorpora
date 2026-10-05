@@ -1821,6 +1821,18 @@ body {
 .stage-overlay-rail:empty {
   display: none;
 }
+/* Choices live in the problem area, so it keeps a constant lane clear of the answer toast. */
+.focus-stage.has-choices .stage-scroll {
+  padding-bottom: 56px;
+}
+/* The toast is information, not a target: taps pass through it except on its own button. */
+.stage-overlay-rail > .stage-toast,
+.ax-overlay > .stage-toast {
+  pointer-events: none;
+}
+.stage-toast button {
+  pointer-events: auto;
+}
 .focus-stage.is-spec {
   padding-bottom: max(20px, calc(env(safe-area-inset-bottom) + 18px));
 }
@@ -2084,8 +2096,7 @@ body {
   line-height: 1.5;
 }
 .help-drawer.is-explain,
-.help-drawer.is-feedback,
-.help-drawer.is-example {
+.help-drawer.is-feedback {
   background: #eef4ea;
   border-color: #cfe0cb;
 }

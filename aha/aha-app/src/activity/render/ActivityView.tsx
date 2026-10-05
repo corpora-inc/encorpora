@@ -115,9 +115,9 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
 
   let input: React.ReactNode = null;
   switch (r.type) {
-    case 'numeric': input = <NumericInput response={r} value={draft.text} disabled={locked} onEnter={submit} onChange={text => setDraft(d => ({ ...d, text }))} />; break;
-    case 'expression': input = <ExpressionInput response={r} value={draft.text} disabled={locked} onEnter={submit} onChange={text => setDraft(d => ({ ...d, text }))} />; break;
-    case 'fraction': input = <FractionInput response={r} value={draft.fraction} disabled={locked} onChange={fraction => setDraft(d => ({ ...d, fraction }))} />; break;
+    case 'numeric': input = <NumericInput compact={compact} response={r} value={draft.text} disabled={locked} onEnter={submit} onChange={text => setDraft(d => ({ ...d, text }))} />; break;
+    case 'expression': input = <ExpressionInput compact={compact} response={r} value={draft.text} disabled={locked} onEnter={submit} onChange={text => setDraft(d => ({ ...d, text }))} />; break;
+    case 'fraction': input = <FractionInput compact={compact} response={r} value={draft.fraction} disabled={locked} onChange={fraction => setDraft(d => ({ ...d, fraction }))} />; break;
     case 'multiple_choice': case 'multi_select': input = <ChoiceInput response={r} order={choiceOrder} value={draft.choices} disabled={locked} onChange={choices => setDraft(d => ({ ...d, choices }))} />; break;
     case 'ordering': input = <OrderingInput response={r} order={draft.order} disabled={locked} onChange={order => setDraft(d => ({ ...d, order }))} />; break;
     case 'plot_point': {
@@ -143,7 +143,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
           {/* Stable stage: the problem region and the dock keep their geometry for the whole item.
               Everything transient floats over them (overlay, stageOverlay) and never reflows them. */}
           <div className="ax-stage-area">
-            <div className="ax-stage-scroll" data-stage-content="">
+            <div className={`ax-stage-scroll${docked ? '' : ' has-response'}`} data-stage-content="">
               <div className="ax-prompt">
                 {spec.prompt.map((block, i) => {
                   if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;

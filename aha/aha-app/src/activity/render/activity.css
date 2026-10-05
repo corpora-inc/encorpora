@@ -318,10 +318,15 @@ input[type="checkbox"] + .ax-choice-badge { border-radius: 8px; }
 .is-compact .ax-dock-row:not(:has(> .ax-response)) > * { flex: 1; }
 .is-compact .ax-number-wrap { max-width: none; }
 .is-compact .ax-number-wrap input { min-height: 56px; padding-right: 16px; }
-.is-compact .ax-number-wrap:has(.ax-unit) input { padding-right: 64px; }
+.is-compact .ax-number-wrap:has(.ax-unit) input { padding-right: calc(var(--ax-tail, 2) * 0.62rem + 32px); }
+/* A response label sits inside the field as a quiet suffix, never as a heading row above it. */
+.is-compact .ax-label-suffix { font-weight: 400; white-space: nowrap; }
+/* Answers that live in the problem area (choices, ordering, tap chips) keep clear of the answer
+   toast that floats above the dock. Constant for the whole item, so nothing moves. */
+.is-compact .ax-stage-scroll.has-response { padding-bottom: 56px; }
 .is-compact .ax-expression { max-width: none; }
 .is-compact .ax-keys { margin-top: 8px; gap: 6px; }
-.is-compact .ax-preview { height: 2.5rem; min-height: 0; margin-top: 6px; overflow: hidden; white-space: nowrap; }
+.is-compact .ax-preview { height: 2.75rem; min-height: 0; margin-top: 6px; overflow: auto hidden; white-space: nowrap; }
 .is-compact .ax-preview > span:only-child { overflow: hidden; text-overflow: ellipsis; }
 .is-compact .ax-fraction-input { justify-content: center; }
 .is-compact .ax-fraction-input input { min-height: 44px; }
