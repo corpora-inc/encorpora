@@ -173,6 +173,7 @@ export default function Controller() {
   const accountEpoch = useRef(0);
   function clearAi() {
     currentAi.current = undefined;
+    lastSkip.current = undefined;
     aiQueue.current.replace([]);
     wantsHarder.current = false;
     pendingAi.current = undefined;
@@ -756,7 +757,11 @@ export default function Controller() {
       const above = skipping?.spec.difficulty;
       let item = takeNext(aiQueue.current.items, stretch, above).next;
       // A batch the learner stopped never pays and ends at its next check; let it finish, then ask afresh.
-      if (!item && prefetching.current && batchStop.current?.stopped) await prefetching.current.catch(() => undefined);
+      if (!item && prefetching.current && batchStop.current?.stopped) {
+        // Bounded too: a stopped batch stuck on the network never holds the learner (no new batch until it settles).
+        if (!await settlesWithin(prefetching.current, BATCH_WAIT_MS)) aiSkipped("the stopped AI batch is still settling; one local task meanwhile", "info");
+        assertActionActive();
+      }
       if (!item && !prefetching.current && !skipping) {
         // The queue is empty and nothing is on its way: request a batch now (never an extra call for a skip).
         const blocked = aiBlockedReason();
@@ -767,7 +772,8 @@ export default function Controller() {
           startBatch("next activity", true);
         }
       }
-      if (!item && prefetching.current) {
+      // A stopped batch that is still settling will deliver nothing: it was waited for above, never twice.
+      if (!item && prefetching.current && !batchStop.current?.stopped) {
         // Wait briefly for the batch on its way, rather than flipping to local practice and back. Stop ends the wait.
         const stop = foregroundStop.current;
         const landed = await settlesWithin(stop ? Promise.race([prefetching.current, stop.signal]) : prefetching.current, BATCH_WAIT_MS);

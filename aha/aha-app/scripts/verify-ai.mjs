@@ -560,10 +560,9 @@ try {
     await q.getByRole('button',{name:'Stop AI request',exact:true}).click();
     await q.getByRole('alert').filter({hasText:'Stopped before starting'}).waitFor();
     await q.evaluate(()=>window.__ahaAI.releaseEstimate());
-    await q.waitForTimeout(1500);
+    await q.waitForFunction(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]').some(e=>e.source==='ai-skip'&&/stopped by the learner/.test(e.message)));
     assert.equal(await q.evaluate(()=>window.__ahaAI.starts.length),0,'Stop inside the estimate never starts the paid call');
     const qDiag=await q.evaluate(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]'));
-    assert.ok(qDiag.some(e=>e.source==='ai-skip'&&/stopped by the learner/.test(e.message)),'the stop is logged as a stop');
     assert.ok(!qDiag.some(e=>e.source==='ai-fallback'),'a Stop is not recorded as an AI failure');
     assert.deepEqual(qErrors,[]);
     await ctx.close();
