@@ -1,5 +1,8 @@
 # Activity Spec v1 (`src/activity/`)
 
+> Successor in progress: [Activity Spec v2](v2/README.md). v1 remains the production path, and its validator
+> and grader stay forever to restore stored `ai-spec` evidence.
+
 The model writes the activity; the app checks it, draws it, and grades it. A live LLM (gpt-4o
 through the Free2Z gateway) writes complete activities: the question text, figures, the answer
 key, hints and a worked explanation. The app validates every field and renders the activity.
@@ -20,6 +23,7 @@ with TEST fixtures only and has not been verified against the live service.
 | `fixtures/` | 43 hand-authored **test fixtures** covering K–8, all 15 figure types and all 8 response types. They are not AI output |
 | `gallery/` + `scripts/gallery.mjs` | Dev-only visual gallery: `npm run gallery [-- ids…] [--states]` → `.gallery/index.html` |
 | `scripts/spec-eval/` | Dev-only prompt evaluation against a local stand-in model: `npm run spec-eval` → `.spec-eval/<run>/` (see [Prompt evaluation](#prompt-evaluation-dev-only)) |
+| `v2/` | **Activity Spec v2**, in progress and not wired: the model writes one model of the math (quantities and structures) and the app derives the text numbers, figures, key, options and alt. Design and status: [`v2/README.md`](v2/README.md) |
 
 ## Grammar (summary; `ACTIVITY_GRAMMAR` in `prompt.ts` is the model-facing version)
 
