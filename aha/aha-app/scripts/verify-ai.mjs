@@ -46,6 +46,10 @@ function fixture(specs){
     }
     return JSON.stringify({rationale:'TEST fixture batch',activities:chosen});
   };
+  // TEST-ONLY catalogue. `structured` advertises capabilities.structured_output (zuu 42acc57f); default: an entry without it.
+  // `catalog` replaces it with a scenario's own fake models (ids, prices and capabilities are fixtures, not Free2Z's).
+  const catalogModels=()=>ai.catalog??[{id:'fixture-model',max_output_tokens:'4096',...(ai.structured?{context_window:'128000',capabilities:{vision:false,tools:false,reasoning:false,structured_output:true}}:{})}];
+  const advertises=model=>catalogModels().some(m=>m.id===model&&m.capabilities?.structured_output===true);
   const session=()=>({signedIn:ai.signedIn,subject:ai.signedIn?'test-subject':null,grantedScopes:['ai:invoke','balance:read'],persistence:'persistent',generation:'1'});
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:true,clientId:'test-client',paidTestingReady:false,externalCheckoutEnabled:false,reason:'Explicit TEST SDK fixture'};
@@ -57,13 +61,12 @@ function fixture(specs){
     if(command==='plugin:f2z|models'){
       if(ai.delayModels)await new Promise(resolve=>{ai.releaseModels=resolve;});
       if(ai.models502)throw {code:'unavailable'};
-      // TEST-ONLY: `structured` advertises capabilities.structured_output (zuu 42acc57f); default: an entry without it.
-      return {catalog_version:'1',models:[{id:'fixture-model',max_output_tokens:'4096',...(ai.structured?{capabilities:{vision:false,tools:false,reasoning:false,structured_output:true}}:{})}]};
+      return {catalog_version:'1',models:catalogModels()};
     }
     // Gateway image 70b74edd9 (da1862531): every paid request must carry strict output (never truncated-but-charged).
     if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&args.request.max_output_tokens_strict!==true)throw new Error('TEST gateway: max_output_tokens_strict:true is required on every paid request');
     // A model that does not advertise structured output must never receive response_format.
-    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&args.request.response_format!==undefined&&!ai.structured)throw new Error('TEST gateway: response_format sent to a model without capabilities.structured_output');
+    if((command==='plugin:f2z|estimate'||command==='plugin:f2z|start_chat')&&args.request.response_format!==undefined&&!advertises(args.request.model))throw new Error('TEST gateway: response_format sent to a model without capabilities.structured_output');
     // TEST-ONLY format refusal, shaped as the native transport delivers it (status and code; details dropped).
     if(command==='plugin:f2z|estimate'&&args.request.response_format&&ai.formatRefusal==='estimate')throw {code:'invalid_request',status:400};
     if(command==='plugin:f2z|estimate'){
@@ -710,8 +713,89 @@ try {
     assert.equal((await journalOps(s)).length,1);
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
+  {
+    // ---- Learner-chosen model (TEST-ONLY fake catalogue of three models, no live Free2Z) ----
+    // Typical batch (4k in / 2k out): Pro ≈ 30 2Z (above the 10 2Z auto ceiling), Standard ≈ 5 2Z, Mini ≈ 2 2Z without structured output.
+    const tier=(id,name,input,output,structured)=>({id,provider:'test',display_name:name,context_window:'128000',max_output_tokens:'16384',
+      capabilities:{vision:false,tools:false,reasoning:false,structured_output:structured},prices:{input_milli_2z_per_mtok:String(input),output_milli_2z_per_mtok:String(output)},min_charge_2z:'1',ttfb_timeout_ms:'30000'});
+    const pro=tier('fixture-pro','Fixture Pro',2500000,10000000,true),standard=tier('fixture-standard','Fixture Standard',500000,1500000,true),mini=tier('fixture-mini','Fixture Mini',100000,400000,false);
+    const s=await scenario({enforced:true,catalog:[pro,standard,mini]});
+    const p=s.p,card=p.locator('.focus-stage.is-spec .aha-activity');
+    const data=()=>p.evaluate(()=>window.__ahaFixture.read());
+    const sess=async()=>Object.values((await data()).sessions)[0].data;
+    const attempt=async()=>Object.values((await data()).attempts).flat().at(-1).data;
+    const answer=async()=>{const st=await sess();await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:'Next',exact:true}).waitFor();};
+    await card.waitFor();
+    let request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    assert.equal(request.model,'fixture-standard','Best (auto): the dearest structured model within the 10 2Z ceiling');
+    assert.equal(request.response_format?.type,'json_schema','the auto pick advertises structured output');
+    let st=await sess();
+    assert.ok([st.aiActivity,...st.aiQueue].every(q=>q.model==='fixture-standard'),'every queued AI activity names its model');
+    // The status sheet names the model that wrote the activity on screen.
+    await p.locator('.status-dot').click();
+    await p.getByText('Written by Fixture Standard',{exact:true}).waitFor();
+    await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();
+    const select=p.getByLabel('AI model',{exact:true});
+    assert.deepEqual(await select.locator('option').allTextContents(),['Best (auto) · ≈ 5 2Z per set','Fixture Pro · ≈ 30 2Z per set','Fixture Standard · ≈ 5 2Z per set'],'eligible models only, each with its estimate');
+    assert.equal(await select.inputValue(),'auto');
+    // A manual pick, persisted per account in the local journal.
+    await select.selectOption('fixture-pro');
+    await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-model-choice-v1']?.model==='fixture-pro');
+    await p.getByRole('button',{name:'Close settings',exact:true}).click();
+    await answer();
+    assert.equal((await attempt()).spec.model,'fixture-standard','the attempt records the model that wrote the activity');
+    // Next activity: the queue runs low and the background batch goes to the learner's choice.
+    await p.getByRole('button',{name:'Next',exact:true}).click();
+    await p.waitForFunction(()=>window.__ahaAI.starts.length===2);
+    await p.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-pro'));
+    request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    assert.equal(request.model,'fixture-pro','a manual pick is honoured, even above the auto ceiling');
+    const proOp=(await data()).journals['aha-billing-v1'].operations.at(-1);
+    assert.equal(proOp.request.model,'fixture-pro','the chosen model is persisted in the journal operation (same-key recovery resends to it)');
+    // Work through the rest of the first batch to the first Pro activity, answer it, then flag the next one.
+    for(let i=0;i<5&&(await sess()).aiActivity?.model!=='fixture-pro';i++){await answer();await p.getByRole('button',{name:'Next',exact:true}).click();await card.waitFor();}
+    st=await sess();
+    assert.equal(st.aiActivity.model,'fixture-pro');
+    const records=Object.values((await data()).activities).flat();
+    assert.equal(records.find(a=>a.id===st.aiActivity.activityId).data.model,'fixture-pro','the activity record names its model');
+    await answer();
+    assert.equal((await attempt()).spec.model,'fixture-pro');
+    await p.getByRole('button',{name:'Next',exact:true}).click();
+    await card.waitFor();
+    assert.equal((await sess()).aiActivity.model,'fixture-pro');
+    await p.getByRole('button',{name:'Something seems off',exact:true}).click();
+    await p.getByRole('button',{name:'Set it aside',exact:true}).click();
+    await p.waitForFunction(()=>Object.values(window.__ahaFixture.read().disputes).flat().length===1);
+    // Per-model stats from local data only, in Settings and in the problem report.
+    await s.openSettings();
+    await p.getByText('Model stats',{exact:true}).click();
+    const statsList=p.locator('.model-stats li');
+    await statsList.first().waitFor();
+    const lines=await statsList.allTextContents();
+    const proLine=lines.find(l=>l.startsWith('fixture-pro:')),standardLine=lines.find(l=>l.startsWith('fixture-standard:'));
+    assert.ok(proLine&&standardLine,`both models appear: ${lines.join(' / ')}`);
+    assert.match(standardLine,/^fixture-standard: 1 set · kept 3, rejected 0 schema \+ 0 semantic · 0 flagged · ≈ 1 2Z per set · 100% correct first try \(3\)$/);
+    assert.match(proLine,/^fixture-pro: 1 set · kept 3, rejected 0 schema \+ 0 semantic · 1 flagged · ≈ 1 2Z per set · 100% correct first try \(1\)$/);
+    await p.getByRole('button',{name:'Report a problem',exact:true}).click();
+    await p.waitForFunction(()=>document.querySelector('.report-text')?.value.includes('Model stats (this device)'));
+    const report=await p.locator('.report-text').inputValue();
+    assert.ok(report.includes(proLine)&&report.includes(standardLine),'the report carries the same stats lines');
+    assert.ok(!report.includes('Explorer'),'no learner names in the report');
+    // The choice survives a restart; when its model leaves the catalogue it falls back to auto, logged.
+    await p.reload();
+    await p.getByRole('button',{name:'Settings',exact:true}).click();
+    await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();
+    await p.getByLabel('AI model',{exact:true}).waitFor();
+    assert.equal(await p.getByLabel('AI model',{exact:true}).inputValue(),'fixture-pro','the choice is persisted per account');
+    await p.evaluate(m=>{window.__ahaAI.catalog=m;},[standard,mini]);
+    await p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-model-choice-v1']?.model==='auto');
+    await p.waitForFunction(()=>document.querySelector('.model-choice select')?.value==='auto');
+    assert.ok(s.warned.some(m=>/fixture-pro is no longer offered/.test(m)),'the fallback to auto is logged visibly');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying. No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a vanished choice falling back to auto). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

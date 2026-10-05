@@ -10,7 +10,7 @@ const entry = (id: string, input: number | undefined, output: number | undefined
   ...(input !== undefined && output !== undefined ? {prices: {input_milli_2z_per_mtok: BigInt(input), output_milli_2z_per_mtok: BigInt(output)}} : {}),
   min_charge_2z: 1n, ttfb_timeout_ms: 30000n, ...extra,
 });
-const catalog = (...models: Record<string, unknown>[]): Models => ({catalog_version: 1n, models} as unknown as Models);
+const catalog = (...models: unknown[]): Models => ({catalog_version: 1n, models} as unknown as Models);
 // Typical batch 4000 in / 2000 out: pro ≈ 30 2Z, standard ≈ 5 2Z, mini ≈ 2 2Z (1.2 rounded up).
 const pro = entry('pro', 2_500_000, 10_000_000);
 const standard = entry('standard', 500_000, 1_500_000);
