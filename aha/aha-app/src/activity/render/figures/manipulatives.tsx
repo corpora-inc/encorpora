@@ -3,11 +3,11 @@ import type { FigureOf } from '../../spec';
 import { MONEY_KINDS } from '../../spec';
 import { pictureGroups, type DrawFigureOf } from '../../draw';
 import { resolveIcon } from '../icons';
-import { A11ySvg, clamp, fmt, series, tint, useMeasuredWidth, type TapInteraction } from './common';
+import { A11ySvg, clamp, fmt, regionProps, series, tint, useMeasuredWidth, type PlaceInteraction, type ShadeInteraction, type TapInteraction } from './common';
 import { seededRandom } from '../../expr';
 
 // ---------- number line ----------
-export function NumberLineFigure({ figure: f }: { figure: FigureOf<'number_line'> }) {
+export function NumberLineFigure({ figure: f, place }: { figure: FigureOf<'number_line'>; place?: PlaceInteraction }) {
   const [ref, measured] = useMeasuredWidth<HTMLDivElement>();
   const W = clamp(measured, 260, 760);
   const m = 26;
@@ -29,7 +29,7 @@ export function NumberLineFigure({ figure: f }: { figure: FigureOf<'number_line'
   };
   return (
     <div ref={ref} className="ax-chart">
-      <A11ySvg title="Number line" desc={f.alt} width={W} height={H}>
+      <A11ySvg title="Number line" desc={f.alt} width={W} height={H} interactive={!!place}>
         {(f.ranges ?? []).map((r, i) => {
           const x0 = r.extends === 'left' ? 6 : X(r.from), x1 = r.extends === 'right' ? W - 6 : X(r.to);
           return (
@@ -64,6 +64,19 @@ export function NumberLineFigure({ figure: f }: { figure: FigureOf<'number_line'
             </g>
           );
         })}
+        {place && (
+          // Tap anywhere along the line: the point lands on the nearest tick. Keyboard and screen-reader
+          // users place it with the steppers beside the answer (PlaceControls).
+          <rect x={0} y={lineY - 22} width={W} height={44} fill="transparent" className="ax-place-hit" aria-hidden="true"
+            onClick={e => {
+              const box = (e.currentTarget.ownerSVGElement ?? e.currentTarget).getBoundingClientRect();
+              const x = (e.clientX - box.left) * (W / (box.width || W));
+              place.onPlace(clamp(Math.round((x - m) / spacing), 0, n));
+            }} />
+        )}
+        {place?.tick !== undefined && (
+          <circle cx={X(f.min + place.tick * f.step)} cy={lineY} r={9} fill="var(--ax-coral)" stroke="var(--ax-card)" strokeWidth={2.5} className="ax-placed" />
+        )}
         {(f.marks ?? []).map((mk, i) => (
           <g key={i}>
             <circle cx={X(mk.value)} cy={lineY} r={7.5} fill={mk.open ? 'var(--ax-card)' : 'var(--ax-coral)'} stroke={mk.open ? 'var(--ax-coral)' : 'var(--ax-card)'} strokeWidth={mk.open ? 3 : 2} />
@@ -76,21 +89,25 @@ export function NumberLineFigure({ figure: f }: { figure: FigureOf<'number_line'
 }
 
 // ---------- fraction model ----------
-export function FractionModelFigure({ figure: f }: { figure: FigureOf<'fraction_model'> }) {
+export function FractionModelFigure({ figure: f, shade }: { figure: FigureOf<'fraction_model'>; shade?: ShadeInteraction }) {
   const wholes = f.wholes ?? 1;
   const fill = series(f.color ?? 'teal'), soft = tint(f.color ?? 'teal');
-  const isShaded = (w: number, i: number) => w * f.parts + i < f.shaded;
+  const isShaded = (w: number, i: number) => shade ? shade.shaded.includes(w * f.parts + i) : w * f.parts + i < f.shaded;
+  /** In shade mode every part is a toggle the learner taps; otherwise parts are drawn as they are. */
+  const part = (w: number, i: number, el: React.ReactElement) => shade
+    ? <g key={i} {...regionProps(`Part ${w * f.parts + i + 1}`, isShaded(w, i), () => shade.onToggle(w * f.parts + i))}>{el}</g>
+    : React.cloneElement(el, { key: i });
   if (f.model === 'circle') {
     const r = 70, size = 160;
     return (
       <div className="ax-fraction-row">
         {Array.from({ length: wholes }, (_, w) => (
-          <A11ySvg key={w} title={w === 0 ? 'Fraction circle' : `Fraction circle ${w + 1}`} desc={w === 0 ? f.alt : ''} width={size} height={size} className="ax-scale-svg">
+          <A11ySvg key={w} title={w === 0 ? 'Fraction circle' : `Fraction circle ${w + 1}`} desc={w === 0 ? f.alt : ''} width={size} height={size} className="ax-scale-svg" interactive={!!shade}>
             {f.parts === 1 ? <circle cx={80} cy={80} r={r} fill={isShaded(w, 0) ? fill : 'var(--ax-card)'} stroke={fill} strokeWidth={2.5} /> :
               Array.from({ length: f.parts }, (_, i) => {
                 const a0 = -Math.PI / 2 + (i / f.parts) * 2 * Math.PI, a1 = -Math.PI / 2 + ((i + 1) / f.parts) * 2 * Math.PI;
                 const p = (a: number) => `${80 + r * Math.cos(a)} ${80 + r * Math.sin(a)}`;
-                return <path key={i} d={`M80 80L${p(a0)}A${r} ${r} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${p(a1)}Z`} fill={isShaded(w, i) ? fill : 'var(--ax-card)'} stroke={isShaded(w, i) ? 'var(--ax-card)' : fill} strokeWidth={2} strokeLinejoin="round" />;
+                return part(w, i, <path d={`M80 80L${p(a0)}A${r} ${r} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${p(a1)}Z`} fill={isShaded(w, i) ? fill : 'var(--ax-card)'} stroke={isShaded(w, i) ? 'var(--ax-card)' : fill} strokeWidth={2} strokeLinejoin="round" />);
               })}
             {f.parts > 1 && <circle cx={80} cy={80} r={r} fill="none" stroke={fill} strokeWidth={2.5} />}
           </A11ySvg>
@@ -104,8 +121,8 @@ export function FractionModelFigure({ figure: f }: { figure: FigureOf<'fraction_
     return (
       <div className="ax-fraction-row">
         {Array.from({ length: wholes }, (_, w) => (
-          <A11ySvg key={w} title="Area model" desc={w === 0 ? f.alt : ''} width={cols * cell + 6} height={rows * cell + 6} className="ax-scale-svg">
-            {Array.from({ length: f.parts }, (_, i) => <rect key={i} x={3 + (i % cols) * cell} y={3 + Math.floor(i / cols) * cell} width={cell} height={cell} fill={isShaded(w, i) ? fill : 'var(--ax-card)'} stroke={isShaded(w, i) ? 'var(--ax-card)' : fill} strokeWidth={1.5} />)}
+          <A11ySvg key={w} title="Area model" desc={w === 0 ? f.alt : ''} width={cols * cell + 6} height={rows * cell + 6} className="ax-scale-svg" interactive={!!shade}>
+            {Array.from({ length: f.parts }, (_, i) => part(w, i, <rect x={3 + (i % cols) * cell} y={3 + Math.floor(i / cols) * cell} width={cell} height={cell} fill={isShaded(w, i) ? fill : 'var(--ax-card)'} stroke={isShaded(w, i) ? 'var(--ax-card)' : fill} strokeWidth={1.5} />))}
             <rect x={3} y={3} width={cols * cell} height={rows * cell} fill="none" stroke={fill} strokeWidth={3} rx={2} />
           </A11ySvg>
         ))}
@@ -116,9 +133,9 @@ export function FractionModelFigure({ figure: f }: { figure: FigureOf<'fraction_
   return (
     <div className="ax-fraction-stack">
       {Array.from({ length: wholes }, (_, w) => (
-        <A11ySvg key={w} title="Fraction bar" desc={w === 0 ? f.alt : ''} width={bw + 6} height={bh + 6} className="ax-scale-svg">
+        <A11ySvg key={w} title="Fraction bar" desc={w === 0 ? f.alt : ''} width={bw + 6} height={bh + 6} className="ax-scale-svg" interactive={!!shade}>
           <rect x={3} y={3} width={bw} height={bh} rx={8} fill="var(--ax-card)" />
-          {Array.from({ length: f.parts }, (_, i) => <rect key={i} x={3 + (i * bw) / f.parts} y={3} width={bw / f.parts} height={bh} fill={isShaded(w, i) ? fill : 'transparent'} />)}
+          {Array.from({ length: f.parts }, (_, i) => part(w, i, <rect x={3 + (i * bw) / f.parts} y={3} width={bw / f.parts} height={bh} fill={isShaded(w, i) ? fill : 'transparent'} />))}
           {Array.from({ length: f.parts - 1 }, (_, i) => <line key={i} x1={3 + ((i + 1) * bw) / f.parts} x2={3 + ((i + 1) * bw) / f.parts} y1={3} y2={3 + bh} stroke={isShaded(w, i) && isShaded(w, i + 1) ? soft : fill} strokeWidth={2} />)}
           <rect x={3} y={3} width={bw} height={bh} rx={8} fill="none" stroke={fill} strokeWidth={2.5} />
         </A11ySvg>

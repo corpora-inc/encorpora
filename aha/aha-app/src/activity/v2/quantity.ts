@@ -413,6 +413,23 @@ export function numberWords(q: Rational, locale = DEFAULT_LOCALE): string | null
   return `${below1000(Math.floor(n / 1000))} thousand${n % 1000 ? ` ${below1000(n % 1000)}` : ''}`;
 }
 
+const ORDINALS: Record<number, [string, string]> = {
+  2: ['half', 'halves'], 3: ['third', 'thirds'], 4: ['fourth', 'fourths'], 5: ['fifth', 'fifths'], 6: ['sixth', 'sixths'],
+  7: ['seventh', 'sevenths'], 8: ['eighth', 'eighths'], 9: ['ninth', 'ninths'], 10: ['tenth', 'tenths'], 11: ['eleventh', 'elevenths'], 12: ['twelfth', 'twelfths'],
+};
+/**
+ * A fraction in English words, as grades K–2 describe shares ("one half", "two thirds", "three
+ * fourths"). A written fraction keeps its terms ("two fourths"). Null beyond twelfths or for another
+ * language.
+ */
+export function fractionWords(value: Pick<Value, 'q' | 'form'>, locale = DEFAULT_LOCALE): string | null {
+  const [n, d] = value.form?.kind === 'fraction' ? [value.form.n, value.form.d] : [value.q.n, value.q.d];
+  const ordinal = ORDINALS[Number(d)];
+  const count = numberWords({ n, d: 1n }, locale);
+  if (!ordinal || !count || n < 0n) return null;
+  return `${count} ${n === 1n ? ordinal[0] : ordinal[1]}`;
+}
+
 /** How a placeholder presents a value (README §6). '' is the full form. */
 export const VALUE_ATTRS = ['', 'n', 'noun', 'one', 'other', 'word', 'unit'] as const;
 export type ValueAttr = typeof VALUE_ATTRS[number];
@@ -438,8 +455,8 @@ export function formatValue(d: Described, attr: ValueAttr, locale = DEFAULT_LOCA
       return w ? ok([{ kind: 'text', text: w }]) : fail('placeholder_no_noun', `This ${d.kind} has no noun or unit to name.`);
     }
     case 'word': {
-      const w = numberWords(value.q, locale);
-      return w ? ok([{ kind: 'text', text: w }]) : fail('placeholder_no_words', 'Number words are only for whole numbers up to 999,999 (English).');
+      const w = d.kind === 'fraction' ? fractionWords(value, locale) : numberWords(value.q, locale);
+      return w ? ok([{ kind: 'text', text: w }]) : fail('placeholder_no_words', 'Number words are for whole numbers up to 999,999 and fractions up to twelfths (English).');
     }
     case 'unit':
       return value.unit ? ok([{ kind: 'text', text: unitName(value.unit, value.power, category) }]) : fail('placeholder_no_unit', `This ${d.kind} has no unit.`);

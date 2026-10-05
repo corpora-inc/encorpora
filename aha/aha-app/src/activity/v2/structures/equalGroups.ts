@@ -5,7 +5,7 @@
  */
 import type { StructureDef } from '../registry';
 import { issue } from '../registry';
-import { n, product, req, within } from './common';
+import { capital, countable, n, nounOf, plural, product, req, within } from './common';
 
 type R = 'groups' | 'size';
 const MAX_BY_GRADE: Record<number, number> = { 2: 5, 3: 10, 4: 12 };
@@ -34,6 +34,12 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
       noun: () => 'picture',
       reveals: () => ({ groups: 'countable', size: 'countable', total: 'countable' }),
       // Every group has the same size, so a tap on one group is always ill-posed; uniqueness rejects it.
+      describe(r, asked) {
+        const g = n(r.groups), s = n(r.size), G = nounOf(r.groups, 'group', 'groups'), S = nounOf(r.size, 'object', 'objects');
+        if (asked.has('groups')) return `${capital(G.other)} of ${plural(s, S.one, S.other)}: ${countable(G.one, G.other, g)}.`;
+        if (asked.has('size')) return `${plural(g, G.one, G.other)}. In each ${G.one}: ${countable(S.one, S.other, s)}.`;
+        return `${plural(g, G.one, G.other)} with ${plural(s, S.one, S.other)} in each.`;
+      },
       regions: r => Array.from({ length: n(r.groups) }, (_, i) => ({ id: `g${i + 1}`, value: req(r, 'size').value, label: `Group ${i + 1}` })),
       lower(r) {
         const size = req(r, 'size'), groups = req(r, 'groups');
@@ -51,6 +57,12 @@ export const equalGroups: StructureDef<'equal_groups', R, 'objects' | 'jumps'> =
       grades: [2, 4], accepts: [], draws: 'a number line from 0 with one jump per group (the landing point is printed)',
       noun: () => 'number line',
       reveals: (_r, asked) => ({ groups: 'countable', size: asked.has('size') ? 'countable' : 'shown', total: 'shown' }),
+      describe(r, asked) {
+        const g = n(r.groups), s = n(r.size), line = `A number line from 0 to ${g * s}`;
+        if (asked.has('groups')) return `${line} with jumps of ${s}: ${countable('jump', 'jumps', g)}.`;
+        if (asked.has('size')) return `${line} with ${g} equal jumps; the first jump passes ${countable('tick', 'ticks', s)}.`;
+        return `${line} with ${plural(g, 'jump', 'jumps')} of ${s}.`;
+      },
       lower(r, { asked }) {
         const g = n(r.groups), s = n(r.size), total = g * s;
         const sizeAsked = asked.has('size');

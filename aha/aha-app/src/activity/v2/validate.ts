@@ -40,6 +40,8 @@ export interface CheckedCore {
   drawings: Map<string, Drawing>;
   /** What each viewed structure reveals (README §7). */
   reveals: Map<string, Readonly<Record<string, Reveal>>>;
+  /** Per viewed structure, the roles and measure that are the answer (answer forms; empty for act forms, whose target is given). */
+  asked: Map<string, Asked>;
 }
 export interface CheckedActivity extends CheckedCore {
   /** The key, computed; the response compiled to the grading IR (response.ts). */
@@ -238,6 +240,8 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
       if (answerForm && !listed && statesAnswer(t.value, described)) return fail('answer_stated', `{{${ph.path.join('.')}}} states the answer: it is computed from the model and equals it, or it is the same named quantity with the same value.`);
     }
     if (scope === 'prompt' && VALUE_BEARING.has(attr)) promptShown.add(key);
+    // Grades K–2 name shares in words ("one half", "a third of"); fraction notation starts in grade 3 (CCSS).
+    if (grade <= 2 && described.kind === 'fraction' && (attr === '' || attr === 'n')) return fail('fraction_words', `In grades K–2 write fractions in words: {{${refPath.filter(Boolean).join('.')}.word}}.`);
     return formatValue(described, attr, locale);
   };
   const renderOne = (source: string, mode: 'text' | 'math', scope: Scope, path: string): string | null => {
@@ -326,7 +330,8 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   }
   if (problems.length) return { ok: false, problems };
 
-  const core: CheckedCore = { wire: a, grade, band: options.band, model, ask, candidates, distractors, rendered: { prompt, hints, explanation }, drawings, reveals };
+  const asked = new Map([...viewed.keys()].map(sid => [sid, answerForm ? askedIn(sid) : NOTHING_ASKED]));
+  const core: CheckedCore = { wire: a, grade, band: options.band, model, ask, candidates, distractors, rendered: { prompt, hints, explanation }, drawings, reveals, asked };
   // The key fits the form, distractor rules evaluate, uniqueness is computed (README §8).
   const compiled = compileResponse(core, locale);
   if (!compiled.ok) return { ok: false, problems: compiled.issues.map(i => ({ layer: 'L1' as const, path: i.path, code: i.code, message: i.message })) };

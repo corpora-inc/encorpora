@@ -42,6 +42,7 @@ import { previewRepository } from "./preview";
 import { needsSpecRestorer, restoreLearning } from "./recovery";
 import { AiQueueBox, BATCH_WAIT_MS, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
+import { isV1Response } from "../activity/resolved";
 import { learningCheckpoint } from "./checkpoint";
 import { learningError, retryDeadline, signInFailure } from "./connection";
 import { AUTO, MODEL_CHOICE_KEY, ModelUnavailableError, chooseModel, describePick, modelMenu, readCatalog, readModelChoice, storedModelChoice, type ModelChoice, type ModelMenu } from "../provider/models";
@@ -1391,6 +1392,8 @@ export default function Controller() {
         spec: aiItem.spec,
         result: aiResult,
         onSubmit: (response) => {
+          // A v1 spec only yields v1 responses; the guard states it instead of casting.
+          if (!isV1Response(response)) return;
           const timing = timer.current.snapshot(performance.now());
           void action(() => submitSpec(response, timing));
         },

@@ -10,7 +10,8 @@ import { multiply, rational } from '../../../learning/rational';
 import type { Roles, StructureDef, ViewDef } from '../registry';
 import { issue } from '../registry';
 import { formatPlain, type Value } from '../quantity';
-import { n, req, within } from './common';
+import { countable, n, nounOf, plural, req, within } from './common';
+import type { Asked } from '../registry';
 
 type R = 'parts' | 'selected' | 'wholes';
 type V = 'rect' | 'circle' | 'strip' | 'set' | 'line';
@@ -38,9 +39,19 @@ function landing(r: Roles<R>, target: Value, verb: string, lo: number): { total:
   if (at.d !== 1n || Number(at.n) < lo || Number(at.n) > total) return issue(verb === 'shade' ? 'shade_unreachable' : 'place_unreachable', `${formatPlain(target.q)} does not land on ${verb === 'shade' ? 'a whole number of the parts' : 'a tick'} of a view with ${p} parts per whole and ${wholesOf(r)} whole(s).`);
   return { total, at: Number(at.n) };
 }
+/** Wholes cut into equal parts, the shaded ones counted (or listed countably when they are asked). */
+function describeParts(r: Roles<R>, asked: Asked, whole: string): string {
+  const p = n(r.parts), w = wholesOf(r);
+  const cut = asked.has('parts') ? `cut into equal parts (${countable('part', 'parts', p)})` : `cut into ${p} equal parts`;
+  const wholes = w > 1 ? `${plural(w, whole, `${whole}s`)}, each ${cut}` : `A ${whole} ${cut}`;
+  if (!r.selected) return `${wholes}; none are shaded.`;
+  const k = n(r.selected);
+  return asked.has('selected') ? `${wholes}; shaded parts: ${countable('part', 'parts', k)}.` : `${wholes}; ${plural(k, 'part is', 'parts are')} shaded.`;
+}
 function areaView(model: 'area' | 'circle' | 'bar', noun: string, grades: readonly [number, number], draws: string): ViewDef<R> {
   return {
     grades, accepts: ['shade', 'tap'], draws, noun: () => noun,
+    describe: (r, asked) => describeParts(r, asked, noun),
     reveals: partsReveal, regions: partRegions,
     shade(r, target) { const l = landing(r, target, 'shade', 1); return 'code' in l ? l : { parts: l.total, target: l.at }; },
     lower: r => ({ type: 'fraction_model', model, parts: n(r.parts), shaded: n(r.selected), ...(wholesOf(r) > 1 ? { wholes: wholesOf(r) } : {}) }),
@@ -81,6 +92,13 @@ export const fraction: StructureDef<'fraction', R, V> = {
       noun: () => 'group',
       reveals: partsReveal, regions: partRegions,
       fits: r => wholesOf(r) > 1 ? [issue('view_fit', 'A set is one whole; set wholes to null.')] : [],
+      describe(r, asked) {
+        const p = n(r.parts), N = nounOf(r.parts, 'object', 'objects');
+        const group = asked.has('parts') ? `A group of ${N.other}: ${countable(N.one, N.other, p)}` : `A group of ${plural(p, N.one, N.other)}`;
+        if (!r.selected) return `${group}.`;
+        const k = n(r.selected);
+        return asked.has('selected') ? `${group}; shaded: ${countable(N.one, N.other, k)}.` : `${group}; ${k} ${k === 1 ? 'is' : 'are'} shaded.`;
+      },
       lower(r) {
         const noun = req(r, 'parts').decl.noun;
         return {
@@ -93,6 +111,14 @@ export const fraction: StructureDef<'fraction', R, V> = {
       grades: [3, 5], accepts: ['place'], draws: 'a number line from 0 to wholes with a tick at every part, whole numbers labeled; a point at selected/parts when selected is set',
       noun: () => 'number line',
       reveals: () => ({ parts: 'countable', selected: 'countable', wholes: 'shown', fraction: 'countable', complement: 'countable', unit: 'countable' }),
+      describe(r, asked) {
+        const p = n(r.parts), w = wholesOf(r);
+        const cut = asked.has('parts') ? `each whole cut into equal parts (${countable('part', 'parts', p)})` : `each whole cut into ${p} equal parts`;
+        const line = `A number line from 0 to ${w}, ${cut}`;
+        if (!r.selected) return `${line}; no point is marked.`;
+        const k = n(r.selected);
+        return asked.has('selected') ? `${line}; a point is marked after ${countable('part', 'parts', k)}.` : `${line}; a point is marked ${plural(k, 'part', 'parts')} after 0.`;
+      },
       place(r, target) { const l = landing(r, target, 'place', 0); return 'code' in l ? l : { ticks: l.total, target: l.at }; },
       lower(r) {
         const p = n(r.parts), w = wholesOf(r);

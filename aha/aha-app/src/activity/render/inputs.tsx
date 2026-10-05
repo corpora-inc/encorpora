@@ -204,3 +204,37 @@ export function RegionChips({ regions, selected, onSelect, disabled }: { regions
     </fieldset>
   );
 }
+
+/** Shade parts by chips as well as by tapping the figure: every part is a 44px toggle, and the count is spoken. */
+export function ShadeChips({ parts, shaded, onToggle, disabled }: { parts: number; shaded: readonly number[]; onToggle: (part: number) => void; disabled?: boolean }) {
+  return (
+    <fieldset className="ax-field ax-region-chips ax-shade-chips">
+      <legend className="ax-default-label">Tap parts of the picture to shade them, or choose here</legend>
+      <div>
+        {Array.from({ length: parts }, (_, i) => <button key={i} type="button" disabled={disabled} aria-pressed={shaded.includes(i)} className={shaded.includes(i) ? 'is-selected' : ''} onClick={() => onToggle(i)}>Part {i + 1}</button>)}
+      </div>
+      <span className="ax-visually-hidden" aria-live="polite">{shaded.length} of {parts} parts shaded</span>
+    </fieldset>
+  );
+}
+
+/**
+ * Move a point along a number line, tick by tick. The position is announced by tick count, never as a
+ * value: naming the value would answer the question.
+ */
+export function PlaceControls({ tick, ticks, onChange, disabled }: { tick?: number; ticks: number; onChange: (tick: number) => void; disabled?: boolean }) {
+  const at = tick ?? 0;
+  const move = (d: number) => onChange(Math.max(0, Math.min(ticks, (tick === undefined ? 0 : at) + d)));
+  return (
+    <div className="ax-field ax-plot-controls">
+      <span className="ax-field-label">{tick === undefined ? 'Tap the number line to place your point' : 'Your point'}</span>
+      <div className="ax-steppers">
+        <div className="ax-stepper" role="group" aria-label="Point on the number line">
+          <button type="button" disabled={disabled} onClick={() => move(-1)} aria-label="Move the point left one tick"><Minus size={18} aria-hidden="true" /></button>
+          <output aria-live="polite">{tick === undefined ? '–' : <span className="ax-visually-hidden">{`Tick ${tick} of ${ticks}, counting from 0`}</span>}{tick !== undefined && <span aria-hidden="true">●</span>}</output>
+          <button type="button" disabled={disabled} onClick={() => move(1)} aria-label="Move the point right one tick"><Plus size={18} aria-hidden="true" /></button>
+        </div>
+      </div>
+    </div>
+  );
+}

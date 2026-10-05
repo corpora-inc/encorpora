@@ -5,10 +5,18 @@
  */
 import type { StructureDef } from '../registry';
 import { issue } from '../registry';
-import { n, product, req, within } from './common';
+import { capital, countable, n, nounOf, plural, product, req, within } from './common';
+import type { Asked, Roles } from '../registry';
 
 type R = 'cols' | 'rows';
 const MAX_BY_GRADE: Record<number, number> = { 2: 5, 3: 10, 4: 12 };
+/** Rows of the objects, or of dots when the objects have no noun. */
+function describeArray(r: Roles<R>, asked: Asked, item: { one: string; other: string }): string {
+  const rows = n(r.rows), cols = n(r.cols);
+  if (asked.has('rows')) return `${capital('rows')} of ${plural(cols, item.one, item.other)}: ${countable('row', 'rows', rows)}.`;
+  if (asked.has('cols')) return `${plural(rows, 'row', 'rows')}. Each row: ${countable(item.one, item.other, cols)}.`;
+  return `${plural(rows, 'row', 'rows')} of ${plural(cols, item.one, item.other)}.`;
+}
 const iconOf = (noun: { icon: string | null; one: string } | null) => noun?.icon ?? noun?.one.toLowerCase().replace(/[^a-z]+/g, '_');
 
 export const array: StructureDef<'array', R, 'dots' | 'objects'> = {
@@ -37,6 +45,7 @@ export const array: StructureDef<'array', R, 'dots' | 'objects'> = {
       reveals: () => ({ cols: 'countable', rows: 'countable', total: 'countable' }),
       // Every row holds the same number, so a tap on one row is always ill-posed; uniqueness rejects it.
       regions: r => Array.from({ length: n(r.rows) }, (_, i) => ({ id: `row${i + 1}`, value: req(r, 'cols').value, label: `Row ${i + 1}` })),
+      describe: (r, asked) => describeArray(r, asked, { one: 'dot', other: 'dots' }),
       lower: r => ({ type: 'array_grid', rows: n(r.rows), cols: n(r.cols), style: 'dots' }),
     },
     objects: {
@@ -44,6 +53,7 @@ export const array: StructureDef<'array', R, 'dots' | 'objects'> = {
       noun: () => 'array',
       reveals: () => ({ cols: 'countable', rows: 'countable', total: 'countable' }),
       regions: r => Array.from({ length: n(r.rows) }, (_, i) => ({ id: `row${i + 1}`, value: req(r, 'cols').value, label: `Row ${i + 1}` })),
+      describe: (r, asked) => describeArray(r, asked, nounOf(r.cols, 'dot', 'dots')),
       lower: r => {
         const icon = iconOf(req(r, 'cols').decl.noun);
         return { type: 'array_grid', rows: n(r.rows), cols: n(r.cols), ...(icon ? { style: 'icons' as const, icon } : { style: 'dots' as const }) };

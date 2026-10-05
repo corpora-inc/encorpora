@@ -11,6 +11,8 @@ import type { FigureInteraction } from './figures/common';
 export function FigureView({ figure, interaction }: { figure: DrawFigure; interaction?: FigureInteraction }) {
   const tap = interaction?.kind === 'tap' ? interaction : undefined;
   const plot = interaction?.kind === 'plot' ? interaction : undefined;
+  const shade = interaction?.kind === 'shade' ? interaction : undefined;
+  const place = interaction?.kind === 'place' ? interaction : undefined;
   let body: React.ReactNode;
   switch (figure.type) {
     case 'bar_chart': body = <BarChartFigure figure={figure} tap={tap} />; break;
@@ -20,8 +22,8 @@ export function FigureView({ figure, interaction }: { figure: DrawFigure; intera
     case 'data_table': body = <DataTableFigure figure={figure} />; break;
     case 'coordinate_plane': body = <CoordinatePlaneFigure figure={figure} tap={tap} plot={plot} />; break;
     case 'geometry': body = <GeometryFigure figure={figure} tap={tap} />; break;
-    case 'number_line': body = <NumberLineFigure figure={figure} />; break;
-    case 'fraction_model': body = <FractionModelFigure figure={figure} />; break;
+    case 'number_line': body = <NumberLineFigure figure={figure} place={place} />; break;
+    case 'fraction_model': body = <FractionModelFigure figure={figure} shade={shade} />; break;
     case 'array_grid': body = <ArrayGridFigure figure={figure} />; break;
     case 'place_value_blocks': body = <PlaceValueFigure figure={figure} />; break;
     case 'clock': body = <ClockFigure figure={figure} />; break;

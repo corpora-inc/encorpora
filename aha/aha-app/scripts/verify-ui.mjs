@@ -255,7 +255,10 @@ try{
   // Every Activity Spec fixture in the same compact stage.
   const stageCtx=await browser.newContext({viewport:{width:384,height:832},deviceScaleFactor:2.8125,isMobile:true,hasTouch:true});
   const stage=await stageCtx.newPage();stage.on('pageerror',e=>errors.push(e.message));stage.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
-  const {fixtures}=await import(pathToFileURL(path.join(root,'src/activity/fixtures/index.ts')).href);
+  // v1 TEST FIXTURES and v2 gold specs (resolved through the v2 validator) meet the same pass bar.
+  const {fixtures:v1Fixtures}=await import(pathToFileURL(path.join(root,'src/activity/fixtures/index.ts')).href);
+  const {goldResolved}=await import(pathToFileURL(path.join(root,'src/activity/v2/gold/resolved.ts')).href);
+  const fixtures=[...v1Fixtures,...goldResolved()];
   const scrollsInside=[];
   for(const f of fixtures){
     await stage.goto(`${base}/src/activity/gallery/stage.html?fixture=${f.id}`);

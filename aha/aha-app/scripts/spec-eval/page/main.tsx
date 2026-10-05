@@ -4,9 +4,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Studio } from '../../../src/ui/Studio';
-import type { ActivitySpec } from '../../../src/activity/spec';
+import type { ResolvedSpec } from '../../../src/activity/resolved';
 
-const spec = (window as unknown as { __SPEC_EVAL__?: ActivitySpec }).__SPEC_EVAL__;
+const spec = (window as unknown as { __SPEC_EVAL__?: ResolvedSpec }).__SPEC_EVAL__;
 const noop = () => {};
 ReactDOM.createRoot(document.getElementById('root')!).render(spec
   ? <Studio mode="native" practiceMode="ai" practiceStatus="DEV spec-eval · synthetic learner" learnerName="Eval"

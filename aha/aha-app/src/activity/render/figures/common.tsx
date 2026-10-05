@@ -86,4 +86,8 @@ export function regionProps(label: string, selected: boolean, onSelect?: () => v
 
 export interface TapInteraction { kind: 'tap'; selected?: string; onSelect: (region: string) => void }
 export interface PlotInteraction { kind: 'plot'; point?: { x: number; y: number }; snap: { x: number; y: number }; onPlot: (p: { x: number; y: number }) => void }
-export type FigureInteraction = TapInteraction | PlotInteraction;
+/** Shade parts of a fraction model: the learner toggles parts (numbered across wholes, first to last). */
+export interface ShadeInteraction { kind: 'shade'; shaded: readonly number[]; onToggle: (part: number) => void }
+/** Put one point on a number line, on tick 0…ticks counted from its minimum. */
+export interface PlaceInteraction { kind: 'place'; tick?: number; onPlace: (tick: number) => void }
+export type FigureInteraction = TapInteraction | PlotInteraction | ShadeInteraction | PlaceInteraction;

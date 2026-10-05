@@ -1,5 +1,5 @@
-import type { ActivitySpec } from "../activity/spec";
-import type { GradeOutcome, LearnerResponse } from "../activity/grade";
+import type { ResolvedSpec } from "../activity/resolved";
+import type { AnyLearnerResponse, GradeOutcome } from "../activity/grade";
 export type StudioVisual =
   | { type: "fraction"; numerator: number; denominator: number; label?: string }
   | { type: "array"; rows: number; columns: number; label?: string }
@@ -38,15 +38,16 @@ export interface StudioActivity {
   choices?: { id: string; label: string }[];
   visual?: StudioVisual;
 }
-/** An AI-authored Activity Spec rendered in the same focus stage as local practice. */
+/** An AI-authored activity (a v1 spec, or a resolved v2 one) rendered in the same focus stage as local practice. */
 export interface StudioSpecActivity {
   /** The app's activity id. Model-written spec ids are not unique across batches. */
   id?: string;
-  spec: ActivitySpec;
+  spec: ResolvedSpec;
   /** Supply after grading (gradeActivity); the stage then shows compact feedback and Next. */
   result?: GradeOutcome;
-  onSubmit: (response: LearnerResponse) => void;
-  initialResponse?: LearnerResponse;
+  /** Receives a response of the spec's own response type (a v1 spec yields only v1 responses). */
+  onSubmit: (response: AnyLearnerResponse) => void;
+  initialResponse?: AnyLearnerResponse;
 }
 export interface StudioProps {
   mode: "preview" | "native";

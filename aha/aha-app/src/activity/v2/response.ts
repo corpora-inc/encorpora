@@ -6,7 +6,7 @@
 import { regionIds, type Figure, type ResponseSpec } from '../spec';
 import type { GradeSpec } from '../grade';
 import { compare } from '../../learning/rational';
-import { exactDecimal, formatNumber, formatPlain, sameValue, unitSymbol, type Issue, type QuantityKind, type Rich, type Value } from './quantity';
+import { exactDecimal, formatNumber, formatPlain, fractionWords, sameValue, unitSymbol, type Issue, type QuantityKind, type Rich, type Value } from './quantity';
 import type { Model } from './model';
 import type { Region } from './registry';
 import type { Ask, CheckedCore } from './validate';
@@ -35,8 +35,10 @@ const richText = (r: Rich) => r.map(p => p.kind === 'math' ? `$${p.tex}$` : p.te
  * fraction kinds), then the unit symbol of the key's dimension, if any. A perimeter offered beside an
  * area reads in square units, as the learner would write it.
  */
-function optionText(v: Pick<Value, 'q' | 'form'>, kind: QuantityKind, key: Value, locale: string): string {
-  const number = richText(formatNumber(v, locale, kind === 'fraction'));
+function optionText(v: Pick<Value, 'q' | 'form'>, kind: QuantityKind, key: Value, locale: string, grade: number): string {
+  // Grades K–2 name shares in words, as the prompt does.
+  const words = grade <= 2 && kind === 'fraction' ? fractionWords(v, locale) : null;
+  const number = words ?? richText(formatNumber(v, locale, kind === 'fraction'));
   return key.unit ? `${number} ${unitSymbol(key.unit, key.power)}` : number;
 }
 /** The kind of what an expression names: its target's, when it is one reference. */
@@ -91,7 +93,7 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
       if (options.length < 2) return fail('response.distractors', 'choose_options', 'choose needs at least two options: give distractor rules whose values differ from the key and from each other.');
       const correct = options.filter(o => sameValue(o.value, key)).length;
       if (correct !== 1) return fail('response.candidates', correct ? 'choose_ambiguous' : 'choose_no_key', correct ? `${correct} options equal the key ${formatPlain(key.q)}.` : `No option equals the key ${formatPlain(key.q)}.`);
-      const texts = options.map(o => optionText(o.value, o.kind, key, locale));
+      const texts = options.map(o => optionText(o.value, o.kind, key, locale, c.grade));
       if (new Set(texts).size !== texts.length) return fail('response.candidates', 'choose_duplicate', 'Two options read the same.');
       const spec: ResponseSpec = {
         type: 'multiple_choice', shuffle: true,
@@ -106,7 +108,7 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
       const target = ask!.value, kind = ask!.described.kind;
       const correct = c.candidates.map(cand => sameValue(cand.value, target));
       if (!correct.some(Boolean) || correct.every(Boolean)) return fail('response.candidates', 'select_split', 'select needs at least one candidate equal to the target and one that is not.');
-      const texts = c.candidates.map(cand => optionText(cand.value, kindOf(c.model, cand, kind), target, locale));
+      const texts = c.candidates.map(cand => optionText(cand.value, kindOf(c.model, cand, kind), target, locale, c.grade));
       if (new Set(texts).size !== texts.length) return fail('response.candidates', 'select_duplicate', 'Two candidates read the same.');
       const spec: ResponseSpec = { type: 'multi_select', shuffle: true, options: texts.map((text, i) => ({ text, correct: correct[i]! })) };
       return { ok: true, value: { spec, key: `select:${correct.flatMap((v, i) => v ? [i] : []).join(',')}`, verification: 'computed' } };
@@ -116,7 +118,7 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
       if (order.some((o, k) => k > 0 && sameValue(o.cand.value, order[k - 1]!.cand.value))) return fail('response.candidates', 'order_tie', 'Two candidates have the same value, so no order is the right one.');
       if (new Set(c.candidates.map(x => x.value.power + (x.value.unit ?? ''))).size > 1) return fail('response.candidates', 'dimension_mismatch', 'Candidates to order must all measure the same thing.');
       const first = c.candidates[0]!.value;
-      const spec: ResponseSpec = { type: 'ordering', items: order.map(o => optionText(o.cand.value, kindOf(c.model, o.cand, 'number'), first, locale)) };
+      const spec: ResponseSpec = { type: 'ordering', items: order.map(o => optionText(o.cand.value, kindOf(c.model, o.cand, 'number'), first, locale, c.grade)) };
       return { ok: true, value: { spec, key: `order:${order.map(o => o.i).join(',')}`, verification: 'computed' } };
     }
     case 'tap': {

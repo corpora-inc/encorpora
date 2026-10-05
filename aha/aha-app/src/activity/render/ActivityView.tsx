@@ -1,18 +1,21 @@
 import React, { useMemo, useState } from 'react';
 import { Lightbulb, Sparkles, Check } from 'lucide-react';
-import type { ActivitySpec, Figure } from '../spec';
+import type { Figure } from '../spec';
 import { plotSnap, regionIds } from '../spec';
-import type { GradeOutcome, LearnerResponse } from '../grade';
+import type { AnyLearnerResponse, GradeOutcome } from '../grade';
+import type { DrawFigure } from '../draw';
+import type { ResolvedSpec } from '../resolved';
 import { seededRandom } from '../expr';
 import { DisplayMath, RichText } from './RichText';
 import { FigureView } from './Figure';
 import type { FigureInteraction } from './figures/common';
-import { ChoiceInput, ExpressionInput, FractionInput, NumericInput, OrderingInput, PlotControls, RegionChips } from './inputs';
+import { ChoiceInput, ExpressionInput, FractionInput, NumericInput, OrderingInput, PlaceControls, PlotControls, RegionChips, ShadeChips } from './inputs';
 
 export interface ActivityViewProps {
-  spec: ActivitySpec;
-  /** Called with a complete response. The caller grades (gradeActivity) and records evidence. */
-  onSubmit: (response: LearnerResponse) => void;
+  /** A resolved activity: a v1 spec as it is, or a v2 activity through v2/resolve.ts. */
+  spec: ResolvedSpec;
+  /** Called with a complete response of the spec's response type. The caller grades (gradeResponse) and records evidence. */
+  onSubmit: (response: AnyLearnerResponse) => void;
   /** Supply after grading to show feedback and the worked explanation. */
   result?: GradeOutcome;
   /** Notified each time the learner reveals another hint (for assisted-evidence recording). */
@@ -22,7 +25,7 @@ export interface ActivityViewProps {
   theme?: 'light' | 'dark' | 'auto';
   /** Start revealed (gallery/tests). */
   initialHintsShown?: number;
-  initialResponse?: LearnerResponse;
+  initialResponse?: AnyLearnerResponse;
   /** Focus-mode stage: prompt first, no title or level chrome, the answer and Check docked in the
    * thumb zone. Hints and the explanation are shown by the host (the studio's help panel). */
   compact?: boolean;
@@ -48,7 +51,9 @@ export function displayOrder(length: number, seed: string, shuffle: boolean, avo
   return order;
 }
 
-function regionLabels(figure: Figure): { id: string; label: string }[] {
+function regionLabels(drawing: DrawFigure): { id: string; label: string }[] {
+  // Tappable regions only ever carry v1 fields (a repeated picture group has no id).
+  const figure = drawing as Figure;
   const ids = regionIds(figure);
   const named = (id: string, label: string | undefined, i: number) => ({ id, label: label ?? `Part ${i + 1}` });
   switch (figure.type) {
@@ -70,9 +75,12 @@ function regionLabels(figure: Figure): { id: string; label: string }[] {
   }
 }
 
-const initialDraft = (spec: ActivitySpec, initial?: LearnerResponse) => {
+const initialDraft = (spec: ResolvedSpec, initial?: AnyLearnerResponse) => {
   const r = initial;
   return {
+    shaded: r?.type === 'shade' ? r.shaded : [] as number[],
+    tick: r?.type === 'place' ? r.tick : undefined,
+    view: r?.type === 'tap_view' ? r.figureId : undefined,
     text: r?.type === 'numeric' || r?.type === 'expression' ? r.value : '',
     fraction: r?.type === 'fraction' ? { whole: r.whole ?? '', numerator: r.numerator, denominator: r.denominator } : { whole: '', numerator: '', denominator: '' },
     choices: r?.type === 'multiple_choice' ? [r.choice] : r?.type === 'multi_select' ? r.choices : [],
@@ -93,8 +101,11 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
   const locked = disabled || graded;
   const choiceOrder = useMemo(() => (r.type === 'multiple_choice' || r.type === 'multi_select') ? displayOrder(r.options.length, spec.id, r.shuffle ?? true) : [], [r, spec.id]);
 
-  const response: LearnerResponse | null = (() => {
+  const response: AnyLearnerResponse | null = (() => {
     switch (r.type) {
+      case 'shade': return draft.shaded.length ? { type: 'shade', shaded: draft.shaded } : null;
+      case 'place': return draft.tick !== undefined ? { type: 'place', tick: draft.tick } : null;
+      case 'tap_view': return draft.view ? { type: 'tap_view', figureId: draft.view } : null;
       case 'numeric': return draft.text.trim() ? { type: 'numeric', value: draft.text } : null;
       case 'expression': return draft.text.trim() ? { type: 'expression', value: draft.text } : null;
       case 'fraction': return draft.fraction.numerator && draft.fraction.denominator ? { type: 'fraction', numerator: draft.fraction.numerator, denominator: draft.fraction.denominator, ...(draft.fraction.whole ? { whole: draft.fraction.whole } : {}) } : null;
@@ -107,7 +118,10 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
   })();
   const submit = () => { if (response && !locked) onSubmit(response); };
 
-  const interactionFor = (figure: Figure): FigureInteraction | undefined => {
+  const toggle = (part: number) => !locked && setDraft(d => ({ ...d, shaded: d.shaded.includes(part) ? d.shaded.filter(p => p !== part) : [...d.shaded, part].sort((a, b) => a - b) }));
+  const interactionFor = (figure: DrawFigure): FigureInteraction | undefined => {
+    if (r.type === 'shade' && r.figureId === figure.id) return { kind: 'shade', shaded: draft.shaded, onToggle: toggle };
+    if (r.type === 'place' && r.figureId === figure.id) return { kind: 'place', tick: draft.tick, onPlace: tick => !locked && setDraft(d => ({ ...d, tick })) };
     if (r.type === 'tap_region' && r.figureId === figure.id) return { kind: 'tap', selected: draft.region, onSelect: id => !locked && setDraft(d => ({ ...d, region: id })) };
     if (r.type === 'plot_point' && r.figureId === figure.id) return { kind: 'plot', point: draft.point, snap: figure.type === 'coordinate_plane' ? plotSnap(r, figure) : { x: 1, y: 1 }, onPlot: p => !locked && setDraft(d => ({ ...d, point: p })) };
     return undefined;
@@ -130,12 +144,30 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
       if (f) input = <RegionChips regions={regionLabels(f)} selected={draft.region} disabled={locked} onSelect={region => setDraft(d => ({ ...d, region }))} />;
       break;
     }
+    case 'shade': input = <ShadeChips parts={r.parts} shaded={draft.shaded} disabled={locked} onToggle={toggle} />; break;
+    case 'place': input = <PlaceControls tick={draft.tick} ticks={r.ticks} disabled={locked} onChange={tick => setDraft(d => ({ ...d, tick }))} />; break;
+    case 'tap_view': input = <RegionChips regions={r.figureIds.map((id, i) => ({ id, label: `Picture ${i + 1}` }))} selected={draft.view} disabled={locked} onSelect={view => setDraft(d => ({ ...d, view }))} />; break;
   }
+  /** A figure, made one choice among several when the learner taps a whole view (tap_view). */
+  const figureBlock = (key: number, figure: DrawFigure) => {
+    const view = <FigureView key={key} figure={figure} interaction={interactionFor(figure)} />;
+    if (r.type !== 'tap_view' || !r.figureIds.includes(figure.id)) return view;
+    const picked = draft.view === figure.id;
+    const label = `Picture ${r.figureIds.indexOf(figure.id) + 1}`;
+    return (
+      <div key={key} role="button" tabIndex={0} aria-pressed={picked} aria-label={label} className={`ax-pick${picked ? ' is-selected' : ''}`}
+        onClick={() => !locked && setDraft(d => ({ ...d, view: figure.id }))}
+        onKeyDown={e => { if ((e.key === 'Enter' || e.key === ' ') && !locked) { e.preventDefault(); setDraft(d => ({ ...d, view: figure.id })); } }}>
+        <span className="ax-pick-label" aria-hidden="true">{label}</span>
+        <FigureView figure={figure} />
+      </div>
+    );
+  };
 
   const hints = spec.hints ?? [];
   if (compact) {
     // Inputs that open the keyboard (or step a point) dock with Check; larger widgets stay with the prompt.
-    const docked = r.type === 'numeric' || r.type === 'expression' || r.type === 'fraction' || r.type === 'plot_point';
+    const docked = r.type === 'numeric' || r.type === 'expression' || r.type === 'fraction' || r.type === 'plot_point' || r.type === 'place';
     return (
       <article className="aha-activity is-compact" data-theme={theme === 'auto' ? undefined : theme} data-theme-auto={theme === 'auto' ? '' : undefined} aria-labelledby={`${spec.id}-title`}>
         <h2 id={`${spec.id}-title`} className="ax-visually-hidden">{spec.title ?? 'Activity'}</h2>
@@ -149,7 +181,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
                   if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
                   if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
                   const figure = figures.get(block.figureId);
-                  return figure ? <FigureView key={i} figure={figure} interaction={interactionFor(figure)} /> : null;
+                  return figure ? figureBlock(i, figure) : null;
                 })}
               </div>
               {!docked && <div className="ax-response">{input}</div>}
@@ -189,7 +221,7 @@ export function ActivityView({ spec, onSubmit, result, onHint, disabled, theme =
             if (block.type === 'text') return <RichText key={i} as="p" text={block.text} className="ax-paragraph" />;
             if (block.type === 'math') return <DisplayMath key={i} tex={block.tex} />;
             const figure = figures.get(block.figureId);
-            return figure ? <FigureView key={i} figure={figure} interaction={interactionFor(figure)} /> : null;
+            return figure ? figureBlock(i, figure) : null;
           })}
         </div>
         <div className="ax-response">{input}</div>

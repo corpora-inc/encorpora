@@ -109,6 +109,11 @@ export interface ViewDef<R extends string> {
   /** View-specific limits on the bound roles (unit squares need whole sides, a set has one whole). */
   fits?(roles: Roles<R>, grade: number): Issue[];
   lower(roles: Roles<R>, ctx: LowerCtx): Drawing;
+  /**
+   * The alt text and speech for the drawing (README §8.4). A value that is `asked` is never stated as
+   * a number: it is given as countable words, so a learner using a screen reader can still count it.
+   */
+  describe(roles: Roles<R>, asked: Asked): string;
   /** One line for the catalog. */
   draws: string;
 }

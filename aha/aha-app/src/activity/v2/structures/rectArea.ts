@@ -7,8 +7,8 @@
 import { add, multiply, rational } from '../../../learning/rational';
 import type { StructureDef } from '../registry';
 import { issue } from '../registry';
-import { exactDecimal, formatPlain, isInteger, toNumber, unitName, unitSymbol, type Value } from '../quantity';
-import { req } from './common';
+import { exactDecimal, formatPlain, isInteger, pluralCategory, toNumber, unitName, unitSymbol, type Value } from '../quantity';
+import { countable, req } from './common';
 
 type R = 'h' | 'w';
 const MAX_UNIT_SQUARES = 12;
@@ -63,6 +63,14 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
         return [w, h].some(v => !isInteger(v.q) || toNumber(v.q) > MAX_UNIT_SQUARES)
           ? [issue('view_fit', `unit_squares needs whole sides of at most ${MAX_UNIT_SQUARES}; use labeled.`)] : [];
       },
+      describe(r, asked) {
+        const w = toNumber(req(r, 'w').value.q), h = toNumber(req(r, 'h').value.q);
+        const base = 'A rectangle on graph paper, filled with unit squares';
+        if (asked.has('w') && asked.has('h')) return `${base}. Along its bottom edge: ${countable('square', 'squares', w)}.`;
+        if (asked.has('w')) return `${base}, ${h} squares tall. Along its bottom edge: ${countable('square', 'squares', w)}.`;
+        if (asked.has('h')) return `${base}, ${w} squares wide. Along its side: ${countable('square', 'squares', h)}.`;
+        return `${base}, ${w} squares wide and ${h} squares tall.`;
+      },
       lower(r) {
         const w = toNumber(req(r, 'w').value.q), h = toNumber(req(r, 'h').value.q), unit = req(r, 'w').value.unit!;
         return {
@@ -76,6 +84,14 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
       grades: [3, 7], accepts: [], draws: 'the rectangle with each side labeled; an asked side shows "?" (area and perimeter must be computed)',
       noun: () => 'rectangle',
       reveals: (_r, asked) => ({ w: asked.has('w') ? 'hidden' : 'shown', h: asked.has('h') ? 'hidden' : 'shown', area: 'hidden', perimeter: 'hidden' }),
+      describe(r, asked) {
+        const w = req(r, 'w').value, h = req(r, 'h').value;
+        const side = (v: Value) => `${plainNumber(v)} ${unitName(v.unit!, 1, pluralCategory(v))}`;
+        const ratio = toNumber(w.q) / toNumber(h.q), scale = ratio > 4 || ratio < 1 / 4 ? ' (not drawn to scale)' : '';
+        const width = asked.has('w') ? 'a question mark for its width' : `${side(w)} wide`;
+        const height = asked.has('h') ? 'a question mark for its height' : `${side(h)} tall`;
+        return `A rectangle${scale}, labeled ${width} and ${height}.`;
+      },
       lower(r, { asked }) {
         const w = req(r, 'w').value, h = req(r, 'h').value;
         // Drawn to scale when the sides are within 1:4; otherwise squeezed and marked not to scale.

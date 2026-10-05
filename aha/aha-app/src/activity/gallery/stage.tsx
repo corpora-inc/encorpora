@@ -8,19 +8,22 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Studio } from '../../ui/Studio';
-import { fixtures } from '../fixtures';
-import { gradeActivity, type GradeOutcome } from '../grade';
-import type { ActivitySpec } from '../spec';
+import { fixtures as v1Fixtures } from '../fixtures';
+import { gradeResponse, type GradeOutcome } from '../grade';
+import type { ResolvedSpec } from '../resolved';
+import { goldResolved } from '../v2/gold/resolved';
 
 const params = new URLSearchParams(location.search);
 const id = params.get('fixture');
 // ?label=… gives the first activity's typed response a label, as model-written specs often do.
 const label = params.get('label');
 const unit = params.get('unit');
+// v1 TEST FIXTURES, then v2 gold specs resolved through the v2 validator: one focus-stage pass bar for both.
+const fixtures: ResolvedSpec[] = [...v1Fixtures, ...goldResolved()];
 const start = Math.max(0, fixtures.findIndex(f => f.id === id));
-const withLabel = (spec: ActivitySpec, i: number): ActivitySpec =>
+const withLabel = (spec: ResolvedSpec, i: number): ResolvedSpec =>
   label && i === start && ['numeric', 'expression', 'fraction'].includes(spec.response.type)
-    ? { ...spec, response: { ...spec.response, label } as ActivitySpec['response'] }
+    ? { ...spec, response: { ...spec.response, label } as ResolvedSpec['response'] }
     : unit && i === start && spec.response.type === 'numeric' ? { ...spec, response: { ...spec.response, unit } } : spec;
 const noop = () => {};
 type StageControl = { hold: () => void; release: () => void; fail: (message: string) => void };
@@ -41,7 +44,7 @@ function Harness() {
   window.__stage = { hold: () => setHolding(true), release: () => { setHolding(false); next(); }, fail: setError };
   return <Studio mode="native" practiceMode="ai" practiceStatus="AI tutoring · progress saved on this device" learnerName="Test"
     session={{ completed: 3, target: 10 }} progress={[]} account={{ connected: true, aiReady: true }}
-    spec={{ id: `${spec.id}-${index}`, spec, result, onSubmit: r => setResult(gradeActivity(spec, r)) }}
+    spec={{ id: `${spec.id}-${index}`, spec, result, onSubmit: r => setResult(gradeResponse(spec.response, r, spec.id)) }}
     activityAnswered={!!result && !result.invalid} hint={hint} busy={busy} error={error}
     busyLabel={busy ? 'Preparing your next AI lesson…' : undefined} onCancel={busy ? () => setBusy(false) : undefined}
     feedback={result && !result.invalid && !result.correct ? { kind: 'retry', title: 'Not quite yet.', message: spec.explanation } : undefined}

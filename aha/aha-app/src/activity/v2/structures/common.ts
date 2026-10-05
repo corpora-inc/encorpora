@@ -21,3 +21,11 @@ export function within(b: BoundRole | null, role: string, lo: number, hi: number
   return v < lo || v > hi ? [issue('magnitude', `${role} (${b.id} = ${formatPlain(b.value.q)}) must be from ${lo} to ${hi} ${where}.`)] : [];
 }
 export const plural = (k: number, one: string, other: string) => `${k} ${k === 1 ? one : other}`;
+
+/** Most items a countable description spells out one by one; more is read as "many". */
+export const MAX_COUNTABLE_WORDS = 12;
+/** "apple, apple, apple": a count a learner using a screen reader can count without being told it. */
+export const countable = (one: string, other: string, k: number) => k <= MAX_COUNTABLE_WORDS ? Array.from({ length: k }, () => one).join(', ') : `many ${other}`;
+/** The singular and plural a count is described with: its noun, or a fallback word. */
+export const nounOf = (b: BoundRole | null, one: string, other: string) => ({ one: b?.decl.noun?.one ?? one, other: b?.decl.noun?.other ?? other });
+export const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
