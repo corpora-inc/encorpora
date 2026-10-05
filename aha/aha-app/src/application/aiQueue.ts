@@ -44,6 +44,27 @@ export interface PrefetchState {
 export function shouldPrefetch(s: PrefetchState): boolean {
   return s.signedIn && s.aiDue && !s.inFlight && s.queueLength <= PREFETCH_AT;
 }
+/**
+ * Why a low queue is NOT being refilled right now, for the diagnostics log; `undefined` when it is (or when it is not
+ * low, a batch is already in flight, or nobody is signed in). AI must never stop silently while signed in.
+ */
+export function prefetchBlocked(s: PrefetchState, blockedBy?: string): string | undefined {
+  if (s.queueLength > PREFETCH_AT || s.inFlight || !s.signedIn || s.aiDue) return undefined;
+  return blockedBy ?? 'AI is not due yet';
+}
+
+/**
+ * How long the next task waits for a batch that is already on its way when the queue is empty. Within this bound the
+ * learner gets the AI activity; past it, one local task is served and the batch fills the queue for the task after.
+ */
+export const BATCH_WAIT_MS = 6000;
+/** True when `work` settles (either way) within `ms`; never rejects, and never cancels `work`. */
+export async function settlesWithin(work: Promise<unknown>, ms: number): Promise<boolean> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<false>(resolve => { timer = setTimeout(() => resolve(false), ms); });
+  try { return await Promise.race([work.then(() => true, () => true), timeout]); }
+  finally { clearTimeout(timer); }
+}
 
 export interface KnownActivities {
   /** Activity ids that already have recorded evidence. */

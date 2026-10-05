@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixtures } from '../activity/fixtures';
-import { MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, pruneQueue, shouldPrefetch, takeNext, type QueuedActivity } from './aiQueue';
+import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, takeNext, type QueuedActivity } from './aiQueue';
 
 const item = (op: string, i: number): QueuedActivity => ({ activityId: activityIdFor(op, i), operationId: op, spec: fixtures[i % fixtures.length]! });
 const none = { attempted: new Set<string>(), disputed: new Set<string>() };
@@ -15,6 +15,23 @@ test('prefetch is single-flight, signed-in only, respects the backoff, and fires
   assert.equal(shouldPrefetch({ ...ready, inFlight: true }), false, 'never two batch requests at once');
   assert.equal(shouldPrefetch({ ...ready, signedIn: false }), false, 'signed-out practice never calls AI');
   assert.equal(shouldPrefetch({ ...ready, aiDue: false }), false, 'fallback backoff / Retry-After gate prefetch too');
+});
+
+test('a low queue that is not refilled always has a reason to log; otherwise there is nothing to explain', () => {
+  const low = { queueLength: 0, inFlight: false, signedIn: true, aiDue: false };
+  assert.equal(prefetchBlocked(low, 'backing off after 1 failed AI attempt'), 'backing off after 1 failed AI attempt');
+  assert.equal(prefetchBlocked(low), 'AI is not due yet', 'a reason even without a detail');
+  assert.equal(prefetchBlocked({ ...low, aiDue: true }), undefined, 'due: the prefetch starts, no skip to log');
+  assert.equal(prefetchBlocked({ ...low, queueLength: PREFETCH_AT + 1 }), undefined, 'not low yet');
+  assert.equal(prefetchBlocked({ ...low, inFlight: true }), undefined, 'a batch is already on its way');
+  assert.equal(prefetchBlocked({ ...low, signedIn: false }), undefined, 'signed-out practice is local by design');
+});
+
+test('the wait for a batch on its way is bounded and never rejects', async () => {
+  assert.ok(BATCH_WAIT_MS > 0 && BATCH_WAIT_MS <= 6000, 'at most six seconds');
+  assert.equal(await settlesWithin(Promise.resolve(), 50), true);
+  assert.equal(await settlesWithin(Promise.reject(new Error('failed batch')), 50), true, 'a failed batch has settled too');
+  assert.equal(await settlesWithin(new Promise(() => undefined), 20), false, 'a batch still on its way times out');
 });
 
 test('a batch delivered twice is queued once; evidence, disputes and the current item are skipped', () => {

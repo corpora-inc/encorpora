@@ -15,6 +15,8 @@ const {expectedAnswer}=await import(pathToFileURL(path.join(root,'src/learning/t
 const {fixtures}=await import(pathToFileURL(path.join(root,'src/activity/fixtures/index.ts')).href);
 // Numeric-answer TEST FIXTURES stand in for model-authored activities (typed answers keep the driver simple).
 const batchFixtures=fixtures.filter(f=>f.response.type==='numeric');
+// The bounded wait for a batch on its way (BATCH_WAIT_MS, 6 s) plus margin.
+const BATCH_WAIT_TEST_MS=12_000;
 const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','1436','--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(specs){
@@ -82,6 +84,8 @@ function fixture(specs){
       ]);
       return {operationId:args.operation.operationId,callId:'fixture-call'};
     }
+    // TEST-ONLY: `holdChat` keeps the next batch on its way until the scenario calls releaseChat().
+    if(command==='plugin:f2z|next_chat'&&ai.holdChat){ai.holdChat=false;await new Promise(resolve=>{ai.releaseChat=resolve;});}
     if(command==='plugin:f2z|next_chat')return streams.get(args.operationId)?.shift()??null;
     if(command==='plugin:f2z|cancel_chat')return;
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
@@ -465,6 +469,81 @@ try {
     assert.deepEqual(hErrors,[]);
     await ctx.close();
   }
+  // ---- Restart over an older build's state: a v2 journal, a saved AI activity and one queued (TEST fixture specs) ----
+  // The 2026-10-05 S26 install replaced a #882-era build in place. Its restored queue must keep AI flowing: the low
+  // queue is refilled at launch, an empty queue waits only briefly for the batch on its way, and every local task
+  // served while signed in logs why.
+  {
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    const [f0,f1]=batchFixtures;
+    const old='0ld0b11d-0000-4000-8000-000000000001',archived='0ld0b11d-0000-4000-8000-000000000002';
+    const seeded={profiles:[{id:'explorer',name:'Explorer',grade:3,createdAt:'2026-10-05T13:00:00.000Z'}],
+      sessions:{explorer:{id:'old-session',updatedAt:'2026-10-05T13:54:15.560Z',data:{activity:null,hintsUsed:0,completed:5,sessionId:'old-session',
+        aiActivity:{activityId:`${old}:0`,operationId:old,spec:f0},aiQueue:[{activityId:`${old}:1`,operationId:old,spec:f1}]}}},
+      activities:{},attempts:{},disputes:{},snapshots:{},
+      journals:{'aha-billing-v1':{version:2,operations:[
+        {id:archived,key:'k-archived',subject:'test-subject',generation:'1',createdAt:'2026-10-05T13:13:03.789Z',state:'finalized',callId:'c-archived',text:'',
+          request:{model:'fixture-model',messages:[],maxOutputTokens:'2600'},charge:{state:'charged',charged2z:'2',receiptId:'r-archived'},
+          context:{kind:'activities',profileId:'explorer',allowedSkillIds:[...f0.skillIds]},answerComplete:true,consumed:true},
+        {id:old,key:'k-old',subject:'test-subject',generation:'1',createdAt:'2026-10-05T13:24:24.322Z',state:'finalized',callId:'c-old',
+          text:JSON.stringify({rationale:'TEST fixture batch',activities:[f0,f1]}),
+          request:{model:'fixture-model',messages:[{role:'system',content:[{type:'text',text:'TEST system'}]},{role:'user',content:[{type:'text',text:'TEST user'}]}],maxOutputTokens:'2600'},
+          charge:{state:'charged',charged2z:'2',receiptId:'r-old'},
+          context:{kind:'activities',profileId:'explorer',allowedSkillIds:[...new Set([...f0.skillIds,...f1.skillIds])]},answerComplete:true,consumed:true},
+      ]}}};
+    await ctx.addInitScript(db=>{
+      if(!localStorage.getItem('aha-controller-test-fixture'))localStorage.setItem('aha-controller-test-fixture',JSON.stringify(db));
+      Object.assign(window.__ahaAI,{enforced:true,structured:true,holdChat:true});
+    },seeded);
+    const o=await ctx.newPage();
+    const oErrors=[];o.on('pageerror',e=>oErrors.push(e.message));
+    const os=()=>o.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
+    const oStarts=()=>o.evaluate(()=>window.__ahaAI.starts.length);
+    const diag=()=>o.evaluate(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]'));
+    const oNext=o.getByRole('button',{name:'Next',exact:true});
+    const answerSpec=async()=>{
+      const key=(await os()).aiActivity.spec.response.answer;
+      await o.locator('.aha-activity input[inputmode="decimal"]').fill(String(key));
+      await o.getByRole('button',{name:'Check',exact:true}).click();
+      await oNext.waitFor();
+    };
+    await o.goto('http://127.0.0.1:1436');
+    await o.getByRole('button',{name:'Continue',exact:true}).click();
+    await o.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal((await os()).aiActivity.activityId,`${old}:0`,'the older build’s AI activity is resumed');
+    // One activity queued is already low: the batch starts at launch, not on the tap that empties the queue.
+    await o.waitForFunction(()=>window.__ahaAI.starts.length===1,undefined,{timeout:5000});
+    assert.ok((await diag()).some(e=>e.source==='ai-queue'&&/restored 1 queued AI activities and the one on screen/.test(e.message)),'the restored queue is logged');
+    await answerSpec();
+    await oNext.click();
+    await o.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0].data.aiActivity?.activityId===id,`${old}:1`);
+    await answerSpec();
+    // The queue is empty and the batch is still on its way (held): one local task after a short wait, never a hang.
+    const tapped=Date.now();
+    await oNext.click();
+    await o.waitForFunction(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity?.source==='local',undefined,{timeout:BATCH_WAIT_TEST_MS});
+    const waited=Date.now()-tapped;
+    assert.ok(waited>=5000,`it waited briefly for the batch first (${waited} ms)`);
+    assert.ok((await diag()).some(e=>e.source==='ai-skip'&&/still on its way/.test(e.message)),'the local task is logged with its reason');
+    assert.equal(await oStarts(),1,'no second paid call while one is on its way');
+    // The batch lands while the learner works locally; the next task is AI again with no new call.
+    await o.evaluate(()=>window.__ahaAI.releaseChat());
+    await o.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue?.length??0)===3);
+    const local=(await os()).activity;
+    await o.getByLabel('Your answer',{exact:true}).fill(String(expectedAnswer(local.task)));
+    await o.getByRole('button',{name:'Check',exact:true}).click();
+    await oNext.click();
+    await o.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.notEqual((await os()).aiActivity.operationId,old,'AI resumes from the batch that landed');
+    assert.equal(await oStarts(),1);
+    const j=await o.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1']);
+    assert.equal(j.version,3,'the v2 journal is stored as v3 on its first write');
+    assert.deepEqual(j.operations.slice(0,2).map(op=>op.id),[archived,old],'the older build’s settled operations are kept');
+    assert.ok((await diag()).filter(e=>e.level==='error').length===0,'no errors');
+    assert.deepEqual(oErrors,[]);
+    await ctx.close();
+  }
   // ---- Production spending policy, budget optional (#879; TEST-ONLY fake SDK, no live service) ----
   const scenario=async knobs=>{
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
@@ -609,7 +688,7 @@ try {
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), and structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel with Connect-only disconnected settings, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled and insufficient balance both falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the current one stays and the next batch carries wantsHarder), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
