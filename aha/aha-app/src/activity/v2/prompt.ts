@@ -124,24 +124,28 @@ ${catalog(band)}
 
 PROMPT AND PROSE (text blocks, math blocks, hints, explanation)
 - Every number comes from a placeholder: no digits, no number words (two, dozen, half, third, fourth, twice, pair, zero…), no Roman numerals.
-- Placeholders: {{q}} for a quantity no structure binds; {{s.role}} for a quantity bound to a structure role (ALWAYS through the role: {{s.groups}}, never {{g}}); {{s.measure}}; {{s.view}} for the figure's name. Members: .n (number only), .noun (noun for the value), .one / .other (singular / plural noun), .word (number in words), .unit (unit name).
+- This holds for hints and the explanation too: write {{s.size.n}}, never 4 or four.
+- Placeholders: {{q}} for a quantity no structure binds; {{s.role}} for a quantity bound to a structure role; {{s.measure}}; {{s.view}} for the figure's name. Members: .n (number only), .noun (noun for the value), .one / .other (singular / plural noun), .word (number in words), .unit (unit name).
+- A quantity bound to a role is ALWAYS written through its structure, everywhere: with roles {"groups":"g","size":"n"} on structure s, write {{s.groups}} and {{s.size.n}} — never {{g}} or {{n.n}} (rejected). Only a quantity no structure binds is written {{q}}.
 - Never name a figure in words (picture, rectangle, circle, shape, array, strip, grid, graph, chart, pie, number line, bar graph…): write {{s.view}}.
 - Text blocks are plain text with inline TeX in $...$; a math block is TeX. Inside math, write {{a.n}} \\times {{b.n}}.
 - Grades K–2 write fractions in words: {{u.word}} ("one half").
 - Each structure with a view gets exactly one view block {"of":id,"type":"view"}; a structure with show null gets none.
-- Every figure and every number you print must be part of the math asked: no decorative figures, no extra numbers.
+- Every figure must be part of the math asked: no decorative figures. A story number the question does not use must not equal the answer.
 
 RESPONSE
 - ask names ONE thing: a measure (s.total), a role (s.size) or a quantity. For a computed answer, declare a derived quantity (left = "s.total-e") and ask it.
 - number, fraction, choose ask for the value: never show it. It may not appear in the prompt or hints (only its .one/.other noun), and no view may print it. A role you ask must be countable in a view (a picture, unit squares, equal parts) or derived from what the prompt and views show.
 - tap, shade, place, select, order give the target: put it in the prompt ("Shade {{u}} of the {{f.view}}", "Put a point at {{u}} on the {{f.view}}").
-- distractors are misconception RULES the app evaluates: {"expr":"g+n","tag":"added_instead"}. Tags: ${TAGS.join(', ')}.
-- choose: candidates null (options = the key plus your distractor rules), or candidates = references shown as the options (name all of them in the prompt or none). select: the candidates equal to ask are correct. order: candidates sorted by value. Hints never name a candidate.
+- distractors are misconception RULES the app evaluates: {"expr":"g+n","tag":"added_instead"}. Tags (only these; pick the closest): ${TAGS.join(', ')}.
+- Write exactly the fields of the response form you choose (see the grammar): number has no candidates; select and order have no distractors.
+- choose: candidates null (options = the key plus your distractor rules), or candidates = references (quantities or measures such as f.fraction, never a structure id) shown as the options (name all of them in the prompt or none). select: the candidates equal to ask are correct. order: candidates sorted by value. Hints never name a candidate.
+- To compare several models, use up to ${LIMITS.structures} structures, each with its own quantities.
 - tap: on null, the learner taps one of several views, each valued by its main measure (a fraction model's fraction, a group's or an array's total, a rectangle's area); exactly one view may match.
 - shade/place: the hosting fraction view has selected null; shade draws only the wholes the target needs.
 - fraction exactness: any, simplest, or exact (exact only for a fraction measure or a written fraction).
 Response forms in this band: ${formsIn(band).map(f => `${f} (grades ${rangeLabel(FORM_GRADES[f])})`).join(', ')}.
-Themes: ${THEMES.join(', ')}.
+Themes (only these): ${THEMES.join(', ')}.
 
 SUPPORT: the explanation is a short worked solution and may name the answer; at most 2 hints, which guide without naming the answer.
 
@@ -158,9 +162,22 @@ export interface PromptV2 {
   responseFormat: { type: 'json_schema'; json_schema: { name: string; schema: Record<string, unknown>; strict: true } };
 }
 
+/**
+ * The band a request uses: the one holding most of the learner's frontier skills that v2 can author
+ * (ties go to the earlier frontier skill), else the grade hint's. A strong grade-2 learner whose next
+ * skills are grade 3 gets the grades 3–5 schema.
+ */
+export function chooseBand(summary: LearnerSummary): Band {
+  const bands = summary.frontier.flatMap(f => REPRESENTATIONS[f.id] ? [bandOf(gradeNum(f.grade))] : []);
+  if (!bands.length) return bandOf(gradeNum(summary.gradeHint));
+  const counts = new Map<Band, number>();
+  for (const b of bands) counts.set(b, (counts.get(b) ?? 0) + 1);
+  return bands.reduce((best, b) => counts.get(b)! > counts.get(best)! ? b : best, bands[0]!);
+}
+
 export function buildPromptV2(summary: LearnerSummary, options: { count?: number; band?: Band; seed?: string } = {}): PromptV2 {
   const count = Math.min(5, Math.max(3, options.count ?? 4));
-  const band = options.band ?? bandOf(gradeNum(summary.gradeHint));
+  const band = options.band ?? chooseBand(summary);
   const window = standardsWindowV2(summary, band);
   const examples = retrieveExamples(band, window.ids, options.seed ?? JSON.stringify(summary));
   const shots = `EXAMPLES (gold activities for other learners: copy their shape, never their theme, nouns or story):\n${examples.map(g => JSON.stringify(g.activity)).join('\n')}`;

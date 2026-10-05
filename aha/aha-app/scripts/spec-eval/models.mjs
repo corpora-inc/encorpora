@@ -47,8 +47,9 @@ function run(cmd, args, { input, timeoutMs, cwd }) {
  * exec mode, so they are framed as a transcript and the model replies as the assistant.
  * `schema` (codex only) constrains the final message — used for the judge, never the author.
  */
-export async function complete({ provider, model, effort, system, user, schema, cacheDir, cacheParts, timeoutMs = 420000, retries = 1 }) {
-  const key = hashKey({ provider, model, effort, system, user, schema: schema ?? null, ...cacheParts });
+export async function complete({ provider, model, effort, system, user, schema, images = [], cacheDir, cacheParts, timeoutMs = 420000, retries = 1 }) {
+  const imageHashes = images.map(f => createHash('sha256').update(readFileSync(f)).digest('hex').slice(0, 16));
+  const key = hashKey({ provider, model, effort, system, user, schema: schema ?? null, images: imageHashes, ...cacheParts });
   const file = path.join(cacheDir, `${key}.txt`);
   if (existsSync(file)) return { text: readFileSync(file, 'utf8'), cached: true, key, ms: 0 };
   mkdirSync(cacheDir, { recursive: true });
@@ -66,11 +67,14 @@ export async function complete({ provider, model, effort, system, user, schema, 
         if (model) args.push('-m', model);
         if (effort) args.push('-c', `model_reasoning_effort="${effort}"`);
         if (schema) { writeFileSync(path.join(cwd, 'schema.json'), JSON.stringify(schema)); args.push('--output-schema', path.join(cwd, 'schema.json')); }
+        // Screenshots of the resolved render, for a judge that sees what the learner sees.
+        for (const image of images) args.push('-i', image);
         args.push('-');
         const framed = `You are standing in for a chat model that has no tools. Do not run commands or read files. Below are its SYSTEM and USER messages; reply exactly as that model would, with only the assistant message.\n\n=== SYSTEM ===\n${system}\n\n=== USER ===\n${user}`;
         res = await run('codex', args, { input: framed, timeoutMs, cwd });
         if (existsSync(outFile)) text = readFileSync(outFile, 'utf8');
       } else {
+        if (images.length) throw new Error('spec-eval: image inputs need the codex provider.');
         const args = ['-p', '--output-format', 'text', '--system-prompt', system, '--tools', '', '--strict-mcp-config'];
         if (model) args.push('--model', model);
         res = await run('claude', args, { input: user, timeoutMs, cwd });

@@ -4,7 +4,11 @@
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-export async function loadStateMatrix(root) {
+/**
+ * `plan: 'slice'` builds grades 2–4 learners whose history is in the skills the Activity Spec v2 first
+ * slice can model (equal groups, arrays, rectangle area, fractions), for the v1-versus-v2 go/no-go.
+ */
+export async function loadStateMatrix(root, { plan = 'all' } = {}) {
   const imp = p => import(pathToFileURL(path.join(root, p)).href);
   const { buildLearnerSummary } = await imp('src/activity/learnerState.ts');
   const { getSkill } = await imp('src/learning/curriculum.ts');
@@ -25,7 +29,14 @@ export async function loadStateMatrix(root) {
     7: { strong: ['7.NS.A.1', '7.RP.A.1', '7.EE.B.4'], struggle: ['7.NS.A.2', 'negative_times_negative_is_negative'], review: '7.RP.A.3', guided: '7.G.B.4' },
     8: { strong: ['8.EE.A.1', '8.EE.B.5', '8.F.A.3'], struggle: ['8.F.B.4', 'run_over_rise'], review: '8.EE.C.7', guided: '8.SP.A.1' },
   };
-  const GRADES = ['K', 1, 2, 3, 4, 5, 6, 7, 8];
+  // The v2 first slice: verified skills where the profile needs assessable practice; guided ones are any slice skill.
+  const PLAN_SLICE = {
+    2: { strong: ['2.OA.C.4', '2.G.A.2', '2.G.A.3'], struggle: ['2.G.A.3', 'unequal_parts'], review: '2.OA.C.4', guided: '2.G.A.2' },
+    3: { strong: ['3.OA.A.1', '3.MD.C.6', '3.NF.A.1'], struggle: ['3.NF.A.3', 'larger_denominator_larger_fraction'], review: '3.MD.C.7', guided: '3.NF.A.2' },
+    4: { strong: ['4.MD.A.3', '3.MD.D.8', '3.NF.A.3'], struggle: ['4.NF.A.2', 'larger_denominator_larger_fraction'], review: '4.MD.A.3', guided: '4.NF.A.1' },
+  };
+  if (plan === 'slice') Object.assign(PLAN, PLAN_SLICE);
+  const GRADES = plan === 'slice' ? [2, 3, 4] : ['K', 1, 2, 3, 4, 5, 6, 7, 8];
   const PROFILES = ['cold', 'strong', 'struggling', 'review_due', 'guided_only'];
   const NOW = '2026-10-04T16:00:00Z';
   const t0 = Date.parse(NOW);
@@ -36,7 +47,7 @@ export async function loadStateMatrix(root) {
   for (const g of GRADES) {
     const p = PLAN[g];
     for (const id of [...p.strong, p.struggle[0], p.review, p.guided]) if (!getSkill(id)) throw new Error(`spec-eval: unknown skill ${id}`);
-    if (getSkill(p.guided).coverage !== 'guided-only') throw new Error(`spec-eval: ${p.guided} is not guided-only`);
+    if (plan !== 'slice' && getSkill(p.guided).coverage !== 'guided-only') throw new Error(`spec-eval: ${p.guided} is not guided-only`);
     if (getSkill(p.review).coverage !== 'verified-practice') throw new Error(`spec-eval: ${p.review} has no verified practice`);
   }
 

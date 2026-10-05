@@ -71,8 +71,11 @@ FORMAT EXAMPLES (shape only; never copy their content): ${EXAMPLES.map(e => JSON
 
 const gradeNum = (g: Grade) => g === 'K' ? 0 : g;
 
-/** Compact standards map: ids + short titles around the learner's frontier, frontier first. */
-export function standardsWindow(summary: LearnerSummary, limit = 60): { lines: string[]; ids: Set<string> } {
+/**
+ * Compact standards map: ids + short titles around the learner's frontier, frontier first. `only`
+ * restricts the window to a set of skills (dev evaluation compares v1 and v2 on the same skills).
+ */
+export function standardsWindow(summary: LearnerSummary, limit = 60, only?: ReadonlySet<string>): { lines: string[]; ids: Set<string> } {
   const frontierIds = summary.frontier.map(f => f.id);
   const grades = [gradeNum(summary.gradeHint), ...summary.frontier.map(f => gradeNum(f.grade))];
   const lo = Math.max(0, Math.min(...grades) - 1), hi = Math.min(8, Math.max(...grades) + 1);
@@ -82,7 +85,7 @@ export function standardsWindow(summary: LearnerSummary, limit = 60): { lines: s
     ...[...priority].filter(id => getSkill(id)),
     ...skills.filter(s => !priority.has(s.id) && gradeNum(s.grade) >= lo && gradeNum(s.grade) <= hi)
       .sort((a, b) => Math.abs(gradeNum(a.grade) - gradeNum(summary.gradeHint)) - Math.abs(gradeNum(b.grade) - gradeNum(summary.gradeHint))).map(s => s.id),
-  ].slice(0, limit);
+  ].filter(id => !only || only.has(id)).slice(0, limit);
   const ids = new Set(ordered);
   // Present in curriculum order so related ids sit together.
   const lines = skills.filter(s => ids.has(s.id)).map(s => `${s.id} ${s.title}`);
@@ -114,9 +117,9 @@ numeric tolerance only for estimates. expression: ask for an expression, not an 
 keyCheck sits inside numeric, fraction and plot_point responses: {value:"arithmetic equal to the key"}, e.g. "2*25+10+3" or "2/5+2/5", or for plot_point {x:"...",y:"..."}.
 Expressions/keyCheck: + - * / ^ ( ), implicit multiplication (2x), sqrt(), abs(), round(x) or round(x, decimals), pi. tag=snake_case misconception name.`;
 
-export function buildActivityPrompt(summary: LearnerSummary, options: { count?: number; standardsLimit?: number } = {}): ActivityPrompt {
+export function buildActivityPrompt(summary: LearnerSummary, options: { count?: number; standardsLimit?: number; only?: ReadonlySet<string> } = {}): ActivityPrompt {
   const count = Math.min(5, Math.max(3, options.count ?? 4));
-  const window = standardsWindow(summary, options.standardsLimit ?? 60);
+  const window = standardsWindow(summary, options.standardsLimit ?? 60, options.only);
   const user = `LEARNER ${JSON.stringify(summary)}\nSTANDARDS\n${window.lines.join('\n')}\nWrite ${count} activities.`;
   return {
     system: ACTIVITY_AUTHOR_RULES,
