@@ -268,10 +268,12 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     if (grade <= 2 && described.kind === 'fraction' && (attr === '' || attr === 'n')) return fail('fraction_words', `In grades K–2 write fractions in words: {{${refPath.filter(Boolean).join('.')}.word}}.`);
     return formatValue(described, attr, locale);
   };
+  // Figure words the prose may use: those of the views the prompt shows (a "rectangle" beside a circle is not one).
+  const allowedViewWords = new Set([...viewed.values()].flatMap(v => v.words));
   const renderOne = (source: string, mode: 'text' | 'math', scope: Scope, path: string): string | null => {
     const t = parseTempl(source, mode);
     if (!t.ok) { p(path, t.error.code, t.error.message); return null; }
-    for (const i of proseIssues(t.value, { locale })) p(path, i.code, i.message);
+    for (const i of proseIssues(t.value, { locale, allowedViewWords })) p(path, i.code, i.message);
     const out = renderTempl(t.value as Templ, resolver(scope));
     if (!out.ok) { p(path, out.error.code, out.error.message); return null; }
     return out.value;
