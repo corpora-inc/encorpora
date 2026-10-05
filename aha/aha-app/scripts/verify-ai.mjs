@@ -231,6 +231,12 @@ try {
   await page.getByRole('button',{name:'Hint',exact:true}).click();
   await page.locator('.help-panel').waitFor();
   await page.waitForFunction(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.hintsUsed===1);
+  // Help taps are idempotent (an S26 item once recorded hintsUsed=21): reopening help already shown
+  // never counts again.
+  for(let i=0;i<4;i++){await page.getByRole('button',{name:'Hint',exact:true}).click();await page.waitForTimeout(80);}
+  await page.waitForTimeout(200);
+  assert.equal((await session()).hintsUsed,1,'reopening a hint already shown never counts again');
+  if(!(await page.locator('.help-panel').count())){await page.getByRole('button',{name:'Hint',exact:true}).click();await page.locator('.help-panel').waitFor();}
   await page.reload();await resume();
   await aiCard.waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'force-reload mid-queue resumes without a new paid call');

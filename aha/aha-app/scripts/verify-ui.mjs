@@ -319,6 +319,11 @@ try{
     await p.getByRole('button',{name:'Hint',exact:true}).click();await p.locator('.help-panel').waitFor({state:'detached'});
     await p.getByRole('button',{name:'Show me how',exact:true}).click();await p.locator('.help-panel.is-explain').waitFor();await t.snap('show me how open',{typing:true});
     await p.getByRole('button',{name:'Close how it works',exact:true}).click();
+    // Idempotent help taps (an S26 item once recorded hintsUsed=21): reopening help already shown never counts again.
+    const used=async()=>Object.values(await p.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.hintsUsed;
+    const usedBefore=await used();assert.equal(usedBefore,2,'one hint and one explanation recorded');
+    for(const name of ['Hint','Show me how','Hint','Show me how']){await p.getByRole('button',{name,exact:true}).click();await p.locator('.help-panel').waitFor();await p.getByRole('button',{name,exact:true}).click();await p.locator('.help-panel').waitFor({state:'detached'});}
+    assert.equal(await used(),usedBefore,'reopening a hint or explanation already shown never counts again');
     await p.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
     await field.fill(wrong);await p.getByRole('button',{name:'Check',exact:true}).click();
     await p.locator('.stage-toast.nudge').waitFor();await p.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();await t.snap('nudge with an error');
