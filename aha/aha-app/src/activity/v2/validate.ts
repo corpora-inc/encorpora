@@ -15,6 +15,7 @@ import { bindModel, problem, type Model, type Problem, type Target } from './mod
 import { BANDS, FORM_GRADES, NOTHING_ASKED, gradeLabel, gradeNum, inRange, isAnswerForm, rangeLabel, type Asked, type Band, type Drawing, type Reveal, type ViewDef } from './registry';
 import { bandWire, type WireActivity, type WireBlock } from './wire';
 import { compileResponse, type CompiledResponse } from './response';
+import { representationIssues } from './representations';
 
 export interface ValidateOptions {
   /** The band whose schema the request carried. */
@@ -100,6 +101,8 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
   if (!skill) return { ok: false, problems: [...problems, { layer: 'L1', path: 'aim.skills[0]', code: 'skill_unknown', message: 'Unknown skill.' }] };
   const grade = gradeNum(skill.grade);
   if (!inRange(grade, BANDS[options.band])) p('aim.skills[0]', 'off_band', `${skill.id} is grade ${gradeLabel(grade)}, outside this request's grades ${rangeLabel(BANDS[options.band])}.`);
+  // The skill's representation set (README §10): the intents, views and form that practise it.
+  for (const i of representationIssues(skill.id, a.model.structures.map(st => ({ kind: st.kind, show: st.show as string | null })), a.response.form)) p('aim.skills[0]', i.code, i.message);
   if (problems.length) return { ok: false, problems };
 
   const bound = bindModel(a.model, grade);

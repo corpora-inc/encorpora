@@ -36,7 +36,7 @@ describe('number', () => {
     assert.deepEqual(c.spec, { type: 'numeric', answer: 20, unit: 'square units', misconceptionAnswers: [{ answer: 18, tag: 'perimeter_for_area' }] });
   });
   it('refuses a key a learner cannot type as a number', () => {
-    rejects(edit(shadedFractionActivity, a => { a.model.quantities[1]!.value = '1'; a.model.quantities[0]!.value = '3'; a.aim.skills = ['3.NF.A.1']; a.response = { ask: 'f.fraction', distractors: [], form: 'number' }; }), 'form_value');
+    rejects(edit(shadedFractionActivity, a => { a.model.quantities[1]!.value = '1'; a.model.quantities[0]!.value = '3'; a.aim.skills = ['3.NF.A.3']; a.response = { ask: 'f.fraction', distractors: [], form: 'number' }; }), 'form_value');
   });
   it('marks a derived ask as derived', () => {
     const c = compiled(edit(equalGroupsActivity, a => {
@@ -93,8 +93,8 @@ describe('review regressions', () => {
     }), 'choose_notation');
   });
   it('draws only the wholes a shading target needs', () => {
-    rejects(edit(shadeActivity, a => { a.aim.skills = ['3.NF.A.3']; a.model.quantities.push(q('w', 'count', '2')); a.model.structures[0]!.roles = { parts: 'p', selected: null, wholes: 'w' }; }), 'shade_wholes');
-    const improper = edit(shadeActivity, a => { a.aim.skills = ['3.NF.A.3']; a.model.quantities.push(q('w', 'count', '2')); a.model.quantities[1]!.value = '5/4'; a.model.structures[0]!.roles = { parts: 'p', selected: null, wholes: 'w' }; });
+    rejects(edit(shadeActivity, a => { a.model.quantities.push(q('w', 'count', '2')); a.model.structures[0]!.roles = { parts: 'p', selected: null, wholes: 'w' }; }), 'shade_wholes');
+    const improper = edit(shadeActivity, a => { a.model.quantities.push(q('w', 'count', '2')); a.model.quantities[1]!.value = '5/4'; a.model.structures[0]!.roles = { parts: 'p', selected: null, wholes: 'w' }; });
     assert.deepEqual(compiled(improper).spec, { type: 'shade', figureId: 'f', parts: 8, target: 5 });
   });
 });

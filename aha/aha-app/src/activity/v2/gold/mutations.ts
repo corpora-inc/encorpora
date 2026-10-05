@@ -8,6 +8,7 @@
 import { getSkill } from '../../../learning/curriculum';
 import { BANDS, bandOf, gradeNum, inRange, isAnswerForm } from '../registry';
 import { STRUCTURES } from '../structures';
+import { REPRESENTATIONS } from '../representations';
 import type { WireActivity, WireQuantity } from '../wire';
 import type { GoldSpec } from './types';
 
@@ -79,6 +80,8 @@ export const MUTATION_CLASSES: MutationClass[] = [
     id: 'equal_region_tap', expects: ['tap_ambiguous'],
     mutate(a) {
       const out: Mutant[] = [];
+      // Only where the skill is practised by tapping, so the mutant's one defect is the ill-posed tap.
+      if (!REPRESENTATIONS[a.aim.skills[0]!]?.forms.includes('tap')) return [];
       // One view only, so the mutant's one defect is the tap itself.
       if (a.prompt.filter(b => b.type === 'view').length !== 1) return [];
       for (const s of a.model.structures) {
@@ -97,7 +100,7 @@ export const MUTATION_CLASSES: MutationClass[] = [
     },
   },
   {
-    id: 'off_band_view', expects: ['schema', 'off_band', 'off_grade'],
+    id: 'off_band_view', expects: ['schema', 'off_band', 'off_grade', 'representation'],
     mutate(a) {
       const out: Mutant[] = [];
       const grade = gradeOf(a), band = bandOf(grade);
@@ -138,6 +141,8 @@ export const MUTATION_CLASSES: MutationClass[] = [
       const [sid, member] = a.response.ask.split('.');
       const s = a.model.structures.find(x => x.id === sid);
       if (!s || !member || !Object.hasOwn(STRUCTURES[s.kind].measures, member)) return [];
+      // Only where the skill may tell this structure in words, so the one defect is the hidden inputs.
+      if (!REPRESENTATIONS[a.aim.skills[0]!]?.structures[s.kind]?.includes('none')) return [];
       // The structure's view goes away, and so does every mention of its roles: nothing reveals the inputs.
       const m = clone(a);
       (m.model.structures.find(x => x.id === sid) as { show: string | null }).show = null;

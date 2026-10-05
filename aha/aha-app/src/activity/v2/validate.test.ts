@@ -38,18 +38,20 @@ describe('the live failures in v2', () => {
   });
   it('live 4: an area ask over a view that reveals neither side is unanswerable', () => {
     const bare = edit(areaActivity, a => {
+      a.aim.skills = ['3.MD.C.7'];
       a.model.structures[0]!.show = null;
       a.prompt = [{ text: 'What is the area in square units?', type: 'text' }];
       a.support.explanation = 'The area is {{r.area}}.';
     });
     rejects(bare, 'ask_unanswerable');
     const told = edit(areaActivity, a => {
+      a.aim.skills = ['3.MD.C.7'];
       a.model.structures[0]!.show = null;
       a.prompt = [{ text: 'A garden is {{r.w}} by {{r.h}}. What is its area in square units?', type: 'text' }];
       a.support.explanation = 'The area is {{r.area}}.';
     });
     assert.equal(key(told), '20', 'the same ask is answerable when the prose gives the sides');
-    const labeled = valid(edit(areaActivity, a => { a.model.structures[0]!.show = 'labeled'; }));
+    const labeled = valid(edit(areaActivity, a => { a.aim.skills = ['3.MD.C.7']; a.model.structures[0]!.show = 'labeled'; }));
     assert.deepEqual(labeled.reveals.get('r'), { w: 'shown', h: 'shown', area: 'hidden', perimeter: 'hidden' });
   });
 });
@@ -74,9 +76,11 @@ describe('L0 and skills', () => {
     const sixth = edit(areaActivity, a => { a.aim.skills = ['6.G.A.1']; a.model.structures[0]!.show = 'labeled'; });
     assert.ok(check(sixth, 'g68').ok, JSON.stringify(codesOf(check(sixth, 'g68'))));
   });
-  it('holds each structure and view to its grades', () => {
-    rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['5.NF.B.4']; a.model.quantities[1]!.value = '4'; }), 'off_grade');
-    rejects(edit(shadedFractionActivity, a => { a.aim.skills = ['1.G.A.3']; a.model.quantities[0]!.value = '4'; a.model.structures[0]!.show = 'strip'; a.response = { ask: 'f.fraction', candidates: null, distractors: [], form: 'choose' }; }), 'off_grade', 'k2');
+  it('holds each structure and view to its grades and to the skill\'s representation set', () => {
+    rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['5.NF.B.4']; a.model.quantities[1]!.value = '4'; }), 'representation');
+    rejects(edit(equalGroupsActivity, a => { a.response = { ask: 's.total', distractors: [], exactness: 'any', form: 'fraction' }; }), 'representation');
+    rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['3.OA.B.6']; }), 'skill_unknown');
+    rejects(edit(shadedFractionActivity, a => { a.aim.skills = ['1.G.A.3']; a.model.quantities[0]!.value = '4'; a.model.structures[0]!.show = 'strip'; a.response = { ask: 'f.fraction', candidates: null, distractors: [], form: 'choose' }; }), 'representation', 'k2');
   });
 });
 
@@ -277,6 +281,7 @@ describe('review regressions: no path around the answer checks', () => {
   });
   it('holds select to the candidate rules too', () => {
     const sel = (hint: string) => edit(shadedFractionActivity, a => {
+      a.aim.skills = ['3.NF.A.3'];
       a.model.quantities = [{ id: 'p', kind: 'count', noun: null, unit: null, value: '4' }, { id: 'k', kind: 'count', noun: null, unit: null, value: '2' }, { id: 'pb', kind: 'count', noun: null, unit: null, value: '3' }, { id: 'kb', kind: 'count', noun: null, unit: null, value: '1' }, { id: 'u', kind: 'fraction', noun: null, unit: null, value: '1/2' }];
       a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: null }, show: 'rect' }, { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: 'circle' }];
       a.prompt = [{ text: 'Select each model that shows {{u}} shaded.', type: 'text' }, { of: 'f', type: 'view' }, { of: 'g', type: 'view' }];
@@ -288,7 +293,7 @@ describe('review regressions: no path around the answer checks', () => {
   });
   it('knows a fraction complement reads its wholes', () => {
     rejects(edit(shadedFractionActivity, a => {
-      a.aim.skills = ['4.NF.B.4'];
+      a.aim.skills = ['3.NF.A.3'];
       a.model.quantities = [{ id: 'p', kind: 'count', noun: null, unit: null, value: '4' }, { id: 'k', kind: 'count', noun: null, unit: null, value: '3' }, { id: 'w', kind: 'count', noun: null, unit: null, value: '2' }];
       a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: 'w' }, show: null }];
       a.prompt = [{ text: 'A cake is cut into {{f.parts}}. Mia eats {{f.selected}}. What fraction is left?', type: 'text' }];
@@ -333,9 +338,9 @@ describe('act forms', () => {
 
 describe('L2', () => {
   it('rejects models whose drawing exceeds the drawing limits', () => {
-    rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['4.NF.B.4']; a.model.quantities[0]!.value = '12'; a.model.quantities[1]!.value = '12'; }), 'draw');
     assert.ok(check(edit(equalGroupsActivity, a => { a.model.quantities[0]!.value = '10'; a.model.quantities[1]!.value = '10'; })).ok, '100 icons is the cap, not over it');
-    rejects(edit(equalGroupsActivity, a => { a.aim.skills = ['4.NF.B.4']; a.model.quantities[0]!.value = '11'; a.model.quantities[1]!.value = '10'; }), 'draw');
+    // Grades and representation sets keep equal groups within the cap; a hundred-part rectangle is not drawable.
+    rejects(edit(shadedFractionActivity, a => { a.aim.skills = ['4.NF.A.1']; a.model.quantities[0]!.value = '100'; a.model.quantities[1]!.value = '37'; a.model.structures[0]!.show = 'rect'; }), 'draw');
   });
 });
 
