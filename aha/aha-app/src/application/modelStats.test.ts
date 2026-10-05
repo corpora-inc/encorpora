@@ -24,7 +24,7 @@ test('aggregates batches, rejections, flags, average charge and first-try correc
   });
   assert.deepEqual(stats.map(s => s.model), ['model-a', 'model-b']);
   const [a, b] = stats;
-  assert.deepEqual({...a, charged2z: a!.charged2z.toString()}, {model: 'model-a', batches: 2, kept: 6, rejectedSchema: 1, rejectedSemantic: 1, unreadable: 0, flags: 1,
+  assert.deepEqual({...a, charged2z: a!.charged2z.toString()}, {model: 'model-a', batches: 2, kept: 6, rejectedSchema: 1, rejectedSemantic: 1, unreadable: 0, outOfRoom: 0, flags: 1,
     chargedBatches: 2, charged2z: '7', answered: 3, firstTryCorrect: 2});
   assert.equal(b!.unreadable, 1); assert.equal(b!.flags, 1); assert.equal(b!.chargedBatches, 1);
   assert.equal(describeModelStats(a!), 'model-a: 2 sets · kept 6, rejected 1 schema + 1 semantic · 1 flagged · ≈ 3.5 2Z per set · 67% correct first try (3)');
@@ -49,4 +49,17 @@ test('the batch log appends once per operation, is bounded, and skips unreadable
   const kept = readBatchLog(log);
   assert.equal(kept.length, MAX_BATCH_LOG);
   assert.equal(kept.at(-1)!.op, `op-${MAX_BATCH_LOG + 14}`, 'the most recent batches are kept');
+});
+
+test('"ran out of room" is counted per model and shown, so model testing sees truncated or empty-after-reasoning sets', () => {
+  const stats = aggregateModelStats({
+    batches: [batch('op-r1', 'gpt-5', 2, 1, 0, {outOfRoom: true}), batch('op-r2', 'gpt-5', 0, 0, 0, {unreadable: true, outOfRoom: true}), batch('op-r3', 'gpt-5', 4)],
+    charges: [], answers: [], flags: [],
+  });
+  assert.equal(stats[0]!.outOfRoom, 2);
+  assert.equal(describeModelStats(stats[0]!), 'gpt-5: 3 sets · kept 6, rejected 1 schema + 0 semantic, 1 unreadable, 2 ran out of room · 0 flagged · no settled charge · no answers yet');
+  // The flag round-trips through the bounded log; any other value is an unreadable record.
+  const log = appendBatch(null, batch('op-r1', 'gpt-5', 2, 1, 0, {outOfRoom: true}));
+  assert.equal(readBatchLog(log)[0]!.outOfRoom, true);
+  assert.deepEqual(readBatchLog({version: 1, batches: [{...batch('x', 'm', 1), outOfRoom: false}]}), []);
 });

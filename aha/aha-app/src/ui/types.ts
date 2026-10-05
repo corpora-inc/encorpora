@@ -100,7 +100,8 @@ export interface StudioProps {
     /** "auto" or a catalogue model id. */
     choice: string;
     auto?: { name: string; batch2z?: string };
-    options: { id: string; name: string; batch2z?: string }[];
+    /** `reasoning`: the model thinks longer and costs more; Settings labels it. */
+    options: { id: string; name: string; batch2z?: string; reasoning?: boolean }[];
   };
   onChooseModel?: (choice: string) => void;
   /** Per-model stats lines from local data, for Settings and the problem report. */

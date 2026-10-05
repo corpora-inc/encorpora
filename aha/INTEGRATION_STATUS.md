@@ -109,6 +109,43 @@ Free2Z's `/v1/models` is no longer a gpt-4o-only allowlist. AHA never hardcodes 
 - Verified with fakes only (unit tests and a `test:ai` scenario with three TEST models). Not checked against the live
   catalogue or prices.
 
+## Reasoning models (o-series, gpt-5+)
+
+Free2Z's catalogue marks them `capabilities.reasoning === true` (typed in SDK `d63959f9`). Their hidden reasoning tokens
+bill as output and count against `max_output_tokens`, so the #899/#905 policy (a 2600-token strict budget and a 2000-token
+typical output) could pick one, under-estimate it, and charge for a set cut off or emptied by its own thinking.
+
+- **Best (auto) skips them.** `AUTO_POLICY` in `src/provider/models.ts` is the one tunable, frozen constant:
+  `reasoningAllowed` (reasoning ids measured and approved for auto; empty today) and `excluded` (ids auto never picks,
+  still choosable by hand). Auto keeps the same ceiling and step-down over the admitted models, and its prompt-only
+  fallback never picks a reasoning model either. If only reasoning models are left, auto reports no model.
+- **Chosen by hand:** Settings labels the option "thinks longer, costs more" (`MODEL_NOTES` in `ModelSettings.tsx`, keyed
+  for translation). The batch budget is 12,000 tokens, capped by the model's own `max_output_tokens`, still strict, so a
+  refusal stays zero-cost. Curiosity replies on a reasoning model get the same budget. The "≈ N 2Z per set" estimate
+  assumes 4x the typical visible output (8,000 tokens), an unmeasured headroom. The hold covers the full budget.
+- **Journal v4:** a batch may carry any whole budget from 2600 to 12000 (`validOutputBudget`; anything else fails closed),
+  and the operation records `request.model` and `request.maxOutputTokens`, so same-key recovery replays the identical body.
+  v1–v3 journals still read and recover, and are stored as v4 on their first write.
+- **"Ran out of room":** a batch that ends with `finish_reason: length`, or with no visible text after reasoning tokens
+  (from the stream's `usage` event), is still delivered and charged. It is marked `outOfRoom` in the journal, logged as one
+  `ai-budget` warning (`batch ran out of room: model=… finish_reason=… max_output_tokens=… reasoning_tokens=… output_tokens=…
+  text_chars=…`), and counted per model in Model stats ("N ran out of room").
+- **`reasoning_effort`:** `ChatRequest` in `d63959f9` (and Free2Z main) has no such field. The gateway rejects unknown fields
+  with a 400 (no charge), and the pinned native plugin deserialises `ChatRequest` with `deny_unknown_fields`. AHA sends
+  `reasoning_effort: "low"` on an activity batch only when `/v1/models` advertises `capabilities.reasoning_effort === true` for
+  that model (zuu#1151). Otherwise the field is omitted. When journaled, it is replayed on recovery. **When Free2Z turns the
+  flag on, AHA also needs the SDK and plugin bump that accepts the field.** Until then the pinned plugin should refuse such a request at the
+  preflight, before any journal entry or charge.
+- **Transport and keep-alives.** The native plugin exposes only the streamed chat (`start_chat`/`next_chat`; its
+  `ChatRequest` allows only `stream: true`), so a reasoning batch cannot be sent non-streamed. **Dependency:** until Free2Z's
+  next gateway image adds SSE keep-alives, a reasoning model can be silent for over 45 s before its first token. The plugin's
+  90 s idle timeout applies on device (the TS SDK's 45 s does not), and long thinking can still exceed it. If the stream drops,
+  the gateway may still finish and charge. AHA keeps the operation `interrupted` with its call id and blocks new paid calls.
+  It then recovers with the **same** Idempotency-Key and identical body, or reads `GET /v1/calls/{id}` via receipt
+  reconciliation. It never uses a fresh key (`free2z.test.ts`: "a dropped reasoning stream…").
+- Verified with fakes only: unit tests, the native-boundary payload test, and a `test:ai` scenario with a TEST reasoning
+  model. Not checked against the live catalogue, prices or reasoning usage.
+
 ## Structured output (#884)
 
 SDK pin `42acc57f` (zuu #1129) adds opt-in `response_format`. When `/v1/models` reports

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Client, NativeTransport, type Models, type NativeBridge } from '@free2z/sdk';
-import { AUTO, chooseModel, choosableModels, describePick, estimate2z, eligible, modelMenu, readCatalog, readModelChoice, storedModelChoice } from './models.ts';
+import { AUTO, AUTO_POLICY, REASONING_BATCH_OUTPUT_TOKENS, chooseModel, choosableModels, describePick, estimate2z, eligible, modelMenu, readCatalog, readModelChoice, storedModelChoice } from './models.ts';
 
 /** A catalogue entry shaped as the typed SDK decodes `/v1/models` (zuu #1137; amounts are bigint). Prices are milli-2Z per Mtok. */
 const entry = (id: string, input: number | undefined, output: number | undefined, extra: Record<string, unknown> = {}) => ({
@@ -65,7 +65,7 @@ test('eligibility reads the SDK\'s typed capabilities: only structured_output ==
   assert.equal(typeof catalogue.models[0]!.max_output_tokens, 'bigint', 'limits decoded to bigint');
   assert.deepEqual(choosableModels(catalogue).map(o => o.id), ['yes']);
   assert.deepEqual(readCatalog(catalogue).find(o => o.id === 'yes'), {
-    id: 'yes', name: 'yes', rank: 0, structured: true, maxOutputTokens: 16384n, contextWindow: 128000n,
+    id: 'yes', name: 'yes', rank: 0, structured: true, reasoning: false, batchOutputTokens: 2600n, maxOutputTokens: 16384n, contextWindow: 128000n,
     inputRate: 500000n, outputRate: 1500000n, minCharge2z: 1n, batch2z: 5n, hold2z: 6n,
   });
   // The model-choice policy (#905) is unchanged over a typed catalogue.
@@ -152,4 +152,64 @@ test('the stored choice is a small versioned record; anything unreadable is auto
 
 test('the pick is described in one content-free line', () => {
   assert.equal(describePick(chooseModel(catalog(pro, standard))), 'model standard (auto, about 5 2Z per set, structured, ceiling 10 2Z)');
+});
+
+// ---- Reasoning models (o-series, gpt-5+): hidden reasoning bills as output and counts against max_output_tokens ----
+const reasoningCaps = {vision: false, tools: true, reasoning: true, structured_output: true};
+/** Would be the auto pick by its non-reasoning estimate (≈ 7 2Z, dearer than standard, within the ceiling). */
+const reasoner = entry('reasoner', 600_000, 2_000_000, {capabilities: reasoningCaps, display_name: 'Test reasoner'});
+/** ≈ 9 2Z per set even with reasoning headroom: within the ceiling, dearer than standard. */
+const reasonerMid = entry('reasoner-mid', 250_000, 1_000_000, {capabilities: reasoningCaps});
+
+test('the auto policy is a small, documented, frozen constant: no reasoning model is allowed until measured', () => {
+  assert.ok(Object.isFrozen(AUTO_POLICY) && Object.isFrozen(AUTO_POLICY.reasoningAllowed) && Object.isFrozen(AUTO_POLICY.excluded));
+  assert.deepEqual([...AUTO_POLICY.reasoningAllowed], []);
+});
+
+test('a reasoning model reads with a 12k batch budget (capped by its own ceiling) and an estimate with ~4x output headroom', () => {
+  const [r, capped] = readCatalog(catalog(reasoner, entry('small', 600_000, 2_000_000, {capabilities: reasoningCaps, max_output_tokens: 8192n})));
+  assert.equal(r!.reasoning, true);
+  assert.equal(r!.batchOutputTokens, REASONING_BATCH_OUTPUT_TOKENS);
+  assert.equal(REASONING_BATCH_OUTPUT_TOKENS, 12_000n);
+  // 4000 × 0.6 + (4 × 2000) × 2 = 18 400 milli → 19 2Z, not the 7 2Z a non-reasoning model at these rates would show.
+  assert.equal(r!.batch2z, 19n);
+  // The worst case (what a hold reserves) is the full 12k budget: 4000 × 0.6 + 12 000 × 2 = 26 400 milli → 27 2Z.
+  assert.equal(r!.hold2z, 27n);
+  assert.equal(capped!.batchOutputTokens, 8192n, 'never above the model\'s own max_output_tokens');
+  assert.equal(capped!.hold2z, 19n, '4000 × 0.6 + 8192 × 2 = 18 784 milli → 19 2Z');
+  assert.equal(readCatalog(catalog(standard))[0]!.batchOutputTokens, 2600n, 'non-reasoning models keep the 2600 budget');
+});
+
+test('Best (auto) never picks a reasoning model; it steps among the non-reasoning ones exactly as before', () => {
+  const models = catalog(reasoner, reasonerMid, standard, mini);
+  const p = chooseModel(models);
+  assert.deepEqual([p.id, p.reason, p.reasoning, p.maxOutputTokens], ['standard', 'auto', false, 2600n]);
+  const down = chooseModel(models, AUTO, {availableMilli2z: 5999n});
+  assert.deepEqual([down.id, down.reason], ['mini', 'auto_step_down'], 'step-down skips the reasoning models too');
+  // Only reasoning models left: auto has nothing to pick (it never falls back to a reasoning model, even prompt-only).
+  assert.throws(() => chooseModel(catalog(reasoner, reasonerMid)), {code: 'model_unavailable'});
+  assert.throws(() => chooseModel(catalog(entry('r-bare', undefined, undefined, {capabilities: {reasoning: true}}))), {code: 'model_unavailable'});
+  // The Settings menu shows what auto picks now.
+  assert.equal(modelMenu(models, AUTO).auto?.id, 'standard');
+});
+
+test('the policy is data: allowing a measured reasoning model lets auto pick it with its own budget; excluded ids are never auto', () => {
+  const models = catalog(reasoner, reasonerMid, standard, mini);
+  const allowed = chooseModel(models, AUTO, undefined, undefined, {reasoningAllowed: ['reasoner-mid'], excluded: []});
+  assert.deepEqual([allowed.id, allowed.reason, allowed.reasoning, allowed.maxOutputTokens, allowed.batch2z], ['reasoner-mid', 'auto', true, 12_000n, 9n]);
+  // Its worst case is the 12k budget: 4000 × 0.25 + 12 000 × 1 = 13 000 milli. A balance below that steps down.
+  assert.equal(chooseModel(models, AUTO, {availableMilli2z: 12_999n}, undefined, {reasoningAllowed: ['reasoner-mid'], excluded: []}).id, 'standard');
+  const excluded = chooseModel(models, AUTO, undefined, undefined, {reasoningAllowed: [], excluded: ['standard']});
+  assert.equal(excluded.id, 'mini', 'an excluded id is skipped by auto');
+  assert.equal(chooseModel(models, 'standard', undefined, undefined, {reasoningAllowed: [], excluded: ['standard']}).id, 'standard', 'but stays choosable by hand');
+});
+
+test('an explicitly chosen reasoning model is honoured with the 12k budget and labelled in Settings', () => {
+  const models = catalog(reasoner, standard);
+  const p = chooseModel(models, 'reasoner');
+  assert.deepEqual([p.id, p.reason, p.reasoning, p.maxOutputTokens, p.batch2z], ['reasoner', 'manual', true, 12_000n, 19n]);
+  assert.equal(describePick(p), 'model reasoner (manual, about 19 2Z per set, structured, reasoning, output budget 12000, ceiling 10 2Z)');
+  const menu = modelMenu(models, 'reasoner');
+  assert.deepEqual(menu.options, [{id: 'reasoner', name: 'Test reasoner', batch2z: '19', reasoning: true}, {id: 'standard', name: 'Test standard', batch2z: '5'}]);
+  assert.equal(menu.choice, 'reasoner');
 });

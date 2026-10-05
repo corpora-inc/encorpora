@@ -1,6 +1,7 @@
 import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Preflight, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 import { diagnostics } from '../diagnostics/log';
+import { BATCH_OUTPUT_TOKENS, REASONING_BATCH_OUTPUT_TOKENS } from './models';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
 export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'preflight' | 'chat' | 'call'>;
@@ -159,15 +160,29 @@ export function structuredCapability(catalog: Models, model: string): 'advertise
   return flag === true ? 'advertised' : flag === false ? 'structured_output_false' : 'structured_output_absent';
 }
 /**
+ * The catalogue capability (zuu#1151) under which the gateway accepts `reasoning_effort`. Until a model advertises it the
+ * field is never sent: today's gateway refuses unknown fields (400, no charge), and the native plugin pinned at d63959f9
+ * deserialises `ChatRequest` with `deny_unknown_fields`, so it also needs the SDK/plugin bump that ships with the flag.
+ */
+export const REASONING_EFFORT_CAPABILITY = 'reasoning_effort';
+/** Activity batches ask for the least thinking: the set is short, structured, and the hidden tokens bill as output. */
+export type ReasoningEffort = 'low';
+/** The request type plus the field zuu#1151 adds. Absent is never sent. */
+type EffortRequest = ChatRequest & { reasoning_effort?: ReasoningEffort };
+export function supportsReasoningEffort(catalog: Models, model: string): boolean {
+  return catalog.models.find(m => m.id === model)?.capabilities[REASONING_EFFORT_CAPABILITY] === true;
+}
+/**
  * One content-free line per activity batch: whether the request that goes out carries `response_format`, and if
  * not, why. Never the schema, prompt or reply.
  */
 export function describeBatchRequest(request: ChatRequest, why: string, phase: 'send' | 'recovery'): string {
   const format = request.response_format;
   const transport = 'stream'; // The native plugin offers only the streamed chat (start_chat/next_chat).
+  const effort = (request as EffortRequest).reasoning_effort ? ` reasoning_effort=${(request as EffortRequest).reasoning_effort}` : '';
   if (format?.type === 'json_schema')
-    return `batch ${phase}: structured=yes model=${request.model} response_format.type=json_schema strict=${format.json_schema.strict === true} json_schema.name=${format.json_schema.name} transport=${transport}`;
-  return `batch ${phase}: structured=no reason=${format ? `response_format.type_${format.type}` : why} model=${request.model} transport=${transport}`;
+    return `batch ${phase}: structured=yes model=${request.model} response_format.type=json_schema strict=${format.json_schema.strict === true} json_schema.name=${format.json_schema.name} transport=${transport}${effort}`;
+  return `batch ${phase}: structured=no reason=${format ? `response_format.type_${format.type}` : why} model=${request.model} transport=${transport}${effort}`;
 }
 /**
  * A refusal of `response_format` itself, which Free2Z makes before any hold, charge or provider request:
@@ -214,32 +229,55 @@ export type ResumeContext =
 /**
  * Output-token budgets a journaled request may carry. 1800 is the original single-activity and
  * curiosity budget (journal v1 pinned it). 2600 is the Activity Spec batch prompt's budget (v2).
+ * v4 adds a reasoning model's per-model batch budget (`validOutputBudget`).
  */
 export const OUTPUT_BUDGETS = ['1800', '2600'] as const;
-export type OutputBudget = typeof OUTPUT_BUDGETS[number];
+/** A canonical decimal: one of `OUTPUT_BUDGETS`, or (journal v4) a reasoning batch budget from 2600 to 12000. */
+export type OutputBudget = string;
+/**
+ * v1: only 1800. v2/v3: `OUTPUT_BUDGETS`. v4: also any canonical whole number from 2600 to 12000, the reasoning-model
+ * batch budget (12k capped by the model's own `max_output_tokens`, models.ts). Anything else fails closed.
+ */
+export function validOutputBudget(value: unknown, version: number = JOURNAL_VERSION): value is OutputBudget {
+  if (version === 1) return value === '1800';
+  if ((OUTPUT_BUDGETS as readonly unknown[]).includes(value)) return true;
+  return version >= 4 && typeof value === 'string' && /^[1-9]\d{3,4}$/.test(value) &&
+    BigInt(value) >= BATCH_OUTPUT_TOKENS && BigInt(value) <= REASONING_BATCH_OUTPUT_TOKENS;
+}
+/** Finish reasons that mean the output budget ran out (the gateway normalises to `length`; providers' own names too). */
+const LENGTH_REASONS = ['length', 'max_tokens', 'max_output_tokens'];
 export interface TutorReply {
   text: string; operationId: string; context?: ResumeContext;
   /** The model the journaled request was sent to (fresh or same-key recovery): attribution for what it wrote. */
   model: string;
   /** The request carried `response_format` (strict JSON Schema). Absent: the prompt-only request. */
   structured?: true;
+  /**
+   * The batch ran out of room: cut off by its output budget (`finish_reason: length`), or empty after hidden reasoning.
+   * Still charged. For the per-model stats ("ran out of room").
+   */
+  outOfRoom?: true;
 }
-interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string; responseFormat?: SavedResponseFormat }
+interface SavedRequest { model: string; messages: ChatRequest['messages']; maxOutputTokens: string; responseFormat?: SavedResponseFormat; reasoningEffort?: ReasoningEffort }
 interface Operation {
   id: string; key: string; subject: string; generation: string; createdAt: string;
   request: SavedRequest; state: 'opening' | 'streaming' | 'interrupted' | 'settling' | 'finalized';
   context?: ResumeContext; answerComplete?: true; consumed?: true;
+  /** v4: a completed activity batch that ran out of room (see `TutorReply.outOfRoom`). */
+  outOfRoom?: true;
   callId?: string; text: string; charge?: { state: 'pending' | 'released' | 'charged'; charged2z?: string; receiptId?: string };
 }
 /**
  * v1 (original): every request pins maxOutputTokens '1800'; contexts are activity/curiosity only.
  * v2: maxOutputTokens is one of OUTPUT_BUDGETS and the 'activities' batch context is allowed.
  * v3: a request may carry the exact `responseFormat` it was sent with; absent means prompt-only.
- * v1/v2 journals stay readable and recoverable (their requests never carry a format); the first write
- * stores them as v3. Unknown versions fail closed.
+ * v4: a batch may carry a reasoning model's per-model budget (`validOutputBudget`), and a completed batch may be
+ * marked `outOfRoom`, and a request may carry `reasoningEffort` (sent as `reasoning_effort`). Same-key recovery replays the
+ * journaled model, budget and effort exactly.
+ * v1–v3 journals stay readable and recoverable; the first write stores them as v4. Unknown versions fail closed.
  */
-interface Ledger { version: 1 | 2 | 3; operations: Operation[] }
-export const JOURNAL_VERSION = 3;
+interface Ledger { version: 1 | 2 | 3 | 4; operations: Operation[] }
+export const JOURNAL_VERSION = 4;
 const SLOT = 'aha-billing-v1';
 const MAX_TEXT = 24_000;
 const MAX_JOURNAL_BYTES = 480_000;
@@ -282,13 +320,13 @@ function invalidJournal(): never {
 }
 function readLedger(input: unknown): Ledger {
   if (input == null) return { version: JOURNAL_VERSION, operations: [] };
-  if (!object(input) || ![1, 2, 3].includes(input.version) || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
+  if (!object(input) || ![1, 2, 3, 4].includes(input.version) || !Array.isArray(input.operations) || !keys(input, ['version', 'operations'])) invalidJournal();
   const version: Ledger['version'] = input.version;
   try { if (new TextEncoder().encode(JSON.stringify(input)).length > MAX_JOURNAL_BYTES) invalidJournal(); }
   catch { invalidJournal(); }
   const ids = new Set<string>(), operationKeys = new Set<string>();
   for (const op of input.operations) {
-    if (!object(op) || !keys(op, ['id','key','subject','generation','createdAt','request','state','callId','text','charge','context','answerComplete','consumed']) ||
+    if (!object(op) || !keys(op, ['id','key','subject','generation','createdAt','request','state','callId','text','charge','context','answerComplete','consumed','outOfRoom']) ||
       !opaque(op.id) || !opaque(op.key) || !opaque(op.subject) || !opaque(op.generation) ||
       ids.has(op.id) || operationKeys.has(op.key) ||
       typeof op.createdAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(op.createdAt) ||
@@ -299,11 +337,13 @@ function readLedger(input: unknown): Ledger {
     if (op.context !== undefined && !validResumeContext(op.context, version)) invalidJournal();
     if (op.answerComplete !== undefined && (op.answerComplete !== true || !['settling','finalized'].includes(op.state))) invalidJournal();
     if (op.consumed !== undefined && (op.consumed !== true || op.answerComplete !== true || !op.context)) invalidJournal();
+    if (op.outOfRoom !== undefined && (version < 4 || op.outOfRoom !== true || op.answerComplete !== true || op.context?.kind !== 'activities')) invalidJournal();
     ids.add(op.id); operationKeys.add(op.key);
     const request = op.request;
-    if (!object(request) || !keys(request, version >= 3 ? ['model','messages','maxOutputTokens','responseFormat'] : ['model','messages','maxOutputTokens']) || !opaque(request.model) ||
+    if (!object(request) || !keys(request, version >= 4 ? ['model','messages','maxOutputTokens','responseFormat','reasoningEffort'] : version >= 3 ? ['model','messages','maxOutputTokens','responseFormat'] : ['model','messages','maxOutputTokens']) || !opaque(request.model) ||
+      (request.reasoningEffort !== undefined && request.reasoningEffort !== 'low') ||
       (request.responseFormat !== undefined && !validResponseFormat(request.responseFormat)) ||
-      (version === 1 ? request.maxOutputTokens !== '1800' : !(OUTPUT_BUDGETS as readonly unknown[]).includes(request.maxOutputTokens)) ||
+      !validOutputBudget(request.maxOutputTokens, version) ||
       !Array.isArray(request.messages)) invalidJournal();
     const archived = op.state === 'finalized' && request.messages.length === 0 && op.text === '';
     if (archived && op.answerComplete && op.context && !op.consumed) invalidJournal();
@@ -353,7 +393,9 @@ export class Free2zTutor {
     private readonly trace: (message: string, structured: boolean) => void = (message, structured) => {
       diagnostics.add(structured ? 'info' : 'warn', 'ai-structured', message);
       if (structured) console.info(`[aha:ai-structured] ${message}`);
-    }) {}
+    },
+    /** "Ran out of room" (truncated, or empty after reasoning): always a warning, so model testing sees it. */
+    private readonly budgetLog: (message: string) => void = message => diagnostics.add('warn', 'ai-budget', message)) {}
   private async ledger(): Promise<Ledger> { return readLedger(await this.journal.getJournal(SLOT)); }
   private async persist(ledger: Ledger): Promise<void> {
     ledger.version = JOURNAL_VERSION;
@@ -411,7 +453,8 @@ export class Free2zTutor {
   }
   private deliverable(op: Operation): boolean { return op.answerComplete === true && !!op.context && !op.consumed; }
   private replyValue(op: Operation): TutorReply {
-    return {text:op.text,operationId:op.id,model:op.request.model,...(op.context ? {context:structuredClone(op.context)} : {}),...(op.request.responseFormat ? {structured:true as const} : {})};
+    return {text:op.text,operationId:op.id,model:op.request.model,...(op.context ? {context:structuredClone(op.context)} : {}),...(op.request.responseFormat ? {structured:true as const} : {}),
+      ...(op.outOfRoom ? {outOfRoom:true as const} : {})};
   }
   /** Completed content is retained until its lesson/session has durably accepted it. No service call. */
   async pendingReplies(): Promise<TutorReply[]> {
@@ -484,7 +527,7 @@ export class Free2zTutor {
    */
   async reply(model: string, system: string, context: string, authorization: PaidAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800', structured?: StructuredOutput): Promise<TutorReply> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
-    if (!OUTPUT_BUDGETS.includes(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
+    if (!validOutputBudget(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
     if (resumeContext !== undefined && !validResumeContext(resumeContext))
       throw new TutorServiceError('resume_context_invalid', 'The learning context cannot be safely restored. No paid request was sent.');
     const savedContext = resumeContext === undefined ? undefined : structuredClone(resumeContext);
@@ -501,17 +544,19 @@ export class Free2zTutor {
       const catalog = await this.client.models();
       if (!catalog.models.some(m => m.id === model)) throw new TutorServiceError('model_unavailable', 'Choose a currently available Free2Z model.');
       const {format, why} = this.structuredFormat(catalog, model, context, structured);
+      // Only activity batches, and only where the catalogue says the gateway takes it (zuu#1151); otherwise omitted.
+      const effort: ReasoningEffort | undefined = savedContext?.kind === 'activities' && supportsReasoningEffort(catalog, model) ? 'low' : undefined;
       if (format && structured) {
-        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens, why); }
+        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens, why, effort); }
         catch (error) {
           // Fall back only after a refusal of the format itself, which cost nothing, and only with nothing left unsettled.
           if (!isFormatRefusal(error) || ledger.operations.some(op => op.state !== 'finalized')) throw error;
           this.formatRefused.add(model);
           this.notice(`Free2Z refused response_format for ${model}; sent the prompt-only JSON request instead. The refusal cost nothing.`);
-          return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, 'format_refused');
+          return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, 'format_refused', effort);
         }
       }
-      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, why);
+      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, why, effort);
     } finally { this.active = undefined; this.busy = false; }
   }
   /** The `response_format` to try first, or `undefined` for the prompt-only request, with the reason for the log. Never throws. */
@@ -529,16 +574,16 @@ export class Free2zTutor {
   }
   /** One fresh operation: estimate and admit, journal (with the exact format, if any), then send. */
   private async send(ledger: Ledger, session: Session, model: string, system: string, context: string, format: SavedResponseFormat | undefined,
-    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget, why: string): Promise<TutorReply> {
+    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget, why: string, effort?: ReasoningEffort): Promise<TutorReply> {
     const messages: ChatRequest['messages'] = [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}];
-    const request = chatRequest({model, messages, maxOutputTokens, ...(format ? {responseFormat: format} : {})});
+    const request = chatRequest({model, messages, maxOutputTokens, ...(format ? {responseFormat: format} : {}), ...(effort ? {reasoningEffort: effort} : {})});
     if (savedContext?.kind === 'activities') this.trace(describeBatchRequest(request, why, 'send'), !!request.response_format);
     // No app-side ceiling: the user's own budget (if any) and balance bound the call, as Free2Z reports them.
     try { await this.admit(request, authorization.verifiedGrant.budget, {context: savedContext}); }
     catch (error) { throw format && formatRefusal(error) ? formatUnsupported() : error; }
     const after = await this.current();
     if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
-    const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages,maxOutputTokens,...(format ? {responseFormat:structuredClone(format)} : {})},state:'opening',text:'',...(savedContext ? {context:structuredClone(savedContext)} : {}) };
+    const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages,maxOutputTokens,...(format ? {responseFormat:structuredClone(format)} : {}),...(effort ? {reasoningEffort:effort} : {})},state:'opening',text:'',...(savedContext ? {context:structuredClone(savedContext)} : {}) };
     ledger.operations.push(op);
     if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
       throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
@@ -578,6 +623,15 @@ export class Free2zTutor {
     let completed = false;
     // A refusal that provably cost nothing; settles the entry as released/0 so it cannot block later calls.
     let zeroCharge = false;
+    // Reported by the stream's `usage` event; hidden reasoning bills as output and counts against the budget.
+    let reasoningTokens: bigint | undefined, outputTokens: bigint | undefined;
+    /** Only on a delivered activity batch (`answerComplete`), so the journal stays valid. */
+    const markOutOfRoom = (finishReason: string) => {
+      op.outOfRoom = true;
+      const finish = /^[a-z_]{1,32}$/.test(finishReason) ? finishReason : 'other';
+      this.budgetLog(`batch ran out of room: model=${op.request.model} finish_reason=${finish} max_output_tokens=${op.request.maxOutputTokens} ` +
+        `reasoning_tokens=${reasoningTokens ?? 'unreported'} output_tokens=${outputTokens ?? 'unreported'} text_chars=${op.text.length}`);
+    };
     try {
       // Durable writes and recovery can yield: refresh real consent, balance and remainder at the send boundary.
       const verifiedGrant = await verifyPaidGrant(this.client, authorization);
@@ -613,6 +667,11 @@ export class Free2zTutor {
         const current = await this.current();
         if (current.generation !== op.generation) throw new TutorServiceError('account_changed','Account changed during the request.');
         if (event.type === 'meta') op.callId = event.call_id;
+        if (event.type === 'usage') {
+          reasoningTokens = event.usage.reasoning_tokens ?? reasoningTokens; outputTokens = event.usage.output_tokens ?? outputTokens;
+          // A gateway may report usage after `done`: an empty delivered batch is then marked once the reasoning count is known.
+          if (op.answerComplete && !op.outOfRoom && op.context?.kind === 'activities' && !op.text.trim() && (reasoningTokens ?? 0n) > 0n) markOutOfRoom('stop');
+        }
         if (event.type === 'delta') {
           if (op.text.length + event.text.length > MAX_TEXT) throw new TutorServiceError('output_limit','The lesson exceeded the supported size.');
           op.text += event.text;
@@ -625,8 +684,11 @@ export class Free2zTutor {
           if (event.type === 'done') this.noteSettlement(op, event);
           // A batch cut off by its output budget still carries whole activities; the batch parser keeps them.
           const deliverable = event.type === 'done' && (['stop','end_turn'].includes(event.finish_reason) ||
-            (op.context?.kind === 'activities' && ['length','max_tokens','max_output_tokens'].includes(event.finish_reason)));
+            (op.context?.kind === 'activities' && LENGTH_REASONS.includes(event.finish_reason)));
           if (deliverable) op.answerComplete = true;
+          // A batch that ran out of room: cut off by the budget, or nothing visible after hidden reasoning.
+          if (deliverable && op.context?.kind === 'activities' &&
+              (LENGTH_REASONS.includes(event.finish_reason) || (!op.text.trim() && (reasoningTokens ?? 0n) > 0n))) markOutOfRoom(event.finish_reason);
           await this.persist(ledger);
           if (event.type === 'error') throw new TutorServiceError(event.code,'The AI request ended with an error. Its charge remains recorded.');
           if (event.type === 'replay') throw new TutorServiceError('receipt_only','The receipt was recovered. The service does not replay the original answer; no new paid request was sent.');
@@ -657,10 +719,12 @@ export class Free2zTutor {
     }
   }
 }
-/** The wire request for a journaled body: strict output always, `response_format` exactly when it was saved. */
+/** The wire request for a journaled body: strict output always, `response_format` and `reasoning_effort` exactly when saved. */
 function chatRequest(saved: SavedRequest): ChatRequest {
-  return {model: saved.model, messages: saved.messages, max_output_tokens: BigInt(saved.maxOutputTokens), max_output_tokens_strict: true,
-    ...(saved.responseFormat ? {response_format: structuredClone(saved.responseFormat) as ChatRequest['response_format']} : {})};
+  const request: EffortRequest = {model: saved.model, messages: saved.messages, max_output_tokens: BigInt(saved.maxOutputTokens), max_output_tokens_strict: true,
+    ...(saved.responseFormat ? {response_format: structuredClone(saved.responseFormat) as ChatRequest['response_format']} : {}),
+    ...(saved.reasoningEffort ? {reasoning_effort: saved.reasoningEffort} : {})};
+  return request;
 }
 let nativeClient: Client | undefined;
 export function getNativeClient(): Client { return nativeClient ??= new Client(new NativeTransport(nativeBridge)); }
