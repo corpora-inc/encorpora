@@ -79,7 +79,7 @@ const MAX_DEPTH = 40, MAX_NODES = 48, MAX_NUMBER_DIGITS = 12;
 export const MAX_POWER = 2;
 /** Bound on numerators and denominators of every intermediate result. */
 const MAX_MAGNITUDE = 10n ** 24n;
-const ID = /^[a-z][a-z0-9]{0,7}$/;
+const ID = /^[a-z][a-z0-9_]{0,15}$/;
 const MEMBER = /^[a-z]{1,16}$/;
 
 type Token = { k: 'num'; text: string } | { k: 'id'; path: string[] } | { k: 'op'; v: '+' | '-' | '*' | '/' } | { k: '(' | ')' | ',' };
@@ -94,10 +94,10 @@ function tokenize(source: string): Result<Token[]> {
       if (num[0].replace('.', '').length > MAX_NUMBER_DIGITS) return fail('expr_number', `The number ${num[0].slice(0, 16)} is too long.`);
       tokens.push({ k: 'num', text: num[0] }); i += num[0].length; continue;
     }
-    const word = /^[a-z][a-z0-9]*(?:\.[a-z][a-z0-9]*)*/.exec(s.slice(i));
+    const word = /^[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)*/.exec(s.slice(i));
     if (word) {
       const path = word[0].split('.');
-      if (!ID.test(path[0]!)) return fail('expr_id', `"${path[0]!.slice(0, 16)}" is not an id (a lowercase letter, then up to 7 letters or digits).`);
+      if (!ID.test(path[0]!)) return fail('expr_id', `"${path[0]!.slice(0, 20)}" is not an id (a lowercase letter, then up to 15 letters, digits or underscores).`);
       if (path.length > 3 || path.slice(1).some(m => !MEMBER.test(m))) return fail('expr_id', `"${word[0].slice(0, 32)}" is not a reference: write id, id.member or id.member.member.`);
       tokens.push({ k: 'id', path }); i += word[0].length; continue;
     }

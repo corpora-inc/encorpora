@@ -44,7 +44,8 @@ describe('template parsing', () => {
     assert.equal(parseCode('{{G}}'), 'placeholder_syntax');
     assert.equal(parseCode('{{s.total.other.n}}'), 'placeholder_syntax');
     assert.equal(parseCode('{{s.t2}}'), 'placeholder_syntax');
-    assert.equal(parseCode('{{toolongid9}}'), 'placeholder_syntax');
+    assert.equal(parseCode('{{an_id_far_too_long9}}'), 'placeholder_syntax');
+    assert.deepEqual(paths(templ('{{target_frac}} and {{s_1.total}}')), ['target_frac', 's_1.total']);
     assert.equal(parseCode('{{a$}}'), 'templ_math');
     assert.equal(parseCode('An open $\\frac{a}{b} span'), 'templ_math');
     assert.equal(parseCode(Array.from({ length: 25 }, () => '{{a}}').join(' ')), 'templ_size');

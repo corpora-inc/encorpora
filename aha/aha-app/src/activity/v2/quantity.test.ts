@@ -95,10 +95,11 @@ describe('expression grammar', () => {
     assert.equal(parseError('max(1, 2'), 'expr_syntax');
     assert.equal(parseError('Math.pow(2,3)'), 'expr_syntax');
     assert.equal(parseError('alert(1)'), 'expr_syntax');
-    assert.equal(parseError('constructor'), 'expr_id');
+    assert.equal(parseError('a_name_far_too_long'), 'expr_id');
     assert.equal(parseError('a.b.c.d'), 'expr_id');
     assert.equal(parseError('s.Total'), 'expr_syntax');
     assert.equal(parseError('s.t2'), 'expr_id');
+    assert.deepEqual(parsed('target_frac'), { t: 'ref', path: ['target_frac'] }, 'snake_case ids');
     assert.equal(parseError('1234567890123'), 'expr_number');
     assert.equal(parseError('.5'), 'expr_syntax');
     assert.equal(parseError('1e3'), 'expr_syntax');
