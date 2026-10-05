@@ -46,7 +46,7 @@ Free2Z's `/v1/models` is no longer a gpt-4o-only allowlist. AHA never hardcodes 
   best-priced usable model, or the first one in catalogue order when none is priced (as before).
 - **Manual:** Settings → "AI model" lists "Best (auto)" and every eligible model by `display_name`, including models above
   the ceiling. The choice is stored per account in the local journal (`aha-model-choice-v1`). A choice that leaves the
-  catalogue or loses structured output falls back to auto, is reset, and is logged (`ai-model` warning).
+  catalogue or loses structured output falls back to auto for each request while it is missing (logged once as an `ai-model` warning); the stored choice is kept, so one degraded catalogue read never erases it.
 - **Attribution:** the journal operation already records `request.model`, so same-key recovery resends to the same model
   whatever is chosen now (a test covers this). Replies carry it as `TutorReply.model`, and queued activities, activity records
   and `ai-spec` attempts store it (`spec.model`; older evidence without it still restores, with a migration test). The status

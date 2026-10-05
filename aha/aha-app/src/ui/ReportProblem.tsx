@@ -20,9 +20,10 @@ export function ReportProblem({ signedIn, aiReady, loadModelStats }: { signedIn:
   useEffect(() => {
     if (!open) return;
     let live = true;
-    // Model stats are part of the report when available; a failure to read them never blocks it.
-    const stats = loadModelStats ? loadModelStats().catch((error) => { logError("model-stats", error); return undefined; }) : Promise.resolve(undefined);
-    void Promise.all([collectEnvironment({ signedIn, aiReady }), stats]).then(([value, lines]) => { if (live) { setStats(lines); setEnv(value); } });
+    // Model stats join the report when they arrive; a slow or failed read never holds the report back.
+    setStats(undefined);
+    void collectEnvironment({ signedIn, aiReady }).then((value) => { if (live) setEnv(value); });
+    loadModelStats?.().then((lines) => { if (live) setStats(lines); }, (error) => logError("model-stats", error));
     return () => { live = false; };
   }, [open, signedIn, aiReady, loadModelStats]);
   useEffect(() => { setDone(undefined); setFailed(undefined); }, [note]);

@@ -338,3 +338,14 @@ test('migration: ai-spec evidence and queued activities without a model still re
   assert.deepEqual(resumed.aiQueue.map(i => [i.activityId, i.model]), [['op-1:3', undefined], ['op-1:4', 'gpt-test-1']]);
   assert.equal(resumed.droppedAi, 1);
 });
+
+test('a damaged envelope whose extraction lands on one activity classifies rejections by their real positions', () => {
+  const good = fx('fx-3-fraction-bar');
+  const semantic = { ...fx('fx-3-area-tiles'), keyCheck: { value: '999' } };
+  const window = allIds([good, semantic]);
+  // The envelope is cut off, so extraction can land on an inner activity; the text still names "activities".
+  const text = JSON.stringify({ rationale: 'x', activities: [good, semantic] }).slice(0, -2);
+  const parsed = parseBatch(text, window, 'op-d', 'gpt-test-1');
+  assert.equal(parsed.items.length, 1);
+  assert.deepEqual([parsed.schemaRejected, parsed.semanticRejected], [0, 1]);
+});

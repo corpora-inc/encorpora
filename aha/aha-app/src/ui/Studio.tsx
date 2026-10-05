@@ -874,7 +874,7 @@ export function Studio(props: StudioProps) {
           </section>
           <section>
             <h3>Something not working?</h3>
-            <p>A report lists the app version, device type, and recent errors. It doesn’t include names, answers, or account details.</p>
+            <p>A report lists the app version, device type, recent errors, and AI model counts. It doesn’t include names, answers, or account details.</p>
             {props.loadModelStats && <ModelStats load={props.loadModelStats} />}
             <ReportProblem signedIn={props.account.connected} aiReady={!!props.account.aiReady} loadModelStats={props.loadModelStats} />
           </section>

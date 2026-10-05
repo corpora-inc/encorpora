@@ -138,6 +138,8 @@ export default function Controller() {
   const [menu, setMenu] = useState<ModelMenu>();
   /** Display names from the last catalogue read, for the status sheet. */
   const modelNames = useRef(new Map<string, string>());
+  /** A missing chosen model is logged once per id, not on every batch. */
+  const missingChoiceLogged = useRef(new Set<string>());
   /** Batch-log writes are serialized so two deliveries never overwrite each other's record. */
   const batchLogWrites = useRef<Promise<unknown>>(Promise.resolve());
   /** The user's own app budget as last read from Free2Z (undefined: not read yet). Display only. */
@@ -409,8 +411,11 @@ export default function Controller() {
     repository.current = repo;
     setMenu(undefined);
     modelChoice.current = AUTO;
-    try { modelChoice.current = readModelChoice(await repo.getJournal(MODEL_CHOICE_KEY)); }
-    catch (error) { logError("ai-model", error); }
+    try {
+      const stored = readModelChoice(await repo.getJournal(MODEL_CHOICE_KEY));
+      // A newer account switch owns the ref now; never let an older read overwrite its choice.
+      if (epoch === accountEpoch.current) modelChoice.current = stored;
+    } catch (error) { logError("ai-model", error); }
     let list = await repo.listProfiles();
     if (!list.length) {
       const p = {
@@ -589,7 +594,7 @@ export default function Controller() {
    * to auto, logged. Also refreshes Settings' model row. No paid call.
    */
   async function pickModel(): Promise<string> {
-    const client = getNativeClient(), tutor = provider.current, repo = repository.current, epoch = accountEpoch.current;
+    const client = getNativeClient(), tutor = provider.current, epoch = accountEpoch.current;
     const catalog = await client.models();
     const spending = tutor?.spending() ?? {};
     let available = spending.availableMilli2z;
@@ -603,10 +608,10 @@ export default function Controller() {
     try { pick = chooseModel(catalog, modelChoice.current, money); }
     catch (error) { throw error instanceof ModelUnavailableError ? new TutorServiceError(error.code, error.message) : error; }
     if (epoch !== accountEpoch.current) throw new TutorServiceError("account_changed", "The account changed while choosing a model. No paid request was sent.");
-    if (pick.reason === "manual_unavailable") {
-      logEvent("warn", "ai-model", `The chosen model ${modelChoice.current} is no longer offered by Free2Z; using Best (auto) instead.`);
-      modelChoice.current = AUTO;
-      void repo.putJournal(MODEL_CHOICE_KEY, storedModelChoice(AUTO)).catch(error => logError("ai-model", error));
+    // Falls back for this request only: the stored choice is kept, so one degraded catalogue read never erases it.
+    if (pick.reason === "manual_unavailable" && !missingChoiceLogged.current.has(modelChoice.current)) {
+      missingChoiceLogged.current.add(modelChoice.current);
+      logEvent("warn", "ai-model", `The chosen model ${modelChoice.current} is no longer offered by Free2Z; using Best (auto) until it returns.`);
     }
     for (const option of readCatalog(catalog)) modelNames.current.set(option.id, option.name);
     setMenu(modelMenu(catalog, modelChoice.current, money));
@@ -629,6 +634,7 @@ export default function Controller() {
     await repo.putJournal(MODEL_CHOICE_KEY, storedModelChoice(choice));
     if (repo !== repository.current) return;
     modelChoice.current = choice;
+    missingChoiceLogged.current.delete(choice);
     setMenu(m => m && {...m, choice});
     logEvent("info", "ai-model", `choice: ${choice === AUTO ? "Best (auto)" : choice}`);
   }

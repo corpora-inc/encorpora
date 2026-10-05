@@ -57,10 +57,11 @@ export const attributableModel = (model: unknown): model is string =>
 /** The reply's activities by position, as the validator saw them, to classify each rejection. */
 function rawActivities(text: string): unknown[] {
   const extracted = extractJsonObject(text);
+  // The validator's own condition: an extracted bare activity counts only when the text names no "activities" array.
   if (extracted.ok && extracted.value && typeof extracted.value === 'object') {
     const value = extracted.value as Record<string, unknown>;
     if (Array.isArray(value.activities)) return value.activities;
-    if ('version' in value) return [value];
+    if ('version' in value && !/"activities"\s*:/.test(text)) return [value];
   }
   const recovered = text.length <= 150000 ? recoverBatchItems(text) : null;
   return recovered?.items.map(i => i.ok ? i.value : undefined) ?? [];

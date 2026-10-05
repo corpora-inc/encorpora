@@ -799,7 +799,7 @@ try {
     const report=await p.locator('.report-text').inputValue();
     assert.ok(report.includes(proLine)&&report.includes(standardLine),'the report carries the same stats lines');
     assert.ok(!report.includes('Explorer'),'no learner names in the report');
-    // The choice survives a restart; when its model leaves the catalogue it falls back to auto, logged.
+    // The choice survives a restart; while its model is missing from the catalogue, auto is used (logged) and the choice is kept.
     await p.reload();
     await p.getByRole('button',{name:'Settings',exact:true}).click();
     await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();
@@ -807,8 +807,8 @@ try {
     assert.equal(await p.getByLabel('AI model',{exact:true}).inputValue(),'fixture-pro','the choice is persisted per account');
     await p.evaluate(m=>{window.__ahaAI.catalog=m;},[standard,mini]);
     await p.getByRole('button',{name:'Refresh connection',exact:true}).click();
-    await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-model-choice-v1']?.model==='auto');
     await p.waitForFunction(()=>document.querySelector('.model-choice select')?.value==='auto');
+    assert.equal((await data()).journals['aha-model-choice-v1'].model,'fixture-pro','one degraded catalogue read never erases the stored choice');
     assert.ok(s.warned.some(m=>/fixture-pro is no longer offered/.test(m)),'the fallback to auto is logged visibly');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
