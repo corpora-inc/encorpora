@@ -18,7 +18,8 @@ export async function loadV2(root) {
   function rawActivities(text) {
     const ex = extractJsonObject(text);
     if (ex.ok && Array.isArray(ex.value?.activities)) return { list: ex.value.activities, errors: [] };
-    if (ex.ok && ex.value && !('activities' in ex.value)) return { list: [ex.value], errors: ['Reply was a single activity, not a batch.'] };
+    // A bare activity is a batch of one, unless the text names an "activities" array: then the envelope is damaged (a cut-off reply).
+    if (ex.ok && ex.value && !('activities' in ex.value) && !/"activities"\s*:/.test(text)) return { list: [ex.value], errors: ['Reply was a single activity, not a batch.'] };
     const salvaged = salvageTruncatedBatch(text);
     return salvaged ? { list: salvaged.activities, errors: [`Reply JSON was ${ex.ok ? 'not a batch' : ex.error}; kept complete activities.`] } : { list: [], errors: [ex.ok ? 'Reply has no activities.' : ex.error] };
   }

@@ -57,7 +57,7 @@ Structure={"id":id,"kind":Kind,"roles":{role:id,...},"show":view|null}  (see CAT
 Block={"text":Text,"type":"text"}|{"tex":TeX,"type":"math"}|{"of":id,"type":"view"}
 Response=${forms.map(f => variants[f]).join('\n  |')}
 Rule={"expr":expr,"tag":Tag}
-Write every key, in the order shown, with null for an unused nullable field. id = a lowercase letter then up to 7 lowercase letters or digits.`;
+Write every key, in the order shown, with null for an unused nullable field. id = a lowercase letter, then up to 15 lowercase letters, digits or underscores.`;
 }
 
 // ---------- standards window ----------
@@ -117,13 +117,13 @@ const MODEL_RULES = (band: Band) => `AUTHORING ORDER (the keys come in this orde
 
 QUANTITIES — every number the learner needs, declared once.
 - kind: ${QUANTITY_KINDS.join(', ')}. A count is whole and names what it counts with a noun {one, other, icon}; icon is an everyday object name in snake_case ("apple", "traffic_cone") or null. ${QUANTITY_KINDS.filter(k => KIND_POWER[k] > 0).join(' and ')} take a unit (${UNIT_IDS.join(', ')}); an area's unit is its side unit (area "24" with unit "m" means 24 m²). Other kinds take unit null.
-- A given's value is a written number: "12", "2.5", "3/4". A derived value combines ids (q, s.role, s.measure) with + - * / ( ) min max and has NO number of its own: declare any number as a quantity. A derived value is never just another name for one id.
+- A given's value is a written number: "12", "2.5", "3/4". A derived value combines ids (q, s.role, s.measure) with + - * / ( ) min max and has NO number of its own: declare any number as a quantity, and say it in the prose if the learner needs it (to halve, declare k = 2 and write "split into {{k}} equal shares"). A derived value is never just another name for one id.
 
 CATALOG — the structures you may use (ask a measure as s.measure; a role as s.role):
 ${catalog(band)}
 
 PROMPT AND PROSE (text blocks, math blocks, hints, explanation)
-- Every number comes from a placeholder: no digits, no number words (two, dozen, half, third, fourth, twice, pair, zero…), no Roman numerals.
+- Every number comes from a placeholder: no digits (not even 0, 1 or ²), no number words (two, dozen, half, third, fourth, twice, pair, zero…), no Roman numerals. Say "the start of the line", not "0"; write an area's unit through its placeholder ({{r.area}}, {{r.area.unit}}), not "cm²".
 - This holds for hints and the explanation too: write {{s.size.n}}, never 4 or four.
 - Placeholders: {{q}} for a quantity no structure binds; {{s.role}} for a quantity bound to a structure role; {{s.measure}}; {{s.view}} for the figure's name. Members: .n (number only), .noun (noun for the value), .one / .other (singular / plural noun), .word (number in words), .unit (unit name).
 - A quantity bound to a role is ALWAYS written through its structure, everywhere: with roles {"groups":"g","size":"n"} on structure s, write {{s.groups}} and {{s.size.n}} — never {{g}} or {{n.n}} (rejected). Only a quantity no structure binds is written {{q}}.
