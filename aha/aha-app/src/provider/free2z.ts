@@ -1,9 +1,9 @@
-import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Session, type SignInOptions } from '@free2z/sdk';
+import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Preflight, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 import { diagnostics } from '../diagnostics/log';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
-export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'chat' | 'call'>;
+export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'preflight' | 'chat' | 'call'>;
 export interface GrantPolicy { subject: string; clientId: string }
 export type CapPeriod = Grant['cap_period'];
 const CAP_PERIODS: readonly CapPeriod[] = ['day', 'week', 'month', 'total'];
@@ -78,10 +78,9 @@ export function admitEstimate(estimate: Estimate, budget: AppBudget, availableFa
     throw new TutorServiceError('estimate_invalid', 'Free2Z returned an incomplete estimate. No paid request was sent.');
   if (budget !== null && typeof cap !== 'bigint')
     throw new TutorServiceError('grant_verification_required', 'Free2Z did not report what is left of this app\u2019s budget. No paid request was sent.');
-  if (hold * 1000n > available)
-    throw new TutorServiceError('insufficient_balance', 'Your Free2Z balance cannot cover the next activities. No paid request was sent.');
-  if (typeof cap === 'bigint' && hold * 1000n > cap)
-    throw new TutorServiceError('cap_exceeded', 'This app\u2019s Free2Z budget cannot cover the next activities. No paid request was sent.');
+  // The hold is what the next request needs: the amount a top-up message names.
+  if (hold * 1000n > available) throw refusal('insufficient_balance', hold);
+  if (typeof cap === 'bigint' && hold * 1000n > cap) throw refusal('cap_exceeded', hold);
   return {hold2z: hold, availableMilli2z: available, capRemainingMilli2z: typeof cap === 'bigint' ? cap : null};
 }
 /**
@@ -90,11 +89,25 @@ export function admitEstimate(estimate: Estimate, budget: AppBudget, availableFa
  * charging for a truncated batch. Relies on gateway image 70b74edd9 (da1862531) or later.
  */
 const REFUSAL_CODES = ['insufficient_balance', 'cap_exceeded'];
+/** Codes of the refusals that provably cost nothing: Free2Z (or AHA's own check) refused before any hold. */
+const ZERO_CHARGE_CODES = [...REFUSAL_CODES, 'not_enough_2z', 'too_large'];
 const NOT_ENOUGH_2Z = 'Not enough 2Z for the next set of activities. Nothing was charged.';
+const REFUSAL_MESSAGES: Record<string, string> = {
+  insufficient_balance: 'Not enough 2Z: top up in Free2Z. The refusal cost nothing.',
+  cap_exceeded: 'App budget reached: raise it in Free2Z. The refusal cost nothing.',
+  not_enough_2z: NOT_ENOUGH_2Z,
+};
+/** A positive whole-2Z amount, or `undefined`: anything else from the wire is never shown. */
+const positive2z = (value: unknown): bigint | undefined => typeof value === 'bigint' && value > 0n ? value : undefined;
+function refusal(code: string, required2z?: unknown): TutorServiceError {
+  return new TutorServiceError(code, REFUSAL_MESSAGES[code] ?? NOT_ENOUGH_2Z, undefined, positive2z(required2z));
+}
 /**
  * A strict refusal from Free2Z, mapped to a calm zero-charge error; `undefined` for anything else (which stays uncertain).
- * The native transport AHA uses keeps `status` and `code` but drops `details`, so the gateway's refusal code
- * (`insufficient_balance`, `cap_exceeded`) counts the same as an HTTP 402/403 carrying `details.reason`.
+ * Since zuu d4d58ea3 (#1136) the native transport keeps the refusal's documented `details` (`reason`, `required_2z`,
+ * `cap_remaining_milli_2z`; amounts as bigint). An older plugin dropped them, so the gateway's refusal code
+ * (`insufficient_balance`, `cap_exceeded`) on a 402/403 still counts the same as one carrying `details.reason`.
+ * zuu#1145: `cap_exceeded` does not carry `resets_at`/`cap_2z`/`cap_period` yet; nothing here reads them.
  */
 export function strictRefusal(error: unknown): TutorServiceError | undefined {
   if (!(error instanceof SdkError) || (error.status !== 402 && error.status !== 403) || error.callId || error.record) return undefined;
@@ -102,7 +115,21 @@ export function strictRefusal(error: unknown): TutorServiceError | undefined {
   const known = REFUSAL_CODES.includes(error.code);
   if (!known && (typeof reason !== 'string' || !reason)) return undefined;
   const code = typeof reason === 'string' && REFUSAL_CODES.includes(reason) ? reason : known ? error.code : 'not_enough_2z';
-  return new TutorServiceError(code, NOT_ENOUGH_2Z);
+  return refusal(code, object(details) ? details.required_2z : undefined);
+}
+const TOO_LARGE = 'This request is too large for the chosen Free2Z model. Nothing was charged.';
+/**
+ * The SDK's preflight outcome (zuu d4d58ea3) as AHA's admission errors: `needs_top_up` and `needs_budget` are the
+ * zero-cost refusals above, with the required 2Z when Free2Z reports it; `too_large` (context window, or the strict
+ * output ceiling) is zero-cost too. `ready` returns the estimate for the local balance and budget check.
+ */
+function preflightEstimate(checked: Preflight): Estimate {
+  switch (checked.kind) {
+    case 'ready': return checked.estimate;
+    case 'needs_top_up': throw refusal('insufficient_balance', checked.required2z);
+    case 'needs_budget': throw refusal('cap_exceeded', checked.required2z);
+    case 'too_large': throw new TutorServiceError('too_large', TOO_LARGE);
+  }
 }
 /**
  * Structured output (zuu 42acc57f): a JSON Schema `response_format` plus the system prompt to send with it
@@ -116,22 +143,20 @@ const MAX_SCHEMA_BYTES = 32 * 1024;
 export const RESPONSE_FORMAT_UNSUPPORTED = 'response_format_unsupported';
 /** The gateway's zero-cost refusals of the field (zuu 42acc57f): model unsupported, unknown `type`, or an explicit `null`. */
 const FORMAT_REFUSAL_REASONS = [RESPONSE_FORMAT_UNSUPPORTED, 'unsupported', 'null'];
-/** Only an explicit `capabilities.structured_output: true` counts; absent (an older gateway) or anything else is false. */
+/** Only `capabilities.structured_output === true` counts (typed by the SDK since zuu #1137); absent or false is unsupported. */
 export function supportsStructuredOutput(catalog: Models, model: string): boolean {
   return structuredCapability(catalog, model) === 'advertised';
 }
 /**
- * Why the catalogue does or does not offer structured output for `model`, for the per-batch log. The native plugin
- * passes `capabilities` through untyped, with snake_case keys and booleans unchanged (integers become decimal strings).
+ * Why the catalogue does or does not offer structured output for `model`, for the per-batch log. The SDK types the
+ * catalogue (zuu #1137): `capabilities` is always an object, a declared member is a boolean, and a non-boolean fails
+ * the whole `models()` read (`invalid_response`) before AHA sees it.
  */
-export function structuredCapability(catalog: Models, model: string): 'advertised' | 'model_not_in_catalog' | 'capabilities_absent' | 'structured_output_absent' | 'structured_output_false' | 'structured_output_not_boolean' {
+export function structuredCapability(catalog: Models, model: string): 'advertised' | 'model_not_in_catalog' | 'structured_output_absent' | 'structured_output_false' {
   const entry = catalog.models.find(m => m.id === model);
   if (!entry) return 'model_not_in_catalog';
-  const capabilities: unknown = entry.capabilities;
-  if (!object(capabilities)) return 'capabilities_absent';
-  if (!('structured_output' in capabilities)) return 'structured_output_absent';
-  if (capabilities.structured_output === true) return 'advertised';
-  return capabilities.structured_output === false ? 'structured_output_false' : 'structured_output_not_boolean';
+  const flag = entry.capabilities.structured_output;
+  return flag === true ? 'advertised' : flag === false ? 'structured_output_false' : 'structured_output_absent';
 }
 /**
  * One content-free line per activity batch: whether the request that goes out carries `response_format`, and if
@@ -221,7 +246,8 @@ const MAX_JOURNAL_BYTES = 480_000;
 /** System + user prompt characters per request (the batch prompt is ~12k). */
 const MAX_CONTEXT_CHARS = 20_000;
 export class TutorServiceError extends Error {
-  constructor(public readonly code: string, message: string, public readonly retryAfterSeconds?: number) { super(message); this.name = 'TutorServiceError'; }
+  /** `required2z`: whole 2Z the refused request needed, when Free2Z (or the estimate's hold) reported it. Display only. */
+  constructor(public readonly code: string, message: string, public readonly retryAfterSeconds?: number, public readonly required2z?: bigint) { super(message); this.name = 'TutorServiceError'; }
 }
 export function format2z(milli: bigint): string {
   const negative = milli < 0n; const n = negative ? -milli : milli;
@@ -359,11 +385,12 @@ export class Free2zTutor {
           (budget !== null && (!budget || typeof budget !== 'object' || !CAP_PERIODS.includes(budget.period) || typeof budget.limit2z !== 'bigint' || budget.limit2z < 0n)))
         throw new TutorServiceError('grant_verification_required', 'Free2Z must freshly confirm AI access for this account and app. An estimate alone does not.');
   }
-  /** Estimate, then admit it against the balance and the budget remainder. Records display-only figures. */
+  /** Preflight (a strict estimate), then admit it against the balance and the budget remainder. Records display-only figures. */
   private async admit(request: ChatRequest, budget: AppBudget, op?: Pick<Operation, 'context'>): Promise<AdmittedEstimate> {
-    let estimate: Estimate;
-    try { estimate = await this.client.estimate(request); }
+    let checked: Preflight;
+    try { checked = await this.client.preflight(request); }
     catch (error) { throw strictRefusal(error) ?? error; }
+    const estimate = preflightEstimate(checked);
     // Strict means the full budget or a refusal. A smaller returned budget would be a truncated, charged batch.
     if (typeof estimate.max_output_tokens !== 'bigint' || (request.max_output_tokens !== undefined && estimate.max_output_tokens < request.max_output_tokens))
       throw new TutorServiceError('not_enough_2z', NOT_ENOUGH_2Z);
@@ -557,7 +584,7 @@ export class Free2zTutor {
       try { await this.admit(request, verifiedGrant.budget, op); }
       catch (error) {
         if (request.response_format && formatRefusal(error)) { zeroCharge = fresh; throw formatUnsupported(); }
-        if (fresh && error instanceof TutorServiceError && (REFUSAL_CODES.includes(error.code) || error.code === 'not_enough_2z')) zeroCharge = true;
+        if (fresh && error instanceof TutorServiceError && ZERO_CHARGE_CODES.includes(error.code)) zeroCharge = true;
         throw error;
       }
       // The contract supplies a fresh snapshot, not an immutable per-operation spending guarantee.

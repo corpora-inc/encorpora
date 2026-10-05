@@ -360,10 +360,16 @@ pub fn execute(conn: &mut Connection, r: Request) -> Result<Value> {
         }
     }
 }
+/// SHA-256 of the payload's canonical form: every object's members sorted by name. Since
+/// tauri-plugin-f2z d63959f9 this binary builds serde_json with `preserve_order`, so stored JSON keeps
+/// its original member order; earlier (and older installed) builds sort members. Hashing the sorted
+/// form gives the bytes a build without `preserve_order` hashes, so backups verify in both directions.
 fn digest(payload: &BackupPayload) -> Result<String> {
+    let mut canonical = serde_json::to_value(payload).map_err(err)?;
+    canonical.sort_all_objects();
     Ok(format!(
         "{:x}",
-        Sha256::digest(serde_json::to_vec(payload).map_err(err)?)
+        Sha256::digest(serde_json::to_vec(&canonical).map_err(err)?)
     ))
 }
 pub fn export(conn: &mut Connection, account: &str) -> Result<String> {
@@ -589,6 +595,37 @@ mod tests {
             )
             .is_err()
         );
+    }
+    /// tauri-plugin-f2z d63959f9 unifies serde_json `preserve_order` into this app, so stored JSON keeps the
+    /// webview's member order. Every earlier build (and any older build a backup is restored on) re-sorts
+    /// members. The digest must not depend on that: it hashes the canonical, member-sorted form.
+    #[test]
+    fn backup_digest_is_canonical_whatever_the_json_member_order() {
+        let mut c = db();
+        execute(
+            &mut c,
+            request(
+                "a",
+                Operation::SaveProfile,
+                json!({"name":"Learner","id":"learner","grade":3}),
+            ),
+        )
+        .unwrap();
+        let backup = export(&mut c, "a").unwrap();
+        let b: Backup = serde_json::from_str(&backup).unwrap();
+        // Exactly what a build without `preserve_order` hashes for the same payload.
+        let sorted = r#"{"profiles":[["learner",{"grade":3,"id":"learner","name":"Learner"}]],"records":[]}"#;
+        assert_eq!(b.sha256, format!("{:x}", Sha256::digest(sorted.as_bytes())));
+        // An older build's backup (members sorted) restores on this build...
+        let older = format!(
+            r#"{{"version":1,"accountId":"a","payload":{sorted},"sha256":"{}"}}"#,
+            b.sha256
+        );
+        restore(&mut c, "a", &older).unwrap();
+        // ...and this build's backup restores here, whatever order it stored.
+        restore(&mut c, "a", &backup).unwrap();
+        // Tampering still fails.
+        assert!(restore(&mut c, "a", &older.replace("\"grade\":3", "\"grade\":4")).is_err());
     }
     #[test]
     fn backups_validate_owner_hash_and_rollback() {
