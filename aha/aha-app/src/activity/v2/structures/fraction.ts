@@ -9,7 +9,7 @@
 import { multiply, rational } from '../../../learning/rational';
 import type { Roles, StructureDef, ViewDef } from '../registry';
 import { issue } from '../registry';
-import { formatPlain, type Value } from '../quantity';
+import { formatPlain, toNumber, type Value } from '../quantity';
 import { countable, n, nounOf, plural, req, within } from './common';
 import type { Asked } from '../registry';
 
@@ -53,7 +53,13 @@ function areaView(model: 'area' | 'circle' | 'bar', noun: string, grades: readon
     grades, accepts: ['shade', 'tap'], draws, noun: () => noun,
     describe: (r, asked) => describeParts(r, asked, noun),
     reveals: partsReveal, regions: partRegions,
-    shade(r, target) { const l = landing(r, target, 'shade', 1); return 'code' in l ? l : { parts: l.total, target: l.at }; },
+    shade(r, target) {
+      // Draw only the wholes the target needs, so which whole to shade is never a guess.
+      const needed = Math.max(1, Math.ceil(toNumber(target.q)));
+      if (wholesOf(r) !== needed) return issue('shade_wholes', `Shading ${formatPlain(target.q)} needs ${needed} whole${needed > 1 ? 's' : ''}; the view draws ${wholesOf(r)}.`);
+      const l = landing(r, target, 'shade', 1);
+      return 'code' in l ? l : { parts: l.total, target: l.at };
+    },
     lower: r => ({ type: 'fraction_model', model, parts: n(r.parts), shaded: n(r.selected), ...(wholesOf(r) > 1 ? { wholes: wholesOf(r) } : {}) }),
   };
 }

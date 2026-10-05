@@ -63,6 +63,42 @@ describe('fraction', () => {
   });
 });
 
+describe('review regressions', () => {
+  const twoStrips = (exactness: 'any' | 'simplest' | 'exact', ask: string) => edit(shadedFractionActivity, a => {
+    a.aim.skills = ['3.NF.A.3'];
+    a.model.quantities = [q('p', 'count', '8'), q('k', 'count', '6'), q('pb', 'count', '3'), q('kb', 'count', '2'), ask === 'big' ? q('big', 'fraction', 'max(f.fraction, g.fraction)') : q('rest', 'fraction', 'f.fraction-g.fraction')];
+    a.model.structures = [
+      { id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: null }, show: 'strip' },
+      { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: 'strip' },
+    ];
+    a.prompt = [{ of: 'f', type: 'view' }, { of: 'g', type: 'view' }, { text: 'Write the fraction asked for.', type: 'text' }];
+    a.response = { ask, distractors: [], exactness, form: 'fraction' };
+    a.support = { explanation: 'Compare {{f.fraction}} and {{g.fraction}}.', hints: [] };
+  });
+  it('keeps the written terms min and max pick, so exact grades what the learner sees', () => {
+    const c = compiled(twoStrips('exact', 'big'));
+    assert.deepEqual(c.spec, { type: 'fraction', numerator: 6, denominator: 8, form: 'exact' });
+    assert.equal(gradeResponse(c.spec, { type: 'fraction', numerator: '6', denominator: '8' }, 's').correct, true);
+  });
+  it('refuses exact for a computed key with no written terms', () => {
+    rejects(twoStrips('exact', 'rest'), 'form_value');
+    assert.ok(check(twoStrips('any', 'rest')).ok);
+  });
+  it('refuses options that do not share one notation', () => {
+    rejects(edit(equalGroupsActivity, a => {
+      a.model.quantities.push(q('m', 'count', '7'), q('x', 'number', 's.total/m'));
+      a.prompt[2] = { text: 'Share them among {{m}}. How much each?', type: 'text' };
+      a.response = { ask: 'x', candidates: null, distractors: [{ expr: 'g+n', tag: 'added_instead' }, { expr: 's.total-m', tag: 'subtracted_instead' }], form: 'choose' };
+      a.support.hints = [];
+    }), 'choose_notation');
+  });
+  it('draws only the wholes a shading target needs', () => {
+    rejects(edit(shadeActivity, a => { a.aim.skills = ['3.NF.A.3']; a.model.quantities.push(q('w', 'count', '2')); a.model.structures[0]!.roles = { parts: 'p', selected: null, wholes: 'w' }; }), 'shade_wholes');
+    const improper = edit(shadeActivity, a => { a.aim.skills = ['3.NF.A.3']; a.model.quantities.push(q('w', 'count', '2')); a.model.quantities[1]!.value = '5/4'; a.model.structures[0]!.roles = { parts: 'p', selected: null, wholes: 'w' }; });
+    assert.deepEqual(compiled(improper).spec, { type: 'shade', figureId: 'f', parts: 8, target: 5 });
+  });
+});
+
 describe('choose', () => {
   it('offers the key and the surviving rules, formatted alike', () => {
     const c = compiled(edit(areaActivity, a => { a.response = { ask: 'r.area', candidates: null, distractors: [{ expr: '2*(w+h)', tag: 'perimeter_for_area' }, { expr: 'w+h', tag: 'added_two_sides' }], form: 'choose' }; }));
@@ -168,7 +204,7 @@ describe('shade and place', () => {
   it('rejects a target that is already shaded or does not land on whole parts', () => {
     rejects(edit(shadeActivity, a => { a.model.quantities.push(q('k', 'count', '1')); a.model.structures[0]!.roles = { parts: 'p', selected: 'k', wholes: null }; }), 'shade_preshaded');
     rejects(edit(shadeActivity, a => { a.model.quantities[1]!.value = '1/3'; }), 'shade_unreachable');
-    rejects(edit(shadeActivity, a => { a.model.quantities[1]!.value = '5/4'; }), 'shade_unreachable');
+    rejects(edit(shadeActivity, a => { a.model.quantities[1]!.value = '5/4'; }), 'shade_wholes');
   });
   const placeActivity = (target = '3/4') => edit(shadeActivity, a => {
     a.aim.skills = ['3.NF.A.2'];

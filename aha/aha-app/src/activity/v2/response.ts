@@ -79,6 +79,9 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
     case 'fraction': {
       const key = ask!.value;
       if (key.unit) return fail('response.form', 'form_value', 'A fraction answer is a plain number; this key has a unit.');
+      // "exact" asks for the terms the learner sees, so the key must carry written terms (a measure such
+      // as f.fraction, or a written fraction); arithmetic keeps only the value.
+      if (r.exactness === 'exact' && key.form?.kind !== 'fraction') return fail('response.exactness', 'form_value', 'exact needs a key with written terms (a fraction measure or a written fraction); use any or simplest for a computed value.');
       const terms = r.exactness !== 'simplest' && key.form?.kind === 'fraction' ? { numerator: Number(key.form.n), denominator: Number(key.form.d) } : { numerator: Number(key.q.n), denominator: Number(key.q.d) };
       const misses = survivors(c, key).map(d => ({ numerator: Number(d.value.q.n), denominator: Number(d.value.q.d), tag: d.tag }));
       const spec: ResponseSpec = { type: 'fraction', ...terms, form: r.exactness, ...(misses.length ? { misconceptionAnswers: misses } : {}) };
@@ -95,6 +98,8 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
       if (correct !== 1) return fail('response.candidates', correct ? 'choose_ambiguous' : 'choose_no_key', correct ? `${correct} options equal the key ${formatPlain(key.q)}.` : `No option equals the key ${formatPlain(key.q)}.`);
       const texts = options.map(o => optionText(o.value, o.kind, key, locale, c.grade));
       if (new Set(texts).size !== texts.length) return fail('response.candidates', 'choose_duplicate', 'Two options read the same.');
+      // Options are formatted alike (README §8.2): one fraction among whole numbers would point at itself.
+      if (new Set(texts.map(t => t.includes('$'))).size > 1) return fail('response.candidates', 'choose_notation', 'The options do not share one notation (some are fractions, some are not), which would single one out.');
       const spec: ResponseSpec = {
         type: 'multiple_choice', shuffle: true,
         options: options.map((o, i) => {
@@ -137,7 +142,7 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
         regions = s.def.views[s.wire.show as string]!.regions?.(s.roles) ?? [];
       }
       if (regions.length < 2) return fail('response.on', 'tap_regions', 'A tap needs at least two regions to choose from.');
-      const hits = regions.filter(x => sameValue(x.value, target));
+      const hits = regions.filter(x => sameValue(x.value, target) && x.value.power === target.power && x.value.unit === target.unit);
       if (hits.length !== 1) return fail('response.form', hits.length ? 'tap_ambiguous' : 'tap_none', hits.length ? `Ill-posed: ${hits.length} regions satisfy the ask (each is ${formatPlain(target.q)}); use shade or select.` : `No region is ${formatPlain(target.q)}.`);
       const hit = hits[0]!;
       if (r.on === null) return { ok: true, value: { spec: { type: 'tap_view', figureIds: regions.map(x => x.id), figureId: hit.id }, key: `view:${hit.id}`, verification: 'computed' } };
