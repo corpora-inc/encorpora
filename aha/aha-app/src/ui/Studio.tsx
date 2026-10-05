@@ -31,6 +31,7 @@ const ActivityView = lazy(() => import("../activity/render").then(m => ({ defaul
 type SpecRenderer = typeof import("../activity/render");
 let specRenderer: SpecRenderer | undefined;
 const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
+import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
@@ -199,6 +200,12 @@ export function Studio(props: StudioProps) {
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
   const promptRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  /** The learner pressed Check: only then does an outcome celebrate (never a restored one). */
+  const armed = useRef(false);
+  const streak = useRef(0);
+  const [streakShown, setStreakShown] = useState(0);
+  const [haptics, setHaptics] = useState(() => hapticsEnabled());
   const feedbackRegion = useRef<HTMLDivElement>(null);
   const settingsReturn = useRef<HTMLElement | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -428,7 +435,7 @@ export function Studio(props: StudioProps) {
   ) : null;
   // Check and Next share one slot at one size; while waiting, the label gives way to dots.
   const nextButton = (
-    <button className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}`} type="button" disabled={props.busy} onClick={() => advance(props.onContinue)}>
+    <button ref={nextRef} className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}`} type="button" disabled={props.busy} onClick={() => advance(props.onContinue)}>
       <span className="btn-label">Next <ArrowRight size={20} aria-hidden="true" /></span><WaitDots />
     </button>
   );
@@ -452,13 +459,34 @@ export function Studio(props: StudioProps) {
     : props.feedback?.kind === "nudge" && drawer !== "explain" ? () => toggleHelp("explain")
     : null;
   const pause = !!props.session.complete && readyNext;
+  // The answer's moment, once per checked answer: a burst around Next (in Check's slot), a springy
+  // check and a light haptic for correct, escalating a little at three and five in a row; a gentle
+  // shake of the answer field and a soft haptic for a miss. All overlays; nothing waits on them.
+  const outcomeKey = outcome ? `${taskId}|${outcome.kind}|${outcome.title}` : undefined;
+  useEffect(() => {
+    if (!outcome || !armed.current) return;
+    armed.current = false;
+    if (outcome.kind === "correct") {
+      const run = streak.current += 1;
+      setStreakShown(run);
+      burst(nextRef.current, streakLevel(run));
+      void feel(isMilestone(run) ? "milestone" : "correct");
+    } else if (outcome.kind === "retry" || outcome.kind === "nudge") {
+      streak.current = 0;
+      setStreakShown(0);
+      shake(studioRef.current?.querySelector(".focus-dock .answer-input-wrap, .focus-dock .answer-symbols, .ax-dock .ax-response, .choices label.chosen, .ax-choice.is-checked") ?? null);
+      void feel("wrong");
+    }
+  }, [outcomeKey]);
+  const level = outcome?.kind === "correct" ? streakLevel(streakShown) : 0;
+  const milestone = outcome?.kind === "correct" && isMilestone(streakShown);
   // Moving on retires the finished item's toast at once; the veil takes over if the wait is long.
   const toast = outcome && !advancing ? (
-    <div key={`${taskId}|${outcome.kind}|${outcome.title}`} className={`stage-toast feedback-line ${outcome.kind}`} role="status" tabIndex={-1} ref={feedbackRegion}>
+    <div key={`${taskId}|${outcome.kind}|${outcome.title}`} className={`stage-toast feedback-line ${outcome.kind}${level ? ` streak-${level}` : ""}`} role="status" tabIndex={-1} ref={feedbackRegion}>
       {pause
         ? <><Sprout size={22} aria-hidden="true" /><strong>A good place to pause.</strong></>
         : <>{outcome.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
-          <strong>{outcome.title}</strong></>}
+          <strong>{outcome.title}</strong>{milestone && <span className="streak-note">{streakShown} in a row</span>}</>}
       {seeHow && <button type="button" className="text-button see-how" disabled={props.busy} onClick={seeHow}>See how</button>}
     </div>
   ) : null;
@@ -466,7 +494,7 @@ export function Studio(props: StudioProps) {
   const promptSize = a ? (a.prompt.length <= 22 ? "xl" : a.prompt.length <= 70 ? "l" : "m") : "m";
   const symbols = a?.answerKind === "comparison" ? ["<", "=", ">"] : [];
   const symbolName = (s: string) => s === "<" ? "Less than" : s === ">" ? "Greater than" : "Equal to";
-  const submitLocal = () => { if (!props.busy && answer.trim() && !readyNext) props.onSubmit(answer.trim()); };
+  const submitLocal = () => { if (!props.busy && answer.trim() && !readyNext) { armed.current = true; props.onSubmit(answer.trim()); } };
 
   const focusStage = spec ? (
     <div className="focus-stage is-spec" aria-busy={props.busy}>
@@ -479,7 +507,7 @@ export function Studio(props: StudioProps) {
         result={spec.result}
         initialResponse={spec.initialResponse}
         disabled={props.busy}
-        onSubmit={spec.onSubmit}
+        onSubmit={(response) => { armed.current = true; spec.onSubmit(response); }}
         dockTop={tools}
         overlay={<>{toast}{helpDrawer}</>}
         stageOverlay={veil}
@@ -868,6 +896,13 @@ export function Studio(props: StudioProps) {
                 <button className="text-button" onClick={() => setDeleting(false)}>Keep learner</button>
               </div>
             )}
+          </section>
+          <section>
+            <label className="setting-switch">
+              <span>Haptics</span>
+              <input type="checkbox" role="switch" checked={haptics}
+                onChange={(e) => { setHaptics(e.target.checked); setHapticsEnabled(e.target.checked); }} />
+            </label>
           </section>
           <section>
             <h3>Something not working?</h3>

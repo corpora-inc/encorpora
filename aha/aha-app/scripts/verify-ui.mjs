@@ -144,6 +144,12 @@ try{
   await page.getByRole('button',{name:'Home',exact:true}).click();
   await page.getByRole('button',{name:'Settings',exact:true}).click();
   assert.equal(await page.getByText('grown-up',{exact:false}).count(),0,'settings open directly, with no grown-up gate (#870)');
+  // Haptics: a device preference in Settings, on by default, persisted locally.
+  const hapticSwitch=page.getByRole('switch',{name:'Haptics',exact:true});
+  assert.equal(await hapticSwitch.isChecked(),true,'haptics default on');
+  await hapticSwitch.click();assert.equal(await hapticSwitch.isChecked(),false);
+  assert.equal(await page.evaluate(()=>localStorage.getItem('aha.haptics')),'off','the haptics choice is saved on this device');
+  await hapticSwitch.click();assert.equal(await page.evaluate(()=>localStorage.getItem('aha.haptics')),'on');
   await page.getByRole('button',{name:'Export backup',exact:true}).click();
   await page.getByRole('dialog').getByRole('alert').waitFor();
   assert.equal(await page.getByRole('dialog').getByRole('alert').isVisible(),true,'settings error is not hidden behind modal');
@@ -296,13 +302,31 @@ try{
   const jumpLog=[];const jumps=[];
   const stableStage=(p,tag)=>{let base;
     return {reset:()=>{base=undefined;},
-      snap:async(state,{typing=false}={})=>{await p.waitForTimeout(60);const b=await regions(p);base??=b;
+      snap:async(state,{typing=false}={})=>{await p.waitForTimeout(60);
+        // A miss shakes the answer field alone (a transform); its box is measured once it settles.
+        await p.evaluate(()=>Promise.all(document.getAnimations().filter(a=>a.id==='aha-shake').map(a=>a.finished.catch(()=>{}))));
+        const b=await regions(p);base??=b;
         const moved=Object.fromEntries(Object.keys(b).map(k=>[k,b[k]&&base[k]?Math.max(...b[k].map((v,i)=>Math.abs(v-base[k][i]))):b[k]===base[k]?0:Infinity]));
         for(const [k,d] of Object.entries(moved))if(d>1)jumps.push(`${tag} ${state}: ${k} moved ${d===Infinity?'(appeared/disappeared)':`${Math.round(d)}px`}`);
         jumpLog.push(`${tag} ${state}: max ${Math.round(Math.max(...Object.values(moved).filter(Number.isFinite))*10)/10}px`);
         if(typing){const over=await coveringInput(p);if(over.length)jumps.push(`${tag} ${state}: ${over.join(', ')} covers the answer field while typing`);}
         if(stageShots)await p.screenshot({path:path.join(stageShots,`stable-${tag.replace(/\W+/g,'-')}-${state.replace(/\W+/g,'-')}.png`)});}};};
   const stageShots=process.env.AHA_UI_SHOTS;
+  /** Record which elements the app animates with WAAPI from now on (the burst, the shake). */
+  const watchMotion=p=>p.evaluate(()=>{window.__motion=[];const animate=Element.prototype.animate;if(window.__motionPatched)return;window.__motionPatched=true;
+    Element.prototype.animate=function(frames,opts){window.__motion?.push({cls:String(this.className),shake:JSON.stringify(frames).includes('translateX')});return animate.call(this,frames,opts);};});
+  const motion=p=>p.evaluate(()=>window.__motion);
+  /** The correct answer's moment: a burst in flight around Next (in Check's slot), Next live at once,
+   * every stage region still (≤1px) mid-burst and after it, and the overlay gone within ~900ms. */
+  const celebration=async(p,t)=>{
+    await t.snap('celebration in flight');
+    assert.equal(await p.locator('.aha-burst').count(),1,'a burst plays over the stage');
+    const shook=(await motion(p)).filter(m=>m.shake);assert.deepEqual(shook,[],'a correct answer shakes nothing');
+    const nb=await p.evaluate(()=>{const b=document.querySelector('.aha-burst'),n=[...document.querySelectorAll('.dock-primary')].at(-1).getBoundingClientRect();return {dx:Math.abs(parseFloat(b.style.left)-(n.left+n.width/2)),dy:Math.abs(parseFloat(b.style.top)-(n.top+n.height/2)),pe:getComputedStyle(b).pointerEvents};});
+    assert.ok(nb.dx<1&&nb.dy<1&&nb.pe==='none','the burst radiates from Next and never takes a tap');
+    await p.getByRole('button',{name:'Next',exact:true}).waitFor();assert.equal(await p.getByRole('button',{name:'Next',exact:true}).isEnabled(),true,'Next is tappable during the celebration');
+    await p.waitForTimeout(400);await t.snap('celebration settling');
+    await p.locator('.aha-burst').waitFor({state:'detached',timeout:1000});await t.snap('celebration done');};
   for(const [w,h] of [[384,832],[820,1180]]){
     // Local practice, through the real controller and its test IPC fixture.
     const ctx=await browser.newContext({viewport:{width:w,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});await ctx.addInitScript(fixture);
@@ -325,8 +349,9 @@ try{
     for(const name of ['Hint','Show me how','Hint','Show me how']){await p.getByRole('button',{name,exact:true}).click();await p.locator('.help-panel').waitFor();await p.getByRole('button',{name,exact:true}).click();await p.locator('.help-panel').waitFor({state:'detached'});}
     assert.equal(await used(),usedBefore,'reopening a hint or explanation already shown never counts again');
     await p.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
-    await field.fill(wrong);await p.getByRole('button',{name:'Check',exact:true}).click();
-    await p.locator('.stage-toast.nudge').waitFor();await p.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();await t.snap('nudge with an error');
+    await field.fill(wrong);await watchMotion(p);await p.getByRole('button',{name:'Check',exact:true}).click();
+    await p.locator('.stage-toast.nudge').waitFor();
+    assert.deepEqual((await motion(p)).filter(m=>m.shake).map(m=>m.cls),['answer-input-wrap'],'a miss shakes the answer field only, never the page');await p.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();await t.snap('nudge with an error');
     await field.fill('2');await t.snap('typing after a nudge',{typing:true});
     await p.getByRole('button',{name:'Dismiss',exact:true}).click();await p.getByRole('alert').waitFor({state:'detached'});
     await field.fill(wrong);await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:'Next',exact:true}).waitFor();await t.snap('wrong answer');
@@ -342,8 +367,8 @@ try{
     await p.evaluate(()=>{window.__ahaFixture.hold=null;window.__ahaFixture.release();});
     await p.getByRole('button',{name:'Check',exact:true}).waitFor();await p.locator('.stage-veil').waitFor({state:'detached'});t.reset();
     const next=await shownTask();await t.snap('next item');
-    await enter(p,expectedAnswer(next.task));await p.getByRole('button',{name:'Check',exact:true}).click();
-    await p.locator('.stage-toast.correct').waitFor();await t.snap('correct with celebration');
+    await enter(p,expectedAnswer(next.task));await watchMotion(p);await p.getByRole('button',{name:'Check',exact:true}).click();
+    await p.locator('.stage-toast.correct').waitFor();await t.snap('correct with celebration');await celebration(p,t);
     await ctx.close();
     // AI-authored activity (TEST fixture spec) in the same stage, through the stage harness.
     const sctx=await browser.newContext({viewport:{width:w,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});
@@ -369,8 +394,9 @@ try{
     await sp.getByRole('button',{name:'Close',exact:true}).click();
     await sp.getByRole('button',{name:'Something seems off',exact:true}).click();await sp.getByRole('dialog',{name:'Something seems off'}).waitFor();await s.snap('flag confirm');
     await sp.getByRole('button',{name:'Keep going',exact:true}).click();
-    await answer.fill(String(spec.response.answer+1));await sp.getByRole('button',{name:'Check',exact:true}).click();
-    await sp.locator('.stage-toast.retry').waitFor();await s.snap('wrong answer');
+    await answer.fill(String(spec.response.answer+1));await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
+    await sp.locator('.stage-toast.retry').waitFor();
+    assert.deepEqual((await motion(sp)).filter(m=>m.shake).map(m=>m.cls),['ax-response'],'a miss shakes the answer field only, never the page');await s.snap('wrong answer');
     await sp.locator('.stage-toast').getByRole('button',{name:'See how',exact:true}).click();await sp.locator('.help-panel.is-explain').waitFor();await s.snap('see how after a miss');
     await sp.evaluate(()=>window.__stage.hold());await sp.getByRole('button',{name:'Next',exact:true}).click();
     await sp.locator('.stage-veil').getByRole('button',{name:'Stop AI request',exact:true}).waitFor();await s.snap('AI preparing the next lesson');
@@ -378,8 +404,14 @@ try{
     assert.ok(!(await chrome(sp)).includes('Preparing'),'and never shown as a text row that pushes the answer');
     await sp.evaluate(()=>window.__stage.release());await sp.locator('.stage-veil').waitFor({state:'detached'});s.reset();await s.snap('next item');
     await openStage('fx-2-coins');s.reset();
-    await s.snap('coins initial');await answer.fill('68');await sp.getByRole('button',{name:'Check',exact:true}).click();
-    await sp.locator('.stage-toast.correct').filter({hasText:'Yes, that’s it.'}).waitFor();await s.snap('correct with celebration');
+    await s.snap('coins initial');await answer.fill('68');await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
+    await sp.locator('.stage-toast.correct').filter({hasText:'Yes, that’s it.'}).waitFor();await s.snap('correct with celebration');await celebration(sp,s);
+    // Reduced motion: no burst and no shake; the toast simply fades in.
+    await sp.emulateMedia({reducedMotion:'reduce'});await openStage('fx-2-coins');s.reset();await s.snap('reduced motion initial');
+    await answer.fill('68');await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
+    await sp.locator('.stage-toast.correct').waitFor();await s.snap('reduced-motion celebration');
+    assert.equal(await sp.locator('.aha-burst').count(),0,'reduced motion: no burst');assert.deepEqual(await motion(sp),[],'reduced motion: no WAAPI motion');
+    await sp.emulateMedia({reducedMotion:'no-preference'});
     // A response label ("Apples", as model-written specs often add) is the field's name and a quiet
     // suffix inside it, never a heading row: the dock keeps the unlabeled geometry. A long label
     // becomes the placeholder.
@@ -402,6 +434,28 @@ try{
     const blocked=await sp.evaluate(()=>[...document.querySelectorAll('.ax-choice')].filter(c=>{const r=c.getBoundingClientRect(),el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return el&&!c.contains(el);}).map(c=>c.textContent.trim()));
     assert.deepEqual(blocked,[],`${w}×${h}: the answer toast covers no choice`);
     await sctx.close();
+    // A unit is a calm chip inside the field's right edge: the field reserves its measured width,
+    // so neither the short placeholder nor a typed 5-digit value ever runs under it.
+    if(w===384)for(const vw of [384,360]){
+      const uctx=await browser.newContext({viewport:{width:vw,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});const up=await uctx.newPage();
+      up.on('pageerror',e=>errors.push(e.message));up.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+      for(const unit of ['square units','centimeters','cm']){
+        await up.goto(`${base}/src/activity/gallery/stage.html?fixture=fx-k-count-apples&unit=${encodeURIComponent(unit)}`);await up.getByRole('button',{name:'Continue',exact:true}).click();
+        const input=up.locator('.ax-dock .ax-response input');await input.waitFor();
+        for(const typed of ['','12345']){
+          await input.fill(typed);await up.waitForTimeout(30);
+          const fit=await up.evaluate(()=>{const i=document.querySelector('.ax-dock .ax-response input'),u=document.querySelector('.ax-dock .ax-unit'),ir=i.getBoundingClientRect(),ur=u.getBoundingClientRect(),cs=getComputedStyle(i);
+            const textRight=ir.right-parseFloat(cs.paddingRight)-parseFloat(cs.borderRightWidth);
+            const ctx=document.createElement('canvas').getContext('2d'),ph=getComputedStyle(i,'::placeholder');ctx.font=`${ph.fontWeight} ${ph.fontSize} ${ph.fontFamily}`;
+            const textLeft=ir.left+parseFloat(cs.paddingLeft)+parseFloat(cs.borderLeftWidth);
+            return {inside:ur.left>=ir.left&&ur.right<=ir.right&&ur.top>=ir.top&&ur.bottom<=ir.bottom,clearOfText:ur.left>=textRight,
+              placeholderFits:textLeft+ctx.measureText(i.placeholder).width<=textRight,valueFits:i.scrollWidth<=i.clientWidth,unitLegible:u.scrollWidth<=u.clientWidth+1&&parseFloat(getComputedStyle(u).fontSize)>=12};});
+          assert.deepEqual(fit,{inside:true,clearOfText:true,placeholderFits:true,valueFits:true,unitLegible:true},`${vw}px, unit “${unit}”, ${typed?'typed 5 digits':'empty'}: the unit never overlaps the placeholder or the value`);
+          if(stageShots)await up.screenshot({path:path.join(stageShots,`unit-${vw}-${unit.replace(/\W+/g,'-')}-${typed?'typed':'empty'}.png`)});
+        }
+      }
+      await uctx.close();
+    }
   }
   assert.deepEqual(jumps,[],'the stable stage never moves the bar, the problem, the answer field or Check/Next within an item');
   console.log(`Stable stage: ${jumpLog.length} state checks (local practice and an AI spec, 384×832 and 820×1180); largest movement ${Math.max(...jumpLog.map(l=>Number(l.match(/max ([\d.]+)px/)[1])))}px.`);
