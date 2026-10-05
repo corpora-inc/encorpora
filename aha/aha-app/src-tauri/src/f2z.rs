@@ -86,6 +86,43 @@ mod tests {
             assert!(!permission.contains("purchase") && !permission.contains("checkout"));
         }
     }
+
+    /// The exact `start_chat` payload the webview sends for a structured batch (written by
+    /// src/provider/nativeBoundary.test.ts through the real SDK NativeTransport), read the way the
+    /// plugin's `wire::chat_request` reads it: decimal `max_output_tokens`, then the pinned
+    /// `ChatRequest` (deny_unknown_fields), then the gateway's own `response_format` limits.
+    #[test]
+    fn structured_batch_payload_keeps_response_format_through_the_native_chat_request() {
+        use tauri_plugin_f2z::f2z_sdk::proto::{ChatRequest, ResponseFormat};
+        let mut payload: serde_json::Value =
+            serde_json::from_str(include_str!("../fixtures/structured-batch-start-chat.json"))
+                .unwrap();
+        let schema = payload["response_format"]["json_schema"]["schema"].clone();
+        let tokens: u64 = payload["max_output_tokens"]
+            .as_str()
+            .unwrap()
+            .parse()
+            .unwrap();
+        payload["max_output_tokens"] = serde_json::json!(tokens);
+        let request: ChatRequest = serde_json::from_value(payload).unwrap();
+        assert_eq!(request.max_output_tokens, Some(2600));
+        assert!(request.max_output_tokens_strict);
+        let format = request
+            .response_format
+            .as_ref()
+            .expect("response_format survives");
+        format.check().unwrap();
+        let ResponseFormat::JsonSchema { json_schema } = format else {
+            panic!("a json_schema format")
+        };
+        assert_eq!(json_schema.name, "aha_activity_batch");
+        assert_eq!(json_schema.strict, Some(true));
+        assert_eq!(json_schema.schema, schema);
+        // What the SDK then sends to the gateway still carries it.
+        let wire = serde_json::to_value(&request).unwrap();
+        assert_eq!(wire["response_format"]["type"], "json_schema");
+        assert_eq!(wire["response_format"]["json_schema"]["strict"], true);
+    }
 }
 
 /// Open only the supported parent recovery page; never accept a URL from lesson content.

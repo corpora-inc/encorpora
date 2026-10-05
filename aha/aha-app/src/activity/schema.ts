@@ -3,7 +3,7 @@
  * so the runtime renderer/validator does not ship zod's JSON Schema generator.
  */
 import * as z from 'zod';
-import { ActivityBatchSchema, ActivitySpecSchema } from './spec';
+import { ActivityBatchSchema, ActivitySpecSchema, KEY_CHECK_FORM, type ResponseType } from './spec';
 
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 type JsonObject = { [k: string]: Json };
@@ -49,10 +49,41 @@ function strictMode(node: Json): Json {
   }
   return out;
 }
+/**
+ * Strict mode makes every property required, so an activity-level `keyCheck` could only be nullable everywhere,
+ * while the validator requires it for some answer types and forbids it for the rest (KEY_CHECK_FORM). The wire
+ * schema therefore moves keyCheck into the response variants: required and non-null in numeric and fraction
+ * (`{value}`) and plot_point (`{x, y}`), absent from every other variant. `normalizeActivity` (spec.ts) moves it
+ * back. Both keyCheck forms come from the zod KeyCheckSchema, so nothing is restated here.
+ */
+function keyCheckPerResponse(batch: JsonObject): JsonObject {
+  const out = structuredClone(batch);
+  const activity = (out.properties as JsonObject).activities as JsonObject;
+  const item = activity.items as JsonObject, props = item.properties as JsonObject;
+  const branches = (props.keyCheck as JsonObject).anyOf as JsonObject[];
+  const has = (b: JsonObject, k: string) => isObj(b.properties) && k in b.properties;
+  const value = branches.find(b => has(b, 'value')), point = branches.find(b => has(b, 'x') && has(b, 'y'));
+  if (!value || !point) throw new Error('strict schema: keyCheck forms not found');
+  const forms = { value, point };
+  delete props.keyCheck;
+  item.required = (item.required as string[]).filter(k => k !== 'keyCheck');
+  for (const variant of (props.response as JsonObject).anyOf as JsonObject[]) {
+    const type = ((variant.properties as JsonObject).type as JsonObject).enum as string[];
+    const form = KEY_CHECK_FORM[type[0] as ResponseType];
+    if (type.length !== 1 || form === undefined) throw new Error('strict schema: unknown response variant');
+    if (!form) continue;
+    (variant.properties as JsonObject).keyCheck = structuredClone(forms[form]);
+    variant.required = [...(variant.required as string[]), 'keyCheck'];
+  }
+  return out;
+}
 const draft = (schema: z.ZodType) => portable(z.toJSONSchema(schema, { target: 'draft-2020-12' }) as Json) as JsonObject;
 /** Standard JSON Schema (draft 2020-12) for one activity / a batch. Documentation + generic tooling. */
 export const activitySpecJsonSchema = draft(ActivitySpecSchema);
 export const activityBatchJsonSchema = draft(ActivityBatchSchema);
-/** Strict-mode schema for a later gateway: response_format {type:'json_schema', json_schema:{name:'aha_activity_batch', schema, strict:true}}. */
-export const activityBatchStrictJsonSchema = strictMode(activityBatchJsonSchema) as JsonObject;
+/**
+ * Strict-mode wire schema, sent as response_format {type:'json_schema', json_schema:{name:'aha_activity_batch', schema, strict:true}}.
+ * Derived from the zod definitions; `normalizeActivity` maps its instances onto the validator's shape.
+ */
+export const activityBatchStrictJsonSchema = keyCheckPerResponse(strictMode(activityBatchJsonSchema) as JsonObject);
 

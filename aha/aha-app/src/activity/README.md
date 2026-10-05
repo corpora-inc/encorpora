@@ -10,7 +10,7 @@ with TEST fixtures only and has not been verified against the live service.
 | File | Role |
 |---|---|
 | `spec.ts` | zod schema → TS types + strict validator + semantic rules; batch parsing (`extractJsonObject`, `recoverBatchItems`, `validateActivityBatch`) |
-| `schema.ts` | JSON Schema exports: standard draft 2020-12, plus an OpenAI strict-mode variant sent as `response_format` when the model supports it |
+| `schema.ts` | JSON Schema exports: standard draft 2020-12, plus the OpenAI strict-mode wire schema sent as `response_format` when the model supports it. The wire schema carries `keyCheck` inside the numeric, fraction and plot_point responses, where it is required. `normalizeActivity` (spec.ts) maps wire instances back to the validator's shape, and `strictSchema.test.ts` property-tests that the two agree |
 | `text.ts` | Rich-text grammar (`plain text with $TeX$`), TeX/markup/link safety, KaTeX rendering |
 | `expr.ts` | Safe expression parser/evaluator. It never calls `eval` or `Function`, and its length, depth and value range are bounded |
 | `grade.ts` | Pure deterministic grader → `{correct, normalized, misconceptionTag?, invalid?}` |
@@ -34,7 +34,7 @@ Figure    bar_chart | line_chart | scatter_plot | pie_chart | data_table | coord
           money | ruler | picture       (every figure has id + alt)
 Response  numeric | fraction | expression | multiple_choice | multi_select | ordering |
           plot_point | tap_region
-keyCheck  {value:"arithmetic"} for numeric/fraction, {x,y} for plot_point
+keyCheck  {value:"arithmetic"} for numeric/fraction, {x,y} for plot_point (strict wire schema: inside the response)
 ```
 
 Design decisions:
@@ -63,7 +63,9 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
 1. **Structural.** Every object is strict: unknown keys are rejected. Every string and array
    has a length limit, and every number must be finite and within bounds. A cheap pre-pass
    rejects oversized or deeply nested input before the schema runs. Optional fields set to
-   `null` count as absent, because strict-mode models emit nulls.
+   `null` count as absent, because strict-mode models emit nulls. `normalizeActivity` also moves a
+   `response.keyCheck` (the strict wire shape) to the activity's `keyCheck`. It never overwrites, so
+   a keyCheck in both places is rejected.
 2. **Text.** Text segments may not contain markup, HTML entities, link-like text (`https:`,
    `javascript:`, `www.`, common TLDs) or bidi/control characters. Text is rendered only as
    React text nodes.
@@ -76,7 +78,8 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    also work. `renderTex` applies the same denylist again at render time.
 4. **Expressions.** Function plots, `keyCheck` and expression answers go through `expr.ts`.
    It accepts a fixed grammar: numbers, the declared single-letter variables, `+ - * / ^`,
-   and a fixed set of functions and constants. It never runs code. Function plots and answers
+   and a fixed set of functions and constants. `round(x)` rounds to a whole number, and
+   `round(x, d)` rounds to d decimal places (d from -6 to 10); halves round toward +infinity, as `Math.round` does. It never runs code. Function plots and answers
    must be defined on most of their domain.
 5. **Semantics.** `skillIds` must be in the standards set that was offered. Every figure must
    be shown exactly once, and every reference must point to a real figure. A multiple-choice
@@ -87,7 +90,9 @@ AI output is untrusted data, and it is never executed, linked or injected as HTM
    behind the key (`"2*25+10+5+3"`). The app evaluates it locally and rejects the activity if
    the result disagrees with the key. This is required by default (`requireKeyCheck`).
 7. **Batch.** An invalid activity is dropped on its own, never repaired, and the rest of the
-   batch is kept. Code fences and surrounding chatter are tolerated. If the reply is not one
+   batch is kept. Code fences and surrounding chatter are tolerated. A reply that is one bare
+   activity instead of the batch envelope is validated as a batch of one, with no rationale; the
+   strict schema never allows that, but prompt-only replies sometimes do it. If the reply is not one
    valid JSON object, `recoverBatchItems` parses each activity on its own, independent of key order
    (structured output arrives with keys sorted by name, zuu#1132; #888). This covers a reply
    truncated by the token cap and a JSON slip, such as a missing brace or quote, inside one

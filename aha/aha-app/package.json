@@ -36,6 +36,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
+    "json-schema-faker": "0.6.3",
     "playwright": "1.63.0",
     "tsx": "^4.20.0",
     "typescript": "~6.0.3",

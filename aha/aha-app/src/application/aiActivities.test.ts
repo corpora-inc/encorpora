@@ -204,15 +204,25 @@ type Node = Record<string, any>;
  * and, because the gateway forwards the schema with members sorted by name (zuu#1132), keys in alphabetical order.
  * `order` reorders each object's keys to prove nothing depends on key order.
  */
-function strictify(value: any, schema: Node, order: (keys: string[]) => string[] = keys => [...keys].sort()): any {
+/** The canonical activity in the strict wire shape: keyCheck travels inside the response (schema.ts). */
+const toWire = (spec: any) => { const { keyCheck, ...rest } = spec; return keyCheck ? { ...rest, response: { ...rest.response, keyCheck } } : rest; };
+function strictify(batch: any, schema: Node, order: (keys: string[]) => string[] = keys => [...keys].sort()): any {
+  return strictNode({ ...batch, activities: batch.activities.map(toWire) }, schema, order);
+}
+function strictNode(value: any, schema: Node, order: (keys: string[]) => string[]): any {
   if (value === null || value === undefined) return null;
   if (Array.isArray(schema.anyOf)) {
     const branch = schema.anyOf.find((b: Node) => b.type !== 'null' && (!b.properties || (typeof value === 'object' && !Array.isArray(value) &&
       Object.keys(value).every(k => k in b.properties) && (!b.properties.type?.enum || b.properties.type.enum.includes(value.type)))));
-    return strictify(value, branch, order);
+    if (!branch) throw new Error(`no strict-schema branch fits ${JSON.stringify(value).slice(0, 80)}`);
+    return strictNode(value, branch, order);
   }
-  if (Array.isArray(value)) return value.map(v => strictify(v, schema.items, order));
-  if (schema.properties) return Object.fromEntries(order(Object.keys(schema.properties)).map(k => [k, k in value ? strictify(value[k], schema.properties[k], order) : null]));
+  if (Array.isArray(value)) return value.map(v => strictNode(v, schema.items, order));
+  if (schema.properties) {
+    const missing = Object.keys(value).filter(k => !(k in schema.properties));
+    if (missing.length) throw new Error(`strict schema lacks ${missing.join(', ')}`);
+    return Object.fromEntries(order(Object.keys(schema.properties)).map(k => [k, k in value ? strictNode(value[k], schema.properties[k], order) : null]));
+  }
   return value;
 }
 
