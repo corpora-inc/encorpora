@@ -40,9 +40,9 @@ describe('number', () => {
   });
   it('marks a derived ask as derived', () => {
     const c = compiled(edit(equalGroupsActivity, a => {
-      a.model.quantities.push(q('e', 'count', '2', { noun: { icon: 'apple', one: 'apple', other: 'apples' } }));
-      a.prompt[2] = { text: 'Then {{e}} fall. How many {{s.total.other}} are left?', type: 'text' };
-      a.response = { ask: 's.total-e', distractors: [], form: 'number' };
+      a.model.quantities.push(q('e', 'count', '2', { noun: { icon: 'apple', one: 'apple', other: 'apples' } }), q('left', 'count', 's.total-e', { noun: { icon: 'apple', one: 'apple', other: 'apples' } }));
+      a.prompt[2] = { text: 'Then {{e}} fall. How many {{left.other}} are left?', type: 'text' };
+      a.response = { ask: 'left', distractors: [], form: 'number' };
       a.support.hints = [];
     }));
     assert.equal(c.key, '10');
@@ -79,13 +79,13 @@ describe('choose', () => {
   it('chooses among candidates with exactly one equal to the key', () => {
     const compare = (gParts: string, gSelected: string) => edit(shadedFractionActivity, a => {
       a.aim.skills = ['3.NF.A.3'];
-      a.model.quantities = [q('p', 'count', '3'), q('k', 'count', '2'), q('pb', 'count', gParts), q('kb', 'count', gSelected)];
+      a.model.quantities = [q('p', 'count', '3'), q('k', 'count', '2'), q('pb', 'count', gParts), q('kb', 'count', gSelected), q('big', 'fraction', 'max(f.fraction, g.fraction)')];
       a.model.structures = [
         { id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: null }, show: 'strip' },
         { id: 'g', kind: 'fraction', roles: { parts: 'pb', selected: 'kb', wholes: null }, show: 'strip' },
       ];
       a.prompt = [{ of: 'f', type: 'view' }, { of: 'g', type: 'view' }, { text: 'Which fraction is greater?', type: 'text' }];
-      a.response = { ask: 'max(f.fraction, g.fraction)', candidates: ['f.fraction', 'g.fraction'], distractors: [{ expr: 'min(f.fraction, g.fraction)', tag: 'larger_denominator_larger_fraction' }], form: 'choose' };
+      a.response = { ask: 'big', candidates: ['f.fraction', 'g.fraction'], distractors: [{ expr: 'min(f.fraction, g.fraction)', tag: 'larger_denominator_larger_fraction' }], form: 'choose' };
       a.support = { explanation: 'Compare {{f.fraction}} with {{g.fraction}}.', hints: [] };
     });
     const c = compiled(compare('4', '3'));
@@ -98,10 +98,10 @@ describe('choose', () => {
   it('lets the prose name the candidates without counting it as a leak', () => {
     const c = compiled(edit(shadedFractionActivity, a => {
       a.aim.skills = ['3.NF.A.3'];
-      a.model.quantities = [q('p', 'count', '8'), q('a', 'fraction', '2/3'), q('b', 'fraction', '3/4')];
+      a.model.quantities = [q('p', 'count', '8'), q('a', 'fraction', '2/3'), q('b', 'fraction', '3/4'), q('big', 'fraction', 'max(a, b)')];
       a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: null, wholes: null }, show: null }];
       a.prompt = [{ text: 'Which is greater, {{a}} or {{b}}? Think of a whole cut into {{f.parts.n}}.', type: 'text' }];
-      a.response = { ask: 'max(a, b)', candidates: ['a', 'b'], distractors: [], form: 'choose' };
+      a.response = { ask: 'big', candidates: ['a', 'b'], distractors: [], form: 'choose' };
       a.support = { explanation: 'Compare {{a}} and {{b}}.', hints: [] };
     }));
     assert.equal(c.key, '3/4');

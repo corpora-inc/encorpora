@@ -110,7 +110,8 @@ const DISC = T(Circle, 'teal');
 /** The drawing for a model-named object: exact name, singular form, alias, else a neutral counter. */
 export function resolveIcon(name: string): readonly [LucideIcon, ColorToken] {
   const n = name.toLowerCase();
-  const candidates = [n, n.replace(/ies$/, 'y'), n.replace(/es$/, ''), n.replace(/s$/, '')];
+  // Singular by spelling rules: "berries" → "berry", "boxes" → "box", "apples" → "apple"; never "rates" → "rat".
+  const candidates = [n, ...(n.length > 4 && n.endsWith('ies') ? [`${n.slice(0, -3)}y`] : []), ...(/(s|x|z|ch|sh)es$/.test(n) ? [n.slice(0, -2)] : []), ...(/[^su]s$/.test(n) ? [n.slice(0, -1)] : [])];
   for (const c of candidates) {
     // Own keys only: a name like "constructor" must never reach Object.prototype.
     const alias = Object.hasOwn(ALIASES, c) ? ALIASES[c]! : undefined;

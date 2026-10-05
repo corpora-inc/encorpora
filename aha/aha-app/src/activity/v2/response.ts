@@ -7,7 +7,7 @@ import { regionIds, type Figure, type ResponseSpec } from '../spec';
 import type { GradeSpec } from '../grade';
 import { compare } from '../../learning/rational';
 import { exactDecimal, formatNumber, formatPlain, sameValue, unitSymbol, type Issue, type QuantityKind, type Rich, type Value } from './quantity';
-import type { Model, Target } from './model';
+import type { Model } from './model';
 import type { Region } from './registry';
 import type { Ask, CheckedCore } from './validate';
 
@@ -51,11 +51,10 @@ function survivors(c: CheckedCore, key: Value) {
   for (const d of c.distractors) if (!sameValue(d.value, key) && !kept.some(k => sameValue(k.value, d.value))) kept.push({ value: d.value, tag: d.tag });
   return kept;
 }
+/** A measure, or a quantity a view makes countable, is computed; a derived quantity is derived (README §8.5). */
 function verification(c: CheckedCore, ask: Ask): Verification {
-  const t: Target | null = ask.target;
-  if (!t) return 'derived';
-  if (t.kind === 'measure') return 'computed';
-  return c.model.quantities.get(t.id)!.derived ? 'derived' : 'computed';
+  const t = ask.target;
+  return t.kind === 'quantity' && c.model.quantities.get(t.id)!.derived ? 'derived' : 'computed';
 }
 
 export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {

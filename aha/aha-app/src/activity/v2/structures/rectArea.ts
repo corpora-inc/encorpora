@@ -19,7 +19,6 @@ function plainNumber(v: Value): string {
   return d ? `${d.negative ? '-' : ''}${d.int}${d.frac ? `.${d.frac}` : ''}` : formatPlain(v.q);
 }
 const sideText = (v: Value) => `${plainNumber(v)} ${unitSymbol(v.unit!, 1)}`;
-const asked = (ask: { role: string } | { measure: string } | null, role: R) => !!ask && 'role' in ask && ask.role === role;
 
 export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> = {
   kind: 'rect_area',
@@ -76,8 +75,8 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
     labeled: {
       grades: [3, 7], accepts: [], draws: 'the rectangle with each side labeled; an asked side shows "?" (area and perimeter must be computed)',
       noun: () => 'rectangle',
-      reveals: (_r, ask) => ({ w: asked(ask, 'w') ? 'hidden' : 'shown', h: asked(ask, 'h') ? 'hidden' : 'shown', area: 'hidden', perimeter: 'hidden' }),
-      lower(r, { ask }) {
+      reveals: (_r, asked) => ({ w: asked.has('w') ? 'hidden' : 'shown', h: asked.has('h') ? 'hidden' : 'shown', area: 'hidden', perimeter: 'hidden' }),
+      lower(r, { asked }) {
         const w = req(r, 'w').value, h = req(r, 'h').value;
         // Drawn to scale when the sides are within 1:4; otherwise squeezed and marked not to scale.
         const ratio = toNumber(w.q) / toNumber(h.q), clamped = Math.min(4, Math.max(1 / 4, ratio));
@@ -86,8 +85,8 @@ export const rectArea: StructureDef<'rect_area', R, 'unit_squares' | 'labeled'> 
           type: 'geometry', width: W, height: H, ...(clamped !== ratio ? { notToScale: true } : {}),
           shapes: [
             { kind: 'polygon', points: [{ x: 0, y: 0 }, { x: W, y: 0 }, { x: W, y: H }, { x: 0, y: H }], color: 'teal' },
-            { kind: 'dimension', from: { x: 0, y: 0 }, to: { x: W, y: 0 }, label: asked(ask, 'w') ? '?' : sideText(w) },
-            { kind: 'dimension', from: { x: 0, y: 0 }, to: { x: 0, y: H }, label: asked(ask, 'h') ? '?' : sideText(h) },
+            { kind: 'dimension', from: { x: 0, y: 0 }, to: { x: W, y: 0 }, label: asked.has('w') ? '?' : sideText(w) },
+            { kind: 'dimension', from: { x: 0, y: 0 }, to: { x: 0, y: H }, label: asked.has('h') ? '?' : sideText(h) },
           ],
         };
       },

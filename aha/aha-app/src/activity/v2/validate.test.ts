@@ -189,6 +189,59 @@ describe('the answer is never named, and leaks are referential', () => {
   });
 });
 
+describe('review regressions: no path around the answer checks', () => {
+  it('requires the ask to be one reference, so a bare number or expression can never be the key', () => {
+    rejects(edit(equalGroupsActivity, a => { a.response = { ask: '13', distractors: [], form: 'number' }; }), 'ask_not_ref');
+    rejects(edit(equalGroupsActivity, a => { a.response = { ask: 's.groups*s.size', distractors: [], form: 'number' }; }), 'ask_not_ref');
+  });
+  it('treats an alias of the answer as the answer, and a value computed from it as stating it', () => {
+    const alias = edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.total' }); a.prompt[2] = { text: 'There are {{t.n}} in all.', type: 'text' }; });
+    rejects(alias, 'answer_in_text');
+    const scaled = edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 't', kind: 'count', noun: null, unit: null, value: 's.total*1' }); a.prompt[2] = { text: 'There are {{t.n}} in all.', type: 'text' }; });
+    rejects(scaled, 'answer_stated');
+    const viaAlias = edit(areaActivity, a => { a.aim.skills = ['4.MD.A.3']; a.model.structures[0]!.show = 'labeled'; a.model.quantities.push({ id: 'x', kind: 'length', noun: null, unit: 'unit', value: 'r.w' }); a.prompt = [{ text: 'How wide is the {{r.view}}?', type: 'text' }, { of: 'r', type: 'view' }]; a.response = { ask: 'x', distractors: [], form: 'number' }; a.support = { explanation: 'It is {{x}}.', hints: [] }; });
+    rejects(viaAlias, 'ask_asserted');
+  });
+  it('checks every view for the answer, not only the ask\'s own structure', () => {
+    rejects(edit(equalGroupsActivity, a => { a.model.structures.push({ id: 't', kind: 'equal_groups', roles: { groups: 'g', size: 'n' }, show: 'jumps' }); a.prompt.push({ of: 't', type: 'view' }); }), 'answer_shown');
+  });
+  it('counts a derived value with no references as a given the model asserts', () => {
+    rejects(edit(equalGroupsActivity, a => { a.model.quantities.push({ id: 'x', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: '3*4+1' }); a.prompt[2] = { text: 'How many {{x.other}}?', type: 'text' }; a.response = { ask: 'x', distractors: [], form: 'number' }; }), 'ask_asserted');
+  });
+  it('knows a fraction complement reads its wholes', () => {
+    rejects(edit(shadedFractionActivity, a => {
+      a.aim.skills = ['4.NF.B.4'];
+      a.model.quantities = [{ id: 'p', kind: 'count', noun: null, unit: null, value: '4' }, { id: 'k', kind: 'count', noun: null, unit: null, value: '3' }, { id: 'w', kind: 'count', noun: null, unit: null, value: '2' }];
+      a.model.structures = [{ id: 'f', kind: 'fraction', roles: { parts: 'p', selected: 'k', wholes: 'w' }, show: null }];
+      a.prompt = [{ text: 'A cake is cut into {{f.parts}}. Mia eats {{f.selected}}. What fraction is left?', type: 'text' }];
+      a.response = { ask: 'f.complement', distractors: [], exactness: 'any', form: 'fraction' };
+      a.support = { explanation: '{{f.complement}} is left.', hints: [] };
+    }), 'ask_unanswerable');
+  });
+  it('hides every side bound to the asked quantity (a square)', () => {
+    const square = edit(areaActivity, a => {
+      a.aim.skills = ['4.MD.A.3'];
+      a.model.quantities = [{ id: 'p', kind: 'length', noun: null, unit: 'm', value: '24' }, { id: 's', kind: 'length', noun: null, unit: 'm', value: 'p/4' }];
+      a.model.structures = [{ id: 'r', kind: 'rect_area', roles: { h: 's', w: 's' }, show: 'labeled' }];
+      a.prompt = [{ text: 'A square garden has a fence of {{p}} around it.', type: 'text' }, { of: 'r', type: 'view' }, { text: 'How long is each side?', type: 'text' }];
+      a.response = { ask: 'r.h', distractors: [], form: 'number' };
+      a.support = { explanation: 'Each side is {{r.h}}.', hints: [] };
+    });
+    const c = valid(square);
+    const labels = (c.drawings.get('r') as { shapes: { kind: string; label?: string }[] }).shapes.filter(x => x.kind === 'dimension').map(x => x.label);
+    assert.deepEqual(labels, ['?', '?']);
+  });
+  it('allows hundredths with no figure, and the drawing limits reject a view that cannot draw them', () => {
+    const hundredths = (show: 'rect' | null) => edit(shadedFractionActivity, a => {
+      a.aim.skills = ['4.NF.A.1']; a.model.quantities[0]!.value = '100'; a.model.quantities[1]!.value = '37'; a.model.structures[0]!.show = show;
+      a.prompt = show ? [{ of: 'f', type: 'view' }, { text: 'What fraction is shaded?', type: 'text' }] : [{ text: 'A sheet has {{f.parts}} squares and {{f.selected}} are shaded. What fraction is shaded?', type: 'text' }];
+      a.support.explanation = '{{f.fraction}} is shaded.';
+    });
+    assert.ok(check(hundredths(null)).ok, JSON.stringify(codesOf(check(hundredths(null)))));
+    rejects(hundredths('rect'), 'draw');
+  });
+});
+
 describe('act forms', () => {
   it('requires the target in the prose', () => {
     rejects(edit(shadeActivity, a => { a.prompt[0] = { text: 'Shade part of the {{f.view}}.', type: 'text' }; a.support.explanation = 'One part is {{u}}.'; }), 'target_not_given');
