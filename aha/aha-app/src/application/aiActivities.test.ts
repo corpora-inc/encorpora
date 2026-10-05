@@ -349,3 +349,9 @@ test('a damaged envelope whose extraction lands on one activity classifies rejec
   assert.equal(parsed.items.length, 1);
   assert.deepEqual([parsed.schemaRejected, parsed.semanticRejected], [0, 1]);
 });
+
+test('the batch prompt budget is the model policy\'s non-reasoning batch budget', async () => {
+  const { BATCH_OUTPUT_TOKENS } = await import('../provider/models.ts');
+  const { BATCH_MAX_OUTPUT_TOKENS } = await import('./aiActivities.ts');
+  assert.equal(BigInt(BATCH_MAX_OUTPUT_TOKENS), BATCH_OUTPUT_TOKENS);
+});

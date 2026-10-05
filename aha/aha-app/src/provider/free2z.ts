@@ -625,6 +625,13 @@ export class Free2zTutor {
     let zeroCharge = false;
     // Reported by the stream's `usage` event; hidden reasoning bills as output and counts against the budget.
     let reasoningTokens: bigint | undefined, outputTokens: bigint | undefined;
+    /** Only on a delivered activity batch (`answerComplete`), so the journal stays valid. */
+    const markOutOfRoom = (finishReason: string) => {
+      op.outOfRoom = true;
+      const finish = /^[a-z_]{1,32}$/.test(finishReason) ? finishReason : 'other';
+      this.budgetLog(`batch ran out of room: model=${op.request.model} finish_reason=${finish} max_output_tokens=${op.request.maxOutputTokens} ` +
+        `reasoning_tokens=${reasoningTokens ?? 'unreported'} output_tokens=${outputTokens ?? 'unreported'} text_chars=${op.text.length}`);
+    };
     try {
       // Durable writes and recovery can yield: refresh real consent, balance and remainder at the send boundary.
       const verifiedGrant = await verifyPaidGrant(this.client, authorization);
@@ -660,7 +667,11 @@ export class Free2zTutor {
         const current = await this.current();
         if (current.generation !== op.generation) throw new TutorServiceError('account_changed','Account changed during the request.');
         if (event.type === 'meta') op.callId = event.call_id;
-        if (event.type === 'usage') { reasoningTokens = event.usage.reasoning_tokens ?? reasoningTokens; outputTokens = event.usage.output_tokens ?? outputTokens; }
+        if (event.type === 'usage') {
+          reasoningTokens = event.usage.reasoning_tokens ?? reasoningTokens; outputTokens = event.usage.output_tokens ?? outputTokens;
+          // A gateway may report usage after `done`: an empty delivered batch is then marked once the reasoning count is known.
+          if (op.answerComplete && !op.outOfRoom && op.context?.kind === 'activities' && !op.text.trim() && (reasoningTokens ?? 0n) > 0n) markOutOfRoom('stop');
+        }
         if (event.type === 'delta') {
           if (op.text.length + event.text.length > MAX_TEXT) throw new TutorServiceError('output_limit','The lesson exceeded the supported size.');
           op.text += event.text;
@@ -677,12 +688,7 @@ export class Free2zTutor {
           if (deliverable) op.answerComplete = true;
           // A batch that ran out of room: cut off by the budget, or nothing visible after hidden reasoning.
           if (deliverable && op.context?.kind === 'activities' &&
-              (LENGTH_REASONS.includes(event.finish_reason) || (!op.text.trim() && (reasoningTokens ?? 0n) > 0n))) {
-            op.outOfRoom = true;
-            const finish = /^[a-z_]{1,32}$/.test(event.finish_reason) ? event.finish_reason : 'other';
-            this.budgetLog(`batch ran out of room: model=${op.request.model} finish_reason=${finish} max_output_tokens=${op.request.maxOutputTokens} ` +
-              `reasoning_tokens=${reasoningTokens ?? 'unreported'} output_tokens=${outputTokens ?? 'unreported'} text_chars=${op.text.length}`);
-          }
+              (LENGTH_REASONS.includes(event.finish_reason) || (!op.text.trim() && (reasoningTokens ?? 0n) > 0n))) markOutOfRoom(event.finish_reason);
           await this.persist(ledger);
           if (event.type === 'error') throw new TutorServiceError(event.code,'The AI request ended with an error. Its charge remains recorded.');
           if (event.type === 'replay') throw new TutorServiceError('receipt_only','The receipt was recovered. The service does not replay the original answer; no new paid request was sent.');

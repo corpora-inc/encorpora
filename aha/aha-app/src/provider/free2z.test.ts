@@ -987,3 +987,10 @@ test('journal: reasoningEffort only in v4 and only "low"',async()=>{
   await assert.rejects(f.tutor.inspectPending(),{code:'journal_invalid'});
  }
 });
+test('"ran out of room" is still detected when the usage event arrives after done (empty after reasoning)',async()=>{
+ const f=budgetFixture([{type:'done',finish_reason:'stop',...settled},usage(2_600n,2_600n)],'');
+ const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
+ assert.equal(f.getValue().operations[0].outOfRoom,true);assert.equal(f.logged.length,1);
+ assert.equal((await f.tutor.pendingReplies())[0]!.outOfRoom,true,'the restored reply carries it');
+ assert.equal(reply.operationId,f.getValue().operations[0].id);
+});
