@@ -28,7 +28,8 @@ describe('the live failures in v2', () => {
   it('live 2: "rectangle" comes from the view, and the prose cannot name a shape', () => {
     const c = valid(shadeActivity());
     assert.deepEqual(c.rendered.prompt[0], { type: 'text', text: 'Shade $\\frac{1}{4}$ of the rectangle.' });
-    rejects(edit(shadeActivity, a => { a.prompt[0] = { text: 'Shade {{u}} of the rectangle.', type: 'text' }; }), 'view_word');
+    rejects(edit(shadeActivity, a => { a.model.structures[0]!.show = 'circle'; a.prompt[0] = { text: 'Shade {{u}} of the rectangle.', type: 'text' }; }), 'view_word');
+    assert.ok(check(edit(shadeActivity, a => { a.prompt[0] = { text: 'Shade {{u}} of the rectangle.', type: 'text' }; })).ok, 'naming the figure that is shown is fine');
     const circle = valid(edit(shadeActivity, a => { a.model.structures[0]!.show = 'circle'; }));
     assert.deepEqual(circle.rendered.prompt[0], { type: 'text', text: 'Shade $\\frac{1}{4}$ of the circle.' });
   });

@@ -167,19 +167,22 @@ export const MUTATION_CLASSES: MutationClass[] = [
   {
     id: 'view_word', expects: ['view_word'],
     mutate(a) {
+      // A figure word for a figure the prompt does not show (live failure 2: "rectangle" over a circle).
+      const shown = new Set(a.model.structures.flatMap(s => s.show && a.prompt.some(b => b.type === 'view' && b.of === s.id) ? (STRUCTURES[s.kind].views[s.show as never] as { words: readonly string[] }).words : []));
+      const word = ['rectangle', 'circle', 'number line', 'bar graph'].find(w => !shown.has(w))!;
       const out: Mutant[] = [];
       for (const i of textBlocks(a)) {
         const b = a.prompt[i] as { text: string };
-        const ph = /\{\{([a-z0-9]+)\.view\}\}/.exec(b.text);
+        const ph = /\{\{([a-z0-9_]+)\.view\}\}/.exec(b.text);
         if (!ph) continue;
         const m = clone(a);
-        (m.prompt[i] as { text: string }).text = b.text.replace(ph[0], 'rectangle');
-        out.push({ why: `the prose names "rectangle" instead of {{${ph[1]}.view}}`, activity: m });
+        (m.prompt[i] as { text: string }).text = b.text.replace(ph[0], word);
+        out.push({ why: `the prose names a ${word}, which the prompt does not show, instead of {{${ph[1]}.view}}`, activity: m });
       }
       if (!out.length) {
         const m = clone(a);
-        (m.prompt[textBlocks(m)[0]!] as { text: string }).text += ' Look at the picture.';
-        out.push({ why: 'the prose names a figure', activity: m });
+        (m.prompt[textBlocks(m)[0]!] as { text: string }).text += ` Look at the ${word}.`;
+        out.push({ why: `the prose names a ${word}, which the prompt does not show`, activity: m });
       }
       return out;
     },
