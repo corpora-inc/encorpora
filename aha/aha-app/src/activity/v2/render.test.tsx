@@ -66,3 +66,27 @@ describe('v2 activities render through ActivityView', () => {
     assert.match(thirds, /two thirds/);
   });
 });
+
+describe('review regressions: descriptions and options never give the answer away', () => {
+  it('describes a role equal to a derived answer countably, never as a number', async () => {
+    const { check, equalGroupsActivity, clone } = await import('./testkit');
+    const { resolveActivity } = await import('./resolve');
+    const a = clone(equalGroupsActivity());
+    a.aim.skills = ['3.OA.A.2'];
+    a.model.quantities.push({ id: 'x', kind: 'count', noun: { icon: 'apple', one: 'apple', other: 'apples' }, unit: null, value: 's.total/g' });
+    a.prompt = [{ text: 'Ana fills some {{s.groups.other}}.', type: 'text' }, { of: 's', type: 'view' }, { text: 'How many {{x.other}} are in each {{s.groups.one}}?', type: 'text' }];
+    a.response = { ask: 'x', distractors: [], form: 'number' };
+    a.support = { explanation: 'Each has {{x}}.', hints: [] };
+    const v = check(a);
+    assert.ok(v.ok, JSON.stringify(!v.ok && v.problems));
+    assert.equal(resolveActivity(v.activity, 'x').figures![0]!.alt, '3 baskets. In each basket: apple, apple, apple, apple.');
+  });
+  it('rejects K–2 options that mix fraction words with numerals', async () => {
+    const { gold } = await import('./gold');
+    const { checkGold } = await import('./gold/resolved');
+    const g = structuredClone(gold.find(x => x.id === 'g2-fraction-circle-thirds')!);
+    (g.activity.response as { distractors: unknown[] }).distractors.push({ expr: 'p/k', tag: 'numerator_denominator_swapped' });
+    const v = checkGold(g);
+    assert.ok(!v.ok && v.problems.some(p => p.code === 'choose_notation'), JSON.stringify(!v.ok ? v.problems : 'valid'));
+  });
+});

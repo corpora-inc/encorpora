@@ -99,7 +99,7 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
       const texts = options.map(o => optionText(o.value, o.kind, key, locale, c.grade));
       if (new Set(texts).size !== texts.length) return fail('response.candidates', 'choose_duplicate', 'Two options read the same.');
       // Options are formatted alike (README §8.2): one fraction among whole numbers would point at itself.
-      if (new Set(texts.map(t => t.includes('$'))).size > 1) return fail('response.candidates', 'choose_notation', 'The options do not share one notation (some are fractions, some are not), which would single one out.');
+      if (new Set(texts.map(notation)).size > 1) return fail('response.candidates', 'choose_notation', 'The options do not share one notation (fractions, words and plain numbers mixed), which would single one out.');
       const spec: ResponseSpec = {
         type: 'multiple_choice', shuffle: true,
         options: options.map((o, i) => {
@@ -164,3 +164,5 @@ export function compileResponse(c: CheckedCore, locale = 'en-US'): Outcome {
   }
 }
 const isIssueLike = (v: object): v is Issue => 'code' in v;
+/** How an option reads: a TeX fraction, words ("one third"), or a plain numeral. */
+const notation = (text: string) => text.includes('$') ? 'tex' : /\d/.test(text) ? 'numeral' : 'words';
