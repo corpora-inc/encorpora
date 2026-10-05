@@ -494,6 +494,12 @@ try {
     await s.openSettings();
     assert.equal(await s.figure('App budget'),'250 2Z per month');
     assert.equal(await s.figure('Budget left'),'97.5 2Z');
+    // Free2Z stops enforcing this grant: the budget figures are no longer shown as if they applied.
+    await s.p.evaluate(()=>{window.__ahaAI.enforced=false;window.__ahaAI.reason='ledger_cap_pending';});
+    await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await s.p.getByText('Free2Z is still setting up spending for this app.',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByText('App budget',{exact:true}).count(),0,'no stale budget once not enforced');
+    assert.equal(await s.p.getByRole('alert').count(),0,'Refresh in the not-ready state is calm');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   {
@@ -505,6 +511,16 @@ try {
     await s.openSettings();
     await s.p.getByText('isn’t switched on for apps yet',{exact:false}).first().waitFor();
     assert.equal(await s.p.getByText('App budget',{exact:true}).count(),0,'no budget figure until Free2Z enforces the grant');
+    await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await s.p.getByText('isn’t switched on for apps yet',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByRole('alert').count(),0,'Refresh connection while platform_disabled: no alert');
+    await s.p.getByRole('button',{name:'Close settings',exact:true}).click();
+    // A curiosity question gets the built-in local answer, not an alert, and no paid call.
+    await s.p.getByRole('button',{name:'Ask a question',exact:true}).click();
+    await s.p.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
+    await s.p.getByText('Live tutoring isn’t available yet.',{exact:false}).waitFor();
+    assert.equal(await s.p.getByRole('alert').count(),0,'curiosity while platform_disabled: no alert');
+    assert.equal(await s.starts(),0,'curiosity while platform_disabled: no paid call');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   {

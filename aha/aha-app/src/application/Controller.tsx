@@ -560,15 +560,21 @@ export default function Controller() {
       throw e;
     }
   }
-  /** Connect-time check. Free2Z not enforcing grants yet is its expected pre-activation state, not an alert. */
+  /** Free2Z not enforcing grants yet (e.g. platform_disabled) is its expected pre-activation state, not an alert. */
+  const aiNotReady = (e: unknown): e is TutorServiceError =>
+    e instanceof TutorServiceError && (e.code === "ai_not_ready" || e.code === "budget_pending");
+  /** Log calmly, drop budget figures that are no longer enforced, and keep local practice. */
+  function showNotReady(stage: string, e: TutorServiceError) {
+    logAiFallback(stage, e);
+    appBudget.current = undefined;
+    showSpending();
+    setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
+  }
+  /** Connect, sign-in and Refresh connection: the not-ready state becomes a status line, never a red alert. */
   async function connectAccount() {
     try { await refreshConnection(); }
     catch (e) {
-      if (e instanceof TutorServiceError && (e.code === "ai_not_ready" || e.code === "budget_pending")) {
-        logAiFallback("connect", e);
-        setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
-        return;
-      }
+      if (aiNotReady(e)) { showNotReady("connect", e); return; }
       throw e;
     }
   }
@@ -824,6 +830,7 @@ export default function Controller() {
       // A learner's Stop is honoured as a stop, never silently replaced.
       if (foreground && actionCancelled.current) throw e;
       if (!stillCurrent()) { logError(stage, e); return false; }
+      if (aiNotReady(e)) appBudget.current = undefined;
       aiUnavailable(stage, e);
       return false;
     } finally {
@@ -1079,7 +1086,18 @@ export default function Controller() {
       return;
     }
     await settlePrefetch();
-    const authorization = await paidAuthorization();
+    let authorization: PaidAuthorization;
+    try { authorization = await paidAuthorization(); }
+    catch (e) {
+      if (!aiNotReady(e)) throw e;
+      // Not ready yet: the same calm local answer as when disconnected. Nothing is charged.
+      showNotReady("curiosity", e);
+      setCuriosity({
+        question,
+        answer: `You’re exploring ${getSkill(a?.skillId ?? ai?.spec.skillIds[0] ?? "")?.title.toLowerCase() ?? "this idea"}. In local practice I can show the built-in example and explanation. Live tutoring isn’t available yet. Your question won’t change your progress.`,
+      });
+      return;
+    }
     selectedModel.current = chooseTutorModel(await getNativeClient().models());
     // A curiosity answer may reveal this task's solution. Persist assistance before sending.
     if (!learning.current?.attempts.some((e) => e.activityId === shownId)) {
@@ -1334,7 +1352,7 @@ export default function Controller() {
           : undefined
       }
       onManageAccount={native ? () => void action(() => invoke("open_free2z_account"), "Opening Free2Z in your browser…") : undefined}
-      onRefreshAccount={() => void action(refreshConnection, "Checking Free2Z…")}
+      onRefreshAccount={() => void action(connectAccount, "Checking Free2Z…")}
       onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
