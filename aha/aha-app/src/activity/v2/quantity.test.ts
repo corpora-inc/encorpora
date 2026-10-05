@@ -104,6 +104,7 @@ describe('expression grammar', () => {
     assert.equal(parseError('1e3'), 'expr_syntax');
     assert.equal(parseError('2w'), 'expr_syntax');
     assert.equal(parseError('('.repeat(14) + '1' + ')'.repeat(14)), 'expr_size');
+    assert.ok(parseExpr('min(a, max(b, (c+d)/2))').ok, 'ordinary nesting fits the depth limit');
     assert.equal(parseError(Array.from({ length: 30 }, () => '1').join('+')), 'expr_size');
   });
 });
@@ -135,6 +136,7 @@ describe('exact evaluation with dimensions', () => {
     assert.equal(evalError('n/(n-3)', { n }), 'division_by_zero');
     assert.equal(evalError('x'), 'ref_unknown');
     assert.equal(evalError('999999999999*999999999999*999999999999'), 'expr_magnitude');
+    assert.equal(evalError('w*w*w*w', { w }), 'dimension_unsupported', 'no power of length above area');
   });
 });
 
@@ -150,7 +152,8 @@ describe('declared quantities', () => {
     const a = v('24', 2, 'cm'), w = v('4', 1, 'cm'), t = v('12'), g = v('3');
     assert.equal(plain(valueOf(decl({ kind: 'length', unit: 'cm', value: 'a/w' }), { a, w })), '6');
     assert.equal(plain(valueOf(decl({ kind: 'count', value: 't/g' }), { t, g })), '4');
-    assert.equal(errorOf(decl({ kind: 'length', unit: 'cm', value: 'a*w' }), { a, w }), 'dimension_mismatch');
+    assert.equal(errorOf(decl({ kind: 'length', unit: 'cm', value: 'a*w' }), { a, w }), 'dimension_unsupported', 'length³: no kind measures it');
+    assert.equal(errorOf(decl({ kind: 'length', unit: 'cm', value: 'w*w' }), { w }), 'dimension_mismatch');
     assert.equal(errorOf(decl({ kind: 'length', unit: 'm', value: 'a/w' }), { a, w }), 'dimension_mismatch');
     assert.equal(errorOf(decl({ kind: 'count', value: 'a/w' }), { a, w }), 'dimension_mismatch');
   });
@@ -164,6 +167,8 @@ describe('declared quantities', () => {
     assert.equal(errorOf(decl({ kind: 'number', unit: 'cm' })), 'unit_unexpected');
     assert.ok(valueOf(decl({ kind: 'number', value: '-2.5' })).ok, 'a number may be negative');
     assert.ok(valueOf(decl({ value: '0' })).ok, 'a count may be zero');
+    const four = valueOf(decl({ value: '4/2' }));
+    assert.ok(four.ok && four.value.form === undefined, 'a count written 4/2 displays as 2, never as a fraction');
   });
 });
 
@@ -203,6 +208,7 @@ describe('formatting', () => {
     assert.equal(pluralCategory({ q: rational(1n, 3n) }), 'other');
     assert.equal(pluralCategory({ q: rational(1n) }, 'fr-FR'), 'one');
     assert.equal(pluralCategory({ q: rational(3n) }, 'ru-RU'), 'few');
+    assert.equal(pluralCategory({ q: rational(10001n, 10000n) }), 'other', 'every printed decimal place counts');
   });
   it('names units and their squares', () => {
     assert.equal(unitName('cm', 1, 'one'), 'centimeter');

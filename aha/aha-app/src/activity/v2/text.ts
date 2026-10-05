@@ -83,7 +83,11 @@ export function parseTempl(source: string, mode: TemplMode): Result<Templ> {
 
 // ---------- closed-list prose rules ----------
 const NUMERAL = /\p{N}/u;
-interface ProseLists { numberWords: ReadonlySet<string>; viewWords: ReadonlySet<string>; viewPhrases: readonly (readonly string[])[] }
+interface ProseLists {
+  numberWords: ReadonlySet<string>; viewWords: ReadonlySet<string>; viewPhrases: readonly (readonly string[])[];
+  /** The script prose letters must be in, so look-alike letters from another script cannot spell a listed word. */
+  script: RegExp;
+}
 /**
  * Per-language closed lists. Number words: cardinals of two or more, multiplicative and fraction
  * words ("one" and "a" stay legal: they are also articles and pronouns; "second" and "first" are
@@ -99,7 +103,8 @@ export const PROSE_LISTS: Readonly<Record<string, ProseLists>> = {
       'pair', 'pairs', 'twice', 'thrice', 'double', 'doubled', 'doubles', 'triple', 'tripled', 'triples',
       'half', 'halves', 'third', 'thirds', 'fourth', 'fourths', 'quarter', 'quarters', 'fifth', 'fifths', 'sixth', 'sixths',
       'seventh', 'sevenths', 'eighth', 'eighths', 'ninth', 'ninths', 'tenth', 'tenths', 'eleventh', 'elevenths', 'twelfth',
-      'twelfths', 'hundredth', 'hundredths', 'thousandth', 'thousandths',
+      'twelfths', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'sixteenths', 'twentieth', 'twentieths',
+      'hundredth', 'hundredths', 'thousandth', 'thousandths', 'tens',
     ]),
     viewWords: new Set([
       'picture', 'pictures', 'diagram', 'diagrams', 'rectangle', 'rectangles', 'circle', 'circles', 'triangle', 'triangles',
@@ -107,16 +112,38 @@ export const PROSE_LISTS: Readonly<Record<string, ProseLists>> = {
       'pie', 'pies', 'pictograph', 'pictographs',
     ]),
     viewPhrases: [['number', 'line'], ['number', 'lines'], ['bar', 'graph'], ['bar', 'chart'], ['line', 'plot'], ['dot', 'plot'],
-      ['tape', 'diagram'], ['area', 'model'], ['fraction', 'model'], ['fraction', 'bar'], ['fraction', 'bars']],
+      ['tape', 'diagram'], ['area', 'model'], ['fraction', 'model'], ['fraction', 'bar']].flatMap(p => [p, [p[0]!, `${p[1]}s`]]),
+    script: /^\p{Script=Latin}+$/u,
   },
 };
-const listsFor = (locale: string) => PROSE_LISTS[locale.toLowerCase().split('-')[0]!] ?? PROSE_LISTS.en!;
+const listsFor = (locale: string) => { const lang = locale.toLowerCase().split('-')[0]!; return Object.hasOwn(PROSE_LISTS, lang) ? PROSE_LISTS[lang]! : PROSE_LISTS.en!; };
 
-/** Lowercase words of literal prose. In TeX, command names are dropped but their arguments kept ("\text{twelve}"). */
+/** Commands whose argument KaTeX typesets as words. */
+const TEXT_GROUP = /\\(?:text|textrm|textsf|texttt|textbf|textit|textup|textnormal|mathrm|mathit|mathbf|mathsf|mathtt|operatorname|mbox)\s*\{([^{}]*)\}/g;
+/**
+ * The words a learner sees in literal prose. In TeX this follows what KaTeX draws, not how the
+ * source is spelled: adjacent text groups are joined ("\text{tw}\text{elve}" reads "twelve"), and
+ * bare letters outside text groups are joined too, since math ignores spaces ("t w o" draws "two").
+ */
 function words(text: string, math: boolean): string[] {
-  const plain = math ? text.replace(/\\[A-Za-z]+/g, ' ') : text;
-  return (plain.toLowerCase().match(/\p{L}+(?:['’]\p{L}+)*/gu) ?? []);
+  const split = (s: string) => s.toLowerCase().match(/\p{L}+(?:['’]\p{L}+)*/gu) ?? [];
+  if (!math) return split(text);
+  const groups: string[] = [];
+  let last = -1, rest = '';
+  for (const m of text.matchAll(TEXT_GROUP)) {
+    const gap = text.slice(last < 0 ? 0 : last, m.index);
+    if (last >= 0 && /^[\s{}]*$/.test(gap)) groups[groups.length - 1] += m[1]!;
+    else { groups.push(m[1]!); rest += gap; }
+    last = m.index + m[0].length;
+  }
+  rest += text.slice(last < 0 ? 0 : last);
+  const bare = rest.replace(/\\[A-Za-z]+/g, ' ').replace(/[^\p{L}]/gu, '');
+  return [...groups.flatMap(split), ...split(bare)];
 }
+/** Invisible format characters (zero-width joiners, soft hyphen, bidi marks) and combining marks left after NFC. */
+const INVISIBLE = /[\p{Cf}\p{M}]/u;
+/** An all-caps run that is a Roman numeral of two or more letters ("XII", "III"); "I" alone is a pronoun. */
+const ROMAN = /\b(?=[MDCLXVI]{2,}\b)M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b/u;
 
 /**
  * The closed-list rules over a template's literal prose (placeholders excluded). `viewWords: false`
@@ -131,9 +158,16 @@ export function proseIssues(t: Templ, { locale = 'en', viewWords = true }: { loc
     // Words are read per literal run, so a placeholder between two words never joins them into a phrase.
     for (const node of seg.nodes) {
       if (node.k !== 'lit') continue;
-      const numeral = NUMERAL.exec(node.text);
+      const text = node.text.normalize('NFC');
+      if (INVISIBLE.test(text)) report('prose_invisible', 'Prose contains an invisible or combining character.');
+      if (seg.kind === 'text' && text.includes('\\')) report('prose_backslash', 'Prose text may not contain a backslash outside math.');
+      const roman = seg.kind === 'text' ? ROMAN.exec(text) : null;
+      if (roman) report('numeral', `Write numbers only through placeholders: "${roman[0]}" is a Roman numeral.`);
+      const numeral = NUMERAL.exec(text);
       if (numeral) report('numeral', `Write numbers only through placeholders: "${numeral[0]}" appears in the prose.`);
-      const ws = words(node.text, seg.kind === 'math');
+      const ws = words(text, seg.kind === 'math');
+      const foreign = ws.find(w => !lists.script.test(w.replace(/['’]/g, '')));
+      if (foreign) report('prose_script', `"${foreign}" mixes in letters from another script.`);
       for (const w of ws) if (lists.numberWords.has(w)) report('number_word', `Write numbers only through placeholders: "${w}" is a number word.`);
       if (!viewWords) continue;
       // Phrases first; a word inside a matched phrase ("graph" in "bar graph") is not reported again.
@@ -153,6 +187,7 @@ export function proseIssues(t: Templ, { locale = 'en', viewWords = true }: { loc
 
 /** Noun forms: letters with inner spaces, hyphens or apostrophes; never numerals or number words. */
 export const NOUN_FORM = /^\p{L}+(?:[ '’-]\p{L}+)*$/u;
+// \p{L} excludes format characters and combining marks, so a noun form can hide nothing between its letters.
 export function nounFormIssues(form: string, locale = 'en'): Issue[] {
   if (typeof form !== 'string' || form.length < 1 || form.length > 24 || !NOUN_FORM.test(form)) return [{ code: 'noun_form', message: 'A noun form is 1–24 letters, with only spaces, hyphens or apostrophes between words.' }];
   const parsed = parseTempl(form, 'text');

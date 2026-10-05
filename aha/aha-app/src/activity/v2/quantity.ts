@@ -73,7 +73,10 @@ export type Expr =
   | { t: 'fn'; fn: 'min' | 'max'; args: readonly [Expr, Expr] };
 
 export const MAX_EXPR_CHARS = 120;
-const MAX_DEPTH = 12, MAX_NODES = 48, MAX_NUMBER_DIGITS = 12;
+// Each parenthesis level costs four recursion steps (sum, product, unary, atom): 40 allows about ten levels.
+const MAX_DEPTH = 40, MAX_NODES = 48, MAX_NUMBER_DIGITS = 12;
+/** The highest power of length any quantity kind measures (area). Raise it with a volume kind. */
+export const MAX_POWER = 2;
 /** Bound on numerators and denominators of every intermediate result. */
 const MAX_MAGNITUDE = 10n ** 24n;
 const ID = /^[a-z][a-z0-9]{0,7}$/;
@@ -264,6 +267,7 @@ export function evaluate(e: Expr, resolve: Resolver): Result<Value> {
       if (x.unit && y.unit && x.unit !== y.unit) return fail('dimension_mismatch', `Cannot combine ${x.unit} with ${y.unit}; there are no unit conversions.`);
       const unit = x.unit ?? y.unit;
       if (e.op === '*') {
+        if (x.power + y.power > MAX_POWER) return fail('dimension_unsupported', `Multiplying ${dimName(x)} by ${dimName(y)} gives a power of length no quantity measures.`);
         const q = bounded(multiply(x.q, y.q));
         return q.ok ? ok({ q: q.value, power: x.power + y.power, unit: x.power + y.power ? unit : null }) : q;
       }
@@ -309,6 +313,8 @@ export function quantityValue(decl: QuantityDecl, expr: Expr, resolve: Resolver)
     if (!sameDim(v.value, dim.value)) return fail('dimension_mismatch', `${decl.id} is declared as ${dimName(dim.value)}, but its value is ${dimName(v.value)}.`);
     value = v.value;
   }
+  // A count is a whole number, so it never displays as a fraction ("4/2 apples").
+  if (decl.kind === 'count' && value.form?.kind === 'fraction') { const { form: _f, ...whole } = value; value = whole; }
   return checkKind(decl.kind, value, decl.id);
 }
 /** What every value of a kind must satisfy. */
@@ -368,10 +374,11 @@ const pluralRules = new Map<string, Intl.PluralRules>();
 /** CLDR plural category of a value, honouring written decimal places ("1.0 meters"). */
 export function pluralCategory(value: Pick<Value, 'q' | 'form'>, locale = DEFAULT_LOCALE): Intl.LDMLPluralRule {
   if (value.q.d !== 1n && !exactDecimal(value.q)) return 'other';
-  const places = value.form?.kind === 'decimal' ? value.form.places : 0;
+  // Every printed decimal place counts ("1.0001 centimeters"); PluralRules would otherwise round to three.
+  const places = Math.max(value.form?.kind === 'decimal' ? value.form.places : 0, exactDecimal(value.q)!.frac.length);
   const key = `${locale}|${places}`;
   let rules = pluralRules.get(key);
-  if (!rules) { rules = new Intl.PluralRules(locale, { minimumFractionDigits: places }); pluralRules.set(key, rules); }
+  if (!rules) { rules = new Intl.PluralRules(locale, { minimumFractionDigits: places, maximumFractionDigits: Math.max(places, 3) }); pluralRules.set(key, rules); }
   return rules.select(toNumber(value.q));
 }
 /** English has two categories; a category the model did not write falls back to `other`. */
@@ -381,12 +388,12 @@ export const nounFor = (noun: Pick<Noun, 'one' | 'other'>, category: Intl.LDMLPl
 export function unitName(unit: UnitId, power: number, category: Intl.LDMLPluralRule): string {
   const u = LENGTH_UNITS[unit];
   const base = category === 'one' ? u.one : u.other;
-  return power === 2 ? `square ${base}` : power === 3 ? `cubic ${base}` : base;
+  return power === 2 ? `square ${base}` : base;
 }
 /** Short unit label for an answer dock: "cm", "cm²", "square units". */
 export function unitSymbol(unit: UnitId, power: number): string {
-  if (unit === 'unit') return power === 1 ? 'units' : power === 2 ? 'square units' : 'cubic units';
-  return `${LENGTH_UNITS[unit].symbol}${power === 2 ? '²' : power === 3 ? '³' : ''}`;
+  if (unit === 'unit') return power === 2 ? 'square units' : 'units';
+  return `${LENGTH_UNITS[unit].symbol}${power === 2 ? '²' : ''}`;
 }
 
 const SMALL = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];

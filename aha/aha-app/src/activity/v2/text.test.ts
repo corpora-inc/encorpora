@@ -87,9 +87,23 @@ describe('closed-list prose rules', () => {
     assert.deepEqual(codes('number {{x}} line'), [], 'a placeholder separates words');
     assert.deepEqual(codes('the rectangle', 'text', { viewWords: false }), []);
   });
+  it('cannot be fooled by invisible characters, look-alike letters, Roman numerals or split TeX words', () => {
+    for (const s of ['There are t\u200Bwelve apples.', 'Look at the rec\u200Btangle.', 'tw\u00ADelve', 'tw\u2060o', 'a\u034Fb']) assert.ok(codes(s).includes('prose_invisible'), JSON.stringify(s));
+    assert.deepEqual(codes('There are tw\u043E apples.'), ['prose_script'], 'Cyrillic o');
+    assert.deepEqual(codes('Chapter XII has III baskets.'), ['numeral']);
+    assert.deepEqual(codes('I am Ivy. Mix it.'), [], 'the pronoun I and ordinary words are not numerals');
+    assert.deepEqual(codes('There are $\\text{tw}\\text{elve}$ apples.'), ['number_word']);
+    assert.deepEqual(codes('\\mathrm{t}\\mathrm{wo}', 'math'), ['number_word']);
+    assert.deepEqual(codes('t w e l v e', 'math'), ['number_word']);
+    assert.deepEqual(codes('\\text{often} \\times x', 'math'), [], 'whole words only: "often" is not "ten"');
+    assert.deepEqual(codes('Look at the dot plots and area models.'), ['view_word', 'view_word']);
+    assert.deepEqual(codes('A slash \\ here.'), ['prose_backslash']);
+    assert.deepEqual(codes('Café crème, naïve.'), [], 'accented Latin letters are Latin');
+  });
   it('reports each problem once and falls back to English lists for other locales', () => {
     assert.deepEqual(codes('two and two and 2 and 2'), ['numeral', 'number_word']);
     assert.deepEqual(codes('There are two baskets.', 'text', { locale: 'fr-FR' }), ['number_word']);
+    assert.deepEqual(codes('There are two baskets.', 'text', { locale: 'constructor' }), ['number_word']);
   });
   it('holds noun forms to letters and the number-word rule', () => {
     assert.deepEqual(nounFormIssues('apple'), []);
